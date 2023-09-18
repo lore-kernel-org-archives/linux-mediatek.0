@@ -4,77 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4341C46CA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 11:50:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C779C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 11:59:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SwLG6PugHl4eC21BPc5GkdrbwZ38PLDUGzkbfsZcSnw=; b=jy2vq8QLSEC9vbXgxwJglpX+Mt
-	An8vsaAwyF1LbENSATAoAN5fLCx4166aYDiPQQ0RAwId9LXTMd306xtsxb/I/2UqkfWjLnd/S9O6f
-	xi9Sr7qqOVCR6f/FTtjsqHIs6lU2nbyVcpaAAPkwEPDWU1Q01hShSmSFWlGsk2urZChIDF5oP8prm
-	yLtcD0ka/o6853YfsHsEEkepH7kUwSUs+dcG6K6cOICLpHW+/Ke6xO+9IcLTJCmT50j+D7uN1FSAf
-	8iYBjNgiT+35D/bbZk/IWj03GZbU2DxEcAi+SYB6hls8F0E9BsKugwy+2mFLUtH7R0fcMhA+djMD9
-	ajI9D6YA==;
+	bh=Mx+1LEKjG08mHXdWiW0HFl/U3LRaOvUzyjCNt5ITLZc=; b=W2jLzgUOZgfgv/isLFE02DjT0Y
+	8dcOewQUMX/Cvwq6jQ93gb3/yGHrqCgteT00tZnl7Xb3hT6LGIo0HM+AL5aVxTNucENJH3j31wBCS
+	bk1JRmQrmOE/ym25RA8gRYQ8JYeyvskGsKf1iK3G4osq3W4A+fIt4H1dQ3sJLr/eCC0xwAUAkgGYt
+	wfIipipeB7hxdS388ROm1oz+UBEiENH+p0qYkr6e6q3BjkFA+7RAz337vdZSR37CBHdZ8i5HlYOSC
+	2+ESVsR9wu+ym6EWMVvhP7pikIit2MzscNDArbYkPaUCNdOmers+ihsU+oK5tVL9YxyqZeCxvWpE3
+	eMls+czA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiCm0-00FLxy-0r;
-	Mon, 18 Sep 2023 11:50:40 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qiCua-00FNIZ-3D;
+	Mon, 18 Sep 2023 11:59:33 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiClt-00FLwX-16;
-	Mon, 18 Sep 2023 11:50:35 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 46CD0B80DE3;
-	Mon, 18 Sep 2023 11:50:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CAD37C433C7;
-	Mon, 18 Sep 2023 11:50:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695037829;
-	bh=oT5snbuM6TfIDJhxJsWR/PSxNRbw+iiiuFc7Xp3a8+I=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=uZ7FGpqOOOW4QGMAG4E31OhORIcesAUkf7+AMd+dsPzh46DiEGuFjAIIhigCjpVJL
-	 DwbZLMUVDePIq6nrbjOfTbzXtettFFgIyY2rnnqxkUb/zAQgp+ndayV41JWxb1zLMo
-	 AbI3ombnz9obEikffx68Z0fVqGGNkZQKYCDV1P39O8JxfbAfmD/97IyEGrtWpqGfsP
-	 5sR9Uc4vWEZJBRM/S+0t5Q8N7s9KRKP6pCpKx6h60qwQV1CKH3ulLO4OQM8TnaNqdb
-	 K5zs590+yp6+YrY9ggF3Ph/91j0zolaKDFIYLi5JTOTbhB+mIXrp/jkzKzlYTTCB0Q
-	 EXB1uzYcbpgnw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id B4871E11F41;
-	Mon, 18 Sep 2023 11:50:29 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1qiCuY-00FNFv-0W
+	for linux-mediatek@lists.infradead.org;
+	Mon, 18 Sep 2023 11:59:31 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-9ada6b0649fso590058866b.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Sep 2023 04:59:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1695038366; x=1695643166; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Mx+1LEKjG08mHXdWiW0HFl/U3LRaOvUzyjCNt5ITLZc=;
+        b=c9lVzMu609WWFHI9Dx/HzUi4jLUqox+g5CR7MBYzpRQcXmQy/5vHNRTGbfGiuUP264
+         8ZBZf7peus6zxu5TATagHajOmoi8LYLvLr0gBgXV7YfGkdHH3vDyrH1bHfWn3NAYA7p/
+         YHTF1GfUqs5yYaG9ARsN/k7lFBKl0UBe8LFnOGS2uGmhv8Jr1l7RQuv+KX7cjLDeVvoS
+         12yaKbFZT6er65anfOItnYyePRJ3AyY5e8ErpKX/bsF6WvCcZYIYYDvZQVxwmrZzAPLY
+         oaLLu7PKqglsg4upAL5muQSKCEJs+nfg5Nm4AkEdHnMudrmwxkorB/JwHK2hge465dmU
+         ADJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695038366; x=1695643166;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Mx+1LEKjG08mHXdWiW0HFl/U3LRaOvUzyjCNt5ITLZc=;
+        b=UqgToqyZfxQ/9lIJw4Du+XpN7IEJ+Fz0pQ8Wnqje0PhsCUsuc0p830kgZAp8s7P/zi
+         JeaMmkJG/xtqUknJ+TtnAMYgrx1UX6J/N21iyR+Rs2z25wq5noUn/4JI7Jm+uABGsl0A
+         R3bQ5elLQ9pX14ZD99lumK93dKtO2AvvxT49unFReo20YrZiRlAlXxgBi2WXvq4Vhz/t
+         S40f09yRa0HFb8bYRmOVfGjm8oJ9oMJJ7Ml/64hmKMNTwUHPGwk8TetIemmYwRG0r7BY
+         yBFL+eoY8iZnGdBqA/E2duusgkMjobmdUG4qfXujtg4y87hnNGeUm/EsRulsAong5n0O
+         nzsQ==
+X-Gm-Message-State: AOJu0YwZKtfwaKiMvoZNthFKGypBcqPDgD90ktVry24pyYE15DKoGJMw
+	ZXQUgk7c0DYAcnNQoQHAWulxFg==
+X-Google-Smtp-Source: AGHT+IEQU5aP9n0ZpbF9FIWm05VurFH/Lgko0yhluHa5UJmuOfDQoNjoIOALZWR4TY4wUZ0dcYYJAQ==
+X-Received: by 2002:a17:906:5188:b0:9a1:db97:62a1 with SMTP id y8-20020a170906518800b009a1db9762a1mr7333228ejk.46.1695038366283;
+        Mon, 18 Sep 2023 04:59:26 -0700 (PDT)
+Received: from [172.25.80.114] ([217.67.225.27])
+        by smtp.gmail.com with ESMTPSA id j9-20020a170906410900b0099cc3c7ace2sm6466812ejk.140.2023.09.18.04.59.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Sep 2023 04:59:25 -0700 (PDT)
+Message-ID: <fad9eb3c-49f9-5ece-b51a-aaff4d8888ad@linaro.org>
+Date: Mon, 18 Sep 2023 13:59:24 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2 00/22] convert to devm_stmmac_probe_config_dt
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169503782973.2272.13506822186977436052.git-patchwork-notify@kernel.org>
-Date: Mon, 18 Sep 2023 11:50:29 +0000
-References: <20230916075829.1560-1-jszhang@kernel.org>
-In-Reply-To: <20230916075829.1560-1-jszhang@kernel.org>
-To: Jisheng Zhang <jszhang@kernel.org>
-Cc: peppe.cavallaro@st.com, alexandre.torgue@foss.st.com,
- joabreu@synopsys.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, mcoquelin.stm32@gmail.com,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, vz@mleia.com,
- neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, kernel@esmil.dk,
- samin.guo@starfivetech.com, wens@csie.org, jernej.skrabec@gmail.com,
- samuel@sholland.org, thierry.reding@gmail.com,
- nobuhiro1.iwamatsu@toshiba.co.jp, linux@armlinux.org.uk,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v2 3/3] dt-bindings: hwinfo: Add mtk-socinfo driver
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ William-tw Lin <william-tw.lin@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Kevin Hilman <khilman@kernel.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230915152607.18116-1-william-tw.lin@mediatek.com>
+ <20230915152607.18116-4-william-tw.lin@mediatek.com>
+ <3e7bc476-ffc7-fb07-8e64-246427da736c@linaro.org>
+ <9acc8d99-e3db-3df8-4051-21d95450b28d@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <9acc8d99-e3db-3df8-4051-21d95450b28d@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_045033_688884_AF970329 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20230918_045930_196576_BA829464 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,74 +103,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
-
-On Sat, 16 Sep 2023 15:58:06 +0800 you wrote:
-> Russell pointed out there's a new devm_stmmac_probe_config_dt()
-> helper now when reviewing my starfive gmac error handling patch[1].
-> After greping the code, this nice helper was introduced by Bartosz in
-> [2], I think it's time to convert all dwmac users to this helper and
-> finally complete the TODO in [2] "but once all users of the old
-> stmmac_pltfr_remove() are converted to the devres helper, it will be
-> renamed back to stmmac_pltfr_remove() and the no_dt function removed."
+On 18/09/2023 10:47, AngeloGioacchino Del Regno wrote:
+> Il 17/09/23 10:26, Krzysztof Kozlowski ha scritto:
+>> On 15/09/2023 17:26, William-tw Lin wrote:
+>>> dt-binding documentation for mtk-socinfo driver.
+>>
+>> Here and in subject, drop driver and instead descrbe hardware.
+>>
+>>> mtk-socinfo driver provides SoC-related information.
+>>> Such information includes manufacturer information, SoC name,
+>>> SoC segment name, and SoC marketing name.
+>>>
+>>> Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
+>>> ---
+>>>   .../bindings/hwinfo/mtk-socinfo.yaml          | 48 +++++++++++++++++++
+>>>   1 file changed, 48 insertions(+)
+>>>   create mode 100644 Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+>>> new file mode 100644
+>>> index 000000000000..74f03f1dc404
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+>>
+>> Nothing improved.
+>>
+>> This is a friendly reminder during the review process.
+>>
+>> It seems my previous comments were not fully addressed. Maybe my
+>> feedback got lost between the quotes, maybe you just forgot to apply it.
+>> Please go back to the previous discussion and either implement all
+>> requested changes or keep discussing them.
+>>
+>> Thank you.
+>>
+>>> @@ -0,0 +1,48 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/hwinfo/mtk-socinfo.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: MediaTek SoC ChipID
+>>> +
+>>> +maintainers:
+>>> +  - William Lin <william-tw.lin@mediatek.com>
+>>> +  - Matthias Brugger <matthias.bgg@gmail.com>
+>>> +  - Kevin Hilman <khilman@kernel.org>
+>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> +
+>>> +description:
+>>> +  MediaTek SoCs store various product information in eFuses, including
+>>> +  Chip ID and Revision fields, usable to identify the manufacturer,
+>>> +  SoC version, plus segment and marketing names.
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    const: mediatek,socinfo
+>>
+>> What happened to compatibles? No, this is just wrong and no explained.
+>> You ignored other comments as well. Really, that's not the way to go.
+>>
 > 
-> [...]
+> Practically, having different compatibles for each SoC is not needed, as
+> the only thing that changes between SoCs is the eFuse(s) that you read to
+> get the information - and that's all.
 
-Here is the summary with links:
-  - [net-next,v2,01/23] net: stmmac: dwmac-anarion: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/6f799fd9dda7
-  - [net-next,v2,02/23] net: stmmac: dwmac-dwc-qos-eth: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/0485825dd6a8
-  - [net-next,v2,03/23] net: stmmac: dwmac-generic: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/d53b19d2a1a8
-  - [net-next,v2,04/23] net: stmmac: dwmac-generic: use devm_stmmac_pltfr_probe()
-    https://git.kernel.org/netdev/net-next/c/14ec0fc582c5
-  - [net-next,v2,05/23] net: stmmac: dwmac-imx: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/115c9248b19b
-  - [net-next,v2,06/23] net: stmmac: dwmac-ingenic: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/6bb53b2abf30
-  - [net-next,v2,07/23] net: stmmac: dwmac-intel-plat: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/abea8fd5e801
-  - [net-next,v2,08/23] net: stmmac: dwmac-ipq806x: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/72ab86c27d4e
-  - [net-next,v2,09/23] net: stmmac: dwmac-lpc18xx: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/d30c08a3b001
-  - [net-next,v2,10/23] net: stmmac: dwmac-mediatek: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/d7209c056a49
-  - [net-next,v2,11/23] net: stmmac: dwmac-meson: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/780b63ae208e
-  - [net-next,v2,12/23] net: stmmac: dwmac-meson8b: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/551022d680ec
-  - [net-next,v2,13/23] net: stmmac: dwmac-rk: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/8eee20e10d6f
-  - [net-next,v2,14/23] net: stmmac: dwmac-socfpga: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/9086d3f2b560
-  - [net-next,v2,15/23] net: stmmac: dwmac-starfive: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/6d6c11937359
-  - [net-next,v2,16/23] net: stmmac: dwmac-sti: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/c9445e0bd729
-  - [net-next,v2,17/23] net: stmmac: dwmac-stm32: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/373845154618
-  - [net-next,v2,18/23] net: stmmac: dwmac-sun8i: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/9bdf6909877c
-  - [net-next,v2,19/23] net: stmmac: dwmac-sunxi: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/291595337626
-  - [net-next,v2,20/23] net: stmmac: dwmac-tegra: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/acf73ccff08e
-  - [net-next,v2,21/23] net: stmmac: dwmac-visconti: use devm_stmmac_probe_config_dt()
-    https://git.kernel.org/netdev/net-next/c/d336a117b593
-  - [net-next,v2,22/23] net: stmmac: rename stmmac_pltfr_remove_no_dt to stmmac_pltfr_remove
-    https://git.kernel.org/netdev/net-next/c/2c9fc838067b
-  - [net-next,v2,23/23] net: stmmac: make stmmac_{probe|remove}_config_dt static
-    https://git.kernel.org/netdev/net-next/c/b2504f649bda
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+And how do you guarantee that no future SoC will have any difference?
+How can you even predict it?
 
+> 
+> So ... we either use this driver with devicetree, giving it the right eFuses
+
+I am talking about bindings, no driver.
+
+> to read from, or we duplicate the mtk-efuse driver, or we statically assign
+> the eFuses in the driver itself and we set compatibles like
+> "mediatek,mt8195-socinfo" to select that... ideas?
+
+Device specific compatibles followed by fallback, just like for every
+other review coming from me.
+
+Best regards,
+Krzysztof
 
 
