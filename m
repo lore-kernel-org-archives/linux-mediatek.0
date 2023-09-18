@@ -4,78 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89B55CD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 10:07:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B52CD37B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 10:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3CIzAQBDBRAbXi6odnAuwsq+At6oBbxMnuT61WOfur8=; b=sEJPCzxU4Hi+EG
-	aLPlV4icBxA46F41kyxq50VVfqcuzAi+oF74aj7DO3Y63lQFTwVUYBERcJLlkLjwzPMAplbFV+ojV
-	dSIK+2fTuHrzcqmYZUue4Ppp/tj0AvXbIeSAJ+5uDR2Cc7QRtBB3m0603EgoOgbFhuu5MksCQgXTx
-	QS/kOO/Cxl1FzSAU5jcdjKyQhMR0Wyy7lLkLM0mhlv99zaWAmSH1nS+HLSjLH1mGxEMOKX2DgN0Qi
-	5PHsFhUfAYOnVcl8OnRCyWEI6+XnQ03M4vGejqgvRFVO88U1fYUmDaAyRC7rscxY6ecjXyQjIMUul
-	ySW0kF/v4JzyAQbnoQ4w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FlPiBPfzITX9DL6CLizuq7axBo1alK0pRSm4MYPYv3g=; b=QE7IBp9b3/+xVTb9XP3+xdtm1b
+	vG0rIO+mwKC08hkEocHPrQL7fuiLqZbLB5cB13HO3KI3JeSH15sP+GlQrYMKTPBgf0Rf2EF2YKXnn
+	eOnOonnAeZ1Xl7gB8GRaL9XxEYTtIvQsxs34a5lAltbVW0fTcjvNBo/jUWM6m8EN8e4YLeu1dwPtT
+	gImX2H8fYYGAQ8q0yEEIxZq4i10ZzxNkjJZjq5AdVDFxG0uoDWBLcR6V7j18osCYHHWChz/sHQ6Zh
+	480Z8lkdaxnjKHe7tyQowEbcL+FiClhYUO3P8pWRnfuA0khXzmqUVWcSa3M75pb9JvB24IWwxQlaL
+	VVV5d//Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiBA7-00F2MC-0O;
-	Mon, 18 Sep 2023 10:07:27 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1qiBHb-00F32z-1e;
+	Mon, 18 Sep 2023 10:15:11 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiBA2-00F2LI-1J
+	id 1qiBHY-00F31a-04
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Sep 2023 10:07:24 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-52889bc61b6so5231579a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Sep 2023 03:07:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1695031638; x=1695636438; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=3CIzAQBDBRAbXi6odnAuwsq+At6oBbxMnuT61WOfur8=;
-        b=hYPwN6jfcQ/jh5PCUV16ke8rmWi2SThAZdW/6li2iVnj/Ic0U1U0zbYAzUyvLPlQep
-         k9PhrEZ/6T7hH5cW0pkKbJRbU8HAcmWJg3/3d749dXJ1Hl+HHowKvdfWPWnEt62M7PZ6
-         st/2gbPq2rB1cgfgrm6B2j0X+Lbs/VO48glGhdmuazTuFJeMqRblVIHWEDH+xojRag6G
-         e3gPCW9APeurOQnWoFgYiBlS3b5kzsOMMz+dFI4m+b+mlazy/uthViyuN4GckpyLfG4R
-         Ffb1NaLeQSDhtfa8I7WJYDpCETIKqyG0eimv0YbeOimimbm+NFS8XdRxijiapXenpGyM
-         fxOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695031638; x=1695636438;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3CIzAQBDBRAbXi6odnAuwsq+At6oBbxMnuT61WOfur8=;
-        b=rvye4/Xvf3vFtCXfw/PYpG65Jh8Wqq+rwU5ioSLuXHn+v3zoYujtH2AVzghs9dMpJd
-         9WxCkeT7eHM/dQoy8oA2HiEex+3neiGYjaCWG3ShJZ9Qi8C6LAYt9GY1IdEBvS+v2541
-         5o5LFwm9SG57rvkqh0go2FN3SDuaRK95HbukfVppHl+/tSdpiLmZ5Hw+rb2juaLpvjXt
-         8eBTOOvhgbnKpLC+Iu7g+xA3vOcq4aTtQYlrRZe5IWxQvIITU12V2qvUnX1HRIRULlku
-         s8lvUJ0yYu1dXjPiIlU75nVhFZ4rpDK4mUf6LbYqM9pYSeevnaAuQVjiY+9hFW7SeFTd
-         6H5g==
-X-Gm-Message-State: AOJu0YwpMHcfGdxS6NaZoUVM6XX89N8K8NIpP5UxkFRN2Shsj1Rg747V
-	y02YaVKLDL8zuhVJHg0VwuKZ1w==
-X-Google-Smtp-Source: AGHT+IGidGqFde6MO6aKF0/Be311hyX6HKkzV2FNPU58Qptc75KDLExfyXA/sohTN+Ue1NGSHZDpCA==
-X-Received: by 2002:a05:6402:3494:b0:531:28fd:ad10 with SMTP id v20-20020a056402349400b0053128fdad10mr1459070edc.38.1695031638376;
-        Mon, 18 Sep 2023 03:07:18 -0700 (PDT)
-Received: from blmsp.fritz.box ([2001:4091:a246:8222:872:4a5b:b69c:1318])
-        by smtp.gmail.com with ESMTPSA id p21-20020aa7d315000000b00522828d438csm5824096edq.7.2023.09.18.03.07.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Sep 2023 03:07:17 -0700 (PDT)
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>,
-	"Rafael J . Wysocki" <rafael@kernel.org>,
-	Amit Kucheria <amitk@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] thermal/drivers/mediatek: Fix probe for THERMAL_V2
-Date: Mon, 18 Sep 2023 12:07:06 +0200
-Message-Id: <20230918100706.1229239-1-msp@baylibre.com>
-X-Mailer: git-send-email 2.40.1
+	Mon, 18 Sep 2023 10:15:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=FlPiBPfzITX9DL6CLizuq7axBo1alK0pRSm4MYPYv3g=; b=Pn6cVnHJi0SpybljT7FfkA7/09
+	w3of3jRwPEDPwFXs9kpiEK9KP41TzKbTTXZLZ5FmzIVKg0Fcb77dvmoQx+mYgAa+ftBo+z1ioOPMX
+	PGscbWl6FdgVon7eXMf0lXRCXkS2Vdxlfx3kWMJd1cdu5qUvuOcsAr7ulZc3PxYzVbBI=;
+Received: from p54ae986d.dip0.t-ipconnect.de ([84.174.152.109] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1qiBHG-003vhL-Tc; Mon, 18 Sep 2023 12:14:50 +0200
+Message-ID: <c00c641b-f5b3-4bca-8d41-4e048b09a794@nbd.name>
+Date: Mon, 18 Sep 2023 12:14:50 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/4] wifi: mt76: mt7996: Add mcu commands for getting
+ sta tx statistic
+Content-Language: en-US
+To: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>,
+ Johannes Berg <johannes.berg@intel.com>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Money Wang
+ <money.wang@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>,
+ Benjamin Lin <benjamin-jw.lin@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <7554d0a64ff480f1a185f381a59799158fe8bf23.1693549298.git.yi-chia.hsieh@mediatek.com>
+ <ef87bde6ef590ce39515a683e33313d1434b3064.1693549298.git.yi-chia.hsieh@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <ef87bde6ef590ce39515a683e33313d1434b3064.1693549298.git.yi-chia.hsieh@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_030722_472651_131AE856 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20230918_031508_142882_BD607C54 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,38 +99,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Markus Schneider-Pargmann <msp@baylibre.com>, linux-mediatek@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the probe function to call mtk_thermal_release_periodic_ts for
-everything != MTK_THERMAL_V1. This was accidentally changed from V1
-to V2 in the original patch.
+On 01.09.23 08:30, Yi-Chia Hsieh wrote:
+> Per peer Tx/Rx statistic can only be obtained by querying WM when WED is
+> on. This patch switches to periodic event reporting in the case of WED
+> being enabled.
+> 
+> Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
+> ---
+> v2: split series
+> ---
+>   .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 15 ++++
+>   .../net/wireless/mediatek/mt76/mt7996/mac.c   |  5 ++
+>   .../net/wireless/mediatek/mt76/mt7996/main.c  | 15 ++++
+>   .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 68 +++++++++++++++++++
+>   .../net/wireless/mediatek/mt76/mt7996/mcu.h   | 26 +++++++
+>   .../wireless/mediatek/mt76/mt7996/mt7996.h    |  1 +
+>   6 files changed, 130 insertions(+)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+> index 078f82858621..5aece2046a9d 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+> @@ -153,6 +153,32 @@ struct mt7996_mcu_mib {
+>   	__le64 data;
+>   } __packed;
+>   
+> +struct mt7996_mcu_all_sta_info_event {
+> +	u8 rsv[4];
+> +	__le16 tag;
+> +	__le16 len;
+> +	u8 more;
+> +	u8 rsv2;
+> +	__le16 sta_num;
+> +	u8 rsv3[2];
+> +
+> +	union {
+> +		struct {
+> +			__le16 wlan_idx;
+> +			u8 rsv[2];
+> +			__le32 tx_bytes[IEEE80211_NUM_ACS];
+> +			__le32 rx_bytes[IEEE80211_NUM_ACS];
+> +		} adm_stat[];
+> +
+> +		struct {
+> +			__le16 wlan_idx;
+> +			u8 rsv[2];
+> +			__le32 tx_msdu_cnt;
+> +			__le32 rx_msdu_cnt;
+> +		} msdu_cnt[];
+> +	};
+> +} __packed;
+With this, I'm getting compiler errors like this one:
 
-Reported-by: Frank Wunderlich <frank-w@public-files.de>
-Closes: https://lore.kernel.org/lkml/B0B3775B-B8D1-4284-814F-4F41EC22F532@public-files.de/
-Reported-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-Closes: https://lore.kernel.org/lkml/07a569b9-e691-64ea-dd65-3b49842af33d@linaro.org/
-Fixes: 33140e668b10 ("thermal/drivers/mediatek: Control buffer enablement tweaks")
-Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
----
- drivers/thermal/mediatek/auxadc_thermal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+      mcu.h:171:19: error: flexible array member in union
 
-diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-index 843214d30bd8..8b0edb204844 100644
---- a/drivers/thermal/mediatek/auxadc_thermal.c
-+++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -1267,7 +1267,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 
- 	mtk_thermal_turn_on_buffer(mt, apmixed_base);
- 
--	if (mt->conf->version != MTK_THERMAL_V2)
-+	if (mt->conf->version != MTK_THERMAL_V1)
- 		mtk_thermal_release_periodic_ts(mt, auxadc_base);
- 
- 	if (mt->conf->version == MTK_THERMAL_V1)
--- 
-2.40.1
 
+- Felix
 
