@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52845CD342E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 03:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBEA6CD3432
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 03:04:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X+tczk0/vmYvmSCEtwcnNPhlaGybKeOD9xZv9JHzkfU=; b=4mtkGidFt22rVNFc1HYrvQ7Uqd
-	FEOr1YteQR6QUAREDifGKBA8ORbGCR2tqC5GfWJn1YCZE1K4doPmg7q8Q/bLDDOek4qA7x2p3pc5A
-	nrwpdBpDAvRtuwdzKqIv7MdjyOE5L3z4dJtusPuEid+JJ7mV5pp3Qc71V5+Y14QhVOk4cmSMTJI2F
-	Wac+NjAtqIvMoFAnD8WGRIpfU8ARVaMcTRbioi3a2i8GHv0qczXvkIcISPLjGgEtuNZojRkDcDC02
-	3JvOMdbDjJA9Va4VUH7IpuEwl8w4u6KKcAM2ADlHp9kjpUmMp4fdgSn//u8aaCkBQ3vm7FxDIJlWz
-	YFq7IcYg==;
+	bh=3RLDw7GW/vAflRKIDHmKnuIo5Umx5dhJsbVlDeutM/U=; b=KAoRZ2p5fVnGqYkA8VkBWsi00x
+	tTvT/hFO/ryTEcxw7cz127BAAXXtIhyJ77/gHS6/gyntjkT9pOV2F4uNTDw4S8ZPgbPRo4dVf6wdF
+	FPA2riICrahF9NXK2Y5gfkBv+Rj6AxPopPA5Mlx+R+N7Tc5e5kZ1VeTs/kYYBMfa1GE8GUF/axIii
+	v7lcxiCL3l6Bar2EP0UM3gqewrCv46EwqR1ktSdyFddgItn4/9+effWPXrKvxV1w03PTIbmbLUpV7
+	1wDet7SL3JJjuyNn4D5Z9dk4yh8XZT3+vqFbaGTBnJ/wKi1aKSRJ3TpXQcgbCsPfSM+xLlbP2wXIr
+	NqyORvIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiR21-00Glh9-0C;
-	Tue, 19 Sep 2023 03:04:09 +0000
+	id 1qiR2L-00GltF-2A;
+	Tue, 19 Sep 2023 03:04:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiR1r-00GlcX-2h;
-	Tue, 19 Sep 2023 03:04:02 +0000
-X-UUID: 29266c1e569911ee86758d4a7c00f3a0-20230918
+	id 1qiR2H-00Glpb-0z;
+	Tue, 19 Sep 2023 03:04:27 +0000
+X-UUID: 3bbf45d0569911ee86758d4a7c00f3a0-20230918
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=X+tczk0/vmYvmSCEtwcnNPhlaGybKeOD9xZv9JHzkfU=;
-	b=RUNsFCL2q/dYVZ/Gw9TNfxkPCSodo/5tc+yg75Af/31dA5zX5oFGK7miPx9hL8rw1LwTzj5KIkl7oIRkvLPjxHAXcOxw07U/VS9FkzsE4NSEfdEslYbOOmSj+jIDY45gGCb/IQf53VkqhR72a9NEoawas8EAI/X83xvUFdKz+GA=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3RLDw7GW/vAflRKIDHmKnuIo5Umx5dhJsbVlDeutM/U=;
+	b=n22Bg9KNGzpA29OAKpi6+JSbfTvBztxTQ1xXEzIt6AiE+BQ6LBV8v1Jv1oKDYM+rBOByEHy0NyiBZmIJ5fHQPwGbD3njgjbMryET0Lu+qu6gaCT6bXS3Z+dPdPceMHipmCsi/CJrFdSQujaDyNbjyGzgR41LxjD05UHBfkQguTg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:009a0a52-6474-44f9-8421-947a4f5092f5,IP:0,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:5d7ffc28-f5fd-455c-a7ba-e342a4c44314,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:0ad78a4,CLOUDID:518e1814-4929-4845-9571-38c601e9c3c9,B
+X-CID-META: VersionHash:0ad78a4,CLOUDID:51b8daef-9a6e-4c39-b73e-f2bc08ca3dc5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 29266c1e569911ee86758d4a7c00f3a0-20230918
+X-UUID: 3bbf45d0569911ee86758d4a7c00f3a0-20230918
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 85446130; Mon, 18 Sep 2023 20:03:51 -0700
+	with ESMTP id 1735135000; Mon, 18 Sep 2023 20:04:22 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 19 Sep 2023 11:03:48 +0800
+ 15.2.1118.26; Tue, 19 Sep 2023 11:03:46 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 19 Sep 2023 11:03:48 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 19 Sep 2023 11:03:47 +0800
 From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
@@ -68,9 +68,9 @@ CC: Conor Dooley <conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
 	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
 	<shawn.sung@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 08/10] drm/mediatek: Add secure layer config support for ovl_adaptor
-Date: Tue, 19 Sep 2023 11:03:43 +0800
-Message-ID: <20230919030345.8629-9-jason-jh.lin@mediatek.com>
+Subject: [PATCH 03/10] drm/mediatek: Add secure buffer control flow to mtk_drm_gem
+Date: Tue, 19 Sep 2023 11:03:38 +0800
+Message-ID: <20230919030345.8629-4-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230919030345.8629-1-jason-jh.lin@mediatek.com>
 References: <20230919030345.8629-1-jason-jh.lin@mediatek.com>
@@ -78,8 +78,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_200359_891718_D38DCC70 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20230918_200425_365806_B3DBC440 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,78 +94,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add secure layer config support for ovl_adaptor and sub driver mdp_rdma.
+Add secure buffer control flow to mtk_drm_gem.
+
+When user space takes DRM_MTK_GEM_CREATE_ENCRYPTED flag and size
+to create a mtk_drm_gem object, mtk_drm_gem will find a matched size
+dma buffer from secure dma-heap and bind it to mtk_drm_gem object.
 
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c |  3 +++
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c         | 11 ++++++++---
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.h         |  2 ++
- 3 files changed, 13 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 84 +++++++++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h |  4 ++
+ 2 files changed, 87 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 28a0bccfb0b9..274961222672 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -153,6 +153,9 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
- 	rdma_config.pitch = pending->pitch;
- 	rdma_config.fmt = pending->format;
- 	rdma_config.color_encoding = pending->color_encoding;
-+	rdma_config.source_size = (pending->height - 1) * pending->pitch +
-+				  pending->width * fmt_info->cpp[0];
-+	rdma_config.is_sec = state->pending.is_sec;
- 	mtk_mdp_rdma_config(rdma_l, &rdma_config, cmdq_pkt);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index bcce723f257d..2064ccd7dde0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -4,6 +4,8 @@
+  */
  
- 	if (use_dual_pipe) {
-diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-index c3adaeefd551..1c4798e3bbc3 100644
---- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-@@ -94,6 +94,7 @@ struct mtk_mdp_rdma {
- 	void __iomem		*regs;
- 	struct clk		*clk;
- 	struct cmdq_client_reg	cmdq_reg;
-+	resource_size_t		regs_pa;
- };
+ #include <linux/dma-buf.h>
++#include <linux/dma-heap.h>
++#include <uapi/linux/dma-heap.h>
+ #include <drm/mediatek_drm.h>
  
- static unsigned int rdma_fmt_convert(unsigned int fmt)
-@@ -198,9 +199,12 @@ void mtk_mdp_rdma_config(struct device *dev, struct mtk_mdp_rdma_cfg *cfg,
- 	else
- 		mtk_ddp_write_mask(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
- 				   MDP_RDMA_SRC_CON, FLD_OUTPUT_ARGB);
--
--	mtk_ddp_write_mask(cmdq_pkt, cfg->addr0, &priv->cmdq_reg, priv->regs,
--			   MDP_RDMA_SRC_BASE_0, FLD_SRC_BASE_0);
-+	if (cfg->is_sec)
-+		mtk_ddp_sec_write(cmdq_pkt, priv->regs_pa + MDP_RDMA_SRC_BASE_0,
-+				  cfg->addr0, CMDQ_IWC_H_2_MVA, 0, cfg->source_size, 0);
+ #include <drm/drm.h>
+@@ -55,6 +57,80 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
+ 	return mtk_gem_obj;
+ }
+ 
++struct mtk_drm_gem_obj *mtk_drm_gem_create_from_heap(struct drm_device *dev,
++						     const char *heap, size_t size)
++{
++	struct mtk_drm_private *priv = dev->dev_private;
++	struct mtk_drm_gem_obj *mtk_gem;
++	struct drm_gem_object *obj;
++	struct dma_heap *dma_heap;
++	struct dma_buf *dma_buf;
++	struct dma_buf_attachment *attach;
++	struct sg_table *sgt;
++	struct iosys_map map = {};
++	int ret;
++
++	mtk_gem = mtk_drm_gem_init(dev, size);
++	if (IS_ERR(mtk_gem))
++		return ERR_CAST(mtk_gem);
++
++	obj = &mtk_gem->base;
++
++	dma_heap = dma_heap_find(heap);
++	if (!dma_heap) {
++		DRM_ERROR("heap find fail\n");
++		goto err_gem_free;
++	}
++	dma_buf = dma_heap_buffer_alloc(dma_heap, size,
++					O_RDWR | O_CLOEXEC, DMA_HEAP_VALID_HEAP_FLAGS);
++	if (IS_ERR(dma_buf)) {
++		DRM_ERROR("buffer alloc fail\n");
++		dma_heap_put(dma_heap);
++		goto err_gem_free;
++	}
++	dma_heap_put(dma_heap);
++
++	attach = dma_buf_attach(dma_buf, priv->dma_dev);
++	if (IS_ERR(attach)) {
++		DRM_ERROR("attach fail, return\n");
++		dma_buf_put(dma_buf);
++		goto err_gem_free;
++	}
++	sgt = dma_buf_map_attachment(attach, DMA_BIDIRECTIONAL);
++	if (IS_ERR(sgt)) {
++		DRM_ERROR("map failed, detach and return\n");
++		dma_buf_detach(dma_buf, attach);
++		dma_buf_put(dma_buf);
++		goto err_gem_free;
++	}
++	obj->import_attach = attach;
++	mtk_gem->dma_addr = sg_dma_address(sgt->sgl);
++	mtk_gem->sg = sgt;
++	mtk_gem->size = dma_buf->size;
++
++	if (!strcmp(heap, "mtk_svp") || !strcmp(heap, "mtk_svp_cma")) {
++		/* secure buffer can not be mapped */
++		mtk_gem->sec = true;
++	} else {
++		ret = dma_buf_vmap(dma_buf, &map);
++		mtk_gem->kvaddr = map.vaddr;
++		if (ret) {
++			DRM_ERROR("map failed, ret=%d\n", ret);
++			dma_buf_unmap_attachment(attach, sgt, DMA_BIDIRECTIONAL);
++			dma_buf_detach(dma_buf, attach);
++			dma_buf_put(dma_buf);
++			mtk_gem->kvaddr = NULL;
++		}
++	}
++
++	return mtk_gem;
++
++err_gem_free:
++	drm_gem_object_release(obj);
++	kfree(mtk_gem);
++	return ERR_PTR(-ENOMEM);
++}
++
+ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev,
+ 					   size_t size, bool alloc_kmap)
+ {
+@@ -218,7 +294,9 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
+ 	if (IS_ERR(mtk_gem))
+ 		return ERR_CAST(mtk_gem);
+ 
++	mtk_gem->sec = !sg_page(sg->sgl);
+ 	mtk_gem->dma_addr = sg_dma_address(sg->sgl);
++	mtk_gem->size = attach->dmabuf->size;
+ 	mtk_gem->sg = sg;
+ 
+ 	return &mtk_gem->base;
+@@ -290,7 +368,11 @@ int mtk_gem_create_ioctl(struct drm_device *dev, void *data,
+ 	struct drm_mtk_gem_create *args = data;
+ 	int ret;
+ 
+-	mtk_gem = mtk_drm_gem_create(dev, args->size, false);
++	if (args->flags & DRM_MTK_GEM_CREATE_ENCRYPTED)
++		mtk_gem = mtk_drm_gem_create_from_heap(dev, "mtk_svp_cma", args->size);
 +	else
-+		mtk_ddp_write_mask(cmdq_pkt, cfg->addr0, &priv->cmdq_reg, priv->regs,
-+				   MDP_RDMA_SRC_BASE_0, FLD_SRC_BASE_0);
++		mtk_gem = mtk_drm_gem_create(dev, args->size, false);
++
+ 	if (IS_ERR(mtk_gem))
+ 		return PTR_ERR(mtk_gem);
  
- 	mtk_ddp_write_mask(cmdq_pkt, src_pitch_y, &priv->cmdq_reg, priv->regs,
- 			   MDP_RDMA_MF_BKGD_SIZE_IN_BYTE, FLD_MF_BKGD_WB);
-@@ -285,6 +289,7 @@ static int mtk_mdp_rdma_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	priv->regs_pa = res->start;
- 	priv->regs = devm_ioremap_resource(dev, res);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap rdma\n");
-diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-index 9943ee3aac31..9add18e96319 100644
---- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-+++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-@@ -15,6 +15,8 @@ struct mtk_mdp_rdma_cfg {
- 	unsigned int	y_top;
- 	int		fmt;
- 	int		color_encoding;
-+	unsigned int	source_size;
-+	unsigned int	is_sec;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+index 90f3d2916ec5..ed4d23e252e9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+@@ -27,9 +27,11 @@ struct mtk_drm_gem_obj {
+ 	void			*cookie;
+ 	void			*kvaddr;
+ 	dma_addr_t		dma_addr;
++	size_t			size;
+ 	unsigned long		dma_attrs;
+ 	struct sg_table		*sg;
+ 	struct page		**pages;
++	bool			sec;
  };
  
- #endif // __MTK_MDP_RDMA_H__
+ #define to_mtk_gem_obj(x)	container_of(x, struct mtk_drm_gem_obj, base)
+@@ -37,6 +39,8 @@ struct mtk_drm_gem_obj {
+ void mtk_drm_gem_free_object(struct drm_gem_object *gem);
+ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev, size_t size,
+ 					   bool alloc_kmap);
++struct mtk_drm_gem_obj *mtk_drm_gem_create_from_heap(struct drm_device *dev,
++						     const char *heap, size_t size);
+ int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
+ 			    struct drm_mode_create_dumb *args);
+ struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj);
 -- 
 2.18.0
 
