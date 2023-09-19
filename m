@@ -4,110 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABC88CD5BC5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 13:36:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6581ECD5BBD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 13:41:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:Cc:To:From:Date:References:In-Reply-To:Message-Id:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G3Kkrzt0AGrrY/tjL0EyntUuIBb8mCCGj+mtTnmx+Q8=; b=qMaLgSVIkRtk/fVAXl/CVH7uVN
-	xhJrv2PBUGo2gQfjthpz3eO0VlgX9cNwcZdCo8GTUZkDtHscUAH57/MIi51QTDdwaEpdUibpuwfai
-	occKXa0jJr+NOiZoJYSpml1ZmQGtkrui1eDGBvK0WCyn4xUDbNI3uTvClPIEopbougrtI6xIPOuT5
-	W67qimSIUpIHo8dodsgfnRH9KyFqokaQovWK6eQ/dDr9DtfFXwuHAKR/k53gidYrJsys3xArD2jRT
-	ZKdMJtb5hu0mBrtGE2OO2qsQU1RAgscHN0Gh0MKasJXuhu/ps2kjbtBQ7da3QJI8Mb8dyoVqDq+DM
-	LgL9PBug==;
+	bh=t8ZrKzcwuWjcrybdscpBGFZ6TYnSnCFlYWiR3Zt72+I=; b=4xxoS/R/jqeA78FXXJ3yPIdfqq
+	nWsaM2rFlK2MI5qGXypB/fxXL63Dg0TP3MjFtLJBCDOtbzJX7ENrVLXgmgjvtEEOUCSrOCvOTJfhC
+	ld10cEBza0+wQvo8xL0If4V4MIwcQhTL2yhpbfXBM0RmzSRXxpKUZiCOuyZmyhe5QZHh2Y21blOam
+	sk/lVtXTxp9myG5G366v7FtuSniCUt2PwLEOIcIiKn0jsDSMOBaf/iBbPOSoXgoJxGYxl9fzW9nr/
+	QGjeCxDbBPYrtuBPUafw8fGXyvu4PcoOcWRVJ0aGPPmomxgJDvwPiiuDuOikQi34ZFzApQbk9GNv+
+	nDlcvOeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiauG-000Xta-1z;
-	Tue, 19 Sep 2023 13:36:48 +0000
-Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+	id 1qiayU-000YVW-1M;
+	Tue, 19 Sep 2023 13:41:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiauB-000Xr4-1T;
-	Tue, 19 Sep 2023 13:36:44 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.nyi.internal (Postfix) with ESMTP id 0A3D15C00A5;
-	Tue, 19 Sep 2023 09:36:34 -0400 (EDT)
-Received: from imap47 ([10.202.2.97])
-  by compute5.internal (MEProxy); Tue, 19 Sep 2023 09:36:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=svenpeter.dev;
-	 h=cc:cc:content-transfer-encoding:content-type:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to;
-	 s=fm2; t=1695130594; x=1695216994; bh=G3Kkrzt0AGrrY/tjL0EyntUuI
-	Bb8mCCGj+mtTnmx+Q8=; b=UnODe/CFFm/fKyGaSWbPPfJGyccMgh1Fl4ql7J8B2
-	9jTTCbW7SBL9mmZVXktU9NHHOKE59vNmIt0/3PhYLyfB2ct9PpB2TtdW2GrTNk0N
-	p54KxQZhj60LKixvUfYSDQa4v3EbvN8Xt+LCAGQGVQ26IZGNwzMCGuce3Gghezi+
-	NDemRIJWikj5y3YJh93ZKtlx/6vlOGJnSRujwbi6RlScOarSzktohPxAwVVayDgE
-	wc1G63LzMMrc7gbgXgfjjE3fjf+QuIdkFrVuooWiII9CtYxJ0KGYCqtctLBBxlXB
-	a0MaGet4EcXXzcNEDj0hlAAITshodNu2ZUQSCM82e95IQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1695130594; x=1695216994; bh=G3Kkrzt0AGrrY/tjL0EyntUuIBb8mCCGj+m
-	tTnmx+Q8=; b=Ki98uDeNfz0jsUIT+QrBfvj6hR3UdAj0JGP0Kk0m3is6XGITVnc
-	DitfO8Z+GtWWohKTB22DWPAWKANFWZvwpnHoOdj68y6C4Z7ADQwwOPv0cl9n2b+x
-	ySjituYs4vc8wTr6657lSCf6nuZlPaevwRT+ZlC5EloYB2OJvQKrFkiBrlsDjKms
-	R/4JDdefME8w8YDPy5+wnxG2+Fya9/liDAL5qCMMKpXum+43+FmCAvT5DhfpQlfI
-	HT3jt59lJiwFge+hvLDqbVFgQ4bt7cNR/bPeevGW7CpYG9z9TksRHzzWy5ZpkhSc
-	+qvxWapAs7q7hQNor2DKBFbtWnh42FwH2mg==
-X-ME-Sender: <xms:4KMJZbW9LbqWPcHkGh_DlPuxCBkGLtv3JnsYlVzXjKzSIeeti7RIhg>
-    <xme:4KMJZTmAvH4L7z_nGaP5KdfIvqOZiks__CHr-LlmDmPx7zd2plYewMvSEyaWyUHFk
-    jKbOhCbS2QMQUW6WgU>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrudekuddgfeeiucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdfu
-    vhgvnhcurfgvthgvrhdfuceoshhvvghnsehsvhgvnhhpvghtvghrrdguvghvqeenucggtf
-    frrghtthgvrhhnpeevhedthffgffelhedujefgueduudeutdefleevvdetudelhfeihfdv
-    ffelteeuudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
-    hmpehsvhgvnhesshhvvghnphgvthgvrhdruggvvh
-X-ME-Proxy: <xmx:4KMJZXYmYuvL3nH0_SgD_kNdsC7XHLClfVBAmruidR-V60B6y3P-MQ>
-    <xmx:4KMJZWXQA3WzRBb5zCu-QYvcA4iZm-q-O5n5rA4kxuHe43SgaGHuSg>
-    <xmx:4KMJZVk9Oi99N4mk7qm3lIUI4afyU90X7PI_XuVzNp7f82_pACbMKw>
-    <xmx:4qMJZdNsFBGmk6guzMsje_BoEdpEh-d6HrZzup8N865hs4SPZgsPDA>
-Feedback-ID: i51094778:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 0378AA60077; Tue, 19 Sep 2023 09:36:31 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-761-gece9e40c48-fm-20230913.001-gece9e40c
+	id 1qiayM-000YSk-2B;
+	Tue, 19 Sep 2023 13:41:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 27FA06153E;
+	Tue, 19 Sep 2023 13:41:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EA3CC433C9;
+	Tue, 19 Sep 2023 13:40:57 +0000 (UTC)
+Message-ID: <3652023b-f4ab-4316-ad11-b598ef1f4bd2@xs4all.nl>
+Date: Tue, 19 Sep 2023 15:40:56 +0200
 MIME-Version: 1.0
-Message-Id: <aabaa49f-8988-42c0-bf8e-2266005e2155@app.fastmail.com>
-In-Reply-To: <20230918131103.24119-7-ilpo.jarvinen@linux.intel.com>
-References: <20230918131103.24119-1-ilpo.jarvinen@linux.intel.com>
- <20230918131103.24119-7-ilpo.jarvinen@linux.intel.com>
-Date: Tue, 19 Sep 2023 15:36:10 +0200
-From: "Sven Peter" <sven@svenpeter.dev>
-To: =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
- linux-pci@vger.kernel.org, "Bjorn Helgaas" <helgaas@kernel.org>,
- "Lorenzo Pieralisi" <lorenzo.pieralisi@arm.com>,
- "Rob Herring" <robh@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- "Lukas Wunner" <lukas@wunner.de>, "Rafael J. Wysocki" <rafael@kernel.org>,
- "Heiner Kallweit" <hkallweit1@gmail.com>,
- "Emmanuel Grumbach" <emmanuel.grumbach@intel.com>,
- linux-kernel@vger.kernel.org, "Hector Martin" <marcan@marcan.st>,
- "Alyssa Rosenzweig" <alyssa@rosenzweig.io>,
- "Marcel Holtmann" <marcel@holtmann.org>,
- "Johan Hedberg" <johan.hedberg@gmail.com>,
- "Luiz Augusto von Dentz" <luiz.dentz@gmail.com>,
- "Bjorn Helgaas" <bhelgaas@google.com>, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org
-Cc: ath10k@lists.infradead.org, ath11k@lists.infradead.org,
- ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
- linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v2 06/13] Bluetooth: hci_bcm4377: Convert aspm disable to quirk
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 21/49] media: dvb: Stop direct calls to queue
+ num_buffers field
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-22-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230914133323.198857-22-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_063643_577320_1211611E 
-X-CRM114-Status: UNSURE (   7.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230919_064102_756571_25A79F73 
+X-CRM114-Status: GOOD (  19.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,23 +72,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Mon, Sep 18, 2023, at 15:10, Ilpo J=C3=A4rvinen wrote:
-> pci_disable_link_state() was made reliable regardless of ASPM CONFIG
-> and OS being disallowed to change ASPM states to allow drivers to rely
-> on pci_disable_link_state() working.
->
-> Remove driver working around unreliable pci_disable_link_state() from
-> hci_bcm4377 driver and add a PCI quirk to disable ASPM.
->
-> Signed-off-by: Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com>
+On 14/09/2023 15:32, Benjamin Gaignard wrote:
+> Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
+>  drivers/media/dvb-core/dvb_vb2.c          | 1 -
+>  drivers/media/dvb-frontends/rtl2832_sdr.c | 5 +++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
+> index 3a966fdf814c..a731b755a0b9 100644
+> --- a/drivers/media/dvb-core/dvb_vb2.c
+> +++ b/drivers/media/dvb-core/dvb_vb2.c
+> @@ -177,7 +177,6 @@ int dvb_vb2_init(struct dvb_vb2_ctx *ctx, const char *name, int nonblocking)
+>  	q->ops = &dvb_vb2_qops;
+>  	q->mem_ops = &vb2_vmalloc_memops;
+>  	q->buf_ops = &dvb_vb2_buf_ops;
+> -	q->num_buffers = 0;
+>  	ret = vb2_core_queue_init(q);
+>  	if (ret) {
+>  		ctx->state = DVB_VB2_STATE_NONE;
 
-Acked-by: Sven Peter <sven@svenpeter.dev>
+This touches the dvb-core, and should be in a separate patch.
 
+> diff --git a/drivers/media/dvb-frontends/rtl2832_sdr.c b/drivers/media/dvb-frontends/rtl2832_sdr.c
+> index 02c619e51641..023db6e793f8 100644
+> --- a/drivers/media/dvb-frontends/rtl2832_sdr.c
+> +++ b/drivers/media/dvb-frontends/rtl2832_sdr.c
+> @@ -439,12 +439,13 @@ static int rtl2832_sdr_queue_setup(struct vb2_queue *vq,
+>  {
+>  	struct rtl2832_sdr_dev *dev = vb2_get_drv_priv(vq);
+>  	struct platform_device *pdev = dev->pdev;
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+>  
+>  	dev_dbg(&pdev->dev, "nbuffers=%d\n", *nbuffers);
+>  
+>  	/* Need at least 8 buffers */
+> -	if (vq->num_buffers + *nbuffers < 8)
+> -		*nbuffers = 8 - vq->num_buffers;
+> +	if (q_num_bufs + *nbuffers < 8)
+> +		*nbuffers = 8 - q_num_bufs;
+>  	*nplanes = 1;
+>  	sizes[0] = PAGE_ALIGN(dev->buffersize);
+>  	dev_dbg(&pdev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
 
-Thanks,
+This is really a generic issue with most of these patches:
 
-Sven
+queue_setup checks for a minimum number of buffers, but that should instead
+be configured through the q->min_buffers_needed field.
+
+A lot of older drivers were written before that field was added.
+
+This is a good opportunity to just drop this check from queue_setup
+and instead just set q->min_buffers_needed to 8.
+
+Regards,
+
+	Hans
 
