@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09BC3CD54AF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 11:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E6B3CD54AF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 11:21:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RgLJ+UX4E9t+LX0j9Zq5TtVtUDy1rjiLB202BBcIoXk=; b=umO+5Fa74IMQONIDfcMhnQBt5C
-	FvPKjq8bLcsaLwjzDf+tNgBJJfVc8eR4cxYgyOsgAaSiw3yvI0rvWOvIAEeIXiLAUfkyc0NzYasUX
-	J0rnXNP66/pGdmiP+TZggx8TIwywkA98LtiePMr0ylxS/FtoM/o5ydGOdtqpiwWjmuDzS3VC0DKX6
-	SxCEuwYujgnIqwM2UE3yE19Wmcc6IoEXDmYH37p/CRhIPSD/Hm3usiVO9Fvyq1jfnXShiykLpbU7N
-	qdNSWAvuW0OMEewEblFjIsXIdrLlXVEdOj0aLtBPMx8JxFcKjHQq4nkTykHNKtwly1rxNx/NMiicQ
-	w++suE/g==;
+	bh=xI9Ro/dcYfmZ4WfWfwrC6nV0MYpSUZlU9Eh900mwqOU=; b=h55OHMEYclZ69JuY4eN/HOXVYE
+	Zv/yqelkWwtOhaitSy7cf1o5j+OiF1wF4Nh2i6M2p6SynKWJGdCjAeFn2ksiOQQPvDZP0O5ekkWQ5
+	LHojUi4+ZAqIenftfJOYqMcd7ZE5xB9mZ7jInlgRPhUmxlfRNjaa2ty+hFqFai5VJ4Y29ZHTzc6WG
+	n1v++bI/2M8ZhMEeCkIgiFJRzKrJZ1tUCOfaaUuvgMh5z+sfF+kan3H2fW3hKIb64fYWpqOySDG2R
+	hX+OAQ1gkxYFRQaz+QiuW27zsX3nuayqYOvdwhFPB6J5qGN2rSN9xK7XhvtLaBvpVU2iHItTD0qbu
+	rIfppBSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYiE-000GU0-33;
-	Tue, 19 Sep 2023 11:16:14 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qiYmz-000H0s-0Y;
+	Tue, 19 Sep 2023 11:21:09 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYiB-000GSk-1a;
-	Tue, 19 Sep 2023 11:16:13 +0000
+	id 1qiYmw-000GzV-1I;
+	Tue, 19 Sep 2023 11:21:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id F3019B815C3;
-	Tue, 19 Sep 2023 11:16:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 544B8C433C8;
-	Tue, 19 Sep 2023 11:16:05 +0000 (UTC)
-Message-ID: <cbfef598-8faa-40e6-8dc2-a1efd03f9560@xs4all.nl>
-Date: Tue, 19 Sep 2023 13:16:03 +0200
+	by sin.source.kernel.org (Postfix) with ESMTPS id B85E4CE12FA;
+	Tue, 19 Sep 2023 11:21:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98BAAC433C8;
+	Tue, 19 Sep 2023 11:20:59 +0000 (UTC)
+Message-ID: <b7b98f37-f9f0-46ef-8ee2-610e2990dfef@xs4all.nl>
+Date: Tue, 19 Sep 2023 13:20:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 16/49] media: verisilicon: postproc: Fix down scale
- test
+Subject: Re: [PATCH v7 07/49] media: sti: hva: Use vb2_get_buffer() instead of
+ directly access to buffers array
 Content-Language: en-US, nl
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
  tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
@@ -50,14 +50,16 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-17-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-8-benjamin.gaignard@collabora.com>
+ <93e9b143-664c-4fbb-8722-0beabd5b2c0c@xs4all.nl>
+ <ecfd1641-3cce-dfa4-b88c-3619fb12d710@collabora.com>
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230914133323.198857-17-benjamin.gaignard@collabora.com>
+In-Reply-To: <ecfd1641-3cce-dfa4-b88c-3619fb12d710@collabora.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_041611_682855_A8D988AB 
-X-CRM114-Status: GOOD (  22.04  )
+X-CRM114-CacheID: sfid-20230919_042106_604264_ED68A124 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,50 +74,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2023 15:32, Benjamin Gaignard wrote:
-> Do not allow down scaling if the source buffer resolution is
-> smaller  than destination one.
+On 19/09/2023 12:26, Benjamin Gaignard wrote:
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Fixes: fbb6c848dd89 ("media: destage Hantro VPU driver")
+> Le 19/09/2023 à 11:31, Hans Verkuil a écrit :
+>> On 14/09/2023 15:32, Benjamin Gaignard wrote:
+>>> Use vb2_get_buffer() instead of directly access to vb2_buffer buffer array.
+>>> This could allow to change the type bufs[] field of vb2_buffer structure if
+>>> needed.
+>>> After each call to vb2_get_buffer() we need to be sure that we get
+>>> a valid pointer so check the return value of all of them.
+>>>
+>>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>>> ---
+>>>   drivers/media/platform/st/sti/hva/hva-v4l2.c | 4 ++++
+>>>   1 file changed, 4 insertions(+)
+>>>
+>>> diff --git a/drivers/media/platform/st/sti/hva/hva-v4l2.c b/drivers/media/platform/st/sti/hva/hva-v4l2.c
+>>> index 3a848ca32a0e..326be09bdb55 100644
+>>> --- a/drivers/media/platform/st/sti/hva/hva-v4l2.c
+>>> +++ b/drivers/media/platform/st/sti/hva/hva-v4l2.c
+>>> @@ -577,6 +577,10 @@ static int hva_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+>>>           }
+>> Above this line there is a buf->index check...
+>>
+>>>             vb2_buf = vb2_get_buffer(vq, buf->index);
+>>> +        if (!vb2_buf) {
+>>> +            dev_dbg(dev, "%s buffer index %d not found\n", ctx->name, buf->index);
+>>> +            return -EINVAL;
+>>> +        }
+>> ...I think that check can be dropped since vb2_get_buffer checks that already.
+> 
+> No because in "media: sti: hva: Stop direct calls to queue num_buffers field" patch
+> I remove the above check since it use queue num_buffers field.
 
-Is this really a fix? I gather that this relies on "VP9 resolution change without
-doing stream off/on" support, and support for that is added by these patches.
-
-Adding the Fixes tag would cause stable maintainers to queue this patch up for
-older kernels, but I don't think that is needed here at all.
-
-And related I also think that this really does not belong to this patch series.
-
-As I understand it, patch 13/49 extends the verisilicon driver to support more
-than 32 buffers, so that one makes sense in the context of this series.
-
-But the other verisilicon patches appear to be unrelated and instead add a new
-feature, and I don't believe it relates to this series at all.
-
-If I am right, then please post this as a separate series, possibly mentioning
-that it sits on top of this series.
+Why not do that here? And drop that later patch? It doesn't make sense to
+split it up, and also the commit log of patch 33/49 doesn't match that patch.
 
 Regards,
 
 	Hans
 
-> ---
->  drivers/media/platform/verisilicon/hantro_postproc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-> index e624cd98f41b..77d8ecfbe12f 100644
-> --- a/drivers/media/platform/verisilicon/hantro_postproc.c
-> +++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-> @@ -107,7 +107,7 @@ static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
->  
->  static int down_scale_factor(struct hantro_ctx *ctx)
->  {
-> -	if (ctx->src_fmt.width == ctx->dst_fmt.width)
-> +	if (ctx->src_fmt.width <= ctx->dst_fmt.width)
->  		return 0;
->  
->  	return DIV_ROUND_CLOSEST(ctx->src_fmt.width, ctx->dst_fmt.width);
+> Regards,
+> Benjamin
+> 
+>>
+>> Regards,
+>>
+>>     Hans
+>>
+>>>           stream = to_hva_stream(to_vb2_v4l2_buffer(vb2_buf));
+>>>           stream->bytesused = buf->bytesused;
+>>>       }
+>>
 
 
