@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEAA2CD5BC0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 13:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDEFACD5BC5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 13:32:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rts9sB3g2azLxer9BQPdZy/9jO0b52vY4InJHYry7Nw=; b=WDlH3p1WBPPNUJUnt6LZJk8BT3
-	pmVHmFfy1pZpAAMUKImjbtH1yJpSS7a2h2UYLlMghAovWeOETA3FaMRIiB1u29mI3Gs4u7nqJgR4m
-	flWPWTqj7+47aC2k5kZsRAF1j+YWRHJLZ88yjd84i+BDgY2Mq1xRAFWBtxTq/VURJpTQwZNNXAeH8
-	36mMz0KvRl372Lu4/5QORYye4DChBBKb+NuGgNru+nScrFXeie7vDb0GTUkp0LeqhVkWjIDBJjHS5
-	6Bl5T43uyym6T+ZPQC3EeoIvMTNOKb9uP6l0X03QWf3MpgA2bPzBSSxYvL/f1vROR79rKLhsuWMWF
-	AOAEXKeg==;
+	bh=UPZ/O4qbCnie7+tRvLBkdMAcGtGwr9CxpuW6fUOk+s8=; b=bzLGO50jp6x/f/z+JAkii21ZPK
+	E/Bco/GFGCwB0qmmt2lE7Jw1HiasIeXXVra7WrhSmVvkMoWh2ee33sRlkCsEvTt5Af0nqxQ9ykrAU
+	P8jmfLCjZnwlKQTLhAFchJI8ClTV+JgizA30fJktl4KbNEI7coSQPBsR2NRBw3G5KKwcnfOMWUlle
+	4rxg64O7bYaFsnNw9AOjEYMFMd7ElrFz+rLUH9aVnm3wP20T6EhMegl+JQFjLe9OjHFJed8yR4o0X
+	LoPVHn8Jtx65UZlxVO9nXIB/CGFm3kPF05rbhfS0BJHEDbpCDBddAFKE4SqP0Qh9BYR0YlOXT2FLP
+	y3ppxL9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiaqI-000WWY-0H;
-	Tue, 19 Sep 2023 13:32:42 +0000
+	id 1qiaqK-000WZ5-24;
+	Tue, 19 Sep 2023 13:32:44 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiaq1-000WKe-1C
+	id 1qiaq3-000WM8-2V
 	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Sep 2023 13:32:29 +0000
+	Tue, 19 Sep 2023 13:32:31 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qiaps-0004ll-7p; Tue, 19 Sep 2023 15:32:16 +0200
+	id 1qiaps-0004lU-2q; Tue, 19 Sep 2023 15:32:16 +0200
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qiapr-007T47-Np; Tue, 19 Sep 2023 15:32:15 +0200
+	id 1qiapr-007T43-Hv; Tue, 19 Sep 2023 15:32:15 +0200
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qiapr-0030ey-Eh; Tue, 19 Sep 2023 15:32:15 +0200
+	id 1qiapr-0030eu-8Q; Tue, 19 Sep 2023 15:32:15 +0200
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 To: Vinod Koul <vkoul@kernel.org>
 Cc: Sean Wang <sean.wang@mediatek.com>,
@@ -49,15 +49,15 @@ Cc: Sean Wang <sean.wang@mediatek.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@pengutronix.de
-Subject: [PATCH 23/59] dma: mediatek: mtk-hsdma: Convert to platform remove callback returning void
-Date: Tue, 19 Sep 2023 15:31:31 +0200
-Message-Id: <20230919133207.1400430-24-u.kleine-koenig@pengutronix.de>
+Subject: [PATCH 22/59] dma: mediatek: mtk-cqdma: Convert to platform remove callback returning void
+Date: Tue, 19 Sep 2023 15:31:30 +0200
+Message-Id: <20230919133207.1400430-23-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230919133207.1400430-1-u.kleine-koenig@pengutronix.de>
 References: <20230919133207.1400430-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1813; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=IJ1lQBioULCY9DIp65+ezFk+Xj3QQq4U4gQ/TbmHhG0=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlCaHIFkHM3tFAVudlDyBAD/HTot2UmAFvMKJAZ W4j2F8u8ViJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZQmhyAAKCRCPgPtYfRL+ Tod4CACLWe7DruMnd2TxKN6OnitRd/oivVvOi0J6GYqGQDBRgLPjatYtSZhA9rP2PbB+JH5M9mz 32yGXAt6fzOZuVkGD0cRujbiIuJH6NcAIOE0GnqeQxCxFsbZQL6rSGZqFdiAUO4Nkt4gSwuOn5X VsthkIIy27ek0ymdwOmH20K8ZFjCAjZ2yX33AWfgdpr1NTiyWBVcXBoN4mr8odkOiJUKVlb9nb6 ah+2OzC/tnkMHKJkSOQIjORCZLHTpL6p5+UJGoOBDOnNQ3in/qSRZXSANXbVHQDhOouWyRzko1O 9HnbzdgKeV2EG462hSjwxWifT5PkbeUguDdoVeqSwYcEIE11
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1816; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=YJbeovTY/lshOQ9H/y+Krl2XAltInqDgPcX2R8AjpCQ=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlCaHH9ujjB5HmrSGUbvrIzAR4yuMWtHJ9HDkOm CQ78TXL1OiJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZQmhxwAKCRCPgPtYfRL+ TvIlCACfKCVspXcqAoqSCz8HES+XLDWJAvS5U3mb49tYIQ7MAR8BjUH1ZFRM/+rRHno4UDtzU6i 6CW3aKThZ/2sQmsX78pxUaKLctRU+Dg0jKx0N7g3d42wFRdfUOogI3l4YxEz2h7Q5BGTuuQ3yIA HpLed1bOlCcQ3+HARE6KBlKTzNymiohy0CJ4wF+lrftR7MIz0VOF3Kxe12WyLI2GJcEwdpDlRuH skrWojmXT33Hp3aEvZ2jUgFP02BzU5WqwPpucgXkfTZ8Th653DBdaeRux6Zx+YTyG4GOJpQB8mt PRS0ATmaUxUQGhiahT/qCa3BDuu0k83Bs56uHQaaVF9ptEj4
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -65,8 +65,8 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_063225_407392_E5801343 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20230919_063227_892060_56C835CB 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,37 +95,37 @@ callback to the void returning variant.
 
 Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 ---
- drivers/dma/mediatek/mtk-hsdma.c | 6 ++----
+ drivers/dma/mediatek/mtk-cqdma.c | 6 ++----
  1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
-index 64120767d983..36ff11e909ea 100644
---- a/drivers/dma/mediatek/mtk-hsdma.c
-+++ b/drivers/dma/mediatek/mtk-hsdma.c
-@@ -1009,7 +1009,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
+index 324b7387b1b9..529100c5b9f5 100644
+--- a/drivers/dma/mediatek/mtk-cqdma.c
++++ b/drivers/dma/mediatek/mtk-cqdma.c
+@@ -885,7 +885,7 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
  	return err;
  }
  
--static int mtk_hsdma_remove(struct platform_device *pdev)
-+static void mtk_hsdma_remove(struct platform_device *pdev)
+-static int mtk_cqdma_remove(struct platform_device *pdev)
++static void mtk_cqdma_remove(struct platform_device *pdev)
  {
- 	struct mtk_hsdma_device *hsdma = platform_get_drvdata(pdev);
- 	struct mtk_hsdma_vchan *vc;
-@@ -1034,13 +1034,11 @@ static int mtk_hsdma_remove(struct platform_device *pdev)
+ 	struct mtk_cqdma_device *cqdma = platform_get_drvdata(pdev);
+ 	struct mtk_cqdma_vchan *vc;
+@@ -918,13 +918,11 @@ static int mtk_cqdma_remove(struct platform_device *pdev)
  
- 	dma_async_device_unregister(&hsdma->ddev);
+ 	dma_async_device_unregister(&cqdma->ddev);
  	of_dma_controller_free(pdev->dev.of_node);
 -
 -	return 0;
  }
  
- static struct platform_driver mtk_hsdma_driver = {
- 	.probe		= mtk_hsdma_probe,
--	.remove		= mtk_hsdma_remove,
-+	.remove_new	= mtk_hsdma_remove,
+ static struct platform_driver mtk_cqdma_driver = {
+ 	.probe = mtk_cqdma_probe,
+-	.remove = mtk_cqdma_remove,
++	.remove_new = mtk_cqdma_remove,
  	.driver = {
- 		.name		= KBUILD_MODNAME,
- 		.of_match_table	= mtk_hsdma_match,
+ 		.name           = KBUILD_MODNAME,
+ 		.of_match_table = mtk_cqdma_match,
 -- 
 2.40.1
 
