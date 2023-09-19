@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6581ECD5BBD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 13:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 428C2CD5BC8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 13:42:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t8ZrKzcwuWjcrybdscpBGFZ6TYnSnCFlYWiR3Zt72+I=; b=4xxoS/R/jqeA78FXXJ3yPIdfqq
-	nWsaM2rFlK2MI5qGXypB/fxXL63Dg0TP3MjFtLJBCDOtbzJX7ENrVLXgmgjvtEEOUCSrOCvOTJfhC
-	ld10cEBza0+wQvo8xL0If4V4MIwcQhTL2yhpbfXBM0RmzSRXxpKUZiCOuyZmyhe5QZHh2Y21blOam
-	sk/lVtXTxp9myG5G366v7FtuSniCUt2PwLEOIcIiKn0jsDSMOBaf/iBbPOSoXgoJxGYxl9fzW9nr/
-	QGjeCxDbBPYrtuBPUafw8fGXyvu4PcoOcWRVJ0aGPPmomxgJDvwPiiuDuOikQi34ZFzApQbk9GNv+
-	nDlcvOeg==;
+	bh=j2kEwsY0+Vzfn3VUWtkJAbzSF4wIILlsd1ibkT+QvMU=; b=uNDyNkr7IlI/gmNpFQwo0yXsak
+	DjS8iBbkrsELz656uumr8YOYFpXtxcNOjipaiVmP/6blwkkA2Cs5M0fs9eNEQLq6q/BWNkR41h1Ur
+	uEsT5HLfWahz6kMlBvlSe3AW//3qyIuJAhmYM9KRxnW5YOPQwghIMjoyFgbRglrHV+FtgUZv281uc
+	msyToDdqL6uAy04HP57VhvO7inHKzh8SC/GGPCQjBYPPZGgG1Ed/2ORuIxWKuaMyr+edNXpV+PNed
+	zMMgFf9tgCAqqjvLwBpNnFRjFU9Uw1iTjBOTSbSDVz6kumNjLGBw8wx0b5UoaX7DJmXR4tJxdC2tD
+	bSaQjSKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiayU-000YVW-1M;
-	Tue, 19 Sep 2023 13:41:10 +0000
+	id 1qiazR-000YiT-0G;
+	Tue, 19 Sep 2023 13:42:09 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiayM-000YSk-2B;
-	Tue, 19 Sep 2023 13:41:08 +0000
+	id 1qiazN-000YfP-1g;
+	Tue, 19 Sep 2023 13:42:06 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 27FA06153E;
-	Tue, 19 Sep 2023 13:41:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EA3CC433C9;
-	Tue, 19 Sep 2023 13:40:57 +0000 (UTC)
-Message-ID: <3652023b-f4ab-4316-ad11-b598ef1f4bd2@xs4all.nl>
-Date: Tue, 19 Sep 2023 15:40:56 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 043746153E;
+	Tue, 19 Sep 2023 13:42:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE1FFC433C7;
+	Tue, 19 Sep 2023 13:42:00 +0000 (UTC)
+Message-ID: <ebdb6cb9-f620-422f-9e69-ac6792b19237@xs4all.nl>
+Date: Tue, 19 Sep 2023 15:42:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 21/49] media: dvb: Stop direct calls to queue
+Subject: Re: [PATCH v7 22/49] media: i2c: Stop direct calls to queue
  num_buffers field
 Content-Language: en-US, nl
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
@@ -50,14 +50,14 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-22-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-23-benjamin.gaignard@collabora.com>
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230914133323.198857-22-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230914133323.198857-23-benjamin.gaignard@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_064102_756571_25A79F73 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20230919_064205_605413_6C5CB371 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,55 +77,28 @@ On 14/09/2023 15:32, Benjamin Gaignard wrote:
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  drivers/media/dvb-core/dvb_vb2.c          | 1 -
->  drivers/media/dvb-frontends/rtl2832_sdr.c | 5 +++--
->  2 files changed, 3 insertions(+), 3 deletions(-)
+>  drivers/media/i2c/video-i2c.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
-> index 3a966fdf814c..a731b755a0b9 100644
-> --- a/drivers/media/dvb-core/dvb_vb2.c
-> +++ b/drivers/media/dvb-core/dvb_vb2.c
-> @@ -177,7 +177,6 @@ int dvb_vb2_init(struct dvb_vb2_ctx *ctx, const char *name, int nonblocking)
->  	q->ops = &dvb_vb2_qops;
->  	q->mem_ops = &vb2_vmalloc_memops;
->  	q->buf_ops = &dvb_vb2_buf_ops;
-> -	q->num_buffers = 0;
->  	ret = vb2_core_queue_init(q);
->  	if (ret) {
->  		ctx->state = DVB_VB2_STATE_NONE;
-
-This touches the dvb-core, and should be in a separate patch.
-
-> diff --git a/drivers/media/dvb-frontends/rtl2832_sdr.c b/drivers/media/dvb-frontends/rtl2832_sdr.c
-> index 02c619e51641..023db6e793f8 100644
-> --- a/drivers/media/dvb-frontends/rtl2832_sdr.c
-> +++ b/drivers/media/dvb-frontends/rtl2832_sdr.c
-> @@ -439,12 +439,13 @@ static int rtl2832_sdr_queue_setup(struct vb2_queue *vq,
->  {
->  	struct rtl2832_sdr_dev *dev = vb2_get_drv_priv(vq);
->  	struct platform_device *pdev = dev->pdev;
-> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+> diff --git a/drivers/media/i2c/video-i2c.c b/drivers/media/i2c/video-i2c.c
+> index 537ebd9fa8d7..60d3e2f35afe 100644
+> --- a/drivers/media/i2c/video-i2c.c
+> +++ b/drivers/media/i2c/video-i2c.c
+> @@ -406,7 +406,7 @@ static int queue_setup(struct vb2_queue *vq,
+>  	struct video_i2c_data *data = vb2_get_drv_priv(vq);
+>  	unsigned int size = data->chip->buffer_size;
 >  
->  	dev_dbg(&pdev->dev, "nbuffers=%d\n", *nbuffers);
+> -	if (vq->num_buffers + *nbuffers < 2)
+> +	if (vb2_get_num_buffers(vq) + *nbuffers < 2)
+>  		*nbuffers = 2;
 >  
->  	/* Need at least 8 buffers */
-> -	if (vq->num_buffers + *nbuffers < 8)
-> -		*nbuffers = 8 - vq->num_buffers;
-> +	if (q_num_bufs + *nbuffers < 8)
-> +		*nbuffers = 8 - q_num_bufs;
->  	*nplanes = 1;
->  	sizes[0] = PAGE_ALIGN(dev->buffersize);
->  	dev_dbg(&pdev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
+>  	if (*nplanes)
 
-This is really a generic issue with most of these patches:
+This driver sets min_buffers_needed to 1, then checks for 2 here.
 
-queue_setup checks for a minimum number of buffers, but that should instead
-be configured through the q->min_buffers_needed field.
+Drop the check and instead set min_buffers_needed to 2.
 
-A lot of older drivers were written before that field was added.
-
-This is a good opportunity to just drop this check from queue_setup
-and instead just set q->min_buffers_needed to 8.
+Update the commit log accordingly.
 
 Regards,
 
