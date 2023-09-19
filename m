@@ -4,138 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EAD1CD5BC0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 13:33:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABC88CD5BC5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 13:36:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=U7KC/DPL2sInrzk2B23AxHRT+qT82GVj5NLfSD6Iss8=; b=pXrGeLJj13AkxxQh1tvdIuCVR8
-	p3l5VoaQGv13jdk1ET2uvqa8JtwfpcbknRmTslxp7QXqhxjY50mBcMg0oYvDGXC0cAT5Vy1/mvVb7
-	6/ii+/Gu8bGEK+z2r8T/hyyvAZ0fzOmqu2qL5QZQqYSUXK8unF6IK1x+XfnR3a1HKPEEMn5wMoIiL
-	HAXqQpO9F27RBvNRGHJqiDTeyZqzcolh1JOttcXo0abAy36rGOye+jeSKT2MMfPPqLOcZ8ETKlo8T
-	Fjg8B4bym7vl2ZURE2Ei32I3oL50dK8fruSzxdZM0AYms1LW9edgx/y8YEWc+J/o9NTMUqOrLEoUQ
-	ChaE6y6w==;
+	Content-Type:Subject:Cc:To:From:Date:References:In-Reply-To:Message-Id:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G3Kkrzt0AGrrY/tjL0EyntUuIBb8mCCGj+mtTnmx+Q8=; b=qMaLgSVIkRtk/fVAXl/CVH7uVN
+	xhJrv2PBUGo2gQfjthpz3eO0VlgX9cNwcZdCo8GTUZkDtHscUAH57/MIi51QTDdwaEpdUibpuwfai
+	occKXa0jJr+NOiZoJYSpml1ZmQGtkrui1eDGBvK0WCyn4xUDbNI3uTvClPIEopbougrtI6xIPOuT5
+	W67qimSIUpIHo8dodsgfnRH9KyFqokaQovWK6eQ/dDr9DtfFXwuHAKR/k53gidYrJsys3xArD2jRT
+	ZKdMJtb5hu0mBrtGE2OO2qsQU1RAgscHN0Gh0MKasJXuhu/ps2kjbtBQ7da3QJI8Mb8dyoVqDq+DM
+	LgL9PBug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiaqn-000X36-2H;
-	Tue, 19 Sep 2023 13:33:13 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qiauG-000Xta-1z;
+	Tue, 19 Sep 2023 13:36:48 +0000
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiaqW-000Wme-21
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Sep 2023 13:33:02 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qiapy-0004ag-Bz; Tue, 19 Sep 2023 15:32:22 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qiapm-007T2h-H7; Tue, 19 Sep 2023 15:32:10 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qiapm-0030dV-1Z; Tue, 19 Sep 2023 15:32:10 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Olivier Dautricourt <olivierdautricourt@gmail.com>,
-	Stefan Roese <sr@denx.de>,
-	dmaengine@vger.kernel.org,
-	kernel@pengutronix.de,
-	Hector Martin <marcan@marcan.st>,
-	Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org,
-	Rob Herring <robh@kernel.org>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Paul Cercueil <paul@crapouillou.net>,
-	linux-mips@vger.kernel.org,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Li Yang <leoyang.li@nxp.com>,
-	Zhang Wei <zw@zh-kernel.org>,
-	linuxppc-dev@lists.ozlabs.org,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	=?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	linux-actions@lists.infradead.org,
-	ye xingchen <ye.xingchen@zte.com.cn>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org,
-	Sinan Kaya <okaya@kernel.org>,
-	Green Wan <green.wan@sifive.com>,
-	Kees Cook <keescook@chromium.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Pavel Machek <pavel@denx.de>,
-	Hien Huynh <hien.huynh.px@renesas.com>,
-	Yangtao Li <frank.li@vivo.com>,
-	Peter Ujfalusi <peter.ujfalusi@gmail.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Samuel Holland <samuel@sholland.org>,
-	linux-sunxi@lists.linux.dev,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Jon Hunter <jonathanh@nvidia.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	linux-tegra@vger.kernel.org,
-	Lizhi Hou <lizhi.hou@amd.com>,
-	Brian Xu <brian.xu@amd.com>,
-	Raj Kumar Rampelli <raj.kumar.rampelli@amd.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Peter Korsgaard <peter@korsgaard.com>,
-	Liu Shixin <liushixin2@huawei.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Swati Agarwal <swati.agarwal@amd.com>
-Subject: [PATCH 00/59] dma: Convert to platform remove callback returning void
-Date: Tue, 19 Sep 2023 15:31:08 +0200
-Message-Id: <20230919133207.1400430-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.40.1
+	id 1qiauB-000Xr4-1T;
+	Tue, 19 Sep 2023 13:36:44 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.nyi.internal (Postfix) with ESMTP id 0A3D15C00A5;
+	Tue, 19 Sep 2023 09:36:34 -0400 (EDT)
+Received: from imap47 ([10.202.2.97])
+  by compute5.internal (MEProxy); Tue, 19 Sep 2023 09:36:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=svenpeter.dev;
+	 h=cc:cc:content-transfer-encoding:content-type:content-type
+	:date:date:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to;
+	 s=fm2; t=1695130594; x=1695216994; bh=G3Kkrzt0AGrrY/tjL0EyntUuI
+	Bb8mCCGj+mtTnmx+Q8=; b=UnODe/CFFm/fKyGaSWbPPfJGyccMgh1Fl4ql7J8B2
+	9jTTCbW7SBL9mmZVXktU9NHHOKE59vNmIt0/3PhYLyfB2ct9PpB2TtdW2GrTNk0N
+	p54KxQZhj60LKixvUfYSDQa4v3EbvN8Xt+LCAGQGVQ26IZGNwzMCGuce3Gghezi+
+	NDemRIJWikj5y3YJh93ZKtlx/6vlOGJnSRujwbi6RlScOarSzktohPxAwVVayDgE
+	wc1G63LzMMrc7gbgXgfjjE3fjf+QuIdkFrVuooWiII9CtYxJ0KGYCqtctLBBxlXB
+	a0MaGet4EcXXzcNEDj0hlAAITshodNu2ZUQSCM82e95IQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1695130594; x=1695216994; bh=G3Kkrzt0AGrrY/tjL0EyntUuIBb8mCCGj+m
+	tTnmx+Q8=; b=Ki98uDeNfz0jsUIT+QrBfvj6hR3UdAj0JGP0Kk0m3is6XGITVnc
+	DitfO8Z+GtWWohKTB22DWPAWKANFWZvwpnHoOdj68y6C4Z7ADQwwOPv0cl9n2b+x
+	ySjituYs4vc8wTr6657lSCf6nuZlPaevwRT+ZlC5EloYB2OJvQKrFkiBrlsDjKms
+	R/4JDdefME8w8YDPy5+wnxG2+Fya9/liDAL5qCMMKpXum+43+FmCAvT5DhfpQlfI
+	HT3jt59lJiwFge+hvLDqbVFgQ4bt7cNR/bPeevGW7CpYG9z9TksRHzzWy5ZpkhSc
+	+qvxWapAs7q7hQNor2DKBFbtWnh42FwH2mg==
+X-ME-Sender: <xms:4KMJZbW9LbqWPcHkGh_DlPuxCBkGLtv3JnsYlVzXjKzSIeeti7RIhg>
+    <xme:4KMJZTmAvH4L7z_nGaP5KdfIvqOZiks__CHr-LlmDmPx7zd2plYewMvSEyaWyUHFk
+    jKbOhCbS2QMQUW6WgU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrudekuddgfeeiucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdfu
+    vhgvnhcurfgvthgvrhdfuceoshhvvghnsehsvhgvnhhpvghtvghrrdguvghvqeenucggtf
+    frrghtthgvrhhnpeevhedthffgffelhedujefgueduudeutdefleevvdetudelhfeihfdv
+    ffelteeuudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+    hmpehsvhgvnhesshhvvghnphgvthgvrhdruggvvh
+X-ME-Proxy: <xmx:4KMJZXYmYuvL3nH0_SgD_kNdsC7XHLClfVBAmruidR-V60B6y3P-MQ>
+    <xmx:4KMJZWXQA3WzRBb5zCu-QYvcA4iZm-q-O5n5rA4kxuHe43SgaGHuSg>
+    <xmx:4KMJZVk9Oi99N4mk7qm3lIUI4afyU90X7PI_XuVzNp7f82_pACbMKw>
+    <xmx:4qMJZdNsFBGmk6guzMsje_BoEdpEh-d6HrZzup8N865hs4SPZgsPDA>
+Feedback-ID: i51094778:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 0378AA60077; Tue, 19 Sep 2023 09:36:31 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-761-gece9e40c48-fm-20230913.001-gece9e40c
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=9667; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=tGUgNdNJQ695fgG9hIgTJQYL5sxpmWlzE5DMR2kZNlc=; b=owGbwMvMwMXY3/A7olbonx/jabUkhlTOhWtLjCu3xIpJ1tk3pezRVeg6rNEtxCXsJlBVr3bg4 JsVOpWdjMYsDIxcDLJiiiz2jWsyrarkIjvX/rsMM4iVCWQKAxenAEzkswoHw8LXkzrq3WIZnyZn aDe1hsff5brekVkqVSd8df29f+t2cdtpMkbG78qb8uKDwde10aIPVgm0X7ny/lVz+smb71SUb7J xyvxVulO8zvUwd4/x0Whm+cTGTLOCeV3JkRcNr8wwuZreMUVY8kHD2pPn117dY5Fto654or3K8f sqi8W2N/1L155KfcOtv2n+FvO/qydtUTc/oswgXVFsrClsxGPCcDjMYGpegdZvrrg1VTKTRfksL u0qrGsVeHsgupv1eFFxzMaFFz5+t++K27owNfJt5Dutw60Srt0Mcr+Fl+aebbn+kMud5zL/5YB7 7xJ3/1q8wHTpjvwssxsKusdMtT28XU4UHvVZPSfY58hHAA==
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Message-Id: <aabaa49f-8988-42c0-bf8e-2266005e2155@app.fastmail.com>
+In-Reply-To: <20230918131103.24119-7-ilpo.jarvinen@linux.intel.com>
+References: <20230918131103.24119-1-ilpo.jarvinen@linux.intel.com>
+ <20230918131103.24119-7-ilpo.jarvinen@linux.intel.com>
+Date: Tue, 19 Sep 2023 15:36:10 +0200
+From: "Sven Peter" <sven@svenpeter.dev>
+To: =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+ linux-pci@vger.kernel.org, "Bjorn Helgaas" <helgaas@kernel.org>,
+ "Lorenzo Pieralisi" <lorenzo.pieralisi@arm.com>,
+ "Rob Herring" <robh@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
+ "Lukas Wunner" <lukas@wunner.de>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ "Heiner Kallweit" <hkallweit1@gmail.com>,
+ "Emmanuel Grumbach" <emmanuel.grumbach@intel.com>,
+ linux-kernel@vger.kernel.org, "Hector Martin" <marcan@marcan.st>,
+ "Alyssa Rosenzweig" <alyssa@rosenzweig.io>,
+ "Marcel Holtmann" <marcel@holtmann.org>,
+ "Johan Hedberg" <johan.hedberg@gmail.com>,
+ "Luiz Augusto von Dentz" <luiz.dentz@gmail.com>,
+ "Bjorn Helgaas" <bhelgaas@google.com>, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org
+Cc: ath10k@lists.infradead.org, ath11k@lists.infradead.org,
+ ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
+ linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v2 06/13] Bluetooth: hci_bcm4377: Convert aspm disable to quirk
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_063256_851227_A1B192AF 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20230919_063643_577320_1211611E 
+X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,183 +122,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Hi,
 
-this series convert nearly all platform drivers below drivers/dma to use
-.remove_new(). The motivation is to get rid of an integer return code
-that is (mostly) ignored by the platform driver core and error prone on
-the driver side.
+On Mon, Sep 18, 2023, at 15:10, Ilpo J=C3=A4rvinen wrote:
+> pci_disable_link_state() was made reliable regardless of ASPM CONFIG
+> and OS being disallowed to change ASPM states to allow drivers to rely
+> on pci_disable_link_state() working.
+>
+> Remove driver working around unreliable pci_disable_link_state() from
+> hci_bcm4377 driver and add a PCI quirk to disable ASPM.
+>
+> Signed-off-by: Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com>
+> ---
 
-See commit 5c5a7680e67b ("platform: Provide a remove callback that
-returns no value") for an extended explanation and the eventual goal.
-
-There are 4 drivers I didn't convert in this series:
-
-	drivers/dma/milbeaut-hdmac.c
-	drivers/dma/milbeaut-xdmac.c
-	drivers/dma/uniphier-mdmac.c
-	drivers/dma/uniphier-xdmac.c
-
-These all might return early in .remove() if dmaengine_terminate_sync()
-fails. I only looked deeper into the first one, and this shows exactly
-the error that is easy to make with .remove() returning an int: When
-returning early from .remove(), some cleanup (here:
-dma_async_device_unregister()) is skipped. So the dma device stays
-known, but the device is still unregistered and the devm allocated stuff
-(here e.g. *mdev) is freed. So it can probably easily happen, that
-something tries to use the dma device and this will likely result in an
-oops.
-
-I don't know enough about the dma framework to address this properly,
-maybe someone else knows what to do?
-
-There are no interdependencies between the patches. As there are still
-quite a few drivers to convert, I'm happy about every patch that makes
-it in. So even if there is a merge conflict with one patch until you
-apply or I picked a wrong subject prefix, please apply the remainder of
-this series anyhow.
-
-Best regards
-Uwe
+Acked-by: Sven Peter <sven@svenpeter.dev>
 
 
-Uwe Kleine-König (59):
-  dma: altera-msgdma: Convert to platform remove callback returning void
-  dma: apple-admac: Convert to platform remove callback returning void
-  dma: at_hdmac: Convert to platform remove callback returning void
-  dma: at_xdmac: Convert to platform remove callback returning void
-  dma: bcm-sba-raid: Convert to platform remove callback returning void
-  dma: bcm2835-dma: Convert to platform remove callback returning void
-  dma: bestcomm: bestcomm: Convert to platform remove callback returning
-    void
-  dma: dma-axi-dmac: Convert to platform remove callback returning void
-  dma: dma-jz4780: Convert to platform remove callback returning void
-  dma: dw-axi-dmac: dw-axi-dmac-platform: Convert to platform remove
-    callback returning void
-  dma: dw: platform: Convert to platform remove callback returning void
-  dma: fsl-edma-main: Convert to platform remove callback returning void
-  dma: fsl-qdma: Convert to platform remove callback returning void
-  dma: fsl_raid: Convert to platform remove callback returning void
-  dma: fsldma: Convert to platform remove callback returning void
-  dma: idma64: Convert to platform remove callback returning void
-  dma: img-mdc-dma: Convert to platform remove callback returning void
-  dma: imx-dma: Convert to platform remove callback returning void
-  dma: imx-sdma: Convert to platform remove callback returning void
-  dma: k3dma: Convert to platform remove callback returning void
-  dma: mcf-edma-main: Convert to platform remove callback returning void
-  dma: mediatek: mtk-cqdma: Convert to platform remove callback
-    returning void
-  dma: mediatek: mtk-hsdma: Convert to platform remove callback
-    returning void
-  dma: mediatek: mtk-uart-apdma: Convert to platform remove callback
-    returning void
-  dma: mmp_pdma: Convert to platform remove callback returning void
-  dma: mmp_tdma: Convert to platform remove callback returning void
-  dma: moxart-dma: Convert to platform remove callback returning void
-  dma: mpc512x_dma: Convert to platform remove callback returning void
-  dma: mv_xor_v2: Convert to platform remove callback returning void
-  dma: nbpfaxi: Convert to platform remove callback returning void
-  dma: owl-dma: Convert to platform remove callback returning void
-  dma: ppc4xx: adma: Convert to platform remove callback returning void
-  dma: pxa_dma: Convert to platform remove callback returning void
-  dma: qcom: bam_dma: Convert to platform remove callback returning void
-  dma: qcom: hidma: Convert to platform remove callback returning void
-  dma: qcom: qcom_adm: Convert to platform remove callback returning
-    void
-  dma: sa11x0-dma: Convert to platform remove callback returning void
-  dma: sf-pdma: sf-pdma: Convert to platform remove callback returning
-    void
-  dma: sh: rcar-dmac: Convert to platform remove callback returning void
-  dma: sh: rz-dmac: Convert to platform remove callback returning void
-  dma: sh: shdmac: Convert to platform remove callback returning void
-  dma: sh: usb-dmac: Convert to platform remove callback returning void
-  dma: sprd-dma: Convert to platform remove callback returning void
-  dma: st_fdma: Convert to platform remove callback returning void
-  dma: sun4i-dma: Convert to platform remove callback returning void
-  dma: sun6i-dma: Convert to platform remove callback returning void
-  dma: tegra186-gpc-dma: Convert to platform remove callback returning
-    void
-  dma: tegra20-apb-dma: Convert to platform remove callback returning
-    void
-  dma: tegra210-adma: Convert to platform remove callback returning void
-  dma: ti: cppi41: Convert to platform remove callback returning void
-  dma: ti: edma: Convert to platform remove callback returning void
-  dma: ti: omap-dma: Convert to platform remove callback returning void
-  dma: timb_dma: Convert to platform remove callback returning void
-  dma: txx9dmac: Convert to platform remove callback returning void
-  dma: xgene-dma: Convert to platform remove callback returning void
-  dma: xilinx: xdma: Convert to platform remove callback returning void
-  dma: xilinx: xilinx_dma: Convert to platform remove callback returning
-    void
-  dma: xilinx: xilinx_dpdma: Convert to platform remove callback
-    returning void
-  dma: xilinx: zynqmp_dma: Convert to platform remove callback returning
-    void
+Thanks,
 
- drivers/dma/altera-msgdma.c                    |  6 ++----
- drivers/dma/apple-admac.c                      |  6 ++----
- drivers/dma/at_hdmac.c                         |  6 ++----
- drivers/dma/at_xdmac.c                         |  6 ++----
- drivers/dma/bcm-sba-raid.c                     |  6 ++----
- drivers/dma/bcm2835-dma.c                      |  6 ++----
- drivers/dma/bestcomm/bestcomm.c                |  6 ++----
- drivers/dma/dma-axi-dmac.c                     |  6 ++----
- drivers/dma/dma-jz4780.c                       |  6 ++----
- drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c |  6 ++----
- drivers/dma/dw/platform.c                      |  6 ++----
- drivers/dma/fsl-edma-main.c                    |  6 ++----
- drivers/dma/fsl-qdma.c                         |  5 ++---
- drivers/dma/fsl_raid.c                         |  6 ++----
- drivers/dma/fsldma.c                           |  6 ++----
- drivers/dma/idma64.c                           |  6 ++----
- drivers/dma/img-mdc-dma.c                      |  6 ++----
- drivers/dma/imx-dma.c                          |  6 ++----
- drivers/dma/imx-sdma.c                         |  5 ++---
- drivers/dma/k3dma.c                            |  5 ++---
- drivers/dma/mcf-edma-main.c                    |  6 ++----
- drivers/dma/mediatek/mtk-cqdma.c               |  6 ++----
- drivers/dma/mediatek/mtk-hsdma.c               |  6 ++----
- drivers/dma/mediatek/mtk-uart-apdma.c          |  6 ++----
- drivers/dma/mmp_pdma.c                         |  5 ++---
- drivers/dma/mmp_tdma.c                         |  6 ++----
- drivers/dma/moxart-dma.c                       |  6 ++----
- drivers/dma/mpc512x_dma.c                      |  6 ++----
- drivers/dma/mv_xor_v2.c                        |  6 ++----
- drivers/dma/nbpfaxi.c                          |  6 ++----
- drivers/dma/owl-dma.c                          |  6 ++----
- drivers/dma/ppc4xx/adma.c                      |  5 ++---
- drivers/dma/pxa_dma.c                          |  5 ++---
- drivers/dma/qcom/bam_dma.c                     |  6 ++----
- drivers/dma/qcom/hidma.c                       |  6 ++----
- drivers/dma/qcom/qcom_adm.c                    |  6 ++----
- drivers/dma/sa11x0-dma.c                       |  6 ++----
- drivers/dma/sf-pdma/sf-pdma.c                  |  6 ++----
- drivers/dma/sh/rcar-dmac.c                     |  6 ++----
- drivers/dma/sh/rz-dmac.c                       |  6 ++----
- drivers/dma/sh/shdmac.c                        |  6 ++----
- drivers/dma/sh/usb-dmac.c                      |  6 ++----
- drivers/dma/sprd-dma.c                         |  5 ++---
- drivers/dma/st_fdma.c                          |  6 ++----
- drivers/dma/sun4i-dma.c                        |  6 ++----
- drivers/dma/sun6i-dma.c                        |  6 ++----
- drivers/dma/tegra186-gpc-dma.c                 |  6 ++----
- drivers/dma/tegra20-apb-dma.c                  |  6 ++----
- drivers/dma/tegra210-adma.c                    |  6 ++----
- drivers/dma/ti/cppi41.c                        |  5 ++---
- drivers/dma/ti/edma.c                          |  6 ++----
- drivers/dma/ti/omap-dma.c                      |  6 ++----
- drivers/dma/timb_dma.c                         |  5 ++---
- drivers/dma/txx9dmac.c                         | 10 ++++------
- drivers/dma/xgene-dma.c                        |  6 ++----
- drivers/dma/xilinx/xdma.c                      |  6 ++----
- drivers/dma/xilinx/xilinx_dma.c                |  6 ++----
- drivers/dma/xilinx/xilinx_dpdma.c              |  6 ++----
- drivers/dma/xilinx/zynqmp_dma.c                |  6 ++----
- 59 files changed, 120 insertions(+), 229 deletions(-)
-
-
-base-commit: 29e400e3ea486bf942b214769fc9778098114113
--- 
-2.40.1
-
+Sven
 
