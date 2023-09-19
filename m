@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97224CD342E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 03:24:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88D91CD3439
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 05:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=39kGL5NkWGaC3OXMPROlYLU4jvzAqazPIktAWHAt8vA=; b=qsvuBMvgIXlSSxF3uhDHJK+Ldm
-	o+B8/GkkOpnb9mBG49W/H9avIlDymY9kMJ/zUAHAX6hFjxgYbtkFkJEObThueMSUR6x7i4G2cELIQ
-	sOhzCeA7ckjqPpuefA51kZbliKoA7ODFvTQMF9nxMtV9wV/v54xEwlqtg9+HAUTkOqZHR+Dh9H55o
-	SW7Hidw/NGPGAnBrrodS4oDn/ztgTWeeFDuQ1/I/go1VORFn+PRm3oFNrURCirARxx3+9nZV+pmA6
-	asjyj9KCbRu86RKx0b+KOJzi9M39SB5rWgyJi+k0FiugGeC6Uc9vGjBQECZPih8MEYSUMFs3fzBoP
-	haiibw5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=laTm7dnxWOCcW2RIknshlwm/kbQUB6RtmbdVs9LREqk=; b=SVnUPPTQtPgMmZzoZIyy+2QG2O
+	39uYY+mf8ju9GWsSBzkC4oRHgXoo6C5XFuhjF5mxSc0HRN7aJlc3dpjq5GlUzCiooiw5VQWxtIBJE
+	clJaVSTPCwI4VoTeqG1n30V8UAvIoLo+aTpMp8qwbboHfgGG8EFmkwjClXBpXetTmwe9/BNOvSR4v
+	XOddH2PMZSsbjAW9BVuGrCwu42DU101u6tCv2kf9JFva0h5SgXAz56ny89IWJTk86bdckkM17AnZd
+	PcT/WLohz4msGIWjkTfa9KLe4ujpUK4F7H9GmHY/7+3i6WtxJEmZfJ0CuEdGMr+EZgY0BjLxHkj1a
+	5/qlQgkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiRLm-00Gnkt-2D;
-	Tue, 19 Sep 2023 03:24:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qiStM-00H0Yr-31;
+	Tue, 19 Sep 2023 05:03:20 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiRLi-00Gnjv-2l;
-	Tue, 19 Sep 2023 03:24:31 +0000
-X-UUID: 083d4d44569c11ee86758d4a7c00f3a0-20230918
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=39kGL5NkWGaC3OXMPROlYLU4jvzAqazPIktAWHAt8vA=;
-	b=s4hH9DTEKP2M/7vBQ8/tCFR4JZLQ//mTpl/D0el8h1R6OAR74JYnnt50Q7svJhJgXY3Nmz+nPWwZVy66oBnYiHL2tza3s+w9Jijw9Ap7Ae/HVFqAm8PUU2JsnFfJIvteJcnKD3ZL5xoVb/KhDt3OHYe1VgmukbNNZm6rbOMkDK4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:729fb388-1d80-45b1-b7a9-cb5459c8795b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:82a2febe-14cc-44ca-b657-2d2783296e72,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 083d4d44569c11ee86758d4a7c00f3a0-20230918
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 174580184; Mon, 18 Sep 2023 20:24:24 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 19 Sep 2023 11:03:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 19 Sep 2023 11:03:47 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>
-CC: Conor Dooley <conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <dri-devel@lists.freedesktop.org>,
-	<linux-media@vger.kernel.org>, <linaro-mm-sig@lists.linaro.org>, Jason-ch
- Chen <jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
-	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
-	<shawn.sung@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 02/10] drm/mediatek/uapi: Add DRM_MTK_GEM_CREATED_ENCRYPTTED flag
-Date: Tue, 19 Sep 2023 11:03:37 +0800
-Message-ID: <20230919030345.8629-3-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230919030345.8629-1-jason-jh.lin@mediatek.com>
-References: <20230919030345.8629-1-jason-jh.lin@mediatek.com>
+	id 1qiStG-00H0Vu-2M
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 Sep 2023 05:03:18 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-68fb79ef55eso4765948b3a.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Sep 2023 22:03:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1695099791; x=1695704591; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=laTm7dnxWOCcW2RIknshlwm/kbQUB6RtmbdVs9LREqk=;
+        b=Eii+j6EgmnSVn1Vf9XrcA6FN0eSdP1XNwuoWiFWLQeyrkXouBnKFKCvkhF+pkOQgeT
+         /c4EC5mN5N9bUmg1ML9Gad/KP6zQOVK39eczeteug+E+Ly+9y+EuIbJrAxd01sGAZo1F
+         2UcqhABBX/pTky1/EcVFmZqjiSOoPboRjfXqI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695099791; x=1695704591;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=laTm7dnxWOCcW2RIknshlwm/kbQUB6RtmbdVs9LREqk=;
+        b=dI1PWXBhWdlJUx+KY6BLc2vwp+B0AdMv5YEMw3pnAN3EuT4XMxtClF5ExYWWHUhojm
+         GINek6Tq4r2KgYAJDmeskeGVsXZUHJsC+zJMU8oF9EsZQbyaPs0Qm2InUywr1ExkY3lc
+         E+5akGy2exlTngTn8wmOv3Y/c7DbISqROcI9pDLHRVypTjIOoryYnEQW3ujqjSiTAasO
+         Bh3y7+bVMs/sTUjQUjpslA4U/29R7Na17yxW57ARRF3LN+cGkGEHxdOCGyhiH6HMY+IV
+         enx1kErAfCS0lU00SSIwUiuprFlv6f0R5szMv6Hya5G+pP+p9ho/M7d4ePdClFmSjL/K
+         57CA==
+X-Gm-Message-State: AOJu0Yzp2t0PyclL8ENgZAaUUEeROtEYU9n3qLTXWV44ivcN8BHwBi8N
+	qFt2l7v/diENrKGBUOkEfPxeVQ==
+X-Google-Smtp-Source: AGHT+IGycmQsNFwgoBQwKURop8RFXZn7kdUvjCHaXVun+krQq3OvwV8JGEXJPbCRePSXThTCs6siig==
+X-Received: by 2002:a05:6a20:5611:b0:14e:b4d5:782e with SMTP id ir17-20020a056a20561100b0014eb4d5782emr11869037pzc.29.1695099790851;
+        Mon, 18 Sep 2023 22:03:10 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:40a:900d:e731:5a43])
+        by smtp.gmail.com with ESMTPSA id z13-20020aa785cd000000b00686edf28c22sm313169pfn.87.2023.09.18.22.03.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Sep 2023 22:03:10 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	linux-remoteproc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Laura Nao <laura.nao@collabora.com>
+Subject: [PATCH] remoteproc: mediatek: Detect single/multi core SCP with rpmsg-name property
+Date: Tue, 19 Sep 2023 13:03:04 +0800
+Message-ID: <20230919050305.3817347-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.42.0.459.ge4e396fd5e-goog
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_202430_898167_0EA33239 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20230918_220315_195122_75ED37BB 
+X-CRM114-Status: GOOD (  17.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,27 +93,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add DRM_MTK_GEM_CREATED_ENCRYPTTED flag to allocate a secure buffer
-to support secure video path feature.
+In the just landed multi-core SCP work, detection of single/multi core
+SCP is done by checking the immediate child node of the SCP complex
+device node. In the original work this was done by matching the child
+node's name. However the name wasn't previously standardized. This
+resulted in breakage on MT8183 and MT8192 Chromebooks while the driver
+side changes were picked up and the device tree changes were not picked
+up.
 
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Instead, match against the "mediatek,rpmsg-name" property, which is
+required to be present in the rpmsg sub-node. This makes the
+aforementioned devices running old device trees working again.
+
+Reported-by: Laura Nao <laura.nao@collabora.com>
+Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- include/uapi/drm/mediatek_drm.h | 1 +
- 1 file changed, 1 insertion(+)
+The patch is based on next-20230918 with a whole bunch of local patches
+stacked on top. None of my local patches are related to remoteproc, so
+it should be fine.
 
-diff --git a/include/uapi/drm/mediatek_drm.h b/include/uapi/drm/mediatek_drm.h
-index c050de320a84..93f25e0c21d7 100644
---- a/include/uapi/drm/mediatek_drm.h
-+++ b/include/uapi/drm/mediatek_drm.h
-@@ -48,6 +48,7 @@ struct drm_mtk_gem_map_off {
+I tested on both MT8183 Juniper and MT8192 Hayato and on both systems
+the SCP successfully probed again.
+
+ drivers/remoteproc/mtk_scp.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index ea227b566c54..ca15d9f382a1 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -1149,13 +1149,23 @@ static int scp_is_single_core(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev_of_node(dev);
+ 	struct device_node *child;
++	bool has_rpmsg;
  
- #define DRM_MTK_GEM_CREATE		0x00
- #define DRM_MTK_GEM_MAP_OFFSET		0x01
-+#define DRM_MTK_GEM_CREATE_ENCRYPTED	0x02
+ 	child = of_get_next_available_child(np, NULL);
+ 	if (!child)
+ 		return dev_err_probe(dev, -ENODEV, "No child node\n");
  
- #define DRM_IOCTL_MTK_GEM_CREATE	DRM_IOWR(DRM_COMMAND_BASE + \
- 		DRM_MTK_GEM_CREATE, struct drm_mtk_gem_create)
++	/*
++	 * On single core SCP systems, the immediate child of the SCP device
++	 * is the rpmsg node; on multi core systems, there's an intermediate
++	 * level node, one describing each core. Instead of matching on the
++	 * node name, which was recently changed in the DT binding in a
++	 * backward incompatible way, match against the "mediatek,rpmsg-name"
++	 * property, which is required in all rpmsg sub-nodes.
++	 */
++	has_rpmsg = of_property_present(child, "mediatek,rpmsg-name");
+ 	of_node_put(child);
+-	return of_node_name_eq(child, "cros-ec-rpmsg");
++	return has_rpmsg;
+ }
+ 
+ static int scp_cluster_init(struct platform_device *pdev, struct mtk_scp_of_cluster *scp_cluster)
 -- 
-2.18.0
+2.42.0.459.ge4e396fd5e-goog
 
 
