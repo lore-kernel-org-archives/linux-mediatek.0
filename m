@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63463CD54B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 10:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCEB9CD54B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 10:55:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=irHCov/ubVvpuQi+m2cIjuNTYUBxmwqsGkazo+QJqqA=; b=bke91k2jIU0CueukNPAeTdSzgh
-	J1pJR6NJ/12qjrNQ7lH5mFZqKCl8PBOtHI6wm/B6atDYJjsNlUJEw6VLSCM9Ct/uBcd2XhmjCY0iX
-	ifo1M4I8WOpueooDtXBQwpt+SgNFziuHIGD7OMrIdyrHtrqOMGQ9MSPK5uMB4NuB8eWwwwhqZcu/B
-	deTEyaF/tjpIB1xJ345E5Myy61SHX3xNGLv3U5CxzJhH9C4EylaBipluiOG2saXVrmIicB1dtTPPK
-	U+lZFiSCMd1Vt8D1/24wQC+VL6hcNPHF+2nsmKQfe0coeM5v0Usr4tTisXplUohIdxWk+wS6OyZIy
-	e0MBb9Aw==;
+	bh=BtgTxe3jxv0HzL56Xd2GxsxMhmyeOCfzFJHlY6EiP9A=; b=EJcbCZioY2iEPq/NbEUK50yDiC
+	MApvjeYrE8cGHeiHqvrBRS3FO3RUUWyyColRkNEgWm0aygCclzGajo5JZb/DWYpjF3wSvesrhzdfD
+	h0Cq/kYDySlDsKGPYjRpysQqP5Lu8DUQvJvvOdCFCqSIs3F2oE/7SQk8519ibk3tXXaYhDg99bY3v
+	iuR9g73+d94bKlvV0b5FgUViJ0J6LoR1jgkM+3cN8zoffL8FKk9L5IWJo9xpaxtR2DTPSM5oHkmeI
+	3QXst1W2tojP7bSGR2EeBNoJf0AOSN3LqjeJYzlD/BRiRJleYnUpMqTLEWSUeJEMbr1SkSrBgLiDi
+	y94hnd5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYMw-0009VU-2B;
-	Tue, 19 Sep 2023 10:54:14 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qiYOE-000AST-2V;
+	Tue, 19 Sep 2023 10:55:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYMs-0009RK-24;
-	Tue, 19 Sep 2023 10:54:11 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1qiYOA-000AMd-1a;
+	Tue, 19 Sep 2023 10:55:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 40B8966071A9;
-	Tue, 19 Sep 2023 11:54:08 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695120849;
-	bh=YIL8CVeCu2phmjTNYbQbVDRE1/tG7w/T7zljvP0+8Uc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WBGWu/Ab+USWrsW0Z0Uhl+RO5yYIJvHCGPrih+x7pbvCqkRg8r1OfBvmX9xwJAh21
-	 4HnvcLBXESSY49rYXVpBZAM3+yKFi/+UytYdQAh1lcX56O1gaC8+VghudX9akkIEBl
-	 ++O1Yv7neVxSA7fS2HLIgL4TbofYMrBtt5eGmBk9FUgucvoUgZIsWgwLnHiQlXraQN
-	 JPRO1TJQfvU0HSowGaZPUjJ2z/YuFMXkldlIVOm9Dbu8KFf6IHZavvNPt1KT2vssWB
-	 8fuHSC2uShhJF67yNVYKBpV3y7KFMT0doAKk+qoFuChJtfNTgkrHbKlQt6/ApoQvk4
-	 Hf/FQTa1KdsAQ==
-Message-ID: <766b1ac5-f2c4-0e58-24ff-dafde8e5995b@collabora.com>
-Date: Tue, 19 Sep 2023 12:54:05 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9DB26615AD;
+	Tue, 19 Sep 2023 10:55:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87EE8C433C9;
+	Tue, 19 Sep 2023 10:55:22 +0000 (UTC)
+Message-ID: <91fbf033-f02b-4a06-8bf0-0bf5bfca26a0@xs4all.nl>
+Date: Tue, 19 Sep 2023 12:55:21 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH 10/10] arm64: dts: mt8195-cherry: Add secure mbox settings
- for vdosys
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Shawn Sung <shawn.sung@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230919030345.8629-1-jason-jh.lin@mediatek.com>
- <20230919030345.8629-11-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230919030345.8629-11-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 12/49] media: videobuf2: Be more flexible on the number
+ of queue stored buffers
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-13-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230914133323.198857-13-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_035410_814711_67E0AC65 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20230919_035530_612152_86C37AB4 
+X-CRM114-Status: GOOD (  34.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,43 +72,230 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/09/23 05:03, Jason-JH.Lin ha scritto:
-> Add a secure mailbox channel to support secure video path on
-> vdosys0 and vdosys1.
-> 
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> index 37a3e9de90ff..9b838b2cdb3e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -1147,6 +1147,16 @@
->   	status = "okay";
->   };
->   
-> +&vdosys0 {
-> +	mboxes = <&gce0 0 CMDQ_THR_PRIO_4>,
-> +		 <&gce0 8 CMDQ_THR_PRIO_4>; /* secure mbox */
-> +};
-> +
-> +&vdosys1 {
-> +	mboxes = <&gce0 1 CMDQ_THR_PRIO_4>,
-> +		 <&gce0 9 CMDQ_THR_PRIO_4>; /* secure mbox */
-> +};
-> +
+On 14/09/2023 15:32, Benjamin Gaignard wrote:
+> Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
+> how many buffers could be stored in a queue.
+> This request 'bufs' array to be allocated at queue init time and freed
 
-Is the secure mailbox number firmware dependant?
-Otherwise this could go in mt8195.dtsi.
+I think this is a typo:
+
+request -> requires
+
+> when releasing the queue.
+> By default VB2_MAX_FRAME remains the limit.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+> ---
+>  .../media/common/videobuf2/videobuf2-core.c   | 40 ++++++++++++++-----
+>  .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +-
+>  include/media/videobuf2-core.h                |  4 +-
+>  3 files changed, 35 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index afe76577acc1..ee4df7c68397 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -411,7 +411,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
+>   */
+>  static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
+>  {
+> -	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
+> +	if (index < q->max_allowed_buffers && !q->bufs[index]) {
+
+I'm not sure I like the name 'max_allowed_buffers'. How about 'max_num_buffers'?
+
+Also, as mentioned in a previous patch review, I don't think you should
+need this check at all in this function. It should assume that the index is
+valid, and any checks should happen (and probably already do) in the caller.
+
+>  		q->bufs[index] = vb;
+>  		vb->index = index;
+>  		vb->vb2_queue = q;
+> @@ -428,7 +428,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
+>   */
+>  static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+>  {
+> -	if (vb->index < VB2_MAX_FRAME) {
+> +	if (vb->index < q->max_allowed_buffers) {
+>  		q->bufs[vb->index] = NULL;
+>  		vb->vb2_queue = NULL;
+>  	}
+> @@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  	struct vb2_buffer *vb;
+>  	int ret;
+>  
+> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
+> +	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
+>  	num_buffers = min_t(unsigned int, num_buffers,
+> -			    VB2_MAX_FRAME - q->num_buffers);
+> +			    q->max_allowed_buffers - q->num_buffers);
+
+In this context the name 'max_num_buffers' makes more sense than
+'max_allowed_buffers', IMHO.
+
+>  
+>  	for (buffer = 0; buffer < num_buffers; ++buffer) {
+>  		/* Allocate vb2 buffer structures */
+> @@ -814,7 +814,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+>  	unsigned int i;
+> -	int ret;
+> +	int ret = 0;
+>  
+>  	if (q->streaming) {
+>  		dprintk(q, 1, "streaming active\n");
+> @@ -858,17 +858,23 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	/*
+>  	 * Make sure the requested values and current defaults are sane.
+>  	 */
+> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
+> +	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
+>  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
+
+Given the name 'max_num_buffers' it would make sense to rename 'min_buffers_needed'
+to 'min_num_buffers'. It's a bit of a painful change though, so let's leave this
+as-is.
+
+> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
+> +	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
+>  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
+>  	/*
+>  	 * Set this now to ensure that drivers see the correct q->memory value
+>  	 * in the queue_setup op.
+>  	 */
+>  	mutex_lock(&q->mmap_lock);
+> +	if (!q->bufs)
+> +		q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
+> +	if (!q->bufs)
+> +		ret = -ENOMEM;
+>  	q->memory = memory;
+>  	mutex_unlock(&q->mmap_lock);
+> +	if (ret)
+> +		return ret;
+>  	set_queue_coherency(q, non_coherent_mem);
+>  
+>  	/*
+> @@ -974,9 +980,9 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+>  	bool no_previous_buffers = !q->num_buffers;
+> -	int ret;
+> +	int ret = 0;
+>  
+> -	if (q->num_buffers == VB2_MAX_FRAME) {
+> +	if (q->num_buffers == q->max_allowed_buffers) {
+>  		dprintk(q, 1, "maximum number of buffers already allocated\n");
+>  		return -ENOBUFS;
+>  	}
+> @@ -993,7 +999,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		 */
+>  		mutex_lock(&q->mmap_lock);
+>  		q->memory = memory;
+> +		if (!q->bufs)
+> +			q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
+> +		if (!q->bufs)
+> +			ret = -ENOMEM;
+>  		mutex_unlock(&q->mmap_lock);
+> +		if (ret)
+> +			return ret;
+>  		q->waiting_for_buffers = !q->is_output;
+>  		set_queue_coherency(q, non_coherent_mem);
+>  	} else {
+> @@ -1005,7 +1017,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  			return -EINVAL;
+>  	}
+>  
+> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
+> +	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
+>  
+>  	if (requested_planes && requested_sizes) {
+>  		num_planes = requested_planes;
+> @@ -2515,6 +2527,12 @@ int vb2_core_queue_init(struct vb2_queue *q)
+>  
+>  	q->memory = VB2_MEMORY_UNKNOWN;
+>  
+> +	if (!q->max_allowed_buffers)
+> +		q->max_allowed_buffers = VB2_MAX_FRAME;
+> +
+> +	/* The maximum is limited by offset cookie encoding pattern */
+> +	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, BUFFER_INDEX_MASK + 1);
+
+I think I would prefer this to be added to the sanity checks at the start:
+
+	WARN_ON(q->max_allowed_buffers > BUFFER_INDEX_MASK + 1)) ||
+
+I think we should also this check:
+
+	if (WARN_ON(q->max_allowed_buffers < VB2_MAX_FRAME) ||
+	    WARN_ON(q->min_buffers_needed > q->max_allowed_buffers))
+		return -EINVAL;
+
+Note that there is a "WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);" in
+vb2_core_reqbufs. That's really the wrong place, that should be checked here.
+So drop that WARN_ON in vb2_core_reqbufs.
+
+> +
+>  	if (q->buf_struct_size == 0)
+>  		q->buf_struct_size = sizeof(struct vb2_buffer);
+>  
+> @@ -2539,6 +2557,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
+>  	__vb2_queue_cancel(q);
+>  	mutex_lock(&q->mmap_lock);
+>  	__vb2_queue_free(q, q->num_buffers);
+> +	kfree(q->bufs);
+> +	q->bufs = NULL;
+>  	mutex_unlock(&q->mmap_lock);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index f460cac560f6..87c2d5916960 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -1156,7 +1156,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
+>  
+>  	if (lock)
+>  		mutex_lock(lock);
+> -	if (file->private_data == vdev->queue->owner) {
+> +	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
+>  		vb2_queue_release(vdev->queue);
+>  		vdev->queue->owner = NULL;
+>  	}
+> @@ -1284,7 +1284,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
+>  	 */
+>  	get_device(&vdev->dev);
+>  	video_unregister_device(vdev);
+> -	if (vdev->queue && vdev->queue->owner) {
+> +	if (vdev->queue) {
+>  		struct mutex *lock = vdev->queue->lock ?
+>  			vdev->queue->lock : vdev->lock;
+>  
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index cd3ff1cd759d..97153c69583f 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
+>   * @dma_dir:	DMA mapping direction.
+>   * @bufs:	videobuf2 buffer structures
+>   * @num_buffers: number of allocated/used buffers
+> + * @max_allowed_buffers: upper limit of number of allocated/used buffers
+>   * @queued_list: list of buffers currently queued from userspace
+>   * @queued_count: number of buffers queued and ready for streaming.
+>   * @owned_by_drv_count: number of buffers owned by the driver
+> @@ -619,8 +620,9 @@ struct vb2_queue {
+>  	struct mutex			mmap_lock;
+>  	unsigned int			memory;
+>  	enum dma_data_direction		dma_dir;
+> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
+> +	struct vb2_buffer		**bufs;
+>  	unsigned int			num_buffers;
+> +	unsigned int			max_allowed_buffers;
+>  
+>  	struct list_head		queued_list;
+>  	unsigned int			queued_count;
 
 Regards,
-Angelo
 
->   &xhci0 {
->   	status = "okay";
->   
-
-
+	Hans
 
