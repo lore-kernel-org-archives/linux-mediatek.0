@@ -4,60 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCEB9CD54B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 10:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE887CD54B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 10:57:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BtgTxe3jxv0HzL56Xd2GxsxMhmyeOCfzFJHlY6EiP9A=; b=EJcbCZioY2iEPq/NbEUK50yDiC
-	MApvjeYrE8cGHeiHqvrBRS3FO3RUUWyyColRkNEgWm0aygCclzGajo5JZb/DWYpjF3wSvesrhzdfD
-	h0Cq/kYDySlDsKGPYjRpysQqP5Lu8DUQvJvvOdCFCqSIs3F2oE/7SQk8519ibk3tXXaYhDg99bY3v
-	iuR9g73+d94bKlvV0b5FgUViJ0J6LoR1jgkM+3cN8zoffL8FKk9L5IWJo9xpaxtR2DTPSM5oHkmeI
-	3QXst1W2tojP7bSGR2EeBNoJf0AOSN3LqjeJYzlD/BRiRJleYnUpMqTLEWSUeJEMbr1SkSrBgLiDi
-	y94hnd5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rgkEHzS1P2+GGnG5W33Ph4ysUqmd/eb2iIGx9omjpvw=; b=IXMV7KQZn1wFzDdzjgBG7JQfaO
+	qy1Dz/frMnKwgvx71CRepGlYsjIjJoTr1ebAbMS6sfNgZSZ7eyw7pWOMbmzJICBM6Pjtcoo84yblI
+	PNMrk5UN1ulwo5FsPVRbn9Xb+POoEJ1rldQVULnOGPAupMii4s5Bizdg9bnVcCTTdV2DV69Q0XvFw
+	6+7OdZkuKcygsVvz7q6/yB+/7LoFW90Em+IB0QmviF3tLTPu5rjQvsVtjwLc60LLhNrgWxpCzGfno
+	idR/Cy6/79R/c8qXh19SiQwbEBqK3VxQp4VKuKYYkBS2XrLtICy2mWG2uRrMZUIb4ojbDNezDGS+5
+	SbtnTePA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYOE-000AST-2V;
-	Tue, 19 Sep 2023 10:55:34 +0000
+	id 1qiYQM-000BqO-2A;
+	Tue, 19 Sep 2023 10:57:46 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYOA-000AMd-1a;
-	Tue, 19 Sep 2023 10:55:32 +0000
+	id 1qiYQI-000Bmm-1t;
+	Tue, 19 Sep 2023 10:57:44 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9DB26615AD;
-	Tue, 19 Sep 2023 10:55:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87EE8C433C9;
-	Tue, 19 Sep 2023 10:55:22 +0000 (UTC)
-Message-ID: <91fbf033-f02b-4a06-8bf0-0bf5bfca26a0@xs4all.nl>
-Date: Tue, 19 Sep 2023 12:55:21 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 188E8615F2;
+	Tue, 19 Sep 2023 10:57:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC2E4C433C7;
+	Tue, 19 Sep 2023 10:57:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695121061;
+	bh=rgkEHzS1P2+GGnG5W33Ph4ysUqmd/eb2iIGx9omjpvw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Xhbn8JD6cfQMx8xR+PU3g5QAAmLNxJv3xNP1Ho+oV8lXgW6zWTw3qXvcARVgU7Wfr
+	 sUNZYHdnYNdWFNVcUx+jVb0TJ9Iw1SgJacseBhE5q1nHoaraprg8K7+tigNTIGYnm3
+	 g4Hey3mLWEVrl7BkCXJkFr9uy/7BNIrkGkYBIMXh9L1vP4PaFA7BPfjTrG8ckoEDdT
+	 keWQxOVG8bHvqB7wSgv1q3uvtrjuRZId3hzoCrxUVYmnVKao3DQuQaieLBW6ZwCohm
+	 Jej6EoiX+OfNKq8SrqZtONz2suiXBG17mnbkkNuyljP+F2pD6vMQ/ZiNRWIphxD7/e
+	 V714Ep4Kg7rsQ==
+Date: Tue, 19 Sep 2023 11:57:35 +0100
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mchehab@kernel.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, moudy.ho@mediatek.com,
+	hverkuil-cisco@xs4all.nl, sakari.ailus@linux.intel.com,
+	u.kleine-koenig@pengutronix.de, linqiheng@huawei.com,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	wenst@chromium.org
+Subject: Re: [PATCH 1/2] media: dt-bindings: mediatek: Add phandle to
+ mediatek,scp on MDP3 RDMA
+Message-ID: <20230919-6c70a74fa46fa4b298764ce4@fedora>
+References: <20230919095938.70679-1-angelogioacchino.delregno@collabora.com>
+ <20230919095938.70679-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 12/49] media: videobuf2: Be more flexible on the number
- of queue stored buffers
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-13-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230914133323.198857-13-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="VPROubqw5lKdslhi"
+Content-Disposition: inline
+In-Reply-To: <20230919095938.70679-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_035530_612152_86C37AB4 
-X-CRM114-Status: GOOD (  34.13  )
+X-CRM114-CacheID: sfid-20230919_035742_686561_C1377494 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,230 +83,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2023 15:32, Benjamin Gaignard wrote:
-> Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
-> how many buffers could be stored in a queue.
-> This request 'bufs' array to be allocated at queue init time and freed
 
-I think this is a typo:
+--VPROubqw5lKdslhi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-request -> requires
+On Tue, Sep 19, 2023 at 11:59:37AM +0200, AngeloGioacchino Del Regno wrote:
+> The MDP3 RDMA needs to communicate with the SCP remote processor: allow
+> specifying a phandle to a SCP core.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-> when releasing the queue.
-> By default VB2_MAX_FRAME remains the limit.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-> ---
->  .../media/common/videobuf2/videobuf2-core.c   | 40 ++++++++++++++-----
->  .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +-
->  include/media/videobuf2-core.h                |  4 +-
->  3 files changed, 35 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index afe76577acc1..ee4df7c68397 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -411,7 +411,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->   */
->  static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
->  {
-> -	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
-> +	if (index < q->max_allowed_buffers && !q->bufs[index]) {
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 
-I'm not sure I like the name 'max_allowed_buffers'. How about 'max_num_buffers'?
+Thanks,
+Conor.
 
-Also, as mentioned in a previous patch review, I don't think you should
-need this check at all in this function. It should assume that the index is
-valid, and any checks should happen (and probably already do) in the caller.
+--VPROubqw5lKdslhi
+Content-Type: application/pgp-signature; name="signature.asc"
 
->  		q->bufs[index] = vb;
->  		vb->index = index;
->  		vb->vb2_queue = q;
-> @@ -428,7 +428,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
->   */
->  static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
->  {
-> -	if (vb->index < VB2_MAX_FRAME) {
-> +	if (vb->index < q->max_allowed_buffers) {
->  		q->bufs[vb->index] = NULL;
->  		vb->vb2_queue = NULL;
->  	}
-> @@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  	struct vb2_buffer *vb;
->  	int ret;
->  
-> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
-> +	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
->  	num_buffers = min_t(unsigned int, num_buffers,
-> -			    VB2_MAX_FRAME - q->num_buffers);
-> +			    q->max_allowed_buffers - q->num_buffers);
+-----BEGIN PGP SIGNATURE-----
 
-In this context the name 'max_num_buffers' makes more sense than
-'max_allowed_buffers', IMHO.
+iHUEARYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZQl+nAAKCRB4tDGHoIJi
+0vTHAPkB522lK8X8euYhusx64TpJF2vQQOJR1RjAvmbcREUgFwEAh7u7X/ovyasV
+iE0cp6ttCXGMYAnwPH4WEyu7sYGokws=
+=xseb
+-----END PGP SIGNATURE-----
 
->  
->  	for (buffer = 0; buffer < num_buffers; ++buffer) {
->  		/* Allocate vb2 buffer structures */
-> @@ -814,7 +814,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
->  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
->  	unsigned int i;
-> -	int ret;
-> +	int ret = 0;
->  
->  	if (q->streaming) {
->  		dprintk(q, 1, "streaming active\n");
-> @@ -858,17 +858,23 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	/*
->  	 * Make sure the requested values and current defaults are sane.
->  	 */
-> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
-> +	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
->  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
-
-Given the name 'max_num_buffers' it would make sense to rename 'min_buffers_needed'
-to 'min_num_buffers'. It's a bit of a painful change though, so let's leave this
-as-is.
-
-> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
-> +	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
->  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
->  	/*
->  	 * Set this now to ensure that drivers see the correct q->memory value
->  	 * in the queue_setup op.
->  	 */
->  	mutex_lock(&q->mmap_lock);
-> +	if (!q->bufs)
-> +		q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
-> +	if (!q->bufs)
-> +		ret = -ENOMEM;
->  	q->memory = memory;
->  	mutex_unlock(&q->mmap_lock);
-> +	if (ret)
-> +		return ret;
->  	set_queue_coherency(q, non_coherent_mem);
->  
->  	/*
-> @@ -974,9 +980,9 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
->  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
->  	bool no_previous_buffers = !q->num_buffers;
-> -	int ret;
-> +	int ret = 0;
->  
-> -	if (q->num_buffers == VB2_MAX_FRAME) {
-> +	if (q->num_buffers == q->max_allowed_buffers) {
->  		dprintk(q, 1, "maximum number of buffers already allocated\n");
->  		return -ENOBUFS;
->  	}
-> @@ -993,7 +999,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  		 */
->  		mutex_lock(&q->mmap_lock);
->  		q->memory = memory;
-> +		if (!q->bufs)
-> +			q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
-> +		if (!q->bufs)
-> +			ret = -ENOMEM;
->  		mutex_unlock(&q->mmap_lock);
-> +		if (ret)
-> +			return ret;
->  		q->waiting_for_buffers = !q->is_output;
->  		set_queue_coherency(q, non_coherent_mem);
->  	} else {
-> @@ -1005,7 +1017,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  			return -EINVAL;
->  	}
->  
-> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
-> +	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
->  
->  	if (requested_planes && requested_sizes) {
->  		num_planes = requested_planes;
-> @@ -2515,6 +2527,12 @@ int vb2_core_queue_init(struct vb2_queue *q)
->  
->  	q->memory = VB2_MEMORY_UNKNOWN;
->  
-> +	if (!q->max_allowed_buffers)
-> +		q->max_allowed_buffers = VB2_MAX_FRAME;
-> +
-> +	/* The maximum is limited by offset cookie encoding pattern */
-> +	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, BUFFER_INDEX_MASK + 1);
-
-I think I would prefer this to be added to the sanity checks at the start:
-
-	WARN_ON(q->max_allowed_buffers > BUFFER_INDEX_MASK + 1)) ||
-
-I think we should also this check:
-
-	if (WARN_ON(q->max_allowed_buffers < VB2_MAX_FRAME) ||
-	    WARN_ON(q->min_buffers_needed > q->max_allowed_buffers))
-		return -EINVAL;
-
-Note that there is a "WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);" in
-vb2_core_reqbufs. That's really the wrong place, that should be checked here.
-So drop that WARN_ON in vb2_core_reqbufs.
-
-> +
->  	if (q->buf_struct_size == 0)
->  		q->buf_struct_size = sizeof(struct vb2_buffer);
->  
-> @@ -2539,6 +2557,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
->  	__vb2_queue_cancel(q);
->  	mutex_lock(&q->mmap_lock);
->  	__vb2_queue_free(q, q->num_buffers);
-> +	kfree(q->bufs);
-> +	q->bufs = NULL;
->  	mutex_unlock(&q->mmap_lock);
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> index f460cac560f6..87c2d5916960 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> @@ -1156,7 +1156,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
->  
->  	if (lock)
->  		mutex_lock(lock);
-> -	if (file->private_data == vdev->queue->owner) {
-> +	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
->  		vb2_queue_release(vdev->queue);
->  		vdev->queue->owner = NULL;
->  	}
-> @@ -1284,7 +1284,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
->  	 */
->  	get_device(&vdev->dev);
->  	video_unregister_device(vdev);
-> -	if (vdev->queue && vdev->queue->owner) {
-> +	if (vdev->queue) {
->  		struct mutex *lock = vdev->queue->lock ?
->  			vdev->queue->lock : vdev->lock;
->  
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index cd3ff1cd759d..97153c69583f 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
->   * @dma_dir:	DMA mapping direction.
->   * @bufs:	videobuf2 buffer structures
->   * @num_buffers: number of allocated/used buffers
-> + * @max_allowed_buffers: upper limit of number of allocated/used buffers
->   * @queued_list: list of buffers currently queued from userspace
->   * @queued_count: number of buffers queued and ready for streaming.
->   * @owned_by_drv_count: number of buffers owned by the driver
-> @@ -619,8 +620,9 @@ struct vb2_queue {
->  	struct mutex			mmap_lock;
->  	unsigned int			memory;
->  	enum dma_data_direction		dma_dir;
-> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
-> +	struct vb2_buffer		**bufs;
->  	unsigned int			num_buffers;
-> +	unsigned int			max_allowed_buffers;
->  
->  	struct list_head		queued_list;
->  	unsigned int			queued_count;
-
-Regards,
-
-	Hans
+--VPROubqw5lKdslhi--
 
