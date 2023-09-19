@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F668CE79A9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 20:12:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5448BCE79A8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 20:51:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xcx2jlIFSsxYNYZTzuc6q25cxdoVpSopebg683fouEw=; b=3O4XA1+Dw1uN/HFVqw+FNl3dOQ
-	y75RUJZ8t5pXoJgngE1hloU57ShcZaRppwAEn4McXjesGV/RwvdUH5pVfU0jzFsbPrDuKBsIpH6lR
-	xpzWIbtxreL2BOQ9jz4o6PO+gdzDmQcAOV9JuFoJTnRfeRDF+3Oied+2IBTA/3xMAa9R5MqrSIV4m
-	hI0rLJCIv+UwE8cOjx5DD2UmmirWmTKU1XA0MZU41t+oAOX/8D+uEAHAp2YBJyuGgawh53tqnEeeU
-	jksRi82kBKi2CbMQkTfZNtADudzqPNIkyH1uZtV3LZXpHr1DZYeBOhTZURADZDmdkXDgH4u5xANS2
-	pe6Qv3tQ==;
+	bh=VbupnqNePPSApusEEeMOwHawfGbZVx+B7J1El+BwtS0=; b=0fDd69L0LRllVMXk4GxN6vef7p
+	uSwcumkCYFX3D39uHk/rwly3kVN9SySV7bIr/E/BCtGg8ivAkgCAQZsENVpBen8dBy6WGZcSLV2u0
+	mwZQQTLyi8LMN5/fz+c39t6j/djDX+O0L6fBPyywvbLG1EE2l5gk2YCqj2JuEI2g6eU/PBJ/6kBED
+	VyT1WXQABqJEc/nnkB0BO25yw4eOsxil6cKwxvCULPjXHn9lTSrZyMIpDfr9fgBeHcZdH3aKlw0O7
+	+h5mqQOU8a7/KTfubLc1w4zy+XStOVcZeKQP/fL72IaprK7O//GeogqCe5lWlvdz0QUN1JhKBzAZo
+	bDmSQmSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qih5P-001DbQ-0L;
-	Tue, 19 Sep 2023 20:12:43 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qihgq-001FnN-2K;
+	Tue, 19 Sep 2023 20:51:24 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qih5I-001DZb-35;
-	Tue, 19 Sep 2023 20:12:40 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DCF7B66057B6;
-	Tue, 19 Sep 2023 21:12:27 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695154349;
-	bh=Gk/Fpq7OlN/7K4OFGI5P1G3mmMaho0D846k02v3os0A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dwR0eVPRMgRwtMIoqmAdY40aUrrTOaSttwHcbhXy8qgtHq12Y3m49YX6lmYSBq1xU
-	 s2PnktGWwhFNugqguFyl4o29yoMEWKMc3rILXbPOeUKIQwCfAvfQx4d0CASM5JCFi+
-	 HQtJmlcjgXl6ssfRvrY6k4Up1JBQD7ZAzC9mfsTeHVS3WIwMxURL7BHaetASvqLmNm
-	 UgxccnBaomm30ebdVozUdI13wCw2sfdlMmbo8cNARUiEmKsFp5JUB8nPQd/sakAtig
-	 b0H8eiE++uIbdzfQp+sJWK+IbA5Bn63eSuDHNxglbPqc7M8to9/SU1gKd5jVAH4yKi
-	 yG1nga8d1f8yA==
-Date: Tue, 19 Sep 2023 16:12:23 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Chen-Yu Tsai <wenst@google.com>, kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
-	James Lo <james.lo@mediatek.com>,
+	id 1qihgm-001FlX-2g;
+	Tue, 19 Sep 2023 20:51:23 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qihgL-00082Y-13;
+	Tue, 19 Sep 2023 20:50:53 +0000
+Date: Tue, 19 Sep 2023 21:50:44 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3] spmi: mtk-pmif: Serialize PMIF status check and
- command submission
-Message-ID: <7b407eda-702a-444a-b644-5e8dc31f3991@notapiano>
-References: <20230724154739.493724-1-nfraprado@collabora.com>
- <a4684a81-eb04-492a-bff6-a5ff78fe6b0f@notapiano>
+Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: mediatek,net: add
+ phandles for SerDes on MT7988
+Message-ID: <ZQoJpGLhNZ0M2JhI@makrotopia.org>
+References: <cover.1695058909.git.daniel@makrotopia.org>
+ <35c12a115893d324db16ec6983afb5f1951fd4c9.1695058909.git.daniel@makrotopia.org>
+ <20230919180909.GA4151534-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <a4684a81-eb04-492a-bff6-a5ff78fe6b0f@notapiano>
+In-Reply-To: <20230919180909.GA4151534-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_131237_140026_43631E60 
-X-CRM114-Status: GOOD (  24.14  )
+X-CRM114-CacheID: sfid-20230919_135120_868505_E99B7E39 
+X-CRM114-Status: GOOD (  30.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,46 +76,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 10, 2023 at 06:03:53PM -0400, Nícolas F. R. A. Prado wrote:
-> On Mon, Jul 24, 2023 at 11:47:33AM -0400, Nícolas F. R. A. Prado wrote:
-> > Before writing the read or write command to the SPMI arbiter through the
-> > PMIF interface, the current status of the channel is checked to ensure
-> > it is idle. However, since the status only changes from idle when the
-> > command is written, it is possible for two concurrent calls to determine
-> > that the channel is idle and simultaneously send their commands. At this
-> > point the PMIF interface hangs, with the status register no longer being
-> > updated, and thus causing all subsequent operations to time out.
+Hi Rob,
+
+thank you for the review!
+
+On Tue, Sep 19, 2023 at 01:09:09PM -0500, Rob Herring wrote:
+> On Mon, Sep 18, 2023 at 11:26:34PM +0100, Daniel Golle wrote:
+> > Add several phandles needed for Ethernet SerDes interfaces on the
+> > MediaTek MT7988 SoC.
 > > 
-> > This was observed on the mt8195-cherry-tomato-r2 machine, particularly
-> > after commit 46600ab142f8 ("regulator: Set PROBE_PREFER_ASYNCHRONOUS for
-> > drivers between 5.10 and 5.15") was applied, since then the two MT6315
-> > devices present on the SPMI bus would probe assynchronously and
-> > sometimes (during probe or at a later point) read the bus
-> > simultaneously, breaking the PMIF interface and consequently slowing
-> > down the whole system.
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >  .../devicetree/bindings/net/mediatek,net.yaml | 28 +++++++++++++++++++
+> >  1 file changed, 28 insertions(+)
 > > 
-> > To fix the issue at its root cause, introduce locking around the channel
-> > status check and the command write, so that both become an atomic
-> > operation, preventing race conditions between two (or more) SPMI bus
-> > read/write operations. A spinlock is used since this is a fast bus, as
-> > indicated by the usage of the atomic variant of readl_poll, and
-> > '.fast_io = true' being used in the mt6315 driver, so spinlocks are
-> > already used for the regmap access.
-> > 
-> > Fixes: b45b3ccef8c0 ("spmi: mediatek: Add support for MT6873/8192")
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > index e74502a0afe86..78219158b96af 100644
+> > --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > @@ -385,6 +385,34 @@ allOf:
+> >            minItems: 2
+> >            maxItems: 2
+> >  
+> > +        mediatek,toprgu:
+> > +          $ref: /schemas/types.yaml#/definitions/phandle
+> > +          description:
+> > +            Phandle to the syscon representing the reset controller.
 > 
-> Hi,
+> Use the reset binding
+
+I got an alternative implementation ready which implements an actual
+reset controller (by extending drivers/watchdog/mtk_wdt.c to cover
+also MT7988 and its addition sw-reset-enable bits) and uses single
+phandles for each reset bit assigned to the corresponding units
+instead of listing them all for the ethernet controller (maybe that's
+one step too far though...)
+
+However, as mentioned in the cover letter, using the Linux reset
+controller API (which having to use is a consequence of having to use
+the reset bindings) doesn't allow to simultanously deassert the
+resets of pextp, usxgmii pcs and/or sgmii pcs which is how the vendor
+implementation is doing it as all reset bits are on the same 32-bit
+register and the Ethernet driver is the only driver needing to access
+that register.
+
+Asserting the resets in sequence and subsequently deasserting in
+sequence works for me, but it will have to be confirmed to not create
+any problems because it's clearly a deviation from the behavior of the
+reference implementation.
+
+
 > 
-> gentle ping on this one. MT8195 Chromebooks sometimes boot to a broken state
-> without it.
+> > +
+> > +        mediatek,usxgmiisys:
+> > +          $ref: /schemas/types.yaml#/definitions/phandle-array
+> > +          minItems: 2
+> > +          maxItems: 2
+> > +          items:
+> > +            maxItems: 1
+> > +          description:
+> > +            A list of phandle to the syscon node referencing the USXGMII PCS.
+> 
+> Use the PCS binding
 
-Hi Stephen,
+Ack, I will ie. implement standalone PCS driver similar to eg.
+pcs-rzn1-miic.c.
 
-once again kindling reminding you of this important fix for MediaTek platforms,
-solving a real issue impacting basic functionality observed on the MT8195
-Chromebook.
+> 
+> > +
+> > +        mediatek,xfi-pextp:
+> > +          $ref: /schemas/types.yaml#/definitions/phandle-array
+> > +          minItems: 2
+> > +          maxItems: 2
+> > +          items:
+> > +            maxItems: 1
+> > +          description:
+> > +            A list of phandle to the syscon node that handles the 10GE SerDes PHY.
+> 
+> Use the phy binding (phys, not phy-handle for ethernet PHY).
 
-Thanks,
-Nícolas
+Ack, this can be implemented as a standalone PHY driver using PHY
+bindings. I will do that instead.
+
+> 
+> > +
+> > +        mediatek,xfi-pll:
+> > +          $ref: /schemas/types.yaml#/definitions/phandle
+> > +          description:
+> > +            Phandle to the syscon node handling the 10GE SerDes clock setup.
+> 
+> Use the clock binding
+
+Does that imply that I should implement a clock driver whith only a
+single clock offering only a single operation ('enable') which would
+then do the magic register writes?
+
+While one part is actually identifyable as taking care of enabling a
+clock, I would not know how to meaningfully abstract the other (first)
+part, see vendor driver:
+
+/* Register to control USXGMII XFI PLL digital */
+#define XFI_PLL_DIG_GLB8        0x08
+#define RG_XFI_PLL_EN           BIT(31)
+
+/* Register to control USXGMII XFI PLL analog */
+#define XFI_PLL_ANA_GLB8        0x108
+#define RG_XFI_PLL_ANA_SWWA     0x02283248
+
+[...]
+
+/* Add software workaround for USXGMII PLL TCL issue */
+regmap_write(ss->pll, XFI_PLL_ANA_GLB8, RG_XFI_PLL_ANA_SWWA);
+// How would you represent the line above using the abstractions of the
+// common clk framework?
+
+regmap_read(ss->pll, XFI_PLL_DIG_GLB8, &val); //    that looks like it
+val |= RG_XFI_PLL_EN;                         // <- could be a abstracted
+regmap_write(ss->pll, XFI_PLL_DIG_GLB8, val); //    in a meaningful way in
+                                                    clock driver.
+
+... which is all we ever do on that regmap. Ever.
+
+
+Thanks in advance to everybody sharing their ideas and advises.
 
