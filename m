@@ -4,64 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC24DCD5BAA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 12:40:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7975FCD5BAA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 12:42:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=umWnCDTdnDCGF5CyMNa3YzMGam7uiMikqjuTB8B3LsE=; b=sAHeEr84GlcvNT7OrhBiQEEyds
-	ZD+aPmPHoE2PxbGW8hK1D+4R/G56Pe3wu37ejWgr4LcJgZ7cE9P5pym2zhETirh+MEohvtFbLujF0
-	QcZuJ+XA2F69iYDRDOlf+JdWreM/ovZKC+7RsvlSWBG7GKhgVp5R3rSm6koU1QicaMV54DIhwEPc4
-	2/ZceCwzi1WAmLWn8wUgnDe+rqKEUIa3PkboZpJykOgJwAedikCBE5BzlvW1Rau968bVCJTNDUvIA
-	wnf9cJZ3cTURsv4syIRRwmxy2JBTJtEdMfnZ4ShOkm7+7iQKbmUyealAY5oIvN+iwqPTWIMSsRR4O
-	Juzv5/KA==;
+	bh=wkOMF8qui6vmmFczBd1Wn0Vzpd9CkPXGZeegFjVW0FA=; b=FmcSTMcMpcEff2g7pi0qcU/TTG
+	HV03PgWoI5Cuycu2bLRFcXvadVANI3B3uPKicsg5jT1Ghq/OIhlnzoDJUg7H0wqMswxus7CUSPTup
+	ahhWH6vpS01fi3C3i7pJpKKZvCqSDs0NADjy6Rs2okh5r9lW1uocKPU5NiioGCiqFHQg5fKrGW4tv
+	t9RhQZkRsuDdxPqoeHBpgt9ilpg8hd2ZzKii7Y6839a2cIh7sIk4Ym204kpaNPDzgoCNDdHLYzQ8c
+	2IjkmXgCRdQNSuo3xiCicRa/8WMBOn50dnS7GUz7Goe3LKznMbfGUSjPItUIGmI7YQ80N01+usKSI
+	eaqb8TzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qia1f-000RAV-1S;
-	Tue, 19 Sep 2023 12:40:23 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qia3m-000RRi-10;
+	Tue, 19 Sep 2023 12:42:34 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qia1b-000R9F-2M;
-	Tue, 19 Sep 2023 12:40:21 +0000
+	id 1qia3i-000RQD-0M;
+	Tue, 19 Sep 2023 12:42:32 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id D2C61CE12AA;
-	Tue, 19 Sep 2023 12:40:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAD88C433C8;
-	Tue, 19 Sep 2023 12:40:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695127214;
-	bh=ruaomOsVSPAGgslF/yr7z7NtxZAHZH6/puP8bh0Ggi8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=JNjCUw/8qkpApUTCB5VzsXkVhtVx0qCu7Tlf0SZKjNdvfhJu1ru700hGzrvA9TXDc
-	 LqYti3gGwtrsDXJlDiO+15GqJsBIDQhIjKpoxxmOIsy+kxhIvHEGltCWKbHanU8X3s
-	 UWMnLyVCJX260FN+by2l35LTfLGbROOWnofDBUabL+P/E8QNyG5/IlOiiXRDyY1F9o
-	 dV7wNtf9ankEPgR/f1Q7DYV1v/iCjKcezSGlW2ob1y9Iig879geHPd9LwH+bvcN+qh
-	 j14n49BMl/CNzAnC5yUT16ADitd3tcWpUiY5U5zKdqklrCKFAquQYm/3R1HE8KLTTA
-	 yGqwfzGfg7Seg==
-Received: (nullmailer pid 3475446 invoked by uid 1000);
-	Tue, 19 Sep 2023 12:40:11 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	by ams.source.kernel.org (Postfix) with ESMTPS id 7CDD9B81178;
+	Tue, 19 Sep 2023 12:42:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF2FCC433C8;
+	Tue, 19 Sep 2023 12:42:23 +0000 (UTC)
+Message-ID: <c58cdf5a-7176-457e-98f3-85606cec7f09@xs4all.nl>
+Date: Tue, 19 Sep 2023 14:42:22 +0200
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Mark Brown <broonie@kernel.org>, Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230919104357.3971512-3-wenst@chromium.org>
-References: <20230919104357.3971512-1-wenst@chromium.org>
- <20230919104357.3971512-3-wenst@chromium.org>
-Message-Id: <169512721150.3475200.12254070677030713993.robh@kernel.org>
-Subject: Re: [PATCH v3 02/12] regulator: dt-bindings: mt6358: Convert to DT
- schema
-Date: Tue, 19 Sep 2023 07:40:11 -0500
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 12/49] media: videobuf2: Be more flexible on the number
+ of queue stored buffers
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-13-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230914133323.198857-13-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_054020_218412_DFA9451A 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20230919_054230_450041_D7C09F43 
+X-CRM114-Status: GOOD (  30.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,62 +72,208 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 19 Sep 2023 18:43:45 +0800, Chen-Yu Tsai wrote:
-> Convert this from the old style text based binding to the new DT schema
-> style. This will make adding the MT6366 portion easier.
+On 14/09/2023 15:32, Benjamin Gaignard wrote:
+> Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
+> how many buffers could be stored in a queue.
+> This request 'bufs' array to be allocated at queue init time and freed
+> when releasing the queue.
+> By default VB2_MAX_FRAME remains the limit.
 > 
-> The examples have been trimmed down considerably, and the remaining
-> entries now match what is seen in actual device trees, minus some
-> properties that aren't covered by the bindings yet, or don't make
-> sense on their own.
-> 
-> The original submitter seems to have left MediaTek, so instead the
-> submitter and maintainer for the MT6366 binding is listed.
-> 
-> Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 > ---
-> Changes since v2:
-> - Added missing end-of-string match to regulator names
-> - regulator-coupled-* properties in example dropped
-> - #include and regulator-allowed-modes moved to new patch
+>  .../media/common/videobuf2/videobuf2-core.c   | 40 ++++++++++++++-----
+>  .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +-
+>  include/media/videobuf2-core.h                |  4 +-
+>  3 files changed, 35 insertions(+), 13 deletions(-)
+
+After this patch I would like to see a patches adding support for this to
+vicodec and vivid. For vivid it might be a good idea to mix this: say
+the video output remains at 32 buffers, but video capture can do more.
+
+And the swradio device should be able to handle quite a lot more (try
+1024 there) since these buffers are quite small (32 kB).
+
+The vicodec driver can increase it to 64, just as the verisilicon driver
+does.
+
+This makes it easy to do compliance testing for this new feature.
+
+Regards,
+
+	Hans
+
 > 
->  .../regulator/mediatek,mt6358-regulator.yaml  |  97 +++++
->  .../bindings/regulator/mt6358-regulator.txt   | 350 ------------------
->  2 files changed, 97 insertions(+), 350 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
->  delete mode 100644 Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
-> 
-
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml: patternProperties: '^ldo_vxo22$' should not be valid under {'pattern': '^\\^[a-zA-Z0-9,\\-._#]+\\$$'}
-	hint: Fixed strings belong in 'properties', not 'patternProperties'
-	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml: patternProperties: '^ldo_vusb$' should not be valid under {'pattern': '^\\^[a-zA-Z0-9,\\-._#]+\\$$'}
-	hint: Fixed strings belong in 'properties', not 'patternProperties'
-	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230919104357.3971512-3-wenst@chromium.org
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index afe76577acc1..ee4df7c68397 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -411,7 +411,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
+>   */
+>  static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
+>  {
+> -	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
+> +	if (index < q->max_allowed_buffers && !q->bufs[index]) {
+>  		q->bufs[index] = vb;
+>  		vb->index = index;
+>  		vb->vb2_queue = q;
+> @@ -428,7 +428,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
+>   */
+>  static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+>  {
+> -	if (vb->index < VB2_MAX_FRAME) {
+> +	if (vb->index < q->max_allowed_buffers) {
+>  		q->bufs[vb->index] = NULL;
+>  		vb->vb2_queue = NULL;
+>  	}
+> @@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  	struct vb2_buffer *vb;
+>  	int ret;
+>  
+> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
+> +	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
+>  	num_buffers = min_t(unsigned int, num_buffers,
+> -			    VB2_MAX_FRAME - q->num_buffers);
+> +			    q->max_allowed_buffers - q->num_buffers);
+>  
+>  	for (buffer = 0; buffer < num_buffers; ++buffer) {
+>  		/* Allocate vb2 buffer structures */
+> @@ -814,7 +814,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+>  	unsigned int i;
+> -	int ret;
+> +	int ret = 0;
+>  
+>  	if (q->streaming) {
+>  		dprintk(q, 1, "streaming active\n");
+> @@ -858,17 +858,23 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	/*
+>  	 * Make sure the requested values and current defaults are sane.
+>  	 */
+> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
+> +	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
+>  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
+> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
+> +	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
+>  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
+>  	/*
+>  	 * Set this now to ensure that drivers see the correct q->memory value
+>  	 * in the queue_setup op.
+>  	 */
+>  	mutex_lock(&q->mmap_lock);
+> +	if (!q->bufs)
+> +		q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
+> +	if (!q->bufs)
+> +		ret = -ENOMEM;
+>  	q->memory = memory;
+>  	mutex_unlock(&q->mmap_lock);
+> +	if (ret)
+> +		return ret;
+>  	set_queue_coherency(q, non_coherent_mem);
+>  
+>  	/*
+> @@ -974,9 +980,9 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+>  	bool no_previous_buffers = !q->num_buffers;
+> -	int ret;
+> +	int ret = 0;
+>  
+> -	if (q->num_buffers == VB2_MAX_FRAME) {
+> +	if (q->num_buffers == q->max_allowed_buffers) {
+>  		dprintk(q, 1, "maximum number of buffers already allocated\n");
+>  		return -ENOBUFS;
+>  	}
+> @@ -993,7 +999,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		 */
+>  		mutex_lock(&q->mmap_lock);
+>  		q->memory = memory;
+> +		if (!q->bufs)
+> +			q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
+> +		if (!q->bufs)
+> +			ret = -ENOMEM;
+>  		mutex_unlock(&q->mmap_lock);
+> +		if (ret)
+> +			return ret;
+>  		q->waiting_for_buffers = !q->is_output;
+>  		set_queue_coherency(q, non_coherent_mem);
+>  	} else {
+> @@ -1005,7 +1017,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  			return -EINVAL;
+>  	}
+>  
+> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
+> +	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
+>  
+>  	if (requested_planes && requested_sizes) {
+>  		num_planes = requested_planes;
+> @@ -2515,6 +2527,12 @@ int vb2_core_queue_init(struct vb2_queue *q)
+>  
+>  	q->memory = VB2_MEMORY_UNKNOWN;
+>  
+> +	if (!q->max_allowed_buffers)
+> +		q->max_allowed_buffers = VB2_MAX_FRAME;
+> +
+> +	/* The maximum is limited by offset cookie encoding pattern */
+> +	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, BUFFER_INDEX_MASK + 1);
+> +
+>  	if (q->buf_struct_size == 0)
+>  		q->buf_struct_size = sizeof(struct vb2_buffer);
+>  
+> @@ -2539,6 +2557,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
+>  	__vb2_queue_cancel(q);
+>  	mutex_lock(&q->mmap_lock);
+>  	__vb2_queue_free(q, q->num_buffers);
+> +	kfree(q->bufs);
+> +	q->bufs = NULL;
+>  	mutex_unlock(&q->mmap_lock);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index f460cac560f6..87c2d5916960 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -1156,7 +1156,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
+>  
+>  	if (lock)
+>  		mutex_lock(lock);
+> -	if (file->private_data == vdev->queue->owner) {
+> +	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
+>  		vb2_queue_release(vdev->queue);
+>  		vdev->queue->owner = NULL;
+>  	}
+> @@ -1284,7 +1284,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
+>  	 */
+>  	get_device(&vdev->dev);
+>  	video_unregister_device(vdev);
+> -	if (vdev->queue && vdev->queue->owner) {
+> +	if (vdev->queue) {
+>  		struct mutex *lock = vdev->queue->lock ?
+>  			vdev->queue->lock : vdev->lock;
+>  
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index cd3ff1cd759d..97153c69583f 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
+>   * @dma_dir:	DMA mapping direction.
+>   * @bufs:	videobuf2 buffer structures
+>   * @num_buffers: number of allocated/used buffers
+> + * @max_allowed_buffers: upper limit of number of allocated/used buffers
+>   * @queued_list: list of buffers currently queued from userspace
+>   * @queued_count: number of buffers queued and ready for streaming.
+>   * @owned_by_drv_count: number of buffers owned by the driver
+> @@ -619,8 +620,9 @@ struct vb2_queue {
+>  	struct mutex			mmap_lock;
+>  	unsigned int			memory;
+>  	enum dma_data_direction		dma_dir;
+> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
+> +	struct vb2_buffer		**bufs;
+>  	unsigned int			num_buffers;
+> +	unsigned int			max_allowed_buffers;
+>  
+>  	struct list_head		queued_list;
+>  	unsigned int			queued_count;
 
 
