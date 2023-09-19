@@ -4,96 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90123CD5BC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 14:07:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EB28CD5BC6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 14:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LMykJCQlkdtke1jV1HRdImSUTkLSJsXVxgTZNCPIZuo=; b=3xT5YHtcL7xBd9ikVfKmSV6yDP
-	T4qPjVWyc/vbInSJdRWUE9i97x7NHzR/xl4tSTPIXaarLeuTKo2wtMODMEi1uP5x94r16cS9+pRPZ
-	PDjHfT/DDZrWWtIKFvrEFnri9gW+Ey1eRHvjRAgUZQ84VNjadciUYticn6M/R3liELJ9ioo6F/5GM
-	ct3w6R9awhPQxVHcpB92/AKQf1HVddZT5OfYsaZuKSGl1Wgkw97v2b9iuhqJESJ+jXtZNyKOkSVn3
-	MBiQkzRY3w4xcqc1gKxf81kF1cg7tBBdInq2v8JpZ/4CB18uy/IFXyFAOY3v9TsAqrcHBF00lPh53
-	Z07SZTgA==;
+	bh=vHiyddYWNRItwrf6LRqbyXaRuNklhh9JUBbF/ep9CrI=; b=S9+e4IAbI6FeEWghhLq4lMz369
+	eUYaMAjRchgSyhDgafZ5cjMJfXEYm2xtO4T1J9ACWI6XGrti4FdKXT04Ast0f8X4inJdW1kXQHEWw
+	2H90vPMF6/wLeRpHndHH2MJbeOtmintR4yLTkuZ+VJEFvIBqXyXVl25jJbk4rMvD6gcf3XDHcKZWN
+	823bVv8k0SATApHNtyVjpee50l/JH3CzbYXuV2LafXX56puX8+gHqON1nV8lRFc5LcSn0TTki7i+8
+	3uBKNNNyw2yryX5RCvrmrBOYUTIZxSk6antANSblGPVgSXazwSBtHe9/g2awdBIaWW1w0evE5UZhl
+	FsAFic+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qibOE-000br2-0G;
-	Tue, 19 Sep 2023 14:07:46 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1qibQg-000c6i-0t;
+	Tue, 19 Sep 2023 14:10:18 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qibO9-000bq3-0c
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Sep 2023 14:07:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695132458;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LMykJCQlkdtke1jV1HRdImSUTkLSJsXVxgTZNCPIZuo=;
-	b=YdlW2ba2I7NSmtpcmE4N3hq/maXNiZLFdq+Cg32QtRTa94BkLSQODqyQIvBjMt1PJQL99p
-	ayxKBu0imd7omdO52xm40kXbrsOK15yFJ/sxrfzgAQZ+vRX9kqrCUx0oyIaUqkigKhIzJD
-	mh7tm8NTEMbkIsn+QxjwAjbpmAxsFI4=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-340-i1qOushbN823mR0k4hiOig-1; Tue, 19 Sep 2023 10:07:37 -0400
-X-MC-Unique: i1qOushbN823mR0k4hiOig-1
-Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-9aa1e8d983aso131294966b.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Sep 2023 07:07:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695132456; x=1695737256;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=LMykJCQlkdtke1jV1HRdImSUTkLSJsXVxgTZNCPIZuo=;
-        b=eFf6nH1JRTS5PmSYMW/y5XI61e03OMBjlrBhd8ZiQW8/2HvXPtr6cX1FGtQ8aUfZ+v
-         3uZZIpDGKFr8hUUH+oeomXZpvMLVtaOpnJVQEFPEWj93iDdqHa4usH03+3c9wuhUk2BL
-         FSIoHBqdTLbzpsdOIwBrPh2edOtl704IqbwaiA28TJ78I5emiSmXzTATVJYafP5b0FZm
-         CX+1jvAHhqAUklsnvYLqfSdRO9lR4cdRl0o274wy1+XbhwO3pcQM5vgbUOC/PItO0f0D
-         D0UAWPD1wPW6jU0BIzAP+mel/mpoolTSn2rFn9dDQk9jGH/MXIJ9G+p1OlCIvKTRf9MM
-         x4Eg==
-X-Gm-Message-State: AOJu0YzRfAqRZN7Soznf3AHaXGTHwz/wV9m7SJ+d1M4mm+nsbc0eRi9S
-	SCx/gEGe1vX5gtV11/AVJ5vstxMbrTzGZjVbngzpUzuYM8nzwtJCWbZyiCxt3T43gD2re/8XVWT
-	bQaZ7wIFyXsIZtOePbp7UX0HFZ8bW+3kh
-X-Received: by 2002:a17:906:74ca:b0:9a1:eb67:c0d3 with SMTP id z10-20020a17090674ca00b009a1eb67c0d3mr10338002ejl.4.1695132456045;
-        Tue, 19 Sep 2023 07:07:36 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IENFS4cpAX8S6AwUFpq/x09AJbWBVQNwDPOx+C99DIJFQmc2UIwUgdKqqVnaAY0+5cwFRnW1g==
-X-Received: by 2002:a17:906:74ca:b0:9a1:eb67:c0d3 with SMTP id z10-20020a17090674ca00b009a1eb67c0d3mr10337985ejl.4.1695132455690;
-        Tue, 19 Sep 2023 07:07:35 -0700 (PDT)
-Received: from gerbillo.redhat.com (146-241-241-221.dyn.eolo.it. [146.241.241.221])
-        by smtp.gmail.com with ESMTPSA id fi8-20020a170906da0800b00997e00e78e6sm7851723ejb.112.2023.09.19.07.07.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Sep 2023 07:07:35 -0700 (PDT)
-Message-ID: <6243f8f6b0e110ba48a9e6e974ea3de875857f49.camel@redhat.com>
-Subject: Re: [PATCH v2 net-next 09/17] net: ethernet: mtk_wed: fix
- EXT_INT_STATUS_RX_FBUF definitions for MT7986 SoC
-From: Paolo Abeni <pabeni@redhat.com>
-To: Daniel Golle <daniel@makrotopia.org>, Lorenzo Bianconi
- <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, lorenzo.bianconi@redhat.com, nbd@nbd.name, 
- john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, 
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, 
- linux-mediatek@lists.infradead.org, sujuan.chen@mediatek.com,
- horms@kernel.org,  robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
- devicetree@vger.kernel.org
-Date: Tue, 19 Sep 2023 16:07:33 +0200
-In-Reply-To: <ZQg2AxAIxkadOiIr@makrotopia.org>
-References: <cover.1695032290.git.lorenzo@kernel.org>
-	 <ebde071cc3cc9c35b00366c41912ee2f25e5282d.1695032291.git.lorenzo@kernel.org>
-	 <ZQg2AxAIxkadOiIr@makrotopia.org>
-User-Agent: Evolution 3.46.4 (3.46.4-1.fc37)
+	id 1qibQd-000c5N-02;
+	Tue, 19 Sep 2023 14:10:16 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 36AF661620;
+	Tue, 19 Sep 2023 14:10:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18227C433C7;
+	Tue, 19 Sep 2023 14:10:09 +0000 (UTC)
+Message-ID: <b459dc32-7eba-481e-8c52-99bba5a5db4d@xs4all.nl>
+Date: Tue, 19 Sep 2023 16:10:08 +0200
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 34/49] media: ti: Stop direct calls to queue
+ num_buffers field
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-35-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230914133323.198857-35-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_070741_333774_F88E40B1 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20230919_071015_132214_FF6CBA11 
+X-CRM114-Status: GOOD (  17.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,22 +72,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2023-09-18 at 12:35 +0100, Daniel Golle wrote:
-> On Mon, Sep 18, 2023 at 12:29:11PM +0200, Lorenzo Bianconi wrote:
-> > Fix MTK_WED_EXT_INT_STATUS_RX_FBUF_LO_TH and
-> > MTK_WED_EXT_INT_STATUS_RX_FBUF_HI_TH definitions for MT7986 (MT7986 is
-> > the only SoC to use them).
->=20
-> Afaik this applies also to MT7981 which is very similar to MT7986.
+On 14/09/2023 15:33, Benjamin Gaignard wrote:
+> Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  drivers/media/platform/ti/am437x/am437x-vpfe.c   | 5 +++--
+>  drivers/media/platform/ti/cal/cal-video.c        | 5 +++--
+>  drivers/media/platform/ti/davinci/vpif_capture.c | 5 +++--
+>  drivers/media/platform/ti/davinci/vpif_display.c | 5 +++--
+>  drivers/media/platform/ti/omap/omap_vout.c       | 5 +++--
+>  5 files changed, 15 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/media/platform/ti/am437x/am437x-vpfe.c b/drivers/media/platform/ti/am437x/am437x-vpfe.c
+> index 63092013d476..3b1e5dfecdbc 100644
+> --- a/drivers/media/platform/ti/am437x/am437x-vpfe.c
+> +++ b/drivers/media/platform/ti/am437x/am437x-vpfe.c
+> @@ -1774,10 +1774,11 @@ static int vpfe_queue_setup(struct vb2_queue *vq,
+>  			    unsigned int sizes[], struct device *alloc_devs[])
+>  {
+>  	struct vpfe_device *vpfe = vb2_get_drv_priv(vq);
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+>  	unsigned size = vpfe->fmt.fmt.pix.sizeimage;
+>  
+> -	if (vq->num_buffers + *nbuffers < 3)
+> -		*nbuffers = 3 - vq->num_buffers;
+> +	if (q_num_bufs + *nbuffers < 3)
+> +		*nbuffers = 3 - q_num_bufs;
 
-FTR, I read the above as this series is going to additionally
-support/work fine with MT7981; no modification asked here, fine to be
-merged.
+Drop this, instead update min_buffers_needed from 1 to 3.
 
-Please scream loudly soon otherwise ;)
+>  
+>  	if (*nplanes) {
+>  		if (sizes[0] < size)
+> diff --git a/drivers/media/platform/ti/cal/cal-video.c b/drivers/media/platform/ti/cal/cal-video.c
+> index a8abcd0fee17..5dfe40ca47fc 100644
+> --- a/drivers/media/platform/ti/cal/cal-video.c
+> +++ b/drivers/media/platform/ti/cal/cal-video.c
+> @@ -602,10 +602,11 @@ static int cal_queue_setup(struct vb2_queue *vq,
+>  			   unsigned int sizes[], struct device *alloc_devs[])
+>  {
+>  	struct cal_ctx *ctx = vb2_get_drv_priv(vq);
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+>  	unsigned int size = ctx->v_fmt.fmt.pix.sizeimage;
+>  
+> -	if (vq->num_buffers + *nbuffers < 3)
+> -		*nbuffers = 3 - vq->num_buffers;
+> +	if (q_num_bufs + *nbuffers < 3)
+> +		*nbuffers = 3 - q_num_bufs;
 
-Thanks,
+Drop this check, min_buffers_needed is already 3.
 
-Paolo
+>  
+>  	if (*nplanes) {
+>  		if (sizes[0] < size)
+> diff --git a/drivers/media/platform/ti/davinci/vpif_capture.c b/drivers/media/platform/ti/davinci/vpif_capture.c
+> index 99fae8830c41..fc42b4bc37e6 100644
+> --- a/drivers/media/platform/ti/davinci/vpif_capture.c
+> +++ b/drivers/media/platform/ti/davinci/vpif_capture.c
+> @@ -113,6 +113,7 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
+>  	struct channel_obj *ch = vb2_get_drv_priv(vq);
+>  	struct common_obj *common = &ch->common[VPIF_VIDEO_INDEX];
+>  	unsigned size = common->fmt.fmt.pix.sizeimage;
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+>  
+>  	vpif_dbg(2, debug, "vpif_buffer_setup\n");
+>  
+> @@ -122,8 +123,8 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
+>  		size = sizes[0];
+>  	}
+>  
+> -	if (vq->num_buffers + *nbuffers < 3)
+> -		*nbuffers = 3 - vq->num_buffers;
+> +	if (q_num_bufs + *nbuffers < 3)
+> +		*nbuffers = 3 - q_num_bufs;
 
+Drop, and update min_buffers_needed to 3.
+
+>  
+>  	*nplanes = 1;
+>  	sizes[0] = size;
+> diff --git a/drivers/media/platform/ti/davinci/vpif_display.c b/drivers/media/platform/ti/davinci/vpif_display.c
+> index f8ec2991c667..9dbab1003c1d 100644
+> --- a/drivers/media/platform/ti/davinci/vpif_display.c
+> +++ b/drivers/media/platform/ti/davinci/vpif_display.c
+> @@ -115,6 +115,7 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
+>  	struct channel_obj *ch = vb2_get_drv_priv(vq);
+>  	struct common_obj *common = &ch->common[VPIF_VIDEO_INDEX];
+>  	unsigned size = common->fmt.fmt.pix.sizeimage;
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+>  
+>  	if (*nplanes) {
+>  		if (sizes[0] < size)
+> @@ -122,8 +123,8 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
+>  		size = sizes[0];
+>  	}
+>  
+> -	if (vq->num_buffers + *nbuffers < 3)
+> -		*nbuffers = 3 - vq->num_buffers;
+> +	if (q_num_bufs + *nbuffers < 3)
+> +		*nbuffers = 3 - q_num_bufs;
+
+Ditto.
+
+>  
+>  	*nplanes = 1;
+>  	sizes[0] = size;
+> diff --git a/drivers/media/platform/ti/omap/omap_vout.c b/drivers/media/platform/ti/omap/omap_vout.c
+> index 4143274089c3..72ce903717d3 100644
+> --- a/drivers/media/platform/ti/omap/omap_vout.c
+> +++ b/drivers/media/platform/ti/omap/omap_vout.c
+> @@ -944,10 +944,11 @@ static int omap_vout_vb2_queue_setup(struct vb2_queue *vq,
+>  				     struct device *alloc_devs[])
+>  {
+>  	struct omap_vout_device *vout = vb2_get_drv_priv(vq);
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+>  	int size = vout->pix.sizeimage;
+>  
+> -	if (is_rotation_enabled(vout) && vq->num_buffers + *nbufs > VRFB_NUM_BUFS) {
+> -		*nbufs = VRFB_NUM_BUFS - vq->num_buffers;
+> +	if (is_rotation_enabled(vout) && q_num_bufs + *nbufs > VRFB_NUM_BUFS) {
+> +		*nbufs = VRFB_NUM_BUFS - q_num_bufs;
+>  		if (*nbufs == 0)
+>  			return -EINVAL;
+>  	}
+
+Regards,
+
+	Hans
 
