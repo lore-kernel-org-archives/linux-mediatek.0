@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 181EECD54AF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 11:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDCFBCD54AF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 11:13:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VD1e+qXEqMFBPXW2F3jMvAoTbp/+vpAF8wQLl5umujY=; b=BhEbbIDdv9QV0zeUoLYo3/IVM4
-	JrHa3SMOFZOIzcB8/LCsuM6jGY95pDfNbjQpEoR5qhv68ISz4eWWHc0CTpSNmHxlzsMMD/jab+wN2
-	mwvmAw0DpunSr7O+sVW7saIY7A6R/BJW2pdHRFWwOJb7S74acr5fwO7nTL6TuHQvlso/08WKyO0Wm
-	1Xm9jwSMJCY0vxB4fs29e/G0bxucdAgdJ8nvCqfKGjnUo+Cgf4KrJn0n/xx3BjouxkGa2r03gT44a
-	WDWJaMEGPSStW6Y+wNBXp3ARMM708ZUYi05Ek3fdelI+LR+3+Jo3wQ+OFF/flDbTS3iya1P/wwUFk
-	QJ7p7uDQ==;
+	bh=fj6dttztFrnDVpLt2nhcXUPn81plVj2kGoQw5LtfVBk=; b=cxEI0UZBNLYWRK8tNJVKHXWIfh
+	hD0qe6IhsJVJ2QvAbrU1uMZYHzXBT9wBv0giEIoTtOVPjm9pQ3kQo0tsGLf0zlyPyJ5EfKNcp684t
+	5r0YTX7JiBJX08zP42GZ5mkrlLTTdK6wAzFfAbEymP4DT3IKs5voEnIGgPQHXWolsmnSooYuH2KNY
+	0E+iQStmUaaSNS04TVaqjN141rG7JPob8AkVRhd29NohcEzNJnO7PyLokrNQbsI/mjM97n0f37j80
+	+UCdXfGtjA7gKyO2yuD2t1hL0KO2YxdZ0OELdYZISi2HDZAZYcKdnFCfR4/YCqazNkRSieqnZ7fhc
+	DSBkM3hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYfh-000FQn-0b;
-	Tue, 19 Sep 2023 11:13:37 +0000
+	id 1qiYfm-000FUi-1Z;
+	Tue, 19 Sep 2023 11:13:42 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYf1-000EsY-0W;
+	id 1qiYf1-000EtP-0X;
 	Tue, 19 Sep 2023 11:13:01 +0000
-X-UUID: 757c492856dd11ee9b7791016c24628a-20230919
+X-UUID: 75a7b93c56dd11ee9b7791016c24628a-20230919
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VD1e+qXEqMFBPXW2F3jMvAoTbp/+vpAF8wQLl5umujY=;
-	b=Rue72yjuYHUirBgDaMz6HrbxrPAOm4QNJuHppO8gQlzi84jAIy1V33b7vdINLoXTj6Z2vuIKWUEhkKKcqwdA1M0lQBn528Bng807N8m4uS9MQ3+18oZ3bplDs2jQtwJkyFBtvht/+7Cw+3AVpnfnERJrVLhtcUm0DmBo7fKXXkg=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fj6dttztFrnDVpLt2nhcXUPn81plVj2kGoQw5LtfVBk=;
+	b=TTFRWCiEBjNpxD0WG2FUBg73IpbR1HP+EV1NcWdM+R6KzNPH/RMRXVxyP21baECTd7hz34NqpBXUclNIRpkKypIsMi7IVzDijTm0RC4vcEB6dsnyDiVBL8rxihcJd4m5mcounN43bOPChYKyhl9ZQ2CY1SaXLVmdJjMk1Mce/SY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:09ca0f33-4882-4b84-8b53-ef1b9d9f7e26,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:89bb976f-2d0e-481c-8348-6360a13f523d,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:5f78ec9,CLOUDID:bdea34c3-1e57-4345-9d31-31ad9818b39f,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:8d581e14-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 757c492856dd11ee9b7791016c24628a-20230919
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: 75a7b93c56dd11ee9b7791016c24628a-20230919
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <yi-de.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1059766444; Tue, 19 Sep 2023 04:12:45 -0700
+	with ESMTP id 1817707512; Tue, 19 Sep 2023 04:12:45 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Tue, 19 Sep 2023 19:12:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 19 Sep 2023 19:12:41 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 19 Sep 2023 19:12:40 +0800
 From: Yi-De Wu <yi-de.wu@mediatek.com>
 To: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
 	<ze-yu.wang@mediatek.com>, Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring
@@ -65,22 +65,41 @@ CC: Arnd Bergmann <arnd@arndb.de>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-doc@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	David Bradil <dbrazdil@google.com>, Trilok Soni <quic_tsoni@quicinc.com>,
-	Jade Shih <jades.shih@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>, My
- Chuang <my.chuang@mediatek.com>, Kevenny Hsieh <kevenny.hsieh@mediatek.com>,
-	Willix Yeh <chi-shen.yeh@mediatek.com>, Liju Chen
-	<liju-clr.chen@mediatek.com>
-Subject: [PATCH v6 15/15] virt: geniezone: Add block-based demand paging support
-Date: Tue, 19 Sep 2023 19:12:10 +0800
-Message-ID: <20230919111210.19615-16-yi-de.wu@mediatek.com>
+	Jade Shih <jades.shih@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>,
+	"My Chuang" <my.chuang@mediatek.com>, Kevenny Hsieh
+	<kevenny.hsieh@mediatek.com>, Willix Yeh <chi-shen.yeh@mediatek.com>, Liju
+ Chen <liju-clr.chen@mediatek.com>
+Subject: [PATCH v6 09/15] virt: geniezone: Add irqfd support
+Date: Tue, 19 Sep 2023 19:12:04 +0800
+Message-ID: <20230919111210.19615-10-yi-de.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230919111210.19615-1-yi-de.wu@mediatek.com>
 References: <20230919111210.19615-1-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--13.231500-8.000000
+X-TMASE-MatchedRID: AC84ZEk84qCT+V7OGy1eF7CvlllU7Dl15E5u1OdPWsTgr/zYTDOZCJeq
+	sXSeEviPpSHzbpDtJi1Yo3G+rvxrNao77AcuQhw7A9lly13c/gGZ2scyRQcerz6DYdLKc78CxfJ
+	mJLSy2rYPRm7vZvATR5urMMf0bt5M/YThwZVOWJKmG+fak9r3agrefVId6fzVZ5yuplze9pssVU
+	53f9voZBgdl9SWxnPJVoAmHMW7f3t/+iNkyaz33ws9VkfCh3uAEbs7d+z9c8vjsTquy0JRizzAK
+	7q1A+IiJVwLGBypRhaJ2bX8lNKTfG1yv+64My/eQuFiD+xrWCwxXH/dlhvLv/t4POt4bDKR4nmg
+	1woDU7al6qI2izqkidSArurYxE2pnZCu38NkgL9VXhlmZsTdjARryDXHx6oXDtPbEOCY2f6IbCF
+	Fbr32N7FwN+qSs8wuYB7Rg0hkocmW+cf6nEkoSuQoIU4rAATMIZm2INWXDp4PIi+nG+iNN6nn4h
+	ZeU6w6HEXpGNdFlNwRCKHXY1XXLGX3SpdG0+lWDB+ErBr0bAMrHkgIan9a0ddMDzSLr8ovZYNYI
+	CIPuYi0xgJ2yHF4fogWROA0BBvYSwojFX8WCDC+dJWHbg4ITilayzmQ9QV0S4KPPiCB23AChdJp
+	Cl+Gky37gDEBTOpEOME7yje9iCU9S3IiQd+eNeTuT3JcmKqqAZn/4A9db2SYFp2iw4hoIZPGlAh
+	wdrelxHy4fm/VTOGAMuqetGVetnyef22ep6XYOwBXM346/+ygN6zMY1vB0dZ4iKTsxyGe8vvzMU
+	l7c/o3Bf0+iT7T9MX/HOitp/8/
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--13.231500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 35A9F7B0E6E66B31604231B048F34353A18253EAFE18DD1D9AD922FD010014C02000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_041255_340249_1B95DA5C 
-X-CRM114-Status: GOOD (  33.93  )
+X-CRM114-CacheID: sfid-20230919_041255_304305_E63130D4 
+X-CRM114-Status: GOOD (  31.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,387 +116,648 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 
-To balance memory usage and performance, GenieZone supports larger granularity
-demand paging, called block-based demand paging. Gzvm driver uses enable_cap 
-to query the hypervisor if it supports block-based demand paging and the given
-granularity or not. Meanwhile, the gzvm driver allocates a shared buffer for 
-storing the physical pages later.
-
-If the hypervisor supports, every time the gzvm driver handles guest page
-faults, it allocates more memory in advance (default: 2MB) for demand paging.
-And fills those physical pages into the allocated shared memory, then calls
-the hypervisor to map to guest's memory.
-
-The physical pages allocated for block-based demand paging is not necessary to
-be contiguous because in many cases, 2MB block is not followed. 1st, the
-memory is allocated because of VMM's page fault (VMM loads kernel image to
-guest memory before running). In this case, the page is allocated by the host
-kernel and using PAGE_SIZE. 2nd is that guest may return memory to host via
-ballooning and that is still 4KB (or PAGE_SIZE) granularity. Therefore, we do
-not have to allocate physically contiguous 2MB pages.
+irqfd enables other threads than vcpu threads to inject virtual
+interrupt through irqfd asynchronously rather through ioctl interface.
+This interface is necessary for VMM which creates separated thread for
+IO handling or uses vhost devices.
 
 Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+Signed-off-by: kevenny hsieh <kevenny.hsieh@mediatek.com>
 Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 ---
- arch/arm64/geniezone/gzvm_arch_common.h |   2 +
- arch/arm64/geniezone/vm.c               |  19 +++-
- drivers/virt/geniezone/gzvm_mmu.c       | 110 +++++++++++++++++-------
- drivers/virt/geniezone/gzvm_vm.c        |  49 +++++++++++
- include/linux/gzvm_drv.h                |  16 ++++
- include/uapi/linux/gzvm.h               |   2 +
- 6 files changed, 164 insertions(+), 34 deletions(-)
+ arch/arm64/geniezone/gzvm_arch_common.h |  18 ++
+ drivers/virt/geniezone/Makefile         |   3 +-
+ drivers/virt/geniezone/gzvm_irqfd.c     | 382 ++++++++++++++++++++++++
+ drivers/virt/geniezone/gzvm_main.c      |  12 +-
+ drivers/virt/geniezone/gzvm_vcpu.c      |   1 +
+ drivers/virt/geniezone/gzvm_vm.c        |  18 ++
+ include/linux/gzvm_drv.h                |  25 ++
+ include/uapi/linux/gzvm.h               |  26 ++
+ 8 files changed, 483 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/virt/geniezone/gzvm_irqfd.c
 
 diff --git a/arch/arm64/geniezone/gzvm_arch_common.h b/arch/arm64/geniezone/gzvm_arch_common.h
-index c21eb8ca8d4b..f57f799bbbc9 100644
+index 9be9cf77faa3..051d8f49a1df 100644
 --- a/arch/arm64/geniezone/gzvm_arch_common.h
 +++ b/arch/arm64/geniezone/gzvm_arch_common.h
-@@ -25,6 +25,7 @@ enum {
- 	GZVM_FUNC_MEMREGION_PURPOSE = 15,
- 	GZVM_FUNC_SET_DTB_CONFIG = 16,
- 	GZVM_FUNC_MAP_GUEST = 17,
-+	GZVM_FUNC_MAP_GUEST_BLOCK = 18,
- 	NR_GZVM_FUNC,
- };
+@@ -45,6 +45,8 @@ enum {
+ #define MT_HVC_GZVM_ENABLE_CAP		GZVM_HCALL_ID(GZVM_FUNC_ENABLE_CAP)
+ #define MT_HVC_GZVM_INFORM_EXIT		GZVM_HCALL_ID(GZVM_FUNC_INFORM_EXIT)
  
-@@ -50,6 +51,7 @@ enum {
- #define MT_HVC_GZVM_MEMREGION_PURPOSE	GZVM_HCALL_ID(GZVM_FUNC_MEMREGION_PURPOSE)
- #define MT_HVC_GZVM_SET_DTB_CONFIG	GZVM_HCALL_ID(GZVM_FUNC_SET_DTB_CONFIG)
- #define MT_HVC_GZVM_MAP_GUEST		GZVM_HCALL_ID(GZVM_FUNC_MAP_GUEST)
-+#define MT_HVC_GZVM_MAP_GUEST_BLOCK	GZVM_HCALL_ID(GZVM_FUNC_MAP_GUEST_BLOCK)
- 
- #define GIC_V3_NR_LRS			16
- 
-diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
-index d236b6cf84b3..d1948045ed72 100644
---- a/arch/arm64/geniezone/vm.c
-+++ b/arch/arm64/geniezone/vm.c
-@@ -299,10 +299,11 @@ static int gzvm_vm_ioctl_cap_pvm(struct gzvm *gzvm,
- 		fallthrough;
- 	case GZVM_CAP_PVM_SET_PROTECTED_VM:
- 		/*
--		 * To improve performance for protected VM, we have to populate VM's memory
--		 * before VM booting
-+		 * If the hypervisor doesn't support block-based demand paging, we
-+		 * populate memory in advance to improve performance for protected VM.
- 		 */
--		populate_mem_region(gzvm);
-+		if (gzvm->demand_page_gran == PAGE_SIZE)
-+			populate_mem_region(gzvm);
- 		ret = gzvm_vm_arch_enable_cap(gzvm, cap, &res);
- 		return ret;
- 	case GZVM_CAP_PVM_GET_PVMFW_SIZE:
-@@ -319,12 +320,16 @@ int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm,
- 				  struct gzvm_enable_cap *cap,
- 				  void __user *argp)
- {
-+	struct arm_smccc_res res = {0};
- 	int ret;
- 
- 	switch (cap->cap) {
- 	case GZVM_CAP_PROTECTED_VM:
- 		ret = gzvm_vm_ioctl_cap_pvm(gzvm, cap, argp);
- 		return ret;
-+	case GZVM_CAP_BLOCK_BASED_DEMAND_PAGING:
-+		ret = gzvm_vm_arch_enable_cap(gzvm, cap, &res);
-+		return ret;
- 	default:
- 		break;
- 	}
-@@ -365,3 +370,11 @@ int gzvm_arch_map_guest(u16 vm_id, int memslot_id, u64 pfn, u64 gfn,
- 	return gzvm_hypcall_wrapper(MT_HVC_GZVM_MAP_GUEST, vm_id, memslot_id,
- 				    pfn, gfn, nr_pages, 0, 0, &res);
++#define GIC_V3_NR_LRS			16
++
+ /**
+  * gzvm_hypcall_wrapper() - the wrapper for hvc calls
+  * @a0-a7: arguments passed in registers 0 to 7
+@@ -72,6 +74,22 @@ static inline u16 get_vcpuid_from_tuple(unsigned int tuple)
+ 	return (u16)(tuple & 0xffff);
  }
+ 
++/**
++ * struct gzvm_vcpu_hwstate: Sync architecture state back to host for handling
++ * @nr_lrs: The available LRs(list registers) in Soc.
++ * @__pad: add an explicit '__u32 __pad;' in the middle to make it clear
++ *         what the actual layout is.
++ * @lr: The array of LRs(list registers).
++ *
++ * - Keep the same layout of hypervisor data struct.
++ * - Sync list registers back for acking virtual device interrupt status.
++ */
++struct gzvm_vcpu_hwstate {
++	__le32 nr_lrs;
++	__le32 __pad;
++	__le64 lr[GIC_V3_NR_LRS];
++};
 +
-+int gzvm_arch_map_guest_block(u16 vm_id, int memslot_id, u64 gfn)
+ static inline unsigned int
+ assemble_vm_vcpu_tuple(u16 vmid, u16 vcpuid)
+ {
+diff --git a/drivers/virt/geniezone/Makefile b/drivers/virt/geniezone/Makefile
+index ad3a7a8b2fa4..05203166bf09 100644
+--- a/drivers/virt/geniezone/Makefile
++++ b/drivers/virt/geniezone/Makefile
+@@ -7,4 +7,5 @@
+ GZVM_DIR ?= ../../../drivers/virt/geniezone
+ 
+ gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_mmu.o \
+-	  $(GZVM_DIR)/gzvm_vm.o $(GZVM_DIR)/gzvm_vcpu.o
++	  $(GZVM_DIR)/gzvm_vm.o $(GZVM_DIR)/gzvm_vcpu.o \
++	  $(GZVM_DIR)/gzvm_irqfd.o
+diff --git a/drivers/virt/geniezone/gzvm_irqfd.c b/drivers/virt/geniezone/gzvm_irqfd.c
+new file mode 100644
+index 000000000000..fe77d074cf20
+--- /dev/null
++++ b/drivers/virt/geniezone/gzvm_irqfd.c
+@@ -0,0 +1,382 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ */
++
++#include <linux/eventfd.h>
++#include <linux/syscalls.h>
++#include <linux/gzvm_drv.h>
++#include "gzvm_common.h"
++
++struct gzvm_irq_ack_notifier {
++	struct hlist_node link;
++	unsigned int gsi;
++	void (*irq_acked)(struct gzvm_irq_ack_notifier *ian);
++};
++
++/**
++ * struct gzvm_kernel_irqfd: gzvm kernel irqfd descriptor.
++ * @gzvm: Pointer to struct gzvm.
++ * @wait: Wait queue entry.
++ * @gsi: Used for level IRQ fast-path.
++ * @eventfd: Used for setup/shutdown.
++ * @list: struct list_head.
++ * @pt: struct poll_table_struct.
++ * @shutdown: struct work_struct.
++ */
++struct gzvm_kernel_irqfd {
++	struct gzvm *gzvm;
++	wait_queue_entry_t wait;
++
++	int gsi;
++
++	struct eventfd_ctx *eventfd;
++	struct list_head list;
++	poll_table pt;
++	struct work_struct shutdown;
++};
++
++static struct workqueue_struct *irqfd_cleanup_wq;
++
++/**
++ * irqfd_set_irq(): irqfd to inject virtual interrupt.
++ * @gzvm: Pointer to gzvm.
++ * @irq: This is spi interrupt number (starts from 0 instead of 32).
++ * @level: irq triggered level.
++ */
++static void irqfd_set_irq(struct gzvm *gzvm, u32 irq, int level)
 +{
-+	struct arm_smccc_res res;
-+
-+	return gzvm_hypcall_wrapper(MT_HVC_GZVM_MAP_GUEST_BLOCK, vm_id,
-+				    memslot_id, gfn, 0, 0, 0, 0, &res);
++	if (level)
++		gzvm_irqchip_inject_irq(gzvm, 0, irq, level);
 +}
-diff --git a/drivers/virt/geniezone/gzvm_mmu.c b/drivers/virt/geniezone/gzvm_mmu.c
-index 542599f104db..02b9d89d482d 100644
---- a/drivers/virt/geniezone/gzvm_mmu.c
-+++ b/drivers/virt/geniezone/gzvm_mmu.c
-@@ -140,15 +140,30 @@ static int gzvm_insert_ppage(struct gzvm *vm, struct gzvm_pinned_page *ppage)
- 	return 0;
- }
- 
--static int pin_one_page(unsigned long hva, struct page **page)
-+static int pin_one_page(struct gzvm *vm, unsigned long hva, u64 gpa)
- {
--	struct mm_struct *mm = current->mm;
- 	unsigned int flags = FOLL_HWPOISON | FOLL_LONGTERM | FOLL_WRITE;
-+	struct gzvm_pinned_page *ppage = NULL;
-+	struct mm_struct *mm = current->mm;
-+	struct page *page = NULL;
 +
-+	ppage = kmalloc(sizeof(*ppage), GFP_KERNEL_ACCOUNT);
-+	if (!ppage)
-+		return -ENOMEM;
- 
- 	mmap_read_lock(mm);
--	pin_user_pages(hva, 1, flags, page);
-+	pin_user_pages(hva, 1, flags, &page);
- 	mmap_read_unlock(mm);
- 
-+	if (!page) {
-+		kfree(ppage);
-+		return -EFAULT;
-+	}
-+
-+	ppage->page = page;
-+	ppage->ipa = gpa;
-+	gzvm_insert_ppage(vm, ppage);
-+
- 	return 0;
- }
- 
-@@ -179,6 +194,62 @@ int gzvm_handle_relinquish(struct gzvm_vcpu *vcpu, phys_addr_t ipa)
- 	return 0;
- }
- 
-+static int handle_block_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
++/**
++ * irqfd_shutdown() - Race-free decouple logic (ordering is critical).
++ * @work: Pointer to work_struct.
++ */
++static void irqfd_shutdown(struct work_struct *work)
 +{
-+	u64 pfn, __gfn, start_gfn;
-+	u32 nr_entries;
-+	unsigned long hva;
-+	int ret, i;
++	struct gzvm_kernel_irqfd *irqfd =
++		container_of(work, struct gzvm_kernel_irqfd, shutdown);
++	struct gzvm *gzvm = irqfd->gzvm;
++	u64 cnt;
 +
-+	nr_entries = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE / PAGE_SIZE;
-+	start_gfn = ALIGN_DOWN(gfn, nr_entries);
++	/* Make sure irqfd has been initialized in assign path. */
++	synchronize_srcu(&gzvm->irq_srcu);
 +
-+	mutex_lock(&vm->demand_paging_lock);
-+	for (i = 0, __gfn = start_gfn; i < nr_entries; i++, __gfn++) {
-+		ret = gzvm_gfn_to_pfn_memslot(&vm->memslot[memslot_id], __gfn,
-+					      &pfn);
-+		if (unlikely(ret)) {
-+			ret = -ERR_FAULT;
-+			goto err_unlock;
-+		}
-+		vm->demand_page_buffer[i] = pfn;
++	/*
++	 * Synchronize with the wait-queue and unhook ourselves to prevent
++	 * further events.
++	 */
++	eventfd_ctx_remove_wait_queue(irqfd->eventfd, &irqfd->wait, &cnt);
 +
-+		hva = gzvm_gfn_to_hva_memslot(&vm->memslot[memslot_id], __gfn);
-+		ret = pin_one_page(vm, hva, PFN_PHYS(__gfn));
-+		if (ret)
-+			goto err_unlock;
++	/*
++	 * It is now safe to release the object's resources
++	 */
++	eventfd_ctx_put(irqfd->eventfd);
++	kfree(irqfd);
++}
++
++/**
++ * irqfd_is_active() - Assumes gzvm->irqfds.lock is held.
++ * @irqfd: Pointer to gzvm_kernel_irqfd.
++ *
++ * Return:
++ * * true			- irqfd is active.
++ */
++static bool irqfd_is_active(struct gzvm_kernel_irqfd *irqfd)
++{
++	return list_empty(&irqfd->list) ? false : true;
++}
++
++/**
++ * irqfd_deactivate() - Mark the irqfd as inactive and schedule it for removal.
++ *			assumes gzvm->irqfds.lock is held.
++ * @irqfd: Pointer to gzvm_kernel_irqfd.
++ */
++static void irqfd_deactivate(struct gzvm_kernel_irqfd *irqfd)
++{
++	if (!irqfd_is_active(irqfd))
++		return;
++
++	list_del_init(&irqfd->list);
++
++	queue_work(irqfd_cleanup_wq, &irqfd->shutdown);
++}
++
++/**
++ * irqfd_wakeup() - Callback of irqfd wait queue, would be woken by writing to
++ *                  irqfd to do virtual interrupt injection.
++ * @wait: Pointer to wait_queue_entry_t.
++ * @mode: Unused.
++ * @sync: Unused.
++ * @key: Get flags about Epoll events.
++ *
++ * Return:
++ * * 0			- Success
++ */
++static int irqfd_wakeup(wait_queue_entry_t *wait, unsigned int mode, int sync,
++			void *key)
++{
++	struct gzvm_kernel_irqfd *irqfd =
++		container_of(wait, struct gzvm_kernel_irqfd, wait);
++	__poll_t flags = key_to_poll(key);
++	struct gzvm *gzvm = irqfd->gzvm;
++
++	if (flags & EPOLLIN) {
++		u64 cnt;
++
++		eventfd_ctx_do_read(irqfd->eventfd, &cnt);
++		/* gzvm's irq injection is not blocked, don't need workq */
++		irqfd_set_irq(gzvm, irqfd->gsi, 1);
 +	}
 +
-+	ret = gzvm_arch_map_guest_block(vm->vm_id, memslot_id, start_gfn);
-+	if (unlikely(ret)) {
-+		ret = -EFAULT;
-+		goto err_unlock;
++	if (flags & EPOLLHUP) {
++		/* The eventfd is closing, detach from GZVM */
++		unsigned long iflags;
++
++		spin_lock_irqsave(&gzvm->irqfds.lock, iflags);
++
++		/*
++		 * Do more check if someone deactivated the irqfd before
++		 * we could acquire the irqfds.lock.
++		 */
++		if (irqfd_is_active(irqfd))
++			irqfd_deactivate(irqfd);
++
++		spin_unlock_irqrestore(&gzvm->irqfds.lock, iflags);
 +	}
 +
-+err_unlock:
-+	mutex_unlock(&vm->demand_paging_lock);
++	return 0;
++}
 +
++static void irqfd_ptable_queue_proc(struct file *file, wait_queue_head_t *wqh,
++				    poll_table *pt)
++{
++	struct gzvm_kernel_irqfd *irqfd =
++		container_of(pt, struct gzvm_kernel_irqfd, pt);
++	add_wait_queue_priority(wqh, &irqfd->wait);
++}
++
++static int gzvm_irqfd_assign(struct gzvm *gzvm, struct gzvm_irqfd *args)
++{
++	struct gzvm_kernel_irqfd *irqfd, *tmp;
++	struct fd f;
++	struct eventfd_ctx *eventfd = NULL;
++	int ret;
++	int idx;
++
++	irqfd = kzalloc(sizeof(*irqfd), GFP_KERNEL_ACCOUNT);
++	if (!irqfd)
++		return -ENOMEM;
++
++	irqfd->gzvm = gzvm;
++	irqfd->gsi = args->gsi;
++
++	INIT_LIST_HEAD(&irqfd->list);
++	INIT_WORK(&irqfd->shutdown, irqfd_shutdown);
++
++	f = fdget(args->fd);
++	if (!f.file) {
++		ret = -EBADF;
++		goto out;
++	}
++
++	eventfd = eventfd_ctx_fileget(f.file);
++	if (IS_ERR(eventfd)) {
++		ret = PTR_ERR(eventfd);
++		goto fail;
++	}
++
++	irqfd->eventfd = eventfd;
++
++	/*
++	 * Install our own custom wake-up handling so we are notified via
++	 * a callback whenever someone signals the underlying eventfd
++	 */
++	init_waitqueue_func_entry(&irqfd->wait, irqfd_wakeup);
++	init_poll_funcptr(&irqfd->pt, irqfd_ptable_queue_proc);
++
++	spin_lock_irq(&gzvm->irqfds.lock);
++
++	ret = 0;
++	list_for_each_entry(tmp, &gzvm->irqfds.items, list) {
++		if (irqfd->eventfd != tmp->eventfd)
++			continue;
++		/* This fd is used for another irq already. */
++		pr_err("already used: gsi=%d fd=%d\n", args->gsi, args->fd);
++		ret = -EBUSY;
++		spin_unlock_irq(&gzvm->irqfds.lock);
++		goto fail;
++	}
++
++	idx = srcu_read_lock(&gzvm->irq_srcu);
++
++	list_add_tail(&irqfd->list, &gzvm->irqfds.items);
++
++	spin_unlock_irq(&gzvm->irqfds.lock);
++
++	vfs_poll(f.file, &irqfd->pt);
++
++	srcu_read_unlock(&gzvm->irq_srcu, idx);
++
++	/*
++	 * do not drop the file until the irqfd is fully initialized, otherwise
++	 * we might race against the EPOLLHUP
++	 */
++	fdput(f);
++	return 0;
++
++fail:
++	if (eventfd && !IS_ERR(eventfd))
++		eventfd_ctx_put(eventfd);
++
++	fdput(f);
++
++out:
++	kfree(irqfd);
 +	return ret;
 +}
 +
-+static int handle_single_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
++static void gzvm_notify_acked_gsi(struct gzvm *gzvm, int gsi)
 +{
-+	unsigned long hva;
-+	int ret;
-+	u64 pfn;
++	struct gzvm_irq_ack_notifier *gian;
 +
-+	ret = gzvm_gfn_to_pfn_memslot(&vm->memslot[memslot_id], gfn, &pfn);
-+	if (unlikely(ret))
-+		return -EFAULT;
-+
-+	ret = gzvm_arch_map_guest(vm->vm_id, memslot_id, pfn, gfn, 1);
-+	if (unlikely(ret))
-+		return -EFAULT;
-+
-+	hva = gzvm_gfn_to_hva_memslot(&vm->memslot[memslot_id], gfn);
-+	return pin_one_page(vm, hva, PFN_PHYS(gfn));
++	hlist_for_each_entry_srcu(gian, &gzvm->irq_ack_notifier_list,
++				  link, srcu_read_lock_held(&gzvm->irq_srcu))
++		if (gian->gsi == gsi)
++			gian->irq_acked(gian);
 +}
 +
- /**
-  * gzvm_handle_page_fault() - Handle guest page fault, find corresponding page
-  *                            for the faulting gpa
-@@ -190,40 +261,17 @@ int gzvm_handle_relinquish(struct gzvm_vcpu *vcpu, phys_addr_t ipa)
-  */
- int gzvm_handle_page_fault(struct gzvm_vcpu *vcpu)
- {
--	struct gzvm_pinned_page *ppage = NULL;
- 	struct gzvm *vm = vcpu->gzvm;
--	struct page *page = NULL;
--	unsigned long hva;
--	u64 pfn, gfn;
- 	int memslot_id;
--	int ret;
-+	u64 gfn;
- 
- 	gfn = PHYS_PFN(vcpu->run->exception.fault_gpa);
- 	memslot_id = gzvm_find_memslot(vm, gfn);
- 	if (unlikely(memslot_id < 0))
- 		return -EFAULT;
- 
--	ret = gzvm_gfn_to_pfn_memslot(&vm->memslot[memslot_id], gfn, &pfn);
--	if (unlikely(ret))
--		return -EFAULT;
--
--	ret = gzvm_arch_map_guest(vm->vm_id, memslot_id, pfn, gfn, 1);
--	if (unlikely(ret))
--		return -EFAULT;
--
--	hva = gzvm_gfn_to_hva_memslot(&vm->memslot[memslot_id], gfn);
--	pin_one_page(hva, &page);
--
--	if (!page)
--		return -EFAULT;
--
--	ppage = kmalloc(sizeof(*ppage), GFP_KERNEL_ACCOUNT);
--	if (!ppage)
--		return -ENOMEM;
--
--	ppage->page = page;
--	ppage->ipa = vcpu->run->exception.fault_gpa;
--	gzvm_insert_ppage(vm, ppage);
--
--	return 0;
-+	if (vm->demand_page_gran == PAGE_SIZE)
-+		return handle_single_demand_page(vm, memslot_id, gfn);
-+	else
-+		return handle_block_demand_page(vm, memslot_id, gfn);
- }
-diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
-index 747e5cf523bf..a7d43bedfad0 100644
---- a/drivers/virt/geniezone/gzvm_vm.c
-+++ b/drivers/virt/geniezone/gzvm_vm.c
-@@ -309,6 +309,8 @@ static void gzvm_destroy_ppage(struct gzvm *gzvm)
- 
- static void gzvm_destroy_vm(struct gzvm *gzvm)
- {
-+	size_t allocated_size;
++void gzvm_notify_acked_irq(struct gzvm *gzvm, unsigned int gsi)
++{
++	int idx;
 +
- 	pr_debug("VM-%u is going to be destroyed\n", gzvm->vm_id);
- 
- 	mutex_lock(&gzvm->lock);
-@@ -321,6 +323,11 @@ static void gzvm_destroy_vm(struct gzvm *gzvm)
- 	list_del(&gzvm->vm_list);
- 	mutex_unlock(&gzvm_list_lock);
- 
-+	if (gzvm->demand_page_buffer) {
-+		allocated_size = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE / PAGE_SIZE * sizeof(u64);
-+		free_pages_exact(gzvm->demand_page_buffer, allocated_size);
-+	}
++	idx = srcu_read_lock(&gzvm->irq_srcu);
++	gzvm_notify_acked_gsi(gzvm, gsi);
++	srcu_read_unlock(&gzvm->irq_srcu, idx);
++}
 +
- 	mutex_unlock(&gzvm->lock);
- 
- 	gzvm_destroy_ppage(gzvm);
-@@ -342,6 +349,46 @@ static const struct file_operations gzvm_vm_fops = {
- 	.llseek		= noop_llseek,
- };
- 
 +/**
-+ * setup_vm_demand_paging - Query hypervisor suitable demand page size and set
-+ * @vm: gzvm instance for setting up demand page size
++ * gzvm_irqfd_deassign() - Shutdown any irqfd's that match fd+gsi.
++ * @gzvm: Pointer to gzvm.
++ * @args: Pointer to gzvm_irqfd.
 + *
-+ * Return: void
++ * Return:
++ * * 0			- Success.
++ * * Negative value	- Failure.
 + */
-+static void setup_vm_demand_paging(struct gzvm *vm)
++static int gzvm_irqfd_deassign(struct gzvm *gzvm, struct gzvm_irqfd *args)
 +{
-+	u32 buf_size = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE / PAGE_SIZE * sizeof(u64);
-+	struct gzvm_enable_cap cap = {0};
-+	void *buffer;
-+	int ret;
++	struct gzvm_kernel_irqfd *irqfd, *tmp;
++	struct eventfd_ctx *eventfd;
 +
-+	mutex_init(&vm->demand_paging_lock);
-+	buffer = alloc_pages_exact(buf_size, GFP_KERNEL);
-+	if (!buffer) {
-+		/* Fall back to use default page size for demand paging */
-+		vm->demand_page_gran = PAGE_SIZE;
-+		vm->demand_page_buffer = NULL;
-+		return;
++	eventfd = eventfd_ctx_fdget(args->fd);
++	if (IS_ERR(eventfd))
++		return PTR_ERR(eventfd);
++
++	spin_lock_irq(&gzvm->irqfds.lock);
++
++	list_for_each_entry_safe(irqfd, tmp, &gzvm->irqfds.items, list) {
++		if (irqfd->eventfd == eventfd && irqfd->gsi == args->gsi)
++			irqfd_deactivate(irqfd);
 +	}
 +
-+	cap.cap = GZVM_CAP_BLOCK_BASED_DEMAND_PAGING;
-+	cap.args[0] = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE;
-+	cap.args[1] = (__u64)virt_to_phys(buffer);
-+	/* demand_page_buffer is freed when destroy VM */
-+	vm->demand_page_buffer = buffer;
++	spin_unlock_irq(&gzvm->irqfds.lock);
++	eventfd_ctx_put(eventfd);
 +
-+	ret = gzvm_vm_ioctl_enable_cap(vm, &cap, NULL);
-+	if (ret == 0) {
-+		vm->demand_page_gran = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE;
-+		/* freed when destroy vm */
-+		vm->demand_page_buffer = buffer;
-+	} else {
-+		vm->demand_page_gran = PAGE_SIZE;
-+		vm->demand_page_buffer = NULL;
-+		free_pages_exact(buffer, buf_size);
-+	}
++	/*
++	 * Block until we know all outstanding shutdown jobs have completed
++	 * so that we guarantee there will not be any more interrupts on this
++	 * gsi once this deassign function returns.
++	 */
++	flush_workqueue(irqfd_cleanup_wq);
++
++	return 0;
 +}
 +
- static struct gzvm *gzvm_create_vm(unsigned long vm_type)
++int gzvm_irqfd(struct gzvm *gzvm, struct gzvm_irqfd *args)
++{
++	for (int i = 0; i < ARRAY_SIZE(args->pad); i++) {
++		if (args->pad[i])
++			return -EINVAL;
++	}
++
++	if (args->flags &
++	    ~(GZVM_IRQFD_FLAG_DEASSIGN | GZVM_IRQFD_FLAG_RESAMPLE))
++		return -EINVAL;
++
++	if (args->flags & GZVM_IRQFD_FLAG_DEASSIGN)
++		return gzvm_irqfd_deassign(gzvm, args);
++
++	return gzvm_irqfd_assign(gzvm, args);
++}
++
++/**
++ * gzvm_vm_irqfd_init() - Initialize irqfd data structure per VM
++ *
++ * @gzvm: Pointer to struct gzvm.
++ *
++ * Return:
++ * * 0			- Success.
++ * * Negative		- Failure.
++ */
++int gzvm_vm_irqfd_init(struct gzvm *gzvm)
++{
++	mutex_init(&gzvm->irq_lock);
++
++	spin_lock_init(&gzvm->irqfds.lock);
++	INIT_LIST_HEAD(&gzvm->irqfds.items);
++	if (init_srcu_struct(&gzvm->irq_srcu))
++		return -EINVAL;
++	INIT_HLIST_HEAD(&gzvm->irq_ack_notifier_list);
++
++	return 0;
++}
++
++/**
++ * gzvm_vm_irqfd_release() - This function is called as the gzvm VM fd is being
++ *			  released. Shutdown all irqfds that still remain open.
++ * @gzvm: Pointer to gzvm.
++ */
++void gzvm_vm_irqfd_release(struct gzvm *gzvm)
++{
++	struct gzvm_kernel_irqfd *irqfd, *tmp;
++
++	spin_lock_irq(&gzvm->irqfds.lock);
++
++	list_for_each_entry_safe(irqfd, tmp, &gzvm->irqfds.items, list)
++		irqfd_deactivate(irqfd);
++
++	spin_unlock_irq(&gzvm->irqfds.lock);
++
++	/*
++	 * Block until we know all outstanding shutdown jobs have completed.
++	 */
++	flush_workqueue(irqfd_cleanup_wq);
++}
++
++/**
++ * gzvm_drv_irqfd_init() - Erase flushing work items when a VM exits.
++ *
++ * Return:
++ * * 0			- Success.
++ * * Negative		- Failure.
++ *
++ * Create a host-wide workqueue for issuing deferred shutdown requests
++ * aggregated from all vm* instances. We need our own isolated
++ * queue to ease flushing work items when a VM exits.
++ */
++int gzvm_drv_irqfd_init(void)
++{
++	irqfd_cleanup_wq = alloc_workqueue("gzvm-irqfd-cleanup", 0, 0);
++	if (!irqfd_cleanup_wq)
++		return -ENOMEM;
++
++	return 0;
++}
++
++void gzvm_drv_irqfd_exit(void)
++{
++	destroy_workqueue(irqfd_cleanup_wq);
++}
+diff --git a/drivers/virt/geniezone/gzvm_main.c b/drivers/virt/geniezone/gzvm_main.c
+index 30f6c3975026..4e5d1b83df4a 100644
+--- a/drivers/virt/geniezone/gzvm_main.c
++++ b/drivers/virt/geniezone/gzvm_main.c
+@@ -97,16 +97,26 @@ static struct miscdevice gzvm_dev = {
+ 
+ static int gzvm_drv_probe(struct platform_device *pdev)
  {
- 	int ret;
-@@ -376,6 +423,8 @@ static struct gzvm *gzvm_create_vm(unsigned long vm_type)
- 		return ERR_PTR(ret);
++	int ret;
++
+ 	if (gzvm_arch_probe() != 0) {
+ 		dev_err(&pdev->dev, "Not found available conduit\n");
+ 		return -ENODEV;
  	}
  
-+	setup_vm_demand_paging(gzvm);
+-	return misc_register(&gzvm_dev);
++	ret = misc_register(&gzvm_dev);
++	if (ret)
++		return ret;
++
++	ret = gzvm_drv_irqfd_init();
++	if (ret)
++		return ret;
++	return 0;
+ }
+ 
+ static int gzvm_drv_remove(struct platform_device *pdev)
+ {
++	gzvm_drv_irqfd_exit();
+ 	gzvm_destroy_all_vms();
+ 	misc_deregister(&gzvm_dev);
+ 	return 0;
+diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
+index b8070a46c087..85b59592cb5c 100644
+--- a/drivers/virt/geniezone/gzvm_vcpu.c
++++ b/drivers/virt/geniezone/gzvm_vcpu.c
+@@ -229,6 +229,7 @@ int gzvm_vm_ioctl_create_vcpu(struct gzvm *gzvm, u32 cpuid)
+ 		ret = -ENOMEM;
+ 		goto free_vcpu;
+ 	}
++	vcpu->hwstate = (void *)vcpu->run + PAGE_SIZE;
+ 	vcpu->vcpuid = cpuid;
+ 	vcpu->gzvm = gzvm;
+ 	mutex_init(&vcpu->lock);
+diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
+index 72606a6cc995..eb760f418552 100644
+--- a/drivers/virt/geniezone/gzvm_vm.c
++++ b/drivers/virt/geniezone/gzvm_vm.c
+@@ -285,6 +285,16 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
+ 		ret = gzvm_vm_ioctl_create_device(gzvm, argp);
+ 		break;
+ 	}
++	case GZVM_IRQFD: {
++		struct gzvm_irqfd data;
++
++		if (copy_from_user(&data, argp, sizeof(data))) {
++			ret = -EFAULT;
++			goto out;
++		}
++		ret = gzvm_irqfd(gzvm, &data);
++		break;
++	}
+ 	case GZVM_ENABLE_CAP: {
+ 		struct gzvm_enable_cap cap;
+ 
+@@ -308,6 +318,7 @@ static void gzvm_destroy_vm(struct gzvm *gzvm)
+ 
+ 	mutex_lock(&gzvm->lock);
+ 
++	gzvm_vm_irqfd_release(gzvm);
+ 	gzvm_destroy_vcpus(gzvm);
+ 	gzvm_arch_destroy_vm(gzvm->vm_id);
+ 
+@@ -353,6 +364,13 @@ static struct gzvm *gzvm_create_vm(unsigned long vm_type)
+ 	gzvm->mm = current->mm;
+ 	mutex_init(&gzvm->lock);
+ 
++	ret = gzvm_vm_irqfd_init(gzvm);
++	if (ret) {
++		pr_err("Failed to initialize irqfd\n");
++		kfree(gzvm);
++		return ERR_PTR(ret);
++	}
 +
  	mutex_lock(&gzvm_list_lock);
  	list_add(&gzvm->vm_list, &gzvm_list);
  	mutex_unlock(&gzvm_list_lock);
 diff --git a/include/linux/gzvm_drv.h b/include/linux/gzvm_drv.h
-index 77c839c02b17..a6994a1c391a 100644
+index 805a866acecc..676e6b5714e8 100644
 --- a/include/linux/gzvm_drv.h
 +++ b/include/linux/gzvm_drv.h
-@@ -46,6 +46,8 @@
+@@ -10,6 +10,7 @@
+ #include <linux/mm.h>
+ #include <linux/mutex.h>
+ #include <linux/gzvm.h>
++#include <linux/srcu.h>
  
- #define GZVM_VCPU_RUN_MAP_SIZE		(PAGE_SIZE * 2)
+ /*
+  * For the normal physical address, the highest 12 bits should be zero, so we
+@@ -30,6 +31,7 @@
+ #define ERR_NOT_SUPPORTED       (-24)
+ #define ERR_NOT_IMPLEMENTED     (-27)
+ #define ERR_FAULT               (-40)
++#define GZVM_IRQFD_RESAMPLE_IRQ_SOURCE_ID       1
  
-+#define GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE	(2 * 1024 * 1024) /* 2MB */
+ /*
+  * The following data structures are for data transferring between driver and
+@@ -73,6 +75,7 @@ struct gzvm_vcpu {
+ 	/* lock of vcpu*/
+ 	struct mutex lock;
+ 	struct gzvm_vcpu_run *run;
++	struct gzvm_vcpu_hwstate *hwstate;
+ };
+ 
+ struct gzvm {
+@@ -82,8 +85,23 @@ struct gzvm {
+ 	struct gzvm_memslot memslot[GZVM_MAX_MEM_REGION];
+ 	/* lock for list_add*/
+ 	struct mutex lock;
 +
- /* struct mem_region_addr_range - Identical to ffa memory constituent */
- struct mem_region_addr_range {
- 	/* the base IPA of the constituent memory region, aligned to 4 kiB */
-@@ -117,6 +119,19 @@ struct gzvm {
- 
- 	/* Use rb-tree to record pin/unpin page */
- 	struct rb_root pinned_pages;
++	struct {
++		/* lock for irqfds list operation */
++		spinlock_t        lock;
++		struct list_head  items;
++		struct list_head  resampler_list;
++		/* lock for irqfds resampler */
++		struct mutex      resampler_lock;
++	} irqfds;
 +
-+	/*
-+	 * demand page granularity: how much memory we allocate for VM in a
-+	 * single page fault
-+	 */
-+	u32 demand_page_gran;
-+	/* the mailbox for transferring large portion pages */
-+	u64 *demand_page_buffer;
-+	/*
-+	 * lock for preventing multiple cpu using the same demand page mailbox
-+	 * at the same time
-+	 */
-+	struct mutex  demand_paging_lock;
+ 	struct list_head vm_list;
+ 	u16 vm_id;
++
++	struct hlist_head irq_ack_notifier_list;
++	struct srcu_struct irq_srcu;
++	/* lock for irq injection */
++	struct mutex irq_lock;
  };
  
  long gzvm_dev_ioctl_check_extension(struct gzvm *gzvm, unsigned long args);
-@@ -137,6 +152,7 @@ int gzvm_arch_create_vm(unsigned long vm_type);
- int gzvm_arch_destroy_vm(u16 vm_id);
- int gzvm_arch_map_guest(u16 vm_id, int memslot_id, u64 pfn, u64 gfn,
- 			u64 nr_pages);
-+int gzvm_arch_map_guest_block(u16 vm_id, int memslot_id, u64 gfn);
- int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm,
- 				  struct gzvm_enable_cap *cap,
- 				  void __user *argp);
+@@ -124,4 +142,11 @@ int gzvm_arch_create_device(u16 vm_id, struct gzvm_create_device *gzvm_dev);
+ int gzvm_arch_inject_irq(struct gzvm *gzvm, unsigned int vcpu_idx,
+ 			 u32 irq, bool level);
+ 
++void gzvm_notify_acked_irq(struct gzvm *gzvm, unsigned int gsi);
++int gzvm_irqfd(struct gzvm *gzvm, struct gzvm_irqfd *args);
++int gzvm_drv_irqfd_init(void);
++void gzvm_drv_irqfd_exit(void);
++int gzvm_vm_irqfd_init(struct gzvm *gzvm);
++void gzvm_vm_irqfd_release(struct gzvm *gzvm);
++
+ #endif /* __GZVM_DRV_H__ */
 diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
-index edac8e3ae790..a98787a18c36 100644
+index a1f6acdc4055..cb02f278972f 100644
 --- a/include/uapi/linux/gzvm.h
 +++ b/include/uapi/linux/gzvm.h
-@@ -18,6 +18,8 @@
+@@ -309,4 +309,30 @@ struct gzvm_one_reg {
  
- #define GZVM_CAP_VM_GPA_SIZE	0xa5
- #define GZVM_CAP_PROTECTED_VM	0xffbadab1
-+/* query hypervisor supported block-based demand page */
-+#define GZVM_CAP_BLOCK_BASED_DEMAND_PAGING	0x9201
+ #define GZVM_REG_GENERIC	   0x0000000000000000ULL
  
- /* sub-commands put in args[0] for GZVM_CAP_PROTECTED_VM */
- #define GZVM_CAP_PVM_SET_PVMFW_GPA		0
++#define GZVM_IRQFD_FLAG_DEASSIGN	BIT(0)
++/*
++ * GZVM_IRQFD_FLAG_RESAMPLE indicates resamplefd is valid and specifies
++ * the irqfd to operate in resampling mode for level triggered interrupt
++ * emulation.
++ */
++#define GZVM_IRQFD_FLAG_RESAMPLE	BIT(1)
++
++/**
++ * struct gzvm_irqfd: gzvm irqfd descriptor
++ * @fd: File descriptor.
++ * @gsi: Used for level IRQ fast-path.
++ * @flags: FLAG_DEASSIGN or FLAG_RESAMPLE.
++ * @resamplefd: The file descriptor of the resampler.
++ * @pad: Reserved for future-proof.
++ */
++struct gzvm_irqfd {
++	__u32 fd;
++	__u32 gsi;
++	__u32 flags;
++	__u32 resamplefd;
++	__u8  pad[16];
++};
++
++#define GZVM_IRQFD	_IOW(GZVM_IOC_MAGIC, 0x76, struct gzvm_irqfd)
++
+ #endif /* __GZVM_H__ */
 -- 
 2.18.0
 
