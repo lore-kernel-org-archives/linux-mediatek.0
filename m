@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D5E4CD54AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 09:59:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C9E3CD54AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 10:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LZLdI6dkjeHHplXqrlvuHGae09apfDuKsS5lypxvYAs=; b=qvUwtM3tvsfJC/NJgZnsd5s42K
-	K/rFYqSru0B2olneBTAzAn/vrnBt4hE6eQ9Lgj0YB71zsRLdFeMMpvZjDIqmAZGsZx2uJFfUPOwmV
-	M2GV4GVm10/PuqFzDXYDr55MpF0o8ciMsALJWGcDqMioEgkoSpopYxB/23B5/xN+lbYmMVIk6S0yg
-	cvUUwB/WE7gXGanGkiH2VeL6sYfYXJ7QPfs5Ukzd1kB8IchAklpzGaVLn+S3I+Bdi6Nb59Ld1pYCF
-	R+fKJG6WQQRI1RF/x/BDsdptNSmEBkRDgPUHhN7H40ZCvht0tskTH4QK6PImSqo8v64G3aAnj6Oyu
-	JWPbX/Gg==;
+	bh=SlwfOsv+H6AHlDKbTRxG4SD+E/FSPjYeg/3rDXmzKz8=; b=trt0vzgoCR0DNx4R/jzUpQa8Xw
+	C7jS5aUdxyPNohLa3Ft81hpeleczsD2rcjkj3Hb2rx0wMmaGWDubIbIn32vYLG6pdGvNIrgkdkNzm
+	Yfm4H+LT6sC0oV+nJlHUSGb78JTSwREPtyrrjMsZjD8+CLmUf1QRIeS2DREA7896KvhyXESqOvkr5
+	+P5n7gdkrtSAGJMCzSnWwFDvAP0cxY7HGz+IAnVU7+nqiF5Qp//TA/oictrx5sMwYaX7EjNQnnBqr
+	VBTWnz0iLZ8P6ZX0g4RsIAf78IZDBJoZW1RUuWeNqBwfO5/pZh2Lp6rVDwQmsSbCpYPjYNDcJMvQF
+	9ITT1d6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiXWK-00HZde-02;
-	Tue, 19 Sep 2023 09:59:52 +0000
+	id 1qiXWV-00HZhi-0i;
+	Tue, 19 Sep 2023 10:00:03 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiXWF-00HZb8-0M;
-	Tue, 19 Sep 2023 09:59:48 +0000
+	id 1qiXWF-00HZbB-0M;
+	Tue, 19 Sep 2023 09:59:49 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F1056607079;
-	Tue, 19 Sep 2023 10:59:43 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 95BC26607083;
+	Tue, 19 Sep 2023 10:59:44 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695117584;
-	bh=diaOf6EmUGm6l+mxt6/O1nJ6UjZ2yPHfhRpfvuoUEnU=;
+	s=mail; t=1695117585;
+	bh=ty1ncJ/gw8hrt51lR2U+TFArnXv5dU7HXDPnYcxw+dw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mC4nCTkI8xE1emA5TZ+ruqLSdx6SsDSZr/hQPbMf+x8/LojiaCNdOZAE/lJtkbGiS
-	 CNUHOzPfB2+drbHy5k2qndZVUq/8y07M3DbtEL3thwEVA6pVILz7Gv9qk4d8uMibqc
-	 P9R4xgpHISMt0jYQwNcn21lsyBuc5QmMTK5uOdUPOJF7wvN9TYV/Fh387v3WBNXhr1
-	 IuhiQoYvqpaq4KLeJ6ezOOOIiQeHMhpZyFWOgx8rsMeFuGpfWFuHHB6xt7ub4fkM/o
-	 mmyNVEf97IhPEOPC1xJyfmRCBtxBCPPegaiSC2Fp70rJ87l82J6/hyHedHpXhEWWG6
-	 SfSeuGQc0x5EA==
+	b=StKEpJ45dfYg1hZOjzQqqJo3FpCWv8VqfgMPIQo7ZvtnXXpwzhwgrztPa4NeZ8T+y
+	 RVe0zeLcKynvJjpeOEr32ul/Abs0xJAhnwLplgr3pK6paFIQoHo+d8BRTxzH5eiIy/
+	 uoj/dHKTDdFsNciQMeVwNuQWAMxOgCYsNlTmqctJA147Sljyda6bWa5UTZ2qvQSR5l
+	 xN1cY5vKssh0CdT8wNDCh2jHjufv/peXcgDi8gzlTvsOt9LjIR/nj2x/ayYlNXIS22
+	 monR6h0q5f0N2s9ApuGN13f4S9sUCAfPMmpcq0VRzQKPJRa937S0tCb35egfWi9ScY
+	 VULyrDJyyqzNQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mchehab@kernel.org
 Cc: robh+dt@kernel.org,
@@ -62,18 +62,17 @@ Cc: robh+dt@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH 1/2] media: dt-bindings: mediatek: Add phandle to mediatek,scp on MDP3 RDMA
-Date: Tue, 19 Sep 2023 11:59:37 +0200
-Message-ID: <20230919095938.70679-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/2] media: platform: mtk-mdp3: Use devicetree phandle to retrieve SCP
+Date: Tue, 19 Sep 2023 11:59:38 +0200
+Message-ID: <20230919095938.70679-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20230919095938.70679-1-angelogioacchino.delregno@collabora.com>
 References: <20230919095938.70679-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_025947_341657_00DF5859 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230919_025947_341652_D7321867 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,38 +87,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MDP3 RDMA needs to communicate with the SCP remote processor: allow
-specifying a phandle to a SCP core.
+Instead of walking the entire parent node for something that has the
+right compatible, use the scp_get() function provided by the MediaTek
+SCP remoteproc driver to retrieve a handle to mtk_scp through the
+devicetree "mediatek,scp" (phandle) property.
+
+In case of multi-core SCP, this also allows to select a specific core.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/media/mediatek,mdp3-rdma.yaml       | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../media/platform/mediatek/mdp3/mtk-mdp3-core.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-index d639a1461143..0e5ce2e77e99 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -46,6 +46,11 @@ properties:
-       include/dt-bindings/gce/<chip>-gce.h of each chips.
-     $ref: /schemas/types.yaml#/definitions/uint32-array
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 8677e7fd5083..d93d3833633e 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -254,13 +254,17 @@ static int mdp_probe(struct platform_device *pdev)
+ 		goto err_destroy_job_wq;
+ 	}
  
-+  mediatek,scp:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the System Control Processor (SCP) node
+-	mm_pdev = __get_pdev_by_id(pdev, NULL, MDP_INFRA_SCP);
+-	if (WARN_ON(!mm_pdev)) {
+-		dev_err(&pdev->dev, "Could not get scp device\n");
+-		ret = -ENODEV;
+-		goto err_destroy_clock_wq;
++	mdp->scp = scp_get(pdev);
++	if (!mdp->scp) {
++		mm_pdev = __get_pdev_by_id(pdev, NULL, MDP_INFRA_SCP);
++		if (WARN_ON(!mm_pdev)) {
++			dev_err(&pdev->dev, "Could not get scp device\n");
++			ret = -ENODEV;
++			goto err_destroy_clock_wq;
++		}
++		mdp->scp = platform_get_drvdata(mm_pdev);
+ 	}
+-	mdp->scp = platform_get_drvdata(mm_pdev);
 +
-   power-domains:
-     oneOf:
-       - items:
-@@ -98,6 +103,7 @@ examples:
-         mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-         mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-                               <CMDQ_EVENT_MDP_RDMA0_EOF>;
-+        mediatek,scp = <&scp>;
-         power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-         clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-                  <&mmsys CLK_MM_MDP_RSZ1>;
+ 	mdp->rproc_handle = scp_get_rproc(mdp->scp);
+ 	dev_dbg(&pdev->dev, "MDP rproc_handle: %pK", mdp->rproc_handle);
+ 
 -- 
 2.42.0
 
