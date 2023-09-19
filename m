@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 958D2CD54AC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 09:32:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA78FCD54A9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 09:37:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=we/u/zvu/UVgQeVPXRpC/bZ8DR4S/G+u0NOLZRV37EQ=; b=S3A1STOWu/BcKf5WeP2w2PGwzX
-	f4HKiWKELoGr4GLWT5EINJ+W0dA1yjRNa2wp+g+JH8EOrToiwCUqyFt2ARaJ7hjxjD9Nj9V0duO2o
-	OkERejo27/kW5wNhHWTAWfdr5XY/t248t6agUhZWkNyZX2ugADyK/WuMhxuoEEStp4oZJ2qZc62kp
-	o5Eiq+FBvyNgiz1JfmicZ5XABfoRLotZikDiZCVOSBfchlMU6bxPZBIDkzlMRDt2Pyk3xfOlDVayy
-	md/iFFo5nT1FKwDsmGalqiby3SEG0uI6Ch67bZeSn+bs2xIidj//OArLO2dX15VYN334tSr+41axw
-	1j9Cj7uA==;
+	bh=2+0qrRX/D8z4w1w23yhwzyPbfzEVUGJddj4zaf7dJqk=; b=id1VaA79V6grU1FOC7dVEyDJEY
+	joTOtSRV1/XadVHeSEJB2dZ2QQFVsZKy1iWUToG77EJ2I/GiWNle/5X9BGjXQlApQ+BrNwgSROCf/
+	sCFQA4yeWQA65Dgqe3yWkf+Iyz4SlYhKag81/VVNTFIv6ZU3pInWh88u5inV1iQS8Wwwabq3BddS0
+	NP1lRy5FoM9g/KPiS7l55yHNQUavsG80+gA4j2u2qePCxBpvngivO4X9iUGcZjtq8OpTDulFC0Qex
+	QgfZKnym84duzy8TTom+Q9mu6GQFCnIboy5KWb9CnZsIJJG6FS/9kuASiawoyuB8PtdKN35oRDVhu
+	SaqHwIHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiX5M-00HUZa-06;
-	Tue, 19 Sep 2023 09:32:00 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qiXAu-00HVrg-1X;
+	Tue, 19 Sep 2023 09:37:44 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiX4w-00HUD6-2a;
-	Tue, 19 Sep 2023 09:31:36 +0000
+	id 1qiXAq-00HVqO-3D;
+	Tue, 19 Sep 2023 09:37:42 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 116D0B811A1;
-	Tue, 19 Sep 2023 09:31:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1C0FC433C8;
-	Tue, 19 Sep 2023 09:31:27 +0000 (UTC)
-Message-ID: <93e9b143-664c-4fbb-8722-0beabd5b2c0c@xs4all.nl>
-Date: Tue, 19 Sep 2023 11:31:26 +0200
+	by sin.source.kernel.org (Postfix) with ESMTPS id 3E760CE12B1;
+	Tue, 19 Sep 2023 09:37:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20125C433C8;
+	Tue, 19 Sep 2023 09:37:31 +0000 (UTC)
+Message-ID: <22346801-8d09-4f9e-8f5a-1f0bad192476@xs4all.nl>
+Date: Tue, 19 Sep 2023 11:37:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 07/49] media: sti: hva: Use vb2_get_buffer() instead of
- directly access to buffers array
+Subject: Re: [PATCH v7 06/49] media: mediatek: vdec: Use vb2_get_buffer()
+ instead of directly access to buffers array
 Content-Language: en-US, nl
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
  tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
@@ -50,14 +50,14 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-8-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-7-benjamin.gaignard@collabora.com>
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230914133323.198857-8-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230914133323.198857-7-benjamin.gaignard@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_023135_017438_01B47D71 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20230919_023741_243539_611843B6 
+X-CRM114-Status: GOOD (  18.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,33 +81,34 @@ On 14/09/2023 15:32, Benjamin Gaignard wrote:
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  drivers/media/platform/st/sti/hva/hva-v4l2.c | 4 ++++
->  1 file changed, 4 insertions(+)
+>  .../platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/platform/st/sti/hva/hva-v4l2.c b/drivers/media/platform/st/sti/hva/hva-v4l2.c
-> index 3a848ca32a0e..326be09bdb55 100644
-> --- a/drivers/media/platform/st/sti/hva/hva-v4l2.c
-> +++ b/drivers/media/platform/st/sti/hva/hva-v4l2.c
-> @@ -577,6 +577,10 @@ static int hva_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
->  		}
-
-Above this line there is a buf->index check...
-
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> index e393e3e668f8..3d2ae0e1b5b6 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> @@ -1696,7 +1696,7 @@ static int vdec_vp9_slice_setup_core_buffer(struct vdec_vp9_slice_instance *inst
 >  
->  		vb2_buf = vb2_get_buffer(vq, buf->index);
-> +		if (!vb2_buf) {
-> +			dev_dbg(dev, "%s buffer index %d not found\n", ctx->name, buf->index);
-> +			return -EINVAL;
-> +		}
+>  	/* update internal buffer's width/height */
+>  	for (i = 0; i < vq->num_buffers; i++) {
+> -		if (vb == vq->bufs[i]) {
+> +		if (vb == vb2_get_buffer(vq, i)) {
 
-...I think that check can be dropped since vb2_get_buffer checks that already.
+The original code here is silly...
+
+>  			instance->dpb[i].width = w;
+>  			instance->dpb[i].height = h;
+>  			break;
+
+...This can just be changed to:
+
+	instance->dpb[vb->index].width = w;
+	instance->dpb[vb->index].height = h;
+
+No need to loop.
 
 Regards,
 
 	Hans
-
->  		stream = to_hva_stream(to_vb2_v4l2_buffer(vb2_buf));
->  		stream->bytesused = buf->bytesused;
->  	}
-
 
