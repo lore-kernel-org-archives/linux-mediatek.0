@@ -4,93 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6D13CE79A9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 19:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19A20CE79A8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 19:58:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KevI59ZuvC1O6+r+tEg1r1bqNlO0utcnRFy1Zyml1zE=; b=1hwOxx6/AwVXlokNS9hJkWe+26
-	b5UfHn7PdV+asOGe/kkgurXLcC+ZPPP4d92NULzOfn8R/LxnjSi3ryMFyk2hNfUaz6nDD0P2nY0Kh
-	bwSg19DYSpKB9wTOidEZ86TtNZg91BVZolfEbF+a2XaPJAM8zvhiqbP0mHaozBe6FjCE0zl+f3n1h
-	0znCBgkBJRFeVHqZNHi9SnUY7UC0FS+2jrQ3BugeF0DOPoP0ClGLim3vtHYk+vQdRNZlOjNQtgCG3
-	q81buOTTAVwi5u0Ny+ZCcyKc0Sh71UHeByVes4NcBxT98YJfL7drx/d07VXHXIuOCBzE1Ff/W7xN8
-	LhaAiTNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hw+ZtaSWJmoBVm/7gbKWOSvFtd9rhbbmH8I4RYolU7I=; b=kKXSSXv5irf5BpVjQZqeut3M7h
+	nQqmith8RCwcicKa7HFp0cyOc3mXgSDglnTUWEruVs2IC27Ip6ZnHZoCdXNEAuSv/t2PlWz7hV8vN
+	Ebfcbg2SAi1XwnxrEepZrbiyWniAYqUalMk2hpVbU4fHekkiS4FG5r/NioPgV35yyQveIN6+u3J65
+	hwaIPoNYyGsEpqtEGpDRjZX+YxO2QNkEkr295HgJU+TagDh83c2ly/v0xy3fF3TPMJywYnpX069Qf
+	6S3lIDmhGRNIE9LWJ16z2cIzcvTSm8JhIEja3TP0KWa8fFer/AmbAOIGas8ouFk8tkpbPtdxqIMRy
+	Erz7z2dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qigiy-001BLt-1T;
-	Tue, 19 Sep 2023 19:49:32 +0000
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
+	id 1qigrB-001C81-3A;
+	Tue, 19 Sep 2023 19:58:01 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qigiu-001BKF-1g
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Sep 2023 19:49:31 +0000
-Received: by mail-il1-x12d.google.com with SMTP id e9e14a558f8ab-34fcc39fae1so24855ab.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Sep 2023 12:49:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1695152966; x=1695757766; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KevI59ZuvC1O6+r+tEg1r1bqNlO0utcnRFy1Zyml1zE=;
-        b=lV7Z9UJUnH7/jzFEP0RmVvJK34vHICP8okPY5oj77Jeqr369K4rMLIp+zaEbdWwb4X
-         4UcbkYgplUzDUC5UpowOtTB/E0mGfNkkkIHUWsIFpG/B40g5Kfbpmrq/tFbT1THyf8lu
-         fDerzl42xDrsr4zrhGaLX5BHpjp3pPz27Gzy1mzZ4mO5GoCYNoIGecMNhnXmqVZ8JXFq
-         IWTib4ssEBPQdVb+yrrHLaPhKosr4y2DGKCQGJZ0lNbRkJhb3wjsXwZnTHH4x0Qbv73+
-         nJNyLUHeR13C9kC1Hx4Yphes3GwzTruNe5fIZrLA2VexL1zGPc1QvrT3Nmo0LiMoTmwn
-         cpnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695152966; x=1695757766;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KevI59ZuvC1O6+r+tEg1r1bqNlO0utcnRFy1Zyml1zE=;
-        b=FpmDOKQTnywQdUqs3Go256wOqhRLpwaoUBHbU3i1s4OGOn4qEwn1yNtK/7g7CSgQzq
-         kiCH2GsCat/VAQUmZO1wICOdjOYSZWKFcxIzifEp+z3wh9tjhhvhoen1PHKq+/nZmUBn
-         6DqnqqQUZoz8VOSzP/JqjTKO4Xyr5A9itQrLL2E36LE3r7hQ5At7jm4cwStCfFjjB9iq
-         pXVKahfjFiBit5sVNkW2pkCiKeHyd5KarxlP5Jd7DpDU/hed3gz2GnmawyAB0jOPjdmt
-         2TBy8lbCxFZVeoHOght0/EYfwXT+uzKWUD4p+4MVPoapEXGVYsPwo9aQg3cPg7gTe6Bp
-         CEfA==
-X-Gm-Message-State: AOJu0Yz81rhbWpavWCkP/SbSTN4fZjpQFbdPq8QRNSczM6+bEAIi5q5h
-	UR/gqZSBoIv88hiGIH/CBKeL8+gbodotzYYKQ4Fd
-X-Google-Smtp-Source: AGHT+IE4zDC8W67e9rU/CWkGB7ORq5LciF9ZhG/z1G+fDMxJOZEx38NeOZHB0hSJ8Lf70WMu734JOwj4h80yXFhXooE=
-X-Received: by 2002:a05:6e02:1e0a:b0:349:1dfe:ff2a with SMTP id
- g10-20020a056e021e0a00b003491dfeff2amr37179ila.19.1695152966107; Tue, 19 Sep
- 2023 12:49:26 -0700 (PDT)
+	id 1qigr7-001C6K-0W;
+	Tue, 19 Sep 2023 19:57:59 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id D2786B813D8;
+	Tue, 19 Sep 2023 19:57:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 596BDC433C7;
+	Tue, 19 Sep 2023 19:57:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695153474;
+	bh=xHCh98iOkChUThPKdLQGQweaVZPtykZ08GJEQBsDwbo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Q4dlbFfTh4KP61zpzZex9vqa15C6MwxIvBmC0o/U0M098yBH/0QFSec5l0mI3L2+x
+	 TaeBviCfDfUL/ZCXXrQkehJIyyZIB3I6/uWWut7gpQxcy5ttTaHPzwsCbqT+AT6/1x
+	 64i+djh5xqlBVZsbYkEubDoqBk8NcUKtlBteCeGenDn9ZY7JP/bXfCkh1Lk6j9Ahp5
+	 klf1x8Q8N+UwXIRtgdEk0yU7RnL9L0gdER15F4qV4MF9Ewu/1s2lmS7pvH20cui3PG
+	 UdrFtr16rms8Y4MUxoLa8PkQ0dqT9+qSr97dTN3j5AqXhCJPcXUjxzq9dYthiylS6h
+	 Q5cdC9DO5hH+g==
+Received: (nullmailer pid 93910 invoked by uid 1000);
+	Tue, 19 Sep 2023 19:57:52 -0000
+Date: Tue, 19 Sep 2023 14:57:52 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Mark Brown <broonie@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 05/12] regulator: dt-bindings: mt6358: Add MT6366 PMIC
+Message-ID: <20230919195752.GA85007-robh@kernel.org>
+References: <20230919104357.3971512-1-wenst@chromium.org>
+ <20230919104357.3971512-6-wenst@chromium.org>
 MIME-Version: 1.0
-References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
- <20230911125936.10648-13-yunfei.dong@mediatek.com> <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
- <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl> <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
- <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl> <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
- <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl> <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
-In-Reply-To: <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
-From: Jeffrey Kardatzke <jkardatzke@google.com>
-Date: Tue, 19 Sep 2023 12:49:14 -0700
-Message-ID: <CA+ddPcPq3XrJGPqjZDq0u_ga6Aat1ve5ODBDD-OouO3xPSCFuA@mail.gmail.com>
-Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder driver
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	=?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, 
-	"nhebert@chromium.org" <nhebert@chromium.org>, 
-	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, 
-	"nfraprado@collabora.com" <nfraprado@collabora.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org" <stevecho@chromium.org>, 
-	"wenst@chromium.org" <wenst@chromium.org>, 
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"hsinyi@chromium.org" <hsinyi@chromium.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230919104357.3971512-6-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_124928_561953_50E03B8E 
-X-CRM114-Status: GOOD (  85.31  )
+X-CRM114-CacheID: sfid-20230919_125757_475611_06086EBA 
+X-CRM114-Status: GOOD (  26.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,519 +75,272 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 19, 2023 at 11:51=E2=80=AFAM Nicolas Dufresne
-<nicolas.dufresne@collabora.com> wrote:
->
-> Le mardi 19 septembre 2023 =C3=A0 10:53 +0200, Hans Verkuil a =C3=A9crit =
-:
-> > On 18/09/2023 22:57, Jeffrey Kardatzke wrote:
-> > > On Fri, Sep 15, 2023 at 1:56=E2=80=AFAM Hans Verkuil <hverkuil-cisco@=
-xs4all.nl> wrote:
-> > > >
-> > > > On 15/09/2023 10:25, Yunfei Dong (=E8=91=A3=E4=BA=91=E9=A3=9E) wrot=
-e:
-> > > > > Hi Hans & Nicolas,
-> > > > >
-> > > > > Thanks for your advice.
-> > > > >
-> > > > > On Tue, 2023-09-12 at 11:30 +0200, Hans Verkuil wrote:
-> > > > > >
-> > > > > > External email : Please do not click links or open attachments =
-until
-> > > > > > you have verified the sender or the content.
-> > > > > >  Hi,
-> > > > > >
-> > > > > > On 9/11/23 17:54, Nicolas Dufresne wrote:
-> > > > > > > Hi,
-> > > > > > >
-> > > > > > > Le lundi 11 septembre 2023 =C3=A0 20:59 +0800, Yunfei Dong a =
-=C3=A9crit :
-> > > > > > > > Setting secure mode flag to kernel when trying to play secu=
-re
-> > > > > >
-> > > > > > video,
-> > > > > > > > then decoder driver will initialize tee related interface t=
-o
-> > > > > >
-> > > > > > support
-> > > > > > > > svp.
-> > > > > > >
-> > > > > > >
-> > > > > > > This is not what the patch is doing, please rework. This patc=
-h is
-> > > > > >
-> > > > > > an vendor API
-> > > > > > > addition introducing V4L2_CID_MPEG_MTK_SET_SECURE_MODE. I sho=
-uld
-> > > > > >
-> > > > > > not have to
-> > > > > > > read your patch to understand this.
-> > > > > > >
-> > > > > > > >
-> > > > > > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > > > > > > ---
-> > > > > > > >  .../vcodec/decoder/mtk_vcodec_dec_stateless.c     | 15
-> > > > > >
-> > > > > > ++++++++++++++-
-> > > > > > > >  drivers/media/v4l2-core/v4l2-ctrls-defs.c         |  5 +++=
-++
-> > > > > > > >  include/uapi/linux/v4l2-controls.h                |  1 +
-> > > > > > > >  3 files changed, 20 insertions(+), 1 deletion(-)
-> > > > > > > >
-> > > > > > > > diff --git
-> > > > > >
-> > > > > > a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_state
-> > > > > > less.c
-> > > > > > b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_state
-> > > > > > less.c
-> > > > > > > > index d2b09ce9f1cf..a981178c25d9 100644
-> > > > > > > > ---
-> > > > > >
-> > > > > > a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_state
-> > > > > > less.c
-> > > > > > > > +++
-> > > > > >
-> > > > > > b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_state
-> > > > > > less.c
-> > > > > > > > @@ -535,6 +535,17 @@ static int mtk_vdec_s_ctrl(struct v4l2=
-_ctrl
-> > > > > >
-> > > > > > *ctrl)
-> > > > > > > >  ctrl->val =3D mtk_dma_contig_get_secure_handle(ctx, ctrl->=
-val);
-> > > > > > > >  mtk_v4l2_vdec_dbg(3, ctx, "get secure handle: %d =3D> 0x%x=
-",
-> > > > > >
-> > > > > > sec_fd, ctrl->val);
-> > > > > > > >  break;
-> > > > > > > > +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
-> > > > > > >
-> > > > > > > Stepping back a little and focusing on the API, what makes yo=
-ur
-> > > > > >
-> > > > > > driver so
-> > > > > > > special that it should be the only one having a "secure mode"=
- ? We
-> > > > > >
-> > > > > > are touching
-> > > > > > > in gap in the media pipeline in Linux, and this should come w=
-ith
-> > > > > >
-> > > > > > consideration
-> > > > > > > of the global API.
-> > > > > > >
-> > > > > > > Why is this API better then let's say Google Android one, wer=
-e they
-> > > > > >
-> > > > > > expose 2
-> > > > > > > device nodes in their fork of the MFC driver (a secure and a =
-non
-> > > > > >
-> > > > > > secure one) ?
-> > > > > >
-> > > > > > Perhaps it is a good idea to first post an RFC with an uAPI pro=
-posal
-> > > > > > on how to
-> > > > > > handle secure video. I suspect this isn't mediatek specific, ot=
-her
-> > > > > > SoCs with
-> > > > > > tee support could use this as well.
-> > > > > >
-> > > > > > As Nicolas said, it's long known to be a gap in our media suppo=
-rt, so
-> > > > > > it is
-> > > > > > really great that you started work on this, but you need to loo=
-k at
-> > > > > > this from
-> > > > > > a more generic point-of-view, and not mediatek-specific.
-> > > > > >
-> > > > >
-> > > > > Whether your have any advice about how to do a more generic drive=
-r to
-> > > > > handle secure video playback?
-> > > > >
-> > > > > There are several kind of buffer: output queue buffer/capture que=
-ue
-> > > > > buffer/working buffer.
-> > > > >
-> > > > > output and capture queue buffer: user space will call tee related
-> > > > > interface to allocate secure handle. Will convert to secure handl=
-e with
-> > > > > v4l2 framework, then send secure handle to optee-os.
-> > > > >
-> > > > > working buffer: calling dma_heap and dma_buf to get secure memory
-> > > > > handle, then covert secure iova in optee-os.
-> > > > >
-> > > > > Using the same kernel driver for svp and non-svp playback, just t=
-he
-> > > > > buffer type are different. Normal is iova and secure is secure ha=
-ndle.
-> > > > >
-> > > > > User driver will tell the kernel driver with CID control whether =
-the
-> > > > > current playback is svp or non-svp.
-> > > >
-> > > > My understanding is that when you switch to secure mode, the driver=
- makes
-> > > > some optee calls to set everything up. And userspace needs a way co=
-nvert a
-> > > > dmabuf fd to a 'secure handle', which appears to be the DMA address=
- of the
-> > > > buffer. Who uses that handle?
-> > >
-> > > The only user space usage for getting the 'secure handle' from an fd
-> > > is when that memory is written to. This is done when the TEE decrypts
-> > > the video contents. User space sends the encrypted video + 'secure
-> > > handle' to the TEE, and the TEE decrypts the contents to the memory
-> > > associated with the 'secure handle'. Then the 'secure handle' is
-> > > passed into the TEE again with the v4l2 driver to use as the source
-> > > for video decoding (but w/ v4l2, user space is passing in fds).
-> >
-> > I think I need some more background. This series is to support a 'Secur=
-e Video
-> > Processor' (at least, that's what svp stands for I believe, something t=
-hat
-> > is not mentioned anywhere in this series, BTW) which is used to decode =
-an
-> > encrypted h264 stream.
-> >
-> > First question: how is that stream encrypted? Is that according to some=
- standard?
-> > Nothing is mentioned about that.
-> >
-> > I gather that the encrypted stream is fed to the codec as usual (i.e. j=
-ust put it
-> > in the output buffer and queue it to the codec), nothing special is nee=
-ded for that.
-> > Except, how does the hardware know it is encrypted? I guess that's wher=
-e the
-> > control comes in, you have to turn on SVP mode first.
->
-> Decryption takes place before the decoder. I suspect there is no dedicate=
-d
-> driver for that, the TEE driver API is similar to smart card API and fits=
- well
-> this task. So the decrytor consume normal memory that is encrypted and is=
- only
-> allowed to decrypt into secure memory. All this is happening before the d=
-ecoder,
-> so is out of scope for this patchset.
->
-> Just a correction :-D.
->
-> >
-> > For the capture buffers you need to provide buffers from secure/trusted=
- memory.
-> > That's a dmabuf fd, but where does that come from?
-> >
-> > I saw this message:
-> >
-> > https://lore.kernel.org/linux-media/CAPj87rOHctwHJM-7HiQpt8Q0b09x0WWw_T=
-4XsL0qT=3DdS+XzyZQ@mail.gmail.com/T/#u
-> >
-> > so I expect that's where it comes from. But I agree that getting this f=
-rom dma-heaps
-> > seems more natural.
-> >
-> > I assume that those capture buffers are inaccessible from the CPU? (Hen=
-ce 'secure')
-> >
-> > For actually displaying these secure buffers you would use drm, and I a=
-ssume that
-> > the hardware would mix in the contents of the secure buffer into the vi=
-deo output
-> > pipeline? I.e., the actual contents remain inaccessible. And that the v=
-ideo output
-> > (HDMI or DisplayPort) is using HDCP?
-> >
-> > >
-> > > >
-> > > > In any case, using a control to switch to secure mode and using a c=
-ontrol
-> > > > to convert a dmabuf fd to a secure handle seems a poor choice to me=
-.
-> > > >
-> > > > I was wondering if it wouldn't be better to create a new V4L2_MEMOR=
-Y_ type,
-> > > > e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). That ens=
-ures that
-> > > > once you create buffers for the first time, the driver can switch i=
-nto secure
-> > > > mode, and until all buffers are released again you know that the dr=
-iver will
-> > > > stay in secure mode.
-> > >
-> > > Why do you think the control for setting secure mode is a poor choice=
-?
-> > > There's various places in the driver code where functionality changes
-> > > based on being secure/non-secure mode, so this is very much a 'global=
-'
-> > > setting for the driver. It could be inferred based off a new memory
-> > > type for the queues...which then sets that flag in the driver; but
-> > > that seems like it would be more fragile and would require checking
-> > > for incompatible output/capture memory types. I'm not against another
-> > > way of doing this; but didn't see why you think the proposed method i=
-s
-> > > a poor choice.
-> >
-> > I assume you are either decoding to secure memory all the time, or not
-> > at all. That's something you would want to select the moment you alloca=
-te
-> > the first buffer. Using the V4L2_MEMORY_ value would be the natural pla=
-ce
-> > for that. A control can typically be toggled at any time, and it makes
-> > no sense to do that for secure streaming.
-> >
-> > Related to that: if you pass a dmabuf fd you will need to check somewhe=
-re
-> > if the fd points to secure memory or not. You don't want to mix the two
-> > but you want to check that at VIDIOC_QBUF time.
-> >
-> > Note that the V4L2_MEMORY_ value is already checked in the v4l2 core,
-> > drivers do not need to do that.
->
-> Just to clarify a bit, and make sure I understand this too. You are propo=
-sing to
-> introduce something like:
->
->    V4L2_MEMORY_SECURE_DMABUF
->
-> Which like V4L2_MEMORY_DMABUF is meant to import dmabuf, while telling th=
-e
-> driver that the memory is secure according to the definition of "secure" =
-for the
-> platform its running on.
->
-> This drivers also allocate secure SHM (a standard tee concept) and have i=
-nternal
-> allocation for reconstruction buffer and some hw specific reference metad=
-ata. So
-> the idea would be that it would keep allocation using the dmabuf heap int=
-ernal
-> APIs ? And decide which type of memory based on the memory type found in =
-the
-> queue?
->
-> Stepping back a little, why can't we have a way for drivers to detect tha=
-t
-> dmabuf are secure ? I'm wondering if its actually useful to impose to all
-> userspace component to know that a dmabuf is secure ?
->
-> Also, regarding MTK, these are stateless decoders. I think it would be ni=
-ce to
-> show use example code that can properly parse the un-encrypted header, pa=
-ss the
-> data to the decryptor and decode. There is a bit of mechanic in there tha=
-t lacks
-> clarification, a reference implementation would clearly help. Finally, do=
-es this
-> platform offers some clearkey implementation (or other alternative) so we=
- can do
-> validation and regression testing? It would be very unfortunate to add fe=
-ature
-> upstream that can only be tested by proprietary CDM software.
->
-> Nicolas
+On Tue, Sep 19, 2023 at 06:43:48PM +0800, Chen-Yu Tsai wrote:
+> From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> 
+> The MediaTek MT6366 PMIC is similar to the MT6358 PMIC. It is designed
+> to be paired with the MediaTek MT8186 SoC. It has 9 buck regulators and
+> 29 LDO regulators, not counting ones that feed internally and basically
+> have no controls. The regulators are named after their intended usage
+> for the SoC and system design, thus not named generically as ldoX or
+> dcdcX, but as vcn33 or vgpu.
+> 
+> The differences compared to the MT6358 are minimal:
+> - Regulators removed: VCAMA1, VCAMA2, VCAMD, VCAMIO, VLDO28
+> - Regulators added: VM18, VMDDR, VSRAM_CORE
+> 
+> Add a binding document describing all the regulators and their supplies.
+> 
+> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> [wens@chromium.org: major rework and added commit message]
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v2:
+> - Merged all the propertyPatterns together; the if-then sections now
+>   only block out invalid properties
+> 
+> Changes since v1:
+> - Replaced underscores in supply names to hyphens
+> - Merged with MT6358 regulator binding
+> - Added MT6358 fallback compatible to MT6366 regulator
+> 
+> Changes since Zhiyong's last version (v4) [1]:
+> - simplified regulator names
+> - added descriptions to regulators
+> - removed bogus regulators (*_sshub)
+> - merged vcn33-wifi and vcn33-bt as vcn33
+> - added missing regulators (vm18, vmddr, vsram-core)
+> - cut down examples to a handful of cases and made them complete
+> - expanded commit message a lot
+> 
+> [1] https://lore.kernel.org/linux-arm-kernel/20220823123745.14061-1-zhiyong.tao@mediatek.com/
+> 
+>  .../regulator/mediatek,mt6358-regulator.yaml  | 120 +++++++++++++++---
+>  1 file changed, 104 insertions(+), 16 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
+> index c5f336318ec2..05e381899d08 100644
+> --- a/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
+> @@ -16,14 +16,18 @@ description:
+>  
+>  properties:
+>    compatible:
+> -    const: mediatek,mt6358-regulator
+> +    oneOf:
+> +      - const: mediatek,mt6358-regulator
+> +      - items:
+> +          - const: mediatek,mt6366-regulator
+> +          - const: mediatek,mt6358-regulator
 
+Would the mt6366 regulator driver(s) function with the mt6358 driver 
+unchanged? If not, then not really much point in having the fallback.
 
-Here's some links to the current userspace implementation built on top
-of the MTK patches (and yeah, this'll end up changing based on what
-happens upstream).
+>  
+>    vsys-ldo1-supply:
+>      description: Supply for LDOs vfe28, vxo22, vcn28, vaux18, vaud28, vsim1, vusb, vbif28
+>    vsys-ldo2-supply:
+> -    description: Supply for LDOs vldo28, vio28, vmc, vmch, vsim2
+> +    description: Supply for LDOs vldo28 (MT6358 only), vio28, vmc, vmch, vsim2
+>    vsys-ldo3-supply:
+> -    description: Supply for LDOs vcn33, vcama1, vcama2, vemc, vibr
+> +    description: Supply for LDOs vcn33, vcama[12] (MT6358 only), vemc, vibr
+>    vsys-vcore-supply:
+>      description: Supply for buck regulator vcore
+>    vsys-vdram1-supply:
+> @@ -43,18 +47,20 @@ properties:
+>    vsys-vs2-supply:
+>      description: Supply for buck regulator vs2
+>    vs1-ldo1-supply:
+> -    description: Supply for LDOs vrf18, vefuse, vcn18, vcamio, vio18
+> +    description:
+> +      Supply for LDOs vrf18, vefuse, vcn18, vcamio (MT6358 only), vio18, vm18 (MT6366 only)
+>    vs2-ldo1-supply:
+> -    description: Supply for LDOs vdram2
+> +    description: Supply for LDOs vdram2, vmddr (MT6366 only)
+>    vs2-ldo2-supply:
+>      description: Supply for LDOs vrf12, va12
+>    vs2-ldo3-supply:
+> -    description: Supply for LDOs vsram-gpu, vsram-others, vsram-proc11, vsram-proc12
+> +    description:
+> +      Supply for LDOs vsram-core (MT6366 only), vsram-gpu, vsram-others, vsram-proc11, vsram-proc12
+>    vs2-ldo4-supply:
+>      description: Supply for LDO vcamd
+>  
+>  patternProperties:
+> -  "^buck_v(core|dram1|gpu|modem|pa|proc1[12]|s[12])$":
+> +  "^(buck_)?v(core|dram1|gpu|modem|pa|proc1[12]|s[12])$":
+>      description: Buck regulators
+>      type: object
+>      $ref: regulator.yaml#
+> @@ -69,7 +75,7 @@ patternProperties:
+>            enum: [0, 1]
+>      unevaluatedProperties: false
+>  
+> -  "^ldo_v(a|rf)12$":
+> +  "^(ldo_)?v(a|rf)12$":
+>      description: LDOs with fixed 1.2V output and 0~100/10mV tuning
+>      type: object
+>      $ref: regulator.yaml#
+> @@ -77,15 +83,16 @@ patternProperties:
+>        regulator-allowed-modes: false
+>      unevaluatedProperties: false
+>  
+> -  "^ldo_v((aux|cn|io|rf)18|camio)$":
+> -    description: LDOs with fixed 1.8V output and 0~100/10mV tuning
+> +  "^(ldo_)?v((aux|cn|io|rf)18|camio)$":
+> +    description:
+> +      LDOs with fixed 1.8V output and 0~100/10mV tuning (vcn18 on MT6366 has variable output)
+>      type: object
+>      $ref: regulator.yaml#
+>      properties:
+>        regulator-allowed-modes: false
+>      unevaluatedProperties: false
+>  
+> -  "^ldo_vxo22$":
+> +  "^(ldo_)?vxo22$":
+>      description: LDOs with fixed 2.2V output and 0~100/10mV tuning
+>      type: object
+>      $ref: regulator.yaml#
+> @@ -93,7 +100,7 @@ patternProperties:
+>        regulator-allowed-modes: false
+>      unevaluatedProperties: false
+>  
+> -  "^ldo_v(aud|bif|cn|fe|io)28$":
+> +  "^(ldo_)?v(aud|bif|cn|fe|io)28$":
+>      description: LDOs with fixed 2.8V output and 0~100/10mV tuning
+>      type: object
+>      $ref: regulator.yaml#
+> @@ -101,7 +108,7 @@ patternProperties:
+>        regulator-allowed-modes: false
+>      unevaluatedProperties: false
+>  
+> -  "^ldo_vusb$":
+> +  "^(ldo_)?vusb$":
+>      description: LDOs with fixed 3.0V output and 0~100/10mV tuning
+>      type: object
+>      $ref: regulator.yaml#
+> @@ -109,7 +116,7 @@ patternProperties:
+>        regulator-allowed-modes: false
+>      unevaluatedProperties: false
+>  
+> -  "^ldo_vsram_(gpu|others|proc1[12])$":
+> +  "^(ldo_)?vsram[_-](core|gpu|others|proc1[12])$":
+>      description: LDOs with variable output
+>      type: object
+>      $ref: regulator.yaml#
+> @@ -117,7 +124,7 @@ patternProperties:
+>        regulator-allowed-modes: false
+>      unevaluatedProperties: false
+>  
+> -  "^ldo_v(cama[12]|camd|cn33|dram2|efuse|emc|ibr|ldo28|mc|mch|sim[12])$":
+> +  "^(ldo_)?v(cama[12]|camd|cn33|dram2|efuse|emc|ibr|ldo28|m18|mc|mch|mddr|sim[12])$":
+>      description: LDOs with variable output and 0~100/10mV tuning
+>      type: object
+>      $ref: regulator.yaml#
+> @@ -130,11 +137,50 @@ required:
+>  
+>  additionalProperties: false
+>  
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          const: mediatek,mt6358-regulator
+> +    then:
+> +      patternProperties:
+> +        # Old regulator node name scheme (with prefix and underscores) only
+> +        # ([^y-] is used to avoid matching -supply
+> +        "^(?<!buck_)(?<!ldo_)v.*[^y-](?!-supply)$": false
+> +        "^ldo_vsram-": false
+> +        # vsram_core regulator doesn't exist on MT6358
+> +        "^ldo_vsram[-_]core$": false
+> +
+> +      properties:
+> +        # vm18 and vmddr regulators don't exist on MT6358
+> +        ldo_vm18: false
+> +        ldo_vmddr: false
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt6366-regulator
+> +    then:
+> +      patternProperties:
+> +        # Prefer cleaned up regulator node names
+> +        "^(buck|ldo)_": false
+> +        # Don't allow underscores
+> +        "^vsram_": false
+> +        # vcam* regulators don't exist on MT6366
+> +        "^vcam": false
+> +
+> +      properties:
+> +        # vldo28 regulator doesn't exist on MT6366
+> +        vldo28: false
+> +        # vs2_ldo4 supply pin doesn't exist on MT6366
+> +        vs2-ldo4-supply: false
+> +
+>  examples:
+>    - |
+>      #include <dt-bindings/regulator/mediatek,mt6397-regulator.h>
+>  
+> -    regulator {
+> +    mt6358-regulator {
 
-1. This is where we are decrypting the video to a secure buffer, it's
-invoking IPC into a closed source component to do that:
-https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/chromeos=
-/decoder_buffer_transcryptor.cc;l=3D87
-2. This is where we aren enabling secure mode:
-https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2/v4l=
-2_video_decoder.cc;l=3D412
-3. This is where we are resolving secure buffers to secure handles:
-https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2/v4l=
-2_video_decoder.cc;l=3D535
-(the allocation of the secure buffers is done in closed source CDM
-code, but it's just opening the dma-buf heap and issuing the ioctl to
-allocate it)
-4. This is where we submit the secure buffers to the output queue:
-https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2/v4l=
-2_queue.cc;l=3D816
-(this is nothing special, since it's just passing in the fd)
-5. For the capture queue, there's zero changes in Chrome V4L2 code for
-that...it's all transparent to user space that it's a secure surface
-that's being rendered to. We do allocate them w/ different flags via
-minigbm which happens here:
-https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/chromeos=
-/platform_video_frame_pool.cc;l=3D37
+regulator or regulators is preferred.
 
->
-> >
-> > >
-> > > >
-> > > > For converting the dmabuf fd into a secure handle: a new ioctl simi=
-lar to
-> > > > VIDIOC_EXPBUF might be more suited for that.
-> > >
-> > > I actually think the best way for converting the dmabuf fd into a
-> > > secure handle would be another ioctl in the dma-heap driver...since
-> > > that's where the memory is actually allocated from. But this really
-> > > depends on upstream maintainers and what they are comfortable with.
-> >
-> > That feels like a more natural place of doing this.
-> >
-> > Regards,
-> >
-> >       Hans
-> >
-> > >
-> > > >
-> > > > Note that I am the first to admit that I have no experience with se=
-cure
-> > > > video pipelines or optee-os, so I am looking at this purely from an=
- uAPI
-> > > > perspective.
-> > > >
-> > > > Regards,
-> > > >
-> > > >         Hans
-> > > >
-> > > > >
-> > > > > Best Regards,
-> > > > > Yunfei Dong
-> > > > > > Regards,
-> > > > > >
-> > > > > > Hans
-> > > > > >
-> > > > > > >
-> > > > > > > regards,
-> > > > > > > Nicolas
-> > > > > > >
-> > > > > > > p.s. you forgot to document your control in the RST doc, plea=
-se do
-> > > > > >
-> > > > > > in following
-> > > > > > > release.
-> > > > > > >
-> > > > > > > > +ctx->is_svp_mode =3D ctrl->val;
-> > > > > > > > +
-> > > > > > > > +if (ctx->is_svp_mode) {
-> > > > > > > > +ret =3D mtk_vcodec_dec_optee_open(ctx->dev->optee_private)=
-;
-> > > > > > > > +if (ret)
-> > > > > > > > +mtk_v4l2_vdec_err(ctx, "open secure mode failed.");
-> > > > > > > > +else
-> > > > > > > > +mtk_v4l2_vdec_dbg(3, ctx, "decoder in secure mode: %d", ct=
-rl-
-> > > > > > >
-> > > > > > > val);
-> > > > > > > > +}
-> > > > > > > > +break;
-> > > > > > > >  default:
-> > > > > > > >  mtk_v4l2_vdec_dbg(3, ctx, "Not supported to set ctrl id:
-> > > > > > > > 0x%x\n",
-> > > > > >
-> > > > > > hdr_ctrl->id);
-> > > > > > > >  return ret;
-> > > > > > > > @@ -573,7 +584,7 @@ static int mtk_vcodec_dec_ctrls_setup(s=
-truct
-> > > > > >
-> > > > > > mtk_vcodec_dec_ctx *ctx)
-> > > > > > > >  unsigned int i;
-> > > > > > > >  struct v4l2_ctrl *ctrl;
-> > > > > > > >
-> > > > > > > > -v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 1);
-> > > > > > > > +v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 2);
-> > > > > > > >  if (ctx->ctrl_hdl.error) {
-> > > > > > > >  mtk_v4l2_vdec_err(ctx, "v4l2_ctrl_handler_init failed\n");
-> > > > > > > >  return ctx->ctrl_hdl.error;
-> > > > > > > > @@ -592,6 +603,8 @@ static int mtk_vcodec_dec_ctrls_setup(s=
-truct
-> > > > > >
-> > > > > > mtk_vcodec_dec_ctx *ctx)
-> > > > > > > >
-> > > > > > > >  ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl,
-> > > > > >
-> > > > > > &mtk_vcodec_dec_ctrl_ops,
-> > > > > > > >   V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE, 0, 65535, 1, 0);
-> > > > > > > > +ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl,
-> > > > > >
-> > > > > > &mtk_vcodec_dec_ctrl_ops,
-> > > > > > > > + V4L2_CID_MPEG_MTK_SET_SECURE_MODE, 0, 65535, 1, 0);
-> > > > > > > >
-> > > > > > > >  v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
-> > > > > > > >
-> > > > > > > > diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > > > > >
-> > > > > > b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > > > > > > > index d8cf01f76aab..a507045a3f30 100644
-> > > > > > > > --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > > > > > > > +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > > > > > > > @@ -1042,6 +1042,7 @@ const char *v4l2_ctrl_get_name(u32 id=
-)
-> > > > > > > >  case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:return
-> > > > > > > > "Reference
-> > > > > >
-> > > > > > Frames for a P-Frame";
-> > > > > > > >  case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:return "Pre=
-pend
-> > > > > >
-> > > > > > SPS and PPS to IDR";
-> > > > > > > >  case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:return "MediaTek
-> > > > > > > > Decoder
-> > > > > >
-> > > > > > get secure handle";
-> > > > > > > > +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:return "MediaTek De=
-coder
-> > > > > >
-> > > > > > set secure mode";
-> > > > > > > >
-> > > > > > > >  /* AV1 controls */
-> > > > > > > >  case V4L2_CID_MPEG_VIDEO_AV1_PROFILE:return "AV1 Profile";
-> > > > > > > > @@ -1442,6 +1443,10 @@ void v4l2_ctrl_fill(u32 id, const ch=
-ar
-> > > > > >
-> > > > > > **name, enum v4l2_ctrl_type *type,
-> > > > > > > >  *type =3D V4L2_CTRL_TYPE_INTEGER;
-> > > > > > > >  *flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
-> > > > > > > >  break;
-> > > > > > > > +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
-> > > > > > > > +*type =3D V4L2_CTRL_TYPE_INTEGER;
-> > > > > > > > +*flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
-> > > > > > > > +break;
-> > > > > > > >  case V4L2_CID_USER_CLASS:
-> > > > > > > >  case V4L2_CID_CAMERA_CLASS:
-> > > > > > > >  case V4L2_CID_CODEC_CLASS:
-> > > > > > > > diff --git a/include/uapi/linux/v4l2-controls.h
-> > > > > >
-> > > > > > b/include/uapi/linux/v4l2-controls.h
-> > > > > > > > index 7b3694985366..88e90d943e38 100644
-> > > > > > > > --- a/include/uapi/linux/v4l2-controls.h
-> > > > > > > > +++ b/include/uapi/linux/v4l2-controls.h
-> > > > > > > > @@ -957,6 +957,7 @@ enum v4l2_mpeg_mfc51_video_force_frame_=
-type {
-> > > > > > > >  /*  MPEG-class control IDs specific to the MediaTek Decode=
-r
-> > > > > >
-> > > > > > driver as defined by V4L2 */
-> > > > > > > >  #define V4L2_CID_MPEG_MTK_BASE(V4L2_CTRL_CLASS_CODEC | 0x2=
-000)
-> > > > > > > >  #define
-> > > > > >
-> > > > > > V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE(V4L2_CID_MPEG_MTK_BASE+8)
-> > > > > > > > +#define
-> > > > > >
-> > > > > > V4L2_CID_MPEG_MTK_SET_SECURE_MODE(V4L2_CID_MPEG_MTK_BASE+9)
-> > > > > > > >
-> > > > > > > >  /*  Camera class control IDs */
-> > > > > > > >
-> > > >
-> > > >
-> > > > _______________________________________________
-> > > > linux-arm-kernel mailing list
-> > > > linux-arm-kernel@lists.infradead.org
-> > > > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> >
->
+>          compatible = "mediatek,mt6358-regulator";
+>  
+>          buck_vgpu {
+> @@ -156,4 +202,46 @@ examples:
+>          };
+>      };
+>  
+> +    mt6366-regulator {
+> +        compatible = "mediatek,mt6366-regulator", "mediatek,mt6358-regulator";
+> +
+> +        vdram1 {
+> +            regulator-name = "pp1125_emi_vdd2";
+> +            regulator-min-microvolt = <1125000>;
+> +            regulator-max-microvolt = <1125000>;
+> +            regulator-ramp-delay = <12500>;
+> +            regulator-enable-ramp-delay = <0>;
+> +            regulator-allowed-modes = <MT6397_BUCK_MODE_AUTO
+> +                                       MT6397_BUCK_MODE_FORCE_PWM>;
+> +            regulator-always-on;
+> +        };
+> +
+> +        vproc11 {
+> +            regulator-name = "ppvar_dvdd_proc_bc_mt6366";
+> +            regulator-min-microvolt = <600000>;
+> +            regulator-max-microvolt = <1200000>;
+> +            regulator-ramp-delay = <6250>;
+> +            regulator-enable-ramp-delay = <200>;
+> +            regulator-allowed-modes = <MT6397_BUCK_MODE_AUTO
+> +                                       MT6397_BUCK_MODE_FORCE_PWM>;
+> +            regulator-always-on;
+> +        };
+> +
+> +        vmddr {
+> +            regulator-name = "pm0750_emi_vmddr";
+> +            regulator-min-microvolt = <700000>;
+> +            regulator-max-microvolt = <750000>;
+> +            regulator-enable-ramp-delay = <325>;
+> +            regulator-always-on;
+> +        };
+> +
+> +        vsram-proc11 {
+> +            regulator-name = "pp0900_dvdd_sram_bc";
+> +            regulator-min-microvolt = <850000>;
+> +            regulator-max-microvolt = <1120000>;
+> +            regulator-ramp-delay = <6250>;
+> +            regulator-enable-ramp-delay = <240>;
+> +            regulator-always-on;
+> +        };
+> +    };
+>  ...
+> -- 
+> 2.42.0.459.ge4e396fd5e-goog
+> 
 
