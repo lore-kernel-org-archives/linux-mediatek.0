@@ -4,60 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A788CD54A9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 09:22:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 751C0CD54AC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 09:23:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gFe8NHhkeIs1vEFXNd/WNswQzrzfpV20VBusvFTE17Y=; b=MEyB6DlSp277RRwXCP+PtvgQh8
-	aHiLCVPJHfTJGjUq5pgLDHGcmcn5sY6zi7uuF30jNDS4JAw6HH71YzBowSKDKDmr/8alwj4oL3Qe/
-	hR4cPj2S2PVGP0vInVO2dL94u+jZs/bKZ6LeHhvL7K2WxNhFyJga8FVdjIWTer/UGJ3xurMgXhtTt
-	WcNE2B1AuCg1NOMnKhxk0eIHMNDX4AEow/QNBauSmXF20jabHfiK2kFE0nP0QwRfBvOxoPLjQmvwf
-	/ARBOb/naRD3whQyYpF9ORaYnXub3EX+9iLpBqPuGjaKuJfJMsvamBxJ9I1YdnKCUvHGZcEorxyfM
-	T5K8eU3A==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=M+Pqjjyz5ZTGZJ4hfXwCOtDQXFkzRBUJzshKf45oTz0=; b=SMZuSbdbwmMw/yhxy9K3bbZKYN
+	K/p9wDXlblwA6QUvXEpNpw2boUL0Z9gPcFF0Sqj7XdbMgJoIwPo2m0+H/cSI6ksjeJN7bLWuSYgrF
+	rzq1X9KLvfVr6q3OM7D9nabbA6i8IE7/QK9yyn8keU4fisYgCjbfESTOnupugLL6pnpTo8572RmMh
+	sIAytk4Do7U/VNCxIuE9sNC9B6xOdohGmQi9U0KDI+oQ8jrUPHz94fFMZt3Cimvy52slXUwLvyMJN
+	Kp9tTTcwElYIcMo8DBk9bz5AQBmu5gLKsYiwOloubljLsKR9oyxCtp9ig4pGfoPb8N6IK1mErNOrd
+	tUXjWgjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiWwC-00HRXu-0z;
-	Tue, 19 Sep 2023 09:22:32 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qiWxS-00HRh3-1k;
+	Tue, 19 Sep 2023 09:23:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiWw8-00HRWz-1F;
-	Tue, 19 Sep 2023 09:22:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1qiWxO-00HRg9-2z;
+	Tue, 19 Sep 2023 09:23:48 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id D4909B811B2;
-	Tue, 19 Sep 2023 09:22:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10068C433C8;
-	Tue, 19 Sep 2023 09:22:21 +0000 (UTC)
-Message-ID: <10de339f-dfeb-449f-be69-629bfae9b966@xs4all.nl>
-Date: Tue, 19 Sep 2023 11:22:20 +0200
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 81B0F6607033;
+	Tue, 19 Sep 2023 10:23:43 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695115424;
+	bh=zr0JHbMPGnoB7W9Ga+/W4aCptT35gdUdHKTnbXaS1ao=;
+	h=From:To:Cc:Subject:Date:From;
+	b=gNu8uZ5h9bSSKMbkyuwIc++hFOXW8AthBtEaGp3olqat7QhHQQV1yuUtznTL1opyi
+	 6q0B7NFlvHsusyAPXPORN3XaXbLKZmXO1j/E7uzxgJ2V0GE8Nz1yvy9gnMnbc3NvFG
+	 Vtb2kKQLtGwLlFiBELpiW94r74dHWzR3WxMfZy6Qc99xsrT8lshAUErJPPF56y+stf
+	 qTMarH6dNKpDv/yrvG0m9i/VvI0N7+bDPI3c0FtZFOr0wACFERn/tqjFW+ftkSoO4R
+	 ZSAMMZ/Si1RGBHYK9sSf+/u0r5MxmIW2kfsqDOuXESccspqQ3uyAUdkMI7KaYbODCz
+	 0fEralOeKOMnQ==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: mathieu.poirier@linaro.org
+Cc: andersson@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	tinghan.shen@mediatek.com,
+	linux-remoteproc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	wenst@chromium.org,
+	kernel@collabora.com
+Subject: [PATCH] remoteproc: mediatek: Refactor single core check and fix retrocompatibility
+Date: Tue, 19 Sep 2023 11:23:36 +0200
+Message-ID: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 02/49] media: videobuf2: Stop spamming kernel log with
- all queue counter
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-3-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230914133323.198857-3-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_022228_754454_E022F352 
-X-CRM114-Status: GOOD (  18.21  )
+X-CRM114-CacheID: sfid-20230919_022347_142638_6BD886DD 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,125 +78,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2023 15:32, Benjamin Gaignard wrote:
-> Only report unbalanced queue counters do avoid spamming kernel log
-> with useless information.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../media/common/videobuf2/videobuf2-core.c   | 77 +++++++++++--------
->  1 file changed, 43 insertions(+), 34 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index cf3b9f5b69b7..bedd827c0d9a 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -529,24 +529,25 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
->  #ifdef CONFIG_VIDEO_ADV_DEBUG
->  	/*
->  	 * Check that all the calls were balances during the life-time of this
+In older devicetrees we had the ChromeOS EC in a node called "cros-ec"
+instead of the newer "cros-ec-rpmsg", but this driver is now checking
+only for the latter, breaking compatibility with those.
 
-typo: balances -> balanced
+Besides, we can check if the SCP is single or dual core by simply
+walking through the children of the main SCP node and checking if
+if there's more than one "mediatek,scp-core" compatible node.
 
-> -	 * queue. If not (or if the debug level is 1 or up), then dump the
-> -	 * counters to the kernel log.
-> +	 * queue. If not then dump the counters to the kernel log.
->  	 */
->  	if (q->num_buffers) {
->  		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
->  				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
->  				  q->cnt_wait_prepare != q->cnt_wait_finish;
->  
-> -		if (unbalanced || debug) {
-> -			pr_info("counters for queue %p:%s\n", q,
-> -				unbalanced ? " UNBALANCED!" : "");
-> -			pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
-> -				q->cnt_queue_setup, q->cnt_start_streaming,
-> -				q->cnt_stop_streaming);
-> -			pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
-> -				q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
-> -			pr_info("     wait_prepare: %u wait_finish: %u\n",
-> -				q->cnt_wait_prepare, q->cnt_wait_finish);
-> +		if (unbalanced) {
-> +			pr_info("unbalanced counters for queue %p:\n", q);
-> +			if (q->cnt_start_streaming != q->cnt_stop_streaming)
-> +				pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
-> +					q->cnt_queue_setup, q->cnt_start_streaming,
-> +					q->cnt_stop_streaming);
-> +			if (q->cnt_prepare_streaming != q->cnt_unprepare_streaming)
-> +				pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
-> +					q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
-> +			if (q->cnt_wait_prepare != q->cnt_wait_finish)
-> +				pr_info("     wait_prepare: %u wait_finish: %u\n",
-> +					q->cnt_wait_prepare, q->cnt_wait_finish);
->  		}
->  		q->cnt_queue_setup = 0;
->  		q->cnt_wait_prepare = 0;
-> @@ -567,29 +568,37 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
->  				  vb->cnt_buf_prepare != vb->cnt_buf_finish ||
->  				  vb->cnt_buf_init != vb->cnt_buf_cleanup;
->  
-> -		if (unbalanced || debug) {
-> -			pr_info("   counters for queue %p, buffer %d:%s\n",
-> -				q, buffer, unbalanced ? " UNBALANCED!" : "");
-> -			pr_info("     buf_init: %u buf_cleanup: %u buf_prepare: %u buf_finish: %u\n",
-> -				vb->cnt_buf_init, vb->cnt_buf_cleanup,
-> -				vb->cnt_buf_prepare, vb->cnt_buf_finish);
-> -			pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
-> -				vb->cnt_buf_out_validate, vb->cnt_buf_queue,
-> -				vb->cnt_buf_done, vb->cnt_buf_request_complete);
-> -			pr_info("     alloc: %u put: %u prepare: %u finish: %u mmap: %u\n",
-> -				vb->cnt_mem_alloc, vb->cnt_mem_put,
-> -				vb->cnt_mem_prepare, vb->cnt_mem_finish,
-> -				vb->cnt_mem_mmap);
-> -			pr_info("     get_userptr: %u put_userptr: %u\n",
-> -				vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
-> -			pr_info("     attach_dmabuf: %u detach_dmabuf: %u map_dmabuf: %u unmap_dmabuf: %u\n",
-> -				vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf,
-> -				vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
-> -			pr_info("     get_dmabuf: %u num_users: %u vaddr: %u cookie: %u\n",
-> +		if (unbalanced) {
-> +			pr_info("unbalanced counters for queue %p:, buffer %d\n",
+Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/remoteproc/mtk_scp.c | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
 
-%p:, buffer %d -> %p, buffer %d:
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index ea227b566c54..a35409eda0cf 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -1144,29 +1144,25 @@ static int scp_add_multi_core(struct platform_device *pdev,
+ 	return ret;
+ }
+ 
+-static int scp_is_single_core(struct platform_device *pdev)
++static bool scp_is_single_core(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev_of_node(dev);
+ 	struct device_node *child;
++	int num_cores = 0;
+ 
+-	child = of_get_next_available_child(np, NULL);
+-	if (!child)
+-		return dev_err_probe(dev, -ENODEV, "No child node\n");
++	for_each_child_of_node(np, child)
++		if (of_device_is_compatible(child, "mediatek,scp-core"))
++			num_cores++;
+ 
+-	of_node_put(child);
+-	return of_node_name_eq(child, "cros-ec-rpmsg");
++	return num_cores < 2;
+ }
+ 
+ static int scp_cluster_init(struct platform_device *pdev, struct mtk_scp_of_cluster *scp_cluster)
+ {
+ 	int ret;
+ 
+-	ret = scp_is_single_core(pdev);
+-	if (ret < 0)
+-		return ret;
+-
+-	if (ret)
++	if (scp_is_single_core(pdev))
+ 		ret = scp_add_single_core(pdev, scp_cluster);
+ 	else
+ 		ret = scp_add_multi_core(pdev, scp_cluster);
+-- 
+2.42.0
 
-> +				q, buffer);
-> +			if (vb->cnt_buf_init != vb->cnt_buf_cleanup)
-> +				pr_info("     buf_init: %u buf_cleanup: %u\n",
-> +					vb->cnt_buf_init, vb->cnt_buf_cleanup);
-> +			if (vb->cnt_buf_prepare != vb->cnt_buf_finish)
-> +				pr_info("     buf_prepare: %u buf_finish: %u\n",
-> +					vb->cnt_buf_prepare, vb->cnt_buf_finish);
-> +			if (vb->cnt_buf_queue != vb->cnt_buf_done)
-> +				pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
-> +					vb->cnt_buf_out_validate, vb->cnt_buf_queue,
-> +					vb->cnt_buf_done, vb->cnt_buf_request_complete);
-> +			if (vb->cnt_mem_alloc != vb->cnt_mem_put)
-> +				pr_info("     alloc: %u put: %u\n",
-> +					vb->cnt_mem_alloc, vb->cnt_mem_put);
-> +			if (vb->cnt_mem_prepare != vb->cnt_mem_finish)
-> +				pr_info("     prepare: %u finish: %u\n",
-> +					vb->cnt_mem_prepare, vb->cnt_mem_finish);
-> +			if (vb->cnt_mem_get_userptr != vb->cnt_mem_put_userptr)
-> +				pr_info("     get_userptr: %u put_userptr: %u\n",
-> +					vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
-> +			if (vb->cnt_mem_attach_dmabuf != vb->cnt_mem_detach_dmabuf)
-> +				pr_info("     attach_dmabuf: %u detach_dmabuf: %u\n",
-> +					vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf);
-> +			if (vb->cnt_mem_map_dmabuf != vb->cnt_mem_unmap_dmabuf)
-> +				pr_info("     map_dmabuf: %u unmap_dmabuf: %u\n",
-> +					vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
-> +			pr_info("     get_dmabuf: %u num_users: %u\n",
->  				vb->cnt_mem_get_dmabuf,
-> -				vb->cnt_mem_num_users,
-> -				vb->cnt_mem_vaddr,
-> -				vb->cnt_mem_cookie);
-> +				vb->cnt_mem_num_users);
->  		}
->  	}
->  #endif
-
-Regards,
-
-	Hans
 
