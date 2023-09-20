@@ -4,178 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CBD8CE79AC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 06:58:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45CEFCE79AD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 07:10:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xd6UD0lpiZEJpu1Ss2nBSvZLx949pcvoG78Z9xP77Wo=; b=MzRpzmHG6j+YPP1rMpzbn/FyGi
-	mkOkAgwDWx6LhH2klD8fc/z9EqmcNGRDYUcu23pFwT8bp9TtArkp+mdlFFXEcNEKzo5IJQowiGxUv
-	YO1PdwwGeAcJPlZO6YgIT2e+VcSRNxZM1kV3bfgUtBIBQqkNDpgTzkeLG291KSOYNMtJpaIFh/twc
-	D3DH7UqQ4G5hRfuWqlxBo63uEhXez0xqxHm0m5eomgE1LNpry0OIqB30N+mrbZORD4p70GigAtG0Y
-	daJ5kuYUBZbu3iGXvyqyLMGFeXparyb2ZozUa156hXfOCEfyHURUtzJPJwJW2H6uUyBmPQ+Auxv07
-	tvn87m3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ojLBDIALgFAGlHX/gLZGZfw2dbAKXuDzswSQSjH9+Bw=; b=V9Wae37xMsxJQiI+bMsx9AtREA
+	Rmpa22pRWYWRGgnyFR2Cbh8OyEPS9tjej/p0DhGGFCVUq2oPSyhYrX+OO7ylqU6CAsa5rmqrM0Z3K
+	Cx+82E38A2Lh/dj4SEKutgaWpBRu1HJiKgfvPOJR4pQBG002ExmVAfXNR0C45w5VzGkbHWPvc4//4
+	j351w/0RmG3PpWSmt3leqxd0G2lwbExxcESl+zuSrgOZkg35i9xreV1LyfmKn6854MGZdWniqJ8ZM
+	QFJeXs9ZljMyGeDFnhKecWahOovSK9Z49W0KMRajXUEKzng8y9A4JLhJzCMeefTe+xEpwqaXVVXzL
+	EijQtjmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qirAE-0025TL-2S;
-	Wed, 20 Sep 2023 06:58:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qirML-0026pn-3B;
+	Wed, 20 Sep 2023 07:10:53 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qirAB-0025Rr-0D;
-	Wed, 20 Sep 2023 06:58:20 +0000
-X-UUID: 0ff6f1b0578311ee86758d4a7c00f3a0-20230919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=Xd6UD0lpiZEJpu1Ss2nBSvZLx949pcvoG78Z9xP77Wo=;
-	b=aFy2Rb5kOjZQZGLwYOq3pqJ0rGiPSWkSqkYrIQ2nbAxY5RT2a+H4OcU8HG0pxyo30kemmN49nQkWa4xCMLT74uLFf//FrDIhgxZ7RROnN9nQnBiaajqkaxWnxHdwjXu1oCePgExdZeCpOHI1JPN9yrZa7csh6OcQU3foaLuj+kM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:aa5a181a-517d-4bea-aa14-ef38ecb9645a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:6c022714-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 0ff6f1b0578311ee86758d4a7c00f3a0-20230919
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2116982418; Tue, 19 Sep 2023 23:58:11 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 20 Sep 2023 14:48:07 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 20 Sep 2023 14:48:07 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=chonWgF2IwA0MmUgn0mohgJTC6HPfvWFvHuVvV+LteqEp1sDSODMlqj1hRTKku/+rHvzwPrQtzIoIVlMB1ImzG8BHKVZVQW9fSrUBiQIdyirYNvRckLC1g126l1J6xoSbDBljRSsWPmrIqR50+Avq85QREIO7P9xGg+//ObIZCBwphXZd6iPr6KsffLQnaX6HVAGY9e0Vt8XvFEJA1lozvXtj54oQI4jTlJIK8pwCc8zeb1h6XAAugx6dNRTzlY7zX7ntVJaLdQB7byEUusK7OvbxnYcRyFfsTjgcqoAjZ1EV+fVgaVDlO+HbCB3b3lyiBYO2ftSrL6zDXO8e9l33w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Xd6UD0lpiZEJpu1Ss2nBSvZLx949pcvoG78Z9xP77Wo=;
- b=ZYqWaoBcnaSBmPyRxdUm0ImweiRthReUDoAh5OdYZv2Tj7zc34Mq2lFF32JqEEUsqI0/pKyO1zVhavcWy8UqhTQUEcLpHfXjP3y7On+msX2B1LXxSSeNqMPoQSIZm2hpBRh5AMHDcdo0Xu6FospswGqj9TP9q8kV4M/sstSLKSC+ydjfolH/LKkm1Reu635yPHgPjFzxnUupHVtKcbF45Y3LT+8cV/RXju7/EPPsreVXdRdkQGsWsh0FVwMlSe6bzLE5Lzlz/3tsV+Outm5TOwP+ZjD1CMfcu+M71DI45C9tsgAIpLYWLvF6x6dsHUM9OwjEsMAkje3vB9bk+IrKrA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Xd6UD0lpiZEJpu1Ss2nBSvZLx949pcvoG78Z9xP77Wo=;
- b=F0zsCnujvpTJ1QIoVySR1k2lin5byvyb6spbdPiCi6YLeJOjwvJQpEZgsRdG96r4ASY+BnpwmLoam3Kld9zspILvh1SK03x5DOSXpTLC/rjFD0R4Mkhzx2bUwRE6K1kbDPkuWr8vJEMy5zPIiym9va1rdmFV719hSyAzG0OBBqc=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by TYSPR03MB7386.apcprd03.prod.outlook.com (2603:1096:400:42e::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.27; Wed, 20 Sep
- 2023 06:48:05 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9c2c:c08a:212f:e984]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9c2c:c08a:212f:e984%6]) with mapi id 15.20.6792.026; Wed, 20 Sep 2023
- 06:48:04 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	=?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
-	=?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "airlied@gmail.com"
-	<airlied@gmail.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "nfraprado@collabora.com"
-	<nfraprado@collabora.com>
-Subject: Re: [RESEND PATCH v6 12/20] drm/mediatek: Refine device table of OVL
- adaptor
-Thread-Topic: [RESEND PATCH v6 12/20] drm/mediatek: Refine device table of OVL
- adaptor
-Thread-Index: AQHZ5IOtrFOLXF0a4EKn1nlLCbDfH7AjU8cA
-Date: Wed, 20 Sep 2023 06:48:04 +0000
-Message-ID: <45e51d006e7d4cc43f08856be1077127f0d85a5f.camel@mediatek.com>
-References: <20230911074233.31556-1-shawn.sung@mediatek.com>
-	 <20230911074233.31556-13-shawn.sung@mediatek.com>
-In-Reply-To: <20230911074233.31556-13-shawn.sung@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|TYSPR03MB7386:EE_
-x-ms-office365-filtering-correlation-id: 4227297e-d3a6-4000-a666-08dbb9a58a95
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: aUEaLQaohZdu3+8oejl2lgF9PptHoXTbIvL2fieGEul5T6WvzzWS067yD4+WuwCO12eEs6Vun9LqcYXeyA0SK+9RRY5QwfOvWmdIakX2OQSfWYO0Q1BNhbSpIOYm85wilD5uC5Ac3VcajbAA5E4bOIBdFChUWsB6o+sqcB/nLn6tnkS2mIsNMFPOjIRtO3kYrdbLrQuGs3y7MLOdaI3A/iRqeCpjKiWuMcYvPNi6M02PSVCbFvgBpd2+/fNbk94oiHO5yqgNVLN3XiOoegIpBeaj6JEBKeQhrCf2m0Paz0q0Lb0QukunFhiSMBrCPTMOoyDqUXcsmP53pqR91WxcJYjOcps9ttnOMWFBzkrAMRmEjTXN6155FhNcu3XH7M0YFfNzXNbxN5ZvPxJ88nxanBkTEZkcVFNQ5+mSpGWF+cnLhIDraRm96SHc+TelDTW4jOyXa11ZknBgzQBDblOf+2DEQKfm2xkdt2nVTeuQui+U1o6CXIYsO//mHm2gsp4w/jtBQPbcxTU9OeDxArB4n9wYhKihUGsaObfCsoq4SWxupH/GvVFyFmposNOmJGj1XLxxsaYB61o2I2IIxvPpu8xLu47/9189eSWeMRqK4LrmmUKSkeUzB705O8E7T4/fjM6mY38wQ5ufwTlOV6aN+l67aBEJ+kYqCTP8342aSwA=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(136003)(376002)(396003)(366004)(346002)(39860400002)(1800799009)(186009)(451199024)(316002)(54906003)(41300700001)(66446008)(66556008)(91956017)(66946007)(64756008)(76116006)(110136005)(66476007)(478600001)(71200400001)(122000001)(38100700002)(38070700005)(2906002)(36756003)(86362001)(85182001)(7416002)(8936002)(5660300002)(2616005)(83380400001)(8676002)(4326008)(26005)(6506007)(6512007)(6486002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WUQzZlBvMEErWHhsVFV2NEhwODhiZFVPN3lPSWhpTWg2T1dTQjNJbUNpekdl?=
- =?utf-8?B?ZmVHTDRKTm9TMVZaU1NONXdWTFRXUmRVYUpRZzIvVklnaDdVOG1nemxCS2Vk?=
- =?utf-8?B?QUFmSE41S252S0wwTTYzbitvVGRxb3gzeDMxSEw1VExpRkVrTmJhQ3owYzFq?=
- =?utf-8?B?a05JSktFaUkxeHdJVDNCU01PNWIxVCs4THNCY2c4UXh4M1ZIY2xmWmpBUXFz?=
- =?utf-8?B?K3cxVU9wNWxvbG9obkRTL3gvSDY3dGRPemJKd3JsSjF4ZndhVWRydlJaeW9F?=
- =?utf-8?B?SDNHMTYwcEN0YWd0a3ZCV0RockxmWGxTQmFZbUc2ellsYWRCek1kdVBIdHpV?=
- =?utf-8?B?aGROOTZCRVlJWForUTJuckprbkIvR3Q0WXh3NTluUzdCZ1BNdzQ2ODVKbDNZ?=
- =?utf-8?B?bFoxUkdQK2JaRWlsYksrRm9UTDd2d2pweHRvT1JKZ3lYbXZ0YXh2bWgvcjVG?=
- =?utf-8?B?K3RMeitsWjA3WFEraHVqV1RqVmNXdGw0QXp4OFNLcVRJcXREREw1Vkw1MjEr?=
- =?utf-8?B?eDVMRmtqUXNYZ3lFK1ZHZEYrYzdtVjBVZXZUZVN4NmlOTFJYUUlZWTVCdFRh?=
- =?utf-8?B?a2JaaVBDUkZPZFUzenNuQmJUM2I3a0d4TWtZTkR6UUFxSHdUcjRTTk5WQys3?=
- =?utf-8?B?MGNDbHpJK2NjT2c3K2JvMDZsY1RRcFlmWHZVcGtwWXhyOTE0VWhxUEZCVlZH?=
- =?utf-8?B?TjRzRWRiS0UrdEw3VGFZL3UyK2p2cUlJYkRJeTBESmZUQ0U5dU5oL3RWU25u?=
- =?utf-8?B?NjRyd3pEM2llS20wYjJORHB1NlZRUGthYWVjalJ0NXQ1SXVScUhaa01aaElQ?=
- =?utf-8?B?SnFiYlRQNzQ3NTJsNGxaeFRWVExLVGJ4L0lBeURFY0JBNnlqR05pamRTSXFO?=
- =?utf-8?B?b092d0J0NFNwWWpScWZ0S2l2djNVLy9UbDdPN0ZJbFRaamFGY20xWU9Sdkln?=
- =?utf-8?B?Sjg5R1BMT2dXUTZ1M3lrV2Vva2tuK2ZIUURkY0VIaHR4ZlF2dnVETlJ5bGlP?=
- =?utf-8?B?RUdyU1VhZDRiUitnUkdrMEhvY3JkQU1WQ205dytNSUdsZFBDVVk0MTBsVU0y?=
- =?utf-8?B?NGJoZ1VWRkpucjR5R241dm1vNnBMTHpsVHRCaG1sNkVOTlc0MWxkZ0pPNG53?=
- =?utf-8?B?U3h3M2FmU2U4Tkc3bm5tTlo0bFZtUEN3SHhCdmwzYnhieTFyUGZQV3ZkL0dJ?=
- =?utf-8?B?b2piV0Z2UVlqTEtKWldhaEFML1lTNFN5a1dKRU55UzgvMEQvQ1l0WWMvNmk3?=
- =?utf-8?B?cnZTVU1VT25nNDFBeVkxY0p4ejZQejZLd0NxZVh4b09NeUsxakp4V3B4bUIy?=
- =?utf-8?B?Zy9PMGJBNmx3aHM0ZDlkS0tpUkQ2ZEFrUldRdk1kRm1SSEc1RUpUV2R1bnds?=
- =?utf-8?B?MlhNRmEyZjM5Z1ptam14RURwUmlaQyt5MUlNMm1xcXU1UTdEYkt6aloxaXZF?=
- =?utf-8?B?aHhtRllISm9QR2VFVkFTUVgwaFovd2NqS0FsMVpZZFI4RDdSSUsvbHY3ejlZ?=
- =?utf-8?B?VUVIMWttd3RJQ3E0Y2dqbDB4NGgxM3RmbVdiZEVQS1RiUEV1aXBWU3F6eHRX?=
- =?utf-8?B?MEdBMVNsaGZSVVZ5cUE5aVd4MkQ5bUVxTXZKWENpc0RVRlVOOTFyZ1hGTkpu?=
- =?utf-8?B?NDROTnMycXpyM1JrRGJob1RnRE45TEV3SlA4SXJIWU50WktnRXFDcnhhL2ZB?=
- =?utf-8?B?Y21US3Y0dFlmdkF3RXNNUXQvckRXWU85MUNUd0daVXc0N3h6cFRML0pWWmll?=
- =?utf-8?B?VkxKdlNoa3l4d3NxempYM3JETzJnb0M1R1RsbU9GN3d2ZEM4V1RxZmwwQ0ph?=
- =?utf-8?B?TFJlTE1Kd1orRG95QlN2RzdMb1JrVGVJdlE2dTNDdkRhaG9HRlgwRE1sRmt2?=
- =?utf-8?B?ZXlQeTZLRFdaOXBMSDZsVjVvRmdOVU56ZW1maUlFMWlhWWpQdXB0RXBja0F6?=
- =?utf-8?B?cGFLTEREdEJ6eDZlZTl4dVBnSUdxNUhkMU9Yc1J2UVBDNUloeHA4RjE5a3ht?=
- =?utf-8?B?eHR3alcyZFVXdWs3UmEwS1pSREhoYmtTMHo0RWlDOVdZY013NHlwaTErTHhU?=
- =?utf-8?B?cEhtUGQrUEx5bE1YcWNVRWxrc0w1TkthbUxoUGdDVlJJbGJNRGFoL3k2UXIz?=
- =?utf-8?Q?iemybAhzQ6Uwik5hPNzH5YnAl?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <871A9FCE9579CA4AA19E22B503E134B6@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1qirMG-0026og-1S;
+	Wed, 20 Sep 2023 07:10:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 671C1B8197A;
+	Wed, 20 Sep 2023 07:10:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CE4AC433C7;
+	Wed, 20 Sep 2023 07:10:40 +0000 (UTC)
+Message-ID: <7ed371e9-ffc1-4802-8de0-3190a9bb661d@xs4all.nl>
+Date: Wed, 20 Sep 2023 09:10:39 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4227297e-d3a6-4000-a666-08dbb9a58a95
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Sep 2023 06:48:04.8804
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Ks+1ZUQPkee4Pj1ExxaqRjF7IO7jSqagpEd2zEevaTkVhXQ26hXOdMG8pn2y+PD8saVt5Y7Xc10gMdqPXpJT+A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYSPR03MB7386
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder
+ driver
+Content-Language: en-US, nl
+To: Jeffrey Kardatzke <jkardatzke@google.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ "nhebert@chromium.org" <nhebert@chromium.org>,
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "nfraprado@collabora.com" <nfraprado@collabora.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "frkoenig@chromium.org" <frkoenig@chromium.org>,
+ "stevecho@chromium.org" <stevecho@chromium.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "hsinyi@chromium.org" <hsinyi@chromium.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-13-yunfei.dong@mediatek.com>
+ <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+ <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl>
+ <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
+ <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl>
+ <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
+ <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl>
+ <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
+ <CA+ddPcPq3XrJGPqjZDq0u_ga6Aat1ve5ODBDD-OouO3xPSCFuA@mail.gmail.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <CA+ddPcPq3XrJGPqjZDq0u_ga6Aat1ve5ODBDD-OouO3xPSCFuA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_235819_118201_6402E251 
-X-CRM114-Status: GOOD (  16.66  )
+X-CRM114-CacheID: sfid-20230920_001048_755209_8CE30E4E 
+X-CRM114-Status: GOOD (  62.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -190,34 +92,439 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEhzaWFvLWNoaWVuOg0KDQpPbiBNb24sIDIwMjMtMDktMTEgYXQgMTU6NDIgKzA4MDAsIEhz
-aWFvIENoaWVuIFN1bmcgd3JvdGU6DQo+IC0gQWRqdXN0IGluZGVudGF0aW9uIHRvIGFsaWduIHdp
-dGggb3RoZXIgZmlsZXMNCj4gLSBTb3J0IGRldmljZSB0YWJsZSBpbiBhbHBoYWJldGljYWwgb3Jk
-ZXINCj4gLSBBZGQgc2VudGluZWwgdG8gZGV2aWNlIHRhYmxlDQoNClJldmlld2VkLWJ5OiBDSyBI
-dSA8Y2suaHVAbWVkaWF0ZWsuY29tPg0KDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBIc2lhbyBDaGll
-biBTdW5nIDxzaGF3bi5zdW5nQG1lZGlhdGVrLmNvbT4NCj4gLS0tDQo+ICBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsX2FkYXB0b3IuYyB8IDE1ICsrKystLS0tLS0tLS0tLQ0K
-PiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pDQo+IA0K
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bF9hZGFw
-dG9yLmMNCj4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsX2FkYXB0b3Iu
-Yw0KPiBpbmRleCAxMTRlZGVkODE3N2UuLjRhNWZhYjVlYTUxZiAxMDA2NDQNCj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bF9hZGFwdG9yLmMNCj4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bF9hZGFwdG9yLmMNCj4gQEAgLTM4Niwx
-NyArMzg2LDEwIEBAIHN0YXRpYyBpbnQgb3ZsX2FkYXB0b3JfY29tcF9nZXRfaWQoc3RydWN0DQo+
-IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUsDQo+ICB9DQo+IA0KPiAgc3Rh
-dGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX292bF9hZGFwdG9yX2NvbXBfZHRfaWRz
-W10gPSB7DQo+IC0Jew0KPiAtCQkuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTUtdmRvMS1y
-ZG1hIiwNCj4gLQkJLmRhdGEgPSAodm9pZCAqKU9WTF9BREFQVE9SX1RZUEVfTURQX1JETUEsDQo+
-IC0JfSwgew0KPiAtCQkuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTUtZGlzcC1tZXJnZSIs
-DQo+IC0JCS5kYXRhID0gKHZvaWQgKilPVkxfQURBUFRPUl9UWVBFX01FUkdFLA0KPiAtCX0sIHsN
-Cj4gLQkJLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTk1LWRpc3AtZXRoZHIiLA0KPiAtCQku
-ZGF0YSA9ICh2b2lkICopT1ZMX0FEQVBUT1JfVFlQRV9FVEhEUiwNCj4gLQl9LA0KPiAtCXt9LA0K
-PiArCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTk1LWRpc3AtZXRoZHIiLCAuZGF0YSA9
-ICh2b2lkDQo+ICopT1ZMX0FEQVBUT1JfVFlQRV9FVEhEUiB9LA0KPiArCXsgLmNvbXBhdGlibGUg
-PSAibWVkaWF0ZWssbXQ4MTk1LWRpc3AtbWVyZ2UiLCAuZGF0YSA9ICh2b2lkDQo+ICopT1ZMX0FE
-QVBUT1JfVFlQRV9NRVJHRSB9LA0KPiArCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTk1
-LXZkbzEtcmRtYSIsIC5kYXRhID0gKHZvaWQNCj4gKilPVkxfQURBUFRPUl9UWVBFX01EUF9SRE1B
-IH0sDQo+ICsJeyAvKiBzZW50aW5lbCAqLyB9DQo+ICB9Ow0KPiANCj4gIHN0YXRpYyBpbnQgY29t
-cGFyZV9vZihzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpDQo+IC0tDQo+IDIuMTguMA0K
-PiANCg==
+On 19/09/2023 21:49, Jeffrey Kardatzke wrote:
+> On Tue, Sep 19, 2023 at 11:51 AM Nicolas Dufresne
+> <nicolas.dufresne@collabora.com> wrote:
+>>
+>> Le mardi 19 septembre 2023 à 10:53 +0200, Hans Verkuil a écrit :
+>>> On 18/09/2023 22:57, Jeffrey Kardatzke wrote:
+>>>> On Fri, Sep 15, 2023 at 1:56 AM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
+>>>>>
+>>>>> On 15/09/2023 10:25, Yunfei Dong (董云飞) wrote:
+>>>>>> Hi Hans & Nicolas,
+>>>>>>
+>>>>>> Thanks for your advice.
+>>>>>>
+>>>>>> On Tue, 2023-09-12 at 11:30 +0200, Hans Verkuil wrote:
+>>>>>>>
+>>>>>>> External email : Please do not click links or open attachments until
+>>>>>>> you have verified the sender or the content.
+>>>>>>>  Hi,
+>>>>>>>
+>>>>>>> On 9/11/23 17:54, Nicolas Dufresne wrote:
+>>>>>>>> Hi,
+>>>>>>>>
+>>>>>>>> Le lundi 11 septembre 2023 à 20:59 +0800, Yunfei Dong a écrit :
+>>>>>>>>> Setting secure mode flag to kernel when trying to play secure
+>>>>>>>
+>>>>>>> video,
+>>>>>>>>> then decoder driver will initialize tee related interface to
+>>>>>>>
+>>>>>>> support
+>>>>>>>>> svp.
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> This is not what the patch is doing, please rework. This patch is
+>>>>>>>
+>>>>>>> an vendor API
+>>>>>>>> addition introducing V4L2_CID_MPEG_MTK_SET_SECURE_MODE. I should
+>>>>>>>
+>>>>>>> not have to
+>>>>>>>> read your patch to understand this.
+>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+>>>>>>>>> ---
+>>>>>>>>>  .../vcodec/decoder/mtk_vcodec_dec_stateless.c     | 15
+>>>>>>>
+>>>>>>> ++++++++++++++-
+>>>>>>>>>  drivers/media/v4l2-core/v4l2-ctrls-defs.c         |  5 +++++
+>>>>>>>>>  include/uapi/linux/v4l2-controls.h                |  1 +
+>>>>>>>>>  3 files changed, 20 insertions(+), 1 deletion(-)
+>>>>>>>>>
+>>>>>>>>> diff --git
+>>>>>>>
+>>>>>>> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state
+>>>>>>> less.c
+>>>>>>> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state
+>>>>>>> less.c
+>>>>>>>>> index d2b09ce9f1cf..a981178c25d9 100644
+>>>>>>>>> ---
+>>>>>>>
+>>>>>>> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state
+>>>>>>> less.c
+>>>>>>>>> +++
+>>>>>>>
+>>>>>>> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state
+>>>>>>> less.c
+>>>>>>>>> @@ -535,6 +535,17 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl
+>>>>>>>
+>>>>>>> *ctrl)
+>>>>>>>>>  ctrl->val = mtk_dma_contig_get_secure_handle(ctx, ctrl->val);
+>>>>>>>>>  mtk_v4l2_vdec_dbg(3, ctx, "get secure handle: %d => 0x%x",
+>>>>>>>
+>>>>>>> sec_fd, ctrl->val);
+>>>>>>>>>  break;
+>>>>>>>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
+>>>>>>>>
+>>>>>>>> Stepping back a little and focusing on the API, what makes your
+>>>>>>>
+>>>>>>> driver so
+>>>>>>>> special that it should be the only one having a "secure mode" ? We
+>>>>>>>
+>>>>>>> are touching
+>>>>>>>> in gap in the media pipeline in Linux, and this should come with
+>>>>>>>
+>>>>>>> consideration
+>>>>>>>> of the global API.
+>>>>>>>>
+>>>>>>>> Why is this API better then let's say Google Android one, were they
+>>>>>>>
+>>>>>>> expose 2
+>>>>>>>> device nodes in their fork of the MFC driver (a secure and a non
+>>>>>>>
+>>>>>>> secure one) ?
+>>>>>>>
+>>>>>>> Perhaps it is a good idea to first post an RFC with an uAPI proposal
+>>>>>>> on how to
+>>>>>>> handle secure video. I suspect this isn't mediatek specific, other
+>>>>>>> SoCs with
+>>>>>>> tee support could use this as well.
+>>>>>>>
+>>>>>>> As Nicolas said, it's long known to be a gap in our media support, so
+>>>>>>> it is
+>>>>>>> really great that you started work on this, but you need to look at
+>>>>>>> this from
+>>>>>>> a more generic point-of-view, and not mediatek-specific.
+>>>>>>>
+>>>>>>
+>>>>>> Whether your have any advice about how to do a more generic driver to
+>>>>>> handle secure video playback?
+>>>>>>
+>>>>>> There are several kind of buffer: output queue buffer/capture queue
+>>>>>> buffer/working buffer.
+>>>>>>
+>>>>>> output and capture queue buffer: user space will call tee related
+>>>>>> interface to allocate secure handle. Will convert to secure handle with
+>>>>>> v4l2 framework, then send secure handle to optee-os.
+>>>>>>
+>>>>>> working buffer: calling dma_heap and dma_buf to get secure memory
+>>>>>> handle, then covert secure iova in optee-os.
+>>>>>>
+>>>>>> Using the same kernel driver for svp and non-svp playback, just the
+>>>>>> buffer type are different. Normal is iova and secure is secure handle.
+>>>>>>
+>>>>>> User driver will tell the kernel driver with CID control whether the
+>>>>>> current playback is svp or non-svp.
+>>>>>
+>>>>> My understanding is that when you switch to secure mode, the driver makes
+>>>>> some optee calls to set everything up. And userspace needs a way convert a
+>>>>> dmabuf fd to a 'secure handle', which appears to be the DMA address of the
+>>>>> buffer. Who uses that handle?
+>>>>
+>>>> The only user space usage for getting the 'secure handle' from an fd
+>>>> is when that memory is written to. This is done when the TEE decrypts
+>>>> the video contents. User space sends the encrypted video + 'secure
+>>>> handle' to the TEE, and the TEE decrypts the contents to the memory
+>>>> associated with the 'secure handle'. Then the 'secure handle' is
+>>>> passed into the TEE again with the v4l2 driver to use as the source
+>>>> for video decoding (but w/ v4l2, user space is passing in fds).
+>>>
+>>> I think I need some more background. This series is to support a 'Secure Video
+>>> Processor' (at least, that's what svp stands for I believe, something that
+>>> is not mentioned anywhere in this series, BTW) which is used to decode an
+>>> encrypted h264 stream.
+>>>
+>>> First question: how is that stream encrypted? Is that according to some standard?
+>>> Nothing is mentioned about that.
+>>>
+>>> I gather that the encrypted stream is fed to the codec as usual (i.e. just put it
+>>> in the output buffer and queue it to the codec), nothing special is needed for that.
+>>> Except, how does the hardware know it is encrypted? I guess that's where the
+>>> control comes in, you have to turn on SVP mode first.
+>>
+>> Decryption takes place before the decoder. I suspect there is no dedicated
+>> driver for that, the TEE driver API is similar to smart card API and fits well
+>> this task. So the decrytor consume normal memory that is encrypted and is only
+>> allowed to decrypt into secure memory. All this is happening before the decoder,
+>> so is out of scope for this patchset.
+>>
+>> Just a correction :-D.
+>>
+>>>
+>>> For the capture buffers you need to provide buffers from secure/trusted memory.
+>>> That's a dmabuf fd, but where does that come from?
+>>>
+>>> I saw this message:
+>>>
+>>> https://lore.kernel.org/linux-media/CAPj87rOHctwHJM-7HiQpt8Q0b09x0WWw_T4XsL0qT=dS+XzyZQ@mail.gmail.com/T/#u
+>>>
+>>> so I expect that's where it comes from. But I agree that getting this from dma-heaps
+>>> seems more natural.
+>>>
+>>> I assume that those capture buffers are inaccessible from the CPU? (Hence 'secure')
+>>>
+>>> For actually displaying these secure buffers you would use drm, and I assume that
+>>> the hardware would mix in the contents of the secure buffer into the video output
+>>> pipeline? I.e., the actual contents remain inaccessible. And that the video output
+>>> (HDMI or DisplayPort) is using HDCP?
+>>>
+>>>>
+>>>>>
+>>>>> In any case, using a control to switch to secure mode and using a control
+>>>>> to convert a dmabuf fd to a secure handle seems a poor choice to me.
+>>>>>
+>>>>> I was wondering if it wouldn't be better to create a new V4L2_MEMORY_ type,
+>>>>> e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). That ensures that
+>>>>> once you create buffers for the first time, the driver can switch into secure
+>>>>> mode, and until all buffers are released again you know that the driver will
+>>>>> stay in secure mode.
+>>>>
+>>>> Why do you think the control for setting secure mode is a poor choice?
+>>>> There's various places in the driver code where functionality changes
+>>>> based on being secure/non-secure mode, so this is very much a 'global'
+>>>> setting for the driver. It could be inferred based off a new memory
+>>>> type for the queues...which then sets that flag in the driver; but
+>>>> that seems like it would be more fragile and would require checking
+>>>> for incompatible output/capture memory types. I'm not against another
+>>>> way of doing this; but didn't see why you think the proposed method is
+>>>> a poor choice.
+>>>
+>>> I assume you are either decoding to secure memory all the time, or not
+>>> at all. That's something you would want to select the moment you allocate
+>>> the first buffer. Using the V4L2_MEMORY_ value would be the natural place
+>>> for that. A control can typically be toggled at any time, and it makes
+>>> no sense to do that for secure streaming.
+>>>
+>>> Related to that: if you pass a dmabuf fd you will need to check somewhere
+>>> if the fd points to secure memory or not. You don't want to mix the two
+>>> but you want to check that at VIDIOC_QBUF time.
+>>>
+>>> Note that the V4L2_MEMORY_ value is already checked in the v4l2 core,
+>>> drivers do not need to do that.
+>>
+>> Just to clarify a bit, and make sure I understand this too. You are proposing to
+>> introduce something like:
+>>
+>>    V4L2_MEMORY_SECURE_DMABUF
+>>
+>> Which like V4L2_MEMORY_DMABUF is meant to import dmabuf, while telling the
+>> driver that the memory is secure according to the definition of "secure" for the
+>> platform its running on.
+>>
+>> This drivers also allocate secure SHM (a standard tee concept) and have internal
+>> allocation for reconstruction buffer and some hw specific reference metadata. So
+>> the idea would be that it would keep allocation using the dmabuf heap internal
+>> APIs ? And decide which type of memory based on the memory type found in the
+>> queue?
+>>
+>> Stepping back a little, why can't we have a way for drivers to detect that
+>> dmabuf are secure ? I'm wondering if its actually useful to impose to all
+>> userspace component to know that a dmabuf is secure ?
+>>
+>> Also, regarding MTK, these are stateless decoders. I think it would be nice to
+>> show use example code that can properly parse the un-encrypted header, pass the
+>> data to the decryptor and decode. There is a bit of mechanic in there that lacks
+>> clarification, a reference implementation would clearly help. Finally, does this
+>> platform offers some clearkey implementation (or other alternative) so we can do
+>> validation and regression testing? It would be very unfortunate to add feature
+>> upstream that can only be tested by proprietary CDM software.
+>>
+>> Nicolas
+> 
+> 
+> Here's some links to the current userspace implementation built on top
+> of the MTK patches (and yeah, this'll end up changing based on what
+> happens upstream).
+> 
+> 1. This is where we are decrypting the video to a secure buffer, it's
+> invoking IPC into a closed source component to do that:
+> https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/chromeos/decoder_buffer_transcryptor.cc;l=87
+
+So the encrypted compressed stream (contained in a regular non-secure buffer)
+is decrypted here into secure buffers. Correct?
+
+The hardware codec will just operate on those secure buffers, both for the
+output and capture queues, right? And no decryption/encryption takes place,
+it is all operating on unencrypted secure buffers, right?
+
+Or is the plan to include the decryption step in the driver?
+
+But who encrypted the compressed stream? Is it encrypted according to
+some standard? Or it is mediatek specific?
+
+Regards,
+
+	Hans
+
+> 2. This is where we aren enabling secure mode:
+> https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2/v4l2_video_decoder.cc;l=412
+> 3. This is where we are resolving secure buffers to secure handles:
+> https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2/v4l2_video_decoder.cc;l=535
+> (the allocation of the secure buffers is done in closed source CDM
+> code, but it's just opening the dma-buf heap and issuing the ioctl to
+> allocate it)
+> 4. This is where we submit the secure buffers to the output queue:
+> https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2/v4l2_queue.cc;l=816
+> (this is nothing special, since it's just passing in the fd)
+> 5. For the capture queue, there's zero changes in Chrome V4L2 code for
+> that...it's all transparent to user space that it's a secure surface
+> that's being rendered to. We do allocate them w/ different flags via
+> minigbm which happens here:
+> https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/chromeos/platform_video_frame_pool.cc;l=37
+> 
+>>
+>>>
+>>>>
+>>>>>
+>>>>> For converting the dmabuf fd into a secure handle: a new ioctl similar to
+>>>>> VIDIOC_EXPBUF might be more suited for that.
+>>>>
+>>>> I actually think the best way for converting the dmabuf fd into a
+>>>> secure handle would be another ioctl in the dma-heap driver...since
+>>>> that's where the memory is actually allocated from. But this really
+>>>> depends on upstream maintainers and what they are comfortable with.
+>>>
+>>> That feels like a more natural place of doing this.
+>>>
+>>> Regards,
+>>>
+>>>       Hans
+>>>
+>>>>
+>>>>>
+>>>>> Note that I am the first to admit that I have no experience with secure
+>>>>> video pipelines or optee-os, so I am looking at this purely from an uAPI
+>>>>> perspective.
+>>>>>
+>>>>> Regards,
+>>>>>
+>>>>>         Hans
+>>>>>
+>>>>>>
+>>>>>> Best Regards,
+>>>>>> Yunfei Dong
+>>>>>>> Regards,
+>>>>>>>
+>>>>>>> Hans
+>>>>>>>
+>>>>>>>>
+>>>>>>>> regards,
+>>>>>>>> Nicolas
+>>>>>>>>
+>>>>>>>> p.s. you forgot to document your control in the RST doc, please do
+>>>>>>>
+>>>>>>> in following
+>>>>>>>> release.
+>>>>>>>>
+>>>>>>>>> +ctx->is_svp_mode = ctrl->val;
+>>>>>>>>> +
+>>>>>>>>> +if (ctx->is_svp_mode) {
+>>>>>>>>> +ret = mtk_vcodec_dec_optee_open(ctx->dev->optee_private);
+>>>>>>>>> +if (ret)
+>>>>>>>>> +mtk_v4l2_vdec_err(ctx, "open secure mode failed.");
+>>>>>>>>> +else
+>>>>>>>>> +mtk_v4l2_vdec_dbg(3, ctx, "decoder in secure mode: %d", ctrl-
+>>>>>>>>
+>>>>>>>> val);
+>>>>>>>>> +}
+>>>>>>>>> +break;
+>>>>>>>>>  default:
+>>>>>>>>>  mtk_v4l2_vdec_dbg(3, ctx, "Not supported to set ctrl id:
+>>>>>>>>> 0x%x\n",
+>>>>>>>
+>>>>>>> hdr_ctrl->id);
+>>>>>>>>>  return ret;
+>>>>>>>>> @@ -573,7 +584,7 @@ static int mtk_vcodec_dec_ctrls_setup(struct
+>>>>>>>
+>>>>>>> mtk_vcodec_dec_ctx *ctx)
+>>>>>>>>>  unsigned int i;
+>>>>>>>>>  struct v4l2_ctrl *ctrl;
+>>>>>>>>>
+>>>>>>>>> -v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 1);
+>>>>>>>>> +v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 2);
+>>>>>>>>>  if (ctx->ctrl_hdl.error) {
+>>>>>>>>>  mtk_v4l2_vdec_err(ctx, "v4l2_ctrl_handler_init failed\n");
+>>>>>>>>>  return ctx->ctrl_hdl.error;
+>>>>>>>>> @@ -592,6 +603,8 @@ static int mtk_vcodec_dec_ctrls_setup(struct
+>>>>>>>
+>>>>>>> mtk_vcodec_dec_ctx *ctx)
+>>>>>>>>>
+>>>>>>>>>  ctrl = v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+>>>>>>>
+>>>>>>> &mtk_vcodec_dec_ctrl_ops,
+>>>>>>>>>   V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE, 0, 65535, 1, 0);
+>>>>>>>>> +ctrl = v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+>>>>>>>
+>>>>>>> &mtk_vcodec_dec_ctrl_ops,
+>>>>>>>>> + V4L2_CID_MPEG_MTK_SET_SECURE_MODE, 0, 65535, 1, 0);
+>>>>>>>>>
+>>>>>>>>>  v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
+>>>>>>>>>
+>>>>>>>>> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>>>>>>>
+>>>>>>> b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>>>>>>>>> index d8cf01f76aab..a507045a3f30 100644
+>>>>>>>>> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>>>>>>>>> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>>>>>>>>> @@ -1042,6 +1042,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+>>>>>>>>>  case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:return
+>>>>>>>>> "Reference
+>>>>>>>
+>>>>>>> Frames for a P-Frame";
+>>>>>>>>>  case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:return "Prepend
+>>>>>>>
+>>>>>>> SPS and PPS to IDR";
+>>>>>>>>>  case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:return "MediaTek
+>>>>>>>>> Decoder
+>>>>>>>
+>>>>>>> get secure handle";
+>>>>>>>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:return "MediaTek Decoder
+>>>>>>>
+>>>>>>> set secure mode";
+>>>>>>>>>
+>>>>>>>>>  /* AV1 controls */
+>>>>>>>>>  case V4L2_CID_MPEG_VIDEO_AV1_PROFILE:return "AV1 Profile";
+>>>>>>>>> @@ -1442,6 +1443,10 @@ void v4l2_ctrl_fill(u32 id, const char
+>>>>>>>
+>>>>>>> **name, enum v4l2_ctrl_type *type,
+>>>>>>>>>  *type = V4L2_CTRL_TYPE_INTEGER;
+>>>>>>>>>  *flags |= V4L2_CTRL_FLAG_WRITE_ONLY;
+>>>>>>>>>  break;
+>>>>>>>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
+>>>>>>>>> +*type = V4L2_CTRL_TYPE_INTEGER;
+>>>>>>>>> +*flags |= V4L2_CTRL_FLAG_WRITE_ONLY;
+>>>>>>>>> +break;
+>>>>>>>>>  case V4L2_CID_USER_CLASS:
+>>>>>>>>>  case V4L2_CID_CAMERA_CLASS:
+>>>>>>>>>  case V4L2_CID_CODEC_CLASS:
+>>>>>>>>> diff --git a/include/uapi/linux/v4l2-controls.h
+>>>>>>>
+>>>>>>> b/include/uapi/linux/v4l2-controls.h
+>>>>>>>>> index 7b3694985366..88e90d943e38 100644
+>>>>>>>>> --- a/include/uapi/linux/v4l2-controls.h
+>>>>>>>>> +++ b/include/uapi/linux/v4l2-controls.h
+>>>>>>>>> @@ -957,6 +957,7 @@ enum v4l2_mpeg_mfc51_video_force_frame_type {
+>>>>>>>>>  /*  MPEG-class control IDs specific to the MediaTek Decoder
+>>>>>>>
+>>>>>>> driver as defined by V4L2 */
+>>>>>>>>>  #define V4L2_CID_MPEG_MTK_BASE(V4L2_CTRL_CLASS_CODEC | 0x2000)
+>>>>>>>>>  #define
+>>>>>>>
+>>>>>>> V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE(V4L2_CID_MPEG_MTK_BASE+8)
+>>>>>>>>> +#define
+>>>>>>>
+>>>>>>> V4L2_CID_MPEG_MTK_SET_SECURE_MODE(V4L2_CID_MPEG_MTK_BASE+9)
+>>>>>>>>>
+>>>>>>>>>  /*  Camera class control IDs */
+>>>>>>>>>
+>>>>>
+>>>>>
+>>>>> _______________________________________________
+>>>>> linux-arm-kernel mailing list
+>>>>> linux-arm-kernel@lists.infradead.org
+>>>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>>>
+>>
+
 
