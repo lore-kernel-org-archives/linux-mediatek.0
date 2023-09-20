@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E82CE79DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 14:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4CE6C00454
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 15:03:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K04NXoJ7Y9q3wftpmynpfOQNlwxqB3uOMfQ/7UMdNAg=; b=zJHcptTx1yoI2gVFhlAkoboeFt
-	eyWPtzlzaoIW3azcm8gWezepgNFHjzf1u/nmkl+2LFYw3pUZwD88MMn5hRZFLsMIpiBXVkbbeUcIR
-	HWKf3CZEvfAo17lxVQR/na9Ln3mGPCv4VMfIblaROhu5grfwiV3zRfbXCsxnaYve5ECuBJZ03r9x5
-	SuscIHaEbPM3fu8PCIF8uSDP1aUioeYph3A/uCEARaW603Kr2C1fw64zenSfnIhsbM26hXxiZ/cTC
-	r6qRPbqj7Y2yfI3zWODWMIA987qTM84JUzhco9BtvCK4tCZts29MakNnyBBXhg/WbWqp/Xg8aRM9z
-	gWE+y2oA==;
+	bh=/u+c/OyaKyOk11f46yXtObgpP9VhuVOVWmm05nxlM9E=; b=XCmsoQVZak0yVTlr2W58C/Tq7W
+	zQ0+FFa0JzibzHBOAkl43zPLkLexDLVXysZ92+lw0RAQ4fUozao51pncmZTD3LDD3D+jks2TbOg1S
+	wGWW7iE4Pmea1LRm3vqnIHuaGigUlTR1nFYONsUhAqWxJ/bcB+D4EWKWrVywnc0+gSozTTgV0Cwlz
+	wN+OT5HeR8YZDuXjpR7NLpaVw+cFGGB8pXFRa6tNrH2kYEa0hvApiN/0xkeVyYul7st0YfeZ9mkuy
+	d+yMNrLLvTPzPn9BxbAnNTVpX5zFn7Mke87+yPvcPPa4DLkTA8NW3v8yxpXS4CAYMJ6c6z9v62AvK
+	DLVzfTag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiyd4-003Qz5-0b;
-	Wed, 20 Sep 2023 14:56:38 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qiykA-003S4d-1o;
+	Wed, 20 Sep 2023 15:03:58 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiycz-003Qxd-3A;
-	Wed, 20 Sep 2023 14:56:35 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1qiyk6-003S2q-2A;
+	Wed, 20 Sep 2023 15:03:56 +0000
+Received: from localhost.localdomain (unknown [IPv6:2001:b07:646b:e2:e4be:399f:af39:e0db])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 35B3C61A1D;
-	Wed, 20 Sep 2023 14:56:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E83CC433C9;
-	Wed, 20 Sep 2023 14:56:29 +0000 (UTC)
-Message-ID: <470682b4-c14b-4237-bc46-fddfdd085026@xs4all.nl>
-Date: Wed, 20 Sep 2023 16:56:27 +0200
+	(Authenticated sender: laura.nao)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 43EEE66071DC;
+	Wed, 20 Sep 2023 16:03:50 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695222231;
+	bh=0HPlpQakJrXjW7SQHdHHGKTtA1MdZ9XLz+FFXgI3KvA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=I9LsKxu/5SkYzDko1gEYhQqW2EhOn2AaMzI4Uemgy9+L9fiLIEyKpJXwKApxOgBzr
+	 ZIwSSO45NeACSR5G5Vy0T1sE2+S9fixrrpQmdiw4JVapyZgQxMQDmYyQ+zwCkuTBEl
+	 3DoTuwEJ5LVq/52PkVB69a/bCpAolPPdKKg5FVK53dkS2ECcAyKM2FKjoyRxuLVaUv
+	 MbmQB5fNUXM55rbnD4za8myRBz2CDnguAkYYOKVV9qXM5CuwYm6DOBCAdQqxTqwLO6
+	 jY/swgWX97zvfIbZwltfnibPzqM9y7vf3rTpVeeCvJ0q1ajVjBGzeNFL8ogwarSBgI
+	 mER0f7sSEDxNw==
+From: Laura Nao <laura.nao@collabora.com>
+To: angelogioacchino.delregno@collabora.com
+Cc: andersson@kernel.org,
+	kernel@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-remoteproc@vger.kernel.org,
+	mathieu.poirier@linaro.org,
+	matthias.bgg@gmail.com,
+	tinghan.shen@mediatek.com,
+	wenst@chromium.org,
+	Laura Nao <laura.nao@collabora.com>
+Subject: Re: [PATCH] remoteproc: mediatek: Refactor single core check and fix retrocompatibility
+Date: Wed, 20 Sep 2023 17:03:32 +0200
+Message-Id: <20230920150332.318851-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com>
+References: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 45/49] media: core: Add bitmap manage bufs array
- entries
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-46-benjamin.gaignard@collabora.com>
- <1142bbb4-b8f1-44ec-962e-9347a231782f@xs4all.nl>
- <20b6b93e-eef8-3d7b-a3c2-795f220059d4@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20b6b93e-eef8-3d7b-a3c2-795f220059d4@collabora.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_075634_092053_D691933B 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20230920_080354_896000_B8B99118 
+X-CRM114-Status: GOOD (  19.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,44 +81,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/09/2023 16:30, Benjamin Gaignard wrote:
+On 9/19/23 11:23, AngeloGioacchino Del Regno wrote:
+> In older devicetrees we had the ChromeOS EC in a node called "cros-ec"
+> instead of the newer "cros-ec-rpmsg", but this driver is now checking
+> only for the latter, breaking compatibility with those.
+> 
+> Besides, we can check if the SCP is single or dual core by simply
+> walking through the children of the main SCP node and checking if
+> if there's more than one "mediatek,scp-core" compatible node.
+> 
+> Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/remoteproc/mtk_scp.c | 18 +++++++-----------
+>   1 file changed, 7 insertions(+), 11 deletions(-)
 > 
 
-<snip>
+Tested on asurada (spherion) and jacuzzi (juniper). The issue was detected by KernelCI, so:
 
->>>       num_buffers = min_t(unsigned int, num_buffers,
->>>                   q->max_allowed_buffers - vb2_get_num_buffers(q));
->>>   -    first_index = vb2_get_num_buffers(q);
->>> +    first_index = bitmap_find_next_zero_area(q->bufs_map, q->max_allowed_buffers,
->>> +                         0, num_buffers, 0);
->>>         if (first_index >= q->max_allowed_buffers)
->>>           return 0;
->>> @@ -675,7 +678,13 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
->>>     struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q, unsigned int index)
->>>   {
->>> -    if (index < q->num_buffers)
->>> +    if (!q->bufs_map || !q->bufs)
->>> +        return NULL;
->> I don't think this can ever happen.
-> 
-> I got kernel crash without them.
-> I will keep them.
+Reported-by: "kernelci.org bot" <bot@kernelci.org>
+Tested-by: Laura Nao <laura.nao@collabora.com>
 
-What is the backtrace? How can this happen? It feels wrong that this can be
-called with a vb2_queue that apparently is not properly initialized.
+Thanks!
+Laura
 
->>> +
->>> +    return (bitmap_weight(q->bufs_map, q->max_allowed_buffers) > 0);
->> How about:
->>
->>     return vb2_get_num_buffers(q) > 0;
-> 
-> vb2_get_num_buffers is defined in videobuf2-core.c, I'm not sure that
-> an inline function could depend of a module function.
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index ea227b566c54..a35409eda0cf 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -1144,29 +1144,25 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>   	return ret;
+>   }
+>   
+> -static int scp_is_single_core(struct platform_device *pdev)
+> +static bool scp_is_single_core(struct platform_device *pdev)
+>   {
+>   	struct device *dev = &pdev->dev;
+>   	struct device_node *np = dev_of_node(dev);
+>   	struct device_node *child;
+> +	int num_cores = 0;
+>   
+> -	child = of_get_next_available_child(np, NULL);
+> -	if (!child)
+> -		return dev_err_probe(dev, -ENODEV, "No child node\n");
+> +	for_each_child_of_node(np, child)
+> +		if (of_device_is_compatible(child, "mediatek,scp-core"))
+> +			num_cores++;
+>   
+> -	of_node_put(child);
+> -	return of_node_name_eq(child, "cros-ec-rpmsg");
+> +	return num_cores < 2;
+>   }
+>   
+>   static int scp_cluster_init(struct platform_device *pdev, struct mtk_scp_of_cluster *scp_cluster)
+>   {
+>   	int ret;
+>   
+> -	ret = scp_is_single_core(pdev);
+> -	if (ret < 0)
+> -		return ret;
+> -
+> -	if (ret)
+> +	if (scp_is_single_core(pdev))
+>   		ret = scp_add_single_core(pdev, scp_cluster);
+>   	else
+>   		ret = scp_add_multi_core(pdev, scp_cluster);
 
-Not a problem. E.g. v4l2-ctrls.h is full of such static inlines.
-
-Regards,
-
-	Hans
 
