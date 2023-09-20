@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AA09CE79A8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Sep 2023 23:47:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE19CE79A8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 00:58:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7LJF4TQQlvwx4ojH6z1jq1dM6I4h5d3t3AXqcpM3/xU=; b=pfaZFpQ/ZnqJ/Vo9qyp5VPo2+D
-	VWvLi41X+auVTOqAmjJaeTx+w1Uha+p7Y4mW1kkyr1YjZU/HKXrwgm3i3MaAZhirCiR2N+JP2y6oG
-	18tIswcn5kEChtzKBnLh6YT/Dk0FV9/aRIzdcNqmJapjc4nps5iwkzL4oaukgNN5rlIvqw8Qth8ym
-	qUd+oVMHxSRoZ9lTTU1LwLFe7fBhoF23dEJieO5q4WE10QXs1TdF7fCnVcF6Jn/AfAZDJCD0R9uzu
-	ohBn1fhIaCfwYuUvhxeb7spUZ2wHHz7RsjGE8BKXqJSaj39bOhYouJ08xGaJUfrg4CQlIV6+gXam3
-	1UD0/RlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:
+	From:Content-Transfer-Encoding:Content-Type:Date:MIME-Version:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gnvTSVejABHO5wWQQ3vBHCeXE64eUxPjwgqfzipT3OI=; b=Xb5popt47EtQRFnlyOs1ezccsk
+	pkrly7SMwoCYHQQnEN1ioExgJ4NEiztQ4Eh5V/v4VB46dhvO2E/iPeIY6EVUIKgDBVfM/V2kWpZyU
+	nM3MkHt1RU+Nw99GzrKY0yFnY+zl83fe+APuUFhCQsZHyEAHK4gMK0YkhD1zpr12gSKv2+F8BIETC
+	lfLmUUzPUzMtQYYk/2yjvDVT7rkuSLA8TRVGEuUzvGahgS0yzScFaALCeZtj5mlaUVvWcp2WxrOlz
+	V9XNShfvfUcs8IVw0Qp4yGk1oZnsU/23n9Qn+GWTRl01kyAD802hI0RXWyJKMrBk+pLSFdUFpxale
+	CwzJx/Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qikRA-001Tgo-0R;
-	Tue, 19 Sep 2023 23:47:24 +0000
-Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129])
+	id 1qilXt-001Xo0-0B;
+	Wed, 20 Sep 2023 00:58:25 +0000
+Received: from devico.uberspace.de ([185.26.156.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qikR6-001Tg6-31
+	id 1qilXo-001Xla-1J
 	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Sep 2023 23:47:22 +0000
-Received: by mail-il1-x129.google.com with SMTP id e9e14a558f8ab-34fc9b461b6so32235ab.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Sep 2023 16:47:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1695167239; x=1695772039; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7LJF4TQQlvwx4ojH6z1jq1dM6I4h5d3t3AXqcpM3/xU=;
-        b=MhJHx+SdHyPcuP3ZdKVc8h2SEZN/ykpyPMrmOaLftNd7GAYDFXUXfgAREO5FzKNeUB
-         gTLsHIzSpt1QRsxRPetWWZe02mfCBsU7SfTPfrzI08d+pax2iG1r2n2Gj7otUvLYyhdv
-         g3GMF1zIHm+FMBnjkyO2Ii1wWRzuNrCCI3410h9mVAKelCAsQOCXPrDud8W9XIQG4JAo
-         qcOLREVXUNqo75O7c9sHeyxiq6QZ+9bD0X7mK0Gk+d2A5kQ+czGtvVRNFR4VmKF8KF2y
-         shaT+UPdtVh/sCZ7Q1XBw6bYvlPGA4MWwY/dXNXVGLfHXKC9OiqVZchNWSa8TAuCi2Dl
-         Zztg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695167239; x=1695772039;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7LJF4TQQlvwx4ojH6z1jq1dM6I4h5d3t3AXqcpM3/xU=;
-        b=HYCFH9NA9LT3ndtCanBl83UQJhWuJd/9nA7cGSPJHE5GAgZsB19TSTJDGBUlzAiMhL
-         SKfpBP3JmHfZXphYNhZajQegwijl9M72O/d8Q5zH4oTnRHjvRBKhSbFfTCog3gvxp0Xf
-         nsbdIOKHm1NMss0E5Coe/mmMaeI5NzdP0mJPSSH63k3SxowTjiUnhN2YVSBTYpA8n5Ok
-         NBSb3uOciLDqSiBl+g2VkU7QWT8DT1wT3x5qJLsbzXW036Hh6LbMqgcn+IJe89wDIKOw
-         A6F7XdugH4MePcZBV+S5VV0uw6QN+j+uaqzmNA/DxZfqht8OL22Jm0S7rlBYOOKjaJQZ
-         w/cQ==
-X-Gm-Message-State: AOJu0YyCxaZugpC3OWw7k8GGbbooUqJA6Y5iWTpzPcpAKBNLria4LNvu
-	IGPKLq/v4zBTOhKKT9TCBD/DhwK87ZvADbnKFKL5
-X-Google-Smtp-Source: AGHT+IGd+oxQSxw85Bd0zjhKfrnCmqrGPjS7bL32Al57eH/zbnuOVcqZXrWXgoYT+h6WDLt9al1FrU7dkwKZqspXE6Q=
-X-Received: by 2002:a05:6e02:1c4b:b0:349:2d91:e1a2 with SMTP id
- d11-20020a056e021c4b00b003492d91e1a2mr60657ilg.5.1695167238808; Tue, 19 Sep
- 2023 16:47:18 -0700 (PDT)
+	Wed, 20 Sep 2023 00:58:24 +0000
+Received: (qmail 25248 invoked by uid 990); 20 Sep 2023 00:58:08 -0000
+Authentication-Results: devico.uberspace.de;
+	auth=pass (plain)
 MIME-Version: 1.0
-References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
- <20230911125936.10648-12-yunfei.dong@mediatek.com> <d02953725e7ae17e75bff235acfd30327d0fe9ac.camel@collabora.com>
- <CA+ddPcOFksu6JzXZf0QOFeRDAyX=m0k+t8zwg2DbVmAkweobyg@mail.gmail.com> <1d19be1f21d579b529231882d761554d758db5b4.camel@collabora.com>
-In-Reply-To: <1d19be1f21d579b529231882d761554d758db5b4.camel@collabora.com>
-From: Jeffrey Kardatzke <jkardatzke@google.com>
-Date: Tue, 19 Sep 2023 16:47:03 -0700
-Message-ID: <CA+ddPcNSa_nW8Gtjck6bdWKHwN6OoASwwEYadR_9Z7eg=Su2rA@mail.gmail.com>
-Subject: Re: [PATCH 11/14] media: medkatek: vcodec: covert secure fd to secure handle
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
-	Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
-	Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Date: Wed, 20 Sep 2023 00:58:07 +0000
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
+From: "Leonard Lausen" <leonard@lausen.nl>
+Message-ID: <ca32347a879c794577f272a1473e44ee39f2acdc@lausen.nl>
+TLS-Required: No
+Subject: PROBLEM: MT8192 panel_edp_probe trace despite recent eDP and aux-bus
+ support patches
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+X-Rspamd-Bar: -
+X-Rspamd-Report: BAYES_HAM(-1.650084) MIME_GOOD(-0.1)
+X-Rspamd-Score: -1.750084
+Received: from unknown (HELO unkown) (::1)
+	by devico.uberspace.de (Haraka/3.0.1) with ESMTPSA; Wed, 20 Sep 2023 02:58:08 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=lausen.nl; s=uberspace;
+	h=from;
+	bh=Rw3LgHFJThsAgut9VwRfx6D9WPAl8cLdqXsSp1h9/bk=;
+	b=YSFk0GkAn7UhB5Hi300l0R0thdimCeehuxWJrCbjmwaR037kcJrV34bSg/FBPXGnKFl6y4XA9T
+	VT8WtFCxKcQB7hVJvCCSclNDBmxRC50vIMf9sk1psEZNPUfqJ2Kip+r13kwNkwg3jjcAZu60aTYO
+	8JuSO5+VwIMVO+0zWR4Qfq20yQrTgWleeFsfgQShygmQ5W2j1h/iugjGl9ZW45jmEryhwnCccA0b
+	qXyax8aZFAh9MpjQNuZUJo25I+djBXZm5ZLfyCramrLrx/AKkiQyWk2HmSkxSoURcUfyupHlK6QI
+	B0BZxmW/1WY+SmnW8fc1xl0AYrXlGsn/ZE/xXlyW3l5xvBYgecl+ZCza11NSb5NDJk5M3z3jFI3G
+	Sdu60Y86rv+6tL67nY8sQvNphwJh0Xy6kH/brWth7Rhj5G8CciSbgLQpopnEXL3eO60FzHtjR6yr
+	ro6llrPst60Ct7s6fUyK0/mC779KxdvhaZNsabmHad7jal2Cp0K8Gr/V72VIqXlOksxzrp2hZEAa
+	MuEyFD4O+ApsYUSz9K9j2p9h8vwrL9BlXFeDhiQV8YcGZwTYM+CUH9igAdZ46mrGJHFEZPScYI6f
+	LfLULOemJfb/ccv7FnUefFPTR6+bBC28cWkR9vvsqR4JQDxao/s+Kz8zTSy14ODhVljEXbrNjqwv
+	0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_164720_998140_AB67229B 
-X-CRM114-Status: GOOD (  36.21  )
+X-CRM114-CacheID: sfid-20230919_175821_175985_92F87F67 
+X-CRM114-Status: UNSURE (   2.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,241 +80,188 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I do agree having a cleaner mechanism for this is better. So ideally
-this control is dropped from v4l2 and it becomes another ioctl in
-dma-heap instead so there's a uAPI for it. Then for the driver usages
-of sg_dma_address to get secure handles, those could be converted into
-dma-buf heap kernel APIs so they're not trying to reuse the dma_addr.
+Dear AngeloGioacchino, Dear Maintainers,
 
-On Tue, Sep 19, 2023 at 4:03=E2=80=AFPM Nicolas Dufresne
-<nicolas.dufresne@collabora.com> wrote:
->
-> Le mardi 19 septembre 2023 =C3=A0 15:38 -0700, Jeffrey Kardatzke a =C3=A9=
-crit :
-> > On Tue, Sep 19, 2023 at 12:43=E2=80=AFPM Nicolas Dufresne
-> > <nicolas.dufresne@collabora.com> wrote:
-> > >
-> > > Le lundi 11 septembre 2023 =C3=A0 20:59 +0800, Yunfei Dong a =C3=A9cr=
-it :
-> > > > User driver will fill or parse data in optee-os with secure handle,
-> > > > need to covert secure fd to secure handle in kernel.
-> > > >
-> > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > > ---
-> > > >  .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  1 +
-> > > >  .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 54 +++++++++++++++=
-+++-
-> > > >  drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  5 ++
-> > > >  include/uapi/linux/v4l2-controls.h            |  4 ++
-> > > >  4 files changed, 62 insertions(+), 2 deletions(-)
-> > > >
-> > > > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vco=
-dec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_d=
-ec_drv.c
-> > > > index 0a89ce452ac3..64e006820f43 100644
-> > > > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_drv.c
-> > > > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_drv.c
-> > > > @@ -571,3 +571,4 @@ module_platform_driver(mtk_vcodec_dec_driver);
-> > > >
-> > > >  MODULE_LICENSE("GPL v2");
-> > > >  MODULE_DESCRIPTION("Mediatek video codec V4L2 decoder driver");
-> > > > +MODULE_IMPORT_NS(DMA_BUF);
-> > > > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vco=
-dec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vc=
-odec_dec_stateless.c
-> > > > index 2ea517883a86..d2b09ce9f1cf 100644
-> > > > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_stateless.c
-> > > > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_stateless.c
-> > > > @@ -426,6 +426,46 @@ static int mtk_vcodec_get_pic_info(struct mtk_=
-vcodec_dec_ctx *ctx)
-> > > >       return ret;
-> > > >  }
-> > > >
-> > > > +static int mtk_dma_contig_get_secure_handle(struct mtk_vcodec_dec_=
-ctx *ctx, int fd)
-> > > > +{
-> > > > +     int secure_handle =3D 0;
-> > > > +     struct dma_buf *buf;
-> > > > +     struct dma_buf_attachment *dba;
-> > > > +     struct sg_table *sgt;
-> > > > +     struct device *dev =3D &ctx->dev->plat_dev->dev;
-> > > > +
-> > > > +     buf =3D dma_buf_get(fd);
-> > > > +     if (IS_ERR(buf)) {
-> > > > +             mtk_v4l2_vdec_err(ctx, "dma_buf_get fail fd:%d", fd);
-> > > > +             return 0;
-> > > > +     }
-> > > > +
-> > > > +     dba =3D dma_buf_attach(buf, dev);
-> > > > +     if (IS_ERR(dba)) {
-> > > > +             mtk_v4l2_vdec_err(ctx, "dma_buf_attach fail fd:%d", f=
-d);
-> > > > +             goto err_attach;
-> > > > +     }
-> > > > +
-> > > > +     sgt =3D dma_buf_map_attachment(dba, DMA_BIDIRECTIONAL);
-> > > > +     if (IS_ERR(sgt)) {
-> > > > +             mtk_v4l2_vdec_err(ctx, "dma_buf_map_attachment fail f=
-d:%d", fd);
-> > > > +             goto err_map;
-> > > > +     }
-> > > > +     secure_handle =3D sg_dma_address(sgt->sgl);
-> > >
-> > > Does it mean if your secure dmabuf is passed to a driver that didn't =
-know it was
-> > > secure it will pick the handle as a memory address and program the HW=
- with it ?
-> > > That seems unsafe, the handle should be stored in a dedicated place a=
-nd mapping
-> > > should either fail, or provide a dummy buffer.
-> >
-> > Since the secure dmabufs don't support any mmap/cpu access to them and
-> > return -EPERM in those cases; wouldn't that prevent misuse of them in
-> > other places? (so the mmap operation and CPU access will fail, but
-> > getting the SG list from the dmabuf succeeds)
->
-> My impression is that if userspace can pass this FD to a driver without t=
-elling
-> the driver it is secure memory, the driver may potentially crash trying t=
-o use
-> the handle as an memory address.
->
-> In my opinion, sg_dma_address() should return addresses, like its name st=
-ate. If
-> you want to get something else, you should find another way to obtain it.
->
-> Nicolas
->
-> >
-> > >
-> > > > +
-> > > > +     dma_buf_unmap_attachment(dba, sgt, DMA_BIDIRECTIONAL);
-> > > > +     dma_buf_detach(buf, dba);
-> > > > +     dma_buf_put(buf);
-> > > > +
-> > > > +     return secure_handle;
-> > > > +err_map:
-> > > > +     dma_buf_detach(buf, dba);
-> > > > +err_attach:
-> > > > +     dma_buf_put(buf);
-> > > > +
-> > > > +     return 0;
-> > > > +}
-> > > > +
-> > > >  static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ctrl)
-> > > >  {
-> > > >       struct mtk_vcodec_dec_ctx *ctx =3D ctrl_to_dec_ctx(ctrl);
-> > > > @@ -436,7 +476,7 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ct=
-rl)
-> > > >       struct v4l2_ctrl *hdr_ctrl;
-> > > >       const struct mtk_vcodec_dec_pdata *dec_pdata =3D ctx->dev->vd=
-ec_pdata;
-> > > >       const struct mtk_video_fmt *fmt;
-> > > > -     int i =3D 0, ret =3D 0;
-> > > > +     int i =3D 0, ret =3D 0, sec_fd;
-> > > >
-> > > >       hdr_ctrl =3D ctrl;
-> > > >       if (!hdr_ctrl || !hdr_ctrl->p_new.p)
-> > > > @@ -489,6 +529,12 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl *c=
-trl)
-> > > >                       return -EINVAL;
-> > > >               }
-> > > >               break;
-> > > > +     case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:
-> > > > +             sec_fd =3D ctrl->val;
-> > > > +
-> > > > +             ctrl->val =3D mtk_dma_contig_get_secure_handle(ctx, c=
-trl->val);
-> > > > +             mtk_v4l2_vdec_dbg(3, ctx, "get secure handle: %d =3D>=
- 0x%x", sec_fd, ctrl->val);
-> > > > +             break;
-> > > >       default:
-> > > >               mtk_v4l2_vdec_dbg(3, ctx, "Not supported to set ctrl =
-id: 0x%x\n", hdr_ctrl->id);
-> > > >               return ret;
-> > > > @@ -525,8 +571,9 @@ static const struct v4l2_ctrl_ops mtk_vcodec_de=
-c_ctrl_ops =3D {
-> > > >  static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *c=
-tx)
-> > > >  {
-> > > >       unsigned int i;
-> > > > +     struct v4l2_ctrl *ctrl;
-> > > >
-> > > > -     v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS);
-> > > > +     v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 1);
-> > > >       if (ctx->ctrl_hdl.error) {
-> > > >               mtk_v4l2_vdec_err(ctx, "v4l2_ctrl_handler_init failed=
-\n");
-> > > >               return ctx->ctrl_hdl.error;
-> > > > @@ -543,6 +590,9 @@ static int mtk_vcodec_dec_ctrls_setup(struct mt=
-k_vcodec_dec_ctx *ctx)
-> > > >               }
-> > > >       }
-> > > >
-> > > > +     ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl, &mtk_vcodec_dec_ct=
-rl_ops,
-> > > > +                              V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE,=
- 0, 65535, 1, 0);
-> > > > +
-> > > >       v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
-> > > >
-> > > >       return 0;
-> > > > diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/me=
-dia/v4l2-core/v4l2-ctrls-defs.c
-> > > > index 8696eb1cdd61..d8cf01f76aab 100644
-> > > > --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > > > +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > > > @@ -1041,6 +1041,7 @@ const char *v4l2_ctrl_get_name(u32 id)
-> > > >       case V4L2_CID_MPEG_VIDEO_HEVC_SIZE_OF_LENGTH_FIELD:     retur=
-n "HEVC Size of Length Field";
-> > > >       case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:        retur=
-n "Reference Frames for a P-Frame";
-> > > >       case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:         retur=
-n "Prepend SPS and PPS to IDR";
-> > > > +     case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:               retur=
-n "MediaTek Decoder get secure handle";
-> > > >
-> > > >       /* AV1 controls */
-> > > >       case V4L2_CID_MPEG_VIDEO_AV1_PROFILE:                   retur=
-n "AV1 Profile";
-> > > > @@ -1437,6 +1438,10 @@ void v4l2_ctrl_fill(u32 id, const char **nam=
-e, enum v4l2_ctrl_type *type,
-> > > >       case V4L2_CID_MPEG_VIDEO_VPX_NUM_REF_FRAMES:
-> > > >               *type =3D V4L2_CTRL_TYPE_INTEGER_MENU;
-> > > >               break;
-> > > > +     case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:
-> > > > +             *type =3D V4L2_CTRL_TYPE_INTEGER;
-> > > > +             *flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
-> > > > +             break;
-> > > >       case V4L2_CID_USER_CLASS:
-> > > >       case V4L2_CID_CAMERA_CLASS:
-> > > >       case V4L2_CID_CODEC_CLASS:
-> > > > diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linu=
-x/v4l2-controls.h
-> > > > index c3604a0a3e30..7b3694985366 100644
-> > > > --- a/include/uapi/linux/v4l2-controls.h
-> > > > +++ b/include/uapi/linux/v4l2-controls.h
-> > > > @@ -954,6 +954,10 @@ enum v4l2_mpeg_mfc51_video_force_frame_type {
-> > > >  #define V4L2_CID_MPEG_MFC51_VIDEO_H264_ADAPTIVE_RC_STATIC         =
-   (V4L2_CID_CODEC_MFC51_BASE+53)
-> > > >  #define V4L2_CID_MPEG_MFC51_VIDEO_H264_NUM_REF_PIC_FOR_P          =
-   (V4L2_CID_CODEC_MFC51_BASE+54)
-> > > >
-> > > > +/*  MPEG-class control IDs specific to the MediaTek Decoder driver=
- as defined by V4L2 */
-> > > > +#define V4L2_CID_MPEG_MTK_BASE                       (V4L2_CTRL_CL=
-ASS_CODEC | 0x2000)
-> > > > +#define V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE  (V4L2_CID_MPEG_MTK_BA=
-SE+8)
-> > > > +
-> > > >  /*  Camera class control IDs */
-> > > >
-> > > >  #define V4L2_CID_CAMERA_CLASS_BASE   (V4L2_CTRL_CLASS_CAMERA | 0x9=
-00)
-> > >
->
+on MT8192 Asurada Spherion (Acer 514), I observe the following trace rela=
+ted to
+eDP and aux-bus during bootup with tags/mediatek-drm-next-6.6 merged to v=
+6.5.4
+as well as on plain v6.5.4. Despite the trace, the laptop display works. =
+Given
+your recent eDP and aux-bus support patches are included in
+tags/mediatek-drm-next-6.6, I thought reporting this may be helpful. (I'm
+unable to validate v6.6-rc2 currently, as there's a regression breaking b=
+oot.)=20
+
+[=20   3.808189] ------------[ cut here ]------------
+[    3.812840] WARNING: CPU: 7 PID: 10 at drivers/gpu/drm/panel/panel-edp=
+.c:758 panel_edp_probe+0x488/0x4f0
+[    3.822370] Modules linked in:
+[    3.825428] CPU: 7 PID: 10 Comm: kworker/u16:0 Not tainted 6.5.4-cos-m=
+t9+ #1
+[    3.832476] Hardware name: Google Spherion (rev0 - 3) (DT)
+[    3.837959] Workqueue: events_unbound deferred_probe_work_func
+[    3.843797] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYP=
+E=3D--)
+[    3.850757] pc : panel_edp_probe+0x488/0x4f0
+[    3.855025] lr : panel_edp_probe+0x29c/0x4f0
+[    3.859291] sp : ffff8000800d3710
+[    3.862600] x29: ffff8000800d3710 x28: 0000000000000000 x27: 000000000=
+0000000
+[    3.869737] x26: ffff60b44002d005 x25: ffffa4a68e990418 x24: 000000000=
+0000000
+[    3.875193] usb 1-1: new high-speed USB device number 2 using xhci-mtk
+[    3.876862] x23: ffff60b446542680 x22: ffffa4a68db8d5b0 x21: ffff60b44=
+52d0000
+[    3.876869] x20: 0000000000000000 x19: ffff60b441052480 x18: 000000000=
+00a8360
+[    3.876873] x17: 001fffffffffffff x16: 0000000000000000 x15: 000000000=
+0000001
+[    3.904812] x14: 000000000060f827 x13: 9b00200a4341452d x12: 000000000=
+0000000
+[    3.911948] x11: 0000000000000001 x10: 0000000000000000 x9 : ffff60b44=
+6523900
+[    3.919084] x8 : ffff60b446523900 x7 : 00000000435e6d06 x6 : 40395246b=
+460ffff
+[    3.926220] x5 : 0000000000000043 x4 : 000000000000142b x3 : 000000000=
+000004e
+[    3.933356] x2 : 0000000000000000 x1 : ffffa4a68db8d9a0 x0 : 000000000=
+dae142b
+[    3.940492] Call trace:
+[    3.942933]  panel_edp_probe+0x488/0x4f0
+[    3.946851]  panel_edp_dp_aux_ep_probe+0x38/0x50
+[    3.951466]  dp_aux_ep_probe+0x34/0xf4
+[    3.955211]  really_probe+0x148/0x2ac
+[    3.958868]  __driver_probe_device+0x78/0x12c
+[    3.963221]  driver_probe_device+0x3c/0x160
+[    3.967400]  __device_attach_driver+0xb8/0x138
+[    3.971841]  bus_for_each_drv+0x80/0xdc
+[    3.975672]  __device_attach+0x9c/0x188
+[    3.979503]  device_initial_probe+0x14/0x20
+[    3.983683]  bus_probe_device+0xac/0xb0
+[    3.987515]  device_add+0x5bc/0x778
+[    3.990999]  device_register+0x20/0x30
+[    3.994742]  of_dp_aux_populate_bus+0xc8/0x19c
+[    3.999181]  devm_of_dp_aux_populate_bus+0x18/0x80
+[    4.003968]  anx7625_i2c_probe+0x7bc/0x9b4
+[    4.008062]  i2c_device_probe+0x148/0x290
+[    4.011724] usb 1-1: New USB device found, idVendor=3D05e3, idProduct=
+=3D0610, bcdDevice=3D65.01
+[    4.012062]  really_probe+0x148/0x2ac
+[    4.012064]  __driver_probe_device+0x78/0x12c
+[    4.020243] usb 1-1: New USB device strings: Mfr=3D1, Product=3D2, Ser=
+ialNumber=3D0
+[    4.023879]  driver_probe_device+0x3c/0x160
+[    4.023882]  __device_attach_driver+0xb8/0x138
+[    4.023884]  bus_for_each_drv+0x80/0xdc
+[    4.028232] usb 1-1: Product: USB2.1 Hub
+[    4.035347]  __device_attach+0x9c/0x188
+[    4.035350]  device_initial_probe+0x14/0x20
+[    4.035353]  bus_probe_device+0xac/0xb0
+[    4.035355]  deferred_probe_work_func+0x8c/0xc8
+[    4.039530] usb 1-1: Manufacturer: GenesysLogic
+[    4.043955]  process_one_work+0x2d0/0x598
+[    4.048830] hub 1-1:1.0: USB hub found
+[    4.051689]  worker_thread+0x70/0x434
+[    4.051691]  kthread+0xfc/0x100
+[    4.051693]  ret_from_fork+0x10/0x20
+[    4.051699] irq event stamp: 136828
+[    4.051701] hardirqs last  enabled at (136827): [<ffffa4a68d991ba4>] _=
+raw_spin_unlock_irqrestore+0x6c/0x98
+[    4.055841] hub 1-1:1.0: 4 ports detected
+[    4.059699] hardirqs last disabled at (136828): [<ffffa4a68d9811e8>] e=
+l1_dbg+0x24/0x8c
+[    4.059704] softirqs last  enabled at (134796): [<ffffa4a68c810794>] _=
+_do_softirq+0x424/0x51c
+[    4.059706] softirqs last disabled at (134787): [<ffffa4a68c816af0>] _=
+___do_softirq+0x10/0x1c
+[    4.059709] ---[ end trace 0000000000000000 ]---
+
+Without your patches, on 6.5.4, the trace looks as follows
+
+[    3.834478] ------------[ cut here ]------------
+[    3.839126] WARNING: CPU: 5 PID: 10 at drivers/gpu/drm/panel/panel-edp=
+.c:758 panel_edp_probe+0x488/0x4f0
+[    3.848629] Modules linked in:
+[    3.851684] CPU: 5 PID: 10 Comm: kworker/u16:0 Not tainted 6.5.4-cos-m=
+t9 #1
+[    3.858646] Hardware name: Google Spherion (rev0 - 3) (DT)
+[    3.864129] Workqueue: events_unbound deferred_probe_work_func
+[    3.869966] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYP=
+E=3D--)
+[    3.876927] pc : panel_edp_probe+0x488/0x4f0
+[    3.881195] lr : panel_edp_probe+0x29c/0x4f0
+[    3.885461] sp : ffff8000800d3710
+[    3.888770] x29: ffff8000800d3710 x28: 0000000000000000 x27: 000000000=
+0000000
+[    3.895907] x26: ffff31fec002c005 x25: ffffa839d1b90418 x24: 000000000=
+0000000
+[    3.899112] usb 1-1: new high-speed USB device number 2 using xhci-mtk
+[    3.903031] x23: ffff31fec13fc500 x22: ffffa839d0d8d5b0 x21: ffff31fec=
+51ec000
+[    3.903038] x20: 0000000000000000 x19: ffff31fec536fe80 x18: 000000000=
+0078570
+[    3.903041] x17: 001fffffffffffff x16: 0000000000000000 x15: 000000000=
+0000001
+[    3.930981] x14: 0000000000350cdf x13: 9b00200a4341452d x12: 000000000=
+0000000
+[    3.938117] x11: 0000000000000001 x10: 0000000000000000 x9 : ffff31fec=
+10b2300
+[    3.945253] x8 : ffff31fec10b2300 x7 : 0000000037343f4b x6 : 40230bc1f=
+e31ffff
+[    3.952388] x5 : 0000000000000043 x4 : 000000000000142b x3 : 000000000=
+000004e
+[    3.959524] x2 : 0000000000000000 x1 : ffffa839d0d8d9a0 x0 : 000000000=
+dae142b
+[    3.966660] Call trace:
+[    3.969099]  panel_edp_probe+0x488/0x4f0
+[    3.973018]  panel_edp_dp_aux_ep_probe+0x38/0x50
+[    3.977633]  dp_aux_ep_probe+0x34/0xf4
+[    3.981378]  really_probe+0x148/0x2ac
+[    3.985036]  __driver_probe_device+0x78/0x12c
+[    3.989390]  driver_probe_device+0x3c/0x160
+[    3.993569]  __device_attach_driver+0xb8/0x138
+[    3.998009]  bus_for_each_drv+0x80/0xdc
+[    4.001840]  __device_attach+0x9c/0x188
+[    4.005672]  device_initial_probe+0x14/0x20
+[    4.009851]  bus_probe_device+0xac/0xb0
+[    4.013682]  device_add+0x5bc/0x778
+[    4.017166]  device_register+0x20/0x30
+[    4.020911]  of_dp_aux_populate_bus+0xc8/0x19c
+[    4.025349]  devm_of_dp_aux_populate_bus+0x18/0x80
+[    4.030136]  anx7625_i2c_probe+0x7bc/0x9b4
+[    4.034229]  i2c_device_probe+0x148/0x290
+[    4.038237]  really_probe+0x148/0x2ac
+[    4.038692] usb 1-1: New USB device found, idVendor=3D05e3, idProduct=
+=3D0610, bcdDevice=3D65.01
+[    4.041887]  __driver_probe_device+0x78/0x12c
+[    4.041890]  driver_probe_device+0x3c/0x160
+[    4.041892]  __device_attach_driver+0xb8/0x138
+[    4.041895]  bus_for_each_drv+0x80/0xdc
+[    4.041897]  __device_attach+0x9c/0x188
+[    4.050077] usb 1-1: New USB device strings: Mfr=3D1, Product=3D2, Ser=
+ialNumber=3D0
+[    4.054409]  device_initial_probe+0x14/0x20
+[    4.054412]  bus_probe_device+0xac/0xb0
+[    4.058588] usb 1-1: Product: USB2.1 Hub
+[    4.063012]  deferred_probe_work_func+0x8c/0xc8
+[    4.063014]  process_one_work+0x2d0/0x598
+[    4.066841] usb 1-1: Manufacturer: GenesysLogic
+[    4.070658]  worker_thread+0x70/0x434
+[    4.070660]  kthread+0xfc/0x100
+[    4.070663]  ret_from_fork+0x10/0x20
+[    4.078915] hub 1-1:1.0: USB hub found
+[    4.081952] irq event stamp: 141216
+[    4.081953] hardirqs last  enabled at (141215): [<ffffa839d0b936a4>] _=
+raw_spin_unlock_irqrestore+0x6c/0x98
+[    4.081960] hardirqs last disabled at (141216): [<ffffa839d0b82ce8>] e=
+l1_dbg+0x24/0x8c
+[    4.081965] softirqs last  enabled at (140754): [<ffffa839cfa10794>] _=
+_do_softirq+0x424/0x51c
+[    4.086058] hub 1-1:1.0: 4 ports detected
+[    4.089700] softirqs last disabled at (140749): [<ffffa839cfa16af0>] _=
+___do_softirq+0x10/0x1c
+[    4.089702] ---[ end trace 0000000000000000 ]---
+[    4.089721] panel-simple-dp-aux aux-3-0058: Unknown panel=20CMN 0x142b=
+, using conservative timings
 
