@@ -4,65 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45CADC04AA7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 15:57:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 505E2C04ABC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 17:50:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=27VaMGM9f3wx0w3Q31SehiqSVkRYdre7rbwRW+HKwmI=; b=Qe/aLMhXI6FVbC7SQntxAzZ1mU
-	hN9Kua1t5qlZS4AuvYrvkFPIuhhxrdYhBkt4sdC9/fQ3ZPXJlCoRNWzv3QyqtC3Xuh1+9qKtHbvgL
-	esCH+OXz7J32aBvDMgbxpc12l0/26uQh9C7Ac6u+oB26uWZii9Yfnjxp3NiiTQUJpxRqeoH6zMqYt
-	8HetvctjZv8UZY+MLCfe+9wyb9Rhe26kfW8CJXCsYs4QzNxAJvVUaNvs83euaUSxhktargMJlgnD4
-	/VijdIxfvJmkzZc7KyfQxKO22XJgvreu/Q+unuNORlSr97RVz1exstc+E/wbB9UlOn3mE3BhDg18K
-	3NNokRQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EpXyE3pyrLeXOoW/vTn/35mmwMMGT5ciC6Nn0z7I4eI=; b=BPij9P0TdWJa3n
+	ejRX+tfmgL2yL4HvAAqCZ2zf1XPgdqxwqCK7NrdeWVUYCYXBDfMcnDdXxrfSM0P6DBQamLllgvgpz
+	MDI/Iuf7hWn6drUjQo8upn8tyVYBQFniwC+hqVRzwBQd5O5ZK8tPa32WWXKpKX8WYIgsLGKNSxtND
+	6tMUaIypEl3qHO0Ik9abNnlbMW2uiN9NK4aqH6PdPNfpkl4m8FZZDZrPjM9QoS8T3fivg8KCnjB7+
+	6FU+h9v2gylOkhLAfUPbHGMDtPvSNKhGai0lm1RvLQ1COHW83yCDPf5PSXDs9pV/54+x0JftdGGSa
+	gkjUBD8zF36Xgy9OtaMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qizZs-003ZLc-1L;
-	Wed, 20 Sep 2023 15:57:24 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qj1L9-003mCY-2V;
+	Wed, 20 Sep 2023 17:50:19 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qizZo-003ZKF-2x;
-	Wed, 20 Sep 2023 15:57:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 834B8B81DD5;
-	Wed, 20 Sep 2023 15:57:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6055C433C7;
-	Wed, 20 Sep 2023 15:57:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695225438;
-	bh=pB4XNqlP7pg+a9UE5lhowbM1SsYWcw8dZscEk4AuXlk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=qc+be3qOzO6VB+dZL4dfLkCb7wkLMLG0vl/oxiGCveaxOQcDgBbgyLORlBQK/eVIB
-	 OtuJqCoB8Pqqw6O1zcY3SSKqIi9VR9n9Uhxamjgtno7SefbM0C/HilakhQ64Ht9ZhP
-	 jiUjMiyPMEZd4bF5iyo4YQee2BbRU4/cOPXs02EhVUcXlBj2Dfhyo4ecRKucKa5qrS
-	 RmIYhZ+AnESLwFZEq04c48G1xCxKY32MLXaEI+l8/jEbfuD39mzTW909Tf4QPAKcib
-	 Bf9KAjGbAGu6a9icOi8RHRhjiGBmeABgOLO8YtTLLOhTZ1KGLHG5PCyHtHFKSRu6Vs
-	 KFo2jEHqdnCkQ==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20230920085336.136238-1-wenst@chromium.org>
-References: <20230920085336.136238-1-wenst@chromium.org>
-Subject: Re: [PATCH v2] regulator: mt6358: split ops for buck and linear
- range LDO regulators
-Message-Id: <169522543613.83620.1878609936860596842.b4-ty@kernel.org>
-Date: Wed, 20 Sep 2023 16:57:16 +0100
+	id 1qj1L4-003m9U-1O;
+	Wed, 20 Sep 2023 17:50:16 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout2.routing.net (Postfix) with ESMTP id 0817F6035B;
+	Wed, 20 Sep 2023 17:50:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1695232209;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=EpXyE3pyrLeXOoW/vTn/35mmwMMGT5ciC6Nn0z7I4eI=;
+	b=h3BGCFCnFpKrXPsRyyuYxjScEcHuE5yKI+5VscIyM7e7qLus6YOrnwRwLFbkKcXdFMSYQn
+	m5hNdJW/WcuqODSErRv/CIL4K5wM4z5EC31U7rZbwkdsTsflW1wyRhE2xZsfc6WNeoDGrl
+	G04GkiedV1LYm7WjGhG2R4//uig4pg0=
+Received: from frank-G5.. (fttx-pool-217.61.152.105.bambit.de [217.61.152.105])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 3BE701006A2;
+	Wed, 20 Sep 2023 17:50:08 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 1/4] dt-bindings: thermal: mediatek: add mt7988 lvts compatible
+Date: Wed, 20 Sep 2023 19:49:58 +0200
+Message-Id: <20230920175001.47563-2-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230920175001.47563-1-linux@fw-web.de>
+References: <20230920175001.47563-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-034f2
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 5430aa16-e26a-4aa4-9ee0-76ea05442544
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_085721_128563_BD11C09B 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20230920_105014_752844_26FE7195 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,45 +68,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 20 Sep 2023 16:53:34 +0800, Chen-Yu Tsai wrote:
-> The buck and linear range LDO (VSRAM_*) regulators share one set of ops.
-> This set includes support for get/set mode. However this only makes
-> sense for buck regulators, not LDOs. The callbacks were not checking
-> whether the register offset and/or mask for mode setting was valid or
-> not. This ends up making the kernel report "normal" mode operation for
-> the LDOs.
-> 
-> [...]
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Applied to
+Add compatible string for mt7988 lvts application processor.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+v2:
+- change mt7988-lvts to mt7988-lvts-ap (Application Processor)
+- not added Ack from Rob because of this change
+---
+ .../devicetree/bindings/thermal/mediatek,lvts-thermal.yaml       | 1 +
+ 1 file changed, 1 insertion(+)
 
-Thanks!
-
-[1/1] regulator: mt6358: split ops for buck and linear range LDO regulators
-      commit: 7e37c851374eca2d1f6128de03195c9f7b4baaf2
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+index fe9ae4c425c0..e6665af52ee6 100644
+--- a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
++++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+@@ -18,6 +18,7 @@ description: |
+ properties:
+   compatible:
+     enum:
++      - mediatek,mt7988-lvts-ap
+       - mediatek,mt8192-lvts-ap
+       - mediatek,mt8192-lvts-mcu
+       - mediatek,mt8195-lvts-ap
+-- 
+2.34.1
 
 
