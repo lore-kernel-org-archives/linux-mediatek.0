@@ -4,58 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0B82C04ABA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 17:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26807C04FCE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 18:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5QpydNhnuiJDmq+DkprcEXtw+wHEatREQRn/jQOhq8U=; b=IoMsDu+pxUoQTG
-	PDjr/JloUu/O1ibPtHDX6wUZs3R23KjKrt2RFO4WqoL82f4yLttdz1KbpDoN+QVO8LW8toIMVSRGh
-	s0RvGNRUyuIK0gSwgAk+VIP1SD6ENtFkCi2/HLWsGJdHHgMJjknu5+mZRfJQv6K1h5l0+wMGSbQsV
-	gKdRbhAjFGij7FndAaA93J0wwPiPUNtd5eqyetKcEIzG9B6g2Yjhqpo6Q6S8bahcjBLdwXvV0Vx6W
-	7ru+5TCEwd4ERRGkpSii6J9D+pNnHjED7e25W8IOhZxTMJKrjuuvpPCZYewXNx44CYCmjsBMu0BNl
-	IEnnou5mhYfs8FpnPr8Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WjJwJX+Tyt35Jvmq3Gpk/1T/kcsOE94ufpBd/ISHFSM=; b=jt6zqta4wbqlmIdjQCyKjJQoI5
+	K8ZEXi43QvYxf27gVGO6ln1bCxL4i6Gwl52E/+jWnN1TH8M2Gb6bMvetzszU+namm6XwOM+zL/Ejf
+	VtD7OzeeZZQNeHi74ZFb3skYNpdi8QDJUzoQ39rV/gczacP/csW3d9HyzFmwSUA2sUEyX5C+MniF4
+	J1nIDqKl/P9XWGm15spAswJ1oCUReAnEbFAWRM4SO7+wsFs5byGeBaYZd/J5J7oWoqSW4HbvmRCga
+	7Ctg+fjQ9KUI0voQvDAby4uffGnCtbF5F8kABX/d2BdQnL8TXuN4P9pRHV9I/3KN9PPKq/DBf7mwI
+	7p04fqmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qj1LV-003mLo-0q;
-	Wed, 20 Sep 2023 17:50:41 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1qj1hr-003pJx-2m;
+	Wed, 20 Sep 2023 18:13:47 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qj1L4-003m9T-1h;
-	Wed, 20 Sep 2023 17:50:17 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout1.routing.net (Postfix) with ESMTP id 9DD9B4045E;
-	Wed, 20 Sep 2023 17:50:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1695232210;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5QpydNhnuiJDmq+DkprcEXtw+wHEatREQRn/jQOhq8U=;
-	b=psadO1KI3iBd80l9ivfW3Xc8VuZT4T3fzQ+BK66uGeSaUavtIWoXIoq+BHtSJYcZ0N9Yj2
-	O2mOPIkuv4OXumPzOmkAA9Q6GSWmgquA4FOHgOcEoqtFUzUcF3i5XYEQOGUA4DndII9uv3
-	3HF2l7WMM/u5Ma6yg8ykXBoIkG+CbSU=
-Received: from frank-G5.. (fttx-pool-217.61.152.105.bambit.de [217.61.152.105])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id BD9911006A2;
-	Wed, 20 Sep 2023 17:50:09 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 3/4] thermal/drivers/mediatek/lvts_thermal: make coeff configurable
-Date: Wed, 20 Sep 2023 19:50:00 +0200
-Message-Id: <20230920175001.47563-4-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230920175001.47563-1-linux@fw-web.de>
-References: <20230920175001.47563-1-linux@fw-web.de>
+	id 1qj1hm-003pI2-1T
+	for linux-mediatek@lists.infradead.org;
+	Wed, 20 Sep 2023 18:13:46 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-405290ab4b6so14055e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Sep 2023 11:13:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1695233617; x=1695838417; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WjJwJX+Tyt35Jvmq3Gpk/1T/kcsOE94ufpBd/ISHFSM=;
+        b=kOWjQKa6pWxlNlj8NDMjZXrpMim5cX4Lq4JBHCvE5sG50JqtmSr1p2CUS0clWUh4Mn
+         acskBn2qMOL2q1EoyR+3JiKz7i2gEaVUokaI1YipXiIEvBCSjDrfNmfK1AB7/JYxXIxE
+         dB4s4XI7lMVR07YtLEp4/+Prn5b5oxoOT4iYZMjIawvc+eGUfgdKwoWn76gjTdt/CAJe
+         lNB9SxD8hPRFxtu812izCkZSz6frH9Cl2qf46CI9bIishls3npOhVF/NqMDSm7TJlJGT
+         nVQa5cpo6iq0wEx39VFpYF/H/Q1yJrNCZvd75+AjqKA22EHo2XSIAGWpBjKx+TRiKSUq
+         GBmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695233617; x=1695838417;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WjJwJX+Tyt35Jvmq3Gpk/1T/kcsOE94ufpBd/ISHFSM=;
+        b=XwkFv8V7H6TzP9uNpLvavLLGqAZOXpmgBFFvdUuxBcOo1IsDGesDUko20PSG0duCqU
+         huUyddzFFOMVIfwL7D+1/WfLlikhtHDjKJAr9/0WiutxEhFjpDmk3xIvnA/FEJh9v21a
+         nBbRonEaPgMgaxkkTpZw2WnrBS/cOH+HR1DNR8zkyIu9ax7KsxClJyOZqSKTLFeUfAKT
+         49qqU1PW8aBzZQi1v7FuDd330yDT7WtI0DhuwYN7BMrApVH5FKqYg/jNR1uQrubVsjr4
+         HeQK7yVZckTJzHZa9f11Jn+ALjWBko7BObdHsWRL7pBU6Mg/M77rJoEe5gDivELDCuR5
+         wbew==
+X-Gm-Message-State: AOJu0YzMeilEmA7JHTQ+sc2b11oQ0WT2VCkEW1xpNGoEydjKGp7mvE9o
+	Ekb3oDxZGkYpQk7W+DbRIgyGKXKg70FWb0pRSezT
+X-Google-Smtp-Source: AGHT+IELBrduJFdOa/+wyXoyd4Vwp1rzTltbg8q7bu8jRrQXr6jCtwG/RmnW20Dl1O/cBvR5l4SQ5un1Asg4VuGAdc4=
+X-Received: by 2002:a05:600c:3b9e:b0:3fe:ef25:8b86 with SMTP id
+ n30-20020a05600c3b9e00b003feef258b86mr4367wms.4.1695233616766; Wed, 20 Sep
+ 2023 11:13:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: ef1a64eb-da28-41db-a1c7-108f57370c3b
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-13-yunfei.dong@mediatek.com> <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+ <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl> <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
+ <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl> <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
+ <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl> <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
+ <CA+ddPcPq3XrJGPqjZDq0u_ga6Aat1ve5ODBDD-OouO3xPSCFuA@mail.gmail.com> <7ed371e9-ffc1-4802-8de0-3190a9bb661d@xs4all.nl>
+In-Reply-To: <7ed371e9-ffc1-4802-8de0-3190a9bb661d@xs4all.nl>
+From: Jeffrey Kardatzke <jkardatzke@google.com>
+Date: Wed, 20 Sep 2023 11:13:23 -0700
+Message-ID: <CA+ddPcPzd-HTWQgUJW_W5zRLrXpEiNp9Ymbp9k+BfKftZGrmJw@mail.gmail.com>
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder driver
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+	=?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, 
+	"nhebert@chromium.org" <nhebert@chromium.org>, 
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, 
+	"nfraprado@collabora.com" <nfraprado@collabora.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org" <stevecho@chromium.org>, 
+	"wenst@chromium.org" <wenst@chromium.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+	"hsinyi@chromium.org" <hsinyi@chromium.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_105014_867782_818B07D4 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20230920_111342_522858_882BF79D 
+X-CRM114-Status: GOOD (  71.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,208 +103,547 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
-
-The upcoming mt7988 has different temperature coefficients so we
-cannot use constants in the functions lvts_golden_temp_init,
-lvts_golden_temp_init and lvts_raw_to_temp anymore.
-
-Add a field in the lvts_ctrl pointing to the lvts_data which now
-contains the soc-specific temperature coefficents.
-
-To make the code better readable, rename static int coeff_b to
-golden_temp_offset, COEFF_A to temp_factor and COEFF_B to temp_offset.
-
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-
----
-v2:
-- rename static int coeff_b to golden_temp_offset
-- rename coeff.a to temp_factor and coeff.b to temp_offset
----
- drivers/thermal/mediatek/lvts_thermal.c | 51 ++++++++++++++++---------
- 1 file changed, 34 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index effd9b00a424..c2669f405a94 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -80,8 +80,8 @@
- #define LVTS_SENSOR_MAX				4
- #define LVTS_GOLDEN_TEMP_MAX		62
- #define LVTS_GOLDEN_TEMP_DEFAULT	50
--#define LVTS_COEFF_A				-250460
--#define LVTS_COEFF_B				250460
-+#define LVTS_COEFF_A_MT8195			-250460
-+#define LVTS_COEFF_B_MT8195			250460
- 
- #define LVTS_MSR_IMMEDIATE_MODE		0
- #define LVTS_MSR_FILTERED_MODE		1
-@@ -94,7 +94,7 @@
- #define LVTS_MINIMUM_THRESHOLD		20000
- 
- static int golden_temp = LVTS_GOLDEN_TEMP_DEFAULT;
--static int coeff_b = LVTS_COEFF_B;
-+static int golden_temp_offset;
- 
- struct lvts_sensor_data {
- 	int dt_id;
-@@ -112,6 +112,8 @@ struct lvts_ctrl_data {
- struct lvts_data {
- 	const struct lvts_ctrl_data *lvts_ctrl;
- 	int num_lvts_ctrl;
-+	int temp_factor;
-+	int temp_offset;
- };
- 
- struct lvts_sensor {
-@@ -126,6 +128,7 @@ struct lvts_sensor {
- 
- struct lvts_ctrl {
- 	struct lvts_sensor sensors[LVTS_SENSOR_MAX];
-+	const struct lvts_data *lvts_data;
- 	u32 calibration[LVTS_SENSOR_MAX];
- 	u32 hw_tshut_raw_temp;
- 	int num_lvts_sensor;
-@@ -247,21 +250,21 @@ static void lvts_debugfs_exit(struct lvts_domain *lvts_td) { }
- 
- #endif
- 
--static int lvts_raw_to_temp(u32 raw_temp)
-+static int lvts_raw_to_temp(u32 raw_temp, int temp_factor)
+On Wed, Sep 20, 2023 at 12:10=E2=80=AFAM Hans Verkuil <hverkuil-cisco@xs4al=
+l.nl> wrote:
+>
+> On 19/09/2023 21:49, Jeffrey Kardatzke wrote:
+> > On Tue, Sep 19, 2023 at 11:51=E2=80=AFAM Nicolas Dufresne
+> > <nicolas.dufresne@collabora.com> wrote:
+> >>
+> >> Le mardi 19 septembre 2023 =C3=A0 10:53 +0200, Hans Verkuil a =C3=A9cr=
+it :
+> >>> On 18/09/2023 22:57, Jeffrey Kardatzke wrote:
+> >>>> On Fri, Sep 15, 2023 at 1:56=E2=80=AFAM Hans Verkuil <hverkuil-cisco=
+@xs4all.nl> wrote:
+> >>>>>
+> >>>>> On 15/09/2023 10:25, Yunfei Dong (=E8=91=A3=E4=BA=91=E9=A3=9E) wrot=
+e:
+> >>>>>> Hi Hans & Nicolas,
+> >>>>>>
+> >>>>>> Thanks for your advice.
+> >>>>>>
+> >>>>>> On Tue, 2023-09-12 at 11:30 +0200, Hans Verkuil wrote:
+> >>>>>>>
+> >>>>>>> External email : Please do not click links or open attachments un=
+til
+> >>>>>>> you have verified the sender or the content.
+> >>>>>>>  Hi,
+> >>>>>>>
+> >>>>>>> On 9/11/23 17:54, Nicolas Dufresne wrote:
+> >>>>>>>> Hi,
+> >>>>>>>>
+> >>>>>>>> Le lundi 11 septembre 2023 =C3=A0 20:59 +0800, Yunfei Dong a =C3=
+=A9crit :
+> >>>>>>>>> Setting secure mode flag to kernel when trying to play secure
+> >>>>>>>
+> >>>>>>> video,
+> >>>>>>>>> then decoder driver will initialize tee related interface to
+> >>>>>>>
+> >>>>>>> support
+> >>>>>>>>> svp.
+> >>>>>>>>
+> >>>>>>>>
+> >>>>>>>> This is not what the patch is doing, please rework. This patch i=
+s
+> >>>>>>>
+> >>>>>>> an vendor API
+> >>>>>>>> addition introducing V4L2_CID_MPEG_MTK_SET_SECURE_MODE. I should
+> >>>>>>>
+> >>>>>>> not have to
+> >>>>>>>> read your patch to understand this.
+> >>>>>>>>
+> >>>>>>>>>
+> >>>>>>>>> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> >>>>>>>>> ---
+> >>>>>>>>>  .../vcodec/decoder/mtk_vcodec_dec_stateless.c     | 15
+> >>>>>>>
+> >>>>>>> ++++++++++++++-
+> >>>>>>>>>  drivers/media/v4l2-core/v4l2-ctrls-defs.c         |  5 +++++
+> >>>>>>>>>  include/uapi/linux/v4l2-controls.h                |  1 +
+> >>>>>>>>>  3 files changed, 20 insertions(+), 1 deletion(-)
+> >>>>>>>>>
+> >>>>>>>>> diff --git
+> >>>>>>>
+> >>>>>>> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_s=
+tate
+> >>>>>>> less.c
+> >>>>>>> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_s=
+tate
+> >>>>>>> less.c
+> >>>>>>>>> index d2b09ce9f1cf..a981178c25d9 100644
+> >>>>>>>>> ---
+> >>>>>>>
+> >>>>>>> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_s=
+tate
+> >>>>>>> less.c
+> >>>>>>>>> +++
+> >>>>>>>
+> >>>>>>> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_s=
+tate
+> >>>>>>> less.c
+> >>>>>>>>> @@ -535,6 +535,17 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctr=
+l
+> >>>>>>>
+> >>>>>>> *ctrl)
+> >>>>>>>>>  ctrl->val =3D mtk_dma_contig_get_secure_handle(ctx, ctrl->val)=
+;
+> >>>>>>>>>  mtk_v4l2_vdec_dbg(3, ctx, "get secure handle: %d =3D> 0x%x",
+> >>>>>>>
+> >>>>>>> sec_fd, ctrl->val);
+> >>>>>>>>>  break;
+> >>>>>>>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
+> >>>>>>>>
+> >>>>>>>> Stepping back a little and focusing on the API, what makes your
+> >>>>>>>
+> >>>>>>> driver so
+> >>>>>>>> special that it should be the only one having a "secure mode" ? =
+We
+> >>>>>>>
+> >>>>>>> are touching
+> >>>>>>>> in gap in the media pipeline in Linux, and this should come with
+> >>>>>>>
+> >>>>>>> consideration
+> >>>>>>>> of the global API.
+> >>>>>>>>
+> >>>>>>>> Why is this API better then let's say Google Android one, were t=
+hey
+> >>>>>>>
+> >>>>>>> expose 2
+> >>>>>>>> device nodes in their fork of the MFC driver (a secure and a non
+> >>>>>>>
+> >>>>>>> secure one) ?
+> >>>>>>>
+> >>>>>>> Perhaps it is a good idea to first post an RFC with an uAPI propo=
+sal
+> >>>>>>> on how to
+> >>>>>>> handle secure video. I suspect this isn't mediatek specific, othe=
+r
+> >>>>>>> SoCs with
+> >>>>>>> tee support could use this as well.
+> >>>>>>>
+> >>>>>>> As Nicolas said, it's long known to be a gap in our media support=
+, so
+> >>>>>>> it is
+> >>>>>>> really great that you started work on this, but you need to look =
+at
+> >>>>>>> this from
+> >>>>>>> a more generic point-of-view, and not mediatek-specific.
+> >>>>>>>
+> >>>>>>
+> >>>>>> Whether your have any advice about how to do a more generic driver=
+ to
+> >>>>>> handle secure video playback?
+> >>>>>>
+> >>>>>> There are several kind of buffer: output queue buffer/capture queu=
+e
+> >>>>>> buffer/working buffer.
+> >>>>>>
+> >>>>>> output and capture queue buffer: user space will call tee related
+> >>>>>> interface to allocate secure handle. Will convert to secure handle=
+ with
+> >>>>>> v4l2 framework, then send secure handle to optee-os.
+> >>>>>>
+> >>>>>> working buffer: calling dma_heap and dma_buf to get secure memory
+> >>>>>> handle, then covert secure iova in optee-os.
+> >>>>>>
+> >>>>>> Using the same kernel driver for svp and non-svp playback, just th=
+e
+> >>>>>> buffer type are different. Normal is iova and secure is secure han=
+dle.
+> >>>>>>
+> >>>>>> User driver will tell the kernel driver with CID control whether t=
+he
+> >>>>>> current playback is svp or non-svp.
+> >>>>>
+> >>>>> My understanding is that when you switch to secure mode, the driver=
+ makes
+> >>>>> some optee calls to set everything up. And userspace needs a way co=
+nvert a
+> >>>>> dmabuf fd to a 'secure handle', which appears to be the DMA address=
+ of the
+> >>>>> buffer. Who uses that handle?
+> >>>>
+> >>>> The only user space usage for getting the 'secure handle' from an fd
+> >>>> is when that memory is written to. This is done when the TEE decrypt=
+s
+> >>>> the video contents. User space sends the encrypted video + 'secure
+> >>>> handle' to the TEE, and the TEE decrypts the contents to the memory
+> >>>> associated with the 'secure handle'. Then the 'secure handle' is
+> >>>> passed into the TEE again with the v4l2 driver to use as the source
+> >>>> for video decoding (but w/ v4l2, user space is passing in fds).
+> >>>
+> >>> I think I need some more background. This series is to support a 'Sec=
+ure Video
+> >>> Processor' (at least, that's what svp stands for I believe, something=
+ that
+> >>> is not mentioned anywhere in this series, BTW) which is used to decod=
+e an
+> >>> encrypted h264 stream.
+> >>>
+> >>> First question: how is that stream encrypted? Is that according to so=
+me standard?
+> >>> Nothing is mentioned about that.
+> >>>
+> >>> I gather that the encrypted stream is fed to the codec as usual (i.e.=
+ just put it
+> >>> in the output buffer and queue it to the codec), nothing special is n=
+eeded for that.
+> >>> Except, how does the hardware know it is encrypted? I guess that's wh=
+ere the
+> >>> control comes in, you have to turn on SVP mode first.
+> >>
+> >> Decryption takes place before the decoder. I suspect there is no dedic=
+ated
+> >> driver for that, the TEE driver API is similar to smart card API and f=
+its well
+> >> this task. So the decrytor consume normal memory that is encrypted and=
+ is only
+> >> allowed to decrypt into secure memory. All this is happening before th=
+e decoder,
+> >> so is out of scope for this patchset.
+> >>
+> >> Just a correction :-D.
+> >>
+> >>>
+> >>> For the capture buffers you need to provide buffers from secure/trust=
+ed memory.
+> >>> That's a dmabuf fd, but where does that come from?
+> >>>
+> >>> I saw this message:
+> >>>
+> >>> https://lore.kernel.org/linux-media/CAPj87rOHctwHJM-7HiQpt8Q0b09x0WWw=
+_T4XsL0qT=3DdS+XzyZQ@mail.gmail.com/T/#u
+> >>>
+> >>> so I expect that's where it comes from. But I agree that getting this=
+ from dma-heaps
+> >>> seems more natural.
+> >>>
+> >>> I assume that those capture buffers are inaccessible from the CPU? (H=
+ence 'secure')
+> >>>
+> >>> For actually displaying these secure buffers you would use drm, and I=
+ assume that
+> >>> the hardware would mix in the contents of the secure buffer into the =
+video output
+> >>> pipeline? I.e., the actual contents remain inaccessible. And that the=
+ video output
+> >>> (HDMI or DisplayPort) is using HDCP?
+> >>>
+> >>>>
+> >>>>>
+> >>>>> In any case, using a control to switch to secure mode and using a c=
+ontrol
+> >>>>> to convert a dmabuf fd to a secure handle seems a poor choice to me=
+.
+> >>>>>
+> >>>>> I was wondering if it wouldn't be better to create a new V4L2_MEMOR=
+Y_ type,
+> >>>>> e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). That ens=
+ures that
+> >>>>> once you create buffers for the first time, the driver can switch i=
+nto secure
+> >>>>> mode, and until all buffers are released again you know that the dr=
+iver will
+> >>>>> stay in secure mode.
+> >>>>
+> >>>> Why do you think the control for setting secure mode is a poor choic=
+e?
+> >>>> There's various places in the driver code where functionality change=
+s
+> >>>> based on being secure/non-secure mode, so this is very much a 'globa=
+l'
+> >>>> setting for the driver. It could be inferred based off a new memory
+> >>>> type for the queues...which then sets that flag in the driver; but
+> >>>> that seems like it would be more fragile and would require checking
+> >>>> for incompatible output/capture memory types. I'm not against anothe=
+r
+> >>>> way of doing this; but didn't see why you think the proposed method =
+is
+> >>>> a poor choice.
+> >>>
+> >>> I assume you are either decoding to secure memory all the time, or no=
+t
+> >>> at all. That's something you would want to select the moment you allo=
+cate
+> >>> the first buffer. Using the V4L2_MEMORY_ value would be the natural p=
+lace
+> >>> for that. A control can typically be toggled at any time, and it make=
+s
+> >>> no sense to do that for secure streaming.
+> >>>
+> >>> Related to that: if you pass a dmabuf fd you will need to check somew=
+here
+> >>> if the fd points to secure memory or not. You don't want to mix the t=
+wo
+> >>> but you want to check that at VIDIOC_QBUF time.
+> >>>
+> >>> Note that the V4L2_MEMORY_ value is already checked in the v4l2 core,
+> >>> drivers do not need to do that.
+> >>
+> >> Just to clarify a bit, and make sure I understand this too. You are pr=
+oposing to
+> >> introduce something like:
+> >>
+> >>    V4L2_MEMORY_SECURE_DMABUF
+> >>
+> >> Which like V4L2_MEMORY_DMABUF is meant to import dmabuf, while telling=
+ the
+> >> driver that the memory is secure according to the definition of "secur=
+e" for the
+> >> platform its running on.
+> >>
+> >> This drivers also allocate secure SHM (a standard tee concept) and hav=
+e internal
+> >> allocation for reconstruction buffer and some hw specific reference me=
+tadata. So
+> >> the idea would be that it would keep allocation using the dmabuf heap =
+internal
+> >> APIs ? And decide which type of memory based on the memory type found =
+in the
+> >> queue?
+> >>
+> >> Stepping back a little, why can't we have a way for drivers to detect =
+that
+> >> dmabuf are secure ? I'm wondering if its actually useful to impose to =
+all
+> >> userspace component to know that a dmabuf is secure ?
+> >>
+> >> Also, regarding MTK, these are stateless decoders. I think it would be=
+ nice to
+> >> show use example code that can properly parse the un-encrypted header,=
+ pass the
+> >> data to the decryptor and decode. There is a bit of mechanic in there =
+that lacks
+> >> clarification, a reference implementation would clearly help. Finally,=
+ does this
+> >> platform offers some clearkey implementation (or other alternative) so=
+ we can do
+> >> validation and regression testing? It would be very unfortunate to add=
+ feature
+> >> upstream that can only be tested by proprietary CDM software.
+> >>
+> >> Nicolas
+> >
+> >
+> > Here's some links to the current userspace implementation built on top
+> > of the MTK patches (and yeah, this'll end up changing based on what
+> > happens upstream).
+> >
+> > 1. This is where we are decrypting the video to a secure buffer, it's
+> > invoking IPC into a closed source component to do that:
+> > https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/chro=
+meos/decoder_buffer_transcryptor.cc;l=3D87
+>
+> So the encrypted compressed stream (contained in a regular non-secure buf=
+fer)
+> is decrypted here into secure buffers. Correct?
+Correct
+>
+> The hardware codec will just operate on those secure buffers, both for th=
+e
+> output and capture queues, right? And no decryption/encryption takes plac=
+e,
+> it is all operating on unencrypted secure buffers, right?
+Correct
+>
+> Or is the plan to include the decryption step in the driver?
+No, the driver will never be doing the decryption.
+>
+> But who encrypted the compressed stream? Is it encrypted according to
+> some standard? Or it is mediatek specific?
+It's encrypted using CENC (Common Encryption). The method for
+acquiring the keys to perform the decryption is Widevine specific
+(Widevine is the Digital Rights Management system we are using...but
+nothing in the kernel patches dictates which Digital Rights Management
+system is used, but the encryption technique is a standard).
+>
+> Regards,
+>
+>         Hans
+>
+> > 2. This is where we aren enabling secure mode:
+> > https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2=
+/v4l2_video_decoder.cc;l=3D412
+> > 3. This is where we are resolving secure buffers to secure handles:
+> > https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2=
+/v4l2_video_decoder.cc;l=3D535
+> > (the allocation of the secure buffers is done in closed source CDM
+> > code, but it's just opening the dma-buf heap and issuing the ioctl to
+> > allocate it)
+> > 4. This is where we submit the secure buffers to the output queue:
+> > https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/v4l2=
+/v4l2_queue.cc;l=3D816
+> > (this is nothing special, since it's just passing in the fd)
+> > 5. For the capture queue, there's zero changes in Chrome V4L2 code for
+> > that...it's all transparent to user space that it's a secure surface
+> > that's being rendered to. We do allocate them w/ different flags via
+> > minigbm which happens here:
+> > https://source.chromium.org/chromium/chromium/src/+/main:media/gpu/chro=
+meos/platform_video_frame_pool.cc;l=3D37
+> >
+> >>
+> >>>
+> >>>>
+> >>>>>
+> >>>>> For converting the dmabuf fd into a secure handle: a new ioctl simi=
+lar to
+> >>>>> VIDIOC_EXPBUF might be more suited for that.
+> >>>>
+> >>>> I actually think the best way for converting the dmabuf fd into a
+> >>>> secure handle would be another ioctl in the dma-heap driver...since
+> >>>> that's where the memory is actually allocated from. But this really
+> >>>> depends on upstream maintainers and what they are comfortable with.
+> >>>
+> >>> That feels like a more natural place of doing this.
+> >>>
+> >>> Regards,
+> >>>
+> >>>       Hans
+> >>>
+> >>>>
+> >>>>>
+> >>>>> Note that I am the first to admit that I have no experience with se=
+cure
+> >>>>> video pipelines or optee-os, so I am looking at this purely from an=
+ uAPI
+> >>>>> perspective.
+> >>>>>
+> >>>>> Regards,
+> >>>>>
+> >>>>>         Hans
+> >>>>>
+> >>>>>>
+> >>>>>> Best Regards,
+> >>>>>> Yunfei Dong
+> >>>>>>> Regards,
+> >>>>>>>
+> >>>>>>> Hans
+> >>>>>>>
+> >>>>>>>>
+> >>>>>>>> regards,
+> >>>>>>>> Nicolas
+> >>>>>>>>
+> >>>>>>>> p.s. you forgot to document your control in the RST doc, please =
+do
+> >>>>>>>
+> >>>>>>> in following
+> >>>>>>>> release.
+> >>>>>>>>
+> >>>>>>>>> +ctx->is_svp_mode =3D ctrl->val;
+> >>>>>>>>> +
+> >>>>>>>>> +if (ctx->is_svp_mode) {
+> >>>>>>>>> +ret =3D mtk_vcodec_dec_optee_open(ctx->dev->optee_private);
+> >>>>>>>>> +if (ret)
+> >>>>>>>>> +mtk_v4l2_vdec_err(ctx, "open secure mode failed.");
+> >>>>>>>>> +else
+> >>>>>>>>> +mtk_v4l2_vdec_dbg(3, ctx, "decoder in secure mode: %d", ctrl-
+> >>>>>>>>
+> >>>>>>>> val);
+> >>>>>>>>> +}
+> >>>>>>>>> +break;
+> >>>>>>>>>  default:
+> >>>>>>>>>  mtk_v4l2_vdec_dbg(3, ctx, "Not supported to set ctrl id:
+> >>>>>>>>> 0x%x\n",
+> >>>>>>>
+> >>>>>>> hdr_ctrl->id);
+> >>>>>>>>>  return ret;
+> >>>>>>>>> @@ -573,7 +584,7 @@ static int mtk_vcodec_dec_ctrls_setup(struc=
+t
+> >>>>>>>
+> >>>>>>> mtk_vcodec_dec_ctx *ctx)
+> >>>>>>>>>  unsigned int i;
+> >>>>>>>>>  struct v4l2_ctrl *ctrl;
+> >>>>>>>>>
+> >>>>>>>>> -v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 1);
+> >>>>>>>>> +v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 2);
+> >>>>>>>>>  if (ctx->ctrl_hdl.error) {
+> >>>>>>>>>  mtk_v4l2_vdec_err(ctx, "v4l2_ctrl_handler_init failed\n");
+> >>>>>>>>>  return ctx->ctrl_hdl.error;
+> >>>>>>>>> @@ -592,6 +603,8 @@ static int mtk_vcodec_dec_ctrls_setup(struc=
+t
+> >>>>>>>
+> >>>>>>> mtk_vcodec_dec_ctx *ctx)
+> >>>>>>>>>
+> >>>>>>>>>  ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+> >>>>>>>
+> >>>>>>> &mtk_vcodec_dec_ctrl_ops,
+> >>>>>>>>>   V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE, 0, 65535, 1, 0);
+> >>>>>>>>> +ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+> >>>>>>>
+> >>>>>>> &mtk_vcodec_dec_ctrl_ops,
+> >>>>>>>>> + V4L2_CID_MPEG_MTK_SET_SECURE_MODE, 0, 65535, 1, 0);
+> >>>>>>>>>
+> >>>>>>>>>  v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
+> >>>>>>>>>
+> >>>>>>>>> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> >>>>>>>
+> >>>>>>> b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> >>>>>>>>> index d8cf01f76aab..a507045a3f30 100644
+> >>>>>>>>> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> >>>>>>>>> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> >>>>>>>>> @@ -1042,6 +1042,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+> >>>>>>>>>  case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:return
+> >>>>>>>>> "Reference
+> >>>>>>>
+> >>>>>>> Frames for a P-Frame";
+> >>>>>>>>>  case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:return "Prepend
+> >>>>>>>
+> >>>>>>> SPS and PPS to IDR";
+> >>>>>>>>>  case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:return "MediaTek
+> >>>>>>>>> Decoder
+> >>>>>>>
+> >>>>>>> get secure handle";
+> >>>>>>>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:return "MediaTek Decode=
+r
+> >>>>>>>
+> >>>>>>> set secure mode";
+> >>>>>>>>>
+> >>>>>>>>>  /* AV1 controls */
+> >>>>>>>>>  case V4L2_CID_MPEG_VIDEO_AV1_PROFILE:return "AV1 Profile";
+> >>>>>>>>> @@ -1442,6 +1443,10 @@ void v4l2_ctrl_fill(u32 id, const char
+> >>>>>>>
+> >>>>>>> **name, enum v4l2_ctrl_type *type,
+> >>>>>>>>>  *type =3D V4L2_CTRL_TYPE_INTEGER;
+> >>>>>>>>>  *flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
+> >>>>>>>>>  break;
+> >>>>>>>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
+> >>>>>>>>> +*type =3D V4L2_CTRL_TYPE_INTEGER;
+> >>>>>>>>> +*flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
+> >>>>>>>>> +break;
+> >>>>>>>>>  case V4L2_CID_USER_CLASS:
+> >>>>>>>>>  case V4L2_CID_CAMERA_CLASS:
+> >>>>>>>>>  case V4L2_CID_CODEC_CLASS:
+> >>>>>>>>> diff --git a/include/uapi/linux/v4l2-controls.h
+> >>>>>>>
+> >>>>>>> b/include/uapi/linux/v4l2-controls.h
+> >>>>>>>>> index 7b3694985366..88e90d943e38 100644
+> >>>>>>>>> --- a/include/uapi/linux/v4l2-controls.h
+> >>>>>>>>> +++ b/include/uapi/linux/v4l2-controls.h
+> >>>>>>>>> @@ -957,6 +957,7 @@ enum v4l2_mpeg_mfc51_video_force_frame_type=
  {
- 	int temperature;
- 
--	temperature = ((s64)(raw_temp & 0xFFFF) * LVTS_COEFF_A) >> 14;
--	temperature += coeff_b;
-+	temperature = ((s64)(raw_temp & 0xFFFF) * temp_factor) >> 14;
-+	temperature += golden_temp_offset;
- 
- 	return temperature;
- }
- 
--static u32 lvts_temp_to_raw(int temperature)
-+static u32 lvts_temp_to_raw(int temperature, int temp_factor)
- {
--	u32 raw_temp = ((s64)(coeff_b - temperature)) << 14;
-+	u32 raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
- 
--	raw_temp = div_s64(raw_temp, -LVTS_COEFF_A);
-+	raw_temp = div_s64(raw_temp, -temp_factor);
- 
- 	return raw_temp;
- }
-@@ -269,6 +272,9 @@ static u32 lvts_temp_to_raw(int temperature)
- static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
- {
- 	struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
-+	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl,
-+						   sensors[lvts_sensor->id]);
-+	const struct lvts_data *lvts_data = lvts_ctrl->lvts_data;
- 	void __iomem *msr = lvts_sensor->msr;
- 	u32 value;
- 	int rc;
-@@ -301,7 +307,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
- 	if (rc)
- 		return -EAGAIN;
- 
--	*temp = lvts_raw_to_temp(value & 0xFFFF);
-+	*temp = lvts_raw_to_temp(value & 0xFFFF, lvts_data->temp_factor);
- 
- 	return 0;
- }
-@@ -348,10 +354,13 @@ static bool lvts_should_update_thresh(struct lvts_ctrl *lvts_ctrl, int high)
- static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
- {
- 	struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
--	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl, sensors[lvts_sensor->id]);
-+	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl,
-+						   sensors[lvts_sensor->id]);
-+	const struct lvts_data *lvts_data = lvts_ctrl->lvts_data;
- 	void __iomem *base = lvts_sensor->base;
--	u32 raw_low = lvts_temp_to_raw(low != -INT_MAX ? low : LVTS_MINIMUM_THRESHOLD);
--	u32 raw_high = lvts_temp_to_raw(high);
-+	u32 raw_low = lvts_temp_to_raw(low != -INT_MAX ? low : LVTS_MINIMUM_THRESHOLD,
-+				       lvts_data->temp_factor);
-+	u32 raw_high = lvts_temp_to_raw(high, lvts_data->temp_factor);
- 	bool should_update_thresh;
- 
- 	lvts_sensor->low_thresh = low;
-@@ -692,7 +701,7 @@ static int lvts_calibration_read(struct device *dev, struct lvts_domain *lvts_td
- 	return 0;
- }
- 
--static int lvts_golden_temp_init(struct device *dev, u32 *value)
-+static int lvts_golden_temp_init(struct device *dev, u32 *value, int temp_offset)
- {
- 	u32 gt;
- 
-@@ -701,7 +710,7 @@ static int lvts_golden_temp_init(struct device *dev, u32 *value)
- 	if (gt && gt < LVTS_GOLDEN_TEMP_MAX)
- 		golden_temp = gt;
- 
--	coeff_b = golden_temp * 500 + LVTS_COEFF_B;
-+	golden_temp_offset = golden_temp * 500 + temp_offset;
- 
- 	return 0;
- }
-@@ -724,7 +733,7 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
- 	 * The golden temp information is contained in the first chunk
- 	 * of efuse data.
- 	 */
--	ret = lvts_golden_temp_init(dev, (u32 *)lvts_td->calib);
-+	ret = lvts_golden_temp_init(dev, (u32 *)lvts_td->calib, lvts_data->temp_offset);
- 	if (ret)
- 		return ret;
- 
-@@ -735,6 +744,7 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
- 	for (i = 0; i < lvts_data->num_lvts_ctrl; i++) {
- 
- 		lvts_ctrl[i].base = lvts_td->base + lvts_data->lvts_ctrl[i].offset;
-+		lvts_ctrl[i].lvts_data = lvts_data;
- 
- 		ret = lvts_sensor_init(dev, &lvts_ctrl[i],
- 				       &lvts_data->lvts_ctrl[i]);
-@@ -758,7 +768,8 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
- 		 * after initializing the calibration.
- 		 */
- 		lvts_ctrl[i].hw_tshut_raw_temp =
--			lvts_temp_to_raw(lvts_data->lvts_ctrl[i].hw_tshut_temp);
-+			lvts_temp_to_raw(lvts_data->lvts_ctrl[i].hw_tshut_temp,
-+					 lvts_data->temp_factor);
- 
- 		lvts_ctrl[i].low_thresh = INT_MIN;
- 		lvts_ctrl[i].high_thresh = INT_MIN;
-@@ -1223,6 +1234,8 @@ static int lvts_probe(struct platform_device *pdev)
- 	if (irq < 0)
- 		return irq;
- 
-+	golden_temp_offset = lvts_data->temp_offset;
-+
- 	ret = lvts_domain_init(dev, lvts_td, lvts_data);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to initialize the lvts domain\n");
-@@ -1338,11 +1351,15 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_data_ctrl[] = {
- static const struct lvts_data mt8195_lvts_mcu_data = {
- 	.lvts_ctrl	= mt8195_lvts_mcu_data_ctrl,
- 	.num_lvts_ctrl	= ARRAY_SIZE(mt8195_lvts_mcu_data_ctrl),
-+	.temp_factor	= LVTS_COEFF_A_MT8195,
-+	.temp_offset	= LVTS_COEFF_B_MT8195,
- };
- 
- static const struct lvts_data mt8195_lvts_ap_data = {
- 	.lvts_ctrl	= mt8195_lvts_ap_data_ctrl,
- 	.num_lvts_ctrl	= ARRAY_SIZE(mt8195_lvts_ap_data_ctrl),
-+	.temp_factor	= LVTS_COEFF_A_MT8195,
-+	.temp_offset	= LVTS_COEFF_B_MT8195,
- };
- 
- static const struct of_device_id lvts_of_match[] = {
--- 
-2.34.1
-
+> >>>>>>>>>  /*  MPEG-class control IDs specific to the MediaTek Decoder
+> >>>>>>>
+> >>>>>>> driver as defined by V4L2 */
+> >>>>>>>>>  #define V4L2_CID_MPEG_MTK_BASE(V4L2_CTRL_CLASS_CODEC | 0x2000)
+> >>>>>>>>>  #define
+> >>>>>>>
+> >>>>>>> V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE(V4L2_CID_MPEG_MTK_BASE+8)
+> >>>>>>>>> +#define
+> >>>>>>>
+> >>>>>>> V4L2_CID_MPEG_MTK_SET_SECURE_MODE(V4L2_CID_MPEG_MTK_BASE+9)
+> >>>>>>>>>
+> >>>>>>>>>  /*  Camera class control IDs */
+> >>>>>>>>>
+> >>>>>
+> >>>>>
+> >>>>> _______________________________________________
+> >>>>> linux-arm-kernel mailing list
+> >>>>> linux-arm-kernel@lists.infradead.org
+> >>>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> >>>
+> >>
+>
 
