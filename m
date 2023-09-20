@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F5B9CE79C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 10:44:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E391BCE79D0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 12:02:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nWvCLqceEn6wG3ZRCAt4o5gpIsZJj2HveoheM85J1dE=; b=1ZL3p6mmUcmKBsVcchA+eeN2ar
-	HIRxwSmaKoT09/bch9ALUO6qXuKsjgDf4WQIKahAfCNnOwccZyJtuDvaEc5877Agl5QzF41KciLrt
-	5phgM8PZUpuBrI0rWZfULFz64dFHwLlIGgsgxafh8EGqMxEwP37sPMhQ+kZqn+/WW+yFHjUm+IhZ0
-	fObX2tZpspf8K7zUmELd6WZFKyCic+wpiyybc1PFSpuQ6hlRTM+Yx9+BW6tPzLzC/iOpra40RgV7y
-	gl+yxdPr61WvqQLHi1KP+rkjZc/gur3iaS22BOid8FwKV/xqHaMU/EgmBhNzRUK6/RC/2LkO4YtZm
-	JJixLOSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=M0W3u0ir3xERL7O0O8N9l9dzW62dLwYkM6x3SysDxak=; b=Hy69DCRE9Yh992miyDdxndDI3r
+	0qK7ohYqznhaYdKbBv10ERjgCq5Xub61IeYOZ4jIBmXvbxb3RT/UGmFrhOF9mA3XCc6rWirN//XPS
+	sXkYvKyvTD/o8EK/n/7ONBy4X8U3E2Q9KoSPbP+u7xdByJNo/J5GQhgTnXGEh8R6x/WqtnVYk6K5V
+	CMSzC3Oq7rn30d2qVHBXBtnRQDLsEXyR3tUymx4LbGKYbiIV/dMNEizbmS51/yqxxEvaau1K6qNbY
+	a5DIavfj1WOSjv1Gn+ASTuDSiwkKRKBu0geY2r29+FPrYrZrUzOlk91oBKkKJ7Ge5/ZLRmTzm/hc8
+	/1UcdQJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiuhG-002ey0-0H;
-	Wed, 20 Sep 2023 10:44:42 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qivuX-002xJN-1i;
+	Wed, 20 Sep 2023 12:02:29 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiuh9-002eun-25;
-	Wed, 20 Sep 2023 10:44:36 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CE07D66020EE;
-	Wed, 20 Sep 2023 11:44:33 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695206674;
-	bh=G338lXUJZ7YTM0Q7o/Hhflrx9583KA/wLdEtpyqYJyo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CEWExvrD9a+y3n9LJ7lAa7Kl4RvaCKlBKmInfM9DF1uU8oclkaQa35rBxaOtGABPg
-	 yf8+mp2+A+dGECE8suzbmU+0xPADRqLIa67y4+no7vKahABQhuaLjuYZfJc03uDmUc
-	 bTLKGbisZSoW0Cc91620NogoBAQsTpFXKPGunidYcHeakpINz5eJOO13g1U/Ro1xN+
-	 EIsXOka5uUfnsnipLT7xLWc8hVH9Ts5fa2qohiNE9YrVv3ffP0XmTh0F9iMgaeclfu
-	 91wTAMogsV8JSHuPhue+917MpHbZQXJuXWxPqUA1vJutEGFX//P1r6GkImep/v2X4a
-	 XksEYfLEGvdvA==
-Message-ID: <f8c359f6-4525-081c-290c-146ce99b1cfb@collabora.com>
-Date: Wed, 20 Sep 2023 12:44:32 +0200
+	id 1qivuS-002xHB-2z;
+	Wed, 20 Sep 2023 12:02:27 +0000
+Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.54])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RrHCY1NNBzrSqj;
+	Wed, 20 Sep 2023 20:00:09 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Wed, 20 Sep 2023 20:02:15 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH net-next v9 0/6] introduce page_pool_alloc() related API
+Date: Wed, 20 Sep 2023 19:58:49 +0800
+Message-ID: <20230920115855.27631-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v3 09/12] regulator: mt6358: Make MT6366 vcn18 LDO
- configurable
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Lee Jones <lee@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230919104357.3971512-1-wenst@chromium.org>
- <20230919104357.3971512-10-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230919104357.3971512-10-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_034435_816956_FDE48923 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20230920_050225_345569_C0DEC90F 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,18 +70,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/09/23 12:43, Chen-Yu Tsai ha scritto:
-> The VCN18 regulator on the MT6366 (only) actually has a wide
-> configurable range of voltages, even though its name suggests a fixed
-> output voltage.
-> 
-> Convert it from a fixed LDO to a configurable LDO. Its range of settings
-> is the same as the VM18 regulator, which is missing and will be added in
-> a subsequent patch.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+In [1] & [2] & [3], there are usecases for veth and virtio_net
+to use frag support in page pool to reduce memory usage, and it
+may request different frag size depending on the head/tail
+room space for xdp_frame/shinfo and mtu/packet size. When the
+requested frag size is large enough that a single page can not
+be split into more than one frag, using frag support only have
+performance penalty because of the extra frag count handling
+for frag support.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+So this patchset provides a page pool API for the driver to
+allocate memory with least memory utilization and performance
+penalty when it doesn't know the size of memory it need
+beforehand.
 
+1. https://patchwork.kernel.org/project/netdevbpf/patch/d3ae6bd3537fbce379382ac6a42f67e22f27ece2.1683896626.git.lorenzo@kernel.org/
+2. https://patchwork.kernel.org/project/netdevbpf/patch/20230526054621.18371-3-liangchen.linux@gmail.com/
+3. https://github.com/alobakin/linux/tree/iavf-pp-frag
+
+V9: Update some performance info in patch 2.
+
+V8: Store the dma addr on a shifted u32 instead of using
+    dma_addr_t explicitly for 32-bit arch with 64-bit DMA.
+    Update document according to discussion in v7.
+
+V7: Fix a compile error, a few typo and use kernel-doc syntax.
+
+V6: Add a PP_FLAG_PAGE_SPLIT_IN_DRIVER flag to fail the page_pool
+    creation for 32-bit arch with 64-bit DMA when driver tries to
+    do the page splitting itself, adjust the requested size to
+    include head/tail room in veth, and rebased on the latest
+    next-net.
+
+v5 RFC: Add a new page_pool_cache_alloc() API, and other minor
+        change as discussed in v4. As there seems to be three
+        comsumers that might be made use of the new API, so
+        repost it as RFC and CC the relevant authors to see
+        if the new API fits their need.
+
+V4. Fix a typo and add a patch to update document about frag
+    API, PAGE_POOL_DMA_USE_PP_FRAG_COUNT is not renamed yet
+    as we may need a different thread to discuss that.
+
+V3: Incorporate changes from the disscusion with Alexander,
+    mostly the inline wraper, PAGE_POOL_DMA_USE_PP_FRAG_COUNT
+    change split to separate patch and comment change.
+V2: Add patch to remove PP_FLAG_PAGE_FRAG flags and mention
+    virtio_net usecase in the cover letter.
+V1: Drop RFC tag and page_pool_frag patch.
+
+Yunsheng Lin (6):
+  page_pool: frag API support for 32-bit arch with 64-bit DMA
+  page_pool: unify frag_count handling in page_pool_is_last_frag()
+  page_pool: remove PP_FLAG_PAGE_FRAG
+  page_pool: introduce page_pool[_cache]_alloc() API
+  page_pool: update document about frag API
+  net: veth: use newly added page pool API for veth with xdp
+
+ Documentation/networking/page_pool.rst        |   4 +-
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c     |   2 -
+ .../net/ethernet/hisilicon/hns3/hns3_enet.c   |   3 +-
+ .../marvell/octeontx2/nic/otx2_common.c       |   2 +-
+ .../net/ethernet/mellanox/mlx5/core/en_main.c |   2 +-
+ drivers/net/veth.c                            |  25 +-
+ drivers/net/wireless/mediatek/mt76/mac80211.c |   2 +-
+ include/linux/mm_types.h                      |  13 +-
+ include/net/page_pool/helpers.h               | 225 +++++++++++++++---
+ include/net/page_pool/types.h                 |   6 +-
+ net/core/page_pool.c                          |  31 ++-
+ net/core/skbuff.c                             |   2 +-
+ 12 files changed, 240 insertions(+), 77 deletions(-)
+
+-- 
+2.33.0
 
 
