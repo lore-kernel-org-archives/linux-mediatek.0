@@ -4,61 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E398CE79AE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 08:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CADACE79AC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 08:57:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JmOeCYzq1b1TU2M4kX2mfg7Q/bKM6c2mTCihsobbZHM=; b=dRP3dhqdQzLhDwkXmIG85pxAc3
-	h8QoxlwX2j7Cjula/936BPbCnbzulWIf0eczeTX9JjPZcf//InqlaAsLuNLrOz/LQDU85h94f1BGU
-	eIFXNEZx+83YU7Pzu6ZkgCrb/7+2D6Rpx42bOZ3y0aega7CfzBvuYqnGTtHFkVNHdfGb5xFFKUO/V
-	mSNTPDT/M+3XfsAQEmLz3uwcSM5VDeZfuD88PVEoIxnnvmBxEgw8dmkIgx5HtPFPCROdIVsXDxkyO
-	hIG97nTe5n6ypNwZiHbopYSYrmtUaR/OGoe12tJfsZwKLMjTqKP51e99CQ+cy8Ee7OXqD6opRbSIh
-	uzAj5T5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A9ALiqMP0XKS7MqHyaj8E5hr3z/qH7isSEOBbejDVbQ=; b=AZgBndsQxaUxctexaqVoaVR1if
+	WMuJIhU9UuZyiY5FfbXtqUAH9qHuY5ao06f0cNz3qLrggHarFmGB8wGXwfQkLoD6tJ2GwHLz5Owsn
+	gz6kvdk4Q+LUBvs8CKPy4l+ScR+Wc7T1DIY+y07n43Huiv1I8YWGxT+C89TLPEkrApvyyU9jQIyaV
+	7Mc9l0zXc4FuzJEDTHN6BKSC8ey6nx/7NYl4PD7YHGVR0oACb8Ph+D6UwgPhHH14RbsUS4l6pR40x
+	31Xvrsoyzil7VkVvoy6vzcv2t3lROTbk6OYIylC/xXiRLE9Qll6zqXMRhRtdcCjfdOIx7dlHCjL0J
+	yMhHopvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qit0I-002M1s-2p;
-	Wed, 20 Sep 2023 08:56:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qit1d-002MFZ-1I;
+	Wed, 20 Sep 2023 08:57:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qit0F-002M0N-0x;
-	Wed, 20 Sep 2023 08:56:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 98FAB60695;
-	Wed, 20 Sep 2023 08:56:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 807F4C433C8;
-	Wed, 20 Sep 2023 08:56:06 +0000 (UTC)
-Message-ID: <6c88160d-3421-4d1d-a4a9-0a495f0fe5f3@xs4all.nl>
-Date: Wed, 20 Sep 2023 10:56:04 +0200
+	id 1qit1a-002MEN-2f;
+	Wed, 20 Sep 2023 08:57:36 +0000
+X-UUID: bba81e34579311ee86758d4a7c00f3a0-20230920
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=A9ALiqMP0XKS7MqHyaj8E5hr3z/qH7isSEOBbejDVbQ=;
+	b=Xc8CTE9BkId4pU7fpOoHGdhWKQ040R5osSHdCM++YEqMqNea7TG+SS9+LYsdLEyEPxQ8/wWT5lE2J6u56dXjZhj9D4U9uSBs+0sHG0z1PfSOkbo9MXJv2mx4LrsYzc/kySFZvYbM4eFfv2xvXI8jAaIjNVdjpZ3bx0orSR+kT3Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:24cdb03d-5eeb-4be7-86f4-3aadf23b7c2e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5f78ec9,CLOUDID:9c123fc3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: bba81e34579311ee86758d4a7c00f3a0-20230920
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 648122221; Wed, 20 Sep 2023 01:57:31 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 20 Sep 2023 16:46:53 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 20 Sep 2023 16:46:53 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chen-Yu Tsai" <wenst@chromium.org>
+CC: <linux-remoteproc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+Subject: [PATCH] remoteproc: mediatek: Fix compatibility of probing SCP cores
+Date: Wed, 20 Sep 2023 16:46:11 +0800
+Message-ID: <20230920084611.30890-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 12/49] media: videobuf2: Be more flexible on the number
- of queue stored buffers
-Content-Language: en-US, nl
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-13-benjamin.gaignard@collabora.com>
- <c58cdf5a-7176-457e-98f3-85606cec7f09@xs4all.nl>
-In-Reply-To: <c58cdf5a-7176-457e-98f3-85606cec7f09@xs4all.nl>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.155100-8.000000
+X-TMASE-MatchedRID: lpk7+cih7u/Cpdw+7xrhskhEDfw/93Bugqd6JzaZubNnL2dIbsYl/0Ue
+	RhGY4VMdpfeDl6R2Qb6+fZHd7VPSkPIejw19Z0aT9iItFUn3XkOFr3qfbdwhiNnH6NX3JoGqljC
+	EZrozxnJOFu8ssjxG82O1fqYTlb8QroQgRZf2+t4tMfCdg6KRDZYcYQ11P5U/myiLZetSf8mfop
+	0ytGwvXiq2rl3dzGQ1HI2pSDhttZ8gEz00G7LODcdCg5JW0OFvBKw91MZ9UveyLpLdioc4DQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.155100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 664E116E23EE59936449445FD53CC766206D23BF2896EF10212A00298EFDE24C2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_015611_422305_6F8DD3B1 
-X-CRM114-Status: GOOD (  33.05  )
+X-CRM114-CacheID: sfid-20230920_015734_872119_B0CC41AF 
+X-CRM114-Status: GOOD (  17.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,223 +97,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/09/2023 14:42, Hans Verkuil wrote:
-> On 14/09/2023 15:32, Benjamin Gaignard wrote:
->> Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
->> how many buffers could be stored in a queue.
->> This request 'bufs' array to be allocated at queue init time and freed
->> when releasing the queue.
->> By default VB2_MAX_FRAME remains the limit.
->>
->> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
->> ---
->>  .../media/common/videobuf2/videobuf2-core.c   | 40 ++++++++++++++-----
->>  .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +-
->>  include/media/videobuf2-core.h                |  4 +-
->>  3 files changed, 35 insertions(+), 13 deletions(-)
-> 
-> After this patch I would like to see a patches adding support for this to
-> vicodec and vivid. For vivid it might be a good idea to mix this: say
-> the video output remains at 32 buffers, but video capture can do more.
-> 
-> And the swradio device should be able to handle quite a lot more (try
-> 1024 there) since these buffers are quite small (32 kB).
+The SCP dt-binding introduces a new SCP node format to describe
+the multi-core SCP HW. However, the old format for single-core
+SCP is co-existed with the new format. It suggests that
+there are two different approaches, using either the old style or
+the new format, to describe the single-core SCP HW in devicetree.
 
-I thought about this a bit more, and I think it would be good to select
-the maximum number of buffers (32768) for the VBI capture queue in vivid.
+the driver checks the immediate child node name in the SCP node to
+determin the format that is being utilized. The node name is expected
+ "scp" for new format and "cros-ec-rpmsg" for the old format. However,
+the expected node name for old format didn't defined in earlier
+SCP dt-binding and the old node name is "cros_ec" in old devicetree.
+So, this checking breaks the compatibility with old SCP devicetree.
 
-These buffers are small (1440 bytes), so choosing to use 32768 buffers
-is feasible for testing on most systems (a bit less than 50 MB).
+In order to distinguish between the various forms of SCP devicetree and
+maintain compatibility with the previous SCP devicetree, this fix
+verifies the existence of the compatible name "mediatek,scp-core"
+introduced in the new format.
 
-This is nice for v4l2-compliance, since it can test that corner case.
+Reported-by: Laura Nao <laura.nao@collabora.com>
+Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ drivers/remoteproc/mtk_scp.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-Regards,
-
-	Hans
-
-> 
-> The vicodec driver can increase it to 64, just as the verisilicon driver
-> does.
-> 
-> This makes it easy to do compliance testing for this new feature.
-> 
-> Regards,
-> 
-> 	Hans
-> 
->>
->> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
->> index afe76577acc1..ee4df7c68397 100644
->> --- a/drivers/media/common/videobuf2/videobuf2-core.c
->> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
->> @@ -411,7 +411,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->>   */
->>  static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
->>  {
->> -	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
->> +	if (index < q->max_allowed_buffers && !q->bufs[index]) {
->>  		q->bufs[index] = vb;
->>  		vb->index = index;
->>  		vb->vb2_queue = q;
->> @@ -428,7 +428,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
->>   */
->>  static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
->>  {
->> -	if (vb->index < VB2_MAX_FRAME) {
->> +	if (vb->index < q->max_allowed_buffers) {
->>  		q->bufs[vb->index] = NULL;
->>  		vb->vb2_queue = NULL;
->>  	}
->> @@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->>  	struct vb2_buffer *vb;
->>  	int ret;
->>  
->> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
->> +	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
->>  	num_buffers = min_t(unsigned int, num_buffers,
->> -			    VB2_MAX_FRAME - q->num_buffers);
->> +			    q->max_allowed_buffers - q->num_buffers);
->>  
->>  	for (buffer = 0; buffer < num_buffers; ++buffer) {
->>  		/* Allocate vb2 buffer structures */
->> @@ -814,7 +814,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
->>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
->>  	unsigned int i;
->> -	int ret;
->> +	int ret = 0;
->>  
->>  	if (q->streaming) {
->>  		dprintk(q, 1, "streaming active\n");
->> @@ -858,17 +858,23 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->>  	/*
->>  	 * Make sure the requested values and current defaults are sane.
->>  	 */
->> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
->> +	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
->>  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
->> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
->> +	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
->>  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
->>  	/*
->>  	 * Set this now to ensure that drivers see the correct q->memory value
->>  	 * in the queue_setup op.
->>  	 */
->>  	mutex_lock(&q->mmap_lock);
->> +	if (!q->bufs)
->> +		q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
->> +	if (!q->bufs)
->> +		ret = -ENOMEM;
->>  	q->memory = memory;
->>  	mutex_unlock(&q->mmap_lock);
->> +	if (ret)
->> +		return ret;
->>  	set_queue_coherency(q, non_coherent_mem);
->>  
->>  	/*
->> @@ -974,9 +980,9 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
->>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
->>  	bool no_previous_buffers = !q->num_buffers;
->> -	int ret;
->> +	int ret = 0;
->>  
->> -	if (q->num_buffers == VB2_MAX_FRAME) {
->> +	if (q->num_buffers == q->max_allowed_buffers) {
->>  		dprintk(q, 1, "maximum number of buffers already allocated\n");
->>  		return -ENOBUFS;
->>  	}
->> @@ -993,7 +999,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->>  		 */
->>  		mutex_lock(&q->mmap_lock);
->>  		q->memory = memory;
->> +		if (!q->bufs)
->> +			q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
->> +		if (!q->bufs)
->> +			ret = -ENOMEM;
->>  		mutex_unlock(&q->mmap_lock);
->> +		if (ret)
->> +			return ret;
->>  		q->waiting_for_buffers = !q->is_output;
->>  		set_queue_coherency(q, non_coherent_mem);
->>  	} else {
->> @@ -1005,7 +1017,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->>  			return -EINVAL;
->>  	}
->>  
->> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
->> +	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
->>  
->>  	if (requested_planes && requested_sizes) {
->>  		num_planes = requested_planes;
->> @@ -2515,6 +2527,12 @@ int vb2_core_queue_init(struct vb2_queue *q)
->>  
->>  	q->memory = VB2_MEMORY_UNKNOWN;
->>  
->> +	if (!q->max_allowed_buffers)
->> +		q->max_allowed_buffers = VB2_MAX_FRAME;
->> +
->> +	/* The maximum is limited by offset cookie encoding pattern */
->> +	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, BUFFER_INDEX_MASK + 1);
->> +
->>  	if (q->buf_struct_size == 0)
->>  		q->buf_struct_size = sizeof(struct vb2_buffer);
->>  
->> @@ -2539,6 +2557,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
->>  	__vb2_queue_cancel(q);
->>  	mutex_lock(&q->mmap_lock);
->>  	__vb2_queue_free(q, q->num_buffers);
->> +	kfree(q->bufs);
->> +	q->bufs = NULL;
->>  	mutex_unlock(&q->mmap_lock);
->>  }
->>  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
->> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
->> index f460cac560f6..87c2d5916960 100644
->> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
->> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
->> @@ -1156,7 +1156,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
->>  
->>  	if (lock)
->>  		mutex_lock(lock);
->> -	if (file->private_data == vdev->queue->owner) {
->> +	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
->>  		vb2_queue_release(vdev->queue);
->>  		vdev->queue->owner = NULL;
->>  	}
->> @@ -1284,7 +1284,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
->>  	 */
->>  	get_device(&vdev->dev);
->>  	video_unregister_device(vdev);
->> -	if (vdev->queue && vdev->queue->owner) {
->> +	if (vdev->queue) {
->>  		struct mutex *lock = vdev->queue->lock ?
->>  			vdev->queue->lock : vdev->lock;
->>  
->> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
->> index cd3ff1cd759d..97153c69583f 100644
->> --- a/include/media/videobuf2-core.h
->> +++ b/include/media/videobuf2-core.h
->> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
->>   * @dma_dir:	DMA mapping direction.
->>   * @bufs:	videobuf2 buffer structures
->>   * @num_buffers: number of allocated/used buffers
->> + * @max_allowed_buffers: upper limit of number of allocated/used buffers
->>   * @queued_list: list of buffers currently queued from userspace
->>   * @queued_count: number of buffers queued and ready for streaming.
->>   * @owned_by_drv_count: number of buffers owned by the driver
->> @@ -619,8 +620,9 @@ struct vb2_queue {
->>  	struct mutex			mmap_lock;
->>  	unsigned int			memory;
->>  	enum dma_data_direction		dma_dir;
->> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
->> +	struct vb2_buffer		**bufs;
->>  	unsigned int			num_buffers;
->> +	unsigned int			max_allowed_buffers;
->>  
->>  	struct list_head		queued_list;
->>  	unsigned int			queued_count;
-> 
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index ea227b566c54..76472e50c8f5 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -1144,29 +1144,29 @@ static int scp_add_multi_core(struct platform_device *pdev,
+ 	return ret;
+ }
+ 
+-static int scp_is_single_core(struct platform_device *pdev)
++static bool scp_find_core_node(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev_of_node(dev);
+ 	struct device_node *child;
++	int found = 0;
+ 
+-	child = of_get_next_available_child(np, NULL);
+-	if (!child)
+-		return dev_err_probe(dev, -ENODEV, "No child node\n");
++	for_each_child_of_node(np, child) {
++		if (of_device_is_compatible(child, "mediatek,scp-core")) {
++			found = 1;
++			of_node_put(child);
++			break;
++		}
++	}
+ 
+-	of_node_put(child);
+-	return of_node_name_eq(child, "cros-ec-rpmsg");
++	return found;
+ }
+ 
+ static int scp_cluster_init(struct platform_device *pdev, struct mtk_scp_of_cluster *scp_cluster)
+ {
+ 	int ret;
+ 
+-	ret = scp_is_single_core(pdev);
+-	if (ret < 0)
+-		return ret;
+-
+-	if (ret)
++	if (!scp_find_core_node(pdev))
+ 		ret = scp_add_single_core(pdev, scp_cluster);
+ 	else
+ 		ret = scp_add_multi_core(pdev, scp_cluster);
+-- 
+2.18.0
 
 
