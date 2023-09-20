@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12095CE79AC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 07:44:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8562CE79AD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 08:01:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=klqsCD86XTvwWc9qHTqpSI+uHAcUnXRwyajeb6INonM=; b=G8L8T70CuqXVirXLssiqVUzX4b
-	9YLs/8KBXjLkQ5GpjSi7F76FCHXQKjiy+EC8vaseWk4FgpwLZgGBGWE24JOX4ZL8YFd7dlqXOGoB0
-	uS8EIbVDxi9xP5nyQkdtoi5dVgOX0iP5GI9X99hWcOuHLqNG9IPV5NutYnq7BFgWoQhTdF/2V7kFO
-	kqzKr6DHh08GHrpXb6tTcfJ9I4wjzZPDXkF8PJFMI/j3t8hUIHuTn9sJyZsPUpTtWTksCAAOuyeLa
-	pDdnl8sN6i7727QLyxS7wZxBg1j8R+NpBekSETZjagca7xRy5DgjVfAEVw+nUVx2tzdRw9OHSfDnH
-	zlrFHCBw==;
+	bh=ai0B7pvnahQeTuzDoAQyEITHzk3QjxVqwWfL4yexaTM=; b=cs4JKMyZ6UpAAeJz5G/44IJkEv
+	jPY0MiR8MzzLVUIdrE9LF6pIkW7Km9gshvceDsgjBRnBy+nnHQqzQvMtwUSudk8clXxiioTWEmP0b
+	7VTw4D4FeS3XspWj6wBjeILXtDtYTTAQSvxD0TZ7b4mWjwBNPmlQFiWcbGhYtz/MqkeNK8dLV3UiD
+	JWxJEYHDdt0UkvjELmMVy2XM8DFmDxzRkJDw89gC8VPDEeZT6R9h2Hu9OxhSsx73fAkN/HS/cx0rk
+	gZ2HPgblNps1qBh4HLfvdps4tPfYcvQvyIOPi5dAAfvklW6I8p/lB1XBOV1psP5WS8AfOE7Hq828t
+	8EM57VfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qirsb-002ANY-2K;
-	Wed, 20 Sep 2023 07:44:13 +0000
+	id 1qis8u-002DHY-2G;
+	Wed, 20 Sep 2023 08:01:04 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qirsY-002ALs-0z;
-	Wed, 20 Sep 2023 07:44:11 +0000
-Received: from [IPV6:2a01:e0a:120:3210:def9:8f6c:3807:7d89] (unknown [IPv6:2a01:e0a:120:3210:def9:8f6c:3807:7d89])
+	id 1qis8q-002DGO-1R;
+	Wed, 20 Sep 2023 08:01:02 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 47BA36602173;
-	Wed, 20 Sep 2023 08:44:05 +0100 (BST)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4D36766028F5;
+	Wed, 20 Sep 2023 09:00:58 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695195845;
-	bh=eSYDs+qZU32e2E7cB12pTV5zRWbHto0dzuV5YKjfLWo=;
+	s=mail; t=1695196858;
+	bh=PsIofxIPZNjYZmIKPLLXiYlycMUtqIzWITre7uRwShk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Xalbv7WF546UBvMJ/uGdPNld1qXxWIZmEZBQNskDrTzN3Kc+mJm2K9bvp4I5jtKtk
-	 xh/X+B7ucMdy42dseAz54rg4P7I9YJA/3FoQItb9vwQqHPyUNl7fc+dshVakekBHXb
-	 QcP1y4mgDUSV5tY2k7TpkbMndUSxWS785NAY9lNPZHJ6xrOwqoVA0akSgEhrXfyBKv
-	 Zwaxq58FH2PeIV5GsXJ0NbMHwbSwRC/aW/RyPQ+MIUv1c82tP51tb2XKxB3Y308Gqb
-	 6NwPnaeD8HFNYScL6HU9hUz1inEGA8duZz+ac3Je4mIy3XMK6cx+laUynATVkjms8Q
-	 FvmXdUFWloOmA==
-Message-ID: <f6332d70-4392-3eee-edaa-0f7e4308fa67@collabora.com>
-Date: Wed, 20 Sep 2023 09:44:03 +0200
+	b=UfP3WtYgSXYxgzyyDcqokruv6kxMz2WhLkLxTKLYFi/4J3N2j1k+PRH+DhiX4ysiX
+	 QXjww+1y1DOE5Y3C/xYAfeudfxwC+f7tjyJfeGMWNyC9w2XfF56Wyc6DsQONoEAXKQ
+	 xAEZbxt3+n9j2hBa9n/dPD4XTaBwmwfcYP5d+jG+JEKIsjnWAu5w3ttGyGT7/Twp6+
+	 RX90spJ54bO667w96pVKjBrJa+nS4fhbXug66JmleygAzjXiuLdrtYhThBH1rVBDBD
+	 rbfNJ0ij6VwhFJn3omnzkf7RjRnBM21PzMtuyrq66kmcyHUs/VW2kjZN4TEIOVl0YZ
+	 MKZO/XdpPikjw==
+Message-ID: <a068c2d1-6ddf-2090-b6e7-f6135a5e1af1@collabora.com>
+Date: Wed, 20 Sep 2023 10:00:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v7 16/49] media: verisilicon: postproc: Fix down scale
- test
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-17-benjamin.gaignard@collabora.com>
- <cbfef598-8faa-40e6-8dc2-a1efd03f9560@xs4all.nl>
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v3 05/12] regulator: dt-bindings: mt6358: Add MT6366 PMIC
+To: Rob Herring <robh@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: Lee Jones <lee@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230919104357.3971512-1-wenst@chromium.org>
+ <20230919104357.3971512-6-wenst@chromium.org>
+ <20230919195752.GA85007-robh@kernel.org>
 Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <cbfef598-8faa-40e6-8dc2-a1efd03f9560@xs4all.nl>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230919195752.GA85007-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_004410_505599_9505422A 
-X-CRM114-Status: GOOD (  25.74  )
+X-CRM114-CacheID: sfid-20230920_010100_705325_BC34AF35 
+X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,64 +82,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-Le 19/09/2023 à 13:16, Hans Verkuil a écrit :
-> On 14/09/2023 15:32, Benjamin Gaignard wrote:
->> Do not allow down scaling if the source buffer resolution is
->> smaller  than destination one.
+Il 19/09/23 21:57, Rob Herring ha scritto:
+> On Tue, Sep 19, 2023 at 06:43:48PM +0800, Chen-Yu Tsai wrote:
+>> From: Zhiyong Tao <zhiyong.tao@mediatek.com>
 >>
->> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->> Fixes: fbb6c848dd89 ("media: destage Hantro VPU driver")
-> Is this really a fix? I gather that this relies on "VP9 resolution change without
-> doing stream off/on" support, and support for that is added by these patches.
->
-> Adding the Fixes tag would cause stable maintainers to queue this patch up for
-> older kernels, but I don't think that is needed here at all.
->
-> And related I also think that this really does not belong to this patch series.
->
-> As I understand it, patch 13/49 extends the verisilicon driver to support more
-> than 32 buffers, so that one makes sense in the context of this series.
->
-> But the other verisilicon patches appear to be unrelated and instead add a new
-> feature, and I don't believe it relates to this series at all.
->
-> If I am right, then please post this as a separate series, possibly mentioning
-> that it sits on top of this series.
-
-Marek has send the same patch and got it merged in stage branch:
-https://patchwork.kernel.org/project/linux-media/patch/20230824013935.303132-1-marex@denx.de/
-so I can skip it now.
-
-The other patches are needed to enable VP9 dynamic resolution change, which is the feature
-I target with this series.
-2 patches fix chroma / motion vector offset issues.
-1 allow to change the resolution while stream.
-
-Regards,
-Benjamin
-
->
-> Regards,
->
-> 	Hans
->
+>> The MediaTek MT6366 PMIC is similar to the MT6358 PMIC. It is designed
+>> to be paired with the MediaTek MT8186 SoC. It has 9 buck regulators and
+>> 29 LDO regulators, not counting ones that feed internally and basically
+>> have no controls. The regulators are named after their intended usage
+>> for the SoC and system design, thus not named generically as ldoX or
+>> dcdcX, but as vcn33 or vgpu.
+>>
+>> The differences compared to the MT6358 are minimal:
+>> - Regulators removed: VCAMA1, VCAMA2, VCAMD, VCAMIO, VLDO28
+>> - Regulators added: VM18, VMDDR, VSRAM_CORE
+>>
+>> Add a binding document describing all the regulators and their supplies.
+>>
+>> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+>> [wens@chromium.org: major rework and added commit message]
+>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 >> ---
->>   drivers/media/platform/verisilicon/hantro_postproc.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
+>> Changes since v2:
+>> - Merged all the propertyPatterns together; the if-then sections now
+>>    only block out invalid properties
 >>
->> diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
->> index e624cd98f41b..77d8ecfbe12f 100644
->> --- a/drivers/media/platform/verisilicon/hantro_postproc.c
->> +++ b/drivers/media/platform/verisilicon/hantro_postproc.c
->> @@ -107,7 +107,7 @@ static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
+>> Changes since v1:
+>> - Replaced underscores in supply names to hyphens
+>> - Merged with MT6358 regulator binding
+>> - Added MT6358 fallback compatible to MT6366 regulator
+>>
+>> Changes since Zhiyong's last version (v4) [1]:
+>> - simplified regulator names
+>> - added descriptions to regulators
+>> - removed bogus regulators (*_sshub)
+>> - merged vcn33-wifi and vcn33-bt as vcn33
+>> - added missing regulators (vm18, vmddr, vsram-core)
+>> - cut down examples to a handful of cases and made them complete
+>> - expanded commit message a lot
+>>
+>> [1] https://lore.kernel.org/linux-arm-kernel/20220823123745.14061-1-zhiyong.tao@mediatek.com/
+>>
+>>   .../regulator/mediatek,mt6358-regulator.yaml  | 120 +++++++++++++++---
+>>   1 file changed, 104 insertions(+), 16 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
+>> index c5f336318ec2..05e381899d08 100644
+>> --- a/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
+>> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
+>> @@ -16,14 +16,18 @@ description:
 >>   
->>   static int down_scale_factor(struct hantro_ctx *ctx)
->>   {
->> -	if (ctx->src_fmt.width == ctx->dst_fmt.width)
->> +	if (ctx->src_fmt.width <= ctx->dst_fmt.width)
->>   		return 0;
->>   
->>   	return DIV_ROUND_CLOSEST(ctx->src_fmt.width, ctx->dst_fmt.width);
->
+>>   properties:
+>>     compatible:
+>> -    const: mediatek,mt6358-regulator
+>> +    oneOf:
+>> +      - const: mediatek,mt6358-regulator
+>> +      - items:
+>> +          - const: mediatek,mt6366-regulator
+>> +          - const: mediatek,mt6358-regulator
+> 
+> Would the mt6366 regulator driver(s) function with the mt6358 driver
+> unchanged? If not, then not really much point in having the fallback.
+> 
+
+It would, because there's chip id verification inside and would still
+automatically select the right regulator info, even if there's no mt6366
+specific compatible.
+
+Cheers,
+Angelo
+
 
