@@ -4,110 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9B08CE79AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 08:10:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7A1CE79AC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 08:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4KMvuQJvdeaGU1lGvG/HhNldvpjkyIJs2Guie8+ut9c=; b=uQwAa3yFPER3Ye55CTCzfKwq5b
-	hXJrJK5NV0fg+ORMmWvcNlL46iGWVcCQFLZuQOJ5ERxujPSp3k0cilUrmfcNyVr2Kh+7H1qvwUVUm
-	2hqx+JRvZI79KyPs4I9XiWVtDDEz2sZAzRo1xnxdS00lkBYuCfpwnw/lFsYZgnnrs7vD6LxdaIida
-	pB5qrm7Pff6B1y5cgjVzuQJzZSJsjKIgcvfhvtlgBxRlRWIoYhWuu50rp4beaXLc1l30AvsFcempD
-	IBCHxEvFBcjKRxnAY5Fdl/GTiNmhhqmLIBYWwv+fqHJUstDDOquiLlO+hrsE3fM+HnIRXrhGc/BsS
-	y6+kVrPQ==;
+	bh=6ylh2QUc4fn72t1li3qoGprTtQP1FtzE1qaf7pgw/HU=; b=H49W951cP+iSI+X/hKDposrBzA
+	UMGzp6c/HK8HBPMlOe/qxnXPAjrq7g0Vxee9T05SIKc9I2OEe974V4e+/6FuSPrdo+9C8hfB/gOnl
+	x9kdsqitAXe+JJKrBRLHK3fX6tX6iyqhkNEJ7dYEVcJiECXsKh993yr/xnHJ/C4Bwp/MSggSClbi2
+	e+ZKw/WcRJsBtE9FN2wWaZWqGC6fE5hFZUkIan6c6ZZEIacSC6w5CgObqzxfcgLk1X1LDyALBckKk
+	npWliSGN7nII3Q5bKiSsMGCPncW2aUS3uz5lYKz4tqaqpffU9beBrUzddE/VwXemnWKbox2yOkzUn
+	7hJqfy4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qisIC-002Erv-2N;
-	Wed, 20 Sep 2023 08:10:40 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qisLz-002FMu-1q;
+	Wed, 20 Sep 2023 08:14:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qisI8-002Eqj-0G;
-	Wed, 20 Sep 2023 08:10:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qisLv-002FM8-2h
+	for linux-mediatek@lists.infradead.org;
+	Wed, 20 Sep 2023 08:14:33 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 280D461A04;
-	Wed, 20 Sep 2023 08:10:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 09E86C433CC;
-	Wed, 20 Sep 2023 08:10:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695197434;
-	bh=5QGF9jO+picAJCyh1LF0QAqayO5CNA9tItx4EwVp9AY=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=I4QlK9RfxOewAnXIxhXN7ZZHSZ0ppyEkYpFPATCfuLcFbGBLrqm607DpaptjkvIpR
-	 xzCRKtSm835A3JX86ufWg4Gz0z8DCCYmxMzVryXJHDuw7qMYiyBCeXSljN7YPB8oJl
-	 qr6712Hy568JhFmGq2f1j3JWZXI523oEL2W3Tum6dvIgfFFNuG42zX5d3RILVFyEKH
-	 iWTIXiJ+UV1WX3Ocgk01l+fIl65vKF5FwzgAUG5FWnJRsEIoWYNMwzCqrzzUD+7rLV
-	 PAFU/WaNetScbMikq8K1GewRJomxnbCToX5roKcgJZdPe8BCRpAznbDf2DUlllDWNI
-	 zWRrgfc7Bzivw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id D8679C561EE;
-	Wed, 20 Sep 2023 08:10:33 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D089E66028F5;
+	Wed, 20 Sep 2023 09:14:29 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695197670;
+	bh=1e8q+d/6RPKNpDnVx3tWXFTrcuU/h2HMkgY3Nszj55U=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DH7xuXMftB1IpSUVgXPoyrOWUSpRySN78E7Th1wZgJBx2TcepMQXdz599XJqb6OiV
+	 nGLsDYigSnCRG//XR2UH0VYAvHVzo9oliqsdinZyt6TC6/XpivMSNrhiu/+azB6w2l
+	 rRNRYmnG5GhuUDFylOJAoaapeRLFuSgwHok4RfygPJEYe43BXejB6/6o695egj0MPc
+	 irsB90RNtdjHqSjXvgTYhUI0t1T01pyziT5Mu5dyKpEmpWabQVjDgecPggapNv0hvA
+	 w+Jbwi20S/EsJZE2cti5Q2GpcTMUYw0jWy6uWH8XkC5bQpHvOsTgXz52CNLsi33XuG
+	 +FKi+5BVRxfdw==
+Message-ID: <6dd87d1b-255f-aeea-0445-37d34d242282@collabora.com>
+Date: Wed, 20 Sep 2023 10:14:27 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 00/54] net: ethernet: Convert to platform remove
- callback returning void
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169519743387.8735.12103555736777221473.git-patchwork-notify@kernel.org>
-Date: Wed, 20 Sep 2023 08:10:33 +0000
-References: <20230918204227.1316886-1-u.kleine-koenig@pengutronix.de>
-In-Reply-To: <20230918204227.1316886-1-u.kleine-koenig@pengutronix.de>
-To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig_=3Cu=2Ekleine-koenig=40pengutronix=2Ede=3E?=@ci.codeaurora.org
-Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, grygorii.strashko@ti.com, linux-omap@vger.kernel.org,
- bagasdotme@gmail.com, yangyingliang@huawei.com, gerg@linux-m68k.org,
- arnd@arndb.de, netdev@vger.kernel.org, kernel@pengutronix.de,
- afaerber@suse.de, mani@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-actions@lists.infradead.org, andreas@gaisler.com, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org, linux-sunxi@lists.linux.dev,
- joyce.ooi@intel.com, Shyam-sundar.S-k@amd.com, bhupesh.sharma@linaro.org,
- elder@linaro.org, wei.fang@nxp.com, robh@kernel.org,
- iyappan@os.amperecomputing.com, keyur@os.amperecomputing.com,
- quan@os.amperecomputing.com, rauji.raut@gmail.com, heiko@sntech.de,
- horms@kernel.org, linux-rockchip@lists.infradead.org, chris.snook@gmail.com,
- justin.chen@broadcom.com, florian.fainelli@broadcom.com, rafal@milecki.pl,
- bcm-kernel-feedback-list@broadcom.com, opendmb@gmail.com,
- lizetao1@huawei.com, Steen.Hegelund@microchip.com, lukas.bulwahn@gmail.com,
- nicolas.ferre@microchip.com, claudiu.beznea@tuxon.dev, linux@armlinux.org.uk,
- mkl@pengutronix.de, hsweeten@visionengravers.com, ruanjinjie@huawei.com,
- ulli.kroll@googlemail.com, linus.walleij@linaro.org, kvalo@kernel.org,
- nhuck@google.com, gerhard@engleder-embedded.com,
- maciej.fijalkowski@intel.com, alexanderduyck@fb.com, fercerpav@gmail.com,
- saproj@gmail.com, vladimir.oltean@nxp.com, yisen.zhuang@huawei.com,
- salil.mehta@huawei.com, tsbogend@alpha.franken.de, michal.kubiak@intel.com,
- dougmill@linux.ibm.com, nathan@kernel.org, ruc_gongyuanjun@163.com,
- zhangchangzhong@huawei.com, hauke@hauke-m.de, kgugala@antmicro.com,
- mholenko@antmicro.com, gsomlo@gmail.com, joel@jms.id.au,
- sebastian.hesselbarth@gmail.com, thomas.petazzoni@bootlin.com,
- mw@semihalf.com, michael@walle.cc, andrew@lunn.ch,
- rmk+kernel@armlinux.org.uk, krzysztof.kozlowski@linaro.org, nbd@nbd.name,
- john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- lorenzo@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
- asmaa@nvidia.com, davthompson@nvidia.com, horatiu.vultur@microchip.com,
- UNGLinuxDriver@microchip.com, lars.povlsen@microchip.com,
- daniel.machon@microchip.com, shangxiaojing@huawei.com, linqiheng@huawei.com,
- claudiu.manoil@nxp.com, alexandre.belloni@bootlin.com, YKarpov@ispras.ru,
- vz@mleia.com, timur@kernel.org, s.shtylyov@omp.ru, geert+renesas@glider.be,
- yoshihiro.shimoda.uh@renesas.com, wsa+renesas@sang-engineering.com,
- biju.das.jz@bp.renesas.com, linux-renesas-soc@vger.kernel.org,
- bh74.an@samsung.com, ralf@linux-mips.org, linux-mips@vger.kernel.org,
- nico@fluxnic.net, steve.glendinning@shawell.net,
- andriy.shevchenko@linux.intel.com, jaswinder.singh@linaro.org,
- ilias.apalodimas@linaro.org, hayashi.kunihiko@socionext.com,
- harshit.m.mogalapalli@oracle.com, wellslutw@gmail.com, f.fainelli@gmail.com,
- tglx@linutronix.de, bigeasy@linutronix.de, shaozhengchao@huawei.com,
- kevinbrace@bracecomputerlab.com, romieu@fr.zoreil.com, michal.simek@amd.com,
- radhey.shyam.pandey@amd.com, harini.katakam@amd.com, xuhaoyue1@hisilicon.com,
- huangjunxian6@hisilicon.com, dan.carpenter@linaro.org, khalasa@piap.pl
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: PROBLEM: MT8192 panel_edp_probe trace despite recent eDP and
+ aux-bus support patches
+Content-Language: en-US
+To: Leonard Lausen <leonard@lausen.nl>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+References: <ca32347a879c794577f272a1473e44ee39f2acdc@lausen.nl>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <ca32347a879c794577f272a1473e44ee39f2acdc@lausen.nl>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_011036_222614_4CBA1D7E 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20230920_011432_142039_7FD0B3EF 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,135 +78,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
-
-On Mon, 18 Sep 2023 22:41:32 +0200 you wrote:
-> Hello,
+Il 20/09/23 02:58, Leonard Lausen ha scritto:
+> Dear AngeloGioacchino, Dear Maintainers,
 > 
-> this series convert nearly all platform drivers below
-> drivers/net/ethernet to use remove_new. The motivation is to get rid of
-> an integer return code that is (mostly) ignored by the platform driver
-> core and error prone on the driver side.
+> on MT8192 Asurada Spherion (Acer 514), I observe the following trace related to
+> eDP and aux-bus during bootup with tags/mediatek-drm-next-6.6 merged to v6.5.4
+> as well as on plain v6.5.4. Despite the trace, the laptop display works. Given
+> your recent eDP and aux-bus support patches are included in
+> tags/mediatek-drm-next-6.6, I thought reporting this may be helpful. (I'm
+> unable to validate v6.6-rc2 currently, as there's a regression breaking boot.)
 > 
-> [...]
 
-Here is the summary with links:
-  - [net-next,01/54] net: ethernet: 8390: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/3c000faaaa65
-  - [net-next,02/54] net: ethernet: actions: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/d8c6b3fc918d
-  - [net-next,03/54] net: ethernet: aeroflex: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/a0fbde8f647b
-  - [net-next,04/54] net: ethernet: allwinner: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/9f07797c332e
-  - [net-next,05/54] net: ethernet: altera: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/d0b0245b84c9
-  - [net-next,06/54] net: ethernet: amd: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/9ecae52f7db4
-  - [net-next,07/54] net: ethernet: apm: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/61471264c018
-  - [net-next,08/54] net: ethernet: apple: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/e5d0a380b2b4
-  - [net-next,09/54] net: ethernet: arc: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/de0afa130ed6
-  - [net-next,10/54] net: ethernet: atheros: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/c6e817838902
-  - [net-next,11/54] net: ethernet: broadcom: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/d4295df3e043
-  - [net-next,12/54] net: ethernet: cadence: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/6b5940402f9c
-  - [net-next,13/54] net: ethernet: calxeda: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/ca76b17922e6
-  - [net-next,14/54] net: ethernet: cavium: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/de413f46a56e
-  - [net-next,15/54] net: ethernet: cirrus: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/8ca0ae6a2ec7
-  - [net-next,16/54] net: ethernet: cortina: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/1f69574b5cba
-  - [net-next,17/54] net: ethernet: davicom: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/ffb928290ba5
-  - [net-next,18/54] net: ethernet: dnet: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/5db6c1fed1f9
-  - [net-next,19/54] net: ethernet: engleder: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/d2e6c2ea996e
-  - [net-next,20/54] net: ethernet: ethoc: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/4cc08098d197
-  - [net-next,21/54] net: ethernet: faraday: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/dc715af33b42
-  - [net-next,22/54] net: ethernet: hisilicon: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/e5835a0a5119
-  - [net-next,23/54] net: ethernet: i825xx: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/e5a6d397ca2e
-  - [net-next,24/54] net: ethernet: ibm: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/ac35a3c4c8da
-  - [net-next,25/54] net: ethernet: korina: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/551598a120d1
-  - [net-next,26/54] net: ethernet: lantiq_etop: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/e791aa06a2dd
-  - [net-next,27/54] net: ethernet: lantiq_xrx200: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/adbb270655a1
-  - [net-next,28/54] net: ethernet: litex: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/36b80b8353af
-  - [net-next,29/54] net: ethernet: marvell: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/fee02f498c9a
-  - [net-next,30/54] net: ethernet: mediatek: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/5b6ce1734d9d
-  - [net-next,31/54] net: ethernet: mellanox: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/e184700959ec
-  - [net-next,32/54] net: ethernet: micrel: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/bae04ae2be07
-  - [net-next,33/54] net: ethernet: microchip: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/5253ae3a6223
-  - [net-next,34/54] net: ethernet: moxa:: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/253f9c47273d
-  - [net-next,35/54] net: ethernet: mscc: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/0eaca7a9e9d6
-  - [net-next,36/54] net: ethernet: natsemi: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/9f0243d9bcc4
-  - [net-next,37/54] net: ethernet: natsemi: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/b83fb509c758
-  - [net-next,38/54] net: ethernet: ni: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/0f09f4e7d401
-  - [net-next,39/54] net: ethernet: nxp: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/241882d79f99
-  - [net-next,40/54] net: ethernet: qualcomm: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/5180236592b9
-  - [net-next,41/54] net: ethernet: renesas: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/0b4f04e2f60b
-  - [net-next,42/54] net: ethernet: samsung: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/6e8b0ef7b389
-  - [net-next,43/54] net: ethernet: seeq: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/02c74030beff
-  - [net-next,44/54] net: ethernet: sgi: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/506a327ceaaa
-  - [net-next,45/54] net: ethernet: smsc: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/e8e2c863f941
-  - [net-next,46/54] net: ethernet: socionext: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/d3cd32451c7e
-  - [net-next,47/54] net: ethernet: sun: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/8f4e45a0135e
-  - [net-next,48/54] net: ethernet: sunplus: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/ede778ed3ea9
-  - [net-next,49/54] net: ethernet: ti: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/231ea972ccaf
-  - [net-next,50/54] net: ethernet: tundra: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/2f961952e19e
-  - [net-next,51/54] net: ethernet: via: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/70680f178280
-  - [net-next,52/54] net: ethernet: wiznet: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/46b5668494d0
-  - [net-next,53/54] net: ethernet: xilinx: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/2e0ec0afa902
-  - [net-next,54/54] net: ethernet: xscale: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/d74a5c154b6f
+Hello Leonard,
+thanks for sending me this snippet.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+This is not in any way connected to my eDP/aux-bus patch series, infact this
+warning happens because your machine has got a new/different panel, read below:
+
+	if (WARN_ON(!panel->detected_panel)) {
+		dev_warn(dev,
+			 "Unknown panel %s %#06x, using conservative timings\n",
+			 vend, product_id);
+
+[    4.089721] panel-simple-dp-aux aux-3-0058: Unknown panel CMN 0x142b, using 
+conservative timings
+
+I'll try to retrieve informations about this new panel and add it to panel-edp
+as soon as possible.
+
+Thanks!
+Angelo
+
+> [    3.808189] ------------[ cut here ]------------
+> [    3.812840] WARNING: CPU: 7 PID: 10 at drivers/gpu/drm/panel/panel-edp.c:758 panel_edp_probe+0x488/0x4f0
+> [    3.822370] Modules linked in:
+> [    3.825428] CPU: 7 PID: 10 Comm: kworker/u16:0 Not tainted 6.5.4-cos-mt9+ #1
+> [    3.832476] Hardware name: Google Spherion (rev0 - 3) (DT)
+> [    3.837959] Workqueue: events_unbound deferred_probe_work_func
+> [    3.843797] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    3.850757] pc : panel_edp_probe+0x488/0x4f0
+> [    3.855025] lr : panel_edp_probe+0x29c/0x4f0
+> [    3.859291] sp : ffff8000800d3710
+> [    3.862600] x29: ffff8000800d3710 x28: 0000000000000000 x27: 0000000000000000
+> [    3.869737] x26: ffff60b44002d005 x25: ffffa4a68e990418 x24: 0000000000000000
+> [    3.875193] usb 1-1: new high-speed USB device number 2 using xhci-mtk
+> [    3.876862] x23: ffff60b446542680 x22: ffffa4a68db8d5b0 x21: ffff60b4452d0000
+> [    3.876869] x20: 0000000000000000 x19: ffff60b441052480 x18: 00000000000a8360
+> [    3.876873] x17: 001fffffffffffff x16: 0000000000000000 x15: 0000000000000001
+> [    3.904812] x14: 000000000060f827 x13: 9b00200a4341452d x12: 0000000000000000
+> [    3.911948] x11: 0000000000000001 x10: 0000000000000000 x9 : ffff60b446523900
+> [    3.919084] x8 : ffff60b446523900 x7 : 00000000435e6d06 x6 : 40395246b460ffff
+> [    3.926220] x5 : 0000000000000043 x4 : 000000000000142b x3 : 000000000000004e
+> [    3.933356] x2 : 0000000000000000 x1 : ffffa4a68db8d9a0 x0 : 000000000dae142b
+> [    3.940492] Call trace:
+> [    3.942933]  panel_edp_probe+0x488/0x4f0
+> [    3.946851]  panel_edp_dp_aux_ep_probe+0x38/0x50
+> [    3.951466]  dp_aux_ep_probe+0x34/0xf4
+> [    3.955211]  really_probe+0x148/0x2ac
+> [    3.958868]  __driver_probe_device+0x78/0x12c
+> [    3.963221]  driver_probe_device+0x3c/0x160
+> [    3.967400]  __device_attach_driver+0xb8/0x138
+> [    3.971841]  bus_for_each_drv+0x80/0xdc
+> [    3.975672]  __device_attach+0x9c/0x188
+> [    3.979503]  device_initial_probe+0x14/0x20
+> [    3.983683]  bus_probe_device+0xac/0xb0
+> [    3.987515]  device_add+0x5bc/0x778
+> [    3.990999]  device_register+0x20/0x30
+> [    3.994742]  of_dp_aux_populate_bus+0xc8/0x19c
+> [    3.999181]  devm_of_dp_aux_populate_bus+0x18/0x80
+> [    4.003968]  anx7625_i2c_probe+0x7bc/0x9b4
+> [    4.008062]  i2c_device_probe+0x148/0x290
+> [    4.011724] usb 1-1: New USB device found, idVendor=05e3, idProduct=0610, bcdDevice=65.01
+> [    4.012062]  really_probe+0x148/0x2ac
+> [    4.012064]  __driver_probe_device+0x78/0x12c
+> [    4.020243] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+> [    4.023879]  driver_probe_device+0x3c/0x160
+> [    4.023882]  __device_attach_driver+0xb8/0x138
+> [    4.023884]  bus_for_each_drv+0x80/0xdc
+> [    4.028232] usb 1-1: Product: USB2.1 Hub
+> [    4.035347]  __device_attach+0x9c/0x188
+> [    4.035350]  device_initial_probe+0x14/0x20
+> [    4.035353]  bus_probe_device+0xac/0xb0
+> [    4.035355]  deferred_probe_work_func+0x8c/0xc8
+> [    4.039530] usb 1-1: Manufacturer: GenesysLogic
+> [    4.043955]  process_one_work+0x2d0/0x598
+> [    4.048830] hub 1-1:1.0: USB hub found
+> [    4.051689]  worker_thread+0x70/0x434
+> [    4.051691]  kthread+0xfc/0x100
+> [    4.051693]  ret_from_fork+0x10/0x20
+> [    4.051699] irq event stamp: 136828
+> [    4.051701] hardirqs last  enabled at (136827): [<ffffa4a68d991ba4>] _raw_spin_unlock_irqrestore+0x6c/0x98
+> [    4.055841] hub 1-1:1.0: 4 ports detected
+> [    4.059699] hardirqs last disabled at (136828): [<ffffa4a68d9811e8>] el1_dbg+0x24/0x8c
+> [    4.059704] softirqs last  enabled at (134796): [<ffffa4a68c810794>] __do_softirq+0x424/0x51c
+> [    4.059706] softirqs last disabled at (134787): [<ffffa4a68c816af0>] ____do_softirq+0x10/0x1c
+> [    4.059709] ---[ end trace 0000000000000000 ]---
+> 
+> Without your patches, on 6.5.4, the trace looks as follows
+> 
+> [    3.834478] ------------[ cut here ]------------
+> [    3.839126] WARNING: CPU: 5 PID: 10 at drivers/gpu/drm/panel/panel-edp.c:758 panel_edp_probe+0x488/0x4f0
+> [    3.848629] Modules linked in:
+> [    3.851684] CPU: 5 PID: 10 Comm: kworker/u16:0 Not tainted 6.5.4-cos-mt9 #1
+> [    3.858646] Hardware name: Google Spherion (rev0 - 3) (DT)
+> [    3.864129] Workqueue: events_unbound deferred_probe_work_func
+> [    3.869966] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    3.876927] pc : panel_edp_probe+0x488/0x4f0
+> [    3.881195] lr : panel_edp_probe+0x29c/0x4f0
+> [    3.885461] sp : ffff8000800d3710
+> [    3.888770] x29: ffff8000800d3710 x28: 0000000000000000 x27: 0000000000000000
+> [    3.895907] x26: ffff31fec002c005 x25: ffffa839d1b90418 x24: 0000000000000000
+> [    3.899112] usb 1-1: new high-speed USB device number 2 using xhci-mtk
+> [    3.903031] x23: ffff31fec13fc500 x22: ffffa839d0d8d5b0 x21: ffff31fec51ec000
+> [    3.903038] x20: 0000000000000000 x19: ffff31fec536fe80 x18: 0000000000078570
+> [    3.903041] x17: 001fffffffffffff x16: 0000000000000000 x15: 0000000000000001
+> [    3.930981] x14: 0000000000350cdf x13: 9b00200a4341452d x12: 0000000000000000
+> [    3.938117] x11: 0000000000000001 x10: 0000000000000000 x9 : ffff31fec10b2300
+> [    3.945253] x8 : ffff31fec10b2300 x7 : 0000000037343f4b x6 : 40230bc1fe31ffff
+> [    3.952388] x5 : 0000000000000043 x4 : 000000000000142b x3 : 000000000000004e
+> [    3.959524] x2 : 0000000000000000 x1 : ffffa839d0d8d9a0 x0 : 000000000dae142b
+> [    3.966660] Call trace:
+> [    3.969099]  panel_edp_probe+0x488/0x4f0
+> [    3.973018]  panel_edp_dp_aux_ep_probe+0x38/0x50
+> [    3.977633]  dp_aux_ep_probe+0x34/0xf4
+> [    3.981378]  really_probe+0x148/0x2ac
+> [    3.985036]  __driver_probe_device+0x78/0x12c
+> [    3.989390]  driver_probe_device+0x3c/0x160
+> [    3.993569]  __device_attach_driver+0xb8/0x138
+> [    3.998009]  bus_for_each_drv+0x80/0xdc
+> [    4.001840]  __device_attach+0x9c/0x188
+> [    4.005672]  device_initial_probe+0x14/0x20
+> [    4.009851]  bus_probe_device+0xac/0xb0
+> [    4.013682]  device_add+0x5bc/0x778
+> [    4.017166]  device_register+0x20/0x30
+> [    4.020911]  of_dp_aux_populate_bus+0xc8/0x19c
+> [    4.025349]  devm_of_dp_aux_populate_bus+0x18/0x80
+> [    4.030136]  anx7625_i2c_probe+0x7bc/0x9b4
+> [    4.034229]  i2c_device_probe+0x148/0x290
+> [    4.038237]  really_probe+0x148/0x2ac
+> [    4.038692] usb 1-1: New USB device found, idVendor=05e3, idProduct=0610, bcdDevice=65.01
+> [    4.041887]  __driver_probe_device+0x78/0x12c
+> [    4.041890]  driver_probe_device+0x3c/0x160
+> [    4.041892]  __device_attach_driver+0xb8/0x138
+> [    4.041895]  bus_for_each_drv+0x80/0xdc
+> [    4.041897]  __device_attach+0x9c/0x188
+> [    4.050077] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+> [    4.054409]  device_initial_probe+0x14/0x20
+> [    4.054412]  bus_probe_device+0xac/0xb0
+> [    4.058588] usb 1-1: Product: USB2.1 Hub
+> [    4.063012]  deferred_probe_work_func+0x8c/0xc8
+> [    4.063014]  process_one_work+0x2d0/0x598
+> [    4.066841] usb 1-1: Manufacturer: GenesysLogic
+> [    4.070658]  worker_thread+0x70/0x434
+> [    4.070660]  kthread+0xfc/0x100
+> [    4.070663]  ret_from_fork+0x10/0x20
+> [    4.078915] hub 1-1:1.0: USB hub found
+> [    4.081952] irq event stamp: 141216
+> [    4.081953] hardirqs last  enabled at (141215): [<ffffa839d0b936a4>] _raw_spin_unlock_irqrestore+0x6c/0x98
+> [    4.081960] hardirqs last disabled at (141216): [<ffffa839d0b82ce8>] el1_dbg+0x24/0x8c
+> [    4.081965] softirqs last  enabled at (140754): [<ffffa839cfa10794>] __do_softirq+0x424/0x51c
+> [    4.086058] hub 1-1:1.0: 4 ports detected
+> [    4.089700] softirqs last disabled at (140749): [<ffffa839cfa16af0>] ____do_softirq+0x10/0x1c
+> [    4.089702] ---[ end trace 0000000000000000 ]---
+> [    4.089721] panel-simple-dp-aux aux-3-0058: Unknown panel CMN 0x142b, using conservative timings
+
 
 
 
