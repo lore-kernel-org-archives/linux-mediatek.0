@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40E6DCE79AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 09:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E546DCE79BF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 10:28:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=60/fSnFy7ZsvjsyAgFSsC7W5HooeLTAfk9EwYv3ZC3o=; b=bKmUd6vrnMG7mdeZ0j2wGXAGO4
-	Up0uu3YP0VeS4VbOlIjpzs2kk3bZEKMPwQw8dATTXdPka2CXqNT/B60kCfHbfKC9KomsU9uQKN8zJ
-	7qQKCfhSsppxqvgiHP6s/k3JDhPUxbJr86LpxvU+4/i39ogkhKqwh1ekkuyqgYE2ELLxYWs2wFKlD
-	+rTDCTcURPUKKJ8ViBFu6Rz8TWv8uo9jVclarSByP9nFchTe+QApdeWDAjxjspT92XAy1ct2pKcYI
-	ck9HCrFIQ7pXiNcfu9FLvuoZWzz89aSbbiz0DtVvmFf3uehhkGFmgWmfw9q/4exnJItdlDFJuZwJd
-	AFhGzndw==;
+	bh=wRr7cjD67Eef10h2OS2BQT1UewWmivkzDQFyVSJNilU=; b=X1G92pnw2CkTanLMYMBYQyrlSA
+	d3UiQYOVMHAJxjwHrsztPjX7WiV/JnTuc9vbdLreodBFZqVlEGwjLfOEYQX5zy6i2kRb56/ob/4QV
+	FXIBCJAvqyP1dCVJ8gc1/pa6fv5Oam9W2hMhoAPceE9Id57/CMLzQuXLXCMB4EIavtLbCl6xTbqIT
+	gze6VcUQLhcUDbenFOH1U36Rhpfyx4tyX/1CJULwSeMKDljxi1IpL+0PCWFNOeMcLmoXnUg+iXlwy
+	XZpQ5QqGEhO0EgpS50JeSJgs9lcyxBECBMnZaUS6X7GAc9lBOdSMzwDYqbE3N+Gqtg1XegBcYxryZ
+	U4Jg0v1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qitXV-002TFc-36;
-	Wed, 20 Sep 2023 09:30:33 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qiuRH-002bar-2S;
+	Wed, 20 Sep 2023 10:28:11 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qitXS-002TE2-2n;
-	Wed, 20 Sep 2023 09:30:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qiuRD-002bZ0-2Y;
+	Wed, 20 Sep 2023 10:28:09 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 76269B81C89;
-	Wed, 20 Sep 2023 09:30:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 1AC41C433C7;
-	Wed, 20 Sep 2023 09:30:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695202224;
-	bh=vC4eUrsH2Ay5ObH877X6wC9knycta7WDqSvROcgL6fI=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=RFg/orxs2Kk0ttJSiyrFNgDcPf6uXKdR9qYWcJZhrsFgLFMD2t5hkzlLer0pEUHRG
-	 38oaWA1Ew/74EQZDulmnFruZ0siVlC9QJDI0yX4P3yb/hyR6Nw4tUhQyiJ7OlTeNLF
-	 s/H7JqPZ4G65Ys8NrfNDxyegdZlqTkLHXMWEPs7zbQQD8o3Jj6vlPMDIBrVNC/hrWv
-	 iAnPlVvVy77iPtjgjnyv8dA6tKel0eKzdSUsR1tvUxZZgrWmZXgK5HEILlrf2rm02m
-	 QRzXJWZWCFNmDs9xfIYPB1g3MsurPFUQORgYl0QLHau1fwZV6rbaSyooEesmBh9z29
-	 quvxmeYUTmbGg==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id EE09FC561EE;
-	Wed, 20 Sep 2023 09:30:23 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DD2806607084;
+	Wed, 20 Sep 2023 11:28:04 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695205685;
+	bh=/Wl9oF5OBPQIjlHo6jdFXz5jq044BfPBrLxmHu73RDs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fXD6vdSB6klZZA2par8cbO1h1upB4+ZKVAjdvwUDwn4czOoScM/Jl/eGSdl1lusSV
+	 cBIrdu2XyZRIiz6AtkjbpvQqWrxbsLBjvHxxs+9X/dxOx6qn84jT3Hi//A41Uo3k7k
+	 iLjF4rpzgnytIj/Ap7E/C1+MJi3if332Dl7ky1pfbmaTZDpjcrLhEbaMuPuu0BBmgz
+	 cqzcF0AEf8i6ti4OXEuzd56dqfqS4z0c5wAg42fW/SjAY/kyQJSuiIT4SsL9bxIXEM
+	 So/QRGvzh29/DjdlhNn5BEIlGGx7+Ot0KUudG6JVOlyIS3woemw4SRpARDioUe5LFR
+	 CSwmC9Sau++9g==
+Message-ID: <3f78fbed-257d-7a51-f6ef-813d665d91a5@collabora.com>
+Date: Wed, 20 Sep 2023 12:28:02 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 0/9] net: dsa: Convert to platform remove callback
- returning void
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169520222397.8158.5375930289513597156.git-patchwork-notify@kernel.org>
-Date: Wed, 20 Sep 2023 09:30:23 +0000
-References: <20230918191916.1299418-1-u.kleine-koenig@pengutronix.de>
-In-Reply-To: <20230918191916.1299418-1-u.kleine-koenig@pengutronix.de>
-To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig_=3Cu=2Ekleine-koenig=40pengutronix=2Ede=3E?=@ci.codeaurora.org
-Cc: florian.fainelli@broadcom.com, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- kurt@linutronix.de, f.fainelli@gmail.com, hauke@hauke-m.de,
- arinc.unal@arinc9.com, daniel@makrotopia.org, Landen.Chao@mediatek.com,
- dqfext@gmail.com, sean.wang@mediatek.com, matthias.bgg@gmail.com,
- colin.foster@in-advantage.com, vladimir.oltean@nxp.com,
- claudiu.manoil@nxp.com, alexandre.belloni@bootlin.com,
- UNGLinuxDriver@microchip.com, linus.walleij@linaro.org, alsi@bang-olufsen.dk,
- clement.leger@bootlin.com, netdev@vger.kernel.org, kernel@pengutronix.de,
- angelogioacchino.delregno@collabora.com,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH 23/59] dma: mediatek: mtk-hsdma: Convert to platform
+ remove callback returning void
+Content-Language: en-US
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Vinod Koul <vkoul@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, dmaengine@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org
+ kernel@pengutronix.de
+References: <20230919133207.1400430-1-u.kleine-koenig@pengutronix.de>
+ <20230919133207.1400430-24-u.kleine-koenig@pengutronix.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230919133207.1400430-24-u.kleine-koenig@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_023031_177563_F07B4E8A 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20230920_032807_961832_EC424FE2 
+X-CRM114-Status: GOOD (  13.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,45 +80,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
-
-On Mon, 18 Sep 2023 21:19:07 +0200 you wrote:
-> Hello,
+Il 19/09/23 15:31, Uwe Kleine-König ha scritto:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is ignored (apart
+> from emitting a warning) and this typically results in resource leaks.
+> To improve here there is a quest to make the remove callback return
+> void. In the first step of this quest all drivers are converted to
+> .remove_new() which already returns void. Eventually after all drivers
+> are converted, .remove_new() is renamed to .remove().
 > 
-> this series converts all platform drivers below drivers/net/dsa to use
-> remove_new. The motivation is to get rid of an integer return code
-> that is (mostly) ignored by the platform driver core and error prone on
-> the driver side.
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
 > 
-> [...]
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-Here is the summary with links:
-  - [net-next,1/9] net: dsa: b53: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/c306171d6914
-  - [net-next,2/9] net: dsa: bcm_sf2: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/75f5205f1dd8
-  - [net-next,3/9] net: dsa: hirschmann: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/beb8592d0416
-  - [net-next,4/9] net: dsa: lantiq_gswip: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/a59f960c4d10
-  - [net-next,5/9] net: dsa: mt7530: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/9764bbad3d33
-  - [net-next,6/9] net: dsa: ocelot: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/68ace16ce330
-  - [net-next,7/9] net: dsa: realtek: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/d48a5472b8f2
-  - [net-next,8/9] net: dsa: rzn1_a5psw: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/76be075d7f99
-  - [net-next,9/9] net: dsa: vitesse-vsc73xx: Convert to platform remove callback returning void
-    https://git.kernel.org/netdev/net-next/c/ce322d45683f
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
