@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE82CE79D3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 13:46:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA272CE79D1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Sep 2023 13:50:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ra8oaYOO3iDehLwch30p1WIlqEdN2srznhUVxw9PKE0=; b=RMldkF0lAocZvXm7K2NIUGBmgK
-	kAw1JPAa9CcKqWP1f8dQaS+btjhf1MxZVxWX5dAgv42DY/d1tEhsD0m/XJchtRcpuQlWrzpFqEVwb
-	+iWK1g31gSfm6Iq8bD02h2JKdSo1A4fypTfka9hE13RUUXCPAuxxmybipZDAz+sNIi2k7fWqApYVx
-	RV6AxeAKJ3hLL7nkRoyhpuKdS2w6Po8XbCsK3NoYC0Y6TBN82MUtCdDZhiAdykyRp4YoS+RKqHbSZ
-	NfNzB5pgBM3PafruhsSrDjPgodJbARSO5sKCEwEJXzJVOIuoFa8M/aydDlWi4bj5mpZqSrjvUQ3jM
-	g/mOMaFg==;
+	bh=/F+EvXy/jfn0bD++OL6jT5lV4OBJOAv0uv1Ij3xsfKk=; b=dwzDsmDakRJ2kepWzeBZgPksw/
+	PA/OnHawbVRFrm8V6LZLg9O2ut+VzH2NQZ4lYOHfZpfoxVioZZCQpv1F7HL7BlFvzxRjCw30N0y04
+	45NeVhm9fZLMhs3o7i1PxMYT70f3E2ue6aC0EnicW7mgxuJOPoE/Ygz7rqsEG3esllywls+i+/wXP
+	0iXjBce0zcS8W4SIn04/UFt+6GcopxfI69xb+vCwDlANqIMfzDgQurFH5PjfjBxmc8f2GbkEJ5JmX
+	yded6rmzDKfKNXzEliaDtHJu9xP+4/Yo/rZmZk9P37aQDpzL/Jj/JBgITDIG9DryXcHfGPN0T7LqS
+	mwKysGTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qixWy-003DYA-0j;
-	Wed, 20 Sep 2023 13:46:16 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qixaz-003E7q-0h;
+	Wed, 20 Sep 2023 13:50:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qixWt-003DVe-1C;
-	Wed, 20 Sep 2023 13:46:13 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1qixaw-003E6a-10;
+	Wed, 20 Sep 2023 13:50:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BAF4B66071F1;
-	Wed, 20 Sep 2023 14:46:06 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695217567;
-	bh=lgCLhSgqYXiCQOsoRyh80+UifQuGl+xnEfv3AbTIkHs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ekLM8GwFSzEQXn88ANZmrr+Hi8sx5bO0pJMQ31aROgmbFzB2+rEKbuwbxmNxOiBns
-	 6Mvzke16k+NIVsZmqAsESvRju+F4oc4gzsur/sBjxPqVz+8Zg4LhqNBbZM8I/IuAMs
-	 uq/+7L0p7jy1LICwHBpImFHk8CumKIRr9VYlL2Vn2YIoYk++ZrMgWUiNSZu038EY6p
-	 uHUCXTbiLe+PCX+8UYgB4ijCR6jmBTiRphaH5uVr2oY8LOQeCBOZSW0asoZFQaCsWg
-	 lQjmVlob55NL2oVoXq0ie8gKd9Uf8OwkmwGXlnadi1wus9tW54n++VRo5d/rxf5vLk
-	 j4zRc/rUH+j+g==
-Message-ID: <dbd818a2-8290-68c7-a624-4939731b8a1a@collabora.com>
-Date: Wed, 20 Sep 2023 15:46:04 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8463361C4F;
+	Wed, 20 Sep 2023 13:50:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA712C433C8;
+	Wed, 20 Sep 2023 13:50:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695217820;
+	bh=F0w62KOri4+nv8ORRuidRDPCFETZBxnGyBhVgs19590=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=hg6DG5H3voBk4yi1xt3gVxtpWKQwL7f+Xg1hqn+I02tKlteuaHdIGKPKgtDakRgHe
+	 fmTD4cXn9KSlneOaoR3WQeicN/z5g2sgz/GofMHLn2z2F/Kyq9qU759Hg/vdrQ9k9+
+	 5GAsapzYRZKp+opUKaAuXToOADpp6z9wcbbM6BxUWb94RZPxGvjtMtqV6fgzlNvDaP
+	 U3v9zQOXnETzESzXbZFX9czV0eXkXknpCFGA7j2WDmd664c/xI9KbMJvScvEvEr1MC
+	 1GqH1UznXTFpO8/Moj4m1AZEMXxI5OA0W+bL79vIF5i6YBaTfWh6tz7tsdp83WBSe1
+	 j9QypSGog46Kw==
+From: Lee Jones <lee@kernel.org>
+To: Pavel Machek <pavel@ucw.cz>, Kees Cook <keescook@chromium.org>
+Cc: Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Gene Chen <gene_chen@richtek.com>, 
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Nathan Chancellor <nathan@kernel.org>, 
+ Nick Desaulniers <ndesaulniers@google.com>, Tom Rix <trix@redhat.com>, 
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev, 
+ linux-hardening@vger.kernel.org
+In-Reply-To: <20230915201020.never.433-kees@kernel.org>
+References: <20230915201020.never.433-kees@kernel.org>
+Subject: Re: (subset) [PATCH] leds: mt6360: Annotate struct mt6360_priv
+ with __counted_by
+Message-Id: <169521781759.3448785.6991953068239903845.b4-ty@kernel.org>
+Date: Wed, 20 Sep 2023 14:50:17 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v2 3/3] dt-bindings: hwinfo: Add mtk-socinfo driver
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- William-tw Lin <william-tw.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Kevin Hilman <khilman@kernel.org>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230915152607.18116-1-william-tw.lin@mediatek.com>
- <20230915152607.18116-4-william-tw.lin@mediatek.com>
- <3e7bc476-ffc7-fb07-8e64-246427da736c@linaro.org>
- <9acc8d99-e3db-3df8-4051-21d95450b28d@collabora.com>
- <fad9eb3c-49f9-5ece-b51a-aaff4d8888ad@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <fad9eb3c-49f9-5ece-b51a-aaff4d8888ad@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.12.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_064611_724590_32349988 
-X-CRM114-Status: GOOD (  22.26  )
+X-CRM114-CacheID: sfid-20230920_065022_388850_EE22FB2F 
+X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,97 +84,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/09/23 13:59, Krzysztof Kozlowski ha scritto:
-> On 18/09/2023 10:47, AngeloGioacchino Del Regno wrote:
->> Il 17/09/23 10:26, Krzysztof Kozlowski ha scritto:
->>> On 15/09/2023 17:26, William-tw Lin wrote:
->>>> dt-binding documentation for mtk-socinfo driver.
->>>
->>> Here and in subject, drop driver and instead descrbe hardware.
->>>
->>>> mtk-socinfo driver provides SoC-related information.
->>>> Such information includes manufacturer information, SoC name,
->>>> SoC segment name, and SoC marketing name.
->>>>
->>>> Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
->>>> ---
->>>>    .../bindings/hwinfo/mtk-socinfo.yaml          | 48 +++++++++++++++++++
->>>>    1 file changed, 48 insertions(+)
->>>>    create mode 100644 Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
->>>> new file mode 100644
->>>> index 000000000000..74f03f1dc404
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
->>>
->>> Nothing improved.
->>>
->>> This is a friendly reminder during the review process.
->>>
->>> It seems my previous comments were not fully addressed. Maybe my
->>> feedback got lost between the quotes, maybe you just forgot to apply it.
->>> Please go back to the previous discussion and either implement all
->>> requested changes or keep discussing them.
->>>
->>> Thank you.
->>>
->>>> @@ -0,0 +1,48 @@
->>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->>>> +%YAML 1.2
->>>> +---
->>>> +$id: http://devicetree.org/schemas/hwinfo/mtk-socinfo.yaml#
->>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>>> +
->>>> +title: MediaTek SoC ChipID
->>>> +
->>>> +maintainers:
->>>> +  - William Lin <william-tw.lin@mediatek.com>
->>>> +  - Matthias Brugger <matthias.bgg@gmail.com>
->>>> +  - Kevin Hilman <khilman@kernel.org>
->>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> +
->>>> +description:
->>>> +  MediaTek SoCs store various product information in eFuses, including
->>>> +  Chip ID and Revision fields, usable to identify the manufacturer,
->>>> +  SoC version, plus segment and marketing names.
->>>> +
->>>> +properties:
->>>> +  compatible:
->>>> +    const: mediatek,socinfo
->>>
->>> What happened to compatibles? No, this is just wrong and no explained.
->>> You ignored other comments as well. Really, that's not the way to go.
->>>
->>
->> Practically, having different compatibles for each SoC is not needed, as
->> the only thing that changes between SoCs is the eFuse(s) that you read to
->> get the information - and that's all.
+On Fri, 15 Sep 2023 13:10:20 -0700, Kees Cook wrote:
+> Prepare for the coming implementation by GCC and Clang of the __counted_by
+> attribute. Flexible array members annotated with __counted_by can have
+> their accesses bounds-checked at run-time checking via CONFIG_UBSAN_BOUNDS
+> (for array indexing) and CONFIG_FORTIFY_SOURCE (for strcpy/memcpy-family
+> functions).
 > 
+> As found with Coccinelle[1], add __counted_by for struct mt6360_priv.
 > 
-> And how do you guarantee that no future SoC will have any difference?
-> How can you even predict it?
-> 
+> [...]
 
-You're right, it's too much long sighted and at some point in the future this
-assumption will be *inevitably* wrong.
+Applied, thanks!
 
-Thanks,
-Angelo
+[1/1] leds: mt6360: Annotate struct mt6360_priv with __counted_by
+      commit: cecdfff8f5c82816d8b9ef2f4b3d7f4943dfd360
 
->>
->> So ... we either use this driver with devicetree, giving it the right eFuses
-> 
-> I am talking about bindings, no driver.
-> 
->> to read from, or we duplicate the mtk-efuse driver, or we statically assign
->> the eFuses in the driver itself and we set compatibles like
->> "mediatek,mt8195-socinfo" to select that... ideas?
-> 
-> Device specific compatibles followed by fallback, just like for every
-> other review coming from me.
->  > Best regards,
-> Krzysztof
-> 
+--
+Lee Jones [李琼斯]
 
 
