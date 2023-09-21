@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 724F1E7070E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 10:31:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF8E1E7070E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 10:39:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oKXLz26nfA8zpMBOcJV3umpROvQlxt0KxQI1oSVBRHA=; b=AG1KNGoHvqYZiJTenuLKPim5VD
-	Wtopu/yax0iMyNgKyZMT17uFgWJb3+OGPoRyC5o7IZM/CIPFOIqhwrEL+8cTQcr1UI7+L12MvsyjS
-	2UBbNVkneLY0/gUPtE0g6ks3QY1jhiP9jjP9+esZCXPW85axisjX1VKQsgE1Yu/Fu/qVpVJOAwylF
-	KrvipEu+LbzJBjQD9fnBu8o5WmpkmF1vCb7YmyHZVyIvIygsdJQtmr+8KnI/mN9/yyPyVAh04+LM8
-	HtwHeQAkh/dd5nrdNcpcgSKuzh1SkQ7ptYgBYojuNC9tP5JQluUffryWlA4lqeGacuP7P/fBtRjJU
-	cy35qmMg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=U8lPL8gvRmnaEpf/huc7WVV80bv+l3yEM1F4525ShH0=; b=hfOS/Epofe9NK8
+	KY3s/TIqN+u32iDrKuE+1lCutk0HUFuSvt8NbG+Rlrbl4pUxuCwUFkkaQQJtqH6PAdklMGyZmT/d/
+	XZNN2iQiHP95IFXkzLfv/eLHGj360ZYURLc8VaZgh+f1eVKpswk3yxLY/X65azrNdFKiGCxzlPa9r
+	NK9zY+a1q1Jq6cGrB7WDmSoAPYu0uFQUdkYlLTijQF+zK4nKA1xkF2nS9q1TQluKyOjjB0cNIW9ch
+	2YCQxYPp2dENUtrJzhdbVyuBIxrO5k1+eCY7Z6vttcSZBKwfHzggDGwVhpJvTWvm5x7dk6cO7z5jt
+	ygwmFXkOsOIaACQEMtFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjGxc-005jXc-0U;
-	Thu, 21 Sep 2023 10:31:04 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qjH5c-005oH9-1g;
+	Thu, 21 Sep 2023 10:39:20 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjGxX-005jVL-2y;
-	Thu, 21 Sep 2023 10:31:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 484DCCE21A5;
-	Thu, 21 Sep 2023 10:30:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3D42C32795;
-	Thu, 21 Sep 2023 10:30:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695292255;
-	bh=NcplQke/2kimQVgoG+ISd0cFiPzeZcW9x/liJMpj0E4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dI7yQh1h1G7/YujiefnLr3jF41n5s9CYMXqMYlterERnUSNccvCtWd+yg8hYvt34g
-	 6J+jI7KyEwAYyJRrl5qBT/t4nV8QOeM29n/yyl2dsx75dMyg2NVgWTtu25qfzAG6FS
-	 cFB3vt9krEMiCT2VRyg2dEj5fWWBXggTjdOjp0MRsj5zO2OciECzouKK2EeHy6ohqQ
-	 nSRkJHDEIvrtKop00HO/GvdgBaEUhALGB+a5NL5JUHTXT/Y8hv9ALM+H8UkbjABojj
-	 nodMqz+MOFOWibcX60gR9RBiUrFrGkE55d3PcJ4SvdfveGdsUDxJmzLZTQPBcRFi7B
-	 vw5aUBuZjQNKA==
-Date: Thu, 21 Sep 2023 11:30:50 +0100
-From: Lee Jones <lee@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>,
-	Zhiyong Tao <zhiyong.tao@mediatek.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 2/3] regulator: mt6358: Add output voltage fine tuning
- to fixed regulators
-Message-ID: <20230921103050.GA3449785@google.com>
-References: <20230913082919.1631287-1-wenst@chromium.org>
- <20230913082919.1631287-3-wenst@chromium.org>
+	id 1qjH5Z-005oCs-0R;
+	Thu, 21 Sep 2023 10:39:18 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout1.routing.net (Postfix) with ESMTP id DC5833FEB1;
+	Thu, 21 Sep 2023 10:39:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1695292753;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=U8lPL8gvRmnaEpf/huc7WVV80bv+l3yEM1F4525ShH0=;
+	b=HR7j7WZApj9VbwW3iPBKrTXmBVeJ1d6mFTiD+TlsJUUfllL5FfZrO+5OlG2OGPo8PYmMuU
+	RCPhmFpyYItcvwOHjGwob9LgGN08GTzIgidO9nVKXXmbzjdMHdgaveL80nad8EGpQ/51aP
+	KcCyRxFyMMw79W873zXLOfafao2TFDE=
+Received: from [127.0.0.1] (fttx-pool-217.61.144.184.bambit.de [217.61.144.184])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id EED6C360630;
+	Thu, 21 Sep 2023 10:39:11 +0000 (UTC)
+Date: Thu, 21 Sep 2023 12:39:11 +0200
+From: Frank Wunderlich <linux@fw-web.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_4/4=5D_thermal/drivers/med?= =?US-ASCII?Q?iatek/lvts=5Fthermal=3A_add_mt7988_support?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <eb6cc1dd-1df9-3b68-1f72-d536189c7b4d@collabora.com>
+References: <20230920175001.47563-1-linux@fw-web.de> <20230920175001.47563-5-linux@fw-web.de> <eb6cc1dd-1df9-3b68-1f72-d536189c7b4d@collabora.com>
+Message-ID: <F68F7C77-BB1E-4D9F-B760-9B35DE3693C5@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230913082919.1631287-3-wenst@chromium.org>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Mail-ID: 72196824-0e00-40ec-b699-70d3d8de6d29
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_033100_384804_07CFF654 
-X-CRM114-Status: GOOD (  22.94  )
+X-CRM114-CacheID: sfid-20230921_033917_349644_7C96F599 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,102 +70,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 13 Sep 2023, Chen-Yu Tsai wrote:
+Am 21=2E September 2023 09:54:35 MESZ schrieb AngeloGioacchino Del Regno <a=
+ngelogioacchino=2Edelregno@collabora=2Ecom>:
+>Il 20/09/23 19:50, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+=20
+>> diff --git a/drivers/thermal/mediatek/lvts_thermal=2Ec b/drivers/therma=
+l/mediatek/lvts_thermal=2Ec
+>> index c2669f405a94=2E=2E8fd1dc5adb16 100644
+>> --- a/drivers/thermal/mediatek/lvts_thermal=2Ec
+>> +++ b/drivers/thermal/mediatek/lvts_thermal=2Ec
+>> @@ -82,6 +82,8 @@
+>>   #define LVTS_GOLDEN_TEMP_DEFAULT	50
+>>   #define LVTS_COEFF_A_MT8195			-250460
+>>   #define LVTS_COEFF_B_MT8195			250460
+>> +#define LVTS_COEFF_A_MT7988			-204650
+>> +#define LVTS_COEFF_B_MT7988			204650
+>>     #define LVTS_MSR_IMMEDIATE_MODE		0
+>>   #define LVTS_MSR_FILTERED_MODE		1
+>> @@ -89,6 +91,7 @@
+>>   #define LVTS_MSR_READ_TIMEOUT_US	400
+>>   #define LVTS_MSR_READ_WAIT_US		(LVTS_MSR_READ_TIMEOUT_US / 2)
+>>   +#define LVTS_HW_SHUTDOWN_MT7988		105000
+>
+>I would simply reuse the definition of LVTS_HW_SHUTDOWN_MT8195=2E=2E=2E=
+=2E
 
-> The "fixed" LDO regulators found on the MT6358 and MT6366 PMICs have
-> either no voltage selection register, or only one valid setting.
-> However these do have a fine voltage calibration setting that can
-> slightly boost the output voltage from 0 mV to 100 mV, in 10 mV
-> increments.
-> 
-> Add support for this by changing these into linear range regulators.
-> Some register definitions that are missing are also added.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
-> This patch needs an ack from Lee.
-> 
->  drivers/regulator/mt6358-regulator.c | 15 +++++++++++++--
+Hi angelo,
+thanks for review=2E
 
->  include/linux/mfd/mt6358/registers.h |  6 ++++++
+Imho it should be separated=2E=2E=2Eif someone thinks it needs to be chang=
+ed later it will be changed not only for mt8195=2E=2E=2Ea generic name can =
+also cause problems if the next soc has different value=2E
 
-Acked-by: Lee Jones <lee@kernel.org>
+>>   #define LVTS_HW_SHUTDOWN_MT8195		105000
+>>     #define LVTS_MINIMUM_THRESHOLD		20000
+>> @@ -1269,6 +1272,41 @@ static int lvts_remove(struct platform_device *p=
+dev)
+>>   	return 0;
+>>   }
+>>   +/*
+>> + * LVTS MT7988
+>> + */
+>> +
+>
+>Please remove this big comment block, that's not needed=2E
 
->  2 files changed, 19 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
-> index 935c7ad56c7e..ecb2cd1eb34f 100644
-> --- a/drivers/regulator/mt6358-regulator.c
-> +++ b/drivers/regulator/mt6358-regulator.c
-> @@ -123,10 +123,13 @@ struct mt6358_regulator_info {
->  		.type = REGULATOR_VOLTAGE,	\
->  		.id = MT6358_ID_##vreg,	\
->  		.owner = THIS_MODULE,	\
-> -		.n_voltages = 1,	\
-> +		.n_voltages = 11,	\
-> +		.vsel_reg = MT6358_##vreg##_ANA_CON0,	\
-> +		.vsel_mask = GENMASK(3, 0),	\
->  		.enable_reg = enreg,	\
->  		.enable_mask = BIT(enbit),	\
->  		.min_uV = volt,	\
-> +		.uV_step = 10000, \
->  	},	\
->  	.status_reg = MT6358_LDO_##vreg##_CON1,	\
->  	.qi = BIT(15),							\
-> @@ -219,10 +222,13 @@ struct mt6358_regulator_info {
->  		.type = REGULATOR_VOLTAGE,	\
->  		.id = MT6366_ID_##vreg,	\
->  		.owner = THIS_MODULE,	\
-> -		.n_voltages = 1,	\
-> +		.n_voltages = 11,	\
-> +		.vsel_reg = MT6358_##vreg##_ANA_CON0,	\
-> +		.vsel_mask = GENMASK(3, 0),	\
->  		.enable_reg = enreg,	\
->  		.enable_mask = BIT(enbit),	\
->  		.min_uV = volt,	\
-> +		.uV_step = 10000, \
->  	},	\
->  	.status_reg = MT6358_LDO_##vreg##_CON1,	\
->  	.qi = BIT(15),							\
-> @@ -482,8 +488,13 @@ static const struct regulator_ops mt6358_volt_table_ops = {
->  	.get_status = mt6358_get_status,
->  };
->  
-> +/* "Fixed" LDOs with output voltage calibration +0 ~ +10 mV */
->  static const struct regulator_ops mt6358_volt_fixed_ops = {
->  	.list_voltage = regulator_list_voltage_linear,
-> +	.map_voltage = regulator_map_voltage_linear,
-> +	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-> +	.get_voltage_sel = mt6358_get_buck_voltage_sel,
-> +	.set_voltage_time_sel = regulator_set_voltage_time_sel,
->  	.enable = regulator_enable_regmap,
->  	.disable = regulator_disable_regmap,
->  	.is_enabled = regulator_is_enabled_regmap,
-> diff --git a/include/linux/mfd/mt6358/registers.h b/include/linux/mfd/mt6358/registers.h
-> index 3d33517f178c..5ea2590be710 100644
-> --- a/include/linux/mfd/mt6358/registers.h
-> +++ b/include/linux/mfd/mt6358/registers.h
-> @@ -262,6 +262,12 @@
->  #define MT6358_LDO_VBIF28_CON3                0x1db0
->  #define MT6358_VCAMA1_ANA_CON0                0x1e08
->  #define MT6358_VCAMA2_ANA_CON0                0x1e0c
-> +#define MT6358_VFE28_ANA_CON0                 0x1e10
-> +#define MT6358_VCN28_ANA_CON0                 0x1e14
-> +#define MT6358_VBIF28_ANA_CON0                0x1e18
-> +#define MT6358_VAUD28_ANA_CON0                0x1e1c
-> +#define MT6358_VAUX18_ANA_CON0                0x1e20
-> +#define MT6358_VXO22_ANA_CON0                 0x1e24
->  #define MT6358_VCN33_ANA_CON0                 0x1e28
->  #define MT6358_VSIM1_ANA_CON0                 0x1e2c
->  #define MT6358_VSIM2_ANA_CON0                 0x1e30
-> -- 
-> 2.42.0.283.g2d96d420d3-goog
-> 
+Ok,i drop the comments (maybe except the wed one where the name in technic=
+al document (i used for constants) does not point to wed function=2E
 
--- 
-Lee Jones [李琼斯]
+>> +static const struct lvts_ctrl_data mt7988_lvts_ap_data_ctrl[] =3D {
+>> +	{
+>> +		=2Ecal_offset =3D { 0x00, 0x04, 0x08, 0x0c }, //918,91C,920,924
+>
+>This 918,91c,etc comment is not necessary
+>
+>> +		=2Elvts_sensor =3D {
+>> +			{ =2Edt_id =3D MT7988_CPU_0 }, // CPU 0,1
+>
+>If you want to retain those comments, you shall use the right style=2E
+>
+>{ =2Edt_id =3D MT7988_CPU_0 }, /* CPU 0,1 */
+>{ =2E=2E } /* CPU 2,3 */
+>{ =2E=2E } /* Internal 2=2E5G PHY 1 */
+>
+>etc
+>
+>> +			{ =2Edt_id =3D MT7988_CPU_1 }, // CPU 2,3
+>> +			{ =2Edt_id =3D MT7988_ETH2P5G_0 }, // internal 2=2E5G Phy 1
+>> +			{ =2Edt_id =3D MT7988_ETH2P5G_1 }  // internal 2=2E5G Phy 2
+>> +		},
+>> +		=2Enum_lvts_sensor =3D 4,
+>> +		=2Eoffset =3D 0x0,
+>> +		=2Ehw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT7988,
+>> +	},
+>> +	{
+>> +		=2Ecal_offset =3D { 0x14, 0x18, 0x1c, 0x20 }, //92C,930,934,938
+>
+>comment not needed
+>
+>> +		=2Elvts_sensor =3D {
+>> +			{ =2Edt_id =3D MT7988_TOPS_0}, // TOPS > +			{ =2Edt_id =3D MT7988_=
+TOPS_1}, // TOPS
+>
+>The dt_id definition already says "TOPS", this comment is not needed=2E
+>
+>> +			{ =2Edt_id =3D MT7988_ETHWARP_0}, // WED 1
+>> +			{ =2Edt_id =3D MT7988_ETHWARP_1}  // WED 2
+>
+>Same comment about the format; /* WED 1 */
+>
+>> +		},
+>> +		=2Enum_lvts_sensor =3D 4,
+>> +		=2Eoffset =3D 0x100,
+>> +		=2Ehw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT7988,
+>> +	}
+>> +};
+>> +
+>> +/*
+>> + * LVTS MT8195
+>> + */
+>
+>Please also remove this big comment block, it's not needed=2E
+>
+>Apart from that, this patch looks good; v3 will be the golden one :-)
+>
+>Cheers,
+>Angelo
+>
+
+regards Frank
 
