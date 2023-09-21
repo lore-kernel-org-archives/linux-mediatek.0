@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FEFDE706FA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 09:17:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B98F1E706F8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 09:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L+vZhOZ+kADCdlkNh/ewNubAwKMK2F34h8/SL9SRhQE=; b=kkKOAET+XgrG9TvAivULftcKJq
-	Bja5t1GrEiUlpkOvCEjmg8NNIHucOWFFf+yMEqSAMaARuCDuyyQPzXIvoRrMinb63cF+zBM0SJIP8
-	D2yzOEMldqv+WgvQlHTmFYwBaWY4ypLEfVFFte4r1IGxzUg+l8QmVEgH6TprMOWwF0Gpkekxo4KPV
-	eMUHpT0E7sI8upICIS4xr8vuJz5gfq09LMPXiqquoeMmQXp69EqKbCmjfxdjcgeFZw4Lgf/da+m7b
-	LwWgPp2YvY0hrRj7BoXE19uamDTqHPP3tAOt/viJd6jk2T4PdZIH1vxd/oVfKdR7rIzADFLlmR9aX
-	YAFXVJKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wl90tBKKO3bfptskJ3yz8Ad+tSM8Utlfmo70JdbbbAA=; b=0eSYoHnQMKdvvGYZ1g0WEXDh3W
+	sdKQYVsQnLNhbumkzFkUvdLaonLWignPr6tNbWgG1HmFWju6EjIOLQTydVdwNOPoslu2kJ5AZ0cnM
+	VX5dCoVP+Gx6+ZZeCXQO7kp+ipyYAudcUj7X/6hFLNzDiITuUqoZ+MZemdW9zMjNo0TgeXbV3eyvk
+	z4P9rXy3dlltMD4E2erDuuu7Vcp41N22RpLjr5NFohHEVrXAw2rXRdhgKE4G1NUcRLNwESmDO4JqT
+	UCltRGCOZs6u/rtKgXv/Ps3lwBn8+UMGcZ3aYoWRU1ymPmeIomkblmlnP5Unceq3wacKM7bcao8yt
+	J82uQv5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjFnx-005ZQ3-2h;
-	Thu, 21 Sep 2023 09:17:01 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qjFtj-005aBs-04;
+	Thu, 21 Sep 2023 09:22:59 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjFnv-005ZPB-0F;
-	Thu, 21 Sep 2023 09:17:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qjFtg-005aAj-09;
+	Thu, 21 Sep 2023 09:22:57 +0000
+Received: from [192.168.0.125] (unknown [82.76.24.202])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 802E461EAD;
-	Thu, 21 Sep 2023 09:16:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C52C8C32777;
-	Thu, 21 Sep 2023 09:16:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695287817;
-	bh=L+vZhOZ+kADCdlkNh/ewNubAwKMK2F34h8/SL9SRhQE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aKwFLd0jXAMRuLlul0c7VWcfGPByInmWP9KdPOz1MKQ1gd5QXckHnTdP0YYEeWceh
-	 DjIlUty4xIaEJqfl0PTnLlfU0/Zm4fyf7hSugAD4u6Khs3T+6FEI4TmOSSvndtfNoA
-	 FcRl75SSu//v5N6Yzm/5uTnBvmUsX4yRIs21Af8BYv0RL2fUSqeNpPbp7e3fnJ5nyL
-	 lPDqaFY2VXA9FG/KtikMTNuYOiiiNQapMA+/jEdL/LghBhbOMJtNXaO+70IMbKn8ew
-	 8jJwFAp5GrxCTtKnjoH8V9/nMZStYWqRv/TVdfgVRbrUyDhlb2d/K43pTqtedLCYT5
-	 0RbVJIPSbCGiA==
-Date: Thu, 21 Sep 2023 10:16:52 +0100
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 2/4] dt-bindings: thermal: mediatek: Add LVTS thermal
- sensors for mt7988
-Message-ID: <20230921-552234bd29791cbdcd037a2c@fedora>
-References: <20230920175001.47563-1-linux@fw-web.de>
- <20230920175001.47563-3-linux@fw-web.de>
- <31fbdae8-d41c-358b-c8ea-6ee31b158dfd@collabora.com>
+	(Authenticated sender: ehristev)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 542A566072EE;
+	Thu, 21 Sep 2023 10:22:51 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695288173;
+	bh=5h61+8nLC/rHN8t6PmIBUe2/aZ2dOAIEsl5dm5eSgJA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Dzv0gpQSDo0rKOZzDlhbND/2kK6VC1bMm0YlWY+r9vdq/Sfg2whf1875ZtdTQwOks
+	 cg0jKDZaJ87PPpjE4cgeq2G2kaw3ybXKOb4HF+EkTwlzlhu69qyisPOAgw/Ek8YgaA
+	 r2ILSPR22QLBi767iiaKmTBntRz7DSovd57aM5Tt2N2d3XixEOrz9vs5eftTeUW0ls
+	 aV0vcUGCtqZLJ43Yn6sowhzHcyIkjB13XAppWge1fr/FBMMSq88G5U1D7Uau42E+NV
+	 k05eDgRjS9fftNKPYsvV9+g4c6fs3Y6fWs+ccTlofX+ujDI/ueRmwuh6rc4OL/De5X
+	 MJI+pV4OOqlBg==
+Message-ID: <3a9a9d52-0db9-360e-55f7-78753428ee7f@collabora.com>
+Date: Thu, 21 Sep 2023 12:22:47 +0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Yu54HnRP5ZgUSnoq"
-Content-Disposition: inline
-In-Reply-To: <31fbdae8-d41c-358b-c8ea-6ee31b158dfd@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v4 1/2] drm/mediatek: fix kernel oops if no crtc is found
+Content-Language: en-US
+To: Michael Walle <mwalle@kernel.org>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, "Nancy . Lin" <nancy.lin@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
+References: <20230905084922.3908121-1-mwalle@kernel.org>
+From: Eugen Hristev <eugen.hristev@collabora.com>
+In-Reply-To: <20230905084922.3908121-1-mwalle@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_021659_159852_9159F842 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20230921_022256_244188_702569AF 
+X-CRM114-Status: GOOD (  20.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,43 +79,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 9/5/23 11:49, Michael Walle wrote:
+> drm_crtc_from_index(0) might return NULL if there are no CRTCs
+> registered at all which will lead to a kernel oops in
+> mtk_drm_crtc_dma_dev_get(). Add the missing return value check.
+> 
+> Fixes: 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub driver for MT8195")
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
---Yu54HnRP5ZgUSnoq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I tried this patch as well, hit the crash during my tests. I also 
+reviewed your changes
 
-On Thu, Sep 21, 2023 at 09:55:46AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 20/09/23 19:49, Frank Wunderlich ha scritto:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >=20
-> > Add sensor constants for MT7988.
-> >=20
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->=20
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+Tested-by: Eugen Hristev <eugen.hristev@collabora.com>
+Reviewed-by: Eugen Hristev <eugen.hristev@collabora.com>
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Eugen
 
-Thanks,
-Conor.
+> ---
+> v4:
+>   - collected tags
+> v3:
+>   - none
+> v2:
+>   - collected tags
+>   - fixed typos
+> ---
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 93552d76b6e7..2c582498817e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -420,6 +420,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+>   	struct mtk_drm_private *private = drm->dev_private;
+>   	struct mtk_drm_private *priv_n;
+>   	struct device *dma_dev = NULL;
+> +	struct drm_crtc *crtc;
+>   	int ret, i, j;
+>   
+>   	if (drm_firmware_drivers_only())
+> @@ -494,7 +495,9 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+>   	}
+>   
+>   	/* Use OVL device for all DMA memory allocations */
+> -	dma_dev = mtk_drm_crtc_dma_dev_get(drm_crtc_from_index(drm, 0));
+> +	crtc = drm_crtc_from_index(drm, 0);
+> +	if (crtc)
+> +		dma_dev = mtk_drm_crtc_dma_dev_get(crtc);
+>   	if (!dma_dev) {
+>   		ret = -ENODEV;
+>   		dev_err(drm->dev, "Need at least one OVL device\n");
 
-
---Yu54HnRP5ZgUSnoq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEARYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZQwJ/gAKCRB4tDGHoIJi
-0miwAQCKJ0wVlAlz1nuHioGwDLUxrjxPyHOl3leR4myna8AQdAD/eX7X9YhwjllL
-Nsb24tuvDQAHgMvN/gj+zYyrG9Nevw0=
-=7RDp
------END PGP SIGNATURE-----
-
---Yu54HnRP5ZgUSnoq--
 
