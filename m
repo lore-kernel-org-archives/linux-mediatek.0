@@ -4,105 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14ECAC04AAC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 11:38:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B212CD494F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 12:05:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jg1KwFh5lSvkfLStS1akS234BD88W219/y2jE+qO6JQ=; b=uH1S37nusJkkzb9CIZcKnW3i9G
-	1YoWhy2aG+Xr8jtdDhCFZo7YsZNtiawlxrRp9zHtOJOuMIwe3qHTqGmNGbyucfG8xiL0qjiSBtmMG
-	vSUpH7K/HW+EZ+xoqMJ3Jg2ALKOhZleIVP8X33aKNcj8/9puc+RVqPCgkTSo8wIHDjZsyNbr39Twc
-	O021rhsXrY0xNPu9wAJeQJPQI8qOJJDAbR7Uw0VXHI2UR7Ii2oEj+N+7dZIBCUCdkU+8MR0ObPgqs
-	CCr3f0riatFuhCa5hwrnkX5lPfy5BSYg8pKZfDOSEdGktnXJqVd7ZkMuGD/Kdyb5l48TJHYVIW5/e
-	yDq20s/A==;
+	bh=cRNYzNiImJujTu3gVe0e/F1xgNn+hpxzq5LY7wQeMXA=; b=eTvnuFjly35NbgdqYxqwDX0sJw
+	AI8KDMTSDMFhvWXiY5GClkMICBm/s9iP8orTJEtP+P510cepsbBQPcECalrHq12b3/BGnjh2mWDVY
+	izLeGfVE+QeBaM8mMoque5g+/F5pzrPKih3SzgtU9aZKYZy+JE3ilZj7H8WmrMpEXzIugNNHQHwv6
+	6uG43FOpeYfkUD9wtV2rRG/yvoWxw0KXwAB/gI/aCWrVHTtEwiUQro5ZaT078Q/640yDmlyM0FNKI
+	LND+3lmuBJaYoFewAVr4osK9gL9iD8x+XVTrrFhGy4PE3s1VX5m3L77hU2DT1uJGO7snj8cIjhZCE
+	T+fTdLwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjI12-005vfa-1R;
-	Thu, 21 Sep 2023 11:38:40 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1qjIRA-005y17-2d;
+	Thu, 21 Sep 2023 12:05:40 +0000
+Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjI0x-005vdm-0o;
-	Thu, 21 Sep 2023 11:38:37 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 18E4AFF809;
-	Thu, 21 Sep 2023 11:38:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1695296310;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Jg1KwFh5lSvkfLStS1akS234BD88W219/y2jE+qO6JQ=;
-	b=FB+WZwNSKjLpXhOD9eu3aYO9S6xv7RKPVKfQqt6Yyak4R0XVc2bs16R2Ke/+V/3txgPjPr
-	wNyBzW42Tn7VAFs2jhEpLj1G9U6dnj08SGVZCzFzU+kN0/r6dBMoRCU2I1O3Q8xtwIolig
-	xJ1YEEOth0NiXYYwOeMIAC90CHeyPQYQTN1YQTfV6AKvrznfMYMqllejuEeIHK1xAQoq7D
-	B2wVQWekSUN/HVPKuTr+U8nV6amDRMGb5hUj07YiP5dfthswJzspcJcvSs0Fc397s1bG45
-	3KvHozxpJJGdRulhdH2AcaicpASeaoEDTfZJ6ynuWsTayDIRxLyeQVsxkaRHLg==
-Message-ID: <16710cf9-8911-4fed-8e2d-b19b581446c1@arinc9.com>
-Date: Thu, 21 Sep 2023 14:38:09 +0300
+	id 1qjIR7-005y06-0V;
+	Thu, 21 Sep 2023 12:05:39 +0000
+Received: by mail-oo1-xc2d.google.com with SMTP id 006d021491bc7-5739972accdso1090890eaf.1;
+        Thu, 21 Sep 2023 05:05:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1695297934; x=1695902734; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cRNYzNiImJujTu3gVe0e/F1xgNn+hpxzq5LY7wQeMXA=;
+        b=ShGheL5gNLold1dMyHUIG46feo/Au5eJ4zV1NyXb1TASjBfA9WhCd7h/vt835dDofq
+         vODgRliYvq0F1C2q5PAZO22/C7Qu7522jG6xTYZnrDVsIMbBloKIqwbA/Fx57VDvwe/X
+         sAT7MNyNEDONQaJDwn3lYG1CeRlM2R/bIkA19c3Y3DitYerkw8F0JfsDQkhujZmVv2r+
+         WB05+8i7jjHxT9uWMPWNSw35Jst7KQ/cNnVapu09tKlgVKIodglS/FEBBfifOB1f78B7
+         T55aUgKzUs5uDqHvKXVKrVc3cGER5VKUBXLZVPBlF/3qVKiLvVP7uYYROvccUKDjKDMQ
+         FOqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695297934; x=1695902734;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cRNYzNiImJujTu3gVe0e/F1xgNn+hpxzq5LY7wQeMXA=;
+        b=oiA952qTPUvCrDLI0eVwQK/hDXDjJOBOYatLWOKGsd3m94YNOUpptwn7iw9zDkK+If
+         JAqhGGQsMjZMDh7LqqB4U2Ln7iJH0neF8wDemhFre8z/5eexj1X6/XIL8K845J0/ArM9
+         QU8Bqt/z/4FO0Q6q3nwMIeKPtogriB7SLJSCwoB5ehcPeWYDy8KZfYT7c3nTaEgEQfzF
+         /81WmEFgAREjIXdxrV718QHB5wYDyNuUWSNq0xD2sTtKOZ8U9gIUF2v2ifVYk+nCnZ5s
+         CcyqcLZ+4lO9Zms6OVZG7cbo/K5+PLw5R7MzsMFP2BbAFF98Z0r34ZtCgmUdhK3wqTIT
+         nvuA==
+X-Gm-Message-State: AOJu0YxY9J+ZFQExL7yff1sJB50ZCnk0RAcvSrfxw0v0U0e9lBbyFqeX
+	PvfmIyEy2WJAHGdpX45aSs8xYLxl9S94/EOYTLQ=
+X-Google-Smtp-Source: AGHT+IHDnNytitrj7g9Wmajhoe6mCmu7lVKXRZ191256VG1PXDsUDEvnSpWs3jvPhcDX3RKb1qYinf71cmk84zYAogw=
+X-Received: by 2002:a05:6870:e2cb:b0:1b0:3f7f:673a with SMTP id
+ w11-20020a056870e2cb00b001b03f7f673amr3513899oad.25.1695297933746; Thu, 21
+ Sep 2023 05:05:33 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 07/10] dt-bindings: net: enforce phylink
- bindings on certain ethernet controllers
-To: Rob Herring <robh@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- George McCollister <george.mccollister@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- Marcin Wojtas <mw@semihalf.com>,
- "Russell King (Oracle)" <linux@armlinux.org.uk>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>, Marek Vasut <marex@denx.de>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- John Crispin <john@phrozen.org>, Madalin Bucur <madalin.bucur@nxp.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>, Lorenzo Bianconi
- <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Horatiu Vultur <horatiu.vultur@microchip.com>,
- Oleksij Rempel <linux@rempel-privat.de>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>,
- Shyam Pandey <radhey.shyam.pandey@xilinx.com>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org
-References: <20230916110902.234273-1-arinc.unal@arinc9.com>
- <20230916110902.234273-8-arinc.unal@arinc9.com>
- <20230918181319.GA1445647-robh@kernel.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230918181319.GA1445647-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+References: <170e8577-42c9-b72f-60c7-80141f379ec4@arm.com> <20230921021350.28283-1-mark-pk.tsai@mediatek.com>
+In-Reply-To: <20230921021350.28283-1-mark-pk.tsai@mediatek.com>
+From: Xuewen Yan <xuewen.yan94@gmail.com>
+Date: Thu, 21 Sep 2023 20:05:22 +0800
+Message-ID: <CAB8ipk8cn893vTg_TZwBq4G7CtLdjCPtJ5Bt0OKbO9VxXg6rfQ@mail.gmail.com>
+Subject: Re: [PATCH] ARM: vfp: Add vudot opcode to VFP undef hook
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: robin.murphy@arm.com, amit.kachhap@arm.com, 
+	angelogioacchino.delregno@collabora.com, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux@armlinux.org.uk, matthias.bgg@gmail.com, yj.chiang@mediatek.com, 
+	=?UTF-8?B?546L56eRIChLZSBXYW5nKQ==?= <Ke.Wang@unisoc.com>, 
+	"aijun.sun@unisoc.com" <aijun.sun@unisoc.com>, Xuewen Yan <xuewen.yan@unisoc.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_043835_591628_050AE5E8 
-X-CRM114-Status: GOOD (  16.33  )
+X-CRM114-CacheID: sfid-20230921_050537_197135_372566B4 
+X-CRM114-Status: GOOD (  38.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,57 +91,204 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18.09.2023 21:13, Rob Herring wrote:
-> On Sat, Sep 16, 2023 at 02:08:59PM +0300, Arınç ÜNAL wrote:
->> Phylink bindings are required for ethernet controllers that utilise
->> phylink_fwnode_phy_connect() directly or through phylink_of_phy_connect(),
->> and register OF-based only MDIO buses, if they register any.
-> 
-> What is phylink?
-> 
-> Don't describe/justify binding changes based on some Linux functions.
+Hi Mark-PK, Robin
 
-I'd like to discuss the influence of the Linux drivers on the devicetree
-bindings. Before that let me clarify these "phylink" bindings. They are
-certain rules to properly describe the link of the ethernet controller. Any
-of the phy-handle, pcs-handle, sfp, and fixed-link properties describe the
-link. They are already defined on ethernet-controller.yaml, just not
-enforced.
+We also meets the scene, and has the following stack:
 
-Why I called them phylink bindings, is because when phylink is used on the
-ethernet controller driver, only then we can be sure that the link
-descriptions on the ethernet controller are needed. Because, some drivers
-don't need the link descriptions on the ethernet controller as they can
-search a certain MDIO bus to find and connect a MAC to a PHY or set up a
-fixed link without looking at the devicetree.
+Thread-2 (5361): undefined instruction: pc=3Dd05ae08c
+CPU: 5 PID: 5361 Comm: Thread-2 Tainted: G        W  O
+5.4.210-android12-9-04458-g56c7c43d3298-ab000045 #98
+Hardware name: Generic DT based system
+PC is at 0x7d1aa068
+LR is at 0x7c22ae50
+pc : [<7d1aa068>]    lr : [<7c22ae50>]    psr: 800b0010
+sp : 7c78ee20  ip : 7c22ae40  fp : 7c78eea0
+r10: 7c22ae60  r9 : 7c22ae70  r8 : 00000008
+r7 : 7c0fee80  r6 : 7c0fee70  r5 : 7c0fee60  r4 : 00000010
+r3 : 7c0fee50  r2 : 00000000  r1 : 00000010  r0 : a698aee0
+Flags: Nzcv  IRQs on  FIQs on  Mode USER_32  ISA ARM  Segment user
+Control: 10c5383d  Table: 8649c06a  DAC: 00000055
+Code: edddcb1e fe22edd4 f4600a0d fc67cd98 (fe20edf4) <<<
 
-I don't like this approach because, as you said, devicetree bindings should
-describe the hardware, not driver policies. So I propose that we don't let
-Linux drivers interfere with dt-bindings. To that extent:
+So, we also need add the 0xfe000000:
 
-- Link descriptions must be required on ethernet controllers. We don't care
-   whether some Linux driver can or cannot find the PHY or set up a fixed
-   link without looking at the devicetree.
+Could you please help add the following patch into the patch-v2?
 
-- The MDIO bus description on an ethernet controller describes that the
-   hardware comes with an MDIO bus. The MDIO property is optional not
-   because some Linux driver can find and map the PHYs to MACs without DT
-   descriptions but because the hardware doesn't have to use that or any
-   MDIO bus.
+Thanks!
 
-Let's also talk about the elephant in the room: DSA bindings. Distributed
-Switch Architecture is a Linux subsystem, not a hardware property.
-Devicetree bindings are supposed to describe the hardware, yet we have
-bindings specifically for DSA so that the DSA driver can properly control
-the hardware.
+---
+diff --git a/arch/arm/vfp/vfpmodule.c b/arch/arm/vfp/vfpmodule.c
+index 7e8773a2d99d..1078c0f169d2 100644
+--- a/arch/arm/vfp/vfpmodule.c
++++ b/arch/arm/vfp/vfpmodule.c
+@@ -788,6 +788,18 @@ static struct undef_hook neon_support_hook[] =3D {{
+        .cpsr_mask      =3D PSR_T_BIT,
+        .cpsr_val       =3D 0,
+        .fn             =3D vfp_support_entry,
++}, {
++       .instr_mask     =3D 0xfc000000,
++       .instr_val      =3D 0xfc000000,
++       .cpsr_mask      =3D PSR_T_BIT,
++       .cpsr_val       =3D 0,
++       .fn             =3D vfp_support_entry,
++}, {
++       .instr_mask     =3D 0xfe000000,
++       .instr_val      =3D 0xfe000000,
++       .cpsr_mask      =3D PSR_T_BIT,
++       .cpsr_val       =3D 0,
++       .fn             =3D vfp_support_entry,
+ }, {
+        .instr_mask     =3D 0xef000000,
+        .instr_val      =3D 0xef000000,
+@@ -800,6 +812,18 @@ static struct undef_hook neon_support_hook[] =3D {{
+        .cpsr_mask      =3D PSR_T_BIT,
+        .cpsr_val       =3D PSR_T_BIT,
+        .fn             =3D vfp_support_entry,
++}, {
++       .instr_mask     =3D 0xfc000000,
++       .instr_val      =3D 0xfc000000,
++       .cpsr_mask      =3D PSR_T_BIT,
++       .cpsr_val       =3D PSR_T_BIT,
++       .fn             =3D vfp_support_entry,
++}, {
++       .instr_mask     =3D 0xfe000000,
++       .instr_val      =3D 0xfe000000,
++       .cpsr_mask      =3D PSR_T_BIT,
++       .cpsr_val       =3D PSR_T_BIT,
++       .fn             =3D vfp_support_entry,
+ }};
 
-Although I see dsa.yaml and dsa-port.yaml mostly consist of describing an
-ethernet switch with CPU port(s), there're properties that are specific to
-DSA, such as dsa,member on dsa.yaml and dsa-tag-protocol and label on
-dsa-port.yaml.
+ static struct undef_hook vfp_support_hook =3D {
 
-Depending on how I get responses, I will address my patches. Then I can
-further discuss the DSA bindings.
-
-Arınç
+On Thu, Sep 21, 2023 at 12:40=E2=80=AFPM Mark-PK Tsai <mark-pk.tsai@mediate=
+k.com> wrote:
+>
+> > On 2023-09-20 09:39, Mark-PK Tsai wrote:
+> > > Add vudot opcode to the VFP undef hook to fix the
+> > > potentially undefined instruction error when the
+> > > user space executes vudot instruction.
+> >
+> > Did the kernel expose a hwcap to say that the dot product extension is
+> > supported? I'm pretty sure it didn't, so why would userspace expect thi=
+s
+> > to work? ;)
+>
+> The hwcap for dotprod has been exported since commit:
+>
+> 62ea0d873af3 ARM: 9269/1: vfp: Add hwcap for FEAT_DotProd
+>
+> >
+> > IIRC Amit was looking at defining the hwcaps to align with arm64 compat=
+,
+> > but I believe that series faltered since most of them weren't actually
+> > needed (and I think at that point it was still missing the VFP support
+> > code parts). It would be nice if someone could pick up and combine both
+>
+> Were the mentioned series related to this commit?
+>
+> 62ea0d873af3 ARM: 9269/1: vfp: Add hwcap for FEAT_DotProd
+>
+> > efforts and get this done properly; fill in *all* the hwcaps and
+> > relevant handling for extensions which Cortex-A55 supports (since
+> > there's definitely more than just VUDOT), and then hopefully we're done
+> > for good.
+>
+> Agree.
+>
+> >
+> > > Before this commit, kernel didn't handle the undef exception
+> > > caused by vudot and didn't enable VFP in lazy VFP context
+> > > switch code like other NEON instructions.
+> > > This led to the occurrence of the undefined instruction
+> > > error as following:
+> > >
+> > > [  250.741238 ] 0904 (26902): undefined instruction: pc=3D004014ec
+> > > ...
+> > > [  250.741287 ] PC is at 0x4014ec
+> > > [  250.741298 ] LR is at 0xb677874f
+> > > [  250.741303 ] pc : [<004014ec>]    lr : [<b677874f>]    psr: 800700=
+10
+> > > [  250.741309 ] sp : beffedb0  ip : b67d7864  fp : beffee58
+> > > [  250.741314 ] r10: 00000000  r9 : 00000000  r8 : 00000000
+> > > [  250.741319 ] r7 : 00000001  r6 : 00000001  r5 : beffee90  r4 : 004=
+01470
+> > > [  250.741324 ] r3 : beffee20  r2 : beffee30  r1 : beffee40  r0 : 004=
+003a8
+> > > [  250.741331 ] Flags: Nzcv  IRQs on  FIQs on  Mode USER_32  ISA ARM =
+Segment user
+> > > [  250.741339 ] Control: 10c5383d  Table: 32d0406a  DAC: 00000055
+> > > [  250.741348 ] Code: f4434aef f4610aef f4622aef f4634aef (fc620df4)
+> > >
+> > > Below is the assembly of the user program:
+> > >
+> > > 0x4014dc <+108>: vst1.64 {d20, d21}, [r3:128]
+> > > 0x4014e0 <+112>: vld1.64 {d16, d17}, [r1:128]
+> > > 0x4014e4 <+116>: vld1.64 {d18, d19}, [r2:128]
+> > > 0x4014e8 <+120>: vld1.64 {d20, d21}, [r3:128] --> switch out
+> > > 0x4014ec <+124>: vudot.u8 q8, q9, q10         <-- switch in, and FPEX=
+C.EN =3D 0
+> > >                                                    SIGILL(illegal ins=
+truction)
+> > >
+> > > Link: https://services.arm.com/support/s/case/5004L00000XsOjP
+> >
+> > Linking to your private support case is not useful to upstream. Even I
+> > can't open that link.
+>
+> I thought that maybe someone in arm need this.
+> But it seems a bit noisy so I will remove the link from v2.
+>
+> >
+> > > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> > > ---
+> > >   arch/arm/vfp/vfpmodule.c | 12 ++++++++++++
+> > >   1 file changed, 12 insertions(+)
+> > >
+> > > diff --git a/arch/arm/vfp/vfpmodule.c b/arch/arm/vfp/vfpmodule.c
+> > > index 7e8773a2d99d..7eab8d1019d2 100644
+> > > --- a/arch/arm/vfp/vfpmodule.c
+> > > +++ b/arch/arm/vfp/vfpmodule.c
+> > > @@ -788,6 +788,12 @@ static struct undef_hook neon_support_hook[] =3D=
+ {{
+> > >     .cpsr_mask      =3D PSR_T_BIT,
+> > >     .cpsr_val       =3D 0,
+> > >     .fn             =3D vfp_support_entry,
+> > > +}, {
+> > > +   .instr_mask     =3D 0xffb00000,
+> > > +   .instr_val      =3D 0xfc200000,
+> > > +   .cpsr_mask      =3D PSR_T_BIT,
+> > > +   .cpsr_val       =3D 0,
+> > > +   .fn             =3D vfp_support_entry,
+> > >   }, {
+> > >     .instr_mask     =3D 0xef000000,
+> > >     .instr_val      =3D 0xef000000,
+> > > @@ -800,6 +806,12 @@ static struct undef_hook neon_support_hook[] =3D=
+ {{
+> > >     .cpsr_mask      =3D PSR_T_BIT,
+> > >     .cpsr_val       =3D PSR_T_BIT,
+> > >     .fn             =3D vfp_support_entry,
+> > > +}, {
+> > > +   .instr_mask     =3D 0xffb00000,
+> > > +   .instr_val      =3D 0xfc200000,
+> > > +   .cpsr_mask      =3D PSR_T_BIT,
+> > > +   .cpsr_val       =3D PSR_T_BIT,
+> > > +   .fn             =3D vfp_support_entry,
+> >
+> > Why have two entries conditional on each possible value of one bit for
+> > otherwise identical encodings? Surely it suffices to set both cpsr_mask
+> > and cpsr_val to 0?
+>
+> You're right.
+> I will set both cpsr_mask and cpsr_val to 0 and use single entry,
+> as you suggested, in the v2 patch.
+>
+> Thanks.
+>
+> >
+> > Thanks,
+> > Robin.
+> >
+> > >   }};
+> > >
+> > >   static struct undef_hook vfp_support_hook =3D {
 
