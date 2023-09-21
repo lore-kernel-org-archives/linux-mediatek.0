@@ -4,82 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26A02E71060
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 12:51:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E6BAE71060
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 13:01:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b7aGXpKSZd0nkaqg7goI4xd52TS77NJzRSHYqFQggM8=; b=q+mw4yeAa5S4sq2CkNBy+WmVLq
-	CMpbe71d/Fw0N4B4T/wBBAw6cNxD8g2LCTw5kUu6FyHHBVk0q1GgWSpbqiMSeuzfwJY/OTvY0lmOo
-	RKdB+ZgvK5G1iU2kD4GDlu22viEf74Lc4G6ZTVQAxlw1vlo/rNL9b3vbOdIIi8QNb1wMj3r40XOiM
-	mnOopiE/UriS1W5B2Z2eBJYMxLvx0A8OOMRt0Yow9Oz/gayjwp1o0+zaHR4JDJaI04msKM4gh1Yqz
-	E1CvYUnHOXahjzm+NGkqJec7amPYy5onNXzw07CL+Te6n8FZsFaMNphqX5ecBuKBdEol2Farlu/SW
-	VmJgORxw==;
+	bh=qKm5PjEzUxyMudDyWH1l+GObMoy6S9qVw27naJU6pOw=; b=4TZPJCj6cciLk1/okwJBoUzTb1
+	RkmaVYI+sTr94O9HcfG1TNxbUyRiza7HkE1HGl2/32JEe+6Hlwds3GU+IpVaUMXqO+v8ocKYiAH9t
+	uOigZ+eZcwU+ZzMgKEMQ1HhYad9FeJng1Hty+mOcDkb1H7pHu7zpwXWxf0UMxixY3KOl3LSvlEjFm
+	MUpL2WVY5Y8VerCbO0V6mJ1gdlrSN++QB1oY4deAIdu8hBsPP1ss6r9EVF20340pnMLbB5qrYKUb9
+	nVd/7tjPnSyFv5RkgXLjW4/mBM6fEDUYSvl/8Zh+E0xL6AWw6vmZkaFMP0Cuh4ZsqVqldsEy0r2q9
+	KqYiMZOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjJ9e-0063mb-0N;
-	Thu, 21 Sep 2023 12:51:38 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1qjJIy-00652q-0h;
+	Thu, 21 Sep 2023 13:01:16 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjJ9b-0063kT-0S
-	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Sep 2023 12:51:36 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-991c786369cso119286866b.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 21 Sep 2023 05:51:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695300691; x=1695905491; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=b7aGXpKSZd0nkaqg7goI4xd52TS77NJzRSHYqFQggM8=;
-        b=IPu55qaGm2F4go2qOb0+ZM/p9FhLUScrTXEptdZQXcZEX9u0xM9G+LRGeTj7OKL/v2
-         Dm2Wn+M5SYmoEAIySiB5Z52gk9W6MUGS+kp2fCLtgjvAMbXburCmn3p5TFL5sJ7wqy7u
-         aRpsUCNCBlcDzxmWbMWihROV8tXNmQUS/zCsMJtoA0dZfYi9o8df8MIt16gzzWVQ7zjp
-         K88uGUE94sUAAM76zaVWjH5Bw7hvji86lkMeuythQ0zkYQlg8b2YNB77hTmH+2ddZLAd
-         mDQtaET2PK31JCV3nTHJccsuDxMXU+mLecbDV3DwULn33QohzRYaShiN1izRzyRP1i6p
-         yLtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695300691; x=1695905491;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=b7aGXpKSZd0nkaqg7goI4xd52TS77NJzRSHYqFQggM8=;
-        b=bu/6KsQDNbFmzfrwapAYbO/Ql7Vs6JGOXOaXvNg6sl+h8aNIEICV7zcxcY3m7tx+15
-         Rvv0hN83FZ0a3VoIl1nppN+PX4XdejOWDO7Ab6p3d7WdHR3iRweacViZyDXckz0dYZfJ
-         fXE9okKCZD2hiqJgz3sNs/MDGn3pUfrEKOiQQt8v8iKb31x1I+uVitatR28v+7rSpwWP
-         CTpP43oEx30VowcTSeRZWnmOgkePYHf7NwLma6GUmfUfNGI6x0vvPE/Lb02zQ9XHFNY4
-         AnOI8WHpHG+jCixBcwYbqrloKoccQX9kjAf8po1ZG2qIFztVKxrVeTINek5UFTMtGmPZ
-         BtRw==
-X-Gm-Message-State: AOJu0YxvZQcVgFDxzq53XDdAljHu7hsXu2LssdDjuILn9hOBFVGUY2s3
-	BI/HYrQN68ZBGPJbwYo1ou4PTQ==
-X-Google-Smtp-Source: AGHT+IEUZqEOYV4M6SlzSpxNp5dBDgvjEldvmzJ6hEHHcdY4tYiha+4k/ZKwAc0oUEQlmz9ki3DsiQ==
-X-Received: by 2002:a17:906:29a:b0:9ae:522e:8f71 with SMTP id 26-20020a170906029a00b009ae522e8f71mr3578502ejf.7.1695300691322;
-        Thu, 21 Sep 2023 05:51:31 -0700 (PDT)
-Received: from p14s (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id lz1-20020a170906fb0100b0099b5a71b0bfsm1002039ejb.94.2023.09.21.05.51.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Sep 2023 05:51:30 -0700 (PDT)
-Date: Thu, 21 Sep 2023 06:51:29 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: andersson@kernel.org, matthias.bgg@gmail.com, tinghan.shen@mediatek.com,
-	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wenst@chromium.org,
-	kernel@collabora.com
-Subject: Re: [PATCH] remoteproc: mediatek: Refactor single core check and fix
- retrocompatibility
-Message-ID: <ZQw8UdZ9vhsrggky@p14s>
-References: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com>
+	id 1qjJIu-00651t-11;
+	Thu, 21 Sep 2023 13:01:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=qKm5PjEzUxyMudDyWH1l+GObMoy6S9qVw27naJU6pOw=; b=OUJduL3Hp9PrYXAS7WiSY/LcH1
+	OzGr8ycxrYFQLqMLsxZp2JyY+1HhJQ3G1rEkjVVTPEmQByleh6sMMBuKozPsnpZzvwvvJJ3JLVXzN
+	8J0txZkz8lhtHI4Me/lysAATpn/bfPA9V/KGdeZAs/cZy4vtQmMIazip89Sw2atjKjJo=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1qjJHr-0075OV-24; Thu, 21 Sep 2023 15:00:07 +0200
+Date: Thu, 21 Sep 2023 15:00:07 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	George McCollister <george.mccollister@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
+	Marcin Wojtas <mw@semihalf.com>,
+	"Russell King (Oracle)" <linux@armlinux.org.uk>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Marek Vasut <marex@denx.de>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	John Crispin <john@phrozen.org>,
+	Madalin Bucur <madalin.bucur@nxp.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Oleksij Rempel <linux@rempel-privat.de>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Grygorii Strashko <grygorii.strashko@ti.com>,
+	Sekhar Nori <nsekhar@ti.com>,
+	Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH net-next v2 07/10] dt-bindings: net: enforce phylink
+ bindings on certain ethernet controllers
+Message-ID: <a8d49992-4fa8-4a9f-b954-79011a3040a8@lunn.ch>
+References: <20230916110902.234273-1-arinc.unal@arinc9.com>
+ <20230916110902.234273-8-arinc.unal@arinc9.com>
+ <20230918181319.GA1445647-robh@kernel.org>
+ <16710cf9-8911-4fed-8e2d-b19b581446c1@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <16710cf9-8911-4fed-8e2d-b19b581446c1@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_055135_187601_786FD8FD 
-X-CRM114-Status: GOOD (  19.99  )
+X-CRM114-CacheID: sfid-20230921_060112_390668_38620F28 
+X-CRM114-Status: GOOD (  22.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,69 +119,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 19, 2023 at 11:23:36AM +0200, AngeloGioacchino Del Regno wrote:
-> In older devicetrees we had the ChromeOS EC in a node called "cros-ec"
-> instead of the newer "cros-ec-rpmsg", but this driver is now checking
-> only for the latter, breaking compatibility with those.
-> 
-> Besides, we can check if the SCP is single or dual core by simply
-> walking through the children of the main SCP node and checking if
-> if there's more than one "mediatek,scp-core" compatible node.
-> 
-> Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/remoteproc/mtk_scp.c | 18 +++++++-----------
->  1 file changed, 7 insertions(+), 11 deletions(-)
->
+> - Link descriptions must be required on ethernet controllers. We don't care
+>   whether some Linux driver can or cannot find the PHY or set up a fixed
+>   link without looking at the devicetree.
 
-Applied.
+That can lead to future surprises, and breakage.
 
-Thanks,
-Mathieu
+Something which is not used is not tested, and so sometimes wrong, and
+nobody knows. Say the driver is extended to a new device and actually
+does need to use this never before used information. You then find it
+is wrong, and you get a regression.
 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index ea227b566c54..a35409eda0cf 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -1144,29 +1144,25 @@ static int scp_add_multi_core(struct platform_device *pdev,
->  	return ret;
->  }
->  
-> -static int scp_is_single_core(struct platform_device *pdev)
-> +static bool scp_is_single_core(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct device_node *np = dev_of_node(dev);
->  	struct device_node *child;
-> +	int num_cores = 0;
->  
-> -	child = of_get_next_available_child(np, NULL);
-> -	if (!child)
-> -		return dev_err_probe(dev, -ENODEV, "No child node\n");
-> +	for_each_child_of_node(np, child)
-> +		if (of_device_is_compatible(child, "mediatek,scp-core"))
-> +			num_cores++;
->  
-> -	of_node_put(child);
-> -	return of_node_name_eq(child, "cros-ec-rpmsg");
-> +	return num_cores < 2;
->  }
->  
->  static int scp_cluster_init(struct platform_device *pdev, struct mtk_scp_of_cluster *scp_cluster)
->  {
->  	int ret;
->  
-> -	ret = scp_is_single_core(pdev);
-> -	if (ret < 0)
-> -		return ret;
-> -
-> -	if (ret)
-> +	if (scp_is_single_core(pdev))
->  		ret = scp_add_single_core(pdev, scp_cluster);
->  	else
->  		ret = scp_add_multi_core(pdev, scp_cluster);
-> -- 
-> 2.42.0
-> 
+We have had issues like this before. There are four rgmii phy-link
+modes. We have had PHY drivers which ignored one of those modes, it
+silently accepted it, but did not change the hardware to actually use
+that mode. The PHY continues to use its reset defaults or strapping,
+and it worked. A lot of device trees ended up using this mode. And it
+was not the same as reset defaults/strapping.
+
+And then somebody needed that fourth mode, and made it actually
+work. And all those boards wrongly using that mode broke.
+
+The lesson i learned from that episode is that anything in device tree
+must actually be used and tested.
+
+> Although I see dsa.yaml and dsa-port.yaml mostly consist of describing an
+> ethernet switch with CPU port(s), there're properties that are specific to
+> DSA, such as dsa,member on dsa.yaml and dsa-tag-protocol and label on
+> dsa-port.yaml.
+
+I would say dsa,member does describe the hardware. It provides two
+bits of information:
+
+Which cluster of switches does this switch belong to. You probably can
+derive it using the DSA links between switches, which is also a
+hardware property. But having it in device tree makes it simpler.
+
+Which switch is this within a cluster. You need to be able to say:
+Send this frame out Port X of switch Y. How does a switch know it is
+Y? It could be strapping, which is clearly a hardware property.
+
+dsa-tag-protocol is similar to phy-mode. It tells you the protocol
+running between the CPU port and the SoC master interface. You often
+can imply it, but again, it could be determined by strapping on the
+switch.
+
+label is an interesting one, and probably would not be accepted if it
+was proposed now. But it has been around a long time. It also does
+describe the hardware, it is what is printed on the case next to the
+RJ45. To make the user experience simpler, we then try to make the
+linux interface name match the label on the case.
+
+	Andrew
 
