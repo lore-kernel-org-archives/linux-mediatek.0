@@ -4,95 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6A3E7D0A3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 17:59:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27132E7D0A4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 18:22:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f9SVUFZn2boEnF5GwKRdG3SSt8HtSOHZO4l12UhiSWo=; b=j3n8NHzPBbAd+XJ3BHxl6QTIYO
-	ui2XKcQSYiw+/oJrekHIM2w52qJBO26NXaEZ3kqvHxaqGEiSQOF872C0ClIU/1EtKKlbB3MrGRnRa
-	QqnVqWI4EyCeHfMu38UdHDw5C1rUt8VYA4wLcXcVW3rJdwgfNMJAJPHHiLSqyL82zoaGP8vQP0j4s
-	cxnuDSYIQrpjkdT7JJPTBNEXGGaNo/pjj1RIPuul4UL7Jj8XtEhWlbihs8WtqghWiZr/horuqPL6w
-	l0D8t1EoNUv5hczhIIP2i35mWOLtUU2oYNP6u9PEo0/cGXapF4YrTFb8x4naVue26ijxsgvTXrSSK
-	5pMmVPtw==;
+	bh=j9iU/unn2B5Lg59HKhzCVV0eWDfanHflmRLaK3sdqHo=; b=wuS9jpRRktHn36SKXC+qtSz9Jg
+	KYsbqdTKHJlUA1wGnhJrE4TtUHCEvedd6gvEB2DVAcbwVm0SLl93ogdVxmdVVJ09lmRXitHraLbfU
+	GfGxMjv8dvYp/WTdQ67S4RKXKUHQhfMykH3quz1eT1jUaCwcQFv8pReF+ipjXrjusSjBCRiaFVgfN
+	IbR4arSjaCJ1jAgJrONV4WCgRq72i5G4EuHLNKptsKZ/TVCh5qdXEKRyRqv0W8rxHrbb0kdn0wT8x
+	kYW0/emKyEqrbKXsBcW8uDPCXuLEHL8st+CmKDPlA++v2FibmXA2G8cEQOygcI6HzNukagAMpeR5V
+	ZcBR3BBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjNx5-006jxY-0a;
-	Thu, 21 Sep 2023 17:58:59 +0000
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131])
+	id 1qjOJf-006njP-2l;
+	Thu, 21 Sep 2023 18:22:19 +0000
+Received: from relay4-d.mail.gandi.net ([217.70.183.196])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjNx1-006juy-2n
-	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Sep 2023 17:58:58 +0000
-Received: by mail-il1-x131.google.com with SMTP id e9e14a558f8ab-34f1ffda46fso15795ab.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 21 Sep 2023 10:58:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1695319133; x=1695923933; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=f9SVUFZn2boEnF5GwKRdG3SSt8HtSOHZO4l12UhiSWo=;
-        b=S/LyS1mJlw0ZXHHE55aUVv/s4WQMJAh6UF53ak1ndE+rBCnYpUrE0WzW7jAQcrMCtL
-         QoOT1PWlvzxJYBJvSJfqk7O67tYnM2TMyw93RtKyGk8LMJY0Q/zN42mhUMhipn1PLGys
-         u/bvvPzHu5Uq3WOPz93SVsIOeAiUkpJXZ/CM3eAC0kZK4tMxq8AjivI47XQFO66yl3od
-         B3OoI6f/caXHsWJS6MGc5F8qWjlsYsW6oMQqf4MsJs01PEtxfQPciud5GY5gXs6Pus/9
-         Zq3tT+duAUkpz9/AWQhg5EQ4hfxuNNjGy9G/FBhwr/v3+NCKn4OMuBkRvaknVJL4V8Vc
-         anmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695319133; x=1695923933;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=f9SVUFZn2boEnF5GwKRdG3SSt8HtSOHZO4l12UhiSWo=;
-        b=nv4IZbYZVRXbNM9qnwktAFzLBsun00AxXTFQ8DWKogsRlKj9j7QW8N+FmU7rkehF6I
-         +q0wGguZPcf70iO0kJpNEVfwF/lBtNfQVuSAc6mmlPOOEwsaAwRmywHxEp4DPYXBQLGt
-         o193/is80L9+QVvgfUXUXrPLjF6pG4eG/ZSjzCLSxuZc9YjLsXGX8ozIgcfNRvKBngZ9
-         EpdfMRr5C9ZB4N74vDyIcuXsquN5nHK96le3VfT2l9spz9XSoZiR9qKcLYZKhnJqcEeq
-         jnOQpNJHDbJHO38PVvGP5AxS6oI+RpcUluLc8tFd+X3Q598bR4VPi9Br50IlnVvrv14R
-         0tNQ==
-X-Gm-Message-State: AOJu0YxxuX1GUF0FVP55xEXeolEJl+8PhCNk2/NbCFxVdT2YKx0DBXx6
-	5LPP5lbRP1yedm9oLctASVuv4eVPW6Os9CnwZiZ6
-X-Google-Smtp-Source: AGHT+IHn3jby0f9lrLxQXMCYIcclXtaVrAkIXpzr0C33TkWnHakXxvV7Um0L9DLm0Wo7YYavt5pjNW6jZDyfCtBiki8=
-X-Received: by 2002:a05:6e02:156d:b0:346:1ca6:c27a with SMTP id
- k13-20020a056e02156d00b003461ca6c27amr292898ilu.13.1695319132831; Thu, 21 Sep
- 2023 10:58:52 -0700 (PDT)
+	id 1qjOJa-006ngU-2z;
+	Thu, 21 Sep 2023 18:22:17 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 8DB5DE0003;
+	Thu, 21 Sep 2023 18:21:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1695320525;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=j9iU/unn2B5Lg59HKhzCVV0eWDfanHflmRLaK3sdqHo=;
+	b=hIAvQ8dgDH08u0BdHXTRIonGAo3yKFcZMxt3uw1qDZt+5ypJM3sJ8rIIGEcwJHGsRoCaR2
+	nifRNtpjmn7gbCEdBRqJLjOFn75cZwYAcde/5iEG/trGreT3o1bM9iKxU+HgDHKAPKa+G6
+	Jih/l/+El0+VJyWic6ezaTZoSmTUD4vc8twqBfLOUADhLTcNE24hbSjRqw84uEROq3R32d
+	LRudTD7HMQ1tbNO1XwIXQtasht2CBb5tWbQ7fPTz5pMthOnuUlVdU1aMrNn9xUw2PbB83C
+	jw74tIo2/G4YcjHYlpb20jMeWYMc/0OX6IdrPVnzwLA259K7WqTosgU1i6+GRQ==
+Message-ID: <85cc3b27-417e-4cf4-9f77-347a338c9d67@arinc9.com>
+Date: Thu, 21 Sep 2023 21:21:40 +0300
 MIME-Version: 1.0
-References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
- <20230911125936.10648-13-yunfei.dong@mediatek.com> <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
- <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl> <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
- <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl> <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
- <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl> <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
- <c3d14f64-bf04-46b9-ac7b-af7ef9014335@xs4all.nl> <CA+ddPcPbox=mknpmDkwfYTfDMca49wU10SNF3mJspYu=5T64FQ@mail.gmail.com>
- <c7cd83c49a9226e72c272365653dc8b998b6adcb.camel@collabora.com>
-In-Reply-To: <c7cd83c49a9226e72c272365653dc8b998b6adcb.camel@collabora.com>
-From: Jeffrey Kardatzke <jkardatzke@google.com>
-Date: Thu, 21 Sep 2023 10:58:38 -0700
-Message-ID: <CA+ddPcPm4aZ9LKu1D1rO3qguPN7E7jbnXTOqdjYCtDm7sk4nzw@mail.gmail.com>
-Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder driver
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	=?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, 
-	"nhebert@chromium.org" <nhebert@chromium.org>, 
-	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, 
-	"nfraprado@collabora.com" <nfraprado@collabora.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org" <stevecho@chromium.org>, 
-	"wenst@chromium.org" <wenst@chromium.org>, 
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"hsinyi@chromium.org" <hsinyi@chromium.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 07/10] dt-bindings: net: enforce phylink
+ bindings on certain ethernet controllers
+Content-Language: en-US
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ George McCollister <george.mccollister@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ Marcin Wojtas <mw@semihalf.com>,
+ "Russell King (Oracle)" <linux@armlinux.org.uk>,
+ Lars Povlsen <lars.povlsen@microchip.com>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>, Marek Vasut <marex@denx.de>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ John Crispin <john@phrozen.org>, Madalin Bucur <madalin.bucur@nxp.com>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ Horatiu Vultur <horatiu.vultur@microchip.com>,
+ Oleksij Rempel <linux@rempel-privat.de>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>,
+ Shyam Pandey <radhey.shyam.pandey@xilinx.com>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org
+References: <20230916110902.234273-1-arinc.unal@arinc9.com>
+ <20230916110902.234273-8-arinc.unal@arinc9.com>
+ <20230918181319.GA1445647-robh@kernel.org>
+ <16710cf9-8911-4fed-8e2d-b19b581446c1@arinc9.com>
+ <a8d49992-4fa8-4a9f-b954-79011a3040a8@lunn.ch>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <a8d49992-4fa8-4a9f-b954-79011a3040a8@lunn.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_105855_903893_8F05E565 
-X-CRM114-Status: GOOD (  28.88  )
+X-CRM114-CacheID: sfid-20230921_112215_240834_202A0C97 
+X-CRM114-Status: GOOD (  34.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,70 +119,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 21, 2023 at 8:46=E2=80=AFAM Nicolas Dufresne
-<nicolas.dufresne@collabora.com> wrote:
->
-> Le mercredi 20 septembre 2023 =C3=A0 11:20 -0700, Jeffrey Kardatzke a =C3=
-=A9crit :
-> > > >
-> > > > Also, regarding MTK, these are stateless decoders. I think it would=
- be nice to
-> > > > show use example code that can properly parse the un-encrypted head=
-er, pass the
-> > > > data to the decryptor and decode. There is a bit of mechanic in the=
-re that lacks
-> > > > clarification, a reference implementation would clearly help. Final=
-ly, does this
-> > > > platform offers some clearkey implementation (or other alternative)=
- so we can do
-> > > > validation and regression testing? It would be very unfortunate to =
-add feature
-> > > > upstream that can only be tested by proprietary CDM software.
-> > >
-> >
-> > It would be possible to use this with clearkey w/ some additional work
-> > on our end. If this is then part of the public ChromiumOS build, would
-> > that be satisfactory? (the TEE would have some binary blob components
-> > like firmware does though)
->
-> From my point of view, this would fully cover my concern. To clarify this
-> concern, the  decryption into secure memory currently only ever take plac=
-e in
-> proprietary code that implements the protection (Widewine CDM). With clea=
-r key,
-> we can have an open source CDM (made for testing purpose) so that we don'=
-t have
-> to have hidden code to test the entire pipeline. So appart from the TEE
-> firmware, which is just a firmware like all the others, we could have ope=
-n
-> source tests in kernelCI and other CI, and we could extend these test to
-> eventually support other vendors.
->
-> Note that currently, with other proposal, one could allocate and fill a n=
-ormal
-> buffer, and "secure" that buffer to test the CODECs and display, but on t=
-his
-> specific architecture, with the limitation on the number of secure region=
-s, this
-> feature isn't available.
->
-> Alternatives to this end-to-end solution, we could consider a TA (Trusted
-> Application) that simply copy data from a untrusted chunk of memory into =
-a
-> trusted chunk of memory. That seems like a cross-platform solution. It wo=
-uld be
-> even better if this get standardized in TEEs for course (or at least requ=
-ired
-> with all secure memory implementation). Then copying from untrusted to tr=
-usted
-> could easily become an ioctl generic to all TEE drivers. That to me would=
- be
-> equally acceptable, and perhaps easier to use.
->
-> Nicolas
+On 21.09.2023 16:00, Andrew Lunn wrote:
+>> - Link descriptions must be required on ethernet controllers. We don't care
+>>    whether some Linux driver can or cannot find the PHY or set up a fixed
+>>    link without looking at the devicetree.
+> 
+> That can lead to future surprises, and breakage.
+> 
+> Something which is not used is not tested, and so sometimes wrong, and
+> nobody knows. Say the driver is extended to a new device and actually
+> does need to use this never before used information. You then find it
+> is wrong, and you get a regression.
+> 
+> We have had issues like this before. There are four rgmii phy-link
+> modes. We have had PHY drivers which ignored one of those modes, it
+> silently accepted it, but did not change the hardware to actually use
+> that mode. The PHY continues to use its reset defaults or strapping,
+> and it worked. A lot of device trees ended up using this mode. And it
+> was not the same as reset defaults/strapping.
+> 
+> And then somebody needed that fourth mode, and made it actually
+> work. And all those boards wrongly using that mode broke.
+> 
+> The lesson i learned from that episode is that anything in device tree
+> must actually be used and tested.
 
-It's very likely for the clearkey implementation that I would just
-have it copying the data from a non-secure to secure buffer in a TA.
-We would never do that in production of course, but for testing images
-that would suffice.
+It looks like the root cause here was the lack of dt-bindings to only allow
+the phy-mode values the hardware supports. What I see here is the driver
+change should've been tested on all different hardware the driver controls
+then the improper describing of hardware on the devicetree source file
+addressed.
+
+If a devicetree change that ensures proper describing of hardware is found
+to break a driver in the future, then that exposes a bug on the driver and
+the driver will have to be fixed. I don't see this upholding writing
+dt-bindings that ensures proper describing of the hardware.
+
+> 
+>> Although I see dsa.yaml and dsa-port.yaml mostly consist of describing an
+>> ethernet switch with CPU port(s), there're properties that are specific to
+>> DSA, such as dsa,member on dsa.yaml and dsa-tag-protocol and label on
+>> dsa-port.yaml.
+> 
+> I would say dsa,member does describe the hardware. It provides two
+> bits of information:
+> 
+> Which cluster of switches does this switch belong to. You probably can
+> derive it using the DSA links between switches, which is also a
+> hardware property. But having it in device tree makes it simpler.
+> 
+> Which switch is this within a cluster. You need to be able to say:
+> Send this frame out Port X of switch Y. How does a switch know it is
+> Y? It could be strapping, which is clearly a hardware property.
+> 
+> dsa-tag-protocol is similar to phy-mode. It tells you the protocol
+> running between the CPU port and the SoC master interface. You often
+> can imply it, but again, it could be determined by strapping on the
+> switch.
+> 
+> label is an interesting one, and probably would not be accepted if it
+> was proposed now. But it has been around a long time. It also does
+> describe the hardware, it is what is printed on the case next to the
+> RJ45. To make the user experience simpler, we then try to make the
+> linux interface name match the label on the case.
+
+Looks like we can incorporate dsa.port and dsa-port.yaml into
+ethernet-switch.yaml and ethernet-switch-port.yaml with adjustments.
+
+Arınç
 
