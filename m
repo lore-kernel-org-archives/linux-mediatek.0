@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DB2FE7D0AA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 21:04:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51ED1E7D0AA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 21:05:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qhDCjJYkwmtVX3LCiF88icod+tpbhB9vjELw3dOazLU=; b=veXBjXcBM5risXd8LZuf52QouO
-	cAcZrZ89LC79h+6qhcurd3GzxNEeq0Sg3xtiRHpAGoO4jHJVwdmC1upanvR1k9MsCUk5KGv3MSm4a
-	zBmYFwsrHRiqZgWAi4ZleqT+nU9cbrrRjSTXbCBv9A/jgvAQVcACJKm7XMQ9hkexmBVIUCkYxG6bP
-	d9XjESox12TCmHlX0A4chJVm4GgBtDOFOLhqt56OLB7OXXoN9EIYKqU4KaCzpe52QU6pnzI2Md2am
-	ZzzfKudz3lK4SVq/3HLy8uZl52t/3ck1LVZSYt8dvk8iP6gtmDLoJw/SU3fs7NO3XWzQdqLFnJJHX
-	kas8aHCw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vKWek7dONjnAspukrkloUbp5Uh/V78O7fefRiKFW1I8=; b=zGN6Y89n/jpJCs1hyLz7Kv8/it
+	6R1ogNHxQv2WMWxxFpX1V0BowXSOLoh0QsQVcY24D/xxDKmEiiQxBW/Wdb/4RmsBSCd4cEICg3oXU
+	lGA0U8XEO5yZIFkR2Er4GYZFh2JOhB7RvoHNmS/GIT9uQF8ijg/jO/aqeNo1DKOhHYjzX4UkUeJYt
+	UPdciUTK1Gm6gDikrwMw8Ay7mUzPoyrJJUhBpbeKfomPVB6dWxvbh7Db/Lsnfrq3+cLQraqUcZzUL
+	YvmtQ8tFRzt3RCYtzLk0PD9Fl705sroI+R+GNe8LHmxOtIk0wgdnDLh/LbObZWJ3s6Rx4PZyYCnks
+	Q1txHx4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjQqi-0079T5-0s;
-	Thu, 21 Sep 2023 21:04:36 +0000
+	id 1qjQrE-0079Xg-0N;
+	Thu, 21 Sep 2023 21:05:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjQqe-0079Rk-1B
+	id 1qjQrB-0079X7-1J
 	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Sep 2023 21:04:34 +0000
-X-UUID: 73513d2a58c211ee86758d4a7c00f3a0-20230921
+	Thu, 21 Sep 2023 21:05:06 +0000
+X-UUID: 872d0e6e58c211ee86758d4a7c00f3a0-20230921
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qhDCjJYkwmtVX3LCiF88icod+tpbhB9vjELw3dOazLU=;
-	b=eKMq8NYjdp1Y+F4pE+A6Qf+lxhw8ufWr9Iyo82f+3/hVqukBpkOG2gxckyZtiiQ/S1PKcGbC8N23r3rxjem/RuAGhZBO8PX/cyG1PNjEh+3vrpll8SKdrsmRtxFEVkufxKbtOyRhHP9BqQqJIdXlvrORbOy/8hnJ9ZZmj+d7+FA=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=vKWek7dONjnAspukrkloUbp5Uh/V78O7fefRiKFW1I8=;
+	b=ed3SnLAdoN/lm/WPmmDeuZ4HtZN9zdkqhsBbowdtLPSZCMN62ZvNHxGhofXI1Ncmg4txMdRCdHUwwX1hfKYM17MJjqYxa7lx4as1nruf0DfS0KTsoLDD+HX+HAMWkjBBb4HejBpzJFQYzlZ+OQEDe95vfB7lsc+qItkaVK/PoFg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:14f910aa-f4ac-4e31-be07-ba2596386a0d,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:5bbde8e1-058e-45d2-8211-c8e0593dc8fc,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:45324fc3-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+X-CID-META: VersionHash:5f78ec9,CLOUDID:db324fc3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 73513d2a58c211ee86758d4a7c00f3a0-20230921
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 872d0e6e58c211ee86758d4a7c00f3a0-20230921
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <yi-chia.hsieh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 421177783; Thu, 21 Sep 2023 14:04:27 -0700
+	with ESMTP id 303904588; Thu, 21 Sep 2023 14:05:00 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Sep 2023 05:04:24 +0800
+ 15.2.1118.26; Fri, 22 Sep 2023 05:04:57 +0800
 Received: from mussdccf250.mussds.eus.mediatek.inc (10.73.250.250) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Sep 2023 05:04:22 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 22 Sep 2023 05:04:55 +0800
 From: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
@@ -63,17 +63,28 @@ CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
 	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>, Money Wang
 	<Money.Wang@mediatek.com>
-Subject: [PATCH v3 4/4] wifi: mt76: mt7996: remove periodic MPDU TXS request
-Date: Thu, 21 Sep 2023 14:04:03 -0700
-Message-ID: <de962bedba5d1a47a8d3d656e754f6a9ac5af997.1695329286.git.yi-chia.hsieh@mediatek.com>
+Subject: [PATCH v3] wifi: mac80211: add exported tpt_led_trig function for softmac driver
+Date: Thu, 21 Sep 2023 14:04:53 -0700
+Message-ID: <038706d9bbf434642013e880300d4f597f13b514.1695329290.git.yi-chia.hsieh@mediatek.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <d698600dc16fc3880e75dd24e2338ac21d51a45a.1695329286.git.yi-chia.hsieh@mediatek.com>
-References: <d698600dc16fc3880e75dd24e2338ac21d51a45a.1695329286.git.yi-chia.hsieh@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--0.250600-8.000000
+X-TMASE-MatchedRID: +k55+NgUc6YLazoQyrpm0lVN8laWo90MXzuf6CMHFBtUFL8kNivfsBlN
+	xiPQSlnnxILoPou7rql2etPL9FEV3h9NAFnVs2NuGfRQPgZTkipP2RIvtLAHWACGaccd4ae9cHj
+	giTON9jLaFM5TPGLdCPSOC/eQVqddNLV8+yUR4KdH+PTjR9EWkpdhffisWXfH6dkNekyzYll91D
+	unZtIaFuLzNWBegCW2wgn7iDBesS3CttcwYNipX8KVf7avePdYeJUA+tazrYR9t5CQ0a4zA3EE3
+	X8vPDWHZjfkNwILovatJ9hPQP9PFP0ST08qTwdEiL4lZclYiDqEIoC1m6hGEBvGwqtTOzCBdmtR
+	sRmKkASJZPT2ZDPuzPD2QfzMDLjhIh26TkmSN3fAvpLE+mvX8g==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--0.250600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: FCFCCEBC287D7F1181AEEE65EDE7A9361EB493E7D8A782D1DB33E5D5C963C6D22000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_140432_413432_97264271 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20230921_140505_446686_4418AF8E 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,132 +99,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+Add a new function __ieee80211_tpt_led_trig_trx. It is exported and
+takes ieee80211_hw as argument so that softmac driver can use. This
+can be helpful when traffic runs in HW path and mac80211 is not
+aware of the traffic.
 
-Remove periodic MPDU TXS request. Get TID and FrameType from SKB
-instead of TXWI, which is empty for Data Frame after MPDU TXS request
-is removed, hence prohibiting the establishment of TX BA session.
-
-Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
 Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
 Signed-off-by: Money Wang <Money.Wang@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
 Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
 v2: split series
 ---
-v3: rebase and update Signed-off-by
+v3: retitle, keep the original API and combine double-underscore functions
 ---
- .../net/wireless/mediatek/mt76/mt7996/mac.c   | 38 ++++++++++---------
- .../net/wireless/mediatek/mt76/mt7996/main.c  |  1 -
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  1 -
- 3 files changed, 21 insertions(+), 19 deletions(-)
+ include/net/mac80211.h |  2 ++
+ net/mac80211/led.c     | 12 ++++++++++++
+ net/mac80211/led.h     |  6 ++----
+ 3 files changed, 16 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index a0aa592fbe4b..60e6cb36ccdc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -950,15 +950,6 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	if (!wcid)
- 		wcid = &dev->mt76.global_wcid;
+diff --git a/include/net/mac80211.h b/include/net/mac80211.h
+index 8d993f6ab919..c32f614acb3d 100644
+--- a/include/net/mac80211.h
++++ b/include/net/mac80211.h
+@@ -4733,6 +4733,8 @@ __ieee80211_create_tpt_led_trigger(struct ieee80211_hw *hw,
+ 				   unsigned int flags,
+ 				   const struct ieee80211_tpt_blink *blink_table,
+ 				   unsigned int blink_table_len);
++void __ieee80211_tpt_led_trig_trx(struct ieee80211_hw *hw,
++				  int tx_bytes, int rx_bytes);
+ #endif
+ /**
+  * ieee80211_get_tx_led_name - get name of TX LED
+diff --git a/net/mac80211/led.c b/net/mac80211/led.c
+index 2dc732147e85..1c18ebcaac20 100644
+--- a/net/mac80211/led.c
++++ b/net/mac80211/led.c
+@@ -319,6 +319,18 @@ __ieee80211_create_tpt_led_trigger(struct ieee80211_hw *hw,
+ }
+ EXPORT_SYMBOL(__ieee80211_create_tpt_led_trigger);
  
--	if (sta) {
--		struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
--
--		if (time_after(jiffies, msta->jiffies + HZ / 4)) {
--			info->flags |= IEEE80211_TX_CTL_REQ_TX_STATUS;
--			msta->jiffies = jiffies;
--		}
--	}
--
- 	t = (struct mt76_txwi_cache *)(txwi + mdev->drv->txwi_size);
- 	t->skb = tx_info->skb;
- 
-@@ -1006,22 +997,35 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
++void __ieee80211_tpt_led_trig_trx(struct ieee80211_hw *hw,
++				  int tx_bytes, int rx_bytes)
++{
++	struct ieee80211_local *local = hw_to_local(hw);
++
++	if (atomic_read(&local->tpt_led_active)) {
++		local->tpt_led_trigger->tx_bytes += tx_bytes;
++		local->tpt_led_trigger->rx_bytes += rx_bytes;
++	}
++}
++EXPORT_SYMBOL(__ieee80211_tpt_led_trig_trx);
++
+ static void ieee80211_start_tpt_led_trig(struct ieee80211_local *local)
+ {
+ 	struct tpt_led_trigger *tpt_trig = local->tpt_led_trigger;
+diff --git a/net/mac80211/led.h b/net/mac80211/led.h
+index d25f13346b82..6d3212443d35 100644
+--- a/net/mac80211/led.h
++++ b/net/mac80211/led.h
+@@ -71,8 +71,7 @@ static inline void
+ ieee80211_tpt_led_trig_tx(struct ieee80211_local *local, int bytes)
+ {
+ #ifdef CONFIG_MAC80211_LEDS
+-	if (atomic_read(&local->tpt_led_active))
+-		local->tpt_led_trigger->tx_bytes += bytes;
++	__ieee80211_tpt_led_trig_trx(&local->hw, bytes, 0);
+ #endif
  }
  
- static void
--mt7996_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi)
-+mt7996_tx_check_aggr(struct ieee80211_sta *sta, struct sk_buff *skb)
+@@ -80,7 +79,6 @@ static inline void
+ ieee80211_tpt_led_trig_rx(struct ieee80211_local *local, int bytes)
  {
- 	struct mt7996_sta *msta;
-+	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-+	bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
- 	u16 fc, tid;
--	u32 val;
- 
- 	if (!sta || !(sta->deflink.ht_cap.ht_supported || sta->deflink.he_cap.has_he))
- 		return;
- 
--	tid = le32_get_bits(txwi[1], MT_TXD1_TID);
-+	tid = skb->priority & IEEE80211_QOS_CTL_TID_MASK;
- 	if (tid >= 6) /* skip VO queue */
- 		return;
- 
--	val = le32_to_cpu(txwi[2]);
--	fc = FIELD_GET(MT_TXD2_FRAME_TYPE, val) << 2 |
--	     FIELD_GET(MT_TXD2_SUB_TYPE, val) << 4;
-+	if (is_8023) {
-+		fc = IEEE80211_FTYPE_DATA |
-+		     (sta->wme ? IEEE80211_STYPE_QOS_DATA : IEEE80211_STYPE_DATA);
-+	} else {
-+		/* No need to get precise TID for Action/Management Frame,
-+		 * since it will not meet the following Frame Control
-+		 * condition anyway.
-+		 */
-+
-+		struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-+
-+		fc = le16_to_cpu(hdr->frame_control) &
-+		     (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE);
-+	}
-+
- 	if (unlikely(fc != (IEEE80211_FTYPE_DATA | IEEE80211_STYPE_QOS_DATA)))
- 		return;
- 
-@@ -1049,7 +1053,7 @@ mt7996_txwi_free(struct mt7996_dev *dev, struct mt76_txwi_cache *t,
- 		wcid_idx = wcid->idx;
- 
- 		if (likely(t->skb->protocol != cpu_to_be16(ETH_P_PAE)))
--			mt7996_tx_check_aggr(sta, txwi);
-+			mt7996_tx_check_aggr(sta, t->skb);
- 	} else {
- 		wcid_idx = le32_get_bits(txwi[9], MT_TXD9_WLAN_IDX);
- 	}
-@@ -1320,7 +1324,7 @@ static void mt7996_mac_add_txs(struct mt7996_dev *dev, void *data)
- 	wcidx = le32_get_bits(txs_data[2], MT_TXS2_MLD_ID);
- 	pid = le32_get_bits(txs_data[3], MT_TXS3_PID);
- 
--	if (pid < MT_PACKET_ID_WED)
-+	if (pid < MT_PACKET_ID_NO_SKB)
- 		return;
- 
- 	if (wcidx >= mt7996_wtbl_size(dev))
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index ce16637b45ce..09c7a28a3d51 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -657,7 +657,6 @@ int mt7996_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	msta->wcid.idx = idx;
- 	msta->wcid.phy_idx = band_idx;
- 	msta->wcid.tx_info |= MT_WCID_TX_INFO_SET;
--	msta->jiffies = jiffies;
- 
- 	ewma_avg_signal_init(&msta->avg_ack_signal);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index cb67a2d4c6d4..e53cf6a3704c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -110,7 +110,6 @@ struct mt7996_sta {
- 	struct ewma_avg_signal avg_ack_signal;
- 
- 	unsigned long changed;
--	unsigned long jiffies;
- 
- 	struct mt76_connac_sta_key_conf bip;
- 
+ #ifdef CONFIG_MAC80211_LEDS
+-	if (atomic_read(&local->tpt_led_active))
+-		local->tpt_led_trigger->rx_bytes += bytes;
++	__ieee80211_tpt_led_trig_trx(&local->hw, 0, bytes);
+ #endif
+ }
 -- 
 2.39.0
 
