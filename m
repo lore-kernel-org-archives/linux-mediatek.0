@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AAE7E706FA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 09:13:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FEFDE706FA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 09:17:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qejtWP5ENHc3+n2Fogs/TziTDgT0FuBJh+Bf+NtuemE=; b=xWGEY0XooIB5HUwSwkhHLCVkW4
-	HAU+youyVAFZhrkaU/gfPWo3Uc7+JRWle6D7GTyhua6ae0/Vx+GmlfxjiRXI6zwnJ8xd8kOdAQ30m
-	+vIJAH0NBJgWJnWSVh3XZ9ZAG7DhX4bbNIB+SDDEli4eI+qoFApHwXh5DXQk/2J9yEPk3gTK5/2nV
-	rHxmQQJBk50X/lXGU2jWgI5iEqcxL8sJe/XSE6p/f3rBj+cmcljQcKXrJ1JfFhKTCBNMBUhvydh9C
-	ww206jr5N97XowuJJN7ikFVoor15x90cHHA2N9oO4+jfXmQjyhZBK7GWsh5Ub9QxpdP4/b179f331
-	jq1lJAOg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L+vZhOZ+kADCdlkNh/ewNubAwKMK2F34h8/SL9SRhQE=; b=kkKOAET+XgrG9TvAivULftcKJq
+	Bja5t1GrEiUlpkOvCEjmg8NNIHucOWFFf+yMEqSAMaARuCDuyyQPzXIvoRrMinb63cF+zBM0SJIP8
+	D2yzOEMldqv+WgvQlHTmFYwBaWY4ypLEfVFFte4r1IGxzUg+l8QmVEgH6TprMOWwF0Gpkekxo4KPV
+	eMUHpT0E7sI8upICIS4xr8vuJz5gfq09LMPXiqquoeMmQXp69EqKbCmjfxdjcgeFZw4Lgf/da+m7b
+	LwWgPp2YvY0hrRj7BoXE19uamDTqHPP3tAOt/viJd6jk2T4PdZIH1vxd/oVfKdR7rIzADFLlmR9aX
+	YAFXVJKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjFkG-005YtG-21;
-	Thu, 21 Sep 2023 09:13:12 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qjFnx-005ZQ3-2h;
+	Thu, 21 Sep 2023 09:17:01 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjFkD-005Yrp-1Z;
-	Thu, 21 Sep 2023 09:13:10 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1qjFnv-005ZPB-0F;
+	Thu, 21 Sep 2023 09:17:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4164666072E7;
-	Thu, 21 Sep 2023 10:13:04 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695287584;
-	bh=q5YJhSxiDShzZxa0xIGydYZu/ODFTndBpUE8JLIrRNc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=U49KQ/44xmIYP4MQa0FYJ0juSJBWTgwHVl5UfqfexBzZXxfjJTQA8xc3wsqYH33bn
-	 PYql/zoXVQsOSNh3NV+bJrrmR0z4vfRDCz7tBuIui+lZQiEXL8MYKHY2gaE2oQs8cZ
-	 1G4H/8Vl37DlFdYjR+1WfM1jDAf5ioiPeU4KC2TF+oEBT8NtIgjRtRYX0S2YDxSVP5
-	 xsALTNYLQbfAIIW/CSc3ja+PmGZlFfPOnUFBw3J+dNanpIyp3HMoXvANGzLDLgnRyq
-	 YzzAUkQpplN7MmX99iK1ytA5LDdTyBHI38xSOfBploxmZborTdYew7i2tpWmhP1DF4
-	 xFVqsuZ4FYTTA==
-Message-ID: <71906f4e-8875-7431-aee5-57eae1f55d65@collabora.com>
-Date: Thu, 21 Sep 2023 11:13:01 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 802E461EAD;
+	Thu, 21 Sep 2023 09:16:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C52C8C32777;
+	Thu, 21 Sep 2023 09:16:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695287817;
+	bh=L+vZhOZ+kADCdlkNh/ewNubAwKMK2F34h8/SL9SRhQE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aKwFLd0jXAMRuLlul0c7VWcfGPByInmWP9KdPOz1MKQ1gd5QXckHnTdP0YYEeWceh
+	 DjIlUty4xIaEJqfl0PTnLlfU0/Zm4fyf7hSugAD4u6Khs3T+6FEI4TmOSSvndtfNoA
+	 FcRl75SSu//v5N6Yzm/5uTnBvmUsX4yRIs21Af8BYv0RL2fUSqeNpPbp7e3fnJ5nyL
+	 lPDqaFY2VXA9FG/KtikMTNuYOiiiNQapMA+/jEdL/LghBhbOMJtNXaO+70IMbKn8ew
+	 8jJwFAp5GrxCTtKnjoH8V9/nMZStYWqRv/TVdfgVRbrUyDhlb2d/K43pTqtedLCYT5
+	 0RbVJIPSbCGiA==
+Date: Thu, 21 Sep 2023 10:16:52 +0100
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: thermal: mediatek: Add LVTS thermal
+ sensors for mt7988
+Message-ID: <20230921-552234bd29791cbdcd037a2c@fedora>
+References: <20230920175001.47563-1-linux@fw-web.de>
+ <20230920175001.47563-3-linux@fw-web.de>
+ <31fbdae8-d41c-358b-c8ea-6ee31b158dfd@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v3 3/3] regulator: mt6358: Add output voltage fine tuning
- to variable LDOs
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Lee Jones <lee@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230913082919.1631287-1-wenst@chromium.org>
- <20230913082919.1631287-4-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230913082919.1631287-4-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Yu54HnRP5ZgUSnoq"
+Content-Disposition: inline
+In-Reply-To: <31fbdae8-d41c-358b-c8ea-6ee31b158dfd@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_021309_710371_DBC44B20 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20230921_021659_159852_9159F842 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,24 +72,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/09/23 10:29, Chen-Yu Tsai ha scritto:
-> Some of the LDO regulators in the MT6358/MT6366 have sparsely populated
-> voltage tables, supported by custom get/set operators. While it works,
-> it requires more code and an extra field to store the lookup table.
-> These LDOs also have fine voltage calibration settings that can slightly
-> boost the output voltage from 0 mV to 100 mV, in 10 mV increments.
-> 
-> These combined could be modeled as a pickable set of linear ranges. The
-> coarse voltage setting is modeled as the range selector, while each
-> range has 11 selectors, starting from the range's base voltage, up to
-> +100 mV, in 10mV increments.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--Yu54HnRP5ZgUSnoq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Sep 21, 2023 at 09:55:46AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 20/09/23 19:49, Frank Wunderlich ha scritto:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >=20
+> > Add sensor constants for MT7988.
+> >=20
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+
+Thanks,
+Conor.
 
 
+--Yu54HnRP5ZgUSnoq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZQwJ/gAKCRB4tDGHoIJi
+0miwAQCKJ0wVlAlz1nuHioGwDLUxrjxPyHOl3leR4myna8AQdAD/eX7X9YhwjllL
+Nsb24tuvDQAHgMvN/gj+zYyrG9Nevw0=
+=7RDp
+-----END PGP SIGNATURE-----
+
+--Yu54HnRP5ZgUSnoq--
 
