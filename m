@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E26E70713
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 10:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 509B6E70713
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 10:43:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HC8D35TCdZUOXqWhbhM+Shwo1cqwwddI0ooxd0gnQLg=; b=HuEZk1kzjAk6tAtZmxblxAEL8c
-	XEYq3spqIy1OXwF/5Wk/0KP0a6zIYdzgh0QzHy3YzRfXgD1508fb9waeWkonX5GBWPe8S1ZWruBr7
-	DR0F/fZHFdVbfzarhaT7P4fZ6/XQDZGNvJPzrwSclAJNipPdExXSbk+g4cQ/5sr/6IQ13VVKGuUJK
-	37kK9CzIudN3s+lSm2DuxeclOXgavzbtj8JlTaQ11pxoWfrRFyT/dpOM0OZiyNAllXOfRM2z1xoDo
-	rzbTm/Wh5TsN59Dc4qQOYMKF2w7ayFNqNFMHkOcb+F26gb08S6p9BHabbQOZEWGXZ2EwV2BBK8T5J
-	g1vxR5dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jiDnZtY6cwV361LcZ7m+N5mtgP8eBTPgg9luo5U0MI0=; b=qkOVs2DktD3EE0d1DjBOiLBAJE
+	jtiLqSC/K92bP02v58+J/PZmTZ1P0nwMDPeo4GDeg5UIV/PNSlN7g2jiLWuMKIEBEO4HURQSAi92E
+	zO4W2IQpKt/rhiZIlA8vdvbhwYqwzFT9tVWL2fvEBrs5Bd5ajPcjBiLN51eDCACKv4LeezfjcMZng
+	ipkEwHvQ85lSSXszf33Hzg4G+kb/3yYYbi0YKXKEQUeZ0ttbGVv16IR4Pib1QW4rrF6ruUOXNaH2v
+	lJ+9YbpxsYK7zZ27q6zbDUK09DlPsZq9XjWyl64PlbBx2N84LO2VE4Sla7U4tOfmeoo0mXA0VQgG1
+	aQ4xP8BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjH7W-005pRS-2u;
-	Thu, 21 Sep 2023 10:41:18 +0000
+	id 1qjH9y-005qbN-1C;
+	Thu, 21 Sep 2023 10:43:50 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjH7T-005pOZ-2r;
-	Thu, 21 Sep 2023 10:41:17 +0000
+	id 1qjH9v-005qav-2q
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 Sep 2023 10:43:49 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 5D891B81FFB;
-	Thu, 21 Sep 2023 10:41:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 879F7C32799;
-	Thu, 21 Sep 2023 10:41:10 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 27F3EB81FF8;
+	Thu, 21 Sep 2023 10:43:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76470C3279B;
+	Thu, 21 Sep 2023 10:43:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695292873;
-	bh=l9YKq4Mo9HZomeyWWq8kJ2jlUSxpMR2JEf+l+sajQFQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p1Bkwrc82xTjn6S9fkfu1yiZ4LfO5ofNvcMcNA8MIGtqd7F7tDfjdpUr1AOtmtnqi
-	 sFM5ci71SLHRYEDyPlMNnzy5g7ru0idAFa10yaEAHNKLaefUUbzbVuN++DOZQ2RDJm
-	 ZjSGkQcYMdLfnS/yo/WxfN0TbHiL6s7paewBypixzYOq6u2/tVx/LFQcwQgtjXDrhd
-	 yGt0IzyAEl93pdCUN9tY+qenaQWhYeIUkeNWjc9iBGrkghsLeTXRqBmmhHLyt+adjG
-	 cqXsqXx7dDdOhfJ12uftnOzE24YlAVl279KkYhuMIDU5d8w61ySkebprKCKjePIBvY
-	 lbZX56e425AvQ==
-Date: Thu, 21 Sep 2023 11:41:07 +0100
-From: Lee Jones <lee@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>,
-	Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	s=k20201202; t=1695293024;
+	bh=CafFfhS++g5ES5lGvZKA5DFr08N/n5bxoMaqXT+Ze0A=;
+	h=From:To:Cc:Subject:Date:From;
+	b=QG8EUP1NJZ8AGMWliG2Piz983BGGzHDm4dPrrbrDR/fcxSWyE9hLkyT7qLrTiZy9x
+	 v/WaPgbnnr2a+XBHZatdusD+tVzxid1n98hGRqt6k9lXRVCu3aYvXETHarpPX5pf0x
+	 diEY7agkkmsVKXPolMT7bY9aDlYMg35rpCsm9htJQwVOmdBxkPwXXJ6wxtxj69++2t
+	 7jNgVSB9XTrby+svUpdrrlstFUnl+TCeQ0SbZWderZAz9gA0+A3jrGT4mjTP7lY0pr
+	 yVnboGYYZaRUEEe96Iwlm1ApF4KiAJkP4e4dPXChf7p94+8d6AklZa99Aa/U8om59D
+	 MtAhGCPKtWKCg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Cc: lorenzo.bianconi@redhat.com,
+	linux-wireless@vger.kernel.org,
+	ryder.lee@mediatek.com,
+	evelyn.tsai@mediatek.com,
+	shayne.chen@mediatek.com,
+	Bo.Jiao@mediatek.com,
+	sujuan.chen@mediatek.com,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 02/11] mfd: mt6358: Add registers for MT6366 specific
- regulators
-Message-ID: <20230921104107.GE3449785@google.com>
-References: <20230822084520.564937-1-wenst@chromium.org>
- <20230822084520.564937-3-wenst@chromium.org>
+Subject: [PATCH 0/9] wifi: mt7996: add wed support
+Date: Thu, 21 Sep 2023 12:43:29 +0200
+Message-ID: <cover.1695292502.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230822084520.564937-3-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_034116_063700_0AE66317 
-X-CRM114-Status: GOOD (  18.59  )
+X-CRM114-CacheID: sfid-20230921_034348_082588_A2C8EB77 
+X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,52 +79,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Aug 2023, Chen-Yu Tsai wrote:
+Similar to MT7915, introduce Wireless Ethernet Dispatcher (WED)
+support for MT7996 driver to offload transmitted/received traffic.
 
-> The MT6366 PMIC, compared to the MT6358, does away with the VCAM*
-> regulators. Two regulators VM18 and VMDDR reuse their register space.
-> There's also a VSRAM type regulator VSRAM_CORE thats' split between
-> the VCAM* register space and other parts.
-> 
-> Add register address macros for these MT6366 specific regulators.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  include/linux/mfd/mt6358/registers.h | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
+Bo Jiao (1):
+  wifi: mt76: mt7996: add wed rx support
 
-Acked-by: Lee Jones <lee@kernel.org>
+Lorenzo Bianconi (7):
+  wifi: mt76: mmio: move mt76_mmio_wed_{init,release}_rx_buf in common
+    code
+  wifi: mt76: move mt76_mmio_wed_offload_{enable,disable} in common code
+  wifi: mt76: move mt76_net_setup_tc in common code
+  wifi: mt76: introduce mt76_queue_is_wed_tx_free utility routine
+  wifi: mt76: introduce wed pointer in mt76_queue
+  wifi: mt76: increase MT_QFLAG_WED_TYPE size
+  wifi: mt76: dma: introduce __mt76_dma_queue_reset utility routine
 
-> diff --git a/include/linux/mfd/mt6358/registers.h b/include/linux/mfd/mt6358/registers.h
-> index 5ea2590be710..d83e87298ac4 100644
-> --- a/include/linux/mfd/mt6358/registers.h
-> +++ b/include/linux/mfd/mt6358/registers.h
-> @@ -294,4 +294,21 @@
->  #define MT6358_AUD_TOP_INT_CON0               0x2228
->  #define MT6358_AUD_TOP_INT_STATUS0            0x2234
->  
-> +/*
-> + * MT6366 has no VCAM*, but has other regulators in its place. The names
-> + * keep the MT6358 prefix for ease of use in the regulator driver.
-> + */
-> +#define MT6358_LDO_VSRAM_CON5                 0x1bf8
-> +#define MT6358_LDO_VM18_CON0                  MT6358_LDO_VCAMA1_CON0
-> +#define MT6358_LDO_VM18_CON1                  MT6358_LDO_VCAMA1_CON1
-> +#define MT6358_LDO_VM18_CON2                  MT6358_LDO_VCAMA1_CON2
-> +#define MT6358_LDO_VMDDR_CON0                 MT6358_LDO_VCAMA2_CON0
-> +#define MT6358_LDO_VMDDR_CON1                 MT6358_LDO_VCAMA2_CON1
-> +#define MT6358_LDO_VMDDR_CON2                 MT6358_LDO_VCAMA2_CON2
-> +#define MT6358_LDO_VSRAM_CORE_CON0            MT6358_LDO_VCAMD_CON0
-> +#define MT6358_LDO_VSRAM_CORE_DBG0            0x1cb6
-> +#define MT6358_LDO_VSRAM_CORE_DBG1            0x1cb8
-> +#define MT6358_VM18_ANA_CON0                  MT6358_VCAMA1_ANA_CON0
-> +#define MT6358_VMDDR_ANA_CON0                 MT6358_VCAMD_ANA_CON0
-> +
->  #endif /* __MFD_MT6358_REGISTERS_H__ */
-> -- 
-> 2.42.0.rc1.204.g551eb34607-goog
-> 
+Sujuan Chen (1):
+  wifi: mt76: mt7996: add wed tx support
+
+ drivers/net/wireless/mediatek/mt76/dma.c      | 219 ++++++++++-----
+ drivers/net/wireless/mediatek/mt76/dma.h      |  12 +
+ drivers/net/wireless/mediatek/mt76/mac80211.c |  19 +-
+ drivers/net/wireless/mediatek/mt76/mmio.c     |  97 +++++++
+ drivers/net/wireless/mediatek/mt76/mt76.h     | 102 ++++++-
+ .../net/wireless/mediatek/mt76/mt7603/dma.c   |   9 +-
+ .../net/wireless/mediatek/mt76/mt7615/dma.c   |   6 +-
+ .../net/wireless/mediatek/mt76/mt76_connac.h  |   3 +-
+ .../wireless/mediatek/mt76/mt76_connac_mac.c  |   5 +-
+ .../net/wireless/mediatek/mt76/mt76x02_mmio.c |   5 +-
+ .../net/wireless/mediatek/mt76/mt7915/dma.c   |  18 +-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |  16 +-
+ .../net/wireless/mediatek/mt76/mt7915/mmio.c  | 107 +-------
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   |   2 +-
+ .../net/wireless/mediatek/mt76/mt7925/pci.c   |   2 +-
+ .../net/wireless/mediatek/mt76/mt7996/dma.c   | 258 ++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7996/init.c  | 156 ++++++++++-
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   |  72 ++++-
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |  42 +++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   |  13 +-
+ .../net/wireless/mediatek/mt76/mt7996/mmio.c  | 208 ++++++++++++--
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  67 ++++-
+ .../net/wireless/mediatek/mt76/mt7996/pci.c   |  72 +++--
+ .../net/wireless/mediatek/mt76/mt7996/regs.h  |  65 ++++-
+ 24 files changed, 1276 insertions(+), 299 deletions(-)
 
 -- 
-Lee Jones [李琼斯]
+2.41.0
+
 
