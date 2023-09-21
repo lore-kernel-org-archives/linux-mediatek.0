@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35CCBCD4958
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 06:23:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1F77CD5BD4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 07:18:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E4JZXGwaqgiVk9kx6+mbob/fL/CJEEXGEBYv/EI5zPY=; b=VULcyEeiZvUbWYqdm4ayt8gqag
-	gMfGgybMdzoUEGiL0TV+7FFSjuekjKgRHLmi1o3gdpHvC50kYZVU3d8msrBEMqM67OUzUwHWywVpC
-	Yr/2OquqO+WUHz1amhNLhJoSIyYa0DFFtPaXYtRnifJwblAQNuYccR9rnUXnJjRu0lHP1KL2IPPbM
-	cr2BFs9ha9STNQrss32Kv7o1Y0Fl9aPVuEBLoGvmSwdXibT7S9WumXGwPqAc5OzfBbQShLEhtKTq7
-	KgZ2ANM3xA5K1ibLsuinMVVraQ7O1C4eGVbqfiuluEmB0yJj45GgsB6B0XA8WI4ZT6cf0Vft2+K6m
-	gv49IQjw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BY/pCWy4LafV2v3RXc6tBW2gc4uFTCG3lw49A8hB0BU=; b=hL8eXFXEE6top+nq+yGOX5YNco
+	soai5r/YCNIhj2rj/XN1atqP1M1EqS5b0yivsDqnshHg62EmIEUkOQt4YzSma4EO6OSWewnP0WR14
+	80iXVTnXBd/tVeXuhRRlI58oMols8wl1PupAMJ+nMN7ztZs9IZUXFw0Rc+UXDO6rOgMF6Al4Q74PM
+	pjsctHTWoS2aRUIDsw86ZMqfeynox9hA8evGJmJaCJiq6rSyRFt3taAsCMeT6M6VzxR2Mf9tyVmS4
+	Alle0FQjDc3/xbSnJQU+zAXJ3Q4JtAj4b3/6q0qa+DmPgXAIuuQ6W0aOisXQmHKPjPypb/LqTdPSl
+	5honpOyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjD61-005HQl-21;
-	Thu, 21 Sep 2023 06:23:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qjDwu-005MEq-1Q;
+	Thu, 21 Sep 2023 07:18:08 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjD5z-005HQA-0P;
-	Thu, 21 Sep 2023 06:23:28 +0000
-X-UUID: 5adb5832584711ee86758d4a7c00f3a0-20230920
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=E4JZXGwaqgiVk9kx6+mbob/fL/CJEEXGEBYv/EI5zPY=;
-	b=GhMfNEZU7XaHEteXeaoQ2HQOuN9wo9Q2HUDwU50ld8u3/kpCXV8NhEu9PbIPiqrgRoC7zkmq9CaMRU+6CsBLDPZGuNXrJEsW/XI8CxR/9KH8HZeWAdfwU3VX3kATrxhALRX1GCT1FvmHScmO3iKnOFIVsYsgsU9FbECxbEN+Qo0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:89fc000f-9a0a-4895-a625-61287d934bca,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:96ef17bf-14cc-44ca-b657-2d2783296e72,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 5adb5832584711ee86758d4a7c00f3a0-20230920
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-ch.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 427242880; Wed, 20 Sep 2023 23:23:18 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 21 Sep 2023 14:02:40 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 21 Sep 2023 14:02:40 +0800
-From: Jason-ch Chen <jason-ch.chen@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	jason-ch chen <Jason-ch.Chen@mediatek.com>
-Subject: [RESEND PATCH v4 2/4] dt-bindings: arm: mediatek: Add mt8188 pericfg compatible
-Date: Thu, 21 Sep 2023 14:02:33 +0800
-Message-ID: <20230921060235.32478-3-jason-ch.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230921060235.32478-1-jason-ch.chen@mediatek.com>
-References: <20230921060235.32478-1-jason-ch.chen@mediatek.com>
+	id 1qjDwq-005MEM-2q;
+	Thu, 21 Sep 2023 07:18:06 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 67FCB6607285;
+	Thu, 21 Sep 2023 08:18:00 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695280681;
+	bh=u+SDF/PNL5Ju2+whiov9Et6DghwzY6lUPs+GJOtpLPk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RL8DToJNQahbJaZooqiEqG8PJe63aN8SdCp6AfAplEVykYDHO7c3GVAVMpGB74dO1
+	 a5ljz6v7vbGTqnOhJTDOy+iZi8ldmc5h69baoWulk54LbBJ2OtyWvia73/YgSrfm0K
+	 UXtHYcmXE3SqUiD4Ba/G7UShpSWFNS7VPSOAlEs30TiabER69pZBp//qX6uDlfMUZz
+	 QHc73AxBFMZrr+ZKUj0fc5FgjLSR/mCImmoC+umJnrzk5NBKZGapn8MryzY8H0Llpz
+	 t2MFNh8zL5BcMRX26UpBymze5ym+bTB2AeWN2l7BbGDmJSM0hcJ6lx2S0wrEHr181F
+	 pDDJWBQ8q0ugA==
+Message-ID: <c9780f70-62b5-e151-0ac6-11d97a694439@collabora.com>
+Date: Thu, 21 Sep 2023 09:17:57 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH] remoteproc: mediatek: Refactor single core check and fix
+ retrocompatibility
+To: Laura Nao <laura.nao@collabora.com>
+Cc: andersson@kernel.org, kernel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org,
+ mathieu.poirier@linaro.org, matthias.bgg@gmail.com,
+ tinghan.shen@mediatek.com, wenst@chromium.org
+References: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com>
+ <20230920150332.318851-1-laura.nao@collabora.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230920150332.318851-1-laura.nao@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_232327_200477_A3879134 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20230921_001805_120958_C06C533C 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,30 +80,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: jason-ch chen <Jason-ch.Chen@mediatek.com>
+Il 20/09/23 17:03, Laura Nao ha scritto:
+> On 9/19/23 11:23, AngeloGioacchino Del Regno wrote:
+>> In older devicetrees we had the ChromeOS EC in a node called "cros-ec"
+>> instead of the newer "cros-ec-rpmsg", but this driver is now checking
+>> only for the latter, breaking compatibility with those.
+>>
+>> Besides, we can check if the SCP is single or dual core by simply
+>> walking through the children of the main SCP node and checking if
+>> if there's more than one "mediatek,scp-core" compatible node.
+>>
+>> Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>    drivers/remoteproc/mtk_scp.c | 18 +++++++-----------
+>>    1 file changed, 7 insertions(+), 11 deletions(-)
+>>
+> 
+> Tested on asurada (spherion) and jacuzzi (juniper). The issue was detected by KernelCI, so:
+> 
+> Reported-by: "kernelci.org bot" <bot@kernelci.org>
+> Tested-by: Laura Nao <laura.nao@collabora.com>
+> 
 
-Add mt8188 pericfg compatible to binding document.
+Thanks for pointing out the correct Reported-by tag! :-)
 
-Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
- .../devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml       | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-index 26158d0d72f3..33c94c491828 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-@@ -28,6 +28,7 @@ properties:
-               - mediatek,mt8173-pericfg
-               - mediatek,mt8183-pericfg
-               - mediatek,mt8186-pericfg
-+              - mediatek,mt8188-pericfg
-               - mediatek,mt8195-pericfg
-               - mediatek,mt8516-pericfg
-           - const: syscon
--- 
-2.18.0
+Cheers,
+Angelo
 
 
