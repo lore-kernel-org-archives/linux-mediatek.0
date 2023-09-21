@@ -4,76 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CF1CCD494C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 04:10:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07835CD494E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 05:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2aBYYxm4V3k4FyEjLrLJ9/n/H90Md6QsttKISLF22a4=; b=VBQq73Gw1PrI0HYpFVXwEz4TMj
-	sE+XgQX0Ik4akEdZDch2bErUIv9yiSR+I1M1rxyhf92kJrreiDwsz23H7NJtNXc8TWCDIBdC/U/uG
-	hhvJ2KEO56bjuSLANpQLBnzMSE9z5ag2Ny/bkffGFQjafPQ+dZOLM+Pvzp4Bqfd+iGzGFbhP3aTOW
-	xclhZ3vqaTKpjhlT5gNL0c42OB7dHy8IWJjyyhdzFUgAcDc9IeOo7rbealAEZrmqoC0N4++su9hoR
-	us+eqfgmW253hg3PT9mYqpD4XBf5d3MrY4t/81XrPQx4LH4kd/nRfHiyLh05KpldaZJwBri0Ow8eN
-	T5FPDMsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=axTVp1RbS3/X8rB7C896mMeuab8S+wVpZdIarUZONPw=; b=wIDvxnhwoQrmc3FoaDbwtBtggg
+	+NBcZZtNOzrSz0McGDk/awYPDayQNwz0a5ktwswgtnsKeJEFWiODMr7JJZteumm900uw/Gk7uPHAt
+	NJNahsHQris79w87dB8JGPI4z52U2ZDKP0DWF7Ur/bBq4vVgw+oup0tVH6FgmE9fuR4ZrzUVBJlpW
+	0EROq6yIw0NXYPOzVQxmdqDMMGYSuwpU8OLV6JNDcYKVAPhTfktQZ8wr6HDJiUd+jus5GXL+NTkok
+	RlmSxrnIP8TYapOMb6Ly+J2npcV7083ey3G78HV2c2aOO8wyDfieqSnFg/jdcTD29xyB98/7uYIP+
+	ZsaQ6Z7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjB0k-0050QP-2X;
-	Thu, 21 Sep 2023 04:09:54 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1qjCDO-005ALX-2v;
+	Thu, 21 Sep 2023 05:27:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjB0i-0050PQ-0i
-	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Sep 2023 04:09:53 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2c108e106f0so8162601fa.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Sep 2023 21:09:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1695269389; x=1695874189; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2aBYYxm4V3k4FyEjLrLJ9/n/H90Md6QsttKISLF22a4=;
-        b=WQlcf7aa3MUHe47wgGiEtIbMfbWKr6zTk1motJ6zqkuFRLUyU/GCfM0fdt1dJulCZc
-         Otpd0+Ss/U+jr7o+Jjw+K4+CFcp/oDAxsN1kmjBjBo06UZebiHRNUANPYKu1//YF9GA5
-         yKOpnmHc5xlhw9iqkLuf2GmK5tPuJsLwOenyA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695269389; x=1695874189;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2aBYYxm4V3k4FyEjLrLJ9/n/H90Md6QsttKISLF22a4=;
-        b=tKxvCrx6NqgPm9pFt04WkQbLfAzqQPTEpVWj7A1v5ilv7Upre/Viol3uoei6yVF6qy
-         jVUvwAu8LunaFM3cUmMWhE+8Ny5gcc/vOQFeJVyY/gQPbk/M8vzbvRGVnGDEDqdmE2Sf
-         d59Dj6V8Q7K3b4Efcz+oDhj1jWnHNrmaPCIvuxq3qFhjMKgYvczeAKLKQ+Ee24a22y05
-         SLKr3slUeW5kdwFiUbTAHHaa59fLK8kGf73BOYPzE/CxdDoKVQ6a3Pi2p+0iy2Dh1Y/O
-         kEuE0ELshoHZIzcT6Di+5fDXqW/kZE5XxuT2gUftKH7RcGZH8+a/PDhBlI+uPRkuuF/a
-         nHPg==
-X-Gm-Message-State: AOJu0Yy4tKUdWO6SmQCL1NGygRuDxPGxvnlBvflQQip+OknLo47X0j6U
-	a4V+BirTlcdOefM4VfQOpLfLt49j3D6ybIlaaSZNFQ==
-X-Google-Smtp-Source: AGHT+IGdIV8J7fxjUNbRUv5HJhGzBY+D1JG/lYO+jffLDerOCNDgsVdIhjbf+HuUVjEXXFJfi0crYYSdZkt0BFEhkOg=
-X-Received: by 2002:a19:e051:0:b0:4ff:8863:be01 with SMTP id
- g17-20020a19e051000000b004ff8863be01mr3396045lfj.8.1695269389034; Wed, 20 Sep
- 2023 21:09:49 -0700 (PDT)
+	id 1qjCDM-005AK3-1w;
+	Thu, 21 Sep 2023 05:27:01 +0000
+X-UUID: 78566d14583f11ee86758d4a7c00f3a0-20230920
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=axTVp1RbS3/X8rB7C896mMeuab8S+wVpZdIarUZONPw=;
+	b=S9nsBmRbrIGyRy6mIUiQ9YoZTiv14McR3HQRgPoiBrOBpJYeJZipxWq14ouACrtKFTRzT4eDkdfCsN9sxnO95HdY5xErrJAoDl+mq5kWLN9pm6dWEvbcvw7FW2yps0G4kuSpVN2PNJy6210obWFtw1/LGEQ8AVhfYnVko291QPk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:73f89a65-f525-4634-98bd-f9eccda8d190,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:864917bf-14cc-44ca-b657-2d2783296e72,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 78566d14583f11ee86758d4a7c00f3a0-20230920
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <chun-jen.tseng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2146781209; Wed, 20 Sep 2023 22:26:52 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 21 Sep 2023 13:26:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 21 Sep 2023 13:26:39 +0800
+From: Mark Tseng <chun-jen.tseng@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Roger Lu <roger.lu@mediatek.com>,
+	Kevin Hilman <khilman@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<chun-jen.tseng@mediatek.com>
+Subject: [PATCH v4 1/3] dt-bindings: soc: mediatek: add mt8188 svs dt-bindings
+Date: Thu, 21 Sep 2023 13:26:35 +0800
+Message-ID: <20230921052637.30444-2-chun-jen.tseng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230921052637.30444-1-chun-jen.tseng@mediatek.com>
+References: <20230921052637.30444-1-chun-jen.tseng@mediatek.com>
 MIME-Version: 1.0
-References: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com> <20230920150332.318851-1-laura.nao@collabora.com>
-In-Reply-To: <20230920150332.318851-1-laura.nao@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 21 Sep 2023 12:09:37 +0800
-Message-ID: <CAGXv+5Hr1woRL5z6b4k6e+FQKaVyoUmP4vAt=RrEgjEwq8bUhw@mail.gmail.com>
-Subject: Re: [PATCH] remoteproc: mediatek: Refactor single core check and fix retrocompatibility
-To: Laura Nao <laura.nao@collabora.com>
-Cc: angelogioacchino.delregno@collabora.com, andersson@kernel.org, 
-	kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-remoteproc@vger.kernel.org, mathieu.poirier@linaro.org, 
-	matthias.bgg@gmail.com, tinghan.shen@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--1.895200-8.000000
+X-TMASE-MatchedRID: tiRXYRqWr+tlrtpBkGUSk2NW0DAjL5p+YefZ7F9kLgt0RHjq6Pzvr+gV
+	4TkxLE0x4vM1YF6AJbZhyT3WNjppUtAtbEEX0MxBxEHRux+uk8ifEzJ5hPndGSP/yY4f5n8Ip1/
+	YQl+nUblS2CW/2oqSQd6b50geLAaV+42ujtXrfWikNlIb30v+KAPNiSkC92RldAGc3Y6RYhuh4/
+	q7CR9Vj3mVKZusLp922v9OjYWA2uMMswg45VMfPadst5iAforfVlxr1FJij9s=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.895200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: D44D22243FF14CA987D5854C11202CD98AD916132098825D32C90592885D40282000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_210952_300080_18FA3CAF 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20230920_222700_673245_92F1B55A 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,35 +100,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 20, 2023 at 11:03=E2=80=AFPM Laura Nao <laura.nao@collabora.com=
-> wrote:
->
-> On 9/19/23 11:23, AngeloGioacchino Del Regno wrote:
-> > In older devicetrees we had the ChromeOS EC in a node called "cros-ec"
-> > instead of the newer "cros-ec-rpmsg", but this driver is now checking
-> > only for the latter, breaking compatibility with those.
-> >
-> > Besides, we can check if the SCP is single or dual core by simply
-> > walking through the children of the main SCP node and checking if
-> > if there's more than one "mediatek,scp-core" compatible node.
-> >
-> > Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-=
-core SCP")
-> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
-llabora.com>
-> > ---
-> >   drivers/remoteproc/mtk_scp.c | 18 +++++++-----------
-> >   1 file changed, 7 insertions(+), 11 deletions(-)
-> >
->
-> Tested on asurada (spherion) and jacuzzi (juniper). The issue was detecte=
-d by KernelCI, so:
->
-> Reported-by: "kernelci.org bot" <bot@kernelci.org>
-> Tested-by: Laura Nao <laura.nao@collabora.com>
+Add mt8188 svs compatible in dt-bindings.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-on Hayato (MT8192) and Juniper (MT8183).
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+index f21eb907ee90..7eda63d5682f 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+@@ -22,6 +22,7 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt8183-svs
++      - mediatek,mt8188-svs
+       - mediatek,mt8192-svs
+ 
+   reg:
+-- 
+2.18.0
+
 
