@@ -4,89 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1319ACD4938
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 02:14:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CF1CCD494C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 04:10:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IbR9eOWj15szJiLhfjytcL1B57Or+K9/1eHVI5IPSpE=; b=o1zT2bnZoN369a/YWHQFNrX9CL
-	fuxA/EG74fG8KNCcmU3IxhYkY5pLcaXKvuWTE708gWFF4xNi+b94XETHq3v4Brhk8XILKIqdhLh6u
-	c/B65Hh2gGm7uV4b6HQ3pPAHrbdp0uwHffuXydEovEtECd9sY6x2K2+BQfmYEg1WVDWmntEJXqRwR
-	h8f0vjuFagzwGvT6cUv4Ot5kXvcyCOp4ZonolAcoX4fIIUfe1D/lLXqUy0VUI3S98+SKkQDb0pRHf
-	9Gtt3oGUcb4tgVWZBwura2JCYqOljl2k5++75bsnIcL0E/35dwwxnJWxTXOA8XJ4SfiVKTHNqb12Y
-	4w9ot7Mw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2aBYYxm4V3k4FyEjLrLJ9/n/H90Md6QsttKISLF22a4=; b=VBQq73Gw1PrI0HYpFVXwEz4TMj
+	sE+XgQX0Ik4akEdZDch2bErUIv9yiSR+I1M1rxyhf92kJrreiDwsz23H7NJtNXc8TWCDIBdC/U/uG
+	hhvJ2KEO56bjuSLANpQLBnzMSE9z5ag2Ny/bkffGFQjafPQ+dZOLM+Pvzp4Bqfd+iGzGFbhP3aTOW
+	xclhZ3vqaTKpjhlT5gNL0c42OB7dHy8IWJjyyhdzFUgAcDc9IeOo7rbealAEZrmqoC0N4++su9hoR
+	us+eqfgmW253hg3PT9mYqpD4XBf5d3MrY4t/81XrPQx4LH4kd/nRfHiyLh05KpldaZJwBri0Ow8eN
+	T5FPDMsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qj9D8-004kGv-2T;
-	Thu, 21 Sep 2023 02:14:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qjB0k-0050QP-2X;
+	Thu, 21 Sep 2023 04:09:54 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qj9D5-004kGN-2S;
-	Thu, 21 Sep 2023 02:14:33 +0000
-X-UUID: 966f624e582411ee86758d4a7c00f3a0-20230920
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IbR9eOWj15szJiLhfjytcL1B57Or+K9/1eHVI5IPSpE=;
-	b=CGtMc7gM8AW8vCO+NmN6UagD5p0ikbZY2L9jZzrVjFFyFQRr+/PyIOoW+N3DT5qDG9ABhOw/Fi7iCgYMzUw8ItDXfBdJ4l6qFABwbjEMd8oGryOPvZU7cIKC8lUEF+Q28tSYC8BlXjV40iCXbsVtNreHdTJ6RLmaY6kB6aPQk3U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:c8dcc85e-a800-4a84-8c9e-39d966376b56,IP:0,U
-	RL:0,TC:0,Content:2,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:2
-X-CID-META: VersionHash:5f78ec9,CLOUDID:556a2f14-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:817|102,TC:nil,Content:4|-5,EDM:-3,I
-	P:nil,URL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 1,FCT|NGT
-X-CID-BAS: 1,FCT|NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 966f624e582411ee86758d4a7c00f3a0-20230920
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <mark-pk.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 337663182; Wed, 20 Sep 2023 19:14:26 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 21 Sep 2023 10:13:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 21 Sep 2023 10:13:50 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: <robin.murphy@arm.com>
-CC: <amit.kachhap@arm.com>, <angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux@armlinux.org.uk>,
-	<mark-pk.tsai@mediatek.com>, <matthias.bgg@gmail.com>,
-	<yj.chiang@mediatek.com>
-Subject: Re: [PATCH] ARM: vfp: Add vudot opcode to VFP undef hook
-Date: Thu, 21 Sep 2023 10:13:50 +0800
-Message-ID: <20230921021350.28283-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <170e8577-42c9-b72f-60c7-80141f379ec4@arm.com>
-References: <170e8577-42c9-b72f-60c7-80141f379ec4@arm.com>
+	id 1qjB0i-0050PQ-0i
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 Sep 2023 04:09:53 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2c108e106f0so8162601fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Sep 2023 21:09:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1695269389; x=1695874189; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2aBYYxm4V3k4FyEjLrLJ9/n/H90Md6QsttKISLF22a4=;
+        b=WQlcf7aa3MUHe47wgGiEtIbMfbWKr6zTk1motJ6zqkuFRLUyU/GCfM0fdt1dJulCZc
+         Otpd0+Ss/U+jr7o+Jjw+K4+CFcp/oDAxsN1kmjBjBo06UZebiHRNUANPYKu1//YF9GA5
+         yKOpnmHc5xlhw9iqkLuf2GmK5tPuJsLwOenyA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695269389; x=1695874189;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2aBYYxm4V3k4FyEjLrLJ9/n/H90Md6QsttKISLF22a4=;
+        b=tKxvCrx6NqgPm9pFt04WkQbLfAzqQPTEpVWj7A1v5ilv7Upre/Viol3uoei6yVF6qy
+         jVUvwAu8LunaFM3cUmMWhE+8Ny5gcc/vOQFeJVyY/gQPbk/M8vzbvRGVnGDEDqdmE2Sf
+         d59Dj6V8Q7K3b4Efcz+oDhj1jWnHNrmaPCIvuxq3qFhjMKgYvczeAKLKQ+Ee24a22y05
+         SLKr3slUeW5kdwFiUbTAHHaa59fLK8kGf73BOYPzE/CxdDoKVQ6a3Pi2p+0iy2Dh1Y/O
+         kEuE0ELshoHZIzcT6Di+5fDXqW/kZE5XxuT2gUftKH7RcGZH8+a/PDhBlI+uPRkuuF/a
+         nHPg==
+X-Gm-Message-State: AOJu0Yy4tKUdWO6SmQCL1NGygRuDxPGxvnlBvflQQip+OknLo47X0j6U
+	a4V+BirTlcdOefM4VfQOpLfLt49j3D6ybIlaaSZNFQ==
+X-Google-Smtp-Source: AGHT+IGdIV8J7fxjUNbRUv5HJhGzBY+D1JG/lYO+jffLDerOCNDgsVdIhjbf+HuUVjEXXFJfi0crYYSdZkt0BFEhkOg=
+X-Received: by 2002:a19:e051:0:b0:4ff:8863:be01 with SMTP id
+ g17-20020a19e051000000b004ff8863be01mr3396045lfj.8.1695269389034; Wed, 20 Sep
+ 2023 21:09:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--15.333500-8.000000
-X-TMASE-MatchedRID: WMT2WRIkHPM4HKI/yaqRm7hzZI/dfrdOjLOy13Cgb4+e9toQ6h6LE7iN
-	d7CXjOinM4Cy4e3S8WIIv5CPDrKXd6tL0wBaA/G+GVyS87Wb4lxCs7hdHoFFA/5Ndkm9jGh5em0
-	L3kwJxTdCXD2S19glPV3MEuq4MiSC5p1ATFvutT7Dr0AjBcmfRuPmXK6rwg5BIbxYwbCxGTQwhw
-	b+RYrZ/zmvMXdRLat6TZGH8K2mj5XWbYh2DUbLpJU7Bltw5qVLoKO8hENbdctaW2Ktn+I8/sXyP
-	yHR36DVcNIkKQttpKMyfXR0GRtO+520tDTabQHWA9lly13c/gFU3K6aV1ad7RHfiujuTbed8bf3
-	35SL+13N1AcFAIRcfxVG2JHtKFfIFQGROYyu7Jnil2r2x2PwtTuvYa1v2IFhmWqNFutwpEHNRVl
-	bRT9HtiWSzsPREMfEH2XXM8w5v7ofE8yM4pjsD1Z0V5tYhzdWxEHRux+uk8hfNjF5BHUO+xGSS7
-	iI2Efv6SJbFWcaRn5oohyq6KZ7TE36fdoN3CG+jGfLyJg6bV0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--15.333500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 6E76ED6E959298A7BB402BB2CD71B065C8AF0B245F941B52C18D8F67297B97FE2000:8
-X-MTK: N
+References: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com> <20230920150332.318851-1-laura.nao@collabora.com>
+In-Reply-To: <20230920150332.318851-1-laura.nao@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 21 Sep 2023 12:09:37 +0800
+Message-ID: <CAGXv+5Hr1woRL5z6b4k6e+FQKaVyoUmP4vAt=RrEgjEwq8bUhw@mail.gmail.com>
+Subject: Re: [PATCH] remoteproc: mediatek: Refactor single core check and fix retrocompatibility
+To: Laura Nao <laura.nao@collabora.com>
+Cc: angelogioacchino.delregno@collabora.com, andersson@kernel.org, 
+	kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-remoteproc@vger.kernel.org, mathieu.poirier@linaro.org, 
+	matthias.bgg@gmail.com, tinghan.shen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_191431_831114_0A66240F 
-X-CRM114-Status: GOOD (  30.41  )
+X-CRM114-CacheID: sfid-20230920_210952_300080_18FA3CAF 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,122 +88,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On 2023-09-20 09:39, Mark-PK Tsai wrote:
-> > Add vudot opcode to the VFP undef hook to fix the
-> > potentially undefined instruction error when the
-> > user space executes vudot instruction.
-> 
-> Did the kernel expose a hwcap to say that the dot product extension is 
-> supported? I'm pretty sure it didn't, so why would userspace expect this 
-> to work? ;)
-
-The hwcap for dotprod has been exported since commit:
-
-62ea0d873af3 ARM: 9269/1: vfp: Add hwcap for FEAT_DotProd
-
-> 
-> IIRC Amit was looking at defining the hwcaps to align with arm64 compat, 
-> but I believe that series faltered since most of them weren't actually 
-> needed (and I think at that point it was still missing the VFP support 
-> code parts). It would be nice if someone could pick up and combine both 
-
-Were the mentioned series related to this commit?
-
-62ea0d873af3 ARM: 9269/1: vfp: Add hwcap for FEAT_DotProd
-
-> efforts and get this done properly; fill in *all* the hwcaps and 
-> relevant handling for extensions which Cortex-A55 supports (since 
-> there's definitely more than just VUDOT), and then hopefully we're done 
-> for good.
-
-Agree.
-
-> 
-> > Before this commit, kernel didn't handle the undef exception
-> > caused by vudot and didn't enable VFP in lazy VFP context
-> > switch code like other NEON instructions.
-> > This led to the occurrence of the undefined instruction
-> > error as following:
-> > 
-> > [  250.741238 ] 0904 (26902): undefined instruction: pc=004014ec
-> > ...
-> > [  250.741287 ] PC is at 0x4014ec
-> > [  250.741298 ] LR is at 0xb677874f
-> > [  250.741303 ] pc : [<004014ec>]    lr : [<b677874f>]    psr: 80070010
-> > [  250.741309 ] sp : beffedb0  ip : b67d7864  fp : beffee58
-> > [  250.741314 ] r10: 00000000  r9 : 00000000  r8 : 00000000
-> > [  250.741319 ] r7 : 00000001  r6 : 00000001  r5 : beffee90  r4 : 00401470
-> > [  250.741324 ] r3 : beffee20  r2 : beffee30  r1 : beffee40  r0 : 004003a8
-> > [  250.741331 ] Flags: Nzcv  IRQs on  FIQs on  Mode USER_32  ISA ARM Segment user
-> > [  250.741339 ] Control: 10c5383d  Table: 32d0406a  DAC: 00000055
-> > [  250.741348 ] Code: f4434aef f4610aef f4622aef f4634aef (fc620df4)
-> > 
-> > Below is the assembly of the user program:
-> > 
-> > 0x4014dc <+108>: vst1.64 {d20, d21}, [r3:128]
-> > 0x4014e0 <+112>: vld1.64 {d16, d17}, [r1:128]
-> > 0x4014e4 <+116>: vld1.64 {d18, d19}, [r2:128]
-> > 0x4014e8 <+120>: vld1.64 {d20, d21}, [r3:128] --> switch out
-> > 0x4014ec <+124>: vudot.u8 q8, q9, q10         <-- switch in, and FPEXC.EN = 0
-> >                                                    SIGILL(illegal instruction)
-> > 
-> > Link: https://services.arm.com/support/s/case/5004L00000XsOjP
-> 
-> Linking to your private support case is not useful to upstream. Even I 
-> can't open that link.
-
-I thought that maybe someone in arm need this.
-But it seems a bit noisy so I will remove the link from v2.
-
-> 
-> > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+On Wed, Sep 20, 2023 at 11:03=E2=80=AFPM Laura Nao <laura.nao@collabora.com=
+> wrote:
+>
+> On 9/19/23 11:23, AngeloGioacchino Del Regno wrote:
+> > In older devicetrees we had the ChromeOS EC in a node called "cros-ec"
+> > instead of the newer "cros-ec-rpmsg", but this driver is now checking
+> > only for the latter, breaking compatibility with those.
+> >
+> > Besides, we can check if the SCP is single or dual core by simply
+> > walking through the children of the main SCP node and checking if
+> > if there's more than one "mediatek,scp-core" compatible node.
+> >
+> > Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-=
+core SCP")
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
 > > ---
-> >   arch/arm/vfp/vfpmodule.c | 12 ++++++++++++
-> >   1 file changed, 12 insertions(+)
-> > 
-> > diff --git a/arch/arm/vfp/vfpmodule.c b/arch/arm/vfp/vfpmodule.c
-> > index 7e8773a2d99d..7eab8d1019d2 100644
-> > --- a/arch/arm/vfp/vfpmodule.c
-> > +++ b/arch/arm/vfp/vfpmodule.c
-> > @@ -788,6 +788,12 @@ static struct undef_hook neon_support_hook[] = {{
-> >   	.cpsr_mask	= PSR_T_BIT,
-> >   	.cpsr_val	= 0,
-> >   	.fn		= vfp_support_entry,
-> > +}, {
-> > +	.instr_mask	= 0xffb00000,
-> > +	.instr_val	= 0xfc200000,
-> > +	.cpsr_mask	= PSR_T_BIT,
-> > +	.cpsr_val	= 0,
-> > +	.fn		= vfp_support_entry,
-> >   }, {
-> >   	.instr_mask	= 0xef000000,
-> >   	.instr_val	= 0xef000000,
-> > @@ -800,6 +806,12 @@ static struct undef_hook neon_support_hook[] = {{
-> >   	.cpsr_mask	= PSR_T_BIT,
-> >   	.cpsr_val	= PSR_T_BIT,
-> >   	.fn		= vfp_support_entry,
-> > +}, {
-> > +	.instr_mask	= 0xffb00000,
-> > +	.instr_val	= 0xfc200000,
-> > +	.cpsr_mask	= PSR_T_BIT,
-> > +	.cpsr_val	= PSR_T_BIT,
-> > +	.fn		= vfp_support_entry,
-> 
-> Why have two entries conditional on each possible value of one bit for 
-> otherwise identical encodings? Surely it suffices to set both cpsr_mask 
-> and cpsr_val to 0?
+> >   drivers/remoteproc/mtk_scp.c | 18 +++++++-----------
+> >   1 file changed, 7 insertions(+), 11 deletions(-)
+> >
+>
+> Tested on asurada (spherion) and jacuzzi (juniper). The issue was detecte=
+d by KernelCI, so:
+>
+> Reported-by: "kernelci.org bot" <bot@kernelci.org>
+> Tested-by: Laura Nao <laura.nao@collabora.com>
 
-You're right.
-I will set both cpsr_mask and cpsr_val to 0 and use single entry,
-as you suggested, in the v2 patch.
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Thanks.
-
-> 
-> Thanks,
-> Robin.
-> 
-> >   }};
-> >   
-> >   static struct undef_hook vfp_support_hook = {
+on Hayato (MT8192) and Juniper (MT8183).
 
