@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9CE1E7D0AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 21:05:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 667E4E7D0AA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 21:08:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=P0k2mEz6t9FYg1LBmxvu4t0PXlfcW4oJPKCQILk24hs=; b=a0xBACfIXlChLQg6AhE71goifs
-	FUSQ+Me0YixEg4N5O162MwhEHYT19mHUnZxDSDXyhuUh+wQP9LyS3a0MGJQth+C5lQFoiabylgPSw
-	OidtXND4jG8JgvxWSOQjoIf4L5tZGM7mcsb++kfsz/aLxGCs5Q0WoRJSOnwD/05z3M+IiNoEB+kng
-	eaJYEi7B/3zNCvmZi3t61SVnwGYebSlDCrLmMY58q83HRi0WFXoxvEivd6DmMRv5VBViWaMTXuxgq
-	em3SMVqhOPw6Lg49fAQCN5wH9p+a0K2E1l5bDsJJVQW0mwByRu4DQIxC8GoG8jdhjVBv/Z5hMwyxi
-	KxNA8rRQ==;
+	bh=JXbCn/mxw/O38mq7z9Y2CPBqurZYPBI6LOlqJG8vaps=; b=PfETHQC1OcnpbM/ENcxUDZ6OJF
+	/VrVvksUrwPzSWcu4bN5hgF2C8EpZX26ijjV3bczrCZNXMbt072BNBnBCgbxmN/L3LtIIkmGfkA69
+	IOHitBSVaVklNViEoWcsVQOTD8CDVat0n04sX/M/FdCuMy6nPVFV2bC8AvQkZgE7M4fUcIvD59vNu
+	HLVEFKr93fLXc7JdVKGeD1OnBORy3YAqyInHXzxFVMI9sf8iM72ehDONsSfCMpbkPNTM4q4WxbiWi
+	A6rnjEQGFnPwRMQl05S3JHty6VKMHuu4/kAzhDGX8wIH13wIpVUO1dGSEYAc183nUGHVJYmhECgXx
+	ziLfiH/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjQrt-0079iE-1F;
-	Thu, 21 Sep 2023 21:05:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qjQuE-007A3X-0W;
+	Thu, 21 Sep 2023 21:08:14 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjQrq-0079g5-0I
-	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Sep 2023 21:05:47 +0000
-X-UUID: 9fd2299a58c211ee9b7791016c24628a-20230921
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=P0k2mEz6t9FYg1LBmxvu4t0PXlfcW4oJPKCQILk24hs=;
-	b=WzhjLVdfS4FLJfKZSnmXYaUTDpuWXoGLgw+j0P7q49rs8+rBkGKCrTcCfTTwRQIl4JFnXdbLrbHdfMJfo+ujIE5zZeI0jvfqebeRM2IRp27Fvo/PAWjtAvjt7t+lGNzIq2iIkzOwKUQ/etFPIsi4VycYgDCUzZbB7G8wLrBrI48=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:638c9b41-5c3f-44e9-ac8e-66c6e119ef65,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:55903814-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 9fd2299a58c211ee9b7791016c24628a-20230921
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <yi-chia.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1866521450; Thu, 21 Sep 2023 14:05:42 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Sep 2023 05:05:39 +0800
-Received: from mussdccf250.mussds.eus.mediatek.inc (10.73.250.250) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Sep 2023 05:05:37 +0800
-From: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Benjamin Lin <benjamin-jw.lin@mediatek.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>, Money Wang
-	<Money.Wang@mediatek.com>
-Subject: [PATCH v3] wifi: mt76: connac: report per-phy tx and rx byte to tpt_led
-Date: Thu, 21 Sep 2023 14:05:35 -0700
-Message-ID: <2614f84d8216414692296570d2fd6ac50c3409cf.1695329294.git.yi-chia.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.17.1
+	id 1qjQuA-007A2e-2x;
+	Thu, 21 Sep 2023 21:08:12 +0000
+Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E071366072A2;
+	Thu, 21 Sep 2023 22:08:03 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695330485;
+	bh=4WzhXX1uaBfz0iPkLduXsSe9s+j07QrDW6eVjUz4YQc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Xq+7sEqKMT1vt4K2chwQVwiFPZh87u8UZcHR85YtRTxEST+m/bOEzap9pEDI/jlvN
+	 Bc2E4iawedB1CvcQfsWQ+SdjoYUMhCQ6w5uIybBe4T4KSyGY2ZH3qEyepqXCq8TylO
+	 REOdNMAuaQ95GP79HV1mStHUe0Zb1hued3xRm6AhJgpipF59NKVzsvi9fe2x3b4p0Y
+	 dWp3gWQsUx+IbolK/IvPrioWEF97/lKb6ENurhUFp9thNde9DqTs/n15P4CGbvoyO5
+	 w/glxgy8t7xhjp2/QuKtQ1ZHA2VftQ23iKelU92xiazICGo+rMJeA9B2Wq76p6J1Am
+	 p6bhSKYwpqY8g==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Takashi Iwai <tiwai@suse.com>
+Cc: kernel@collabora.com,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Shuah Khan <shuah@kernel.org>,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-kselftest@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [RFC PATCH] kselftest/alsa: Add configuration for mt8192-asurada-spherion
+Date: Thu, 21 Sep 2023 17:07:42 -0400
+Message-ID: <20230921210800.230330-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_140546_136139_5112CBF6 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20230921_140811_121006_0FAE619C 
+X-CRM114-Status: GOOD (  21.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,106 +81,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the issue where the tx and rx byte count is not reported to mac80211
-when H/W path is binded.
+Add a configuration file for the mt8192-asurada-spherion platform to
+validate that the card and PCMs used for speaker, headphone and
+microphones (internal and headset) are correctly exposed to userspace.
 
-Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-Signed-off-by: Money Wang <Money.Wang@mediatek.com>
-Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-v2: split series
----
-This patch is based on "wifi: mac80211: add exported tpt_led_trig function for softmac driver"
-v3: rebase and update Signed-off-by
----
- .../net/wireless/mediatek/mt76/mt76_connac_mac.c  | 10 ++++++----
- drivers/net/wireless/mediatek/mt76/mt7915/mmio.c  |  5 +++++
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c   | 15 +++++++++++----
- 3 files changed, 22 insertions(+), 8 deletions(-)
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index 93402d2c2538..158df5340d59 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -594,9 +594,15 @@ bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 
- 	txs = le32_to_cpu(txs_data[0]);
- 
-+	mphy = mt76_dev_phy(dev, wcid->phy_idx);
+---
+Sending this patch as RFC because I'd like to ask a question. What would
+be the most suitable entry to identify the card in a future-proof way?
+
+I have used the card ID here, but given that it is generated at runtime
+with the purpose of being unique among the cards present on the system
+(and I couldn't find any documentation that states it is stable), I'm
+not sure it is supposed to be relied on.
+
+The card ID is derived from the driver name or card longname, which are
+themselves stable given userspace (alsa-ucm-conf) relies on them, but
+those aren't exposed through sysfs so I can't check for them here.
+
+Another option would be to look for the card number 0. But in the (very
+unlikely) case that another soundcard would be connected to the platform
+and detected first during boot, it wouldn't work.
+
+Yet another option would be to look at the device's uevent file for
+the compatible as defined in the Devicetree, ie
+
+        path "device/uevent"
+        regex "OF_COMPATIBLE_.*=mediatek,mt8192_mt6359_rt1015p_rt5682"
+
+Though it is possible (in rare circumstances) for the compatible in the
+Devicetree to need to be updated to enable a driver behavior that isn't
+backward compatible.
+
+I realize most of these issues are very rare and probably won't ever
+occur, but it seems worthwhile to use the most future-proof mechanism
+available to identify the card to avoid unnecessary maintenance, even
+more so considering the example would be followed by future
+configurations.
+
+Thanks,
+Nícolas
+
+ .../alsa/conf.d/mt8192-asurada-spherion.conf  | 32 +++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+ create mode 100644 tools/testing/selftests/alsa/conf.d/mt8192-asurada-spherion.conf
+
+diff --git a/tools/testing/selftests/alsa/conf.d/mt8192-asurada-spherion.conf b/tools/testing/selftests/alsa/conf.d/mt8192-asurada-spherion.conf
+new file mode 100644
+index 000000000000..6a7e15dc17da
+--- /dev/null
++++ b/tools/testing/selftests/alsa/conf.d/mt8192-asurada-spherion.conf
+@@ -0,0 +1,32 @@
++sysfs [
++	{
++		path "firmware/devicetree/base/compatible"
++		regex "google,spherion"
++	}
++]
 +
- 	/* PPDU based reporting */
- 	if (mtk_wed_device_active(&dev->mmio.wed) &&
- 	    FIELD_GET(MT_TXS0_TXS_FORMAT, txs) > 1) {
-+		__ieee80211_tpt_led_trig_trx(mphy->hw,
-+			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_BYTE) -
-+			le32_get_bits(txs_data[7], MT_TXS7_MPDU_RETRY_BYTE), 0);
++card.mt8192 {
++	sysfs [
++		{
++			path "id"
++			regex "mt8192mt6359rt1"
++		}
++	]
 +
- 		stats->tx_bytes +=
- 			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_BYTE) -
- 			le32_get_bits(txs_data[7], MT_TXS7_MPDU_RETRY_BYTE);
-@@ -637,10 +643,6 @@ bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 		cck = true;
- 		fallthrough;
- 	case MT_PHY_TYPE_OFDM:
--		mphy = &dev->phy;
--		if (wcid->phy_idx == MT_BAND1 && dev->phys[MT_BAND1])
--			mphy = dev->phys[MT_BAND1];
--
- 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
- 			sband = &mphy->sband_5g.sband;
- 		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index fc7ace638ce8..acb71c4293ea 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -657,6 +657,11 @@ static void mt7915_mmio_wed_update_rx_stats(struct mtk_wed_device *wed,
- 
- 	wcid = rcu_dereference(dev->mt76.wcid[idx]);
- 	if (wcid) {
-+		struct mt76_phy *mphy = mt76_dev_phy(&dev->mt76, wcid->phy_idx);
-+
-+		__ieee80211_tpt_led_trig_trx(mphy->hw, 0
-+					     le32_to_cpu(stats->rx_byte_cnt));
-+
- 		wcid->stats.rx_bytes += le32_to_cpu(stats->rx_byte_cnt);
- 		wcid->stats.rx_packets += le32_to_cpu(stats->rx_pkt_cnt);
- 		wcid->stats.rx_errors += le32_to_cpu(stats->rx_err_cnt);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index bf917beb9439..974795dae1bd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -463,6 +463,8 @@ mt7996_mcu_rx_all_sta_info_event(struct mt7996_dev *dev, struct sk_buff *skb)
- 		u8 ac;
- 		u16 wlan_idx;
- 		struct mt76_wcid *wcid;
-+		struct mt76_phy *mphy;
-+		u32 tx_bytes, rx_bytes;
- 
- 		switch (le16_to_cpu(res->tag)) {
- 		case UNI_ALL_STA_TXRX_ADM_STAT:
-@@ -472,11 +474,16 @@ mt7996_mcu_rx_all_sta_info_event(struct mt7996_dev *dev, struct sk_buff *skb)
- 			if (!wcid)
- 				break;
- 
-+			mphy = mt76_dev_phy(&dev->mt76, wcid->phy_idx);
- 			for (ac = 0; ac < IEEE80211_NUM_ACS; ac++) {
--				wcid->stats.tx_bytes +=
--					le32_to_cpu(res->adm_stat[i].tx_bytes[ac]);
--				wcid->stats.rx_bytes +=
--					le32_to_cpu(res->adm_stat[i].rx_bytes[ac]);
-+				tx_bytes = le32_to_cpu(res->adm_stat[i].tx_bytes[ac]);
-+				rx_bytes = le32_to_cpu(res->adm_stat[i].rx_bytes[ac]);
-+
-+				wcid->stats.tx_bytes += tx_bytes;
-+				wcid->stats.rx_bytes += rx_bytes;
-+
-+				__ieee80211_tpt_led_trig_trx(mphy->hw,
-+							     tx_bytes, rx_bytes);
- 			}
- 			break;
- 		case UNI_ALL_STA_TXRX_MSDU_COUNT:
++	pcm.0.0 {
++		PLAYBACK {
++		}
++	}
++	pcm.3.0 {
++		PLAYBACK {
++		}
++	}
++	pcm.10.0 {
++		CAPTURE {
++		}
++	}
++	pcm.11.0 {
++		CAPTURE {
++		}
++	}
++}
 -- 
-2.39.0
+2.42.0
 
 
