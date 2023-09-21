@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B11E71060
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 12:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26A02E71060
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 12:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VWNKSo/r8fb9kQpsFSFKmgZ+YD3frk3p6B99+arlBKM=; b=GscNUbxbEDpxim+jsC1jsJWop/
-	WEGka8W2jJo1/RGtpGy7WcX/RVTnulFOv34wqQJKo4e4jaqxgwZo1NBDxP0VX2P5ekROTejCH+CHv
-	zzup7lBiZ6R6K1HmI08R7MQX7rdNNCEqM0YfWhyCzfYkKz1HObBVgnFscm7Y6BBbMQigsVsRbrtzb
-	ZLR1ZzP4EE6Uk6I5+Z0FC8y7h4CY2RUWPk55UJyVNReac+aZ9jKD5AZlaTns2KdEX/AsJvQo/CLFx
-	ebKOe4I21owKTTe0411q0mXzeH2hW3E1HXL4CBoMQPcuQQfHThOVGALGzkT0W5fxew2QGDVCgNGuZ
-	wIOOZn5w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b7aGXpKSZd0nkaqg7goI4xd52TS77NJzRSHYqFQggM8=; b=q+mw4yeAa5S4sq2CkNBy+WmVLq
+	CMpbe71d/Fw0N4B4T/wBBAw6cNxD8g2LCTw5kUu6FyHHBVk0q1GgWSpbqiMSeuzfwJY/OTvY0lmOo
+	RKdB+ZgvK5G1iU2kD4GDlu22viEf74Lc4G6ZTVQAxlw1vlo/rNL9b3vbOdIIi8QNb1wMj3r40XOiM
+	mnOopiE/UriS1W5B2Z2eBJYMxLvx0A8OOMRt0Yow9Oz/gayjwp1o0+zaHR4JDJaI04msKM4gh1Yqz
+	E1CvYUnHOXahjzm+NGkqJec7amPYy5onNXzw07CL+Te6n8FZsFaMNphqX5ecBuKBdEol2Farlu/SW
+	VmJgORxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjJ50-0063IZ-3D;
-	Thu, 21 Sep 2023 12:46:51 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qjJ9e-0063mb-0N;
+	Thu, 21 Sep 2023 12:51:38 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjJ4w-0063HZ-2K;
-	Thu, 21 Sep 2023 12:46:48 +0000
-Received: from [IPV6:2a01:e0a:120:3210:9fdf:789a:7434:5a59] (unknown [IPv6:2a01:e0a:120:3210:9fdf:789a:7434:5a59])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 33A2566072EA;
-	Thu, 21 Sep 2023 13:46:43 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695300403;
-	bh=LVEZ1RsG9zACgcHPee3WTOL671cvZoROVfJ92IP6s4Y=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z7acJaSzlHDcCiwLMiECWrrw5UijdlQ+DYiCsWekWoNpZ3tWGx6RqitZQ5cmt7bpf
-	 r8MU3UuFwvDJzNYe1xL5Y/b3xLsQy0Phe/0FacTfJDAd76T/xFvJsFSKXzdi7cqygT
-	 nnR/uVG3c5M9+pdpeUljAGo+Ro7bh3NzUCc7J3/ZVMKPQmZV5Ar34/V7nSYyhf7xVi
-	 RjGOqVm5mGQxUBr22OlVpTmp3jupc+1vblk/eBLz/A9XDq3XaZ2d0hvxOepERS1ZdT
-	 9mjN13gH3bQTbVtxurYBzMHh5jfHpAcMC56+t7Ip6d0FjST8TjTAN+DXWqnN9PFxMc
-	 NU4rD8cbt2+6g==
-Message-ID: <c8b7db47-3875-a10b-8d81-a0b3dcbc564a@collabora.com>
-Date: Thu, 21 Sep 2023 14:46:40 +0200
+	id 1qjJ9b-0063kT-0S
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 Sep 2023 12:51:36 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-991c786369cso119286866b.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 Sep 2023 05:51:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1695300691; x=1695905491; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=b7aGXpKSZd0nkaqg7goI4xd52TS77NJzRSHYqFQggM8=;
+        b=IPu55qaGm2F4go2qOb0+ZM/p9FhLUScrTXEptdZQXcZEX9u0xM9G+LRGeTj7OKL/v2
+         Dm2Wn+M5SYmoEAIySiB5Z52gk9W6MUGS+kp2fCLtgjvAMbXburCmn3p5TFL5sJ7wqy7u
+         aRpsUCNCBlcDzxmWbMWihROV8tXNmQUS/zCsMJtoA0dZfYi9o8df8MIt16gzzWVQ7zjp
+         K88uGUE94sUAAM76zaVWjH5Bw7hvji86lkMeuythQ0zkYQlg8b2YNB77hTmH+2ddZLAd
+         mDQtaET2PK31JCV3nTHJccsuDxMXU+mLecbDV3DwULn33QohzRYaShiN1izRzyRP1i6p
+         yLtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695300691; x=1695905491;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=b7aGXpKSZd0nkaqg7goI4xd52TS77NJzRSHYqFQggM8=;
+        b=bu/6KsQDNbFmzfrwapAYbO/Ql7Vs6JGOXOaXvNg6sl+h8aNIEICV7zcxcY3m7tx+15
+         Rvv0hN83FZ0a3VoIl1nppN+PX4XdejOWDO7Ab6p3d7WdHR3iRweacViZyDXckz0dYZfJ
+         fXE9okKCZD2hiqJgz3sNs/MDGn3pUfrEKOiQQt8v8iKb31x1I+uVitatR28v+7rSpwWP
+         CTpP43oEx30VowcTSeRZWnmOgkePYHf7NwLma6GUmfUfNGI6x0vvPE/Lb02zQ9XHFNY4
+         AnOI8WHpHG+jCixBcwYbqrloKoccQX9kjAf8po1ZG2qIFztVKxrVeTINek5UFTMtGmPZ
+         BtRw==
+X-Gm-Message-State: AOJu0YxvZQcVgFDxzq53XDdAljHu7hsXu2LssdDjuILn9hOBFVGUY2s3
+	BI/HYrQN68ZBGPJbwYo1ou4PTQ==
+X-Google-Smtp-Source: AGHT+IEUZqEOYV4M6SlzSpxNp5dBDgvjEldvmzJ6hEHHcdY4tYiha+4k/ZKwAc0oUEQlmz9ki3DsiQ==
+X-Received: by 2002:a17:906:29a:b0:9ae:522e:8f71 with SMTP id 26-20020a170906029a00b009ae522e8f71mr3578502ejf.7.1695300691322;
+        Thu, 21 Sep 2023 05:51:31 -0700 (PDT)
+Received: from p14s (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
+        by smtp.gmail.com with ESMTPSA id lz1-20020a170906fb0100b0099b5a71b0bfsm1002039ejb.94.2023.09.21.05.51.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Sep 2023 05:51:30 -0700 (PDT)
+Date: Thu, 21 Sep 2023 06:51:29 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: andersson@kernel.org, matthias.bgg@gmail.com, tinghan.shen@mediatek.com,
+	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, wenst@chromium.org,
+	kernel@collabora.com
+Subject: Re: [PATCH] remoteproc: mediatek: Refactor single core check and fix
+ retrocompatibility
+Message-ID: <ZQw8UdZ9vhsrggky@p14s>
+References: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v7 45/49] media: core: Add bitmap manage bufs array
- entries
-Content-Language: en-US
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-46-benjamin.gaignard@collabora.com>
- <1142bbb4-b8f1-44ec-962e-9347a231782f@xs4all.nl>
- <20b6b93e-eef8-3d7b-a3c2-795f220059d4@collabora.com>
- <470682b4-c14b-4237-bc46-fddfdd085026@xs4all.nl>
- <31f298ec-6280-d21b-3d8a-c7bf1c9c0c30@collabora.com>
- <b10a7414-b710-4fb9-a72d-e2d7eff2616d@xs4all.nl>
- <aa649adf-8faf-801b-f6bd-d4a4760e040f@collabora.com>
- <a6a6da68-d9f2-44d3-9741-aa2cf83fac6d@xs4all.nl>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <a6a6da68-d9f2-44d3-9741-aa2cf83fac6d@xs4all.nl>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230919092336.51007-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_054647_080427_31E7C9E8 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20230921_055135_187601_786FD8FD 
+X-CRM114-Status: GOOD (  19.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,148 +94,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-Le 21/09/2023 à 14:13, Hans Verkuil a écrit :
-> On 21/09/2023 14:05, Benjamin Gaignard wrote:
->> Le 21/09/2023 à 12:24, Hans Verkuil a écrit :
->>> On 21/09/2023 11:28, Benjamin Gaignard wrote:
->>>> Le 20/09/2023 à 16:56, Hans Verkuil a écrit :
->>>>> On 20/09/2023 16:30, Benjamin Gaignard wrote:
->>>>> <snip>
->>>>>
->>>>>>>>          num_buffers = min_t(unsigned int, num_buffers,
->>>>>>>>                      q->max_allowed_buffers - vb2_get_num_buffers(q));
->>>>>>>>      -    first_index = vb2_get_num_buffers(q);
->>>>>>>> +    first_index = bitmap_find_next_zero_area(q->bufs_map, q->max_allowed_buffers,
->>>>>>>> +                         0, num_buffers, 0);
->>>>>>>>            if (first_index >= q->max_allowed_buffers)
->>>>>>>>              return 0;
->>>>>>>> @@ -675,7 +678,13 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
->>>>>>>>        struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q, unsigned int index)
->>>>>>>>      {
->>>>>>>> -    if (index < q->num_buffers)
->>>>>>>> +    if (!q->bufs_map || !q->bufs)
->>>>>>>> +        return NULL;
->>>>>>> I don't think this can ever happen.
->>>>>> I got kernel crash without them.
->>>>>> I will keep them.
->>>>> What is the backtrace? How can this happen? It feels wrong that this can be
->>>>> called with a vb2_queue that apparently is not properly initialized.
->>>> I have this log when adding dump_stack() in vb2_get_buffer() if !q->bufs_bitmap:
->>>>
->>>> [   18.924627] Call trace:
->>>> [   18.927090]  dump_backtrace+0x94/0xec
->>>> [   18.930787]  show_stack+0x18/0x24
->>>> [   18.934137]  dump_stack_lvl+0x48/0x60
->>>> [   18.937833]  dump_stack+0x18/0x24
->>>> [   18.941166]  __vb2_queue_cancel+0x23c/0x2f0
->>>> [   18.945365]  vb2_core_queue_release+0x24/0x6c
->>>> [   18.949740]  vb2_queue_release+0x10/0x1c
->>>> [   18.953677]  v4l2_m2m_ctx_release+0x20/0x40
->>>> [   18.957892]  hantro_release+0x20/0x54
->>>> [   18.961584]  v4l2_release+0x74/0xec
->>>> [   18.965110]  __fput+0xb4/0x274
->>>> [   18.968205]  __fput_sync+0x50/0x5c
->>>> [   18.971626]  __arm64_sys_close+0x38/0x7c
->>>> [   18.975562]  invoke_syscall+0x48/0x114
->>>> [   18.979329]  el0_svc_common.constprop.0+0xc0/0xe0
->>>> [   18.984068]  do_el0_svc+0x1c/0x28
->>>> [   18.987402]  el0_svc+0x40/0xe8
->>>> [   18.990470]  el0t_64_sync_handler+0x100/0x12c
->>>> [   18.994842]  el0t_64_sync+0x190/0x194
->>>>
->>>> This happen at boot time when hantro driver is open and close without other actions.
->>> Ah, now I see the problem. q->bufs and q->bufs_map are allocated in
->>> vb2_core_create_bufs and vb2_core_reqbufs, but they should be allocated
->>> in vb2_queue_init: that's the counterpart of vb2_core_queue_release.
->>>
->>> With that change you shouldn't have to check for q->bufs/bufs_map anymore.
->> It is a better solution but even like this vb2_core_queue_release() is called
->> at least 2 times on the same vivid queue and without testing q->bufs_bitmap
->> makes kernel crash.
-> Do you have a stacktrace for that? Perhaps vb2_core_queue_release should check
-> for q->bufs/q->bufs_map and return if those are NULL. But it could also be a
-> bug that it is called twice, it just was never noticed because it was harmless
-> before.
-
-I have added some printk to log that when running test-media on vivid:
-
-[  130.497426] vb2_core_queue_init queue cap-0000000050d195ab allocate q->bufs 00000000dc2c15ed and q->bufs_bitmap 000000008173fc5a
-...
-[  130.733967] vb2_core_queue_release queue cap-0000000050d195ab release q->bufs and q->bufs_bitmap
-[  133.866345] vb2_get_buffer queue cap-0000000050d195ab q->bufs_bitmap is NULL
-[  133.873454] CPU: 1 PID: 321 Comm: v4l2-ctl Not tainted 6.6.0-rc1+ #542
-[  133.879997] Hardware name: NXP i.MX8MQ EVK (DT)
-[  133.884536] Call trace:
-[  133.886988]  dump_backtrace+0x94/0xec
-[  133.890673]  show_stack+0x18/0x24
-[  133.894002]  dump_stack_lvl+0x48/0x60
-[  133.897681]  dump_stack+0x18/0x24
-[  133.901009]  __vb2_queue_cancel+0x250/0x31c
-[  133.905209]  vb2_core_queue_release+0x24/0x88
-[  133.909580]  _vb2_fop_release+0xb0/0xbc
-[  133.913428]  vb2_fop_release+0x2c/0x58
-[  133.917187]  vivid_fop_release+0x80/0x388 [vivid]
-[  133.921948]  v4l2_release+0x74/0xec
-[  133.925452]  __fput+0xb4/0x274
-[  133.928520]  __fput_sync+0x50/0x5c
-[  133.931934]  __arm64_sys_close+0x38/0x7c
-[  133.935868]  invoke_syscall+0x48/0x114
-[  133.939630]  el0_svc_common.constprop.0+0x40/0xe0
-[  133.944349]  do_el0_svc+0x1c/0x28
-[  133.947677]  el0_svc+0x40/0xe8
-[  133.950741]  el0t_64_sync_handler+0x100/0x12c
-[  133.955109]  el0t_64_sync+0x190/0x194
-
-and later I have a call to reqbufs on the same queue without call to vb2_core_queue_init before
-
-[   58.696812] __vb2_queue_alloc queue cap- 0000000050d195abq->bufs_bitmap is NULL
-[   58.704148] CPU: 1 PID: 319 Comm: v4l2-compliance Not tainted 6.6.0-rc1+ #544
-[   58.711291] Hardware name: NXP i.MX8MQ EVK (DT)
-[   58.715826] Call trace:
-[   58.718274]  dump_backtrace+0x94/0xec
-[   58.721951]  show_stack+0x18/0x24
-[   58.725274]  dump_stack_lvl+0x48/0x60
-[   58.728946]  dump_stack+0x18/0x24
-[   58.732268]  __vb2_queue_alloc+0x4a8/0x50c
-[   58.736374]  vb2_core_reqbufs+0x274/0x46c
-[   58.740391]  vb2_ioctl_reqbufs+0xb0/0xe8
-[   58.744320]  vidioc_reqbufs+0x50/0x64 [vivid]
-[   58.748717]  v4l_reqbufs+0x50/0x64
-[   58.752125]  __video_do_ioctl+0x164/0x3c8
-[   58.756140]  video_usercopy+0x200/0x668
-[   58.759982]  video_ioctl2+0x18/0x28
-[   58.763475]  v4l2_ioctl+0x40/0x60
-[   58.766798]  __arm64_sys_ioctl+0xac/0xf0
-[   58.770730]  invoke_syscall+0x48/0x114
-[   58.774487]  el0_svc_common.constprop.0+0x40/0xe0
-[   58.779199]  do_el0_svc+0x1c/0x28
-[   58.782520]  el0_svc+0x40/0xe8
-[   58.785580]  el0t_64_sync_handler+0x100/0x12c
-[   58.789942]  el0t_64_sync+0x190/0x194
-
+On Tue, Sep 19, 2023 at 11:23:36AM +0200, AngeloGioacchino Del Regno wrote:
+> In older devicetrees we had the ChromeOS EC in a node called "cros-ec"
+> instead of the newer "cros-ec-rpmsg", but this driver is now checking
+> only for the latter, breaking compatibility with those.
+> 
+> Besides, we can check if the SCP is single or dual core by simply
+> walking through the children of the main SCP node and checking if
+> if there's more than one "mediatek,scp-core" compatible node.
+> 
+> Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/remoteproc/mtk_scp.c | 18 +++++++-----------
+>  1 file changed, 7 insertions(+), 11 deletions(-)
 >
-> Regards,
->
-> 	Hans
->
->>> Regards,
->>>
->>>      Hans
->>>
->>>>     
->>>>>>>> +
->>>>>>>> +    return (bitmap_weight(q->bufs_map, q->max_allowed_buffers) > 0);
->>>>>>> How about:
->>>>>>>
->>>>>>>        return vb2_get_num_buffers(q) > 0;
->>>>>> vb2_get_num_buffers is defined in videobuf2-core.c, I'm not sure that
->>>>>> an inline function could depend of a module function.
->>>>> Not a problem. E.g. v4l2-ctrls.h is full of such static inlines.
->>>>>
->>>>> Regards,
->>>>>
->>>>>       Hans
->>>>>
->
+
+Applied.
+
+Thanks,
+Mathieu
+
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index ea227b566c54..a35409eda0cf 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -1144,29 +1144,25 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>  	return ret;
+>  }
+>  
+> -static int scp_is_single_core(struct platform_device *pdev)
+> +static bool scp_is_single_core(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct device_node *np = dev_of_node(dev);
+>  	struct device_node *child;
+> +	int num_cores = 0;
+>  
+> -	child = of_get_next_available_child(np, NULL);
+> -	if (!child)
+> -		return dev_err_probe(dev, -ENODEV, "No child node\n");
+> +	for_each_child_of_node(np, child)
+> +		if (of_device_is_compatible(child, "mediatek,scp-core"))
+> +			num_cores++;
+>  
+> -	of_node_put(child);
+> -	return of_node_name_eq(child, "cros-ec-rpmsg");
+> +	return num_cores < 2;
+>  }
+>  
+>  static int scp_cluster_init(struct platform_device *pdev, struct mtk_scp_of_cluster *scp_cluster)
+>  {
+>  	int ret;
+>  
+> -	ret = scp_is_single_core(pdev);
+> -	if (ret < 0)
+> -		return ret;
+> -
+> -	if (ret)
+> +	if (scp_is_single_core(pdev))
+>  		ret = scp_add_single_core(pdev, scp_cluster);
+>  	else
+>  		ret = scp_add_multi_core(pdev, scp_cluster);
+> -- 
+> 2.42.0
+> 
 
