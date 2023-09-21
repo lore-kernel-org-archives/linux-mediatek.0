@@ -4,107 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27132E7D0A4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 18:22:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E695E7D0A2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 19:28:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j9iU/unn2B5Lg59HKhzCVV0eWDfanHflmRLaK3sdqHo=; b=wuS9jpRRktHn36SKXC+qtSz9Jg
-	KYsbqdTKHJlUA1wGnhJrE4TtUHCEvedd6gvEB2DVAcbwVm0SLl93ogdVxmdVVJ09lmRXitHraLbfU
-	GfGxMjv8dvYp/WTdQ67S4RKXKUHQhfMykH3quz1eT1jUaCwcQFv8pReF+ipjXrjusSjBCRiaFVgfN
-	IbR4arSjaCJ1jAgJrONV4WCgRq72i5G4EuHLNKptsKZ/TVCh5qdXEKRyRqv0W8rxHrbb0kdn0wT8x
-	kYW0/emKyEqrbKXsBcW8uDPCXuLEHL8st+CmKDPlA++v2FibmXA2G8cEQOygcI6HzNukagAMpeR5V
-	ZcBR3BBQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TaaYKX/WzN2yAJiXuwCzXo10Y+Z2eYCI0rB7JbtaKbk=; b=yD+COEyVIgXIc9IisbtzW29deF
+	u1JH6Q2yxW1eYc96rM9MzxPQHNMWKScVuQSfHmW+xVwIjeLDTD4cMXT48Ak8OVI/MsY0CWfmlfsSw
+	pgVhUmVcO+hhbjhWjo3TFNugf4EEx86/kBPTHoXsRo7zpRhTFqW00TVBLkh08f+ORyJBb0BC80ljC
+	RkV6sy4kqWTjcD9aaYI60//qV8IT/h2mi/qPh+CyjDcCO/+eVvumy5c2ZLFSpESFCZc4tu0Tsd6vU
+	sp3qPIW6gCUiQCs3SMx/sT9opA2Tln6RPas5Pir+teKe5ODFljuzG7o/+/9WX1bC0XjiCv6qiQUH4
+	MJbaXZMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjOJf-006njP-2l;
-	Thu, 21 Sep 2023 18:22:19 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1qjPLa-006y08-2A;
+	Thu, 21 Sep 2023 19:28:22 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjOJa-006ngU-2z;
-	Thu, 21 Sep 2023 18:22:17 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 8DB5DE0003;
-	Thu, 21 Sep 2023 18:21:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1695320525;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=j9iU/unn2B5Lg59HKhzCVV0eWDfanHflmRLaK3sdqHo=;
-	b=hIAvQ8dgDH08u0BdHXTRIonGAo3yKFcZMxt3uw1qDZt+5ypJM3sJ8rIIGEcwJHGsRoCaR2
-	nifRNtpjmn7gbCEdBRqJLjOFn75cZwYAcde/5iEG/trGreT3o1bM9iKxU+HgDHKAPKa+G6
-	Jih/l/+El0+VJyWic6ezaTZoSmTUD4vc8twqBfLOUADhLTcNE24hbSjRqw84uEROq3R32d
-	LRudTD7HMQ1tbNO1XwIXQtasht2CBb5tWbQ7fPTz5pMthOnuUlVdU1aMrNn9xUw2PbB83C
-	jw74tIo2/G4YcjHYlpb20jMeWYMc/0OX6IdrPVnzwLA259K7WqTosgU1i6+GRQ==
-Message-ID: <85cc3b27-417e-4cf4-9f77-347a338c9d67@arinc9.com>
-Date: Thu, 21 Sep 2023 21:21:40 +0300
+	id 1qjPLY-006xxZ-0Y
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 Sep 2023 19:28:21 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-690bfd4f3ebso1139837b3a.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 Sep 2023 12:28:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1695324495; x=1695929295; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=TaaYKX/WzN2yAJiXuwCzXo10Y+Z2eYCI0rB7JbtaKbk=;
+        b=m9z9gY8hagUvw8IbNKQWVS/hlsWPS/1Ire5cUYHt5h7GMyqWfuZIKplrEuaiiUbS2D
+         M/avbiRO9IpfP/7RI6LQykWObP4u2EvzzplIjTPxuHbYF7RCnB6ucGsXYjvY9mq7tvbr
+         jQUmjR5W6hIMlJkAhkwHfLJuxfyiVs59r+dBo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695324495; x=1695929295;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=TaaYKX/WzN2yAJiXuwCzXo10Y+Z2eYCI0rB7JbtaKbk=;
+        b=myYRI+iWtVLSr8P70L/MKIzOJT3PXPvLbAS6wVorz+L63ZeRHLAYETYje2o4gR4P/2
+         PHi0cuAit9mKm6sEzSIbmH9RsLDe1Y3BFBE2PJh+zchpHJuYU2X9AbSN9S6ve9XI/GDh
+         IeC9Ces2CroJzxL986L+mfGnkca7N/bdayd6xjhQVD6Oi5rpEqYs8GXHHBI5H+ra1q1X
+         EcaiOZzcka8wvcky5bVIyKProP06nna42en+2VmFPHsLnJISAZn7emADsmWachJI6Sdy
+         fDAtXCQ5VyxmvDEjrUGJdAnM0asy0mHD4HqaakSXnHZHROwKdJMKltzERDa/vVy5JhEb
+         TswQ==
+X-Gm-Message-State: AOJu0Yx/Er3HQFGtP/6X4RpscgDGvVpjxrnU57CpBW14ZWL0k1aFp52k
+	zb7Lig2lyTeZwghdPJKEV3hMdA==
+X-Google-Smtp-Source: AGHT+IEMW+st7pK1ERCOwxwoalcSvIpW84hrr+4hW9zDszK+PkTuQiJ5+HlDQX/MBJ7tT52BBQ4d4g==
+X-Received: by 2002:a05:6a21:4985:b0:151:991c:84b6 with SMTP id ax5-20020a056a21498500b00151991c84b6mr6676548pzc.59.1695324494675;
+        Thu, 21 Sep 2023 12:28:14 -0700 (PDT)
+Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:e6ed:6d49:f262:8041])
+        by smtp.gmail.com with ESMTPSA id w8-20020a1709029a8800b001b9f032bb3dsm1892875plp.3.2023.09.21.12.28.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Sep 2023 12:28:13 -0700 (PDT)
+From: Douglas Anderson <dianders@chromium.org>
+To: dri-devel@lists.freedesktop.org,
+	Maxime Ripard <mripard@kernel.org>
+Cc: Douglas Anderson <dianders@chromium.org>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Bokun.Zhang@amd.com,
+	Hawking.Zhang@amd.com,
+	James.Zhu@amd.com,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Victor.Zhao@amd.com,
+	Xinhui.Pan@amd.com,
+	abrodkin@synopsys.com,
+	airlied@gmail.com,
+	alexander.deucher@amd.com,
+	alim.akhtar@samsung.com,
+	amd-gfx@lists.freedesktop.org,
+	angelogioacchino.delregno@collabora.com,
+	anitha.chrisanthus@intel.com,
+	biju.das.jz@bp.renesas.com,
+	bskeggs@redhat.com,
+	christian.koenig@amd.com,
+	chunkuang.hu@kernel.org,
+	daniel@ffwll.ch,
+	edmund.j.dea@intel.com,
+	felix.kuehling@amd.com,
+	festevam@gmail.com,
+	geert+renesas@glider.be,
+	inki.dae@samsung.com,
+	jim.cromie@gmail.com,
+	jonathanh@nvidia.com,
+	kernel@pengutronix.de,
+	kherbst@redhat.com,
+	kieran.bingham+renesas@ideasonboard.com,
+	krzysztof.kozlowski@linaro.org,
+	kyungmin.park@samsung.com,
+	l.stach@pengutronix.de,
+	laurent.pinchart@ideasonboard.com,
+	laurentiu.palcu@oss.nxp.com,
+	le.ma@amd.com,
+	lijo.lazar@amd.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-imx@nxp.com,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-tegra@vger.kernel.org,
+	lyude@redhat.com,
+	maarten.lankhorst@linux.intel.com,
+	mario.limonciello@amd.com,
+	matthias.bgg@gmail.com,
+	mdaenzer@redhat.com,
+	mperttunen@nvidia.com,
+	nouveau@lists.freedesktop.org,
+	orsonzhai@gmail.com,
+	p.zabel@pengutronix.de,
+	patrik.r.jakobsson@gmail.com,
+	paul@crapouillou.net,
+	robh@kernel.org,
+	sam@ravnborg.org,
+	shawnguo@kernel.org,
+	shiwu.zhang@amd.com,
+	srinivasan.shanmugam@amd.com,
+	steven.price@arm.com,
+	sw0312.kim@samsung.com,
+	thierry.reding@gmail.com,
+	tzimmermann@suse.de,
+	zhang.lyra@gmail.com
+Subject: [RFT PATCH v2 00/12] drm: call drm_atomic_helper_shutdown() at the right times
+Date: Thu, 21 Sep 2023 12:26:43 -0700
+Message-ID: <20230921192749.1542462-1-dianders@chromium.org>
+X-Mailer: git-send-email 2.42.0.515.g380fc7ccd1-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 07/10] dt-bindings: net: enforce phylink
- bindings on certain ethernet controllers
-Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- George McCollister <george.mccollister@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- Marcin Wojtas <mw@semihalf.com>,
- "Russell King (Oracle)" <linux@armlinux.org.uk>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>, Marek Vasut <marex@denx.de>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- John Crispin <john@phrozen.org>, Madalin Bucur <madalin.bucur@nxp.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>, Lorenzo Bianconi
- <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Horatiu Vultur <horatiu.vultur@microchip.com>,
- Oleksij Rempel <linux@rempel-privat.de>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>,
- Shyam Pandey <radhey.shyam.pandey@xilinx.com>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org
-References: <20230916110902.234273-1-arinc.unal@arinc9.com>
- <20230916110902.234273-8-arinc.unal@arinc9.com>
- <20230918181319.GA1445647-robh@kernel.org>
- <16710cf9-8911-4fed-8e2d-b19b581446c1@arinc9.com>
- <a8d49992-4fa8-4a9f-b954-79011a3040a8@lunn.ch>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <a8d49992-4fa8-4a9f-b954-79011a3040a8@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_112215_240834_202A0C97 
-X-CRM114-Status: GOOD (  34.36  )
+X-CRM114-CacheID: sfid-20230921_122820_213499_EF96E291 
+X-CRM114-Status: GOOD (  25.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,72 +149,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21.09.2023 16:00, Andrew Lunn wrote:
->> - Link descriptions must be required on ethernet controllers. We don't care
->>    whether some Linux driver can or cannot find the PHY or set up a fixed
->>    link without looking at the devicetree.
-> 
-> That can lead to future surprises, and breakage.
-> 
-> Something which is not used is not tested, and so sometimes wrong, and
-> nobody knows. Say the driver is extended to a new device and actually
-> does need to use this never before used information. You then find it
-> is wrong, and you get a regression.
-> 
-> We have had issues like this before. There are four rgmii phy-link
-> modes. We have had PHY drivers which ignored one of those modes, it
-> silently accepted it, but did not change the hardware to actually use
-> that mode. The PHY continues to use its reset defaults or strapping,
-> and it worked. A lot of device trees ended up using this mode. And it
-> was not the same as reset defaults/strapping.
-> 
-> And then somebody needed that fourth mode, and made it actually
-> work. And all those boards wrongly using that mode broke.
-> 
-> The lesson i learned from that episode is that anything in device tree
-> must actually be used and tested.
 
-It looks like the root cause here was the lack of dt-bindings to only allow
-the phy-mode values the hardware supports. What I see here is the driver
-change should've been tested on all different hardware the driver controls
-then the improper describing of hardware on the devicetree source file
-addressed.
+This patch series came about after a _long_ discussion between me and
+Maxime Ripard in response to a different patch I sent out [1]. As part
+of that discussion, we realized that it would be good if DRM drivers
+consistently called drm_atomic_helper_shutdown() properly at shutdown
+and driver remove time as it's documented that they should do. The
+eventual goal of this would be to enable removing some hacky code from
+panel drivers where they had to hook into shutdown themselves because
+the DRM driver wasn't calling them.
 
-If a devicetree change that ensures proper describing of hardware is found
-to break a driver in the future, then that exposes a bug on the driver and
-the driver will have to be fixed. I don't see this upholding writing
-dt-bindings that ensures proper describing of the hardware.
+It turns out that quite a lot of drivers seemed to be missing
+drm_atomic_helper_shutdown() in one or both places that it was
+supposed to be. This patch series attempts to fix all the drivers that
+I was able to identify.
 
-> 
->> Although I see dsa.yaml and dsa-port.yaml mostly consist of describing an
->> ethernet switch with CPU port(s), there're properties that are specific to
->> DSA, such as dsa,member on dsa.yaml and dsa-tag-protocol and label on
->> dsa-port.yaml.
-> 
-> I would say dsa,member does describe the hardware. It provides two
-> bits of information:
-> 
-> Which cluster of switches does this switch belong to. You probably can
-> derive it using the DSA links between switches, which is also a
-> hardware property. But having it in device tree makes it simpler.
-> 
-> Which switch is this within a cluster. You need to be able to say:
-> Send this frame out Port X of switch Y. How does a switch know it is
-> Y? It could be strapping, which is clearly a hardware property.
-> 
-> dsa-tag-protocol is similar to phy-mode. It tells you the protocol
-> running between the CPU port and the SoC master interface. You often
-> can imply it, but again, it could be determined by strapping on the
-> switch.
-> 
-> label is an interesting one, and probably would not be accepted if it
-> was proposed now. But it has been around a long time. It also does
-> describe the hardware, it is what is printed on the case next to the
-> RJ45. To make the user experience simpler, we then try to make the
-> linux interface name match the label on the case.
+NOTE: fixing this wasn't exactly cookie cutter. Each driver has its
+own unique way of setting itself up and tearing itself down. Some
+drivers also use the component model, which adds extra fun. I've made
+my best guess at solving this and I've run a bunch of compile tests
+(specifically, allmodconfig for amd64, arm64, and powerpc). That being
+said, these code changes are not totally trivial and I've done zero
+real testing on them. Making these patches was also a little mind
+numbing and I'm certain my eyes glazed over at several points when
+writing them. What I'm trying to say is to please double-check that I
+didn't do anything too silly, like cast your driver's drvdata to the
+wrong type. Even better, test these patches!
 
-Looks like we can incorporate dsa.port and dsa-port.yaml into
-ethernet-switch.yaml and ethernet-switch-port.yaml with adjustments.
+I've labeled this patch series as RFT (request for testing) to help
+call attention to the fact that I didn't personally test any of these
+patches.
 
-Arınç
+I'd like to call out a few drivers that I _didn't_ fix in this series
+and why. If any of these drivers should be fixed then please yell.
+- DRM drivers backed by usb_driver (like gud, gm12u320, udl): I didn't
+  add the call to drm_atomic_helper_shutdown() at shutdown time
+  because there's no ".shutdown" callback for them USB drivers. Given
+  that USB is hotpluggable, I'm assuming that they are robust against
+  this and the special shutdown callback isn't needed.
+- ofdrm and simpledrm: These didn't have drm_atomic_helper_shutdown()
+  in either shutdown or remove, but I didn't add it. I think that's OK
+  since they're sorta special and not really directly controlling
+  hardware power sequencing.
+- virtio, vkms, vmwgfx, xen: I believe these are all virtual (thus
+  they wouldn't directly drive a panel) and adding the shutdown
+  didn't look straightforward, so I skipped them.
+
+I've let each patch in the series get CCed straight from
+get_maintainer. That means not everyone will have received every patch
+but everyone should be on the cover letter. I know some people dislike
+this but when touching this many drivers there's not much
+choice. dri-devel and lkml have been CCed and lore/lei exist, so
+hopefully that's enough for folks. I'm happy to add people to the
+whole series for future posts.
+
+NOTE: I landed everything I could from v1 of the patch series [2] [3]
+to drm-misc. This v2 is everyone that is still left. If you'd like me
+to land one of the patches here to drm-misc for you, please say
+so. Otherwise I will assume maintainers will pick patches for their
+particular driver and land them. There are no dependencies.
+
+[1] https://lore.kernel.org/lkml/20230804140605.RFC.4.I930069a32baab6faf46d6b234f89613b5cec0f14@changeid
+[2] https://lore.kernel.org/r/20230901234015.566018-1-dianders@chromium.org
+[3] https://lore.kernel.org/r/20230901234202.566951-1-dianders@chromium.org
+
+Changes in v2:
+- Rebased and resolved conflicts.
+
+Douglas Anderson (12):
+  drm/imx/dcss: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/kmb: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/mediatek: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/nouveau: Call drm_atomic_helper_shutdown() or equiv at shutdown
+    time
+  drm/tegra: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/arcpgu: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/amdgpu: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/sprd: Call drm_atomic_helper_shutdown() at remove time
+  drm/exynos: Call drm_atomic_helper_shutdown() at shutdown/unbind time
+  drm/gma500: Call drm_helper_force_disable_all() at shutdown/remove
+    time
+  drm/radeon: Call drm_helper_force_disable_all() at shutdown/remove
+    time
+  drm/renesas/shmobile: Call drm_helper_force_disable_all() at
+    shutdown/remove time
+
+ drivers/gpu/drm/amd/amdgpu/amdgpu.h              |  1 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c       | 10 ++++++++++
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c          |  2 ++
+ drivers/gpu/drm/exynos/exynos_drm_drv.c          | 11 +++++++++++
+ drivers/gpu/drm/gma500/psb_drv.c                 |  8 ++++++++
+ drivers/gpu/drm/imx/dcss/dcss-drv.c              |  8 ++++++++
+ drivers/gpu/drm/imx/dcss/dcss-kms.c              |  7 +++++++
+ drivers/gpu/drm/imx/dcss/dcss-kms.h              |  1 +
+ drivers/gpu/drm/kmb/kmb_drv.c                    |  6 ++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c           |  9 +++++++++
+ drivers/gpu/drm/nouveau/nouveau_display.c        |  9 +++++++++
+ drivers/gpu/drm/nouveau/nouveau_display.h        |  1 +
+ drivers/gpu/drm/nouveau/nouveau_drm.c            | 13 +++++++++++++
+ drivers/gpu/drm/nouveau/nouveau_drv.h            |  1 +
+ drivers/gpu/drm/nouveau/nouveau_platform.c       |  6 ++++++
+ drivers/gpu/drm/radeon/radeon_drv.c              |  7 ++++++-
+ drivers/gpu/drm/renesas/shmobile/shmob_drm_drv.c | 10 ++++++++++
+ drivers/gpu/drm/sprd/sprd_drm.c                  |  4 +++-
+ drivers/gpu/drm/tegra/drm.c                      |  6 ++++++
+ drivers/gpu/drm/tiny/arcpgu.c                    |  6 ++++++
+ 20 files changed, 124 insertions(+), 2 deletions(-)
+
+-- 
+2.42.0.515.g380fc7ccd1-goog
+
 
