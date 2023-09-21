@@ -4,107 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E6BAE71060
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 13:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C019DE7106A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 13:07:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qKm5PjEzUxyMudDyWH1l+GObMoy6S9qVw27naJU6pOw=; b=4TZPJCj6cciLk1/okwJBoUzTb1
-	RkmaVYI+sTr94O9HcfG1TNxbUyRiza7HkE1HGl2/32JEe+6Hlwds3GU+IpVaUMXqO+v8ocKYiAH9t
-	uOigZ+eZcwU+ZzMgKEMQ1HhYad9FeJng1Hty+mOcDkb1H7pHu7zpwXWxf0UMxixY3KOl3LSvlEjFm
-	MUpL2WVY5Y8VerCbO0V6mJ1gdlrSN++QB1oY4deAIdu8hBsPP1ss6r9EVF20340pnMLbB5qrYKUb9
-	nVd/7tjPnSyFv5RkgXLjW4/mBM6fEDUYSvl/8Zh+E0xL6AWw6vmZkaFMP0Cuh4ZsqVqldsEy0r2q9
-	KqYiMZOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TfEwvUuoy0o3P7hy2O68uHMpJn81FjIu894kh39mOuc=; b=L3dp9fyeJzBAEXW7VfY16ISp1D
+	E8VGDKNHSblLcYlIhkuRkGWRLWwGNpkq8iIG0Mm/Bz52RffAxppuskuIFkFeSQeVGPCeIaAVbKXI5
+	6mUtxcW81F30UfKDILwQWdiIHiGh7gL0TYHcZmU47nNHSne2AxbNyHCewyif02HF7GMhTGtqYa+VQ
+	9GyI0X5SbnhH5e/+SaJ/AkJRfFH1bsrcSRuZeId2/VZamxIj9kkNEPb55iiw2sgTYKJybq1/9hkNT
+	rrXQU7OXnw/Og5Cqj6+Rk9r6/Irg5YNWNv0Q5I3a6Sob7RiBo2VjvdVZaiy/I65MU94uRRocK98v0
+	SckYIPBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjJIy-00652q-0h;
-	Thu, 21 Sep 2023 13:01:16 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1qjJOr-0065uG-1w;
+	Thu, 21 Sep 2023 13:07:21 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjJIu-00651t-11;
-	Thu, 21 Sep 2023 13:01:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=qKm5PjEzUxyMudDyWH1l+GObMoy6S9qVw27naJU6pOw=; b=OUJduL3Hp9PrYXAS7WiSY/LcH1
-	OzGr8ycxrYFQLqMLsxZp2JyY+1HhJQ3G1rEkjVVTPEmQByleh6sMMBuKozPsnpZzvwvvJJ3JLVXzN
-	8J0txZkz8lhtHI4Me/lysAATpn/bfPA9V/KGdeZAs/cZy4vtQmMIazip89Sw2atjKjJo=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1qjJHr-0075OV-24; Thu, 21 Sep 2023 15:00:07 +0200
-Date: Thu, 21 Sep 2023 15:00:07 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	George McCollister <george.mccollister@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
-	Marcin Wojtas <mw@semihalf.com>,
-	"Russell King (Oracle)" <linux@armlinux.org.uk>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Marek Vasut <marex@denx.de>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	John Crispin <john@phrozen.org>,
-	Madalin Bucur <madalin.bucur@nxp.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Oleksij Rempel <linux@rempel-privat.de>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Grygorii Strashko <grygorii.strashko@ti.com>,
-	Sekhar Nori <nsekhar@ti.com>,
-	Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH net-next v2 07/10] dt-bindings: net: enforce phylink
- bindings on certain ethernet controllers
-Message-ID: <a8d49992-4fa8-4a9f-b954-79011a3040a8@lunn.ch>
-References: <20230916110902.234273-1-arinc.unal@arinc9.com>
- <20230916110902.234273-8-arinc.unal@arinc9.com>
- <20230918181319.GA1445647-robh@kernel.org>
- <16710cf9-8911-4fed-8e2d-b19b581446c1@arinc9.com>
+	id 1qjJOn-0065sD-0s;
+	Thu, 21 Sep 2023 13:07:19 +0000
+Received: from [IPV6:2a01:e0a:120:3210:9fdf:789a:7434:5a59] (unknown [IPv6:2a01:e0a:120:3210:9fdf:789a:7434:5a59])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0993D660730F;
+	Thu, 21 Sep 2023 14:07:08 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695301628;
+	bh=mmmqwe8q35EF60gRPt25qgUoNhlMJ6f3fdyHBPL8m3I=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=eycWj38iy+o38Wd27qeabpN9rCIeaUbg4iCFmr/gYTc1iI0sd4g6PA9ixzl7OCbql
+	 WhNNn1IPL7jCZXaa2tfeNuBKI4ukEnhi++qwS4TsPhYUByBrX434lzly16fjBPPHT7
+	 QgOvqo9F9b7POofosZ0jRYZqHKDttSbNFGaU2H1A13qYx12llkfYMrgHPECpHbIT10
+	 CDRhZxzqHs5xvj42Z+kN44idFLmv+2Iv0EQNVANYJmritM3Pcy1Epy6YGXCzq9e//j
+	 GHNFOeedc4smhZgCbok3W1igHvgk7paj/48e3GyHtkEXS65ykPybPaMsxYkchfcfsY
+	 85EKNLZgBqdMQ==
+Message-ID: <bf659f27-1669-86b8-df30-f1e7f9ecf371@collabora.com>
+Date: Thu, 21 Sep 2023 15:07:05 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <16710cf9-8911-4fed-8e2d-b19b581446c1@arinc9.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v7 45/49] media: core: Add bitmap manage bufs array
+ entries
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-46-benjamin.gaignard@collabora.com>
+ <1142bbb4-b8f1-44ec-962e-9347a231782f@xs4all.nl>
+ <20b6b93e-eef8-3d7b-a3c2-795f220059d4@collabora.com>
+ <470682b4-c14b-4237-bc46-fddfdd085026@xs4all.nl>
+ <31f298ec-6280-d21b-3d8a-c7bf1c9c0c30@collabora.com>
+ <b10a7414-b710-4fb9-a72d-e2d7eff2616d@xs4all.nl>
+ <aa649adf-8faf-801b-f6bd-d4a4760e040f@collabora.com>
+ <a6a6da68-d9f2-44d3-9741-aa2cf83fac6d@xs4all.nl>
+ <c8b7db47-3875-a10b-8d81-a0b3dcbc564a@collabora.com>
+In-Reply-To: <c8b7db47-3875-a10b-8d81-a0b3dcbc564a@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_060112_390668_38620F28 
-X-CRM114-Status: GOOD (  22.28  )
+X-CRM114-CacheID: sfid-20230921_060717_582347_4E1A000F 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,56 +90,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> - Link descriptions must be required on ethernet controllers. We don't care
->   whether some Linux driver can or cannot find the PHY or set up a fixed
->   link without looking at the devicetree.
 
-That can lead to future surprises, and breakage.
+Le 21/09/2023 à 14:46, Benjamin Gaignard a écrit :
+>
+> Le 21/09/2023 à 14:13, Hans Verkuil a écrit :
+>> On 21/09/2023 14:05, Benjamin Gaignard wrote:
+>>> Le 21/09/2023 à 12:24, Hans Verkuil a écrit :
+>>>> On 21/09/2023 11:28, Benjamin Gaignard wrote:
+>>>>> Le 20/09/2023 à 16:56, Hans Verkuil a écrit :
+>>>>>> On 20/09/2023 16:30, Benjamin Gaignard wrote:
+>>>>>> <snip>
+>>>>>>
+>>>>>>>>>          num_buffers = min_t(unsigned int, num_buffers,
+>>>>>>>>>                      q->max_allowed_buffers - 
+>>>>>>>>> vb2_get_num_buffers(q));
+>>>>>>>>>      -    first_index = vb2_get_num_buffers(q);
+>>>>>>>>> +    first_index = bitmap_find_next_zero_area(q->bufs_map, 
+>>>>>>>>> q->max_allowed_buffers,
+>>>>>>>>> +                         0, num_buffers, 0);
+>>>>>>>>>            if (first_index >= q->max_allowed_buffers)
+>>>>>>>>>              return 0;
+>>>>>>>>> @@ -675,7 +678,13 @@ static void __vb2_queue_free(struct 
+>>>>>>>>> vb2_queue *q, unsigned int buffers)
+>>>>>>>>>        struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q, 
+>>>>>>>>> unsigned int index)
+>>>>>>>>>      {
+>>>>>>>>> -    if (index < q->num_buffers)
+>>>>>>>>> +    if (!q->bufs_map || !q->bufs)
+>>>>>>>>> +        return NULL;
+>>>>>>>> I don't think this can ever happen.
+>>>>>>> I got kernel crash without them.
+>>>>>>> I will keep them.
+>>>>>> What is the backtrace? How can this happen? It feels wrong that 
+>>>>>> this can be
+>>>>>> called with a vb2_queue that apparently is not properly initialized.
+>>>>> I have this log when adding dump_stack() in vb2_get_buffer() if 
+>>>>> !q->bufs_bitmap:
+>>>>>
+>>>>> [   18.924627] Call trace:
+>>>>> [   18.927090]  dump_backtrace+0x94/0xec
+>>>>> [   18.930787]  show_stack+0x18/0x24
+>>>>> [   18.934137]  dump_stack_lvl+0x48/0x60
+>>>>> [   18.937833]  dump_stack+0x18/0x24
+>>>>> [   18.941166]  __vb2_queue_cancel+0x23c/0x2f0
+>>>>> [   18.945365]  vb2_core_queue_release+0x24/0x6c
+>>>>> [   18.949740]  vb2_queue_release+0x10/0x1c
+>>>>> [   18.953677]  v4l2_m2m_ctx_release+0x20/0x40
+>>>>> [   18.957892]  hantro_release+0x20/0x54
+>>>>> [   18.961584]  v4l2_release+0x74/0xec
+>>>>> [   18.965110]  __fput+0xb4/0x274
+>>>>> [   18.968205]  __fput_sync+0x50/0x5c
+>>>>> [   18.971626]  __arm64_sys_close+0x38/0x7c
+>>>>> [   18.975562]  invoke_syscall+0x48/0x114
+>>>>> [   18.979329]  el0_svc_common.constprop.0+0xc0/0xe0
+>>>>> [   18.984068]  do_el0_svc+0x1c/0x28
+>>>>> [   18.987402]  el0_svc+0x40/0xe8
+>>>>> [   18.990470]  el0t_64_sync_handler+0x100/0x12c
+>>>>> [   18.994842]  el0t_64_sync+0x190/0x194
+>>>>>
+>>>>> This happen at boot time when hantro driver is open and close 
+>>>>> without other actions.
+>>>> Ah, now I see the problem. q->bufs and q->bufs_map are allocated in
+>>>> vb2_core_create_bufs and vb2_core_reqbufs, but they should be 
+>>>> allocated
+>>>> in vb2_queue_init: that's the counterpart of vb2_core_queue_release.
 
-Something which is not used is not tested, and so sometimes wrong, and
-nobody knows. Say the driver is extended to a new device and actually
-does need to use this never before used information. You then find it
-is wrong, and you get a regression.
+Hans,
+I think we are doing loops in your comment :-)
+https://patchwork.kernel.org/comment/25496456/
 
-We have had issues like this before. There are four rgmii phy-link
-modes. We have had PHY drivers which ignored one of those modes, it
-silently accepted it, but did not change the hardware to actually use
-that mode. The PHY continues to use its reset defaults or strapping,
-and it worked. A lot of device trees ended up using this mode. And it
-was not the same as reset defaults/strapping.
+Regards,
+Benjamin
 
-And then somebody needed that fourth mode, and made it actually
-work. And all those boards wrongly using that mode broke.
-
-The lesson i learned from that episode is that anything in device tree
-must actually be used and tested.
-
-> Although I see dsa.yaml and dsa-port.yaml mostly consist of describing an
-> ethernet switch with CPU port(s), there're properties that are specific to
-> DSA, such as dsa,member on dsa.yaml and dsa-tag-protocol and label on
-> dsa-port.yaml.
-
-I would say dsa,member does describe the hardware. It provides two
-bits of information:
-
-Which cluster of switches does this switch belong to. You probably can
-derive it using the DSA links between switches, which is also a
-hardware property. But having it in device tree makes it simpler.
-
-Which switch is this within a cluster. You need to be able to say:
-Send this frame out Port X of switch Y. How does a switch know it is
-Y? It could be strapping, which is clearly a hardware property.
-
-dsa-tag-protocol is similar to phy-mode. It tells you the protocol
-running between the CPU port and the SoC master interface. You often
-can imply it, but again, it could be determined by strapping on the
-switch.
-
-label is an interesting one, and probably would not be accepted if it
-was proposed now. But it has been around a long time. It also does
-describe the hardware, it is what is printed on the case next to the
-RJ45. To make the user experience simpler, we then try to make the
-linux interface name match the label on the case.
-
-	Andrew
+>>>>
+>>>> With that change you shouldn't have to check for q->bufs/bufs_map 
+>>>> anymore.
+>>> It is a better solution but even like this vb2_core_queue_release() 
+>>> is called
+>>> at least 2 times on the same vivid queue and without testing 
+>>> q->bufs_bitmap
+>>> makes kernel crash.
+>> Do you have a stacktrace for that? Perhaps vb2_core_queue_release 
+>> should check
+>> for q->bufs/q->bufs_map and return if those are NULL. But it could 
+>> also be a
+>> bug that it is called twice, it just was never noticed because it was 
+>> harmless
+>> before.
+>
+> I have added some printk to log that when running test-media on vivid:
+>
+> [  130.497426] vb2_core_queue_init queue cap-0000000050d195ab allocate 
+> q->bufs 00000000dc2c15ed and q->bufs_bitmap 000000008173fc5a
+> ...
+> [  130.733967] vb2_core_queue_release queue cap-0000000050d195ab 
+> release q->bufs and q->bufs_bitmap
+> [  133.866345] vb2_get_buffer queue cap-0000000050d195ab 
+> q->bufs_bitmap is NULL
+> [  133.873454] CPU: 1 PID: 321 Comm: v4l2-ctl Not tainted 6.6.0-rc1+ #542
+> [  133.879997] Hardware name: NXP i.MX8MQ EVK (DT)
+> [  133.884536] Call trace:
+> [  133.886988]  dump_backtrace+0x94/0xec
+> [  133.890673]  show_stack+0x18/0x24
+> [  133.894002]  dump_stack_lvl+0x48/0x60
+> [  133.897681]  dump_stack+0x18/0x24
+> [  133.901009]  __vb2_queue_cancel+0x250/0x31c
+> [  133.905209]  vb2_core_queue_release+0x24/0x88
+> [  133.909580]  _vb2_fop_release+0xb0/0xbc
+> [  133.913428]  vb2_fop_release+0x2c/0x58
+> [  133.917187]  vivid_fop_release+0x80/0x388 [vivid]
+> [  133.921948]  v4l2_release+0x74/0xec
+> [  133.925452]  __fput+0xb4/0x274
+> [  133.928520]  __fput_sync+0x50/0x5c
+> [  133.931934]  __arm64_sys_close+0x38/0x7c
+> [  133.935868]  invoke_syscall+0x48/0x114
+> [  133.939630]  el0_svc_common.constprop.0+0x40/0xe0
+> [  133.944349]  do_el0_svc+0x1c/0x28
+> [  133.947677]  el0_svc+0x40/0xe8
+> [  133.950741]  el0t_64_sync_handler+0x100/0x12c
+> [  133.955109]  el0t_64_sync+0x190/0x194
+>
+> and later I have a call to reqbufs on the same queue without call to 
+> vb2_core_queue_init before
+>
+> [   58.696812] __vb2_queue_alloc queue cap- 
+> 0000000050d195abq->bufs_bitmap is NULL
+> [   58.704148] CPU: 1 PID: 319 Comm: v4l2-compliance Not tainted 
+> 6.6.0-rc1+ #544
+> [   58.711291] Hardware name: NXP i.MX8MQ EVK (DT)
+> [   58.715826] Call trace:
+> [   58.718274]  dump_backtrace+0x94/0xec
+> [   58.721951]  show_stack+0x18/0x24
+> [   58.725274]  dump_stack_lvl+0x48/0x60
+> [   58.728946]  dump_stack+0x18/0x24
+> [   58.732268]  __vb2_queue_alloc+0x4a8/0x50c
+> [   58.736374]  vb2_core_reqbufs+0x274/0x46c
+> [   58.740391]  vb2_ioctl_reqbufs+0xb0/0xe8
+> [   58.744320]  vidioc_reqbufs+0x50/0x64 [vivid]
+> [   58.748717]  v4l_reqbufs+0x50/0x64
+> [   58.752125]  __video_do_ioctl+0x164/0x3c8
+> [   58.756140]  video_usercopy+0x200/0x668
+> [   58.759982]  video_ioctl2+0x18/0x28
+> [   58.763475]  v4l2_ioctl+0x40/0x60
+> [   58.766798]  __arm64_sys_ioctl+0xac/0xf0
+> [   58.770730]  invoke_syscall+0x48/0x114
+> [   58.774487]  el0_svc_common.constprop.0+0x40/0xe0
+> [   58.779199]  do_el0_svc+0x1c/0x28
+> [   58.782520]  el0_svc+0x40/0xe8
+> [   58.785580]  el0t_64_sync_handler+0x100/0x12c
+> [   58.789942]  el0t_64_sync+0x190/0x194
+>
+>>
+>> Regards,
+>>
+>>     Hans
+>>
+>>>> Regards,
+>>>>
+>>>>      Hans
+>>>>
+>>>>>>>>> +
+>>>>>>>>> +    return (bitmap_weight(q->bufs_map, 
+>>>>>>>>> q->max_allowed_buffers) > 0);
+>>>>>>>> How about:
+>>>>>>>>
+>>>>>>>>        return vb2_get_num_buffers(q) > 0;
+>>>>>>> vb2_get_num_buffers is defined in videobuf2-core.c, I'm not sure 
+>>>>>>> that
+>>>>>>> an inline function could depend of a module function.
+>>>>>> Not a problem. E.g. v4l2-ctrls.h is full of such static inlines.
+>>>>>>
+>>>>>> Regards,
+>>>>>>
+>>>>>>       Hans
+>>>>>>
+>>
 
