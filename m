@@ -4,68 +4,181 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DC3EE7106D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 13:48:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A26D3E71072
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 14:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=feAzry+PrWosbOvwv/dQM2DODZRAUsvpmOU7jCI0vKU=; b=cwbCCYXn85m5P6Q0hZ3IZsi1wS
-	JGBqXzviS8M1oFJKBsiGdKqpI/b6DmvZqDe0XExgBRBBP9Yqq3EQQSKlRdR8pGrjpkGYtorMG57fT
-	n1A8zQoAJckn0j2JY8A41HzyMCug2kDn7C0IB3drxgL9TNtn9Zao7Pm/mNN1EgvQXHFZTVUqgiuiZ
-	5LN+v6XmSVQG+llScN64xpUKAaDiSk7gdUuUQ/74sChwrpE1eCDtVMsXwg83x7UHF7kBlPpiqWabR
-	h+vrHLN62gslYw10QkiU3zuE3ueSYVB7SnuxvzqaOuro9Q7w7R8XVDY66FCz/qesxKybqJrm5qCCU
-	CErJiNmw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n/LFb/aFpz3zw5uPfAVDwlUHxvembyE/H85bqVVmtL8=; b=B+LkNT04fE50R2WgJLL3xd9Um+
+	lx2csZff+xp8LpwFWfRSzr1b4E7IiQaQrqA8gSdKlX55kqeMG/s2j70LDCjuB6KaNqnet3mqAu2lX
+	6LoNWyu565Ubsv9LoB/a+GXXvybCusGq5/1+2WIi+35/SOKYz5tCJl8ZgSzYErtEzwXxqfq3Mc6X1
+	t5p3aqku5tjkF6gbM4a3D+XCsGWx/zx4heVhbpCZECYEQmm/0Zi9QJWVDtlT9ar5bgoxi5qiP4n6d
+	ra0TX9fyFP3rUh3q/VuJ8ZajNMhd9RBp9JHClEeyleQZZauSkua9tV5mj+WcHgQWVGABE6Vm0LQCW
+	O5J2dVLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjK2V-006AmO-1X;
-	Thu, 21 Sep 2023 13:48:19 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qjKT0-006ESC-0J;
+	Thu, 21 Sep 2023 14:15:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjK2R-006AlC-2Q;
-	Thu, 21 Sep 2023 13:48:17 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id CC20ACE21C4;
-	Thu, 21 Sep 2023 13:48:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BEF7DC4E74B;
-	Thu, 21 Sep 2023 13:48:08 +0000 (UTC)
-Message-ID: <13b47528-153d-417d-8fe3-0288aa4d1003@xs4all.nl>
-Date: Thu, 21 Sep 2023 15:48:06 +0200
+	id 1qjKSw-006EPd-2X;
+	Thu, 21 Sep 2023 14:15:40 +0000
+X-UUID: 5167eda0588911ee9b7791016c24628a-20230921
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=n/LFb/aFpz3zw5uPfAVDwlUHxvembyE/H85bqVVmtL8=;
+	b=u39l2cDDc1IYvNafSMn67Ou3x1zmiMqh3moO/owworWi2hL1pFMBx7ndC/QXy0Oo1Z3CkXhG4hDhVv0I+2KvB/Ps0v/pjSp++KEA3tYe5IGcqpIQlLb1k9v+sLKfO0qmym0iihnqye+rcPVbuKGQidVOkCl1vdaLGiUETN3thxI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:8b9d0464-3d5e-4287-8f8c-32dd3d9e8756,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:77414dc3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5167eda0588911ee9b7791016c24628a-20230921
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1396688535; Thu, 21 Sep 2023 07:15:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 21 Sep 2023 22:15:26 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 21 Sep 2023 22:15:26 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GiWpZlhrnbBCWoNbd0WEuEWkMKY5cD7WoiF/sIcdGZ1nuLVCbUqPvk7ty8CnliZXKTZrg450iNQP/Y/oJUUe3pOILv4s/mK6BCF8sg/onwk9GdQFlWl3KhXQj3yvPCaB3TgIaBLGo/LekmLCHOxgKRhBBu9AARUyWF/birHyhf1XL/n3p3b4iNNe3vNilPG5VNY1AlVBjeHpeeLg5dnOn48JnkuUojs9onO6up0ewC39rSCWnvGD331xrfs/P82nhEI3aonKqtjbU2STxXXG3+vEdROQhmaNWsnL4X1bM2LKbB4ppq+DupwsqgU6bhdh2v+AhsDz4x6Ko8EP+wqtGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=n/LFb/aFpz3zw5uPfAVDwlUHxvembyE/H85bqVVmtL8=;
+ b=gra2CM0RzZ820AbsUQQQI6F/NVGOgN96uf7QMP0DZpyL3v2z7+Etbcnlz/KYZ0aXG9WqvqkM3ESruv3qnNYt8IVPaaJaYUkEK1KQLmvCZUWHtwlQqsX2+DcJCgmmpxGQekDDgRAje6u9cPiHhsO1xgzPwxOYxIh/HrbfaAJ9iTow0t+oHfe/iG+mP0jm4430reQ6+kPK0CEWRkZ0msXT+Mg20ejAPOq6/wSeLzOOwtZuOrri6rMEGVvTm4tdEkfJIf5dZ4SH5poSOs5/v02LRSAWbO6EBGAaYe1S897mXhnkRMv7ySerFSTdZ+5ar4TQR2ylYQhcCY3173NzdSDB4w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=n/LFb/aFpz3zw5uPfAVDwlUHxvembyE/H85bqVVmtL8=;
+ b=W55djysU0hfmpyV1MvblLg0b5MjKd0/EU84AFRS8EKAZV4x6Q4SXz201D4RJ2RFJohNJsuLgBocPErDczfhSYUKxZwVTzsoVFPpbYpGwsix0aspDi5QddCSfvjNtq1mPD5pn1mKxJKomCx4Qz4nWQ7yffxSKTWipJu4qLkKoYT0=
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
+ by TYZPR03MB5229.apcprd03.prod.outlook.com (2603:1096:400:3b::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6813.20; Thu, 21 Sep
+ 2023 14:15:23 +0000
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::1b82:a45d:e171:62e8]) by SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::1b82:a45d:e171:62e8%4]) with mapi id 15.20.6813.017; Thu, 21 Sep 2023
+ 14:15:23 +0000
+From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+To: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+	"jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "chunkuang.hu@kernel.org"
+	<chunkuang.hu@kernel.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+	=?utf-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
+	=?utf-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
+	<Jason-ch.Chen@mediatek.com>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
+	<Shawn.Sung@mediatek.com>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
+	<Nancy.Lin@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	=?utf-8?B?RWx2aXMgV2FuZyAo546L5YabKQ==?= <Elvis.Wang@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [PATCH 06/15] mailbox: mediatek: Add cmdq_mbox_stop to disable
+ GCE thread
+Thread-Topic: [PATCH 06/15] mailbox: mediatek: Add cmdq_mbox_stop to disable
+ GCE thread
+Thread-Index: AQHZ6mVzAB+DDXoZvUWdOhEu85xiW7AhW1KAgAP8AAA=
+Date: Thu, 21 Sep 2023 14:15:22 +0000
+Message-ID: <e8a5d5dae3742c571e1efbe55088ff027012b914.camel@mediatek.com>
+References: <20230918192204.32263-1-jason-jh.lin@mediatek.com>
+	 <20230918192204.32263-7-jason-jh.lin@mediatek.com>
+	 <e4449273185eb7794f344386d9b5a4605cfea4d2.camel@mediatek.com>
+In-Reply-To: <e4449273185eb7794f344386d9b5a4605cfea4d2.camel@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|TYZPR03MB5229:EE_
+x-ms-office365-filtering-correlation-id: b183e4ca-fba9-4ee3-e9bf-08dbbaad31c5
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: TFWalRNHYgk0v5/iLKl8e2r0YTVgwqDJc2VLeTMBUCv5fxo7B+pkuHHw4rNp2uycvmxl+uCi/Vx1OCIUCamqfjExeA8BNPRQEPElXoFUXnzgYBPGDl2lfEvEnh3pudgwVE+kJYddqtElYerN/zzwKPKajGrhmLlYfdhubI04P73WJaQBe/B+ApnpzG7Tzu/ITsbrf5v3Hb8sSscLW3yUel0Hm8KSCXaoOPJVe11rKj5475IhZmKmR0r+NZA6v53PfV8OdkAcE3XuGQzYoSMNdeNurc0AdOUVqF+DeB6l8MfB8DGci+fkkxyRb6PLRnLV9fYWkVJVI80V6AxnYC5rYra+wKAGeGGWSDWlwi5U3Mi/ATl1EvbupAOBvSDKJ46IjP3L6Syg3NuAzSgym9XUyyT4am5TdwKgs6bC3iGGS/ysBZ9Xz3btG5RiuJkEO8BISWaL11uTSKyX5twH4MprRMppfbGc6Pl+bLRMgjQPT+ZZoKLxf1cYgUf1LMZlI2f8u0cGx4G9Ke740k5dgQJ8X25R7QoAdY+660sTQOTRBvN+WnxohYomiwl5eg7BB7kwFL0PwJdTy5gBOBbEMpGZ9Nxo6a3ATcnDl9mhlGmOLCazLHs48sgiWHifU8xHTSJ+i0+l0F1M8cJoSfDixZkeQ/qNoXoRwuE7vwZU2QxDMQc=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(39860400002)(366004)(346002)(376002)(136003)(396003)(1800799009)(451199024)(186009)(38070700005)(2616005)(107886003)(38100700002)(6512007)(122000001)(83380400001)(26005)(478600001)(5660300002)(91956017)(8676002)(8936002)(4326008)(7416002)(86362001)(15650500001)(2906002)(316002)(85182001)(41300700001)(36756003)(66946007)(54906003)(64756008)(66446008)(66476007)(66556008)(6506007)(110136005)(6486002)(76116006)(71200400001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UElYKzc2cFhzaUdKcFhsbWFxZHBiVkVZbzU5ZTFPMnM1MVBuVk9KZUVJTnB1?=
+ =?utf-8?B?RjhyVEUyajNPcUVMSWQvTlFlaEowZHRjVjJSOTF4VThpQVpzMlljanFrVURz?=
+ =?utf-8?B?Sm9GWGpoaWVublZwVGxGN21PSFpBK3lXeXVKVkVucFBVb2o1Mko1K1kzQTkr?=
+ =?utf-8?B?a2Ftd0NhdlJpcC8yM2lFMlhDY2pLWkRtdFd1KzNzWVdPWHFsT25OMWVGcFpz?=
+ =?utf-8?B?SnZkQkRZVjNtRzhmZFZXL2dlcE5VNTJ2NFR4YmlLblhoNitDMDR0c2JtMTk0?=
+ =?utf-8?B?YmRRbll6dURQcERUeFF1aWVBbmZHSXBPMGgreVR5S2JGTlllbytiU0hLb2tk?=
+ =?utf-8?B?UFJhalZYVmo4cTVlVlpzYUtCUDNoYWNsZzVpZmtINENZTTZvOFVrNDEwWUJC?=
+ =?utf-8?B?aFlKaWZGeFYwanVRK3QrTEc3clZPUjBRRXE4QnA4N1VwL1NpMVluaW1TMDRt?=
+ =?utf-8?B?dXl5RDVuZHo3ZjJ2aE1lUEg4Qmw4OENkUmJWZ2tvYzNGd2Q0QkU4b3BMVXNY?=
+ =?utf-8?B?bVlPbFl1cEpBL29uWXVTYnlReGV0dllDbXBlOTcwd0NhNngybnIxOHRXL0Ir?=
+ =?utf-8?B?cEllNmtScXlPR3YzcDdORTFhaGZZZ2dtK2w5YytsSjNqMis3WTVQMEVORUtm?=
+ =?utf-8?B?YkQ5UnZKeTdZWHdmTFc3S1hoenR3Z2ZCYVlCNk5LcEVNaUtnQnN6SjFLRVo5?=
+ =?utf-8?B?OHJpOUFrWjUrczRCYXpXUTU2MGQvRnRqTVVOb0NXL2J3eUlUaXFXNndjNkNN?=
+ =?utf-8?B?ZlJ5cURTT0VmUEJpRzl6RW5iYWx2UG1RaDlVd2NOVWtXWWY5Tm1LVlRwZFNW?=
+ =?utf-8?B?VVUxSzQxTW9xVGpsMm5NbWtiM2VkV3lXeGxhY05Bcy9Ma0NBWWgvbFYyZ3Ja?=
+ =?utf-8?B?Q0lxd05TS1E0bEJDVkFTb2N6bndaV3cvQmdOM2FEbWd3ZjRhZ05LYUVHM3Fz?=
+ =?utf-8?B?a0RFSVFxTXd2YjRMQzFUNGNQTnNjWldHOVRiUUp1RnpuOERjZFcxMzBVRGhP?=
+ =?utf-8?B?Y0QxTGc0eVJCd3dmbGFYaHl6TFRWYzdEMk1OeldQMGlmSHFsVUUxcHJUWHdM?=
+ =?utf-8?B?bEQ4M0dQUkY3eGpoVVZkbWRHTXRtZ29YVzlDZlZMNVdia0d3TXhLNGZiMk5Y?=
+ =?utf-8?B?aGY4Tyt4bTZRQzNRekQxcDJ1Wm92VEZBU3pYSnlmWWtxNWpmM1diL1d4Z1Rw?=
+ =?utf-8?B?dkRWZFB3YXY0blI2RXlxS2lLTy9pMnpqYTZPMDMxSjVGdG9xWGk3SUxOMGdL?=
+ =?utf-8?B?MmVpNTJBdnNRVWxXNGIzVkVNeW5XbU8wOWYxc1VmbkN5bGJlM2FHTUF6WmV6?=
+ =?utf-8?B?K2VTdmNxYjlGSTZtdEVFSGtSbGFFekxTeEQ3VGduUm5lWG9RaTJ1WTVGeTUy?=
+ =?utf-8?B?a1VGbTBmWCtBcXlMQ2JnUnFYZTlPeVVvRzQ3dzJVdlZwTHFSejdGbFRIdHRi?=
+ =?utf-8?B?TDZCcTBuWlF6NVY3dW5WeG5QS1NWcFk2NFhjbUhUaUVCR0MxeFJqK3N3REV1?=
+ =?utf-8?B?OWdUVXBkVmtlWDBnZU5rZDY5M3VKNU1tb1IrZmZJdEJ6bzQyaURtUkRIMGw3?=
+ =?utf-8?B?MVM2d2YwZHhzQWRKNm5rSWFHNktnbDFRTWU2KzkrYjkzZVNVWExBa3dMRzFt?=
+ =?utf-8?B?R2Z4cFdvODBTbmVSRkpSYUNzbVorNUxDN3NPQS9iMDJhV2kxV1ZXd1FneVB3?=
+ =?utf-8?B?dzIrUG02VXhUdFFBK0pUdzhnOXV2ZCtjbXRJVkk5em1aOGlwMkRhSjh3aWlZ?=
+ =?utf-8?B?M1JGWUtncndCZS92aWRBL2VtZUtsZFZva3BnaFFub2JGdVUvc2h2Y0dETzFJ?=
+ =?utf-8?B?VVBDa0RyaEFhV3lvam5jUHRGZXhDdUk2S21yU3F6TmREejhrckM1ZGlIWEF2?=
+ =?utf-8?B?QStOc1Bwa0lKOGh3UjlOTkxySnI4OFZHSDRoYTd6QlJzWFArbGJESUhEcmh2?=
+ =?utf-8?B?blV6MitEeEx3MUJ3YkcwZ3ZLTjhyKzBuTUh4eFZ5ZEdXUVF3dkU3dU1zTEFo?=
+ =?utf-8?B?QlhFY1hMaVhxU1IzYmdGYjVDb25GaHhGOE5walIxYnlhbWJZdVZOVGpUTm4w?=
+ =?utf-8?B?UTJkQ3RBS1dsVjduNWFHQmVtSzcxYVYrb2lCd1RUclU3dGNHcFFCak9NT1RL?=
+ =?utf-8?B?VWozVi9FQy9xRjNrcGdzUExBem55OXM1T0pXamtvTytUYTNBVTlvSVRxczJr?=
+ =?utf-8?B?a1E9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <E8B021FFE1AE0745AAE485E196E06D2F@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 45/49] media: core: Add bitmap manage bufs array
- entries
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-46-benjamin.gaignard@collabora.com>
- <1142bbb4-b8f1-44ec-962e-9347a231782f@xs4all.nl>
- <20b6b93e-eef8-3d7b-a3c2-795f220059d4@collabora.com>
- <470682b4-c14b-4237-bc46-fddfdd085026@xs4all.nl>
- <31f298ec-6280-d21b-3d8a-c7bf1c9c0c30@collabora.com>
- <b10a7414-b710-4fb9-a72d-e2d7eff2616d@xs4all.nl>
- <aa649adf-8faf-801b-f6bd-d4a4760e040f@collabora.com>
- <a6a6da68-d9f2-44d3-9741-aa2cf83fac6d@xs4all.nl>
- <c8b7db47-3875-a10b-8d81-a0b3dcbc564a@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <c8b7db47-3875-a10b-8d81-a0b3dcbc564a@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b183e4ca-fba9-4ee3-e9bf-08dbbaad31c5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Sep 2023 14:15:23.0103
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 01U7NryKijnc4YsOglw6DQVvaAUJFgOupna6434Ta7fr4BtsLzV6GuAfU/CgvivIZtDBEHUp/Frnw6ffNtyC1wnclDYZ42+hPQZPBPk3mCI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB5229
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_064816_146113_D8825CC8 
-X-CRM114-Status: GOOD (  24.27  )
+X-CRM114-CacheID: sfid-20230921_071539_044160_9604794B 
+X-CRM114-Status: GOOD (  21.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,177 +193,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/09/2023 14:46, Benjamin Gaignard wrote:
-> 
-> Le 21/09/2023 à 14:13, Hans Verkuil a écrit :
->> On 21/09/2023 14:05, Benjamin Gaignard wrote:
->>> Le 21/09/2023 à 12:24, Hans Verkuil a écrit :
->>>> On 21/09/2023 11:28, Benjamin Gaignard wrote:
->>>>> Le 20/09/2023 à 16:56, Hans Verkuil a écrit :
->>>>>> On 20/09/2023 16:30, Benjamin Gaignard wrote:
->>>>>> <snip>
->>>>>>
->>>>>>>>>          num_buffers = min_t(unsigned int, num_buffers,
->>>>>>>>>                      q->max_allowed_buffers - vb2_get_num_buffers(q));
->>>>>>>>>      -    first_index = vb2_get_num_buffers(q);
->>>>>>>>> +    first_index = bitmap_find_next_zero_area(q->bufs_map, q->max_allowed_buffers,
->>>>>>>>> +                         0, num_buffers, 0);
->>>>>>>>>            if (first_index >= q->max_allowed_buffers)
->>>>>>>>>              return 0;
->>>>>>>>> @@ -675,7 +678,13 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
->>>>>>>>>        struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q, unsigned int index)
->>>>>>>>>      {
->>>>>>>>> -    if (index < q->num_buffers)
->>>>>>>>> +    if (!q->bufs_map || !q->bufs)
->>>>>>>>> +        return NULL;
->>>>>>>> I don't think this can ever happen.
->>>>>>> I got kernel crash without them.
->>>>>>> I will keep them.
->>>>>> What is the backtrace? How can this happen? It feels wrong that this can be
->>>>>> called with a vb2_queue that apparently is not properly initialized.
->>>>> I have this log when adding dump_stack() in vb2_get_buffer() if !q->bufs_bitmap:
->>>>>
->>>>> [   18.924627] Call trace:
->>>>> [   18.927090]  dump_backtrace+0x94/0xec
->>>>> [   18.930787]  show_stack+0x18/0x24
->>>>> [   18.934137]  dump_stack_lvl+0x48/0x60
->>>>> [   18.937833]  dump_stack+0x18/0x24
->>>>> [   18.941166]  __vb2_queue_cancel+0x23c/0x2f0
->>>>> [   18.945365]  vb2_core_queue_release+0x24/0x6c
->>>>> [   18.949740]  vb2_queue_release+0x10/0x1c
->>>>> [   18.953677]  v4l2_m2m_ctx_release+0x20/0x40
->>>>> [   18.957892]  hantro_release+0x20/0x54
->>>>> [   18.961584]  v4l2_release+0x74/0xec
->>>>> [   18.965110]  __fput+0xb4/0x274
->>>>> [   18.968205]  __fput_sync+0x50/0x5c
->>>>> [   18.971626]  __arm64_sys_close+0x38/0x7c
->>>>> [   18.975562]  invoke_syscall+0x48/0x114
->>>>> [   18.979329]  el0_svc_common.constprop.0+0xc0/0xe0
->>>>> [   18.984068]  do_el0_svc+0x1c/0x28
->>>>> [   18.987402]  el0_svc+0x40/0xe8
->>>>> [   18.990470]  el0t_64_sync_handler+0x100/0x12c
->>>>> [   18.994842]  el0t_64_sync+0x190/0x194
->>>>>
->>>>> This happen at boot time when hantro driver is open and close without other actions.
->>>> Ah, now I see the problem. q->bufs and q->bufs_map are allocated in
->>>> vb2_core_create_bufs and vb2_core_reqbufs, but they should be allocated
->>>> in vb2_queue_init: that's the counterpart of vb2_core_queue_release.
->>>>
->>>> With that change you shouldn't have to check for q->bufs/bufs_map anymore.
->>> It is a better solution but even like this vb2_core_queue_release() is called
->>> at least 2 times on the same vivid queue and without testing q->bufs_bitmap
->>> makes kernel crash.
->> Do you have a stacktrace for that? Perhaps vb2_core_queue_release should check
->> for q->bufs/q->bufs_map and return if those are NULL. But it could also be a
->> bug that it is called twice, it just was never noticed because it was harmless
->> before.
-> 
-> I have added some printk to log that when running test-media on vivid:
-> 
-> [  130.497426] vb2_core_queue_init queue cap-0000000050d195ab allocate q->bufs 00000000dc2c15ed and q->bufs_bitmap 000000008173fc5a
-> ...
-> [  130.733967] vb2_core_queue_release queue cap-0000000050d195ab release q->bufs and q->bufs_bitmap
-> [  133.866345] vb2_get_buffer queue cap-0000000050d195ab q->bufs_bitmap is NULL
-> [  133.873454] CPU: 1 PID: 321 Comm: v4l2-ctl Not tainted 6.6.0-rc1+ #542
-> [  133.879997] Hardware name: NXP i.MX8MQ EVK (DT)
-> [  133.884536] Call trace:
-> [  133.886988]  dump_backtrace+0x94/0xec
-> [  133.890673]  show_stack+0x18/0x24
-> [  133.894002]  dump_stack_lvl+0x48/0x60
-> [  133.897681]  dump_stack+0x18/0x24
-> [  133.901009]  __vb2_queue_cancel+0x250/0x31c
-> [  133.905209]  vb2_core_queue_release+0x24/0x88
-> [  133.909580]  _vb2_fop_release+0xb0/0xbc
-> [  133.913428]  vb2_fop_release+0x2c/0x58
-> [  133.917187]  vivid_fop_release+0x80/0x388 [vivid]
-> [  133.921948]  v4l2_release+0x74/0xec
-> [  133.925452]  __fput+0xb4/0x274
-> [  133.928520]  __fput_sync+0x50/0x5c
-> [  133.931934]  __arm64_sys_close+0x38/0x7c
-> [  133.935868]  invoke_syscall+0x48/0x114
-> [  133.939630]  el0_svc_common.constprop.0+0x40/0xe0
-> [  133.944349]  do_el0_svc+0x1c/0x28
-> [  133.947677]  el0_svc+0x40/0xe8
-> [  133.950741]  el0t_64_sync_handler+0x100/0x12c
-> [  133.955109]  el0t_64_sync+0x190/0x194
-> 
-> and later I have a call to reqbufs on the same queue without call to vb2_core_queue_init before
-> 
-> [   58.696812] __vb2_queue_alloc queue cap- 0000000050d195abq->bufs_bitmap is NULL
-> [   58.704148] CPU: 1 PID: 319 Comm: v4l2-compliance Not tainted 6.6.0-rc1+ #544
-> [   58.711291] Hardware name: NXP i.MX8MQ EVK (DT)
-> [   58.715826] Call trace:
-> [   58.718274]  dump_backtrace+0x94/0xec
-> [   58.721951]  show_stack+0x18/0x24
-> [   58.725274]  dump_stack_lvl+0x48/0x60
-> [   58.728946]  dump_stack+0x18/0x24
-> [   58.732268]  __vb2_queue_alloc+0x4a8/0x50c
-> [   58.736374]  vb2_core_reqbufs+0x274/0x46c
-> [   58.740391]  vb2_ioctl_reqbufs+0xb0/0xe8
-> [   58.744320]  vidioc_reqbufs+0x50/0x64 [vivid]
-> [   58.748717]  v4l_reqbufs+0x50/0x64
-> [   58.752125]  __video_do_ioctl+0x164/0x3c8
-> [   58.756140]  video_usercopy+0x200/0x668
-> [   58.759982]  video_ioctl2+0x18/0x28
-> [   58.763475]  v4l2_ioctl+0x40/0x60
-> [   58.766798]  __arm64_sys_ioctl+0xac/0xf0
-> [   58.770730]  invoke_syscall+0x48/0x114
-> [   58.774487]  el0_svc_common.constprop.0+0x40/0xe0
-> [   58.779199]  do_el0_svc+0x1c/0x28
-> [   58.782520]  el0_svc+0x40/0xe8
-> [   58.785580]  el0t_64_sync_handler+0x100/0x12c
-> [   58.789942]  el0t_64_sync+0x190/0x194
-
-Argh, I see what is happening. The root cause is that vb2_core_queue_release
-is actually not a true counterpart to vb2_core_queue_init.
-
-The '_release' part refers to when a file handle is released, and not to
-releasing resources allocated in queue_init.
-
-The queue_init function never actually allocated any resources, so there
-was never a reason to make a counterpart to that, but now that bites us.
-
-Changing this would be a huge amount of work, and it is not worth the
-effort, IMHO.
-
-But at least we shouldn't have to test for both bufs and bufs_map,
-they are either both set or both NULL. Just test one of the two.
-
-The vb2_core_queue_init() function documentation in the header
-should perhaps be more clear about the fact that this function
-does not allocate any resources, and that there is no cleanup
-counterpart.
-
-It is what got me confused...
-
-Regards,
-
-	Hans
-
-> 
->>
->> Regards,
->>
->>     Hans
->>
->>>> Regards,
->>>>
->>>>      Hans
->>>>
->>>>>    
->>>>>>>>> +
->>>>>>>>> +    return (bitmap_weight(q->bufs_map, q->max_allowed_buffers) > 0);
->>>>>>>> How about:
->>>>>>>>
->>>>>>>>        return vb2_get_num_buffers(q) > 0;
->>>>>>> vb2_get_num_buffers is defined in videobuf2-core.c, I'm not sure that
->>>>>>> an inline function could depend of a module function.
->>>>>> Not a problem. E.g. v4l2-ctrls.h is full of such static inlines.
->>>>>>
->>>>>> Regards,
->>>>>>
->>>>>>       Hans
->>>>>>
->>
-
+SGkgQ0ssDQoNClRoYW5rcyBmb3IgdGhlIHJldmlld3MuDQoNCg0KT24gVHVlLCAyMDIzLTA5LTE5
+IGF0IDAxOjI0ICswMDAwLCBDSyBIdSAo6IOh5L+K5YWJKSB3cm90ZToNCj4gSGksIEphc29uOg0K
+PiANCj4gT24gVHVlLCAyMDIzLTA5LTE5IGF0IDAzOjIxICswODAwLCBKYXNvbi1KSC5MaW4gd3Jv
+dGU6DQo+ID4gQWRkIGNtZHFfbWJveF9zdG9wIHRvIGRpc2FibGUgR0NFIHRocmVhZC4NCj4gPiAN
+Cj4gPiBUbyBzdXBwb3J0IHRoZSBlcnJvciBoYW5kbGluZyBvciB0aGUgc3RvcCBmbG93IG9mIHRo
+ZSBHQ0UgbG9vcHBpbmcNCj4gPiB0aHJlYWQsIGxvcHBpbmcgdGhyZWFkIHVzZXIgY2FuIGNhbGwg
+Y21kcV9tYm94X3N0b3AgdG8gZGlzYWJsZSB0aGUNCj4gPiBHQ0UgSFcgdGhyZWFkLg0KPiA+IA0K
+PiA+IFNpZ25lZC1vZmYtYnk6IEphc29uLUpILkxpbiA8amFzb24tamgubGluQG1lZGlhdGVrLmNv
+bT4NCj4gPiAtLS0NCj4gPiAgZHJpdmVycy9tYWlsYm94L210ay1jbWRxLW1haWxib3guYyAgICAg
+ICB8IDYgKysrKysrDQo+ID4gIGluY2x1ZGUvbGludXgvbWFpbGJveC9tdGstY21kcS1tYWlsYm94
+LmggfCAxICsNCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKykNCj4gPiANCj4g
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tYWlsYm94L210ay1jbWRxLW1haWxib3guYw0KPiA+IGIv
+ZHJpdmVycy9tYWlsYm94L210ay1jbWRxLW1haWxib3guYw0KPiA+IGluZGV4IDRkNjJiMDdjMTQx
+MS4uOGJkMzlmZWNiZjAwIDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZlcnMvbWFpbGJveC9tdGstY21k
+cS1tYWlsYm94LmMNCj4gPiArKysgYi9kcml2ZXJzL21haWxib3gvbXRrLWNtZHEtbWFpbGJveC5j
+DQo+ID4gQEAgLTQ2OSw2ICs0NjksMTIgQEAgc3RhdGljIHZvaWQgY21kcV9tYm94X3NodXRkb3du
+KHN0cnVjdA0KPiA+IG1ib3hfY2hhbg0KPiA+ICpjaGFuKQ0KPiA+ICAJc3Bpbl91bmxvY2tfaXJx
+cmVzdG9yZSgmdGhyZWFkLT5jaGFuLT5sb2NrLCBmbGFncyk7DQo+ID4gIH0NCj4gPiAgDQo+ID4g
+K3ZvaWQgY21kcV9tYm94X3N0b3Aoc3RydWN0IG1ib3hfY2hhbiAqY2hhbikNCj4gPiArew0KPiA+
+ICsJY21kcV9tYm94X3NodXRkb3duKGNoYW4pOw0KPiANCj4gY21kcV9tb2J4X3N0b3AoKSBpcyBl
+cXVhbCB0byBjbWRxX21ib3hfc2h1dGRvd24oKSwgc28gY2xpZW50IGRyaXZlcg0KPiBjb3VsZCAg
+Y2FsbCBtYm94X2ZyZWVfY2hhbm5lbCgpIHRvIGRvIHRoaXMgYW5kIHRoaXMgZnVuY3Rpb24gaXMN
+Cj4gcmVkdW5kYW50Lg0KPiANCg0KSSd2ZCB0cmllZCB0byB1c2UgY21kcS0+bWJveC5vcHMtPnNo
+dXRkb3duKGNtZHEtPmNsdC0+Y2hhbikgaW4gbXRrLQ0KY21kcS1zZWMtbWJveC5jLCBidXQgaXQn
+bGwgY2FsbCB0byBjbWRxX3NlY19tYm94X3NodXRkb3duKCkuDQpJZiBJIHdhbnQgdG8gY2FsbCB0
+byB0aGUgY21kcV9tYm94X3NodXRkb3duIGluIG10ay1jbWRxLXNlYy1tYWlsYm94LmMsDQpJIGhh
+dmUgdG8gZmluZCB0aGUgd2F5IHRvIGdldCB0aGUgbWJveCBvZiBtdGstY21kcS1tYWlsYm94LmMu
+DQpTbyBJIHRoaW5rIG9wZW4gYSBBUEkgaXMgZWFzeSBzb2x1dGlvbiBmb3IgdGhpcy4NCg0KSSBo
+YXZlIGNhbGxlZCBtYm94X2ZyZWVfY2hhbm5lbCgpIGJ5IGNhbGxpbmcgY21kcV9tYm94X2Rlc3Ry
+b3koKSBhZnRlciANCmNtZHFfbWJveF9zdG9wKCkgaW4gY21kcV9zZWNfaXJxX25vdGlmeV9zdGFy
+dCgpIGluIG10ay1jbWRxLXNlYy0NCm1haWxib3guYy4NCg0KDQpSZWdhcmRzLA0KSmFzb24tSkgu
+TGluDQoNCj4gUmVnYXJkcywNCj4gQ0sNCj4gDQo+ID4gK30NCj4gPiArRVhQT1JUX1NZTUJPTChj
+bWRxX21ib3hfc3RvcCk7DQo+ID4gKw0KPiA+ICBzdGF0aWMgaW50IGNtZHFfbWJveF9mbHVzaChz
+dHJ1Y3QgbWJveF9jaGFuICpjaGFuLCB1bnNpZ25lZCBsb25nDQo+ID4gdGltZW91dCkNCj4gPiAg
+ew0KPiA+ICAJc3RydWN0IGNtZHFfdGhyZWFkICp0aHJlYWQgPSAoc3RydWN0IGNtZHFfdGhyZWFk
+ICopY2hhbi0NCj4gPiA+IGNvbl9wcml2Ow0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRl
+L2xpbnV4L21haWxib3gvbXRrLWNtZHEtbWFpbGJveC5oDQo+ID4gYi9pbmNsdWRlL2xpbnV4L21h
+aWxib3gvbXRrLWNtZHEtbWFpbGJveC5oDQo+ID4gaW5kZXggYThmMDA3MGM3YWE5Li5mM2U1Nzcz
+MzVhY2IgMTAwNjQ0DQo+ID4gLS0tIGEvaW5jbHVkZS9saW51eC9tYWlsYm94L210ay1jbWRxLW1h
+aWxib3guaA0KPiA+ICsrKyBiL2luY2x1ZGUvbGludXgvbWFpbGJveC9tdGstY21kcS1tYWlsYm94
+LmgNCj4gPiBAQCAtNzksNSArNzksNiBAQCBzdHJ1Y3QgY21kcV9wa3Qgew0KPiA+ICB9Ow0KPiA+
+ICANCj4gPiAgdTggY21kcV9nZXRfc2hpZnRfcGEoc3RydWN0IG1ib3hfY2hhbiAqY2hhbik7DQo+
+ID4gK3ZvaWQgY21kcV9tYm94X3N0b3Aoc3RydWN0IG1ib3hfY2hhbiAqY2hhbik7DQo+ID4gIA0K
+PiA+ICAjZW5kaWYgLyogX19NVEtfQ01EUV9NQUlMQk9YX0hfXyAqLw0K
 
