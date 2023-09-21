@@ -4,91 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2C7CE71088
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 15:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36F7AE71090
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Sep 2023 15:46:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dYU0I1f/BsOPtYjV8f+1Fi1rZ38WVAwCRdtru9HtCm0=; b=qTFoViKi0/yEOs4ikYs+vE47ff
-	tMnq+V6gmSOWj4BNXBVFJaK1ZrmnFFKscyZnhDXeZF2yJSGblXKrLUr6BhyS1YOzRbvEOg3+d1e7p
-	v0iyhE96LPuSov3IK5J/ImdkHuscybTCO9SX/SmBrSVfwgwhzMrVaedhdCoj+2cDoZfRE5705ajfp
-	gBZ+GsnsVap3eZyckaPs0a56TF3TjWkwk2OwdZ9DKdVyYzdPaqV5w/l9ZmsvIx504vtQM0AqGq8Zp
-	ACJecuHujGfDPvTT9XNLSxDcme7U7NHVtWIlJfhHirGgbr8rRYqpGtmNpyzpI1GPeMbMH5s2fkhOT
-	ed3cK0AA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=X8I/sU/MGzlvBp47z9yaYHIpn2F7NMoI5l+3Ycr8W4M=; b=twbRWjjSJOO0yq
+	hsbmHs/MJe3lftKuvTTUNBHWR44gmhq/bV0ZeNy4fcS6jX3YK2A/9LaamBRHuzKz7cayO85p5AzcJ
+	GvjzTJfauF2U3uvhlL9ZiphiTGA2Pm02fPLBjPtnt76tLKyICKblvhEf78kLisU3r3/BxW7QtlORO
+	GaLnbHQGVPvx7fXQZF0CV0ewjC7JlA0yvJcoGYq/IjEYR1/aU9o/TDhXRfKagftsrnjAk9hoOdhTu
+	J2nAchSNlJZ45kx9MBliOk5dOlM+BJ1JOH99aWnatV+WaOrfRyKAG8XZ0WMdIr0q43fCTkXRFFFQu
+	y8dx1vbsLCmUgWl2Mfcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjLNC-006NbS-20;
-	Thu, 21 Sep 2023 15:13:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qjLsV-006RLJ-2X;
+	Thu, 21 Sep 2023 15:46:08 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjLN9-006NZr-0a;
-	Thu, 21 Sep 2023 15:13:45 +0000
-X-UUID: 6fdcf192589111ee9b7791016c24628a-20230921
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=dYU0I1f/BsOPtYjV8f+1Fi1rZ38WVAwCRdtru9HtCm0=;
-	b=hETTKW4OqPzm71dus9rL4oIkV3BBrcwWap9D3/ILt7HVSk7u0/vHZA3snX1f0zREiEZNpknHfoVajx9os6+HQBPBIt2Il/+FlwtFsZ/CSsXwOhPc2VWdHd4H5AbGIShcLtBjnagGIqSVrqyWVC/RieY4/oifmDluVTlQHedlSpU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:3331264d-8030-432e-b57c-80593da2e1bb,IP:0,U
-	RL:0,TC:0,Content:2,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:2
-X-CID-META: VersionHash:5f78ec9,CLOUDID:91ec3614-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:817|102,TC:nil,Content:4|-5,EDM:-3,I
-	P:nil,URL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 1,FCT|NGT
-X-CID-BAS: 1,FCT|NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 6fdcf192589111ee9b7791016c24628a-20230921
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <mark-pk.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 861566182; Thu, 21 Sep 2023 08:13:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 21 Sep 2023 23:13:32 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 21 Sep 2023 23:13:32 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: <robin.murphy@arm.com>
-CC: <amit.kachhap@arm.com>, <angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux@armlinux.org.uk>,
-	<mark-pk.tsai@mediatek.com>, <matthias.bgg@gmail.com>,
-	<yj.chiang@mediatek.com>, <xuewen.yan94@gmail.com>
-Subject: Re: [PATCH] ARM: vfp: Add vudot opcode to VFP undef hook
-Date: Thu, 21 Sep 2023 23:13:32 +0800
-Message-ID: <20230921151332.10937-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <ba2432e4-cfa9-62a8-626e-97aab44c9ffe@arm.com>
-References: <ba2432e4-cfa9-62a8-626e-97aab44c9ffe@arm.com>
+	id 1qjKjb-006Hqd-38
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 Sep 2023 14:32:54 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-98377c5d53eso124403966b.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 Sep 2023 07:32:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1695306769; x=1695911569; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=X8I/sU/MGzlvBp47z9yaYHIpn2F7NMoI5l+3Ycr8W4M=;
+        b=wwFa52/jtRymyqCrNOV6BadC9cVtBZTFKo/HRJTHi/5EIY+Zfzv/QbqYIR8O9ZtYdP
+         amFbTWo5zFAvJ4alLHpFjd7T73MqBUNArnSETsq4l1dIg5O1YmZZ8H4LRW7ANNYTfAbI
+         cOgesdUxX7/uONlcurNo4Sl+3SIa7laOJVO36Gc+3Cq3g4rge2MN5DFLH9mKukZhYaxu
+         IGqmlPmhU9yhSLPfSi0Sy+UfCmAvEVYAungbYZWnXGK+N2WjvRc1524VwozDlf3SNbBJ
+         h8AyK98PpHV0rR4MDOaBNzoifB0t1qaIs2pQcnbym+Wy/j4Sn/9D5QLG6egMcjrm+SxV
+         O5Ig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695306769; x=1695911569;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=X8I/sU/MGzlvBp47z9yaYHIpn2F7NMoI5l+3Ycr8W4M=;
+        b=n/JrbGfGnS4trcoI16lDsg1X36ayDC/RslXCosmCRlKLrUBZOsgqA3V+I7YfJQ3KFs
+         hfsV79DJx80wdzl12P8RpfpfOWxiIoeG4hq6p9KZhANyRB15uGnLTVeJzbRNMUnC7UG1
+         Lx57TfobFXYyBWEYgVRttotU2Zn2xvJFsf1m/a8fmslMUO9GQfuH3Q3EKydGAEf6nwUA
+         px7nPI5RbmfPpb+waBq+n0+sj5IoDQNdTFYOpI2o4BZHNPq0nua0uKiGoQOxrxiIybMJ
+         UbjMiAbySIGsBWNE84+17Ee4KvBHvPzh2uPhX51IK7AjE3HbOUNRIFRJtzCusXQJ3fBF
+         K3Ew==
+X-Gm-Message-State: AOJu0YwQ02zAz24oGGnozd/S0xMUhzSW4EG6pTfJRvU/182rAPnlYP54
+	ylggV5N0NU5L/CjdFrkkfEeufA==
+X-Google-Smtp-Source: AGHT+IGBqi1U8/tm1kNfARUekhYiWvOvpVhOyz/gfrwkUcN1gBpPMHANIWhYIHaICP4eucLNwKwOQA==
+X-Received: by 2002:a17:907:1ddb:b0:9ae:443b:988e with SMTP id og27-20020a1709071ddb00b009ae443b988emr4993019ejc.15.1695306769137;
+        Thu, 21 Sep 2023 07:32:49 -0700 (PDT)
+Received: from [127.0.1.1] ([93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id lt12-20020a170906fa8c00b009a219ecbaf1sm1153327ejb.85.2023.09.21.07.32.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Sep 2023 07:32:48 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v5 0/7] Add IOMMU support to MT8365 SoC
+Date: Thu, 21 Sep 2023 16:32:39 +0200
+Message-Id: <20230207-iommu-support-v5-0-fa6f03680832@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--22.792500-8.000000
-X-TMASE-MatchedRID: x2HXvaraFok4HKI/yaqRm7hzZI/dfrdO9r9tEcSw8jdcKZwALwMGsxJo
-	h7hH2srpp/i3ztxGz+44WyCcixu3XvuyoboeSVFgnbUZkYTzXIYg0L4Xy2OHlfqh2SbpugCf94m
-	WpQQzED9CXD2S19glPV3MEuq4MiSC5p1ATFvutT7Dr0AjBcmfRuPmXK6rwg5BIbxYwbCxGTQwhw
-	b+RYrZ/zmvMXdRLat6kkL+ENlH3tp8tzbYIxQT60+0VUW65/MLfiuvKi9huaZaW2Ktn+I8/sTrc
-	lOEW8K1pvup6QbqTe8HaGdKBLUoNDPAnsAORqSftT4jIeGRd/UW40XiUkbrGw2G3vz8l/IELEl2
-	biZrkJS+PdOfG+B1mJlarbGYnYkMg83Zr5OBrdJ0CDjJ3XioBEDwlkRNC6PCol3uZzZ1GLdQ4jg
-	tTMNRIAt+bT31PiTTAq4rZq8Ul+Yh6m4nn3Yfyw6uUGRBr2oWk8UlXQzLGby2F4a+vI22Pu3ysW
-	jNsapAM0Ndj8ay+q2761Rb2kt6b2FqPXSLpNdAma6DzXaohvMxXH/dlhvLvyUR95vloPe3WAMSJ
-	AGPnBXBfR/WU+6YOHyJ4v6PWnG9sznIV04I19GeAiCmPx4NwJuJ+Pb8n/Vx+gD2vYtOFhgqtq5d
-	3cxkNQP90fJP9eHt
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--22.792500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 0CEA4C241C37E8E5652B30C24918D49BAA0AC75D67F4D8CC0EF69A82D80411302000:8
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAdUDGUC/33NTQrCMBAF4KtI1kYm06Q/rryHuEiTqQ20TUlsQ
+ aR3d3Ap2tXwHrxvXiJTCpTF+fASidaQQ5w4mONBuN5Od5LBcxYIWABCJUMcx0XmZZ5jekhDJUK
+ DJWkkwZvWZpJtspPreTUtw8BlH/Ijpufnx6r4XP9xq5IgdQeuVp036NSltc8htIlOLo7ixtiKu
+ wAyUII3nQUgTeYHUOwCBQNNRaqxXlNt/A9A7wKagVpXTV2aymkFX8C2bW+R/HtodQEAAA==
+To: Yong Wu <yong.wu@mediatek.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2364; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=+lERs6sTfuno7YX0TSz2xcB2J6IO4eaDpmY1nCNJJWA=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBlDFQP7HxueRl+iHWVkWR/QMe3SUlmP72T+aCVUvIm
+ Gl/k1UWJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZQxUDwAKCRArRkmdfjHURc8kD/
+ 9t5WdY3d4LNtyInO8sKmj+NiC13C0C3D85Ol1QtzIjqt1/MoQaJolscUp7OrRiAUI4PhPJUSOAklmO
+ 1dA0Upj/p72H8fu6zmEKDQ4MTv6vFCSBTNaVM4iPNcjIopItOjC3gS1aIwW+2CYdaC+yplPHAeJr4l
+ NbZ0zjypqlFw76PfAlTVGq/iXNiI3XKMxsbZiKdYmoOGbvIt6XFodwpqSWXodOmHIY2dsbLxH3U+sh
+ nNaNh1dnS/EiuZjpTf2qQrVkvgcXdv4A+y95fghxJkx3lf3MTKGkGCjrAgrcz0F31askkJ62SCmVrY
+ /tM0iMYVneqV0oPHQnEprei2u1qvQp37Oz9/oPrNImI1yUaPk03GV2dFXl6cpgcFRMpH7VCqpTrb6V
+ XjjvlJug5KthFYf/k0KIt8q/DIsH++6l5wABg48Q/j8umJ09qsa9GKCZnGnl2wDNxW4yRKcU00XW75
+ L8pXTw/1GuJrVJeHbXl4FfcRoN/unhvbP5PQpAdThDGca9A+dmM2WmMleYLQIjJc5auBiBUfTxOrMc
+ nWcC5vL/2vg6hDYDHt1qo13tXoSwmOqiOnLE40SNlwyUgyJrB1GOlVckJsJT1QEOV5nxMysMC03UTB
+ S4vNCQuQKM7v0nlllOQc4mfPVgcC2n0e+FSZMs3Nju7gVbOmlVYjqbNvBPuA==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230921_081343_338942_C8243254 
-X-CRM114-Status: GOOD (  35.79  )
+X-CRM114-CacheID: sfid-20230921_073252_227550_08F77081 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,166 +114,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On 21/09/2023 3:13 am, Mark-PK Tsai wrote:
-> >> On 2023-09-20 09:39, Mark-PK Tsai wrote:
-> >>> Add vudot opcode to the VFP undef hook to fix the
-> >>> potentially undefined instruction error when the
-> >>> user space executes vudot instruction.
-> >>
-> >> Did the kernel expose a hwcap to say that the dot product extension is
-> >> supported? I'm pretty sure it didn't, so why would userspace expect this
-> >> to work? ;)
-> > 
-> > The hwcap for dotprod has been exported since commit:
-> > 
-> > 62ea0d873af3 ARM: 9269/1: vfp: Add hwcap for FEAT_DotProd
-> > 
-> >>
-> >> IIRC Amit was looking at defining the hwcaps to align with arm64 compat,
-> >> but I believe that series faltered since most of them weren't actually
-> >> needed (and I think at that point it was still missing the VFP support
-> >> code parts). It would be nice if someone could pick up and combine both
-> > 
-> > Were the mentioned series related to this commit?
-> > 
-> > 62ea0d873af3 ARM: 9269/1: vfp: Add hwcap for FEAT_DotProd
-> 
-> Oh, that did get merged? My apologies, I grepped for the hwcaps in 
-> arch/arm but somehow failed to spot that some definitions did exist, so 
-> assumed it hadn't been; not sure what went wrong there :(
-> 
-> In that case, we definitely want this tagged as a fix, and to make sure 
-> we double-check for any equivalent fixes still needed for the other 
-> features too. Sorry again for the confusion.
+This commits are based on the Fabien Parent <fparent@baylibre.com> work.
 
+The purpose of this series is to add the following HWs / IPs support for
+the MT8365 SoC:
+- System Power Manager
+- MultiMedia Memory Management Unit "M4U" (IOMMU)
+  - Smart Multimedia Interface "SMI"
+    - Local arbiter "LARB"
 
-I have just checked the latest open document for the aarch32 ISA:
+This serie depends to another one which add power support for MT8365
+SoC [1].
 
-https://developer.arm.com/documentation/ddi0597/2023-06/?lang=en
+Regards,
+Alex
 
-It seems that we may need 3 entries to handle all of the
-instructions under the "Unconditional Advanced SIMD and floating-point instructions".
+[1]: https://lore.kernel.org/linux-arm-kernel/20230918093751.1188668-1-msp@baylibre.com/
 
-Going from the top-level to "Unconditional Advanced SIMD and floating-point instructions"
-would be as follows:
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+Changes in v5:
+- Rebase to v6.6-rc2.
+- Link to v4: https://lore.kernel.org/r/20230207-iommu-support-v4-0-84798657c410@baylibre.com
 
-L1: b'xxxx_11xx_____xxxx_xxxx_xxxx_xxxx_xxxx_xxxx -> System register access, Advanced SIMD, floating-point and Supervisor call
-L2: b'1111_11(!=11)_xxxx_xxxx_xxxx_1xxx_xxxx_xxxx -> Unconditional Advanced SIMD and floating-point instructions
+Changes in v4:
+- Rebase to v6.5-rc1.
+- Link to v3: https://lore.kernel.org/r/20230207-iommu-support-v3-0-97e19ad4e85d@baylibre.com
 
-The code would be like:
+Changes in v3:
+- SMI driver support and bindings patches have been removed from
+  this series and sent it in another one which should be merged before
+  this one.
+  - "dt-bindings: memory-controllers: mediatek,smi-larb: add mt8365"
+  - "dt-bindings: memory-controllers: mediatek,smi-common: add mt8365"
+  - "memory: mtk-smi: mt8365: Add SMI Support"
+- Link to v2: https://lore.kernel.org/r/20230207-iommu-support-v2-0-60d5fa00e4e5@baylibre.com
 
-.instr_mask = 0xff000800
-.instr_val  = 0xfc000800
+Changes in v2:
+- Split power domain patch (3) in 4 patches to explain in the commit
+  messages the added subsystems.
+- Add an independent "mediatek,mt8365-smi-common" compatible to have
+  its own LARB bus select.
+- Link to v1: https://lore.kernel.org/r/20230207-iommu-support-v1-0-4f0c81fd52c1@baylibre.com
 
-.instr_mask = 0xff000800
-.instr_val  = 0xfd000800
+---
+Alexandre Mergnat (7):
+      arm64: dts: mediatek: add mmsys support for mt8365 SoC
+      arm64: dts: mediatek: add camsys support for mt8365 SoC
+      arm64: dts: mediatek: add apu support for mt8365 SoC
+      arm64: dts: mediatek: add power domain support for mt8365 SoC
+      arm64: dts: mediatek: add smi support for mt8365 SoC
+      arm64: dts: mediatek: add larb support for mt8365 SoC
+      arm64: dts: mediatek: add iommu support for mt8365 SoC
 
-.instr_mask = 0xff000800
-.instr_val  = 0xfe000800
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 210 +++++++++++++++++++++++++++++++
+ 1 file changed, 210 insertions(+)
+---
+base-commit: 2b4f840a1de65d77644236c72b3f252aa2725a42
+change-id: 20230207-iommu-support-5e620926e42e
 
-I would appreciate any suggestions you may have regarding this approach.
-Thanks!
+Best regards,
+-- 
+Alexandre Mergnat <amergnat@baylibre.com>
 
-> 
-> >> efforts and get this done properly; fill in *all* the hwcaps and
-> >> relevant handling for extensions which Cortex-A55 supports (since
-> >> there's definitely more than just VUDOT), and then hopefully we're done
-> >> for good.
-> > 
-> > Agree.
-> > 
-> >>
-> >>> Before this commit, kernel didn't handle the undef exception
-> >>> caused by vudot and didn't enable VFP in lazy VFP context
-> >>> switch code like other NEON instructions.
-> >>> This led to the occurrence of the undefined instruction
-> >>> error as following:
-> >>>
-> >>> [  250.741238 ] 0904 (26902): undefined instruction: pc=004014ec
-> >>> ...
-> >>> [  250.741287 ] PC is at 0x4014ec
-> >>> [  250.741298 ] LR is at 0xb677874f
-> >>> [  250.741303 ] pc : [<004014ec>]    lr : [<b677874f>]    psr: 80070010
-> >>> [  250.741309 ] sp : beffedb0  ip : b67d7864  fp : beffee58
-> >>> [  250.741314 ] r10: 00000000  r9 : 00000000  r8 : 00000000
-> >>> [  250.741319 ] r7 : 00000001  r6 : 00000001  r5 : beffee90  r4 : 00401470
-> >>> [  250.741324 ] r3 : beffee20  r2 : beffee30  r1 : beffee40  r0 : 004003a8
-> >>> [  250.741331 ] Flags: Nzcv  IRQs on  FIQs on  Mode USER_32  ISA ARM Segment user
-> >>> [  250.741339 ] Control: 10c5383d  Table: 32d0406a  DAC: 00000055
-> >>> [  250.741348 ] Code: f4434aef f4610aef f4622aef f4634aef (fc620df4)
-> >>>
-> >>> Below is the assembly of the user program:
-> >>>
-> >>> 0x4014dc <+108>: vst1.64 {d20, d21}, [r3:128]
-> >>> 0x4014e0 <+112>: vld1.64 {d16, d17}, [r1:128]
-> >>> 0x4014e4 <+116>: vld1.64 {d18, d19}, [r2:128]
-> >>> 0x4014e8 <+120>: vld1.64 {d20, d21}, [r3:128] --> switch out
-> >>> 0x4014ec <+124>: vudot.u8 q8, q9, q10         <-- switch in, and FPEXC.EN = 0
-> >>>                                                     SIGILL(illegal instruction)
-> >>>
-> >>> Link: https://services.arm.com/support/s/case/5004L00000XsOjP
-> >>
-> >> Linking to your private support case is not useful to upstream. Even I
-> >> can't open that link.
-> > 
-> > I thought that maybe someone in arm need this.
-> > But it seems a bit noisy so I will remove the link from v2.
-> 
-> Yeah, even within Arm most of us don't have permission to access the 
-> support system.
-> 
-> Cheers,
-> Robin.
-> 
-> >>
-> >>> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> >>> ---
-> >>>    arch/arm/vfp/vfpmodule.c | 12 ++++++++++++
-> >>>    1 file changed, 12 insertions(+)
-> >>>
-> >>> diff --git a/arch/arm/vfp/vfpmodule.c b/arch/arm/vfp/vfpmodule.c
-> >>> index 7e8773a2d99d..7eab8d1019d2 100644
-> >>> --- a/arch/arm/vfp/vfpmodule.c
-> >>> +++ b/arch/arm/vfp/vfpmodule.c
-> >>> @@ -788,6 +788,12 @@ static struct undef_hook neon_support_hook[] = {{
-> >>>    .cpsr_mask= PSR_T_BIT,
-> >>>    .cpsr_val= 0,
-> >>>    .fn= vfp_support_entry,
-> >>> +}, {
-> >>> +.instr_mask= 0xffb00000,
-> >>> +.instr_val= 0xfc200000,
-> >>> +.cpsr_mask= PSR_T_BIT,
-> >>> +.cpsr_val= 0,
-> >>> +.fn= vfp_support_entry,
-> >>>    }, {
-> >>>    .instr_mask= 0xef000000,
-> >>>    .instr_val= 0xef000000,
-> >>> @@ -800,6 +806,12 @@ static struct undef_hook neon_support_hook[] = {{
-> >>>    .cpsr_mask= PSR_T_BIT,
-> >>>    .cpsr_val= PSR_T_BIT,
-> >>>    .fn= vfp_support_entry,
-> >>> +}, {
-> >>> +.instr_mask= 0xffb00000,
-> >>> +.instr_val= 0xfc200000,
-> >>> +.cpsr_mask= PSR_T_BIT,
-> >>> +.cpsr_val= PSR_T_BIT,
-> >>> +.fn= vfp_support_entry,
-> >>
-> >> Why have two entries conditional on each possible value of one bit for
-> >> otherwise identical encodings? Surely it suffices to set both cpsr_mask
-> >> and cpsr_val to 0?
-> > 
-> > You're right.
-> > I will set both cpsr_mask and cpsr_val to 0 and use single entry,
-> > as you suggested, in the v2 patch.
-> > 
-> > Thanks.
-> > 
-> >>
-> >> Thanks,
-> >> Robin.
-> >>
-> >>>    }};
-> >>>    
-> >>>    static struct undef_hook vfp_support_hook = {
 
