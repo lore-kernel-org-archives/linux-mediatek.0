@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2DCEE6FE52
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 15:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D11D8E6FE58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 15:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ag/+JKcSGOFO8NbgPEciLNX91GY+GYQTgcQkVkBfdng=; b=2MoqwJsuoaF398FYwTyabevMWI
-	aQ/lU9L92YvaKHvJbFtYb/apzRBdnEU9JNTJfPJdlkKNtWywJJ3QHRs3iyprkVSmcCeuumX8v+7by
-	y5qyyPlsm1bRFfWtK4GY2y7CQqKTiSxMUd9nR7pf+xYD/MlBbLzj5gHcTNHAI3jN3i7sALgmP2N7w
-	hmbC23qpa/bbPYFm6qwzYigfBkDcgmaUiKGgsGk0s8r8Q+NLcoAHCfJZxWCRW7BdBUY5SuSBoXUfJ
-	9G8d3bFoetvD5chyyCcm2MQ34+xibX/VmlGusxF8LaP05BqQY4Hx0F0UzGu1kpVkn4hTbYPIuzN4O
-	68Z83Crg==;
+	bh=DDHzzFKyleer3IZ6q+0dhFBNCt1xPmZoqO4xXvugm5I=; b=TdkZvjeBpGqHeg7368diD57Skw
+	Hde7tTcieG9Mzx/Wb9w8ei3uFGvc8rVbeI2XXP3Y2QddsFglbW2d+mBjjwtRvn5IcD6/6BRv3eRWj
+	Q48xrm8RY5VLaeclMo/CpCEhYV89Tw44xpRkQvSWj+ntNf7qytZzgLD3T2LqvNkx5Ny6uYBRsDvOI
+	JFvUTjgakDFYyLCpor1raLh3CbvPsqariGLraEMclpKp2NYhEYZo8GzBLAQuBP4METuUVNNuzKiYg
+	lN26BQVyM+KywL/4WFhSLpFBjDqWKbMkU7wjnbOQHzHg1AepEDizRxUjRbIARN2iLuPPeRwIoLJdm
+	vUbYQRLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjiIf-009KVH-15;
-	Fri, 22 Sep 2023 15:42:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qjiJS-009Kf1-2T;
+	Fri, 22 Sep 2023 15:43:26 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjiIZ-009KTy-2q;
-	Fri, 22 Sep 2023 15:42:34 +0000
+	id 1qjiJP-009KdP-00;
+	Fri, 22 Sep 2023 15:43:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A1052622A9;
-	Fri, 22 Sep 2023 15:42:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C27BCC433C7;
-	Fri, 22 Sep 2023 15:42:26 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 6813FB823B8;
+	Fri, 22 Sep 2023 15:43:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51D32C433CA;
+	Fri, 22 Sep 2023 15:43:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695397350;
-	bh=5BvJFP59LWR6oDRO5gYLA3PtHEwbDC1l69qhCgYKVCw=;
+	s=k20201202; t=1695397400;
+	bh=2D8Z7v2qzLl47ly62ZoxkjJCQb0vImD7WRAPF4T+c1E=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NwsOSugG4TV4Em3gjHEeJTTBmwRPpa/KkLiCEpocihXimquuECxT7ntrra1bg34sv
-	 Mn6IpapFxVVsN0FIQ22ZPXKmMRDLNHnSHrnB/7ktVv0g4D34g/2RNsW4vThxRipxSp
-	 i7PIBY8Og6q/LRgorpaw+lTPueWenBahnUH44XEhz4d1SVmAPiQcLaCB0LvRrK23DK
-	 68wqByJglzf2t++qUiqD9akiPztmS/k0n89j82VOMrSpBiX5e6Wm8r3Kq5cnhg3sVo
-	 siLaiwRJxNjwS/yTy16nYT/jzinn4diKN61G9ihnFg69ZQCapWeIQF+8RQM4dIXNST
-	 jvXebT3Osxqhg==
-Date: Fri, 22 Sep 2023 16:42:24 +0100
+	b=OJJda26xUSaI7AbpBmjodCtUgBE+/4MgwsXQGUfMN2zwte4LsM3H3WOt0ofldycqn
+	 22w2jIpnSjNrhdajZ/k0aaWR2KJJN5z6KUgIk7Gvk/sBk7IFa9gBlzBa8QB1jEO6+R
+	 okohs077D4CbpubChXzv3XARmcP0H64paQszEWXI1q0ZjTDi2n93rRp41vkJyE4o9c
+	 xJdAlhHzcFKWk+ypfN41s3bix/bqpED58IRSQOWdTvLr1ApfN/VMyiw3RcnQ7TE+sL
+	 BhkoScCWTBCPa7MNyR/oIOWWlt39hUjG5s8oX8P5kgZZ1VbjleQm/WhdmXsg8vlEZN
+	 Que3U44C/ryaA==
+Date: Fri, 22 Sep 2023 16:43:15 +0100
 From: Conor Dooley <conor@kernel.org>
 To: Moudy Ho <moudy.ho@mediatek.com>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -57,19 +57,19 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 03/16] dt-bindings: media: mediatek: mdp3: include
- common properties
-Message-ID: <20230922-grope-yield-46767aa32a3d@spud>
+Subject: Re: [PATCH v6 04/16] dt-bindings: media: mediatek: mdp3: rename to
+ MT8183 RDMA
+Message-ID: <20230922-dividing-trousers-58395562a80e@spud>
 References: <20230922072116.11009-1-moudy.ho@mediatek.com>
- <20230922072116.11009-4-moudy.ho@mediatek.com>
+ <20230922072116.11009-5-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="t3id+nrX22G9XF03"
+	protocol="application/pgp-signature"; boundary="4Y4vtjwYzjnHR6mE"
 Content-Disposition: inline
-In-Reply-To: <20230922072116.11009-4-moudy.ho@mediatek.com>
+In-Reply-To: <20230922072116.11009-5-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_084232_915844_A38935FD 
-X-CRM114-Status: GOOD (  20.90  )
+X-CRM114-CacheID: sfid-20230922_084323_332454_95F04AA4 
+X-CRM114-Status: GOOD (  17.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,124 +85,58 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---t3id+nrX22G9XF03
+--4Y4vtjwYzjnHR6mE
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Sep 22, 2023 at 03:21:03PM +0800, Moudy Ho wrote:
-> To minimize duplication and standardize the document style,
-> include the common properties for MT8183 RDMA.
-
-Duplication that you created in the previous patch? Why not combine
-patches 2 & 3?
-
-Cheers,
-Conor.
-
+On Fri, Sep 22, 2023 at 03:21:04PM +0800, Moudy Ho wrote:
+> The file was renamed to support future scalability in response to
+> the changes in general properties separation.
 >=20
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+
+Same with this, not all too sure why this is a commit of its own.
+
 > ---
->  .../bindings/media/mediatek,mdp3-rdma.yaml    | 43 ++-----------------
->  1 file changed, 4 insertions(+), 39 deletions(-)
+>  .../{mediatek,mdp3-rdma.yaml =3D> mediatek,mdp3-rdma-8183.yaml}   | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>  rename Documentation/devicetree/bindings/media/{mediatek,mdp3-rdma.yaml =
+=3D> mediatek,mdp3-rdma-8183.yaml} (96%)
 >=20
 > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.y=
-aml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> index 3e128733ef53..0539badc9821 100644
+aml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-8183.yaml
+> similarity index 96%
+> rename from Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.ya=
+ml
+> rename to Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-8183=
+=2Eyaml
+> index 0539badc9821..74a1eebf668d 100644
 > --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> @@ -4,7 +4,7 @@
->  $id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-8183.yaml
+> @@ -1,7 +1,7 @@
+>  # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>  %YAML 1.2
+>  ---
+> -$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
+> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma-8183.yaml#
 >  $schema: http://devicetree.org/meta-schemas/core.yaml#
 > =20
-> -title: MediaTek Read Direct Memory Access
-> +title: MediaTek MT8183 Read Direct Memory Access
-> =20
->  maintainers:
->    - Matthias Brugger <matthias.bgg@gmail.com>
-> @@ -18,62 +18,27 @@ description: |
->    Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->    for details.
-> =20
-> +allOf:
-> +  - $ref: mediatek,mdp3-rdma-common.yaml#
-> +
->  properties:
->    compatible:
->      items:
->        - const: mediatek,mt8183-mdp3-rdma
-> =20
-> -  reg:
-> -    maxItems: 1
-> -
-> -  mediatek,gce-client-reg:
-> -    $ref: /schemas/types.yaml#/definitions/phandle-array
-> -    items:
-> -      items:
-> -        - description: phandle of GCE
-> -        - description: GCE subsys id
-> -        - description: register offset
-> -        - description: register size
-> -    description: The register of client driver can be configured by gce =
-with
-> -      4 arguments defined in this property. Each GCE subsys id is mappin=
-g to
-> -      a client defined in the header include/dt-bindings/gce/<chip>-gce.=
-h.
-> -
-> -  mediatek,gce-events:
-> -    description:
-> -      The event id which is mapping to the specific hardware event signal
-> -      to gce. The event id is defined in the gce header
-> -      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> -    $ref: /schemas/types.yaml#/definitions/uint32-array
-> -
-> -  power-domains:
-> -    maxItems: 1
-> -
->    clocks:
->      items:
->        - description: RDMA clock
->        - description: RSZ clock
-> =20
-> -  iommus:
-> -    maxItems: 1
-> -
->    mboxes:
->      items:
->        - description: used for 1st data pipe from RDMA
->        - description: used for 2nd data pipe from RDMA
-> =20
-> -  '#dma-cells':
-> -    const: 1
-> -
->  required:
->    - compatible
-> -  - reg
-> -  - mediatek,gce-client-reg
-> -  - mediatek,gce-events
-> -  - power-domains
-> -  - clocks
-> -  - iommus
->    - mboxes
-> -  - '#dma-cells'
-> =20
->  additionalProperties: false
-> =20
+>  title: MediaTek MT8183 Read Direct Memory Access
 > --=20
 > 2.18.0
 >=20
 
---t3id+nrX22G9XF03
+--4Y4vtjwYzjnHR6mE
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZQ214AAKCRB4tDGHoIJi
-0pjhAQDqYFJMcVq5Ru7Q8gVzeuDVj+gKssFalhT0d+Clke4nqQD/VPXvz8K458L1
-KJs20bZWY09DDbrl5qDCY9BMQs7IQQc=
-=F41u
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZQ22EgAKCRB4tDGHoIJi
+0hezAP9q+TcUrIoWLs39/7VTOK8gnCa34WnmBN2JLB3/wXifJwD9FRCsU+pP21m0
+v50WOhjJOqVPaEeX/UEApSfWeT7RSAY=
+=LIPX
 -----END PGP SIGNATURE-----
 
---t3id+nrX22G9XF03--
+--4Y4vtjwYzjnHR6mE--
 
