@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BFDBE7D0D6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 07:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329C1E7D0D6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 07:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hd86NQfy2/lhvIbniSQO9dAVZPI8a5X3Ca7Vv9yeC14=; b=Qaeweyy6Fctru6FzHxf7hIS4YQ
-	py6NVnhS1ygiioceAUN4EZ5AKm/VxutptPwrrkaoU9WfVTiDjdJTTcxNYnPuaQAi4Bz0Hv/Et6PoC
-	tVjcW/Od8YFPrz1iwGOVbSh8NPFXK/jC3eyOqv6gSZPZ8jcz//DfW4G8hILwqypyF4UyJxhXRSMm9
-	kp9HH0zC+kGkTWUb18V63DKANtdEM06DFKJOb3W9om2Kk3D+iqzev7gaD9HhnX78vdlnAwa264LOl
-	k5mX8aVBI1b9WDUnfc8XmBDtrbaRVBNBzryhNEPZwnp5G1xB86x3NnX2KY0eITv9tSMeKU8qf+CGQ
-	Oqb4KHKw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IcZFuJHms8LjHETDWtd+xVyjptA2CQ+H6Ajkbiz71kA=; b=3juoTc9TVRGWYA/8OVOiQIWDDI
+	g+F8j6lWyMyXlm2ZKJKZ3c/PnTltEQk9iZZlq8KxYtJBTbMvuR0el6HSLBJUG41BeSHuK1zKbW5A5
+	VmU6rXzUJVW3tc/HOiGQgSUabueolx9lpimaDIjBp2VdQslXaixyXq26vAKIFlhr3N29GcJzGYg/5
+	lMg1VeUV0UTf9NoLI5xFAKhZBV1pYVAcNMauas9w7lkFZP+SfyDDtBoSqWcy7NNBI5pGwAInuI02z
+	avZeVaqdTW7DN8VqIJqbhYSUa9EDkhtjTCH0Lgi9hmO6Zg3VssfmJjQQTz3YI+4RjHUwNc7lF+pL9
+	POqpzCfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qja9V-008776-0c;
-	Fri, 22 Sep 2023 07:00:37 +0000
+	id 1qjaJ3-0088T1-02;
+	Fri, 22 Sep 2023 07:10:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qja9R-008761-2B;
-	Fri, 22 Sep 2023 07:00:34 +0000
-X-UUID: b2650b42591511ee9b7791016c24628a-20230922
+	id 1qjaIz-0088SE-3C;
+	Fri, 22 Sep 2023 07:10:27 +0000
+X-UUID: 184004ac591711ee9b7791016c24628a-20230922
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Hd86NQfy2/lhvIbniSQO9dAVZPI8a5X3Ca7Vv9yeC14=;
-	b=Wx2tt5cakkAFikU6kOoaMhh6xKyeJMN7L6nSP7vnGrk03F5bu4NVTzD0fdwb64T1uoERtZDu3WOkkCBPqrjjbn6rTDdm7rD6Gn1AAYuWLY476Vkx/zsjCoihXuQl1HOCxdjm9MvBHsq3BfBPxgxyh1jEILtpP0Eiy44K30Gmb10=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=IcZFuJHms8LjHETDWtd+xVyjptA2CQ+H6Ajkbiz71kA=;
+	b=Lm7humURZGYsl6t9orWVnZpU/UURpxTU/SpZqmBbIzwd7KXO6OnIu5307t6gReizX4hM0EBkRcNRePoeljkQEa0TgQn5omI3wWxjjYRqvLKu1Rs7lpe40xhgy+ea37sRXpYrv0vFRx2TrH+SbJNaenWpKWTFCukl7khz8NeRkOQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:d6d82de4-6c43-49bd-9b37-ace7f4b0dd49,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:c1bd54c3-1e57-4345-9d31-31ad9818b39f,B
+X-CID-O-INFO: VERSION:1.1.32,REQID:c244eb26-e70e-4cc0-a474-04d3bb361552,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5f78ec9,CLOUDID:630724bf-14cc-44ca-b657-2d2783296e72,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b2650b42591511ee9b7791016c24628a-20230922
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 184004ac591711ee9b7791016c24628a-20230922
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1233025164; Fri, 22 Sep 2023 00:00:21 -0700
+	with ESMTP id 1416729460; Fri, 22 Sep 2023 00:10:22 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 22 Sep 2023 14:50:18 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -61,18 +61,16 @@ To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v6 1/2] arm64: dts: mediatek: mt8183: correct MDP3 DMA-related nodes
-Date: Fri, 22 Sep 2023 14:50:16 +0800
-Message-ID: <20230922065017.10357-2-moudy.ho@mediatek.com>
+Subject: [PATCH v6 0/2] Add support for MT8195 MDP3
+Date: Fri, 22 Sep 2023 14:50:15 +0800
+Message-ID: <20230922065017.10357-1-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230922065017.10357-1-moudy.ho@mediatek.com>
-References: <20230922065017.10357-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_000033_742991_3D4E9843 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20230922_001026_034703_6DAAC039 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,53 +85,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to generalize the node names, the DMA-related nodes
-corresponding to MT8183 MDP3 need to be corrected.
+Changes since v5:
+- Rebase on v6.6-rc2
+- Add the required property - interrupts in components
+  AAL, COLOR and OVL.
 
-Fixes: 60a2fb8d202a ("arm64: dts: mt8183: add MediaTek MDP3 nodes")
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Hi,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 5169779d01df..bab68c233792 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1781,7 +1781,7 @@
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
- 		};
- 
--		mdp3-rdma0@14001000 {
-+		dma-controller0@14001000 {
- 			compatible = "mediatek,mt8183-mdp3-rdma";
- 			reg = <0 0x14001000 0 0x1000>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-@@ -1793,6 +1793,7 @@
- 			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
- 			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
- 				 <&gce 21 CMDQ_THR_PRIO_LOWEST 0>;
-+			#dma-cells = <1>;
- 		};
- 
- 		mdp3-rsz0@14003000 {
-@@ -1813,7 +1814,7 @@
- 			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
- 		};
- 
--		mdp3-wrot0@14005000 {
-+		dma-controller@14005000 {
- 			compatible = "mediatek,mt8183-mdp3-wrot";
- 			reg = <0 0x14005000 0 0x1000>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-@@ -1822,6 +1823,7 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_MDP_WROT0>;
- 			iommus = <&iommu M4U_PORT_MDP_WROT0>;
-+			#dma-cells = <1>;
- 		};
- 
- 		mdp3-wdma@14006000 {
+The purpose of this patch is to separate the MDP3-related dtsi from
+the original mailing list mentioned below:
+https://lore.kernel.org/all/20230912075805.11432-2-moudy.ho@mediatek.com/
+Introducing more components for MDP3 in MT8195.
+
+Moudy Ho (2):
+  arm64: dts: mediatek: mt8183: correct MDP3 DMA-related nodes
+  arm64: dts: mediatek: mt8195: add MDP3 nodes
+
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi |   6 +-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 388 +++++++++++++++++++++++
+ 2 files changed, 392 insertions(+), 2 deletions(-)
+
 -- 
 2.18.0
 
