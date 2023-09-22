@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96835E6FE59
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 15:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB7BE6FE58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 15:51:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gShbIwDi47csuk2aPH61NZxR0Zp7x9854TUpDPptWBI=; b=WQRwF2dd9TQmwyJDxs3cYmOwWJ
-	PUfwYelNZvNPGlH+UpIeDc1hliGGHvUo/7WopD5qyQE4Z3hBhWYwMHnQ/YHjeVaQU52ZrBh0qfksl
-	HMBL9CTSGaouozBx0wK21B06V7fqTnrY63EMT6Eum5j9/Bkn/3lVlxb4Wj1VFys6+JUTuTDu0t50G
-	VFb2gzXbNZXm2XJwzkOQwiS3RHu43pXxcfYl2dX+Lz9YCM2BCuuzMp0bVmO003wLf7AhebO4St75J
-	sPv4CnRqFKfDLkjdW+w7RI6fNo+wt0FEBsX5DJCmuVvZ5xwmuobytKE1XdjsLOQ4Tjr3ToL9YwEOL
-	Ti2zUVUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oX1CT1XC6kqzJ0nzURtFKAwu+A0CSwuSVdUe/dyO6BE=; b=vYMrz6ym98S5K7FSgmjqPEn18p
+	9mRFBmQwcqkx2PVJgxyUjGW4jeVbAKT7Fh2C/qUq1L+1oFgBWOp0kVSYyLglMqzAA7/ZIoS8qeqnL
+	kyR52Bf1RVQBpHcZM0jLenC5Z5vSLkX6zVYxKYK9s9T4xysAmF1SmigTI3mMikU0Aw8WYx9OOa1Us
+	0nVpHSd5hioU7i5KEBpPknG8eI618F+5lRDRegBrgjRwFRhPerUCPQTmeZfINAMzP+aiNwEAiZ/jp
+	2Uh48GU578K5ugraIHYDjEEqfkKbe7+wiqZ9dgtsaACfcWHeX0TxqZ5zVsjx1aQhws2FmK9JYZhyc
+	iZFCvg6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjiR2-009Lnk-13;
-	Fri, 22 Sep 2023 15:51:16 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qjiRG-009Lsp-18;
+	Fri, 22 Sep 2023 15:51:30 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjiQx-009LjS-2x;
-	Fri, 22 Sep 2023 15:51:14 +0000
+	id 1qjiRD-009LrK-1Q
+	for linux-mediatek@lists.infradead.org;
+	Fri, 22 Sep 2023 15:51:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E3217CE23C2;
-	Fri, 22 Sep 2023 15:51:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2DFEC433C8;
-	Fri, 22 Sep 2023 15:51:04 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 83CE8B823D1;
+	Fri, 22 Sep 2023 15:51:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FDD9C433CC;
+	Fri, 22 Sep 2023 15:51:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695397868;
-	bh=3b+hYQ2/a1Tm4DZtb0TZrPYMb1hWdBmLeqVPuYi1b8A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qJkSamFKo5k3W7L6WowyYvGfhzsmI4tGVDDkVNqAok8EbAX0I93fKZjvYvlyIg+I6
-	 OcICjT7jOhmFm0LWxOUKDB/3mrrbFi18jJc1NPiF40QjakUUe01rRZIVjQ3WGvcZL+
-	 ngsEEEuryZqYi/rM0VbWmjY9nxkQFTIjw3ruszj2HjdvEciGVJtTedybe0bMO+C2Ce
-	 OikvuY6ojAcSyz8f4vT5AlUaZXWSH/0mx5lBNljVOZMekaYwtxdc8Gx/TKPhzHh/j5
-	 Ggvv0od3iGXviCLxNERVQEZvmbLMomI7KMUrXaTOC9yaWzAaucl/xyC9oxEVilQctz
-	 Qwpdpz7Eg2hFg==
-Date: Fri, 22 Sep 2023 16:51:02 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 12/16] dt-bindings: display: mediatek: color: add
- compatible for MT8195
-Message-ID: <20230922-overhung-deception-e9b461ba0372@spud>
-References: <20230922072116.11009-1-moudy.ho@mediatek.com>
- <20230922072116.11009-13-moudy.ho@mediatek.com>
- <20230922-zebra-modify-87ff23c70bb3@spud>
+	s=k20201202; t=1695397884;
+	bh=gcRAnlPPhzGuwjzkrCHq4S2a/cVRkBflII1JB2lJU+0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=JHvghhh5aTrdwv45a5aWrV9EtLYm6O/9vhKmFFEfctQNsDIHMy43vZh3lrzOC4WIh
+	 9HFE4FJJ3rPMTLpeT2Ne64LLEbqnZijZFzjDN1adBAhHACEN+p1QChiQcGa168jMZk
+	 02mW2ZPTzjQemSkLGUmGoxJTOHEfykzZMqTyF0anhZO3cLHX8KrXayWZt4Z9KRISuI
+	 gQ2aaXAgrDplyaT5aJymsF3SBBnOZmkGW5IX0jNGegHwlL196tg/i+efdsb8xC5n7K
+	 9K0yZqnIdgUJKwvjlAf7zHGiPL5YUBOni23pD1Ow9yNWef17/16sJe30Jo2/RdMEfz
+	 8mY7vNtvTnlsQ==
+From: Nathan Chancellor <nathan@kernel.org>
+Date: Fri, 22 Sep 2023 08:51:17 -0700
+Subject: [PATCH 5.10] drm/mediatek: Fix backport issue in
+ mtk_drm_gem_prime_vmap()
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="69Rgp8WDZjRLhaqe"
-Content-Disposition: inline
-In-Reply-To: <20230922-zebra-modify-87ff23c70bb3@spud>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20230922-5-10-fix-drm-mediatek-backport-v1-1-912d76cd4a96@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAPS3DWUC/x2NzQqDMBAGX0X23C2biIX0VUoPqfnSLuIPG5GC+
+ O4GjwPDzE4Fpij0bHYybFp0niq4W0P9L05fsKbK5MW3Erznjp1w1j8nG3lE0rhi4E/sh2W2lQV
+ 4hNaHjCxUI4uhytfgRd3dCb2P4wS20nRBdgAAAA==
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Sasha Levin <sashal@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-mediatek@lists.infradead.org, 
+ stable@vger.kernel.org, llvm@lists.linux.dev, 
+ Nathan Chancellor <nathan@kernel.org>
+X-Mailer: b4 0.13-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1768; i=nathan@kernel.org;
+ h=from:subject:message-id; bh=gcRAnlPPhzGuwjzkrCHq4S2a/cVRkBflII1JB2lJU+0=;
+ b=owGbwMvMwCEmm602sfCA1DTG02pJDKm82/9EyCus2b75RPjCBPGJ/svrueTihDxcJvx0WpU4a
+ VYr19u/HaUsDGIcDLJiiizVj1WPGxrOOct449QkmDmsTCBDGLg4BWAicx8y/PffKfCR9fm5E4Kb
+ dj2Sdj+aFXDxn+RT0U+9t5139ee//3KIkeF48J+1P5WjTmz3DE+VPfz6oly/juoqX4cw9/AI3rk
+ J//kA
+X-Developer-Key: i=nathan@kernel.org; a=openpgp;
+ fpr=2437CB76E544CB6AB3D9DFD399739260CB6CB716
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_085112_161532_5E3BE1BF 
-X-CRM114-Status: GOOD (  18.62  )
+X-CRM114-CacheID: sfid-20230922_085127_635660_61C0C05E 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,61 +85,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+When building with clang:
 
---69Rgp8WDZjRLhaqe
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+  drivers/gpu/drm/mediatek/mtk_drm_gem.c:255:10: error: incompatible integer to pointer conversion returning 'int' from a function with result type 'void *' [-Wint-conversion]
+    255 |                 return -ENOMEM;
+        |                        ^~~~~~~
+  1 error generated.
 
-On Fri, Sep 22, 2023 at 04:49:14PM +0100, Conor Dooley wrote:
-> On Fri, Sep 22, 2023 at 03:21:12PM +0800, Moudy Ho wrote:
-> > Add a compatible string for the COLOR block in MediaTek MT8195 that
-> > is controlled by MDP3.
-> >=20
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/display/mediatek/mediatek,color.yaml     | 1 +
-> >  1 file changed, 1 insertion(+)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediate=
-k,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-color.yaml
-> > index f21e44092043..b886ca0d89ea 100644
-> > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color=
-=2Eyaml
-> > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color=
-=2Eyaml
-> > @@ -26,6 +26,7 @@ properties:
-> >            - mediatek,mt2701-disp-color
-> >            - mediatek,mt8167-disp-color
-> >            - mediatek,mt8173-disp-color
-> > +          - mediatek,mt8195-mdp3-color
->=20
-> How come this one is a "mdp3" not a "disp"?
+GCC reports the same issue as a warning, rather than an error.
 
-I don't know what mdp3 means & googling gives me no answers. What's the
-"disp" one controlled by, since it isn't controlled by mdp3?
+Prior to commit 7e542ff8b463 ("drm/mediatek: Use struct dma_buf_map in
+GEM vmap ops"), this function returned a pointer rather than an integer.
+This function is indirectly called in drm_gem_vmap(), which treats NULL
+as -ENOMEM through an error pointer. Return NULL in this block to
+resolve the warning but keep the same end result.
 
->=20
-> >        - items:
-> >            - enum:
-> >                - mediatek,mt7623-disp-color
-> > --=20
-> > 2.18.0
-> >=20
+Fixes: 43f561e809aa ("drm/mediatek: Fix potential memory leak if vmap() fail")
+Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+---
+This is a fix for a 5.10 backport, so it has no upstream relevance but
+I've still cc'd the relevant maintainers in case they have any comments
+or want to double check my work.
+---
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index fe64bf2176f3..b20ea58907c2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -252,7 +252,7 @@ void *mtk_drm_gem_prime_vmap(struct drm_gem_object *obj)
+ 	if (!mtk_gem->kvaddr) {
+ 		kfree(sgt);
+ 		kfree(mtk_gem->pages);
+-		return -ENOMEM;
++		return NULL;
+ 	}
+ out:
+ 	kfree(sgt);
 
+---
+base-commit: ff0bfa8f23eb4c5a65ee6b0d0b7dc2e3439f1063
+change-id: 20230922-5-10-fix-drm-mediatek-backport-0ee69329fef0
 
---69Rgp8WDZjRLhaqe
-Content-Type: application/pgp-signature; name="signature.asc"
+Best regards,
+-- 
+Nathan Chancellor <nathan@kernel.org>
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZQ235gAKCRB4tDGHoIJi
-0lr8AP4pX5+R5I8aDBRKOjqDyPh+najy713mmV8eYHNfQMiT8wEAjkYfap6BkRMI
-5Jt5G7JZd61u4Y6qeP5GiKajIyK6kw4=
-=yqe5
------END PGP SIGNATURE-----
-
---69Rgp8WDZjRLhaqe--
 
