@@ -4,84 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6DB1CD4F4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 10:05:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1595FE6FE20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 12:41:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7eyIb7lKDJwsdidMLPGj2HCRCGXL1RdAvXGmM4zqz54=; b=CrnOS1tLvo0bxGHO/mtflXxGCF
-	t1yoK6lxEJPJhuZO4S563Yu2GBhXPDxCVNiw2h2pLBbsNedtjCi0SydKZsTY3a3YjSQe7LpijGcIn
-	G1rq5NxcySD2VVCDwvlQAj/DRgRVmZ6NKop1N0xk7byFKrG7VF0/5zlxkDQUmrJoB5i6a0BYgVxjG
-	JIRwPvLypCnhC8CabRdSe7u8BkV21YYMGvX7wqefWOFZH/YUW6SKYDfKssvew2mUNGaDoByCF3w0y
-	PcyYXWVjImSNuM6J2CxE2IM7yEjzaS8b5NYabH+JaPBzwa4vYfCwmgRwaV+mDeAkUlwyhMGzxhnbg
-	us9pS/Pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yvGliCzM7qR9cjwG6OFrxm7XoeY8chqa33iD7TfYF9g=; b=pjNOgcNM1itvxOetR662AdUkCt
+	5Fk3Teu+eoA5vQEI8ysqtP0voSHZsqhkPxgqjliP0PT/yL4aTgRTCROfL9AOoLOfuEFjnEtIkvScd
+	JZX82Dh7nPn9wNWh9I5kOO0SUTfLUdaSVFjJiAKHO4rnhwRLRlspQcJs40JEZgzATPM/jUzDQdCck
+	iYI5uiy7uvEu7NF9mxGfJ+fuD/E8yGRmntPfxbLe0kfGyRSqgVWoIHqdtOUxzSOl1KWg3EdwH9dso
+	C/qXG0twaATQT35S/oXqP3wDNvMOoIBjYTt1priVm14ROLTLwLvsrK8euOsIapYuNsZe/o9hoL94a
+	cNc1VYow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjd1x-008fnC-16;
-	Fri, 22 Sep 2023 10:05:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qjfTC-0094F0-3A;
+	Fri, 22 Sep 2023 12:41:18 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjd1u-008fmK-2t;
-	Fri, 22 Sep 2023 10:05:00 +0000
-X-UUID: 78c71b9a592f11ee86758d4a7c00f3a0-20230922
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7eyIb7lKDJwsdidMLPGj2HCRCGXL1RdAvXGmM4zqz54=;
-	b=pB+Sn79w4QP2yxDZ8CHJM9lGFzU146EH+zHhQbdxLi60Zfzdeq3mzjACTncQNKyRwh6HG1vtExLOlF1BdhjaQrrcZDOgI9qJcNb8ES2HTsBdOhutE/PAEweNlf38rdbMTFxx74iHcIGNmIwmF/jLPMhxGEbfxTq/3OW3mYnkUTI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:d9753568-cfd8-42e2-9013-bf214ba6fb73,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:7fdf56c3-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 78c71b9a592f11ee86758d4a7c00f3a0-20230922
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <pablo.sun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1038301407; Fri, 22 Sep 2023 03:04:51 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Sep 2023 17:54:14 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Sep 2023 17:54:14 +0800
-From: Pablo Sun <pablo.sun@mediatek.com>
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
-	<ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1qjfT8-0094Dq-2p;
+	Fri, 22 Sep 2023 12:41:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=yvGliCzM7qR9cjwG6OFrxm7XoeY8chqa33iD7TfYF9g=; b=lZm9bmh9bX4vJV7N6gXQkI3orG
+	zGDpsAFxG6Z8J3pwy7jZY5q9zdQBewF7xPzkwVqKcnIXeOpSMLDiT9vx91NXTJL4TKTDfqMxl8VmF
+	00A8OH6092aKIauO2XgRfqHFoT6s/Q949MDmsDVAKpowyBYFcwu71cpJcLQSreWpKQ3NtsiVHMwoh
+	+Bt9QjogKZdkYYbb09Sm03zcoKIdFB2rRi1f2Z7BqckuRb1t0OcnP7aOwqqncjkWwJgBFYQO2zT90
+	bPYGmJc+fnBXeqB5Kc7zpYjRzqfIhLdY4TdjI3sN0w2JfpuF/l64bNxiSsOPpJ4SScHNBucvTZL1F
+	Y9zblyZg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55764)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1qjfSL-0006d7-0y;
+	Fri, 22 Sep 2023 13:40:25 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1qjfSD-0004Zz-QK; Fri, 22 Sep 2023 13:40:17 +0100
+Date: Fri, 22 Sep 2023 13:40:17 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	George McCollister <george.mccollister@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Pablo Sun <pablo.sun@mediatek.com>
-Subject: [PATCH v1] mmc: mtk-sd: Use readl_poll_timeout_atomic in msdc_reset_hw
-Date: Fri, 22 Sep 2023 17:53:48 +0800
-Message-ID: <20230922095348.22182-1-pablo.sun@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
+	Marcin Wojtas <mw@semihalf.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Marek Vasut <marex@denx.de>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	John Crispin <john@phrozen.org>,
+	Madalin Bucur <madalin.bucur@nxp.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Oleksij Rempel <linux@rempel-privat.de>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Grygorii Strashko <grygorii.strashko@ti.com>,
+	Sekhar Nori <nsekhar@ti.com>,
+	Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH net-next v2 00/10] define and enforce phylink bindings
+Message-ID: <ZQ2LMe9aa1ViBcSH@shell.armlinux.org.uk>
+References: <20230916110902.234273-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.723900-8.000000
-X-TMASE-MatchedRID: 6QBcT7wcRsRvitkUzhYBjXTnOygHVQpO7yWPaQc4INRh2fnHe1cil3o4
-	yKeg8X9ygjknrxu7OUiNj7XtNYzGtcEF95g58PMZi/b+LxU2p45Ag1IWH8kbY99RlPzeVuQQ3oz
-	JRX7b4NmqPbMuMCi6h4Ay6p60ZV62SwOSQ/fMiOrdB/CxWTRRu3aDLLDbFMGFfUadd7N1arKJeW
-	+qZhvjB+0IrX0f+ReSjoE+g/57DJoQkGmQTYDw+jFh8TQbyenjgrCX/PEu4TDrHUK6UmomFyYKa
-	1BmIhZZgITnGkK0NFNRskXKHhdfKpij9M86UwHhsKHfMTjCprwNQJGvyiKf6Q==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.723900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: BA674A7FBD61D5BE8CE30A6057F748C730D889939DCE9B09EAD473DD2F74FB752000:8
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230916110902.234273-1-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_030458_942961_B1A9222F 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20230922_054114_918622_CEFE2A60 
+X-CRM114-Status: GOOD (  21.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,77 +127,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use atomic readl_poll_timeout_atomic, because msdc_reset_hw
-may be invoked in IRQ handler in the following context:
+On Sat, Sep 16, 2023 at 02:08:52PM +0300, Arınç ÜNAL wrote:
+> Hello there.
+> 
+> This patch series defines phylink bindings and enforces them for the
+> ethernet controllers that need them.
+> 
+> Some schemas had to be changed to properly enforce phylink bindings for all
+> of the affected ethernet controllers. Some of the documents of these
+> ethernet controllers were non json-schema, which had to be converted.
+> 
+> I will convert the remaining documents to json-schema while this patch
+> series receives reviews.
 
-  msdc_irq() -> msdc_cmd_done() -> msdc_reset_hw()
+I can't say that I'm comfortable with this. We appear to be defining
+bindings based on software implementation, and a desire for the DT
+tooling to enforce what the software implementation wants. Isn't this
+against the aims of device tree and device tree binding documentation?
+Seems to me like feature-creep.
 
-The following kernel BUG stack trace can be observed on
-Genio 1200 EVK after initializing MSDC1 hardware during kernel boot:
+The bindings that phylink parses are already documented in the
+ethernet controller yaml document. Specifically:
 
-[    1.187441] BUG: scheduling while atomic: swapper/0/0/0x00010002
-[    1.189157] Modules linked in:
-[    1.204633] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W         5.15.42-mtk+modified #1
-[    1.205713] Hardware name: MediaTek Genio 1200 EVK-P1V2-EMMC (DT)
-[    1.206484] Call trace:
-[    1.206796]  dump_backtrace+0x0/0x1ac
-[    1.207266]  show_stack+0x24/0x30
-[    1.207692]  dump_stack_lvl+0x68/0x84
-[    1.208162]  dump_stack+0x1c/0x38
-[    1.208587]  __schedule_bug+0x68/0x80
-[    1.209056]  __schedule+0x6ec/0x7c0
-[    1.209502]  schedule+0x7c/0x110
-[    1.209915]  schedule_hrtimeout_range_clock+0xc4/0x1f0
-[    1.210569]  schedule_hrtimeout_range+0x20/0x30
-[    1.211148]  usleep_range_state+0x84/0xc0
-[    1.211661]  msdc_reset_hw+0xc8/0x1b0
-[    1.212134]  msdc_cmd_done.isra.0+0x4ac/0x5f0
-[    1.212693]  msdc_irq+0x104/0x2d4
-[    1.213121]  __handle_irq_event_percpu+0x68/0x280
-[    1.213725]  handle_irq_event+0x70/0x15c
-[    1.214230]  handle_fasteoi_irq+0xb0/0x1a4
-[    1.214755]  handle_domain_irq+0x6c/0x9c
-[    1.215260]  gic_handle_irq+0xc4/0x180
-[    1.215741]  call_on_irq_stack+0x2c/0x54
-[    1.216245]  do_interrupt_handler+0x5c/0x70
-[    1.216782]  el1_interrupt+0x30/0x80
-[    1.217242]  el1h_64_irq_handler+0x1c/0x2c
-[    1.217769]  el1h_64_irq+0x78/0x7c
-[    1.218206]  cpuidle_enter_state+0xc8/0x600
-[    1.218744]  cpuidle_enter+0x44/0x5c
-[    1.219205]  do_idle+0x224/0x2d0
-[    1.219624]  cpu_startup_entry+0x30/0x80
-[    1.220129]  rest_init+0x108/0x134
-[    1.220568]  arch_call_rest_init+0x1c/0x28
-[    1.221094]  start_kernel+0x6c0/0x700
-[    1.221564]  __primary_switched+0xc0/0xc8
+- phylink does not parse the phy-mode property, that is left to the
+  implementation to pass to phylink, which can implement it any
+  which way they choose (and even default to something.)
 
-Fixes: ffaea6ebfe9c ("mmc: mtk-sd: Use readl_poll_timeout instead of open-coded polling")
-Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+- phylink does not require a phy property - phylink does expect a PHY
+  to be attached, but how that PHY is attached is up to the ethernet
+  controller driver. It may call one of the phylink functions that
+  parses the phy property, or it may manually supply the phy device to
+  phylink. Either way, phylink does not itself require a PHY property.
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 5392200cfdf7..97f7c3d4be6e 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -669,11 +669,11 @@ static void msdc_reset_hw(struct msdc_host *host)
- 	u32 val;
- 
- 	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_RST);
--	readl_poll_timeout(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
-+	readl_poll_timeout_atomic(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
- 
- 	sdr_set_bits(host->base + MSDC_FIFOCS, MSDC_FIFOCS_CLR);
--	readl_poll_timeout(host->base + MSDC_FIFOCS, val,
--			   !(val & MSDC_FIFOCS_CLR), 0, 0);
-+	readl_poll_timeout_atomic(host->base + MSDC_FIFOCS, val,
-+				  !(val & MSDC_FIFOCS_CLR), 0, 0);
- 
- 	val = readl(host->base + MSDC_INT);
- 	writel(val, host->base + MSDC_INT);
+- phylink does not require a sfp property - this obviously is optional.
+
+So, all in all, ethernet-controller already describes it, and to create
+a DT binding document that pretends that phylink requires any of this
+stuff is, in my mind, wrong.
+
+DSA requires certain properties by dint of the parsing and setup of
+phylink being in generic code - this is not because phylink requires
+certain properties, but phylink does require certain information in
+order to function correctly.
+
+The issue here is _how_ phylink gets that information, and as I state
+above, it _can_ come from DT, but it can also be given that information
+manually.
+
+As an example, there are plenty of drivers in the tree which try to
+parse a phy node, and if that's not present, they try to see if a PHY
+exists at a default# bus address.
+
+We seem to be digging outselves a hole here, where "phylink must have
+these properties". No, that is wrong.
+
 -- 
-2.18.0
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
