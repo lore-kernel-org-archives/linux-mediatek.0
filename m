@@ -4,66 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A21CD4F3F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 08:29:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47289CD4F32
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 08:44:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x/ODN1+tSGNhm8mIdbdTdIsiSDLajAETHagv5I2f8UU=; b=tDTLu4h3TUhLkeZg9Tvknf86wp
-	BWURs1w2Ahnpcvvs7sdwRPTzGwjcuExjjfw9S28taMSH3mxVr1JgsLPJwZ97mYc26wa8lrvop/Zpf
-	7lydWTxQWuM5GwSXZhPOeetLwxqUJ9d7zTUpo8dmV5GdL/vM+lqf3Ob5nHbcbaE84liCEXRUEp6m1
-	j2u6mHGK4Hwfr2Qs9zOsaIzcnpm1uP6iFvTBoPo+GrQn8+z27I6/OBi8UNbpejFgsUvMeZpYed2vG
-	mxCUMD5m7+Y0LXu5uJHi7IkwUI7T2vhKD/9HlAgI268Ns6RB+wTOJF+XL9693cAZ5sqhVqhiw9z02
-	Hvy7mM8Q==;
+	bh=kAxS5aneoDADNRZ7LRGA/GWsME2RGbrvGcmrwAd/oXE=; b=lJUA7mGAwjBeZqENQ/diuQm106
+	gd0nexf64U0vNzKPb2HUzBJ/wLxoH5cxXDJdNoZ6jFcn8N1TEAL66o6AOhUHeDO/BlGpt+B0CjSNf
+	tCsTzxvUr+mekI5AZjT46IZWYLd0/Y6S8o9VEJvfCE8YV3gKdDU5PEZiMohwCGd9tzEqZ06uF2ZaO
+	1dO2Qk6PwSThQekoCrkbzc16iAjcpXRmuPTq4TsSjBVn/n+ouwgJBe4uKOTlGhNnt9HZuaKu2YVAN
+	t4HwjOUcCDnv7/k4EtCeo3ZB3VSB4692P7Pf7iPG6H0X1F2IxNEQT09cAq+EcZYKamve8bfSwb5Zt
+	gKUuUE5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjbXs-008QBm-0S;
-	Fri, 22 Sep 2023 08:29:52 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qjblv-008RzR-0M;
+	Fri, 22 Sep 2023 08:44:23 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjbXh-008Q7V-31;
-	Fri, 22 Sep 2023 08:29:44 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1qjblq-008Ry5-1r;
+	Fri, 22 Sep 2023 08:44:21 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9124F6603102;
-	Fri, 22 Sep 2023 09:29:37 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695371378;
-	bh=5R8v6wvd1MpFZX3AbIVOvcY34E23OlIoFUwytGVOO7A=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z0+Yh0shm7ykovp53zYib/YCrUbjUxWqtXNUEczVVlnDvIsI9DpCZ8UHU477vqYh0
-	 oAGQI9GStmrmL3MzLw1WI+3ZNysgViuZq3xHPjM+0kkCFWHKIMC4PONLHWqTfcSpd1
-	 UQh/gmJ3uqOqcSrO03/KYThE9GtcqG4R0UVXtnDpIGqzMI8t6UlU9B/8bYMXtTVQiQ
-	 nEFKLyZD+UEGAFdBx/SLI4KpDdtvys3YoT7lJWA1lfVKVtLr8WRVNFVBuqpYpJTEkh
-	 0XSsDGU/Cnzv+CStYCs8r2U3+CtOhNjWGgKNEo0exDGqg8k3lflP7eZbZP90IoQjn2
-	 QIJluJHBjs7nQ==
-Message-ID: <a41148b8-295a-58ad-7c72-2713d89e4f83@collabora.com>
-Date: Fri, 22 Sep 2023 10:29:35 +0200
+	by ams.source.kernel.org (Postfix) with ESMTPS id D68C5B821EF;
+	Fri, 22 Sep 2023 08:44:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37A04C433C8;
+	Fri, 22 Sep 2023 08:44:10 +0000 (UTC)
+Message-ID: <3e053387-4ba6-49bc-a59a-46854e0a7c26@xs4all.nl>
+Date: Fri, 22 Sep 2023 10:44:08 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v6 2/2] arm64: dts: mediatek: mt8195: add MDP3 nodes
-Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230922065017.10357-1-moudy.ho@mediatek.com>
- <20230922065017.10357-3-moudy.ho@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230922065017.10357-3-moudy.ho@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder
+ driver
+Content-Language: en-US, nl
+To: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ "jkardatzke@google.com" <jkardatzke@google.com>,
+ "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "frkoenig@chromium.org" <frkoenig@chromium.org>,
+ "stevecho@chromium.org" <stevecho@chromium.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "nhebert@chromium.org" <nhebert@chromium.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "hsinyi@chromium.org" <hsinyi@chromium.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ "nfraprado@collabora.com" <nfraprado@collabora.com>
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-13-yunfei.dong@mediatek.com>
+ <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+ <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl>
+ <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
+ <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl>
+ <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
+ <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl>
+ <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
+ <c3d14f64-bf04-46b9-ac7b-af7ef9014335@xs4all.nl>
+ <00302ac675af858eb11d8398f100921af806bc30.camel@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <00302ac675af858eb11d8398f100921af806bc30.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_012942_238411_4345CDBD 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20230922_014418_916926_C56A3844 
+X-CRM114-Status: GOOD (  35.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,156 +94,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/09/23 08:50, Moudy Ho ha scritto:
-> Add device nodes for Media Data Path 3 (MDP3) modules.
+On 22/09/2023 05:28, Yunfei Dong (董云飞) wrote:
+> Hi Hans,
 > 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 388 +++++++++++++++++++++++
->   1 file changed, 388 insertions(+)
+> Thanks for your help to give some good advice.
+> On Wed, 2023-09-20 at 09:20 +0200, Hans Verkuil wrote:
+>>  	 
+>>>>>> In any case, using a control to switch to secure mode and using
+>> a control
+>>>>>> to convert a dmabuf fd to a secure handle seems a poor choice to
+>> me.
+>>>>>>
+>>>>>> I was wondering if it wouldn't be better to create a new
+>> V4L2_MEMORY_ type,
+>>>>>> e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). That
+>> ensures that
+>>>>>> once you create buffers for the first time, the driver can
+>> switch into secure
+>>>>>> mode, and until all buffers are released again you know that the
+>> driver will
+>>>>>> stay in secure mode.
+>>>>>
+>>>>> Why do you think the control for setting secure mode is a poor
+>> choice?
+>>>>> There's various places in the driver code where functionality
+>> changes
+>>>>> based on being secure/non-secure mode, so this is very much a
+>> 'global'
+>>>>> setting for the driver. It could be inferred based off a new
+>> memory
+>>>>> type for the queues...which then sets that flag in the driver;
+>> but
+>>>>> that seems like it would be more fragile and would require
+>> checking
+>>>>> for incompatible output/capture memory types. I'm not against
+>> another
+>>>>> way of doing this; but didn't see why you think the proposed
+>> method is
+>>>>> a poor choice.
+>>>>
+>>>> I assume you are either decoding to secure memory all the time, or
+>> not
+>>>> at all. That's something you would want to select the moment you
+>> allocate
+>>>> the first buffer. Using the V4L2_MEMORY_ value would be the
+>> natural place
+>>>> for that. A control can typically be toggled at any time, and it
+>> makes
+>>>> no sense to do that for secure streaming.
+>>>>
+>>>> Related to that: if you pass a dmabuf fd you will need to check
+>> somewhere
+>>>> if the fd points to secure memory or not. You don't want to mix
+>> the two
+>>>> but you want to check that at VIDIOC_QBUF time.
+>>>>
+>>>> Note that the V4L2_MEMORY_ value is already checked in the v4l2
+>> core,
+>>>> drivers do not need to do that.
+>>>
+>>> Just to clarify a bit, and make sure I understand this too. You are
+>> proposing to
+>>> introduce something like:
+>>>
+>>>    V4L2_MEMORY_SECURE_DMABUF
+>>>
+>>> Which like V4L2_MEMORY_DMABUF is meant to import dmabuf, while
+>> telling the
+>>> driver that the memory is secure according to the definition of
+>> "secure" for the
+>>> platform its running on.
+>>>
+>>> This drivers also allocate secure SHM (a standard tee concept) and
+>> have internal
+>>> allocation for reconstruction buffer and some hw specific reference
+>> metadata. So
+>>> the idea would be that it would keep allocation using the dmabuf
+>> heap internal
+>>> APIs ? And decide which type of memory based on the memory type
+>> found in the
+>>> queue?
+>>
+>> Yes. Once you request the first buffer you basically tell the driver
+>> whether it
+>> will operate in secure or non-secure mode, and that stays that way
+>> until all
+>> buffers are freed. I think that makes sense.
+>>
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 4dbbf8fdab75..cf61ba7b8956 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1960,6 +1960,114 @@
->   			#clock-cells = <1>;
->   		};
->   
+> According to iommu's information, the dma operation for secure and non-
+> secure are the same, whether just need to add one memory type in v4l2
+> framework the same as V4L2_MEMORY_DMABUF? The dma operation in
+> videobuf2-dma-contig.c can use the same functions.
 
-..snip..
+So if I pass a non-secure dma fd to the capture queue of the codec, who
+will check that it can't write the data to that fd? Since doing so would
+expose the video. Presumably at some point the tee code will prevent that?
+(I sincerely hope so!)
 
-> +
-> +		display@14006000 {
-> +			compatible = "mediatek,mt8183-mdp3-rsz";
+Having a separate V4L2_MEMORY_DMABUF_SECURE type is to indicate to the
+driver that 1) it can expect secure dmabuf fds, 2) it can configure itself
+for that (that avoids using a control to toggle between normal and secure mode),
+and at VIDIOC_QBUF time it is easy for the V4L2 core to verify that the
+fd that is passed in is for secure memory. This means that mistakes by
+userspace are caught at QBUF time.
 
-Please always add a SoC-specific compatible (both here and in bindings).
+Of course, this will not protect you (people can disable this check by
+recompiling the kernel), that still has to be done by the firmware, but
+it catches userspace errors early on.
 
-compatible = "medaitek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
-
-> +			reg = <0 0x14006000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x6000 0x1000>;
-> +			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_RSZ_IN_RSZ_SOF>,
-> +					      <CMDQ_EVENT_VPP0_MDP_RSZ_FRAME_DONE>;
-> +			clocks = <&vppsys0 CLK_VPP0_MDP_RSZ>;
-> +		};
-> +
-
-..snip..
-
-> +
-> +		dma-controller@1400c000 {
-> +			compatible = "mediatek,mt8183-mdp3-wrot";
-
-same here
-
-> +			reg = <0 0x1400c000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xc000 0x1000>;
-> +			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_WROT_SOF>,
-> +					      <CMDQ_EVENT_VPP0_MDP_WROT_VIDO_WDONE>;
-> +			clocks = <&vppsys0 CLK_VPP0_MDP_WROT>;
-> +			iommus = <&iommu_vpp M4U_PORT_L4_MDP_WROT>;
-> +			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-> +			#dma-cells = <1>;
-> +		};
-> +
->   		mutex@1400f000 {
->   			compatible = "mediatek,mt8195-vpp-mutex";
->   			reg = <0 0x1400f000 0 0x1000>;
-> @@ -2107,6 +2215,286 @@
->   			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
->   		};
->   
-
-..snip..
-
-> +
-> +		display@14f14000 {
-> +			compatible = "mediatek,mt8183-mdp3-rsz";
-
-and here
-
-> +			reg = <0 0x14f14000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x4000 0x1000>;
-> +			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_RSZ_SOF>,
-> +					      <CMDQ_EVENT_VPP1_SVPP1_MDP_RSZ_FRAME_DONE>;
-> +			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RSZ>;
-> +		};
-> +
-> +		display@14f15000 {
-> +			compatible = "mediatek,mt8183-mdp3-rsz";
-
-...and here
-
-> +			reg = <0 0x14f15000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x5000 0x1000>;
-> +			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP2_MDP_RSZ_SOF>,
-> +					      <CMDQ_EVENT_VPP1_SVPP2_MDP_RSZ_FRAME_DONE>;
-> +			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RSZ>;
-> +		};
-> +
-> +		display@14f16000 {
-> +			compatible = "mediatek,mt8183-mdp3-rsz";
-
-......and here.
-
-> +			reg = <0 0x14f16000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x6000 0x1000>;
-> +			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP3_MDP_RSZ_SOF>,
-> +					      <CMDQ_EVENT_VPP1_SVPP3_MDP_RSZ_FRAME_DONE>;
-> +			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RSZ>;
-> +		};
-> +
-
-..snip..
-
-> +
-> +		dma-controller@14f23000 {
-> +			compatible = "mediatek,mt8183-mdp3-wrot";
-
-...again... and for the other two occurrences of wrot as well.
-
-Apart from that, looks good.
+Also, while for this hardware the DMA operation is the same, that might
+not be the case for other hardware.
 
 Regards,
-Angelo
 
-> +			reg = <0 0x14f23000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x3000 0x1000>;
-> +			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_SOF>,
-> +					      <CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_FRAME_DONE>;
-> +			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_WROT>;
-> +			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>;
-> +			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-> +			#dma-cells = <1>;
-> +		};
-> +
-> +		dma-controller@14f24000 {
-> +			compatible = "mediatek,mt8183-mdp3-wrot";
-> +			reg = <0 0x14f24000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x4000 0x1000>;
-> +			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_SOF>,
-> +					<CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_FRAME_DONE>;
-> +			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_WROT>;
-> +			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
-> +			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-> +			#dma-cells = <1>;
-> +		};
-> +
-> +		dma-controller@14f25000 {
-> +			compatible = "mediatek,mt8183-mdp3-wrot";
-> +			reg = <0 0x14f25000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x5000 0x1000>;
-> +			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_SOF>,
-> +					<CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_FRAME_DONE>;
-> +			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_WROT>;
-> +			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
-> +			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-> +			#dma-cells = <1>;
-> +		};
-> +
->   		imgsys: clock-controller@15000000 {
->   			compatible = "mediatek,mt8195-imgsys";
->   			reg = <0 0x15000000 0 0x1000>;
+	Hans
+
+> 
+> Best Regards,
+> Yunfei Dong
+> 
 
 
