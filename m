@@ -4,81 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA43AE7D0D2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 07:23:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9366FCD4F2E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 07:41:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u+w0ri+kgZGLKDLM/x8eR4t7iNHqeEgJHLZA3MrRQrE=; b=vtjOFeMwNQNk8kH0MjpgNEObxN
-	7D6CB+PQ0Z/BEzawRBcV1JetevTgT7YWQObn/V4xFbZXlqMpOBwfTDZ1uVd3muUivtP2jy5ggRHA7
-	+gkgqkRRfhmyNFNJ1KbwVzLLkYwPEra8lN4rV601vfeSJ8rRiihEzJtNMgIIFUPFemDTo1w55cXt3
-	hs89SxeOP0DfLX5aY7748SPnkNoT0CWdEu5AxsWWSbZIL+NIf43ThFvIAowtr/syhDG57cEDp81zg
-	lPSNCbj8rQXsLm1Iq8TT3IOrz2p5fEdR9K9AK/qGxhZWSFqRhZ6/APzLRetdaUfTcaD6rAXTdLyKa
-	NiyO8mEA==;
+	bh=xBKkw+SZnpwG3N6xV8Y+hw1f+U5gzW6/VgKlj1TcmpU=; b=cAYMLLMh0lDF4sSuDAtYVeUIZh
+	ZCk6f6a/B6dh1++e5VZgQMwLUX/xSDZPtnCmU+aVpPT08EV0ywvUAQM/9CHcn3X9Jv/S+6yqrGZnc
+	WXKxIxTds7wXUer2pf8kt9gm1xy8zYzr1rr9dQ94jYIYy19TQZee/WEDAxtbmIjbG4Syx77oMBlVn
+	IrMJJhvvmeCW3DhnmuD/o0YCsKXVJ6+s9bJ/YzzP/6XdM28PuoBIl2nzKflieHTfLy646VCIa1lBN
+	qTnt22CAua6nxSPykXDfAxh/QpPGRgwlVpZSwlPSsIys3GnMqbq+w/FFf+uKw9oJqaP1oo/4VCRy5
+	FG49SG0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjaVK-008BGY-29;
-	Fri, 22 Sep 2023 07:23:10 +0000
+	id 1qjanS-008E4o-1T;
+	Fri, 22 Sep 2023 07:41:54 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjaUC-008ATt-22;
-	Fri, 22 Sep 2023 07:22:02 +0000
-X-UUID: b5f7bbee591811ee9b7791016c24628a-20230922
+	id 1qjanQ-008E3e-0Y;
+	Fri, 22 Sep 2023 07:41:53 +0000
+X-UUID: 7d509146591b11ee9b7791016c24628a-20230922
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=u+w0ri+kgZGLKDLM/x8eR4t7iNHqeEgJHLZA3MrRQrE=;
-	b=eRIC7BPmf5zfkxcZxH/R+hTpasNE1OhOCsDyhEP0paYnV8vNA94KTx6ndTMJq5DmUSGzSHqTXyWCaguWB/02X7szzlfDF+6ZKzBYkQMyBzLoQHN3FLT5EQkyrvw4/712pVt53/S4jHMRzqYpNhftS4cH9Y0CcU1/Z4YfDTCHCT8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xBKkw+SZnpwG3N6xV8Y+hw1f+U5gzW6/VgKlj1TcmpU=;
+	b=k4HNfQQ7TxV0z+upCgtRfLE6aQAsAUVUZMehl4VejebjlSjUG+NFH2Z7qaMlo7voIJSdYAcNbA8Gld/qR46/PRLIwG8HcNCvBK2L6AGengjBMYmbG9umrEGW+945gQTrZyjoocb84rZ2HbBOErYPJ9kqVxKmASqKpQ6GOM9YCqk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:4976aefd-9f49-408d-b13c-ec43a4a665d9,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:1522c5d0-2a39-4c9c-b945-b4afe68e057c,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:e22b24bf-14cc-44ca-b657-2d2783296e72,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:103d55c3-1e57-4345-9d31-31ad9818b39f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b5f7bbee591811ee9b7791016c24628a-20230922
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 7d509146591b11ee9b7791016c24628a-20230922
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2102438607; Fri, 22 Sep 2023 00:21:56 -0700
+	with ESMTP id 760911714; Fri, 22 Sep 2023 00:41:49 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Sep 2023 15:21:19 +0800
+ 15.2.1118.26; Fri, 22 Sep 2023 15:41:46 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Sep 2023 15:21:19 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 22 Sep 2023 15:41:46 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
-	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Moudy
- Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v6 14/16] dt-bindings: display: mediatek: ovl: add compatible for MT8195
-Date: Fri, 22 Sep 2023 15:21:14 +0800
-Message-ID: <20230922072116.11009-15-moudy.ho@mediatek.com>
+	<angelogioacchino.delregno@collabora.com>, Ping-Hsun Wu
+	<ping-hsun.wu@mediatek.com>, daoyuan huang <daoyuan.huang@mediatek.com>,
+	"Hans Verkuil" <hverkuil-cisco@xs4all.nl>
+CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Moudy Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v6 03/13] media: platform: mtk-mdp3: introduce more pipelines from MT8195
+Date: Fri, 22 Sep 2023 15:41:35 +0800
+Message-ID: <20230922074145.11977-4-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230922072116.11009-1-moudy.ho@mediatek.com>
-References: <20230922072116.11009-1-moudy.ho@mediatek.com>
+In-Reply-To: <20230922074145.11977-1-moudy.ho@mediatek.com>
+References: <20230922074145.11977-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.967800-8.000000
+X-TMASE-MatchedRID: 9tznvLHRcTzPl7LciQedTgPZZctd3P4BK2i9pofGVSsKogmGusPLb8FQ
+	0J8JC8zgOfAiJ/eonC1mJS6k736MTIT3OBUyTeledXz3l78F3YlYN1akkye0qPt592eq2xoTVSd
+	AA6mVeIZQRjVnEuqiiK8okvFnr1sb/02XRYC/8eue7UdJp0QINZYcYQ11P5U/nugLWtXP+42jxY
+	yRBa/qJcFwgTvxipFajoczmuoPCq2mjeknu5ZelL26gakg7YHATWKONmqtUIAYr4fIZs5K4agcK
+	fse3Z/uQwymtxuJ6y0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.967800-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: B13C1F89118CDB16CE32EF9188AE19E9FA54C5ACA3032A24BAD78008935151C72000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_002200_789303_279C87B2 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230922_004152_219931_86B8D58A 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,26 +100,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a compatible string for the OVL block in MediaTek MT8195 that
-is controlled by MDP3.
+Increasing the number of sets built by MMSYS and MUTEX in MT8195
+will enable the creation of more pipelines in MDP3.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml       | 1 +
- 1 file changed, 1 insertion(+)
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 80 ++++++++++++-------
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  7 ++
+ 2 files changed, 60 insertions(+), 27 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-index 3e1069b00b56..c471a181d125 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-@@ -26,6 +26,7 @@ properties:
-           - mediatek,mt8173-disp-ovl
-           - mediatek,mt8183-disp-ovl
-           - mediatek,mt8192-disp-ovl
-+          - mediatek,mt8195-mdp3-ovl
-       - items:
-           - enum:
-               - mediatek,mt7623-disp-ovl
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index 5dc62c47f8a3..370f840ec593 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -50,6 +50,43 @@ static struct mtk_mutex *__get_mutex(const struct mdp_dev *mdp_dev,
+ 	return mdp_dev->mm_subsys[p->sub_id].mdp_mutex[p->mutex_id];
+ }
+ 
++static enum mdp_pipe_id __get_pipe(const struct mdp_dev *mdp_dev,
++				   enum mtk_mdp_comp_id id)
++{
++	enum mdp_pipe_id pipe_id;
++
++	switch (id) {
++	case MDP_COMP_RDMA0:
++		pipe_id = MDP_PIPE_RDMA0;
++		break;
++	case MDP_COMP_ISP_IMGI:
++		pipe_id = MDP_PIPE_IMGI;
++		break;
++	case MDP_COMP_WPEI:
++		pipe_id = MDP_PIPE_WPEI;
++		break;
++	case MDP_COMP_WPEI2:
++		pipe_id = MDP_PIPE_WPEI2;
++		break;
++	case MDP_COMP_RDMA1:
++		pipe_id = MDP_PIPE_RDMA1;
++		break;
++	case MDP_COMP_RDMA2:
++		pipe_id = MDP_PIPE_RDMA2;
++		break;
++	case MDP_COMP_RDMA3:
++		pipe_id = MDP_PIPE_RDMA3;
++		break;
++	default:
++		/* Avoid exceptions when operating MUTEX */
++		pipe_id = MDP_PIPE_RDMA0;
++		dev_err(&mdp_dev->pdev->dev, "Unknown pipeline id %d", id);
++		break;
++	}
++
++	return pipe_id;
++}
++
+ static int mdp_path_subfrm_require(const struct mdp_path *path,
+ 				   struct mdp_cmdq_cmd *cmd,
+ 				   struct mdp_pipe_info *p, u32 count)
+@@ -57,7 +94,6 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
+ 	const int p_id = path->mdp_dev->mdp_data->mdp_plat_id;
+ 	const struct mdp_comp_ctx *ctx;
+ 	const struct mtk_mdp_driver_data *data = path->mdp_dev->mdp_data;
+-	struct device *dev = &path->mdp_dev->pdev->dev;
+ 	struct mtk_mutex *mutex;
+ 	int id, index;
+ 	u32 num_comp = 0;
+@@ -66,23 +102,7 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
+ 		num_comp = CFG_GET(MT8183, path->config, num_components);
+ 
+ 	/* Decide which mutex to use based on the current pipeline */
+-	switch (path->comps[0].comp->public_id) {
+-	case MDP_COMP_RDMA0:
+-		index = MDP_PIPE_RDMA0;
+-		break;
+-	case MDP_COMP_ISP_IMGI:
+-		index = MDP_PIPE_IMGI;
+-		break;
+-	case MDP_COMP_WPEI:
+-		index = MDP_PIPE_WPEI;
+-		break;
+-	case MDP_COMP_WPEI2:
+-		index = MDP_PIPE_WPEI2;
+-		break;
+-	default:
+-		dev_err(dev, "Unknown pipeline and no mutex is assigned");
+-		return -EINVAL;
+-	}
++	index = __get_pipe(path->mdp_dev, path->comps[0].comp->public_id);
+ 	memcpy(p, &data->pipe_info[index], sizeof(struct mdp_pipe_info));
+ 	mutex = __get_mutex(path->mdp_dev, p);
+ 
+@@ -336,11 +356,13 @@ static void mdp_auto_release_work(struct work_struct *work)
+ 	struct mdp_cmdq_cmd *cmd;
+ 	struct mdp_dev *mdp;
+ 	struct mtk_mutex *mutex;
++	enum mdp_pipe_id pipe_id;
+ 
+ 	cmd = container_of(work, struct mdp_cmdq_cmd, auto_release_work);
+ 	mdp = cmd->mdp;
+ 
+-	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
++	pipe_id = __get_pipe(mdp, cmd->comps[0].public_id);
++	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
+ 	mtk_mutex_unprepare(mutex);
+ 	mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
+ 			    cmd->num_comps);
+@@ -361,6 +383,7 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
+ 	struct cmdq_cb_data *data;
+ 	struct mdp_dev *mdp;
+ 	struct device *dev;
++	enum mdp_pipe_id pipe_id;
+ 
+ 	if (!mssg) {
+ 		pr_info("%s:no callback data\n", __func__);
+@@ -388,7 +411,8 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
+ 		struct mtk_mutex *mutex;
+ 
+ 		dev_err(dev, "%s:queue_work fail!\n", __func__);
+-		mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
++		pipe_id = __get_pipe(mdp, cmd->comps[0].public_id);
++		mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
+ 		mtk_mutex_unprepare(mutex);
+ 		mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
+ 				    cmd->num_comps);
+@@ -412,6 +436,7 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 	struct device *dev = &mdp->pdev->dev;
+ 	const int p_id = mdp->mdp_data->mdp_plat_id;
+ 	struct mtk_mutex *mutex = NULL;
++	enum mdp_pipe_id pipe_id;
+ 	int i, ret;
+ 	u32 num_comp = 0;
+ 
+@@ -449,13 +474,6 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 		goto err_free_comps;
+ 	}
+ 
+-	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
+-	ret = mtk_mutex_prepare(mutex);
+-	if (ret) {
+-		dev_err(dev, "Fail to enable mutex clk\n");
+-		goto err_free_path;
+-	}
+-
+ 	path->mdp_dev = mdp;
+ 	path->config = param->config;
+ 	path->param = param->param;
+@@ -475,6 +493,14 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 		goto err_free_path;
+ 	}
+ 
++	pipe_id = __get_pipe(mdp, path->comps[0].comp->public_id);
++	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
++	ret = mtk_mutex_prepare(mutex);
++	if (ret) {
++		dev_err(dev, "Fail to enable mutex clk\n");
++		goto err_free_path;
++	}
++
+ 	ret = mdp_path_config(mdp, cmd, path);
+ 	if (ret) {
+ 		dev_err(dev, "mdp_path_config error\n");
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+index fde2c0b95def..ece6509666fd 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+@@ -59,6 +59,13 @@ enum mdp_pipe_id {
+ 	MDP_PIPE_WPEI2,
+ 	MDP_PIPE_IMGI,
+ 	MDP_PIPE_RDMA0,
++	MDP_PIPE_RDMA1,
++	MDP_PIPE_RDMA2,
++	MDP_PIPE_RDMA3,
++	MDP_PIPE_SPLIT,
++	MDP_PIPE_SPLIT2,
++	MDP_PIPE_VPP0_SOUT,
++	MDP_PIPE_VPP1_SOUT,
+ 	MDP_PIPE_MAX
+ };
+ 
 -- 
 2.18.0
 
