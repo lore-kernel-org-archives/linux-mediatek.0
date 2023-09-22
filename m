@@ -4,85 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06151CD484C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 18:20:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD36CD4854
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 19:18:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MJEfWMki53C0C9QhqoAya3sbRCJGrb7hvD0oAvB4tgE=; b=36vuArgj4QFo5O5VuQlwTGunyh
-	tDtgVqtFG618HnU076UhaiqxwiKYUi3aiiZ3HClNeo6S90CC3Fi6npm6FR5XvgP6v/811N0f9jHSO
-	hIHRiukrV2NzS9h6n+L3p68HCYbpFZ4cbSjn2RuGlUIKWaa0DuFIVJ/dtR6GxVuf1vTDpxNmvaL1c
-	h5g35h9b1yApky75/8IsKMd08Z2XeY4vn9eHVsD6WITejaNhmhXxPb88QCkV/s2m2EAK1GwyNTD7F
-	Mtn+y+TcBNQi37g4VigqQhQNzQ2sQZ/oM56xnOsSuJ+XyJrS2eyiqMyqRnRnRUqeUOjVIduyr8AdF
-	8K9VuGEQ==;
+	bh=DyNeUZ3WCAjUmVlEgm08etdm7gvqrxPANUu70oYM0rA=; b=xeIzjjEF+4sWxByeTo0tE89n01
+	M4FzqNwF7S19AkzkYHGF9QzzUgI3PovHuD3HbuhTd4T+ZkH0NzJmLfl2Tt94B4o2undFTwMRz1Ypg
+	OJakhZz5JxRLHAvvvtENmOQJHVK/viMWGS1v1+CZkxtocHjqwhkvIcp9PCfffFneaMxW7WhYLRy9R
+	H7VArmWKXo32lh9RFmWw90JI60vKvm6f/4/+KBaxPNM2WcdW8ghqz0NKIiq5FNhsv75WxrAa8w6vU
+	ZgisSl0hLA8EPkni2Y2JIJ/yFE76HSpBbI9hQc8FZqvvgcT+L5hvySd+JmrhxAyFOEQMlKmm94r2S
+	U8OEB+zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjkl5-009c29-10;
-	Fri, 22 Sep 2023 18:20:07 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1qjlfJ-009hhm-0L;
+	Fri, 22 Sep 2023 19:18:13 +0000
+Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjkl2-009c0d-1T
+	id 1qjlfE-009hg5-3D
 	for linux-mediatek@lists.infradead.org;
-	Fri, 22 Sep 2023 18:20:06 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-d8020510203so2951819276.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 22 Sep 2023 11:19:59 -0700 (PDT)
+	Fri, 22 Sep 2023 19:18:11 +0000
+Received: by mail-il1-x131.google.com with SMTP id e9e14a558f8ab-34fa117f92bso17025ab.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 22 Sep 2023 12:18:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1695406799; x=1696011599; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1695410286; x=1696015086; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MJEfWMki53C0C9QhqoAya3sbRCJGrb7hvD0oAvB4tgE=;
-        b=xjUvI/xuwNkWo8f2J5L4naRGL2Q2VmjDmlVE4EW+0/tSDJNWCoOMrdAnoPK/iPo+76
-         JNvO80pXXvdRrBDngJ6b/kXOV2DeFe78HvdJAisYI5Bedefso3EkjYfuP//4JK1w4JKC
-         1fZkqPEx8J3lwA1YjI15codwu29rGgNewrZUUYcjwH//rn43Mehchgz2oGggtPPKB7WF
-         c6ve+x/IR09iGYoWrvwUGqLrJbaHaEDtGv1Z70nLixAOa3aVTyOdyXYJUoQoaraCo/77
-         XJZMJDRSFFS0LBRKpaBOFP7Cvu88Dxk5SI/E3DZqbo37mJ2mR3OJl8gV80ny25Jxv+Dv
-         Q55Q==
+        bh=DyNeUZ3WCAjUmVlEgm08etdm7gvqrxPANUu70oYM0rA=;
+        b=R/hjXKoJxpbstZaLyBJNFi732T8DNHhkU4qD56qINgJvlvODpXJeCsMNClWu+DrUTH
+         +a19isq8TlWiBHKDNtSOGEV5R1jr0lf4tO51As9x/Eaqeup/iCC4hi4Dte305b+uEME6
+         iFQfjPqOPHx9aysVIHfdrL40D2RJzKmY/EGHOE6KG4WT/L1t4b/dRxc4qgusU1lh0pCo
+         Nk5PbvJOHf8/RKQ68+XXlPYMmBORSCSVMmd0HhwzfQaAKcvbobxR6Q9Lvz8kDfTCN8dM
+         ys9Rzmvc+iXc1z4l29h0SaYe/ZOU6f/EWX4P+/HSmUDzJMaP79D0YYYeK8GqiOZiuEU0
+         2QhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695406799; x=1696011599;
+        d=1e100.net; s=20230601; t=1695410286; x=1696015086;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MJEfWMki53C0C9QhqoAya3sbRCJGrb7hvD0oAvB4tgE=;
-        b=U/9ipB8FEfPUZg+7uKg3YL1kKIBkhyDk3frX6tFDkqt2zV+lU3Gh4NW/2ajp0SRI2H
-         10OoyYBLKx8epFwTsJwkSM7tgmlM4VZ8auYrWmJ6sulQ+M8jvQxrNeFvBxaeTS2tZ5Tx
-         e9uOj/ETpmZkjTH2hq2V15A22dpaKVUZoM0IDN5GROQ9PrvVM2bj+vuU8i9zflYW6guf
-         0fu5nwZxgEm3ZTO0WKTAtMXcwaTfmqryBZ4y5gq07fR9dHBJkJuwh2B7D/Y/9wMR38NF
-         mSvvDp2DQPNAiN0oDQlv6/un49JaL80o79f3p0NYK1+M31B6NkQX3yEfXZp5o0p3BFyR
-         nonw==
-X-Gm-Message-State: AOJu0Yw+Zv3SMU4WLQpmnmER6V33h2Iuu/QvqHQfPeMllOj+I97TZZf5
-	4MCF81nk+HjovG3XJ67Mh/Twtr2E+Y95wH4BlN9okg==
-X-Google-Smtp-Source: AGHT+IEHQohIXqITSfor/S743Ge1pG10gsNJCzDT+XFRdZSUhjj6xBKLS9Ve3hl88Y+oLZXD7F7ZDyjyqF5lKzjIhh8=
-X-Received: by 2002:a25:9205:0:b0:d81:6344:540b with SMTP id
- b5-20020a259205000000b00d816344540bmr65049ybo.45.1695406798515; Fri, 22 Sep
- 2023 11:19:58 -0700 (PDT)
+        bh=DyNeUZ3WCAjUmVlEgm08etdm7gvqrxPANUu70oYM0rA=;
+        b=XJPem6GAiPliP4FL4weS5gV5qKMfEQXA50f5DvtSgas92IAqvkmMU67yPcm8RP1J8u
+         0+vAMojycZijR6bou9kvVnn9ztzXR4tWGIkbZHb9SNUn43g1fp/3NbsA0mqm51JeXoZX
+         G1tWpunHFhQhkRm2L2m1yIwPGI7hxk+2EEgsarbolGUeThmZH3uvoczNVqfgyVleN71E
+         z4HKTBR3LbXWdM33KdwCEvTcV0npsIskcRj0jDqxU1xchVAsyEFjzPwmwJ8srhZ/L5sq
+         bHWQ0wyxxdREYDnOtaw/HKGK6qrfneSdwa8dpMajv38g7sawrkmfqnafvRpdqHLrBoui
+         ej1A==
+X-Gm-Message-State: AOJu0YwXLuhw9uRl0Xg0o2pSyzLfkiy7o7L3MgzZ+s9HaxRDe3as2TDf
+	8NjVd+1Po32JxZewq9EZwuQ1FUSsVXbuiQOGViO+
+X-Google-Smtp-Source: AGHT+IEkuTA4urgmbdVNMj3HiBwCknziEPPTDCvVrqih7k4aw4VFYOBXLQyjittkWgl/cBCl6B350aKf/9x+9NjapJg=
+X-Received: by 2002:a05:6e02:1a4b:b0:351:ad4:85b with SMTP id
+ u11-20020a056e021a4b00b003510ad4085bmr63607ilv.4.1695410285810; Fri, 22 Sep
+ 2023 12:18:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230911023038.30649-1-yong.wu@mediatek.com> <20230911023038.30649-3-yong.wu@mediatek.com>
- <71c435a6-ba43-5d26-e658-f55bddbb8b98@amd.com>
-In-Reply-To: <71c435a6-ba43-5d26-e658-f55bddbb8b98@amd.com>
-From: "T.J. Mercier" <tjmercier@google.com>
-Date: Fri, 22 Sep 2023 11:19:46 -0700
-Message-ID: <CABdmKX1-5ujRRVQHNVMkoC4Ls0mruxE8GCXNavRLyywD7SobOw@mail.gmail.com>
-Subject: Re: [PATCH 2/9] dma-heap: Add proper kref handling on dma-buf heaps
-To: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	John Stultz <jstultz@google.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	jianjiao.zeng@mediatek.com, kuohong.wang@mediatek.com
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-13-yunfei.dong@mediatek.com> <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+ <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl> <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
+ <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl> <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
+ <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl> <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
+ <c3d14f64-bf04-46b9-ac7b-af7ef9014335@xs4all.nl> <00302ac675af858eb11d8398f100921af806bc30.camel@mediatek.com>
+ <3e053387-4ba6-49bc-a59a-46854e0a7c26@xs4all.nl>
+In-Reply-To: <3e053387-4ba6-49bc-a59a-46854e0a7c26@xs4all.nl>
+From: Jeffrey Kardatzke <jkardatzke@google.com>
+Date: Fri, 22 Sep 2023 12:17:50 -0700
+Message-ID: <CA+ddPcOaCKq5Nd_3eWwJ3=oAf=5t-Z+w51NqapXN8VBuvbTw3g@mail.gmail.com>
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder driver
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, 
+	"nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org" <stevecho@chromium.org>, 
+	"wenst@chromium.org" <wenst@chromium.org>, "nhebert@chromium.org" <nhebert@chromium.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, 
+	"hsinyi@chromium.org" <hsinyi@chromium.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"nfraprado@collabora.com" <nfraprado@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_112004_495564_ED44E1F4 
-X-CRM114-Status: GOOD (  36.22  )
+X-CRM114-CacheID: sfid-20230922_121809_060903_C6E0DC42 
+X-CRM114-Status: GOOD (  54.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,191 +106,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 11, 2023 at 2:49=E2=80=AFAM Christian K=C3=B6nig
-<christian.koenig@amd.com> wrote:
+On Fri, Sep 22, 2023 at 1:44=E2=80=AFAM Hans Verkuil <hverkuil-cisco@xs4all=
+.nl> wrote:
 >
-> Am 11.09.23 um 04:30 schrieb Yong Wu:
-> > From: John Stultz <jstultz@google.com>
+> On 22/09/2023 05:28, Yunfei Dong (=E8=91=A3=E4=BA=91=E9=A3=9E) wrote:
+> > Hi Hans,
 > >
-> > Add proper refcounting on the dma_heap structure.
-> > While existing heaps are built-in, we may eventually
-> > have heaps loaded from modules, and we'll need to be
-> > able to properly handle the references to the heaps
+> > Thanks for your help to give some good advice.
+> > On Wed, 2023-09-20 at 09:20 +0200, Hans Verkuil wrote:
+> >>
+> >>>>>> In any case, using a control to switch to secure mode and using
+> >> a control
+> >>>>>> to convert a dmabuf fd to a secure handle seems a poor choice to
+> >> me.
+> >>>>>>
+> >>>>>> I was wondering if it wouldn't be better to create a new
+> >> V4L2_MEMORY_ type,
+> >>>>>> e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). That
+> >> ensures that
+> >>>>>> once you create buffers for the first time, the driver can
+> >> switch into secure
+> >>>>>> mode, and until all buffers are released again you know that the
+> >> driver will
+> >>>>>> stay in secure mode.
+> >>>>>
+> >>>>> Why do you think the control for setting secure mode is a poor
+> >> choice?
+> >>>>> There's various places in the driver code where functionality
+> >> changes
+> >>>>> based on being secure/non-secure mode, so this is very much a
+> >> 'global'
+> >>>>> setting for the driver. It could be inferred based off a new
+> >> memory
+> >>>>> type for the queues...which then sets that flag in the driver;
+> >> but
+> >>>>> that seems like it would be more fragile and would require
+> >> checking
+> >>>>> for incompatible output/capture memory types. I'm not against
+> >> another
+> >>>>> way of doing this; but didn't see why you think the proposed
+> >> method is
+> >>>>> a poor choice.
+> >>>>
+> >>>> I assume you are either decoding to secure memory all the time, or
+> >> not
+> >>>> at all. That's something you would want to select the moment you
+> >> allocate
+> >>>> the first buffer. Using the V4L2_MEMORY_ value would be the
+> >> natural place
+> >>>> for that. A control can typically be toggled at any time, and it
+> >> makes
+> >>>> no sense to do that for secure streaming.
+> >>>>
+> >>>> Related to that: if you pass a dmabuf fd you will need to check
+> >> somewhere
+> >>>> if the fd points to secure memory or not. You don't want to mix
+> >> the two
+> >>>> but you want to check that at VIDIOC_QBUF time.
+> >>>>
+> >>>> Note that the V4L2_MEMORY_ value is already checked in the v4l2
+> >> core,
+> >>>> drivers do not need to do that.
+> >>>
+> >>> Just to clarify a bit, and make sure I understand this too. You are
+> >> proposing to
+> >>> introduce something like:
+> >>>
+> >>>    V4L2_MEMORY_SECURE_DMABUF
+> >>>
+> >>> Which like V4L2_MEMORY_DMABUF is meant to import dmabuf, while
+> >> telling the
+> >>> driver that the memory is secure according to the definition of
+> >> "secure" for the
+> >>> platform its running on.
+> >>>
+> >>> This drivers also allocate secure SHM (a standard tee concept) and
+> >> have internal
+> >>> allocation for reconstruction buffer and some hw specific reference
+> >> metadata. So
+> >>> the idea would be that it would keep allocation using the dmabuf
+> >> heap internal
+> >>> APIs ? And decide which type of memory based on the memory type
+> >> found in the
+> >>> queue?
+> >>
+> >> Yes. Once you request the first buffer you basically tell the driver
+> >> whether it
+> >> will operate in secure or non-secure mode, and that stays that way
+> >> until all
+> >> buffers are freed. I think that makes sense.
+> >>
 > >
-> > Also moves minor tracking into the heap structure so
-> > we can properly free things.
+> > According to iommu's information, the dma operation for secure and non-
+> > secure are the same, whether just need to add one memory type in v4l2
+> > framework the same as V4L2_MEMORY_DMABUF? The dma operation in
+> > videobuf2-dma-contig.c can use the same functions.
 >
-> This is completely unnecessary, see below.
->
-> >
-> > Signed-off-by: John Stultz <jstultz@google.com>
-> > Signed-off-by: T.J. Mercier <tjmercier@google.com>
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > [Yong: Just add comment for "minor" and "refcount"]
-> > ---
-> >   drivers/dma-buf/dma-heap.c | 38 ++++++++++++++++++++++++++++++++++---=
--
-> >   include/linux/dma-heap.h   |  6 ++++++
-> >   2 files changed, 40 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
-> > index 51030f6c9d6e..dcc0e38c61fa 100644
-> > --- a/drivers/dma-buf/dma-heap.c
-> > +++ b/drivers/dma-buf/dma-heap.c
-> > @@ -11,6 +11,7 @@
-> >   #include <linux/dma-buf.h>
-> >   #include <linux/dma-heap.h>
-> >   #include <linux/err.h>
-> > +#include <linux/kref.h>
-> >   #include <linux/list.h>
-> >   #include <linux/nospec.h>
-> >   #include <linux/syscalls.h>
-> > @@ -30,6 +31,8 @@
-> >    * @heap_devt:              heap device node
-> >    * @list:           list head connecting to list of heaps
-> >    * @heap_cdev:              heap char device
-> > + * @minor:           heap device node minor number
-> > + * @refcount:                reference counter for this heap device
-> >    *
-> >    * Represents a heap of memory from which buffers can be made.
-> >    */
-> > @@ -40,6 +43,8 @@ struct dma_heap {
-> >       dev_t heap_devt;
-> >       struct list_head list;
-> >       struct cdev heap_cdev;
-> > +     int minor;
-> > +     struct kref refcount;
-> >   };
-> >
-> >   static LIST_HEAD(heap_list);
-> > @@ -205,7 +210,6 @@ struct dma_heap *dma_heap_add(const struct dma_heap=
-_export_info *exp_info)
-> >   {
-> >       struct dma_heap *heap, *h, *err_ret;
-> >       struct device *dev_ret;
-> > -     unsigned int minor;
-> >       int ret;
-> >
-> >       if (!exp_info->name || !strcmp(exp_info->name, "")) {
-> > @@ -222,12 +226,13 @@ struct dma_heap *dma_heap_add(const struct dma_he=
-ap_export_info *exp_info)
-> >       if (!heap)
-> >               return ERR_PTR(-ENOMEM);
-> >
-> > +     kref_init(&heap->refcount);
-> >       heap->name =3D exp_info->name;
-> >       heap->ops =3D exp_info->ops;
-> >       heap->priv =3D exp_info->priv;
-> >
-> >       /* Find unused minor number */
-> > -     ret =3D xa_alloc(&dma_heap_minors, &minor, heap,
-> > +     ret =3D xa_alloc(&dma_heap_minors, &heap->minor, heap,
-> >                      XA_LIMIT(0, NUM_HEAP_MINORS - 1), GFP_KERNEL);
-> >       if (ret < 0) {
-> >               pr_err("dma_heap: Unable to get minor number for heap\n")=
-;
-> > @@ -236,7 +241,7 @@ struct dma_heap *dma_heap_add(const struct dma_heap=
-_export_info *exp_info)
-> >       }
-> >
-> >       /* Create device */
-> > -     heap->heap_devt =3D MKDEV(MAJOR(dma_heap_devt), minor);
-> > +     heap->heap_devt =3D MKDEV(MAJOR(dma_heap_devt), heap->minor);
-> >
-> >       cdev_init(&heap->heap_cdev, &dma_heap_fops);
-> >       ret =3D cdev_add(&heap->heap_cdev, heap->heap_devt, 1);
-> > @@ -280,12 +285,37 @@ struct dma_heap *dma_heap_add(const struct dma_he=
-ap_export_info *exp_info)
-> >   err2:
-> >       cdev_del(&heap->heap_cdev);
-> >   err1:
-> > -     xa_erase(&dma_heap_minors, minor);
-> > +     xa_erase(&dma_heap_minors, heap->minor);
-> >   err0:
-> >       kfree(heap);
-> >       return err_ret;
-> >   }
-> >
-> > +static void dma_heap_release(struct kref *ref)
-> > +{
-> > +     struct dma_heap *heap =3D container_of(ref, struct dma_heap, refc=
-ount);
-> > +
-> > +     /* Note, we already holding the heap_list_lock here */
-> > +     list_del(&heap->list);
-> > +
-> > +     device_destroy(dma_heap_class, heap->heap_devt);
-> > +     cdev_del(&heap->heap_cdev);
-> > +     xa_erase(&dma_heap_minors, heap->minor);
->
-> You can just use MINOR(heap->heap_devt) here instead.
->
-Got it, thanks.
+> So if I pass a non-secure dma fd to the capture queue of the codec, who
+> will check that it can't write the data to that fd? Since doing so would
+> expose the video. Presumably at some point the tee code will prevent that=
+?
+> (I sincerely hope so!)
 
-> > +
-> > +     kfree(heap);
-> > +}
-> > +
-> > +void dma_heap_put(struct dma_heap *h)
-> > +{
-> > +     /*
-> > +      * Take the heap_list_lock now to avoid racing with code
-> > +      * scanning the list and then taking a kref.
-> > +      */
->
-> This is usually considered a bad idea since it makes the kref approach
-> superfluous.
->
-> There are multiple possibilities how handle this, the most common one is
-> to use kref_get_unless_zero() in your list traversal code and ignore the
-> entry when that fails.
->
-> Alternatively you could use kref_put_mutex() instead. This gives you the
-> same functionality as this here, but as far as I know it's normally only
-> used in a couple of special cases.
->
-Ok, I'll move this mutex acquisition to dma_heap_release so that it
-guards just the list_del, and change dma_heap_find to use
-kref_get_unless_zero. Thanks.
+It is entirely the job of the TEE to prevent this. Nothing in the
+kernel should allow exploitation of what happens in the TEE no matter
+what goes on in the kernel
 
-> > +     mutex_lock(&heap_list_lock);
-> > +     kref_put(&h->refcount, dma_heap_release);
-> > +     mutex_unlock(&heap_list_lock);
-> > +}
-> > +
-> >   static char *dma_heap_devnode(const struct device *dev, umode_t *mode=
-)
-> >   {
-> >       return kasprintf(GFP_KERNEL, "dma_heap/%s", dev_name(dev));
-> > diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
-> > index c7c29b724ad6..f3c678892c5c 100644
-> > --- a/include/linux/dma-heap.h
-> > +++ b/include/linux/dma-heap.h
-> > @@ -64,4 +64,10 @@ const char *dma_heap_get_name(struct dma_heap *heap)=
-;
-> >    */
-> >   struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_=
-info);
-> >
-> > +/**
-> > + * dma_heap_put - drops a reference to a dmabuf heap, potentially free=
-ing it
-> > + * @heap: the heap whose reference count to decrement
-> > + */
 >
-> Please don't add kerneldoc to the definition, add it to the
-> implementation of the function.
+> Having a separate V4L2_MEMORY_DMABUF_SECURE type is to indicate to the
+> driver that 1) it can expect secure dmabuf fds, 2) it can configure itsel=
+f
+> for that (that avoids using a control to toggle between normal and secure=
+ mode),
+> and at VIDIOC_QBUF time it is easy for the V4L2 core to verify that the
+> fd that is passed in is for secure memory. This means that mistakes by
+> userspace are caught at QBUF time.
 >
-Will fix.
+> Of course, this will not protect you (people can disable this check by
+> recompiling the kernel), that still has to be done by the firmware, but
+> it catches userspace errors early on.
+>
+> Also, while for this hardware the DMA operation is the same, that might
+> not be the case for other hardware.
 
+That's a really good point. So one of the other models that is used
+for secure video decoding is to send the encrypted buffer into the
+video decoder directly (i.e. V4L2_MEMORY_MMAP) and then also send in
+all the corresponding crypto parameters (i.e. algorithm, IV,
+encryption pattern, etc.). Then the video driver internally does the
+decryption and decode in one operation.  That's not what we want to
+use here for Mediatek; but I've done other integrations that work that
+way (that was for VAAPI [1], not V4L2...but there are other ARM
+implementations that do operate that way).  So if we end up requiring
+V4L2_MEMORY_DMABUF_SECURE to indicate secure mode and enforce it on
+output+capture, that'll close off other potential solutions in the
+future.
 
+Expanding on your point about DMA operations being different on
+various hardware, that also makes me think a general check for this in
+v4l2 code may also be limiting. There are various ways secure video
+pipelines are done, so leaving these checks up to the individual
+drivers that implement secure video decode may be more pragmatic. If
+there's a generic V4L2 _CID_SECURE_MODE control, that makes it more
+general for how drivers can handle secure video decode.
 
+[1] - https://github.com/intel/libva/blob/master/va/va.h#L2177
 
+>
 > Regards,
-> Christian.
 >
-> > +void dma_heap_put(struct dma_heap *heap);
-> > +
-> >   #endif /* _DMA_HEAPS_H */
+>         Hans
+>
+> >
+> > Best Regards,
+> > Yunfei Dong
+> >
 >
 
