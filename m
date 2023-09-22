@@ -4,115 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1595FE6FE20
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 12:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60892E6FE32
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 13:53:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yvGliCzM7qR9cjwG6OFrxm7XoeY8chqa33iD7TfYF9g=; b=pjNOgcNM1itvxOetR662AdUkCt
-	5Fk3Teu+eoA5vQEI8ysqtP0voSHZsqhkPxgqjliP0PT/yL4aTgRTCROfL9AOoLOfuEFjnEtIkvScd
-	JZX82Dh7nPn9wNWh9I5kOO0SUTfLUdaSVFjJiAKHO4rnhwRLRlspQcJs40JEZgzATPM/jUzDQdCck
-	iYI5uiy7uvEu7NF9mxGfJ+fuD/E8yGRmntPfxbLe0kfGyRSqgVWoIHqdtOUxzSOl1KWg3EdwH9dso
-	C/qXG0twaATQT35S/oXqP3wDNvMOoIBjYTt1priVm14ROLTLwLvsrK8euOsIapYuNsZe/o9hoL94a
-	cNc1VYow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dKh/ueRM5HZmi6FYT2wRNjbc9zcPpyB2edErzQvJXdA=; b=zScaRAJjEhka6ivaM4Mj8KHfjk
+	T+TWeWdpmoG8Q91wfYUfJosWs4ZnmEadVUkwAhohrtEpkviTIpb30B3WQh84whW0dRlpdoiHmUICh
+	LidjopG39SvRvUl9g8t8Bt6bmL4T3fr676nzQUCLIuXgNmBHUDqwdJ/3KI36Wyli2cmovnRrw2gzX
+	O+hQkl5WrH4EoDI/eBMJzRA3BPG48cmEzAmI8f6oIpecZauv/5wmJYlFvwrErLXnhu2B+fxBRvF9N
+	9Vd0UAze2U12pVGMDcu1TdbmzOPLLeSq7oLcpvO8kGJGcs0dSFZpCTC/Mhn5FBM81y4PlpgNHrl8J
+	apAzxUdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjfTC-0094F0-3A;
-	Fri, 22 Sep 2023 12:41:18 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1qjgbP-0099Z9-0u;
+	Fri, 22 Sep 2023 13:53:51 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjfT8-0094Dq-2p;
-	Fri, 22 Sep 2023 12:41:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=yvGliCzM7qR9cjwG6OFrxm7XoeY8chqa33iD7TfYF9g=; b=lZm9bmh9bX4vJV7N6gXQkI3orG
-	zGDpsAFxG6Z8J3pwy7jZY5q9zdQBewF7xPzkwVqKcnIXeOpSMLDiT9vx91NXTJL4TKTDfqMxl8VmF
-	00A8OH6092aKIauO2XgRfqHFoT6s/Q949MDmsDVAKpowyBYFcwu71cpJcLQSreWpKQ3NtsiVHMwoh
-	+Bt9QjogKZdkYYbb09Sm03zcoKIdFB2rRi1f2Z7BqckuRb1t0OcnP7aOwqqncjkWwJgBFYQO2zT90
-	bPYGmJc+fnBXeqB5Kc7zpYjRzqfIhLdY4TdjI3sN0w2JfpuF/l64bNxiSsOPpJ4SScHNBucvTZL1F
-	Y9zblyZg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55764)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1qjfSL-0006d7-0y;
-	Fri, 22 Sep 2023 13:40:25 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1qjfSD-0004Zz-QK; Fri, 22 Sep 2023 13:40:17 +0100
-Date: Fri, 22 Sep 2023 13:40:17 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	George McCollister <george.mccollister@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
-	Marcin Wojtas <mw@semihalf.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Marek Vasut <marex@denx.de>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	John Crispin <john@phrozen.org>,
-	Madalin Bucur <madalin.bucur@nxp.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Oleksij Rempel <linux@rempel-privat.de>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Grygorii Strashko <grygorii.strashko@ti.com>,
-	Sekhar Nori <nsekhar@ti.com>,
-	Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH net-next v2 00/10] define and enforce phylink bindings
-Message-ID: <ZQ2LMe9aa1ViBcSH@shell.armlinux.org.uk>
-References: <20230916110902.234273-1-arinc.unal@arinc9.com>
+	id 1qjgbM-0099YK-0B;
+	Fri, 22 Sep 2023 13:53:49 +0000
+Received: from [192.168.68.123] (unknown [177.98.21.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: koike)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 284DF66072BD;
+	Fri, 22 Sep 2023 14:53:39 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695390824;
+	bh=WoiS3+8J2m0h7J1ZYU1c9DU2eQCub1jdA/yONAZ1bYk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QeM9MoNZ0/i5NssNN3eIMNJnh/KuVZ3GdFE4UdN3s1KKEbL+KzuAVB/ktU+FuhnJC
+	 2S/z3KiEBwnQuUKfuClAANB8gx1laSJWGF+dVNjSVsQibm/e4vVN6psO7SfYGcvB/O
+	 wd6txqBR8BO7J0rysd5/XpgWVU0bllFaaHRtRfQPlTCUh26jiIcFReYnN2yU+gCfqI
+	 Xidw9JbP3gAW8YpqOY5dmlydxyvDa2VschOrDhA/e7Y/qyiCUAq9Jz5eY7R923xCAo
+	 tCjp4fvc2Gd6CbX0qStK2UywRUBlsIjiX4tVIc2lKtP+QikTO5Dq5xf31grl3eStWs
+	 52QFxq9cMkqLQ==
+Message-ID: <26cb3404-56ad-8e23-5da5-eee94c4c4350@collabora.com>
+Date: Fri, 22 Sep 2023 10:53:35 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230916110902.234273-1-arinc.unal@arinc9.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v4 0/7] drm: ci: fixes
+Content-Language: en-US
+To: Vignesh Raman <vignesh.raman@collabora.com>, airlied@gmail.com,
+ daniel@ffwll.ch
+Cc: david.heidelberg@collabora.com, sergi.blanch.torne@collabora.com,
+ guilherme.gallo@collabora.com, daniels@collabora.com,
+ gustavo.padovan@collabora.com, emma@anholt.net, robdclark@gmail.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ virtualization@lists.linux-foundation.org,
+ linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+References: <20230914085426.883255-1-vignesh.raman@collabora.com>
+From: Helen Koike <helen.koike@collabora.com>
+In-Reply-To: <20230914085426.883255-1-vignesh.raman@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_054114_918622_CEFE2A60 
-X-CRM114-Status: GOOD (  21.06  )
+X-CRM114-CacheID: sfid-20230922_065348_268576_3F874EA5 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,61 +81,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 16, 2023 at 02:08:52PM +0300, Arınç ÜNAL wrote:
-> Hello there.
+
+
+On 14/09/2023 05:54, Vignesh Raman wrote:
+> The patch series contains improvements, enabling new ci jobs which
+> enables testing for Mediatek MT8173, Qualcomm APQ 8016 and VirtIO GPU,
+> fixing issues with the ci jobs and updating the expectation files.
+> This series is intended for drm branch drm-next.
 > 
-> This patch series defines phylink bindings and enforces them for the
-> ethernet controllers that need them.
+> v2:
+>    - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
+>    - Reworded the commit message for enabling jobs
+>    - Added a new patch in the series to use scripts/config to enable/disable configs
 > 
-> Some schemas had to be changed to properly enforce phylink bindings for all
-> of the affected ethernet controllers. Some of the documents of these
-> ethernet controllers were non json-schema, which had to be converted.
+> v3:
+>    - New patch in the series to add device tree overlay in arch/arm64/boot/dts/qcom
+>    - drm-ci scripts to use device tree overlay from arch/arm64/boot/dts/qcom and compile base device tree with overlay support
+>    - New patch in the series to enable CONFIG_REGULATOR_DA9211 in defconfig
+>    - Remove CONFIG_RTC_DRV_MT6397=y as it is already enabled in defconfig
 > 
-> I will convert the remaining documents to json-schema while this patch
-> series receives reviews.
+> v4:
+>    - Drop 'enable CONFIG_REGULATOR_DA9211 in defconfig' patch as it is sent upstream as a seperate patch
+>    - Use apq8016-sbc-usb-host.dtb which allows the USB controllers to work in host mode.
+>      This patch depends on https://lore.kernel.org/lkml/20230911161518.650726-1-vignesh.raman@collabora.com/
 
-I can't say that I'm comfortable with this. We appear to be defining
-bindings based on software implementation, and a desire for the DT
-tooling to enforce what the software implementation wants. Isn't this
-against the aims of device tree and device tree binding documentation?
-Seems to me like feature-creep.
+Jfyi, this patch got applied, see 
+https://lore.kernel.org/lkml/169539077994.4014786.12440074307606036817.b4-ty@kernel.org/
 
-The bindings that phylink parses are already documented in the
-ethernet controller yaml document. Specifically:
-
-- phylink does not parse the phy-mode property, that is left to the
-  implementation to pass to phylink, which can implement it any
-  which way they choose (and even default to something.)
-
-- phylink does not require a phy property - phylink does expect a PHY
-  to be attached, but how that PHY is attached is up to the ethernet
-  controller driver. It may call one of the phylink functions that
-  parses the phy property, or it may manually supply the phy device to
-  phylink. Either way, phylink does not itself require a PHY property.
-
-- phylink does not require a sfp property - this obviously is optional.
-
-So, all in all, ethernet-controller already describes it, and to create
-a DT binding document that pretends that phylink requires any of this
-stuff is, in my mind, wrong.
-
-DSA requires certain properties by dint of the parsing and setup of
-phylink being in generic code - this is not because phylink requires
-certain properties, but phylink does require certain information in
-order to function correctly.
-
-The issue here is _how_ phylink gets that information, and as I state
-above, it _can_ come from DT, but it can also be given that information
-manually.
-
-As an example, there are plenty of drivers in the tree which try to
-parse a phy node, and if that's not present, they try to see if a PHY
-exists at a default# bus address.
-
-We seem to be digging outselves a hole here, where "phylink must have
-these properties". No, that is wrong.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Regards,
+Helen
+> 
+> Vignesh Raman (7):
+>    drm: ci: igt_runner: Remove todo
+>    drm: ci: Force db410c to host mode
+>    drm: ci: virtio: Update ci variables
+>    drm: ci: Enable regulator
+>    drm: ci: Update xfails
+>    drm: ci: Enable new jobs
+>    drm: ci: Use scripts/config to enable/disable configs
+> 
+>   drivers/gpu/drm/ci/arm64.config                  |  1 +
+>   drivers/gpu/drm/ci/build.sh                      | 16 ++++++++--------
+>   drivers/gpu/drm/ci/igt_runner.sh                 |  1 -
+>   drivers/gpu/drm/ci/test.yml                      | 16 +++++-----------
+>   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt    |  1 -
+>   drivers/gpu/drm/ci/xfails/i915-cml-fails.txt     |  1 -
+>   drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt    |  2 ++
+>   drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt    |  1 +
+>   .../gpu/drm/ci/xfails/mediatek-mt8173-fails.txt  |  2 --
+>   .../gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt | 16 ++++++++++++++++
+>   drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt |  2 ++
+>   .../gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt |  1 +
+>   .../gpu/drm/ci/xfails/rockchip-rk3399-fails.txt  |  4 ++--
+>   .../gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt |  3 +++
+>   14 files changed, 41 insertions(+), 26 deletions(-)
+> 
 
