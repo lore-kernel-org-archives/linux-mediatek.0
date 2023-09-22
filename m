@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90671CD4F44
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 09:44:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6DB1CD4F4A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 10:05:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XqXG2jgGiK6RcE5JTJCQMqr1wkSsKU5xrFxakZbujqo=; b=4F27h/mUQKV5PyRXqIp6scJ8Ct
-	w5HWCUzB2w1hNZ7UvUoT5e6o5yUTfRlaNjVb1vgPGBnUVnmwqDDwH6k0wR8cnLWpEssnrO9Wi+YS8
-	bCVl+dg6Gf/cRzZ65gZ3GPau/1Bk5O5gJmk9rdko6eDKe3z/3eem7hs9IDuO+1KYYdZ8ldxb4zudx
-	oXwRSGeNtOkXQKdgv+61L2mNfkT/wXAqZzblpHNWO80BLzRt08HcG3Ajz7MOFfQGYoTlbgtqPMBAy
-	Ly8nnnUT2G6I9XhNEhNKcvZAdXRtBP27ena289XbrNJbH/rp7FQ3WWnegs1LepkVPa63PH+PaZM0R
-	shcRtHbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7eyIb7lKDJwsdidMLPGj2HCRCGXL1RdAvXGmM4zqz54=; b=CrnOS1tLvo0bxGHO/mtflXxGCF
+	t1yoK6lxEJPJhuZO4S563Yu2GBhXPDxCVNiw2h2pLBbsNedtjCi0SydKZsTY3a3YjSQe7LpijGcIn
+	G1rq5NxcySD2VVCDwvlQAj/DRgRVmZ6NKop1N0xk7byFKrG7VF0/5zlxkDQUmrJoB5i6a0BYgVxjG
+	JIRwPvLypCnhC8CabRdSe7u8BkV21YYMGvX7wqefWOFZH/YUW6SKYDfKssvew2mUNGaDoByCF3w0y
+	PcyYXWVjImSNuM6J2CxE2IM7yEjzaS8b5NYabH+JaPBzwa4vYfCwmgRwaV+mDeAkUlwyhMGzxhnbg
+	us9pS/Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjciB-008cSO-0C;
-	Fri, 22 Sep 2023 09:44:35 +0000
-Received: from mgamail.intel.com ([134.134.136.100])
+	id 1qjd1x-008fnC-16;
+	Fri, 22 Sep 2023 10:05:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjchz-008cMb-0T;
-	Fri, 22 Sep 2023 09:44:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1695375863; x=1726911863;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version:content-transfer-encoding;
-  bh=XqXG2jgGiK6RcE5JTJCQMqr1wkSsKU5xrFxakZbujqo=;
-  b=YGDfioqbnGrb2uIhpWVfh1ohrYWQ3hExTm86rNqUGm/YsdXNqUeg2T9U
-   A9BwpQJdfsN+6xnChYsCNC0TvF6hZuMuz+dkZBXuDz6mDs0CboqutR+dW
-   gSmtmAsppyE0z8NBKJcNSii84eWKub2Tc18m4cV9UMqhjrHvq85uf2G7j
-   x913rTaNYunoeuNEkefqs+zte1/i2nyVm67npOqQxBmzZmPCOxw/SMc4q
-   VU7cuNMvZBMbVgNvZpOSeVs8QGCnWs6W1Fzw49s+i9fXPmMkECXNVAWNf
-   UbsohN5b5l01As+DpWfzvoTQB20EVw8fCb3mWopLQH1DLinPKVKSv3EZA
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10840"; a="447268806"
-X-IronPort-AV: E=Sophos;i="6.03,167,1694761200"; 
-   d="scan'208";a="447268806"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Sep 2023 02:44:22 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10840"; a="782578828"
-X-IronPort-AV: E=Sophos;i="6.03,167,1694761200"; 
-   d="scan'208";a="782578828"
-Received: from aboreiko-mobl3.ger.corp.intel.com (HELO localhost) ([10.252.50.131])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Sep 2023 02:44:18 -0700
-From: Jani Nikula <jani.nikula@intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: dri-devel@lists.freedesktop.org, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Guillaume Ranquet <granquet@baylibre.com>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org, Markus
- Schneider-Pargmann <msp@baylibre.com>, Bo-Chen Chen
- <rex-bc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Dmitry
- Osipenko <dmitry.osipenko@collabora.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] drm/mediatek/dp: fix memory leak on ->get_edid callback
- audio detection
-In-Reply-To: <CAGXv+5FvmwMW+bxJ9d_ULbOJA9qpd-vybn0VyE5iyQLHCET1=A@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20230914131058.2472260-1-jani.nikula@intel.com>
- <20230914155317.2511876-1-jani.nikula@intel.com>
- <CAGXv+5GJxEobJKKWuc_UN+Gf_z8g6eb6KWTz-L+RqtyLYKK3Jg@mail.gmail.com>
- <87cyyetohx.fsf@intel.com>
- <CAGXv+5FvmwMW+bxJ9d_ULbOJA9qpd-vybn0VyE5iyQLHCET1=A@mail.gmail.com>
-Date: Fri, 22 Sep 2023 12:44:15 +0300
-Message-ID: <87o7huo840.fsf@intel.com>
+	id 1qjd1u-008fmK-2t;
+	Fri, 22 Sep 2023 10:05:00 +0000
+X-UUID: 78c71b9a592f11ee86758d4a7c00f3a0-20230922
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7eyIb7lKDJwsdidMLPGj2HCRCGXL1RdAvXGmM4zqz54=;
+	b=pB+Sn79w4QP2yxDZ8CHJM9lGFzU146EH+zHhQbdxLi60Zfzdeq3mzjACTncQNKyRwh6HG1vtExLOlF1BdhjaQrrcZDOgI9qJcNb8ES2HTsBdOhutE/PAEweNlf38rdbMTFxx74iHcIGNmIwmF/jLPMhxGEbfxTq/3OW3mYnkUTI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:d9753568-cfd8-42e2-9013-bf214ba6fb73,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:7fdf56c3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 78c71b9a592f11ee86758d4a7c00f3a0-20230922
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <pablo.sun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1038301407; Fri, 22 Sep 2023 03:04:51 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 22 Sep 2023 17:54:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 22 Sep 2023 17:54:14 +0800
+From: Pablo Sun <pablo.sun@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Pablo Sun <pablo.sun@mediatek.com>
+Subject: [PATCH v1] mmc: mtk-sd: Use readl_poll_timeout_atomic in msdc_reset_hw
+Date: Fri, 22 Sep 2023 17:53:48 +0800
+Message-ID: <20230922095348.22182-1-pablo.sun@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.723900-8.000000
+X-TMASE-MatchedRID: 6QBcT7wcRsRvitkUzhYBjXTnOygHVQpO7yWPaQc4INRh2fnHe1cil3o4
+	yKeg8X9ygjknrxu7OUiNj7XtNYzGtcEF95g58PMZi/b+LxU2p45Ag1IWH8kbY99RlPzeVuQQ3oz
+	JRX7b4NmqPbMuMCi6h4Ay6p60ZV62SwOSQ/fMiOrdB/CxWTRRu3aDLLDbFMGFfUadd7N1arKJeW
+	+qZhvjB+0IrX0f+ReSjoE+g/57DJoQkGmQTYDw+jFh8TQbyenjgrCX/PEu4TDrHUK6UmomFyYKa
+	1BmIhZZgITnGkK0NFNRskXKHhdfKpij9M86UwHhsKHfMTjCprwNQJGvyiKf6Q==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.723900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: BA674A7FBD61D5BE8CE30A6057F748C730D889939DCE9B09EAD473DD2F74FB752000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_024423_252395_F12333BA 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20230922_030458_942961_B1A9222F 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,54 +96,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 19 Sep 2023, Chen-Yu Tsai <wenst@chromium.org> wrote:
-> On Tue, Sep 19, 2023 at 7:02=E2=80=AFPM Jani Nikula <jani.nikula@intel.co=
-m> wrote:
->>
->> On Fri, 15 Sep 2023, Chen-Yu Tsai <wenst@chromium.org> wrote:
->> > On Thu, Sep 14, 2023 at 11:53=E2=80=AFPM Jani Nikula <jani.nikula@inte=
-l.com> wrote:
->> >>
->> >> The sads returned by drm_edid_to_sad() needs to be freed.
->> >>
->> >> Fixes: e71a8ebbe086 ("drm/mediatek: dp: Audio support for MT8195")
->> >> Cc: Guillaume Ranquet <granquet@baylibre.com>
->> >> Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
->> >> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.c=
-om>
->> >> Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
->> >> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
->> >> Cc: Philipp Zabel <p.zabel@pengutronix.de>
->> >> Cc: Matthias Brugger <matthias.bgg@gmail.com>
->> >> Cc: dri-devel@lists.freedesktop.org
->> >> Cc: linux-mediatek@lists.infradead.org
->> >> Cc: linux-kernel@vger.kernel.org
->> >> Cc: linux-arm-kernel@lists.infradead.org
->> >> Cc: <stable@vger.kernel.org> # v6.1+
->> >> Signed-off-by: Jani Nikula <jani.nikula@intel.com>
->> >
->> > Looks correct to me.
->> >
->> > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->>
->> Thanks for the reviews Chen-Yu and Guillaume. Will you push this to
->> drm-misc-next or shall I?
->
-> Patches for the MediaTek drm driver go through their own separate tree,
-> maintained by CK (Chun-Kuang).
+Use atomic readl_poll_timeout_atomic, because msdc_reset_hw
+may be invoked in IRQ handler in the following context:
 
-Chun-Kuang, can you confirm picking up these two patches, please?
+  msdc_irq() -> msdc_cmd_done() -> msdc_reset_hw()
 
-MAINTAINERS does not list a separate git repository for MediaTek drm
-drivers, so I don't know where that would be. It should probably be
-added to MAINTAINERS.
+The following kernel BUG stack trace can be observed on
+Genio 1200 EVK after initializing MSDC1 hardware during kernel boot:
 
-Thanks,
-Jani.
+[    1.187441] BUG: scheduling while atomic: swapper/0/0/0x00010002
+[    1.189157] Modules linked in:
+[    1.204633] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W         5.15.42-mtk+modified #1
+[    1.205713] Hardware name: MediaTek Genio 1200 EVK-P1V2-EMMC (DT)
+[    1.206484] Call trace:
+[    1.206796]  dump_backtrace+0x0/0x1ac
+[    1.207266]  show_stack+0x24/0x30
+[    1.207692]  dump_stack_lvl+0x68/0x84
+[    1.208162]  dump_stack+0x1c/0x38
+[    1.208587]  __schedule_bug+0x68/0x80
+[    1.209056]  __schedule+0x6ec/0x7c0
+[    1.209502]  schedule+0x7c/0x110
+[    1.209915]  schedule_hrtimeout_range_clock+0xc4/0x1f0
+[    1.210569]  schedule_hrtimeout_range+0x20/0x30
+[    1.211148]  usleep_range_state+0x84/0xc0
+[    1.211661]  msdc_reset_hw+0xc8/0x1b0
+[    1.212134]  msdc_cmd_done.isra.0+0x4ac/0x5f0
+[    1.212693]  msdc_irq+0x104/0x2d4
+[    1.213121]  __handle_irq_event_percpu+0x68/0x280
+[    1.213725]  handle_irq_event+0x70/0x15c
+[    1.214230]  handle_fasteoi_irq+0xb0/0x1a4
+[    1.214755]  handle_domain_irq+0x6c/0x9c
+[    1.215260]  gic_handle_irq+0xc4/0x180
+[    1.215741]  call_on_irq_stack+0x2c/0x54
+[    1.216245]  do_interrupt_handler+0x5c/0x70
+[    1.216782]  el1_interrupt+0x30/0x80
+[    1.217242]  el1h_64_irq_handler+0x1c/0x2c
+[    1.217769]  el1h_64_irq+0x78/0x7c
+[    1.218206]  cpuidle_enter_state+0xc8/0x600
+[    1.218744]  cpuidle_enter+0x44/0x5c
+[    1.219205]  do_idle+0x224/0x2d0
+[    1.219624]  cpu_startup_entry+0x30/0x80
+[    1.220129]  rest_init+0x108/0x134
+[    1.220568]  arch_call_rest_init+0x1c/0x28
+[    1.221094]  start_kernel+0x6c0/0x700
+[    1.221564]  __primary_switched+0xc0/0xc8
 
->
-> ChenYu
+Fixes: ffaea6ebfe9c ("mmc: mtk-sd: Use readl_poll_timeout instead of open-coded polling")
+Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
---=20
-Jani Nikula, Intel
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 5392200cfdf7..97f7c3d4be6e 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -669,11 +669,11 @@ static void msdc_reset_hw(struct msdc_host *host)
+ 	u32 val;
+ 
+ 	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_RST);
+-	readl_poll_timeout(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
++	readl_poll_timeout_atomic(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
+ 
+ 	sdr_set_bits(host->base + MSDC_FIFOCS, MSDC_FIFOCS_CLR);
+-	readl_poll_timeout(host->base + MSDC_FIFOCS, val,
+-			   !(val & MSDC_FIFOCS_CLR), 0, 0);
++	readl_poll_timeout_atomic(host->base + MSDC_FIFOCS, val,
++				  !(val & MSDC_FIFOCS_CLR), 0, 0);
+ 
+ 	val = readl(host->base + MSDC_INT);
+ 	writel(val, host->base + MSDC_INT);
+-- 
+2.18.0
+
 
