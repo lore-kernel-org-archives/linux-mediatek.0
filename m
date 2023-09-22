@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE9C5E7D0D8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 07:22:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8E15E7D0D8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Sep 2023 07:22:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fiI27+V+ohLLmanzh77to3I9813RIaJEzm1Zru/Co4g=; b=0LizWd7RWJgUWNs81tx6yPSEwU
-	Si+kX+cyH2VovD+kWninUvTLZ0vN5cfqKvvFLDSDVakqKUFrGUxN3gMm5GTnmpXg7UekdKvbdeJs9
-	hkCxhfkbBS+6cHhGDf2+GV2+fRpPSr4DXYz0XZeaEuxPPhxqLtCN4rfmxvzSOHRaxTpehThAFNH67
-	ED5eerXQ3Q1mRYIq4Wrhu36jzwHCjAldnXFNdmDkMDgDrE4y+ljxxsmuzhfVwiXkXTNot/BWP0v7A
-	uDM9bKNKZOjRTXuNLRUGknUt7DEDc3vpUu+zCEUMKZ/MHHQsHuvATLD6KRXT9no+icPKAEKie6ubU
-	2hNsvRDA==;
+	bh=oH8Nt2FJxbSC6XlUFbOHgHkV1YGvPLdakMF+MvPR6Co=; b=Mx3SAx6Pd2VuulRyc0Rx1JB4ea
+	GyThMNT1Vdww+QZKupzAuPv8/+4wQ2yeVIoyKVpiR2QgZv2sHR7ziBgl3d1Hu6b+mDW66yt0UgScq
+	37WmryUObGdGEapesKpE6sFCUfJbEJ65lICrwgAcV7eyB4bqAdENs1tnclQykR/yBIobUyi+fIdMz
+	TcLJ4Pd0a+vHmjl01ca9iPSweXVUFoFnlTcJSczzP3oCczhxkCCUmdyG8QzAvO3RhqsX/q7u5n/TP
+	7yhX2FlbqhVsh4fuLPQtQEEuogf2n99sngaKW7jcrCDIMcNwnfckpijBb3S7gXYkoJ4YV1IFiPiTW
+	d76Od1Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjaUW-008An8-1j;
-	Fri, 22 Sep 2023 07:22:20 +0000
+	id 1qjaUg-008AsH-1P;
+	Fri, 22 Sep 2023 07:22:30 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjaU7-008ASF-2R;
-	Fri, 22 Sep 2023 07:21:57 +0000
-X-UUID: b3cabba0591811ee9b7791016c24628a-20230922
+	id 1qjaU8-008ATt-25;
+	Fri, 22 Sep 2023 07:21:58 +0000
+X-UUID: b5598474591811ee9b7791016c24628a-20230922
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fiI27+V+ohLLmanzh77to3I9813RIaJEzm1Zru/Co4g=;
-	b=HpdhIz3C4+con+AxvbodoKQ/D4KFuiApuYZs5vS1I1Z3IbuC3BRmw85CLby/XL5klUuKYSOW8edsxChXTjAgTgPTH/v9tlzKDhtjBbFpKGytnlfGDuKhiQWnVDtHX+5Cw0zWmAdEreilsilZENVpZbDybMEHZXZsejjqdZlY8BI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oH8Nt2FJxbSC6XlUFbOHgHkV1YGvPLdakMF+MvPR6Co=;
+	b=RY4Ee3rRAhXRVNI0XXlSqubgf+JmxXvvmTI8n2gSLUbQP09O4FHn6TpeXv3rclxKEgp4D1Em87PlhX5pLYit3CXvpOVOFjW4nQUEI0CQLoyr3WomDaO59aUyCad2bzVIbxbRtlZ3b/Q5eTv3UnlbPaue8T4xYSuV7NVjzdSlSQg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:9efc7f07-2ebd-4fc0-9cd4-fd4afb8578da,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:f518ac6a-4995-459d-98fd-f11e1b416b94,IP:0,U
 	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:25
-X-CID-META: VersionHash:5f78ec9,CLOUDID:992b24bf-14cc-44ca-b657-2d2783296e72,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:a88c00f0-9a6e-4c39-b73e-f2bc08ca3dc5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b3cabba0591811ee9b7791016c24628a-20230922
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: b5598474591811ee9b7791016c24628a-20230922
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1678896795; Fri, 22 Sep 2023 00:21:52 -0700
+	with ESMTP id 127810786; Fri, 22 Sep 2023 00:21:55 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 22 Sep 2023 15:21:17 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,33 +64,20 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	<hverkuil-cisco@xs4all.nl>
 CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Moudy
- Ho" <moudy.ho@mediatek.com>
-Subject: [PATCH v6 04/16] dt-bindings: media: mediatek: mdp3: rename to MT8183 RDMA
-Date: Fri, 22 Sep 2023 15:21:04 +0800
-Message-ID: <20230922072116.11009-5-moudy.ho@mediatek.com>
+	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Moudy
+ Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v6 02/16] dt-bindings: media: mediatek: mdp3: split out general properties
+Date: Fri, 22 Sep 2023 15:21:02 +0800
+Message-ID: <20230922072116.11009-3-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230922072116.11009-1-moudy.ho@mediatek.com>
 References: <20230922072116.11009-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.283200-8.000000
-X-TMASE-MatchedRID: U2rU8In9HlKuI2PD0uhaO7mR+C0l9vjVTJDl9FKHbrklx7HMaisSRZcP
-	t/Z07RBs+QhtM/ILvqYRA4hwIn2MDXZW0C+m8SohdAg4yd14qAR9LQinZ4QefIWH8POvJNOW5tB
-	Kje5pwd6OhzOa6g8KrfS+WWlyQsB9GHIVThySMugK3m9nZAOtYMKTUfX2jEl006N2TIBBWV/W2F
-	EkjzBjZDusP+LCu/a/LwUTti3fuVC1EcCf3T9FE8GQYFMiVRG5ehcPPz6UzEWlb5ogMngNpHOTE
-	n5IiRSOady5RJQR05c=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.283200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 0A5194958697695E2AE7AB8A6EBE7735F1836A0EEFA22A11B2D6A6E5A91C263E2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_002155_814135_D3E7E9DF 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230922_002156_692505_EDBF8AE2 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,31 +92,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The file was renamed to support future scalability in response to
-the changes in general properties separation.
+In order to minimize duplication and standardize the document style,
+it is necessary to separate the general properties specific to
+MediaTek MDP3 RDMA.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../{mediatek,mdp3-rdma.yaml => mediatek,mdp3-rdma-8183.yaml}   | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
- rename Documentation/devicetree/bindings/media/{mediatek,mdp3-rdma.yaml => mediatek,mdp3-rdma-8183.yaml} (96%)
+ .../media/mediatek,mdp3-rdma-common.yaml      | 72 +++++++++++++++++++
+ 1 file changed, 72 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-common.yaml
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-8183.yaml
-similarity index 96%
-rename from Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-rename to Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-8183.yaml
-index 0539badc9821..74a1eebf668d 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-8183.yaml
-@@ -1,7 +1,7 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma-8183.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
- title: MediaTek MT8183 Read Direct Memory Access
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-common.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-common.yaml
+new file mode 100644
+index 000000000000..8d2085f67d43
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma-common.yaml
+@@ -0,0 +1,72 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma-common.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Read Direct Memory Access
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  MediaTek Read Direct Memory Access(RDMA) component used to do read DMA.
++  It contains one line buffer to store the sufficient pixel data, and
++  must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    maxItems: 1
++
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to the specific hardware event signal
++      to gce. The event id is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++    minItems: 1
++    maxItems: 2
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++    maxItems: 2
++
++  iommus:
++    maxItems: 1
++
++  mboxes:
++    minItems: 1
++    maxItems: 5
++
++  '#dma-cells':
++    const: 1
++
++required:
++  - reg
++  - mediatek,gce-client-reg
++  - power-domains
++  - clocks
++  - iommus
++  - '#dma-cells'
++
++additionalProperties: true
 -- 
 2.18.0
 
