@@ -4,110 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B42CE7A88
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Sep 2023 15:13:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E89ACE7A89
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Sep 2023 16:43:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x+v4G3owsgLlnaFabAgkzTD/cnGgye/y5YG9o41uwwY=; b=vucOkwAwVUFgazyL6th2D4cBc/
-	/dledkCCr5nqzrhIIeZWJfBcfdeKYv4fDmLWy+5RXcQXSNNyieXLyCADSOYi3IK9kpc4NKBQ1uGh/
-	6K6N0qAN4mTDBydsZX/y0EWirK/QFyedYg68TXrvuI8RMq4k9SvXGII1d81zWm7XZINQfMba8gwDU
-	3xkHjO8tOI2b9jkcejK09eFK0sRO/ARAH0xYANfv5rHqlGdRIS/MuBcUX8hrfPeLQcCHRu0kbkOyI
-	x7ME92zORH0TSJr/a/TkxqulLoVyVF1yYTwMjhNIHCuVbOgAIpCut3bUvm4mj2kEfNTK7xQftxM9i
-	ZoGvS0XQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+ehvNyN1e8AcFsIaExWpUQQDC3O+XNhpuGUxABDsT1k=; b=sGta19R1zGOnpYMGe7kupxwolJ
+	TwUA2Ex+TkWSC+AEhYkd2109ty+LJQL1uzHAwXiZEN/gTM1w2VEWPs/z4CxXSxeVSgcr60saqU6ko
+	xgQBlAURaRqBgQ4tzipu+6RGOoj5XfoyJ+SQJqotTRE/7J5z8pgitauD7s8Mg0NjCmsiKYxAU62dm
+	YI1tL+rlgZw34BiPQ6+PYvov3vLfKd6PsOCQJAB0Wcdc/Zum+uw40aoIkC4lKr0VHvqzozGMheYQX
+	1osjesg33abanWC7J1uayFGYLRlw0/kuihc4O3ol3A3JdxS/WZsRSCuOixzL3MIWraTm2QHs9ilv/
+	K+RC0rpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qk4Js-00B7xM-1I;
-	Sat, 23 Sep 2023 15:13:20 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1qk5ii-00BDVt-1M;
+	Sat, 23 Sep 2023 16:43:04 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qk4Jo-00B7wx-1S;
-	Sat, 23 Sep 2023 15:13:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=x+v4G3owsgLlnaFabAgkzTD/cnGgye/y5YG9o41uwwY=; b=y8
-	CvZ+LIGCwILDn9cRO00YPVFCl5CzbIZ9GLDlTC5/NaqED+W4+CLyA87G3nq5rg8kTgmxGVa305DI5
-	KTy0yckb7PcOOYP3Htwq5jkiyeMwjrpu+JMOZU9ssSC4v6rY8moM8jQh1gCuoKSlVAH/ig2TNufsH
-	BsTylHYH91DJSPE=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1qk4JE-007IUJ-S0; Sat, 23 Sep 2023 17:12:40 +0200
-Date: Sat, 23 Sep 2023 17:12:40 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	George McCollister <george.mccollister@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
-	Marcin Wojtas <mw@semihalf.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Marek Vasut <marex@denx.de>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	John Crispin <john@phrozen.org>,
-	Madalin Bucur <madalin.bucur@nxp.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Oleksij Rempel <linux@rempel-privat.de>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Grygorii Strashko <grygorii.strashko@ti.com>,
-	Sekhar Nori <nsekhar@ti.com>,
-	Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH net-next v2 00/10] define and enforce phylink bindings
-Message-ID: <410dfe3c-6f99-4054-88f8-0acbd134cfce@lunn.ch>
-References: <20230916110902.234273-1-arinc.unal@arinc9.com>
- <ZQ2LMe9aa1ViBcSH@shell.armlinux.org.uk>
- <6c1bb7df-34cd-4db9-95b6-959c87b68588@arinc9.com>
- <4856b212-5bc5-4783-a184-b34a4a915878@lunn.ch>
- <5650a2a3-a36f-441e-b4c2-aa7c751b5af5@arinc9.com>
+	id 1qk5if-00BDVC-1r
+	for linux-mediatek@lists.infradead.org;
+	Sat, 23 Sep 2023 16:43:02 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-31fa15f4cc6so3717381f8f.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 23 Sep 2023 09:43:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1695487379; x=1696092179; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+ehvNyN1e8AcFsIaExWpUQQDC3O+XNhpuGUxABDsT1k=;
+        b=tv4FwP72y8u4Ny0y8atHAHov4uwo0OLMQVJ+65CoVthfy9HCNssyJegm8Dgdx0Atym
+         Je2c/X8xfTk9pF763LJtMpboKdbvFGQ2oQaHedqT8VpHOOEIqd/7dz77q/nqXVK2fXjn
+         C0anNJ4yBRkZD4cERGVkFXqH3vbtnDwk5WiJkd7T85kxu4sHk+NSs1cvfkQO1DDAmgSh
+         tPcmz1UsEgMFxN9kJyUQq1SeCkH9RqvroaA93Mc4qwb6rYBgauHgdDcvBD/YgDF/TTi7
+         uIyNc3JhPQf1ZjzKS1lafT5zPRMIEqWxoWcLTq4XrjbjPEYnZXo8Cg7Wec/6Sqb0mnCK
+         wQTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695487379; x=1696092179;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+ehvNyN1e8AcFsIaExWpUQQDC3O+XNhpuGUxABDsT1k=;
+        b=sv03vYRERKQ91iGby6gm/EitOPPdzJumPd5WXeSKPc/vDJeNTzEWeMiMzt5GYQ79XM
+         0f26QPnIJf7cznPi4w6Yw+fepqhnjRYRuQVsnz1NI4bJLRGtKFT6CFvrm11D7A6L51Es
+         /MPuwPd2YVR4WGNjjKtuE+SwVhPvrANLv+gIVIeY/WMq/ijaa/cF6eNNowhH56HSLNb0
+         OcAchA0HDvnQA/RmpvIrPUlKY3EUl2ujku4A2ayijoQvMD/q4Gd6q5oPm6DCiy10AJzU
+         y+cFc1uQ9n0yM1WUpoGlcUAIdpcUMrHfaMzP1Fi5t1H2iM22Agh1cOSh4eYJ3PdW09Ec
+         HNtg==
+X-Gm-Message-State: AOJu0Yx0SU/pUEAvl64DL1Y1I8pmynxL5JZaUc+hfS75IXxozEFuks/7
+	5ndu8AiPDlfpNUMnykfSVXkh8g==
+X-Google-Smtp-Source: AGHT+IHeYkcu/RtMUX5lf2uTUiwk5whv3Kim5HQRxv8v4Wkt6ThO4w/ApV1UJK2BVwSR7UZ8q2JpuQ==
+X-Received: by 2002:adf:ea84:0:b0:319:6327:6adb with SMTP id s4-20020adfea84000000b0031963276adbmr2170369wrm.70.1695487378995;
+        Sat, 23 Sep 2023 09:42:58 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.100])
+        by smtp.gmail.com with ESMTPSA id x10-20020a05600c21ca00b004051b994014sm10434968wmj.19.2023.09.23.09.42.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 23 Sep 2023 09:42:58 -0700 (PDT)
+Message-ID: <4fdfe29b-aea7-8180-d2e3-5caa1beb7232@linaro.org>
+Date: Sat, 23 Sep 2023 18:42:55 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5650a2a3-a36f-441e-b4c2-aa7c751b5af5@arinc9.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v6 02/16] dt-bindings: media: mediatek: mdp3: split out
+ general properties
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20230922072116.11009-1-moudy.ho@mediatek.com>
+ <20230922072116.11009-3-moudy.ho@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230922072116.11009-3-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230923_081316_493665_5274DE5B 
-X-CRM114-Status: GOOD (  28.20  )
+X-CRM114-CacheID: sfid-20230923_094301_620171_C4C85DBC 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,57 +107,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 23, 2023 at 09:28:41AM +0300, Arınç ÜNAL wrote:
-> On 23.09.2023 01:36, Andrew Lunn wrote:
-> > > I agree. My patch description here failed to explain the actual issue,
-> > > which is missing hardware descriptions. Here's what I understand. An
-> > > ethernet-controller is a MAC. For the MAC to work properly with its link
-> > > partner, at least one of these must be described:
-> > > - pointer to a PHY to retrieve link information from the PHY
-> > > - pointer to a PCS to retrieve link information from the PCS
-> > > - pointer to an SFP to retrieve link information from the SFP
-> > > - static link information
-> > 
-> > You are missing:
-> > 
-> > - The MAC has firmware driving the PHY, nothing for linux to do.
-> > 
-> > There are properties in ethernet-controller.yaml the MAC driver would
-> > however like to use such as local-mac-address, max-frame-size,
-> > nvmem-cell-names etc.
+On 22/09/2023 09:21, Moudy Ho wrote:
+> In order to minimize duplication and standardize the document style,
+> it is necessary to separate the general properties specific to
+> MediaTek MDP3 RDMA.
 > 
-> This is interesting. This is clearly a hardware difference of the ethernet
-> controller.
-> 
-> I believe this fits case 1. There's still an MDIO bus the ethernet
-> controller uses, there's still a PHY on the MDIO bus which the ethernet
-> controller uses.
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  .../media/mediatek,mdp3-rdma-common.yaml      | 72 +++++++++++++++++++
+>  1 file changed, 72 insertions(+)
 
-Why must there be an MDIO bus? All the bus provides is a communication
-channel to the PHY. There are PHYs which are memory mapped, or use
-I2C. SFP are a good example of I2C, which Linux maps to MDIO just to
-make things simple, but the hardware is I2C. Why must there be a PHY?
-Maybe it is a Base-K link, i.e. a baseboard link to a switch, or a BMC
-or something.
+I don't understand why this is a separate patch. It's not used, not
+effective and not visible for us how it extracts common parts.
 
-> The only difference is the firmware of the ethernet
-> controller controls... What exactly does the firmware control that a Linux
-> driver would have controlled instead? Just configuring the link settings of
-> the MAC?
+Best regards,
+Krzysztof
 
-A MAC driver implements struct ethtool_ops:::get_link_settings and
-set_link_settings. For a MAC driver using phylib or phylink they
-typically then call into phylib or phylink to do the actual work,
-maybe with a bit of pre-processing in the MAC driver.
-
-A MAC driver using firmware would typically make an RPC into the
-firmware to implement these calls.
-
-There is a MAC driver currently under review which does not have a PHY
-at all. The MAC is directly connected to a switch, all within one
-IC. The link is always running at 5Gbps, the link is always up. It is
-physically impossible to connect a PHY, so get_link_settings just
-returns hard coded values.
-
-	Andrew
 
