@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55054CE7A8C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Sep 2023 06:29:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 918B1CE7A88
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Sep 2023 07:52:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sYKxMWs4IYSp4v8IwL8Rv6AvQEg0lLABlatXJHEpLUE=; b=ezzZ1nP1t2UpDQiAkhPworLt6Q
-	M0/HpsnDrymXe36jacBEgsQtB58woxDeC1FFbxDD347RtCpnJYBTiu/N/gdDLkK+bQyi/7EXekw55
-	1LcQcCe/iaH6BeKF+/KlHAl338ZPkzGRoG3ynawiuB1UDkUNNnzs+UYBIFFz7RzXosWaepeViBgJd
-	R3BgaqzNMMy7ZqdLZcj4myWhZ9vaOBIIor0LdS60z8oFzyRdIayWO49TvG7Fm3kplWaWw71ZX9J8t
-	OPwnJmp2jrHxoseHp8RzCakp1VywuvReOd+qecZLyyRqHacRvHhk+7eXLJaeFWTMYnn6flALk6PQs
-	sAEZqJrQ==;
+	bh=qzR1Tm71WW1g2sGVPubeL8o1clYwaCbl99rSURcNlMg=; b=HdZqmKDAQWhqF0OF1GJXsBGyyc
+	ErH7SoHgdPdAwLDDkdCJ3sSI5lZpNTlkuAyh/tuY7PrLcEXXuSZN0WCaYxznEJ7/Bez6KFcwzkB3j
+	bHNnoYHzOF7xV40STLCpRia+qAmbYNWVxpx6n733sv0gt4W0B7nmagcZpA/9s1jkDMwojBElPOFFc
+	DTz3ERzmmVdjs5DB48evv8VRjbeppUhHwOGeQvIjjahgRCihVy2ljgseOpw0/6md6dFWbnY2bLNfY
+	b8LwrAX+T450rSqSwk+dNue0v8z2F8KuhDWrX5GgrU3Rxp/g4J29d1Sd61ymuFtljje0nr5O30OvG
+	3Tj2anhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjw8l-00AXDb-1Q;
-	Sat, 23 Sep 2023 06:29:19 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1qjxQx-00Abae-2j;
+	Sat, 23 Sep 2023 07:52:11 +0000
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjw8g-00AXCQ-2T;
-	Sat, 23 Sep 2023 06:29:16 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id D48A8240004;
-	Sat, 23 Sep 2023 06:28:46 +0000 (UTC)
+	id 1qjxQt-00AbZV-0B;
+	Sat, 23 Sep 2023 07:52:09 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 8AAA7E0006;
+	Sat, 23 Sep 2023 07:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1695450547;
+	t=1695455521;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=sYKxMWs4IYSp4v8IwL8Rv6AvQEg0lLABlatXJHEpLUE=;
-	b=aFfH3nQq2NP8++kx2BHAMmWTJVGRmwOLd8eQEVFh4bo3x6zMqkJBR+rvQb9auvHG2hx7LH
-	C9GKmy1wTvjXAkNJJXwqZdV+lPSPGozVw9GmSrjIurMYsZy0jt3gzr7HpQ/b3zSJK7jIaA
-	CzpQ9ZpB5Uotg+gPpJsJ1j+rgfcfoj44j1kljvN9C+WB86VkWXAZojL3wZX8HSDkB/qxCH
-	l+Jg332ArRtYyN6UsOitSEqNFpqFLQUIpFl5TJtqk1c0meGqSgHfYYwR+rAK5M0qVu/iT2
-	wcMm32fRhzGEeeCXQ+7QgNfKSeAk/u3VTs/0eTm5TGyTrMFIktjfIzVLTeFvrw==
-Message-ID: <5650a2a3-a36f-441e-b4c2-aa7c751b5af5@arinc9.com>
-Date: Sat, 23 Sep 2023 09:28:41 +0300
+	bh=qzR1Tm71WW1g2sGVPubeL8o1clYwaCbl99rSURcNlMg=;
+	b=dYHJFSuZO9hNBOYgJEl3TTcTTG+FObNVnjlqb+2tW/JG0oz12VSmtx9+bnnM1FzrME7MTn
+	4FTiNevh8bhild2bQnXJaleFnQJ46R7S8YmC25MvgjlZ56ODzuSPwMCnHXaRFYP1arRpIT
+	jcGKbf6RWm1xnxzNYPfPKNGUFIWu7wD+JoOpr9YeYd9ITG1W6xCYkiGCaER1AA3p25xW+3
+	1tCTFzOgV8doTsumiW8Geh23guBnl97RC5+ZVzo3BS/hm9A2D7q/DntjBvV4J6F3i0ifFR
+	GpaX8gEY4QAbepe0nE2iAq5YEWNiuTSMWjAFfeBTGeT0VrZ5y+oh6lUogOTqzg==
+Message-ID: <63649fb5-6dc7-4e63-906d-c3e04aafcc4e@arinc9.com>
+Date: Sat, 23 Sep 2023 10:51:35 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH net-next v2 00/10] define and enforce phylink bindings
 Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
- Rob Herring <robh+dt@kernel.org>,
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Conor Dooley <conor+dt@kernel.org>,
  George McCollister <george.mccollister@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>,
+ Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
@@ -93,15 +92,15 @@ Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
 References: <20230916110902.234273-1-arinc.unal@arinc9.com>
  <ZQ2LMe9aa1ViBcSH@shell.armlinux.org.uk>
  <6c1bb7df-34cd-4db9-95b6-959c87b68588@arinc9.com>
- <4856b212-5bc5-4783-a184-b34a4a915878@lunn.ch>
+ <ZQ4VPEuXB3+e48Qs@shell.armlinux.org.uk>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <4856b212-5bc5-4783-a184-b34a4a915878@lunn.ch>
+In-Reply-To: <ZQ4VPEuXB3+e48Qs@shell.armlinux.org.uk>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_232915_085455_44C174BF 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20230923_005207_383313_4768E6DB 
+X-CRM114-Status: GOOD (  41.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,7 +115,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23.09.2023 01:36, Andrew Lunn wrote:
+On 23.09.2023 01:29, Russell King (Oracle) wrote:
+> On Sat, Sep 23, 2023 at 12:57:52AM +0300, Arınç ÜNAL wrote:
 >> I agree. My patch description here failed to explain the actual issue,
 >> which is missing hardware descriptions. Here's what I understand. An
 >> ethernet-controller is a MAC. For the MAC to work properly with its link
@@ -126,29 +126,86 @@ On 23.09.2023 01:36, Andrew Lunn wrote:
 >> - pointer to an SFP to retrieve link information from the SFP
 >> - static link information
 > 
-> You are missing:
+> What about something like macb? The macb driver:
+> - attempts to connect a phy using phylink_of_phy_connect()
+> - if that fails, and there is no phy-handle property, then the driver
+>    will attempt to find the first PHY to exist on its MII bus, and will
+>    connect that using phylink_connect_phy().
 > 
-> - The MAC has firmware driving the PHY, nothing for linux to do.
+> So, in this case, if we define a phylink binding to require one of a
+> phy-handle node, pcs node, sfp node or static link information, then
+> although macb uses phylink, it then doesn't conform to this phylink
+> binding. (This is the only driver that uses phy_find_first() which
+> also uses phylink according to my greps, but I haven't checked for
+> any other games drivers be using.)
 > 
-> There are properties in ethernet-controller.yaml the MAC driver would
-> however like to use such as local-mac-address, max-frame-size,
-> nvmem-cell-names etc.
+> The same thing more or less happens with non-phylink drivers. Take a
+> look at drivers/net/ethernet/microchip/lan743x_main.c, and notice
+> that it first attempts to get a PHY from DT. If that fails, it
+> uses phy_find_first(). If that fails, and we have a LAN7431, then
+> a gigabit full-duplex fixed-link PHY is used instead. So, what macb
+> is doing with phylink is no different from what other drivers are
+> doing with phylib - and it's the driver's choice.
+> 
+> The same way that there are multiple drivers that don't do this,
+> which want a PHY device to be specified in DT if the driver was
+> bound to a device that was described in DT - there are phylink
+> and non-phylink drivers that do this.
+> 
+> This is exactly my point - there is *no* *such* *thing* as a phylink
+> binding. There is the ethernet-controller binding, which phylink
+> provides the ability for network drivers to optionally use, but
+> phylink doesn't require anything from any firmware description, except
+> to attach a SFP interface, or to describe a fixed-link. Everything else
+> is really up to the ethernet-controller aka MAC driver to decide how it
+> wants to deal with things.
+> 
+> We currently work around this by the ethernet-controller YAML having
+> all these properties as optional. Maybe some drivers extend that YAML
+> and require certain properties - that is their perogative, but that is
+> the driver's choice, and is a completely separate issue to whether
+> the driver is using phylink or not.
+> 
+> The real question is how do we want to describe an ethernet controller
+> and what properties should we be requiring for it (if any). Maybe if we
+> want to require one of a PHY, PCS, SFP, or fixed-link, maybe we should
+> have that as a strictly-checked ethernet controller which drivers can
+> opt into using if that's what they require.
 
-This is interesting. This is clearly a hardware difference of the ethernet
-controller.
+I'd like to make this clear. We're only talking about deviating from proper
+devicetree bindings so that it won't cause too much work or not at all to
+fix the incorrect Linux driver policies.
 
-I believe this fits case 1. There's still an MDIO bus the ethernet
-controller uses, there's still a PHY on the MDIO bus which the ethernet
-controller uses. The only difference is the firmware of the ethernet
-controller controls... What exactly does the firmware control that a Linux
-driver would have controlled instead? Just configuring the link settings of
-the MAC?
+As long as we don't collectively agree on fixing the drivers to work with
+proper devicetree bindings, I'd keep the missing ethernet controller
+bindings (requiring at least one of PHY, PCS, SFP, fixed-link) as they
+currently are on ethernet-controller.yaml, optional. Or rather, I wouldn't
+touch anything regarding this as it's nonsensical to change devicetree
+bindings because of driver policies.
 
-If it's just MAC link settings, I believe it would make sense to add a
-property on the ethernet controller dt-bindings to state that the hardware
-controls the MAC link settings on its own. This way, we would still
-describe the MDIO bus and PHY of the ethernet controller while also
-pointing out that the MAC link settings are not up to a driver to control.
+As you have pointed out with certain examples, once the driver starts
+operating out of what the devicetree says, in other words, once the driver
+starts guessing the hardware, there's no guarantee it will always guess it
+correctly. As seen with the macb driver, the driver assumes that if there's
+no phy-handle property, the PHY on its MDIO bus must be used regardless.
+But the MAC may be connected to another MAC, PCS or SFP, meaning it doesn't
+use the PHY on that bus.
+
+There is also a case for DSA. If there's an implication that the DSA
+controlled switch has an MDIO bus (phy_read() and phy_write()), the DSA
+driver will connect the switch MACs to the PHYs on the MDIO bus of the
+switch, even if there's no description of that MDIO bus on the devicetree.
+As unlikely as it is on a real life scenario, there may be a device that
+has its switch MACs wired to the PHYs on another MDIO bus.
+
+This is why I've proposed to make the drivers strictly follow what the
+devicetree says.
+
+> 
+> However, to dress this up as "phylink requires xyz, so lets create
+> a phylink binding description" is just wrong.
+
+Agreed.
 
 Arınç
 
