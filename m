@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36263CE7A8C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Sep 2023 06:07:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55054CE7A8C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Sep 2023 06:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4oWvaYHBJFJ7O18JZNgwdBYWtURWzzwNBvvz0evj8O0=; b=mGAhGAAFCgk/OUe+eTe7jDsg3a
-	8SanepcwP48fJoliuH2acYzxIyezR4I4DNWQhlXykvVv8aI0TT2B25oJ06GqG4nMRzUt8iYVx+PVr
-	jAUOf6ZrF4ZN42vKv+7DpCB1HnwROLkYJfuH05naPha0ldwjVjaAtAXzRah2tmJjIsyu2hUYas1vO
-	cWBKE+bhXahPmYpFfJrYzCIMaI0oGSWpKU4cWOT6Sjg6dfdbqEDu9GAQZqR3smgDuyQ1DWYAU+BmF
-	ZV1ngZbtG4xqBcN2UNByKMpbXY4lt5qsD1SnQQh3OfS4Ej+L0qWpCeRNLQPZ9w7uUiNTluvH/97L5
-	QlC3/N/Q==;
+	bh=sYKxMWs4IYSp4v8IwL8Rv6AvQEg0lLABlatXJHEpLUE=; b=ezzZ1nP1t2UpDQiAkhPworLt6Q
+	M0/HpsnDrymXe36jacBEgsQtB58woxDeC1FFbxDD347RtCpnJYBTiu/N/gdDLkK+bQyi/7EXekw55
+	1LcQcCe/iaH6BeKF+/KlHAl338ZPkzGRoG3ynawiuB1UDkUNNnzs+UYBIFFz7RzXosWaepeViBgJd
+	R3BgaqzNMMy7ZqdLZcj4myWhZ9vaOBIIor0LdS60z8oFzyRdIayWO49TvG7Fm3kplWaWw71ZX9J8t
+	OPwnJmp2jrHxoseHp8RzCakp1VywuvReOd+qecZLyyRqHacRvHhk+7eXLJaeFWTMYnn6flALk6PQs
+	sAEZqJrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjvnE-00AVrC-2L;
-	Sat, 23 Sep 2023 06:07:04 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1qjw8l-00AXDb-1Q;
+	Sat, 23 Sep 2023 06:29:19 +0000
+Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjvnA-00AVpz-20;
-	Sat, 23 Sep 2023 06:07:02 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 4B489FF803;
-	Sat, 23 Sep 2023 06:06:33 +0000 (UTC)
+	id 1qjw8g-00AXCQ-2T;
+	Sat, 23 Sep 2023 06:29:16 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id D48A8240004;
+	Sat, 23 Sep 2023 06:28:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1695449214;
+	t=1695450547;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=4oWvaYHBJFJ7O18JZNgwdBYWtURWzzwNBvvz0evj8O0=;
-	b=bmNdp5wiJX4kR9210Tg5h8vw/C+LDUgASJM+L38kQ5zwtSJ0ZsD5WjI9bmd3v1xtSTo34j
-	Mnf1r6k/vB5tk/3r3l4oq9duEyJvLJ7rny5M6wl9Iam9s5L0nf8QruRA5UIvZupcUB25Rw
-	NYW7dYS66SXbVxI6DOaCHewAiyMQH5CfkwBOBbG8/PF/gv/BgNlf3WGVEcOmnF3NXyr9mO
-	R5ea45R4MivUVkJQhmKS7+ezlXx+dqp4PffhAsPxoTYAtYTPg9s9G0opA9kC9qeJt0Mbws
-	tMFAq/inmnLXiz6AxYPTloye8TBYOFHrBu2N77AMkdxnGsYOFRw5tF3nwIDU3g==
-Message-ID: <a1cdbed7-8d71-44df-a6fc-7b1d2066cc29@arinc9.com>
-Date: Sat, 23 Sep 2023 09:06:28 +0300
+	bh=sYKxMWs4IYSp4v8IwL8Rv6AvQEg0lLABlatXJHEpLUE=;
+	b=aFfH3nQq2NP8++kx2BHAMmWTJVGRmwOLd8eQEVFh4bo3x6zMqkJBR+rvQb9auvHG2hx7LH
+	C9GKmy1wTvjXAkNJJXwqZdV+lPSPGozVw9GmSrjIurMYsZy0jt3gzr7HpQ/b3zSJK7jIaA
+	CzpQ9ZpB5Uotg+gPpJsJ1j+rgfcfoj44j1kljvN9C+WB86VkWXAZojL3wZX8HSDkB/qxCH
+	l+Jg332ArRtYyN6UsOitSEqNFpqFLQUIpFl5TJtqk1c0meGqSgHfYYwR+rAK5M0qVu/iT2
+	wcMm32fRhzGEeeCXQ+7QgNfKSeAk/u3VTs/0eTm5TGyTrMFIktjfIzVLTeFvrw==
+Message-ID: <5650a2a3-a36f-441e-b4c2-aa7c751b5af5@arinc9.com>
+Date: Sat, 23 Sep 2023 09:28:41 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH net-next v2 00/10] define and enforce phylink bindings
-To: Andrew Lunn <andrew@lunn.ch>,
- "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Rob Herring <robh+dt@kernel.org>,
+Content-Language: en-US
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -92,17 +93,15 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 References: <20230916110902.234273-1-arinc.unal@arinc9.com>
  <ZQ2LMe9aa1ViBcSH@shell.armlinux.org.uk>
  <6c1bb7df-34cd-4db9-95b6-959c87b68588@arinc9.com>
- <ZQ4VPEuXB3+e48Qs@shell.armlinux.org.uk>
- <f610de0b-a804-463d-b7ae-0433dbb809a9@lunn.ch>
-Content-Language: en-US
+ <4856b212-5bc5-4783-a184-b34a4a915878@lunn.ch>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <f610de0b-a804-463d-b7ae-0433dbb809a9@lunn.ch>
+In-Reply-To: <4856b212-5bc5-4783-a184-b34a4a915878@lunn.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_230700_981682_D766D304 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20230922_232915_085455_44C174BF 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,19 +116,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23.09.2023 01:44, Andrew Lunn wrote:
->> However, to dress this up as "phylink requires xyz, so lets create
->> a phylink binding description" is just wrong.
+On 23.09.2023 01:36, Andrew Lunn wrote:
+>> I agree. My patch description here failed to explain the actual issue,
+>> which is missing hardware descriptions. Here's what I understand. An
+>> ethernet-controller is a MAC. For the MAC to work properly with its link
+>> partner, at least one of these must be described:
+>> - pointer to a PHY to retrieve link information from the PHY
+>> - pointer to a PCS to retrieve link information from the PCS
+>> - pointer to an SFP to retrieve link information from the SFP
+>> - static link information
 > 
-> +1
+> You are missing:
 > 
-> Also, phylink is a Linux implementation detail. Other OSes using the
-> binding don't need to have phylink. Yet they can still use the DT
-> blobs because they should describe the hardware, independent of how
-> the OS drives that hardware.
+> - The MAC has firmware driving the PHY, nothing for linux to do.
+> 
+> There are properties in ethernet-controller.yaml the MAC driver would
+> however like to use such as local-mac-address, max-frame-size,
+> nvmem-cell-names etc.
 
-I haven't stated it directly but I've been agreeing to this fact since the
-start of the discussion on patch 7.
+This is interesting. This is clearly a hardware difference of the ethernet
+controller.
+
+I believe this fits case 1. There's still an MDIO bus the ethernet
+controller uses, there's still a PHY on the MDIO bus which the ethernet
+controller uses. The only difference is the firmware of the ethernet
+controller controls... What exactly does the firmware control that a Linux
+driver would have controlled instead? Just configuring the link settings of
+the MAC?
+
+If it's just MAC link settings, I believe it would make sense to add a
+property on the ethernet controller dt-bindings to state that the hardware
+controls the MAC link settings on its own. This way, we would still
+describe the MDIO bus and PHY of the ethernet controller while also
+pointing out that the MAC link settings are not up to a driver to control.
 
 Arınç
 
