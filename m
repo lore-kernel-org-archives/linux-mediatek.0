@@ -4,114 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41902CE7A8A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Sep 2023 14:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA6EBCE7A88
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Sep 2023 19:02:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a0RI2EF5VAOb9mrpmA1xh0jjtBBMo7NRn7kCBceeFDo=; b=ZIo29i6IqV7ql7gj20RuPXYFtQ
-	e/r1qudBPZhp/1riW6aH3KBZeZQdVg13OZhQ040o4RJlzPgvcxueMnDYNC2WlcYywxkPzFF1lagFk
-	hUA6YmqYuxdv4en20CdAqX7lWf8XelmGb3CJSGo5EcYvuNgGNfIuXy8fAfUIKYN2yaW9Unzvp/jLr
-	zl5EV+klWdBMOszD8cvjHCyaVmgyFjfzedlfSAlaix9QWsor2fEybqiR/5sGbgSd0TiHbfwD5U+Vf
-	29W9XChGKO0RXJlKclFsGHHCwMsA28ZH0fnmxrCSQx3wCqG9lbki07FyhgCwKMlJKuxzMZS6g7VLm
-	Sbo63fjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HEY3/qK4PljH+5mRr6l/fkufOUPYsS6/LapzeXqBAzQ=; b=HtjKHGCnzYDkrYUdpRXzgxxtoz
+	qjehioWW5hX+28I07/iRGzT66QmGb0ViID6rJYRev7zAHFigQDvLRzTclsfxY+PAuZvIumZRTsO8O
+	X7v5qYyY9acZkmoVnavhq/4km9cCiyCiWUJsfR2KynpVkdfjJ1EKAhYX4GNJKpZu1X7J/WCH6JaaE
+	KBEuyvJpi5O2OYxvj9Ok2QKrxnT5RaBfjxIULIxhm7sfh++zynv+wcpHYsWNT12OAV2UyQK1MpodI
+	iim5AAG1OgbLjLLF8o33T2PeNtAw6RufvJlOoPT0uPz3/0LTOBkmQygDmA1FvprTNCefhtgtvzhBx
+	UMhZuU4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkQWs-00CO0H-2S;
-	Sun, 24 Sep 2023 14:56:14 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1qkUN0-00Cdm0-39;
+	Sun, 24 Sep 2023 19:02:19 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkQWp-00CNzI-0K;
-	Sun, 24 Sep 2023 14:56:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=a0RI2EF5VAOb9mrpmA1xh0jjtBBMo7NRn7kCBceeFDo=; b=Ka
-	9jVVC1YfiOMJeEi2JVxXYgoz/MBKnf47MIA4j9oz6BgcZc1ubOozNQQa7JsVGsuyNP+qGwOQjsqoG
-	hp2txzye8csh7V0bmUfppxLl5sekmzl1L4zuxExa8q4AP3XYTB6MXI3lB75y4fLbd1C/tjlrqVn1T
-	GZq266029NbgEew=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1qkQVl-007M3k-16; Sun, 24 Sep 2023 16:55:05 +0200
-Date: Sun, 24 Sep 2023 16:55:05 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
-	Rob Herring <robh+dt@kernel.org>,
+	id 1qkUMy-00CdkP-1H
+	for linux-mediatek@lists.infradead.org;
+	Sun, 24 Sep 2023 19:02:17 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4053c6f1087so41978975e9.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 24 Sep 2023 12:02:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1695582133; x=1696186933; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HEY3/qK4PljH+5mRr6l/fkufOUPYsS6/LapzeXqBAzQ=;
+        b=J4t0I3DieKhcll64yzgw4t5dVuGCyqA10aK0hAVdr1YRY40KptKW/9Z/PFax4H1WB4
+         KpXsTGAUNug6Lj9Z27jUfDpW33njQ52v65fWanM2wanjTp+YNs+Z4go3ymp3PVRAbx+Y
+         NLgnf+LF1jNFBUUVbZ4JwY8jPB78y8DbpMCJmEmE+ANNN1wTA0ICY66klOAqAPWliDuh
+         ecL2sbLkKUQ5UgpE1QZ9dM4c9AqpdJ8/XKTeIp3MZ7Z6JZWp2usfi99tXpsAauzsyb81
+         alaDDi/uEjCLHHwasLufcDijCMhgnATemicIWTRYWRU8g49qTPg/YQYOSy4ngCHkIsbV
+         n2OA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695582133; x=1696186933;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HEY3/qK4PljH+5mRr6l/fkufOUPYsS6/LapzeXqBAzQ=;
+        b=XoKkTpWr6DLQcx0izEKHrQVgzyE7zrAS++Rl97GP7mwzRHE08qJ/JuMs6rgPg/eSNU
+         wOH/8I8vNQ1lmTS/puNBwMGZGKGAfcLm3xiS2m1aBKX/IFdhVA4Nc4ipFpkFdFx0fuLX
+         TG+Uv0NoFMnOeIMbd6Ah2vlWbHMvkriquiEfXzTYN2uRrl1GId3u+F1hGP9nO/XMh6Gs
+         5/HKyi2R/EIfNJv9G2y2oJ/Ko53oShfcRdpXKEbPHSA3d9jKI8+mat6PzmGzQhVS65y2
+         LA0rVlK0C6N0GfBMuuMeYslmtRKhFdzucHSySPhRl0lWHslR2MjXBbR1fZH3hIF9iW/X
+         1TVw==
+X-Gm-Message-State: AOJu0YxPRRExfr5eFSnNAwIfUNJoZvbHd7cNGO7AbcbwR9/eS/TYUnz6
+	rvAjvTNswCVjqsxrkHcHxFO2VA==
+X-Google-Smtp-Source: AGHT+IFTJOYNoKt70FvbEG3fkDLWzOwpTRfij0NznSyG4D41f0zuewMjBkFnGE5V08UMj/ZN+ZJrcQ==
+X-Received: by 2002:a05:600c:253:b0:401:eb0:a974 with SMTP id 19-20020a05600c025300b004010eb0a974mr3981380wmj.3.1695582132672;
+        Sun, 24 Sep 2023 12:02:12 -0700 (PDT)
+Received: from krzk-bin.. ([178.197.219.100])
+        by smtp.gmail.com with ESMTPSA id v2-20020a1cf702000000b003feae747ff2sm12980507wmh.35.2023.09.24.12.02.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 24 Sep 2023 12:02:12 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Conor Dooley <conor+dt@kernel.org>,
-	George McCollister <george.mccollister@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
-	Marcin Wojtas <mw@semihalf.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Marek Vasut <marex@denx.de>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	John Crispin <john@phrozen.org>,
-	Madalin Bucur <madalin.bucur@nxp.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Oleksij Rempel <linux@rempel-privat.de>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Grygorii Strashko <grygorii.strashko@ti.com>,
-	Sekhar Nori <nsekhar@ti.com>,
-	Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH net-next v2 00/10] define and enforce phylink bindings
-Message-ID: <29cd6190-a565-4f95-9de0-41ed7c7772e6@lunn.ch>
-References: <20230916110902.234273-1-arinc.unal@arinc9.com>
- <ZQ2LMe9aa1ViBcSH@shell.armlinux.org.uk>
- <6c1bb7df-34cd-4db9-95b6-959c87b68588@arinc9.com>
- <4856b212-5bc5-4783-a184-b34a4a915878@lunn.ch>
- <5650a2a3-a36f-441e-b4c2-aa7c751b5af5@arinc9.com>
- <410dfe3c-6f99-4054-88f8-0acbd134cfce@lunn.ch>
- <228f24db-0a26-4d38-8f73-a9691262cc5f@arinc9.com>
- <2be01f7e-8bd0-42c5-bc82-b1da29b83e24@lunn.ch>
- <78e70cc9-a6ca-439b-bfca-3119299249de@arinc9.com>
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: minor whitespace cleanup around '='
+Date: Sun, 24 Sep 2023 21:02:00 +0200
+Message-Id: <169558197845.54884.14708791054897582168.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230702185128.44052-1-krzysztof.kozlowski@linaro.org>
+References: <20230702185128.44052-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <78e70cc9-a6ca-439b-bfca-3119299249de@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230924_075611_144495_B445DB34 
-X-CRM114-Status: GOOD (  22.44  )
+X-CRM114-CacheID: sfid-20230924_120216_450453_CACC4FA5 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,31 +100,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 24, 2023 at 10:49:49AM +0300, Arınç ÜNAL wrote:
-> On 24/09/2023 06:15, Andrew Lunn wrote:
-> > > > There is a MAC driver currently under review which does not have a PHY
-> > > > at all. The MAC is directly connected to a switch, all within one
-> > > > IC. The link is always running at 5Gbps, the link is always up. It is
-> > > > physically impossible to connect a PHY, so get_link_settings just
-> > > > returns hard coded values.
-> > > 
-> > > The fixed-link property would be used to describe the link of the MAC here.
-> > 
-> > Fixed-link make sense for a general purpose MAC which could be
-> > connected to a PHY, or could also be used without a PHY. fixed-link
-> > simplifies the code in that the MAC driver does not see a difference,
-> > it all looks like a PHY.
-> > 
-> > However for a MAC which cannot be connected to a PHY, there is no need
-> > to emulate a PHY. The MAC driver will be simpler. So i would not
-> > recommend a fixed-link in this situation.
+
+On Sun, 02 Jul 2023 20:51:27 +0200, Krzysztof Kozlowski wrote:
+> The DTS code coding style expects exactly one space before and after '='
+> sign.
 > 
-> There's a link, it must be described.
+> 
 
-Why must it be described?
+Patches were waiting long enough on the lists. I assume there are no objections,
+at least none were shared, and this just slipped through the cracks. I applied
+to my tree for further soc pull request, but if anyone wants to take it
+instead, let me know.
 
-Lets take this to the extreme to make a point. The chip has a ground
-pin. Must i describe that?
+Applied, thanks!
 
-     Andrew
+[1/2] arm64: dts: mediatek: minor whitespace cleanup around '='
+      https://git.kernel.org/krzk/linux-dt/c/aee69e4538e137313831bdb05512686d4f950378
+[2/2] ARM: dts: mediatek: minor whitespace cleanup around '='
+      https://git.kernel.org/krzk/linux-dt/c/96ba96612d85766b20d2e3e4445c96875351eb7b
+
+Best regards,
+-- 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
