@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB5F9CE7A88
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Sep 2023 13:18:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D0AFCE7A8B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Sep 2023 13:19:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EfvpEAMGK+6r8FLLKbnrE+dLm/z7tM4hUzY6qJLeZuw=; b=JzchfAh0L7PCIKYQd1y0Dzglg8
-	5NsMGvZk6WSsGhAyFqZVv8WsoOr+rh/opVlTbXocl3PPXTYYKJctn6bZpEdsW1RGu8RK4zrc9noDr
-	vx2rAkhV/Z1l21OonSIaVaYPXdj8/op5DRHYrWtEKlvT3mRyJVne2ba93RG2nt+UnhESQz3OnbuAu
-	33uZwxeCpr0G4gjXbCumHjL5D6oDkLAbaMH1kBjxHxC1GoJYw5hnOiImX3L0sgLuHBm7n2IThdqz9
-	46qt8hV3muTPik6rrWIYD5kJYOCDqDMuE6fFqnGxWUluv2wcZDZa3TtaTn0amA85s/9nV1So0C6cU
-	ni2F99ug==;
+	bh=kDTfwjIcgPzIDmWE6o/xYDGhx2K2MbbCVTAK8ngY5QU=; b=JsK40ZYXu2Tg4tE8/TbIjWqDpS
+	/YnbYZO3wmS13amUl+TpEBvBOxYtb/zGD3pCRHYBUm5l+5cl4ywzGNrdlpxA/yDFhiYwtpeb1MCF1
+	64aXxMKKquD3dxRKRQv0INK/3+J3lIwYXYbyLjXqPSblyavGCCGNGmeyd3cOavJvJrgbL/zG5qmwW
+	1QwmuKLqvL/j0r7jUfnGGdrmV15vBX1MKXe96I2DduHquGXYLVmJaQHUAtzDT/xvTlvZ1j4CDIDw9
+	uHCl44TSjdIkLwdvqwnvRcmAXT9YflDD0v4nFGL/AeFJVRMaV3DtMMnJ019ThOz0jN/x4nlg9Mel0
+	HMjbFgMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkP0D-00CIIq-1y;
-	Sun, 24 Sep 2023 13:18:25 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qkP1D-00CIf3-15;
+	Sun, 24 Sep 2023 13:19:27 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkP0A-00CIHO-1d;
-	Sun, 24 Sep 2023 13:18:24 +0000
+	id 1qkP18-00CIcY-2z;
+	Sun, 24 Sep 2023 13:19:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 34193B80ADB;
-	Sun, 24 Sep 2023 13:18:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55CE8C433C8;
-	Sun, 24 Sep 2023 13:18:19 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 4FA08CE01CE;
+	Sun, 24 Sep 2023 13:19:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DBFDC433B7;
+	Sun, 24 Sep 2023 13:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695561500;
-	bh=v+kjxH+8OrRaW4gMS8neV9tdlMoMKrRmQAPLQr171wo=;
+	s=k20201202; t=1695561560;
+	bh=5G+R8/4bS5QTwYkm4dcfzu9PDsZREyopQW5Nt0fIakw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=q36FmwPGmlxD2F67ahXk98i1FS/eoXRilbaFywEBthDF5EnNmKIO+8t9IWJxucxsS
-	 Q3e0LFVHs9VbLaazTjaUma8nIfFvlpH1gy291oWd/ZrXu8A2SFcGoZ6XhDC0j5GHe9
-	 cX4jUegYuJiMKI7rayQ4bmL5idQhchec5EfCAonbOeg6X2wfv+CjZM+nx4BBQxgOu0
-	 MiO4/D/AvyWNIjYE+xsUypDUZ7TPvIOD4/K+LJNEoI2z7UX9Q6lXLk/zm7w6i2Mx7G
-	 wFkQ8BTTZuLHZ5oxb2XuPA5XRfb4mmarZYn0WmIIaIviqU6odC4rNQncF7nSicZPfr
-	 c/kqSj0TKq9Qg==
+	b=NJOkFhaIY1q+p9+yESpQaZU9fFZpYFCSdeyhUQe/GkKNt3s1KS906xs6ctqayJwB2
+	 K8I2WJQyl7jwwnSyMHuk1ODx+GWSxVYgBOELL0NuxgNJ7PogFOfm9qi49DMXogG/hq
+	 g/k5XKHz41D3XUzfAJ2ECz3XVcP2gDM5ynhIUC27xUZ1goNZIhOYX7xVcJ7GqX/z8E
+	 KcDf+HxuI2J2QwZ3GwsKZFEzDYFBUxTou30VvBtbAgGr0z7dLgudWwOe/kbntNAjad
+	 MJmehbuIfkBUADvykpEPs24o/Yd0VMK+Cck94gkr3J4oDBfko5MVBqUcwVZC0r8+GF
+	 bkAKDqtdqESGA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,19 +53,19 @@ Cc: "Steven Rostedt (Google)" <rostedt@goodmis.org>,
 	linux-trace-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 14/28] ring-buffer: Do not attempt to read past "commit"
-Date: Sun, 24 Sep 2023 09:17:31 -0400
-Message-Id: <20230924131745.1275960-14-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 11/18] ring-buffer: Do not attempt to read past "commit"
+Date: Sun, 24 Sep 2023 09:18:48 -0400
+Message-Id: <20230924131857.1276330-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230924131745.1275960-1-sashal@kernel.org>
-References: <20230924131745.1275960-1-sashal@kernel.org>
+In-Reply-To: <20230924131857.1276330-1-sashal@kernel.org>
+References: <20230924131857.1276330-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.55
+X-stable-base: Linux 5.15.133
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230924_061822_677288_798E5AFB 
+X-CRM114-CacheID: sfid-20230924_061923_140914_21F818A3 
 X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -115,10 +115,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 5 insertions(+)
 
 diff --git a/kernel/trace/ring_buffer.c b/kernel/trace/ring_buffer.c
-index 42ad59a002365..c0b708b55c3b9 100644
+index b15d72284c7f7..69db849ae7dad 100644
 --- a/kernel/trace/ring_buffer.c
 +++ b/kernel/trace/ring_buffer.c
-@@ -2388,6 +2388,11 @@ rb_iter_head_event(struct ring_buffer_iter *iter)
+@@ -2352,6 +2352,11 @@ rb_iter_head_event(struct ring_buffer_iter *iter)
  	 */
  	commit = rb_page_commit(iter_head_page);
  	smp_rmb();
