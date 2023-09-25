@@ -4,102 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CC9FCD4853
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 18:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F7EFCE79A6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 21:28:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NaqmMPfKXAOtSVjFcLvPHbWm7slgkGY5/ld8VMlAl3Q=; b=oA1vU/lqIT/TxHmjKsm5g9VBO0
-	OzBIica/bqs7ekTcZlPUooBRZZzPLClpgWSAAd0fO1rM2j84Z6FtzakrV7Hbyi9wzl1dKOC2xnmx2
-	YaBG+icnbxixCZ5MZWtM+TfEMgNOWBV+/MJN5LbziWBWdxGs85HOtruiGMeNT3gvrZzcKDY+1GCpj
-	M0K1H4xmC2ZneAQBh7lCm+Peh32um/Clf9VdOiFg1c4AzlY8e4Lqo+0uaBcyeMfq9srshgKxmnVnx
-	JTI80t2/G+T8zZQxGUZ8BvNgcZTepDT059CSPBd73RLPTRYq9oB9I8yX9B/WVpAORaVnLY0T+JaEG
-	aDkqyu+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mHCS2tvYW0YhkesNZgytgnSoy3Ur9OxPIVQfFfDpnvg=; b=zFgDpm5MAinoYPafpX+/8WWSkH
+	p3vsAWp20B1Twm+LINACbZw4o5r0ME9wOAWRLCmbdQhVX4iKl3NKMNspzSz4+uQu4UT/kZh5ZuYVw
+	f7qjeLVNm+x1FuGgk8mboTkk3OHzq2eqJ4a+91Jg8W91OnOVPCIaUM48KSR7aYuEu1P1wEcfoE+qs
+	0l/2xmGjY8HWwPPPKaHESdsJiDF27J8F8LO44DGaLdFjfmhf9TQWA7H0n7ebZVBZwGg9jTNk6Qmll
+	QlKcPZWrDAvxGIoRVz3l7xGCO2EYuKRi4fyH8uEbTsRGwT/lFZmodjMDgKWzHrEAOGrBAKOsW/LV0
+	LRsvB/4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkqAB-00EoxC-1S;
-	Mon, 25 Sep 2023 18:18:31 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1qkt7e-00F3LL-2Q;
+	Mon, 25 Sep 2023 21:28:06 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkq9a-00Eode-1H
-	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Sep 2023 18:17:55 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-9b29186e20aso196643066b.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Sep 2023 11:17:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1695665873; x=1696270673; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=NaqmMPfKXAOtSVjFcLvPHbWm7slgkGY5/ld8VMlAl3Q=;
-        b=h06uflDOBCtXJReBY5ba0EvL0YlGbOo1wVjgz/h1vxkiBi8Jav6Gr9Kp44RLEiPdNk
-         bc8kPcE2q3C8cxVnyQaIVrTHRgu7j0Mz8q8hKbRDvRvk6hxgb1B0/4SnWv4rwAOFvtZq
-         kQSgtRtosrt9vYCN0+cFbN6bp/OeVL7qqP/AOo/vTfP9QbHxaj3cboynHEwsgX/w0pGE
-         GqVD0dMt6hiR32RJNvx7cmvMHtYdFTLEWifvZiNDPo46X8+Co6H9SQB57Jzt1RAMRmnW
-         GuC4XF0mWX9uYLAPSqhNwgNs2TMb52RevJmNjoZrQkDb8YyYf/pV77kmjfG/xTij4Fb9
-         VbXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695665873; x=1696270673;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NaqmMPfKXAOtSVjFcLvPHbWm7slgkGY5/ld8VMlAl3Q=;
-        b=SSxUTZNfyucbPMfMZ7jFLOjjNP6Heo3os6IlvcxrA6vNIi+BaKZFcK4Ii2JAo9Anpo
-         oX8umuSOfKF7BtASFTh/pIT0pTTV1q+oyDnrhvpMmYQZZRSAFbK1f9kiyTVEwughSqLj
-         p6kMZWJ7lJJdjPmSXCg3WMtoEr+F9hdFszzchWLxmq+8qIWqng6yUebuYztWqt3UES7L
-         oinVfc5p51TD63hYZkUrvVvld9/JkxT/UoARHo2NMJE/4j3YshoAW8GhZUEg9MeMsVU+
-         LEo2t9HiRAOxzigMwJis4++bhUDkacUiq8R8nmoiug41Thl9tAjJP6PellF6LO0Gt4sy
-         aqEA==
-X-Gm-Message-State: AOJu0YwbnVJng2kDFBdLXMNAKgigeZa1/bSJld3HSa0ebl2F7s+VznuJ
-	CRfC2r9ykaI8nQtpppk59y4jxg==
-X-Google-Smtp-Source: AGHT+IFxzjt0ed1oiSWTrzfayOWn6SKtv3vQPmnoX8XFg6JSjmVqbuZx+3Y90wckx0OT+kjZeilupQ==
-X-Received: by 2002:a17:907:26cb:b0:9ae:513a:528b with SMTP id bp11-20020a17090726cb00b009ae513a528bmr8432278ejc.36.1695665873235;
-        Mon, 25 Sep 2023 11:17:53 -0700 (PDT)
-Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id j26-20020a170906831a00b00997d7aa59fasm6793962ejx.14.2023.09.25.11.17.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 11:17:52 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 25 Sep 2023 20:17:41 +0200
-Subject: [PATCH v6 7/7] arm64: dts: mediatek: add iommu support for mt8365
- SoC
+	id 1qkt7a-00F3Ib-1y;
+	Mon, 25 Sep 2023 21:28:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 18322B80E3E;
+	Mon, 25 Sep 2023 21:28:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CFE8C433CA;
+	Mon, 25 Sep 2023 21:27:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695677280;
+	bh=/O3CPAN/HC+aJwYPv4Gy4+9esRpB0kLO0vBTmNz9WPc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JoJn+1u8Q6A2ET+C1mL8s3BDRWYdDAk6Tzsxyj/GtRfXrq5MQRvGDXrtUOKbSixCc
+	 U1vg6A4YsNkifiVEL6u1kC/FWTY6wHEwgsVeBQhbUYR5JW3QXmkS6xO9BUJDyN0pOB
+	 t9sQgTXx/CQRlYucZkgOitprFi4Ttpa26X1EvS1eRGFSXKLjDTTbR46z9NDM+AFJfu
+	 /VtM0mgb2HdzO0ybi97omBUfEw19cWpCvenkIBQBfdVm/fqk26tbme+fW9jt1WDU6h
+	 oxxVzDn99Jg3LR8dOBjxw/iTrG3awSXNXc97dgOmHEswX2ydYxAYGKMHAcjHUHQM8g
+	 zwRB+Ja/jg0Lw==
+Received: (nullmailer pid 1976712 invoked by uid 1000);
+	Mon, 25 Sep 2023 21:27:53 -0000
+From: Rob Herring <robh@kernel.org>
+To: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Patrick Rudolph <patrick.rudolph@9elements.com>, Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>, Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>, - Keerthy <j-keerthy@ti.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH] dt-bindings: mfd: Add missing unevaluatedProperties on child node schemas
+Date: Mon, 25 Sep 2023 16:27:24 -0500
+Message-Id: <20230925212729.1976117-1-robh@kernel.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230207-iommu-support-v6-7-24453c8625b3@baylibre.com>
-References: <20230207-iommu-support-v6-0-24453c8625b3@baylibre.com>
-In-Reply-To: <20230207-iommu-support-v6-0-24453c8625b3@baylibre.com>
-To: Yong Wu <yong.wu@mediatek.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1094; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=9vmrSAYQ/OJGejgymOj9rq18l0jyb8olHnhsKnJiPYw=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBlEc7Fj1C08D9uWY76sqRpCZwA3sp773KCNObftJqZ
- Fs9XuXGJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZRHOxQAKCRArRkmdfjHURTJHD/
- 95xhPf1bWof8l+Jc4t2D0Wyk7Htq4NwdZDFDBUCTIeyyJYjTdPXumlZAMdZI5JCZH1b4axEjdOEXB4
- o5eaGyx6Hm20412uB16q/KxliblLI+mi/FG6cPHCJ8GiuEHWHdzcrH0vLRzr38x72dQKoEWQBVtBHR
- VKPvHuV8KWebyFt+QxFLMeUDfsojemOuJDOL34mnmSufu8XfKLJM3Fs3mv3+6bZya8hvyEZbPWZae6
- orUW1XRiKmtM5NMTTwUlgJDM3uwwKSCm+hCNgvf+UlySjiNGhm3e5olJ4Ss514Jb6y6h1a1pHYgSiD
- WV13451VfZZo0pZ/TWAUPNhtN0ETsF+V+yDD0uS1zYs/l/A42oDSIWX8oLWw1hGiGCnBkL55ZDgRxs
- mUAvzPH2bk2JE/DxKhA6bHLgF9Ho7wNnZcmZwG4uWJXFUd4US5uucRsAAv0USxVEjWxVpVnWLpozbm
- nq3cAm6HnVlYpJCTDB8ArODMbmF+EdYebP+C9bnCaUVY0J9tBkowRBrLpPL+0nA6SE9wmFjKi9cU/i
- peVev0hH+2rLNlTp7tuzz60ob90gVU8rcqjaSgYqEIakXXrksAuAh6H/Uww7vcBJo1dbq3pL7IYDhg
- k3lifliO+iCkTBiZ+KMyiEJ26CUGXcRB061PY/aQ/WyhNLoZqeMbN253uMGw==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_111754_445030_26CA210B 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20230925_142802_933031_A784AEE4 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,36 +70,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add iommu support in the SoC DTS using the 4 local arbiters (LARBs)
+Just as unevaluatedProperties or additionalProperties are required at
+the top level of schemas, they should (and will) also be required for
+child node schemas. That ensures only documented properties are
+present for any node.
 
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+Add unevaluatedProperties as needed, and then add any missing properties
+flagged by the addition.
+
+Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ Documentation/devicetree/bindings/mfd/maxim,max5970.yaml   | 5 +++++
+ Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml | 2 ++
+ Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml  | 1 +
+ Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml  | 1 +
+ Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml  | 3 ++-
+ Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml  | 1 +
+ Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml   | 1 +
+ Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml   | 1 +
+ Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml   | 1 +
+ 9 files changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index afcfa1dd242e..24581f7410aa 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -471,6 +471,14 @@ sysirq: interrupt-controller@10200a80 {
- 			reg = <0 0x10200a80 0 0x20>;
- 		};
+diff --git a/Documentation/devicetree/bindings/mfd/maxim,max5970.yaml b/Documentation/devicetree/bindings/mfd/maxim,max5970.yaml
+index da67742c5aa9..0da5cae3852e 100644
+--- a/Documentation/devicetree/bindings/mfd/maxim,max5970.yaml
++++ b/Documentation/devicetree/bindings/mfd/maxim,max5970.yaml
+@@ -45,8 +45,13 @@ properties:
+     patternProperties:
+       "^led@[0-3]$":
+         $ref: /schemas/leds/common.yaml#
++        unevaluatedProperties: false
+         type: object
  
-+		iommu: iommu@10205000 {
-+			compatible = "mediatek,mt8365-m4u";
-+			reg = <0 0x10205000 0 0x1000>;
-+			interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_LOW>;
-+			mediatek,larbs = <&larb0>, <&larb1>, <&larb2>, <&larb3>;
-+			#iommu-cells = <1>;
-+		};
++        properties:
++          reg:
++            maximum: 3
 +
- 		infracfg_nao: infracfg@1020e000 {
- 			compatible = "mediatek,mt8365-infracfg", "syscon";
- 			reg = <0 0x1020e000 0 0x1000>;
-
+     additionalProperties: false
+ 
+   vss1-supply:
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+index fc2a53148e1c..37423c2e0fdf 100644
+--- a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+@@ -40,6 +40,7 @@ properties:
+   regulators:
+     type: object
+     $ref: /schemas/regulator/mediatek,mt6357-regulator.yaml
++    unevaluatedProperties: false
+     description:
+       List of MT6357 BUCKs and LDOs regulators.
+ 
+@@ -59,6 +60,7 @@ properties:
+   keys:
+     type: object
+     $ref: /schemas/input/mediatek,pmic-keys.yaml
++    unevaluatedProperties: false
+     description:
+       MT6357 power and home keys.
+ 
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+index 4992f71b6fc3..af6cd1969c22 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+@@ -80,6 +80,7 @@ properties:
+       "^(DCDC_REG[1-4]|LDO_REG[1-3])$":
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
+ allOf:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+index f5908fa01a61..8a16d651c2a3 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+@@ -107,6 +107,7 @@ properties:
+       "^(DCDC_REG[1-4]|LDO_REG[1-8]|SWITCH_REG[1-2])$":
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+index 7fb849ac74a7..e922e0176ee7 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+@@ -86,7 +86,8 @@ properties:
+     patternProperties:
+       "^(LDO_REG[1-9]|DCDC_REG[1-5]|SWITCH_REG[1-2])$":
+         type: object
+-        $ref: ../regulator/regulator.yaml#
++        $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
+ allOf:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+index b57c4b005cf4..ee5bca6e75df 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+@@ -99,6 +99,7 @@ properties:
+       "^(DCDC_REG[1-4]|DCDC_BOOST|LDO_REG[1-9]|SWITCH_REG|HDMI_SWITCH|OTG_SWITCH)$":
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml b/Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml
+index f6cac4b1079c..ae149eb8593d 100644
+--- a/Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml
++++ b/Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml
+@@ -37,6 +37,7 @@ properties:
+       "^buck[0123]$":
+         type: object
+         $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+     required:
+       - buck0
+diff --git a/Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml b/Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml
+index dc5a29b5ef7d..5167d6eb904a 100644
+--- a/Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml
++++ b/Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml
+@@ -41,6 +41,7 @@ properties:
+       buck3210:
+         type: object
+         $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+     required:
+       - buck3210
+diff --git a/Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml b/Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml
+index 012d25111054..eca430edf608 100644
+--- a/Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml
++++ b/Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml
+@@ -47,6 +47,7 @@ properties:
+       "^buck(10|23)$":
+         type: object
+         $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+     required:
+       - buck10
 -- 
-2.25.1
+2.40.1
 
 
