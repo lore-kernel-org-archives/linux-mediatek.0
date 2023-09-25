@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C5DCE7A8C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 06:44:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC5C4CE7A81
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 06:45:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Lbdz0bUZx5a/ItlQElnoWV6YsEcmVJFh2HoCImzsgM=; b=Xh5/UqeJg9qnMtMlnjU/Uz9dxT
-	k1WxYqD0hIx4QHWH+EbeXN6VKpyjtIchJPcxaMOA1We1q9yhiLJCC/XZigmd/iGBhQTn4vNPBkoqF
-	OlYZB5vAnQRyTDZ0Ej+neJH42ExokL+UffNeAwBOuBrsI2Xruem7e6dsB/PSPFFdFZZA1v1dXeEBR
-	UpWcyJOPhtsdD2ZrspYVlX9sOZUr6DZpoonDXUi/tiEpCm06qJbGcJwfJElJdLSwlLBIxQATrgRLa
-	69Mxbge0K7Ne3ijAV3G+smCQ4i2wBQ/V7S8FQehq6oysyyx2CwdWrweZieqs7EleQozIbVifK+m2q
-	zTcuDF/A==;
+	bh=vJn53FgXeUAZxTtH2aCf6C0FXRjPgz+VYA+JNoDnBAU=; b=vVK79W/DVCGtbBZwvMGlMFcsaE
+	Lk19vi2Rq1o45WI3m7A3pnokusdFClJ2XD8s2BC9hgXddTRwB07ZxK+6VmVUFYpabM4JBDkhTfk0q
+	/Z9EeG89fNFBxB/tCZF1oFWxqLEhQdUBbbST41o3h7bnvBZrfoCTPx+JAJsxWDZIXkUPd6eK6xczQ
+	HZW6++gGATlF3nG2zLEDjJUFJPYR4wC6rspIKTbqYcuglPn+ImQAxoyZIzDfF/mVJpAf4CyuDDLQe
+	kIDwL3XQn+DBaubi3QAOrmzORKfiyTxb/b8YXCBiaQ8O6L0FM6TxuYyGB0HFxqMFEeiYAGbNUy7Q+
+	VuYeKZ4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkfKR-00DTdz-0R;
-	Mon, 25 Sep 2023 06:44:23 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1qkfLE-00DTlH-2b;
+	Mon, 25 Sep 2023 06:45:12 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkfKO-00DTd0-1d
+	id 1qkfLC-00DTjq-04
 	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Sep 2023 06:44:21 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-31f7400cb74so5145879f8f.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 24 Sep 2023 23:44:19 -0700 (PDT)
+	Mon, 25 Sep 2023 06:45:11 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-31dcf18f9e2so5541837f8f.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 24 Sep 2023 23:45:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695624258; x=1696229058; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1695624308; x=1696229108; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0Lbdz0bUZx5a/ItlQElnoWV6YsEcmVJFh2HoCImzsgM=;
-        b=ySnruVF7xsOhhoS9J6/GRYvxdjhghMzqSeTytI8tKemWWIGqNaRljixqNrbakxhQyu
-         MyVyQRDBjNzGaqwEoT6HZl0grWbJeZONV28kd/kGMswQp+pH5jwMj0EbAL5FBHdME9K+
-         hH2ndi7VMqMkTph0QAlvhU4fRcPzfQkTVVSaSvwrOLnJ4qDDsOlhWCDQ7JACBs94Ux0w
-         sde6iM17rckml7x4UE37fXXeWPwFJL9Cj3K/gnfBHi98WjgOAsJCxQh5OyiXmIjLiCAD
-         SWYPhT7qOiiFBG7oYaV9wscLMkTLbheWiS2XG3Mo/MHt+8nuT5K4c81i3oZisJMn1H6D
-         Mb9g==
+        bh=vJn53FgXeUAZxTtH2aCf6C0FXRjPgz+VYA+JNoDnBAU=;
+        b=KqyBDF97uqi7IkIFbjS3Q+O7kx8DTWnyFJT53q3lAHksTnxpv5D8e1znHFuDobAWmq
+         UY0ejMDTpwyRKKt1mU6lTB2SpIwXKEGPS/8HYUkcf9AAU/1Hs+mV3PcrEBmQIfdUjzau
+         zUkquZOKzX3FYzWXkxW6xWV1XcksYJ8RPKvVCj3UHjS474mLxgQmbXLQ0UA9tZ2rpTtc
+         OWf+Dl6tAW60lDz7Dug3V1qNefCEazqbONXSXQS52wQa8VW42x3Fesafw1E9YVQwmkQm
+         QTSBf5PEHg5/almHtZ6PxoucAsge1G6nmlLuqQhWt2/8QhJcqxjvm+0yRpLbCNCPgEja
+         odcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695624258; x=1696229058;
+        d=1e100.net; s=20230601; t=1695624308; x=1696229108;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0Lbdz0bUZx5a/ItlQElnoWV6YsEcmVJFh2HoCImzsgM=;
-        b=bu2dEH6YyepSKp/t/s7bHpMgDoXWQjEtc011OAe6PWAMLmwB4+yq44uJbyCN051kHh
-         9Iv8LlFMhSkbpTBKMPDoNBZj/iXwyKPw+xt7JLt8jfKqu27SZR0T8ljCst0HIb7F61t/
-         8G7+JijaoGhGTjCNthsRabBGq8N08mMZYwo7imwXX8oKGBfjuNQx/+gI4wtWceYV+t0r
-         KafN3SGLlW98NsdU2G0qGgFa7N8xnWNZ+Eqm4KlHklPdhJQW4GXdHhl3DS51TLD+fekg
-         emJT4MlVUL+tQWKGybEFwHprBrEQJk/2pKy/3Ez5WorMAPEZFS2cDgj6LbundABjhj8+
-         yLww==
-X-Gm-Message-State: AOJu0Yx21JbU2BXTh6ef7iagqyMrHxcAZpwriQQ+nLoiRur8foZanPCq
-	nXcnLtoi5YNJ/B7khypGcLfG4w==
-X-Google-Smtp-Source: AGHT+IHHIw7ELL3XXjDdlhIgFaLliLCgI5GgKmsrZ2HPvVmr/iFKR/9uezSGVl0Z/yYfqGfDIiIFVg==
-X-Received: by 2002:a05:6000:6:b0:31f:fa1a:83fb with SMTP id h6-20020a056000000600b0031ffa1a83fbmr5536739wrx.7.1695624258688;
-        Sun, 24 Sep 2023 23:44:18 -0700 (PDT)
+        bh=vJn53FgXeUAZxTtH2aCf6C0FXRjPgz+VYA+JNoDnBAU=;
+        b=R3XgUbgaLvDU30QnNjzh6OR89ktxsMK493jbjmIYBvvwZXU9qMgJ7MraDeFS4Pe5zD
+         aZLG9S4a3ZP7X8/xE/Tnmm4uLf3tXCEqJDoGxq97wHOjwWoBxWBe+doXxkFPth8aZsFT
+         EDIzp8/P3xmKPiAC5ay2o4NVnywsp8dSIA6idO8ctpTC0uwHnCnRk+QZ5hBAPvp1IrVK
+         4HJ/ZAWzl/TCahDy5KGCGUWaQwU/ve9jgs93u9q0TtSDKlee3B3fl2mWtYuJFk9+BA7M
+         BcDbUOGe/GJHsPHJN+uDEpzSofkSPazBd8wJShRKHh251JQ4HabwvGC5uOUmM4ifDOfX
+         OMEg==
+X-Gm-Message-State: AOJu0YxsgEjdyrgMRzOowFYqGHeGaFyzJR9ALeyDE9w4GIb2f14ljpN8
+	kEATEfns3RWvj9mmlrpaRQV1ew==
+X-Google-Smtp-Source: AGHT+IEhMP7oLGFs49h4VQ1+wrbb0nPQYjsAAyqSHUqbtCIcK0DtWwrDt3G60U/3PyQsucksIlAyZg==
+X-Received: by 2002:adf:feca:0:b0:320:4cf:5b50 with SMTP id q10-20020adffeca000000b0032004cf5b50mr5472075wrs.5.1695624308357;
+        Sun, 24 Sep 2023 23:45:08 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.219.100])
-        by smtp.gmail.com with ESMTPSA id w10-20020adfd4ca000000b0031762e89f94sm10899573wrk.117.2023.09.24.23.44.17
+        by smtp.gmail.com with ESMTPSA id w10-20020adfd4ca000000b0031762e89f94sm10899573wrk.117.2023.09.24.23.45.06
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 24 Sep 2023 23:44:18 -0700 (PDT)
-Message-ID: <c08630a2-3e3d-4975-a863-a9e58c6d78f5@linaro.org>
-Date: Mon, 25 Sep 2023 08:44:16 +0200
+        Sun, 24 Sep 2023 23:45:07 -0700 (PDT)
+Message-ID: <4654ae4e-a64b-41e3-9f65-a08fc4014d71@linaro.org>
+Date: Mon, 25 Sep 2023 08:45:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/15] mailbox: mediatek: Add loop pkt flag and irq
- handling for loop command
+Subject: Re: [PATCH 13/15] mailbox: mediatek: Add mt8188 support for CMDQ
+ secure driver
 Content-Language: en-US
 To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
  "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
@@ -94,9 +94,9 @@ Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  Project_Global_Chrome_Upstream_Group
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 References: <20230918192204.32263-1-jason-jh.lin@mediatek.com>
- <20230918192204.32263-8-jason-jh.lin@mediatek.com>
- <5d528036-e506-7b95-69bb-7748b26d2aa8@linaro.org>
- <00f0bae9940be7b397c587c651e23c6c1e19a174.camel@mediatek.com>
+ <20230918192204.32263-14-jason-jh.lin@mediatek.com>
+ <87ae80c0-a09b-3642-e3e9-c753cd330bca@linaro.org>
+ <6f1bdf10c87aab40e965bb667eb8036c3e524646.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -142,12 +142,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <00f0bae9940be7b397c587c651e23c6c1e19a174.camel@mediatek.com>
+In-Reply-To: <6f1bdf10c87aab40e965bb667eb8036c3e524646.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230924_234420_547871_94F421CC 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20230924_234510_064875_FAFBC528 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,40 +162,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/09/2023 07:21, Jason-JH Lin (林睿祥) wrote:
+On 25/09/2023 08:01, Jason-JH Lin (林睿祥) wrote:
 > Hi Krzysztof,
 > 
-> Thanks for the reviews.
-> 
-> On Sat, 2023-09-23 at 20:03 +0200, Krzysztof Kozlowski wrote:
+> On Sat, 2023-09-23 at 20:09 +0200, Krzysztof Kozlowski wrote:
 >>  	 
 >> External email : Please do not click links or open attachments until
 >> you have verified the sender or the content.
->>  On 18/09/2023 21:21, Jason-JH.Lin wrote:
->>> CMDQ client can use a loop flag for the CMDQ packet to make current
->>> command buffer jumps to the beginning when GCE executes to the end
->>> of commands buffer.
+>>  On 18/09/2023 21:22, Jason-JH.Lin wrote:
+>>> Add mt8188 support for CMDQ secure driver.
 >>>
->>> GCE irq occurs when GCE executes to the end of command instruction.
->>> If the CMDQ packet is a loopping command, GCE irq handler can not
->>> delete the CMDQ task and disable the GCE thread.
+>>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>>> ---
+>>>  drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
+>>>  1 file changed, 1 insertion(+)
 >>>
->>> Add cmdq_mbox_stop to support thread disable
+>>> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
+>> b/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> index 3940b9f8e774..4e047dc916b9 100644
+>>> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> @@ -750,6 +750,7 @@ static const struct gce_plat gce_plat_v8 = {
+>>>  .thread_nr = 32,
+>>>  .shift = 3,
+>>>  .control_by_sw = true,
+>>> +.has_sec = true,
 >>
->> How or where do you add it? I do not see it in this patch. Your
->> patchset
->> looks randomly organized.
+>> No, you just added it patch ago. Do not add broken code and fix it.
+>> Are
+>> there some KPIs in Mediatek to have patch count?
+>>
 > 
-> This will be used in cmdq_pkt_finialize_loop() at [PATCH 8/15].
-> 
-> mtk-cmdq-helper.c and mtk-cmdq-mailbox.c are not in the
-> same maintainer's tree, so I separate this to another patch from [PATCH
-> 8/15].
+> This patch is different from [PATCH 14/15] at the gce_plat:
+> [PATCH 13/15] is adding the flag to gce_plat_v8 for mediatek,mt8188-gce
+> [PATCH 14/15] is adding the flag to gce_plat_v6 for mediatek,mt8195-gce
+???
 
-Why? Anyway it has to go through same tree. You have dependencies. Such
-artificial split makes it only difficult to review and understand.
-Re-organize your patchset to be correctly split per each logical
-feature/change. Split per subsystems is not the same.
+I talked about patch 12! Why do you add incomplete code?
+
 
 Best regards,
 Krzysztof
