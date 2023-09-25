@@ -4,98 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6098CE7AB1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 18:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A86AACE7AB9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 18:17:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=njQ1BdogkQcbdblidvKFwQ0CFQs7HyHgjLf5rxsvEe4=; b=k684sXiLSfrcJD/oxvKayYoScm
-	WNqtH0ycWNAmBetVkljTjuqRIhG5u40Wbi/MSADn6bsX2thQU6PwUJ7UPTzAyW2TTGnEhXfXcHo/P
-	5r7rbnEGUrfK9WWqNqsA1AuPltu+0X4CRUbxEE5Jp5JuXxHcsREI2QXTLzlNhlL4cdDlKavh3sIVZ
-	XkFmIAscQY/xcmiUJtqF4NB/4P98jAWyvdLzzYVLqcwFjXktJH6IOdo3ocWZTvoeBGwhDZdgjB+tQ
-	Gj/7RgLvj4GT9nfB5SYHveFMJ/g+1b6I69Cs/jtMtASQRgbz4xZWVaRSjoD1B19CuB5iPqPEl1v+0
-	sO0hQusg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lo5CmJ7j45LMzfOTVuYeJkWSf+ItxDRDqPNzngv56Dg=; b=coHgzrvKdSf4kv
+	vkgC4dpSRCaxqTAsAFJ6J1hxCzjwQ45yygF2d8apTkxng7NtOIxS3sT6hcjJwOot/e3BvWXF4vtL4
+	/Oo8UfuVu87i3T0TScSNnq77AZaMWJBDBgaHltu8EF8jOC1CZVTcPDbxKMXX81q4vYM1JQNaGQZv+
+	twUb97iTodqltKhSoBHWTuvd0lJacL7N5ei/94sKuzdnsblwhLgLHsLUv1R/9SraWlN8bp5Zl4uIu
+	bgg/5E4rifYNPNxWu5CMroUysj3uw7e8Hz2eGqGishY7KQjnPFdOLOyTbrWC5D4JnyiXLvpVZIVQW
+	NJFi0FSqioujUZLmPAwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkptb-00EnOy-1F;
-	Mon, 25 Sep 2023 18:01:23 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1qkq9U-00EoYb-0A;
+	Mon, 25 Sep 2023 18:17:48 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkptX-00EnNi-2Z
+	id 1qkq9R-00EoXM-0l
 	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Sep 2023 18:01:22 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-9ae7383b7ecso1288902566b.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Sep 2023 11:01:15 -0700 (PDT)
+	Mon, 25 Sep 2023 18:17:47 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-9b275afb6abso683660166b.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Sep 2023 11:17:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1695664874; x=1696269674; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=njQ1BdogkQcbdblidvKFwQ0CFQs7HyHgjLf5rxsvEe4=;
-        b=AG9DkRZg9jkDNgf49ziFzLI/vSFun+Uh19oxbWsWDUhW4WhDY5/KwBzbzX4z9uagsv
-         H06ShHy6nJAN2tT91mK9iARyevL+PrGyX2dKeXyL6cnn26Q7pIK0kmOMhUNUgwvR13ac
-         2v8r0Xu16Kat02XjbZs6ag8BAuDENx51ko+aRCFpbSX2zuaG55dnyBm/DkJPeI1gA6Tq
-         ju/3V26R43SglmP3vqUKAyTVVIauLVHT9cA83Jufc8NIGqGnBG9GlcOpzQ0/rd9sMTpA
-         K65cSGhrMkHOKUkieMzhaZteWQyDndOLlg8SpsIfuWfgXrBv9nzizROOURHHxZokAXrP
-         Mxig==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1695665863; x=1696270663; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=lo5CmJ7j45LMzfOTVuYeJkWSf+ItxDRDqPNzngv56Dg=;
+        b=iH2ObFMz/0vIeTVBXdrwaO5/kQWgDBfS6GUDgnUDXPCaQUz53n825nTDG8hyzaNKQ1
+         LARTdTKgNwdwssxpSJj8K62BEFMyzFJghMtuvgEJ5OBppu061aM6IDwixESeAJabRqu6
+         HQzoOJbw5oDsYMJ7Hw/Io5OIJTvAKhumnewPmhEwwmgLdr1HADw0Tg4iFbm9T/WmMhoT
+         TGtUJEIf/AKeXfqwBTKphhFRq/Y/7AymKmfusqG2ZLgc+T+37EgtW3ZxrBnu1NVnU7rk
+         VU7+AIQkFYbmTg9REZcUOVIWPvFI+3THncTNGdrkF96yVlZ3WwAGk40hl/BaAuBelPV4
+         +pXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695664874; x=1696269674;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=njQ1BdogkQcbdblidvKFwQ0CFQs7HyHgjLf5rxsvEe4=;
-        b=fNJxZf3ZPEThHOyRsQM3tf2sUIOjxgTWOYxAdFMx6gKZ+sQtoWRsSaQuadnABwILkE
-         ic/MUxpitaCpgFX7R3lCbPxuG3cowK67AfHy1hOlZ/nOXf5U5vlT786YiMLLcdJdtPII
-         nFb82RY/oCGRkVZCTTyYEkxXJABHdIto7PRGL8FR5pKka2MIaeLybIx0lWLBtdhpR2mQ
-         PsSQAF0QiPsrgTcrp2bUOeSaDusftKm0YdVtkG7QWSjoBvZmF/b+l6sBoeAfDWXKZoPM
-         gQMy0B6QL0suPM2hK1PpZGD4JCoq493bWKQbQcankNh7XeOf0Yt6UgqaNGCrYX8XR8DL
-         QDow==
-X-Gm-Message-State: AOJu0YxWVj+WUGVsZCl4mxCltz7YqlUzAq2ChyCMquNqPiRaLNvuirc4
-	x9sZ0rei4B0bFB5wLVNWCOgdbA==
-X-Google-Smtp-Source: AGHT+IG9/u2SB3ZRpgbXHjLztULk+AuoniEiZnId5QcCxv56UfQinLW43rYvtYkHF/0n4pyv0GC6PA==
-X-Received: by 2002:a17:907:9490:b0:9a5:aa43:1c7c with SMTP id dm16-20020a170907949000b009a5aa431c7cmr451126ejc.26.1695664874463;
-        Mon, 25 Sep 2023 11:01:14 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id y4-20020a17090614c400b00992b510089asm6619941ejc.84.2023.09.25.11.01.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Sep 2023 11:01:13 -0700 (PDT)
-Message-ID: <869d9122-6187-47a0-0589-9feeafaf984c@baylibre.com>
-Date: Mon, 25 Sep 2023 20:01:12 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH 1/4] iommu/mediatek: Initialise the secure bank
-Content-Language: en-US
-To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
- "joro@8bytes.org" <joro@8bytes.org>, "will@kernel.org" <will@kernel.org>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?QW5hbiBTdW4gKOWtmeWuieWuiSk=?= <Anan.Sun@mediatek.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>,
- =?UTF-8?B?WUYgV2FuZyAo546L5LqR6aOeKQ==?= <YF.Wang@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
- "tjmercier@google.com" <tjmercier@google.com>,
- =?UTF-8?B?TWluZ3l1YW4gTWEgKOmprOm4o+i/nCk=?= <Mingyuan.Ma@mediatek.com>
-References: <20230911011751.29906-1-yong.wu@mediatek.com>
- <20230911011751.29906-2-yong.wu@mediatek.com>
- <28b81a20-5cfa-b474-41c3-c01b7b846e21@collabora.com>
- <409168b540948d312a91022f375fa71a470e9d60.camel@mediatek.com>
+        d=1e100.net; s=20230601; t=1695665863; x=1696270663;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lo5CmJ7j45LMzfOTVuYeJkWSf+ItxDRDqPNzngv56Dg=;
+        b=HJil9+y+jK93uSisbD1MWQ45QPlIb+SNPIOZlo5/te32NY0QirK8aLlUsAHksDCzqC
+         gIF41Qa3crXK784xsX5clN2K2QFE6W4lGbQAcABIPuoD26S4kFEDqamR6iJLn5WAKMkP
+         ezJtl3MGUbu/W2s5eoKHBeuh0WGkxTDtEmR/Cd3cPtLWjMCuCDMliUEAQF3Qywyv4b35
+         au4ts+5WApf9MjQB7O2HqCZUGKeGE+3rzIAKHQZ4SCDqhcakhyq6V3dmz0q/wAYUkk62
+         QF+1mCdveJGTdl+4hNsX3gaHuF1rg5HRFvuvJmKnRD+CxGQBZ4VJZE7lfE7y3szXpdJU
+         B9Yg==
+X-Gm-Message-State: AOJu0YxS0kOwVB0QAJ33rJsGWzgRP/aJNp/0/yX4QywSm87gwLFJLInX
+	zMkMEfe1xxK/Au6peIBfI4z6Dw==
+X-Google-Smtp-Source: AGHT+IHq05umxlWx+E0z9Sd6VJqdsjz1GGLwKvLo3q0XHdysMl2QoqO299axqEC6a1SRLA4tCeZIXA==
+X-Received: by 2002:a17:906:101a:b0:9ae:4057:5c81 with SMTP id 26-20020a170906101a00b009ae40575c81mr502560ejm.35.1695665862880;
+        Mon, 25 Sep 2023 11:17:42 -0700 (PDT)
+Received: from [127.0.1.1] ([93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id j26-20020a170906831a00b00997d7aa59fasm6793962ejx.14.2023.09.25.11.17.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Sep 2023 11:17:42 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <409168b540948d312a91022f375fa71a470e9d60.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH v6 0/7] Add IOMMU support to MT8365 SoC
+Date: Mon, 25 Sep 2023 20:17:34 +0200
+Message-Id: <20230207-iommu-support-v6-0-24453c8625b3@baylibre.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAL7OEWUC/33NTWrDMBAF4KsErasy+rWcVe9RspClUS2wrSDFh
+ hB89wxdFter4T1437xYw5qxsevlxSpuueWyULAfFxZGv/wgz5EykyAVSOh4LvO88rbe76U+uEE
+ roZcWtURGm8E35EP1SxhptazTROWY26PU5++PTdD5/o/bBAeuEwQnUjQyiK/BP6c8VPwMZWY3w
+ jZ5CkgCLESTPABqNAeAOgUUAX2HovdRozPxANCngCbA6a531nRBCzgAzClgCEjeJlDWgVPyD7D
+ v+xv3FmpOtgEAAA==
+To: Yong Wu <yong.wu@mediatek.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2527; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=2VrBRVw7hSEZdQZNKl5eN9fbQ+qaJWa/C2dhMkcyvKY=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBlEc7F/R8a2dg91I4rS+9QAqXfyCLm6qoGsE40le2+
+ Mvr1tdSJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZRHOxQAKCRArRkmdfjHURYbNEA
+ DHZRLv+8z6hKMJHRu5gGepaQHb2lJzP7V0vQekuINuMxPYuLNeXDPUNCeUY99FkVkNVKDBSm8TqASU
+ MSO/n4LkVeIe2HgE8yYN6/MvHI66jTn3xMKgDTnMHRuOobXtqZ4eAHvRpM0aupGXAOKbObUMer4i/f
+ BuDYz0O0nbI1OcpMQpf0paZ+jJUc/oI44QbR6COOqBmHgCjAtE7TLrMRgexFmo1Dz4B+v2KfquRirf
+ XZeIyNNEIfeiDkBZrqMvjtT7w2e2hJ/bWhlgKybBJ755EPR4AQ6LFgTeIANDE0THJUnunm1BURsMHr
+ CyIb9UWcBXZIssZVYOMEE1soAEaCt1Ptc+w2HbIXsIrsYCdJMuD1lAGp6vy1ZdLB5NQR9cOPMB/CHp
+ YuiQpv5m+HA27qZw5Fm0MSezEygh/GmZY21eVdT9XyHf4ZJP8eWAnV0aMYju46ci3TiDsvwglxZ3ky
+ XavDic1/+wx+Kf2gwCTpWo87T9BtYMZlG8GHxq5LILM2tOQJpS3StNlnLR5cR4oQr84kqdTP2lHznh
+ uy3sk/MIvrHcZIxZiXIGKruRSCOO4mlb3AZGfJCvM0+eooJ7uVyy7Ov9tDR1Z+4l4+IMN1pn3ziO3b
+ Y1+NAR45oOLTomSZQPKcaW3BYdEI1f1UqR5yiOiT83x7zqLiPi7QwYeexM/Q==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_110119_845999_CF350D7E 
-X-CRM114-Status: GOOD (  26.75  )
+X-CRM114-CacheID: sfid-20230925_111745_301529_C8298C2D 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,148 +115,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This commits are based on the Fabien Parent <fparent@baylibre.com> work.
 
+The purpose of this series is to add the following HWs / IPs support for
+the MT8365 SoC:
+- System Power Manager
+- MultiMedia Memory Management Unit "M4U" (IOMMU)
+  - Smart Multimedia Interface "SMI"
+    - Local arbiter "LARB"
 
-On 25/09/2023 14:50, Yong Wu (吴勇) wrote:
-> On Mon, 2023-09-11 at 11:22 +0200, AngeloGioacchino Del Regno wrote:
->> Il 11/09/23 03:17, Yong Wu ha scritto:
->>> The lastest IOMMU always have 5 banks, and we always use the last
->>> bank
->>> (id:4) for the secure memory address translation. This patch add a
->>> new
->>> flag (SECURE_BANK_ENABLE) for this feature.
->>>
->>> For the secure bank, its kernel va "base" is not helpful since the
->>> secure bank registers has already been protected and can only be
->>> accessed
->>> in the secure world. But we still record its register base, because
->>> we need
->>> use it to determine which IOMMU HW the translation fault happen in
->>> the
->>> secure world.
->>>
->>> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
->>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>> ---
->>>    drivers/iommu/mtk_iommu.c | 19 +++++++++++++++++--
->>>    1 file changed, 17 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
->>> index 640275873a27..4a2cffb28c61 100644
->>> --- a/drivers/iommu/mtk_iommu.c
->>> +++ b/drivers/iommu/mtk_iommu.c
->>> @@ -146,6 +146,7 @@
->>>    #define TF_PORT_TO_ADDR_MT8173		BIT(18)
->>>    #define INT_ID_PORT_WIDTH_6		BIT(19)
->>>    #define CFG_IFA_MASTER_IN_ATF		BIT(20)
->>> +#define SECURE_BANK_ENABLE		BIT(21)
->>>    
->>>    #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
->>>    				((((pdata)->flags) & (mask)) == (_x))
->>> @@ -162,6 +163,8 @@
->>>    #define MTK_IOMMU_GROUP_MAX	8
->>>    #define MTK_IOMMU_BANK_MAX	5
->>>    
->>> +#define MTK_IOMMU_SEC_BANKID	4
->>> +
->>
->> Is there any SoC (previous, current or future) that may have more
->> than one
->> secure context bank?
-> 
-> Thanks very much for the below detail suggestion. But No, for MM IOMMU,
-> The bank4 is mandatory the secure bank, and there is only this one
-> secure bank, and this is the case for all the current projects, we have
-> no plan to modify this at the moment. Therefore I think a macro is ok
-> for it.
-> 
+This serie depends to another one which add power support for MT8365
+SoC [1].
 
-Between 2 solutions which have the equivalent complexity (logical & 
-readability), I prefer the most generic one (at least for generic 
-drivers like this). Nobody is aware about future SoC, even if you know 
-what will have the next SoC generation, I'm not sure you can certified 
-it will be the same in the next 2, 3, 4,... generations.
-
-I'm convinced it will be easier in the future to maintain the IOMMU code 
-if it's flexible.
-
-> Thanks.
-> 
->>
->> I'm thinking about implementing this differently...
->>
->> static const struct mtk_iommu_plat_data mt8188_data_vdo = {
->> 	....
->> 	.flags = ..flags.. | ATF_SECURE_BANKS_ENABLE
->> 	.banks_num = 5,
->> 	.banks_enable = {true, false, false, false, true},
->> 	.banks_secure = {false, false, false, false, true},
->> 	....
->> }
->>
->> ...this would means that you won't need to specify a static
->> SEC_BANKID, as
->> you'd get that from banks_secure... so that....
->>
->>>    enum mtk_iommu_plat {
->>>    	M4U_MT2712,
->>>    	M4U_MT6779,
->>> @@ -240,9 +243,13 @@ struct mtk_iommu_plat_data {
->>>    };
->>>    
->>>    struct mtk_iommu_bank_data {
->>> -	void __iomem			*base;
->>> +	union {
->>> +		void __iomem		*base;
->>> +		phys_addr_t		sec_bank_base;
->>> +	};
->>>    	int				irq;
->>>    	u8				id;
->>> +	bool				is_secure;
->>>    	struct device			*parent_dev;
->>>    	struct mtk_iommu_data		*parent_data;
->>>    	spinlock_t			tlb_lock; /* lock for tlb range
->>> flush */
->>> @@ -1309,7 +1316,15 @@ static int mtk_iommu_probe(struct
->>> platform_device *pdev)
->>>    			continue;
->>>    		bank = &data->bank[i];
->>>    		bank->id = i;
->>> -		bank->base = base + i * MTK_IOMMU_BANK_SZ;
->>
->> ....this would become:
->>
->> bank->is_secure = MTK_IOMMU_HAS_FLAG(data->plat_data,
->> ATF_SECURE_BANKS_ENABLE) &&
->> 		  data->plat_data->banks_secure[i];
->>
->> if (bank->is_secure)
->> 	bank->sec_bank_base = res->start + i * MTK_IOMMU_BANK_SZ;
->> else
->> 	bank->base = base + i * MTK_IOMMU_BANK_SZ;
->>
->>> +		if (MTK_IOMMU_HAS_FLAG(data->plat_data,
->>> SECURE_BANK_ENABLE) &&
->>> +		    bank->id == MTK_IOMMU_SEC_BANKID) {
->>> +			/* Record the secure bank base to indicate
->>> which iommu TF in sec world */
->>> +			bank->sec_bank_base = res->start + i *
->>> MTK_IOMMU_BANK_SZ;
->>> +			bank->is_secure = true;
->>> +		} else {
->>> +			bank->base = base + i * MTK_IOMMU_BANK_SZ;
->>> +			bank->is_secure = false;
->>> +		}
->>>    		bank->m4u_dom = NULL;
->>>    
->>>    		bank->irq = platform_get_irq(pdev, i);
->>
->> What do you think?
->>
->> Cheers,
->> Angelo
-
--- 
 Regards,
-Alexandre
+Alex
+
+[1]: https://lore.kernel.org/linux-arm-kernel/20230918093751.1188668-1-msp@baylibre.com/
+
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+Changes in v6:
+- Reword "AIoT" to "IoT" in the commit messages.
+- Link to v5: https://lore.kernel.org/r/20230207-iommu-support-v5-0-fa6f03680832@baylibre.com
+
+Changes in v5:
+- Rebase to v6.6-rc2.
+- Link to v4: https://lore.kernel.org/r/20230207-iommu-support-v4-0-84798657c410@baylibre.com
+
+Changes in v4:
+- Rebase to v6.5-rc1.
+- Link to v3: https://lore.kernel.org/r/20230207-iommu-support-v3-0-97e19ad4e85d@baylibre.com
+
+Changes in v3:
+- SMI driver support and bindings patches have been removed from
+  this series and sent it in another one which should be merged before
+  this one.
+  - "dt-bindings: memory-controllers: mediatek,smi-larb: add mt8365"
+  - "dt-bindings: memory-controllers: mediatek,smi-common: add mt8365"
+  - "memory: mtk-smi: mt8365: Add SMI Support"
+- Link to v2: https://lore.kernel.org/r/20230207-iommu-support-v2-0-60d5fa00e4e5@baylibre.com
+
+Changes in v2:
+- Split power domain patch (3) in 4 patches to explain in the commit
+  messages the added subsystems.
+- Add an independent "mediatek,mt8365-smi-common" compatible to have
+  its own LARB bus select.
+- Link to v1: https://lore.kernel.org/r/20230207-iommu-support-v1-0-4f0c81fd52c1@baylibre.com
+
+---
+Alexandre Mergnat (7):
+      arm64: dts: mediatek: add mmsys support for mt8365 SoC
+      arm64: dts: mediatek: add camsys support for mt8365 SoC
+      arm64: dts: mediatek: add apu support for mt8365 SoC
+      arm64: dts: mediatek: add power domain support for mt8365 SoC
+      arm64: dts: mediatek: add smi support for mt8365 SoC
+      arm64: dts: mediatek: add larb support for mt8365 SoC
+      arm64: dts: mediatek: add iommu support for mt8365 SoC
+
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 210 +++++++++++++++++++++++++++++++
+ 1 file changed, 210 insertions(+)
+---
+base-commit: 2b4f840a1de65d77644236c72b3f252aa2725a42
+change-id: 20230207-iommu-support-5e620926e42e
+
+Best regards,
+-- 
+Alexandre Mergnat <amergnat@baylibre.com>
+
 
