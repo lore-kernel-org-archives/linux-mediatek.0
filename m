@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1455ECE7A89
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 08:39:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7669CE7A89
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 09:01:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xI5M8VqjHxg4TM8TEPWCg+/Qvd/N7ZnqfdNTC0OI6Ds=; b=pnB6GnRWf+rb5ANdVYDu4r2Nro
-	dqbLlnsxNbbJLlwCSqliTf54fwolbqM791cSExL5BZq1WZNPWR6cpCzdtMOo1Cm0+o71w1LLeV5pQ
-	6OM/QLjpSCtho2mw7D3mTHeHNbAqSpwMMvwHFWH/1iiTascSsxR7hWqZLOOeHhemFPwT3Ztfz6/fE
-	6WfQTlv6HWtRGpJyJf8eAh7m1UqQ8E88hSMGDzd3MAPB53hozK2H3S1KDEc+bzcNjr2XarfKegp2v
-	CWAAOH4j3kLDsPI6ddHz9z7sxhHeo4q/089XXt8FtdDb20trWAjo4MjUDuAW96OQCvyAGR+JShJYR
-	KfdrP7nw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tB3TL/bu32gxnDkfZYOLuwCTZQc8WQc1q8/tLnJaYGA=; b=tjwLN7PVx2jpZRKB4N60IzmWLD
+	oKdGmrS84X0shynRNHMgGlmyddq8i2+3lv/b9mNPToYs/BYtcTrz2qC2RILLpF3I/TROpqA1YOq1R
+	49MQR0F36HjtYi1PQ1er8b7Ke+0sPi0gYZbQpwL/mJpT0ge0Fir+xe70gK91iGWhPoflTcNVA9rjM
+	HKoWi9/5l88uim0vFvFnPco6hAI4+7UDlw+gOUWNi/3icUfK4gpZCvYaEBr4MRTRb0+GCeSbiR3R+
+	U37jWJdrDFg8uFcRj8IgO94f8ztMVKBCgrKRymI56J5t2+1SkwuAmSO/3ZBvhu+lqFDmyi6G/m4B5
+	IEj2sDVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkh7h-00Dkx2-01;
-	Mon, 25 Sep 2023 08:39:21 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1qkhSi-00DnNf-0l;
+	Mon, 25 Sep 2023 09:01:04 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkh7e-00Dkve-0c
-	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Sep 2023 08:39:19 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-564af0ac494so3638726a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Sep 2023 01:39:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1695631155; x=1696235955; darn=lists.infradead.org;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=xI5M8VqjHxg4TM8TEPWCg+/Qvd/N7ZnqfdNTC0OI6Ds=;
-        b=vFy2lJyIWrAEINxBSF3spNjHb1P0fbFhjjuli1NEyZm2yD2T0UOaO/PrQu2gvP81B7
-         mX6O+AYk8QMfmpaaiDAQSTed+l4v3iieDbWjT8PTBk5Aa4jTjhkqYQqQ7/Y83ZKeqivO
-         o7RcxnrH4hrut0HeZ/2a7N7pbiV07+7luAugcOArX5pLeZZtWavCxOMyRYl9o927OINC
-         TV0REls0mPcbrGrIzLaAD8OunL9BZj/ufyIEl+1KCjNbitD/1kwTuaPEM+/a2qINZsG3
-         X7vFU9g16YMJxBgDI8oeEuyWHtfdQTgnkIrmL1GQTuAokS+Hv4MUPQZ2BoA+KVfZ8xMs
-         gugA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695631155; x=1696235955;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xI5M8VqjHxg4TM8TEPWCg+/Qvd/N7ZnqfdNTC0OI6Ds=;
-        b=MfbR2U3f7Lni2ImT2YE7R2RLBOQI21pBKKu7sZqLulSgHAO+4+GS+RisP6GXbZkP4q
-         nJqyNJjLgaMO9B48fAWIvr5ZpvvxAkL4kjzuBDrMZGKKmhImiCIUhaDDRouJhGgIgp/8
-         x8wqC59yfEhTULNf8aJWhLYf352TBqG+BgIXL3Iu0tf/Bz6ZDI0eFKPcJQYDbiKEQnhn
-         mmiEzYJ39NEzB6O/tVMe6vcXmQt6h1EAkVAsIzGjSM4KaRpnNKlpNX6WqKrSKXw3yO0Z
-         rjm7cYJQ1PXuAPIjID1CUDzeT5H2ZUw4rRmjL19INCjYCWuGU+HocNsWbxbH3835sS06
-         kYKQ==
-X-Gm-Message-State: AOJu0Yx4K6asT8Rdpefy0ehOzFkaojqS5Zpi84zP2hcQydTgBcW91iRS
-	523o9ScnzEE614dSNwu8jxa5Wg==
-X-Google-Smtp-Source: AGHT+IEidwo195lvaCNLYjcxjsIlUsTEIymmaFX1w9K4Gawo51vwYTFpYWEGe/sgYFMsSp9zfbUtiQ==
-X-Received: by 2002:a17:90b:1012:b0:276:757d:8c89 with SMTP id gm18-20020a17090b101200b00276757d8c89mr3668309pjb.44.1695631155214;
-        Mon, 25 Sep 2023 01:39:15 -0700 (PDT)
-Received: from ubuntu.huaqin.com ([101.78.151.205])
-        by smtp.gmail.com with ESMTPSA id 14-20020a17090a004e00b0025dc5749b4csm10141132pjb.21.2023.09.25.01.39.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 01:39:15 -0700 (PDT)
-From: xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
-To: lgirdwood@gmail.com,
-	perex@perex.cz,
-	trevor.wu@mediatek.com,
-	broonie@kernel.org
-Cc: alsa-devel@alsa-project.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
-Subject: [v1 2/2] ASoC: mediatek: mt8188-mt6359: add rt5682s support
-Date: Mon, 25 Sep 2023 16:38:47 +0800
-Message-Id: <20230925083847.1496-3-xiazhengqiao@huaqin.corp-partner.google.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20230925083847.1496-1-xiazhengqiao@huaqin.corp-partner.google.com>
-References: <20230925083847.1496-1-xiazhengqiao@huaqin.corp-partner.google.com>
+	id 1qkhSc-00DnKf-1P;
+	Mon, 25 Sep 2023 09:01:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id D3259B80B9F;
+	Mon, 25 Sep 2023 09:00:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 478E2C433C8;
+	Mon, 25 Sep 2023 09:00:53 +0000 (UTC)
+Message-ID: <71cadec5-06df-4490-9b06-e3af6bb43498@xs4all.nl>
+Date: Mon, 25 Sep 2023 11:00:51 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder
+ driver
+To: Jeffrey Kardatzke <jkardatzke@google.com>
+Cc: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "frkoenig@chromium.org" <frkoenig@chromium.org>,
+ "stevecho@chromium.org" <stevecho@chromium.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "nhebert@chromium.org" <nhebert@chromium.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "hsinyi@chromium.org" <hsinyi@chromium.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ "nfraprado@collabora.com" <nfraprado@collabora.com>
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-13-yunfei.dong@mediatek.com>
+ <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+ <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl>
+ <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
+ <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl>
+ <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
+ <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl>
+ <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
+ <c3d14f64-bf04-46b9-ac7b-af7ef9014335@xs4all.nl>
+ <00302ac675af858eb11d8398f100921af806bc30.camel@mediatek.com>
+ <3e053387-4ba6-49bc-a59a-46854e0a7c26@xs4all.nl>
+ <CA+ddPcOaCKq5Nd_3eWwJ3=oAf=5t-Z+w51NqapXN8VBuvbTw3g@mail.gmail.com>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <CA+ddPcOaCKq5Nd_3eWwJ3=oAf=5t-Z+w51NqapXN8VBuvbTw3g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_013918_229099_279DC9EE 
-X-CRM114-Status: GOOD (  21.48  )
+X-CRM114-CacheID: sfid-20230925_020058_761136_A19505F4 
+X-CRM114-Status: GOOD (  48.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,277 +93,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To use RT5682S as the codec and MAX98390 as the amp, add a new
-sound card named mt8188_rt5682.
+On 22/09/2023 21:17, Jeffrey Kardatzke wrote:
+> On Fri, Sep 22, 2023 at 1:44 AM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
+>>
+>> On 22/09/2023 05:28, Yunfei Dong (董云飞) wrote:
+>>> Hi Hans,
+>>>
+>>> Thanks for your help to give some good advice.
+>>> On Wed, 2023-09-20 at 09:20 +0200, Hans Verkuil wrote:
+>>>>
+>>>>>>>> In any case, using a control to switch to secure mode and using
+>>>> a control
+>>>>>>>> to convert a dmabuf fd to a secure handle seems a poor choice to
+>>>> me.
+>>>>>>>>
+>>>>>>>> I was wondering if it wouldn't be better to create a new
+>>>> V4L2_MEMORY_ type,
+>>>>>>>> e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). That
+>>>> ensures that
+>>>>>>>> once you create buffers for the first time, the driver can
+>>>> switch into secure
+>>>>>>>> mode, and until all buffers are released again you know that the
+>>>> driver will
+>>>>>>>> stay in secure mode.
+>>>>>>>
+>>>>>>> Why do you think the control for setting secure mode is a poor
+>>>> choice?
+>>>>>>> There's various places in the driver code where functionality
+>>>> changes
+>>>>>>> based on being secure/non-secure mode, so this is very much a
+>>>> 'global'
+>>>>>>> setting for the driver. It could be inferred based off a new
+>>>> memory
+>>>>>>> type for the queues...which then sets that flag in the driver;
+>>>> but
+>>>>>>> that seems like it would be more fragile and would require
+>>>> checking
+>>>>>>> for incompatible output/capture memory types. I'm not against
+>>>> another
+>>>>>>> way of doing this; but didn't see why you think the proposed
+>>>> method is
+>>>>>>> a poor choice.
+>>>>>>
+>>>>>> I assume you are either decoding to secure memory all the time, or
+>>>> not
+>>>>>> at all. That's something you would want to select the moment you
+>>>> allocate
+>>>>>> the first buffer. Using the V4L2_MEMORY_ value would be the
+>>>> natural place
+>>>>>> for that. A control can typically be toggled at any time, and it
+>>>> makes
+>>>>>> no sense to do that for secure streaming.
+>>>>>>
+>>>>>> Related to that: if you pass a dmabuf fd you will need to check
+>>>> somewhere
+>>>>>> if the fd points to secure memory or not. You don't want to mix
+>>>> the two
+>>>>>> but you want to check that at VIDIOC_QBUF time.
+>>>>>>
+>>>>>> Note that the V4L2_MEMORY_ value is already checked in the v4l2
+>>>> core,
+>>>>>> drivers do not need to do that.
+>>>>>
+>>>>> Just to clarify a bit, and make sure I understand this too. You are
+>>>> proposing to
+>>>>> introduce something like:
+>>>>>
+>>>>>    V4L2_MEMORY_SECURE_DMABUF
+>>>>>
+>>>>> Which like V4L2_MEMORY_DMABUF is meant to import dmabuf, while
+>>>> telling the
+>>>>> driver that the memory is secure according to the definition of
+>>>> "secure" for the
+>>>>> platform its running on.
+>>>>>
+>>>>> This drivers also allocate secure SHM (a standard tee concept) and
+>>>> have internal
+>>>>> allocation for reconstruction buffer and some hw specific reference
+>>>> metadata. So
+>>>>> the idea would be that it would keep allocation using the dmabuf
+>>>> heap internal
+>>>>> APIs ? And decide which type of memory based on the memory type
+>>>> found in the
+>>>>> queue?
+>>>>
+>>>> Yes. Once you request the first buffer you basically tell the driver
+>>>> whether it
+>>>> will operate in secure or non-secure mode, and that stays that way
+>>>> until all
+>>>> buffers are freed. I think that makes sense.
+>>>>
+>>>
+>>> According to iommu's information, the dma operation for secure and non-
+>>> secure are the same, whether just need to add one memory type in v4l2
+>>> framework the same as V4L2_MEMORY_DMABUF? The dma operation in
+>>> videobuf2-dma-contig.c can use the same functions.
+>>
+>> So if I pass a non-secure dma fd to the capture queue of the codec, who
+>> will check that it can't write the data to that fd? Since doing so would
+>> expose the video. Presumably at some point the tee code will prevent that?
+>> (I sincerely hope so!)
+> 
+> It is entirely the job of the TEE to prevent this. Nothing in the
+> kernel should allow exploitation of what happens in the TEE no matter
+> what goes on in the kernel
+> 
+>>
+>> Having a separate V4L2_MEMORY_DMABUF_SECURE type is to indicate to the
+>> driver that 1) it can expect secure dmabuf fds, 2) it can configure itself
+>> for that (that avoids using a control to toggle between normal and secure mode),
+>> and at VIDIOC_QBUF time it is easy for the V4L2 core to verify that the
+>> fd that is passed in is for secure memory. This means that mistakes by
+>> userspace are caught at QBUF time.
+>>
+>> Of course, this will not protect you (people can disable this check by
+>> recompiling the kernel), that still has to be done by the firmware, but
+>> it catches userspace errors early on.
+>>
+>> Also, while for this hardware the DMA operation is the same, that might
+>> not be the case for other hardware.
+> 
+> That's a really good point. So one of the other models that is used
+> for secure video decoding is to send the encrypted buffer into the
+> video decoder directly (i.e. V4L2_MEMORY_MMAP) and then also send in
+> all the corresponding crypto parameters (i.e. algorithm, IV,
+> encryption pattern, etc.). Then the video driver internally does the
+> decryption and decode in one operation.  That's not what we want to
+> use here for Mediatek; but I've done other integrations that work that
+> way (that was for VAAPI [1], not V4L2...but there are other ARM
+> implementations that do operate that way).  So if we end up requiring
+> V4L2_MEMORY_DMABUF_SECURE to indicate secure mode and enforce it on
+> output+capture, that'll close off other potential solutions in the
+> future.
+> 
+> Expanding on your point about DMA operations being different on
+> various hardware, that also makes me think a general check for this in
+> v4l2 code may also be limiting. There are various ways secure video
+> pipelines are done, so leaving these checks up to the individual
+> drivers that implement secure video decode may be more pragmatic. If
+> there's a generic V4L2 _CID_SECURE_MODE control, that makes it more
+> general for how drivers can handle secure video decode.
 
-Signed-off-by: xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
----
- sound/soc/mediatek/Kconfig                |   1 +
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 154 +++++++++++++++++++++-
- 2 files changed, 154 insertions(+), 1 deletion(-)
+No, using a control for this is really wrong.
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 8d1bc8814486..43c8fea00439 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -250,6 +250,7 @@ config SND_SOC_MT8188_MT6359
- 	select SND_SOC_MAX98390
- 	select SND_SOC_NAU8315
- 	select SND_SOC_NAU8825
-+	select SND_SOC_RT5682S
- 	help
- 	  This adds support for ASoC machine driver for MediaTek MT8188
- 	  boards with the MT6359 and other I2S audio codecs.
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index e2416b981e1f..be632804c266 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -17,6 +17,7 @@
- #include "mt8188-afe-common.h"
- #include "../../codecs/nau8825.h"
- #include "../../codecs/mt6359.h"
-+#include "../../codecs/rt5682.h"
- #include "../common/mtk-afe-platform-driver.h"
- #include "../common/mtk-soundcard-driver.h"
- #include "../common/mtk-dsp-sof-common.h"
-@@ -32,7 +33,7 @@
-  #define TEST_MISO_DONE_2	BIT(29)
- 
- #define NAU8825_HS_PRESENT	BIT(0)
--
-+#define RT5682_HS_PRESENT	BIT(1)
- /*
-  * Maxim MAX98390
-  */
-@@ -52,6 +53,8 @@
- #define SOF_DMA_UL4 "SOF_DMA_UL4"
- #define SOF_DMA_UL5 "SOF_DMA_UL5"
- 
-+#define RT5682_CODEC_DAI     "rt5682s-aif1"
-+
- /* FE */
- SND_SOC_DAILINK_DEFS(playback2,
- 		     DAILINK_COMP_ARRAY(COMP_CPU("DL2")),
-@@ -258,6 +261,17 @@ static struct snd_soc_jack_pin nau8825_jack_pins[] = {
- 	},
- };
- 
-+static struct snd_soc_jack_pin rt5682_jack_pins[] = {
-+	{
-+		.pin    = "Headphone Jack",
-+		.mask   = SND_JACK_HEADPHONE,
-+	},
-+	{
-+		.pin    = "Headset Mic",
-+		.mask   = SND_JACK_MICROPHONE,
-+	},
-+};
-+
- struct mt8188_card_data {
- 	const char *name;
- 	unsigned long quirk;
-@@ -316,10 +330,18 @@ static const struct snd_soc_dapm_widget mt8188_nau8825_widgets[] = {
- 	SND_SOC_DAPM_HP("Headphone Jack", NULL),
- };
- 
-+static const struct snd_soc_dapm_widget mt8188_rt5682_widgets[] = {
-+	SND_SOC_DAPM_HP("Headphone Jack", NULL),
-+};
-+
- static const struct snd_kcontrol_new mt8188_nau8825_controls[] = {
- 	SOC_DAPM_PIN_SWITCH("Headphone Jack"),
- };
- 
-+static const struct snd_kcontrol_new mt8188_rt5682_controls[] = {
-+	SOC_DAPM_PIN_SWITCH("Headphone Jack"),
-+};
-+
- static const struct snd_soc_dapm_route mt8188_mt6359_routes[] = {
- 	/* SOF Uplink */
- 	{SOF_DMA_UL4, NULL, "O034"},
-@@ -772,6 +794,55 @@ static int mt8188_nau8825_codec_init(struct snd_soc_pcm_runtime *rtd)
- 	return 0;
- };
- 
-+static int mt8188_rt5682_codec_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(card);
-+	struct mt8188_mt6359_priv *priv = soc_card_data->mach_priv;
-+	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
-+	struct snd_soc_jack *jack = &priv->headset_jack;
-+	int ret;
-+
-+	ret = snd_soc_dapm_new_controls(&card->dapm, mt8188_rt5682_widgets,
-+					ARRAY_SIZE(mt8188_rt5682_widgets));
-+	if (ret) {
-+		dev_err(rtd->dev, "unable to add rt5682 card widget, ret %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_add_card_controls(card, mt8188_rt5682_controls,
-+					ARRAY_SIZE(mt8188_rt5682_controls));
-+	if (ret) {
-+		dev_err(rtd->dev, "unable to add rt5682 card controls, ret %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_card_jack_new_pins(rtd->card, "Headset Jack",
-+					 SND_JACK_HEADSET | SND_JACK_BTN_0 |
-+					 SND_JACK_BTN_1 | SND_JACK_BTN_2 |
-+					 SND_JACK_BTN_3,
-+					 jack,
-+					 rt5682_jack_pins,
-+					 ARRAY_SIZE(rt5682_jack_pins));
-+	if (ret) {
-+		dev_err(rtd->dev, "Headset Jack creation failed: %d\n", ret);
-+		return ret;
-+	}
-+
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_0, KEY_PLAYPAUSE);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_1, KEY_VOICECOMMAND);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_2, KEY_VOLUMEUP);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_3, KEY_VOLUMEDOWN);
-+	ret = snd_soc_component_set_jack(component, jack, NULL);
-+
-+	if (ret) {
-+		dev_err(rtd->dev, "Headset Jack call-back failed: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+};
-+
- static void mt8188_nau8825_codec_exit(struct snd_soc_pcm_runtime *rtd)
- {
- 	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
-@@ -779,6 +850,13 @@ static void mt8188_nau8825_codec_exit(struct snd_soc_pcm_runtime *rtd)
- 	snd_soc_component_set_jack(component, NULL, NULL);
- }
- 
-+static void mt8188_rt5682_codec_exit(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
-+
-+	snd_soc_component_set_jack(component, NULL, NULL);
-+}
-+
- static int mt8188_nau8825_hw_params(struct snd_pcm_substream *substream,
- 				    struct snd_pcm_hw_params *params)
- {
-@@ -813,6 +891,51 @@ static const struct snd_soc_ops mt8188_nau8825_ops = {
- 	.hw_params = mt8188_nau8825_hw_params,
- };
- 
-+static int mt8186_rt5682s_i2s_hw_params(struct snd_pcm_substream *substream,
-+					struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_card *card = rtd->card;
-+	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
-+	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
-+	unsigned int rate = params_rate(params);
-+	int bitwidth;
-+	int ret;
-+
-+	bitwidth = snd_pcm_format_width(params_format(params));
-+	if (bitwidth < 0) {
-+		dev_err(card->dev, "invalid bit width: %d\n", bitwidth);
-+		return bitwidth;
-+	}
-+
-+	ret = snd_soc_dai_set_tdm_slot(codec_dai, 0x00, 0x0, 0x2, bitwidth);
-+	if (ret) {
-+		dev_err(card->dev, "failed to set tdm slot\n");
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dai_set_pll(codec_dai, RT5682_PLL1, RT5682_PLL1_S_BCLK1,
-+				  rate * 32, rate * 512);
-+	if (ret) {
-+		dev_err(card->dev, "failed to set pll\n");
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dai_set_sysclk(codec_dai, RT5682_SCLK_S_PLL1,
-+				     rate * 512, SND_SOC_CLOCK_IN);
-+	if (ret) {
-+		dev_err(card->dev, "failed to set sysclk\n");
-+		return ret;
-+	}
-+
-+	return snd_soc_dai_set_sysclk(cpu_dai, 0, rate * 128,
-+				      SND_SOC_CLOCK_OUT);
-+}
-+
-+static const struct snd_soc_ops mt8188_rt5682s_i2s_ops = {
-+	.hw_params = mt8186_rt5682s_i2s_hw_params,
-+};
-+
- static int mt8188_sof_be_hw_params(struct snd_pcm_substream *substream,
- 				   struct snd_pcm_hw_params *params)
- {
-@@ -1163,6 +1286,21 @@ static void mt8188_fixup_controls(struct snd_soc_card *card)
- 			snd_ctl_remove(card->snd_card, kctl);
- 		else
- 			dev_warn(card->dev, "Cannot find ctl : Headphone Switch\n");
-+	} else if (card_data->quirk & RT5682_HS_PRESENT) {
-+		struct snd_soc_dapm_widget *w, *next_w;
-+
-+		for_each_card_widgets_safe(card, w, next_w) {
-+			if (strcmp(w->name, "Headphone"))
-+				continue;
-+
-+			snd_soc_dapm_free_widget(w);
-+		}
-+
-+		kctl = ctl_find(card->snd_card, "Headphone Switch");
-+		if (kctl)
-+			snd_ctl_remove(card->snd_card, kctl);
-+		else
-+			dev_warn(card->dev, "Cannot find ctl : Headphone Switch\n");
- 	}
- }
- 
-@@ -1190,6 +1328,7 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
- 	struct snd_soc_dai_link *dai_link;
- 	bool init_mt6359 = false;
- 	bool init_nau8825 = false;
-+	bool init_rt5682 = false;
- 	bool init_max98390 = false;
- 	bool init_dumb = false;
- 	int ret, i;
-@@ -1306,6 +1445,13 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
- 					dai_link->exit = mt8188_nau8825_codec_exit;
- 					init_nau8825 = true;
- 				}
-+			} else if (!strcmp(dai_link->codecs->dai_name, RT5682_CODEC_DAI)) {
-+				dai_link->ops = &mt8188_rt5682s_i2s_ops;
-+				if (!init_rt5682) {
-+					dai_link->init = mt8188_rt5682_codec_init;
-+					dai_link->exit = mt8188_rt5682_codec_exit;
-+					init_rt5682 = true;
-+				}
- 			} else {
- 				if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai")) {
- 					if (!init_dumb) {
-@@ -1343,9 +1489,15 @@ static struct mt8188_card_data mt8188_nau8825_card = {
- 	.quirk = NAU8825_HS_PRESENT,
- };
- 
-+static struct mt8188_card_data mt8188_rt5682_card = {
-+	.name = "mt8188_rt5682",
-+	.quirk = RT5682_HS_PRESENT,
-+};
-+
- static const struct of_device_id mt8188_mt6359_dt_match[] = {
- 	{ .compatible = "mediatek,mt8188-mt6359-evb", .data = &mt8188_evb_card, },
- 	{ .compatible = "mediatek,mt8188-nau8825", .data = &mt8188_nau8825_card, },
-+	{ .compatible = "mediatek,mt8188-rt5682", .data = &mt8188_rt5682_card, },
- 	{ /* sentinel */ },
- };
- MODULE_DEVICE_TABLE(of, mt8188_mt6359_dt_match);
--- 
-2.17.1
+The reason why I want it as a separate memory type is that that is
+what you use when you call VIDIOC_REQBUFS, and that ioctl is also
+when things are locked down in a driver. As long as no buffers have
+been allocated, you can still change formats, parameters, etc. But
+once buffers are allocated, most of that can't be changed, since
+changing e.g. the format would also change the buffer sizes.
+
+It also locks down who owns the buffers by storing the file descriptor.
+This prevents other processes from hijacking the I/O streaming, only
+the owner can stream buffers.
+
+So it is a natural point in the sequence for selecting secure
+buffers.
+
+If you request V4L2_MEMORY_DMABUF_SECURE for the output, then the
+capture side must also use DMABUF_SECURE. Whether or not you can
+use regular DMABUF for the output side and select DMABUF_SECURE
+on the capture side is a driver decision. It can be useful to
+support this for testing the secure capture using regular video
+streams (something Nicolas discussed as well), but it depends on
+the hardware whether you can use that technique.
+
+Regards,
+
+	Hans
+
+> 
+> [1] - https://github.com/intel/libva/blob/master/va/va.h#L2177
+> 
+>>
+>> Regards,
+>>
+>>         Hans
+>>
+>>>
+>>> Best Regards,
+>>> Yunfei Dong
+>>>
+>>
 
 
