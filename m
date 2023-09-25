@@ -4,67 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74F62CE7A81
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 09:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B580FCE7A89
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 09:56:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gic6o4fnHHUyYlOXD1DQmylEvAqJoxgDXYp9MkjlfNE=; b=N96qGKsmWCig3In+sBrqs22y5U
-	0n6v+WVna3DnHQ01CkV6KixlQiyWG7P7qVvc23DPtnQvElt6YcKUMBABV+UT1LmhVeg+4jpcUqesv
-	Occ2bAq+/++vmZ2ccJb3cY7U4LP+SLhfHiFoT7GVjwZZ1wh2joEQxSamw8v2qA9TBdRWhIyhIVJA1
-	ubgsjomysfWzp7REvHI4tNyb94upp1qWpi3Fut68tExNAy1eRHioiM2iiMRzCH9UrCLfwx4kph9vi
-	4kuYIo4vzQk/APeF8Ks0mJIJ1YbzcYS2xhhMhtfFtjdCvyYfjNP8igTqrmKkZEaQl5WybsV0aZ3bv
-	5oWVxt0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h//YUPs2GfdTMNpZ+3E2FPiSdoP9e39uFwHKH+TeR3Q=; b=b6poPWxa6cMmNdjpZAOSZZd9Pc
+	AZRMIK2Z4M7T2d/Wxb8BEh2b6oK6UQCNWXEul6kldC8T5ndwr/uCXWN14A7k+8L2z5vD/I3guJ5+c
+	yTHQgYsKEU4buHuKWHHLQF5EN3A65ECyIC0AOEs1diSV871QxeU668ysFOWBsvDJg67op3NvtFwry
+	QZglv1p5KScNPV8C4UEvl9AJV8t0lPnxYoUB7bCx7dMXbMpzpDNGfvkODpRQboCgr0iI8H0A48wrq
+	wrzB7KNyUvHwuM0K3GM6JgmZDwZ1akYNM+OMxs/JJNjNmA4vLU7lPNA5JdOJ7aGE+HcBLSvEAwfyZ
+	6nPn1ZSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkiJs-00Dtqw-18;
-	Mon, 25 Sep 2023 09:56:00 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkiJc-00DtfA-2P
-	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Sep 2023 09:55:46 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qkiJY-0007uc-0l; Mon, 25 Sep 2023 11:55:40 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qkiJX-008pzW-0R; Mon, 25 Sep 2023 11:55:39 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qkiJW-004dlK-NK; Mon, 25 Sep 2023 11:55:38 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@pengutronix.de
-Subject: [PATCH 15/40] soc/mediatek: mtk-mmsys: Convert to platform remove callback returning void
-Date: Mon, 25 Sep 2023 11:55:06 +0200
-Message-Id: <20230925095532.1984344-16-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
-References: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
+	id 1qkiKV-00DuVD-0L;
+	Mon, 25 Sep 2023 09:56:39 +0000
+Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qkiK0-00DtyH-1v;
+	Mon, 25 Sep 2023 09:56:10 +0000
+Received: from 8bytes.org (pd9fe9df8.dip0.t-ipconnect.de [217.254.157.248])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id 27E6E1A1EA9;
+	Mon, 25 Sep 2023 11:56:06 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1695635766;
+	bh=9PqcnP0fBBXYm0nOdc0nJm0+qTAxRYNwHHGdJDVyqnY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=do7SoP/ej6m+DzfP4zanqVSPHmELmY4rQuPveywCzYUG9GioGs2VSc4FX38kVa6kt
+	 wij9Buf7fttF4+WTjZNXOCViquEeFNwnQGeE+JJxIwZrJ6koxAZdyvOCsEQaGP2ztI
+	 9hsYO5tXUSh/zasJgIHtxaYPZ4vmZS6RUmmVLuQSWX+5zZ1jz6PZlvBaTuMJkKm8sq
+	 LZhnJzcpHy3eIAxEwxoAQU20Ap/BrMLgkVdi131b2HnLrigEVAYynHMUY3q/gfljoY
+	 vhMDTuZpUhXdn6DgG3Bx19EPCc3Hf3w4DD7BlRsnrSUlwyA51GhnKacwD6kVdB4a9+
+	 Y/BgwZcbGa0gA==
+Date: Mon, 25 Sep 2023 11:56:05 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Niklas Schnelle <schnelle@linux.ibm.com>
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
+	Wenjia Zhang <wenjia@linux.ibm.com>,
+	Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+	Gerd Bayer <gbayer@linux.ibm.com>,
+	Julian Ruess <julianr@linux.ibm.com>,
+	Pierre Morel <pmorel@linux.ibm.com>,
+	Alexandra Winter <wintera@linux.ibm.com>,
+	Heiko Carstens <hca@linux.ibm.com>,
+	Vasily Gorbik <gor@linux.ibm.com>,
+	Alexander Gordeev <agordeev@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Sven Schnelle <svens@linux.ibm.com>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and optimized
+ IOTLB flushing
+Message-ID: <ZRFZNbR_3p9nhQEU@8bytes.org>
+References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1788; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=rYYt3hWOxp/rSaZB3hC7bdPjy5E0f9rqT7YB73IPNG0=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlEVhQ2N8vDR9nD2Ao5MCsYTZ3vLvCyUvVxxx0T Vt0oDCqWlOJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZRFYUAAKCRCPgPtYfRL+ TvwPB/4trVp3+XeXDsOKsLF2pIYXJVUcGZyiBWvSwTKMJdMg2bZm1HT6OPeQkvwpWBIZDWFKS6C W/+hvBOySWnKaGM4sIsj/Ic6J8bPxDPemgM4B7GyraS05WHPkSlyQ4vRNCMkszEoDvjWyeqqJYM jqnPDusWzeLnNmWDEKiraDEdLn17SzAMDrmUNO0DUBZzx307ekkEX9up7dTOvLZZQyKVfbH+ehr 0KkVd/fgWvTUep5mW56l4lBIMLN8nEZVxK+/E2mqxDl/mpVljsDo5NH37AvPqKPJzFfv9JSQSKM h907gt6rOgQF+DeanqWrrgnWcMujwdRHw+OLnuTmgoh4D4AM
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_025544_781106_5A5135E4 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20230925_025608_865470_932A1E1E 
+X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,53 +108,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is ignored (apart
-from emitting a warning) and this typically results in resource leaks.
-To improve here there is a quest to make the remove callback return
-void. In the first step of this quest all drivers are converted to
-.remove_new() which already returns void. Eventually after all drivers
-are converted, .remove_new() will be renamed to .remove().
+On Fri, Aug 25, 2023 at 12:11:15PM +0200, Niklas Schnelle wrote:
+> Niklas Schnelle (6):
+>       iommu: Allow .iotlb_sync_map to fail and handle s390's -ENOMEM return
+>       s390/pci: prepare is_passed_through() for dma-iommu
+>       s390/pci: Use dma-iommu layer
+>       iommu/s390: Disable deferred flush for ISM devices
+>       iommu/dma: Allow a single FQ in addition to per-CPU FQs
+>       iommu/dma: Use a large flush queue and timeout for shadow_on_flush
 
-Trivially convert this driver from always returning zero in the remove
-callback to the void returning variant.
-
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/soc/mediatek/mtk-mmsys.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index ffb75711a1da..88209102ff3b 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -410,14 +410,12 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
--static int mtk_mmsys_remove(struct platform_device *pdev)
-+static void mtk_mmsys_remove(struct platform_device *pdev)
- {
- 	struct mtk_mmsys *mmsys = platform_get_drvdata(pdev);
- 
- 	platform_device_unregister(mmsys->drm_pdev);
- 	platform_device_unregister(mmsys->clks_pdev);
--
--	return 0;
- }
- 
- static const struct of_device_id of_match_mtk_mmsys[] = {
-@@ -449,7 +447,7 @@ static struct platform_driver mtk_mmsys_drv = {
- 		.of_match_table = of_match_mtk_mmsys,
- 	},
- 	.probe = mtk_mmsys_probe,
--	.remove = mtk_mmsys_remove,
-+	.remove_new = mtk_mmsys_remove,
- };
- module_platform_driver(mtk_mmsys_drv);
- 
--- 
-2.40.1
-
+Applied, thanks.
 
