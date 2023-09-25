@@ -4,88 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08F36CE7A8E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Sep 2023 19:02:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A09C2CE7A8C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 04:02:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ADa9CTc7Mm0plkUbp7+s7MaEsuDZ1Hcc8R6xm7NWcuc=; b=nPAuiLREBBIvQ6NtUwUxWlNXvB
-	0ce5J7Mxr+IMZwFqvWDLpu1ZBEs5My7gweCLF/uOJkYP/AT144MBCHzmn5XiiuVFcubToazGpcEUQ
-	xlzTlJ0HDKNvVEniLK7UVVchZWOG9seBVYG6JVhLygis0ZsEo8BUTHWxzkj0bKfj5A+iAL3cMQbsI
-	75rxdkeTcnBnFhO1EdJxUlR6wzEsRUbjXDZ9N1CgQ/gd2ax55hxt5uI7DQNigWkOF20pClAI+1/Ym
-	36QTy1Nqqi3O03Rfv974HMr6Gzz5pwr5DY2TFEauL51bYRzMwAznf0+8bhHkrxD0d5uwwXkFcMiYc
-	TSjVUIjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ay7nyipum7oaBElmwWLKkvjy4Ps3PzCNpxZXaPtJhrU=; b=urjUXNFBkyvRE1ZlWOkzQ16E4H
+	IAeI0cgCMk3oWLzLXtOGbmrY5Q7KMrHD6x6ya9RsSvuMdeGSG5gJOhp4y3SMJfholXgmsbwHO4zEM
+	IL2vEWzkvtbdOlv9JuJvaBsxHgpVLfn4njgPtRn16kPD7P7XWV2cRNN/wjnvqERO+jPj8fYLr2IwR
+	uM+MOW8vUofM7hDpjb4QC4TZVK9+huODx2Ul2676H2KfRPyg2vBA5wvBm3+NHyKQx6mzwrS4V2xG4
+	cb3G5/8LYC4xnAYzoqvXlFcCf/LgIf45IDC5VcreWMvyjyRaHSCBT/w+U6NmhVowdPK48IRkOHH4O
+	MG7vVt+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkUN4-00Cdnx-34;
-	Sun, 24 Sep 2023 19:02:22 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1qkcna-00DGn4-1X;
+	Mon, 25 Sep 2023 04:02:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkUMy-00CdkS-1Y
-	for linux-mediatek@lists.infradead.org;
-	Sun, 24 Sep 2023 19:02:19 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-401187f8071so35133695e9.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 24 Sep 2023 12:02:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695582134; x=1696186934; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ADa9CTc7Mm0plkUbp7+s7MaEsuDZ1Hcc8R6xm7NWcuc=;
-        b=VqhTjgBm/PIP8LkCukrd3hIhiyz7J4dTCAeLoF0czLr4xSRONEA9zZiMe0eucqEN+b
-         TNP8Me2DDRMQVsERNLC2P9LBuTh7yGmjwBVs5Afsp9MkxBfs/0TsyTYUEaNgoTWWgnN5
-         Zb84Vzq5xAM5lKw9YOGclUF5FdVP1MEdooRfFg1zDgrXSywM8g2aEMIbCugNjd+nHK/x
-         OAJPdZh/ZsRLuFLlTuOL/OxWJE2SWzMRnDaZXbfVdRpAvx/gtt4GRa4iqFaGHaCMKmpB
-         mIyrJA8VZ53gQ5jxFBFtlSsCLOWXxWGGGGYF0CeogBQfhpgjFVv0NNRtykuGVn7F86Dn
-         DfNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695582134; x=1696186934;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ADa9CTc7Mm0plkUbp7+s7MaEsuDZ1Hcc8R6xm7NWcuc=;
-        b=T9jX4CWVIG+GekRVGMnZGHEl5hRqiWgIGnR/neD+FWl4WGLbSwITuQoJ5GJaJnBpF9
-         dDNZRvTM5Wz+C1g5RP+J1DnH5Qh56QaTjFxm/uV5IMzLiBzgQ0546MICKTTiwIMAAjvn
-         0pQ+UctQf1IIgBCfkFFYq6Jsj+Zo7V25vftiwwr13SbCl8KhGAddnxj8voQ5xwiOqe0B
-         qPDmJfyjKkRw9RMKXE4w+K27bNlFdFAZBK7CnVcF+30Xj157EI7fEoR+XAfFj3uGG3JE
-         HwmmFJrZM3dFTFp8YNKeJFVwC9thN6i9WpjawmEpA99dsgI8n0FJa/gbzDgnTPcjZb71
-         mlyw==
-X-Gm-Message-State: AOJu0YxZ8+FWLCSrYPFAzR0/1c9IzXVcbwC8HpE+5aftrfWrG87JB0p+
-	6gsq7zsoGPKdMiubkWeGLzgB3g==
-X-Google-Smtp-Source: AGHT+IHnH8FwuVSfP4cEIj4663STrnMRTMgkALP6Q2CmPnysXrCog9SKo46U9k2ZhHyKdGLPvbOn0g==
-X-Received: by 2002:a05:600c:22c9:b0:3fe:da37:d59 with SMTP id 9-20020a05600c22c900b003feda370d59mr3543430wmg.4.1695582134179;
-        Sun, 24 Sep 2023 12:02:14 -0700 (PDT)
-Received: from krzk-bin.. ([178.197.219.100])
-        by smtp.gmail.com with ESMTPSA id v2-20020a1cf702000000b003feae747ff2sm12980507wmh.35.2023.09.24.12.02.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 24 Sep 2023 12:02:13 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH 1/2] ARM: dts: mediatek: add missing space before {
-Date: Sun, 24 Sep 2023 21:02:01 +0200
-Message-Id: <169558197844.54884.9059102157573367426.b4-ty@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230705150006.293690-1-krzysztof.kozlowski@linaro.org>
-References: <20230705150006.293690-1-krzysztof.kozlowski@linaro.org>
+	id 1qkcnX-00DGmR-1Y;
+	Mon, 25 Sep 2023 04:02:17 +0000
+X-UUID: 4a715f645b5811ee9b7791016c24628a-20230924
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ay7nyipum7oaBElmwWLKkvjy4Ps3PzCNpxZXaPtJhrU=;
+	b=d6MhZRbL7G6FgKdlfvzi4axv0G/ROYSdq2qht80f2IMsVN4B1E/O5gJB7nnAiQ59Xhltw8sN9cNa1eL2bf2OmwMy8cfDN/Be+5O5w6rBvGWTZwyvU7IGlASPX38xI5lxJV9/MWkGDOb/moTpfBlnsWeNnHGMmRxNVWjITL6/1i4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:ac1c5340-a4f7-426a-b75d-2ac243d7bbb6,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:5f78ec9,CLOUDID:f6286bc3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 4a715f645b5811ee9b7791016c24628a-20230924
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1761080309; Sun, 24 Sep 2023 21:02:05 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 25 Sep 2023 12:02:03 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 25 Sep 2023 12:02:02 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Maoguang Meng
+	<maoguang.meng@mediatek.com>
+Subject: [PATCH] media: mediatek: vcodec: add encoder power management helper functions
+Date: Mon, 25 Sep 2023 12:02:00 +0800
+Message-ID: <20230925040200.18220-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230924_120216_570081_B808A016 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230924_210215_533016_5A198D11 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,25 +88,173 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Remove PM functions at start/stop streaming, add PM helper functions
+to get PM before encoding frame start and put PM after encoding frame
+done. Meanwhile, remove unnecessary clock operations.
 
-On Wed, 05 Jul 2023 17:00:05 +0200, Krzysztof Kozlowski wrote:
-> Add missing whitespace between node name/label and opening {.
-> 
-> 
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+---
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  | 21 +++----------------
+ .../vcodec/encoder/mtk_vcodec_enc_pm.c        | 18 ++++++++++++++++
+ .../vcodec/encoder/mtk_vcodec_enc_pm.h        |  3 ++-
+ .../mediatek/vcodec/encoder/venc_drv_if.c     |  8 ++-----
+ 4 files changed, 25 insertions(+), 25 deletions(-)
 
-Patches were waiting long enough on the lists. I assume there are no objections,
-at least none were shared, and this just slipped through the cracks. I applied
-to my tree for further soc pull request, but if anyone wants to take it
-instead, let me know.
-
-Applied, thanks!
-
-[1/2] ARM: dts: mediatek: add missing space before {
-      https://git.kernel.org/krzk/linux-dt/c/f673ab0ceb8dc8ccd291db9bbc200dbd8cd399f4
-[2/2] arm64: dts: mediatek: add missing space before {
-      https://git.kernel.org/krzk/linux-dt/c/a9c740c57f977deb41bc53c02d0dae3d0e2f191a
-
-Best regards,
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+index 04948d3eb011..eb381fa6e7d1 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+@@ -866,7 +866,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
+ {
+ 	struct mtk_vcodec_enc_ctx *ctx = vb2_get_drv_priv(q);
+ 	struct venc_enc_param param;
+-	int ret, pm_ret;
++	int ret;
+ 	int i;
+ 
+ 	/* Once state turn into MTK_STATE_ABORT, we need stop_streaming
+@@ -886,18 +886,12 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
+ 			return 0;
+ 	}
+ 
+-	ret = pm_runtime_resume_and_get(&ctx->dev->plat_dev->dev);
+-	if (ret < 0) {
+-		mtk_v4l2_venc_err(ctx, "pm_runtime_resume_and_get fail %d", ret);
+-		goto err_start_stream;
+-	}
+-
+ 	mtk_venc_set_param(ctx, &param);
+ 	ret = venc_if_set_param(ctx, VENC_SET_PARAM_ENC, &param);
+ 	if (ret) {
+ 		mtk_v4l2_venc_err(ctx, "venc_if_set_param failed=%d", ret);
+ 		ctx->state = MTK_STATE_ABORT;
+-		goto err_set_param;
++		goto err_start_stream;
+ 	}
+ 	ctx->param_change = MTK_ENCODE_PARAM_NONE;
+ 
+@@ -910,18 +904,13 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
+ 		if (ret) {
+ 			mtk_v4l2_venc_err(ctx, "venc_if_set_param failed=%d", ret);
+ 			ctx->state = MTK_STATE_ABORT;
+-			goto err_set_param;
++			goto err_start_stream;
+ 		}
+ 		ctx->state = MTK_STATE_HEADER;
+ 	}
+ 
+ 	return 0;
+ 
+-err_set_param:
+-	pm_ret = pm_runtime_put(&ctx->dev->plat_dev->dev);
+-	if (pm_ret < 0)
+-		mtk_v4l2_venc_err(ctx, "pm_runtime_put fail %d", pm_ret);
+-
+ err_start_stream:
+ 	for (i = 0; i < q->num_buffers; ++i) {
+ 		struct vb2_buffer *buf = vb2_get_buffer(q, i);
+@@ -1004,10 +993,6 @@ static void vb2ops_venc_stop_streaming(struct vb2_queue *q)
+ 	if (ret)
+ 		mtk_v4l2_venc_err(ctx, "venc_if_deinit failed=%d", ret);
+ 
+-	ret = pm_runtime_put(&ctx->dev->plat_dev->dev);
+-	if (ret < 0)
+-		mtk_v4l2_venc_err(ctx, "pm_runtime_put fail %d", ret);
+-
+ 	ctx->state = MTK_STATE_FREE;
+ }
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
+index 3fce936e61b9..a22b7dfc656e 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
+@@ -58,6 +58,24 @@ int mtk_vcodec_init_enc_clk(struct mtk_vcodec_enc_dev *mtkdev)
+ 	return 0;
+ }
+ 
++void mtk_vcodec_enc_pw_on(struct mtk_vcodec_pm *pm)
++{
++	int ret;
++
++	ret = pm_runtime_resume_and_get(pm->dev);
++	if (ret)
++		dev_err(pm->dev, "pm_runtime_resume_and_get fail: %d", ret);
++}
++
++void mtk_vcodec_enc_pw_off(struct mtk_vcodec_pm *pm)
++{
++	int ret;
++
++	ret = pm_runtime_put(pm->dev);
++	if (ret && ret != -EAGAIN)
++		dev_err(pm->dev, "pm_runtime_put fail %d", ret);
++}
++
+ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
+ {
+ 	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.h
+index e50be0575190..157ea08ba9e3 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.h
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.h
+@@ -10,7 +10,8 @@
+ #include "mtk_vcodec_enc_drv.h"
+ 
+ int mtk_vcodec_init_enc_clk(struct mtk_vcodec_enc_dev *dev);
+-
++void mtk_vcodec_enc_pw_on(struct mtk_vcodec_pm *pm);
++void mtk_vcodec_enc_pw_off(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm);
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.c
+index 1bdaecdd64a7..c402a686f3cb 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.c
+@@ -32,9 +32,7 @@ int venc_if_init(struct mtk_vcodec_enc_ctx *ctx, unsigned int fourcc)
+ 	}
+ 
+ 	mtk_venc_lock(ctx);
+-	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
+ 	ret = ctx->enc_if->init(ctx);
+-	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
+ 	mtk_venc_unlock(ctx);
+ 
+ 	return ret;
+@@ -46,9 +44,7 @@ int venc_if_set_param(struct mtk_vcodec_enc_ctx *ctx,
+ 	int ret = 0;
+ 
+ 	mtk_venc_lock(ctx);
+-	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
+ 	ret = ctx->enc_if->set_param(ctx->drv_handle, type, in);
+-	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
+ 	mtk_venc_unlock(ctx);
+ 
+ 	return ret;
+@@ -68,10 +64,12 @@ int venc_if_encode(struct mtk_vcodec_enc_ctx *ctx,
+ 	ctx->dev->curr_ctx = ctx;
+ 	spin_unlock_irqrestore(&ctx->dev->irqlock, flags);
+ 
++	mtk_vcodec_enc_pw_on(&ctx->dev->pm);
+ 	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
+ 	ret = ctx->enc_if->encode(ctx->drv_handle, opt, frm_buf,
+ 				  bs_buf, result);
+ 	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
++	mtk_vcodec_enc_pw_off(&ctx->dev->pm);
+ 
+ 	spin_lock_irqsave(&ctx->dev->irqlock, flags);
+ 	ctx->dev->curr_ctx = NULL;
+@@ -89,9 +87,7 @@ int venc_if_deinit(struct mtk_vcodec_enc_ctx *ctx)
+ 		return 0;
+ 
+ 	mtk_venc_lock(ctx);
+-	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
+ 	ret = ctx->enc_if->deinit(ctx->drv_handle);
+-	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
+ 	mtk_venc_unlock(ctx);
+ 
+ 	ctx->drv_handle = NULL;
 -- 
-Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+2.25.1
+
 
