@@ -4,88 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37954CE79A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 22:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AB23CE79A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 22:07:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=f56JQlsSAmLM+rWl8eVCaUJ/LY2QFxeZQE+QgWmGsq0=; b=yUOdbca1E/49Ejrcv+1pCRPuYZ
-	T/DNxYL9UeskNfZtY/QrbAFFOx5u2NlktNFcNPBvcayzHKm6WNvaUf/d170YBXwALG6hW8Ht08QXQ
-	FeEyUrZB8UMLCjg6OMtOewW870333u8mfdmf4dXGMj6DunLHLgNik67Egtbc+m/7cnG9AQc6wlVm5
-	QSjJCOwD9CEZTppumyWd4pqiGM1lFi/sLP5sPusxsE0MbgqOX6+6lDZ1SXgB92+BqmhTdzRHZN1QU
-	GWtFBXkwZ/EbT4JBVwzNfk2Dj0Ng+17XVRMNt0F40OIsV7Vx77aaPWaA9DZBugBOND0NUjH7xYggR
-	SGU+5irA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zI6A978+krEB7OSTo/vpzaBj1JGx02MNClgbePebqCI=; b=GBAJ1TEXMbyUa+2GCivnW6wlnT
+	hTN+2urGvt0BprH8xYFkiktUdmBdPSIEqiSkqgmRzzqzI7HX+pGXe28QLAX4HAHzQITszq8FJbJov
+	czKyRN6O4U0sT4BqT/KaQBmLbDHVgb2sFKZC9VIqWdXw4X59OqqFCjikVuGpVK3lV27Xrc+c38BS1
+	qX69qIvSKwwme++zNMH3UNMHDVWOZ3WKWYD073xUPZy25WCHVbjOInJxDLDSyLMdMf904uf4cXwHa
+	fiQRZYNgKgE2xokfv54OX4cYPXdMQUEm9xRGc3l8ERwjTFHyApkXYgAfrtUIqtqj4h+0rbtsC3/M1
+	LEog4dTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qktdm-00F6SG-2E;
-	Mon, 25 Sep 2023 22:01:18 +0000
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
+	id 1qktjp-00F7C4-2W;
+	Mon, 25 Sep 2023 22:07:33 +0000
+Received: from mail-pf1-f180.google.com ([209.85.210.180])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qktdj-00F6RB-19
+	id 1qktjn-00F7BH-0V
 	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Sep 2023 22:01:17 +0000
-Received: by mail-oi1-x22b.google.com with SMTP id 5614622812f47-3adf06730c4so4631022b6e.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Sep 2023 15:01:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1695679272; x=1696284072; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=f56JQlsSAmLM+rWl8eVCaUJ/LY2QFxeZQE+QgWmGsq0=;
-        b=lTaY5873xZXgxvP85XJCQg+Ms4Ea5hwXOS4RhRnFF3shCDHXYMg3bZrVgQxaJq66mQ
-         ygG7HMYphfe3yO36S/GWFjyhrAdEJjx5wWv0XZ8ncqv+B+Ot8Cko1x69z7QGFs2afp/B
-         Mlo3QZWZzveuf4praegJblA+4xioc9LOwcld4=
+	Mon, 25 Sep 2023 22:07:32 +0000
+Received: by mail-pf1-f180.google.com with SMTP id d2e1a72fcca58-690bf8fdd1aso5754591b3a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Sep 2023 15:07:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695679272; x=1696284072;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=f56JQlsSAmLM+rWl8eVCaUJ/LY2QFxeZQE+QgWmGsq0=;
-        b=ELBd4JILoUhrXIGGBqZ4QX88le511okxtxfAs/liKzzrYnHldlKK6OKhT8cnWoMy4A
-         swjiIyuqnrxnrJaa0QFWmc1y9J2vSnVNLbHZZtjqVH51LXCCWn/0c6ia6lXAYRQdJLJK
-         j7ybpZ5/gyqvzl+krryWkC4ceTzkVGn0ke3gNM8eJZ1cRDzyfNqtWE5GiI4A7MexT/eI
-         z2/SFQlMHM7nOAKS2YJUjjtQODAbOJ34tHilFtePKpYR/npEC+/i7Qj1gWOxS/USGvxx
-         TnzKsmiewhM6+w67KQaMgPbAyap6XZzl/wP/Nq1bx/fZFPRZ/2SBQbeqpr7yWusdX36/
-         V0ww==
-X-Gm-Message-State: AOJu0YylobCHSJ/AfYCXfzE45URFfijiVw42BQTs9vMeT3+PAOAEBmpX
-	nnWQhdKOyBR9PW4Jgm0D9kVuPw==
-X-Google-Smtp-Source: AGHT+IF1Hh6HqLLdCLMtBH4MBn5gTyDegFYkgrOxkSx/P6oII1rExFDnHQGDyN9+FIpRz6er1CzuVQ==
-X-Received: by 2002:a05:6808:1386:b0:3a7:38c5:bc18 with SMTP id c6-20020a056808138600b003a738c5bc18mr11073698oiw.32.1695679272043;
-        Mon, 25 Sep 2023 15:01:12 -0700 (PDT)
-Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:f75d:a4e1:226a:3071])
-        by smtp.gmail.com with ESMTPSA id x23-20020a62fb17000000b00690f622d3cdsm8549874pfm.126.2023.09.25.15.01.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 15:01:11 -0700 (PDT)
-From: Douglas Anderson <dianders@chromium.org>
-To: dri-devel@lists.freedesktop.org
-Cc: linux-samsung-soc@vger.kernel.org,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	jitao.shi@mediatek.com,
-	linus.walleij@linaro.org,
-	linux-kernel@vger.kernel.org,
-	neil.armstrong@linaro.org,
-	quic_jesszhan@quicinc.com,
-	sam@ravnborg.org
-Subject: [PATCH] drm/panel: Move AUX B116XW03 out of panel-edp back to panel-simple
-Date: Mon, 25 Sep 2023 15:00:11 -0700
-Message-ID: <20230925150010.1.Iff672233861bcc4cf25a7ad0a81308adc3bda8a4@changeid>
-X-Mailer: git-send-email 2.42.0.515.g380fc7ccd1-goog
+        d=1e100.net; s=20230601; t=1695679649; x=1696284449;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zI6A978+krEB7OSTo/vpzaBj1JGx02MNClgbePebqCI=;
+        b=JpIGa9O+ehewRu/CRp2PTKmxaeM4kPza3qDz2IWsK9Nj0Yms+orjYvilljJ/dfBPi4
+         JswAJ51+k8wYjAX9GlUta4sleDZfo9T3mkRO49t+w1gVjIs3olc0PFIeZ4bhBFy9rVCU
+         rH8EHAFjSlVUkvlaLB4NMXXA682t2gxmP7E58PSZ7MIr+7Hv/ZGFdnV8H0H0K8Gd4v6M
+         j/q9BBgPiRMWJp5rs6fqF5gcTU2HGY6ASkDQ5lfwiv6zn+0QPQDEboKJ5qiYqhV9wwDY
+         DoAKFaBvMsrxT1I2kwbDM6OLrcBWXH7DDI9RRi8JLz3RVnTyKp5lbM0r7tP/RNYd7myk
+         u8ig==
+X-Gm-Message-State: AOJu0YwTrHMAjCqEMDOvwpd0NVQjarP821Gds2pg6qkOPozoZZPxknC/
+	CXrT5jCICRNPGPFAWEMHUZE=
+X-Google-Smtp-Source: AGHT+IEqkx2aVqSbKbfjjkYftbXfgsI+5/ngzI52WM5rFeJSq10jIItCoWOnaiFJQKlEIpeJcwjarA==
+X-Received: by 2002:a05:6a00:850:b0:68e:2b17:a729 with SMTP id q16-20020a056a00085000b0068e2b17a729mr7481928pfk.24.1695679649004;
+        Mon, 25 Sep 2023 15:07:29 -0700 (PDT)
+Received: from ?IPV6:2601:647:4d7e:54f3:667:4981:ffa1:7be1? ([2601:647:4d7e:54f3:667:4981:ffa1:7be1])
+        by smtp.gmail.com with ESMTPSA id i187-20020a639dc4000000b0050f85ef50d1sm8297686pgd.26.2023.09.25.15.07.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 25 Sep 2023 15:07:28 -0700 (PDT)
+Message-ID: <98f256e3-72f7-48cf-8d25-58781d7051fa@acm.org>
+Date: Mon, 25 Sep 2023 15:07:26 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] ufs: core: wlun send SSU timeout recovery
+Content-Language: en-US
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>, =?UTF-8?B?TGluIEd1aSAo5qGC5p6X?=
+ =?UTF-8?Q?=29?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
+ <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+ <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>
+References: <20230922090925.16339-1-peter.wang@mediatek.com>
+ <10bf17cf-8a92-469b-bc5c-1f0dba0ed5ed@acm.org>
+ <39e0a8b6d6f235dfa7dd36a4436c9eac5ab5210e.camel@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <39e0a8b6d6f235dfa7dd36a4436c9eac5ab5210e.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_150115_393063_32C47A41 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20230925_150731_218382_11B7CED4 
+X-CRM114-Status: GOOD (  25.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,152 +102,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In commit 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of
-panel-simple") I moved a pile of panels out of panel-simple driver
-into the newly created panel-edp driver. One of those panels, however,
-shouldn't have been moved.
+On 9/25/23 01:51, Peter Wang (王信友) wrote:
+> On Fri, 2023-09-22 at 09:06 -0700, Bart Van Assche wrote:
+>> On 9/22/23 02:09, peter.wang@mediatek.com wrote:
+>> > When runtime pm send SSU times out, the SCSI core invokes
+>> > eh_host_reset_handler, which hooks function ufshcd_eh_host_reset_handler
+>> > schedule eh_work and stuck at wait flush_work(&hba->eh_work).
+>> > However, ufshcd_err_handler hangs in wait rpm resume.
+>> > Do link recovery only in this case.
+>> > Below is IO hang stack dump in kernel-6.1
+>>
+>> What does kernel-6.1 mean? Has commit 7029e2151a7c ("scsi: ufs: Fix a
+>> deadlock between PM and the SCSI error handler") been backported to
+>> that kernel?
+> 
+> Yes, our kernel-6.1 have backport 7029e2151a7c ("scsi: ufs: Fix a
+> deadlock between PM and the SCSI error handler")
 
-As is clear from commit e35e305eff0f ("drm/panel: simple: Add AUO
-B116XW03 panel support"), AUX B116XW03 is an LVDS panel. It's used in
-exynos5250-snow and exynos5420-peach-pit where it's clear that the
-panel is hooked up with LVDS. Furthermore, searching for datasheets I
-found one that makes it clear that this panel is LVDS.
+Hi Peter,
 
-As far as I can tell, I got confused because in commit 88d3457ceb82
-("drm/panel: auo,b116xw03: fix flash backlight when power on") Jitao
-Shi added "DRM_MODE_CONNECTOR_eDP". That seems wrong. Looking at the
-downstream ChromeOS trees, it seems like some Mediatek boards are
-using a panel that they call "auo,b116xw03" that's an eDP panel. The
-best I can guess is that they actually have a different panel that has
-similar timing. If so then the proper panel should be used or they
-should switch to the generic "edp-panel" compatible.
+Thanks for having confirmed this.
 
-When moving this back to panel-edp, I wasn't sure what to use for
-.bus_flags and .bus_format and whether to add the extra "enable" delay
-from commit 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash
-backlight when power on"). I've added formats/flags/delays based on my
-(inexpert) analysis of the datasheet. These are untested.
+Please use text mode instead of HTML mode when replying. As one can see
+here, your reply did not make it to the linux-scsi mailing list:
+https://lore.kernel.org/linux-scsi/20230922090925.16339-1-peter.wang@mediatek.com/
 
-NOTE: if/when this is backported to stable, we might run into some
-trouble. Specifically, before 474c162878ba ("arm64: dts: mt8183:
-jacuzzi: Move panel under aux-bus") this panel was used by
-"mt8183-kukui-jacuzzi", which assumed it was an eDP panel. I don't
-know what to suggest for that other than someone making up a bogus
-panel for jacuzzi that's just for the stable channel.
+> And this IO hang issue still happen.
+> 
+> This issue is easy trigger if we drop the SSU response to let SSU timeout.
+> 
+> 
+> 
+>>
+>> > diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+>> > index c2df07545f96..7608d75bb4fe 100644
+>> > --- a/drivers/ufs/core/ufshcd.c
+>> > +++ b/drivers/ufs/core/ufshcd.c
+>> > @@ -7713,9 +7713,29 @@ static int ufshcd_eh_host_reset_handler(struct scsi_cmnd *cmd)
+>> >   int err = SUCCESS;
+>> >   unsigned long flags;
+>> >   struct ufs_hba *hba;
+>> > +struct device *dev;
+>> >   
+>> >   hba = shost_priv(cmd->device->host);
+>> >   
+>> > +/*
+>> > + * If runtime pm send SSU and got timeout, scsi_error_handler
+>> > + * stuck at this function to wait flush_work(&hba->eh_work).
+>> > + * And ufshcd_err_handler(eh_work) stuck at wait runtime pm active.
+>> > + * Do ufshcd_link_recovery instead shedule eh_work can prevent
+>> > + * dead lock happen.
+>> > + */
+>> > +dev = &hba->ufs_device_wlun->sdev_gendev;
+>> > +if ((dev->power.runtime_status == RPM_RESUMING) ||
+>> > +(dev->power.runtime_status == RPM_SUSPENDING)) {
+>> > +err = ufshcd_link_recovery(hba);
+>> > +if (err) {
+>> > +dev_err(hba->dev, "WL Device PM: status:%d, err:%d\n",
+>> > +dev->power.runtime_status,
+>> > +dev->power.runtime_error);
+>> > +}
+>> > +return err;
+>> > +}
+>> > +
+>> >   spin_lock_irqsave(hba->host->host_lock, flags);
+>> >   hba->force_reset = true;
+>> >   ufshcd_schedule_eh_work(hba);
+>>
+>> I think this change is racy because the runtime power management status
+>> may change after the above checks have been performed and before
+>> ufshcd_err_handling_prepare() is called.
+> 
+> If this function invoke and RPM state is in the RPM_RESUMING or RPM_SUSPENDING state,
+> it means error happen in ufs driver resume/suspend callback function and no chance
+> move to next state if callback function is not finished, just like backtrace stuck in send SSU cmd.
+> Or we can make it simple by check pm_op_in_progress, what do you think?
 
-Fixes: 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when power on")
-Fixes: 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of panel-simple")
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-I haven't had a snow or peach-pit hooked up for debugging / testing
-for years. I presume that they must be broken and hope that this fixes
-them.
+I'm concerned that this approach will fix some cases but not all cases. The
+UFS error handler (ufshcd_err_handler()) and runtime suspend or resume code
+may be called concurrently. No matter which checks are added at the start of
+ufshcd_eh_host_reset_handler(), I think these checks won't protect against
+concurrent execution of runtime power management code just after these checks
+have finished.
 
- drivers/gpu/drm/panel/panel-edp.c    | 29 -----------------------
- drivers/gpu/drm/panel/panel-simple.c | 35 ++++++++++++++++++++++++++++
- 2 files changed, 35 insertions(+), 29 deletions(-)
+> Since the hang db backtrace is not involde below function, it is not help.
 
-diff --git a/drivers/gpu/drm/panel/panel-edp.c b/drivers/gpu/drm/panel/panel-edp.c
-index feb665df35a1..95c8472d878a 100644
---- a/drivers/gpu/drm/panel/panel-edp.c
-+++ b/drivers/gpu/drm/panel/panel-edp.c
-@@ -976,32 +976,6 @@ static const struct panel_desc auo_b116xak01 = {
- 	},
- };
- 
--static const struct drm_display_mode auo_b116xw03_mode = {
--	.clock = 70589,
--	.hdisplay = 1366,
--	.hsync_start = 1366 + 40,
--	.hsync_end = 1366 + 40 + 40,
--	.htotal = 1366 + 40 + 40 + 32,
--	.vdisplay = 768,
--	.vsync_start = 768 + 10,
--	.vsync_end = 768 + 10 + 12,
--	.vtotal = 768 + 10 + 12 + 6,
--	.flags = DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
--};
--
--static const struct panel_desc auo_b116xw03 = {
--	.modes = &auo_b116xw03_mode,
--	.num_modes = 1,
--	.bpc = 6,
--	.size = {
--		.width = 256,
--		.height = 144,
--	},
--	.delay = {
--		.enable = 400,
--	},
--};
--
- static const struct drm_display_mode auo_b133han05_mode = {
- 	.clock = 142600,
- 	.hdisplay = 1920,
-@@ -1725,9 +1699,6 @@ static const struct of_device_id platform_of_match[] = {
- 	}, {
- 		.compatible = "auo,b116xa01",
- 		.data = &auo_b116xak01,
--	}, {
--		.compatible = "auo,b116xw03",
--		.data = &auo_b116xw03,
- 	}, {
- 		.compatible = "auo,b133han05",
- 		.data = &auo_b133han05,
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index bb89e6d047bc..439d26928938 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -919,6 +919,38 @@ static const struct panel_desc auo_b101xtn01 = {
- 	},
- };
- 
-+static const struct drm_display_mode auo_b116xw03_mode = {
-+	.clock = 70589,
-+	.hdisplay = 1366,
-+	.hsync_start = 1366 + 40,
-+	.hsync_end = 1366 + 40 + 40,
-+	.htotal = 1366 + 40 + 40 + 32,
-+	.vdisplay = 768,
-+	.vsync_start = 768 + 10,
-+	.vsync_end = 768 + 10 + 12,
-+	.vtotal = 768 + 10 + 12 + 6,
-+	.flags = DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
-+};
-+
-+static const struct panel_desc auo_b116xw03 = {
-+	.modes = &auo_b116xw03_mode,
-+	.num_modes = 1,
-+	.bpc = 6,
-+	.size = {
-+		.width = 256,
-+		.height = 144,
-+	},
-+	.delay = {
-+		.prepare = 1,
-+		.enable = 200,
-+		.disable = 200,
-+		.unprepare = 500,
-+	},
-+	.bus_format = MEDIA_BUS_FMT_RGB666_1X7X3_SPWG,
-+	.bus_flags = DRM_BUS_FLAG_DE_HIGH,
-+	.connector_type = DRM_MODE_CONNECTOR_LVDS,
-+};
-+
- static const struct display_timing auo_g070vvn01_timings = {
- 	.pixelclock = { 33300000, 34209000, 45000000 },
- 	.hactive = { 800, 800, 800 },
-@@ -4128,6 +4160,9 @@ static const struct of_device_id platform_of_match[] = {
- 	}, {
- 		.compatible = "auo,b101xtn01",
- 		.data = &auo_b101xtn01,
-+	}, {
-+		.compatible = "auo,b116xw03",
-+		.data = &auo_b116xw03,
- 	}, {
- 		.compatible = "auo,g070vvn01",
- 		.data = &auo_g070vvn01,
--- 
-2.42.0.515.g380fc7ccd1-goog
+I think that conclusion is wrong. Can you please test the patch that I provided?
 
+Thanks,
+
+Bart.
 
