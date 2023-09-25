@@ -4,66 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE593CE7A81
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 06:38:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B8BCE7A89
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 06:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M1hPzSJuLBW1+FWm/Ve3X8Sn0QK2spKaLZ5yy/mAmEE=; b=4eb0wH1enf5H4FsDAeQcI8PLA8
-	aIqF3eWu99Lc5CSOPQFD4CgxMlfv9KGNufXwhIOdb0ret+RIkXeyYEm89FKbRGf35QFT5hxBVqtYN
-	UZFehLbrW1p/3vXL17tXjolljytv/+0012Nbd0k21WwWMo5PaOjeTNMVnoQf+cux/3CQfSQid0QIk
-	2Q0z02UiLra7n9zJiqas6KHOalXxnCLKxJO+nZYJb59Rvnc8EXeEImcbMK8JfIqrSZW5xMaa5h/Cy
-	U8P4hp+lXUrT7erQ0jJS365QYaNNn1mGuKEqJRh5UYwcu7lUZWEbFgeDqrUbczxZjJniBGX9HPizl
-	X9anJTng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=584w5GCvv5q+hi+83jUjWnSccXO4lhufxb9jJf1Otbk=; b=K8iDkTZjAicfpV0KEBO30foy+T
+	Eu0+S9fSyqVaXQerzHlpqfTR6ua5J8qasT55Rs4Sp/WRbDWyKxO2SzvIKdtM2BcUltrjHhDE9/2Gw
+	WxY3mn2LL//OgAVjVgvYmDouf04TapxhObfqyrNVh8v+O1Qqo1x2HsUg6/Yn4L5bbyvqk4RceMy4x
+	9WUnhByiAgNDlST9ksvO1HsraPtMpjKd+Qn4VfDkaBG1jXlKhJ2FYfjY78/9GVl7wF5VdAdjeONKZ
+	/bPmcvePXOVFF/XrtQQJJYmxZsfxWZ8lY8z1xewFyY9BXoUUVF9V8gIUk9h0B86m8Noxzh7blxqrq
+	ilXanY2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkfEo-00DT0m-1o;
-	Mon, 25 Sep 2023 06:38:34 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1qkfGr-00DT8n-2Y;
+	Mon, 25 Sep 2023 06:40:41 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkfEk-00DSzo-2u
+	id 1qkfGo-00DT7E-0Z
 	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Sep 2023 06:38:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=M1hPzSJuLBW1+FWm/Ve3X8Sn0QK2spKaLZ5yy/mAmEE=;
-	t=1695623906; x=1696833506; b=CzJkqmU2p9ODXL9/UoeHCgxl2ezB6ilq74pYi/0itGSnEoC
-	GO5AW4tj6n9B3lwf90jtV78O0E6GF9JVIlHwlSaS64Qqu4RfdihjOYFIVcPJL8A/N09x8BnpKMkaH
-	8lAT8Hls7EQkh2m1EBtDqiA/DXcYkz0M0snHqxl1NhHbhIrii186oKi9ZRtuRRBpif2KLfTy5alAx
-	e7EH5EzhRYs1NADX+RWLu9hJ0njL1j2T7xCeOqvZn8VmmAfdGt+xxwB+TAGbgCgdwWqZuZ9Q5XxII
-	o/5faMdhR5j5ikd1eamvlMM6hQnPO75tvWaNYycV1rJO6IYGhaE3cIE70TnIsq9g==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.96)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1qkfEW-003DrB-1E;
-	Mon, 25 Sep 2023 08:38:16 +0200
-Message-ID: <35c14b437f8c4b61e2fc14c6b156bf5de330a493.camel@sipsolutions.net>
-Subject: Re: [PATCH v3] wifi: mac80211: add exported tpt_led_trig function
- for softmac driver
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
- <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn
- Tsai <evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
- Peter Chiu <chui-hao.chiu@mediatek.com>, Benjamin Lin
- <benjamin-jw.lin@mediatek.com>,  linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Date: Mon, 25 Sep 2023 08:38:14 +0200
-In-Reply-To: <038706d9bbf434642013e880300d4f597f13b514.1695329290.git.yi-chia.hsieh@mediatek.com>
-References: <038706d9bbf434642013e880300d4f597f13b514.1695329290.git.yi-chia.hsieh@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	Mon, 25 Sep 2023 06:40:39 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-405361bb949so59667835e9.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 24 Sep 2023 23:40:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1695624033; x=1696228833; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=584w5GCvv5q+hi+83jUjWnSccXO4lhufxb9jJf1Otbk=;
+        b=CeM6Gqp0syyc5IS6gcX2gmLYL6RglwLaShO2KZ6rx/vSLPAhERjQNUEChPn+Ya6ykf
+         DPaXIa5Bds9Scjm2Rylm1hg5kKKz1sqW3l6uCgEKGLjziznXortAnKjHcXQAcvKKSuwZ
+         aPMXE8OQVHeHU7QGenLpVuy8JjBKISJ9e0OOgsJucv798JDbF0ay2T/Qqevt1y9Y9IBU
+         e+O89SmdYlS0NLFS42DjTbxXvSI/XXxlYUefmzr7eWPvzaa1tlYVKeUq0xk27WEjoq9X
+         q4JNaqHjwSYoEZWgIlq9/A04Xf2G2PdyuFJXSk2ZaXy9GrT9zAqdtu9KD+TMMvcD1ND8
+         3pUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695624033; x=1696228833;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=584w5GCvv5q+hi+83jUjWnSccXO4lhufxb9jJf1Otbk=;
+        b=DCx6iPLU3ChS+kQ2NKl+ChdL7g+jC0Y97DX4AhQ6iYRJKiJSPfYgSBogx23u9p20zw
+         Dm02gOMLN7ftm+6GWFOcRtLdpwsODFjAcolLY3yAuc+F47psIEjHf5zpnrkmWkOguxW0
+         t8vf/WMNJoAGbB7t5tnKDaoLs2k58cyCMKwZ5pL0O2/6o2b6Ji8Z7hhW1wJ7qWUHqvlV
+         7nqL4lxow0NSd4RUxTalakKy98ebryqeLwqElT5QrYa+6sQfLV6JQIbKnv17PM2wFniv
+         4XTaShtRoO+Hq8/2p+p9yZwLE1/6JLXFBdHV0r2Yo7TMc2vUP2qvIw9Q6Q6XCvDUKviB
+         I/VA==
+X-Gm-Message-State: AOJu0Yzb4kPiKVmwTZZK5dAHFIzJHKKFZlB6BMWwcqwEYp6PKJBRUwcg
+	WuHcvgNryqX4ahNjFUuZTEjkHQ==
+X-Google-Smtp-Source: AGHT+IHYBGZdE1kFtz9v+LkqAMAlWOHmS31LRPNKigLICDRG5GTs4Fdg8D6hw5Tcz78w9czwqxfsYw==
+X-Received: by 2002:a5d:6710:0:b0:319:8dcf:5c00 with SMTP id o16-20020a5d6710000000b003198dcf5c00mr4851336wru.69.1695624033425;
+        Sun, 24 Sep 2023 23:40:33 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.100])
+        by smtp.gmail.com with ESMTPSA id w10-20020adfd4ca000000b0031762e89f94sm10899573wrk.117.2023.09.24.23.40.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 24 Sep 2023 23:40:32 -0700 (PDT)
+Message-ID: <aab601e8-232d-4e6b-9dae-593632c71983@linaro.org>
+Date: Mon, 25 Sep 2023 08:40:30 +0200
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 08/15] soc: mediatek: Add cmdq_pkt_finalize_loop to CMDQ
+ driver
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+ =?UTF-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
+ =?UTF-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
+ <Jason-ch.Chen@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ =?UTF-8?B?RWx2aXMgV2FuZyAo546L5YabKQ==?= <Elvis.Wang@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20230918192204.32263-1-jason-jh.lin@mediatek.com>
+ <20230918192204.32263-9-jason-jh.lin@mediatek.com>
+ <ecda52ed-1d17-45e8-ab90-a9070ceb2d1c@linaro.org>
+ <b4a7b38d81e7d0634a172dcdd11f0106ac9449a9.camel@mediatek.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <b4a7b38d81e7d0634a172dcdd11f0106ac9449a9.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230924_233831_172248_48774E4D 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20230924_234038_224311_30CC3BB5 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,55 +163,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 25/09/2023 08:04, Jason-JH Lin (林睿祥) wrote:
+> Hi Krzysztof,
+> 
+> Thanks for the reviews.
+> 
+> On Sat, 2023-09-23 at 20:08 +0200, Krzysztof Kozlowski wrote:
+>>  	 
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>  On 18/09/2023 21:21, Jason-JH.Lin wrote:
+>>> Add cmdq_pkt_finalize_loop to CMDQ driver.
+>>>
+>>> cmdq_pkt_finalize_loop appends end of command(EOC) instruction and
+>>> jump to start of command buffer instruction to make the command
+>>> buffer loopable.
+>>>
+>>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>>> ---
+>>>  drivers/soc/mediatek/mtk-cmdq-helper.c | 23
+>> +++++++++++++++++++++++
+>>>  include/linux/soc/mediatek/mtk-cmdq.h  |  8 ++++++++
+>>>  2 files changed, 31 insertions(+)
+>>>
+>>> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c
+>> b/drivers/soc/mediatek/mtk-cmdq-helper.c
+>>> index 4be2a18a4a02..bbb127620bb3 100644
+>>> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+>>> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+>>> @@ -475,6 +475,29 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+>>>  }
+>>>  EXPORT_SYMBOL(cmdq_pkt_finalize);
+>>>  
+>>> +int cmdq_pkt_finalize_loop(struct cmdq_pkt *pkt)
+>>> +{
+>>> +struct cmdq_instruction inst = { {0} };
+>>> +int err;
+>>> +
+>>> +/* insert EOC and generate IRQ for each command iteration */
+>>> +inst.op = CMDQ_CODE_EOC;
+>>> +inst.value = CMDQ_EOC_IRQ_EN;
+>>> +err = cmdq_pkt_append_command(pkt, inst);
+>>> +if (err < 0)
+>>> +return err;
+>>> +
+>>> +/* JUMP to start of pkt */
+>>> +err = cmdq_pkt_jump(pkt, pkt->pa_base);
+>>> +if (err < 0)
+>>> +return err;
+>>> +
+>>> +pkt->loop = true;
+>>> +
+>>> +return err;
+>>> +}
+>>> +EXPORT_SYMBOL(cmdq_pkt_finalize_loop);
+>>
+>> NAK. No users (and please carefully think before you answer that your
+>> other patch uses it).
+>>
+> 
+> As I know, the API with EXPORT_SYMBOL means it can be used by a dynamic
+> loaded module.
+> 
+> Do you means that mtk-cmdq-sec-mailbox.c in [PATCH 10/15] is a built-in 
+> module currently, so I should not add EXPORT_SYMBOL to this API?
 
-> +++ b/include/net/mac80211.h
-> @@ -4733,6 +4733,8 @@ __ieee80211_create_tpt_led_trigger(struct ieee80211=
-_hw *hw,
->  				   unsigned int flags,
->  				   const struct ieee80211_tpt_blink *blink_table,
->  				   unsigned int blink_table_len);
-> +void __ieee80211_tpt_led_trig_trx(struct ieee80211_hw *hw,
-> +				  int tx_bytes, int rx_bytes);
+I mean there is no need for this. Please name the name of module where
+this function will be defined and name of module(s) using it. ".c" is
+not a module. ".ko" is.
 
-Hm, I think you misunderstood what I said.
 
-I still think you need to have a well-documented function or two here,
-but now you can make the exported versions of this be inlines calling
-this new function.
-
-But also this now fails the build if !CONFIG_MAC80211_LEDS, you need to
-have an ifdef somewhere.
-
-> +void __ieee80211_tpt_led_trig_trx(struct ieee80211_hw *hw,
-> +				  int tx_bytes, int rx_bytes)
-> +{
-> +	struct ieee80211_local *local =3D hw_to_local(hw);
-> +
-> +	if (atomic_read(&local->tpt_led_active)) {
-> +		local->tpt_led_trigger->tx_bytes +=3D tx_bytes;
-> +		local->tpt_led_trigger->rx_bytes +=3D rx_bytes;
-> +	}
-> +}
-> +EXPORT_SYMBOL(__ieee80211_tpt_led_trig_trx);
-
-Even that won't build.
-
-> --- a/net/mac80211/led.h
-> +++ b/net/mac80211/led.h
-> @@ -71,8 +71,7 @@ static inline void
->  ieee80211_tpt_led_trig_tx(struct ieee80211_local *local, int bytes)
->  {
->  #ifdef CONFIG_MAC80211_LEDS
-> -	if (atomic_read(&local->tpt_led_active))
-> -		local->tpt_led_trigger->tx_bytes +=3D bytes;
-> +	__ieee80211_tpt_led_trig_trx(&local->hw, bytes, 0);
->  #endif
-
-Ah. Actually what I was thinking is that __ieee80211_tpt_led_trig_trx is
-still an inline, and then the ieee80211_tpt_led_trig_trx() exported to
-drivers can call this alongside these inlines - that way mac80211 still
-gets the (trivial) code inlined.
-
-johannes
+Best regards,
+Krzysztof
 
 
