@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CD4FCE7A9B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 16:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C86CE7A9D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Sep 2023 16:44:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0ktPmLhNhLEfNJrEHYP8HMWO1VFqz+A1N7LM/ojmMkE=; b=1zzsu0ldAmPvwP/oyj9xiSWa67
-	jlwn6kPCtcfhYh672GkFr9u1vAVvyKmKFnQQ2uNhI1pRAOBelebeeTu8o1dHfbPenq7N60i3E5Y4g
-	z128N2lKOk625Du4vmAhkzn47lCaabISMUsAEchkiof9CrZ6vkHjqJXmdddF17oE3VcBqI3oItdVN
-	6EE4BkFsFBnWXI3bfi9+fT3EwZ46mhJ5/MCokg/QDbvXReOecw6coaZv1cdocG1EFD4X5VbQKb3ea
-	/EV97r4MAoSIU5YK8IHpeclDf7P0yj9vhjVfDiT5cYi+3civMd0uset0QRpuGQWX0SdJ93ZT4lFHo
-	c2gzK3Cw==;
+	bh=+h+9eoc9QpFrggshxZPzpWIlcTRc2B1nJG96s1pqY80=; b=4gyWHPewjRl0bx2famxBAHRGcg
+	GuQrJKQuEwZFazRRpDWUWqIUw0k3mbtHJM0dT4QE65Hzs665ldmBtcmBw1nFd31+H5VXOxlWuxG62
+	GqIEs5yatfQGCknOytvPFivmvgpnl0VWpA1Pv2wAFaFdbuUq17GRUTFINZQ/3gqij7Qr2oIqV50J7
+	VLcTfIN3wLu1l5GTtIhgd2khGTQ8eLbqzsRVEDwA8No0dPlNbZ5GLXsXyJ4t5+oujDBJrYhYszjzA
+	VhboYjigDrYBLHkY/ZkumZ5AqMq3L6bvjs9AmhsX16v6Y+1Hw0CQT2OG/ioNIVdyB7KoBIPcK56uh
+	bGcCCuXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qko9q-00EcZG-38;
-	Mon, 25 Sep 2023 16:10:02 +0000
+	id 1qkoh3-00EgtI-3A;
+	Mon, 25 Sep 2023 16:44:21 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qko9m-00EcX0-2S;
-	Mon, 25 Sep 2023 16:10:01 +0000
+	id 1qkoh1-00Egsk-2D
+	for linux-mediatek@lists.infradead.org;
+	Mon, 25 Sep 2023 16:44:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 66F88B80D8F;
-	Mon, 25 Sep 2023 16:09:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB61DC433C8;
-	Mon, 25 Sep 2023 16:09:54 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 62B72B80DE9;
+	Mon, 25 Sep 2023 16:44:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2D5BC433C8;
+	Mon, 25 Sep 2023 16:44:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695658196;
-	bh=gcYDTYUu2Rp4Bf6iNJVLLlvth+kTKaTp+V7uWoNTvk8=;
+	s=k20201202; t=1695660257;
+	bh=OSniNe/SEUwj5JtrJjV3mo40KgZweC+EN5DVdS+32V8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Hu2v/FnFlxjU8frwOTv6HaE3GhqkL+iRiOrNGXeHONKhx+WqEGulB3iqEsO3IGGEy
-	 hgAxAAIBiVgi0fbqtFZJzQoffRDSYG8edHwQHI7nB+R1IdsW+9XyPHFjVb4u2EZiLY
-	 JBVpmpogNZg4gAdhy3ntRNlS1U9mG7GoKkWczxIV84y7xqI4WCiRcIQHYtqNhgXRBP
-	 704vKdl227PqSW7OAhjhl/wWj4vywJ+yrbw/EzARX1CuDXNFdDm7eSGy1cgYCAjguf
-	 aJnuvJGV82DqnjfRPknQoBcOHD90E7VyUwr1ytV1fLcLZgm21GlTTlXPGjygHgL2WS
-	 llt0nJ8BZyO4Q==
-Received: (nullmailer pid 1450584 invoked by uid 1000);
-	Mon, 25 Sep 2023 16:09:53 -0000
-Date: Mon, 25 Sep 2023 11:09:53 -0500
+	b=Tx2vsX3+bmbaJmQavOlsuRE97YZs+Tfad0mvFjzqoghAnsr99IgCTELCcGsFXK/tF
+	 5SE21DNJRy/kCAsDACFgx5S5YPFRSvwdvNRNtSPv0drdZxHy4/z8B+wcJThmOYDwvq
+	 4rpGU+KzSew2sBj8H99H3HB+rQc2ivg1u6rthJ5IVb1gXPPkWvjIICH/G3Dax1HDCq
+	 7FXAcBWCH/dTXk7+tAUHt4m3Kck/EuSkhoDjFapTm4y+m3KqzuypPEIL84djKjXKyw
+	 zd9nVFjM/sJFifaVSxjPYfA2Ttw4b77Lv4H/60eUCIWEk3/s7qu2EmtRUwxTZOqOpa
+	 4U7CojDULiHwg==
+Received: (nullmailer pid 1490675 invoked by uid 1000);
+	Mon, 25 Sep 2023 16:44:15 -0000
+Date: Mon, 25 Sep 2023 11:44:15 -0500
 From: Rob Herring <robh@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 09/16] dt-bindings: media: mediatek: mdp3: add
- component STITCH for MT8195
-Message-ID: <20230925160953.GA1449445-robh@kernel.org>
-References: <20230922072116.11009-1-moudy.ho@mediatek.com>
- <20230922072116.11009-10-moudy.ho@mediatek.com>
+To: xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, lgirdwood@gmail.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, trevor.wu@mediatek.com, perex@perex.cz, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
+Subject: Re: [v1 1/2] ASoC: dt-bindings: mediatek,mt8188-mt6359: add RT5682S
+ support
+Message-ID: <169566025430.1490621.9358539140957587506.robh@kernel.org>
+References: <20230925083847.1496-1-xiazhengqiao@huaqin.corp-partner.google.com>
+ <20230925083847.1496-2-xiazhengqiao@huaqin.corp-partner.google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230922072116.11009-10-moudy.ho@mediatek.com>
+In-Reply-To: <20230925083847.1496-2-xiazhengqiao@huaqin.corp-partner.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_090959_083198_DDD4A02B 
-X-CRM114-Status: GOOD (  20.54  )
+X-CRM114-CacheID: sfid-20230925_094419_863761_8FE9AE11 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,89 +75,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 22, 2023 at 03:21:09PM +0800, Moudy Ho wrote:
-> Add the fundamental hardware configuration of component STITCH,
 
-STITCH? You mean TCC?
-
-> which is controlled by MDP3 on MT8195.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+On Mon, 25 Sep 2023 16:38:46 +0800, xiazhengqiao wrote:
+> Add compatible string "mediatek,mt8188-rt5682" to support new board
+> with rt5682s codec.
 > ---
->  .../bindings/media/mediatek,mdp3-tcc.yaml     | 60 +++++++++++++++++++
->  1 file changed, 60 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+>  .../devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml        | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
-> new file mode 100644
-> index 000000000000..245e2134c74a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
-> @@ -0,0 +1,60 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-tcc.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Media Data Path 3 TCC
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +description:
-> +  One of Media Data Path 3 (MDP3) components used to support
-> +  HDR gamma curve conversion HDR displays.
 
-Please say what the block does.
+Acked-by: Rob Herring <robh@kernel.org>
 
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8195-mdp3-tcc
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  mediatek,gce-client-reg:
-> +    description:
-> +      The register of display function block to be set by gce. There are 4 arguments,
-> +      such as gce node, subsys id, offset and register size. The subsys id that is
-> +      mapping to the register of display function blocks is defined in the gce header
-> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    items:
-> +      items:
-> +        - description: phandle of GCE
-> +        - description: GCE subsys id
-> +        - description: register offset
-> +        - description: register size
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - mediatek,gce-client-reg
-> +  - clocks
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8195-clk.h>
-> +    #include <dt-bindings/gce/mt8195-gce.h>
-> +
-> +    display@1400b000 {
-> +        compatible = "mediatek,mt8195-mdp3-tcc";
-> +        reg = <0x1400b000 0x1000>;
-> +        mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xb000 0x1000>;
-> +        clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
-> +    };
-> -- 
-> 2.18.0
-> 
 
