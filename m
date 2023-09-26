@@ -4,66 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72546E7D26C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 09:24:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01EABE7D27B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 10:19:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JeTyxYCQYChYnnbDlD75iM3dl+MlAjVASHMBn6Q9X5E=; b=Hzpa6pfu/QCFnMN4ujGtN79XQ4
-	AT6hGmd0r8U89zWJx5j5yTGEKUhRdsVNXpv7hqV03PF6hgXLmPTBjarE8ll9N066vq6nmrXsE70a7
-	JM6oy84lh1col6e+CCeEP39/+IRn/s7BxtSBpnvmtCat/F4zdJAi8E1lHAhYx5vuX/7znXksOQ6Gl
-	gB2O1chflRcgJrCpQgRLFM5kCBFPlyvBapvNyVTOkcWf7uU6uBOnmqaUjGvDpEGrqWIyRcc2xleaL
-	vUShAcOTi6zM+dOIjbgfQrvm6J7P7GZQBetLTvuOoV0fiPqkzyHWnJBSKjegb86esz1wQHVLzz5JF
-	RQr8a7tg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9pAB4vHxgXuOrF3cQ2v7MgCCwLtC7aUzC54ZVS4HYqQ=; b=nZhBgQmpCgZhfPTu/Ys4+YYMSm
+	huxfbNhZL2+QeP9tKIK3kxW4HqpNv4EMW7CKnOYqX0EXZeBUD+r8XeysMGY2lN4Oijb6bY8d1O87H
+	b0gy3/rDlWBRQJq6ZIwOKy9zrWFIjpEcXJWooUzJt5V0XwpY1aINKV+bNYL/JfuBCxyrh2m7bXR/0
+	OUam2Owj1r99VF3fCyntNPNymB6ubko+tJElWxY1BTvmjuBVO1FXHwQlfVXrQeRUlrDpYPET4cka1
+	NCTzw5RXt9mqlh90h7v9s31kmA/4OKgQZePnH4MOuYveOkmRSpDKDrBvM108wjmpTf72n2oFdDYc/
+	sIIkI1pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql4Ie-00FxgI-1Q;
-	Tue, 26 Sep 2023 09:24:12 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ql5A9-00G2NO-04;
+	Tue, 26 Sep 2023 10:19:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql4IR-00Fxbz-2H;
-	Tue, 26 Sep 2023 09:24:00 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 31A8B6607313;
-	Tue, 26 Sep 2023 10:23:56 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695720236;
-	bh=ssfuBNR2PiLxi4TiFV2ZqSR5SVdNJLkRo9oKlebvEQw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=e/E2QeiJuLaQLjK4mChhPpDb0IE9fdZgd1/doagBY164u0wL07kEwrMXr/aawC7IX
-	 5Bn79I0rKXvm9Zhl+oYn/tGXJ+SMQHOzHyUwldACGahrjuwWLqnVYFpTGSk6ORlJ3N
-	 vPGPBNal9ZguWK1bVzUsA7La1IAvzap6ZoYDARGLOBRElB7JtPNXS5VjiHSRiwv/8v
-	 N0tSoEwLfyJsvUuGf37Jkht3vzVW/u4YiM4sq41VxNfUu7gIQjrpowpdNrvMfvqyPz
-	 As+VA0bL+rwezpy4EQDPRvdHJF4kJWtK++hco0L/et1BLjY7AdQfc8B6Fq2Zc8ybKM
-	 pkN24X157VT2w==
-Message-ID: <e5e0703f-a96e-dafa-34d9-a6b6d8962556@collabora.com>
-Date: Tue, 26 Sep 2023 11:23:53 +0200
+	id 1ql5A6-00G2Mt-1r;
+	Tue, 26 Sep 2023 10:19:27 +0000
+X-UUID: 24c4deb85c5611ee9b7791016c24628a-20230926
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9pAB4vHxgXuOrF3cQ2v7MgCCwLtC7aUzC54ZVS4HYqQ=;
+	b=K8bbdp7gq1NlWfol4J5gyjwhwQRd431TAgeFUo+8LQzkjfnkyJwQV7udbjxAInoKdjl/BfdY78D5v5YRqFl0/4hNuLUsjEVhISr/Hr1Rl8Dx3s3oUjl7HXimQ+gO4lmw+sd1oYscZVbI1eiUEntCaXBM9jWYR3cQIWf1Eg5JLaY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:b5730924-3bff-40d3-9b90-b43ec521d7b8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:2c067bc3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 24c4deb85c5611ee9b7791016c24628a-20230926
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 707863151; Tue, 26 Sep 2023 03:19:14 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 26 Sep 2023 18:19:11 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 26 Sep 2023 18:19:10 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Maoguang Meng
+	<maoguang.meng@mediatek.com>
+Subject: [PATCH 1/2] media: mediatek: vcodec: Fix encoder access NULL pointer
+Date: Tue, 26 Sep 2023 18:19:08 +0800
+Message-ID: <20230926101909.15030-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH 15/40] soc/mediatek: mtk-mmsys: Convert to platform remove
- callback returning void
-Content-Language: en-US
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@pengutronix.de
-References: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
- <20230925095532.1984344-16-u.kleine-koenig@pengutronix.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230925095532.1984344-16-u.kleine-koenig@pengutronix.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.105600-8.000000
+X-TMASE-MatchedRID: GEfnc4mEQr+uhCBFl/b63nQIOMndeKgE5Y0kb0hqatxnerzbhugqspVD
+	ZsT0rYWCzpwM53iUVtXbCHv011Gy9dS7ezKc1AokngIgpj8eDcAZ1CdBJOsoY8RB0bsfrpPIx1F
+	PlNAAmcDr4JEOMLTOvRaDB3e61dbj0hR2WQtXdazG0iw/N0V7hZ6oP1a0mRIj
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.105600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: F52746FEAA883B08C25F18637D5B84EC5699F7FD68D85E3D7C3A99FE851EC73F2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230926_022359_869681_943F5807 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20230926_031926_625593_B6157163 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +99,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/09/23 11:55, Uwe Kleine-König ha scritto:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is ignored (apart
-> from emitting a warning) and this typically results in resource leaks.
-> To improve here there is a quest to make the remove callback return
-> void. In the first step of this quest all drivers are converted to
-> .remove_new() which already returns void. Eventually after all drivers
-> are converted, .remove_new() will be renamed to .remove().
-> 
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+Need to set the private data with encoder device, or will access
+NULL pointer in encoder handler.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fixes: 1972e32431ed ("media: mediatek: vcodec: Fix possible invalid memory access for encoder")
 
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+---
+ drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+index d299cc2962a5..ae6290d28f8e 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+@@ -138,7 +138,8 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
+ 	vpu->ctx->vpu_inst = vpu;
+ 
+ 	status = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
+-					    vpu_enc_ipi_handler, "venc", NULL);
++					    vpu_enc_ipi_handler, "venc",
++					    vpu->ctx->dev);
+ 
+ 	if (status) {
+ 		mtk_venc_err(vpu->ctx, "vpu_ipi_register fail %d", status);
+-- 
+2.25.1
 
 
