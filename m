@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40E0EE7D24C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 08:05:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 646B4E7D24E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 08:06:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rsZCnHsDg/PSpS8ECalwOE6Ou4yPp9BLhohJjYFzlX8=; b=Xu3xru3npfECBNj7V6gu9hj2jG
-	u3xTN8SwcsF/6H2E6JTOtITQMQ8qDKUedrfhMUVJnyPDO37YH+PXXID9PG3/K6fEgbPNNIO37ovbi
-	Lckt8y9afMERJMvRmrq+fanw44kF8b0g18KVx/Mbh3X86iZMSb4ASDPmvKlHmF/KLz8bzxXfAUID7
-	A7C06k10abq1T/VA7mFOMbIZpM/y9E596QbvRjRmJWcWUEg4QObbd0t3WbIHhNDxeifPZmiZoOTHv
-	4NaG0mQ+F9dZMO7WGCaBwkiRTEZbrZ4aEnheb6b75KQACseJo23EvoNe35vkbjw18VWKmQCjIdBTK
-	wQtBQMlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mZaODSHRMQm+k5nXCVF9FwJLPdmKv7m4xy5pg506F78=; b=dEe7Qp2zN2QvsMWhgGvXwk98wJ
+	zdEMr0cMjz+JY6lEebEcvCUXdxt7qXoxLHnXP82NVpUI96X2bOBGcP0K1TA3JCRc1Na7JzKmG0fgy
+	LYX7uJ1hGV7fYWzqssZmBtbLT8h2lrJFex1CL5LqCTK/5S4B8G6xJf99yOUDcqoHC+bZvYt7vI+TB
+	iJqN/roQthTetaleCaHZqVud+JCVZhJzIsRHkuDN6J8uyOwzU8xyKyRgbh5UfEF1ur2C1cP7jFaw2
+	xTLkL392vtxSCl5cJN5KgimI1M3DFo5heupqUmjAGlX/saH5qyw2GspOG9sPyvMfmR/3cngAjYTpa
+	zbJUKD1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql34K-00FqGB-0Y;
-	Tue, 26 Sep 2023 08:05:20 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1ql35i-00FqaC-0t;
+	Tue, 26 Sep 2023 08:06:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql34H-00FqEb-1c;
-	Tue, 26 Sep 2023 08:05:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5CB08CE12BF;
-	Tue, 26 Sep 2023 08:05:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43DD8C433C8;
-	Tue, 26 Sep 2023 08:05:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695715511;
-	bh=rsZCnHsDg/PSpS8ECalwOE6Ou4yPp9BLhohJjYFzlX8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KXymruQtjxxIfXF7x2pLNjT+Cw/C2uEmv5orKU35FTj+vbbEC01C4qgIqpiCFMaok
-	 XIgE1W1f3z+zgmBAfhPFRQowvDFFXWRleyOtXdP0wWwyWW1yWlt5TAatkH2ThtmyTn
-	 qHmUH6SYZKwk8TCnhgTQrIIe49+QTYpNbpoLQJUAMRkwYwfBcxMFKYJFF41KRxeOUW
-	 3QRUjFNfVRacwEsEZy2IyISRFNsCQkkrbKkRFS67o5p5dg9cleivUbnzfLBLNPpV+c
-	 v4m9XB4Lsd3VvDUcRXg8ZgnH+6nOi2UeytogolSVbCUnpAMD6LU05cHPPccPKwGgl2
-	 7+0H15BVTPURw==
-Date: Tue, 26 Sep 2023 10:05:09 +0200
-From: Mark Brown <broonie@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Zhiyong Tao <zhiyong.tao@mediatek.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RESEND v3 0/3] regulator: mt6358: Remove bogus regulators
- and improvements
-Message-ID: <ZRKQtcXB88qN4fET@finisterre.sirena.org.uk>
-References: <20230926043450.2353320-1-wenst@chromium.org>
+	id 1ql35e-00FqZ5-1Z;
+	Tue, 26 Sep 2023 08:06:44 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AFD8D66072AE;
+	Tue, 26 Sep 2023 09:06:37 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695715598;
+	bh=DNkzrB6xB46nwXnn/uIEbW0EYRfFZ+iNhweCVbOVwQw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=E5ghLCBlBe5MVn6CZ4teUjynYKdeSRfx1tlahHjFVdi/7weU2mEN4gK+ujzjQT2kG
+	 OU7RhR4rGRDb+J0ejTfrUCqY5oM8AJ8ClTaWEHTY0HnHwwb/D0+OJTNsZEzq7k4nWr
+	 R0SRur5OgneaBDFntamiDNmwT11UaGM4nVaXbQAABS+FBl2JWkE39JQS9fffDwAklv
+	 sZyIJETX5GraA5/oCB92VEGTm1/bTLvWsSvlZxGLA9Iu6KD1Tnfhy4a26U2+TL6jMR
+	 tBIt9CdxxrVsLB/egnmf2AHYIPgAvGWz0S0SgwWJQgXo/9dExe6Y1nMFK761XX/GZE
+	 M051cHAj3Xlzg==
+Message-ID: <b0037c9f-588b-4eb8-6415-0fe75bed264f@collabora.com>
+Date: Tue, 26 Sep 2023 10:06:35 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="t4jJH+6O6abw2Jmm"
-Content-Disposition: inline
-In-Reply-To: <20230926043450.2353320-1-wenst@chromium.org>
-X-Cookie: Save energy:  Drive a smaller shell.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH] drm/panel: Move AUX B116XW03 out of panel-edp back to
+ panel-simple
+Content-Language: en-US
+To: Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org
+Cc: linux-samsung-soc@vger.kernel.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>, airlied@gmail.com,
+ daniel@ffwll.ch, jitao.shi@mediatek.com, linus.walleij@linaro.org,
+ linux-kernel@vger.kernel.org, neil.armstrong@linaro.org,
+ quic_jesszhan@quicinc.com, sam@ravnborg.org
+References: <20230925150010.1.Iff672233861bcc4cf25a7ad0a81308adc3bda8a4@changeid>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230925150010.1.Iff672233861bcc4cf25a7ad0a81308adc3bda8a4@changeid>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230926_010517_761362_BCA9BB9F 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20230926_010642_820173_184C2DF2 
+X-CRM114-Status: GOOD (  30.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,35 +81,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 26/09/23 00:00, Douglas Anderson ha scritto:
+> In commit 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of
+> panel-simple") I moved a pile of panels out of panel-simple driver
+> into the newly created panel-edp driver. One of those panels, however,
+> shouldn't have been moved.
+> 
+> As is clear from commit e35e305eff0f ("drm/panel: simple: Add AUO
+> B116XW03 panel support"), AUX B116XW03 is an LVDS panel. It's used in
+> exynos5250-snow and exynos5420-peach-pit where it's clear that the
+> panel is hooked up with LVDS. Furthermore, searching for datasheets I
+> found one that makes it clear that this panel is LVDS.
+> 
+> As far as I can tell, I got confused because in commit 88d3457ceb82
+> ("drm/panel: auo,b116xw03: fix flash backlight when power on") Jitao
+> Shi added "DRM_MODE_CONNECTOR_eDP". That seems wrong. Looking at the
+> downstream ChromeOS trees, it seems like some Mediatek boards are
+> using a panel that they call "auo,b116xw03" that's an eDP panel. The
+> best I can guess is that they actually have a different panel that has
+> similar timing. If so then the proper panel should be used or they
+> should switch to the generic "edp-panel" compatible.
+> 
+> When moving this back to panel-edp, I wasn't sure what to use for
+> .bus_flags and .bus_format and whether to add the extra "enable" delay
+> from commit 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash
+> backlight when power on"). I've added formats/flags/delays based on my
+> (inexpert) analysis of the datasheet. These are untested.
+> 
+> NOTE: if/when this is backported to stable, we might run into some
+> trouble. Specifically, before 474c162878ba ("arm64: dts: mt8183:
+> jacuzzi: Move panel under aux-bus") this panel was used by
+> "mt8183-kukui-jacuzzi", which assumed it was an eDP panel. I don't
+> know what to suggest for that other than someone making up a bogus
+> panel for jacuzzi that's just for the stable channel.
+> 
+> Fixes: 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when power on")
+> Fixes: 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of panel-simple")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> I haven't had a snow or peach-pit hooked up for debugging / testing
+> for years. I presume that they must be broken and hope that this fixes
+> them.
 
---t4jJH+6O6abw2Jmm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+We could avoid backport breakages by avoiding to backport this to any kernel
+that doesn't contain commit 474c162878ba ("arm64: dts: mt8183: jacuzzi: Move
+panel under aux-bus")... because creating a dummy panel to get two wrongs
+right is definitely not ok.
 
-On Tue, Sep 26, 2023 at 12:34:45PM +0800, Chen-Yu Tsai wrote:
-> Hi,
->=20
-> This seems to have fallen through the cracks, so I'm resending with tags
-> collected and patches rebased onto next-20230925. The diffs remain the
-> same.
+Cheers,
+Angelo
 
-AFAICT this is still in CI.
+> 
+>   drivers/gpu/drm/panel/panel-edp.c    | 29 -----------------------
+>   drivers/gpu/drm/panel/panel-simple.c | 35 ++++++++++++++++++++++++++++
+>   2 files changed, 35 insertions(+), 29 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panel/panel-edp.c b/drivers/gpu/drm/panel/panel-edp.c
+> index feb665df35a1..95c8472d878a 100644
+> --- a/drivers/gpu/drm/panel/panel-edp.c
+> +++ b/drivers/gpu/drm/panel/panel-edp.c
+> @@ -976,32 +976,6 @@ static const struct panel_desc auo_b116xak01 = {
+>   	},
+>   };
+>   
+> -static const struct drm_display_mode auo_b116xw03_mode = {
+> -	.clock = 70589,
+> -	.hdisplay = 1366,
+> -	.hsync_start = 1366 + 40,
+> -	.hsync_end = 1366 + 40 + 40,
+> -	.htotal = 1366 + 40 + 40 + 32,
+> -	.vdisplay = 768,
+> -	.vsync_start = 768 + 10,
+> -	.vsync_end = 768 + 10 + 12,
+> -	.vtotal = 768 + 10 + 12 + 6,
+> -	.flags = DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
+> -};
+> -
+> -static const struct panel_desc auo_b116xw03 = {
+> -	.modes = &auo_b116xw03_mode,
+> -	.num_modes = 1,
+> -	.bpc = 6,
+> -	.size = {
+> -		.width = 256,
+> -		.height = 144,
+> -	},
+> -	.delay = {
+> -		.enable = 400,
+> -	},
+> -};
+> -
+>   static const struct drm_display_mode auo_b133han05_mode = {
+>   	.clock = 142600,
+>   	.hdisplay = 1920,
+> @@ -1725,9 +1699,6 @@ static const struct of_device_id platform_of_match[] = {
+>   	}, {
+>   		.compatible = "auo,b116xa01",
+>   		.data = &auo_b116xak01,
+> -	}, {
+> -		.compatible = "auo,b116xw03",
+> -		.data = &auo_b116xw03,
+>   	}, {
+>   		.compatible = "auo,b133han05",
+>   		.data = &auo_b133han05,
+> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
+> index bb89e6d047bc..439d26928938 100644
+> --- a/drivers/gpu/drm/panel/panel-simple.c
+> +++ b/drivers/gpu/drm/panel/panel-simple.c
+> @@ -919,6 +919,38 @@ static const struct panel_desc auo_b101xtn01 = {
+>   	},
+>   };
+>   
+> +static const struct drm_display_mode auo_b116xw03_mode = {
+> +	.clock = 70589,
+> +	.hdisplay = 1366,
+> +	.hsync_start = 1366 + 40,
+> +	.hsync_end = 1366 + 40 + 40,
+> +	.htotal = 1366 + 40 + 40 + 32,
+> +	.vdisplay = 768,
+> +	.vsync_start = 768 + 10,
+> +	.vsync_end = 768 + 10 + 12,
+> +	.vtotal = 768 + 10 + 12 + 6,
+> +	.flags = DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
+> +};
+> +
+> +static const struct panel_desc auo_b116xw03 = {
+> +	.modes = &auo_b116xw03_mode,
+> +	.num_modes = 1,
+> +	.bpc = 6,
+> +	.size = {
+> +		.width = 256,
+> +		.height = 144,
+> +	},
+> +	.delay = {
+> +		.prepare = 1,
+> +		.enable = 200,
+> +		.disable = 200,
+> +		.unprepare = 500,
+> +	},
+> +	.bus_format = MEDIA_BUS_FMT_RGB666_1X7X3_SPWG,
+> +	.bus_flags = DRM_BUS_FLAG_DE_HIGH,
+> +	.connector_type = DRM_MODE_CONNECTOR_LVDS,
+> +};
+> +
+>   static const struct display_timing auo_g070vvn01_timings = {
+>   	.pixelclock = { 33300000, 34209000, 45000000 },
+>   	.hactive = { 800, 800, 800 },
+> @@ -4128,6 +4160,9 @@ static const struct of_device_id platform_of_match[] = {
+>   	}, {
+>   		.compatible = "auo,b101xtn01",
+>   		.data = &auo_b101xtn01,
+> +	}, {
+> +		.compatible = "auo,b116xw03",
+> +		.data = &auo_b116xw03,
+>   	}, {
+>   		.compatible = "auo,g070vvn01",
+>   		.data = &auo_g070vvn01,
 
---t4jJH+6O6abw2Jmm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmUSkK8ACgkQJNaLcl1U
-h9AvCwf+MXnwhG2vsZ8drBJHxcx3EXvkQQZMpfD4wlotjD4+QnKW1G84AnsJcWZT
-GAOsxYzvyS4iPV9umnqB4bLTXz1YMmtgTFjb5vTcUiJBSElJs3487HUGMemlIceC
-aAUa89XY47crMgR44d7MtVUlj7Hb9uHXXI6eZalrkYnkyj2KQt0J/dmI3HU4pZkY
-ajZUFrWXnqw7dX7wWsXAXE+TIXkikpOWWu52w7842Y0KTzpzqHK2gvB+biUpxkLm
-e6+EPGCLIa9G/yKtUfRX1IUCX5Fu3aIqNeR+simLYSnpsc14VYQg2UYy7APIjdYZ
-1dAmQtTSnAICa/V82P/YejQvP1QjmQ==
-=48cD
------END PGP SIGNATURE-----
-
---t4jJH+6O6abw2Jmm--
 
