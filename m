@@ -4,90 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A9A1E7E637
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 14:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24ADEE7E649
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 15:04:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FBohR+UrQgBr4N5azTZZcBABGSeyKmANhNOajTqGdkY=; b=IvCKOQftWZXDhvxQApb3EETtIN
-	WdGXALzgNeexNfmfoPtB+ayzMFylXnrZiLSsd+gFne1QRLuU9CdqOrBmBSTOSpg+ezm6IseXqRhmS
-	5k7PCF1N8YlqM6/rDTOorVoDtnFgfYvSd+cxY7pLNVsMtqV4rrp0AglhQkw4lZoEpHmPUtH2W85Gw
-	LKxMA7DtixTNvsATyJYH9amNe3Ha2TQJVXRWvM9dDUKtblWtCpymPFwavq5hilJmC/nHswpauvf8X
-	aOYf2jTh8TQDF1znGoydE71BmNyZFOLvhf6dt4YcsDajn+W3FhPHKNjGnTHG7Uo2UGn6dJ0BYBGR4
-	Ly+lw3uQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HeFjiy4HXCSDHqncKbVdy7TDNdv7qqAs1Sfi74FhiwE=; b=rfQMVNB8gics5Y9ceIu4R4BC0f
+	QQaP1PK0/Yre9Nap2v24LI/H8wlsIZFWpS0rtwkXCe1i+V5d2Ldmrw1ARxWQRgdm7ttdf1DWJoXIK
+	E5BcNTWhnSFzvffuZ5N9WyUv4UKhT3FqPiPb1Xat0BmV2XlF0XMVOUlYbEXTbSIwPYASdDbt8GVFd
+	5rtX1KJ9ITbl/9/ze54AK0lZXjUCKW1ebQKN2A6gjepIeJRCtUViKjsgztjqFucqVpdS0+Xbm5rna
+	yqVlHIxVs7OiI6AXdU7aMauX18o13gKU6Gc5m0NGtsaL9AojAcBtDoWnNEnu4Fk9jOenctEloMVnl
+	MYMjnipg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql8lk-00GWyB-12;
-	Tue, 26 Sep 2023 14:10:32 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1ql9bp-00GbZC-31;
+	Tue, 26 Sep 2023 15:04:21 +0000
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql8lh-00GWxd-0m
+	id 1ql9bo-00GbXZ-04
 	for linux-mediatek@lists.infradead.org;
-	Tue, 26 Sep 2023 14:10:30 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-991c786369cso1071901666b.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Sep 2023 07:10:28 -0700 (PDT)
+	Tue, 26 Sep 2023 15:04:21 +0000
+Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-6bf298ef1f5so5586437a34.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Sep 2023 08:04:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1695737426; x=1696342226; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FBohR+UrQgBr4N5azTZZcBABGSeyKmANhNOajTqGdkY=;
-        b=ije8vH9syCRzqFegTMy+NUluxdMbKFBKXwhVIqPxpWj0SDdZYWknP6vqmgYJVfUmDm
-         ViO+Xec8a65Qtrr6WoiGoJQmOiMkwer2nduWtReCAuhP8NUi+9e+VL6bgFtGPm9+ZOJa
-         Ly9WU8ECeFqwwf84Ynxf9DcCXPsminwisqixY=
+        d=linaro.org; s=google; t=1695740659; x=1696345459; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=HeFjiy4HXCSDHqncKbVdy7TDNdv7qqAs1Sfi74FhiwE=;
+        b=oCMeN4MTTA3xMWOd+7U/mAqlSbfboZhf+m4gR4CWzNwi15llMZj49QhRxjEwbKGUGS
+         VMg+OYS/979y2/PQbvqJAT2VKgohywJDm3xQQLvDJH11W7rjsY9cP/wci0KAcJdX7w5b
+         wI9OFBd7HjyOROqQgpHKwPg7sXEHbIOsHlJEpEkliCGn+btB5zab1nPJqVB1RUZU04ul
+         JxRUlSVRu1ZxE3qQzvjkGXJFdEN7vnt+X/y6vAaGb9Aml5XzKoS18N5I+ro4ShrPZGo/
+         pxy+w0cZrTYZKShro6NpRPTaPKqe6dYJp009OK+Y7PhB8D8P/084vCmLPPehySMTkcZ6
+         SsXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695737426; x=1696342226;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FBohR+UrQgBr4N5azTZZcBABGSeyKmANhNOajTqGdkY=;
-        b=CJMpXhfrUcqkeshF+t5lMWM6oxvv4jaVKDxW+yJy5wbI0wAZVNqbjG86R55Iu87Wsp
-         q1TJXWAm/G/e/SflLgGzXIXbjDf2QJnpwK+3AtgSj7d6+ixmQbZDv5VqdHCKo21XJ32t
-         mEh8IkQeNyRWlExxm/NpL6YtezDqB7eBO8B3mfcC4+tp4eF+h0fA+25Ez6v9HFcWVn+2
-         3R+RhViGjp39CvbguRUBlofyzsZU+/SMz3BbfhhFhH3jMcf3V4t5ceHflMAtVXIsTnqe
-         2MRkMmZUyREaRKzZqENj6IpF8m1tbk+o/R/Jr0vN/UTrUf9P788yYgs1gRX7J/88V3dN
-         jaKQ==
-X-Gm-Message-State: AOJu0YwLbfWWcTOAUZP+jhkaHKVbqPgTpO1b+q8dsxhgdviqtrfOtvmx
-	keCzdO4OVsMysEkJZz33Yh6q65qmIQC4/asrVIjbfMdM
-X-Google-Smtp-Source: AGHT+IG0czYpZ6sQiXpnt7uFuoWVh92YcS3xPleAhZeN3oWu0mHsg7PxYfpG3HVw3iDqk6bwF8KuKg==
-X-Received: by 2002:a17:907:1c23:b0:9a2:139:f45d with SMTP id nc35-20020a1709071c2300b009a20139f45dmr10859772ejc.43.1695737426440;
-        Tue, 26 Sep 2023 07:10:26 -0700 (PDT)
-Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com. [209.85.208.47])
-        by smtp.gmail.com with ESMTPSA id gx10-20020a170906f1ca00b0099cb349d570sm7889255ejb.185.2023.09.26.07.10.26
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 26 Sep 2023 07:10:26 -0700 (PDT)
-Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-534694a9f26so10100a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Sep 2023 07:10:26 -0700 (PDT)
-X-Received: by 2002:ac2:548e:0:b0:501:a2b4:8ff5 with SMTP id
- t14-20020ac2548e000000b00501a2b48ff5mr54282lfk.7.1695736932511; Tue, 26 Sep
- 2023 07:02:12 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1695740659; x=1696345459;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HeFjiy4HXCSDHqncKbVdy7TDNdv7qqAs1Sfi74FhiwE=;
+        b=Fy9tHUvUYibPGC5o/clESeb0MeSKI/hWF7i9CyNoJ+zRe2ugX4vH/WrjiQkxO2yP9b
+         B6b4EBbQQsLAJHm2IodFB0dV19zvj7yBVSKne9g+nDZ44A5gQgg4n5erHIoQLU1UIOCL
+         AyGjDm/O4XEFSGPM9CwKAi/s9L3cuk/LE3UgXkOadm1uL35g/LIe0gBQvTwomyyrxA9T
+         H8ANEMSKdCXndPi7XbpAcfp5C+hQ0eIQqldDKgC9MC8GYoPlZxgTwf805ikjWiHPuVLK
+         0f2busU+Ws9gxO8iUDCd2w47u20D/lBqODh8g2auWoRxPYsb2jNfwz2bYaSnz3g8pOgc
+         lDqw==
+X-Gm-Message-State: AOJu0Yy5CCYXCqW4tBf/Y01/HD8jUgRcvPUOKPEzGK9UGMeWOXiIlk93
+	rOa84AbwYJb21Rwyz5OZt+o/PW8iA8WOg+vJh7wUaw==
+X-Google-Smtp-Source: AGHT+IGdQuvVsg+gmIk0SmA4JMrymCzShro3UtZMccAsP+0p8Rtd1FF4Qge9tx7ZaLRR3USnZ4acnj3DZvpnD5dhoHo=
+X-Received: by 2002:a05:6830:22e4:b0:6b9:68fb:5a28 with SMTP id
+ t4-20020a05683022e400b006b968fb5a28mr10468019otc.27.1695740658349; Tue, 26
+ Sep 2023 08:04:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230925150010.1.Iff672233861bcc4cf25a7ad0a81308adc3bda8a4@changeid>
- <b0037c9f-588b-4eb8-6415-0fe75bed264f@collabora.com>
-In-Reply-To: <b0037c9f-588b-4eb8-6415-0fe75bed264f@collabora.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 26 Sep 2023 07:01:55 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=UWQgLLfU4X+6OUR5AWOkJKwG9J7BbKGRCgze6LTY6JNw@mail.gmail.com>
-Message-ID: <CAD=FV=UWQgLLfU4X+6OUR5AWOkJKwG9J7BbKGRCgze6LTY6JNw@mail.gmail.com>
-Subject: Re: [PATCH] drm/panel: Move AUX B116XW03 out of panel-edp back to panel-simple
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, matthias.bgg@gmail.com, 
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, 
-	Marek Szyprowski <m.szyprowski@samsung.com>, airlied@gmail.com, daniel@ffwll.ch, 
-	jitao.shi@mediatek.com, linus.walleij@linaro.org, 
-	linux-kernel@vger.kernel.org, neil.armstrong@linaro.org, 
-	quic_jesszhan@quicinc.com, sam@ravnborg.org
+References: <20230922095348.22182-1-pablo.sun@mediatek.com>
+In-Reply-To: <20230922095348.22182-1-pablo.sun@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 26 Sep 2023 17:03:42 +0200
+Message-ID: <CAPDyKFo9i-8maLJ=L5re8pe4v2v5vQ8Jy+g-MqtNZH_w6Lb9cg@mail.gmail.com>
+Subject: Re: [PATCH v1] mmc: mtk-sd: Use readl_poll_timeout_atomic in msdc_reset_hw
+To: Pablo Sun <pablo.sun@mediatek.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mmc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230926_071029_300883_29CF9A36 
-X-CRM114-Status: GOOD (  31.10  )
+X-CRM114-CacheID: sfid-20230926_080420_064797_05C1B2A0 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,76 +88,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Tue, Sep 26, 2023 at 1:06=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Fri, 22 Sept 2023 at 11:54, Pablo Sun <pablo.sun@mediatek.com> wrote:
 >
-> Il 26/09/23 00:00, Douglas Anderson ha scritto:
-> > In commit 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of
-> > panel-simple") I moved a pile of panels out of panel-simple driver
-> > into the newly created panel-edp driver. One of those panels, however,
-> > shouldn't have been moved.
-> >
-> > As is clear from commit e35e305eff0f ("drm/panel: simple: Add AUO
-> > B116XW03 panel support"), AUX B116XW03 is an LVDS panel. It's used in
-> > exynos5250-snow and exynos5420-peach-pit where it's clear that the
-> > panel is hooked up with LVDS. Furthermore, searching for datasheets I
-> > found one that makes it clear that this panel is LVDS.
-> >
-> > As far as I can tell, I got confused because in commit 88d3457ceb82
-> > ("drm/panel: auo,b116xw03: fix flash backlight when power on") Jitao
-> > Shi added "DRM_MODE_CONNECTOR_eDP". That seems wrong. Looking at the
-> > downstream ChromeOS trees, it seems like some Mediatek boards are
-> > using a panel that they call "auo,b116xw03" that's an eDP panel. The
-> > best I can guess is that they actually have a different panel that has
-> > similar timing. If so then the proper panel should be used or they
-> > should switch to the generic "edp-panel" compatible.
-> >
-> > When moving this back to panel-edp, I wasn't sure what to use for
-> > .bus_flags and .bus_format and whether to add the extra "enable" delay
-> > from commit 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash
-> > backlight when power on"). I've added formats/flags/delays based on my
-> > (inexpert) analysis of the datasheet. These are untested.
-> >
-> > NOTE: if/when this is backported to stable, we might run into some
-> > trouble. Specifically, before 474c162878ba ("arm64: dts: mt8183:
-> > jacuzzi: Move panel under aux-bus") this panel was used by
-> > "mt8183-kukui-jacuzzi", which assumed it was an eDP panel. I don't
-> > know what to suggest for that other than someone making up a bogus
-> > panel for jacuzzi that's just for the stable channel.
-> >
-> > Fixes: 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when=
- power on")
-> > Fixes: 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of panel-simp=
-le")
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > ---
-> > I haven't had a snow or peach-pit hooked up for debugging / testing
-> > for years. I presume that they must be broken and hope that this fixes
-> > them.
+> Use atomic readl_poll_timeout_atomic, because msdc_reset_hw
+> may be invoked in IRQ handler in the following context:
 >
-> We could avoid backport breakages by avoiding to backport this to any ker=
-nel
-> that doesn't contain commit 474c162878ba ("arm64: dts: mt8183: jacuzzi: M=
-ove
-> panel under aux-bus")... because creating a dummy panel to get two wrongs
-> right is definitely not ok.
+>   msdc_irq() -> msdc_cmd_done() -> msdc_reset_hw()
+>
+> The following kernel BUG stack trace can be observed on
+> Genio 1200 EVK after initializing MSDC1 hardware during kernel boot:
+>
+> [    1.187441] BUG: scheduling while atomic: swapper/0/0/0x00010002
+> [    1.189157] Modules linked in:
+> [    1.204633] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W         5.15.42-mtk+modified #1
+> [    1.205713] Hardware name: MediaTek Genio 1200 EVK-P1V2-EMMC (DT)
+> [    1.206484] Call trace:
+> [    1.206796]  dump_backtrace+0x0/0x1ac
+> [    1.207266]  show_stack+0x24/0x30
+> [    1.207692]  dump_stack_lvl+0x68/0x84
+> [    1.208162]  dump_stack+0x1c/0x38
+> [    1.208587]  __schedule_bug+0x68/0x80
+> [    1.209056]  __schedule+0x6ec/0x7c0
+> [    1.209502]  schedule+0x7c/0x110
+> [    1.209915]  schedule_hrtimeout_range_clock+0xc4/0x1f0
+> [    1.210569]  schedule_hrtimeout_range+0x20/0x30
+> [    1.211148]  usleep_range_state+0x84/0xc0
+> [    1.211661]  msdc_reset_hw+0xc8/0x1b0
+> [    1.212134]  msdc_cmd_done.isra.0+0x4ac/0x5f0
+> [    1.212693]  msdc_irq+0x104/0x2d4
+> [    1.213121]  __handle_irq_event_percpu+0x68/0x280
+> [    1.213725]  handle_irq_event+0x70/0x15c
+> [    1.214230]  handle_fasteoi_irq+0xb0/0x1a4
+> [    1.214755]  handle_domain_irq+0x6c/0x9c
+> [    1.215260]  gic_handle_irq+0xc4/0x180
+> [    1.215741]  call_on_irq_stack+0x2c/0x54
+> [    1.216245]  do_interrupt_handler+0x5c/0x70
+> [    1.216782]  el1_interrupt+0x30/0x80
+> [    1.217242]  el1h_64_irq_handler+0x1c/0x2c
+> [    1.217769]  el1h_64_irq+0x78/0x7c
+> [    1.218206]  cpuidle_enter_state+0xc8/0x600
+> [    1.218744]  cpuidle_enter+0x44/0x5c
+> [    1.219205]  do_idle+0x224/0x2d0
+> [    1.219624]  cpu_startup_entry+0x30/0x80
+> [    1.220129]  rest_init+0x108/0x134
+> [    1.220568]  arch_call_rest_init+0x1c/0x28
+> [    1.221094]  start_kernel+0x6c0/0x700
+> [    1.221564]  __primary_switched+0xc0/0xc8
+>
+> Fixes: ffaea6ebfe9c ("mmc: mtk-sd: Use readl_poll_timeout instead of open-coded polling")
+> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
 
-Sure, except that leaves us with ... a breakage. :-P
+Applied for fixes and by adding a stable tag, thanks!
 
-Although I haven't tested it, I have a hard time believing that
-exynos5250-snow and exynos5420-peach-pit will work properly with the
-panel defined as an eDP panel. That means that they will be broken. If
-someone cared to get those fixed in a stable backport then we'd be
-stuck deciding who to break. If you have any brilliant ideas then I'm
-all ears.
+Kind regards
+Uffe
 
-...then again, I presume this has been broken since commit
-88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when power
-on"). That was a little over 3 years ago. Maybe I'm wrong and somehow
-things still limp along and sorta work even though the panel is
-defined incorrectly?
 
--Doug
+> ---
+>  drivers/mmc/host/mtk-sd.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 5392200cfdf7..97f7c3d4be6e 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -669,11 +669,11 @@ static void msdc_reset_hw(struct msdc_host *host)
+>         u32 val;
+>
+>         sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_RST);
+> -       readl_poll_timeout(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
+> +       readl_poll_timeout_atomic(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
+>
+>         sdr_set_bits(host->base + MSDC_FIFOCS, MSDC_FIFOCS_CLR);
+> -       readl_poll_timeout(host->base + MSDC_FIFOCS, val,
+> -                          !(val & MSDC_FIFOCS_CLR), 0, 0);
+> +       readl_poll_timeout_atomic(host->base + MSDC_FIFOCS, val,
+> +                                 !(val & MSDC_FIFOCS_CLR), 0, 0);
+>
+>         val = readl(host->base + MSDC_INT);
+>         writel(val, host->base + MSDC_INT);
+> --
+> 2.18.0
+>
 
