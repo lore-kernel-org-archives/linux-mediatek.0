@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BE0FE81816
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 04:00:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ED15E8181B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 04:40:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dYClnlSGRE/VVPHFCk//gM0X3MtjPFgRACsIZo27ba8=; b=rlEalZRyw1f6lNA0tRGL+4dAeQ
-	kcf4mQ+5syvKVfk11HRFYccxEdnQqobxjm7sVjdW+gb7rxczf9+YKmQJQ1JgHDrqaQ5nEFk1tnyER
-	cCVeP+hJDaNQ2IbPVdGzuS+YxbBjoaxwEKdSJeZjKbk2NOqTlU6uvQ5URTxnrJ7G/cakijv84tEPP
-	V1wm+RTrZ9A58I6cKeEkM/bfowe2KqPu1XW0JWX7xhaY4YrE08V79IeswJdS20+ygqBiLCKw7adXF
-	n2r8aNOB6g4IL4m0rGTXt+mNFyjnhuz/HOm1ayAt/vI21psKQlXi5vWZxVaR/eTRA5+KIS8HKpUCU
-	2blpx+bQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3E1i8LSIOlwTyuk1XAeWZA24GferWyjzighda7xVvfs=; b=dnLJQgf8CTVkwefmEZRSzdz7cw
+	ezxjOe7OdJQtubTp+JPV7uW4ktKt2c0NGADA5etr57E7Zp9VSETcd1ohguhWUCn+F6XCJGG8OQaws
+	NcHhEWQ6gNEE0ra8cD0Coo+Xp9gnRUAEjULk0Gd8OLd9w5w04XQzw7fLMDgyf8teGkNd/EUXr0HQQ
+	k5Lcrrhx/P48LCCM8IT/rKe5SorRLjUkwNmQJ7cCwPM7uRg0N6HcJ5CzQQMKkjChAZ1U8FvLJhfeh
+	VzXrZ5l/Dezh1hTSZD32aiaSu2pdxs0dQ8yApnjK0h3RXZSvYXKF/pD7u6ZF+Mmi6gDX8aqMwf7mU
+	u89/XoiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkzFq-00FW12-1B;
-	Tue, 26 Sep 2023 04:00:58 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1qkzrt-00FZCR-0C;
+	Tue, 26 Sep 2023 04:40:17 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkzFo-00FVzy-11
+	id 1qkzrq-00FZ9g-0l
 	for linux-mediatek@lists.infradead.org;
-	Tue, 26 Sep 2023 04:00:57 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-5041d6d8b10so13057279e87.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Sep 2023 21:00:53 -0700 (PDT)
+	Tue, 26 Sep 2023 04:40:15 +0000
+Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-3ab7fb1172cso3996609b6e.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Sep 2023 21:40:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1695700852; x=1696305652; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dYClnlSGRE/VVPHFCk//gM0X3MtjPFgRACsIZo27ba8=;
-        b=dd+lyDH7stJULefJsRSFx1Ik0od85CseJoBEru/9FrzNBSZXwGHEyXiXOn7h1g2drc
-         Xr6KN/BS1qS51dVufYztuv9UO+i9m1LnZ6jfQPorSh1KDnFmucBXgaRrzSux/5y2+ePj
-         RR5wVvVKyOVCh6NTNAjt3qZFfTkBtHLdzhTqY=
+        d=chromium.org; s=google; t=1695703210; x=1696308010; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=3E1i8LSIOlwTyuk1XAeWZA24GferWyjzighda7xVvfs=;
+        b=cmg7zdlMRWeSuQB1hWvZ3lyjbujjlVoOu8/4+tOywvX0BiviUUuDYQCMuCJoP9CUhI
+         cttVXT7+bEuC3J7cl2QAZ8RXWvQB7gw03FIZ0dVv/nLYCayJY0WpexqfN+9ON/KJQsPB
+         ZDgr741xa20iDDvI+EBErDm941j5hYlD83cMw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695700852; x=1696305652;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dYClnlSGRE/VVPHFCk//gM0X3MtjPFgRACsIZo27ba8=;
-        b=hY6cLG5CE+8BxmXDq+OOV2nZSb0hWiOnf6p996e+GGUKfT7Fv4amj83OXzD4rleB0p
-         gAMWZ8zHRhnxyxoMjDOnYiassPuxeLzgX4RsoHnZBRGrq5KO1dK/GvCskN/67QnKc8zT
-         MpQ39AXmjOokYxGykQvhUh69SZNMI+HEzxI7EXygrYQLaXx6low25FspzL6GiHWkq8Ri
-         C3GNHnijVstutd2UoWZPCYmCOV4tcmYqbgropJchPA205n8+8ADvUt25ErrGKB2rVFBR
-         ubwIEUSnlwE1Mcq+usoawk0PNyk1XdsBwbMaF3TG+QDzDtfRULdhHGIDh/VCXoSrKxiR
-         oAag==
-X-Gm-Message-State: AOJu0YzoV1IaYQ2KIYNrXrLFfM60JPknd8d0bNwvgD8AdY5Qb3TlB+lk
-	GbWShD/4drmEuQ1Q5v+82y523Zw7kmuf6cnlShhUwQ==
-X-Google-Smtp-Source: AGHT+IEtkTctsf5HbOONUd8gTf3/GdExf1zf0JDg4leCj0a9OJM+OM1FoXuuppkPECKOTlmyKr+PorFc6IG0rss5xr4=
-X-Received: by 2002:a05:6512:3995:b0:502:ff3b:7670 with SMTP id
- j21-20020a056512399500b00502ff3b7670mr8220870lfu.4.1695700851585; Mon, 25 Sep
- 2023 21:00:51 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230921091057.3812-1-duminjie@vivo.com>
-In-Reply-To: <20230921091057.3812-1-duminjie@vivo.com>
+        d=1e100.net; s=20230601; t=1695703210; x=1696308010;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3E1i8LSIOlwTyuk1XAeWZA24GferWyjzighda7xVvfs=;
+        b=VxHkS2XRbjgjL26Zwy6juloPI2nsWk3/3xmgVcrBnhScxNWZwLyxOwVt+QwdYXA2KB
+         7oHO+AWfvUiydF8qdVuKzVk+6nk+PZlNMBLYoC0M+5Hj0x3DdXKf7wdtpuWQtzGwegaC
+         AwvMGlaPUDhF4JBHhLD8YgXiNI0hjNX4NM0LOeR/j3ZV0a+mF4zpgTf/rgHNvKVq2goO
+         zP7zZscYaa8kFDeFlMR7A66VqAkSVb/cU2EqBvPjWoBM051g7nHTxkhQTpaoeAapnGef
+         q0uy2MuyLDgK6I3/O3e5K4acrwfIyl8CpoZ6vNJ2gkPB+TADmQKVH7xGBbjZJTLrBJzu
+         da4w==
+X-Gm-Message-State: AOJu0YxiBdbPUGeuvYRgfrCOBs+s7pehkRfnwJ3dCDjvFXL5lqza7OPS
+	yUS1fzK2uNxyUKwhrPYv9thgfw==
+X-Google-Smtp-Source: AGHT+IE1o3rIsLU2bGltTLnHyrko+WsamuoFNkx5JhLKgydhfKe82ipsXYX70K9cDmuDGQev2xoeMA==
+X-Received: by 2002:a05:6808:8f9:b0:3a7:6213:6897 with SMTP id d25-20020a05680808f900b003a762136897mr8120224oic.11.1695703210209;
+        Mon, 25 Sep 2023 21:40:10 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:ba86:87c4:df1a:be60])
+        by smtp.gmail.com with ESMTPSA id p11-20020a63ab0b000000b00563590be25esm8667210pgf.29.2023.09.25.21.40.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Sep 2023 21:40:09 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 26 Sep 2023 12:00:40 +0800
-Message-ID: <CAGXv+5HFsLxVqoUsa4BAC8waq=hXoh=4sdXxSmFP1vB1FhnsZQ@mail.gmail.com>
-Subject: Re: [PATCH v1] thermal/drivers/mediatek/lvts_thermal: fix error check
- in lvts_debugfs_init()
-To: Minjie Du <duminjie@vivo.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
-	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alexandre Mergnat <amergnat@baylibre.com>, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Balsam CHIHI <bchihi@baylibre.com>, "open list:THERMAL" <linux-pm@vger.kernel.org>, 
-	open list <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, opensource.kernel@vivo.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Mark Brown <broonie@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Zhiyong Tao <zhiyong.tao@mediatek.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH RESEND v3 0/3] regulator: mt6358: Remove bogus regulators and improvements
+Date: Tue, 26 Sep 2023 12:34:45 +0800
+Message-ID: <20230926043450.2353320-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.42.0.515.g380fc7ccd1-goog
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_210056_354529_2EEB3CDA 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230925_214014_273588_5367ED83 
+X-CRM114-Status: GOOD (  17.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,14 +91,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 21, 2023 at 5:11=E2=80=AFPM Minjie Du <duminjie@vivo.com> wrote=
-:
->
-> debugfs_create_dir() function returns an error value embedded in
-> the pointer (PTR_ERR). Evaluate the return value using IS_ERR
-> rather than checking for NULL.
->
-> Signed-off-by: Minjie Du <duminjie@vivo.com>
+Hi,
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+This seems to have fallen through the cracks, so I'm resending with tags
+collected and patches rebased onto next-20230925. The diffs remain the
+same.
+
+This is v3 of the remainder of the MT6358 regulator driver cleanup
+and improvement series. v1 can be found here [1]; v2 is here [2].
+
+Changes since v2:
+- Merged patches dropped
+- Fixed up pickable linear ranges' selector values
+- Collected tags
+- Patch adding missing regulator definitions squashed into patch using
+  the definitions; recommended by Krzysztof on my MT6366 series.
+- Remaining dts patch split out to be sent separately
+
+Changes since v1:
+- Merged patches dropped
+- Added patch to move VCN33 regulator status sync after ID check
+- Added patch to fix VCN33 sync fail error message
+- Added patch to add missing register definitions
+
+Various discrepancies were found while preparing to upstream MT8186
+device trees, which utilize the MT6366 PMIC, that is also covered by
+this driver.
+
+This v3 series can be seen as two parts. v1 had three parts, but one
+part was fully merged, and then v2 gained another cleanup. v3 drops
+the "fixing bogus regulators" part: driver changes are fully merged
+and device tree change has been sent separately [3]. All patches here
+should go through the regulator tree.
+
+Part 1 - Robust chip ID checking (patch 1)
+
+Angelo suggested making the driver fail to probe if an unexpected chip
+ID was found. Patch 1 implements this.
+
+Part 2 - Output voltage fine tuning support (patches 2, 3)
+
+Many of the LDOs on these PMIC support an extra level of output voltage
+fine tuning. Most default to no offset, but a couple have a non-zero
+offset by default. Previously this was unaccounted for in the driver and
+device tree constraints. On the outputs with non-zero offset, this ends
+up becoming a discrepancy between the device tree and actual hardware.
+These two patches adds support for this second level of tuning, modeled
+as bunch of linear ranges. While it's unlikely we need this level of
+control, it's nice to be able to read back the accurate hardware
+settings.
+
+The series has been reviewed, and the mfd header change has been acked
+by Lee. Please merge.
+
+Thanks
+ChenYu
+
+[1] https://lore.kernel.org/linux-arm-kernel/20230609083009.2822259-1-wenst@chromium.org/
+[2] https://lore.kernel.org/linux-mediatek/20230721082903.2038975-1-wenst@chromium.org/
+[3] https://lore.kernel.org/linux-mediatek/20230913084457.1638690-1-wenst@chromium.org/
+
+Chen-Yu Tsai (3):
+  regulator: mt6358: Fail probe on unknown chip ID
+  regulator: mt6358: Add output voltage fine tuning to fixed regulators
+  regulator: mt6358: Add output voltage fine tuning to variable LDOs
+
+ drivers/regulator/mt6358-regulator.c | 304 ++++++++++++---------------
+ include/linux/mfd/mt6358/registers.h |   6 +
+ 2 files changed, 144 insertions(+), 166 deletions(-)
+
+-- 
+2.42.0.515.g380fc7ccd1-goog
+
 
