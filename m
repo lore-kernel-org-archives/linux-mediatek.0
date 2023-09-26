@@ -4,76 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24ADEE7E649
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 15:04:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59312E7E649
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Sep 2023 15:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HeFjiy4HXCSDHqncKbVdy7TDNdv7qqAs1Sfi74FhiwE=; b=rfQMVNB8gics5Y9ceIu4R4BC0f
-	QQaP1PK0/Yre9Nap2v24LI/H8wlsIZFWpS0rtwkXCe1i+V5d2Ldmrw1ARxWQRgdm7ttdf1DWJoXIK
-	E5BcNTWhnSFzvffuZ5N9WyUv4UKhT3FqPiPb1Xat0BmV2XlF0XMVOUlYbEXTbSIwPYASdDbt8GVFd
-	5rtX1KJ9ITbl/9/ze54AK0lZXjUCKW1ebQKN2A6gjepIeJRCtUViKjsgztjqFucqVpdS0+Xbm5rna
-	yqVlHIxVs7OiI6AXdU7aMauX18o13gKU6Gc5m0NGtsaL9AojAcBtDoWnNEnu4Fk9jOenctEloMVnl
-	MYMjnipg==;
+	bh=eEIGdAXRmsVj+14uFmNlm3Naze+UluxpULCH/+QcmgA=; b=b1vjWn8upNB6gLc3xfkx86wQpO
+	AOI6M5X5g8t7CGq6ek2dWOgNthWdzRlcRVfb63C6Fgi46dfg5yTDtmVsr7wXLsLozT9GP5cIjUsmX
+	cXvISR9+zV/XE9JSWzhCewbE8U7MSuWd+84S06y7RgDfzdxnpIWLAwlkMylYlYeIU22FGu1vzSiKZ
+	6Z/5K9Ps2YBiu+XAPqrnaa5y7aaLYAxxV7W7Ndp6JXS/Uxwb9VyPncjw1fdpWl8nggLPbK1JanxXN
+	YcHErA9ZxdgWPnDTPD6uBVDw3P3AwKuzis5kz1Kt2UXI8XwGfe5gpWopEhlgqfTKVVqqHppdv8Qlx
+	So61XTBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql9bp-00GbZC-31;
-	Tue, 26 Sep 2023 15:04:21 +0000
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql9bo-00GbXZ-04
-	for linux-mediatek@lists.infradead.org;
-	Tue, 26 Sep 2023 15:04:21 +0000
-Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-6bf298ef1f5so5586437a34.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Sep 2023 08:04:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695740659; x=1696345459; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=HeFjiy4HXCSDHqncKbVdy7TDNdv7qqAs1Sfi74FhiwE=;
-        b=oCMeN4MTTA3xMWOd+7U/mAqlSbfboZhf+m4gR4CWzNwi15llMZj49QhRxjEwbKGUGS
-         VMg+OYS/979y2/PQbvqJAT2VKgohywJDm3xQQLvDJH11W7rjsY9cP/wci0KAcJdX7w5b
-         wI9OFBd7HjyOROqQgpHKwPg7sXEHbIOsHlJEpEkliCGn+btB5zab1nPJqVB1RUZU04ul
-         JxRUlSVRu1ZxE3qQzvjkGXJFdEN7vnt+X/y6vAaGb9Aml5XzKoS18N5I+ro4ShrPZGo/
-         pxy+w0cZrTYZKShro6NpRPTaPKqe6dYJp009OK+Y7PhB8D8P/084vCmLPPehySMTkcZ6
-         SsXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695740659; x=1696345459;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=HeFjiy4HXCSDHqncKbVdy7TDNdv7qqAs1Sfi74FhiwE=;
-        b=Fy9tHUvUYibPGC5o/clESeb0MeSKI/hWF7i9CyNoJ+zRe2ugX4vH/WrjiQkxO2yP9b
-         B6b4EBbQQsLAJHm2IodFB0dV19zvj7yBVSKne9g+nDZ44A5gQgg4n5erHIoQLU1UIOCL
-         AyGjDm/O4XEFSGPM9CwKAi/s9L3cuk/LE3UgXkOadm1uL35g/LIe0gBQvTwomyyrxA9T
-         H8ANEMSKdCXndPi7XbpAcfp5C+hQ0eIQqldDKgC9MC8GYoPlZxgTwf805ikjWiHPuVLK
-         0f2busU+Ws9gxO8iUDCd2w47u20D/lBqODh8g2auWoRxPYsb2jNfwz2bYaSnz3g8pOgc
-         lDqw==
-X-Gm-Message-State: AOJu0Yy5CCYXCqW4tBf/Y01/HD8jUgRcvPUOKPEzGK9UGMeWOXiIlk93
-	rOa84AbwYJb21Rwyz5OZt+o/PW8iA8WOg+vJh7wUaw==
-X-Google-Smtp-Source: AGHT+IGdQuvVsg+gmIk0SmA4JMrymCzShro3UtZMccAsP+0p8Rtd1FF4Qge9tx7ZaLRR3USnZ4acnj3DZvpnD5dhoHo=
-X-Received: by 2002:a05:6830:22e4:b0:6b9:68fb:5a28 with SMTP id
- t4-20020a05683022e400b006b968fb5a28mr10468019otc.27.1695740658349; Tue, 26
- Sep 2023 08:04:18 -0700 (PDT)
+	id 1ql9c4-00GbgX-0r;
+	Tue, 26 Sep 2023 15:04:36 +0000
+Received: from mail.8bytes.org ([85.214.250.239])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1ql9c0-00Gbe0-2g;
+	Tue, 26 Sep 2023 15:04:34 +0000
+Received: from 8bytes.org (pd9fe9df8.dip0.t-ipconnect.de [217.254.157.248])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id CA82A1A21CC;
+	Tue, 26 Sep 2023 17:04:29 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1695740670;
+	bh=o8oWUCyKGLr6aRpJEcyERxcIW3a0GD0rf9gmZgpvK2A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=6TpFhndRPNvIgt7yzA2/aJMoYkdnS16cebzf4UtP23CQlpQ+Gak1eYrm6l6OjKYEx
+	 6ov9MN4xTFyWr54bLnOpm430Hupplf8W0SxvaQlB6FgmJn2Bupf3Brid8BS/nZqAQO
+	 hvu4Svos9D+f462V9LsyrLj63TJ5HQrEH7+hL9EoBYr83zCI6QFPn3sNZtjggMsFkX
+	 51VP71UAzDGONwXr20Y36QdQJVa+iP+T27lz3G41fM7pXzHksLzD0rpLSvyCctLemD
+	 t/LuaiNXAWO/0BIuVB8b3mYUK3IzpvwsvgMpvM9qZ4RAN8ZffK3kqVvFnLVTK8C6cL
+	 klQPepXng8EOg==
+Date: Tue, 26 Sep 2023 17:04:28 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Niklas Schnelle <schnelle@linux.ibm.com>,
+	Jason Gunthorpe <jgg@ziepe.ca>
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
+	Wenjia Zhang <wenjia@linux.ibm.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Gerd Bayer <gbayer@linux.ibm.com>,
+	Julian Ruess <julianr@linux.ibm.com>,
+	Pierre Morel <pmorel@linux.ibm.com>,
+	Alexandra Winter <wintera@linux.ibm.com>,
+	Heiko Carstens <hca@linux.ibm.com>,
+	Vasily Gorbik <gor@linux.ibm.com>,
+	Alexander Gordeev <agordeev@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Sven Schnelle <svens@linux.ibm.com>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and optimized
+ IOTLB flushing
+Message-ID: <ZRLy_AaJiXxZ2AfK@8bytes.org>
+References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
 MIME-Version: 1.0
-References: <20230922095348.22182-1-pablo.sun@mediatek.com>
-In-Reply-To: <20230922095348.22182-1-pablo.sun@mediatek.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 26 Sep 2023 17:03:42 +0200
-Message-ID: <CAPDyKFo9i-8maLJ=L5re8pe4v2v5vQ8Jy+g-MqtNZH_w6Lb9cg@mail.gmail.com>
-Subject: Re: [PATCH v1] mmc: mtk-sd: Use readl_poll_timeout_atomic in msdc_reset_hw
-To: Pablo Sun <pablo.sun@mediatek.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mmc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230926_080420_064797_05C1B2A0 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20230926_080433_101907_D5EE5518 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,86 +108,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 Sept 2023 at 11:54, Pablo Sun <pablo.sun@mediatek.com> wrote:
->
-> Use atomic readl_poll_timeout_atomic, because msdc_reset_hw
-> may be invoked in IRQ handler in the following context:
->
->   msdc_irq() -> msdc_cmd_done() -> msdc_reset_hw()
->
-> The following kernel BUG stack trace can be observed on
-> Genio 1200 EVK after initializing MSDC1 hardware during kernel boot:
->
-> [    1.187441] BUG: scheduling while atomic: swapper/0/0/0x00010002
-> [    1.189157] Modules linked in:
-> [    1.204633] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W         5.15.42-mtk+modified #1
-> [    1.205713] Hardware name: MediaTek Genio 1200 EVK-P1V2-EMMC (DT)
-> [    1.206484] Call trace:
-> [    1.206796]  dump_backtrace+0x0/0x1ac
-> [    1.207266]  show_stack+0x24/0x30
-> [    1.207692]  dump_stack_lvl+0x68/0x84
-> [    1.208162]  dump_stack+0x1c/0x38
-> [    1.208587]  __schedule_bug+0x68/0x80
-> [    1.209056]  __schedule+0x6ec/0x7c0
-> [    1.209502]  schedule+0x7c/0x110
-> [    1.209915]  schedule_hrtimeout_range_clock+0xc4/0x1f0
-> [    1.210569]  schedule_hrtimeout_range+0x20/0x30
-> [    1.211148]  usleep_range_state+0x84/0xc0
-> [    1.211661]  msdc_reset_hw+0xc8/0x1b0
-> [    1.212134]  msdc_cmd_done.isra.0+0x4ac/0x5f0
-> [    1.212693]  msdc_irq+0x104/0x2d4
-> [    1.213121]  __handle_irq_event_percpu+0x68/0x280
-> [    1.213725]  handle_irq_event+0x70/0x15c
-> [    1.214230]  handle_fasteoi_irq+0xb0/0x1a4
-> [    1.214755]  handle_domain_irq+0x6c/0x9c
-> [    1.215260]  gic_handle_irq+0xc4/0x180
-> [    1.215741]  call_on_irq_stack+0x2c/0x54
-> [    1.216245]  do_interrupt_handler+0x5c/0x70
-> [    1.216782]  el1_interrupt+0x30/0x80
-> [    1.217242]  el1h_64_irq_handler+0x1c/0x2c
-> [    1.217769]  el1h_64_irq+0x78/0x7c
-> [    1.218206]  cpuidle_enter_state+0xc8/0x600
-> [    1.218744]  cpuidle_enter+0x44/0x5c
-> [    1.219205]  do_idle+0x224/0x2d0
-> [    1.219624]  cpu_startup_entry+0x30/0x80
-> [    1.220129]  rest_init+0x108/0x134
-> [    1.220568]  arch_call_rest_init+0x1c/0x28
-> [    1.221094]  start_kernel+0x6c0/0x700
-> [    1.221564]  __primary_switched+0xc0/0xc8
->
-> Fixes: ffaea6ebfe9c ("mmc: mtk-sd: Use readl_poll_timeout instead of open-coded polling")
-> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
+Hi Niklas,
 
-Applied for fixes and by adding a stable tag, thanks!
+On Fri, Aug 25, 2023 at 12:11:15PM +0200, Niklas Schnelle wrote:
+> Niklas Schnelle (6):
+>       iommu: Allow .iotlb_sync_map to fail and handle s390's -ENOMEM return
+>       s390/pci: prepare is_passed_through() for dma-iommu
+>       s390/pci: Use dma-iommu layer
+>       iommu/s390: Disable deferred flush for ISM devices
+>       iommu/dma: Allow a single FQ in addition to per-CPU FQs
+>       iommu/dma: Use a large flush queue and timeout for shadow_on_flush
 
-Kind regards
-Uffe
+Turned out this series has non-trivial conflicts with Jasons
+default-domain work so I had to remove it from the IOMMU tree for now.
+Can you please rebase it to the latest iommu/core branch and re-send? I
+will take it into the tree again then.
 
+Thanks,
 
-> ---
->  drivers/mmc/host/mtk-sd.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 5392200cfdf7..97f7c3d4be6e 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -669,11 +669,11 @@ static void msdc_reset_hw(struct msdc_host *host)
->         u32 val;
->
->         sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_RST);
-> -       readl_poll_timeout(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
-> +       readl_poll_timeout_atomic(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
->
->         sdr_set_bits(host->base + MSDC_FIFOCS, MSDC_FIFOCS_CLR);
-> -       readl_poll_timeout(host->base + MSDC_FIFOCS, val,
-> -                          !(val & MSDC_FIFOCS_CLR), 0, 0);
-> +       readl_poll_timeout_atomic(host->base + MSDC_FIFOCS, val,
-> +                                 !(val & MSDC_FIFOCS_CLR), 0, 0);
->
->         val = readl(host->base + MSDC_INT);
->         writel(val, host->base + MSDC_INT);
-> --
-> 2.18.0
->
+	Joerg
 
