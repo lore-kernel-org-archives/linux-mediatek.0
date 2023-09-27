@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0A8EE82CBF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 18:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D10F7E82CC5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 18:56:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pgknUwnq9gIV+tvRlScN3zfltL029CTlXmtn1qWfZ48=; b=zVxsyqY0oauquSREh2ojH0A4OR
-	ihvYWSFl/juN23Hj8Jc9mTFkp1FAkhkR+AG/+J1+CIceQsMlxLx25G8i3t9pL/ASNMoC0ojx1CMgw
-	jIme88HaW5NM+bDZFJ7H4hLahy5ATu/0f1UKeufuj1FLjFNz6u+86+gbhQRslPnRZCkcJG81O7IRD
-	JSC9L65oafJHc8ll8l0CP46QCPWtaA29dPdV/Aq2qrsj9EORPl5k7rrOwDvSjZ83RTy15L/xc0OcQ
-	oF8ahUINLyjlI5tFX1UHNlXqsDC8m+8YNudIus7jRNigvEkJKYwJ+COXgpGxPjJq6Jlxi+XC4Q4gF
-	w6V5Yl8A==;
+	bh=MurAOYPXjHwdvk7TTp2tGZ93V7FzPadwfJU/w4cmONw=; b=vUcuzlvnrfyAnJepKTRbDneSTl
+	nBGsHm/I7ft56r5XjCmIxNnagkQGHw7z3vxWgndSKfyE3gf8F9x1AldN2qAd3K+nOm5/3cikEH3GK
+	LL8a+kb3PCwS1AB9zLR94A+rPA6b0PPcZ3GlpKTysxcNC3YsYGFvopcW/LEUKXx/WK8kHURUPfU/s
+	agkPOjdsovfv598IXNuBd2d5R9QVgfKEqkdQYEc2+oxZkLyZGzBHbCDr7G+Iq+wTVBiziNAGx+dGq
+	XocUUfYELvpgcob4YNfTsco7xjFG55cFuoCLQhVuqYJEbrGGqnp/qOc0SyFsbLPAOR6Sa0TGyXQVC
+	2laJIT+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlZfw-001biJ-13;
-	Wed, 27 Sep 2023 18:54:20 +0000
-Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
+	id 1qlZi7-001bwa-2I;
+	Wed, 27 Sep 2023 18:56:35 +0000
+Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlZfs-001bh7-0D
+	id 1qlZi4-001bvD-39
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Sep 2023 18:54:17 +0000
-Received: by mail-il1-x130.google.com with SMTP id e9e14a558f8ab-351367c1c24so23435ab.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Sep 2023 11:54:15 -0700 (PDT)
+	Wed, 27 Sep 2023 18:56:34 +0000
+Received: by mail-il1-x135.google.com with SMTP id e9e14a558f8ab-3514ece5ed4so25625ab.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Sep 2023 11:56:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1695840855; x=1696445655; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1695840991; x=1696445791; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pgknUwnq9gIV+tvRlScN3zfltL029CTlXmtn1qWfZ48=;
-        b=cq4NUwapX/cSHlY4keKTouhMcc5ylTLhZaJE4dzqzZa/68dO+8lh6Si88Mj4xRVybR
-         BjmMAyrE21ec4f4Y+h9t/zthboOHI43ArbKWK3Ji6K197y1s3Tt6X71QVUyeDN/6Aq/2
-         AslygaSfdeprR8vrraSwiTsK0H/GA4qkj5YZcU66LMP7kCp55hpP0Sk7xiwQ9bBphOHW
-         rNJdbAbMC8tBYCPNepHKJ2jqeBYreI8+27sSfUz9sLvv5e/EeBtgqVa6ZX8XJXOWpnjU
-         LJ9zLTu9Q1cyIrpmIctw02CGUb1tSKUUs6g224woNrS473TT/8PWxYZaXpD6hXhJ2elF
-         Qk0w==
+        bh=MurAOYPXjHwdvk7TTp2tGZ93V7FzPadwfJU/w4cmONw=;
+        b=LBFhPdDgrlUJtR1+fYD2TpQcuEOF8BwmjTPLplLrxotwdYKHrC6lmfvJMSg1KLGaO0
+         yxxEdfbPxi0G11bIvnE1Jp95yVCT86kPGCSXPQV4HSZJ2/0lmMX0Bc0Rv3Xp+8pWeQCx
+         oMbEabC5NWAJmMq+6/I76nXG2m/Hopq3aOzSJA7qZd/1FMtYfL4zNTlMDLNkb7/OnRti
+         ZCTGQCRi2IorkJHHOAQ5aFzxl5DAV6LmscU/Pr+pOgt/kKkznha7qHNZ4wbtAmqmFo9S
+         xqR86oyqJp/cgptxw7Ny1ipdpNbVV2d5xqZdF58kHd/+4bc+J9MuW8Z4isKz+dUPthBp
+         9aDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695840855; x=1696445655;
+        d=1e100.net; s=20230601; t=1695840991; x=1696445791;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pgknUwnq9gIV+tvRlScN3zfltL029CTlXmtn1qWfZ48=;
-        b=EDaV4QobuTDEwhNwEvUEXa75zyqrJjLnCmUxr1wu6U7oBU4IMEPFCV1NiB0nRnasUL
-         2NzhIp5jTW00pONlxt33KJ/x/Sp6taa9ECaM6kUGEqe59Y/8RjGtHBgduPriEUpWHy37
-         2GpvuoEkQj+bd4veRfAYMsBkEYdJ9Mt6VqqSXzE41Sc+AExKWl9WWCXMFnheE7PRwSEG
-         ORJDrmjbsts5v1omkcfUUz+vDk1eymyDJ76Qnt4p6HbE1zpetfJF45j9r7Zs7Bxc9JH4
-         j9RfyBCAD3Gb5eEqLoymEJbashi/HGQLEuYRoQVZsQkymkFf2ws4Tl7V3adk8TgSNtRN
-         giIw==
-X-Gm-Message-State: AOJu0YybG5omQWKeVFzS6MtTuiR6+cj9WBwsUz8JRVmEINRaTa+3n6yv
-	QHBzuy0IiE+aIxrsSoi3MgMg+cOBm14o103rS+KW
-X-Google-Smtp-Source: AGHT+IGFTNOeIjY0z4z1jsppqGQ/+DkN5LKNzVhtRpc1fe/Zjm0L6bfMROX9KjJp8peSFpnQgwJTEYqVV/8DUuyxQQM=
-X-Received: by 2002:a92:c242:0:b0:34d:ff4c:5e3a with SMTP id
- k2-20020a92c242000000b0034dff4c5e3amr748810ilo.10.1695840854718; Wed, 27 Sep
- 2023 11:54:14 -0700 (PDT)
+        bh=MurAOYPXjHwdvk7TTp2tGZ93V7FzPadwfJU/w4cmONw=;
+        b=wpLr+HAQWsQbveaEJyDeaaz2PwjIjUKpCT0eLiBDrbFqN+z/8tj0W4bkurelmZ8pwE
+         Tsv1zMvqwOA7C77NJV5bSdpQgVcS3zriiHbMzCWC9ILTaW3c+05jvcCjLiOWm7a+yKDH
+         VbuUD6DBvrOU7h33JfX+gAMnvVgpCvccTD3n0gHB7Xp8sW2hVvHvwlD882XrvZY7yQAh
+         MZkoWYciEFxai/3o5oy9u3T2w8ux2PTXgu2m8K2DChF6Wb0CBjuIZykLaF6MxQrucHHQ
+         TO+CSDd5ZX+rsY/cW9ZEhsrl4E+RcNdeW5/0pKvocMVx+QgLUNWnT6i5FzzvI2cDSeaU
+         77fA==
+X-Gm-Message-State: AOJu0YyVCKGr9jKbZ3VvUbhW07zhyLtgFq13lAhuYiuOIPFIq9NTYdIe
+	/+OV0Dx9tj6+lLcza2/tuzXp0KeSTlE+wyyFSr4C
+X-Google-Smtp-Source: AGHT+IHpy0ebrOGWKBvJhgjGq+yQihXMl6pVYmNyHBVx+lU9W2/wuviNywEw1Opgza+nHML4UERjWiWazlDFeUjnHnI=
+X-Received: by 2002:a05:6e02:1988:b0:34f:71b0:e72b with SMTP id
+ g8-20020a056e02198800b0034f71b0e72bmr693354ilf.27.1695840991320; Wed, 27 Sep
+ 2023 11:56:31 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230911023038.30649-1-yong.wu@mediatek.com> <20230911023038.30649-6-yong.wu@mediatek.com>
  <d0373c02-9b22-661f-9930-ca720053c2a0@collabora.com> <a115a2a5d3ac218e6db65ccdb0a1876f9cfca02b.camel@mediatek.com>
  <d798b15b-6f35-96db-e3f7-5c0bcc5d46a2@collabora.com> <a4ecc2792f3a4d3159e34415be984ff7d5f5e263.camel@mediatek.com>
- <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain>
-In-Reply-To: <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain>
+ <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain> <3aaafe47-3733-a4d5-038d-a7e439309282@collabora.com>
+In-Reply-To: <3aaafe47-3733-a4d5-038d-a7e439309282@collabora.com>
 From: Jeffrey Kardatzke <jkardatzke@google.com>
-Date: Wed, 27 Sep 2023 11:54:03 -0700
-Message-ID: <CA+ddPcNDOsd4+1a3W5ufA-FaCc801bKkA-OapNKOC8snXrntAw@mail.gmail.com>
+Date: Wed, 27 Sep 2023 11:56:20 -0700
+Message-ID: <CA+ddPcP4=p37cV5Tbn5zTUbiL4ou+Yqb=5rS+O_ff8ZUw64D3Q@mail.gmail.com>
 Subject: Re: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
-To: Joakim Bech <joakim.bech@linaro.org>
-Cc: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>, 
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: Joakim Bech <joakim.bech@linaro.org>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>, 
 	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
 	"christian.koenig@amd.com" <christian.koenig@amd.com>, 
 	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
@@ -84,7 +84,6 @@ Cc: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
 	=?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?= <Jianjiao.Zeng@mediatek.com>, 
 	=?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>, 
 	"conor+dt@kernel.org" <conor+dt@kernel.org>, "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>, 
-	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, 
 	"tjmercier@google.com" <tjmercier@google.com>, 
 	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
 	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
@@ -92,8 +91,8 @@ Cc: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_115416_105634_8DE49064 
-X-CRM114-Status: GOOD (  48.62  )
+X-CRM114-CacheID: sfid-20230927_115633_009711_E74643DE 
+X-CRM114-Status: GOOD (  43.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,202 +107,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 27, 2023 at 6:46=E2=80=AFAM Joakim Bech <joakim.bech@linaro.org=
-> wrote:
+On Wed, Sep 27, 2023 at 8:18=E2=80=AFAM Benjamin Gaignard
+<benjamin.gaignard@collabora.com> wrote:
 >
-> On Mon, Sep 25, 2023 at 12:49:50PM +0000, Yong Wu (=E5=90=B4=E5=8B=87) wr=
-ote:
-> > On Tue, 2023-09-12 at 11:32 +0200, AngeloGioacchino Del Regno wrote:
-> > > Il 12/09/23 08:17, Yong Wu (=E5=90=B4=E5=8B=87) ha scritto:
-> > > > On Mon, 2023-09-11 at 11:29 +0200, AngeloGioacchino Del Regno
-> > > > wrote:
-> > > > > Il 11/09/23 04:30, Yong Wu ha scritto:
-> > > > > > The TEE probe later than dma-buf heap, and PROBE_DEDER doesn't
-> > > > > > work
-> > > > > > here since this is not a platform driver, therefore initialise
-> > > > > > the
-> > > > > > TEE
-> > > > > > context/session while we allocate the first secure buffer.
-> > > > > >
-> > > > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > > > ---
-> > > > > >    drivers/dma-buf/heaps/mtk_secure_heap.c | 61
-> > > > > > +++++++++++++++++++++++++
-> > > > > >    1 file changed, 61 insertions(+)
-> > > > > >
-> > > > > > diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c
-> > > > > > b/drivers/dma-
-> > > > > > buf/heaps/mtk_secure_heap.c
-> > > > > > index bbf1c8dce23e..e3da33a3d083 100644
-> > > > > > --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
-> > > > > > +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
-> > > > > > @@ -10,6 +10,12 @@
-> > > > > >    #include <linux/err.h>
-> > > > > >    #include <linux/module.h>
-> > > > > >    #include <linux/slab.h>
-> > > > > > +#include <linux/tee_drv.h>
-> > > > > > +#include <linux/uuid.h>
-> > > > > > +
-> > > > > > +#define TZ_TA_MEM_UUID               "4477588a-8476-11e2-ad15-
-> > > > > > e41f1390d676"
-> > > > > > +
-> > > > >
-> > > > > Is this UUID the same for all SoCs and all TZ versions?
-> > > >
-> > > > Yes. It is the same for all SoCs and all TZ versions currently.
-> > > >
-> > >
-> > > That's good news!
-> > >
-> > > Is this UUID used in any userspace component? (example: Android
-> > > HALs?)
+>
+> Le 27/09/2023 =C3=A0 15:46, Joakim Bech a =C3=A9crit :
+> > On Mon, Sep 25, 2023 at 12:49:50PM +0000, Yong Wu (=E5=90=B4=E5=8B=87) =
+wrote:
+> >> On Tue, 2023-09-12 at 11:32 +0200, AngeloGioacchino Del Regno wrote:
+> >>> Il 12/09/23 08:17, Yong Wu (=E5=90=B4=E5=8B=87) ha scritto:
+> >>>> On Mon, 2023-09-11 at 11:29 +0200, AngeloGioacchino Del Regno
+> >>>> wrote:
+> >>>>> Il 11/09/23 04:30, Yong Wu ha scritto:
+> >>>>>> The TEE probe later than dma-buf heap, and PROBE_DEDER doesn't
+> >>>>>> work
+> >>>>>> here since this is not a platform driver, therefore initialise
+> >>>>>> the
+> >>>>>> TEE
+> >>>>>> context/session while we allocate the first secure buffer.
+> >>>>>>
+> >>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> >>>>>> ---
+> >>>>>>     drivers/dma-buf/heaps/mtk_secure_heap.c | 61
+> >>>>>> +++++++++++++++++++++++++
+> >>>>>>     1 file changed, 61 insertions(+)
+> >>>>>>
+> >>>>>> diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>> b/drivers/dma-
+> >>>>>> buf/heaps/mtk_secure_heap.c
+> >>>>>> index bbf1c8dce23e..e3da33a3d083 100644
+> >>>>>> --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>> +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>> @@ -10,6 +10,12 @@
+> >>>>>>     #include <linux/err.h>
+> >>>>>>     #include <linux/module.h>
+> >>>>>>     #include <linux/slab.h>
+> >>>>>> +#include <linux/tee_drv.h>
+> >>>>>> +#include <linux/uuid.h>
+> >>>>>> +
+> >>>>>> +#define TZ_TA_MEM_UUID          "4477588a-8476-11e2-ad15-
+> >>>>>> e41f1390d676"
+> >>>>>> +
+> >>>>> Is this UUID the same for all SoCs and all TZ versions?
+> >>>> Yes. It is the same for all SoCs and all TZ versions currently.
+> >>>>
+> >>> That's good news!
+> >>>
+> >>> Is this UUID used in any userspace component? (example: Android
+> >>> HALs?)
+> >> No. Userspace never use it. If userspace would like to allocate this
+> >> secure buffer, it can achieve through the existing dmabuf IOCTL via
+> >> /dev/dma_heap/mtk_svp node.
+> >>
+> > In general I think as mentioned elsewhere in comments, that there isn't
+> > that much here that seems to be unique for MediaTek in this patch
+> > series, so I think it worth to see whether this whole patch set can be
+> > made more generic. Having said that, the UUID is always unique for a
+> > certain Trusted Application. So, it's not entirely true saying that the
+> > UUID is the same for all SoCs and all TrustZone versions. It might be
+> > true for a family of MediaTek devices and the TEE in use, but not
+> > generically.
 > >
-> > No. Userspace never use it. If userspace would like to allocate this
-> > secure buffer, it can achieve through the existing dmabuf IOCTL via
-> > /dev/dma_heap/mtk_svp node.
+> > So, if we need to differentiate between different TA implementations,
+> > then we need different UUIDs. If it would be possible to make this patc=
+h
+> > set generic, then it sounds like a single UUID would be sufficient, but
+> > that would imply that all TA's supporting such a generic UUID would be
+> > implemented the same from an API point of view. Which also means that
+> > for example Trusted Application function ID's needs to be the same etc.
+> > Not impossible to achieve, but still not easy (different TEE follows
+> > different specifications) and it's not typically something we've done i=
+n
+> > the past.
 > >
-> In general I think as mentioned elsewhere in comments, that there isn't
-> that much here that seems to be unique for MediaTek in this patch
-> series, so I think it worth to see whether this whole patch set can be
-> made more generic. Having said that, the UUID is always unique for a
-> certain Trusted Application. So, it's not entirely true saying that the
-> UUID is the same for all SoCs and all TrustZone versions. It might be
-> true for a family of MediaTek devices and the TEE in use, but not
-> generically.
+> > Unfortunately there is no standardized database of TA's describing what
+> > they implement and support.
+> >
+> > As an alternative, we could implement a query call in the TEE answering=
+,
+> > "What UUID does your TA have that implements secure unmapped heap?".
+> > I.e., something that reminds of a lookup table. Then we wouldn't have t=
+o
+> > carry this in UAPI, DT or anywhere else.
 >
-> So, if we need to differentiate between different TA implementations,
-> then we need different UUIDs. If it would be possible to make this patch
-> set generic, then it sounds like a single UUID would be sufficient, but
-> that would imply that all TA's supporting such a generic UUID would be
-> implemented the same from an API point of view. Which also means that
-> for example Trusted Application function ID's needs to be the same etc.
-> Not impossible to achieve, but still not easy (different TEE follows
-> different specifications) and it's not typically something we've done in
-> the past.
+> Joakim does a TA could offer a generic API and hide the hardware specific
+> details (like kernel uAPI does for drivers) ?
+It would have to go through another layer (like the tee driver) to be
+a generic API. The main issue with TAs is that they have UUIDs you
+need to connect to and specific codes for each function; so we should
+abstract at a layer above where those exist in the dma-heap code.
 >
-> Unfortunately there is no standardized database of TA's describing what
-> they implement and support.
+> Aside that question I wonder what are the needs to perform a 'secure' pla=
+yback.
+> I have in mind 2 requirements:
+> - secure memory regions, which means configure the hardware to ensure tha=
+t only
+> dedicated hardware blocks and read or write into it.
+> - set hardware blocks in secure modes so they access to secure memory.
+> Do you see something else ?
+This is more or less what is required, but this is out of scope for
+the Linux kernel since it can't be trusted to do these things...this
+is all done in firmware or the TEE itself.
 >
-> As an alternative, we could implement a query call in the TEE answering,
-> "What UUID does your TA have that implements secure unmapped heap?".
-> I.e., something that reminds of a lookup table. Then we wouldn't have to
-> carry this in UAPI, DT or anywhere else.
->
-
-I think that's a good idea. If we add kernel APIs to the tee for
-opening a session for secure memory allocation and for performing the
-allocation, then the UUID, TA commands and TA parameters can all be
-decided upon in the TEE specific driver and the code in dma-heap
-becomes generic.
-
-> --
-> // Regards
-> Joakim
+> Regards,
+> Benjamin
 >
 > >
-> > > If it is (and I somehow expect that it is), then this definition
-> > > should go
-> > > to a UAPI header, as suggested by Christian.
-> > >
-> > > Cheers!
-> > >
-> > > > >
-> > > > > Thanks,
-> > > > > Angelo
-> > > > >
-> > > > >
-> > > > > > +#define MTK_TEE_PARAM_NUM            4
-> > > > > >
-> > > > > >    /*
-> > > > > >     * MediaTek secure (chunk) memory type
-> > > > > > @@ -28,17 +34,72 @@ struct mtk_secure_heap_buffer {
-> > > > > >    struct mtk_secure_heap {
-> > > > > >       const char              *name;
-> > > > > >       const enum kree_mem_type mem_type;
-> > > > > > +     u32                      mem_session;
-> > > > > > +     struct tee_context      *tee_ctx;
-> > > > > >    };
-> > > > > >
-> > > > > > +static int mtk_optee_ctx_match(struct tee_ioctl_version_data
-> > > > > > *ver,
-> > > > > > const void *data)
-> > > > > > +{
-> > > > > > +     return ver->impl_id =3D=3D TEE_IMPL_ID_OPTEE;
-> > > > > > +}
-> > > > > > +
-> > > > > > +static int mtk_kree_secure_session_init(struct mtk_secure_heap
-> > > > > > *sec_heap)
-> > > > > > +{
-> > > > > > +     struct tee_param t_param[MTK_TEE_PARAM_NUM] =3D {0};
-> > > > > > +     struct tee_ioctl_open_session_arg arg =3D {0};
-> > > > > > +     uuid_t ta_mem_uuid;
-> > > > > > +     int ret;
-> > > > > > +
-> > > > > > +     sec_heap->tee_ctx =3D tee_client_open_context(NULL,
-> > > > > > mtk_optee_ctx_match,
-> > > > > > +                                                 NULL,
-> > > > > > NULL);
-> > > > > > +     if (IS_ERR(sec_heap->tee_ctx)) {
-> > > > > > +             pr_err("%s: open context failed, ret=3D%ld\n",
-> > > > > > sec_heap-
-> > > > > > > name,
-> > > > > >
-> > > > > > +                    PTR_ERR(sec_heap->tee_ctx));
-> > > > > > +             return -ENODEV;
-> > > > > > +     }
-> > > > > > +
-> > > > > > +     arg.num_params =3D MTK_TEE_PARAM_NUM;
-> > > > > > +     arg.clnt_login =3D TEE_IOCTL_LOGIN_PUBLIC;
-> > > > > > +     ret =3D uuid_parse(TZ_TA_MEM_UUID, &ta_mem_uuid);
-> > > > > > +     if (ret)
-> > > > > > +             goto close_context;
-> > > > > > +     memcpy(&arg.uuid, &ta_mem_uuid.b, sizeof(ta_mem_uuid));
-> > > > > > +
-> > > > > > +     ret =3D tee_client_open_session(sec_heap->tee_ctx, &arg,
-> > > > > > t_param);
-> > > > > > +     if (ret < 0 || arg.ret) {
-> > > > > > +             pr_err("%s: open session failed, ret=3D%d:%d\n",
-> > > > > > +                    sec_heap->name, ret, arg.ret);
-> > > > > > +             ret =3D -EINVAL;
-> > > > > > +             goto close_context;
-> > > > > > +     }
-> > > > > > +     sec_heap->mem_session =3D arg.session;
-> > > > > > +     return 0;
-> > > > > > +
-> > > > > > +close_context:
-> > > > > > +     tee_client_close_context(sec_heap->tee_ctx);
-> > > > > > +     return ret;
-> > > > > > +}
-> > > > > > +
-> > > > > >    static struct dma_buf *
-> > > > > >    mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
-> > > > > >                     unsigned long fd_flags, unsigned long
-> > > > > > heap_flags)
-> > > > > >    {
-> > > > > > +     struct mtk_secure_heap *sec_heap =3D
-> > > > > > dma_heap_get_drvdata(heap);
-> > > > > >       struct mtk_secure_heap_buffer *sec_buf;
-> > > > > >       DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
-> > > > > >       struct dma_buf *dmabuf;
-> > > > > >       int ret;
-> > > > > >
-> > > > > > +     /*
-> > > > > > +      * TEE probe may be late. Initialise the secure session
-> > > > > > in the
-> > > > > > first
-> > > > > > +      * allocating secure buffer.
-> > > > > > +      */
-> > > > > > +     if (!sec_heap->mem_session) {
-> > > > > > +             ret =3D mtk_kree_secure_session_init(sec_heap);
-> > > > > > +             if (ret)
-> > > > > > +                     return ERR_PTR(ret);
-> > > > > > +     }
-> > > > > > +
-> > > > > >       sec_buf =3D kzalloc(sizeof(*sec_buf), GFP_KERNEL);
-> > > > > >       if (!sec_buf)
-> > > > > >               return ERR_PTR(-ENOMEM);
-> > > > >
-> > > > >
-> > >
-> > >
 
