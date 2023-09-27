@@ -4,154 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CA73E82CA5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:24:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD22E82CA6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4GPUWKZBZaFYZhimWD5PFmL2oSJK61nkKmWq/1HRzfE=; b=cKzSE7+4u0LPkFbpj11WekeEZP
-	G8TytVbvOYuHDZ0gU+R5I6g62gJ+v1BpHl1BDTJFEy2W9nTm1UIMmPKS2ydhKZkxCd+3NuknICYkb
-	xEYn4WptvbIjFxTIV6lkPfP9NauB6NMRkuNkNor1yOBXjBPRMp2bEE9oTsZ36zfHGMItyk82PgBw+
-	eTBajejsZAsaSNYh16khalYoIjdGsScxNGnnqHsEUE7atjbe2yPZ+MoxAiuJ1XfEJt2igAbvr+cZ8
-	4j47Sy4p7D93CqZeK9QfXFGp2XLGHk49JN+Jkm4+2NTjruj3s0bfRoq2Dl6fzzw8CcFOyTIq2ikMd
-	SUvHrGMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0r2ZbMJgMN+rLRFnUJbvBz87ebzAWMx23glX8/P7tgQ=; b=hvWN8WwvJlodBVG08F3NTASHWw
+	w6wLASRF7VHTLhrc6f8gKKfX9V6KXEDmTnizkF8szwTDca1OrQOKU/EjqUzItyjvXQt1Ln27sLg8b
+	L/1oOlm1uF23Uzy6vnj44c7THshKiKPfunMr7cqL7idGTPOhjFKvd2GVeyqKIQ/t78+g/xUUudK8O
+	5ciZlQtMW0JcUOz8Y7KMHN/2vyEBLsYPJDoySxgLaC8ghx+Sa4f9qMGfOCOIanqWKwHGA3/XERjig
+	5OaB4JLGaV+bwpngiJUeb/AD23eVMJruQYb1fTzpm3mJoP8bh6SM3xa2oTgb14KDPx1Oo/ieXfuGe
+	DD7Vsk2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWPF-001EY9-1J;
-	Wed, 27 Sep 2023 15:24:53 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+	id 1qlWaB-001GDz-3D;
+	Wed, 27 Sep 2023 15:36:12 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWPC-001EXT-0F;
-	Wed, 27 Sep 2023 15:24:51 +0000
-Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38RF9bGt013931;
-	Wed, 27 Sep 2023 15:24:27 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=4GPUWKZBZaFYZhimWD5PFmL2oSJK61nkKmWq/1HRzfE=;
- b=pGD5yYhHZPXV3FeyG3eNaMML/UeQExGT+ai7edcPW8GFAbJMrq5WuQsLABBSBh/9onkR
- qJEXWOwnsIhMT+5To2DVZ949fEsLY2pEbXikCAXRX1w+ha859lRUnJAWl57sac1Ug+Pk
- PZbAm0kNSBXnp6n5gVrOJUMtABk3ywDPTCMy6MlAULNFrVKAJuqBC23DXYzhXHS50flM
- /nr/8midSqe0+CVgvu9cSDL81aiKfqQN99l1BsqzWUeRu3Oaf6lXiPFviy95PuyX6Wqv
- IxEoEQiGuj6Ql2UQ0i4Y8YHNWbx1fbX0dRIN+ojf5GCrDCz3AQtrk/IVKHWwBw8gVhy+ Kw== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tcpg40spq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 27 Sep 2023 15:24:27 +0000
-Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 38RFKfwH016987;
-	Wed, 27 Sep 2023 15:24:26 GMT
-Received: from ppma22.wdc07v.mail.ibm.com (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tcpg40snq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 27 Sep 2023 15:24:26 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 38RD7jbc008126;
-	Wed, 27 Sep 2023 15:24:24 GMT
-Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
-	by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3taaqymr5f-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 27 Sep 2023 15:24:24 +0000
-Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com [10.20.54.104])
-	by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 38RFOLkO14877436
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 27 Sep 2023 15:24:21 GMT
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 088A42004D;
-	Wed, 27 Sep 2023 15:24:21 +0000 (GMT)
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 7A20C20040;
-	Wed, 27 Sep 2023 15:24:20 +0000 (GMT)
-Received: from [9.152.212.236] (unknown [9.152.212.236])
-	by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Wed, 27 Sep 2023 15:24:20 +0000 (GMT)
-Message-ID: <a672b6b122c7a5f708614346885c190a6960aaea.camel@linux.ibm.com>
-Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and
- optimized IOTLB flushing
-From: Niklas Schnelle <schnelle@linux.ibm.com>
-To: Joerg Roedel <joro@8bytes.org>
-Cc: Jason Gunthorpe <jgg@ziepe.ca>, Matthew Rosato <mjrosato@linux.ibm.com>,
-        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
-        Robin
- Murphy <robin.murphy@arm.com>,
-        Gerd Bayer <gbayer@linux.ibm.com>,
-        Julian
- Ruess <julianr@linux.ibm.com>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        Alexandra Winter <wintera@linux.ibm.com>,
-        Heiko Carstens
- <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
-        Alexander Gordeev
- <agordeev@linux.ibm.com>,
-        Christian Borntraeger
- <borntraeger@linux.ibm.com>,
-        Sven Schnelle <svens@linux.ibm.com>,
-        Suravee
- Suthikulpanit <suravee.suthikulpanit@amd.com>,
-        Hector Martin
- <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-        Alyssa Rosenzweig
- <alyssa@rosenzweig.io>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Lu Baolu
- <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson
- <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Yong Wu
- <yong.wu@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-        Orson Zhai
- <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan
- Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec
- <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry
- Reding <thierry.reding@gmail.com>,
-        Krishna Reddy <vdumpa@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        iommu@lists.linux.dev, asahi@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Date: Wed, 27 Sep 2023 17:24:20 +0200
-In-Reply-To: <6dab29f58ac1ccd58caaee031f98f4d0d382cbcd.camel@linux.ibm.com>
-References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
-	 <ZRLy_AaJiXxZ2AfK@8bytes.org> <20230926160832.GM13795@ziepe.ca>
-	 <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
-	 <ZRP8CiBui7suB5D6@8bytes.org>
-	 <b06a14de270a63050b0d027c24b333dba25001a4.camel@linux.ibm.com>
-	 <e1efbbd827e34800bd7fb0ea687645cc6c65e1ab.camel@linux.ibm.com>
-	 <6dab29f58ac1ccd58caaee031f98f4d0d382cbcd.camel@linux.ibm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	id 1qlWa8-001GBJ-28;
+	Wed, 27 Sep 2023 15:36:10 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1EBD6660730F;
+	Wed, 27 Sep 2023 16:36:07 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695828967;
+	bh=MOk2KKodOqrhhN2jePaaGtM0G7JvZDpVcdwxnUt/ZJU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=duudKOIjodHd6k38tbvClz5wHtLPWCGD278/zPScVhrsRQeXDOAQpa0d9y/CVPziP
+	 RxDy9qXrCJ5aSslt/NmKI2dMnfj6Q2pgCeeS23td2bj2bQKvSwXXDCsYVliPNbMyVp
+	 BQs/c9iNcmASmnMvwMAXaFzsGvG9H9spKluyevFFaDH01Oao3kDe/qouXIyymIb3TN
+	 lDKdSSjzhSanFdrqfdKQ6A/2GRRYk1aPsbpQSRmWLzrbIRX5c0vAUrY3Uo9hHqj5rV
+	 XwAQOXIwlftxE2+MIfZ2VZR9+gAOU0oWDfcfqdy7OI00hYv21vDojPyBQY3cTToChp
+	 ru37KlmVjWXHA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 01/53] media: videobuf2: Rework offset 'cookie' encoding pattern
+Date: Wed, 27 Sep 2023 17:35:06 +0200
+Message-Id: <20230927153558.159278-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
+References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: 1V1HFM5XJ2XYGhTpmGqGOrM8x8bKe6Pt
-X-Proofpoint-GUID: MdpAhX9T9gQ4cUAJLa_z553KP9Gq2ZRV
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-09-27_09,2023-09-27_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- phishscore=0 bulkscore=0 spamscore=0 malwarescore=0 mlxscore=0
- priorityscore=1501 clxscore=1015 adultscore=0 mlxlogscore=999
- impostorscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2309180000 definitions=main-2309270127
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_082450_232896_A59C8315 
-X-CRM114-Status: GOOD (  45.10  )
+X-CRM114-CacheID: sfid-20230927_083608_952946_6A7CE0A3 
+X-CRM114-Status: GOOD (  20.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,94 +87,178 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2023-09-27 at 16:31 +0200, Niklas Schnelle wrote:
-> On Wed, 2023-09-27 at 15:20 +0200, Niklas Schnelle wrote:
-> > On Wed, 2023-09-27 at 13:24 +0200, Niklas Schnelle wrote:
-> > > On Wed, 2023-09-27 at 11:55 +0200, Joerg Roedel wrote:
-> > > > Hi Niklas,
-> > > >=20
-> > > > On Wed, Sep 27, 2023 at 10:55:23AM +0200, Niklas Schnelle wrote:
-> > > > > The problem is that something seems to  be broken in the iommu/co=
-re
-> > > > > branch. Regardless of whether I have my DMA API conversion on top=
- or
-> > > > > with the base iommu/core branch I can not use ConnectX-4 VFs.
-> > > >=20
-> > > > Have you already tried to bisect the issue in the iommu/core branch=
-?
-> > > > The result might sched some light on the issue.
-> > > >=20
-> > > > Regards,
-> > > >=20
-> > > > 	Joerg
-> > >=20
-> > > Hi Joerg,
-> > >=20
-> > > Working on it, somehow I must have messed up earlier. It now looks li=
-ke
-> > > it might in fact be caused by my DMA API conversion rebase and the
-> > > "s390/pci: Use dma-iommu layer" commit. Maybe there is some interacti=
-on
-> > > with Jason's patches that I haven't thought about. So sorry for any
-> > > wrong blame.
-> > >=20
-> > > Thanks,
-> > > Niklas
-> >=20
-> > Hi,
-> >=20
-> > I tracked the problem=C2=A0down from mlx5_core's alloc_cmd_page() via
-> > dma_alloc_coherent(), ops->alloc, iommu_dma_alloc_remap(), and
-> > __iommu_dma_alloc_noncontiguous() to a failed iommu_dma_alloc_iova().
-> > The allocation here is for 4K so nothing crazy.
-> >=20
-> > On second look I also noticed:
-> >=20
-> > nvme 2007:00:00.0: Using 42-bit DMA addresses
-> >=20
-> > for the NVMe that is working. The problem here seems to be that we set
-> > iommu_dma_forcedac =3D true in s390_iommu_probe_finalize() because we
-> > have currently have a reserved region over the first 4 GiB anyway so
-> > will always use IOVAs larger than that. That however is too late since
-> > iommu_dma_set_pci_32bit_workaround() is already checked in
-> > __iommu_probe_device() which is called just before ops-
-> > > probe_finalize(). So I moved setting iommu_dma_forcedac =3D true to
-> > zpci_init_iommu() and that gets rid of the notice for the NVMe but I
-> > still get a failure of iommu_dma_alloc_iova() in
-> > __iommu_dma_alloc_noncontiguous(). So I'll keep digging.
-> >=20
-> > Thanks,
-> > Niklas
->=20
->=20
-> Ok I think I got it and this doesn't seem strictly s390x specific but
-> I'd think should happen with iommu.forcedac=3D1 everywhere.
->=20
-> The reason iommu_dma_alloc_iova() fails seems to be that mlx5_core does
-> dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64)) in=C2=A0
-> mlx5_pci_init()->set_dma_caps() which happens after it already called
-> mlx5_mdev_init()->mlx5_cmd_init()->alloc_cmd_page() so for the
-> dma_alloc_coherent() in there the dev->coherent_dma_mask is still
-> DMA_BIT_MASK(32) for which we can't find an IOVA because well we don't
-> have IOVAs below 4 GiB. Not entirely sure what caused this not to be
-> enforced before.
->=20
-> Thanks,
-> Niklas
->=20
+Change how offset 'cookie' field value is computed to make possible
+to use more buffers (up to 0x7fff)
+With this encoding pattern we know the maximum number that a queue
+could store so we can check ing at queue init time.
+It also make easier and faster to find buffer and plane from using
+the offset field.
+Change __find_plane_by_offset() prototype to return the video buffer
+itself rather than it index.
 
-Ok, another update. On trying it out again this problem actually also
-occurs when applying this v12 on top of v6.6-rc3 too. Also I guess
-unlike my prior thinking it probably doesn't occur with
-iommu.forcedac=3D1 since that still allows IOVAs below 4 GiB and we might
-be the only ones who don't support those. From my point of view this
-sounds like a mlx5_core issue they really should call
-dma_set_mask_and_coherent() before their first call to
-dma_alloc_coherent() not after. So I guess I'll send a v13 of this
-series rebased on iommu/core and with an additional mlx5 patch and then
-let's hope we can get that merged in a way that doesn't leave us with
-broken ConnectX VFs for too long.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 74 +++++++++----------
+ 1 file changed, 35 insertions(+), 39 deletions(-)
 
-Thanks,
-Niklas
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index cf6727d9c81f..6eeddb3a01c7 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -31,6 +31,14 @@
+ 
+ #include <trace/events/vb2.h>
+ 
++#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
++#define PLANE_INDEX_MASK	0x7
++#define BUFFER_INDEX_MASK	0x7fff
++
++#if PAGE_SHIFT != 12
++#error Expected PAGE_SHIFT to be 12
++#endif
++
+ static int debug;
+ module_param(debug, int, 0644);
+ 
+@@ -358,21 +366,23 @@ static void __setup_offsets(struct vb2_buffer *vb)
+ 	unsigned int plane;
+ 	unsigned long off = 0;
+ 
+-	if (vb->index) {
+-		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+-		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+-
+-		off = PAGE_ALIGN(p->m.offset + p->length);
+-	}
++	/*
++	 * Offsets cookies value have the following constraints:
++	 * - a buffer could have up to 8 planes.
++	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
++	 * - must be page aligned
++	 * That led to this bit mapping:
++	 * |30                |29        15|14       12|11 0|
++	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
++	 * where there are 15 bits to store buffer index.
++	 */
++	off = vb->index << PLANE_INDEX_SHIFT;
+ 
+ 	for (plane = 0; plane < vb->num_planes; ++plane) {
+-		vb->planes[plane].m.offset = off;
++		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
+ 
+ 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+ 				vb->index, plane, off);
+-
+-		off += vb->planes[plane].length;
+-		off = PAGE_ALIGN(off);
+ 	}
+ }
+ 
+@@ -2185,13 +2195,12 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type)
+ EXPORT_SYMBOL_GPL(vb2_core_streamoff);
+ 
+ /*
+- * __find_plane_by_offset() - find plane associated with the given offset off
++ * __find_plane_by_offset() - find video buffer and plane associated with the given offset off
+  */
+ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+-			unsigned int *_buffer, unsigned int *_plane)
++			struct vb2_buffer **vb, unsigned int *plane)
+ {
+-	struct vb2_buffer *vb;
+-	unsigned int buffer, plane;
++	unsigned int buffer;
+ 
+ 	/*
+ 	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
+@@ -2209,24 +2218,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+ 		return -EBUSY;
+ 	}
+ 
+-	/*
+-	 * Go over all buffers and their planes, comparing the given offset
+-	 * with an offset assigned to each plane. If a match is found,
+-	 * return its buffer and plane numbers.
+-	 */
+-	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+-		vb = q->bufs[buffer];
++	/* Get buffer and plane from the offset */
++	buffer = (off >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
++	*plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+ 
+-		for (plane = 0; plane < vb->num_planes; ++plane) {
+-			if (vb->planes[plane].m.offset == off) {
+-				*_buffer = buffer;
+-				*_plane = plane;
+-				return 0;
+-			}
+-		}
+-	}
++	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
++		return -EINVAL;
+ 
+-	return -EINVAL;
++	*vb = q->bufs[buffer];
++	return 0;
+ }
+ 
+ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+@@ -2306,7 +2306,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ {
+ 	unsigned long off = vma->vm_pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+-	unsigned int buffer = 0, plane = 0;
++	unsigned int plane = 0;
+ 	int ret;
+ 	unsigned long length;
+ 
+@@ -2335,12 +2335,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, off, &buffer, &plane);
++	ret = __find_plane_by_offset(q, off, &vb, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
+-	vb = q->bufs[buffer];
+-
+ 	/*
+ 	 * MMAP requires page_aligned buffers.
+ 	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
+@@ -2368,7 +2366,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	if (ret)
+ 		return ret;
+ 
+-	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
++	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(vb2_mmap);
+@@ -2382,7 +2380,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ {
+ 	unsigned long off = pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+-	unsigned int buffer, plane;
++	unsigned int plane;
+ 	void *vaddr;
+ 	int ret;
+ 
+@@ -2392,12 +2390,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, off, &buffer, &plane);
++	ret = __find_plane_by_offset(q, off, &vb, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
+-	vb = q->bufs[buffer];
+-
+ 	vaddr = vb2_plane_vaddr(vb, plane);
+ 	mutex_unlock(&q->mmap_lock);
+ 	return vaddr ? (unsigned long)vaddr : -EINVAL;
+-- 
+2.39.2
+
 
