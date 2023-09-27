@@ -4,88 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFEB4E82CA1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CA73E82CA5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:24:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PUR9f3yf3mDoanEX2WYkGJA7wO8CKRJBjFQcmn1JwDw=; b=WMeOGFhKF+ykBnJSoO66oonyt2
-	pEiMB/5sB95P/4MBlo7u+VRvyijkI6Z3sJQfNCr7+5hq63yxFHLldA7WHo7AlwQj7FIMwu/jp6idY
-	rK8G24qKsee84l6E4FQ9Jw2Ckb1rB0S2YO5yVS8o7UzFNF5fVok0q2Am/XeqBQBiKdvRwFJCQ6iZD
-	gVXDKCYRlF7f0Xie5NCKCA/Job1nF48L9FH3gOreCEIBDuQP9ak/5eTkT7YXgAy2xGPI6OdEMdE+y
-	33LuuSg3wLdmu0Soz+N/y7bgIIYgh1hVnI2WmTbrbaa40+JYrgY5B2AxHTE+ADLZbwR1X5ThoB83H
-	oV3HuV7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4GPUWKZBZaFYZhimWD5PFmL2oSJK61nkKmWq/1HRzfE=; b=cKzSE7+4u0LPkFbpj11WekeEZP
+	G8TytVbvOYuHDZ0gU+R5I6g62gJ+v1BpHl1BDTJFEy2W9nTm1UIMmPKS2ydhKZkxCd+3NuknICYkb
+	xEYn4WptvbIjFxTIV6lkPfP9NauB6NMRkuNkNor1yOBXjBPRMp2bEE9oTsZ36zfHGMItyk82PgBw+
+	eTBajejsZAsaSNYh16khalYoIjdGsScxNGnnqHsEUE7atjbe2yPZ+MoxAiuJ1XfEJt2igAbvr+cZ8
+	4j47Sy4p7D93CqZeK9QfXFGp2XLGHk49JN+Jkm4+2NTjruj3s0bfRoq2Dl6fzzw8CcFOyTIq2ikMd
+	SUvHrGMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWIm-001Dhu-1x;
-	Wed, 27 Sep 2023 15:18:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qlWPF-001EY9-1J;
+	Wed, 27 Sep 2023 15:24:53 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWIj-001DgI-0Z;
-	Wed, 27 Sep 2023 15:18:10 +0000
-Received: from [IPV6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf] (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 01CC266072FA;
-	Wed, 27 Sep 2023 16:18:00 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695827881;
-	bh=cZBkE6AW/WssOj4Sg/xEx/jkclNbZ+Y8K8ys56ebtZE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nvQ+joYfwJYLudibSGOOzSGLGqZ+UOM4ouQwSmesmc4Rnn8MMjLisKOD74cHJrbNu
-	 Hdg+Rf8A8LUaI0W5eqotS0MAgkfIn5Qp4gUveDyLdym4xfy/LWWxhWqw4zZ4OiLh3z
-	 WbeER/mejIiJT6i33HVqeydwaHbS8FMoxV3q7qm7rxqGjXCCs4R5KRdzPfcoyO/A+j
-	 xGdDtHGikNoAQCRVO8YB6ebSzYlqvmXfGbfa1wOyVr7fNJEL1Ufk3eVVqz+pbfttwN
-	 0HyqihJMmzpZRvN3NvjmPtgAQDYMFA4+uWovXxx6T8wlJc6sGmwSBbKO1Eu/xBaMLI
-	 W49r7tGjgdx+w==
-Message-ID: <3aaafe47-3733-a4d5-038d-a7e439309282@collabora.com>
-Date: Wed, 27 Sep 2023 17:17:58 +0200
+	id 1qlWPC-001EXT-0F;
+	Wed, 27 Sep 2023 15:24:51 +0000
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38RF9bGt013931;
+	Wed, 27 Sep 2023 15:24:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=4GPUWKZBZaFYZhimWD5PFmL2oSJK61nkKmWq/1HRzfE=;
+ b=pGD5yYhHZPXV3FeyG3eNaMML/UeQExGT+ai7edcPW8GFAbJMrq5WuQsLABBSBh/9onkR
+ qJEXWOwnsIhMT+5To2DVZ949fEsLY2pEbXikCAXRX1w+ha859lRUnJAWl57sac1Ug+Pk
+ PZbAm0kNSBXnp6n5gVrOJUMtABk3ywDPTCMy6MlAULNFrVKAJuqBC23DXYzhXHS50flM
+ /nr/8midSqe0+CVgvu9cSDL81aiKfqQN99l1BsqzWUeRu3Oaf6lXiPFviy95PuyX6Wqv
+ IxEoEQiGuj6Ql2UQ0i4Y8YHNWbx1fbX0dRIN+ojf5GCrDCz3AQtrk/IVKHWwBw8gVhy+ Kw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tcpg40spq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 15:24:27 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 38RFKfwH016987;
+	Wed, 27 Sep 2023 15:24:26 GMT
+Received: from ppma22.wdc07v.mail.ibm.com (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tcpg40snq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 15:24:26 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 38RD7jbc008126;
+	Wed, 27 Sep 2023 15:24:24 GMT
+Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
+	by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3taaqymr5f-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 15:24:24 +0000
+Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com [10.20.54.104])
+	by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 38RFOLkO14877436
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 27 Sep 2023 15:24:21 GMT
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 088A42004D;
+	Wed, 27 Sep 2023 15:24:21 +0000 (GMT)
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 7A20C20040;
+	Wed, 27 Sep 2023 15:24:20 +0000 (GMT)
+Received: from [9.152.212.236] (unknown [9.152.212.236])
+	by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 27 Sep 2023 15:24:20 +0000 (GMT)
+Message-ID: <a672b6b122c7a5f708614346885c190a6960aaea.camel@linux.ibm.com>
+Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and
+ optimized IOTLB flushing
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Joerg Roedel <joro@8bytes.org>
+Cc: Jason Gunthorpe <jgg@ziepe.ca>, Matthew Rosato <mjrosato@linux.ibm.com>,
+        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+        Robin
+ Murphy <robin.murphy@arm.com>,
+        Gerd Bayer <gbayer@linux.ibm.com>,
+        Julian
+ Ruess <julianr@linux.ibm.com>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        Alexandra Winter <wintera@linux.ibm.com>,
+        Heiko Carstens
+ <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+        Alexander Gordeev
+ <agordeev@linux.ibm.com>,
+        Christian Borntraeger
+ <borntraeger@linux.ibm.com>,
+        Sven Schnelle <svens@linux.ibm.com>,
+        Suravee
+ Suthikulpanit <suravee.suthikulpanit@amd.com>,
+        Hector Martin
+ <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig
+ <alyssa@rosenzweig.io>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu
+ <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+        Bjorn Andersson
+ <andersson@kernel.org>,
+        Konrad Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu
+ <yong.wu@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai
+ <orsonzhai@gmail.com>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan
+ Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec
+ <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry
+ Reding <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Date: Wed, 27 Sep 2023 17:24:20 +0200
+In-Reply-To: <6dab29f58ac1ccd58caaee031f98f4d0d382cbcd.camel@linux.ibm.com>
+References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
+	 <ZRLy_AaJiXxZ2AfK@8bytes.org> <20230926160832.GM13795@ziepe.ca>
+	 <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
+	 <ZRP8CiBui7suB5D6@8bytes.org>
+	 <b06a14de270a63050b0d027c24b333dba25001a4.camel@linux.ibm.com>
+	 <e1efbbd827e34800bd7fb0ea687645cc6c65e1ab.camel@linux.ibm.com>
+	 <6dab29f58ac1ccd58caaee031f98f4d0d382cbcd.camel@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
-To: Joakim Bech <joakim.bech@linaro.org>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?=
- <Yong.Wu@mediatek.com>
-Cc: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "christian.koenig@amd.com" <christian.koenig@amd.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "jstultz@google.com" <jstultz@google.com>,
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
- <Jianjiao.Zeng@mediatek.com>, =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?=
- <kuohong.wang@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
- "tjmercier@google.com" <tjmercier@google.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20230911023038.30649-1-yong.wu@mediatek.com>
- <20230911023038.30649-6-yong.wu@mediatek.com>
- <d0373c02-9b22-661f-9930-ca720053c2a0@collabora.com>
- <a115a2a5d3ac218e6db65ccdb0a1876f9cfca02b.camel@mediatek.com>
- <d798b15b-6f35-96db-e3f7-5c0bcc5d46a2@collabora.com>
- <a4ecc2792f3a4d3159e34415be984ff7d5f5e263.camel@mediatek.com>
- <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 1V1HFM5XJ2XYGhTpmGqGOrM8x8bKe6Pt
+X-Proofpoint-GUID: MdpAhX9T9gQ4cUAJLa_z553KP9Gq2ZRV
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-09-27_09,2023-09-27_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ phishscore=0 bulkscore=0 spamscore=0 malwarescore=0 mlxscore=0
+ priorityscore=1501 clxscore=1015 adultscore=0 mlxlogscore=999
+ impostorscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2309180000 definitions=main-2309270127
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_081809_492929_2F471CA8 
-X-CRM114-Status: GOOD (  30.43  )
+X-CRM114-CacheID: sfid-20230927_082450_232896_A59C8315 
+X-CRM114-Status: GOOD (  45.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,93 +166,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 2023-09-27 at 16:31 +0200, Niklas Schnelle wrote:
+> On Wed, 2023-09-27 at 15:20 +0200, Niklas Schnelle wrote:
+> > On Wed, 2023-09-27 at 13:24 +0200, Niklas Schnelle wrote:
+> > > On Wed, 2023-09-27 at 11:55 +0200, Joerg Roedel wrote:
+> > > > Hi Niklas,
+> > > >=20
+> > > > On Wed, Sep 27, 2023 at 10:55:23AM +0200, Niklas Schnelle wrote:
+> > > > > The problem is that something seems to  be broken in the iommu/co=
+re
+> > > > > branch. Regardless of whether I have my DMA API conversion on top=
+ or
+> > > > > with the base iommu/core branch I can not use ConnectX-4 VFs.
+> > > >=20
+> > > > Have you already tried to bisect the issue in the iommu/core branch=
+?
+> > > > The result might sched some light on the issue.
+> > > >=20
+> > > > Regards,
+> > > >=20
+> > > > 	Joerg
+> > >=20
+> > > Hi Joerg,
+> > >=20
+> > > Working on it, somehow I must have messed up earlier. It now looks li=
+ke
+> > > it might in fact be caused by my DMA API conversion rebase and the
+> > > "s390/pci: Use dma-iommu layer" commit. Maybe there is some interacti=
+on
+> > > with Jason's patches that I haven't thought about. So sorry for any
+> > > wrong blame.
+> > >=20
+> > > Thanks,
+> > > Niklas
+> >=20
+> > Hi,
+> >=20
+> > I tracked the problem=C2=A0down from mlx5_core's alloc_cmd_page() via
+> > dma_alloc_coherent(), ops->alloc, iommu_dma_alloc_remap(), and
+> > __iommu_dma_alloc_noncontiguous() to a failed iommu_dma_alloc_iova().
+> > The allocation here is for 4K so nothing crazy.
+> >=20
+> > On second look I also noticed:
+> >=20
+> > nvme 2007:00:00.0: Using 42-bit DMA addresses
+> >=20
+> > for the NVMe that is working. The problem here seems to be that we set
+> > iommu_dma_forcedac =3D true in s390_iommu_probe_finalize() because we
+> > have currently have a reserved region over the first 4 GiB anyway so
+> > will always use IOVAs larger than that. That however is too late since
+> > iommu_dma_set_pci_32bit_workaround() is already checked in
+> > __iommu_probe_device() which is called just before ops-
+> > > probe_finalize(). So I moved setting iommu_dma_forcedac =3D true to
+> > zpci_init_iommu() and that gets rid of the notice for the NVMe but I
+> > still get a failure of iommu_dma_alloc_iova() in
+> > __iommu_dma_alloc_noncontiguous(). So I'll keep digging.
+> >=20
+> > Thanks,
+> > Niklas
+>=20
+>=20
+> Ok I think I got it and this doesn't seem strictly s390x specific but
+> I'd think should happen with iommu.forcedac=3D1 everywhere.
+>=20
+> The reason iommu_dma_alloc_iova() fails seems to be that mlx5_core does
+> dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64)) in=C2=A0
+> mlx5_pci_init()->set_dma_caps() which happens after it already called
+> mlx5_mdev_init()->mlx5_cmd_init()->alloc_cmd_page() so for the
+> dma_alloc_coherent() in there the dev->coherent_dma_mask is still
+> DMA_BIT_MASK(32) for which we can't find an IOVA because well we don't
+> have IOVAs below 4 GiB. Not entirely sure what caused this not to be
+> enforced before.
+>=20
+> Thanks,
+> Niklas
+>=20
 
-Le 27/09/2023 à 15:46, Joakim Bech a écrit :
-> On Mon, Sep 25, 2023 at 12:49:50PM +0000, Yong Wu (吴勇) wrote:
->> On Tue, 2023-09-12 at 11:32 +0200, AngeloGioacchino Del Regno wrote:
->>> Il 12/09/23 08:17, Yong Wu (吴勇) ha scritto:
->>>> On Mon, 2023-09-11 at 11:29 +0200, AngeloGioacchino Del Regno
->>>> wrote:
->>>>> Il 11/09/23 04:30, Yong Wu ha scritto:
->>>>>> The TEE probe later than dma-buf heap, and PROBE_DEDER doesn't
->>>>>> work
->>>>>> here since this is not a platform driver, therefore initialise
->>>>>> the
->>>>>> TEE
->>>>>> context/session while we allocate the first secure buffer.
->>>>>>
->>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>>>>> ---
->>>>>>     drivers/dma-buf/heaps/mtk_secure_heap.c | 61
->>>>>> +++++++++++++++++++++++++
->>>>>>     1 file changed, 61 insertions(+)
->>>>>>
->>>>>> diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c
->>>>>> b/drivers/dma-
->>>>>> buf/heaps/mtk_secure_heap.c
->>>>>> index bbf1c8dce23e..e3da33a3d083 100644
->>>>>> --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
->>>>>> +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
->>>>>> @@ -10,6 +10,12 @@
->>>>>>     #include <linux/err.h>
->>>>>>     #include <linux/module.h>
->>>>>>     #include <linux/slab.h>
->>>>>> +#include <linux/tee_drv.h>
->>>>>> +#include <linux/uuid.h>
->>>>>> +
->>>>>> +#define TZ_TA_MEM_UUID		"4477588a-8476-11e2-ad15-
->>>>>> e41f1390d676"
->>>>>> +
->>>>> Is this UUID the same for all SoCs and all TZ versions?
->>>> Yes. It is the same for all SoCs and all TZ versions currently.
->>>>
->>> That's good news!
->>>
->>> Is this UUID used in any userspace component? (example: Android
->>> HALs?)
->> No. Userspace never use it. If userspace would like to allocate this
->> secure buffer, it can achieve through the existing dmabuf IOCTL via
->> /dev/dma_heap/mtk_svp node.
->>
-> In general I think as mentioned elsewhere in comments, that there isn't
-> that much here that seems to be unique for MediaTek in this patch
-> series, so I think it worth to see whether this whole patch set can be
-> made more generic. Having said that, the UUID is always unique for a
-> certain Trusted Application. So, it's not entirely true saying that the
-> UUID is the same for all SoCs and all TrustZone versions. It might be
-> true for a family of MediaTek devices and the TEE in use, but not
-> generically.
->
-> So, if we need to differentiate between different TA implementations,
-> then we need different UUIDs. If it would be possible to make this patch
-> set generic, then it sounds like a single UUID would be sufficient, but
-> that would imply that all TA's supporting such a generic UUID would be
-> implemented the same from an API point of view. Which also means that
-> for example Trusted Application function ID's needs to be the same etc.
-> Not impossible to achieve, but still not easy (different TEE follows
-> different specifications) and it's not typically something we've done in
-> the past.
->
-> Unfortunately there is no standardized database of TA's describing what
-> they implement and support.
->
-> As an alternative, we could implement a query call in the TEE answering,
-> "What UUID does your TA have that implements secure unmapped heap?".
-> I.e., something that reminds of a lookup table. Then we wouldn't have to
-> carry this in UAPI, DT or anywhere else.
+Ok, another update. On trying it out again this problem actually also
+occurs when applying this v12 on top of v6.6-rc3 too. Also I guess
+unlike my prior thinking it probably doesn't occur with
+iommu.forcedac=3D1 since that still allows IOVAs below 4 GiB and we might
+be the only ones who don't support those. From my point of view this
+sounds like a mlx5_core issue they really should call
+dma_set_mask_and_coherent() before their first call to
+dma_alloc_coherent() not after. So I guess I'll send a v13 of this
+series rebased on iommu/core and with an additional mlx5 patch and then
+let's hope we can get that merged in a way that doesn't leave us with
+broken ConnectX VFs for too long.
 
-Joakim does a TA could offer a generic API and hide the hardware specific
-details (like kernel uAPI does for drivers) ?
-
-Aside that question I wonder what are the needs to perform a 'secure' playback.
-I have in mind 2 requirements:
-- secure memory regions, which means configure the hardware to ensure that only
-dedicated hardware blocks and read or write into it.
-- set hardware blocks in secure modes so they access to secure memory.
-Do you see something else ?
-
-Regards,
-Benjamin
-
->
+Thanks,
+Niklas
 
