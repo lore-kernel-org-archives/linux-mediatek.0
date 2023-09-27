@@ -4,89 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7623E7F158
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 03:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B82EE7F159
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 03:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=T/VjjYSP/nPGqaqNizuILOYzcVE0ssqx9zL+nJLUZjQ=; b=wSvk128Eza2ht3HlcELRdabSrG
-	7B7eBdk2RPFOnwvHBzcY/26BYV04RkYbon9YotJzAiV0Awu4Ffrw8sSVV3KzAB9kn4HHPOkt0C9SS
-	9g4OyEOmDeGPs8Oe69xB/KYkLT81n6oNqVr6aEZzYzr13yUCZD8EqcyZlYjOxpJRjN9Z4iZMtLEeq
-	sEdN2JlC4AgFr9T4yj+0it3aQGnkOpxFSDKYY7rJwPbaY0kTCSVys0v3qnCPhtdY+LPkv7JTChOkU
-	pdKIS5KIlpWBTC2P7SzTuyXnwWbVfOmUfDkolv0ci6KcTipppjrYTti7XndUY62dmkk1Kir7oP1OI
-	9+5PwMKQ==;
+	bh=QY8wTZWBh0Cu35+gt0igMLXPa6Vr9TYelNtjwTezN4Y=; b=CpVj2KvdGojcvXvhe0d73cID09
+	prOBfncF9G/H+0XUfm+n1zAfWljGJxRVPsPyJNsYhiIn735QdaYzpjM8EDc4trpEOJqqKsX22aR6L
+	HAtTTkP2di/W5FQCKjwS7zitWYVU6tY1kX2kTAmRDZMCsSkPTaTR13/V6eHUm97tuAi5MzzFQYFHo
+	tL0VJ/rbHaDs1bIYoaaqa+uy2f/zWwQ2/v1+VEXJSphjydahwuDt9PQkaKa68+3c+Yb2M/h9tUTiO
+	vn1cQl6C39PsxGZhK113s3UOPAA0dX2vTNd8ecp3W8B5IpGN411RKcdQQZ7Olz4+yVpNSAv4pdhw2
+	QplHcgMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlLK6-00HSKG-0m;
-	Wed, 27 Sep 2023 03:34:50 +0000
+	id 1qlLLN-00HSRz-0L;
+	Wed, 27 Sep 2023 03:36:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlLK4-00HSJK-0J;
-	Wed, 27 Sep 2023 03:34:49 +0000
-X-UUID: cbc087ae5ce611ee9b7791016c24628a-20230926
+	id 1qlLLK-00HSRZ-1D
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Sep 2023 03:36:07 +0000
+X-UUID: fbb9512a5ce611ee9b7791016c24628a-20230926
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=T/VjjYSP/nPGqaqNizuILOYzcVE0ssqx9zL+nJLUZjQ=;
-	b=KUJXGpn+UPKPm1zEdCKI47NctVFEkZIcD46tWk6sGfc9EbEJdvsI/M9cl8bK0q7To3DNcFiY0KQLAEzouv+3COiWzhqcalxwbBcMUIuIg3p+o6Pq6eGJql4Gh4txEdZAxmUaefvzQxteqSiPP10HFg2I6KJBR3MlTJT/3rmtl5k=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QY8wTZWBh0Cu35+gt0igMLXPa6Vr9TYelNtjwTezN4Y=;
+	b=fHHyxCiIRpD4hP/HyyoPl8N5frakhKuDD+c4a9vFboqRCFk1VWa35DEXN58nVXe71NkITpgqQ3PiqBuHP3J4hPTPOu2B0RAl3b6dEHqiKybVz/1OhWkjdwAlecAx4OpzayPfGPnV0H5s//RvqCQuVPf2aM6L1EdYBAYZ6QJ/W2E=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:ea93935d-c7a5-490e-a36b-3eee0f36db92,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:797147e5-49e3-444c-a28a-e043a284e423,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:59a42df0-9a6e-4c39-b73e-f2bc08ca3dc5,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:ba3a51bf-14cc-44ca-b657-2d2783296e72,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: cbc087ae5ce611ee9b7791016c24628a-20230926
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <kuyo.chang@mediatek.com>)
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: fbb9512a5ce611ee9b7791016c24628a-20230926
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 476733469; Tue, 26 Sep 2023 20:34:42 -0700
+	with ESMTP id 664146858; Tue, 26 Sep 2023 20:36:03 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 27 Sep 2023 11:34:37 +0800
+ 15.2.1118.26; Wed, 27 Sep 2023 11:36:00 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 27 Sep 2023 11:34:37 +0800
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
-	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
-	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
- Gorman" <mgorman@suse.de>, Daniel Bristot de Oliveira <bristot@redhat.com>,
-	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, kuyo chang <kuyo.chang@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/1] sched/core: Fix stuck on completion for affine_move_task() when stopper disable
-Date: Wed, 27 Sep 2023 11:34:28 +0800
-Message-ID: <20230927033431.12406-1-kuyo.chang@mediatek.com>
+ 15.2.1118.26 via Frontend Transport; Wed, 27 Sep 2023 11:36:00 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>
+Subject: [PATCH v5] ufs: core: wlun send SSU timeout recovery
+Date: Wed, 27 Sep 2023 11:35:57 +0800
+Message-ID: <20230927033557.13801-1-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.864400-8.000000
-X-TMASE-MatchedRID: As59EB+03ZJ5vTMZrS1iteEbUg4xvs+wQPCWRE0Lo8IuMQd1pYoA2S7T
-	4vtNNpmPhKuaVJ364l1mLZH0kmMDZ1hdPEiZHlm8M8ORI7N4NZbAmOfzKotToi8x1W7rdOBP9BQ
-	FWu9qPYa9zsLeDLxbzwszukfLgYhRIg67HHizFeEZXJLztZviXEyQ5fRSh265CqIJhrrDy29ggP
-	1j4uH9PN1TeFi3Fi9wgDLqnrRlXrZLA5JD98yI6t0H8LFZNFG71sULACB0qRKy9IyVQRrf1+Lim
-	nu7EgSJ3xsiz2kBzNBhrAU2FX2OVDTiLbRo2+mmlExlQIQeRG0=
+X-TM-AS-Result: No-10--1.982800-8.000000
+X-TMASE-MatchedRID: txJkgVt2LQAMQLXc2MGSbEKcYi5Qw/RVaN2KuTwsCwIGW3hFnC9N1XVi
+	1hAU/d+eLiiu988wpnv6XP0KNPsN+xXfDcvxC40Q0Xw0ILvo/uV+tO36GYDlsruqk4cq52pz8R2
+	RsKRNAl33RDlj++r10gG2ORx9EyapKc+6Aaw3enmrVklnbP5Jtn0tCKdnhB58k4rY1r+vswgXvQ
+	kGi3tjz/cUt5lc1lLgKIzdZS3ou0W8241FL2hxML1ccGegns0wJiJB6FMX2gKghkaAgQH3kY5Tm
+	ctR+5kToOAaijm225g6sj43Zt+ZdH80Ey2I90n2o+mBAiSUmlt5lSmbrC6fdtr/To2FgNrjDLMI
+	OOVTHz12N6Rg5qIpOg==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.864400-8.000000
+X-TMASE-Result: 10--1.982800-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 9EB54FCE026D70D8BD80CFED08505FB3291A82D5ACCBCBA0DED2477AA3C8A2E32000:8
+X-TM-SNTS-SMTP: 2380C98A8E4F0699B9DE8648C946633CB6D3CEA3E10ABAAD2EEDD7252CC8FEF52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230926_203448_139910_131F92E7 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20230926_203606_419218_4FE555A8 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,57 +103,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kuyo chang <kuyo.chang@mediatek.com>
+From: Peter Wang <peter.wang@mediatek.com>
 
-[Syndrome] hung detect shows below warning msg
-[ 4320.666557] [   T56] khungtaskd: [name:hung_task&]INFO: task stressapptest:17803 blocked for more than 3600 seconds.
-[ 4320.666589] [   T56] khungtaskd: [name:core&]task:stressapptest   state:D stack:0     pid:17803 ppid:17579  flags:0x04000008
-[ 4320.666601] [   T56] khungtaskd: Call trace:
-[ 4320.666607] [   T56] khungtaskd:  __switch_to+0x17c/0x338
-[ 4320.666642] [   T56] khungtaskd:  __schedule+0x54c/0x8ec
-[ 4320.666651] [   T56] khungtaskd:  schedule+0x74/0xd4
-[ 4320.666656] [   T56] khungtaskd:  schedule_timeout+0x34/0x108
-[ 4320.666672] [   T56] khungtaskd:  do_wait_for_common+0xe0/0x154
-[ 4320.666678] [   T56] khungtaskd:  wait_for_completion+0x44/0x58
-[ 4320.666681] [   T56] khungtaskd:  __set_cpus_allowed_ptr_locked+0x344/0x730
-[ 4320.666702] [   T56] khungtaskd:  __sched_setaffinity+0x118/0x160
-[ 4320.666709] [   T56] khungtaskd:  sched_setaffinity+0x10c/0x248
-[ 4320.666715] [   T56] khungtaskd:  __arm64_sys_sched_setaffinity+0x15c/0x1c0
-[ 4320.666719] [   T56] khungtaskd:  invoke_syscall+0x3c/0xf8
-[ 4320.666743] [   T56] khungtaskd:  el0_svc_common+0xb0/0xe8
-[ 4320.666749] [   T56] khungtaskd:  do_el0_svc+0x28/0xa8
-[ 4320.666755] [   T56] khungtaskd:  el0_svc+0x28/0x9c
-[ 4320.666761] [   T56] khungtaskd:  el0t_64_sync_handler+0x7c/0xe4
-[ 4320.666766] [   T56] khungtaskd:  el0t_64_sync+0x18c/0x190
+When runtime pm send SSU times out, the SCSI core invokes
+eh_host_reset_handler, which hooks function ufshcd_eh_host_reset_handler
+schedule eh_work and stuck at wait flush_work(&hba->eh_work).
+However, ufshcd_err_handler hangs in wait rpm resume.
+Do link recovery only in this case.
+Below is IO hang stack dump in kernel-6.1
 
-[Analysis]
+kworker/4:0     D
+<ffffffd7d31f6fb4> __switch_to+0x180/0x344
+<ffffffd7d31f779c> __schedule+0x5ec/0xa14
+<ffffffd7d31f7c3c> schedule+0x78/0xe0
+<ffffffd7d31fefbc> schedule_timeout+0xb0/0x15c
+<ffffffd7d31f8120> io_schedule_timeout+0x48/0x70
+<ffffffd7d31f8e40> do_wait_for_common+0x108/0x19c
+<ffffffd7d31f837c> wait_for_completion_io_timeout+0x50/0x78
+<ffffffd7d2876bc0> blk_execute_rq+0x1b8/0x218
+<ffffffd7d2b4297c> scsi_execute_cmd+0x148/0x238
+<ffffffd7d2da7358> ufshcd_set_dev_pwr_mode+0xe8/0x244
+<ffffffd7d2da7e40> __ufshcd_wl_resume+0x1e0/0x45c
+<ffffffd7d2da7b28> ufshcd_wl_runtime_resume+0x3c/0x174
+<ffffffd7d2b4f290> scsi_runtime_resume+0x7c/0xc8
+<ffffffd7d2ae1d48> __rpm_callback+0xa0/0x410
+<ffffffd7d2ae0128> rpm_resume+0x43c/0x67c
+<ffffffd7d2ae1e98> __rpm_callback+0x1f0/0x410
+<ffffffd7d2ae014c> rpm_resume+0x460/0x67c
+<ffffffd7d2ae1450> pm_runtime_work+0xa4/0xac
+<ffffffd7d22e39ac> process_one_work+0x208/0x598
+<ffffffd7d22e3fc0> worker_thread+0x228/0x438
+<ffffffd7d22eb038> kthread+0x104/0x1d4
+<ffffffd7d22171a0> ret_from_fork+0x10/0x20
 
-After add some debug footprint massage, this issue happened at stopper
-disable case.
-It cannot exec migration_cpu_stop fun to complete migration.
-This will cause stuck on wait_for_completion.
+scsi_eh_0       D
+<ffffffd7d31f6fb4> __switch_to+0x180/0x344
+<ffffffd7d31f779c> __schedule+0x5ec/0xa14
+<ffffffd7d31f7c3c> schedule+0x78/0xe0
+<ffffffd7d31fef50> schedule_timeout+0x44/0x15c
+<ffffffd7d31f8e40> do_wait_for_common+0x108/0x19c
+<ffffffd7d31f8234> wait_for_completion+0x48/0x64
+<ffffffd7d22deb88> __flush_work+0x260/0x2d0
+<ffffffd7d22de918> flush_work+0x10/0x20
+<ffffffd7d2da4728> ufshcd_eh_host_reset_handler+0x88/0xcc
+<ffffffd7d2b41da4> scsi_try_host_reset+0x48/0xe0
+<ffffffd7d2b410fc> scsi_eh_ready_devs+0x934/0xa40
+<ffffffd7d2b41618> scsi_error_handler+0x168/0x374
+<ffffffd7d22eb038> kthread+0x104/0x1d4
+<ffffffd7d22171a0> ret_from_fork+0x10/0x20
 
-Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+kworker/u16:5   D
+<ffffffd7d31f6fb4> __switch_to+0x180/0x344
+<ffffffd7d31f779c> __schedule+0x5ec/0xa14
+<ffffffd7d31f7c3c> schedule+0x78/0xe0
+<ffffffd7d2adfe00> rpm_resume+0x114/0x67c
+<ffffffd7d2adfca8> __pm_runtime_resume+0x70/0xb4
+<ffffffd7d2d9cf48> ufshcd_err_handler+0x1a0/0xe68
+<ffffffd7d22e39ac> process_one_work+0x208/0x598
+<ffffffd7d22e3fc0> worker_thread+0x228/0x438
+<ffffffd7d22eb038> kthread+0x104/0x1d4
+<ffffffd7d22171a0> ret_from_fork+0x10/0x20
+
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 ---
- kernel/sched/core.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/ufs/core/ufshcd.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 1dc0b0287e30..98c217a1caa0 100644
---- a/kernel/sched/core.c
-+++ b/kernel/sched/core.c
-@@ -3041,8 +3041,9 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
- 		task_rq_unlock(rq, p, rf);
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index c2df07545f96..0619cefa092e 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -7716,6 +7716,20 @@ static int ufshcd_eh_host_reset_handler(struct scsi_cmnd *cmd)
  
- 		if (!stop_pending) {
--			stop_one_cpu_nowait(cpu_of(rq), migration_cpu_stop,
--					    &pending->arg, &pending->stop_work);
-+			if (!stop_one_cpu_nowait(cpu_of(rq), migration_cpu_stop,
-+					    &pending->arg, &pending->stop_work))
-+				return -ENOENT;
- 		}
+ 	hba = shost_priv(cmd->device->host);
  
- 		if (flags & SCA_MIGRATE_ENABLE)
++	/*
++	 * If runtime pm send SSU and got timeout, scsi_error_handler
++	 * stuck at this function to wait for flush_work(&hba->eh_work).
++	 * And ufshcd_err_handler(eh_work) stuck at wait for runtime pm active.
++	 * Do ufshcd_link_recovery instead schedule eh_work can prevent
++	 * dead lock to happen.
++	 */
++	if (hba->pm_op_in_progress) {
++		if (ufshcd_link_recovery(hba))
++			err = FAILED;
++
++		return err;
++	}
++
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+ 	hba->force_reset = true;
+ 	ufshcd_schedule_eh_work(hba);
 -- 
 2.18.0
 
