@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4092E82CA5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:40:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ACE9E82CA1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:40:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Uo+DWz6nzURRzOrpiTlNauRcx9JlP212HftAuLBiRM=; b=GUrFla9/tICr4B97TB6L+9CwyQ
-	GbtF4OVgJDZLTaAVP7STBd/nDP3ukX3in0E9bXKDS+dW7LiAuv7USDTVvX8OcydueXcizGBZXt8ib
-	KZBPNc4b1cFVI0vMPqeWjKx48Z5LY9sIGCh9qhUr0nF4ayBf/qp22ENWUj2FU6PaIGL0qdJZBd9zy
-	Iq0gIJvQyiB9zFWqCJuvxIYdU/S4f8pdvg3H+Mn3b1sYl6E3ycKPf63Ny6VU1fnnVhpyE3BIdoKb5
-	yELKDs3HAFFOjNpnwdR9nOIA4jAIhyIx/XlkZDAC0dQtHISkwNfOIfp21hezLW8jZ8hdz1KAO8CYp
-	Tv16hUTg==;
+	bh=cD8j3JYb+3YSWSQCgATdZE305FevL9wMDgQfebteqyc=; b=gRd7OqCXuKWit3JlAzQXL5Gz4N
+	PbmnK3M9GiHd4rB11PNfQvLtbb75k6PM/G39bXewvYmaQ9dhM+7zB6Uj/1r9zNnp0lrFRg5iG8Rt9
+	99SEk/e7kczozJhd4gYcJ11CXlYrLvyTrJSMw6sf9DzJeml3N6HXpGvAV/hI0xH/Mg2zo7Nj2Vjeu
+	alcVPiW2f98Enp2QKtPGE18gDdxj4BqPHwxcBzkGymGbfTslNDo2fP1wm+PxP9t7vnSgfw8eLzfdV
+	jR1baAWruOLtuIMh4RawP7PwNg0LdgXdN5qQaHivkc/0ZW+Kmt6AHWagFGG0hz5fNUD/Boov91cwM
+	x7K7weEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWe0-001KFM-0h;
-	Wed, 27 Sep 2023 15:40:08 +0000
+	id 1qlWe3-001KJJ-2s;
+	Wed, 27 Sep 2023 15:40:11 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaS-001GYE-2h;
+	id 1qlWaS-001GWk-0V;
 	Wed, 27 Sep 2023 15:36:34 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 291486607370;
-	Wed, 27 Sep 2023 16:36:27 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2F458660736F;
+	Wed, 27 Sep 2023 16:36:26 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828987;
-	bh=pDUB2yjXKjklQT9CTDtddlAytBql2bguZ0k3zUQQEeE=;
+	s=mail; t=1695828986;
+	bh=ipUXv7UJIHHhxRMQZmIK4W+snIi8YRwkVW1/aAA+P6g=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bxmYEwxirHbknnbfs0TViSopXrFAjYtxpHCxqtAIqaWCIczyE1DCb+f8tQxX7MKad
-	 tRlJMLW+3BI39Bc7SgMAcanCER6jOqynm8jFyJW6KURnAiX0gynJeU9aH1B9YdWW8v
-	 VFlE+eDdobofRja/uoQg6yYQsluYH7KB1wRek0yz5Ni1dKK/VssLC4lpeSEQRz/tzn
-	 l/sjNLFR2PJCVil6e2i4399vXnvlTpOLmDAcpfBK4z2zQCCSfi2+Aw0BjT1FiUkDGy
-	 s1TdC/VPXLaG/vKv2O69K2gBBv2WEqkD1K8DDHLWSMJb2GeN6FfAtcdDA5LS4gPSAo
-	 3vr6UADXdxEDg==
+	b=RNjqkIxLR9AoBM9x7S19uuBBvVaoi88hez3/jJbo2ds014HMM5/coIoRoaiEpBkRZ
+	 lWrVnwDt/TNsKC3oU7qbznGMSfRNgrfJ3gsVQ60pEwbTTiUh1xnLl1J4rt/kztBmLO
+	 QWkIZFCbCqN7cuOs4llMEHZpiMLSQ0CyjQfnh6/X8DVUvTE+/os6QUcKYs6aaqLr3R
+	 qc7Psr5CpnsSLgmlr3bWz70kn+I5h3660o6oCsXm2qDGBQzHQBhzC/b8gNixsrnTpP
+	 My+hUTXzgX8OdV0kWdROV9IjdBBk926ly/PqIgjzX0sLzi8oXEkoKgnHNEXP9eAXGd
+	 kUQnXLCAvsQpw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 40/53] media: usb: hackrf: Set min_buffers_needed to 8
-Date: Wed, 27 Sep 2023 17:35:45 +0200
-Message-Id: <20230927153558.159278-41-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 38/53] media: usb: airspy: Set min_buffers_needed to 8
+Date: Wed, 27 Sep 2023 17:35:43 +0200
+Message-Id: <20230927153558.159278-39-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083629_053097_F363E328 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20230927_083628_464230_4C8E7A2F 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +89,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 vb2 queue_setup checks for a minimum number of buffers so set
 min_buffers_needed to 8 and remove the useless check in
-hackrf_queue_setup().
+airspy_queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/usb/hackrf/hackrf.c | 9 +++------
+ drivers/media/usb/airspy/airspy.c | 9 +++------
  1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/usb/hackrf/hackrf.c b/drivers/media/usb/hackrf/hackrf.c
-index 3e535be2c520..2e856b20aa21 100644
---- a/drivers/media/usb/hackrf/hackrf.c
-+++ b/drivers/media/usb/hackrf/hackrf.c
-@@ -754,15 +754,10 @@ static int hackrf_queue_setup(struct vb2_queue *vq,
+diff --git a/drivers/media/usb/airspy/airspy.c b/drivers/media/usb/airspy/airspy.c
+index 462eb8423506..56bc1b23d39b 100644
+--- a/drivers/media/usb/airspy/airspy.c
++++ b/drivers/media/usb/airspy/airspy.c
+@@ -483,15 +483,10 @@ static int airspy_queue_setup(struct vb2_queue *vq,
  {
- 	struct hackrf_dev *dev = vb2_get_drv_priv(vq);
+ 	struct airspy *s = vb2_get_drv_priv(vq);
  
--	dev_dbg(dev->dev, "nbuffers=%d\n", *nbuffers);
+-	dev_dbg(s->dev, "nbuffers=%d\n", *nbuffers);
 -
 -	/* Need at least 8 buffers */
 -	if (vq->num_buffers + *nbuffers < 8)
 -		*nbuffers = 8 - vq->num_buffers;
  	*nplanes = 1;
- 	sizes[0] = PAGE_ALIGN(dev->buffersize);
+ 	sizes[0] = PAGE_ALIGN(s->buffersize);
  
--	dev_dbg(dev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
-+	dev_dbg(dev->dev, "nbuffers=%u sizes[0]=%d\n", vb2_get_num_buffers(vq), sizes[0]);
+-	dev_dbg(s->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
++	dev_dbg(s->dev, "nbuffers=%d sizes[0]=%d\n", vb2_get_num_buffers(vq), sizes[0]);
  	return 0;
  }
  
-@@ -1392,6 +1387,8 @@ static int hackrf_probe(struct usb_interface *intf,
- 	dev->rx_vb2_queue.type = V4L2_BUF_TYPE_SDR_CAPTURE;
- 	dev->rx_vb2_queue.io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF |
- 				     VB2_READ;
+@@ -1011,6 +1006,8 @@ static int airspy_probe(struct usb_interface *intf,
+ 	/* Init videobuf2 queue structure */
+ 	s->vb_queue.type = V4L2_BUF_TYPE_SDR_CAPTURE;
+ 	s->vb_queue.io_modes = VB2_MMAP | VB2_USERPTR | VB2_READ;
 +	/* Need at least 8 buffers */
-+	dev->rx_vb2_queue.min_buffers_needed = 8;
- 	dev->rx_vb2_queue.ops = &hackrf_vb2_ops;
- 	dev->rx_vb2_queue.mem_ops = &vb2_vmalloc_memops;
- 	dev->rx_vb2_queue.drv_priv = dev;
++	s->vb_queue.min_buffers_needed = 8;
+ 	s->vb_queue.drv_priv = s;
+ 	s->vb_queue.buf_struct_size = sizeof(struct airspy_frame_buf);
+ 	s->vb_queue.ops = &airspy_vb2_ops;
 -- 
 2.39.2
 
