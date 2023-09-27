@@ -4,89 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FFEDE82CA6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98694E82CA5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:42:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KMxn+WVizjmYY6Ut3cxVQcDYe3FAgydr3Np6TZ8oI8A=; b=eW7WpvEZ5Ep87SMZhRYfezUUpf
-	drEyWLaWbIz8iF7Kb08Cmv89erpHXY3g5IiYWEUP+6WPhj/ziu4lf4s1Wo9Vfpe2EqKZlndyM6y4o
-	yXxHRlWHh7QMlgQnULM8Tih6R6BJJp4CmOa9EnOaz6oQRoLZcGzJjqiaZ2xtDRNz+u6lfrkUFt5pI
-	gTVn0QUAIqLp/NdxFjr+DKgZ+TJY63F/ctOPPBgeG3v2eLhzuedhz0501tQaXqah57kefl/gqYq9S
-	eALu5E0LbwYymPhLRBEwmsyTOzBhXJC80wE41UWGJ5OCub9sZ4jw/U743+IR46zDKIiUezxmrYZRQ
-	h0AUAcgw==;
+	bh=t9oIEXPNWkoSP0yICfThZznT48YRRSxNiQbO+UpaNXk=; b=WcrUOUfaQHr/BhKxa65dgNvvqB
+	o2MaK1TDfw7mL23KmeCodkGq2KiBX6vY3eQ61nwb05sey4kfstcLjwhJgUbCQ+emlYVBVBJubD4k0
+	8KqZ/XI23b/Nc/QXDX4s+rwT/LJjqCDnJ0yWRK77KVkVvLWuwsVAIeY/xGYVSw/tUwX5AZRzEU3xp
+	mpQQ4k6A4hqDwY5+scY1CGfIIXAujQ6xog1FFAK/AMcCb0ceMN0eIrvV5NVdFNSdSjReyEDeCT3NI
+	FZq2eAWE0vrTfyIjqqAVBAnFUEvDbJli25qUfHinQZmj2yjK1+VNZXGt59rssNpX33EJ/YNCY/qe0
+	J1TU4FWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWfj-001M0b-0b;
-	Wed, 27 Sep 2023 15:41:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qlWg0-001MDp-0A;
+	Wed, 27 Sep 2023 15:42:12 +0000
+Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWdA-001JQs-1O;
-	Wed, 27 Sep 2023 15:39:22 +0000
-X-UUID: ffeeaa785d4b11ee86758d4a7c00f3a0-20230927
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=KMxn+WVizjmYY6Ut3cxVQcDYe3FAgydr3Np6TZ8oI8A=;
-	b=Gv3+2utxV9XswCtkoKQkOuRDuEnGKegwc3POG1hb9iNnteJr4FPjSXYtCdu0Z+0xOF5M9/vdI1S1n0UpMg5s+Jf/ZeJxSVxRyfy7s0a1LR6+mfgjCUr0Gv/oCxTqPwFDdn40AJBOXBVByXW2MUtj7kxr6J9nK35JQlgMiTfXBUA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:733bb371-c09d-409f-9a77-593e57649afc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:deaa88c3-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: ffeeaa785d4b11ee86758d4a7c00f3a0-20230927
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1080759601; Wed, 27 Sep 2023 08:39:09 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 27 Sep 2023 23:38:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 27 Sep 2023 23:38:34 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
-	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
-	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
-	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v10 3/9] drm/mediatek: Fix using wrong drm private data to bind mediatek-drm
-Date: Wed, 27 Sep 2023 23:38:27 +0800
-Message-ID: <20230927153833.23583-4-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230927153833.23583-1-jason-jh.lin@mediatek.com>
-References: <20230927153833.23583-1-jason-jh.lin@mediatek.com>
+	id 1qlWe5-001KIn-0b
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Sep 2023 15:40:17 +0000
+Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-65b0383f618so42529826d6.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Sep 2023 08:40:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ziepe.ca; s=google; t=1695829211; x=1696434011; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=t9oIEXPNWkoSP0yICfThZznT48YRRSxNiQbO+UpaNXk=;
+        b=oV/adJQBzM2z8Uqm3LJZl0IyLv/N1nrmf3u8IL/8UG57ci7QkoOd40qB9TlHpEV0zR
+         5PXIpscWZ/J7C07d/KT8vJnBd83NJG+5CDYB9wsvcIG3qgGhOTRo9lV3ZYnmOXCRcV5B
+         4+/1Avv5S77jpcas8I54YJ2IEbPVE9hwO2Vrby0wV16R9wKRHAAzMoZzavDAJ2p0cvqg
+         Nkkoe81kzH841OaQff8F1nJot1iyaW0gaLzC9Rn+yf1xt7HoX/u8K7EUrJS9X+h3jnmm
+         rQjvQWPukpbS0YSpKU7jWwaRFe3LJlTTf1X+5lEAxN8s4MA3Ovl2H8JVblgtHVkysyV8
+         krqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695829211; x=1696434011;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=t9oIEXPNWkoSP0yICfThZznT48YRRSxNiQbO+UpaNXk=;
+        b=A2sojciv9K1zQLPSl+/3G2/ee0o9dvxldxDYnvvaALX5SSgLtsfdMGFDx8vIziwIj3
+         a2IFly23JMMASnLbAslH9bGx/kj0mK0sgRvLIjt+1ksPlBC0J/pt1f2p6DVWfpVw6h5O
+         rMpsJRFjqGJazK+q45uegmEosDpvRZ91lhIOqHFJE42YclRefNpMkfxVkew6E7VCy/ne
+         o1/qWhx+rRaYMsHx1Nzu6eE/+c9fa6CiPd/4BXZHWZdwNo3snY9DjLUmHXgXVlEcNX+o
+         BLLszFXJZK3K3PbB8XWql1wXfYJ+kzUIsIeSusitYsjl0zfjqCMienKARjGTempnPjN+
+         Ew2g==
+X-Gm-Message-State: AOJu0Yz3tbcbIqn4ydwGL55Ap0orqdEvusqYHnvoxaBrS3hq3YrS9iFC
+	7ZSHm6zsKTY0x0B2WfEoViy7Mg==
+X-Google-Smtp-Source: AGHT+IEBIEK8bL4oC9/JbUXAJTo9b7yotL8eHtI4zGCh9Ar0J6VaF2Vk0l+zBuzNRh2jU30sxMvEWQ==
+X-Received: by 2002:a0c:de03:0:b0:64f:8d4c:1c0b with SMTP id t3-20020a0cde03000000b0064f8d4c1c0bmr2581322qvk.43.1695829210841;
+        Wed, 27 Sep 2023 08:40:10 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-142-68-26-201.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.26.201])
+        by smtp.gmail.com with ESMTPSA id i11-20020a0cab4b000000b00655e4f57732sm3474144qvb.35.2023.09.27.08.40.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Sep 2023 08:40:10 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1qlWe1-001Qtr-JG;
+	Wed, 27 Sep 2023 12:40:09 -0300
+Date: Wed, 27 Sep 2023 12:40:09 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Niklas Schnelle <schnelle@linux.ibm.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
+	Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Gerd Bayer <gbayer@linux.ibm.com>,
+	Julian Ruess <julianr@linux.ibm.com>,
+	Pierre Morel <pmorel@linux.ibm.com>,
+	Alexandra Winter <wintera@linux.ibm.com>,
+	Heiko Carstens <hca@linux.ibm.com>,
+	Vasily Gorbik <gor@linux.ibm.com>,
+	Alexander Gordeev <agordeev@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Sven Schnelle <svens@linux.ibm.com>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and optimized
+ IOTLB flushing
+Message-ID: <20230927154009.GN13795@ziepe.ca>
+References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
+ <ZRLy_AaJiXxZ2AfK@8bytes.org>
+ <20230926160832.GM13795@ziepe.ca>
+ <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
+ <ZRP8CiBui7suB5D6@8bytes.org>
+ <b06a14de270a63050b0d027c24b333dba25001a4.camel@linux.ibm.com>
+ <e1efbbd827e34800bd7fb0ea687645cc6c65e1ab.camel@linux.ibm.com>
+ <6dab29f58ac1ccd58caaee031f98f4d0d382cbcd.camel@linux.ibm.com>
+ <a672b6b122c7a5f708614346885c190a6960aaea.camel@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.036500-8.000000
-X-TMASE-MatchedRID: IDRSBkmySF1GlhjnipkGEGwjJ4TFeU1uYpovC7zX5q/Npr24oOS4xkfp
-	kQx2u0KsbDDGr42tgBMSqo3ZUfrHh5Coy9iDotiwFYJUGv4DL3wHQj6IJQ7jncRbUf2aWQ/nJET
-	WX/pKcs46hUOcTonr9IAy6p60ZV62fJ5/bZ6npdiyO81X3yak8wZbZpuKmuxzNli+eDT2tDyGJo
-	dZodTf/LorMSFXg3vW4Ts9Wri8gIl+3BndfXUhXQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.036500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 02D13BE31510DA47B25C4B3C90B88CA924FC857AC388C0FAEDD4ACEB05D6C3F02000:8
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a672b6b122c7a5f708614346885c190a6960aaea.camel@linux.ibm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083916_655996_AC8CBBA2 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20230927_084013_595971_BA6724E3 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,68 +138,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to mtk_drm_kms_init(), the all_drm_private array in each
-drm private data stores all drm private data in display path order.
+On Wed, Sep 27, 2023 at 05:24:20PM +0200, Niklas Schnelle wrote:
 
-In mtk_drm_get_all_drm_priv(), each element in all_drm_priv should have one
-display path private data, such as:
-all_drm_priv[CRTC_MAIN] should only have main_path data
-all_drm_priv[CRTC_EXT] should only have ext_path data
-all_drm_priv[CRTC_THIRD] should only have third_path data
+> Ok, another update. On trying it out again this problem actually also
+> occurs when applying this v12 on top of v6.6-rc3 too. Also I guess
+> unlike my prior thinking it probably doesn't occur with
+> iommu.forcedac=1 since that still allows IOVAs below 4 GiB and we might
+> be the only ones who don't support those. From my point of view this
+> sounds like a mlx5_core issue they really should call
+> dma_set_mask_and_coherent() before their first call to
+> dma_alloc_coherent() not after. So I guess I'll send a v13 of this
+> series rebased on iommu/core and with an additional mlx5 patch and then
+> let's hope we can get that merged in a way that doesn't leave us with
+> broken ConnectX VFs for too long.
 
-So we need to add the length checking for each display path before
-assigning their drm private data into all_drm_priv array.
+Yes, OK. It definitely sounds wrong that mlx5 is doing dma allocations before
+setting it's dma_set_mask_and_coherent(). Please link to this thread
+and we can get Leon or Saeed to ack it for Joerg.
 
-Then the all_drm_private array in each drm private data needs to be
-assigned in their display path order.
+(though wondering why s390 is the only case that ever hit this?)
 
-Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Tested-by: Fei Shao <fshao@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 17 ++++++++++++++---
- 1 file changed, 14 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index efe36eace8f0..bf4a04c1156b 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -352,6 +352,7 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
- {
- 	struct mtk_drm_private *drm_priv = dev_get_drvdata(dev);
- 	struct mtk_drm_private *all_drm_priv[MAX_CRTC];
-+	struct mtk_drm_private *temp_drm_priv;
- 	struct device_node *phandle = dev->parent->of_node;
- 	const struct of_device_id *of_id;
- 	struct device_node *node;
-@@ -371,11 +372,21 @@ static bool mtk_drm_get_all_drm_priv(struct device *dev)
- 			continue;
- 
- 		drm_dev = device_find_child(&pdev->dev, NULL, mtk_drm_match);
--		if (!drm_dev || !dev_get_drvdata(drm_dev))
-+		if (!drm_dev)
- 			continue;
- 
--		all_drm_priv[cnt] = dev_get_drvdata(drm_dev);
--		if (all_drm_priv[cnt] && all_drm_priv[cnt]->mtk_drm_bound)
-+		temp_drm_priv = dev_get_drvdata(drm_dev);
-+		if (!temp_drm_priv)
-+			continue;
-+
-+		if (temp_drm_priv->data->main_len)
-+			all_drm_priv[CRTC_MAIN] = temp_drm_priv;
-+		else if (temp_drm_priv->data->ext_len)
-+			all_drm_priv[CRTC_EXT] = temp_drm_priv;
-+		else if (temp_drm_priv->data->third_len)
-+			all_drm_priv[CRTC_THIRD] = temp_drm_priv;
-+
-+		if (temp_drm_priv->mtk_drm_bound)
- 			cnt++;
- 
- 		if (cnt == MAX_CRTC)
--- 
-2.18.0
-
+Jason
 
