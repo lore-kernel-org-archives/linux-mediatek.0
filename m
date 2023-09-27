@@ -4,67 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE74EE810A2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 08:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0918E810A2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 08:31:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eV9c/kOF7YEwPqI/+eatPgOU1BbthTf21OmVVgxee5k=; b=nlJK1GCQ/bQmOBGNetxqA/Ic6G
-	/afpNTXvAlk4w+wVVK/F9giB66ATuZCMbCqBqiAwzgHnvXCKOVijco+XPUaUQqtKfQxU3HELdMKKV
-	nXzzJbphr2xDUBDP0RJ8GFAOWT8S6GR149UFvxhcJ1DcXZfoB41QjGK/9gNeOWM6pwsiVUtoabT91
-	FJy3G+C13UfDEhySY//JU9oUEsytMAHp5SWXxqcZRnuRryyWEbJYYc/omoJkV0ZOx2JIBFIJeLfdL
-	Ve5XxY+whihb3nizKTeTtbXlle9LGEC9udqoREuJ30vzPH/cZuPmyhKSBIHpB/HiY5UUux0C+YGIl
-	YcMc6a5w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XkLOlB/fLQrEQVTKT6JDT5oln6zFCOPQfvb7GwxI434=; b=XJauckuq1Pc8aN/HEHwTuVv/tI
+	BQRsKvdUX/N8/yuoZu0kpz4FwsgU/bUNLvV0hZdHuEpnB4TRTvvaZvzCCS59dXDYhIJzIwkfchgC8
+	De+2qUAbLAmQvTQCdXnnx24xVyWPupWBasGXAsHjPL11uW17WqnRutg5W519VQHvB7KN+KsRONWqb
+	XyzEMzGzKeoo+4Hp7rm7TzewfR2oiKg++oQe9Ql98wkatiq8oCS50/6POlzdzJcWtsDmm+TJjcNEL
+	HUwUoktpo9RWuou+wOvjuK2VeHxxVk3f2NFLH9AnsezyPb12DmdtOMFVwtzLpIX7ysVQWBGIAAGMJ
+	fSUwwHQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlPbR-000J0q-2Q;
-	Wed, 27 Sep 2023 08:09:01 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qlPxY-000LVp-1C;
+	Wed, 27 Sep 2023 08:31:52 +0000
+Received: from mail.socialglobal.pl ([51.195.90.253])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlPbQ-000J0R-0F;
-	Wed, 27 Sep 2023 08:09:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=eV9c/kOF7YEwPqI/+eatPgOU1BbthTf21OmVVgxee5k=; b=FRVQf+6MNZpKA9nWLDsLlHBGXR
-	0ofWHEjcbEFjoV1qiGrfL7/Ob5wWTADcK+DMM0tQcDfzhMfOkKsyPDeD2YcbG2yZF9/ypamOjbmQw
-	xMkWKjn9rPYR8tZf2B5Ns8TIndPjmpgwvtWm4hqFv6qYdZsZkgdenEumsh2U21mZM870q9L2sNFDx
-	U2Zkf7oF7K9ngsJiTYkIija3SnUwSz1JgPzzKUatB3QKnm4b8xuH6b8BZV7iFeF9Le8+thaa2byb+
-	r+tqQPDMm6CFzPedTCOj+DVtXMR+WjzSahjLY2ldPDpLTGtZeM1KBNm/nBs0uiWolWPLxMYd5gaO0
-	1vGX0oxw==;
-Received: from j130084.upc-j.chello.nl ([24.132.130.84] helo=noisy.programming.kicks-ass.net)
-	by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlPbF-003htP-15;
-	Wed, 27 Sep 2023 08:08:51 +0000
-Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
-	id 71369300348; Wed, 27 Sep 2023 10:08:50 +0200 (CEST)
-Date: Wed, 27 Sep 2023 10:08:50 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Kuyo Chang <kuyo.chang@mediatek.com>
-Cc: Ingo Molnar <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
-	Daniel Bristot de Oliveira <bristot@redhat.com>,
-	Valentin Schneider <vschneid@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/1] sched/core: Fix stuck on completion for
- affine_move_task() when stopper disable
-Message-ID: <20230927080850.GB21824@noisy.programming.kicks-ass.net>
-References: <20230927033431.12406-1-kuyo.chang@mediatek.com>
+	id 1qlPxW-000LU4-1h
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Sep 2023 08:31:51 +0000
+Received: by mail.socialglobal.pl (Postfix, from userid 1002)
+	id 32E8C22A66; Wed, 27 Sep 2023 08:31:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=socialglobal.pl;
+	s=mail; t=1695803509;
+	bh=XwhyqI/moZPDJ7KCfcA6Gip8fA7ZKcg5SWsKuF/26zk=;
+	h=Date:From:To:Subject:From;
+	b=ByZ35RVeqyBXJPq0BY96NJBQpX+LWb54gmYS5DpSQA+QLGCdx/5MKSkEbZArILLEr
+	 9HKdvSKfnRVH2uua1nb/C9o+98xdeMz463uVyRegj7/4WCL513f7+3oflSY0dsHyDC
+	 qMEJrvZeo2g3cDfqzaZxNxlRICwl8gg0ItcZYatbTdxbWhXS3ef4VYG1mbj84temcs
+	 GnOep2zz5BmzAVoo2LDUQzCS7gYBRr9yqLST6yxbLd46XsDR87Y3UU8yj993EgWXm1
+	 Gf/D3ZETv1Tbwx274Qc3Z0QeSTzOWri2H8dNezhr6xjlAdbjFAFcdP2r99yBGQKtPs
+	 qpQ5/JKGrhG0g==
+Received: by mail.socialglobal.pl for <linux-mediatek@lists.infradead.org>; Wed, 27 Sep 2023 08:30:56 GMT
+Message-ID: <20230927075535-0.1.8p.2ysqj.0.88t67o2885@socialglobal.pl>
+Date: Wed, 27 Sep 2023 08:30:56 GMT
+From: "Dominik Perkowski" <dominik.perkowski@socialglobal.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Pozycjonowanie- informacja
+X-Mailer: mail.socialglobal.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230927033431.12406-1-kuyo.chang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230927_013150_718220_D0664A6A 
+X-CRM114-Status: UNSURE (   1.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,68 +67,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 27, 2023 at 11:34:28AM +0800, Kuyo Chang wrote:
-> From: kuyo chang <kuyo.chang@mediatek.com>
-> 
-> [Syndrome] hung detect shows below warning msg
-> [ 4320.666557] [   T56] khungtaskd: [name:hung_task&]INFO: task stressapptest:17803 blocked for more than 3600 seconds.
-> [ 4320.666589] [   T56] khungtaskd: [name:core&]task:stressapptest   state:D stack:0     pid:17803 ppid:17579  flags:0x04000008
-> [ 4320.666601] [   T56] khungtaskd: Call trace:
-> [ 4320.666607] [   T56] khungtaskd:  __switch_to+0x17c/0x338
-> [ 4320.666642] [   T56] khungtaskd:  __schedule+0x54c/0x8ec
-> [ 4320.666651] [   T56] khungtaskd:  schedule+0x74/0xd4
-> [ 4320.666656] [   T56] khungtaskd:  schedule_timeout+0x34/0x108
-> [ 4320.666672] [   T56] khungtaskd:  do_wait_for_common+0xe0/0x154
-> [ 4320.666678] [   T56] khungtaskd:  wait_for_completion+0x44/0x58
-> [ 4320.666681] [   T56] khungtaskd:  __set_cpus_allowed_ptr_locked+0x344/0x730
-> [ 4320.666702] [   T56] khungtaskd:  __sched_setaffinity+0x118/0x160
-> [ 4320.666709] [   T56] khungtaskd:  sched_setaffinity+0x10c/0x248
-> [ 4320.666715] [   T56] khungtaskd:  __arm64_sys_sched_setaffinity+0x15c/0x1c0
-> [ 4320.666719] [   T56] khungtaskd:  invoke_syscall+0x3c/0xf8
-> [ 4320.666743] [   T56] khungtaskd:  el0_svc_common+0xb0/0xe8
-> [ 4320.666749] [   T56] khungtaskd:  do_el0_svc+0x28/0xa8
-> [ 4320.666755] [   T56] khungtaskd:  el0_svc+0x28/0x9c
-> [ 4320.666761] [   T56] khungtaskd:  el0t_64_sync_handler+0x7c/0xe4
-> [ 4320.666766] [   T56] khungtaskd:  el0t_64_sync+0x18c/0x190
-> 
-> [Analysis]
-> 
-> After add some debug footprint massage, this issue happened at stopper
-> disable case.
-> It cannot exec migration_cpu_stop fun to complete migration.
-> This will cause stuck on wait_for_completion.
+Dzie=C5=84 dobry,=20
 
-How did you get in this situation?
+jaki=C5=9B czas temu zg=C5=82osi=C5=82a si=C4=99 do nas firma, kt=C3=B3re=
+j strona internetowa nie pozycjonowa=C5=82a si=C4=99 wysoko w wyszukiwarc=
+e Google.=20
 
-> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
-> ---
->  kernel/sched/core.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-> index 1dc0b0287e30..98c217a1caa0 100644
-> --- a/kernel/sched/core.c
-> +++ b/kernel/sched/core.c
-> @@ -3041,8 +3041,9 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
->  		task_rq_unlock(rq, p, rf);
->  
->  		if (!stop_pending) {
-> -			stop_one_cpu_nowait(cpu_of(rq), migration_cpu_stop,
-> -					    &pending->arg, &pending->stop_work);
-> +			if (!stop_one_cpu_nowait(cpu_of(rq), migration_cpu_stop,
-> +					    &pending->arg, &pending->stop_work))
-> +				return -ENOENT;
+Na podstawie wykonanego przez nas audytu SEO zoptymalizowali=C5=9Bmy tre=C5=
+=9Bci na stronie pod k=C4=85tem wcze=C5=9Bniej opracowanych s=C5=82=C3=B3=
+w kluczowych. Nasz wewn=C4=99trzny system codziennie analizuje prawid=C5=82=
+owe dzia=C5=82anie witryny.  Dzi=C4=99ki indywidualnej strategii, firma z=
+dobywa coraz wi=C4=99cej Klient=C3=B3w. =20
 
-And -ENOENT is the right return code for when the target CPU is not
-available?
+Czy chcieliby Pa=C5=84stwo zwi=C4=99kszy=C4=87 liczb=C4=99 os=C3=B3b odwi=
+edzaj=C4=85cych stron=C4=99 internetow=C4=85 firmy? M=C3=B3g=C5=82bym prz=
+edstawi=C4=87 ofert=C4=99?=20
 
-I suspect you're missing more than halp the picture and this is a
-band-aid solution at best. Please try harder.
 
->  		}
->  
->  		if (flags & SCA_MIGRATE_ENABLE)
-> -- 
-> 2.18.0
-> 
+Pozdrawiam serdecznie,
+Dominik Perkowski
 
