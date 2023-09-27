@@ -4,130 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE724E810AC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 08:43:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41E57E810AD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 08:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:Cc:To:From:Date:References:In-Reply-To:Message-Id:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o7VjoUAbmEtRJA+8mE/ljFlKqx4X7034jZTpRVdZN6U=; b=wPi64mvdVaKFxOr7oforDkJmb1
-	DYOcPE9rXQCsWSJI6LJZt0PW+4+OhNanmHSQwe7SzVRGYhKFiARpcvc1bLxynOsxxgtx/MEl08O1y
-	h6p3PXi9NdWSv9UYkgtuT1I54p9dDU05lviqza1kENnA4NEmHE5V3YfFyvRKB3gJxuCQ/wDYehYyw
-	2R1y9oFz8G3Ct3MDbF7CikL270lssnk7aZOSSlGayJuXllvUgNvGp++flLKDVamfSAuKWypjkMp9l
-	5iMP6ZJ1GvLnI46dqjcFL/RTFfZmUIOxJFiK8ydK1hEWb9hT/GWqF/XcI0aSd51eXCG6RkIkP0lMt
-	mrgUHR4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lIdgU+j4pcq6jgSk/q19qdaxkwH1rtCWHqvoVCfZIT4=; b=MbFz0GOcb9U5pzn5GPX3hMSp+6
+	EM9CviyvuMD8E+qt+sKNB9iOccEsKZfiev2qXCiPVQ8+KiKSfbIJt90PZUOfnPyIzekBn0KmVClNL
+	6wV9SxwEr74e8cr7bOn5xtxA4LCzt6Zf9mRYvg9NlX6zh6lDqZ9SIEW7zzt5MgmYLlff2h2wt676T
+	MEFQqqU7ZrzdtPTQ7pg1WRPwX4QsieoUN9JkmXwubFiqyzq72XjSuUKTEYCapD/kUka1s4WEI+azs
+	IBCVPLZXp0BGD/ct1X+UP0gFY8h+cZJkz2xGDidb8dHTrYWUwSgipjiGc2615+LXZ4NOG26Hoi2py
+	jD85jpdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlQ9G-000N03-1e;
-	Wed, 27 Sep 2023 08:43:58 +0000
-Received: from wnew4-smtp.messagingengine.com ([64.147.123.18])
+	id 1qlQKs-000OTd-2W;
+	Wed, 27 Sep 2023 08:55:58 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlQ9B-000MyG-1r;
-	Wed, 27 Sep 2023 08:43:55 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailnew.west.internal (Postfix) with ESMTP id AD2CB2B00190;
-	Wed, 27 Sep 2023 04:43:40 -0400 (EDT)
-Received: from imap51 ([10.202.2.101])
-  by compute6.internal (MEProxy); Wed, 27 Sep 2023 04:43:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to; s=fm1; t=
-	1695804220; x=1695811420; bh=o7VjoUAbmEtRJA+8mE/ljFlKqx4X7034jZT
-	pRVdZN6U=; b=ADzfipzn1H6nvZj6IPUSg2e6bCMhLYRmEs66usghC3Y3gx5303Q
-	aTTmtJG0A0L9CHLezJhajL9yKQwYfnfAFiXMKhwusvHW50CG5uI5iEl7tt3E5O/c
-	109Prl9v1WY5Dz5zbA1UlVJNeFc9OyrqpbnS2acBLHAax7mj4JSazShKhZ2AKtL5
-	Kb+sO9zLKfRG70g6mMx2NTtBQwA5XqhQTr1ML37jliO1pEZ8oPvMjAfQWzjpeRwp
-	P93tKMWDgbtYnrHOA50hnF/3YZr7ca8sSU/zKOdnxmfL7uNzchYn4fxuizIz9Uwo
-	wSMlNWEE93us8pOvJ6bXAOtzDZ3Y1r8Dkqg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1695804220; x=1695811420; bh=o7VjoUAbmEtRJA+8mE/ljFlKqx4X7034jZT
-	pRVdZN6U=; b=T05vfZWD4SeZP01Wx6kQneLrsFr8U69yAe1OGWDRowa7yugQwJ3
-	94K12SDEFGNefEiYGYpscPNiz8fBtJOZO5fFMXK84Cq+DLpoiisAlVL+RurIMkNt
-	Nb2Kj7pvRYINg5vwBm6juNHbkdHU+vbRdM25KS0/MoCFoR7dMv4jNuYUJK728O7n
-	iuONNqsQxEpFoNEgNZeMqcSx2GySa1Mo1t3OXUYum79164XAx8pAzMB2VEr5DM4K
-	l2fTK2Za9USzPDJVwoXHD61JS9bNxlIY3Zqu64JfZbZVGMo1Hh9jhGdTq1v3tyYS
-	fgvfYIMPcx51AjviWxI9VX5zh0EwxD/MAaA==
-X-ME-Sender: <xms:OusTZTxl4DMJTP59c2KJ3iAewQQWbzZvdalDvbWGKOLzv2EzLdBGuA>
-    <xme:OusTZbQexVSnj58RtwR8RCEaMhCEDqGXO2BE_Mcdl6H_L2Irne_1ea8tvqBCQSDTq
-    Rq5c7228oHf_xSqDlE>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvjedrtddvgddtjecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefofgggkfgjfhffhffvvefutgfgsehtqhertderreejnecuhfhrohhmpedftehr
-    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
-    htvghrnhepgeefjeehvdelvdffieejieejiedvvdfhleeivdelveehjeelteegudektdfg
-    jeevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprg
-    hrnhgusegrrhhnuggsrdguvg
-X-ME-Proxy: <xmx:OusTZdUi1I6Gdh1mDxeBlJHg-Yno8M5T2KHxAbUCNM4lr_pKsVlrxA>
-    <xmx:OusTZdie3X4oFed4rWhvAe5IK10Jrbz1ltYCRBKW4lbI9_Q9epjx-A>
-    <xmx:OusTZVB2dhx1vK4otJlVYTjXkXX07gEQS0rDAla7iUQqudzIuChogw>
-    <xmx:POsTZXqlhNzvo9JMY5-8GSCqucFjQ1YuFjO0FqgTBEXKd9KEj2fANC8DefA>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 30D92B60089; Wed, 27 Sep 2023 04:43:38 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-957-ga1ccdb4cff-fm-20230919.001-ga1ccdb4c
-MIME-Version: 1.0
-Message-Id: <1b2fddf8-c0a6-4afa-8ad0-f280dea1607f@app.fastmail.com>
-In-Reply-To: <CACPK8XeROYz_XaB3TvUhdXm7Vm8fjC8yU+mfvA58=_FiDrBy-g@mail.gmail.com>
-References: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
- <CACPK8XeROYz_XaB3TvUhdXm7Vm8fjC8yU+mfvA58=_FiDrBy-g@mail.gmail.com>
-Date: Wed, 27 Sep 2023 10:43:16 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Joel Stanley" <joel@jms.id.au>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: "Leo Li" <leoyang.li@nxp.com>, "Herve Codina" <herve.codina@bootlin.com>,
- "Qiang Zhao" <qiang.zhao@nxp.com>,
- "Hitomi Hasegawa" <hasegawa-hitomi@fujitsu.com>,
- "Huisong Li" <lihuisong@huawei.com>,
- "Krzysztof Halasa" <khalasa@piap.pl>,
- "Karol Gugala" <kgugala@antmicro.com>,
- "Mateusz Holenko" <mholenko@antmicro.com>,
- "Gabriel Somlo" <gsomlo@gmail.com>, "Yinbo Zhu" <zhuyinbo@loongson.cn>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "Conor.Dooley" <conor.dooley@microchip.com>,
- "Daire McNamara" <daire.mcnamara@microchip.com>,
- "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>,
- "Andy Gross" <agross@kernel.org>,
- "Bjorn Andersson" <andersson@kernel.org>,
- "Konrad Dybcio" <konrad.dybcio@linaro.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- "Thierry Reding" <thierry.reding@gmail.com>,
- "Jon Hunter" <jonathanh@nvidia.com>, "Sumit Gupta" <sumitg@nvidia.com>,
- "Shang XiaoJing" <shangxiaojing@huawei.com>,
- "Muhammad Usama Anjum" <usama.anjum@collabora.com>,
- "Rob Herring" <robh@kernel.org>, "Nishanth Menon" <nm@ti.com>,
- "Santosh Shilimkar" <ssantosh@kernel.org>,
- "Michal Simek" <michal.simek@amd.com>,
- "Andrew Jeffery" <andrew@aj.id.au>, linux-arm-kernel@lists.infradead.org,
- linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org,
- "Zev Weiss" <zev@bewilderbeest.net>, linuxppc-dev@lists.ozlabs.org,
- loongarch@lists.linux.dev,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
- "zhang.songyi" <zhang.songyi@zte.com.cn>,
- "Lubomir Rintel" <lkundrak@v3.sk>, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- "Alim Akhtar" <alim.akhtar@samsung.com>,
- linux-samsung-soc@vger.kernel.org,
- "Nick Alcock" <nick.alcock@oracle.com>,
- "Yang Yingliang" <yangyingliang@huawei.com>, linux-tegra@vger.kernel.org,
- linux-pm@vger.kernel.org, "Ruan Jinjie" <ruanjinjie@huawei.com>,
- "Pengutronix Kernel Team" <kernel@pengutronix.de>
-Subject: Re: [PATCH 00/40] soc: Convert to platform remove callback returning void
-Content-Type: text/plain;charset=utf-8
+	id 1qlQKo-000OS1-2R;
+	Wed, 27 Sep 2023 08:55:56 +0000
+Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38R8fwt9003378;
+	Wed, 27 Sep 2023 08:55:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=lIdgU+j4pcq6jgSk/q19qdaxkwH1rtCWHqvoVCfZIT4=;
+ b=gMLHMIgbd0OHt2L39u5X2z9jCc+8hmAe0RgqF5igvrD7NALxCV6PuuTIRFmhWj5AWad1
+ Zo//FrrS24Bs/hyNmnq5uJSgOU9iltfJWRO2RlQjdkx/j6qlxx/5vQd4KREhF1VNV/Bo
+ gEDvHIC0e3MS88IR6+zXbNXCX1pMn1rWxdby0r6gPyOwJz0SZf1nyKdGlKo4J4HfTd/g
+ TI5OvYCrbxA/wdukKkUG1vkUJ9MZFHL2SzL7qbyIlWtz98kRREkCpWile4E4o1OXJJzN
+ CenqSvytDspSEtB7BzEaDF7M85TKLR8Sf4seckFi5VCfOOBZvSnA/fZuwKo/G1Ua0KgY fQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tch40r8sd-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 08:55:30 +0000
+Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 38R8hiew007669;
+	Wed, 27 Sep 2023 08:55:29 GMT
+Received: from ppma23.wdc07v.mail.ibm.com (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tch40r8s0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 08:55:29 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 38R6btJ6011003;
+	Wed, 27 Sep 2023 08:55:28 GMT
+Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
+	by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tabukhy17-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 08:55:27 +0000
+Received: from smtpav06.fra02v.mail.ibm.com (smtpav06.fra02v.mail.ibm.com [10.20.54.105])
+	by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 38R8tOsm22086172
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 27 Sep 2023 08:55:24 GMT
+Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 9702D20049;
+	Wed, 27 Sep 2023 08:55:24 +0000 (GMT)
+Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id E425B2004F;
+	Wed, 27 Sep 2023 08:55:23 +0000 (GMT)
+Received: from [9.152.212.236] (unknown [9.152.212.236])
+	by smtpav06.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 27 Sep 2023 08:55:23 +0000 (GMT)
+Message-ID: <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
+Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and
+ optimized IOTLB flushing
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Jason Gunthorpe <jgg@ziepe.ca>, Joerg Roedel <joro@8bytes.org>
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
+        Wenjia Zhang <wenjia@linux.ibm.com>,
+        Robin Murphy <robin.murphy@arm.com>, Gerd Bayer <gbayer@linux.ibm.com>,
+        Julian Ruess <julianr@linux.ibm.com>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        Alexandra Winter
+ <wintera@linux.ibm.com>,
+        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik
+ <gor@linux.ibm.com>,
+        Alexander Gordeev <agordeev@linux.ibm.com>,
+        Christian
+ Borntraeger <borntraeger@linux.ibm.com>,
+        Sven Schnelle
+ <svens@linux.ibm.com>,
+        Suravee Suthikulpanit
+ <suravee.suthikulpanit@amd.com>,
+        Hector Martin <marcan@marcan.st>, Sven
+ Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+        David
+ Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu <baolu.lu@linux.intel.com>, Andy
+ Gross <agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad
+ Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu <yong.wu@mediatek.com>,
+        Matthias
+ Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer
+ <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai <orsonzhai@gmail.com>,
+        Baolin
+ Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry Reding
+ <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan
+ Hunter <jonathanh@nvidia.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Date: Wed, 27 Sep 2023 10:55:23 +0200
+In-Reply-To: <20230926160832.GM13795@ziepe.ca>
+References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
+	 <ZRLy_AaJiXxZ2AfK@8bytes.org> <20230926160832.GM13795@ziepe.ca>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: fk640NFOtXDH3DMsOHfVdr5_SUPSgU-Z
+X-Proofpoint-GUID: XCoTgBapi9PTwWMlIJs26pFRy3h2v45s
 Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-09-27_03,2023-09-26_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ priorityscore=1501 impostorscore=0 mlxscore=0 malwarescore=0 clxscore=1011
+ adultscore=0 spamscore=0 phishscore=0 mlxlogscore=664 bulkscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2309270069
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_014354_115267_8BB88597 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20230927_015554_798181_2364BC81 
+X-CRM114-Status: GOOD (  33.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,39 +161,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 27, 2023, at 04:25, Joel Stanley wrote:
-> On Mon, 25 Sept 2023 at 09:55, Uwe Kleine-K=C3=B6nig <u.kleine-koenig@=
-pengutronix.de> wrote:
->>
->> this series converts all platform drivers below drivers/soc to use
->> .remove_new(). The motivation is to get rid of an integer return code
->> that is (mostly) ignored by the platform driver core and error prone =
-on
->> the driver side.
->>
->> See commit 5c5a7680e67b ("platform: Provide a remove callback that
->> returns no value") for an extended explanation and the eventual goal.
->>
->> As there is no single maintainer team for drivers/soc, I suggest the
->> individual maintainers to pick up "their" patches.
->
-> I'd be happy if Arnd merged the lot at once. Arnd, what do you think?
->
-> If that will be too messy then I understand. I have queued the aspeed
-> ones locally and will push that out if we decide that's the best way
-> to go.
+On Tue, 2023-09-26 at 13:08 -0300, Jason Gunthorpe wrote:
+> On Tue, Sep 26, 2023 at 05:04:28PM +0200, Joerg Roedel wrote:
+> > Hi Niklas,
+> >=20
+> > On Fri, Aug 25, 2023 at 12:11:15PM +0200, Niklas Schnelle wrote:
+> > > Niklas Schnelle (6):
+> > >       iommu: Allow .iotlb_sync_map to fail and handle s390's -ENOMEM =
+return
+> > >       s390/pci: prepare is_passed_through() for dma-iommu
+> > >       s390/pci: Use dma-iommu layer
+> > >       iommu/s390: Disable deferred flush for ISM devices
+> > >       iommu/dma: Allow a single FQ in addition to per-CPU FQs
+> > >       iommu/dma: Use a large flush queue and timeout for shadow_on_fl=
+ush
+> >=20
+> > Turned out this series has non-trivial conflicts with Jasons
+> > default-domain work so I had to remove it from the IOMMU tree for now.
+> > Can you please rebase it to the latest iommu/core branch and re-send? I
+> > will take it into the tree again then.
+>=20
+> Niklas, I think you just 'take yours' to resolve this. All the
+> IOMMU_DOMAIN_PLATFORM related and .default_domain =3D parts should be
+> removed. Let me know if you need anything
+>=20
+> Thanks,
+> Jason
 
-The main downside of merging it all at once through the soc tree
-is that there may be patches that conflict with other work going on
-in individual drivers.
+Hi Joerg, Hi Jason,
 
-What I'd suggest doing here is:
+I've run into an unfortunate problem, not with the rebase itself but
+with the iommu/core branch.=C2=A0
 
-- have platform maintainers pick up patches for their drivers
-  if that is their preference for any reason
+Jason is right, I basically need to just remove the platform ops and
+.default_domain ops. This seems to work fine for an NVMe both in the
+host and also when using the IOMMU with vfio-pci + KVM.=C2=A0I've already
+pushed the result of that to my git.kernel.org:
+https://git.kernel.org/pub/scm/linux/kernel/git/niks/linux.git/log/?h=3Db4/=
+dma_iommu
 
-- get a pull request from Uwe for the soc tree for anything that has
-  not been picked up in one or two weeks from now
+The problem is that something seems to  be broken in the iommu/core
+branch. Regardless of whether I have my DMA API conversion on top or
+with the base iommu/core branch I can not use ConnectX-4 VFs.
 
-      Arnd
+# lspci
+111a:00:00.0 Ethernet controller: Mellanox Technologies MT27710 Family [Con=
+nectX-4 Lx Virtual Function]
+# dmesg | grep mlx
+[    3.189749] mlx5_core 111a:00:00.0: mlx5_mdev_init:1802:(pid 464): Faile=
+d initializing cmdif SW structs, aborting
+[    3.189783] mlx5_core: probe of 111a:00:00.0 failed with error -12
+
+This same card works on v6.6-rc3 both with and without my DMA API
+conversion patch series applied. Looking at mlx5_mdev_init() ->=20
+mlx5_cmd_init(). The -ENOMEM seems to come from the following
+dma_pool_create():
+
+cmd->pool =3D dma_pool_create("mlx5_cmd", mlx5_core_dma_dev(dev), size, ali=
+gn, 0);
+
+I'll try to debug this further but wanted to let you know already in
+case you have some ideas. Either way as it doesn't seem to be related
+to the DMA API conversion I can sent that out again regardless if you
+want, really don't want to miss another cycle.
+
+Thanks,
+Niklas
 
