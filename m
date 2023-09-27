@@ -4,153 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2CA1E80ABC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 14:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 940EEE82CA1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 14:42:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SA0vmiS/p2eSmGSBAdVBC3GbqSanJU141RtIeVTT6OM=; b=G+eRfpMzxnNkRZfDi7FJxhIhos
-	BdcJbCXkUmKBzMMJ2SZUdrvSXv5PCwz+QwOg2orV75KDP3ZeqTOfGpPC0bC7ZMgbia/u32vJxqQcj
-	7PDL0sc91Y8RbnEX6jwQowGOoeEc5azonJr8SOyNAcGGV4y2rlocfzaFz+BHr9U43hBy++pdIUBAn
-	HseA5mTvz55Vo2VWkxS11duooIANfTg92Kq4M6oCtr99VeWkW07lB6WVShPXMkswNPXBmSNWABlgA
-	S5woYJPm8R14Mz8wcZ8nXufvFJ9oS/mm1cN2DigrPhoHuSTpUQ4nWAgAgYl0nr5g0SBPOgT5wghnu
-	B4kHZZmQ==;
+	bh=DQa0uS9ZxVzUEvSIaoDnSyYxM+uNjYjcw68CuBARJN8=; b=c54jspI4KMliNRGTRF/Q/ulOhv
+	pmjn6mGGCWuKA3rTwkN9Y5v6xuR8EW26gt6vnUrMeDurhCz5R8LqUEvIKP9/0hEM/NdioVDX+5cgq
+	FE1qKTGjDk5d3u8EJ7+GbP3ZQDUdiWg8oLsI/g3M7YF2oKY2LuKf24/daff/40b61FzFNp/FZ6OW1
+	OBsrQjRgdDt0U04eXy+tu6bWraoctc+7mJbHs3UtD/rJXFABwAp86j4HHD1ErntqDLh5Yj5+GCoEb
+	kuXSy5hbw8W0zLDOjEn2FaikRCMYn4KSZaGFrmiein+7J1uZTFdpD6YKfbtOstC11p/gvm3PpwhWf
+	21pyum9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlVjp-0019fj-2j;
-	Wed, 27 Sep 2023 14:42:05 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+	id 1qlVkL-0019ly-1T;
+	Wed, 27 Sep 2023 14:42:37 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlVjm-0019f9-29;
-	Wed, 27 Sep 2023 14:42:04 +0000
-Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38REeoSf013717;
-	Wed, 27 Sep 2023 14:41:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=SA0vmiS/p2eSmGSBAdVBC3GbqSanJU141RtIeVTT6OM=;
- b=TGpXx0Ln9HtdYNuFyOP8Hq5Zocf8QxQDnVI5kwwA4PAFAl/hhJowWiFhv3Xf2BfMbdC1
- OOoI5mBUpLFB8uRUcmNYwei9TldVUR0ZNj2vjFMu89fbqX93HpnGRHiWYey5kr1N54tP
- z3T4HZZeyqIn05a1apvR4Awqq6tuQ2Gbc/bGQ3HpAHVdOdzOvtoby2ytC07g7Wcy4S/U
- 3MxjOkq/QtwX+TT7VLWTv6JJ9F8cVb4wPqewSJE6KwkVTwl9gptyoPjD12MltW03r2g4
- 1MOtZHO0acF77JzuVw6YKJihtCL0WGNuuvZ4YEPscljp+MOj6IrXF2OMFxidjM9s8euj nA== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tcnh8sqcw-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 27 Sep 2023 14:41:30 +0000
-Received: from m0353722.ppops.net (m0353722.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 38REfDmF017965;
-	Wed, 27 Sep 2023 14:41:17 GMT
-Received: from ppma11.dal12v.mail.ibm.com (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tcnh8snj3-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 27 Sep 2023 14:41:17 +0000
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
-	by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 38RChTDb030454;
-	Wed, 27 Sep 2023 14:31:15 GMT
-Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
-	by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tad21un14-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 27 Sep 2023 14:31:15 +0000
-Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com [10.20.54.103])
-	by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 38REVCoW44892656
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 27 Sep 2023 14:31:12 GMT
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 4205820043;
-	Wed, 27 Sep 2023 14:31:12 +0000 (GMT)
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 91F0E20040;
-	Wed, 27 Sep 2023 14:31:11 +0000 (GMT)
-Received: from [9.152.212.236] (unknown [9.152.212.236])
-	by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Wed, 27 Sep 2023 14:31:11 +0000 (GMT)
-Message-ID: <6dab29f58ac1ccd58caaee031f98f4d0d382cbcd.camel@linux.ibm.com>
-Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and
- optimized IOTLB flushing
-From: Niklas Schnelle <schnelle@linux.ibm.com>
-To: Joerg Roedel <joro@8bytes.org>
-Cc: Jason Gunthorpe <jgg@ziepe.ca>, Matthew Rosato <mjrosato@linux.ibm.com>,
-        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
-        Robin
- Murphy <robin.murphy@arm.com>,
-        Gerd Bayer <gbayer@linux.ibm.com>,
-        Julian
- Ruess <julianr@linux.ibm.com>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        Alexandra Winter <wintera@linux.ibm.com>,
-        Heiko Carstens
- <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
-        Alexander Gordeev
- <agordeev@linux.ibm.com>,
-        Christian Borntraeger
- <borntraeger@linux.ibm.com>,
-        Sven Schnelle <svens@linux.ibm.com>,
-        Suravee
- Suthikulpanit <suravee.suthikulpanit@amd.com>,
-        Hector Martin
- <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-        Alyssa Rosenzweig
- <alyssa@rosenzweig.io>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Lu Baolu
- <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson
- <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Yong Wu
- <yong.wu@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-        Orson Zhai
- <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan
- Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec
- <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry
- Reding <thierry.reding@gmail.com>,
-        Krishna Reddy <vdumpa@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        iommu@lists.linux.dev, asahi@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Date: Wed, 27 Sep 2023 16:31:11 +0200
-In-Reply-To: <e1efbbd827e34800bd7fb0ea687645cc6c65e1ab.camel@linux.ibm.com>
-References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
-	 <ZRLy_AaJiXxZ2AfK@8bytes.org> <20230926160832.GM13795@ziepe.ca>
-	 <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
-	 <ZRP8CiBui7suB5D6@8bytes.org>
-	 <b06a14de270a63050b0d027c24b333dba25001a4.camel@linux.ibm.com>
-	 <e1efbbd827e34800bd7fb0ea687645cc6c65e1ab.camel@linux.ibm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	id 1qlVkI-0019jO-18
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Sep 2023 14:42:35 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-533e7d127d4so9301318a12.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Sep 2023 07:42:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1695825749; x=1696430549; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=DQa0uS9ZxVzUEvSIaoDnSyYxM+uNjYjcw68CuBARJN8=;
+        b=P5uvcwzm/+5VYUPAe8ob0r/Hpd5wuXUblwKHPemlO81SSEWLvbBtm2ipxgDAZ0mpvp
+         E4TgVJXV08HkWTefH7ryBa5MDhmOTLR291OKBF6i2cpdjmkfD0aqf9xEIemXLKlBU9/u
+         fFd5O9O1e8YZ+2LbY8dW6JIkV2su+GvD08GF0jzjicrlFnVvB6ZAXAnUGENdCFEgpGeK
+         I4DbqGkWLpe9E3aEy6JJIr0+L5unK1gqlm3+L1bbbd7ZkC9jkNxJw+ih0gdqncZf7E96
+         Ka380ri1N/wRcvy890awLBLXCo5xz0o0ceZYYSi1xo/QrNGGkHp7woMfhstsURNkfRAO
+         ggnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695825749; x=1696430549;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DQa0uS9ZxVzUEvSIaoDnSyYxM+uNjYjcw68CuBARJN8=;
+        b=mGx2pQrIeJXqATk/eV0IjQA9e5twmnFxqk6zYSsQJpr0VmPLhXmgzVwr3PlxRV/ISb
+         iAmREQYVARUf0+iA4UKq3uDZkHUTD/4LkKc1sUdgXqt7XIKzKYxHGWq1TOMUPmczuCde
+         0/ENXW9n7NgGfV0J1wC4Fba1YAvcG4OR8FHX2Lv/mmTNF8kRymRnjP2WbyN1gfdbvK7D
+         PnqnNPDJbnD/yaFHhGfvjGg2GLy5tdL5fX0wVFV0rNJGMiGRrA6vDWnzZ0jiIeWEywt2
+         4SQzXOwn0dCh35ylw9OlEDEuMComwj+XszfJd64oviZOzWyitR6KWJTbXLl+qztLD4A5
+         KkkA==
+X-Gm-Message-State: AOJu0Ywvv9VQp5QOtSTbEyo0kr2coN+tRtdUnmS8FLiDZI7ial7hhJQ5
+	vs2g+ZUkhQ8EkGruyKC32wC+Eg==
+X-Google-Smtp-Source: AGHT+IHbkXEUZ2yiICh2bDKC3XoQRoR1GzJCgOavVhuustl4JEpqTa1gx5Cc9UIMgVeGD+zgjr8MaQ==
+X-Received: by 2002:a17:906:5142:b0:9b2:ba65:db21 with SMTP id jr2-20020a170906514200b009b2ba65db21mr368111ejc.45.1695825749077;
+        Wed, 27 Sep 2023 07:42:29 -0700 (PDT)
+Received: from pop-os.localdomain (81-231-61-187-no276.tbcn.telia.com. [81.231.61.187])
+        by smtp.gmail.com with ESMTPSA id z15-20020a170906944f00b00993928e4d1bsm9374996ejx.24.2023.09.27.07.42.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Sep 2023 07:42:28 -0700 (PDT)
+Date: Wed, 27 Sep 2023 16:42:26 +0200
+From: Joakim Bech <joakim.bech@linaro.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Sumit Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Brian Starkey <Brian.Starkey@arm.com>,
+	John Stultz <jstultz@google.com>, tjmercier@google.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linaro-mm-sig@lists.linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, jianjiao.zeng@mediatek.com,
+	kuohong.wang@mediatek.com
+Subject: Re: [PATCH 4/9] dma-buf: heaps: Initialise MediaTek secure heap
+Message-ID: <20230927144226.pdssel3dwv53g546@pop-os.localdomain>
+References: <20230911023038.30649-1-yong.wu@mediatek.com>
+ <20230911023038.30649-5-yong.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 9DVW-bLHKWJTvCvlDlYeq4_osgrJTxpT
-X-Proofpoint-ORIG-GUID: HDx50Cd-5cLuaqZZQuVFQjoyrLSQCgHY
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-09-27_09,2023-09-27_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 suspectscore=0
- clxscore=1015 bulkscore=0 lowpriorityscore=0 priorityscore=1501
- impostorscore=0 adultscore=0 mlxscore=0 mlxlogscore=999 spamscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2309270124
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230911023038.30649-5-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_074202_819960_9CF60B89 
-X-CRM114-Status: GOOD (  37.19  )
+X-CRM114-CacheID: sfid-20230927_074234_398373_A2EA6995 
+X-CRM114-Status: GOOD (  27.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,73 +104,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2023-09-27 at 15:20 +0200, Niklas Schnelle wrote:
-> On Wed, 2023-09-27 at 13:24 +0200, Niklas Schnelle wrote:
-> > On Wed, 2023-09-27 at 11:55 +0200, Joerg Roedel wrote:
-> > > Hi Niklas,
-> > >=20
-> > > On Wed, Sep 27, 2023 at 10:55:23AM +0200, Niklas Schnelle wrote:
-> > > > The problem is that something seems to  be broken in the iommu/core
-> > > > branch. Regardless of whether I have my DMA API conversion on top o=
-r
-> > > > with the base iommu/core branch I can not use ConnectX-4 VFs.
-> > >=20
-> > > Have you already tried to bisect the issue in the iommu/core branch?
-> > > The result might sched some light on the issue.
-> > >=20
-> > > Regards,
-> > >=20
-> > > 	Joerg
-> >=20
-> > Hi Joerg,
-> >=20
-> > Working on it, somehow I must have messed up earlier. It now looks like
-> > it might in fact be caused by my DMA API conversion rebase and the
-> > "s390/pci: Use dma-iommu layer" commit. Maybe there is some interaction
-> > with Jason's patches that I haven't thought about. So sorry for any
-> > wrong blame.
-> >=20
-> > Thanks,
-> > Niklas
->=20
-> Hi,
->=20
-> I tracked the problem=C2=A0down from mlx5_core's alloc_cmd_page() via
-> dma_alloc_coherent(), ops->alloc, iommu_dma_alloc_remap(), and
-> __iommu_dma_alloc_noncontiguous() to a failed iommu_dma_alloc_iova().
-> The allocation here is for 4K so nothing crazy.
->=20
-> On second look I also noticed:
->=20
-> nvme 2007:00:00.0: Using 42-bit DMA addresses
->=20
-> for the NVMe that is working. The problem here seems to be that we set
-> iommu_dma_forcedac =3D true in s390_iommu_probe_finalize() because we
-> have currently have a reserved region over the first 4 GiB anyway so
-> will always use IOVAs larger than that. That however is too late since
-> iommu_dma_set_pci_32bit_workaround() is already checked in
-> __iommu_probe_device() which is called just before ops-
-> > probe_finalize(). So I moved setting iommu_dma_forcedac =3D true to
-> zpci_init_iommu() and that gets rid of the notice for the NVMe but I
-> still get a failure of iommu_dma_alloc_iova() in
-> __iommu_dma_alloc_noncontiguous(). So I'll keep digging.
->=20
-> Thanks,
-> Niklas
+On Mon, Sep 11, 2023 at 10:30:33AM +0800, Yong Wu wrote:
+> Initialise a mtk_svp heap. Currently just add a null heap, Prepare for
+> the later patches.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  drivers/dma-buf/heaps/Kconfig           |  8 ++
+>  drivers/dma-buf/heaps/Makefile          |  1 +
+>  drivers/dma-buf/heaps/mtk_secure_heap.c | 99 +++++++++++++++++++++++++
+>  3 files changed, 108 insertions(+)
+>  create mode 100644 drivers/dma-buf/heaps/mtk_secure_heap.c
+> 
+> diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kconfig
+> index a5eef06c4226..729c0cf3eb7c 100644
+> --- a/drivers/dma-buf/heaps/Kconfig
+> +++ b/drivers/dma-buf/heaps/Kconfig
+> @@ -12,3 +12,11 @@ config DMABUF_HEAPS_CMA
+>  	  Choose this option to enable dma-buf CMA heap. This heap is backed
+>  	  by the Contiguous Memory Allocator (CMA). If your system has these
+>  	  regions, you should say Y here.
+> +
+> +config DMABUF_HEAPS_MTK_SECURE
+> +	bool "DMA-BUF MediaTek Secure Heap"
+> +	depends on DMABUF_HEAPS && TEE
+> +	help
+> +	  Choose this option to enable dma-buf MediaTek secure heap for Secure
+> +	  Video Path. This heap is backed by TEE client interfaces. If in
+Although this is intended for SVP right now, this is something that very
+well could work for other use cases. So, I think I'd not mention "Secure
+Video Path" and just mention "secure heap".
 
+> +	  doubt, say N.
+> diff --git a/drivers/dma-buf/heaps/Makefile b/drivers/dma-buf/heaps/Makefile
+> index 974467791032..df559dbe33fe 100644
+> --- a/drivers/dma-buf/heaps/Makefile
+> +++ b/drivers/dma-buf/heaps/Makefile
+> @@ -1,3 +1,4 @@
+>  # SPDX-License-Identifier: GPL-2.0
+>  obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)	+= system_heap.o
+>  obj-$(CONFIG_DMABUF_HEAPS_CMA)		+= cma_heap.o
+> +obj-$(CONFIG_DMABUF_HEAPS_MTK_SECURE)	+= mtk_secure_heap.o
+> diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c b/drivers/dma-buf/heaps/mtk_secure_heap.c
+> new file mode 100644
+> index 000000000000..bbf1c8dce23e
+> --- /dev/null
+> +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
+> @@ -0,0 +1,99 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * DMABUF mtk_secure_heap exporter
+> + *
+> + * Copyright (C) 2023 MediaTek Inc.
+> + */
+> +
+> +#include <linux/dma-buf.h>
+> +#include <linux/dma-heap.h>
+> +#include <linux/err.h>
+> +#include <linux/module.h>
+> +#include <linux/slab.h>
+> +
+> +/*
+> + * MediaTek secure (chunk) memory type
+> + *
+> + * @KREE_MEM_SEC_CM_TZ: static chunk memory carved out for trustzone.
+nit: s/trustzone/TrustZone/
 
-Ok I think I got it and this doesn't seem strictly s390x specific but
-I'd think should happen with iommu.forcedac=3D1 everywhere.
+-- 
+// Regards
+Joakim
 
-The reason iommu_dma_alloc_iova() fails seems to be that mlx5_core does
-dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64)) in=C2=A0
-mlx5_pci_init()->set_dma_caps() which happens after it already called
-mlx5_mdev_init()->mlx5_cmd_init()->alloc_cmd_page() so for the
-dma_alloc_coherent() in there the dev->coherent_dma_mask is still
-DMA_BIT_MASK(32) for which we can't find an IOVA because well we don't
-have IOVAs below 4 GiB. Not entirely sure what caused this not to be
-enforced before.
-
-Thanks,
-Niklas
+> + */
+> +enum kree_mem_type {
+> +	KREE_MEM_SEC_CM_TZ = 1,
+> +};
+> +
+> +struct mtk_secure_heap_buffer {
+> +	struct dma_heap		*heap;
+> +	size_t			size;
+> +};
+> +
+> +struct mtk_secure_heap {
+> +	const char		*name;
+> +	const enum kree_mem_type mem_type;
+> +};
+> +
+> +static struct dma_buf *
+> +mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
+> +		      unsigned long fd_flags, unsigned long heap_flags)
+> +{
+> +	struct mtk_secure_heap_buffer *sec_buf;
+> +	DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
+> +	struct dma_buf *dmabuf;
+> +	int ret;
+> +
+> +	sec_buf = kzalloc(sizeof(*sec_buf), GFP_KERNEL);
+> +	if (!sec_buf)
+> +		return ERR_PTR(-ENOMEM);
+> +
+> +	sec_buf->size = size;
+> +	sec_buf->heap = heap;
+> +
+> +	exp_info.exp_name = dma_heap_get_name(heap);
+> +	exp_info.size = sec_buf->size;
+> +	exp_info.flags = fd_flags;
+> +	exp_info.priv = sec_buf;
+> +
+> +	dmabuf = dma_buf_export(&exp_info);
+> +	if (IS_ERR(dmabuf)) {
+> +		ret = PTR_ERR(dmabuf);
+> +		goto err_free_buf;
+> +	}
+> +
+> +	return dmabuf;
+> +
+> +err_free_buf:
+> +	kfree(sec_buf);
+> +	return ERR_PTR(ret);
+> +}
+> +
+> +static const struct dma_heap_ops mtk_sec_heap_ops = {
+> +	.allocate	= mtk_sec_heap_allocate,
+> +};
+> +
+> +static struct mtk_secure_heap mtk_sec_heap[] = {
+> +	{
+> +		.name		= "mtk_svp",
+> +		.mem_type	= KREE_MEM_SEC_CM_TZ,
+> +	},
+> +};
+> +
+> +static int mtk_sec_heap_init(void)
+> +{
+> +	struct mtk_secure_heap *sec_heap = mtk_sec_heap;
+> +	struct dma_heap_export_info exp_info;
+> +	struct dma_heap *heap;
+> +	unsigned int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(mtk_sec_heap); i++, sec_heap++) {
+> +		exp_info.name = sec_heap->name;
+> +		exp_info.ops = &mtk_sec_heap_ops;
+> +		exp_info.priv = (void *)sec_heap;
+> +
+> +		heap = dma_heap_add(&exp_info);
+> +		if (IS_ERR(heap))
+> +			return PTR_ERR(heap);
+> +	}
+> +	return 0;
+> +}
+> +
+> +module_init(mtk_sec_heap_init);
+> +MODULE_DESCRIPTION("MediaTek Secure Heap Driver");
+> +MODULE_LICENSE("GPL");
+> -- 
+> 2.25.1
+> 
 
