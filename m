@@ -4,70 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81907E810DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 12:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3188E7F14E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 13:20:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wOGy0QaEIXprRvCjQA5OEF1KBK+vLSQf4WRPYydQ85k=; b=cKWyfz0zj0h84agRtzySYvd/6f
-	+DVsETmtcKDysK8x1R+hJV0G2cxrgl6WHsp3Rq8L1DUVm8pFkhraTCh5eVxG5tRrFzTJB6wXUE6hq
-	yBKcR2/DLhOiPJt5S0WqYnvWhM9q2S7UoQqnvZEmyFMBYIeBvpzH6TlSWzQnDCoDIeVtkizSEjzMf
-	QCLoCpI7VZ60f6UMo7PnUYJcYOX5mYsNHWHd37auuf66s5G0uLhpoCeHTNK+JLeo2jxrdrx7QJGrB
-	g9Q/s/evxRj8RaNmDe42leHFwaHjTBAeUMliMCAQQwkjj1sdCEKBJ02vfMYLKPpCwallG2dlnNcFj
-	OY03NLZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jv2J3s2T7OsfdnfP7xO+3G5kReH0lMyKgLkynJikBfI=; b=cVTU7q5OAEGMuegAWh/Zz3Ugqa
+	K54harVdRpVeLzxUXPODgEfChd7lPfY/yWVSRWsw5qjFLBiqc1LjEnu35Sem066P81YMJHocuSPyJ
+	fVjUR+KGsk39KcNLfC7dJu6MeFLwQEt9TK/NpDm25SUy5poEBOWSWs6Mr3WTl4khdXJVXd3zPLAtZ
+	QRxqfK0w2FQQzvXl4T+Psmo+/IpEoyM6Fmei3CGCmupKFMxnLyl1A1q/QmCYBlo3wIo61CxB8JFAL
+	Ox9Qji0FYHHCAXRLsTsQXxUaqdxg7tn0h2m6XLYLyhR1eCguylqt08d5AACCDCWpE3LfVV0J+WOtY
+	hxKXVwGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlTbd-000swY-1W;
-	Wed, 27 Sep 2023 12:25:29 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qlUT7-000zgr-0M;
+	Wed, 27 Sep 2023 13:20:45 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlTba-000sul-0L;
-	Wed, 27 Sep 2023 12:25:27 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5300F66072FA;
-	Wed, 27 Sep 2023 13:25:21 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695817521;
-	bh=3alifQHOTZ/qI3YlbbyRGBc8mUVf2wmTb8Mv6zKX9iE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NsL9hOLGKdjWajaVH114o3upsbIWtWm501MGIDavSoMA8kIqQY0P/Eg5hMDVVOzam
-	 pvTVpGsCUixwpI9DoNUYSc1VKVTaomnKLK3CZyAE4d/3lXWMbWH5WqkAx4h+f5tEnb
-	 N39+Kq+8vIdrRcWzKEQCve7I+OVqV6hiPCQ/aobAknzTFHAP7KBATAaSCn4dwnIkWV
-	 ad0bQ/CL8JQ49NAKC5AVM8+iK73VRMWwU/d8XWs+Ntt4y4TwZdz/LAIxAZumKkycXK
-	 0oA2urvSmpC+y952k+NICWuj78L6Dcm6Fdrwd8AQbMudGyqW4uS5xEnpo8eCU4FOFO
-	 v9W87iOUA6gcA==
-Message-ID: <78e2b144-5267-158e-db82-8ba1a5a0e1fd@collabora.com>
-Date: Wed, 27 Sep 2023 14:25:18 +0200
+	id 1qlUT3-000zgP-2i;
+	Wed, 27 Sep 2023 13:20:43 +0000
+Received: from pps.filterd (m0353728.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38RCOdCv005069;
+	Wed, 27 Sep 2023 13:20:14 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=jv2J3s2T7OsfdnfP7xO+3G5kReH0lMyKgLkynJikBfI=;
+ b=tJIYGGNUI7x+MeeJeVOcBbjIZ9cgqX/dZ9HPkBeNoUFHx0zzCrPigTsA7KPeSNVc2TlV
+ aSZZAFNRXvLMnc9cKkp4H+TksK4oudv79qebAVsJSiesoktymHl8Qq4tGl1ObhMy105j
+ LUPVKX8r0gSe7KenI/NO6by0jBuTUr9CLpGc0CK/y2rGBtILhqBEPlwmn8hN8GE2v64I
+ VQ9BJzTe/t5LvFvuHmAdiXAHDXTPGfFyMtrMYYR+FDM33QxfGdFwNQqizZziKEZFNIZk
+ TrKWWuLLepClvqBEL3FNdMYrhZfE3mX2at15iULH9drm5/lGV3qIhionZ4DbSC9hC5DT 7Q== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tcmcgsw85-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 13:20:14 +0000
+Received: from m0353728.ppops.net (m0353728.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 38RD5BuN028501;
+	Wed, 27 Sep 2023 13:20:13 GMT
+Received: from ppma23.wdc07v.mail.ibm.com (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tcmcgsw6v-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 13:20:13 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 38RB85s1011019;
+	Wed, 27 Sep 2023 13:20:11 GMT
+Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
+	by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tabukkhhn-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Sep 2023 13:20:11 +0000
+Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
+	by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 38RDK8uR42861118
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 27 Sep 2023 13:20:08 GMT
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 3124720067;
+	Wed, 27 Sep 2023 13:20:08 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 30B3420040;
+	Wed, 27 Sep 2023 13:20:07 +0000 (GMT)
+Received: from [9.152.212.236] (unknown [9.152.212.236])
+	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 27 Sep 2023 13:20:07 +0000 (GMT)
+Message-ID: <e1efbbd827e34800bd7fb0ea687645cc6c65e1ab.camel@linux.ibm.com>
+Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and
+ optimized IOTLB flushing
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Joerg Roedel <joro@8bytes.org>
+Cc: Jason Gunthorpe <jgg@ziepe.ca>, Matthew Rosato <mjrosato@linux.ibm.com>,
+        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+        Robin
+ Murphy <robin.murphy@arm.com>,
+        Gerd Bayer <gbayer@linux.ibm.com>,
+        Julian
+ Ruess <julianr@linux.ibm.com>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        Alexandra Winter <wintera@linux.ibm.com>,
+        Heiko Carstens
+ <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+        Alexander Gordeev
+ <agordeev@linux.ibm.com>,
+        Christian Borntraeger
+ <borntraeger@linux.ibm.com>,
+        Sven Schnelle <svens@linux.ibm.com>,
+        Suravee
+ Suthikulpanit <suravee.suthikulpanit@amd.com>,
+        Hector Martin
+ <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig
+ <alyssa@rosenzweig.io>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu
+ <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+        Bjorn Andersson
+ <andersson@kernel.org>,
+        Konrad Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu
+ <yong.wu@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai
+ <orsonzhai@gmail.com>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan
+ Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec
+ <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry
+ Reding <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Date: Wed, 27 Sep 2023 15:20:07 +0200
+In-Reply-To: <b06a14de270a63050b0d027c24b333dba25001a4.camel@linux.ibm.com>
+References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
+	 <ZRLy_AaJiXxZ2AfK@8bytes.org> <20230926160832.GM13795@ziepe.ca>
+	 <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
+	 <ZRP8CiBui7suB5D6@8bytes.org>
+	 <b06a14de270a63050b0d027c24b333dba25001a4.camel@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH] dt-bindings: remoteproc: mtk,scp: Add missing
- additionalProperties on child node schemas
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230926164513.101958-1-robh@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230926164513.101958-1-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: VXZxHUsIjNmP_Qb7Pwq1202Mna4hsBUK
+X-Proofpoint-ORIG-GUID: LYDctZpbLtyEpOclC1b66ehHlfvfc4KR
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-09-27_07,2023-09-27_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ mlxlogscore=999 lowpriorityscore=0 malwarescore=0 spamscore=0
+ suspectscore=0 clxscore=1015 impostorscore=0 mlxscore=0 adultscore=0
+ phishscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2309270110
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_052526_299312_E48963CD 
-X-CRM114-Status: UNSURE (   8.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230927_062041_907894_FBF5AF8D 
+X-CRM114-Status: GOOD (  29.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,15 +164,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/09/23 18:45, Rob Herring ha scritto:
-> Just as unevaluatedProperties or additionalProperties are required at
-> the top level of schemas, they should (and will) also be required for
-> child node schemas. That ensures only documented properties are
-> present for any node.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+On Wed, 2023-09-27 at 13:24 +0200, Niklas Schnelle wrote:
+> On Wed, 2023-09-27 at 11:55 +0200, Joerg Roedel wrote:
+> > Hi Niklas,
+> >=20
+> > On Wed, Sep 27, 2023 at 10:55:23AM +0200, Niklas Schnelle wrote:
+> > > The problem is that something seems to  be broken in the iommu/core
+> > > branch. Regardless of whether I have my DMA API conversion on top or
+> > > with the base iommu/core branch I can not use ConnectX-4 VFs.
+> >=20
+> > Have you already tried to bisect the issue in the iommu/core branch?
+> > The result might sched some light on the issue.
+> >=20
+> > Regards,
+> >=20
+> > 	Joerg
+>=20
+> Hi Joerg,
+>=20
+> Working on it, somehow I must have messed up earlier. It now looks like
+> it might in fact be caused by my DMA API conversion rebase and the
+> "s390/pci: Use dma-iommu layer" commit. Maybe there is some interaction
+> with Jason's patches that I haven't thought about. So sorry for any
+> wrong blame.
+>=20
+> Thanks,
+> Niklas
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi,
 
+I tracked the problem=C2=A0down from mlx5_core's alloc_cmd_page() via
+dma_alloc_coherent(), ops->alloc, iommu_dma_alloc_remap(), and
+__iommu_dma_alloc_noncontiguous() to a failed iommu_dma_alloc_iova().
+The allocation here is for 4K so nothing crazy.
 
+On second look I also noticed:
+
+nvme 2007:00:00.0: Using 42-bit DMA addresses
+
+for the NVMe that is working. The problem here seems to be that we set
+iommu_dma_forcedac =3D true in s390_iommu_probe_finalize() because we
+have currently have a reserved region over the first 4 GiB anyway so
+will always use IOVAs larger than that. That however is too late since
+iommu_dma_set_pci_32bit_workaround() is already checked in
+__iommu_probe_device() which is called just before ops-
+>probe_finalize(). So I moved setting iommu_dma_forcedac =3D true to
+zpci_init_iommu() and that gets rid of the notice for the NVMe but I
+still get a failure of iommu_dma_alloc_iova() in
+__iommu_dma_alloc_noncontiguous(). So I'll keep digging.
+
+Thanks,
+Niklas
 
