@@ -4,83 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BCCEE810B1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 09:26:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71453E810AD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 09:49:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LkZbyTOlW0PfauQaqsWQIpJqBupgQWL4Mv/aNJKdUu8=; b=L3+dcMZcO1mKRV+eyLwCYxU8lb
-	Xs+MpCaGgisPcMkmj1HaFuePAqbHmLAs520miInm4XdI+ZcYd4FTaXPKctxV2ABBUvbf8KWvzmJMK
-	zoG/1OFPqPWqXvWlyjIdI7Evoz/pWHrGj94BqOzjAKDHIvgLv//cf4Et3nvxIt2dQKtNFu/dL9pke
-	thhrkHgEQnnowjHHYNqMZpP2IHKdyqPnKwAJ/dsqcY1NBzqWJEb1zauzIx8t5LeGU7U22P+85zHrs
-	qHBNxLtUwNCPvfTL9uEyTR87dFtQCAsMzsrESG2AGNaZu3RFJMhhXTGTtR5noNCm7qpAkD98J13lm
-	pablOvhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q98uDEB8JdG8Rg0XglWISNc6dds1iBryKZg19ao3oMo=; b=KYAX1x9f2BZ8QAGFlzCE2Bzz8h
+	HG+trRzEvtXFDUXf8ywUTt7rL4SBcHJNK3jmNKTsfR64vja2iHnhOSAHEaZH3A8lwdOUhc2k2UoqS
+	xoJV09sp4OJxgx7XRiXb0ekpk34kFzMMtr+v/JU8j55Rhk6tiOZiiekd2LZrI/iXtAOWZlVaoePQ6
+	is7ZW2MaNqhJoH571RkBpXEBbust9kyR1t9K0mfalfcuywGYXaD1wTgBzjXEvPUo5nuRDhQ/89D6O
+	Ggb1mUWVj3TRePn3Nr1WEPZYfmyHAUmzvKBeMBwadQj1uNMCpdVJjljhC4Eq0hdJz0gzQuLFzvd7A
+	07mePK9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlQoT-000T7Q-1Z;
-	Wed, 27 Sep 2023 09:26:33 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlQoO-000T5R-1X;
-	Wed, 27 Sep 2023 09:26:31 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 01C3F1FB;
-	Wed, 27 Sep 2023 02:27:05 -0700 (PDT)
-Received: from [10.57.0.175] (unknown [10.57.0.175])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DE5E73F59C;
-	Wed, 27 Sep 2023 02:26:19 -0700 (PDT)
-Message-ID: <068aeebd-df24-5097-96e3-ebaaa7a763fd@arm.com>
-Date: Wed, 27 Sep 2023 10:26:14 +0100
+	id 1qlRAN-000WdY-1b;
+	Wed, 27 Sep 2023 09:49:11 +0000
+Received: from esa.microchip.iphmx.com ([68.232.154.123])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qlRAA-000WVz-32;
+	Wed, 27 Sep 2023 09:49:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1695808138; x=1727344138;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=oj/BIJaPlLOZ5a4Bm+3wRDEKMjmwS+415AzmToQmxko=;
+  b=Z+q5y9viHWW/C7duUL5fUNU7Jz2o8YrAYWHtf3i/EWqF093xOenB6eAw
+   s2e7AzgVRtnuFHUmv/bm7gIpHLlSajdlUzAsZc+D/pAism7t8FaBKKzwl
+   GKaS9sz1f2iPrEgeULU0cgq75sRaBbhnCqfibYVh35pVfkQ2ABWSJwTpl
+   UROUcbfTIa2dfjBlhKxtEBAiyrwiGMbsDCJMRscgo2L0d2iyZN29u6y/I
+   a0IGhPrjB4n1/X+rd6V+b1I6kwcuFp2jpDwcZmwMowZ2rl7VBjRsXBVvh
+   xeWBMkRG7gIumKeoxsnr+HTuLOsWSWGC4gAJNEannwqPKW1nU845Pm2MV
+   w==;
+X-CSE-ConnectionGUID: +8y/5vKTQAWpUgUoFVJWOw==
+X-CSE-MsgGUID: FCeDeZE/SGCJlrPGv/SrHA==
+X-ThreatScanner-Verdict: Negative
+X-IronPort-AV: E=Sophos;i="6.03,179,1694761200"; 
+   d="asc'?scan'208";a="173847249"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa6.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 27 Sep 2023 02:48:49 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Wed, 27 Sep 2023 02:48:03 -0700
+Received: from wendy (10.10.85.11) by chn-vm-ex04.mchp-main.com (10.10.85.152)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21 via Frontend
+ Transport; Wed, 27 Sep 2023 02:48:00 -0700
+Date: Wed, 27 Sep 2023 10:47:42 +0100
+From: Conor Dooley <conor.dooley@microchip.com>
+To: Moudy Ho =?utf-8?B?KOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
+CC: "conor@kernel.org" <conor@kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>, "chunkuang.hu@kernel.org"
+	<chunkuang.hu@kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>, "airlied@gmail.com"
+	<airlied@gmail.com>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v6 12/16] dt-bindings: display: mediatek: color: add
+ compatible for MT8195
+Message-ID: <20230927-crunching-prancing-36fe3eb79607@wendy>
+References: <20230922072116.11009-1-moudy.ho@mediatek.com>
+ <20230922072116.11009-13-moudy.ho@mediatek.com>
+ <20230922-zebra-modify-87ff23c70bb3@spud>
+ <20230922-overhung-deception-e9b461ba0372@spud>
+ <7c445195e17e15d5af5fcb30ae53f76c713e958b.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and optimized
- IOTLB flushing
-Content-Language: en-GB
-To: Niklas Schnelle <schnelle@linux.ibm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
- Joerg Roedel <joro@8bytes.org>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
- Wenjia Zhang <wenjia@linux.ibm.com>, Gerd Bayer <gbayer@linux.ibm.com>,
- Julian Ruess <julianr@linux.ibm.com>, Pierre Morel <pmorel@linux.ibm.com>,
- Alexandra Winter <wintera@linux.ibm.com>, Heiko Carstens
- <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>,
- David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, iommu@lists.linux.dev,
- asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-doc@vger.kernel.org
-References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
- <ZRLy_AaJiXxZ2AfK@8bytes.org> <20230926160832.GM13795@ziepe.ca>
- <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="T9lGne2QQapOBRac"
+Content-Disposition: inline
+In-Reply-To: <7c445195e17e15d5af5fcb30ae53f76c713e958b.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_022628_608268_D5A25A04 
-X-CRM114-Status: GOOD (  30.25  )
+X-CRM114-CacheID: sfid-20230927_024859_052291_C6F06D3C 
+X-CRM114-Status: GOOD (  27.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,75 +106,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-09-27 09:55, Niklas Schnelle wrote:
-> On Tue, 2023-09-26 at 13:08 -0300, Jason Gunthorpe wrote:
->> On Tue, Sep 26, 2023 at 05:04:28PM +0200, Joerg Roedel wrote:
->>> Hi Niklas,
->>>
->>> On Fri, Aug 25, 2023 at 12:11:15PM +0200, Niklas Schnelle wrote:
->>>> Niklas Schnelle (6):
->>>>        iommu: Allow .iotlb_sync_map to fail and handle s390's -ENOMEM return
->>>>        s390/pci: prepare is_passed_through() for dma-iommu
->>>>        s390/pci: Use dma-iommu layer
->>>>        iommu/s390: Disable deferred flush for ISM devices
->>>>        iommu/dma: Allow a single FQ in addition to per-CPU FQs
->>>>        iommu/dma: Use a large flush queue and timeout for shadow_on_flush
->>>
->>> Turned out this series has non-trivial conflicts with Jasons
->>> default-domain work so I had to remove it from the IOMMU tree for now.
->>> Can you please rebase it to the latest iommu/core branch and re-send? I
->>> will take it into the tree again then.
->>
->> Niklas, I think you just 'take yours' to resolve this. All the
->> IOMMU_DOMAIN_PLATFORM related and .default_domain = parts should be
->> removed. Let me know if you need anything
->>
->> Thanks,
->> Jason
-> 
-> Hi Joerg, Hi Jason,
-> 
-> I've run into an unfortunate problem, not with the rebase itself but
-> with the iommu/core branch.
-> 
-> Jason is right, I basically need to just remove the platform ops and
-> .default_domain ops. This seems to work fine for an NVMe both in the
-> host and also when using the IOMMU with vfio-pci + KVM. I've already
-> pushed the result of that to my git.kernel.org:
-> https://git.kernel.org/pub/scm/linux/kernel/git/niks/linux.git/log/?h=b4/dma_iommu
-> 
-> The problem is that something seems to  be broken in the iommu/core
-> branch. Regardless of whether I have my DMA API conversion on top or
-> with the base iommu/core branch I can not use ConnectX-4 VFs.
-> 
-> # lspci
-> 111a:00:00.0 Ethernet controller: Mellanox Technologies MT27710 Family [ConnectX-4 Lx Virtual Function]
-> # dmesg | grep mlx
-> [    3.189749] mlx5_core 111a:00:00.0: mlx5_mdev_init:1802:(pid 464): Failed initializing cmdif SW structs, aborting
-> [    3.189783] mlx5_core: probe of 111a:00:00.0 failed with error -12
-> 
-> This same card works on v6.6-rc3 both with and without my DMA API
-> conversion patch series applied. Looking at mlx5_mdev_init() ->
-> mlx5_cmd_init(). The -ENOMEM seems to come from the following
-> dma_pool_create():
-> 
-> cmd->pool = dma_pool_create("mlx5_cmd", mlx5_core_dma_dev(dev), size, align, 0);
-> 
-> I'll try to debug this further but wanted to let you know already in
-> case you have some ideas.
+--T9lGne2QQapOBRac
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I could imagine that potentially something in the initial default domain 
-conversion somehow interferes with the DMA ops in a way that ends up 
-causing alloc_cmd_page() to fail (maybe calling zpci_dma_init_device() 
-at the wrong point, or too many times?). FWIW I see nothing that would 
-obviously affect dma_pool_create() itself.
+On Wed, Sep 27, 2023 at 07:19:28AM +0000, Moudy Ho (=E4=BD=95=E5=AE=97=E5=
+=8E=9F) wrote:
+> On Fri, 2023-09-22 at 16:51 +0100, Conor Dooley wrote:
+> > On Fri, Sep 22, 2023 at 04:49:14PM +0100, Conor Dooley wrote:
+> > > On Fri, Sep 22, 2023 at 03:21:12PM +0800, Moudy Ho wrote:
+> > > > Add a compatible string for the COLOR block in MediaTek MT8195
+> > > > that
+> > > > is controlled by MDP3.
+> > > >=20
+> > > > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > > > ---
+> > > >  .../devicetree/bindings/display/mediatek/mediatek,color.yaml   =20
+> > > >  | 1 +
+> > > >  1 file changed, 1 insertion(+)
+> > > >=20
+> > > > diff --git
+> > > > a/Documentation/devicetree/bindings/display/mediatek/mediatek,col
+> > > > or.yaml
+> > > > b/Documentation/devicetree/bindings/display/mediatek/mediatek,col
+> > > > or.yaml
+> > > > index f21e44092043..b886ca0d89ea 100644
+> > > > ---
+> > > > a/Documentation/devicetree/bindings/display/mediatek/mediatek,col
+> > > > or.yaml
+> > > > +++
+> > > > b/Documentation/devicetree/bindings/display/mediatek/mediatek,col
+> > > > or.yaml
+> > > > @@ -26,6 +26,7 @@ properties:
+> > > >            - mediatek,mt2701-disp-color
+> > > >            - mediatek,mt8167-disp-color
+> > > >            - mediatek,mt8173-disp-color
+> > > > +          - mediatek,mt8195-mdp3-color
+> > >=20
+> > > How come this one is a "mdp3" not a "disp"?
+> >=20
+> > I don't know what mdp3 means & googling gives me no answers. What's
+> > the
+> > "disp" one controlled by, since it isn't controlled by mdp3?
+> >=20
+>=20
+> Hi Conor,
+>=20
+> Mediatek's Media Data Path ver.3 (MDP3) is associated with MMSYS and
+> acts as an independent driver that operates between VDEC and DISP.
+> By controlling multiple components, it carries out tasks like
+> converting color formats, resizing, and applying specific Picture
+> Quality (PQ) effects.
+> The driver can be found at "driver/media/platform/mediatek/mdp3".
+> Since the same hardware components are configured in both MDP3 and
+> DISP, considering previous discussions, I attemped to integrate into a
+> single binding, named after the controlling user.
 
-Robin.
+I'm still kinda struggling to understand this. Do you mean that the
+hardware can be controlled by either of the disp and mdp3 drivers, and
+a compatible containing "disp" would use one driver, and one containing
+"mdp3" would use another?
 
-> Either way as it doesn't seem to be related
-> to the DMA API conversion I can sent that out again regardless if you
-> want, really don't want to miss another cycle.
-> 
-> Thanks,
-> Niklas
+
+--T9lGne2QQapOBRac
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZRP6PgAKCRB4tDGHoIJi
+0kh7AP9O7MKYjrnar798S6fbop9AWuqH31/FShl/0JtdCf2N/wD/R/G17q/VHosy
+cmzXFHme+vk2cMO0cR0geJwglqggtQo=
+=5FSm
+-----END PGP SIGNATURE-----
+
+--T9lGne2QQapOBRac--
 
