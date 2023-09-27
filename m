@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4459FE82CA5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:41:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CEC0E82CA5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:41:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d1mmhF6o10BWWriTPXMuPzcjKrUhlG8FFXawCAXG5Qk=; b=Tg/bSWzpHWHUQdIJsHdWaMy5sQ
-	8tfO1hlnXg1vgPnEXxeS7Hgha5eqKU7ZhHTKKDvTmyGXX2NqLJTfqqH2a9F4/0Nk5qrOR+rgSbtGB
-	Bjp31wafbZAaYUE2MGzoULu7ZFTjiUTa4OTUK5YO6qDOE4GryPl5A7MyvJ202mLn39VsKOY6NNzx9
-	7PxNo4L6vLmryUd7Xm0X8OQLckuyqVbm/8nZ7RZY0tffoQD6Xzzxdel/W/MZ1jj5cafqvs8posimH
-	1eKJw6U11TNAjV/feZS/8gIZEQC/lIRKddCEjNNF1KTNVeSqwBvm4U/zPm4oc5cpwB98tQ4qN0CnP
-	Xa7f76mg==;
+	bh=PyRQlttGaSLutsSrmcIjRomqRtkMYdTFH9dk8D/zyt8=; b=hXYAGzCAClCLZolFu7NrZtjeyL
+	bSH93PWaD87J7YAS3aY/ocKRMWDwBnrBnVBCh6QCxosnIu5/3Guekciup1JmE8RYwh/TfT3GDF6lI
+	M9/F5WQFvupzwlCQRtls3nYOB8xIlCVek4f9Zuw7W3QAEH6A9zCsEmFN+x3Dadl+W/Z37oQLVOAJ4
+	VtWoBpsowb34KCwc9Fyuh2OnWL+Udd8dSvA6hli49RzJq4sEmNEnqMOP5Dysb8DiVNNLUOK/Hy2sy
+	M8QBMp1opTInl67Tp8CDJWolYNyb+lUqe6/n0/mC270tjEMn1EnBGfWFWo4lg3tXw7GzvIPSO51HG
+	VjJygoUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWfY-001LsP-1G;
-	Wed, 27 Sep 2023 15:41:44 +0000
+	id 1qlWff-001Ly7-1u;
+	Wed, 27 Sep 2023 15:41:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWdA-001JSK-1K;
-	Wed, 27 Sep 2023 15:39:19 +0000
-X-UUID: 00dcc3165d4c11ee86758d4a7c00f3a0-20230927
+	id 1qlWdA-001JRf-1Q;
+	Wed, 27 Sep 2023 15:39:20 +0000
+X-UUID: ff42fef85d4b11ee86758d4a7c00f3a0-20230927
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=d1mmhF6o10BWWriTPXMuPzcjKrUhlG8FFXawCAXG5Qk=;
-	b=rt7sgvsvWUtl/HoBeZGWnAuVuCms0/Pc/kMuJtfirdtILD0exo7WTzIVsyXKaXKJ2uofC+dcBVOMENaa4gl7bmlQoQae6rzGz7Q7wv0NF4zBDvNPmnKbW3wehLPDWyQHgzFP4Ag3isq/SAD4CRW3lVYaIM7RPdoGAn8YUIhSbZM=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PyRQlttGaSLutsSrmcIjRomqRtkMYdTFH9dk8D/zyt8=;
+	b=dTlzypJneU7Fe4mEd2MWyU/oLNSl37h74/aHJMcPCJkyaDKo75cbdggcnPnWK9eax89hk9TAXGGpJuySb0pYC1Pi5yRHMxvI2YXFCxT9nDMaLKplgqkf+Akfr5JQv7B2414/sk9APyFcFZRiTHEYXfNIMh+OhxgCOd8noUf6ZYI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:15f93e8c-074b-4363-b7ec-6c74738d270e,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:13333cc1-3281-436f-a2ec-55bb30f85774,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:5f78ec9,CLOUDID:efaa88c3-1e57-4345-9d31-31ad9818b39f,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:b9bf57bf-14cc-44ca-b657-2d2783296e72,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 00dcc3165d4c11ee86758d4a7c00f3a0-20230927
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ff42fef85d4b11ee86758d4a7c00f3a0-20230927
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1223140600; Wed, 27 Sep 2023 08:39:10 -0700
+	with ESMTP id 407226525; Wed, 27 Sep 2023 08:39:08 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 27 Sep 2023 23:38:35 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -63,32 +63,19 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
 	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Nathan Lu
-	<nathan.lu@mediatek.com>
-Subject: [PATCH v10 9/9] drm/mediatek: Support dynamic selection of DSI0 on MT8188 VDOSYS0
-Date: Wed, 27 Sep 2023 23:38:33 +0800
-Message-ID: <20230927153833.23583-10-jason-jh.lin@mediatek.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v10 7/9] drm/mediatek: Support dynamic selection of DP_INTF0 on MT8188 VDOSYS0
+Date: Wed, 27 Sep 2023 23:38:31 +0800
+Message-ID: <20230927153833.23583-8-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230927153833.23583-1-jason-jh.lin@mediatek.com>
 References: <20230927153833.23583-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.275200-8.000000
-X-TMASE-MatchedRID: cAwOsowI+VIeMlyElPeCGGNW0DAjL5p+EbxKVXd70tXfUZT83lbkEH3U
-	O6dm0hoW4vM1YF6AJbbGJQ3BiiLAggtuKBGekqUpnH7sbImOEBSYB7F0At05aAehBdy2joqW7eA
-	HA/QBQn7dPfaML5fsmguAxSypZN+ZMZLjad6G1FVXjtFfbGidPT3upCq1bPhQCySi89VbZN5Jmt
-	82E/eyBQGH0CAFIQWsmb5gmylW+PbGS+seVPx64j6Qrn3xh/cy
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.275200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 35D5E6353570CA3681EC435E17E608A8F71F93B028A3CC23EBE7276521C3C8B72000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083916_510291_7A1E251C 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230927_083916_602924_501D4A5B 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,30 +90,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add DDP_COMPONENT_DSI0 as a main display output selection on
-MT8188 VDOSYS0.
+Move DDP_COMPONENT_DP_INTF0 from mt8188_mtk_ddp_main array to a
+connector routes array called mt8188_mtk_ddp_main_routes to support
+dynamic selection capability for mt8188.
 
-Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: Fei Shao <fshao@chromium.org>
-Tested-by: Fei Shao <fshao@chromium.org>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 70c9501250a0..5226be88d088 100644
+index 5d2e191b4106..70c9501250a0 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -190,6 +190,7 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
- 
- static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
- 	{0, DDP_COMPONENT_DP_INTF0},
-+	{0, DDP_COMPONENT_DSI0},
+@@ -186,7 +186,10 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_GAMMA,
+ 	DDP_COMPONENT_POSTMASK0,
+ 	DDP_COMPONENT_DITHER0,
+-	DDP_COMPONENT_DP_INTF0,
++};
++
++static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
++	{0, DDP_COMPONENT_DP_INTF0},
  };
  
  static const unsigned int mt8192_mtk_ddp_main[] = {
+@@ -288,6 +291,8 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+ static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
+ 	.main_path = mt8188_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
++	.conn_routes = mt8188_mtk_ddp_main_routes,
++	.num_conn_routes = ARRAY_SIZE(mt8188_mtk_ddp_main_routes),
+ 	.mmsys_dev_num = 1,
+ };
+ 
 -- 
 2.18.0
 
