@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4434EE82CA5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:39:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEC63E82CA6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:39:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qaBFBANr93J51DmI1srCmVst+2mAHeCuZx2o4iea3W4=; b=V+ufL2QHvkdMdW9DQazslGyxys
-	9NsHuu8WEMg7khOnTXHu5lK+FENFxfLR4Q8XRNVsGFLNZMVRlE4WZ92E5nJCXc1vlrAG3rLLRXgw8
-	wbozfWRCQOtNgTTjv+/oamwLZB61qTc3+tnR4L93LREbOErAJTuTDP8Xi/FwbVceMOL5Nmr5tIIC+
-	u1csZAtwgd5/7/gWrvxcDgLdYdHfXoznnHFFBdPPG2GSOs+MKG121M8CQET3M+XlCF9UuMmz5MHPG
-	Hf5goXBqGYqXZUDJ8Es3Vp6CTO9omkiT1QGGOJpo1doBl0oBB4oPO8xvwo3UA1eB13Ji/ORD4TKiO
-	B2Cno7iA==;
+	bh=ER83NPi30J3seQDoSaM/YXD649vL/4o83t3smZbJ/84=; b=MZOAJAIDgi2Rv9visCykAj9SzV
+	aXx4Nmz94cSit296nNNRQTnMWq152u+Vt5j9M79Li0KQT/R0zS4tGy6h7uFr7WwfBy2K7oHoPmukG
+	IWXCMJkc8KcpAlesof9TwEYZWxW+yjEGzcoK1tzrE2rdD9Pvo69uGK7IJn5IN+UmkDHUnmz1+4vlI
+	6PMJmqW1cwv1ObJ+pVrwyzM/JDNl/JR9bajOaz8u7HIA3uOglBW24OPLgGV32RkEu4AjJpZAvbj1R
+	EiZNoqeRNA013xt5HdwDkqAhYzdIRzL0NK1g4bmdYG5r7Z1Aa/JcuP9CET8TmQw5RWe6A0CR2//Tc
+	x3pHm0Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWdR-001JjV-1q;
-	Wed, 27 Sep 2023 15:39:33 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qlWdV-001JnL-1s;
+	Wed, 27 Sep 2023 15:39:37 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaQ-001GV3-0l;
-	Wed, 27 Sep 2023 15:36:31 +0000
+	id 1qlWaW-001GcA-0i;
+	Wed, 27 Sep 2023 15:36:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=ER83NPi30J3seQDoSaM/YXD649vL/4o83t3smZbJ/84=; b=OMjg7+VnbztmQptqp42+9mqtpj
+	LuJVgrPzzNdJNk4Ne0445Yr5ykSWHXmzShNXmuvgxdhFTkYwypkgclV10tnfu3YENH0Z5IkNd/16W
+	UdoVPNkPvE0kk4ub0uNS1wIZjS3LYRtN4BY4LG0Ov9sdipf3wkHtRvkdzxtMvUGzPI+VZOGR6RWdT
+	QQbrnXpFMc6T4XRrOKoRxjhkXOMVsqqVXu+RcemzORVYWqNT3jamo7ztDU8MjtgLo2g/0JfRZRjr0
+	u1ssiQpVZtE+n6MQf1fmTzKpehewccewe3sJG+E2go1eEDRyJ5qrp40xC1DwDzwO0rp59e5StcaIx
+	c/Yh+erg==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qlWaQ-00404f-2s;
+	Wed, 27 Sep 2023 15:36:30 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 930186607368;
-	Wed, 27 Sep 2023 16:36:24 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A66BF6607340;
+	Wed, 27 Sep 2023 16:36:26 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828985;
-	bh=c7kOTl+JvLUci3Ybxp5I5uKTMKcI7MOYLdh4Vrq/z0g=;
+	s=mail; t=1695828987;
+	bh=fi+Fxcs6m07q1y5Umer9Ad8BDnSh9/sSAfF+r67YVOU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ldggy2WldH0w6fVpvXJHAv7iB4WJmdb/QCjL+QiwdHX8gFobbO7nON+6XhVzyWLwR
-	 /7Sb6kC6I6+XjfpBly+k491HxRBIfHsazDLwHJvRMwnuN+bXN1eugJ4XRVZjIv8A0i
-	 IwpGy7INrvvNN66Z5mnRo9VFWEwpycJi5HyafxcZ/Vfvx2q7pCtkvCywOQXiN54w4w
-	 Riz8uEscQVW2t2AGcUWpsTr2rqziQ2D3rvXtJytRNvbB/Y5fDOQKxP7TYh4mCcP6g5
-	 iwg5UKqKk+uozqiwQWRpBnkvoIRkX4lPLHukwuKOuLreoiK6wl3t4gVMOt44Fl121m
-	 7h2j99D+/mYrQ==
+	b=guqK3H/EizUFTtu2kUGQOZE/QpdCwqEaG36OuEJJOI7NtjT2dkOu/emR8OZJNY15x
+	 swwPt+9lqTETWEN/vpzNluCm7e0UdxjMnCw/PhYJKD3gsgcz271ZZSprnXxEEttnCB
+	 UrYSjl1Wv9ptM6qVEFo55Z1X2Ih8xOqk0sKLdOhdvoiR9yWNTOKA18jAUKRvfg5KBd
+	 PQgL+fp+AIK099rQd/cQotIGrrN0dahmoimkjvfnOe/wKqzrSbOrT2UEuMCF9AwZWZ
+	 q16dxzlpuwAVbMwBjylBIJkPRXt6WhD9pL33bo8HpH9eLMrE5ZzEUytDfVhanijMDV
+	 KhaV0hxEyhyRQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +76,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 35/53] media: ti: Use queue min_buffers_needed field to set the min number of buffers
-Date: Wed, 27 Sep 2023 17:35:40 +0200
-Message-Id: <20230927153558.159278-36-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 39/53] media: usb: cx231xx: Set min_buffers_needed to CX231XX_MIN_BUF
+Date: Wed, 27 Sep 2023 17:35:44 +0200
+Message-Id: <20230927153558.159278-40-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083626_595168_7BEC476F 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20230927_163628_684834_35535B81 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,137 +101,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When queue min_buffers_needed field is correctly set vb2 queue_setup()
-does take care of it and we can remove the checks from drivers.
+vb2 queue_setup checks for a minimum number of buffers so set
+min_buffers_needed to  aCX231XX_MIN_BUFnd remove the useless check in
+cx231xx queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/ti/am437x/am437x-vpfe.c   | 7 ++-----
- drivers/media/platform/ti/cal/cal-video.c        | 5 +----
- drivers/media/platform/ti/davinci/vpif_capture.c | 5 +----
- drivers/media/platform/ti/davinci/vpif_display.c | 5 +----
- drivers/media/platform/ti/omap/omap_vout.c       | 5 +++--
- 5 files changed, 8 insertions(+), 19 deletions(-)
+ drivers/media/usb/cx231xx/cx231xx-417.c   | 4 +---
+ drivers/media/usb/cx231xx/cx231xx-video.c | 4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/platform/ti/am437x/am437x-vpfe.c b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-index 63092013d476..a12c93f8b40e 100644
---- a/drivers/media/platform/ti/am437x/am437x-vpfe.c
-+++ b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-@@ -1776,9 +1776,6 @@ static int vpfe_queue_setup(struct vb2_queue *vq,
- 	struct vpfe_device *vpfe = vb2_get_drv_priv(vq);
- 	unsigned size = vpfe->fmt.fmt.pix.sizeimage;
+diff --git a/drivers/media/usb/cx231xx/cx231xx-417.c b/drivers/media/usb/cx231xx/cx231xx-417.c
+index c5e21785fafe..fecdb12f5ef7 100644
+--- a/drivers/media/usb/cx231xx/cx231xx-417.c
++++ b/drivers/media/usb/cx231xx/cx231xx-417.c
+@@ -1223,9 +1223,6 @@ static int queue_setup(struct vb2_queue *vq,
+ 	dev->ts1.ts_packet_size  = mpeglinesize;
+ 	dev->ts1.ts_packet_count = mpeglines;
  
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
+-	if (vq->num_buffers + *nbuffers < CX231XX_MIN_BUF)
+-		*nbuffers = CX231XX_MIN_BUF - vq->num_buffers;
 -
- 	if (*nplanes) {
- 		if (sizes[0] < size)
- 			return -EINVAL;
-@@ -1789,7 +1786,7 @@ static int vpfe_queue_setup(struct vb2_queue *vq,
- 	sizes[0] = size;
- 
- 	vpfe_dbg(1, vpfe,
--		"nbuffers=%d, size=%u\n", *nbuffers, sizes[0]);
-+		"nbuffers=%u, size=%u\n", vb2_get_num_buffers(vq), sizes[0]);
- 
- 	/* Calculate field offset */
- 	vpfe_calculate_offsets(vpfe);
-@@ -2237,7 +2234,7 @@ static int vpfe_probe_complete(struct vpfe_device *vpfe)
- 	q->buf_struct_size = sizeof(struct vpfe_cap_buffer);
- 	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
- 	q->lock = &vpfe->lock;
--	q->min_buffers_needed = 1;
-+	q->min_buffers_needed = 3;
- 	q->dev = vpfe->pdev;
- 
- 	err = vb2_queue_init(q);
-diff --git a/drivers/media/platform/ti/cal/cal-video.c b/drivers/media/platform/ti/cal/cal-video.c
-index a8abcd0fee17..924465b37e5f 100644
---- a/drivers/media/platform/ti/cal/cal-video.c
-+++ b/drivers/media/platform/ti/cal/cal-video.c
-@@ -604,9 +604,6 @@ static int cal_queue_setup(struct vb2_queue *vq,
- 	struct cal_ctx *ctx = vb2_get_drv_priv(vq);
- 	unsigned int size = ctx->v_fmt.fmt.pix.sizeimage;
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
--
- 	if (*nplanes) {
- 		if (sizes[0] < size)
- 			return -EINVAL;
-@@ -616,7 +613,7 @@ static int cal_queue_setup(struct vb2_queue *vq,
+ 	if (*nplanes)
+ 		return sizes[0] < size ? -EINVAL : 0;
  	*nplanes = 1;
- 	sizes[0] = size;
+@@ -1777,6 +1774,7 @@ int cx231xx_417_register(struct cx231xx *dev)
+ 	q = &dev->mpegq;
+ 	q->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+ 	q->io_modes = VB2_USERPTR | VB2_MMAP | VB2_DMABUF | VB2_READ;
++	q->min_buffers_needed = CX231XX_MIN_BUF;
+ 	q->drv_priv = dev;
+ 	q->buf_struct_size = sizeof(struct cx231xx_buffer);
+ 	q->ops = &cx231xx_video_qops;
+diff --git a/drivers/media/usb/cx231xx/cx231xx-video.c b/drivers/media/usb/cx231xx/cx231xx-video.c
+index e23b8ccd79d4..26b593844157 100644
+--- a/drivers/media/usb/cx231xx/cx231xx-video.c
++++ b/drivers/media/usb/cx231xx/cx231xx-video.c
+@@ -717,9 +717,6 @@ static int queue_setup(struct vb2_queue *vq,
  
--	ctx_dbg(3, ctx, "nbuffers=%d, size=%d\n", *nbuffers, sizes[0]);
-+	ctx_dbg(3, ctx, "nbuffers=%d, size=%d\n", vb2_get_num_buffers(vq), sizes[0]);
+ 	dev->size = (dev->width * dev->height * dev->format->depth + 7) >> 3;
  
- 	return 0;
- }
-diff --git a/drivers/media/platform/ti/davinci/vpif_capture.c b/drivers/media/platform/ti/davinci/vpif_capture.c
-index 99fae8830c41..8a4cc62cf562 100644
---- a/drivers/media/platform/ti/davinci/vpif_capture.c
-+++ b/drivers/media/platform/ti/davinci/vpif_capture.c
-@@ -122,9 +122,6 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
- 		size = sizes[0];
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
+-	if (vq->num_buffers + *nbuffers < CX231XX_MIN_BUF)
+-		*nbuffers = CX231XX_MIN_BUF - vq->num_buffers;
 -
+ 	if (*nplanes)
+ 		return sizes[0] < dev->size ? -EINVAL : 0;
  	*nplanes = 1;
- 	sizes[0] = size;
- 
-@@ -1428,7 +1425,7 @@ static int vpif_probe_complete(void)
- 		q->mem_ops = &vb2_dma_contig_memops;
- 		q->buf_struct_size = sizeof(struct vpif_cap_buffer);
- 		q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
--		q->min_buffers_needed = 1;
-+		q->min_buffers_needed = 3;
- 		q->lock = &common->lock;
- 		q->dev = vpif_dev;
- 
-diff --git a/drivers/media/platform/ti/davinci/vpif_display.c b/drivers/media/platform/ti/davinci/vpif_display.c
-index f8ec2991c667..6fc32314cf9c 100644
---- a/drivers/media/platform/ti/davinci/vpif_display.c
-+++ b/drivers/media/platform/ti/davinci/vpif_display.c
-@@ -122,9 +122,6 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
- 		size = sizes[0];
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
--
- 	*nplanes = 1;
- 	sizes[0] = size;
- 
-@@ -1168,7 +1165,7 @@ static int vpif_probe_complete(void)
- 		q->mem_ops = &vb2_dma_contig_memops;
- 		q->buf_struct_size = sizeof(struct vpif_disp_buffer);
- 		q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
--		q->min_buffers_needed = 1;
-+		q->min_buffers_needed = 3;
- 		q->lock = &common->lock;
- 		q->dev = vpif_dev;
- 		err = vb2_queue_init(q);
-diff --git a/drivers/media/platform/ti/omap/omap_vout.c b/drivers/media/platform/ti/omap/omap_vout.c
-index 4143274089c3..72ce903717d3 100644
---- a/drivers/media/platform/ti/omap/omap_vout.c
-+++ b/drivers/media/platform/ti/omap/omap_vout.c
-@@ -944,10 +944,11 @@ static int omap_vout_vb2_queue_setup(struct vb2_queue *vq,
- 				     struct device *alloc_devs[])
- {
- 	struct omap_vout_device *vout = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	int size = vout->pix.sizeimage;
- 
--	if (is_rotation_enabled(vout) && vq->num_buffers + *nbufs > VRFB_NUM_BUFS) {
--		*nbufs = VRFB_NUM_BUFS - vq->num_buffers;
-+	if (is_rotation_enabled(vout) && q_num_bufs + *nbufs > VRFB_NUM_BUFS) {
-+		*nbufs = VRFB_NUM_BUFS - q_num_bufs;
- 		if (*nbufs == 0)
- 			return -EINVAL;
- 	}
+@@ -1805,6 +1802,7 @@ int cx231xx_register_analog_devices(struct cx231xx *dev)
+ 	q = &dev->vidq;
+ 	q->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+ 	q->io_modes = VB2_USERPTR | VB2_MMAP | VB2_DMABUF | VB2_READ;
++	q->min_buffers_needed = CX231XX_MIN_BUF;
+ 	q->drv_priv = dev;
+ 	q->buf_struct_size = sizeof(struct cx231xx_buffer);
+ 	q->ops = &cx231xx_video_qops;
 -- 
 2.39.2
 
