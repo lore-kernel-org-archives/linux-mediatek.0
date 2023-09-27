@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38ED2E82CA7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:38:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4AF6E82CA6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:38:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d+Zh7OhCiZiOOWKfbCvE9mpOVb6/vmByOpoeFDYFpv4=; b=hGWQGZ7NBjQwFZFJwXfX6/3bJj
-	EgqGpjGnvB+jv2B+JXUXDMLk/HQS+T9XV7vP7CZGUIosAi+mhHzzq2U5XNQMYhPK4VX1iBEYV9s7W
-	JbULd1M6El6K18dlanKEJMM5xiOnEcK9vyErZI6yobOUkjMm51TFHaauiJc98csnX1xfMRDwQSfjk
-	KtiPy5lszxjQJ0jCB8sqAXZs7u2yQTIT7NO3F6DNiRBLYlgt7kPeYYEEgJUoPABtSYebvQ2CaoyXY
-	AGRHQunjUhPmXAMh2wDlVn83YpB5kU6XEQfv9Nwd569arccrOGAKGEtggP434zQBBeaV6pwZO4Cmo
-	MUGR8gVg==;
+	bh=PmW7Z5NzQBNoTpp+u7NKXF/tYEVc6UqlJQkmg8Bhq70=; b=Y4XQ135bgrFxOq9O9RfXIAEgTS
+	G/VURy1l06xFNqROL74jTSxwN/nUuSi/Vflq8ea02osd8kUMjbOBBVld7SN2H1mKj0yDvyaeuEC83
+	S4iOyKSyavTXLS1x4b4dgFb/xuceGNdTpbhVNaPM8HCgE6yL02UrY24Y9msN3VmusoxeP0anMkmG6
+	QYMKmzNzQ31iwHgB21OnXYPAZ6D7Oq3pzafkKsit86FGjdufGKr95GPyDFa/4axfr0t7HOUVB/nT+
+	spkwT9rI4G+OR+gZXW1FooTsGMb2/1oyXGBgXEKex3/V7Wskrmr6bhRL1qsRMH/mRzes7VVJX17oM
+	G6Ip0wLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWc6-001IRA-2b;
-	Wed, 27 Sep 2023 15:38:10 +0000
+	id 1qlWcG-001Iaz-0k;
+	Wed, 27 Sep 2023 15:38:20 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaJ-001GNY-2P;
-	Wed, 27 Sep 2023 15:36:24 +0000
+	id 1qlWaL-001GPD-1D;
+	Wed, 27 Sep 2023 15:36:26 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C22586607341;
-	Wed, 27 Sep 2023 16:36:17 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5D3816607358;
+	Wed, 27 Sep 2023 16:36:19 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828978;
-	bh=o2sVtoPPYvq8hM/qyihWIqN4hasDvFA4zhZmTyTxJEg=;
+	s=mail; t=1695828979;
+	bh=rFkYvrsLIxo1F3JyDJJ7M8J5xfn6Sk0yrCHC7ra2U7I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hwKR+kewdKTelS3R3thL/EF8gMofAIkxOiXzfkYUwBoMZIdXG8YDhxrG/wiLtOy3b
-	 kTDuiyqtu60DA9ltXI6nB4fv99na6PUPfckb3mQdEXBzGQr5N4U/EM/GJF4MpkOQJo
-	 XPB6d0jzFW+TdVHHyXQRdWMcB1YKSRiViHXv6wCR99Ek8XOtHyOr3HhnUJtVTtwabR
-	 iKWAanGDYY/jToXywrblnQKdam4t85AsMDfxGa6LEi0QgVxHe3hYEDhoB5TxmYaY56
-	 738KXrIgdxN9Iiz28UWd45fx4/Vsp3uQ4uROLP9XB43Pe0n1EbMbls9AnA3oJaTDlG
-	 3CcKFPYb+xVew==
+	b=UL1PKvY4yx9YNzuf5lH5Q42TuvYjDHGe7kVGh+wHFKvVPqP0xI+pQo7L7aJnMxGo+
+	 7j2e7PS2cNp5bZL+JLaXnO4SoUVSZQnWkHwjAm5chlirOe8ifDhcspba6y9NMys8b1
+	 Ho4RpziFsEjtJGBRhrribw9cX9LU2y+Z23ZHS8Oe/Hji5Ek5/jwV0c1T+acs0gCLxU
+	 xnQBnAxp3rIG5mdXZO7sE/LMcDTgvGLiSlWibTdgN54XNUK0mSAkOeTPfD8HO5FTWX
+	 aTb4GafJz4XZkAXMwwoKXTMt4eswcWia0zid5IS78xLiu1a1oFXZvzwEeLbDqLq3jY
+	 PmYdpGiKCATKA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,18 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 22/53] media: dvb-core: Do not initialize twice queue num_buffer field
-Date: Wed, 27 Sep 2023 17:35:27 +0200
-Message-Id: <20230927153558.159278-23-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 25/53] media: pci: cx18: Set correct value to min_buffers_needed field
+Date: Wed, 27 Sep 2023 17:35:30 +0200
+Message-Id: <20230927153558.159278-26-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083619_930088_2642EF5C 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230927_083621_544550_D7B77DC2 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,26 +87,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The above memset already zeroed all the ctx fields, it is useless
-to do it here again.
+Set queue min_buffers_needed field to 3 and remove the useless
+check.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/dvb-core/dvb_vb2.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/media/pci/cx18/cx18-streams.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
-index 3a966fdf814c..a731b755a0b9 100644
---- a/drivers/media/dvb-core/dvb_vb2.c
-+++ b/drivers/media/dvb-core/dvb_vb2.c
-@@ -177,7 +177,6 @@ int dvb_vb2_init(struct dvb_vb2_ctx *ctx, const char *name, int nonblocking)
- 	q->ops = &dvb_vb2_qops;
- 	q->mem_ops = &vb2_vmalloc_memops;
- 	q->buf_ops = &dvb_vb2_buf_ops;
--	q->num_buffers = 0;
- 	ret = vb2_core_queue_init(q);
- 	if (ret) {
- 		ctx->state = DVB_VB2_STATE_NONE;
+diff --git a/drivers/media/pci/cx18/cx18-streams.c b/drivers/media/pci/cx18/cx18-streams.c
+index 597472754c4c..6ed2c9fb882c 100644
+--- a/drivers/media/pci/cx18/cx18-streams.c
++++ b/drivers/media/pci/cx18/cx18-streams.c
+@@ -117,13 +117,6 @@ static int cx18_queue_setup(struct vb2_queue *vq,
+ 	else
+ 		szimage = cx->cxhdl.height * 720 * 2;
+ 
+-	/*
+-	 * Let's request at least three buffers: two for the
+-	 * DMA engine and one for userspace.
+-	 */
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
+-
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < szimage)
+ 			return -EINVAL;
+@@ -286,7 +279,11 @@ static int cx18_stream_init(struct cx18 *cx, int type)
+ 		s->vidq.ops = &cx18_vb2_qops;
+ 		s->vidq.mem_ops = &vb2_vmalloc_memops;
+ 		s->vidq.timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+-		s->vidq.min_buffers_needed = 2;
++		/*
++		 * Let's request at least three buffers: two for the
++		 * DMA engine and one for userspace.
++		 */
++		s->vidq.min_buffers_needed = 3;
+ 		s->vidq.gfp_flags = GFP_DMA32;
+ 		s->vidq.dev = &cx->pci_dev->dev;
+ 		s->vidq.lock = &cx->serialize_lock;
 -- 
 2.39.2
 
