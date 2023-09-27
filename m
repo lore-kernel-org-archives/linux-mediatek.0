@@ -4,73 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E613E82CAF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 16:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5463E82CBD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 18:31:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X1g/tz7jNehkr3VlxI/yjN6uyVVgMb0iLQdkJcHs0AU=; b=1fhldBtRRuIIjMaz++s73Jc6rx
-	eLVqwBvxnKq0tytNLDjzayrZfU/pJQLoJcKCKbW+oFU/TAx8KA6IMlM6Kee1AiL7mQZv9zWA54lxM
-	SJfySJNnA9wsoeYGBYXa/WJF1k2969mGhG656AOixjWBZA9MvqT69wEHAEFqYYnzYTD0Li10SJCAA
-	Y2roI3E03OPSggDcvo6vnWRgvLDifvza63A55FOnafcXoEo2PIoFEAk8cMZxUsm83hJq30xjeY2XH
-	JDdmi6wDQCjd8GWYSgHJDVNxAIKy9E1IJA0YTipI4E/h2USNpjYbECnMUtRKgmx5mCRxV3wqz/+WB
-	XcIJ8rZw==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MIjAuBLH35Ezjhzsj4X9szK/gj5rFSWTPmQeixZLFj8=; b=3p2nGHfFjZSd/iJUY0hM0czWVn
+	9j767aTfA1xuP62nA6U6f4+IlKeTs/AmAvhJlPVCi2tSwEZ4To2lQ4AHLoxlZDJMGZNZ+V+M0mL4Z
+	2DvttjO/emKlQ0CtFjqlp28QDM1wvuMXJQv4ikrqtqCGzz+wC4vPO2GqgBa4xwpZCyTcrM4P9Xm+6
+	raD3n4NjoXYFNRtOqBagDtvYmx73VnhbYWe/oSPSaC4hKdhjDSQwe6X8phJFJB6XYPRX85ACYtVn4
+	wqnq2y49d2ZV2AX9hv2QRLR15ermx6Dku1S9ie7wgHCj9Gn9Hl2SVBkpL/0Dz56Rxc3Th3Rb4dfto
+	nqtmGGjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlXfF-001Rkp-2y;
-	Wed, 27 Sep 2023 16:45:29 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qlZJQ-001a9p-0K;
+	Wed, 27 Sep 2023 18:31:04 +0000
+Received: from mail-il1-x134.google.com ([2607:f8b0:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWa8-001GBF-1L;
-	Wed, 27 Sep 2023 15:36:10 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9902C66072FA;
-	Wed, 27 Sep 2023 16:36:06 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828967;
-	bh=O+UaiLGBbWV8pBGGxdPRb68Kxs+QnCBXdtC8eypriUU=;
-	h=From:To:Cc:Subject:Date:From;
-	b=E4TJfCY0xOvv4ujh0I8+QbloAIOt1Jz1J2D2Zr/J9HmrAXWJdWgf+ncphtsFJAmvo
-	 T1CwAlDAKcouppZRGfeEBg+tv1QmQ4n37dzTee94LETRZo0rttsoxv9hBNeTA6uC3V
-	 P7SdxRKNxFcEl/yjki9tIMqgbE85F+sxOQAII3xXGB4ScpnIHzt048V6cIsXYuL6zX
-	 p7XCqjJElsViP8laxQlXlam1z9J9NXhq6scFW9M24h89kEVJOsDeubJQDtIr55XbL4
-	 YuWGAGDs4LeO9+TWYl2ZEgoSq0B2kp1GjzvGBgBbX1NwzoEsJlbUAo7d01epJ4QYx5
-	 kDIek/+FrXPfw==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 00/53] Add DELETE_BUF ioctl
-Date: Wed, 27 Sep 2023 17:35:05 +0200
-Message-Id: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
+	id 1qlZJM-001a8x-1n
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Sep 2023 18:31:02 +0000
+Received: by mail-il1-x134.google.com with SMTP id e9e14a558f8ab-3514ece5ed4so22045ab.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Sep 2023 11:30:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1695839456; x=1696444256; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MIjAuBLH35Ezjhzsj4X9szK/gj5rFSWTPmQeixZLFj8=;
+        b=Y1+Tl1jFUwYymOkuussDJsy0+axXi82/Np/hL+ijnT9XSNpLPJryDmz9NdJiXNAdOp
+         J0MmHD/SZ51rstNLo1HZlGYnlhlglKpid6m3FLJTVzowMOBCmZ3KTfEqYXymdA4W4xTE
+         7thAwtll2P7rYn+dP0Tr5CIwWDdDgmY1L3Q6Fb8tJaDlbEu5bwhSedQm66FJbuj1wr5J
+         X6kkPL5DLRWVR02Ar1pNqCI+pwXisnpk73/1cjO/wEyySGktTijEDpiMhY/aX8hYB7wX
+         4x2J4+l3OG0KpVkFiqJi6ReXxonL58fITY2bUpmQjtP4VR/BD+PaQPTmZS7G+ZRg5Ld2
+         rE5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695839456; x=1696444256;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MIjAuBLH35Ezjhzsj4X9szK/gj5rFSWTPmQeixZLFj8=;
+        b=S2jbrpcxqfthrZHzGHIVqpWyUytrjqAZ67iqwuj9mj9KnXLgdQ0d4i6vWX7l9Nko5O
+         AGq7y9HUPsE32WqfwSe+TKAml8PePHmdKCohNs2QZmpgmc4rBkGUBHxtr/6KyipNTvPI
+         iGD+5XRbECrDxVLh6gXYWe9EVH6+dw80ZdGFMfOQI6O/DKTIC/vM1cqMRuYQJeGj8p5U
+         KHif2v0S5Rhod5RA5JZV6OlUOix2gzf3b0GLrpOUpCb7aYTO7cnu1apxIuVGHH20SeKa
+         WqGx2r/PhmNeDEFzZpMQNEyvBYRN1OWuFY7MLL9HxXvT2zgOWKBkjSlMksF7NMW9SQB6
+         YtgA==
+X-Gm-Message-State: AOJu0YxOKjDMvqX2gUd1/HVb/2odcZjH4eYs4z9Vl9Py58978WPR/8UX
+	/slWg5dV/1HSGbLrvXQN8esYnQVhF/q89vmj3dRq
+X-Google-Smtp-Source: AGHT+IEBzfsnNoqmTprE6FHEsgZGaX4uGBHU2VwOFBRqtTLDhWDti9N+DZ17As3ZWOEqg/HPosXrOSIPTqYDQHRd+Gc=
+X-Received: by 2002:a05:6e02:214c:b0:348:d358:467c with SMTP id
+ d12-20020a056e02214c00b00348d358467cmr723464ilv.2.1695839455522; Wed, 27 Sep
+ 2023 11:30:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-13-yunfei.dong@mediatek.com> <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+ <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl> <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
+ <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl> <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
+ <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl> <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
+ <c3d14f64-bf04-46b9-ac7b-af7ef9014335@xs4all.nl> <00302ac675af858eb11d8398f100921af806bc30.camel@mediatek.com>
+ <3e053387-4ba6-49bc-a59a-46854e0a7c26@xs4all.nl> <CA+ddPcOaCKq5Nd_3eWwJ3=oAf=5t-Z+w51NqapXN8VBuvbTw3g@mail.gmail.com>
+ <71cadec5-06df-4490-9b06-e3af6bb43498@xs4all.nl> <CA+ddPcN0ivYa+vfvs-8PDpkDFkC=1gkM6fkeP7kE8Wqbi1w+dw@mail.gmail.com>
+ <CA+ddPcMX=6ek-EVRMxJcRfZxRuLTGL3A-jeeNaifNF0E5AvVHw@mail.gmail.com> <d774c0e4-5ab2-4d3e-ae87-eb311aeaa1c2@xs4all.nl>
+In-Reply-To: <d774c0e4-5ab2-4d3e-ae87-eb311aeaa1c2@xs4all.nl>
+From: Jeffrey Kardatzke <jkardatzke@google.com>
+Date: Wed, 27 Sep 2023 11:30:39 -0700
+Message-ID: <CA+ddPcMFM40S0sH70-StdjdJ_YpX6vfwTeXAYBJLtm911gPU9Q@mail.gmail.com>
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder driver
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, 
+	"nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org" <stevecho@chromium.org>, 
+	"wenst@chromium.org" <wenst@chromium.org>, "nhebert@chromium.org" <nhebert@chromium.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, 
+	"hsinyi@chromium.org" <hsinyi@chromium.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"nfraprado@collabora.com" <nfraprado@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083608_711805_40DD130F 
-X-CRM114-Status: GOOD (  22.66  )
+X-CRM114-CacheID: sfid-20230927_113100_598150_191CA2C5 
+X-CRM114-Status: GOOD (  78.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,232 +108,284 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Unlike when resolution change on keyframes, dynamic resolution change
-on inter frames doesn't allow to do a stream off/on sequence because
-it is need to keep all previous references alive to decode inter frames.
-This constraint have two main problems:
-- more memory consumption.
-- more buffers in use.
-To solve these issue this series introduce DELETE_BUFS ioctl and remove
-the 32 buffers limit per queue.
+Sounds great Hans! I'll work with Mediatek to update their code for that.
 
-VP9 conformance tests using fluster give a score of 210/305.
-The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
-but require to use postprocessor.
-
-Kernel branch is available here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v8
-
-GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
-change is here:
-https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
-
-changes in version 8:
-- Add V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS and new 'max_buffers' field in v4l2_create_buffers
-  structure to report the maximum number of buffers that a queue could allocate.
-- Add V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS to indicate that a queue support
-  DELETE_BUFS ioctl.
-- Make some test drivers use more than 32 buffers and DELETE_BUFS ioctl.
-- Fix remarks done by Hans
-- Move "media: core: Rework how create_buf index returned value is
-  computed" patch to the top of the serie.
-
-changes in version 7:
-- Use a bitmap to know which entries are valid in queue bufs array.
-  The number of buffers in the queue could must calculated from the
-  bitmap so num_buffers becomes useless. This led to add quite few
-  patches to remove it from all the drivers.
-  Note: despiste my attention I may have miss some calls to
-  num_buffers...
-- Split patches to make them more readable.
-- Run v4l2-compliance with additional delete-bufs tests.
-- Run ./test-media -kmemleak vivid and no more failures.
-  Note: I had to remove USERPTR streaming test because they to much
-  frequentely hit get_framevec bug. It is not related to my series
-  since this happens all the time on master branch.
-- Fix Hans remarks on v6
-
-changes in version 6:
-- Get a patch per driver to use vb2_get_buffer() instead of directly access
-  to queue buffers array.
-- Add lock in vb2_core_delete_buf()
-- Use vb2_buffer instead of index
-- Fix various comments
-- Change buffer index name to BUFFER_INDEX_MASK
-- Stop spamming kernel log with unbalanced counters
-
-changes in version 5:
-- Rework offset cookie encoding pattern is n ow the first patch of the
-  serie.
-- Use static array instead of allocated one for postprocessor buffers.
-
-changes in version 4:
-- Stop using Xarray, instead let queues decide about their own maximum
-  number of buffer and allocate bufs array given that value.
-- Rework offset cookie encoding pattern.
-- Change DELETE_BUF to DELETE_BUFS because it now usable for
-  range of buffer to be symetrical of CREATE_BUFS.
-- Add fixes tags on couple of Verisilicon related patches.
-- Be smarter in Verisilicon postprocessor buffers management.
-- Rebase on top of v6.4
-
-changes in version 3:
-- Use Xarray API to store allocated video buffers.
-- No module parameter to limit the number of buffer per queue.
-- Use Xarray inside Verisilicon driver to store postprocessor buffers
-  and remove VB2_MAX_FRAME limit.
-- Allow Versilicon driver to change of resolution while streaming
-- Various fixes the Verisilicon VP9 code to improve fluster score.
- 
-changes in version 2:
-- Use a dynamic array and not a list to keep trace of allocated buffers.
-  Not use IDR interface because it is marked as deprecated in kernel
-  documentation.
-- Add a module parameter to limit the number of buffer per queue.
-- Add DELETE_BUF ioctl and m2m helpers.
-
-Regards,
-Benjamin
-
-Benjamin Gaignard (53):
-  media: videobuf2: Rework offset 'cookie' encoding pattern
-  media: videobuf2: Stop spamming kernel log with all queue counter
-  media: videobuf2: Use vb2_buffer instead of index
-  media: amphion: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
-    to buffers array
-  media: mediatek: vdec: Remove useless loop
-  media: sti: hva: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: visl: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: atomisp: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: dvb-core: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: videobuf2: Access vb2_queue bufs array through helper functions
-  media: videobuf2: Be more flexible on the number of queue stored
-    buffers
-  media: Report the maximum possible number of buffers for the queue
-  media: test-drivers: vivid: Increase max supported buffers for capture
-    queues
-  media: test-drivers: vicodec: Increase max supported capture queue
-    buffers
-  media: verisilicon: Refactor postprocessor to store more buffers
-  media: verisilicon: Store chroma and motion vectors offset
-  media: verisilicon: g2: Use common helpers to compute chroma and mv
-    offsets
-  media: verisilicon: vp9: Allow to change resolution while streaming
-  media: Remove duplicated index vs q->num_buffers check
-  media: core: Add helper to get queue number of buffers
-  media: dvb-core: Do not initialize twice queue num_buffer field
-  media: dvb-frontends: rtl2832_srd: Use queue min_buffers_needed field
-  media: video-i2c: Set min_buffers_needed to 2
-  media: pci: cx18: Set correct value to min_buffers_needed field
-  media: pci: dt3155: Remove useless check
-  media: pci: netup_unidvb: Remove useless number of buffers check
-  media: pci: tw68: Stop direct calls to queue num_buffers field
-  media: pci: tw686x: Set min_buffers_needed to 3
-  media: amphion: Stop direct calls to queue num_buffers field
-  media: coda: Stop direct calls to queue num_buffers field
-  media: mediatek: vcodec: Stop direct calls to queue num_buffers field
-  media: nxp: Stop direct calls to queue num_buffers field
-  media: renesas: Set min_buffers_needed to 16
-  media: ti: Use queue min_buffers_needed field to set the min number of
-    buffers
-  media: verisilicon: Stop direct calls to queue num_buffers field
-  media: test-drivers: Stop direct calls to queue num_buffers field
-  media: usb: airspy: Set min_buffers_needed to 8
-  media: usb: cx231xx: Set min_buffers_needed to CX231XX_MIN_BUF
-  media: usb: hackrf: Set min_buffers_needed to 8
-  media: usb: usbtv: Set min_buffers_needed to 2
-  media: atomisp: Stop direct calls to queue num_buffers field
-  media: imx: Stop direct calls to queue num_buffers field
-  media: meson: vdec: Stop direct calls to queue num_buffers field
-  touchscreen: sur40: Stop direct calls to queue num_buffers field
-  sample: v4l: Stop direct calls to queue num_buffers field
-  media: cedrus: Stop direct calls to queue num_buffers field
-  media: core: Rework how create_buf index returned value is computed
-  media: core: Add bitmap manage bufs array entries
-  media: core: Free range of buffers
-  media: v4l2: Add DELETE_BUFS ioctl
-  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-  media: test-drivers: Use helper for DELETE_BUFS ioctl
-
- .../userspace-api/media/v4l/user-func.rst     |   1 +
- .../media/v4l/vidioc-create-bufs.rst          |   8 +-
- .../media/v4l/vidioc-delete-bufs.rst          |  80 +++
- .../media/v4l/vidioc-reqbufs.rst              |   2 +
- drivers/input/touchscreen/sur40.c             |   5 +-
- .../media/common/videobuf2/videobuf2-core.c   | 556 +++++++++++-------
- .../media/common/videobuf2/videobuf2-v4l2.c   | 121 +++-
- drivers/media/dvb-core/dvb_vb2.c              |  17 +-
- drivers/media/dvb-frontends/rtl2832_sdr.c     |   9 +-
- drivers/media/i2c/video-i2c.c                 |   5 +-
- drivers/media/pci/cx18/cx18-streams.c         |  13 +-
- drivers/media/pci/dt3155/dt3155.c             |   2 -
- .../pci/netup_unidvb/netup_unidvb_core.c      |   4 +-
- drivers/media/pci/tw68/tw68-video.c           |   6 +-
- drivers/media/pci/tw686x/tw686x-video.c       |  13 +-
- drivers/media/platform/amphion/vpu_dbg.c      |  30 +-
- drivers/media/platform/amphion/vpu_v4l2.c     |   4 +-
- .../media/platform/chips-media/coda-common.c  |   2 +-
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   7 +-
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   9 +-
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +-
- drivers/media/platform/nxp/imx7-media-csi.c   |   7 +-
- drivers/media/platform/renesas/rcar_drif.c    |   8 +-
- drivers/media/platform/st/sti/hva/hva-v4l2.c  |   9 +-
- .../media/platform/ti/am437x/am437x-vpfe.c    |   7 +-
- drivers/media/platform/ti/cal/cal-video.c     |   5 +-
- .../media/platform/ti/davinci/vpif_capture.c  |   5 +-
- .../media/platform/ti/davinci/vpif_display.c  |   5 +-
- drivers/media/platform/ti/omap/omap_vout.c    |   5 +-
- drivers/media/platform/verisilicon/hantro.h   |   9 +-
- .../media/platform/verisilicon/hantro_drv.c   |   5 +-
- .../media/platform/verisilicon/hantro_g2.c    |  14 +
- .../platform/verisilicon/hantro_g2_hevc_dec.c |  18 +-
- .../platform/verisilicon/hantro_g2_vp9_dec.c  |  28 +-
- .../media/platform/verisilicon/hantro_hw.h    |   7 +-
- .../platform/verisilicon/hantro_postproc.c    |  93 ++-
- .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
- .../media/test-drivers/vicodec/vicodec-core.c |   3 +
- drivers/media/test-drivers/vim2m.c            |   2 +
- .../media/test-drivers/vimc/vimc-capture.c    |   2 +
- drivers/media/test-drivers/visl/visl-dec.c    |  32 +-
- drivers/media/test-drivers/visl/visl-video.c  |   2 +
- drivers/media/test-drivers/vivid/vivid-core.c |  14 +
- .../media/test-drivers/vivid/vivid-meta-cap.c |   3 -
- .../media/test-drivers/vivid/vivid-meta-out.c |   5 +-
- .../test-drivers/vivid/vivid-touch-cap.c      |   5 +-
- .../media/test-drivers/vivid/vivid-vbi-cap.c  |   5 +-
- .../media/test-drivers/vivid/vivid-vbi-out.c  |   5 +-
- .../media/test-drivers/vivid/vivid-vid-cap.c  |   5 +-
- .../media/test-drivers/vivid/vivid-vid-out.c  |   5 +-
- drivers/media/usb/airspy/airspy.c             |   9 +-
- drivers/media/usb/cx231xx/cx231xx-417.c       |   4 +-
- drivers/media/usb/cx231xx/cx231xx-video.c     |   4 +-
- drivers/media/usb/hackrf/hackrf.c             |   9 +-
- drivers/media/usb/usbtv/usbtv-video.c         |   3 +-
- drivers/media/v4l2-core/v4l2-dev.c            |   1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |  21 +-
- drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
- .../staging/media/atomisp/pci/atomisp_ioctl.c |   4 +-
- drivers/staging/media/imx/imx-media-capture.c |   7 +-
- drivers/staging/media/meson/vdec/vdec.c       |  13 +-
- .../staging/media/sunxi/cedrus/cedrus_h264.c  |   8 +-
- .../staging/media/sunxi/cedrus/cedrus_h265.c  |   9 +-
- include/media/v4l2-ioctl.h                    |   4 +
- include/media/v4l2-mem2mem.h                  |  12 +
- include/media/videobuf2-core.h                |  65 +-
- include/media/videobuf2-v4l2.h                |  13 +
- include/uapi/linux/videodev2.h                |  24 +-
- samples/v4l/v4l2-pci-skeleton.c               |   5 +-
- 69 files changed, 969 insertions(+), 502 deletions(-)
- create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-
--- 
-2.39.2
-
+On Wed, Sep 27, 2023 at 12:26=E2=80=AFAM Hans Verkuil <hverkuil-cisco@xs4al=
+l.nl> wrote:
+>
+> On 26/09/2023 22:59, Jeffrey Kardatzke wrote:
+> > Hans,
+> >
+> > I've been looking through the v4l2/vbuf2 code to get an idea of the
+> > details for implementing a new memory type for secure buffers.  What
+> > it comes down to essentially is that it would behave just like
+> > V4L2_MEMORY_DMABUF, but then there would be an extra check in
+> > __prepare_dmabuf (in videobuf2-core.c) when the memory type is SECURE
+> > to ensure that it is actually from a secure dma-buf allocation.  So
+> > I'm thinking an alternate solution might be cleaner so we don't have
+> > two memory types that are handled nearly identically in most of the
+> > code. What do you think about a new memory flag like
+> > V4L2_MEMORY_FLAG_SECURE?  This would be set in vb2_queue struct like
+> > the other existing memory flag. Then when it gets into
+> > __prepare_dmabuf and invokes attach_dmabuf on each buffer...that call
+> > could then check for the existence of that flag, and if it's there it
+> > could validate it is actually secure memory.  Then in various other
+> > dmabuf vb2_mem_ops (maybe alloc, get_userptr, vaddr and mmap) those
+> > could also check for the secure flag, and if present return an
+> > error/null.  Then also in the driver specific vb2_ops for queue_setup,
+> > the MTK driver could recognize the flag there and then configure
+> > itself for secure mode.
+> >
+> > How does that sound as an overall strategy?
+>
+> Yes, I actually had the same thought.
+>
+> You would also need a new capability: V4L2_BUF_CAP_SUPPORTS_SECURE_MEMORY
+>
+> It makes more sense than creating a new V4L2_MEMORY_ type, and it still
+> is handled at the right place (creating the buffers).
+>
+> Regards,
+>
+>         Hans
+>
+> >
+> > Cheers,
+> > Jeff
+> >
+> > On Mon, Sep 25, 2023 at 9:51=E2=80=AFAM Jeffrey Kardatzke <jkardatzke@g=
+oogle.com> wrote:
+> >>
+> >> On Mon, Sep 25, 2023 at 2:00=E2=80=AFAM Hans Verkuil <hverkuil-cisco@x=
+s4all.nl> wrote:
+> >>>
+> >>> On 22/09/2023 21:17, Jeffrey Kardatzke wrote:
+> >>>> On Fri, Sep 22, 2023 at 1:44=E2=80=AFAM Hans Verkuil <hverkuil-cisco=
+@xs4all.nl> wrote:
+> >>>>>
+> >>>>> On 22/09/2023 05:28, Yunfei Dong (=E8=91=A3=E4=BA=91=E9=A3=9E) wrot=
+e:
+> >>>>>> Hi Hans,
+> >>>>>>
+> >>>>>> Thanks for your help to give some good advice.
+> >>>>>> On Wed, 2023-09-20 at 09:20 +0200, Hans Verkuil wrote:
+> >>>>>>>
+> >>>>>>>>>>> In any case, using a control to switch to secure mode and usi=
+ng
+> >>>>>>> a control
+> >>>>>>>>>>> to convert a dmabuf fd to a secure handle seems a poor choice=
+ to
+> >>>>>>> me.
+> >>>>>>>>>>>
+> >>>>>>>>>>> I was wondering if it wouldn't be better to create a new
+> >>>>>>> V4L2_MEMORY_ type,
+> >>>>>>>>>>> e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). Th=
+at
+> >>>>>>> ensures that
+> >>>>>>>>>>> once you create buffers for the first time, the driver can
+> >>>>>>> switch into secure
+> >>>>>>>>>>> mode, and until all buffers are released again you know that =
+the
+> >>>>>>> driver will
+> >>>>>>>>>>> stay in secure mode.
+> >>>>>>>>>>
+> >>>>>>>>>> Why do you think the control for setting secure mode is a poor
+> >>>>>>> choice?
+> >>>>>>>>>> There's various places in the driver code where functionality
+> >>>>>>> changes
+> >>>>>>>>>> based on being secure/non-secure mode, so this is very much a
+> >>>>>>> 'global'
+> >>>>>>>>>> setting for the driver. It could be inferred based off a new
+> >>>>>>> memory
+> >>>>>>>>>> type for the queues...which then sets that flag in the driver;
+> >>>>>>> but
+> >>>>>>>>>> that seems like it would be more fragile and would require
+> >>>>>>> checking
+> >>>>>>>>>> for incompatible output/capture memory types. I'm not against
+> >>>>>>> another
+> >>>>>>>>>> way of doing this; but didn't see why you think the proposed
+> >>>>>>> method is
+> >>>>>>>>>> a poor choice.
+> >>>>>>>>>
+> >>>>>>>>> I assume you are either decoding to secure memory all the time,=
+ or
+> >>>>>>> not
+> >>>>>>>>> at all. That's something you would want to select the moment yo=
+u
+> >>>>>>> allocate
+> >>>>>>>>> the first buffer. Using the V4L2_MEMORY_ value would be the
+> >>>>>>> natural place
+> >>>>>>>>> for that. A control can typically be toggled at any time, and i=
+t
+> >>>>>>> makes
+> >>>>>>>>> no sense to do that for secure streaming.
+> >>>>>>>>>
+> >>>>>>>>> Related to that: if you pass a dmabuf fd you will need to check
+> >>>>>>> somewhere
+> >>>>>>>>> if the fd points to secure memory or not. You don't want to mix
+> >>>>>>> the two
+> >>>>>>>>> but you want to check that at VIDIOC_QBUF time.
+> >>>>>>>>>
+> >>>>>>>>> Note that the V4L2_MEMORY_ value is already checked in the v4l2
+> >>>>>>> core,
+> >>>>>>>>> drivers do not need to do that.
+> >>>>>>>>
+> >>>>>>>> Just to clarify a bit, and make sure I understand this too. You =
+are
+> >>>>>>> proposing to
+> >>>>>>>> introduce something like:
+> >>>>>>>>
+> >>>>>>>>    V4L2_MEMORY_SECURE_DMABUF
+> >>>>>>>>
+> >>>>>>>> Which like V4L2_MEMORY_DMABUF is meant to import dmabuf, while
+> >>>>>>> telling the
+> >>>>>>>> driver that the memory is secure according to the definition of
+> >>>>>>> "secure" for the
+> >>>>>>>> platform its running on.
+> >>>>>>>>
+> >>>>>>>> This drivers also allocate secure SHM (a standard tee concept) a=
+nd
+> >>>>>>> have internal
+> >>>>>>>> allocation for reconstruction buffer and some hw specific refere=
+nce
+> >>>>>>> metadata. So
+> >>>>>>>> the idea would be that it would keep allocation using the dmabuf
+> >>>>>>> heap internal
+> >>>>>>>> APIs ? And decide which type of memory based on the memory type
+> >>>>>>> found in the
+> >>>>>>>> queue?
+> >>>>>>>
+> >>>>>>> Yes. Once you request the first buffer you basically tell the dri=
+ver
+> >>>>>>> whether it
+> >>>>>>> will operate in secure or non-secure mode, and that stays that wa=
+y
+> >>>>>>> until all
+> >>>>>>> buffers are freed. I think that makes sense.
+> >>>>>>>
+> >>>>>>
+> >>>>>> According to iommu's information, the dma operation for secure and=
+ non-
+> >>>>>> secure are the same, whether just need to add one memory type in v=
+4l2
+> >>>>>> framework the same as V4L2_MEMORY_DMABUF? The dma operation in
+> >>>>>> videobuf2-dma-contig.c can use the same functions.
+> >>>>>
+> >>>>> So if I pass a non-secure dma fd to the capture queue of the codec,=
+ who
+> >>>>> will check that it can't write the data to that fd? Since doing so =
+would
+> >>>>> expose the video. Presumably at some point the tee code will preven=
+t that?
+> >>>>> (I sincerely hope so!)
+> >>>>
+> >>>> It is entirely the job of the TEE to prevent this. Nothing in the
+> >>>> kernel should allow exploitation of what happens in the TEE no matte=
+r
+> >>>> what goes on in the kernel
+> >>>>
+> >>>>>
+> >>>>> Having a separate V4L2_MEMORY_DMABUF_SECURE type is to indicate to =
+the
+> >>>>> driver that 1) it can expect secure dmabuf fds, 2) it can configure=
+ itself
+> >>>>> for that (that avoids using a control to toggle between normal and =
+secure mode),
+> >>>>> and at VIDIOC_QBUF time it is easy for the V4L2 core to verify that=
+ the
+> >>>>> fd that is passed in is for secure memory. This means that mistakes=
+ by
+> >>>>> userspace are caught at QBUF time.
+> >>>>>
+> >>>>> Of course, this will not protect you (people can disable this check=
+ by
+> >>>>> recompiling the kernel), that still has to be done by the firmware,=
+ but
+> >>>>> it catches userspace errors early on.
+> >>>>>
+> >>>>> Also, while for this hardware the DMA operation is the same, that m=
+ight
+> >>>>> not be the case for other hardware.
+> >>>>
+> >>>> That's a really good point. So one of the other models that is used
+> >>>> for secure video decoding is to send the encrypted buffer into the
+> >>>> video decoder directly (i.e. V4L2_MEMORY_MMAP) and then also send in
+> >>>> all the corresponding crypto parameters (i.e. algorithm, IV,
+> >>>> encryption pattern, etc.). Then the video driver internally does the
+> >>>> decryption and decode in one operation.  That's not what we want to
+> >>>> use here for Mediatek; but I've done other integrations that work th=
+at
+> >>>> way (that was for VAAPI [1], not V4L2...but there are other ARM
+> >>>> implementations that do operate that way).  So if we end up requirin=
+g
+> >>>> V4L2_MEMORY_DMABUF_SECURE to indicate secure mode and enforce it on
+> >>>> output+capture, that'll close off other potential solutions in the
+> >>>> future.
+> >>>>
+> >>>> Expanding on your point about DMA operations being different on
+> >>>> various hardware, that also makes me think a general check for this =
+in
+> >>>> v4l2 code may also be limiting. There are various ways secure video
+> >>>> pipelines are done, so leaving these checks up to the individual
+> >>>> drivers that implement secure video decode may be more pragmatic. If
+> >>>> there's a generic V4L2 _CID_SECURE_MODE control, that makes it more
+> >>>> general for how drivers can handle secure video decode.
+> >>>
+> >>> No, using a control for this is really wrong.
+> >>>
+> >>> The reason why I want it as a separate memory type is that that is
+> >>> what you use when you call VIDIOC_REQBUFS, and that ioctl is also
+> >>> when things are locked down in a driver. As long as no buffers have
+> >>> been allocated, you can still change formats, parameters, etc. But
+> >>> once buffers are allocated, most of that can't be changed, since
+> >>> changing e.g. the format would also change the buffer sizes.
+> >>>
+> >>> It also locks down who owns the buffers by storing the file descripto=
+r.
+> >>> This prevents other processes from hijacking the I/O streaming, only
+> >>> the owner can stream buffers.
+> >>>
+> >>> So it is a natural point in the sequence for selecting secure
+> >>> buffers.
+> >>>
+> >>> If you request V4L2_MEMORY_DMABUF_SECURE for the output, then the
+> >>> capture side must also use DMABUF_SECURE. Whether or not you can
+> >>> use regular DMABUF for the output side and select DMABUF_SECURE
+> >>> on the capture side is a driver decision. It can be useful to
+> >>> support this for testing the secure capture using regular video
+> >>> streams (something Nicolas discussed as well), but it depends on
+> >>> the hardware whether you can use that technique.
+> >>
+> >> OK, that does work for the additional cases I mentioned.  And for
+> >> testing...we would still want to use DMABUF_SECURE on both ends for
+> >> Mediatek at least (that's the only way they support it). But rather
+> >> than having to bother with a clearkey implementation...we can just do
+> >> something that directly copies compressed video into the secure
+> >> dmabufs and then exercises the whole pipeline from there. This same
+> >> thing happens with the 'clear lead' that is sometimes there with
+> >> encrypted video (where the first X seconds are unencrypted and then it
+> >> switches to encrypted...but you're still using the secure video
+> >> pipeline on the unencrypted frames in that case).
+> >>
+> >>
+> >>>
+> >>> Regards,
+> >>>
+> >>>         Hans
+> >>>
+> >>>>
+> >>>> [1] - https://github.com/intel/libva/blob/master/va/va.h#L2177
+> >>>>
+> >>>>>
+> >>>>> Regards,
+> >>>>>
+> >>>>>         Hans
+> >>>>>
+> >>>>>>
+> >>>>>> Best Regards,
+> >>>>>> Yunfei Dong
+> >>>>>>
+> >>>>>
+> >>>
+>
 
