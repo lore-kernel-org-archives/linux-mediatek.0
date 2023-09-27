@@ -4,94 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71453E810AD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 09:49:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16A9DE810B2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 09:55:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q98uDEB8JdG8Rg0XglWISNc6dds1iBryKZg19ao3oMo=; b=KYAX1x9f2BZ8QAGFlzCE2Bzz8h
-	HG+trRzEvtXFDUXf8ywUTt7rL4SBcHJNK3jmNKTsfR64vja2iHnhOSAHEaZH3A8lwdOUhc2k2UoqS
-	xoJV09sp4OJxgx7XRiXb0ekpk34kFzMMtr+v/JU8j55Rhk6tiOZiiekd2LZrI/iXtAOWZlVaoePQ6
-	is7ZW2MaNqhJoH571RkBpXEBbust9kyR1t9K0mfalfcuywGYXaD1wTgBzjXEvPUo5nuRDhQ/89D6O
-	Ggb1mUWVj3TRePn3Nr1WEPZYfmyHAUmzvKBeMBwadQj1uNMCpdVJjljhC4Eq0hdJz0gzQuLFzvd7A
-	07mePK9A==;
+	bh=KKdR5lWm6yC+VvABiFUgWvfkU4HerYDpIG9foLq1pzc=; b=V7RdMdER72dBsqGQu5SnzroYZ5
+	CZSVd0GwOE0c1IL/rxsJ0lAJwHREwHEarxaTJ3YKQ7uOEib1AXPvr7DNTRYCkxhvLPY79/rPBa1tv
+	xOQlcv7tJ4LGghSY5B7gCbvkbwa/6aCzwX7RgUjbPGNv2LC5Zd1+4P17lW+4ZTCYcvgbi1ZHhgJy/
+	x77c5qVdclMhKfp2aWs02k2Jhps+yHGSVwRV/A3mY4NeRLv3Y/ey1TL0wrPQV7Wfv7y/PdbXV59mx
+	FDHksZwrxD4i5ym+8GusaGcUPRqi8VgwTWnFl+lWbV6pMWDG99d/cshTeqhdhFQjqRUrE8LZ8cAdm
+	0kb2JfKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlRAN-000WdY-1b;
-	Wed, 27 Sep 2023 09:49:11 +0000
-Received: from esa.microchip.iphmx.com ([68.232.154.123])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlRAA-000WVz-32;
-	Wed, 27 Sep 2023 09:49:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1695808138; x=1727344138;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=oj/BIJaPlLOZ5a4Bm+3wRDEKMjmwS+415AzmToQmxko=;
-  b=Z+q5y9viHWW/C7duUL5fUNU7Jz2o8YrAYWHtf3i/EWqF093xOenB6eAw
-   s2e7AzgVRtnuFHUmv/bm7gIpHLlSajdlUzAsZc+D/pAism7t8FaBKKzwl
-   GKaS9sz1f2iPrEgeULU0cgq75sRaBbhnCqfibYVh35pVfkQ2ABWSJwTpl
-   UROUcbfTIa2dfjBlhKxtEBAiyrwiGMbsDCJMRscgo2L0d2iyZN29u6y/I
-   a0IGhPrjB4n1/X+rd6V+b1I6kwcuFp2jpDwcZmwMowZ2rl7VBjRsXBVvh
-   xeWBMkRG7gIumKeoxsnr+HTuLOsWSWGC4gAJNEannwqPKW1nU845Pm2MV
-   w==;
-X-CSE-ConnectionGUID: +8y/5vKTQAWpUgUoFVJWOw==
-X-CSE-MsgGUID: FCeDeZE/SGCJlrPGv/SrHA==
-X-ThreatScanner-Verdict: Negative
-X-IronPort-AV: E=Sophos;i="6.03,179,1694761200"; 
-   d="asc'?scan'208";a="173847249"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa6.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 27 Sep 2023 02:48:49 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Wed, 27 Sep 2023 02:48:03 -0700
-Received: from wendy (10.10.85.11) by chn-vm-ex04.mchp-main.com (10.10.85.152)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21 via Frontend
- Transport; Wed, 27 Sep 2023 02:48:00 -0700
-Date: Wed, 27 Sep 2023 10:47:42 +0100
-From: Conor Dooley <conor.dooley@microchip.com>
-To: Moudy Ho =?utf-8?B?KOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
-CC: "conor@kernel.org" <conor@kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>, "airlied@gmail.com"
-	<airlied@gmail.com>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v6 12/16] dt-bindings: display: mediatek: color: add
- compatible for MT8195
-Message-ID: <20230927-crunching-prancing-36fe3eb79607@wendy>
-References: <20230922072116.11009-1-moudy.ho@mediatek.com>
- <20230922072116.11009-13-moudy.ho@mediatek.com>
- <20230922-zebra-modify-87ff23c70bb3@spud>
- <20230922-overhung-deception-e9b461ba0372@spud>
- <7c445195e17e15d5af5fcb30ae53f76c713e958b.camel@mediatek.com>
+	id 1qlRGU-000Xaq-2d;
+	Wed, 27 Sep 2023 09:55:30 +0000
+Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qlRGR-000XZY-2B;
+	Wed, 27 Sep 2023 09:55:29 +0000
+Received: from 8bytes.org (pd9fe9df8.dip0.t-ipconnect.de [217.254.157.248])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id 4F8C51A2317;
+	Wed, 27 Sep 2023 11:55:23 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1695808524;
+	bh=BDI7NuvcdVt/emhHi62PabcawiLywtBEcxLt+G847YM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bJ/0NZxxI8l619eMViTN7wFColaAK2C1MPyqL9FW/o8oWbcGgurcTymg7qYfnv2Za
+	 8eFN6JofYvpBcVna5x6SdpHz5PZL8hmEwxDQgaep3/HiQgeUWy4U5YHirYA1sszR8J
+	 e7ewyfn2eCMIYpUr+BrGwz67R3IjLc410DYmaJiPyv+1Fc53ag6teNCgufMzfRTaYd
+	 X+RQSNMGK+8w3hxgWaYEpnjqVeyU+g+qhDc5yTY7Quvw9wkOxUIXHcLEN3aJmQIMvW
+	 2RoCQvwl2aQDtZF06zge3qV3VdPsrkOYdzHaaS7L2KgRXAKDke4iUYkX7n/e0UMIYo
+	 xLYhyuiRZPN8g==
+Date: Wed, 27 Sep 2023 11:55:22 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Niklas Schnelle <schnelle@linux.ibm.com>
+Cc: Jason Gunthorpe <jgg@ziepe.ca>, Matthew Rosato <mjrosato@linux.ibm.com>,
+	Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Gerd Bayer <gbayer@linux.ibm.com>,
+	Julian Ruess <julianr@linux.ibm.com>,
+	Pierre Morel <pmorel@linux.ibm.com>,
+	Alexandra Winter <wintera@linux.ibm.com>,
+	Heiko Carstens <hca@linux.ibm.com>,
+	Vasily Gorbik <gor@linux.ibm.com>,
+	Alexander Gordeev <agordeev@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Sven Schnelle <svens@linux.ibm.com>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and optimized
+ IOTLB flushing
+Message-ID: <ZRP8CiBui7suB5D6@8bytes.org>
+References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
+ <ZRLy_AaJiXxZ2AfK@8bytes.org>
+ <20230926160832.GM13795@ziepe.ca>
+ <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="T9lGne2QQapOBRac"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7c445195e17e15d5af5fcb30ae53f76c713e958b.camel@mediatek.com>
+In-Reply-To: <cfc9e9128ed5571d2e36421e347301057662a09e.camel@linux.ibm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_024859_052291_C6F06D3C 
-X-CRM114-Status: GOOD (  27.08  )
+X-CRM114-CacheID: sfid-20230927_025527_961370_7E30DA31 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,79 +110,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---T9lGne2QQapOBRac
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi Niklas,
 
-On Wed, Sep 27, 2023 at 07:19:28AM +0000, Moudy Ho (=E4=BD=95=E5=AE=97=E5=
-=8E=9F) wrote:
-> On Fri, 2023-09-22 at 16:51 +0100, Conor Dooley wrote:
-> > On Fri, Sep 22, 2023 at 04:49:14PM +0100, Conor Dooley wrote:
-> > > On Fri, Sep 22, 2023 at 03:21:12PM +0800, Moudy Ho wrote:
-> > > > Add a compatible string for the COLOR block in MediaTek MT8195
-> > > > that
-> > > > is controlled by MDP3.
-> > > >=20
-> > > > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > > > ---
-> > > >  .../devicetree/bindings/display/mediatek/mediatek,color.yaml   =20
-> > > >  | 1 +
-> > > >  1 file changed, 1 insertion(+)
-> > > >=20
-> > > > diff --git
-> > > > a/Documentation/devicetree/bindings/display/mediatek/mediatek,col
-> > > > or.yaml
-> > > > b/Documentation/devicetree/bindings/display/mediatek/mediatek,col
-> > > > or.yaml
-> > > > index f21e44092043..b886ca0d89ea 100644
-> > > > ---
-> > > > a/Documentation/devicetree/bindings/display/mediatek/mediatek,col
-> > > > or.yaml
-> > > > +++
-> > > > b/Documentation/devicetree/bindings/display/mediatek/mediatek,col
-> > > > or.yaml
-> > > > @@ -26,6 +26,7 @@ properties:
-> > > >            - mediatek,mt2701-disp-color
-> > > >            - mediatek,mt8167-disp-color
-> > > >            - mediatek,mt8173-disp-color
-> > > > +          - mediatek,mt8195-mdp3-color
-> > >=20
-> > > How come this one is a "mdp3" not a "disp"?
-> >=20
-> > I don't know what mdp3 means & googling gives me no answers. What's
-> > the
-> > "disp" one controlled by, since it isn't controlled by mdp3?
-> >=20
->=20
-> Hi Conor,
->=20
-> Mediatek's Media Data Path ver.3 (MDP3) is associated with MMSYS and
-> acts as an independent driver that operates between VDEC and DISP.
-> By controlling multiple components, it carries out tasks like
-> converting color formats, resizing, and applying specific Picture
-> Quality (PQ) effects.
-> The driver can be found at "driver/media/platform/mediatek/mdp3".
-> Since the same hardware components are configured in both MDP3 and
-> DISP, considering previous discussions, I attemped to integrate into a
-> single binding, named after the controlling user.
+On Wed, Sep 27, 2023 at 10:55:23AM +0200, Niklas Schnelle wrote:
+> The problem is that something seems to  be broken in the iommu/core
+> branch. Regardless of whether I have my DMA API conversion on top or
+> with the base iommu/core branch I can not use ConnectX-4 VFs.
 
-I'm still kinda struggling to understand this. Do you mean that the
-hardware can be controlled by either of the disp and mdp3 drivers, and
-a compatible containing "disp" would use one driver, and one containing
-"mdp3" would use another?
+Have you already tried to bisect the issue in the iommu/core branch?
+The result might sched some light on the issue.
 
+Regards,
 
---T9lGne2QQapOBRac
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZRP6PgAKCRB4tDGHoIJi
-0kh7AP9O7MKYjrnar798S6fbop9AWuqH31/FShl/0JtdCf2N/wD/R/G17q/VHosy
-cmzXFHme+vk2cMO0cR0geJwglqggtQo=
-=5FSm
------END PGP SIGNATURE-----
-
---T9lGne2QQapOBRac--
+	Joerg
 
