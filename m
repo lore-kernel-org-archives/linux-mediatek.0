@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2CDDE82CA8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFBFBE82CAF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 15:36:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aDL5gETzUiP0VzZZCijO3U9Zzi9a1aLBhnH2wBWpEGU=; b=kMvGOf3YwUaCJIAvBHzA9fH2RI
-	nQqroTl/jCe385WqhizbFs3Y6/mLWRu7lcxKI307KeGWiDslOzCdrUL5fE9A+4cLJv8zOZkjx90uj
-	Ohc8ecyTjCHqtyyQ6ru18F1c1WeGcjerhtjH/LzITo93LqmpnW6NqWRCpKJD/hEKenBMgL6CpknMy
-	lS/3AhrLQdafsT+Viniim4k0yg6h1A54b1mJ1WLWCOY9N5bkY8unlyPbJYz2UISnONK8YlsKwTJ/t
-	45u+97qmF0eCcy4GMN6qAhICu8LPRfwb94xgJlbHYvuovRf8NCgMViOSVCibPlIgo366aEKrIhMsc
-	5zOI9T3Q==;
+	bh=U2gW/Q+RNn3ntItDX+hvmZgS358f/BD2tGGafv55qEw=; b=i9ytnTWsTnvrv23AYoIOgCw/o2
+	pXD9wxmSKLOq+717MDpJFrR8Kt3GtnaEvs74nB/QflfhZxXsOU07ksNVofevYHUwl/gdrrMJcVVlW
+	HEh2eWZMKmogPTFAA8WMtPaUFviN4GCGD6z4vk7yYxiQPfoEPl0QveYWyrGKeRBUDSNDvoEjfvI+m
+	FyTA1q9f0TVX32kvVL4PC4zRSGgNx3XXT945JNeGJe6zDq4+o9JahAU2iLEazUmjBsOsLAVHmGmCb
+	7Mc20OnsRUMn7Z+QyCI9Y1vKp/smPhIfCuhziL70Ftc/lRsIDTWjDemP9TZvrJ+sYeQ17tv0fiRcd
+	oZf+Snrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWat-001H2h-24;
-	Wed, 27 Sep 2023 15:36:55 +0000
+	id 1qlWau-001H3X-0V;
+	Wed, 27 Sep 2023 15:36:56 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaD-001GEm-0j;
+	id 1qlWaC-001GD7-0y;
 	Wed, 27 Sep 2023 15:36:16 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9ED936607337;
-	Wed, 27 Sep 2023 16:36:11 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A93F86607333;
+	Wed, 27 Sep 2023 16:36:10 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828972;
-	bh=EMKVWITArl2PHuWHDFd/NcTii9pr6T7GjKNa1Tuop1w=;
+	s=mail; t=1695828971;
+	bh=Osy0YWOEVUvzSOYoJm+JBXSigMNkmpw77qpRTwkivks=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TCVzKYNE4Wnb4NkghJe3VZhRfV+u+zHYIQXfj3xeN7mfbf1sAxiZZmnwR5B6iEZor
-	 X/maYWBGaq17bh52pa7d2fOcT2w9owWsHlqa6XXqSJ565cYkGRFqJJK/HV4/enrPzY
-	 CIfnefqkYRkrGAepxiGHZD494uL28cRqhx7BdQe/B3M2y+jvZKk2q5bzJHgJlXHnBp
-	 Szd/HonJ87kYgs4vhyVB0QhdQ+NEAsNIAHIjn/m43k6jTuO3ppkB1xV871+ye57k24
-	 7BXloLTvwRJKiFQi+6W9uL8MGzZ+P5LcnD0Aeyc/mOF/09Hm+BDqPVwcXbjY5SJHhO
-	 8eONpC4U3YPSQ==
+	b=PGWaQ2ufXEVKBrTte19CfVxo6Z3XZFO+2YiY4NgHFYYJEMsSXksi50YlVqsSVdNFm
+	 ejcqcCSyaS6mmYX+YVhBRmZ2Dptuj8QggasrsqwmhhOBtpz3S04AXAXV/qPEGO952Q
+	 WYTJsUpsJybCaa2w+m1BYpra2JLsMBcAHv0OCXakBViWFTA0JGhqeUPkGBokZcSjJy
+	 cxyFuM9uCyWuwI7rNZVcpOR8oxUkqKvwyVTAV6auoFLWAUT0dMvP8OueZthTDq8DWk
+	 5gkEXP6i5WmolXDZo+JeBXwwa4AeQMNOIvnlt0O2K1iC4zJ6/sDiEijDQD3G5cEUGl
+	 XwgyqEzoJGowg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 10/53] media: dvb-core: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Wed, 27 Sep 2023 17:35:15 +0200
-Message-Id: <20230927153558.159278-11-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 08/53] media: visl: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Wed, 27 Sep 2023 17:35:13 +0200
+Message-Id: <20230927153558.159278-9-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083613_405112_16F49855 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20230927_083612_504108_F387AC01 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,48 +95,62 @@ a valid pointer so check the return value of all of them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/dvb-core/dvb_vb2.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ drivers/media/test-drivers/visl/visl-dec.c | 28 ++++++++++++++++------
+ 1 file changed, 21 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
-index b322ef179f05..3a966fdf814c 100644
---- a/drivers/media/dvb-core/dvb_vb2.c
-+++ b/drivers/media/dvb-core/dvb_vb2.c
-@@ -355,12 +355,13 @@ int dvb_vb2_reqbufs(struct dvb_vb2_ctx *ctx, struct dmx_requestbuffers *req)
- int dvb_vb2_querybuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
- {
- 	struct vb2_queue *q = &ctx->vb_q;
-+	struct vb2_buffer *vb2 = vb2_get_buffer(q, b->index);
+diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
+index 318d675e5668..ba20ea998d19 100644
+--- a/drivers/media/test-drivers/visl/visl-dec.c
++++ b/drivers/media/test-drivers/visl/visl-dec.c
+@@ -290,13 +290,20 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+ 	for (i = 0; i < out_q->num_buffers; i++) {
+ 		char entry[] = "index: %u, state: %s, request_fd: %d, ";
+ 		u32 old_len = len;
+-		char *q_status = visl_get_vb2_state(out_q->bufs[i]->state);
++		struct vb2_buffer *vb2;
++		char *q_status;
++
++		vb2 = vb2_get_buffer(out_q, i);
++		if (!vb2)
++			continue;
++
++		q_status = visl_get_vb2_state(vb2->state);
  
--	if (b->index >= q->num_buffers) {
--		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
-+	if (!vb2) {
-+		dprintk(1, "[%s] invalid buffer index\n", ctx->name);
- 		return -EINVAL;
- 	}
--	vb2_core_querybuf(&ctx->vb_q, q->bufs[b->index], b);
-+	vb2_core_querybuf(&ctx->vb_q, vb2, b);
- 	dprintk(3, "[%s] index=%d\n", ctx->name, b->index);
- 	return 0;
- }
-@@ -385,13 +386,14 @@ int dvb_vb2_expbuf(struct dvb_vb2_ctx *ctx, struct dmx_exportbuffer *exp)
- int dvb_vb2_qbuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
- {
- 	struct vb2_queue *q = &ctx->vb_q;
-+	struct vb2_buffer *vb2 = vb2_get_buffer(q, b->index);
- 	int ret;
+ 		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
+ 				 entry, i, q_status,
+-				 to_vb2_v4l2_buffer(out_q->bufs[i])->request_fd);
++				 to_vb2_v4l2_buffer(vb2)->request_fd);
  
--	if (b->index >= q->num_buffers) {
--		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
-+	if (!vb2) {
-+		dprintk(1, "[%s] invalid buffer index\n", ctx->name);
- 		return -EINVAL;
- 	}
--	ret = vb2_core_qbuf(&ctx->vb_q, q->bufs[b->index], b, NULL);
-+	ret = vb2_core_qbuf(&ctx->vb_q, vb2, b, NULL);
- 	if (ret) {
- 		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
- 			b->index, ret);
+-		len += visl_fill_bytesused(to_vb2_v4l2_buffer(out_q->bufs[i]),
++		len += visl_fill_bytesused(to_vb2_v4l2_buffer(vb2),
+ 					   &buf[len],
+ 					   TPG_STR_BUF_SZ - len);
+ 
+@@ -342,13 +349,20 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+ 	len = 0;
+ 	for (i = 0; i < cap_q->num_buffers; i++) {
+ 		u32 old_len = len;
+-		char *q_status = visl_get_vb2_state(cap_q->bufs[i]->state);
++		struct vb2_buffer *vb2;
++		char *q_status;
++
++		vb2 = vb2_get_buffer(cap_q, i);
++		if (!vb2)
++			continue;
++
++		q_status = visl_get_vb2_state(vb2->state);
+ 
+ 		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
+ 				 "index: %u, status: %s, timestamp: %llu, is_held: %d",
+-				 cap_q->bufs[i]->index, q_status,
+-				 cap_q->bufs[i]->timestamp,
+-				 to_vb2_v4l2_buffer(cap_q->bufs[i])->is_held);
++				 vb2->index, q_status,
++				 vb2->timestamp,
++				 to_vb2_v4l2_buffer(vb2)->is_held);
+ 
+ 		tpg_gen_text(&ctx->tpg, basep, line++ * line_height, 16, &buf[old_len]);
+ 		frame_dprintk(ctx->dev, run->dst->sequence, "%s", &buf[old_len]);
 -- 
 2.39.2
 
