@@ -4,186 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D7DE80A9A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 07:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7F41E80AA2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Sep 2023 07:26:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X9cmfquMJ+igiq1pKa0rpgZcjMvxAgK2HYMXFbfAwg0=; b=jT4Jp7dfEkouNIXm/n3dyoMeGQ
-	wsnSjPJ11M9JJSQjjt+6EvUJOb3sv47g0d7b+14a8kvcolxEFEtXoJg0KZ8vmvr6FiEdinUhaklgs
-	kaceR4Wea7MkzDUtE/LW8NmVp3LF1OeCnVivJwi0b6ul4Cb7tp/Sq0OpI3jHdnl7NXVF0wjZmaI6m
-	7v+pI2GzR1/VKZGY5hV/CLvLnFTQtcTE8sxogEBEcLM1Izs2d9wv/72MTajkNjd+sXs+Lq7xJ4j9s
-	VI+/R/NA2zdgUdpHuVEnZe8B1DfWBWK+wfRYpDiGPa9sU8kpdGi5s9e3bo4P8dzJSOZbqTpezzDzA
-	D6uJN0PA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kILSWCfhhLl/nSt1BENWE4wKMGaxvhjPAZlmuwEoI70=; b=2T6hVB5sPeEJp7YrncnZtDIoL6
+	9rzTUktr8uIKZt4kPkRSzJz/6R01KbA4r+dt7b3s0w9hI6c+XGIZ4tZgsL1gf+cP8mQN5nhK9/tGr
+	HSeEnNBVmlASYfawDkZs7Ri4qNKtmPIkd1VF5qi7uA7SJiOKS9uc165/P9NMsLWAtIgKIkM6xUcUa
+	+bRZPYCydbX7F9+zv7ARgJLnVjJCmXE59q7+mt7s5KCiDbckkRQlI1FEYLZLMPmXVVUnvccyM7cqg
+	xoYrSlG+1wAfXrMY5i1L27HREGLL/geSt6wVY3OwWDZpz62xuJ9nZKMZDyQ3y6q7pvC9vlthamFBJ
+	pNEZ166g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlOga-0009eq-05;
-	Wed, 27 Sep 2023 07:10:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qlOwW-000BYr-20;
+	Wed, 27 Sep 2023 07:26:44 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlOgV-0009e1-1w;
-	Wed, 27 Sep 2023 07:10:13 +0000
-X-UUID: e355e2d85d0411ee9b7791016c24628a-20230927
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=X9cmfquMJ+igiq1pKa0rpgZcjMvxAgK2HYMXFbfAwg0=;
-	b=Oq5ZeW5AgitHvRhuU3s9KfxNwX7RCjtxYflYgcDUEpCXXOTXNKDOz0UBB5YrxT4DX7cexUXS6weoc/1jx+QUXaHupOGVc5oiN578N4580emaMxXmImanNO4q1UYB6uA+TIUTtyz2bySnK37vS1IY72zME/LQQ1nYhCwb/KeDTPw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:c762c51f-eb35-4800-9c06-94f7c7f2eec1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:de7953bf-14cc-44ca-b657-2d2783296e72,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: e355e2d85d0411ee9b7791016c24628a-20230927
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 339780509; Wed, 27 Sep 2023 00:10:07 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 27 Sep 2023 14:50:02 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 27 Sep 2023 14:50:02 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cXP8vUCOeunolbSiB/C7Q8eTiJNdNSKJUENLdFKuXj6AItLj2PQAPx1wAKWU7XARGJ6fzZafPYPKEAKRqs9c4i9MGd2q0MfUL/kse2ibcxIrdj7FWHI0rqbfPomJwN3BFKzIDgWtyvP95YIQWqQlXfM4tM0J32J+LTUEXk46SxxukYiN7rq4osoojwF5yjmXr5EhkXh+JL1fEN54ZgcSn8hqJRDP3ozg3OSzJmJ7x+xIZH60VH9uTWoxKeUrvwkxDxbXxU1z4d7NyI9rqQU+7WJzcCoSPmn8axSchdknvhH40IcY6PFjGbgJI4FRhe1i3IfWZTOG8XF7h+iauBA9Pw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=X9cmfquMJ+igiq1pKa0rpgZcjMvxAgK2HYMXFbfAwg0=;
- b=oM0y63srTxXMQ+9OB2vX4dQZ6Bz9XzngW5d7EhThsZnRqOkKMabg3RQBWsaHRCHudmVSMXGvHKkymwfug/vNqYHlCrLsGBJFaAHf83tBGBzvmLxWe4wF1PH6hmk/WW4+7xmiDj38mWclPdxyrIXBcMiHpWhp/Rjn3cNYToNyCPXlr0fyJt3GgyaO7zxQfoDgAO/eSu1qdXsOYJaclJusii0yfgtwXOJ8ZWX+a6GMncS6ifK9M3dLupA5zKe3X83wBNfEayILZcJy5AeNHXbreVhNCQxhLaDUKievaanOAK1Jb1swryn0f7fTNTktl0+DWZb7eSEQRx4TFw1iPZGs3Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X9cmfquMJ+igiq1pKa0rpgZcjMvxAgK2HYMXFbfAwg0=;
- b=qtGNp7d3DnNbAE2xLQHAyenA4u05614wafyWFrSyh5e12z+gSu3iH+v56e5e0+9MqgfaQuLVEmr18ARzPcR65GoUGMYVYaonxXsUXreccGBYAaAqMQXQvSv17RwD69e3UCcl0YbtE8oesloXPMF2mbT9FMUrHH88ZHgSHySQXe4=
-Received: from TY0PR03MB6356.apcprd03.prod.outlook.com (2603:1096:400:14c::9)
- by JH0PR03MB8021.apcprd03.prod.outlook.com (2603:1096:990:31::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6813.28; Wed, 27 Sep
- 2023 06:50:00 +0000
-Received: from TY0PR03MB6356.apcprd03.prod.outlook.com
- ([fe80::2d8b:d64e:65cb:b7af]) by TY0PR03MB6356.apcprd03.prod.outlook.com
- ([fe80::2d8b:d64e:65cb:b7af%6]) with mapi id 15.20.6813.027; Wed, 27 Sep 2023
- 06:50:00 +0000
-From: =?utf-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
-To: "robh+dt@kernel.org" <robh+dt@kernel.org>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>, "airlied@gmail.com"
-	<airlied@gmail.com>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v6 00/16] introduce more MDP3 components in MT8195
-Thread-Topic: [PATCH v6 00/16] introduce more MDP3 components in MT8195
-Thread-Index: AQHZ7SViMKdAjIAmm0Groxf/Vs59i7AorsYAgAWUmYA=
-Date: Wed, 27 Sep 2023 06:50:00 +0000
-Message-ID: <51a34495c7ff1cef24ddd2742f617fb8710bad79.camel@mediatek.com>
-References: <20230922072116.11009-1-moudy.ho@mediatek.com>
-	 <4f15a450-4344-ed5a-0504-9a2f0a9daa0d@linaro.org>
-In-Reply-To: <4f15a450-4344-ed5a-0504-9a2f0a9daa0d@linaro.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TY0PR03MB6356:EE_|JH0PR03MB8021:EE_
-x-ms-office365-filtering-correlation-id: 412f47b1-6665-4600-ad03-08dbbf25f856
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: uvnjFrYmOX3PkCugr7oZJOt6CwvMlIaNA5uJkJwwjGivI06WCLZ6F4YbBqXX6W6jFFTuAkTkd5xLtXdrmaVWogg1z9UltxYfONl/3PjVUtYMfkQjXKrvLlV35948bEC6Vfbn6I3xRTECtlSlCD5aN7jeLJMOz13/EUGZCgySBditY9ADIKTlhSKJK3Tlf0uJ9SWZZ+xDU6+dWOB9r0aTzk6IyCGLd/c4t/knsc/ZxKvyqVHeqkhJJDGMlO9Uo8CjHYgQThnSTFmqlt01HQqorjwyaKVAYSJu78PSeVLEwOho6U3umqW/ldm//H0dHXfnPerqzIk6AF04QLjqZnY0g6RBjo5rNYau7Xq32pzP9xquMwfLF03rQC7QT6oM0A1HiUc2Ezy4OWA5IW4eiOlD+zERpt87+kTZ0rJBbalW2SRu8gynUTrCtB1rZlxFfY6rzmZAs5f7olMjSgq0WDCDGA3RvQ8KdCa9RsGA16speRz/2LxmU4X4QVc4WHgUr4wWcj8g6DfaWBZV+G69klY6R0GCUjx/xgjHII+zcxD/vXJbPIJvN8kFhQUwtMzcizRpK+f4nQpopybEJrypUB1z+ukrLP5Vuf2Bm9XB+HMqxreokebMFo98uIvuQA6dVlIf9CWvEDg5uwRqIU3uLoSTlrWHtGB547Zf9lpFwvWet8MVwIKrzGoAzfRmeHs6J0yO
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR03MB6356.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(346002)(366004)(396003)(39860400002)(136003)(376002)(230922051799003)(186009)(1800799009)(451199024)(83380400001)(26005)(2616005)(478600001)(6486002)(6506007)(53546011)(6512007)(71200400001)(86362001)(36756003)(85182001)(38100700002)(38070700005)(921005)(122000001)(316002)(54906003)(966005)(66556008)(66476007)(76116006)(64756008)(66446008)(4326008)(8676002)(8936002)(110136005)(66946007)(7416002)(2906002)(5660300002)(41300700001)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?c01wcVRpd1dJcGhyZlQwcTdzMWFRaHF4ZXlnaG5aQXFvUWVrUWc3elE0UXBj?=
- =?utf-8?B?NWQ2YU1uODJLdmRBakZYeHU1dnZiWURPcHZQNSt1aWFucXVneG5WWUpCaVFH?=
- =?utf-8?B?ZW91UmFYUkNiV1pZa3hEV01ZdzVpU0phQ25RY21Ed2xRVlNlTGd3MU5WSDZP?=
- =?utf-8?B?eTc0S3loS2hMQ0NhbWtDWVFwTVdhNVhFVUpmaC9LOGFRSjQxbUxKQXN6a2RJ?=
- =?utf-8?B?czFoUjh3aVVRbnEzU1l0cG1NUkZHS29lcVB6dlhzZFN1LzNQa1JyNktjanVV?=
- =?utf-8?B?MTZNWkIxSitkdE1WQVlLRUtZUDhqZWd2R0FPcVQvcjIvMFRPN1N5Z1RyKzV6?=
- =?utf-8?B?VFRCVTFSSXAwNlRiMU9ET3dLRjUvS28rVHVwYVRrYWVaL29LUEFYZHNMTXEr?=
- =?utf-8?B?ZWgxY3c5YldQSFhEM2NuM3pmWGZCN05xZVk3S3l6VDZLa2NBOFc5WE13RUZr?=
- =?utf-8?B?bzMyM2lKNVE5UUkzMnFBQWtIbHB6WkRqcDU1Zno1YkQ0cklkZDBwUTdDdGFY?=
- =?utf-8?B?d0J0NHJuQnRsQ0NRTy9YU1BGc0luTkRiQk5VMms3VWpGc2NIK04vWlU0SE9h?=
- =?utf-8?B?MEg4L1J5SFhnZ2d2N29sODR1MU16Umpzekd4WXFsNDJvQkZTWlZqRFJHSFZk?=
- =?utf-8?B?dFl3UjVSUW8yUGFRK21YZ1pweW9UVkJVd2JqSlUxcVVxTzJxLzFqQmZ0NE5K?=
- =?utf-8?B?M3Bvck5VV0RnTWxJWEQwS2ZXSzBzS1Rud2JUbytrOXc5dXNSd1Z6dTBVY0Zt?=
- =?utf-8?B?N0hrZW1OUmY4b01XVS9mNmM5bzFmRjA3cjlIWDBRTmxtV1l1UE1hUEFmcVow?=
- =?utf-8?B?YUhmUnpvUHoybFNtNkYvci9RSjlFSjB1VFk5RjZIOTBsa1duUWZYUTQ2WnFz?=
- =?utf-8?B?QVgzcnM1dVpFRkVGMklFeUVBZ1h2azRYTUlFQ0IyOWFmSUlaMVFnT3ZlbVpJ?=
- =?utf-8?B?VWo4ZnJmd2lHR2tYaHlzanZlOTFjWCs0YktKeVFweWlSZEp6MGdvQkQyNmpx?=
- =?utf-8?B?THJYTGhjM1lzNWs3eW5VdFBOdGlwMjBsVHE3YkJNT2tFZ3BtN0d0OExwWEZO?=
- =?utf-8?B?cGRXTTJtUXo3WlZlWW9Nd1BMNjBEL0hSZmhIcFRsTllzR3pLN0VyRWlxdExi?=
- =?utf-8?B?VVZzNXpoV1BMRVQrUzlvZmFpQjJyNzI2N1pRYUo5N1VSM0I1Uy9sZVpPWkQ0?=
- =?utf-8?B?RFVMN0hudXVrdi9JNG1qQmRUaWNQTVRjQnpleDE1U29jcW9jL251RWdzSzBC?=
- =?utf-8?B?NHJwZDBlMmJnNHE3RWdQbzdvVy81U2tpK2IxbThZU3lEbzJOaXpERWVpM2t0?=
- =?utf-8?B?K2N4bkpZaDAyUStTZmpuOUNlcG16Rm1TdXZyTGZxWGszZ1R1OXRGbmZIckQ4?=
- =?utf-8?B?Z1V6M2NDem9HS3Rpa09veVV4YVZxcjhBTXA1RFllVVVXb2Jtc3k4MkRFQ1Ez?=
- =?utf-8?B?a094R0F6TDFPdTdQSmV6QXRkUU5rRmw5MzF2Y1NMNGF4c3c1ZHlCeWUvaTlC?=
- =?utf-8?B?S3E5dHRKUXN2Q0xUZytSRkhaYVFuNmxOejVkRWRhVitFMEwwcUhhZnFKWkt3?=
- =?utf-8?B?Umt1NlhvTXpiN0I0b2RQNU82aU80T3BsNVVBS0F3UVRHTTBBS2k4SVF0cE1Z?=
- =?utf-8?B?M0hWUU1aczl3RTBaQXhVTkM3OHBHTHp1OFRzN0RtcTE2a2hjdHQrZzRwWWpt?=
- =?utf-8?B?SlIwaUhqSUpBbTFTMUZoNzQwcXltdHNTYnluYTZMSlFYekcrYk9NaDFKd2VW?=
- =?utf-8?B?OTd1TVdhQTBLVWswWnpadFJTVHJDV0pGZFZTV2c1U20yUWd0R0dkOUM5cjlu?=
- =?utf-8?B?aThYbi82eEI4cWdka2FidnpVcFZLZlFpR3d0MEk2SUUxWDJvL0IwZ3k3TXFW?=
- =?utf-8?B?VlJSZEFvdndZbEhxaFNIdzkvME5YckhmSERjOTIrTU5acnhHbkk2aUk5aGVK?=
- =?utf-8?B?UlBZa1RjdDFwelE4UVF3MGFCNW1lcDgvQTBwelllUmJpaVNwRE15WG42NCsv?=
- =?utf-8?B?YVcvZlBNSSt0ZTFydU9OcFh6cloyYVdSYkpqRVZEbjFpVDlWUmFDejhVKyt6?=
- =?utf-8?B?aW5FMVR4ZVp4ckZueTU4NkMzcmEzZFlBTjEwYnBrKzB4Tm9YYm50MEhoQm9I?=
- =?utf-8?B?QVJ3bVRUc1gzclVWSGJJMzR2bmh3WWlHWWxaejRraUlhdjdWRVBpdlZVMHFK?=
- =?utf-8?B?M3c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <4C6BF6278D9D084FA2D0902CC84EA926@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1qlOwS-000BWa-2K;
+	Wed, 27 Sep 2023 07:26:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id A3D15B81615;
+	Wed, 27 Sep 2023 07:26:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C26B1C433C8;
+	Wed, 27 Sep 2023 07:26:34 +0000 (UTC)
+Message-ID: <d774c0e4-5ab2-4d3e-ae87-eb311aeaa1c2@xs4all.nl>
+Date: Wed, 27 Sep 2023 09:26:33 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR03MB6356.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 412f47b1-6665-4600-ad03-08dbbf25f856
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2023 06:50:00.3851
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: gschn+FDoZIgP0sjOL57eADg8hbt2iFfglg1zXHSU1wkfOAFsoA6mDKYQkxoEb9TbQQis3D8xOqI27V+IOEJ1w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB8021
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--16.842300-8.000000
-X-TMASE-MatchedRID: ge9e+QLSeazUL3YCMmnG4ia1MaKuob8PCJpCCsn6HCHBnyal/eRn3gzR
-	CsGHURLuwpcJm2NYlPAF6GY0Fb6yCifZYRtbOr2tH5YQyOg71Zb4qCLIu0mtIGHZ+cd7VyKX4nz
-	kw7itaMi+MslyyVDSuEh4Y4fHA6Yv0RCs70uuPqGtxpVfAE2l7+PmXK6rwg5BE+5bAfeaWupoPn
-	UBy5rqazqMk+tGjwDokZOl7WKIImrS77Co4bNJXQtuKBGekqUpPjKoPgsq7cA=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--16.842300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: C14ACA4C2FEE3AC24FF782E0ADCDB1A7A097637C189FC6BCC68C559A57E86E012000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder
+ driver
+Content-Language: en-US, nl
+To: Jeffrey Kardatzke <jkardatzke@google.com>
+Cc: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "frkoenig@chromium.org" <frkoenig@chromium.org>,
+ "stevecho@chromium.org" <stevecho@chromium.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "nhebert@chromium.org" <nhebert@chromium.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "hsinyi@chromium.org" <hsinyi@chromium.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ "nfraprado@collabora.com" <nfraprado@collabora.com>
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-13-yunfei.dong@mediatek.com>
+ <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+ <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl>
+ <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
+ <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl>
+ <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
+ <ff7aa575-c820-4dfa-853f-77438b8b149a@xs4all.nl>
+ <b7d661637eacbda3e83d192b1126fc3970c4f50d.camel@collabora.com>
+ <c3d14f64-bf04-46b9-ac7b-af7ef9014335@xs4all.nl>
+ <00302ac675af858eb11d8398f100921af806bc30.camel@mediatek.com>
+ <3e053387-4ba6-49bc-a59a-46854e0a7c26@xs4all.nl>
+ <CA+ddPcOaCKq5Nd_3eWwJ3=oAf=5t-Z+w51NqapXN8VBuvbTw3g@mail.gmail.com>
+ <71cadec5-06df-4490-9b06-e3af6bb43498@xs4all.nl>
+ <CA+ddPcN0ivYa+vfvs-8PDpkDFkC=1gkM6fkeP7kE8Wqbi1w+dw@mail.gmail.com>
+ <CA+ddPcMX=6ek-EVRMxJcRfZxRuLTGL3A-jeeNaifNF0E5AvVHw@mail.gmail.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <CA+ddPcMX=6ek-EVRMxJcRfZxRuLTGL3A-jeeNaifNF0E5AvVHw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_001011_673890_8FD1B9E0 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20230927_002641_079984_3DDBB6B8 
+X-CRM114-Status: GOOD (  58.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -198,23 +96,245 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCAyMDIzLTA5LTIzIGF0IDE5OjM2ICswMjAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtz
-IG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRl
-ciBvciB0aGUgY29udGVudC4NCj4gIE9uIDIyLzA5LzIwMjMgMDk6MjEsIE1vdWR5IEhvIHdyb3Rl
-Og0KPiA+IENoYW5nZXMgc2luY2UgdjU6DQo+ID4gLSBSZWJhc2Ugb24gdjYuNi1yYzIuDQo+ID4g
-LSBEZXBlbmRlbnQgZHRzaSBmaWxlczoNCj4gPiAgIA0KPiBodHRwczovL3BhdGNod29yay5rZXJu
-ZWwub3JnL3Byb2plY3QvbGludXgtbWVkaWF0ZWsvbGlzdC8/c2VyaWVzPTc4NjUxMQ0KPiA+IC0g
-RGVwZW5kcyBvbjoNCj4gPiAgIE1lc3NhZ2UgSUQgPSAyMDIzMDkxMTA3NDIzMy4zMTU1Ni01LXNo
-YXduLnN1bmdAbWVkaWF0ZWsuY29tDQo+ID4gLSBTcGxpdCBvdXQgY29tbW9uIHByb3BlcnRpcyBm
-b3IgUkRNQS4NCj4gPiAtIFNwbGl0IGVhY2ggY29tcG9uZW50IGludG8gaW5kZXBlbmRlbnQgcGF0
-Y2hlcy4NCj4gDQo+IEFuZCBpZ25vcmVkIHByZXZpb3VzbHkgZ2l2ZW4gZmVlZGJhY2suIFRoYXQn
-cyBub3QgdGhlIHdheSB5b3Ugc2hvdWxkDQo+IHdvcmsgd2l0aCB1cHN0cmVhbSBjb21tdW5pdHku
-IEl0IGZlZWxzIGxpa2UgYSB3YXN0ZSBvZiBteSB0aW1lIGFuZCBpdA0KPiBpcw0KPiBub3QgZmFp
-ciB0aGF0IE1lZGlhdGVrIGlzIGRvaW5nIGl0IDooDQo+IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IEty
-enlzenRvZg0KPiANCkhpIEtyenlzenRvZiwNCg0KV2hpbGUgc3BsaXR0aW5nIHRoZSBiaW5kaW5n
-cywgSSB3YXMgc28gZm9jdXNlZCB0aGF0IEkgYWNjaWRlbnRhbGx5DQptaXNzZWQgY29ycmVjdGlu
-ZyB0aGUgcHJvcGVydGllcyB0aGF0IG5lZWRlZCB0byBiZSBmaXhlZC4NCkkgc2luY2VyZWx5IGFw
-b2xvZ2l6ZSBmb3IgdGhpcyBvdmVyc2lnaHQuDQpNb3ZpbmcgZm9yd2FyZCwgSSB3aWxsIGhhbmRs
-ZSBzdWNoIG1hdHRlcnMgd2l0aCBncmVhdGVyIGNhcmUuDQoNClNpbmNlcmVseSwNCk1vdWR5DQo=
+On 26/09/2023 22:59, Jeffrey Kardatzke wrote:
+> Hans,
+> 
+> I've been looking through the v4l2/vbuf2 code to get an idea of the
+> details for implementing a new memory type for secure buffers.  What
+> it comes down to essentially is that it would behave just like
+> V4L2_MEMORY_DMABUF, but then there would be an extra check in
+> __prepare_dmabuf (in videobuf2-core.c) when the memory type is SECURE
+> to ensure that it is actually from a secure dma-buf allocation.  So
+> I'm thinking an alternate solution might be cleaner so we don't have
+> two memory types that are handled nearly identically in most of the
+> code. What do you think about a new memory flag like
+> V4L2_MEMORY_FLAG_SECURE?  This would be set in vb2_queue struct like
+> the other existing memory flag. Then when it gets into
+> __prepare_dmabuf and invokes attach_dmabuf on each buffer...that call
+> could then check for the existence of that flag, and if it's there it
+> could validate it is actually secure memory.  Then in various other
+> dmabuf vb2_mem_ops (maybe alloc, get_userptr, vaddr and mmap) those
+> could also check for the secure flag, and if present return an
+> error/null.  Then also in the driver specific vb2_ops for queue_setup,
+> the MTK driver could recognize the flag there and then configure
+> itself for secure mode.
+> 
+> How does that sound as an overall strategy?
+
+Yes, I actually had the same thought.
+
+You would also need a new capability: V4L2_BUF_CAP_SUPPORTS_SECURE_MEMORY
+
+It makes more sense than creating a new V4L2_MEMORY_ type, and it still
+is handled at the right place (creating the buffers).
+
+Regards,
+
+	Hans
+
+> 
+> Cheers,
+> Jeff
+> 
+> On Mon, Sep 25, 2023 at 9:51 AM Jeffrey Kardatzke <jkardatzke@google.com> wrote:
+>>
+>> On Mon, Sep 25, 2023 at 2:00 AM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
+>>>
+>>> On 22/09/2023 21:17, Jeffrey Kardatzke wrote:
+>>>> On Fri, Sep 22, 2023 at 1:44 AM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
+>>>>>
+>>>>> On 22/09/2023 05:28, Yunfei Dong (董云飞) wrote:
+>>>>>> Hi Hans,
+>>>>>>
+>>>>>> Thanks for your help to give some good advice.
+>>>>>> On Wed, 2023-09-20 at 09:20 +0200, Hans Verkuil wrote:
+>>>>>>>
+>>>>>>>>>>> In any case, using a control to switch to secure mode and using
+>>>>>>> a control
+>>>>>>>>>>> to convert a dmabuf fd to a secure handle seems a poor choice to
+>>>>>>> me.
+>>>>>>>>>>>
+>>>>>>>>>>> I was wondering if it wouldn't be better to create a new
+>>>>>>> V4L2_MEMORY_ type,
+>>>>>>>>>>> e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). That
+>>>>>>> ensures that
+>>>>>>>>>>> once you create buffers for the first time, the driver can
+>>>>>>> switch into secure
+>>>>>>>>>>> mode, and until all buffers are released again you know that the
+>>>>>>> driver will
+>>>>>>>>>>> stay in secure mode.
+>>>>>>>>>>
+>>>>>>>>>> Why do you think the control for setting secure mode is a poor
+>>>>>>> choice?
+>>>>>>>>>> There's various places in the driver code where functionality
+>>>>>>> changes
+>>>>>>>>>> based on being secure/non-secure mode, so this is very much a
+>>>>>>> 'global'
+>>>>>>>>>> setting for the driver. It could be inferred based off a new
+>>>>>>> memory
+>>>>>>>>>> type for the queues...which then sets that flag in the driver;
+>>>>>>> but
+>>>>>>>>>> that seems like it would be more fragile and would require
+>>>>>>> checking
+>>>>>>>>>> for incompatible output/capture memory types. I'm not against
+>>>>>>> another
+>>>>>>>>>> way of doing this; but didn't see why you think the proposed
+>>>>>>> method is
+>>>>>>>>>> a poor choice.
+>>>>>>>>>
+>>>>>>>>> I assume you are either decoding to secure memory all the time, or
+>>>>>>> not
+>>>>>>>>> at all. That's something you would want to select the moment you
+>>>>>>> allocate
+>>>>>>>>> the first buffer. Using the V4L2_MEMORY_ value would be the
+>>>>>>> natural place
+>>>>>>>>> for that. A control can typically be toggled at any time, and it
+>>>>>>> makes
+>>>>>>>>> no sense to do that for secure streaming.
+>>>>>>>>>
+>>>>>>>>> Related to that: if you pass a dmabuf fd you will need to check
+>>>>>>> somewhere
+>>>>>>>>> if the fd points to secure memory or not. You don't want to mix
+>>>>>>> the two
+>>>>>>>>> but you want to check that at VIDIOC_QBUF time.
+>>>>>>>>>
+>>>>>>>>> Note that the V4L2_MEMORY_ value is already checked in the v4l2
+>>>>>>> core,
+>>>>>>>>> drivers do not need to do that.
+>>>>>>>>
+>>>>>>>> Just to clarify a bit, and make sure I understand this too. You are
+>>>>>>> proposing to
+>>>>>>>> introduce something like:
+>>>>>>>>
+>>>>>>>>    V4L2_MEMORY_SECURE_DMABUF
+>>>>>>>>
+>>>>>>>> Which like V4L2_MEMORY_DMABUF is meant to import dmabuf, while
+>>>>>>> telling the
+>>>>>>>> driver that the memory is secure according to the definition of
+>>>>>>> "secure" for the
+>>>>>>>> platform its running on.
+>>>>>>>>
+>>>>>>>> This drivers also allocate secure SHM (a standard tee concept) and
+>>>>>>> have internal
+>>>>>>>> allocation for reconstruction buffer and some hw specific reference
+>>>>>>> metadata. So
+>>>>>>>> the idea would be that it would keep allocation using the dmabuf
+>>>>>>> heap internal
+>>>>>>>> APIs ? And decide which type of memory based on the memory type
+>>>>>>> found in the
+>>>>>>>> queue?
+>>>>>>>
+>>>>>>> Yes. Once you request the first buffer you basically tell the driver
+>>>>>>> whether it
+>>>>>>> will operate in secure or non-secure mode, and that stays that way
+>>>>>>> until all
+>>>>>>> buffers are freed. I think that makes sense.
+>>>>>>>
+>>>>>>
+>>>>>> According to iommu's information, the dma operation for secure and non-
+>>>>>> secure are the same, whether just need to add one memory type in v4l2
+>>>>>> framework the same as V4L2_MEMORY_DMABUF? The dma operation in
+>>>>>> videobuf2-dma-contig.c can use the same functions.
+>>>>>
+>>>>> So if I pass a non-secure dma fd to the capture queue of the codec, who
+>>>>> will check that it can't write the data to that fd? Since doing so would
+>>>>> expose the video. Presumably at some point the tee code will prevent that?
+>>>>> (I sincerely hope so!)
+>>>>
+>>>> It is entirely the job of the TEE to prevent this. Nothing in the
+>>>> kernel should allow exploitation of what happens in the TEE no matter
+>>>> what goes on in the kernel
+>>>>
+>>>>>
+>>>>> Having a separate V4L2_MEMORY_DMABUF_SECURE type is to indicate to the
+>>>>> driver that 1) it can expect secure dmabuf fds, 2) it can configure itself
+>>>>> for that (that avoids using a control to toggle between normal and secure mode),
+>>>>> and at VIDIOC_QBUF time it is easy for the V4L2 core to verify that the
+>>>>> fd that is passed in is for secure memory. This means that mistakes by
+>>>>> userspace are caught at QBUF time.
+>>>>>
+>>>>> Of course, this will not protect you (people can disable this check by
+>>>>> recompiling the kernel), that still has to be done by the firmware, but
+>>>>> it catches userspace errors early on.
+>>>>>
+>>>>> Also, while for this hardware the DMA operation is the same, that might
+>>>>> not be the case for other hardware.
+>>>>
+>>>> That's a really good point. So one of the other models that is used
+>>>> for secure video decoding is to send the encrypted buffer into the
+>>>> video decoder directly (i.e. V4L2_MEMORY_MMAP) and then also send in
+>>>> all the corresponding crypto parameters (i.e. algorithm, IV,
+>>>> encryption pattern, etc.). Then the video driver internally does the
+>>>> decryption and decode in one operation.  That's not what we want to
+>>>> use here for Mediatek; but I've done other integrations that work that
+>>>> way (that was for VAAPI [1], not V4L2...but there are other ARM
+>>>> implementations that do operate that way).  So if we end up requiring
+>>>> V4L2_MEMORY_DMABUF_SECURE to indicate secure mode and enforce it on
+>>>> output+capture, that'll close off other potential solutions in the
+>>>> future.
+>>>>
+>>>> Expanding on your point about DMA operations being different on
+>>>> various hardware, that also makes me think a general check for this in
+>>>> v4l2 code may also be limiting. There are various ways secure video
+>>>> pipelines are done, so leaving these checks up to the individual
+>>>> drivers that implement secure video decode may be more pragmatic. If
+>>>> there's a generic V4L2 _CID_SECURE_MODE control, that makes it more
+>>>> general for how drivers can handle secure video decode.
+>>>
+>>> No, using a control for this is really wrong.
+>>>
+>>> The reason why I want it as a separate memory type is that that is
+>>> what you use when you call VIDIOC_REQBUFS, and that ioctl is also
+>>> when things are locked down in a driver. As long as no buffers have
+>>> been allocated, you can still change formats, parameters, etc. But
+>>> once buffers are allocated, most of that can't be changed, since
+>>> changing e.g. the format would also change the buffer sizes.
+>>>
+>>> It also locks down who owns the buffers by storing the file descriptor.
+>>> This prevents other processes from hijacking the I/O streaming, only
+>>> the owner can stream buffers.
+>>>
+>>> So it is a natural point in the sequence for selecting secure
+>>> buffers.
+>>>
+>>> If you request V4L2_MEMORY_DMABUF_SECURE for the output, then the
+>>> capture side must also use DMABUF_SECURE. Whether or not you can
+>>> use regular DMABUF for the output side and select DMABUF_SECURE
+>>> on the capture side is a driver decision. It can be useful to
+>>> support this for testing the secure capture using regular video
+>>> streams (something Nicolas discussed as well), but it depends on
+>>> the hardware whether you can use that technique.
+>>
+>> OK, that does work for the additional cases I mentioned.  And for
+>> testing...we would still want to use DMABUF_SECURE on both ends for
+>> Mediatek at least (that's the only way they support it). But rather
+>> than having to bother with a clearkey implementation...we can just do
+>> something that directly copies compressed video into the secure
+>> dmabufs and then exercises the whole pipeline from there. This same
+>> thing happens with the 'clear lead' that is sometimes there with
+>> encrypted video (where the first X seconds are unencrypted and then it
+>> switches to encrypted...but you're still using the secure video
+>> pipeline on the unencrypted frames in that case).
+>>
+>>
+>>>
+>>> Regards,
+>>>
+>>>         Hans
+>>>
+>>>>
+>>>> [1] - https://github.com/intel/libva/blob/master/va/va.h#L2177
+>>>>
+>>>>>
+>>>>> Regards,
+>>>>>
+>>>>>         Hans
+>>>>>
+>>>>>>
+>>>>>> Best Regards,
+>>>>>> Yunfei Dong
+>>>>>>
+>>>>>
+>>>
+
 
