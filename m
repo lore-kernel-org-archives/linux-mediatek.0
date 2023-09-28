@@ -4,113 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9AFAE732FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 17:40:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B17E732FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 17:48:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3JZDBA/8Pc4Dr+87oHFNU6cXwe4pXOmPmryPM6oar90=; b=BVkBm0H4mM7eJhLWFGMOOBFC1P
-	8EHYj1ZJZZGd+/4Eg0JiOPMj9OrG3aA+NQOUSnDWuGNv6xQp6eZMUKJVepRjM/s/07c4vBJUsNK+4
-	jS1YO+DJHpZ6P9vQYhuabqJqkrqXWP9FBD2s1fYHFhoDEfn34VnkD7zFb0CcJ4W4UerHQyXS7hSmM
-	cxayBUQXI/MTp+UzhalAklfoxTlm75UvmdlIiQkxj/iJfstOR0MiwA/iEf9lFmKzHXP5fbuFnsWX5
-	ft6YbrdoL7I30MBxebGzXFSLuw71xRb3ikDnitiYDPdyaUxJT5mFuBCJBlQk1DqtvX0grr2G18xlb
-	KOlHrIaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+lc7tMjE9TqzKqjNwesj3iwB/DY3hf+maktURRWmeOo=; b=g2fr2yYV0YmPi2U3fTmuRFgTaV
+	thoeqMIipUdyHkj3PrzrSZvtbtsWHhKYXnQWpr3rWUnwm06tN5UcWeb1reL1IooMSwdrEs1wkFPjc
+	FcqRyl49Cu/9yrrlFqyYi2Kz5EAvLC9opAktYbk7ptsqxFcJqjYekmP8BmrElp7ZICPK9Q9bwkCU7
+	C3hTgujd2VE7vhxQU0PcHSjhZl7MX+TqQXkJRLHlcYb999tY/b38FSgODJwhjbE52bf2uYrZrBNXM
+	EH0hZr56xYdOx1/ZmTyY/l2/IuVlm328A7MoqErlDHiJqvsZmDKUojO/rtkagUC3/9fOB73BE3FuD
+	4wJHW1aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlv0B-006Rmc-0S;
-	Thu, 28 Sep 2023 17:40:39 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1qlv7p-006SaA-2u;
+	Thu, 28 Sep 2023 17:48:33 +0000
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlv04-006RkP-0S;
-	Thu, 28 Sep 2023 17:40:34 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-31fa15f4cc6so12510778f8f.2;
-        Thu, 28 Sep 2023 10:40:28 -0700 (PDT)
+	id 1qlv7m-006SYl-1c
+	for linux-mediatek@lists.infradead.org;
+	Thu, 28 Sep 2023 17:48:33 +0000
+Received: by mail-il1-x12d.google.com with SMTP id e9e14a558f8ab-3514ece5ed4so12525ab.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Sep 2023 10:48:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1695922827; x=1696527627; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=google.com; s=20230601; t=1695923307; x=1696528107; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=3JZDBA/8Pc4Dr+87oHFNU6cXwe4pXOmPmryPM6oar90=;
-        b=ZEqDf2sQ8eszL1wE5mgupmBNlm5uPK6HHXbAhjarXoFDgtAx2OEZtzv2mnrFuvxL2W
-         SD0N1LwH5iD5hKHlEYJmH8R1EErB17RJrRIcMgb6r0rXENk2UXCWrWp1cMTebWvodwlr
-         trsvCVYWx/LjHP5lT9YgvPzGN/JeZve1FaAJxQN4LB7urkzpI1+qzfpl9JeeqO23hshK
-         IMUp6kaFPLRNNuvGEuoaKdatrVTwtAK+MytbCXdpw75ZSwxviVLtJAuS+GyA0dMslDx5
-         hGd9fQj0d1uvFsBBEqn3twd0VY4Rw+kk4Yo3HBGle8zveKgWjPYZqPscRNPlJ2CUm0Lb
-         lVVA==
+        bh=+lc7tMjE9TqzKqjNwesj3iwB/DY3hf+maktURRWmeOo=;
+        b=xQbXXUAJerhA5fdtz0z42cLWlgutjiGE17DXLLxVNbnbv1PO3JFvRUUrr4enbTnGnK
+         VK+uMpNfZCknmK+C4xziOyQltob8LLzhsZybgk+lcf/L/x/3qmDidLCaA2R+1mxZw08K
+         IeQodKWTBo8uyT4vD0gCcrB35O7VzJk4NhfMXJuke2vTDlpnIPrSIz7feNvMe58sznKp
+         aPBrdFa7GCLYS69pu99UZ96kvX8d9ZdfvYWaGaumVHJb7ivuU+B9z1tAngYR294ptGnp
+         S1Sy9E3RQZhem9M8fCK7+RXoZTTgl2fwMEMBriSh8JAVYezbrf7XqaKsNmqcEXsK3IU7
+         s4Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695922827; x=1696527627;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1695923307; x=1696528107;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=3JZDBA/8Pc4Dr+87oHFNU6cXwe4pXOmPmryPM6oar90=;
-        b=geXWU8yGwKm5ROrspj+0XCKKuPAlxzB/UDizdDAgf4m0RxKqHqBJMcZtw0tpgxuWqp
-         326L2WHJ625FcFRNUpxLuz9UzamPiSfw+jBrJeVXvWZoCHyKoYcqHF+PU0wU0R8/E2Cc
-         QbTeLwhNunpSef2eAHtOe34oANuNwLyiEh31kfZuEOs/YQvwVtkOBtNuXdrFpuhy2Bvu
-         fdE6kD4y1996RkXUY0Uiufzlbgh79cki339TlSA5p0dIAY/gLPV8ECdF9gXoiSe37uaa
-         3S4LGS/exyGBHAL5hYKHMjh4mVr/i1Fnx/Owf6mNI7kr4rZsC2AavqPKJKUXjuDs7nXv
-         Bhew==
-X-Gm-Message-State: AOJu0YweEjhxn0m8eCG91WJPhmXr8wnyb8qHK9/7/VBLpK6PnFETitl1
-	GuIpqLjktwW/AlH1r4G2sxc=
-X-Google-Smtp-Source: AGHT+IEHAV165RCcjAA6LQ0/PQ5U9fKuk2lxw+cuUqmE44d+PQBNtgHEq/2KzsaNxNwXPyHtbnwK7g==
-X-Received: by 2002:a5d:4cc3:0:b0:31f:ef77:67e4 with SMTP id c3-20020a5d4cc3000000b0031fef7767e4mr1506433wrt.37.1695922826104;
-        Thu, 28 Sep 2023 10:40:26 -0700 (PDT)
-Received: from jernej-laptop.localnet (82-149-12-148.dynamic.telemach.net. [82.149.12.148])
-        by smtp.gmail.com with ESMTPSA id x17-20020a5d6b51000000b0031980294e9fsm19907065wrw.116.2023.09.28.10.40.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Sep 2023 10:40:25 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-rtc@vger.kernel.org,
- Michael Walle <michael@walle.cc>,
- =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH V5] nvmem: add explicit config option to read old syntax fixed OF
- cells
-Date: Thu, 28 Sep 2023 19:40:22 +0200
-Message-ID: <4947329.31r3eYUQgx@jernej-laptop>
-In-Reply-To: <20230927204446.4231-1-zajec5@gmail.com>
-References: <20230927204446.4231-1-zajec5@gmail.com>
+        bh=+lc7tMjE9TqzKqjNwesj3iwB/DY3hf+maktURRWmeOo=;
+        b=I+sw64cLpTWqvc5lNISFHlzZkLpzjlIcws6XVf2i8tF2JTN+VoQhzIFZGDFulJOCZ1
+         NdxTrxZod0/uOl63PCC6Y5T4AD8oCS98HxVIQF2zsJaEv/JzuHnTiH68No9RLO4pK2kA
+         2parYoIMJVn9VKJtPWTDJFccg68TZt24Z6km1KciVUEa851OqHRW85v37E2+QFGqLl9Z
+         Ln7JtiR91Nt8S6lAgD5uaEvDcCMBGAkOchOuZ7KO6otBz0KX0hZLYxh0708Ukyk4/+B0
+         d54pHVa7huV0OC2HTdXQQuthc0229N3972A2slQaIXAtN5Dd2WGaNkTPj/i7rx02Ndqg
+         /FGQ==
+X-Gm-Message-State: AOJu0YzXiZeGdavn8qVbR7uEhQ1we/oItmvltveIk3IbYOLFxsLr73BV
+	VqCUARUJvbxLaCNLKHKiO/+du1DVpwA4ux87BUTx
+X-Google-Smtp-Source: AGHT+IEKTkNfxDliwI/2EJS9nYa/IghQB0LorE6+1+ZjJfiK83nWSSutkNVwiV47LmZ4lKR2ji8rXU0JRU5ZMy5AJDw=
+X-Received: by 2002:a05:6e02:1486:b0:34f:5587:4353 with SMTP id
+ n6-20020a056e02148600b0034f55874353mr1062211ilk.25.1695923307247; Thu, 28 Sep
+ 2023 10:48:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+References: <20230911023038.30649-1-yong.wu@mediatek.com> <20230911023038.30649-6-yong.wu@mediatek.com>
+ <d0373c02-9b22-661f-9930-ca720053c2a0@collabora.com> <a115a2a5d3ac218e6db65ccdb0a1876f9cfca02b.camel@mediatek.com>
+ <d798b15b-6f35-96db-e3f7-5c0bcc5d46a2@collabora.com> <a4ecc2792f3a4d3159e34415be984ff7d5f5e263.camel@mediatek.com>
+ <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain> <3aaafe47-3733-a4d5-038d-a7e439309282@collabora.com>
+ <CA+ddPcP4=p37cV5Tbn5zTUbiL4ou+Yqb=5rS+O_ff8ZUw64D3Q@mail.gmail.com> <80695726-1a98-12d4-ad7d-d731f2f3caeb@collabora.com>
+In-Reply-To: <80695726-1a98-12d4-ad7d-d731f2f3caeb@collabora.com>
+From: Jeffrey Kardatzke <jkardatzke@google.com>
+Date: Thu, 28 Sep 2023 10:48:15 -0700
+Message-ID: <CA+ddPcPES=4FcQRkvVnW=C9mL6hCxVfCcoLDJSjb58UiDmS_Mg@mail.gmail.com>
+Subject: Re: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: Joakim Bech <joakim.bech@linaro.org>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"christian.koenig@amd.com" <christian.koenig@amd.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"robh+dt@kernel.org" <robh+dt@kernel.org>, "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"jstultz@google.com" <jstultz@google.com>, 
+	"linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	=?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?= <Jianjiao.Zeng@mediatek.com>, 
+	=?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>, 
+	"conor+dt@kernel.org" <conor+dt@kernel.org>, "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>, 
+	"tjmercier@google.com" <tjmercier@google.com>, 
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230928_104032_188429_43E0D963 
-X-CRM114-Status: GOOD (  26.36  )
+X-CRM114-CacheID: sfid-20230928_104830_538958_7E156A01 
+X-CRM114-Status: GOOD (  49.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,427 +108,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne sreda, 27. september 2023 ob 22:44:46 CEST je Rafa=C5=82 Mi=C5=82ecki n=
-apisal(a):
-> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
->=20
-> Binding for fixed NVMEM cells defined directly as NVMEM device subnodes
-> has been deprecated. It has been replaced by the "fixed-layout" NVMEM
-> layout binding.
->=20
-> New syntax is meant to be clearer and should help avoiding imprecise
-> bindings.
->=20
-> NVMEM subsystem already supports the new binding. It should be a good
-> idea to limit support for old syntax to existing drivers that actually
-> support & use it (we can't break backward compatibility!). That way we
-> additionally encourage new bindings & drivers to ignore deprecated
-> binding.
->=20
-> It wasn't clear (to me) if rtc and w1 code actually uses old syntax
-> fixed cells. I enabled them to don't risk any breakage.
->=20
-> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
-> [for meson-{efuse,mx-efuse}.c]
-> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> [for mtk-efuse.c, nvmem/core.c, nvmem-provider.h]
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> [MT8192, MT8195 Chromebooks]
-> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabor=
-a.com>
-> [for microchip-otpc.c]
-> Reviewed-by: Claudiu Beznea <claudiu.beznea@microchip.com>
-> [SAMA7G5-EK]
-> Tested-by: Claudiu Beznea <claudiu.beznea@microchip.com>
-> ---
-> V2: Fix stm32-romem.c typo breaking its compilation
->     Pick Martin's Acked-by
->     Add paragraph about layouts deprecating add_legacy_fixed_of_cells
-> V3: Update commit description:
->     1. Make it clear we're NOT dropping fixed cells support
->     2. Use nicer words (s/made sense/was totally safe/)
->     3. Explain fixed cells layout thing
->     4. Add paragraph with purpose of this commit
-> V4: Completely rewrite commit message.
->     Rename config option to "add_legacy_fixed_of_cells".
-> V5: Rebase patch
->     Cover sec-qfprom.c which uses legacy syntax
->=20
->  drivers/mtd/mtdcore.c          | 2 ++
->  drivers/nvmem/apple-efuses.c   | 1 +
->  drivers/nvmem/core.c           | 8 +++++---
->  drivers/nvmem/imx-ocotp-scu.c  | 1 +
->  drivers/nvmem/imx-ocotp.c      | 1 +
->  drivers/nvmem/meson-efuse.c    | 1 +
->  drivers/nvmem/meson-mx-efuse.c | 1 +
->  drivers/nvmem/microchip-otpc.c | 1 +
->  drivers/nvmem/mtk-efuse.c      | 1 +
->  drivers/nvmem/qcom-spmi-sdam.c | 1 +
->  drivers/nvmem/qfprom.c         | 1 +
->  drivers/nvmem/rave-sp-eeprom.c | 1 +
->  drivers/nvmem/rockchip-efuse.c | 1 +
->  drivers/nvmem/sc27xx-efuse.c   | 1 +
->  drivers/nvmem/sec-qfprom.c     | 1 +
->  drivers/nvmem/sprd-efuse.c     | 1 +
->  drivers/nvmem/stm32-romem.c    | 1 +
->  drivers/nvmem/sunplus-ocotp.c  | 1 +
->  drivers/nvmem/sunxi_sid.c      | 1 +
+On Thu, Sep 28, 2023 at 1:30=E2=80=AFAM Benjamin Gaignard
+<benjamin.gaignard@collabora.com> wrote:
+>
+>
+> Le 27/09/2023 =C3=A0 20:56, Jeffrey Kardatzke a =C3=A9crit :
+> > On Wed, Sep 27, 2023 at 8:18=E2=80=AFAM Benjamin Gaignard
+> > <benjamin.gaignard@collabora.com> wrote:
+> >>
+> >> Le 27/09/2023 =C3=A0 15:46, Joakim Bech a =C3=A9crit :
+> >>> On Mon, Sep 25, 2023 at 12:49:50PM +0000, Yong Wu (=E5=90=B4=E5=8B=87=
+) wrote:
+> >>>> On Tue, 2023-09-12 at 11:32 +0200, AngeloGioacchino Del Regno wrote:
+> >>>>> Il 12/09/23 08:17, Yong Wu (=E5=90=B4=E5=8B=87) ha scritto:
+> >>>>>> On Mon, 2023-09-11 at 11:29 +0200, AngeloGioacchino Del Regno
+> >>>>>> wrote:
+> >>>>>>> Il 11/09/23 04:30, Yong Wu ha scritto:
+> >>>>>>>> The TEE probe later than dma-buf heap, and PROBE_DEDER doesn't
+> >>>>>>>> work
+> >>>>>>>> here since this is not a platform driver, therefore initialise
+> >>>>>>>> the
+> >>>>>>>> TEE
+> >>>>>>>> context/session while we allocate the first secure buffer.
+> >>>>>>>>
+> >>>>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> >>>>>>>> ---
+> >>>>>>>>      drivers/dma-buf/heaps/mtk_secure_heap.c | 61
+> >>>>>>>> +++++++++++++++++++++++++
+> >>>>>>>>      1 file changed, 61 insertions(+)
+> >>>>>>>>
+> >>>>>>>> diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>>>> b/drivers/dma-
+> >>>>>>>> buf/heaps/mtk_secure_heap.c
+> >>>>>>>> index bbf1c8dce23e..e3da33a3d083 100644
+> >>>>>>>> --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>>>> +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>>>> @@ -10,6 +10,12 @@
+> >>>>>>>>      #include <linux/err.h>
+> >>>>>>>>      #include <linux/module.h>
+> >>>>>>>>      #include <linux/slab.h>
+> >>>>>>>> +#include <linux/tee_drv.h>
+> >>>>>>>> +#include <linux/uuid.h>
+> >>>>>>>> +
+> >>>>>>>> +#define TZ_TA_MEM_UUID          "4477588a-8476-11e2-ad15-
+> >>>>>>>> e41f1390d676"
+> >>>>>>>> +
+> >>>>>>> Is this UUID the same for all SoCs and all TZ versions?
+> >>>>>> Yes. It is the same for all SoCs and all TZ versions currently.
+> >>>>>>
+> >>>>> That's good news!
+> >>>>>
+> >>>>> Is this UUID used in any userspace component? (example: Android
+> >>>>> HALs?)
+> >>>> No. Userspace never use it. If userspace would like to allocate this
+> >>>> secure buffer, it can achieve through the existing dmabuf IOCTL via
+> >>>> /dev/dma_heap/mtk_svp node.
+> >>>>
+> >>> In general I think as mentioned elsewhere in comments, that there isn=
+'t
+> >>> that much here that seems to be unique for MediaTek in this patch
+> >>> series, so I think it worth to see whether this whole patch set can b=
+e
+> >>> made more generic. Having said that, the UUID is always unique for a
+> >>> certain Trusted Application. So, it's not entirely true saying that t=
+he
+> >>> UUID is the same for all SoCs and all TrustZone versions. It might be
+> >>> true for a family of MediaTek devices and the TEE in use, but not
+> >>> generically.
+> >>>
+> >>> So, if we need to differentiate between different TA implementations,
+> >>> then we need different UUIDs. If it would be possible to make this pa=
+tch
+> >>> set generic, then it sounds like a single UUID would be sufficient, b=
+ut
+> >>> that would imply that all TA's supporting such a generic UUID would b=
+e
+> >>> implemented the same from an API point of view. Which also means that
+> >>> for example Trusted Application function ID's needs to be the same et=
+c.
+> >>> Not impossible to achieve, but still not easy (different TEE follows
+> >>> different specifications) and it's not typically something we've done=
+ in
+> >>> the past.
+> >>>
+> >>> Unfortunately there is no standardized database of TA's describing wh=
+at
+> >>> they implement and support.
+> >>>
+> >>> As an alternative, we could implement a query call in the TEE answeri=
+ng,
+> >>> "What UUID does your TA have that implements secure unmapped heap?".
+> >>> I.e., something that reminds of a lookup table. Then we wouldn't have=
+ to
+> >>> carry this in UAPI, DT or anywhere else.
+> >> Joakim does a TA could offer a generic API and hide the hardware speci=
+fic
+> >> details (like kernel uAPI does for drivers) ?
+> > It would have to go through another layer (like the tee driver) to be
+> > a generic API. The main issue with TAs is that they have UUIDs you
+> > need to connect to and specific codes for each function; so we should
+> > abstract at a layer above where those exist in the dma-heap code.
+> >> Aside that question I wonder what are the needs to perform a 'secure' =
+playback.
+> >> I have in mind 2 requirements:
+> >> - secure memory regions, which means configure the hardware to ensure =
+that only
+> >> dedicated hardware blocks and read or write into it.
+> >> - set hardware blocks in secure modes so they access to secure memory.
+> >> Do you see something else ?
+> > This is more or less what is required, but this is out of scope for
+> > the Linux kernel since it can't be trusted to do these things...this
+> > is all done in firmware or the TEE itself.
+>
+> Yes kernel can't be trusted to do these things but know what we need coul=
+d help
+> to define a API for a generic TA.
+>
+> Just to brainstorm on mailing list:
+> What about a TA API like
+> TA_secure_memory_region() and TA_unsecure_memory_region() with parameters=
+ like:
+> - device identifier (an ID or compatible string maybe)
+> - memory region (physical address, size, offset)
+> - requested access rights (read, write)
+>
+> and on kernel side a IOMMU driver because it basically have all this info=
+rmation already
+> (device attachment, kernel map/unmap).
+>
+> In my mind it sound like a solution to limit the impact (new controls, ne=
+w memory type)
+> inside v4l2. Probably we won't need new heap either.
+> All hardware dedicated implementations could live inside the TA which can=
+ offer a generic
+> API.
 
-=46or sunxi:
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+The main problem with that type of design is the limitations of
+TrustZone memory protection. Usually there is a limit to the number of
+regions you can define for memory protection (and there is on
+Mediatek). So you can't pass an arbitrary memory region and mark it
+protected/unprotected at a given time. You need to establish these
+regions in the firmware instead and then configure those regions for
+protection in the firmware or the TEE.
 
-Best regards,
-Jernej
-
->  drivers/nvmem/uniphier-efuse.c | 1 +
->  drivers/nvmem/zynqmp_nvmem.c   | 1 +
->  drivers/rtc/nvmem.c            | 1 +
->  drivers/w1/slaves/w1_ds250x.c  | 1 +
->  include/linux/nvmem-provider.h | 2 ++
->  24 files changed, 30 insertions(+), 3 deletions(-)
->=20
-> diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
-> index 9bd661be3ae9..fbf60d1364f0 100644
-> --- a/drivers/mtd/mtdcore.c
-> +++ b/drivers/mtd/mtdcore.c
-> @@ -552,6 +552,7 @@ static int mtd_nvmem_add(struct mtd_info *mtd)
->  	config.dev =3D &mtd->dev;
->  	config.name =3D dev_name(&mtd->dev);
->  	config.owner =3D THIS_MODULE;
-> +	config.add_legacy_fixed_of_cells =3D of_device_is_compatible(node, "nvm=
-em-cells");
->  	config.reg_read =3D mtd_nvmem_reg_read;
->  	config.size =3D mtd->size;
->  	config.word_size =3D 1;
-> @@ -898,6 +899,7 @@ static struct nvmem_device *mtd_otp_nvmem_register(st=
-ruct mtd_info *mtd,
->  	config.name =3D compatible;
->  	config.id =3D NVMEM_DEVID_AUTO;
->  	config.owner =3D THIS_MODULE;
-> +	config.add_legacy_fixed_of_cells =3D true;
->  	config.type =3D NVMEM_TYPE_OTP;
->  	config.root_only =3D true;
->  	config.ignore_wp =3D true;
-> diff --git a/drivers/nvmem/apple-efuses.c b/drivers/nvmem/apple-efuses.c
-> index 9b7c87102104..d3d49d22338b 100644
-> --- a/drivers/nvmem/apple-efuses.c
-> +++ b/drivers/nvmem/apple-efuses.c
-> @@ -36,6 +36,7 @@ static int apple_efuses_probe(struct platform_device *p=
-dev)
->  	struct resource *res;
->  	struct nvmem_config config =3D {
->  		.dev =3D &pdev->dev,
-> +		.add_legacy_fixed_of_cells =3D true,
->  		.read_only =3D true,
->  		.reg_read =3D apple_efuses_read,
->  		.stride =3D sizeof(u32),
-> diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-> index eaf6a3fe8ca6..2710943f53c4 100644
-> --- a/drivers/nvmem/core.c
-> +++ b/drivers/nvmem/core.c
-> @@ -997,9 +997,11 @@ struct nvmem_device *nvmem_register(const struct nvm=
-em_config *config)
->  	if (rval)
->  		goto err_remove_cells;
-> =20
-> -	rval =3D nvmem_add_cells_from_legacy_of(nvmem);
-> -	if (rval)
-> -		goto err_remove_cells;
-> +	if (config->add_legacy_fixed_of_cells) {
-> +		rval =3D nvmem_add_cells_from_legacy_of(nvmem);
-> +		if (rval)
-> +			goto err_remove_cells;
-> +	}
-> =20
->  	rval =3D nvmem_add_cells_from_fixed_layout(nvmem);
->  	if (rval)
-> diff --git a/drivers/nvmem/imx-ocotp-scu.c b/drivers/nvmem/imx-ocotp-scu.c
-> index c38d9c1c3f48..517d83e11af2 100644
-> --- a/drivers/nvmem/imx-ocotp-scu.c
-> +++ b/drivers/nvmem/imx-ocotp-scu.c
-> @@ -220,6 +220,7 @@ static int imx_scu_ocotp_write(void *context, unsigne=
-d int offset,
-> =20
->  static struct nvmem_config imx_scu_ocotp_nvmem_config =3D {
->  	.name =3D "imx-scu-ocotp",
-> +	.add_legacy_fixed_of_cells =3D true,
->  	.read_only =3D false,
->  	.word_size =3D 4,
->  	.stride =3D 1,
-> diff --git a/drivers/nvmem/imx-ocotp.c b/drivers/nvmem/imx-ocotp.c
-> index a223d9537f22..434f197e27bf 100644
-> --- a/drivers/nvmem/imx-ocotp.c
-> +++ b/drivers/nvmem/imx-ocotp.c
-> @@ -615,6 +615,7 @@ static int imx_ocotp_probe(struct platform_device *pd=
-ev)
->  		return PTR_ERR(priv->clk);
-> =20
->  	priv->params =3D of_device_get_match_data(&pdev->dev);
-> +	imx_ocotp_nvmem_config.add_legacy_fixed_of_cells =3D true;
->  	imx_ocotp_nvmem_config.size =3D 4 * priv->params->nregs;
->  	imx_ocotp_nvmem_config.dev =3D dev;
->  	imx_ocotp_nvmem_config.priv =3D priv;
-> diff --git a/drivers/nvmem/meson-efuse.c b/drivers/nvmem/meson-efuse.c
-> index d6b533497ce1..b922df99f9bc 100644
-> --- a/drivers/nvmem/meson-efuse.c
-> +++ b/drivers/nvmem/meson-efuse.c
-> @@ -93,6 +93,7 @@ static int meson_efuse_probe(struct platform_device *pd=
-ev)
-> =20
->  	econfig->dev =3D dev;
->  	econfig->name =3D dev_name(dev);
-> +	econfig->add_legacy_fixed_of_cells =3D true;
->  	econfig->stride =3D 1;
->  	econfig->word_size =3D 1;
->  	econfig->reg_read =3D meson_efuse_read;
-> diff --git a/drivers/nvmem/meson-mx-efuse.c b/drivers/nvmem/meson-mx-efus=
-e.c
-> index d6d7aeda31f9..3ff04d5ca8f8 100644
-> --- a/drivers/nvmem/meson-mx-efuse.c
-> +++ b/drivers/nvmem/meson-mx-efuse.c
-> @@ -210,6 +210,7 @@ static int meson_mx_efuse_probe(struct platform_devic=
-e *pdev)
->  	efuse->config.owner =3D THIS_MODULE;
->  	efuse->config.dev =3D &pdev->dev;
->  	efuse->config.priv =3D efuse;
-> +	efuse->config.add_legacy_fixed_of_cells =3D true;
->  	efuse->config.stride =3D drvdata->word_size;
->  	efuse->config.word_size =3D drvdata->word_size;
->  	efuse->config.size =3D SZ_512;
-> diff --git a/drivers/nvmem/microchip-otpc.c b/drivers/nvmem/microchip-otp=
-c.c
-> index 436e0dc4f337..7cf81738a3e0 100644
-> --- a/drivers/nvmem/microchip-otpc.c
-> +++ b/drivers/nvmem/microchip-otpc.c
-> @@ -261,6 +261,7 @@ static int mchp_otpc_probe(struct platform_device *pd=
-ev)
->  		return ret;
-> =20
->  	mchp_nvmem_config.dev =3D otpc->dev;
-> +	mchp_nvmem_config.add_legacy_fixed_of_cells =3D true;
->  	mchp_nvmem_config.size =3D size;
->  	mchp_nvmem_config.priv =3D otpc;
->  	nvmem =3D devm_nvmem_register(&pdev->dev, &mchp_nvmem_config);
-> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-> index b36cd0dcc8c7..87c94686cfd2 100644
-> --- a/drivers/nvmem/mtk-efuse.c
-> +++ b/drivers/nvmem/mtk-efuse.c
-> @@ -83,6 +83,7 @@ static int mtk_efuse_probe(struct platform_device *pdev)
->  		return PTR_ERR(priv->base);
-> =20
->  	pdata =3D device_get_match_data(dev);
-> +	econfig.add_legacy_fixed_of_cells =3D true;
->  	econfig.stride =3D 1;
->  	econfig.word_size =3D 1;
->  	econfig.reg_read =3D mtk_reg_read;
-> diff --git a/drivers/nvmem/qcom-spmi-sdam.c b/drivers/nvmem/qcom-spmi-sda=
-m.c
-> index 70f2d4f2efbf..9aa8f42faa4c 100644
-> --- a/drivers/nvmem/qcom-spmi-sdam.c
-> +++ b/drivers/nvmem/qcom-spmi-sdam.c
-> @@ -142,6 +142,7 @@ static int sdam_probe(struct platform_device *pdev)
->  	sdam->sdam_config.name =3D "spmi_sdam";
->  	sdam->sdam_config.id =3D NVMEM_DEVID_AUTO;
->  	sdam->sdam_config.owner =3D THIS_MODULE;
-> +	sdam->sdam_config.add_legacy_fixed_of_cells =3D true;
->  	sdam->sdam_config.stride =3D 1;
->  	sdam->sdam_config.word_size =3D 1;
->  	sdam->sdam_config.reg_read =3D sdam_read;
-> diff --git a/drivers/nvmem/qfprom.c b/drivers/nvmem/qfprom.c
-> index 525be03b7bba..116a39e804c7 100644
-> --- a/drivers/nvmem/qfprom.c
-> +++ b/drivers/nvmem/qfprom.c
-> @@ -357,6 +357,7 @@ static int qfprom_probe(struct platform_device *pdev)
->  {
->  	struct nvmem_config econfig =3D {
->  		.name =3D "qfprom",
-> +		.add_legacy_fixed_of_cells =3D true,
->  		.stride =3D 1,
->  		.word_size =3D 1,
->  		.id =3D NVMEM_DEVID_AUTO,
-> diff --git a/drivers/nvmem/rave-sp-eeprom.c b/drivers/nvmem/rave-sp-eepro=
-m.c
-> index df6a1c594b78..9ecf3873cbb7 100644
-> --- a/drivers/nvmem/rave-sp-eeprom.c
-> +++ b/drivers/nvmem/rave-sp-eeprom.c
-> @@ -328,6 +328,7 @@ static int rave_sp_eeprom_probe(struct platform_devic=
-e *pdev)
->  	of_property_read_string(np, "zii,eeprom-name", &config.name);
->  	config.priv		=3D eeprom;
->  	config.dev		=3D dev;
-> +	config.add_legacy_fixed_of_cells	=3D true;
->  	config.size		=3D size;
->  	config.reg_read		=3D rave_sp_eeprom_reg_read;
->  	config.reg_write	=3D rave_sp_eeprom_reg_write;
-> diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efus=
-e.c
-> index 4004c5bece42..2b40978ddb18 100644
-> --- a/drivers/nvmem/rockchip-efuse.c
-> +++ b/drivers/nvmem/rockchip-efuse.c
-> @@ -205,6 +205,7 @@ static int rockchip_rk3399_efuse_read(void *context, =
-unsigned int offset,
-> =20
->  static struct nvmem_config econfig =3D {
->  	.name =3D "rockchip-efuse",
-> +	.add_legacy_fixed_of_cells =3D true,
->  	.stride =3D 1,
->  	.word_size =3D 1,
->  	.read_only =3D true,
-> diff --git a/drivers/nvmem/sc27xx-efuse.c b/drivers/nvmem/sc27xx-efuse.c
-> index 2210da40dfbd..bff27011f4ff 100644
-> --- a/drivers/nvmem/sc27xx-efuse.c
-> +++ b/drivers/nvmem/sc27xx-efuse.c
-> @@ -247,6 +247,7 @@ static int sc27xx_efuse_probe(struct platform_device =
-*pdev)
->  	econfig.reg_read =3D sc27xx_efuse_read;
->  	econfig.priv =3D efuse;
->  	econfig.dev =3D &pdev->dev;
-> +	econfig.add_legacy_fixed_of_cells =3D true;
->  	nvmem =3D devm_nvmem_register(&pdev->dev, &econfig);
->  	if (IS_ERR(nvmem)) {
->  		dev_err(&pdev->dev, "failed to register nvmem config\n");
-> diff --git a/drivers/nvmem/sec-qfprom.c b/drivers/nvmem/sec-qfprom.c
-> index e48c2dc0c44b..19799b3fe00a 100644
-> --- a/drivers/nvmem/sec-qfprom.c
-> +++ b/drivers/nvmem/sec-qfprom.c
-> @@ -47,6 +47,7 @@ static int sec_qfprom_probe(struct platform_device *pde=
-v)
->  {
->  	struct nvmem_config econfig =3D {
->  		.name =3D "sec-qfprom",
-> +		.add_legacy_fixed_of_cells =3D true,
->  		.stride =3D 1,
->  		.word_size =3D 1,
->  		.id =3D NVMEM_DEVID_AUTO,
-> diff --git a/drivers/nvmem/sprd-efuse.c b/drivers/nvmem/sprd-efuse.c
-> index 7e6e31db4baa..bb3105f3291f 100644
-> --- a/drivers/nvmem/sprd-efuse.c
-> +++ b/drivers/nvmem/sprd-efuse.c
-> @@ -408,6 +408,7 @@ static int sprd_efuse_probe(struct platform_device *p=
-dev)
->  	econfig.read_only =3D false;
->  	econfig.name =3D "sprd-efuse";
->  	econfig.size =3D efuse->data->blk_nums * SPRD_EFUSE_BLOCK_WIDTH;
-> +	econfig.add_legacy_fixed_of_cells =3D true;
->  	econfig.reg_read =3D sprd_efuse_read;
->  	econfig.reg_write =3D sprd_efuse_write;
->  	econfig.priv =3D efuse;
-> diff --git a/drivers/nvmem/stm32-romem.c b/drivers/nvmem/stm32-romem.c
-> index 0f84044bd1ad..1541c20709d2 100644
-> --- a/drivers/nvmem/stm32-romem.c
-> +++ b/drivers/nvmem/stm32-romem.c
-> @@ -207,6 +207,7 @@ static int stm32_romem_probe(struct platform_device *=
-pdev)
->  	priv->cfg.priv =3D priv;
->  	priv->cfg.owner =3D THIS_MODULE;
->  	priv->cfg.type =3D NVMEM_TYPE_OTP;
-> +	priv->cfg.add_legacy_fixed_of_cells =3D true;
-> =20
->  	priv->lower =3D 0;
-> =20
-> diff --git a/drivers/nvmem/sunplus-ocotp.c b/drivers/nvmem/sunplus-ocotp.c
-> index f3a18aa0a6c7..38f5d9df39cd 100644
-> --- a/drivers/nvmem/sunplus-ocotp.c
-> +++ b/drivers/nvmem/sunplus-ocotp.c
-> @@ -145,6 +145,7 @@ static int sp_ocotp_read(void *priv, unsigned int off=
-set, void *value, size_t by
-> =20
->  static struct nvmem_config sp_ocotp_nvmem_config =3D {
->  	.name =3D "sp-ocotp",
-> +	.add_legacy_fixed_of_cells =3D true,
->  	.read_only =3D true,
->  	.word_size =3D 1,
->  	.size =3D QAC628_OTP_SIZE,
-> diff --git a/drivers/nvmem/sunxi_sid.c b/drivers/nvmem/sunxi_sid.c
-> index 5d364d85347f..ba14a76208ab 100644
-> --- a/drivers/nvmem/sunxi_sid.c
-> +++ b/drivers/nvmem/sunxi_sid.c
-> @@ -153,6 +153,7 @@ static int sunxi_sid_probe(struct platform_device *pd=
-ev)
->  	nvmem_cfg->dev =3D dev;
->  	nvmem_cfg->name =3D "sunxi-sid";
->  	nvmem_cfg->type =3D NVMEM_TYPE_OTP;
-> +	nvmem_cfg->add_legacy_fixed_of_cells =3D true;
->  	nvmem_cfg->read_only =3D true;
->  	nvmem_cfg->size =3D cfg->size;
->  	nvmem_cfg->word_size =3D 1;
-> diff --git a/drivers/nvmem/uniphier-efuse.c b/drivers/nvmem/uniphier-efus=
-e.c
-> index 0a1dbb80537e..6ad3295d3195 100644
-> --- a/drivers/nvmem/uniphier-efuse.c
-> +++ b/drivers/nvmem/uniphier-efuse.c
-> @@ -52,6 +52,7 @@ static int uniphier_efuse_probe(struct platform_device =
-*pdev)
->  	econfig.size =3D resource_size(res);
->  	econfig.priv =3D priv;
->  	econfig.dev =3D dev;
-> +	econfig.add_legacy_fixed_of_cells =3D true;
->  	nvmem =3D devm_nvmem_register(dev, &econfig);
-> =20
->  	return PTR_ERR_OR_ZERO(nvmem);
-> diff --git a/drivers/nvmem/zynqmp_nvmem.c b/drivers/nvmem/zynqmp_nvmem.c
-> index f49bb9a26d05..7f15aa89a9d0 100644
-> --- a/drivers/nvmem/zynqmp_nvmem.c
-> +++ b/drivers/nvmem/zynqmp_nvmem.c
-> @@ -58,6 +58,7 @@ static int zynqmp_nvmem_probe(struct platform_device *p=
-dev)
-> =20
->  	priv->dev =3D dev;
->  	econfig.dev =3D dev;
-> +	econfig.add_legacy_fixed_of_cells =3D true;
->  	econfig.reg_read =3D zynqmp_nvmem_read;
->  	econfig.priv =3D priv;
-> =20
-> diff --git a/drivers/rtc/nvmem.c b/drivers/rtc/nvmem.c
-> index 07ede21cee34..37df7e80525b 100644
-> --- a/drivers/rtc/nvmem.c
-> +++ b/drivers/rtc/nvmem.c
-> @@ -21,6 +21,7 @@ int devm_rtc_nvmem_register(struct rtc_device *rtc,
-> =20
->  	nvmem_config->dev =3D dev;
->  	nvmem_config->owner =3D rtc->owner;
-> +	nvmem_config->add_legacy_fixed_of_cells =3D true;
->  	nvmem =3D devm_nvmem_register(dev, nvmem_config);
->  	if (IS_ERR(nvmem))
->  		dev_err(dev, "failed to register nvmem device for RTC\n");
-> diff --git a/drivers/w1/slaves/w1_ds250x.c b/drivers/w1/slaves/w1_ds250x.c
-> index 7592c7050d1d..cb426f7dd23d 100644
-> --- a/drivers/w1/slaves/w1_ds250x.c
-> +++ b/drivers/w1/slaves/w1_ds250x.c
-> @@ -168,6 +168,7 @@ static int w1_eprom_add_slave(struct w1_slave *sl)
->  	struct nvmem_device *nvmem;
->  	struct nvmem_config nvmem_cfg =3D {
->  		.dev =3D &sl->dev,
-> +		.add_legacy_fixed_of_cells =3D true,
->  		.reg_read =3D w1_nvmem_read,
->  		.type =3D NVMEM_TYPE_OTP,
->  		.read_only =3D true,
-> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provide=
-r.h
-> index dae26295e6be..1b81adebdb8b 100644
-> --- a/include/linux/nvmem-provider.h
-> +++ b/include/linux/nvmem-provider.h
-> @@ -82,6 +82,7 @@ struct nvmem_cell_info {
->   * @owner:	Pointer to exporter module. Used for refcounting.
->   * @cells:	Optional array of pre-defined NVMEM cells.
->   * @ncells:	Number of elements in cells.
-> + * @add_legacy_fixed_of_cells:	Read fixed NVMEM cells from old OF syntax.
->   * @keepout:	Optional array of keepout ranges (sorted ascending by start=
-).
->   * @nkeepout:	Number of elements in the keepout array.
->   * @type:	Type of the nvmem storage
-> @@ -112,6 +113,7 @@ struct nvmem_config {
->  	struct module		*owner;
->  	const struct nvmem_cell_info	*cells;
->  	int			ncells;
-> +	bool			add_legacy_fixed_of_cells;
->  	const struct nvmem_keepout *keepout;
->  	unsigned int		nkeepout;
->  	enum nvmem_type		type;
->=20
-
-
-
-
+>
+> >> Regards,
+> >> Benjamin
+> >>
 
