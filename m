@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95F8BCE7B0E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 08:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE5C3CE7B0E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 08:57:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7qcgxDDgTxmmlWPjM/0+c7XReaFHyX/zuBcA4QvtDQY=; b=mKF6U3CtNr9sHw1IoowMll62Sr
-	KA+xyCjEEJBydj+Qaqca3NYUO1VD+PDS6K5z1X3LOIRYXFwTfIoeV3966xgzUigR2nWUBo+Mu9jVr
-	Kv9lZYjWNQpk0ftxFUJp5XRWsyhCqCqHoDXqs7ASecZ4D347Mdics8ks7+VRIVNSuCiRxQCfvg7n/
-	BXTU7Zt8c218HLBeA3TGn0D07sRhPO/xv4yzkz30ADLU/3/0KGY/AA5V5dDwnAgtBJgbrlErTOaeQ
-	VXYvY47rveIZU3YzN2chQuovXSfUtDphdd0occ5oBHLL4v34rYXWZvVfxeUXAaYMiI7p9Fq1h1+uh
-	OBjCNn6g==;
+	bh=qgeyQ9XqFkXYBeBValgSP4KCftxD8NcYA2elGZ0g2+A=; b=m3/SOZzUl43qch+hWhMqkcrhxN
+	+k53mMG2RPNJhjkJdJMZ3t/bDM8h19Q9YPyWJbbCC7q9dB9241rTvhbiQBbRx5NBBiiTDEYLYrysi
+	75hK8XxylV1sc9ClHiJ9LCvnZDXR3Y38bLlCMvDTitKkvDRK3kksBo3IDDy8C3/oDPsXpVFv/9UxE
+	3bCkOi5TdbKcBiBbDBBu3mgEI4iLyaTANvWiCC8KS+1J/9dlBHVgGkmLcJhCT9gCOhWM0saD15LgF
+	JFMO/JvGOvITRyKZbpYqabpnni9pU8HmxJhjdksiTxIoekcTzXP4ynM14bi+mKH7okG2fwj4WpPfW
+	dEXLTT5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlmpl-002g8j-0h;
-	Thu, 28 Sep 2023 08:57:21 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1qlmpv-002gEW-0V;
+	Thu, 28 Sep 2023 08:57:31 +0000
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlmos-002fdY-20
+	id 1qlmot-002ffM-15
 	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Sep 2023 08:56:28 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-690d8c05784so10080404b3a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Sep 2023 01:56:23 -0700 (PDT)
+	Thu, 28 Sep 2023 08:56:29 +0000
+Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-77428e40f71so597785285a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Sep 2023 01:56:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1695891382; x=1696496182; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1695891385; x=1696496185; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7qcgxDDgTxmmlWPjM/0+c7XReaFHyX/zuBcA4QvtDQY=;
-        b=FHk9OhCKzKVzR1t4SwK2/avpA/ieicShofjly+NJWTKpMx3rTKFHwbrZDlo9+xuTn6
-         TB8KOnPmPkT17ucx7JvUxNRbB9TD/ZR6Wz7A1y5vZOaBtABNeN8pFuSAQCG0B3g7juDw
-         OMDqRXbcQSq3jbZME+ue/f2lKb1M0DMpxIBek=
+        bh=qgeyQ9XqFkXYBeBValgSP4KCftxD8NcYA2elGZ0g2+A=;
+        b=cU7iNHLvHwgq31Ur7C5hv2nFptZono0HCwNc1roPAvHdTKa+Z1XKz2OWvOU8G+GcQk
+         y4oJhfqc0bAhxDraSPjJgqpd7l4DRxyBy4evaWrEBPqFmB/KHHPHns3MZY3qI5vGR4xZ
+         j9bQ8e4dLwHgbVFWFn6nAG80pzLm7KFwQw2a8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695891382; x=1696496182;
+        d=1e100.net; s=20230601; t=1695891385; x=1696496185;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7qcgxDDgTxmmlWPjM/0+c7XReaFHyX/zuBcA4QvtDQY=;
-        b=CmhEi8m4eDC9vIiOJqGcr9mHeY0L2nV7xtY/MuUnrhnJCB494HBy9u9RM7jJDrg8eW
-         REPErpOgBVqf2QxflVnWj2LNu8mjohzPHhoUAAeUeWG9HCMQaQzUd+HB9Y8VLXNTWrr/
-         9m6P2uuh1uKT+cQiP1cnQVoH+wIBDBfuYS9txww8TbJUHdn72IOaf4Rt6w0pSLtRqGai
-         0mThyecr81hbBTYsOv9ufokCABOcU8MbvfjKIPtTJgM7wV8xInFGLohdmSYMp8nRmGxb
-         HQVZdG2qDdY9SkKToXSIdS26FQXGaaEING7xa5qTaSZNOxvPkBhUUdTDBF3XFOfB4M1I
-         3HRA==
-X-Gm-Message-State: AOJu0YxG1oqcn2fs/a1zxN+fF05bajmU4uj/Gn9V4t43vgS1j+ptTEv8
-	1LJkYX5qGYLvdQv6uqKAUrlz4vymTTmhqLtsGss=
-X-Google-Smtp-Source: AGHT+IEbC1DfcQTzvr/VDegJYIwKsqykMBRcPoCKDGRSMbMMOGpy+69L6M58eH14QgMEqyDtdQtl2Q==
-X-Received: by 2002:a05:6a00:3a1e:b0:68e:417c:ed5c with SMTP id fj30-20020a056a003a1e00b0068e417ced5cmr519182pfb.32.1695891382577;
-        Thu, 28 Sep 2023 01:56:22 -0700 (PDT)
+        bh=qgeyQ9XqFkXYBeBValgSP4KCftxD8NcYA2elGZ0g2+A=;
+        b=KNFc6khhkhILVp4jdpbnfOLPxcmznQElbZ3xfpRg+SiiJfhRSm1Pb/8H2mtsJhEDGa
+         bko0ZBcXSXH7WBh+Udb/1Mj1mAaC4g3nGbQwmMQsKj6TxN1zawHtZPLNFmLDDXEX3nbm
+         enbsEBnPIj2zAfJZ/0vcoAg1HXnJJb6BzzR/Iq5nEGnOiKAUzx/SC7KegGodZLEZXt5T
+         yFAy8yWhGIIPaG+5ZqJzASDkNFsiShtJ7TWargL3YrbwyUCjTf74IIvUWshk2K3iGKvK
+         mKX2g98LoJDm8d7kwIfVgppRtK/ZTw9GvhJHuZUfFBrLCXFxWiC0tyGWkuDZXuc6Gdk6
+         sgvg==
+X-Gm-Message-State: AOJu0YwyZ9qJYMo9CwtK30+t+Wy5E4zk5tVOna/IMNDrA9qrUy0sfi+b
+	azkWEdZr7jVR8OQcJZYraagduQ==
+X-Google-Smtp-Source: AGHT+IFqaLEZNfjA5pU7uen9wRPCrpJO5khkqsKxmyJDY4pM7Sk8LJdyfVsz0G2Qn3psaxuRQUKg3Q==
+X-Received: by 2002:a05:620a:2191:b0:76e:ec77:10a4 with SMTP id g17-20020a05620a219100b0076eec7710a4mr561459qka.77.1695891385357;
+        Thu, 28 Sep 2023 01:56:25 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:6747:c12a:dbfd:2cc7])
-        by smtp.gmail.com with ESMTPSA id y7-20020aa78047000000b006879493aca0sm1754016pfm.26.2023.09.28.01.56.20
+        by smtp.gmail.com with ESMTPSA id y7-20020aa78047000000b006879493aca0sm1754016pfm.26.2023.09.28.01.56.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Sep 2023 01:56:22 -0700 (PDT)
+        Thu, 28 Sep 2023 01:56:24 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -73,17 +73,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 11/12] regulator: mt6358: Add supply names for MT6366 regulators
-Date: Thu, 28 Sep 2023 16:55:34 +0800
-Message-ID: <20230928085537.3246669-12-wenst@chromium.org>
+Subject: [PATCH v4 12/12] arm64: dts: mediatek: mt8183-kukui: Add PMIC regulator supplies
+Date: Thu, 28 Sep 2023 16:55:35 +0800
+Message-ID: <20230928085537.3246669-13-wenst@chromium.org>
 X-Mailer: git-send-email 2.42.0.582.g8ccd20d70d-goog
 In-Reply-To: <20230928085537.3246669-1-wenst@chromium.org>
 References: <20230928085537.3246669-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230928_015626_665840_31AE6065 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20230928_015627_510289_89E7DFD3 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,161 +98,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DT bindings for MT6366 regulator defines the supply names for the
-PMIC.
-
-Add support for them by adding .supply_name field settings for each
-regulator. The buck regulators each have their own supply whose name
-can be derived from the regulator name. The LDOs have shared supplies.
+The PMIC regulator node is missing regulator supplies. Now that the
+binding supports them, add all the power rail supplies. Most of them
+are fed from a system-wide semi-regulated power rail. A couple LDOs
+are fed from the PMIC's own buck regulator outputs.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/regulator/mt6358-regulator.c | 77 +++++++++++++---------------
- 1 file changed, 37 insertions(+), 40 deletions(-)
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 28 +++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
-index 5e23b2aa3486..e4745f616cea 100644
---- a/drivers/regulator/mt6358-regulator.c
-+++ b/drivers/regulator/mt6358-regulator.c
-@@ -140,6 +140,7 @@ struct mt6358_regulator_info {
- [MT6366_ID_##vreg] = {	\
- 	.desc = {	\
- 		.name = #vreg,	\
-+		.supply_name = "vsys-" match,		\
- 		.of_match = of_match_ptr(match),	\
- 		.ops = &mt6358_buck_ops,	\
- 		.type = REGULATOR_VOLTAGE,	\
-@@ -162,10 +163,11 @@ struct mt6358_regulator_info {
- 	.modeset_mask = BIT(_modeset_shift),	\
- }
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index ab2eb4500643..bf7de35ffcbc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -103,6 +103,14 @@ pp3300_alw: regulator6 {
+ 		regulator-max-microvolt = <3300000>;
+ 	};
  
--#define MT6366_LDO(match, vreg, volt_ranges, enreg, enbit, vosel, vosel_mask) \
-+#define MT6366_LDO(match, vreg, volt_ranges, supply, enreg, enbit, vosel, vosel_mask) \
- [MT6366_ID_##vreg] = {	\
- 	.desc = {	\
- 		.name = #vreg,	\
-+		.supply_name = supply,		\
- 		.of_match = of_match_ptr(match),	\
- 		.ops = &mt6358_volt_table_ops,	\
- 		.type = REGULATOR_VOLTAGE,	\
-@@ -186,12 +188,12 @@ struct mt6358_regulator_info {
- 	.qi = BIT(15),	\
- }
- 
--#define MT6366_LDO1(match, vreg, min, max, step,	\
--	_da_vsel_reg, _da_vsel_mask,	\
--	vosel, vosel_mask)	\
-+#define MT6366_LDO1(match, vreg, supply, min, max, step,	\
-+		    _da_vsel_reg, _da_vsel_mask, vosel, vosel_mask)	\
- [MT6366_ID_##vreg] = {	\
- 	.desc = {	\
- 		.name = #vreg,	\
-+		.supply_name = supply,		\
- 		.of_match = of_match_ptr(match),	\
- 		.ops = &mt6358_volt_range_ops,	\
- 		.type = REGULATOR_VOLTAGE,	\
-@@ -211,11 +213,11 @@ struct mt6358_regulator_info {
- 	.qi = BIT(0),	\
- }
- 
--#define MT6366_REG_FIXED(match, vreg,	\
--	enreg, enbit, volt)	\
-+#define MT6366_REG_FIXED(match, vreg, supply, enreg, enbit, volt)	\
- [MT6366_ID_##vreg] = {	\
- 	.desc = {	\
- 		.name = #vreg,	\
-+		.supply_name = supply,		\
- 		.of_match = of_match_ptr(match),	\
- 		.ops = &mt6358_volt_fixed_ops,	\
- 		.type = REGULATOR_VOLTAGE,	\
-@@ -590,57 +592,52 @@ static const struct mt6358_regulator_info mt6366_regulators[] = {
- 		    0x7f, MT6358_BUCK_VMODEM_DBG0, 0x7f, MT6358_VMODEM_ANA_CON0, 8),
- 	MT6366_BUCK("vs1", VS1, 1000000, 2587500, 12500,
- 		    0x7f, MT6358_BUCK_VS1_DBG0, 0x7f, MT6358_VS1_ANA_CON0, 8),
--	MT6366_REG_FIXED("vrf12", VRF12,
--			 MT6358_LDO_VRF12_CON0, 0, 1200000),
--	MT6366_REG_FIXED("vio18", VIO18,
--			 MT6358_LDO_VIO18_CON0, 0, 1800000),
--	MT6366_REG_FIXED("vfe28", VFE28, MT6358_LDO_VFE28_CON0, 0, 2800000),
--	MT6366_REG_FIXED("vcn28", VCN28, MT6358_LDO_VCN28_CON0, 0, 2800000),
--	MT6366_REG_FIXED("vxo22", VXO22, MT6358_LDO_VXO22_CON0, 0, 2200000),
--	MT6366_REG_FIXED("vaux18", VAUX18,
--			 MT6358_LDO_VAUX18_CON0, 0, 1800000),
--	MT6366_REG_FIXED("vbif28", VBIF28,
--			 MT6358_LDO_VBIF28_CON0, 0, 2800000),
--	MT6366_REG_FIXED("vio28", VIO28, MT6358_LDO_VIO28_CON0, 0, 2800000),
--	MT6366_REG_FIXED("va12", VA12, MT6358_LDO_VA12_CON0, 0, 1200000),
--	MT6366_REG_FIXED("vrf18", VRF18, MT6358_LDO_VRF18_CON0, 0, 1800000),
--	MT6366_REG_FIXED("vaud28", VAUD28,
--			 MT6358_LDO_VAUD28_CON0, 0, 2800000),
--	MT6366_LDO("vdram2", VDRAM2, vdram2,
-+	MT6366_REG_FIXED("vrf12", VRF12, "vs2-ldo2", MT6358_LDO_VRF12_CON0, 0, 1200000),
-+	MT6366_REG_FIXED("vio18", VIO18, "vs1-ldo1", MT6358_LDO_VIO18_CON0, 0, 1800000),
-+	MT6366_REG_FIXED("vfe28", VFE28, "vsys-ldo1", MT6358_LDO_VFE28_CON0, 0, 2800000),
-+	MT6366_REG_FIXED("vcn28", VCN28, "vsys-ldo1", MT6358_LDO_VCN28_CON0, 0, 2800000),
-+	MT6366_REG_FIXED("vxo22", VXO22, "vsys-ldo1", MT6358_LDO_VXO22_CON0, 0, 2200000),
-+	MT6366_REG_FIXED("vaux18", VAUX18, "vsys-ldo1", MT6358_LDO_VAUX18_CON0, 0, 1800000),
-+	MT6366_REG_FIXED("vbif28", VBIF28, "vsys-ldo1", MT6358_LDO_VBIF28_CON0, 0, 2800000),
-+	MT6366_REG_FIXED("vio28", VIO28, "vsys-ldo2", MT6358_LDO_VIO28_CON0, 0, 2800000),
-+	MT6366_REG_FIXED("va12", VA12, "vs2-ldo2", MT6358_LDO_VA12_CON0, 0, 1200000),
-+	MT6366_REG_FIXED("vrf18", VRF18, "vs1-ldo1", MT6358_LDO_VRF18_CON0, 0, 1800000),
-+	MT6366_REG_FIXED("vaud28", VAUD28, "vsys-ldo1", MT6358_LDO_VAUD28_CON0, 0, 2800000),
-+	MT6366_LDO("vdram2", VDRAM2, vdram2, "vs2-ldo1",
- 		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0x10),
--	MT6366_LDO("vsim1", VSIM1, vsim,
-+	MT6366_LDO("vsim1", VSIM1, vsim, "vsys-ldo1",
- 		   MT6358_LDO_VSIM1_CON0, 0, MT6358_VSIM1_ANA_CON0, 0xf00),
--	MT6366_LDO("vibr", VIBR, vibr,
-+	MT6366_LDO("vibr", VIBR, vibr, "vsys-ldo3",
- 		   MT6358_LDO_VIBR_CON0, 0, MT6358_VIBR_ANA_CON0, 0xf00),
--	MT6366_LDO("vusb", VUSB, vusb,
-+	MT6366_LDO("vusb", VUSB, vusb, "vsys-ldo1",
- 		   MT6358_LDO_VUSB_CON0_0, 0, MT6358_VUSB_ANA_CON0, 0x700),
--	MT6366_LDO("vefuse", VEFUSE, vefuse,
-+	MT6366_LDO("vefuse", VEFUSE, vefuse, "vs1-ldo1",
- 		   MT6358_LDO_VEFUSE_CON0, 0, MT6358_VEFUSE_ANA_CON0, 0xf00),
--	MT6366_LDO("vmch", VMCH, vmch_vemc,
-+	MT6366_LDO("vmch", VMCH, vmch_vemc, "vsys-ldo2",
- 		   MT6358_LDO_VMCH_CON0, 0, MT6358_VMCH_ANA_CON0, 0x700),
--	MT6366_LDO("vemc", VEMC, vmch_vemc,
-+	MT6366_LDO("vemc", VEMC, vmch_vemc, "vsys-ldo3",
- 		   MT6358_LDO_VEMC_CON0, 0, MT6358_VEMC_ANA_CON0, 0x700),
--	MT6366_LDO("vcn33", VCN33, vcn33,
-+	MT6366_LDO("vcn33", VCN33, vcn33, "vsys-ldo3",
- 		   MT6358_LDO_VCN33_CON0_0, 0, MT6358_VCN33_ANA_CON0, 0x300),
--	MT6366_LDO("vmc", VMC, vmc,
-+	MT6366_LDO("vmc", VMC, vmc, "vsys-ldo2",
- 		   MT6358_LDO_VMC_CON0, 0, MT6358_VMC_ANA_CON0, 0xf00),
--	MT6366_LDO("vsim2", VSIM2, vsim,
-+	MT6366_LDO("vsim2", VSIM2, vsim, "vsys-ldo2",
- 		   MT6358_LDO_VSIM2_CON0, 0, MT6358_VSIM2_ANA_CON0, 0xf00),
--	MT6366_LDO("vcn18", VCN18, mt6366_vcn18_vm18,
-+	MT6366_LDO("vcn18", VCN18, mt6366_vcn18_vm18, "vs1-ldo1",
- 		   MT6358_LDO_VCN18_CON0, 0, MT6358_VCN18_ANA_CON0, 0xf00),
--	MT6366_LDO("vm18", VM18, mt6366_vcn18_vm18,
-+	MT6366_LDO("vm18", VM18, mt6366_vcn18_vm18, "vs1-ldo1",
- 		   MT6358_LDO_VM18_CON0, 0, MT6358_VM18_ANA_CON0, 0xf00),
--	MT6366_LDO("vmddr", VMDDR, mt6366_vmddr,
-+	MT6366_LDO("vmddr", VMDDR, mt6366_vmddr, "vs2-ldo1",
- 		   MT6358_LDO_VMDDR_CON0, 0, MT6358_VMDDR_ANA_CON0, 0xf00),
--	MT6366_LDO1("vsram-proc11", VSRAM_PROC11, 500000, 1293750, 6250,
-+	MT6366_LDO1("vsram-proc11", VSRAM_PROC11, "vs2-ldo3", 500000, 1293750, 6250,
- 		    MT6358_LDO_VSRAM_PROC11_DBG0, 0x7f00, MT6358_LDO_VSRAM_CON0, 0x7f),
--	MT6366_LDO1("vsram-others", VSRAM_OTHERS, 500000, 1293750, 6250,
-+	MT6366_LDO1("vsram-others", VSRAM_OTHERS, "vs2-ldo3", 500000, 1293750, 6250,
- 		    MT6358_LDO_VSRAM_OTHERS_DBG0, 0x7f00, MT6358_LDO_VSRAM_CON2, 0x7f),
--	MT6366_LDO1("vsram-gpu", VSRAM_GPU, 500000, 1293750, 6250,
-+	MT6366_LDO1("vsram-gpu", VSRAM_GPU, "vs2-ldo3", 500000, 1293750, 6250,
- 		    MT6358_LDO_VSRAM_GPU_DBG0, 0x7f00, MT6358_LDO_VSRAM_CON3, 0x7f),
--	MT6366_LDO1("vsram-proc12", VSRAM_PROC12, 500000, 1293750, 6250,
-+	MT6366_LDO1("vsram-proc12", VSRAM_PROC12, "vs2-ldo3", 500000, 1293750, 6250,
- 		    MT6358_LDO_VSRAM_PROC12_DBG0, 0x7f00, MT6358_LDO_VSRAM_CON1, 0x7f),
--	MT6366_LDO1("vsram-core", VSRAM_CORE, 500000, 1293750, 6250,
-+	MT6366_LDO1("vsram-core", VSRAM_CORE, "vs2-ldo3", 500000, 1293750, 6250,
- 		    MT6358_LDO_VSRAM_CORE_DBG0, 0x7f00, MT6358_LDO_VSRAM_CON5, 0x7f),
++	/* system wide semi-regulated power rail from charger */
++	reg_vsys: regulator-vsys {
++		compatible = "regulator-fixed";
++		regulator-name = "vsys";
++		regulator-always-on;
++		regulator-boot-on;
++	};
++
+ 	reserved_memory: reserved-memory {
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+@@ -404,6 +412,26 @@ &mt6358codec {
+ 	Avdd-supply = <&mt6358_vaud28_reg>;
  };
  
++&mt6358regulator {
++	vsys-ldo1-supply = <&reg_vsys>;
++	vsys-ldo2-supply = <&reg_vsys>;
++	vsys-ldo3-supply = <&reg_vsys>;
++	vsys-vcore-supply = <&reg_vsys>;
++	vsys-vdram1-supply = <&reg_vsys>;
++	vsys-vgpu-supply = <&reg_vsys>;
++	vsys-vmodem-supply = <&reg_vsys>;
++	vsys-vpa-supply = <&reg_vsys>;
++	vsys-vproc11-supply = <&reg_vsys>;
++	vsys-vproc12-supply = <&reg_vsys>;
++	vsys-vs1-supply = <&reg_vsys>;
++	vsys-vs2-supply = <&reg_vsys>;
++	vs1-ldo1-supply = <&mt6358_vs1_reg>;
++	vs2-ldo1-supply = <&mt6358_vdram1_reg>;
++	vs2-ldo2-supply = <&mt6358_vs2_reg>;
++	vs2-ldo3-supply = <&mt6358_vs2_reg>;
++	vs2-ldo4-supply = <&mt6358_vs2_reg>;
++};
++
+ &mt6358_vgpu_reg {
+ 	regulator-min-microvolt = <625000>;
+ 	regulator-max-microvolt = <900000>;
 -- 
 2.42.0.582.g8ccd20d70d-goog
 
