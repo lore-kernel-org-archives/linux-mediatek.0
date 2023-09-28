@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90128CE7B08
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 07:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3E89CE7B09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 07:37:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OdEvpR7e634F6Xq7gphI0yR6+BY3xXYw+rzm/HECnb4=; b=cQ8rdlCGn8QF2T
-	8c32SvYYuNwdGPF3DhKi4gsESJihckc7G2f0luVSWx8hLWsR4beuMZ/mfe8Hmejgr/WMJCp1Ej9ox
-	JX5jPBHAT5465dWSXRTMjC7WS8SR8t+PX80HTrabNpmyMk1xaosxuL4Bbo7pPW0m4KomuqdXtXpj3
-	ZLBm5yCVmeyUfG17qa6NDQIHwRnzHMa6F68HrjWqeJrxtIvSeFSsDLzNGOXrGyFLIHsQg34Mf0LzE
-	Ry0C/JOZqzi1URsVlrJX6/VJbbqr+R2TxbjU7iKa57lv4SlkBgyc6M9Iux11p43OawtR/KlgZ6pQ4
-	jSC0/TeqYI9gyFqM2g9g==;
+	List-Owner; bh=tLZwhKDgfdFsd3vZ+zpeV363DbF016coL6R25E3ugY4=; b=m4AZ+8EG+6beaQ
+	Gr/4I3E2sa13dGp+fbuHYhSjcJi4Ig70BmL/g6OvXTeRhGaWcjXjPmQbmaVtLkRX2TpM6TPZPMN+d
+	w2sPziDqQT97UDe4GPubRdDQmIT94pxIr1SfCM7WFn2/MH6oIdkJNknoRnzbJnL0AI97/8vr2i5ov
+	p4CVQUTx/BJELIJ4Hg/Nh2HnZYQXarRjfcLrBtCvzzSoy5CJw9JVZESchnJZYOThpsQUmNmJeWEFw
+	9gego8IdCiYoCfaCT+Bxy4HTzBMsWo1QokKCbD0W2Nmuc1Tm5IT/x6Jl9oGBSkplpp5+HJPYid01X
+	gYZk1siXDmIAz+9h7Nsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qllaT-002XPS-2s;
-	Thu, 28 Sep 2023 07:37:29 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1qllag-002XTZ-23;
+	Thu, 28 Sep 2023 07:37:42 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qllaR-002XOB-0x
+	id 1qllaZ-002XPU-1b
 	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Sep 2023 07:37:28 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-504809e4494so4521060e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Sep 2023 00:37:20 -0700 (PDT)
+	Thu, 28 Sep 2023 07:37:37 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-32336a30d18so4643016f8f.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Sep 2023 00:37:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695886639; x=1696491439; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1695886649; x=1696491449; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=OdEvpR7e634F6Xq7gphI0yR6+BY3xXYw+rzm/HECnb4=;
-        b=GiY9Y74Hl9XruWsYlXfZGTlSH1WZcxNA7qoRwxm16NQXfRJCukuDETO/p8wzhGNxOH
-         iTB7t+12+pfdTj4+p82GrayyIMLo/JH6DqZmrKeb1xoYTexfReF82mBbso017aXi/71+
-         s23MkWIpICG7alOeMocolU6K7aaUv3o4xGf4xnSU8kjz8vJBN/Wgk6Lbl+jZ7fmN2YTT
-         DRMnzZkd91nxFyeeJ7J5F4JlFxPLiOXVpfU71qqh0eQTMY9JU4R5Ndhqt26vhvhKVJv9
-         qvcIiQV6lytftLfaoZrT1JL/KWlVzu12UceJYwZ1eAhE0OAXZtrS2BrZUsRm3tcpWo8D
-         5aGA==
+        bh=tLZwhKDgfdFsd3vZ+zpeV363DbF016coL6R25E3ugY4=;
+        b=F1vKN/p3kkVn3ac9oqSItqqvnJcScu5ZqWggDo0SfQQSVKOcHw1889hXcU1jpVxgxJ
+         B+t8BiFgnpFzofuU7RTFsE7lIrPUwmWaaoTGBGljNC4yUbYp2y5wyaEGeKt2aKM6cEbf
+         pE3q8d17Q9ou5qCJX8R/bkxKCm9Mg4B36j2h79850+SEfLyc5wF0b9lYTvhZVo1R8EUo
+         wSaVQKEaMy+tiN+RgBqsMzLUCkfATULiD8iRqg/V9gfLCr44l8qxDmPCo+verX6QqpXV
+         djKqe66BlJCDbtG2dJJpHt6cW+QoEm1zDRC3eR5V6KjwYLK0UZDRqI0w65A2DVl1kDyX
+         /VBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695886639; x=1696491439;
+        d=1e100.net; s=20230601; t=1695886649; x=1696491449;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OdEvpR7e634F6Xq7gphI0yR6+BY3xXYw+rzm/HECnb4=;
-        b=BbbXRHIQnXV6PLlBgr2EVjGXuyevCWJUjJ9FezpiYh5jonZdqyFPxmgZ6E7YMHeuBH
-         F1WVhvdnCZk8lbJJ7sRMs6jRsXE1uZkjhwUfJE1ljZUsOZrPex5PqvxFgWb3p3I9A+hU
-         dr1eeTcC2te0ZYkTgywanvat06r2egw+Yf4Gom4D+8KD5A4w79arNCoE7x0aAQ7mWnWW
-         U022ApRFP4N0wSxU7G6cJGqzpYACG1x9vftBSlqpq5S4iXkK6hsCGbhLYVV+C4n0yctC
-         3WcCmQkDpM7FoaH9IxllFxii/9hIf4EJTt9pd39JVe662+UbC5u4Khw4yZ7ZEIjZhjGF
-         nFRw==
-X-Gm-Message-State: AOJu0YxaAaId2LBnaYS0JHB35Wa3cZ4hEI8N9WYMWZhm6FOdyJghINGI
-	t2ozb07ICMo3zZxBrcclf6RdsA==
-X-Google-Smtp-Source: AGHT+IEiAv4nqQ0UosPBmy5DqVigj7fS+2PeREuoogljv96EOrQq59RDc/DzJ9LREX0UxZnPslp5hA==
-X-Received: by 2002:a05:6512:1103:b0:4fd:f84f:83c1 with SMTP id l3-20020a056512110300b004fdf84f83c1mr480905lfg.64.1695886639123;
-        Thu, 28 Sep 2023 00:37:19 -0700 (PDT)
+        bh=tLZwhKDgfdFsd3vZ+zpeV363DbF016coL6R25E3ugY4=;
+        b=Fgrx675CBTJ6WHAmfFE23fMvCEb+hiroEFKIzqpW+1Lm6W4Gnv631UzJhf2RxzyOB3
+         16DHz2bZpFmIO+C9rpFZln3ibThpn3yGC2OrwLxKk2qmgXWlWbt72lEeLfzoISsL0Cjb
+         ZkLYYi6YwPZRB0Z2XhcsPQbKT7QQE4Yc70OKT9zazzQ1c26PK1WXZTeVVklGisgVw7vh
+         4HIePKDcATIykX1eh08HrcPMQ3GXPvGGRtX9/ymEzKfqOvU1gdR/S63520L6b7OFbw6U
+         5EFZA1qhINVIy7jqmyLZ0yx3SLnjpwpJoJj2pg/ulYZxl9Y62fLRsdcLYelrKaGw+Ub8
+         Gk2A==
+X-Gm-Message-State: AOJu0Yx0u9PJYdlIM+6Y2fASFcu/LL/JPKvzLYeOs9EyntHKQz7W7Cl4
+	S2py8y6lONP5mOgQiAxWtjEXEw==
+X-Google-Smtp-Source: AGHT+IEykS3sv6+IRCprkWFIYzQut6WfxhajwABJSA3a9n4e2P7oAuta+iEBJdwMvKYwA8NZgiIIoA==
+X-Received: by 2002:a5d:4b43:0:b0:319:8430:f80f with SMTP id w3-20020a5d4b43000000b003198430f80fmr449720wrs.49.1695886649008;
+        Thu, 28 Sep 2023 00:37:29 -0700 (PDT)
 Received: from ?IPV6:2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0? ([2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0])
-        by smtp.googlemail.com with ESMTPSA id s13-20020a5d424d000000b0031f729d883asm18744112wrr.42.2023.09.28.00.37.18
+        by smtp.googlemail.com with ESMTPSA id o11-20020a056000010b00b0031c52e81490sm18876523wrx.72.2023.09.28.00.37.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Sep 2023 00:37:18 -0700 (PDT)
-Message-ID: <5828d18a-6ec3-68cd-b97e-3f4a181dc953@linaro.org>
-Date: Thu, 28 Sep 2023 09:37:17 +0200
+        Thu, 28 Sep 2023 00:37:28 -0700 (PDT)
+Message-ID: <dc0460ff-9b72-d739-cc1b-ae6d3a2bfa82@linaro.org>
+Date: Thu, 28 Sep 2023 09:37:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v3 4/4] thermal/drivers/mediatek/lvts_thermal: add mt7988
- support
+Subject: Re: [PATCH v3 0/4] add LVTS support for mt7988
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Frank Wunderlich <linux@fw-web.de>
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
 References: <20230922055020.6436-1-linux@fw-web.de>
- <20230922055020.6436-5-linux@fw-web.de>
- <ZRTBFJPL3NwWpMSP@pidgin.makrotopia.org>
 From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <ZRTBFJPL3NwWpMSP@pidgin.makrotopia.org>
+In-Reply-To: <20230922055020.6436-1-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230928_003727_335075_65B24A40 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20230928_003735_532622_205DA839 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,22 +89,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/09/2023 01:56, Daniel Golle wrote:
-> On Fri, Sep 22, 2023 at 07:50:20AM +0200, Frank Wunderlich wrote:
->> From: Frank Wunderlich <frank-w@public-files.de>
->>
->> Add Support for Mediatek Filogic 880/MT7988 LVTS.
->>
->> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+On 22/09/2023 07:50, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Tested-by: Daniel Golle <daniel@makrotopia.org>
+> This series makes allows soc specific temperature coefficients
+> and adds support for mt7988 which has a different one.
+> 
+> Frank Wunderlich (4):
+>    dt-bindings: thermal: mediatek: add mt7988 lvts compatible
+>    dt-bindings: thermal: mediatek: Add LVTS thermal sensors for mt7988
+>    thermal/drivers/mediatek/lvts_thermal: make coeff configurable
+>    thermal/drivers/mediatek/lvts_thermal: add mt7988 support
+> 
+>   .../thermal/mediatek,lvts-thermal.yaml        |  1 +
+>   drivers/thermal/mediatek/lvts_thermal.c       | 89 +++++++++++++++----
+>   .../thermal/mediatek,lvts-thermal.h           |  9 ++
+>   3 files changed, 82 insertions(+), 17 deletions(-)
 > 
 
-Thanks for the testing tag
+Applied, thanks
 
 -- 
 <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
