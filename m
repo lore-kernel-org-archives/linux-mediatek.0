@@ -4,73 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B55F6E732E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 15:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FF1E732EC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 16:16:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5hV9RHE2np4Q/chcyiz0z8ahVkd4d/jzh2cotT+E4Ik=; b=XJR8nBZ3UaxaL3iyXPSxMWSDDL
-	S7fKanb07MLy0kvutrR/LLtIEODP7VgkSl4TR9sJJhF/M3xjpPSX/h+mzXdC2bWqbA0spxazfsEH/
-	BkPEIH5Uigi0NO8haT4qfll/JQg5uqx488pU/LAfNZ3LRsegXn9fZZJ73fiQ3PPOhS6dF0RxA5JNm
-	h4jMod89QX1RXgmxhI4Qku2hP+T71NehyBoGlMm2Vm3GUcI7qpTmt8lPSiGA6U6jFvMMW/WLZo8Ve
-	5yV4kovNDM56iwmT5yu5+q4Z5yZJ2aO7qdIhsm3y8jmqz5yggd3HHL9gRSDBMtnHG77JQcSJyy6eX
-	ZNTaVTxA==;
+	bh=7fmEByqp0p6ff/NHlXL9uOPA17tduXyEAm2C9ec0baU=; b=YWdXbTbf144LP6WpX1+op2l849
+	Mo+dVWGV3ZeenaLzWliuG41hlzMukb7mhBiPWFpwv1xq8ZWkQh4H4Z1DyMWELBETeEoWjirGp6z7i
+	OH5n7iYSz30VYypoCteV3oet2FR4cFBPvVCZg+0zBvRhtf0IIZD5zCvXxB2NFKunNKlFSDdCqEL6s
+	bUi2yyBKLHmYJ1jphU3zDS7uoqr8QTlPUQK/Ql/2PJIBPFk06ipRZOkayjEZZzumjxVoIjlyVoHRe
+	nsTAJvQ1d6v51MDQI1RvEwhJbiocEqfIVzplEDk4N88yNGp8YIg+2JaCS8UHxDJSaS1bhNCDqeoBq
+	QIB+7VVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlsnX-005Mzj-0f;
-	Thu, 28 Sep 2023 15:19:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qltgN-005siE-1g;
+	Thu, 28 Sep 2023 16:16:07 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlsnT-005MvH-24;
-	Thu, 28 Sep 2023 15:19:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=5hV9RHE2np4Q/chcyiz0z8ahVkd4d/jzh2cotT+E4Ik=; b=JBXepoFRBRKckRrMLqnelG5jyB
-	iR1XVar5xlG5UqiTkMBAHBGTe1+MCdNP/ZUjQ3wKGsh2FBBtSC7lIxwPbMYljCoyfv0/MQQbmCSxc
-	ZZzCk/Tfoc4NAtENKmajrceMBCdgwPzCWFlSQkwH0ts1yUJurcJSeDeO1wm2C5LfmF3DCihEDSybn
-	gO8vuygiALgyNQgRvTWuCOhMxqM0poVeiq2NFCiM7kA+ptZt2JZ+EfPn4YJ8sxZoR59/0IP67wlKd
-	GbTv7VDYcnz2nLOF1tv+dVuKlefK0NMbDLxskWOoaCUaYeY/5suC5YaxT5MTGKU+J7CWBZ5BpEooQ
-	10bPzCRQ==;
-Received: from j130084.upc-j.chello.nl ([24.132.130.84] helo=noisy.programming.kicks-ass.net)
-	by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlsnM-0057CY-0X;
-	Thu, 28 Sep 2023 15:19:17 +0000
-Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
-	id 46C453002E3; Thu, 28 Sep 2023 17:19:17 +0200 (CEST)
-Date: Thu, 28 Sep 2023 17:19:17 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Kuyo Chang =?utf-8?B?KOW8teW7uuaWhyk=?= <Kuyo.Chang@mediatek.com>
-Cc: "dietmar.eggemann@arm.com" <dietmar.eggemann@arm.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"rostedt@goodmis.org" <rostedt@goodmis.org>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	"vschneid@redhat.com" <vschneid@redhat.com>,
-	"bristot@redhat.com" <bristot@redhat.com>,
-	"juri.lelli@redhat.com" <juri.lelli@redhat.com>,
-	"mingo@redhat.com" <mingo@redhat.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"bsegall@google.com" <bsegall@google.com>,
-	"mgorman@suse.de" <mgorman@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"vincent.guittot@linaro.org" <vincent.guittot@linaro.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 1/1] sched/core: Fix stuck on completion for
- affine_move_task() when stopper disable
-Message-ID: <20230928151917.GB29651@noisy.programming.kicks-ass.net>
-References: <20230927033431.12406-1-kuyo.chang@mediatek.com>
- <20230927080850.GB21824@noisy.programming.kicks-ass.net>
- <b9def8f3d9426bc158b302f4474b6e643b46d206.camel@mediatek.com>
- <20230928151616.GD27245@noisy.programming.kicks-ass.net>
+	id 1qlsgs-005Hoc-2F;
+	Thu, 28 Sep 2023 15:12:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 9DF3DCE220D;
+	Thu, 28 Sep 2023 15:12:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 985B9C433C8;
+	Thu, 28 Sep 2023 15:12:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695913948;
+	bh=Hqro9VXE8P3Msf+mPt73qlFFXuWRyTwJYSf6N/jB9S8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Hkvv3AjwF/FfBT73XOvjTQwBEZPy4TELmLlrWZAlrlcHVwS8LNs1grrP2kQvGs/sw
+	 gJ5Jv9FIoREU7cFRso6OSBO1NQ5aJOLlkYXME2ONDicgTAIl1PEmk0qcfvQ5kcczep
+	 Tptem295Ky7EmOX08ySvAU26pv0SH+rpmH2GiwFV/dZczgzkWZpn6GWVpVCURFQu33
+	 5d0hr2TpiEV9SEhwWSuVeVXcG4Z8cQBqzsa6K14wZMI2zI6rfhf4TgzR+0yMxhULwp
+	 4q3JK6jU17E+HsvgqmOH5XXBSWlDd03Zw+U1XrLYQG/qL0CKQwfrAvhSB6Oy4ndFk3
+	 SVu7vsoJ3TpLg==
+Received: (nullmailer pid 512608 invoked by uid 1000);
+	Thu, 28 Sep 2023 15:12:26 -0000
+Date: Thu, 28 Sep 2023 10:12:26 -0500
+From: Rob Herring <robh@kernel.org>
+To: Jian Yang <jian.yang@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Chuanjia.Liu@mediatek.com, Jieyy.Yang@mediatek.com, Qizhong.Cheng@mediatek.com
+Subject: Re: [PATCH v3 1/2] dt-bindings: PCI: mediatek-gen3: Add support for
+ controlling power and reset
+Message-ID: <20230928151226.GA424754-robh@kernel.org>
+References: <20230928105819.5161-1-jian.yang@mediatek.com>
+ <20230928105819.5161-2-jian.yang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230928151616.GD27245@noisy.programming.kicks-ass.net>
+In-Reply-To: <20230928105819.5161-2-jian.yang@mediatek.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230928_081235_503971_437EDD15 
+X-CRM114-Status: GOOD (  19.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,16 +73,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 28, 2023 at 05:16:16PM +0200, Peter Zijlstra wrote:
+On Thu, Sep 28, 2023 at 06:58:20PM +0800, Jian Yang wrote:
+> From: "jian.yang" <jian.yang@mediatek.com>
+> 
+> Add new properties to support control power supplies and reset pin of
+> a downstream component.
+> 
+> Signed-off-by: jian.yang <jian.yang@mediatek.com>
+> ---
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      | 25 +++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> index 7e8c7a2a5f9b..32031362db58 100644
+> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> @@ -84,6 +84,26 @@ properties:
+>      items:
+>        enum: [ phy, mac ]
+>  
+> +  pcie1v8-supply:
+> +    description:
+> +      The regulator phandle that provides 1.8V power from root port to a
+> +      downstream component.
+> +
+> +  pcie3v3-supply:
+> +    description:
+> +      The regulator phandle that provides 3.3V power from root port to a
+> +      downstream component.
+> +
+> +  pcie12v-supply:
+> +    description:
+> +      The regulator phandle that provides 12V power from root port to a
+> +      downstream component.
+> +
+> +  dsc-reset-gpios:
 
-> AFAICT this is migrate_enable(), which acts on current, so how can the
-> CPU that current runs on go away?
+This should be in the downstream component if it is something extra. So 
+not the root port node, but the next one down. 
 
-> Your patch has at least one very obvious resource leak.
+> +    description:
+> +      The extra reset pin other than PERST# required by a downstream component.
+> +    maxItems: 1
+> +
+>    clocks:
+>      minItems: 4
+>      maxItems: 6
+> @@ -238,5 +258,10 @@ examples:
+>                        #interrupt-cells = <1>;
+>                        interrupt-controller;
+>              };
+> +
+> +            pcie@0 {
 
-Sorry those are not so, I ended up staring at the wrong
-stop_one_cpu_nowait() :-/
+Missing 'reg'.
 
-Still, the rest is very much the case, if you can't describe the exact
-race scenario, you can't be talking about a solution.
+> +              device_type = "pci";
+> +              pcie-3v3-supply = <&pcie3v3_regulator>;
+
+This is in the root port (which is good), but you've defined the schema 
+to put them in the host bridge node. IOW, these need to go in a PCI 
+root-port or P2P bridge schema which doesn't yet exist. I have an 
+inprogress branch for dtschema to split up pci-bus.yaml for that 
+purpose. Will try to finish it up soon.
+
+Rob
 
