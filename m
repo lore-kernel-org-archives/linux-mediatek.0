@@ -4,80 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3E89CE7B09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 07:37:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8FAECE7B09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 07:47:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tLZwhKDgfdFsd3vZ+zpeV363DbF016coL6R25E3ugY4=; b=m4AZ+8EG+6beaQ
-	Gr/4I3E2sa13dGp+fbuHYhSjcJi4Ig70BmL/g6OvXTeRhGaWcjXjPmQbmaVtLkRX2TpM6TPZPMN+d
-	w2sPziDqQT97UDe4GPubRdDQmIT94pxIr1SfCM7WFn2/MH6oIdkJNknoRnzbJnL0AI97/8vr2i5ov
-	p4CVQUTx/BJELIJ4Hg/Nh2HnZYQXarRjfcLrBtCvzzSoy5CJw9JVZESchnJZYOThpsQUmNmJeWEFw
-	9gego8IdCiYoCfaCT+Bxy4HTzBMsWo1QokKCbD0W2Nmuc1Tm5IT/x6Jl9oGBSkplpp5+HJPYid01X
-	gYZk1siXDmIAz+9h7Nsw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SE8ZtOmE+5LzPwv5MbetwvRvxlY7b5uKqD5A3f90vRQ=; b=39qevS8+NFN7+jjWySTzFOv347
+	mTAWNxZD3XhDtH1eHH8yPBEMF9Cvdj2slw8pJdo8eswhhdEj0X4mxzx5LOC9HSJdJA0nRMZuY9iZ9
+	tRJsqiPCnw4h2a5kix+nJ2cGkajKBtvsqetNKPKCEb4xHkbwKsj1S136XfabY/aQercddTVbBLoYo
+	FL/vXoZr54STfczoTtkk9j3n/xcY9QnyHLJGYUfGqU/KCXuanXlCPFN4pn2pMT4t6ukPIG2kIbemQ
+	YFkV4oP6hxUZZGc/rRVahwU2Y0C5kGb9hYpqkUsnmxUZ7R1iPGhvCBhPZnwOFh287ksMAF2gPnbRA
+	pyHYQ/FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qllag-002XTZ-23;
-	Thu, 28 Sep 2023 07:37:42 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1qlljk-002YT4-27;
+	Thu, 28 Sep 2023 07:47:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qllaZ-002XPU-1b
-	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Sep 2023 07:37:37 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-32336a30d18so4643016f8f.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Sep 2023 00:37:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695886649; x=1696491449; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tLZwhKDgfdFsd3vZ+zpeV363DbF016coL6R25E3ugY4=;
-        b=F1vKN/p3kkVn3ac9oqSItqqvnJcScu5ZqWggDo0SfQQSVKOcHw1889hXcU1jpVxgxJ
-         B+t8BiFgnpFzofuU7RTFsE7lIrPUwmWaaoTGBGljNC4yUbYp2y5wyaEGeKt2aKM6cEbf
-         pE3q8d17Q9ou5qCJX8R/bkxKCm9Mg4B36j2h79850+SEfLyc5wF0b9lYTvhZVo1R8EUo
-         wSaVQKEaMy+tiN+RgBqsMzLUCkfATULiD8iRqg/V9gfLCr44l8qxDmPCo+verX6QqpXV
-         djKqe66BlJCDbtG2dJJpHt6cW+QoEm1zDRC3eR5V6KjwYLK0UZDRqI0w65A2DVl1kDyX
-         /VBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695886649; x=1696491449;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tLZwhKDgfdFsd3vZ+zpeV363DbF016coL6R25E3ugY4=;
-        b=Fgrx675CBTJ6WHAmfFE23fMvCEb+hiroEFKIzqpW+1Lm6W4Gnv631UzJhf2RxzyOB3
-         16DHz2bZpFmIO+C9rpFZln3ibThpn3yGC2OrwLxKk2qmgXWlWbt72lEeLfzoISsL0Cjb
-         ZkLYYi6YwPZRB0Z2XhcsPQbKT7QQE4Yc70OKT9zazzQ1c26PK1WXZTeVVklGisgVw7vh
-         4HIePKDcATIykX1eh08HrcPMQ3GXPvGGRtX9/ymEzKfqOvU1gdR/S63520L6b7OFbw6U
-         5EFZA1qhINVIy7jqmyLZ0yx3SLnjpwpJoJj2pg/ulYZxl9Y62fLRsdcLYelrKaGw+Ub8
-         Gk2A==
-X-Gm-Message-State: AOJu0Yx0u9PJYdlIM+6Y2fASFcu/LL/JPKvzLYeOs9EyntHKQz7W7Cl4
-	S2py8y6lONP5mOgQiAxWtjEXEw==
-X-Google-Smtp-Source: AGHT+IEykS3sv6+IRCprkWFIYzQut6WfxhajwABJSA3a9n4e2P7oAuta+iEBJdwMvKYwA8NZgiIIoA==
-X-Received: by 2002:a5d:4b43:0:b0:319:8430:f80f with SMTP id w3-20020a5d4b43000000b003198430f80fmr449720wrs.49.1695886649008;
-        Thu, 28 Sep 2023 00:37:29 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0? ([2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0])
-        by smtp.googlemail.com with ESMTPSA id o11-20020a056000010b00b0031c52e81490sm18876523wrx.72.2023.09.28.00.37.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Sep 2023 00:37:28 -0700 (PDT)
-Message-ID: <dc0460ff-9b72-d739-cc1b-ae6d3a2bfa82@linaro.org>
-Date: Thu, 28 Sep 2023 09:37:27 +0200
+	id 1qlljf-002YRB-2D;
+	Thu, 28 Sep 2023 07:47:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 39B5B61B45;
+	Thu, 28 Sep 2023 07:46:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00BADC433C7;
+	Thu, 28 Sep 2023 07:46:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695887215;
+	bh=Af7aDzVx41jirnSASQ/UkmQmVSgstLQVhYHpLf/6830=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=M3CVEWodpA6shzaMBLBOu0zeQ+lMo1Bgzbr/6kL40UAJkJPSAeDfixt9HbxwfelSL
+	 VN4FQDlcS4YUoDRxwhJukMx/5PZ+MgNb25LXGJcyCNVBg9TVySD5P9XI6cvycLgK/b
+	 t1qj9t7+qjOcMf1zx9YWLc0nHfCEhxuMkDo8I9hstXQ6pMjHePsrJ31HlBMZ+Jhg9/
+	 CAlRrDo/Tur6t0L4tkdelzmjpsK4sDJxxLEXIjPqY/ne/z+Uqou0IOJT3oHAeZm686
+	 RdYG5LjWImNoTQa51vaSZTWmDaUBeZczfVywHCf95iuE5R1Apti8bSE9IRjR1OHUjq
+	 yyUa+0wrAOZmA==
+From: Vinod Koul <vkoul@kernel.org>
+To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Olivier Dautricourt <olivierdautricourt@gmail.com>, 
+ Stefan Roese <sr@denx.de>, dmaengine@vger.kernel.org, kernel@pengutronix.de, 
+ Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, asahi@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, 
+ Ludovic Desroches <ludovic.desroches@microchip.com>, 
+ Tudor Ambarus <tudor.ambarus@linaro.org>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+ linux-rpi-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>, 
+ Lars-Peter Clausen <lars@metafoo.de>, Paul Cercueil <paul@crapouillou.net>, 
+ linux-mips@vger.kernel.org, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, 
+ Viresh Kumar <vireshk@kernel.org>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ Li Yang <leoyang.li@nxp.com>, Zhang Wei <zw@zh-kernel.org>, 
+ linuxppc-dev@lists.ozlabs.org, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+ NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+ Manivannan Sadhasivam <mani@kernel.org>, linux-actions@lists.infradead.org, 
+ ye xingchen <ye.xingchen@zte.com.cn>, Daniel Mack <daniel@zonque.org>, 
+ Haojian Zhuang <haojian.zhuang@gmail.com>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>, Andy Gross <agross@kernel.org>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, 
+ Sinan Kaya <okaya@kernel.org>, Green Wan <green.wan@sifive.com>, 
+ Kees Cook <keescook@chromium.org>, 
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>, 
+ Biju Das <biju.das.jz@bp.renesas.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+ Pavel Machek <pavel@denx.de>, Hien Huynh <hien.huynh.px@renesas.com>, 
+ Yangtao Li <frank.li@vivo.com>, Peter Ujfalusi <peter.ujfalusi@gmail.com>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Patrice Chotard <patrice.chotard@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Samuel Holland <samuel@sholland.org>, linux-sunxi@lists.linux.dev, 
+ Laxman Dewangan <ldewangan@nvidia.com>, Jon Hunter <jonathanh@nvidia.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org, 
+ Lizhi Hou <lizhi.hou@amd.com>, Brian Xu <brian.xu@amd.com>, 
+ Raj Kumar Rampelli <raj.kumar.rampelli@amd.com>, 
+ Michal Simek <michal.simek@amd.com>, 
+ Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>, 
+ Peter Korsgaard <peter@korsgaard.com>, Liu Shixin <liushixin2@huawei.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Harini Katakam <harini.katakam@amd.com>, 
+ Swati Agarwal <swati.agarwal@amd.com>
+In-Reply-To: <20230919133207.1400430-1-u.kleine-koenig@pengutronix.de>
+References: <20230919133207.1400430-1-u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 00/59] dma: Convert to platform remove callback
+ returning void
+Message-Id: <169588719663.133598.11807608811384105232.b4-ty@kernel.org>
+Date: Thu, 28 Sep 2023 13:16:36 +0530
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 0/4] add LVTS support for mt7988
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20230922055020.6436-1-linux@fw-web.de>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230922055020.6436-1-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230928_003735_532622_205DA839 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20230928_004659_811919_B4E6772D 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,35 +120,145 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/09/2023 07:50, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> This series makes allows soc specific temperature coefficients
-> and adds support for mt7988 which has a different one.
-> 
-> Frank Wunderlich (4):
->    dt-bindings: thermal: mediatek: add mt7988 lvts compatible
->    dt-bindings: thermal: mediatek: Add LVTS thermal sensors for mt7988
->    thermal/drivers/mediatek/lvts_thermal: make coeff configurable
->    thermal/drivers/mediatek/lvts_thermal: add mt7988 support
-> 
->   .../thermal/mediatek,lvts-thermal.yaml        |  1 +
->   drivers/thermal/mediatek/lvts_thermal.c       | 89 +++++++++++++++----
->   .../thermal/mediatek,lvts-thermal.h           |  9 ++
->   3 files changed, 82 insertions(+), 17 deletions(-)
-> 
 
-Applied, thanks
+On Tue, 19 Sep 2023 15:31:08 +0200, Uwe Kleine-König wrote:
+> this series convert nearly all platform drivers below drivers/dma to use
+> .remove_new(). The motivation is to get rid of an integer return code
+> that is (mostly) ignored by the platform driver core and error prone on
+> the driver side.
+> 
+> See commit 5c5a7680e67b ("platform: Provide a remove callback that
+> returns no value") for an extended explanation and the eventual goal.
+> 
+> [...]
 
+Applied, thanks!
+
+[01/59] dma: altera-msgdma: Convert to platform remove callback returning void
+        commit: 8876762f285fff08b1aefeba52c7157a2c9beec1
+[02/59] dma: apple-admac: Convert to platform remove callback returning void
+        commit: e7d5aa30c8a19e6d9c4ec19d3b9e501df22e1d1a
+[03/59] dma: at_hdmac: Convert to platform remove callback returning void
+        commit: ae3f38e495b42494414cbace3b3bd3cb6dc10506
+[04/59] dma: at_xdmac: Convert to platform remove callback returning void
+        commit: b13af3c41bad5f4e45a73d6978f31ad48ffc2dee
+[05/59] dma: bcm-sba-raid: Convert to platform remove callback returning void
+        commit: 017df796a3635edee5169a0700634da6dac92f6a
+[06/59] dma: bcm2835-dma: Convert to platform remove callback returning void
+        commit: 8f63a2da288454e9228f6b438b86627f6ceae36b
+[07/59] dma: bestcomm: bestcomm: Convert to platform remove callback returning void
+        commit: 7689bca111997e0d7a12cf6457fc26a52b8c800f
+[08/59] dma: dma-axi-dmac: Convert to platform remove callback returning void
+        commit: b5f095a70117629c3abb49bcb07dfa954d275e99
+[09/59] dma: dma-jz4780: Convert to platform remove callback returning void
+        commit: a8c85540bee12d492904a430c0c1105a4b7b101c
+[10/59] dma: dw-axi-dmac: dw-axi-dmac-platform: Convert to platform remove callback returning void
+        commit: c689a2fd2a3f2a0a9e775c59c0f02ea64677c254
+[11/59] dma: dw: platform: Convert to platform remove callback returning void
+        commit: 67572bfe2e35c232c3497b3fc8babbfe62600ce0
+[12/59] dma: fsl-edma-main: Convert to platform remove callback returning void
+        commit: fa13c3ef3f45bca5a1474755dac57bfaf28ef61b
+[13/59] dma: fsl-qdma: Convert to platform remove callback returning void
+        commit: fe3d44cdaea41173e50833440db84982e2a8d2a7
+[14/59] dma: fsl_raid: Convert to platform remove callback returning void
+        commit: 37b24b50c5f8ad9037fbe81f1ee43f5e16fb5334
+[15/59] dma: fsldma: Convert to platform remove callback returning void
+        commit: d69f80110da5d0e665d7f2872bf2185fe7f14409
+[16/59] dma: idma64: Convert to platform remove callback returning void
+        commit: e8da277fbb8701308cfd2337afb13d34cc233349
+[17/59] dma: img-mdc-dma: Convert to platform remove callback returning void
+        commit: 6e1b4a907e860071d957baee688a30a0bff102ef
+[18/59] dma: imx-dma: Convert to platform remove callback returning void
+        commit: 14c49dd0c34e457d71494b04290c27d7a14584d7
+[19/59] dma: imx-sdma: Convert to platform remove callback returning void
+        commit: 06e4f653fafdeec7b13958b771226efa1cdf76d2
+[20/59] dma: k3dma: Convert to platform remove callback returning void
+        commit: 3faf902cb808163e9e65bf568c235a272215aed2
+[21/59] dma: mcf-edma-main: Convert to platform remove callback returning void
+        commit: 48236cb8314238917788f73353290dd1afb9a7c6
+[22/59] dma: mediatek: mtk-cqdma: Convert to platform remove callback returning void
+        commit: bdeb61f5180efc920cf55b966a2a30bc2336d6d4
+[23/59] dma: mediatek: mtk-hsdma: Convert to platform remove callback returning void
+        commit: 97283173effa6e53ea698726ea5d07f7ca06e5cf
+[24/59] dma: mediatek: mtk-uart-apdma: Convert to platform remove callback returning void
+        commit: 4db30945a001ac97b5044db2aa2990b8e7df9452
+[25/59] dma: mmp_pdma: Convert to platform remove callback returning void
+        commit: c0f0d93fc1da36de564da9b3f0462b5bdc4b1948
+[26/59] dma: mmp_tdma: Convert to platform remove callback returning void
+        commit: f543b251500a0de589bc4c97da45b88410bf7c56
+[27/59] dma: moxart-dma: Convert to platform remove callback returning void
+        commit: 1a65831fa037457114ca75ea262d87fbde3158f0
+[28/59] dma: mpc512x_dma: Convert to platform remove callback returning void
+        commit: 80d0159bbe80d8de6f64c0a8554b4066c66eb378
+[29/59] dma: mv_xor_v2: Convert to platform remove callback returning void
+        commit: 733dbb8d62f33448c0d7470ba06ce39bdd790ddd
+[30/59] dma: nbpfaxi: Convert to platform remove callback returning void
+        commit: 44d5338c4a5d7f3f1ef07d502b9db22a29a8756a
+[31/59] dma: owl-dma: Convert to platform remove callback returning void
+        commit: 1260486a347567c33e0118626bb8778e342e6080
+[32/59] dma: ppc4xx: adma: Convert to platform remove callback returning void
+        commit: 5f8f212fb416dc3600046955fb008732a512fa5c
+[33/59] dma: pxa_dma: Convert to platform remove callback returning void
+        commit: 44ea88715d37dc31145b7712b5474808258bab5f
+[34/59] dma: qcom: bam_dma: Convert to platform remove callback returning void
+        commit: 8d0f1ca5e4037f671cee43a4a582c0f8c6e8e31d
+[35/59] dma: qcom: hidma: Convert to platform remove callback returning void
+        commit: af9bc3c26b08714eb2309dcbf9a74a6c7af6327f
+[36/59] dma: qcom: qcom_adm: Convert to platform remove callback returning void
+        commit: 1a6d1c87542d6bb178db5bc2befc9abf99447684
+[37/59] dma: sa11x0-dma: Convert to platform remove callback returning void
+        commit: d6798037fa1c01e6b9486cc1fbe1b5a272dde477
+[38/59] dma: sf-pdma: sf-pdma: Convert to platform remove callback returning void
+        commit: 3d97deeb3b3077b3a6f9636f3ea312fef7f54059
+[39/59] dma: sh: rcar-dmac: Convert to platform remove callback returning void
+        commit: 8ca342994ab8abda069c4b918aab5fa6b8c1614f
+[40/59] dma: sh: rz-dmac: Convert to platform remove callback returning void
+        commit: bd4205f52310a158c78171d3a5f68c7301a532fd
+[41/59] dma: sh: shdmac: Convert to platform remove callback returning void
+        commit: 384ba9a683d3ba9f2f598b4c5fbf6f79a9213e94
+[42/59] dma: sh: usb-dmac: Convert to platform remove callback returning void
+        commit: 9f2812a7fe47c422a367ef95e418dd63fced7238
+[43/59] dma: sprd-dma: Convert to platform remove callback returning void
+        commit: 8d82eb85a74246afb9b4bc69abf6e79014b06d4f
+[44/59] dma: st_fdma: Convert to platform remove callback returning void
+        commit: 9c52ffa09f580c49df1cc0b1998d7ea8fdf2c0b4
+[45/59] dma: sun4i-dma: Convert to platform remove callback returning void
+        commit: 2db76471c8f45837efafdd7d57633aa9f194d787
+[46/59] dma: sun6i-dma: Convert to platform remove callback returning void
+        commit: 7d6ef7550a4577ae943194421dea73f3df084265
+[47/59] dma: tegra186-gpc-dma: Convert to platform remove callback returning void
+        commit: d669b198efac1ea97fa39d6f8be59aefe5f39171
+[48/59] dma: tegra20-apb-dma: Convert to platform remove callback returning void
+        commit: afd1ac2e1b9b39040bb5eedd94b2b152020994e0
+[49/59] dma: tegra210-adma: Convert to platform remove callback returning void
+        commit: 1a3fa3e369bf54bef0021a8c840567622f52354f
+[50/59] dma: ti: cppi41: Convert to platform remove callback returning void
+        commit: 36a7e98c36a598c2865daf748a7d9d889a34aaf3
+[51/59] dma: ti: edma: Convert to platform remove callback returning void
+        commit: 68bcaf5c4e03ada2696b4fbd03ee775781945034
+[52/59] dma: ti: omap-dma: Convert to platform remove callback returning void
+        commit: 5ea68dc1cee00e5ecf174f2a3ef13d63520971cb
+[53/59] dma: timb_dma: Convert to platform remove callback returning void
+        commit: 4f339d6efa6a74a16f77fd9a06adf01d9df84734
+[54/59] dma: txx9dmac: Convert to platform remove callback returning void
+        commit: a3b4af719e571bd899b7952626c2b4d8ec7c0c77
+[55/59] dma: xgene-dma: Convert to platform remove callback returning void
+        commit: 2c9d879fae9ab1be3d4926ebea5e85305998cf93
+[56/59] dma: xilinx: xdma: Convert to platform remove callback returning void
+        commit: 78369eb5dc8881d78f163434ee2788a800b89219
+[57/59] dma: xilinx: xilinx_dma: Convert to platform remove callback returning void
+        commit: cc99582d46b428ba4c2cb7ecd05df4569b02d1f4
+[58/59] dma: xilinx: xilinx_dpdma: Convert to platform remove callback returning void
+        commit: c962eca73c5cce72936a8b3bd23a24b29852ea97
+[59/59] dma: xilinx: zynqmp_dma: Convert to platform remove callback returning void
+        commit: b1c50ac25425385b576dd58b7b38c1c5963dde85
+
+Best regards,
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+~Vinod
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
 
 
