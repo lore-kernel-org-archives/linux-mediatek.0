@@ -4,123 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 992A4CE7B08
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 07:49:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49B7FCE7B05
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 08:31:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xJkRrteSTSAG2FblrRGY5Sz+zY9oF679iQ/KJMfXIdw=; b=MzhLC6T2QWjAns7uD9tDkVqVl8
-	+dHwhSp4S+tSLDWZQABsRBHA3IAN1HhHB32PAKQEDVWq+rsRO+KkC2IQpp6hNVHYxURnK5nhlafQQ
-	lqYPydZm19ZV9kZ576FkrmSF+el22y0akam+p2S74YaoCP+pje1DuFhrmE/omGRSi5jKCQPyOeFa8
-	DiRMEItrqez6trxQcx8GFEAprGmLfL73TL8l605wc8tygna3P4qtdgwX0o/ZHLdLDOGRSvPJIDRTF
-	kKMjPDvTQAP2+GQgrx9QttFze0trw855VFgoVDu1EObBEyJeCSzRypJ3tyZhHoVuIoKp0UmRvu5UW
-	WsEkad1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y+RItVNoLp/85O7cXBwPk3Ui6TJEDbYHZTFKaQCXLHc=; b=ljNPgFXzfjaEwSSBE23R3Pd4k/
+	Iyi9W/D+gABTUgqVCur/sEvg9F3hg0nLbNvs7mhkeQyWzn/jZZ9iIZvN6NRCReYVecNPmQzxooQhb
+	nxfctkcyCIV7DDGEreAAkGSchI1yKUq4a7AZKqZtFHiS6B26WACO+sqFoh2N/IIoHrpk1xCpxnxlX
+	kE/Ygt5KWY4nTQTgM28TZpxlOtkTYBthE8cn/DSq55Cexh207zdddu4foG0Prk2nCE+RD/gz/f9yd
+	1WERNPV4IYVSlMIBGMkDgfEkEA0mWP+CIEMdvWi4OpgLEu3K9uMR7XvlXlg1tETI62Y59Otzvksre
+	oKEDPXAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qllm2-002Ylv-0P;
-	Thu, 28 Sep 2023 07:49:26 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qlmQH-002dDu-2r;
+	Thu, 28 Sep 2023 08:31:01 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qllly-002YkN-07;
-	Thu, 28 Sep 2023 07:49:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id D8092B81A6E;
-	Thu, 28 Sep 2023 07:49:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87A57C433C8;
-	Thu, 28 Sep 2023 07:49:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695887357;
-	bh=Gs6aFP7wkoeloUPjh3P+7ZqWXKrUV+lmRvPOXvjf8Ds=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=C07hz1x9ZBOot13NmBg/w+8/7UOMHZqam5kdmBhRs0FIMx+p817yeI0/AwYqADdFf
-	 LyROsByfc7udfgvzO+iVFxt40scEHqiTsEuBV2anPvz2pvOqA5rNaglngGFVYkDqNi
-	 8llzR1bKPikKnXdUU/UiExt0M1sNhonfI2Tg9VWZ4Ep2jjWHYlWMlubIYLpGAoPemh
-	 /llBuONh0YVRMZh24Aia4Qvo0KfHmtLVm+XDoqoKF4CTK02whHvixcoVQ+egWgMk7x
-	 FTO4SCB3n9ecoNHU2OdnjDnT9Gq59BrqP6Jgw3zOEG+2pLxraJj4zpxQ8BtWBKRvcG
-	 KuqZYg3uAID5g==
-Date: Thu, 28 Sep 2023 13:19:13 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Olivier Dautricourt <olivierdautricourt@gmail.com>,
-	Stefan Roese <sr@denx.de>, dmaengine@vger.kernel.org,
-	kernel@pengutronix.de, Hector Martin <marcan@marcan.st>,
-	Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Li Yang <leoyang.li@nxp.com>, Zhang Wei <zw@zh-kernel.org>,
-	linuxppc-dev@lists.ozlabs.org, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	linux-actions@lists.infradead.org,
-	ye xingchen <ye.xingchen@zte.com.cn>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org, Sinan Kaya <okaya@kernel.org>,
-	Green Wan <green.wan@sifive.com>, Kees Cook <keescook@chromium.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Pavel Machek <pavel@denx.de>,
-	Hien Huynh <hien.huynh.px@renesas.com>,
-	Yangtao Li <frank.li@vivo.com>,
-	Peter Ujfalusi <peter.ujfalusi@gmail.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
-	linux-sunxi@lists.linux.dev, Laxman Dewangan <ldewangan@nvidia.com>,
-	Jon Hunter <jonathanh@nvidia.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	linux-tegra@vger.kernel.org, Lizhi Hou <lizhi.hou@amd.com>,
-	Brian Xu <brian.xu@amd.com>,
-	Raj Kumar Rampelli <raj.kumar.rampelli@amd.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Peter Korsgaard <peter@korsgaard.com>,
-	Liu Shixin <liushixin2@huawei.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Swati Agarwal <swati.agarwal@amd.com>
-Subject: Re: [PATCH 00/59] dma: Convert to platform remove callback returning
- void
-Message-ID: <ZRUv+WgkovPotwIr@matsya>
-References: <20230919133207.1400430-1-u.kleine-koenig@pengutronix.de>
+	id 1qlmQD-002dCS-1T;
+	Thu, 28 Sep 2023 08:30:59 +0000
+Received: from [IPV6:2a01:e0a:120:3210:cdc6:9c5d:b170:7a75] (unknown [IPv6:2a01:e0a:120:3210:cdc6:9c5d:b170:7a75])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 254056607334;
+	Thu, 28 Sep 2023 09:30:52 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695889852;
+	bh=M2yUgu8++KjSMa6YXyi+nFtyh9bccq2mCtfV/AWp02o=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bo6PJkpySA6SGEm7klrzEVnbgtwY3WJ38T/pXu2i2ryTYLBvH0DEfsNxyo8RyyQOK
+	 bhDLMFmLrU+UviNFuahZvcsPd7dyBjiBAckgcCSvbw/IgldcLHFHNqtwJ41Wotnhzn
+	 tMOBNfQinHFDAU8P6yjRiV712VqJAUn83WfMnw4wj8fhZp2UFWE/f14n2Du3Jw1A0+
+	 66EET78hA+0iykW66k64h2G+WwTqSZ4eqM5PmFN/Zb7akEeHCheVeeD7FcJpLCnxRs
+	 +jZ9hf7Fzl3CKAjN+mNd+LX8HJMeAkEiZwSuTVKsjogFmo5XjakMZ7JLg3PlevwhYN
+	 GUACtNijOgFMg==
+Message-ID: <80695726-1a98-12d4-ad7d-d731f2f3caeb@collabora.com>
+Date: Thu, 28 Sep 2023 10:30:50 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
+To: Jeffrey Kardatzke <jkardatzke@google.com>
+Cc: Joakim Bech <joakim.bech@linaro.org>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?=
+ <Yong.Wu@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "christian.koenig@amd.com" <christian.koenig@amd.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "jstultz@google.com" <jstultz@google.com>,
+ "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
+ <Jianjiao.Zeng@mediatek.com>, =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?=
+ <kuohong.wang@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
+ "tjmercier@google.com" <tjmercier@google.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20230911023038.30649-1-yong.wu@mediatek.com>
+ <20230911023038.30649-6-yong.wu@mediatek.com>
+ <d0373c02-9b22-661f-9930-ca720053c2a0@collabora.com>
+ <a115a2a5d3ac218e6db65ccdb0a1876f9cfca02b.camel@mediatek.com>
+ <d798b15b-6f35-96db-e3f7-5c0bcc5d46a2@collabora.com>
+ <a4ecc2792f3a4d3159e34415be984ff7d5f5e263.camel@mediatek.com>
+ <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain>
+ <3aaafe47-3733-a4d5-038d-a7e439309282@collabora.com>
+ <CA+ddPcP4=p37cV5Tbn5zTUbiL4ou+Yqb=5rS+O_ff8ZUw64D3Q@mail.gmail.com>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <CA+ddPcP4=p37cV5Tbn5zTUbiL4ou+Yqb=5rS+O_ff8ZUw64D3Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230919133207.1400430-1-u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230928_004922_339365_ABADBC7E 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20230928_013057_777206_CC351729 
+X-CRM114-Status: GOOD (  30.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,38 +102,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19-09-23, 15:31, Uwe Kleine-K�nig wrote:
-> Hello,
-> 
-> this series convert nearly all platform drivers below drivers/dma to use
-> .remove_new(). The motivation is to get rid of an integer return code
-> that is (mostly) ignored by the platform driver core and error prone on
-> the driver side.
 
-I have applied this, with change of subsystem to dmaengine: xxx
-> 
-> See commit 5c5a7680e67b ("platform: Provide a remove callback that
-> returns no value") for an extended explanation and the eventual goal.
-> 
-> There are 4 drivers I didn't convert in this series:
-> 
-> 	drivers/dma/milbeaut-hdmac.c
-> 	drivers/dma/milbeaut-xdmac.c
-> 	drivers/dma/uniphier-mdmac.c
-> 	drivers/dma/uniphier-xdmac.c
-> 
-> These all might return early in .remove() if dmaengine_terminate_sync()
-> fails. I only looked deeper into the first one, and this shows exactly
-> the error that is easy to make with .remove() returning an int: When
-> returning early from .remove(), some cleanup (here:
-> dma_async_device_unregister()) is skipped. So the dma device stays
-> known, but the device is still unregistered and the devm allocated stuff
-> (here e.g. *mdev) is freed. So it can probably easily happen, that
-> something tries to use the dma device and this will likely result in an
-> oops.
+Le 27/09/2023 à 20:56, Jeffrey Kardatzke a écrit :
+> On Wed, Sep 27, 2023 at 8:18 AM Benjamin Gaignard
+> <benjamin.gaignard@collabora.com> wrote:
+>>
+>> Le 27/09/2023 à 15:46, Joakim Bech a écrit :
+>>> On Mon, Sep 25, 2023 at 12:49:50PM +0000, Yong Wu (吴勇) wrote:
+>>>> On Tue, 2023-09-12 at 11:32 +0200, AngeloGioacchino Del Regno wrote:
+>>>>> Il 12/09/23 08:17, Yong Wu (吴勇) ha scritto:
+>>>>>> On Mon, 2023-09-11 at 11:29 +0200, AngeloGioacchino Del Regno
+>>>>>> wrote:
+>>>>>>> Il 11/09/23 04:30, Yong Wu ha scritto:
+>>>>>>>> The TEE probe later than dma-buf heap, and PROBE_DEDER doesn't
+>>>>>>>> work
+>>>>>>>> here since this is not a platform driver, therefore initialise
+>>>>>>>> the
+>>>>>>>> TEE
+>>>>>>>> context/session while we allocate the first secure buffer.
+>>>>>>>>
+>>>>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>>>>>>> ---
+>>>>>>>>      drivers/dma-buf/heaps/mtk_secure_heap.c | 61
+>>>>>>>> +++++++++++++++++++++++++
+>>>>>>>>      1 file changed, 61 insertions(+)
+>>>>>>>>
+>>>>>>>> diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c
+>>>>>>>> b/drivers/dma-
+>>>>>>>> buf/heaps/mtk_secure_heap.c
+>>>>>>>> index bbf1c8dce23e..e3da33a3d083 100644
+>>>>>>>> --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
+>>>>>>>> +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
+>>>>>>>> @@ -10,6 +10,12 @@
+>>>>>>>>      #include <linux/err.h>
+>>>>>>>>      #include <linux/module.h>
+>>>>>>>>      #include <linux/slab.h>
+>>>>>>>> +#include <linux/tee_drv.h>
+>>>>>>>> +#include <linux/uuid.h>
+>>>>>>>> +
+>>>>>>>> +#define TZ_TA_MEM_UUID          "4477588a-8476-11e2-ad15-
+>>>>>>>> e41f1390d676"
+>>>>>>>> +
+>>>>>>> Is this UUID the same for all SoCs and all TZ versions?
+>>>>>> Yes. It is the same for all SoCs and all TZ versions currently.
+>>>>>>
+>>>>> That's good news!
+>>>>>
+>>>>> Is this UUID used in any userspace component? (example: Android
+>>>>> HALs?)
+>>>> No. Userspace never use it. If userspace would like to allocate this
+>>>> secure buffer, it can achieve through the existing dmabuf IOCTL via
+>>>> /dev/dma_heap/mtk_svp node.
+>>>>
+>>> In general I think as mentioned elsewhere in comments, that there isn't
+>>> that much here that seems to be unique for MediaTek in this patch
+>>> series, so I think it worth to see whether this whole patch set can be
+>>> made more generic. Having said that, the UUID is always unique for a
+>>> certain Trusted Application. So, it's not entirely true saying that the
+>>> UUID is the same for all SoCs and all TrustZone versions. It might be
+>>> true for a family of MediaTek devices and the TEE in use, but not
+>>> generically.
+>>>
+>>> So, if we need to differentiate between different TA implementations,
+>>> then we need different UUIDs. If it would be possible to make this patch
+>>> set generic, then it sounds like a single UUID would be sufficient, but
+>>> that would imply that all TA's supporting such a generic UUID would be
+>>> implemented the same from an API point of view. Which also means that
+>>> for example Trusted Application function ID's needs to be the same etc.
+>>> Not impossible to achieve, but still not easy (different TEE follows
+>>> different specifications) and it's not typically something we've done in
+>>> the past.
+>>>
+>>> Unfortunately there is no standardized database of TA's describing what
+>>> they implement and support.
+>>>
+>>> As an alternative, we could implement a query call in the TEE answering,
+>>> "What UUID does your TA have that implements secure unmapped heap?".
+>>> I.e., something that reminds of a lookup table. Then we wouldn't have to
+>>> carry this in UAPI, DT or anywhere else.
+>> Joakim does a TA could offer a generic API and hide the hardware specific
+>> details (like kernel uAPI does for drivers) ?
+> It would have to go through another layer (like the tee driver) to be
+> a generic API. The main issue with TAs is that they have UUIDs you
+> need to connect to and specific codes for each function; so we should
+> abstract at a layer above where those exist in the dma-heap code.
+>> Aside that question I wonder what are the needs to perform a 'secure' playback.
+>> I have in mind 2 requirements:
+>> - secure memory regions, which means configure the hardware to ensure that only
+>> dedicated hardware blocks and read or write into it.
+>> - set hardware blocks in secure modes so they access to secure memory.
+>> Do you see something else ?
+> This is more or less what is required, but this is out of scope for
+> the Linux kernel since it can't be trusted to do these things...this
+> is all done in firmware or the TEE itself.
 
-We should convert these too, thanks for your work for the conversion
+Yes kernel can't be trusted to do these things but know what we need could help
+to define a API for a generic TA.
 
--- 
-~Vinod
+Just to brainstorm on mailing list:
+What about a TA API like
+TA_secure_memory_region() and TA_unsecure_memory_region() with parameters like:
+- device identifier (an ID or compatible string maybe)
+- memory region (physical address, size, offset)
+- requested access rights (read, write)
+
+and on kernel side a IOMMU driver because it basically have all this information already
+(device attachment, kernel map/unmap).
+
+In my mind it sound like a solution to limit the impact (new controls, new memory type)
+inside v4l2. Probably we won't need new heap either.
+All hardware dedicated implementations could live inside the TA which can offer a generic
+API.
+
+>> Regards,
+>> Benjamin
+>>
 
