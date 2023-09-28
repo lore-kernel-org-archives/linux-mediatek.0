@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF0F5E732DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 15:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B55F6E732E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 15:19:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1aMZSHFJ00QdHHcRXWNmjtWw9D0/fDe8zQRO1jC0Y6c=; b=UCSuyBy11tzQrDPpDL0vCEPCML
-	+Q34p/qErFSmj8UrXoUVCObvz04H2JiTBfqmjsumjPENEkeNvHmdS1NqDy1haJ+Y6fCaBuFfg5ooc
-	HZlNdaRQQNVACNjlRmo/k8QKqskeggFk+hNJfa5bBB9TRJg9alYgdI7m63Mm54DbLA9j+4y3kBu3p
-	E3uUlfDqalgVsrU7Jj5TuVAnw2hizWOg5WoOwQhkUgsQZLmt3GxC3jP84NzUx5Q/fvCGniyBYAfLt
-	P1lk/7lz/AhDlEQYD5zgNBdjllcvae/3pgo3uXOAQFNI/YMzvICNuDkA9cfXTNklaU8VhdRf93N2M
-	7TJ6YCHg==;
+	bh=5hV9RHE2np4Q/chcyiz0z8ahVkd4d/jzh2cotT+E4Ik=; b=XJR8nBZ3UaxaL3iyXPSxMWSDDL
+	S7fKanb07MLy0kvutrR/LLtIEODP7VgkSl4TR9sJJhF/M3xjpPSX/h+mzXdC2bWqbA0spxazfsEH/
+	BkPEIH5Uigi0NO8haT4qfll/JQg5uqx488pU/LAfNZ3LRsegXn9fZZJ73fiQ3PPOhS6dF0RxA5JNm
+	h4jMod89QX1RXgmxhI4Qku2hP+T71NehyBoGlMm2Vm3GUcI7qpTmt8lPSiGA6U6jFvMMW/WLZo8Ve
+	5yV4kovNDM56iwmT5yu5+q4Z5yZJ2aO7qdIhsm3y8jmqz5yggd3HHL9gRSDBMtnHG77JQcSJyy6eX
+	ZNTaVTxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlskn-005Kna-1V;
-	Thu, 28 Sep 2023 15:16:37 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1qlsnX-005Mzj-0f;
+	Thu, 28 Sep 2023 15:19:27 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlska-005Kcn-0t;
-	Thu, 28 Sep 2023 15:16:24 +0000
+	id 1qlsnT-005MvH-24;
+	Thu, 28 Sep 2023 15:19:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=1aMZSHFJ00QdHHcRXWNmjtWw9D0/fDe8zQRO1jC0Y6c=; b=ksh//XmFWudVXcwZB/50DEfC2b
-	S71MVheqbnADXAn7PH/N3RCcPF5sbzGGR2lQ3Qm1i66oCNNvF8KKBQMmL37ZX3hcmQbVI30NxsNVG
-	TPvPdA8T6HHf08D/1X0JHIKJzW6h9x8OninTY8z+y9mZ30mVQy+nRoUy4jQrG3gICpcdTZl1qnife
-	VgGcxFjLIWhmikV2TaSyYQhUGvRo+etPZlac8lh+KVNSU2VXjNk7C1HNbCjg9HjV5ZD39kw3HYa7P
-	e/JPfxnUOIL0blFRQqQ7aEZvqmF9w+Sd+OLEO994Fic7j6yTH64hnaq9KO5VM54GjU7Ho3io5IEqY
-	1PlJZOsQ==;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=5hV9RHE2np4Q/chcyiz0z8ahVkd4d/jzh2cotT+E4Ik=; b=JBXepoFRBRKckRrMLqnelG5jyB
+	iR1XVar5xlG5UqiTkMBAHBGTe1+MCdNP/ZUjQ3wKGsh2FBBtSC7lIxwPbMYljCoyfv0/MQQbmCSxc
+	ZZzCk/Tfoc4NAtENKmajrceMBCdgwPzCWFlSQkwH0ts1yUJurcJSeDeO1wm2C5LfmF3DCihEDSybn
+	gO8vuygiALgyNQgRvTWuCOhMxqM0poVeiq2NFCiM7kA+ptZt2JZ+EfPn4YJ8sxZoR59/0IP67wlKd
+	GbTv7VDYcnz2nLOF1tv+dVuKlefK0NMbDLxskWOoaCUaYeY/5suC5YaxT5MTGKU+J7CWBZ5BpEooQ
+	10bPzCRQ==;
 Received: from j130084.upc-j.chello.nl ([24.132.130.84] helo=noisy.programming.kicks-ass.net)
-	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qlskS-003CWF-JS; Thu, 28 Sep 2023 15:16:16 +0000
+	by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+	id 1qlsnM-0057CY-0X;
+	Thu, 28 Sep 2023 15:19:17 +0000
 Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
-	id 4669A3002E3; Thu, 28 Sep 2023 17:16:16 +0200 (CEST)
-Date: Thu, 28 Sep 2023 17:16:16 +0200
+	id 46C453002E3; Thu, 28 Sep 2023 17:19:17 +0200 (CEST)
+Date: Thu, 28 Sep 2023 17:19:17 +0200
 From: Peter Zijlstra <peterz@infradead.org>
 To: Kuyo Chang =?utf-8?B?KOW8teW7uuaWhyk=?= <Kuyo.Chang@mediatek.com>
 Cc: "dietmar.eggemann@arm.com" <dietmar.eggemann@arm.com>,
@@ -61,15 +62,15 @@ Cc: "dietmar.eggemann@arm.com" <dietmar.eggemann@arm.com>,
 	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
 Subject: Re: [PATCH 1/1] sched/core: Fix stuck on completion for
  affine_move_task() when stopper disable
-Message-ID: <20230928151616.GD27245@noisy.programming.kicks-ass.net>
+Message-ID: <20230928151917.GB29651@noisy.programming.kicks-ass.net>
 References: <20230927033431.12406-1-kuyo.chang@mediatek.com>
  <20230927080850.GB21824@noisy.programming.kicks-ass.net>
  <b9def8f3d9426bc158b302f4474b6e643b46d206.camel@mediatek.com>
+ <20230928151616.GD27245@noisy.programming.kicks-ass.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <b9def8f3d9426bc158b302f4474b6e643b46d206.camel@mediatek.com>
+In-Reply-To: <20230928151616.GD27245@noisy.programming.kicks-ass.net>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,107 +85,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 27, 2023 at 03:57:35PM +0000, Kuyo Chang (張建文) wrote:
-> On Wed, 2023-09-27 at 10:08 +0200, Peter Zijlstra wrote:
-> >  	 
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  On Wed, Sep 27, 2023 at 11:34:28AM +0800, Kuyo Chang wrote:
-> > > From: kuyo chang <kuyo.chang@mediatek.com>
-> > > 
-> > > [Syndrome] hung detect shows below warning msg
-> > > [ 4320.666557] [   T56] khungtaskd: [name:hung_task&]INFO: task
-> > stressapptest:17803 blocked for more than 3600 seconds.
-> > > [ 4320.666589] [   T56] khungtaskd:
-> > [name:core&]task:stressapptest   state:D stack:0     pid:17803
-> > ppid:17579  flags:0x04000008
-> > > [ 4320.666601] [   T56] khungtaskd: Call trace:
-> > > [ 4320.666607] [   T56] khungtaskd:  __switch_to+0x17c/0x338
-> > > [ 4320.666642] [   T56] khungtaskd:  __schedule+0x54c/0x8ec
-> > > [ 4320.666651] [   T56] khungtaskd:  schedule+0x74/0xd4
-> > > [ 4320.666656] [   T56] khungtaskd:  schedule_timeout+0x34/0x108
-> > > [ 4320.666672] [   T56] khungtaskd:  do_wait_for_common+0xe0/0x154
-> > > [ 4320.666678] [   T56] khungtaskd:  wait_for_completion+0x44/0x58
-> > > [ 4320.666681] [   T56]
-> > khungtaskd:  __set_cpus_allowed_ptr_locked+0x344/0x730
-> > > [ 4320.666702] [   T56]
-> > khungtaskd:  __sched_setaffinity+0x118/0x160
-> > > [ 4320.666709] [   T56] khungtaskd:  sched_setaffinity+0x10c/0x248
-> > > [ 4320.666715] [   T56]
-> > khungtaskd:  __arm64_sys_sched_setaffinity+0x15c/0x1c0
-> > > [ 4320.666719] [   T56] khungtaskd:  invoke_syscall+0x3c/0xf8
-> > > [ 4320.666743] [   T56] khungtaskd:  el0_svc_common+0xb0/0xe8
-> > > [ 4320.666749] [   T56] khungtaskd:  do_el0_svc+0x28/0xa8
-> > > [ 4320.666755] [   T56] khungtaskd:  el0_svc+0x28/0x9c
-> > > [ 4320.666761] [   T56] khungtaskd:  el0t_64_sync_handler+0x7c/0xe4
-> > > [ 4320.666766] [   T56] khungtaskd:  el0t_64_sync+0x18c/0x190
-> > > 
-> > > [Analysis]
-> > > 
-> > > After add some debug footprint massage, this issue happened at
-> > stopper
-> > > disable case.
-> > > It cannot exec migration_cpu_stop fun to complete migration.
-> > > This will cause stuck on wait_for_completion.
-> > 
-> > How did you get in this situation?
-> > 
-> 
-> This issue occurs at CPU hotplug/set_affinity stress test.
-> The reproduce ratio is very low(about once a week).
-> 
-> So I add/record some debug message to snapshot the task status while it
-> stuck on wait_for_completion.
-> 
-> Below is the snapshot status while issue happened:
-> 
-> cpu_active_mask is 0xFC
-> new_mask is 0x8
-> pending->arg.dest_cpu is 0x3
-> task_on_cpu(rq,p) is 1
-> task_cpu is 0x2
-> p__state = TASK_RUNNING
-> flag is SCA_CHACK|SCA_USER
-> stop_one_cpu_nowait(stopper->enabled) return value is false.
-> 
-> I also record the footprint at migration_cpu_stop.
-> It shows the migration_cpu_stop is not execute.
+On Thu, Sep 28, 2023 at 05:16:16PM +0200, Peter Zijlstra wrote:
 
-AFAICT this is migrate_enable(), which acts on current, so how can the
-CPU that current runs on go away?
+> AFAICT this is migrate_enable(), which acts on current, so how can the
+> CPU that current runs on go away?
 
-That is completely unexplained. You've not given a proper description of
-the race scenario. And because you've not, we can't even begin to talk
-about how best to address the issue.
+> Your patch has at least one very obvious resource leak.
 
-> > struct task_struct *p, struct rq_flag
-> > >  task_rq_unlock(rq, p, rf);
-> > >  
-> > >  if (!stop_pending) {
-> > > -stop_one_cpu_nowait(cpu_of(rq), migration_cpu_stop,
-> > > -    &pending->arg, &pending->stop_work);
-> > > +if (!stop_one_cpu_nowait(cpu_of(rq), migration_cpu_stop,
-> > > +    &pending->arg, &pending->stop_work))
-> > > +return -ENOENT;
-> > 
-> > And -ENOENT is the right return code for when the target CPU is not
-> > available?
-> > 
-> > I suspect you're missing more than halp the picture and this is a
-> > band-aid solution at best. Please try harder.
-> > 
-> 
-> I think -ENOENT means stopper is not execute? 
-> Perhaps the error code is abused, or could you kindly give me some
-> suggestions?
+Sorry those are not so, I ended up staring at the wrong
+stop_one_cpu_nowait() :-/
 
-Well, at this point you're leaving the whole affine_move_task()
-machinery in an undefined state, which is a much bigger problem than the
-weird return value.
-
-Please read through that function and its comments a number of times. If
-you're not a little nervous, you've not understood the thing.
-
-Your patch has at least one very obvious resource leak.
-
+Still, the rest is very much the case, if you can't describe the exact
+race scenario, you can't be talking about a solution.
 
