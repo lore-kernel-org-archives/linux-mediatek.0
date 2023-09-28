@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC0ECE732C0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 11:14:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F729E732C7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Sep 2023 12:34:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e22YSfaJqujC9FsCfVLj/Xxe0fhzJSfS59X10ItJoHY=; b=zYR13BPLAJvQEYHsoa9zhj+P/6
-	mEkXrHEddFoWRzDcvRsSIRMzZEOBgtWMBJ0ANBik7u/25jfzNiAZY+CDJORPHOrC6VA/fH6Zw+qOO
-	3TxWO00/Hl6UcAEqbop71t9sxOiluGUCqR53EGUqAKJBZOpkVqDSyqG2C0IfF9h+h1VcigHEcfvs8
-	Hl0KTKkvAelfev2a36Gpx84umL2LVAyTl/RNhQiL6ijfhyujVderrtBJd4KKzcMVB33Wgr514QQtT
-	hjU12X7BNE22JZuTSsSyB6qbzqpLtXNnKeuvnBchc6zteHrJkjA8bkBu9q+YwJgxKEsPXNXJuvwVC
-	6rWG/GjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A9VjI2n8hqtgoxH7xmMF+d2/mxuNpn/NUYetgidyADM=; b=ejvfhwLvid63rl9/0Qf8Bftj2Y
+	84tlb69p3XH44l+TeEnI04ZQWcdZxuVahG2WRnDifcaYQ/zCbkePlTdX89fcdNF2ErM4gtDN2rPBE
+	NiT1mno1iMBI5xcBUhwUMcPL7D9vd9pPsCVd/gmzSuSk8voyTXJFesv+eW3RUtrOC1ai4ARhPHsK/
+	OJF1NqNt3YWTS+h8XeWo9KVlZVA+aYX7HzyAqN1Yx/AauoRT+DmfqPxrFJbJ2fxsPRlDWDd23kHy8
+	W1THAAW32CBzIBwWUWHUtbRLiRT/rkH15nDq/6GywT8oDgZgBXlf7R8htaifWIIvtWlvkkq2desPQ
+	LoBNa8nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qloxz-0037e9-0S;
-	Thu, 28 Sep 2023 11:13:59 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qlqDv-003omu-2f;
+	Thu, 28 Sep 2023 12:34:31 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qloxv-0037bo-0y;
-	Thu, 28 Sep 2023 11:13:56 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C2DD76607336;
-	Thu, 28 Sep 2023 12:13:50 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695899631;
-	bh=vt+eEJt4ajZtDOlxkU9Rl6zW9Xq2pnaSuLgWUp/+gks=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=j374uUjBLK6D6A7uRZtkk/gqQbKmOpzs5AluTgfHWamDrSJ6RqIfEskZ0R6Qe9abZ
-	 jW+Kok8c5w3pkWL2hQSVTkBIiUV4H9m4xAJ+g7audG6VSoXQfNSg7mqdeK/iNU6beS
-	 xxo7SE7lFTi1Z9QMmN1IpuPOO9QOFpmqrDaksykEShVSbBqT1PYk5aTpupCdVsep8o
-	 oe+dswcxhYhmu+wbXOpzlhvqhNGv41um7BwA/0E+WpexxxFaRwVc9c3GMakWKCTmAu
-	 xKKG2z0nOLFL8Jlxk/RVf0n4uy5lv22nn/N58q31OEBhiTTtWwYmrbSr02jv1RXfSl
-	 MO7xkkUGFwGzw==
-Message-ID: <0a9b601a-dad5-358c-0555-1c10d3136826@collabora.com>
-Date: Thu, 28 Sep 2023 13:13:47 +0200
+	id 1qlqDs-003oip-0q;
+	Thu, 28 Sep 2023 12:34:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 1900DB81BE9;
+	Thu, 28 Sep 2023 12:34:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF1D0C433C7;
+	Thu, 28 Sep 2023 12:34:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695904465;
+	bh=lIDMdnTxQP7t89OuJ29zkIG40XJQFpyQ/rEb/H/3OIQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=o75VWMvbbbKxQKo1vCy3d5UsaSBKlD+JydA226K3A+uLdwMZ35vrCAVmaXBqm63SI
+	 p1hAzFivx7QnKpLR/0/O7t9U4c5y4WyJVY7GYX+ONBez4mPAc0/eBJtPPWyyMeU8iz
+	 N1rgu98RN7CALLziTxkjyhzSKokSnTdN4qIEhSHGoRzgzsX0mBvhKu38ltj+qUayrT
+	 SiqDRZSO+Y+8PjlzzdmwOeqHpcAXRp7h/ZQGhBCG8ZeMChC00ttBdIMhApSozFZKns
+	 5h0bqiF6eJHIJrIqyWb0mAhf3BFgIM+HgGgT+wG2IYa79cfhgxSROZWy6YgvnYPJS6
+	 cVjZV+q8ejSFA==
+Date: Thu, 28 Sep 2023 13:34:19 +0100
+From: Lee Jones <lee@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Mark Brown <broonie@kernel.org>,
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 01/12] dt-bindings: mfd: mt6397: Split out compatible
+ for MediaTek MT6366 PMIC
+Message-ID: <20230928123419.GG9999@google.com>
+References: <20230928085537.3246669-1-wenst@chromium.org>
+ <20230928085537.3246669-2-wenst@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH 18/31] thermal: lvts: Convert to platform remove callback
- returning void
-Content-Language: en-US
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, Balsam CHIHI
- <bchihi@baylibre.com>, Chen-Yu Tsai <wenst@chromium.org>,
- Chen Jiahao <chenjiahao16@huawei.com>, linux-pm@vger.kernel.org,
- kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230927193736.2236447-1-u.kleine-koenig@pengutronix.de>
- <20230927193736.2236447-19-u.kleine-koenig@pengutronix.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230927193736.2236447-19-u.kleine-koenig@pengutronix.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230928085537.3246669-2-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230928_041355_525831_1A714A45 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20230928_053428_457668_35ADB4D9 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,23 +81,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/09/23 21:37, Uwe Kleine-König ha scritto:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is ignored (apart
-> from emitting a warning) and this typically results in resource leaks.
-> 
-> To improve here there is a quest to make the remove callback return
-> void. In the first step of this quest all drivers are converted to
-> .remove_new(), which already returns void. Eventually after all drivers
-> are converted, .remove_new() will be renamed to .remove().
-> 
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+On Thu, 28 Sep 2023, Chen-Yu Tsai wrote:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> The MT6366 PMIC is mostly, but not fully, compatible with MT6358. It has
+> a different set of regulators. Specifically, it lacks the camera related
+> VCAM* LDOs and VLDO28, but has additional VM18, VMDDR, and VSRAM_CORE LDOs.
+> 
+> The PMICs contain a chip ID register that can be used to detect which
+> exact model is preset, so it is possible to share a common base
+> compatible string.
+> 
+> Add a separate compatible for the MT6366 PMIC, with a fallback to the
+> MT6358 PMIC.
+> 
+> Fixes: 49be16305587 ("dt-bindings: mfd: Add compatible for the MediaTek MT6366 PMIC")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
+Let me know when the other patches have been merged and I'll apply this.
 
+-- 
+Lee Jones [李琼斯]
 
