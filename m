@@ -4,116 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C78A6CE7AF7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 08:57:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A193BE732D0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 10:21:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nsBQLJ6Ogoic+1/xmfT0u8ONBi3qeWxubxgbbL3TF8o=; b=Ag8KTzCrVqWVGwcQZ/DprQvHUl
-	G58owFR8m/RI7IQZFcQFvgJWx2g1cKy1fHNxE4MiGaofIKopd6+qSL1V6iNbLfO1RWxUPe/mC3bys
-	rphouYYZxmgE8S0k0LH7ps34K7gnj9aXr2KqhkaPFRfsA8iQmS1TpAXj7k8OendHNmFGH6N/xq38D
-	dQswLMaX3/5gbP+6jAjz4lT8SAd+CXh1+WASewqMd7Rf/93tohMOeQPwQ+YfvebLVuSZRLaPY8Dux
-	DY8o1JvAqZ9ef///y7TTQDuyc7pBK2Ym+jhfsqjR+rf/brVXg7UtA5SJnEzbyi9uUgD0tmOEErSq6
-	0Qgu2ExA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lKFoxdRkLTqqeQsvh4AvyUof9cGGj7cAggKCqCouSAA=; b=UuujDqz+UFvTMM+Ch/ZrfG4xRP
+	dK+E4ruiWX2Fh8As8cEs/Zedc8DccTUXzziA/d9RT4PCRpY5MXipbWkRSNW5XQAFjtzZfdzMhZ1wY
+	PMn8j1IBEeJmc/3KAb6YgjyKsmCPbU6pX/qeS+8NrNNm7FiqYsuhoMeAoIUSYfCj4cJ5ED5/1NELv
+	4pvmlAjq7acUkTwQSM8kzhXZUcf+AwoIGqH/PH0JjHziejDT9wuNS+ipDdnHN10iRoKhEFbfFjlWR
+	t5w3Yl9otBCb5o2XRmqolpVtYGgDOBFz0l4h7Tf6LdBXqAAnzmfTIhnlyEoqVPOIP3VGP/NOMS/QQ
+	Ab//RzQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qm9Js-007QIu-1r;
-	Fri, 29 Sep 2023 08:57:56 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1qmAd2-007XGt-1Z;
+	Fri, 29 Sep 2023 10:21:48 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qm9Jm-007QEv-2b
-	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Sep 2023 08:57:53 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-9a58dbd5daeso1850076066b.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 29 Sep 2023 01:57:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695977866; x=1696582666; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nsBQLJ6Ogoic+1/xmfT0u8ONBi3qeWxubxgbbL3TF8o=;
-        b=AeqaMFkiDHXOP2hAgSpk1f7k9d+jk9qtWTlqlL1REBRGzIuzfgnaWqD6lGNlOv09Rt
-         f+9h4TMT7j277vTuB+qQLafIc034IuUzhR81CkJZJkaw//YbXogsBGFPFoiepI6lgHnp
-         MEwkfRrcExn+f5PKDfTAKooB8iL7T8A4S9ExPFf1jwmfp4PwFrw/x9ipL8JFuVA1B6bJ
-         u28Zt5l/pNiRTyiTz52c4ktrCbetJm0WSUb1++AAvUhPU9i7/DSeuB2ucvyBQELl8xYv
-         IjoqRf3zaxvVFqyJCsyHGJhypyZtLk5V7AN7k9DrhLLtZNfSjjD3OBqORRDpOv+kWUvl
-         Jhvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695977866; x=1696582666;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nsBQLJ6Ogoic+1/xmfT0u8ONBi3qeWxubxgbbL3TF8o=;
-        b=SlIFAlF9rnHiwIs0myuTF1YhLS0KgPKHQo1X/7g8uMEuikGBPzTOh/1gKmumCLnP/p
-         7FsTICOo7uQ4x4pTOoZQGfh1b1nUjtH7l3od/iP6pfPoBwmpAtgoJGiG5QmFf0ACw/ve
-         3KgrRvglOotqaYRjFVdgPXzUqAbIQUXwnJGLLSi0+DfXzlT54wuIaO6j/6iZlUkXbf39
-         zeQrNyDmrxieNE3ZYUfDqqOTUhciUbwEE+dWtCnRx3gpm4UD5OqOH2+cBnHmT5ZbldfZ
-         HfhRsQ0rIBx7aHISKIe2xl//LoWwf6eIQZ02CLo2VXdQZSSj10F5uQv0Fowpw0w8Fhe9
-         xL0A==
-X-Gm-Message-State: AOJu0YxkW75dk4TwzTk5oitWENoQzP9xwXw1pY7c/mv4CYhcpcW0gVEi
-	CWZLLbzZq+5834cUU6oFhAeTeg==
-X-Google-Smtp-Source: AGHT+IEsrmtSBffKc4/0WejFkmq1arFW3oxGMi3C1GOThUgoHMTSmFySeXvpixD0/kTwmWhaMqbTUQ==
-X-Received: by 2002:a17:906:28e:b0:9b2:b749:ff93 with SMTP id 14-20020a170906028e00b009b2b749ff93mr2957352ejf.24.1695977866113;
-        Fri, 29 Sep 2023 01:57:46 -0700 (PDT)
-Received: from srini-hackbase.lan ([5.133.47.210])
-        by smtp.gmail.com with ESMTPSA id w27-20020a17090633db00b009a2235ed496sm12339806eja.141.2023.09.29.01.57.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Sep 2023 01:57:45 -0700 (PDT)
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-To: =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>, 
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Claudiu Beznea <claudiu.beznea@microchip.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, 
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
- Masami Hiramatsu <mhiramat@kernel.org>, 
- Alessandro Zummo <a.zummo@towertech.it>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org, 
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev, 
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
- linux-rtc@vger.kernel.org, Michael Walle <michael@walle.cc>, 
- =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, 
- Michal Simek <michal.simek@amd.com>
-In-Reply-To: <20230927204446.4231-1-zajec5@gmail.com>
-References: <20230927204446.4231-1-zajec5@gmail.com>
-Subject: Re: [PATCH V5] nvmem: add explicit config option to read old
- syntax fixed OF cells
-Message-Id: <169597786418.99756.8731565742524355843.b4-ty@linaro.org>
-Date: Fri, 29 Sep 2023 09:57:44 +0100
+	id 1qmAd1-007XGe-0D;
+	Fri, 29 Sep 2023 10:21:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=lKFoxdRkLTqqeQsvh4AvyUof9cGGj7cAggKCqCouSAA=; b=gA0Cs9nTbER/aLaPoARGDChZIo
+	DlEKlFIYmOxPXeqSq5duqn6lp0RSdXtgimVz/R7EMh/kvP/+f55x3MBatV3vZS+VvgLJ3T+Gc7Shs
+	K9hZOM2qHLX8wbOIWSpfOnX/xc3iMqYpqoh88ZHPBfwiyz31XGMELjqzzusTQxYeRVO5yQDemr0L+
+	W0Z3EeDT/wGRtQOnMU/IVP5+K8sX7dg3XasOa19hrxOrA68VZSa4zDSWKSKgRD9t5FjvuGSnnIW4y
+	cjyuRvaDSxmNkvzC0k1BQE+0Wz/OUfEsQAXB7y0tSVnv80kg+bOnddD8dRtZ7oPLs8l5WVWOjQM3F
+	dTKwOFEA==;
+Received: from j130084.upc-j.chello.nl ([24.132.130.84] helo=noisy.programming.kicks-ass.net)
+	by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+	id 1qmAco-0062Tw-2C;
+	Fri, 29 Sep 2023 10:21:37 +0000
+Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
+	id C867730030F; Fri, 29 Sep 2023 12:21:35 +0200 (CEST)
+Date: Fri, 29 Sep 2023 12:21:35 +0200
+From: Peter Zijlstra <peterz@infradead.org>
+To: Kuyo Chang =?utf-8?B?KOW8teW7uuaWhyk=?= <Kuyo.Chang@mediatek.com>
+Cc: "dietmar.eggemann@arm.com" <dietmar.eggemann@arm.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"rostedt@goodmis.org" <rostedt@goodmis.org>,
+	wsd_upstream <wsd_upstream@mediatek.com>,
+	"vschneid@redhat.com" <vschneid@redhat.com>,
+	"bristot@redhat.com" <bristot@redhat.com>,
+	"juri.lelli@redhat.com" <juri.lelli@redhat.com>,
+	"mingo@redhat.com" <mingo@redhat.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"bsegall@google.com" <bsegall@google.com>,
+	"mgorman@suse.de" <mgorman@suse.de>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"vincent.guittot@linaro.org" <vincent.guittot@linaro.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 1/1] sched/core: Fix stuck on completion for
+ affine_move_task() when stopper disable
+Message-ID: <20230929102135.GD6282@noisy.programming.kicks-ass.net>
+References: <20230927033431.12406-1-kuyo.chang@mediatek.com>
+ <20230927080850.GB21824@noisy.programming.kicks-ass.net>
+ <b9def8f3d9426bc158b302f4474b6e643b46d206.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.12.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230929_015750_858233_AFDC4CAE 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <b9def8f3d9426bc158b302f4474b6e643b46d206.camel@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,24 +85,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Sep 27, 2023 at 03:57:35PM +0000, Kuyo Chang (張建文) wrote:
 
-On Wed, 27 Sep 2023 22:44:46 +0200, Rafał Miłecki wrote:
-> Binding for fixed NVMEM cells defined directly as NVMEM device subnodes
-> has been deprecated. It has been replaced by the "fixed-layout" NVMEM
-> layout binding.
-> 
-> New syntax is meant to be clearer and should help avoiding imprecise
-> bindings.
-> 
-> [...]
+> This issue occurs at CPU hotplug/set_affinity stress test.
+> The reproduce ratio is very low(about once a week).
 
-Applied, thanks!
+I'm assuming you're running an arm64 kernel with preempt_full=y (the
+default for arm64).
 
-[1/1] nvmem: add explicit config option to read old syntax fixed OF cells
-      commit: ee73a9fae540adbb432bd2854a82409515c7c892
+Could you please test the below?
 
-Best regards,
--- 
-Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index d8fd29d66b24..079a63b8a954 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -2645,9 +2645,11 @@ static int migration_cpu_stop(void *data)
+ 		 * it.
+ 		 */
+ 		WARN_ON_ONCE(!pending->stop_pending);
++		preempt_disable();
+ 		task_rq_unlock(rq, p, &rf);
+ 		stop_one_cpu_nowait(task_cpu(p), migration_cpu_stop,
+ 				    &pending->arg, &pending->stop_work);
++		preempt_enable();
+ 		return 0;
+ 	}
+ out:
+@@ -2967,12 +2969,13 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
+ 			complete = true;
+ 		}
+ 
++		preempt_disable();
+ 		task_rq_unlock(rq, p, rf);
+-
+ 		if (push_task) {
+ 			stop_one_cpu_nowait(rq->cpu, push_cpu_stop,
+ 					    p, &rq->push_work);
+ 		}
++		preempt_enable();
+ 
+ 		if (complete)
+ 			complete_all(&pending->done);
+@@ -3038,12 +3041,13 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
+ 		if (flags & SCA_MIGRATE_ENABLE)
+ 			p->migration_flags &= ~MDF_PUSH;
+ 
++		preempt_disable();
+ 		task_rq_unlock(rq, p, rf);
+-
+ 		if (!stop_pending) {
+ 			stop_one_cpu_nowait(cpu_of(rq), migration_cpu_stop,
+ 					    &pending->arg, &pending->stop_work);
+ 		}
++		preempt_enable();
+ 
+ 		if (flags & SCA_MIGRATE_ENABLE)
+ 			return 0;
+@@ -9459,6 +9461,7 @@ static void balance_push(struct rq *rq)
+ 	 * Temporarily drop rq->lock such that we can wake-up the stop task.
+ 	 * Both preemption and IRQs are still disabled.
+ 	 */
++	preempt_disable();
+ 	raw_spin_rq_unlock(rq);
+ 	stop_one_cpu_nowait(rq->cpu, __balance_push_cpu_stop, push_task,
+ 			    this_cpu_ptr(&push_work));
+@@ -9468,6 +9471,7 @@ static void balance_push(struct rq *rq)
+ 	 * which kthread_is_per_cpu() and will push this task away.
+ 	 */
+ 	raw_spin_rq_lock(rq);
++	preempt_enable();
+ }
+ 
+ static void balance_push_set(int cpu, bool on)
 
