@@ -4,59 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF5C1E728C5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 16:19:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F032E728C5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 16:20:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/7a6k3tAgqXj/5nxJNFDLMmiggV9+lpXALcuey9Wboo=; b=OF7R2BOR8wn5HuelFlzRX/IVaj
-	xkCVEYmivqVLzkHR2NrIwd2FaQWs55yktBxGWywW7oLjwsUS9vyPi/LW2yY5/jT3DLt0w+NLA04/n
-	9EHdBsMzbMmc9kctGDT5lQ09cCbZgPAyeyzhRsmTe6Y6QBpH86PjvLHvzfLJ8RjInXVgkaKZDqFig
-	SCM5CHZGGR8iZTtKoVMJEZskxHE2PcXbO33BxKlqPBF308jDtpAqzFCflhpxfRjaYtMzPfg9ipS2F
-	J5fagud3HQldaUFyE7ER8F/Vufe2M4+7J8WR6EVhATGwWqAx26UY//BZbFjx9FEl7Yjzrfump53uy
-	acWfiAdQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZMRSMKnlrD1U3dbDKV3ZsfG+9Qa09KW7w4mJFQSQLNU=; b=pnRtqQmCZ3hiRsi4aGfleQqJSy
+	gXUr84NsBG4Ivbk7qT7PARen25JHicbUjps/27Gs/TIGVHKudIxNvDL9PN8dbdxktvi/csh04hazG
+	2J7doTAzVDK7H6bNZlu+ddmy2fY7HYD98SQx/5N7ifcg/qkJb+OPJryk7Iy+/UbPKT4xjDs6rkPfZ
+	eAdNQ3804BjDsIRKZPiUNLCMjs94WMT1A1WQk15IUDyYOG35rA0lUG1ZIt595ipmXgYOJo2aaSUtb
+	aTrZXQrwQ9+b9KK3OkRfknfNdD0ir5ejcHKiPaaP/U63cPBL2hk+zVcpD6ZLdd0zRAS9+JOlhDIai
+	1d3sqVrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmGDS-008HAq-1H;
-	Fri, 29 Sep 2023 16:19:46 +0000
+	id 1qmGDm-008HIX-11;
+	Fri, 29 Sep 2023 16:20:06 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmGDB-008H5E-22
+	id 1qmGDD-008H6r-2T
 	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Sep 2023 16:19:31 +0000
+	Fri, 29 Sep 2023 16:19:33 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qmGD5-0007o4-GR; Fri, 29 Sep 2023 18:19:23 +0200
+	id 1qmGD6-0007mo-1p; Fri, 29 Sep 2023 18:19:24 +0200
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qmGD5-009r5c-3Q; Fri, 29 Sep 2023 18:19:23 +0200
+	id 1qmGD4-009r5J-2y; Fri, 29 Sep 2023 18:19:22 +0200
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qmGD4-006165-QO; Fri, 29 Sep 2023 18:19:22 +0200
+	id 1qmGD3-00615m-Ou; Fri, 29 Sep 2023 18:19:21 +0200
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+Cc: Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
 	linux-pwm@vger.kernel.org,
-	kernel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 05/11] pwm: mtk-disp: Simplify using devm_pwmchip_add()
-Date: Fri, 29 Sep 2023 18:19:12 +0200
-Message-Id: <20230929161918.2410424-6-u.kleine-koenig@pengutronix.de>
+	kernel@pengutronix.de,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	linux-rpi-kernel@lists.infradead.org,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	linux-samsung-soc@vger.kernel.org,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	chrome-platform@lists.linux.dev
+Subject: [PATCH 00/11] pwm: Some random cleanups
+Date: Fri, 29 Sep 2023 18:19:07 +0200
+Message-Id: <20230929161918.2410424-1-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230929161918.2410424-1-u.kleine-koenig@pengutronix.de>
-References: <20230929161918.2410424-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2196; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=J2X1TCgGm2aiqZ1DsX5bUui3ufiRtvhRg3HnY+fgzOs=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlFvj54D2J0JZGcHBTpeSmu5Mae16b94F5WOmVo 8PHPZe9K+OJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZRb4+QAKCRCPgPtYfRL+ TrIqB/9hQa72vyvBBSQ/n+Cx0Zvc7D1UUcOtRDbErHARp2Cx9dBlB/s9aVRGHAwIOatI+D+x/ux di1XfnnjLvpj81RMSVOZRRU/edU8HCobPdH56lBHyCEV+AR9DcKQlkquo67RN8iB8h7Jq3bzO8l Jk6DzEUsH6u+afQpGm/8i6Aox9UcxdDkF7jq2Uqu3jO5r/s3RH386wbDK25CNh2SKp+hBvPolqI 72ZK0jp1MQCfgIvqwx7TeV1UQ+KXmx0MglzyATwPmO+SUrfgwm6yihukDdWVQtG2swSQobKsQzk oNfWwZ2SRi4l0vTDdCPHGbsXCgpGvB6tuwaleRJYvqA12E1R
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1447; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=EU2LjIzzIEw1uOSkgKF6jDTiS5CXMLB75+qFfOk57jI=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlFvj0VfUlmGHNT0hrh6Yv9rwSiuxTi4ATgbZcq HPOTBZ67PiJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZRb49AAKCRCPgPtYfRL+ TlSiB/9Njt9Jdg9B7UzciPo87WQq9tGAbpUf6QFamH+saJ1AQm4yHL6lCd2oMFbBFlkLpalWp5Q Ynhb2OC//zWV/w66/9erqdkKn5LTizfPsEJWy5ED6PvZi4fUxWdYy+oihDDO5fnq0xCqXClqL4t W38Mvf9eGBlF+7GR+xlsYLtTgFvLoCHgWXvshv0IbIxpNGWL5ECEeZLNLWODax95gD2jb4vhIQS jtStovnFEYHljix7uE8O6A8ls/IcFj2TQ/Lr9HJ3hiUIjgYRLCLnOIvb4mdZllSmudbdVQAlKqN gBs2FuQnXjr2XEPOQhb9hEh41lHHoB9/iMUdDKfXZP/hw29+
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -64,8 +80,9 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230929_091929_715610_86162CF9 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20230929_091931_842493_36472B1F 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,72 +97,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With devm_pwmchip_add() pwmchip_remove() can be dropped from the remove
-callback. Then the remove callback is empty and can go away, too. With
-mtk_disp_pwm_remove() the last user of platform_get_drvdata() is gone and
-so platform_set_drvdata() can be dropped, too.
+Hello,
 
-Also use dev_err_probe() for simplified (and improved) error reporting.
+this is a set of patches I based my efforts for closing a race condition
+in the pwm core on. I thought I already sent them out, but it seems I
+didn't. So here they come!
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/pwm/pwm-mtk-disp.c | 24 +++++++-----------------
- 1 file changed, 7 insertions(+), 17 deletions(-)
+Best regards
+Uwe
 
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index a83bd6e18b07..e34fb4409695 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -247,34 +247,25 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
- 
- 	mdp->clk_main = devm_clk_get(&pdev->dev, "main");
- 	if (IS_ERR(mdp->clk_main))
--		return PTR_ERR(mdp->clk_main);
-+		return dev_err_probe(&pdev->dev, PTR_ERR(mdp->clk_main),
-+				     "Failed to get main clock\n");
- 
- 	mdp->clk_mm = devm_clk_get(&pdev->dev, "mm");
- 	if (IS_ERR(mdp->clk_mm))
--		return PTR_ERR(mdp->clk_mm);
-+		return dev_err_probe(&pdev->dev, PTR_ERR(mdp->clk_mm),
-+				     "Failed to get mm clock\n");
- 
- 	mdp->chip.dev = &pdev->dev;
- 	mdp->chip.ops = &mtk_disp_pwm_ops;
- 	mdp->chip.npwm = 1;
- 
--	ret = pwmchip_add(&mdp->chip);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "pwmchip_add() failed: %pe\n", ERR_PTR(ret));
--		return ret;
--	}
--
--	platform_set_drvdata(pdev, mdp);
-+	ret = devm_pwmchip_add(&pdev->dev, &mdp->chip);
-+	if (ret < 0)
-+		return dev_err_probe(&pdev->dev, ret, "pwmchip_add() failed\n");
- 
- 	return 0;
- }
- 
--static void mtk_disp_pwm_remove(struct platform_device *pdev)
--{
--	struct mtk_disp_pwm *mdp = platform_get_drvdata(pdev);
--
--	pwmchip_remove(&mdp->chip);
--}
--
- static const struct mtk_pwm_data mt2701_pwm_data = {
- 	.enable_mask = BIT(16),
- 	.con0 = 0xa8,
-@@ -320,7 +311,6 @@ static struct platform_driver mtk_disp_pwm_driver = {
- 		.of_match_table = mtk_disp_pwm_of_match,
- 	},
- 	.probe = mtk_disp_pwm_probe,
--	.remove_new = mtk_disp_pwm_remove,
- };
- module_platform_driver(mtk_disp_pwm_driver);
- 
+Uwe Kleine-König (11):
+  pwm: bcm-iproc: Simplify using devm functions
+  pwm: bcm2835: Simplify using devm functions
+  pwm: brcmstb: Simplify using devm functions
+  pwm: imx-tpm: Simplify using devm functions
+  pwm: mtk-disp: Simplify using devm_pwmchip_add()
+  pwm: spear: Simplify using devm functions
+  pwm: sprd: Provide a helper to cast a chip to driver data
+  pwm: sprd: Simplify using devm_pwmchip_add() and dev_err_probe()
+  pwm: vt8500: Simplify using devm functions
+  pwm: samsung: Consistently use the same name for driver data
+  pwm: cros-ec: Simplify using devm_pwmchip_add() and dev_err_probe()
+
+ drivers/pwm/pwm-bcm-iproc.c |  37 +++-------
+ drivers/pwm/pwm-bcm2835.c   |  27 ++------
+ drivers/pwm/pwm-brcmstb.c   |  42 +++---------
+ drivers/pwm/pwm-cros-ec.c   |  33 +++------
+ drivers/pwm/pwm-imx-tpm.c   |  29 ++------
+ drivers/pwm/pwm-mtk-disp.c  |  24 ++-----
+ drivers/pwm/pwm-samsung.c   | 130 ++++++++++++++++++------------------
+ drivers/pwm/pwm-spear.c     |  40 +++--------
+ drivers/pwm/pwm-sprd.c      |  28 +++-----
+ drivers/pwm/pwm-vt8500.c    |  42 +++---------
+ 10 files changed, 137 insertions(+), 295 deletions(-)
+
+base-commit: 0bb80ecc33a8fb5a682236443c1e740d5c917d1d
 -- 
 2.40.1
 
