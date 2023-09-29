@@ -4,58 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35404E71D2D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 13:17:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB5CE71D3D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 13:58:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vHqiM6+znV+QbPcPoVf+IiDUtlTN+uC4kw8OKe9XhKA=; b=evG975jUm3rWXYLU+UMbT6Awy8
-	MuBFAt1IrFWm4hicdFXAp9vYcCFx8X0P2ewk+HdbBZ/ZeA+popNd8y0zwB2/l0BbpUErWtgi+H3l0
-	y2ccCMqqcPB6E0kvoTi+z85UBekAoL/WDqV2kz9F5+oprxwlqY3hNw3U3yGmKbDi+lKVSg6DXS/RG
-	NuWoP7zld/HcnmL7VLbUmEtZX/02DIGjbW/guXTbgVZoUVB/J5N9f9semTnzy41zsmIPv6KydyTsq
-	lG8Pt618i/LUkZ/6+feVZfOUr+A2zlHyxRYozNDbYKBOUQrvdGq+12wH+kmBfhIIOZ0rARcZja8Th
-	R5CXyRGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wAuJIldlylLazF8i3TScbNcboOUKZBtuM6a9TiCJGNo=; b=ovjHWRYmoCaZ0dmAuJn//FZsxR
+	lyRLuw5DPa3PXfu/YeOfRIYoXGHOuLAODQZDL7q7VaC2D2PVmJ/2qK4Hib0KAhTwDTVE1dMM835hN
+	2eqAz7NlYmA4BFV6ejqWLJZxb1oa/uW+tK4dF3EZ1NkYNy3Uq32uvObUsLLqwwxRxWKSQQVGPvFWh
+	kYjanA46DK2/7rvF8rJXK8hLuvlnGPNuVT0WbAe7GBxxmhsNHK+i0z4Ia/MuyIH3WGLHP+6SfP9lW
+	TKjMhL8abDtTTn7MOH8iJ9rRoMZMG4KpqNXg2b/nUWtrXsHBlKmVdlFF8njAFQgwwz8vBbt4Tiw1o
+	G3+k5L6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmDMu-007wsY-23;
-	Fri, 29 Sep 2023 13:17:20 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qmE11-0080Yi-0b;
+	Fri, 29 Sep 2023 13:58:47 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmDMp-007wr7-2O;
-	Fri, 29 Sep 2023 13:17:18 +0000
+	id 1qmE0w-0080Wq-13;
+	Fri, 29 Sep 2023 13:58:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E7669CE2428;
-	Fri, 29 Sep 2023 13:17:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3ED1BC433C7;
-	Fri, 29 Sep 2023 13:17:10 +0000 (UTC)
-Message-ID: <9c38c002-8452-4fb7-a7ee-cc8e9e1b849e@xs4all.nl>
-Date: Fri, 29 Sep 2023 15:17:08 +0200
+	by sin.source.kernel.org (Postfix) with ESMTP id 2F504CE246D;
+	Fri, 29 Sep 2023 13:58:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0392C433C8;
+	Fri, 29 Sep 2023 13:58:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695995917;
+	bh=CHEXPlpFmHD8rVxXqeAQGRdFG1pNx0Kk9AeUvrx4txE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jICsUAQdJA2wHFVYpRu0kl90yxId8Gfhtvm1Jl/X6SJ+/DXMq/vjzap5vOuFTtwjh
+	 +QzG99dKnAyH85c+D0/GnH0CxZ4mdGim0f+7MsehocvKAFmSRnkmao0TU1hnCm3td7
+	 wnznvXqRkOfqKzo6wDlV+xrDRrjmKlBSQnVla0W6zbK3aQ+GLbiNaMsqnjUuK0dT2l
+	 EsIcZ7mC4cEw6wRZ3y4PcPckx75TRQDVLRrcrkE691z6isF1B9xWAnYOIRU73y1954
+	 TkddNsCTIAjNYTDQuzD0ZFVdRS3WWXA6EMUhRQ/Q2xanFqKF+ovZKvS4hubVD62yld
+	 y+ZdJ/cft3Q9w==
+Date: Fri, 29 Sep 2023 14:58:31 +0100
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Moudy Ho =?utf-8?B?KOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
+	"conor.dooley@microchip.com" <conor.dooley@microchip.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"mchehab@kernel.org" <mchehab@kernel.org>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>,
+	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"airlied@gmail.com" <airlied@gmail.com>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v6 12/16] dt-bindings: display: mediatek: color: add
+ compatible for MT8195
+Message-ID: <20230929-renewably-landing-3f5a1d2eb27c@spud>
+References: <20230922072116.11009-1-moudy.ho@mediatek.com>
+ <20230922072116.11009-13-moudy.ho@mediatek.com>
+ <20230922-zebra-modify-87ff23c70bb3@spud>
+ <20230922-overhung-deception-e9b461ba0372@spud>
+ <7c445195e17e15d5af5fcb30ae53f76c713e958b.camel@mediatek.com>
+ <20230927-crunching-prancing-36fe3eb79607@wendy>
+ <825ac03b692043d48563620ad9542a4ee43211e7.camel@mediatek.com>
+ <20230928-keep-attractor-1e7cd0df03b2@spud>
+ <7dbadd86-f408-bc94-92fc-22f460eebb43@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 00/53] Add DELETE_BUF ioctl
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
- <ce043b11-aea9-4127-ba00-6c351651dc1e@xs4all.nl>
- <5cc5a999-e22d-4ef8-c857-ffd77630eeb9@collabora.com>
- <38ec1120-7c92-833b-6e59-35086f4a3c10@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <38ec1120-7c92-833b-6e59-35086f4a3c10@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="/VzKeb9rEqhIUOcg"
+Content-Disposition: inline
+In-Reply-To: <7dbadd86-f408-bc94-92fc-22f460eebb43@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230929_061716_116649_4702ADEF 
-X-CRM114-Status: GOOD (  29.66  )
+X-CRM114-CacheID: sfid-20230929_065842_714317_28E1D80C 
+X-CRM114-Status: GOOD (  52.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,198 +96,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/09/2023 13:44, Benjamin Gaignard wrote:
-> 
-> Le 28/09/2023 à 15:16, Benjamin Gaignard a écrit :
->>
->> Le 28/09/2023 à 15:04, Hans Verkuil a écrit :
->>> Hi Benjamin,
->>>
->>> On 27/09/2023 17:35, Benjamin Gaignard wrote:
->>>> Unlike when resolution change on keyframes, dynamic resolution change
->>>> on inter frames doesn't allow to do a stream off/on sequence because
->>>> it is need to keep all previous references alive to decode inter frames.
->>>> This constraint have two main problems:
->>>> - more memory consumption.
->>>> - more buffers in use.
->>>> To solve these issue this series introduce DELETE_BUFS ioctl and remove
->>>> the 32 buffers limit per queue.
->>>>
->>>> VP9 conformance tests using fluster give a score of 210/305.
->>>> The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
->>>> but require to use postprocessor.
->>>>
->>>> Kernel branch is available here:
->>>> https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v8
->>>>
->>>> GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
->>>> change is here:
->>>> https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
->>> I applied patches 1-46 on top of staging and applied patch 1/2 of v4l-utils. I chose
->>> 1-46 since those would be the first batch to be merged.
->>>
->>> I had to apply a small patch on top, since amphion was still using max_allowed_buffers:
->>>
->>> https://git.linuxtv.org/hverkuil/media_tree.git/commit/?h=delbuf&id=fce79aa0239a3a4e5c7634b9b7ffc356057b70b4
->>>
->>> With that change everything compiled cleanly.
->>>
->>> But running the regression tests (test-media script) failed with a kernel oops:
->>>
->>> Buffer ioctls (Input 0):
->>>                  fail: v4l2-test-buffers.cpp(611): q.reqbufs(node, 1)
->>>          test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: FAIL
->>> [   25.309343] general protection fault, probably for non-canonical address 0xdffffc0000000001: 0000 [#1] PREEMPT SMP DEBUG_PAGEALLOC KASAN
->>> [   25.310067] KASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]
->>> [   25.310471] CPU: 0 PID: 187 Comm: v4l2-compliance Not tainted 6.6.0-rc3+ #1
->>> [   25.310837] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.2-debian-1.16.2-1 04/01/2014
->>> [   25.311334] RIP: 0010:__vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
->>> [   25.311688] Code: 89 f8 48 c1 e8 03 80 3c 18 00 0f 85 0c 07 00 00 49 8b b7 40 01 00 00 44 89 f0 4c 8d 2c c6 41 39 ce 73 18 4c 89 e8 48 c1 e8 03 <80> 3c 18 00 0f 85 d2 08 00 00 49 83 7d 00 00 74 02
->>> 0f 0b 4c 89 e8
->>> [   25.312670] RSP: 0018:ffff88810afef930 EFLAGS: 00010212
->>> [   25.312948] RAX: 0000000000000001 RBX: dffffc0000000000 RCX: 0000000000000040
->>> [   25.313331] RDX: ffff88810ce08814 RSI: 0000000000000000 RDI: ffff88810cfb72e0
->>> [   25.313708] RBP: ffff88810ce08800 R08: 0000000000001800 R09: 0000000000000001
->>> [   25.314097] R10: ffffffff91560b0f R11: ffffffff8f40006a R12: ffff88810afefa74
->>> [   25.314470] R13: 0000000000000008 R14: 0000000000000001 R15: ffff88810cfb71a0
->>> [   25.314854] FS:  00007fa524908440(0000) GS:ffff88811aa00000(0000) knlGS:0000000000000000
->>> [   25.315281] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
->>> [   25.315594] CR2: 0000562855948270 CR3: 0000000109e21000 CR4: 0000000000350ef0
->>> [   25.315982] Call Trace:
->>> [   25.316122]  <TASK>
->>> [   25.316243]  ? die_addr+0x37/0xa0
->>> [   25.316433]  ? exc_general_protection+0x144/0x210
->>> [   25.316693]  ? asm_exc_general_protection+0x22/0x30
->>> [   25.316955]  ? entry_SYSCALL_64_after_hwframe+0x46/0xb0
->>> [   25.317235]  ? __vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
->>> [   25.317555]  vb2_core_create_bufs+0x5a0/0xce0 [videobuf2_common]
->>> [   25.317879]  ? __vb2_queue_alloc+0xd00/0xd00 [videobuf2_common]
->>> [   25.318213]  vb2_create_bufs+0x680/0x7f0 [videobuf2_v4l2]
->>> [   25.318506]  ? __kasan_kmalloc+0x83/0x90
->>> [   25.318729]  ? __kmalloc+0x5c/0x150
->>> [   25.318924]  ? __video_do_ioctl+0x3a5/0xc20 [videodev]
->>> [   25.319223]  ? __copy_timestamp+0x270/0x270 [videobuf2_v4l2]
->>> [   25.319532]  ? v4l_sanitize_format+0x121/0x340 [videodev]
->>> [   25.319839]  vb2_ioctl_create_bufs+0x280/0x440 [videobuf2_v4l2]
->>> [   25.320162]  ? check_fmt+0x15/0x5e0 [videodev]
->>> [   25.320420]  v4l_create_bufs+0xa8/0x150 [videodev]
->>> [   25.320693]  __video_do_ioctl+0x8d0/0xc20 [videodev]
->>> [   25.320975]  ? v4l_prepare_buf+0xa0/0xa0 [videodev]
->>> [   25.321250]  ? __might_fault+0x112/0x170
->>> [   25.321463]  ? __might_fault+0x112/0x170
->>> [   25.321675]  video_usercopy+0x48c/0xd00 [videodev]
->>> [   25.321949]  ? v4l_prepare_buf+0xa0/0xa0 [videodev]
->>> [   25.322228]  ? v4l_enumstd+0x60/0x60 [videodev]
->>> [   25.322497]  ? selinux_bprm_creds_for_exec+0xa90/0xa90
->>> [   25.322779]  ? rseq_ip_fixup+0x304/0x480
->>> [   25.322995]  ? __up_read+0x10b/0x750
->>> [   25.323201]  ? rseq_get_rseq_cs+0x680/0x680
->>> [   25.323430]  v4l2_ioctl+0x17f/0x1f0 [videodev]
->>> [   25.323689]  __x64_sys_ioctl+0x127/0x190
->>> [   25.323905]  do_syscall_64+0x35/0x80
->>> [   25.324105]  entry_SYSCALL_64_after_hwframe+0x46/0xb0
->>> [   25.324372] RIP: 0033:0x7fa524bf44eb
->>> [   25.324564] Code: 00 48 89 44 24 18 31 c0 48 8d 44 24 60 c7 04 24 10 00 00 00 48 89 44 24 08 48 8d 44 24 20 48 89 44 24 10 b8 10 00 00 00 0f 05 <89> c2 3d 00 f0 ff ff 77 1c 48 8b 44 24 18 64 48 2b
->>> 04 25 28 00 00
->>> [   25.325533] RSP: 002b:00007ffc888efee0 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
->>> [   25.325933] RAX: ffffffffffffffda RBX: 00007ffc888f0350 RCX: 00007fa524bf44eb
->>> [   25.326314] RDX: 00007ffc888effb0 RSI: 00000000c100565c RDI: 0000000000000023
->>> [   25.326702] RBP: 00007ffc888f8550 R08: 0000000000000000 R09: 0000000000000001
->>> [   25.327081] R10: 0000000000000016 R11: 0000000000000246 R12: 0000000000000000
->>> [   25.327468] R13: 0000000000000001 R14: 00007ffc888f8010 R15: 00007ffc888f1790
->>> [   25.327852]  </TASK>
->>> [   25.327979] Modules linked in: vivid videobuf2_dma_contig v4l2_tpg v4l2_dv_timings cec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videodev videobuf2_common mc rc_core
->>> [   25.328835] ---[ end trace 0000000000000000 ]---
->>> [   25.329083] RIP: 0010:__vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
->>> [   25.329434] Code: 89 f8 48 c1 e8 03 80 3c 18 00 0f 85 0c 07 00 00 49 8b b7 40 01 00 00 44 89 f0 4c 8d 2c c6 41 39 ce 73 18 4c 89 e8 48 c1 e8 03 <80> 3c 18 00 0f 85 d2 08 00 00 49 83 7d 00 00 74 02
->>> 0f 0b 4c 89 e8
->>> [   25.330417] RSP: 0018:ffff88810afef930 EFLAGS: 00010212
->>> [   25.330812] RAX: 0000000000000001 RBX: dffffc0000000000 RCX: 0000000000000040
->>> [   25.331194] RDX: ffff88810ce08814 RSI: 0000000000000000 RDI: ffff88810cfb72e0
->>> [   25.331594] RBP: ffff88810ce08800 R08: 0000000000001800 R09: 0000000000000001
->>> [   25.331978] R10: ffffffff91560b0f R11: ffffffff8f40006a R12: ffff88810afefa74
->>> [   25.332360] R13: 0000000000000008 R14: 0000000000000001 R15: ffff88810cfb71a0
->>> [   25.332746] FS:  00007fa524908440(0000) GS:ffff88811aa00000(0000) knlGS:0000000000000000
->>> [   25.333170] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
->>> [   25.333486] CR2: 0000562855948270 CR3: 0000000109e21000 CR4: 0000000000350ef0
->>> [   25.333861] Kernel panic - not syncing: Fatal exception
->>> [   25.334179] Kernel Offset: 0xbe00000 from 0xffffffff81000000 (relocation range: 0xffffffff80000000-0xffffffffbfffffff)
->>> [   25.334748] Rebooting in 30 seconds..
->>>
->>> I use the build scripts as described here:
->>>
->>> https://lore.kernel.org/linux-media/18989016-6392-a77b-6cf7-1223c9161def@xs4all.nl/
->>>
->>> I use this command to run the regression tests:
->>>
->>> ./build.sh -virtme -virtme-utils-path /usr/local/bin none delbuf
->>>
->>> (delbuf is the name of my branch)
->>>
->>> I don't really want to spend time reviewing this series until this is fixed...
->>
->> Yes that make sense.
->> It will work on it and let you now when I had fix it.
->> Regards,
->> Benjamin
-> 
-> This patch fix the problem:
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index 320f37e46343..0598c1e4e9b5 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -428,6 +428,8 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
->   */
->  static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
->  {
-> +    if (vb->vb2_queue->num_buffers)
-> +        vb->vb2_queue->num_buffers--;
->      vb->vb2_queue->bufs[vb->index] = NULL;
->      vb->vb2_queue = NULL;
->  }
-> @@ -641,8 +643,8 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
->  #endif
-> 
->      /* Free vb2 buffers */
-> -    for (i = q->max_num_buffers, buffer = 0; i > 0 && buffer < buffers; i--) {
-> -        struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
-> +    for (i = q->max_num_buffers, buffer = 0; i >= 0 && buffer < buffers; i--) {
-> +        struct vb2_buffer *vb = vb2_get_buffer(q, i);
-> 
->          if (!vb)
->              continue;
-> @@ -2541,6 +2543,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
->      __vb2_queue_free(q, q->max_num_buffers);
->      kfree(q->bufs);
->      q->bufs = NULL;
-> +    q->num_buffers = 0;
->      mutex_unlock(&q->mmap_lock);
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-> 
-> I'm preparing a v9 with this + your patch for Amphion driver:
-> 
-> https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v9
 
-Even with this patch I still get errors. Did you just test vivid?
+--/VzKeb9rEqhIUOcg
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Run 'test-media mc' to test it for all virtual drivers. I get both compliance
-failures, a WARN_ON in drivers/media/common/videobuf2/videobuf2-core.c:2489,
-and memory leaks. It currently fails and exists completely with the vimc tests,
-but things may already have gone pear-shaped with the vim2m test.
+On Fri, Sep 29, 2023 at 10:42:58AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 28/09/23 18:49, Conor Dooley ha scritto:
+> > On Thu, Sep 28, 2023 at 02:52:23AM +0000, Moudy Ho (=E4=BD=95=E5=AE=97=
+=E5=8E=9F) wrote:
+> > > On Wed, 2023-09-27 at 10:47 +0100, Conor Dooley wrote:
+> > > > On Wed, Sep 27, 2023 at 07:19:28AM +0000, Moudy Ho (=E4=BD=95=E5=AE=
+=97=E5=8E=9F) wrote:
+> > > > > On Fri, 2023-09-22 at 16:51 +0100, Conor Dooley wrote:
+> > > > > > On Fri, Sep 22, 2023 at 04:49:14PM +0100, Conor Dooley wrote:
+> > > > > > > On Fri, Sep 22, 2023 at 03:21:12PM +0800, Moudy Ho wrote:
+> > > > > > > > Add a compatible string for the COLOR block in MediaTek
+> > > > > > > > MT8195
+> > > > > > > > that
+> > > > > > > > is controlled by MDP3.
+> > > > > > > >=20
+> > > > > > > > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > > > > > > > ---
+> > > > > > > >   .../devicetree/bindings/display/mediatek/mediatek,color.y=
+aml
+> > > > > > > >   | 1 +
+> > > > > > > >   1 file changed, 1 insertion(+)
+> > > > > > > >=20
+> > > > > > > > diff --git
+> > > > > > > > a/Documentation/devicetree/bindings/display/mediatek/mediat=
+ek
+> > > > > > > > ,col
+> > > > > > > > or.yaml
+> > > > > > > > b/Documentation/devicetree/bindings/display/mediatek/mediat=
+ek
+> > > > > > > > ,col
+> > > > > > > > or.yaml
+> > > > > > > > index f21e44092043..b886ca0d89ea 100644
+> > > > > > > > ---
+> > > > > > > > a/Documentation/devicetree/bindings/display/mediatek/mediat=
+ek
+> > > > > > > > ,col
+> > > > > > > > or.yaml
+> > > > > > > > +++
+> > > > > > > > b/Documentation/devicetree/bindings/display/mediatek/mediat=
+ek
+> > > > > > > > ,col
+> > > > > > > > or.yaml
+> > > > > > > > @@ -26,6 +26,7 @@ properties:
+> > > > > > > >             - mediatek,mt2701-disp-color
+> > > > > > > >             - mediatek,mt8167-disp-color
+> > > > > > > >             - mediatek,mt8173-disp-color
+> > > > > > > > +          - mediatek,mt8195-mdp3-color
+> > > > > > >=20
+> > > > > > > How come this one is a "mdp3" not a "disp"?
+> > > > > >=20
+> > > > > > I don't know what mdp3 means & googling gives me no answers.
+> > > > > > What's
+> > > > > > the
+> > > > > > "disp" one controlled by, since it isn't controlled by mdp3?
+> > > > > >=20
+> >=20
+> > > > > Mediatek's Media Data Path ver.3 (MDP3) is associated with MMSYS
+> > > > > and
+> > > > > acts as an independent driver that operates between VDEC and DISP.
+> > > > > By controlling multiple components, it carries out tasks like
+> > > > > converting color formats, resizing, and applying specific Picture
+> > > > > Quality (PQ) effects.
+> > > > > The driver can be found at "driver/media/platform/mediatek/mdp3".
+> > > > > Since the same hardware components are configured in both MDP3 and
+> > > > > DISP, considering previous discussions, I attemped to integrate
+> > > > > into a
+> > > > > single binding, named after the controlling user.
+> > > >=20
+> > > > I'm still kinda struggling to understand this. Do you mean that the
+> > > > hardware can be controlled by either of the disp and mdp3 drivers,
+> > > > and
+> > > > a compatible containing "disp" would use one driver, and one
+> > > > containing
+> > > > "mdp3" would use another?
+> > > >=20
+> >=20
+> > > Sorry for any confusion caused by the software information. In the
+> > > video pipeline, after decoding, the data flows sequentially through t=
+wo
+> > > subsystems: MDP and DISP. Each subsystems has multiple IPs, with some
+> > > serving the same functionality as COLOR mentioned here. However, these
+> > > IPs cannot be controlled by different subsystems. Therefore, I includ=
+ed
+> > > the name of the subsystem after SoC to identify the configuration's
+> > > location. Is this approach feasible?
+> >=20
+> > I'll have to leave things to the likes of Laurent to comment here I
+> > think. I don't understand this hardware well enough to have a useful
+> > opinion. It would seem like a different part of the datapath is a
+> > different device that should be documented separately, but I don't know
+> > enough to say for sure, sorry.
+>=20
+> Hardware speaking, it's not a different device: those all reside in the
+> same block, except they are configured to route their I/O *either* to the
+> display pipeline, *or* to the MDP3 pipeline.
 
-I'll mail you the full output from a test run with the build scripts
-separately (it's a bit too big to add here).
+Is it runtime configurable?
 
-I don't know if you can run the build script with the -virtme option, instructions
-for that are currently only available for debian 12. If not, then ask Sebastian
-Fricke (he is working on a docker for this), alternatively you can take
-configs/virtme.config from the build scripts git repo and use that as the kernel
-config to test under. This config enables memory leak detection and a whole bunch
-of other debugging stuff.
+> I would agree though in that this could be more flexible, as in, not
+> having a requirement to say "mdp3" or "disp", and managing the COLOR
+> blocks generically and letting the drivers to choose the actual path
+> transparently from what the devicetree compatible is, but there's no
+> practical point in doing this in the end, because there is an enough
+> number of (for example, COLOR) blocks such that one can be completely
+> reserved to MDP3 and one completely reserved to DISP.
+>=20
+> So, we don't *need* this flexibility, but would be nice to have for
+> different (unexistant, basically) usecases...
+>=20
+> The thing is, if we go for the maximum flexibility, the drawback is
+> that we'd see a number of nodes like
+>=20
+> shared_block: something@somewhere {
+> 	compatible =3D "mediatek,something";
+> }
+>=20
+> mdp3: dma-controller@14001000 {
+> 	......
+> 	mediatek,color =3D <&color0>;
+> 	mediatek,stitch =3D <&stitch0>;
+> 	mediatek,hdr =3D <&hdr0>;
+> 	mediatek,aal =3D <&aal0>;
+> 	....
+> 	long list of another 10 components
+> }
+>=20
+> display: something@somewhere {
+> 	......
+> 	an even longer list than the MDP3 one
+> }
+>=20
+> ...or perhaps even a graph, which is even longer in the end.
+>=20
+> I'm not against this kind of structure, but I wonder if it's worth it.
 
-Regards,
+I have no idea, but it sounds like it isn't. Really what happened here,
+is not me having a particular thing I want to see, is getting a response
+that implied that there were two different compatibles for the same
+hardware, controlled by different drivers.
+It does seem to be that way at present, and this is not something I am
+willing to ack etc. That's not to say that I am _nacking_ it, just that
+I don't understand this enough to ack something that we usually tell
+people not to do.
 
-	Hans
+--/VzKeb9rEqhIUOcg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZRbYBwAKCRB4tDGHoIJi
+0gDgAQD4uuPf+CMkS9i8umAoxxX46tlaJiF0ICduWocAJ7z4JwEAmoWZAI0hf7If
+KE6e8+SKB238W6F5JretaCDxsAbF5gU=
+=6dAo
+-----END PGP SIGNATURE-----
+
+--/VzKeb9rEqhIUOcg--
 
