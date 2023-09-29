@@ -4,138 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93064E71D21
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 12:57:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35404E71D2D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 13:17:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QqTTLT9aZkvqLOeMtXOrEvkTt7kMlZSB0+m85iN5u54=; b=TaDJubNarEOXrF8nxWz2o2tjRn
-	5iRwrTGW9ayC+4XzzedqkP7L9MbSfU8cM5NsXoWMj/89NmNjLqz0Ls7BufcoSt20ii6L3RsrOKICz
-	ln10rmE7W5Bjto3JP9ExxAMSPtmsaV9lqrItPDsg61hY6bO9zfe9I7ePbY+Tp0NeAGcu3HKaOnLVm
-	Sy51XLNOVbH6nGrK+B1XEmJZUHpeF4SU/PjjSq9hHBDlMIE1rwgoXyqKjJqi90DiKxbHBS95H0fGP
-	6uK2GMadG4pRwZNEifFLOu9GnbXp4pKGpV4SJbfvb36Z6D5dps6qHMs6rEr/kR5ziNn6TJbhlUrbb
-	KyZKUAWA==;
+	bh=vHqiM6+znV+QbPcPoVf+IiDUtlTN+uC4kw8OKe9XhKA=; b=evG975jUm3rWXYLU+UMbT6Awy8
+	MuBFAt1IrFWm4hicdFXAp9vYcCFx8X0P2ewk+HdbBZ/ZeA+popNd8y0zwB2/l0BbpUErWtgi+H3l0
+	y2ccCMqqcPB6E0kvoTi+z85UBekAoL/WDqV2kz9F5+oprxwlqY3hNw3U3yGmKbDi+lKVSg6DXS/RG
+	NuWoP7zld/HcnmL7VLbUmEtZX/02DIGjbW/guXTbgVZoUVB/J5N9f9semTnzy41zsmIPv6KydyTsq
+	lG8Pt618i/LUkZ/6+feVZfOUr+A2zlHyxRYozNDbYKBOUQrvdGq+12wH+kmBfhIIOZ0rARcZja8Th
+	R5CXyRGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmD3V-007v7d-33;
-	Fri, 29 Sep 2023 12:57:17 +0000
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+	id 1qmDMu-007wsY-23;
+	Fri, 29 Sep 2023 13:17:20 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmD3S-007v6k-18;
-	Fri, 29 Sep 2023 12:57:15 +0000
-Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38TCoxb4013374;
-	Fri, 29 Sep 2023 12:56:39 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=QqTTLT9aZkvqLOeMtXOrEvkTt7kMlZSB0+m85iN5u54=;
- b=Och/FWQTgIJwiibkwBGlGRsTVsD/QPfi3WiMg33KXn9WnrnZXGt5r+QaO1ZlNYrQVdaT
- SZTg6yVNXrNvYQDLdurQLzmMP2ZUuqXfqunhs3fQc1zO+9g4+1R27YxA2v0kwNuWERkD
- WTd2iHpODkJjr93yC2xadbFRuQzK/52kK31ggGBQBMR4pGsSaR8NRPQAcvKXrLRVR73N
- r6hVD9QLzsnJyCku33qAZGQMTzQ2kSOVN3XZ+IOLK4P5kZQ+4weW/cW+CJRkWAg4CiiG
- UuuoRmBc+zdjtC7mjHIFQT2LI/KnUWrFjsVqlAwjF+6hltohqQ7NC/+8hYNGgOawKtgY 7w== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tdxxnr3pm-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 29 Sep 2023 12:56:38 +0000
-Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 38TCpPrI014220;
-	Fri, 29 Sep 2023 12:56:37 GMT
-Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tdxxnr3p0-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 29 Sep 2023 12:56:37 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 38TCZGqp008250;
-	Fri, 29 Sep 2023 12:56:36 GMT
-Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
-	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tabbnvpnx-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 29 Sep 2023 12:56:36 +0000
-Received: from smtpav01.wdc07v.mail.ibm.com (smtpav01.wdc07v.mail.ibm.com [10.39.53.228])
-	by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 38TCuZgC5243498
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 29 Sep 2023 12:56:35 GMT
-Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 4648A5804B;
-	Fri, 29 Sep 2023 12:56:35 +0000 (GMT)
-Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id E78BB58063;
-	Fri, 29 Sep 2023 12:56:30 +0000 (GMT)
-Received: from [9.61.175.8] (unknown [9.61.175.8])
-	by smtpav01.wdc07v.mail.ibm.com (Postfix) with ESMTP;
-	Fri, 29 Sep 2023 12:56:30 +0000 (GMT)
-Message-ID: <2513a9d4-ac92-2e50-4861-bb65465cf1ae@linux.ibm.com>
-Date: Fri, 29 Sep 2023 08:56:30 -0400
+	id 1qmDMp-007wr7-2O;
+	Fri, 29 Sep 2023 13:17:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id E7669CE2428;
+	Fri, 29 Sep 2023 13:17:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3ED1BC433C7;
+	Fri, 29 Sep 2023 13:17:10 +0000 (UTC)
+Message-ID: <9c38c002-8452-4fb7-a7ee-cc8e9e1b849e@xs4all.nl>
+Date: Fri, 29 Sep 2023 15:17:08 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v13 4/6] iommu/s390: Disable deferred flush for ISM
- devices
-Content-Language: en-US
-To: Niklas Schnelle <schnelle@linux.ibm.com>, Joerg Roedel <joro@8bytes.org>,
-        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
-        Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        Alexandra Winter
- <wintera@linux.ibm.com>,
-        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
-        Alexander Gordeev
- <agordeev@linux.ibm.com>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        Sven Schnelle <svens@linux.ibm.com>,
-        Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-        Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Yong Wu <yong.wu@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang
- <baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Krishna Reddy
- <vdumpa@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        iommu@lists.linux.dev, asahi@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-References: <20230928-dma_iommu-v13-0-9e5fc4dacc36@linux.ibm.com>
- <20230928-dma_iommu-v13-4-9e5fc4dacc36@linux.ibm.com>
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-In-Reply-To: <20230928-dma_iommu-v13-4-9e5fc4dacc36@linux.ibm.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 00/53] Add DELETE_BUF ioctl
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
+ <ce043b11-aea9-4127-ba00-6c351651dc1e@xs4all.nl>
+ <5cc5a999-e22d-4ef8-c857-ffd77630eeb9@collabora.com>
+ <38ec1120-7c92-833b-6e59-35086f4a3c10@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <38ec1120-7c92-833b-6e59-35086f4a3c10@collabora.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: uTzj7zKg3b0sQ930cOsKCPRxfgqwTFsD
-X-Proofpoint-GUID: XNXEAeo9ExEttPSRC78HhL_bg28OSuTv
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-09-29_10,2023-09-28_03,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- adultscore=0 mlxlogscore=999 clxscore=1015 suspectscore=0 mlxscore=0
- bulkscore=0 priorityscore=1501 spamscore=0 malwarescore=0 phishscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2309290107
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230929_055714_395316_275EE3C0 
-X-CRM114-Status: GOOD (  21.86  )
+X-CRM114-CacheID: sfid-20230929_061716_116649_4702ADEF 
+X-CRM114-Status: GOOD (  29.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,31 +70,198 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/28/23 10:31 AM, Niklas Schnelle wrote:
-> ISM devices are virtual PCI devices used for cross-LPAR communication.
-> Unlike real PCI devices ISM devices do not use the hardware IOMMU but
-> inspects IOMMU translation tables directly on IOTLB flush (s390 RPCIT
-> instruction).
+On 29/09/2023 13:44, Benjamin Gaignard wrote:
 > 
-> ISM devices keep their DMA allocations static and only very rarely DMA
-> unmap at all. For each IOTLB flush that occurs after unmap the ISM
-> devices will however inspect the area of the IOVA space indicated by the
-> flush. This means that for the global IOTLB flushes used by the flush
-> queue mechanism the entire IOVA space would be inspected. In principle
-> this would be fine, albeit potentially unnecessarily slow, it turns out
-> however that ISM devices are sensitive to seeing IOVA addresses that are
-> currently in use in the IOVA range being flushed. Seeing such in-use
-> IOVA addresses will cause the ISM device to enter an error state and
-> become unusable.
+> Le 28/09/2023 à 15:16, Benjamin Gaignard a écrit :
+>>
+>> Le 28/09/2023 à 15:04, Hans Verkuil a écrit :
+>>> Hi Benjamin,
+>>>
+>>> On 27/09/2023 17:35, Benjamin Gaignard wrote:
+>>>> Unlike when resolution change on keyframes, dynamic resolution change
+>>>> on inter frames doesn't allow to do a stream off/on sequence because
+>>>> it is need to keep all previous references alive to decode inter frames.
+>>>> This constraint have two main problems:
+>>>> - more memory consumption.
+>>>> - more buffers in use.
+>>>> To solve these issue this series introduce DELETE_BUFS ioctl and remove
+>>>> the 32 buffers limit per queue.
+>>>>
+>>>> VP9 conformance tests using fluster give a score of 210/305.
+>>>> The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
+>>>> but require to use postprocessor.
+>>>>
+>>>> Kernel branch is available here:
+>>>> https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v8
+>>>>
+>>>> GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
+>>>> change is here:
+>>>> https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
+>>> I applied patches 1-46 on top of staging and applied patch 1/2 of v4l-utils. I chose
+>>> 1-46 since those would be the first batch to be merged.
+>>>
+>>> I had to apply a small patch on top, since amphion was still using max_allowed_buffers:
+>>>
+>>> https://git.linuxtv.org/hverkuil/media_tree.git/commit/?h=delbuf&id=fce79aa0239a3a4e5c7634b9b7ffc356057b70b4
+>>>
+>>> With that change everything compiled cleanly.
+>>>
+>>> But running the regression tests (test-media script) failed with a kernel oops:
+>>>
+>>> Buffer ioctls (Input 0):
+>>>                  fail: v4l2-test-buffers.cpp(611): q.reqbufs(node, 1)
+>>>          test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: FAIL
+>>> [   25.309343] general protection fault, probably for non-canonical address 0xdffffc0000000001: 0000 [#1] PREEMPT SMP DEBUG_PAGEALLOC KASAN
+>>> [   25.310067] KASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]
+>>> [   25.310471] CPU: 0 PID: 187 Comm: v4l2-compliance Not tainted 6.6.0-rc3+ #1
+>>> [   25.310837] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.2-debian-1.16.2-1 04/01/2014
+>>> [   25.311334] RIP: 0010:__vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
+>>> [   25.311688] Code: 89 f8 48 c1 e8 03 80 3c 18 00 0f 85 0c 07 00 00 49 8b b7 40 01 00 00 44 89 f0 4c 8d 2c c6 41 39 ce 73 18 4c 89 e8 48 c1 e8 03 <80> 3c 18 00 0f 85 d2 08 00 00 49 83 7d 00 00 74 02
+>>> 0f 0b 4c 89 e8
+>>> [   25.312670] RSP: 0018:ffff88810afef930 EFLAGS: 00010212
+>>> [   25.312948] RAX: 0000000000000001 RBX: dffffc0000000000 RCX: 0000000000000040
+>>> [   25.313331] RDX: ffff88810ce08814 RSI: 0000000000000000 RDI: ffff88810cfb72e0
+>>> [   25.313708] RBP: ffff88810ce08800 R08: 0000000000001800 R09: 0000000000000001
+>>> [   25.314097] R10: ffffffff91560b0f R11: ffffffff8f40006a R12: ffff88810afefa74
+>>> [   25.314470] R13: 0000000000000008 R14: 0000000000000001 R15: ffff88810cfb71a0
+>>> [   25.314854] FS:  00007fa524908440(0000) GS:ffff88811aa00000(0000) knlGS:0000000000000000
+>>> [   25.315281] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+>>> [   25.315594] CR2: 0000562855948270 CR3: 0000000109e21000 CR4: 0000000000350ef0
+>>> [   25.315982] Call Trace:
+>>> [   25.316122]  <TASK>
+>>> [   25.316243]  ? die_addr+0x37/0xa0
+>>> [   25.316433]  ? exc_general_protection+0x144/0x210
+>>> [   25.316693]  ? asm_exc_general_protection+0x22/0x30
+>>> [   25.316955]  ? entry_SYSCALL_64_after_hwframe+0x46/0xb0
+>>> [   25.317235]  ? __vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
+>>> [   25.317555]  vb2_core_create_bufs+0x5a0/0xce0 [videobuf2_common]
+>>> [   25.317879]  ? __vb2_queue_alloc+0xd00/0xd00 [videobuf2_common]
+>>> [   25.318213]  vb2_create_bufs+0x680/0x7f0 [videobuf2_v4l2]
+>>> [   25.318506]  ? __kasan_kmalloc+0x83/0x90
+>>> [   25.318729]  ? __kmalloc+0x5c/0x150
+>>> [   25.318924]  ? __video_do_ioctl+0x3a5/0xc20 [videodev]
+>>> [   25.319223]  ? __copy_timestamp+0x270/0x270 [videobuf2_v4l2]
+>>> [   25.319532]  ? v4l_sanitize_format+0x121/0x340 [videodev]
+>>> [   25.319839]  vb2_ioctl_create_bufs+0x280/0x440 [videobuf2_v4l2]
+>>> [   25.320162]  ? check_fmt+0x15/0x5e0 [videodev]
+>>> [   25.320420]  v4l_create_bufs+0xa8/0x150 [videodev]
+>>> [   25.320693]  __video_do_ioctl+0x8d0/0xc20 [videodev]
+>>> [   25.320975]  ? v4l_prepare_buf+0xa0/0xa0 [videodev]
+>>> [   25.321250]  ? __might_fault+0x112/0x170
+>>> [   25.321463]  ? __might_fault+0x112/0x170
+>>> [   25.321675]  video_usercopy+0x48c/0xd00 [videodev]
+>>> [   25.321949]  ? v4l_prepare_buf+0xa0/0xa0 [videodev]
+>>> [   25.322228]  ? v4l_enumstd+0x60/0x60 [videodev]
+>>> [   25.322497]  ? selinux_bprm_creds_for_exec+0xa90/0xa90
+>>> [   25.322779]  ? rseq_ip_fixup+0x304/0x480
+>>> [   25.322995]  ? __up_read+0x10b/0x750
+>>> [   25.323201]  ? rseq_get_rseq_cs+0x680/0x680
+>>> [   25.323430]  v4l2_ioctl+0x17f/0x1f0 [videodev]
+>>> [   25.323689]  __x64_sys_ioctl+0x127/0x190
+>>> [   25.323905]  do_syscall_64+0x35/0x80
+>>> [   25.324105]  entry_SYSCALL_64_after_hwframe+0x46/0xb0
+>>> [   25.324372] RIP: 0033:0x7fa524bf44eb
+>>> [   25.324564] Code: 00 48 89 44 24 18 31 c0 48 8d 44 24 60 c7 04 24 10 00 00 00 48 89 44 24 08 48 8d 44 24 20 48 89 44 24 10 b8 10 00 00 00 0f 05 <89> c2 3d 00 f0 ff ff 77 1c 48 8b 44 24 18 64 48 2b
+>>> 04 25 28 00 00
+>>> [   25.325533] RSP: 002b:00007ffc888efee0 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+>>> [   25.325933] RAX: ffffffffffffffda RBX: 00007ffc888f0350 RCX: 00007fa524bf44eb
+>>> [   25.326314] RDX: 00007ffc888effb0 RSI: 00000000c100565c RDI: 0000000000000023
+>>> [   25.326702] RBP: 00007ffc888f8550 R08: 0000000000000000 R09: 0000000000000001
+>>> [   25.327081] R10: 0000000000000016 R11: 0000000000000246 R12: 0000000000000000
+>>> [   25.327468] R13: 0000000000000001 R14: 00007ffc888f8010 R15: 00007ffc888f1790
+>>> [   25.327852]  </TASK>
+>>> [   25.327979] Modules linked in: vivid videobuf2_dma_contig v4l2_tpg v4l2_dv_timings cec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videodev videobuf2_common mc rc_core
+>>> [   25.328835] ---[ end trace 0000000000000000 ]---
+>>> [   25.329083] RIP: 0010:__vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
+>>> [   25.329434] Code: 89 f8 48 c1 e8 03 80 3c 18 00 0f 85 0c 07 00 00 49 8b b7 40 01 00 00 44 89 f0 4c 8d 2c c6 41 39 ce 73 18 4c 89 e8 48 c1 e8 03 <80> 3c 18 00 0f 85 d2 08 00 00 49 83 7d 00 00 74 02
+>>> 0f 0b 4c 89 e8
+>>> [   25.330417] RSP: 0018:ffff88810afef930 EFLAGS: 00010212
+>>> [   25.330812] RAX: 0000000000000001 RBX: dffffc0000000000 RCX: 0000000000000040
+>>> [   25.331194] RDX: ffff88810ce08814 RSI: 0000000000000000 RDI: ffff88810cfb72e0
+>>> [   25.331594] RBP: ffff88810ce08800 R08: 0000000000001800 R09: 0000000000000001
+>>> [   25.331978] R10: ffffffff91560b0f R11: ffffffff8f40006a R12: ffff88810afefa74
+>>> [   25.332360] R13: 0000000000000008 R14: 0000000000000001 R15: ffff88810cfb71a0
+>>> [   25.332746] FS:  00007fa524908440(0000) GS:ffff88811aa00000(0000) knlGS:0000000000000000
+>>> [   25.333170] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+>>> [   25.333486] CR2: 0000562855948270 CR3: 0000000109e21000 CR4: 0000000000350ef0
+>>> [   25.333861] Kernel panic - not syncing: Fatal exception
+>>> [   25.334179] Kernel Offset: 0xbe00000 from 0xffffffff81000000 (relocation range: 0xffffffff80000000-0xffffffffbfffffff)
+>>> [   25.334748] Rebooting in 30 seconds..
+>>>
+>>> I use the build scripts as described here:
+>>>
+>>> https://lore.kernel.org/linux-media/18989016-6392-a77b-6cf7-1223c9161def@xs4all.nl/
+>>>
+>>> I use this command to run the regression tests:
+>>>
+>>> ./build.sh -virtme -virtme-utils-path /usr/local/bin none delbuf
+>>>
+>>> (delbuf is the name of my branch)
+>>>
+>>> I don't really want to spend time reviewing this series until this is fixed...
+>>
+>> Yes that make sense.
+>> It will work on it and let you now when I had fix it.
+>> Regards,
+>> Benjamin
 > 
-> Fix this by claiming IOMMU_CAP_DEFERRED_FLUSH only for non-ISM devices.
-> This makes sure IOTLB flushes only cover IOVAs that have been unmapped
-> and also restricts the range of the IOTLB flush potentially reducing
-> latency spikes.
+> This patch fix the problem:
 > 
-> Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 320f37e46343..0598c1e4e9b5 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -428,6 +428,8 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
+>   */
+>  static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
+>  {
+> +    if (vb->vb2_queue->num_buffers)
+> +        vb->vb2_queue->num_buffers--;
+>      vb->vb2_queue->bufs[vb->index] = NULL;
+>      vb->vb2_queue = NULL;
+>  }
+> @@ -641,8 +643,8 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+>  #endif
+> 
+>      /* Free vb2 buffers */
+> -    for (i = q->max_num_buffers, buffer = 0; i > 0 && buffer < buffers; i--) {
+> -        struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+> +    for (i = q->max_num_buffers, buffer = 0; i >= 0 && buffer < buffers; i--) {
+> +        struct vb2_buffer *vb = vb2_get_buffer(q, i);
+> 
+>          if (!vb)
+>              continue;
+> @@ -2541,6 +2543,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
+>      __vb2_queue_free(q, q->max_num_buffers);
+>      kfree(q->bufs);
+>      q->bufs = NULL;
+> +    q->num_buffers = 0;
+>      mutex_unlock(&q->mmap_lock);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+> 
+> I'm preparing a v9 with this + your patch for Amphion driver:
+> 
+> https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v9
 
-Looks like my review tag from v12 got dropped on accident -- no changes since prior version and still looks good to me so
+Even with this patch I still get errors. Did you just test vivid?
 
-Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com>
+Run 'test-media mc' to test it for all virtual drivers. I get both compliance
+failures, a WARN_ON in drivers/media/common/videobuf2/videobuf2-core.c:2489,
+and memory leaks. It currently fails and exists completely with the vimc tests,
+but things may already have gone pear-shaped with the vim2m test.
+
+I'll mail you the full output from a test run with the build scripts
+separately (it's a bit too big to add here).
+
+I don't know if you can run the build script with the -virtme option, instructions
+for that are currently only available for debian 12. If not, then ask Sebastian
+Fricke (he is working on a docker for this), alternatively you can take
+configs/virtme.config from the build scripts git repo and use that as the kernel
+config to test under. This config enables memory leak detection and a whole bunch
+of other debugging stuff.
+
+Regards,
+
+	Hans
 
