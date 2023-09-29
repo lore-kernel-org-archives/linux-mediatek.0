@@ -4,85 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F032E728C5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 16:20:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46342E728DD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 19:37:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZMRSMKnlrD1U3dbDKV3ZsfG+9Qa09KW7w4mJFQSQLNU=; b=pnRtqQmCZ3hiRsi4aGfleQqJSy
-	gXUr84NsBG4Ivbk7qT7PARen25JHicbUjps/27Gs/TIGVHKudIxNvDL9PN8dbdxktvi/csh04hazG
-	2J7doTAzVDK7H6bNZlu+ddmy2fY7HYD98SQx/5N7ifcg/qkJb+OPJryk7Iy+/UbPKT4xjDs6rkPfZ
-	eAdNQ3804BjDsIRKZPiUNLCMjs94WMT1A1WQk15IUDyYOG35rA0lUG1ZIt595ipmXgYOJo2aaSUtb
-	aTrZXQrwQ9+b9KK3OkRfknfNdD0ir5ejcHKiPaaP/U63cPBL2hk+zVcpD6ZLdd0zRAS9+JOlhDIai
-	1d3sqVrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
+	From:Date:References:In-Reply-To:Message-Id:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/rnZ43krlTnKGjYuvqhBAItQLnGBofJgdfA6Jy4XxRE=; b=BYfYvTra3oTmkhaLckRUeK8KAq
+	T/laIPvv87ZXHJ9zl07YipdbMkJe/ihN4EXsFZDkCnSPGklBdDgwpquISY4cc9j7wGEU+OZonFmrb
+	UUXDbfo5RGulNIh3ZHCqKrbYnXjKV0s7d86+h7BXevjhs/+TO7oUD3Ti8ZnmowyUTBvJWu/5Rr/A8
+	vwK8HgjhIu8aW4zbo7doV+otimP2JtVRVvV+1hB5y85iBztOMyuWe+40CGcuz0oT+Z2W1DbMNsgcM
+	XlAxmViTNOynMahhBKMdvc8uICGvEvfzO2p3l5OMd4grwp6X0/yNRYwcT8D+VLVHFPCIQnsTPIA/3
+	A4hZ9Dqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmGDm-008HIX-11;
-	Fri, 29 Sep 2023 16:20:06 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qmJIt-008V1B-01;
+	Fri, 29 Sep 2023 19:37:35 +0000
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmGDD-008H6r-2T
+	id 1qmJIn-008V0a-2a
 	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Sep 2023 16:19:33 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qmGD6-0007mo-1p; Fri, 29 Sep 2023 18:19:24 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qmGD4-009r5J-2y; Fri, 29 Sep 2023 18:19:22 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qmGD3-00615m-Ou; Fri, 29 Sep 2023 18:19:21 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-pwm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@pengutronix.de,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-samsung-soc@vger.kernel.org,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	chrome-platform@lists.linux.dev
-Subject: [PATCH 00/11] pwm: Some random cleanups
-Date: Fri, 29 Sep 2023 18:19:07 +0200
-Message-Id: <20230929161918.2410424-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.40.1
+	Fri, 29 Sep 2023 19:37:33 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailout.west.internal (Postfix) with ESMTP id B55F5320030E;
+	Fri, 29 Sep 2023 15:37:22 -0400 (EDT)
+Received: from imap51 ([10.202.2.101])
+  by compute6.internal (MEProxy); Fri, 29 Sep 2023 15:37:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:sender
+	:subject:subject:to:to; s=fm1; t=1696016242; x=1696102642; bh=/r
+	nZ43krlTnKGjYuvqhBAItQLnGBofJgdfA6Jy4XxRE=; b=ZXTRiFHeE8YsIOex3R
+	ikNNS92U0h8K+/2JL0C7JTwZ+VWBkEbcGdCwCMcY+Ul1anNIvmTYBjqu5g5neLMT
+	M6iD/AdbrWVKtiBTCJbbJwlbWKN4rfV+nl+uatQpzy6uljYXQkwi7FUCFlP6bGOa
+	U7Q8oHWNTsOSMqrqBFnuV0JW2r168jjjDKY1VsVrhrLuenz+ZYZxD5w7UwmIqO7k
+	aN6a1MmX76TbzlZuo8CIiYMhzs7OMEtep2vjIq0cFh9t9dgEUYUvsxTfB+EE2n0u
+	2gyqdX/WWbW8XTRtzx0SE+837OtUJfgmDEQDIt6LVv5FZIJrlw69JmLPWi0Ve3Sd
+	HafQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm2; t=1696016242; x=1696102642; bh=/rnZ43krlTnKG
+	jYuvqhBAItQLnGBofJgdfA6Jy4XxRE=; b=FTye3nUqUs9CxedjMOCorVMmR9bv+
+	6NpUjHhhBJZFlQcyKm0d5rMpsO+YximgVZHVzND9IWPIk54GOvTxemhM6+xJsMJy
+	9ZZP8bfT9SSNH2Bup/9TwuJdn4BTWAoQCA0/FdmrNfPHuQXH6rq/OviO22jz/GLZ
+	Fqotv7E+hCszhRCgR1dO/M8/sIXOPRFLuQoa6xXivZdodGzBL3ID32AnF0eoJUMB
+	SDOWiyjjjIcK7dn22mMQe6M2n+YLlpJwTWZTEtBvpT8zes6Z/jKSeH5uPZjWFQGx
+	CAQ8nw0HAfFyWEy4KYfyocAR+BV41+uPuXE5vZjErMeKyDO8QAE8CT4Dg==
+X-ME-Sender: <xms:cScXZegZSCNhyuxyl7xPChMRzWBjwY-T_BDIVczrpv9RUpQqOQ9SCA>
+    <xme:cScXZfCTzyb3VjRVQSOsRu1hUClW6u3Wt7GN-FrPCaaSCbEdNp5J02MlqzUq8gytg
+    BSUeXDbCiBAbqGucSg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrtddvgddufeelucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepofgfggfkjghffffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehr
+    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
+    htvghrnhepvefhffeltdegheeffffhtdegvdehjedtgfekueevgfduffettedtkeekueef
+    hedunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
+    dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrrhhnugesrghrnhgusgdruggv
+X-ME-Proxy: <xmx:cScXZWH1633Ct5-DhBZIcAiu3p4yFW0TcsGGOB6I5l8NkP8MLjWLCg>
+    <xmx:cScXZXQMPDSDPs9bO9xJQW3Jot5cRpgR1qWcuJDiIu5nzel7SQvfNw>
+    <xmx:cScXZbxJ9X_ev-B51klxQlO4vYKI3Rg4j_8hACJawrcvKLufgj4l6A>
+    <xmx:cicXZSnJD-4qY4ueVe43ZXE0e4ParBgTew_zKmlNPZxaU6NxztYz2w>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id B231AB60089; Fri, 29 Sep 2023 15:37:21 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-958-g1b1b911df8-fm-20230927.002-g1b1b911d
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1447; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=EU2LjIzzIEw1uOSkgKF6jDTiS5CXMLB75+qFfOk57jI=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlFvj0VfUlmGHNT0hrh6Yv9rwSiuxTi4ATgbZcq HPOTBZ67PiJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZRb49AAKCRCPgPtYfRL+ TlSiB/9Njt9Jdg9B7UzciPo87WQq9tGAbpUf6QFamH+saJ1AQm4yHL6lCd2oMFbBFlkLpalWp5Q Ynhb2OC//zWV/w66/9erqdkKn5LTizfPsEJWy5ED6PvZi4fUxWdYy+oihDDO5fnq0xCqXClqL4t W38Mvf9eGBlF+7GR+xlsYLtTgFvLoCHgWXvshv0IbIxpNGWL5ECEeZLNLWODax95gD2jb4vhIQS jtStovnFEYHljix7uE8O6A8ls/IcFj2TQ/Lr9HJ3hiUIjgYRLCLnOIvb4mdZllSmudbdVQAlKqN gBs2FuQnXjr2XEPOQhb9hEh41lHHoB9/iMUdDKfXZP/hw29+
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Message-Id: <84b2de54-8337-42a3-a25c-a95cf2f3349f@app.fastmail.com>
+In-Reply-To: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
+References: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
+Date: Fri, 29 Sep 2023 15:36:57 -0400
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: =?UTF-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>,
+ wenst@chromium.org, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "Rob Herring" <robh@kernel.org>, amergnat@baylibre.com,
+ "Stephen Rothwell" <sfr@canb.auug.org.au>
+Subject: Re: [PATCH] MAINTAINERS: Add Angelo as MediaTek SoC co-maintainer
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230929_091931_842493_36472B1F 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230929_123729_871125_AD1675E4 
+X-CRM114-Status: GOOD (  21.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,42 +106,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Fri, Sep 29, 2023, at 04:20, AngeloGioacchino Del Regno wrote:
+> I am a top reviewer mainly for MediaTek SoC related patches in most
+> subsystems and I've also been upstreaming both improvements, fixes
+> and new drivers and devicetrees when required.
+>
+> The MediaTek scene saw a generous increase in number of patches that
+> are sent to the lists every week, increasing the amount of required
+> efforts to maintain the MTK bits overall, and we will possibly see
+> even more of that.
+>
+> For this reason, and also because of suggestions and encouragement
+> coming from the community, I'm stepping up to be a co-maintainer of
+> MediaTek SoCs support.
+>
+> Signed-off-by: AngeloGioacchino Del Regno 
+> <angelogioacchino.delregno@collabora.com>
+> ---
+>
+> P.S.: I tried to reach to Matthias for almost two months, but I couldn't
+> find any way to talk to him and he has been unresponsive on the mailing
+> lists as well.
+>
+> P.P.S.: This also comes after Rob Herring's suggestion to have myself as
+> a MediaTek SoC co-maintainer [1] and support from other people.
+>
+> [1]: https://lore.kernel.org/all/20230804225813.12493-1-robh@kernel.org/
 
-this is a set of patches I based my efforts for closing a race condition
-in the pwm core on. I thought I already sent them out, but it seems I
-didn't. So here they come!
+Thanks for volunteering for this!
 
-Best regards
-Uwe
+I have no information on what Mattias is doing, but I see that he
+has not merged any patches since June, and that he never sent a 
+pull request for your patches that are still in his for-next
+branch.
 
-Uwe Kleine-König (11):
-  pwm: bcm-iproc: Simplify using devm functions
-  pwm: bcm2835: Simplify using devm functions
-  pwm: brcmstb: Simplify using devm functions
-  pwm: imx-tpm: Simplify using devm functions
-  pwm: mtk-disp: Simplify using devm_pwmchip_add()
-  pwm: spear: Simplify using devm functions
-  pwm: sprd: Provide a helper to cast a chip to driver data
-  pwm: sprd: Simplify using devm_pwmchip_add() and dev_err_probe()
-  pwm: vt8500: Simplify using devm functions
-  pwm: samsung: Consistently use the same name for driver data
-  pwm: cros-ec: Simplify using devm_pwmchip_add() and dev_err_probe()
+I hope he's going to be ok, but let's plan for you to take over
+for the moment, at least until Matthias is again able to keep
+maintaining the platform in the near future.
 
- drivers/pwm/pwm-bcm-iproc.c |  37 +++-------
- drivers/pwm/pwm-bcm2835.c   |  27 ++------
- drivers/pwm/pwm-brcmstb.c   |  42 +++---------
- drivers/pwm/pwm-cros-ec.c   |  33 +++------
- drivers/pwm/pwm-imx-tpm.c   |  29 ++------
- drivers/pwm/pwm-mtk-disp.c  |  24 ++-----
- drivers/pwm/pwm-samsung.c   | 130 ++++++++++++++++++------------------
- drivers/pwm/pwm-spear.c     |  40 +++--------
- drivers/pwm/pwm-sprd.c      |  28 +++-----
- drivers/pwm/pwm-vt8500.c    |  42 +++---------
- 10 files changed, 137 insertions(+), 295 deletions(-)
+Here is my suggestion for how to continue from here:
 
-base-commit: 0bb80ecc33a8fb5a682236443c1e740d5c917d1d
--- 
-2.40.1
+- Please send your MAINTAINERS file update to soc@kernel.org
+  along  with any urgent bugfixes you may have, so I can forward
+  them for 6.7. I'm wrapping up the current set of fixes at
+  the moment, so this would be for next week's rc
 
+- Create a git tree with the ususal branches (drivers, soc, dt,
+  fixes, for-next) and ask Stephen Rothwell (on Cc) to add
+  the combined for-next branch  to linux-next for integration testing
+
+- Start each branch on 6.6-rc2 (usually we use rc1, but this time
+  rc2 is a better candidate because of the last-minute
+  drivers/pmdomain rename), and merge the corresponding branches
+  from git://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git
+  into those to avoids conflicts with his tree
+
+- Add any further patches you want in 6.7 on top
+
+- Send a first set of pull requests to soc@kernel.org for whatever
+  you have merged as soon as you are confident about them,
+  ideally by the end of next week.
+
+- Send additional pull requests for fixups or late features in
+  the weeks after that as you see fit.
+
+See Documentation/process/maintainer-soc.rst for more details
+on the above. When Mattias comes back, you can work out a new
+process together with him.
+
+       Arnd
 
