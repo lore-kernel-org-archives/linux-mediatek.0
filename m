@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0387BE77359
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Sep 2023 05:09:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9DB0E77361
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Sep 2023 07:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mml0KYaWXxN0uDv/30RQwRBAIPL2eeQ6BnPCTA16oDc=; b=TIrlm8y56N2LVyfw6yPtcUpAiM
-	BeTcBxAMrw+72WHkZDT6kkKMtRA/HIJRTTf2QFCz6snEA+3gcn3sqPwqWpru5pGtP9gr2yNWc8nBU
-	GdudEEg1nmRkME8FUZbGtv7ehvJnLwnvEMtIk52+X80AJFBMAQoh+NbYIcIwqb/1KtN8V/AGgziKS
-	UrNT/gyMFgR2wDxoldJPHSrJVZEdgKa0auLUCSAGd/5UXD/MPu/wS7E+svje3x2IESgxKwLwG5sZv
-	FRhaeEZo0CCP3BrnnKHmAIFEMEO0oH66cljnyonh96Bmd56+pfvaxpqiGkz9XLUE8kWvzxz/GWFXc
-	sM1mJIpg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QzUTGFm+fyQlDNRotteAOBG/4ebGcwE5l/KdrOTlHGc=; b=wiZ4RZkv7vBgki
+	Im8gunCqepqsRyRFXF8909SMM+Xko9dWkh8+9a1SP7jqlvoxxgxRIas6313lMlzJWsTSyjpdo6Pt5
+	mdpxty7ylUNLiaCApJSYUfyyuv8cZng4/UXSo66IU0opfrlX5bhyXebbx8/Ch02tWP+g5jPO7uNUY
+	mlj35tlT6SLLwNPeL9sauhJhnRiKT0wBeN+VVIm94qugE+jE9HhKUyI+KnCAx4BFiVTGlliO1+5zw
+	TxGp6vODh61KfU6kPMbnQLRlt1INfTxNoq3n2TXBuidmAxV+68Pd2ZB/pGQIC8XxKdkcf0inbdUi+
+	GvuCgGZiDSC4xqWlHTPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmSEg-008z3i-0a;
-	Sat, 30 Sep 2023 05:09:50 +0000
-Received: from mgamail.intel.com ([134.134.136.65])
+	id 1qmUom-0098El-31;
+	Sat, 30 Sep 2023 07:55:16 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmSEb-008z34-2v;
-	Sat, 30 Sep 2023 05:09:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1696050585; x=1727586585;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=qswovL8KxKdf3oMfZOvKErO4KUB0d6/EYbBFUBi2r2Q=;
-  b=i3lN2HAzdlb22vNILhgfNK+5n9r0jxP2UJ4X0cgmip8zn/hZtcfjea6R
-   IXOuVyu3LVmPP9/y/wL3ykULRkr2BQhsxILEWKjE/PzczFRKPxcxEDZ20
-   IInYFvUMoW3R3tJNg5B3INDSdL4V86bIDYHIyarbJktOJFbkMlv8nj+SO
-   qktsGMIKaVwQJpZILQ+z88s/y4UNNozkdnjSxrajDUpTLky30e/HEkS97
-   MISmq7KnrNaZnmAsMwHU0FMpADrUgdrZQJJ6Fad/jEX7pDeO1kNb6hGca
-   lHWPMPJySzeHSbpMwuS+5HTRHsseGAV8nf83AHRW9RJpdRiZYSvyRigt8
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10848"; a="386291877"
-X-IronPort-AV: E=Sophos;i="6.03,189,1694761200"; 
-   d="scan'208";a="386291877"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Sep 2023 22:09:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.03,189,1694761200"; 
-   d="scan'208";a="1057982"
-Received: from lkp-server02.sh.intel.com (HELO c3b01524d57c) ([10.239.97.151])
-  by fmviesa001.fm.intel.com with ESMTP; 29 Sep 2023 22:09:40 -0700
-Received: from kbuild by c3b01524d57c with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qmSES-0003jB-2R;
-	Sat, 30 Sep 2023 05:09:36 +0000
-Date: Sat, 30 Sep 2023 13:09:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
-	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v8 50/53] media: core: Free range of buffers
-Message-ID: <202309301247.Y0hH4pjx-lkp@intel.com>
-References: <20230927153558.159278-51-benjamin.gaignard@collabora.com>
+	id 1qmUoj-0098EK-2e
+	for linux-mediatek@lists.infradead.org;
+	Sat, 30 Sep 2023 07:55:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+ s=s31663417; t=1696060500; x=1696665300; i=frank-w@public-files.de;
+ bh=QzUTGFm+fyQlDNRotteAOBG/4ebGcwE5l/KdrOTlHGc=;
+ h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:References;
+ b=R/s+fzvfQDb4tPOoWn/f0yZz3fsstVxeoSPAsiwiLDIYK9ifVbUA7KzrtkHFlbWtLNc0CEB5007
+ +d1eP8Mz3Ys3uFa7f5sfnZiJnu1zEDDpst7MoHjtIVuLDLR18+ddop3MoIq14RcDaoEccBCl+0nSQ
+ PCY152SPf+1FJwYFSH50W7MEihpEZ6EDLKiePX4vVAlLDxPiKHrQDzC06SveR7xrVrhk+txFwnt+8
+ i0YcRS6jjAsJaud8Mo+KEMHGRT8hPW93F0NhPaqkRLcBqN2mYUHWYStfTdH1nvzP4y0XVv9Uti/Od
+ NbxxeUtt9rTuNR9QnhcPXc2I05UEIypFLZQA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.152.33]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MTiU3-1rDgqn1Bkb-00U0nP; Sat, 30
+ Sep 2023 09:55:00 +0200
+Date: Sat, 30 Sep 2023 09:55:00 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: linux-mediatek@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org
+CC: nfraprado@collabora.com, wenst@chromium.org, matthias.bgg@gmail.com,
+ robh@kernel.org, amergnat@baylibre.com, arnd@arndb.de
+Subject: Re: [PATCH] MAINTAINERS: Add Angelo as MediaTek SoC co-maintainer
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
+References: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
+Message-ID: <52BBF3AC-ED0B-4B5B-8773-E7C3E0DBED73@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230927153558.159278-51-benjamin.gaignard@collabora.com>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:o1G3x05zu0TFCCHbeK2KUw2yl4D8cXVN/J+/B7vxO/P/6N6GEb5
+ U//iwjR4kxM0qCnorj0L2dp/gOxfPAUhV5lJlOMeY1dnbqcQpDrIHcUTPU71td+NIta+4f3
+ vY1cgCa5Kfgtk/90nJBpLPmh6JC7wXBrUmpKPliPMUjPCneWLd1YBDCBiHzEstVBVnC+YTu
+ ggoDZM3WQThhQAvmD0vAw==
+UI-OutboundReport: notjunk:1;M01:P0:lGucr4hleHI=;9wQfcWL9wonTfudhTxZlEUX55B1
+ PGRwYMwhY13kB5wLTlpgSDHIIGTc8OPlba1e2u4TrgsGwDaIrO9Tag0f4aLLtvEGXc9Z+67l1
+ KehNm6OQWdrOZvhn13GgqLh485hchpyT9eJszpHZMhBJB/e7AlnzfXOzzii6TKMSyOnJYFQdY
+ KT0wZUQIfpKJv2OO5gal2+5lh3oBGVZznryyrRA3lEywBHz7j+s7sM21nQJysWlsuZ8oOIaTY
+ 4aSPvxrdMg4qRUsNV91Wumd41bapmrDDstfuFz0z+j4sO5KXPDd/bGOBcRCnKXpYLMmwnvf6r
+ 38jNHMyImUzrpfkhVPHVPKAA4bgLJH6LK4w7cldKy2zMyxmzBScaXmXgGToI0azU+ZuHsV64f
+ TbswwBR4KMrNu7fErTMdHjf5koLZrPxtJlo14m4wvz5TgkeG76hbdzKlo4C7Scfp1fIH+7Ljp
+ wNBb1VGr9wxuK+vU9OlFR4ApSTVCskZ3k1KNj8fevnziTZzpy8ShCbo8i80W+yyTXOKUa+Kdp
+ gQZVQZ7BhdEt+DCPoFmE8sziXKt2iAvBS7t4IeIqi2cKzWVubLk1cBmO+o6e0pZmV794QgwfK
+ TBzx9YPqEteJrmEeuwBYzt9ZzMVEbq7utw8wPa2f+ZyBYXvp7D6sCtt4e7vupt7bAsrckekke
+ WSxD2+kQEn942byDmirbUOldqc7YXf+xLIw7zYzbr8HIrRmHP3scr27CIqkQN9QMvDhpEmejM
+ QqwSyALk6SzxqPz7OkGcj5ac+uHXSsxzVHFPUzGc15MzlTPxXiT6kSOSZhp5brX57derSkr9R
+ eYb8PwlWcEHIZcv0HMYKz0XmOq3kJNKhEEhwgEgWIbxyTziabP9usBoL3xDq9zFw+O0vj0WW1
+ pixvwkArc4WfKqqEjKx7ufYWZ5Z17QW1R/kEOE7MCXSF9X5xjO415ljC2iVBi8rmt894GaoS6
+ /kjVAju6/XZNqBodXDqOAfMHw+8=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230929_220946_045064_F9FCE664 
-X-CRM114-Status: GOOD (  19.22  )
+X-CRM114-CacheID: sfid-20230930_005514_247258_05E665E4 
+X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,173 +90,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+Am 29=2E September 2023 10:20:09 MESZ schrieb AngeloGioacchino Del Regno <a=
+ngelogioacchino=2Edelregno@collabora=2Ecom>:
+>I am a top reviewer mainly for MediaTek SoC related patches in most
+>subsystems and I've also been upstreaming both improvements, fixes
+>and new drivers and devicetrees when required=2E
+>
+>The MediaTek scene saw a generous increase in number of patches that
+>are sent to the lists every week, increasing the amount of required
+>efforts to maintain the MTK bits overall, and we will possibly see
+>even more of that=2E
+>
+>For this reason, and also because of suggestions and encouragement
+>coming from the community, I'm stepping up to be a co-maintainer of
+>MediaTek SoCs support=2E
+>
+>Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino=2Edelregno@co=
+llabora=2Ecom>
+>---
+>
+>P=2ES=2E: I tried to reach to Matthias for almost two months, but I could=
+n't
+>find any way to talk to him and he has been unresponsive on the mailing
+>lists as well=2E
+>
+>P=2EP=2ES=2E: This also comes after Rob Herring's suggestion to have myse=
+lf as
+>a MediaTek SoC co-maintainer [1] and support from other people=2E
+>
+>[1]: https://lore=2Ekernel=2Eorg/all/20230804225813=2E12493-1-robh@kernel=
+=2Eorg/
+>
 
-kernel test robot noticed the following build errors:
+Hi,
 
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on sunxi/sunxi/for-next dtor-input/next linus/master v6.6-rc3]
-[cannot apply to dtor-input/for-linus next-20230929]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Thank you Angelo for supporting Matthias here=2E I also have no informatio=
+n why his tree is stale for more than 2 months and also got no response on =
+direct contact=2E I hope he is still ok and do only need some free time=2E
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Rework-offset-cookie-encoding-pattern/20230928-003247
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230927153558.159278-51-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v8 50/53] media: core: Free range of buffers
-config: powerpc64-randconfig-001-20230930 (https://download.01.org/0day-ci/archive/20230930/202309301247.Y0hH4pjx-lkp@intel.com/config)
-compiler: powerpc64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230930/202309301247.Y0hH4pjx-lkp@intel.com/reproduce)
+I waiting for these to be merged:
+ https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/list/?series=3D76=
+1293 =C2=A0 https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/list/?s=
+eries=3D777712
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202309301247.Y0hH4pjx-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/media/common/videobuf2/videobuf2-core.c:39:2: error: #error Expected PAGE_SHIFT to be 12
-      39 | #error Expected PAGE_SHIFT to be 12
-         |  ^~~~~
-   drivers/media/common/videobuf2/videobuf2-core.c: In function '__vb2_queue_free':
->> drivers/media/common/videobuf2/videobuf2-core.c:596:14: error: 'buffer' undeclared (first use in this function)
-     596 |         for (buffer = 0; buffer < q->max_num_buffers; buffer++) {
-         |              ^~~~~~
-   drivers/media/common/videobuf2/videobuf2-core.c:596:14: note: each undeclared identifier is reported only once for each function it appears in
-
-
-vim +/buffer +596 drivers/media/common/videobuf2/videobuf2-core.c
-
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  540  
-2a87af6ba1b9df drivers/media/v4l2-core/videobuf2-core.c        Mauro Carvalho Chehab 2017-11-27  541  /*
-de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  542   * __vb2_queue_free() - free count buffers from start index of the queue - video memory and
-2d86401c2cbfce drivers/media/video/videobuf2-core.c            Guennadi Liakhovetski 2011-09-28  543   * related information, if no buffers are left return the queue to an
-2d86401c2cbfce drivers/media/video/videobuf2-core.c            Guennadi Liakhovetski 2011-09-28  544   * uninitialized state. Might be called even if the queue has already been freed.
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  545   */
-de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  546  static void __vb2_queue_free(struct vb2_queue *q, unsigned int start, unsigned int count)
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  547  {
-de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  548  	unsigned int i;
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  549  
-01cb370ff6c5ab drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-11-30  550  	lockdep_assert_held(&q->mmap_lock);
-63faabfd89f4db drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2013-12-13  551  
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  552  	/* Call driver-provided cleanup function for each buffer, if provided */
-de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  553  	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
-6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  554  		struct vb2_buffer *vb = vb2_get_buffer(q, i);
-256f3162c17595 drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  555  
-6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  556  		if (!vb)
-6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  557  			continue;
-de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  558  		if (vb->planes[0].mem_priv)
-a1d36d8c705e10 drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-03-17  559  			call_void_vb_qop(vb, buf_cleanup, vb);
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  560  	}
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  561  
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  562  	/* Release video buffer memory */
-de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  563  	__vb2_free_mem(q, start, count);
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  564  
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  565  #ifdef CONFIG_VIDEO_ADV_DEBUG
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  566  	/*
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  567  	 * Check that all the calls were balanced during the life-time of this
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  568  	 * queue. If not then dump the counters to the kernel log.
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  569  	 */
-6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  570  	if (vb2_get_num_buffers(q)) {
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  571  		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
-a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  572  				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  573  				  q->cnt_wait_prepare != q->cnt_wait_finish;
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  574  
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  575  		if (unbalanced) {
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  576  			pr_info("unbalanced counters for queue %p:\n", q);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  577  			if (q->cnt_start_streaming != q->cnt_stop_streaming)
-2e33dbb06da407 drivers/media/common/videobuf/videobuf2-core.c  Mauro Carvalho Chehab 2017-12-28  578  				pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  579  					q->cnt_queue_setup, q->cnt_start_streaming,
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  580  					q->cnt_stop_streaming);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  581  			if (q->cnt_prepare_streaming != q->cnt_unprepare_streaming)
-a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  582  				pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
-a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  583  					q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  584  			if (q->cnt_wait_prepare != q->cnt_wait_finish)
-2e33dbb06da407 drivers/media/common/videobuf/videobuf2-core.c  Mauro Carvalho Chehab 2017-12-28  585  				pr_info("     wait_prepare: %u wait_finish: %u\n",
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  586  					q->cnt_wait_prepare, q->cnt_wait_finish);
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  587  		}
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  588  		q->cnt_queue_setup = 0;
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  589  		q->cnt_wait_prepare = 0;
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  590  		q->cnt_wait_finish = 0;
-a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  591  		q->cnt_prepare_streaming = 0;
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  592  		q->cnt_start_streaming = 0;
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  593  		q->cnt_stop_streaming = 0;
-a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  594  		q->cnt_unprepare_streaming = 0;
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  595  	}
-6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27 @596  	for (buffer = 0; buffer < q->max_num_buffers; buffer++) {
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  597  		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  598  		bool unbalanced;
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  599  
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  600  		if (!vb)
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  601  			continue;
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  602  
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  603  		unbalanced = vb->cnt_mem_alloc != vb->cnt_mem_put ||
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  604  			     vb->cnt_mem_prepare != vb->cnt_mem_finish ||
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  605  			     vb->cnt_mem_get_userptr != vb->cnt_mem_put_userptr ||
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  606  			     vb->cnt_mem_attach_dmabuf != vb->cnt_mem_detach_dmabuf ||
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  607  			     vb->cnt_mem_map_dmabuf != vb->cnt_mem_unmap_dmabuf ||
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  608  			     vb->cnt_buf_queue != vb->cnt_buf_done ||
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  609  			     vb->cnt_buf_prepare != vb->cnt_buf_finish ||
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  610  			     vb->cnt_buf_init != vb->cnt_buf_cleanup;
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  611  
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  612  		if (unbalanced) {
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  613  			pr_info("unbalanced counters for queue %p, buffer %d:\n",
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  614  				q, buffer);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  615  			if (vb->cnt_buf_init != vb->cnt_buf_cleanup)
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  616  				pr_info("     buf_init: %u buf_cleanup: %u\n",
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  617  					vb->cnt_buf_init, vb->cnt_buf_cleanup);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  618  			if (vb->cnt_buf_prepare != vb->cnt_buf_finish)
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  619  				pr_info("     buf_prepare: %u buf_finish: %u\n",
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  620  					vb->cnt_buf_prepare, vb->cnt_buf_finish);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  621  			if (vb->cnt_buf_queue != vb->cnt_buf_done)
-28d77c21cbeb2c drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2019-01-16  622  				pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
-28d77c21cbeb2c drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2019-01-16  623  					vb->cnt_buf_out_validate, vb->cnt_buf_queue,
-28d77c21cbeb2c drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2019-01-16  624  					vb->cnt_buf_done, vb->cnt_buf_request_complete);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  625  			if (vb->cnt_mem_alloc != vb->cnt_mem_put)
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  626  				pr_info("     alloc: %u put: %u\n",
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  627  					vb->cnt_mem_alloc, vb->cnt_mem_put);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  628  			if (vb->cnt_mem_prepare != vb->cnt_mem_finish)
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  629  				pr_info("     prepare: %u finish: %u\n",
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  630  					vb->cnt_mem_prepare, vb->cnt_mem_finish);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  631  			if (vb->cnt_mem_get_userptr != vb->cnt_mem_put_userptr)
-2e33dbb06da407 drivers/media/common/videobuf/videobuf2-core.c  Mauro Carvalho Chehab 2017-12-28  632  				pr_info("     get_userptr: %u put_userptr: %u\n",
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  633  					vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  634  			if (vb->cnt_mem_attach_dmabuf != vb->cnt_mem_detach_dmabuf)
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  635  				pr_info("     attach_dmabuf: %u detach_dmabuf: %u\n",
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  636  					vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  637  			if (vb->cnt_mem_map_dmabuf != vb->cnt_mem_unmap_dmabuf)
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  638  				pr_info("     map_dmabuf: %u unmap_dmabuf: %u\n",
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  639  					vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  640  			pr_info("     get_dmabuf: %u num_users: %u\n",
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  641  				vb->cnt_mem_get_dmabuf,
-14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  642  				vb->cnt_mem_num_users);
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  643  		}
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  644  	}
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  645  #endif
-b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  646  
-3e947c36af524b drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-08-10  647  	/* Free vb2 buffers */
-de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  648  	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
-de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  649  		struct vb2_buffer *vb = vb2_get_buffer(q, i);
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  650  
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  651  		if (!vb)
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  652  			continue;
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  653  
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  654  		vb2_queue_remove_buffer(vb);
-145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  655  		kfree(vb);
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  656  	}
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  657  
-6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  658  	if (!vb2_get_num_buffers(q)) {
-ce4686702f8f56 drivers/media/common/videobuf/videobuf2-core.c  Satendra Singh Thakur 2017-12-28  659  		q->memory = VB2_MEMORY_UNKNOWN;
-bd50d999d4d4f3 drivers/media/video/videobuf2-core.c            Marek Szyprowski      2011-10-25  660  		INIT_LIST_HEAD(&q->queued_list);
-a7afcaccfab2fb drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-02-24  661  	}
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  662  }
-e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  663  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Do you have created an own tree from matthias' one or can you directly wor=
+k on it? If working on own tree please send me the link,so that i can track=
+ when changes (also from others) are merged=2E
+regards Frank
 
