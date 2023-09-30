@@ -4,60 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31FA7E77347
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Sep 2023 22:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0DC4E7734E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Sep 2023 02:25:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=SC6zRVCkq2DeluDnnyOjJIKkDt3pXdF0TbDSBtfMCEE=; b=2gmF1ps4juuc5f
-	kL51IXyXEfaS4kl5ZOx22ZJbJKbK6YHE+h529Kj2t1rL4DSQ7Ve9fmUcLY8o9sX4FjhGdykmiJQvY
-	8pJ5QHXpNc3czW5GFXE+gjkUfI9p48Vb93jHBZqCJ5iE5pzIZFV8HgEpQXf03TMi6SeD0x/J6Edmh
-	QF8TUn6dIO5g0zcoUl6ba3xgmMcQ1ods0Mau8tTgqzf+IUfudWMkP1o6taWGoEywaihpDg/uhGhgS
-	32MIJVWHwL3LyeObNm53aR4/DCtSabk4ulRWRpWx5/SLQYOe95NxN4LU28OqaWyEYEy6yAfdTjB1z
-	Nbvev6FlPDsXrL69lSVg==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KsT74PDZ96S+IGVW2NED4fpSv89pTvSeSrxuAEOIpKs=; b=MrJfYyIw+w8kDjUsUqLoSDt+Qi
+	j60Bq96Yz703oV267qolI4EZZPvRt8EAtwadl22asWZlGTniDSV9CiVW5wYjUGPA8Z5Y+Kd/Qxt7q
+	+Cx4WYpOz8IbiqiOydOR1nElZDMvlI1aaOAkXD/y8UTUC2QfgCF59BsGAPVvGtDoTvYJDmrPHsjTS
+	2AoCIm5MzSSNnOyBXEsMDiB8Z5PLBKx6L152ZQQbPMbrcLitcVVHT0GzE3Q3Axd2juylDJWG6Ycxv
+	V/AkzAz6GBnV0itavM0kU5g5F46jzDnZhorcU7YkHupTlCNtGKPPN0TvXbFljuyQBgYJgdwsVD7YY
+	IyTN938w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmMQs-008g1x-2F;
-	Fri, 29 Sep 2023 22:58:02 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qmPff-008owY-2d;
+	Sat, 30 Sep 2023 02:25:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmMQo-008g0p-2v
+	id 1qmPfd-008ovg-2r
 	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Sep 2023 22:58:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id CBF8ACE2681;
-	Fri, 29 Sep 2023 22:57:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9DBEC433CA;
-	Fri, 29 Sep 2023 22:57:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696028274;
-	bh=meAmfIZh4pVZAbrgCrY8UlN/iLhYwcGcAVNrSFyN0tI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=lBHegamYcFx4guTEnL7zSfBO1bzwJlewb3dkCPWmn9NyHE9HWn4+/U3LR4pyG4ULg
-	 pfqlGJ9G6rXR5o356YpxUps3XhcZEXmIPa7S6CSxjjLZH2ReMkJ8Thl0hNSYOvhWvo
-	 +/dqUj8TWsA09Ou2VvzgYbDtMr0ziHmr/i6yE41bq0PXi+ZegLJ9AFT8dMjwI8CwPC
-	 y8gKrLLWqqNKmwVf7YAGwkxCj9QkHKn+MXZtvxD/8xIGX4Nkts1PthtL3NYD05HtnS
-	 leh9/PqSHSfGzwqEhIIW0dtS3/5ebrld8oRo/R60u5EfffS+hjIC0bGKpmsKPH6g/I
-	 j53VShVxGGwiw==
-Date: Fri, 29 Sep 2023 17:57:52 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Ingo Rohloff <lundril@gmx.de>
-Cc: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-pci@vger.kernel.org
-Subject: Re: [PATCH v2] wifi: mt76: mt7921e: Support MT7992 IP in Xiaomi
- Redmibook 15 Pro (2023)
-Message-ID: <20230929225752.GA560382@bhelgaas>
+	Sat, 30 Sep 2023 02:25:31 +0000
+X-UUID: 9b80994a5f3811ee9b7791016c24628a-20230929
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=KsT74PDZ96S+IGVW2NED4fpSv89pTvSeSrxuAEOIpKs=;
+	b=KvuH901yPR7Yp1QxDe9YkfzMxeedOkRU1hxQYxVWc30vvQ9Mg1DK9nvgxK/6jfLB7rss1bTCzlUSQ3DuZM6JiXP9jG2g1z6yoMuXc/EDpQMmjZiSBqXlafc80sbRo7QIplfNzUOpaAbSdGFvZyJljzeDi9q2AmHW0bgMpmsGHJc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:c6496818-63da-48e6-9b5c-e8a9144c0051,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:b1709dc3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 9b80994a5f3811ee9b7791016c24628a-20230929
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 326374091; Fri, 29 Sep 2023 19:25:22 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 30 Sep 2023 10:25:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sat, 30 Sep 2023 10:25:20 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
+	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH v2 3/6] wifi: mt76: mt7921: add 6GHz power type support for clc
+Date: Sat, 30 Sep 2023 10:25:07 +0800
+Message-ID: <5630a7992a41ea2659b535b5bf2eda1aa16a66fa.1696039301.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <cover.1696039301.git.deren.wu@mediatek.com>
+References: <cover.1696039301.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230826200241.5077-1-lundril@gmx.de>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230929_155759_139244_1770C67D 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20230929_192529_959008_CFFFA675 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,58 +91,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 26, 2023 at 10:02:41PM +0200, Ingo Rohloff wrote:
-> In the Xiaomi Redmibook 15 Pro (2023) laptop I have got, a wifi chip is
-> used, which according to its PCI Vendor ID is from "ITTIM Technology".
-> 
-> This chip works flawlessly with the mt7921e module.  The driver doesn't
-> bind to this PCI device, because the Vendor ID from "ITTIM Technology" is
-> not recognized.
-> 
-> This patch adds the PCI Vendor ID from "ITTIM Technology" to the list of
-> PCI Vendor IDs and lets the mt7921e driver bind to the mentioned wifi
-> chip.
-> 
-> Signed-off-by: Ingo Rohloff <lundril@gmx.de>
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>	# pci_ids.h
+There are several power type should be supported in 6GHz band. mt7921
+apply 6GHz power type from AP settings and clc will setup the
+corresponding regulatory power.
 
-> ---
-> Changes in v2:
-> As requested, move the definition of the PCI Vendor ID for
-> ITTIM Technology to the (hopefully) right place in pci_ids.h
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
->  include/linux/pci_ids.h                         | 2 ++
->  2 files changed, 4 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> index 95610a117d2f..ed5a220763ce 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> @@ -17,6 +17,8 @@ static const struct pci_device_id mt7921_pci_device_table[] = {
->  		.driver_data = (kernel_ulong_t)MT7921_FIRMWARE_WM },
->  	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7922),
->  		.driver_data = (kernel_ulong_t)MT7922_FIRMWARE_WM },
-> +	{ PCI_DEVICE(PCI_VENDOR_ID_ITTIM, 0x7922),
-> +		.driver_data = (kernel_ulong_t)MT7922_FIRMWARE_WM },
->  	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0608),
->  		.driver_data = (kernel_ulong_t)MT7921_FIRMWARE_WM },
->  	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0616),
-> diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-> index 2dc75df1437f..6ae1803bcd2f 100644
-> --- a/include/linux/pci_ids.h
-> +++ b/include/linux/pci_ids.h
-> @@ -180,6 +180,8 @@
->  #define PCI_DEVICE_ID_BERKOM_A4T		0xffa4
->  #define PCI_DEVICE_ID_BERKOM_SCITEL_QUADRO	0xffa8
-> 
-> +#define PCI_VENDOR_ID_ITTIM		0x0b48
-> +
->  #define PCI_VENDOR_ID_COMPAQ		0x0e11
->  #define PCI_DEVICE_ID_COMPAQ_TOKENRING	0x0508
->  #define PCI_DEVICE_ID_COMPAQ_TACHYON	0xa0fc
-> --
-> 2.30.2
-> 
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 34 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  4 ++-
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  9 +++++
+ 3 files changed, 46 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index aa20fdce2729..cf8aecb200fc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -701,6 +701,38 @@ static void mt7921_bss_info_changed(struct ieee80211_hw *hw,
+ 	mt792x_mutex_release(dev);
+ }
+ 
++static void
++mt7921_regd_set_6ghz_power_type(struct ieee80211_vif *vif)
++{
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	struct mt792x_phy *phy = mvif->phy;
++	struct mt792x_dev *dev = phy->dev;
++
++	if (hweight64(dev->mt76.vif_mask) > 1) {
++		phy->power_type = MT_AP_DEFAULT;
++		goto out;
++	}
++
++	switch (vif->bss_conf.power_type) {
++	case IEEE80211_REG_SP_AP:
++		phy->power_type = MT_AP_SP;
++		break;
++	case IEEE80211_REG_VLP_AP:
++		phy->power_type = MT_AP_VLP;
++		break;
++	case IEEE80211_REG_LPI_AP:
++		phy->power_type = MT_AP_LPI;
++		break;
++	case IEEE80211_REG_UNSET_AP:
++	default:
++		phy->power_type = MT_AP_DEFAULT;
++		break;
++	}
++
++out:
++	mt7921_mcu_set_clc(dev, dev->mt76.alpha2, dev->country_ie_env);
++}
++
+ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 		       struct ieee80211_sta *sta)
+ {
+@@ -736,6 +768,8 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	if (ret)
+ 		return ret;
+ 
++	mt7921_regd_set_6ghz_power_type(vif);
++
+ 	mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
+ 
+ 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 8d9ebe34816a..8c76ef92e14f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -1254,10 +1254,12 @@ int __mt7921_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
+ 		u8 pad1;
+ 		u8 alpha2[2];
+ 		u8 type[2];
+-		u8 rsvd[64];
++		u8 env_6g;
++		u8 rsvd[63];
+ 	} __packed req = {
+ 		.idx = idx,
+ 		.env = env_cap,
++		.env_6g = dev->phy.power_type,
+ 		.acpi_conf = mt792x_acpi_get_flags(&dev->phy),
+ 	};
+ 	int ret, valid_cnt = 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 548e89fad4d9..8b1dbddf4582 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -63,6 +63,14 @@ enum {
+ 	MT792x_CLC_MAX_NUM,
+ };
+ 
++enum mt792x_reg_power_type {
++	MT_AP_UNSET = 0,
++	MT_AP_DEFAULT,
++	MT_AP_LPI,
++	MT_AP_SP,
++	MT_AP_VLP,
++};
++
+ DECLARE_EWMA(avg_signal, 10, 8)
+ 
+ struct mt792x_sta {
+@@ -114,6 +122,7 @@ struct mt792x_phy {
+ 	struct mt76_mib_stats mib;
+ 
+ 	u8 sta_work_count;
++	enum mt792x_reg_power_type power_type;
+ 
+ 	struct sk_buff_head scan_event_list;
+ 	struct delayed_work scan_work;
+-- 
+2.18.0
+
 
