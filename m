@@ -4,83 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A10E77371
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Sep 2023 12:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BCFCE748ED
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Oct 2023 15:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bHWk/74ar992Q4pJYw65UYejOLcEeirhE3P4juzJat4=; b=G+Lw93yFD0Z+P0xiN+ftM6G1yc
-	O2ZRhkJH0yuy2PL7eQK0g55+r4CtPy+/ZUqXvhhpNJWzQlUtT1Q35tLH+foVapN+cHOyfWSo2ahFC
-	urx7HYkvSuuiQ92IdldH4ge9ZqFYW9eAtCK8QJLhXGwpYtjIVMao3c8rb+i3dGnk54gvW+OF4mBnz
-	ws3b01ycXzBZWp+lvIQuG8NGF2u96g8/ofsuzEtIDPchsH17SBc1MFMztPedqbmtFtldzgUthDhDR
-	n/w90YTT8y/+LJ4lqoGJ8FPEtvCPv5f7kCHafHxRqF7+qepEW0N1bJWGxuSehyDjGEI7AAv42HtQM
-	9TdbP5bw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4xvXMhEn645NdduosmllxK/n6ctlm3Z6N2Vg1MNZPg0=; b=i1liStQiZKcZNnufNq1K3mcFH9
+	0ymDIlVIpW+JMMT5BZoUg/4a7n+b0r4lh5KrCWfbHm+1T7nrYnkKvmuCDkxuW1g9d0YvMyCBOG6AW
+	JiXykRx/9rsWEMqrWMr9XguKFfGKERqHcGrPXA3h73wOhHVXYC4jc1RRqWo6fhRprsERrO4ABroqL
+	xjoJRBv9b9sqyXmsqBJKhJlXtvLTgfJjXOSJpglpgfhrI4/0MXDFn5Vj6t2zfSkxeQIw/Bqfy6Jc9
+	x1lpn6TO/P7NSrrBmiRdROK9i93MtEBKomymZ3R4hHGkYOd/JPIPMTNTuVn+Cj1PyUz6gYGQNjuUp
+	hH5Xb+IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmZX5-009YBn-0q;
-	Sat, 30 Sep 2023 12:57:19 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1qmxy3-00BHmo-2O;
+	Sun, 01 Oct 2023 15:02:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmZX1-009YAV-0e;
-	Sat, 30 Sep 2023 12:57:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
- s=s31663417; t=1696078630; x=1696683430; i=frank-w@public-files.de;
- bh=1cQ3HuKXIF1mPThFuYOTsPaNKR1Gk3qp55at/3uFCBc=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=EEoUSAh14u3J5l5foG6CeiigJBfxBKsr4oZ4oE9NfEzWUGpQnOEjVDivg6pyKrWx6nX2Cpfzm6j
- brqBoptdJjeUsaJK9nSjoPkbCpv2Qd2LOcIQJUH6ZEvCfiKn5JFuxBBonzpuSa+VcPrjvNzZe+Dbs
- 8mwOE1PeZPiZEtZnZz02N44X7LAZdNygfIwC240YoL5vXgXbguVnfAGo/Ispt28QMFdSz9BiVqyNm
- ZGqlzxNfc6Nyz4oDE3PCLIr46K1YZSCREWMRvgk7UUKlVoWQwXvc8EY6ymYDGU9bSsvA0YLC7rDZF
- z6CXM7vdi6oM0U+7YNdHxAQRlfNvGdSpQKwQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.152.33] ([217.61.152.33]) by web-mail.gmx.net
- (3c-app-gmx-bs36.server.lan [172.19.170.88]) (via HTTP); Sat, 30 Sep 2023
- 14:57:09 +0200
+	id 1qmxy0-00BHmS-2J
+	for linux-mediatek@lists.infradead.org;
+	Sun, 01 Oct 2023 15:02:46 +0000
+X-UUID: 8d00fa8e606b11ee86758d4a7c00f3a0-20231001
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4xvXMhEn645NdduosmllxK/n6ctlm3Z6N2Vg1MNZPg0=;
+	b=CbX0MbnCF5ENF6jtCV6RZldSmvTMdHHTX8KYyMbh9SG4EF2kd4/vol4WAVLl0zDr+74nqW0PvjVQnokka3vZv7ATlrRGaGZE2n7FpvsLAoZE/gLmVo24SBnnTXr0ke2EOn+2H3G57ORpFLaFS/1UQia0quBEZpZU8GzmjA/GpWM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:3024bc47-c8df-4352-babf-fa0f8ba26a4e,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:5f78ec9,CLOUDID:2f018f14-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 8d00fa8e606b11ee86758d4a7c00f3a0-20231001
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1419186890; Sun, 01 Oct 2023 08:02:33 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sun, 1 Oct 2023 23:02:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sun, 1 Oct 2023 23:02:30 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
+	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Rong Yan <rong.yan@mediatek.com>,
+	"Deren Wu" <deren.wu@mediatek.com>
+Subject: [PATCH v3] wifi: mt76: mt7921: support 5.9/6GHz channel config in acpi
+Date: Sun, 1 Oct 2023 23:02:05 +0800
+Message-ID: <6cfde22e0b44088297f98342147fc8af108e3a6f.1696171289.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Message-ID: <trinity-3fe161a2-70f1-4619-be28-199ea6201668-1696078629921@3c-app-gmx-bs36>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Frank
- Wunderlich <linux@fw-web.de>
-Subject: Aw: [RFC v1] arm64: dts: mediatek: add dtbs with applied overlays
- for bpi-r3
-Content-Type: text/plain; charset=UTF-8
-Date: Sat, 30 Sep 2023 14:57:09 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20230916083214.7059-1-linux@fw-web.de>
-References: <20230916083214.7059-1-linux@fw-web.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:xgVUp3hQ4hSWgQi6tyM4GTOL7nnTaeGiONOEAMNzVr2x3MXSwA99wM2JIyElwhlptAxSU
- PcVlSycFEy138pXjcEUXubl/pKh79GpplV2t3SUbXwuBxOE9Zg9FoMqu7vAf1xQfKW7xY0g18aH9
- YCVJjEYvgap3NV2sJk/tlMy2tWmFks5dplS5Sd63W8Q6ykY8VoJHBy2MMhwIQouVbrVEKX0gu70k
- 7edc2VdoC1khbHlxR8BTG0shUzp2eljfa2hZfOS/sLApETTOMH33rm8/a6nb7SI+g1zWjIj9iRkI
- dg=
-UI-OutboundReport: notjunk:1;M01:P0:CDsWDlRXma4=;LEkD/j2srMmq1++2T1jhrjSf2gn
- xkcr3IsPqJi00BwGAkNQWWRlvG6HeQ0Z1L44RqAxgM8chUkCsyAwNy7lLUvtOyrLAYTJjSGqM
- J2i0f1lIw5TCUlCv4lWg7bfV3opi2vpSlF7tXOoLF3tYmjvMimiYIsSQHfHinqGy6RjN93o3w
- ULtq9XJlL0XekO84MPCz9zL4UdE3LBvzdwJaee/5mNNo0LflhSZy51FenkLdrSrzqvNQnZS61
- 31ysYxnyvFhO87i2+w/j+81u0sZNc3Ihd9rd8rGWJPOAWdm+gF9QcTmI7dCUxb1nMR0fgEg2C
- JImM3A/2DWcdeAhI0bdbNiDkjKCaqB2vQj0uO6+SSdYf1IxOh28QJWM1Mnaa0SvvVMppzoYO/
- WmixOHvzJ4KdiZEDUAf0HWXrTifMPIto61HrNhHMx6Z08TlEfgs0Yu5T2Eb2ztt98HUa0BAL2
- L58ejJFT2eZZuZm3Iw4q+f0/XxnqaIf+WrrYiYJUN7XGMXO0l5anYajZ51zZ0FHP0Y1Eg3Ido
- ZAL6A8PAeOnuGS5qxkbwffF9BKE8ovg8ffpDlcDrJQ9lEBDy1AyHoaI4bMAJmjRVlMV9mafN2
- F+fmBrcY8zlfKGj/a67IGNw9PJcFsdwKxWwaStG6X9FgVibZ0ERk4okRtaffxoFQ8OrmJZ4jV
- ivLAsnUvheHox04gQVjbtiKo9rYxUuMrb3s7+ffcLk9Phj5NYbOOd2z7OQW2yPbxYJt7MmfiC
- VFMsKrRWq0KypWlSRF2uN4JbBHq3jiQiW2m0MmS/ySTKYPmsyfF6TT1/VbHEYMhG5s/1u1djf
- h6RINiOAp9DXQkp5AwdQiTSxp7rWv5aa1YJOEa9c2QTD4=
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.777700-8.000000
+X-TMASE-MatchedRID: clfRPwBsujCy9Uh/U28aL/havVZP5tTaGSqdEmeD/nWdCqKtxM6bh79l
+	zKzQm5bId0paDT2HaWx+dfwnt/TnE8637+A5hpnFKaMQ6tw7oDJV12TtAZAdp0PL6pqegFS6MkO
+	ne4r2fxbObbfp8Bdqbr4tP830vR4A8P7w+kOuIIHuykw7cfAoIIv8pidhVYOUXE5Co/aUb2CjxY
+	yRBa/qJcFwgTvxipFa9xS3mVzWUuAojN1lLei7RQtfZqxTW7b5Cg+ktjRaS4balOFEhR+8KeSVl
+	xny2FCurX7TAzzz/k05yIDNVQ9lfh0UgksJEjYbxu52HMP5itmQeUSAyN9CmnmVKZusLp922v9O
+	jYWA2uMMswg45VMfPXY3pGDmoik6
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.777700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 0E3AE22A08B15684368F1B371245A5DD77C8852737B9A5BE082E2057A3FC85652000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230930_055715_549810_62A6631D 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20231001_080244_788514_FC9CA24E 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,68 +103,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Rong Yan <rong.yan@mediatek.com>
 
-just a friendly reminder...is this the right way to go?
+The mtcl table, configured by platform vendor, provides regulatory
+information for 5.9/6 GHz channels. mt792x should work on
+corresponding channels supported by mtcl. This patch would parse
+the settings in mtcl table and apply the result into chip side.
 
-regards Frank
+Signed-off-by: Rong Yan <rong.yan@mediatek.com>
+Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+v3: update the format of author's name to avoid this patch missing in wireless patchwork
+---
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  4 +-
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  6 +++
+ .../wireless/mediatek/mt76/mt792x_acpi_sar.c  | 53 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt792x_acpi_sar.h  |  2 +
+ 4 files changed, 64 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 63f3d4a5c9aa..94fc3eb40234 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -1260,12 +1260,14 @@ int __mt7921_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
+ 		u8 alpha2[2];
+ 		u8 type[2];
+ 		u8 env_6g;
+-		u8 rsvd[63];
++		u8 mtcl_conf;
++		u8 rsvd[62];
+ 	} __packed req = {
+ 		.idx = idx,
+ 		.env = env_cap,
+ 		.env_6g = dev->phy.power_type,
+ 		.acpi_conf = mt792x_acpi_get_flags(&dev->phy),
++		.mtcl_conf = mt792x_acpi_get_mtcl_conf(&dev->phy, alpha2),
+ 	};
+ 	int ret, valid_cnt = 0;
+ 	u8 i, *pos;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 36fae736dd19..3c897b34aaa7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -382,6 +382,7 @@ int mt792xe_mcu_fw_pmctrl(struct mt792x_dev *dev);
+ int mt792x_init_acpi_sar(struct mt792x_dev *dev);
+ int mt792x_init_acpi_sar_power(struct mt792x_phy *phy, bool set_default);
+ u8 mt792x_acpi_get_flags(struct mt792x_phy *phy);
++u8 mt792x_acpi_get_mtcl_conf(struct mt792x_phy *phy, char *alpha2);
+ #else
+ static inline int mt792x_init_acpi_sar(struct mt792x_dev *dev)
+ {
+@@ -398,6 +399,11 @@ static inline u8 mt792x_acpi_get_flags(struct mt792x_phy *phy)
+ {
+ 	return 0;
+ }
++
++static inline u8 mt792x_acpi_get_mtcl_conf(struct mt792x_phy *phy, char *alpha2)
++{
++	return 0xf;
++}
+ #endif
+ 
+ #endif /* __MT7925_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+index 303c0f5c9c66..e7afea87e82e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+@@ -348,3 +348,56 @@ u8 mt792x_acpi_get_flags(struct mt792x_phy *phy)
+ 	return flags;
+ }
+ EXPORT_SYMBOL_GPL(mt792x_acpi_get_flags);
++
++static u8
++mt792x_acpi_get_mtcl_map(int row, int column, struct mt792x_asar_cl *cl)
++{
++	u8 config = 0;
++
++	if (cl->cl6g[row] & BIT(column))
++		config |= (cl->mode_6g & 0x3) << 2;
++	if (cl->version > 1 && cl->cl5g9[row] & BIT(column))
++		config |= (cl->mode_5g9 & 0x3);
++
++	return config;
++}
++
++u8 mt792x_acpi_get_mtcl_conf(struct mt792x_phy *phy, char *alpha2)
++{
++	static const char * const cc_list_all[] = {
++		"00", "EU", "AR", "AU", "AZ", "BY", "BO", "BR",
++		"CA", "CL", "CN", "ID", "JP", "MY", "MX", "ME",
++		"MA", "NZ", "NG", "PH", "RU", "RS", "SG", "KR",
++		"TW", "TH", "UA", "GB", "US", "VN", "KH", "PY",
++	};
++	static const char * const cc_list_eu[] = {
++		"AT", "BE", "BG", "CY", "CZ", "HR", "DK", "EE",
++		"FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT",
++		"LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL",
++		"PT", "RO", "MT", "SK", "SI", "ES", "CH",
++	};
++	struct mt792x_acpi_sar *sar = phy->acpisar;
++	struct mt792x_asar_cl *cl;
++	int col, row, i;
++
++	if (!sar)
++		return 0xf;
++
++	cl = sar->countrylist;
++	if (!cl)
++		return 0xc;
++
++	for (i = 0; i < ARRAY_SIZE(cc_list_all); i++) {
++		col = 7 - i % 8;
++		row = i / 8;
++		if (!memcmp(cc_list_all[i], alpha2, 2))
++			return mt792x_acpi_get_mtcl_map(row, col, cl);
++	}
++
++	for (i = 0; i < ARRAY_SIZE(cc_list_eu); i++)
++		if (!memcmp(cc_list_eu[i], alpha2, 2))
++			return mt792x_acpi_get_mtcl_map(0, 6, cl);
++
++	return mt792x_acpi_get_mtcl_map(0, 7, cl);
++}
++EXPORT_SYMBOL_GPL(mt792x_acpi_get_mtcl_conf);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.h b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.h
+index d6d332e863ba..2298983b6342 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.h
+@@ -77,6 +77,8 @@ struct mt792x_asar_cl {
+ 	u8 version;
+ 	u8 mode_6g;
+ 	u8 cl6g[6];
++	u8 mode_5g9;
++	u8 cl5g9[6];
+ } __packed;
+ 
+ struct mt792x_asar_fg {
+-- 
+2.18.0
 
-> Gesendet: Samstag, 16. September 2023 um 10:32 Uhr
-> Von: "Frank Wunderlich" <linux@fw-web.de>
-> An: linux-mediatek@lists.infradead.org
-> Cc: "Frank Wunderlich" <frank-w@public-files.de>, "Matthias Brugger" <ma=
-tthias.bgg@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delr=
-egno@collabora.com>, "Rob Herring" <robh+dt@kernel.org>, "Krzysztof Kozlow=
-ski" <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley" <conor+dt@kernel.=
-org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-> Betreff: [RFC v1] arm64: dts: mediatek: add dtbs with applied overlays f=
-or bpi-r3
->
-> From: Frank Wunderlich <frank-w@public-files.de>
->
-> Build devicetree binaries for testing overlays and providing users
-> full dtb without using overlays.
->
-> Suggested-by: Rob Herring <robh+dt@kernel.org>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> based on discussion here:
-> https://lore.kernel.org/all/CAL_JsqK_3xxD0DFwipXO85P=3Dq=3DEYjUdjE1_8g1M=
-Ktvw3vVzx5A@mail.gmail.com/
-> https://lore.kernel.org/all/CAL_JsqJSi=3DkJSix=3Df3787ULZnaCy_Y26Phdhy5y=
-9fat_vkDuUw@mail.gmail.com/
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts=
-/mediatek/Makefile
-> index c99c3372a4b5..18be027bf6b4 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -13,6 +13,14 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi=
--r3-emmc.dtbo
->  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand.dtbo
->  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor.dtbo
->  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd.dtbo
-> +mt7986a-bananapi-bpi-r3-emmc-nand-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb=
- mt7986a-bananapi-bpi-r3-emmc.dtbo mt7986a-bananapi-bpi-r3-nand.dtbo
-> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nand.dtb
-> +mt7986a-bananapi-bpi-r3-emmc-nor-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb =
-mt7986a-bananapi-bpi-r3-emmc.dtbo mt7986a-bananapi-bpi-r3-nor.dtbo
-> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nor.dtb
-> +mt7986a-bananapi-bpi-r3-sd-nand-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb m=
-t7986a-bananapi-bpi-r3-sd.dtbo mt7986a-bananapi-bpi-r3-nand.dtbo
-> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nand.dtb
-> +mt7986a-bananapi-bpi-r3-sd-nor-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb mt=
-7986a-bananapi-bpi-r3-sd.dtbo mt7986a-bananapi-bpi-r3-nor.dtbo
-> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nor.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-rfb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986b-rfb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8167-pumpkin.dtb
-> --
-> 2.34.1
->
->
 
