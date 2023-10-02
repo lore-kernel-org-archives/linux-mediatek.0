@@ -4,75 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA1F8E784AD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 13:15:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3453AE7849A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 13:38:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s+kMPwU0Ob0ztoTAttuAaSUVI1oC9UCyetrTZTEeb8w=; b=ZQ1MP9ZbEggaOYvmPOUg4aGTUY
-	cV0nSlOXaRaSE1Et0xulozSWPob+/2y/GjIAxDXzv8jtro6PbkdaAjUAq3N7qc5AkSJs7d69J5ehu
-	b4aJDQ6tlVyO1jai0fUX/5ikQmFP9ZQsn+nbyTWcqhm5ngAnGMrCMpT9UnfO7sj4u3O9j3Yw+s55W
-	ap4iy+IEOAehEcKgRptKzNLRmlED/0Sh7gpdyvcR3UB+QwdaEyfCaWWOzP1yr9sp/Ie+kW0vFVvqE
-	/iX3XXSGLsaD2He3VLr/MQmOlVyhv9dJCd+8ZfYrHugqfrUY9mEr8GJlurhJYEqMTLqlxTiugrekw
-	yWyDUy6A==;
+	bh=QFoOQOQj/kS91nbJ++4pssJTF+gE9T/bwW3FqGDAU9I=; b=yCL/K8ADsxWzBHqrmFLzGWXOcZ
+	J4ZKpRvD2rhan305DvqlsmzitkFfbrRy1YXvXwagcEdLeZxZYWQfNJztTf9X3L0eIgqiWD+Wc4KST
+	xw9e34c/VYrsx7D3u7BP78djM/HQCWuf6eKb3uOYsGjjKeN+cWi/9itbPTckIFYt5YoA9EAmVla+3
+	ieWJh8XnB5ahI7HLLl6kdXg1y2LGcKcDkqST+8ZA3ZI8s2C0CGrB/Y2Wze5t3U51vAuLjNmKX7ZwL
+	lLADMUY5WApDDV0+hG0ONJZDSvrs8KCz59bHaL4IiNJpaTM+BX6vTvzyiMoUjQwAMXrn0tuWppeFN
+	jeR/br2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnIld-00ClnF-2u;
-	Mon, 02 Oct 2023 13:15:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnJ7X-00CnQF-06;
+	Mon, 02 Oct 2023 13:37:59 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHh0-00Cb1K-2r;
-	Mon, 02 Oct 2023 12:06:35 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9CE336607314;
-	Mon,  2 Oct 2023 13:06:27 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248388;
-	bh=MAfzqnBElYsriZOe56F+JFfMksB0FEVAHWT7iRLKeFk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gQft/qs4HXHcaOnvsTV1VjfLtIR4x6frTn77MseWecOwzxMKmTVmft0lsnmGNa6On
-	 2HHrXuVCR5s7Hz+C3s0duze8XZOStWWbxDTPaalTbQBpJs6j3dWDHIaGnD73gebmd7
-	 3+rOKk6ULRfiOU5QMtOcVjjcQIPIXj3ll3GL095Dde5Ew0IhGFTXB9GBdZHsOJeOco
-	 gV2pEqHk+/NWMDQclk3UM4QZu5U3iLMFDe6pBXtUXnKpd8ORJYhnh1iq8qPDBBzwrH
-	 x/z6MLJINJYdc+eyeOfpDmgGIOMnc3kIv8torqzwf1Z6xa3WxZj7RAfye/0nZackJ4
-	 /8O4PridKzwYw==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 06/53] media: mediatek: vdec: Remove useless loop
-Date: Mon,  2 Oct 2023 14:05:30 +0200
-Message-Id: <20231002120617.119602-7-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
-References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
+	id 1qnJ7T-00CnOE-0p;
+	Mon, 02 Oct 2023 13:37:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id A6CB3B80D44;
+	Mon,  2 Oct 2023 13:37:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F63BC433C7;
+	Mon,  2 Oct 2023 13:37:49 +0000 (UTC)
+Message-ID: <cf73025e-0bb0-44c2-9ab3-e426c09bebd8@xs4all.nl>
+Date: Mon, 2 Oct 2023 15:37:47 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 13/53] media: Report the maximum possible number of
+ buffers for the queue
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
+ <20230927153558.159278-14-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230927153558.159278-14-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_050631_052756_5B9E4307 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20231002_063755_560941_A0A91622 
+X-CRM114-Status: GOOD (  23.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,34 +69,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simplify code by removing useless loop by using video buffer index.
+On 27/09/2023 17:35, Benjamin Gaignard wrote:
+> Use one of the struct v4l2_create_buffers reserved bytes to report
+> the maximum possible number of buffers for the queue.
+> V4l2 framework set V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS flags in queue
+> capabilities so userland can know when the field is valid.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../userspace-api/media/v4l/vidioc-create-bufs.rst       | 8 ++++++--
+>  Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst | 1 +
+>  drivers/media/common/videobuf2/videobuf2-v4l2.c          | 9 +++++++--
+>  drivers/media/v4l2-core/v4l2-ioctl.c                     | 4 ++--
+>  include/uapi/linux/videodev2.h                           | 7 ++++++-
+>  5 files changed, 22 insertions(+), 7 deletions(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+> index a048a9f6b7b6..1a46549e7462 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+> @@ -116,9 +116,13 @@ than the number requested.
+>        - ``flags``
+>        - Specifies additional buffer management attributes.
+>  	See :ref:`memory-flags`.
+> -
+>      * - __u32
+> -      - ``reserved``\ [6]
+> +      - ``max_buffers``
+> +      - If V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS capability flag is set
+> +        this field indicate the maximum possible number of buffers
+> +        for this queue.
+> +    * - __u32
+> +      - ``reserved``\ [5]
+>        - A place holder for future extensions. Drivers and applications
+>  	must set the array to zero.
+>  
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> index 099fa6695167..0395187e1a5a 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> @@ -120,6 +120,7 @@ aborting or finishing any DMA in progress, an implicit
+>  .. _V4L2-BUF-CAP-SUPPORTS-ORPHANED-BUFS:
+>  .. _V4L2-BUF-CAP-SUPPORTS-M2M-HOLD-CAPTURE-BUF:
+>  .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
+> +.. _V4L2-BUF-CAP-SUPPORTS-SET-MAX-BUFS:
+>  
+>  .. raw:: latex
+>  
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index 278ea1107b01..655133f1ae2b 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -686,6 +686,7 @@ EXPORT_SYMBOL(vb2_querybuf);
+>  static void fill_buf_caps(struct vb2_queue *q, u32 *caps)
+>  {
+>  	*caps = V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS;
+> +	*caps |= V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS;
+>  	if (q->io_modes & VB2_MMAP)
+>  		*caps |= V4L2_BUF_CAP_SUPPORTS_MMAP;
+>  	if (q->io_modes & VB2_USERPTR)
+> @@ -767,9 +768,13 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+>  
+>  	fill_buf_caps(q, &create->capabilities);
+>  	validate_memory_flags(q, create->memory, &create->flags);
+> -	create->index = q->num_buffers;
+> -	if (create->count == 0)
+> +
+> +	create->max_buffers = q->max_num_buffers;
+> +
+> +	if (create->count == 0) {
+> +		create->index = vb2_get_num_buffers(q);
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c   | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+This breaks git bisect: this function isn't introduced until patch 21/53.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-index e393e3e668f8..69d37b93bd35 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-@@ -1695,13 +1695,8 @@ static int vdec_vp9_slice_setup_core_buffer(struct vdec_vp9_slice_instance *inst
- 		return -EINVAL;
- 
- 	/* update internal buffer's width/height */
--	for (i = 0; i < vq->num_buffers; i++) {
--		if (vb == vq->bufs[i]) {
--			instance->dpb[i].width = w;
--			instance->dpb[i].height = h;
--			break;
--		}
--	}
-+	instance->dpb[vb->index].width = w;
-+	instance->dpb[vb->index].height = h;
- 
- 	/*
- 	 * get buffer's width/height from instance
--- 
-2.39.2
+Note: with the build scripts you can just run it with:
+
+./build.sh -patches 53 ...
+
+and it will apply each patch in sequence and attempt to compile it.
+
+Regards,
+
+	Hans
+
+>  		return ret != -EBUSY ? ret : 0;
+> +	}
+>  
+>  	switch (f->type) {
+>  	case V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE:
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index f4d9d6279094..700db197e371 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -483,9 +483,9 @@ static void v4l_print_create_buffers(const void *arg, bool write_only)
+>  {
+>  	const struct v4l2_create_buffers *p = arg;
+>  
+> -	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, ",
+> +	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, max buffers=%u",
+>  		p->index, p->count, prt_names(p->memory, v4l2_memory_names),
+> -		p->capabilities);
+> +		p->capabilities, p->max_buffers);
+>  	v4l_print_format(&p->format, write_only);
+>  }
+>  
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 78260e5d9985..b0dbb1be728c 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -1034,6 +1034,7 @@ struct v4l2_requestbuffers {
+>  #define V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS		(1 << 4)
+>  #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
+>  #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
+> +#define V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS		(1 << 7)
+>  
+>  /**
+>   * struct v4l2_plane - plane info for multi-planar buffers
+> @@ -2604,6 +2605,9 @@ struct v4l2_dbg_chip_info {
+>   * @flags:	additional buffer management attributes (ignored unless the
+>   *		queue has V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS capability
+>   *		and configured for MMAP streaming I/O).
+> + * @max_buffers: if V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS capability flag is set
+> + *		 this field indicate the maximum possible number of buffers
+> + *		 for this queue.
+>   * @reserved:	future extensions
+>   */
+>  struct v4l2_create_buffers {
+> @@ -2613,7 +2617,8 @@ struct v4l2_create_buffers {
+>  	struct v4l2_format	format;
+>  	__u32			capabilities;
+>  	__u32			flags;
+> -	__u32			reserved[6];
+> +	__u32			max_buffers;
+> +	__u32			reserved[5];
+>  };
+>  
+>  /*
 
 
