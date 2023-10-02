@@ -4,41 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2795E784B3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 13:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FF20E784AC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 13:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9WwYTVprPAYrcxI3Abjax3vo4ILqCElxSJUvfQSR8H0=; b=y/PYZz4c5vwzePPaZ+PsLLn7AF
-	1o/kKbAdS9p82PWbNCYcB5lvcZ/+zfGm6EClKsJ6Ktcw4tbTjWugnsjr3Z3ZWq1GUDyOm9y1ke7x/
-	78rRlL23R1tTcD+aNApnmoGoGwjgcv7XrThAXkFtna5wW2JwN1XXE3/nuk+KEyf9bxacDu1GJG0dQ
-	o5+ViMYUc4c7PG7sZYz5nUcmmcjkHoQb3i8BHKlZDAUqfW0VhBMPg4qcf8y8dgOeC39NdDtOvfD1V
-	EGsjHiM15S2GONnaF8KI5oKJykLq63QyNKYeIRYzewfDydqhVDqOI5S5bB5Cez18rDbb6oPt5nJ3B
-	Bxyk5AEw==;
+	bh=romFGOasvRAu+4lARf3rfJ9IbVkabcy911jVWSpllmU=; b=y11yIgFu580JM7f7c1ZK8Ipkkz
+	5Ty4z5VgTrhfmEG7+4bponpmT3xZipzA5acGLGsWmaJ0MgyZ1UyDhgubZjYKLJAyG3btZbhnlRWky
+	tV6oYjt5x57WrRKZwsj1yesDnNaom9ykgaJt4YR1ALI2QLbc77GfNJZSmNL547RWyhxuBhc/OWvOa
+	2SutZhmc0k+gWHP9R4qlMDo7297VF2I/SLPiB6qCrnlpkHqJkGJGV1wrZmjKScAipeG0M7J8159r9
+	3TvMMGbrP3BZrAMApOzNsWCw3Tc5vIOARSFWqsHwoZRpW3aGpfkLd6zD4ztqFck0cO0QxlP07+yml
+	/PzWVUtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnJFZ-00Cnwf-1H;
-	Mon, 02 Oct 2023 13:46:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qnJG0-00Co2z-17;
+	Mon, 02 Oct 2023 13:46:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnJFV-00Cnvh-1M;
-	Mon, 02 Oct 2023 13:46:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 94A7560C74;
-	Mon,  2 Oct 2023 13:46:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4D2BC433CA;
-	Mon,  2 Oct 2023 13:46:08 +0000 (UTC)
-Message-ID: <08636b49-9022-4361-96d2-574de2548ab0@xs4all.nl>
-Date: Mon, 2 Oct 2023 15:46:07 +0200
+	id 1qnJFw-00Co0H-14;
+	Mon, 02 Oct 2023 13:46:42 +0000
+Received: from [IPV6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae] (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F338666072E6;
+	Mon,  2 Oct 2023 14:46:35 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1696254396;
+	bh=O8vCK6vbi9I+g3gLwposBxmUwfZuUOIFgHZEhwLWTJk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=J3C+UmCPkSghlJzrlCZtSc86BTp3xMsv2L5lMzt7TXVLP8PKavhKS7i+5165v1ocK
+	 fX8bq/RCfPN/UatRG3P37MPOs3MnwnzoRI29RyjaB2H/JFxBZPCNrUlhygaoxGNA1u
+	 KneR40HdAwVKxQbkSkBzApvDOmttUvrRIsbl8a1yEeDuRoc6ArQ9o3MLnnD8EZyTO+
+	 4HHm6ZGzCmjb05nRK0Geaj4X2mIQoxMEZUY5OPVgahVXmev0TbKmIn60e0bdUVScwL
+	 zeXDiwACehxY2oE8Z1uNJ6+UroVJmJDZ3o1/E15LsgrEYZYA+qWAGFBFt0/6Ks81e7
+	 3pAJRzmUjdaQg==
+Message-ID: <2f1d1983-6038-c216-e362-d08a05c344fc@collabora.com>
+Date: Mon, 2 Oct 2023 15:46:33 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 01/53] media: videobuf2: Rework offset 'cookie'
- encoding pattern
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v8 13/53] media: Report the maximum possible number of
+ buffers for the queue
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
  tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
  ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
  gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
@@ -46,15 +58,17 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
- <20231002120617.119602-2-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20231002120617.119602-2-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
+ <20230927153558.159278-14-benjamin.gaignard@collabora.com>
+ <cf73025e-0bb0-44c2-9ab3-e426c09bebd8@xs4all.nl>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <cf73025e-0bb0-44c2-9ab3-e426c09bebd8@xs4all.nl>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_064613_543335_B10E76D6 
-X-CRM114-Status: GOOD (  31.24  )
+X-CRM114-CacheID: sfid-20231002_064640_684636_297A62F8 
+X-CRM114-Status: GOOD (  21.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,199 +83,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/10/2023 14:05, Benjamin Gaignard wrote:
-> Change how offset 'cookie' field value is computed to make possible
-> to use more buffers.
-> The maximum number of buffers depends of PAGE_SHIFT value and can
-> go up to 0x7fff when PAGE_SHIFT = 12.
-> With this encoding pattern we know the maximum number that a queue
-> could store so we can check it at  queue init time.
-> It also make easier and faster to find buffer and plane from using
-> the offset field.
-> Change __find_plane_by_offset() prototype to return the video buffer
-> itself rather than it index.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> changes in version 9:
-> - BUFFER_INDEX_MASK now depends on PAGE_SHIFT value to match
->   architectures requirements.
-> 
->  .../media/common/videobuf2/videobuf2-core.c   | 71 +++++++++----------
->  1 file changed, 32 insertions(+), 39 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index cf6727d9c81f..a0540b2e461f 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -31,6 +31,10 @@
->  
->  #include <trace/events/vb2.h>
->  
-> +#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
-> +#define PLANE_INDEX_MASK	0x7
-> +#define BUFFER_INDEX_MASK	(BIT_MASK(30 - PLANE_INDEX_SHIFT) - 1)
-> +
->  static int debug;
->  module_param(debug, int, 0644);
->  
-> @@ -358,21 +362,24 @@ static void __setup_offsets(struct vb2_buffer *vb)
->  	unsigned int plane;
->  	unsigned long off = 0;
->  
-> -	if (vb->index) {
-> -		struct vb2_buffer *prev = q->bufs[vb->index - 1];
-> -		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
-> -
-> -		off = PAGE_ALIGN(p->m.offset + p->length);
-> -	}
-> +	/*
-> +	 * Offsets cookies value have the following constraints:
-> +	 * - a buffer could have up to 8 planes.
 
-could -> can
+Le 02/10/2023 à 15:37, Hans Verkuil a écrit :
+> On 27/09/2023 17:35, Benjamin Gaignard wrote:
+>> Use one of the struct v4l2_create_buffers reserved bytes to report
+>> the maximum possible number of buffers for the queue.
+>> V4l2 framework set V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS flags in queue
+>> capabilities so userland can know when the field is valid.
+>>
+>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>> ---
+>>   .../userspace-api/media/v4l/vidioc-create-bufs.rst       | 8 ++++++--
+>>   Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst | 1 +
+>>   drivers/media/common/videobuf2/videobuf2-v4l2.c          | 9 +++++++--
+>>   drivers/media/v4l2-core/v4l2-ioctl.c                     | 4 ++--
+>>   include/uapi/linux/videodev2.h                           | 7 ++++++-
+>>   5 files changed, 22 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+>> index a048a9f6b7b6..1a46549e7462 100644
+>> --- a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+>> +++ b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+>> @@ -116,9 +116,13 @@ than the number requested.
+>>         - ``flags``
+>>         - Specifies additional buffer management attributes.
+>>   	See :ref:`memory-flags`.
+>> -
+>>       * - __u32
+>> -      - ``reserved``\ [6]
+>> +      - ``max_buffers``
+>> +      - If V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS capability flag is set
+>> +        this field indicate the maximum possible number of buffers
+>> +        for this queue.
+>> +    * - __u32
+>> +      - ``reserved``\ [5]
+>>         - A place holder for future extensions. Drivers and applications
+>>   	must set the array to zero.
+>>   
+>> diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+>> index 099fa6695167..0395187e1a5a 100644
+>> --- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+>> +++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+>> @@ -120,6 +120,7 @@ aborting or finishing any DMA in progress, an implicit
+>>   .. _V4L2-BUF-CAP-SUPPORTS-ORPHANED-BUFS:
+>>   .. _V4L2-BUF-CAP-SUPPORTS-M2M-HOLD-CAPTURE-BUF:
+>>   .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
+>> +.. _V4L2-BUF-CAP-SUPPORTS-SET-MAX-BUFS:
+>>   
+>>   .. raw:: latex
+>>   
+>> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+>> index 278ea1107b01..655133f1ae2b 100644
+>> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+>> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+>> @@ -686,6 +686,7 @@ EXPORT_SYMBOL(vb2_querybuf);
+>>   static void fill_buf_caps(struct vb2_queue *q, u32 *caps)
+>>   {
+>>   	*caps = V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS;
+>> +	*caps |= V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS;
+>>   	if (q->io_modes & VB2_MMAP)
+>>   		*caps |= V4L2_BUF_CAP_SUPPORTS_MMAP;
+>>   	if (q->io_modes & VB2_USERPTR)
+>> @@ -767,9 +768,13 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+>>   
+>>   	fill_buf_caps(q, &create->capabilities);
+>>   	validate_memory_flags(q, create->memory, &create->flags);
+>> -	create->index = q->num_buffers;
+>> -	if (create->count == 0)
+>> +
+>> +	create->max_buffers = q->max_num_buffers;
+>> +
+>> +	if (create->count == 0) {
+>> +		create->index = vb2_get_num_buffers(q);
+> This breaks git bisect: this function isn't introduced until patch 21/53.
+>
+> Note: with the build scripts you can just run it with:
+>
+> ./build.sh -patches 53 ...
+>
+> and it will apply each patch in sequence and attempt to compile it.
 
-> +	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
+It should  be create->index = q->num_buffers;
+The error is also in v9...
 
-use -> uses
-
-> +	 * - must be page aligned
-> +	 * That led to this bit mapping when PAGE_SHIFT = 12:
-> +	 * |30                |29        15|14       12|11 0|
-> +	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
-> +	 * where there are 15 bits to store buffer index.
-
-buffer index -> the buffer index
-
-> +	 * Depending on PAGE_SHIFT value we can have else bits to store buffer index.
-
-else bits? You probably mean "fewer bits".
-
-buffer index -> the buffer index
-
-> +	 */
-> +	off = vb->index << PLANE_INDEX_SHIFT;
->  
->  	for (plane = 0; plane < vb->num_planes; ++plane) {
-> -		vb->planes[plane].m.offset = off;
-> +		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
->  
->  		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
->  				vb->index, plane, off);
-> -
-> -		off += vb->planes[plane].length;
-> -		off = PAGE_ALIGN(off);
->  	}
->  }
-
-Regards,
-
-	Hans
-
->  
-> @@ -2185,13 +2192,12 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type)
->  EXPORT_SYMBOL_GPL(vb2_core_streamoff);
->  
->  /*
-> - * __find_plane_by_offset() - find plane associated with the given offset off
-> + * __find_plane_by_offset() - find video buffer and plane associated with the given offset off
->   */
->  static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
-> -			unsigned int *_buffer, unsigned int *_plane)
-> +			struct vb2_buffer **vb, unsigned int *plane)
->  {
-> -	struct vb2_buffer *vb;
-> -	unsigned int buffer, plane;
-> +	unsigned int buffer;
->  
->  	/*
->  	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
-> @@ -2209,24 +2215,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
->  		return -EBUSY;
->  	}
->  
-> -	/*
-> -	 * Go over all buffers and their planes, comparing the given offset
-> -	 * with an offset assigned to each plane. If a match is found,
-> -	 * return its buffer and plane numbers.
-> -	 */
-> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
-> -		vb = q->bufs[buffer];
-> +	/* Get buffer and plane from the offset */
-> +	buffer = (off >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
-> +	*plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
->  
-> -		for (plane = 0; plane < vb->num_planes; ++plane) {
-> -			if (vb->planes[plane].m.offset == off) {
-> -				*_buffer = buffer;
-> -				*_plane = plane;
-> -				return 0;
-> -			}
-> -		}
-> -	}
-> +	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
-> +		return -EINVAL;
->  
-> -	return -EINVAL;
-> +	*vb = q->bufs[buffer];
-> +	return 0;
->  }
->  
->  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
-> @@ -2306,7 +2303,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  {
->  	unsigned long off = vma->vm_pgoff << PAGE_SHIFT;
->  	struct vb2_buffer *vb;
-> -	unsigned int buffer = 0, plane = 0;
-> +	unsigned int plane = 0;
->  	int ret;
->  	unsigned long length;
->  
-> @@ -2335,12 +2332,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  	 * Find the plane corresponding to the offset passed by userspace. This
->  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
->  	 */
-> -	ret = __find_plane_by_offset(q, off, &buffer, &plane);
-> +	ret = __find_plane_by_offset(q, off, &vb, &plane);
->  	if (ret)
->  		goto unlock;
->  
-> -	vb = q->bufs[buffer];
-> -
->  	/*
->  	 * MMAP requires page_aligned buffers.
->  	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
-> @@ -2368,7 +2363,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  	if (ret)
->  		return ret;
->  
-> -	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
-> +	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
->  	return 0;
->  }
->  EXPORT_SYMBOL_GPL(vb2_mmap);
-> @@ -2382,7 +2377,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
->  {
->  	unsigned long off = pgoff << PAGE_SHIFT;
->  	struct vb2_buffer *vb;
-> -	unsigned int buffer, plane;
-> +	unsigned int plane;
->  	void *vaddr;
->  	int ret;
->  
-> @@ -2392,12 +2387,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
->  	 * Find the plane corresponding to the offset passed by userspace. This
->  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
->  	 */
-> -	ret = __find_plane_by_offset(q, off, &buffer, &plane);
-> +	ret = __find_plane_by_offset(q, off, &vb, &plane);
->  	if (ret)
->  		goto unlock;
->  
-> -	vb = q->bufs[buffer];
-> -
->  	vaddr = vb2_plane_vaddr(vb, plane);
->  	mutex_unlock(&q->mmap_lock);
->  	return vaddr ? (unsigned long)vaddr : -EINVAL;
-
+>
+> Regards,
+>
+> 	Hans
+>
+>>   		return ret != -EBUSY ? ret : 0;
+>> +	}
+>>   
+>>   	switch (f->type) {
+>>   	case V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE:
+>> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+>> index f4d9d6279094..700db197e371 100644
+>> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+>> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+>> @@ -483,9 +483,9 @@ static void v4l_print_create_buffers(const void *arg, bool write_only)
+>>   {
+>>   	const struct v4l2_create_buffers *p = arg;
+>>   
+>> -	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, ",
+>> +	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, max buffers=%u",
+>>   		p->index, p->count, prt_names(p->memory, v4l2_memory_names),
+>> -		p->capabilities);
+>> +		p->capabilities, p->max_buffers);
+>>   	v4l_print_format(&p->format, write_only);
+>>   }
+>>   
+>> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+>> index 78260e5d9985..b0dbb1be728c 100644
+>> --- a/include/uapi/linux/videodev2.h
+>> +++ b/include/uapi/linux/videodev2.h
+>> @@ -1034,6 +1034,7 @@ struct v4l2_requestbuffers {
+>>   #define V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS		(1 << 4)
+>>   #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
+>>   #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
+>> +#define V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS		(1 << 7)
+>>   
+>>   /**
+>>    * struct v4l2_plane - plane info for multi-planar buffers
+>> @@ -2604,6 +2605,9 @@ struct v4l2_dbg_chip_info {
+>>    * @flags:	additional buffer management attributes (ignored unless the
+>>    *		queue has V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS capability
+>>    *		and configured for MMAP streaming I/O).
+>> + * @max_buffers: if V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS capability flag is set
+>> + *		 this field indicate the maximum possible number of buffers
+>> + *		 for this queue.
+>>    * @reserved:	future extensions
+>>    */
+>>   struct v4l2_create_buffers {
+>> @@ -2613,7 +2617,8 @@ struct v4l2_create_buffers {
+>>   	struct v4l2_format	format;
+>>   	__u32			capabilities;
+>>   	__u32			flags;
+>> -	__u32			reserved[6];
+>> +	__u32			max_buffers;
+>> +	__u32			reserved[5];
+>>   };
+>>   
+>>   /*
+>
 
