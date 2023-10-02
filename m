@@ -4,96 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8507E784A4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 07:00:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9086E784A4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 07:00:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HOArDjaFWFJOyICXPvUIUf44Pahfsl6ARg2tKcgPSDA=; b=lt5za7dcp4x6qy/EOvMi2TJQRz
-	xf5GMMvscyfH98zD3LVJcoDKSLsyXSjGbTwwWcQBl4bj/tlLJFTWgZMHE7NhbGsp2K4DYCpszp2LN
-	e9Ft/z5I4Byo2GFmo9iXYHMQOTslS9l7mmygOvsETVOVtN1Tx/+kqo4DpyDugDG0nULSRbxQ99Ai+
-	t5o2OFX1JGwEwk3bGDkWe+C11U7tdb+PyJyeZs+nzpeKPvVClm88l8Ck/Qd9VeP1tTEbuz4uJF4uc
-	XIrPAk3HcPHki3/PA/Ee39+LxFNtq/ZoNXQZBChRwFf3toTB/MAoxvJ3M+hifcjHTUpMHPU9Ws4jf
-	KagrHdWQ==;
+	bh=65UjR/BYH4sgNp7jAQsrOIIv1FTbyb0+YEnzQHZ9wXU=; b=RdhOnbxR4NY3B4ZOMWTo2qT9kK
+	SdNzs5wKODzoT9FWEdwxPZ8w+4Vd3ERZK/LCKfIf4YsyVM97H+sWy2bEfNvnZMBpFrWHCFQ2xaU6e
+	E7xz0zEZFPtgCamDf/cohIk1FSefP4dusnRJ25S2MGIri9iRG+TXnyyxI6nq3jldXujmh74VCSBSQ
+	OWN22GApFUBSoMxcU2gWb5pFyEHdd8PgevL/q6Xgm9i4SMzGtYErvQoWBcmZNcXXq2LZp0CXreapl
+	tJeOri8IUYjysVbDPI39cVZ8U9tcNxoP7pNMa8mXC95W/0EOCF+DIovGVhnp51b3wAi3uZMiArNQ2
+	8kKcFKnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnCuO-00C3Fl-1n;
-	Mon, 02 Oct 2023 07:00:01 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnCuL-00C3EV-2a;
-	Mon, 02 Oct 2023 06:59:59 +0000
-Received: from 8bytes.org (pd9fe9df8.dip0.t-ipconnect.de [217.254.157.248])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id ECDA51A2626;
-	Mon,  2 Oct 2023 08:59:53 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1696229994;
-	bh=AIFVwF7V2yCwhyWe75DvT7fYSBhwm/fBmqB8nOMomrQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qpnLCwzk2x1keRMkLPeYurvT7r9OO8YOJ6/7Vx/qRYBDxYBtaFczM0bl0X3CwM+Z8
-	 JjZ2S2KL1yCjIcyOYKVBFX3TnYJH3DgXndhq33RdOr06+/f4P6g8ed5YusHJpPxKBf
-	 /cC8uVfAa/rk6Wr3PPtDNHTnxEpzpMy8C+fcOb8G29mwxCh4jTTbUwvHTKVDKKREHN
-	 XKS42S0qW6PWzXZYxLGalC73IDOoglQpj2vweIfb/B9jDLMPy04LKeueQ7Vtaof2m0
-	 /U/pjbpVoAN9ULRqOfwjMT62szxrFLqy3anLaW4GIZc388p9f5N34fWI0GM1KG2Gfs
-	 vlKBpUHgqfWmA==
-Date: Mon, 2 Oct 2023 08:59:52 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: Niklas Schnelle <schnelle@linux.ibm.com>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
-	Wenjia Zhang <wenjia@linux.ibm.com>,
-	Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
-	Gerd Bayer <gbayer@linux.ibm.com>,
-	Julian Ruess <julianr@linux.ibm.com>,
-	Pierre Morel <pmorel@linux.ibm.com>,
-	Alexandra Winter <wintera@linux.ibm.com>,
-	Heiko Carstens <hca@linux.ibm.com>,
-	Vasily Gorbik <gor@linux.ibm.com>,
-	Alexander Gordeev <agordeev@linux.ibm.com>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Sven Schnelle <svens@linux.ibm.com>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	iommu@lists.linux.dev, asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v13 0/6] iommu/dma: s390 DMA API conversion and optimized
- IOTLB flushing
-Message-ID: <ZRpqaJEQLRDp5b1L@8bytes.org>
-References: <20230928-dma_iommu-v13-0-9e5fc4dacc36@linux.ibm.com>
+	id 1qnCuu-00C3MC-1n;
+	Mon, 02 Oct 2023 07:00:32 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnCuq-00C3J5-36
+	for linux-mediatek@lists.infradead.org;
+	Mon, 02 Oct 2023 07:00:31 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40675f06f1fso1503735e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Oct 2023 00:00:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1696230020; x=1696834820; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :references:cc:to:content-language:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=65UjR/BYH4sgNp7jAQsrOIIv1FTbyb0+YEnzQHZ9wXU=;
+        b=uQyCjIU5o5f0b34jy39iVqVH6lZTo0xt33FI+Hyc3r3CQWWIikstK8UY3BgHglt8Ao
+         NgORKta9S2NmZ+HgII86adaElaeulGaebgXDlKIHTGeaq+Fa1XJGRfyFM8YRLbUBu6ke
+         6FZX+OQ5q+z8B9+1BA2EHpg6c0va6Ri0Ta1Gk7u9d9HJUgd6Ic3BBqvZEbdnyPZBRSiQ
+         TGGnxLnF6LVGZDrbzdT82NZOMpK7iuusuRH1v+K0JmynSK6rJEHUzZXMFIwvuxOCcmWk
+         +Elmer0uZ1purPPpQoAoeuNpwYyHnMYuWyvCjB4PJnAKKI5SaRYbleuPtYTKZ/Pp6aMQ
+         CL0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696230020; x=1696834820;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :references:cc:to:content-language:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=65UjR/BYH4sgNp7jAQsrOIIv1FTbyb0+YEnzQHZ9wXU=;
+        b=ddkfqzzpydgIcjeg57DKdUcD0s8Ye7LyQKYP+IYY+AZcJUoHOXMhCka7MQ6JkPZtJg
+         UNog5P7Xa0vOW9agesGqt8Vap/EMVcx8T/xxKJa2PoYdkRppwH/VXiAb6Dz2X1goMMRV
+         E6cKfG8YsfU4qBfrwo6c6zSHsFvQVkVG9wUKYXyNuUJcEblRPghRI/ulBOII2v2UtFvt
+         1MXkPMcTi2F1UEGjVHeK69f9cGWM8SaTvuEjLIFCGoVQYQsHPAg/V1wTe2Wxkh/vqhM7
+         FGF5enLxSFDjmm1YGH7Dspp3D6jRtCEk7yZeKvhCkCKiWb/Fm3J/f1CV/oD8ax2DR3K0
+         HoVQ==
+X-Gm-Message-State: AOJu0YxTQTjGttER15kahE1C+oytfOFuC5AsVSx0ujYkyc3NbgyhLGL0
+	RrZLBxt5spDnrAKvVVHRs+nDAg==
+X-Google-Smtp-Source: AGHT+IE2F7pfcHOX2OqOjdf/8yC0R+rXJgV623odj8DkbTqz9V9NQ2wG4qE6yedpKCypg3IborH+mQ==
+X-Received: by 2002:a05:6000:114b:b0:30e:56b3:60fe with SMTP id d11-20020a056000114b00b0030e56b360femr8811358wrx.4.1696230020459;
+        Mon, 02 Oct 2023 00:00:20 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:982:cbb0:b653:7e47:ffdd:9340? ([2a01:e0a:982:cbb0:b653:7e47:ffdd:9340])
+        by smtp.gmail.com with ESMTPSA id d11-20020adff84b000000b0031980783d78sm12200252wrq.54.2023.10.02.00.00.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 02 Oct 2023 00:00:19 -0700 (PDT)
+Message-ID: <7d157f25-a25d-41c2-9ff5-624721efcb92@linaro.org>
+Date: Mon, 2 Oct 2023 09:00:18 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230928-dma_iommu-v13-0-9e5fc4dacc36@linux.ibm.com>
+User-Agent: Mozilla Thunderbird
+From: neil.armstrong@linaro.org
+Subject: Re: [PATCH] MAINTAINERS: drm/ci: add entries for xfail files
+Content-Language: en-US, fr
+To: Helen Koike <helen.koike@collabora.com>, dri-devel@lists.freedesktop.org
+Cc: robdclark@gmail.com, linux-arm-msm@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, p.zabel@pengutronix.de,
+ linux-mediatek@lists.infradead.org, heiko@sntech.de,
+ jani.nikula@linux.intel.com, intel-gfx@lists.freedesktop.org,
+ alexander.deucher@amd.com, amd-gfx@lists.freedesktop.org,
+ airlied@redhat.com, daniel@ffwll.ch, mripard@kernel.org,
+ michel.daenzer@mailbox.org, daniel@fooishbar.org,
+ linux-kernel@vger.kernel.org
+References: <20230919182249.153499-1-helen.koike@collabora.com>
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro Developer Services
+In-Reply-To: <20230919182249.153499-1-helen.koike@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231001_235958_085259_A24AB009 
-X-CRM114-Status: UNSURE (   7.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231002_000029_021423_037DD09E 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,17 +123,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 28, 2023 at 04:31:34PM +0200, Niklas Schnelle wrote:
-> Niklas Schnelle (6):
->       iommu: Allow .iotlb_sync_map to fail and handle s390's -ENOMEM return
->       s390/pci: prepare is_passed_through() for dma-iommu
->       s390/pci: Use dma-iommu layer
->       iommu/s390: Disable deferred flush for ISM devices
->       iommu/dma: Allow a single FQ in addition to per-CPU FQs
->       iommu/dma: Use a large flush queue and timeout for shadow_on_flush
+On 19/09/2023 20:22, Helen Koike wrote:
+> DRM CI keeps track of which tests are failing, flaking or being skipped
+> by the ci in the expectations files. Add entries for those files to the
+> corresponding driver maintainer, so they can be notified when they
+> change.
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> ---
+> 
+> For reference: https://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg463165.html
+> 
+>   MAINTAINERS | 7 +++++++
+>   1 file changed, 7 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 90f13281d297..740a2ce2689c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -6614,6 +6614,7 @@ S:	Maintained
+>   B:	https://gitlab.freedesktop.org/drm/msm/-/issues
+>   T:	git https://gitlab.freedesktop.org/drm/msm.git
+>   F:	Documentation/devicetree/bindings/display/msm/
+> +F:	drivers/gpu/drm/ci/xfails/msm*
+>   F:	drivers/gpu/drm/msm/
+>   F:	include/uapi/drm/msm_drm.h
+>   
+> @@ -6886,6 +6887,7 @@ T:	git git://anongit.freedesktop.org/drm/drm-misc
+>   F:	Documentation/devicetree/bindings/display/amlogic,meson-dw-hdmi.yaml
+>   F:	Documentation/devicetree/bindings/display/amlogic,meson-vpu.yaml
+>   F:	Documentation/gpu/meson.rst
+> +F:	drivers/gpu/drm/ci/xfails/meson*
+>   F:	drivers/gpu/drm/meson/
+>   
+>   DRM DRIVERS FOR ATMEL HLCDC
+> @@ -6994,6 +6996,7 @@ L:	dri-devel@lists.freedesktop.org
+>   L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+>   S:	Supported
+>   F:	Documentation/devicetree/bindings/display/mediatek/
+> +F:	drivers/gpu/drm/ci/xfails/mediatek*
+>   F:	drivers/gpu/drm/mediatek/
+>   F:	drivers/phy/mediatek/phy-mtk-dp.c
+>   F:	drivers/phy/mediatek/phy-mtk-hdmi*
+> @@ -7034,6 +7037,7 @@ L:	dri-devel@lists.freedesktop.org
+>   S:	Maintained
+>   T:	git git://anongit.freedesktop.org/drm/drm-misc
+>   F:	Documentation/devicetree/bindings/display/rockchip/
+> +F:	drivers/gpu/drm/ci/xfails/rockchip*
+>   F:	drivers/gpu/drm/rockchip/
+>   
+>   DRM DRIVERS FOR STI
+> @@ -10476,6 +10480,7 @@ C:	irc://irc.oftc.net/intel-gfx
+>   T:	git git://anongit.freedesktop.org/drm-intel
+>   F:	Documentation/ABI/testing/sysfs-driver-intel-i915-hwmon
+>   F:	Documentation/gpu/i915.rst
+> +F:	drivers/gpu/drm/ci/xfails/i915*
+>   F:	drivers/gpu/drm/i915/
+>   F:	include/drm/i915*
+>   F:	include/uapi/drm/i915_drm.h
+> @@ -17862,6 +17867,7 @@ C:	irc://irc.oftc.net/radeon
+>   T:	git https://gitlab.freedesktop.org/agd5f/linux.git
+>   F:	Documentation/gpu/amdgpu/
+>   F:	drivers/gpu/drm/amd/
+> +F:	drivers/gpu/drm/ci/xfails/amd*
+>   F:	drivers/gpu/drm/radeon/
+>   F:	include/uapi/drm/amdgpu_drm.h
+>   F:	include/uapi/drm/radeon_drm.h
+> @@ -22846,6 +22852,7 @@ L:	dri-devel@lists.freedesktop.org
+>   L:	virtualization@lists.linux-foundation.org
+>   S:	Maintained
+>   T:	git git://anongit.freedesktop.org/drm/drm-misc
+> +F:	drivers/gpu/drm/ci/xfails/virtio*
+>   F:	drivers/gpu/drm/virtio/
+>   F:	include/uapi/linux/virtio_gpu.h
+>   
 
-Applied, thanks Niklas.
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
