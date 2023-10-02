@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66D1E748F3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 16:10:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C2BE748F0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 16:15:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gAEkFcXO+UtmKlPU5ziV5/QuD8FB5HyQRTGTbbl4lJ0=; b=bctkGnRQ2AAwHDwelIPEaT+6Dz
-	mSGU9yeYoR8ulpkkEfntZ3kJpfukBDjUrbfp6Lpl4cEXhLew75wiwAj01V1CGUU0RNtAVnBJNEpYS
-	jyKmkat6obaWJWDLQA91u4xj5bk362tWsL67sBX1TDPcCPDyV/TjcS4ef1sUvdTAz9TUT4Px9FVwP
-	A7+LA7rSft0I3cpmqwOiNi6SIuQtSCJzekhkDEAkT0KSYagn6minlpscMbaMaM2jN1rWCnXQ9A6N8
-	Zhd8Sk3WBok/UWT2N758N6uX72DHIlnWPag+ArcTuAsHHt3wwxZ3U8Xb8sjupzOs3vnwvj9wQugFL
-	TkgPXt7A==;
+	bh=IWeqoseHigeDD0I7A77bR5hqw/yONRLFUNmHT2k98Kk=; b=S/gjSCxVx/xJnMjPro8ff9OZuf
+	g64Vu5YIgPpwEXy8cmtVtIQ4GU9Qhjj064LM9iV6nnmu6Kgge6kEiYAjRH5ImpZr/bRUdeRuTKLur
+	LZR+fdtvS38AYz9NF9TEeRvHCoYcMIBwVjymS7e0JQZLm+4AlHGs31RFQbcqfxxVuTs0z/lDDSZF8
+	ZEdEswJAsaXBvSNawYY8/wqHaIm74GPGvj1cM2ezS7mtMIJtIEUO0CymJV6k9IPqIEuaNpY2msXfY
+	69HXT2O7kvQpl3Z2nHP1/3JNZSWbPJCx4MQRHhexxrCbGkDvqg2mZfbY9imAZLOU1QO+njZQpI+3Y
+	Gxb1im0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnLVA-00D2w4-1f;
-	Mon, 02 Oct 2023 16:10:32 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qnLa6-00D3V2-2o;
+	Mon, 02 Oct 2023 16:15:38 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnLV7-00D2uy-0s;
-	Mon, 02 Oct 2023 16:10:31 +0000
+	id 1qnLa2-00D3TO-0b;
+	Mon, 02 Oct 2023 16:15:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 6DEEECE11D0;
-	Mon,  2 Oct 2023 16:10:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7353DC433CA;
-	Mon,  2 Oct 2023 16:10:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8342960C76;
+	Mon,  2 Oct 2023 16:15:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07FBCC433C8;
+	Mon,  2 Oct 2023 16:15:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696263026;
-	bh=CfIUOjCxqP4k4PEwlJ3KWN+LSN/aN14INr8PFuBU1gc=;
+	s=k20201202; t=1696263333;
+	bh=AhZPFxKw6JIAmar3BTlp6KAFMwqOxLDxCPhW4rygFww=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KmUE24gWThX+EImHY5hV0v2pHMvLxkeVCnJHZ00Ae79HwxE+sH2xf6rO2icIcHLhQ
-	 kuA8UeyUFpfQ/Rrv+WrhFR6u7+HlluCNkxLc4ZGuJMo6ouClZnoRU0/L+Ut0StCG1e
-	 5n4Ol+PmGUNzV6aqmJVwDPZALnTtEvbd+avoD6v6N4vnmHmz5N+IBuujSzUmrpCZDw
-	 l8m09QHqaE7NDsWQ1m3Bs0PjPWniEVLWZCZC4jYP1wsgovVnDW1IDYO+nbEOFjt43z
-	 OafuSZjskWKxClwam76QWAaOnQfrNih7e5z+BOBN71TRiC/9F2lZry67Vc+t11BfAW
-	 RxMXo9xuRonwQ==
-Received: (nullmailer pid 1867798 invoked by uid 1000);
-	Mon, 02 Oct 2023 16:10:24 -0000
-Date: Mon, 2 Oct 2023 11:10:24 -0500
+	b=QrbkQazhVsQR0aAe2Xv3ul3hzgSf1cGt0FJwjroCzNjjAz1l1znBYWl1XOJo96pN0
+	 idDJth42GnDGl/dVKBqf+DP0S0Oh3LjO7pTXHivmWOQmWf+ZxuP60GfIBJawDF8AF3
+	 K6wxLOnFNcSmnQNwR1seQdWlkDmZXghcgF+PlcU5pxI70NrTTZ4qkbspQXz0Qk1+vy
+	 Al07ycPBfUFS6Nkb5Ixzkp2CmhiXWKG1c1XAqzgALMjZKpaPypirr3C00axU1yENrm
+	 qmYBDJoUcK6Ab2TARJQt4NfGGHc0dS42ZcI3dnsK8YM6xRayV81iOiCjPzYBBX94QG
+	 +AZpN55EcW4ow==
+Received: (nullmailer pid 1883864 invoked by uid 1000);
+	Mon, 02 Oct 2023 16:15:31 -0000
+Date: Mon, 2 Oct 2023 11:15:31 -0500
 From: Rob Herring <robh@kernel.org>
 To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org, Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
-Subject: Re: [PATCH v4 02/12] regulator: dt-bindings: mt6358: Convert to DT
- schema
-Message-ID: <169626302358.1867415.15357334455488086427.robh@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Lee Jones <lee@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 03/12] regulator: dt-bindings: mt6358: Add
+ regulator-allowed-modes property
+Message-ID: <169626333046.1883804.1497786674123702405.robh@kernel.org>
 References: <20230928085537.3246669-1-wenst@chromium.org>
- <20230928085537.3246669-3-wenst@chromium.org>
+ <20230928085537.3246669-4-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230928085537.3246669-3-wenst@chromium.org>
+In-Reply-To: <20230928085537.3246669-4-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_091029_482296_6FC8F804 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20231002_091534_273327_85D34A51 
+X-CRM114-Status: GOOD (  18.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,35 +74,35 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 28 Sep 2023 16:55:25 +0800, Chen-Yu Tsai wrote:
-> Convert this from the old style text based binding to the new DT schema
-> style. This will make adding the MT6366 portion easier.
+On Thu, 28 Sep 2023 16:55:26 +0800, Chen-Yu Tsai wrote:
+> The MT6358 PMIC allows changing operating modes for the buck regulators,
+> but not the LDOs. Existing device trees and the Linux implementation
+> already utilize this through the standard regulator-allowed-modes
+> property.
 > 
-> The examples have been trimmed down considerably, and the remaining
-> entries now match what is seen in actual device trees, minus some
-> properties that aren't covered by the bindings yet, or don't make
-> sense on their own.
+> The values currently used in existing device trees are simply raw
+> numbers. The values in the Linux driver are matching numbers defined
+> with macros denoting the two supported modes. Turns out these two
+> modes are common across parts of the larger MT63xx PMIC family. The
+> MT6397 regulator binding already has macros for the two modes, with
+> matching numbers.
 > 
-> The original submitter seems to have left MediaTek, so instead the
-> submitter and maintainer for the MT6366 binding is listed as the
-> maintainer here.
+> Codify the supported values for regulator-allowed-modes for the MT6358
+> in the device tree binding: 0 and 1 are supported for buck regulators,
+> and the property should not be present for LDO regulators. Users should
+> use the dt-bindings/regulator/mediatek,mt6397-regulator.h header for
+> the macros, instead of using raw numbers.
 > 
-> Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > ---
 > Changes since v3:
-> - ldo_vxo22 and ldo_vusb moved to properties
+> - adapt to ldo_vxo22 and ldo_vusb movement to properties
 > 
 > Changes since v2:
-> - Added missing end-of-string match to regulator names
-> - regulator-coupled-* properties in example dropped
-> - #include and regulator-allowed-modes moved to new patch
+> - new patch
 > 
->  .../regulator/mediatek,mt6358-regulator.yaml  |  98 +++++
->  .../bindings/regulator/mt6358-regulator.txt   | 350 ------------------
->  2 files changed, 98 insertions(+), 350 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
->  delete mode 100644 Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
+>  .../regulator/mediatek,mt6358-regulator.yaml  | 27 +++++++++++++++++++
+>  1 file changed, 27 insertions(+)
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
