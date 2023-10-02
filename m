@@ -4,90 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CDB6E784BC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 15:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66D1E748F3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 16:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bf4ZNhuPTEn2Z+23t2mZfOO20aAgYvdXy8GsiBgu4PA=; b=uLtp1R7sn4OxdATiKLdEEaIpvo
-	7MFm197qC3+p9FCsBxxx1StHq+XGbpAxhxPjSHGEPwW6numbzEitzMBaF9YfR3CQukYkrCcUvX/9j
-	bmH8ILWAzpZUUhz/sgDrJW3mAiJeuBuBxLP6vg3VclVLhHF94nu1ZcxMMrHVC0cPrVGPtOwv6GYMY
-	L13LGcmmqaxgh8VREXOJTEl5IfsLp9/sm6iO4V2HAYNXYb11udazZ426EKhVQjgulIFiki7HDL7Ay
-	0/7YZdXDHfGkF2cHOPkvr5jmBiZ/fUq6Z40NXI0QO+Jr5NQIvReYAwyJzH0mEi1PGB/WS0+FCWcwW
-	Lk7swn4A==;
+	bh=gAEkFcXO+UtmKlPU5ziV5/QuD8FB5HyQRTGTbbl4lJ0=; b=bctkGnRQ2AAwHDwelIPEaT+6Dz
+	mSGU9yeYoR8ulpkkEfntZ3kJpfukBDjUrbfp6Lpl4cEXhLew75wiwAj01V1CGUU0RNtAVnBJNEpYS
+	jyKmkat6obaWJWDLQA91u4xj5bk362tWsL67sBX1TDPcCPDyV/TjcS4ef1sUvdTAz9TUT4Px9FVwP
+	A7+LA7rSft0I3cpmqwOiNi6SIuQtSCJzekhkDEAkT0KSYagn6minlpscMbaMaM2jN1rWCnXQ9A6N8
+	Zhd8Sk3WBok/UWT2N758N6uX72DHIlnWPag+ArcTuAsHHt3wwxZ3U8Xb8sjupzOs3vnwvj9wQugFL
+	TkgPXt7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnKgU-00CyCj-1M;
-	Mon, 02 Oct 2023 15:18:10 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1qnLVA-00D2w4-1f;
+	Mon, 02 Oct 2023 16:10:32 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnKgS-00CyC0-01;
-	Mon, 02 Oct 2023 15:18:09 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-9b27bc8b65eso1709472966b.0;
-        Mon, 02 Oct 2023 08:18:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696259884; x=1696864684; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Bf4ZNhuPTEn2Z+23t2mZfOO20aAgYvdXy8GsiBgu4PA=;
-        b=lWf4f1xdrZlZQp4Xeg2Sj571yHgK4dbm7bN1mImQnfdppXIvEAhY0PmntB+Rkra/um
-         u7LLuPTarDjRyMP2Yce1s971HgLFQYDYBvEYLqDVEcAL6XomODlrpJKXoDE3HcmNOtsV
-         nDRaUSP1FVbKjYU8zXpmxhacFGwqhL1SE8pgbCOyrkx6FzgGQyFWMLXv8Y63EHMVpKNM
-         pzcReSxSMrNN88UliEbh2eA6+Ldz9KxhW+dMphZQ6IXZlqw++IuO7b6PLOLog6C8JfS2
-         Wo8J0bAQ/jZj0+ePCtD+AhL2WTOr48kLbfJ7KVAuwJ7qhzjVkbk4BOvd/HZ9pjYTW+Wh
-         k4qQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696259884; x=1696864684;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Bf4ZNhuPTEn2Z+23t2mZfOO20aAgYvdXy8GsiBgu4PA=;
-        b=vBkZh6ASrQBKtydhpOo6ex/qOSukK9RXag3oqKmzozUpjU+rvQQyCt0mjc5Qfq5SRb
-         DygoQvwOIhD2gWLKlzbtIhq/Q+Xd6+lq0qI3/1SE2IwcwdCqDePT3OLTF2MQlLhLHpeW
-         +DqTstF1Js7DsaeIYG0UogY8fDin3n3DbcYH4dpui5xxdKZ5aBtQq3f4e9Zf2VpD0KSA
-         FKz2KPMvewGXJSegT1MHYER9ooYJ+Lx5gCGfIpx9DaGLcFQ1V8rcCLPkrRm7pXzSFJcL
-         aEh5oIvXjuEa+NORZXeJr9pUG4qmrCWGJSxJ6Siph/qqUEBeNfy5dQBsRPZHFUYlVFEj
-         d60A==
-X-Gm-Message-State: AOJu0YxTe3rfR+BPp6MjqEanxOGUF707ceYJO9lvgb3VKwMOvvdrP5R2
-	loXkBoZKPN/U6E+mVTwEFR1rYkri9zw=
-X-Google-Smtp-Source: AGHT+IE/ItgUGymnepNrrbl5yIUtcIkxs6IYv1D2G8pKdeZY3XS+nDz9H28wjwX8hTrvPzRxk75ZDA==
-X-Received: by 2002:a17:906:10cc:b0:9ae:56ad:65a7 with SMTP id v12-20020a17090610cc00b009ae56ad65a7mr12407824ejv.45.1696259883385;
-        Mon, 02 Oct 2023 08:18:03 -0700 (PDT)
-Received: from skbuf ([188.25.255.218])
-        by smtp.gmail.com with ESMTPSA id k5-20020a1709062a4500b009934b1eb577sm17399795eje.77.2023.10.02.08.18.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Oct 2023 08:18:03 -0700 (PDT)
-Date: Mon, 2 Oct 2023 18:18:00 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Ar__n__ __NAL <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt753x: remove
- mt753x_phylink_pcs_link_up()
-Message-ID: <20231002151800.z7zcad2lw4jxjebk@skbuf>
-References: <E1qlTQS-008BWe-Va@rmk-PC.armlinux.org.uk>
+	id 1qnLV7-00D2uy-0s;
+	Mon, 02 Oct 2023 16:10:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 6DEEECE11D0;
+	Mon,  2 Oct 2023 16:10:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7353DC433CA;
+	Mon,  2 Oct 2023 16:10:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696263026;
+	bh=CfIUOjCxqP4k4PEwlJ3KWN+LSN/aN14INr8PFuBU1gc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KmUE24gWThX+EImHY5hV0v2pHMvLxkeVCnJHZ00Ae79HwxE+sH2xf6rO2icIcHLhQ
+	 kuA8UeyUFpfQ/Rrv+WrhFR6u7+HlluCNkxLc4ZGuJMo6ouClZnoRU0/L+Ut0StCG1e
+	 5n4Ol+PmGUNzV6aqmJVwDPZALnTtEvbd+avoD6v6N4vnmHmz5N+IBuujSzUmrpCZDw
+	 l8m09QHqaE7NDsWQ1m3Bs0PjPWniEVLWZCZC4jYP1wsgovVnDW1IDYO+nbEOFjt43z
+	 OafuSZjskWKxClwam76QWAaOnQfrNih7e5z+BOBN71TRiC/9F2lZry67Vc+t11BfAW
+	 RxMXo9xuRonwQ==
+Received: (nullmailer pid 1867798 invoked by uid 1000);
+	Mon, 02 Oct 2023 16:10:24 -0000
+Date: Mon, 2 Oct 2023 11:10:24 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org, Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
+Subject: Re: [PATCH v4 02/12] regulator: dt-bindings: mt6358: Convert to DT
+ schema
+Message-ID: <169626302358.1867415.15357334455488086427.robh@kernel.org>
+References: <20230928085537.3246669-1-wenst@chromium.org>
+ <20230928085537.3246669-3-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <E1qlTQS-008BWe-Va@rmk-PC.armlinux.org.uk>
+In-Reply-To: <20230928085537.3246669-3-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_081808_062704_745B3752 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20231002_091029_482296_6FC8F804 
+X-CRM114-Status: GOOD (  16.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,19 +73,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 27, 2023 at 01:13:56PM +0100, Russell King (Oracle) wrote:
-> Remove the mt753x_phylink_pcs_link_up() function for two reasons:
-> 
-> 1) priv->pcs[i].pcs.neg_mode is set true, meaning it doesn't take a
->    MLO_AN_FIXED anymore, but one of PHYLINK_PCS_NEG_*. However, this
->    is inconsequential due to...
-> 2) priv->pcs[port].pcs.ops is always initialised to point at
->    mt7530_pcs_ops, which does not have a pcs_link_up() member.
-> 
-> So, let's remove mt753x_phylink_pcs_link_up() entirely.
-> 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
 
-Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+On Thu, 28 Sep 2023 16:55:25 +0800, Chen-Yu Tsai wrote:
+> Convert this from the old style text based binding to the new DT schema
+> style. This will make adding the MT6366 portion easier.
+> 
+> The examples have been trimmed down considerably, and the remaining
+> entries now match what is seen in actual device trees, minus some
+> properties that aren't covered by the bindings yet, or don't make
+> sense on their own.
+> 
+> The original submitter seems to have left MediaTek, so instead the
+> submitter and maintainer for the MT6366 binding is listed as the
+> maintainer here.
+> 
+> Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v3:
+> - ldo_vxo22 and ldo_vusb moved to properties
+> 
+> Changes since v2:
+> - Added missing end-of-string match to regulator names
+> - regulator-coupled-* properties in example dropped
+> - #include and regulator-allowed-modes moved to new patch
+> 
+>  .../regulator/mediatek,mt6358-regulator.yaml  |  98 +++++
+>  .../bindings/regulator/mt6358-regulator.txt   | 350 ------------------
+>  2 files changed, 98 insertions(+), 350 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
+> 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
+
 
