@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83B09E784B0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 10:26:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E10D0E784B0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 10:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2EMj1iKz9hdp7F+i3RnuKkP/yF6KQU21QY1kTfF1eH8=; b=dpzsSudRnwJt7WD9LSht9/qLP4
-	c6qHNQ4Wz30vv1gCiq2LESZyw6oQtIaGC+aOpETbdezcrdmuMbVhXHRri2uE8MYZonPRh+KOG2gPE
-	QI+Utum7MNHEFivE8tH3ksNjnwgy3hgW1BXB0nDX201uX/Bfc6iv+ahxaas7H/Nm7nVkqzzC4gIsx
-	K/V0dNtdoRXdbh01s2YhuY57bdkZWtsw4A7sKXylesC2uOyjJEw3zKs4lx6/j0GEHoykEbMF0STka
-	CDrUTQdHDemFMz1lOoTtCG/Jleu/6M05zo0BLeEOF1nLx21iouQ/3o2UefgWmYtppjm1Ke5klE1mP
-	DTgGIcHA==;
+	bh=SZbC94xNrGdaeD82vmZJ9bkkhd1/Lul/hZJu2ekhbUM=; b=pLeDs21Q8xvTxBbS0vyYkdxZdi
+	HhWR5bc5NVt8TGuAaQ92co2Pvj+lm3TrpjWUdsh+FoLvsIoBKZeExSq0LMZrlD+SQFx8mCIvMAwt9
+	Pp7TPSJC+yFRrwoCZsvuqt062vZhUR0to+CLCj57W8rgtQ0BLOL3HyOxv9AUKgd3RCuet04bn2VGr
+	JdU/vb1xAFjBLE/AlOjM8DhP0JTP+RdUIC3H+vWTVh160AlRlmY15KrDqp14Z2ubSCmuUioxu1uf4
+	mFa27lQO1NW1/RlNnCmVOHUSVsbhWtO7YI+qswdecdZbt/KyOEaf0eis9o0jCVipDs3LvUg+XGPZP
+	IibGqoLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnG7j-00CM8U-1R;
-	Mon, 02 Oct 2023 10:25:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qnGLr-00CTkJ-1x;
+	Mon, 02 Oct 2023 10:40:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnG7g-00CM4o-0X;
-	Mon, 02 Oct 2023 10:25:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 740F160E03;
-	Mon,  2 Oct 2023 10:25:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80717C433C7;
-	Mon,  2 Oct 2023 10:25:52 +0000 (UTC)
-Message-ID: <870b0f4a-b808-4575-84f4-a4b2b6642387@xs4all.nl>
-Date: Mon, 2 Oct 2023 12:25:51 +0200
+	id 1qnGLn-00CTja-06;
+	Mon, 02 Oct 2023 10:40:33 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0944B6607079;
+	Mon,  2 Oct 2023 11:40:28 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1696243229;
+	bh=zdwCD43UfICihrrGOtD5MsrAfDo/vCHnNja+3qedKhI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=T/l3DasIV6nFyGmVrtCMB1QOuyi8SauQTEgbdq3mzWoViVA7SPyiSTOUrUQ5O2umH
+	 ux4j/p7snMoFI5zOjn7GZ2vSRyoZ2kX7Jwoa4dGnWytaQ3MKB1aimgSnYDSR8qqlbZ
+	 hR/6Fa6mMVQAegrDLr/RUBpv1ZryWzCSllPahKVr8En7j39cananl4hyFRRam7kE4I
+	 m1SLexmP4XxBmQiDKngddSkyEsAAz9Q+cZuD8AMpACBRZ4iq8DiiOelMm+khan6S9r
+	 qzfIfbQZckAIaDTstVQ5ZVA/3F2XtuZ9n8Kdc06Ec8opuINIpJp00SJ8LmUuJ1MGDa
+	 WX2F19nY0Bp2w==
+Message-ID: <57e41130-8a29-212b-df93-8fe0786ac08c@collabora.com>
+Date: Mon, 2 Oct 2023 12:40:26 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] media: mediatek: vcodec: Handle encoder vsi NULL
- pointer case
-Content-Language: en-US, nl
-To: Irui Wang <irui.wang@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com,
- Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH] drm/mediatek: Correctly free sg_table in gem prime vmap
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Maoguang Meng <maoguang.meng@mediatek.com>
-References: <20230926101909.15030-1-irui.wang@mediatek.com>
- <20230926101909.15030-2-irui.wang@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230926101909.15030-2-irui.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+ stable@vger.kernel.org
+References: <20231002092051.555479-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231002092051.555479-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_032556_249292_167E3781 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20231002_034031_219089_1DADD0E3 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,57 +79,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/09/2023 12:19, Irui Wang wrote:
-> There will be a kernel null pointer exception if 'vsi' is NULL, check
-> 'vsi' is not NULL before assign it to encoder instance.
+Il 02/10/23 11:20, Chen-Yu Tsai ha scritto:
+> The MediaTek DRM driver implements GEM PRIME vmap by fetching the
+> sg_table for the object, iterating through the pages, and then
+> vmapping them. In essence, unlike the GEM DMA helpers which vmap
+> when the object is first created or imported, the MediaTek version
+> does it on request.
 > 
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-
-I see no Fixes tag, is that correct?
-
-Is this a fix that needs to go to kernel 6.6? It's not clear how urgent this
-is.
-
-Regards,
-
-	Hans
-
-> ---
->  .../platform/mediatek/vcodec/encoder/venc/venc_h264_if.c     | 5 +++++
->  .../platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c      | 5 +++++
->  2 files changed, 10 insertions(+)
+> Unfortunately, the code never correctly frees the sg_table contents.
+> This results in a kernel memory leak. On a Hayato device with a text
+> console on the internal display, this results in the system running
+> out of memory in a few days from all the console screen cursor updates.
 > 
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-> index a68dac72c4e4..385bcc0d14f3 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-> @@ -597,6 +597,11 @@ static int h264_enc_init(struct mtk_vcodec_enc_ctx *ctx)
->  	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_SYS);
->  
->  	ret = vpu_enc_init(&inst->vpu_inst);
-> +	if (!inst->vpu_inst.vsi) {
-> +		mtk_venc_err(ctx, "share buffer is NULL");
-> +		kfree(inst);
-> +		return -EFAULT;
-> +	}
->  
->  	if (MTK_ENC_IOVA_IS_34BIT(ctx))
->  		inst->vsi_34 = (struct venc_h264_vsi_34 *)inst->vpu_inst.vsi;
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
-> index 05abca91e742..23ca0d93324f 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
-> @@ -326,6 +326,11 @@ static int vp8_enc_init(struct mtk_vcodec_enc_ctx *ctx)
->  	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_LT_SYS);
->  
->  	ret = vpu_enc_init(&inst->vpu_inst);
-> +	if (!inst->vpu_inst.vsi) {
-> +		mtk_venc_err(ctx, "share buffer is NULL");
-> +		kfree(inst);
-> +		return -EFAULT;
-> +	}
->  
->  	inst->vsi = (struct venc_vp8_vsi *)inst->vpu_inst.vsi;
->  
+> Add sg_free_table() to correctly free the contents of the sg_table. This
+> was missing despite explicitly required by mtk_gem_prime_get_sg_table().
+> 
+> Fixes: 3df64d7b0a4f ("drm/mediatek: Implement gem prime vmap/vunmap function")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
