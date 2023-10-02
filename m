@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F5B9E784B5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F827E784B6
 	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 12:09:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qTuPHPU4Io44nAdkQT6nBOAqUL8jchiAXtKAUc5aY3c=; b=PP7pzNN3qFAilJ+b+lRlkSuCNE
-	7ucGytdl4y+UAcy2k2IC/k6JTsWBOPGdpxIynJppXQBsEQJKFnwrhKHliTViGY+nySJ72f2knZkpL
-	knYpoql9mo+g8Kad1541GBB4Aa6YeF0K2FKRGa4X/WugPxudBC4UZ3b0biUd6ICVAnP652L4gm9nR
-	CXoR5XQVg81SJPEJdNlc6L4PeKZ6gu+9bdGbco0qLI/Cq7DHn3hSZgOzx+2L5aymbBy0G6w+QNz07
-	onkgOCyv2PMuJnAKgpLBui5xUtXZcRSYgOJM50imJJD61p/mr4q8CzI39MIIuTp+r2jrbmQN7Irb/
-	7NMbcQLw==;
+	bh=d+Zh7OhCiZiOOWKfbCvE9mpOVb6/vmByOpoeFDYFpv4=; b=2TPMYRtMaSEXBwChxhFn3S/+wc
+	CRwsTm/dWPtUWWk7UgcO0saVRrtnHPFiEuQxhQH9FShdDb9Ki6X6lyWf7JTl76f2BB/slggRLurPi
+	smWvFn8qB7nuBzy7qLtONZ1FXUrY/xSP+2PgUWcfq1Qt8t36fLwW+8QL9t69w/vQRKDQyH+ABCnlW
+	okUyExVIQYBMycMaSw3B6gUNr86tAvZQRm19f9mn/v+RDe9htuOKXnFGPgCSLwy5CWgJ2uw5TXBuj
+	hCvA2krnjZnAWiFPxMPGfuFssRQc3KX4x4fqFnEcRoGZOM7lqOBlxMIUHuf+gl+Y/drkUxt3RSI+F
+	d5OzVwVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHjh-00CeME-1o;
-	Mon, 02 Oct 2023 12:09:17 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnHji-00CeNB-04;
+	Mon, 02 Oct 2023 12:09:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhK-00CbP1-0h;
-	Mon, 02 Oct 2023 12:06:57 +0000
+	id 1qnHhQ-00CbWy-04;
+	Mon, 02 Oct 2023 12:06:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=d+Zh7OhCiZiOOWKfbCvE9mpOVb6/vmByOpoeFDYFpv4=; b=e/HbpzZse0wjPxYIkWtmvHZ+G8
+	kP9JF1miVRAnQYM5AUteHVKYADQywx0cdUQGcY9kxPQUW6eHYyYQhGEyW2/bFbUS1RX6iwerb+xA0
+	HBdquu3e++76I/eXMWTskQtopb9KYrU/uNH0fM/HvKtjFVtFj4V/+H2IGr9jRIZDmTom2edJruEKe
+	PotJ2nWi6H6uqT4plO4EbpTqf2TMDLaOsb0hPbR7+1007xjDxbYZZ/dbgqPW621mgumke5B/2Bfb9
+	v6GRXXHTld1TRCuXjGCzQJ0nyH7GBjcIn8cIwy19tI573UmDmb2BDfGz/MPgKosID/c9Y8/hElk7F
+	G3aP0YRA==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnHhC-0090N7-2L;
+	Mon, 02 Oct 2023 12:06:54 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 724486607359;
-	Mon,  2 Oct 2023 13:06:46 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2C4916607354;
+	Mon,  2 Oct 2023 13:06:36 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248406;
-	bh=nwepyznt8z6pxABzkpFHR6clGV59kYVToyX8aj6cN+w=;
+	s=mail; t=1696248396;
+	bh=o2sVtoPPYvq8hM/qyihWIqN4hasDvFA4zhZmTyTxJEg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XWIVFqhWOpa4B7VDWOVRJGz3fA17ClvB9LjIPQwm/0c8Kl9uyMI0ppriwDG9c22MR
-	 FOI5dyNd7BekgAMf8F0Q4+jbg0QEodgR3S96WKOLELLdWNlrf2EdSjVfqLGWlWWETw
-	 og7iUoEvuPrma5iT45XjpFobPF1YQPlx2710pE0Ho5SDD09tEYnW3JvI7cnVCIDbI+
-	 y0gPcM4UR/uN3rwrDM928sxDIl++K9qR5tOnESOFRg7sT7E8AA1XqOuPZ3JymIb9hg
-	 skTIYPbhzLEas0808uc5H0Pc5vCTZWZyMxUxvj6ZOZsA/Zneo/ko3gD5fBMvnmPQL+
-	 uhQlrYixtszvQ==
+	b=LZoIr6Aa29WK9jtAi4bhWXVU09xGPozLHfM9AWyp2/4it88IbTUdyauEaVoCdH2xM
+	 RA/pNdv9vT5YObLSD9479wMNz5cHkwRu8lAX1hRrkSDyL6kOKoQt7p1Y1TQ+EIpAUY
+	 Zv4SESVakzfakl8yLNOSoJbJ5wxKu5HDHTBJBGfoQZdHWlnlgwgczGbxx2q5I5E3S9
+	 k0y+fgM1doQWIzlEryyyfzoA8+WHBJwUTCzPGV/q6PUAZv1r8JPY8DcLLjF5KnVM+N
+	 2ZykrRg/qi+3/kkpDEbLTCVBpRjmctEbBYrKjc6Xdn083+cjqN2UzOX2PROsjompQd
+	 j9+9eLNMDaOaQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +76,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 41/53] media: usb: usbtv: Set min_buffers_needed to 2
-Date: Mon,  2 Oct 2023 14:06:05 +0200
-Message-Id: <20231002120617.119602-42-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 22/53] media: dvb-core: Do not initialize twice queue num_buffer field
+Date: Mon,  2 Oct 2023 14:05:46 +0200
+Message-Id: <20231002120617.119602-23-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_050650_483394_62F5B0C8 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20231002_130645_631830_75518168 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,36 +102,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-vb2 queue_setup checks for a minimum number of buffers so set
-min_buffers_needed to 2 and remove the useless check in
-usbtv_queue_setup().
+The above memset already zeroed all the ctx fields, it is useless
+to do it here again.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/usb/usbtv/usbtv-video.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/media/dvb-core/dvb_vb2.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/media/usb/usbtv/usbtv-video.c b/drivers/media/usb/usbtv/usbtv-video.c
-index 1e30e05953dc..0e9e860be47f 100644
---- a/drivers/media/usb/usbtv/usbtv-video.c
-+++ b/drivers/media/usb/usbtv/usbtv-video.c
-@@ -727,8 +727,6 @@ static int usbtv_queue_setup(struct vb2_queue *vq,
- 	struct usbtv *usbtv = vb2_get_drv_priv(vq);
- 	unsigned size = USBTV_CHUNK * usbtv->n_chunks * 2 * sizeof(u32);
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
- 	if (*nplanes)
- 		return sizes[0] < size ? -EINVAL : 0;
- 	*nplanes = 1;
-@@ -892,6 +890,7 @@ int usbtv_video_init(struct usbtv *usbtv)
- 	/* videobuf2 structure */
- 	usbtv->vb2q.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
- 	usbtv->vb2q.io_modes = VB2_MMAP | VB2_USERPTR | VB2_READ;
-+	usbtv->vb2q.min_buffers_needed = 2;
- 	usbtv->vb2q.drv_priv = usbtv;
- 	usbtv->vb2q.buf_struct_size = sizeof(struct usbtv_buf);
- 	usbtv->vb2q.ops = &usbtv_vb2_ops;
+diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
+index 3a966fdf814c..a731b755a0b9 100644
+--- a/drivers/media/dvb-core/dvb_vb2.c
++++ b/drivers/media/dvb-core/dvb_vb2.c
+@@ -177,7 +177,6 @@ int dvb_vb2_init(struct dvb_vb2_ctx *ctx, const char *name, int nonblocking)
+ 	q->ops = &dvb_vb2_qops;
+ 	q->mem_ops = &vb2_vmalloc_memops;
+ 	q->buf_ops = &dvb_vb2_buf_ops;
+-	q->num_buffers = 0;
+ 	ret = vb2_core_queue_init(q);
+ 	if (ret) {
+ 		ctx->state = DVB_VB2_STATE_NONE;
 -- 
 2.39.2
 
