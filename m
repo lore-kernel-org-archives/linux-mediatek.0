@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2C3AE784B3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 12:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE41AE784AC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 12:08:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EGIyUnXfYlZrvHeWCo2ngnGTPgOrZHbbiv5X9rjqVAs=; b=cr2DxKxnA22nplrsFbNAzpVANv
-	hM/C36i9MQtMFiLLr0ZfkmbHJEy2A5a6HAKY9r7LDAdkkHZ1WiWXgh5mQpFApSRzJgRSvo/r18rz0
-	WINpyhacPNk38THbaUkkVbKeIsaPaqyVNFGbud1bxZfh82I7Xg/qpUE0JtPZvbtyZbrPLj1soRokx
-	yuWwCd2okpZpYLyeTvmMDqwVhf+dXvmP1vSixBEkB5S6chASgZQEs4A0rrSRD4UjJBUfN3Rk4ylGK
-	w9d8x0hvn3+SlqTG92Zl0v2YvWPpO/vYrvQYNto4fgsC2y0JHqkFmxa2QikQwizr4I83tTmpG+vuW
-	bfqck2bg==;
+	bh=PmW7Z5NzQBNoTpp+u7NKXF/tYEVc6UqlJQkmg8Bhq70=; b=QBibpmXTsS9+oybqt70mdnh7UD
+	dIphwpFg5aV+lmSw58T8ttKtSaIvI7qVifJ6P9HE/flkj51MGyjAWZsNnyFDBh9FfBeBOPu3Siprq
+	cRV2XqWQb5TLgeHFFWXN8M0VVknVPAhL9oZyF03MMOcLhK+tRxMijVKLCIbbG3qw9fqCGxhduWpwV
+	mZv1QcVbK4yH55xe+zrNT/ALGCcdBcMEy+Dza2yWRxaMYp9GgtyryK0F+X0A5S8YCM5qq20a5pJLs
+	S10Kjwk+8tAAa/4iyPlsr6S56s5Ovz8JbFXLg8TZyv5KqO7T9wQhKytZ9r6mbAttUKfYCZt7w58XN
+	BE/SNn3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHiv-00CdMY-0b;
-	Mon, 02 Oct 2023 12:08:29 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnHiy-00CdQh-2l;
+	Mon, 02 Oct 2023 12:08:32 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhA-00CbC1-2d;
+	id 1qnHh9-00CbBQ-2n;
 	Mon, 02 Oct 2023 12:06:48 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D95976607356;
-	Mon,  2 Oct 2023 13:06:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C3EAC6607314;
+	Mon,  2 Oct 2023 13:06:37 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248399;
-	bh=ZWZu+iiWZeSR97TuxWAcPyCT2zWmqcsNlEZTasx6lQc=;
+	s=mail; t=1696248398;
+	bh=rFkYvrsLIxo1F3JyDJJ7M8J5xfn6Sk0yrCHC7ra2U7I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jHuIY1C3xdaiIOcz8Gnf5aJox/kRb26KCOPiCbxf/EP7Q4CYPzisp52Z9WHgipQGK
-	 1olsqWV1yrelchZO27XT5TZl8znK3yUVD1ZLGBuDsXGazsGSBKlLN1QNFjTgUYvmdl
-	 EU0twmXBgV45JyyTtRYUOeX3nclSp6MAV+16D7L2DPC0cT6sfat/49+Khg38EPriEJ
-	 58yE+KobUFleYnvREnM9aj9XS1ml0CBr1XpuaOQ1RRhpEm1Hbe3AMSGb5na0pn1/Kc
-	 L2qJehzRfvjg6plJ5W9XGnM4oNagK60r1k7SG+ZQ0P6S2pne7VFZkUUvlx0joAqCCG
-	 kUVB5ZLvMQU6w==
+	b=bRiKkGKIJuhR8tW633Q+S6cmt8zPYV/y99ED5+yb5zkJYu0g/GpVnQSmWnFyOkz2Y
+	 bhB7BzB/IjveUq8fucPgglDup4I3eUZsHov9wA612eo2HcnxvazFPWW6Z2m7FHeEpX
+	 FbafF2weqx2xU8NOBbDsBIF1xYDxaQQkt37Oi6m9MVZePbzBlysEJW9ldiEXmF/rvh
+	 w7gCSXZfLL3DFw1ODQpBOfku2CEsFCZCg+gEaMkMDp5UwmFm5ckf4pa9VhLlr/vsxd
+	 yzMkEO07cFYr6w5+g2kZwqAuA+jnRwkqaUxudUlsf6r+iPtE7YiwC2bwo4rHukp/dS
+	 Q3eEqxcfyBoUg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,18 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 27/53] media: pci: netup_unidvb: Remove useless number of buffers check
-Date: Mon,  2 Oct 2023 14:05:51 +0200
-Message-Id: <20231002120617.119602-28-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 25/53] media: pci: cx18: Set correct value to min_buffers_needed field
+Date: Mon,  2 Oct 2023 14:05:49 +0200
+Message-Id: <20231002120617.119602-26-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_050641_016488_6142BB85 
-X-CRM114-Status: UNSURE (   8.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231002_050640_049504_65E0C2AA 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,30 +87,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-vb2 core tests this already so remove it.
+Set queue min_buffers_needed field to 3 and remove the useless
+check.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/pci/netup_unidvb/netup_unidvb_core.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/media/pci/cx18/cx18-streams.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/pci/netup_unidvb/netup_unidvb_core.c b/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
-index d85bfbb77a25..52de9b0af812 100644
---- a/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
-+++ b/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
-@@ -297,11 +297,9 @@ static int netup_unidvb_queue_setup(struct vb2_queue *vq,
- 	dev_dbg(&dma->ndev->pci_dev->dev, "%s()\n", __func__);
+diff --git a/drivers/media/pci/cx18/cx18-streams.c b/drivers/media/pci/cx18/cx18-streams.c
+index 597472754c4c..6ed2c9fb882c 100644
+--- a/drivers/media/pci/cx18/cx18-streams.c
++++ b/drivers/media/pci/cx18/cx18-streams.c
+@@ -117,13 +117,6 @@ static int cx18_queue_setup(struct vb2_queue *vq,
+ 	else
+ 		szimage = cx->cxhdl.height * 720 * 2;
  
- 	*nplanes = 1;
--	if (vq->num_buffers + *nbuffers < VIDEO_MAX_FRAME)
--		*nbuffers = VIDEO_MAX_FRAME - vq->num_buffers;
- 	sizes[0] = PAGE_ALIGN(NETUP_DMA_PACKETS_COUNT * 188);
- 	dev_dbg(&dma->ndev->pci_dev->dev, "%s() nbuffers=%d sizes[0]=%d\n",
--		__func__, *nbuffers, sizes[0]);
-+		__func__, vb2_get_num_buffers(vq), sizes[0]);
- 	return 0;
- }
- 
+-	/*
+-	 * Let's request at least three buffers: two for the
+-	 * DMA engine and one for userspace.
+-	 */
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
+-
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < szimage)
+ 			return -EINVAL;
+@@ -286,7 +279,11 @@ static int cx18_stream_init(struct cx18 *cx, int type)
+ 		s->vidq.ops = &cx18_vb2_qops;
+ 		s->vidq.mem_ops = &vb2_vmalloc_memops;
+ 		s->vidq.timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+-		s->vidq.min_buffers_needed = 2;
++		/*
++		 * Let's request at least three buffers: two for the
++		 * DMA engine and one for userspace.
++		 */
++		s->vidq.min_buffers_needed = 3;
+ 		s->vidq.gfp_flags = GFP_DMA32;
+ 		s->vidq.dev = &cx->pci_dev->dev;
+ 		s->vidq.lock = &cx->serialize_lock;
 -- 
 2.39.2
 
