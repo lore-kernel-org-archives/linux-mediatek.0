@@ -4,74 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2362E77364
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 20:33:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CE98E776C6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 21:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WMfGkv9CjI5rMCQI5zkgH1Bd16hzm6BwL5ZRgN43i6k=; b=Xs3LxZbLw6sNsnMjG5kHM8ZomM
-	eRDkSbEsukow47QEy0SuTNkoote1bsnoHF3HwIi2WAgdXIZ8QqsOyqQ1SveB0Or1bL1M+agPSJQoX
-	8aFwN2JyFBqYNFDxWBgWRLiyt/a5L3XxBB+oxQfW1FYENrIRrZb4iNUoZVGKCLxgh1XJqKqON6gne
-	Cbrwqc2bWpR3y7IAtDJ0r+oLlKhBqfDZDRYZUd6/Q29KN5vCLeNdKemob5ir1XA9fFn6Ep7/FsM+J
-	1EyeOoRGOQoaiPIAqLiFAx0qCWxnvobe9o4wG2+jiKJ3JHvDwlFkkEzieuPDJln807+NC4LMsrdYi
-	aGBamaoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KY1yTwg5kkSQ1PPrVUqg1E2GU9pyZpek6FOp/omImxs=; b=fVUgOJCa232+pAEjQz0WuHOT5C
+	YxOJyewRcUseHpeuBgMUTqfIEUiSBVxJtjXIYLvh1oj+IuwBmrvhlTeDQiDH3KLNWN9ytL7riYP9Y
+	ecjt8J8l/4o0bmvBq+4s+s7fVMLdqP33LwgEQe3iyI+TOb7I6kYzoZzlon5joUZ7hia4Ibw2phBiz
+	2S01OYuL2ZOg5cncgRySXwy8mr5Rne1/4adSKBJtktEVkt4HoBm9FK5lcuBPexrexVDwhP7jFCB5M
+	rvZBkx1rEyLSUSuo5F6ZDgQAAvhfPJJcIwE2vltGkNI5SsPP+PeQ+FZdRWjOBznHPe+4QlBkYHJKH
+	y1/LlPRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnPbj-00DLVq-15;
-	Mon, 02 Oct 2023 20:33:35 +0000
-Received: from mail-pg1-f179.google.com ([209.85.215.179])
+	id 1qnQMr-00DOg9-01;
+	Mon, 02 Oct 2023 21:22:17 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnPbf-00DLVF-1S
+	id 1qnQMn-00DOdN-2K
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Oct 2023 20:33:34 +0000
-Received: by mail-pg1-f179.google.com with SMTP id 41be03b00d2f7-51b4ef5378bso95983a12.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Oct 2023 13:33:30 -0700 (PDT)
+	Mon, 02 Oct 2023 21:22:15 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-59c268676a9so3394407b3.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Oct 2023 14:22:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1696281731; x=1696886531; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=KY1yTwg5kkSQ1PPrVUqg1E2GU9pyZpek6FOp/omImxs=;
+        b=T+r7zAOf+tcoWOIJfkLddauRfQwXgUnQqEvRPyyjOR8pgxMX3G+J/too+J1mNI+nko
+         h9BXAANz5fmwJf0fipk0jphdLQyqLkrdsbZi2EzX30ppPX/AM6Nls7iM1FlftNCPA1I4
+         hUIL83NFsB1x7qX+n3xs3uCR1UflxRLIQK2Hh7jbju19sd1bgDtTMETtMwZy6ScQDlQP
+         iwX22e/RJZ/8oIJJoIW77iKRcVx6k4WtZRuZLIRPI3HORtU5SB0+EdN+5TrFtCtZ5YAk
+         3yBiSJaI42RMjHD+sn7t+TB6cuptqmZFAiC67WZfzChCbAdaSwAWXQpFzOnoJiTr8gHM
+         /Y9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696278810; x=1696883610;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=WMfGkv9CjI5rMCQI5zkgH1Bd16hzm6BwL5ZRgN43i6k=;
-        b=QMUErB07ug6ybbZTh67XzCUOcN2jaWrfmWTUbo/gDPtNGw2iHzBReXdpV4OP94N3DW
-         0icwei8PHm2BxT2U90ot/7yKV1ewbcXrIVh5imLHMr2T40EPYgwkzY1hthCzx+1SgQ8U
-         EB4H21OKy/O0zz4o8rtcF91Kccu4KoQdjGO26Sbqv8k1WkQVfawRptH8Hwj1yRKtcZXc
-         1gJMgsxBGoeLtkUS+lsx5wPs+du9tS/B5Juf1saXIXVF8HNck2lAfjuf+Uf/Chd/GbVU
-         rGyBtOV0BYg+0N+tRnQ/caWAdaHs9xCwJY7DG7dHdD2KgNndPHQr7Vg+cXue6YVXJTyo
-         Tcow==
-X-Gm-Message-State: AOJu0Yz9BUBQRA+U0NdzlZ2yZDQVlJVI2YX20BTHUKvtxPtN8R8VH8BM
-	JFoUL7Y/XPoPk0y+MqT/xaY=
-X-Google-Smtp-Source: AGHT+IHLjYXAOwwyx9EqJnGbuMB0IoQ3i/DXcFLttPKlL+C/RtnwV6RDd+dCN7eTQH4Fe0qy38Uq7Q==
-X-Received: by 2002:a05:6a20:5658:b0:161:22c0:541 with SMTP id is24-20020a056a20565800b0016122c00541mr12018174pzc.25.1696278809764;
-        Mon, 02 Oct 2023 13:33:29 -0700 (PDT)
-Received: from ?IPV6:2620:15c:211:201:6ad7:f663:5f97:db57? ([2620:15c:211:201:6ad7:f663:5f97:db57])
-        by smtp.gmail.com with ESMTPSA id 14-20020aa7914e000000b00690bd3c0723sm20415587pfi.99.2023.10.02.13.33.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Oct 2023 13:33:28 -0700 (PDT)
-Message-ID: <13bb26ca-fb67-4f20-a05b-362d6829a3e5@acm.org>
-Date: Mon, 2 Oct 2023 13:33:25 -0700
+        d=1e100.net; s=20230601; t=1696281731; x=1696886531;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KY1yTwg5kkSQ1PPrVUqg1E2GU9pyZpek6FOp/omImxs=;
+        b=aUuZkFZ7wiM2KAaUWnGJJbhP0gk4yniVb9/XDGMQJlC0y7i2UyRShmuA8ztKGFV0n5
+         x0BQPDn91BfAt8lUp6slretFIi4R5aZ9JQczHjgPLVgTG0dqlpUC5wvd+DOAWHyQp4XE
+         EeKDBleuqJ4y5NebGmtZu5c0I3WEyvVUpyFqQB/2l5n40C/YWSkDqgWgd+4t9QdAFFGN
+         uDVlTsDmkwfN+pfu37JS0TtVwY9+XF90wb86qqht1TT32/ixB9IS8EK3G2TOK536PzUJ
+         2Fo58LYYMj8/tt3viHEy9VHlFvUcsXFrkhFcC61/SlPvzrSMNMCMnCro1v7CI9yxzY5F
+         2SQA==
+X-Gm-Message-State: AOJu0Yzur9OlZUEmzuCYM01KGz4dt7rIq8tWcBU0xR9UHZr/ABc5OQhs
+	ROj4/EQx6laffH2JzYY/QZ1tFDJuElSWgokdRdvk4Q==
+X-Google-Smtp-Source: AGHT+IFaRCfqm0SlfcT/sMeXMK7dbF3zxTUUIPxu3awMhgeV/37hJ6olOIew2lBKO7L65qL9ql+xhT0CDDmED9Aaft4=
+X-Received: by 2002:a0d:c906:0:b0:595:9135:83c7 with SMTP id
+ l6-20020a0dc906000000b00595913583c7mr11373199ywd.47.1696281730897; Mon, 02
+ Oct 2023 14:22:10 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: correct clear tm error log
-Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com
-References: <20231002125551.15111-1-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20231002125551.15111-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <0-v8-81230027b2fa+9d-iommu_all_defdom_jgg@nvidia.com> <20-v8-81230027b2fa+9d-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <20-v8-81230027b2fa+9d-iommu_all_defdom_jgg@nvidia.com>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Tue, 3 Oct 2023 00:21:59 +0300
+Message-ID: <CAA8EJprz7VVmBG68U9zLuqPd0UdSRHYoLDJSP6tCj6H6qanuTQ@mail.gmail.com>
+Subject: Re: [PATCH v8 20/24] iommu: Require a default_domain for all iommu drivers
+To: Jason Gunthorpe <jgg@nvidia.com>, Rob Clark <robdclark@gmail.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Bjorn Andersson <andersson@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Christophe Leroy <christophe.leroy@csgroup.eu>, 
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>, Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>, 
+	linuxppc-dev@lists.ozlabs.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Matthew Rosato <mjrosato@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>, 
+	Nicholas Piggin <npiggin@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, 
+	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu <baolu.lu@linux.intel.com>, 
+	Dmitry Osipenko <digetx@gmail.com>, Jerry Snitselaar <jsnitsel@redhat.com>, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, Nicolin Chen <nicolinc@nvidia.com>, 
+	Niklas Schnelle <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>, 
+	Thierry Reding <treding@nvidia.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_133331_509145_0E17D6E6 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20231002_142213_770112_5022CE1F 
+X-CRM114-Status: GOOD (  35.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,37 +109,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/2/23 05:55, peter.wang@mediatek.com wrote:
-> From: Peter Wang <peter.wang@mediatek.com>
-> 
-> The clear tm function error log is inverted.
-> 
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+On Wed, 13 Sept 2023 at 16:45, Jason Gunthorpe <jgg@nvidia.com> wrote:
+>
+> At this point every iommu driver will cause a default_domain to be
+> selected, so we can finally remove this gap from the core code.
+>
+> The following table explains what each driver supports and what the
+> resulting default_domain will be:
+>
+>                                         ops->defaut_domain
+>                     IDENTITY   DMA  PLATFORM    v      ARM32          dma-iommu  ARCH
+> amd/iommu.c             Y       Y                       N/A             either
+> apple-dart.c            Y       Y                       N/A             either
+> arm-smmu.c              Y       Y                       IDENTITY        either
+> qcom_iommu.c            G       Y                       IDENTITY        either
+> arm-smmu-v3.c           Y       Y                       N/A             either
+> exynos-iommu.c          G       Y                       IDENTITY        either
+> fsl_pamu_domain.c                       Y       Y       N/A             N/A     PLATFORM
+> intel/iommu.c           Y       Y                       N/A             either
+> ipmmu-vmsa.c            G       Y                       IDENTITY        either
+> msm_iommu.c             G                               IDENTITY        N/A
+
+Unfortunately this patch breaks msm_iommu platforms. This driver
+doesn't select ARM_DMA_USE_IOMMU, so iommu_get_default_domain_type()
+returns 0, bus_iommu_probe() fails with -ENODEV.
+If I make MSM_IOMMU select ARM_DMA_USE_IOMMU, then GPU probing fails
+with -EBUSY.
+
+> mtk_iommu.c             G       Y                       IDENTITY        either
+> mtk_iommu_v1.c          G                               IDENTITY        N/A
+> omap-iommu.c            G                               IDENTITY        N/A
+> rockchip-iommu.c        G       Y                       IDENTITY        either
+> s390-iommu.c                            Y       Y       N/A             N/A     PLATFORM
+> sprd-iommu.c                    Y                       N/A             DMA
+> sun50i-iommu.c          G       Y                       IDENTITY        either
+> tegra-smmu.c            G       Y                       IDENTITY        IDENTITY
+> virtio-iommu.c          Y       Y                       N/A             either
+> spapr                                   Y       Y       N/A             N/A     PLATFORM
+>  * G means ops->identity_domain is used
+>  * N/A means the driver will not compile in this configuration
+>
+> ARM32 drivers select an IDENTITY default domain through either the
+> ops->identity_domain or directly requesting an IDENTIY domain through
+> alloc_domain().
+>
+> In ARM64 mode tegra-smmu will still block the use of dma-iommu.c and
+> forces an IDENTITY domain.
+>
+> S390 uses a PLATFORM domain to represent when the dma_ops are set to the
+> s390 iommu code.
+>
+> fsl_pamu uses an PLATFORM domain.
+>
+> POWER SPAPR uses PLATFORM and blocking to enable its weird VFIO mode.
+>
+> The x86 drivers continue unchanged.
+>
+> After this patch group->default_domain is only NULL for a short period
+> during bus iommu probing while all the groups are constituted. Otherwise
+> it is always !NULL.
+>
+> This completes changing the iommu subsystem driver contract to a system
+> where the current iommu_domain always represents some form of translation
+> and the driver is continuously asserting a definable translation mode.
+>
+> It resolves the confusion that the original ops->detach_dev() caused
+> around what translation, exactly, is the IOMMU performing after
+> detach. There were at least three different answers to that question in
+> the tree, they are all now clearly named with domain types.
+>
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
+> Tested-by: Niklas Schnelle <schnelle@linux.ibm.com>
+> Tested-by: Steven Price <steven.price@arm.com>
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->   drivers/ufs/core/ufshcd.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index c2df07545f96..4095d88eee44 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -6895,7 +6895,7 @@ static int ufshcd_clear_tm_cmd(struct ufs_hba *hba, int tag)
->   			mask, 0, 1000, 1000);
->   
->   	dev_err(hba->dev, "Clearing task management function with tag %d %s\n",
-> -		tag, err ? "succeeded" : "failed");
-> +		tag, err ? "failed" : "succeeded");
->   
->   out:
->   	return err;
+>  drivers/iommu/iommu.c | 22 +++++++---------------
+>  1 file changed, 7 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 42a4585dd76da6..cfb597751f5bad 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -1865,7 +1865,6 @@ static int iommu_get_def_domain_type(struct iommu_group *group,
+>  static int iommu_get_default_domain_type(struct iommu_group *group,
+>                                          int target_type)
+>  {
+> -       const struct iommu_ops *ops = group_iommu_ops(group);
+>         struct device *untrusted = NULL;
+>         struct group_device *gdev;
+>         int driver_type = 0;
+> @@ -1876,11 +1875,13 @@ static int iommu_get_default_domain_type(struct iommu_group *group,
+>          * ARM32 drivers supporting CONFIG_ARM_DMA_USE_IOMMU can declare an
+>          * identity_domain and it will automatically become their default
+>          * domain. Later on ARM_DMA_USE_IOMMU will install its UNMANAGED domain.
+> -        * Override the selection to IDENTITY if we are sure the driver supports
+> -        * it.
+> +        * Override the selection to IDENTITY.
+>          */
+> -       if (IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU) && ops->identity_domain)
+> +       if (IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU)) {
+> +               static_assert(!(IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU) &&
+> +                               IS_ENABLED(CONFIG_IOMMU_DMA)));
+>                 driver_type = IOMMU_DOMAIN_IDENTITY;
+> +       }
+>
+>         for_each_group_device(group, gdev) {
+>                 driver_type = iommu_get_def_domain_type(group, gdev->dev,
+> @@ -3016,18 +3017,9 @@ static int iommu_setup_default_domain(struct iommu_group *group,
+>         if (req_type < 0)
+>                 return -EINVAL;
+>
+> -       /*
+> -        * There are still some drivers which don't support default domains, so
+> -        * we ignore the failure and leave group->default_domain NULL.
+> -        */
+>         dom = iommu_group_alloc_default_domain(group, req_type);
+> -       if (!dom) {
+> -               /* Once in default_domain mode we never leave */
+> -               if (group->default_domain)
+> -                       return -ENODEV;
+> -               group->default_domain = NULL;
+> -               return 0;
+> -       }
+> +       if (!dom)
+> +               return -ENODEV;
+>
+>         if (group->default_domain == dom)
+>                 return 0;
+> --
+> 2.42.0
+>
 
-Please consider changing "err ?" into "err < 0 ?" to make it more clear
-that negative return values represent an error. Additionally, please
-consider adding the following:
 
-Fixes: 4693fad7d6d4 ("scsi: ufs: core: Log error handler activity")
-
-Thanks,
-
-Bart.
+-- 
+With best wishes
+Dmitry
 
