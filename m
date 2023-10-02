@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E10D0E784B0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 10:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB7FFE7849A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 10:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SZbC94xNrGdaeD82vmZJ9bkkhd1/Lul/hZJu2ekhbUM=; b=pLeDs21Q8xvTxBbS0vyYkdxZdi
-	HhWR5bc5NVt8TGuAaQ92co2Pvj+lm3TrpjWUdsh+FoLvsIoBKZeExSq0LMZrlD+SQFx8mCIvMAwt9
-	Pp7TPSJC+yFRrwoCZsvuqt062vZhUR0to+CLCj57W8rgtQ0BLOL3HyOxv9AUKgd3RCuet04bn2VGr
-	JdU/vb1xAFjBLE/AlOjM8DhP0JTP+RdUIC3H+vWTVh160AlRlmY15KrDqp14Z2ubSCmuUioxu1uf4
-	mFa27lQO1NW1/RlNnCmVOHUSVsbhWtO7YI+qswdecdZbt/KyOEaf0eis9o0jCVipDs3LvUg+XGPZP
-	IibGqoLQ==;
+	bh=G3vjgz+EC4TkbjKyKTHnWv3fYxvU3yllZVD3D1V22+c=; b=jq2FMn3CPDktE72AhSHbTwQTDy
+	j790NQsgXDxR+8I3dLZi+8M5T3/vmn219ELXaBE32kRMXyrmdNSYksiBoA7ZSQxAid79G6WzLPRPg
+	ce0n6z6Kham1UvmozV4Op2q4liwQ1GCUoJajhqf+0n75cs+w0mpyPd6ym84O/IQd9w9RPRHvZLWTz
+	mjl60ERJ1x0CUssRwVuMXklGcwDKFrggRkteiYD8AAPq6jvB8RcWDRrEmGgPQyzvfLhVTfk+lT03X
+	eFlBVS6R8o/MQMmVgI9L3X/tvhm1P9jdyOCGvxlrvYvg0OXBJvSa5DGnuW6ju3yYe5iDu1nfrZBwO
+	2WWBiRHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnGLr-00CTkJ-1x;
-	Mon, 02 Oct 2023 10:40:35 +0000
+	id 1qnGPm-00CU5T-2I;
+	Mon, 02 Oct 2023 10:44:38 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnGLn-00CTja-06;
-	Mon, 02 Oct 2023 10:40:33 +0000
+	id 1qnGPi-00CU4R-3C;
+	Mon, 02 Oct 2023 10:44:36 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0944B6607079;
-	Mon,  2 Oct 2023 11:40:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 427EE6607105;
+	Mon,  2 Oct 2023 11:44:33 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696243229;
-	bh=zdwCD43UfICihrrGOtD5MsrAfDo/vCHnNja+3qedKhI=;
+	s=mail; t=1696243473;
+	bh=yxGzisYm0+u3w64/RJUBU54VA1ZgDrJZO8umXla9JyM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=T/l3DasIV6nFyGmVrtCMB1QOuyi8SauQTEgbdq3mzWoViVA7SPyiSTOUrUQ5O2umH
-	 ux4j/p7snMoFI5zOjn7GZ2vSRyoZ2kX7Jwoa4dGnWytaQ3MKB1aimgSnYDSR8qqlbZ
-	 hR/6Fa6mMVQAegrDLr/RUBpv1ZryWzCSllPahKVr8En7j39cananl4hyFRRam7kE4I
-	 m1SLexmP4XxBmQiDKngddSkyEsAAz9Q+cZuD8AMpACBRZ4iq8DiiOelMm+khan6S9r
-	 qzfIfbQZckAIaDTstVQ5ZVA/3F2XtuZ9n8Kdc06Ec8opuINIpJp00SJ8LmUuJ1MGDa
-	 WX2F19nY0Bp2w==
-Message-ID: <57e41130-8a29-212b-df93-8fe0786ac08c@collabora.com>
-Date: Mon, 2 Oct 2023 12:40:26 +0200
+	b=h5SNnpgnCACwNxXJCh1TMm74yxzI/58CoKQuGmDMpO2rAyhASDZmYE4SJVPDni8ds
+	 vl0JTJfVUZWl/26DpKXzzj1DAbimSWxyhjGtHYV8BQe9GIAzQ9VqJC5cxo7tSj2MSZ
+	 0XhHLxQwzAPy21o3QhzwQuANERUYXhqZ53C8bpGBUm5Kt9UdwiGVNQ5mlRSxqw0wiV
+	 r34eHzyYBGdrlgjq1Q+VasOX1P8OKc+5ti/wDh/RxAvtNJzILpvS9XcZxAoC6MhSRv
+	 Q9ZclYyzsarmzjPoG3way7O1IvrCdcINND/K0yzvLVNgE8pVvsodeUMlylt3DRTJZ2
+	 LEpKhW/MLzvpQ==
+Message-ID: <029d49b8-8cc1-2332-5e1b-041030692b71@collabora.com>
+Date: Mon, 2 Oct 2023 12:44:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH] drm/mediatek: Correctly free sg_table in gem prime vmap
+Subject: Re: [PATCH 05/11] pwm: mtk-disp: Simplify using devm_pwmchip_add()
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- stable@vger.kernel.org
-References: <20231002092051.555479-1-wenst@chromium.org>
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Thierry Reding <thierry.reding@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org,
+ kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230929161918.2410424-1-u.kleine-koenig@pengutronix.de>
+ <20230929161918.2410424-6-u.kleine-koenig@pengutronix.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231002092051.555479-1-wenst@chromium.org>
+In-Reply-To: <20230929161918.2410424-6-u.kleine-koenig@pengutronix.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_034031_219089_1DADD0E3 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20231002_034435_181343_B57D78B8 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,24 +78,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/10/23 11:20, Chen-Yu Tsai ha scritto:
-> The MediaTek DRM driver implements GEM PRIME vmap by fetching the
-> sg_table for the object, iterating through the pages, and then
-> vmapping them. In essence, unlike the GEM DMA helpers which vmap
-> when the object is first created or imported, the MediaTek version
-> does it on request.
+Il 29/09/23 18:19, Uwe Kleine-König ha scritto:
+> With devm_pwmchip_add() pwmchip_remove() can be dropped from the remove
+> callback. Then the remove callback is empty and can go away, too. With
+> mtk_disp_pwm_remove() the last user of platform_get_drvdata() is gone and
+> so platform_set_drvdata() can be dropped, too.
 > 
-> Unfortunately, the code never correctly frees the sg_table contents.
-> This results in a kernel memory leak. On a Hayato device with a text
-> console on the internal display, this results in the system running
-> out of memory in a few days from all the console screen cursor updates.
+> Also use dev_err_probe() for simplified (and improved) error reporting.
 > 
-> Add sg_free_table() to correctly free the contents of the sg_table. This
-> was missing despite explicitly required by mtk_gem_prime_get_sg_table().
-> 
-> Fixes: 3df64d7b0a4f ("drm/mediatek: Implement gem prime vmap/vunmap function")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+
+I actually wanted to do that myself, but I see you came in first. :-)
+
+Looks good to me!
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
