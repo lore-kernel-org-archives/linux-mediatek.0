@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D452BE784B2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 10:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83B09E784B0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 10:26:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UX6DonogsvAFibyOJXDu+0124Nc4V6u68XG3y31lZ1A=; b=M/GHeERuytbDnWZy0SsJKMtvjS
-	ko0A3uwclvMWkIhzKYdMrY22grV6M+T2j8Nyjzndp9jZA3591+csLcWGSoqcSFXISKeJNRnyyeLZ1
-	BxGQ4eZJXKajrNeizYON989356SAV6PU+OwgvQrZwN38FwO7gqedt0Dv+yf3L3gHQ0Ub8NPsoBve+
-	H+jTxYqbEdjU4y19WuNtNbswSe2JT6ZGISBoUlcRVWNS0cfSPP7xJ/WnIT00M+XEk6wspSZ4EwvP3
-	sp5G9hmG4BKgseotdGAZjNyq7M0gP6DZ8jHcds9QGZH1c6vgU/QqfLahTBP5QwopkT8l+KxfAvOGV
-	kSrhuLiQ==;
+	bh=2EMj1iKz9hdp7F+i3RnuKkP/yF6KQU21QY1kTfF1eH8=; b=dpzsSudRnwJt7WD9LSht9/qLP4
+	c6qHNQ4Wz30vv1gCiq2LESZyw6oQtIaGC+aOpETbdezcrdmuMbVhXHRri2uE8MYZonPRh+KOG2gPE
+	QI+Utum7MNHEFivE8tH3ksNjnwgy3hgW1BXB0nDX201uX/Bfc6iv+ahxaas7H/Nm7nVkqzzC4gIsx
+	K/V0dNtdoRXdbh01s2YhuY57bdkZWtsw4A7sKXylesC2uOyjJEw3zKs4lx6/j0GEHoykEbMF0STka
+	CDrUTQdHDemFMz1lOoTtCG/Jleu/6M05zo0BLeEOF1nLx21iouQ/3o2UefgWmYtppjm1Ke5klE1mP
+	DTgGIcHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnG5z-00CL0b-2Z;
-	Mon, 02 Oct 2023 10:24:11 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qnG7j-00CM8U-1R;
+	Mon, 02 Oct 2023 10:25:59 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnG5w-00CKy3-05;
-	Mon, 02 Oct 2023 10:24:09 +0000
+	id 1qnG7g-00CM4o-0X;
+	Mon, 02 Oct 2023 10:25:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 682DACE0EEB;
-	Mon,  2 Oct 2023 10:24:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 094FEC433C8;
-	Mon,  2 Oct 2023 10:24:02 +0000 (UTC)
-Message-ID: <36356e37-9abd-4dec-a716-9822b67bd0fa@xs4all.nl>
-Date: Mon, 2 Oct 2023 12:24:01 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTP id 740F160E03;
+	Mon,  2 Oct 2023 10:25:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80717C433C7;
+	Mon,  2 Oct 2023 10:25:52 +0000 (UTC)
+Message-ID: <870b0f4a-b808-4575-84f4-a4b2b6642387@xs4all.nl>
+Date: Mon, 2 Oct 2023 12:25:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] media: mediatek: vcodec: Fix encoder access NULL
- pointer
+Subject: Re: [PATCH 2/2] media: mediatek: vcodec: Handle encoder vsi NULL
+ pointer case
 Content-Language: en-US, nl
 To: Irui Wang <irui.wang@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -49,13 +49,14 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  linux-mediatek@lists.infradead.org,
  Maoguang Meng <maoguang.meng@mediatek.com>
 References: <20230926101909.15030-1-irui.wang@mediatek.com>
+ <20230926101909.15030-2-irui.wang@mediatek.com>
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230926101909.15030-1-irui.wang@mediatek.com>
+In-Reply-To: <20230926101909.15030-2-irui.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_032408_232074_3DFD5372 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20231002_032556_249292_167E3781 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,34 +72,56 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 26/09/2023 12:19, Irui Wang wrote:
-> Need to set the private data with encoder device, or will access
-> NULL pointer in encoder handler.
-> 
-> Fixes: 1972e32431ed ("media: mediatek: vcodec: Fix possible invalid memory access for encoder")
+> There will be a kernel null pointer exception if 'vsi' is NULL, check
+> 'vsi' is not NULL before assign it to encoder instance.
 > 
 > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> ---
->  drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> index d299cc2962a5..ae6290d28f8e 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> @@ -138,7 +138,8 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
->  	vpu->ctx->vpu_inst = vpu;
->  
->  	status = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
-> -					    vpu_enc_ipi_handler, "venc", NULL);
-> +					    vpu_enc_ipi_handler, "venc",
-> +					    vpu->ctx->dev);
->  
->  	if (status) {
->  		mtk_venc_err(vpu->ctx, "vpu_ipi_register fail %d", status);
 
-Is this a fix that should go to 6.6?
+I see no Fixes tag, is that correct?
+
+Is this a fix that needs to go to kernel 6.6? It's not clear how urgent this
+is.
 
 Regards,
 
 	Hans
+
+> ---
+>  .../platform/mediatek/vcodec/encoder/venc/venc_h264_if.c     | 5 +++++
+>  .../platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c      | 5 +++++
+>  2 files changed, 10 insertions(+)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> index a68dac72c4e4..385bcc0d14f3 100644
+> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> @@ -597,6 +597,11 @@ static int h264_enc_init(struct mtk_vcodec_enc_ctx *ctx)
+>  	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_SYS);
+>  
+>  	ret = vpu_enc_init(&inst->vpu_inst);
+> +	if (!inst->vpu_inst.vsi) {
+> +		mtk_venc_err(ctx, "share buffer is NULL");
+> +		kfree(inst);
+> +		return -EFAULT;
+> +	}
+>  
+>  	if (MTK_ENC_IOVA_IS_34BIT(ctx))
+>  		inst->vsi_34 = (struct venc_h264_vsi_34 *)inst->vpu_inst.vsi;
+> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
+> index 05abca91e742..23ca0d93324f 100644
+> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
+> @@ -326,6 +326,11 @@ static int vp8_enc_init(struct mtk_vcodec_enc_ctx *ctx)
+>  	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_LT_SYS);
+>  
+>  	ret = vpu_enc_init(&inst->vpu_inst);
+> +	if (!inst->vpu_inst.vsi) {
+> +		mtk_venc_err(ctx, "share buffer is NULL");
+> +		kfree(inst);
+> +		return -EFAULT;
+> +	}
+>  
+>  	inst->vsi = (struct venc_vp8_vsi *)inst->vpu_inst.vsi;
+>  
+
 
