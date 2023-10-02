@@ -4,86 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18311E784AD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 05:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8507E784A4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 07:00:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ERF2+vPdR5zxPHbWiNc4FxQ0Iz4NyDB2w/HuJMATH4s=; b=1V8WrOFJ68UfGTtEUxG27duSnt
-	0XbStp0HmtbZ0V/7C7rZA7pMgSzphafSivLISr6bgzSO0ZfszAGDumfPLRUWX1ZtOilC2F7fDZ95N
-	ieBOsoWKIClk7vWhfV9ZzjyyEgZ4u95B3Kb6ebO/PMQmAQekoIFzGoLCz4Q+aKIRMnD2okXe4faL4
-	9gU9RK4qBvASf9oCoJIiu64mi1TmRg/3GAuoXXwkCSxwbXuT/9Jivrxx9zbFaLGJ57wu/g6aTIr7i
-	IMB8FfYMkfS5KbFwEUcq2lC85Alagxbq+vjjWcJ6iDlHNw7yxlTChhFiFxSjvfMDcDi7XgPt29mIs
-	qn7DYGgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HOArDjaFWFJOyICXPvUIUf44Pahfsl6ARg2tKcgPSDA=; b=lt5za7dcp4x6qy/EOvMi2TJQRz
+	xf5GMMvscyfH98zD3LVJcoDKSLsyXSjGbTwwWcQBl4bj/tlLJFTWgZMHE7NhbGsp2K4DYCpszp2LN
+	e9Ft/z5I4Byo2GFmo9iXYHMQOTslS9l7mmygOvsETVOVtN1Tx/+kqo4DpyDugDG0nULSRbxQ99Ai+
+	t5o2OFX1JGwEwk3bGDkWe+C11U7tdb+PyJyeZs+nzpeKPvVClm88l8Ck/Qd9VeP1tTEbuz4uJF4uc
+	XIrPAk3HcPHki3/PA/Ee39+LxFNtq/ZoNXQZBChRwFf3toTB/MAoxvJ3M+hifcjHTUpMHPU9Ws4jf
+	KagrHdWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnBtR-00C079-0r;
-	Mon, 02 Oct 2023 05:54:57 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnBtN-00C06e-2z
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Oct 2023 05:54:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 457B9CE0932;
-	Mon,  2 Oct 2023 05:54:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 230ACC433C7;
-	Mon,  2 Oct 2023 05:54:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696226090;
-	bh=ERF2+vPdR5zxPHbWiNc4FxQ0Iz4NyDB2w/HuJMATH4s=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=HZ1DYgTSpwQ1za5nyanJS2F9qUz7QoyjWSrS6iSS5YQzFWbqt6TiTp48ekW8foHvv
-	 5sedgHf/veTEGmgXau1fheBaP7eYSeELQO9dw4MhTjRtg0s5AaWhEE6MOMYvj2IM4X
-	 3JQC9a94aIWHU87sGHhIR2eEFNE4h6j4aVtkNscT9ODB5zxe2wAM8qNzcOXF8+o6Fl
-	 p/UFdj//BQuftU5XP2rKJ7i6Ki157cw+zElTH4XfqrMbPyZ/H4bGGron234I173Q+j
-	 T8lTtZLh7EtqqdNY+6x8FCW+KpwoaRhAySXQO4Xx9z0FEtJliF4h76Ut9Y8m7l1B/U
-	 UkGc4acvLV/cw==
-From: Kalle Valo <kvalo@kernel.org>
-To: =?utf-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>
-Cc: "nbd@nbd.name" <nbd@nbd.name>,  "lorenzo@kernel.org"
- <lorenzo@kernel.org>,  =?utf-8?Q?Mingyen_Hsieh_=28=E8=AC=9D=E6=98=8E?=
- =?utf-8?Q?=E8=AB=BA=29?= <Mingyen.Hsieh@mediatek.com>,
-  "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,  =?utf-8?B?TGVvbiBZZW4gKOmhj+iJrw==?=
- =?utf-8?B?5YSSKQ==?=
- <Leon.Yen@mediatek.com>,  =?utf-8?Q?Rong_Yan_=28=E9=84=A2=E8=8D=A3=29?=
- <Rong.Yan@mediatek.com>,
-  =?utf-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
-  =?utf-8?B?U3RlbGxhIENoYW5nICjlvLXmm4nkvakp?=
- <Stella.Chang@mediatek.com>,  =?utf-8?Q?Quan_Zhou_=28=E5=91=A8=E5=85=A8?=
- =?utf-8?Q?=29?= <Quan.Zhou@mediatek.com>,
-  Sean Wang <Sean.Wang@mediatek.com>,  =?utf-8?B?S00gTGluICjmnpfmmIbmsJEp?=
- <km.lin@mediatek.com>,  =?utf-8?B?U291bCBIdWFuZyAo6buD6Iez5pi2KQ==?=
- <Soul.Huang@mediatek.com>,
-  =?utf-8?B?UG9zaCBTdW4gKOWtq+eRnuW7tyk=?= <posh.sun@mediatek.com>,
-  =?utf-8?Q?Eric-SY_Chang_=28=E5=BC=B5=E6=9B=B8=E6=BA=90=29?=
- <Eric-SY.Chang@mediatek.com>,  =?utf-8?B?Q0ggWWVoICjokYnlv5fosaop?=
- <ch.yeh@mediatek.com>,
-  =?utf-8?B?Um9iaW4gQ2hpdSAo6YKx5ZyL5r+xKQ==?= <robin.chiu@mediatek.com>,
-  Ryder Lee
- <Ryder.Lee@mediatek.com>,  "linux-wireless@vger.kernel.org"
- <linux-wireless@vger.kernel.org>
-Subject: Re: [PATCH v2 6/6] wifi: mt76: mt7921: support 5.9/6GHz channel
- config in acpi
-References: <cover.1696039301.git.deren.wu@mediatek.com>
-	<f01bcf001c896a74e36ac9905bece382efb13b0d.1696039301.git.deren.wu@mediatek.com>
-	<0a45200ad39209d8955b5580b0d36444d7c5ad5a.camel@mediatek.com>
-Date: Mon, 02 Oct 2023 08:56:59 +0300
-In-Reply-To: <0a45200ad39209d8955b5580b0d36444d7c5ad5a.camel@mediatek.com>
-	("Deren Wu =?utf-8?B?KOatpuW+t+S7gSkiJ3M=?= message of "Sat, 30 Sep 2023
- 03:02:46 +0000")
-Message-ID: <87o7hhin2s.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	id 1qnCuO-00C3Fl-1n;
+	Mon, 02 Oct 2023 07:00:01 +0000
+Received: from mail.8bytes.org ([85.214.250.239])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnCuL-00C3EV-2a;
+	Mon, 02 Oct 2023 06:59:59 +0000
+Received: from 8bytes.org (pd9fe9df8.dip0.t-ipconnect.de [217.254.157.248])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id ECDA51A2626;
+	Mon,  2 Oct 2023 08:59:53 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1696229994;
+	bh=AIFVwF7V2yCwhyWe75DvT7fYSBhwm/fBmqB8nOMomrQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qpnLCwzk2x1keRMkLPeYurvT7r9OO8YOJ6/7Vx/qRYBDxYBtaFczM0bl0X3CwM+Z8
+	 JjZ2S2KL1yCjIcyOYKVBFX3TnYJH3DgXndhq33RdOr06+/f4P6g8ed5YusHJpPxKBf
+	 /cC8uVfAa/rk6Wr3PPtDNHTnxEpzpMy8C+fcOb8G29mwxCh4jTTbUwvHTKVDKKREHN
+	 XKS42S0qW6PWzXZYxLGalC73IDOoglQpj2vweIfb/B9jDLMPy04LKeueQ7Vtaof2m0
+	 /U/pjbpVoAN9ULRqOfwjMT62szxrFLqy3anLaW4GIZc388p9f5N34fWI0GM1KG2Gfs
+	 vlKBpUHgqfWmA==
+Date: Mon, 2 Oct 2023 08:59:52 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Niklas Schnelle <schnelle@linux.ibm.com>
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
+	Wenjia Zhang <wenjia@linux.ibm.com>,
+	Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+	Gerd Bayer <gbayer@linux.ibm.com>,
+	Julian Ruess <julianr@linux.ibm.com>,
+	Pierre Morel <pmorel@linux.ibm.com>,
+	Alexandra Winter <wintera@linux.ibm.com>,
+	Heiko Carstens <hca@linux.ibm.com>,
+	Vasily Gorbik <gor@linux.ibm.com>,
+	Alexander Gordeev <agordeev@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Sven Schnelle <svens@linux.ibm.com>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v13 0/6] iommu/dma: s390 DMA API conversion and optimized
+ IOTLB flushing
+Message-ID: <ZRpqaJEQLRDp5b1L@8bytes.org>
+References: <20230928-dma_iommu-v13-0-9e5fc4dacc36@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230928-dma_iommu-v13-0-9e5fc4dacc36@linux.ibm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231001_225454_163031_2AA64D15 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20231001_235958_085259_A24AB009 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,26 +108,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-"Deren Wu (=E6=AD=A6=E5=BE=B7=E4=BB=81)" <Deren.Wu@mediatek.com> writes:
+On Thu, Sep 28, 2023 at 04:31:34PM +0200, Niklas Schnelle wrote:
+> Niklas Schnelle (6):
+>       iommu: Allow .iotlb_sync_map to fail and handle s390's -ENOMEM return
+>       s390/pci: prepare is_passed_through() for dma-iommu
+>       s390/pci: Use dma-iommu layer
+>       iommu/s390: Disable deferred flush for ISM devices
+>       iommu/dma: Allow a single FQ in addition to per-CPU FQs
+>       iommu/dma: Use a large flush queue and timeout for shadow_on_flush
 
-> On Sat, 2023-09-30 at 10:25 +0800, Deren Wu wrote:
->> From: "rong.yan" <rong.yan@mediatek.com>
->
-> Hi Felix,
->
-> I am not sure why this patch is not shown in wireless patchwork, but it
-> is mediatek patchwork alreay. Guess there is something wrong in
-> author's naming parsing. I prefer to keep this patch in mail thred only, =
-how do you think?
-
-The patch is also available in lore:
-
-https://lore.kernel.org/all/f01bcf001c896a74e36ac9905bece382efb13b0d.169603=
-9301.git.deren.wu@mediatek.com/
-
---=20
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatc=
-hes
+Applied, thanks Niklas.
 
