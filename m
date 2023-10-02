@@ -4,125 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6942E784AC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 14:14:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF2E6E784B8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 14:39:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9xwbB9UUJNHYGsvOL2OWasF1jedaAyNp2p7Cekqs654=; b=nYGDwYh7oIwDmgnHLXsm+aC7+g
-	QNtE/oXNqhsuC2SPf+DWkO11ZkKmRl/iKbKHN5iusdW49HCcslwb14kwxUwDWxXNIoPrzFFqi2psu
-	qyYH6X/+8ohg1y4wEh/QS77PWVy/kML+dhwh2UxDW7jQXfA/F6BO3hd1E5P3fObMiB71kqsJfR+zu
-	iR+5I4RRb228K6t+wiWXIM27/bhKdigeam4JcGFja0322uuS+OAgVnW/C7PPdRRDH0Ce66mIof/Qf
-	iyOxvGLlJ6IZeroJtfkgwNgGUaC6aWjBRLYkdzuvNchZllcZxR0nab8f/NZIxql/uPMkQPp3Rf79Q
-	GgGhfYoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+NnmpsGvayd/gABxBPysi49ASjWA69obkOyILmV3YXI=; b=F9ERt7pffiWHQKnxEErz+yYZCp
+	GMN1QAbgapY5sdGAj5mBrAPg3dWBaAoOlFDYcdSQPUIEEJFCtietjN7sm48iITFeVTQQOqiaATWzh
+	Z0UQVZfsVR7L5sxWx/6JAv0UPbicXSyUwqaHURh14QFkmEta25l+6B2i6O99PY+QAYcY5ceNMyTuI
+	MajBI+K0NhlBj9A/VRN1mmo+YgbmAyzq86EGO4prVoX35wk9sXv+d6K9VuolvPi5Jc/i2D1DiTOmr
+	ANzxNnh9TmoiY9r/NuLKHVO6Z6o8JF0aKPc2Hc+0sg1FmNm67/VOduE/NpqLSlVvstWm4eW3cD8HO
+	eNZGEQ0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnJh6-00CrLv-1I;
-	Mon, 02 Oct 2023 14:14:44 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1qnK5U-00CtrW-1Z;
+	Mon, 02 Oct 2023 14:39:56 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnJh2-00CrJv-09;
-	Mon, 02 Oct 2023 14:14:41 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 392EDi1r029079;
-	Mon, 2 Oct 2023 09:13:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1696256024;
-	bh=9xwbB9UUJNHYGsvOL2OWasF1jedaAyNp2p7Cekqs654=;
-	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=By/tIsGE+iOxh5Xc+vk8G7bJIcgKrRMlPYXZHcFUKin/3+STUwGcSbwHAlEJAygAg
-	 cYX4zyPPw/iOWY5DN75uQdDwGYBXfP8SBN+kqJyxUMDBGrYpXulQ+jDabJRfTmMu9G
-	 DJaTDmzj2DXwuD/TrpxGcgigx7G0iwH+ZRX59CSI=
-Received: from DLEE111.ent.ti.com (dlee111.ent.ti.com [157.170.170.22])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 392EDiPN020538
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 2 Oct 2023 09:13:44 -0500
-Received: from DLEE111.ent.ti.com (157.170.170.22) by DLEE111.ent.ti.com
- (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Mon, 2
- Oct 2023 09:13:44 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE111.ent.ti.com
- (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Mon, 2 Oct 2023 09:13:44 -0500
-Received: from localhost (ileaxei01-snat2.itg.ti.com [10.180.69.6])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 392EDhKD007764;
-	Mon, 2 Oct 2023 09:13:44 -0500
-From: Nishanth Menon <nm@ti.com>
-To: Joel Stanley <joel@jms.id.au>, Li Yang <leoyang.li@nxp.com>,
-        Herve Codina
-	<herve.codina@bootlin.com>,
-        Qiang Zhao <qiang.zhao@nxp.com>,
-        Hitomi Hasegawa
-	<hasegawa-hitomi@fujitsu.com>,
-        Huisong Li <lihuisong@huawei.com>, Krzysztof
- Halasa <khalasa@piap.pl>,
-        Karol Gugala <kgugala@antmicro.com>,
-        Mateusz
- Holenko <mholenko@antmicro.com>,
-        Gabriel Somlo <gsomlo@gmail.com>, Yinbo Zhu
-	<zhuyinbo@loongson.cn>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        Conor
- Dooley <conor.dooley@microchip.com>,
-        Daire McNamara
-	<daire.mcnamara@microchip.com>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>,
-        Andy Gross <agross@kernel.org>,
-        Bjorn
- Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Heiko Stuebner <heiko@sntech.de>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Sumit Gupta <sumitg@nvidia.com>,
-        Shang XiaoJing <shangxiaojing@huawei.com>,
-        Muhammad Usama Anjum
-	<usama.anjum@collabora.com>,
-        Rob Herring <robh@kernel.org>,
-        Santosh Shilimkar
-	<ssantosh@kernel.org>,
-        Michal Simek <michal.simek@amd.com>,
-        =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-CC: Nishanth Menon <nm@ti.com>, Andrew Jeffery <andrew@aj.id.au>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-aspeed@lists.ozlabs.org>, <linux-kernel@vger.kernel.org>,
-        Arnd Bergmann <arnd@arndb.de>, Zev Weiss
-	<zev@bewilderbeest.net>,
-        <linuxppc-dev@lists.ozlabs.org>, <loongarch@lists.linux.dev>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-riscv@lists.infradead.org>,
-        zhang songyi <zhang.songyi@zte.com.cn>,
-        Lubomir Rintel <lkundrak@v3.sk>, <linux-arm-msm@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>,
-        Alim
- Akhtar <alim.akhtar@samsung.com>,
-        <linux-samsung-soc@vger.kernel.org>,
-        Nick
- Alcock <nick.alcock@oracle.com>,
-        Yang Yingliang <yangyingliang@huawei.com>,
-        <linux-tegra@vger.kernel.org>, <linux-pm@vger.kernel.org>,
-        Ruan Jinjie
-	<ruanjinjie@huawei.com>, <kernel@pengutronix.de>
-Subject: Re: (subset) [PATCH 00/40] soc: Convert to platform remove callback returning void
-Date: Mon, 2 Oct 2023 09:13:43 -0500
-Message-ID: <169625598637.2878306.1181893226380989815.b4-ty@ti.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
-References: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
+	id 1qnK5R-00Ctqw-0h
+	for linux-mediatek@lists.infradead.org;
+	Mon, 02 Oct 2023 14:39:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1BBE360F08;
+	Mon,  2 Oct 2023 14:39:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34E24C433C8;
+	Mon,  2 Oct 2023 14:39:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1696257590;
+	bh=mfetEKQLfVvOsbkQ2Cy6lZWuc5c3sKvX7rQKRBDc538=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qhMrkH+9QTbAsa6GPqtCgY3pJ+2VLDzOjfIJX2snnANn6BHEvlA//XS4DZQn/00vX
+	 GSgyNlCl3UvdW0IbKK8z2z/mEgP47qESqnMCwGNxpMP9RrO7i3wK9O/HekuGmzSdmD
+	 VLCaI4KTc7k7D0FdNNuMoTLovqPUskRjJ0F+Xi7I=
+Date: Mon, 2 Oct 2023 16:39:47 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, kernel@pengutronix.de
+Subject: Re: [PATCH v2] usb: mtu3: Convert to platform remove callback
+ returning void
+Message-ID: <2023100219-variety-genre-befe@gregkh>
+References: <20230914200251.919584-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+In-Reply-To: <20230914200251.919584-1-u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_071440_172992_A7DB0118 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20231002_073953_371198_7F9D4822 
+X-CRM114-Status: GOOD (  31.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,57 +70,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Uwe Kleine-KÃ¶nig,
-
-On Mon, 25 Sep 2023 11:54:51 +0200, Uwe Kleine-KÃ¶nig wrote:
-> this series converts all platform drivers below drivers/soc to use
-> .remove_new(). The motivation is to get rid of an integer return code
-> that is (mostly) ignored by the platform driver core and error prone on
-> the driver side.
+On Thu, Sep 14, 2023 at 10:02:51PM +0200, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is (mostly) ignored
+> and this typically results in resource leaks. To improve here there is a
+> quest to make the remove callback return void. In the first step of this
+> quest all drivers are converted to .remove_new() which already returns
+> void.
 > 
-> See commit 5c5a7680e67b ("platform: Provide a remove callback that
-> returns no value") for an extended explanation and the eventual goal.
+> The function mtu3_remove() can only return a non-zero value if
+> ssusb->dr_mode is neiter USB_DR_MODE_PERIPHERAL nor USB_DR_MODE_HOST nor
+> USB_DR_MODE_OTG. In this case however the probe callback doesn't succeed
+> and so the remove callback isn't called at all. So the code branch
+> resulting in this error path could just be dropped were it not for the
+> compiler choking on "enumeration value 'USB_DR_MODE_UNKNOWN' not handled
+> in switch [-Werror=switch]". So instead replace this code path by a
+> WARN_ON and then mtu3_remove() be converted to return void trivially.
 > 
-> [...]
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+> ---
+> Changes since (implicit) v1 sent with Message-Id:
+> 20230709163335.3458886-1-u.kleine-koenig@pengutronix.de:
+> 
+>  - Keep case USB_DR_MODE_UNKNOWN to cope for the compiler being called
+>    with -Werror=switch.
+>  - Rebase to a newer tree
+> 
+> Just to evaluate the options, I tried with a BUG_ON(ssusb->dr_mode ==
+> USB_DR_MODE_UNKNOWN) before the switch, but even then gcc insists on the
+> case label for this value.
+> 
+> Best regards
+> Uwe
+> 
+>  drivers/usb/mtu3/mtu3_plat.c | 19 +++++++++++++------
+>  1 file changed, 13 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+> index 6f264b129243..18c6cf9a2d71 100644
+> --- a/drivers/usb/mtu3/mtu3_plat.c
+> +++ b/drivers/usb/mtu3/mtu3_plat.c
+> @@ -451,7 +451,7 @@ static int mtu3_probe(struct platform_device *pdev)
+>  	return ret;
+>  }
+>  
+> -static int mtu3_remove(struct platform_device *pdev)
+> +static void mtu3_remove(struct platform_device *pdev)
+>  {
+>  	struct ssusb_mtk *ssusb = platform_get_drvdata(pdev);
+>  
+> @@ -469,8 +469,17 @@ static int mtu3_remove(struct platform_device *pdev)
+>  		ssusb_gadget_exit(ssusb);
+>  		ssusb_host_exit(ssusb);
+>  		break;
+> -	default:
+> -		return -EINVAL;
+> +	case USB_DR_MODE_UNKNOWN:
+> +		/*
+> +		 * This cannot happen because with dr_mode ==
+> +		 * USB_DR_MODE_UNKNOWN, .probe() doesn't succeed and so
+> +		 * .remove() wouldn't be called at all. However (little
+> +		 * surprising) the compiler isn't smart enough to see that, so
+> +		 * we explicitly have this case item to not make the compiler
+> +		 * wail about an unhandled enumeration value.
+> +		 */
+> +		WARN_ON(1);
 
-I have applied the following to branch ti-drivers-soc-next on [1].
-Thank you!
+Please don't add new WARN_ON() calls to the kernel, print out a big
+error message and return, don't reboot the machine.
 
-[33/40] soc/ti: k3-ringacc: Convert to platform remove callback returning void
-        commit: f34b902c5ba67841902cd7f0e24e64bb82f69cb4
-[34/40] soc/ti: knav_dma: Convert to platform remove callback returning void
-        commit: 3af4ec7c7dd39a2c4618f6536b2e7b73a19be169
-[35/40] soc/ti: knav_qmss_queue: Convert to platform remove callback returning void
-        commit: af97160a0c5f1908c6f2830023fb93baac4451d3
-[36/40] soc/ti: pm33xx: Convert to platform remove callback returning void
-        commit: 9eb950e9fffc5337bfe1798cf89ce4d97a4f1221
-[37/40] soc/ti: pruss: Convert to platform remove callback returning void
-        commit: d183b20d340b7c098f44cb5c02f4ced01cfd0b16
-[38/40] soc/ti: smartreflex: Convert to platform remove callback returning void
-        commit: ba03aab9bfb4c9d456419da3891375d45c6bfe15
-[39/40] soc/ti: wkup_m3_ipc: Convert to platform remove callback returning void
-        commit: 82e83cb51c87b5bf3ab83f7c7b150c19400056c2
+thanks,
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent up the chain during
-the next merge window (or sooner if it is a relevant bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/ti/linux.git
--- 
-Regards,
-Nishanth Menon
-Key (0xDDB5849D1736249D) / Fingerprint: F8A2 8693 54EB 8232 17A3  1A34 DDB5 849D 1736 249D
-
+greg k-h
 
