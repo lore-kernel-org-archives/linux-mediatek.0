@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22F61E75452
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 12:18:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43295E75456
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 12:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=21uw+jxeSVaVlpocj2e/jwO1g6eCYmd6Vp0tORjr63Q=; b=h93To8l8ZVRE5wMVfk6NlCpavO
-	GZVYNCwcdarFpmZLqbkKnlAMd8Zmh3d3pbL4M+oMTruuNlMNuT2spFzEfc1R5HgHYvLmXc2Xee48f
-	04yF+6lpqqC8e8B9qXCTDwwJh+UteR0wlMb7haZmBYDoTyF05zpV6dJuyDqeriwj+bIGNvbtaRZoA
-	4FEFr71kVFd786KFsD8hKbf1UGBwZkhdnIqzZIVwcTgxDJ8q1LWQ9lQC/hf+DHKIKSFZgploZtjjy
-	iiwafkHz3KbCkr6+Dvq+MVgi93kXqmW+KZVbYSkM0llyG9sy9x3jqxHmeM6hbTY/dJYHbUpEpcKkC
-	9LYKlr+g==;
+	bh=LNO5GJBfVgDppnnjLs8Ey/aGvi+SY8q8n/RPtqg6Lb0=; b=nSYekOsMiw/vYnNc8zCROGWT+K
+	8yVyc0RFejHBgH0SstUSpTBzCXqEEGGZ3nt2FsiDjWboSblBIo9YRCQzJiv7tJa8vLa0viitcaCEe
+	hLoUpIM4dQWZCeWGt1rKNqkEj1zlyeGsdU4MDXfhYeEcDBr+E0EAEtpraJu19OHgVT+bUklgLt1x7
+	L0IpkhIs7LASoRgnCWORHOOZpkgIqC9loGlIgKIjaXD6BrHH5WvMsBOKcjJBYvlc6gV+esX9yoUTz
+	Y650VvLvWlmrzN62TXBTmC5Pvl+4OR1enuhxH1WbVXR2kMttO4a+50hWDrNLcQ6xv3ULd3sFKCjIG
+	Ic2vfAZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qneM5-00EbUp-2X;
-	Tue, 03 Oct 2023 12:18:25 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qneTW-00Ebwm-0X;
+	Tue, 03 Oct 2023 12:26:06 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qneM0-00EbTM-2V;
-	Tue, 03 Oct 2023 12:18:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 9AC53B81A3C;
-	Tue,  3 Oct 2023 12:18:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B8DCC433C7;
-	Tue,  3 Oct 2023 12:18:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696335496;
-	bh=Tk+5BElhw0VeC3CF5j+uL3ic7k6gB1Cu7d+eticsVEs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=db/atGkE18xakAECbQv0Zu+0Xr/j9j/OZ0SV8aMRAWWVFoefJY6lheoceS32py1u6
-	 GYKc2FVjfIFM0iPdw22ZiPSRLw2KCoFAE70CZhSg36f/sYwhrwfzTsLV8LxSq16RmR
-	 UoRyQvYQ+IroMbY8SvyA1kY1qD5YXbRRsPSnAfhdl6gRy3rOH+vhVMGpP7BQp/P7m8
-	 aVwcpllCZ4aL5TEo/y6ZclM/fzPIuUeeVD4jJOB/PlOiWdlpvfkFYQJa1y1as0E0x/
-	 UGfhkonQaT3LdHldDwS+AdAFrss9Buba6UxHIEmpSPKBj4JxM6B72DRtbzkET8EHs1
-	 g/LaWzPn8ejTQ==
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Lee Jones <lee@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20230928085537.3246669-1-wenst@chromium.org>
-References: <20230928085537.3246669-1-wenst@chromium.org>
-Subject: Re: (subset) [PATCH v4 00/12] regulator: mt6366: Split out of
- MT6358 and cleanup
-Message-Id: <169633549178.30169.17284129467278150573.b4-ty@kernel.org>
-Date: Tue, 03 Oct 2023 13:18:11 +0100
+	id 1qneTT-00Ebve-1Q;
+	Tue, 03 Oct 2023 12:26:04 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-d84c24a810dso899264276.2;
+        Tue, 03 Oct 2023 05:25:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1696335958; x=1696940758; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LNO5GJBfVgDppnnjLs8Ey/aGvi+SY8q8n/RPtqg6Lb0=;
+        b=jyB7qEsuvek4zK/IxzuwG/K9wu0A3CqVVTXCBKZk82DnO9r24C5666pl1rfipUsKVi
+         3XreLukiK58soezXdtwdZmyRecuPSG3psprBy6ghMPVwC9njlVpXkNt3lfeUP+gXjpb8
+         jr80uWsFk/lFeHzg25hF/YQw5v9YMbslqZN1ZhGUs5XxdmtVR25pD1Zd+GZoMquioY1a
+         Ql3KuEmEg8YCIxhR0LM68xv4x5Vr7ClEadw8UkQtC/I1YSd7R4qoF5qCkRGzc2/iGgUe
+         jjQiLhWIkvzocUfUdRFU1uesEhUuuM7Z9fhxnvYpWuWFu33K7/FwA9yGXw6P1vU25d5v
+         rW8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696335958; x=1696940758;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LNO5GJBfVgDppnnjLs8Ey/aGvi+SY8q8n/RPtqg6Lb0=;
+        b=dmSpGLAm0PwdjUjow1GGcTOyuxATSMbULGu+Lt1LihoZEOT7o7pcd6SZXDHACtu17x
+         j+y5yL0tbtkeNg+8zeWY3xjMjuyPdx/j3j8B428aHj8mVC0U8KJCMye2wz5Zl+AtMkTb
+         uOJyTHCE1Qq+7NEPR32FculpRbW2mbdXR5kDHwUJjraCLbGGYrcTEyCypt9hQPevgJ2z
+         WmjbVGG57dxYcJM1QJiik8igMV67E/ikAjbxvMQ18ALW5GYRku06c6WYHGhwBrDnCseA
+         9NMUVye1zN+nfjashV1bG/dUo088turvaj8wr1DHLpsbTR+oxMXd4UvphtzSUk5SpzN6
+         aBzQ==
+X-Gm-Message-State: AOJu0Yz8+K011hMZs/bSuzfd4aoFJd+liMXFSERiYVqLV+RRxY2FkQmo
+	y5YUtYtp5rcrll25lmmHZZExMoT1WF3QxoZtlaI=
+X-Google-Smtp-Source: AGHT+IH3vFPI8wkZPSB+huGryIAf1o97KjtxkawCjpbmFqLZ7a060PcmeyqhgyDquT7PF4ujt0bcej93HgDs77wHvAQ=
+X-Received: by 2002:a05:6902:707:b0:d85:aa81:53f0 with SMTP id
+ k7-20020a056902070700b00d85aa8153f0mr16641798ybt.4.1696335957740; Tue, 03 Oct
+ 2023 05:25:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-0438c
+References: <CAH7-e5sb+kT_LRb1_y-c5JaFN0=KrrRT97otUPKzTCgzGsVdrQ@mail.gmail.com>
+ <ZRtWcgiH5JhD5NU2@debian.me>
+In-Reply-To: <ZRtWcgiH5JhD5NU2@debian.me>
+From: =?UTF-8?Q?Erik_Dob=C3=A1k?= <erik.dobak@gmail.com>
+Date: Tue, 3 Oct 2023 14:25:46 +0200
+Message-ID: <CAH7-e5uspavg_VBJxKLOKJfU3nAq-OrPqzihF2opffY-ReiC-w@mail.gmail.com>
+Subject: Re: bluetooth issues since kernel 6.4 - not discovering other bt
+ devices - /linux/drivers/bluetooth/btusb.c
+To: Bagas Sanjaya <bagasdotme@gmail.com>
+Cc: Linux Stable <stable@vger.kernel.org>, 
+	Linux Bluetooth <linux-bluetooth@vger.kernel.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+	Linux Mediatek <linux-mediatek@lists.infradead.org>, 
+	Linux Regressions <regressions@lists.linux.dev>, Marcel Holtmann <marcel@holtmann.org>, 
+	Johan Hedberg <johan.hedberg@gmail.com>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?Q?Tomasz_Mo=C5=84?= <tomasz.mon@nordicsemi.no>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_051821_128800_5C737CB7 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20231003_052603_478480_70CB1812 
+X-CRM114-Status: GOOD (  20.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,61 +97,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 Sep 2023 16:55:23 +0800, Chen-Yu Tsai wrote:
-> This is v4 of my MT6366 PMIC split-out-of-MT6358 cleanup series. The two
-> PMICs are mostly identical, except for the regulator bits. The MT6366 is
-> missing the VCAM* (camera related) LDOs, but in their place has a few
-> other ones. This thus requires a separate compatible to handle the
-> binding differences. The hardware however does have a chip ID register
-> that can be used to differentiate the variants within the driver. Thus
-> a fallback compatible to the base (MT6358) model is included.
-> 
-> [...]
+On Tue, 3 Oct 2023 at 01:47, Bagas Sanjaya <bagasdotme@gmail.com> wrote:
+>
+> On Sun, Oct 01, 2023 at 07:47:54AM +0200, Erik Dob=C3=A1k wrote:
+> > Hello!
+> >
+> > I bought a new laptop fujitsu life book and everything is going fine
+> > on artix just the bt makes trouble:
+> >
+> > /var/log/error.log
+> > Sep 30 18:43:48 nexus bluetoothd[2266]:
+> > src/adapter.c:reset_adv_monitors_complete() Failed to reset Adv
+> > Monitors: Failed (0x03)
+> > Sep 30 18:43:48 nexus bluetoothd[2266]: Failed to clear UUIDs: Failed (=
+0x03)
+> > Sep 30 18:43:48 nexus bluetoothd[2266]: Failed to add UUID: Failed (0x0=
+3)
+> > Sep 30 18:43:48 nexus bluetoothd[2266]: Failed to add UUID: Failed (0x0=
+3)
+> >
+> > i searched a bit the webs and found a new commit at kernel org that
+> > does do the trouble:
+> > https://bugs.archlinux.org/task/78980
+> >
+> > follow the linkeys inside the commits there or read this one:
+> >
+> > ---------------before------------------------------------
+> > /* interface numbers are hardcoded in the spec */
+> >         if (intf->cur_altsetting->desc.bInterfaceNumber !=3D 0) {
+> >                 if (!(id->driver_info & BTUSB_IFNUM_2))
+> >                         return -ENODEV;
+> >                 if (intf->cur_altsetting->desc.bInterfaceNumber !=3D 2)
+> >                         return -ENODEV;
+> >         }
+> > -----------after----------------------------------------------------
+> > if ((id->driver_info & BTUSB_IFNUM_2) &&
+> >     (intf->cur_altsetting->desc.bInterfaceNumber !=3D 0) &&
+> >     (intf->cur_altsetting->desc.bInterfaceNumber !=3D 2))
+> > return -ENODEV;
+> > --------------------------------------------------------
+> >
+> > the dude just hooked up 3 conditions in a row with && where before it
+> > was 2 conditions in 1 condition. + the comment was removed.
+> >
+> >
+>
+> Try latest mainline first (currently v6.6-rc4). Because you have to
+> compile your own kernel, please refer to
+> Documentation/admin-guide/quickly-build-trimmed-linux.rst if you don't kn=
+ow how to do the compilation.
+>
+> Also, don't top-post when replying; reply inline with appropriate context
+> instead.
+>
+> Thanks.
+>
+> --
+> An old man doll... just what I always wanted! - Clara
 
-Applied to
+Hi i booted now into linux-6.6-rc4 and the issue is still there. No
+bluetooth devices are discovered.
+with this device: Bus 001 Device 004: ID 04c5:1670 Fujitsu, Ltd Bluetooth R=
+adio
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-
-Thanks!
-
-[02/12] regulator: dt-bindings: mt6358: Convert to DT schema
-        commit: 93880f7e5c8c864309a57c47669ac0bc432524d5
-[03/12] regulator: dt-bindings: mt6358: Add regulator-allowed-modes property
-        commit: 0bf4b56b5ecaf711865f313476f91c18338307bb
-[04/12] regulator: dt-bindings: mt6358: Add regulator supplies
-        commit: 2f384e60acbac140732367d037c5f08db21513a0
-[05/12] regulator: dt-bindings: mt6358: Add MT6366 PMIC
-        commit: c631494a69c55301a03af9c028892c9098019652
-[06/12] regulator: mt6358: Use mt6397-regulator.h binding header for buck mode macros
-        commit: 9f3bec54d06f1eb4b47c7f78ef1401bc71977e9e
-[07/12] regulator: mt6358: Add supply names for MT6358 regulators
-        commit: 3dfa8a7071d4e748d5a59566f9a96e381a9fccb2
-[08/12] regulator: mt6358: fix and drop type prefix in MT6366 regulator node names
-        commit: 0c3697b8980dd44df05ed77222c09bd8fe729626
-[09/12] regulator: mt6358: Make MT6366 vcn18 LDO configurable
-        commit: b7f3b89848b3bae3b1e3a97e75b82c65a4952cfc
-[10/12] regulator: mt6358: Add missing regulators for MT6366
-        commit: b7768e67af9a5b6d6101cbfc146969fedf8df4be
-[11/12] regulator: mt6358: Add supply names for MT6366 regulators
-        commit: ce8ab92e66ccc99591b9cbb6630d720d5e6ad6ec
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+E
 
