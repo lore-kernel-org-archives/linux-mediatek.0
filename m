@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0576DE75438
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 09:19:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E838EE7543D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 09:24:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bVtle11+F+2q7ObKN9xrHyZuOwyjS3lgpspTKIH/0qI=; b=F80onlWEzlKGQH
-	qMV6p7ywmNHwv6VqN9nLQLe898Adi30waPk6frIxy14BzuLQD9L//KiK9O1nsQAUF/69cZkGjcOaP
-	OsGu1dg5BYz6HwMeYmwRTuQO4W2g9AyBoDd8fS8DjkZztln5dRmASN65OAAWt4Af+ds5SWkVkBLaq
-	D4909+ZM1NVvE2rWwjRolq6v6yyfCoWGMYpLFZrHnUlzn1RCX9ROoHZ2Ri4HiUi/ia2DiwTT6+7cL
-	s2AMcq5JbYQvU98lYOCd0lhQqa5/iy6i2QMKf+7+hACAAHhI9R0JQv84bd+Q3t2YZnF7ppmqd8bL6
-	MNwonAVEkn1s7aYh8/zA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wsGzVwxz2ibSZQQX8sYcuRweZwRG01s2xFqhRXTDaBc=; b=UrrS60ojMR4kS2ZOzOdSPCIBlB
+	NVGOVF2V6PFN9h88wPrwY6RaMnE2Y4zc9WtMbsp/b+iAcJl5Dkmj+o4IbFmRYyj2SvTqWvEi5tUGd
+	OacXLikCOprfPW+bTf1YfcqBf+NuXb71zw27jK8BPL3LX+1DNaon612DcNAGdXk87Pgg1ojASCeFE
+	xX/Cn1706INjFhrPlz7JNmlnXda6t8jl+YDu9Ljg2o+TRB0+NtyhlcQD8MM/k/U8YkOsrR+yJL5cU
+	o8nhNz+S2yxA4dlRJWXd8Kmdt4b6CzlEwDU6Asw5WVGifRIm5HB3sVaVmGTDbl3EGn1y3KSqXys/x
+	7IT/E9Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnbYm-00EE45-31;
-	Tue, 03 Oct 2023 09:19:20 +0000
+	id 1qnbe4-00EEXA-2I;
+	Tue, 03 Oct 2023 09:24:48 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnbYj-00EE37-29;
-	Tue, 03 Oct 2023 09:19:18 +0000
+	id 1qnbe0-00EEVW-1l;
+	Tue, 03 Oct 2023 09:24:45 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D61126607181;
-	Tue,  3 Oct 2023 10:19:12 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 407F16607181;
+	Tue,  3 Oct 2023 10:24:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696324753;
-	bh=M7lfKOTZR3YgSLdRNfIAxVgHYEotO9VtiVlCynD3SMU=;
+	s=mail; t=1696325081;
+	bh=fglFS8/SJTxax6nKCOPR+u+mqyIQq4V/6eD+bn6enag=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=R9dZ3Hy8CrWJehTL759PY4epu4CXhVtEAx0t+4u0GSOvsGFPl0XCm1rlm6Hgljxnx
-	 6688lQSte61FZiO+mzoLEJl+ZIfzwSuMp3dEWaO9QXLWGfzC6R5Se12IBixDFn6FUy
-	 Jx0Yv/gMMOCmrKjgaIifK+O0ccXdkdCeuvz7jBuYmfibjGOR9lj7IN0Tbl76smwSDQ
-	 bnbRQIyBi5nQ5vfSGLiv8+Ojj+wwbNUrrcqYC/4z/v0+gYPIXCF5RDYjjuZpsDPXzr
-	 ItbgOf6lhLk/NHzdz/G3PSRNxAsIiODjzh/NuLqz8V0VqHi9sg/n2UYAKthk145IHH
-	 Nf72jko8PEfHg==
-Message-ID: <f10651a0-797b-ee55-a7db-9a26699c13ce@collabora.com>
-Date: Tue, 3 Oct 2023 11:19:10 +0200
+	b=LscWssJW+MqsWczsrw3nIOSf0rtr6/nbmR7RS2yUbx4aYtZh7s4RCjGNaV3QD6wRu
+	 QTaHmxzxgPNanqdk82VRO4ntuWMg/MJTewnabeFJibpNUhYJ8mxZZrhqZ61k1tngh5
+	 M8snckqZak/z4MzsCIfhP+LIFCMaZ9xyx6L1wzxnjameAwUwmvpEwcfRR8mIxakkNZ
+	 uLj9ZU6lp/D5zdfjSG64mY+kpUMITVqJ275VLFeoWvjsc8XnDAg3aeC97JHefwbgBz
+	 176JTJWl1BYwnXq/ssMSysUxoSm/zqSF+ORF564joj8juOqkv0Er33JYejrco6J3Az
+	 GjqvtvLS4QchA==
+Message-ID: <1c639f51-a444-c8c8-8585-2e413243c3a6@collabora.com>
+Date: Tue, 3 Oct 2023 11:24:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: fix t-phy unit name
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Set DSU PMU status to fail
 Content-Language: en-US
-To: Eugen Hristev <eugen.hristev@collabora.com>,
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Seiya Wang <seiya.wang@mediatek.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org
-References: <20230814093931.9298-1-eugen.hristev@collabora.com>
- <20230814093931.9298-2-eugen.hristev@collabora.com>
+References: <20230720200753.322133-1-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230814093931.9298-2-eugen.hristev@collabora.com>
+In-Reply-To: <20230720200753.322133-1-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_021917_855266_B983D770 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231003_022444_718962_43E275CB 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,21 +78,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kishon@kernel.org, devicetree@vger.kernel.org, conor+dt@kernel.org, sam.shih@mediatek.com, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, matthias.bgg@gmail.com, vkoul@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, chunfeng.yun@mediatek.com, kernel@collabora.com, chris.obbard@collabora.com, linux-arm-kernel@lists.infradead.org, jieyy.yang@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/08/23 11:39, Eugen Hristev ha scritto:
-> dtbs_check throws a warning at t-phy nodes:
-> Warning (unit_address_vs_reg): /t-phy@1a243000: node has a unit name, but no reg or ranges property
-> Warning (unit_address_vs_reg): /soc/t-phy@11c00000: node has a unit name, but no reg or ranges property
+Il 20/07/23 22:07, Nícolas F. R. A. Prado ha scritto:
+> The DSU PMU allows monitoring performance events in the DSU cluster,
+> which is done by configuring and reading back values from the DSU PMU
+> system registers. However, for write-access to be allowed by ELs lower
+> than EL3, the EL3 firmware needs to update the setting on the ACTLR3_EL3
+> register, as it is disallowed by default.
 > 
-> The ranges is empty thus removing the `@1a243000`, `@11c00000` from
-> the node name.
+> That configuration is not done on the firmware used by the MT8195 SoC,
+> as a consequence, booting a MT8195-based machine like
+> mt8195-cherry-tomato-r2 with CONFIG_ARM_DSU_PMU enabled hangs the kernel
+> just as it writes to the CLUSTERPMOVSCLR_EL1 register, since the
+> instruction faults to EL3, and BL31 apparently just re-runs the
+> instruction over and over.
 > 
-> Fixes: 6029cae696c8 ("arm64: dts: mediatek: mt7622: harmonize node names and compatibles")
-> Fixes: 918aed7abd2d ("arm64: dts: mt7986: add pcie related device nodes")
-> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+> Mark the DSU PMU node in the Devicetree with status "fail", as the
+> machine doesn't have a suitable firmware to make use of it from the
+> kernel, and allowing its driver to probe would hang the kernel.
+> 
+> Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
