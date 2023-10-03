@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7A75E75439
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B97E75433
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QpSInaJKUJ/DlcL8VR6iHm3p4p7re09L2HT4Ec1k7sA=; b=4zGDZ3W8okQxTnGi2ZIGr6Met7
-	DA0HXOPnYK4vKRamgC+JENMYS/PLk8PyKklETYKvDgWLlkc88b6nFtrt7LktS26SBr/j33FdxA1UD
-	XC/ZNMNFC2I6E72S+xS0BIFIIYQuw6c+C33LE44eliUewfbM4IlkJHleC4cLNFrkOiWFcXLGLLit6
-	vOV+0KXc8r7B4FON9ANFUp4itvruLw4/kkP2IBOyYQO5zvlN2rJ1nbHDM/1C7zU/dPQBgcLgqyiTD
-	rHNPa3zQB5how1p/aBUYOz+1hnkJbkUKsbnVmoBN7+xTJ5B+If//WaCLe+BGp2398vciCJADog24E
-	xoDAm31g==;
+	bh=tNAbg+knkabZcIfZKYQJcMQ9aVj2QfkLtg7kl/Xz8lA=; b=iU7JtJZWULylpNOn69jTCvvT3V
+	esm1rh65eSSN1zvIbTEHqmdxI558QYDvwkfzG5SVqDSTuA/+hiB2jQ03b3NUK6YBJ1R51n62ynDYx
+	9HeOI/K1W3519kXLx7z3ERAMOycifhJ9QID1sbD5yw/cBt50/qrFMrX3AO6mkxlkvEHpbV0tQeHgJ
+	7gaCPFgtKyjOVF5H5Oy8T9fPAlpF3eRLdYlOBVxFlw4TrOz3nXDYirtfI7PVr2ujePtN2n9LOm4yD
+	5mHcLeOWrV7unakh8GeU3ZMxrixx5dtFjckozkKfJK7IaQa+rjDvs2xWurLPIXDLtU2l54kIKfnXh
+	NlCDGKSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaU2-00E6zQ-0n;
-	Tue, 03 Oct 2023 08:10:22 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qnaUC-00E7FS-0B;
+	Tue, 03 Oct 2023 08:10:32 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRR-00E3WG-1G;
-	Tue, 03 Oct 2023 08:07:49 +0000
+	id 1qnaRe-00E3ko-17;
+	Tue, 03 Oct 2023 08:07:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=tNAbg+knkabZcIfZKYQJcMQ9aVj2QfkLtg7kl/Xz8lA=; b=dfy8Lqwyy/1uL2jvDRTFwlTKAB
+	Kpsl3qPgUYAuBCrcSje5SBVpr/wjbP7kG9pP5mgWjfqrRw8T2TD9sqDyGmVFa6kD/IXD7GzI7zOd2
+	SwsII86XE5057k+J2v3FsYxHwM7zscd13tdJA/NNgPoT/mG3SQ+TXhxISVeqmclpG9q15xtBdXaBI
+	c6m6tMMKk7iRXA/G+ofyyECXQcYVM0OyvFax9mwGgApEuwCBecVoCXVO6F8jXWNrAPeWTh0ddt6G7
+	EDJxYCa6v/CcJm6hPdmtgChtGpAJG1ys9FoTFW9i1ftzBZowJVmejk9fptTo378Iu3O6HkA7CJJNm
+	f5cmsrGA==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnaRN-009jwX-1Q;
+	Tue, 03 Oct 2023 08:07:53 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7D2E3660738C;
-	Tue,  3 Oct 2023 09:07:39 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D67136607387;
+	Tue,  3 Oct 2023 09:07:36 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320459;
-	bh=q/3LosksKvWNMIF8T4vY+RgX/8FTOCEMyeIR9ij3S98=;
+	s=mail; t=1696320457;
+	bh=ph7BpDmTndhVgQkibEyHEMgMXbFU1u8TVxC65OSPSxg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kDmos9emz0kk3EzVluf+oXNYg+7uUrdxFFziIbw2V5MX5DnCPMcIPrF3DOo0S4FBE
-	 fO2rmm8j6H2tzuAg98PxZECXqcteulRFHJB84xpKghY7wYjjVYcgW5SOkkus79y2WE
-	 B9RCka5y0Mldy6ZYwDeHMOx9Tw2otiWGvvuWY7a+uThMJTkNprvzR9hJHBCJ187tCl
-	 v0tZPDiJvLcAIP8b0XZyLd9oYVsB18nHAW16iT948/HxkoZtLraUa7zdarazj4QRaS
-	 M6qU4V2afrqNO5N9NqfuEXl6YdkLL8Y647uvD5fpX2u5OUx/UMXpw7vfLGHWdFKaAB
-	 ItSFwogKq8OaQ==
+	b=M44ioBZhEwt4ZQbAALO2XXtYqIDGCjGeVsmIoBks7uX9DDOhq8vUWkL5PGfjQVglZ
+	 1+sPRHNS8dyXnQiakiWavVMU+UfU4V9x9Q5iFbyPHq1AXLmWM9PZQtfrIfdR6zz+H+
+	 nzAjBiiAU3PJX2OitiWDAmvtVuxmuT47sLRz0CwXHRrPiYF+qu7NkdopQ0cVaymreP
+	 7hd1ZJM4803LMbS3FvYju4wirdhfnaO4b//9sBjo5t8xECVF05/hHuWvS35dqb9Ivb
+	 Alpu7hyS0WYUujk7vlDAP56gQBjz/GwtSOH4v0W/euDtaia/xsmOwtku4DFdm2Stbr
+	 0cAoRIKo+NhmA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +76,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 51/54] media: core: Free range of buffers
-Date: Tue,  3 Oct 2023 10:07:00 +0200
-Message-Id: <20231003080704.43911-52-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 46/54] sample: v4l: Stop direct calls to queue num_buffers field
+Date: Tue,  3 Oct 2023 10:06:55 +0200
+Message-Id: <20231003080704.43911-47-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010741_733102_E3ED2646 
-X-CRM114-Status: GOOD (  17.08  )
+X-CRM114-CacheID: sfid-20231003_090751_651282_A04D293C 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,153 +101,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Improve __vb2_queue_free() and __vb2_free_mem() to free
-range of buffers and not only the last few buffers.
-Intoduce starting index to be flexible on range and change the loops
-according to this parameters.
+Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 40 ++++++++-----------
- 1 file changed, 17 insertions(+), 23 deletions(-)
+ samples/v4l/v4l2-pci-skeleton.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index a8db8f51d4ac..4862c75d43ee 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -516,13 +516,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- /*
-  * __vb2_free_mem() - release all video buffer memory for a given queue
-  */
--static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
-+static void __vb2_free_mem(struct vb2_queue *q, unsigned int start, unsigned int count)
+diff --git a/samples/v4l/v4l2-pci-skeleton.c b/samples/v4l/v4l2-pci-skeleton.c
+index a61f94db18d9..a65aa9d1e9da 100644
+--- a/samples/v4l/v4l2-pci-skeleton.c
++++ b/samples/v4l/v4l2-pci-skeleton.c
+@@ -155,6 +155,7 @@ static int queue_setup(struct vb2_queue *vq,
+ 		       unsigned int sizes[], struct device *alloc_devs[])
  {
--	unsigned int buffer = 0;
--	long i = q->max_num_buffers;
-+	unsigned int i;
- 	struct vb2_buffer *vb;
+ 	struct skeleton *skel = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
--	for (i = q->max_num_buffers; i >= 0 && buffer < buffers; i--) {
-+	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
- 		vb = vb2_get_buffer(q, i);
- 		if (!vb)
- 			continue;
-@@ -534,36 +533,32 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
- 			__vb2_buf_dmabuf_put(vb);
- 		else
- 			__vb2_buf_userptr_put(vb);
--		buffer++;
- 	}
- }
- 
- /*
-- * __vb2_queue_free() - free buffers at the end of the queue - video memory and
-+ * __vb2_queue_free() - free count buffers from start index of the queue - video memory and
-  * related information, if no buffers are left return the queue to an
-  * uninitialized state. Might be called even if the queue has already been freed.
-  */
--static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
-+static void __vb2_queue_free(struct vb2_queue *q, unsigned int start, unsigned int count)
- {
--	unsigned int buffer;
--	long i = q->max_num_buffers;
-+	unsigned int i;
- 
- 	lockdep_assert_held(&q->mmap_lock);
- 
- 	/* Call driver-provided cleanup function for each buffer, if provided */
--	for (i = q->max_num_buffers, buffer = 0; i >= 0 && buffer < buffers; i--) {
-+	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
- 		struct vb2_buffer *vb = vb2_get_buffer(q, i);
- 
- 		if (!vb)
- 			continue;
--		if (vb->planes[0].mem_priv) {
-+		if (vb->planes[0].mem_priv)
- 			call_void_vb_qop(vb, buf_cleanup, vb);
--			buffer++;
--		}
+ 	skel->field = skel->format.field;
+ 	if (skel->field == V4L2_FIELD_ALTERNATE) {
+@@ -167,8 +168,8 @@ static int queue_setup(struct vb2_queue *vq,
+ 		skel->field = V4L2_FIELD_TOP;
  	}
  
- 	/* Release video buffer memory */
--	__vb2_free_mem(q, buffers);
-+	__vb2_free_mem(q, start, count);
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 3)
++		*nbuffers = 3 - q_num_bufs;
  
- #ifdef CONFIG_VIDEO_ADV_DEBUG
- 	/*
-@@ -596,8 +591,8 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 		q->cnt_stop_streaming = 0;
- 		q->cnt_unprepare_streaming = 0;
- 	}
--	for (buffer = 0; buffer < q->max_num_buffers; buffer++) {
--		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
-+	for (i = 0; i < q->max_num_buffers; i++) {
-+		struct vb2_buffer *vb = vb2_get_buffer(q, i);
- 		bool unbalanced;
- 
- 		if (!vb)
-@@ -614,7 +609,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 
- 		if (unbalanced) {
- 			pr_info("unbalanced counters for queue %p, buffer %d:\n",
--				q, buffer);
-+				q, i);
- 			if (vb->cnt_buf_init != vb->cnt_buf_cleanup)
- 				pr_info("     buf_init: %u buf_cleanup: %u\n",
- 					vb->cnt_buf_init, vb->cnt_buf_cleanup);
-@@ -648,7 +643,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- #endif
- 
- 	/* Free vb2 buffers */
--	for (i = q->max_num_buffers, buffer = 0; i >= 0 && buffer < buffers; i--) {
-+	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
- 		struct vb2_buffer *vb = vb2_get_buffer(q, i);
- 
- 		if (!vb)
-@@ -656,7 +651,6 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 
- 		vb2_queue_remove_buffer(vb);
- 		kfree(vb);
--		buffer++;
- 	}
- 
- 	if (!vb2_get_num_buffers(q)) {
-@@ -850,7 +844,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		 * queued without ever calling STREAMON.
- 		 */
- 		__vb2_queue_cancel(q);
--		__vb2_queue_free(q, q_num_bufs);
-+		__vb2_queue_free(q, 0, q_num_bufs);
- 		mutex_unlock(&q->mmap_lock);
- 
- 		/*
-@@ -960,7 +954,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		 * from already queued buffers and it will reset q->memory to
- 		 * VB2_MEMORY_UNKNOWN.
- 		 */
--		__vb2_queue_free(q, allocated_buffers);
-+		__vb2_queue_free(q, first_index, allocated_buffers);
- 		mutex_unlock(&q->mmap_lock);
- 		return ret;
- 	}
-@@ -1100,7 +1094,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		 * from already queued buffers and it will reset q->memory to
- 		 * VB2_MEMORY_UNKNOWN.
- 		 */
--		__vb2_queue_free(q, allocated_buffers);
-+		__vb2_queue_free(q, *first_index, allocated_buffers);
- 		mutex_unlock(&q->mmap_lock);
- 		return -ENOMEM;
- 	}
-@@ -2566,7 +2560,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	__vb2_cleanup_fileio(q);
- 	__vb2_queue_cancel(q);
- 	mutex_lock(&q->mmap_lock);
--	__vb2_queue_free(q, q->max_num_buffers);
-+	__vb2_queue_free(q, 0, q->max_num_buffers);
- 	kfree(q->bufs);
- 	q->bufs = NULL;
- 	bitmap_free(q->bufs_bitmap);
+ 	if (*nplanes)
+ 		return sizes[0] < skel->format.sizeimage ? -EINVAL : 0;
 -- 
 2.39.2
 
