@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E7E2E75433
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 08:09:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 505DFE75438
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 08:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qTuPHPU4Io44nAdkQT6nBOAqUL8jchiAXtKAUc5aY3c=; b=H/mgNuJey0JrmQ+sBFEGrrDIeY
-	uzzoh1CzFNSkL4Tljqd7uCk7YiJPOXEjTjcPzQZ8vw+6fHH/v8J9C2Jym0FPN3ZaflhDIE4Ms2lPl
-	SEDkuxR/x4ThDVImahSeITkorTLjwITrQHSN/pMd2Zmt2YN60ea+xkzXBw4sbwxANI1KjexmgfNa4
-	kJvnOqUkJbsefUQ+LqGbBbcXXuklGhSUsUHJj1qwklgrYV4qiO4ZYokD86wN6wraJPbpkuGfeqDig
-	xBPI5owvHRo8JCmG5ZphRoO8a4rX1uYs2vS6eFOLDeO8DAvCV0NB6wNobzhmYM6bYGGZ8w+yyHweo
-	9knA2MSA==;
+	bh=J/AixmhINWwllXoUE6TaGJLLvNPmGkjrDHeZV6N6Jrg=; b=tl1mytP+BWu1EIc3x7jezwDL3O
+	iyB9UwCTfejUxVYA+tKfCyo4T0hrENpsQgz+KVxaXV7U3RZwNmS+j1FvHRSN8SkZLgo6ehc3pJciU
+	yO1+qeZ3CDq8d08fzRSZ1ub2VPlQhrtiOT5XgGhs9O/GVrbjwck5T4xbMupy875+DMl6FKz72u8S3
+	XCdvmrOzQov7+kq6fDGRRyWuhb3KpnpTCAsb7VkXEhImaiD6Vn9IyvOK22A8Z03OHbvaVzTPqFK2Q
+	FTiGGDlb98CZBNoUOvBZBjatZjQCk4phz5+z2XcNIyor6ibiob9uHd/sKuH1+AMsMLfbmehH6wjcW
+	C9eK0UPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaTV-00E644-34;
-	Tue, 03 Oct 2023 08:09:49 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnaTW-00E65G-2Z;
+	Tue, 03 Oct 2023 08:09:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRM-00E3PB-0Z;
+	id 1qnaRN-00E3Q3-05;
 	Tue, 03 Oct 2023 08:07:40 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 476FD660737E;
-	Tue,  3 Oct 2023 09:07:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4A6A4660735A;
+	Tue,  3 Oct 2023 09:07:35 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320454;
-	bh=nwepyznt8z6pxABzkpFHR6clGV59kYVToyX8aj6cN+w=;
+	s=mail; t=1696320455;
+	bh=bradh2DjPo+ZZEdsMUYFEpcwZsisivarvW4Ps2cAzgo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KnnXCWtdllxU0DZMzzl8fzfEhbINPZZ/1/qStYUhK+64H4TVNwrNaNjNIhxLenM4y
-	 T5oTB8rImornc1k7g+Aa7oYLBOKapEiLJ163Tytr9r8P63uQAWm1LnP/EmoMxzdZlB
-	 F20gY/g6bsnpgewMb7z89Xxu/LA9fS6SG/NexwCK4sOHhxBgpoaD9baHBJKYDX6C9E
-	 L9lz0WUCsVxzX9epta9uooCYqnE3g3+Gk8egnveVyePCFj43lIQ25VRgl7s5RMAL4o
-	 oJJNafBHbp1d8v3w4AQ++aa2V/fHHFdLSogLnvOE5Kq8VurHTpa04W7VjzTieIwhRG
-	 HyxISeXk0z+KA==
+	b=G0D2D57CrGK1Vq6Jq3MCmxNDB3FLxQo+v75pWD0P0s3SCtGQUQcxEk9usaKmnDiys
+	 gSF2R3qROSVKa4G3IT6cdmCDuVcqzHumgPwCYUCZDXQ7v6IH4gyoPcJcxtNWZn8rTY
+	 kEB5lY0+on/qdl8+1CvBWeyqYJsAxMbpSPfrit0OSoxgLWqhg2JMgEX4CVLDrb7ZQs
+	 Y1ve9v38b4WmErZeO3BOjZS4TVBKvf2O83U4Cnve8g8CuuhRxXoqFmob4H5+tqtI/K
+	 l7B/Bl+AOo13I56EKpTlbxs3hOLHHilPqu3OryGEEFKLOHQ2hHJdGAFsRv+Vegk9PA
+	 ViiWuDk4JHlPA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 41/54] media: usb: usbtv: Set min_buffers_needed to 2
-Date: Tue,  3 Oct 2023 10:06:50 +0200
-Message-Id: <20231003080704.43911-42-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 43/54] media: imx: Stop direct calls to queue num_buffers field
+Date: Tue,  3 Oct 2023 10:06:52 +0200
+Message-Id: <20231003080704.43911-44-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010736_373634_F8FF2FB0 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20231003_010737_211273_EFC72FC7 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,36 +87,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-vb2 queue_setup checks for a minimum number of buffers so set
-min_buffers_needed to 2 and remove the useless check in
-usbtv_queue_setup().
+Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/usb/usbtv/usbtv-video.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/media/imx/imx-media-capture.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/usb/usbtv/usbtv-video.c b/drivers/media/usb/usbtv/usbtv-video.c
-index 1e30e05953dc..0e9e860be47f 100644
---- a/drivers/media/usb/usbtv/usbtv-video.c
-+++ b/drivers/media/usb/usbtv/usbtv-video.c
-@@ -727,8 +727,6 @@ static int usbtv_queue_setup(struct vb2_queue *vq,
- 	struct usbtv *usbtv = vb2_get_drv_priv(vq);
- 	unsigned size = USBTV_CHUNK * usbtv->n_chunks * 2 * sizeof(u32);
+diff --git a/drivers/staging/media/imx/imx-media-capture.c b/drivers/staging/media/imx/imx-media-capture.c
+index 4846078315ff..ce02199e7b1b 100644
+--- a/drivers/staging/media/imx/imx-media-capture.c
++++ b/drivers/staging/media/imx/imx-media-capture.c
+@@ -605,6 +605,7 @@ static int capture_queue_setup(struct vb2_queue *vq,
+ {
+ 	struct capture_priv *priv = vb2_get_drv_priv(vq);
+ 	struct v4l2_pix_format *pix = &priv->vdev.fmt;
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	unsigned int count = *nbuffers;
  
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
+ 	if (vq->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+@@ -613,14 +614,14 @@ static int capture_queue_setup(struct vb2_queue *vq,
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < pix->sizeimage)
+ 			return -EINVAL;
+-		count += vq->num_buffers;
++		count += q_num_bufs;
+ 	}
+ 
+ 	count = min_t(__u32, VID_MEM_LIMIT / pix->sizeimage, count);
+ 
  	if (*nplanes)
- 		return sizes[0] < size ? -EINVAL : 0;
- 	*nplanes = 1;
-@@ -892,6 +890,7 @@ int usbtv_video_init(struct usbtv *usbtv)
- 	/* videobuf2 structure */
- 	usbtv->vb2q.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
- 	usbtv->vb2q.io_modes = VB2_MMAP | VB2_USERPTR | VB2_READ;
-+	usbtv->vb2q.min_buffers_needed = 2;
- 	usbtv->vb2q.drv_priv = usbtv;
- 	usbtv->vb2q.buf_struct_size = sizeof(struct usbtv_buf);
- 	usbtv->vb2q.ops = &usbtv_vb2_ops;
+-		*nbuffers = (count < vq->num_buffers) ? 0 :
+-			count - vq->num_buffers;
++		*nbuffers = (count < q_num_bufs) ? 0 :
++			count - q_num_bufs;
+ 	else
+ 		*nbuffers = count;
+ 
 -- 
 2.39.2
 
