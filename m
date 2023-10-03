@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21128E75436
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95F1FE75435
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u8zczsYwGqvaKRf+FC+QQEU2D+hBDhW9iNnNE/FqbdI=; b=CSJGr+y8WHDbOJcZHqWaHg9VWF
-	UDgtFCYZedfSkmtoMHWrW8Bec/NCYCLhPQtLd+u7Q9Rxfonf2TI2m1bBq8Z6PftBWcGGBRRsroz3Y
-	kkzZ0NvPRlpymy+7hczg8vY/+DRU7mJbW6K6EOve9g2EbE6nS/FNRvyaPztd3nfk9Sk0u9H1O5cBO
-	HMLk754bGAquUWmDEzkPbcqbDasr2L5SKhFSfQveF6/6Br7uPvUQPNdfi9oTq7SHdtrSjyRTncBf/
-	sjjfm+HYpczLHJurkLYgxUuifN4ZfMwQXZ43cUbDPajeX0susudYM3HqumK/k5p5tbKiQUim2ykI1
-	IB7MKTPg==;
+	bh=BBbmoeOgSzf6cmSDSYo0xxyyvrTQBdluhroEQ4pTGbE=; b=L7qqT2h6KwV4OPGsgqu2hLZMcH
+	lnAf7S1NDflZnguj03nyHtb3F6FFJGQ6lkZuCzSQRe/rJL+sL38zN3ANsaLRYj0rJ+TQXFR1xPtAE
+	3KeEM/WrOXW8jL197Z9XMpPajyWwucUxW8LEEGrxbXlHXQya/RDavVYHCUrDOQEhmFPJ7tJtAeJWn
+	xWpuDvu3poZZCqSgwsroORmOqhGWYDVQCZ1ivwlRXTtqBIWYWwGcp4ysVv7KotUwkLvYpdfuUlTx9
+	spKUiiBLQ2IcoWa1rK0JovGqhsuSvFxCSpt04fFlhYkF0i/u5rIfnlwvo3xoWC7PVstU6mMt/8hvb
+	jtruI/BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaTu-00E6kj-1y;
-	Tue, 03 Oct 2023 08:10:14 +0000
+	id 1qnaTx-00E6qk-1P;
+	Tue, 03 Oct 2023 08:10:17 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRU-00E3aW-0q;
-	Tue, 03 Oct 2023 08:07:44 +0000
+	id 1qnaRZ-00E3fh-18;
+	Tue, 03 Oct 2023 08:07:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=u8zczsYwGqvaKRf+FC+QQEU2D+hBDhW9iNnNE/FqbdI=; b=BGoeKsZwnKOk0GX5JcrE0o/SV0
-	jGkKvghDXw20PNKe98DDzPJD1Ec08vgvr8crGwAnQA7BaGTCKJ1928c++8qcextsAvRIbU3ghUyM7
-	axcrxMy+2UDPZMXHysBnti8bNZ6Dv9/NvArQ6l6kdqtba9FxXQR54oe0lsf0yc4xB27fJ7BoN8I2y
-	Uw+IXtdh+LBZHzvTziDo5dgNUs+EKRjH/UNzsYOVB8XzGin1ilp2XtjD4Tyo5ZojIRPSduY0fj/aI
-	REbM7ZQewJHoWGpN6OFPoy1dOPqTVQ3YsISvKw0ANPe8VgXcn2IPgyHDq9Ot/7x16Rh387w7D6foO
-	niTZRd5g==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	bh=BBbmoeOgSzf6cmSDSYo0xxyyvrTQBdluhroEQ4pTGbE=; b=WiGc+imRSj6iz5hxppauObqInm
+	4w9IsZALDYlaKk6EN9iw0ebTrjzbTfdlkLUDUCSF/AbwTha35jedlMJVq3G0XmRf3KKtURDANMsDt
+	KLcGhCNPVumcfW4TnxVovr+AWFA5Pm67LVFgaxj2s7RVKlxsQyFMBLx+aLQCqsgppOY3hA2rdcEkQ
+	bvC0jWp77qlwx76LWB6I/8HrtRWj4aWu03h5Acrk1pJjlbEUh6fwAG9MuKByKuO1ok44V9PJ1jI0G
+	p/nWDKRRpNdPre7ewEexa5q95whPj0zXgYo+z6+Frj8NleFfRaSIgngQ6xS+6ly6P/nXc8MhaRgSU
+	9rwdM5og==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRK-009jtJ-2V;
-	Tue, 03 Oct 2023 08:07:42 +0000
+	id 1qnaRR-009jxv-0F;
+	Tue, 03 Oct 2023 08:07:48 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 295A36607377;
-	Tue,  3 Oct 2023 09:07:32 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8993B6607392;
+	Tue,  3 Oct 2023 09:07:40 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320452;
-	bh=OKKl92mS0RJ4pRr3nE8UzbQQ6Z5/x2ee+cgMWQr4mBQ=;
+	s=mail; t=1696320460;
+	bh=LkM/7EVzkzeCersLJmzLfirkGugiivs+DlFzZEGNCYQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iUpdLbPIaoG9iv3BMGdIcp+Sp1+HLj9fxMxAT+uH3iJ7e/SvI3LdLC26jgGseGnwB
-	 Cstkv+AYG0x1E2tbdSQl/du5jqDTnxJwpiQVzrFgYza9w9yuAklopEAgAcA8dmX8vL
-	 WkWPLLFiOmBKcSEZgkypoblcXqNJhQYnjCTlt8XNq5y9rbc77y0+c+vur84VQzs30h
-	 yiP4biDjL755rP8tpYCpTZlyojacjW1XastceeVkMfJtC3xXWZwkNgUCuyS6ul7fdL
-	 lTpi2hAELgYO1JSPcAOw/IwyvICdJ3bLCObsFdBqQICb72KfDkecUbrh/k36IaLwqq
-	 LKmN3oPvsRq8w==
+	b=DvNdwH+DCR82uJhgZPIOTq6JPG603jOW5tj5nuVwfOoaaWFPiUtnihdSzrWVX2r6T
+	 BAk8TZeGkCUk5jk4fxywmys9a3u1nVsGtpQVz2jvFw00hhSjP+LlbolJ3iwaXAG1WI
+	 JGlll0f8ORVl8ZilGCdGOeVoQPx7AAF1OhEGWYDqbC4hk226i6ZtlsbgoQfWHyhMwc
+	 99t10F5rOa/J5HV6VrBgKXZ26qshstDcHu8Pfm6aypdtRkMS+UfIMRlgBywLsunExq
+	 5wqBqrVxtKIj+GkkvKjNFA9fcgPvfrfagqNFKi/hkUg9jhxmSZwLzwkAtPXLu88yqI
+	 fXKkPbWteNFMA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,17 +76,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 37/54] media: test-drivers: Stop direct calls to queue num_buffers field
-Date: Tue,  3 Oct 2023 10:06:46 +0200
-Message-Id: <20231003080704.43911-38-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 53/54] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+Date: Tue,  3 Oct 2023 10:07:02 +0200
+Message-Id: <20231003080704.43911-54-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_090736_911622_87981F0D 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20231003_090743_084335_7166490F 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,190 +101,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-If min_buffers_needed is set remove useless checks.
+Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUFS ioctl.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/test-drivers/visl/visl-dec.c         | 4 ++--
- drivers/media/test-drivers/vivid/vivid-meta-cap.c  | 3 ---
- drivers/media/test-drivers/vivid/vivid-meta-out.c  | 5 +++--
- drivers/media/test-drivers/vivid/vivid-touch-cap.c | 5 +++--
- drivers/media/test-drivers/vivid/vivid-vbi-cap.c   | 5 +++--
- drivers/media/test-drivers/vivid/vivid-vbi-out.c   | 5 +++--
- drivers/media/test-drivers/vivid/vivid-vid-cap.c   | 5 +++--
- drivers/media/test-drivers/vivid/vivid-vid-out.c   | 5 +----
- 8 files changed, 18 insertions(+), 19 deletions(-)
+ .../media/platform/verisilicon/hantro_drv.c   |  1 +
+ .../media/platform/verisilicon/hantro_v4l2.c  |  1 +
+ drivers/media/test-drivers/vim2m.c            |  2 ++
+ drivers/media/v4l2-core/v4l2-mem2mem.c        | 20 +++++++++++++++++++
+ include/media/v4l2-mem2mem.h                  | 12 +++++++++++
+ 5 files changed, 36 insertions(+)
 
-diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
-index ba20ea998d19..7aa70da72b97 100644
---- a/drivers/media/test-drivers/visl/visl-dec.c
-+++ b/drivers/media/test-drivers/visl/visl-dec.c
-@@ -287,7 +287,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
- 	frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 7f5b82eb6649..c8fed313c36f 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -248,6 +248,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = &ctx->dev->vpu_mutex;
+ 	dst_vq->dev = ctx->dev->v4l2_dev.dev;
++	src_vq->supports_delete_bufs = true;
  
- 	len = 0;
--	for (i = 0; i < out_q->num_buffers; i++) {
-+	for (i = 0; i < out_q->max_num_buffers; i++) {
- 		char entry[] = "index: %u, state: %s, request_fd: %d, ";
- 		u32 old_len = len;
- 		struct vb2_buffer *vb2;
-@@ -347,7 +347,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
- 	frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
- 
- 	len = 0;
--	for (i = 0; i < cap_q->num_buffers; i++) {
-+	for (i = 0; i < cap_q->max_num_buffers; i++) {
- 		u32 old_len = len;
- 		struct vb2_buffer *vb2;
- 		char *q_status;
-diff --git a/drivers/media/test-drivers/vivid/vivid-meta-cap.c b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
-index 780f96860a6d..0a718d037e59 100644
---- a/drivers/media/test-drivers/vivid/vivid-meta-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
-@@ -30,9 +30,6 @@ static int meta_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 		sizes[0] = size;
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
--
- 	*nplanes = 1;
- 	return 0;
+ 	return vb2_queue_init(dst_vq);
  }
-diff --git a/drivers/media/test-drivers/vivid/vivid-meta-out.c b/drivers/media/test-drivers/vivid/vivid-meta-out.c
-index 95835b52b58f..4a569a6e58be 100644
---- a/drivers/media/test-drivers/vivid/vivid-meta-out.c
-+++ b/drivers/media/test-drivers/vivid/vivid-meta-out.c
-@@ -18,6 +18,7 @@ static int meta_out_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 				struct device *alloc_devs[])
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 27a1e77cca38..0fd1c2fc78c8 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -756,6 +756,7 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
+ 	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
+ 	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
++	.vidioc_delete_bufs = v4l2_m2m_ioctl_delete_bufs,
+ 	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
+ 
+ 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
+diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
+index 3e3b424b4860..17213ce42059 100644
+--- a/drivers/media/test-drivers/vim2m.c
++++ b/drivers/media/test-drivers/vim2m.c
+@@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
+ 	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
+ 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
++	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
+ 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
+ 
+ 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+@@ -1133,6 +1134,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->mem_ops = &vb2_vmalloc_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = &ctx->vb_mutex;
++	dst_vq->supports_delete_bufs = true;
+ 
+ 	return vb2_queue_init(dst_vq);
+ }
+diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+index 0cc30397fbad..d1d59943680f 100644
+--- a/drivers/media/v4l2-core/v4l2-mem2mem.c
++++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ }
+ EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
+ 
++int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
++			 struct v4l2_delete_buffers *d)
++{
++	struct vb2_queue *vq;
++
++	vq = v4l2_m2m_get_vq(m2m_ctx, d->type);
++
++	return vb2_delete_bufs(vq, d);
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_delete_bufs);
++
+ int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ 			 struct v4l2_create_buffers *create)
  {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	unsigned int size =  sizeof(struct vivid_meta_out_buf);
+@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
+ }
+ EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
  
- 	if (!vivid_is_webcam(dev))
-@@ -30,8 +31,8 @@ static int meta_out_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 		sizes[0] = size;
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-touch-cap.c b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
-index c7f6e23df51e..4b3c6ea0afde 100644
---- a/drivers/media/test-drivers/vivid/vivid-touch-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
-@@ -13,6 +13,7 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 				 struct device *alloc_devs[])
++int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
++			       struct v4l2_delete_buffers *d)
++{
++	struct v4l2_fh *fh = file->private_data;
++
++	return v4l2_m2m_delete_bufs(file, fh->m2m_ctx, d);
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_bufs);
++
+ int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
+ 				struct v4l2_buffer *buf)
  {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	struct v4l2_pix_format *f = &dev->tch_format;
- 	unsigned int size = f->sizeimage;
+diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
+index d6c8eb2b5201..161f85c42dc8 100644
+--- a/include/media/v4l2-mem2mem.h
++++ b/include/media/v4l2-mem2mem.h
+@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ 			 struct v4l2_buffer *buf);
  
-@@ -23,8 +24,8 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 		sizes[0] = size;
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
-index b65b02eeeb97..fcd7f40385e9 100644
---- a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
-@@ -124,6 +124,7 @@ static int vbi_cap_queue_setup(struct vb2_queue *vq,
- 		       unsigned sizes[], struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	bool is_60hz = dev->std_cap[dev->input] & V4L2_STD_525_60;
- 	unsigned size = vq->type == V4L2_BUF_TYPE_SLICED_VBI_CAPTURE ?
- 		36 * sizeof(struct v4l2_sliced_vbi_data) :
-@@ -134,8 +135,8 @@ static int vbi_cap_queue_setup(struct vb2_queue *vq,
- 
- 	sizes[0] = size;
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-out.c b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
-index cd56476902a2..8f0da5d88bcc 100644
---- a/drivers/media/test-drivers/vivid/vivid-vbi-out.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
-@@ -20,6 +20,7 @@ static int vbi_out_queue_setup(struct vb2_queue *vq,
- 		       unsigned sizes[], struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	bool is_60hz = dev->std_out & V4L2_STD_525_60;
- 	unsigned size = vq->type == V4L2_BUF_TYPE_SLICED_VBI_OUTPUT ?
- 		36 * sizeof(struct v4l2_sliced_vbi_data) :
-@@ -30,8 +31,8 @@ static int vbi_out_queue_setup(struct vb2_queue *vq,
- 
- 	sizes[0] = size;
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-vid-cap.c b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-index 3a06df35a2d7..0cc7602b9fb2 100644
---- a/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-@@ -77,6 +77,7 @@ static int vid_cap_queue_setup(struct vb2_queue *vq,
- 		       unsigned sizes[], struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	unsigned buffers = tpg_g_buffers(&dev->tpg);
- 	unsigned h = dev->fmt_cap_rect.height;
- 	unsigned p;
-@@ -117,8 +118,8 @@ static int vid_cap_queue_setup(struct vb2_queue *vq,
- 					dev->fmt_cap->data_offset[p];
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = buffers;
- 
-diff --git a/drivers/media/test-drivers/vivid/vivid-vid-out.c b/drivers/media/test-drivers/vivid/vivid-vid-out.c
-index 184a6df2c29f..24c6dc896255 100644
---- a/drivers/media/test-drivers/vivid/vivid-vid-out.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vid-out.c
-@@ -73,12 +73,9 @@ static int vid_out_queue_setup(struct vb2_queue *vq,
- 				       vfmt->data_offset[p] : size;
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
--
- 	*nplanes = planes;
- 
--	dprintk(dev, 1, "%s: count=%d\n", __func__, *nbuffers);
-+	dprintk(dev, 1, "%s: count=%u\n", __func__, vb2_get_num_buffers(vq));
- 	for (p = 0; p < planes; p++)
- 		dprintk(dev, 1, "%s: size[%u]=%u\n", __func__, p, sizes[p]);
- 	return 0;
++/**
++ * v4l2_m2m_delete_bufs() - delete buffers from the queue
++ *
++ * @file: pointer to struct &file
++ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
++ * @d: pointer to struct &v4l2_delete_buffers
++ */
++int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
++			 struct v4l2_delete_buffers *d);
++
+ /**
+  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
+  * on the type
+@@ -860,6 +870,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
+ 				struct v4l2_requestbuffers *rb);
+ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
+ 				struct v4l2_create_buffers *create);
++int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
++			       struct v4l2_delete_buffers *d);
+ int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
+ 				struct v4l2_buffer *buf);
+ int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
 -- 
 2.39.2
 
