@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8FBCE7544F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 11:38:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22F61E75452
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 12:18:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FlXd1Wwz/cZ0P/WakVCzv7KCBbzPT2AZWQsdgT7N9cI=; b=FYmI3t3AJS1ZjRD9bOTQYNhBB5
-	ypiDExQM7eRULkyqMgSutEivjbeq2hGeqYC7EZgp+vq/THghzw8+fV2mhEhqgWqTKDMQAI1FscgvC
-	fZT5jEbW84E8DfTsfypqHGyxKtplX7cIKg+CIVYaFFKr0i2Eow/Jr+D3atyZM4bvffVm+M0O5U1oE
-	fiJUItWxg/7bRIZhytsOackh3jTFWsWD4WO+o60Bl8gOvRRhUgwFH9YFz2vuyiD3L79n47sDbYsRq
-	PIcExtVlSgBoYpStRRweYf/6ZaHKsXL+qXEIO/r3KCp9oMtmoSin0esatb/GEFdEL8IFWDrHPC/zQ
-	Fp1u9SjA==;
+	bh=21uw+jxeSVaVlpocj2e/jwO1g6eCYmd6Vp0tORjr63Q=; b=h93To8l8ZVRE5wMVfk6NlCpavO
+	GZVYNCwcdarFpmZLqbkKnlAMd8Zmh3d3pbL4M+oMTruuNlMNuT2spFzEfc1R5HgHYvLmXc2Xee48f
+	04yF+6lpqqC8e8B9qXCTDwwJh+UteR0wlMb7haZmBYDoTyF05zpV6dJuyDqeriwj+bIGNvbtaRZoA
+	4FEFr71kVFd786KFsD8hKbf1UGBwZkhdnIqzZIVwcTgxDJ8q1LWQ9lQC/hf+DHKIKSFZgploZtjjy
+	iiwafkHz3KbCkr6+Dvq+MVgi93kXqmW+KZVbYSkM0llyG9sy9x3jqxHmeM6hbTY/dJYHbUpEpcKkC
+	9LYKlr+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qndj2-00EYBV-2Q;
-	Tue, 03 Oct 2023 11:38:04 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qneM5-00EbUp-2X;
+	Tue, 03 Oct 2023 12:18:25 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qndiy-00EYAc-2N;
-	Tue, 03 Oct 2023 11:38:02 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4E7316607313;
-	Tue,  3 Oct 2023 12:37:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696333079;
-	bh=CBp8+gNkRzBEFZU964Z4m7S1kl7820hZYja9Nis+J5c=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iV63/FouGYa1jsTZp6muZhX+6NhaklXSntSFMFCy/BeuPBWvJRtEy5MGFkKknJbRp
-	 5j/w4UtJ1yRneKZZqYtFqT8gjfdOr1EpSAaioLQZhjhfiz5LExJu4L6519eUojSLgq
-	 nNyrJAhVBozE1kOoMPuhhH2MVz3c3TiancKmYTSPv/htADbAEl/oKHtcnwvzR6OyZu
-	 045V3oOcP5T6zykG4hDpe7cP2+R4wEnUi/oXZ4VWviQPxls6tpp8CUc6XlWYIkBPAG
-	 btPp3OvnrhSCpdlx0GLEzI6FuDALfTm0ZsubS6v7xJVaKGqF1hZV1ZMn1vPWCx6GZE
-	 KSltA2GZpcZFA==
-Message-ID: <51a5e6e7-c583-2ecf-3928-24b2fc07aedb@collabora.com>
-Date: Tue, 3 Oct 2023 13:37:55 +0200
+	id 1qneM0-00EbTM-2V;
+	Tue, 03 Oct 2023 12:18:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 9AC53B81A3C;
+	Tue,  3 Oct 2023 12:18:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B8DCC433C7;
+	Tue,  3 Oct 2023 12:18:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696335496;
+	bh=Tk+5BElhw0VeC3CF5j+uL3ic7k6gB1Cu7d+eticsVEs=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=db/atGkE18xakAECbQv0Zu+0Xr/j9j/OZ0SV8aMRAWWVFoefJY6lheoceS32py1u6
+	 GYKc2FVjfIFM0iPdw22ZiPSRLw2KCoFAE70CZhSg36f/sYwhrwfzTsLV8LxSq16RmR
+	 UoRyQvYQ+IroMbY8SvyA1kY1qD5YXbRRsPSnAfhdl6gRy3rOH+vhVMGpP7BQp/P7m8
+	 aVwcpllCZ4aL5TEo/y6ZclM/fzPIuUeeVD4jJOB/PlOiWdlpvfkFYQJa1y1as0E0x/
+	 UGfhkonQaT3LdHldDwS+AdAFrss9Buba6UxHIEmpSPKBj4JxM6B72DRtbzkET8EHs1
+	 g/LaWzPn8ejTQ==
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Lee Jones <lee@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20230928085537.3246669-1-wenst@chromium.org>
+References: <20230928085537.3246669-1-wenst@chromium.org>
+Subject: Re: (subset) [PATCH v4 00/12] regulator: mt6366: Split out of
+ MT6358 and cleanup
+Message-Id: <169633549178.30169.17284129467278150573.b4-ty@kernel.org>
+Date: Tue, 03 Oct 2023 13:18:11 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH 0/5] MediaTek: Update MAINTAINERS and dts fixes for v6.7
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Fabien Parent <fparent@baylibre.com>,
- Miles Chen <miles.chen@mediatek.com>, Macpaul Lin
- <macpaul.lin@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Sam Shih <sam.shih@mediatek.com>, Frank Wunderlich
- <frank-w@public-files.de>, Jieyy Yang <jieyy.yang@mediatek.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>,
- Seiya Wang <seiya.wang@mediatek.com>, soc@kernel.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- stable@vger.kernel.org, Eugen Hristev <eugen.hristev@collabora.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-References: <20231003-mediatek-fixes-v6-7-v1-0-dad7cd62a8ff@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231003-mediatek-fixes-v6-7-v1-0-dad7cd62a8ff@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-0438c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_043800_910383_444F4276 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20231003_051821_128800_5C737CB7 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,59 +78,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/10/23 13:13, AngeloGioacchino Del Regno ha scritto:
-> Hello SoC maintainers,
->      
-> As suggested by Arnd in [1], I am sending an update to the MAINTAINERS
-> file, adding myself to the MediaTek SoC maintainers, and some urgent
-> bugfixes for MediaTek devicetrees.
->      
+On Thu, 28 Sep 2023 16:55:23 +0800, Chen-Yu Tsai wrote:
+> This is v4 of my MT6366 PMIC split-out-of-MT6358 cleanup series. The two
+> PMICs are mostly identical, except for the regulator bits. The MT6366 is
+> missing the VCAM* (camera related) LDOs, but in their place has a few
+> other ones. This thus requires a separate compatible to handle the
+> binding differences. The hardware however does have a chip ID register
+> that can be used to differentiate the variants within the driver. Thus
+> a fallback compatible to the base (MT6358) model is included.
+> 
+> [...]
 
-Forgot to add....
+Applied to
 
-[1]: https://lore.kernel.org/all/84b2de54-8337-42a3-a25c-a95cf2f3349f@app.fastmail.com/
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
-...so doing that as a reply to this cover letter; sorry for the miss.
+Thanks!
 
-Cheers!
+[02/12] regulator: dt-bindings: mt6358: Convert to DT schema
+        commit: 93880f7e5c8c864309a57c47669ac0bc432524d5
+[03/12] regulator: dt-bindings: mt6358: Add regulator-allowed-modes property
+        commit: 0bf4b56b5ecaf711865f313476f91c18338307bb
+[04/12] regulator: dt-bindings: mt6358: Add regulator supplies
+        commit: 2f384e60acbac140732367d037c5f08db21513a0
+[05/12] regulator: dt-bindings: mt6358: Add MT6366 PMIC
+        commit: c631494a69c55301a03af9c028892c9098019652
+[06/12] regulator: mt6358: Use mt6397-regulator.h binding header for buck mode macros
+        commit: 9f3bec54d06f1eb4b47c7f78ef1401bc71977e9e
+[07/12] regulator: mt6358: Add supply names for MT6358 regulators
+        commit: 3dfa8a7071d4e748d5a59566f9a96e381a9fccb2
+[08/12] regulator: mt6358: fix and drop type prefix in MT6366 regulator node names
+        commit: 0c3697b8980dd44df05ed77222c09bd8fe729626
+[09/12] regulator: mt6358: Make MT6366 vcn18 LDO configurable
+        commit: b7f3b89848b3bae3b1e3a97e75b82c65a4952cfc
+[10/12] regulator: mt6358: Add missing regulators for MT6366
+        commit: b7768e67af9a5b6d6101cbfc146969fedf8df4be
+[11/12] regulator: mt6358: Add supply names for MT6366 regulators
+        commit: ce8ab92e66ccc99591b9cbb6630d720d5e6ad6ec
 
-> mt6358 PMIC
->   - Bogus property dropped
->      
-> mt7622/mt7986a
->   - Fix dtbs_check for t-phy nodes
->      
-> mt8195:
->   - Fix early boot failure when DSU PMU enabled
->   - Fix memory layout for demo board
->      
-> Regards,
-> Angelo
-> 
-> ---
-> AngeloGioacchino Del Regno (1):
->        MAINTAINERS: Add Angelo as MediaTek SoC co-maintainer
-> 
-> Eugen Hristev (1):
->        arm64: dts: mediatek: fix t-phy unit name
-> 
-> Macpaul Lin (2):
->        arm64: dts: mediatek: mt8195-demo: fix the memory size to 8GB
->        arm64: dts: mediatek: mt8195-demo: update and reorder reserved memory regions
-> 
-> Nícolas F. R. A. Prado (1):
->        arm64: dts: mediatek: mt8195: Set DSU PMU status to fail
-> 
->   MAINTAINERS                                  |  2 +-
->   arch/arm64/boot/dts/mediatek/mt7622.dtsi     |  2 +-
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    |  2 +-
->   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 39 ++++++++++++++++++++++------
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi     |  1 +
->   5 files changed, 35 insertions(+), 11 deletions(-)
-> ---
-> base-commit: 0bb80ecc33a8fb5a682236443c1e740d5c917d1d
-> change-id: 20231003-mediatek-fixes-v6-7-341b5cfdc07a
-> 
-> Best regards,
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
