@@ -4,179 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C984E776F4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 03:34:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40798E75423
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 05:04:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LmLkHd+dFWPBf2oVsktVlvtoDaeeW1s56Uyvi6mBVqg=; b=1AVzbS8RZvA2VSe5aftzfasovH
-	rBkOqcTdIyRiwbLHArnmmWHv0h8wt6SSJM700Xx8j6sqVPT0iPUPcHvLpqB8UKw+rbk6qF9b/NNRd
-	i7Fc5lxjzn3oOD/36sdd3vstS0299jvpB0907PjBLWMBifprIPCFnGirH7/XSeLKMzSw3yDDj7a6D
-	0JPKt75qZM4V94nEvgCw7CCfAGYv0OvvKyG6yZAG8Ru30jh4QasFFWYb9FEZkNCaFU5LbDGaalngD
-	ERCYW1tBQDY1IBkha4F5f/RlpIZWNSlFtWXnOMXEppy+++M3Ce1nqmq3JoWMLjteFtewbPiHclXPP
-	zNy/mYMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/VJfK7QTCboY1n5TddMHgU1jpzpDXxYp7al9ZHl+4Q8=; b=VTi3gHIZdbwI45v0N4rSmjPyim
+	+vjKs5OpKgS2FpgntD9sLwL8JRLrQx9CVDhkRWifyTVlPDCYIVVgeIZj96Io12W75E8ON5FnHbKFe
+	5SlMHNzCjs6UKsAN5cNJ4S+tAzuTcaZxDTOsF07dycHic3sunmtW5zG+ZCnS1n1D+oEVK5mUtrmUh
+	ExFEN6ghRjqGT1xrjbOSIrdP7/jk80y3wlD4qAUHKRwPKsSMnc4TjOaeoO2JENZ7HE8Mf/sY25uZK
+	Zlq9T/7vNjtqvNoSaaXrg+5VBnWbCZRJzoT6wdkPMATgz1E68MxvGmLkjeD7MBETFbkkpjYFHGJOB
+	ZoF6XlZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnWB2-00DjCU-04;
-	Tue, 03 Oct 2023 03:34:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qnXaA-00Dq4n-38;
+	Tue, 03 Oct 2023 05:04:30 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnWAw-00DjAK-10;
-	Tue, 03 Oct 2023 03:34:26 +0000
-X-UUID: ba09b5c4619d11ee86758d4a7c00f3a0-20231002
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=LmLkHd+dFWPBf2oVsktVlvtoDaeeW1s56Uyvi6mBVqg=;
-	b=ZRumVga64jQ2G0rXOPkm312DHYx/D+jBAVAOnkLq3R1CNE0dw18WgRnG3rCnd0Z5fFuL7b1bkjNnCqc2nTdqxdN3luCfW0HT6seaR1jS7mcRD6jrih4I9YZeBfdxmbuN4fser5o4AirwT5EIqmm/X5kBBWg9mu1P+dklbP9ifOU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:9e16ba77-e5b5-4968-987d-7b9c4a5c2116,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:f12eb5c3-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: ba09b5c4619d11ee86758d4a7c00f3a0-20231002
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1256572885; Mon, 02 Oct 2023 20:34:15 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 3 Oct 2023 11:34:12 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 3 Oct 2023 11:34:12 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mlIKAhJxkYFaSp2tSzbw377m/WY0XmJSheIZZRkqX4z7DAjt04BV5WLih1YwVN8XAtb82y7BhFHXp/65DoY8wdddIrCX2eDqRKhLhxVZIfvnse0q8nZrzQxXVkFnplFQ1hFpuFi7vak1ZblMzTr39iy0zi0uFNi2MpiVuGqyF6fWjYJt0Tal8lskKDLkgfLtj43p7BMT6b4rHtyZgOQ6NG41wRO6zVg7GBMU1TkobRQEgAjLQB6ffFVwyF+eH6kffhaNeP7JlZadYweM2D/vv1CUWWpUfPiqFV5PVx8Xj/r1/6LgFc1GaEcqx1hGZ7p+OM4URLBegyaSmQaBScSo5w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=LmLkHd+dFWPBf2oVsktVlvtoDaeeW1s56Uyvi6mBVqg=;
- b=FsBgFuM2sRldOYVQYU5LUc+tvXLLhq4dglviGR3cVw3csh6gylzSlZd+2SC83XRrvQ6gYgOVdGI4FmmpDfSql6gImI54dFVH/2CxoraBlC5tv1FMxySmz5xZJ3zBvIeDUfFPbt0WTli6TeT4tsqQt8bG5JpIz5/OlapYBuCxdDrkxigQklMIt8WCpC2c/iuijeP+PU2HaVOv0egrpnRi3EAFOzmRmMGp8pfsOROkPclWY5MN158z/mJrv9LyZ1fRIB7cctWuLakGQfpaO9sq8OFZ3lfcKFwJiVPXjshBBs/H7BNb3mTz27iYX6KRHWp8lzq7dcrR0G1BB1mFipQJrA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1qnXa3-00Dq18-1a;
+	Tue, 03 Oct 2023 05:04:26 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-9b2cee40de8so95757166b.1;
+        Mon, 02 Oct 2023 22:04:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=LmLkHd+dFWPBf2oVsktVlvtoDaeeW1s56Uyvi6mBVqg=;
- b=INJyRnWCgZiqz9NPfwQ7+O8vYg6jxiMFm+wkHi3SpkG0kkYEj9uT4H/WvHObGBUAAdbqLR3/AxGOU5Xdm9Y2z1MdKhIe1qfmiW0Z7H+/lzeiH3yhsLwVLdSTye8MuJRBhqO+6XMy4UDHsjODxe51blmro8apOZOswzQ2ptfzZKM=
-Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
- by SI2PR03MB6081.apcprd03.prod.outlook.com (2603:1096:4:14b::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6813.28; Tue, 3 Oct
- 2023 03:34:10 +0000
-Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
- ([fe80::ceab:94f0:6e70:b85e]) by SEYPR03MB7682.apcprd03.prod.outlook.com
- ([fe80::ceab:94f0:6e70:b85e%5]) with mapi id 15.20.6838.024; Tue, 3 Oct 2023
- 03:34:10 +0000
-From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-To: "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>
-CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
-	=?utf-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
-	=?utf-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
-	<Jason-ch.Chen@mediatek.com>, =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
-	<Shawn.Sung@mediatek.com>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
-	<Nancy.Lin@mediatek.com>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	=?utf-8?B?TmF0aGFuIEx1ICjlkYLmnbHpnJYp?= <Nathan.Lu@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>
-Subject: Re: [PATCH v10 5/9] drm/mediatek: Add connector dynamic selection
- capability
-Thread-Topic: [PATCH v10 5/9] drm/mediatek: Add connector dynamic selection
- capability
-Thread-Index: AQHZ8VjJVfyYkTFEQ0W4IzryNLbmKrAwAogAgAYbAYCAADTAgIABH/WA
-Date: Tue, 3 Oct 2023 03:34:10 +0000
-Message-ID: <7855953c52961f3d1d9992f0b4303eadee3fe724.camel@mediatek.com>
-References: <20230927153833.23583-1-jason-jh.lin@mediatek.com>
-	 <20230927153833.23583-6-jason-jh.lin@mediatek.com>
-	 <891fe60a-cee9-29ab-3214-848b1161a0a7@collabora.com>
-	 <1780d283425dea81e894fc75eeb893ab7a1faff2.camel@mediatek.com>
-	 <4303dcfd-4dc1-18da-8884-1cb9b0bfa0a9@collabora.com>
-In-Reply-To: <4303dcfd-4dc1-18da-8884-1cb9b0bfa0a9@collabora.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|SI2PR03MB6081:EE_
-x-ms-office365-filtering-correlation-id: de29d80e-e3a7-4c80-6622-08dbc3c19b45
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: LfkIL4TPZhSehL+gACN62N5cm+VumP+cBkgJK0i2Uspl+SDGiXJKR5e+v9v6avF85Zya5ckiRz/iURnP94x8YquDkB8Z+TxGbrZLhlUgRW1s+Uzi9qrRbEVEeQ4cE5KaWPxRdFjG9uq++XJuTUZ4HuhSChMafD3BZl9fmS5pMSJBuX8vRykmH92BY8BWXKJVY2yQPy+TsPGz+DqI1kCklS11y0tMBf9ghC2ZzqkHzc7dT7EhBda+X/sYJGq++NOpQ95I7XyvhHYqTi4AxivndQ+z+Y6eRrldQGoa35SX/nCjtgvnq0dojmPnpe3/8wHSD8uSjLeeQeHvt5vpxShT12gkXPOO9pcwLe+OCzv4RaCwR8BQ0DaH19W3uB2RGsLiFMkW92Y6qsfUb/uCu0BfoTXqsWKHNbrFCBMya/A7N2OC8lZ1unO14aejBX6a/c2pN8AbmQoOGwBMZGpkoONooQnSd8G4ouWa6uZwpwGqACxU2uX6IBYObMcZ4+/ZJp3toiyeBrXcoCO4ypNOIxgDagYVJ6hS4kQX++TSPEeeGwSHzpp9LXmBSzwOAVjIxCJ27NHJ9QLFPapbt5QRVHZnk7xpxbrBJ46AXL6Qb7ZN30uC+xYaFm9+lVPwTvccDQex6kLCpEUNC593ocLVGFeVSiLxVNP1l+D9AJUes72xJZY=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(396003)(136003)(376002)(39860400002)(346002)(366004)(230922051799003)(451199024)(64100799003)(1800799009)(186009)(86362001)(4744005)(2906002)(8676002)(8936002)(4326008)(316002)(36756003)(85182001)(76116006)(54906003)(64756008)(66946007)(66556008)(91956017)(110136005)(41300700001)(66476007)(66446008)(478600001)(5660300002)(26005)(71200400001)(38070700005)(38100700002)(2616005)(6486002)(6506007)(122000001)(6512007);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?akRJZGdFRmpSSnQrc090c2ExOUhBWWRWRGF2ZEJsb2YyZWN0dnZYVnZ1cmNT?=
- =?utf-8?B?ZkdBWnJPZS8zWERRYjRoUEhkWk9HYXhCTVF3Mnhya1pzTi9qVnBtV08zeXE0?=
- =?utf-8?B?WFozM2pCa3NsZTU4ZnBvYlRTMEV4cUlSc2JuUHJiUzFFQUN0Q0hvOU1Mdmto?=
- =?utf-8?B?Q0xyVGc0NXNvbDdyamF3b0N1RU8zK1NGdVcwdnFkZHJockdkWXF0a3I4SGZC?=
- =?utf-8?B?VjVQRHhISG01WDBtbTlUbW9Gd3c5VmNPdzQxL2xhczBtbEhlL3hqSEhsU09J?=
- =?utf-8?B?MDdJTGxDeU1VMnZ2YkZoZWp0dXdROHdERW1zQjdOZmxtN3JpRm9SRE5saUMz?=
- =?utf-8?B?RUhGaDBPQWM5c2Z2cEo0SGZHMUpONlJhQzZITkNZeVpNQmlRVnRWc3kyR0hG?=
- =?utf-8?B?THphMGhwSjRYMVhINFFwTStYZnM5dTBSY3pZM0U2ZlpnbjJlbmJTdlZVMnRP?=
- =?utf-8?B?b0JIcTZ6N2NJdlB1MFBoSi94TjYrSjIwSUdRR2tYTG5mNTE1K05MTGJBdjNF?=
- =?utf-8?B?MFExMkozQ08yZXlTNEJSTmhYanI5Y0lDOW1oY2l2VENwbjdHdkZqQVhNSmlS?=
- =?utf-8?B?eUtJdDh2Y0QzZ1V5U1RGQU45S24xZmxGNzFsam1ySVNvL3dnRGw3TDRuZXM2?=
- =?utf-8?B?eE8xN0x4OUU3WEpxSDlkMHBSeGVTak9UZlBFSXRnU1hqV0tucDJWNTdIbjc5?=
- =?utf-8?B?ZjF3WWtPTER6cFN4QkU0RkdRYnF6UElpaDdXQldveFZBbGhhRWN3N21oNnlh?=
- =?utf-8?B?clFJa3hJd0gzK0hvNUZxRitxemZPZHVvUXVtV29YUEhKWU9JNUVldEJ4SjZi?=
- =?utf-8?B?T3FnOFlwNWkvd3E3a3drMEU4c3FUZjN5b0lUZVVjMDlLQlE4STVPVzU3SFJ1?=
- =?utf-8?B?WG1Cb016TXJsYUxBclFKSkR2L3BXNFFucGdUR2NpcEc0emdLcnRZMFladUhM?=
- =?utf-8?B?bUhMYlpEelhzcGVpenA4WHowU045N2xOa253OWswcmJTNkJ0eFFaTHRIVEp0?=
- =?utf-8?B?VVAxVUtWRE5LS2F0NXp2NkdTTmpjd3N1Sjcyb1dlQ2IvWXhENGdscnNDWmNv?=
- =?utf-8?B?RnQ3dk5vY21BRDBKRHExenc3Q2tyR1Y4eWgydDZUS2xybjN0MmJiOU1iMC9t?=
- =?utf-8?B?bUZtN09iUERLQU9VV1VZTk91QmxxVHc5d2N1SHNXM2N4NEw4N2REcU5HOUhj?=
- =?utf-8?B?MFhTT1JYRlRKNGNoeXVYTDd3eUc0VmZENm0wTmI3OXZoK1o1MHBGTVFZR1lq?=
- =?utf-8?B?cVR0TDZSamlRa2M0TU0xUmt2Q3c3Z3VsMkVkYXRXWmRhQ0h4Yitja0tzN3Bs?=
- =?utf-8?B?ZWJOMU5QRkJWQlczNWh4RHNka1Q3c25CQ0pqMXppQS9LMzZlZmtqTVFmYzVk?=
- =?utf-8?B?R0tPWDJ6NGsySzlRRjVpdFdRR2F3ZlN2OUV3T2RnUnVFUEMzY3crWlUzbFlp?=
- =?utf-8?B?bkFvdmthcGwzZ2luemVqNlNNTlNRK0VwNXloU0NDSW9YYUxRdkJlYmR3VVBS?=
- =?utf-8?B?Ym1tVkJsR0FoejIrOWpIWHN5aWwzS2N0TVhuMWR2UC9qZEtxblcyY1F3RC9s?=
- =?utf-8?B?bVRjaVlDa2RhZS81R1E0Um0vK2hBNUFMeTh5WVkrSzRac05GRFlKSE5wa3pj?=
- =?utf-8?B?R1hEVTlFRGtwTHlJUThLVGt3T2ozeStKT2paVFRJeXB2Y2pFenB3bmp5b0x0?=
- =?utf-8?B?Z2VmNFowbVQvdmJoMXEra0R1SGlWbTJ1TTdWN20yV3RteWlzdkdlRmxwMTAv?=
- =?utf-8?B?NzVwbndVVWxxZU9tRlEyVStRbndBSS9MNStXemtjUklKN2F4bERkWUNyTDlx?=
- =?utf-8?B?b2ZLd3ZPQlVkc0pLcXNGaVdWR0VkQVZqTzc3QnNWTExjMHdzeWRFT3FiNmU0?=
- =?utf-8?B?R0NjcFVCNDl6MWtJQ3BvZXRnMjI3aUkrYUdZRUR2cnR0RFFoeXBROWFuNUhk?=
- =?utf-8?B?UXlUZWhHTmUwc2IwZDhHS3Fvc2RRbEtlK3ptNUc2K0Z1NHhrMkc1MWpOaW52?=
- =?utf-8?B?SFpMTjJ2MWpSZjJRNE5wM1FXanJORElhRUp0VnM2aTAvdUZ4MkJoZWxCUDZs?=
- =?utf-8?B?ZEpIOEtlaUFhNk5WeTEwcU5CWGFMNHdCVzJMZkFnSWR4UHAxcWVWZ2NZN1lu?=
- =?utf-8?B?NVJCVFlnQUxpVTRLcmNNUzFxb3d6WWFLeXVUeUtScEVFcUZYb1ZKOWc5WGEx?=
- =?utf-8?B?M1E9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <C2A7AE3037C9B34CAAAEA1EACAA17072@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20230601; t=1696309460; x=1696914260; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=/VJfK7QTCboY1n5TddMHgU1jpzpDXxYp7al9ZHl+4Q8=;
+        b=VVg2PnFzil3t4AKXVFZYy5mi9aMRftO2+r93D4RULHPZwC3QPSRalPqnfP4JkH3Tb0
+         FSb7WF2pV5IX3pEfFJo02Jy0LWeyU9D/7p9CkZZWYfiYt6b0a2sP9mqAppssgQyLwakC
+         xgHJSUokvpC2pYsnVScC7mslcRHXuOBpoJg7j517c6NRQqqcd61Ce+rv6saysQiPE/Lw
+         jR7oj2EeGBEkeDKcDGreTkOgadOyTh3EmHnDkPMCqA/gDkwcQI+saeVJ/fe8bH31CNqp
+         A8lzKibIIR8LUVkBF92y5k5bTPGO4pcc622PTRMGjc79NHahlOX48fYejhKs87CLe2jX
+         J3FA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696309460; x=1696914260;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/VJfK7QTCboY1n5TddMHgU1jpzpDXxYp7al9ZHl+4Q8=;
+        b=Yatnfu5/z9O0bzhnKTWuz7LoFOd4cROavqC+T1kkz/hdXqN9IgGdv/sd6cJ9MZtiwR
+         +Ab9nuPMOTSN7VF3tRhxdsQhxh+L2TSdqqGQKBRwcuaxvowtwwuWDPZEAzQU+9kKGtsQ
+         HxLeB/LrsPikHN7u0MSLSd3vfqP5dZuAczsrHhz4DGo4eQ0PYSnwPEcWbRYsJOfdH9a4
+         3IvhFwsUzAmJIpjTLFzyEIxqPYTdVeaO+wgzRkSB1SVHGwLRq0f9Na45h5UaeOmI5x0k
+         tbmqDT1cra5oYaxTVoMooBbdwbRAHRw8fvZ41Q+dNIXpc1Fv6IB1/wUHKNWBwGK8leuj
+         DjOw==
+X-Gm-Message-State: AOJu0YxmiSFb/ygPNLqblMrlCIQ5kr6Zyt6q7A94zM6q/TBaN6q3hxCc
+	ySnt7xmrB+SrhRwgI+3K/rA=
+X-Google-Smtp-Source: AGHT+IGXtUK1wBIoK3P5LU3I9KqYNPlB/8WvR6qWFyVSqXt1GdxSzxXhYmIiFhUuyMm1g1rw5KIONQ==
+X-Received: by 2002:a17:906:cd2:b0:9a1:ca55:d0cb with SMTP id l18-20020a1709060cd200b009a1ca55d0cbmr1274444ejh.23.1696309459585;
+        Mon, 02 Oct 2023 22:04:19 -0700 (PDT)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id gg24-20020a170906e29800b0099bd7b26639sm384497ejb.6.2023.10.02.22.04.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Oct 2023 22:04:19 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Hector Martin <marcan@marcan.st>,
+	Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Vincent Shih <vincent.sunplus@gmail.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Anson Huang <Anson.Huang@nxp.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Lala Lin <lala.lin@mediatek.com>,
+	Komal Bajaj <quic_kbajaj@quicinc.com>,
+	Kumar Thella <sthella@codeaurora.org>,
+	Keiji Hayashibara <hayashibara.keiji@socionext.com>,
+	linux-mtd@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	asahi@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-rtc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH] dt-bindings: nvmem: move deprecated cells binding to its own file
+Date: Tue,  3 Oct 2023 07:03:55 +0200
+Message-Id: <20231003050355.1631-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: de29d80e-e3a7-4c80-6622-08dbc3c19b45
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Oct 2023 03:34:10.4105
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cllS8IWITpqR5heVNqb4Hio1iIwuNTf2L5W0y9ojwr20zxphMeinqlSbcfI/L0f9cSYUpXPOvKY28I4ybXnzr+aOZKvCaCbj1HGnsQlbn4s=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6081
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_203422_352770_885E67B7 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20231002_220423_558009_445983F6 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -191,23 +134,304 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5nZWxvLA0KDQpUaGFua3MgZm9yIHRoZSByZXZpZXdzLg0KDQpbc25pcF0NCg0KPiA+ID4g
-PiANCj4gPiA+ID4gKw0KPiA+ID4gPiArCWlmIChyZXQgPD0gMCkgew0KPiA+ID4gPiArCQlEUk1f
-SU5GTygiRmFpbGVkIHRvIGZpbmQgY29tcCBpbiBkZHAgdGFibGUsIHJldA0KPiA+ID4gPiA9JWRc
-biIsDQo+ID4gPiA+IHJldCk7DQo+ID4gPiA+ICsJCXJldCA9IDA7DQo+ID4gPiANCj4gPiA+IFdo
-eSBhcmUgeW91IHJldHVybmluZyAwIGZvciBlcnJvciBoZXJlPyENCj4gPiANCj4gPiBCZWNhdXNl
-IHRoaXMgZnVuY3Rpb24gcmV0dXJuIDAgbWVhbnMgbm90IGZvdW5kIGFueSB2YWxpZCBjcnRjIGJp
-dHMuDQo+ID4gU2hvdWxkIEkgY2hhbmdlIHRoaXM/DQo+ID4gDQo+IA0KPiBZZXMsIHBsZWFzZSwg
-cmV0dXJuIGEgcmVsZXZhbnQgZXJyb3IgY29kZSBpbnN0ZWFkLg0KPiANCg0KSSBmb3VuZCB0aGF0
-IHRoZSByZXR1cm4gdHlwZSBvZiB0aGlzIGZ1bmN0aW9uIGlzICd1bnNpZ25lZCBpbnQnLCBJDQp0
-aGluayByZXR1cm5pbmcgZXJyb3IgY29kZSBpbnN0ZWFkIHdpbGwgY2hhbmdlIHRoZSBvcmlnaW5h
-bCBiZWhhdmlvciBvZg0KcmV0dXJuaW5nIDAgYXMgbm90IGZpbmRpbmcgYW55IHBvc3NpYmxlIGNy
-dGMuDQoNCmUuZy4gZHJtX2VuY29kZXJfb2soKSBpbiBkcm1fZW5jb2Rlci5oIHdpbGwgY2hlY2s6
-DQohIShlbmNvZGVyLT5wb3NzaWJsZV9jcnRjcyAmIGRybV9jcnRjX21hc2soY3J0YykpDQoNClRo
-ZSBuZWdhdGl2ZSBlcnJvciBjb2RlIGNvbnZlcnQgdG8gdW5zaWduZWQgaW50IHdpbGwgYmUgYSBo
-dWdlIG51bWJlcg0KYW5kIHRoYXQgbWF5IGNhdXNlIHRoZSB1bmV4cGVjdGVkIHJlc3VsdCBoZXJl
-Lg0KDQpSZWdhcmRzLA0KSmFzb24tSkguTGluDQoNCj4gVGhhbmtzLA0KPiBBbmdlbG8NCj4gDQo+
-ID4gUmVnYXJkcywNCj4gPiBKYXNvbi1KSC5MaW4NCj4gPiANCj4gPiA+IA0KPiA+ID4gPiArCX0N
-Cj4gPiA+ID4gICAgDQo+ID4gPiA+ICAgIAlyZXR1cm4gcmV0Ow0KPiA+ID4gPiAgICB9DQo+ID4g
-PiANCj4gPiA+IFJlZ2FyZHMsDQo+ID4gPiBBbmdlbG8NCj4gPiA+IA0KPiANCj4gDQo+IA0K
+From: Rafał Miłecki <rafal@milecki.pl>
+
+Support for old NVMEM fixed cells was deprecated in favour of
+"fixed-layout". It's still part of the nvmem.yaml though and may be
+unknowingly used by new bindings added without much of analyze.
+
+To make it more difficult to accidentally support old syntax move its
+binding to separated file with "deprecated" in its name.
+
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+ .../devicetree/bindings/mtd/mtd.yaml          |  7 ++++-
+ .../bindings/mtd/partitions/nvmem-cells.yaml  |  1 +
+ .../nvmem/amlogic,meson-gxbb-efuse.yaml       |  1 +
+ .../bindings/nvmem/amlogic,meson6-efuse.yaml  |  1 +
+ .../bindings/nvmem/apple,efuses.yaml          |  1 +
+ .../devicetree/bindings/nvmem/imx-ocotp.yaml  |  1 +
+ .../bindings/nvmem/mediatek,efuse.yaml        |  1 +
+ .../nvmem/microchip,sama7g5-otpc.yaml         |  1 +
+ .../devicetree/bindings/nvmem/mxs-ocotp.yaml  |  1 +
+ .../nvmem/nvmem-deprecated-cells.yaml         | 28 +++++++++++++++++++
+ .../devicetree/bindings/nvmem/nvmem.yaml      |  9 ------
+ .../bindings/nvmem/qcom,qfprom.yaml           |  1 +
+ .../bindings/nvmem/qcom,sec-qfprom.yaml       |  1 +
+ .../bindings/nvmem/qcom,spmi-sdam.yaml        |  1 +
+ .../bindings/nvmem/rockchip,otp.yaml          |  1 +
+ .../bindings/nvmem/rockchip-efuse.yaml        |  1 +
+ .../nvmem/socionext,uniphier-efuse.yaml       |  1 +
+ .../bindings/nvmem/sunplus,sp7021-ocotp.yaml  |  1 +
+ .../bindings/rtc/amlogic,meson6-rtc.yaml      |  1 +
+ 19 files changed, 50 insertions(+), 10 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/nvmem/nvmem-deprecated-cells.yaml
+
+diff --git a/Documentation/devicetree/bindings/mtd/mtd.yaml b/Documentation/devicetree/bindings/mtd/mtd.yaml
+index b82ca03e969c..f322290ee516 100644
+--- a/Documentation/devicetree/bindings/mtd/mtd.yaml
++++ b/Documentation/devicetree/bindings/mtd/mtd.yaml
+@@ -43,7 +43,12 @@ patternProperties:
+     deprecated: true
+ 
+   "^otp(-[0-9]+)?$":
+-    $ref: ../nvmem/nvmem.yaml#
++    type: object
++
++    allOf:
++      - $ref: ../nvmem/nvmem.yaml#
++      - $ref: ../nvmem/nvmem-deprecated-cells.yaml#
++
+     unevaluatedProperties: false
+ 
+     description: |
+diff --git a/Documentation/devicetree/bindings/mtd/partitions/nvmem-cells.yaml b/Documentation/devicetree/bindings/mtd/partitions/nvmem-cells.yaml
+index 5474d63268dc..9518281007af 100644
+--- a/Documentation/devicetree/bindings/mtd/partitions/nvmem-cells.yaml
++++ b/Documentation/devicetree/bindings/mtd/partitions/nvmem-cells.yaml
+@@ -19,6 +19,7 @@ maintainers:
+ allOf:
+   - $ref: /schemas/mtd/partitions/partition.yaml#
+   - $ref: /schemas/nvmem/nvmem.yaml#
++  - $ref: /schemas/nvmem/nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/amlogic,meson-gxbb-efuse.yaml b/Documentation/devicetree/bindings/nvmem/amlogic,meson-gxbb-efuse.yaml
+index e49c2754ff55..9801fe6f91b5 100644
+--- a/Documentation/devicetree/bindings/nvmem/amlogic,meson-gxbb-efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/amlogic,meson-gxbb-efuse.yaml
+@@ -11,6 +11,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/amlogic,meson6-efuse.yaml b/Documentation/devicetree/bindings/nvmem/amlogic,meson6-efuse.yaml
+index 84b3dfd21e09..b5cf740f96fa 100644
+--- a/Documentation/devicetree/bindings/nvmem/amlogic,meson6-efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/amlogic,meson6-efuse.yaml
+@@ -12,6 +12,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml b/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
+index e0860b6b85f3..d3abdafdbca0 100644
+--- a/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
++++ b/Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
+@@ -16,6 +16,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
+index 99e60d713dac..be1314454bec 100644
+--- a/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/imx-ocotp.yaml
+@@ -16,6 +16,7 @@ description: |
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+index 7ec2988b597e..cf5f9e22bb7e 100644
+--- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+@@ -16,6 +16,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   $nodename:
+diff --git a/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml b/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
+index a296d348adb4..cc25f2927682 100644
+--- a/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
++++ b/Documentation/devicetree/bindings/nvmem/microchip,sama7g5-otpc.yaml
+@@ -16,6 +16,7 @@ description: |
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
+index a9b822aeaa7e..f43186f98607 100644
+--- a/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mxs-ocotp.yaml
+@@ -11,6 +11,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/nvmem-deprecated-cells.yaml b/Documentation/devicetree/bindings/nvmem/nvmem-deprecated-cells.yaml
+new file mode 100644
+index 000000000000..951af28bbfb3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/nvmem/nvmem-deprecated-cells.yaml
+@@ -0,0 +1,28 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/nvmem/nvmem-deprecated-cells.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: NVMEM old syntax for fixed cells
++
++maintainers:
++  - Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
++
++description: |
++  Before introducing NVMEM layouts all NVMEM (fixed) cells were defined
++  as direct device subnodes. That syntax was replaced by "fixed-layout"
++  and is deprecated now. No new bindings should use it.
++
++patternProperties:
++  "@[0-9a-f]+(,[0-7])?$":
++    type: object
++    allOf:
++      - $ref: layouts/fixed-cell.yaml
++      - properties:
++          compatible: false
++    deprecated: true
++
++additionalProperties: true
++
++...
+diff --git a/Documentation/devicetree/bindings/nvmem/nvmem.yaml b/Documentation/devicetree/bindings/nvmem/nvmem.yaml
+index 9f921d940142..4fd015d402ce 100644
+--- a/Documentation/devicetree/bindings/nvmem/nvmem.yaml
++++ b/Documentation/devicetree/bindings/nvmem/nvmem.yaml
+@@ -46,15 +46,6 @@ properties:
+       container may reference more advanced (dynamic) layout
+       parsers.
+ 
+-patternProperties:
+-  "@[0-9a-f]+(,[0-7])?$":
+-    type: object
+-    allOf:
+-      - $ref: layouts/fixed-cell.yaml
+-      - properties:
+-          compatible: false
+-    deprecated: true
+-
+ additionalProperties: true
+ 
+ examples:
+diff --git a/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml b/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
+index 8740938c32eb..8c8f05d9eaf1 100644
+--- a/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
++++ b/Documentation/devicetree/bindings/nvmem/qcom,qfprom.yaml
+@@ -11,6 +11,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/qcom,sec-qfprom.yaml b/Documentation/devicetree/bindings/nvmem/qcom,sec-qfprom.yaml
+index 9b133f783d29..2ada2099946d 100644
+--- a/Documentation/devicetree/bindings/nvmem/qcom,sec-qfprom.yaml
++++ b/Documentation/devicetree/bindings/nvmem/qcom,sec-qfprom.yaml
+@@ -16,6 +16,7 @@ description:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml b/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
+index cd980def97b8..068bedf5dbc9 100644
+--- a/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
++++ b/Documentation/devicetree/bindings/nvmem/qcom,spmi-sdam.yaml
+@@ -16,6 +16,7 @@ description: |
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+index 9c6eff788928..a44d44b32809 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
+@@ -49,6 +49,7 @@ required:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+   - if:
+       properties:
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+index c5403e149080..b80fd8d1ae5b 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.yaml
+@@ -11,6 +11,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml b/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
+index efccc5aacbe0..e27cbae2d63a 100644
+--- a/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/socionext,uniphier-efuse.yaml
+@@ -12,6 +12,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml b/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
+index da3f1de7d281..af97eeb8316c 100644
+--- a/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
++++ b/Documentation/devicetree/bindings/nvmem/sunplus,sp7021-ocotp.yaml
+@@ -12,6 +12,7 @@ maintainers:
+ 
+ allOf:
+   - $ref: nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/rtc/amlogic,meson6-rtc.yaml b/Documentation/devicetree/bindings/rtc/amlogic,meson6-rtc.yaml
+index 8bf7d3a9be98..def24d52c8a5 100644
+--- a/Documentation/devicetree/bindings/rtc/amlogic,meson6-rtc.yaml
++++ b/Documentation/devicetree/bindings/rtc/amlogic,meson6-rtc.yaml
+@@ -13,6 +13,7 @@ maintainers:
+ allOf:
+   - $ref: rtc.yaml#
+   - $ref: /schemas/nvmem/nvmem.yaml#
++  - $ref: nvmem-deprecated-cells.yaml#
+ 
+ properties:
+   compatible:
+-- 
+2.35.3
+
 
