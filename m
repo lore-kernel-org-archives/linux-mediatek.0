@@ -4,91 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37164E776D4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Oct 2023 23:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85041E776E9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 01:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MsrzhgDbcJtwYX/2EGwafIR0w5juOFXJIQAbPgvHjTw=; b=mcwGyyvZTmdZztalirarAzp+rK
-	eWZODYZb6Z/HbLEdtrCZwZtN0qM14jysD6URhWIE5iaoOOJeAkHuxlV2hQud2I+OUzzguKIfNs5mR
-	IF3MZhkr6mYXh9R+L0Za7ZwMQ9s6L4kO46VwH7knsF1QTqeCqD14WzGBh2Gi0woNv4Aj55PH7SwVO
-	4rau22cJUcsgGVW/e0Sun2PJRuTF4oks82+/x4vhiG0/5MJ2ZIyKgHmy7uetWCMVJLbKfxxFjkhIZ
-	Jojk3iVVOhQLCFJwlD7MU+5PnYBvcunkH5l5HBV9BqufVN5pQifgeWOm5MvnKaayKTo+Ul7Cv0y0A
-	1eIt91dQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OwG/imMs9MDfnw5wp7EvozdQE/eS06ltXfDqRXe7n1k=; b=Th1I3vzScopSIx7zegvKLxjLMP
+	P0PetwsA86KhaW3M5HyOjeuXg1ENm+2iNB5k0bbTl96a4is+nEtoOj9s2MjmV4LN7cOU4HXBaOzUp
+	9bmuHIVd8M6abuK61XC1GtcaMCvy5+suLAhSHtrOQ1h1v3573fkcsq//JPmZ4igov5CFoIUXHcVBu
+	mQopXeUBDjOQa7W8ReXWYFodmZeNHS4PNr6jKhp2WsAeAL4cKDGpCSTbWo1H38pTdBiqavDhlBl4V
+	1narctfdBCs4SrKQ1wCT/CcG2Qs0wEaijRMr2ND/VNbwe74VvvNaTaRnnKWDdTMxGzGwEQJWQJIoe
+	jfnnoGSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnSd8-00DXxP-2Y;
-	Mon, 02 Oct 2023 23:47:14 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1qnTrU-00DbyW-0x;
+	Tue, 03 Oct 2023 01:06:08 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnSd4-00DXwJ-0K;
-	Mon, 02 Oct 2023 23:47:11 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-27752a1e184so234726a91.3;
-        Mon, 02 Oct 2023 16:47:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696290424; x=1696895224; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MsrzhgDbcJtwYX/2EGwafIR0w5juOFXJIQAbPgvHjTw=;
-        b=FhCjjUFEDRxyrUT43kR0HOEJFQFTeHrgElWA97jSzni1xXPaxm5V/dnhqHd8eS9GIe
-         LGQnCan8zLLp3Wjc9iBOS07CaUXDMGOfXdGlyQ274xr6OUpkJ10CeMsVR3OXbB+syJYk
-         ly5lYLrnsD/srps4538r7vtLVQII6fsO85c7NzyQtNrtUibrPoXJB68LdmWsur0YIL+r
-         1bw1a4axr5jk0VP+zP5jaXtMMXQZuNFBEKvT97ILg7asmjuFVx6X0AjtHD85+AaFPz8K
-         eFMjZMajCJrvDSiL2RDVhpymBa0Cn/laJRn2uW3IaP20ed/CDaBeQhPL+VrG8sgowl7K
-         DTDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696290424; x=1696895224;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MsrzhgDbcJtwYX/2EGwafIR0w5juOFXJIQAbPgvHjTw=;
-        b=JKSTTHtYuVYx5E72jOh5/p6hP5IXpkXBOKV9vZkaLE2a+sNr94dT1+AyRvsd9VOZ1j
-         29sk1tMhhPdPTlEKJRF8ThEtpO6fISMvv/KX5e/qVNgW64hVc2fG/nuSFj9dycM0za7K
-         MTyXHB63AGBfd53oPzyymYDpvZ0b+0ilHBE7kRObpFUpqWzQiTenGisOvD1pg4hnPd1L
-         vVs7iKwz8pNsyxhpLpPrlH9YHWAFNqmEsxyvFxQlz5hJQ0cbPUdwqELBjkZph7ZnFvW9
-         9DSFMezYQO4NJ1icyjU+L1iaqjZ7TGXmkmdsM6R2L90FwL8sEYKDv7xmhUpm29NXx3Kc
-         IkVw==
-X-Gm-Message-State: AOJu0Yx8oBmCZd/ZFDt1Y8tr8KQXhqBA+06LO6Fwa0zLfSMuzg0L6hAb
-	dGaO52EL6NYgu6TpRtTwBPs=
-X-Google-Smtp-Source: AGHT+IEBCTbSZM/8E/uKaeav4fYt2K5qKUh3CuUFJFJQXANJT3CbxyYRJqvtwNk3zj/OuJrUW2TzCQ==
-X-Received: by 2002:a17:90b:1194:b0:269:32d2:5ac4 with SMTP id gk20-20020a17090b119400b0026932d25ac4mr13277538pjb.25.1696290424438;
-        Mon, 02 Oct 2023 16:47:04 -0700 (PDT)
-Received: from debian.me ([103.131.18.64])
-        by smtp.gmail.com with ESMTPSA id ft13-20020a17090b0f8d00b00276b60aa43bsm6884452pjb.17.2023.10.02.16.47.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Oct 2023 16:47:03 -0700 (PDT)
-Received: by debian.me (Postfix, from userid 1000)
-	id 8117881A3121; Tue,  3 Oct 2023 06:46:58 +0700 (WIB)
-Date: Tue, 3 Oct 2023 06:46:58 +0700
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-To: Erik =?utf-8?B?RG9iw6Fr?= <erik.dobak@gmail.com>,
-	Linux Stable <stable@vger.kernel.org>,
-	Linux Bluetooth <linux-bluetooth@vger.kernel.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	Linux ARM <linux-arm-kernel@lists.infradead.org>,
-	Linux Mediatek <linux-mediatek@lists.infradead.org>,
-	Linux Regressions <regressions@lists.linux.dev>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	id 1qnTrQ-00Dbxz-2z;
+	Tue, 03 Oct 2023 01:06:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 9053FB80D70;
+	Tue,  3 Oct 2023 01:06:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99EB4C433C8;
+	Tue,  3 Oct 2023 01:05:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696295161;
+	bh=F4f0krFznweIk4taQ98VjdjNBbxdo6qbxD3mNrr0nSM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Qjo96mCWqTKW7xGjcbugvTHPxzMEDCajwcw1va4Y2FbcHxO3ZcGKJhTfC83106ARL
+	 tU6n9aOW7ZWhDLjnQiboRRQ82EVD3td822hvni2XK2g9yNk3HSm2Ur7Z555ck5rG+o
+	 12dhoHDmpsg6GbUi7vFsQpePSjmL7y7isIq5rL6cYanqyxddTPGOhvh9UX6i8cVIA7
+	 ZNczfsHMS606tgeAt9grrKxT2FqCR0UULw6bIjRTIClFh9JhkLAVjJWQ9lZKETlzhR
+	 YTYWmLkKqRpNbxBQIivk0G2e/6Y+0MGkQudKU03TMbdV9ij8lvPLibuVE8O1+k6oVB
+	 UoMFwMLszD8rA==
+From: Bjorn Andersson <andersson@kernel.org>
+To: Joel Stanley <joel@jms.id.au>,
+	Li Yang <leoyang.li@nxp.com>,
+	Herve Codina <herve.codina@bootlin.com>,
+	Qiang Zhao <qiang.zhao@nxp.com>,
+	Hitomi Hasegawa <hasegawa-hitomi@fujitsu.com>,
+	Huisong Li <lihuisong@huawei.com>,
+	Krzysztof Halasa <khalasa@piap.pl>,
+	Karol Gugala <kgugala@antmicro.com>,
+	Mateusz Holenko <mholenko@antmicro.com>,
+	Gabriel Somlo <gsomlo@gmail.com>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Andy Gross <agross@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sumit Gupta <sumitg@nvidia.com>,
+	Shang XiaoJing <shangxiaojing@huawei.com>,
+	Muhammad Usama Anjum <usama.anjum@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Nishanth Menon <nm@ti.com>,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Michal Simek <michal.simek@amd.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org,
+	linux-kernel@vger.kernel.org,
+	Arnd Bergmann <arnd@arndb.de>,
+	Zev Weiss <zev@bewilderbeest.net>,
+	linuxppc-dev@lists.ozlabs.org,
+	loongarch@lists.linux.dev,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Tomasz =?utf-8?Q?Mo=C5=84?= <tomasz.mon@nordicsemi.no>
-Subject: Re: bluetooth issues since kernel 6.4 - not discovering other bt
- devices - /linux/drivers/bluetooth/btusb.c
-Message-ID: <ZRtWcgiH5JhD5NU2@debian.me>
-References: <CAH7-e5sb+kT_LRb1_y-c5JaFN0=KrrRT97otUPKzTCgzGsVdrQ@mail.gmail.com>
+	linux-mediatek@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	zhang songyi <zhang.songyi@zte.com.cn>,
+	Lubomir Rintel <lkundrak@v3.sk>,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	linux-samsung-soc@vger.kernel.org,
+	Nick Alcock <nick.alcock@oracle.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	linux-tegra@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	Ruan Jinjie <ruanjinjie@huawei.com>,
+	kernel@pengutronix.de
+Subject: Re: (subset) [PATCH 00/40] soc: Convert to platform remove callback returning void
+Date: Mon,  2 Oct 2023 18:10:02 -0700
+Message-ID: <169629539848.1944895.16954663145011378401.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
+References: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="fW063juLwqeEFwfL"
-Content-Disposition: inline
-In-Reply-To: <CAH7-e5sb+kT_LRb1_y-c5JaFN0=KrrRT97otUPKzTCgzGsVdrQ@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_164710_165904_95372013 
-X-CRM114-Status: GOOD (  18.86  )
+X-CRM114-CacheID: sfid-20231002_180605_286795_3DCBD78A 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,75 +121,45 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---fW063juLwqeEFwfL
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Mon, 25 Sep 2023 11:54:51 +0200, Uwe Kleine-König wrote:
+> this series converts all platform drivers below drivers/soc to use
+> .remove_new(). The motivation is to get rid of an integer return code
+> that is (mostly) ignored by the platform driver core and error prone on
+> the driver side.
+> 
+> See commit 5c5a7680e67b ("platform: Provide a remove callback that
+> returns no value") for an extended explanation and the eventual goal.
+> 
+> [...]
 
-On Sun, Oct 01, 2023 at 07:47:54AM +0200, Erik Dob=C3=A1k wrote:
-> Hello!
->=20
-> I bought a new laptop fujitsu life book and everything is going fine
-> on artix just the bt makes trouble:
->=20
-> /var/log/error.log
-> Sep 30 18:43:48 nexus bluetoothd[2266]:
-> src/adapter.c:reset_adv_monitors_complete() Failed to reset Adv
-> Monitors: Failed (0x03)
-> Sep 30 18:43:48 nexus bluetoothd[2266]: Failed to clear UUIDs: Failed (0x=
-03)
-> Sep 30 18:43:48 nexus bluetoothd[2266]: Failed to add UUID: Failed (0x03)
-> Sep 30 18:43:48 nexus bluetoothd[2266]: Failed to add UUID: Failed (0x03)
->=20
-> i searched a bit the webs and found a new commit at kernel org that
-> does do the trouble:
-> https://bugs.archlinux.org/task/78980
->=20
-> follow the linkeys inside the commits there or read this one:
->=20
-> ---------------before------------------------------------
-> /* interface numbers are hardcoded in the spec */
->         if (intf->cur_altsetting->desc.bInterfaceNumber !=3D 0) {
->                 if (!(id->driver_info & BTUSB_IFNUM_2))
->                         return -ENODEV;
->                 if (intf->cur_altsetting->desc.bInterfaceNumber !=3D 2)
->                         return -ENODEV;
->         }
-> -----------after----------------------------------------------------
-> if ((id->driver_info & BTUSB_IFNUM_2) &&
->     (intf->cur_altsetting->desc.bInterfaceNumber !=3D 0) &&
->     (intf->cur_altsetting->desc.bInterfaceNumber !=3D 2))
-> return -ENODEV;
-> --------------------------------------------------------
->=20
-> the dude just hooked up 3 conditions in a row with && where before it
-> was 2 conditions in 1 condition. + the comment was removed.
->=20
->=20
+Applied, thanks!
 
-Try latest mainline first (currently v6.6-rc4). Because you have to
-compile your own kernel, please refer to
-Documentation/admin-guide/quickly-build-trimmed-linux.rst if you don't know=
- how to do the compilation.
+[18/40] soc/qcom: icc-bwmon: Convert to platform remove callback returning void
+        commit: dd714c568ed4e6f79017be45077de71e9908af03
+[19/40] soc/qcom: llcc-qcom: Convert to platform remove callback returning void
+        commit: d85a9d18a58156fc8b5ab185e00e078adaaeefde
+[20/40] soc/qcom: ocmem: Convert to platform remove callback returning void
+        commit: 0b742c498bcd7d215501b10fe9df72a16237735a
+[21/40] soc/qcom: pmic_glink: Convert to platform remove callback returning void
+        commit: 4b3373e42dc2caa34394ac090c8c70bed49badd6
+[22/40] soc/qcom: qcom_aoss: Convert to platform remove callback returning void
+        commit: ffbe84a514f863a46a85c1e47b2b6d930b1b463e
+[23/40] soc/qcom: qcom_gsbi: Convert to platform remove callback returning void
+        commit: 57b31729bd2c72b00d400106e18db91e9d95d3c3
+[24/40] soc/qcom: qcom_stats: Convert to platform remove callback returning void
+        commit: a47ff90bf2f93ce4ca99858948a74a0c10a2bc45
+[25/40] soc/qcom: rmtfs_mem: Convert to platform remove callback returning void
+        commit: 7c93da5b8b69d4e4e7270c33ba3206af43930e1d
+[26/40] soc/qcom: smem: Convert to platform remove callback returning void
+        commit: 4b8dee9a34d51a61f60add996fae6a7140a20ae5
+[27/40] soc/qcom: smp2p: Convert to platform remove callback returning void
+        commit: 1cd966c2dc19654ed08c843e5c933db8c1349636
+[28/40] soc/qcom: smsm: Convert to platform remove callback returning void
+        commit: bdd7cc62cf69fe989557445d65d6c8cb2f956518
+[29/40] soc/qcom: socinfo: Convert to platform remove callback returning void
+        commit: c0989f7d1264b2b1885345a28a32fd5e1e61f9c7
 
-Also, don't top-post when replying; reply inline with appropriate context
-instead.
-
-Thanks.
-
---=20
-An old man doll... just what I always wanted! - Clara
-
---fW063juLwqeEFwfL
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZRtWagAKCRD2uYlJVVFO
-o0d+AP4oNwd9Cjay1Ao/Mm5lLmmn0rZYovuJO9UIOSdBN/w/sAEAuTvELS2Y3NZ+
-a45nNYc16F/Qn5lYdAjNfJcrgNQwyQE=
-=X3ML
------END PGP SIGNATURE-----
-
---fW063juLwqeEFwfL--
+Best regards,
+-- 
+Bjorn Andersson <andersson@kernel.org>
 
