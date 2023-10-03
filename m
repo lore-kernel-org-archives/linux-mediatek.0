@@ -4,68 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE2F3E7AD76
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 16:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CDE4E748FA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 17:28:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jnAappGLcI7SttRhXM5h4PO6a2E358kygnqSmyrYV5g=; b=XY6lex/58p9qYZnHnFaqKBvNr3
-	b4UDdrg8wg1LwJ1QoL139JmD8m1KkgA7KM3EMEaR4nds3iyjQ8cJeC2VsjHBZjXjDRvrtuOqxJcGv
-	XUbvrklha/aq55Cf8PjfIzHTPxZF5b86iDAlddYMbHFgvLVoLYie+X86+tRAB9RcU6YHTi8ngrUC/
-	8bNRisJz/CjA4Nq96iIv4K4SFtc1v/KU4WSjv8ZNkX3Zpp5Rh5D/7MWSs3PI9ndAmd3TqaYQLhXFI
-	6gxw28mkuK3Ufmi1Lf7CwrD6dJX4M2lUlwvMfmIRc+PZYErniNmpRm0ic5kNdhOaQ2VPu1U33664H
-	SXKSuRjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6EtorarqtxI211Ng2Jchw7++TNi7Tlo0GlfOYxmY1cA=; b=YnKofIo+iE+8ZLKZ1MgigWPJJh
+	zcagUj4nSIT4hwuVJ5B7jl+YtJwG6KhP4abBGuKnQ7a5xYRTwJuyD25GkNLWOV5Vxiks88TD9Y0/w
+	OHu17hSKzks3xddAVE8GBtB6hMMlDjRxx/LAXlCTLMzqlosbQ0+e6xV8HT4iliU8l5KhIN8qwrQlF
+	pyI/Mxrd4tDd1zkvQQu0z373yb+kwoFrfzVfZ0eW8OCWMtL1yySYUopjmnLJQ2nJTw2kOQB0NI72K
+	zetb3wybhX0K8kJZMKwrni/K99QhGuMiYnEHZWHXPs7EBRo7PPAhZHzFuKqR1IoUlZU7bcVgonwYT
+	1ialbjnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qniJp-00EyBv-1V;
-	Tue, 03 Oct 2023 16:32:21 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qniJl-00EyAs-0A;
-	Tue, 03 Oct 2023 16:32:19 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 18165C15;
-	Tue,  3 Oct 2023 09:32:53 -0700 (PDT)
-Received: from FVFF77S0Q05N (unknown [10.57.93.206])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CA9753F762;
-	Tue,  3 Oct 2023 09:32:11 -0700 (PDT)
-Date: Tue, 3 Oct 2023 17:32:09 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Doug Anderson <dianders@chromium.org>
-Cc: Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Marc Zyngier <maz@kernel.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	Valentin Schneider <vschneid@redhat.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	D Scott Phillips <scott@os.amperecomputing.com>,
-	Josh Poimboeuf <jpoimboe@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Misono Tomohiro <misono.tomohiro@fujitsu.com>,
-	Peter Zijlstra <peterz@infradead.org>,
-	Sumit Garg <sumit.garg@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] arm64: smp: Fix pseudo NMI issues w/ broken Mediatek
- FW
-Message-ID: <ZRxCCZxZWCG0NBur@FVFF77S0Q05N>
-References: <20231002094526.1.Ie8f760213053e3d11592f892b30912dbac6b8b48@changeid>
- <ZRr8r7XMoyDKaitd@FVFF77S0Q05N.cambridge.arm.com>
- <CAD=FV=UeeL9uycVeKpOm+eDm3xHrOnKi2frt6a1qFG1HX9yEUg@mail.gmail.com>
- <ZRwJKBZaYwF1rrur@FVFF77S0Q05N>
- <CAD=FV=WASz1uvTgwsu3H3cTr3smHk+E_XNUVnjoPpttwv095rQ@mail.gmail.com>
+	id 1qnjC8-00F2p0-0Y;
+	Tue, 03 Oct 2023 17:28:28 +0000
+Received: from mail-pg1-f178.google.com ([209.85.215.178])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnjC4-00F2oC-3B
+	for linux-mediatek@lists.infradead.org;
+	Tue, 03 Oct 2023 17:28:26 +0000
+Received: by mail-pg1-f178.google.com with SMTP id 41be03b00d2f7-577fb90bb76so667731a12.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Oct 2023 10:28:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696354103; x=1696958903;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=6EtorarqtxI211Ng2Jchw7++TNi7Tlo0GlfOYxmY1cA=;
+        b=M2Nu6/CnJd3f0Unn+Tg3yT37YMMNpLBZUIQilFRpR+X61RFARFyd28XialOFgYfedT
+         SSrUZCGOSwv++ohtx6+n9SYdgUgs6HrJRFTk67/GybFl98vx6awYfZZybv3sqPUtpd9z
+         Y13LYK/eZQ1I44FdG2XVozteWm1CSAZgCD3PgyD7ZwarONbKx3y4aGOUHxUuFTwea5c1
+         MopifSbvpgSkDcQnYpQkIc1s9dprR5w50gR8QHF53qBFsse7OO5srisSBHvrr/ogsbJl
+         TLVTf+mayttVwPHMTf7DHvK5d3Afs0zWrth0si4lVFoa6YEXa1znnheStIG9joloWvST
+         ydXA==
+X-Gm-Message-State: AOJu0YzqRQPF7MwOprKdndjLlOCoNXYwRZN5MjKasdTfKlCrI/FsaAn3
+	CyDSZQRPIBt4TL1ylYaROys=
+X-Google-Smtp-Source: AGHT+IEeOcVw2i+JnEKc+ZIkWIXbxdCY0PNLUyUbxOLkEBsKFA4qDJU7cIQ30POxY1ISbphOhxNJKQ==
+X-Received: by 2002:a05:6a21:9986:b0:160:cf09:8019 with SMTP id ve6-20020a056a21998600b00160cf098019mr150416pzb.32.1696354102895;
+        Tue, 03 Oct 2023 10:28:22 -0700 (PDT)
+Received: from ?IPV6:2620:15c:211:201:fc96:5ba7:a6f5:b187? ([2620:15c:211:201:fc96:5ba7:a6f5:b187])
+        by smtp.gmail.com with ESMTPSA id p22-20020a637416000000b0056c2de1f32esm1641630pgc.78.2023.10.03.10.28.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Oct 2023 10:28:21 -0700 (PDT)
+Message-ID: <11c80afe-ad85-4676-bce1-e7bf1feeb458@acm.org>
+Date: Tue, 3 Oct 2023 10:28:19 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAD=FV=WASz1uvTgwsu3H3cTr3smHk+E_XNUVnjoPpttwv095rQ@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ufs: core: correct clear tm error log
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com
+References: <20231003022002.25578-1-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20231003022002.25578-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_093217_211246_7E5C3985 
-X-CRM114-Status: GOOD (  51.37  )
+X-CRM114-CacheID: sfid-20231003_102825_022475_06C260D3 
+X-CRM114-Status: UNSURE (   5.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,141 +87,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 03, 2023 at 06:43:07AM -0700, Doug Anderson wrote:
-> Hi,
-> 
-> On Tue, Oct 3, 2023 at 5:29 AM Mark Rutland <mark.rutland@arm.com> wrote:
-> >
-> > On Mon, Oct 02, 2023 at 12:16:17PM -0700, Doug Anderson wrote:
-> > > Hi,
-> > >
-> > > On Mon, Oct 2, 2023 at 10:24 AM Mark Rutland <mark.rutland@arm.com> wrote:
-> > > >
-> > > > On Mon, Oct 02, 2023 at 09:45:29AM -0700, Douglas Anderson wrote:
-> > > > > Some mediatek devices have the property
-> > > > > "mediatek,broken-save-restore-fw" in their GIC. This means that,
-> > > > > although the hardware supports pseudo-NMI, the firmware has a bug
-> > > > > that blocks enabling it. When we're in this state,
-> > > > > system_uses_irq_prio_masking() will return true but we'll fail to
-> > > > > actually enable the IRQ in the GIC.
-> > > > >
-> > > > > Let's make the code handle this. We'll detect that we failed to
-> > > > > request an IPI as NMI and fallback to requesting it normally. Though
-> > > > > we expect that either all of our requests will fail or all will
-> > > > > succeed, it's just as cheap to keep a per-IPI bitmap and that keeps us
-> > > > > robust.
-> > > > >
-> > > > > Fixes: 331a1b3a836c ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
-> > > > > Reported-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > > > Closes: https://issuetracker.google.com/issues/197061987#comment68
-> > > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > > > ---
-> > > > >
-> > > > >  arch/arm64/kernel/smp.c | 19 ++++++++++++-------
-> > > > >  1 file changed, 12 insertions(+), 7 deletions(-)
-> > > >
-> > > > I'm not too keen on falling back here when we have no idea why the request failed.
-> > > >
-> > > > I'd prefer if we could check the `supports_pseudo_nmis` static key directly to
-> > > > account for the case of broken FW, e.g. as below.
-> > > >
-> > > > Mark.
-> > > >
-> > > > ---->8----
-> > > > From 72fdec05c64a74f21871b44c7c760bbe07cac044 Mon Sep 17 00:00:00 2001
-> > > > From: Mark Rutland <mark.rutland@arm.com>
-> > > > Date: Mon, 2 Oct 2023 18:00:36 +0100
-> > > > Subject: [PATCH] arm64: smp: avoid NMI IPIs with broken MediaTek FW
-> > > >
-> > > > Some MediaTek devices have broken firmware which corrupts some GICR
-> > > > registers behind the back of the OS, and pseudo-NMIs cannot be used on
-> > > > these devices. For more details see commit:
-> > > >
-> > > >   44bd78dd2b8897f5 ("irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware issues")
-> > > >
-> > > > We did not take this problem into account in commit:
-> > > >
-> > > >   331a1b3a836c0f38 ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
-> > > >
-> > > > Since that commit arm64's SMP code will try to setup some IPIs as
-> > > > pseudo-NMIs, even on systems with broken FW. The GICv3 code will
-> > > > (rightly) reject attempts to request interrupts as pseudo-NMIs,
-> > > > resulting in boot-time failures.
-> > > >
-> > > > Avoid the problem by taking the broken FW into account when deciding to
-> > > > request IPIs as pseudo-NMIs. The GICv3 driver maintains a static_key
-> > > > named "supports_pseudo_nmis" which is false on systems with broken FW,
-> > > > and we can consult this within ipi_should_be_nmi().
-> > > >
-> > > > Fixes: 331a1b3a836c0f38 ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
-> > > > Reported-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > > Closes: https://issuetracker.google.com/issues/197061987#comment68
-> > > > Signed-off-by: Mark Rutland <mark.rutland@arm.com>
-> > > > Cc: Douglas Anderson <dianders@chromium.org>
-> > > > Cc: Marc Zyngier <maz@kernel.org>
-> > > > ---
-> > > >  arch/arm64/kernel/smp.c      | 5 ++++-
-> > > >  drivers/irqchip/irq-gic-v3.c | 2 +-
-> > > >  2 files changed, 5 insertions(+), 2 deletions(-)
-> > >
-> > > Sure, this is OK w/ me as long as folks don't mind accessing the
-> > > global here, it's OK w/ me:
-> > >
-> > > Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> > >
-> > > It seems to work for me, thus:
-> > >
-> > > Tested-by: Douglas Anderson <dianders@chromium.org>
-> > >
-> > >
-> > > > diff --git a/arch/arm64/kernel/smp.c b/arch/arm64/kernel/smp.c
-> > > > index 814d9aa93b21b..061c69160f90f 100644
-> > > > --- a/arch/arm64/kernel/smp.c
-> > > > +++ b/arch/arm64/kernel/smp.c
-> > > > @@ -964,7 +964,10 @@ static void smp_cross_call(const struct cpumask *target, unsigned int ipinr)
-> > > >
-> > > >  static bool ipi_should_be_nmi(enum ipi_msg_type ipi)
-> > > >  {
-> > > > -       if (!system_uses_irq_prio_masking())
-> > > > +       DECLARE_STATIC_KEY_FALSE(supports_pseudo_nmis);
-> > > > +
-> > > > +       if (!system_uses_irq_prio_masking() ||
-> > > > +           !static_branch_likely(&supports_pseudo_nmis))
-> > >
-> > > One thought, actually, is whether we should actually change
-> > > system_uses_irq_prio_masking() to return the correct value. What do
-> > > you think?
-> >
-> > I don't think we should add this to system_uses_irq_prio_masking(); that's used
-> > by the low-level flags manipulation code that gets inlined all over the place,
-> > and that code will work regarldess of whether we actually use NMI priorities.
-> >
-> > If we want to avoid using PMR masking *at all* on these platforms, we'd need to
-> > detect that within can_use_gic_priorities() or early_enable_pseudo_nmi().
-> 
-> I suspect that anyone trying to use PMR masking on these systems for
-> any purpose will be unhappy. The issue is talked about in:
-> 
-> https://issuetracker.google.com/281831288
-> 
-> ...where you can see that the firmware on these systems isn't properly
-> saving/restoring some registers, including GICR_IPRIORITYR.
-
-Ok, then that's a latent bug even before the IPI changes, going back to the
-original workaround in commit:
-
-  44bd78dd2b8897f5 ("irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware issues")
-
-For the sake of those reading the archive, can we have a better description of
-what exactly happens on these boards?
-
-IIUC on these boards the firmware fails to save+restore (some?) GICR registers
-across (some?) PSCI CPU_SUSPEND idle states.
-
-Which registers does it save+restore?
-
-Does it reset other registers into a specific state?
-
-Thanks,
-Mark.
+On 10/2/23 19:20, peter.wang@mediatek.com wrote:
+> The clear tm function error log is inverted.
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
