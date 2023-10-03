@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0BB2E7AD60
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 14:51:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61BBCE7AD6E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 15:14:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ks2t/2sFBUuZyfDpT4cAX7qKrPmH6DMrQUqaUAZXib0=; b=pXSAmtbFRVsAiHzBHG6X1eafhg
-	rXI4ZeNh7u4n0cZ5zkM7SKmAfFQ9xyGL/6poq91J8+SaB782w/6IrKuq1ydyTp88DI91xH3cFUSQG
-	qUvTTZ4zhyPZMFo00qA++Q8RPVz+JNCq1zUcI+x0GDq5T508mUR/Kto+CyjKL1sP4Yrah8va3T4+N
-	b5hIMCo+uyQKaME7ENh3rIqM9Bg+iRfTeaEz557QZbapo/QMXfm9ORbESLKEXKEnna6ItJSe/u6Qn
-	VabcPew84hk7JcRvE31QCDnBjauWTKQSyCKn3gQAOlU1GIIJ3smucVk3mvXuGuWt6u51AJO78nqLv
-	SD0ZRH8w==;
+	bh=G502n/pwsi2xTvXRats/u+gp/KdtO1vpg74dn53OTQA=; b=s62SzzoFqm5J5OO9xEjAdlVt0u
+	CYxRTnsv+Ykl/UFdTo552qG/drUe+haK5rYcYTl2zF3K/jJGe93NlO42+hBMFZptoIBYPgSCe4IzJ
+	ZW05sabpQIhesyCs9eL8Kom4Aie77qw0mziTjJ421AXKqw1cwWXH8L3fg3gXSqTUw2wRg6+s5zDC0
+	tj+UkROHkzl7oQ5ZDJy3ub79CgverbVPuLGn1OR68RremCUHj0fap55nlulglJqRRjgDfwHUoR1wG
+	2b7pk/GPx+rasYfRvPwK0Lq8PWKlCPDpnOOde2BHlHi1LAN5Vjehtmnj/LmTmOCN9o/rPXi3oyjcZ
+	iwvV30WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qngkU-00EpRr-2j;
-	Tue, 03 Oct 2023 14:51:46 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1qnh6r-00EqzR-1Z;
+	Tue, 03 Oct 2023 15:14:53 +0000
+Received: from mail-vk1-xa2a.google.com ([2607:f8b0:4864:20::a2a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qngkS-00EpQZ-1K
+	id 1qnh6l-00Eqx1-0V
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Oct 2023 14:51:46 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4056ce55e7eso9921365e9.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Oct 2023 07:51:41 -0700 (PDT)
+	Tue, 03 Oct 2023 15:14:52 +0000
+Received: by mail-vk1-xa2a.google.com with SMTP id 71dfb90a1353d-49b289adca9so461857e0c.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Oct 2023 08:14:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1696344700; x=1696949500; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1696346084; x=1696950884; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Ks2t/2sFBUuZyfDpT4cAX7qKrPmH6DMrQUqaUAZXib0=;
-        b=DrT/RmEj28haTZdc8EfSJ2iXOfSnzzTREKNXRp50UEd6J5bmeV4MTIP2TbQEfzUCrI
-         +XM/bos5GBB8QFOP3Gg7+3BgdLJg7/KuNuFpklu6ZWMRhHFbLeTsSHwEueflAEmC9TG/
-         DW+axppxqj9EHXoQ8sR5ofdicQTgNx0PS7ElU2pwvyi2NFCI0qV7WcZAah31IX0e18Ru
-         bjFJOr2o9jDwB6pqu9JGDPoThgKxkKuuQwBIUa2LU+OYZZlZGItqAEy9EBtsVjfkEnAK
-         KNTebAy/wx8v2oXwEyIoKE0znT2njDKRu/7dgd+GfamnpffBE5R8rgUg9+XRJWKWBBdh
-         MYbQ==
+        bh=G502n/pwsi2xTvXRats/u+gp/KdtO1vpg74dn53OTQA=;
+        b=mrxERYYZKA+Ptx7rSzqfvAIk6BwXrmNSFR7Tac0v7ZTUavJ23iH5TJ9hmZAAjxzJK3
+         cECg7618Jc0D9/EGixXo/yZEJfcfz2/paA/ktpNvQuYRT+9DWzyCrMtBXidkR2VU//zX
+         blY7Zsq69Kp+PuAcgXR5LZeg0d0q6ZEbcozMY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696344700; x=1696949500;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1696346084; x=1696950884;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Ks2t/2sFBUuZyfDpT4cAX7qKrPmH6DMrQUqaUAZXib0=;
-        b=iT3dQexEw1VmIKmkIDTmMjdLddhaB/Zm6o2INmCbPuBtvyQQnO7SB6KLkVdIdHYxW1
-         FPdN8ml7uVuytUYcZdc3sNVakBDZLRDVTNz1KyeOUBnn/Xsg4R0xJoatOmIoxilQHZ2E
-         nnyUrLWmPz5dWAasKGBF0UeL9H6BoEwR2VtKkH5LrSGUQmG7ChmJgRWA3KoV5/UvlM4Q
-         bo97z1CyImKLTrHmb9s1G+fZ/5lQsl/HDC7qUURttSJNxmBTUhm7qKv3vyfTuahjjYSM
-         y2VRT1J+katbGswVDE/UQIAdLFUexuZOxWjcDguJrVIA4WvViRMobOYaKYOSvR1iyotM
-         xxRw==
-X-Gm-Message-State: AOJu0YxVwRUn1KinYgG3Xh0/9tp0iza919VxJWi+LK2RsP25Z/gFhsmC
-	fpDqlOav+wo4PjyD9NHgHgYZ+Q==
-X-Google-Smtp-Source: AGHT+IFUqR+B/szZTRDo5xgv2b0OGWRpC2vhN/v1bUskvnm2BzTjMR/Uc7/sn0fYqGUE09vNlF8eTw==
-X-Received: by 2002:a7b:cb89:0:b0:405:3455:e1a3 with SMTP id m9-20020a7bcb89000000b004053455e1a3mr14062183wmi.17.1696344700655;
-        Tue, 03 Oct 2023 07:51:40 -0700 (PDT)
-Received: from brgl-uxlite.home ([2a01:cb1d:334:ac00:1f2d:3479:a5de:fa35])
-        by smtp.gmail.com with ESMTPSA id c15-20020a05600c0acf00b003fe29f6b61bsm1462773wmr.46.2023.10.03.07.51.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Oct 2023 07:51:40 -0700 (PDT)
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-To: Linus Walleij <linus.walleij@linaro.org>,
-	Andy Shevchenko <andy@kernel.org>
-Cc: linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 22/36] pinctrl: mediatek: use new pinctrl GPIO helpers
-Date: Tue,  3 Oct 2023 16:51:00 +0200
-Message-Id: <20231003145114.21637-23-brgl@bgdev.pl>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231003145114.21637-1-brgl@bgdev.pl>
-References: <20231003145114.21637-1-brgl@bgdev.pl>
+        bh=G502n/pwsi2xTvXRats/u+gp/KdtO1vpg74dn53OTQA=;
+        b=mknAyA76auuftpwBILW4+2/BYd/7pY9DppaU3bFjM6fLtXMlUAY2jchJlvfuEXlyYq
+         26FNv2seEZG1spf8guO6KXzFze6QMyxApluWnhzgcXXuV1sdzigKalVFhyXKTzRtgJIC
+         gtcYWuXvIUzjCX8COCkupu6UJLUYn9FsRIYwWXZuN2KvZh1bfaXaApD1ryTafq0R0d/7
+         Bw9f0xN7hQ220YXUCJA9e4nUCvuVRWK6ItgLsFItoDaxMSRGHRDopKHpb1IQQvikYuym
+         AP6AptRAnUTim1RoDorIw6a1PzSlGga3PLKsSRCRr4pG5kTpmsJlhye2wqeHvI2vVDHH
+         5GfA==
+X-Gm-Message-State: AOJu0YxdYw1TxIaJ5JprPYrx1ZrremAhkQP2OUdzShrlL44i6nuEhzZF
+	HBDVlpqR94g3+/HteHWhL9TCQu6QWIYVqAeJWyY=
+X-Google-Smtp-Source: AGHT+IGQryfO1IwQ4bg4WMwOWsWh/PJBx9Tosj1CS+sjOV2yZ114f8q6bZ984GUxxqWo3SRo6gb+Fg==
+X-Received: by 2002:a05:6122:21a8:b0:49d:723f:5912 with SMTP id j40-20020a05612221a800b0049d723f5912mr5850841vkd.12.1696346083962;
+        Tue, 03 Oct 2023 08:14:43 -0700 (PDT)
+Received: from mail-ua1-f43.google.com (mail-ua1-f43.google.com. [209.85.222.43])
+        by smtp.gmail.com with ESMTPSA id p14-20020ac5ccae000000b0049d2122e009sm186682vkm.24.2023.10.03.08.14.43
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Oct 2023 08:14:43 -0700 (PDT)
+Received: by mail-ua1-f43.google.com with SMTP id a1e0cc1a2514c-7b0ec7417bdso470058241.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Oct 2023 08:14:43 -0700 (PDT)
+X-Received: by 2002:a05:6102:274c:b0:452:9384:139a with SMTP id
+ p12-20020a056102274c00b004529384139amr13589952vsu.22.1696346082550; Tue, 03
+ Oct 2023 08:14:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20231002092051.555479-1-wenst@chromium.org>
+In-Reply-To: <20231002092051.555479-1-wenst@chromium.org>
+From: Fei Shao <fshao@chromium.org>
+Date: Tue, 3 Oct 2023 23:14:06 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ng3_z0H48awhum7unXTTk0yfn61pTWqSmPJ9fWdoURL=A@mail.gmail.com>
+Message-ID: <CAC=S1ng3_z0H48awhum7unXTTk0yfn61pTWqSmPJ9fWdoURL=A@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Correctly free sg_table in gem prime vmap
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_075144_450778_FF49C648 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20231003_081447_192125_B01BE0CD 
+X-CRM114-Status: GOOD (  25.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,85 +99,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Hi,
 
-Replace the pinctrl helpers taking the global GPIO number as argument
-with the improved variants that instead take a pointer to the GPIO chip
-and the controller-relative offset.
+On Mon, Oct 2, 2023 at 5:21=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> wr=
+ote:
+>
+> The MediaTek DRM driver implements GEM PRIME vmap by fetching the
+> sg_table for the object, iterating through the pages, and then
+> vmapping them. In essence, unlike the GEM DMA helpers which vmap
+> when the object is first created or imported, the MediaTek version
+> does it on request.
+>
+> Unfortunately, the code never correctly frees the sg_table contents.
+> This results in a kernel memory leak. On a Hayato device with a text
+> console on the internal display, this results in the system running
+> out of memory in a few days from all the console screen cursor updates.
+>
+> Add sg_free_table() to correctly free the contents of the sg_table. This
+> was missing despite explicitly required by mtk_gem_prime_get_sg_table().
+>
+> Fixes: 3df64d7b0a4f ("drm/mediatek: Implement gem prime vmap/vunmap funct=
+ion")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Please merge for v6.6 fixes.
+>
+> Also, I was wondering why the MediaTek DRM driver implements a lot of
+> the GEM functionality itself, instead of using the GEM DMA helpers.
+> From what I could tell, the code closely follows the DMA helpers, except
+> that it vmaps the buffers only upon request.
+>
+>
+>  drivers/gpu/drm/mediatek/mtk_drm_gem.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/med=
+iatek/mtk_drm_gem.c
+> index 9f364df52478..297ee090e02e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> @@ -239,6 +239,7 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj=
+, struct iosys_map *map)
+>         npages =3D obj->size >> PAGE_SHIFT;
+>         mtk_gem->pages =3D kcalloc(npages, sizeof(*mtk_gem->pages), GFP_K=
+ERNEL);
+>         if (!mtk_gem->pages) {
+> +               sg_free_table(sgt);
+>                 kfree(sgt);
+>                 return -ENOMEM;
+>         }
+> @@ -248,11 +249,13 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *o=
+bj, struct iosys_map *map)
+>         mtk_gem->kvaddr =3D vmap(mtk_gem->pages, npages, VM_MAP,
+>                                pgprot_writecombine(PAGE_KERNEL));
+>         if (!mtk_gem->kvaddr) {
+> +               sg_free_table(sgt);
+>                 kfree(sgt);
+>                 kfree(mtk_gem->pages);
+>                 return -ENOMEM;
+>         }
+>  out:
+> +       sg_free_table(sgt);
 
-Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
----
- drivers/pinctrl/mediatek/pinctrl-moore.c      | 4 ++--
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 4 ++--
- drivers/pinctrl/mediatek/pinctrl-paris.c      | 4 ++--
- 3 files changed, 6 insertions(+), 6 deletions(-)
+I think this will cause invalid access from the "goto out" path -
+sg_free_table() accesses the provided sg table pointer, but it doesn't
+handle NULL pointers like kfree() does.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
-index 889469c7ac26..dc41ffa31357 100644
---- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-@@ -512,7 +512,7 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
- 
- static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
- {
--	return pinctrl_gpio_direction_input(chip->base + gpio);
-+	return pinctrl_gpio_direction_input_new(chip, gpio);
- }
- 
- static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
-@@ -520,7 +520,7 @@ static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
- {
- 	mtk_gpio_set(chip, gpio, value);
- 
--	return pinctrl_gpio_direction_output(chip->base + gpio);
-+	return pinctrl_gpio_direction_output_new(chip, gpio);
- }
- 
- static int mtk_gpio_to_irq(struct gpio_chip *chip, unsigned int offset)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 74b15952b742..fc046415b567 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -811,14 +811,14 @@ static const struct pinmux_ops mtk_pmx_ops = {
- static int mtk_gpio_direction_input(struct gpio_chip *chip,
- 					unsigned offset)
- {
--	return pinctrl_gpio_direction_input(chip->base + offset);
-+	return pinctrl_gpio_direction_input_new(chip, offset);
- }
- 
- static int mtk_gpio_direction_output(struct gpio_chip *chip,
- 					unsigned offset, int value)
- {
- 	mtk_gpio_set(chip, offset, value);
--	return pinctrl_gpio_direction_output(chip->base + offset);
-+	return pinctrl_gpio_direction_output_new(chip, offset);
- }
- 
- static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned offset)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index b7cb5a1f1060..14b151aec2f9 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -916,7 +916,7 @@ static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
- 	if (gpio >= hw->soc->npins)
- 		return -EINVAL;
- 
--	return pinctrl_gpio_direction_input(chip->base + gpio);
-+	return pinctrl_gpio_direction_input_new(chip, gpio);
- }
- 
- static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
-@@ -929,7 +929,7 @@ static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
- 
- 	mtk_gpio_set(chip, gpio, value);
- 
--	return pinctrl_gpio_direction_output(chip->base + gpio);
-+	return pinctrl_gpio_direction_output_new(chip, gpio);
- }
- 
- static int mtk_gpio_to_irq(struct gpio_chip *chip, unsigned int offset)
--- 
-2.39.2
+Regards,
+Fei
 
+
+>         kfree(sgt);
+>         iosys_map_set_vaddr(map, mtk_gem->kvaddr);
+>
+> --
+> 2.42.0.582.g8ccd20d70d-goog
+>
+>
 
