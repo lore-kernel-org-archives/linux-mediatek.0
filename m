@@ -4,87 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61BBCE7AD6E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 15:14:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC696E7AD6E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Oct 2023 15:20:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G502n/pwsi2xTvXRats/u+gp/KdtO1vpg74dn53OTQA=; b=s62SzzoFqm5J5OO9xEjAdlVt0u
-	CYxRTnsv+Ykl/UFdTo552qG/drUe+haK5rYcYTl2zF3K/jJGe93NlO42+hBMFZptoIBYPgSCe4IzJ
-	ZW05sabpQIhesyCs9eL8Kom4Aie77qw0mziTjJ421AXKqw1cwWXH8L3fg3gXSqTUw2wRg6+s5zDC0
-	tj+UkROHkzl7oQ5ZDJy3ub79CgverbVPuLGn1OR68RremCUHj0fap55nlulglJqRRjgDfwHUoR1wG
-	2b7pk/GPx+rasYfRvPwK0Lq8PWKlCPDpnOOde2BHlHi1LAN5Vjehtmnj/LmTmOCN9o/rPXi3oyjcZ
-	iwvV30WQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+Fi0GvVL1UlJlWvA6+wPBTvjnYAhizI6Olhrf8X5QnE=; b=NeAgMgjYPzfsHBNyMe5/ZlSR2I
+	v+J88ftwnrdOsnhYNduRFqdKc8sn7RqxpOyhCjbN/Ku5tMZ4o3lFqxxI+24i8Inj579A8pGcmuVvJ
+	CP7svFQUfbQgeAkXcZHhBEzNpQcIyC8cf7sYxsYAEZZfMSYvWdiI3ofJgALMAxCMmZe/Dpu6se1Du
+	R6jRB2MavO2UPzxK4n+NNLwX5x8iuIQ3A2OEDZsTtkLJb358Qkh9oMUEprAKkJzYPOSU7+OpIDag3
+	8tPUNpAWX+kJecxOa7474r9w090AOsHWO19ZsfZ9jwSmFypPYxMp+RWDc7w3YLOkJ3yUnnRdbLEXZ
+	Kmj7ZPVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnh6r-00EqzR-1Z;
-	Tue, 03 Oct 2023 15:14:53 +0000
-Received: from mail-vk1-xa2a.google.com ([2607:f8b0:4864:20::a2a])
+	id 1qnhCk-00Erur-1l;
+	Tue, 03 Oct 2023 15:20:58 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnh6l-00Eqx1-0V
+	id 1qnhCh-00ErtW-1n
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Oct 2023 15:14:52 +0000
-Received: by mail-vk1-xa2a.google.com with SMTP id 71dfb90a1353d-49b289adca9so461857e0c.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Oct 2023 08:14:45 -0700 (PDT)
+	Tue, 03 Oct 2023 15:20:57 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-1c5ff5f858dso8046425ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Oct 2023 08:20:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1696346084; x=1696950884; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=G502n/pwsi2xTvXRats/u+gp/KdtO1vpg74dn53OTQA=;
-        b=mrxERYYZKA+Ptx7rSzqfvAIk6BwXrmNSFR7Tac0v7ZTUavJ23iH5TJ9hmZAAjxzJK3
-         cECg7618Jc0D9/EGixXo/yZEJfcfz2/paA/ktpNvQuYRT+9DWzyCrMtBXidkR2VU//zX
-         blY7Zsq69Kp+PuAcgXR5LZeg0d0q6ZEbcozMY=
+        d=linaro.org; s=google; t=1696346454; x=1696951254; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=+Fi0GvVL1UlJlWvA6+wPBTvjnYAhizI6Olhrf8X5QnE=;
+        b=WTIb7gT0r/rqDfG4lRvl1YGxs5OotfmDP2GyQZEZJ5nKulD8eOiqNPtBp9v9UlcPZp
+         iytKR5BzFbDGBFsL9SI8B0Ty/B6oX3GrD6JQKyZQuGSF9PMRtbuOEjsY44VgSdF6pzeB
+         GWTf41GLjUFCBeik8YVZOgSahNWvzXr5cpDzd8WW1i9pztugkJaINxfEqL8J1EM9u3wp
+         aIaBB1WyPjQIQVyIubOR08qy3oamXhSAgWzlqIBVM76aaKh9/SKQ9b5lQsbKLmwyfwsI
+         qveW+ZA6y6c6GxCH6mXWykHOz7GF9E0/a/xolK7Pa6moBcirhVHyNlt1Uib2a5kbDVeM
+         kjTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696346084; x=1696950884;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=G502n/pwsi2xTvXRats/u+gp/KdtO1vpg74dn53OTQA=;
-        b=mknAyA76auuftpwBILW4+2/BYd/7pY9DppaU3bFjM6fLtXMlUAY2jchJlvfuEXlyYq
-         26FNv2seEZG1spf8guO6KXzFze6QMyxApluWnhzgcXXuV1sdzigKalVFhyXKTzRtgJIC
-         gtcYWuXvIUzjCX8COCkupu6UJLUYn9FsRIYwWXZuN2KvZh1bfaXaApD1ryTafq0R0d/7
-         Bw9f0xN7hQ220YXUCJA9e4nUCvuVRWK6ItgLsFItoDaxMSRGHRDopKHpb1IQQvikYuym
-         AP6AptRAnUTim1RoDorIw6a1PzSlGga3PLKsSRCRr4pG5kTpmsJlhye2wqeHvI2vVDHH
-         5GfA==
-X-Gm-Message-State: AOJu0YxdYw1TxIaJ5JprPYrx1ZrremAhkQP2OUdzShrlL44i6nuEhzZF
-	HBDVlpqR94g3+/HteHWhL9TCQu6QWIYVqAeJWyY=
-X-Google-Smtp-Source: AGHT+IGQryfO1IwQ4bg4WMwOWsWh/PJBx9Tosj1CS+sjOV2yZ114f8q6bZ984GUxxqWo3SRo6gb+Fg==
-X-Received: by 2002:a05:6122:21a8:b0:49d:723f:5912 with SMTP id j40-20020a05612221a800b0049d723f5912mr5850841vkd.12.1696346083962;
-        Tue, 03 Oct 2023 08:14:43 -0700 (PDT)
-Received: from mail-ua1-f43.google.com (mail-ua1-f43.google.com. [209.85.222.43])
-        by smtp.gmail.com with ESMTPSA id p14-20020ac5ccae000000b0049d2122e009sm186682vkm.24.2023.10.03.08.14.43
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 03 Oct 2023 08:14:43 -0700 (PDT)
-Received: by mail-ua1-f43.google.com with SMTP id a1e0cc1a2514c-7b0ec7417bdso470058241.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Oct 2023 08:14:43 -0700 (PDT)
-X-Received: by 2002:a05:6102:274c:b0:452:9384:139a with SMTP id
- p12-20020a056102274c00b004529384139amr13589952vsu.22.1696346082550; Tue, 03
- Oct 2023 08:14:42 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1696346454; x=1696951254;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+Fi0GvVL1UlJlWvA6+wPBTvjnYAhizI6Olhrf8X5QnE=;
+        b=lSsxu9R9aRTImESET3HJq9CJBXMGP0G08AC3jaZ5OJBgZNJo5oAr0Myjuv0nD2gxqP
+         /RtGPJvnb1UzmcniZBIZ7bWrcSnxM5UZYAiQebDVLZBNgmW+uRHXtlmRBxR4XqafGr2s
+         Vneiptn4ywmxEKAe0WCN306bdkp+b96BYnJ0YQZwEHGAfG88KWEQs22UypAt5Ntg0H65
+         Ju8C7YP4oqxLUke7y4BtYEwUsn/ZN2JjrOoSw7QfDGek+pfzY1n6spG7xl2f2NSKa2a7
+         nOYF96J740sSNzHI3SSOPDu6MM0JgqNFvqcBhSbO12rtX4yWYs4kKBxCMVowh2fwGrK/
+         U0wg==
+X-Gm-Message-State: AOJu0Yx1Dy8AA1FvolMK+tkMXoRKhJbY2d9dCHnzDoEO6tv9IqSqf5Xv
+	mIiJhtYBNAhd+jsOkZicAI1MWg==
+X-Google-Smtp-Source: AGHT+IHbk4360AQXMEM8OHKJjDDmSkblY5FgQIBA5Fra9XDJdxKFPKgQIzSaAMDLRapNNLqBYtu7wQ==
+X-Received: by 2002:a17:902:d512:b0:1c4:c5d:d7fa with SMTP id b18-20020a170902d51200b001c40c5dd7famr13112626plg.45.1696346454478;
+        Tue, 03 Oct 2023 08:20:54 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:9379:e1e1:dd3c:a271])
+        by smtp.gmail.com with ESMTPSA id w5-20020a170902d3c500b001c74df14e72sm1684106plb.212.2023.10.03.08.20.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Oct 2023 08:20:53 -0700 (PDT)
+Date: Tue, 3 Oct 2023 09:20:51 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 1/5] MAINTAINERS: Add Angelo as MediaTek SoC co-maintainer
+Message-ID: <ZRwxUz+K1SwGVQU3@p14s>
+References: <20231003-mediatek-fixes-v6-7-v1-0-dad7cd62a8ff@collabora.com>
+ <20231003-mediatek-fixes-v6-7-v1-1-dad7cd62a8ff@collabora.com>
 MIME-Version: 1.0
-References: <20231002092051.555479-1-wenst@chromium.org>
-In-Reply-To: <20231002092051.555479-1-wenst@chromium.org>
-From: Fei Shao <fshao@chromium.org>
-Date: Tue, 3 Oct 2023 23:14:06 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ng3_z0H48awhum7unXTTk0yfn61pTWqSmPJ9fWdoURL=A@mail.gmail.com>
-Message-ID: <CAC=S1ng3_z0H48awhum7unXTTk0yfn61pTWqSmPJ9fWdoURL=A@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Correctly free sg_table in gem prime vmap
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231003-mediatek-fixes-v6-7-v1-1-dad7cd62a8ff@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_081447_192125_B01BE0CD 
-X-CRM114-Status: GOOD (  25.38  )
+X-CRM114-CacheID: sfid-20231003_082055_622045_55D432C3 
+X-CRM114-Status: GOOD (  20.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,85 +86,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Seiya Wang <seiya.wang@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, Tinghan Shen <tinghan.shen@mediatek.com>, soc@kernel.org, linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, Fabien Parent <fparent@baylibre.com>, Miles Chen <miles.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Jieyy Yang <jieyy.yang@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Mon, Oct 2, 2023 at 5:21=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> wr=
-ote:
->
-> The MediaTek DRM driver implements GEM PRIME vmap by fetching the
-> sg_table for the object, iterating through the pages, and then
-> vmapping them. In essence, unlike the GEM DMA helpers which vmap
-> when the object is first created or imported, the MediaTek version
-> does it on request.
->
-> Unfortunately, the code never correctly frees the sg_table contents.
-> This results in a kernel memory leak. On a Hayato device with a text
-> console on the internal display, this results in the system running
-> out of memory in a few days from all the console screen cursor updates.
->
-> Add sg_free_table() to correctly free the contents of the sg_table. This
-> was missing despite explicitly required by mtk_gem_prime_get_sg_table().
->
-> Fixes: 3df64d7b0a4f ("drm/mediatek: Implement gem prime vmap/vunmap funct=
-ion")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+On Tue, Oct 03, 2023 at 01:13:43PM +0200, AngeloGioacchino Del Regno wrote:
+> I am a top reviewer mainly for MediaTek SoC related patches in most
+> subsystems and I've also been upstreaming both improvements, fixes
+> and new drivers and devicetrees when required.
+> 
+> The MediaTek scene saw a generous increase in number of patches that
+> are sent to the lists every week, increasing the amount of required
+> efforts to maintain the MTK bits overall, and we will possibly see
+> even more of that.
+> 
+> For this reason, and also because of suggestions and encouragement
+> coming from the community, I'm stepping up to be a co-maintainer of
+> MediaTek SoCs support.
+> 
+> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Link: https://lore.kernel.org/r/20230929082009.71843-1-angelogioacchino.delregno@collabora.com
 > ---
-> Please merge for v6.6 fixes.
->
-> Also, I was wondering why the MediaTek DRM driver implements a lot of
-> the GEM functionality itself, instead of using the GEM DMA helpers.
-> From what I could tell, the code closely follows the DMA helpers, except
-> that it vmaps the buffers only upon request.
->
->
->  drivers/gpu/drm/mediatek/mtk_drm_gem.c | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/med=
-iatek/mtk_drm_gem.c
-> index 9f364df52478..297ee090e02e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-> @@ -239,6 +239,7 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj=
-, struct iosys_map *map)
->         npages =3D obj->size >> PAGE_SHIFT;
->         mtk_gem->pages =3D kcalloc(npages, sizeof(*mtk_gem->pages), GFP_K=
-ERNEL);
->         if (!mtk_gem->pages) {
-> +               sg_free_table(sgt);
->                 kfree(sgt);
->                 return -ENOMEM;
->         }
-> @@ -248,11 +249,13 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *o=
-bj, struct iosys_map *map)
->         mtk_gem->kvaddr =3D vmap(mtk_gem->pages, npages, VM_MAP,
->                                pgprot_writecombine(PAGE_KERNEL));
->         if (!mtk_gem->kvaddr) {
-> +               sg_free_table(sgt);
->                 kfree(sgt);
->                 kfree(mtk_gem->pages);
->                 return -ENOMEM;
->         }
->  out:
-> +       sg_free_table(sgt);
+>  MAINTAINERS | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 90f13281d297..57f82fcea1e7 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2327,7 +2327,7 @@ F:	drivers/rtc/rtc-mt7622.c
+>  
+>  ARM/Mediatek SoC support
+>  M:	Matthias Brugger <matthias.bgg@gmail.com>
+> -R:	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +M:	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-I think this will cause invalid access from the "goto out" path -
-sg_free_table() accesses the provided sg table pointer, but it doesn't
-handle NULL pointers like kfree() does.
+Acked-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 
-Regards,
-Fei
-
-
->         kfree(sgt);
->         iosys_map_set_vaddr(map, mtk_gem->kvaddr);
->
-> --
-> 2.42.0.582.g8ccd20d70d-goog
->
->
+>  L:	linux-kernel@vger.kernel.org
+>  L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+>  L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+> 
+> -- 
+> 2.42.0
+> 
+> 
 
