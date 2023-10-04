@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACD43E7C4E8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 18:08:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39587E7C4EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 19:30:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C9iYrjHOyfOKIUcVEs2UDJbgeqtyssNJDxi1mGLZrX4=; b=3GG0dcKIpQm665LpL/h3xXLQlK
-	CALU9I8dGXDHGZV9j8nHNbPe0KbOS8fLHJN+DKsK1pnovafEutK9jW8qV/y3g0PlRhhzbb1KMyk1T
-	h5QoMAoPHC0oBRZ76x7a4QVzeC1o036XNTUkaMoRM23kJPMLbkLl2gG+mQ8g2jQVxrnFKU0GbRi4C
-	m6HVWrGCN+AO3316y15xbQ4STsXYRrOip04q+xSaHTAmucyeNBnvXPvyccULmo10j/rPyotVlVd2s
-	vGjZC9GYBPXTcmCxSDVeL8xpe9X5ChbTa3pSjBZw6QWH3sakDx+oh6kdLxIoZvsKcYaES3asRF79Y
-	r6DPk70A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8nAhymJNVPum0mDzUbsodaQP/OOuWN40YZNYRehXyB8=; b=jK9mBdgjGc6ee95KHGt5lpYMBs
+	0WVrttl69nnmbpbQ8AxfgdTFrjb1Sefm2+f+W3XixhcORHdHWqf3wrO4eateg4Uk7+0se2EhYx7Z6
+	1h1EfsDIR0OMfesk1XGqFNlLHnscoW7O/mzYncz6Ngoir40p+ouXVy12tZIrZ6JP+Dlgoa3/GRXQw
+	fo+y6Ais7cDHi3WjkuT3jG3GwIFdx2WXivhUEATSlFcIhYCmm4B1Nk7NiHVF5/wK58ZxGGmJxOmbd
+	VOOc6kVMb45IZpzLDwAk4kHt2ZPehqDYBWykBB8VkT7TSdICgVTlaHBdXg/GIcdyYFItVMofL+gcI
+	2bjiJklQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo6Ij-000fEj-17;
-	Wed, 04 Oct 2023 18:08:49 +0000
-Received: from mail-pf1-f179.google.com ([209.85.210.179])
+	id 1qo7Zv-000nqd-2U;
+	Wed, 04 Oct 2023 19:30:39 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo6Ig-000fDE-28
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Oct 2023 18:08:48 +0000
-Received: by mail-pf1-f179.google.com with SMTP id d2e1a72fcca58-690d8c05784so54639b3a.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Oct 2023 11:08:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696442917; x=1697047717;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=C9iYrjHOyfOKIUcVEs2UDJbgeqtyssNJDxi1mGLZrX4=;
-        b=GciZoGuS7kFfewFVB3cknOQq7ySSnXzwvexAHUR6srSYgHOCeuRXpaTYHHCaS9csxa
-         loP0ze2FPIEE2Npft6dwfsWax+qLvo+w0HQQ5ncmc0p3hmYvE8lxJQEfgkz/EQvgDjOl
-         9XI4im0TvS2KUQv6Q8AKC2RM7JbbTMzsTFl20FzZJQwnFyTX08MY9/hSOJXfkY6xvdVU
-         frCgoLXBJXfYA8f540dyrJrsj5Lc7omOgGZQIiHqPj3AqvZCG6OqB5L+X/xhDqQEUE1p
-         79ZrQ3WBG4gqGwHur3HERHLODCArsLrwMlIl5RGdoT2oc2BKu+he2c6FqXsVsYL6Qzo6
-         0lhQ==
-X-Gm-Message-State: AOJu0Yzg/T4i/qBvemSWEy0MUsXlZIPZyXzbHi4AuhexTeI47VTU+8kQ
-	LAUd7n+LJomZniiPLQg8hDM34Q==
-X-Google-Smtp-Source: AGHT+IGChQBN+ORe86zQsRfP8sgNZXca4nlpKZuqOVrZVMZJgmrdlPzT30mCpFbTG7lG/oc9xpYLPQ==
-X-Received: by 2002:a05:6a20:431c:b0:136:ea0e:d23 with SMTP id h28-20020a056a20431c00b00136ea0e0d23mr3578146pzk.11.1696442917014;
-        Wed, 04 Oct 2023 11:08:37 -0700 (PDT)
-Received: from localhost (71-212-56-62.tukw.qwest.net. [71.212.56.62])
-        by smtp.gmail.com with ESMTPSA id x2-20020a170902ea8200b001c62d63b817sm4016430plb.179.2023.10.04.11.08.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Oct 2023 11:08:36 -0700 (PDT)
-From: Kevin Hilman <khilman@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: nfraprado@collabora.com, wenst@chromium.org, matthias.bgg@gmail.com,
- robh@kernel.org, amergnat@baylibre.com, arnd@arndb.de, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] MAINTAINERS: Add Angelo as MediaTek SoC co-maintainer
-In-Reply-To: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
-References: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
-Date: Wed, 04 Oct 2023 11:08:36 -0700
-Message-ID: <7h8r8i5kgr.fsf@baylibre.com>
+	id 1qo7Zs-000npX-2O;
+	Wed, 04 Oct 2023 19:30:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 0441DB82064;
+	Wed,  4 Oct 2023 19:30:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 13C8AC433C7;
+	Wed,  4 Oct 2023 19:30:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696447833;
+	bh=Rll2hLODlO0jmujFPX4lrfv0Ine7ZvmL97hOB+GB6RY=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=hDM501ce2NuFndagwuaawZtKJIGNc+HB30HRbNGnHEARoTlNypCWEBGYxJWMgmP6Y
+	 PaJXTNmxofQLvPi0cPNlTTRZb+ht1MrSa5P1eRwy27NCN/ETtNTuAxO4DYz4Dkmi7S
+	 JjCO0XGHneUF7PgmgQLREd2ka2OXk1ItQ2h/J2eE9vS8UisOiamVWDqq4Tsfxt/IJ4
+	 6c4nwh9iVBfgrCziALT2eT4f95gU8V5dneMMZU8kHFuhOyb0XouGbFHzS71dAD00vO
+	 5QsMm4fr+7QNoTl4BYcg8xnugsUFiQGMStS7hkC4ymMoFqfo6NViSmvgGw1x1MVvPZ
+	 PIl8HDWxMMgHg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id EA586E632D7;
+	Wed,  4 Oct 2023 19:30:32 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: dsa: mt753x: remove
+ mt753x_phylink_pcs_link_up()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <169644783295.9933.15690171576616695923.git-patchwork-notify@kernel.org>
+Date: Wed, 04 Oct 2023 19:30:32 +0000
+References: <E1qlTQS-008BWe-Va@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1qlTQS-008BWe-Va@rmk-PC.armlinux.org.uk>
+To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, arinc.unal@arinc9.com,
+ daniel@makrotopia.org, Landen.Chao@mediatek.com, dqfext@gmail.com,
+ sean.wang@mediatek.com, f.fainelli@gmail.com, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_110846_695102_46AC5F72 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20231004_123036_922531_20664EBB 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,29 +80,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> writes:
+Hello:
 
-> I am a top reviewer mainly for MediaTek SoC related patches in most
-> subsystems and I've also been upstreaming both improvements, fixes
-> and new drivers and devicetrees when required.
->
-> The MediaTek scene saw a generous increase in number of patches that
-> are sent to the lists every week, increasing the amount of required
-> efforts to maintain the MTK bits overall, and we will possibly see
-> even more of that.
->
-> For this reason, and also because of suggestions and encouragement
-> coming from the community, I'm stepping up to be a co-maintainer of
-> MediaTek SoCs support.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Acked-by: Kevin Hilman <khilman@baylibre.com>
+On Wed, 27 Sep 2023 13:13:56 +0100 you wrote:
+> Remove the mt753x_phylink_pcs_link_up() function for two reasons:
+> 
+> 1) priv->pcs[i].pcs.neg_mode is set true, meaning it doesn't take a
+>    MLO_AN_FIXED anymore, but one of PHYLINK_PCS_NEG_*. However, this
+>    is inconsequential due to...
+> 2) priv->pcs[port].pcs.ops is always initialised to point at
+>    mt7530_pcs_ops, which does not have a pcs_link_up() member.
+> 
+> [...]
 
-Thank you Matthias for all the work you've put in over the years to
-maintain MTK SoCs, and thank you to Angelo for stepping up to help as
-the volume of maintainer work is increasing.
+Here is the summary with links:
+  - [net-next] net: dsa: mt753x: remove mt753x_phylink_pcs_link_up()
+    https://git.kernel.org/netdev/net-next/c/d5a590b1b614
 
-Kevin
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
