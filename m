@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7D8CE936E5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 20:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E925CE936E7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 21:19:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KzHAbniVp7cysfFWNfWe4DNLWc4bxmAt3IDLbxXWCVc=; b=0j6Lho72AtlITphSaCKLfxdP0q
-	F5CtaPXy0moIdbSG1PnP/dGBrzma8j6gQ4x7VEffO3h8JUtBI2i85E26TQ4waiIvLnoO+Rsrsy5lP
-	KpN3jztEP/YhZcIgsOBIQocn9BgrXcURZ89zEEEsHjofDW4HqCj43PS61Whx+CzpZBeLZoaKUk31T
-	/yKESpX08RCK07vjrKfR3jrwfKSvqYELYwFnZjhLxfHJrqO3NFGzX3tbwI9O3McT/kHsscExVyhKX
-	RRR3I78Wur1xV0T9GQQXFa358EbdzPJvMCSnuNhYr8uwq1UxZzuJPRckMKNtNXXs4U49B8SB3YAvk
-	xokO/Pnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V3Jzdi6oUsAtlRuQZ2co8eYXzCPwyR0AY8mTXhZ9zOE=; b=Wg7kMzSXeyELxTB/epo7KaZzLh
+	PsgvBTQNKbXdqE0MCjAd6hyKkVI2sZ1gFwevIcpCViroo+XHNwHGvKbUGo32Cb3sknHoIRpw5BrnP
+	7CTpmkMz8di7eUoUDoGxNcY4YazIhQEj9CaIjK8DrzXbhQzc4QVoXpx7V3StSHNZdP30LPUeVT9Ci
+	I6fuEGtGbAcKod6BKdUplQPVtUuqkbOCOWfQ3sMx/5nQQlu7bDwcaSdLjO9EmeN6LGb0mbJioqHMJ
+	unnPuvsASGgm+AyPNISFiY3eMsHvLKJpXgMZqZouPjMMaZqAoLcTxzF0lrvb5+aGOMdlm8EB6NjAp
+	AeRoW6ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo8n0-000tGW-1X;
-	Wed, 04 Oct 2023 20:48:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qo9HR-000vCC-21;
+	Wed, 04 Oct 2023 21:19:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo8mx-000tFf-2H
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Oct 2023 20:48:13 +0000
-X-UUID: 528eeaee62f711ee9b7791016c24628a-20231004
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KzHAbniVp7cysfFWNfWe4DNLWc4bxmAt3IDLbxXWCVc=;
-	b=TnOLMXisdNEk0kmXkiRagxQPkWwepdRQ6b/PmAfbeeJT2AuWPP2pxicjuZ6SBCAgzgcsJeVxS+rUiw6qRHOZQmkHp1NN/7awDIDVYLlqzmK6IqL4H0FRhASxYezxUQfMSZwCiEbzz02ZGpcgRg8wzM9hQMwyocbRzc3pzW28Tm4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:373f382c-3587-4d74-81dd-66ee4c45242a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:49ca96bf-14cc-44ca-b657-2d2783296e72,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 528eeaee62f711ee9b7791016c24628a-20231004
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <yi-chia.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1000462771; Wed, 04 Oct 2023 13:48:07 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 5 Oct 2023 04:48:05 +0800
-Received: from mussdccf250.mussds.eus.mediatek.inc (10.73.250.250) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 5 Oct 2023 04:48:03 +0800
-From: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Benjamin Lin <benjamin-jw.lin@mediatek.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>, Money Wang
-	<Money.Wang@mediatek.com>
-Subject: [PATCH v4] wifi: mt76: connac: report per-phy tx and rx byte to tpt_led
-Date: Wed, 4 Oct 2023 13:48:01 -0700
-Message-ID: <97b1288f15b0976421751da6cca68dd00dd283c6.1696376065.git.yi-chia.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.17.1
+	id 1qo9HN-000vBK-1d;
+	Wed, 04 Oct 2023 21:19:38 +0000
+Received: from i53875a3c.versanet.de ([83.135.90.60] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1qo9GZ-0005NJ-Hp; Wed, 04 Oct 2023 23:18:47 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: broonie@kernel.org, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
+ joel@jms.id.au, andrew@aj.id.au, florian.fainelli@broadcom.com,
+ rjui@broadcom.com, sbranden@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com, fancer.lancer@gmail.com,
+ olteanv@gmail.com, neil.armstrong@linaro.org, khilman@baylibre.com,
+ jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+ conor.dooley@microchip.com, daire.mcnamara@microchip.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com,
+ venture@google.com, yuenn@google.com, benjaminfair@google.com,
+ linus.walleij@linaro.org, Li Zetao <lizetao1@huawei.com>
+Cc: lizetao1@huawei.com, linux-spi@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-riscv@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH -next 25/25] spi: rockchip: Use helper function
+ devm_clk_get_enabled()
+Date: Wed, 04 Oct 2023 23:18:45 +0200
+Message-ID: <16634210.geO5KgaWL5@diego>
+In-Reply-To: <20230822131237.1022815-26-lizetao1@huawei.com>
+References: <20230822131237.1022815-1-lizetao1@huawei.com>
+ <20230822131237.1022815-26-lizetao1@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_134811_812838_A1614688 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20231004_141937_548318_AF9EE659 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,109 +76,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the issue where the tx and rx byte count is not reported to mac80211
-when H/W path is binded.
+Am Dienstag, 22. August 2023, 15:12:37 CEST schrieb Li Zetao:
+> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+> replaced by devm_clk_get_enabled() when driver enables (and possibly
+> prepares) the clocks for the whole lifetime of the device. Moreover, it is
+> no longer necessary to unprepare and disable the clocks explicitly.
+> 
+> Signed-off-by: Li Zetao <lizetao1@huawei.com>
 
-Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-Signed-off-by: Money Wang <Money.Wang@mediatek.com>
-Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-v2: split series
----
-v3: rebase and update Signed-off-by
----
-This patch is based on "wifi: mac80211: add exported tpt_led_trig function for softmac driver"
-v4: rebase
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
----
- .../net/wireless/mediatek/mt76/mt76_connac_mac.c  | 10 ++++++----
- drivers/net/wireless/mediatek/mt76/mt7915/mmio.c  |  5 +++++
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c   | 15 +++++++++++----
- 3 files changed, 22 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index 93402d2c2538..7bd34c6071ef 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -594,9 +594,15 @@ bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 
- 	txs = le32_to_cpu(txs_data[0]);
- 
-+	mphy = mt76_dev_phy(dev, wcid->phy_idx);
-+
- 	/* PPDU based reporting */
- 	if (mtk_wed_device_active(&dev->mmio.wed) &&
- 	    FIELD_GET(MT_TXS0_TXS_FORMAT, txs) > 1) {
-+		ieee80211_tpt_led_trig_trx(mphy->hw,
-+			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_BYTE) -
-+			le32_get_bits(txs_data[7], MT_TXS7_MPDU_RETRY_BYTE), 0);
-+
- 		stats->tx_bytes +=
- 			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_BYTE) -
- 			le32_get_bits(txs_data[7], MT_TXS7_MPDU_RETRY_BYTE);
-@@ -637,10 +643,6 @@ bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 		cck = true;
- 		fallthrough;
- 	case MT_PHY_TYPE_OFDM:
--		mphy = &dev->phy;
--		if (wcid->phy_idx == MT_BAND1 && dev->phys[MT_BAND1])
--			mphy = dev->phys[MT_BAND1];
--
- 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
- 			sband = &mphy->sband_5g.sband;
- 		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index fc7ace638ce8..88e45b6a3b2c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -657,6 +657,11 @@ static void mt7915_mmio_wed_update_rx_stats(struct mtk_wed_device *wed,
- 
- 	wcid = rcu_dereference(dev->mt76.wcid[idx]);
- 	if (wcid) {
-+		struct mt76_phy *mphy = mt76_dev_phy(&dev->mt76, wcid->phy_idx);
-+
-+		ieee80211_tpt_led_trig_trx(mphy->hw, 0,
-+					   le32_to_cpu(stats->rx_byte_cnt));
-+
- 		wcid->stats.rx_bytes += le32_to_cpu(stats->rx_byte_cnt);
- 		wcid->stats.rx_packets += le32_to_cpu(stats->rx_pkt_cnt);
- 		wcid->stats.rx_errors += le32_to_cpu(stats->rx_err_cnt);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index bf917beb9439..2d7daef2fbf4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -463,6 +463,8 @@ mt7996_mcu_rx_all_sta_info_event(struct mt7996_dev *dev, struct sk_buff *skb)
- 		u8 ac;
- 		u16 wlan_idx;
- 		struct mt76_wcid *wcid;
-+		struct mt76_phy *mphy;
-+		u32 tx_bytes, rx_bytes;
- 
- 		switch (le16_to_cpu(res->tag)) {
- 		case UNI_ALL_STA_TXRX_ADM_STAT:
-@@ -472,11 +474,16 @@ mt7996_mcu_rx_all_sta_info_event(struct mt7996_dev *dev, struct sk_buff *skb)
- 			if (!wcid)
- 				break;
- 
-+			mphy = mt76_dev_phy(&dev->mt76, wcid->phy_idx);
- 			for (ac = 0; ac < IEEE80211_NUM_ACS; ac++) {
--				wcid->stats.tx_bytes +=
--					le32_to_cpu(res->adm_stat[i].tx_bytes[ac]);
--				wcid->stats.rx_bytes +=
--					le32_to_cpu(res->adm_stat[i].rx_bytes[ac]);
-+				tx_bytes = le32_to_cpu(res->adm_stat[i].tx_bytes[ac]);
-+				rx_bytes = le32_to_cpu(res->adm_stat[i].rx_bytes[ac]);
-+
-+				wcid->stats.tx_bytes += tx_bytes;
-+				wcid->stats.rx_bytes += rx_bytes;
-+
-+				ieee80211_tpt_led_trig_trx(mphy->hw,
-+							   tx_bytes, rx_bytes);
- 			}
- 			break;
- 		case UNI_ALL_STA_TXRX_MSDU_COUNT:
--- 
-2.39.0
 
 
