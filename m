@@ -4,92 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60229E7B5E1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 10:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 233ACE7B5F9
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 12:18:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fqeT8sqZb2JmvSCmzwOirY5tZjoMs6qkRF1cNGt+wAk=; b=veGw/IVCFe5qO3rLlyy6YEjlNh
-	s6A8epnYsHGy0+q3LyourAy+TsRmI1yTRJCcOixs1vRvSpktDBIZMtTE4JV7FgTr8U019nW4WGC5d
-	RZSCdA2fVrPCT6J47EHVEBJOOhQLCzd5O6n/e1NV7xVMQ6hMUfEI5ru+Zc2oZC2oH42g6wuiBRZ3d
-	XAhvx5Yire6L52U9t4IiUXcLDI6mUS16+lrKUwMsakVW8LbFKhaulWabmAmynsYc/58NS/HxmhoPu
-	gzw+dsXmbscS6VrPdWdPsGie81eZ7EOmAaHKB6CKyaC9gw7m6tBK13xhclnmpxMOExGsk7Lq+eI/w
-	yLY7cnIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jx809ZZPmQX9bCss2qHfga4iHIHABGn3+dRnDoOEwBM=; b=Oi2atJOmAhQiNk+S+woZhMlFFS
+	E8r+JbevuV8RLP5OGdgP/CBMjqLMIOevob1Gah5igtA7Zwt1qWq7utIHoVk1cDs7HtyAStldiNcjm
+	vtOZqOw/2GEpVaBF4gEYYgnXQuvDcCPX0f+RvqbphmAFWwI09dyQgAi2AnaEsOU/8352IkXW+Kucu
+	e0CrZRRfwy7vu+18PTowTtfuHHW4rjzBt6fbX21/kuDHFWUNotwgeVSi9M3hvkb5bx/mBHsKPddcy
+	OxA+lcdRPZBsx8bQHCXKGLowk+CQaYxp8IygNj7ENTMpZ9drg5rMoJlDEl9puUxSZeIPmwg/N+ZTa
+	Ekce9geQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnyuy-00HDAh-3D;
-	Wed, 04 Oct 2023 10:15:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qo0pM-00HaQ8-0P;
+	Wed, 04 Oct 2023 12:18:08 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnyuw-00HD75-0E;
-	Wed, 04 Oct 2023 10:15:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0BEA3614E8;
-	Wed,  4 Oct 2023 10:15:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5CC7C433C7;
-	Wed,  4 Oct 2023 10:15:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696414542;
-	bh=btEL0S0SohWpugTP8Lp1AxnqJzG6dwQ15xi1GidNTOc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=d3I46TzCmT4uNSCscqh64KCYGgSsWrn2jpi/vznwD8wE+bu5KWPWMeDoRsS3hzLLs
-	 lz1GwBep06SjDLrK8yV+LJ1b5X3G0j2gm+0LolIojKAgXuXZUxr3SJtwmIWR08YEWf
-	 QI9p+71ajyLQ6eAKH6GGarghs6fKbdmwKvtgXHdHjamWUO3hLd/cBIei7Dhl3U7vLq
-	 1KjA+yWIhOHGSOJaqHSWBVnkf+AWXbdnHgKDqI10GqmqB/7yB+jh8+M8wXMCGGWsXp
-	 FkbGhkZkjAOn41SXfJ5BDtQUxOyJBKJIC0FpL/D7AXsbKK0jB9aw4f9SLIT8vUguiP
-	 SeAgmXUhZzj3w==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1qnyup-0010zi-VO;
-	Wed, 04 Oct 2023 11:15:40 +0100
-Date: Wed, 04 Oct 2023 11:15:39 +0100
-Message-ID: <86jzs2ofqs.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Mark Rutland <mark.rutland@arm.com>
-Cc: Doug Anderson <dianders@chromium.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	Valentin Schneider <vschneid@redhat.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	D Scott Phillips <scott@os.amperecomputing.com>,
-	Josh Poimboeuf <jpoimboe@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Misono Tomohiro <misono.tomohiro@fujitsu.com>,
-	Peter Zijlstra <peterz@infradead.org>,
-	Sumit Garg <sumit.garg@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] arm64: smp: Fix pseudo NMI issues w/ broken Mediatek FW
-In-Reply-To: <ZR03liCodnTQWs7s@FVFF77S0Q05N>
-References: <20231002094526.1.Ie8f760213053e3d11592f892b30912dbac6b8b48@changeid>
-	<ZRr8r7XMoyDKaitd@FVFF77S0Q05N.cambridge.arm.com>
-	<CAD=FV=UeeL9uycVeKpOm+eDm3xHrOnKi2frt6a1qFG1HX9yEUg@mail.gmail.com>
-	<ZRwJKBZaYwF1rrur@FVFF77S0Q05N>
-	<CAD=FV=WASz1uvTgwsu3H3cTr3smHk+E_XNUVnjoPpttwv095rQ@mail.gmail.com>
-	<ZRxCCZxZWCG0NBur@FVFF77S0Q05N>
-	<CAD=FV=Xk-OMKQPXxU9Z9HOcWwUxxrmLZ4vD0u5ouZRW_zDFDPg@mail.gmail.com>
-	<ZR03liCodnTQWs7s@FVFF77S0Q05N>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.1
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: mark.rutland@arm.com, dianders@chromium.org, catalin.marinas@arm.com, will@kernel.org, swboyd@chromium.org, vschneid@redhat.com, wenst@chromium.org, angelogioacchino.delregno@collabora.com, scott@os.amperecomputing.com, jpoimboe@kernel.org, matthias.bgg@gmail.com, misono.tomohiro@fujitsu.com, peterz@infradead.org, sumit.garg@linaro.org, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	id 1qo0pH-00HaPQ-29
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Oct 2023 12:18:06 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4064876e8b8so20966355e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Oct 2023 05:18:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1696421881; x=1697026681; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=jx809ZZPmQX9bCss2qHfga4iHIHABGn3+dRnDoOEwBM=;
+        b=WVU2tkqLZVOHr+93SDarx+i5PGEnuWWzFnXklO5kyaC51mLXxs9WEUkVvBLRM2fGzS
+         Wa5iJb8cjL2f2YP99qWYgWjr77ayy5IuX3DYc4tnigQdm2E+p+59qKWO5xtRkFQr5UWk
+         zJt2AGh5oBJU09ZSVM1zhcfV+8OzRUxzJxAUN9zhxBDeNbcE+0wZvlcy3QBinG/LxVmF
+         wO7v2aNxgXxfxXJ8rF4Jmq2jCxkF/GaieCkfmriWbFm8y97cQNQ4pPtCt65EpE9AxESB
+         wBwoGIAsVEyT24627uM1obMm/gJyRKMnoL3QKra4zY4U56PTFX6slqjblyvjj0b1udvb
+         Qndg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696421881; x=1697026681;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=jx809ZZPmQX9bCss2qHfga4iHIHABGn3+dRnDoOEwBM=;
+        b=ivp3VJzXvB2BkkpQFGYqO6dSYkOuX2Fn/jrLy+CSeQjV9geRsaNscgoAvTClOZumxV
+         8Tu7omfZAMlA1aXI7tWMpTnk35JCFE3yh1qEIlkYhUnBuK45R5SfKf+eeV+78eHRlQuH
+         p/G/AXJW6bQPN1vH2Gsj7WD9sC/HDnA8tJr3QRIrvUj/aLfOHgQdvc3iyezW4sPj2mhE
+         Fu42/gJERheM/zLAo2wTYcbHJ/xVwLrqeNlkE3uW2NAOucXhMiT8jV4HWJ0P/74CXQqn
+         kJRroo9ijJpsleeFenoU/pyMacqRLQDL2HqXS+BCfbchNKtiUO0xEz1uOCdLQksphgV8
+         Lveg==
+X-Gm-Message-State: AOJu0YyA2Ok0m64GrS/BMhMUtf0AKR/5E1Fp8MyEyyKMS0uZTv5RywV2
+	PJvYO3LUmDGoqpyfamdCZ/gKdhaLCm9sLyskoKo=
+X-Google-Smtp-Source: AGHT+IE3PlonxvNG9K0O/ooQBE2t08mHBkDvaao/sVglxJTmwYrc4biZ9IOQj1rAv7vYdVx+kMu1lA==
+X-Received: by 2002:a7b:ce98:0:b0:3fc:dd9:91fd with SMTP id q24-20020a7bce98000000b003fc0dd991fdmr2062644wmj.40.1696421881447;
+        Wed, 04 Oct 2023 05:18:01 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id o4-20020a1c7504000000b00405588aa40asm1375832wmc.24.2023.10.04.05.18.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 04 Oct 2023 05:18:01 -0700 (PDT)
+Message-ID: <9420885b-784f-5f80-e273-7bade6285676@baylibre.com>
+Date: Wed, 4 Oct 2023 14:18:00 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH] MAINTAINERS: Add Angelo as MediaTek SoC co-maintainer
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Cc: nfraprado@collabora.com, wenst@chromium.org, robh@kernel.org,
+ arnd@arndb.de
+References: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
+ <d26ee3f8-d5d3-e46d-4d79-098992d13790@gmail.com>
+ <77bfcbca-e7fe-49e1-952a-c99596160c0f@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <77bfcbca-e7fe-49e1-952a-c99596160c0f@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_031546_161490_DC3602CC 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20231004_051803_924151_C656432F 
+X-CRM114-Status: UNSURE (   5.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,17 +99,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 04 Oct 2023 10:59:50 +0100,
-Mark Rutland <mark.rutland@arm.com> wrote:
-> 
-> Given you haven't seen any issues, I suspect those are getting reset to fixed
-> values that happens to work out for us, but it is a bit worrisome more
-> generally (e.g. the LPI case above).
+Hi,
 
-It is likely that these SoCs don't even have an ITS.
+Happy to see you back and fine Matthias !
 
-	M.
+Also, I'm happy to see the Angelo's step-up welcomed by everybody,
+it's a great news !!!
 
--- 
-Without deviation from the norm, progress is not possible.
+Feel free to ask me if you need help.
+
+Alex
+
+
 
