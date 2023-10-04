@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE95EE7C4E3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 16:29:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACD43E7C4E8
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 18:08:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OMLph3rLdcPzMAHUD9R8vPLAR9LQQ09NMO1yIQIaibU=; b=epRmzSC7G5il4fpPAuEUnKgQIx
-	ue3/JjJkP0xV3d6dXdawzLMKx/sAK1IJA0QxkUaYmpjGa0vFpsLvbz7tgbWAUfwg1NS5gHtEKDAcB
-	YahHf2vNfgleDD+bcl5qK2r9+Tx6pmf6EkxVVbT+8rbzt0EX/St8/avSEd3W7q1y9IAYAhyN3yUtP
-	uvQQz4HVrdwwTpY5wTPH6T29rakbSkw4AeSyJW373JMUijy3D5XFKgqCWLkpAg0yuM4wemZZuW5bF
-	ze51lqrindeyTquXyibepxkukg3wyw8FVQti/yDZOP9dPOuSXVP+Tu1/lTJqFCqliSAVZ+B7UfsRS
-	sAM7fJew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C9iYrjHOyfOKIUcVEs2UDJbgeqtyssNJDxi1mGLZrX4=; b=3GG0dcKIpQm665LpL/h3xXLQlK
+	CALU9I8dGXDHGZV9j8nHNbPe0KbOS8fLHJN+DKsK1pnovafEutK9jW8qV/y3g0PlRhhzbb1KMyk1T
+	h5QoMAoPHC0oBRZ76x7a4QVzeC1o036XNTUkaMoRM23kJPMLbkLl2gG+mQ8g2jQVxrnFKU0GbRi4C
+	m6HVWrGCN+AO3316y15xbQ4STsXYRrOip04q+xSaHTAmucyeNBnvXPvyccULmo10j/rPyotVlVd2s
+	vGjZC9GYBPXTcmCxSDVeL8xpe9X5ChbTa3pSjBZw6QWH3sakDx+oh6kdLxIoZvsKcYaES3asRF79Y
+	r6DPk70A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo4kz-000UF3-0N;
-	Wed, 04 Oct 2023 16:29:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qo6Ij-000fEj-17;
+	Wed, 04 Oct 2023 18:08:49 +0000
+Received: from mail-pf1-f179.google.com ([209.85.210.179])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo4ku-000UDY-20;
-	Wed, 04 Oct 2023 16:29:50 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1793966003B0;
-	Wed,  4 Oct 2023 17:29:44 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696436984;
-	bh=eY3J6B+d3OqRFON8pdfHkkKrg0jpP3yRtk7Fqx4owG0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PnTZ8o7+tYlOzZFUqUMVdJWa2t5ikPnSOB9Vdx/fXDEbaeIYvzjGGKqkCZmD4kmv8
-	 qm/WNio/tTtJsMwBVKjzm0TWZFnxujkDy6ihwvyCnnVvNVk57rdqq+C3uXI5345vDo
-	 yvPORxxKHBWoBQ0WfBFg0IJa6NW7Sqtj6C9ob6kEiw3FNFwbOnR/Sl2jjeWgoWyHpy
-	 jQ+HSF1YlbSg4/sJIyUjb2qQknPTJ7pCm6HEQbAFEWlkJtPVq+HkQDqRJ1l0FF2dIr
-	 QX9U72uLPVApTFgn3AcuWIXlrhkIvvdP7oBIpTTU2wSRu7gzjGHOZ1fhur/5mCiDvE
-	 OPpZJS99IsPEQ==
-Message-ID: <d88b72f1-6a60-dc7d-6922-1dde278a61db@collabora.com>
-Date: Wed, 4 Oct 2023 18:29:41 +0200
+	id 1qo6Ig-000fDE-28
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Oct 2023 18:08:48 +0000
+Received: by mail-pf1-f179.google.com with SMTP id d2e1a72fcca58-690d8c05784so54639b3a.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Oct 2023 11:08:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696442917; x=1697047717;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=C9iYrjHOyfOKIUcVEs2UDJbgeqtyssNJDxi1mGLZrX4=;
+        b=GciZoGuS7kFfewFVB3cknOQq7ySSnXzwvexAHUR6srSYgHOCeuRXpaTYHHCaS9csxa
+         loP0ze2FPIEE2Npft6dwfsWax+qLvo+w0HQQ5ncmc0p3hmYvE8lxJQEfgkz/EQvgDjOl
+         9XI4im0TvS2KUQv6Q8AKC2RM7JbbTMzsTFl20FzZJQwnFyTX08MY9/hSOJXfkY6xvdVU
+         frCgoLXBJXfYA8f540dyrJrsj5Lc7omOgGZQIiHqPj3AqvZCG6OqB5L+X/xhDqQEUE1p
+         79ZrQ3WBG4gqGwHur3HERHLODCArsLrwMlIl5RGdoT2oc2BKu+he2c6FqXsVsYL6Qzo6
+         0lhQ==
+X-Gm-Message-State: AOJu0Yzg/T4i/qBvemSWEy0MUsXlZIPZyXzbHi4AuhexTeI47VTU+8kQ
+	LAUd7n+LJomZniiPLQg8hDM34Q==
+X-Google-Smtp-Source: AGHT+IGChQBN+ORe86zQsRfP8sgNZXca4nlpKZuqOVrZVMZJgmrdlPzT30mCpFbTG7lG/oc9xpYLPQ==
+X-Received: by 2002:a05:6a20:431c:b0:136:ea0e:d23 with SMTP id h28-20020a056a20431c00b00136ea0e0d23mr3578146pzk.11.1696442917014;
+        Wed, 04 Oct 2023 11:08:37 -0700 (PDT)
+Received: from localhost (71-212-56-62.tukw.qwest.net. [71.212.56.62])
+        by smtp.gmail.com with ESMTPSA id x2-20020a170902ea8200b001c62d63b817sm4016430plb.179.2023.10.04.11.08.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Oct 2023 11:08:36 -0700 (PDT)
+From: Kevin Hilman <khilman@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: nfraprado@collabora.com, wenst@chromium.org, matthias.bgg@gmail.com,
+ robh@kernel.org, amergnat@baylibre.com, arnd@arndb.de, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] MAINTAINERS: Add Angelo as MediaTek SoC co-maintainer
+In-Reply-To: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
+References: <20230929082009.71843-1-angelogioacchino.delregno@collabora.com>
+Date: Wed, 04 Oct 2023 11:08:36 -0700
+Message-ID: <7h8r8i5kgr.fsf@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH 2/2] clk: mediatek: mt8195-topckgen: Refactor parents for
- top_dp/edp muxes
-Content-Language: en-US
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
- Alexandre Mergnat <amergnat@baylibre.com>, sboyd@kernel.org,
- mturquette@baylibre.com, matthias.bgg@gmail.com, msp@baylibre.com,
- yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de,
- miles.chen@mediatek.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20230713072138.84117-1-angelogioacchino.delregno@collabora.com>
- <20230713072138.84117-3-angelogioacchino.delregno@collabora.com>
- <9a0817c2-4101-5c21-977d-77ac0d83a067@baylibre.com>
- <CAGXv+5E7YYdkG7GtxG90KzdAG8Kke+74Amtbw4mmyVNZgDZHRA@mail.gmail.com>
- <jv6daj2w3pwjtde3m3m26yg4wyxbbio4zqra5yqc4gb32ri5ub@noinbbkjovwm>
- <25724ee3-858a-01eb-352b-3edbfad31c8e@collabora.com>
- <jxgy2pvns4ri2aj5nmdhb4zbluseuzdejbplh2avwz63df2cfx@grrrdm6ujzi4>
- <24d17b07-1e8d-05f6-46b7-9da1ff1bed7a@collabora.com>
- <hd2ydj33vp3dsri4czx6frxxvir6vxnovc27n6rrgs4qqbtrjz@whhyt2iinq5k>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <hd2ydj33vp3dsri4czx6frxxvir6vxnovc27n6rrgs4qqbtrjz@whhyt2iinq5k>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_092948_966654_6AC48BFA 
-X-CRM114-Status: GOOD (  42.71  )
+X-CRM114-CacheID: sfid-20231004_110846_695102_46AC5F72 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,139 +79,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/07/23 11:03, Maxime Ripard ha scritto:
-> On Mon, Jul 17, 2023 at 04:30:48PM +0200, AngeloGioacchino Del Regno wrote:
->>>>>> AFAIK the recommended way to deal with this is to use
->>>>>> clk_set_rate_exclusive() and co. in whatever consumer driver that
->>>>>> needs exclusive control on the clock rate.
->>>>>
->>>>> I guess it works, but it looks to me like the issue here is that the
->>>>> provider should disable it entirely? My expectation for
->>>>> clk_set_rate_exclusive() is that one user needs to lock the clock rate
->>>>> to operate properly.
->>>>>
->>>>> If the provider expectation is that the rate or parent should never
->>>>> changed, then that needs to be dealt with at the provider level, ie
->>>>> through the clk_ops.
->>>>>
->>>>>> However I'm not sure if that works for parents. It should, given the
->>>>>> original use case was for the sunxi platforms, which like the MediaTek
->>>>>> platform here has 2 PLLs for video related consumers, but I couldn't
->>>>>> find code verifying it.
->>>>>
->>>>> If you want to prevent clocks from ever being reparented, you can use
->>>>> the new clk_hw_determine_rate_no_reparent() determine_rate
->>>>> implementation.
->>>>>
->>>>
->>>> We want the clocks to be reparented, as we need them to switch parents as
->>>> explained before... that's more or less how the tree looks:
->>>>
->>>> TVDPLL(x) -> PLL Divider (fixed) -> MUX -> Gate -> Controller
->>>>
->>>> Besides, I think that forcing *one* parent to the dp/edp mux would produce a
->>>> loss of the flexibility that the clock framework provides.
->>>>
->>>> I again want to emphasize on the fact that TVDPLL1 and TVDPLL2 are *identical*
->>>> in specs, and on that there will never be a MT8195 SoC that has only one of
->>>> the two PLLs, for obvious reasons...
->>>>
->>>> P.S.: If you need more context, I'll be glad to answer to any other question!
->>>
->>> Then I have no idea what the question is :)
->>>
->>> What are you trying to achieve / fix, and how can I help you ? :)
->>
->> Chen-Yu, Alexandre had/have questions about if there was any other solution instead
->> of using the solution of *this* commit, so, if there's any other better solution
->> than the one that I've sent as this commit.
->>
->> I'm the one saying that this commit is the best solution :-P
-> 
-> I went back to the original patch, and my understanding is that, when
-> running two output in parallel, the modeset of one can affect the second
-> one, and that's bad, right?
-> 
-> If so, then you usually have multiple ways to fix this:
-> 
->   - This patch
->   - Using clk_set_rate_exclusive like Chen-Yu suggested
->   - Using a notifier to react to a rate change and adjust
-> 
-> I'm not aware of any "official" guidelines at the clock framework level
-> regarding which to pick and all are fine.
-> 
-> My opinion though would be to use clk_set_rate_exclusive(), for multiple
-> reasons.
-> 
-> The first one is that it models correctly what you consumer expects:
-> that the rate is left untouched. This can happen in virtually any
-> situation where you have one clock in the same subtree changing rate,
-> while the patch above will only fix that particular interference.
-> 
-> The second one is that, especially with DP, you only have a handful of
-> rates you'll need to reach. 148MHz, 297MHz, 594MHz, and possibly a bunch
-> of others for eDP panels. It's thus likely to have both controllers
-> having the same frequency requirement, and thus it makes it possible to
-> run from only one PLL and shut the other down.
-> 
-> This patch will introduce orphan clocks issues that are always a bit
-> bothersome. A notifier would be troublesome to use and will probably
-> introduce glitches plus some weird interaction with scrambling if you
-> ever support it.
-> 
-> So, yeah, using clk_set_rate_exclusive() seems like the best option to me :)
-> 
-> Maxime
+AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> writes:
 
-Sorry for resurrecting a very old thread, I was able to come back to this issue
-right now: there's an issue that I can't really think about how to solve with
-just the usage of clk_set_rate_exclusive().
+> I am a top reviewer mainly for MediaTek SoC related patches in most
+> subsystems and I've also been upstreaming both improvements, fixes
+> and new drivers and devicetrees when required.
+>
+> The MediaTek scene saw a generous increase in number of patches that
+> are sent to the lists every week, increasing the amount of required
+> efforts to maintain the MTK bits overall, and we will possibly see
+> even more of that.
+>
+> For this reason, and also because of suggestions and encouragement
+> coming from the community, I'm stepping up to be a co-maintainer of
+> MediaTek SoCs support.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Remembering that the clock tree is as following:
-TVDPLL(x) -> PLL Divider (fixed) ->
--> MUX (can choose any of TVDPLL(1/2)_d(2/4/6/8/16)) -> Gate -> Controller
+Acked-by: Kevin Hilman <khilman@baylibre.com>
 
-The DPI driver is doing:
-1. Check the best factor for setting rate of a TVDPLL
-2. Set rate of one TVDPLL (specified in DT): clk_set_rate(dpi->tvd_clk, rate);
-    2a. Read the rate of that PLL again to know the precise clock output
-3. Set rate on the Gate clock (forwards to MUX, selecting TVDPLL(x)_d(y)):
-    clk_set_rate(dpi->pixel_clk, rate);
+Thank you Matthias for all the work you've put in over the years to
+maintain MTK SoCs, and thank you to Angelo for stepping up to help as
+the volume of maintainer work is increasing.
 
-
-Now, the issue is: if I change the final pixel_clk rate setting to _exclusive(),
-nothing still guarantees that we will be selecting the TVDPLL that we have
-manipulated in step 2, look at the following example.
-
-tvd_clk == TVDPLL1
-pixel_clk == TOP_DP (can be muxed to any tvdpll1/2 dividers!)
-
-clk_set_rate(tvdpll1, something); new_rate = clk_get_rate(tvdpll1)
-
-...calculations... new_rate = pixclk * factor;
-...more calculations....
-
-clk_set_rate(pixel_clk, calculated_something)
-        ^^^^^^
-
-There is still no guarantee that pixel_clk is getting parented to one of the
-TVDPLL1 dividers, as it could still get parented to a TVDPLL2 divider instead
-if the other controller has set TVDPLL2 to "an acceptable rate": it's true that
-this would work - yes but suboptimally! - because we want to set a specific
-factor to reduce jitter on the final pixel clock.
-
-
-....And I came back to this commit being again the best solution for me because....
-
-1. You also seem to agree with me that a notifier would be troublesome and would
-    probably introduce glitches; and
-2. clk_set_rate_exclusive() doesn't give me any guarantee about selecting the same
-    PLL that the driver was manipulating before.
-
-
-Am I underestimating and/or ignoring anything else in all of that?
-
-Cheers,
-Angelo
+Kevin
 
