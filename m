@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41165E7B5E2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 09:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7265DE7B5E3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 10:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZldOxV+c4bwKc6J0kQAYnC3fAIMV5HICSvouxRGQ9mg=; b=ooVoHsW0ChmLh3jYVA48Ppe1/A
-	G//uIqYW0aaqck7lK/ywLGpXJJwYXJTXkq5/zVQ9djU/7UE2NhtfNheLqbeyKP6ZFegq/fDotGiSU
-	doeGguksI1kMEvp5Yit/yDbDZaL3Gi+Sts/gvMnTgoWzXiG0D27HT6ulLg/kFh9ygdhWrxivkHifh
-	atljgurm5UVw4HkBa8zYsls7mzC9TT3z1tl7DyVGCKjnjZMfONQ4qbF2joKrFIMhfXQw5soYMM9cJ
-	6QuTTQToDB9jj932I7bhBlpW64n6HH/g5v3kQckmIAyu620OCtcz3y0OujDUuqM9mVdel9LsXMyiM
-	uFzjYWdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xb+bw7+oRtg4GgltRa7kRlWLiBrf0HlhYLQTRaduXtY=; b=YqBRP0i7HsP9lQF587vfNxwqgx
+	rHkrVmGY7lQqGjbhP7QngUaDT/vk8I8WT+Dfo4a3s7ge0zUGDI8L7/EmU31av9o0nYdzLmzR506r0
+	kcfXFA6WUaOjEYItONt6n99nB4jJ7bwrxEe1sGn9AvkvyNmYcWcdkdVNUSdrdfNd/PxAoj9Au4E4n
+	aTzp4+F/S6ssBL9IcOgSAnKi/kSrIzjcbz6JDjejvfDZeHF2fD3Nm9AMyBGz/NBJQcxmW6Pw4Xxdb
+	hoMorMoXE/l5J8biIxbIJmoR0txJBJ5gs5H0EoqmO6+mPbY3MO2dNqlCmXbWhEMRnTDpPn/ttKHZy
+	iTbSsJJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnyRi-00H7XV-0C;
-	Wed, 04 Oct 2023 09:45:34 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnxJ4-00Gq9p-36
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Oct 2023 08:32:36 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1c60f1a2652so5527495ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Oct 2023 01:32:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1696408351; x=1697013151; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZldOxV+c4bwKc6J0kQAYnC3fAIMV5HICSvouxRGQ9mg=;
-        b=K9QI8prxs7FcvFkMmfpMHEOu5DEb7og1fVkRAQnWv6Ea4a6wDt9eHz9BL8M29a3LfQ
-         2m1RnlplGh7JWVL9uqemryYlQFYKq6z6ukoZYR4Z6R4mw3SAt5os6ih4bd7Ij7abwdBo
-         X4VQy7zZ5v/ysmBAt32LugQFIUreyYfJCyg3U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696408351; x=1697013151;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZldOxV+c4bwKc6J0kQAYnC3fAIMV5HICSvouxRGQ9mg=;
-        b=r/55sty8PG1Pe/shTSyCjtmPoyWq8Z8Jk/w0q2mGILGPbco3bFJYnTeX+GLNcwEgAo
-         OnzPmLKKwNrKFkCNq5GcnmE0+i+Y++VGFGtbTe2xD86cWEElpPOunFQe09Gn3sKOCgci
-         GXSQLzQAU5h+5z2qcgyBdWkzoYmwKs46i0IPkYaf7dmyuOLirTl21h+twvjehKCJK2Sf
-         t6+Zr7VS8WfJHKE1ShSSoqcue8egtiBCqGcWp/YzMiK7Cl4QcLIi0HfXJnTJrlEu/zW0
-         Pi5IyQeYq3hOu0J0j5VIjaGBTsTF6v/Ntjw/o709uy3Rhp+FPXCKluo6pL0i6LcyzHiM
-         vlTw==
-X-Gm-Message-State: AOJu0YxVpaZ95Iqbbf4qt71RfoTaURLpqLqAoa4eIYsz1c/+b4L53kYh
-	hH95lTe2hlB1D9lqnSNf0gDrwA==
-X-Google-Smtp-Source: AGHT+IHPFtFRpDAbBWYZ0AkQ+t6cKaHbihDnGlYJ+Lg4L83KqHlHsnttPEhpVTVbh8QLQYPAN7bkZA==
-X-Received: by 2002:a17:902:db11:b0:1b8:8682:62fb with SMTP id m17-20020a170902db1100b001b8868262fbmr8840475plx.4.1696408351467;
-        Wed, 04 Oct 2023 01:32:31 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:eff2:d66d:cbf7:f41b])
-        by smtp.gmail.com with ESMTPSA id u11-20020a170902b28b00b001b890009634sm3015940plr.139.2023.10.04.01.32.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Oct 2023 01:32:31 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
+	id 1qnyfm-00HA4Q-0H;
+	Wed, 04 Oct 2023 10:00:06 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnyfi-00HA2U-18;
+	Wed, 04 Oct 2023 10:00:04 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E89ACDA7;
+	Wed,  4 Oct 2023 03:00:38 -0700 (PDT)
+Received: from FVFF77S0Q05N (unknown [10.57.95.70])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 56DB53F5A1;
+	Wed,  4 Oct 2023 02:59:57 -0700 (PDT)
+Date: Wed, 4 Oct 2023 10:59:50 +0100
+From: Mark Rutland <mark.rutland@arm.com>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Marc Zyngier <maz@kernel.org>,
+	Stephen Boyd <swboyd@chromium.org>,
+	Valentin Schneider <vschneid@redhat.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	D Scott Phillips <scott@os.amperecomputing.com>,
+	Josh Poimboeuf <jpoimboe@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	stable@vger.kernel.org
-Subject: [PATCH v2] drm/mediatek: Correctly free sg_table in gem prime vmap
-Date: Wed,  4 Oct 2023 16:32:24 +0800
-Message-ID: <20231004083226.1940055-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.42.0.582.g8ccd20d70d-goog
+	Misono Tomohiro <misono.tomohiro@fujitsu.com>,
+	Peter Zijlstra <peterz@infradead.org>,
+	Sumit Garg <sumit.garg@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] arm64: smp: Fix pseudo NMI issues w/ broken Mediatek
+ FW
+Message-ID: <ZR03liCodnTQWs7s@FVFF77S0Q05N>
+References: <20231002094526.1.Ie8f760213053e3d11592f892b30912dbac6b8b48@changeid>
+ <ZRr8r7XMoyDKaitd@FVFF77S0Q05N.cambridge.arm.com>
+ <CAD=FV=UeeL9uycVeKpOm+eDm3xHrOnKi2frt6a1qFG1HX9yEUg@mail.gmail.com>
+ <ZRwJKBZaYwF1rrur@FVFF77S0Q05N>
+ <CAD=FV=WASz1uvTgwsu3H3cTr3smHk+E_XNUVnjoPpttwv095rQ@mail.gmail.com>
+ <ZRxCCZxZWCG0NBur@FVFF77S0Q05N>
+ <CAD=FV=Xk-OMKQPXxU9Z9HOcWwUxxrmLZ4vD0u5ouZRW_zDFDPg@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAD=FV=Xk-OMKQPXxU9Z9HOcWwUxxrmLZ4vD0u5ouZRW_zDFDPg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_013235_014474_4CB65F63 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20231004_030002_488273_585D1E31 
+X-CRM114-Status: GOOD (  68.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,70 +82,199 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek DRM driver implements GEM PRIME vmap by fetching the
-sg_table for the object, iterating through the pages, and then
-vmapping them. In essence, unlike the GEM DMA helpers which vmap
-when the object is first created or imported, the MediaTek version
-does it on request.
+On Tue, Oct 03, 2023 at 12:32:39PM -0700, Doug Anderson wrote:
+> Hi,
+> 
+> On Tue, Oct 3, 2023 at 9:32 AM Mark Rutland <mark.rutland@arm.com> wrote:
+> >
+> > On Tue, Oct 03, 2023 at 06:43:07AM -0700, Doug Anderson wrote:
+> > > Hi,
+> > >
+> > > On Tue, Oct 3, 2023 at 5:29 AM Mark Rutland <mark.rutland@arm.com> wrote:
+> > > >
+> > > > On Mon, Oct 02, 2023 at 12:16:17PM -0700, Doug Anderson wrote:
+> > > > > Hi,
+> > > > >
+> > > > > On Mon, Oct 2, 2023 at 10:24 AM Mark Rutland <mark.rutland@arm.com> wrote:
+> > > > > >
+> > > > > > On Mon, Oct 02, 2023 at 09:45:29AM -0700, Douglas Anderson wrote:
+> > > > > > > Some mediatek devices have the property
+> > > > > > > "mediatek,broken-save-restore-fw" in their GIC. This means that,
+> > > > > > > although the hardware supports pseudo-NMI, the firmware has a bug
+> > > > > > > that blocks enabling it. When we're in this state,
+> > > > > > > system_uses_irq_prio_masking() will return true but we'll fail to
+> > > > > > > actually enable the IRQ in the GIC.
+> > > > > > >
+> > > > > > > Let's make the code handle this. We'll detect that we failed to
+> > > > > > > request an IPI as NMI and fallback to requesting it normally. Though
+> > > > > > > we expect that either all of our requests will fail or all will
+> > > > > > > succeed, it's just as cheap to keep a per-IPI bitmap and that keeps us
+> > > > > > > robust.
+> > > > > > >
+> > > > > > > Fixes: 331a1b3a836c ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
+> > > > > > > Reported-by: Chen-Yu Tsai <wenst@chromium.org>
+> > > > > > > Closes: https://issuetracker.google.com/issues/197061987#comment68
+> > > > > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > > > > > ---
+> > > > > > >
+> > > > > > >  arch/arm64/kernel/smp.c | 19 ++++++++++++-------
+> > > > > > >  1 file changed, 12 insertions(+), 7 deletions(-)
+> > > > > >
+> > > > > > I'm not too keen on falling back here when we have no idea why the request failed.
+> > > > > >
+> > > > > > I'd prefer if we could check the `supports_pseudo_nmis` static key directly to
+> > > > > > account for the case of broken FW, e.g. as below.
+> > > > > >
+> > > > > > Mark.
+> > > > > >
+> > > > > > ---->8----
+> > > > > > From 72fdec05c64a74f21871b44c7c760bbe07cac044 Mon Sep 17 00:00:00 2001
+> > > > > > From: Mark Rutland <mark.rutland@arm.com>
+> > > > > > Date: Mon, 2 Oct 2023 18:00:36 +0100
+> > > > > > Subject: [PATCH] arm64: smp: avoid NMI IPIs with broken MediaTek FW
+> > > > > >
+> > > > > > Some MediaTek devices have broken firmware which corrupts some GICR
+> > > > > > registers behind the back of the OS, and pseudo-NMIs cannot be used on
+> > > > > > these devices. For more details see commit:
+> > > > > >
+> > > > > >   44bd78dd2b8897f5 ("irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware issues")
+> > > > > >
+> > > > > > We did not take this problem into account in commit:
+> > > > > >
+> > > > > >   331a1b3a836c0f38 ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
+> > > > > >
+> > > > > > Since that commit arm64's SMP code will try to setup some IPIs as
+> > > > > > pseudo-NMIs, even on systems with broken FW. The GICv3 code will
+> > > > > > (rightly) reject attempts to request interrupts as pseudo-NMIs,
+> > > > > > resulting in boot-time failures.
+> > > > > >
+> > > > > > Avoid the problem by taking the broken FW into account when deciding to
+> > > > > > request IPIs as pseudo-NMIs. The GICv3 driver maintains a static_key
+> > > > > > named "supports_pseudo_nmis" which is false on systems with broken FW,
+> > > > > > and we can consult this within ipi_should_be_nmi().
+> > > > > >
+> > > > > > Fixes: 331a1b3a836c0f38 ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
+> > > > > > Reported-by: Chen-Yu Tsai <wenst@chromium.org>
+> > > > > > Closes: https://issuetracker.google.com/issues/197061987#comment68
+> > > > > > Signed-off-by: Mark Rutland <mark.rutland@arm.com>
+> > > > > > Cc: Douglas Anderson <dianders@chromium.org>
+> > > > > > Cc: Marc Zyngier <maz@kernel.org>
+> > > > > > ---
+> > > > > >  arch/arm64/kernel/smp.c      | 5 ++++-
+> > > > > >  drivers/irqchip/irq-gic-v3.c | 2 +-
+> > > > > >  2 files changed, 5 insertions(+), 2 deletions(-)
+> > > > >
+> > > > > Sure, this is OK w/ me as long as folks don't mind accessing the
+> > > > > global here, it's OK w/ me:
+> > > > >
+> > > > > Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> > > > >
+> > > > > It seems to work for me, thus:
+> > > > >
+> > > > > Tested-by: Douglas Anderson <dianders@chromium.org>
+> > > > >
+> > > > >
+> > > > > > diff --git a/arch/arm64/kernel/smp.c b/arch/arm64/kernel/smp.c
+> > > > > > index 814d9aa93b21b..061c69160f90f 100644
+> > > > > > --- a/arch/arm64/kernel/smp.c
+> > > > > > +++ b/arch/arm64/kernel/smp.c
+> > > > > > @@ -964,7 +964,10 @@ static void smp_cross_call(const struct cpumask *target, unsigned int ipinr)
+> > > > > >
+> > > > > >  static bool ipi_should_be_nmi(enum ipi_msg_type ipi)
+> > > > > >  {
+> > > > > > -       if (!system_uses_irq_prio_masking())
+> > > > > > +       DECLARE_STATIC_KEY_FALSE(supports_pseudo_nmis);
+> > > > > > +
+> > > > > > +       if (!system_uses_irq_prio_masking() ||
+> > > > > > +           !static_branch_likely(&supports_pseudo_nmis))
+> > > > >
+> > > > > One thought, actually, is whether we should actually change
+> > > > > system_uses_irq_prio_masking() to return the correct value. What do
+> > > > > you think?
+> > > >
+> > > > I don't think we should add this to system_uses_irq_prio_masking(); that's used
+> > > > by the low-level flags manipulation code that gets inlined all over the place,
+> > > > and that code will work regarldess of whether we actually use NMI priorities.
+> > > >
+> > > > If we want to avoid using PMR masking *at all* on these platforms, we'd need to
+> > > > detect that within can_use_gic_priorities() or early_enable_pseudo_nmi().
+> > >
+> > > I suspect that anyone trying to use PMR masking on these systems for
+> > > any purpose will be unhappy. The issue is talked about in:
+> > >
+> > > https://issuetracker.google.com/281831288
+> > >
+> > > ...where you can see that the firmware on these systems isn't properly
+> > > saving/restoring some registers, including GICR_IPRIORITYR.
+> >
+> > Ok, then that's a latent bug even before the IPI changes, going back to the
+> > original workaround in commit:
+> >
+> >   44bd78dd2b8897f5 ("irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware issues")
+> >
+> > For the sake of those reading the archive, can we have a better description of
+> > what exactly happens on these boards?
+> >
+> > IIUC on these boards the firmware fails to save+restore (some?) GICR registers
+> > across (some?) PSCI CPU_SUSPEND idle states.
+> >
+> > Which registers does it save+restore?
+> >
+> > Does it reset other registers into a specific state?
+> 
+> Though I'm not an expert in this area, my understanding is that in
+> some of the deeper idle states then GICR registers are lost. That
+> matches a thread [0] I found. In early investigation I found that I
+> could comment out `cpu-idle-states` in the device tree to avoid the
+> problems [1]. I believe this is fully expected which is why firmware
+> is supposed to save/restore these registers whenever a low power is
+> entered/exited. I'd presume that any register not properly
+> saved/restored comes up in whatever its default state is.
+> 
+> As far as pseudo-NMI was concerned, all I really needed to
+> save/restore was "GICR_NUM_IPRIORITYR" [2], but Marc Zyngier looked at
+> the code and identified [3] at least these in addition:
+> * GICR_CTLR
+> * GICR_ISPENDR0
+> * GICR_ISACTIVER0
+> * GICR_NSACR
 
-Unfortunately, the code never correctly frees the sg_table contents.
-This results in a kernel memory leak. On a Hayato device with a text
-console on the internal display, this results in the system running
-out of memory in a few days from all the console screen cursor updates.
+Looking at the GIC spec (Arm IHI 0069H), page 12-673, I see for all of the
+GICR_IPRIORITYR<n>.Priority_offset_*B fields:
 
-Add sg_free_table() to correctly free the contents of the sg_table. This
-was missing despite explicitly required by mtk_gem_prime_get_sg_table().
+| The reset behavior of this field is:
+| • On a GIC reset, this field resets to an architecturally UNKNOWN value.
 
-Also move the "out" shortcut label to after the kfree() call for the
-sg_table. Having sg_free_table() together with kfree() makes more sense.
-The shortcut is only used when the object already has a kernel address,
-in which case the pointer is NULL and kfree() does nothing. Hence this
-change causes no functional change.
+... so at least per the architecture these could be reset to arbitrary values,
 
-Fixes: 3df64d7b0a4f ("drm/mediatek: Implement gem prime vmap/vunmap function")
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Please merge for v6.6 fixes.
+and that priority might permit SGI/PPIs to be taken IRQs are priority-masked,
+or to prevent SGI/PPIs to be taken when priority-unmasked.
 
-Also, I was wondering why the MediaTek DRM driver implements a lot of
-the GEM functionality itself, instead of using the GEM DMA helpers.
-From what I could tell, the code closely follows the DMA helpers, except
-that it vmaps the buffers only upon request.
+I also see for GICR_CTLR that EnableLPIs would be reset to 0, and IIUC that
+means LPIs won't work on these parts, which seems like a problem.
 
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+> That list seems to match the Arm Trusted Firmware patch that fixed the
+> issue [4]. ...but it will be impossible to ever get the fix rolled out
+> to all devices. Even if we could get firmware spins Qualified for
+> every device there will still be cases where we'll boot with the old
+> firmware. Since we _don't_ bundle the device tree with the firmware,
+> we believe that the quirk mechanism that we came up with (add a quirk
+> in never device trees and firmware removes the quirk when we have a
+> fix) is at least a robust/reliable way to detect the issue.
+> 
+> The whole issue seems rather concerning, but (apparently) it never
+> caused issues in the kernel until we tried to use pseudo-NMI.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 9f364df52478..0e0a41b2f57f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -239,6 +239,7 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map)
- 	npages = obj->size >> PAGE_SHIFT;
- 	mtk_gem->pages = kcalloc(npages, sizeof(*mtk_gem->pages), GFP_KERNEL);
- 	if (!mtk_gem->pages) {
-+		sg_free_table(sgt);
- 		kfree(sgt);
- 		return -ENOMEM;
- 	}
-@@ -248,12 +249,15 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map)
- 	mtk_gem->kvaddr = vmap(mtk_gem->pages, npages, VM_MAP,
- 			       pgprot_writecombine(PAGE_KERNEL));
- 	if (!mtk_gem->kvaddr) {
-+		sg_free_table(sgt);
- 		kfree(sgt);
- 		kfree(mtk_gem->pages);
- 		return -ENOMEM;
- 	}
--out:
-+	sg_free_table(sgt);
- 	kfree(sgt);
-+
-+out:
- 	iosys_map_set_vaddr(map, mtk_gem->kvaddr);
- 
- 	return 0;
--- 
-2.42.0.582.g8ccd20d70d-goog
+Given you haven't seen any issues, I suspect those are getting reset to fixed
+values that happens to work out for us, but it is a bit worrisome more
+generally (e.g. the LPI case above).
 
+Mark.
+
+> 
+> [0] https://github.com/ARM-software/tf-issues/issues/464
+> [1] https://issuetracker.google.com/issues/197061987#comment27
+> [2] https://crrev.com/c/4519877
+> [3] https://issuetracker.google.com/issues/281831288#comment5
+> [4] https://github.com/ARM-software/arm-trusted-firmware/commit/1c62cc7fbdf2ec2a7e69b3c027d507fcafdcaa12
 
