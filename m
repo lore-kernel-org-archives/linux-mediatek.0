@@ -4,83 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 303A4E8FDC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 01:32:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32E64E8FDC7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 02:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LtgXwyXGb2bi1jhVkZotMHTKIP1cWrsqyGVuQzeEo2I=; b=eGdwETtk3UQ2rrDs8/n0/dhIbv
-	8c0Qn+IpyFK0mTuf9G6OvFmwAzsDm99TcA7U+AY2s7XKmr+f33/8gPsjvMVy1pp3LH5Y5QLHxzAwb
-	xCuB8afMgIZOr86NbhiytoEERYS/ApSqW/H9dsYTo/YGaoe0b3zIMtw6lDyU6TNmbhjNhTXF3uJh1
-	/cuJt5T5eOuH7bMUEEWmWb0+eUhXGqk3TP1ipil8mOUaVzxXKdhUnbu77waCBUSuXauXC/oIEqEJm
-	ElmxkgkwWXUAFa9SUp0OabyM0/eIO4cEKROjD6iqGV2Lw+yoXOlm0m9Ohe3SKg1ilwVd/XmU7YsrH
-	bD07j7Aw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GLG0McDXD3RiSj25NXjkBPEr/Jx8+lcRk5C/BaVVWvs=; b=W/Ys4PhlTej2mtL2XLqKGRUj9d
+	CTXjof9Jrco0XAqnjl/3ZLPwmHY3mGSGktUyq5VnVHKINi+GkQj55PgInwLuIWz3GI9Z6qp8KGtRq
+	m6XbPa6Ar7SPavSw+AVgMgL/1x4OT8N2qsoVtBw6b2pwoXH1Ir3SsCNzr31WsDRjbpnMp9JmJieln
+	eAXlS5HY8/Xrf4SRHjCcsplbdzchz4J6taFAnLZnrKuj+71vnYtVEMtSpSCoFOIA/gs7syW8Obqbb
+	KvwL5LDQwq2m7fC9VN8SbZCmlk3FOs0B6vYH/SiMYG3hnfnB/AI0sQbb9M1UpRbRaWfW0JZkyEaoX
+	QQM56r2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnqk3-00FjBU-2L;
-	Wed, 04 Oct 2023 01:31:59 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1qnroN-00FnZL-0e;
+	Wed, 04 Oct 2023 02:40:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnqk0-00FjAL-3A
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Oct 2023 01:31:58 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2c00e1d4c08so17892891fa.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Oct 2023 18:31:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696383112; x=1696987912; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LtgXwyXGb2bi1jhVkZotMHTKIP1cWrsqyGVuQzeEo2I=;
-        b=Sns+I/Ww544knlGHszYGpSTYzgYQM5dOwtrNVB82OgovhmtNrTvl+o+5tMjtk1RhCK
-         yPkVQMM9MPl1AP/NUIo+pvnaXMDEzZxZCttYHBarxrqedDex4ihOZq1gr4MQgICDWzUY
-         GanSTYKjZ8xYOolHf/1GOteAaTuLn79Im5lk1vjT7xOpBSHbzf7jyE3rQzcX/EW9Bo65
-         LvDwGFGupY4Wk/Bb+Ob/3Qo/PZMMxrhxexSF4y6HHpcRdk9Zoo5tVnOllr6iTfEuYu9u
-         7Xr53crRfoIAJhyzNKNZgUenMeQsGL8MUxm6c/RUOLMAvTR+WVu402ugwhqaYXRt08PO
-         qEHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696383112; x=1696987912;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=LtgXwyXGb2bi1jhVkZotMHTKIP1cWrsqyGVuQzeEo2I=;
-        b=pgwiDdWUjxqbJpE/DUx0aggLG1yv2NzbEOor6EZ8BC3+WWeCEY92jE1PxFXLZjLXwE
-         7Gwc5d/3JqEnpfTAS6XkacMNl8uFXlV3l0W15szcrKtWFBACrxFD6rMQTaCEvwl953Iv
-         AqreBqZfCCHNKhriM2yNy8EDorR6/YoSCFSZXzVk5Smj0m8LYzWox72os8SzKS0er/j1
-         X7TfiDhkOexnK986wW42AEf8c2anPqECsylKWi/owf+7/hY7dyXpUMThMlgA3LO1MwsK
-         c693knwl/DP+O1wUY6pt5gijTTv0IzG1rOOvUZzuaaN61doJxLTUQyTLbNSYathZepaS
-         fA/g==
-X-Gm-Message-State: AOJu0YycaXBU0zGALwXhpbayQlPE7caumpstw5ZRSOfobyNQ6J7prObt
-	VDrj2c092es/8vJyzD1AOqbbkrIAyp7spxMKMQ==
-X-Google-Smtp-Source: AGHT+IGMEx30pecyH5eeOV8Fty5foMoStxfIj8LgwrA4eKoEVBRS2moxsuXLaNu/rZsEb1P8LuaTwT8pqmVF9UoUwp4=
-X-Received: by 2002:a2e:8507:0:b0:2bc:feb6:6da4 with SMTP id
- j7-20020a2e8507000000b002bcfeb66da4mr782282lji.33.1696383111909; Tue, 03 Oct
- 2023 18:31:51 -0700 (PDT)
+	id 1qnroJ-00FnYO-0L;
+	Wed, 04 Oct 2023 02:40:28 +0000
+X-UUID: 5b5d667a625f11ee86758d4a7c00f3a0-20231003
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=GLG0McDXD3RiSj25NXjkBPEr/Jx8+lcRk5C/BaVVWvs=;
+	b=JPRGvl0FyTzEaodFEzAHOLLR+NwMy7WHmz8Rua7uW3be5swTcdALVyi4YzScexnZfmozznyVcaqXXi3DGXR2TQ+9FGsj42p/Y8ZnxGkypMl6kfByWG8HgeYQG+3u09fq2zbZnzaqza7kuP6Bpoeh+YLnIwmdxoFVYcd7l4lS/iA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:bc21cba6-d78c-474a-ac53-004bf684261a,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5f78ec9,CLOUDID:79708ebf-14cc-44ca-b657-2d2783296e72,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5b5d667a625f11ee86758d4a7c00f3a0-20231003
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1160226194; Tue, 03 Oct 2023 19:40:18 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 4 Oct 2023 10:40:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 4 Oct 2023 10:40:15 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v11 7/9] drm/mediatek: Support dynamic selection of DP_INTF0 on MT8188 VDOSYS0
+Date: Wed, 4 Oct 2023 10:40:11 +0800
+Message-ID: <20231004024013.18956-8-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231004024013.18956-1-jason-jh.lin@mediatek.com>
+References: <20231004024013.18956-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-References: <20231003022002.25578-1-peter.wang@mediatek.com>
-In-Reply-To: <20231003022002.25578-1-peter.wang@mediatek.com>
-From: Stanley Chu <chu.stanley@gmail.com>
-Date: Wed, 4 Oct 2023 09:31:40 +0800
-Message-ID: <CAGaU9a84pAWG83EVjAJxZsvDW8T8d+UyJuHXKP3XbKQwkkZjdw@mail.gmail.com>
-Subject: Re: [PATCH v2] ufs: core: correct clear tm error log
-To: peter.wang@mediatek.com
-Cc: stanley.chu@mediatek.com, linux-scsi@vger.kernel.org, 
-	martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, 
-	jejb@linux.ibm.com, wsd_upstream@mediatek.com, 
-	linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com, 
-	alice.chao@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com, 
-	jiajie.hao@mediatek.com, powen.kao@mediatek.com, qilin.tan@mediatek.com, 
-	lin.gui@mediatek.com, tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, 
-	naomi.chu@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.967700-8.000000
+X-TMASE-MatchedRID: QNCxZxSW5lrUbyut0lXeoED6z8N1m1ALnhD9A3Sa7pZcU0dNErOD+vlY
+	oV6p/cSxNFCzr/YjTjM/j7zt48dCSZsYdIGP6PlZkDpLRKO9xhR9LQinZ4QefPcjNeVeWlqY+gt
+	Hj7OwNO0UQCQtpNwWeuvXUIEHYfY0GmaFOppS/NxmzbyaB9t9FR3vvlo+MTGG
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.967700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 980030E620D8BDC97A45A00A4B4E7DB9D4760DABC8FF37A7B7D3A75158DF0FE02000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_183157_021155_F666A3F5 
-X-CRM114-Status: UNSURE (   6.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231003_194027_148669_6DE31C33 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,14 +100,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 3, 2023 at 10:20=E2=80=AFAM <peter.wang@mediatek.com> wrote:
->
-> From: Peter Wang <peter.wang@mediatek.com>
->
-> The clear tm function error log is inverted.
->
-> Fixes: 4693fad7d6d4 ("scsi: ufs: core: Log error handler activity")
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Move DDP_COMPONENT_DP_INTF0 from mt8188_mtk_ddp_main array to a
+connector routes array called mt8188_mtk_ddp_main_routes to support
+dynamic selection capability for mt8188.
 
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 5d2e191b4106..70c9501250a0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -186,7 +186,10 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_GAMMA,
+ 	DDP_COMPONENT_POSTMASK0,
+ 	DDP_COMPONENT_DITHER0,
+-	DDP_COMPONENT_DP_INTF0,
++};
++
++static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
++	{0, DDP_COMPONENT_DP_INTF0},
+ };
+ 
+ static const unsigned int mt8192_mtk_ddp_main[] = {
+@@ -288,6 +291,8 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+ static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
+ 	.main_path = mt8188_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
++	.conn_routes = mt8188_mtk_ddp_main_routes,
++	.num_conn_routes = ARRAY_SIZE(mt8188_mtk_ddp_main_routes),
+ 	.mmsys_dev_num = 1,
+ };
+ 
+-- 
+2.18.0
+
 
