@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE18BE8FDDD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 09:11:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D354FE8FDDB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Oct 2023 09:20:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QQPGqOuZNJdhgdi+75ZWk/pFVNebMgzT6ABDEPO78xc=; b=Qkd44Tj5fNxKY/BMlWPTyPXCVO
-	GqkDg5SyKo+pWecn04cEWF9uZ81VgCjp0w8g8/COOzIkbV62Qky9l9yAA4KUBA/VRWDf+6jHQL8ud
-	EigZl3QSNnSMstKFbB4y7M6QFXcFxiK/B+LluX8vmFGJTcjJ8fR6XrksQ1x8q64ntkjno+wj+JzZD
-	UIp6tbaPFKK6knFufCxXYSluJuSPpNMJL8KEHaGWH8SK44STwD7cBEYM11olhGsYeBJiabjQq+syF
-	YZ6pEr30ugE1pPfPZWYJAEorXBRdzm1uqD6KmHvlZOc+6dRbPrJ5VVVWR1FiCrkkNcbbH4U/JINUu
-	sCfamNxA==;
+	bh=EUDEd28wqTKiwb0bSoZIZbE0lhMh9645W9pmxaL9NtE=; b=TABUbYdBp6f4J07cT03ab5gtyg
+	c3O+lREhV3MXLLOJc9HBgV9OHXM53wKnn08LFtuTiF0wc5gR/57iv/OUDdooLTqB6QZQ5Dxo3FZ3D
+	KqeyxTr5jc+GzHdJYP1my5kn+AA7iHjqABfxzGwZ2Kes0EiRJ8H+QQFXsv8S+eyTKxa7Rc0lMZk2z
+	J/jG8lC5f7GOE0gwTWh7qPgE7Lyd5LRqGOVlcXYBeaE1YpBlRXjOpVOspjqF4y5jUnmDGbmCxeCwP
+	yTDdCICSEjqw7d/z0pp9ihPXO/qel5QN3SrEiJhoH0MFcGdnvNUgXzlDSZDe3tu19mHR2hR+XUspR
+	ItQuXCsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnxuo-00H09S-2F;
-	Wed, 04 Oct 2023 09:11:34 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qny3L-00H2Sh-1r;
+	Wed, 04 Oct 2023 09:20:23 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnxul-00H07n-1m;
-	Wed, 04 Oct 2023 09:11:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E2045CE1B78;
-	Wed,  4 Oct 2023 09:11:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 804A6C433C8;
-	Wed,  4 Oct 2023 09:11:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696410688;
-	bh=3tcd15/ZhZ377CKHNn8APJe8bHeAciTOTOhoUjvaohg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=DxSpJYyVREb2yGfKKnw9XSQ1b8/PfzDDLw1n0AfAWJpbDxN5aeF8+GwUULbrMkUgH
-	 OTYTGKvD9ba9vCfGfHV/aEOrTNxwhtl/O8OABpQABMAs5FeM3+KQXz5I2RPk9b9flc
-	 wkSZcKKx2DnIhFcaKgCjwVwezihs8unE9xmAOWGilJIloCd5P/qWQjHr/TxxfTfQua
-	 jWcbgEjvR2M/TCB28g8Z0+FI7lrSHPsiMqsf9jRUghMqKqj5NI6yKqBZODV0D3DHJH
-	 gsJLlCAtLQIRIuduqECIQElhZszhdkr0VExwQN2Xz+dEF58YZVBizNAUpZBSI5JGxT
-	 q8VeZop7iehGQ==
-From: Lee Jones <lee@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Mark Brown <broonie@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Lee Jones <lee@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230928085537.3246669-2-wenst@chromium.org>
-References: <20230928085537.3246669-1-wenst@chromium.org>
- <20230928085537.3246669-2-wenst@chromium.org>
-Subject: Re: (subset) [PATCH v4 01/12] dt-bindings: mfd: mt6397: Split out
- compatible for MediaTek MT6366 PMIC
-Message-Id: <169641068524.66814.2537584517055836452.b4-ty@kernel.org>
-Date: Wed, 04 Oct 2023 10:11:25 +0100
+	id 1qny3H-00H2Qe-1q;
+	Wed, 04 Oct 2023 09:20:21 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1755E6607079;
+	Wed,  4 Oct 2023 10:20:16 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1696411216;
+	bh=13nUw+iTCisxqevQVzt8K18HbU2kBO3wGBxDcnPry/c=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bVh67iMUgd7Pl5N1xE6+ybUv7aLG/1ROTMi/H9cpzUDcIivP3JCodJobk7o5y1Dq3
+	 dwOaro1gSAQ3jLxntGBq7XQAZmsjwa/LND+aOHjKaMbMDXZdQDDZmOKGVXm+bZcsvh
+	 FDebe/DdKA7t1Z8MNW41QOeLDQU3nrAL1M1PNIxDnUA2gqLaPhpFkr750RvnXlAf8q
+	 ziFllgFz+x7hI2oIxCiOmzIKbhger3svawkY0j7tVpv8WwhpV8nV+1Qux0PWinD7HQ
+	 1gHe5xcBrVYucSTO75wD7g/xV3ll7AGkfQsfzvQXgbBm8uBQzcoYC+h0WLwR7nyIYL
+	 Tds3gsrwzrxpw==
+Message-ID: <baa122da-4ae3-9023-3529-3ad38204b989@collabora.com>
+Date: Wed, 4 Oct 2023 11:20:13 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.12.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v2] mailbox: remove runtime GCE clk control
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Shawn Sung <shawn.sung@mediatek.com>
+References: <20231004085430.19538-1-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231004085430.19538-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_021131_784057_93BFA296 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231004_022019_955344_DD4A7A0B 
+X-CRM114-Status: GOOD (  24.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,23 +82,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 Sep 2023 16:55:24 +0800, Chen-Yu Tsai wrote:
-> The MT6366 PMIC is mostly, but not fully, compatible with MT6358. It has
-> a different set of regulators. Specifically, it lacks the camera related
-> VCAM* LDOs and VLDO28, but has additional VM18, VMDDR, and VSRAM_CORE LDOs.
+Il 04/10/23 10:54, Jason-JH.Lin ha scritto:
+> 1. GCE is a frequently used module, so runtime controlling
+> GCE clock won't save too much power and its original design
+> doesn't expect it to be enabled and disabled too frequently.
 > 
-> The PMICs contain a chip ID register that can be used to detect which
-> exact model is preset, so it is possible to share a common base
-> compatible string.
+> 2. Runtime controlling GCE clock will cause display HW register
+> configured in worng stream done event issue below:
+>    GCE should config HW in every vblanking duration.
+>    The stream done event is the start signal of vblanking.
 > 
-> [...]
+>    If stream done event is sent between GCE clk_disable
+>    and clk_enable. After GCE clk_enable the stream done event
+>    may not appear immediately and have about 3us delay.
+> 
+>    Normal case:
+>    clk_disable -> get EventA -> clk_enable -> clear EventA
+>    -> wait EventB -> get EventB -> config HW
+> 
+>    Abnormal case:
+>    clk_disable -> get EventA -> clk_enable -> EventA delay appear
+>    -> clear EventA fail -> wait EventB but get EventA -> config HW
+> 
+> So just remove the runtime GCE clock contorl.
+> 
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
-Applied, thanks!
+Instead of entirely removing the logic that controls the clocks and always
+refuse to save power, what about using autosuspend?
 
-[01/12] dt-bindings: mfd: mt6397: Split out compatible for MediaTek MT6366 PMIC
-        commit: 9e2a2fd1ca0555bd0c278cd4061cc4bd9c8d0f7f
+If the two cases that you're describing are happening always in a range of
+time, we could *yes* remove the "manual" bulk disable/enable calls, but then
+we could use runtime_suspend/runtime_resume callbacks for that.
 
---
-Lee Jones [李琼斯]
+Hint: pm_runtime_set_autosuspend_delay(dev, 1000);
+
+Regards,
+Angelo
+
+> ---
+> v1 -> v2:
+> 1. Rebase on Linux 6.6-rc4
+> 2. Adjust commit message.
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c | 18 +++++-------------
+>   1 file changed, 5 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 4d62b07c1411..a3c2d318beb7 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -140,7 +140,6 @@ static void cmdq_init(struct cmdq *cmdq)
+>   	int i;
+>   	u32 gctl_regval = 0;
+>   
+> -	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+>   	if (cmdq->pdata->control_by_sw)
+>   		gctl_regval = GCE_CTRL_BY_SW;
+>   	if (cmdq->pdata->sw_ddr_en)
+> @@ -152,7 +151,6 @@ static void cmdq_init(struct cmdq *cmdq)
+>   	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
+>   	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
+>   		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
+> -	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+>   }
+>   
+>   static int cmdq_thread_reset(struct cmdq *cmdq, struct cmdq_thread *thread)
+> @@ -283,10 +281,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+>   			break;
+>   	}
+>   
+> -	if (list_empty(&thread->task_busy_list)) {
+> +	if (list_empty(&thread->task_busy_list))
+>   		cmdq_thread_disable(cmdq, thread);
+> -		clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+> -	}
+>   }
+>   
+>   static irqreturn_t cmdq_irq_handler(int irq, void *dev)
+> @@ -333,7 +329,7 @@ static int cmdq_suspend(struct device *dev)
+>   	if (cmdq->pdata->sw_ddr_en)
+>   		cmdq_sw_ddr_enable(cmdq, false);
+>   
+> -	clk_bulk_unprepare(cmdq->pdata->gce_num, cmdq->clocks);
+> +	clk_bulk_disable_unprepare(cmdq->pdata->gce_num, cmdq->clocks);
+>   
+>   	return 0;
+>   }
+> @@ -342,7 +338,7 @@ static int cmdq_resume(struct device *dev)
+>   {
+>   	struct cmdq *cmdq = dev_get_drvdata(dev);
+>   
+> -	WARN_ON(clk_bulk_prepare(cmdq->pdata->gce_num, cmdq->clocks));
+> +	WARN_ON(clk_bulk_prepare_enable(cmdq->pdata->gce_num, cmdq->clocks));
+>   	cmdq->suspended = false;
+>   
+>   	if (cmdq->pdata->sw_ddr_en)
+> @@ -358,7 +354,7 @@ static int cmdq_remove(struct platform_device *pdev)
+>   	if (cmdq->pdata->sw_ddr_en)
+>   		cmdq_sw_ddr_enable(cmdq, false);
+>   
+> -	clk_bulk_unprepare(cmdq->pdata->gce_num, cmdq->clocks);
+> +	clk_bulk_disable_unprepare(cmdq->pdata->gce_num, cmdq->clocks);
+>   	return 0;
+>   }
+>   
+> @@ -384,8 +380,6 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+>   	task->pkt = pkt;
+>   
+>   	if (list_empty(&thread->task_busy_list)) {
+> -		WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+> -
+>   		/*
+>   		 * The thread reset will clear thread related register to 0,
+>   		 * including pc, end, priority, irq, suspend and enable. Thus
+> @@ -457,7 +451,6 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
+>   	}
+>   
+>   	cmdq_thread_disable(cmdq, thread);
+> -	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+>   
+>   done:
+>   	/*
+> @@ -497,7 +490,6 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
+>   
+>   	cmdq_thread_resume(thread);
+>   	cmdq_thread_disable(cmdq, thread);
+> -	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+>   
+>   out:
+>   	spin_unlock_irqrestore(&thread->chan->lock, flags);
+> @@ -631,7 +623,7 @@ static int cmdq_probe(struct platform_device *pdev)
+>   
+>   	platform_set_drvdata(pdev, cmdq);
+>   
+> -	WARN_ON(clk_bulk_prepare(cmdq->pdata->gce_num, cmdq->clocks));
+> +	WARN_ON(clk_bulk_prepare_enable(cmdq->pdata->gce_num, cmdq->clocks));
+>   
+>   	cmdq_init(cmdq);
+>   
+
+
 
 
