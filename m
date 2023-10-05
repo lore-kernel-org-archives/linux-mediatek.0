@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 242A8E92731
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 19:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D36BE92FCF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 23:36:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cIOhWmDhaGKnIOKqSallat4hBjPWg9wv14CRRkvBnO8=; b=MtCefGqje1j7119279Mea2XNgv
-	4wQKNJ+HoNV9norumjlZrsh+ynSK82Qy+gHP2UTgjr12spkT34FB3XNgdWBhp2Fp6i1457JiMf1EC
-	j8cLQtj9DWHurxfPk4Ln6G+Y5EAxbtyA3reoFXfzf3PqsMnKVP7oX51nqnP2fhLKPZBakAGKsexNB
-	M2ou7vwxwKc2SSyEvjg+3K/bOKjI6+DbNXb/R+57BghiFWKBE9Dm7zzkfQG/sb9BDDsvGYx6ltE1b
-	cdpjDHK3wPDTLCFFD9AXxCuiDKZIE02HriYBKr7XGyxBALubVlSwMGFYQuxADuFJ4sDjKfu+536P6
-	GoKLvS5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8pjlo/QF9q+Mcce6tVQl3O9Br6iA+wA2HRRcI3UyGk0=; b=hPjE0N4feOkKYzc0BofmH9gYIX
+	FUFH9ig8u+awjGhguvJPTuOc5BjDZ+rtO+ZYvVWrvXTl3rD+Gd6UeLW1NKIqHLsarefD4vATaYKmh
+	akhMVJZslqPEZxlbYFE1vBhrBp0Oui+LvAecSbtF84xjl/9G0bnvKFyE5xavDgNjUyAR4vQdjNhQ6
+	zFveLhA525AXjdUBqykt7fYnOKR8EN6QcEANE5lpycckdthhkK0ycKvgs+IDB0vMBQNvcjf8pmfyU
+	zUYYaRR+nzURq0DurCEsLvWL60j4rpJTWECfx6xdZyQ09R1YeDcCJa1Nm2G7ttDh4DLJw/MDhAkEu
+	X+tOhlOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoUL1-004P4x-1T;
-	Thu, 05 Oct 2023 19:48:47 +0000
-Received: from proxmox1.postmarketos.org ([213.239.216.189])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoUKw-004OiM-35;
-	Thu, 05 Oct 2023 19:48:45 +0000
-Received: from [192.168.1.177] (unknown [10.0.0.254])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by proxmox1.postmarketos.org (Postfix) with ESMTPSA id C3509140B01;
-	Thu,  5 Oct 2023 19:46:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=postmarketos.org;
-	s=donut; t=1696535193;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cIOhWmDhaGKnIOKqSallat4hBjPWg9wv14CRRkvBnO8=;
-	b=gkP75ATkFuJkXErAW/PpJat6k5/Htnp9NLF6G0yL5FPd9zb3e7/4+WegrFXn/YJQD6dv0d
-	wDuXLaeWdpjeOiVL+s7MmiUVDSub0JXNcdNWf290sEABUVFheVGLr10eIByPNP109dIJ7u
-	WbIGNxc7cBE21VbaBcnx/e9oYMG/TFg=
-Message-ID: <fe78f7e4-9655-639c-4a8c-120daa221ce7@postmarketos.org>
-Date: Thu, 5 Oct 2023 22:46:32 +0300
+	id 1qoXta-004cP8-3B;
+	Thu, 05 Oct 2023 23:36:42 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qoXtX-004cO6-1q;
+	Thu, 05 Oct 2023 23:36:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 5C5FFB82728;
+	Thu,  5 Oct 2023 23:36:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB365C433C7;
+	Thu,  5 Oct 2023 23:36:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696548996;
+	bh=jM/w3fzfVHdmadDXFozFx6NFKuTnREVwExPWlfdgFgc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nUcWtuyeYhbG07u6HpTAvW7DOS7G42XnmLKPctw9KA5fA7aKTjvKyKRAyWtmTUAQ0
+	 Szi4wmKMm8XKxe4YfpLFwtXgKjj9Pc4uCHAeZOLMwzngDZ9rQQ9oJTko1XtWa0fSXn
+	 7PyMBndfHG799/tObcqH35jZBPOWOyCyjlmIo64FZMwCsNs4aKV0IRU4SjNv40tsra
+	 Y06D0H2PIHB0Xaxl8t8w9upqskBQH3vAHCHylSPya38VP7cBy8tPkmNkTPTKSKHlv4
+	 0FP/FVMx56J+3Y/rl3LCXkyvdE/erFhPPVhPx+D8dh84tYl4d3C4ZoXdOLDOGpU4+n
+	 5pSr3IZIZGfEg==
+Date: Fri, 6 Oct 2023 00:36:30 +0100
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mchehab@kernel.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, moudy.ho@mediatek.com,
+	hverkuil-cisco@xs4all.nl, sakari.ailus@linux.intel.com,
+	u.kleine-koenig@pengutronix.de, linqiheng@huawei.com,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	wenst@chromium.org
+Subject: Re: [PATCH v2 1/2] media: dt-bindings: mediatek: Add phandle to
+ mediatek,scp on MDP3 RDMA
+Message-ID: <20231006-jinx-playing-261e5f41ff7f@spud>
+References: <20231005104905.120544-1-angelogioacchino.delregno@collabora.com>
+ <20231005104905.120544-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] drm/panel: Move AUX B116XW03 out of panel-edp back to
- panel-simple
-Content-Language: en-US
-To: Doug Anderson <dianders@chromium.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>, airlied@gmail.com,
- daniel@ffwll.ch, jitao.shi@mediatek.com, linus.walleij@linaro.org,
- linux-kernel@vger.kernel.org, neil.armstrong@linaro.org,
- quic_jesszhan@quicinc.com, sam@ravnborg.org,
- Anton Bambura <jenneron@protonmail.com>
-References: <20230925150010.1.Iff672233861bcc4cf25a7ad0a81308adc3bda8a4@changeid>
- <b0037c9f-588b-4eb8-6415-0fe75bed264f@collabora.com>
- <CAD=FV=UWQgLLfU4X+6OUR5AWOkJKwG9J7BbKGRCgze6LTY6JNw@mail.gmail.com>
- <CAD=FV=UqG6DiAyjcLKeoUWKutepGd46Zx=8O-NWKoYC-fZEG6g@mail.gmail.com>
-From: Anton Bambura <jenneron@postmarketos.org>
-In-Reply-To: <CAD=FV=UqG6DiAyjcLKeoUWKutepGd46Zx=8O-NWKoYC-fZEG6g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="gIB/z/xC+ykFsm7t"
+Content-Disposition: inline
+In-Reply-To: <20231005104905.120544-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_124843_170901_9AADF57C 
-X-CRM114-Status: GOOD (  30.64  )
+X-CRM114-CacheID: sfid-20231005_163639_914429_2759DC74 
+X-CRM114-Status: GOOD (  16.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,121 +81,69 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On 10/5/23 21:10, Doug Anderson wrote:
+--gIB/z/xC+ykFsm7t
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Hi,
->
-> On Tue, Sep 26, 2023 at 7:01 AM Doug Anderson <dianders@chromium.org> wrote:
->> Hi,
->>
->> On Tue, Sep 26, 2023 at 1:06 AM AngeloGioacchino Del Regno
->> <angelogioacchino.delregno@collabora.com> wrote:
->>> Il 26/09/23 00:00, Douglas Anderson ha scritto:
->>>> In commit 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of
->>>> panel-simple") I moved a pile of panels out of panel-simple driver
->>>> into the newly created panel-edp driver. One of those panels, however,
->>>> shouldn't have been moved.
->>>>
->>>> As is clear from commit e35e305eff0f ("drm/panel: simple: Add AUO
->>>> B116XW03 panel support"), AUX B116XW03 is an LVDS panel. It's used in
->>>> exynos5250-snow and exynos5420-peach-pit where it's clear that the
->>>> panel is hooked up with LVDS. Furthermore, searching for datasheets I
->>>> found one that makes it clear that this panel is LVDS.
->>>>
->>>> As far as I can tell, I got confused because in commit 88d3457ceb82
->>>> ("drm/panel: auo,b116xw03: fix flash backlight when power on") Jitao
->>>> Shi added "DRM_MODE_CONNECTOR_eDP". That seems wrong. Looking at the
->>>> downstream ChromeOS trees, it seems like some Mediatek boards are
->>>> using a panel that they call "auo,b116xw03" that's an eDP panel. The
->>>> best I can guess is that they actually have a different panel that has
->>>> similar timing. If so then the proper panel should be used or they
->>>> should switch to the generic "edp-panel" compatible.
->>>>
->>>> When moving this back to panel-edp, I wasn't sure what to use for
->>>> .bus_flags and .bus_format and whether to add the extra "enable" delay
->>>> from commit 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash
->>>> backlight when power on"). I've added formats/flags/delays based on my
->>>> (inexpert) analysis of the datasheet. These are untested.
->>>>
->>>> NOTE: if/when this is backported to stable, we might run into some
->>>> trouble. Specifically, before 474c162878ba ("arm64: dts: mt8183:
->>>> jacuzzi: Move panel under aux-bus") this panel was used by
->>>> "mt8183-kukui-jacuzzi", which assumed it was an eDP panel. I don't
->>>> know what to suggest for that other than someone making up a bogus
->>>> panel for jacuzzi that's just for the stable channel.
->>>>
->>>> Fixes: 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when power on")
->>>> Fixes: 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of panel-simple")
->>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
->>>> ---
->>>> I haven't had a snow or peach-pit hooked up for debugging / testing
->>>> for years. I presume that they must be broken and hope that this fixes
->>>> them.
->>> We could avoid backport breakages by avoiding to backport this to any kernel
->>> that doesn't contain commit 474c162878ba ("arm64: dts: mt8183: jacuzzi: Move
->>> panel under aux-bus")... because creating a dummy panel to get two wrongs
->>> right is definitely not ok.
->> Sure, except that leaves us with ... a breakage. :-P
->>
->> Although I haven't tested it, I have a hard time believing that
->> exynos5250-snow and exynos5420-peach-pit will work properly with the
->> panel defined as an eDP panel. That means that they will be broken. If
->> someone cared to get those fixed in a stable backport then we'd be
->> stuck deciding who to break. If you have any brilliant ideas then I'm
->> all ears.
->>
->> ...then again, I presume this has been broken since commit
->> 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when power
->> on"). That was a little over 3 years ago. Maybe I'm wrong and somehow
->> things still limp along and sorta work even though the panel is
->> defined incorrectly?
-> I dug out a exynos5250-snow out of my pile and booted postmarket OS on
-> it, which was shockingly easy/pleasant (kudos to those involved!). I
-> found that it was booting a kernel based on 6.1.24. Digging into
-> sysfs, I found that indeed it appeared to be using the "panel-edp"
-> driver, so I guess it is limping along with the wrong driver and wrong
-> flags...
+On Thu, Oct 05, 2023 at 12:49:04PM +0200, AngeloGioacchino Del Regno wrote:
+> The MDP3 RDMA needs to communicate with the SCP remote processor: allow
+> specifying a phandle to a SCP core.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>=20
+> v2: I've dropped Conor and Chen-Yu's Reviewed-by tags because I have chan=
+ged
+>     the description (so, the patch actually changed a bit).
 
-Hi. I'm the maintainer of chromebooks (including exynos 5 ones) in 
-postmarketOS.
+I dunno, you made it more informative so you could probably have kept
+mine at least.
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 
-We are indeed on 6.1.24 yet, but we will upgrade it to the latest LTS soon.
+Thanks,
+Conor.
 
-> It wasn't totally clear for me how to build a new kernel and deploy it
-> for postmarket OS, so I wasn't able to confirm this change. I've CCed
-> the person listed on the postmarket OS wiki though to see if they have
-> any insight.
+>=20
+>  .../devicetree/bindings/media/mediatek,mdp3-rdma.yaml     | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.y=
+aml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> index 7032c7e15039..59dcea797b71 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> @@ -45,6 +45,14 @@ properties:
+>        include/dt-bindings/gce/<chip>-gce.h of each chips.
+>      $ref: /schemas/types.yaml#/definitions/uint32-array
+> =20
+> +  mediatek,scp:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to the System Control Processor (SCP) used for initializing
+> +      and stopping the MDP3, for sending frame data locations to the MDP=
+3's
+> +      VPU and to install Inter-Processor Interrupt handlers to control
+> +      processing states.
+> +
+>    power-domains:
+>      maxItems: 1
+> =20
+> --=20
+> 2.42.0
+>=20
 
-The recommended way to build kernel is envkernel, see
+--gIB/z/xC+ykFsm7t
+Content-Type: application/pgp-signature; name="signature.asc"
 
-https://wiki.postmarketos.org/wiki/Compiling_kernels_with_envkernel.sh. 
-This way you can build kernel, package it and sideload it to your 
-device, so it will get installed including updating /lib/modules and 
-flashing chrome os kernel partition.
+-----BEGIN PGP SIGNATURE-----
 
-You would need to source envkernel.sh in your kernel tree, place kernel 
-config at .output/.config, build it and perform:
-pmbootstrap build --envkernel linux-postmarketos-exynos5
-pmbootstrap sideload --install-key --host <ip> linux-postmarketos-exynos5
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZR9IfgAKCRB4tDGHoIJi
+0mYNAP94jJiEEICc5tNh0nDrkI4gQqpKlFv0/+qx4Ml3g4MyRwD/bq/qU6AsenA0
+urxwY3sdNT0Qa5qIFRnbeDawGz/Y9gE=
+=bidF
+-----END PGP SIGNATURE-----
 
-We use lts branch of https://gitlab.com/exynos5-mainline/linux with this 
-config:
-
-https://gitlab.com/postmarketOS/pmaports/-/blob/master/device/community/linux-postmarketos-exynos5/config-postmarketos-exynos5.armv7
-
->
-> In any case, it sounds as if things are working well enough on older
-> OSes, so maybe we can just skip trying to do any stable backport on
-> this. It still seems like we should land it, though, since the current
-> state of the world seems pretty broken. Anyone willing to give a
-> Reviewed-by or Acked-by tag?
->
-> -Doug
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
-
+--gIB/z/xC+ykFsm7t--
 
