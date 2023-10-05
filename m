@@ -4,62 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FB79E92712
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 15:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6DFDE9271D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 15:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=psmI8y1A7J+9sPoTmK30CglmBHR27wVbfWQinlszqoc=; b=OV/c4rj8sSthuIvuJIqO5frIW1
-	hWrxrS1O3LB/eVXVwhE8m/CzlUKGzprmd4xTqQln/iIgRBF4bJrUmPlHhiNJMncRBOld1EYaMuNIE
-	lUPtc+r1I0KmX9LyR+6JgGDR4y2vnTxLkCdegeTQWnlMRqoE8th78V087l4pKsEhAs1pn7vujpDwk
-	7QIIcEoANguo7rx6ZCHD5AGm0m7tLnsosXO5EizI/tnf5SzrgJMOj13U1Koex6Xwu+xBuRcNqlf1w
-	3e1r6ABqb8gPzUjXtp9j2XWad3lSWnnV3lLVI1tFKQe6n9OhQqpABjJpBxG5XU5usQ9eFJDnlOxcr
-	e17GpSeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fE8UxgxFd/+tbRnT90cqvx9+XVdQKge5mU28dzOU2JI=; b=p/DITmIgLjGaljd0qKbcDgXQAu
+	U65+aAwfwl5bcitAdO2WD6gqqPodfKVcFSes8f2eSYInGW/BOravq+r4qStwDPc6xfxPQduk3CEdB
+	SlJw+TwkdrLXcceQQXG9YO0a76QyFbqRN75X3C5lnfkIJ7CdvQFQ4d7JUTLi5yCcQoOcx5qopwyS4
+	AuSZIo+5QeNMJNJGonL6Y3wHAwUhncoh6izV3G1BpMmvLr5MXAKuIzln8hpGd03YFZh719o424tDk
+	E5OgxM8ITjbE5/mD1ANKxVsbqKo7zNa51vkE9fG8Z7Z0NA5g/NlxW4i4R4Q2the8UG5bKNwaHuLnS
+	2gGF4U0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoQVk-003vLP-2p;
-	Thu, 05 Oct 2023 15:43:36 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qoQeF-003wZR-04;
+	Thu, 05 Oct 2023 15:52:23 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoQVh-003vJc-1B;
-	Thu, 05 Oct 2023 15:43:35 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 395Ct1QM001918;
-	Thu, 5 Oct 2023 15:43:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=psmI8y1A7J+9sPoTmK30CglmBHR27wVbfWQinlszqoc=;
- b=jafGIjoZ7PnWZuORPFbKXbeSUVZMSBs6nPNPJFl6eDNE+4hOws85dewwrvR2YZAZasFj
- qXw7uS1hH2OPHkz+ZpC1OftlDWrpLT/tvwP+P3YRA5vjo6l1aqSa3IqBlidUkSVziXR9
- +DhOlr6OMQXeMSNDQi43DxZSlTV/Vq+prtZ14KrCytysB7x5xnflL9ULW5vGeRMUGUte
- uwfYmm1XnSYJtahxJtcNT4UeD2WoDi7B/8Bw7jToiamCzx6E2igmcCgqSLdEc/QtOVyF
- XLVWJdTXmk3Xhm4VFYysz/x2bMMuDutLQTb/hNIz7anw6sKunNWH/qWJJLd5whvmc6GV NA== 
-Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3th8e1u5mk-1
+	id 1qoQe9-003wW7-2n;
+	Thu, 05 Oct 2023 15:52:19 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 395CwDgK012965;
+	Thu, 5 Oct 2023 15:51:44 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
+ cc : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=qcppdkim1; bh=fE8UxgxFd/+tbRnT90cqvx9+XVdQKge5mU28dzOU2JI=;
+ b=itW+cueeVhBvD/SJRYJKKomxKEJu/qcwwCnA5Jy2XqOiePynqlvXBHE2i7qo3hjZJX/H
+ Sdnv1Cwdis7zPbsHUyjJKokb/WvBocElaXd+tpXVCBSYcbWoCJonLAirVuPGLp+URnyD
+ cZa8joTdEyZHtpvmtYUN8J9zohRICV+wveXBUxCYiC7YqPDi7E6vuC70OnAnsKsrLc1m
+ BT2nc1OjBOqsbAOFwQ9H6yLjIV0fXrij0ZAIiCwTZMYCo5KUxdqr5kNVCLdoDOYspfPf
+ OOF37c6Lz0dV4hoRLt7N9YRin2fDIUbbbgdborBgQJNwm/XDTJvw1cHaeG1aGl5Egac1 XA== 
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3thnfa98ys-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 05 Oct 2023 15:43:02 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 395Fh1t4012902
+	Thu, 05 Oct 2023 15:51:44 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 395Fphso012311
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 5 Oct 2023 15:43:01 GMT
-Received: from [10.216.26.22] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Thu, 5 Oct
- 2023 08:42:37 -0700
-Message-ID: <7c59b835-d29e-04af-7f2f-801da584c71c@quicinc.com>
-Date: Thu, 5 Oct 2023 21:12:25 +0530
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [REBASE PATCH v5 08/17] arm64: mm: Add dynamic ramoops region
- support through command line
-Content-Language: en-US
-To: Pavan Kondeti <quic_pkondeti@quicinc.com>
-CC: Kees Cook <keescook@chromium.org>, Will Deacon <will@kernel.org>,
+	Thu, 5 Oct 2023 15:51:43 GMT
+Received: from hu-pkondeti-hyd.qualcomm.com (10.80.80.8) by
+ nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.36; Thu, 5 Oct 2023 08:51:31 -0700
+Date: Thu, 5 Oct 2023 21:21:28 +0530
+From: Pavan Kondeti <quic_pkondeti@quicinc.com>
+To: Mukesh Ojha <quic_mojha@quicinc.com>
+CC: Pavan Kondeti <quic_pkondeti@quicinc.com>,
+        Kees Cook
+	<keescook@chromium.org>, Will Deacon <will@kernel.org>,
         <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
         <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
         <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
@@ -74,33 +69,38 @@ CC: Kees Cook <keescook@chromium.org>, Will Deacon <will@kernel.org>,
         <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
         <linux-mediatek@lists.infradead.org>,
         <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+Subject: Re: [REBASE PATCH v5 08/17] arm64: mm: Add dynamic ramoops region
+ support through command line
+Message-ID: <85d5aea1-71f8-4465-9787-b3289119cac2@quicinc.com>
 References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
  <1694429639-21484-9-git-send-email-quic_mojha@quicinc.com>
- <20230912101820.GA10884@willie-the-truck> <202309131613.C0E12D0D14@keescook>
+ <20230912101820.GA10884@willie-the-truck>
+ <202309131613.C0E12D0D14@keescook>
  <3273977a-be7d-85f6-6754-52a3dd9b784a@quicinc.com>
  <0120ea7e-e9cc-4955-81dd-6801b56068dc@quicinc.com>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <0120ea7e-e9cc-4955-81dd-6801b56068dc@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+ <7c59b835-d29e-04af-7f2f-801da584c71c@quicinc.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <7c59b835-d29e-04af-7f2f-801da584c71c@quicinc.com>
 X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: IGbUAGYzX116K_An8pah9EbUm59Fl46Y
-X-Proofpoint-ORIG-GUID: IGbUAGYzX116K_An8pah9EbUm59Fl46Y
+X-Proofpoint-GUID: 9576hdoEh0Sr0KThF3OkDVBMsWRJhQEg
+X-Proofpoint-ORIG-GUID: 9576hdoEh0Sr0KThF3OkDVBMsWRJhQEg
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-05_10,2023-10-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 suspectscore=0
- adultscore=0 priorityscore=1501 mlxscore=0 lowpriorityscore=0 spamscore=0
- bulkscore=0 mlxlogscore=999 malwarescore=0 impostorscore=0 clxscore=1015
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2309180000
- definitions=main-2310050122
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ lowpriorityscore=0 mlxlogscore=999 malwarescore=0 bulkscore=0 spamscore=0
+ impostorscore=0 clxscore=1015 adultscore=0 phishscore=0 mlxscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310050123
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_084333_412542_F3B17D47 
-X-CRM114-Status: GOOD (  29.50  )
+X-CRM114-CacheID: sfid-20231005_085218_026285_D6B31B5C 
+X-CRM114-Status: GOOD (  46.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,79 +115,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 10/5/2023 5:14 PM, Pavan Kondeti wrote:
-> On Thu, Oct 05, 2023 at 04:52:20PM +0530, Mukesh Ojha wrote:
->> Sorry for the late reply, was on a long vacation.
->>
->> On 9/14/2023 4:47 AM, Kees Cook wrote:
->>> On Tue, Sep 12, 2023 at 11:18:20AM +0100, Will Deacon wrote:
->>>> On Mon, Sep 11, 2023 at 04:23:50PM +0530, Mukesh Ojha wrote:
->>>>> The reserved memory region for ramoops is assumed to be at a fixed
->>>>> and known location when read from the devicetree. This may not be
->>>>> required for something like Qualcomm's minidump which is interested
->>>>> in knowing addresses of ramoops region but it does not put hard
->>>>> requirement of address being fixed as most of it's SoC does not
->>>>> support warm reset and does not use pstorefs at all instead it has
->>>>> firmware way of collecting ramoops region if it gets to know the
->>>>> address and register it with apss minidump table which is sitting
->>>>> in shared memory region in DDR and firmware will have access to
->>>>> these table during reset and collects it on crash of SoC.
->>>>>
->>>>> So, add the support of reserving ramoops region to be dynamically
->>>>> allocated early during boot if it is request through command line
->>>>> via 'dyn_ramoops_size=' and fill up reserved resource structure and
->>>>> export the structure, so that it can be read by ramoops driver.
->>>>>
->>>>> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
->>>>> ---
->>>>>    arch/arm64/mm/init.c       | 94 ++++++++++++++++++++++++++++++++++++++++++++++
->>>>
->>>> Why does this need to be in the arch code? There's absolutely nothing
->>>> arm64-specific here.
->>>
->>> I would agree: this needs to be in ramoops itself, IMO. It should be a
->>> ramoops module argument, too.
->>>
->>> It being unhelpful for systems that don't have an external consumer is
->>> certainly true, but I think it would still make more sense for this
->>> change to live entirely within ramoops. Specifically: you're
->>> implementing a pstore backend behavioral change. In the same way that
->>> patch 10 is putting the "output" side of this into pstore/, I'd expect
->>> the "input" side also in pstore/
->>
->> How do we reserve memory? are you suggesting to use dma api's for
->> dynamic ramoops ?
->>
-> Sharing my thoughts:
-> 
-> Your patch is inspired from how kexec allocate memory for crash kernel
-> right?
-
-Yes.
-
-> There is a series [1] which moved arch code (ARM64/x86) to
-> generic kexec core. Something we should also do as the feedback
-> received here.
-> 
-> Coming to how part, we still have to use memblock API to increase the chance
-> of allocating contiguous memory. Since PSTORE_RAM can also be
-> compiled as a module, we probably need another pstore layer that needs to
-> be built statically in kernel to allocate memory using memblock API.
-> once slab is available, all memblock API will re-direct to slab
-> allocations. This layer can be enabled via ARCH_WANTS_PSTORE_xxx or
-> another config that only supports 'y'. PSTORE_RAM can still be a module but
-> when this layer is available, it supports dynamic ramoops. Another option
-> would be just including this layer in PSTORE RAM module but take away module
-> option  when this layer is enabled.
-
-I thought about this but still the caller will be in Arch code,
-right ? would that be fine with others ?
-
--Mukesh
+On Thu, Oct 05, 2023 at 09:12:25PM +0530, Mukesh Ojha wrote:
 > 
 > 
-> [1]
-> https://lore.kernel.org/all/20211020020317.1220-6-thunder.leizhen@huawei.com/
+> On 10/5/2023 5:14 PM, Pavan Kondeti wrote:
+> > On Thu, Oct 05, 2023 at 04:52:20PM +0530, Mukesh Ojha wrote:
+> > > Sorry for the late reply, was on a long vacation.
+> > > 
+> > > On 9/14/2023 4:47 AM, Kees Cook wrote:
+> > > > On Tue, Sep 12, 2023 at 11:18:20AM +0100, Will Deacon wrote:
+> > > > > On Mon, Sep 11, 2023 at 04:23:50PM +0530, Mukesh Ojha wrote:
+> > > > > > The reserved memory region for ramoops is assumed to be at a fixed
+> > > > > > and known location when read from the devicetree. This may not be
+> > > > > > required for something like Qualcomm's minidump which is interested
+> > > > > > in knowing addresses of ramoops region but it does not put hard
+> > > > > > requirement of address being fixed as most of it's SoC does not
+> > > > > > support warm reset and does not use pstorefs at all instead it has
+> > > > > > firmware way of collecting ramoops region if it gets to know the
+> > > > > > address and register it with apss minidump table which is sitting
+> > > > > > in shared memory region in DDR and firmware will have access to
+> > > > > > these table during reset and collects it on crash of SoC.
+> > > > > > 
+> > > > > > So, add the support of reserving ramoops region to be dynamically
+> > > > > > allocated early during boot if it is request through command line
+> > > > > > via 'dyn_ramoops_size=' and fill up reserved resource structure and
+> > > > > > export the structure, so that it can be read by ramoops driver.
+> > > > > > 
+> > > > > > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> > > > > > ---
+> > > > > >    arch/arm64/mm/init.c       | 94 ++++++++++++++++++++++++++++++++++++++++++++++
+> > > > > 
+> > > > > Why does this need to be in the arch code? There's absolutely nothing
+> > > > > arm64-specific here.
+> > > > 
+> > > > I would agree: this needs to be in ramoops itself, IMO. It should be a
+> > > > ramoops module argument, too.
+> > > > 
+> > > > It being unhelpful for systems that don't have an external consumer is
+> > > > certainly true, but I think it would still make more sense for this
+> > > > change to live entirely within ramoops. Specifically: you're
+> > > > implementing a pstore backend behavioral change. In the same way that
+> > > > patch 10 is putting the "output" side of this into pstore/, I'd expect
+> > > > the "input" side also in pstore/
+> > > 
+> > > How do we reserve memory? are you suggesting to use dma api's for
+> > > dynamic ramoops ?
+> > > 
+> > Sharing my thoughts:
+> > 
+> > Your patch is inspired from how kexec allocate memory for crash kernel
+> > right?
+> 
+> Yes.
+> 
+> > There is a series [1] which moved arch code (ARM64/x86) to
+> > generic kexec core. Something we should also do as the feedback
+> > received here.
+> > 
+> > Coming to how part, we still have to use memblock API to increase the chance
+> > of allocating contiguous memory. Since PSTORE_RAM can also be
+> > compiled as a module, we probably need another pstore layer that needs to
+> > be built statically in kernel to allocate memory using memblock API.
+> > once slab is available, all memblock API will re-direct to slab
+> > allocations. This layer can be enabled via ARCH_WANTS_PSTORE_xxx or
+> > another config that only supports 'y'. PSTORE_RAM can still be a module but
+> > when this layer is available, it supports dynamic ramoops. Another option
+> > would be just including this layer in PSTORE RAM module but take away module
+> > option  when this layer is enabled.
+> 
+> I thought about this but still the caller will be in Arch code,
+> right ? would that be fine with others ?
+> 
+
+The caller is not necessarily to be in the arch code. For ex:
+mm_core_init()->kfence_alloc_pool_and_metadata()
+
+> > 
+> > 
+> > [1]
+> > https://lore.kernel.org/all/20211020020317.1220-6-thunder.leizhen@huawei.com/
 
