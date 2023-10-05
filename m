@@ -4,99 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 239EFE93709
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 11:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB809E93709
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 12:41:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jgbx4tka3I/uXlQify+yAv1leWqWyj6lyTl8wspgTLU=; b=reyWBRmvy1tc9jpEmrGg8yup1a
-	u+SWzlWFzBYyhtKuip08r8zfHY+Bs3IXq+0aE/X6FxXqPF+ZKKzfg+GjkyAyvPwZa+/QfYi3CvFaQ
-	DzpGbhPEHLpjFoTxL1g6v3bI9IZ33paxA/g3exgi5XS7ENjXMizg3YQZr/dwK2U/uvum+tg/fP2rO
-	D7jqXnxk/8EFyD9uXL1F14X3uTbfZsUGWL4CUVNtpFDzml+7x0sMcNVyhb/Ff9v3MuobCdeButVfi
-	Bz1YkqC9s+croNd+6MZ47ztxFpyJ2NxEzoPenraPWKVBSGLTGE3oO7oLtUJwm6nxqO5w3b0WlfhBw
-	jUbsShWg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IMV+VSPNVy0+1fD7ptAHaZfMsjer8LcbhO4C3fbNMJY=; b=RwT5H6SmpNkVsbBhS+9ZOt2NTE
+	rEqdQNGCj4dYe39Ae6xsWgp8jW5qtQOhH0CIi7L3c3xr++Ve0CfmRBIPqgRI2ZxVPLmS6ciL6NbSW
+	x9ti5dlmNR81Smnw05N27pwIaD64Lgrhs28lqNhWKfnmJKGsVg8hLtOFiSd/CyqsWUZFwjCXmddCE
+	NqNhwVMoVpFE7Yzah1bfCBhGsJa0gZjklIvjq4wV+uJPdZjJC+kj8Mutiw62RBcwyryHWU0PkKU4W
+	yF0WPwI7NubfoIbv24n+PHMiPh3fF9RdOHtHZPxekTDZUFHVoxXYoWDBX5k6eDhMfb2YVGm5/UP1n
+	KKMtHEgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoMnG-002P0H-2S;
-	Thu, 05 Oct 2023 11:45:26 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qoNfX-002vTA-15;
+	Thu, 05 Oct 2023 12:41:31 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoMnD-002Ovt-0b;
-	Thu, 05 Oct 2023 11:45:25 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 395AbQC7004548;
-	Thu, 5 Oct 2023 11:44:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=qcppdkim1; bh=Jgbx4tka3I/uXlQify+yAv1leWqWyj6lyTl8wspgTLU=;
- b=O5B/LJistzFm3uCwIM9aow5ui4IG9XCXaw3WPNOLg1KNy10XGUpdKx49k8CSxHQgNG86
- 0rlHkFaY4pR0xEWTXBeVzpg9oZo386qSdIwu0FM+AAJJMg/tkK8hBu+azAT1iujtTDgg
- VFJYrskw24r9JWvhkQ7YllBGu8Y7lgQ6dZ7oBT88yf4gxkHdqpwd2DThEs9QvLaypU2f
- iVsbXnztklfXMwjbvx0rgPLhEtESkYcBTMTDhcS9TNEkyOj9VDgmgaQDmhooljd81o52
- 4C18xxRYwaHVoe6td3P0yhIRjQ2gtYsrteS04guMJzktGKfEp7w5Z5VT7QiUwqUTwxGN fQ== 
-Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3thq18rnkc-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 05 Oct 2023 11:44:56 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 395BiVpt022075
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 5 Oct 2023 11:44:31 GMT
-Received: from hu-pkondeti-hyd.qualcomm.com (10.80.80.8) by
- nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.36; Thu, 5 Oct 2023 04:44:18 -0700
-Date: Thu, 5 Oct 2023 17:14:15 +0530
-From: Pavan Kondeti <quic_pkondeti@quicinc.com>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-CC: Kees Cook <keescook@chromium.org>, Will Deacon <will@kernel.org>,
-        <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <tony.luck@intel.com>, <gpiccoli@igalia.com>,
-        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
-        <linus.walleij@linaro.org>, <andy.shevchenko@gmail.com>,
-        <vigneshr@ti.com>, <nm@ti.com>, <matthias.bgg@gmail.com>,
-        <kgene@kernel.org>, <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <quic_tsoni@quicinc.com>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-hardening@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
-Subject: Re: [REBASE PATCH v5 08/17] arm64: mm: Add dynamic ramoops region
- support through command line
-Message-ID: <0120ea7e-e9cc-4955-81dd-6801b56068dc@quicinc.com>
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
- <1694429639-21484-9-git-send-email-quic_mojha@quicinc.com>
- <20230912101820.GA10884@willie-the-truck>
- <202309131613.C0E12D0D14@keescook>
- <3273977a-be7d-85f6-6754-52a3dd9b784a@quicinc.com>
+	id 1qoNfT-002vQA-1S;
+	Thu, 05 Oct 2023 12:41:29 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 958D36607327;
+	Thu,  5 Oct 2023 13:41:25 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1696509685;
+	bh=NDq8WhFGsx/jhQOnfQkcqwGfnnhxjb66WolDxgBm/Cg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZXDNWhQQjc2aW+VD/brEY8/3/5zNdPZtYXEPmR0nAg2qLqrvv29J7eqCT0wxtBhun
+	 Nk2KTwvn6kh6VGbb3AnP/hZjgd9U1pfdX5WeLzdhiaO9VbeXAUXwyYjPtdK5J4C7NR
+	 NR3xON5fYD+iIsP6hhjuy6hV3MgsTXeIFCpC6nfhQauhvK7vZsV/JjQoh5UVhTJlz8
+	 EWk6gORts3D/ERtCsICChtTfMxhQalWnLqPBbau5MuX4StPr2/sXRNp5L4dYhZe9+W
+	 8q9RqrQN4gbY0d4fz6yzT5A+WGr0Ypk3b7SS6Td2b/vMwlBDtGRjvvWdqHybHA53+Y
+	 ktyQvh6JfpN5A==
+Message-ID: <3e197ec0-154f-78b6-3bf1-12cf765a3cc6@collabora.com>
+Date: Thu, 5 Oct 2023 14:41:22 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <3273977a-be7d-85f6-6754-52a3dd9b784a@quicinc.com>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: kzyI8JYkdaVqRWszYrYmRjktNQDws0aI
-X-Proofpoint-ORIG-GUID: kzyI8JYkdaVqRWszYrYmRjktNQDws0aI
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-05_08,2023-10-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 impostorscore=0
- suspectscore=0 clxscore=1011 mlxlogscore=999 priorityscore=1501 mlxscore=0
- phishscore=0 adultscore=0 malwarescore=0 bulkscore=0 lowpriorityscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2309180000
- definitions=main-2310050092
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8186: fix clock names for power
+ domains
+Content-Language: en-US
+To: Eugen Hristev <eugen.hristev@collabora.com>, matthias.bgg@gmail.com
+Cc: allen-kh.cheng@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231005103041.352478-1-eugen.hristev@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231005103041.352478-1-eugen.hristev@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_044523_228963_8AFB023D 
-X-CRM114-Status: GOOD (  39.54  )
+X-CRM114-CacheID: sfid-20231005_054127_672372_2817771C 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,67 +77,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 05, 2023 at 04:52:20PM +0530, Mukesh Ojha wrote:
-> Sorry for the late reply, was on a long vacation.
+Il 05/10/23 12:30, Eugen Hristev ha scritto:
+> Clocks for each power domain are split into big categories: pd clocks
+> and subsys clocks.
+> According to the binding, all clocks which have a dash '-' in their name
+> are treated as subsys clocks, and must be placed at the end of the list.
+> The other clocks which are pd clocks must come first.
+> Fixed the naming and the placing of all clocks in the power domains.
+> For the avoidance of doubt, prefixed all subsys clocks with the 'subsys'
+> prefix. The binding does not enforce strict clock names, the driver
+> uses them in bulk, only making a difference for pd clocks vs subsys clocks.
 > 
-> On 9/14/2023 4:47 AM, Kees Cook wrote:
-> > On Tue, Sep 12, 2023 at 11:18:20AM +0100, Will Deacon wrote:
-> > > On Mon, Sep 11, 2023 at 04:23:50PM +0530, Mukesh Ojha wrote:
-> > > > The reserved memory region for ramoops is assumed to be at a fixed
-> > > > and known location when read from the devicetree. This may not be
-> > > > required for something like Qualcomm's minidump which is interested
-> > > > in knowing addresses of ramoops region but it does not put hard
-> > > > requirement of address being fixed as most of it's SoC does not
-> > > > support warm reset and does not use pstorefs at all instead it has
-> > > > firmware way of collecting ramoops region if it gets to know the
-> > > > address and register it with apss minidump table which is sitting
-> > > > in shared memory region in DDR and firmware will have access to
-> > > > these table during reset and collects it on crash of SoC.
-> > > > 
-> > > > So, add the support of reserving ramoops region to be dynamically
-> > > > allocated early during boot if it is request through command line
-> > > > via 'dyn_ramoops_size=' and fill up reserved resource structure and
-> > > > export the structure, so that it can be read by ramoops driver.
-> > > > 
-> > > > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
-> > > > ---
-> > > >   arch/arm64/mm/init.c       | 94 ++++++++++++++++++++++++++++++++++++++++++++++
-> > > 
-> > > Why does this need to be in the arch code? There's absolutely nothing
-> > > arm64-specific here.
-> > 
-> > I would agree: this needs to be in ramoops itself, IMO. It should be a
-> > ramoops module argument, too.
-> > 
-> > It being unhelpful for systems that don't have an external consumer is
-> > certainly true, but I think it would still make more sense for this
-> > change to live entirely within ramoops. Specifically: you're
-> > implementing a pstore backend behavioral change. In the same way that
-> > patch 10 is putting the "output" side of this into pstore/, I'd expect
-> > the "input" side also in pstore/
+> The above problem appears to be trivial, however, it leads to incorrect
+> power up and power down sequence of the power domains, because some
+> clocks will be mistakenly taken for subsys clocks and viceversa.
+> One consequence is the fact that if the DIS power domain goes power down
+> and power back up during the boot process, when it comes back up, there
+> are still transactions left on the bus which makes the display inoperable.
 > 
-> How do we reserve memory? are you suggesting to use dma api's for
-> dynamic ramoops ?
+> Some of the clocks for the DIS power domain were wrongly using '_' instead
+> of '-', which again made these clocks being treated as pd clocks instead of
+> subsys clocks.
 > 
-Sharing my thoughts:
+> Fixes: d9e43c1e7a38 ("arm64: dts: mt8186: Add power domains controller")
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
 
-Your patch is inspired from how kexec allocate memory for crash kernel
-right? There is a series [1] which moved arch code (ARM64/x86) to
-generic kexec core. Something we should also do as the feedback
-received here.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Coming to how part, we still have to use memblock API to increase the chance
-of allocating contiguous memory. Since PSTORE_RAM can also be
-compiled as a module, we probably need another pstore layer that needs to
-be built statically in kernel to allocate memory using memblock API.
-once slab is available, all memblock API will re-direct to slab
-allocations. This layer can be enabled via ARCH_WANTS_PSTORE_xxx or 
-another config that only supports 'y'. PSTORE_RAM can still be a module but 
-when this layer is available, it supports dynamic ramoops. Another option 
-would be just including this layer in PSTORE RAM module but take away module 
-option  when this layer is enabled.
-
-
-[1]
-https://lore.kernel.org/all/20211020020317.1220-6-thunder.leizhen@huawei.com/
 
