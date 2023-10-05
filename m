@@ -4,103 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6DFDE9271D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 15:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE705E92719
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 17:26:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fE8UxgxFd/+tbRnT90cqvx9+XVdQKge5mU28dzOU2JI=; b=p/DITmIgLjGaljd0qKbcDgXQAu
-	U65+aAwfwl5bcitAdO2WD6gqqPodfKVcFSes8f2eSYInGW/BOravq+r4qStwDPc6xfxPQduk3CEdB
-	SlJw+TwkdrLXcceQQXG9YO0a76QyFbqRN75X3C5lnfkIJ7CdvQFQ4d7JUTLi5yCcQoOcx5qopwyS4
-	AuSZIo+5QeNMJNJGonL6Y3wHAwUhncoh6izV3G1BpMmvLr5MXAKuIzln8hpGd03YFZh719o424tDk
-	E5OgxM8ITjbE5/mD1ANKxVsbqKo7zNa51vkE9fG8Z7Z0NA5g/NlxW4i4R4Q2the8UG5bKNwaHuLnS
-	2gGF4U0Q==;
+	bh=h4IVppd8V344Ar3bkirus6eoGxAK9KbfRicLBKUpP9U=; b=GsY3tIL4PjMe1ZogHA3R9wndmO
+	+d2eCl+V6xO+q24jFml5f8Xhhe/my6SrbcjE0a8moqFvEDd7adMAgsJlhyZqFl41jrmgffl4L7Y1c
+	gtqUL1x9TRr6DvSJiTIY3GLZtHIfAT9FH6zC0yYJ3Qp1eunRaIw0LBUiaqXI/hcVo7lWefYNvh0rq
+	R7FcUTxufOZfvaA09E3y8yjqALWPG43DWCvz/+fYhSrJcmxN6SbC+zIoqBNcVSI1o9SXke9nfAuMc
+	e2oSb3c6uZSuovXbd8dRWvR2mPzHc/+RUeG+9jvuhxCjlW8Zu2GWbqMZIzLxdNYQAJpm2h8/YSvSx
+	2+veUEzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoQeF-003wZR-04;
-	Thu, 05 Oct 2023 15:52:23 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qoS6p-004CnC-17;
+	Thu, 05 Oct 2023 17:25:59 +0000
+Received: from mgamail.intel.com ([134.134.136.100])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoQe9-003wW7-2n;
-	Thu, 05 Oct 2023 15:52:19 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 395CwDgK012965;
-	Thu, 5 Oct 2023 15:51:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=qcppdkim1; bh=fE8UxgxFd/+tbRnT90cqvx9+XVdQKge5mU28dzOU2JI=;
- b=itW+cueeVhBvD/SJRYJKKomxKEJu/qcwwCnA5Jy2XqOiePynqlvXBHE2i7qo3hjZJX/H
- Sdnv1Cwdis7zPbsHUyjJKokb/WvBocElaXd+tpXVCBSYcbWoCJonLAirVuPGLp+URnyD
- cZa8joTdEyZHtpvmtYUN8J9zohRICV+wveXBUxCYiC7YqPDi7E6vuC70OnAnsKsrLc1m
- BT2nc1OjBOqsbAOFwQ9H6yLjIV0fXrij0ZAIiCwTZMYCo5KUxdqr5kNVCLdoDOYspfPf
- OOF37c6Lz0dV4hoRLt7N9YRin2fDIUbbbgdborBgQJNwm/XDTJvw1cHaeG1aGl5Egac1 XA== 
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3thnfa98ys-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 05 Oct 2023 15:51:44 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 395Fphso012311
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 5 Oct 2023 15:51:43 GMT
-Received: from hu-pkondeti-hyd.qualcomm.com (10.80.80.8) by
- nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.36; Thu, 5 Oct 2023 08:51:31 -0700
-Date: Thu, 5 Oct 2023 21:21:28 +0530
-From: Pavan Kondeti <quic_pkondeti@quicinc.com>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-CC: Pavan Kondeti <quic_pkondeti@quicinc.com>,
-        Kees Cook
-	<keescook@chromium.org>, Will Deacon <will@kernel.org>,
-        <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <tony.luck@intel.com>, <gpiccoli@igalia.com>,
-        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
-        <linus.walleij@linaro.org>, <andy.shevchenko@gmail.com>,
-        <vigneshr@ti.com>, <nm@ti.com>, <matthias.bgg@gmail.com>,
-        <kgene@kernel.org>, <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <quic_tsoni@quicinc.com>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-hardening@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
-Subject: Re: [REBASE PATCH v5 08/17] arm64: mm: Add dynamic ramoops region
- support through command line
-Message-ID: <85d5aea1-71f8-4465-9787-b3289119cac2@quicinc.com>
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
- <1694429639-21484-9-git-send-email-quic_mojha@quicinc.com>
- <20230912101820.GA10884@willie-the-truck>
- <202309131613.C0E12D0D14@keescook>
- <3273977a-be7d-85f6-6754-52a3dd9b784a@quicinc.com>
- <0120ea7e-e9cc-4955-81dd-6801b56068dc@quicinc.com>
- <7c59b835-d29e-04af-7f2f-801da584c71c@quicinc.com>
+	id 1qoS6l-004Cmg-2z
+	for linux-mediatek@lists.infradead.org;
+	Thu, 05 Oct 2023 17:25:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1696526755; x=1728062755;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=cf2NOjzwTBeg5I94XYkoXsC1Vz7rqBm+HNjecdWhHZA=;
+  b=eNj1x69ELrUTu5vBgO67n3d4r2dWh25uW3kR2sn0st5aBAV/t078bTrX
+   rsFo5i+1Z4HgR/8q0qI+IFM/+hJz7ol+orm5/5eczHGIP4pdnPFWeZR1X
+   GBaOthbuDTP4cQSpnNLnSzsoOWG4eHuhDgovhuBdZwByilsFjNs7GvuX3
+   OZYEmiHanRgPSn4z6vioE2WFIDhT7i7wMyFSWOkheZMF92FgDQafOk/RK
+   Ww2OuWQIJ3I10SO1W71RCwJGIyENm/2BGTRgRwIaKzt0T1Ue8XSkPXiJy
+   jEqPpFmS4SzzXSf201VjVyYg10ZKE2OG8ERQZlpx3GjhhPUmLIohNJQ6D
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10854"; a="450058726"
+X-IronPort-AV: E=Sophos;i="6.03,203,1694761200"; 
+   d="scan'208";a="450058726"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Oct 2023 10:25:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10854"; a="781325899"
+X-IronPort-AV: E=Sophos;i="6.03,203,1694761200"; 
+   d="scan'208";a="781325899"
+Received: from lkp-server02.sh.intel.com (HELO c3b01524d57c) ([10.239.97.151])
+  by orsmga008.jf.intel.com with ESMTP; 05 Oct 2023 10:25:42 -0700
+Received: from kbuild by c3b01524d57c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qoS6W-000LiU-27;
+	Thu, 05 Oct 2023 17:25:40 +0000
+Date: Fri, 6 Oct 2023 01:25:22 +0800
+From: kernel test robot <lkp@intel.com>
+To: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Johannes Berg <johannes.berg@intel.com>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	Money Wang <money.wang@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	Benjamin Lin <benjamin-jw.lin@mediatek.com>,
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
+Subject: Re: [PATCH v4] wifi: mac80211: add exported tpt_led_trig function
+ for softmac driver
+Message-ID: <202310060127.50JAGHMk-lkp@intel.com>
+References: <ce30818cd336b64ded17f410b594e9c9c1f5f4ee.1696376062.git.yi-chia.hsieh@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7c59b835-d29e-04af-7f2f-801da584c71c@quicinc.com>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: 9576hdoEh0Sr0KThF3OkDVBMsWRJhQEg
-X-Proofpoint-ORIG-GUID: 9576hdoEh0Sr0KThF3OkDVBMsWRJhQEg
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-05_10,2023-10-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- lowpriorityscore=0 mlxlogscore=999 malwarescore=0 bulkscore=0 spamscore=0
- impostorscore=0 clxscore=1015 adultscore=0 phishscore=0 mlxscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2310050123
+In-Reply-To: <ce30818cd336b64ded17f410b594e9c9c1f5f4ee.1696376062.git.yi-chia.hsieh@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_085218_026285_D6B31B5C 
-X-CRM114-Status: GOOD (  46.46  )
+X-CRM114-CacheID: sfid-20231005_102556_064550_EFE274A1 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,83 +95,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 05, 2023 at 09:12:25PM +0530, Mukesh Ojha wrote:
-> 
-> 
-> On 10/5/2023 5:14 PM, Pavan Kondeti wrote:
-> > On Thu, Oct 05, 2023 at 04:52:20PM +0530, Mukesh Ojha wrote:
-> > > Sorry for the late reply, was on a long vacation.
-> > > 
-> > > On 9/14/2023 4:47 AM, Kees Cook wrote:
-> > > > On Tue, Sep 12, 2023 at 11:18:20AM +0100, Will Deacon wrote:
-> > > > > On Mon, Sep 11, 2023 at 04:23:50PM +0530, Mukesh Ojha wrote:
-> > > > > > The reserved memory region for ramoops is assumed to be at a fixed
-> > > > > > and known location when read from the devicetree. This may not be
-> > > > > > required for something like Qualcomm's minidump which is interested
-> > > > > > in knowing addresses of ramoops region but it does not put hard
-> > > > > > requirement of address being fixed as most of it's SoC does not
-> > > > > > support warm reset and does not use pstorefs at all instead it has
-> > > > > > firmware way of collecting ramoops region if it gets to know the
-> > > > > > address and register it with apss minidump table which is sitting
-> > > > > > in shared memory region in DDR and firmware will have access to
-> > > > > > these table during reset and collects it on crash of SoC.
-> > > > > > 
-> > > > > > So, add the support of reserving ramoops region to be dynamically
-> > > > > > allocated early during boot if it is request through command line
-> > > > > > via 'dyn_ramoops_size=' and fill up reserved resource structure and
-> > > > > > export the structure, so that it can be read by ramoops driver.
-> > > > > > 
-> > > > > > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
-> > > > > > ---
-> > > > > >    arch/arm64/mm/init.c       | 94 ++++++++++++++++++++++++++++++++++++++++++++++
-> > > > > 
-> > > > > Why does this need to be in the arch code? There's absolutely nothing
-> > > > > arm64-specific here.
-> > > > 
-> > > > I would agree: this needs to be in ramoops itself, IMO. It should be a
-> > > > ramoops module argument, too.
-> > > > 
-> > > > It being unhelpful for systems that don't have an external consumer is
-> > > > certainly true, but I think it would still make more sense for this
-> > > > change to live entirely within ramoops. Specifically: you're
-> > > > implementing a pstore backend behavioral change. In the same way that
-> > > > patch 10 is putting the "output" side of this into pstore/, I'd expect
-> > > > the "input" side also in pstore/
-> > > 
-> > > How do we reserve memory? are you suggesting to use dma api's for
-> > > dynamic ramoops ?
-> > > 
-> > Sharing my thoughts:
-> > 
-> > Your patch is inspired from how kexec allocate memory for crash kernel
-> > right?
-> 
-> Yes.
-> 
-> > There is a series [1] which moved arch code (ARM64/x86) to
-> > generic kexec core. Something we should also do as the feedback
-> > received here.
-> > 
-> > Coming to how part, we still have to use memblock API to increase the chance
-> > of allocating contiguous memory. Since PSTORE_RAM can also be
-> > compiled as a module, we probably need another pstore layer that needs to
-> > be built statically in kernel to allocate memory using memblock API.
-> > once slab is available, all memblock API will re-direct to slab
-> > allocations. This layer can be enabled via ARCH_WANTS_PSTORE_xxx or
-> > another config that only supports 'y'. PSTORE_RAM can still be a module but
-> > when this layer is available, it supports dynamic ramoops. Another option
-> > would be just including this layer in PSTORE RAM module but take away module
-> > option  when this layer is enabled.
-> 
-> I thought about this but still the caller will be in Arch code,
-> right ? would that be fine with others ?
-> 
+Hi Yi-Chia,
 
-The caller is not necessarily to be in the arch code. For ex:
-mm_core_init()->kfence_alloc_pool_and_metadata()
+kernel test robot noticed the following build errors:
 
-> > 
-> > 
-> > [1]
-> > https://lore.kernel.org/all/20211020020317.1220-6-thunder.leizhen@huawei.com/
+[auto build test ERROR on wireless-next/main]
+[also build test ERROR on wireless/main linus/master v6.6-rc4 next-20231005]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Yi-Chia-Hsieh/wifi-mac80211-add-exported-tpt_led_trig-function-for-softmac-driver/20231005-045011
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+patch link:    https://lore.kernel.org/r/ce30818cd336b64ded17f410b594e9c9c1f5f4ee.1696376062.git.yi-chia.hsieh%40mediatek.com
+patch subject: [PATCH v4] wifi: mac80211: add exported tpt_led_trig function for softmac driver
+config: x86_64-randconfig-005-20231005 (https://download.01.org/0day-ci/archive/20231006/202310060127.50JAGHMk-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231006/202310060127.50JAGHMk-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202310060127.50JAGHMk-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   ld: net/mac80211/rx.o: in function `ieee80211_rx_list':
+>> net/mac80211/rx.c:5386: undefined reference to `ieee80211_tpt_led_trig_trx'
+   ld: net/mac80211/tx.o: in function `__ieee80211_subif_start_xmit':
+>> net/mac80211/tx.c:4337: undefined reference to `ieee80211_tpt_led_trig_trx'
+   ld: net/mac80211/tx.o: in function `ieee80211_8023_xmit':
+   net/mac80211/tx.c:4668: undefined reference to `ieee80211_tpt_led_trig_trx'
+
+
+vim +5386 net/mac80211/rx.c
+
+  5263	
+  5264	/*
+  5265	 * This is the receive path handler. It is called by a low level driver when an
+  5266	 * 802.11 MPDU is received from the hardware.
+  5267	 */
+  5268	void ieee80211_rx_list(struct ieee80211_hw *hw, struct ieee80211_sta *pubsta,
+  5269			       struct sk_buff *skb, struct list_head *list)
+  5270	{
+  5271		struct ieee80211_local *local = hw_to_local(hw);
+  5272		struct ieee80211_rate *rate = NULL;
+  5273		struct ieee80211_supported_band *sband;
+  5274		struct ieee80211_rx_status *status = IEEE80211_SKB_RXCB(skb);
+  5275		struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+  5276	
+  5277		WARN_ON_ONCE(softirq_count() == 0);
+  5278	
+  5279		if (WARN_ON(status->band >= NUM_NL80211_BANDS))
+  5280			goto drop;
+  5281	
+  5282		sband = local->hw.wiphy->bands[status->band];
+  5283		if (WARN_ON(!sband))
+  5284			goto drop;
+  5285	
+  5286		/*
+  5287		 * If we're suspending, it is possible although not too likely
+  5288		 * that we'd be receiving frames after having already partially
+  5289		 * quiesced the stack. We can't process such frames then since
+  5290		 * that might, for example, cause stations to be added or other
+  5291		 * driver callbacks be invoked.
+  5292		 */
+  5293		if (unlikely(local->quiescing || local->suspended))
+  5294			goto drop;
+  5295	
+  5296		/* We might be during a HW reconfig, prevent Rx for the same reason */
+  5297		if (unlikely(local->in_reconfig))
+  5298			goto drop;
+  5299	
+  5300		/*
+  5301		 * The same happens when we're not even started,
+  5302		 * but that's worth a warning.
+  5303		 */
+  5304		if (WARN_ON(!local->started))
+  5305			goto drop;
+  5306	
+  5307		if (likely(!(status->flag & RX_FLAG_FAILED_PLCP_CRC))) {
+  5308			/*
+  5309			 * Validate the rate, unless a PLCP error means that
+  5310			 * we probably can't have a valid rate here anyway.
+  5311			 */
+  5312	
+  5313			switch (status->encoding) {
+  5314			case RX_ENC_HT:
+  5315				/*
+  5316				 * rate_idx is MCS index, which can be [0-76]
+  5317				 * as documented on:
+  5318				 *
+  5319				 * https://wireless.wiki.kernel.org/en/developers/Documentation/ieee80211/802.11n
+  5320				 *
+  5321				 * Anything else would be some sort of driver or
+  5322				 * hardware error. The driver should catch hardware
+  5323				 * errors.
+  5324				 */
+  5325				if (WARN(status->rate_idx > 76,
+  5326					 "Rate marked as an HT rate but passed "
+  5327					 "status->rate_idx is not "
+  5328					 "an MCS index [0-76]: %d (0x%02x)\n",
+  5329					 status->rate_idx,
+  5330					 status->rate_idx))
+  5331					goto drop;
+  5332				break;
+  5333			case RX_ENC_VHT:
+  5334				if (WARN_ONCE(status->rate_idx > 11 ||
+  5335					      !status->nss ||
+  5336					      status->nss > 8,
+  5337					      "Rate marked as a VHT rate but data is invalid: MCS: %d, NSS: %d\n",
+  5338					      status->rate_idx, status->nss))
+  5339					goto drop;
+  5340				break;
+  5341			case RX_ENC_HE:
+  5342				if (WARN_ONCE(status->rate_idx > 11 ||
+  5343					      !status->nss ||
+  5344					      status->nss > 8,
+  5345					      "Rate marked as an HE rate but data is invalid: MCS: %d, NSS: %d\n",
+  5346					      status->rate_idx, status->nss))
+  5347					goto drop;
+  5348				break;
+  5349			case RX_ENC_EHT:
+  5350				if (WARN_ONCE(status->rate_idx > 15 ||
+  5351					      !status->nss ||
+  5352					      status->nss > 8 ||
+  5353					      status->eht.gi > NL80211_RATE_INFO_EHT_GI_3_2,
+  5354					      "Rate marked as an EHT rate but data is invalid: MCS:%d, NSS:%d, GI:%d\n",
+  5355					      status->rate_idx, status->nss, status->eht.gi))
+  5356					goto drop;
+  5357				break;
+  5358			default:
+  5359				WARN_ON_ONCE(1);
+  5360				fallthrough;
+  5361			case RX_ENC_LEGACY:
+  5362				if (WARN_ON(status->rate_idx >= sband->n_bitrates))
+  5363					goto drop;
+  5364				rate = &sband->bitrates[status->rate_idx];
+  5365			}
+  5366		}
+  5367	
+  5368		if (WARN_ON_ONCE(status->link_id >= IEEE80211_LINK_UNSPECIFIED))
+  5369			goto drop;
+  5370	
+  5371		status->rx_flags = 0;
+  5372	
+  5373		kcov_remote_start_common(skb_get_kcov_handle(skb));
+  5374	
+  5375		/*
+  5376		 * Frames with failed FCS/PLCP checksum are not returned,
+  5377		 * all other frames are returned without radiotap header
+  5378		 * if it was previously present.
+  5379		 * Also, frames with less than 16 bytes are dropped.
+  5380		 */
+  5381		if (!(status->flag & RX_FLAG_8023))
+  5382			skb = ieee80211_rx_monitor(local, skb, rate);
+  5383		if (skb) {
+  5384			if ((status->flag & RX_FLAG_8023) ||
+  5385				ieee80211_is_data_present(hdr->frame_control))
+> 5386				ieee80211_tpt_led_trig_trx(&local->hw, 0, skb->len);
+  5387	
+  5388			if (status->flag & RX_FLAG_8023)
+  5389				__ieee80211_rx_handle_8023(hw, pubsta, skb, list);
+  5390			else
+  5391				__ieee80211_rx_handle_packet(hw, pubsta, skb, list);
+  5392		}
+  5393	
+  5394		kcov_remote_stop();
+  5395		return;
+  5396	 drop:
+  5397		kfree_skb(skb);
+  5398	}
+  5399	EXPORT_SYMBOL(ieee80211_rx_list);
+  5400	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
