@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D00BE93701
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 10:49:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9840E8FDC8
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 10:49:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=i+97jlASJeCUra0UgJ+PVFfR8PvK//Er0EZ9AVj4iws=; b=UmZ6mTDz/g191UKA2EpZ802B6A
-	MYjcHFVofNpYR8VUwAYM9Sl/BHMe31z/gGRbEVgRQkjPPJs0ZEbk7zbZt8KGg1BEPkJjwqG1VViUK
-	W9NULds9HM1th2UBFN5Ww1PwFiLqjzkZ68O+QB2M60gKnNGeU9vEG+6/LFmRguSHvoCwuE0A7Q7De
-	r4ShF5vYelJ1VJ+JqfgGajQ1zFRtXEkLeph+S9wv42MqN4F1qPCicWZH3NSS49yDefhmyGQ9ctfKU
-	lN4E853flgx5lF6M5ot+EtuZZCXEEMNQDD47mzOyU2NBFeE93N0/mN1JB8QAw5pE0YZuZaxgYGHWS
-	V8CTO5LQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=okFBs9uHYPZKYvF8fG1v2s+YpL5T6ANrIiS3LJYScZU=; b=LH3KkFPckt3uf/qujgK5BKIGHl
+	IfFCXdkByoDrzg4PZdrO/hTmZaRYDlVsBrIEsQ6bVbF2gujJNGmAun1NekcmCaHBM9Xcx1ecLpE1t
+	z+nnZI5qX8ydSRit4LzHsAGUZ6HOffBOMY/m/vW2+Y5wsy91Z9WM21FDF6JjBd9ckIIcH2HJeTXLr
+	TmN4KY2gpbc6MrQvjcdebYFrjudXbwoKeJEQCLoqkGbaLZkuzOpTK6fJzGGUegpAOxOEbJGiFp+S/
+	rjPKVl5duvA2mcaeDhw7JYRba4cuKi0WEyRTFWkLXPxgepGdk0u1lGlZVWIorn+kGoH9kq2ClXnFs
+	pF7SMVXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoLuy-001xkM-27;
-	Thu, 05 Oct 2023 10:49:20 +0000
+	id 1qoLv3-001xoD-1k;
+	Thu, 05 Oct 2023 10:49:25 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoLuu-001xhU-1F;
-	Thu, 05 Oct 2023 10:49:18 +0000
+	id 1qoLuv-001xi1-0Z;
+	Thu, 05 Oct 2023 10:49:20 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DDFC4660731C;
-	Thu,  5 Oct 2023 11:49:13 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0C1B0660731E;
+	Thu,  5 Oct 2023 11:49:15 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696502954;
-	bh=lFr30I+Cr7avNK4wzwGybpTkaEAtq/uM7VOwFYqZwUs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=K9wZ35FlCGgxB/NKW138gQiIJYWnO/3EuMst1hxKCbXMEHzVpGsaRfzYehABqODKK
-	 9nf/PW+08IxV+ID1qM2N5A6tAlXn9ciXWA9/py4ikoRRwxcFyv70fQ04Fdv1rVIvLY
-	 z4YwXjyPfUlajcNrgK9AmXm8Zma8fBA8mKZMkP/LwfE++uE4KbMXkmqYXzaDyFwOFr
-	 B3ZiDYY6ZZrUIXdaNCj3khhqlltii5P3FfxM++96SZyummWHIu8V3uTYqB30hW4LZY
-	 QLM1CRCluC4KeS8YHe7ve/gcKguhEg9AfU/0zXMFiQvgPEK9i0ssyhry4wZRm/fCqd
-	 QzzY24bkIgOyg==
+	s=mail; t=1696502955;
+	bh=pa8pKITzfzlfDMGcUark3OZKCpHGd4WoAakJB9sAdzU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Qx2lQFIjxuULN86K3QtKjTJ2XoqaqR3+5/cXYj+Gnb2yTs/WaFb9YcK+nKFLok2QJ
+	 auj0FigSKVrUwTDrjBSsw9JBggXvdj2/U5m93EmhmqaL1w+t2ov8yzG1S3AXFYdEqL
+	 qXjPpLiM7sageXKQFnlOUQ0UV6V62fwgdn52yvG+qxqt9NC9GMdUer9QA9JCIlmra8
+	 j2JAxfPPwDec7tFMRktP+3EmmOF+oF2/+I164jdbZWWYjPphKPzfOA+F7SLAeVGHCk
+	 1B7Fg+zEnL4+8jqNDwJdczkdypTK1KOoHGwOvAPYkVGcSmOsUsVWMTirmaHSHcUibE
+	 tEe7PmTiAQd1g==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mchehab@kernel.org
 Cc: robh+dt@kernel.org,
@@ -62,15 +62,17 @@ Cc: robh+dt@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v2 0/2] MediaTek MDP3: use devicetree to retrieve SCP
-Date: Thu,  5 Oct 2023 12:49:03 +0200
-Message-ID: <20231005104905.120544-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 1/2] media: dt-bindings: mediatek: Add phandle to mediatek,scp on MDP3 RDMA
+Date: Thu,  5 Oct 2023 12:49:04 +0200
+Message-ID: <20231005104905.120544-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231005104905.120544-1-angelogioacchino.delregno@collabora.com>
+References: <20231005104905.120544-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_034916_599037_E39F5D7E 
-X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-CacheID: sfid-20231005_034917_388187_AC708681 
+X-CRM114-Status: UNSURE (   9.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,25 +88,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - Rebased over media_stage master as of 05/10/2023
- - Reworked description of mediatek,scp property in bindings
-   - Dropped Conor's and Chen-Yu's R-b tags from bindings patch due
-     to the description rework.
+The MDP3 RDMA needs to communicate with the SCP remote processor: allow
+specifying a phandle to a SCP core.
 
-Especially now that Multi-Core SCP support has landed, it makes sense to
-retrieve the SCP handle by using the "mediatek,scp" property (as already
-done in MediaTek VCODEC), both to select one specific SCP core for MDP3
-and to avoid walking the parent node to find a SCP node.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
 
-AngeloGioacchino Del Regno (2):
-  media: dt-bindings: mediatek: Add phandle to mediatek,scp on MDP3 RDMA
-  media: platform: mtk-mdp3: Use devicetree phandle to retrieve SCP
+v2: I've dropped Conor and Chen-Yu's Reviewed-by tags because I have changed
+    the description (so, the patch actually changed a bit).
 
- .../bindings/media/mediatek,mdp3-rdma.yaml       |  8 ++++++++
- .../media/platform/mediatek/mdp3/mtk-mdp3-core.c | 16 ++++++++++------
- 2 files changed, 18 insertions(+), 6 deletions(-)
+ .../devicetree/bindings/media/mediatek,mdp3-rdma.yaml     | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+index 7032c7e15039..59dcea797b71 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+@@ -45,6 +45,14 @@ properties:
+       include/dt-bindings/gce/<chip>-gce.h of each chips.
+     $ref: /schemas/types.yaml#/definitions/uint32-array
+ 
++  mediatek,scp:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the System Control Processor (SCP) used for initializing
++      and stopping the MDP3, for sending frame data locations to the MDP3's
++      VPU and to install Inter-Processor Interrupt handlers to control
++      processing states.
++
+   power-domains:
+     maxItems: 1
+ 
 -- 
 2.42.0
 
