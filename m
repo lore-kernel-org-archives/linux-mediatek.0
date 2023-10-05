@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C1BEE8FDC8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 10:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F89CE8FDC7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Oct 2023 10:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZxO0mcE803M1f4CoYOTIE0wlJZbj49xnTxhps/6wplw=; b=h0lRiAnTM4wf2PlIPAyEnhBiO0
-	aevBIGzIdF1JLJBY16o3SvjQY5QzQbVOrLYJrW0ZMtkXeL/iaLcbiGkCk8cMSIKGVLU7+XaZ0nFkg
-	1ruQZUi1JQ0D7ehFheBVxTKzrLxvVHVF6VFT22xTN+oH7+sTrBSLuOpd98w4xhtcPUu2Pk6uHWRnb
-	+Vn56Hk2QsgA9zLWSsMHLzapqIdVFophIIQlhDrWjJQShyYWIN7sb1/A/nF6dA2nhJCns8XfwigsF
-	Q8lbfqp6TA23kYHtVi0UOWlwBlfvkukKXXN72B39MbPIQVMBnUVSNoYMaM35ikEUtAzsQXEFdiJl6
-	wjIoVzYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/jAIT8711ULGb6f+FX7b7dt1N2Jmj997+xycepBbzyo=; b=vpLzeod/sUExqL/AKg9OvezWBC
+	sLRGXCiKF1i9BOfGXK67ohXn3v8jKJ+Gp0wXJGvDwD9H3WlHb+x971gbLZ0jfPiLNKMjOj3SxHeWZ
+	1NIJKZ64NDHbp9l0OY6OSnXdKJldCXAhRrAyaH34PeZDjOIxKOh/yHm0Th734LDUvOrRYS7Xe40/t
+	s1VuCAHUiV3CGlEV1nM/QSuav1uhdFZMEaa9gjjTe/Mdvgd/Z9+vmFTC+dHsM8JqofLO14/WUndcB
+	9FY2JzzRoIvGk3isLso3NR3orY139cGbfliu8j4TRhxFmTukoYWPY/X2yV/diNUcoS2ZogWJbmzXu
+	809OPS8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoLTO-001sow-0Q;
-	Thu, 05 Oct 2023 10:20:50 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoLTJ-001snX-32;
-	Thu, 05 Oct 2023 10:20:48 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B58C7660731C;
-	Thu,  5 Oct 2023 11:20:37 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696501238;
-	bh=gtShXwSvNgcZvx08zMfHtG7ILqlH7jFASuzzPiQpLPw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LmyoZxlvxhWUxUVTDQnppkA5Iu3cWn6/tGSFPwsUJHX8fLXTfRmxOLlVBuF9h9vLf
-	 +iM0l0oQw1B8URqd7+da9jI8QgpgVfPOk0X57GSH0ADILQfC/Hl9GHzbPaTcuI0vha
-	 9GVotVohyea8Q6E+cx9n3Pm288TFIbbavhipoZ+YcKRedXsXoBuzx8tTTok6/nweFN
-	 bsMLVtIWuLqUjZt61Spps4t2XPOM1gJPhs2byvSJR6xw1IB2G/FK9/uo6hcpHsWtr5
-	 W67BfPbHUaHxy6zBJWj++QKvwYtByXi09WhpKxvE2f16miqVx93Rc1j3wH+JIP2nY9
-	 /Bp8h6B0PSRIw==
-Message-ID: <12c2a112-b69a-99ce-227a-eb1e8c539a44@collabora.com>
-Date: Thu, 5 Oct 2023 12:20:35 +0200
+	id 1qoLZy-001tHg-2r;
+	Thu, 05 Oct 2023 10:27:38 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qoLZt-001tGG-0U;
+	Thu, 05 Oct 2023 10:27:35 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A0F1F153B;
+	Thu,  5 Oct 2023 03:28:10 -0700 (PDT)
+Received: from FVFF77S0Q05N (unknown [10.57.94.58])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 676E23F5A1;
+	Thu,  5 Oct 2023 03:27:29 -0700 (PDT)
+Date: Thu, 5 Oct 2023 11:27:26 +0100
+From: Mark Rutland <mark.rutland@arm.com>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Marc Zyngier <maz@kernel.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Stephen Boyd <swboyd@chromium.org>,
+	Valentin Schneider <vschneid@redhat.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	D Scott Phillips <scott@os.amperecomputing.com>,
+	Josh Poimboeuf <jpoimboe@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Misono Tomohiro <misono.tomohiro@fujitsu.com>,
+	Peter Zijlstra <peterz@infradead.org>,
+	Sumit Garg <sumit.garg@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] arm64: smp: Fix pseudo NMI issues w/ broken Mediatek
+ FW
+Message-ID: <ZR6Pjk_3gpx1K3pF@FVFF77S0Q05N>
+References: <20231002094526.1.Ie8f760213053e3d11592f892b30912dbac6b8b48@changeid>
+ <ZRr8r7XMoyDKaitd@FVFF77S0Q05N.cambridge.arm.com>
+ <CAD=FV=UeeL9uycVeKpOm+eDm3xHrOnKi2frt6a1qFG1HX9yEUg@mail.gmail.com>
+ <ZRwJKBZaYwF1rrur@FVFF77S0Q05N>
+ <CAD=FV=WASz1uvTgwsu3H3cTr3smHk+E_XNUVnjoPpttwv095rQ@mail.gmail.com>
+ <ZRxCCZxZWCG0NBur@FVFF77S0Q05N>
+ <CAD=FV=Xk-OMKQPXxU9Z9HOcWwUxxrmLZ4vD0u5ouZRW_zDFDPg@mail.gmail.com>
+ <ZR03liCodnTQWs7s@FVFF77S0Q05N>
+ <86jzs2ofqs.wl-maz@kernel.org>
+ <CAD=FV=XasZR6dhKBjpbYfby4F1Nu_bsq1m_HP+NpufjsJi0COg@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v8 0/8] soc: mediatek: MT8365 power support
-Content-Language: en-US
-To: Markus Schneider-Pargmann <msp@baylibre.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Alexandre Mergnat <amergnat@baylibre.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>, Fabien Parent
- <parent.f@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230918093751.1188668-1-msp@baylibre.com>
- <06f8a769-1845-ea87-dcc4-37dd5ad255ed@collabora.com>
- <20231005094316.nj5w6cmefvc36tbl@blmsp>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231005094316.nj5w6cmefvc36tbl@blmsp>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAD=FV=XasZR6dhKBjpbYfby4F1Nu_bsq1m_HP+NpufjsJi0COg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_032046_201602_32C2C59B 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20231005_032733_304252_722F4625 
+X-CRM114-Status: GOOD (  22.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,27 +85,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/10/23 11:43, Markus Schneider-Pargmann ha scritto:
-> Hi Angelo,
+On Wed, Oct 04, 2023 at 07:04:12AM -0700, Doug Anderson wrote:
+> On Wed, Oct 4, 2023 at 3:15 AM Marc Zyngier <maz@kernel.org> wrote:
+> >
+> > On Wed, 04 Oct 2023 10:59:50 +0100,
+> > Mark Rutland <mark.rutland@arm.com> wrote:
+> > >
+> > > Given you haven't seen any issues, I suspect those are getting reset to fixed
+> > > values that happens to work out for us, but it is a bit worrisome more
+> > > generally (e.g. the LPI case above).
+> >
+> > It is likely that these SoCs don't even have an ITS.
 > 
-> On Thu, Oct 05, 2023 at 10:54:16AM +0200, AngeloGioacchino Del Regno wrote:
->> Il 18/09/23 11:37, Markus Schneider-Pargmann ha scritto:
->>> Hi,
->>>
->>> no real changes in this update. Rebase to v6.6-rc2 and according change
->>> of directory.
->>
->> Since the driver changed to pmdomain/mediatek, can you please change the commit
->> titles for the driver commits?
+> Right. That was what we decided [1] when Marc pointed this out earlier.
 > 
-> As far as I understand Ulf applied the series today and changed the
-> title as well:
-> https://lore.kernel.org/lkml/CAPDyKFrUbWBQgMm6wYwFfybiRQKhBpwH7wwcXaT+KrQJLevq3w@mail.gmail.com/
+> Overall: we know that this firmware behavior is not good but we're
+> stuck with it. :( At the very least, any new devices coming out will
+> have this fixed. Presumably if old devices are working OK enough today
+> (as long as you don't enable pseudo-NMI) then they can be made to keep
+> working?
 > 
+> So circling back: what patch should we actually land?
 
-Whoops! I didn't notice that, sorry!
+For now I'd prefer we took the patch I sent in:
 
-Cheers,
-Angelo
+  https://lore.kernel.org/linux-arm-kernel/ZRr8r7XMoyDKaitd@FVFF77S0Q05N.cambridge.arm.com/
 
+... as that leaves us no worse than before this series, and it's pretty simple.
+
+> As of right now only pseudo-NMI is broken, but it would be good to make sure
+> that if the kernel later adds other features that would be broken on this
+> hardware that it gets handled properly...
+
+Going further than the above, I think there are three options here:
+
+1) Complete fix: depend on a working firmware, and throw this workaround away.
+
+   IIUC from the above, that's not something you can commit to.
+
+2) Partial fix: have the kernel save/restore everything.
+
+   IIUC this is unpalatable.
+
+3) Partial fix: make the ARM64_HAS_GIC_PRIO_MASKING cpucap depend on the
+   absence of a "mediatek,broken-save-restore-fw" property in the DT. I believe
+   we can check that in early_enable_pseudo_nmi() or can_use_gic_priorities().
+
+   That'll avoid potential issues if/when we change the priorities used for
+   pNMI (which is something I've been looking at).
+
+I'm happy with (3) if Marc is.
+
+Mark.
 
