@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF826E94135
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 22:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C8DE94136
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 22:16:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0RzCHBb9WoSeOhmw11duqctRmWYwOtRpdu2I7EOG8ak=; b=Fi13IDaeawDhLCyZVn/x7OGsb0
-	fZUI5T0c0+8v7U2feGrhsvvXEHHe6mfQrKNGSAfV+VjggwRbEgY1YGRCrg8rxsPhyZeFpsWak0RWC
-	fhJJDeam+TzdEdOI5Ba8+Vc3mBvexoPboCpm2zk6bMIOZ5K7Pz8NBfv46IbMm77Xb/uM0tqOisFdQ
-	z1cO0WoZ58fL3xQgbahhaiBMcSTnCZD53iLLiOKh456v7x2NlRJD3aOTSSEdcMHWR/L6fWjEcpGP0
-	EMm1GA11/WMYAanKpMn+/dwiPiHUSwHOtg5pdtag9SLxejRwJeZsIXtOEKIZOArhvJ3yvJw4hBNma
-	crJzfQWA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mKHn8MHAksMieZVNplmzQ9td3WQY/zTB+/6WLDFqzoc=; b=rW0Uh3Y5+XIc1PB3eeRefrsGYn
+	yaDvAFncD36P3/NK+Ou4A8UeTRdBK5wYGfrsMJFtwg09e2ZOkZ4wrdRRne/lcjMLjm537Xu9BjT3q
+	oE4k5xTKIjScf7Btb2rGyVD4yo5jlQOHCX2DoEM5vyPRqo4QLvQo3AxP0SFUnb64S7BbOEAqhmJ5S
+	axGw9611l9o8HjqME0Ohw+Z57SoFVbs1xCgUedr7T+8cxxZ23eeJpTi7n1GnDWub19Pk3eEpxeuiV
+	nO5zikiEjP8iRLuhsT/DeveoPjCx0kkPoZmh39Fdrqo0htfVjo+etDQ/lpnxTDrw/YqDeXdWm86Hl
+	vVbZ7Z1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qot7S-006Znk-2C;
-	Fri, 06 Oct 2023 22:16:26 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1qot7V-006Zpt-0X;
+	Fri, 06 Oct 2023 22:16:29 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qot7O-006ZmC-0E
+	id 1qot7S-006Zmp-2P
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Oct 2023 22:16:24 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-578d0d94986so1915291a12.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Oct 2023 15:16:19 -0700 (PDT)
+	Fri, 06 Oct 2023 22:16:28 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-5892832f8daso2949009a12.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Oct 2023 15:16:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1696630578; x=1697235378; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=0RzCHBb9WoSeOhmw11duqctRmWYwOtRpdu2I7EOG8ak=;
-        b=Eg2W5c9nmwQA5V0h0O1TgjYO0jojKjvhgfuiiueshXumSbQKsEJ9+i5pLNQKBS0GgZ
-         LovoDYS4U4/nEmeu2SyMCjLeasMd2zoiRDXGIho/vNylTPe8cawkawIE5M0rRUi/R1WU
-         P0IE0mcGW6ZN9fzROTkF3VGF4HKSL7US0jdbA=
+        d=chromium.org; s=google; t=1696630582; x=1697235382; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mKHn8MHAksMieZVNplmzQ9td3WQY/zTB+/6WLDFqzoc=;
+        b=fscSDqqyAZgY6b/zgMJgeqovbMbynHUuPe68fS3HGoqIHM1c/QWgYxFNdb5R1Dx+jH
+         U4H8BVj/gtZybWxYhCvFGXkJxYTWA+mh8qvnqRFR7uwqNXvwQBK+vEbkVHgal7jFi5pA
+         rkGOKn4sMwLAMAciAkVV7Mb56TiZYMa82+BQQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696630578; x=1697235378;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0RzCHBb9WoSeOhmw11duqctRmWYwOtRpdu2I7EOG8ak=;
-        b=ABy5/P+y/KpNBCOct04CdkGyw4vf1gyV8G+snH/McdBaYK1s46LPw1TkOrm1pnVR/B
-         at7ZeLTOyTEyTlORkW05PDlTlFlkYeaf8wrJnyxH5SCHN0AxDGiqYAE5g4h77tAzR5X3
-         Ph6z+LRDKdRCSa5KHG++PlmwnahHQ/vEQ5+PFIHVPPdplhEGaUVkqNOhwn06FsAvVB+i
-         4eRDBDjKynSJj/Ip5LmUXyiHL+UuIAcHq34Qsqd+R/5Ag0NWi2BQqWgEmfS8N2rZzt+t
-         dscyiD3/79wQB4AukDosDKrClMXsvC2E3DHYQdHB4ujMOYH8ie6KGSc4tWZkpWXROBWh
-         5DZw==
-X-Gm-Message-State: AOJu0YxCDug+mmEbuANZvRgJLEK85U3X1hprykg+IQYWs/odA7B5bgA/
-	A4VPih/p1DwLYI6OQn7n2Slerg==
-X-Google-Smtp-Source: AGHT+IHF+LblYJeVzXRHb4Z5bbsiKZ6oGjIBxOn4gbb3wXUJcmjP+I9SQqkZQJ0WyiuqATULZb/vbA==
-X-Received: by 2002:a17:90a:f3c4:b0:277:4057:b752 with SMTP id ha4-20020a17090af3c400b002774057b752mr9638126pjb.46.1696630578523;
-        Fri, 06 Oct 2023 15:16:18 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1696630582; x=1697235382;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mKHn8MHAksMieZVNplmzQ9td3WQY/zTB+/6WLDFqzoc=;
+        b=Ul33oC841oxvNsGDzFgxpcVer+F9JNDPbwvbN/T13m/0j1qd4tGoepuSz2LhYGdbZa
+         VRT4XMUJNyKYxhplrDdISX27kDcEnWXqhA8E/ECA7u4DK4Vff2poTAHGBm0P9yQ42mTi
+         pwJF/g2T0JYYnEAMLtFyYqWmLv6G+XpLTJL7/YWrjihXaJ2LQfuc/xwu7TsGL9kRKMeQ
+         B2wxDkuygK/GdpNGdfUN+V8NjqJN9UDdmEd2tBw6inXqUNWgSaEgAugEsUg5TQq3Vmp3
+         HY3+9wysp+HL0h678/ugJ2TyzBHwAYv2hbgeSKVhGbUiyPwIzmVgyHx0RmzbeB2CJD21
+         eCKQ==
+X-Gm-Message-State: AOJu0YxKe8AsRNLKZdOxk9Nw0qR/Rbd67bmaFrnGBP1kUOwDzafDwr9C
+	89w2dBR6datD/ZRRmNZgMjxNNw==
+X-Google-Smtp-Source: AGHT+IFtVb4aW+OND3UEg2HZFIAKdVlqCxraW/RlbV8GK+Xlw6U93GKGB3E+X4qacvY9EjVOr1BC8g==
+X-Received: by 2002:a17:90b:3907:b0:276:5512:13ab with SMTP id ob7-20020a17090b390700b00276551213abmr8650294pjb.10.1696630582413;
+        Fri, 06 Oct 2023 15:16:22 -0700 (PDT)
 Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:1f37:5459:32bf:faf9])
-        by smtp.gmail.com with ESMTPSA id rj6-20020a17090b3e8600b00276e8e4f1fbsm5946523pjb.1.2023.10.06.15.16.17
+        by smtp.gmail.com with ESMTPSA id rj6-20020a17090b3e8600b00276e8e4f1fbsm5946523pjb.1.2023.10.06.15.16.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Oct 2023 15:16:17 -0700 (PDT)
+        Fri, 06 Oct 2023 15:16:21 -0700 (PDT)
 From: Douglas Anderson <dianders@chromium.org>
 To: Marc Zyngier <maz@kernel.org>,
 	Mark Rutland <mark.rutland@arm.com>,
@@ -65,24 +66,23 @@ To: Marc Zyngier <maz@kernel.org>,
 	Will Deacon <will@kernel.org>,
 	Chen-Yu Tsai <wenst@chromium.org>
 Cc: Douglas Anderson <dianders@chromium.org>,
-	Amit Daniel Kachhap <amit.kachhap@arm.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	James Morse <james.morse@arm.com>,
-	Joey Gouly <joey.gouly@arm.com>,
-	Mark Brown <broonie@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/3] arm64: Disable GiC priorities on Mediatek devices w/ firmware issues
-Date: Fri,  6 Oct 2023 15:15:51 -0700
-Message-ID: <20231006151547.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
+Subject: [PATCH 3/3] irqchip/gic-v3: Remove Mediatek pseudo-NMI firmware quirk handling
+Date: Fri,  6 Oct 2023 15:15:53 -0700
+Message-ID: <20231006151547.3.Ie582d33cfe46f9ec2248e7f2dabdd6bbd66486a6@changeid>
 X-Mailer: git-send-email 2.42.0.609.gbb76f46606-goog
+In-Reply-To: <20231006151547.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
+References: <20231006151547.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_151622_125391_C893986A 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20231006_151626_844192_DE6FB1E4 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,75 +97,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In commit 44bd78dd2b88 ("irqchip/gic-v3: Disable pseudo NMIs on
-Mediatek devices w/ firmware issues") we added a method for detecting
-Mediatek devices with broken firmware and disabled pseudo-NMI. While
-that worked, it didn't address the problem at a deep enough level.
+This is a partial revert of commit 44bd78dd2b88 ("irqchip/gic-v3:
+Disable pseudo NMIs on Mediatek devices w/ firmware issues"). In the
+patch ("arm64: Disable GiC priorities on Mediatek devices w/ firmware
+issues") we've moved the quirk handling to another place and so it's
+not needed in the GiC driver.
 
-The fundamental issue with this broken firmware is that it's not
-saving and restoring several important GICR registers. The current
-list is believed to be:
-* GICR_NUM_IPRIORITYR
-* GICR_CTLR
-* GICR_ISPENDR0
-* GICR_ISACTIVER0
-* GICR_NSACR
-
-Pseudo-NMI didn't work because it was the only thing (currently) in
-the kernel that relied on the broken registers, so forcing pseudo-NMI
-off was an effective fix. However, it could be observed that calling
-system_uses_irq_prio_masking() on these systems still returned
-"true". That caused confusion and led to the need for
-commit a07a59415217 ("arm64: smp: avoid NMI IPIs with broken MediaTek
-FW"). It's worried that the incorrect value returned by
-system_uses_irq_prio_masking() on these systems will continue to
-confuse future developers.
-
-Let's fix the issue a little more completely by disabling IRQ
-priorities at a deeper level in the kernel. Once we do this we can
-revert some of the other bits of code dealing with this quirk.
+NOTE: this isn't a full revert because it leaves some of the changes
+to the "quirks" structure around in case future code needs it.
 
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
 
- arch/arm64/kernel/cpufeature.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ drivers/irqchip/irq-gic-v3.c | 22 +---------------------
+ 1 file changed, 1 insertion(+), 21 deletions(-)
 
-diff --git a/arch/arm64/kernel/cpufeature.c b/arch/arm64/kernel/cpufeature.c
-index 2806a2850e78..e35efab8efa9 100644
---- a/arch/arm64/kernel/cpufeature.c
-+++ b/arch/arm64/kernel/cpufeature.c
-@@ -2094,9 +2094,30 @@ static int __init early_enable_pseudo_nmi(char *p)
- }
- early_param("irqchip.gicv3_pseudo_nmi", early_enable_pseudo_nmi);
+diff --git a/drivers/irqchip/irq-gic-v3.c b/drivers/irqchip/irq-gic-v3.c
+index 787ccc880b22..9ff776709ae6 100644
+--- a/drivers/irqchip/irq-gic-v3.c
++++ b/drivers/irqchip/irq-gic-v3.c
+@@ -39,8 +39,7 @@
  
-+static bool are_gic_priorities_broken(void)
-+{
-+	bool is_broken = false;
-+	struct device_node *np;
-+
-+	/*
-+	 * Detect broken Mediatek firmware that doesn't properly save and
-+	 * restore GIC priorities.
-+	 */
-+	np = of_find_compatible_node(NULL, NULL, "arm,gic-v3");
-+	if (np) {
-+		is_broken = of_property_read_bool(np, "mediatek,broken-save-restore-fw");
-+		of_node_put(np);
-+	}
-+
-+	return is_broken;
-+}
-+
- static bool can_use_gic_priorities(const struct arm64_cpu_capabilities *entry,
- 				   int scope)
+ #define FLAGS_WORKAROUND_GICR_WAKER_MSM8996	(1ULL << 0)
+ #define FLAGS_WORKAROUND_CAVIUM_ERRATUM_38539	(1ULL << 1)
+-#define FLAGS_WORKAROUND_MTK_GICR_SAVE		(1ULL << 2)
+-#define FLAGS_WORKAROUND_ASR_ERRATUM_8601001	(1ULL << 3)
++#define FLAGS_WORKAROUND_ASR_ERRATUM_8601001	(1ULL << 2)
+ 
+ #define GIC_IRQ_TYPE_PARTITION	(GIC_IRQ_TYPE_LPI + 1)
+ 
+@@ -1790,15 +1789,6 @@ static bool gic_enable_quirk_msm8996(void *data)
+ 	return true;
+ }
+ 
+-static bool gic_enable_quirk_mtk_gicr(void *data)
+-{
+-	struct gic_chip_data *d = data;
+-
+-	d->flags |= FLAGS_WORKAROUND_MTK_GICR_SAVE;
+-
+-	return true;
+-}
+-
+ static bool gic_enable_quirk_cavium_38539(void *data)
  {
-+	if (are_gic_priorities_broken())
-+		return false;
-+
- 	/*
- 	 * ARM64_HAS_GIC_CPUIF_SYSREGS has a lower index, and is a boot CPU
- 	 * feature, so will be detected earlier.
+ 	struct gic_chip_data *d = data;
+@@ -1891,11 +1881,6 @@ static const struct gic_quirk gic_quirks[] = {
+ 		.compatible = "asr,asr8601-gic-v3",
+ 		.init	= gic_enable_quirk_asr8601,
+ 	},
+-	{
+-		.desc	= "GICv3: Mediatek Chromebook GICR save problem",
+-		.property = "mediatek,broken-save-restore-fw",
+-		.init	= gic_enable_quirk_mtk_gicr,
+-	},
+ 	{
+ 		.desc	= "GICv3: HIP06 erratum 161010803",
+ 		.iidr	= 0x0204043b,
+@@ -1957,11 +1942,6 @@ static void gic_enable_nmi_support(void)
+ 	if (!gic_prio_masking_enabled())
+ 		return;
+ 
+-	if (gic_data.flags & FLAGS_WORKAROUND_MTK_GICR_SAVE) {
+-		pr_warn("Skipping NMI enable due to firmware issues\n");
+-		return;
+-	}
+-
+ 	rdist_nmi_refs = kcalloc(gic_data.ppi_nr + SGI_NR,
+ 				 sizeof(*rdist_nmi_refs), GFP_KERNEL);
+ 	if (!rdist_nmi_refs)
 -- 
 2.42.0.609.gbb76f46606-goog
 
