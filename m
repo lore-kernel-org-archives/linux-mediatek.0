@@ -4,78 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31443E92FD4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 03:14:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DBCEE92FE4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 06:03:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9d8YucWYRdks50PJ3AO/4iP8wds+F1vsf/WqvVgXf9A=; b=pc9Ag4vVoh0cwaC7xCbCZAUEdr
-	S76G/ajab94lvOODkilkB+yYlfyOOdYdNQ2XIDNmsht+RuVHw4SMtG1DzYPhTQJbSdoqALPfirLXh
-	50qh+a+FcDjzaEp30xUF2ttt11v5BGbYsPBxpJs1loL7s7wwrsZYWe8xcuFfzSes+nw2BDpNO/HXO
-	fDEY/j1li4MoEMVf9cfepqYSLHqG7gsSlvYZ0l8dv2XL+uHDsusf3jr+4ovLYUjfFCKXJjQ/wwz9e
-	3rp4hwbrZjdl9C1xEfauEiCe+FdS98O7O7hw0+iNOvMF6f9+821J05BKSC9Emj9fmDbSPpF7Ob4kG
-	SvJoLlww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=G6RcZSK2ZXZNwpAYwk74iwfftVFpwiXwgGnN1wemDVw=; b=bX9Y23sIqz230OkoLbzLzUbJWq
+	YmzgGeBv6xn1SJYnvf2hw6UucuoiV+WfyZvGlRP+s60H945l/Olpg1nvqe+DBXtkrKpEvkdv3gpaW
+	ecSWqYW7HeRxza3ku9e/JiqkMNs/fuB6Gicq9s/PZz1GdCPgb8m8h/X30zmuieyKEMz8Nr2TRBiwt
+	IJLDQ2VSTi0xstMijKOOxFf9zvULmnDZgcexm+3eZxDAyNql1U1ypREhkFfKLM9uYTruPrrFmqJL8
+	V7cJUNU+bVV1+TXEqjZ9bKEYumtV9UTphPHmfGZybSGRyKxjU/GO1fUxBa410472f6Zvbvybug/q6
+	hPhULmRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qobIh-004qHe-00;
-	Fri, 06 Oct 2023 03:14:51 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1qodw6-0052kk-2j;
+	Fri, 06 Oct 2023 06:03:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qobIc-004qGK-1J
-	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Oct 2023 03:14:48 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-50307acd445so2096762e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Oct 2023 20:14:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1696562082; x=1697166882; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9d8YucWYRdks50PJ3AO/4iP8wds+F1vsf/WqvVgXf9A=;
-        b=Io3Bf0QnyQbRGMja1Zv7qX1jW91diNQoOfmrBe+fqnZ9rCSqh7uSVP5PEwwLJS+V0V
-         Ocpk9lHJ3XgOXenTm0VThZf2WZBvQdEpd1akOQHuevVftL4o147tSn0qzd+l7kRhJdVn
-         EAnFMP+VqVyd+J1vFgk3cpCe2vR/aHFnkhmCs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696562082; x=1697166882;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9d8YucWYRdks50PJ3AO/4iP8wds+F1vsf/WqvVgXf9A=;
-        b=h7aK8lnIa6O3A8E6wYKc6haXubithgLko7KeilKsn/Icjlnr9NJL7h+oiZ+B4lvgfH
-         izyTUe4gTT6jRy8VC2WI0K3n8nxJLPHEXdj6MjMeMi8vW+kZDDsjgjRcwkxgKbH92wkj
-         8HdDpCNQbWA+6qngrYgVWqhPm09X5hRAYsVCGdp+nPLCRvHd6F8VqZoINGf+TpAdFU56
-         vojHFuMuRkur/4dmywvIv7W5UaDLfvEZ0588F2FXl5arDgI0p3kZLFEo/nB3rAjivD8f
-         UKjZ6MyRRM41KvEmGQX/aKCEIL00MK8VyuHbHGQEnCcwuJT9HK0Sl0vLN5572FZwLt8k
-         aVDQ==
-X-Gm-Message-State: AOJu0YwwLQmBRm2nGlIG/Xw0QEgpBkrCa2HnLCs60E5RFK3PlEDKB7NI
-	N58lYUA/D31xxz3WN7KIF+h50aetbhBMf0lBseHFOQ==
-X-Google-Smtp-Source: AGHT+IG6oEIiSjqmR75Y19FZq4C58Sj+ydK0AHtmfB75JNsgXpugv208s8JaBxDrcniI2I80JC+hyLHWlK9z6LIrmQc=
-X-Received: by 2002:ac2:4a65:0:b0:500:c2d7:3ab4 with SMTP id
- q5-20020ac24a65000000b00500c2d73ab4mr5754286lfp.8.1696562082174; Thu, 05 Oct
- 2023 20:14:42 -0700 (PDT)
+	id 1qodw3-0052jZ-0L;
+	Fri, 06 Oct 2023 06:03:41 +0000
+X-UUID: 116b3dfc640e11ee9b7791016c24628a-20231005
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=G6RcZSK2ZXZNwpAYwk74iwfftVFpwiXwgGnN1wemDVw=;
+	b=syw1zc431l5KIJZODYIQi5CbSTVuN9t949ZwOquQStJcrQxqfM4dyAyBTlMRx4DHMvK6x1g01oGFVwgYGgkSLRBgQ6jhIsEPNoJ5NFDqVBL2Sggb2CZ+a39x2PZh5SddFk0zTLVqWHwWgBgKZjpdLcu9/UL6yVYa5/aANyBpjvE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:5c83cd7c-ca47-4d36-9858-c1f682660451,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:a39bbf14-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 116b3dfc640e11ee9b7791016c24628a-20231005
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <mark-pk.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 227494627; Thu, 05 Oct 2023 23:03:27 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 6 Oct 2023 14:02:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 6 Oct 2023 14:02:50 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: Minchan Kim <minchan@kernel.org>, Sergey Senozhatsky
+	<senozhatsky@chromium.org>, Andrew Morton <akpm@linux-foundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <yj.chiang@mediatek.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
+	<linux-mm@kvack.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] zsmalloc: use copy_page for full page copy
+Date: Fri, 6 Oct 2023 14:02:40 +0800
+Message-ID: <20231006060245.7411-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20231005151150.355536-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231005151150.355536-1-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 6 Oct 2023 11:14:31 +0800
-Message-ID: <CAGXv+5Ehu6XiFQQhLaaO91N7Xse_ANxLCAwqVAMvy7UST-Q=7Q@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8186: Change gpu speedbin nvmem
- cell name
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_201446_478426_8DC49738 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231005_230339_148984_10295597 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,19 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 5, 2023 at 11:12=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> MT8186's GPU speedbin value must be interpreted, or the value will not
-> be meaningful.
-> Use the correct "gpu-speedbin" nvmem cell name for the GPU speedbin to
-> allow triggering the cell info fixup handler, hence feeding the right
-> speedbin number to the users.
->
-> Fixes: 263d2fd02afc ("arm64: dts: mediatek: mt8186: Add GPU speed bin NVM=
-EM cells")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+Some architectures have implemented optimized
+copy_page for full page copying, such as arm.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+On my arm platform, use the copy_page helper
+for single page copying is about 10 percent faster
+than memcpy.
+
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+---
+ mm/zsmalloc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mm/zsmalloc.c b/mm/zsmalloc.c
+index c743ce7a5f49..b1c0dad7f4cf 100644
+--- a/mm/zsmalloc.c
++++ b/mm/zsmalloc.c
+@@ -1839,7 +1839,7 @@ static int zs_page_migrate(struct page *newpage, struct page *page,
+ 	 * Here, any user cannot access all objects in the zspage so let's move.
+ 	 */
+ 	d_addr = kmap_atomic(newpage);
+-	memcpy(d_addr, s_addr, PAGE_SIZE);
++	copy_page(d_addr, s_addr);
+ 	kunmap_atomic(d_addr);
+ 
+ 	for (addr = s_addr + offset; addr < s_addr + PAGE_SIZE;
+-- 
+2.18.0
+
 
