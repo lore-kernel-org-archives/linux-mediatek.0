@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E38A2E81DFE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 13:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 240E9E81DFD
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 13:46:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tcctjBppf75NLO6YkO8Pl2INJRmj2vKxlHT5saQtZoY=; b=W5EZXGvyr+ZslZGb5s83weqQeq
-	trVQjxlf4wAeMhUSnT3JLVWM6nmYI3UBnHzLvqC93vjPPzjTakn9FZCCIUEDM8Qs0jNYstdbo/KFY
-	PV9LVf4O/2mXpeBCSwpnOBoyCoY7NuUGh6Ywj+6D+6Zeg8fTk1ujLTKFo8zpV+ui+Q40Gw/U7bv9e
-	iCgyrtNDYWKVCKp9Ch2hiqvEjeTv8vEPopRTX0ejqqgQ54t+MjCvQZF3VqoAk9l+57aFNXF+BL7yt
-	77Y08T8sNI/RzbwXyd/grVLhW3OoZl5jxT/rBFcUrCZa1K5duoqDhhT29LdEMG3VxUmumb9SnCKU7
-	btn6xadA==;
+	bh=UKUwyfTTneTxSGqUZGpPDlenguAqMHPKsbdYxdaEdtE=; b=ox6xeTpPI3Iut0XEk3/O1QsrH1
+	nVuPOVpr+lZzPHOo0KWtjkj1KMhAi5E9Cf19uIIAIL7ZFLD/2US9Bn3F9QtrQ4p6ls8ZSBM8DI6UE
+	oKR3oKs1Di4Z/xBwQMR4eSB20Cyz5F2+0Cttf8vnwxRoqGCwbOGzjH10tyaz8swlhYg6elrlYvE6I
+	n4NKahPF190aA7ayvUUrs4R1IIDs6f69sapBYOnJsmzzKVrPBXuVOWa1KlV6gIf/CIpa9Y9PVYpCS
+	3Yd/5Tzshuvy28scH7CBVNiJYf6AxlFantZqGBDpFfYBkI1Dz66K7GG6YPrgOIrDeIjlFbjyxYOh8
+	YVrNcckw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qolAK-005vL4-0h;
-	Fri, 06 Oct 2023 13:46:52 +0000
-Received: from mail-lf1-f42.google.com ([209.85.167.42])
+	id 1qolAQ-005vQ1-17;
+	Fri, 06 Oct 2023 13:46:58 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qol9y-005v4d-1H
+	id 1qolA3-005v7x-01
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Oct 2023 13:46:39 +0000
-Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-504b84d59cbso2836101e87.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Oct 2023 06:46:29 -0700 (PDT)
+	Fri, 06 Oct 2023 13:46:41 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-50308217223so2667115e87.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Oct 2023 06:46:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1696599988; x=1697204788; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1696599993; x=1697204793; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=tcctjBppf75NLO6YkO8Pl2INJRmj2vKxlHT5saQtZoY=;
-        b=Z5Os7KVBCbWV2a+/PL1DZ6dUQJDv9BSr+SFNA8T3UUxc5nVtp4WeMi8KCOLzXLNnBD
-         H+P1iY7Q/zR22SflE3KvVn6lbtcZ+JvY4HTCkXNuTODaFznYZod/klUkGHM5T99Wq+v7
-         nFon/DY5B4WLEWEMyPdz5cm6EfhCquQ/NWbLk5q2pzIIgEtSMXB3NnVr4dn8cyRzRTZI
-         7zIWZb3KZ6PITUQtDY7KtaPWzO/bPL0qOmAfYaLZZDw3Qk3+67UpRjz6wCREWvTR2SG9
-         0Bw8X2qfx/zwl1juTYK9qsEZt3P772ygN16aIUm6P32RALZu7XAx0EGO7O9kKtj9sDZm
-         bcoQ==
+        bh=UKUwyfTTneTxSGqUZGpPDlenguAqMHPKsbdYxdaEdtE=;
+        b=jIbY/vm7JgUQ+A2XL92L7dNHmvbKJC5Ry/iaUtZau4glUD7RxG9F/B5UifmQ+yGsSz
+         Cqg3irHy8AuK03QZmC7Sj27L+hI2CR6TTfpq0KLnT1f8+QapQn1iVRL5pEIwFWfxc6Av
+         grRKzAxY/jnG0keni/3mk95L5pARk75zMiq2sDV0fDPASFMgf6jT6cN7XZyOWLDS6Ydg
+         qxbbXzmJJ34F3Yb76f4jvd3x5Qrqs4Nkyh3EaWFxnICVOhrL2ZHFLbt650e1sCqKwC95
+         202LMMIJXNp+tsOXHm5FXIS95wepFrhNkfGrW8C292Z3Vn+1U52KlDbHVKYjEFnPEHHc
+         a+xA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696599988; x=1697204788;
+        d=1e100.net; s=20230601; t=1696599993; x=1697204793;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=tcctjBppf75NLO6YkO8Pl2INJRmj2vKxlHT5saQtZoY=;
-        b=uU7wGIWk5NyX/xDiV6XRgmoPaW5sq5jNQrcbKntViODnU/4jIxMCV+5EwPs21qWt1g
-         asKGAEp443W+NIAGKxNn1RKs2cZnf0CP2ywsVMag3XbE5Qm5JmsLQLi8zQp6+/mY2GG6
-         AEUluL17JbftncuAVrBcemReKGW1DSyGVXsFyUqhE78KIjDQo3XhcAcC97w/rI1JdQty
-         78by/N2uSGngbIAgeCMVcyJsrAvyvTAzMOiEKWf0QW+SjTJULXgF61bRv+iI2t6Vf7R8
-         DNa8zvuzhC1CuTwcPlYHr5tORlWJCcUE/A3mdZQ2t7VuylMIjCqi0hM5oAsFxqTpzNJq
-         FnYA==
-X-Gm-Message-State: AOJu0YyafVdTaVcqVf/xaQUU+dWKE+9D44JTFYsCCsNwza5xzabpKeWp
-	UV2syal2wuc0Kr89iVZqTdIeCw==
-X-Google-Smtp-Source: AGHT+IGGfV3zI+nczOVhjRr4Mwdj1t6P4p9VuGFvQPwS1+LInpdbM8MctPtTPICaU62NLB0lwNF8YA==
-X-Received: by 2002:ac2:5f62:0:b0:4fe:5860:7abf with SMTP id c2-20020ac25f62000000b004fe58607abfmr5744253lfc.13.1696599988003;
-        Fri, 06 Oct 2023 06:46:28 -0700 (PDT)
+        bh=UKUwyfTTneTxSGqUZGpPDlenguAqMHPKsbdYxdaEdtE=;
+        b=PLJ6APbkmctjxjW1DZgptvfCBI7WCLu5p1PomxY+dPGEdC/3riux4BSwxzvN5Ko+Sn
+         NrA8m3lUoADJIH1h1CZv2sk2CpvXWJqqyTNavkQxilakqnpjqXxN/6Qt4qUlkvPmoM1m
+         K4sPeIP8u3rbliM1SBVhVhsS+JT8T7Np0gjXgIU1cb6SWZYcY8+t/V+PHOadwgHi61KM
+         aL9jiSw+idmRJHDrIIT2zKqNOFTviprHusjvME1o1NlM5oLYhxjR80coEjuELVTE1L5A
+         NDtuwj/dJiq5LG9W88K2CKBCCe+nsyS0+Po/FN4bqDCms+LB29J1JbuXtRshFS+oTYN7
+         UoRA==
+X-Gm-Message-State: AOJu0Yxzjd0DbCNizqOOKTNkWGpowFAscACNuExEcgDo7fyyTd9yuDL5
+	pi/5ZqtnSuv6i64fOR2cj42cSQ==
+X-Google-Smtp-Source: AGHT+IGcwLvp1n+5FWSbw9bTwDxtSAgSpZp4HVrtvVLTsDkaltU0mqZDETpn1S5AIg0T9GnwoZL/uA==
+X-Received: by 2002:a05:6512:280d:b0:501:bee7:487b with SMTP id cf13-20020a056512280d00b00501bee7487bmr8096933lfb.11.1696599992987;
+        Fri, 06 Oct 2023 06:46:32 -0700 (PDT)
 Received: from [127.0.1.1] ([85.235.12.238])
-        by smtp.gmail.com with ESMTPSA id v25-20020a197419000000b004fe37199b87sm308733lfe.156.2023.10.06.06.46.27
+        by smtp.gmail.com with ESMTPSA id v25-20020a197419000000b004fe37199b87sm308733lfe.156.2023.10.06.06.46.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Oct 2023 06:46:27 -0700 (PDT)
+        Fri, 06 Oct 2023 06:46:32 -0700 (PDT)
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 06 Oct 2023 15:46:24 +0200
-Subject: [PATCH 1/8] gpiolib: of: Add quirk for mt2701-cs42448 ASoC sound
+Date: Fri, 06 Oct 2023 15:46:29 +0200
+Subject: [PATCH 6/8] ASoC: mt8173-rt5650: Drop unused includes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231006-descriptors-asoc-mediatek-v1-1-07fe79f337f5@linaro.org>
+Message-Id: <20231006-descriptors-asoc-mediatek-v1-6-07fe79f337f5@linaro.org>
 References: <20231006-descriptors-asoc-mediatek-v1-0-07fe79f337f5@linaro.org>
 In-Reply-To: <20231006-descriptors-asoc-mediatek-v1-0-07fe79f337f5@linaro.org>
 To: Bartosz Golaszewski <brgl@bgdev.pl>, Andy Shevchenko <andy@kernel.org>, 
@@ -81,8 +81,9 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  alsa-devel@alsa-project.org, Linus Walleij <linus.walleij@linaro.org>
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_064630_435590_6E4919D5 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20231006_064635_055291_04512966 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,30 +98,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These gpio names are due to old DT bindings not following the
-"-gpio"/"-gpios" conventions. Handle it using a quirk so the
-driver can just look up the GPIOs.
+This driver includes the legacy GPIO header <linux/gpio.h> and
+<linux/of_gpio.h> but does not use any symbols from either of
+them so drop the includes.
 
 Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
 ---
- drivers/gpio/gpiolib-of.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpio/gpiolib-of.c b/drivers/gpio/gpiolib-of.c
-index 531faabead0f..d9525d95e818 100644
---- a/drivers/gpio/gpiolib-of.c
-+++ b/drivers/gpio/gpiolib-of.c
-@@ -512,6 +512,10 @@ static struct gpio_desc *of_find_gpio_rename(struct device_node *np,
- #if IS_ENABLED(CONFIG_SND_SOC_CS42L56)
- 		{ "reset",	"cirrus,gpio-nreset",	"cirrus,cs42l56" },
- #endif
-+#if IS_ENABLED(CONFIG_SND_SOC_MT2701_CS42448)
-+		{ "i2s1-in-sel-gpio1",	NULL,	"mediatek,mt2701-cs42448-machine" },
-+		{ "i2s1-in-sel-gpio2",	NULL,	"mediatek,mt2701-cs42448-machine" },
-+#endif
- #if IS_ENABLED(CONFIG_SND_SOC_TLV320AIC3X)
- 		{ "reset",	"gpio-reset",	"ti,tlv320aic3x" },
- 		{ "reset",	"gpio-reset",	"ti,tlv320aic33" },
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index 18cf84bb25c7..bcec1d9d790b 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -7,8 +7,6 @@
+  */
+ 
+ #include <linux/module.h>
+-#include <linux/gpio.h>
+-#include <linux/of_gpio.h>
+ #include <sound/soc.h>
+ #include <sound/jack.h>
+ #include "../../codecs/rt5645.h"
 
 -- 
 2.34.1
