@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57FE6E92FF3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 07:39:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59A13E92FF3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 07:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AiVvRAzMn9VMDyyKMkXhLPrqxmMHqY/AO5l3DSEtVrM=; b=yVU5eNgdPmWcC5WbpilWwBCyBt
-	sqo+x6/kL/dCKECALCajBGbNYAH566fu+WDuFEKObtDCGtM7EJlI9lGuj2CdGHcg5yqZOBq/bxqsM
-	Sk6bZKEyBvoHfenB8jETbPj8Yd4hgJEOAc5kDRFjecnvfXzwga8m/UAbas3eHUYnL4+RE/fKQ+3je
-	KGAQ71nZ1i3TZPPB8L03TkmE2HGPsLFgbeedx5W55gyj/6CNS4fOS0pDNk92l5n9niNAY69FclqSn
-	nYkLv9xywnurI2ThIKdCVHIMpnruSeM4C5OgMOH+wjRBKv4rwXjE0gsgySqMm/6P4hEDgM/bU0B5Q
-	tiC3fhwA==;
+	bh=e3ahd3M0XcppL08N+KpDhIH1BYr1qRQbibyyNReplTw=; b=2ZusuCxLWx2AyqOWU+S2j1rGpy
+	+g2yh2n8EPWgeyjewEfUq5wBUAtZlNzcxgIiluHBUp13eJzS5l/xPYfHSJszEvA2M83v91KkDjU03
+	nhlXOqz2YOt03V5GpKVKl586PdwJ0bkHgmjG/vAWnLxPQq92MQnsjt4JtGb+bKO5iJjhTFVBEt30v
+	QcybVvCZve8pNgwpNolIwuXxP+1cbsGowT3o1v+8O0AP9V3MTOIrBEMD4fbUnPyD+tnqP87zAqAxz
+	8S+istDvKUtCbfotQ1MNk44SE9t7TiHkd/E6AJlBdy0GFNV0eKhkkCnOm9jtMBSD6ipIdghqj1Imm
+	ncdWNKZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qofRF-005BCM-39;
-	Fri, 06 Oct 2023 07:39:58 +0000
+	id 1qofRQ-005BLt-37;
+	Fri, 06 Oct 2023 07:40:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qofR5-005B2G-1U;
-	Fri, 06 Oct 2023 07:39:51 +0000
-X-UUID: 84042efc641b11ee86758d4a7c00f3a0-20231006
+	id 1qofR6-005B33-1T;
+	Fri, 06 Oct 2023 07:39:52 +0000
+X-UUID: 8378793e641b11ee86758d4a7c00f3a0-20231006
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AiVvRAzMn9VMDyyKMkXhLPrqxmMHqY/AO5l3DSEtVrM=;
-	b=CzMVt81vbE6VSXJOdB36aadyushJx8wMOuzEd5xBHP8AO4AsFYFJ5f8Mv2aQnyi3VWIdEdLNwww6frCzQ7lePggu/7q8Z5fS1J8b344a+r82X1+l5f6Z6fsWl+tPHESUgGHwvnuD5DrEcZ5TrJ27+nQ0QUjdeIYYByhRSgHNymk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e3ahd3M0XcppL08N+KpDhIH1BYr1qRQbibyyNReplTw=;
+	b=jDV5uqVC+W8rW62sLmNY063EYj8uun5Xther8KStNGKg0HIMCAaA/gvKrWZXwTGg/Grn78aKsnS5EyQqg70sxNG1Q30ao/VNtvV6aXXPPMEGV4m5OwZ48kvLQXHJvOl9WT12WAjYaXXSTollgyyIZ5y/vYjjmr02KJo9hEge+1E=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:3b3846db-280d-4ca8-acf3-7ab04da35c02,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:5f78ec9,CLOUDID:2675d7c3-1e57-4345-9d31-31ad9818b39f,B
+X-CID-O-INFO: VERSION:1.1.32,REQID:431a7d66-2a5d-4a44-b142-14f03cf4364a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:c7b0c014-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 84042efc641b11ee86758d4a7c00f3a0-20231006
+X-UUID: 8378793e641b11ee86758d4a7c00f3a0-20231006
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1491130670; Fri, 06 Oct 2023 00:39:43 -0700
+	with ESMTP id 29641760; Fri, 06 Oct 2023 00:39:42 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 6 Oct 2023 15:38:35 +0800
+ 15.2.1118.26; Fri, 6 Oct 2023 15:38:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 6 Oct 2023 15:38:35 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 6 Oct 2023 15:38:34 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
  Hu" <ck.hu@mediatek.com>, Krzysztof Kozlowski
@@ -67,30 +67,30 @@ CC: Conor Dooley <conor+dt@kernel.org>, Philipp Zabel
 	Singo Chang <singo.chang@mediatek.com>, "Nancy . Lin"
 	<nancy.lin@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
 	"Hsiao Chien Sung" <shawn.sung@mediatek.com>
-Subject: [PATCH v7 09/23] soc: mediatek: Support reset bit mapping in mmsys driver
-Date: Fri, 6 Oct 2023 15:38:17 +0800
-Message-ID: <20231006073831.10402-10-shawn.sung@mediatek.com>
+Subject: [PATCH v7 06/23] dt-bindings: reset: mt8188: Add VDOSYS reset control bits
+Date: Fri, 6 Oct 2023 15:38:14 +0800
+Message-ID: <20231006073831.10402-7-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231006073831.10402-1-shawn.sung@mediatek.com>
 References: <20231006073831.10402-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.363700-8.000000
-X-TMASE-MatchedRID: 6IKkQlwkGxfhsdkaHFW0p25IHkZABHAU0nXvwjW2mSXb6Y+fnTZUL+jk
-	huBL0aGZ9SK5q0H2UamK0Joj0npda6m/G7eYsFM7wVaayvK71l/pJe7BSAYfSFsoEE3nOobwSI7
-	v7A0N15jT01A2vEikVgG2ORx9EyapQylVlmxnJkaQOktEo73GFKIf1lfNT7Zi0pEcoXqJQB0G1W
-	3alEv3RuLzNWBegCW2wgn7iDBesS0gBwKKRHe+r1JjkcL+e8SfInGnwUYoGc+QfJU58joZAYnbF
-	ZHEcdx7UfcHQTBCHyc=
+X-TM-AS-Result: No-10--2.230700-8.000000
+X-TMASE-MatchedRID: tiRXYRqWr+upk9YSiEd5ImNW0DAjL5p+Wot5Z16+u74IgSDinsA6bCzy
+	bVqWyY2NTAa7ihKVJtWAMuqetGVetocnrwAbVlNi3QfwsVk0UbsIoUKaF27lxW/EmO7579ImPdv
+	WDxcnsv62jQK4x7A0yTmv3WIKQz/Ji4gt2mJW428iCqrEag5df9amHb2LHHT+uE6Jn2QVH0KYe5
+	xoFcRssRdGg+ZY7eN6THB2Q+oKru8MTI34nyF36MJL1aANdU8Knqg/VrSZEiM=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.363700-8.000000
+X-TMASE-Result: 10--2.230700-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 3CF4DC8219BC4E37CBEE09419C736DF93713C1CE3FDC7656973BED42F47A0B0B2000:8
+X-TM-SNTS-SMTP: E19F3DD260B1F9E0069A8287DE00AF384594AA46B8D6466A8F62D0E6292549D92000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_003947_513434_0E8470B0 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20231006_003948_497924_B0F8C10B 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,59 +105,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Reset ID must starts from 0 and be consecutive, but
-  the reset bits in our hardware design is not continuous,
-  some bits are left unused, we need a map to solve the problem
-- Use old style 1-to-1 mapping if .rst_tb is not defined
+Add MT8188 VDOSYS0 and VDOSYS1 reset control bits.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-mmsys.c | 9 +++++++++
- drivers/soc/mediatek/mtk-mmsys.h | 3 +++
- 2 files changed, 12 insertions(+)
+ include/dt-bindings/reset/mt8188-resets.h | 75 +++++++++++++++++++++++
+ 1 file changed, 75 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index aa6014d25420..be061df8a39d 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -314,6 +314,15 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
- 	u32 offset;
- 	u32 reg;
+diff --git a/include/dt-bindings/reset/mt8188-resets.h b/include/dt-bindings/reset/mt8188-resets.h
+index ba9a5e9b8899..5a58c54e7d20 100644
+--- a/include/dt-bindings/reset/mt8188-resets.h
++++ b/include/dt-bindings/reset/mt8188-resets.h
+@@ -38,4 +38,79 @@
+ #define MT8188_INFRA_RST1_THERMAL_CTRL_RST         1
+ #define MT8188_INFRA_RST3_PTP_CTRL_RST             2
  
-+	if (mmsys->data->rst_tb) {
-+		if (id >= mmsys->data->num_resets) {
-+			dev_err(rcdev->dev, "Invalid reset ID: %lu (>=%u)\n",
-+				id, mmsys->data->num_resets);
-+			return -EINVAL;
-+		}
-+		id = mmsys->data->rst_tb[id];
-+	}
++#define MT8188_VDO0_RST_DISP_OVL0		0
++#define MT8188_VDO0_RST_FAKE_ENG0		1
++#define MT8188_VDO0_RST_DISP_CCORR0		2
++#define MT8188_VDO0_RST_DISP_MUTEX0		3
++#define MT8188_VDO0_RST_DISP_GAMMA0		4
++#define MT8188_VDO0_RST_DISP_DITHER0		5
++#define MT8188_VDO0_RST_DISP_WDMA0		6
++#define MT8188_VDO0_RST_DISP_RDMA0		7
++#define MT8188_VDO0_RST_DSI0			8
++#define MT8188_VDO0_RST_DSI1			9
++#define MT8188_VDO0_RST_DSC_WRAP0		10
++#define MT8188_VDO0_RST_VPP_MERGE0		11
++#define MT8188_VDO0_RST_DP_INTF0		12
++#define MT8188_VDO0_RST_DISP_AAL0		13
++#define MT8188_VDO0_RST_INLINEROT0		14
++#define MT8188_VDO0_RST_APB_BUS			15
++#define MT8188_VDO0_RST_DISP_COLOR0		16
++#define MT8188_VDO0_RST_MDP_WROT0		17
++#define MT8188_VDO0_RST_DISP_RSZ0		18
 +
- 	offset = (id / MMSYS_SW_RESET_PER_REG) * sizeof(u32);
- 	id = id % MMSYS_SW_RESET_PER_REG;
- 	reg = mmsys->data->sw0_rst_offset + offset;
-diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-index 49851bc7aa9e..c90419c96a7d 100644
---- a/drivers/soc/mediatek/mtk-mmsys.h
-+++ b/drivers/soc/mediatek/mtk-mmsys.h
-@@ -78,6 +78,8 @@
- #define DSI_SEL_IN_RDMA				0x1
- #define DSI_SEL_IN_MASK				0x1
- 
-+#define MMSYS_RST_NR(bank, bit) (((bank) * 32) + (bit))
++#define MT8188_VDO1_RST_SMI_LARB2		0
++#define MT8188_VDO1_RST_SMI_LARB3		1
++#define MT8188_VDO1_RST_GALS			2
++#define MT8188_VDO1_RST_FAKE_ENG0		3
++#define MT8188_VDO1_RST_FAKE_ENG1		4
++#define MT8188_VDO1_RST_MDP_RDMA0		5
++#define MT8188_VDO1_RST_MDP_RDMA1		6
++#define MT8188_VDO1_RST_MDP_RDMA2		7
++#define MT8188_VDO1_RST_MDP_RDMA3		8
++#define MT8188_VDO1_RST_VPP_MERGE0		9
++#define MT8188_VDO1_RST_VPP_MERGE1		10
++#define MT8188_VDO1_RST_VPP_MERGE2		11
++#define MT8188_VDO1_RST_VPP_MERGE3		12
++#define MT8188_VDO1_RST_VPP_MERGE4		13
++#define MT8188_VDO1_RST_VPP2_TO_VDO1_DL_ASYNC	14
++#define MT8188_VDO1_RST_VPP3_TO_VDO1_DL_ASYNC	15
++#define MT8188_VDO1_RST_DISP_MUTEX		16
++#define MT8188_VDO1_RST_MDP_RDMA4		17
++#define MT8188_VDO1_RST_MDP_RDMA5		18
++#define MT8188_VDO1_RST_MDP_RDMA6		19
++#define MT8188_VDO1_RST_MDP_RDMA7		20
++#define MT8188_VDO1_RST_DP_INTF1_MMCK		21
++#define MT8188_VDO1_RST_DPI0_MM_CK		22
++#define MT8188_VDO1_RST_DPI1_MM_CK		23
++#define MT8188_VDO1_RST_MERGE0_DL_ASYNC		24
++#define MT8188_VDO1_RST_MERGE1_DL_ASYNC		25
++#define MT8188_VDO1_RST_MERGE2_DL_ASYNC		26
++#define MT8188_VDO1_RST_MERGE3_DL_ASYNC		27
++#define MT8188_VDO1_RST_MERGE4_DL_ASYNC		28
++#define MT8188_VDO1_RST_VDO0_DSC_TO_VDO1_DL_ASYNC	29
++#define MT8188_VDO1_RST_VDO0_MERGE_TO_VDO1_DL_ASYNC	30
++#define MT8188_VDO1_RST_PADDING0		31
++#define MT8188_VDO1_RST_PADDING1		32
++#define MT8188_VDO1_RST_PADDING2		33
++#define MT8188_VDO1_RST_PADDING3		34
++#define MT8188_VDO1_RST_PADDING4		35
++#define MT8188_VDO1_RST_PADDING5		36
++#define MT8188_VDO1_RST_PADDING6		37
++#define MT8188_VDO1_RST_PADDING7		38
++#define MT8188_VDO1_RST_DISP_RSZ0		39
++#define MT8188_VDO1_RST_DISP_RSZ1		40
++#define MT8188_VDO1_RST_DISP_RSZ2		41
++#define MT8188_VDO1_RST_DISP_RSZ3		42
++#define MT8188_VDO1_RST_HDR_VDO_FE0		43
++#define MT8188_VDO1_RST_HDR_GFX_FE0		44
++#define MT8188_VDO1_RST_HDR_VDO_BE		45
++#define MT8188_VDO1_RST_HDR_VDO_FE1		46
++#define MT8188_VDO1_RST_HDR_GFX_FE1		47
++#define MT8188_VDO1_RST_DISP_MIXER		48
++#define MT8188_VDO1_RST_HDR_VDO_FE0_DL_ASYNC	49
++#define MT8188_VDO1_RST_HDR_VDO_FE1_DL_ASYNC	50
++#define MT8188_VDO1_RST_HDR_GFX_FE0_DL_ASYNC	51
++#define MT8188_VDO1_RST_HDR_GFX_FE1_DL_ASYNC	52
++#define MT8188_VDO1_RST_HDR_VDO_BE_DL_ASYNC	53
 +
- struct mtk_mmsys_routes {
- 	u32 from_comp;
- 	u32 to_comp;
-@@ -119,6 +121,7 @@ struct mtk_mmsys_driver_data {
- 	const struct mtk_mmsys_routes *routes;
- 	const unsigned int num_routes;
- 	const u16 sw0_rst_offset;
-+	const u8 *rst_tb;
- 	const u32 num_resets;
- 	const bool is_vppsys;
- 	const u8 vsync_len;
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8188 */
 -- 
 2.18.0
 
