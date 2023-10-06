@@ -4,96 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E81F1E94135
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 22:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDCB6E9413A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 23:03:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xhO3ehWc1dLHvm/xZLr7SfH1xniT/+pUCjErhuF2vy4=; b=UjXpt66fGhpF4XyFS8bp+03QgY
-	xVLZfvtZJadVPaIdKPyl8Dga4zQm84AZRRHTNqj49pXZQowUsgHNgEDwTBODRMhqsZ9w/IQ9D6K8X
-	zPnjPabfA9rEwQGPKFoKgT7H+Wp63z94TwXfeVKpgDMMWQDHWaWWFBbXDf8cnNZDGJIpf8vqFXMP+
-	ikUzr1/pxw9+FuZzI5pmUydtn+o//+XBLOkkYkNKc50iF/IJoRy8xDx9JnmNarCCjsxnObAl2Tjp3
-	0RsOXZDCUEh62FxvuBtPY/BJzXAgs/o76tYmQI+ZBGX4j63xiThVU4dCameUS6PeelpAllLRQJWDK
-	Uq3o2OGw==;
+	bh=3wWS+KHIdA9zkMV46QWcShY3l4cnXlREbKpL1SFSwiA=; b=JlnSbCfSr84cFfkKumfSmaa0W2
+	e5iTmxIpVqz49NLx3jObZEyRwfD4EuU65QD6GcvIe30QC/9uQCsapp33lEcXGxAMPF28TULZyeggg
+	hfPsg5JRj35qSaB7OZddHdUMU9lauwi9+pQDmrkzfLhfTrJW8rJIYIrfls0nK+HW71/i7tTrvNrCX
+	kR0SSXRnDdYMsye1uNK+CC0j2vkz3a71YeWq2y+5deAwFZgQnN6eiFGrLdbjxLgiAs/tNO5nLgHxa
+	QhsdrettiUAGLsfH7xgXHSQosd7rkHZxdT86WF/4jYchh+FBQNVKQ5M//JSgsh4wGccamyG0Kw89J
+	bWJBdfig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qotFt-006aSf-1V;
-	Fri, 06 Oct 2023 22:25:09 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1qotqX-006d5x-1v;
+	Fri, 06 Oct 2023 23:03:01 +0000
+Received: from omta036.useast.a.cloudfilter.net ([44.202.169.35])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qotFq-006aRJ-39
-	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Oct 2023 22:25:08 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-9ad810be221so448808866b.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Oct 2023 15:25:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1696631101; x=1697235901; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xhO3ehWc1dLHvm/xZLr7SfH1xniT/+pUCjErhuF2vy4=;
-        b=T2EKLUEX7RMnJ2mVJsyQF+PhkgMv74qSDXeAGpV+XRSofsUTtec/Teb8ZVAnBHvjcH
-         NfkEUrNYUX2C8E8sqrysT7NopaCo6ABP57OXT2xPAVd/zHllUKgl+bCyDyCeU7yuC7xf
-         6LVz46ttJQzmk83cQBHAYkAq7ZJlmq2KSeTOE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696631101; x=1697235901;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xhO3ehWc1dLHvm/xZLr7SfH1xniT/+pUCjErhuF2vy4=;
-        b=VmJAP/Zvxal7weqtisS8PewaRUpN8SkDrinmPbyaSkN0viNLkdjro2it6I9Np0a9wR
-         m+4PkoPbVZqJ57rzGKJhpN4gpe6Kapk5jGVGlpROYa6U3Q5jRhJ9EBEuOr/UEXnvBdbd
-         c3WEiYT3wIW9hXMi71MrkGYxzZBpNJcNGIVHi5rUSn6oSXNwYmp2el1PeUNHI2N9M0sG
-         IZUVIqape4T6tXJ/ngmd1qzqZ3inR1RQNyNk6mttEDpjO6JGN06WRfcipcacRsmUVrXC
-         2jnE/ptYycH/xfTivv56Ea/B5JQK0ryw9wKlhaKsRQw6g6AZShLd1xEJBQUaOY4k6M7K
-         9Rog==
-X-Gm-Message-State: AOJu0YxnDB8POJl0lFpzYCZ0q0qtfa0C+N6XOeqvGb3r+5dCh8WXqGMa
-	hv5CruHri1y8Y9I3meH4qD9UZ39TjwP9PAEAaUAEdmOy
-X-Google-Smtp-Source: AGHT+IFbir7Snn8YsVj5ud6JMIuFbSkCpl5dhN8wM6Ia936rZLXZiBtsw7F2bkhwjrsoBnjyrDvpew==
-X-Received: by 2002:a17:906:104e:b0:99c:47a:8bcd with SMTP id j14-20020a170906104e00b0099c047a8bcdmr8359199ejj.67.1696631100784;
-        Fri, 06 Oct 2023 15:25:00 -0700 (PDT)
-Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com. [209.85.128.54])
-        by smtp.gmail.com with ESMTPSA id 17-20020a170906059100b009929ab17be0sm3465032ejn.162.2023.10.06.15.25.00
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 06 Oct 2023 15:25:00 -0700 (PDT)
-Received: by mail-wm1-f54.google.com with SMTP id 5b1f17b1804b1-405459d9a96so28185e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Oct 2023 15:25:00 -0700 (PDT)
-X-Received: by 2002:a05:600c:2e11:b0:3fe:f32f:c57f with SMTP id
- o17-20020a05600c2e1100b003fef32fc57fmr226863wmf.0.1696630660734; Fri, 06 Oct
- 2023 15:17:40 -0700 (PDT)
+	id 1qotqS-006d4k-1n;
+	Fri, 06 Oct 2023 23:02:59 +0000
+Received: from eig-obgw-5001a.ext.cloudfilter.net ([10.0.29.139])
+	by cmsmtp with ESMTP
+	id oqs4qoWeQNWIeotqOqjgWq; Fri, 06 Oct 2023 23:02:52 +0000
+Received: from gator4166.hostgator.com ([108.167.133.22])
+	by cmsmtp with ESMTPS
+	id otqNqrKIaaNfxotqNqZQoe; Fri, 06 Oct 2023 23:02:52 +0000
+X-Authority-Analysis: v=2.4 cv=NLjGRm2g c=1 sm=1 tr=0 ts=6520921c
+ a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=Dx1Zrv+1i3YEdDUMOX3koA==:17
+ a=OWjo9vPv0XrRhIrVQ50Ab3nP57M=:19 a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19
+ a=IkcTkHD0fZMA:10 a=bhdUkHdE2iEA:10 a=wYkD_t78qR0A:10 a=P-IC7800AAAA:8
+ a=sozttTNsAAAA:8 a=pGLkceISAAAA:8 a=QX4gbG5DAAAA:8 a=VwQbUJbxAAAA:8
+ a=mK_AVkanAAAA:8 a=Ikd4Dj_1AAAA:8 a=i0EeH86SAAAA:8 a=JfrnYn6hAAAA:8
+ a=NEAV23lmAAAA:8 a=cm27Pg_UAAAA:8 a=csSI4ce9OAwHNZIND1oA:9 a=QEXdDO2ut3YA:10
+ a=d3PnA9EDa4IxuAV0gXij:22 a=aeg5Gbbo78KNqacMgKqU:22 a=AbAUZ8qAyYyZVLSsDulk:22
+ a=AjGcO6oz07-iQ99wixmX:22 a=3gWm3jAn84ENXaBijsEo:22 a=1CNFftbPRP8L7MoqJWF3:22
+ a=xmb-EsYY8bH0VWELuYED:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=3wWS+KHIdA9zkMV46QWcShY3l4cnXlREbKpL1SFSwiA=; b=KmoqDeHEqpebkY25NU3zGnYeSv
+	OdlLE46gwluT+8j88AXfTqeP9pvO6mtR48D9aYO990sPLej+I/pfa1Qf0JqIV1vSfO+IzT3dx2ElA
+	nzT72OiaJjAxF39cY2rjbAPnjfl8ejL4qXicxjtIA97eK+U9vE7E4xU+gxFekDNqEAfySdrxKZFQj
+	edM77xw59RmwNWyTJEjLPpQeHvSgak1ghNvAhLvILe1YxIEvWaUxmyJDclsJhvSuxp22YkiC1xfp7
+	UxVAcyZCNU5D0smv6LtpqHnPugRoUMhwF7EtcVHYzHeN5lCjpuR95OFjdYojyVU1m1nu4ZFYpWCvh
+	9P5xXg+w==;
+Received: from 94-238-9-39.abo.bbox.fr ([94.238.9.39]:47408 helo=[192.168.1.98])
+	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96.1)
+	(envelope-from <gustavo@embeddedor.com>)
+	id 1qorku-001Bge-1W;
+	Fri, 06 Oct 2023 15:49:04 -0500
+Message-ID: <e177380b-6216-4bc3-8232-41663a828821@embeddedor.com>
+Date: Fri, 6 Oct 2023 22:48:59 +0200
 MIME-Version: 1.0
-References: <20231002094526.1.Ie8f760213053e3d11592f892b30912dbac6b8b48@changeid>
- <ZRr8r7XMoyDKaitd@FVFF77S0Q05N.cambridge.arm.com> <CAD=FV=UeeL9uycVeKpOm+eDm3xHrOnKi2frt6a1qFG1HX9yEUg@mail.gmail.com>
- <ZRwJKBZaYwF1rrur@FVFF77S0Q05N> <CAD=FV=WASz1uvTgwsu3H3cTr3smHk+E_XNUVnjoPpttwv095rQ@mail.gmail.com>
- <ZRxCCZxZWCG0NBur@FVFF77S0Q05N> <CAD=FV=Xk-OMKQPXxU9Z9HOcWwUxxrmLZ4vD0u5ouZRW_zDFDPg@mail.gmail.com>
- <ZR03liCodnTQWs7s@FVFF77S0Q05N> <86jzs2ofqs.wl-maz@kernel.org>
- <CAD=FV=XasZR6dhKBjpbYfby4F1Nu_bsq1m_HP+NpufjsJi0COg@mail.gmail.com>
- <ZR6Pjk_3gpx1K3pF@FVFF77S0Q05N> <864jj4njb7.wl-maz@kernel.org>
-In-Reply-To: <864jj4njb7.wl-maz@kernel.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 6 Oct 2023 15:17:24 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=Wdkm6uMMtSL0qWmciaNV33Q-OFw_ttPo3zUzpoguBjsg@mail.gmail.com>
-Message-ID: <CAD=FV=Wdkm6uMMtSL0qWmciaNV33Q-OFw_ttPo3zUzpoguBjsg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] arm64: smp: Fix pseudo NMI issues w/ broken Mediatek FW
-To: Marc Zyngier <maz@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, 
-	Will Deacon <will@kernel.org>, Stephen Boyd <swboyd@chromium.org>, 
-	Valentin Schneider <vschneid@redhat.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	D Scott Phillips <scott@os.amperecomputing.com>, Josh Poimboeuf <jpoimboe@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Misono Tomohiro <misono.tomohiro@fujitsu.com>, 
-	Peter Zijlstra <peterz@infradead.org>, Sumit Garg <sumit.garg@linaro.org>, 
-	Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mtd: rawnand: Annotate struct mtk_nfc_nand_chip with
+ __counted_by
+Content-Language: en-US
+To: Kees Cook <keescook@chromium.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Richard Weinberger <richard@nod.at>, Vignesh Raghavendra
+ <vigneshr@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Thierry Reding <treding@nvidia.com>, Roger Quadros <rogerq@kernel.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Cai Huoqing <cai.huoqing@linux.dev>, Chuanhong Guo <gch981213@gmail.com>,
+ Rob Herring <robh@kernel.org>, Li Zetao <lizetao1@huawei.com>,
+ linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>, Tom Rix <trix@redhat.com>,
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev
+References: <20231006201728.work.750-kees@kernel.org>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+In-Reply-To: <20231006201728.work.750-kees@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 94.238.9.39
+X-Source-L: No
+X-Exim-ID: 1qorku-001Bge-1W
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 94-238-9-39.abo.bbox.fr ([192.168.1.98]) [94.238.9.39]:47408
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 0
+X-Org: HG=hgshared;ORG=hostgator;
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfHqhaivXSbrLOLfUO8rqG8p/6LlRriA6bU7YrkB14/EY5w1BbvjD08LPjjEhgTv27anpgsYvRvX0f7QehLCw7wUQSTdSc2vB7rUee+pUVxIM0hXZNj7K
+ vaSLZLg6hucxNcOYrgLE1Q3o/bgjNz0Du8sXngXQfm5d2/mtjKfzqtrm393MPullItJlpCebVcgKEwqcBWXVHyO+gJk6xfw12zs2oiTTJmzJ8R/rWaqFytUN
+ 6AdYfQgcssfnaUGEIE0bR8WbhA5yznqKVXLRXhfFQIqAwlwa7i/FJRmz9BMOubmG3aZibQj6o0uzUYll6JqZugvdEe9VRoq7nM1SBdj/hwg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_152507_038246_6306A89D 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20231006_160256_664775_D2F2E47C 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,30 +127,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On Fri, Oct 6, 2023 at 3:20=E2=80=AFAM Marc Zyngier <maz@kernel.org> wrote:
->
-> On Thu, 05 Oct 2023 11:27:26 +0100,
-> Mark Rutland <mark.rutland@arm.com> wrote:
->
-> > 3) Partial fix: make the ARM64_HAS_GIC_PRIO_MASKING cpucap depend on th=
-e
-> >    absence of a "mediatek,broken-save-restore-fw" property in the DT. I=
- believe
-> >    we can check that in early_enable_pseudo_nmi() or can_use_gic_priori=
-ties().
-> >
-> >    That'll avoid potential issues if/when we change the priorities used=
- for
-> >    pNMI (which is something I've been looking at).
-> >
-> > I'm happy with (3) if Marc is.
->
-> Definitely worth investigating if you have the bandwidth.
 
-I made an attempt at it. See:
+On 10/6/23 22:17, Kees Cook wrote:
+> Prepare for the coming implementation by GCC and Clang of the __counted_by
+> attribute. Flexible array members annotated with __counted_by can have
+> their accesses bounds-checked at run-time via CONFIG_UBSAN_BOUNDS (for
+> array indexing) and CONFIG_FORTIFY_SOURCE (for strcpy/memcpy-family
+> functions).
+> 
+> As found with Coccinelle[1], add __counted_by for struct
+> mtk_nfc_nand_chip.
+> 
+> Cc: Miquel Raynal <miquel.raynal@bootlin.com>
+> Cc: Richard Weinberger <richard@nod.at>
+> Cc: Vignesh Raghavendra <vigneshr@ti.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Cc: Thierry Reding <treding@nvidia.com>
+> Cc: Roger Quadros <rogerq@kernel.org>
+> Cc: "Uwe Kleine-König" <u.kleine-koenig@pengutronix.de>
+> Cc: Cai Huoqing <cai.huoqing@linux.dev>
+> Cc: Chuanhong Guo <gch981213@gmail.com>
+> Cc: Rob Herring <robh@kernel.org>
+> Cc: Li Zetao <lizetao1@huawei.com>
+> Cc: linux-mtd@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-hardening@vger.kernel.org
+> Link: https://github.com/kees/kernel-tools/blob/trunk/coccinelle/examples/counted_by.cocci [1]
+> Signed-off-by: Kees Cook <keescook@chromium.org>
 
-https://lore.kernel.org/20231006151547.1.Ide945748593cffd8ff0feb9ae22b79593=
-5b944d6@changeid
+Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+
+Thanks!
+-- 
+Gustavo
+
+> ---
+>   drivers/mtd/nand/raw/mtk_nand.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+> index 29c8bddde67f..60198e33d2d5 100644
+> --- a/drivers/mtd/nand/raw/mtk_nand.c
+> +++ b/drivers/mtd/nand/raw/mtk_nand.c
+> @@ -130,7 +130,7 @@ struct mtk_nfc_nand_chip {
+>   	u32 spare_per_sector;
+>   
+>   	int nsels;
+> -	u8 sels[];
+> +	u8 sels[] __counted_by(nsels);
+>   	/* nothing after this field */
+>   };
+>   
 
