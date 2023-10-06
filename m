@@ -4,86 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01CCCE92FDE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 09:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD2BE92FFE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 10:05:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uiqOe8bO3vimd9E9hB9VhkoyXb7TNwrh3FYbqzFTWN4=; b=Isd0W0qXczdorPKZ5hNvcSOOwp
-	wXUPpqNAJ910H/PhYm1szp/8pO1HHAKKw9sVmuncgBqxhE6aN1R8/8AHdVRcDZdy1S2Ivf/sn8kHA
-	kQ2CkTrmLnCL5wLui5kNz1k4Abj/6UBqhslMxZ6F69RbKinbuaHN3Un8O8WhoGaAphNgApaz6vNNa
-	s4g9HG9IhBnR+zJ4bQJh47SjyFB9QbresaZFoenBvGBak2J4jxoSbidrgUGB/LCeIaSRLaazPGjec
-	HGzkk8g8R00JOWXKfg+I/S8Y1UvYrusP/wH4HZE+l8SgBIjOHODT1NFnma9z5AootPqqh7txqoO7l
-	mknlknPw==;
+	bh=etyXt6qiRHnTIXIsZxR/W2EbdfZPYQlz2a7FGk/cJ3s=; b=2fiA/c79ywxuubhdPStUWPQ0bb
+	Ne0uNcJkg6CvBJUmM+DBYlarVb8bxEjQqOnMfcY0fvA6F54K7R6el+kDA4HLYKT0xX1wAssBaugHv
+	ufy5GwBv/Rw4LG8FFziCCWDrdvo3vIS67R3EcODBQc0B6gRjPs5nRfuLMdcCDVJPjSdjZ1BTnPRNG
+	sXSKxHQ3PLEUQZetpRvyu394/ZuQoFac7bnMp79j3S7jBHv+U79dp0Hsp3KiEO8pp/ayFOUnMP9rB
+	dix3s76E0xW7/OQcfplR4L3oc+tkuhktMbfJyeG4CW3LAT9tXtrqN8JZfvCvg6o0V41D88B07ZqMP
+	wwKIX+zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qohYx-005QjO-2A;
-	Fri, 06 Oct 2023 09:56:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qohiW-005SGQ-04;
+	Fri, 06 Oct 2023 10:05:56 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qohYs-005Qi8-1g;
-	Fri, 06 Oct 2023 09:56:02 +0000
+	id 1qohiR-005SFS-16;
+	Fri, 06 Oct 2023 10:05:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8C6D661BD5;
-	Fri,  6 Oct 2023 09:55:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9220C433C7;
-	Fri,  6 Oct 2023 09:55:53 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E386CCE217C;
+	Fri,  6 Oct 2023 10:05:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8316C433C8;
+	Fri,  6 Oct 2023 10:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696586153;
-	bh=MSPT5qCyt9p9n6mF95tmGSpTSK04dAtYDhwOdjcnjY0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=l0b02o1QiGt/FjcBvGj0i65cE3CC+ku/YW7MLg9y2DXZ/FwpEv1GqCeX/Ot4T4X96
-	 F//MwEYim6Kig5fTMtW6AM5oYGYkuF3MNlfWyYmUlGGw74jci3KYy+FmlU+cnG4fyJ
-	 0sfDEnQ3QkqcntO+vSVPQrQsNvmWyfR5TjiAyjnRwLIpvq5NBrzwoYEgga6vkj6DKU
-	 b3AHVl05/iSAYsPiwsVvg/PkMZxVH0fQy+opMWIqZW0gUvwAYZSTA/Sv+4M/IqdJ8O
-	 6cWh6o9MxHJGXlsC9JfwhutdHxfkMcbESofPYVMfQh8I6UXolPmReBhRmYGeJdK0oB
-	 +TvjAn2CE4yuA==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1qohYk-001fhS-Sp;
-	Fri, 06 Oct 2023 10:55:50 +0100
-Date: Fri, 06 Oct 2023 10:55:49 +0100
-Message-ID: <865y3knkgq.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Mark Rutland <mark.rutland@arm.com>
-Cc: Douglas Anderson <dianders@chromium.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	Valentin Schneider <vschneid@redhat.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	D Scott Phillips <scott@os.amperecomputing.com>,
-	Josh Poimboeuf <jpoimboe@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Misono Tomohiro <misono.tomohiro@fujitsu.com>,
-	Peter Zijlstra <peterz@infradead.org>,
-	Sumit Garg <sumit.garg@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] arm64: smp: Fix pseudo NMI issues w/ broken Mediatek FW
-In-Reply-To: <ZRr8r7XMoyDKaitd@FVFF77S0Q05N.cambridge.arm.com>
-References: <20231002094526.1.Ie8f760213053e3d11592f892b30912dbac6b8b48@changeid>
-	<ZRr8r7XMoyDKaitd@FVFF77S0Q05N.cambridge.arm.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.1
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: mark.rutland@arm.com, dianders@chromium.org, catalin.marinas@arm.com, will@kernel.org, swboyd@chromium.org, vschneid@redhat.com, wenst@chromium.org, angelogioacchino.delregno@collabora.com, scott@os.amperecomputing.com, jpoimboe@kernel.org, matthias.bgg@gmail.com, misono.tomohiro@fujitsu.com, peterz@infradead.org, sumit.garg@linaro.org, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	s=k20201202; t=1696586748;
+	bh=8PFHT//NMbMZR23rMrKHsrDEG54VwQXT1ipKQX/aKUQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NzIpDAmqqmws/MQtX+6LJJuiOg9b8f3tG0FT9Af2tBkJwJGO3laO4Qxy2YepUrrQL
+	 JKXpxd3UUFR6oBsLy/pVb7ODa2f6Nj+mGwgtkXwmPdlMaxiHZLCEezOBWeZdUYshHH
+	 Z7r0l+pBPJNVF6H5lNSxlnYpEiCIdRRHmsRsMRI78jOR8P4NHUL6FKcSi2t2CBJeh5
+	 af4NQJ9uTc/uHsPuX7xfEsUOIkCNJILryGvygHnWL3LpZrpreh1EogQ4iKjiSfOmlr
+	 wHWWveFozv+Bsn/VUCKour1nCUWDhkmLDGth92Jvhc3W19jdp/daR6uxjYehzXFS/e
+	 i5ah4xIyn6OSw==
+Date: Fri, 6 Oct 2023 12:05:45 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, 
+	Alexandre Mergnat <amergnat@baylibre.com>, sboyd@kernel.org, mturquette@baylibre.com, 
+	matthias.bgg@gmail.com, msp@baylibre.com, yangyingliang@huawei.com, 
+	u.kleine-koenig@pengutronix.de, miles.chen@mediatek.com, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH 2/2] clk: mediatek: mt8195-topckgen: Refactor parents for
+ top_dp/edp muxes
+Message-ID: <jgfb66mjw6nfdypfazpjyhdprackhgdpwyx2moohpj7kzz3rii@lvvkt4upxo4e>
+References: <20230713072138.84117-1-angelogioacchino.delregno@collabora.com>
+ <20230713072138.84117-3-angelogioacchino.delregno@collabora.com>
+ <9a0817c2-4101-5c21-977d-77ac0d83a067@baylibre.com>
+ <CAGXv+5E7YYdkG7GtxG90KzdAG8Kke+74Amtbw4mmyVNZgDZHRA@mail.gmail.com>
+ <jv6daj2w3pwjtde3m3m26yg4wyxbbio4zqra5yqc4gb32ri5ub@noinbbkjovwm>
+ <25724ee3-858a-01eb-352b-3edbfad31c8e@collabora.com>
+ <jxgy2pvns4ri2aj5nmdhb4zbluseuzdejbplh2avwz63df2cfx@grrrdm6ujzi4>
+ <24d17b07-1e8d-05f6-46b7-9da1ff1bed7a@collabora.com>
+ <hd2ydj33vp3dsri4czx6frxxvir6vxnovc27n6rrgs4qqbtrjz@whhyt2iinq5k>
+ <d88b72f1-6a60-dc7d-6922-1dde278a61db@collabora.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="75xqvzb34y2tmjoa"
+Content-Disposition: inline
+In-Reply-To: <d88b72f1-6a60-dc7d-6922-1dde278a61db@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_025558_983304_84F1CEEF 
-X-CRM114-Status: GOOD (  43.10  )
+X-CRM114-CacheID: sfid-20231006_030551_752096_DF4DA59E 
+X-CRM114-Status: GOOD (  58.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,120 +85,194 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 02 Oct 2023 18:24:11 +0100,
-Mark Rutland <mark.rutland@arm.com> wrote:
-> 
-> On Mon, Oct 02, 2023 at 09:45:29AM -0700, Douglas Anderson wrote:
-> > Some mediatek devices have the property
-> > "mediatek,broken-save-restore-fw" in their GIC. This means that,
-> > although the hardware supports pseudo-NMI, the firmware has a bug
-> > that blocks enabling it. When we're in this state,
-> > system_uses_irq_prio_masking() will return true but we'll fail to
-> > actually enable the IRQ in the GIC.
-> > 
-> > Let's make the code handle this. We'll detect that we failed to
-> > request an IPI as NMI and fallback to requesting it normally. Though
-> > we expect that either all of our requests will fail or all will
-> > succeed, it's just as cheap to keep a per-IPI bitmap and that keeps us
-> > robust.
-> > 
-> > Fixes: 331a1b3a836c ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
-> > Reported-by: Chen-Yu Tsai <wenst@chromium.org>
-> > Closes: https://issuetracker.google.com/issues/197061987#comment68
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > ---
-> > 
-> >  arch/arm64/kernel/smp.c | 19 ++++++++++++-------
-> >  1 file changed, 12 insertions(+), 7 deletions(-)
-> 
-> I'm not too keen on falling back here when we have no idea why the request failed.
-> 
-> I'd prefer if we could check the `supports_pseudo_nmis` static key directly to
-> account for the case of broken FW, e.g. as below.
-> 
-> Mark.
-> 
-> ---->8----
-> From 72fdec05c64a74f21871b44c7c760bbe07cac044 Mon Sep 17 00:00:00 2001
-> From: Mark Rutland <mark.rutland@arm.com>
-> Date: Mon, 2 Oct 2023 18:00:36 +0100
-> Subject: [PATCH] arm64: smp: avoid NMI IPIs with broken MediaTek FW
-> 
-> Some MediaTek devices have broken firmware which corrupts some GICR
-> registers behind the back of the OS, and pseudo-NMIs cannot be used on
-> these devices. For more details see commit:
-> 
->   44bd78dd2b8897f5 ("irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware issues")
-> 
-> We did not take this problem into account in commit:
-> 
->   331a1b3a836c0f38 ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
-> 
-> Since that commit arm64's SMP code will try to setup some IPIs as
-> pseudo-NMIs, even on systems with broken FW. The GICv3 code will
-> (rightly) reject attempts to request interrupts as pseudo-NMIs,
-> resulting in boot-time failures.
-> 
-> Avoid the problem by taking the broken FW into account when deciding to
-> request IPIs as pseudo-NMIs. The GICv3 driver maintains a static_key
-> named "supports_pseudo_nmis" which is false on systems with broken FW,
-> and we can consult this within ipi_should_be_nmi().
-> 
-> Fixes: 331a1b3a836c0f38 ("arm64: smp: Add arch support for backtrace using pseudo-NMI")
-> Reported-by: Chen-Yu Tsai <wenst@chromium.org>
-> Closes: https://issuetracker.google.com/issues/197061987#comment68
-> Signed-off-by: Mark Rutland <mark.rutland@arm.com>
-> Cc: Douglas Anderson <dianders@chromium.org>
-> Cc: Marc Zyngier <maz@kernel.org>
-> ---
->  arch/arm64/kernel/smp.c      | 5 ++++-
->  drivers/irqchip/irq-gic-v3.c | 2 +-
->  2 files changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/kernel/smp.c b/arch/arm64/kernel/smp.c
-> index 814d9aa93b21b..061c69160f90f 100644
-> --- a/arch/arm64/kernel/smp.c
-> +++ b/arch/arm64/kernel/smp.c
-> @@ -964,7 +964,10 @@ static void smp_cross_call(const struct cpumask *target, unsigned int ipinr)
->  
->  static bool ipi_should_be_nmi(enum ipi_msg_type ipi)
->  {
-> -	if (!system_uses_irq_prio_masking())
-> +	DECLARE_STATIC_KEY_FALSE(supports_pseudo_nmis);
-> +
-> +	if (!system_uses_irq_prio_masking() ||
-> +	    !static_branch_likely(&supports_pseudo_nmis))
->  		return false;
->  
->  	switch (ipi) {
-> diff --git a/drivers/irqchip/irq-gic-v3.c b/drivers/irqchip/irq-gic-v3.c
-> index 787ccc880b22d..737da1b9aabf2 100644
-> --- a/drivers/irqchip/irq-gic-v3.c
-> +++ b/drivers/irqchip/irq-gic-v3.c
-> @@ -106,7 +106,7 @@ static DEFINE_STATIC_KEY_TRUE(supports_deactivate_key);
->   * - Figure 4-7 Secure read of the priority field for a Non-secure Group 1
->   *   interrupt.
->   */
-> -static DEFINE_STATIC_KEY_FALSE(supports_pseudo_nmis);
-> +DEFINE_STATIC_KEY_FALSE(supports_pseudo_nmis);
->  
->  DEFINE_STATIC_KEY_FALSE(gic_nonsecure_priorities);
->  EXPORT_SYMBOL(gic_nonsecure_priorities);
 
-This last hunk is going to result in more spam from the robots about
-global objects without a previous declaration. Not that I care the
-least, but worth mentioning.
+--75xqvzb34y2tmjoa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Other than that:
+On Wed, Oct 04, 2023 at 06:29:41PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 18/07/23 11:03, Maxime Ripard ha scritto:
+> > On Mon, Jul 17, 2023 at 04:30:48PM +0200, AngeloGioacchino Del Regno wr=
+ote:
+> > > > > > > AFAIK the recommended way to deal with this is to use
+> > > > > > > clk_set_rate_exclusive() and co. in whatever consumer driver =
+that
+> > > > > > > needs exclusive control on the clock rate.
+> > > > > >=20
+> > > > > > I guess it works, but it looks to me like the issue here is tha=
+t the
+> > > > > > provider should disable it entirely? My expectation for
+> > > > > > clk_set_rate_exclusive() is that one user needs to lock the clo=
+ck rate
+> > > > > > to operate properly.
+> > > > > >=20
+> > > > > > If the provider expectation is that the rate or parent should n=
+ever
+> > > > > > changed, then that needs to be dealt with at the provider level=
+, ie
+> > > > > > through the clk_ops.
+> > > > > >=20
+> > > > > > > However I'm not sure if that works for parents. It should, gi=
+ven the
+> > > > > > > original use case was for the sunxi platforms, which like the=
+ MediaTek
+> > > > > > > platform here has 2 PLLs for video related consumers, but I c=
+ouldn't
+> > > > > > > find code verifying it.
+> > > > > >=20
+> > > > > > If you want to prevent clocks from ever being reparented, you c=
+an use
+> > > > > > the new clk_hw_determine_rate_no_reparent() determine_rate
+> > > > > > implementation.
+> > > > > >=20
+> > > > >=20
+> > > > > We want the clocks to be reparented, as we need them to switch pa=
+rents as
+> > > > > explained before... that's more or less how the tree looks:
+> > > > >=20
+> > > > > TVDPLL(x) -> PLL Divider (fixed) -> MUX -> Gate -> Controller
+> > > > >=20
+> > > > > Besides, I think that forcing *one* parent to the dp/edp mux woul=
+d produce a
+> > > > > loss of the flexibility that the clock framework provides.
+> > > > >=20
+> > > > > I again want to emphasize on the fact that TVDPLL1 and TVDPLL2 ar=
+e *identical*
+> > > > > in specs, and on that there will never be a MT8195 SoC that has o=
+nly one of
+> > > > > the two PLLs, for obvious reasons...
+> > > > >=20
+> > > > > P.S.: If you need more context, I'll be glad to answer to any oth=
+er question!
+> > > >=20
+> > > > Then I have no idea what the question is :)
+> > > >=20
+> > > > What are you trying to achieve / fix, and how can I help you ? :)
+> > >=20
+> > > Chen-Yu, Alexandre had/have questions about if there was any other so=
+lution instead
+> > > of using the solution of *this* commit, so, if there's any other bett=
+er solution
+> > > than the one that I've sent as this commit.
+> > >=20
+> > > I'm the one saying that this commit is the best solution :-P
+> >=20
+> > I went back to the original patch, and my understanding is that, when
+> > running two output in parallel, the modeset of one can affect the second
+> > one, and that's bad, right?
+> >=20
+> > If so, then you usually have multiple ways to fix this:
+> >=20
+> >   - This patch
+> >   - Using clk_set_rate_exclusive like Chen-Yu suggested
+> >   - Using a notifier to react to a rate change and adjust
+> >=20
+> > I'm not aware of any "official" guidelines at the clock framework level
+> > regarding which to pick and all are fine.
+> >=20
+> > My opinion though would be to use clk_set_rate_exclusive(), for multiple
+> > reasons.
+> >=20
+> > The first one is that it models correctly what you consumer expects:
+> > that the rate is left untouched. This can happen in virtually any
+> > situation where you have one clock in the same subtree changing rate,
+> > while the patch above will only fix that particular interference.
+> >=20
+> > The second one is that, especially with DP, you only have a handful of
+> > rates you'll need to reach. 148MHz, 297MHz, 594MHz, and possibly a bunch
+> > of others for eDP panels. It's thus likely to have both controllers
+> > having the same frequency requirement, and thus it makes it possible to
+> > run from only one PLL and shut the other down.
+> >=20
+> > This patch will introduce orphan clocks issues that are always a bit
+> > bothersome. A notifier would be troublesome to use and will probably
+> > introduce glitches plus some weird interaction with scrambling if you
+> > ever support it.
+> >=20
+> > So, yeah, using clk_set_rate_exclusive() seems like the best option to =
+me :)
+> >=20
+> > Maxime
+>=20
+> Sorry for resurrecting a very old thread, I was able to come back to this=
+ issue
+> right now: there's an issue that I can't really think about how to solve =
+with
+> just the usage of clk_set_rate_exclusive().
+>=20
+> Remembering that the clock tree is as following:
+> TVDPLL(x) -> PLL Divider (fixed) ->
+> -> MUX (can choose any of TVDPLL(1/2)_d(2/4/6/8/16)) -> Gate -> Controller
+>=20
+> The DPI driver is doing:
+> 1. Check the best factor for setting rate of a TVDPLL
+> 2. Set rate of one TVDPLL (specified in DT): clk_set_rate(dpi->tvd_clk, r=
+ate);
+>    2a. Read the rate of that PLL again to know the precise clock output
+> 3. Set rate on the Gate clock (forwards to MUX, selecting TVDPLL(x)_d(y)):
+>    clk_set_rate(dpi->pixel_clk, rate);
+>=20
+>=20
+> Now, the issue is: if I change the final pixel_clk rate setting to _exclu=
+sive(),
+> nothing still guarantees that we will be selecting the TVDPLL that we have
+> manipulated in step 2, look at the following example.
+>=20
+> tvd_clk =3D=3D TVDPLL1
+> pixel_clk =3D=3D TOP_DP (can be muxed to any tvdpll1/2 dividers!)
+>=20
+> clk_set_rate(tvdpll1, something); new_rate =3D clk_get_rate(tvdpll1)
+>=20
+> ...calculations... new_rate =3D pixclk * factor;
+> ...more calculations....
+>=20
+> clk_set_rate(pixel_clk, calculated_something)
+>        ^^^^^^
+>=20
+> There is still no guarantee that pixel_clk is getting parented to one of =
+the
+> TVDPLL1 dividers, as it could still get parented to a TVDPLL2 divider ins=
+tead
+> if the other controller has set TVDPLL2 to "an acceptable rate": it's tru=
+e that
+> this would work - yes but suboptimally! - because we want to set a specif=
+ic
+> factor to reduce jitter on the final pixel clock.
 
-Reviewed-by: Marc Zyngier <maz@kernel.org>
+If your clock ends up with a suboptimal set of parameters, you have a
+problem with determine_rate.
 
-Please take it via the arm64 tree with patch #1
+> ....And I came back to this commit being again the best solution for me b=
+ecause....
+>=20
+> 1. You also seem to agree with me that a notifier would be troublesome an=
+d would
+>    probably introduce glitches; and
+> 2. clk_set_rate_exclusive() doesn't give me any guarantee about selecting=
+ the same
+>    PLL that the driver was manipulating before.
+>=20
+>=20
+> Am I underestimating and/or ignoring anything else in all of that?
 
-Thanks,
+I guess I'm still confused about why you want to allow reparenting in
+the first place, but still don't want to reparent to the other PLL?
 
-	M.
+Anyway, it's not a big deal. Whatever works for you I guess :)
 
--- 
-Without deviation from the norm, progress is not possible.
+Maxime
+
+--75xqvzb34y2tmjoa
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZR/b+QAKCRDj7w1vZxhR
+xSmtAQDmKsVFm7LxpronCns/ubhF36eZSB4LCFVSHzfsHkN5/AEAgl17iNbKTAIp
+0jl5NxH23VLajNx8vwlPUJ4rZOd0vQ4=
+=Iz1c
+-----END PGP SIGNATURE-----
+
+--75xqvzb34y2tmjoa--
 
