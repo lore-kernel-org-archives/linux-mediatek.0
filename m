@@ -4,73 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 068A4E81DFD
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 13:46:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10225E81E00
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 13:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=iyIWSI35ioF9P5y4BP7rlGwfh5ltYmHyWesLeZ41VQA=; b=fpGzGghhuvPXjW
-	kooijPgQxfSbmAXNpnJBMlf+Jrte/1Zl+mtvCFnRaXYI2sMJiLMl2d9jGQIv5SJLiXGpBTAB0vpjF
-	VI5QEeQO0wa49/dBCS7R1Yb34S57nUHs9BUFTL6udFOriS1hkQ9A/8c1kd5HP27++s8TGLb+3C95h
-	V5yD7++j1kxFDAHy/DsXqbD3WzJEhE7O5bDeOTS9Fl8rXWGAFJv3HzD/mY1wMFilUeEyxUruW7CT3
-	71G5QNPzljPoIrJoebhktVMVskatBhm1YdpHvDJPxdkGiewtCDLF7PwBO1D3qqDj22xds6muxbscQ
-	yXm+SXSSmEgoc0n5LRjA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rbOUvzEjDlea4hheqP+YItFqmSWqoancs5Dg0PuH8cA=; b=RqfARPJ/kJSYA8LgH2MKo7vass
+	Jwo/GRYgpmdvdB+2rws5iK+VVuhCeV8u01XcRSFpsaYduJS/FrEzCuNBpQ3j3BE3FhvC8YtEaRTRE
+	Ml2EvWwvgNLb59/Mi+Yv9CelKYv2nCHJGn5DqzBdI+OP78pziBPbcIp1mSzcIjdKDL5vCG5RdR81R
+	t4pqGYUqpkBrDE6EGDSYPBgaRUf8VxImYZBwflwN9UBAlGOunvGE6e9njwSwxeKejFxY/TsIO533v
+	iLO+fOzcvu/czOISGLgsf/qAhLQsTgPbi0OcTHRyLzQwl2WumaO8l1/ZRasTLluJdcairOg+8S4iB
+	PgVUZArA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qolAB-005vEr-0X;
-	Fri, 06 Oct 2023 13:46:43 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1qolAC-005vFx-18;
+	Fri, 06 Oct 2023 13:46:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qol9x-005v3h-1t
+	id 1qolA6-005vBG-1U
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 06 Oct 2023 13:46:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=rbOUvzEjDlea4hheqP+YItFqmSWqoancs5Dg0PuH8cA=; b=RjP4/7aFLcTNo7i5ExBxGh82Cw
+	CFxjfpYVpRkoh/kHC3Abg/F37o9YyCB7njZv8/o08FQEYqg+mmn3nxeGtb8nWh7e17Q3Cl7Q6H/+q
+	F+8yDYIvmQ9Jti48JqKKHwL1xOBNth9U5HkDGVW3axPUFGhhW5DRDsKeCmirsoqFj+Ywnm7fAgEZ6
+	BR8fM51BcfI97004Rqc6IoER5XqUiQR3cqVyIKZRn/ru1cWuf0GDxDo4HrcgPSnBZTK9qc6U6EACX
+	cwkSTfCtsKz4AepBtgZtF9Vg0Pj12W1yDUJXVl4xSA9nLAaeZMd0MqJFR3inKcY1/RCkLbtyrKeTg
+	wVdkzgVg==;
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qolA0-00CfUe-1T
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Oct 2023 13:46:37 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2c27d653856so39272721fa.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Oct 2023 06:46:28 -0700 (PDT)
+	Fri, 06 Oct 2023 13:46:36 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2c27d653856so39273281fa.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Oct 2023 06:46:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1696599987; x=1697204787; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=iyIWSI35ioF9P5y4BP7rlGwfh5ltYmHyWesLeZ41VQA=;
-        b=es58k5ePf/xKp9N06utIZpi1msYBrNTJKaQ3hqJ8tLwV95EUzbt3KVDHRsFgfOT2nr
-         V3Bp8AKR4S93NSNgx0DqaJYD50qNVfy6iKeVu/jL7/RVMbpWAxB4iE7DDa8qdEmUm3c9
-         R+OUQb9fmTrjJMD8s9MgCFcIFHnhCmCWp4l5SAKNyAPOZKe6JWoJnbcjhJB3QmSq5D01
-         TAwiOp0zbOPHdXLlYrB+hg/1F7puy6jLF9nVdnjk1zGtht9mPbpFN0kM1Z0EZ9xKoYRL
-         Q37z3XsNhOvogBv1DH23ImUA3exzEqxTAmg+hmiXApoye7LAknaFX6k/l/rwn+LRdUsz
-         RCog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696599987; x=1697204787;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=linaro.org; s=google; t=1696599990; x=1697204790; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=iyIWSI35ioF9P5y4BP7rlGwfh5ltYmHyWesLeZ41VQA=;
-        b=FTkqWXOgNmQFmusveRjGkXGc8Wu1zgRJy05y+lIX6jJuGC3W/9PJxQkrVVRetnVJus
-         oNNldDtlZ9x7MKPnO0OItKbC80e0aAh7cmQZSrnNLIi68iBBtO1mCb5HdyCqaLar8KQ9
-         owVZxN+GqwfGEM91HQb/ACZWxaOpnRYt8dVtZWgF4vkwcRp5ZYBpG9fyDx+c3jEdzqwu
-         7w4TdNYr55jSr62nGi8O83keDX2i8UwDI7q56yUvhheZC/CbA7YJEzQzdUvawFYHZiR3
-         1ATgXb7ecmnJnUmDy5NlzzQYZQNR68ido3Ma/yxXQD+lklf7KvouUJPe12YG6ZyS0GJo
-         oO+A==
-X-Gm-Message-State: AOJu0YwYDGlZuzMZ9rPF3pnteRzPlyK2zc+nob2yNyyr50p9Dn60Q0oC
-	/CndsoXwIjoGtgFoVnegC1YmvA==
-X-Google-Smtp-Source: AGHT+IHGZbYm5OyG87d6TAKeG9ICFcG1L5jBwIGzi+m4DbZK7DRyNC9xmJcbHkphJg8oT5Yn4KFEDw==
-X-Received: by 2002:a05:6512:313c:b0:500:96dd:f95a with SMTP id p28-20020a056512313c00b0050096ddf95amr4307682lfd.24.1696599987078;
-        Fri, 06 Oct 2023 06:46:27 -0700 (PDT)
+        bh=rbOUvzEjDlea4hheqP+YItFqmSWqoancs5Dg0PuH8cA=;
+        b=PZ4+8ivF1T0NouBZGCOnyAZzwulk9GonMHlpDFhlUpU6LKnCIHCxEfWYVyn6tsesXo
+         zHNtUHS1OdRSWS3OIiSVy/3C1QjW5bSF+f+azpLwRJ3ov98R9PdejeSWGn9niRr7vr3/
+         mCm3Rv6hKkrMDDgNwAEQBrnIolosVJKMAcWyNOojBBzaw33nl0+0zl/kKHK210r+N+xX
+         KOqRGr6hqvBy9leGPf/TosXv/r5pBrp4VCg5ORbgP1GI0Yd3vh78cmpH3wBEP9om+NEB
+         y3zOr/RtJZC1yfCOZ4erTa0KNiUBmF21sR4MY+Cee3DP/fThZ2ztA5PQVgCLZaf0Hv/v
+         nLpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696599990; x=1697204790;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rbOUvzEjDlea4hheqP+YItFqmSWqoancs5Dg0PuH8cA=;
+        b=imHWx6AJ1Ktvhs2caKnle87FSctIHqhr2LrqXxlq6qLeiCclm+vsZHc5blfsxWaHsx
+         HHlahqpUVQjVIq06bUBfMzXHClEO53cCkUG65PyuyIM84En3g4S4O/dfwZEsxyXpmW7W
+         sn8JkZpV40RBGo2JOkhDZqLL6v2ufxISiymZxLxiwJ0M6ar53uHUJaEgMnkx09wFuPYT
+         zA9Ct8PoYd9g+rKv3ECKgi288GLOE8C7Qxr4l7D6TRACyhqG/BUd7G1Z+HZvd7aclrxS
+         C5oEiE29F5gdkAPphhhDG+JJPndJNNwwSfeDpqCAeoCBfxwmffEHL6ajVwNWNKvrkfQ8
+         Hnzg==
+X-Gm-Message-State: AOJu0YzamG5b4Z0yi1bZTREFaMPR40iqWav9S73z0VwYrcat8JnTSPJg
+	7w9s/ER7vQxoJUT9rujN7Mhy2A==
+X-Google-Smtp-Source: AGHT+IE03cY9cbfFat4D3ognOlfRjSknFV24Pw5RSzWKwx+wwbMMYFomv7Z/+zEYe9XkBY/RRQgYGA==
+X-Received: by 2002:a05:6512:3e0d:b0:504:320a:b420 with SMTP id i13-20020a0565123e0d00b00504320ab420mr3957398lfv.17.1696599990012;
+        Fri, 06 Oct 2023 06:46:30 -0700 (PDT)
 Received: from [127.0.1.1] ([85.235.12.238])
-        by smtp.gmail.com with ESMTPSA id v25-20020a197419000000b004fe37199b87sm308733lfe.156.2023.10.06.06.46.26
+        by smtp.gmail.com with ESMTPSA id v25-20020a197419000000b004fe37199b87sm308733lfe.156.2023.10.06.06.46.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Oct 2023 06:46:26 -0700 (PDT)
+        Fri, 06 Oct 2023 06:46:29 -0700 (PDT)
 From: Linus Walleij <linus.walleij@linaro.org>
-Subject: [PATCH 0/8] Convert Mediatek ASoC codecs to use GPIO descriptors
-Date: Fri, 06 Oct 2023 15:46:23 +0200
-Message-Id: <20231006-descriptors-asoc-mediatek-v1-0-07fe79f337f5@linaro.org>
+Date: Fri, 06 Oct 2023 15:46:26 +0200
+Subject: [PATCH 3/8] ASoC: mt8173-max98090: Drop unused include
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAK8PIGUC/x3MTQqEMAxA4atI1gZS/xZzlcFFbVMNopVEhgHx7
- haX3+K9C4xV2OBTXaD8E5O8F7i6grD4fWaUWAwNNa0jGjCyBZXjzGroLQfcOIo/eUVyoU2pI+r
- jBKU/lJP83/d3vO8Hdr86wWsAAAA=
+Message-Id: <20231006-descriptors-asoc-mediatek-v1-3-07fe79f337f5@linaro.org>
+References: <20231006-descriptors-asoc-mediatek-v1-0-07fe79f337f5@linaro.org>
+In-Reply-To: <20231006-descriptors-asoc-mediatek-v1-0-07fe79f337f5@linaro.org>
 To: Bartosz Golaszewski <brgl@bgdev.pl>, Andy Shevchenko <andy@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -81,9 +96,8 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  alsa-devel@alsa-project.org, Linus Walleij <linus.walleij@linaro.org>
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_064629_700565_A5A80F9C 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231006_144634_285184_A6EFCA9D 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,40 +112,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert over the Mediatek codecs to use GPIO descriptors.
-
-One few-liner affects gpiolib-of.h, I don't think there
-will be conflicts so I suggest that all of this can be
-merged through ASoC after review.
+This driver includes the legacy GPIO header <linux/gpio.h> but
+is not using any symbols from it. Drop the include.
 
 Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
 ---
-Linus Walleij (8):
-      gpiolib: of: Add quirk for mt2701-cs42448 ASoC sound
-      ASoC: mediatek: mt2701-cs42448: Convert to GPIO descriptors
-      ASoC: mt8173-max98090: Drop unused include
-      ASoC: mt8173-rt5650-rt5514: Drop unused includes
-      ASoC: mt8173-rt5650-rt5676: Drop unused includes
-      ASoC: mt8173-rt5650: Drop unused includes
-      ASoC: mt8186-mt6366-rt1019-rt5682s: Drop unused include
-      ASoC: mt8192-afe-gpio: Drop unused include
+ sound/soc/mediatek/mt8173/mt8173-max98090.c | 1 -
+ 1 file changed, 1 deletion(-)
 
- drivers/gpio/gpiolib-of.c                          |  4 ++
- sound/soc/mediatek/mt2701/mt2701-cs42448.c         | 54 +++++++++-------------
- sound/soc/mediatek/mt8173/mt8173-max98090.c        |  1 -
- sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c   |  2 -
- sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c   |  2 -
- sound/soc/mediatek/mt8173/mt8173-rt5650.c          |  2 -
- sound/soc/mediatek/mt8186/mt8186-afe-gpio.c        |  1 -
- .../mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c |  1 -
- sound/soc/mediatek/mt8192/mt8192-afe-gpio.c        |  1 -
- 9 files changed, 26 insertions(+), 42 deletions(-)
----
-base-commit: 0bb80ecc33a8fb5a682236443c1e740d5c917d1d
-change-id: 20231006-descriptors-asoc-mediatek-01c3ff4005db
+diff --git a/sound/soc/mediatek/mt8173/mt8173-max98090.c b/sound/soc/mediatek/mt8173/mt8173-max98090.c
+index bfb2094758ff..0200da192116 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-max98090.c
++++ b/sound/soc/mediatek/mt8173/mt8173-max98090.c
+@@ -9,7 +9,6 @@
+ #include <linux/module.h>
+ #include <sound/soc.h>
+ #include <sound/jack.h>
+-#include <linux/gpio.h>
+ #include "../../codecs/max98090.h"
+ 
+ static struct snd_soc_jack mt8173_max98090_jack;
 
-Best regards,
 -- 
-Linus Walleij <linus.walleij@linaro.org>
+2.34.1
 
 
