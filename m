@@ -4,100 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9168FE81E06
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 15:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66A42E81E17
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Oct 2023 16:16:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=116pN689ygt9psamelJSV3WSJBDI4hnmaTYmjbIGKPk=; b=oQAqpvhkWuO3LgT2yQebw9Pmll
-	8/rWeZJO/QUV8p3HIPa7iCoTm7SBvHTZ1afWrIAyn+J/gGuqbHEv1FEIiJZXkVlVsAiJLh8LbeRrO
-	Hhala3vOUwy+MX+jkHlC21myl+66bFbnS8gr+SQJE/CPIXDqKeJrPSwtpmdEiYsO2UOkc92WtPchL
-	7f7TYy0s0y1+R5b2U59kkDS0H4AEAhE1fMPI4xdszqi89JR+IoL5yA5UJhKRzzjJjHmSiZY8rYu8b
-	s3rCq5YaO6I9FPh3EkC2WDoGzvvYEDSSLeeiq/TtjCcT5a6KkTmBBRpdGpSAVEAjrp2BDvISg43bd
-	pdxE8Yug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2Q6q2BZn8S1gYL3ykwuhsswjzibW+++H2QyAFeMywrk=; b=WykWObf051f8ee5OG8U9xFcz7z
+	6xX+9h9xnXRtqbIk4FLjN3j6By3xx+WZeBafDoaOmKzUkguI927+uWgi0KMzduhNzQO5KN4KTzHdQ
+	/QosxJIrFz/m9XPUDos1oWhL7EVhysISIGx3LnO5lkI+d6lxNOZkGcOWFS4bJEv0cz4EA0PceF0vU
+	KuM5sDYg0Eskh+2rK2yvg/Mu2kty9KO3bTtIPm4pTrWOy9keHIp1OhYVBcoe5bhbOkIqs/fhdiNwZ
+	ZPrPa+KkLDIeg9q2W0BzGmHrOqMytUI/yHwwIfXdiQghH9JggO4eLG3HxyoKD7BIzc2Ju2dKwkWVY
+	GHhCc7cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qomSq-0063Yr-10;
-	Fri, 06 Oct 2023 15:10:04 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qonVF-006A5C-0O;
+	Fri, 06 Oct 2023 16:16:37 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qomSl-0063Y2-39;
-	Fri, 06 Oct 2023 15:10:02 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 396DJY15008473;
-	Fri, 6 Oct 2023 15:09:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=116pN689ygt9psamelJSV3WSJBDI4hnmaTYmjbIGKPk=;
- b=bdTG9AugUWu6LZ23FBsbNo/TYE0Bc53Am3b/ITJMrq3duow2m6UG+kCPo0Q0zBjE6lok
- jXNh/0lktZrzyDLQSahmVBPvTOLPUxAIzNJ2Dgqi6ywJbq8eg7ipC766HQS5dqvn8pI9
- TecjD2S/U4jqZlspKF24O7PvjxuxzYL8Xt/56vibIV9nG+IIr29iRtGc06YbRFIJ27JO
- DSi3qnitzCGz/EI6qe/3RlwB895LeEdmhQ1yUk3TgWlDcBN36cBMKTCmzCCSU5gjTbSx
- OvVynM3j6ePsCd4zDrFKH/wUmsAmu2FJmhcvFscbnLz14awDjUBCohkYUHsJkOn3goya yw== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tj820sp79-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 06 Oct 2023 15:09:30 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 396F9TqR026704
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 6 Oct 2023 15:09:29 GMT
-Received: from [10.216.35.212] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Fri, 6 Oct
- 2023 08:08:56 -0700
-Message-ID: <bb29aba3-9378-6405-5f6d-a7d77e0374ad@quicinc.com>
-Date: Fri, 6 Oct 2023 20:38:52 +0530
+	id 1qonVA-006A3C-0w;
+	Fri, 06 Oct 2023 16:16:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 8FF49B829EF;
+	Fri,  6 Oct 2023 16:16:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89291C433C7;
+	Fri,  6 Oct 2023 16:16:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696608982;
+	bh=nn2PakBIGbgtsjEPpxAO4jVlLqjVjHADYSnUr1qUXew=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lFkTvMoc5xPxQnjGQFbbukgR7nGvQnaMUmIi8cIFrTDFwzZVKr9iEZ8kf9UwtmkqS
+	 JjVmj8vB0ZE3TTOhwWGNB1o+JGF1B090dzJEdIgroxf4E0ngIgy808gaNyUPH5DIJl
+	 J26870g4clx/9i8PyhovxrsBJET6ud3yGuLTEpzfK6WP1sXVcDOKmAYFwmPgx7Hx42
+	 TgUnvqo/j6K5BNN2TivJ1Z+rTg5nraUATk/swrNf592B9syT+5kdlaHuidRWPb9A8x
+	 eVXAhvs+zO1q6xgZPse0VgS1i3yG6J3XpznXuO3teSMIwX7oX5V6lQddll6CHRjwHj
+	 1rUD3xOytS4kg==
+Received: (nullmailer pid 4022504 invoked by uid 1000);
+	Fri, 06 Oct 2023 16:16:16 -0000
+Date: Fri, 6 Oct 2023 11:16:16 -0500
+From: Rob Herring <robh@kernel.org>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Komal Bajaj <quic_kbajaj@quicinc.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Andy Gross <agross@kernel.org>, Hector Martin <marcan@marcan.st>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, NXP Linux Team <linux-imx@nxp.com>, linux-rockchip@lists.infradead.org, linux-rtc@vger.kernel.org, linux-mtd@lists.infradead.org, Vincent Shih <vincent.sunplus@gmail.com>, Christian Marangi <ansuelsmth@gmail.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, Kumar Thella <sthella@codeaurora.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, devicetree@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Anson Huang <Anson.Huang@nxp.com>, linux-kernel@vger.kernel.org, A
+ ndrew-CT Chen <andrew-ct.chen@mediatek.com>, linux-arm-msm@vger.kernel.org, Fabio Estevam <festevam@gmail.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, Conor Dooley <conor+dt@kernel.org>, asahi@lists.linux.dev, Keiji Hayashibara <hayashibara.keiji@socionext.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Lala Lin <lala.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org, Vignesh Raghavendra <vigneshr@ti.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Richard Weinberger <richard@nod.at>, Sven Peter <sven@svenpeter.dev>, Rob Herring <robh+dt@kernel.org>, Jerome Brunet <jbrunet@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH V2] dt-bindings: nvmem: move deprecated cells binding to
+ its own file
+Message-ID: <169660897594.4022464.17777045780008018792.robh@kernel.org>
+References: <20231003064018.7502-1-zajec5@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [REBASE PATCH v5 04/17] remoteproc: qcom: Remove minidump related
- data from qcom_common.c
-Content-Language: en-US
-To: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
-        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
-        <will@kernel.org>, <linus.walleij@linaro.org>,
-        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
-        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
-        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <quic_tsoni@quicinc.com>
-CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
-        <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
- <1694429639-21484-5-git-send-email-quic_mojha@quicinc.com>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <1694429639-21484-5-git-send-email-quic_mojha@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: TY-OAbVjGnyZJBDRL_fedObtLqGklWvb
-X-Proofpoint-GUID: TY-OAbVjGnyZJBDRL_fedObtLqGklWvb
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-06_12,2023-10-06_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 adultscore=0
- suspectscore=0 mlxscore=0 malwarescore=0 spamscore=0 bulkscore=0
- impostorscore=0 priorityscore=1501 lowpriorityscore=0 phishscore=0
- mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2310060113
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231003064018.7502-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_081000_029655_6340F813 
-X-CRM114-Status: GOOD (  29.42  )
+X-CRM114-CacheID: sfid-20231006_091632_591849_B0929BB0 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,215 +74,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bjorn/Mathieu,
 
-Patches from 2/17-4/17  is just a movement of functions to separate 
-config/file.
-
-Do you think, these can be picked independently from this series ?
-I can send them separately, if required.
-
-@Bjorn: I have sent 13/17-15/17 separately [1] as it is needed
-by some folks and independent from this series.
-
-[1]
-https://lore.kernel.org/all/1696440338-12561-1-git-send-email-quic_mojha@quicinc.com/
-
--Mukesh
-
-On 9/11/2023 4:23 PM, Mukesh Ojha wrote:
-> As minidump specific data structure and functions move under
-> config QCOM_RPROC_MINIDUMP, so remove minidump specific data
-> from driver/remoteproc/qcom_common.c .
+On Tue, 03 Oct 2023 08:40:18 +0200, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> Support for old NVMEM fixed cells was deprecated in favour of
+> "fixed-layout". It's still part of the nvmem.yaml though and may be
+> unknowingly used by new bindings added without much of analyze.
+> 
+> To make it more difficult to accidentally support old syntax move its
+> binding to separated file with "deprecated" in its name.
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 > ---
->   drivers/remoteproc/qcom_common.c | 160 ---------------------------------------
->   1 file changed, 160 deletions(-)
+> V2: Fix path to nvmem-deprecated-cells.yaml in amlogic,meson6-rtc.yaml
 > 
-> diff --git a/drivers/remoteproc/qcom_common.c b/drivers/remoteproc/qcom_common.c
-> index 03e5f5d533eb..085fd73fa23a 100644
-> --- a/drivers/remoteproc/qcom_common.c
-> +++ b/drivers/remoteproc/qcom_common.c
-> @@ -17,7 +17,6 @@
->   #include <linux/rpmsg/qcom_smd.h>
->   #include <linux/slab.h>
->   #include <linux/soc/qcom/mdt_loader.h>
-> -#include <linux/soc/qcom/smem.h>
->   
->   #include "remoteproc_internal.h"
->   #include "qcom_common.h"
-> @@ -26,61 +25,6 @@
->   #define to_smd_subdev(d) container_of(d, struct qcom_rproc_subdev, subdev)
->   #define to_ssr_subdev(d) container_of(d, struct qcom_rproc_ssr, subdev)
->   
-> -#define MAX_NUM_OF_SS           10
-> -#define MAX_REGION_NAME_LENGTH  16
-> -#define SBL_MINIDUMP_SMEM_ID	602
-> -#define MINIDUMP_REGION_VALID		('V' << 24 | 'A' << 16 | 'L' << 8 | 'I' << 0)
-> -#define MINIDUMP_SS_ENCR_DONE		('D' << 24 | 'O' << 16 | 'N' << 8 | 'E' << 0)
-> -#define MINIDUMP_SS_ENABLED		('E' << 24 | 'N' << 16 | 'B' << 8 | 'L' << 0)
-> -
-> -/**
-> - * struct minidump_region - Minidump region
-> - * @name		: Name of the region to be dumped
-> - * @seq_num:		: Use to differentiate regions with same name.
-> - * @valid		: This entry to be dumped (if set to 1)
-> - * @address		: Physical address of region to be dumped
-> - * @size		: Size of the region
-> - */
-> -struct minidump_region {
-> -	char	name[MAX_REGION_NAME_LENGTH];
-> -	__le32	seq_num;
-> -	__le32	valid;
-> -	__le64	address;
-> -	__le64	size;
-> -};
-> -
-> -/**
-> - * struct minidump_subsystem - Subsystem's SMEM Table of content
-> - * @status : Subsystem toc init status
-> - * @enabled : if set to 1, this region would be copied during coredump
-> - * @encryption_status: Encryption status for this subsystem
-> - * @encryption_required : Decides to encrypt the subsystem regions or not
-> - * @region_count : Number of regions added in this subsystem toc
-> - * @regions_baseptr : regions base pointer of the subsystem
-> - */
-> -struct minidump_subsystem {
-> -	__le32	status;
-> -	__le32	enabled;
-> -	__le32	encryption_status;
-> -	__le32	encryption_required;
-> -	__le32	region_count;
-> -	__le64	regions_baseptr;
-> -};
-> -
-> -/**
-> - * struct minidump_global_toc - Global Table of Content
-> - * @status : Global Minidump init status
-> - * @md_revision : Minidump revision
-> - * @enabled : Minidump enable status
-> - * @subsystems : Array of subsystems toc
-> - */
-> -struct minidump_global_toc {
-> -	__le32				status;
-> -	__le32				md_revision;
-> -	__le32				enabled;
-> -	struct minidump_subsystem	subsystems[MAX_NUM_OF_SS];
-> -};
-> -
->   struct qcom_ssr_subsystem {
->   	const char *name;
->   	struct srcu_notifier_head notifier_list;
-> @@ -90,110 +34,6 @@ struct qcom_ssr_subsystem {
->   static LIST_HEAD(qcom_ssr_subsystem_list);
->   static DEFINE_MUTEX(qcom_ssr_subsys_lock);
->   
-> -static void qcom_minidump_cleanup(struct rproc *rproc)
-> -{
-> -	struct rproc_dump_segment *entry, *tmp;
-> -
-> -	list_for_each_entry_safe(entry, tmp, &rproc->dump_segments, node) {
-> -		list_del(&entry->node);
-> -		kfree(entry->priv);
-> -		kfree(entry);
-> -	}
-> -}
-> -
-> -static int qcom_add_minidump_segments(struct rproc *rproc, struct minidump_subsystem *subsystem,
-> -			void (*rproc_dumpfn_t)(struct rproc *rproc, struct rproc_dump_segment *segment,
-> -				void *dest, size_t offset, size_t size))
-> -{
-> -	struct minidump_region __iomem *ptr;
-> -	struct minidump_region region;
-> -	int seg_cnt, i;
-> -	dma_addr_t da;
-> -	size_t size;
-> -	char *name;
-> -
-> -	if (WARN_ON(!list_empty(&rproc->dump_segments))) {
-> -		dev_err(&rproc->dev, "dump segment list already populated\n");
-> -		return -EUCLEAN;
-> -	}
-> -
-> -	seg_cnt = le32_to_cpu(subsystem->region_count);
-> -	ptr = ioremap((unsigned long)le64_to_cpu(subsystem->regions_baseptr),
-> -		      seg_cnt * sizeof(struct minidump_region));
-> -	if (!ptr)
-> -		return -EFAULT;
-> -
-> -	for (i = 0; i < seg_cnt; i++) {
-> -		memcpy_fromio(&region, ptr + i, sizeof(region));
-> -		if (le32_to_cpu(region.valid) == MINIDUMP_REGION_VALID) {
-> -			name = kstrndup(region.name, MAX_REGION_NAME_LENGTH - 1, GFP_KERNEL);
-> -			if (!name) {
-> -				iounmap(ptr);
-> -				return -ENOMEM;
-> -			}
-> -			da = le64_to_cpu(region.address);
-> -			size = le64_to_cpu(region.size);
-> -			rproc_coredump_add_custom_segment(rproc, da, size, rproc_dumpfn_t, name);
-> -		}
-> -	}
-> -
-> -	iounmap(ptr);
-> -	return 0;
-> -}
-> -
-> -void qcom_minidump(struct rproc *rproc, unsigned int minidump_id,
-> -		void (*rproc_dumpfn_t)(struct rproc *rproc,
-> -		struct rproc_dump_segment *segment, void *dest, size_t offset,
-> -		size_t size))
-> -{
-> -	int ret;
-> -	struct minidump_subsystem *subsystem;
-> -	struct minidump_global_toc *toc;
-> -
-> -	/* Get Global minidump ToC*/
-> -	toc = qcom_smem_get(QCOM_SMEM_HOST_ANY, SBL_MINIDUMP_SMEM_ID, NULL);
-> -
-> -	/* check if global table pointer exists and init is set */
-> -	if (IS_ERR(toc) || !toc->status) {
-> -		dev_err(&rproc->dev, "Minidump TOC not found in SMEM\n");
-> -		return;
-> -	}
-> -
-> -	/* Get subsystem table of contents using the minidump id */
-> -	subsystem = &toc->subsystems[minidump_id];
-> -
-> -	/**
-> -	 * Collect minidump if SS ToC is valid and segment table
-> -	 * is initialized in memory and encryption status is set.
-> -	 */
-> -	if (subsystem->regions_baseptr == 0 ||
-> -	    le32_to_cpu(subsystem->status) != 1 ||
-> -	    le32_to_cpu(subsystem->enabled) != MINIDUMP_SS_ENABLED) {
-> -		return rproc_coredump(rproc);
-> -	}
-> -
-> -	if (le32_to_cpu(subsystem->encryption_status) != MINIDUMP_SS_ENCR_DONE) {
-> -		dev_err(&rproc->dev, "Minidump not ready, skipping\n");
-> -		return;
-> -	}
-> -
-> -	/**
-> -	 * Clear out the dump segments populated by parse_fw before
-> -	 * re-populating them with minidump segments.
-> -	 */
-> -	rproc_coredump_cleanup(rproc);
-> -
-> -	ret = qcom_add_minidump_segments(rproc, subsystem, rproc_dumpfn_t);
-> -	if (ret) {
-> -		dev_err(&rproc->dev, "Failed with error: %d while adding minidump entries\n", ret);
-> -		goto clean_minidump;
-> -	}
-> -	rproc_coredump_using_sections(rproc);
-> -clean_minidump:
-> -	qcom_minidump_cleanup(rproc);
-> -}
-> -EXPORT_SYMBOL_GPL(qcom_minidump);
-> -
->   static int glink_subdev_start(struct rproc_subdev *subdev)
->   {
->   	struct qcom_rproc_glink *glink = to_glink_subdev(subdev);
+>  .../devicetree/bindings/mtd/mtd.yaml          |  7 ++++-
+>  .../bindings/mtd/partitions/nvmem-cells.yaml  |  1 +
+>  .../nvmem/amlogic,meson-gxbb-efuse.yaml       |  1 +
+>  .../bindings/nvmem/amlogic,meson6-efuse.yaml  |  1 +
+>  .../bindings/nvmem/apple,efuses.yaml          |  1 +
+>  .../devicetree/bindings/nvmem/imx-ocotp.yaml  |  1 +
+>  .../bindings/nvmem/mediatek,efuse.yaml        |  1 +
+>  .../nvmem/microchip,sama7g5-otpc.yaml         |  1 +
+>  .../devicetree/bindings/nvmem/mxs-ocotp.yaml  |  1 +
+>  .../nvmem/nvmem-deprecated-cells.yaml         | 28 +++++++++++++++++++
+>  .../devicetree/bindings/nvmem/nvmem.yaml      |  9 ------
+>  .../bindings/nvmem/qcom,qfprom.yaml           |  1 +
+>  .../bindings/nvmem/qcom,sec-qfprom.yaml       |  1 +
+>  .../bindings/nvmem/qcom,spmi-sdam.yaml        |  1 +
+>  .../bindings/nvmem/rockchip,otp.yaml          |  1 +
+>  .../bindings/nvmem/rockchip-efuse.yaml        |  1 +
+>  .../nvmem/socionext,uniphier-efuse.yaml       |  1 +
+>  .../bindings/nvmem/sunplus,sp7021-ocotp.yaml  |  1 +
+>  .../bindings/rtc/amlogic,meson6-rtc.yaml      |  1 +
+>  19 files changed, 50 insertions(+), 10 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/nvmem/nvmem-deprecated-cells.yaml
+> 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
+
 
