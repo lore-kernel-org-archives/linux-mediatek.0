@@ -4,114 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98B00E95A61
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Oct 2023 10:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE80E95A61
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Oct 2023 11:34:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KWGnWC1nRItaPmklKxpuYvpPobvm6bbDsTmyxg2t6ZQ=; b=hkBuCc9r1vCybVOMdiN7csA4pF
-	t7xpQA7kCl4k8I0RGS4JFghYRL7zEi+Clj1wmY8bwZgQ7tuBh1NUES2W99KeWv5QyR7np0KoCOg0H
-	3KWcwjo7XWKKpjfQaYjiP5KSmhQNEDSVPhEVRSolXp6he61MKJymVw0iRIhAYIbaCRlbxlu8NJpz2
-	05aImNSPRIoR6OMjVGC2E/56i8/vURD4xsH3RyEodvePU7JYE62LdK/UV1Alq3haca8yJR6QCFBi/
-	SusDsb7maOBDY6/AeKcTloYMO1SZHIji2jQ5ciJegzjmz81LNe7Qwma85+YB+qvDHISeoi1M1vSiy
-	sshOKv9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=G2hwZoXcbyNGfedM4B88uDwT0h+xRYSV2MrJHG+Tp70=; b=gHoGdaj21MSm7Yq5o5Nz+Ztr+h
+	k4NR0HMzrLr+fE33GHe1XkUtSBlu06I858pGceNUMsk4w+dI/EmO0232kYIPUrJ2kSltmMN+rgbAy
+	Y8/R0O1koTQg8/ZXIjW2aoz0NfW8w9Bv6TWt7HNQdjYMQSzBOQr+1hWlkH3ht+EPgdFpobIhBuS7d
+	dZAOKRxRz1Pw619p6TqrNwey8m6E3PLcpynBqp+oD9VUCY4zbMdqbzAPPJjJnYiP+Ja1+SWGFEGCh
+	ICH/Eorq9eh8Lo+7Y/7APshGqwrlEj/sNw+vZsirS2xNgqs85qnDBkBkwvMBNxWiKHXfPKfCfkOqw
+	yz1VmDGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qp4F8-007IKC-1T;
-	Sat, 07 Oct 2023 10:09:06 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1qp5ZL-007VNZ-24;
+	Sat, 07 Oct 2023 11:34:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qp4F4-007IIB-2z
-	for linux-mediatek@lists.infradead.org;
-	Sat, 07 Oct 2023 10:09:04 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-503056c8195so3804830e87.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 07 Oct 2023 03:09:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1696673339; x=1697278139; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KWGnWC1nRItaPmklKxpuYvpPobvm6bbDsTmyxg2t6ZQ=;
-        b=bKv+mennLEWtay3RPiEM2eAKNXfiLxq0IkYM9Svyq0pHZzIN+V51SoVM2IWibH6AOn
-         2+VCMCB0Sc41FaczwoCjPeqrrxHdqmqJ7Tuf8xys4EWaOIBOrU0ZcBWfDheOIzl/1lPZ
-         ytNvVCKkRk+S9pfwBvAaoHOLYa+CsGpeTTko0sUKurS7PjEN1AN1QBJ4VmfVkyMNjCfv
-         WE0pJrwdEVVbkzi00q3wI8aDbkjXVn9ch97OB6F8dk+pYIThflCP069Go1BRExP6R+PS
-         un4tf70EjpCxifYHEDEYptuOJnW7nl9GgMndJQToBQC/xd5pwl4x4hiIjqNY4axf+b+i
-         sgeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696673339; x=1697278139;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KWGnWC1nRItaPmklKxpuYvpPobvm6bbDsTmyxg2t6ZQ=;
-        b=BY5dQpWGk81kMbXLF+fwZcLb8XA9BloqX8adSnw7JuNnjboSLFCZbfAAC0BJKgWh/A
-         TPEzKY88joEGJdKTsDGgdbVC2CNtYBaNhcYYlQoF1s83+nY7rgqN7osvATfhRtNxMN4P
-         zJ2tuZaAOamVZq+jgX8i2WDhK4UVD3I8LcWX8pImdXUIQfnqn1hE4mCnUdbupzOnOnLh
-         WQZIlA/DOTwSS1sM84KjBLwrPom3FrEHSxn6DNM1k6elbTxX62ozTPDFJ/LXcc67GAp6
-         6T6G0IWCUuPdSIcUL1jUQaixfm9RAocg08hIfdKOE2iZXevozB0IvGvqI2TS0nuxUrYD
-         mEcw==
-X-Gm-Message-State: AOJu0YzxSk4LeobbAMXgXh7AzGr/L+O4fFPNceweOGmamlbIvoT8w5ka
-	Ha0208lUton+DXB2FpyB0xsWog==
-X-Google-Smtp-Source: AGHT+IG0CVCgqlPv2wxsTilLt17MBMEobW1SOqaRN9HJEasIJ3z9GUosQp+zA7kkduMp8d0uOJsWaA==
-X-Received: by 2002:ac2:5e33:0:b0:502:9c4e:d46a with SMTP id o19-20020ac25e33000000b005029c4ed46amr6837138lfg.32.1696673338827;
-        Sat, 07 Oct 2023 03:08:58 -0700 (PDT)
-Received: from [172.20.10.4] (82-132-213-54.dab.02.net. [82.132.213.54])
-        by smtp.gmail.com with ESMTPSA id v7-20020adfedc7000000b003197efd1e7bsm3796811wro.114.2023.10.07.03.08.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 07 Oct 2023 03:08:58 -0700 (PDT)
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>, 
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Andy Gross <agross@kernel.org>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
- Masami Hiramatsu <mhiramat@kernel.org>, 
- Vincent Shih <vincent.sunplus@gmail.com>, 
- Alessandro Zummo <a.zummo@towertech.it>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Christian Marangi <ansuelsmth@gmail.com>, Anson Huang <Anson.Huang@nxp.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Lala Lin <lala.lin@mediatek.com>, Komal Bajaj <quic_kbajaj@quicinc.com>, 
- Kumar Thella <sthella@codeaurora.org>, 
- Keiji Hayashibara <hayashibara.keiji@socionext.com>, 
- linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-amlogic@lists.infradead.org, asahi@lists.linux.dev, 
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-rtc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
-In-Reply-To: <20231003064018.7502-1-zajec5@gmail.com>
-References: <20231003064018.7502-1-zajec5@gmail.com>
-Subject: Re: [PATCH V2] dt-bindings: nvmem: move deprecated cells binding
- to its own file
-Message-Id: <169667333484.74178.7121029453685069845.b4-ty@linaro.org>
-Date: Sat, 07 Oct 2023 11:08:54 +0100
+	id 1qp5ZJ-007VN7-0J;
+	Sat, 07 Oct 2023 11:34:02 +0000
+X-UUID: 64c4a3d8650511ee9b7791016c24628a-20231007
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=G2hwZoXcbyNGfedM4B88uDwT0h+xRYSV2MrJHG+Tp70=;
+	b=u6NylKEHefPx9u32F9X61no9/4crwSlY0fqNlz/W58Ust3yRp/qaLMEUOWouFfYb3HlmVLgiauRKzSxfHbSVj4bDo2hKanlmqS8CUJdZRd0mdAMnd0YRPackxq59O+OA7F+ITlAA7XUKU0YkWrSjdPBq/uQwBR5b5q2CQ5YIYro=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:4e821f16-b234-4dbc-8452-9ca5eba52bb8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:abee8bf0-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 64c4a3d8650511ee9b7791016c24628a-20231007
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 998247035; Sat, 07 Oct 2023 04:33:53 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 7 Oct 2023 19:33:50 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sat, 7 Oct 2023 19:33:49 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Maoguang Meng
+	<maoguang.meng@mediatek.com>
+Subject: [PATCH v2] media: mediatek: vcodec: Handle invalid encoder vsi
+Date: Sat, 7 Oct 2023 19:33:47 +0800
+Message-ID: <20231007113347.28863-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.12.2
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231007_030902_969964_5E1BE581 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231007_043401_161268_494A02E5 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,24 +88,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Handle invalid encoder vsi in vpu_enc_init to ensure the encoder
+vsi is valid for future use.
 
-On Tue, 03 Oct 2023 08:40:18 +0200, Rafał Miłecki wrote:
-> Support for old NVMEM fixed cells was deprecated in favour of
-> "fixed-layout". It's still part of the nvmem.yaml though and may be
-> unknowingly used by new bindings added without much of analyze.
-> 
-> To make it more difficult to accidentally support old syntax move its
-> binding to separated file with "deprecated" in its name.
-> 
-> [...]
+Fixes: 1972e32431ed ("media: mediatek: vcodec: Fix possible invalid memory access for encoder")
 
-Applied, thanks!
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+---
+changed with v1:
+ - add Fixes tag
+ - move vsi check to vpu_enc_init
+ - update commit message
+---
+ drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-[1/1] dt-bindings: nvmem: move deprecated cells binding to its own file
-      commit: 6d25308bb9deb10ae62bdeefdf2362072a5a4836
-
-Best regards,
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+index d299cc2962a5..39e8f3ac53ca 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+@@ -153,6 +153,11 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
+ 		return -EINVAL;
+ 	}
+ 
++	if (IS_ERR_OR_NULL(vpu->vsi)) {
++		mtk_venc_err(vpu->ctx, "invalid venc vsi");
++		return -EINVAL;
++	}
++
+ 	return 0;
+ }
+ 
 -- 
-Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+2.18.0
 
 
