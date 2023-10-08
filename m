@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE80E95A61
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Oct 2023 11:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DB3E95A85
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Oct 2023 00:49:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=G2hwZoXcbyNGfedM4B88uDwT0h+xRYSV2MrJHG+Tp70=; b=gHoGdaj21MSm7Yq5o5Nz+Ztr+h
-	k4NR0HMzrLr+fE33GHe1XkUtSBlu06I858pGceNUMsk4w+dI/EmO0232kYIPUrJ2kSltmMN+rgbAy
-	Y8/R0O1koTQg8/ZXIjW2aoz0NfW8w9Bv6TWt7HNQdjYMQSzBOQr+1hWlkH3ht+EPgdFpobIhBuS7d
-	dZAOKRxRz1Pw619p6TqrNwey8m6E3PLcpynBqp+oD9VUCY4zbMdqbzAPPJjJnYiP+Ja1+SWGFEGCh
-	ICH/Eorq9eh8Lo+7Y/7APshGqwrlEj/sNw+vZsirS2xNgqs85qnDBkBkwvMBNxWiKHXfPKfCfkOqw
-	yz1VmDGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VQ6QIjoxQaKD/HDteg9Zi0IIeqkS4ZTQde2aUiB9a/Q=; b=BUNEv7GUHS+a0gTQ7y8i/ccSs+
+	n5Wb8pT+5zJQ+yz1OFAvvvpovdjGYeuAiamLV3/aMyWpV8MzTwxzmzV5BbaCndXIuRMMQI/Purfdz
+	gRAX725k6ZVIo+jKdsen17PtWUzFPRcwjQxi3OKxMx+bYV72OzQMOKZBMr/KW0DJ20ig9gjANPmQu
+	gYoUdBP8V25/IAJYQ4/JuF+vHKOnp8zBbOfb7TkV27KskEm2vl7I4wbPbtaecpSI7xwqNzuFw6XpS
+	kBh+XWBAohEWHMPxMuE13CLqVVNMyGzp+iFBZOU/eNqlCUbT6q0e6cTixeybXGC4an/1VR3r67faj
+	mca2Nsag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qp5ZL-007VNZ-24;
-	Sat, 07 Oct 2023 11:34:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qpHyl-00873g-0r;
+	Sun, 08 Oct 2023 00:49:07 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qp5ZJ-007VN7-0J;
-	Sat, 07 Oct 2023 11:34:02 +0000
-X-UUID: 64c4a3d8650511ee9b7791016c24628a-20231007
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=G2hwZoXcbyNGfedM4B88uDwT0h+xRYSV2MrJHG+Tp70=;
-	b=u6NylKEHefPx9u32F9X61no9/4crwSlY0fqNlz/W58Ust3yRp/qaLMEUOWouFfYb3HlmVLgiauRKzSxfHbSVj4bDo2hKanlmqS8CUJdZRd0mdAMnd0YRPackxq59O+OA7F+ITlAA7XUKU0YkWrSjdPBq/uQwBR5b5q2CQ5YIYro=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:4e821f16-b234-4dbc-8452-9ca5eba52bb8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:abee8bf0-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 64c4a3d8650511ee9b7791016c24628a-20231007
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 998247035; Sat, 07 Oct 2023 04:33:53 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 7 Oct 2023 19:33:50 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 7 Oct 2023 19:33:49 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Maoguang Meng
-	<maoguang.meng@mediatek.com>
-Subject: [PATCH v2] media: mediatek: vcodec: Handle invalid encoder vsi
-Date: Sat, 7 Oct 2023 19:33:47 +0800
-Message-ID: <20231007113347.28863-1-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1qpHyh-00872m-1R;
+	Sun, 08 Oct 2023 00:49:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 22299CE022B;
+	Sun,  8 Oct 2023 00:49:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 018E4C433C9;
+	Sun,  8 Oct 2023 00:48:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696726140;
+	bh=SUmtHRxizvYpZ+OdGdpOdYvkpMrA9yBGKptqULjxc+w=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Uyd+3NBUBvea5+mAFMT4VJglktv8zLPN2p0Az2VGX818nmJFUYM4ByHFIQ9umODoz
+	 uiiYUb1t4n9fDSES/dS1Va3BcKGvsGiM/kBIkBivwe5hNuEEFfaAe/N8spKGTxYj/C
+	 uCA2DoUU9xQN0RneZbou3tJ9BqO2Ux9iinS8/VlibUPl7yqwNHeIjbTqHaliFQL7cQ
+	 SuppTxkyOeit7YvHl7fdbOyoEgHKPbvpb9t/sw5N3WXCwdwAPhWC0fTmG7VqUsl+XF
+	 CYYt+DilObS+pBrkX2eZoPmpVzaO4ipADB2JjfH+A0/XOw/QP9L1NfFCMreL+fgjNr
+	 Wg9yTgbUMambQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Rob Herring <robh@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Sasha Levin <sashal@kernel.org>,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.5 03/18] arm64: dts: mediatek: Fix "mediatek,merge-mute" and "mediatek,merge-fifo-en" types
+Date: Sat,  7 Oct 2023 20:48:37 -0400
+Message-Id: <20231008004853.3767621-3-sashal@kernel.org>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20231008004853.3767621-1-sashal@kernel.org>
+References: <20231008004853.3767621-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.5.6
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231007_043401_161268_494A02E5 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20231007_174903_845193_4CAED25D 
+X-CRM114-Status: GOOD (  10.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,38 +83,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Handle invalid encoder vsi in vpu_enc_init to ensure the encoder
-vsi is valid for future use.
+From: Rob Herring <robh@kernel.org>
 
-Fixes: 1972e32431ed ("media: mediatek: vcodec: Fix possible invalid memory access for encoder")
+[ Upstream commit 5f8456b1faefb06fcf6028dced9f37aa880c779d ]
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+"mediatek,merge-mute" and "mediatek,merge-fifo-en" properties are defined
+and used as boolean properties which in DT have no value.
+
+Signed-off-by: Rob Herring <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Link: https://lore.kernel.org/r/20230830195650.704737-1-robh@kernel.org
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
-changed with v1:
- - add Fixes tag
- - move vsi check to vpu_enc_init
- - update commit message
----
- drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-index d299cc2962a5..39e8f3ac53ca 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-@@ -153,6 +153,11 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
- 		return -EINVAL;
- 	}
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 4dbbf8fdab758..a9e52b50c8c48 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -2957,7 +2957,7 @@ merge1: vpp-merge@1c10c000 {
+ 			clock-names = "merge","merge_async";
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0xc000 0x1000>;
+-			mediatek,merge-mute = <1>;
++			mediatek,merge-mute;
+ 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE0_DL_ASYNC>;
+ 		};
  
-+	if (IS_ERR_OR_NULL(vpu->vsi)) {
-+		mtk_venc_err(vpu->ctx, "invalid venc vsi");
-+		return -EINVAL;
-+	}
-+
- 	return 0;
- }
+@@ -2970,7 +2970,7 @@ merge2: vpp-merge@1c10d000 {
+ 			clock-names = "merge","merge_async";
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0xd000 0x1000>;
+-			mediatek,merge-mute = <1>;
++			mediatek,merge-mute;
+ 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE1_DL_ASYNC>;
+ 		};
+ 
+@@ -2983,7 +2983,7 @@ merge3: vpp-merge@1c10e000 {
+ 			clock-names = "merge","merge_async";
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0xe000 0x1000>;
+-			mediatek,merge-mute = <1>;
++			mediatek,merge-mute;
+ 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE2_DL_ASYNC>;
+ 		};
+ 
+@@ -2996,7 +2996,7 @@ merge4: vpp-merge@1c10f000 {
+ 			clock-names = "merge","merge_async";
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0xf000 0x1000>;
+-			mediatek,merge-mute = <1>;
++			mediatek,merge-mute;
+ 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE3_DL_ASYNC>;
+ 		};
+ 
+@@ -3009,7 +3009,7 @@ merge5: vpp-merge@1c110000 {
+ 			clock-names = "merge","merge_async";
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX 0x0000 0x1000>;
+-			mediatek,merge-fifo-en = <1>;
++			mediatek,merge-fifo-en;
+ 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC>;
+ 		};
  
 -- 
-2.18.0
+2.40.1
 
 
