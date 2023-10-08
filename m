@@ -4,71 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DB3E95A85
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Oct 2023 00:49:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AC58E95A86
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Oct 2023 01:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VQ6QIjoxQaKD/HDteg9Zi0IIeqkS4ZTQde2aUiB9a/Q=; b=BUNEv7GUHS+a0gTQ7y8i/ccSs+
-	n5Wb8pT+5zJQ+yz1OFAvvvpovdjGYeuAiamLV3/aMyWpV8MzTwxzmzV5BbaCndXIuRMMQI/Purfdz
-	gRAX725k6ZVIo+jKdsen17PtWUzFPRcwjQxi3OKxMx+bYV72OzQMOKZBMr/KW0DJ20ig9gjANPmQu
-	gYoUdBP8V25/IAJYQ4/JuF+vHKOnp8zBbOfb7TkV27KskEm2vl7I4wbPbtaecpSI7xwqNzuFw6XpS
-	kBh+XWBAohEWHMPxMuE13CLqVVNMyGzp+iFBZOU/eNqlCUbT6q0e6cTixeybXGC4an/1VR3r67faj
-	mca2Nsag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dn+LeH/wVxtkvKkasM+uoFktIvDnLaQJ5n5AGroHogY=; b=SGbujksBX/2O7o4OtiJj9ViGJN
+	kCxy+vkV1EgfRdwxJPHI0mPtolM4Hp4H1C2Nwhp0dwp8S+Ep4vk/8tSrrgkT2r0zvvt6EEC5MoXMY
+	5Uu4b5JbwwLG6ZoCQ11P1o3FenE+A3M1+GZPK30bDVY7ZLA4ivWI0ny5IS6xgA1GkisG5FQyxsneC
+	K5idlynW0w+vEh7C/gnxwHb7cNyGbZf3UPYrRc5pPSV0YYYFfMwyQq4ixj4ZyE0k1MoR/yhvIysdc
+	NZsoED2VGhAaMhxDS5SxV3M48sJaDe/w3rSkqFQVp0I7pEldhbdaJaOuizJBXyyXp1UwbO9vkLuwu
+	b4lwI0mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpHyl-00873g-0r;
-	Sun, 08 Oct 2023 00:49:07 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qpIsY-0089lW-0W;
+	Sun, 08 Oct 2023 01:46:46 +0000
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpHyh-00872m-1R;
-	Sun, 08 Oct 2023 00:49:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 22299CE022B;
-	Sun,  8 Oct 2023 00:49:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 018E4C433C9;
-	Sun,  8 Oct 2023 00:48:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696726140;
-	bh=SUmtHRxizvYpZ+OdGdpOdYvkpMrA9yBGKptqULjxc+w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Uyd+3NBUBvea5+mAFMT4VJglktv8zLPN2p0Az2VGX818nmJFUYM4ByHFIQ9umODoz
-	 uiiYUb1t4n9fDSES/dS1Va3BcKGvsGiM/kBIkBivwe5hNuEEFfaAe/N8spKGTxYj/C
-	 uCA2DoUU9xQN0RneZbou3tJ9BqO2Ux9iinS8/VlibUPl7yqwNHeIjbTqHaliFQL7cQ
-	 SuppTxkyOeit7YvHl7fdbOyoEgHKPbvpb9t/sw5N3WXCwdwAPhWC0fTmG7VqUsl+XF
-	 CYYt+DilObS+pBrkX2eZoPmpVzaO4ipADB2JjfH+A0/XOw/QP9L1NfFCMreL+fgjNr
-	 Wg9yTgbUMambQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Rob Herring <robh@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Sasha Levin <sashal@kernel.org>,
+	id 1qpIsU-0089kc-22
+	for linux-mediatek@lists.infradead.org;
+	Sun, 08 Oct 2023 01:46:44 +0000
+Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-3af6cd01323so2338601b6e.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 07 Oct 2023 18:46:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1696729599; x=1697334399; darn=lists.infradead.org;
+        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dn+LeH/wVxtkvKkasM+uoFktIvDnLaQJ5n5AGroHogY=;
+        b=OekkPvu2/OqxwMLn6WG3mcmvKDYJrgc68YikSBBo47XQbL8kwS/VMh2reKwEXwJ5be
+         p7lq5U38fnCTFwHa6j9D4Zi8JiyWADr3S5fNYWGycSvO3fN2TAaqF5/BifQVDtARepLT
+         XDkcdjdwxrk1knNwfwmUKQwKZhHKmMzQg+u9MaRUE3CGmuVg+ngiq8xKUUY7iwLaeYeh
+         8cGVt0IVinEeY7kuX93muZbV3jXaXWPr8SQR9GPC7Q4/LqvZEGMuXAjtDo+rkxC37zi3
+         jmLKLbdtaPjBRb07l8+QUDpH6lGEB3ykmY7+E6UXrVn5Q7VnXnFk7q0okF94MvqZwFmd
+         uU6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696729599; x=1697334399;
+        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=dn+LeH/wVxtkvKkasM+uoFktIvDnLaQJ5n5AGroHogY=;
+        b=J743MIPrL/l6M1G2AXnMA4TcMqANIIOaoP0uAT8Gy4QT/UrhOjDunVjRXQtLrtFNmP
+         1VBVszsi4YNT7Uv+bjpZELBfwUaItr+wEF80UO/bqTFjlU67pNY0wnweCSRi9L6EL9ZP
+         DMJ+aynidghlFpEJ6EvzdaMhhalnsLfJBaCoEPwZ0MdCud6eFN4GOz1j09dS7rKZ/Xof
+         uEThAVMTYMcfWvmqqsAcUZ2Flru98xbcleRxQ0Mou/DBO7q/uBHfNwGWTZ+3gSBvG9SS
+         oQUqaL+pt6mra9KjIgkkPiRqwIcb0KZIFFt6v+o0+xJntHrPqjyS1zut+FzOzCCpN5AH
+         RQqw==
+X-Gm-Message-State: AOJu0YzOkU7w9YhvK4SqKmDCgWMqG0HBvqf/mMRpbsyRV5auCLmH23jK
+	KgopzMSzveG42zhTUinRCJtXCg==
+X-Google-Smtp-Source: AGHT+IE6yFex+CBBnGk+rQNeKa/UkrEvSdChHNpjRS3shM7fIg4wakRnaXyA0jVOySczm3ooSu1FnA==
+X-Received: by 2002:a05:6808:3081:b0:3af:71cf:2b52 with SMTP id bl1-20020a056808308100b003af71cf2b52mr17002866oib.27.1696729598914;
+        Sat, 07 Oct 2023 18:46:38 -0700 (PDT)
+Received: from ubuntu.huaqin.com ([101.78.151.205])
+        by smtp.gmail.com with ESMTPSA id v1-20020a63bf01000000b00563826c66eesm4888846pgf.61.2023.10.07.18.46.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 07 Oct 2023 18:46:38 -0700 (PDT)
+From: xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
+To: lgirdwood@gmail.com,
 	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
+	broonie@kernel.org,
 	matthias.bgg@gmail.com,
-	devicetree@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	perex@perex.cz,
+	tiwai@suse.com,
+	trevor.wu@mediatek.com,
+	maso.huang@mediatek.com
+Cc: alsa-devel@alsa-project.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.5 03/18] arm64: dts: mediatek: Fix "mediatek,merge-mute" and "mediatek,merge-fifo-en" types
-Date: Sat,  7 Oct 2023 20:48:37 -0400
-Message-Id: <20231008004853.3767621-3-sashal@kernel.org>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20231008004853.3767621-1-sashal@kernel.org>
-References: <20231008004853.3767621-1-sashal@kernel.org>
-MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.5.6
-Content-Transfer-Encoding: 8bit
+	linux-mediatek@lists.infradead.org,
+	xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
+Subject: [v4 0/2] ASoC: mediatek: mt8188-mt6359: add rt5682s support
+Date: Sun,  8 Oct 2023 09:46:27 +0800
+Message-Id: <20231008014629.4971-1-xiazhengqiao@huaqin.corp-partner.google.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231007_174903_845193_4CAED25D 
-X-CRM114-Status: GOOD (  10.00  )
+X-CRM114-CacheID: sfid-20231007_184642_995053_C091CFBF 
+X-CRM114-Status: UNSURE (   6.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,72 +97,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rob Herring <robh@kernel.org>
+To use RT5682S as the codec and MAX98390 as the amp, add a new
+sound card named mt8188_rt5682s.
 
-[ Upstream commit 5f8456b1faefb06fcf6028dced9f37aa880c779d ]
+Changes in v4:
+- add more reviewers
+- Link to v3: https://patchwork.kernel.org/project/alsa-devel/patch/20230927033608.16920-2-xiazhengqiao@huaqin.corp-partner.google.com/ 
+              https://patchwork.kernel.org/project/alsa-devel/patch/20230927033608.16920-3-xiazhengqiao@huaqin.corp-partner.google.com/
 
-"mediatek,merge-mute" and "mediatek,merge-fifo-en" properties are defined
-and used as boolean properties which in DT have no value.
+Changes in v3:
+- PATCH 2/2: modify mt8186_rt5682s_i2s_hw_params to mt8188_rt5682s_i2s_hw_params
+- Link to v2: https://lore.kernel.org/all/20230926040901.20338-3-xiazhengqiao@huaqin.corp-partner.google.com/ 
+              https://lore.kernel.org/all/20230926040901.20338-2-xiazhengqiao@huaqin.corp-partner.google.com/
+   
+Changes in v2:
+- PATCH 1/2: Modify mt8188_rt5682 to mt8188_rt5682s
+- PATCH 2/2: Modify all string "rt5682" to "rt5682s" and merge code 
+             in mt8188_fixup_controls
+- Link to v1: https://lore.kernel.org/all/20230925083847.1496-3-xiazhengqiao@huaqin.corp-partner.google.com/
+              https://lore.kernel.org/all/20230925083847.1496-2-xiazhengqiao@huaqin.corp-partner.google.com/
 
-Signed-off-by: Rob Herring <robh@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Link: https://lore.kernel.org/r/20230830195650.704737-1-robh@kernel.org
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+xiazhengqiao (2):
+  ASoC: dt-bindings: mediatek,mt8188-mt6359: add RT5682S support
+  ASoC: mediatek: mt8188-mt6359: add rt5682s support
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 4dbbf8fdab758..a9e52b50c8c48 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -2957,7 +2957,7 @@ merge1: vpp-merge@1c10c000 {
- 			clock-names = "merge","merge_async";
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
- 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0xc000 0x1000>;
--			mediatek,merge-mute = <1>;
-+			mediatek,merge-mute;
- 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE0_DL_ASYNC>;
- 		};
- 
-@@ -2970,7 +2970,7 @@ merge2: vpp-merge@1c10d000 {
- 			clock-names = "merge","merge_async";
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
- 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0xd000 0x1000>;
--			mediatek,merge-mute = <1>;
-+			mediatek,merge-mute;
- 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE1_DL_ASYNC>;
- 		};
- 
-@@ -2983,7 +2983,7 @@ merge3: vpp-merge@1c10e000 {
- 			clock-names = "merge","merge_async";
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
- 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0xe000 0x1000>;
--			mediatek,merge-mute = <1>;
-+			mediatek,merge-mute;
- 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE2_DL_ASYNC>;
- 		};
- 
-@@ -2996,7 +2996,7 @@ merge4: vpp-merge@1c10f000 {
- 			clock-names = "merge","merge_async";
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
- 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0xf000 0x1000>;
--			mediatek,merge-mute = <1>;
-+			mediatek,merge-mute;
- 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE3_DL_ASYNC>;
- 		};
- 
-@@ -3009,7 +3009,7 @@ merge5: vpp-merge@1c110000 {
- 			clock-names = "merge","merge_async";
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
- 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX 0x0000 0x1000>;
--			mediatek,merge-fifo-en = <1>;
-+			mediatek,merge-fifo-en;
- 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC>;
- 		};
- 
+ .../sound/mediatek,mt8188-mt6359.yaml         |   1 +
+ sound/soc/mediatek/Kconfig                    |   1 +
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c     | 141 +++++++++++++++++-
+ 3 files changed, 141 insertions(+), 2 deletions(-)
+
 -- 
-2.40.1
+2.17.1
 
 
