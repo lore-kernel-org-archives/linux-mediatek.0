@@ -4,84 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99F18E95A8F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Oct 2023 09:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 495CBE95A8E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Oct 2023 20:54:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DIjUR5wsU/i7XxPuSQP1qfexQee767Fh9n1eSCn2QNU=; b=bfX2HhD+CPM72svI08z32v14gf
-	p4Jvt0PoAal4b11le6QS+Io4S+J2bvhPLxI5vnfJse8xDz4zTbSnlIGldHN2p5G8+U4TZuYAm56Mt
-	KWfkNSG89uqyxfC186oLVNZU/jwIHdCo1j210M8oRN7x/EOCwapYKTANb6kiwyDLUteEL8aak7Nh6
-	mIErXlA14vRemDa2o1o+dn3OrPZc/Tf2ahsonrkkpT9oa+jIH/lLdw38Ya56JctVdfBrJ3pbGuvtz
-	d63c3SKZ7fL97XXDL+s4mZWxuYKrB2dtFTSAIuUbDbvy8PGixAJKyEZwVen0LYrMeIfWKbz2BDGQl
-	OrNGZoMw==;
+	bh=UuxrTL7KvyJ7XN5A1fs9GWsRygHQUHM6anrrqyaRV1c=; b=IFrL7nhuT/y9HRqqvg6qoijpoO
+	BfSf+13f8woEr0TBf/Aa/DMOw36rn48rzHQRmvK+Uk3x2JHQ4I/NjM4p05Zuf+dQs+mKGmc02EQxW
+	Zk1wl8b/W02ZgjREQftZ7Nzy5UZoR5vKnnX54jvHkWgtIYgBaBg7rcobaLKGnsp7U3kB4msuEK7Gk
+	YHBshOkfvm9DKPpRDzpHZC3dTC7R9nTrvTMvVElWR93rC8vgq5xb7lUVEPx+QQY/g0G2tf7Ye2AQx
+	VkIfOWx6w90XaqRQhOtug7um0ppP16kXNyxYvwizmTf/X4vqV4hqAGbl2/6PLN4jOjhQ98k+83h4V
+	EQz4Krnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpPqm-008ZC6-1M;
-	Sun, 08 Oct 2023 09:13:24 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpPqj-008ZBb-0S;
-	Sun, 08 Oct 2023 09:13:22 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-27758be8a07so2886831a91.0;
-        Sun, 08 Oct 2023 02:13:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696756399; x=1697361199; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DIjUR5wsU/i7XxPuSQP1qfexQee767Fh9n1eSCn2QNU=;
-        b=CbCP5IRTzf3He2Ob1KnXW0qAMjXaMD5TEYUeTga2jqHIIg5Eh0A9ezpURUq4crVmTS
-         ttTi0jg7d4AmFan2wI+lhnu+yAim6WnaFpWH/cbVo5Q3fc1Lg3WMo4Z3IEf0Lt/l5hf+
-         VKjLwjemZUiwC3kLyFPB2Gqxb17GeKjyrHsGWcRw+vZsCRW0CxnZevCVzmskM9fljSBn
-         V/z/G5Fdx+kJqmKGFeoLYkAWpIqO+xoyPhfIYmiizJEC9Hiq0Sd5YKBiBW1e8/TGQ0xQ
-         0xdsulR5egFi7/vzMtIeesYtwpiA83J2/QHs4hLZ2DEZl1rVrLNRyObPxUNJbkGCpVP7
-         h4/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696756399; x=1697361199;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=DIjUR5wsU/i7XxPuSQP1qfexQee767Fh9n1eSCn2QNU=;
-        b=txMZCeE0CVCln/13PaVOh63tpCCgOotanpljHxQxd52p54Toi53AcrQDqKZTvPhPPg
-         LbUaTvrWooJ71u+yuwo9S/3oVboPxWauncqJsKRlc1ZhTn0fdwQQoKBl/E56qTZCIThG
-         Azf8e/kL2L2mKU3CYVYBicKyRr05uEF+KOqnQu9tqHoq5BX/6sI9Q+4DxqtHsx+Cd/9i
-         1b6qJRsXXOWLJ85WQO8GGLx90VZBMHxYisigTjln2/AqxEKN6gtasYfLx9M1KCJjmhtR
-         erUpK/zHqnIo+3q64DtO0L5wl2fHpVbClQqrFNSIULnkCDhi5X3f4sVXxx6U6Q+HVI8u
-         Ublg==
-X-Gm-Message-State: AOJu0YztitS0B4Vm/gpA+rfXd6B3FtqTQDNN8VbgM0MxX3ncX++HtHFw
-	qJJti7GPTujEDKCWhyQOGMJYhuvGftcEmtRxFhA=
-X-Google-Smtp-Source: AGHT+IFlzAJPF2c72JOttTd8L7USLuoA/igr3cJARYtnvM1yOtRhQrr9zu3gvttgERj4A9EJxSkJuVzwSq9kONltlgc=
-X-Received: by 2002:a17:90a:ad87:b0:277:7969:6bf2 with SMTP id
- s7-20020a17090aad8700b0027779696bf2mr11948863pjq.47.1696756398972; Sun, 08
- Oct 2023 02:13:18 -0700 (PDT)
+	id 1qpanB-009Itq-3C;
+	Sun, 08 Oct 2023 20:54:25 +0000
+Received: from proxmox1.postmarketos.org ([2a01:4f8:a0:821d::2])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qpan7-009IkO-25;
+	Sun, 08 Oct 2023 20:54:23 +0000
+Received: from [192.168.1.177] (unknown [10.0.0.254])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by proxmox1.postmarketos.org (Postfix) with ESMTPSA id 4531E140495;
+	Sun,  8 Oct 2023 20:52:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=postmarketos.org;
+	s=donut; t=1696798334;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=UuxrTL7KvyJ7XN5A1fs9GWsRygHQUHM6anrrqyaRV1c=;
+	b=mWrLpGfLn2FuF/iVpmJZLpN8RDuXORQZCIAURsF4EvgNSQZlt1IaRv34qweKgmzYmly9LA
+	QENYN7n5YqEfjn9ou2DP0UqZtp3jOzI3bb5j7an0LEMFuSxLQs7OxPopxrgupQlE1nGSOc
+	GYuf/Nfea5aBrS+X0J/XxeZtDatbiaY=
+Message-ID: <c3380c97-1b8c-5a68-168e-fc6150701365@postmarketos.org>
+Date: Sun, 8 Oct 2023 23:52:13 +0300
 MIME-Version: 1.0
-References: <20230707092414.866760-1-zyytlz.wz@163.com> <8c8bd3ec-a5a4-32e4-45b5-ee16eeeac246@collabora.com>
- <CAJedcCxPG1mKtgB7AcJSwaQB_qvODObwq3gz6eM_1w777b2PfQ@mail.gmail.com>
- <54b14ebe-b51b-2744-328d-2adcdaaf6d0e@collabora.com> <CAJedcCyn+VHxcSXH+HqP3yiXX8L0wjNao+suti5GgyQzYORcYA@mail.gmail.com>
- <4d533beb-f416-1b22-6d9d-cee7f3cfdad1@collabora.com>
-In-Reply-To: <4d533beb-f416-1b22-6d9d-cee7f3cfdad1@collabora.com>
-From: Zheng Hacker <hackerzheng666@gmail.com>
-Date: Sun, 8 Oct 2023 17:13:07 +0800
-Message-ID: <CAJedcCwDemUSo8Hv1XYLcAkHeo2Y2RU=xX7Fv5aSRz52AixK6g@mail.gmail.com>
-Subject: Re: [RESEND PATCH v2] media: mtk-jpeg: Fix use after free bug due to
- uncanceled work
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Zheng Wang <zyytlz.wz@163.com>, 
-	Kyrie.Wu@mediatek.com, bin.liu@mediatek.com, mchehab@kernel.org, 
-	matthias.bgg@gmail.com, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com, 
-	security@kernel.org, 1395428693sheep@gmail.com, alex000young@gmail.com, 
-	Collabora Kernel ML <kernel@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH] drm/panel: Move AUX B116XW03 out of panel-edp back to
+ panel-simple
+Content-Language: en-US
+To: Doug Anderson <dianders@chromium.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org,
+ Hsin-Yi Wang <hsinyi@chromium.org>, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>, airlied@gmail.com,
+ daniel@ffwll.ch, jitao.shi@mediatek.com, linus.walleij@linaro.org,
+ linux-kernel@vger.kernel.org, neil.armstrong@linaro.org,
+ quic_jesszhan@quicinc.com, sam@ravnborg.org,
+ Anton Bambura <jenneron@protonmail.com>
+References: <20230925150010.1.Iff672233861bcc4cf25a7ad0a81308adc3bda8a4@changeid>
+ <b0037c9f-588b-4eb8-6415-0fe75bed264f@collabora.com>
+ <CAD=FV=UWQgLLfU4X+6OUR5AWOkJKwG9J7BbKGRCgze6LTY6JNw@mail.gmail.com>
+ <CAD=FV=UqG6DiAyjcLKeoUWKutepGd46Zx=8O-NWKoYC-fZEG6g@mail.gmail.com>
+From: Anton Bambura <jenneron@postmarketos.org>
+In-Reply-To: <CAD=FV=UqG6DiAyjcLKeoUWKutepGd46Zx=8O-NWKoYC-fZEG6g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231008_021321_199426_3CE910D9 
-X-CRM114-Status: GOOD (  22.35  )
+X-CRM114-CacheID: sfid-20231008_135421_864752_B8491CEC 
+X-CRM114-Status: GOOD (  28.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,70 +86,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dmitry Osipenko <dmitry.osipenko@collabora.com> =E4=BA=8E2023=E5=B9=B49=E6=
-=9C=8820=E6=97=A5=E5=91=A8=E4=B8=89 02:24=E5=86=99=E9=81=93=EF=BC=9A
->
-> On 8/31/23 11:18, Zheng Hacker wrote:
-> >> The v4l2_m2m_ctx_release() already should wait for the job_timeout_wor=
-k
-> >> completion or for the interrupt fire. Apparently it doesn't work in
-> >> yours case. You'll need to debug why v4l job or job_timeout_work is
-> >> running after v4l2_m2m_ctx_release(), it shouldn't happen.
-> >>
-> > Yes, v4l2_m2m_cancel_job waits for m2m_ctx->job_flags to be  ~TRANS_RUN=
-NING,
-> > the mtk_jpeg_job_timeout_work will finally invoke v4l2_m2m_job_finish
-> > to trigger that.
-> >
-> > However, this is not the only path to call v4l2_m2m_job_finish. Here
-> > is a invoking chain:
-> > v4l_streamon
-> >   ->v4l2_m2m_ioctl_streamon
-> >     ->v4l2_m2m_streamon
-> >       ->v4l2_m2m_try_schedule
-> >         ->v4l2_m2m_try_run
-> >           ->mtk_jpeg_dec_device_run
-> >             ->schedule_delayed_work(&jpeg->job_timeout_work...
-> >             ->error path goto dec_end
-> >             ->v4l2_m2m_job_finish
-> >
-> > In some specific situation, it starts the worker and also calls
-> > v4l2_m2m_job_finish, which might
-> > make v4l2_m2m_cancel_job continues.
->
-> Then the error path should cancel the job_timeout_work, or better job
-> needs to be run after the dec/enc has been started and not before.
->
 
-Hi,
-
-Sorry for my late reply for I just went on a long vacation.
-
-Get it. I'll write another patch and change the summary to the lack of
-canceling job in error path.
-
-> Looking further at the code, I'm confused by this hunk:
+On 10/5/23 21:10, Doug Anderson wrote:
+> Hi,
 >
->         mtk_jpeg_dec_start(comp_jpeg[hw_id]->reg_base);
->         v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> On Tue, Sep 26, 2023 at 7:01 AM Doug Anderson <dianders@chromium.org> wrote:
+>> Hi,
+>>
+>> On Tue, Sep 26, 2023 at 1:06 AM AngeloGioacchino Del Regno
+>> <angelogioacchino.delregno@collabora.com> wrote:
+>>> Il 26/09/23 00:00, Douglas Anderson ha scritto:
+>>>> In commit 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of
+>>>> panel-simple") I moved a pile of panels out of panel-simple driver
+>>>> into the newly created panel-edp driver. One of those panels, however,
+>>>> shouldn't have been moved.
+>>>>
+>>>> As is clear from commit e35e305eff0f ("drm/panel: simple: Add AUO
+>>>> B116XW03 panel support"), AUX B116XW03 is an LVDS panel. It's used in
+>>>> exynos5250-snow and exynos5420-peach-pit where it's clear that the
+>>>> panel is hooked up with LVDS. Furthermore, searching for datasheets I
+>>>> found one that makes it clear that this panel is LVDS.
+>>>>
+>>>> As far as I can tell, I got confused because in commit 88d3457ceb82
+>>>> ("drm/panel: auo,b116xw03: fix flash backlight when power on") Jitao
+>>>> Shi added "DRM_MODE_CONNECTOR_eDP". That seems wrong. Looking at the
+>>>> downstream ChromeOS trees, it seems like some Mediatek boards are
+>>>> using a panel that they call "auo,b116xw03" that's an eDP panel. The
+>>>> best I can guess is that they actually have a different panel that has
+>>>> similar timing. If so then the proper panel should be used or they
+>>>> should switch to the generic "edp-panel" compatible.
+>>>>
+>>>> When moving this back to panel-edp, I wasn't sure what to use for
+>>>> .bus_flags and .bus_format and whether to add the extra "enable" delay
+>>>> from commit 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash
+>>>> backlight when power on"). I've added formats/flags/delays based on my
+>>>> (inexpert) analysis of the datasheet. These are untested.
+>>>>
+>>>> NOTE: if/when this is backported to stable, we might run into some
+>>>> trouble. Specifically, before 474c162878ba ("arm64: dts: mt8183:
+>>>> jacuzzi: Move panel under aux-bus") this panel was used by
+>>>> "mt8183-kukui-jacuzzi", which assumed it was an eDP panel. I don't
+>>>> know what to suggest for that other than someone making up a bogus
+>>>> panel for jacuzzi that's just for the stable channel.
+>>>>
+>>>> Fixes: 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when power on")
+>>>> Fixes: 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of panel-simple")
+>>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>>>> ---
+>>>> I haven't had a snow or peach-pit hooked up for debugging / testing
+>>>> for years. I presume that they must be broken and hope that this fixes
+>>>> them.
+>>> We could avoid backport breakages by avoiding to backport this to any kernel
+>>> that doesn't contain commit 474c162878ba ("arm64: dts: mt8183: jacuzzi: Move
+>>> panel under aux-bus")... because creating a dummy panel to get two wrongs
+>>> right is definitely not ok.
+>> Sure, except that leaves us with ... a breakage. :-P
+>>
+>> Although I haven't tested it, I have a hard time believing that
+>> exynos5250-snow and exynos5420-peach-pit will work properly with the
+>> panel defined as an eDP panel. That means that they will be broken. If
+>> someone cared to get those fixed in a stable backport then we'd be
+>> stuck deciding who to break. If you have any brilliant ideas then I'm
+>> all ears.
+>>
+>> ...then again, I presume this has been broken since commit
+>> 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when power
+>> on"). That was a little over 3 years ago. Maybe I'm wrong and somehow
+>> things still limp along and sorta work even though the panel is
+>> defined incorrectly?
+> I dug out a exynos5250-snow out of my pile and booted postmarket OS on
+> it, which was shockingly easy/pleasant (kudos to those involved!). I
+> found that it was booting a kernel based on 6.1.24. Digging into
+> sysfs, I found that indeed it appeared to be using the "panel-edp"
+> driver, so I guess it is limping along with the wrong driver and wrong
+> flags...
 >
-> The job should be marked as finished when h/w has finished processing
-> the job and not right after the job has been started. So the job is
-> always completed and mtk_jpeg_job_timeout_work() doesn't work as
-> expected, am I missing something?
+> It wasn't totally clear for me how to build a new kernel and deploy it
+> for postmarket OS, so I wasn't able to confirm this change. I've CCed
+> the person listed on the postmarket OS wiki though to see if they have
+> any insight.
+Tested it on peach-pit using linux-next with this patch applied. Panel 
+still works and "dmesg | grep panel" returns panel_simple instead of 
+panel_edp.
 
-After reading the code I still don't know. I didn't see any function
-like mtk_jpeg_dec_end. The same thing
-happens on mtk_jpeg_enc_start. I think I'd better fix the first
-problem and wait for someone familiar with
-the second part.
-
-Best regards,
-Zheng
-
+Tested-by: Anton Bambura <jenneron@postmarketos.org>
 >
-> --
-> Best regards,
-> Dmitry
+> In any case, it sounds as if things are working well enough on older
+> OSes, so maybe we can just skip trying to do any stable backport on
+> this. It still seems like we should land it, though, since the current
+> state of the world seems pretty broken. Anyone willing to give a
+> Reviewed-by or Acked-by tag?
 >
+> -Doug
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
