@@ -4,90 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D4F4CD6128
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 18:56:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81769CD612E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 19:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3MsTR/cGryQq7rM7HxcuS1zRjm3nltuO+eDU9+kch7k=; b=Y81cjt7NhOrLR/8UtXED9r12y8
-	6sZYo7I33vU6FxSnHrTKzbupTSIRhMvQ0gEqtJEKdyhfBkzmEMqSZVqEZRwVEkuiZtRklWNkhOgd/
-	lOROp8t2+ubMCg8gjaZ8wM2xpGaN3t5f0fKV8hdU5Vxau6/jHjSzPy8uv+knTPuvVk/m84D3jP0Ji
-	CknXuH6xkKTCBSA9GGtsON7nugBUr/dxyhzlcVgIj6cFg3WBYnvB4dvJRQrqzNBNm0RlI9/gr4Amx
-	jdkmuj+2s5cSfHaAd1FRTCqn5X3P/W5ojxY/rzuCN2Bu6VvISzDEJji9p3KP53Ibem5VqNDXBGVcM
-	PJnT2wtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mHTADdCXpMsbT+L9Tkl0zBVgM7yoUgZG2DD+Q2K+dMI=; b=Fb6UJBdKrJOyIL6yiPMkdgo9He
+	su7LCWqvvlNTAfC9ilLGE5IlGHda8D+wzS/zfgBEhN0tWpQqrMWuidzuBy3G+vmzM3zLF2KNJ3kOa
+	G5225r1vkl57VMvaiUWeCiuAYA+ab9IxaIv1vqnGdcioGUJjV4vN3YbVnyAYcTLdNhAO+u2g/src2
+	bpLunWM9fflSZrxKFVgvkIzgE1C5qlmpcGFuJN48PjtISNyMfpgKWXTcn71e3dgpujwQR4tcR7fwZ
+	QXBRgj3P2SQ4/Pqg+luyVkJLIIP1tZXCrmIT6YSbvmVxdYmy7Dx3QYeUDWkDDJXC6LQrcJm/q9puF
+	m9Cqajiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpvQm-00BS3K-2w;
-	Mon, 09 Oct 2023 18:56:40 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1qpw0p-00BVE9-18;
+	Mon, 09 Oct 2023 19:33:55 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpvQj-00BS2B-2i
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Oct 2023 18:56:39 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-690bd59322dso3538942b3a.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Oct 2023 11:56:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1696877796; x=1697482596; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=3MsTR/cGryQq7rM7HxcuS1zRjm3nltuO+eDU9+kch7k=;
-        b=eUS3OleqnWEgy5Sp4Rq7V56UaCfCcsgCr9LZgwgLrG6sVtdCcfrXcOsVYKC8IU9NXg
-         wb/m+A0yWk+F+DAyjGr4uLeLKDeenis1JbHBqaN9Lrwb2ROBVIBZuikP6+5rcHYWAeee
-         pk6DvvoeZ72Etc1L2QS7/IFKtvUvmqGp3AJrU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696877796; x=1697482596;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3MsTR/cGryQq7rM7HxcuS1zRjm3nltuO+eDU9+kch7k=;
-        b=MAZt8a8JrPhkCx8+Go0ZF5M+4use0KOOfd4IxvuI+punr3rRMrXskzJlSIxnYpqeUE
-         OUH/L8FQ7/UI7ZrkI8pY+WW2ia/uHML+xqNlKQmg21+glTc4VpiAOFEX/CSkshofCqZb
-         crZM7fk8Ry96CzhpaO7rJTBA2fWpCFT9teStpEoycM5Myaez3tOZGH4ncwwxxh6H0ilT
-         rEFffvcSY2hsyMrGMdgdY8+8Czj/shkW8f6WB7nUXrRqNwvw7922mNIK68qGX2vOi4eu
-         KEEKHM8ytL43UQBdyCfzZdCe52WZ1HDrdbxMiR9Pj8D5DItciEAmkR0HekJ4QeyvM3yg
-         tEew==
-X-Gm-Message-State: AOJu0YxhQow6vQHB0f3NvVfPjg331RKlBlshO2ZlHdcn/Djqi8tL9Lx7
-	DpmHhI4nLa4q4hARlUcjdnQzJg==
-X-Google-Smtp-Source: AGHT+IFqDuEFo+tIspVB6znFMkQC780hS1yhuBuvVg/TNH3PNioqeOxCygG+fs+D639q6fNE6/nUDA==
-X-Received: by 2002:a05:6a00:2450:b0:693:4108:1eb7 with SMTP id d16-20020a056a00245000b0069341081eb7mr15271604pfj.30.1696877795997;
-        Mon, 09 Oct 2023 11:56:35 -0700 (PDT)
-Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
-        by smtp.gmail.com with ESMTPSA id ey5-20020a056a0038c500b0068fe9c7b199sm6820919pfb.105.2023.10.09.11.56.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Oct 2023 11:56:35 -0700 (PDT)
-Date: Mon, 9 Oct 2023 11:56:33 -0700
-From: Kees Cook <keescook@chromium.org>
-To: Justin Stitt <justinstitt@google.com>
-Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org
-Subject: Re: [PATCH] net: dsa: mt7530: replace deprecated strncpy with
- ethtool_sprintf
-Message-ID: <202310091155.3E4328DC1B@keescook>
-References: <20231009-strncpy-drivers-net-dsa-mt7530-c-v1-1-ec6677a6436a@google.com>
- <202310091131.550C9CD8@keescook>
+	id 1qpw0l-00BVDe-03;
+	Mon, 09 Oct 2023 19:33:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1D8F76124E;
+	Mon,  9 Oct 2023 19:33:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED7C2C433C7;
+	Mon,  9 Oct 2023 19:33:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696880028;
+	bh=3vSQGl8AKGsrfujKMh0CxRfl2/dxm1puOS4ZfrVqiOQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=kqFhJBLbV57LCCJaaGa4Cb6xeE1pwKxBLjp1vrm0M8gC8Jmygrgbw44uVuMC1xJcL
+	 iIwWM0BMCU0VDZ97wHTtrGSr9jBN9zS4XQKyptleasbRpyzlDxP8vuq0ds579CS79q
+	 9cqIOB4W+MAevB2BsAgJy5UyEcK1qYoCJZNFIZEzN1XFgDcWNN9l4v4+htQbiULn9x
+	 3A489kPRl5cgnkrkQuOGQ2QFmbovWkMf0fjokrDYa6EW5lxFKXV5dfHCd5cv660Pqa
+	 P2da3GVyqDBCKdGJLaM+b0/ybnr+3q4r45vgAyV29YJUXP0zigXz5NjG6XRsVovFdq
+	 gzFlhg72cEHTQ==
+From: Mark Brown <broonie@kernel.org>
+To: Bartosz Golaszewski <brgl@bgdev.pl>, Andy Shevchenko <andy@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ alsa-devel@alsa-project.org
+In-Reply-To: <20231006-descriptors-asoc-mediatek-v1-0-07fe79f337f5@linaro.org>
+References: <20231006-descriptors-asoc-mediatek-v1-0-07fe79f337f5@linaro.org>
+Subject: Re: [PATCH 0/8] Convert Mediatek ASoC codecs to use GPIO
+ descriptors
+Message-Id: <169688002562.148554.2449511739055608946.b4-ty@kernel.org>
+Date: Mon, 09 Oct 2023 20:33:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <202310091131.550C9CD8@keescook>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-0438c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_115637_911652_ED58BF5E 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20231009_123351_125071_D1CE0255 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,46 +77,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 09, 2023 at 11:31:46AM -0700, Kees Cook wrote:
-> On Mon, Oct 09, 2023 at 06:29:19PM +0000, Justin Stitt wrote:
-> > `strncpy` is deprecated for use on NUL-terminated destination strings
-> > [1] and as such we should prefer more robust and less ambiguous string
-> > interfaces.
-> > 
-> > ethtool_sprintf() is designed specifically for get_strings() usage.
-> > Let's replace strncpy in favor of this more robust and easier to
-> > understand interface.
-> > 
-> > Link: https://www.kernel.org/doc/html/latest/process/deprecated.html#strncpy-on-nul-terminated-strings [1]
-> > Link: https://manpages.debian.org/testing/linux-manual-4.8/strscpy.9.en.html [2]
-> > Link: https://github.com/KSPP/linux/issues/90
-> > Cc: linux-hardening@vger.kernel.org
-> > Signed-off-by: Justin Stitt <justinstitt@google.com>
-> > ---
-> > Note: build-tested only.
-> > ---
-> >  drivers/net/dsa/mt7530.c | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> > index 035a34b50f31..e00126af8318 100644
-> > --- a/drivers/net/dsa/mt7530.c
-> > +++ b/drivers/net/dsa/mt7530.c
-> > @@ -836,8 +836,7 @@ mt7530_get_strings(struct dsa_switch *ds, int port, u32 stringset,
-> >  		return;
-> >  
-> >  	for (i = 0; i < ARRAY_SIZE(mt7530_mib); i++)
-> > -		strncpy(data + i * ETH_GSTRING_LEN, mt7530_mib[i].name,
-> > -			ETH_GSTRING_LEN);
-> > +		ethtool_sprintf(&data, "%s", mt7530_mib[i].name);
+On Fri, 06 Oct 2023 15:46:23 +0200, Linus Walleij wrote:
+> Convert over the Mediatek codecs to use GPIO descriptors.
 > 
-> Err, wait, I spoke too soon. Shouldn't this be "data" and not "&data"?
+> One few-liner affects gpiolib-of.h, I don't think there
+> will be conflicts so I suggest that all of this can be
+> merged through ASoC after review.
+> 
+> 
+> [...]
 
-Ugh, ignore me. I keep forgetting that ethtool_sprintf() updates the
-"data" pointer. My original Reviewed-by is fine. :)
+Applied to
 
--Kees
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
--- 
-Kees Cook
+Thanks!
+
+[1/8] gpiolib: of: Add quirk for mt2701-cs42448 ASoC sound
+      commit: 9e189e80dcb68528dea9e061d9704993f98cb84f
+[2/8] ASoC: mediatek: mt2701-cs42448: Convert to GPIO descriptors
+      commit: 654a23724072f37c0d07b31395e1d9f45f5563ab
+[3/8] ASoC: mt8173-max98090: Drop unused include
+      commit: b1306c3b6140f0c299f727edc9bb90ec79700614
+[4/8] ASoC: mt8173-rt5650-rt5514: Drop unused includes
+      commit: 94a7f618211652235f3e4b88aca477391078dba6
+[5/8] ASoC: mt8173-rt5650-rt5676: Drop unused includes
+      commit: cb1c18e8a7337c7f3ee461b613a52a45c3f723d5
+[6/8] ASoC: mt8173-rt5650: Drop unused includes
+      commit: 6dffd1f38ad76660e7fff8e269889284e892603d
+[7/8] ASoC: mt8186-mt6366-rt1019-rt5682s: Drop unused include
+      commit: 73e1f8a05bd8289ab5154c703a0592729267e979
+[8/8] ASoC: mt8192-afe-gpio: Drop unused include
+      commit: 3b5d22bdf33c4e44016fdcfc8904a0b0bf218e75
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
