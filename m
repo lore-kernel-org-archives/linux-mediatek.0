@@ -4,101 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72AB3E95A91
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 12:00:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40AEAE95A8E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 12:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o9r1b72AGzQX2cPr3WsZ4YtvkbsTzQxrKOO5gARLsSg=; b=qyzwApvH+SWlQkkfAXI5rtey2K
-	00NVNuOKfNgtNDh186K6ZyJyy2/b/aaXNW1xVMm22+23XDgXrWZIa/fHy8YLnaFLQV3ZFOzCh9iF0
-	WSpO4K9Ife2z/LpLvUg3iJPwgzhZ0bFRLqqOJBZOw1ILZDDcekEAIdq8UL53oWPFDyeYpuN7A5ZKA
-	MEX1O7sUOoAGSip9H1iGUIXdyvZ/icILCmuINkn7pqHLxFuSBBnaxiwDR7kD/TiHluJk+K9Dvm5yZ
-	4UHhYU/aksWLK69l5PwDRVOHDm/dGyGGUK1neIfUb8TyI+sJM9/izaOzAXPCGnF7BHw15kwgF899e
-	4xdAlg4g==;
+	bh=lcVjNQqMq/jFf0hj4WOhwnpXmbmmkhvqAkaU8j+i1gk=; b=xZQfGC7Ssl3NqSxGDVzPyO9jy/
+	65xcpINfHBv+iZqBTuzd63JpUKwPmdFwsfoNr4mTiA1vw8GR7oxRmkpUtXkwc24YBboHoadU120mL
+	wSZsPAUDW7ACsWJi917NaNkl4lQdO4oYMQD+BEhz2Ut7KYsrd8nqWKZzmLlXcH+6fSQJtWhYLQNqr
+	o4UoESsY8xWJNnRHRswWZ1TPLVZuCVSH2eHHQj6DfUFgjO0aQgtt23LqhPEGoX52bxhvMnXwuY4+C
+	KY5ToeblLSya1P8B7ZlgdI91VK6Iy8eeizTnUcXGsjvZEWRIUS2H20X2u/6ZqLCMZjABJGZzS64Uu
+	c+W0UsZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpowD-00AYFI-1L;
-	Mon, 09 Oct 2023 12:00:41 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qppBD-00AeY6-02;
+	Mon, 09 Oct 2023 12:16:11 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpow8-00AYDZ-2e;
-	Mon, 09 Oct 2023 12:00:39 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 399Bk93c029864;
-	Mon, 9 Oct 2023 12:00:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=o9r1b72AGzQX2cPr3WsZ4YtvkbsTzQxrKOO5gARLsSg=;
- b=EqS9Eb8QuzhS2rsmdbzg/FEhk6CjLoBgeb2ZxodZgr80/jtVRB/v1t/oYe9xYXbHgg++
- m9vY5hE9lS44rxu4+RjHXogYHDr+P4tdv0vifgUMsiSzLEDYgF2W0xsuP5GLxqPD3ND0
- zatW1t7s2F3ZpspyyLlNa0Te6QBEYoDTKFmCxEJ+Z6uZf0Fe73IhI4ch+MA971Od89WM
- EbKXPSF2GdZ1eoMrMfGPYAKxTOJ4OnZEOB4fvOrZBY1vu187+2duPrD9iFORbXcibe3x
- NXP4hYGibfPgAfMj2huKwl1O09eBmYVzJa4ZXBRvLbIRswsY1c2axJda5LcxQA5hjmVR Jg== 
-Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tkh592b8c-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 09 Oct 2023 12:00:04 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 399C02Xr000308
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 9 Oct 2023 12:00:02 GMT
-Received: from [10.214.225.95] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Mon, 9 Oct
- 2023 04:59:49 -0700
-Message-ID: <a869ec2e-966b-f8ea-7f68-a77c214a45af@quicinc.com>
-Date: Mon, 9 Oct 2023 17:29:40 +0530
+	id 1qppB3-00AeNh-2q;
+	Mon, 09 Oct 2023 12:16:06 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2D639660708F;
+	Mon,  9 Oct 2023 13:15:57 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1696853758;
+	bh=6IxXuw1iuy8EVSXqn5C22h2EVvDJCRVbqg5t0p+CIgQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TnqHabipIkWGqzyHZA/ulQTttjOzpGUtfN0PlDIzdUGBh6SCCUlxM7Oyu9dWlwSSf
+	 lymyQHe9X3e+vpAVk2UJjFYMTk4OG+bh/YC9I34LoF8eX3zV9K+IaOFvgjFcMVFc9h
+	 yhrOSvhbbO9aFCibkYwYO2HzKUuCvtJ6OkmgWYdcq0Wj03AGcwdBAjmbWLKyk0MgR5
+	 6W8HZWW/jjOJMoGnRLTTqgmhhRhUXikKlQbyoGedCCFXBGH010X9GTC5JoDrnYeQAr
+	 lJd5RAmJy5A5oVQsqbAA1nD23gEK/aqc/vsmn3gXTJDZ+fKrg33tQUhWJ5C1sZxpLS
+	 dDXgn5yexNlUA==
+Message-ID: <42fab116-ce4e-b4bb-c457-821a92ff85b6@collabora.com>
+Date: Mon, 9 Oct 2023 14:15:54 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [REBASE PATCH v5 10/17] pstore: Add pstore_region_defined()
- helper and export it
-To: Kees Cook <keescook@chromium.org>
-CC: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <tony.luck@intel.com>, <gpiccoli@igalia.com>,
-        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
-        <will@kernel.org>, <linus.walleij@linaro.org>,
-        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
-        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
-        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <quic_tsoni@quicinc.com>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-hardening@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
- <1694429639-21484-11-git-send-email-quic_mojha@quicinc.com>
- <202309131620.34EB0F6972@keescook>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH] media: mediatek: vcodec: using encoder device to
+ alloc/free encoder memory
 Content-Language: en-US
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <202309131620.34EB0F6972@keescook>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20231008031909.32146-1-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231008031909.32146-1-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: DDbFoX8caW9i9Gk7bqvbx_eyrZSMb8tu
-X-Proofpoint-GUID: DDbFoX8caW9i9Gk7bqvbx_eyrZSMb8tu
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-09_11,2023-10-09_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 spamscore=0
- clxscore=1015 suspectscore=0 priorityscore=1501 mlxlogscore=999
- bulkscore=0 phishscore=0 impostorscore=0 lowpriorityscore=0 mlxscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2310090098
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_050036_898869_D8106A6C 
-X-CRM114-Status: GOOD (  23.82  )
+X-CRM114-CacheID: sfid-20231009_051602_240308_975290C4 
+X-CRM114-Status: GOOD (  24.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,85 +85,192 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for the review.
+Il 08/10/23 05:19, Yunfei Dong ha scritto:
+> Need to use encoder device to allocate/free encoder memory when calling
+> mtk_vcodec_mem_alloc/mtk_vcodec_mem_free, or leading to below crash log
+> when test encoder with decoder device.
+> 
+> pc : dma_alloc_attrs+0x44/0xf4
+> lr : mtk_vcodec_mem_alloc+0x50/0xa4 [mtk_vcodec_common]
+> sp : ffffffc0209f3990
+> x29: ffffffc0209f39a0 x28: ffffff8024102a18 x27: 0000000000000000
+> x26: 0000000000000000 x25: ffffffc00c06e2d8 x24: 0000000000000001
+> x23: 0000000000000cc0 x22: 0000000000000010 x21: 0000000000000800
+> x20: ffffff8024102a18 x19: 0000000000000000 x18: 0000000000000000
+> x17: 0000000000000009 x16: ffffffe389736a98 x15: 0000000000000078
+> x14: ffffffe389704434 x13: 0000000000000007 x12: ffffffe38a2b2560
+> x11: 0000000000000800 x10: 0000000000000004 x9 : ffffffe331f07484
+> x8 : 5400e9aef2395000 x7 : 0000000000000000 x6 : 000000000000003f
+> x5 : 0000000000000001 x4 : 0000000000000000 x3 : 0000000000000cc0
+> x2 : ffffff8024102a18 x1 : 0000000000000800 x0 : 0000000000000010
+> Call trace:
+>   dma_alloc_attrs+0x44/0xf4
+>   mtk_vcodec_mem_alloc+0x50/0xa4 [mtk_vcodec_common 2819d3d601f3cd06c1f2213ac1b9995134441421]
+>   h264_enc_set_param+0x27c/0x378 [mtk_vcodec_enc 772cc3d26c254e8cf54079451ef8d930d2eb4404]
+>   venc_if_set_param+0x4c/0x7c [mtk_vcodec_enc 772cc3d26c254e8cf54079451ef8d930d2eb4404]
+>   vb2ops_venc_start_streaming+0x1bc/0x328 [mtk_vcodec_enc 772cc3d26c254e8cf54079451ef8d930d2eb4404]
+>   vb2_start_streaming+0x64/0x12c
+>   vb2_core_streamon+0x114/0x158
+>   vb2_streamon+0x38/0x60
+>   v4l2_m2m_streamon+0x48/0x88
+>   v4l2_m2m_ioctl_streamon+0x20/0x2c
+>   v4l_streamon+0x2c/0x38
+>   __video_do_ioctl+0x2c4/0x3dc
+>   video_usercopy+0x404/0x934
+>   video_ioctl2+0x20/0x2c
+>   v4l2_ioctl+0x54/0x64
+>   v4l2_compat_ioctl32+0x90/0xa34
+>   __arm64_compat_sys_ioctl+0x128/0x13c
+>   invoke_syscall+0x4c/0x108
+>   el0_svc_common+0x98/0x104
+>   do_el0_svc_compat+0x28/0x34
+>   el0_svc_compat+0x2c/0x74
+>   el0t_32_sync_handler+0xa8/0xcc
+>   el0t_32_sync+0x194/0x198
+> Code: aa0003f6 aa0203f4 aa0103f5 f900
+> 
+> 'Fixes: 01abf5fbb081c ("media: mediatek: vcodec: separate struct 'mtk_vcodec_ctx'")'
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>   .../mediatek/vcodec/common/mtk_vcodec_util.c  | 66 ++++++++++++++++++-
+>   1 file changed, 64 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
+> index 908602031fd0..62bb7290c56d 100644
+> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
+> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
+> @@ -45,7 +45,7 @@ int mtk_vcodec_write_vdecsys(struct mtk_vcodec_dec_ctx *ctx, unsigned int reg,
+>   }
+>   EXPORT_SYMBOL(mtk_vcodec_write_vdecsys);
+>   
+> -int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
+> +static int mtk_vcodec_mem_dec_alloc(void *priv, struct mtk_vcodec_mem *mem)
+>   {
+>   	unsigned long size = mem->size;
+>   	struct mtk_vcodec_dec_ctx *ctx = priv;
+> @@ -64,9 +64,39 @@ int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
+>   
+>   	return 0;
+>   }
+> +
+> +static int mtk_vcodec_mem_enc_alloc(void *priv, struct mtk_vcodec_mem *mem)
+> +{
+> +	unsigned long size = mem->size;
+> +	struct mtk_vcodec_enc_ctx *ctx = priv;
+> +	struct device *dev = &ctx->dev->plat_dev->dev;
+> +
+> +	mem->va = dma_alloc_coherent(dev, size, &mem->dma_addr, GFP_KERNEL);
+> +	if (!mem->va) {
+> +		mtk_v4l2_venc_err(ctx, "%s dma_alloc size=%ld failed!", dev_name(dev), size);
+> +		return -ENOMEM;
+> +	}
+> +
+> +	mtk_v4l2_venc_dbg(3, ctx, "[%d]  - va      = %p", ctx->id, mem->va);
+> +	mtk_v4l2_venc_dbg(3, ctx, "[%d]  - dma     = 0x%lx", ctx->id,
+> +			  (unsigned long)mem->dma_addr);
+> +	mtk_v4l2_venc_dbg(3, ctx, "[%d]    size = 0x%lx", ctx->id, size);
+> +
+> +	return 0;
+> +}
+> +
+> +int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
+> +{
+> +	enum mtk_instance_type inst_type = *((unsigned int *)priv);
 
-On 9/14/2023 4:54 AM, Kees Cook wrote:
-> On Mon, Sep 11, 2023 at 04:23:52PM +0530, Mukesh Ojha wrote:
->> There are users like Qualcomm minidump which is interested in
->> knowing the pstore frontend addresses and sizes from the backend
->> (ram) to be able to register it with firmware to finally collect
->> them during crash for debugging.
->>
->> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
->> ---
->>   fs/pstore/platform.c   | 15 +++++++++++++++
->>   fs/pstore/ram.c        | 42 ++++++++++++++++++++++++++++++++++++++++++
->>   include/linux/pstore.h |  6 ++++++
->>   3 files changed, 63 insertions(+)
->>
->> diff --git a/fs/pstore/platform.c b/fs/pstore/platform.c
->> index e5bca9a004cc..fdac951059c1 100644
->> --- a/fs/pstore/platform.c
->> +++ b/fs/pstore/platform.c
->> @@ -139,6 +139,21 @@ enum pstore_type_id pstore_name_to_type(const char *name)
->>   }
->>   EXPORT_SYMBOL_GPL(pstore_name_to_type);
->>   
->> +int pstore_region_defined(struct pstore_record *record,
->> +			  void **virt, phys_addr_t *phys,
->> +			  size_t *size, unsigned int *max_dump_cnt)
->> +{
->> +	if (!psinfo)
->> +		return -EINVAL;
->> +
->> +	record->psi = psinfo;
-> 
-> Uh, this makes no sense to me. If this is a real pstore_record, you
-> cannot just assign psi here.
+I agree in that the first member of both mtk_vcodec_{enc,dec}_ctx is this
+enum mtk_instance_type, but no, you're not passing that as priv: you're actually
+passing one of the two structures, and this would add up complexity in human
+readability, and would also open the road for mistakes.
 
-Ok.
+You should at this point pass the instance type to the function.
 
-> 
->> +
->> +	return psinfo->region_info ?
->> +	       psinfo->region_info(record, virt, phys, size, max_dump_cnt) :
->> +	       -EINVAL;
-> 
-> Common code style for this kind of thing is usually like this:
-> 
-> 	if (!psinfo->region_info)
-> 		return -EINVAL;
-> 
-> 	return psinfo->region_info(...)
+int mtk_vcodec_mem_alloc(void *priv, enum mtk_instance_type /* or int, but I prefer 
+enum */ inst_type, struct mtk_vcodec_mem *mem)
 
-Thanks.
+...and then, since the only difference between the two `alloc` function is just
+only about debugging logs, you could commonize the allocation part... an idea:
 
--Mukesh
-> 
->> +}
->> +EXPORT_SYMBOL_GPL(pstore_region_defined);
->> +
->>   static void pstore_timer_kick(void)
->>   {
->>   	if (pstore_update_ms < 0)
->> diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
->> index ab551caa1d2a..62202f3ddf63 100644
->> --- a/fs/pstore/ram.c
->> +++ b/fs/pstore/ram.c
->> @@ -437,6 +437,47 @@ static int ramoops_pstore_erase(struct pstore_record *record)
->>   	return 0;
->>   }
->>   
->> +static int ramoops_region_info(struct pstore_record *record,
->> +			       void **virt, phys_addr_t *phys,
->> +			       size_t *size, unsigned int *max_dump_cnt)
-> 
-> But there's a larger problem here -- "virt", "phys" and likely
-> "max_dump_cnt" are aspects _specific to the ram backend_. This can't be
-> a generic pstore interface.
-> 
-> I'm not opposed to it being exposed only from ramoops, though.
-> 
-> But I think you'll want a pstore generic way to iterate over the
-> records..
+struct platform_device *pdev;
+unsigned long size;
+int id;
+
+
+if (inst_type == MTK_INST_DECODER) {
+	struct mtk_vcodec_enc_ctx *enc_ctx = priv;
+	pdev = enc_ctx->dev->plat_dev;
+	id = enc_ctx->id;
+} else {
+	struct mtk_vcodec_dec_ctx *dec_ctx = priv;
+	pdev = dec_ctx->dev->plat_dev;
+	id = dec_ctx->id;
+}
+
+mem->va = dma_alloc_coherent(&pdev->dev, etc.....)
+if (!mem->va) {
+	mtk_v4l2_err(pdev, .....);
+}
+
+mtk_v4l2_debug(&pdev->dev, 3, "[%d]  - va      = %p", id, mem->va);
+
+...you wouldn't even need one function for enc_alloc and one for dec_alloc, as
+the logic would be pretty much commonized like this.
+
+> +
+> +	if (inst_type == MTK_INST_ENCODER)
+> +		return mtk_vcodec_mem_enc_alloc(priv, mem);
+> +	else
+> +		return mtk_vcodec_mem_dec_alloc(priv, mem);
+> +}
+>   EXPORT_SYMBOL(mtk_vcodec_mem_alloc);
+>   
+> -void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
+> +static void mtk_vcodec_mem_dec_free(void *priv, struct mtk_vcodec_mem *mem)
+>   {
+>   	unsigned long size = mem->size;
+>   	struct mtk_vcodec_dec_ctx *ctx = priv;
+> @@ -87,6 +117,38 @@ void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
+>   	mem->dma_addr = 0;
+>   	mem->size = 0;
+>   }
+> +
+> +static void mtk_vcodec_mem_enc_free(void *priv, struct mtk_vcodec_mem *mem)
+> +{
+> +	unsigned long size = mem->size;
+> +	struct mtk_vcodec_enc_ctx *ctx = priv;
+> +	struct device *dev = &ctx->dev->plat_dev->dev;
+> +
+> +	if (!mem->va) {
+> +		mtk_v4l2_venc_err(ctx, "%s dma_free size=%ld failed!", dev_name(dev), size);
+> +		return;
+> +	}
+> +
+> +	mtk_v4l2_venc_dbg(3, ctx, "[%d]  - va      = %p", ctx->id, mem->va);
+> +	mtk_v4l2_venc_dbg(3, ctx, "[%d]  - dma     = 0x%lx", ctx->id,
+> +			  (unsigned long)mem->dma_addr);
+> +	mtk_v4l2_venc_dbg(3, ctx, "[%d]    size = 0x%lx", ctx->id, size);
+> +
+> +	dma_free_coherent(dev, size, mem->va, mem->dma_addr);
+> +	mem->va = NULL;
+> +	mem->dma_addr = 0;
+> +	mem->size = 0;
+> +}
+> +
+> +void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
+> +{
+> +	enum mtk_instance_type inst_type = *((unsigned int *)priv);
+> +
+> +	if (inst_type == MTK_INST_ENCODER)
+> +		mtk_vcodec_mem_enc_free(priv, mem);
+> +	else
+> +		mtk_vcodec_mem_dec_free(priv, mem);
+
+same comments apply to the xxxx_free() function as well.
+You're in the "common" scope here, so you wouldn't be forced to use the enc/dec
+specific logging functions, as you can use the more generic mtk_v4l2_{debug,err}()
+and mtk_vcodec_{debug,err}() functions here, which are *perfect* for the common
+code.
+
+Cheers,
+Angelo
+
 
