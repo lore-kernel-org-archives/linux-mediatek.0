@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76DC9E95A97
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D07AE95A91
 	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 08:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,43 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wcDobwlh0vWm8I8I8vw095L5MB+lM9IWhjHRuujpxlw=; b=XtstzVmAECTc0N34f5gG7EbMG/
-	1Jo7fJSM5SnE+J+2isuKGKMWv26YhOmDFvrTPAx6enw3yUpROu+eOvbD0iGHSOU0DNQigGCgojLBe
-	Va6BJ5CHmZmLns3vHPBpiBHAGkSwVOPshKrN2N8/qkbnXGhVmp8L08x1D+hWkJo/oacZz0rpCWjWC
-	JO3yFrGncheeRbjmhopuOrJw8hTdclzzSMzqGAuE+nvzveDWHch1tXlAp0KNste8Qfmwu912xpB6m
-	2ho8e+I5YVMrX4q9td5NesF2pShtLo+g7LXd77m1VY6NabHLRRkwoDcEG3duxdHws2hbqvCq12oz5
-	timqp9Ig==;
+	bh=dw9EJ/yZ1nzb5BRPKUMoucc3EFhQ095Vcx+fMixVghY=; b=2Uma4i4SFigTcrfbbN32nTBvfa
+	IEF3Xw9PLKCMRXhSvzbJS6o//1XVs1MAaTC3+uZZVMal+DgVu6nBbNHWUFNG0FYlcAAufj5VDOu1a
+	enTMWBpiFqOVh5mJGE/pXlMwLmOHV2or3BLSekY86UJDNg2xMYImZcNfLQ/gkc0kmEnvjWO7wINxV
+	ppJNQsS8S/5B6/IzOfYvA2b2MseskwZCKjLFoKGqU/xnTxjO3VikitWFZUijqBj7vOqNrEdIHxnWJ
+	3X29oWcE0bYew+OW7z3Qi1TuNq6wejWUVTFAF1OzxfYS7LeA3U0iLJ9A13JFVkrjU3oWHXuqAOMZr
+	FS+e+2Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qplzB-00A13M-1O;
-	Mon, 09 Oct 2023 08:51:33 +0000
+	id 1qplzA-00A12T-2U;
+	Mon, 09 Oct 2023 08:51:32 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qplz5-00A0z8-0b;
+	id 1qplz5-00A0yy-0X;
 	Mon, 09 Oct 2023 08:51:30 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4AF27660716C;
-	Mon,  9 Oct 2023 09:51:22 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7A803660708F;
+	Mon,  9 Oct 2023 09:51:20 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696841482;
-	bh=AeV4F+YxzIjrv5/reJdTrfUYSuarpl9kOSA1kuEAPvM=;
+	s=mail; t=1696841481;
+	bh=k9DxY2pZj9VNMIEbtEzEch2H2eOqQpTLPwo754uwNQI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=C0fx5MLHjUZ5LPSlk6G1axwyJy0cOqyKNZ52QU6lB43BTBR0w0Mf7fjyUyON7X6H+
-	 TKUnseRy62LLKr9BPLlejzLwT53I/XgvNNxfkkc5A9mewZd1tLHHFwF9PEXM48chFe
-	 Z5w6QWRFgGPai6iV2dnoN/ojzmI+WT3ugpjIdLLlTmXzaiuob7RhvaIhbDSZXby/Pe
-	 6KZousTG9vwzBtpwb2Pu75Veo4pc2hAWE8z3A/9zb56bB+t4pRtmVuC60UKU5RN5a8
-	 7cDpfFVf6M3EUqOONlJjhPiq2hIwvBrB7wPQNZ7l9hNhod8O/O9UW2Wdke2vXdbXfg
-	 YFbyQYJAGyibA==
-Message-ID: <dfcd36ac-712b-5169-5320-0e1591107252@collabora.com>
-Date: Mon, 9 Oct 2023 10:51:19 +0200
+	b=bRARrHT/3htPKK0RbfsYILUajqJ8xnE4AfA8k4NWozgsApd7HnLzwhD4a1qVaSxv6
+	 nj76yiKGeYsvyn/M/OeYmgUKOh/hMl+uppMl6d3FPSGx2LKAvEL3c9sTrEl7ZsIqN2
+	 PgsNGQDhd7i1CE1YJZnE2Qet9yJUwIMwR2pOmRrh950giBGlAGhmd8xoSx0znxR9ml
+	 kP1jnzscbYxXk9zZd6SMaQbl1pWczeBfK1oKYtC+8J8A537eekbp3ek2JDqrZhc4kz
+	 zQr8OP+IiByFOcM0VcElQI9NdHe9YFMpV0XqXsCziRlR8nAtPdddxcQNs45IAkcy2w
+	 QOszP5mjsRvsg==
+Message-ID: <85c73436-988e-2493-1b47-967481b279bd@collabora.com>
+Date: Mon, 9 Oct 2023 10:51:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH 1/8] gpiolib: of: Add quirk for mt2701-cs42448 ASoC sound
+Subject: Re: [PATCH 2/8] ASoC: mediatek: mt2701-cs42448: Convert to GPIO
+ descriptors
 Content-Language: en-US
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <brgl@bgdev.pl>, Andy Shevchenko <andy@kernel.org>,
@@ -59,14 +60,14 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  alsa-devel@alsa-project.org
 References: <20231006-descriptors-asoc-mediatek-v1-0-07fe79f337f5@linaro.org>
- <20231006-descriptors-asoc-mediatek-v1-1-07fe79f337f5@linaro.org>
+ <20231006-descriptors-asoc-mediatek-v1-2-07fe79f337f5@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231006-descriptors-asoc-mediatek-v1-1-07fe79f337f5@linaro.org>
+In-Reply-To: <20231006-descriptors-asoc-mediatek-v1-2-07fe79f337f5@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_015127_359084_4B5CBBA0 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20231009_015127_358504_7CE09B29 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,9 +83,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 06/10/23 15:46, Linus Walleij ha scritto:
-> These gpio names are due to old DT bindings not following the
-> "-gpio"/"-gpios" conventions. Handle it using a quirk so the
-> driver can just look up the GPIOs.
+> The driver is pretty straight-forward to convert to use GPIO
+> descriptors, however a separate patch is needed to accept
+> the DT GPIO resources ending with "-gpio1" and "-gpio2"
+> instead of the standard "-gpio" or "-gpios" name convention.
 > 
 > Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
 
