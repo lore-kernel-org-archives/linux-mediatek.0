@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E6CE95A8E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 10:35:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DC0EE95A91
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 10:38:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:Cc:From:To:MIME-Version:Date:Message-ID:Reply-To:
+	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9YUkzYC9b2rzdqnb8rIk9Q53PP7Dw9g4wRmdWVmjnTs=; b=ylfkhzhG46KmlS/uYO7wQuN4tS
-	V5HQZleV6TiUF8Ot0mOfqPympLAYrh+x9d/Co0juYP92X/P4qwyqg4CiLEVMIHKM2IRDnozCql0bh
-	Ej7PZdwLS4COMddhvHh7ly6WQNtW1dKITVo5f6lz3BDQK3/RArJfDDCObI6R+yK3PDEHAXX/DLqAz
-	vf/6PiXaRfDCiSASR2vSM4gZoh1uHZywj53SlYYRR70aPxH39AOEb14RnLk+Ek9vDbPiDSg0zq6hD
-	RHa5HPKDlv30CTEY6brrYrO0aKQAx+XKYMuiRQZ0ISHgr1VFYB4xK10Q50hUhtqX+AtSPsHA9z8qf
-	765ussvA==;
+	bh=x3J73euIEV8eyB2wmuVgatH6Jh9dGNNNj6rdYQeMksc=; b=zCW1wAJ0DHGxWVTEeW9zXfgsWM
+	T3M4KJsg4HnL+cf3E3VmKKckpiJBqXkAf//W4JqlLuXxHw6t1pIVv/+OTnQM6p7q/lZz556Gl5kCa
+	IR1E4Nmc8lhHx2S+WDlI3AndXeg5lq0HBrn9QMDIXoeiMeRIcwtedoJxK09t+j5WB3CIkXRVuJ1Jf
+	xPno5D9HPPY9bpIBUuHbiB9oeTi2hk6ew+ptEY6b2D99Sh0YYOWrwuHHO5xDjziSRG5l+jN6e+rXM
+	Zfd+XrS33A/0r+HQPes0Gqv9Np+kN95vO4R/lknCGLBs/vcc/ujCsQ9ztakc7lCGj/kWJH+oTugQK
+	Sos2u45A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpnbM-00AEoe-2s;
-	Mon, 09 Oct 2023 10:35:04 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1qpneu-00AHNU-16;
+	Mon, 09 Oct 2023 10:38:44 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpnbI-00AElw-2W;
-	Mon, 09 Oct 2023 10:35:02 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-9ba081173a3so369029166b.1;
-        Mon, 09 Oct 2023 03:34:58 -0700 (PDT)
+	id 1qpneq-00AHIC-2H;
+	Mon, 09 Oct 2023 10:38:42 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-9a645e54806so744593266b.0;
+        Mon, 09 Oct 2023 03:38:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696847697; x=1697452497; darn=lists.infradead.org;
-        h=content-transfer-encoding:subject:cc:from:to:content-language
+        d=gmail.com; s=20230601; t=1696847917; x=1697452717; darn=lists.infradead.org;
+        h=content-transfer-encoding:subject:from:cc:to:content-language
          :user-agent:mime-version:date:message-id:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9YUkzYC9b2rzdqnb8rIk9Q53PP7Dw9g4wRmdWVmjnTs=;
-        b=QhpST0DK3rDJaPLodPKSiquKrhgK6aCuRimxtY/JRGC860XRwqgYhQDbn/QPBgAxPm
-         FZVBwi4kHDJPej66C35+WcSK7aWsvl0sPTPZU0oqKLylEkdFH4G7eOGzXpBy0511ZqFw
-         OFu9scmi7MqkF7VHf2jVPTJ07wzgyoBB7KkBQLaeXd1epiV6wcGGd+7If33knm6ju0Fn
-         c2A/TeniyZmnIZsdSFUmk1LXWzjb6V0yfObYxYlbu9j5HiV2cdfgR4XyO0Wk7XzwWEtk
-         aDbJ1/TIPYrdbQ/nlBykZtQGEiLCoq5Rt5CNw//dVvb828ecgJrBP9o9dv+MAkDjZBoG
-         9IWQ==
+        bh=x3J73euIEV8eyB2wmuVgatH6Jh9dGNNNj6rdYQeMksc=;
+        b=nT/oBLSFVhwFX3epcrDPMl44qpPRrwP477Fn0GScYSHBVd464B3GEqMBzOe2kb+hMx
+         aEQqLugHtljWApdQidsrOesC7StzBbseM4dFkrJ7Zmt3yWsfRHmTSJw1FRRV61VLFXWB
+         yMRFhlqCD0AelwhrzWtz2xqyrAKhvV+ccA58I8Qnihz8Wh9ymejW3S/szLPfWWOE8Rx5
+         9OJVdWRqrgKBwciKjsYEk1ZJZBva9zVTV1NUOP6oTrWZtdugclCJqjYS9qeS3mWvgh6O
+         p+6bxw7oRksfc41NOHxPTlR/VrzaEjDV4AKx5CYtvM4fyeYrFcMkunREFPlFZQ9V5fV7
+         kdxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696847697; x=1697452497;
-        h=content-transfer-encoding:subject:cc:from:to:content-language
+        d=1e100.net; s=20230601; t=1696847917; x=1697452717;
+        h=content-transfer-encoding:subject:from:cc:to:content-language
          :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=9YUkzYC9b2rzdqnb8rIk9Q53PP7Dw9g4wRmdWVmjnTs=;
-        b=JA4ZPdiL/52YPx5Tz2VSfb33iSszXwsJXwXh2RS8AtLvsiUYQ9aKDgT7WPecxrVigk
-         eoG//q/slDNvCdayKCfntCGN9pIDjvJbv+ZDGIimH4DzXgyEiDGCGmB4erR2ujTNLqJI
-         mJ9bANUvs6ctdQX527iGDsO/Vt3FW73U+5GN2wwjADMeaWjmQaf4ZxT7FHB+ZEov+OOi
-         g+qrSmL6XlacJucITnB8NY014NdEk6rqoe802ZyVruUd1P6e6kRo2h7Q0IOpiKNdRmGI
-         8Jsd0fOyU1GxpIb7Q7ikY/DvWDZ9V8Za2v7RTyYHyc0Rz93J+pqlePwcFsXDAa27DmK6
-         cvCA==
-X-Gm-Message-State: AOJu0Yxbwx2jWwLpCqoZ2w7EVuE+NCNQzypz3iriadF2Y+DFRJ4tsruf
-	e/lObZNXcCd/JmxWL+Y8qmg=
-X-Google-Smtp-Source: AGHT+IGhKD+tXQcKdNKjbY6RRzyK2L8mvDla0H42TWnRcIxtPBO5ZpdJqMO1b1fI2w0jBfTUxDURvw==
-X-Received: by 2002:a17:906:1097:b0:9b2:b786:5e9c with SMTP id u23-20020a170906109700b009b2b7865e9cmr13153248eju.28.1696847697183;
-        Mon, 09 Oct 2023 03:34:57 -0700 (PDT)
+        bh=x3J73euIEV8eyB2wmuVgatH6Jh9dGNNNj6rdYQeMksc=;
+        b=gvhDScutX8kgexwmL6zOJSZHpYXLwxHjnZrBupSV+22WX8ERQyCtrJCi0vXa0iJxKx
+         A7CcppoUkEHlH0HZJxkQhqJeao7qFMDWjhKttJC+DNfLbhYri1iEtTjb1Q5AwWc2h6pC
+         rQhgybI9KkGr/CmnAN4hHQnu1V8VdL/lC2JRG5g+3a558Hdlk539AY+PxS/9ddULHR+Q
+         m7ih0rTCnLEKLz4+yKLgZNFnUb7ehJWQjy0XPz4ORbg9rxZy+djp9ZuT2BaKB1/lJuJ1
+         4XvVTSiWMR8KG7/1l0yBh1BeXwpgmVYsOfMoVuxVmBm1jrKS3QlOddkhp5wdKJB42cyV
+         qnDg==
+X-Gm-Message-State: AOJu0Yxd6tVziEIdcbVI1hlv5gkOnsceC55CqwakTPEDaUIYx+B+0aS6
+	JuR1QkA4wnEXDadzBxMtJAE=
+X-Google-Smtp-Source: AGHT+IHo12kdAU1akvWTEeAq1UVmtpvo/cS3/aj5gnG4bA0846pnpYavyGYEoQTf7pfIsIuedml/hQ==
+X-Received: by 2002:a17:906:3156:b0:9b2:b71f:83be with SMTP id e22-20020a170906315600b009b2b71f83bemr13022049eje.1.1696847917145;
+        Mon, 09 Oct 2023 03:38:37 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id a6-20020a1709062b0600b009ae57888718sm6484722ejg.207.2023.10.09.03.34.55
+        by smtp.gmail.com with ESMTPSA id jp20-20020a170906f75400b0099bcb44493fsm6624599ejb.147.2023.10.09.03.38.35
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Oct 2023 03:34:56 -0700 (PDT)
-Message-ID: <7a877ad9-481f-bad8-5cad-5d013c6cd70d@gmail.com>
-Date: Mon, 9 Oct 2023 12:34:55 +0200
+        Mon, 09 Oct 2023 03:38:36 -0700 (PDT)
+Message-ID: <d25ccd90-277a-fd05-8605-f7d1d129d4fa@gmail.com>
+Date: Mon, 9 Oct 2023 12:38:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
 Content-Language: en-US, ca-ES, es-ES
-To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
+To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
 Cc: "linux-arm-kernel@lists.infradead.org"
  <linux-arm-kernel@lists.infradead.org>,
  "moderated list:ARM/Mediatek SoC support"
  <linux-mediatek@lists.infradead.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
- Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Subject: [GIT PULL] arm64: dts: mediatek: Updates for v6.7
+ Mark Tseng <chun-jen.tseng@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [GIT PULL] soc: mediatek: Updates for v6.7
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_033500_843574_B4D1C4F5 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20231009_033840_744742_E0281BD5 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,20 +96,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd and Olof,
+Hi Olof and Arnd,
 
-Please find below a few patches for the 64 bit DTS files targeted for v6.7.
+Please have a look on the few changes for the MediaTek SoC drivers for v6.7.
 
-The patches were picked up with the help from Angelo.
-With these changes we have now support for the Genio 1200 EVK board for IoT 
-applications. Also the MT8365 from the same business line has much more support 
-of peripherals.
-Also support for the new 4th revision of the Acer Chromebook 514 was added. The 
-difference with older board is the audio codec used.
-On the Mobile phone side of things, support for the Helio X10, which is used by 
-the Sony Xperia M5 got support for the display.
+The patches were collected with the help from Angelo.
 
-Happy merging,
+Please have a look and hopefully: happy merging :)
+
+Regards,
 Matthias
 
 ---
@@ -121,76 +115,24 @@ The following changes since commit 8a749fd1a8720d4619c91c8b6e7528c0a355c0aa:
 are available in the Git repository at:
 
    https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
-tags/v6.6-next-dts64
+tags/v6.6-next-soc
 
-for you to fetch changes up to 252d6a178ee3df2984194b3579851b00cbe8cdbd:
+for you to fetch changes up to fa095fe0ab3589109dc5add3f34e16a053d90260:
 
-   arm64: dts: mediatek: cherry: Configure eDP and internal display (2023-10-06 
-11:10:18 +0200)
-
-----------------------------------------------------------------
-MediaTek ARM64 DTS updates for v6.7
-
-- Add support for SMI/IOMMU/LARBs, power domains and multimedia
-   related subsystems for the MT8365 SoC
-- Add support for MediaTek Genio 1200 IoT evaluation board
-- Add support for newer revisions of MT8192 Chromebooks
-- Add support for internal eDP display on MT8195 Cherry Chromebooks
-- Add display and display backlight support for the Helio X10 SoC and
-   for the Sony Xperia M5 smartphone
+   soc: mediatek: svs: Add support for voltage bins (2023-10-05 12:14:47 +0200)
 
 ----------------------------------------------------------------
-Alexandre Mergnat (7):
-       arm64: dts: mediatek: add mmsys support for mt8365 SoC
-       arm64: dts: mediatek: add camsys support for mt8365 SoC
-       arm64: dts: mediatek: add apu support for mt8365 SoC
-       arm64: dts: mediatek: add power domain support for mt8365 SoC
-       arm64: dts: mediatek: add smi support for mt8365 SoC
-       arm64: dts: mediatek: add larb support for mt8365 SoC
-       arm64: dts: mediatek: add iommu support for mt8365 SoC
+MediaTek drivers updates for v6.7
 
-AngeloGioacchino Del Regno (4):
-       arm64: dts: mediatek: mt6795: Add support for display blocks and DPI/DSI
-       arm64: dts: mediatek: mt6795-xperia-m5: Add display backlight support
-       arm64: dts: mediatek: mt6795-xperia-m5: Add DSI Display and its vregs
-       arm64: dts: mediatek: cherry: Configure eDP and internal display
+- Added support for Smart Voltage Scaling (SVS) on the MT8188 SoC
 
-Chen-Yu Tsai (1):
-       arm64: dts: mediatek: mt8183-kukui: Add PMIC regulator supplies
+----------------------------------------------------------------
+Mark Tseng (3):
+       dt-bindings: soc: mediatek: add mt8188 svs dt-bindings
+       soc: mediatek: svs: Add support for MT8188 SoC
+       soc: mediatek: svs: Add support for voltage bins
 
-Macpaul Lin (2):
-       dt-bindings: arm64: mediatek: add mt8395-evk board
-       arm64: dts: mediatek: add device-tree for Genio 1200 EVK board
-
-Nícolas F. R. A. Prado (5):
-       dt-bindings: arm64: dts: mediatek: Add rev5-sku2 of hayato
-       dt-bindings: arm64: dts: mediatek: Add rev4 of spherion
-       arm64: dts: mediatek: Remove asurada-audio dtsi files
-       arm64: dts: mediatek: Add hayato-rev5-sku2
-       arm64: dts: mediatek: Add spherion-rev4
-
-  .../devicetree/bindings/arm/mediatek.yaml          |  16 +
-  arch/arm64/boot/dts/mediatek/Makefile              |   3 +
-  .../boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 101 +++
-  arch/arm64/boot/dts/mediatek/mt6795.dtsi           | 253 +++++-
-  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |  28 +
-  .../mt8192-asurada-audio-rt1015p-rt5682.dtsi       |  19 -
-  .../dts/mediatek/mt8192-asurada-audio-rt1015p.dtsi |  26 -
-  .../dts/mediatek/mt8192-asurada-audio-rt5682.dtsi  |  21 -
-  .../boot/dts/mediatek/mt8192-asurada-hayato-r1.dts |  19 +-
-  .../dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts |  64 ++
-  .../dts/mediatek/mt8192-asurada-spherion-r0.dts    |  19 +-
-  .../dts/mediatek/mt8192-asurada-spherion-r4.dts    |  77 ++
-  arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi   |  28 +
-  arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi    |  33 +
-  arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 210 +++++
-  .../boot/dts/mediatek/mt8395-genio-1200-evk.dts    | 901 +++++++++++++++++++++
-  16 files changed, 1749 insertions(+), 69 deletions(-)
-  delete mode 100644 
-arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682.dtsi
-  delete mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p.dtsi
-  delete mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682.dtsi
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+  .../devicetree/bindings/soc/mediatek/mtk-svs.yaml  |   1 +
+  drivers/soc/mediatek/mtk-svs.c                     | 184 ++++++++++++++++++++-
+  2 files changed, 181 insertions(+), 4 deletions(-)
 
