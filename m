@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EC1EE95A8E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 12:39:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1995EE95A91
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 12:49:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UHiWTZQACnYs1tjp8e8Bh2Re/Fz5NpS2zf/8qzYPPhA=; b=BUNgPpOvWC2k8/zkYMXi+OUaaL
-	3KUpwpMkAisL6YdOPXOTOoOoclvjOEv7aYsHlq9ujadNVKtOF3R516SsiEWxhTqT1416qPsitnUhI
-	DmwjOBUkyiPx3t11T70ZB4XzpxIoNcGGMLZUXvJJJfqB5XIrouEZtl2hyhWLYNerb08eFpPVYOnGu
-	kxxoOtURy9zSKUQZ0jVmo7ztrc6jLWgpGYrKDqGcN4+ZJ+0RAmLFu75YlJ5yTHHzxC+6XXoi47+LG
-	Z8hTNHHFX0mGOsz9v4XklANF3SZuAl1WDh3PC67LyUtvbHGwYHnCuRS0ya921qSroDE+mzFTYVCc8
-	Ld1rXttA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ylmy6LNqxUWWWrFeJBvKNuZU/HtEg184Ps2X/ZKITwc=; b=ESAPV8w+LdZ+6i
+	eoKBnyF9+TNgDW00QuJVZkjb8a9EHSDzauFVmeAUtbkcHXAThxR8X4QKuVwaVK0rsRrNCeKSJxqCO
+	OF3Zj0cb9+aN8s7ygnCHyDLvbbfPhbNNupcZuBJfEx6EEbMBvGG633sINU72piJ+5x608ie4ktItq
+	YIcK0uMRY0lgniKsHvO4VwMW5SdWitUUf0CNt8DOGEbLJEAI/fzk3rF8p3KQWh52FB8pwCXCLAT2y
+	0NHUIOCrDVBBj8L4CfC/i6C5jv6tgwtW5itdGHjAXDQaDAC3qpTWhFzatrndwlli1lvckWhKqNRCI
+	0j55tVRk27c5O1yzo96g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qppYD-00AhP6-0D;
-	Mon, 09 Oct 2023 12:39:57 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qpphS-00AixP-04;
+	Mon, 09 Oct 2023 12:49:30 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qppY8-00AhNg-09;
-	Mon, 09 Oct 2023 12:39:54 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 203C0660716C;
-	Mon,  9 Oct 2023 13:39:48 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696855188;
-	bh=lS76ocpZeANuMGXYVZLnsbTidODtHxIumr0VpieWrD0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jt0iKC8R9Wx4opcqtrMmKH9+AOy+H2tE3ng3w9EAmYZrzqYuUq6bBw6Z7slm2epCe
-	 uH9u322ItomcDCaU8FcYCIbF3pERqrSS6KRPTE+rWJ2qkaPkTyQ6DfqBeLxlIcVAjQ
-	 whRmSl0RtPyi100ru/U3zXY3inNCRS+sQqZiesHNd3yCimktFDLqCERXiGrhyYoT25
-	 3ZC1PvmfLUT2mYHpiLPFsdr6X8K2rBppKavy7NJc6DlM9WOH7FnhgmcvCC8QxJ7CK8
-	 Ev+c7I0Jytua3+XQO5/6tKiAklBEcUpl2rvKjqdZ9PBkk5XAp/7xfc9iIepuIDYsuq
-	 OGijxSaQnzERg==
-Message-ID: <ee6598bf-312f-d76d-93e6-16ac7f90b335@collabora.com>
-Date: Mon, 9 Oct 2023 14:39:45 +0200
+	id 1qpphN-00AiwT-2m;
+	Mon, 09 Oct 2023 12:49:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id A665EB811A2;
+	Mon,  9 Oct 2023 12:49:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09B48C433C8;
+	Mon,  9 Oct 2023 12:49:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696855763;
+	bh=RdL6X0IuEzq5DEkk1aRpGDbJ8Q3AWlt3Q8VCAAvNqO8=;
+	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:List-Id:Cc:
+	 From;
+	b=jsrw4uc2mS1Y+BHxwA1cXtrSn5LJ66eBKR+DweBzZ3RKITTXC/V/p+o650TDlfMyr
+	 TMnrN97zAidct8tJxgnqXR11mGUA1SuzbCnht1BYQl2HdVw6he77+meiDZ4wR8mEM5
+	 xjWRBwcQBCvX1GXNcUg5uq4me7/3tQoRSBLMVNrMlJU0tlLVgkhD9YEn5ZHWWVzhF9
+	 SEBykP4a31cFWyRXoIgQdX1k672a9zOkL7iixtKjF24Nux/lszFd0jQJkg1ne+KYt/
+	 b7HFoQ6fR4zgYpSsfvbELPs9qoxcdvGrNKfUIFdmotgQbF/tZ3xafs/TaNICte24cz
+	 BJGf7XLC8sl7A==
+Received: by mail-pj1-f52.google.com with SMTP id 98e67ed59e1d1-2774f6943b1so3349264a91.0;
+        Mon, 09 Oct 2023 05:49:23 -0700 (PDT)
+X-Gm-Message-State: AOJu0YxsXXTe3gRRGQjzUoPJNQ6ebVvmZuZS04Cf6x7jvBYfI4qljepS
+	1wzBXfC/AxxLf4CeMiIBPFsrWyCvkNdQtq6bDbI=
+X-Google-Smtp-Source: AGHT+IEJPw/0KZYbTJdgEW1q+YmISj7VyjqzNA2U4u8ZeIq5MgOTrzeUi6ddE86G+8a3/ieeXbfmWIQMdiu7KQ1K8r8=
+X-Received: by 2002:a17:90b:3784:b0:276:ba43:a863 with SMTP id
+ mz4-20020a17090b378400b00276ba43a863mr13678662pjb.41.1696855762601; Mon, 09
+ Oct 2023 05:49:22 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v2] media: mediatek: vcodec: Handle invalid encoder vsi
-Content-Language: en-US
-To: Irui Wang <irui.wang@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, nicolas.dufresne@collabora.com,
- Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Maoguang Meng <maoguang.meng@mediatek.com>
-References: <20231007113347.28863-1-irui.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231007113347.28863-1-irui.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <7a877ad9-481f-bad8-5cad-5d013c6cd70d@gmail.com>
+In-Reply-To: <7a877ad9-481f-bad8-5cad-5d013c6cd70d@gmail.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Mon, 9 Oct 2023 21:49:12 +0900
+X-Gmail-Original-Message-ID: <CAGb2v64-9o7ukZqOtmDTDjngn62Rw6Nseg13LtZ=6O4dx=Hm5A@mail.gmail.com>
+Message-ID: <CAGb2v64-9o7ukZqOtmDTDjngn62Rw6Nseg13LtZ=6O4dx=Hm5A@mail.gmail.com>
+Subject: Re: [GIT PULL] arm64: dts: mediatek: Updates for v6.7
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Alexandre Mergnat <amergnat@baylibre.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_053952_220296_05C8F05E 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231009_054926_225120_85C3599C 
+X-CRM114-Status: GOOD (  23.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,18 +81,137 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/10/23 13:33, Irui Wang ha scritto:
-> Handle invalid encoder vsi in vpu_enc_init to ensure the encoder
-> vsi is valid for future use.
-> 
-> Fixes: 1972e32431ed ("media: mediatek: vcodec: Fix possible invalid memory access for encoder")
-> 
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+On Mon, Oct 9, 2023 at 7:35=E2=80=AFPM Matthias Brugger <matthias.bgg@gmail=
+.com> wrote:
+>
+> Hi Arnd and Olof,
+>
+> Please find below a few patches for the 64 bit DTS files targeted for v6.=
+7.
+>
+> The patches were picked up with the help from Angelo.
+> With these changes we have now support for the Genio 1200 EVK board for I=
+oT
+> applications. Also the MT8365 from the same business line has much more s=
+upport
+> of peripherals.
+> Also support for the new 4th revision of the Acer Chromebook 514 was adde=
+d. The
+> difference with older board is the audio codec used.
+> On the Mobile phone side of things, support for the Helio X10, which is u=
+sed by
+> the Sony Xperia M5 got support for the display.
+>
+> Happy merging,
+> Matthias
+>
+> ---
+> The following changes since commit 8a749fd1a8720d4619c91c8b6e7528c0a355c0=
+aa:
+>
+>    Linux 6.6-rc4 (2023-10-01 14:15:13 -0700)
+>
+> are available in the Git repository at:
+>
+>    https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git=
+/
+> tags/v6.6-next-dts64
+>
+> for you to fetch changes up to 252d6a178ee3df2984194b3579851b00cbe8cdbd:
+>
+>    arm64: dts: mediatek: cherry: Configure eDP and internal display (2023=
+-10-06
+> 11:10:18 +0200)
+>
+> ----------------------------------------------------------------
+> MediaTek ARM64 DTS updates for v6.7
+>
+> - Add support for SMI/IOMMU/LARBs, power domains and multimedia
+>    related subsystems for the MT8365 SoC
+> - Add support for MediaTek Genio 1200 IoT evaluation board
+> - Add support for newer revisions of MT8192 Chromebooks
+> - Add support for internal eDP display on MT8195 Cherry Chromebooks
+> - Add display and display backlight support for the Helio X10 SoC and
+>    for the Sony Xperia M5 smartphone
+>
+> ----------------------------------------------------------------
+> Alexandre Mergnat (7):
+>        arm64: dts: mediatek: add mmsys support for mt8365 SoC
+>        arm64: dts: mediatek: add camsys support for mt8365 SoC
+>        arm64: dts: mediatek: add apu support for mt8365 SoC
+>        arm64: dts: mediatek: add power domain support for mt8365 SoC
+>        arm64: dts: mediatek: add smi support for mt8365 SoC
+>        arm64: dts: mediatek: add larb support for mt8365 SoC
+>        arm64: dts: mediatek: add iommu support for mt8365 SoC
+>
+> AngeloGioacchino Del Regno (4):
+>        arm64: dts: mediatek: mt6795: Add support for display blocks and D=
+PI/DSI
+>        arm64: dts: mediatek: mt6795-xperia-m5: Add display backlight supp=
+ort
+>        arm64: dts: mediatek: mt6795-xperia-m5: Add DSI Display and its vr=
+egs
+>        arm64: dts: mediatek: cherry: Configure eDP and internal display
+>
+> Chen-Yu Tsai (1):
+>        arm64: dts: mediatek: mt8183-kukui: Add PMIC regulator supplies
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Could you also pick up the following patches?
+
+- arm64: dts: mediatek: mt6358: Merge ldo_vcn33_* regulators
+  https://lore.kernel.org/linux-mediatek/20230913084457.1638690-1-wenst@chr=
+omium.org/
+- arm64: dts: mt6358: Drop bogus "regulator-fixed" compatible properties
+  https://lore.kernel.org/linux-mediatek/20230928091415.3253698-1-wenst@chr=
+omium.org/
 
 
+Thanks
+
+
+> Macpaul Lin (2):
+>        dt-bindings: arm64: mediatek: add mt8395-evk board
+>        arm64: dts: mediatek: add device-tree for Genio 1200 EVK board
+>
+> N=C3=ADcolas F. R. A. Prado (5):
+>        dt-bindings: arm64: dts: mediatek: Add rev5-sku2 of hayato
+>        dt-bindings: arm64: dts: mediatek: Add rev4 of spherion
+>        arm64: dts: mediatek: Remove asurada-audio dtsi files
+>        arm64: dts: mediatek: Add hayato-rev5-sku2
+>        arm64: dts: mediatek: Add spherion-rev4
+>
+>   .../devicetree/bindings/arm/mediatek.yaml          |  16 +
+>   arch/arm64/boot/dts/mediatek/Makefile              |   3 +
+>   .../boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 101 +++
+>   arch/arm64/boot/dts/mediatek/mt6795.dtsi           | 253 +++++-
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |  28 +
+>   .../mt8192-asurada-audio-rt1015p-rt5682.dtsi       |  19 -
+>   .../dts/mediatek/mt8192-asurada-audio-rt1015p.dtsi |  26 -
+>   .../dts/mediatek/mt8192-asurada-audio-rt5682.dtsi  |  21 -
+>   .../boot/dts/mediatek/mt8192-asurada-hayato-r1.dts |  19 +-
+>   .../dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts |  64 ++
+>   .../dts/mediatek/mt8192-asurada-spherion-r0.dts    |  19 +-
+>   .../dts/mediatek/mt8192-asurada-spherion-r4.dts    |  77 ++
+>   arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi   |  28 +
+>   arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi    |  33 +
+>   arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 210 +++++
+>   .../boot/dts/mediatek/mt8395-genio-1200-evk.dts    | 901 ++++++++++++++=
++++++++
+>   16 files changed, 1749 insertions(+), 69 deletions(-)
+>   delete mode 100644
+> arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682.dtsi
+>   delete mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt=
+1015p.dtsi
+>   delete mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt=
+5682.dtsi
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r=
+5-sku2.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion=
+-r4.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.d=
+ts
 
