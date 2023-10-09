@@ -4,78 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE53E95A91
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 16:00:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C397BCD611D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Oct 2023 18:29:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BGDZ5iuInPSGGOQdj+ARhU721cI6klKpiNOn02gG0lk=; b=i88IRSJyuzoV0+0QCxINEfzqYw
-	9wzLm4PARZEyIeZsYQufxS0w5wphw3I9SXsIW7D7SPxmJlLUoq0RSJ7gVcTcImuHGu4vX4VXZduah
-	+eyQEEowrhDpqpbRb591Hy7Nnl5n3NMkv0/PXgEdvAU1XwclqTWtUOJlF43pMNYNJBlts1yLywRS8
-	ANp2Ov8ehQ+OKeix7ejHrUBQA8t0Ama4dvboBn/7oI0g6Bxt7m2j9vmk7kW/Oaj/q8W5u5eRVjc48
-	VelCrs2VgMj2H0P+hAGIR/1VuXBDdDrk0r+NumwaCMT5/gqIJ7a1Pp4NcYDQ1jYQTkJNPPeQXGvN6
-	2cciAXOg==;
+	bh=XDBK5Er15QvjGUwykMjw01laGvht+dhKObLHHzorKRg=; b=4kJKqmTfM74WMSOeipJko+naPo
+	XTLRUNtqwL9fqhyxqCyvWih6VjCXGKBzKpSB58ib6J6eScgDKi1/BeNbIjSBo3dfYfOJkM81RkFEH
+	If0jQzxmPlCCbCLdlA+qjmKpiU2K0Aq8Vb6/d3g/3FQAVLr65+tptYH/oJBawgl7YkdMq98sBG8vm
+	zyLHU2bDNibc5oaN44tkbxCXKeO/6bBmch0g4jfPnS0TsYQaykflXqjLtLTOB3Pfk4wKgEYIcAbAk
+	QiplxwXQpIQUcow/7DXqWFznTuRV2CK+UriO/WVY/znlVwdqVv/2CGOCWQ6zb353Eu1QFDFH84dIX
+	Ne4KtKVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpsg4-00B7Nm-2r;
-	Mon, 09 Oct 2023 16:00:16 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qpv0P-00BO9S-0f;
+	Mon, 09 Oct 2023 18:29:25 +0000
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpsg1-00B7Mk-1E
+	id 1qpv0L-00BO8V-2m
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Oct 2023 16:00:15 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qpsfe-0001Rk-Q1; Mon, 09 Oct 2023 17:59:50 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qpsfa-000S2K-V4; Mon, 09 Oct 2023 17:59:46 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qpsfa-00COV8-LE; Mon, 09 Oct 2023 17:59:46 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>
-Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Mark Brown <broonie@kernel.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	sound-open-firmware@alsa-project.org,
-	alsa-devel@alsa-project.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: SOF: Convert to platform remove callback returning void
-Date: Mon,  9 Oct 2023 17:59:45 +0200
-Message-Id: <20231009155945.285537-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.40.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7396; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=Q9/KBGD+XGVZ0UZsC4DJ45wfffx2bZ/WHlvP7GfhKsU=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlJCNwgmfg7er1IvTbmxgvFe1UXFCkSABq/yQt5 SWpzUZa53aJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZSQjcAAKCRCPgPtYfRL+ TiZ1CACvkN8puqg2dfVv6uRqViQE84eMKq/yYGa6ecR04VSh9DsFufeHc1LxyZwTCrBq7Lc+YtL GjoEwr8MZRE5aLd4YiTyK+8PfFUk1apFbKkhKO4ciNkeKIav2Yd6rLFBhpLpY5QjdG02yf25yY5 1gPOKjHaCyZdYtn5wXj5GdQnzSO/RKMYDuGUrLY9kHBg5I7bfeqlpMtqqvSf+IRUFzEt6dSTpHX t8sU9DK1DXcz8Mx/QnatAaCARZpojdfzfdomGCCpPSvrBfCpG6BpyJ93R0o+O3oyKsZp/HRDeep GCcQjaidvDIelehrT6NSEwtNju2zjsJtEvtocQ9EmW/gw5Zo
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+	Mon, 09 Oct 2023 18:29:23 +0000
+Received: by mail-yb1-xb49.google.com with SMTP id 3f1490d57ef6-d9a4fb3e096so109181276.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Oct 2023 11:29:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1696876160; x=1697480960; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=XDBK5Er15QvjGUwykMjw01laGvht+dhKObLHHzorKRg=;
+        b=bB3R+YUIColrXkxcsjfNYw5smLLCphDxbwzf+VJETW4tdJBrHsUpnbXcN29tw8uSBD
+         4/yOoLTuFB0gUL8k5835HSa6gdGvm1nBNlc4J6GSh3XzgD7j33JTCwqB5iIYLh/aNVOF
+         yxAKLQYMQS83oBLxcOGCsdKrH0/9VaHe/TDZrqDzJx2Emoxa9OhkVw0Ds9qAnnpxwHH9
+         Kg8+Yvp7JkrlAF1tnldImWI5Zn/CDNfOPyuyE4Rgu2UuavlezAfIWv+iSbVe0ztEIUBq
+         ph6f4HMQGVjp1VGeHSWazkX4k1H7tCWcImfHVuvbzSsioeJZKvkQc3mRgKoslPqIW6OF
+         zoSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696876160; x=1697480960;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XDBK5Er15QvjGUwykMjw01laGvht+dhKObLHHzorKRg=;
+        b=a2RqlrvtS+eohHr7C2lZhN4I9YnSS54NVEg34zo4L+bQTPsufiUqlgrRvhTbXKB1yz
+         utC2ki40Pv4dCec40BeW1EZukB3TqQprRwCmMD10D7Qy6cPNLDGKabyQCIb3vTo/NBBb
+         S4klNBjL7lHTzWenVzI1CSxGJYYq5guc+xK/WWFJUhmISXhHurJeoENM8acKsPJqJOd8
+         dknYiBpFP4Qxg/VeQp4HU3U/yQjq/tX17+6zTeXsafS6wcSgo4vjBje8zecdBtX+xxR2
+         7gQHzFHF2bYZtzTcpGV4FkHJTTPMIoZeUQLLtkIfrt8+GXerudWt/Lmn4M+u3XJrkEFs
+         rNFQ==
+X-Gm-Message-State: AOJu0YyBZxkBWOtMDF0kECS51pExXuiRk0wvjy9v4yZXau1TwQDXVcgZ
+	rgGM0DPVyQV8Wf/a2fMaB66GhDftXZ9Mvx71QQ==
+X-Google-Smtp-Source: AGHT+IFEYT/za4QVR6fR/MF5JyjgO5M3AWWvhyO5pPz0UrgbgMOrmr3zJveczQ1Hka+kDj8XsImbs1hJdUTnEIDEMA==
+X-Received: from jstitt-linux1.c.googlers.com ([fda3:e722:ac3:cc00:2b:ff92:c0a8:23b5])
+ (user=justinstitt job=sendgmr) by 2002:a25:ad50:0:b0:d78:2c3:e633 with SMTP
+ id l16-20020a25ad50000000b00d7802c3e633mr230976ybe.2.1696876159847; Mon, 09
+ Oct 2023 11:29:19 -0700 (PDT)
+Date: Mon, 09 Oct 2023 18:29:19 +0000
+Mime-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAH5GJGUC/x3NPQ6DMAxA4asgz7VkCNCfq6AOUexSD02RHSEQ4
+ u6NOn7Lewe4mIrDoznAZFXXb65oLw2kd8yzoHI1dNSFluiOXiynZUc2XcUcsxRkj/gp1yEQJuw pRQ63MA49Q80sJi/d/ovpeZ4/gDTkfnIAAAA=
+X-Developer-Key: i=justinstitt@google.com; a=ed25519; pk=tC3hNkJQTpNX/gLKxTNQKDmiQl6QjBNCGKJINqAdJsE=
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1696876158; l=1437;
+ i=justinstitt@google.com; s=20230717; h=from:subject:message-id;
+ bh=njDv3GAGmhVrExshk0hx5o9AbY/WD0+6gqoo2bn4Yhg=; b=1J2L7iU0ES7zC7vWFtN9NFGtdF0F81pv/JVQhRo8NZAZIpsJ+gGWhuCDrgOKhESE8tZUUsU3U
+ d4Z2vnQKmFuD4VoXPdHgoaiP7YfJE2TD1dTaO5uvm7QNv0tFHL7+jAu
+X-Mailer: b4 0.12.3
+Message-ID: <20231009-strncpy-drivers-net-dsa-mt7530-c-v1-1-ec6677a6436a@google.com>
+Subject: [PATCH] net: dsa: mt7530: replace deprecated strncpy with ethtool_sprintf
+From: Justin Stitt <justinstitt@google.com>
+To: "=?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?=" <arinc.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>, 
+	Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-hardening@vger.kernel.org, Justin Stitt <justinstitt@google.com>
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_090013_579787_7EACFDFF 
-X-CRM114-Status: GOOD (  18.10  )
+X-CRM114-CacheID: sfid-20231009_112921_895558_FCA0DC3B 
+X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,197 +101,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is ignored (apart
-from emitting a warning) and this typically results in resource leaks.
+`strncpy` is deprecated for use on NUL-terminated destination strings
+[1] and as such we should prefer more robust and less ambiguous string
+interfaces.
 
-To improve here there is a quest to make the remove callback return
-void. In the first step of this quest all drivers are converted to
-.remove_new(), which already returns void. Eventually after all drivers
-are converted, .remove_new() will be renamed to .remove().
+ethtool_sprintf() is designed specifically for get_strings() usage.
+Let's replace strncpy in favor of this more robust and easier to
+understand interface.
 
-The SOF platform drivers all use either sof_of_remove() or
-sof_acpi_remove() which both return zero unconditionally. Change these
-functions to return void and the drivers to use .remove_new(). There is
-no semantical change.
-
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+Link: https://www.kernel.org/doc/html/latest/process/deprecated.html#strncpy-on-nul-terminated-strings [1]
+Link: https://manpages.debian.org/testing/linux-manual-4.8/strscpy.9.en.html [2]
+Link: https://github.com/KSPP/linux/issues/90
+Cc: linux-hardening@vger.kernel.org
+Signed-off-by: Justin Stitt <justinstitt@google.com>
 ---
- sound/soc/sof/imx/imx8.c               | 2 +-
- sound/soc/sof/imx/imx8m.c              | 2 +-
- sound/soc/sof/imx/imx8ulp.c            | 2 +-
- sound/soc/sof/intel/bdw.c              | 2 +-
- sound/soc/sof/intel/byt.c              | 2 +-
- sound/soc/sof/mediatek/mt8186/mt8186.c | 2 +-
- sound/soc/sof/mediatek/mt8195/mt8195.c | 2 +-
- sound/soc/sof/sof-acpi-dev.c           | 4 +---
- sound/soc/sof/sof-acpi-dev.h           | 2 +-
- sound/soc/sof/sof-of-dev.c             | 4 +---
- sound/soc/sof/sof-of-dev.h             | 2 +-
- 11 files changed, 11 insertions(+), 15 deletions(-)
+Note: build-tested only.
+---
+ drivers/net/dsa/mt7530.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/sound/soc/sof/imx/imx8.c b/sound/soc/sof/imx/imx8.c
-index 2844d9a8040a..5f81d562f9a4 100644
---- a/sound/soc/sof/imx/imx8.c
-+++ b/sound/soc/sof/imx/imx8.c
-@@ -650,7 +650,7 @@ MODULE_DEVICE_TABLE(of, sof_of_imx8_ids);
- /* DT driver definition */
- static struct platform_driver snd_sof_of_imx8_driver = {
- 	.probe = sof_of_probe,
--	.remove = sof_of_remove,
-+	.remove_new = sof_of_remove,
- 	.driver = {
- 		.name = "sof-audio-of-imx8",
- 		.pm = &sof_of_pm,
-diff --git a/sound/soc/sof/imx/imx8m.c b/sound/soc/sof/imx/imx8m.c
-index 1243f8a6141e..1573eecca781 100644
---- a/sound/soc/sof/imx/imx8m.c
-+++ b/sound/soc/sof/imx/imx8m.c
-@@ -495,7 +495,7 @@ MODULE_DEVICE_TABLE(of, sof_of_imx8m_ids);
- /* DT driver definition */
- static struct platform_driver snd_sof_of_imx8m_driver = {
- 	.probe = sof_of_probe,
--	.remove = sof_of_remove,
-+	.remove_new = sof_of_remove,
- 	.driver = {
- 		.name = "sof-audio-of-imx8m",
- 		.pm = &sof_of_pm,
-diff --git a/sound/soc/sof/imx/imx8ulp.c b/sound/soc/sof/imx/imx8ulp.c
-index 4a562c9856e9..3c26eba19cf9 100644
---- a/sound/soc/sof/imx/imx8ulp.c
-+++ b/sound/soc/sof/imx/imx8ulp.c
-@@ -502,7 +502,7 @@ MODULE_DEVICE_TABLE(of, sof_of_imx8ulp_ids);
- /* DT driver definition */
- static struct platform_driver snd_sof_of_imx8ulp_driver = {
- 	.probe = sof_of_probe,
--	.remove = sof_of_remove,
-+	.remove_new = sof_of_remove,
- 	.driver = {
- 		.name = "sof-audio-of-imx8ulp",
- 		.pm = &sof_of_pm,
-diff --git a/sound/soc/sof/intel/bdw.c b/sound/soc/sof/intel/bdw.c
-index 812a49b1d3f4..2b8fa5fba17b 100644
---- a/sound/soc/sof/intel/bdw.c
-+++ b/sound/soc/sof/intel/bdw.c
-@@ -684,7 +684,7 @@ static int sof_broadwell_probe(struct platform_device *pdev)
- /* acpi_driver definition */
- static struct platform_driver snd_sof_acpi_intel_bdw_driver = {
- 	.probe = sof_broadwell_probe,
--	.remove = sof_acpi_remove,
-+	.remove_new = sof_acpi_remove,
- 	.driver = {
- 		.name = "sof-audio-acpi-intel-bdw",
- 		.pm = &sof_acpi_pm,
-diff --git a/sound/soc/sof/intel/byt.c b/sound/soc/sof/intel/byt.c
-index faf223b38360..f62065f974e9 100644
---- a/sound/soc/sof/intel/byt.c
-+++ b/sound/soc/sof/intel/byt.c
-@@ -467,7 +467,7 @@ static int sof_baytrail_probe(struct platform_device *pdev)
- /* acpi_driver definition */
- static struct platform_driver snd_sof_acpi_intel_byt_driver = {
- 	.probe = sof_baytrail_probe,
--	.remove = sof_acpi_remove,
-+	.remove_new = sof_acpi_remove,
- 	.driver = {
- 		.name = "sof-audio-acpi-intel-byt",
- 		.pm = &sof_acpi_pm,
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index f587edf9e0a7..35d4b7125448 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -707,7 +707,7 @@ MODULE_DEVICE_TABLE(of, sof_of_mt8186_ids);
- /* DT driver definition */
- static struct platform_driver snd_sof_of_mt8186_driver = {
- 	.probe = sof_of_probe,
--	.remove = sof_of_remove,
-+	.remove_new = sof_of_remove,
- 	.shutdown = sof_of_shutdown,
- 	.driver = {
- 	.name = "sof-audio-of-mt8186",
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index 7d6a568556ea..1d0d9289293a 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -660,7 +660,7 @@ MODULE_DEVICE_TABLE(of, sof_of_mt8195_ids);
- /* DT driver definition */
- static struct platform_driver snd_sof_of_mt8195_driver = {
- 	.probe = sof_of_probe,
--	.remove = sof_of_remove,
-+	.remove_new = sof_of_remove,
- 	.shutdown = sof_of_shutdown,
- 	.driver = {
- 	.name = "sof-audio-of-mt8195",
-diff --git a/sound/soc/sof/sof-acpi-dev.c b/sound/soc/sof/sof-acpi-dev.c
-index 1b04dcb33293..3fec5c1f41d4 100644
---- a/sound/soc/sof/sof-acpi-dev.c
-+++ b/sound/soc/sof/sof-acpi-dev.c
-@@ -97,7 +97,7 @@ int sof_acpi_probe(struct platform_device *pdev, const struct sof_dev_desc *desc
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 035a34b50f31..e00126af8318 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -836,8 +836,7 @@ mt7530_get_strings(struct dsa_switch *ds, int port, u32 stringset,
+ 		return;
+ 
+ 	for (i = 0; i < ARRAY_SIZE(mt7530_mib); i++)
+-		strncpy(data + i * ETH_GSTRING_LEN, mt7530_mib[i].name,
+-			ETH_GSTRING_LEN);
++		ethtool_sprintf(&data, "%s", mt7530_mib[i].name);
  }
- EXPORT_SYMBOL_NS(sof_acpi_probe, SND_SOC_SOF_ACPI_DEV);
  
--int sof_acpi_remove(struct platform_device *pdev)
-+void sof_acpi_remove(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 
-@@ -106,8 +106,6 @@ int sof_acpi_remove(struct platform_device *pdev)
- 
- 	/* call sof helper for DSP hardware remove */
- 	snd_sof_device_remove(dev);
--
--	return 0;
- }
- EXPORT_SYMBOL_NS(sof_acpi_remove, SND_SOC_SOF_ACPI_DEV);
- 
-diff --git a/sound/soc/sof/sof-acpi-dev.h b/sound/soc/sof/sof-acpi-dev.h
-index 5c2b558d2ace..9bf8f75ceaae 100644
---- a/sound/soc/sof/sof-acpi-dev.h
-+++ b/sound/soc/sof/sof-acpi-dev.h
-@@ -11,6 +11,6 @@
- 
- extern const struct dev_pm_ops sof_acpi_pm;
- int sof_acpi_probe(struct platform_device *pdev, const struct sof_dev_desc *desc);
--int sof_acpi_remove(struct platform_device *pdev);
-+void sof_acpi_remove(struct platform_device *pdev);
- 
- #endif
-diff --git a/sound/soc/sof/sof-of-dev.c b/sound/soc/sof/sof-of-dev.c
-index 53faeccedd4f..7fe9e4a261fd 100644
---- a/sound/soc/sof/sof-of-dev.c
-+++ b/sound/soc/sof/sof-of-dev.c
-@@ -84,14 +84,12 @@ int sof_of_probe(struct platform_device *pdev)
- }
- EXPORT_SYMBOL(sof_of_probe);
- 
--int sof_of_remove(struct platform_device *pdev)
-+void sof_of_remove(struct platform_device *pdev)
- {
- 	pm_runtime_disable(&pdev->dev);
- 
- 	/* call sof helper for DSP hardware remove */
- 	snd_sof_device_remove(&pdev->dev);
--
--	return 0;
- }
- EXPORT_SYMBOL(sof_of_remove);
- 
-diff --git a/sound/soc/sof/sof-of-dev.h b/sound/soc/sof/sof-of-dev.h
-index 2948b3a0d9fe..b6cc70595f3b 100644
---- a/sound/soc/sof/sof-of-dev.h
-+++ b/sound/soc/sof/sof-of-dev.h
-@@ -19,7 +19,7 @@ struct snd_sof_of_mach {
- extern const struct dev_pm_ops sof_of_pm;
- 
- int sof_of_probe(struct platform_device *pdev);
--int sof_of_remove(struct platform_device *pdev);
-+void sof_of_remove(struct platform_device *pdev);
- void sof_of_shutdown(struct platform_device *pdev);
- 
- #endif
+ static void
 
-base-commit: 0bb80ecc33a8fb5a682236443c1e740d5c917d1d
--- 
-2.40.1
+---
+base-commit: cbf3a2cb156a2c911d8f38d8247814b4c07f49a2
+change-id: 20231009-strncpy-drivers-net-dsa-mt7530-c-40cad383654d
+
+Best regards,
+--
+Justin Stitt <justinstitt@google.com>
 
 
