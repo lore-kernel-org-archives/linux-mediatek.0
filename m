@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 305B5CD8CB6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 20:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF8DBCD98C0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 21:05:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3oQwwKYwoiZ0SHY/ewVGJIxzoCy1EpL15euKfoG+Nm4=; b=fFGxg8PeFVaMCeXH/COeCgHBEy
-	XXAENOwOHlfvIowXCySFBnCTyyWDGGFoaNbLEu4OXx5NApeKP+WTUh42NeYOLQe4mcM9C9F/FBrJY
-	jWkFHYTQFlyJnitSZ0knYBEO7KSd4sYoetZ++P7G3SAXD3arqdsCIRet4Q4Um/JmFjV+piQy6ixLu
-	+5fXFTOZFCorMwTdkYCtlipRJi3Ho7Oix9TedRcEPsS130JamIF295ceVxiWeFWuDNpgtgUcP7Ou0
-	mJw59KJcrFMT8TGnUidvb0I+a9JMujtxfW/TcOIbAe0a+BPBPfBbspt11681uPjvdOGUh3LwwVqsG
-	/6KhKhLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2UOuzOZ1VzEieCnVEmeQEyb99FHWwHz9LzbqORqpg6w=; b=rNiuFrEMlsLbAyfZhagj/+rDFi
+	EVUau+SOD73ULitAQGm/ZE47nFBS1reRVY5Qn/5VW561hNRmu78zZBznnyDpUsPn0ryJ/VVwsNLQG
+	5GEfeIEa6asXPRhJqabWc6lpE4UtkoEtMsi0oYace2uauYxJvqrdcwpLMpcDg8muPm4m1Q89E6SLk
+	5Ip4P0jyislt3CUnaqCxZfOMbWYoiyd2RqPEcw0d+xeols8L3YGIm4NC2fZIkcrH9OfdBzjfhlWPU
+	1Ch5uvdsvUzQ7UTQz/06D1SAM7Rqun6v7+StAnGjJy05AxDCfVok82czeB9eVN+Fh5kFnKEaA0pZV
+	iVbix1wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqIyI-00E5qc-2U;
-	Tue, 10 Oct 2023 20:04:50 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1qqJua-00EAD8-1a;
+	Tue, 10 Oct 2023 21:05:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqIyH-00E5pv-2S;
-	Tue, 10 Oct 2023 20:04:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=3oQwwKYwoiZ0SHY/ewVGJIxzoCy1EpL15euKfoG+Nm4=; b=nxi6ki9eV37suWsQbArzTWN5mq
-	glkierP26zkTuu3TneEwh+vLLif+J+JUOQjIwvfjvmbZ2t3lHsUI1QvpsZ/Q8Wc9DffoUYmTO0CFl
-	7jV6RY8nuwENh5D7inZnNa1rROwNs9rImi4QgioqXpF4EzzKbR1nd5gzfrFomqA6A7yZSgCcDwOhc
-	H3ETW0vty5I53RP0RYb36cggPiwx33fDh8P47Tzu0cIYvd0CStWflEDH+RlYO0arSoQ5fSea1uPDj
-	mXHSeNHcByNcXmMM8PItN11/P4DDcFXfD0do1T9oENp1qh44BVxUT2X+fJpIMBLcYrcADqFBhbZJE
-	DhdWwCpw==;
-Received: from j130084.upc-j.chello.nl ([24.132.130.84] helo=noisy.programming.kicks-ass.net)
-	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qqIyA-006Y9B-U1; Tue, 10 Oct 2023 20:04:43 +0000
-Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
-	id 3A292300392; Tue, 10 Oct 2023 22:04:42 +0200 (CEST)
-Date: Tue, 10 Oct 2023 22:04:42 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Kuyo Chang =?utf-8?B?KOW8teW7uuaWhyk=?= <Kuyo.Chang@mediatek.com>
-Cc: "dietmar.eggemann@arm.com" <dietmar.eggemann@arm.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"rostedt@goodmis.org" <rostedt@goodmis.org>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	"vschneid@redhat.com" <vschneid@redhat.com>,
-	"bristot@redhat.com" <bristot@redhat.com>,
-	"juri.lelli@redhat.com" <juri.lelli@redhat.com>,
-	"mingo@redhat.com" <mingo@redhat.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"bsegall@google.com" <bsegall@google.com>,
-	"mgorman@suse.de" <mgorman@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"vincent.guittot@linaro.org" <vincent.guittot@linaro.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] sched: Fix stop_one_cpu_nowait() vs hotplug
-Message-ID: <20231010200442.GA16515@noisy.programming.kicks-ass.net>
-References: <20230927033431.12406-1-kuyo.chang@mediatek.com>
- <20230927080850.GB21824@noisy.programming.kicks-ass.net>
- <b9def8f3d9426bc158b302f4474b6e643b46d206.camel@mediatek.com>
- <20230929102135.GD6282@noisy.programming.kicks-ass.net>
- <8ad1b617a1040ce4cc56a5d04e8219b5313a9a6e.camel@mediatek.com>
- <20231010145747.GQ377@noisy.programming.kicks-ass.net>
+	id 1qqJuW-00EAC4-36;
+	Tue, 10 Oct 2023 21:05:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id F030B6187A;
+	Tue, 10 Oct 2023 21:04:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE473C433C7;
+	Tue, 10 Oct 2023 21:04:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696971899;
+	bh=yvPMXP2l4TfL9XGBebXnmFKqikjauh9MRR4XumXFlTk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=nQ+3EkzOMqum9iILMoJWwVqSEg4JHyrW5nbtYIhCBruFlKDx0CxnviKGEixaVdHvj
+	 +710FuLg+zgREUHUBk1aafDFz9fCh1iG86SLNYd/AF572bbh3VoM+9BwpQA+HIk9g5
+	 brrXfiilEFwbUEeznBv8H/kWK/L62RORmOARQW7eDzWxV+MC2kSx8IJ3nuOChtF4H5
+	 a4n2HQ5ommNXa9kUObzX7UhnVnYpvlSY21QvKd+emid4Ztu3LGJ9jcXmTlc29uZjrY
+	 hhJsk25hSU3amgIXvqyq/fu2eM4lsNGqE0e/VtNQnF/eB2+Qe3zxyJeG3ixq5VcmDp
+	 ytZwDpnwG/DQQ==
+From: Mark Brown <broonie@kernel.org>
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
+ Daniel Baluta <daniel.baluta@nxp.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20231009155945.285537-1-u.kleine-koenig@pengutronix.de>
+References: <20231009155945.285537-1-u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH] ASoC: SOF: Convert to platform remove callback
+ returning void
+Message-Id: <169697189438.374969.14160714279506826790.b4-ty@kernel.org>
+Date: Tue, 10 Oct 2023 22:04:54 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231010145747.GQ377@noisy.programming.kicks-ass.net>
+X-Mailer: b4 0.13-dev-0438c
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20231010_140501_046517_F054A3D5 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,181 +84,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 10, 2023 at 04:57:47PM +0200, Peter Zijlstra wrote:
-> On Tue, Oct 10, 2023 at 02:40:22PM +0000, Kuyo Chang (張建文) wrote:
-
-> > It is running good so far(more than a week)on hotplug/set affinity
-> > stress test. I will keep it testing and report back if it happens
-> > again.
+On Mon, 09 Oct 2023 17:59:45 +0200, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is ignored (apart
+> from emitting a warning) and this typically results in resource leaks.
 > 
-> OK, I suppose I should look at writing a coherent Changelog for this
-> then...
+> To improve here there is a quest to make the remove callback return
+> void. In the first step of this quest all drivers are converted to
+> .remove_new(), which already returns void. Eventually after all drivers
+> are converted, .remove_new() will be renamed to .remove().
+> 
+> [...]
 
-Something like the below... ?
+Applied to
 
----
-Subject: sched: Fix stop_one_cpu_nowait() vs hotplug
-From: Peter Zijlstra <peterz@infradead.org>
-Date: Tue Oct 10 20:57:39 CEST 2023
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Kuyo reported sporadic failures on a sched_setaffinity() vs CPU
-hotplug stress-test -- notably affine_move_task() remains stuck in
-wait_for_completion(), leading to a hung-task detector warning.
+Thanks!
 
-Specifically, it was reported that stop_one_cpu_nowait(.fn =
-migration_cpu_stop) returns false -- this stopper is responsible for
-the matching complete().
+[1/1] ASoC: SOF: Convert to platform remove callback returning void
+      commit: 52fee5c9158000db607d734383fd862969782de5
 
-The race scenario is:
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-	CPU0					CPU1
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-					// doing _cpu_down()
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-  __set_cpus_allowed_ptr()
-    task_rq_lock();
-					takedown_cpu()
-					  stop_machine_cpuslocked(take_cpu_down..)
-	
-					<PREEMPT: cpu_stopper_thread()
-					  MULTI_STOP_PREPARE
-					  ...
-    __set_cpus_allowed_ptr_locked()
-      affine_move_task()
-        task_rq_unlock();
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-  <PREEMPT: cpu_stopper_thread()\> 
-    ack_state()
-					  MULTI_STOP_RUN
-					    take_cpu_down()
-					      __cpu_disable();
-					      stop_machine_park();
-						stopper->enabled = false;
-					 />
-   />
-	stop_one_cpu_nowait(.fn = migration_cpu_stop);
-          if (stopper->enabled) // false!!!
+Thanks,
+Mark
 
-	
-That is, by doing stop_one_cpu_nowait() after dropping rq-lock, the
-stopper thread gets a chance to preempt and allows the cpu-down for
-the target CPU to complete.
-
-OTOH, since stop_one_cpu_nowait() / cpu_stop_queue_work() needs to
-issue a wakeup, it must not be ran under the scheduler locks.
-
-Solve this apparent contradiction by keeping preemption disabled over
-the unlock + queue_stopper combination:
-
-	preempt_disable();
-	task_rq_unlock(...);
-	if (!stop_pending)
-	  stop_one_cpu_nowait(...)
-	preempt_enable();
-
-This respects the lock ordering contraints while still avoiding the
-above race. That is, if we find the CPU is online under rq-lock, the
-targeted stop_one_cpu_nowait() must succeed.
-
-Apply this pattern to all similar stop_one_cpu_nowait() invocations.
-
-Fixes: 6d337eab041d ("sched: Fix migrate_disable() vs set_cpus_allowed_ptr()")
-Reported-by: "Kuyo Chang (張建文)" <Kuyo.Chang@mediatek.com>
-Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
-Tested-by: "Kuyo Chang (張建文)" <Kuyo.Chang@mediatek.com>
----
- kernel/sched/core.c     |   10 ++++++++--
- kernel/sched/deadline.c |    2 ++
- kernel/sched/fair.c     |    4 +++-
- 3 files changed, 13 insertions(+), 3 deletions(-)
-
---- a/kernel/sched/core.c
-+++ b/kernel/sched/core.c
-@@ -2645,9 +2645,11 @@ static int migration_cpu_stop(void *data
- 		 * it.
- 		 */
- 		WARN_ON_ONCE(!pending->stop_pending);
-+		preempt_disable();
- 		task_rq_unlock(rq, p, &rf);
- 		stop_one_cpu_nowait(task_cpu(p), migration_cpu_stop,
- 				    &pending->arg, &pending->stop_work);
-+		preempt_enable();
- 		return 0;
- 	}
- out:
-@@ -2967,12 +2969,13 @@ static int affine_move_task(struct rq *r
- 			complete = true;
- 		}
- 
-+		preempt_disable();
- 		task_rq_unlock(rq, p, rf);
--
- 		if (push_task) {
- 			stop_one_cpu_nowait(rq->cpu, push_cpu_stop,
- 					    p, &rq->push_work);
- 		}
-+		preempt_enable();
- 
- 		if (complete)
- 			complete_all(&pending->done);
-@@ -3038,12 +3041,13 @@ static int affine_move_task(struct rq *r
- 		if (flags & SCA_MIGRATE_ENABLE)
- 			p->migration_flags &= ~MDF_PUSH;
- 
-+		preempt_disable();
- 		task_rq_unlock(rq, p, rf);
--
- 		if (!stop_pending) {
- 			stop_one_cpu_nowait(cpu_of(rq), migration_cpu_stop,
- 					    &pending->arg, &pending->stop_work);
- 		}
-+		preempt_enable();
- 
- 		if (flags & SCA_MIGRATE_ENABLE)
- 			return 0;
-@@ -9459,9 +9463,11 @@ static void balance_push(struct rq *rq)
- 	 * Temporarily drop rq->lock such that we can wake-up the stop task.
- 	 * Both preemption and IRQs are still disabled.
- 	 */
-+	preempt_disable();
- 	raw_spin_rq_unlock(rq);
- 	stop_one_cpu_nowait(rq->cpu, __balance_push_cpu_stop, push_task,
- 			    this_cpu_ptr(&push_work));
-+	preempt_enable();
- 	/*
- 	 * At this point need_resched() is true and we'll take the loop in
- 	 * schedule(). The next pick is obviously going to be the stop task
---- a/kernel/sched/deadline.c
-+++ b/kernel/sched/deadline.c
-@@ -2420,9 +2420,11 @@ static void pull_dl_task(struct rq *this
- 		double_unlock_balance(this_rq, src_rq);
- 
- 		if (push_task) {
-+			preempt_disable();
- 			raw_spin_rq_unlock(this_rq);
- 			stop_one_cpu_nowait(src_rq->cpu, push_cpu_stop,
- 					    push_task, &src_rq->push_work);
-+			preempt_enable();
- 			raw_spin_rq_lock(this_rq);
- 		}
- 	}
---- a/kernel/sched/fair.c
-+++ b/kernel/sched/fair.c
-@@ -11299,13 +11299,15 @@ static int load_balance(int this_cpu, st
- 				busiest->push_cpu = this_cpu;
- 				active_balance = 1;
- 			}
--			raw_spin_rq_unlock_irqrestore(busiest, flags);
- 
-+			preempt_disable();
-+			raw_spin_rq_unlock_irqrestore(busiest, flags);
- 			if (active_balance) {
- 				stop_one_cpu_nowait(cpu_of(busiest),
- 					active_load_balance_cpu_stop, busiest,
- 					&busiest->active_balance_work);
- 			}
-+			preempt_enable();
- 		}
- 	} else {
- 		sd->nr_balance_failed = 0;
 
