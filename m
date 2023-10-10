@@ -4,75 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FBA0CD8C9C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 14:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D5D1CD8CA2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 15:33:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cWcJ6w7POfv7sCUBrmIpDvnagdGjD70oQgT03BbPqeQ=; b=sMP5USd0VmSYMwhQSCCYlUm3aB
-	iBJra5KonsgHiwtsuPj1MpblMzm4wy4QSXD03YfQm2EMABSbkDSPdhJ7oCPyxFldze7wVQ4soLWgs
-	mia0eckjPuFbDF7K6gSmDwWhvFm22a2v2YX+9+/KgqGwXPHoLEE41rCCjf03k+vSmC1Fr6CLM4H76
-	Wsip42fkHyvpGMaZP3TXMGEMSVsiU24LWuODXQMww5cvkeUU8q/Q8Jl4b6KmYYL8u8eDWVYEkzswg
-	rGDbRxR2EqowbeRMY9JYazaQENw7zT6/866PJYDMqR0XYDcN6tjVmY09gB9y6VIOZhPToSiuoYxaZ
-	b6Cj9+cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lDB8Xo9cJ2VeIdENPctPOpmpBQtYaHFP/tzuWEeiQzA=; b=WajkMTymAoTcOI1pBSBPRQppUh
+	L9ADKuVp2fGoj0oxuVMBEuRQdO6q/EtPXFL0RxieX7y4SsmnS58voSlLn9O29M3r6v3+zXBRLtciL
+	2pHhmR3fntBUXEEYnVWlkqBUmnTDnrAbHzw5IsCPTw9A+q+Ej6i2m9bV8/ULYC/UXClaTCGLSjClo
+	Ha1020bPcmI3WJnDPoHVtjDFwl1nwK4GXTrq6hNqesZzawhDLP1+9qnWKMdEBXwZg02/dwbixHOc6
+	PJ18Lx6ZB+BkTeMXaUg73LmUoAJfbC/DUyhHEHopPfyeYiJDehAlhKrPy15kgiCo0qOQ683+je5AR
+	C96yjcEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqEBG-00Dd3y-0a;
-	Tue, 10 Oct 2023 14:57:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qqEjv-00Dh1T-05;
+	Tue, 10 Oct 2023 15:33:43 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqEBE-00Dd3d-0q;
-	Tue, 10 Oct 2023 14:57:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=cWcJ6w7POfv7sCUBrmIpDvnagdGjD70oQgT03BbPqeQ=; b=ieKVLBYHiRjMpETBOyz60EGT0o
-	QJWkOI+2O8r3aq8MKPC6KLodWkXT82MJP0N768qYFTB32n6ETsbgR9uUrz1sBjMGdIFweLA6DjJn4
-	d7dsEaIrNC4kDh3J5DBXf7yS0sAoqKYyBK/NVQjcqwdgGxIoR12qhVPhRKb9gXrmVLB0kcDz2KneH
-	GvJwjlPG32iIpfKWC7EUK1FroC/XsJmCxZFKrdzVdCTevqtsO/2hAUTc6xURsjEfl2pk2meJyJtmd
-	7Zsp6MTiAET8k6J7psSkGm79XWVbOBQCTsO2zwfvn3RY0tE9LF9Citu0DUIkktTQL6SUiaOI0TRMD
-	hEmJzQ4A==;
-Received: from j130084.upc-j.chello.nl ([24.132.130.84] helo=noisy.programming.kicks-ass.net)
-	by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqEB8-00Gvjp-11;
-	Tue, 10 Oct 2023 14:57:48 +0000
-Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
-	id 6C623300392; Tue, 10 Oct 2023 16:57:47 +0200 (CEST)
-Date: Tue, 10 Oct 2023 16:57:47 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Kuyo Chang =?utf-8?B?KOW8teW7uuaWhyk=?= <Kuyo.Chang@mediatek.com>
-Cc: "dietmar.eggemann@arm.com" <dietmar.eggemann@arm.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"rostedt@goodmis.org" <rostedt@goodmis.org>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	"vschneid@redhat.com" <vschneid@redhat.com>,
-	"bristot@redhat.com" <bristot@redhat.com>,
-	"juri.lelli@redhat.com" <juri.lelli@redhat.com>,
-	"mingo@redhat.com" <mingo@redhat.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"bsegall@google.com" <bsegall@google.com>,
-	"mgorman@suse.de" <mgorman@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"vincent.guittot@linaro.org" <vincent.guittot@linaro.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 1/1] sched/core: Fix stuck on completion for
- affine_move_task() when stopper disable
-Message-ID: <20231010145747.GQ377@noisy.programming.kicks-ass.net>
-References: <20230927033431.12406-1-kuyo.chang@mediatek.com>
- <20230927080850.GB21824@noisy.programming.kicks-ass.net>
- <b9def8f3d9426bc158b302f4474b6e643b46d206.camel@mediatek.com>
- <20230929102135.GD6282@noisy.programming.kicks-ass.net>
- <8ad1b617a1040ce4cc56a5d04e8219b5313a9a6e.camel@mediatek.com>
+	id 1qqEjr-00Dh0w-1h;
+	Tue, 10 Oct 2023 15:33:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id D840ACE1E7D;
+	Tue, 10 Oct 2023 15:33:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35732C433C9;
+	Tue, 10 Oct 2023 15:33:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696952017;
+	bh=uCeGXpQ2PhB2LhIPquLo56o19XqjK0xYL5TVnuMv/+U=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=EWSBW2fwN/2X5IF6uuWJ2T0Ug0fKHP0BR60rjiZ98D7b+0D5YH7OZoBJuYr8vewe3
+	 ej5UceVmEfNbjoRbsPD2wXrFdzIiEhd7KURWJmTKOXit+h8xneME7SgE90NNYHutU0
+	 tgNdNs3kql8u5m3FIhC7S0cb95i9y9iQdWSzEDhPFWg34b+QRpPheb++z6SNYEz/5K
+	 BySmRLyxiHMXfmf0XTvfacF/pgtoEEjv3qdT16w327kJ0h596RDI3hIPSk1cnahddC
+	 hBsp8bFDWLRrKZqqOaIe3F//7c/UKE96Q4LXyv19ozBaEJS1zLGXn/5NSpuHCYj0gb
+	 SJd/UewTRBMMA==
+Date: Tue, 10 Oct 2023 16:33:46 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: lars@metafoo.de, matthias.bgg@gmail.com, ruanjinjie@huawei.com,
+ linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wenst@chromium.org, kernel@collabora.com
+Subject: Re: [PATCH] iio: adc: mt6577_auxadc: Fix kernel panic on suspend
+Message-ID: <20231010163346.3e346536@jic23-huawei>
+In-Reply-To: <20231010121940.159696-1-angelogioacchino.delregno@collabora.com>
+References: <20231010121940.159696-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <8ad1b617a1040ce4cc56a5d04e8219b5313a9a6e.camel@mediatek.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20231010_083339_740797_9867B590 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,24 +73,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 10, 2023 at 02:40:22PM +0000, Kuyo Chang (張建文) wrote:
-> On Fri, 2023-09-29 at 12:21 +0200, Peter Zijlstra wrote:
-> >  	 
-> >  On Wed, Sep 27, 2023 at 03:57:35PM +0000, Kuyo Chang (張建文) wrote:
-> > 
-> > > This issue occurs at CPU hotplug/set_affinity stress test.
-> > > The reproduce ratio is very low(about once a week).
-> > 
-> > I'm assuming you're running an arm64 kernel with preempt_full=y (the
-> > default for arm64).
-> > 
-> > Could you please test the below?
-> > 
-> 
-> It is running good so far(more than a week)on hotplug/set affinity
-> stress test. I will keep it testing and report back if it happens
-> again.
+On Tue, 10 Oct 2023 14:19:40 +0200
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
 
-OK, I suppose I should look at writing a coherent Changelog for this
-then...
+> Commit a2d518fbe376 ("iio: adc: mt6577_auxadc: Simplify with device managed function")
+> simplified the driver with devm hooks, but wrongly states that the
+> platform_set_drvdata(), platform_get_drvdata() are unused after the
+> simplification: the driver data is infact used in .suspend() and
+> .resume() PM callbacks, currently producing a kernel panic.
+> 
+> Reintroduce the call to platform_set_drvdata() in the probe function
+> 
+> Fixes: a2d518fbe376 ("iio: adc: mt6577_auxadc: Simplify with device managed function")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Applied to the togreg branch of iio.git (as the patch it is fixing is only there for now)
+Pushed out initially as testing for 0-day to take a look.
+
+Thanks,
+
+Jonathan
+
+> ---
+>  drivers/iio/adc/mt6577_auxadc.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> index 370b84c2d0ba..3343b54e8e44 100644
+> --- a/drivers/iio/adc/mt6577_auxadc.c
+> +++ b/drivers/iio/adc/mt6577_auxadc.c
+> @@ -293,6 +293,7 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
+>  	mt6577_auxadc_mod_reg(adc_dev->reg_base + MT6577_AUXADC_MISC,
+>  			      MT6577_AUXADC_PDN_EN, 0);
+>  	mdelay(MT6577_AUXADC_POWER_READY_MS);
+> +	platform_set_drvdata(pdev, indio_dev);
+>  
+>  	ret = devm_add_action_or_reset(&pdev->dev, mt6577_power_off, adc_dev);
+>  	if (ret)
+
 
