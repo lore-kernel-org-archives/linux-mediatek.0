@@ -4,78 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D9DCD80B7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 11:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A4BCD80BB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 12:16:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SmaKUvp0JZCGLypi1QPmT5v+d6jpyBHSXLJ7YrKnv0w=; b=3KSE9RJGI7dBKppaPN980+ruHO
-	FUYHouf5xSAWnT3GeUIIXrXK/Vqd+JBgx2lfrdb+vrXSP8rpa6oUCbz6z8pOkvFs1AKHApGM64FSh
-	6lrNx3qacojjLgQjpfGT2DdVOkuF18imEceD+WD8F5ZuNdAwWiw5aCZpJ58g5sG2iOuRyRDbl1REW
-	8ZOBp74enIGuOdIq3HQqCeYxv2oVQTdfuzGuT2w/3jugKzEEdAMmJtAddCrrQ+EQCV50hIWh3MGXX
-	HWoWJbNteqjAsi8zRInhQx8z25xpciLM0ehFm/bYaMsTfXkKxZPJcGiVAWyA7dSFuKMCPFuxRCsh1
-	y3U28sbw==;
+	bh=nndtjHuMt0cf145zyVj0vZGF/G3X++LPFZ51I696qiM=; b=3GuJqASy6XvigvYea4ZilKSGz0
+	QYwF1+6fyNE+1Z0WHSyuSyxHfuPg0j8oTzGfdtRek7+kMzlX0Brsau4FDva+bpcdQS8M4LoTvikRT
+	vimT/oScpMai5sS+KRUeSJCPMb3/40pNKwEP6sT+vAZC7se875hfN2CIqjzCeOY+si23TXjqhIF0o
+	LzddGUONDPIkqgPPGZaoSKNkDJTereanvGom0KGqsQs4fXBG1RZQBlHB12b9fYxLSG9kum0Lh+beA
+	+uAdYh8bXGf6jgZwzywzZf0htlDCWpkRhprWkRbDBGwqTM40qBKdsNbjhhryraExihpC0WQVTRiqP
+	O9UsSSxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqBHc-00DGfI-0O;
-	Tue, 10 Oct 2023 11:52:16 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qqBf6-00DJEn-26;
+	Tue, 10 Oct 2023 12:16:32 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqBHY-00DGdK-1o;
-	Tue, 10 Oct 2023 11:52:14 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2848066072AE;
-	Tue, 10 Oct 2023 12:52:06 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696938726;
-	bh=DDDOlfk5jB2cOVusgEQjce1+xSjb45yRwxIUkDJq2cE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ms6o7pQkQvURz2yq7kW6oCfCXKpvZKT5xUttW3seUmumJoT3tB7thBqIrKVpQ9eOV
-	 VB1rW07j4qUdwsUoplKhUnjwzpPqojLqlms7UAZ/QEOK14vRzTMUtG/N0WiwvoMyIN
-	 Qj62B/5iQRlI/5U85F4ey3gIhFlrk/whg+kmh4m39E8wmHXlvcRPjaxKTzat2UXXd1
-	 e7wMatEIjcKanAGu14YfG/ydAogvcFVDyBFY9Umy/dBpu6snHA+dg4ftIa/u0WVxdF
-	 5fyEXhWAnW+nL7VVBpk0GTCk5E9AkTcaKQMvuVXQ66IAXHspmf/SKrdyQ3SFUujFBz
-	 zb1+gCUhpERQg==
-Message-ID: <bb9ae8ac-b12e-8f4f-1c21-7cde61d796c3@collabora.com>
-Date: Tue, 10 Oct 2023 13:52:03 +0200
+	id 1qqBf3-00DJDQ-0Q
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Oct 2023 12:16:31 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-533c5d10dc7so9812934a12.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Oct 2023 05:16:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1696940186; x=1697544986; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nndtjHuMt0cf145zyVj0vZGF/G3X++LPFZ51I696qiM=;
+        b=xKrqTOZX7Yk3JsHOHmk7CAf8C/9JiHg/BAxZovhs8xCQMdEJeRAiJ3cTTBLY/C0V4H
+         HBM/V1StN3ZdbPUQ2YXXmJk/dNm4JNIvcbyYsTQavGNK628X5dkUm4ks/1WP/nmJykwU
+         tsnuz94rt0ln8Qi+4vKkGE9szc9W9tv7940N1l+5rfD151bsK8GYbLWZNRx49A2HA5Mk
+         Q3rkgraAT7NTYEKAuN8+Fz4DDQ33iuEDSe+1YpkT5m8KKPw6edUW4aOaMGM0gLlAQX7t
+         GWRIfl3VuI3cVwmQrx1kXFjFkqNBiyurI/FeYbGHZ9abBFdKDb488hk/IvWL6QIZYXh/
+         nWCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696940186; x=1697544986;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nndtjHuMt0cf145zyVj0vZGF/G3X++LPFZ51I696qiM=;
+        b=T4LvTSfCfPEjwPiSBPy5D8JdZGbUO3MKMsiznOlrbr7uA9BU7BIk1vy82BNryQQc6S
+         4P9323Xh6VLKqcsTV36H6pM4dMBuLCZhmSIMg5FdW3EheVKOgYxnm1yetfCU4Vas866D
+         2gT+He1g9EaM3hBJnNO+yHrovgJIsNcOSrKfjeJAQde2evPxvgB5Lw+Bxj1vtZkDJlXM
+         Gi1OC0+I/vvkdW+fe5pHVlXONy7hRqmG/PiNgdG/cP5GYLXZDhvMdoSYGJh9EUWQWgnv
+         VLWSnpfwQfMkbn2FbQ79bxh8mp0XNv4JB9Un+a9CC30mvhd22co4MMwNYqPHYRK5/L73
+         BmJQ==
+X-Gm-Message-State: AOJu0YwmMCI59kVIzpEUVSnxqXg2bUJ1pE9c2ie6a+8Z+P+XUT6SiQPJ
+	ejHhtB2s5teXM5lOwPtjsfgPfg==
+X-Google-Smtp-Source: AGHT+IGvbaphCGmTo8kI0FKFqK44m2tAKrLMU9877yBSznrJMtpCLD2SsXe+zSRMlWY5bELacdHCPw==
+X-Received: by 2002:a17:907:7711:b0:9b2:a96c:9290 with SMTP id kw17-20020a170907771100b009b2a96c9290mr15848525ejc.33.1696940186336;
+        Tue, 10 Oct 2023 05:16:26 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id k16-20020a1709062a5000b0099315454e76sm8293803eje.211.2023.10.10.05.16.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Oct 2023 05:16:25 -0700 (PDT)
+Message-ID: <50662394-0da1-49ce-a519-c0b963d19e54@baylibre.com>
+Date: Tue, 10 Oct 2023 14:16:24 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v2] mailbox: remove runtime GCE clk control
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] media: dt-bindings: mediatek: Add phandle to
+ mediatek,scp on MDP3 RDMA
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mchehab@kernel.org
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com, moudy.ho@mediatek.com,
+ hverkuil-cisco@xs4all.nl, sakari.ailus@linux.intel.com,
+ u.kleine-koenig@pengutronix.de, linqiheng@huawei.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com, wenst@chromium.org
+References: <20231005104905.120544-1-angelogioacchino.delregno@collabora.com>
+ <20231005104905.120544-2-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- =?UTF-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
- =?UTF-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
- <Jason-ch.Chen@mediatek.com>, =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
- <Shawn.Sung@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
- <Nancy.Lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-References: <20231004085430.19538-1-jason-jh.lin@mediatek.com>
- <baa122da-4ae3-9023-3529-3ad38204b989@collabora.com>
- <672d86a9e9bb08c770a6884860e9d13a0aaf0eb7.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <672d86a9e9bb08c770a6884860e9d13a0aaf0eb7.camel@mediatek.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20231005104905.120544-2-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231010_045212_732423_EC74F20B 
-X-CRM114-Status: GOOD (  23.28  )
+X-CRM114-CacheID: sfid-20231010_051629_352666_302DDC10 
+X-CRM114-Status: UNSURE (   5.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,80 +102,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/10/23 11:15, Jason-JH Lin (林睿祥) ha scritto:
-> Hi Angelo,
-> 
-> Thanks for the reviews.
-> 
-> On Wed, 2023-10-04 at 11:20 +0200, AngeloGioacchino Del Regno wrote:
->> Il 04/10/23 10:54, Jason-JH.Lin ha scritto:
->>> 1. GCE is a frequently used module, so runtime controlling
->>> GCE clock won't save too much power and its original design
->>> doesn't expect it to be enabled and disabled too frequently.
->>>
->>> 2. Runtime controlling GCE clock will cause display HW register
->>> configured in worng stream done event issue below:
->>>     GCE should config HW in every vblanking duration.
->>>     The stream done event is the start signal of vblanking.
->>>
->>>     If stream done event is sent between GCE clk_disable
->>>     and clk_enable. After GCE clk_enable the stream done event
->>>     may not appear immediately and have about 3us delay.
->>>
->>>     Normal case:
->>>     clk_disable -> get EventA -> clk_enable -> clear EventA
->>>     -> wait EventB -> get EventB -> config HW
->>>
->>>     Abnormal case:
->>>     clk_disable -> get EventA -> clk_enable -> EventA delay appear
->>>     -> clear EventA fail -> wait EventB but get EventA -> config HW
->>>
->>> So just remove the runtime GCE clock contorl.
->>>
->>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
->>
->> Instead of entirely removing the logic that controls the clocks and
->> always
->> refuse to save power, what about using autosuspend?
->>
->> If the two cases that you're describing are happening always in a
->> range of
->> time, we could *yes* remove the "manual" bulk disable/enable calls,
->> but then
->> we could use runtime_suspend/runtime_resume callbacks for that.
->>
->> Hint: pm_runtime_set_autosuspend_delay(dev, 1000);
->>
->> Regards,
->> Angelo
->>
-> 
-> These 2 issues are caused by GCE bulk_clk enable/disable too
-> frequently.
-> 
-> As I now, pm_runtime_set_autosuspend_delay() is for controlling the
-> power domain. The power domain of GCE is infrasys which can only be
-> enabled/disabled by spm during the whole system resume/suspend.
-> So I'm not sure about how can pm_runtime_set_autosuspend_delay() save
-> power for GCE bulk_clk in this case.
-> 
-> Could you give more hint for me please?
-> 
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-I think it's faster if I send my own version of that, I'm testing that right now
-on multiple Chromebooks to check if this solves the issue that you're describing,
-which I believe it to be the "apparent random lockups" or display stuttering when
-in a high load situation.
+On 05/10/2023 12:49, AngeloGioacchino Del Regno wrote:
+> The MDP3 RDMA needs to communicate with the SCP remote processor: allow 
+> specifying a phandle to a SCP core.
 
-I don't seem to get any more stuttering nor apparent random lockups on a MT8195
-Chromebook, and that's with my pm_runtime autosuspend solution, with a runtime
-suspend delay of 100ms, which I'm trying to decrease as much as possible in order
-to keep saving as much power as possible.
-
-For this, if you could better describe how to reliably reproduce the issue that
-you have described, it would help me a bit in making this as good as possible.
-
-Thanks,
-Angelo
-
+-- 
+Regards,
+Alexandre
 
