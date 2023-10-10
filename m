@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF11FCD80C0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 12:45:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0039DCD80D2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 13:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=199RxfkmlH6n0PnGVzkV097mb/3xpEnD5+hjR+TaTtE=; b=L9Pt8sgH/CkOhgXx/KwgWNxwUs
-	rL2DdZOcIZ2kEpFsqZr+UKLgqCu0QkwjxBXByQdYYltkG+qTETBTSpA35KuEMDCCDpNfnre1ONviO
-	rdEuYjh4rmFh3ee2p1gd1v+o52tULY7bjhEUWpnnO2O65ZSrLAPpFDMiQMhTw0OwtXkIhNYmqwP9+
-	V+p3O2Z5uGqjO+IRaeMksM00CcES4Bt2wM/y3tSBKfHZ+62PrpNlukXWrkbebYEwpiwbfSbmwu+/a
-	f3PLIDLU94NJQZo+XzztxQg6492KN31OL8Kzqkc30+WjqJCAt0/7GRJ2/4sfB0AIwKJJRCL+OjMCU
-	fWxtf2ag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DhR7yR1k3z5XJbZ+8zBJf4ATfOLE4KOSKqbl5ld6Sn4=; b=d1oP3ObrxfsBqdx06L5zhyYv/d
+	ps0vXGBOLEw6r3rcVB+U6NEoSiQ922xoS2QqQtpKXA4tnpZhr+g+xQ0Uvcx3ZfgOctmQLWD7LM8sI
+	H1e2BtOpcEvLO/HoOv++mvySwVB38zFEBjZCGn9EoNuTCQr3O/bCO9Jjge8lYS5ux8xx0vO27VutA
+	hxHHzy0/Qf5FvJrHNvgDfMpVBIdjqhMOtwNFiISYRWQBncnOJmHsZN3f0/Xz6v936ezNa5tMNovdG
+	yghCrEP9GH4ANG0Z/mIRLhw5nnMD4obFzGq1Pld8XsvOaIew5Ug4zKmvesQPPWcai0Q3xjhiTsPxL
+	HgpTAHUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqC6f-00DMnT-1T;
-	Tue, 10 Oct 2023 12:45:01 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1qqCnl-00DRqQ-2r;
+	Tue, 10 Oct 2023 13:29:33 +0000
+Received: from mgamail.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqC6b-00DMlE-1b
-	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Oct 2023 12:44:59 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-533c5d10dc7so9867208a12.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Oct 2023 05:44:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1696941893; x=1697546693; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=199RxfkmlH6n0PnGVzkV097mb/3xpEnD5+hjR+TaTtE=;
-        b=yYEYHzeHTihRZ111DJ1jpYqvKjGSdxo4hyJvgDw9OrYrlvGTjR6DXX3YFXSfGGwPeN
-         F+XxvrxvtnYqBRtSKdEaIlAjWkuFPcXwxZxhQKsqBwdM1D+730y2dMbuIkvyaYO4/Sts
-         hHf/sViNGcC52WeF4FYPLm0za/ejzH7MbgF7Ai1UCKGbPKN23KO7L0lLcMNACItq/+Lq
-         +pIZsxwAkE8Cjdj+64ziA3hlysLdtIpFIlhCswo2dvkDbiCJXMAkYlOmAHAA0+lun8nH
-         umggbF2eAOxUSH339BHfxh91OXGc6iry6wXKPbUFVb3pGWcYxFEL/uPJWHbwsYHqPlFa
-         l3Bg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696941893; x=1697546693;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=199RxfkmlH6n0PnGVzkV097mb/3xpEnD5+hjR+TaTtE=;
-        b=ltPciHiiy4Htvzj12DCfUALynRwnds/kvQp+bCs1sePIpCqb2fpf0zxuHOl1mDFqAO
-         C8cIOrG3rpW6hPGM9hS7oUXRsPe51cBJ04vmmpZqgR+YWfNdrz2peQVXHE0Sr3tDNjD4
-         FlxvExd311D5xf4eMaLf5mrhsrB0/Cq/uj6TjE/4VK4grMQrRdEYXFfR+1nviatrGPFN
-         DlJC2dGoER8j2PE0GTwRJcKS0Gw6JehCRHVNAdzPqqEx1V0mR7la65vKNWitH0NEXHhU
-         krwKwzKhB+bydub6mF03C0zlZkYf90lEnMNOFgs2SUsvaLYrCt1+qVbX5yilw8+LsF79
-         UveA==
-X-Gm-Message-State: AOJu0YyOijlpt34eSeJ9dcLovm6Mo6fIs62DbRz9q13PzGqN5QPuSWst
-	hxeGf5X6baDX0kjPbBz+MnHUFQ==
-X-Google-Smtp-Source: AGHT+IEsJzobcPu8rJ40cb7SMlsIt72AvoIPVaKzAJWjiofu8QAGko17hHTmiHgPwC4WWEHIk++zTA==
-X-Received: by 2002:a17:906:530b:b0:9b2:b975:8327 with SMTP id h11-20020a170906530b00b009b2b9758327mr17819526ejo.65.1696941892862;
-        Tue, 10 Oct 2023 05:44:52 -0700 (PDT)
-Received: from blmsp ([2001:4091:a246:8222:872:4a5b:b69c:1318])
-        by smtp.gmail.com with ESMTPSA id qq25-20020a17090720d900b00977cad140a8sm8410416ejb.218.2023.10.10.05.44.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Oct 2023 05:44:52 -0700 (PDT)
-Date: Tue, 10 Oct 2023 14:44:51 +0200
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jic23@kernel.org, lars@metafoo.de, matthias.bgg@gmail.com,
-	ruanjinjie@huawei.com, linux-iio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wenst@chromium.org,
-	kernel@collabora.com
-Subject: Re: [PATCH] iio: adc: mt6577_auxadc: Fix kernel panic on suspend
-Message-ID: <20231010124451.iopfw2gnc54dap6f@blmsp>
-References: <20231010121940.159696-1-angelogioacchino.delregno@collabora.com>
+	id 1qqCni-00DRpM-1A;
+	Tue, 10 Oct 2023 13:29:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1696944570; x=1728480570;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=+B4WseGrt1pWwwKou20nfZGYU2s54qm8dWwPLmdD2Ts=;
+  b=HgtDU6Ac6H2ZtclZB++3qxCWo4Nxd95gn3Qo+GIiKrrwBgUaJjwLVgxP
+   /8ufNB+3VANamEmICO0KGSXRroTF8F+Q7Hopj0DQJnIDRdWcjb9TFFk+M
+   O1Ir2fsWpuVIdxNkqfb2hva7vj68/1PqP1R+fIxmGjEPX4Yg0Rnz8PuxQ
+   5dRTuIls2FJOeXDUGUPcgpxkn127T4Ut1FdOCcgxL1jPz2jsIXLBK+eSh
+   XJKvNwRhRCVlcy7lwdM79zwyN29sh3Oit3Y90cAVTVnrHuDeFsTZoltTG
+   w6lLYuH89a9HBOFmwcpTrNyLVuKOaE5tAsFPAB9QMMBtmx4588t2ZDyHb
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="384247936"
+X-IronPort-AV: E=Sophos;i="6.03,212,1694761200"; 
+   d="scan'208";a="384247936"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2023 06:29:25 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="747071579"
+X-IronPort-AV: E=Sophos;i="6.03,212,1694761200"; 
+   d="scan'208";a="747071579"
+Received: from sssodhi-mobl.amr.corp.intel.com (HELO [10.212.38.18]) ([10.212.38.18])
+  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2023 06:29:23 -0700
+Message-ID: <2bac708f-40f9-4f02-a3ff-d5ab11e7ebe2@linux.intel.com>
+Date: Tue, 10 Oct 2023 09:29:22 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20231010121940.159696-1-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ASoC: SOF: Convert to platform remove callback returning
+ void
+Content-Language: en-US
+To: Daniel Baluta <daniel.baluta@gmail.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown
+ <broonie@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231009155945.285537-1-u.kleine-koenig@pengutronix.de>
+ <CAEnQRZBzEfwC3kgaUWty769L4wD-LGng5yUJwQR2_C4T0oJjxA@mail.gmail.com>
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+In-Reply-To: <CAEnQRZBzEfwC3kgaUWty769L4wD-LGng5yUJwQR2_C4T0oJjxA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231010_054457_531254_6CAB2549 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20231010_062930_410722_7E0CFDAB 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,40 +96,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 10, 2023 at 02:19:40PM +0200, AngeloGioacchino Del Regno wrote:
-> Commit a2d518fbe376 ("iio: adc: mt6577_auxadc: Simplify with device managed function")
-> simplified the driver with devm hooks, but wrongly states that the
-> platform_set_drvdata(), platform_get_drvdata() are unused after the
-> simplification: the driver data is infact used in .suspend() and
-> .resume() PM callbacks, currently producing a kernel panic.
-> 
-> Reintroduce the call to platform_set_drvdata() in the probe function
-> 
-> Fixes: a2d518fbe376 ("iio: adc: mt6577_auxadc: Simplify with device managed function")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Reviewed-by: Markus Schneider-Pargmann <msp@baylibre.com>
 
-Best,
-Markus
+On 10/10/23 07:00, Daniel Baluta wrote:
+> On Mon, Oct 9, 2023 at 7:03 PM Uwe Kleine-König
+> <u.kleine-koenig@pengutronix.de> wrote:
+>>
+>> The .remove() callback for a platform driver returns an int which makes
+>> many driver authors wrongly assume it's possible to do error handling by
+>> returning an error code. However the value returned is ignored (apart
+>> from emitting a warning) and this typically results in resource leaks.
+>>
+>> To improve here there is a quest to make the remove callback return
+>> void. In the first step of this quest all drivers are converted to
+>> .remove_new(), which already returns void. Eventually after all drivers
+>> are converted, .remove_new() will be renamed to .remove().
+>>
+>> The SOF platform drivers all use either sof_of_remove() or
+>> sof_acpi_remove() which both return zero unconditionally. Change these
+>> functions to return void and the drivers to use .remove_new(). There is
+>> no semantical change.
+>>
+>> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+> 
+> 
+> 
+> Reviewed-by: Daniel Baluta <daniel.baluta@nxp.com>
 
-> ---
->  drivers/iio/adc/mt6577_auxadc.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-> index 370b84c2d0ba..3343b54e8e44 100644
-> --- a/drivers/iio/adc/mt6577_auxadc.c
-> +++ b/drivers/iio/adc/mt6577_auxadc.c
-> @@ -293,6 +293,7 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
->  	mt6577_auxadc_mod_reg(adc_dev->reg_base + MT6577_AUXADC_MISC,
->  			      MT6577_AUXADC_PDN_EN, 0);
->  	mdelay(MT6577_AUXADC_POWER_READY_MS);
-> +	platform_set_drvdata(pdev, indio_dev);
->  
->  	ret = devm_add_action_or_reset(&pdev->dev, mt6577_power_off, adc_dev);
->  	if (ret)
-> -- 
-> 2.42.0
-> 
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+
+FWIW I have a follow-up patch to convert the SOF remove ops to return
+void: https://github.com/thesofproject/linux/pull/4625
 
