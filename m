@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEE5CCD68E8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 09:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89D01CD691E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Oct 2023 09:46:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ylj6uLU9Oz3nNV5wvz3CPuIOa3pvMuBhd+xLxR80jF0=; b=AD3sQv7IYU515rgQI9yyVZyzyB
-	mO3R7KUJ/+jmgISKbfuJmSjm2BXbabvcxBuaoAOtbwNa3OuHWSs/Af2FLrZb5rv3VfwjpcRViv6yH
-	iu0j+vb9GpxKBSaSj4TyATRIyTonbEcbpginwX/kax0LNwTChpXN6r13C9LUyVm5seFhRCjktiYfM
-	ElsgEGnwWuOtxpZVV8NxKM3A2/OVZJLjYo1UTtlwkREr6vZmFNZBPT6UVxEHDwTOOpIK58dGlnazl
-	SNz9luy5A0iQT+gikWvtOkdzEhHEui4bQuJ9x++SVxo7JvC82LPDEMPHet6Ri6zF3rMbqNVRbYdfF
-	thhgsCZw==;
+	bh=9AzK0Jn8j50sYUoIlyBZPBQKUpXRiNLcb1+hkJS1Ku0=; b=wL9PQuD+qX1yekWJgmTcB2JBUo
+	aKMbPuVaUol+UQHwvrdmAABA8rGOQDLcfeHK9ZFUJiKUu+IO6+Ch7LC0qMHMIS5ulwpQ2xDy1RjQz
+	0qIz+mczmq1J2+P9hF0+lW99ZlxUddSKoRQpTGoTYIOyeCyrSu0EvQ1fLpiUeI2E8hn51atoHoTiG
+	DWMUT4w8v8LuFAOJMCNwJHgwSjATnBHKtNyTYhVVxWQqk1iiFIzKjYcnaC+0KLB7ILyGPe9lXMW1i
+	uiuAmzxuykisbZJ6jX9XHNK+fN1L2y+ZPxQLpx5emCI1KXz3fogXHTbT8yBwEmLyfXUn0GgimD+xx
+	AZa3IyNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qq8hh-00Ctlu-25;
-	Tue, 10 Oct 2023 09:07:01 +0000
+	id 1qq9JV-00Cy4g-1l;
+	Tue, 10 Oct 2023 09:46:05 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qq8he-00CtlF-2r
-	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Oct 2023 09:07:00 +0000
+	id 1qq9JQ-00Cy3Z-1w;
+	Tue, 10 Oct 2023 09:46:03 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0B84766030BF;
-	Tue, 10 Oct 2023 10:06:57 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 648956607243;
+	Tue, 10 Oct 2023 10:45:58 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696928817;
-	bh=RpOgGZRGVhfUaO4u/weyo+Vj7fpIhUpNL+R1Rudo1sU=;
+	s=mail; t=1696931159;
+	bh=6H9Fj2tHWKm+K4ZGzGla2mVcICa34lDD8nktakutjLo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=f8nnC0tixyeaQ39u6/zLCNXjdI3HCSnbV0aG9spQlHPTvmtsY9fuR/Eg3S4KNwWr9
-	 xwWd+6bIX27CapM/QJtvN/HV1xGU+Z9iB00208mLMM6o+Ug97skqP6ezFr2YYdQM1/
-	 7yoh8SzwIBNKh5cSpwdK87bwkQzPPhIuXI7q3gcWlQNFUSzInj6xVY4MQ1x5/62mge
-	 24qZ58CT09x5R1V/fdhbrQy6piCWQNkeBxm3eQnk2813+63IvY7YuVjTDWS7dOKNLb
-	 RhWKIhvO/W+/RbTXivZo0SZk3TCBG4f08miEAxd/0h2F+3t3iC37tZhF4c83cxMHbg
-	 XNj810FLiNykA==
-Message-ID: <673dcc99-cf42-81ff-47fe-e20079a5e17c@collabora.com>
-Date: Tue, 10 Oct 2023 11:06:54 +0200
+	b=BOV1amVx1RHjJcfG/Juc7idTOADT5dPAhDeFPXtCHpZEG8Hikn6RKf4HB2LHgMEsK
+	 2KAASVv/MZIKZV2hqNAQZftl+QQbgLJm6Qu0Xd3IFngyIS45lZ4e820Lfv4cvrTQVd
+	 5gDF60go4lFLlGcBBXM8hwd1eHZzUpOYpIeRtmIV/ZjZh7h1cCsmvvk+3/mk9OCQdx
+	 QMOrwfMs8fYy/xlxVxnuZC7fgfLpuiCmGHQthYja4UUFiUZkx/kCVqDrixf6ifSgXB
+	 myjaI7Xog2MF1g0M4uJwdi09kmwsr8FfXemLQ2KriBgBIzKq0dcS3Rq38evxPFbm4z
+	 GwF5ozFb0IUMQ==
+Message-ID: <50bb99ee-8ef3-343e-7359-526662f511cb@collabora.com>
+Date: Tue, 10 Oct 2023 11:45:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [v5 2/2] ASoC: mediatek: mt8188-mt6359: add rt5682s support
+Subject: Re: [PATCH v3 1/2] dt-bindings: PCI: mediatek-gen3: Add support for
+ controlling power and reset
 Content-Language: en-US
-To: xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>,
- lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org,
- matthias.bgg@gmail.com, perex@perex.cz, trevor.wu@mediatek.com
-Cc: alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20231010023738.8241-1-xiazhengqiao@huaqin.corp-partner.google.com>
- <20231010023738.8241-3-xiazhengqiao@huaqin.corp-partner.google.com>
+To: Jian Yang <jian.yang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, Rob Herring <robh@kernel.org>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Chuanjia.Liu@mediatek.com, Jieyy.Yang@mediatek.com,
+ Qizhong.Cheng@mediatek.com
+References: <20231009084957.18536-1-jian.yang@mediatek.com>
+ <20231009084957.18536-2-jian.yang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231010023738.8241-3-xiazhengqiao@huaqin.corp-partner.google.com>
+In-Reply-To: <20231009084957.18536-2-jian.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231010_020659_053321_C71EF624 
-X-CRM114-Status: UNSURE (   6.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231010_024600_796535_FD7AB7EF 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,14 +85,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/10/23 04:37, xiazhengqiao ha scritto:
-> To use RT5682S as the codec and MAX98390 as the amp, add a new
-> sound card named mt8188_rt5682s.
+Il 09/10/23 10:49, Jian Yang ha scritto:
+> From: "jian.yang" <jian.yang@mediatek.com>
 > 
-> Signed-off-by: xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
-> Reviewed-by: Trevor Wu <trevor.wu@mediatek.com>
+> Add new properties to support control power supplies and reset pin of
+> a downstream component.
+> 
+> Signed-off-by: jian.yang <jian.yang@mediatek.com>
+> ---
+>   .../bindings/pci/mediatek-pcie-gen3.yaml      | 30 +++++++++++++++++++
+>   1 file changed, 30 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> index 7e8c7a2a5f9b..eb4ad98549d1 100644
+> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> @@ -84,6 +84,26 @@ properties:
+>       items:
+>         enum: [ phy, mac ]
+>   
+> +  pcie1v8-supply:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+There are another two controllers having such regulators and they all have the
+same name for those supplies; Can you please change the names to be consistent
+with the other controllers?
+
+vpcie1v8
+vpcie3v3
+vpcie12v
+
+Regards,
+Angelo
 
 
 
