@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6EA1CD6E76
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 14:21:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AFCCCD6E7D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 15:36:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2gpLjyqUi6wcjJjAwFjG693BPOH5KzH0g4x8Uy+z3TU=; b=ozMw+FlCWyRkSBUfkE4eylAw/K
-	gnhzzQ2vvh4tqJ3jBya+gZkYP3UllaYTWVnh/Qpjo/Rd1mz0YRzEult5O4i5T6iUV7ug+tVeE6Xri
-	uddBpn0dNwSf3PuLIt96zirzezj/uAeqaypTcsCdRjk8HUOBMl4b5UVnIHLgXhgoYQeBRcIIu76z9
-	BwmrXBNdigbXFg7Mg/WHchd0X40vVly65hvBEZDkNlaHXBC9PpoGXckZcA8+w4gOKSgDJWyHnhQjp
-	e1SSVQ23cIjJt2JTpCVw8JXIlJJL7Lq9qLI0JEUlc2AqGa0YRpMJJHLMyc6HJ9KV1KwOJRB10oqdr
-	+PpoGVzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y+fO2oxox+s9VG93T6N6KKEhAnA26+hFbrsiQ4d6nNQ=; b=jRmnuxad1jnVqqg9tAH5mt5N3Z
+	6QsCvs6WvuAW020EMIQUvSmHnnjB34lR5tZJrZKHEsR/U2otRwm+WwHGgzo+Iwvid7WaHUOtAcOmS
+	8r0hNgkFB8YqAHQinUBcWjo3/r5GLQOVl72NbiMKTV57K+gLKZ2dmIvDYcPkwaphD7cCQTGfNB3No
+	9nb7WUlh914WMCh4Ng4EqJbJcKIdAQSvWTiFW7MTK1y4y7MXi4Kc6OJING4r4EOhGdCVvY/UDO7bR
+	sCS5jwSiptuu3zLbI0tPzJLBP90ty3CYvGE1A6d7sw+ntD6AKMPAqXRDj1PiigkWofHA73nHdNWww
+	WUJBBkQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqa5M-00G4tf-1o;
-	Wed, 11 Oct 2023 14:21:16 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qqbG5-00GC0D-2N;
+	Wed, 11 Oct 2023 15:36:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqa5J-00G4sE-2W;
-	Wed, 11 Oct 2023 14:21:15 +0000
+	id 1qqbG2-00GByy-1v;
+	Wed, 11 Oct 2023 15:36:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 136ABCE1FA3;
-	Wed, 11 Oct 2023 14:21:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85DE4C433C7;
-	Wed, 11 Oct 2023 14:21:08 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 86E19612B4;
+	Wed, 11 Oct 2023 15:36:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8486DC433C7;
+	Wed, 11 Oct 2023 15:36:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697034071;
-	bh=2gpLjyqUi6wcjJjAwFjG693BPOH5KzH0g4x8Uy+z3TU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LWkuPTZWxq7VqSIH5U9qpBsgJvX1VZMMRSMMB2ruW/80qHsTSP/8yLlmPr9otIEfl
-	 50GofoSBBobrbKfk9FChIXKZI7uU54+yXYNK7ujGNXaPNhwnTI+SKGVXqDzHlwhoMA
-	 cJ/0x17C5B+oTd92yl+oQolj1YN9x+NJt/U+6wCgsGHG/znA3JVPVFGBflSmmBMnSE
-	 /uw1M6puMBDLYPIc815P1UN2VGiyXNt+grmXMuTAJuqmKjBxXT26F5bo3vQT3uPh7p
-	 R6s2z3dhNe3nzODxN43Ak8fFffsWsnOuyRKJiJ3MaT/JbHZAwURGNltmhJDUx+PeOq
-	 KUrhAtp7Egd7g==
-Date: Wed, 11 Oct 2023 15:21:06 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Mark Tseng <chun-jen.tseng@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Roger Lu <roger.lu@mediatek.com>, Kevin Hilman <khilman@kernel.org>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v1 3/3] dt-bindings: soc: mediatek: add mt8186 and mt8195
- svs dt-bindings
-Message-ID: <20231011-motor-equator-db141b74726a@spud>
-References: <20231011034307.24641-1-chun-jen.tseng@mediatek.com>
- <20231011034307.24641-4-chun-jen.tseng@mediatek.com>
+	s=k20201202; t=1697038579;
+	bh=lTq1DkG7l+QHbQBfr/sAWfclw9fYk69n6jbHGMTIKvo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Bcp/JOIA9l1V1uVU1FUbmq0Pqf6ndX+uIezQSz1L/ygwBQ1JSnAur/Abq56GCrHgR
+	 wm6Yku1xyZegc67Mp5b1n8rlqPDRplqtPaHXyGo5hj0mGDVr0mpv0VEU7tjiVOyDpy
+	 4iG2/mZTyp9YRmpCiFzGLklBIEqA5locMQH4RRgiBZwLnKLk0qa8LgZyqa2mpNpFSf
+	 xTz2/scGbNti2vmRU2Iju+xBGxQTklEfCaV/yAXr/b522Fn8AkRrbxUflhsRy1Syfc
+	 QOxJtrpbObzH7w37wQNqdz1ct4rbsZ+uxorFZGqMQs9f764duHDqMTwFhSXr4qcs+Q
+	 E9jhx8hXs9Qtw==
+Date: Wed, 11 Oct 2023 08:36:17 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: <davem@davemloft.net>, <pabeni@redhat.com>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
+ <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
+ Fastabend <john.fastabend@gmail.com>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <bpf@vger.kernel.org>
+Subject: Re: [PATCH net-next v10 0/6] introduce page_pool_alloc() related
+ API
+Message-ID: <20231011083617.61bba987@kernel.org>
+In-Reply-To: <20230922091138.18014-1-linyunsheng@huawei.com>
+References: <20230922091138.18014-1-linyunsheng@huawei.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="zBOX+bhAlTIL62fW"
-Content-Disposition: inline
-In-Reply-To: <20231011034307.24641-4-chun-jen.tseng@mediatek.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_072114_000642_817E1A1A 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231011_083622_702349_EEE85CB3 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,33 +77,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 22 Sep 2023 17:11:32 +0800 Yunsheng Lin wrote:
+> In [1] & [2] & [3], there are usecases for veth and virtio_net
+> to use frag support in page pool to reduce memory usage, and it
+> may request different frag size depending on the head/tail
+> room space for xdp_frame/shinfo and mtu/packet size. When the
+> requested frag size is large enough that a single page can not
+> be split into more than one frag, using frag support only have
+> performance penalty because of the extra frag count handling
+> for frag support.
+> 
+> So this patchset provides a page pool API for the driver to
+> allocate memory with least memory utilization and performance
+> penalty when it doesn't know the size of memory it need
+> beforehand.
 
---zBOX+bhAlTIL62fW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Could you rebase & repost? Patches no longer apply :(
 
-On Wed, Oct 11, 2023 at 11:43:07AM +0800, Mark Tseng wrote:
-> Add mt8186 and mt8195 svs compatible in dt-bindings.
-
-This commit message just repeats the contexts of the diff in prose.
-
-> Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-Thanks,
-Conor.
-
---zBOX+bhAlTIL62fW
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHQEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZSavUgAKCRB4tDGHoIJi
-0sqKAP9Z6J6MQ/uOMPuXIPe5q8SmKRkNtaXcVNBweiVeryHgeQD1F2xJdjmsESzy
-iLjBjIDhUP9NvRUTQD/+6R2i+r1OBg==
-=pNdI
------END PGP SIGNATURE-----
-
---zBOX+bhAlTIL62fW--
 
