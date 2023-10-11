@@ -4,93 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71608CDB470
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 17:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A6ACDB47A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 18:55:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bM2ZtT57neAX/wQjDtY6kTjEfhq5pvyurdRnUuf/xJM=; b=T2pc181tVyvZpNgiTaqdcEAvw8
-	M7jfQWztxI/J7mRtmEAxBPI2Ji4EE/EyEJyY19DSvPKpaFY3m+4UhAjxKPWvEe0nj6mb+O8OMv+Nc
-	1dsjVYCMBDl48twQTS75LQ4m7SinRsSt/30A3Tvrs3/D0gbmQhJDzrQIG3Jqxh+W8r6QKGM1AmXWe
-	DMXs5qemre/rXjuXPThHf9dMzo4lJ4qJ5m2q6Mq8n5FtsVwawBV37u0qmT9yJ3YyFJ10UlZddQaoH
-	0v6fo0L+w/Sfo6Mo9iPqwRrEyiuDqewSrIE/bufY1jnUSAHrHNrvSha47myB8J7x5Yelz2aiEVQb+
-	LqBshXFA==;
+	bh=hqTOeLvgEjncmx/NVuuoG0K9iLTm8/BJMu98YdlyIV4=; b=wKwhT/zLzKi16gltkfX3tPnVf9
+	dYj8bgZRRMhZRjF+e64fGQk8PC5o7LDNGh/JoPykyZWQZf0LjEeO2k3rgTIf2y56096L0eqohUyed
+	pw9gc1xM9d9AkWGs4NMpuZIvz5Mkla1aoF0rATF2G+b9mZHOIHgHYUDbSTqSwE5k0p9HMgJSXLzav
+	WgzRprX1GWjgIXxJiZCSffdNvz3OQ0jwrMLr5bKnJWmYTQSdv7+74Cn2/WGZtPFA/Kleepe8nbsuQ
+	5ow9/dglhaTRWwWYwRsqBqlZG3VUtBJiwkyaIsR0SpqvjSfP670Pw6RW1qU78NWtCznJYXFAhOM9y
+	PbWmtx9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqdKJ-00GNR5-12;
-	Wed, 11 Oct 2023 17:48:55 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1qqeMK-00GUuQ-1v;
+	Wed, 11 Oct 2023 18:55:04 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqdKF-00GNQF-2I
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Oct 2023 17:48:53 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-6910ea9cddbso39856b3a.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Oct 2023 10:48:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697046530; x=1697651330; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=bM2ZtT57neAX/wQjDtY6kTjEfhq5pvyurdRnUuf/xJM=;
-        b=tRrvECBQfNm9u3ExrwtBiPPnToJlEjzZVyzkjJ3ExDSAbsXqv14OQOWdYWDmvLkKYp
-         frNcQqnGfGp6cnP8nVm0hP91uJBv0A5Sx6V6e3xpK4QlhF0NId5r7Tmuygh+7QjvRrjw
-         KxbmJ/BOiLOn8fwDsJIkaohDvueDaS3EeEJ5IWfbGfyV0C7CIqU/pHkEyLmJle8msN6p
-         gmwX4WjLrGE4a4c1UDDZNp4RnaN4jT7nnykcmWOc78I6klJ8LWT3aSr/HccZksM8OqHy
-         5euYiqnh5TrqhXC2PuL0wUVyDRzLYxt5Z5AawUGVjb5bE4bgFfG0z7YJ5VI9nbO5oJwl
-         kQiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697046530; x=1697651330;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bM2ZtT57neAX/wQjDtY6kTjEfhq5pvyurdRnUuf/xJM=;
-        b=uhFVKTd++1tERe1j/R+bvB1DZLUNx0O1FCutquUSlKgBs21BMmqDET38s6lWNHoXsX
-         en8CxHmBjXiGLl+UI1GxzLK2R0aDCL7NTt3YdWXtVFdnxKroP5eaF5AVMzHMKXAuIj3S
-         Dxi1RlFLCkd5crqnTQsi+uF0HKZAxuUAQg8UmkMEC63ele7ZZdEF9VLrUWOUYOgKU0nk
-         9Al9ZKczeYfMN0jK9frkq70xQa9NV4sc7DaAImABnungy+PhedR1rNt1CQV1Vtsrd4go
-         0+vAE+ojb562uyzmGcAGyfsouUCjCDc7JrAlBdmKt57DJW+d+HlMe5JNSkEMN0/vtWPM
-         WggQ==
-X-Gm-Message-State: AOJu0YwNlqyaIqKfwMqPjUxJhw/hBmraZpX4nEF/7gYBYMaHDeF/MFB5
-	qk3xzboHs3m7oJPSATjCfY4cvQ==
-X-Google-Smtp-Source: AGHT+IF4MffnY6FNeJJc1juHDvYlAxYH24seuPoeHgjPkWoCKjPIY6tr0GTX+skm36H1sgCf0PrVBQ==
-X-Received: by 2002:a05:6a00:1687:b0:68a:5395:7aa5 with SMTP id k7-20020a056a00168700b0068a53957aa5mr24585337pfc.17.1697046530225;
-        Wed, 11 Oct 2023 10:48:50 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:fbd6:ce83:3759:dbcc])
-        by smtp.gmail.com with ESMTPSA id c4-20020a62e804000000b00690c9fda0fesm10327293pfi.169.2023.10.11.10.48.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Oct 2023 10:48:49 -0700 (PDT)
-Date: Wed, 11 Oct 2023 11:48:45 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-Cc: corbet@lwn.net, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	keescook@chromium.org, tony.luck@intel.com, gpiccoli@igalia.com,
-	catalin.marinas@arm.com, will@kernel.org, linus.walleij@linaro.org,
-	andy.shevchenko@gmail.com, vigneshr@ti.com, nm@ti.com,
-	matthias.bgg@gmail.com, kgene@kernel.org, alim.akhtar@samsung.com,
-	bmasney@redhat.com, quic_tsoni@quicinc.com,
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-hardening@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
-Subject: Re: [REBASE PATCH v5 04/17] remoteproc: qcom: Remove minidump
- related data from qcom_common.c
-Message-ID: <ZSbf/VqpBIlhyUIG@p14s>
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
- <1694429639-21484-5-git-send-email-quic_mojha@quicinc.com>
- <bb29aba3-9378-6405-5f6d-a7d77e0374ad@quicinc.com>
+	id 1qqeMG-00GUsM-1l;
+	Wed, 11 Oct 2023 18:55:02 +0000
+Received: from [10.0.0.200] (ip-89-177-23-149.bb.vodafone.cz [89.177.23.149])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: david.heidelberg)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AF4E96607331;
+	Wed, 11 Oct 2023 19:54:54 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697050495;
+	bh=hqTOeLvgEjncmx/NVuuoG0K9iLTm8/BJMu98YdlyIV4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Y/jvuHHKwVUM6HQjJRdcb+SIV1l0Z4DWHjgDXjPUnNiwym5xmP5tDrI6FKRxhF3pg
+	 r994bUQ1wcEgQD5Y8ujekkI0BO9dmu6okyi4ajw9BT8t+3JOPvemEPuyyr4kdTG7L9
+	 Z6m/JeuItQIlAiq01Q3fM+2i8C3uwTksba7nWNpSZGf/lVHn0Ggqjn+XCozDF/UW3U
+	 THZDIrBpjAZYdev17/qi9tLziERF1+Oq8BctCQdep2viMUv/9YwuGbM06GhOapu4ON
+	 ZD7lhlWdJNlwsB46yy19uAMleWXV6jCSDNFUipmlzNjPfsw+wAstU/wveWltJ27Vue
+	 SJ0E3uwzXlwHw==
+Message-ID: <0231fe84-96c6-4c10-bd77-2cdcea49b8d2@collabora.com>
+Date: Wed, 11 Oct 2023 20:54:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <bb29aba3-9378-6405-5f6d-a7d77e0374ad@quicinc.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/9] drm/ci: fixes and improvements
+Content-Language: en-US
+To: Helen Koike <helen.koike@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robdclark@chromium.org, dmitry.baryshkov@linaro.org,
+ vignesh.raman@collabora.com, sergi.blanch.torne@collabora.com,
+ guilherme.gallo@collabora.com, quic_abhinavk@quicinc.com,
+ quic_jesszhan@quicinc.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231009004953.203576-1-helen.koike@collabora.com>
+From: David Heidelberg <david.heidelberg@collabora.com>
+Autocrypt: addr=david.heidelberg@collabora.com; keydata=
+ xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGNPwqEeILN
+ MURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFib3JhLmNvbT7ClgQT
+ FggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsDBQkFo5qABQsJCAcCBhUKCQgL
+ AgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5YqSWAOuIumAqgWvke6BEsaIGWGQzXSuKj
+ er/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQB
+ l1UBBQEBB0AEk7jXEwDApGOwMH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYh
+ BEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0Y
+ uAOKJCnnwrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
+ wueLHBdwHg6zAQ==
+In-Reply-To: <20231009004953.203576-1-helen.koike@collabora.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------VcQS5LnegmfhnnjtAH3e88YN"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_104851_749974_D757FE3C 
-X-CRM114-Status: GOOD (  31.24  )
+X-CRM114-CacheID: sfid-20231011_115500_865530_0DDB376E 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,216 +90,162 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 06, 2023 at 08:38:52PM +0530, Mukesh Ojha wrote:
-> Hi Bjorn/Mathieu,
-> 
-> Patches from 2/17-4/17  is just a movement of functions to separate
-> config/file.
-> 
-> Do you think, these can be picked independently from this series ?
-> I can send them separately, if required.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------VcQS5LnegmfhnnjtAH3e88YN
+Content-Type: multipart/mixed; boundary="------------2msBekilzJjwjS0F2c1BGd7A";
+ protected-headers="v1"
+From: David Heidelberg <david.heidelberg@collabora.com>
+To: Helen Koike <helen.koike@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robdclark@chromium.org, dmitry.baryshkov@linaro.org,
+ vignesh.raman@collabora.com, sergi.blanch.torne@collabora.com,
+ guilherme.gallo@collabora.com, quic_abhinavk@quicinc.com,
+ quic_jesszhan@quicinc.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Message-ID: <0231fe84-96c6-4c10-bd77-2cdcea49b8d2@collabora.com>
+Subject: Re: [PATCH 0/9] drm/ci: fixes and improvements
+References: <20231009004953.203576-1-helen.koike@collabora.com>
+In-Reply-To: <20231009004953.203576-1-helen.koike@collabora.com>
 
-Bjorn handles submissions for Qualcomm - I will defer to him.
+--------------2msBekilzJjwjS0F2c1BGd7A
+Content-Type: multipart/mixed; boundary="------------V0gK0iDbmzaQlZDwu5rkIymK"
 
-> 
-> @Bjorn: I have sent 13/17-15/17 separately [1] as it is needed
-> by some folks and independent from this series.
-> 
-> [1]
-> https://lore.kernel.org/all/1696440338-12561-1-git-send-email-quic_mojha@quicinc.com/
-> 
-> -Mukesh
-> 
-> On 9/11/2023 4:23 PM, Mukesh Ojha wrote:
-> > As minidump specific data structure and functions move under
-> > config QCOM_RPROC_MINIDUMP, so remove minidump specific data
-> > from driver/remoteproc/qcom_common.c .
-> > 
-> > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
-> > ---
-> >   drivers/remoteproc/qcom_common.c | 160 ---------------------------------------
-> >   1 file changed, 160 deletions(-)
-> > 
-> > diff --git a/drivers/remoteproc/qcom_common.c b/drivers/remoteproc/qcom_common.c
-> > index 03e5f5d533eb..085fd73fa23a 100644
-> > --- a/drivers/remoteproc/qcom_common.c
-> > +++ b/drivers/remoteproc/qcom_common.c
-> > @@ -17,7 +17,6 @@
-> >   #include <linux/rpmsg/qcom_smd.h>
-> >   #include <linux/slab.h>
-> >   #include <linux/soc/qcom/mdt_loader.h>
-> > -#include <linux/soc/qcom/smem.h>
-> >   #include "remoteproc_internal.h"
-> >   #include "qcom_common.h"
-> > @@ -26,61 +25,6 @@
-> >   #define to_smd_subdev(d) container_of(d, struct qcom_rproc_subdev, subdev)
-> >   #define to_ssr_subdev(d) container_of(d, struct qcom_rproc_ssr, subdev)
-> > -#define MAX_NUM_OF_SS           10
-> > -#define MAX_REGION_NAME_LENGTH  16
-> > -#define SBL_MINIDUMP_SMEM_ID	602
-> > -#define MINIDUMP_REGION_VALID		('V' << 24 | 'A' << 16 | 'L' << 8 | 'I' << 0)
-> > -#define MINIDUMP_SS_ENCR_DONE		('D' << 24 | 'O' << 16 | 'N' << 8 | 'E' << 0)
-> > -#define MINIDUMP_SS_ENABLED		('E' << 24 | 'N' << 16 | 'B' << 8 | 'L' << 0)
-> > -
-> > -/**
-> > - * struct minidump_region - Minidump region
-> > - * @name		: Name of the region to be dumped
-> > - * @seq_num:		: Use to differentiate regions with same name.
-> > - * @valid		: This entry to be dumped (if set to 1)
-> > - * @address		: Physical address of region to be dumped
-> > - * @size		: Size of the region
-> > - */
-> > -struct minidump_region {
-> > -	char	name[MAX_REGION_NAME_LENGTH];
-> > -	__le32	seq_num;
-> > -	__le32	valid;
-> > -	__le64	address;
-> > -	__le64	size;
-> > -};
-> > -
-> > -/**
-> > - * struct minidump_subsystem - Subsystem's SMEM Table of content
-> > - * @status : Subsystem toc init status
-> > - * @enabled : if set to 1, this region would be copied during coredump
-> > - * @encryption_status: Encryption status for this subsystem
-> > - * @encryption_required : Decides to encrypt the subsystem regions or not
-> > - * @region_count : Number of regions added in this subsystem toc
-> > - * @regions_baseptr : regions base pointer of the subsystem
-> > - */
-> > -struct minidump_subsystem {
-> > -	__le32	status;
-> > -	__le32	enabled;
-> > -	__le32	encryption_status;
-> > -	__le32	encryption_required;
-> > -	__le32	region_count;
-> > -	__le64	regions_baseptr;
-> > -};
-> > -
-> > -/**
-> > - * struct minidump_global_toc - Global Table of Content
-> > - * @status : Global Minidump init status
-> > - * @md_revision : Minidump revision
-> > - * @enabled : Minidump enable status
-> > - * @subsystems : Array of subsystems toc
-> > - */
-> > -struct minidump_global_toc {
-> > -	__le32				status;
-> > -	__le32				md_revision;
-> > -	__le32				enabled;
-> > -	struct minidump_subsystem	subsystems[MAX_NUM_OF_SS];
-> > -};
-> > -
-> >   struct qcom_ssr_subsystem {
-> >   	const char *name;
-> >   	struct srcu_notifier_head notifier_list;
-> > @@ -90,110 +34,6 @@ struct qcom_ssr_subsystem {
-> >   static LIST_HEAD(qcom_ssr_subsystem_list);
-> >   static DEFINE_MUTEX(qcom_ssr_subsys_lock);
-> > -static void qcom_minidump_cleanup(struct rproc *rproc)
-> > -{
-> > -	struct rproc_dump_segment *entry, *tmp;
-> > -
-> > -	list_for_each_entry_safe(entry, tmp, &rproc->dump_segments, node) {
-> > -		list_del(&entry->node);
-> > -		kfree(entry->priv);
-> > -		kfree(entry);
-> > -	}
-> > -}
-> > -
-> > -static int qcom_add_minidump_segments(struct rproc *rproc, struct minidump_subsystem *subsystem,
-> > -			void (*rproc_dumpfn_t)(struct rproc *rproc, struct rproc_dump_segment *segment,
-> > -				void *dest, size_t offset, size_t size))
-> > -{
-> > -	struct minidump_region __iomem *ptr;
-> > -	struct minidump_region region;
-> > -	int seg_cnt, i;
-> > -	dma_addr_t da;
-> > -	size_t size;
-> > -	char *name;
-> > -
-> > -	if (WARN_ON(!list_empty(&rproc->dump_segments))) {
-> > -		dev_err(&rproc->dev, "dump segment list already populated\n");
-> > -		return -EUCLEAN;
-> > -	}
-> > -
-> > -	seg_cnt = le32_to_cpu(subsystem->region_count);
-> > -	ptr = ioremap((unsigned long)le64_to_cpu(subsystem->regions_baseptr),
-> > -		      seg_cnt * sizeof(struct minidump_region));
-> > -	if (!ptr)
-> > -		return -EFAULT;
-> > -
-> > -	for (i = 0; i < seg_cnt; i++) {
-> > -		memcpy_fromio(&region, ptr + i, sizeof(region));
-> > -		if (le32_to_cpu(region.valid) == MINIDUMP_REGION_VALID) {
-> > -			name = kstrndup(region.name, MAX_REGION_NAME_LENGTH - 1, GFP_KERNEL);
-> > -			if (!name) {
-> > -				iounmap(ptr);
-> > -				return -ENOMEM;
-> > -			}
-> > -			da = le64_to_cpu(region.address);
-> > -			size = le64_to_cpu(region.size);
-> > -			rproc_coredump_add_custom_segment(rproc, da, size, rproc_dumpfn_t, name);
-> > -		}
-> > -	}
-> > -
-> > -	iounmap(ptr);
-> > -	return 0;
-> > -}
-> > -
-> > -void qcom_minidump(struct rproc *rproc, unsigned int minidump_id,
-> > -		void (*rproc_dumpfn_t)(struct rproc *rproc,
-> > -		struct rproc_dump_segment *segment, void *dest, size_t offset,
-> > -		size_t size))
-> > -{
-> > -	int ret;
-> > -	struct minidump_subsystem *subsystem;
-> > -	struct minidump_global_toc *toc;
-> > -
-> > -	/* Get Global minidump ToC*/
-> > -	toc = qcom_smem_get(QCOM_SMEM_HOST_ANY, SBL_MINIDUMP_SMEM_ID, NULL);
-> > -
-> > -	/* check if global table pointer exists and init is set */
-> > -	if (IS_ERR(toc) || !toc->status) {
-> > -		dev_err(&rproc->dev, "Minidump TOC not found in SMEM\n");
-> > -		return;
-> > -	}
-> > -
-> > -	/* Get subsystem table of contents using the minidump id */
-> > -	subsystem = &toc->subsystems[minidump_id];
-> > -
-> > -	/**
-> > -	 * Collect minidump if SS ToC is valid and segment table
-> > -	 * is initialized in memory and encryption status is set.
-> > -	 */
-> > -	if (subsystem->regions_baseptr == 0 ||
-> > -	    le32_to_cpu(subsystem->status) != 1 ||
-> > -	    le32_to_cpu(subsystem->enabled) != MINIDUMP_SS_ENABLED) {
-> > -		return rproc_coredump(rproc);
-> > -	}
-> > -
-> > -	if (le32_to_cpu(subsystem->encryption_status) != MINIDUMP_SS_ENCR_DONE) {
-> > -		dev_err(&rproc->dev, "Minidump not ready, skipping\n");
-> > -		return;
-> > -	}
-> > -
-> > -	/**
-> > -	 * Clear out the dump segments populated by parse_fw before
-> > -	 * re-populating them with minidump segments.
-> > -	 */
-> > -	rproc_coredump_cleanup(rproc);
-> > -
-> > -	ret = qcom_add_minidump_segments(rproc, subsystem, rproc_dumpfn_t);
-> > -	if (ret) {
-> > -		dev_err(&rproc->dev, "Failed with error: %d while adding minidump entries\n", ret);
-> > -		goto clean_minidump;
-> > -	}
-> > -	rproc_coredump_using_sections(rproc);
-> > -clean_minidump:
-> > -	qcom_minidump_cleanup(rproc);
-> > -}
-> > -EXPORT_SYMBOL_GPL(qcom_minidump);
-> > -
-> >   static int glink_subdev_start(struct rproc_subdev *subdev)
-> >   {
-> >   	struct qcom_rproc_glink *glink = to_glink_subdev(subdev);
+--------------V0gK0iDbmzaQlZDwu5rkIymK
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+
+Zm9yIHRoZSBzZXJpZXM6DQoNClJldmlld2VkLWJ5OiBEYXZpZCBIZWlkZWxiZXJnIDxkYXZp
+ZC5oZWlkZWxiZXJnQGNvbGxhYm9yYS5jb20+DQoNCk9uIDA5LzEwLzIwMjMgMDI6NDksIEhl
+bGVuIEtvaWtlIHdyb3RlOg0KPiBUaGlzIHNlcmllcyBjb250YWlucyB0aGUgZm9sbG93aW5n
+IHNldmVyYWwgZml4ZXMsIG1ha2luZyBkcm0vY2kgbXVjaA0KPiBtb3JlIHJlbGlhYmxlIGFu
+ZCB1c2VmdWwuDQo+DQo+IFRvIHdvcmsgcHJvcGVybHksIHRoZSBmb2xsb3dpbmcgcGF0Y2hl
+cyBhcmUgYWxzbyByZXF1aXJlZDoNCj4NCj4gW1BBVENIIDIvMl0gZHJtL2NpOiBmb3JjZS1l
+bmFibGUgQ09ORklHX01TTV9NTUNDXzg5OTYgYXMgYnVpbHQtaW4NCj4gaHR0cHM6Ly9wYXRj
+aHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LWFybS1tc20vcGF0Y2gvMjAyMzEwMDgx
+MzIzMjAuNzYyNTQyLTItZG1pdHJ5LmJhcnlzaGtvdkBsaW5hcm8ub3JnLw0KPg0KPiBbUEFU
+Q0hdIGRybS9jaTogRW5hYmxlIENPTkZJR19CQUNLTElHSFRfQ0xBU1NfREVWSUNFDQo+IGh0
+dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9kcmktZGV2ZWwvcGF0Y2gvMjAy
+MzEwMDIxNjQ3MTUuMTU3Mjk4LTEtcm9iZGNsYXJrQGdtYWlsLmNvbS8NCj4NCj4gSGVsZW4g
+S29pa2UgKDkpOg0KPiAgICBkcm0vY2k6IHVwcmV2IG1lc2EgdmVyc2lvbiAtIGZpeCBjb250
+YWluZXIgYnVpbGQNCj4gICAgZHJtL2NpOiBmaXggREVCSUFOX0FSQ0ggYW5kIGdldCBhbWRn
+cHUgcHJvYmluZw0KPiAgICBkcm0vY2k6IGFkZCBoZWxwZXIgc2NyaXB0IHVwZGF0ZS14ZmFp
+bHMucHkNCj4gICAgZHJtL2NpOiB1cHJldiBJR1QgYW5kIG1ha2Ugc3VyZSBjb3JlX2dldHZl
+cnNpb24gaXMgcnVuDQo+ICAgIGRybS9jaTogY2xlYW4gdXAgeGZhaWxzIChzcGVjaWFsbHkg
+Zmxha2VzIGxpc3QpDQo+ICAgIGRybS9jaTogYWRqdXN0IHRoZSBudW1iZXIgb2Ygc2hhcmRz
+DQo+ICAgIGRybS9jaTogZXhwb3J0IGtlcm5lbCBjb25maWcNCj4gICAgZHJtL2NpOiBkbyBu
+b3QgYXV0b21hdGljYWxseSByZXRyeSBvbiBlcnJvcg0KPiAgICBkcm0vY2k6IGRvY3M6IGFk
+ZCBzdGVwIGFib3V0IGhvdyB0byByZXF1ZXN0IHByaXZpbGVkZ2VzDQo+DQo+ICAgRG9jdW1l
+bnRhdGlvbi9ncHUvYXV0b21hdGVkX3Rlc3RpbmcucnN0ICAgICAgIHwgICA3ICstDQo+ICAg
+ZHJpdmVycy9ncHUvZHJtL2NpL2J1aWxkLnNoICAgICAgICAgICAgICAgICAgIHwgICAzICst
+DQo+ICAgZHJpdmVycy9ncHUvZHJtL2NpL2dpdGxhYi1jaS55bWwgICAgICAgICAgICAgIHwg
+IDMxICsrLQ0KPiAgIGRyaXZlcnMvZ3B1L2RybS9jaS9pZ3RfcnVubmVyLnNoICAgICAgICAg
+ICAgICB8ICAzMSArKy0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kvaW1hZ2UtdGFncy55bWwg
+ICAgICAgICAgICAgfCAgIDQgKy0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kvbGF2YS1zdWJt
+aXQuc2ggICAgICAgICAgICAgfCAgIDYgKy0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kvdGVz
+dC55bWwgICAgICAgICAgICAgICAgICAgfCAgMjEgKy0NCj4gICAuLi4vZ3B1L2RybS9jaS94
+ZmFpbHMvYW1kZ3B1LXN0b25leS1mYWlscy50eHQgfCAgMTMgKy0NCj4gICAuLi4vZHJtL2Np
+L3hmYWlscy9hbWRncHUtc3RvbmV5LWZsYWtlcy50eHQgICAgfCAgMjAgLS0NCj4gICBkcml2
+ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtYW1seS1mYWlscy50eHQgfCAgIDkgKw0KPiAg
+IC4uLi9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWFtbHktZmxha2VzLnR4dCAgICB8ICAzMiAt
+LS0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtYXBsLWZhaWxzLnR4dCAg
+fCAgMTEgLQ0KPiAgIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1hcGwtZmxha2Vz
+LnR4dCB8ICAgMSAtDQo+ICAgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWNtbC1m
+YWlscy50eHQgIHwgIDE1ICstDQo+ICAgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1
+LWNtbC1mbGFrZXMudHh0IHwgIDM4IC0tLS0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kveGZh
+aWxzL2k5MTUtZ2xrLWZhaWxzLnR4dCAgfCAgMTcgKysNCj4gICBkcml2ZXJzL2dwdS9kcm0v
+Y2kveGZhaWxzL2k5MTUtZ2xrLWZsYWtlcy50eHQgfCAgNDEgLS0tLQ0KPiAgIGRyaXZlcnMv
+Z3B1L2RybS9jaS94ZmFpbHMvaTkxNS1rYmwtZmFpbHMudHh0ICB8ICAgNyArDQo+ICAgZHJp
+dmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWtibC1mbGFrZXMudHh0IHwgIDI2IC0tLQ0K
+PiAgIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS10Z2wtZmFpbHMudHh0ICB8ICAg
+MSAtDQo+ICAgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LXRnbC1mbGFrZXMudHh0
+IHwgICA1IC0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtd2hsLWZsYWtl
+cy50eHQgfCAgIDEgLQ0KPiAgIC4uLi9kcm0vY2kveGZhaWxzL21lZGlhdGVrLW10ODE3My1m
+bGFrZXMudHh0ICB8ICAgMA0KPiAgIC4uLi9kcm0vY2kveGZhaWxzL21lZGlhdGVrLW10ODE4
+My1mYWlscy50eHQgICB8ICAgNSArLQ0KPiAgIC4uLi9kcm0vY2kveGZhaWxzL21lZGlhdGVr
+LW10ODE4My1mbGFrZXMudHh0ICB8ICAxNCAtLQ0KPiAgIC4uLi9ncHUvZHJtL2NpL3hmYWls
+cy9tZXNvbi1nMTJiLWZhaWxzLnR4dCAgICB8ICAxNCArLQ0KPiAgIC4uLi9ncHUvZHJtL2Np
+L3hmYWlscy9tZXNvbi1nMTJiLWZsYWtlcy50eHQgICB8ICAgNCAtDQo+ICAgLi4uL2dwdS9k
+cm0vY2kveGZhaWxzL21zbS1hcHE4MDE2LWZsYWtlcy50eHQgIHwgICA0IC0NCj4gICAuLi4v
+Z3B1L2RybS9jaS94ZmFpbHMvbXNtLWFwcTgwOTYtZmFpbHMudHh0ICAgfCAgIDIgKw0KPiAg
+IC4uLi9ncHUvZHJtL2NpL3hmYWlscy9tc20tYXBxODA5Ni1mbGFrZXMudHh0ICB8ICAgNCAt
+DQo+ICAgLi4uL2dwdS9kcm0vY2kveGZhaWxzL21zbS1zYzcxODAtZmFpbHMudHh0ICAgIHwg
+IDE1ICstDQo+ICAgLi4uL2dwdS9kcm0vY2kveGZhaWxzL21zbS1zYzcxODAtZmxha2VzLnR4
+dCAgIHwgIDI0ICsrLQ0KPiAgIC4uLi9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2M3MTgwLXNr
+aXBzLnR4dCAgICB8ICAxOCArLQ0KPiAgIC4uLi9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2Rt
+ODQ1LWZhaWxzLnR4dCAgICB8ICAgOSArLQ0KPiAgIC4uLi9ncHUvZHJtL2NpL3hmYWlscy9t
+c20tc2RtODQ1LWZsYWtlcy50eHQgICB8ICAyMCArLQ0KPiAgIGRyaXZlcnMvZ3B1L2RybS9j
+aS94ZmFpbHMvcmVxdWlyZW1lbnRzLnR4dCAgICB8ICAxNyArKw0KPiAgIC4uLi9kcm0vY2kv
+eGZhaWxzL3JvY2tjaGlwLXJrMzI4OC1mYWlscy50eHQgICB8ICAgNiArDQo+ICAgLi4uL2Ry
+bS9jaS94ZmFpbHMvcm9ja2NoaXAtcmszMjg4LWZsYWtlcy50eHQgIHwgICA5IC0NCj4gICAu
+Li4vZHJtL2NpL3hmYWlscy9yb2NrY2hpcC1yazMzOTktZmFpbHMudHh0ICAgfCAgNDAgKysr
+LQ0KPiAgIC4uLi9kcm0vY2kveGZhaWxzL3JvY2tjaGlwLXJrMzM5OS1mbGFrZXMudHh0ICB8
+ICAyOCArLS0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3VwZGF0ZS14ZmFpbHMu
+cHkgICAgfCAyMDMgKysrKysrKysrKysrKysrKysrDQo+ICAgLi4uL2RybS9jaS94ZmFpbHMv
+dmlydGlvX2dwdS1ub25lLWZsYWtlcy50eHQgIHwgICAwDQo+ICAgNDIgZmlsZXMgY2hhbmdl
+ZCwgNDQ1IGluc2VydGlvbnMoKyksIDMzMSBkZWxldGlvbnMoLSkNCj4gICBkZWxldGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWFtbHktZmxha2VzLnR4
+dA0KPiAgIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5
+MTUtYXBsLWZsYWtlcy50eHQNCj4gICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUv
+ZHJtL2NpL3hmYWlscy9pOTE1LWNtbC1mbGFrZXMudHh0DQo+ICAgZGVsZXRlIG1vZGUgMTAw
+NjQ0IGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1nbGstZmxha2VzLnR4dA0KPiAg
+IGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUta2Js
+LWZsYWtlcy50eHQNCj4gICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2Np
+L3hmYWlscy9pOTE1LXRnbC1mbGFrZXMudHh0DQo+ICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS13aGwtZmxha2VzLnR4dA0KPiAgIGRlbGV0
+ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL21lZGlhdGVrLW10ODE3
+My1mbGFrZXMudHh0DQo+ICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9j
+aS94ZmFpbHMvbWVkaWF0ZWstbXQ4MTgzLWZsYWtlcy50eHQNCj4gICBkZWxldGUgbW9kZSAx
+MDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tZXNvbi1nMTJiLWZsYWtlcy50eHQN
+Cj4gICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20t
+YXBxODAxNi1mbGFrZXMudHh0DQo+ICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1
+L2RybS9jaS94ZmFpbHMvbXNtLWFwcTgwOTYtZmxha2VzLnR4dA0KPiAgIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3JlcXVpcmVtZW50cy50eHQNCj4g
+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hp
+cC1yazMyODgtZmxha2VzLnR4dA0KPiAgIGNyZWF0ZSBtb2RlIDEwMDc1NSBkcml2ZXJzL2dw
+dS9kcm0vY2kveGZhaWxzL3VwZGF0ZS14ZmFpbHMucHkNCj4gICBkZWxldGUgbW9kZSAxMDA2
+NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy92aXJ0aW9fZ3B1LW5vbmUtZmxha2VzLnR4
+dA0KPg0KLS0gDQpEYXZpZCBIZWlkZWxiZXJnDQpDb25zdWx0YW50IFNvZnR3YXJlIEVuZ2lu
+ZWVyDQoNCkNvbGxhYm9yYSBMdGQuDQpQbGF0aW51bSBCdWlsZGluZywgU3QgSm9obidzIElu
+bm92YXRpb24gUGFyaywgQ2FtYnJpZGdlIENCNCAwRFMsIFVLDQpSZWdpc3RlcmVkIGluIEVu
+Z2xhbmQgJiBXYWxlcywgbm8uIDU1MTM3MTgNCg0K
+--------------V0gK0iDbmzaQlZDwu5rkIymK
+Content-Type: application/pgp-keys; name="OpenPGP_0x69F567861C1EC014.asc"
+Content-Disposition: attachment; filename="OpenPGP_0x69F567861C1EC014.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGN
+PwqEeILNMURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFi
+b3JhLmNvbT7ClgQTFggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsD
+BQkFo5qABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5Y
+qSWAOuIumAqgWvke6BEsaIGWGQzXSuKjer/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7
+Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQBl1UBBQEBB0AEk7jXEwDApGOw
+MH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYhBEo7kSl22BK0F1Np
+/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0YuAOKJCnn
+wrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
+wueLHBdwHg6zAQ=3D=3D
+=3DOQS+
+-----END PGP PUBLIC KEY BLOCK-----
+
+--------------V0gK0iDbmzaQlZDwu5rkIymK--
+
+--------------2msBekilzJjwjS0F2c1BGd7A--
+
+--------------VcQS5LnegmfhnnjtAH3e88YN
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYIAB0WIQRKO5EpdtgStBdTaf5p9WeGHB7AFAUCZSbvfAAKCRBp9WeGHB7A
+FNSlAQCKp2ttkaul/mamT/IXogJoJcSv9h87VhGeDomDqnN9JwEA32Np6SV+hXBb
+QMCdjxucplfRAxFVGQsQecm5Y/a/uQ8=
+=xdXp
+-----END PGP SIGNATURE-----
+
+--------------VcQS5LnegmfhnnjtAH3e88YN--
 
