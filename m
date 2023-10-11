@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15A6FCD6E5A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 11:40:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF208CD6E5C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 11:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GNPNkwOEDk91iw9h3rV4AviZxmeWeoLT693UpVyQp7Q=; b=xBrMa/N5sLvMQh8oi8h+Soa0nB
-	7dJy+vNN3bjbNyeO3IBc2eHN5cvzZnPyYNsfacPR2+KPqmV/l9oSHf1ZAgq+g0eN6Uu1p/WBqy5DU
-	7EgzIwYFkjnqnOS0e1S8NKlx1SIWeEsOHCrSh59le+QXYJmsFggzpSsOBZsxFwHz/EI9wBLur2j06
-	xQ34bWLk+ErjZHltBtj8mgdb0mZagOAMfSeSx1yIm++1PP47G3500B8DUsap7J1xr7V5uxvUX1G6k
-	KmgsqwvFPoBg+Wxs3J73ab4yXix9O14P+cnNhMkX9ZC4/7mFqlwLm/onfh62853fzG7gslzHmRcoX
-	CrIvoduw==;
+	bh=LMxsdijMcCBmo+M5tAWjS7TMX7ogjrH/xuNeDT7Xu3E=; b=EvqBC7oMr//kN90ThecmO7LqN4
+	ijDF919QbfIcpPaxRSHaq+6NwSzJ52ITZ9xM48/+dIKqSdRfykWNABGNH81XXX49wm62FZKF6DqKz
+	blTpsllF0imBKAWpLlHrvwJ5zSEwMiXg3xr00FEiBosLe+YvyVaf1vb/xVKdLfCQb5zrTXe+jcZWh
+	fguD63KGLRfXKogotMGE0Z81LDz39Fmg94ZZYCyzl9qQAC7CcKLO92P5ZQW1MW0XdlX4jqM122M/P
+	riiEoJF3Eez3IEgFDMlsSm83k2/i0WynGjAOUurZjLzYx1TWk2w1SrMvS13UI8FDcaIUcmyarKIop
+	W6ihtoJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqXZq-00FleD-2d;
-	Wed, 11 Oct 2023 11:40:34 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qqXdh-00Flx2-1r;
+	Wed, 11 Oct 2023 11:44:33 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqXZm-00Fldm-2Q;
-	Wed, 11 Oct 2023 11:40:32 +0000
+	id 1qqXde-00Flve-1L;
+	Wed, 11 Oct 2023 11:44:31 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D43C06607312;
-	Wed, 11 Oct 2023 12:40:27 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5244B6607312;
+	Wed, 11 Oct 2023 12:44:26 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697024428;
-	bh=OAMxSeQ6P5OM3kNDdwo69a8n51/BNIPMjIOkxQ7766s=;
+	s=mail; t=1697024667;
+	bh=N4YKplRWJ6SDqnjedGaZQWvesSWK9mTeJQID5g1MjoI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NUigGBNW6cMl0UPf5ATiyCBG/6NiwnVGibUC7TWy9Fx2nq6JRWCzg78cLjmhRantd
-	 24iERycqpetEV8+scZLms7O3eBWLmKVHMlVn4BLInT/lt0K/fEoEc9eKUVKrDu4QSj
-	 lh6LOOzhbgcNuMFpRZp+1c7LvdI237Kp+K2JZ1NdOh1OZllW+1t1/PP480J/9Yp+GG
-	 r6bz4f9/t91CkgCxjXv3HM2vQuFTbXApvxqqiRjupOwWnnZH7WnhPB32WlR60enX/9
-	 9gjaon5QJQtNE7hGu5uLsjs51C89Fg68KqTOnkRt5OVQkMdNPzhMhlxssJ27A+YsPX
-	 xJYCkN1E+GjaA==
-Message-ID: <9b822d2d-7e2f-98f5-218c-22e0bb516a6a@collabora.com>
-Date: Wed, 11 Oct 2023 13:40:24 +0200
+	b=VTJnx51lKG+BlnOCi8O3YIxIpn9ha3Yd+jN389ICrk6TvipPLABaaTGdRbI/88LZe
+	 2GAn4QSENinasDmlFEf0NTPaigZA15DuO6LJt8/EWuPbewd9ilnqCj9pkqd3TpS0IA
+	 dnNoabmRZItnOle1WKQW3/hGsHdyMV3b7oJ6cBtxw5qw+xjEBtkhHRBR+TgF39JLC5
+	 mVuLSuX1ncXEHLtpCO7srNqv8fLMcmgWAzJAzoOIrWlIz+RenKgMq+rIvN2TCIhPaN
+	 3E50cD1PFXD3fcbsSoMDeaSGfvswWBMp2o2/Ozg3f+v+TJNa4KISsJgutlkAGpfybC
+	 /DCrIFymcInHQ==
+Message-ID: <d6386e5e-be7a-a68c-e592-1587380480d0@collabora.com>
+Date: Wed, 11 Oct 2023 13:44:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v7 2/3] arm64: dts: mediatek: mt8195: revise VDOSYS RDMA
- node name
-To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "Nancy . Lin" <nancy.lin@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20231011075031.30660-1-moudy.ho@mediatek.com>
- <20231011075031.30660-3-moudy.ho@mediatek.com>
+Subject: Re: [PATCH v2 1/2] media: dt-bindings: mediatek: Add phandle to
+ mediatek,scp on MDP3 RDMA
 Content-Language: en-US
+To: Conor Dooley <conor@kernel.org>
+Cc: mchehab@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, moudy.ho@mediatek.com, hverkuil-cisco@xs4all.nl,
+ sakari.ailus@linux.intel.com, u.kleine-koenig@pengutronix.de,
+ linqiheng@huawei.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, wenst@chromium.org
+References: <20231005104905.120544-1-angelogioacchino.delregno@collabora.com>
+ <20231005104905.120544-2-angelogioacchino.delregno@collabora.com>
+ <20231006-jinx-playing-261e5f41ff7f@spud>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231011075031.30660-3-moudy.ho@mediatek.com>
+In-Reply-To: <20231006-jinx-playing-261e5f41ff7f@spud>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_044030_993471_034A2A81 
-X-CRM114-Status: UNSURE (   8.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231011_044430_585225_F6348EA5 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,16 +84,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/10/23 09:50, Moudy Ho ha scritto:
-> DMA-related nodes have their own standardized naming. Therefore,
-> the MT8195 VDOSYS RDMA has been unified and corrected.
-> Additionally, these modifications will facilitate the further
-> integration of bindings.
+Il 06/10/23 01:36, Conor Dooley ha scritto:
+> On Thu, Oct 05, 2023 at 12:49:04PM +0200, AngeloGioacchino Del Regno wrote:
+>> The MDP3 RDMA needs to communicate with the SCP remote processor: allow
+>> specifying a phandle to a SCP core.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>
+>> v2: I've dropped Conor and Chen-Yu's Reviewed-by tags because I have changed
+>>      the description (so, the patch actually changed a bit).
 > 
-> Fixes: 92d2c23dc269 ("arm64: dts: mt8195: add display node for vdosys1")
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> I dunno, you made it more informative so you could probably have kept
+> mine at least.
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I just wanted to be cautious with keeping Reviewed-by tags.
 
+Sometimes it's better to drop than unfairly keeping, I'm sure that you
+understand my point here.
+
+Btw, thank you!
+
+Cheers,
+Angelo
+
+> Thanks,
+> Conor.
+> 
+>>
+>>   .../devicetree/bindings/media/mediatek,mdp3-rdma.yaml     | 8 ++++++++
+>>   1 file changed, 8 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+>> index 7032c7e15039..59dcea797b71 100644
+>> --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+>> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+>> @@ -45,6 +45,14 @@ properties:
+>>         include/dt-bindings/gce/<chip>-gce.h of each chips.
+>>       $ref: /schemas/types.yaml#/definitions/uint32-array
+>>   
+>> +  mediatek,scp:
+>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>> +    description:
+>> +      Phandle to the System Control Processor (SCP) used for initializing
+>> +      and stopping the MDP3, for sending frame data locations to the MDP3's
+>> +      VPU and to install Inter-Processor Interrupt handlers to control
+>> +      processing states.
+>> +
+>>     power-domains:
+>>       maxItems: 1
+>>   
+>> -- 
+>> 2.42.0
+>>
+>>
+>> _______________________________________________
+>> Kernel mailing list -- kernel@mailman.collabora.com
+>> To unsubscribe send an email to kernel-leave@mailman.collabora.com
 
 
