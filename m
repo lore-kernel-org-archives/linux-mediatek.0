@@ -4,88 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF798CD6E7E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 15:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 454F4CD6E57
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 16:05:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RCvxB/+dBXFv2rNSKeHbra6jgSQPb7w0QpnaCjhqlhw=; b=p+fxmtsx9ST2O4jTk1/MUMd7gI
-	zR0LNvwvkzEhgAJXfTtfvq+9am8GLa1mqt0Lvm4g5UNLh3pzdK7wBeGzUrwyaUfAxptrSzDmdIIT6
-	GTSbuUSPUG1z8zO7zvWC2P3eh1tlKt+OfzVvc2Ez0pmDz+Wdm+4+49rFllTgOGn5e2h51QK+t5xpB
-	MTdDfceGdCMOHgfjfcLo8c/T+en1yYT7Fy48I0DUnJpb8nZ6hx//9smXJeveu4KN8khXHzS+fg9k2
-	OoJ6I0tAwBj6sja2Np25k/hlU8Jv6uLq0+m/kuYmheGpImo1ZlAymrOsDW25vjGJCRBbi0BqlsgWC
-	cIbuwCEA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LNllWddQ47Bk95xUmeZPCtRTy3zxGw7XxwM3Le5rTSI=; b=m4ZDg/QSzTLi3MhLO+1dnxJHQC
+	n65UzfrxiJKV3RpIYgGpkl1kOwG+c8KS69PiBLum33pNPGjSdJewMGhQGEXvLFsDgZ7ni/sysW6Mr
+	2QKvbDvn+R4JnRK5/tNX485MFF+Eq1znYXCFw60hVGqQdMNaSWO66xptJrKZ0nJct3k1kWMGsOG/m
+	o6ju5mBjjcAZ5aTHKCD4QuCihbSWSrK0wXQtLztSzOD37vlmo1TMCRZcGQGhENcggmIPIAhTLzjqL
+	TIiN95/Ghgq0OL2TZ7KMhW4HIEUKWsaUzDWLQXZKPeUeJKVUBq4lGSyYGKIBSqCaKKcpiYLQ8kD9d
+	EU74cl9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqbIG-00GCGG-1s;
-	Wed, 11 Oct 2023 15:38:40 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1qqbiH-00GEls-2P;
+	Wed, 11 Oct 2023 16:05:33 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqbID-00GCCi-04
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Oct 2023 15:38:39 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-4054496bde3so64667295e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Oct 2023 08:38:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1697038703; x=1697643503; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=RCvxB/+dBXFv2rNSKeHbra6jgSQPb7w0QpnaCjhqlhw=;
-        b=vHaIZbVG3SlKVQPAbZd9EsLTdFNiolhSDe/9XCvHYHSTZ99xZEmuHSbeabZvawKZ2s
-         njUw2PNsL/L6FvbweITao2HFGhL47KqudlURQAkY9Y3a2eowyrkGfNvLZLfFUqMfqAMS
-         xduW3pFsmC7jeksCWlSPJQe+bIRhPf/ftrG/JOODqW33u22ZSPkYZUMfGra4ZkI+hEbg
-         5BIBtL7+ARe42ZV6nchYR8LzAptzi3x5pR5n3pszfGoxg0H/057M13rvc3b0b8GgP10x
-         mm5PSfxLSLw6p5uZEC1vCDaOloXB2VklHi/MxlxYXw1SJIqzWQRRD3WHtj+G323WMyZ6
-         4oJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697038703; x=1697643503;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RCvxB/+dBXFv2rNSKeHbra6jgSQPb7w0QpnaCjhqlhw=;
-        b=Vsuh7bjqwC3W1lYK4Hg7gkMno9VyBmbHys8WOBlQ2VHcL/UCBipowZgczjxAvLryLb
-         585uX6rx03PniKgsIa0DwWGIp0sf80DSM/7oPN5hd2V3EGQ5ysg4pBXQjEsZxwmqT3eY
-         tbQLasZP6MXnZnr559PqVBzWq24n76j0VWb8Yvlyem5vZlfs5Bph5j3YD8eXV/LpjbQz
-         V1Deevxpshvyy3E+bMWlgmYnfkDRJNCXQ4T5St+AfC2ygpnBUnc1Ctrt0//8yyqG+TYX
-         nhXDjdGQhCfCWGZkR8pTHprzhn6+yO6FukJ2VOOt577ULVTrva/FkAl+CCHmN1/7gGXc
-         hGcA==
-X-Gm-Message-State: AOJu0Yy+VKumdnkQGRqD5PA5jDwjiDCzwy+5vXhoSxw5JYmnK+txH1TP
-	l22xQm97+m/k3c9yFzaGtR0Rag==
-X-Google-Smtp-Source: AGHT+IFJ8WJKE7vEKFkfOXPL6F+ZSOLBJaxUlC5THEtjVgUXbUPSwzbmht5i3Ga90Fbbmkh/IFB1BA==
-X-Received: by 2002:a5d:500b:0:b0:319:8a66:f695 with SMTP id e11-20020a5d500b000000b003198a66f695mr16591567wrt.55.1697038703102;
-        Wed, 11 Oct 2023 08:38:23 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id 4-20020a05600c248400b004060f0a0fd5sm17104653wms.13.2023.10.11.08.38.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Oct 2023 08:38:15 -0700 (PDT)
-Message-ID: <899c7275-ccca-43bb-b1ae-a3403dd18622@baylibre.com>
-Date: Wed, 11 Oct 2023 17:38:11 +0200
+	id 1qqbiD-00GEkf-2i;
+	Wed, 11 Oct 2023 16:05:31 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0AC3866072FC;
+	Wed, 11 Oct 2023 17:05:23 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697040326;
+	bh=JX/FNFTRvgUjRggNucUPj/avlj5AIJtfvklHcuIrhpc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FOvsvP2z4ELP9LV96w8lC8IG53tbUcpfdEjCzCWhy/UHUKlqPJKxAjKU7yzF4Yy7N
+	 /YC08oleXh/SM7zMPX0cUpXEghvg0c950bgpJPz3XHcjo2sb972iSTv1/L3xRhurGj
+	 cqtbstLlprV0C0Hw/4WhEkTTMeynQsyOW7QZqYgbgGrkwUapU9I7r5hQnaIyl2f/0A
+	 ekkyHILY/UiLaVp9xK0pQl107nduU5BO6a+DG7nIu9xxO6KKiqcPzwa8ZDF7HKMnbZ
+	 gzaWCPuhM0PrsfZodIBY96FK42HFPak2R1vZO01rFQo6VmvwZro0xCeYca14c6COUA
+	 iyESeUwrHaw9w==
+Date: Wed, 11 Oct 2023 12:05:19 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+	daniel@ffwll.ch, matthias.bgg@gmail.com,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	wenst@chromium.org, kernel@collabora.com, ehristev@collabora.com
+Subject: Re: [PATCH v10 08/16] drm/mediatek: De-commonize disp_aal/disp_gamma
+ gamma_set functions
+Message-ID: <8cf3d18a-fe99-49c5-8d0c-eb5deaef79d6@notapiano>
+References: <20230804072850.89365-1-angelogioacchino.delregno@collabora.com>
+ <20230804072850.89365-9-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] PCI: mediatek-gen3: Fix translation window
-Content-Language: en-US
-To: Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Ryder Lee <ryder.lee@mediatek.com>, jieyy.yang@mediatek.com,
- chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com, jian.yang@mediatek.com
-References: <20231011122633.31559-1-jianjun.wang@mediatek.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20231011122633.31559-1-jianjun.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230804072850.89365-9-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_083837_062437_08D0DC71 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20231011_090530_082109_B935D7F6 
+X-CRM114-Status: GOOD (  25.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,34 +78,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Aug 04, 2023 at 09:28:42AM +0200, AngeloGioacchino Del Regno wrote:
+> In preparation for adding a 12-bits gamma support for the DISP_GAMMA
+> IP, remove the mtk_gamma_set_common() function and move the relevant
+> bits in mtk_gamma_set() for DISP_GAMMA and mtk_aal_gamma_set() for
+> DISP_AAL: since the latter has no more support for gamma manipulation
+> (being moved to a different IP) in newer revisions, those functions
+> are about to diverge and it makes no sense to keep a common one (with
+> all the complications of passing common data and making exclusions
+> for device driver data) for just a few bits.
+> 
+> This commit brings no functional changes.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_aal.c   | 39 +++++++++++++++++++++--
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  1 -
+>  drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 34 ++++----------------
+>  3 files changed, 44 insertions(+), 30 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> index bec035780db0..21b25470e9b7 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> @@ -17,10 +17,18 @@
+>  
+>  #define DISP_AAL_EN				0x0000
+>  #define AAL_EN						BIT(0)
+> +#define DISP_AAL_CFG				0x0020
+> +#define AAL_RELAY_MODE					BIT(0)
+> +#define AAL_GAMMA_LUT_EN				BIT(1)
+>  #define DISP_AAL_SIZE				0x0030
+>  #define DISP_AAL_SIZE_HSIZE				GENMASK(28, 16)
+>  #define DISP_AAL_SIZE_VSIZE				GENMASK(12, 0)
+>  #define DISP_AAL_OUTPUT_SIZE			0x04d8
+> +#define DISP_AAL_GAMMA_LUT			0x0700
+> +#define DISP_AAL_GAMMA_LUT_R				GENMASK(29, 20)
+> +#define DISP_AAL_GAMMA_LUT_G				GENMASK(19, 10)
+> +#define DISP_AAL_GAMMA_LUT_B				GENMASK(9, 0)
+> +#define DISP_AAL_LUT_BITS			10
+>  #define DISP_AAL_LUT_SIZE			512
+>  
+>  struct mtk_disp_aal_data {
+> @@ -85,9 +93,36 @@ unsigned int mtk_aal_gamma_get_lut_size(struct device *dev)
+>  void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state)
+>  {
+>  	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
+> +	struct drm_color_lut *lut;
+> +	unsigned int i;
+> +	u32 cfg_val;
+> +
+> +	/* If gamma is not supported in AAL, go out immediately */
+> +	if (!(aal->data && aal->data->has_gamma))
+> +		return;
+> +
+> +	/* Also, if there's no gamma lut there's nothing to do here. */
+> +	if (!state->gamma_lut)
+> +		return;
+> +
+> +	cfg_val = readl(aal->regs + DISP_AAL_CFG);
+> +	lut = (struct drm_color_lut *)state->gamma_lut->data;
+> +
+> +	for (i = 0; i < DISP_AAL_LUT_SIZE; i++) {
+> +		struct drm_color_lut hwlut = {
+> +			.red = drm_color_lut_extract(lut[i].red, DISP_AAL_LUT_BITS),
+> +			.green = drm_color_lut_extract(lut[i].green, DISP_AAL_LUT_BITS),
+> +			.blue = drm_color_lut_extract(lut[i].blue, DISP_AAL_LUT_BITS)
+> +		};
+> +		u32 word;
+> +
+> +		word = FIELD_PREP(DISP_AAL_GAMMA_LUT_R, hwlut.red);
+> +		word |= FIELD_PREP(DISP_AAL_GAMMA_LUT_G, hwlut.green);
+> +		word |= FIELD_PREP(DISP_AAL_GAMMA_LUT_B, hwlut.blue);
+> +		writel(word, (aal->regs + DISP_AAL_GAMMA_LUT) + (i * 4));
+> +	}
 
+Hi Angelo,
 
-On 11/10/2023 14:26, Jianjun Wang wrote:
-> The size of translation table should be a power of 2, using fls() cannot 
-> get the proper value when the size is not a power of 2. For example, 
-> fls(0x3e00000) - 1 = 25, hence the PCIe translation window size will be 
-> set to 0x2000000 instead of the expected size 0x3e00000. Fix translation 
-> window by splitting the MMIO space to multiple tables if its size is not 
-> a power of 2.
+it looks like you're missing a
 
-Hi Jianjun,
+  	cfg_val |= FIELD_PREP(AAL_GAMMA_LUT_EN, 1);
 
-I've no knowledge in PCIE, so maybe what my suggestion is stupid:
+to actually enable the AAL gamma table here, like was done in the common
+function.
 
-Is it mandatory to fit the translation table size with 0x3e00000 (in 
-this example) ?
-I'm asking because you can have an issue by reaching the maximum 
-translation table number.
+Thanks,
+Nícolas
 
-Is it possible to just use only one table with the power of 2 size above 
-0x3e00000 => 0x4000000 ( fls(0x3e00000) = 26 = 0x4000000). The downside 
-of this method is wasting allocation space. AFAIK I already see this 
-kind of method for memory protection/allocation in embedded systems, so 
-I'm wondering if this method is safer than using multiple table for only 
-one size which isn't a power of 2.
-
-
--- 
-Regards,
-Alexandre
+>  
+> -	if (aal->data && aal->data->has_gamma)
+> -		mtk_gamma_set_common(NULL, aal->regs, state);
+> +	writel(cfg_val, aal->regs + DISP_AAL_CFG);
+>  }
+[..]
 
