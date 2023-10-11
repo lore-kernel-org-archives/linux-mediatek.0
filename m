@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19472CDB483
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 21:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C315CCDB47E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 22:39:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=LqgL4VT2avoysIFW6unlJejXMALbZoAt6y9lYwnTSeo=; b=L5rDTsxERW3vlGJT3Gq5YyBwMn
-	HX/kytz2zaI87wTd7ZRHsq7beADRo0DOIp0FAvmPnWaPEY2hwDRC+aZ+oNdVDAZ6svl4DZs0BG/rP
-	9ihrX6Io2e6GSd9/FVcfo8S8MN/QgNoLcTcmU9HadYrx4fMNfqRwg6GlTC5OUILUDUKbmCXmWZLH6
-	FwOmHU1xZJnRNVFbSrunYDivlSUpVFZuzomfjC9uYWtoxFr7T4fC8QOtJfZTYRFDK0qi7dJwYe1/c
-	aYtKncP/w1ZTkaYH1xcT/1MiRdGEe7xsKClQGSfdpojCR7pa8lPfh6paNpz0EZjmFcv2JzmpBknVa
-	SdzYBN6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=szUp3IgWTq4iCJ08BNtxTyUlyqhJt469/BAgPtCRvbI=; b=nK3iAbfmutl8u2xj7MQuCSj9cr
+	4EfE2v4skaZR5q57aK5V866VmcRF+ywFa3Wr/buGX5mWt6L5ORWb//JK/mI1TpXlpEESvOdsyE+Jg
+	zlGu9mT+KVVCyxv2HMSb/DeZU5Gg03DgMzste4oBe04BMnZhD3yxdUHd9ZoVgYY8YtNl0F0pILcuj
+	YBr1Rc8/WCLnDU3IKXUlQPF95HhYn1YN670GH0qhYNUy9n/WdzBSds1fprgc4KWCR90NSDfSYk8YV
+	tnclk+PbmB56vV/K1WnoFB0vrQLocg0KRP5o8GkiNaQ368WSe+OlFBODZmPIA3ELPS0IE9PoMsAPC
+	H497ugmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqh98-00GmQd-0A;
-	Wed, 11 Oct 2023 21:53:38 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qqhrg-00Gr0O-13;
+	Wed, 11 Oct 2023 22:39:40 +0000
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqh92-00GmMv-09;
-	Wed, 11 Oct 2023 21:53:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 8399AB8201E;
-	Wed, 11 Oct 2023 21:53:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87540C433C9;
-	Wed, 11 Oct 2023 21:53:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697061209;
-	bh=qY9Rp5zkRIt2DsQivgERNNESbVTGEul4kS5s7/dIoho=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=EAwNFrclnTWEuXdB+Z8mt3u3kuEAAoUwY82PbS8J18XDNC6E3OiHHHxAFbbd17IOO
-	 T6KemaFOH4w9WVID23kFc5vCnMeXYebhs7yahyg9gnbxexaaSqR+KOEgoCrxijFWyG
-	 dnCiAysL1ttbyJnzXZGaT8aqz/DwQbEhhDfWR38iscslUEL9bLiDHhVjMYSwKPoaYH
-	 vE7EY6dncxhXQ4FluROOjHz7swY5mrWHaRm0x+YRj0w+mEnls2n/6+o4Mg69zLynhg
-	 wf5HljSZ4OwbmmK2VZKj4KXyrtee/VgZ11v8Vna96PUYyaJ2T6vmKgYUE3ho/7KBKo
-	 bDWaoqyCH5pFQ==
-Date: Wed, 11 Oct 2023 16:53:27 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
-Cc: linux-pci@vger.kernel.org,
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Lukas Wunner <lukas@wunner.de>,
-	"Rafael J . Wysocki" <rafael@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Emmanuel Grumbach <emmanuel.grumbach@intel.com>,
-	linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
-	ath10k@lists.infradead.org, ath11k@lists.infradead.org,
-	ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org
-Subject: Re: [PATCH v2 05/13] PCI/ASPM: Add pci_enable_link_state()
-Message-ID: <20231011215327.GA1043654@bhelgaas>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230918131103.24119-6-ilpo.jarvinen@linux.intel.com>
+	id 1qqhre-00GqzX-0m
+	for linux-mediatek@lists.infradead.org;
+	Wed, 11 Oct 2023 22:39:39 +0000
+Received: by mail-yw1-x1149.google.com with SMTP id 00721157ae682-5a21c283542so5379127b3.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Oct 2023 15:39:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1697063974; x=1697668774; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=szUp3IgWTq4iCJ08BNtxTyUlyqhJt469/BAgPtCRvbI=;
+        b=3GrTrIgFVMW1bhmN14ZAam8Ut1jMnlnXdVTZcyrRSbusl7n/WFlfAYavEloIOFc2kd
+         cr6DVqPSSWLtMmgzG6MEzPWMdM/fHwjb0PUMhbqU+YikwFtDTg4MXg0b3UoSvIyAGIJJ
+         CCHdFmhS2Mi4EYoPvqYSI2+eF9fF6rMBhGdqB85xFZiWo+iUdK+DvDG/QjmwYU2HdgsW
+         Nv63taopr7nCEg0/8siP0ZRFvtfy3K89GGD+R2H4G6B6SRdK+RpG7DdP2pGopWnhh1bW
+         VOfp7YdACqvp7SpNrrQvIPsB9pYNFNqhQ5v0HJE7+ctU2o8dlaKXkIgz3qPPC4/k/rN+
+         JwkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697063974; x=1697668774;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=szUp3IgWTq4iCJ08BNtxTyUlyqhJt469/BAgPtCRvbI=;
+        b=jf5dTvEbSKwSv/Mu+xUQ8/VXHaynfDwO5ZLRcTHnbvReay7yDMyYCmjR50UsxzOn4G
+         UzJ0oCveO/MxDYGefloaHEOnEyC+gTcdsEs538rvaqtw05kbOXSl/raznDdqx53S6d8h
+         AeK++FZJI8zZcLaY+sHnl0wJBaftuaQ1V4EsF2Up0fBAWEgsQpmsuROrDROTag4ZLb31
+         u2t6oHA+o0xKK+xuDtBK2SLlgrgExDGe4hzm+RuItL2RzzfQvuFBAhpFakUsmJIuPOPX
+         U0JG2vPUFm9Xwq4gfW/WHA/fgTtSy5JV1M2Yq5actSaypi1ZTXZDRCv648DsUFYhYmoB
+         o9sQ==
+X-Gm-Message-State: AOJu0YzCgQYM5u6JH0pQkzEoWhSBWz5sTqnYomQdeew2+8OpUcesk9E9
+	hyLcpJF8335AuqiBVJfhITmp8U7Ah2Qz
+X-Google-Smtp-Source: AGHT+IHm0+BwtpxvlDs0EJwWZDp2C+XyFuA9xw6fgoMpcHbgvM2/ri5l0LiHHVPLimN54DRYZEolelves5tp
+X-Received: from jiangzp-glinux-dev.c.googlers.com ([fda3:e722:ac3:cc00:20:ed76:c0a8:38e4])
+ (user=jiangzp job=sendgmr) by 2002:a81:aa4d:0:b0:59f:3cde:b33a with SMTP id
+ z13-20020a81aa4d000000b0059f3cdeb33amr416465ywk.6.1697063974245; Wed, 11 Oct
+ 2023 15:39:34 -0700 (PDT)
+Date: Wed, 11 Oct 2023 15:39:28 -0700
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.42.0.609.gbb76f46606-goog
+Message-ID: <20231011153928.kernel.v2.1.I6dbfc1fedddf0633b55ce7e7a10ef7f3929a9bdc@changeid>
+Subject: [kernel PATCH v2] Bluetooth: btmtksdio: enable bluetooth wakeup in
+ system suspend
+From: Zhengping Jiang <jiangzp@google.com>
+To: linux-bluetooth@vger.kernel.org, marcel@holtmann.org, luiz.dentz@gmail.com
+Cc: chromeos-bluetooth-upstreaming@chromium.org, 
+	Zhengping Jiang <jiangzp@google.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Johan Hedberg <johan.hedberg@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_145332_354395_3D1F5816 
-X-CRM114-Status: GOOD (  30.80  )
+X-CRM114-CacheID: sfid-20231011_153938_304133_7422D5B6 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,124 +90,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 18, 2023 at 04:10:55PM +0300, Ilpo Järvinen wrote:
-> pci_disable_link_state() lacks a symmetric pair. Some drivers want to
-> disable ASPM during certain phases of their operation but then
-> re-enable it later on. If pci_disable_link_state() is made for the
-> device, there is currently no way to re-enable the states that were
-> disabled.
+The BTMTKSDIO_BT_WAKE_ENABLED flag is set for bluetooth interrupt
+during system suspend and increases wakeup count for bluetooth event.
 
-pci_disable_link_state() gives drivers a way to disable specified ASPM
-states using a bitmask (PCIE_LINK_STATE_L0S, PCIE_LINK_STATE_L1,
-PCIE_LINK_STATE_L1_1, etc), but IIUC the driver can't tell exactly
-what changed and can't directly restore the original state, e.g.,
+Signed-off-by: Zhengping Jiang <jiangzp@google.com>
+---
 
-  - PCIE_LINK_STATE_L1 enabled initially
-  - driver calls pci_disable_link_state(PCIE_LINK_STATE_L0S)
-  - driver calls pci_enable_link_state(PCIE_LINK_STATE_L0S)
-  - PCIE_LINK_STATE_L0S and PCIE_LINK_STATE_L1 are enabled now
+Changes in v2:
+- Add Bluetooth prefix to patch subject
+- Fix warnings regarding using plain integer as NULL
+- Add static to btmtksdio_pm_ops
 
-Now PCIE_LINK_STATE_L0S is enabled even though it was not initially
-enabled.  Maybe that's what we want; I dunno.
+Changes in v1:
+- Add BTMTKSDIO_BT_WAKE_ENABLED flag
+- Call pm_wakeup_event in btmtksdio_interrupt
 
-pci_disable_link_state() currently returns success/failure, but only
-r8169 and mt76 even check, and only rtl_init_one() (r8169) has a
-non-trivial reason, so it's conceivable that it could return a bitmask
-instead.
+ drivers/bluetooth/btmtksdio.c | 44 ++++++++++++++++++++++++++++++-----
+ 1 file changed, 38 insertions(+), 6 deletions(-)
 
-> Add pci_enable_link_state() to remove ASPM states from the state
-> disable mask.
-> 
-> Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
-> ---
->  drivers/pci/pcie/aspm.c | 42 +++++++++++++++++++++++++++++++++++++++++
->  include/linux/pci.h     |  2 ++
->  2 files changed, 44 insertions(+)
-> 
-> diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
-> index 91dc95aca90f..f45d18d47c20 100644
-> --- a/drivers/pci/pcie/aspm.c
-> +++ b/drivers/pci/pcie/aspm.c
-> @@ -1117,6 +1117,48 @@ int pci_disable_link_state(struct pci_dev *pdev, int state)
->  }
->  EXPORT_SYMBOL(pci_disable_link_state);
->  
-> +/**
-> + * pci_enable_link_state - Re-enable device's link state
-> + * @pdev: PCI device
-> + * @state: ASPM link states to re-enable
-> + *
-> + * Enable device's link state that were previously disable so the link is
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index f9a3444753c2..404105e69c67 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -118,6 +118,7 @@ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
+ #define BTMTKSDIO_FUNC_ENABLED		3
+ #define BTMTKSDIO_PATCH_ENABLED		4
+ #define BTMTKSDIO_HW_RESET_ACTIVE	5
++#define BTMTKSDIO_BT_WAKE_ENABLED	6
+ 
+ struct mtkbtsdio_hdr {
+ 	__le16	len;
+@@ -554,7 +555,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 	sdio_claim_host(bdev->func);
+ 
+ 	/* Disable interrupt */
+-	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
++	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
+ 
+ 	txrx_timeout = jiffies + 5 * HZ;
+ 
+@@ -576,7 +577,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 		if ((int_status & FW_MAILBOX_INT) &&
+ 		    bdev->data->chipid == 0x7921) {
+ 			sdio_writel(bdev->func, PH2DSM0R_DRIVER_OWN,
+-				    MTK_REG_PH2DSM0R, 0);
++				    MTK_REG_PH2DSM0R, NULL);
+ 		}
+ 
+ 		if (int_status & FW_OWN_BACK_INT)
+@@ -608,7 +609,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 	} while (int_status || time_is_before_jiffies(txrx_timeout));
+ 
+ 	/* Enable interrupt */
+-	sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, 0);
++	sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, NULL);
+ 
+ 	sdio_release_host(bdev->func);
+ 
+@@ -620,8 +621,14 @@ static void btmtksdio_interrupt(struct sdio_func *func)
+ {
+ 	struct btmtksdio_dev *bdev = sdio_get_drvdata(func);
+ 
++	if (test_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state)) {
++		if (bdev->hdev->suspended)
++			pm_wakeup_event(bdev->dev, 0);
++		clear_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state);
++	}
++
+ 	/* Disable interrupt */
+-	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
++	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
+ 
+ 	schedule_work(&bdev->txrx_work);
+ }
+@@ -1454,6 +1461,23 @@ static int btmtksdio_runtime_suspend(struct device *dev)
+ 	return err;
+ }
+ 
++static int btmtksdio_system_suspend(struct device *dev)
++{
++	struct sdio_func *func = dev_to_sdio_func(dev);
++	struct btmtksdio_dev *bdev;
++
++	bdev = sdio_get_drvdata(func);
++	if (!bdev)
++		return 0;
++
++	if (!test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
++		return 0;
++
++	set_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state);
++
++	return btmtksdio_runtime_suspend(dev);
++}
++
+ static int btmtksdio_runtime_resume(struct device *dev)
+ {
+ 	struct sdio_func *func = dev_to_sdio_func(dev);
+@@ -1474,8 +1498,16 @@ static int btmtksdio_runtime_resume(struct device *dev)
+ 	return err;
+ }
+ 
+-static UNIVERSAL_DEV_PM_OPS(btmtksdio_pm_ops, btmtksdio_runtime_suspend,
+-			    btmtksdio_runtime_resume, NULL);
++static int btmtksdio_system_resume(struct device *dev)
++{
++	return btmtksdio_runtime_resume(dev);
++}
++
++static const struct dev_pm_ops __maybe_unused btmtksdio_pm_ops = {
++	SET_SYSTEM_SLEEP_PM_OPS(btmtksdio_system_suspend, btmtksdio_system_resume)
++	SET_RUNTIME_PM_OPS(btmtksdio_runtime_suspend, btmtksdio_runtime_resume, NULL)
++};
++
+ #define BTMTKSDIO_PM_OPS (&btmtksdio_pm_ops)
+ #else	/* CONFIG_PM */
+ #define BTMTKSDIO_PM_OPS NULL
+-- 
+2.42.0.609.gbb76f46606-goog
 
-"state[s] that were previously disable[d]" alludes to the use case you
-have in mind, but I don't think it describes how this function
-actually works.  This function just makes it possible to enable the
-specified states.  The @state parameter may have nothing to do with
-any previously disabled states.
-
-> + * allowed to enter the specific states. Note that if the BIOS didn't grant
-> + * ASPM control to the OS, this does nothing because we can't touch the
-> + * LNKCTL register.
-> + *
-> + * Return: 0 or a negative errno.
-> + */
-> +int pci_enable_link_state(struct pci_dev *pdev, int state)
-> +{
-> +	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
-> +
-> +	if (!link)
-> +		return -EINVAL;
-> +	/*
-> +	 * A driver requested that ASPM be enabled on this device, but
-> +	 * if we don't have permission to manage ASPM (e.g., on ACPI
-> +	 * systems we have to observe the FADT ACPI_FADT_NO_ASPM bit and
-> +	 * the _OSC method), we can't honor that request.
-> +	 */
-> +	if (aspm_disabled) {
-> +		pci_warn(pdev, "can't enable ASPM; OS doesn't have ASPM control\n");
-> +		return -EPERM;
-> +	}
-> +
-> +	mutex_lock(&aspm_lock);
-> +	link->aspm_disable &= ~pci_link_state_mask(state);
-> +	pcie_config_aspm_link(link, policy_to_aspm_state(link));
-> +
-> +	if (state & PCIE_LINK_STATE_CLKPM)
-> +		link->clkpm_disable = 0;
-> +	pcie_set_clkpm(link, policy_to_clkpm_state(link));
-> +	mutex_unlock(&aspm_lock);
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL(pci_enable_link_state);
-> +
->  /**
->   * pci_set_default_link_state - Set the default device link state
->   * @pdev: PCI device
-> diff --git a/include/linux/pci.h b/include/linux/pci.h
-> index 3c24ca164104..844d09230264 100644
-> --- a/include/linux/pci.h
-> +++ b/include/linux/pci.h
-> @@ -1776,11 +1776,13 @@ extern bool pcie_ports_native;
->  int pci_disable_link_state(struct pci_dev *pdev, int state);
->  int pci_disable_link_state_locked(struct pci_dev *pdev, int state);
->  #ifdef CONFIG_PCIEASPM
-> +int pci_enable_link_state(struct pci_dev *pdev, int state);
->  int pci_set_default_link_state(struct pci_dev *pdev, int state);
->  void pcie_no_aspm(void);
->  bool pcie_aspm_support_enabled(void);
->  bool pcie_aspm_enabled(struct pci_dev *pdev);
->  #else
-> +static inline int pci_enable_link_state(struct pci_dev *pdev, int state) { return -EOPNOTSUPP; }
->  static inline int pci_set_default_link_state(struct pci_dev *pdev, int state)
->  { return 0; }
->  static inline void pcie_no_aspm(void) { }
-> -- 
-> 2.30.2
-> 
-> 
-> -- 
-> ath12k mailing list
-> ath12k@lists.infradead.org
-> https://lists.infradead.org/mailman/listinfo/ath12k
 
