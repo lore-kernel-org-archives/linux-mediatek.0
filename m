@@ -4,79 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB7C2CD98E3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 01:26:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B19FCD98E9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 03:00:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jrBARauvKO5bXj4/z3JabNLTPC5n3Bm+xpPysDJ+pI4=; b=Oxj5A+8jh1wG/maLWJ8GATL1Kd
-	WJb4JAqtlmAoJoluocHu2mwLRS83tia/kFGQfw16m9DyB4BlkCE7TMWeXqjk0FpPYcV6Y0innvA4P
-	OLpI6/R3MwSb5mMrZrz47w86gkLqVCUYLnQVPe4eiV0KaHFLIHh9u2i4gZkBcaV8Uwnjva/xy7xah
-	nvX7eLsOSbqezWOcytXy9Y2SDZyuUo68mKTIS+XoSbmIBo3nKyzk3A/0fbVaGcK8ojoHHxF28dqop
-	bCmz1qAGi8ti0ZbbSL4CpOgJxWZFG/nvNoNIJPU0rBuJZjstViGzK6hqejNyR4CnpOJY8LmZupCik
-	H7zYxteA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pQ3H7eMV35hy7ja7ums4idnErqHQoC8PfzxJOKFzSow=; b=Fwug0avDpILynEOQddZr/1GgwT
+	iliBx3Q6clbfCcgRhippY/mPNuzCtSwnXezB6uaaAC4Fe327x1AUOXQgTTxYA+xas8esFqJsVY0+N
+	YOb5eWyUJUFTMuwW8384hK7QfwoZdhkdEVclsCCG1OFxizpk9poXJcdxiuS8Hd7WK8qwa5moz1et8
+	Kud8CIaeodSa47NP9F0coBjx2+t17kGhiP5drporgGWMp1xClSj5IdYDUXGW9s9NXqO6mZbvmUQuv
+	DB876Qykt7S9+73AmAFpHcV8vHnSIxodyh78HHmWe04Wbqy5A/mt1lYAK2/iEKa/e0L2SxaEc6xu6
+	+Opm3AYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqNzU-00EVOZ-1F;
-	Wed, 11 Oct 2023 01:26:24 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1qqPSy-00EcvP-0Y;
+	Wed, 11 Oct 2023 03:00:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqNzS-00EVOH-0R;
-	Wed, 11 Oct 2023 01:26:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=jrBARauvKO5bXj4/z3JabNLTPC5n3Bm+xpPysDJ+pI4=; b=GUebrjpJfA8+/hnX/ubMR0F9/t
-	yXwpz5AnaBr5BJEMQ8DojgdYDQg6x7aBawHL8BuYywS58yOKfqJfQqCvjvZxq/CBtHNzT4lncMqPC
-	o7sIR/2c/HY1+n/6hwfMUtdcE3FvhXHyasJ8h05yd66FF8wd0f8W4+RXJW5NnH1KTMvfJVkhDzn2X
-	5nopaYzUMBVKbgnUBEJl+c6CLmtSafpjzgm+VFIfoUAk6A7/p61FrHDk1etEIyhbnPm3nO1I5Cvr6
-	P4JswrM4lm+/Emt5CSKpLzL7RIRe27LItv/AqIaaFJ2LtwlucC+uYTfr1VgtWhbHzlBXzAEPTmHQW
-	Do6SrrHA==;
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qqNzO-007vNb-F5; Wed, 11 Oct 2023 01:26:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=jrBARauvKO5bXj4/z3JabNLTPC5n3Bm+xpPysDJ+pI4=; b=B9uIJsB/DtjzIKSFaoJWTj2obe
-	w27vMYq7GufA8gdAaNleiqpJMpuKvQJe5LBk+lY1Jw35b1Ii/7YL2IgqKGVujLYO/1qQA27gRrYIR
-	CVdbgPENQnJ9rrwywzDo+/rMuzuZtsiZOF5LFax5HzTjldGI5q9EDaLD5Qdo4qeMzQ+Y=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1qqNyu-001PlJ-TW; Wed, 11 Oct 2023 03:25:48 +0200
-Date: Wed, 11 Oct 2023 03:25:48 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Florian Fainelli <florian.fainelli@broadcom.com>
-Cc: netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>
-Subject: Re: [PATCH net-next 2/2] net: dsa: Rename IFLA_DSA_MASTER to
- IFLA_DSA_CONDUIT
-Message-ID: <9fd77135-22df-4d3f-a0a5-9548829d4124@lunn.ch>
-References: <20231010213942.3633407-1-florian.fainelli@broadcom.com>
- <20231010213942.3633407-3-florian.fainelli@broadcom.com>
+	id 1qqPSv-00EcuS-28;
+	Wed, 11 Oct 2023 03:00:54 +0000
+X-UUID: 5e34860267e211ee86758d4a7c00f3a0-20231010
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pQ3H7eMV35hy7ja7ums4idnErqHQoC8PfzxJOKFzSow=;
+	b=SrWkQsG9MY4WOgoCuXWQT5YAWmjFx9Re4PtxcSlAzRbhoDNRZpWZZM7CLJ6pVqjP23c5pVXITF8SDmLOsmNfCjE2DHuKCeOEqzPcWa0Sw/XtTY3S/yKVYeqjxum02uqneA/hsEUkokoTGszrhmOa6JWLQbN1vxSR/PerAvW+ZS4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:ff9f9eb7-9aa5-4a5f-aa2f-9f9a3333fe18,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:ab37fac3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5e34860267e211ee86758d4a7c00f3a0-20231010
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 385349698; Tue, 10 Oct 2023 20:00:43 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 11 Oct 2023 11:00:40 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 11 Oct 2023 11:00:40 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+CC: daoyuan huang <daoyuan.huang@mediatek.com>, Ping-Hsun Wu
+	<ping-hsun.wu@mediatek.com>, <linux-media@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Moudy Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v1] media: platform: mtk-mdp3: fix uninitialized variable in mdp_path_config()
+Date: Wed, 11 Oct 2023 11:00:37 +0800
+Message-ID: <20231011030037.22337-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231010213942.3633407-3-florian.fainelli@broadcom.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--1.284500-8.000000
+X-TMASE-MatchedRID: bY/LIBxtflqhL93N5VXnFISvKOGqLLPKFKliqHKCaOkqNag3uuW+4vhT
+	6/pHvNpJzmy+RYEtL0m0k1objFiL4GGN6M1vhJ4HXP5rFAucBUG4vBuE2X0HlVxTR00Ss4P6+Vi
+	hXqn9xLHGUnHlYVkOyLEivwZSlRnNGbjm5ZdalUGeAiCmPx4NwBnUJ0Ek6yhjxEHRux+uk8ifEz
+	J5hPndGReGaqZX6qKuiwzXnJrC++m6MyiN7oOAsXqfy2ud4VgwTKhkjXNSrgLRCxYxv/T7kv9Lo
+	A0/wXk89cAlb/C44ftWe8HxcmwrG3mVKZusLp922v9OjYWA2uMMswg45VMfPadst5iAforfVlxr
+	1FJij9s=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.284500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: CFF5A348E27B8ED8314AC7FD146001B5EB4CB8BE0F65BFDF7A204414EE8423BE2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_022618_512356_30FCA0AE 
-X-CRM114-Status: UNSURE (   6.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231010_200053_704633_682EB3C8 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,25 +99,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->  enum {
->  	IFLA_DSA_UNSPEC,
-> -	IFLA_DSA_MASTER,
-> +	IFLA_DSA_MASTER,	/* Deprecated, use IFLA_DSA_CONDUIT instead */
-> +	IFLA_DSA_CONDUIT = IFLA_DSA_MASTER,
->  	__IFLA_DSA_MAX,
->  };
+Fix the build warnings that were detected by the linux-media
+build scripts tool:
 
-Minor point, but maybe it seems better if we flip this around?
+drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:
+	In function 'mdp_path_config.isra':
+drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:
+	warning: 'ctx' may be used uninitialized [-Wmaybe-uninitialized]
+      |                    out = CFG_COMP(MT8195, ctx->param, outputs[0]);
+      |                                           ~~~^~~~~~~
+drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h: note:
+	in definition of macro 'CFG_COMP'
+      |         (IS_ERR_OR_NULL(comp) ? 0 : _CFG_COMP(plat, comp, mem))
+      |                         ^~~~
+drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:
+	note: 'ctx' was declared here
+      |         struct mdp_comp_ctx *ctx;
+      |
 
- enum {
- 	IFLA_DSA_UNSPEC,
--	IFLA_DSA_MASTER,
-+	IFLA_DSA_CONDUIT,	
-+	IFLA_DSA_MASTER = IFLA_DSA_CONDUIT, /* Deprecated */
- 	__IFLA_DSA_MAX,
- };
+Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index 3177592490be..6adac857a477 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -261,11 +261,11 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
+ 		const struct v4l2_rect *compose;
+ 		u32 out = 0;
+ 
++		ctx = &path->comps[index];
+ 		if (CFG_CHECK(MT8183, p_id))
+ 			out = CFG_COMP(MT8183, ctx->param, outputs[0]);
+ 
+ 		compose = path->composes[out];
+-		ctx = &path->comps[index];
+ 		ret = call_op(ctx, config_frame, cmd, compose);
+ 		if (ret)
+ 			return ret;
+-- 
+2.18.0
 
-    Andrew
 
