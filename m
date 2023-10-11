@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEAF5CD98E6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 03:43:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71DCCD98E6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 03:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C/TZq45qMi1fAaW0J3bBvSw/zlaucQX1tj2/vJ5eZ/o=; b=d2Xc93FD08eZAK/twzE6GHPsoP
-	YwfAPThgvj+/nexRvuT9e+W+8LJmXVPMcMQbWeJRHmUIvAC6SXcRu23kR7ZAbzQcnSbXlUWccW5zj
-	XyrEFoRC3Ul2s4zT0vdMfNpw/E7jy9dOlaEBVUB3K8IhoHp23P8zpSINVqS5wJ+dRyVeHoiIrr2HD
-	f1O8xyTXHuIH7ZewIt3NaDij8N4MuQEMxtVzPjanzxfkF+JuNm24uhtSxzdRBXUw+fqDF73lKc71o
-	kBl6Ot/A+37KWUBreDoH779CNLbDSXr1UD6hwNEcMlYQrhv4PuHHkziftboklfXvLYe9nnzf3HBZB
-	b1s3fHXw==;
+	bh=MZYpQc5rzVT95K4v6NAj9ftdPU0KUqElDGLvOQqiwwE=; b=Cj7y0zF5N2PglvdimkhahzVxUy
+	XrW2XsrerkSDU5HosYxS6mdgka0oTWlJNSM8ZRt7G7oK4ONh49zSFPznmEz8n+9KetpjyGjtMFeh0
+	Q4hxVYzj6FGehWP8zQ+YTLcc8VGM9E8niYr3OJp+CKXlR5/VGbh20KP7tIwdEWXsdD5p7Jhl1OOol
+	npGU3urhI4smsqjUKUqtEdlIn3mZeEMyjMy4V0/wLPxVZMXAnjSZ3IZ25ZD5RBNWbZaEJA/pIAZuU
+	N8BrTLARZP7Wd+8iA68E8+hp92aohQyeI1notNtwBShF/CFP9MC+Yj2XTJrI6CRzaAld+RKzNiYyH
+	KbnGg50Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqQ8X-00Eg8A-12;
-	Wed, 11 Oct 2023 03:43:53 +0000
+	id 1qqQHi-00EhAk-1A;
+	Wed, 11 Oct 2023 03:53:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqQ8U-00Eg6w-0z;
-	Wed, 11 Oct 2023 03:43:51 +0000
-X-UUID: 60d6ab8267e811ee86758d4a7c00f3a0-20231010
+	id 1qqQHe-00EhAJ-2v;
+	Wed, 11 Oct 2023 03:53:20 +0000
+X-UUID: b38f669c67e911ee86758d4a7c00f3a0-20231010
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=C/TZq45qMi1fAaW0J3bBvSw/zlaucQX1tj2/vJ5eZ/o=;
-	b=nrR8y4x2yzKPA7O1wbedUD/rM/nBVcrFfzPiyKj52VSzrQVuKQHnCQ5EEXfIjNdNmvvLxrq2qzAO78MfEsmoaE5qaHBNYk/mLimcLSDz7bwZz73Rd12xZXrJxIejSdASwwFDpHeVK/5ra4uhUPBayf+Qyl+bOcrU6ERSa43ckXY=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MZYpQc5rzVT95K4v6NAj9ftdPU0KUqElDGLvOQqiwwE=;
+	b=uCFkAsTaT7lK5RhJwuWMyGK8QmxFw9yFGFX8z8t7IfCNnhbmgNgWuvWI+M27w+jiXQsTRxZwA7v4EhGDtRV0t2GRs030h5P3aWlm732HdL5DvzL/4csrYiIZMC9KVao2SKHqYpf+07culPCVXIQ/wTLg9ky3eROL64saA1Fvl+0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:0d9691f6-38d4-4a91-8706-c8633f75fa29,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:cedfcbd2-8a8c-4c0a-bf3d-61c90d60b197,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:0426a6f0-9a6e-4c39-b73e-f2bc08ca3dc5,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:4943a6f0-9a6e-4c39-b73e-f2bc08ca3dc5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 60d6ab8267e811ee86758d4a7c00f3a0-20231010
+X-UUID: b38f669c67e911ee86758d4a7c00f3a0-20231010
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <chun-jen.tseng@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1732602168; Tue, 10 Oct 2023 20:43:44 -0700
+	with ESMTP id 1729532724; Tue, 10 Oct 2023 20:53:13 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 11 Oct 2023 11:43:08 +0800
+ 15.2.1118.26; Wed, 11 Oct 2023 11:43:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 11 Oct 2023 11:43:08 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 11 Oct 2023 11:43:09 +0800
 From: Mark Tseng <chun-jen.tseng@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
@@ -64,29 +64,29 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<chun-jen.tseng@mediatek.com>
-Subject: [PATCH v1 1/3] soc: mediatek: svs: Add support for MT8195 SoC
-Date: Wed, 11 Oct 2023 11:43:05 +0800
-Message-ID: <20231011034307.24641-2-chun-jen.tseng@mediatek.com>
+Subject: [PATCH v1 3/3] dt-bindings: soc: mediatek: add mt8186 and mt8195 svs dt-bindings
+Date: Wed, 11 Oct 2023 11:43:07 +0800
+Message-ID: <20231011034307.24641-4-chun-jen.tseng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231011034307.24641-1-chun-jen.tseng@mediatek.com>
 References: <20231011034307.24641-1-chun-jen.tseng@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.945800-8.000000
-X-TMASE-MatchedRID: GwmKcylEtt8Z+je+8a5/a38c8oKMbgYY0pVrZbbfikgTF8tEGMn0ovlY
-	oV6p/cSxdlrF5BK8CswKDee6oJ8ihU9dh3PRYVY14RtSDjG+z7ChQhstwJ9G4DJDf04iwTcYs4M
-	sNWdvFuhxEVHIJfjMK7pxDH0YWH+Inh05MEIv7Ndxa2BHu4P5OPls1Rj4kmPIFLXUWU5hGiFynC
-	+RoYX/O+LzNWBegCW2xl8lw85EaVQLbigRnpKlKSPzRlrdFGDwKpWjy9i97MkNsLUak+gzyThXU
-	ECyNQn3/l6Q7UmgcfyYLFAxByvC/w==
+X-TM-AS-Result: No-10--2.863000-8.000000
+X-TMASE-MatchedRID: jhJi18RLqAJlrtpBkGUSk3QEQEU5OIefVBDQSDMig9GbKItl61J/yfJv
+	ocwUrWp7FBpuM64i9KELbigRnpKlKZvjAepGmdoOlomZ99xAbqne4C8XNzhQT0U5kAru7RuD3kf
+	STfSfKi/U841kHUMK0MC9/Bnk7L6QAGzUiChV6IFWGst5Mh/sqeXly3tJvgImSZrfNhP3sgUBh9
+	AgBSEFrJm+YJspVvj2xkvrHlT8euJ0YHKn7N1oOA==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.945800-8.000000
+X-TMASE-Result: 10--2.863000-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 3F5B34051C6126FA34E494D2EE20E98D7390F45A91A910DE3EC9DD557F3329A92000:8
+X-TM-SNTS-SMTP: 9F53119236346542C8B5426200B7311E6C53B8F8CCC9EA4AB32CB98F578C6B0E2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231010_204350_365921_401DF2C8 
-X-CRM114-Status: GOOD (  18.76  )
+X-CRM114-CacheID: sfid-20231010_205319_292583_774BD54C 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,182 +101,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8195 svs gpu uses 2-line high bank and low bank to optimize the
-voltage of opp table for higher and lower frequency respectively.
+Add mt8186 and mt8195 svs compatible in dt-bindings.
 
 Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 136 +++++++++++++++++++++++++++++++++
- 1 file changed, 136 insertions(+)
+ Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index f31e3bedff50..317c402e673a 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -1792,6 +1792,75 @@ static int svs_get_efuse_data(struct svs_platform *svsp,
- 	return 0;
- }
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+index 7eda63d5682f..742b91d1d28e 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+@@ -22,8 +22,10 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt8183-svs
++      - mediatek,mt8186-svs
+       - mediatek,mt8188-svs
+       - mediatek,mt8192-svs
++      - mediatek,mt8195-svs
  
-+static bool svs_mt8195_efuse_parsing(struct svs_platform *svsp)
-+{
-+	struct svs_bank *svsb;
-+	u32 idx, i, ft_pgm, vmin, golden_temp;
-+	int ret;
-+
-+	for (i = 0; i < svsp->efuse_max; i++)
-+		if (svsp->efuse[i])
-+			dev_info(svsp->dev, "M_HW_RES%d: 0x%08x\n",
-+				 i, svsp->efuse[i]);
-+
-+	if (!svsp->efuse[10]) {
-+		dev_notice(svsp->dev, "svs_efuse[10] = 0x0?\n");
-+		return false;
-+	}
-+
-+	/* Svs efuse parsing */
-+	ft_pgm = svsp->efuse[0] & GENMASK(7, 0);
-+	vmin = (svsp->efuse[19] >> 4) & GENMASK(1, 0);
-+
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
-+
-+		if (vmin == 0x1)
-+			svsb->vmin = 0x1e;
-+
-+		if (ft_pgm == 0)
-+			svsb->volt_flags |= SVSB_INIT01_VOLT_IGNORE;
-+
-+		if (svsb->type == SVSB_LOW) {
-+			svsb->mtdes = svsp->efuse[10] & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[10] >> 16) & GENMASK(7, 0);
-+			svsb->mdes = (svsp->efuse[10] >> 24) & GENMASK(7, 0);
-+			svsb->dcbdet = (svsp->efuse[8]) & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[8] >> 8) & GENMASK(7, 0);
-+		} else if (svsb->type == SVSB_HIGH) {
-+			svsb->mtdes = svsp->efuse[9] & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[9] >> 16) & GENMASK(7, 0);
-+			svsb->mdes = (svsp->efuse[9] >> 24) & GENMASK(7, 0);
-+			svsb->dcbdet = (svsp->efuse[8]) & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[8] >> 8) & GENMASK(7, 0);
-+		}
-+
-+		svsb->vmax += svsb->dvt_fixed;
-+	}
-+
-+	ret = svs_get_efuse_data(svsp, "t-calibration-data",
-+				 &svsp->tefuse, &svsp->tefuse_max);
-+	if (ret)
-+		return false;
-+
-+	for (i = 0; i < svsp->tefuse_max; i++)
-+		if (svsp->tefuse[i] != 0)
-+			break;
-+
-+	if (i == svsp->tefuse_max)
-+		golden_temp = 50; /* All thermal efuse data are 0 */
-+	else
-+		golden_temp = (svsp->tefuse[0] >> 24) & GENMASK(7, 0);
-+
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
-+		svsb->mts = 500;
-+		svsb->bts = (((500 * golden_temp + 250460) / 1000) - 25) * 4;
-+	}
-+
-+	return true;
-+}
-+
- static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
- {
- 	struct svs_bank *svsb;
-@@ -2222,6 +2291,61 @@ static int svs_mt8183_platform_probe(struct svs_platform *svsp)
- 	return 0;
- }
- 
-+static struct svs_bank svs_mt8195_banks[] = {
-+	{
-+		.sw_id			= SVSB_GPU,
-+		.type			= SVSB_LOW,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-+		.get_volts		= svs_get_bank_volts_v3,
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT,
-+		.mode_support		= SVSB_MODE_INIT02,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 640000000,
-+		.turn_freq_base		= 640000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.vmax			= 0x38,
-+		.vmin			= 0x14,
-+		.age_config		= 0x555555,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x1,
-+		.vco			= 0x18,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0100,
-+		.int_st			= BIT(0),
-+		.ctl0			= 0x00540003,
-+	},
-+	{
-+		.sw_id			= SVSB_GPU,
-+		.type			= SVSB_HIGH,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-+		.get_volts		= svs_get_bank_volts_v3,
-+		.tzone_name		= "gpu1",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 880000000,
-+		.turn_freq_base		= 640000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.vmax			= 0x38,
-+		.vmin			= 0x14,
-+		.age_config		= 0x555555,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x6,
-+		.vco			= 0x18,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0101,
-+		.int_st			= BIT(1),
-+		.ctl0			= 0x00540003,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 0,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 7,
-+	},
-+};
-+
- static struct svs_bank svs_mt8192_banks[] = {
- 	{
- 		.sw_id			= SVSB_GPU,
-@@ -2441,6 +2565,15 @@ static struct svs_bank svs_mt8183_banks[] = {
- 	},
- };
- 
-+static const struct svs_platform_data svs_mt8195_platform_data = {
-+	.name = "mt8195-svs",
-+	.banks = svs_mt8195_banks,
-+	.efuse_parsing = svs_mt8195_efuse_parsing,
-+	.probe = svs_mt8192_platform_probe,
-+	.regs = svs_regs_v2,
-+	.bank_max = ARRAY_SIZE(svs_mt8195_banks),
-+};
-+
- static const struct svs_platform_data svs_mt8192_platform_data = {
- 	.name = "mt8192-svs",
- 	.banks = svs_mt8192_banks,
-@@ -2470,6 +2603,9 @@ static const struct svs_platform_data svs_mt8183_platform_data = {
- 
- static const struct of_device_id svs_of_match[] = {
- 	{
-+		.compatible = "mediatek,mt8195-svs",
-+		.data = &svs_mt8195_platform_data,
-+	}, {
- 		.compatible = "mediatek,mt8192-svs",
- 		.data = &svs_mt8192_platform_data,
- 	}, {
+   reg:
+     maxItems: 1
 -- 
 2.18.0
 
