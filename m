@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C315CCDB47E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 22:39:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9DBCDB465
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 23:31:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=szUp3IgWTq4iCJ08BNtxTyUlyqhJt469/BAgPtCRvbI=; b=nK3iAbfmutl8u2xj7MQuCSj9cr
-	4EfE2v4skaZR5q57aK5V866VmcRF+ywFa3Wr/buGX5mWt6L5ORWb//JK/mI1TpXlpEESvOdsyE+Jg
-	zlGu9mT+KVVCyxv2HMSb/DeZU5Gg03DgMzste4oBe04BMnZhD3yxdUHd9ZoVgYY8YtNl0F0pILcuj
-	YBr1Rc8/WCLnDU3IKXUlQPF95HhYn1YN670GH0qhYNUy9n/WdzBSds1fprgc4KWCR90NSDfSYk8YV
-	tnclk+PbmB56vV/K1WnoFB0vrQLocg0KRP5o8GkiNaQ368WSe+OlFBODZmPIA3ELPS0IE9PoMsAPC
-	H497ugmg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+a9X9PV7RF5uYirMPmSebDjtMW8dF+nBEyJ539aS6wY=; b=YQ/NoiTn2a/S5SK/gj+k9CO5w+
+	dBTJ1uc1D+P5Z+JbaHH/3jXgA4TTnB82HeaFYS/ICv9zRCWpODo5ho8BbVIff2Tb/sFwoNoaT0ldz
+	HkOAFAqFA8AXwf0pdHGpCVXjihRW5PnkIF+YFn1vvlTrqatsUQUELy+OrVUVx7IXbae366elWOAwM
+	aEMOHuNG3oLarrZk/cunzso7q2UhlwVr0E8hhH8EIbnE+OSSvrts7OT+AOjDdKH/C/lyk/CyXtgIl
+	CJ2GZLQTMb9Y2ZHo+bptcqgceB5Al/JCAt+G2hqfTDofx7IXD10D2rcgAJzX6RDxzU/hYJ1S/vF2Y
+	miRkpLcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqhrg-00Gr0O-13;
-	Wed, 11 Oct 2023 22:39:40 +0000
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+	id 1qqig7-00GxeV-2R;
+	Wed, 11 Oct 2023 23:31:47 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqhre-00GqzX-0m
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Oct 2023 22:39:39 +0000
-Received: by mail-yw1-x1149.google.com with SMTP id 00721157ae682-5a21c283542so5379127b3.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Oct 2023 15:39:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1697063974; x=1697668774; darn=lists.infradead.org;
-        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=szUp3IgWTq4iCJ08BNtxTyUlyqhJt469/BAgPtCRvbI=;
-        b=3GrTrIgFVMW1bhmN14ZAam8Ut1jMnlnXdVTZcyrRSbusl7n/WFlfAYavEloIOFc2kd
-         cr6DVqPSSWLtMmgzG6MEzPWMdM/fHwjb0PUMhbqU+YikwFtDTg4MXg0b3UoSvIyAGIJJ
-         CCHdFmhS2Mi4EYoPvqYSI2+eF9fF6rMBhGdqB85xFZiWo+iUdK+DvDG/QjmwYU2HdgsW
-         Nv63taopr7nCEg0/8siP0ZRFvtfy3K89GGD+R2H4G6B6SRdK+RpG7DdP2pGopWnhh1bW
-         VOfp7YdACqvp7SpNrrQvIPsB9pYNFNqhQ5v0HJE7+ctU2o8dlaKXkIgz3qPPC4/k/rN+
-         JwkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697063974; x=1697668774;
-        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=szUp3IgWTq4iCJ08BNtxTyUlyqhJt469/BAgPtCRvbI=;
-        b=jf5dTvEbSKwSv/Mu+xUQ8/VXHaynfDwO5ZLRcTHnbvReay7yDMyYCmjR50UsxzOn4G
-         UzJ0oCveO/MxDYGefloaHEOnEyC+gTcdsEs538rvaqtw05kbOXSl/raznDdqx53S6d8h
-         AeK++FZJI8zZcLaY+sHnl0wJBaftuaQ1V4EsF2Up0fBAWEgsQpmsuROrDROTag4ZLb31
-         u2t6oHA+o0xKK+xuDtBK2SLlgrgExDGe4hzm+RuItL2RzzfQvuFBAhpFakUsmJIuPOPX
-         U0JG2vPUFm9Xwq4gfW/WHA/fgTtSy5JV1M2Yq5actSaypi1ZTXZDRCv648DsUFYhYmoB
-         o9sQ==
-X-Gm-Message-State: AOJu0YzCgQYM5u6JH0pQkzEoWhSBWz5sTqnYomQdeew2+8OpUcesk9E9
-	hyLcpJF8335AuqiBVJfhITmp8U7Ah2Qz
-X-Google-Smtp-Source: AGHT+IHm0+BwtpxvlDs0EJwWZDp2C+XyFuA9xw6fgoMpcHbgvM2/ri5l0LiHHVPLimN54DRYZEolelves5tp
-X-Received: from jiangzp-glinux-dev.c.googlers.com ([fda3:e722:ac3:cc00:20:ed76:c0a8:38e4])
- (user=jiangzp job=sendgmr) by 2002:a81:aa4d:0:b0:59f:3cde:b33a with SMTP id
- z13-20020a81aa4d000000b0059f3cdeb33amr416465ywk.6.1697063974245; Wed, 11 Oct
- 2023 15:39:34 -0700 (PDT)
-Date: Wed, 11 Oct 2023 15:39:28 -0700
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.42.0.609.gbb76f46606-goog
-Message-ID: <20231011153928.kernel.v2.1.I6dbfc1fedddf0633b55ce7e7a10ef7f3929a9bdc@changeid>
-Subject: [kernel PATCH v2] Bluetooth: btmtksdio: enable bluetooth wakeup in
- system suspend
-From: Zhengping Jiang <jiangzp@google.com>
-To: linux-bluetooth@vger.kernel.org, marcel@holtmann.org, luiz.dentz@gmail.com
-Cc: chromeos-bluetooth-upstreaming@chromium.org, 
-	Zhengping Jiang <jiangzp@google.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Johan Hedberg <johan.hedberg@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+	id 1qqig4-00GxcZ-07;
+	Wed, 11 Oct 2023 23:31:46 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 66363F0C;
+	Thu, 12 Oct 2023 01:31:33 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1697067093;
+	bh=veZu4nip6XJTOC2Cjjm0FeHRqsbH4ZSamFt2SVxn1/k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OxODQ9ixtia+33hvE04Ke239gnbxGcjPmShfBu5SLFPfDcmN1VwerZ4pNmq2ug3P1
+	 lom9oF5czzPK0t0mcWsN2Y7pkdttFgunvai8bBtiSfEFoxbmo2DwGrkQ6I22EqIY87
+	 SDhPax5Q5dg/K6OqbrN0eYtCmGJfbyQZMC3zSPG0=
+Date: Thu, 12 Oct 2023 02:31:43 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Phi-bang Nguyen <pnguyen@baylibre.com>,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Andy Hsieh <andy.hsieh@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	Louis Kuo <louis.kuo@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Moudy Ho <moudy.ho@mediatek.com>,
+	Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v3 4/4] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 camsv
+Message-ID: <20231011233143.GA2257@pendragon.ideasonboard.com>
+References: <20230807094940.329165-1-jstephan@baylibre.com>
+ <20230807094940.329165-5-jstephan@baylibre.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230807094940.329165-5-jstephan@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_153938_304133_7422D5B6 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20231011_163144_240765_5D76BC90 
+X-CRM114-Status: GOOD (  38.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,123 +80,338 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The BTMTKSDIO_BT_WAKE_ENABLED flag is set for bluetooth interrupt
-during system suspend and increases wakeup count for bluetooth event.
+Hi Julien,
 
-Signed-off-by: Zhengping Jiang <jiangzp@google.com>
----
+Thank you for the patch.
 
-Changes in v2:
-- Add Bluetooth prefix to patch subject
-- Fix warnings regarding using plain integer as NULL
-- Add static to btmtksdio_pm_ops
+A first review comment, for an issue I've noticed while testing.
 
-Changes in v1:
-- Add BTMTKSDIO_BT_WAKE_ENABLED flag
-- Call pm_wakeup_event in btmtksdio_interrupt
+On Mon, Aug 07, 2023 at 11:48:13AM +0200, Julien Stephan wrote:
+> From: Phi-bang Nguyen <pnguyen@baylibre.com>
+> 
+> This driver provides a path to bypass the SoC ISP so that image data
+> coming from the SENINF can go directly into memory without any image
+> processing. This allows the use of an external ISP.
+> 
+> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  MAINTAINERS                                   |   1 +
+>  .../platform/mediatek/isp/isp_30/Kconfig      |  19 +
+>  .../platform/mediatek/isp/isp_30/Makefile     |   1 +
+>  .../mediatek/isp/isp_30/camsv/Makefile        |   7 +
+>  .../mediatek/isp/isp_30/camsv/mtk_camsv.c     | 328 ++++++++
+>  .../mediatek/isp/isp_30/camsv/mtk_camsv.h     | 196 +++++
+>  .../isp/isp_30/camsv/mtk_camsv30_hw.c         | 432 ++++++++++
+>  .../isp/isp_30/camsv/mtk_camsv30_regs.h       |  60 ++
+>  .../isp/isp_30/camsv/mtk_camsv_video.c        | 781 ++++++++++++++++++
+>  9 files changed, 1825 insertions(+)
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_hw.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_regs.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv_video.c
 
- drivers/bluetooth/btmtksdio.c | 44 ++++++++++++++++++++++++++++++-----
- 1 file changed, 38 insertions(+), 6 deletions(-)
+[snip]
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index f9a3444753c2..404105e69c67 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -118,6 +118,7 @@ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
- #define BTMTKSDIO_FUNC_ENABLED		3
- #define BTMTKSDIO_PATCH_ENABLED		4
- #define BTMTKSDIO_HW_RESET_ACTIVE	5
-+#define BTMTKSDIO_BT_WAKE_ENABLED	6
- 
- struct mtkbtsdio_hdr {
- 	__le16	len;
-@@ -554,7 +555,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
- 	sdio_claim_host(bdev->func);
- 
- 	/* Disable interrupt */
--	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
-+	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
- 
- 	txrx_timeout = jiffies + 5 * HZ;
- 
-@@ -576,7 +577,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
- 		if ((int_status & FW_MAILBOX_INT) &&
- 		    bdev->data->chipid == 0x7921) {
- 			sdio_writel(bdev->func, PH2DSM0R_DRIVER_OWN,
--				    MTK_REG_PH2DSM0R, 0);
-+				    MTK_REG_PH2DSM0R, NULL);
- 		}
- 
- 		if (int_status & FW_OWN_BACK_INT)
-@@ -608,7 +609,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
- 	} while (int_status || time_is_before_jiffies(txrx_timeout));
- 
- 	/* Enable interrupt */
--	sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, 0);
-+	sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, NULL);
- 
- 	sdio_release_host(bdev->func);
- 
-@@ -620,8 +621,14 @@ static void btmtksdio_interrupt(struct sdio_func *func)
- {
- 	struct btmtksdio_dev *bdev = sdio_get_drvdata(func);
- 
-+	if (test_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state)) {
-+		if (bdev->hdev->suspended)
-+			pm_wakeup_event(bdev->dev, 0);
-+		clear_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state);
-+	}
-+
- 	/* Disable interrupt */
--	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
-+	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
- 
- 	schedule_work(&bdev->txrx_work);
- }
-@@ -1454,6 +1461,23 @@ static int btmtksdio_runtime_suspend(struct device *dev)
- 	return err;
- }
- 
-+static int btmtksdio_system_suspend(struct device *dev)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(dev);
-+	struct btmtksdio_dev *bdev;
-+
-+	bdev = sdio_get_drvdata(func);
-+	if (!bdev)
-+		return 0;
-+
-+	if (!test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
-+		return 0;
-+
-+	set_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state);
-+
-+	return btmtksdio_runtime_suspend(dev);
-+}
-+
- static int btmtksdio_runtime_resume(struct device *dev)
- {
- 	struct sdio_func *func = dev_to_sdio_func(dev);
-@@ -1474,8 +1498,16 @@ static int btmtksdio_runtime_resume(struct device *dev)
- 	return err;
- }
- 
--static UNIVERSAL_DEV_PM_OPS(btmtksdio_pm_ops, btmtksdio_runtime_suspend,
--			    btmtksdio_runtime_resume, NULL);
-+static int btmtksdio_system_resume(struct device *dev)
-+{
-+	return btmtksdio_runtime_resume(dev);
-+}
-+
-+static const struct dev_pm_ops __maybe_unused btmtksdio_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(btmtksdio_system_suspend, btmtksdio_system_resume)
-+	SET_RUNTIME_PM_OPS(btmtksdio_runtime_suspend, btmtksdio_runtime_resume, NULL)
-+};
-+
- #define BTMTKSDIO_PM_OPS (&btmtksdio_pm_ops)
- #else	/* CONFIG_PM */
- #define BTMTKSDIO_PM_OPS NULL
+> diff --git a/drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_hw.c b/drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_hw.c
+> new file mode 100644
+> index 000000000000..bdf878460354
+> --- /dev/null
+> +++ b/drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_hw.c
+> @@ -0,0 +1,432 @@
+
+[snip]
+
+> +static void mtk_camsv30_setup(struct mtk_cam_dev *cam_dev, u32 w, u32 h,
+> +			      u32 bpl, u32 mbus_fmt)
+> +{
+> +	const struct mtk_cam_conf *conf = cam_dev->conf;
+> +	u32 int_en = INT_ST_MASK_CAMSV;
+> +	u32 tmp;
+> +	struct mtk_cam_sparams sparams;
+> +
+> +	fmt_to_sparams(mbus_fmt, &sparams);
+> +
+> +	spin_lock(&cam_dev->irqlock);
+
+This isn't right, for multiple reasons.
+
+First, the lock is taken in IRQ context, so you need to disable IRQs
+here, or you'll risk deadlocking. spin_lock_irqsave() is the safe
+wildcard solution, but if this function is guaranteed to be called with
+interrupts enabled, you can also use spin_lock_irq(). This problem is
+caught by lockdep, didn't you test the driver with lockdep enabled ? If
+not, please enable it for v4.
+
+Then, pm_runtime_get_sync() may sleep, so you should take the lock
+after.
+
+Next, mtk_camsv30_setup() is called by mtk_camsv30_runtime_resume()
+below, right after calling spin_lock_irqsave() on the same lock. This
+has quite clearly not been tested. Please make sure to test system
+suspend/resume while streaming for v4.
+
+Finally, does this function really require taking the irqlock ? It looks
+like locking should be revisited in this driver.
+
+> +
+> +	if (pm_runtime_get_sync(cam_dev->dev) < 0) {
+
+When pm_runtime_get_sync() fails you need to call pm_runtime_put(). A
+better option is to use pm_runtime_resume_and_get().
+
+> +		dev_err(cam_dev->dev, "failed to get pm_runtime\n");
+> +		spin_unlock(&cam_dev->irqlock);
+> +		return;
+> +	}
+> +
+> +	writel(conf->tg_sen_mode, cam_dev->regs_tg + CAMSV_TG_SEN_MODE);
+> +
+> +	writel((w * sparams.w_factor) << 16U, cam_dev->regs_tg + CAMSV_TG_SEN_GRAB_PXL);
+> +
+> +	writel(h << 16U, cam_dev->regs_tg + CAMSV_TG_SEN_GRAB_LIN);
+> +
+> +	/* YUV_U2S_DIS: disable YUV sensor unsigned to signed */
+> +	writel(0x1000U, cam_dev->regs_tg + CAMSV_TG_PATH_CFG);
+> +
+> +	/* Reset cam */
+> +	writel(CAMSV_SW_RST, cam_dev->regs + CAMSV_SW_CTL);
+> +	writel(0x0U, cam_dev->regs + CAMSV_SW_CTL);
+> +	writel(CAMSV_IMGO_RST_TRIG, cam_dev->regs + CAMSV_SW_CTL);
+> +
+> +	readl_poll_timeout(cam_dev->regs + CAMSV_SW_CTL, tmp,
+> +			(tmp == (CAMSV_IMGO_RST_TRIG | CAMSV_IMGO_RST_ST)), 10, 200);
+> +
+> +	writel(0x0U, cam_dev->regs + CAMSV_SW_CTL);
+> +
+> +	writel(int_en, cam_dev->regs + CAMSV_INT_EN);
+> +
+> +	writel(conf->module_en | sparams.module_en_pak,
+> +	      cam_dev->regs + CAMSV_MODULE_EN);
+> +	writel(sparams.fmt_sel, cam_dev->regs + CAMSV_FMT_SEL);
+> +	writel(sparams.pak, cam_dev->regs + CAMSV_PAK);
+> +
+> +	writel(bpl - 1U, cam_dev->regs_img0 + CAMSV_IMGO_SV_XSIZE);
+> +	writel(h - 1U, cam_dev->regs_img0 + CAMSV_IMGO_SV_YSIZE);
+> +
+> +	writel(sparams.imgo_stride | bpl, cam_dev->regs_img0 + CAMSV_IMGO_SV_STRIDE);
+> +
+> +	writel(conf->imgo_con, cam_dev->regs_img0 + CAMSV_IMGO_SV_CON);
+> +	writel(conf->imgo_con2, cam_dev->regs_img0 + CAMSV_IMGO_SV_CON2);
+> +
+> +	/* CMOS_EN first */
+> +	writel(readl(cam_dev->regs_tg + CAMSV_TG_SEN_MODE) | CAMSV_TG_SEN_MODE_CMOS_EN,
+> +			cam_dev->regs_tg + CAMSV_TG_SEN_MODE);
+> +
+> +	/* finally, CAMSV_MODULE_EN : IMGO_EN */
+> +	writel(readl(cam_dev->regs + CAMSV_MODULE_EN) | CAMSV_MODULE_EN_IMGO_EN,
+> +		    cam_dev->regs + CAMSV_MODULE_EN);
+> +
+> +	pm_runtime_put_autosuspend(cam_dev->dev);
+
+This will cut the power off after a delay, possibly loosing state. If
+userspace requests buffers and then starts streaming only later, you
+risk issues.
+
+> +	spin_unlock(&cam_dev->irqlock);
+> +}
+> +
+> +static irqreturn_t isp_irq_camsv30(int irq, void *data)
+> +{
+> +	struct mtk_cam_dev *cam_dev = (struct mtk_cam_dev *)data;
+> +	struct mtk_cam_dev_buffer *buf;
+> +	unsigned long flags = 0;
+> +	unsigned int irq_status;
+> +
+> +	spin_lock_irqsave(&cam_dev->irqlock, flags);
+> +
+> +	irq_status = readl(cam_dev->regs + CAMSV_INT_STATUS);
+> +
+> +	if (irq_status & INT_ST_MASK_CAMSV_ERR) {
+> +		dev_err(cam_dev->dev, "irq error 0x%x\n",
+> +			(unsigned int)(irq_status & INT_ST_MASK_CAMSV_ERR));
+> +	}
+> +
+> +	/* De-queue frame */
+> +	if (irq_status & CAMSV_IRQ_PASS1_DON) {
+> +		cam_dev->sequence++;
+> +
+> +		if (!cam_dev->is_dummy_used) {
+> +			buf = list_first_entry_or_null(&cam_dev->buf_list,
+> +						       struct mtk_cam_dev_buffer,
+> +						       list);
+> +			if (buf) {
+> +				buf->v4l2_buf.sequence = cam_dev->sequence;
+> +				buf->v4l2_buf.vb2_buf.timestamp = ktime_get_ns();
+> +				vb2_buffer_done(&buf->v4l2_buf.vb2_buf,
+> +						VB2_BUF_STATE_DONE);
+> +				list_del(&buf->list);
+> +			}
+> +		}
+> +
+> +		if (list_empty(&cam_dev->buf_list)) {
+> +			mtk_camsv30_update_buffers_add(cam_dev, &cam_dev->dummy);
+> +			cam_dev->is_dummy_used = true;
+> +		} else {
+> +			buf = list_first_entry_or_null(&cam_dev->buf_list,
+> +						       struct mtk_cam_dev_buffer,
+> +						       list);
+> +			mtk_camsv30_update_buffers_add(cam_dev, buf);
+> +			cam_dev->is_dummy_used = false;
+> +		}
+> +	}
+> +
+> +	spin_unlock_irqrestore(&cam_dev->irqlock, flags);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int mtk_camsv30_runtime_suspend(struct device *dev)
+> +{
+> +	struct mtk_cam_dev *cam_dev = dev_get_drvdata(dev);
+> +	struct vb2_queue *vbq = &cam_dev->vdev.vbq;
+> +
+> +	if (vb2_is_streaming(vbq)) {
+> +		mutex_lock(&cam_dev->op_lock);
+> +		v4l2_subdev_call(&cam_dev->subdev, video, s_stream, 0);
+> +		mutex_unlock(&cam_dev->op_lock);
+> +	}
+> +
+> +	clk_bulk_disable_unprepare(cam_dev->num_clks, cam_dev->clks);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_camsv30_runtime_resume(struct device *dev)
+> +{
+> +	struct mtk_cam_dev *cam_dev = dev_get_drvdata(dev);
+> +	struct mtk_cam_video_device *vdev = &cam_dev->vdev;
+> +	const struct v4l2_pix_format_mplane *fmt = &vdev->format;
+> +	struct vb2_queue *vbq = &vdev->vbq;
+> +	struct mtk_cam_dev_buffer *buf, *buf_prev;
+> +	int ret;
+> +	unsigned long flags = 0;
+> +
+> +	ret = clk_bulk_prepare_enable(cam_dev->num_clks, cam_dev->clks);
+> +	if (ret) {
+> +		dev_err(dev, "failed to enable clock:%d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	if (vb2_is_streaming(vbq)) {
+> +		spin_lock_irqsave(&cam_dev->irqlock, flags);
+> +
+> +		mtk_camsv30_setup(cam_dev, fmt->width, fmt->height,
+> +				  fmt->plane_fmt[0].bytesperline, vdev->fmtinfo->code);
+> +
+> +		buf = list_first_entry_or_null(&cam_dev->buf_list,
+> +					       struct mtk_cam_dev_buffer,
+> +					       list);
+> +		if (buf) {
+> +			mtk_camsv30_update_buffers_add(cam_dev, buf);
+> +			cam_dev->is_dummy_used = false;
+> +		} else {
+> +			mtk_camsv30_update_buffers_add(cam_dev, &cam_dev->dummy);
+> +			cam_dev->is_dummy_used = true;
+> +		}
+> +
+> +		mtk_camsv30_cmos_vf_hw_enable(cam_dev, vdev->fmtinfo->packed);
+> +
+> +		spin_unlock_irqrestore(&cam_dev->irqlock, flags);
+> +
+> +		/* Stream on the sub-device */
+> +		mutex_lock(&cam_dev->op_lock);
+> +		ret = v4l2_subdev_call(&cam_dev->subdev, video, s_stream, 1);
+> +
+> +		if (ret) {
+> +			cam_dev->stream_count--;
+> +			if (cam_dev->stream_count == 0)
+> +				media_pipeline_stop(vdev->vdev.entity.pads);
+> +		}
+> +		mutex_unlock(&cam_dev->op_lock);
+> +
+> +		if (ret)
+> +			goto fail_no_stream;
+> +	}
+> +
+> +	return 0;
+> +
+> +fail_no_stream:
+> +	spin_lock_irqsave(&cam_dev->irqlock, flags);
+> +	list_for_each_entry_safe(buf, buf_prev, &cam_dev->buf_list, list) {
+> +		buf->daddr = 0ULL;
+> +		list_del(&buf->list);
+> +		vb2_buffer_done(&buf->v4l2_buf.vb2_buf, VB2_BUF_STATE_ERROR);
+> +	}
+> +	spin_unlock_irqrestore(&cam_dev->irqlock, flags);
+> +	return ret;
+> +}
+
+[snip]
+
+> diff --git a/drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv_video.c b/drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv_video.c
+> new file mode 100644
+> index 000000000000..f879726eacd8
+> --- /dev/null
+> +++ b/drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv_video.c
+> @@ -0,0 +1,781 @@
+
+[snip]
+
+> +/* -----------------------------------------------------------------------------
+> + * VB2 Queue Operations
+> + */
+> +
+> +static int mtk_cam_vb2_queue_setup(struct vb2_queue *vq,
+> +				   unsigned int *num_buffers,
+> +				   unsigned int *num_planes,
+> +				   unsigned int sizes[],
+> +				   struct device *alloc_devs[])
+> +{
+> +	struct mtk_cam_video_device *vdev =
+> +		vb2_queue_to_mtk_cam_video_device(vq);
+> +	unsigned int max_buffer_count = vdev->desc->max_buf_count;
+> +	const struct v4l2_pix_format_mplane *fmt = &vdev->format;
+> +	struct mtk_cam_dev *cam = vb2_get_drv_priv(vq);
+> +	unsigned int size;
+> +	unsigned int np_conf;
+> +	unsigned int i;
+> +
+> +	/* Check the limitation of buffer size */
+> +	if (max_buffer_count)
+> +		*num_buffers = clamp_val(*num_buffers, 1, max_buffer_count);
+> +
+> +	size = fmt->plane_fmt[0].sizeimage;
+> +	/* Add for q.create_bufs with fmt.g_sizeimage(p) / 2 test */
+> +
+> +	np_conf = cam->conf->frm_hdr_en ? 2 : 1;
+> +
+> +	if (*num_planes == 0) {
+> +		*num_planes = np_conf;
+> +		for (i = 0; i < *num_planes; ++i)
+> +			sizes[i] = size;
+> +	} else if (*num_planes != np_conf || sizes[0] < size) {
+> +		return -EINVAL;
+> +	}
+> +
+> +	(*cam->hw_functions->mtk_cam_setup)(cam, fmt->width, fmt->height,
+> +			fmt->plane_fmt[0].bytesperline, vdev->fmtinfo->code);
+
+This isn't the right time to call this. The hardware should be
+programmed when starting streaming, not when allocating buffers.
+
+> +
+> +	return 0;
+> +}
+
+[snip]
+
 -- 
-2.42.0.609.gbb76f46606-goog
+Regards,
 
+Laurent Pinchart
 
