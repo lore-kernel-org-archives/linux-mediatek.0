@@ -4,40 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50292CD98D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 01:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB7C2CD98E3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 01:26:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JPiec/sCUcZurkwmie2nYwKp09sLIt0E6Hpr773cJDg=; b=hgE2swWQfGECAQmLNMO8uIoPTa
-	UVz0fnoM5Po/ubCw3zeXWpuwhFk+c/ofzPp3lpzpdBYKRUINHCYIGVX5m0DH1HkoU+1EMQa5Gwuen
-	Mm0CAkiTxiQeSLU8E+XpX4m1XeN7ow1IhZc71Wzneqt32b4aSyIAn/RaXphN62ZFCX15IM6HObMuU
-	oJI8uG/KbS7CxH4bXhlxiSoar1+fpwHiAoc06E1wP3cM2qArodvLJub/dUzvns8YLU5hT4Vx1e3g8
-	CDkLT63WtbfbhQZ4mdO5x0F9Y6J19Vo13sEMbvd74IVvkQT6m7DDbVGn4aBzXyf8hdlnZrB4YM2/a
-	FPhc3gyA==;
+	bh=jrBARauvKO5bXj4/z3JabNLTPC5n3Bm+xpPysDJ+pI4=; b=Oxj5A+8jh1wG/maLWJ8GATL1Kd
+	WJb4JAqtlmAoJoluocHu2mwLRS83tia/kFGQfw16m9DyB4BlkCE7TMWeXqjk0FpPYcV6Y0innvA4P
+	OLpI6/R3MwSb5mMrZrz47w86gkLqVCUYLnQVPe4eiV0KaHFLIHh9u2i4gZkBcaV8Uwnjva/xy7xah
+	nvX7eLsOSbqezWOcytXy9Y2SDZyuUo68mKTIS+XoSbmIBo3nKyzk3A/0fbVaGcK8ojoHHxF28dqop
+	bCmz1qAGi8ti0ZbbSL4CpOgJxWZFG/nvNoNIJPU0rBuJZjstViGzK6hqejNyR4CnpOJY8LmZupCik
+	H7zYxteA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqNjl-00EUUj-36;
-	Wed, 11 Oct 2023 01:10:09 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1qqNzU-00EVOZ-1F;
+	Wed, 11 Oct 2023 01:26:24 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqNjh-00EUTf-1z;
-	Wed, 11 Oct 2023 01:10:07 +0000
+	id 1qqNzS-00EVOH-0R;
+	Wed, 11 Oct 2023 01:26:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=jrBARauvKO5bXj4/z3JabNLTPC5n3Bm+xpPysDJ+pI4=; b=GUebrjpJfA8+/hnX/ubMR0F9/t
+	yXwpz5AnaBr5BJEMQ8DojgdYDQg6x7aBawHL8BuYywS58yOKfqJfQqCvjvZxq/CBtHNzT4lncMqPC
+	o7sIR/2c/HY1+n/6hwfMUtdcE3FvhXHyasJ8h05yd66FF8wd0f8W4+RXJW5NnH1KTMvfJVkhDzn2X
+	5nopaYzUMBVKbgnUBEJl+c6CLmtSafpjzgm+VFIfoUAk6A7/p61FrHDk1etEIyhbnPm3nO1I5Cvr6
+	P4JswrM4lm+/Emt5CSKpLzL7RIRe27LItv/AqIaaFJ2LtwlucC+uYTfr1VgtWhbHzlBXzAEPTmHQW
+	Do6SrrHA==;
+Received: from vps0.lunn.ch ([156.67.10.101])
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1qqNzO-007vNb-F5; Wed, 11 Oct 2023 01:26:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=JPiec/sCUcZurkwmie2nYwKp09sLIt0E6Hpr773cJDg=; b=nFfJb4mJ5K9YVo0uqSKDpTjUrz
-	boYCeR91Gw/HrNAj9kJXXhIf8EDyoSamrLURlN5nrshZXtVdCjxresFUw7WEMYMLsYgxZnGzUXQVY
-	I+dIMBJAkxeTS7tlxIkvrTMeDZzluO31ScWU14TqRvL5I0lUsOBXz5dUNCPstacfqQ0I=;
+	bh=jrBARauvKO5bXj4/z3JabNLTPC5n3Bm+xpPysDJ+pI4=; b=B9uIJsB/DtjzIKSFaoJWTj2obe
+	w27vMYq7GufA8gdAaNleiqpJMpuKvQJe5LBk+lY1Jw35b1Ii/7YL2IgqKGVujLYO/1qQA27gRrYIR
+	CVdbgPENQnJ9rrwywzDo+/rMuzuZtsiZOF5LFax5HzTjldGI5q9EDaLD5Qdo4qeMzQ+Y=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1qqNjR-001PVB-Dw; Wed, 11 Oct 2023 03:09:49 +0200
-Date: Wed, 11 Oct 2023 03:09:49 +0200
+	id 1qqNyu-001PlJ-TW; Wed, 11 Oct 2023 03:25:48 +0200
+Date: Wed, 11 Oct 2023 03:25:48 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Florian Fainelli <florian.fainelli@broadcom.com>
 Cc: netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
@@ -51,17 +64,18 @@ Cc: netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
 	"open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
 	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>
-Subject: Re: [PATCH net-next 1/2] net: dsa: Use conduit and user terms
-Message-ID: <63f3e1f4-428b-42d2-a5ac-c6445af195f0@lunn.ch>
+Subject: Re: [PATCH net-next 2/2] net: dsa: Rename IFLA_DSA_MASTER to
+ IFLA_DSA_CONDUIT
+Message-ID: <9fd77135-22df-4d3f-a0a5-9548829d4124@lunn.ch>
 References: <20231010213942.3633407-1-florian.fainelli@broadcom.com>
- <20231010213942.3633407-2-florian.fainelli@broadcom.com>
+ <20231010213942.3633407-3-florian.fainelli@broadcom.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231010213942.3633407-2-florian.fainelli@broadcom.com>
+In-Reply-To: <20231010213942.3633407-3-florian.fainelli@broadcom.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231010_181005_678828_B880977E 
-X-CRM114-Status: UNSURE (   6.95  )
+X-CRM114-CacheID: sfid-20231011_022618_512356_30FCA0AE 
+X-CRM114-Status: UNSURE (   6.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,18 +91,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> -Master network devices
-> +conduit network devices
->  ----------------------
+>  enum {
+>  	IFLA_DSA_UNSPEC,
+> -	IFLA_DSA_MASTER,
+> +	IFLA_DSA_MASTER,	/* Deprecated, use IFLA_DSA_CONDUIT instead */
+> +	IFLA_DSA_CONDUIT = IFLA_DSA_MASTER,
+>  	__IFLA_DSA_MAX,
+>  };
 
-Hi Florian
+Minor point, but maybe it seems better if we flip this around?
 
-It would be nice if you could do a case preserving search/replace.
+ enum {
+ 	IFLA_DSA_UNSPEC,
+-	IFLA_DSA_MASTER,
++	IFLA_DSA_CONDUIT,	
++	IFLA_DSA_MASTER = IFLA_DSA_CONDUIT, /* Deprecated */
+ 	__IFLA_DSA_MAX,
+ };
 
-I think you also need to fix markup like this, or there might be
-warnings from Sphinx.
+ Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Conduit and user are good replacements, BTW.
-
-	Andrew
+    Andrew
 
