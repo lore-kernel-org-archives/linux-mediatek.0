@@ -4,87 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C89CCD98FA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 07:51:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 802CECD98FC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 08:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Z/S0Uy1VmpFzUeDTv0daTqBwwfG1ulGV+fjst7xjZE=; b=lzhnoOiz4VoD+idqc2rFPDraUe
-	BTQcMXxtVzYjaqVFJoJMwY0ko5gZg2MKOSWYg1/o2IGVpZDlN+lZ2TrTkPq2gG1Yi6KXxxkHb90Ek
-	tLHAN60B9VtcqXtPYWJpkrwBJ7WiYzqNRNd7Q7c0okQfNub3GlxNTk09SpKyP/ZMMe+Ca1NrK6nvE
-	NbWl6NT5iOB6/FADlKvY29wKMFrXDpGYn412ZsLdSK9XlIHJ6FKnjgHbiHryVJyUpzhE3j2KzBphS
-	GOJbMjvXI0hdAPTKZuHP0nM1ku7M6rPdoKRE+QOHikwQb9TGEZ3itBW90LAv7vj584LQj8bCIgATd
-	hcdaUp9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l2363xDvr9RMdOnD46JMR1qKEQjeBzOOXpBpbNdU3ZA=; b=QL1ySfbGLPkJfBKBO412h98Fyz
+	LvycBp1plxE4y8kCHsazDPKi2FUrzS/8pMi1Mm7E9MFUavDGoQQk8oiowJr8elJ3IdXUxmcqRXwQi
+	Id8uNYAo3uwBmFKCaGG4FUT6P/+IgfzACrgEsl+CpWA9S0g3325Fo/V/WDf3G1rki6jWNKfUkuyNk
+	bT/gK5jXJwlsP1OdSUU1jnb+0SeJQF1UU19Jv42ezBuqsVLnCCx9XWQoBEJIlGPeak5bTuhBbX17c
+	aWF1YkBbvkPwmuZKmd1ApHxmzE7hvri+uDXBVbwWBeIeGLi+BY35MDl9NoXjd5EJDdAl4f9iSN+XF
+	PSUp2oUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqTzy-00FAAV-1D;
-	Wed, 11 Oct 2023 07:51:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qqUCy-00FBjy-0m;
+	Wed, 11 Oct 2023 08:04:44 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqTzu-00FA8y-0n;
-	Wed, 11 Oct 2023 07:51:16 +0000
-X-UUID: f0047ad8680a11ee9b7791016c24628a-20231011
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1Z/S0Uy1VmpFzUeDTv0daTqBwwfG1ulGV+fjst7xjZE=;
-	b=MVTekTXJNzYs7v3fkWJAHrllWaS+h9NDbYpnHZFe6VYXSHtwKzMaS4Rgq4cmGRgbf67nwyO4A4IFzYXXFEhHYurIhulRTn8Sz3iirLpyWh9154HK+bo1Y8SjYUAUVSNFdMBpsMVpbRxzDVCGsCj26A5ZvvXNQK3XW9Hd0GKlaVc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:8b44973f-f02f-4764-a99a-d3dc929f3cb7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:9792ccbf-14cc-44ca-b657-2d2783296e72,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: f0047ad8680a11ee9b7791016c24628a-20231011
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 531152692; Wed, 11 Oct 2023 00:51:08 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 11 Oct 2023 15:50:32 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 11 Oct 2023 15:50:32 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: "Nancy . Lin" <nancy.lin@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v7 3/3] arm64: dts: mediatek: mt8195: add MDP3 nodes
-Date: Wed, 11 Oct 2023 15:50:31 +0800
-Message-ID: <20231011075031.30660-4-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231011075031.30660-1-moudy.ho@mediatek.com>
-References: <20231011075031.30660-1-moudy.ho@mediatek.com>
+	id 1qqUCt-00FBhC-27;
+	Wed, 11 Oct 2023 08:04:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id CE724CE0CF3;
+	Wed, 11 Oct 2023 08:04:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3E60C433C7;
+	Wed, 11 Oct 2023 08:04:32 +0000 (UTC)
+Message-ID: <905d78f8-26a2-4229-8892-38d7cf24e39c@xs4all.nl>
+Date: Wed, 11 Oct 2023 10:04:30 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.986800-8.000000
-X-TMASE-MatchedRID: k8Cd32tj8sGuhCBFl/b63kfhraIl1XgxkUtSee+57IFAtKM3hDDAfGb6
-	PphVtfZgTPeZkapFnH8kAzbREWz9my2w9y+uUSpWCz1WR8KHe4B3Bf9JIqsoeKkp8F/qKdS/o8W
-	MkQWv6iXBcIE78YqRWo6HM5rqDwqtQE1HOv+iFzIMkXusMQAzBhzBiOOd3fxS6r0Fmkrc7v02LO
-	YqWklQDw==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.986800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: CE4E8A7E3D5E43F303FB0FD9DC8B348FB98A54A6E18B8691854EBB59661894B32000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 01/54] media: videobuf2: Rework offset 'cookie'
+ encoding pattern
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
+ <20231003080704.43911-2-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20231003080704.43911-2-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_005114_297788_0984E203 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231011_010440_031468_B0F0B543 
+X-CRM114-Status: GOOD (  36.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,424 +69,214 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add device nodes for Media Data Path 3 (MDP3) modules.
+Hi Benjamin,
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 392 +++++++++++++++++++++++
- 1 file changed, 392 insertions(+)
+On 03/10/2023 10:06, Benjamin Gaignard wrote:
+> Change how offset 'cookie' field value is computed to make possible
+> to use more buffers.
+> The maximum number of buffers depends of PAGE_SHIFT value and can
+> go up to 0x7fff when PAGE_SHIFT = 12.
+> With this encoding pattern we know the maximum number that a queue
+> could store so we can check it at  queue init time.
+> It also make easier and faster to find buffer and plane from using
+> the offset field.
+> Change __find_plane_by_offset() prototype to return the video buffer
+> itself rather than it index.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+> changes in version 10:
+> - Make BUFFER_INDEX_MASK definition more readable.
+> - Correct typo.
+> 
+>  .../media/common/videobuf2/videobuf2-core.c   | 72 +++++++++----------
+>  1 file changed, 33 insertions(+), 39 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 27aee92f3eea..5591ac830668 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -31,6 +31,11 @@
+>  
+>  #include <trace/events/vb2.h>
+>  
+> +#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
+> +#define PLANE_INDEX_MASK	0x7
+> +#define MAX_BUFFER_INDEX	BIT_MASK(30 - PLANE_INDEX_SHIFT)
+> +#define BUFFER_INDEX_MASK	(MAX_BUFFER_INDEX - 1)
+> +
+>  static int debug;
+>  module_param(debug, int, 0644);
+>  
+> @@ -358,21 +363,24 @@ static void __setup_offsets(struct vb2_buffer *vb)
+>  	unsigned int plane;
+>  	unsigned long off = 0;
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 0bfaa6db59de..f75ed1d36343 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1960,6 +1960,115 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		dma-controller@14001000 {
-+			compatible = "mediatek,mt8195-mdp3-rdma";
-+			reg = <0 0x14001000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x1000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_RDMA_SOF>,
-+					      <CMDQ_EVENT_VPP0_MDP_RDMA_FRAME_DONE>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-+			iommus = <&iommu_vpp M4U_PORT_L4_MDP_RDMA>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_RDMA>;
-+			mboxes = <&gce1 12 CMDQ_THR_PRIO_1>,
-+				 <&gce1 13 CMDQ_THR_PRIO_1>,
-+				 <&gce1 14 CMDQ_THR_PRIO_1>,
-+				 <&gce1 21 CMDQ_THR_PRIO_1>,
-+				 <&gce1 22 CMDQ_THR_PRIO_1>;
-+			#dma-cells = <1>;
-+		};
-+
-+		display@14002000 {
-+			compatible = "mediatek,mt8195-mdp3-fg";
-+			reg = <0 0x14002000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x2000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_FG>;
-+		};
-+
-+		display@14003000 {
-+			compatible = "mediatek,mt8195-mdp3-stitch";
-+			reg = <0 0x14003000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x3000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_STITCH>;
-+		};
-+
-+		display@14004000 {
-+			compatible = "mediatek,mt8195-mdp3-hdr";
-+			reg = <0 0x14004000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x4000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_HDR>;
-+		};
-+
-+		display@14005000 {
-+			compatible = "mediatek,mt8195-mdp3-aal";
-+			reg = <0 0x14005000 0 0x1000>;
-+			interrupts = <GIC_SPI 582 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x5000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_AAL>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-+		};
-+
-+		display@14006000 {
-+			compatible = "mediatek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
-+			reg = <0 0x14006000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x6000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_RSZ_IN_RSZ_SOF>,
-+					      <CMDQ_EVENT_VPP0_MDP_RSZ_FRAME_DONE>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_RSZ>;
-+		};
-+
-+		display@14007000 {
-+			compatible = "mediatek,mt8195-mdp3-tdshp";
-+			reg = <0 0x14007000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x7000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
-+		};
-+
-+		display@14008000 {
-+			compatible = "mediatek,mt8195-mdp3-color";
-+			reg = <0 0x14008000 0 0x1000>;
-+			interrupts = <GIC_SPI 585 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x8000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_COLOR>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-+		};
-+
-+		display@14009000 {
-+			compatible = "mediatek,mt8195-mdp3-ovl";
-+			reg = <0 0x14009000 0 0x1000>;
-+			interrupts = <GIC_SPI 586 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x9000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-+			iommus = <&iommu_vpp M4U_PORT_L4_MDP_OVL>;
-+		};
-+
-+		display@1400a000 {
-+			compatible = "mediatek,mt8195-mdp3-pad";
-+			reg = <0 0x1400a000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xa000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_PADDING>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-+		};
-+
-+		display@1400b000 {
-+			compatible = "mediatek,mt8195-mdp3-tcc";
-+			reg = <0 0x1400b000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xb000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
-+		};
-+
-+		dma-controller@1400c000 {
-+			compatible = "mediatek,mt8195-mdp3-wrot", "mediatek,mt8183-mdp3-wrot";
-+			reg = <0 0x1400c000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xc000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_WROT_SOF>,
-+					      <CMDQ_EVENT_VPP0_MDP_WROT_VIDO_WDONE>;
-+			clocks = <&vppsys0 CLK_VPP0_MDP_WROT>;
-+			iommus = <&iommu_vpp M4U_PORT_L4_MDP_WROT>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-+			#dma-cells = <1>;
-+		};
-+
- 		mutex@1400f000 {
- 			compatible = "mediatek,mt8195-vpp-mutex";
- 			reg = <0 0x1400f000 0 0x1000>;
-@@ -2107,6 +2216,289 @@
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
- 		};
- 
-+		display@14f06000 {
-+			compatible = "mediatek,mt8195-mdp3-split";
-+			reg = <0 0x14f06000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x6000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_VPP_SPLIT>,
-+				 <&vppsys1 CLK_VPP1_HDMI_META>,
-+				 <&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f07000 {
-+			compatible = "mediatek,mt8195-mdp3-tcc";
-+			reg = <0 0x14f07000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x7000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_TCC>;
-+		};
-+
-+		dma-controller@14f08000 {
-+			compatible = "mediatek,mt8195-mdp3-rdma";
-+			reg = <0 0x14f08000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x8000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_SOF>,
-+					      <CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RDMA>;
-+			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_RDMA>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+			#dma-cells = <1>;
-+		};
-+
-+		dma-controller@14f09000 {
-+			compatible = "mediatek,mt8195-mdp3-rdma";
-+			reg = <0 0x14f09000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x9000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_SOF>,
-+					      <CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RDMA>;
-+			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_RDMA>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+			#dma-cells = <1>;
-+		};
-+
-+		dma-controller@14f0a000 {
-+			compatible = "mediatek,mt8195-mdp3-rdma";
-+			reg = <0 0x14f0a000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xa000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_SOF>,
-+					      <CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RDMA>;
-+			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_RDMA>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+			#dma-cells = <1>;
-+		};
-+
-+		display@14f0b000 {
-+			compatible = "mediatek,mt8195-mdp3-fg";
-+			reg = <0 0x14f0b000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xb000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_FG>;
-+		};
-+
-+		display@14f0c000 {
-+			compatible = "mediatek,mt8195-mdp3-fg";
-+			reg = <0 0x14f0c000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xc000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_FG>;
-+		};
-+
-+		display@14f0d000 {
-+			compatible = "mediatek,mt8195-mdp3-fg";
-+			reg = <0 0x14f0d000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xd000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_FG>;
-+		};
-+
-+		display@14f0e000 {
-+			compatible = "mediatek,mt8195-mdp3-hdr";
-+			reg = <0 0x14f0e000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xe000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_HDR>;
-+		};
-+
-+		display@14f0f000 {
-+			compatible = "mediatek,mt8195-mdp3-hdr";
-+			reg = <0 0x14f0f000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xf000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_HDR>;
-+		};
-+
-+		display@14f10000 {
-+			compatible = "mediatek,mt8195-mdp3-hdr";
-+			reg = <0 0x14f10000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_HDR>;
-+		};
-+
-+		display@14f11000 {
-+			compatible = "mediatek,mt8195-mdp3-aal";
-+			reg = <0 0x14f11000 0 0x1000>;
-+			interrupts = <GIC_SPI 617 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x1000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_AAL>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f12000 {
-+			compatible = "mediatek,mt8195-mdp3-aal";
-+			reg = <0 0x14f12000 0 0x1000>;
-+			interrupts = <GIC_SPI 618 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x2000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_AAL>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f13000 {
-+			compatible = "mediatek,mt8195-mdp3-aal";
-+			reg = <0 0x14f13000 0 0x1000>;
-+			interrupts = <GIC_SPI 619 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x3000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_AAL>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f14000 {
-+			compatible = "mediatek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
-+			reg = <0 0x14f14000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x4000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_RSZ_SOF>,
-+					      <CMDQ_EVENT_VPP1_SVPP1_MDP_RSZ_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RSZ>;
-+		};
-+
-+		display@14f15000 {
-+			compatible = "mediatek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
-+			reg = <0 0x14f15000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x5000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP2_MDP_RSZ_SOF>,
-+					      <CMDQ_EVENT_VPP1_SVPP2_MDP_RSZ_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RSZ>;
-+		};
-+
-+		display@14f16000 {
-+			compatible = "mediatek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
-+			reg = <0 0x14f16000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x6000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP3_MDP_RSZ_SOF>,
-+					      <CMDQ_EVENT_VPP1_SVPP3_MDP_RSZ_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RSZ>;
-+		};
-+
-+		display@14f17000 {
-+			compatible = "mediatek,mt8195-mdp3-tdshp";
-+			reg = <0 0x14f17000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x7000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_TDSHP>;
-+		};
-+
-+		display@14f18000 {
-+			compatible = "mediatek,mt8195-mdp3-tdshp";
-+			reg = <0 0x14f18000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x8000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_TDSHP>;
-+		};
-+
-+		display@14f19000 {
-+			compatible = "mediatek,mt8195-mdp3-tdshp";
-+			reg = <0 0x14f19000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x9000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_TDSHP>;
-+		};
-+
-+		display@14f1a000 {
-+			compatible = "mediatek,mt8195-mdp3-merge";
-+			reg = <0 0x14f1a000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xa000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f1b000 {
-+			compatible = "mediatek,mt8195-mdp3-merge";
-+			reg = <0 0x14f1b000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xb000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_VPP_MERGE>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f1c000 {
-+			compatible = "mediatek,mt8195-mdp3-color";
-+			reg = <0 0x14f1c000 0 0x1000>;
-+			interrupts = <GIC_SPI 628 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xc000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_COLOR>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f1d000 {
-+			compatible = "mediatek,mt8195-mdp3-color";
-+			reg = <0 0x14f1d000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xd000 0x1000>;
-+			interrupts = <GIC_SPI 629 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_COLOR>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f1e000 {
-+			compatible = "mediatek,mt8195-mdp3-color";
-+			reg = <0 0x14f1e000 0 0x1000>;
-+			interrupts = <GIC_SPI 630 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xe000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_COLOR>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f1f000 {
-+			compatible = "mediatek,mt8195-mdp3-ovl";
-+			reg = <0 0x14f1f000 0 0x1000>;
-+			interrupts = <GIC_SPI 631 IRQ_TYPE_LEVEL_HIGH 0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xf000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_OVL>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_OVL>;
-+		};
-+
-+		display@14f20000 {
-+			compatible = "mediatek,mt8195-mdp3-pad";
-+			reg = <0 0x14f20000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_VPP_PAD>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f21000 {
-+			compatible = "mediatek,mt8195-mdp3-pad";
-+			reg = <0 0x14f21000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x1000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_PAD>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		display@14f22000 {
-+			compatible = "mediatek,mt8195-mdp3-pad";
-+			reg = <0 0x14f22000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x2000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_VPP_PAD>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
-+		dma-controller@14f23000 {
-+			compatible = "mediatek,mt8195-mdp3-wrot", "mediatek,mt8183-mdp3-wrot";
-+			reg = <0 0x14f23000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x3000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_SOF>,
-+					      <CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_WROT>;
-+			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+			#dma-cells = <1>;
-+		};
-+
-+		dma-controller@14f24000 {
-+			compatible = "mediatek,mt8195-mdp3-wrot", "mediatek,mt8183-mdp3-wrot";
-+			reg = <0 0x14f24000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x4000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_SOF>,
-+					<CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_WROT>;
-+			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+			#dma-cells = <1>;
-+		};
-+
-+		dma-controller@14f25000 {
-+			compatible = "mediatek,mt8195-mdp3-wrot", "mediatek,mt8183-mdp3-wrot";
-+			reg = <0 0x14f25000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x5000 0x1000>;
-+			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_SOF>,
-+					<CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_FRAME_DONE>;
-+			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_WROT>;
-+			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+			#dma-cells = <1>;
-+		};
-+
- 		imgsys: clock-controller@15000000 {
- 			compatible = "mediatek,mt8195-imgsys";
- 			reg = <0 0x15000000 0 0x1000>;
--- 
-2.18.0
+This is a rather ugly name. I suggest renaming this to "offset" to avoid
+confusion with "on"/"off". See additional comments on this below.
 
+>  
+> -	if (vb->index) {
+> -		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+> -		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+> -
+> -		off = PAGE_ALIGN(p->m.offset + p->length);
+> -	}
+> +	/*
+> +	 * Offsets cookies value have the following constraints:
+
+I'd rephrase this a little bit:
+
+	 * The offset "cookie" value has the following constraints:
+
+> +	 * - a buffer can have up to 8 planes.
+> +	 * - v4l2 mem2mem uses bit 30 to distinguish between source and destination buffers.
+
+Related to Sakari's comments: the mem2mem framework uses source and destination
+a lot, but vb2 is mostly OUTPUT/CAPTURE. So it is best to mention both:
+
+source -> OUTPUT (aka "source", bit 30 is 0)
+destination -> CAPTURE (aka "destination", bit 30 is 1)
+
+> +	 * - must be page aligned
+> +	 * That led to this bit mapping when PAGE_SHIFT = 12:
+> +	 * |30                |29        15|14       12|11 0|
+> +	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
+> +	 * where there are 15 bits to store the buffer index.
+> +	 * Depending on PAGE_SHIFT value we can have fewer bits to store the buffer index.
+> +	 */
+> +	off = vb->index << PLANE_INDEX_SHIFT;
+>  
+>  	for (plane = 0; plane < vb->num_planes; ++plane) {
+> -		vb->planes[plane].m.offset = off;
+> +		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
+>  
+>  		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+>  				vb->index, plane, off);
+> -
+> -		off += vb->planes[plane].length;
+> -		off = PAGE_ALIGN(off);
+>  	}
+>  }
+>  
+> @@ -2185,13 +2193,12 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type)
+>  EXPORT_SYMBOL_GPL(vb2_core_streamoff);
+>  
+>  /*
+> - * __find_plane_by_offset() - find plane associated with the given offset off
+> + * __find_plane_by_offset() - find video buffer and plane associated with the given offset off
+>   */
+>  static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+
+Same here: rename "off" to "offset", that also simplifies the comment above:
+"with the given offset off" can now just be "with the given offset".
+
+The same change can be done in vb2_mmap and vb2_get_unmapped_area.
+
+I think it would be best if the off -> offset rename is done in a separate initial
+patch.
+
+I know that this isn't really DELETE_BUFS related, but I think it makes the code
+a bit easier to follow.
+
+> -			unsigned int *_buffer, unsigned int *_plane)
+> +			struct vb2_buffer **vb, unsigned int *plane)
+>  {
+> -	struct vb2_buffer *vb;
+> -	unsigned int buffer, plane;
+> +	unsigned int buffer;
+>  
+>  	/*
+>  	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
+> @@ -2209,24 +2216,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+>  		return -EBUSY;
+>  	}
+>  
+> -	/*
+> -	 * Go over all buffers and their planes, comparing the given offset
+> -	 * with an offset assigned to each plane. If a match is found,
+> -	 * return its buffer and plane numbers.
+> -	 */
+> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+> -		vb = q->bufs[buffer];
+> +	/* Get buffer and plane from the offset */
+> +	buffer = (off >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
+> +	*plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+>  
+> -		for (plane = 0; plane < vb->num_planes; ++plane) {
+> -			if (vb->planes[plane].m.offset == off) {
+> -				*_buffer = buffer;
+> -				*_plane = plane;
+> -				return 0;
+> -			}
+> -		}
+> -	}
+> +	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
+> +		return -EINVAL;
+>  
+> -	return -EINVAL;
+> +	*vb = q->bufs[buffer];
+> +	return 0;
+>  }
+>  
+>  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+> @@ -2306,7 +2304,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+>  {
+>  	unsigned long off = vma->vm_pgoff << PAGE_SHIFT;
+>  	struct vb2_buffer *vb;
+> -	unsigned int buffer = 0, plane = 0;
+> +	unsigned int plane = 0;
+>  	int ret;
+>  	unsigned long length;
+>  
+> @@ -2335,12 +2333,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+>  	 * Find the plane corresponding to the offset passed by userspace. This
+>  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+>  	 */
+> -	ret = __find_plane_by_offset(q, off, &buffer, &plane);
+> +	ret = __find_plane_by_offset(q, off, &vb, &plane);
+>  	if (ret)
+>  		goto unlock;
+>  
+> -	vb = q->bufs[buffer];
+> -
+>  	/*
+>  	 * MMAP requires page_aligned buffers.
+>  	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
+> @@ -2368,7 +2364,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+>  	if (ret)
+>  		return ret;
+>  
+> -	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
+> +	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_mmap);
+> @@ -2382,7 +2378,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+>  {
+>  	unsigned long off = pgoff << PAGE_SHIFT;
+>  	struct vb2_buffer *vb;
+> -	unsigned int buffer, plane;
+> +	unsigned int plane;
+>  	void *vaddr;
+>  	int ret;
+>  
+> @@ -2392,12 +2388,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+>  	 * Find the plane corresponding to the offset passed by userspace. This
+>  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+>  	 */
+> -	ret = __find_plane_by_offset(q, off, &buffer, &plane);
+> +	ret = __find_plane_by_offset(q, off, &vb, &plane);
+>  	if (ret)
+>  		goto unlock;
+>  
+> -	vb = q->bufs[buffer];
+> -
+>  	vaddr = vb2_plane_vaddr(vb, plane);
+>  	mutex_unlock(&q->mmap_lock);
+>  	return vaddr ? (unsigned long)vaddr : -EINVAL;
+
+Regards,
+
+	Hans
 
