@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F56DCD6E5D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 12:27:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FE04CD6E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 13:18:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tjQ7E6Wp7xtRDuxyM0IzhGgHnDmusITOkaUsg2pucuI=; b=EumBkDYBYo4VzlPWMz5bHhIanY
-	wrV8v46ncMksgcJGcIlzVePjBIwaLTA4fhBsC/N2fxrBmDObErjBhaTcXM4KVfXHUOMSarTWaiaVC
-	DVD4nU0EtqJo66dKNnueYs6bRp785WsXg1e/+YgOPSwfabgNL2CkEqJR9aP1IoTcYHbUQ4QgfthK4
-	0guVAr9+MPXA6MkGxgFQAEMXibBvRFDVvkaeZvVyu+975CUGGY64SsZ8sKlrrt4HIbD2zCTbOU4DZ
-	0xqtPsDBK97OdMVUtaLO3rwyhkNZW87ebKs6QRXrqb+GZVszcSp34rNxwWWuwAwt+jnq1bzzbUzS8
-	4JLLS/NQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uVm15PaxchIs1JOy4ZUm+NgH+JoEUrYIUdKpKpKH4Cg=; b=rb8KxJPVpFPV/du5WhXPHbZLZ4
+	gzme/G8SN+j6/KTbJZvgu08z2O7IcuvG2kHHJbmFZwAfSuJNHjwBUbfXFfDAWB6KmO4JfP2hjPqdB
+	j1j4LyCyCEufE6ChyqnD1lW3kNIto65bV6jHtaZ15QFTY1V/Ohd+P+Nie0EwS5QvRVmkyYR+EBjRa
+	Axx/TvNLHfXdJ6GRX4N/gyjBUR18AMrGC3fIjptbgO4D2GCaW5DP0VNf7kDG7pRlnl6uCQ68JeFlU
+	blU8c8wMZHX0+hu2k5Ny5YGGks+e3+YrGumTKYI3dYOApJ8/hdqcEXMsfw28NtGUT15YhbZHUEUBP
+	uXMO0v2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqYIy-00FqLi-0N;
-	Wed, 11 Oct 2023 12:27:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qqZ6k-00Fx04-0D;
+	Wed, 11 Oct 2023 13:18:38 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqYIv-00FqJa-0s;
-	Wed, 11 Oct 2023 12:27:10 +0000
-X-UUID: 7a6ca9cc683111ee86758d4a7c00f3a0-20231011
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tjQ7E6Wp7xtRDuxyM0IzhGgHnDmusITOkaUsg2pucuI=;
-	b=uZZ+X3ca/d4K8RayxRmlPMJoikpMBRo00UOYiPMT5nSfIT/Ww356mG4Z1MuVG1QDFOpTWrSUn+30Yq0Js9i+HJ4ObzDPjk2ySF2afJl+kYRk199qNl2EtRps5R3NN7fnk8dK7R2aYXWmoQI1G53C4T4e2vHcl57fJrz3YYM7FtQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:583d8828-0792-4cc5-925a-23c83bb7d959,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:5f78ec9,CLOUDID:567800c4-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 7a6ca9cc683111ee86758d4a7c00f3a0-20231011
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <jianjun.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 583996163; Wed, 11 Oct 2023 05:27:01 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 11 Oct 2023 20:26:58 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 11 Oct 2023 20:26:57 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring
-	<robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Ryder
- Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>,
-	<jieyy.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
-	<qizhong.cheng@mediatek.com>, <jian.yang@mediatek.com>
-Subject: [PATCH] PCI: mediatek-gen3: Fix translation window
-Date: Wed, 11 Oct 2023 20:26:33 +0800
-Message-ID: <20231011122633.31559-1-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1qqZ6g-00FwyZ-3D;
+	Wed, 11 Oct 2023 13:18:36 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 473286607313;
+	Wed, 11 Oct 2023 14:18:27 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697030309;
+	bh=PAWJ3RzsuekP+W3e6be5gu5BDgIjN+40d2Z1bOG28aM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CPvcE8vDi5SergJ5DzBmpack84PQy7dQDKtxEd2SCcfL77jG4RrgQOdH1sygHooze
+	 vciWjN7skA2MOP3cAIZKTPh46lXKu288QpmuJ3TKB+YsufBrgGF4QeU70mzYOMqHRL
+	 Lt000mqJG+scMo3dNKbLNJcUTVQmijMAKIARXR0hmzudkHPaAHhoLMjVswHMiKIttu
+	 EsM6yUdDfQoBzi+hDz7mmW4zGmHugfAvvaOHPzQpTk16jeaWhKMvYnu8QrkolTaHx2
+	 UV1CWymdfAaHSnWsNSIYupvQUpAeQlGqeaqudirzDcKapgJgtqZe4z4qzSFkWnvVZQ
+	 sgJ3ciG5ImaAQ==
+Date: Wed, 11 Oct 2023 09:18:23 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+	daniel@ffwll.ch, matthias.bgg@gmail.com,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	wenst@chromium.org, kernel@collabora.com, ehristev@collabora.com
+Subject: Re: [PATCH v10 07/16] drm/mediatek: aal: Use bitfield macros
+Message-ID: <4fbfc898-b13c-4cf0-9a2a-308e37838dd8@notapiano>
+References: <20230804072850.89365-1-angelogioacchino.delregno@collabora.com>
+ <20230804072850.89365-8-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <20230804072850.89365-8-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_052709_319523_1BE062E3 
-X-CRM114-Status: GOOD (  20.14  )
+X-CRM114-CacheID: sfid-20231011_061835_254488_B9F2C770 
+X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,170 +78,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The size of translation table should be a power of 2, using fls()
-cannot get the proper value when the size is not a power of 2. For
-example, fls(0x3e00000) - 1 = 25, hence the PCIe translation window
-size will be set to 0x2000000 instead of the expected size 0x3e00000.
+On Fri, Aug 04, 2023 at 09:28:41AM +0200, AngeloGioacchino Del Regno wrote:
+> Make the code more robust and improve readability by using bitfield
+> macros instead of open coding bit operations.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Fix translation window by splitting the MMIO space to multiple tables if
-its size is not a power of 2.
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192")
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-
----
-Bootup logs on MT8195 Platform:
-
-> Before this patch:
-mtk-pcie-gen3 112f0000.pcie: Parsing ranges property...
-mtk-pcie-gen3 112f0000.pcie:       IO 0x0020000000..0x00201fffff -> 0x0020000000
-mtk-pcie-gen3 112f0000.pcie:      MEM 0x0020200000..0x0023ffffff -> 0x0020200000
-mtk-pcie-gen3 112f0000.pcie: set IO trans window[0]: cpu_addr = 0x20000000, pci_addr = 0x20000000, size = 0x200000
-mtk-pcie-gen3 112f0000.pcie: set MEM trans window[1]: cpu_addr = 0x20200000, pci_addr = 0x20200000, size = 0x3e00000
-
-> We expect the MEM trans window size to be 0x3e00000, but its actual available size is 0x2000000.
-
-> After applying this patch:
-mtk-pcie-gen3 112f0000.pcie: Parsing ranges property...
-mtk-pcie-gen3 112f0000.pcie:       IO 0x0020000000..0x00201fffff -> 0x0020000000
-mtk-pcie-gen3 112f0000.pcie:      MEM 0x0020200000..0x0023ffffff -> 0x0020200000
-mtk-pcie-gen3 112f0000.pcie: set IO trans window[0]: cpu_addr = 0x20000000, pci_addr = 0x20000000, size = 0x200000
-mtk-pcie-gen3 112f0000.pcie: set MEM trans window[1]: cpu_addr = 0x20200000, pci_addr = 0x20200000, size = 0x200000
-mtk-pcie-gen3 112f0000.pcie: set MEM trans window[2]: cpu_addr = 0x20400000, pci_addr = 0x20400000, size = 0x400000
-mtk-pcie-gen3 112f0000.pcie: set MEM trans window[3]: cpu_addr = 0x20800000, pci_addr = 0x20800000, size = 0x800000
-mtk-pcie-gen3 112f0000.pcie: set MEM trans window[4]: cpu_addr = 0x21000000, pci_addr = 0x21000000, size = 0x1000000
-mtk-pcie-gen3 112f0000.pcie: set MEM trans window[5]: cpu_addr = 0x22000000, pci_addr = 0x22000000, size = 0x2000000
-
-> Total available size for MEM trans window is 0x3e00000.
----
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 87 ++++++++++++---------
- 1 file changed, 52 insertions(+), 35 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index e0e27645fdf4..3f2496b135ae 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -245,35 +245,62 @@ static int mtk_pcie_set_trans_table(struct mtk_gen3_pcie *pcie,
- 				    resource_size_t cpu_addr,
- 				    resource_size_t pci_addr,
- 				    resource_size_t size,
--				    unsigned long type, int num)
-+				    unsigned long type, int *num)
- {
-+	resource_size_t remaining = size;
-+	resource_size_t table_size;
-+	resource_size_t addr_align;
-+	const char *range_type;
- 	void __iomem *table;
- 	u32 val;
- 
--	if (num >= PCIE_MAX_TRANS_TABLES) {
--		dev_err(pcie->dev, "not enough translate table for addr: %#llx, limited to [%d]\n",
--			(unsigned long long)cpu_addr, PCIE_MAX_TRANS_TABLES);
--		return -ENODEV;
--	}
-+	while (remaining && (*num < PCIE_MAX_TRANS_TABLES)) {
-+		/* Table size needs to be a power of 2 */
-+		table_size = BIT(fls(remaining) - 1);
- 
--	table = pcie->base + PCIE_TRANS_TABLE_BASE_REG +
--		num * PCIE_ATR_TLB_SET_OFFSET;
-+		if (cpu_addr > 0) {
-+			addr_align = BIT(ffs(cpu_addr) - 1);
-+			table_size = min(table_size, addr_align);
-+		}
- 
--	writel_relaxed(lower_32_bits(cpu_addr) | PCIE_ATR_SIZE(fls(size) - 1),
--		       table);
--	writel_relaxed(upper_32_bits(cpu_addr),
--		       table + PCIE_ATR_SRC_ADDR_MSB_OFFSET);
--	writel_relaxed(lower_32_bits(pci_addr),
--		       table + PCIE_ATR_TRSL_ADDR_LSB_OFFSET);
--	writel_relaxed(upper_32_bits(pci_addr),
--		       table + PCIE_ATR_TRSL_ADDR_MSB_OFFSET);
-+		/* Minimum size of translate table is 4KiB */
-+		if (table_size < 0x1000) {
-+			dev_err(pcie->dev, "illegal table size %#llx\n",
-+				(unsigned long long)table_size);
-+			return -EINVAL;
-+		}
- 
--	if (type == IORESOURCE_IO)
--		val = PCIE_ATR_TYPE_IO | PCIE_ATR_TLP_TYPE_IO;
--	else
--		val = PCIE_ATR_TYPE_MEM | PCIE_ATR_TLP_TYPE_MEM;
-+		table = pcie->base + PCIE_TRANS_TABLE_BASE_REG + *num * PCIE_ATR_TLB_SET_OFFSET;
-+		writel_relaxed(lower_32_bits(cpu_addr) | PCIE_ATR_SIZE(fls(table_size) - 1), table);
-+		writel_relaxed(upper_32_bits(cpu_addr), table + PCIE_ATR_SRC_ADDR_MSB_OFFSET);
-+		writel_relaxed(lower_32_bits(pci_addr), table + PCIE_ATR_TRSL_ADDR_LSB_OFFSET);
-+		writel_relaxed(upper_32_bits(pci_addr), table + PCIE_ATR_TRSL_ADDR_MSB_OFFSET);
- 
--	writel_relaxed(val, table + PCIE_ATR_TRSL_PARAM_OFFSET);
-+		if (type == IORESOURCE_IO) {
-+			val = PCIE_ATR_TYPE_IO | PCIE_ATR_TLP_TYPE_IO;
-+			range_type = "IO";
-+		} else {
-+			val = PCIE_ATR_TYPE_MEM | PCIE_ATR_TLP_TYPE_MEM;
-+			range_type = "MEM";
-+		}
-+
-+		writel_relaxed(val, table + PCIE_ATR_TRSL_PARAM_OFFSET);
-+
-+		dev_dbg(pcie->dev, "set %s trans window[%d]: cpu_addr = %#llx, pci_addr = %#llx, size = %#llx\n",
-+			range_type, *num, (unsigned long long)cpu_addr,
-+			(unsigned long long)pci_addr, (unsigned long long)table_size);
-+
-+		cpu_addr += table_size;
-+		pci_addr += table_size;
-+		remaining -= table_size;
-+		(*num)++;
-+	}
-+
-+	if (remaining) {
-+		dev_err(pcie->dev, "not enough translate table for addr: %#llx, limited to [%d]\n",
-+			(unsigned long long)cpu_addr, PCIE_MAX_TRANS_TABLES);
-+		return -ENODEV;
-+	}
- 
- 	return 0;
- }
-@@ -380,30 +407,20 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
- 		resource_size_t cpu_addr;
- 		resource_size_t pci_addr;
- 		resource_size_t size;
--		const char *range_type;
- 
--		if (type == IORESOURCE_IO) {
-+		if (type == IORESOURCE_IO)
- 			cpu_addr = pci_pio_to_address(res->start);
--			range_type = "IO";
--		} else if (type == IORESOURCE_MEM) {
-+		else if (type == IORESOURCE_MEM)
- 			cpu_addr = res->start;
--			range_type = "MEM";
--		} else {
-+		else
- 			continue;
--		}
- 
- 		pci_addr = res->start - entry->offset;
- 		size = resource_size(res);
- 		err = mtk_pcie_set_trans_table(pcie, cpu_addr, pci_addr, size,
--					       type, table_index);
-+					       type, &table_index);
- 		if (err)
- 			return err;
--
--		dev_dbg(pcie->dev, "set %s trans window[%d]: cpu_addr = %#llx, pci_addr = %#llx, size = %#llx\n",
--			range_type, table_index, (unsigned long long)cpu_addr,
--			(unsigned long long)pci_addr, (unsigned long long)size);
--
--		table_index++;
- 	}
- 
- 	return 0;
--- 
-2.18.0
-
+Thanks,
+Nícolas
 
