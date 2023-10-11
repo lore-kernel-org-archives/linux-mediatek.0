@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A6ACDB47A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 18:55:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24348CDB481
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 19:32:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hqTOeLvgEjncmx/NVuuoG0K9iLTm8/BJMu98YdlyIV4=; b=wKwhT/zLzKi16gltkfX3tPnVf9
-	dYj8bgZRRMhZRjF+e64fGQk8PC5o7LDNGh/JoPykyZWQZf0LjEeO2k3rgTIf2y56096L0eqohUyed
-	pw9gc1xM9d9AkWGs4NMpuZIvz5Mkla1aoF0rATF2G+b9mZHOIHgHYUDbSTqSwE5k0p9HMgJSXLzav
-	WgzRprX1GWjgIXxJiZCSffdNvz3OQ0jwrMLr5bKnJWmYTQSdv7+74Cn2/WGZtPFA/Kleepe8nbsuQ
-	5ow9/dglhaTRWwWYwRsqBqlZG3VUtBJiwkyaIsR0SpqvjSfP670Pw6RW1qU78NWtCznJYXFAhOM9y
-	PbWmtx9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=COzAazG7xm6ZbQ01lr2YH5zu0RKGIDZJUo5a7lVFtfU=; b=XHAgsOfUhRNB49Kqr0hrFae4Q3
+	Wn+Tu9E7j5iD4Th4ScE0xP86O2377uxbbu6n3TsDHOX6dhWYaOhqUPRBpt2SWxfWXT/UCDU6BIITJ
+	IudRjCr46BWEwM9xgWJh7wc3z6jRWg949QmNe33GfzH7Wvs2Q73AfdUZrsH64jNjBK0IrtEttemUQ
+	usdTnzv8DUwnsxJu+byHu7I0T94CIKVEVvNFmbLtTSnRbCAKjnt1oZHhFdyZsWILXprDrlthhtyv+
+	VKFysuRKJW6mLw/JiRqWMeSGr0WIOBrG1zvybVb1eE6Y5LHJGuqJfFHZ2Q9g6fZb8vZ0OcuMnJwYs
+	gsMz6y8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqeMK-00GUuQ-1v;
-	Wed, 11 Oct 2023 18:55:04 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qqewM-00GYLp-09;
+	Wed, 11 Oct 2023 19:32:18 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqeMG-00GUsM-1l;
-	Wed, 11 Oct 2023 18:55:02 +0000
-Received: from [10.0.0.200] (ip-89-177-23-149.bb.vodafone.cz [89.177.23.149])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: david.heidelberg)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AF4E96607331;
-	Wed, 11 Oct 2023 19:54:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697050495;
-	bh=hqTOeLvgEjncmx/NVuuoG0K9iLTm8/BJMu98YdlyIV4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Y/jvuHHKwVUM6HQjJRdcb+SIV1l0Z4DWHjgDXjPUnNiwym5xmP5tDrI6FKRxhF3pg
-	 r994bUQ1wcEgQD5Y8ujekkI0BO9dmu6okyi4ajw9BT8t+3JOPvemEPuyyr4kdTG7L9
-	 Z6m/JeuItQIlAiq01Q3fM+2i8C3uwTksba7nWNpSZGf/lVHn0Ggqjn+XCozDF/UW3U
-	 THZDIrBpjAZYdev17/qi9tLziERF1+Oq8BctCQdep2viMUv/9YwuGbM06GhOapu4ON
-	 ZD7lhlWdJNlwsB46yy19uAMleWXV6jCSDNFUipmlzNjPfsw+wAstU/wveWltJ27Vue
-	 SJ0E3uwzXlwHw==
-Message-ID: <0231fe84-96c6-4c10-bd77-2cdcea49b8d2@collabora.com>
-Date: Wed, 11 Oct 2023 20:54:52 +0200
+	id 1qqewG-00GYIr-1G;
+	Wed, 11 Oct 2023 19:32:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id CAD73CE2527;
+	Wed, 11 Oct 2023 19:32:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9236BC433C7;
+	Wed, 11 Oct 2023 19:32:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1697052728;
+	bh=4k1m5qmcSDaP+SZOYD02LNDbpXJtj+6QzJq4iZ0fBT4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=PkSkfYndzZuEdhim2WqdUnaFkJa6/ULgDeXVhLamNMtNqjpEjDLFAOpinVDtpOf9t
+	 AUQ8IuXuDRsbGSvvuJcBOkesPKE+B6LOW3w499tPS1H5C+DTTGZEpqDhTJv73Rngtf
+	 R8n/q+wpIprV9354P5kNeMO1/5OdiCJZC921zzltoOp4qhTV4cqy8e0kXbMRCaqp4/
+	 wgSGTdLCtZ0E1cvfJh/3oqFSKgGnYoWCp1qvbc5VbvIvmnclEI+2/Ls3QSTesrpdOn
+	 1i9kPgcJmtJ/9DGNbL1W+mb7/ZJBeiArthYq4x+V47gI24Zx4H0qwEfuzJhfUtgURt
+	 hjOYzB4aN6mlQ==
+Date: Wed, 11 Oct 2023 14:32:06 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
+Cc: linux-pci@vger.kernel.org,
+	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Lukas Wunner <lukas@wunner.de>,
+	"Rafael J . Wysocki" <rafael@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Emmanuel Grumbach <emmanuel.grumbach@intel.com>,
+	linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+	ath10k@lists.infradead.org, ath11k@lists.infradead.org,
+	ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v2 04/13] PCI/ASPM: Move L0S/L1/sub states mask
+ calculation into a helper
+Message-ID: <20231011193206.GA1039708@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/9] drm/ci: fixes and improvements
-Content-Language: en-US
-To: Helen Koike <helen.koike@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robdclark@chromium.org, dmitry.baryshkov@linaro.org,
- vignesh.raman@collabora.com, sergi.blanch.torne@collabora.com,
- guilherme.gallo@collabora.com, quic_abhinavk@quicinc.com,
- quic_jesszhan@quicinc.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20231009004953.203576-1-helen.koike@collabora.com>
-From: David Heidelberg <david.heidelberg@collabora.com>
-Autocrypt: addr=david.heidelberg@collabora.com; keydata=
- xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGNPwqEeILN
- MURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFib3JhLmNvbT7ClgQT
- FggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsDBQkFo5qABQsJCAcCBhUKCQgL
- AgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5YqSWAOuIumAqgWvke6BEsaIGWGQzXSuKj
- er/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQB
- l1UBBQEBB0AEk7jXEwDApGOwMH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYh
- BEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0Y
- uAOKJCnnwrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
- wueLHBdwHg6zAQ==
-In-Reply-To: <20231009004953.203576-1-helen.koike@collabora.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------VcQS5LnegmfhnnjtAH3e88YN"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230918131103.24119-5-ilpo.jarvinen@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_115500_865530_0DDB376E 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20231011_123212_805787_CD3BB6C4 
+X-CRM114-Status: GOOD (  19.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,162 +84,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------VcQS5LnegmfhnnjtAH3e88YN
-Content-Type: multipart/mixed; boundary="------------2msBekilzJjwjS0F2c1BGd7A";
- protected-headers="v1"
-From: David Heidelberg <david.heidelberg@collabora.com>
-To: Helen Koike <helen.koike@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robdclark@chromium.org, dmitry.baryshkov@linaro.org,
- vignesh.raman@collabora.com, sergi.blanch.torne@collabora.com,
- guilherme.gallo@collabora.com, quic_abhinavk@quicinc.com,
- quic_jesszhan@quicinc.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Message-ID: <0231fe84-96c6-4c10-bd77-2cdcea49b8d2@collabora.com>
-Subject: Re: [PATCH 0/9] drm/ci: fixes and improvements
-References: <20231009004953.203576-1-helen.koike@collabora.com>
-In-Reply-To: <20231009004953.203576-1-helen.koike@collabora.com>
+On Mon, Sep 18, 2023 at 04:10:54PM +0300, Ilpo Järvinen wrote:
+> ASPM service driver does the same L0S / L1S / sub states allowed
+> calculation in __pci_disable_link_state() and
+> pci_set_default_link_state().
 
---------------2msBekilzJjwjS0F2c1BGd7A
-Content-Type: multipart/mixed; boundary="------------V0gK0iDbmzaQlZDwu5rkIymK"
+Is there a typo or something here?  This patch only adds a call to
+__pci_disable_link_state(), not to pci_set_default_link_state().
 
---------------V0gK0iDbmzaQlZDwu5rkIymK
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-
-Zm9yIHRoZSBzZXJpZXM6DQoNClJldmlld2VkLWJ5OiBEYXZpZCBIZWlkZWxiZXJnIDxkYXZp
-ZC5oZWlkZWxiZXJnQGNvbGxhYm9yYS5jb20+DQoNCk9uIDA5LzEwLzIwMjMgMDI6NDksIEhl
-bGVuIEtvaWtlIHdyb3RlOg0KPiBUaGlzIHNlcmllcyBjb250YWlucyB0aGUgZm9sbG93aW5n
-IHNldmVyYWwgZml4ZXMsIG1ha2luZyBkcm0vY2kgbXVjaA0KPiBtb3JlIHJlbGlhYmxlIGFu
-ZCB1c2VmdWwuDQo+DQo+IFRvIHdvcmsgcHJvcGVybHksIHRoZSBmb2xsb3dpbmcgcGF0Y2hl
-cyBhcmUgYWxzbyByZXF1aXJlZDoNCj4NCj4gW1BBVENIIDIvMl0gZHJtL2NpOiBmb3JjZS1l
-bmFibGUgQ09ORklHX01TTV9NTUNDXzg5OTYgYXMgYnVpbHQtaW4NCj4gaHR0cHM6Ly9wYXRj
-aHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LWFybS1tc20vcGF0Y2gvMjAyMzEwMDgx
-MzIzMjAuNzYyNTQyLTItZG1pdHJ5LmJhcnlzaGtvdkBsaW5hcm8ub3JnLw0KPg0KPiBbUEFU
-Q0hdIGRybS9jaTogRW5hYmxlIENPTkZJR19CQUNLTElHSFRfQ0xBU1NfREVWSUNFDQo+IGh0
-dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9kcmktZGV2ZWwvcGF0Y2gvMjAy
-MzEwMDIxNjQ3MTUuMTU3Mjk4LTEtcm9iZGNsYXJrQGdtYWlsLmNvbS8NCj4NCj4gSGVsZW4g
-S29pa2UgKDkpOg0KPiAgICBkcm0vY2k6IHVwcmV2IG1lc2EgdmVyc2lvbiAtIGZpeCBjb250
-YWluZXIgYnVpbGQNCj4gICAgZHJtL2NpOiBmaXggREVCSUFOX0FSQ0ggYW5kIGdldCBhbWRn
-cHUgcHJvYmluZw0KPiAgICBkcm0vY2k6IGFkZCBoZWxwZXIgc2NyaXB0IHVwZGF0ZS14ZmFp
-bHMucHkNCj4gICAgZHJtL2NpOiB1cHJldiBJR1QgYW5kIG1ha2Ugc3VyZSBjb3JlX2dldHZl
-cnNpb24gaXMgcnVuDQo+ICAgIGRybS9jaTogY2xlYW4gdXAgeGZhaWxzIChzcGVjaWFsbHkg
-Zmxha2VzIGxpc3QpDQo+ICAgIGRybS9jaTogYWRqdXN0IHRoZSBudW1iZXIgb2Ygc2hhcmRz
-DQo+ICAgIGRybS9jaTogZXhwb3J0IGtlcm5lbCBjb25maWcNCj4gICAgZHJtL2NpOiBkbyBu
-b3QgYXV0b21hdGljYWxseSByZXRyeSBvbiBlcnJvcg0KPiAgICBkcm0vY2k6IGRvY3M6IGFk
-ZCBzdGVwIGFib3V0IGhvdyB0byByZXF1ZXN0IHByaXZpbGVkZ2VzDQo+DQo+ICAgRG9jdW1l
-bnRhdGlvbi9ncHUvYXV0b21hdGVkX3Rlc3RpbmcucnN0ICAgICAgIHwgICA3ICstDQo+ICAg
-ZHJpdmVycy9ncHUvZHJtL2NpL2J1aWxkLnNoICAgICAgICAgICAgICAgICAgIHwgICAzICst
-DQo+ICAgZHJpdmVycy9ncHUvZHJtL2NpL2dpdGxhYi1jaS55bWwgICAgICAgICAgICAgIHwg
-IDMxICsrLQ0KPiAgIGRyaXZlcnMvZ3B1L2RybS9jaS9pZ3RfcnVubmVyLnNoICAgICAgICAg
-ICAgICB8ICAzMSArKy0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kvaW1hZ2UtdGFncy55bWwg
-ICAgICAgICAgICAgfCAgIDQgKy0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kvbGF2YS1zdWJt
-aXQuc2ggICAgICAgICAgICAgfCAgIDYgKy0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kvdGVz
-dC55bWwgICAgICAgICAgICAgICAgICAgfCAgMjEgKy0NCj4gICAuLi4vZ3B1L2RybS9jaS94
-ZmFpbHMvYW1kZ3B1LXN0b25leS1mYWlscy50eHQgfCAgMTMgKy0NCj4gICAuLi4vZHJtL2Np
-L3hmYWlscy9hbWRncHUtc3RvbmV5LWZsYWtlcy50eHQgICAgfCAgMjAgLS0NCj4gICBkcml2
-ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtYW1seS1mYWlscy50eHQgfCAgIDkgKw0KPiAg
-IC4uLi9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWFtbHktZmxha2VzLnR4dCAgICB8ICAzMiAt
-LS0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtYXBsLWZhaWxzLnR4dCAg
-fCAgMTEgLQ0KPiAgIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1hcGwtZmxha2Vz
-LnR4dCB8ICAgMSAtDQo+ICAgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWNtbC1m
-YWlscy50eHQgIHwgIDE1ICstDQo+ICAgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1
-LWNtbC1mbGFrZXMudHh0IHwgIDM4IC0tLS0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kveGZh
-aWxzL2k5MTUtZ2xrLWZhaWxzLnR4dCAgfCAgMTcgKysNCj4gICBkcml2ZXJzL2dwdS9kcm0v
-Y2kveGZhaWxzL2k5MTUtZ2xrLWZsYWtlcy50eHQgfCAgNDEgLS0tLQ0KPiAgIGRyaXZlcnMv
-Z3B1L2RybS9jaS94ZmFpbHMvaTkxNS1rYmwtZmFpbHMudHh0ICB8ICAgNyArDQo+ICAgZHJp
-dmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWtibC1mbGFrZXMudHh0IHwgIDI2IC0tLQ0K
-PiAgIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS10Z2wtZmFpbHMudHh0ICB8ICAg
-MSAtDQo+ICAgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LXRnbC1mbGFrZXMudHh0
-IHwgICA1IC0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtd2hsLWZsYWtl
-cy50eHQgfCAgIDEgLQ0KPiAgIC4uLi9kcm0vY2kveGZhaWxzL21lZGlhdGVrLW10ODE3My1m
-bGFrZXMudHh0ICB8ICAgMA0KPiAgIC4uLi9kcm0vY2kveGZhaWxzL21lZGlhdGVrLW10ODE4
-My1mYWlscy50eHQgICB8ICAgNSArLQ0KPiAgIC4uLi9kcm0vY2kveGZhaWxzL21lZGlhdGVr
-LW10ODE4My1mbGFrZXMudHh0ICB8ICAxNCAtLQ0KPiAgIC4uLi9ncHUvZHJtL2NpL3hmYWls
-cy9tZXNvbi1nMTJiLWZhaWxzLnR4dCAgICB8ICAxNCArLQ0KPiAgIC4uLi9ncHUvZHJtL2Np
-L3hmYWlscy9tZXNvbi1nMTJiLWZsYWtlcy50eHQgICB8ICAgNCAtDQo+ICAgLi4uL2dwdS9k
-cm0vY2kveGZhaWxzL21zbS1hcHE4MDE2LWZsYWtlcy50eHQgIHwgICA0IC0NCj4gICAuLi4v
-Z3B1L2RybS9jaS94ZmFpbHMvbXNtLWFwcTgwOTYtZmFpbHMudHh0ICAgfCAgIDIgKw0KPiAg
-IC4uLi9ncHUvZHJtL2NpL3hmYWlscy9tc20tYXBxODA5Ni1mbGFrZXMudHh0ICB8ICAgNCAt
-DQo+ICAgLi4uL2dwdS9kcm0vY2kveGZhaWxzL21zbS1zYzcxODAtZmFpbHMudHh0ICAgIHwg
-IDE1ICstDQo+ICAgLi4uL2dwdS9kcm0vY2kveGZhaWxzL21zbS1zYzcxODAtZmxha2VzLnR4
-dCAgIHwgIDI0ICsrLQ0KPiAgIC4uLi9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2M3MTgwLXNr
-aXBzLnR4dCAgICB8ICAxOCArLQ0KPiAgIC4uLi9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2Rt
-ODQ1LWZhaWxzLnR4dCAgICB8ICAgOSArLQ0KPiAgIC4uLi9ncHUvZHJtL2NpL3hmYWlscy9t
-c20tc2RtODQ1LWZsYWtlcy50eHQgICB8ICAyMCArLQ0KPiAgIGRyaXZlcnMvZ3B1L2RybS9j
-aS94ZmFpbHMvcmVxdWlyZW1lbnRzLnR4dCAgICB8ICAxNyArKw0KPiAgIC4uLi9kcm0vY2kv
-eGZhaWxzL3JvY2tjaGlwLXJrMzI4OC1mYWlscy50eHQgICB8ICAgNiArDQo+ICAgLi4uL2Ry
-bS9jaS94ZmFpbHMvcm9ja2NoaXAtcmszMjg4LWZsYWtlcy50eHQgIHwgICA5IC0NCj4gICAu
-Li4vZHJtL2NpL3hmYWlscy9yb2NrY2hpcC1yazMzOTktZmFpbHMudHh0ICAgfCAgNDAgKysr
-LQ0KPiAgIC4uLi9kcm0vY2kveGZhaWxzL3JvY2tjaGlwLXJrMzM5OS1mbGFrZXMudHh0ICB8
-ICAyOCArLS0NCj4gICBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3VwZGF0ZS14ZmFpbHMu
-cHkgICAgfCAyMDMgKysrKysrKysrKysrKysrKysrDQo+ICAgLi4uL2RybS9jaS94ZmFpbHMv
-dmlydGlvX2dwdS1ub25lLWZsYWtlcy50eHQgIHwgICAwDQo+ICAgNDIgZmlsZXMgY2hhbmdl
-ZCwgNDQ1IGluc2VydGlvbnMoKyksIDMzMSBkZWxldGlvbnMoLSkNCj4gICBkZWxldGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9pOTE1LWFtbHktZmxha2VzLnR4
-dA0KPiAgIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5
-MTUtYXBsLWZsYWtlcy50eHQNCj4gICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUv
-ZHJtL2NpL3hmYWlscy9pOTE1LWNtbC1mbGFrZXMudHh0DQo+ICAgZGVsZXRlIG1vZGUgMTAw
-NjQ0IGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1nbGstZmxha2VzLnR4dA0KPiAg
-IGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUta2Js
-LWZsYWtlcy50eHQNCj4gICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2Np
-L3hmYWlscy9pOTE1LXRnbC1mbGFrZXMudHh0DQo+ICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS13aGwtZmxha2VzLnR4dA0KPiAgIGRlbGV0
-ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL21lZGlhdGVrLW10ODE3
-My1mbGFrZXMudHh0DQo+ICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9j
-aS94ZmFpbHMvbWVkaWF0ZWstbXQ4MTgzLWZsYWtlcy50eHQNCj4gICBkZWxldGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tZXNvbi1nMTJiLWZsYWtlcy50eHQN
-Cj4gICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20t
-YXBxODAxNi1mbGFrZXMudHh0DQo+ICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1
-L2RybS9jaS94ZmFpbHMvbXNtLWFwcTgwOTYtZmxha2VzLnR4dA0KPiAgIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3JlcXVpcmVtZW50cy50eHQNCj4g
-ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hp
-cC1yazMyODgtZmxha2VzLnR4dA0KPiAgIGNyZWF0ZSBtb2RlIDEwMDc1NSBkcml2ZXJzL2dw
-dS9kcm0vY2kveGZhaWxzL3VwZGF0ZS14ZmFpbHMucHkNCj4gICBkZWxldGUgbW9kZSAxMDA2
-NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy92aXJ0aW9fZ3B1LW5vbmUtZmxha2VzLnR4
-dA0KPg0KLS0gDQpEYXZpZCBIZWlkZWxiZXJnDQpDb25zdWx0YW50IFNvZnR3YXJlIEVuZ2lu
-ZWVyDQoNCkNvbGxhYm9yYSBMdGQuDQpQbGF0aW51bSBCdWlsZGluZywgU3QgSm9obidzIElu
-bm92YXRpb24gUGFyaywgQ2FtYnJpZGdlIENCNCAwRFMsIFVLDQpSZWdpc3RlcmVkIGluIEVu
-Z2xhbmQgJiBXYWxlcywgbm8uIDU1MTM3MTgNCg0K
---------------V0gK0iDbmzaQlZDwu5rkIymK
-Content-Type: application/pgp-keys; name="OpenPGP_0x69F567861C1EC014.asc"
-Content-Disposition: attachment; filename="OpenPGP_0x69F567861C1EC014.asc"
-Content-Description: OpenPGP public key
-Content-Transfer-Encoding: quoted-printable
-
------BEGIN PGP PUBLIC KEY BLOCK-----
-
-xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGN
-PwqEeILNMURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFi
-b3JhLmNvbT7ClgQTFggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsD
-BQkFo5qABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5Y
-qSWAOuIumAqgWvke6BEsaIGWGQzXSuKjer/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7
-Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQBl1UBBQEBB0AEk7jXEwDApGOw
-MH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYhBEo7kSl22BK0F1Np
-/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0YuAOKJCnn
-wrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
-wueLHBdwHg6zAQ=3D=3D
-=3DOQS+
------END PGP PUBLIC KEY BLOCK-----
-
---------------V0gK0iDbmzaQlZDwu5rkIymK--
-
---------------2msBekilzJjwjS0F2c1BGd7A--
-
---------------VcQS5LnegmfhnnjtAH3e88YN
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEARYIAB0WIQRKO5EpdtgStBdTaf5p9WeGHB7AFAUCZSbvfAAKCRBp9WeGHB7A
-FNSlAQCKp2ttkaul/mamT/IXogJoJcSv9h87VhGeDomDqnN9JwEA32Np6SV+hXBb
-QMCdjxucplfRAxFVGQsQecm5Y/a/uQ8=
-=xdXp
------END PGP SIGNATURE-----
-
---------------VcQS5LnegmfhnnjtAH3e88YN--
+> Create a helper to calculate the mask for the allowed states.
+> 
+> Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+> ---
+>  drivers/pci/pcie/aspm.c | 33 +++++++++++++++++++++------------
+>  1 file changed, 21 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+> index ec6d7a092ac1..91dc95aca90f 100644
+> --- a/drivers/pci/pcie/aspm.c
+> +++ b/drivers/pci/pcie/aspm.c
+> @@ -1034,6 +1034,26 @@ static struct pcie_link_state *pcie_aspm_get_link(struct pci_dev *pdev)
+>  	return bridge->link_state;
+>  }
+>  
+> +static u8 pci_link_state_mask(int state)
+> +{
+> +	u8 result = 0;
+> +
+> +	if (state & PCIE_LINK_STATE_L0S)
+> +		result |= ASPM_STATE_L0S;
+> +	if (state & PCIE_LINK_STATE_L1)
+> +		result |= ASPM_STATE_L1;
+> +	if (state & PCIE_LINK_STATE_L1_1)
+> +		result |= ASPM_STATE_L1_1;
+> +	if (state & PCIE_LINK_STATE_L1_2)
+> +		result |= ASPM_STATE_L1_2;
+> +	if (state & PCIE_LINK_STATE_L1_1_PCIPM)
+> +		result |= ASPM_STATE_L1_1_PCIPM;
+> +	if (state & PCIE_LINK_STATE_L1_2_PCIPM)
+> +		result |= ASPM_STATE_L1_2_PCIPM;
+> +
+> +	return result;
+> +}
+> +
+>  static int __pci_disable_link_state(struct pci_dev *pdev, int state, bool sem)
+>  {
+>  	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
+> @@ -1063,18 +1083,7 @@ static int __pci_disable_link_state(struct pci_dev *pdev, int state, bool sem)
+>  	if (sem)
+>  		down_read(&pci_bus_sem);
+>  	mutex_lock(&aspm_lock);
+> -	if (state & PCIE_LINK_STATE_L0S)
+> -		link->aspm_disable |= ASPM_STATE_L0S;
+> -	if (state & PCIE_LINK_STATE_L1)
+> -		link->aspm_disable |= ASPM_STATE_L1;
+> -	if (state & PCIE_LINK_STATE_L1_1)
+> -		link->aspm_disable |= ASPM_STATE_L1_1;
+> -	if (state & PCIE_LINK_STATE_L1_2)
+> -		link->aspm_disable |= ASPM_STATE_L1_2;
+> -	if (state & PCIE_LINK_STATE_L1_1_PCIPM)
+> -		link->aspm_disable |= ASPM_STATE_L1_1_PCIPM;
+> -	if (state & PCIE_LINK_STATE_L1_2_PCIPM)
+> -		link->aspm_disable |= ASPM_STATE_L1_2_PCIPM;
+> +	link->aspm_disable |= pci_link_state_mask(state);
+>  	pcie_config_aspm_link(link, policy_to_aspm_state(link));
+>  
+>  	if (state & PCIE_LINK_STATE_CLKPM)
+> -- 
+> 2.30.2
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
