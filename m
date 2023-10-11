@@ -4,66 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 454F4CD6E57
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 16:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71608CDB470
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 17:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LNllWddQ47Bk95xUmeZPCtRTy3zxGw7XxwM3Le5rTSI=; b=m4ZDg/QSzTLi3MhLO+1dnxJHQC
-	n65UzfrxiJKV3RpIYgGpkl1kOwG+c8KS69PiBLum33pNPGjSdJewMGhQGEXvLFsDgZ7ni/sysW6Mr
-	2QKvbDvn+R4JnRK5/tNX485MFF+Eq1znYXCFw60hVGqQdMNaSWO66xptJrKZ0nJct3k1kWMGsOG/m
-	o6ju5mBjjcAZ5aTHKCD4QuCihbSWSrK0wXQtLztSzOD37vlmo1TMCRZcGQGhENcggmIPIAhTLzjqL
-	TIiN95/Ghgq0OL2TZ7KMhW4HIEUKWsaUzDWLQXZKPeUeJKVUBq4lGSyYGKIBSqCaKKcpiYLQ8kD9d
-	EU74cl9w==;
+	bh=bM2ZtT57neAX/wQjDtY6kTjEfhq5pvyurdRnUuf/xJM=; b=T2pc181tVyvZpNgiTaqdcEAvw8
+	M7jfQWztxI/J7mRtmEAxBPI2Ji4EE/EyEJyY19DSvPKpaFY3m+4UhAjxKPWvEe0nj6mb+O8OMv+Nc
+	1dsjVYCMBDl48twQTS75LQ4m7SinRsSt/30A3Tvrs3/D0gbmQhJDzrQIG3Jqxh+W8r6QKGM1AmXWe
+	DMXs5qemre/rXjuXPThHf9dMzo4lJ4qJ5m2q6Mq8n5FtsVwawBV37u0qmT9yJ3YyFJ10UlZddQaoH
+	0v6fo0L+w/Sfo6Mo9iPqwRrEyiuDqewSrIE/bufY1jnUSAHrHNrvSha47myB8J7x5Yelz2aiEVQb+
+	LqBshXFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqbiH-00GEls-2P;
-	Wed, 11 Oct 2023 16:05:33 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qqdKJ-00GNR5-12;
+	Wed, 11 Oct 2023 17:48:55 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqbiD-00GEkf-2i;
-	Wed, 11 Oct 2023 16:05:31 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0AC3866072FC;
-	Wed, 11 Oct 2023 17:05:23 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697040326;
-	bh=JX/FNFTRvgUjRggNucUPj/avlj5AIJtfvklHcuIrhpc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FOvsvP2z4ELP9LV96w8lC8IG53tbUcpfdEjCzCWhy/UHUKlqPJKxAjKU7yzF4Yy7N
-	 /YC08oleXh/SM7zMPX0cUpXEghvg0c950bgpJPz3XHcjo2sb972iSTv1/L3xRhurGj
-	 cqtbstLlprV0C0Hw/4WhEkTTMeynQsyOW7QZqYgbgGrkwUapU9I7r5hQnaIyl2f/0A
-	 ekkyHILY/UiLaVp9xK0pQl107nduU5BO6a+DG7nIu9xxO6KKiqcPzwa8ZDF7HKMnbZ
-	 gzaWCPuhM0PrsfZodIBY96FK42HFPak2R1vZO01rFQo6VmvwZro0xCeYca14c6COUA
-	 iyESeUwrHaw9w==
-Date: Wed, 11 Oct 2023 12:05:19 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
-	daniel@ffwll.ch, matthias.bgg@gmail.com,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	wenst@chromium.org, kernel@collabora.com, ehristev@collabora.com
-Subject: Re: [PATCH v10 08/16] drm/mediatek: De-commonize disp_aal/disp_gamma
- gamma_set functions
-Message-ID: <8cf3d18a-fe99-49c5-8d0c-eb5deaef79d6@notapiano>
-References: <20230804072850.89365-1-angelogioacchino.delregno@collabora.com>
- <20230804072850.89365-9-angelogioacchino.delregno@collabora.com>
+	id 1qqdKF-00GNQF-2I
+	for linux-mediatek@lists.infradead.org;
+	Wed, 11 Oct 2023 17:48:53 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-6910ea9cddbso39856b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Oct 2023 10:48:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697046530; x=1697651330; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=bM2ZtT57neAX/wQjDtY6kTjEfhq5pvyurdRnUuf/xJM=;
+        b=tRrvECBQfNm9u3ExrwtBiPPnToJlEjzZVyzkjJ3ExDSAbsXqv14OQOWdYWDmvLkKYp
+         frNcQqnGfGp6cnP8nVm0hP91uJBv0A5Sx6V6e3xpK4QlhF0NId5r7Tmuygh+7QjvRrjw
+         KxbmJ/BOiLOn8fwDsJIkaohDvueDaS3EeEJ5IWfbGfyV0C7CIqU/pHkEyLmJle8msN6p
+         gmwX4WjLrGE4a4c1UDDZNp4RnaN4jT7nnykcmWOc78I6klJ8LWT3aSr/HccZksM8OqHy
+         5euYiqnh5TrqhXC2PuL0wUVyDRzLYxt5Z5AawUGVjb5bE4bgFfG0z7YJ5VI9nbO5oJwl
+         kQiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697046530; x=1697651330;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bM2ZtT57neAX/wQjDtY6kTjEfhq5pvyurdRnUuf/xJM=;
+        b=uhFVKTd++1tERe1j/R+bvB1DZLUNx0O1FCutquUSlKgBs21BMmqDET38s6lWNHoXsX
+         en8CxHmBjXiGLl+UI1GxzLK2R0aDCL7NTt3YdWXtVFdnxKroP5eaF5AVMzHMKXAuIj3S
+         Dxi1RlFLCkd5crqnTQsi+uF0HKZAxuUAQg8UmkMEC63ele7ZZdEF9VLrUWOUYOgKU0nk
+         9Al9ZKczeYfMN0jK9frkq70xQa9NV4sc7DaAImABnungy+PhedR1rNt1CQV1Vtsrd4go
+         0+vAE+ojb562uyzmGcAGyfsouUCjCDc7JrAlBdmKt57DJW+d+HlMe5JNSkEMN0/vtWPM
+         WggQ==
+X-Gm-Message-State: AOJu0YwNlqyaIqKfwMqPjUxJhw/hBmraZpX4nEF/7gYBYMaHDeF/MFB5
+	qk3xzboHs3m7oJPSATjCfY4cvQ==
+X-Google-Smtp-Source: AGHT+IF4MffnY6FNeJJc1juHDvYlAxYH24seuPoeHgjPkWoCKjPIY6tr0GTX+skm36H1sgCf0PrVBQ==
+X-Received: by 2002:a05:6a00:1687:b0:68a:5395:7aa5 with SMTP id k7-20020a056a00168700b0068a53957aa5mr24585337pfc.17.1697046530225;
+        Wed, 11 Oct 2023 10:48:50 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:fbd6:ce83:3759:dbcc])
+        by smtp.gmail.com with ESMTPSA id c4-20020a62e804000000b00690c9fda0fesm10327293pfi.169.2023.10.11.10.48.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Oct 2023 10:48:49 -0700 (PDT)
+Date: Wed, 11 Oct 2023 11:48:45 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Mukesh Ojha <quic_mojha@quicinc.com>
+Cc: corbet@lwn.net, agross@kernel.org, andersson@kernel.org,
+	konrad.dybcio@linaro.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	keescook@chromium.org, tony.luck@intel.com, gpiccoli@igalia.com,
+	catalin.marinas@arm.com, will@kernel.org, linus.walleij@linaro.org,
+	andy.shevchenko@gmail.com, vigneshr@ti.com, nm@ti.com,
+	matthias.bgg@gmail.com, kgene@kernel.org, alim.akhtar@samsung.com,
+	bmasney@redhat.com, quic_tsoni@quicinc.com,
+	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-hardening@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
+Subject: Re: [REBASE PATCH v5 04/17] remoteproc: qcom: Remove minidump
+ related data from qcom_common.c
+Message-ID: <ZSbf/VqpBIlhyUIG@p14s>
+References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
+ <1694429639-21484-5-git-send-email-quic_mojha@quicinc.com>
+ <bb29aba3-9378-6405-5f6d-a7d77e0374ad@quicinc.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230804072850.89365-9-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <bb29aba3-9378-6405-5f6d-a7d77e0374ad@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_090530_082109_B935D7F6 
-X-CRM114-Status: GOOD (  25.46  )
+X-CRM114-CacheID: sfid-20231011_104851_749974_D757FE3C 
+X-CRM114-Status: GOOD (  31.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,97 +105,216 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 04, 2023 at 09:28:42AM +0200, AngeloGioacchino Del Regno wrote:
-> In preparation for adding a 12-bits gamma support for the DISP_GAMMA
-> IP, remove the mtk_gamma_set_common() function and move the relevant
-> bits in mtk_gamma_set() for DISP_GAMMA and mtk_aal_gamma_set() for
-> DISP_AAL: since the latter has no more support for gamma manipulation
-> (being moved to a different IP) in newer revisions, those functions
-> are about to diverge and it makes no sense to keep a common one (with
-> all the complications of passing common data and making exclusions
-> for device driver data) for just a few bits.
+On Fri, Oct 06, 2023 at 08:38:52PM +0530, Mukesh Ojha wrote:
+> Hi Bjorn/Mathieu,
 > 
-> This commit brings no functional changes.
+> Patches from 2/17-4/17  is just a movement of functions to separate
+> config/file.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_aal.c   | 39 +++++++++++++++++++++--
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  1 -
->  drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 34 ++++----------------
->  3 files changed, 44 insertions(+), 30 deletions(-)
+> Do you think, these can be picked independently from this series ?
+> I can send them separately, if required.
+
+Bjorn handles submissions for Qualcomm - I will defer to him.
+
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> index bec035780db0..21b25470e9b7 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> @@ -17,10 +17,18 @@
->  
->  #define DISP_AAL_EN				0x0000
->  #define AAL_EN						BIT(0)
-> +#define DISP_AAL_CFG				0x0020
-> +#define AAL_RELAY_MODE					BIT(0)
-> +#define AAL_GAMMA_LUT_EN				BIT(1)
->  #define DISP_AAL_SIZE				0x0030
->  #define DISP_AAL_SIZE_HSIZE				GENMASK(28, 16)
->  #define DISP_AAL_SIZE_VSIZE				GENMASK(12, 0)
->  #define DISP_AAL_OUTPUT_SIZE			0x04d8
-> +#define DISP_AAL_GAMMA_LUT			0x0700
-> +#define DISP_AAL_GAMMA_LUT_R				GENMASK(29, 20)
-> +#define DISP_AAL_GAMMA_LUT_G				GENMASK(19, 10)
-> +#define DISP_AAL_GAMMA_LUT_B				GENMASK(9, 0)
-> +#define DISP_AAL_LUT_BITS			10
->  #define DISP_AAL_LUT_SIZE			512
->  
->  struct mtk_disp_aal_data {
-> @@ -85,9 +93,36 @@ unsigned int mtk_aal_gamma_get_lut_size(struct device *dev)
->  void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state)
->  {
->  	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
-> +	struct drm_color_lut *lut;
-> +	unsigned int i;
-> +	u32 cfg_val;
-> +
-> +	/* If gamma is not supported in AAL, go out immediately */
-> +	if (!(aal->data && aal->data->has_gamma))
-> +		return;
-> +
-> +	/* Also, if there's no gamma lut there's nothing to do here. */
-> +	if (!state->gamma_lut)
-> +		return;
-> +
-> +	cfg_val = readl(aal->regs + DISP_AAL_CFG);
-> +	lut = (struct drm_color_lut *)state->gamma_lut->data;
-> +
-> +	for (i = 0; i < DISP_AAL_LUT_SIZE; i++) {
-> +		struct drm_color_lut hwlut = {
-> +			.red = drm_color_lut_extract(lut[i].red, DISP_AAL_LUT_BITS),
-> +			.green = drm_color_lut_extract(lut[i].green, DISP_AAL_LUT_BITS),
-> +			.blue = drm_color_lut_extract(lut[i].blue, DISP_AAL_LUT_BITS)
-> +		};
-> +		u32 word;
-> +
-> +		word = FIELD_PREP(DISP_AAL_GAMMA_LUT_R, hwlut.red);
-> +		word |= FIELD_PREP(DISP_AAL_GAMMA_LUT_G, hwlut.green);
-> +		word |= FIELD_PREP(DISP_AAL_GAMMA_LUT_B, hwlut.blue);
-> +		writel(word, (aal->regs + DISP_AAL_GAMMA_LUT) + (i * 4));
-> +	}
-
-Hi Angelo,
-
-it looks like you're missing a
-
-  	cfg_val |= FIELD_PREP(AAL_GAMMA_LUT_EN, 1);
-
-to actually enable the AAL gamma table here, like was done in the common
-function.
-
-Thanks,
-Nícolas
-
->  
-> -	if (aal->data && aal->data->has_gamma)
-> -		mtk_gamma_set_common(NULL, aal->regs, state);
-> +	writel(cfg_val, aal->regs + DISP_AAL_CFG);
->  }
-[..]
+> @Bjorn: I have sent 13/17-15/17 separately [1] as it is needed
+> by some folks and independent from this series.
+> 
+> [1]
+> https://lore.kernel.org/all/1696440338-12561-1-git-send-email-quic_mojha@quicinc.com/
+> 
+> -Mukesh
+> 
+> On 9/11/2023 4:23 PM, Mukesh Ojha wrote:
+> > As minidump specific data structure and functions move under
+> > config QCOM_RPROC_MINIDUMP, so remove minidump specific data
+> > from driver/remoteproc/qcom_common.c .
+> > 
+> > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> > ---
+> >   drivers/remoteproc/qcom_common.c | 160 ---------------------------------------
+> >   1 file changed, 160 deletions(-)
+> > 
+> > diff --git a/drivers/remoteproc/qcom_common.c b/drivers/remoteproc/qcom_common.c
+> > index 03e5f5d533eb..085fd73fa23a 100644
+> > --- a/drivers/remoteproc/qcom_common.c
+> > +++ b/drivers/remoteproc/qcom_common.c
+> > @@ -17,7 +17,6 @@
+> >   #include <linux/rpmsg/qcom_smd.h>
+> >   #include <linux/slab.h>
+> >   #include <linux/soc/qcom/mdt_loader.h>
+> > -#include <linux/soc/qcom/smem.h>
+> >   #include "remoteproc_internal.h"
+> >   #include "qcom_common.h"
+> > @@ -26,61 +25,6 @@
+> >   #define to_smd_subdev(d) container_of(d, struct qcom_rproc_subdev, subdev)
+> >   #define to_ssr_subdev(d) container_of(d, struct qcom_rproc_ssr, subdev)
+> > -#define MAX_NUM_OF_SS           10
+> > -#define MAX_REGION_NAME_LENGTH  16
+> > -#define SBL_MINIDUMP_SMEM_ID	602
+> > -#define MINIDUMP_REGION_VALID		('V' << 24 | 'A' << 16 | 'L' << 8 | 'I' << 0)
+> > -#define MINIDUMP_SS_ENCR_DONE		('D' << 24 | 'O' << 16 | 'N' << 8 | 'E' << 0)
+> > -#define MINIDUMP_SS_ENABLED		('E' << 24 | 'N' << 16 | 'B' << 8 | 'L' << 0)
+> > -
+> > -/**
+> > - * struct minidump_region - Minidump region
+> > - * @name		: Name of the region to be dumped
+> > - * @seq_num:		: Use to differentiate regions with same name.
+> > - * @valid		: This entry to be dumped (if set to 1)
+> > - * @address		: Physical address of region to be dumped
+> > - * @size		: Size of the region
+> > - */
+> > -struct minidump_region {
+> > -	char	name[MAX_REGION_NAME_LENGTH];
+> > -	__le32	seq_num;
+> > -	__le32	valid;
+> > -	__le64	address;
+> > -	__le64	size;
+> > -};
+> > -
+> > -/**
+> > - * struct minidump_subsystem - Subsystem's SMEM Table of content
+> > - * @status : Subsystem toc init status
+> > - * @enabled : if set to 1, this region would be copied during coredump
+> > - * @encryption_status: Encryption status for this subsystem
+> > - * @encryption_required : Decides to encrypt the subsystem regions or not
+> > - * @region_count : Number of regions added in this subsystem toc
+> > - * @regions_baseptr : regions base pointer of the subsystem
+> > - */
+> > -struct minidump_subsystem {
+> > -	__le32	status;
+> > -	__le32	enabled;
+> > -	__le32	encryption_status;
+> > -	__le32	encryption_required;
+> > -	__le32	region_count;
+> > -	__le64	regions_baseptr;
+> > -};
+> > -
+> > -/**
+> > - * struct minidump_global_toc - Global Table of Content
+> > - * @status : Global Minidump init status
+> > - * @md_revision : Minidump revision
+> > - * @enabled : Minidump enable status
+> > - * @subsystems : Array of subsystems toc
+> > - */
+> > -struct minidump_global_toc {
+> > -	__le32				status;
+> > -	__le32				md_revision;
+> > -	__le32				enabled;
+> > -	struct minidump_subsystem	subsystems[MAX_NUM_OF_SS];
+> > -};
+> > -
+> >   struct qcom_ssr_subsystem {
+> >   	const char *name;
+> >   	struct srcu_notifier_head notifier_list;
+> > @@ -90,110 +34,6 @@ struct qcom_ssr_subsystem {
+> >   static LIST_HEAD(qcom_ssr_subsystem_list);
+> >   static DEFINE_MUTEX(qcom_ssr_subsys_lock);
+> > -static void qcom_minidump_cleanup(struct rproc *rproc)
+> > -{
+> > -	struct rproc_dump_segment *entry, *tmp;
+> > -
+> > -	list_for_each_entry_safe(entry, tmp, &rproc->dump_segments, node) {
+> > -		list_del(&entry->node);
+> > -		kfree(entry->priv);
+> > -		kfree(entry);
+> > -	}
+> > -}
+> > -
+> > -static int qcom_add_minidump_segments(struct rproc *rproc, struct minidump_subsystem *subsystem,
+> > -			void (*rproc_dumpfn_t)(struct rproc *rproc, struct rproc_dump_segment *segment,
+> > -				void *dest, size_t offset, size_t size))
+> > -{
+> > -	struct minidump_region __iomem *ptr;
+> > -	struct minidump_region region;
+> > -	int seg_cnt, i;
+> > -	dma_addr_t da;
+> > -	size_t size;
+> > -	char *name;
+> > -
+> > -	if (WARN_ON(!list_empty(&rproc->dump_segments))) {
+> > -		dev_err(&rproc->dev, "dump segment list already populated\n");
+> > -		return -EUCLEAN;
+> > -	}
+> > -
+> > -	seg_cnt = le32_to_cpu(subsystem->region_count);
+> > -	ptr = ioremap((unsigned long)le64_to_cpu(subsystem->regions_baseptr),
+> > -		      seg_cnt * sizeof(struct minidump_region));
+> > -	if (!ptr)
+> > -		return -EFAULT;
+> > -
+> > -	for (i = 0; i < seg_cnt; i++) {
+> > -		memcpy_fromio(&region, ptr + i, sizeof(region));
+> > -		if (le32_to_cpu(region.valid) == MINIDUMP_REGION_VALID) {
+> > -			name = kstrndup(region.name, MAX_REGION_NAME_LENGTH - 1, GFP_KERNEL);
+> > -			if (!name) {
+> > -				iounmap(ptr);
+> > -				return -ENOMEM;
+> > -			}
+> > -			da = le64_to_cpu(region.address);
+> > -			size = le64_to_cpu(region.size);
+> > -			rproc_coredump_add_custom_segment(rproc, da, size, rproc_dumpfn_t, name);
+> > -		}
+> > -	}
+> > -
+> > -	iounmap(ptr);
+> > -	return 0;
+> > -}
+> > -
+> > -void qcom_minidump(struct rproc *rproc, unsigned int minidump_id,
+> > -		void (*rproc_dumpfn_t)(struct rproc *rproc,
+> > -		struct rproc_dump_segment *segment, void *dest, size_t offset,
+> > -		size_t size))
+> > -{
+> > -	int ret;
+> > -	struct minidump_subsystem *subsystem;
+> > -	struct minidump_global_toc *toc;
+> > -
+> > -	/* Get Global minidump ToC*/
+> > -	toc = qcom_smem_get(QCOM_SMEM_HOST_ANY, SBL_MINIDUMP_SMEM_ID, NULL);
+> > -
+> > -	/* check if global table pointer exists and init is set */
+> > -	if (IS_ERR(toc) || !toc->status) {
+> > -		dev_err(&rproc->dev, "Minidump TOC not found in SMEM\n");
+> > -		return;
+> > -	}
+> > -
+> > -	/* Get subsystem table of contents using the minidump id */
+> > -	subsystem = &toc->subsystems[minidump_id];
+> > -
+> > -	/**
+> > -	 * Collect minidump if SS ToC is valid and segment table
+> > -	 * is initialized in memory and encryption status is set.
+> > -	 */
+> > -	if (subsystem->regions_baseptr == 0 ||
+> > -	    le32_to_cpu(subsystem->status) != 1 ||
+> > -	    le32_to_cpu(subsystem->enabled) != MINIDUMP_SS_ENABLED) {
+> > -		return rproc_coredump(rproc);
+> > -	}
+> > -
+> > -	if (le32_to_cpu(subsystem->encryption_status) != MINIDUMP_SS_ENCR_DONE) {
+> > -		dev_err(&rproc->dev, "Minidump not ready, skipping\n");
+> > -		return;
+> > -	}
+> > -
+> > -	/**
+> > -	 * Clear out the dump segments populated by parse_fw before
+> > -	 * re-populating them with minidump segments.
+> > -	 */
+> > -	rproc_coredump_cleanup(rproc);
+> > -
+> > -	ret = qcom_add_minidump_segments(rproc, subsystem, rproc_dumpfn_t);
+> > -	if (ret) {
+> > -		dev_err(&rproc->dev, "Failed with error: %d while adding minidump entries\n", ret);
+> > -		goto clean_minidump;
+> > -	}
+> > -	rproc_coredump_using_sections(rproc);
+> > -clean_minidump:
+> > -	qcom_minidump_cleanup(rproc);
+> > -}
+> > -EXPORT_SYMBOL_GPL(qcom_minidump);
+> > -
+> >   static int glink_subdev_start(struct rproc_subdev *subdev)
+> >   {
+> >   	struct qcom_rproc_glink *glink = to_glink_subdev(subdev);
 
