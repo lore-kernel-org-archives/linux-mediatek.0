@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A00F6CD6E5A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 11:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15A6FCD6E5A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Oct 2023 11:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=k4BbMF73OcBqKp5idNXT+OixWx4yOspeyVVCUlb267I=; b=SVxBSNxtcWEnxwOzgIQ+sMdsXY
-	hF+b0sirfpHRfDaeOm/IlAZlLbp+18pxXO9usuDtfK0RKMxvCowAKC3cdbSiJ/ZplJoyF+eKTtUu6
-	tai1VXYdptAX+l8uIU7yZZsAAPCeGreB3E4ezK2nHq5aEDOK3AMfq5jcneL7YsBjyz0wk1182eHSy
-	/V6X99UKXGPwrijF6AacrZFgt1OOq97rbTfhb3kwNTBcBWluFxH7sm44jphIkVhzTLxrS00c29TjJ
-	u+qOu81Qq3M5VUj060BnOWQjAJEv9a2tQU8TKeFiBG9hXue7ZY8zqNiXbvwji+6aNnSqhExVeTriQ
-	33WNrGpQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GNPNkwOEDk91iw9h3rV4AviZxmeWeoLT693UpVyQp7Q=; b=xBrMa/N5sLvMQh8oi8h+Soa0nB
+	7dJy+vNN3bjbNyeO3IBc2eHN5cvzZnPyYNsfacPR2+KPqmV/l9oSHf1ZAgq+g0eN6Uu1p/WBqy5DU
+	7EgzIwYFkjnqnOS0e1S8NKlx1SIWeEsOHCrSh59le+QXYJmsFggzpSsOBZsxFwHz/EI9wBLur2j06
+	xQ34bWLk+ErjZHltBtj8mgdb0mZagOAMfSeSx1yIm++1PP47G3500B8DUsap7J1xr7V5uxvUX1G6k
+	KmgsqwvFPoBg+Wxs3J73ab4yXix9O14P+cnNhMkX9ZC4/7mFqlwLm/onfh62853fzG7gslzHmRcoX
+	CrIvoduw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqX0S-00Fg3i-20;
-	Wed, 11 Oct 2023 11:04:00 +0000
+	id 1qqXZq-00FleD-2d;
+	Wed, 11 Oct 2023 11:40:34 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqX0O-00Fg2f-2K;
-	Wed, 11 Oct 2023 11:03:58 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1qqXZm-00Fldm-2Q;
+	Wed, 11 Oct 2023 11:40:32 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EE63666072F1;
-	Wed, 11 Oct 2023 12:03:51 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D43C06607312;
+	Wed, 11 Oct 2023 12:40:27 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697022232;
-	bh=pd3akVqI8dkkMzhP5JhWVVOmj85PgCcSmSnRfDQT6n0=;
-	h=From:To:Cc:Subject:Date:From;
-	b=jOD7sTj5bstFuQi3fGxysynPaKavon9shpP3bHHXCMk04xXrPB4Gn3HmINRWzsNkC
-	 BOF0T6+eunk//BSJ+HUyFRF+W5rwqhb+HAv66E2xc4Wk7HyO1SVYThhvkpXGvBrl1T
-	 pAqxttIDGK4Yy4RKgrIDliX2pYRZ0+EYHd9UKCTvBTr/z2IGfRzQwNZz07AhHtjlD9
-	 tTGQIYCqWuHK0SfBZnH7RTQ08qrvjsPN17qf1U/WSFksEW2NUH2VfKTcWDSAkUyutN
-	 Dskwm1UbYWOor9nBcJ3IPqXuxgnIY5SiQGSm/Q5TFVQ/qQ3HjdJus8AvzJho25DwZI
-	 jLIom/AWlCyOg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: jassisinghbrar@gmail.com
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux@roeck-us.net,
-	wenst@chromium.org,
-	kernel@collabora.com,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>
-Subject: [PATCH] mailbox: mtk-cmdq-mailbox: Implement Runtime PM with autosuspend
-Date: Wed, 11 Oct 2023 13:03:09 +0200
-Message-ID: <20231011110309.164657-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.42.0
+	s=mail; t=1697024428;
+	bh=OAMxSeQ6P5OM3kNDdwo69a8n51/BNIPMjIOkxQ7766s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NUigGBNW6cMl0UPf5ATiyCBG/6NiwnVGibUC7TWy9Fx2nq6JRWCzg78cLjmhRantd
+	 24iERycqpetEV8+scZLms7O3eBWLmKVHMlVn4BLInT/lt0K/fEoEc9eKUVKrDu4QSj
+	 lh6LOOzhbgcNuMFpRZp+1c7LvdI237Kp+K2JZ1NdOh1OZllW+1t1/PP480J/9Yp+GG
+	 r6bz4f9/t91CkgCxjXv3HM2vQuFTbXApvxqqiRjupOwWnnZH7WnhPB32WlR60enX/9
+	 9gjaon5QJQtNE7hGu5uLsjs51C89Fg68KqTOnkRt5OVQkMdNPzhMhlxssJ27A+YsPX
+	 xJYCkN1E+GjaA==
+Message-ID: <9b822d2d-7e2f-98f5-218c-22e0bb516a6a@collabora.com>
+Date: Wed, 11 Oct 2023 13:40:24 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v7 2/3] arm64: dts: mediatek: mt8195: revise VDOSYS RDMA
+ node name
+To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "Nancy . Lin" <nancy.lin@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231011075031.30660-1-moudy.ho@mediatek.com>
+ <20231011075031.30660-3-moudy.ho@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231011075031.30660-3-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_040357_076640_E091EC1F 
-X-CRM114-Status: GOOD (  25.27  )
+X-CRM114-CacheID: sfid-20231011_044030_993471_034A2A81 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,275 +81,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek found an issue with display HW registers configuration, and
-located the reason in the CMDQ Mailbox driver; reporting the original
-comment with the analysis of this problem by Jason-JH Lin:
+Il 11/10/23 09:50, Moudy Ho ha scritto:
+> DMA-related nodes have their own standardized naming. Therefore,
+> the MT8195 VDOSYS RDMA has been unified and corrected.
+> Additionally, these modifications will facilitate the further
+> integration of bindings.
+> 
+> Fixes: 92d2c23dc269 ("arm64: dts: mt8195: add display node for vdosys1")
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 
-  GCE should config HW in every vblanking duration.
-  The stream done event is the start signal of vblanking.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-  If stream done event is sent between GCE clk_disable
-  and clk_enable. After GCE clk_enable the stream done event
-  may not appear immediately and have about 3us delay.
-
-  Normal case:
-  clk_disable -> get EventA -> clk_enable -> clear EventA
-  -> wait EventB -> get EventB -> config HW
-
-  Abnormal case:
-  clk_disable -> get EventA -> clk_enable -> EventA delay appear
-  -> clear EventA fail -> wait EventB but get EventA -> config HW
-
-From his analysis we get that the GCE may finish its event processing
-after some amount of time (and not immediately after sending commands
-to it); since the GCE is used for more than just display, and it gets
-used frequently, solve this issue by implementing Runtime PM handlers
-with autosuspend: this allows us to overcome to the remote processor
-delay issues and reduce the clock enable()/disable() calls, while also
-still managing to save some power, which is something that we wouldn't
-be able to do if we just enable the GCE clocks at probe.
-
-Speaking of which: if Runtime PM is not available there will obviously
-be no way to get this power saving action so, in this case, the clocks
-will be enabled at probe() time, kept enabled for the entire driver's
-life and disabled at remove().
-
-Reported-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-
-The 100ms autosuspend delay was estimated in a worst-case scenario and
-was tested on MT8192 and MT8195 Chromebooks, with internal display and
-external display running to maximize the number of CMDQ messages being
-sent through.
-That value can probably be decreased to half of what I've set, but on
-that I prefer being cautious and keep it at 100ms.
-
-P.S.: This also solves microstuttering issues that I've randomly seen
-on all MediaTek Chromebooks.
-
- drivers/mailbox/mtk-cmdq-mailbox.c | 80 +++++++++++++++++++++++++-----
- 1 file changed, 68 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 4d62b07c1411..de862e9137d5 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -13,10 +13,13 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/mailbox_controller.h>
- #include <linux/mailbox/mtk-cmdq-mailbox.h>
- #include <linux/of.h>
- 
-+#define CMDQ_MBOX_AUTOSUSPEND_DELAY_MS	100
-+
- #define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
- #define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
- #define CMDQ_GCE_NUM_MAX		(2)
-@@ -283,10 +286,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
- 			break;
- 	}
- 
--	if (list_empty(&thread->task_busy_list)) {
-+	if (list_empty(&thread->task_busy_list))
- 		cmdq_thread_disable(cmdq, thread);
--		clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
--	}
- }
- 
- static irqreturn_t cmdq_irq_handler(int irq, void *dev)
-@@ -307,9 +308,26 @@ static irqreturn_t cmdq_irq_handler(int irq, void *dev)
- 		spin_unlock_irqrestore(&thread->chan->lock, flags);
- 	}
- 
-+	pm_runtime_mark_last_busy(cmdq->mbox.dev);
-+
- 	return IRQ_HANDLED;
- }
- 
-+static int cmdq_runtime_resume(struct device *dev)
-+{
-+	struct cmdq *cmdq = dev_get_drvdata(dev);
-+
-+	return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
-+}
-+
-+static int cmdq_runtime_suspend(struct device *dev)
-+{
-+	struct cmdq *cmdq = dev_get_drvdata(dev);
-+
-+	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
-+	return 0;
-+}
-+
- static int cmdq_suspend(struct device *dev)
- {
- 	struct cmdq *cmdq = dev_get_drvdata(dev);
-@@ -333,16 +351,14 @@ static int cmdq_suspend(struct device *dev)
- 	if (cmdq->pdata->sw_ddr_en)
- 		cmdq_sw_ddr_enable(cmdq, false);
- 
--	clk_bulk_unprepare(cmdq->pdata->gce_num, cmdq->clocks);
--
--	return 0;
-+	return pm_runtime_force_suspend(dev);
- }
- 
- static int cmdq_resume(struct device *dev)
- {
- 	struct cmdq *cmdq = dev_get_drvdata(dev);
- 
--	WARN_ON(clk_bulk_prepare(cmdq->pdata->gce_num, cmdq->clocks));
-+	WARN_ON(pm_runtime_force_resume(dev));
- 	cmdq->suspended = false;
- 
- 	if (cmdq->pdata->sw_ddr_en)
-@@ -358,6 +374,9 @@ static int cmdq_remove(struct platform_device *pdev)
- 	if (cmdq->pdata->sw_ddr_en)
- 		cmdq_sw_ddr_enable(cmdq, false);
- 
-+	if (!IS_ENABLED(CONFIG_PM))
-+		cmdq_runtime_suspend(&pdev->dev);
-+
- 	clk_bulk_unprepare(cmdq->pdata->gce_num, cmdq->clocks);
- 	return 0;
- }
-@@ -369,13 +388,20 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
- 	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
- 	struct cmdq_task *task;
- 	unsigned long curr_pa, end_pa;
-+	int ret;
- 
- 	/* Client should not flush new tasks if suspended. */
- 	WARN_ON(cmdq->suspended);
- 
-+	ret = pm_runtime_get_sync(cmdq->mbox.dev);
-+	if (ret < 0)
-+		return ret;
-+
- 	task = kzalloc(sizeof(*task), GFP_ATOMIC);
--	if (!task)
-+	if (!task) {
-+		pm_runtime_put_autosuspend(cmdq->mbox.dev);
- 		return -ENOMEM;
-+	}
- 
- 	task->cmdq = cmdq;
- 	INIT_LIST_HEAD(&task->list_entry);
-@@ -384,8 +410,6 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
- 	task->pkt = pkt;
- 
- 	if (list_empty(&thread->task_busy_list)) {
--		WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
--
- 		/*
- 		 * The thread reset will clear thread related register to 0,
- 		 * including pc, end, priority, irq, suspend and enable. Thus
-@@ -424,6 +448,9 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
- 	}
- 	list_move_tail(&task->list_entry, &thread->task_busy_list);
- 
-+	pm_runtime_mark_last_busy(cmdq->mbox.dev);
-+	pm_runtime_put_autosuspend(cmdq->mbox.dev);
-+
- 	return 0;
- }
- 
-@@ -439,6 +466,8 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
- 	struct cmdq_task *task, *tmp;
- 	unsigned long flags;
- 
-+	WARN_ON(pm_runtime_get_sync(cmdq->mbox.dev));
-+
- 	spin_lock_irqsave(&thread->chan->lock, flags);
- 	if (list_empty(&thread->task_busy_list))
- 		goto done;
-@@ -457,7 +486,6 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
- 	}
- 
- 	cmdq_thread_disable(cmdq, thread);
--	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
- 
- done:
- 	/*
-@@ -467,6 +495,9 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
- 	 * to do any operation here, only unlock and leave.
- 	 */
- 	spin_unlock_irqrestore(&thread->chan->lock, flags);
-+
-+	pm_runtime_mark_last_busy(cmdq->mbox.dev);
-+	pm_runtime_put_autosuspend(cmdq->mbox.dev);
- }
- 
- static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
-@@ -477,6 +508,11 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- 	struct cmdq_task *task, *tmp;
- 	unsigned long flags;
- 	u32 enable;
-+	int ret;
-+
-+	ret = pm_runtime_get_sync(cmdq->mbox.dev);
-+	if (ret < 0)
-+		return ret;
- 
- 	spin_lock_irqsave(&thread->chan->lock, flags);
- 	if (list_empty(&thread->task_busy_list))
-@@ -497,10 +533,12 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- 
- 	cmdq_thread_resume(thread);
- 	cmdq_thread_disable(cmdq, thread);
--	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
- 
- out:
- 	spin_unlock_irqrestore(&thread->chan->lock, flags);
-+	pm_runtime_mark_last_busy(cmdq->mbox.dev);
-+	pm_runtime_put_autosuspend(cmdq->mbox.dev);
-+
- 	return 0;
- 
- wait:
-@@ -513,6 +551,8 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- 
- 		return -EFAULT;
- 	}
-+	pm_runtime_mark_last_busy(cmdq->mbox.dev);
-+	pm_runtime_put_autosuspend(cmdq->mbox.dev);
- 	return 0;
- }
- 
-@@ -642,12 +682,28 @@ static int cmdq_probe(struct platform_device *pdev)
- 		return err;
- 	}
- 
-+	/* If Runtime PM is not available enable the clocks now. */
-+	if (!IS_ENABLED(CONFIG_PM)) {
-+		err = cmdq_runtime_resume(dev);
-+		if (err)
-+			return err;
-+	}
-+
-+	err = devm_pm_runtime_enable(dev);
-+	if (err)
-+		return err;
-+
-+	pm_runtime_set_autosuspend_delay(dev, CMDQ_MBOX_AUTOSUSPEND_DELAY_MS);
-+	pm_runtime_use_autosuspend(dev);
-+
- 	return 0;
- }
- 
- static const struct dev_pm_ops cmdq_pm_ops = {
- 	.suspend = cmdq_suspend,
- 	.resume = cmdq_resume,
-+	SET_RUNTIME_PM_OPS(cmdq_runtime_suspend,
-+			   cmdq_runtime_resume, NULL)
- };
- 
- static const struct gce_plat gce_plat_v2 = {
--- 
-2.42.0
 
 
