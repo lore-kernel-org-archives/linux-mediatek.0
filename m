@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB680CDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 12:53:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE1ACDB484
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 12:53:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZTqs1gHwkTK1TzF/cBF9nWFhnrzkUuQr7iLgEbKD8EA=; b=noYYrq7h6E3qxBZAw46Erhya3e
-	jEea584JCoihswVai1wZjKxb4rr8hqDWt8aK6tzHR1qmnekdKNJzRpn1ISsYF9Z/IACB8qt1OQGhX
-	e6g1LSI+fDSJAMuQgmrUIrTCB2GroZYy4o/SPUjUPA3qm8OfFtJAPR4HEjUSt9eS/RaoXupFUQER3
-	IlbQ762Sn4lcs1LrTyYQdOlxfXqPiEhFGFCDMafor0QP1j9aQc/jc5JdsZXFbtDHBl9polgHsJ1DT
-	A4a/oatpEwhAx+2t0JX5ECQxVXk29g2d4Bbtk2vb3q3N/03qizp0WoUQcmwBAQrgWvHmNlWNVkMEl
-	VT0rQxHA==;
+	bh=klK3rWtgrqAvRg0H5fFEGNS+9RDuPTEE+8ErveVstjk=; b=drSUFAEqf6F9lA4sjpy0HYSIm/
+	MhO5FFO75+V86wFYNXosdRtVyvU8yLc85uo7CKznAm3mbCAjLV57XJEWA1cYDD+pZMsy/sk3ujOrY
+	hnRUmm77OURL/WLQsJ0c5CX8Q8ifK+dQS3cFikjCOEUwqXx31Sg3pe6RVUrSJ2wdKNfDJD0Z6qN8H
+	XOcTxlopd6kIf6jaHiLzoRqYKAxBOhs1ahcrSH4WD/5CZoNnYfI2mGGOFHY81/RTyG3g+EFOkrSvh
+	LlnJkI5BF9d+Bm1jk14XkpGhCZ3TzrPlqStLZjzyJ2amTa5ITCCLjn4IMvVSpvD0JKUGmkqdNZsJX
+	DAU/iHjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqvBz-0010fx-2N;
-	Thu, 12 Oct 2023 12:53:31 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qqvCL-0010kH-2k;
+	Thu, 12 Oct 2023 12:53:53 +0000
+Received: from mgamail.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqvBw-0010ev-0r
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Oct 2023 12:53:30 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 544B47FC;
-	Thu, 12 Oct 2023 14:53:20 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1697115200;
-	bh=jfmNcgh7uAOZlzRx94YU82ELNUgJ5za28cq9/WfJDEs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JnQIH0og0gU+Fl0dFwNKehs8GCN39qgCkBW6BWRWYkg61xco5cYbi0UYKuVlVDoKg
-	 r6fI+oDiqF+j+1FjNEDzrppPMDWQI6ZnXjLqrDJuhVP3mbJjSB9UkK1b6WbGvX93cC
-	 EOThTVZJR1YNSqQstdPqJiurm8YqrLex00CIVTlA=
-Date: Thu, 12 Oct 2023 15:53:30 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 0/3] media: i2c: Add driver for THine THP7312 ISP
-Message-ID: <20231012125330.GB11243@pendragon.ideasonboard.com>
-References: <20231012012016.11535-1-laurent.pinchart@ideasonboard.com>
+	id 1qqvCG-0010i1-1s;
+	Thu, 12 Oct 2023 12:53:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1697115228; x=1728651228;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=gNLNaEec64/5yPf43OhzXjxJ+9f0AwPObPN0gw90rTk=;
+  b=l+KzQ3z0GQLCht0HmiqacGHhpEMtgMdO5q2rCnYomL1KYTbxShJs0zUa
+   h+5o6jAsOs+jcq4yjmFn8OSsA32I1f3sJkuU1HRuXCYN5UuydAY9XG+/q
+   g0o+icxIaCOEvmOZZMxknHpiWRX0Q5REJadAkofO8zObSG4VZiH62DSXy
+   m2bSH2+oxjYLfCv+pw6oaYnN2ZEjXRiZ2/JgSD8lKbQotF9S5OxMN0ZUW
+   00I3A5HGJIyt6s6j/8RrfxItDzCe3TktTjcLmigG8xsXsaEL/fPaMvgHT
+   c+TViZ8cVXQV9X+EnUTGszKKj7QFRmxEULFp+thRjtCO3VzY0SwpSBlBF
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="471169653"
+X-IronPort-AV: E=Sophos;i="6.03,219,1694761200"; 
+   d="scan'208";a="471169653"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2023 05:53:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="783688889"
+X-IronPort-AV: E=Sophos;i="6.03,219,1694761200"; 
+   d="scan'208";a="783688889"
+Received: from asroczyn-mobl.ger.corp.intel.com ([10.249.36.107])
+  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2023 05:53:41 -0700
+Date: Thu, 12 Oct 2023 15:53:39 +0300 (EEST)
+From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+cc: linux-pci@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
+    Rob Herring <robh@kernel.org>, 
+    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
+    Lukas Wunner <lukas@wunner.de>, "Rafael J . Wysocki" <rafael@kernel.org>, 
+    Heiner Kallweit <hkallweit1@gmail.com>, 
+    Emmanuel Grumbach <emmanuel.grumbach@intel.com>, 
+    LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+    ath10k@lists.infradead.org, ath11k@lists.infradead.org, 
+    ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org, 
+    linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, 
+    linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, 
+    linux-wireless@vger.kernel.org, Netdev <netdev@vger.kernel.org>
+Subject: Re: [PATCH v2 05/13] PCI/ASPM: Add pci_enable_link_state()
+In-Reply-To: <20231011215327.GA1043654@bhelgaas>
+Message-ID: <afb4db5-5fe1-9f5d-a910-032adf195c@linux.intel.com>
+References: <20231011215327.GA1043654@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20231012012016.11535-1-laurent.pinchart@ideasonboard.com>
+Content-Type: multipart/mixed; boundary="8323329-1586418908-1697115226=:1692"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_055328_470909_CEB06A53 
-X-CRM114-Status: GOOD (  34.31  )
+X-CRM114-CacheID: sfid-20231012_055348_678866_24D31BB7 
+X-CRM114-Status: GOOD (  29.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,215 +88,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 12, 2023 at 04:20:13AM +0300, Laurent Pinchart wrote:
-> Hello,
-> 
-> This patch series adds a new driver for the THine THP7312 ISP. It has
-> been tested on an OLogic Pumpkin i350, which has a Mediatek MT8365 SoC,
-> with the THine THSCG101 camera module.
-> 
-> Technically the driver itself (and its bindings) have no dependencies,
-> but to run/test this on the Pumpkin i350 with the mainline kernel, a
-> large number of patches are needed to support the board and the MT8365
-> SoC. Some of those patches are on their way to mainline, and some, like
-> the Pumpkin i350 board device tree, will require more work. For
-> convenience and reference, the needed patches are available in [1].
-> Example overlays for DT integration of the THP7312 are available in that
-> branch, in [2].
-> 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/pinchartl/linux.git/log/?h=mtk/v6.6/pumpkin/camera
-> [2] https://git.kernel.org/pub/scm/linux/kernel/git/pinchartl/linux.git/commit/?h=mtk/v6.6/pumpkin/camera&id=e5fd74796c3e0973991bab2692a3534ed1a23d86
-> 
-> Compared to v1, this is a near complete rewrite of the driver that has
-> taken (to my knowledge) all review comments into account.
-> 
-> Below is the mandatory v4l2-compliance report. Careful readers may
-> notice that my v4l2-utils version is three commits behind upstream, but
-> that makes no practical difference as those commits are not related to
-> v4l2-compliance.
-> 
-> The mainline kernel is currently fairly unstable on the Pumpkin i350
-> board. For this reason, the driver has primarily been developed against
-> the Mediatek v5.15-based BSP, and successfully tested there. I managed
-> to test it on mainline as well, but that requires close to hundred boots
-> to get a userspace that doesn't segfault. This is why the
-> v4l2-compliance report below is from a run against the BSP. The thp7312
-> driver is identical to this version, except for the usage of
-> .probe_new() on v5.15 that has since been dropped from mainline, and the
-> return type of the .remove() function that was `int` back then.
-> 
-> If anyone would like to help with getting mainline to run better on the
-> Pumpkin i350 board, I would  be grateful :-) It would certainly help
-> maintaining this driver going forward.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-It turned out not to be too complex after all:
+--8323329-1586418908-1697115226=:1692
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
 
-commit f39c64ed01f56dbac5a3a3570cb3214f18a3ffec
-Author: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Date:   Thu Oct 12 04:21:49 2023 +0300
+On Wed, 11 Oct 2023, Bjorn Helgaas wrote:
 
-    arm64: dts: mediatek: mt8365-pumpkin: Add reserved memory region for BL31
+> On Mon, Sep 18, 2023 at 04:10:55PM +0300, Ilpo Järvinen wrote:
+> > pci_disable_link_state() lacks a symmetric pair. Some drivers want to
+> > disable ASPM during certain phases of their operation but then
+> > re-enable it later on. If pci_disable_link_state() is made for the
+> > device, there is currently no way to re-enable the states that were
+> > disabled.
+> 
+> pci_disable_link_state() gives drivers a way to disable specified ASPM
+> states using a bitmask (PCIE_LINK_STATE_L0S, PCIE_LINK_STATE_L1,
+> PCIE_LINK_STATE_L1_1, etc), but IIUC the driver can't tell exactly
+> what changed and can't directly restore the original state, e.g.,
+> 
+>   - PCIE_LINK_STATE_L1 enabled initially
+>   - driver calls pci_disable_link_state(PCIE_LINK_STATE_L0S)
+>   - driver calls pci_enable_link_state(PCIE_LINK_STATE_L0S)
+>   - PCIE_LINK_STATE_L0S and PCIE_LINK_STATE_L1 are enabled now
+> 
+> Now PCIE_LINK_STATE_L0S is enabled even though it was not initially
+> enabled.  Maybe that's what we want; I dunno.
+> 
+> pci_disable_link_state() currently returns success/failure, but only
+> r8169 and mt76 even check, and only rtl_init_one() (r8169) has a
+> non-trivial reason, so it's conceivable that it could return a bitmask
+> instead.
 
-    The Pumpkin i350 boot loader doesn't seem to populate reserved memory
-    regions in the device tree, forcing them to be described statically. The
-    mt8365-pumpkin device tree already includes a reserved memory region for
-    BL32, which seems enough for proper operation with the Mediatek
-    v5.15-based BSP kernel.
+It's great that you suggested this since it's actually what also I've been 
+started to think should be done instead of this straightforward approach
+I used in V2. 
 
-    With the mainline kernel, however, userspace processes currently crash
-    very randomly. Adding a reserved memory region for BL31, copied from the
-    mt8365-evk device tree, fixes the issue.
+That is, don't have the drivers to get anything directly from LNKCTL
+but they should get everything through the API provided by the 
+disable/enable calls which makes it easy for the driver to pass the same
+value back into the enable call.
 
-    Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Add pci_enable_link_state() to remove ASPM states from the state
+> > disable mask.
+> > 
+> > Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+> > ---
+> >  drivers/pci/pcie/aspm.c | 42 +++++++++++++++++++++++++++++++++++++++++
+> >  include/linux/pci.h     |  2 ++
+> >  2 files changed, 44 insertions(+)
+> > 
+> > diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+> > index 91dc95aca90f..f45d18d47c20 100644
+> > --- a/drivers/pci/pcie/aspm.c
+> > +++ b/drivers/pci/pcie/aspm.c
+> > @@ -1117,6 +1117,48 @@ int pci_disable_link_state(struct pci_dev *pdev, int state)
+> >  }
+> >  EXPORT_SYMBOL(pci_disable_link_state);
+> >  
+> > +/**
+> > + * pci_enable_link_state - Re-enable device's link state
+> > + * @pdev: PCI device
+> > + * @state: ASPM link states to re-enable
+> > + *
+> > + * Enable device's link state that were previously disable so the link is
+> 
+> "state[s] that were previously disable[d]" alludes to the use case you
+> have in mind, but I don't think it describes how this function
+> actually works.  This function just makes it possible to enable the
+> specified states.  The @state parameter may have nothing to do with
+> any previously disabled states.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
-index 8924bb8dae17..465c20e174da 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
-@@ -52,6 +52,12 @@ reserved-memory {
- 		#size-cells = <2>;
- 		ranges;
+Yes, it's what I've been thinking between the lines. But I see your point 
+that this API didn't make it easy/obvious as is.
 
-+		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-+		bl31_secmon_reserved: secmon@43000000 {
-+			no-map;
-+			reg = <0 0x43000000 0 0x30000>;
-+		};
-+
- 		/* 12 MiB reserved for OP-TEE (BL32)
- 		 * +-----------------------+ 0x43e0_0000
- 		 * |      SHMEM 2MiB       |
+Would you want me to enforce it too besides altering the API such that the 
+states are actually returned from disable call? (I don't personally find
+that necessary as long as the API pair itself makes it obvious what the 
+driver is expect to pass there.)
 
-
-I've updated the mtk/v6.6/pumpkin/camera branch linked above, and can
-now run v4l2-compliance reliably on v6.6-rc5. Apart from the driver
-version now being 6.6.0, the output is the same.
-
-> # v4l2-compliance -u /dev/v4l-subdev2
-> v4l2-compliance 1.25.0-5097, 64 bits, 64-bit time_t
-> v4l2-compliance SHA: b79e00a74fde 2023-09-13 07:19:23
-> 
-> Compliance test for device /dev/v4l-subdev2:
-> 
-> Driver Info:
->         Driver version   : 5.15.37
->         Capabilities     : 0x00000000
-> 
-> Required ioctls:
->         test VIDIOC_SUDBEV_QUERYCAP: OK
->         test invalid ioctls: OK
-> 
-> Allow for multiple opens:
->         test second /dev/v4l-subdev2 open: OK
->         test VIDIOC_SUBDEV_QUERYCAP: OK
->         test for unlimited opens: OK
-> 
-> Debug ioctls:
-> [  353.331499] thp7312 2-0061: =================  START STATUS  =================
-> [  353.332515] thp7312 2-0061: Focus, Automatic Continuous: true
-> [  353.333460] thp7312 2-0061: Focus, Absolute: 0
-> [  353.334074] thp7312 2-0061: Auto-Focus Method: 2
-> [  353.334700] thp7312 2-0061: White Balance, Automatic: true
-> [  353.335432] thp7312 2-0061: Red Balance: 64
-> [  353.335998] thp7312 2-0061: Blue Balance: 50
-> [  353.337065] thp7312 2-0061: Brightness: 0
-> [  353.337627] thp7312 2-0061: Saturation: 10
-> [  353.338182] thp7312 2-0061: Contrast: 10
-> [  353.338712] thp7312 2-0061: Sharpness: 8
-> [  353.339242] thp7312 2-0061: Rotate: 0
-> [  353.339742] thp7312 2-0061: Auto Exposure, Bias: 0
-> [  353.340453] thp7312 2-0061: Power Line Frequency: 50 Hz
-> [  353.341160] thp7312 2-0061: Camera Orientation: Front
-> [  353.341835] thp7312 2-0061: Camera Sensor Rotation: 0
-> [  353.342504] thp7312 2-0061: Low Light Compensation: true
-> [  353.343204] thp7312 2-0061: Noise Reduction Auto: true
-> [  353.343882] thp7312 2-0061: Noise Reduction Level: 0
-> [  353.344636] thp7312 2-0061: ==================  END STATUS  ==================
->         test VIDIOC_LOG_STATUS: OK
-> 
-> Input ioctls:
->         test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
->         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
->         test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
->         test VIDIOC_ENUMAUDIO: OK (Not Supported)
->         test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
->         test VIDIOC_G/S_AUDIO: OK (Not Supported)
->         Inputs: 0 Audio Inputs: 0 Tuners: 0
-> 
-> Output ioctls:
->         test VIDIOC_G/S_MODULATOR: OK (Not Supported)
->         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
->         test VIDIOC_ENUMAUDOUT: OK (Not Supported)
->         test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
->         test VIDIOC_G/S_AUDOUT: OK (Not Supported)
->         Outputs: 0 Audio Outputs: 0 Modulators: 0
-> 
-> Input/Output configuration ioctls:
->         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
->         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
->         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
->         test VIDIOC_G/S_EDID: OK (Not Supported)
-> 
-> Control ioctls:
->         test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
->         test VIDIOC_QUERYCTRL: OK
->         test VIDIOC_G/S_CTRL: OK
->         test VIDIOC_G/S/TRY_EXT_CTRLS: OK
->         test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
->         test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
->         Standard Controls: 17 Private Controls: 4
-> 
-> Format ioctls:
->         test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK (Not Supported)
->         test VIDIOC_G/S_PARM: OK (Not Supported)
->         test VIDIOC_G_FBUF: OK (Not Supported)
->         test VIDIOC_G_FMT: OK (Not Supported)
->         test VIDIOC_TRY_FMT: OK (Not Supported)
->         test VIDIOC_S_FMT: OK (Not Supported)
->         test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
->         test Cropping: OK (Not Supported)
->         test Composing: OK (Not Supported)
->         test Scaling: OK (Not Supported)
-> 
-> Codec ioctls:
->         test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
->         test VIDIOC_G_ENC_INDEX: OK (Not Supported)
->         test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-> 
-> Buffer ioctls:
->         test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK (Not Supported)
->         test VIDIOC_EXPBUF: OK (Not Supported)
->         test Requests: OK (Not Supported)
-> 
-> Total for device /dev/v4l-subdev2: 43, Succeeded: 43, Failed: 0, Warnings: 0
-> 
-> Laurent Pinchart (1):
->   media: uapi: Add controls for the THP7312 ISP
-> 
-> Paul Elder (2):
->   dt-bindings: media: Add bindings for THine THP7312 ISP
->   media: i2c: Add driver for THine THP7312
-> 
->  .../bindings/media/i2c/thine,thp7312.yaml     |  225 ++
->  .../userspace-api/media/drivers/index.rst     |    1 +
->  .../userspace-api/media/drivers/thp7312.rst   |   32 +
->  MAINTAINERS                                   |   10 +
->  drivers/media/i2c/Kconfig                     |   16 +
->  drivers/media/i2c/Makefile                    |    1 +
->  drivers/media/i2c/thp7312.c                   | 2386 +++++++++++++++++
->  include/uapi/linux/thp7312.h                  |   19 +
->  include/uapi/linux/v4l2-controls.h            |    6 +
->  9 files changed, 2696 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
->  create mode 100644 Documentation/userspace-api/media/drivers/thp7312.rst
->  create mode 100644 drivers/media/i2c/thp7312.c
->  create mode 100644 include/uapi/linux/thp7312.h
-> 
-> 
-> base-commit: a1766a4fd83befa0b34d932d532e7ebb7fab1fa7
 
 -- 
-Regards,
+ i.
 
-Laurent Pinchart
+--8323329-1586418908-1697115226=:1692--
 
