@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC67FCDB47E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 10:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A297CCDB47E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 10:17:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h9FCmbWGl+OlYTAXdMG/3CqMMFt/CGx3iCVE20i1C4E=; b=qAEThJUubX+KjlniN78wvXlr2S
-	Z26JNzgzL/WEiDzu/w7+auySo1bgzOl7QdO0insLRZsmhfl8HzB+vSzRXIE6xYUDy8z1kInKn3Lgv
-	1A8xo+nyl4ZFA5zT3kPb0sJ0gX9qJmhfUWgNySKzBYIXBygAjiE6AsSqlwog1mff+pEGc5fB4DGnt
-	bpbSNx3tfA4h4HgSG/2lxiALJyQgjofgh8RM0BYHnD5tDfNj7UiEiUyR0NkEzW21DHPNdj4lRPN17
-	vwILSqWx8TYd+F7nc2/usaeHEecuscKxORKbqDb5ofeRBj3ORnL994Ei5rJY6HNoQuy9ua4CMaZhN
-	Wtf6/x2Q==;
+	bh=5GNR334KaZapUm1QfaPEw5j8Y5tOGjKA5NGZBsDzpGw=; b=4+R/4sd2xBcEgZ373Nh8UrZAAo
+	Iti5xICARxmn+mO11sz9bbBR3ioJeWYo/20y67rQxTBxESnt/Rtz1JGWDyzXjAMwnfsBW4rDxZ9cP
+	UMAb0XBJew+gqi7wYgFXHNYvCoyWo2Xq/DokcRPaRSRKCuq/2siMXlb+QeyStE+DYxon9R+mKiRH+
+	CHCqCiiRf0zldHgVBpiqAPKtLxPFPaR45uCdlMN+XuEhp0i3jzvacptb0scDcXjiSjZq7k55h+qh0
+	+FbKkXdSAT8SZOXGRuidN54AVecKcRIjIHwAeG7D7hdfZ7Ws1ZvjB18+t/i9+xcgKVitKYo2vvnY7
+	/2uOYorg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqskF-000cL6-2K;
-	Thu, 12 Oct 2023 10:16:43 +0000
+	id 1qqslF-000d09-1w;
+	Thu, 12 Oct 2023 10:17:45 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqskB-000cHp-2O;
-	Thu, 12 Oct 2023 10:16:41 +0000
+	id 1qqslC-000cxV-10;
+	Thu, 12 Oct 2023 10:17:43 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 73141660730F;
-	Thu, 12 Oct 2023 11:16:37 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5F39E660730F;
+	Thu, 12 Oct 2023 11:17:40 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697105798;
-	bh=MFJlXKeKRmyYe1sPRy0ZgHvR7phe/lPTFJSLRKVgehQ=;
+	s=mail; t=1697105861;
+	bh=g3ns2c4RoQU8nzXEQ8VUyBiWwm9Ooa52x4tpLHq9B+0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bPLnqHRx+HA5+shhLcXQRXhbX6Bp0T7ND4nULJuFnv9s4KHUOdYfFl4oiXOXFNAC2
-	 BPGInDS5rRla7xD9rMgO1JKGxrAUKF6CvuCtISS8IgtVhxKFcHqTHHfIR2GIeNGluw
-	 Dr0kEOG3uHW2z0AF3HOCEfmyeq9eou+8TrYjuvAw53zt60wzoJZhzhYTIvApVGwxrX
-	 WYjVSSQllKwXXXn+4EcNm0hlHPrCmfFRcMRluHRCQabUg3ZMxPI7CsTSAG4WFE5FcU
-	 tZYvZIH8HuPMniMWZNvBB64HS0dGIUN5Jkmw5UBhBykKRV/G4AndalNf5qjwaRz1oH
-	 K+Pvz5vsqq7CA==
-Message-ID: <ad91458c-8345-577e-b081-17e02fefac68@collabora.com>
-Date: Thu, 12 Oct 2023 12:16:35 +0200
+	b=fC555cNGl+Ly1HW1tK2ksVyK0MG/FjTo1j7THokikv5Pi+FlMYaEBcFRQIq/sOJPq
+	 gG8CzEadDaVkkrjxrtNyi12WdRGBXqVWmTcsB0emaDAOaTXsv4J1cbYFWlurVuC8Tr
+	 6CgODM0m3/HeVgY6dTl+qoBlhstBeHXlbkLdQqX0CxnDpSJzWb/V6VQ0ZTupzKmH7c
+	 LVaIRests9W7dMrsDPtZmcD4iplXgD0o2NbQrBB2sDIOxYVMqFd/6Yl9eIQHcTx6OY
+	 mwSwZBOOJSCir8hJTx0yTTvX2jIWRnD8CiwjAJTPDpoG5txZRgj+VsbFf36wXe0beU
+	 66/Mjz8eo1p+w==
+Message-ID: <bf2cf999-7a1a-df14-7ba9-ac5047c998c0@collabora.com>
+Date: Thu, 12 Oct 2023 12:17:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v7 10/16] dt-bindings: media: mediatek: mdp3: add
- component TDSHP for MT8195
+Subject: Re: [PATCH v7 09/16] dt-bindings: media: mediatek: mdp3: add
+ component TCC for MT8195
 Content-Language: en-US
 To: Moudy Ho <moudy.ho@mediatek.com>, Chun-Kuang Hu
  <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
@@ -64,14 +64,14 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 References: <20231012084037.19376-1-moudy.ho@mediatek.com>
- <20231012084037.19376-11-moudy.ho@mediatek.com>
+ <20231012084037.19376-10-moudy.ho@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231012084037.19376-11-moudy.ho@mediatek.com>
+In-Reply-To: <20231012084037.19376-10-moudy.ho@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_031639_909284_F566B2D1 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20231012_031742_473995_7D71CBAC 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,91 +87,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 12/10/23 10:40, Moudy Ho ha scritto:
-> Add the fundamental hardware configuration of component TDSHP,
+> Add the fundamental hardware configuration of component TCC,
 > which is controlled by MDP3 on MT8195.
 > 
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 > ---
->   .../bindings/media/mediatek,mdp3-tdshp.yaml   | 61 +++++++++++++++++++
->   1 file changed, 61 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+>   .../bindings/media/mediatek,mdp3-tcc.yaml     | 62 +++++++++++++++++++
+>   1 file changed, 62 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
 > new file mode 100644
-> index 000000000000..92e1547e7c7f
+> index 000000000000..f134160f85b9
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
-> @@ -0,0 +1,61 @@
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+> @@ -0,0 +1,62 @@
 > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-tdshp.yaml#
+> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-tcc.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: MediaTek Media Data Path 3 TDSHP
+> +title: MediaTek Media Data Path 3 TCC
 
-Please unroll it....
-
-MediaTek Media Data Path 3 Two-Dimensional Sharpness
-
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +  - Moudy Ho <moudy.ho@mediatek.com>
-> +
-> +description:
-> +  One of Media Data Path 3 (MDP3) components used to improve image
-> +  sharpness and contrast.
-
-Two-Dimensional Sharpness (TDSHP) is a MDP3 component used to perform
-image edge sharpening and enhance vividness and contrast.
-
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8195-mdp3-tdshp
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  mediatek,gce-client-reg:
-> +    description:
-> +      The register of display function block to be set by gce. There are 4 arguments,
-> +      such as gce node, subsys id, offset and register size. The subsys id that is
-> +      mapping to the register of display function blocks is defined in the gce header
-> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    items:
-> +      items:
-> +        - description: phandle of GCE
-> +        - description: GCE subsys id
-> +        - description: register offset
-> +        - description: register size
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - mediatek,gce-client-reg
-> +  - clocks
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8195-clk.h>
-> +    #include <dt-bindings/gce/mt8195-gce.h>
-> +
-> +    display@14007000 {
-> +        compatible = "mediatek,mt8195-mdp3-tdshp";
-> +        reg = <0x14007000 0x1000>;
-> +        mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x7000 0x1000>;
-> +        clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
-> +    };
+MediaTek Media Data Path 3 Tone Curve Conversion
 
 
+after which:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
