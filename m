@@ -4,80 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98049CDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B38EECDB46E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BIhy7dikDjCtKTCaaw/bkjDH4vFLLuEjeJtVKZZeoY4=; b=QgF69cG+MV0hwGfAkS/AkEw8hO
-	hvU8fnPFTttMzsBSv1nhO8qrYw8sYMkIJd9HNs+8EuAjpqmHjgKFodJovpvDCv3wgykbVldAi96Ji
-	a+Xv3KRLMLZYVyT4bYvyS/tTavcaALgxEbQ2kU0IjbSGXAmMiCNQm47uIH4E71GA7YxKfhYUf3e/t
-	wWRiwfF8Px7FrJdxNMQdn4J6CcmC6y6C+xKMN2+/RGUEEqhjWeYzRVpqOFerqLQkPqKW9em5MM7KH
-	riBIKCZwaG73Rmv6Z/ajgR61ZiQ6T9/RZXAPyEnldADShSEHc8oYC+3tRx0N0C0RGZwdiKehaslL7
-	47GOoWwQ==;
+	bh=T9t66eupdQbqY1SPNNEWt39SPeekiajLoj3HqZcc4co=; b=pGiFq1OH0ptxt4IrCrxXGGPBmj
+	YlRc/ERaY0BfYon/708w9XMEKL3f/fw4amAyGcUyzKSx3VhIAZ9qEwp35zaXkyZ41c0HyoNYsIpvO
+	Uh8iEa7ChoQ+Qy9hpCgwppqk30+Poow7E3P5eSsISctNu/hYdQcSpaj8y9eawQPxWNhvGonTlD0aN
+	XIa3XwWvJATZGg/XVBepU0eM8f8ErqbbNajp2WLg/Uyoe7L7NKC7Y6RTgF0CKvQ7z5de+KTbAJ+w7
+	U9azqhuHIwrvK0uDYv+UugiLxtgZ1N1Ev77Gk6t3/XyIoW+nwPepgvk5T716Fn19O37pxxEXt57Le
+	EIvtWUlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqrZN-000IMA-1S;
-	Thu, 12 Oct 2023 09:01:25 +0000
+	id 1qqrkS-000KqR-26;
+	Thu, 12 Oct 2023 09:12:52 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqrZH-000IK7-2j;
-	Thu, 12 Oct 2023 09:01:21 +0000
-X-UUID: e6711c6e68dd11ee9b7791016c24628a-20231012
+	id 1qqrkP-000KnQ-2B;
+	Thu, 12 Oct 2023 09:12:51 +0000
+X-UUID: 81855cbe68df11ee9b7791016c24628a-20231012
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BIhy7dikDjCtKTCaaw/bkjDH4vFLLuEjeJtVKZZeoY4=;
-	b=cG258VWRJIqivBpcXoJAOX2MEEagaxLc2Qoy2DmOsc2QlyG8jTYbPp4cHUfOs7j6HddskIopupmNWIJrgb7ZgHt7/7D6a7Wi3ke3uftxli8CnQYamJTD7O0BttJIpQUUK9KyY9ZD2ZhbEtVvuqDJtTUOvZYKB6pNYaHuYiAWKx4=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=T9t66eupdQbqY1SPNNEWt39SPeekiajLoj3HqZcc4co=;
+	b=bCm6njPmc/S+tua7hNwzZB7yRl3E0uV8zs72yyTdX13Tze46weq+5tl5J4zT0E/1hs34FjgUePyEAWyKFV0ZE4f86iheCQ4tFZwDJKIILGNhJoiJJoLXKcvX36+d65/tS0mLhR/Syyw/KZQN46rE67z7CPHZbpj1bMBj3ZudWxw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:1c395ccf-999c-4b33-bff4-e81cefce5bff,IP:0,U
-	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:96360ac4-1e57-4345-9d31-31ad9818b39f,B
+X-CID-O-INFO: VERSION:1.1.32,REQID:e576562f-3d2a-4934-98cd-cd79f91e6470,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5f78ec9,CLOUDID:635c0ac4-1e57-4345-9d31-31ad9818b39f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: e6711c6e68dd11ee9b7791016c24628a-20231012
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 81855cbe68df11ee9b7791016c24628a-20231012
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 910723703; Thu, 12 Oct 2023 02:01:15 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 336608942; Thu, 12 Oct 2023 02:12:45 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 12 Oct 2023 16:40:39 +0800
+ 15.2.1118.26; Thu, 12 Oct 2023 17:12:08 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 12 Oct 2023 16:40:39 +0800
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 12 Oct 2023 17:12:08 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
-	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Moudy
- Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v7 02/16] dt-bindings: media: mediatek: mdp3: merge the indentical RDMA under display
-Date: Thu, 12 Oct 2023 16:40:23 +0800
-Message-ID: <20231012084037.19376-3-moudy.ho@mediatek.com>
+	<angelogioacchino.delregno@collabora.com>, Ping-Hsun Wu
+	<ping-hsun.wu@mediatek.com>, daoyuan huang <daoyuan.huang@mediatek.com>,
+	"Hans Verkuil" <hverkuil-cisco@xs4all.nl>
+CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Moudy Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v7 07/12] media: platform: mtk-mdp3: extend GCE event waiting in RDMA and WROT
+Date: Thu, 12 Oct 2023 17:12:01 +0800
+Message-ID: <20231012091206.20165-8-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231012084037.19376-1-moudy.ho@mediatek.com>
-References: <20231012084037.19376-1-moudy.ho@mediatek.com>
+In-Reply-To: <20231012091206.20165-1-moudy.ho@mediatek.com>
+References: <20231012091206.20165-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--9.856400-8.000000
+X-TMASE-MatchedRID: mJkk328f4R4mNHlC7DQV5eKXavbHY/C1dG7bDJL8qEe0rcU5V/oSe/dQ
+	3ETtBTk8CTzLWkg2tvC1JEhwlIePJTA9KOtcb1F9t1AhvyEKdj67nrAU9KQxUWJkJOQVCIpw8Fh
+	GjTp5WPdMtAAmLKD7vIAy6p60ZV62fJ5/bZ6npdiyO81X3yak8zl8w34waCja/Od8+hmIU7Zi3g
+	oq7WAA4/cbPxaxxyIHzD+gHU7LsiF+3BndfXUhXQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--9.856400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: E37474EB8057795756363DBD703D89781887D15642B42685E7FC2086B0846F872000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_020119_893690_B0D55F3B 
-X-CRM114-Status: GOOD (  16.62  )
+X-CRM114-CacheID: sfid-20231012_021249_767700_4AA3402A 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,206 +99,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To simplify maintenance and avoid branches, the identical component
-should be merged and placed in the path belonging to the MDP
-(from display/* to media/*).
-
-In addition, currently only MDP utilizes RDMA through CMDQ, and the
-necessary properties for "mediatek,gce-events", and "mboxes" have been
-set up for this purpose.
-Within DISP, it directly receives component interrupt signals.
+Support for multiple RDMA/WROT waits for GCE events.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../display/mediatek/mediatek,mdp-rdma.yaml   | 88 -------------------
- .../bindings/media/mediatek,mdp3-rdma.yaml    | 55 +++++++++---
- 2 files changed, 45 insertions(+), 98 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+ .../platform/mediatek/mdp3/mdp_cfg_data.c     |  2 ++
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 27 +++++++++++++------
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  2 ++
+ 3 files changed, 23 insertions(+), 8 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
-deleted file mode 100644
-index dd12e2ff685c..000000000000
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
-+++ /dev/null
-@@ -1,88 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
--%YAML 1.2
-----
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rdma.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
--
--title: MediaTek MDP RDMA
--
--maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
--
--description:
--  The MediaTek MDP RDMA stands for Read Direct Memory Access.
--  It provides real time data to the back-end panel driver, such as DSI,
--  DPI and DP_INTF.
--  It contains one line buffer to store the sufficient pixel data.
--  RDMA device node must be siblings to the central MMSYS_CONFIG node.
--  For a description of the MMSYS_CONFIG binding, see
--  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml for details.
--
--properties:
--  compatible:
--    const: mediatek,mt8195-vdo1-rdma
--
--  reg:
--    maxItems: 1
--
--  interrupts:
--    maxItems: 1
--
--  power-domains:
--    maxItems: 1
--
--  clocks:
--    items:
--      - description: RDMA Clock
--
--  iommus:
--    maxItems: 1
--
--  mediatek,gce-client-reg:
--    description:
--      The register of display function block to be set by gce. There are 4 arguments,
--      such as gce node, subsys id, offset and register size. The subsys id that is
--      mapping to the register of display function blocks is defined in the gce header
--      include/dt-bindings/gce/<chip>-gce.h of each chips.
--    $ref: /schemas/types.yaml#/definitions/phandle-array
--    items:
--      items:
--        - description: phandle of GCE
--        - description: GCE subsys id
--        - description: register offset
--        - description: register size
--    maxItems: 1
--
--required:
--  - compatible
--  - reg
--  - power-domains
--  - clocks
--  - iommus
--  - mediatek,gce-client-reg
--
--additionalProperties: false
--
--examples:
--  - |
--    #include <dt-bindings/interrupt-controller/arm-gic.h>
--    #include <dt-bindings/clock/mt8195-clk.h>
--    #include <dt-bindings/power/mt8195-power.h>
--    #include <dt-bindings/gce/mt8195-gce.h>
--    #include <dt-bindings/memory/mt8195-memory-port.h>
--
--    soc {
--        #address-cells = <2>;
--        #size-cells = <2>;
--
--        rdma@1c104000 {
--            compatible = "mediatek,mt8195-vdo1-rdma";
--            reg = <0 0x1c104000 0 0x1000>;
--            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
--            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
--            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
--            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
--            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000 0x1000>;
--        };
--    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-index 3e128733ef53..c043204cf210 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -20,8 +20,9 @@ description: |
+diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
+index 6f77c33074ec..3834efe54e17 100644
+--- a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
++++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
+@@ -56,8 +56,10 @@ static const struct mdp_platform_config mt8183_plat_cfg = {
+ 	.rdma_support_10bit		= true,
+ 	.rdma_rsz1_sram_sharing		= true,
+ 	.rdma_upsample_repeat_only	= true,
++	.rdma_event_num			= 1,
+ 	.rsz_disable_dcm_small_sample	= false,
+ 	.wrot_filter_constraint		= false,
++	.wrot_event_num			= 1,
+ };
  
- properties:
-   compatible:
--    items:
--      - const: mediatek,mt8183-mdp3-rdma
-+    enum:
-+      - mediatek,mt8183-mdp3-rdma
-+      - mediatek,mt8195-vdo1-rdma
+ static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+index 1831e3d9b0e3..2bf4a6b391b7 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+@@ -251,14 +251,20 @@ static int config_rdma_subfrm(struct mdp_comp_ctx *ctx,
  
-   reg:
-     maxItems: 1
-@@ -49,17 +50,18 @@ properties:
-     maxItems: 1
+ static int wait_rdma_event(struct mdp_comp_ctx *ctx, struct mdp_cmdq_cmd *cmd)
+ {
++	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
+ 	struct device *dev = &ctx->comp->mdp_dev->pdev->dev;
+ 	phys_addr_t base = ctx->comp->reg_base;
+ 	u8 subsys_id = ctx->comp->subsys_id;
  
-   clocks:
--    items:
--      - description: RDMA clock
--      - description: RSZ clock
-+    minItems: 1
-+    maxItems: 2
- 
-   iommus:
-     maxItems: 1
- 
-   mboxes:
--    items:
--      - description: used for 1st data pipe from RDMA
--      - description: used for 2nd data pipe from RDMA
-+    minItems: 1
-+    maxItems: 2
+-	if (ctx->comp->alias_id == 0)
+-		MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
+-	else
+-		dev_err(dev, "Do not support RDMA1_DONE event\n");
++	if (!mdp_cfg)
++		return -EINVAL;
 +
-+  interrupts:
-+    maxItems: 1
++	if (ctx->comp->alias_id >= mdp_cfg->rdma_event_num) {
++		dev_err(dev, "Invalid RDMA event %d\n", ctx->comp->alias_id);
++		return -EINVAL;
++	}
++
++	MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
  
-   '#dma-cells':
-     const: 1
-@@ -68,13 +70,46 @@ required:
-   - compatible
-   - reg
-   - mediatek,gce-client-reg
--  - mediatek,gce-events
-   - power-domains
-   - clocks
-   - iommus
--  - mboxes
-   - '#dma-cells'
+ 	/* Disable RDMA */
+ 	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_EN, 0x0, BIT(0));
+@@ -553,10 +559,15 @@ static int wait_wrot_event(struct mdp_comp_ctx *ctx, struct mdp_cmdq_cmd *cmd)
+ 	phys_addr_t base = ctx->comp->reg_base;
+ 	u8 subsys_id = ctx->comp->subsys_id;
  
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8183-mdp3-rdma
+-	if (ctx->comp->alias_id == 0)
+-		MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
+-	else
+-		dev_err(dev, "Do not support WROT1_DONE event\n");
++	if (!mdp_cfg)
++		return -EINVAL;
 +
-+    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description: RDMA clock
-+            - description: RSZ clock (shared SRAM with RDMA)
++	if (ctx->comp->alias_id >= mdp_cfg->wrot_event_num) {
++		dev_err(dev, "Invalid WROT event %d!\n", ctx->comp->alias_id);
++		return -EINVAL;
++	}
 +
-+        mboxes:
-+          items:
-+            - description: used for 1st data pipe from RDMA
-+            - description: used for 2nd data pipe from RDMA
-+
-+      required:
-+        - mboxes
-+        - mediatek,gce-events
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8195-vdo1-rdma
-+
-+    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description: RDMA clock
-+
- additionalProperties: false
++	MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
  
- examples:
+ 	if (mdp_cfg && mdp_cfg->wrot_filter_constraint)
+ 		MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE, 0x0,
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+index 22d1b17ef2fc..e57c415a1c78 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+@@ -49,8 +49,10 @@ struct mdp_platform_config {
+ 	bool	rdma_support_10bit;
+ 	bool	rdma_rsz1_sram_sharing;
+ 	bool	rdma_upsample_repeat_only;
++	u32	rdma_event_num;
+ 	bool	rsz_disable_dcm_small_sample;
+ 	bool	wrot_filter_constraint;
++	u32	wrot_event_num;
+ };
+ 
+ /* indicate which mutex is used by each pipepline */
 -- 
 2.18.0
 
