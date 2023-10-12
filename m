@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 086AFCDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 11:50:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74AC4CDB482
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 11:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3H7aO0A592LjQ24S0E6A824+PevC9tGJHZ/klkXuv6s=; b=co6nMzKaBxQnxf9LxsjHmkF4UL
-	pFYLyiML9N1eDbJLuIZfwAh5gvPK1n9JqEhwL4rzUu7urAm8D+AWo2s/4YS5/bxJIvLJX8kMIyY1G
-	LHbF90QrAiTOhH6O0sd+kSkmmGv2MWDg9yn0SC2dPXIvo5b/HtSxfSBKcdQUKxxB5UIWODXnnKW3I
-	zj+ZwVLZAsZTXB05loamcbP/JDmrJdGBIxuBzWFySH8RnS31j7ijTT3KO8F20DR+1ur4N0ez2vOMr
-	WmgNnAksTgqjBvIPhTvEBzEcy4JkdQJHD0GA3tfWyOMtu3aY5rMhMH4VCrgdL1cgH+KmABTBHi+Eu
-	d9iW+uzQ==;
+	bh=cUa/TY+Am8ySB21RfaC1a0J9/53VTglM2vrOBadwXyE=; b=yidwd5+j010JCpvlMSmP+va0Ya
+	iMHAofurH8JBmunSzEKXqgoYLKVnT/IU1y/9MJNgDrTmhdLdKwvT3ADuP9t8OUMeK8kkSEf583GxM
+	2ce3QgAIbT4X6sWkqhuSEbemXoyyZk1kB8P2lGwD3Y0/mqlYs61hgcBZYQ5Nwo1yxh5tmfpxtNy0s
+	oUjKTDwNdjMmV6/ClyOuLv5FVK87hp/AU9c5TfqTbTZXBVNmCGz4giPUsdk+30JL9pVeRfOTGoZJG
+	eERai4xFCvpxybieypDhYTgXiV7FoEwR9jU5x27jx8OvEpF4B4o+I6tsWfXADrnXsGaQKfQJrWfZU
+	n70ASYVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qquDC-000rXY-18;
-	Thu, 12 Oct 2023 11:50:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qquDD-000rZf-2Z;
+	Thu, 12 Oct 2023 11:50:43 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqu9t-000oJh-30;
+	id 1qqu9r-000oGU-1o;
 	Thu, 12 Oct 2023 11:47:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=3H7aO0A592LjQ24S0E6A824+PevC9tGJHZ/klkXuv6s=; b=VcGtbBxrlYSP0MutrlKvcVZxzN
-	4tBYeoD7vtcAQ4jncTUh1OLMjfS1OEzEmkM9KJnO0mNs+RzSnlc/GjzFVFDoDpfjvOHF23TOTHIqS
-	4v6FVZzQRyn+G4Cxl5lPv5mo99KHVUAs9UChtwd5bjkrCpKsM+PhDzPva+X0sbtgJENsZtF/hADax
-	n+1YAlSDvN2Aoo4FGwyGbcxhm5MJ1LZ9EUoLlERoZfWAUiQzY1ZzzpGitZfexIx5deyDVJgQ9OgzI
-	WsFd53VZsgHTSNWIbpAB8MqSvkz6BpKGlLMCqDMVmOEPqjMlCbIwgMP4hKipLRV+AeAo8egVj8Qxj
-	pp+D68/Q==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqu9g-001nJ8-0P;
-	Thu, 12 Oct 2023 11:47:11 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4A4ED6607385;
-	Thu, 12 Oct 2023 12:47:04 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E35066607392;
+	Thu, 12 Oct 2023 12:47:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697111224;
-	bh=NSsT5y0sZ7mP+MM3A0B4dMDIfAFW8bmEdwcgMfSAIYI=;
+	s=mail; t=1697111234;
+	bh=/rw+5kiG9NH9F1WJEwdp/d4z1jjMgH/1J5yw8ccESj4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=a2ltNEdLuXjdQ/dkYvVFBvKSBS6dV31uotYvl/1pbWi04aQ3fZPw4uqDgC/rfS4PP
-	 eJhYvxsq0STkwS3kmVgiYPtZaYSnlAacWoHAKYw5y5FS8rK3NY38P6YHXYB5lNce9t
-	 6h1U57TwT17xSoakkle1mbycjhD4XOMO2fMwjz8WGz/Vf9xP9P39hJFaUr7OxCfkhI
-	 4M3YLu2oOJtmv9lE3R8bu6MICCv0LJhytQjaUu8+9uh2rG8ArUFiEeNGVZhRlDgz6E
-	 Roh09VQe6IkaVLnywzEo6lPyzcEGWGyBIkZMFR4ZbIBOHxYOQrQ6qX+gVwMDTtdx7f
-	 EFhfwQv9BwY6g==
+	b=WWNlOzYeWVdxJz0kJwj+I9ycT6eJ4G22oLnn1DWjjxeeE5QXv7BMcIPaI+vzbcF+G
+	 Y0fWXtlK28SSY4yS3dqwpL/uchKuTIK2x0EuV61TnOcc8enduMYwuz9grrAlw/7jXR
+	 Fbcz0LZaETZtulmiAmsTum8VlgR7WSK2KEWoQjrIt7+F6pOrIURMbpBVYfj//17SLr
+	 Jd74m04DhypvE+IDP5iGI6NNZ6recSZlVUiMR9MFxOkuifg0MkBunJiYPIj75SNtrQ
+	 VeBsD6VodeM4CC9jsGV2mFbs3OZAr6FomolF2Fbhx+WaPNDasvVIF2JGK6A3/4F+nF
+	 PUe6XzUrtJqBQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -75,21 +61,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Martin Kepplinger <martink@posteo.de>
-Subject: [PATCH v11 28/56] media: nxp: Stop direct calls to queue num_buffers field
-Date: Thu, 12 Oct 2023 13:46:14 +0200
-Message-Id: <20231012114642.19040-29-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 46/56] media: test-drivers: vicodec: Increase max supported capture queue buffers
+Date: Thu, 12 Oct 2023 13:46:32 +0200
+Message-Id: <20231012114642.19040-47-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_124708_857673_3EB15C38 
-X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-CacheID: sfid-20231012_044715_840151_48453406 
+X-CRM114-Status: UNSURE (   7.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,46 +88,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+Allow to allocated up to 64 buffers on capture queue.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Rui Miguel Silva <rmfrfs@gmail.com>
-CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-CC: Martin Kepplinger <martink@posteo.de>
 ---
- drivers/media/platform/nxp/imx7-media-csi.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/media/test-drivers/vicodec/vicodec-core.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/media/platform/nxp/imx7-media-csi.c b/drivers/media/platform/nxp/imx7-media-csi.c
-index 15049c6aab37..4c467fb82789 100644
---- a/drivers/media/platform/nxp/imx7-media-csi.c
-+++ b/drivers/media/platform/nxp/imx7-media-csi.c
-@@ -1245,6 +1245,7 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
- 				      struct device *alloc_devs[])
- {
- 	struct imx7_csi *csi = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	struct v4l2_pix_format *pix = &csi->vdev_fmt;
- 	unsigned int count = *nbuffers;
- 
-@@ -1254,14 +1255,14 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
- 	if (*nplanes) {
- 		if (*nplanes != 1 || sizes[0] < pix->sizeimage)
- 			return -EINVAL;
--		count += vq->num_buffers;
-+		count += q_num_bufs;
- 	}
- 
- 	count = min_t(__u32, IMX7_CSI_VIDEO_MEM_LIMIT / pix->sizeimage, count);
- 
- 	if (*nplanes)
--		*nbuffers = (count < vq->num_buffers) ? 0 :
--			count - vq->num_buffers;
-+		*nbuffers = (count < q_num_bufs) ? 0 :
-+			count - q_num_bufs;
- 	else
- 		*nbuffers = count;
- 
+diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
+index 6f0e20df74e9..69cbe2c094e1 100644
+--- a/drivers/media/test-drivers/vicodec/vicodec-core.c
++++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
+@@ -1718,6 +1718,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
+ 			V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE :
+ 			V4L2_BUF_TYPE_VIDEO_CAPTURE);
+ 	dst_vq->io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF;
++	dst_vq->max_num_buffers = 64;
+ 	dst_vq->drv_priv = ctx;
+ 	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+ 	dst_vq->ops = &vicodec_qops;
 -- 
 2.39.2
 
