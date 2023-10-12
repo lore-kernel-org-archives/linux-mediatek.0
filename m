@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8980ECDB482
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98049CDB46E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:01:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sU5EEYWlspN5kkmtOJdylKS0jIRF0xzJLsP+2D3sg2g=; b=dp4WRHWR4pzTbuBZob3SsEUSMz
-	ZRtulXXi0Z68RFedSP/bwfz4Yr/5ukncp2kM02N42h7IuNYyQdqUmnKSuRYCp8dTN2FsduyQNF/Mr
-	dHeSaT6Yc9zreHsksbzsLltk7yoTi0I9UIVw2YZycs8/qtUzOk3S66em80q/E8AxKA3ErDce+e5ok
-	jmqSzLoEAais3L1tNifNMce1LLFZc0YiC8WfEe5K4CzlMfl6nLtNAZZDTCO9HxQQzgCPB1yXpw+UR
-	kzz2jG6xk74VapRgVnec/r4IxgK32Nlq9t33dPhruKV3bHEVwSiRgbD9GPQurQmyJk4l6E2zPbhAF
-	/efKgj+g==;
+	bh=BIhy7dikDjCtKTCaaw/bkjDH4vFLLuEjeJtVKZZeoY4=; b=QgF69cG+MV0hwGfAkS/AkEw8hO
+	hvU8fnPFTttMzsBSv1nhO8qrYw8sYMkIJd9HNs+8EuAjpqmHjgKFodJovpvDCv3wgykbVldAi96Ji
+	a+Xv3KRLMLZYVyT4bYvyS/tTavcaALgxEbQ2kU0IjbSGXAmMiCNQm47uIH4E71GA7YxKfhYUf3e/t
+	wWRiwfF8Px7FrJdxNMQdn4J6CcmC6y6C+xKMN2+/RGUEEqhjWeYzRVpqOFerqLQkPqKW9em5MM7KH
+	riBIKCZwaG73Rmv6Z/ajgR61ZiQ6T9/RZXAPyEnldADShSEHc8oYC+3tRx0N0C0RGZwdiKehaslL7
+	47GOoWwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqrZI-000IKb-1M;
-	Thu, 12 Oct 2023 09:01:20 +0000
+	id 1qqrZN-000IMA-1S;
+	Thu, 12 Oct 2023 09:01:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqrZE-000IJY-2z;
-	Thu, 12 Oct 2023 09:01:18 +0000
-X-UUID: e56ce1d668dd11ee9b7791016c24628a-20231012
+	id 1qqrZH-000IK7-2j;
+	Thu, 12 Oct 2023 09:01:21 +0000
+X-UUID: e6711c6e68dd11ee9b7791016c24628a-20231012
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sU5EEYWlspN5kkmtOJdylKS0jIRF0xzJLsP+2D3sg2g=;
-	b=ZzzzE3Xs2HIuYkO0XjLGRmeNj+6zwx7nS3XAhPwlrbeRryyM0i2m2YFpbN2G5HzvrB+qkOqQ1E4dgoDtZSL4KCvBBNBRZ80Wn2ZFfSON0CpGMK4LxPSJsiKwu3YKv1VQfgEJoZdT6zwzs6rl3+tUHPV0qjG6n5y9Zmt+3NQnKBo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BIhy7dikDjCtKTCaaw/bkjDH4vFLLuEjeJtVKZZeoY4=;
+	b=cG258VWRJIqivBpcXoJAOX2MEEagaxLc2Qoy2DmOsc2QlyG8jTYbPp4cHUfOs7j6HddskIopupmNWIJrgb7ZgHt7/7D6a7Wi3ke3uftxli8CnQYamJTD7O0BttJIpQUUK9KyY9ZD2ZhbEtVvuqDJtTUOvZYKB6pNYaHuYiAWKx4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:c296e803-2c58-4c03-8520-60a4d7a08957,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:d960f314-4929-4845-9571-38c601e9c3c9,B
+X-CID-O-INFO: VERSION:1.1.32,REQID:1c395ccf-999c-4b33-bff4-e81cefce5bff,IP:0,U
+	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:96360ac4-1e57-4345-9d31-31ad9818b39f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e56ce1d668dd11ee9b7791016c24628a-20231012
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: e6711c6e68dd11ee9b7791016c24628a-20231012
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1013151306; Thu, 12 Oct 2023 02:01:14 -0700
+	with ESMTP id 910723703; Thu, 12 Oct 2023 02:01:15 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Thu, 12 Oct 2023 16:40:39 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -66,9 +66,9 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Moudy
  Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v7 03/16] dt-bindings: media: mediatek: mdp3: add config for MT8195 RDMA
-Date: Thu, 12 Oct 2023 16:40:24 +0800
-Message-ID: <20231012084037.19376-4-moudy.ho@mediatek.com>
+Subject: [PATCH v7 02/16] dt-bindings: media: mediatek: mdp3: merge the indentical RDMA under display
+Date: Thu, 12 Oct 2023 16:40:23 +0800
+Message-ID: <20231012084037.19376-3-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231012084037.19376-1-moudy.ho@mediatek.com>
 References: <20231012084037.19376-1-moudy.ho@mediatek.com>
@@ -76,8 +76,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_020116_967279_55B0956D 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20231012_020119_893690_B0D55F3B 
+X-CRM114-Status: GOOD (  16.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +92,196 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Added the configuration for MT8195 RDMA. In comparison to MT8183, it
-no longer shares SRAM with RSZ, and there are now preconfigured 5 mbox.
+To simplify maintenance and avoid branches, the identical component
+should be merged and placed in the path belonging to the MDP
+(from display/* to media/*).
+
+In addition, currently only MDP utilizes RDMA through CMDQ, and the
+necessary properties for "mediatek,gce-events", and "mboxes" have been
+set up for this purpose.
+Within DISP, it directly receives component interrupt signals.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../bindings/media/mediatek,mdp3-rdma.yaml    | 26 ++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
+ .../display/mediatek/mediatek,mdp-rdma.yaml   | 88 -------------------
+ .../bindings/media/mediatek,mdp3-rdma.yaml    | 55 +++++++++---
+ 2 files changed, 45 insertions(+), 98 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+deleted file mode 100644
+index dd12e2ff685c..000000000000
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
++++ /dev/null
+@@ -1,88 +0,0 @@
+-# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+-%YAML 1.2
+----
+-$id: http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rdma.yaml#
+-$schema: http://devicetree.org/meta-schemas/core.yaml#
+-
+-title: MediaTek MDP RDMA
+-
+-maintainers:
+-  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+-  - Philipp Zabel <p.zabel@pengutronix.de>
+-
+-description:
+-  The MediaTek MDP RDMA stands for Read Direct Memory Access.
+-  It provides real time data to the back-end panel driver, such as DSI,
+-  DPI and DP_INTF.
+-  It contains one line buffer to store the sufficient pixel data.
+-  RDMA device node must be siblings to the central MMSYS_CONFIG node.
+-  For a description of the MMSYS_CONFIG binding, see
+-  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml for details.
+-
+-properties:
+-  compatible:
+-    const: mediatek,mt8195-vdo1-rdma
+-
+-  reg:
+-    maxItems: 1
+-
+-  interrupts:
+-    maxItems: 1
+-
+-  power-domains:
+-    maxItems: 1
+-
+-  clocks:
+-    items:
+-      - description: RDMA Clock
+-
+-  iommus:
+-    maxItems: 1
+-
+-  mediatek,gce-client-reg:
+-    description:
+-      The register of display function block to be set by gce. There are 4 arguments,
+-      such as gce node, subsys id, offset and register size. The subsys id that is
+-      mapping to the register of display function blocks is defined in the gce header
+-      include/dt-bindings/gce/<chip>-gce.h of each chips.
+-    $ref: /schemas/types.yaml#/definitions/phandle-array
+-    items:
+-      items:
+-        - description: phandle of GCE
+-        - description: GCE subsys id
+-        - description: register offset
+-        - description: register size
+-    maxItems: 1
+-
+-required:
+-  - compatible
+-  - reg
+-  - power-domains
+-  - clocks
+-  - iommus
+-  - mediatek,gce-client-reg
+-
+-additionalProperties: false
+-
+-examples:
+-  - |
+-    #include <dt-bindings/interrupt-controller/arm-gic.h>
+-    #include <dt-bindings/clock/mt8195-clk.h>
+-    #include <dt-bindings/power/mt8195-power.h>
+-    #include <dt-bindings/gce/mt8195-gce.h>
+-    #include <dt-bindings/memory/mt8195-memory-port.h>
+-
+-    soc {
+-        #address-cells = <2>;
+-        #size-cells = <2>;
+-
+-        rdma@1c104000 {
+-            compatible = "mediatek,mt8195-vdo1-rdma";
+-            reg = <0 0x1c104000 0 0x1000>;
+-            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
+-            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
+-            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+-            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
+-            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000 0x1000>;
+-        };
+-    };
 diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-index c043204cf210..504334a76fb3 100644
+index 3e128733ef53..c043204cf210 100644
 --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
 +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -22,6 +22,7 @@ properties:
+@@ -20,8 +20,9 @@ description: |
+ 
+ properties:
    compatible:
-     enum:
-       - mediatek,mt8183-mdp3-rdma
-+      - mediatek,mt8195-mdp3-rdma
-       - mediatek,mt8195-vdo1-rdma
+-    items:
+-      - const: mediatek,mt8183-mdp3-rdma
++    enum:
++      - mediatek,mt8183-mdp3-rdma
++      - mediatek,mt8195-vdo1-rdma
  
    reg:
-@@ -58,7 +59,7 @@ properties:
+     maxItems: 1
+@@ -49,17 +50,18 @@ properties:
+     maxItems: 1
+ 
+   clocks:
+-    items:
+-      - description: RDMA clock
+-      - description: RSZ clock
++    minItems: 1
++    maxItems: 2
+ 
+   iommus:
+     maxItems: 1
  
    mboxes:
-     minItems: 1
--    maxItems: 2
-+    maxItems: 5
+-    items:
+-      - description: used for 1st data pipe from RDMA
+-      - description: used for 2nd data pipe from RDMA
++    minItems: 1
++    maxItems: 2
++
++  interrupts:
++    maxItems: 1
  
-   interrupts:
-     maxItems: 1
-@@ -98,6 +99,29 @@ allOf:
-         - mboxes
-         - mediatek,gce-events
+   '#dma-cells':
+     const: 1
+@@ -68,13 +70,46 @@ required:
+   - compatible
+   - reg
+   - mediatek,gce-client-reg
+-  - mediatek,gce-events
+   - power-domains
+   - clocks
+   - iommus
+-  - mboxes
+   - '#dma-cells'
  
++allOf:
 +  - if:
 +      properties:
 +        compatible:
 +          contains:
-+            const: mediatek,mt8195-mdp3-rdma
++            const: mediatek,mt8183-mdp3-rdma
++
++    then:
++      properties:
++        clocks:
++          items:
++            - description: RDMA clock
++            - description: RSZ clock (shared SRAM with RDMA)
++
++        mboxes:
++          items:
++            - description: used for 1st data pipe from RDMA
++            - description: used for 2nd data pipe from RDMA
++
++      required:
++        - mboxes
++        - mediatek,gce-events
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8195-vdo1-rdma
 +
 +    then:
 +      properties:
@@ -137,20 +289,9 @@ index c043204cf210..504334a76fb3 100644
 +          items:
 +            - description: RDMA clock
 +
-+        mboxes:
-+          items:
-+            - description: used for 1st data pipe from RDMA
-+            - description: used for 2nd data pipe from RDMA
-+            - description: used for 3rd data pipe from RDMA
-+            - description: used for 4th data pipe from RDMA
-+            - description: used for the data pipe from SPLIT
-+
-+      required:
-+        - mediatek,gce-events
-+
-   - if:
-       properties:
-         compatible:
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.18.0
 
