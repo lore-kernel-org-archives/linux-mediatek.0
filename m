@@ -4,82 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81F8FCDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20D4ACDB482
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:43:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=V9Ha1tPoh6dVTvqYgTNLLl69UYatye7Ch50vBppvcQw=; b=xtu+ZdKtIKMyHruW7IZQmq3Wbl
-	ex8mQFL5AMktWRKXp76q88rL0ZzVLX3oUJ+iukd6aEpEI8+QBN26TcK79ztWlxmUOFHIFE+sChi5z
-	NUpSGZJraOA/pGQQ3XBG/n19yrEEdicwcBIyiZZ0DDtD9P8xbBn4z4fVhXrCDP6XF6jj14yse8MZw
-	2emk8aO2BxJo6tx5xozsaVj4W0nc8YMxYTKmDksTnHe6R1ZUcZFAl0EXGhYTosM3i5lBXAB0Pogd+
-	ZqKfoulPsLoRng8E1qWj1YQdVKb5As7BzyKF/heyhNBvVvGuJE2RSSqmltwMcoQGFkql/NuHCoOik
-	/NRN1E+Q==;
+	bh=5VRMgvCnEA8kgiHSYk2SxnRT5MMPGrktxGH8s2RgpHQ=; b=f8Akr3FDKAAbtIrHNuZ3kvXUG5
+	iVopw1ZkCxOm2GdW6cs8kgrvI6+nQ8uQ3Se7wEmqLzOdIYIsefC60HyUc2X9qaVn8qcmS/Eg6ejjo
+	w7R9KixzNDU3g9xnA0OBDni/KCEjyLo7b4zAm/kDjXiCI+YZiGEjevtpDRt7ed3A4Rbt3kAuHSQs9
+	S6qhNVwutG3AGcMyIjjThNUCgxip0IHSRSCXoGRSdrqnJSn+8Zh3gCEuWfgA6rQe/fxuuslVTUhFy
+	8Sgc3OPgaF+y3WgJb0CXR6lSfglhsn/eWAW4oIGYH4aVlswC5OmAx8owSkIQDpWrQtV0jLSbUYCvP
+	3TZspkBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqsC5-000QR2-0Z;
-	Thu, 12 Oct 2023 09:41:25 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1qqsDs-000QbU-03;
+	Thu, 12 Oct 2023 09:43:16 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqsC0-000QQB-2A
+	id 1qqsDq-000Qb6-0G
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Oct 2023 09:41:22 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-2c1854bebf5so9633731fa.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 02:41:17 -0700 (PDT)
+	Thu, 12 Oct 2023 09:43:15 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4056ce55e7eso7645265e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 02:43:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697103676; x=1697708476; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1697103792; x=1697708592; darn=lists.infradead.org;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=V9Ha1tPoh6dVTvqYgTNLLl69UYatye7Ch50vBppvcQw=;
-        b=UATX+vo2zKbTfyco3HHRSk/J/iFNGZ5Tgl/Srozrvz1REdz1I07RgWfpnFfvEP7njk
-         Fjvmcpw/XdAIbierIapc8TpUtFhsHK0tCY+DogZpO9L6qQ3nhrGe5gVNTcNqf8BhPAls
-         dUdS+4M7u9cZpf0DWWmrYRnxH8+GyqBwphhHKq7WT1lOKeTn6fC+CalPMp8FPnWvZQu7
-         r3pxKp+Xm3ePs29TgcosGYmD+ROLLKExovMe/ZeLzzg8dZMW4+rCqvwGcY5xSzC68+53
-         djORQrgFjd2Lpcz5k3jc0ipH8uazH9KrdxQ6PPnKm7pXruRdSRH7cSedCAQlOO4WCwUM
-         Ww/w==
+        bh=5VRMgvCnEA8kgiHSYk2SxnRT5MMPGrktxGH8s2RgpHQ=;
+        b=zTt7eKLezxu5XXj+wLRlezPKv7507INpl+yIwQNNXwC0s2BePbNtbuoxfIwZeb84tP
+         1hhLmmuoRd+tlovKFiIrNNCV6Z/XbzIn/mwFkJaiOl4AS0LandtE7aaV6GNLiRGSDTmc
+         duTOY5a9OlPYA04NK+fcoyfe4/qTvUjWbKkSamcW5kCIsDtQ2BqY0HzQyvZj2kzY5xlv
+         1k8K7iV7ZhwuxMlCSbOR2tMaOS7tjNO4RV4Ju4iu2VBXn5a2Y6JPkKE90ZqzuryJA20w
+         vrVAdODPUZ5RUExqyBvnH6CuWLQXvRnRfuwvYRqUPl/msT8DTb5DQnpXH/lYfev5pFyf
+         JZwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697103676; x=1697708476;
+        d=1e100.net; s=20230601; t=1697103792; x=1697708592;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=V9Ha1tPoh6dVTvqYgTNLLl69UYatye7Ch50vBppvcQw=;
-        b=erFXnOsNwSj6BlIhXuErtyOUez1vDBt4OfJFgYRb/oEesgISHBLVxBF59SRIfjZjZN
-         xAT4vN1qnOPuCpcSbL4Ja4CcB/1bJx4GJ+em9wzSP6ej8NAuGGsgNJFU0liK1jrnxdqP
-         LJozKCSF8jWofaUm6IdHkMSuTOIecLTENPutR8lGBWr2ubRJ+VIlfe7qXxGxtx7j0CBo
-         QA87NCbi7DPj+mShkjgGuypvOgD//0YMI9DVE3UmDo6r6lSItL+w99ZexEslumA9Ju9h
-         OcszyngBJjOCcIbUXuLh74y7CcvxZ6Y2mtvqfFJ0QlCgGohzWphDvBN+v/TrBX3NkCtu
-         pyFg==
-X-Gm-Message-State: AOJu0YxsR3cQACu6dZKjY6FNNxCWC9OFDoZ8LaMfXf5PJydsp8GQSYeO
-	hxm9dGQTqYAaHmRHqn+yOlp85w==
-X-Google-Smtp-Source: AGHT+IEaL1Aj5cIMJu9KIjuRu/rF5MoFIOwR2MxjF+RWVDhV2KmCzFNegrVLqtcs2W2wfLtFgVf2RA==
-X-Received: by 2002:a05:6512:3d15:b0:505:6ede:20a8 with SMTP id d21-20020a0565123d1500b005056ede20a8mr26060481lfv.42.1697103675962;
-        Thu, 12 Oct 2023 02:41:15 -0700 (PDT)
+        bh=5VRMgvCnEA8kgiHSYk2SxnRT5MMPGrktxGH8s2RgpHQ=;
+        b=e/Q7m3Hws/xva4iUUG+Z92osDFVTd2e+3YTXKdpsek4Wc+w8Q44i/pxUZQGS0xoDl4
+         5ES9QaIIniyBeMkmS+PseM4l5DAsZQmuPp+U4q+uRsBtlPRCeHxTfZJ6I3tsbCH1sl5W
+         rRLG2UX60EIm+z5UOJe+tgMQwlTOWkhKg9C9dD8xAkZogN+u6RPoCv92AxlAm8YsSOhq
+         7lTPIQMQj4VMnrG+r3IKANU81XNO7pwlEhg2k1mwJwEKD9yfu7dQzH3TbdbtYvJwmTAR
+         VbNffBrlWlo5OoHO1R3GWppHt5Lq3sE+1w1hfjJr/+0NDQVLrxwhy3zAI8UB/IEJ3OfS
+         Qn1Q==
+X-Gm-Message-State: AOJu0YyFFtP4mrWQFI27M+koW9XUtGBjUHiWXr7zTwUpGLImubDWiU69
+	+xl7/1RgcyZU3NFTePm4Lq51jA==
+X-Google-Smtp-Source: AGHT+IHCwgBj3x6+SrOcE0hptJkfx2cSC4duQpC3JPxcT2Y6Xd5RJTwKY8iaIIwurvg/O0MkOUlW+Q==
+X-Received: by 2002:a05:6000:104a:b0:32d:8b1a:31ad with SMTP id c10-20020a056000104a00b0032d8b1a31admr2201712wrx.24.1697103792493;
+        Thu, 12 Oct 2023 02:43:12 -0700 (PDT)
 Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id q5-20020a7bce85000000b0040596352951sm21495929wmj.5.2023.10.12.02.41.15
+        by smtp.gmail.com with ESMTPSA id w15-20020adfcd0f000000b0030647449730sm18076443wrm.74.2023.10.12.02.43.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Oct 2023 02:41:15 -0700 (PDT)
-Date: Thu, 12 Oct 2023 12:41:12 +0300
+        Thu, 12 Oct 2023 02:43:12 -0700 (PDT)
+Date: Thu, 12 Oct 2023 12:43:09 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Mark Tseng <chun-jen.tseng@mediatek.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	kernel-janitors@vger.kernel.org
-Subject: [PATCH] PM / devfreq: mediatek: unlock on error in
- mtk_ccifreq_target()
-Message-ID: <1bada9b2-d276-4123-bfdf-03d165569543@moroto.mountain>
+To: nbd@nbd.name
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [bug report] wifi: mt76: fix race condition related to checking tx
+ queue fill status
+Message-ID: <4af93047-2767-4859-b41f-82be7fa2309d@moroto.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_024120_730576_1121D418 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20231012_024314_129778_A0AE6E30 
+X-CRM114-Status: UNSURE (   4.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,29 +88,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Call mutex_unlock(&drv->reg_lock) before returning the error code.
+Hello Felix Fietkau,
 
-Fixes: d2805601988f ("PM / devfreq: mediatek: protect oop in critical session")
-Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
----
- drivers/devfreq/mtk-cci-devfreq.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+The patch 0335c034e726: "wifi: mt76: fix race condition related to
+checking tx queue fill status" from Aug 29, 2023 (linux-next), leads
+to the following Smatch static checker warning:
 
-diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
-index b0ed25e33f2b..11bc3d03494c 100644
---- a/drivers/devfreq/mtk-cci-devfreq.c
-+++ b/drivers/devfreq/mtk-cci-devfreq.c
-@@ -146,7 +146,8 @@ static int mtk_ccifreq_target(struct device *dev, unsigned long *freq,
- 	opp = devfreq_recommended_opp(dev, &opp_rate, 1);
- 	if (IS_ERR(opp)) {
- 		dev_err(dev, "failed to find opp for freq: %ld\n", opp_rate);
--		return PTR_ERR(opp);
-+		ret = PTR_ERR(opp);
-+		goto out_unlock;
- 	}
- 
- 	voltage = dev_pm_opp_get_voltage(opp);
--- 
-2.39.2
+	drivers/net/wireless/mediatek/mt76/tx.c:348 mt76_tx()
+	error: we previously assumed 'wcid' could be null (see line 342)
 
+drivers/net/wireless/mediatek/mt76/tx.c
+    338 
+    339         if (WARN_ON(skb_get_queue_mapping(skb) >= MT_TXQ_PSD))
+    340                 skb_set_queue_mapping(skb, MT_TXQ_BE);
+    341 
+    342         if (wcid && !(wcid->tx_info & MT_WCID_TX_INFO_SET))
+                    ^^^^
+This assumes wcid can be NULL
+
+    343                 ieee80211_get_tx_rates(info->control.vif, sta, skb,
+    344                                        info->control.rates, 1);
+    345 
+    346         info->hw_queue |= FIELD_PREP(MT_TX_HW_QUEUE_PHY, phy->band_idx);
+    347 
+--> 348         spin_lock_bh(&wcid->tx_pending.lock);
+                             ^^^^^^^
+Unchecked dereference
+
+    349         __skb_queue_tail(&wcid->tx_pending, skb);
+    350         spin_unlock_bh(&wcid->tx_pending.lock);
+    351 
+    352         spin_lock_bh(&phy->tx_lock);
+    353         if (list_empty(&wcid->tx_list))
+    354                 list_add_tail(&wcid->tx_list, &phy->tx_list);
+    355         spin_unlock_bh(&phy->tx_lock);
+    356 
+    357         mt76_worker_schedule(&phy->dev->tx_worker);
+    358 }
+
+regards,
+dan carpenter
 
