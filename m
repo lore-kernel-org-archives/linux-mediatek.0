@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EAE0CDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 10:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C8D9CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 10:37:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/rjWQU21icMYkJukgwBRYtfCzeOWuqtIdfBXxohzw+0=; b=e+zv4JdQ7z1K3lsUrm/GCNqAaX
-	4XaNqCVJ6dGUBYOZ+U/r5qDozYIACNg4SJfdCHBrcV+Gyo27/IDHDrWMr3HqgqZX/jag4lbvSAWjq
-	JbPJnmec1ttCnvjLmqJ4q/771mSs8vQwxnj3wvJ3/9aCN1YcXYMpaw0TwEgdFUQeJbaiMPUxWIlAT
-	BVmlpUzTVNVL8MxyaElURGuFtakR1ZSDZVYx2Oyo00ehjcj1BYmQCRJIHejAxmiJEfsCPIzuFDxKv
-	Dx6/4gh1apApG/LG4ecI0J2x8LJNKSIGxc3J0YU4CHmeFGmUx7aLT2tPWVxtjm1AILtuh9DVu+v8h
-	NI6WMO9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uBs9hOd0LBtMlT9wlwcukfzXUw1tyuAjG8ejyYB38d8=; b=LZJdV5Ac8O0nwL6G9u6zLUF3Mi
+	mUfM0q5T06zoVbkD9AMUTkKBEwgU7ItGr97XGMdH0VDKzBxfAOTGgJM4JOMMYZrbHHh5mDtWVy9AI
+	yW3OU5RxK7BlomYOeJhj2QjGMpskRFmMiyyNwcSZTHCiamrTR+hTuwnncZWJMt02Z8n0wgD8ay+zs
+	BCtrAXPCt9vQCkstua5A3J95aLzzqwTooFyPvn+1cx6AmNYAx4obv/2Bt4aeJ68sbx44fzUIw+5Dk
+	d+svqKz82MvRgOdN8ozS26FT6vICnJsRFpGluAy59bI6tKeS6VwWMpi/QMKs45EjyYI9SLcYSb3j+
+	VLSPTQew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqt1A-000ftD-0S;
-	Thu, 12 Oct 2023 10:34:12 +0000
-Received: from mgamail.intel.com ([134.134.136.65])
+	id 1qqt4S-000gV8-02;
+	Thu, 12 Oct 2023 10:37:36 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqt16-000frW-0B;
-	Thu, 12 Oct 2023 10:34:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1697106847; x=1728642847;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=ji8x2F8u0U0ggxefEbWPL9IJWQlQGGYyAuJIBploLj8=;
-  b=OE6l4ddimoxfTTVOsME1Ja2Z6eAVv26IaC2lwruRl14aUM5heMpEg3Ak
-   CagCWlpu1rNj5EcUqEnMeR6UfLWfZUYY7YisY7dgi2dq06nUESQeOR9Cg
-   F8Jw1MAY4NJsADNMSi4ulyPEN/QRxbEXf2RgxajbM7b/up7Omw3YXK8Ga
-   6VP1raw8rj32AYbXTbu418+kyouaQvOIvycmIUllEfOIUxXzbb3hT1t2M
-   oT5EJ8FUl6nWMFRWBX/0GzdjB1Ca1phtz4viwcSdJhpEBIh/4R1C+iW17
-   llMvqFq3/KMza3RXFjbnA3+8HyAU/QrIQWu3tNKK5vHhd5RczzaxnwdxH
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10860"; a="388748390"
-X-IronPort-AV: E=Sophos;i="6.03,218,1694761200"; 
-   d="scan'208";a="388748390"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2023 03:34:05 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10860"; a="870527710"
-X-IronPort-AV: E=Sophos;i="6.03,218,1694761200"; 
-   d="scan'208";a="870527710"
-Received: from asroczyn-mobl.ger.corp.intel.com ([10.249.36.107])
-  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2023 03:34:00 -0700
-Date: Thu, 12 Oct 2023 13:29:49 +0300 (EEST)
-From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-cc: linux-pci@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
-    Rob Herring <robh@kernel.org>, 
-    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
-    Lukas Wunner <lukas@wunner.de>, "Rafael J . Wysocki" <rafael@kernel.org>, 
-    Heiner Kallweit <hkallweit1@gmail.com>, 
-    Emmanuel Grumbach <emmanuel.grumbach@intel.com>, 
-    LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-    ath10k@lists.infradead.org, ath11k@lists.infradead.org, 
-    ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org, 
-    linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, 
-    linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, 
-    linux-wireless@vger.kernel.org, Netdev <netdev@vger.kernel.org>
-Subject: Re: [PATCH v2 04/13] PCI/ASPM: Move L0S/L1/sub states mask calculation
- into a helper
-In-Reply-To: <20231011193206.GA1039708@bhelgaas>
-Message-ID: <bcecb577-bf69-e854-6f59-f4cb26c4b354@linux.intel.com>
-References: <20231011193206.GA1039708@bhelgaas>
+	id 1qqt4O-000gTP-0Y;
+	Thu, 12 Oct 2023 10:37:34 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 08666660733F;
+	Thu, 12 Oct 2023 11:37:29 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697107050;
+	bh=lNyFtEdQTDuc65MqDEMsAQSJCURe+5Hc0l5j1I+nClk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DY1opsTgYfOqAY8qFy2hg8GrEoAO+EuqCr6eiOsIX7kahRCO9NeYsDOkRL++LM2+5
+	 pYwsdZTydV+3c+D9aiC89n2ZdVbD75x1yLpQ6gfs4JpSpJhuZrr5oaRo2oEYnOcnlS
+	 B5zdVWt/vGDtuu7KGPU7VC38/eWQ/a1g99Hv1puyinQcm8FVMs6GulWGOSRuLbQcvl
+	 oV0Kfs2A3UPoOeSFSAo8bdTOAUQ+cxCimjm/ZdUwc702CZmXGDGF6uW+hGHxYCDnEt
+	 n+8HJgbe1VFusuXZj3exjWFUxN39PDEzfOhkAnQfds2Uvf6KQmcsK0quvxCs/AJi7S
+	 lBuFyDvXYQPbQ==
+Message-ID: <6d9bdf5d-e741-038e-3c5a-589b54d15846@collabora.com>
+Date: Thu, 12 Oct 2023 12:37:28 +0200
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1380828921-1697106845=:1692"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v7 01/16] dt-bindings: media: mediatek: mdp3: correct RDMA
+ and WROT node with generic names
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20231012084037.19376-1-moudy.ho@mediatek.com>
+ <20231012084037.19376-2-moudy.ho@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231012084037.19376-2-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_033408_156430_889AE8E8 
-X-CRM114-Status: GOOD (  23.16  )
+X-CRM114-CacheID: sfid-20231012_033732_688607_9DE2094F 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,91 +87,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-1380828921-1697106845=:1692
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
-
-On Wed, 11 Oct 2023, Bjorn Helgaas wrote:
-
-> On Mon, Sep 18, 2023 at 04:10:54PM +0300, Ilpo Järvinen wrote:
-> > ASPM service driver does the same L0S / L1S / sub states allowed
-> > calculation in __pci_disable_link_state() and
-> > pci_set_default_link_state().
+Il 12/10/23 10:40, Moudy Ho ha scritto:
+> The DMA-related nodes RDMA/WROT in MDP3 should be changed to generic names.
+> In addition, fix improper space indent in example.
 > 
-> Is there a typo or something here?  This patch only adds a call to
-> __pci_disable_link_state(), not to pci_set_default_link_state().
+> Fixes: 4ad7b39623ab ("media: dt-binding: mediatek: add bindings for MediaTek MDP3 components")
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-This was because one of the changes that got included in the meantime made 
-the state handling in those two functions to differ so I removed the call 
-from the code but forgot to update the changelog to match the code. I'll 
-fix the changelog.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
--- 
- i.
-
-
-> > Create a helper to calculate the mask for the allowed states.
-> > 
-> > Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
-> > ---
-> >  drivers/pci/pcie/aspm.c | 33 +++++++++++++++++++++------------
-> >  1 file changed, 21 insertions(+), 12 deletions(-)
-> > 
-> > diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
-> > index ec6d7a092ac1..91dc95aca90f 100644
-> > --- a/drivers/pci/pcie/aspm.c
-> > +++ b/drivers/pci/pcie/aspm.c
-> > @@ -1034,6 +1034,26 @@ static struct pcie_link_state *pcie_aspm_get_link(struct pci_dev *pdev)
-> >  	return bridge->link_state;
-> >  }
-> >  
-> > +static u8 pci_link_state_mask(int state)
-> > +{
-> > +	u8 result = 0;
-> > +
-> > +	if (state & PCIE_LINK_STATE_L0S)
-> > +		result |= ASPM_STATE_L0S;
-> > +	if (state & PCIE_LINK_STATE_L1)
-> > +		result |= ASPM_STATE_L1;
-> > +	if (state & PCIE_LINK_STATE_L1_1)
-> > +		result |= ASPM_STATE_L1_1;
-> > +	if (state & PCIE_LINK_STATE_L1_2)
-> > +		result |= ASPM_STATE_L1_2;
-> > +	if (state & PCIE_LINK_STATE_L1_1_PCIPM)
-> > +		result |= ASPM_STATE_L1_1_PCIPM;
-> > +	if (state & PCIE_LINK_STATE_L1_2_PCIPM)
-> > +		result |= ASPM_STATE_L1_2_PCIPM;
-> > +
-> > +	return result;
-> > +}
-> > +
-> >  static int __pci_disable_link_state(struct pci_dev *pdev, int state, bool sem)
-> >  {
-> >  	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
-> > @@ -1063,18 +1083,7 @@ static int __pci_disable_link_state(struct pci_dev *pdev, int state, bool sem)
-> >  	if (sem)
-> >  		down_read(&pci_bus_sem);
-> >  	mutex_lock(&aspm_lock);
-> > -	if (state & PCIE_LINK_STATE_L0S)
-> > -		link->aspm_disable |= ASPM_STATE_L0S;
-> > -	if (state & PCIE_LINK_STATE_L1)
-> > -		link->aspm_disable |= ASPM_STATE_L1;
-> > -	if (state & PCIE_LINK_STATE_L1_1)
-> > -		link->aspm_disable |= ASPM_STATE_L1_1;
-> > -	if (state & PCIE_LINK_STATE_L1_2)
-> > -		link->aspm_disable |= ASPM_STATE_L1_2;
-> > -	if (state & PCIE_LINK_STATE_L1_1_PCIPM)
-> > -		link->aspm_disable |= ASPM_STATE_L1_1_PCIPM;
-> > -	if (state & PCIE_LINK_STATE_L1_2_PCIPM)
-> > -		link->aspm_disable |= ASPM_STATE_L1_2_PCIPM;
-> > +	link->aspm_disable |= pci_link_state_mask(state);
-> >  	pcie_config_aspm_link(link, policy_to_aspm_state(link));
-> >  
-> >  	if (state & PCIE_LINK_STATE_CLKPM)
-
-
---8323329-1380828921-1697106845=:1692--
 
