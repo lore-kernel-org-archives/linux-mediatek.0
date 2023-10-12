@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47801CDB474
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 22:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C70CDB474
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 23:03:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6ccyMZ2isxwLAUk2a1F8G2q9GYk1tSWppfRXB7kYv7s=; b=Ds2Eo/I8WjE+iQv+64Y/9LP3vf
-	u9/SHRJSTcin0EUdit8VdBuK56O4S/jM7LwU+N/GuuZNX1+38OKMf+keriPl5CYUJ79uz3DXRNbhL
-	1VyaJwCmNaNlVmubmdTn+YzMq8gyH5mW7/oWOYkJCwpBUhEiOE0PbKFaQChABZMPwOT/kluTyG6A7
-	u45dUtrgxpNi5uQbFWSe00xRW3JG2LvWPEftZknfYjkZtVZsc60mTn4++/vSYVvAzgxerA1SLOOmK
-	8/rAha1PBySsmvZiK+qibij4siavmAptqGyziP2iWzE6dm4PCe2oMl0wMG/aJSBYxLZCcFbXrspyt
-	D2sFmWPw==;
+	bh=fujGqJo8d5KpjN+xClqT+zqDBhYovL+8QaLrTy0NKbw=; b=bijQceT1BSM/VFDiTXrqc3XiBO
+	/d8pHcVdWz/HrzyK1EorNAqxmcp0prIVHYFr4KHtGjOKrL6oJRrVz+HJr5CzIxze6O2gO2uk5I9Or
+	wGUCHo2jKyNE99pRu3RGzC9RemdMa8+XWk6+7ogVdGfRuRWJ/HEgIVBCgc2Lm8cbyDCNFyqj2C6O9
+	qhYwFwES+Sd+DQwA+57lF3E8bRnmLAGLqXuUgLQ3zsG7XAMVGglV7snfcgnpyaP0WKa/D7wFVyDq0
+	nDClgDL9q0M6l7nsH/3NUneyRCH2OxOHOYpTgVp73GFlxc5KdAlUUo0GkCj5+NDWGuLdMXWiDmMi+
+	HglkihqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qr3tC-001xp5-09;
-	Thu, 12 Oct 2023 22:10:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qr4hn-0022mF-0g;
+	Thu, 12 Oct 2023 23:02:59 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qr3t9-001xms-0l
+	id 1qr4hj-0022jC-37
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Oct 2023 22:10:41 +0000
-X-UUID: 292c79f4694c11ee86758d4a7c00f3a0-20231012
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6ccyMZ2isxwLAUk2a1F8G2q9GYk1tSWppfRXB7kYv7s=;
-	b=NhDlzRF7CX2X4Hl7bioCYFE8QshZTNYGjKljhkR/tJmES2eog0EgKgmTxlGo5IFUwBUS08g1NMDi7MMtU7QpZnYuAqISpxqvEeZ1CGM5WkKqpLacoimP4uVHISyZfvW3LglcML/1M/9JEVFnwdN4hA1Nu977SpiX2iP5iFByyvo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:365bdacf-3714-4f70-89a4-a18f00346064,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:f66fbaf0-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 292c79f4694c11ee86758d4a7c00f3a0-20231012
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yi-chia.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 811355640; Thu, 12 Oct 2023 15:10:32 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 13 Oct 2023 06:00:29 +0800
-Received: from mussdccf250.mussds.eus.mediatek.inc (10.73.250.250) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 13 Oct 2023 06:00:27 +0800
-From: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Benjamin Lin <benjamin-jw.lin@mediatek.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7996: fix uninitialized variable in parsing txfree
-Date: Thu, 12 Oct 2023 15:00:26 -0700
-Message-ID: <e6c9a6fdeeaa57d73560c895046da4a58983297d.1697146767.git.yi-chia.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.17.1
+	Thu, 12 Oct 2023 23:02:57 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1c88b467ef8so12670355ad.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 16:02:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1697151769; x=1697756569; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=fujGqJo8d5KpjN+xClqT+zqDBhYovL+8QaLrTy0NKbw=;
+        b=HRqsc7Z6m4cpoTY0rUU8PWc9V5rNLWll0xIf9cuCZ7x9ZwmARlrRO+c0QW4T8DqGx/
+         7ARVc1N0RgDt5oxjR7LQHqjgOr5lTGDO7BSSZkZM0V5Sfa2jC2Fj8U5r/ZTKDtAre/X6
+         nzGgSpz2oH9Sx1Ep0+tbuknllBG68N92WmjI0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697151769; x=1697756569;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fujGqJo8d5KpjN+xClqT+zqDBhYovL+8QaLrTy0NKbw=;
+        b=stDA2HaTJHPUF2cLNWb5TOTNst1rq9UbzW18Liq3Q8X7pqHHbGsbzMhZ28iiPXs7Sr
+         lkrImHy9isg6kOh1huW4JO635b3IRVBBdq57a9cUt/Ocd5Mev0J0zYH262nN073ihPoG
+         qz9kb799W8xDWOVdC3WzCLmwLbkbjZ2duIQ9FDe2+vL09Iy71ZSokcxZhyTe57R8dSXf
+         0PquszP6pCb1N3AlltWnQsoP9zONvL9RJi5bhAyPTjLnnf2TbMV+WyxAZMnfnPhKeH+h
+         6GQFOY46gaINHCFTMDTshBNEGy0xVfZQFpUY3UET0PWQUYtAUNR7fBT3GSUDLmT1Wb/Y
+         PF0g==
+X-Gm-Message-State: AOJu0Yzj5cWTpGvr9mKKME7LkHEPv6Rz0S2WFH+ayfJM9HdiK1YPKfHY
+	BxbE/D97ZOLdCuWZLgKvKlwUYA==
+X-Google-Smtp-Source: AGHT+IGOx7c4BoiqaOrWcZL7VPY0mklJe7+GjZVJP6qldhsyBTfupZnml0azshrUG3DdBgLRiJav8Q==
+X-Received: by 2002:a17:902:f54c:b0:1c7:2476:c977 with SMTP id h12-20020a170902f54c00b001c72476c977mr27645759plf.33.1697151769484;
+        Thu, 12 Oct 2023 16:02:49 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:7397:2561:ed13:bac8])
+        by smtp.gmail.com with ESMTPSA id g11-20020a1709026b4b00b001c613091aeasm2494390plt.297.2023.10.12.16.02.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Oct 2023 16:02:49 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/9] arm64: dts: mediatek: Add MT8186 Corsola Chromebooks
+Date: Fri, 13 Oct 2023 07:02:26 +0800
+Message-ID: <20231012230237.2676469-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.42.0.655.g421f12c284-goog
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_151039_284529_2B015755 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231012_160256_007195_A41C8094 
+X-CRM114-Status: GOOD (  16.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,30 +91,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-Message-ID: <20231012220026.E24D844tESOqPCyGUeYy0sNHL9yfqRz-OTP1PKnI_Xo@z>
 
-Fix the uninitialized variable warning in mt7996_mac_tx_free.
+Hi everyone,
 
-Fixes: 2461599f835e: "wifi: mt76: mt7996: get tx_retries and tx_failed from txfree"
-Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This series adds device trees for the various MT8186 Chromebooks that
+were initially released. These are the Tentacruel / Tentacool devices
+released by ASUS, and the Steelix / Rusty / Magneton devices released
+by Lenovo. The device trees are taken from the downstream ChromeOS v5.15
+kernel, ported to mainline and cleaned up.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 04540833485f..59ab07b89087 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -1074,7 +1074,7 @@ mt7996_mac_tx_free(struct mt7996_dev *dev, void *data, int len)
- 	struct mt76_phy *phy3 = mdev->phys[MT_BAND2];
- 	struct mt76_txwi_cache *txwi;
- 	struct ieee80211_sta *sta = NULL;
--	struct mt76_wcid *wcid;
-+	struct mt76_wcid *wcid = NULL;
- 	LIST_HEAD(free_list);
- 	struct sk_buff *skb, *tmp;
- 	void *end = data + len;
+Corsola is the Google codename given to the MT8186 platform. This
+platform has two reference designs, Krabby and Kingler. Kingler was not
+used in any actual product, and is therefor not included. Steelix is
+an alternative design put forward and is effectively a mix-and-match of
+the two reference designs.
+
+Most of the core design is shared between the variants. The differences
+are on which external components, such as the display bridges, are used.
+
+Patch 1 cleans up the current list of MediaTek boards. The entries are
+reordered by SoC model first, then by board name.
+
+Patch 2 through 5 add DT binding entries for the Tentacruel/Tentacool,
+Steelix, Rusty, and Magneton Chromebooks.
+
+Patch 6 through 9 add board device tree files for these devices. Patch 6
+also adds the corsola dtsi file for the commonalities between the designs,
+as well as a dtsi file for the krabby reference design.
+
+Currently external display support is missing. Audio is not working, as
+enabling the audio DSP causes my test systems to hang.
+
+Please have a look and test if possible.
+
+
+Regards
+ChenYu
+
+Chen-Yu Tsai (9):
+  dt-bindings: arm: mediatek: Sort entries by SoC then board compatibles
+  dt-bindings: arm: mediatek: Add MT8186 Tentacruel / Tentacool
+    Chromebooks
+  dt-bindings: arm: mediatek: Add MT8186 Steelix Chromebook
+  dt-bindings: arm: mediatek: Add MT8186 Rusty Chromebook
+  dt-bindings: arm: mediatek: Add MT8186 Magneton Chromebooks
+  arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel /
+    Tentacool
+  arm64: dts: mediatek: Introduce MT8186 Steelix
+  arm64: dts: mediatek: Add MT8186 Steelix platform based Rusty
+  arm64: dts: mediatek: Add MT8186 Magneton Chromebooks
+
+ .../devicetree/bindings/arm/mediatek.yaml     |  180 +-
+ arch/arm64/boot/dts/mediatek/Makefile         |   10 +
+ .../dts/mediatek/mt8186-corsola-krabby.dtsi   |  130 ++
+ .../mt8186-corsola-magneton-sku393216.dts     |   38 +
+ .../mt8186-corsola-magneton-sku393217.dts     |   38 +
+ .../mt8186-corsola-magneton-sku393218.dts     |   21 +
+ .../mt8186-corsola-rusty-sku196608.dts        |   21 +
+ .../mt8186-corsola-steelix-sku131072.dts      |   18 +
+ .../mt8186-corsola-steelix-sku131073.dts      |   18 +
+ .../dts/mediatek/mt8186-corsola-steelix.dtsi  |  197 ++
+ .../mt8186-corsola-tentacool-sku327681.dts    |   49 +
+ .../mt8186-corsola-tentacool-sku327683.dts    |   26 +
+ .../mt8186-corsola-tentacruel-sku262144.dts   |   44 +
+ .../mt8186-corsola-tentacruel-sku262148.dts   |   28 +
+ .../boot/dts/mediatek/mt8186-corsola.dtsi     | 1704 +++++++++++++++++
+ 15 files changed, 2461 insertions(+), 61 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393216.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393217.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393218.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-rusty-sku196608.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327681.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262144.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+
 -- 
-2.39.0
+2.42.0.655.g421f12c284-goog
 
 
