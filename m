@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7DD7CDB482
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BAE1CDB47E
 	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 19:37:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2DrY4VqfMC9yHPVa2voF7UwqiWGscYGfZiuWQYcG8IM=; b=Q+ddVtoo7tx7QF6xjXlvG1xZnu
-	lG7mxoWlZge+CaBA1FtTH9nKRcSNbf+PAiDkQNITVYw2j5k95H51pMHAE9X1ZBNBlW87QlYBWo+TT
-	0JFoHVA+fx8QGinOaDS83Nn4dzAY5K2AlumfrENTBQ2nBq6kSI5d2BP0sG4RTT7dznjKPH//hGZ6v
-	JZz3OGRH7c0wK8NWC6YhB2QQXSW37QMqT2WpiQ4nzN8A6s0z36mU0g2n9QDw4u+ids9z7fZK5zWO0
-	J9RvyIiGXI3b3tGHKoBaTI9j4L23SNObBwJfoc/nqMruTwFo2ynvjWl5IHP2RiurJ46ZiieU4LKMl
-	PWOjitgw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LnLwFkGr43n9G5/MXcCRXFSdHrSVMhE83DNwzFjnDs4=; b=0J1cvbLm7LQUdasl0e2tvz4EGm
+	XsVuURFxmYyZNCX+BjHLxw2k1qbYqLpqpqMEbaTdeqliJ46yN0Q1DArNAfmTmFKFcjxUoc4nnYmZI
+	IcXS5fY89mbEMDeahq/dIYtuBrDy05OV54+5ehjbDTWYycqlmGfGGsWYIh+sSKREQW+wUysOX9PaD
+	EwjBEhDw1UxNFX12/wQsDlE0HTdKRfnZq70Wqzwkc8GYFb3XzqQcRWDQsJBzXXOxSsSyQyThePHZ6
+	WUrmXJHhCKGDOQd791Gyb6+RqXHn7B0owQW+K2eGhBFo3fa4gKLskf+lx4D4RuUOfMFmh+P50P3aT
+	R915YkTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qr1V8-001hwK-1i;
+	id 1qr1V8-001hwD-0a;
 	Thu, 12 Oct 2023 19:37:42 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qr1V4-001huq-21
+	id 1qr1V4-001hut-21
 	for linux-mediatek@lists.infradead.org;
 	Thu, 12 Oct 2023 19:37:40 +0000
 Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 97BED8C;
-	Thu, 12 Oct 2023 21:37:27 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 73169F0C;
+	Thu, 12 Oct 2023 21:37:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1697139447;
-	bh=L+wv19PM7x/xXr/z3O//0TkRxpU4Mv28RyY6tp937+Q=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Q9JvKVrAJdLNy0mUdxQMRM5cZyJf91YII1Ax5XcuEaGpvFnB2K+GGUytlnOu0AH6I
-	 NKyx+foXpdPQ/lScIvTWCRPl/MFuNESd4EqyzXF+oHif/jy/tFpqq8n2P1rCw8YAKj
-	 SmFlbrp5GpazZFRNzo2RawplOQevuQ6lkmsyfqtQ=
+	s=mail; t=1697139450;
+	bh=zG7RnJxnmWRmLrJ4A81/Ms67o6WpJQV9N23sdmmQBwY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=faCB2T0t8nKYCxD/RcWHXjnAl1awvYdmwZHdsXqHEuRwkL+PmGBJrsxW/7qsmr9Ff
+	 2sE1icqgrTnQqBnil0Lt5gr9nmrJz5BwFjnPpWazI4KioJCv/mwwMLayt+oBX8V86c
+	 OHRZvMWgE2M5MGZU7M1B7fEb0j/MdM+dbvAyeo68=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Paul Elder <paul.elder@ideasonboard.com>,
@@ -49,15 +49,17 @@ Cc: Paul Elder <paul.elder@ideasonboard.com>,
 	Julien Stephan <jstephan@baylibre.com>,
 	devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 0/3] media: i2c: Add driver for THine THP7312 ISP
-Date: Thu, 12 Oct 2023 22:37:34 +0300
-Message-ID: <20231012193737.7251-1-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v3 2/3] media: uapi: Add controls for the THP7312 ISP
+Date: Thu, 12 Oct 2023 22:37:36 +0300
+Message-ID: <20231012193737.7251-3-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231012193737.7251-1-laurent.pinchart@ideasonboard.com>
+References: <20231012193737.7251-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_123738_827834_D43817AB 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20231012_123738_827670_0E33463D 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,141 +74,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+The THP7312 is an external ISP from THine. As such, it implements a
+large number of parameters to control all aspects of the image
+processing. Many of those controls are already standard in V4L2, but
+some are fairly device-specific.
 
-This patch series adds a new driver for the THine THP7312 ISP. It has
-been tested on an OLogic Pumpkin i350, which has a Mediatek MT8365 SoC,
-with the THine THSCG101 camera module.
+Reserve a range of 32 controls for the device. The driver will implement
+4 device-specific controls to start with, define and document them. 28
+additional device-specific controls should be enough for future
+development.
 
-Technically the driver itself (and its bindings) have no dependencies,
-but to run/test this on the Pumpkin i350 with the mainline kernel, a
-number of patches are needed to support the board and the MT8365 SoC.
-Some of those patches are on their way to mainline, and some, like the
-Pumpkin i350 board device tree, will require more work. For convenience
-and reference, the needed patches are available in [1].
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/pinchartl/linux.git/log/?h=mtk/v6.6/pumpkin/camera
-
-Example overlays for DT integration of the THP7312 are available in that
-branch, in
-arch/arm64/boot/dts/mediatek/mt8365-pumpkin-csi0-thp7312-imx258.dtso and
-arch/arm64/boot/dts/mediatek/mt8365-pumpkin-csi1-thp7312-imx258.dtso.
-
-Compared to v2, all comments received for the DT bindings in v1 have now
-been properly taken into account (as far as I can tell). The driver has
-also been improved slightly. Please see individual patches for detailed
-changelogs.
-
-I also managed to get the mainline kernel running properly on the
-Pumpkin board, so this series has been properly tested on v6.6-rc5.
-
-Below is the mandatory v4l2-compliance report. Careful readers may
-notice that my v4l2-utils version is three commits behind upstream, but
-that makes no practical difference as those commits are not related to
-v4l2-compliance.
-
-root@buildroot ~ # v4l2-compliance -u /dev/v4l-subdev2
-v4l2-compliance 1.25.0-5097, 64 bits, 64-bit time_t
-v4l2-compliance SHA: b79e00a74fde 2023-09-13 07:19:23
-
-Compliance test for device /dev/v4l-subdev2:
-
-Driver Info:
-        Driver version   : 6.6.0
-        Capabilities     : 0x00000000
-
-Required ioctls:
-        test VIDIOC_SUDBEV_QUERYCAP: OK
-        test invalid ioctls: OK
-
-Allow for multiple opens:
-        test second /dev/v4l-subdev2 open: OK
-        test VIDIOC_SUBDEV_QUERYCAP: OK
-        test for unlimited opens: OK
-
-Debug ioctls:
-        test VIDIOC_LOG_STATUS: OK
-
-Input ioctls:
-        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-        test VIDIOC_ENUMAUDIO: OK (Not Supported)
-        test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-        test VIDIOC_G/S_AUDIO: OK (Not Supported)
-        Inputs: 0 Audio Inputs: 0 Tuners: 0
-
-Output ioctls:
-        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-        Outputs: 0 Audio Outputs: 0 Modulators: 0
-
-Input/Output configuration ioctls:
-        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-        test VIDIOC_G/S_EDID: OK (Not Supported)
-
-Control ioctls:
-        test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-        test VIDIOC_QUERYCTRL: OK
-        test VIDIOC_G/S_CTRL: OK
-        test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-        test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-        test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-        Standard Controls: 17 Private Controls: 4
-
-Format ioctls:
-        test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK (Not Supported)
-        test VIDIOC_G/S_PARM: OK (Not Supported)
-        test VIDIOC_G_FBUF: OK (Not Supported)
-        test VIDIOC_G_FMT: OK (Not Supported)
-        test VIDIOC_TRY_FMT: OK (Not Supported)
-        test VIDIOC_S_FMT: OK (Not Supported)
-        test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-        test Cropping: OK (Not Supported)
-        test Composing: OK (Not Supported)
-        test Scaling: OK (Not Supported)
-
-Codec ioctls:
-        test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-        test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-        test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-
-Buffer ioctls:
-        test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK (Not Supported)
-        test VIDIOC_EXPBUF: OK (Not Supported)
-        test Requests: OK (Not Supported)
-
-Total for device /dev/v4l-subdev2: 43, Succeeded: 43, Failed: 0, Warnings: 0
-
-Laurent Pinchart (1):
-  media: uapi: Add controls for the THP7312 ISP
-
-Paul Elder (2):
-  dt-bindings: media: Add bindings for THine THP7312 ISP
-  media: i2c: Add driver for THine THP7312
-
- .../bindings/media/i2c/thine,thp7312.yaml     |  226 ++
- .../userspace-api/media/drivers/index.rst     |    1 +
- .../userspace-api/media/drivers/thp7312.rst   |   32 +
- MAINTAINERS                                   |   10 +
- drivers/media/i2c/Kconfig                     |   16 +
- drivers/media/i2c/Makefile                    |    1 +
- drivers/media/i2c/thp7312.c                   | 2330 +++++++++++++++++
- include/uapi/linux/thp7312.h                  |   19 +
- include/uapi/linux/v4l2-controls.h            |    6 +
- 9 files changed, 2641 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
+Co-developed-by: Paul Elder <paul.elder@ideasonboard.com>
+Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ .../userspace-api/media/drivers/index.rst     |  1 +
+ .../userspace-api/media/drivers/thp7312.rst   | 32 +++++++++++++++++++
+ MAINTAINERS                                   |  2 ++
+ include/uapi/linux/thp7312.h                  | 19 +++++++++++
+ include/uapi/linux/v4l2-controls.h            |  6 ++++
+ 5 files changed, 60 insertions(+)
  create mode 100644 Documentation/userspace-api/media/drivers/thp7312.rst
- create mode 100644 drivers/media/i2c/thp7312.c
  create mode 100644 include/uapi/linux/thp7312.h
 
-
-base-commit: a1766a4fd83befa0b34d932d532e7ebb7fab1fa7
+diff --git a/Documentation/userspace-api/media/drivers/index.rst b/Documentation/userspace-api/media/drivers/index.rst
+index 1726f8ec86fa..6b62c818899f 100644
+--- a/Documentation/userspace-api/media/drivers/index.rst
++++ b/Documentation/userspace-api/media/drivers/index.rst
+@@ -41,4 +41,5 @@ For more details see the file COPYING in the source distribution of Linux.
+ 	npcm-video
+ 	omap3isp-uapi
+ 	st-vgxy61
++	thp7312
+ 	uvcvideo
+diff --git a/Documentation/userspace-api/media/drivers/thp7312.rst b/Documentation/userspace-api/media/drivers/thp7312.rst
+new file mode 100644
+index 000000000000..7a40c42b1db9
+--- /dev/null
++++ b/Documentation/userspace-api/media/drivers/thp7312.rst
+@@ -0,0 +1,32 @@
++.. SPDX-License-Identifier: GPL-2.0-only
++
++THine THP7312 ISP driver
++========================
++
++The THP7312 driver implements the following driver-specific controls:
++
++``V4L2_CID_THP7312_LOW_LIGHT_COMPENSATION``
++    Enable/Disable auto-adjustment, based on lighting conditions, of the frame
++    rate when auto-exposure is enabled.
++
++``V4L2_CID_THP7312_AUTO_FOCUS_METHOD``
++    Set method of auto-focus. Only takes effect when auto-focus is enabled.
++
++    .. flat-table::
++        :header-rows:  0
++        :stub-columns: 0
++        :widths:       1 4
++
++        * - ``0``
++          - Contrast-based auto focus
++        * - ``1``
++          - PDAF
++        * - ``2``
++          - Hybrid of contrast-based and PDAF
++
++``V4L2_CID_THP7312_NOISE_REDUCTION_AUTO``
++    Enable/Disable auto noise reduction.
++
++``V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE``
++    Set the noise reduction strength, where 0 is the weakest and 10 is the
++    strongest.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e7d0a4e47a4d..667026d44460 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21453,6 +21453,8 @@ L:	linux-media@vger.kernel.org
+ S:	Maintained
+ T:	git git://linuxtv.org/media_tree.git
+ F:	Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
++F:	Documentation/userspace-api/media/drivers/thp7312.rst
++F:	include/uapi/linux/thp7312.h
+ 
+ THUNDERBOLT DMA TRAFFIC TEST DRIVER
+ M:	Isaac Hazan <isaac.hazan@intel.com>
+diff --git a/include/uapi/linux/thp7312.h b/include/uapi/linux/thp7312.h
+new file mode 100644
+index 000000000000..2b629e05daf9
+--- /dev/null
++++ b/include/uapi/linux/thp7312.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
++/*
++ * THine THP7312 user space header file.
++ *
++ * Copyright (C) 2021 THine Electronics, Inc.
++ * Copyright (C) 2023 Ideas on Board Oy
++ */
++
++#ifndef __UAPI_THP7312_H_
++#define __UAPI_THP7312_H_
++
++#include <linux/v4l2-controls.h>
++
++#define V4L2_CID_THP7312_LOW_LIGHT_COMPENSATION		(V4L2_CID_USER_THP7312_BASE + 0x01)
++#define V4L2_CID_THP7312_AUTO_FOCUS_METHOD		(V4L2_CID_USER_THP7312_BASE + 0x02)
++#define V4L2_CID_THP7312_NOISE_REDUCTION_AUTO		(V4L2_CID_USER_THP7312_BASE + 0x03)
++#define V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE	(V4L2_CID_USER_THP7312_BASE + 0x04)
++
++#endif /* __UAPI_THP7312_H_ */
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index 68db66d4aae8..99c3f5e99da7 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -209,6 +209,12 @@ enum v4l2_colorfx {
+  */
+ #define V4L2_CID_USER_NPCM_BASE			(V4L2_CID_USER_BASE + 0x11b0)
+ 
++/*
++ * The base for THine THP7312 driver controls.
++ * We reserve 32 controls for this driver.
++ */
++#define V4L2_CID_USER_THP7312_BASE		(V4L2_CID_USER_BASE + 0x11c0)
++
+ /* MPEG-class control IDs */
+ /* The MPEG controls are applicable to all codec controls
+  * and the 'MPEG' part of the define is historical */
 -- 
 Regards,
 
