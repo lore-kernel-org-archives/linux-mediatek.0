@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0933CDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 17:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DACCFCDB46E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 19:18:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WQ+0aHw6sQMmsRhISm2t/oJY7lh7N5E9AbFnFFga21k=; b=XzovISLBGMirBeBu/dwjvtLHd/
-	Y9vUi3I+0kS7zlGwN2qucEQO8fESRmUxhppGFR+PwkA32mR/Y9h2dzZl7vleP/lRqFCg6j8FFef8y
-	IyXnSKPhV0v8jtJoEAFlur2cYT/ZCk1n7EqTkRuOgBXWgKF4US541WXicJ1gUvB53Lx9oxetf45z8
-	R0HtWuBXONVkB9Vu4QuA0WJMEFnHsChTD9tG6Z3kOd2IC/PTSWBg6pnM66uVPqxAJ2XV005UypL4b
-	HU5jJ86qVaMBEC/qbFq1t0CEeWU0/EJoXMs7eImfRr7lgT+McxGRheo27mIBJafbhXIOO7pxmleE6
-	0LxxDZXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BF5auhot1bDClGXN8yxksfDZK+pWZ3Br/2OygZhxgsg=; b=Dqy3HV79ueUbshg3+bpOmN7whi
+	aCCJ6P8rUQ1hD6fUxkUpPpZYlybzrV54Tms0CgoGRdBqDi7xLz4wcKhnnK/HxjksEOiTgBwlbsC83
+	Qf2W7HGUSMzfBJqOsFx99NzoephC34K9kBzS3XMxsHf/PzeG1ZJVXh75ULAd4kTijYMV0y3YjQIhZ
+	ImAU1rOkV3zJMBCmm5lnN2q68GGPQ+1jXP2QDwUSjAKBwcT6Q3s1Mlwc1bvybST92fE7gsgeWFWlj
+	sZILs84ZONLBdXpt56F+zIMjCyI4XuqdBNxNdQ5hwJm+kCoWrCwPh5pT3SB4Iz4L6aRbklSqqeF/s
+	HiHgw2ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqz69-001TeD-3C;
-	Thu, 12 Oct 2023 17:03:45 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1qr1C9-001g94-02;
+	Thu, 12 Oct 2023 19:18:05 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqz65-001Td8-2R;
-	Thu, 12 Oct 2023 17:03:43 +0000
-Received: by mail-oi1-f173.google.com with SMTP id 5614622812f47-3a707bc2397so177743b6e.0;
-        Thu, 12 Oct 2023 10:03:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697130220; x=1697735020;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WQ+0aHw6sQMmsRhISm2t/oJY7lh7N5E9AbFnFFga21k=;
-        b=RB4Khy5mE0ILwquxHYfbAm6MaB0DVRl4fKz1m/AOTpFWkc3nAy41RELXp0OL1BMnmg
-         56pHZNeMPmC+qx55j9BKuuf1QfATh8aFU0deMItTJ4ysgub+T4PHNJjAPrf8/+gw+bKM
-         A8zD2JKu4BinXH+xvaElNG/jnYksrSyKsDZSbXS2ql/NtiHyBTRrG+yUCTDjziZavwgy
-         X36X+qD6MOk41djOMcuYWWuTnz9SilR5HmL5AWj+8+xX6jdpaUJ5kObYukzUy2q/3sQi
-         AzzqBVWLZR/PjFnNouEMqpFuJiD83OnYP0VTQ0LoTrfNVOEZxmzioVozT0gAc+fUKIbX
-         sJHw==
-X-Gm-Message-State: AOJu0YwexKtYjCr9qev42PslKLvN3s3m3N4ccBDTUAV2mEKuIz1IIQXq
-	yJ1m408klirL8b8xntVBXtmwHAskBlAcSv/GYl8=
-X-Google-Smtp-Source: AGHT+IGBZDKyJD0i4Rb6WrCw/7nCmvRCRZiPDHCjEHSYH2ay0b2U53TEfTm6dOdP4vl4qt1PTdMgxQtx16k2IVf+oXk=
-X-Received: by 2002:a4a:df07:0:b0:57b:73f6:6f80 with SMTP id
- i7-20020a4adf07000000b0057b73f66f80mr24752122oou.0.1697130220076; Thu, 12 Oct
- 2023 10:03:40 -0700 (PDT)
+	id 1qr1C5-001g7m-2v;
+	Thu, 12 Oct 2023 19:18:03 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 57FB56607358;
+	Thu, 12 Oct 2023 20:17:50 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697138272;
+	bh=XOvQRewMR/StJ5ta/O6p+3WXsHfd+0zrsVXkYfFjTcM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UkH0ypqERYp2FTBmpVNn7AWMLkLVVqgPpwlTm/3eoByGZzH137ghgNGk/8md/dc73
+	 0Ks8BauDyDFw9eUkEDBetdowuFH8BD9ALURwE5EPwXSFKlI83oXESWupYxy9WiPggj
+	 zV784MHq1fhA70jD5E+V9N2flsAy96lg8zJPCnRi4/gvVGLlHr7MPnyYEekRMaHM0v
+	 9wU7A5u6HkuvsDFmIbeOZ3B4FUx+P8oXwthgGwSNP1P0gko/9sFetdg6Gg+8OalEfm
+	 WEcSIltPu6TnaPf3n8O3vlWqjah+6/PBKuWaKM4Wzvp+EU1T+KLT0kYubM05mwTOnB
+	 LlGP9eOqME/Bg==
+Date: Thu, 12 Oct 2023 15:17:46 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+	daniel@ffwll.ch, matthias.bgg@gmail.com,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	wenst@chromium.org, kernel@collabora.com, ehristev@collabora.com
+Subject: Re: [PATCH v11 08/16] drm/mediatek: De-commonize disp_aal/disp_gamma
+ gamma_set functions
+Message-ID: <1638da95-fd9c-4557-91d9-92bf1b54feaf@notapiano>
+References: <20231012095736.100784-1-angelogioacchino.delregno@collabora.com>
+ <20231012095736.100784-9-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-References: <20230916113327.85693-1-bo.ye@mediatek.com> <a3255da4-b2af-4403-af68-3067a5fd49bf@linaro.org>
-In-Reply-To: <a3255da4-b2af-4403-af68-3067a5fd49bf@linaro.org>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Thu, 12 Oct 2023 19:03:28 +0200
-Message-ID: <CAJZ5v0i0Yk+juOQthy2dh89L9RdOBRHcSk43KLEGMeJszTXBVQ@mail.gmail.com>
-Subject: Re: [PATCH] Subject: thermal: Fix potential race condition in suspend/resume
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Bo Ye <bo.ye@mediatek.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, yugang.wang@mediatek.com, 
-	yongdong.zhang@mediatek.com, browse.zhang@mediatek.com, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231012095736.100784-9-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_100341_793265_7EDC14D4 
-X-CRM114-Status: GOOD (  25.74  )
+X-CRM114-CacheID: sfid-20231012_121802_079663_DF4CC4A1 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,79 +78,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 12, 2023 at 5:39=E2=80=AFPM Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
->
-> On 16/09/2023 13:33, Bo Ye wrote:
-> > From: "yugang.wang" <yugang.wang@mediatek.com>
-> >
-> > Body:
-> > This patch fixes a race condition during system resume. It occurs if
-> > the system is exiting a suspend state and a user is trying to
-> > register/unregister a thermal zone concurrently. The root cause is
-> > that both actions access the `thermal_tz_list`.
->
-> I'm not sure the tasks are already thawed during POST_RESTORE, so no
-> user can unload a driver and then reaching the race window.
+On Thu, Oct 12, 2023 at 11:57:28AM +0200, AngeloGioacchino Del Regno wrote:
+> In preparation for adding a 12-bits gamma support for the DISP_GAMMA
+> IP, remove the mtk_gamma_set_common() function and move the relevant
+> bits in mtk_gamma_set() for DISP_GAMMA and mtk_aal_gamma_set() for
+> DISP_AAL: since the latter has no more support for gamma manipulation
+> (being moved to a different IP) in newer revisions, those functions
+> are about to diverge and it makes no sense to keep a common one (with
+> all the complications of passing common data and making exclusions
+> for device driver data) for just a few bits.
+> 
+> This commit brings no functional changes.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Yes, they are.
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-> Is that an observed issue?
-
-Good question, but the patch looks correct to me.
-
-> > In detail:
-> >
-> > 1. At PM_POST_SUSPEND during the resume, the system reads all thermal
-> >     zones in `thermal_tz_list`, then resets and updates their
-> >     temperatures.
-> > 2. When registering/unregistering a thermal zone, the
-> >     `thermal_tz_list` gets manipulated.
-> >
-> > These two actions might occur concurrently, causing a race condition.
-> > To solve this issue, we introduce a mutex lock to protect
-> > `thermal_tz_list` from being modified while it's being read and
-> > updated during the resume from suspend.
-> >
-> > Kernel oops excerpt related to this fix:
-> >
-> > [ 5201.869845] [T316822] pc: [0xffffffeb7d4876f0] mutex_lock+0x34/0x170
-> > [ 5201.869856] [T316822] lr: [0xffffffeb7ca98a84] thermal_pm_notify+0xd=
-4/0x26c
-> > [... cut for brevity ...]
-> > [ 5201.871061] [T316822]  suspend_prepare+0x150/0x470
-> > [ 5201.871067] [T316822]  enter_state+0x84/0x6f4
-> > [ 5201.871076] [T316822]  state_store+0x15c/0x1e8
-> >
-> > Change-Id: Ifdbdecba17093f91eab7e36ce04b46d311ca6568
-> > Signed-off-by: yugang.wang <yugang.wang@mediatek.com>
-> > Signed-off-by: Bo Ye <bo.ye@mediatek.com>
-> > ---
-> >   drivers/thermal/thermal_core.c | 2 ++
-> >   1 file changed, 2 insertions(+)
-> >
-> > diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_c=
-ore.c
-> > index 8717a3343512..a7a18ed57b6d 100644
-> > --- a/drivers/thermal/thermal_core.c
-> > +++ b/drivers/thermal/thermal_core.c
-> > @@ -1529,12 +1529,14 @@ static int thermal_pm_notify(struct notifier_bl=
-ock *nb,
-> >       case PM_POST_HIBERNATION:
-> >       case PM_POST_RESTORE:
-> >       case PM_POST_SUSPEND:
-> > +             mutex_lock(&thermal_list_lock);
-> >               atomic_set(&in_suspend, 0);
-> >               list_for_each_entry(tz, &thermal_tz_list, node) {
-> >                       thermal_zone_device_init(tz);
-> >                       thermal_zone_device_update(tz,
-> >                                                  THERMAL_EVENT_UNSPECIF=
-IED);
-> >               }
-> > +             mutex_unlock(&thermal_list_lock);
-> >               break;
-> >       default:
-> >               break;
->
-> --
+Thanks,
+Nícolas
 
