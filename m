@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 757A1CDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 11:48:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB4E2CDB46E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 11:49:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qPEIuGvMUx0Y6lpP2jaVnp425U8/1WBusmlHrwPIhKQ=; b=mIdnLXh4+JQp4owt29VTZrK+Xs
-	gat+S03yQkdyd0SCzo2a2hLaBLRxyX7iV6SK9RFHXWxOmOeXJ1q4fHKhDMZgdTHUG99KPDJ6BPkIS
-	zucjIfiUxxBT12gb40F1QqVOQ7jYtfHUzljEuPd7otpxTPRyavsh8v6FW3h4lwZXMrU8+KAp8NZsH
-	hst++HqKGxKXTgqAquNCm5QE1AZbSLDc23S2A6jHsmwBjev33P1xnhjdy7uum5+LbyTuMstnhzxz1
-	R351HeBTQ2VeR7tDA0FNqKr7C5Vtl8EAGK70oYRtvqSaubWvpsk1I1GHqRtLQoiE+eXkthue9129j
-	mCJLjG8w==;
+	bh=5vielkOJMqA0ytGuj4VcIXvslkPviGgJqqY/Lasa6Ho=; b=4ZcFZkXWEGj0V/vf5LcQevuZ1B
+	da++xS8Y2VPzxL4vNFKvKEvIqHVDGiQeS/lA539+QKV0/nUeokJLQtvaiNezlPC20DW+5KTgNqm0q
+	NMcc4Gvzl5EGfvy7gapbHMYhm83aTpscn8jPFqfPHlpJGRLX9yBx9DzFVLjtiCivds52f9Lb6kks0
+	gs2jpBZ9uPYQwIH0sERkIt8EPEzvM7Z6K0jgQ59sYdZTHvWaCjT1EYU1SmmJ3MnB5elFw1t0eESYW
+	kEAGRee7riUN3fYMNBcERtMVEKwduHWv3i6sh1z7reZjBH8GqnhggDPII6n0GzOiDf6ZyLoO6K/Oa
+	B4VtzoCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qquBU-000phG-0o;
-	Thu, 12 Oct 2023 11:48:56 +0000
+	id 1qquBX-000pjP-0b;
+	Thu, 12 Oct 2023 11:48:59 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqu9d-000nzr-0Y;
+	id 1qqu9f-000o2T-0C;
 	Thu, 12 Oct 2023 11:47:07 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C79EB6607367;
-	Thu, 12 Oct 2023 12:46:57 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0498A6607346;
+	Thu, 12 Oct 2023 12:47:00 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697111218;
-	bh=7OL5E3CW8F8eZCTu2km16+HY1SvtZLOVfrgm1/VXjy4=;
+	s=mail; t=1697111220;
+	bh=GJfXFDdnhGS92TEmv49OanHL2tR3kTI5Ce9MknjELEo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Zxz4EYtVb8eZSFa5Uwvd882wFWuAYhX2LKeQKSPTPbU4mWMEoKiEiWXHDiyBIQMyD
-	 vuvvnvWLu5IpQp8AwlFYRHQ+Wi6muvQsoSy5Jih1Y9pAWsC7Hvlk3ORXDoYxmwfkKi
-	 gcqO73cFAkkQwww8Uvr66ULYAuxbLJ7x1IimWRPkFx8vRQmX48eESO8YdIEtqNxJRO
-	 2JOIN3GCYW8iRYzERUCZgC7JJhndFqoWai8IbOsvIK9wI3urIN5xxNd8L+59a88/zl
-	 MqvlbV2vdVD8dfpeZrBIDN2AuOqdktfMIjd3wBXfocEyJEjAiraiZytR6p3glVau8q
-	 cv7/ZPt5Lp1CQ==
+	b=US3th3hfJtwGDlltn2tiBSpDfxGx696Sr4C++b8Vp4MPXfcZqMEwbSfaaD3yrDLQn
+	 ufgqhY8RxztnDKdXxSgt1e+ud+vbz5XIulKShZXOJVWfSt+fPETsPr69q6gCInhQhf
+	 dX/yL89aJoMkPkL8lUhUst6kNCj0QPfLcZ1cxYsO8l/Sans2SmFtPXnH3MucvNnv8E
+	 9vdQLAEzA5AXM8l5gOcs23ki6ZcRwA74IaJcscWjaVxYGPuIjxxSDHAcsJylgEooEl
+	 vd0TArlTOjDYzSKUm9vo/1wuMvFUxbuejc44WJGvQh+zP8GiKnn02zLSoadhi0l3lX
+	 nUjMPXE/xlg4Q==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,19 +62,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: [PATCH v11 16/56] media: atomisp: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Thu, 12 Oct 2023 13:46:02 +0200
-Message-Id: <20231012114642.19040-17-benjamin.gaignard@collabora.com>
+	Antti Palosaari <crope@iki.fi>
+Subject: [PATCH v11 20/56] media: dvb-frontends: rtl2832_srd: Use queue min_buffers_needed field
+Date: Thu, 12 Oct 2023 13:46:06 +0200
+Message-Id: <20231012114642.19040-21-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_044701_446892_22F10E3B 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20231012_044703_235547_317DACD1 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,33 +88,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_buffer() instead of directly access to vb2_buffer buffer array.
-This could allow to change the type bufs[] field of vb2_buffer structure if
-needed.
-No need to check the result of vb2_get_buffer, vb2_ioctl_dqbuf() already
-checked that it is valid.
+queue_setup checks for a minimum number of buffers so use queue
+min_buffers_needed field and remove the check done in
+rtl2832_sdr_queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Hans de Goede <hdegoede@redhat.com>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>
-CC: Sakari Ailus <sakari.ailus@linux.intel.com>
+CC: Antti Palosaari <crope@iki.fi>
 ---
- drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/dvb-frontends/rtl2832_sdr.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-index a8e4779d007f..a8a964b2f1a8 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-@@ -1059,7 +1059,7 @@ static int atomisp_dqbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer
- 	if (ret)
- 		return ret;
+diff --git a/drivers/media/dvb-frontends/rtl2832_sdr.c b/drivers/media/dvb-frontends/rtl2832_sdr.c
+index 02c619e51641..597b1548ed8b 100644
+--- a/drivers/media/dvb-frontends/rtl2832_sdr.c
++++ b/drivers/media/dvb-frontends/rtl2832_sdr.c
+@@ -440,14 +440,9 @@ static int rtl2832_sdr_queue_setup(struct vb2_queue *vq,
+ 	struct rtl2832_sdr_dev *dev = vb2_get_drv_priv(vq);
+ 	struct platform_device *pdev = dev->pdev;
  
--	vb = pipe->vb_queue.bufs[buf->index];
-+	vb = vb2_get_buffer(&pipe->vb_queue, buf->index);
- 	frame = vb_to_frame(vb);
+-	dev_dbg(&pdev->dev, "nbuffers=%d\n", *nbuffers);
+-
+-	/* Need at least 8 buffers */
+-	if (vq->num_buffers + *nbuffers < 8)
+-		*nbuffers = 8 - vq->num_buffers;
+ 	*nplanes = 1;
+ 	sizes[0] = PAGE_ALIGN(dev->buffersize);
+-	dev_dbg(&pdev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
++	dev_dbg(&pdev->dev, "nbuffers=%d sizes[0]=%d\n", vb2_get_num_buffers(vq), sizes[0]);
+ 	return 0;
+ }
  
- 	buf->reserved = asd->frame_status[buf->index];
+@@ -1364,6 +1359,8 @@ static int rtl2832_sdr_probe(struct platform_device *pdev)
+ 	dev->vb_queue.ops = &rtl2832_sdr_vb2_ops;
+ 	dev->vb_queue.mem_ops = &vb2_vmalloc_memops;
+ 	dev->vb_queue.timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
++	/* Need at least 8 buffers */
++	dev->vb_queue.min_buffers_needed = 8;
+ 	ret = vb2_queue_init(&dev->vb_queue);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Could not initialize vb2 queue\n");
 -- 
 2.39.2
 
