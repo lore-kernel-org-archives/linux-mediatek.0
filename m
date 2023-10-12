@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87D39CDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 13:05:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDD28CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 13:11:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H+phvPfXTqjUhcbE+vseVqDbtsK3+PG3TwnMEc9LaOg=; b=BwUZFdly43svRXQFCHQveb1adT
-	JI5CSM+2iG3VHJA7p4o2KmB0tHfjSiLZn/y14Tw0OX7ntLTcH/t2ziVVu4NiMfQY6wEth8xf8AmEC
-	HeRAaqfQa0WpumywC0aJ335kU7h7dAZsbf+vAWLqKHF6lEji5B9pbqDMmDbG7KLgrbPoTbjpcEwnt
-	IDDxjXuKYBQ3z930MnlWFhWn43iDK+rXhjoodAtXnf5COqzsmiIIfuUXJmJHvTCvXIkWoPAZ1V56O
-	OtKdT+ofnHGWcmenGQgYo8FOL8V7TIlBj5YwzFbpmsNlGTz7mlD91pM2aaP9lOf8W6yYCBph2w0W9
-	/QUqRm6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r5dDfzp8LqUtb51WOABNwcgD43msNqzmUCo0K+JOCjU=; b=MUdwsQoNr8KSJ4NmpF4huKmE+V
+	NsGWZQ2SGThLXzjEhxRpA13U83T8WTGrIVnWq456ZQx6TVNJOUv4nb1fQqOQxheyw0c6DH1dLB6PG
+	8K2r3pTpBRU/IH6VIhYtUtp7bK1NFJyp+P8K4LAlV80wz/hj8Ch53uRGUwc/cqskoobpIjiZHJkgl
+	nxzCCISf0QNimUJ61kzfOdDsyzSgCmvTncMYmWDi17DT/nh7/OvWoljTHjkRaRAn6yoIEXyLCVLNs
+	W/PlwHoG8bBRTIjk95EfuvwH5lVCF8k/NNfb5hcQivL/PtwZpXCmms54QcCGbjWHwPioeMO8WtPfQ
+	M1WtS2xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqvNn-0012Qo-1h;
-	Thu, 12 Oct 2023 13:05:43 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qqvT7-00137B-2D;
+	Thu, 12 Oct 2023 13:11:13 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqvNj-0012Ou-0C
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Oct 2023 13:05:41 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 269898C2;
-	Thu, 12 Oct 2023 15:05:34 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1697115934;
-	bh=QMiiVYAwxL8kYkW/Tyfug+wqp6ed2rM4FzvM7049y9k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=N8prwUXbUX7iPp++5ePcNnHXz+o/OjWoz2JIRheusTLKmdwlG+TgPAIBs3akKb4oJ
-	 t2Cxng/Lt0Wnebec0eYmAo0Jp+oIEO0OfLJYPcoQAZNhwUG1NgddxqDpy7GbzMNLEq
-	 JJNw5NKhNNBYszyKeVCy5fk+L7FtQvLOB2ExIg9Q=
-Date: Thu, 12 Oct 2023 16:05:44 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-media@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: media: Add bindings for THine
- THP7312 ISP
-Message-ID: <20231012130544.GA31878@pendragon.ideasonboard.com>
-References: <20231012012016.11535-1-laurent.pinchart@ideasonboard.com>
- <20231012012016.11535-2-laurent.pinchart@ideasonboard.com>
- <b214e763-2175-4de1-af54-43961ff94afb@linaro.org>
+	id 1qqvT0-00135R-12;
+	Thu, 12 Oct 2023 13:11:11 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 26A01660734A;
+	Thu, 12 Oct 2023 14:11:04 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697116264;
+	bh=8TGPKtAK3pMPkVljBf/J5sPx4RaW1Xn2qBY/TA8G2Lg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AjKwI03lrIrJJKAeT8zI3uJoBYB5+g1ZHXTClSak9O8YFF6mEUnsdrsh/EYVfmKow
+	 /T8MEzzKj7tqHn/0bB3O//UhozGa6XJNexAzoYig7HMAB1HMvPU0zgeVk9mzzyxNxS
+	 37VybFuIN2R44AmchDNO1DQQ/H4XtJnUi1VtV2xU56AwbSrn8pVzmPlZqzhwsplbTU
+	 brv7P9LLmRq6WQEE7WNdwyI/uSGB3JWPLhRG+JgrpF121emZUQyr/jZcULhTMfZf/H
+	 avZquwgMYXVhuiWPvGwCqxXeAIhX8IUcCMinbBYeQgRFt2ayfk7164AZ2xWIYmqj3V
+	 Up5vGhu/403tg==
+Message-ID: <592a17cf-b612-bfba-8bac-ff4322448409@collabora.com>
+Date: Thu, 12 Oct 2023 15:11:02 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <b214e763-2175-4de1-af54-43961ff94afb@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v7 00/12] add support MDP3 on MT8195 platform
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231012091206.20165-1-moudy.ho@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231012091206.20165-1-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_060539_261358_215D2B40 
-X-CRM114-Status: GOOD (  34.43  )
+X-CRM114-CacheID: sfid-20231012_061106_527340_46592BB2 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,135 +80,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+Il 12/10/23 11:11, Moudy Ho ha scritto:
+> Changes since v6:
+> - Rebase on v6.6-rc5.
+> - Dependent dtsi files:
+>    https://patchwork.kernel.org/project/linux-mediatek/list/?series=792079
+> - Dependent bindings:
+>    https://patchwork.kernel.org/project/linux-mediatek/list/?series=792477
+> - Move the patch that fixes compile warnings from this series and
+>    create a separate standalone patch.
 
-On Thu, Oct 12, 2023 at 09:47:31AM +0200, Krzysztof Kozlowski wrote:
-> On 12/10/2023 03:20, Laurent Pinchart wrote:
-> > From: Paul Elder <paul.elder@ideasonboard.com>
-> > 
-> > The THP7312 is an external ISP from THine. Add DT bindings for it.
-> > 
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Co-developed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> >  .../bindings/media/i2c/thine,thp7312.yaml     | 225 ++++++++++++++++++
-> >  MAINTAINERS                                   |   7 +
-> >  2 files changed, 232 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml b/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
-> > new file mode 100644
-> > index 000000000000..053b28fb0a89
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
-> > @@ -0,0 +1,225 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +# Copyright (c) 2023 Ideas on Board
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/i2c/thine,thp7312.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: THine THP7312
-> > +
-> > +maintainers:
-> > +  - Paul Elder <paul.elder@@ideasonboard.com>
-> > +
-> > +description:
-> > +  The THP7312 is a standalone ISP controlled over i2c, and is capable of
-> > +  various image processing and correction functions, including 3A control. It
-> > +  can be connected to CMOS image sensors from various vendors, supporting both
-> > +  MIPI CSI-2 and parallel interfaces. It can also output on either MIPI CSI-2
-> > +  or parallel. The hardware is capable of transmitting and receiving MIPI
-> > +  interlaved data strams with data types or multiple virtual channel
-> > +  identifiers.
-> > +
-> > +allOf:
-> > +  - $ref: ../video-interface-devices.yaml#
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: thine,thp7312
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +    description: I2C device address
-> 
-> Nothing improved here.
+You forgot to mention that moving that patch added a dependency of this series
+on .. that patch, at [1].
 
-I'll drop the description.
+[1]: https://lore.kernel.org/r/20231012091206.20165-1-moudy.ho@mediatek.com
 
-> > +
-> > +  clocks:
-> > +    maxItems: 1
-> > +    description: CLKI clock input
-> > +
-> > +  thine,boot-mode:
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    description:
-> > +      Boot mode of the THP7312. 0 is for standard streaming mode, for the
-> > +      THP7312 to be used as an ISP. 1 is for firmware flashing mode.
-> 
-> Why, for a given board, would you always boot device in one specific
-> mode but not the other? This does not look like property of DT.
+Cheers,
+Angelo
 
-The device has two boot mode pins, and it operates differently depending
-on its boot mode. The pins are typically hardwired, on development
-boards you commonly have DIP switches, and on production systems test
-pads that allow modifying the boot mode on the production line. The
-driver needs to know the boot mode to interact with the device
-appropriately. I haven't found a good way to interogate the device at
-runtime to figure out the boot mode, but I'm still trying. If that
-doesn't succeed, we need to convey it through the device tree.
-
-> > +
-> > +  reset-gpios:
-> > +    maxItems: 1
-> > +    description:
-> > +      Reference to the GPIO connected to the RESET_N pin, if any.
-> > +      Must be released (set high) after all supplies are applied.
-> > +
-> > +  vddcore-supply:
-> > +    description:
-> > +      1.2V supply for core, PLL, MIPI rx and MIPI tx.
-> > +
-> > +  vhtermrx-supply:
-> > +    description:
-> > +      Supply for input (RX). 1.8V for MIPI, or 1.8/2.8/3.3V for parallel.
-> > +
-> > +  vddtx-supply:
-> > +    description:
-> > +      Supply for output (TX). 1.8V for MIPI, or 1.8/2.8/3.3V for parallel.
-> > +
-> > +  vddhost-supply:
-> > +    description:
-> > +      Supply for host interface. 1.8V, 2.8V, or 3.3V.
-> > +
-> > +  vddcmos-supply:
-> > +    description:
-> > +      Supply for sensor interface. 1.8V, 2.8V, or 3.3V.
-> > +
-> > +  vddgpio_0-supply:
-> 
-> And more of ignored feedback. I stop now.
-> 
-> This is a friendly reminder during the review process.
-> 
-> It seems my previous comments were not fully addressed. Maybe my
-> feedback got lost between the quotes, maybe you just forgot to apply it.
-> Please go back to the previous discussion and either implement all
-> requested changes or keep discussing them.
-
-I took over the patch series and may have missed some comments. I'll
-double check and make sure to address all feedback (or raise questions
-in replies) for v3. It would be helpful if you could complete the
-review, or there will then be a v4 to address the second half of the DT
-bindings review :-S Your time and efforts are appreciated, I'm sorry for
-the human error here.
-
--- 
-Regards,
-
-Laurent Pinchart
 
