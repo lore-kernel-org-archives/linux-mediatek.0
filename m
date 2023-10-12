@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE1ACDB484
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 12:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9126CCDB46E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 13:00:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=klK3rWtgrqAvRg0H5fFEGNS+9RDuPTEE+8ErveVstjk=; b=drSUFAEqf6F9lA4sjpy0HYSIm/
-	MhO5FFO75+V86wFYNXosdRtVyvU8yLc85uo7CKznAm3mbCAjLV57XJEWA1cYDD+pZMsy/sk3ujOrY
-	hnRUmm77OURL/WLQsJ0c5CX8Q8ifK+dQS3cFikjCOEUwqXx31Sg3pe6RVUrSJ2wdKNfDJD0Z6qN8H
-	XOcTxlopd6kIf6jaHiLzoRqYKAxBOhs1ahcrSH4WD/5CZoNnYfI2mGGOFHY81/RTyG3g+EFOkrSvh
-	LlnJkI5BF9d+Bm1jk14XkpGhCZ3TzrPlqStLZjzyJ2amTa5ITCCLjn4IMvVSpvD0JKUGmkqdNZsJX
-	DAU/iHjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sj9zEzSQKjeWdQkuGM7i4Hrn4i7fVVdzvjJAu2+KTlA=; b=t2g281lfeCk6LW5Z0lO21wrQBn
+	MaTGPA2iqCTZr9MGdIrhYcnuSoPY/i6olgiMBbxu5EWbLNCh7m9tegfQlmci6D8Dk6FgEjxSX0gPR
+	IPid+0hQmm2SKySY1/QvvoPfZCmW/SQEkOu13V8RWxLFU//J1i+HFms455TH/Rt1sWR8hgmkz+AH/
+	kcOHbU0u5uMGFgka6vxvAvGwEJvYdeC9hj7MWDNdR7iHq7cBooEGzOlFFjEyQoVTX833kP+CaqqPn
+	NhBcCfSd1jn+dEyhLLbqBVaxgHEpSy/CBB5V4QpNYbBz4GqpbGGm9nsPMPuIsQuP/w0rA+fsS4atT
+	thhcbzuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqvCL-0010kH-2k;
-	Thu, 12 Oct 2023 12:53:53 +0000
-Received: from mgamail.intel.com ([192.55.52.43])
+	id 1qqvIz-0011gg-0k;
+	Thu, 12 Oct 2023 13:00:45 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqvCG-0010i1-1s;
-	Thu, 12 Oct 2023 12:53:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1697115228; x=1728651228;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=gNLNaEec64/5yPf43OhzXjxJ+9f0AwPObPN0gw90rTk=;
-  b=l+KzQ3z0GQLCht0HmiqacGHhpEMtgMdO5q2rCnYomL1KYTbxShJs0zUa
-   h+5o6jAsOs+jcq4yjmFn8OSsA32I1f3sJkuU1HRuXCYN5UuydAY9XG+/q
-   g0o+icxIaCOEvmOZZMxknHpiWRX0Q5REJadAkofO8zObSG4VZiH62DSXy
-   m2bSH2+oxjYLfCv+pw6oaYnN2ZEjXRiZ2/JgSD8lKbQotF9S5OxMN0ZUW
-   00I3A5HGJIyt6s6j/8RrfxItDzCe3TktTjcLmigG8xsXsaEL/fPaMvgHT
-   c+TViZ8cVXQV9X+EnUTGszKKj7QFRmxEULFp+thRjtCO3VzY0SwpSBlBF
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="471169653"
-X-IronPort-AV: E=Sophos;i="6.03,219,1694761200"; 
-   d="scan'208";a="471169653"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2023 05:53:46 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="783688889"
-X-IronPort-AV: E=Sophos;i="6.03,219,1694761200"; 
-   d="scan'208";a="783688889"
-Received: from asroczyn-mobl.ger.corp.intel.com ([10.249.36.107])
-  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2023 05:53:41 -0700
-Date: Thu, 12 Oct 2023 15:53:39 +0300 (EEST)
-From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-cc: linux-pci@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
-    Rob Herring <robh@kernel.org>, 
-    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
-    Lukas Wunner <lukas@wunner.de>, "Rafael J . Wysocki" <rafael@kernel.org>, 
-    Heiner Kallweit <hkallweit1@gmail.com>, 
-    Emmanuel Grumbach <emmanuel.grumbach@intel.com>, 
-    LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-    ath10k@lists.infradead.org, ath11k@lists.infradead.org, 
-    ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org, 
-    linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, 
-    linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, 
-    linux-wireless@vger.kernel.org, Netdev <netdev@vger.kernel.org>
-Subject: Re: [PATCH v2 05/13] PCI/ASPM: Add pci_enable_link_state()
-In-Reply-To: <20231011215327.GA1043654@bhelgaas>
-Message-ID: <afb4db5-5fe1-9f5d-a910-032adf195c@linux.intel.com>
-References: <20231011215327.GA1043654@bhelgaas>
+	id 1qqu9V-000nse-2s;
+	Thu, 12 Oct 2023 11:46:55 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C82406607346;
+	Thu, 12 Oct 2023 12:46:49 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697111210;
+	bh=cMzVFA9/TUVo9VWr/5JcyqG4OOKgwWqTUUieq9IONwI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=d5VYelndvKS9apDVWUIKnJDTC/LhhIBeTGDA9MCyEcBjx8JxmZG44Z+KRW1iKezgx
+	 hT+0k31ZtmSB4GRp4XSVomidcSrV7svZFsWD9NWOU4WBgCJWkYaiy8d8flhPlgcfnD
+	 lpZKNSO0qxOfHGdufAUHhmQ2jIA+62ZbInopNcSyJVVSGWAov6DU/W2UZrBJsKn5Zb
+	 eQJ4sfBNWXAUzGS4gGpxnlFXBQC6f8ePTaDhghtE6sCwOB7nafEcvKftOkLoLaMv7H
+	 OKGeCmxpiwDqKmiR1+UvwPu3ZgIgIIQyfwJnD7Gmb4V4/1pyx5HJqa+WBBaNy0zRWA
+	 VeRQ5lAdZU/hA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 01/56] media: videobuf2: Rename offset parameter
+Date: Thu, 12 Oct 2023 13:45:47 +0200
+Message-Id: <20231012114642.19040-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
+References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1586418908-1697115226=:1692"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_055348_678866_24D31BB7 
-X-CRM114-Status: GOOD (  29.48  )
+X-CRM114-CacheID: sfid-20231012_044654_109881_752AD7F3 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,90 +87,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Rename 'off' parameter to 'offset' to clarify the code.
 
---8323329-1586418908-1697115226=:1692
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 26 +++++++++----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-On Wed, 11 Oct 2023, Bjorn Helgaas wrote:
-
-> On Mon, Sep 18, 2023 at 04:10:55PM +0300, Ilpo Järvinen wrote:
-> > pci_disable_link_state() lacks a symmetric pair. Some drivers want to
-> > disable ASPM during certain phases of their operation but then
-> > re-enable it later on. If pci_disable_link_state() is made for the
-> > device, there is currently no way to re-enable the states that were
-> > disabled.
-> 
-> pci_disable_link_state() gives drivers a way to disable specified ASPM
-> states using a bitmask (PCIE_LINK_STATE_L0S, PCIE_LINK_STATE_L1,
-> PCIE_LINK_STATE_L1_1, etc), but IIUC the driver can't tell exactly
-> what changed and can't directly restore the original state, e.g.,
-> 
->   - PCIE_LINK_STATE_L1 enabled initially
->   - driver calls pci_disable_link_state(PCIE_LINK_STATE_L0S)
->   - driver calls pci_enable_link_state(PCIE_LINK_STATE_L0S)
->   - PCIE_LINK_STATE_L0S and PCIE_LINK_STATE_L1 are enabled now
-> 
-> Now PCIE_LINK_STATE_L0S is enabled even though it was not initially
-> enabled.  Maybe that's what we want; I dunno.
-> 
-> pci_disable_link_state() currently returns success/failure, but only
-> r8169 and mt76 even check, and only rtl_init_one() (r8169) has a
-> non-trivial reason, so it's conceivable that it could return a bitmask
-> instead.
-
-It's great that you suggested this since it's actually what also I've been 
-started to think should be done instead of this straightforward approach
-I used in V2. 
-
-That is, don't have the drivers to get anything directly from LNKCTL
-but they should get everything through the API provided by the 
-disable/enable calls which makes it easy for the driver to pass the same
-value back into the enable call.
-
-> > Add pci_enable_link_state() to remove ASPM states from the state
-> > disable mask.
-> > 
-> > Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
-> > ---
-> >  drivers/pci/pcie/aspm.c | 42 +++++++++++++++++++++++++++++++++++++++++
-> >  include/linux/pci.h     |  2 ++
-> >  2 files changed, 44 insertions(+)
-> > 
-> > diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
-> > index 91dc95aca90f..f45d18d47c20 100644
-> > --- a/drivers/pci/pcie/aspm.c
-> > +++ b/drivers/pci/pcie/aspm.c
-> > @@ -1117,6 +1117,48 @@ int pci_disable_link_state(struct pci_dev *pdev, int state)
-> >  }
-> >  EXPORT_SYMBOL(pci_disable_link_state);
-> >  
-> > +/**
-> > + * pci_enable_link_state - Re-enable device's link state
-> > + * @pdev: PCI device
-> > + * @state: ASPM link states to re-enable
-> > + *
-> > + * Enable device's link state that were previously disable so the link is
-> 
-> "state[s] that were previously disable[d]" alludes to the use case you
-> have in mind, but I don't think it describes how this function
-> actually works.  This function just makes it possible to enable the
-> specified states.  The @state parameter may have nothing to do with
-> any previously disabled states.
-
-Yes, it's what I've been thinking between the lines. But I see your point 
-that this API didn't make it easy/obvious as is.
-
-Would you want me to enforce it too besides altering the API such that the 
-states are actually returned from disable call? (I don't personally find
-that necessary as long as the API pair itself makes it obvious what the 
-driver is expect to pass there.)
-
-
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 27aee92f3eea..a5e57affeb30 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -356,23 +356,23 @@ static void __setup_offsets(struct vb2_buffer *vb)
+ {
+ 	struct vb2_queue *q = vb->vb2_queue;
+ 	unsigned int plane;
+-	unsigned long off = 0;
++	unsigned long offset = 0;
+ 
+ 	if (vb->index) {
+ 		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+ 		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+ 
+-		off = PAGE_ALIGN(p->m.offset + p->length);
++		offset = PAGE_ALIGN(p->m.offset + p->length);
+ 	}
+ 
+ 	for (plane = 0; plane < vb->num_planes; ++plane) {
+-		vb->planes[plane].m.offset = off;
++		vb->planes[plane].m.offset = offset;
+ 
+ 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+-				vb->index, plane, off);
++				vb->index, plane, offset);
+ 
+-		off += vb->planes[plane].length;
+-		off = PAGE_ALIGN(off);
++		offset += vb->planes[plane].length;
++		offset = PAGE_ALIGN(offset);
+ 	}
+ }
+ 
+@@ -2185,9 +2185,9 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type)
+ EXPORT_SYMBOL_GPL(vb2_core_streamoff);
+ 
+ /*
+- * __find_plane_by_offset() - find plane associated with the given offset off
++ * __find_plane_by_offset() - find plane associated with the given offset
+  */
+-static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
++static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+ 			unsigned int *_buffer, unsigned int *_plane)
+ {
+ 	struct vb2_buffer *vb;
+@@ -2218,7 +2218,7 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+ 		vb = q->bufs[buffer];
+ 
+ 		for (plane = 0; plane < vb->num_planes; ++plane) {
+-			if (vb->planes[plane].m.offset == off) {
++			if (vb->planes[plane].m.offset == offset) {
+ 				*_buffer = buffer;
+ 				*_plane = plane;
+ 				return 0;
+@@ -2304,7 +2304,7 @@ EXPORT_SYMBOL_GPL(vb2_core_expbuf);
+ 
+ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ {
+-	unsigned long off = vma->vm_pgoff << PAGE_SHIFT;
++	unsigned long offset = vma->vm_pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+ 	unsigned int buffer = 0, plane = 0;
+ 	int ret;
+@@ -2335,7 +2335,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, off, &buffer, &plane);
++	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
+@@ -2380,7 +2380,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ 				    unsigned long pgoff,
+ 				    unsigned long flags)
+ {
+-	unsigned long off = pgoff << PAGE_SHIFT;
++	unsigned long offset = pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+ 	unsigned int buffer, plane;
+ 	void *vaddr;
+@@ -2392,7 +2392,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, off, &buffer, &plane);
++	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
 -- 
- i.
+2.39.2
 
---8323329-1586418908-1697115226=:1692--
 
