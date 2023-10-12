@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B38EECDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:12:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34F63CDB482
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:12:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T9t66eupdQbqY1SPNNEWt39SPeekiajLoj3HqZcc4co=; b=pGiFq1OH0ptxt4IrCrxXGGPBmj
-	YlRc/ERaY0BfYon/708w9XMEKL3f/fw4amAyGcUyzKSx3VhIAZ9qEwp35zaXkyZ41c0HyoNYsIpvO
-	Uh8iEa7ChoQ+Qy9hpCgwppqk30+Poow7E3P5eSsISctNu/hYdQcSpaj8y9eawQPxWNhvGonTlD0aN
-	XIa3XwWvJATZGg/XVBepU0eM8f8ErqbbNajp2WLg/Uyoe7L7NKC7Y6RTgF0CKvQ7z5de+KTbAJ+w7
-	U9azqhuHIwrvK0uDYv+UugiLxtgZ1N1Ev77Gk6t3/XyIoW+nwPepgvk5T716Fn19O37pxxEXt57Le
-	EIvtWUlQ==;
+	bh=hgkQlNQQVVawmd9UbAc5I3GFHWZ9+VaIhKjxsn2/N7w=; b=2bv1GjTMwysYDQrDyCmJGJ4Tzg
+	rZSWr1q8m3xsXSykI5SC9Ead+MeQhe98hx2CSa1zgkaBfx9mg/9g6te4HRY14zvPHE9aDW3np3ys2
+	J7lOYEL0gHFhPVvq0CUZuO3MUrNhZd2AO2XNzRxvZs8uz65u8euJvqhhIVjBrxJim8/I/gv9AATpg
+	xHFLBthcvP+ex4JXnjddkTn2aj8YQImVR9HPqgw4URMhxG4MvTp5+cUmH5kgbtLB5cSFnNFJ5MRsC
+	Ged+hVcR/GJHYY16HK0Hv1vhDcvGiDSG9Z1OZuD3FJFLZYvRExZgS6voDWP8r0W6CQejw9RW64WAD
+	SmDjwXyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqrkS-000KqR-26;
-	Thu, 12 Oct 2023 09:12:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qqrkT-000Kqj-0A;
+	Thu, 12 Oct 2023 09:12:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqrkP-000KnQ-2B;
+	id 1qqrkP-000KnU-2B;
 	Thu, 12 Oct 2023 09:12:51 +0000
-X-UUID: 81855cbe68df11ee9b7791016c24628a-20231012
+X-UUID: 8041f02468df11ee86758d4a7c00f3a0-20231012
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=T9t66eupdQbqY1SPNNEWt39SPeekiajLoj3HqZcc4co=;
-	b=bCm6njPmc/S+tua7hNwzZB7yRl3E0uV8zs72yyTdX13Tze46weq+5tl5J4zT0E/1hs34FjgUePyEAWyKFV0ZE4f86iheCQ4tFZwDJKIILGNhJoiJJoLXKcvX36+d65/tS0mLhR/Syyw/KZQN46rE67z7CPHZbpj1bMBj3ZudWxw=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hgkQlNQQVVawmd9UbAc5I3GFHWZ9+VaIhKjxsn2/N7w=;
+	b=V61m/HodW3r4rfVW0CnIjbcfbhFoqOTIM95KjJWEiUwB4CBGfw6jPgCHEBFm1YmApbyYwXf1sw0ocbCsO+q7w8UVwfQ6m7xqrvx9A3bTWJJtmRC8uTuMCQHAMTg42X9C9D+zP+VYY7fIfwTT9H3TGNa2CdXq4P4xJ5gEeccJPsY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:e576562f-3d2a-4934-98cd-cd79f91e6470,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:5f78ec9,CLOUDID:635c0ac4-1e57-4345-9d31-31ad9818b39f,B
+X-CID-O-INFO: VERSION:1.1.32,REQID:098a14c3-cc3f-4bfc-8099-9f4c0ba14a45,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:90b0b5f0-9a6e-4c39-b73e-f2bc08ca3dc5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 81855cbe68df11ee9b7791016c24628a-20231012
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: 8041f02468df11ee86758d4a7c00f3a0-20231012
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 336608942; Thu, 12 Oct 2023 02:12:45 -0700
+	with ESMTP id 1123767387; Thu, 12 Oct 2023 02:12:43 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Thu, 12 Oct 2023 17:12:08 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -62,29 +62,30 @@ To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v7 07/12] media: platform: mtk-mdp3: extend GCE event waiting in RDMA and WROT
-Date: Thu, 12 Oct 2023 17:12:01 +0800
-Message-ID: <20231012091206.20165-8-moudy.ho@mediatek.com>
+Subject: [PATCH v7 08/12] media: platform: mtk-mdp3: add support for blending multiple components
+Date: Thu, 12 Oct 2023 17:12:02 +0800
+Message-ID: <20231012091206.20165-9-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231012091206.20165-1-moudy.ho@mediatek.com>
 References: <20231012091206.20165-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.856400-8.000000
-X-TMASE-MatchedRID: mJkk328f4R4mNHlC7DQV5eKXavbHY/C1dG7bDJL8qEe0rcU5V/oSe/dQ
-	3ETtBTk8CTzLWkg2tvC1JEhwlIePJTA9KOtcb1F9t1AhvyEKdj67nrAU9KQxUWJkJOQVCIpw8Fh
-	GjTp5WPdMtAAmLKD7vIAy6p60ZV62fJ5/bZ6npdiyO81X3yak8zl8w34waCja/Od8+hmIU7Zi3g
-	oq7WAA4/cbPxaxxyIHzD+gHU7LsiF+3BndfXUhXQ==
+X-TM-AS-Result: No-10--3.836800-8.000000
+X-TMASE-MatchedRID: zGpV5UNF2R9ILSVPxvZJcHV895e/Bd2JO8xCfog1G6TfUZT83lbkECKI
+	UiL7FC/vhVmF9kz2wxLhgM7lrVqO2A719kpOO37PJQI+kfsRJdq7nrAU9KQxUb/A+0D1to6PuiV
+	mRyWjcdlMmm8bxtFZ3f1/2RbvJIzKGAdnzrnkM48URSScn+QSXt0H8LFZNFG7CKFCmhdu5cWP8S
+	S6hXCztrKbLC5dJ7ThR8h3Q1NFIrZN283DIraxul9QBPvxkHM+LFYB6e8mx8GcZM5WsMfRVz18/
+	KMzPXz9EZzep1vK6/kXRoPmWO3jekxwdkPqCq7vDEyN+J8hd+jCS9WgDXVPCp6oP1a0mRIj
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.856400-8.000000
+X-TMASE-Result: 10--3.836800-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: E37474EB8057795756363DBD703D89781887D15642B42685E7FC2086B0846F872000:8
+X-TM-SNTS-SMTP: 84424626B5F9B5AED3D7FFE031138AD7CB79695340B3AFE3CE559B102A9C439C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_021249_767700_4AA3402A 
-X-CRM114-Status: GOOD (  14.60  )
+X-CRM114-CacheID: sfid-20231012_021249_757778_184BEAD8 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,94 +100,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support for multiple RDMA/WROT waits for GCE events.
+Certain chips can combine several components to form complex virtual
+units with advanced functions.
+These components require simultaneous configuration of their MODs and
+clocks.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../platform/mediatek/mdp3/mdp_cfg_data.c     |  2 ++
- .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 27 +++++++++++++------
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  2 ++
- 3 files changed, 23 insertions(+), 8 deletions(-)
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 10 ++++++-
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 29 +++++++++++++++++--
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  7 +++++
+ 3 files changed, 43 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-index 6f77c33074ec..3834efe54e17 100644
---- a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-@@ -56,8 +56,10 @@ static const struct mdp_platform_config mt8183_plat_cfg = {
- 	.rdma_support_10bit		= true,
- 	.rdma_rsz1_sram_sharing		= true,
- 	.rdma_upsample_repeat_only	= true,
-+	.rdma_event_num			= 1,
- 	.rsz_disable_dcm_small_sample	= false,
- 	.wrot_filter_constraint		= false,
-+	.wrot_event_num			= 1,
- };
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index a81caf5f472c..f0c5f5abeb23 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -110,17 +110,25 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
+ 	/* Set mutex mod */
+ 	for (index = 0; index < num_comp; index++) {
+ 		s32 inner_id = MDP_COMP_NONE;
++		const u32 *mutex_idx;
++		const struct mdp_comp_blend *b;
  
- static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+ 		if (CFG_CHECK(MT8183, p_id))
+ 			inner_id = CFG_GET(MT8183, path->config, components[index].type);
+ 		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
+ 			continue;
++
+ 		ctx = &path->comps[index];
+ 		if (is_output_disabled(p_id, ctx->param, count))
+ 			continue;
++
++		mutex_idx = data->mdp_mutex_table_idx;
+ 		id = ctx->comp->public_id;
+-		mtk_mutex_write_mod(mutex, data->mdp_mutex_table_idx[id], false);
++		mtk_mutex_write_mod(mutex, mutex_idx[id], false);
+ 
++		b = &data->comp_data[id].blend;
++		if (b && b->aid_mod)
++			mtk_mutex_write_mod(mutex, mutex_idx[b->b_id], false);
+ 	}
+ 
+ 	mtk_mutex_write_sof(mutex, MUTEX_SOF_IDX_SINGLE_MODE);
 diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-index 1831e3d9b0e3..2bf4a6b391b7 100644
+index 2bf4a6b391b7..b942cc3a1865 100644
 --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
 +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-@@ -251,14 +251,20 @@ static int config_rdma_subfrm(struct mdp_comp_ctx *ctx,
+@@ -864,12 +864,26 @@ int mdp_comp_clocks_on(struct device *dev, struct mdp_comp *comps, int num)
+ 	int i, ret;
  
- static int wait_rdma_event(struct mdp_comp_ctx *ctx, struct mdp_cmdq_cmd *cmd)
- {
-+	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
- 	struct device *dev = &ctx->comp->mdp_dev->pdev->dev;
- 	phys_addr_t base = ctx->comp->reg_base;
- 	u8 subsys_id = ctx->comp->subsys_id;
- 
--	if (ctx->comp->alias_id == 0)
--		MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
--	else
--		dev_err(dev, "Do not support RDMA1_DONE event\n");
-+	if (!mdp_cfg)
-+		return -EINVAL;
+ 	for (i = 0; i < num; i++) {
++		struct mdp_dev *m = comps[i].mdp_dev;
++		enum mtk_mdp_comp_id id;
++		const struct mdp_comp_blend *b;
 +
-+	if (ctx->comp->alias_id >= mdp_cfg->rdma_event_num) {
-+		dev_err(dev, "Invalid RDMA event %d\n", ctx->comp->alias_id);
-+		return -EINVAL;
-+	}
+ 		/* Bypass the dummy component*/
+-		if (!comps[i].mdp_dev)
++		if (!m)
+ 			continue;
 +
-+	MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
- 
- 	/* Disable RDMA */
- 	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_EN, 0x0, BIT(0));
-@@ -553,10 +559,15 @@ static int wait_wrot_event(struct mdp_comp_ctx *ctx, struct mdp_cmdq_cmd *cmd)
- 	phys_addr_t base = ctx->comp->reg_base;
- 	u8 subsys_id = ctx->comp->subsys_id;
- 
--	if (ctx->comp->alias_id == 0)
--		MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
--	else
--		dev_err(dev, "Do not support WROT1_DONE event\n");
-+	if (!mdp_cfg)
-+		return -EINVAL;
+ 		ret = mdp_comp_clock_on(dev, &comps[i]);
+ 		if (ret)
+ 			return ret;
 +
-+	if (ctx->comp->alias_id >= mdp_cfg->wrot_event_num) {
-+		dev_err(dev, "Invalid WROT event %d!\n", ctx->comp->alias_id);
-+		return -EINVAL;
-+	}
++		id = comps[i].public_id;
++		b = &m->mdp_data->comp_data[id].blend;
 +
-+	MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
++		if (b && b->aid_clk) {
++			ret = mdp_comp_clock_on(dev, m->comp[b->b_id]);
++			if (ret)
++				return ret;
++		}
+ 	}
  
- 	if (mdp_cfg && mdp_cfg->wrot_filter_constraint)
- 		MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE, 0x0,
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index 22d1b17ef2fc..e57c415a1c78 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-@@ -49,8 +49,10 @@ struct mdp_platform_config {
- 	bool	rdma_support_10bit;
- 	bool	rdma_rsz1_sram_sharing;
- 	bool	rdma_upsample_repeat_only;
-+	u32	rdma_event_num;
- 	bool	rsz_disable_dcm_small_sample;
- 	bool	wrot_filter_constraint;
-+	u32	wrot_event_num;
+ 	return 0;
+@@ -880,10 +894,21 @@ void mdp_comp_clocks_off(struct device *dev, struct mdp_comp *comps, int num)
+ 	int i;
+ 
+ 	for (i = 0; i < num; i++) {
++		struct mdp_dev *m = comps[i].mdp_dev;
++		enum mtk_mdp_comp_id id;
++		const struct mdp_comp_blend *b;
++
+ 		/* Bypass the dummy component*/
+-		if (!comps[i].mdp_dev)
++		if (!m)
+ 			continue;
++
+ 		mdp_comp_clock_off(dev, &comps[i]);
++
++		id = comps[i].public_id;
++		b = &m->mdp_data->comp_data[id].blend;
++
++		if (b && b->aid_clk)
++			mdp_comp_clock_off(dev, m->comp[b->b_id]);
+ 	}
+ }
+ 
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
+index e6cbc6ab6bae..3e5d2da1c807 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
+@@ -201,9 +201,16 @@ struct mdp_comp_info {
+ 	u32 dts_reg_ofst;
  };
  
- /* indicate which mutex is used by each pipepline */
++struct mdp_comp_blend {
++	enum mtk_mdp_comp_id b_id;
++	bool aid_mod;
++	bool aid_clk;
++};
++
+ struct mdp_comp_data {
+ 	struct mdp_comp_match match;
+ 	struct mdp_comp_info info;
++	struct mdp_comp_blend blend;
+ };
+ 
+ struct mdp_comp_ops;
 -- 
 2.18.0
 
