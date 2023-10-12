@@ -4,92 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4DE1CDB47E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:45:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73B5ECDB483
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 09:57:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d9PkghF78IoyLpbi64ECnGrTix4LWfA2pDeqlo9Wuao=; b=FbVNoZBdq4EBBRjy320gC5quPp
-	BCzCvYvDDCJYstfXCIT6oWymVQndMM6cP6vLxZIALOJP//i8O0fDGV4jXIS42dkgjgi4UceRfa+Cg
-	CsZklnRoboq+QQlkoQ8Tq9rNSt8QR3zIZOuIjDbRMp7z018FwVb1BBo+rRZ/Ml62d96ukUF4+4Ys0
-	H/zD6VcNHBq45QI0+18iWeb2bQ6ayiCpRzWHMOpEsZTOGsLpPsOqE/xgGeQnFOwCkZV9ZHCrE3glM
-	bcKp/0a0jhqijmxTM3wdeBRP09l9kLUA4Pk75WiOMQ1gL4Ar7Al1XZ5Qv9A2J1YnTZIafiDY1iqNg
-	mlu2SHeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X3/cwVyR7KZ7QUQYTIcQpvLbO+aeX8cCIlKD1ccQDY4=; b=dX3hjIyeU06eVtr14hAtyeROjM
+	KdKvbVxb8qw9jnf4H5Wp1/6AkfjE3+tFM+JkVFrSDvyztZvHHOgUcbJvjf2ziiTHt6mXj16EpyVq4
+	sLzU6sULgBZvXlY2XT0PeCDb1JqNfTk+C7YlfgHsUm48Ftnw+zSl1/YMNdRZEs2m72OvivT0Sna5M
+	6HdXN4qCoR8Yu8Sxw5yH+X5JfqRrep6wlQ26GNGa0wxIGHYIGL2kts251tkybr2O9HNgKCHEU0k2C
+	slXolRwoAq3Uu41MHmKhrfjvcO1RFz+yYq/v7OQbb3M7BIyN+irAmZ+LBk/yYiliN0o8J0mGLpLQa
+	NbYPFhhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqsGG-000Qo9-2H;
-	Thu, 12 Oct 2023 09:45:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qqsRy-000T4T-2N;
+	Thu, 12 Oct 2023 09:57:50 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqrFz-000DHa-15;
-	Thu, 12 Oct 2023 08:41:26 +0000
-X-UUID: 1be3668e68db11ee86758d4a7c00f3a0-20231012
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=d9PkghF78IoyLpbi64ECnGrTix4LWfA2pDeqlo9Wuao=;
-	b=djnG9ExQaKDHKzsYbzTKmx55sxJ5QhWpV6oCbd2E/eadhx9S83yvQXU8GNH7FgZRSbFAt0uba3MnzNNNh+vX8Xi1e4Bm7n24J//YDtK6um2gtswVoPe8A8qwEhAO0vFOEvhOmQRRuJN5snZ9YzwF3x3ohsPifF9N8T0ZaiHxvms=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:131b5144-3b2f-432f-b596-b681adb6f394,IP:0,U
-	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:5f78ec9,CLOUDID:41dfd8bf-14cc-44ca-b657-2d2783296e72,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 1be3668e68db11ee86758d4a7c00f3a0-20231012
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 280084856; Thu, 12 Oct 2023 01:41:17 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 12 Oct 2023 16:40:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 12 Oct 2023 16:40:43 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
-	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Moudy
- Ho" <moudy.ho@mediatek.com>
-Subject: [PATCH v7 09/16] dt-bindings: media: mediatek: mdp3: add component TCC for MT8195
-Date: Thu, 12 Oct 2023 16:40:30 +0800
-Message-ID: <20231012084037.19376-10-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231012084037.19376-1-moudy.ho@mediatek.com>
-References: <20231012084037.19376-1-moudy.ho@mediatek.com>
+	id 1qqsRu-000T0x-1M;
+	Thu, 12 Oct 2023 09:57:47 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BCF866607347;
+	Thu, 12 Oct 2023 10:57:43 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697104664;
+	bh=GNaxNHbapmi9hbIO68Zjse2+OnXApt805nyN8Nmelgk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=DPKFvW1hr8BdWcBP14KZZuJBneFbfqMv/OSgjPxhMCYMS7t7SDdhAQoGYjq7RlDe7
+	 ay8iuBcRtcI1tHx2XGY4WEQtP2aSKOgMRBrmIbC3CED6/Dox6jpGSvzGSg641e/jNS
+	 vNbCpai6HEIz3t6K91qv0wg3II9G5kfzrJUglpvIYG5WL9BdJ19zfH3rkaowQoJ9pw
+	 y+RDJkD3UVnU6jMDoim+RihOumcYUgfUTuMse6Hb/l/addj9TestbP0snZ1B7NeJt5
+	 JFlbElRQ5wzZVz9kO4K4vrZ0lkGReR9j/0fhQfDARgegIhUc0LhWdt7L6DwigF2INs
+	 S3J+fernUf7IA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	wenst@chromium.org,
+	kernel@collabora.com,
+	ehristev@collabora.com,
+	nfraprado@collabora.com,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	CK Hu <ck.hu@mediatek.com>
+Subject: [PATCH v11 02/16] drm/mediatek: gamma: Reduce indentation in mtk_gamma_set_common()
+Date: Thu, 12 Oct 2023 11:57:22 +0200
+Message-ID: <20231012095736.100784-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231012095736.100784-1-angelogioacchino.delregno@collabora.com>
+References: <20231012095736.100784-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.594300-8.000000
-X-TMASE-MatchedRID: XAa2d/45j8ToRPKKjGHPUxcqpH7D1rtQTJDl9FKHbrm7qpOHKudqczQz
-	47GqDWjpnD3AxwqeC/rkllaluas5jhhzK7qAlTSLbBu6+EIezdwzc8FC0MEwT48D7T+G1GV/HCd
-	GeoAEt/3GC9LL60ZzlKs2iyhaZgqyosJM7VQrKm9IRA38P/dwbofsPVs/8Vw6WabPstVV86lkHC
-	sgREbP4RmgGxBaKosCumMCMwce1mUfE8yM4pjsDxZ4ylU2GwzAxEHRux+uk8jHUU+U0ACZwFLpC
-	cuF3zReHuXtW/qJcDfc4EtpCcgTjBFF8L+JyICrnqg/VrSZEiM=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.594300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5B06B0C9E0164937661A1F58A606FF1B1F8F7FA5AF0AE72564CB43A569881CF02000:8
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_014123_382195_D1E70502 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20231012_025746_647856_058B11CB 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,84 +86,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the fundamental hardware configuration of component TCC,
-which is controlled by MDP3 on MT8195.
+Invert the check for state->gamma_lut and move it at the beginning
+of the function to reduce indentation: this prepares the code for
+keeping readability on later additions.
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+This commit brings no functional changes.
+
+Reviewed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/media/mediatek,mdp3-tcc.yaml     | 62 +++++++++++++++++++
- 1 file changed, 62 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 45 ++++++++++++-----------
+ 1 file changed, 23 insertions(+), 22 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
-new file mode 100644
-index 000000000000..f134160f85b9
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
-@@ -0,0 +1,62 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-tcc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+index 68e2565b88a5..63840e25416b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+@@ -64,6 +64,10 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crt
+ 	u32 word;
+ 	u32 diff[3] = {0};
+ 
++	/* If there's no gamma lut there's nothing to do here. */
++	if (!state->gamma_lut)
++		return;
 +
-+title: MediaTek Media Data Path 3 TCC
+ 	/* If we're called from AAL, dev is NULL */
+ 	gamma = dev ? dev_get_drvdata(dev) : NULL;
+ 
+@@ -72,29 +76,26 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crt
+ 	else
+ 		lut_diff = false;
+ 
+-	if (state->gamma_lut) {
+-		reg = readl(regs + DISP_GAMMA_CFG);
+-		reg = reg | GAMMA_LUT_EN;
+-		writel(reg, regs + DISP_GAMMA_CFG);
+-		lut_base = regs + DISP_GAMMA_LUT;
+-		lut = (struct drm_color_lut *)state->gamma_lut->data;
+-		for (i = 0; i < MTK_LUT_SIZE; i++) {
+-
+-			if (!lut_diff || (i % 2 == 0)) {
+-				word = (((lut[i].red >> 6) & LUT_10BIT_MASK) << 20) +
+-					(((lut[i].green >> 6) & LUT_10BIT_MASK) << 10) +
+-					((lut[i].blue >> 6) & LUT_10BIT_MASK);
+-			} else {
+-				diff[0] = (lut[i].red >> 6) - (lut[i - 1].red >> 6);
+-				diff[1] = (lut[i].green >> 6) - (lut[i - 1].green >> 6);
+-				diff[2] = (lut[i].blue >> 6) - (lut[i - 1].blue >> 6);
+-
+-				word = ((diff[0] & LUT_10BIT_MASK) << 20) +
+-					((diff[1] & LUT_10BIT_MASK) << 10) +
+-					(diff[2] & LUT_10BIT_MASK);
+-			}
+-			writel(word, (lut_base + i * 4));
++	reg = readl(regs + DISP_GAMMA_CFG);
++	reg = reg | GAMMA_LUT_EN;
++	writel(reg, regs + DISP_GAMMA_CFG);
++	lut_base = regs + DISP_GAMMA_LUT;
++	lut = (struct drm_color_lut *)state->gamma_lut->data;
++	for (i = 0; i < MTK_LUT_SIZE; i++) {
++		if (!lut_diff || (i % 2 == 0)) {
++			word = (((lut[i].red >> 6) & LUT_10BIT_MASK) << 20) +
++				(((lut[i].green >> 6) & LUT_10BIT_MASK) << 10) +
++				((lut[i].blue >> 6) & LUT_10BIT_MASK);
++		} else {
++			diff[0] = (lut[i].red >> 6) - (lut[i - 1].red >> 6);
++			diff[1] = (lut[i].green >> 6) - (lut[i - 1].green >> 6);
++			diff[2] = (lut[i].blue >> 6) - (lut[i - 1].blue >> 6);
 +
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+
-+description:
-+  Tone Curve Conversion (TCC) is one of Media Profile Path 3 (MDP3) components.
-+  It is used to handle the tone mapping of various gamma curves in order to
-+  achieve HDR10 effects. This helps adapt the content to the color and
-+  brightness range that standard display devices typically support.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8195-mdp3-tcc
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    description:
-+      The register of display function block to be set by gce. There are 4 arguments,
-+      such as gce node, subsys id, offset and register size. The subsys id that is
-+      mapping to the register of display function blocks is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    display@1400b000 {
-+        compatible = "mediatek,mt8195-mdp3-tcc";
-+        reg = <0x1400b000 0x1000>;
-+        mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xb000 0x1000>;
-+        clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
-+    };
++			word = ((diff[0] & LUT_10BIT_MASK) << 20) +
++				((diff[1] & LUT_10BIT_MASK) << 10) +
++				(diff[2] & LUT_10BIT_MASK);
+ 		}
++		writel(word, (lut_base + i * 4));
+ 	}
+ }
+ 
 -- 
-2.18.0
+2.42.0
 
 
