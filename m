@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E62CDB474
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 21:33:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDDCCDB474
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 22:09:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2BYkIIVgUSUDIvsA7oyJJgebrxVB8pqETFUsWWaA5is=; b=eSnEFavE8dE6ly0rw47qlDyLmF
-	sKE83kgvoH7YzpWKmclyfGYJvy0s+8QBuB1ZFndO7OIGGVS/IUN7ZEVsWAcICN6eFiUOHhOhdi0lL
-	yM44oO2/eUC7bhGjiCGbUYDv2KdNJ8Oy2WQNg2ynhp4PnaVrdzB8YLdlw130bHlM7mUgJ0za06Fdw
-	JwFgJ1HuGtsClAYPz79JQmY0mtoCJgMe1kB6sndS6cfggbF/pTgdBVXAkT3E7Fv1SBbcI4stYAPCy
-	fYmLqoJZl2CntqrlRh0tvxTtnxJYnH1Q9MmEDKL8PISsTWnU1CijR5wNPgbAr3DMS2y9bggdSWOOT
-	tO96e57w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=444ktds/4JrKI+0XrutfsgS+gncLkk3Jh96ydVUMBLc=; b=HUDC1WmII3FQcHHjgAyTvAtZru
+	KEj6jMLpqW/DV3K9vZ+AQWBcPFzsvri/5iPKwOJPB0oZjglnTkzxBMeIRc8YNKrQux4L1LBsz48kr
+	W27RlmyWJXPywYRiRelC86ETepp8xxo2O4eOT9Aiz+sg1aZozDxuQ8UHGZbzvGqQJhX6D121fHCjc
+	VPAHjOnXBYK628tGlTT/C6PI14ULBH7gV6wX8jyi/OqxpDhNFa+t3jlRaU7VdqheqxhxI8jpVh4Ux
+	c3bax6a8TBI4Y0aon7hBkNd6WYNnFDVHa5sRfjDoE1iO37ragY48hW/2r2PTwYOXjZht/agnueZxP
+	1+VMoT1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qr3J8-001uKF-2K;
-	Thu, 12 Oct 2023 21:33:26 +0000
-Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
+	id 1qr3sH-001xhM-0R;
+	Thu, 12 Oct 2023 22:09:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qr3J6-001uJ3-0m
+	id 1qr3sE-001xgk-2h
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Oct 2023 21:33:25 +0000
-Received: by mail-oo1-xc32.google.com with SMTP id 006d021491bc7-57b68556d6dso723282eaf.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 14:33:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1697146400; x=1697751200; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=2BYkIIVgUSUDIvsA7oyJJgebrxVB8pqETFUsWWaA5is=;
-        b=VFaQLuqadYIxEPwQcHhF9C1cGMyyx425ZD5MB/8CaRT7IcnpZV7dgFQmCXh0KX/MG0
-         4agd6NLpkNOLuhL+cfrE/miUTT0rRWxpiK3GsHtSa4P4x4YZby1dvJT75ZdDefQ009G8
-         uH0zUcXH+8AYwTn/TJ11AruRmNcVZg3jt52vc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697146400; x=1697751200;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2BYkIIVgUSUDIvsA7oyJJgebrxVB8pqETFUsWWaA5is=;
-        b=GCokGGwAs4l0Vui5CUOkXhf9beGnPtqeeIozc0/S4sF1s6P+tpMF8D0cqBg++PLMQc
-         UcZkS3m58hO9PyiMYtiCxc7vWkDIBxlO1fTF8fJ5stwisVXTvwasz30VhPDwC0DhgDlj
-         tHTwUmLh+JqHxjc+IFPEwP0HuK0lly2+0cncyoxo52FfxvbWw1ZXsiOJWw5+e0gSyu9w
-         mWm827sZWdx1L0vbT4evtC1QNFIaORRTCuwJWJxqPNUQZDg4LznYTuFb0k9InFDDNQEz
-         Mee7rmeinQPAdtBcp65fCZwzDQ/9SzkrnZ6eWHpA3OY4fOD3/V35UIVB8iuuEZQntF15
-         r8hA==
-X-Gm-Message-State: AOJu0Yw83zofHf5Z8sKUJ6CbY3WsWft+JxtUkiZ6AzXf4MH64n8QeEI+
-	N6TAucfzAjxziWAKxsnudxFnAw==
-X-Google-Smtp-Source: AGHT+IEWHo3wYMQMcz7GsN7HjGYb7tuVwk/HPXskUKjfbq7nnE1N5b1naGdES5Ku76oGH6B7c1F9zA==
-X-Received: by 2002:a05:6358:988d:b0:135:b4c:a490 with SMTP id q13-20020a056358988d00b001350b4ca490mr26095712rwa.10.1697146400420;
-        Thu, 12 Oct 2023 14:33:20 -0700 (PDT)
-Received: from google.com ([2401:fa00:1:10:7397:2561:ed13:bac8])
-        by smtp.gmail.com with ESMTPSA id n14-20020a62e50e000000b0069319bfed42sm12141026pff.79.2023.10.12.14.33.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Oct 2023 14:33:19 -0700 (PDT)
-Date: Fri, 13 Oct 2023 05:33:16 +0800
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>, matthias.bgg@gmail.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 1/4] arm64: dts: mediatek: cherry: Add platform
- thermal configuration
-Message-ID: <20231012213316.GA2659196@google.com>
-References: <20230424112523.1436926-1-angelogioacchino.delregno@collabora.com>
- <20230424112523.1436926-2-angelogioacchino.delregno@collabora.com>
- <31d1d1e4-2f75-bbbd-3e4b-6c796f2d39d1@baylibre.com>
+	Thu, 12 Oct 2023 22:09:44 +0000
+X-UUID: 05f0ac9e694c11ee9b7791016c24628a-20231012
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=444ktds/4JrKI+0XrutfsgS+gncLkk3Jh96ydVUMBLc=;
+	b=kNVOpos71lhF7Shn2z6HwMrxubc5pPX6az77xCi9XCJzGUjPkWMplTiflEeG8w+tTQ8/Dp9B8HyUwHU1ZV/gmr3c9yrGbVaKo2giFcu6FpA88qGuZhPwNa9PFbYxsRs6BVlcfIB2unNHe2JatHTm6zkG2SnRkd9DGqZMz53Vo44=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:ee56cabb-b462-4aaf-96f8-e53863d05e72,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:d56ebaf0-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 05f0ac9e694c11ee9b7791016c24628a-20231012
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <yi-chia.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 311068057; Thu, 12 Oct 2023 15:09:33 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 13 Oct 2023 06:09:30 +0800
+Received: from mussdccf250.mussds.eus.mediatek.inc (10.73.250.250) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 13 Oct 2023 06:09:28 +0800
+From: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>, Peter Chiu
+	<chui-hao.chiu@mediatek.com>, Benjamin Lin <benjamin-jw.lin@mediatek.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
+Subject: [RESEND PATCH] wifi: mt76: mt7996: fix uninitialized variable in parsing txfree
+Date: Thu, 12 Oct 2023 15:09:21 -0700
+Message-ID: <e6c9a6fdeeaa57d73560c895046da4a58983297d.1697146767.git.yi-chia.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <31d1d1e4-2f75-bbbd-3e4b-6c796f2d39d1@baylibre.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_143324_307181_C70B38FE 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20231012_150942_903719_2D1235EB 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,158 +86,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo
+Fix the uninitialized variable warning in mt7996_mac_tx_free.
 
-On Tue, Apr 25, 2023 at 01:46:42PM +0200, Alexandre Mergnat wrote:
-> On 24/04/2023 13:25, AngeloGioacchino Del Regno wrote:
-> > This platform has three auxiliary NTC thermistors, connected to the
-> > SoC's ADC pins. Enable the auxadc in order to be able to read the
-> > ADC values, add a generic-adc-thermal LUT for each and finally assign
-> > them to the SoC's thermal zones.
-> > 
-> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> >   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 105 ++++++++++++++++++
-> >   1 file changed, 105 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> > index 8ac80a136c37..4229f4f7dc2f 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> > @@ -114,6 +114,77 @@ ppvar_sys: regulator-ppvar-sys {
-> >   		regulator-boot-on;
-> >   	};
-> > +	/* Murata NCP03WF104F05RL */
-> > +	tboard_thermistor1: thermal-sensor-t1 {
-> > +		compatible = "generic-adc-thermal";
-> > +		#thermal-sensor-cells = <0>;
-> > +		io-channels = <&auxadc 0>;
-> > +		io-channel-names = "sensor-channel";
-> > +		temperature-lookup-table = <	(-10000) 1553
-> > +						(-5000) 1485
-> > +						0 1406
-> > +						5000 1317
-> > +						10000 1219
-> > +						15000 1115
-> > +						20000 1007
-> > +						25000 900
-> > +						30000 796
-> > +						35000 697
-> > +						40000 605
-> > +						45000 523
-> > +						50000 449
-> > +						55000 384
-> > +						60000 327
-> > +						65000 279
-> > +						70000 237
-> > +						75000 202
-> > +						80000 172
-> > +						85000 147
-> > +						90000 125
-> > +						95000 107
-> > +						100000 92
-> > +						105000 79
-> > +						110000 68
-> > +						115000 59
-> > +						120000 51
-> > +						125000 44>;
-> > +	};
-> > +
-> > +	tboard_thermistor2: thermal-sensor-t2 {
-> > +		compatible = "generic-adc-thermal";
-> > +		#thermal-sensor-cells = <0>;
-> > +		io-channels = <&auxadc 1>;
-> > +		io-channel-names = "sensor-channel";
-> > +		temperature-lookup-table = <	(-10000) 1553
-> > +						(-5000) 1485
-> > +						0 1406
-> > +						5000 1317
-> > +						10000 1219
-> > +						15000 1115
-> > +						20000 1007
-> > +						25000 900
-> > +						30000 796
-> > +						35000 697
-> > +						40000 605
-> > +						45000 523
-> > +						50000 449
-> > +						55000 384
-> > +						60000 327
-> > +						65000 279
-> > +						70000 237
-> > +						75000 202
-> > +						80000 172
-> > +						85000 147
-> > +						90000 125
-> > +						95000 107
-> > +						100000 92
-> > +						105000 79
-> > +						110000 68
-> > +						115000 59
-> > +						120000 51
-> > +						125000 44>;
-> > +	};
-> > +
-> >   	usb_vbus: regulator-5v0-usb-vbus {
-> >   		compatible = "regulator-fixed";
-> >   		regulator-name = "usb-vbus";
-> > @@ -260,6 +331,10 @@ &gpu {
-> >   	mali-supply = <&mt6315_7_vbuck1>;
-> >   };
-> > +&auxadc {
-> 
-> Can you put it in alphabetical order please. ?
+Fixes: 2461599f835e ("wifi: mt76: mt7996: get tx_retries and tx_failed from txfree")
+Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I believe this patch needs to be respun?
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 04540833485f..59ab07b89087 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -1074,7 +1074,7 @@ mt7996_mac_tx_free(struct mt7996_dev *dev, void *data, int len)
+ 	struct mt76_phy *phy3 = mdev->phys[MT_BAND2];
+ 	struct mt76_txwi_cache *txwi;
+ 	struct ieee80211_sta *sta = NULL;
+-	struct mt76_wcid *wcid;
++	struct mt76_wcid *wcid = NULL;
+ 	LIST_HEAD(free_list);
+ 	struct sk_buff *skb, *tmp;
+ 	void *end = data + len;
+-- 
+2.39.0
 
-> > +	status = "okay";
-> > +};
-> > +
-> >   &i2c0 {
-> >   	status = "okay";
-> > @@ -1098,6 +1173,36 @@ mt6315_7_vbuck1: vbuck1 {
-> >   	};
-> >   };
-> > +&thermal_zones {
-> > +	soc-area-thermal {
-> > +		polling-delay = <1000>;
-> > +		polling-delay-passive = <250>;
-> > +		thermal-sensors = <&tboard_thermistor1>;
-> > +
-> > +		trips {
-> > +			trip-crit {
-> > +				temperature = <84000>;
-> > +				hysteresis = <1000>;
-> > +				type = "critical";
-> > +			};
-> > +		};
-> > +	};
-> > +
-> > +	pmic-area-thermal {
-> > +		polling-delay = <1000>;
-> > +		polling-delay-passive = <0>;
-> > +		thermal-sensors = <&tboard_thermistor2>;
-> > +
-> > +		trips {
-> > +			trip-crit {
-> > +				temperature = <84000>;
-> > +				hysteresis = <1000>;
-> > +				type = "critical";
-> > +			};
-> > +		};
-> > +	};
-> > +};
-> > +
-> >   &u3phy0 {
-> >   	status = "okay";
-> >   };
-> 
-> After that:
-> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> 
-> Regards,
-> Alexandre
-> 
 
