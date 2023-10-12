@@ -4,80 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC6FBCDB482
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 12:52:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB680CDB46E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 12:53:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Va6M4P63HFdLBdcSi0Qju5Pv6e6ASphJdoqBwkkySi8=; b=Gz2OJdxz8Zwd/OqqV4PCdXvZyO
-	Zo7M0UV6nhNsGYY2GLHpeQSxRKFxB1XvGmBlqwqZaRul3Ul1MJeW4+VkESvAPy6w8xgUMtxDLfpnV
-	hp4sg2m69W01Txav/E406EU/GFKPXQlY7354dwOqNvZZrPl/qfpAcAFuTDqU6/DTw1ACwxsxAzphN
-	5bS963O4oN5laGSRZVSUOzQHuqNr43b9obR3+/FCA24TDk9EG/eJWVrW8UE3HX/dYqJjFT3H1DWhb
-	RqPqc2i8l0liIuFNCU/mr/q+/dUdjSrc+7YijNKAl1Lt9mnI3pIhcCyZuf6YdUaBxWZ1laxqQyY/d
-	BOF9HRgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZTqs1gHwkTK1TzF/cBF9nWFhnrzkUuQr7iLgEbKD8EA=; b=noYYrq7h6E3qxBZAw46Erhya3e
+	jEea584JCoihswVai1wZjKxb4rr8hqDWt8aK6tzHR1qmnekdKNJzRpn1ISsYF9Z/IACB8qt1OQGhX
+	e6g1LSI+fDSJAMuQgmrUIrTCB2GroZYy4o/SPUjUPA3qm8OfFtJAPR4HEjUSt9eS/RaoXupFUQER3
+	IlbQ762Sn4lcs1LrTyYQdOlxfXqPiEhFGFCDMafor0QP1j9aQc/jc5JdsZXFbtDHBl9polgHsJ1DT
+	A4a/oatpEwhAx+2t0JX5ECQxVXk29g2d4Bbtk2vb3q3N/03qizp0WoUQcmwBAQrgWvHmNlWNVkMEl
+	VT0rQxHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqvAv-0010VL-1c;
-	Thu, 12 Oct 2023 12:52:25 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qqvBz-0010fx-2N;
+	Thu, 12 Oct 2023 12:53:31 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqvAr-0010Ui-25;
-	Thu, 12 Oct 2023 12:52:23 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 85202660733F;
-	Thu, 12 Oct 2023 13:52:18 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697115139;
-	bh=IsbNRiCoYuF2r7zCtmm48fin6dOhQrk0w4mVm3Aehb4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EI6xHqdOve9l7tOpeJ5xPvrZznHbT7LdVqIdOabEgiffi5fSiEzMWI2cI843nCn5P
-	 zqlBgBfW+2257HYlkqzGcEN8L0kbv0Dw95BtRRjMBxbm5Tr++/Io5AoZUX+GiUwhnL
-	 Hg7tWcbKVnxwcYQ2vh1u5skXmnw9/f/65WRSMARylJnD3R6xWMn+/oUJeH3tQNTs4V
-	 RYuZ7nzRMgsoU9FPF+pKHNO4tRbVT3M3g8/eA/QpkueQjIBXQn5LhNGHWbX7lpOPOd
-	 kq6DUrTr9WTsGqD4LhTH+vuIc0YDFAfWlMQN/hxkgrZFsUpZ6DjVNtiuNDh3gkaSnJ
-	 jT96NXtWo/MVg==
-Message-ID: <930f6df4-3267-59df-ad75-244f5b9cee84@collabora.com>
-Date: Thu, 12 Oct 2023 14:52:16 +0200
+	id 1qqvBw-0010ev-0r
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Oct 2023 12:53:30 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 544B47FC;
+	Thu, 12 Oct 2023 14:53:20 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1697115200;
+	bh=jfmNcgh7uAOZlzRx94YU82ELNUgJ5za28cq9/WfJDEs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JnQIH0og0gU+Fl0dFwNKehs8GCN39qgCkBW6BWRWYkg61xco5cYbi0UYKuVlVDoKg
+	 r6fI+oDiqF+j+1FjNEDzrppPMDWQI6ZnXjLqrDJuhVP3mbJjSB9UkK1b6WbGvX93cC
+	 EOThTVZJR1YNSqQstdPqJiurm8YqrLex00CIVTlA=
+Date: Thu, 12 Oct 2023 15:53:30 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: linux-media@vger.kernel.org
+Cc: Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 0/3] media: i2c: Add driver for THine THP7312 ISP
+Message-ID: <20231012125330.GB11243@pendragon.ideasonboard.com>
+References: <20231012012016.11535-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH] PCI: mediatek-gen3: Fix translation window
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmlleXkgWWFuZyAo5p2o5rSBKQ==?= <Jieyy.Yang@mediatek.com>,
- =?UTF-8?B?Q2h1YW5qaWEgTGl1ICjmn7PkvKDlmIkp?= <Chuanjia.Liu@mediatek.com>,
- =?UTF-8?B?SmlhbiBZYW5nICjmnajmiKwp?= <Jian.Yang@mediatek.com>,
- =?UTF-8?B?UWl6aG9uZyBDaGVuZyAo56iL5ZWf5b+gKQ==?=
- <Qizhong.Cheng@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Ryder Lee <Ryder.Lee@mediatek.com>
-References: <20231011122633.31559-1-jianjun.wang@mediatek.com>
- <899c7275-ccca-43bb-b1ae-a3403dd18622@baylibre.com>
- <088559162e5ec4e2d6d38d8a5707c6e0e12f5ac6.camel@mediatek.com>
- <54ed1269-8699-4531-abc6-09b602adece9@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <54ed1269-8699-4531-abc6-09b602adece9@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20231012012016.11535-1-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_055221_942661_8731C527 
-X-CRM114-Status: GOOD (  29.96  )
+X-CRM114-CacheID: sfid-20231012_055328_470909_CEB06A53 
+X-CRM114-Status: GOOD (  34.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,91 +73,215 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/10/23 12:27, Alexandre Mergnat ha scritto:
+On Thu, Oct 12, 2023 at 04:20:13AM +0300, Laurent Pinchart wrote:
+> Hello,
 > 
+> This patch series adds a new driver for the THine THP7312 ISP. It has
+> been tested on an OLogic Pumpkin i350, which has a Mediatek MT8365 SoC,
+> with the THine THSCG101 camera module.
 > 
-> On 12/10/2023 08:17, Jianjun Wang (王建军) wrote:
->> On Wed, 2023-10-11 at 17:38 +0200, Alexandre Mergnat wrote:
->>> External email : Please do not click links or open attachments until
->>> you have verified the sender or the content.
->>>
->>>
->>> On 11/10/2023 14:26, Jianjun Wang wrote:
->>> > The size of translation table should be a power of 2, using fls()
->>> cannot > get the proper value when the size is not a power of 2. For
->>> example, > fls(0x3e00000) - 1 = 25, hence the PCIe translation window size
->>> will be > set to 0x2000000 instead of the expected size 0x3e00000. Fix
->>> translation > window by splitting the MMIO space to multiple tables if its size
->>> is not > a power of 2.
->>>
->>> Hi Jianjun,
->>>
->>> I've no knowledge in PCIE, so maybe what my suggestion is stupid:
->>>
->>> Is it mandatory to fit the translation table size with 0x3e00000 (in this 
->>> example) ?
->>> I'm asking because you can have an issue by reaching the maximum translation 
->>> table number.
->>>
->>> Is it possible to just use only one table with the power of 2 size
->>> above 0x3e00000 => 0x4000000 ( fls(0x3e00000) = 26 = 0x4000000). The
->>> downside of this method is wasting allocation space. AFAIK I already see this 
->>> kind of method for memory protection/allocation in embedded systems,
->>> so I'm wondering if this method is safer than using multiple table for
->>> only one size which isn't a power of 2.
->>
->> Hi Alexandre,
->>
->> It's not mandatory to fit the translation table size with 0x3e00000,
->> and yes we can use only one table with the power of 2 size to prevent
->> this.
->>
->> For MediaTek's SoCs, the MMIO space range for each PCIe port is fixed,
->> and it will always be a power of 2, most of them will be 64MB. The
->> reason we have the size which isn't a power of 2 is that we reserve an
->> IO space for compatible purpose, some older devices may still use IO
->> space.
->>
->> Take MT8195 as an example, its MMIO size is 64MB, and the declaration
->> in the DT is like:
->> ranges = <0x81000000 0 0x20000000 0x0 0x20000000 0 0x200000>,
->>           <0x82000000 0 0x20200000 0x0 0x20200000 0 0x3e00000>;
->>
->> The MMIO space is splited to 2MB IO space and 62MB MEM space, that's
->> cause the current risk of the MEM space range, its actual available MEM
->> space is 32MB. But it still works for now because most of the devices
->> only require a very small amount of MEM space and will not reach ranges
->> higher than 32MB.
->>
->> So for the concern of reaching the maximum translation table number, I
->> think maybe we can just print the warning message instead of return
->> error code, since it still works but have some limitations(MEM space
->> not set as DT expected).
->>
+> Technically the driver itself (and its bindings) have no dependencies,
+> but to run/test this on the Pumpkin i350 with the mainline kernel, a
+> large number of patches are needed to support the board and the MT8365
+> SoC. Some of those patches are on their way to mainline, and some, like
+> the Pumpkin i350 board device tree, will require more work. For
+> convenience and reference, the needed patches are available in [1].
+> Example overlays for DT integration of the THP7312 are available in that
+> branch, in [2].
 > 
-> Ok understood, thanks for your explanation.
-> Then, IMHO, you should use only one table with the power of 2 size above to make 
-> the code simpler, efficient, robust, more readable and avoid confusion about the 
-> warning.
+> [1] https://git.kernel.org/pub/scm/linux/kernel/git/pinchartl/linux.git/log/?h=mtk/v6.6/pumpkin/camera
+> [2] https://git.kernel.org/pub/scm/linux/kernel/git/pinchartl/linux.git/commit/?h=mtk/v6.6/pumpkin/camera&id=e5fd74796c3e0973991bab2692a3534ed1a23d86
 > 
-> This is what is done for pci-mvebu.c AFAII.
+> Compared to v1, this is a near complete rewrite of the driver that has
+> taken (to my knowledge) all review comments into account.
 > 
-> If you prefer waiting another reviewer with a better PCIE expertise than me, it's 
-> ok for me. With the information I have currently, I prefer to not approve the 
-> current implementation because, from my PoV, it introduce unnecessary complexity.
+> Below is the mandatory v4l2-compliance report. Careful readers may
+> notice that my v4l2-utils version is three commits behind upstream, but
+> that makes no practical difference as those commits are not related to
+> v4l2-compliance.
 > 
+> The mainline kernel is currently fairly unstable on the Pumpkin i350
+> board. For this reason, the driver has primarily been developed against
+> the Mediatek v5.15-based BSP, and successfully tested there. I managed
+> to test it on mainline as well, but that requires close to hundred boots
+> to get a userspace that doesn't segfault. This is why the
+> v4l2-compliance report below is from a run against the BSP. The thp7312
+> driver is identical to this version, except for the usage of
+> .probe_new() on v5.15 that has since been dropped from mainline, and the
+> return type of the .remove() function that was `int` back then.
+> 
+> If anyone would like to help with getting mainline to run better on the
+> Pumpkin i350 board, I would  be grateful :-) It would certainly help
+> maintaining this driver going forward.
 
- From what I understand, using only one table with a size that is a power of two
-won't let us use the entire MMIO space, hence the only solution to allow using
-the entire range is to split to more than one table.
+It turned out not to be too complex after all:
 
-I'm not sure, though, whether PCIe devices would be able to use a MEM space that
-is not power of two, or if those do even exist.
+commit f39c64ed01f56dbac5a3a3570cb3214f18a3ffec
+Author: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Date:   Thu Oct 12 04:21:49 2023 +0300
 
-If there are devices that can use 32MB < mem <= 62MB, then I completely agree
-with Jianjun on this commit.... so please, can any PCI(/e) maintainer comment
-on this situation?
+    arm64: dts: mediatek: mt8365-pumpkin: Add reserved memory region for BL31
 
+    The Pumpkin i350 boot loader doesn't seem to populate reserved memory
+    regions in the device tree, forcing them to be described statically. The
+    mt8365-pumpkin device tree already includes a reserved memory region for
+    BL32, which seems enough for proper operation with the Mediatek
+    v5.15-based BSP kernel.
+
+    With the mainline kernel, however, userspace processes currently crash
+    very randomly. Adding a reserved memory region for BL31, copied from the
+    mt8365-evk device tree, fixes the issue.
+
+    Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
+index 8924bb8dae17..465c20e174da 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
+@@ -52,6 +52,12 @@ reserved-memory {
+ 		#size-cells = <2>;
+ 		ranges;
+
++		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
++		bl31_secmon_reserved: secmon@43000000 {
++			no-map;
++			reg = <0 0x43000000 0 0x30000>;
++		};
++
+ 		/* 12 MiB reserved for OP-TEE (BL32)
+ 		 * +-----------------------+ 0x43e0_0000
+ 		 * |      SHMEM 2MiB       |
+
+
+I've updated the mtk/v6.6/pumpkin/camera branch linked above, and can
+now run v4l2-compliance reliably on v6.6-rc5. Apart from the driver
+version now being 6.6.0, the output is the same.
+
+> # v4l2-compliance -u /dev/v4l-subdev2
+> v4l2-compliance 1.25.0-5097, 64 bits, 64-bit time_t
+> v4l2-compliance SHA: b79e00a74fde 2023-09-13 07:19:23
+> 
+> Compliance test for device /dev/v4l-subdev2:
+> 
+> Driver Info:
+>         Driver version   : 5.15.37
+>         Capabilities     : 0x00000000
+> 
+> Required ioctls:
+>         test VIDIOC_SUDBEV_QUERYCAP: OK
+>         test invalid ioctls: OK
+> 
+> Allow for multiple opens:
+>         test second /dev/v4l-subdev2 open: OK
+>         test VIDIOC_SUBDEV_QUERYCAP: OK
+>         test for unlimited opens: OK
+> 
+> Debug ioctls:
+> [  353.331499] thp7312 2-0061: =================  START STATUS  =================
+> [  353.332515] thp7312 2-0061: Focus, Automatic Continuous: true
+> [  353.333460] thp7312 2-0061: Focus, Absolute: 0
+> [  353.334074] thp7312 2-0061: Auto-Focus Method: 2
+> [  353.334700] thp7312 2-0061: White Balance, Automatic: true
+> [  353.335432] thp7312 2-0061: Red Balance: 64
+> [  353.335998] thp7312 2-0061: Blue Balance: 50
+> [  353.337065] thp7312 2-0061: Brightness: 0
+> [  353.337627] thp7312 2-0061: Saturation: 10
+> [  353.338182] thp7312 2-0061: Contrast: 10
+> [  353.338712] thp7312 2-0061: Sharpness: 8
+> [  353.339242] thp7312 2-0061: Rotate: 0
+> [  353.339742] thp7312 2-0061: Auto Exposure, Bias: 0
+> [  353.340453] thp7312 2-0061: Power Line Frequency: 50 Hz
+> [  353.341160] thp7312 2-0061: Camera Orientation: Front
+> [  353.341835] thp7312 2-0061: Camera Sensor Rotation: 0
+> [  353.342504] thp7312 2-0061: Low Light Compensation: true
+> [  353.343204] thp7312 2-0061: Noise Reduction Auto: true
+> [  353.343882] thp7312 2-0061: Noise Reduction Level: 0
+> [  353.344636] thp7312 2-0061: ==================  END STATUS  ==================
+>         test VIDIOC_LOG_STATUS: OK
+> 
+> Input ioctls:
+>         test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+>         test VIDIOC_ENUMAUDIO: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDIO: OK (Not Supported)
+>         Inputs: 0 Audio Inputs: 0 Tuners: 0
+> 
+> Output ioctls:
+>         test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+>         Outputs: 0 Audio Outputs: 0 Modulators: 0
+> 
+> Input/Output configuration ioctls:
+>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+>         test VIDIOC_G/S_EDID: OK (Not Supported)
+> 
+> Control ioctls:
+>         test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+>         test VIDIOC_QUERYCTRL: OK
+>         test VIDIOC_G/S_CTRL: OK
+>         test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+>         test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+>         test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+>         Standard Controls: 17 Private Controls: 4
+> 
+> Format ioctls:
+>         test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK (Not Supported)
+>         test VIDIOC_G/S_PARM: OK (Not Supported)
+>         test VIDIOC_G_FBUF: OK (Not Supported)
+>         test VIDIOC_G_FMT: OK (Not Supported)
+>         test VIDIOC_TRY_FMT: OK (Not Supported)
+>         test VIDIOC_S_FMT: OK (Not Supported)
+>         test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+>         test Cropping: OK (Not Supported)
+>         test Composing: OK (Not Supported)
+>         test Scaling: OK (Not Supported)
+> 
+> Codec ioctls:
+>         test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+>         test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+>         test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+> 
+> Buffer ioctls:
+>         test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK (Not Supported)
+>         test VIDIOC_EXPBUF: OK (Not Supported)
+>         test Requests: OK (Not Supported)
+> 
+> Total for device /dev/v4l-subdev2: 43, Succeeded: 43, Failed: 0, Warnings: 0
+> 
+> Laurent Pinchart (1):
+>   media: uapi: Add controls for the THP7312 ISP
+> 
+> Paul Elder (2):
+>   dt-bindings: media: Add bindings for THine THP7312 ISP
+>   media: i2c: Add driver for THine THP7312
+> 
+>  .../bindings/media/i2c/thine,thp7312.yaml     |  225 ++
+>  .../userspace-api/media/drivers/index.rst     |    1 +
+>  .../userspace-api/media/drivers/thp7312.rst   |   32 +
+>  MAINTAINERS                                   |   10 +
+>  drivers/media/i2c/Kconfig                     |   16 +
+>  drivers/media/i2c/Makefile                    |    1 +
+>  drivers/media/i2c/thp7312.c                   | 2386 +++++++++++++++++
+>  include/uapi/linux/thp7312.h                  |   19 +
+>  include/uapi/linux/v4l2-controls.h            |    6 +
+>  9 files changed, 2696 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
+>  create mode 100644 Documentation/userspace-api/media/drivers/thp7312.rst
+>  create mode 100644 drivers/media/i2c/thp7312.c
+>  create mode 100644 include/uapi/linux/thp7312.h
+> 
+> 
+> base-commit: a1766a4fd83befa0b34d932d532e7ebb7fab1fa7
+
+-- 
 Regards,
-Angelo
+
+Laurent Pinchart
 
