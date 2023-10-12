@@ -4,87 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 645F4CDB46E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 15:39:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EFF4CDB46E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 16:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5Wg3EaV0LyOJdSGTmlTY0VxnIGoAeFlp+VouKoS5lNQ=; b=qltk+7EJ51x0DrrPEBA+5RlOJE
-	vzqgGTNwSKTXnvgM9BsJAeL2/3i4ucn8lZKK2ZMziJSisvdsjhEKKTp4hDxNb93UzBHcGnsm3jTF8
-	pZlp0HGS9V5eVC0ZjZM2Gndz7pfiqxWKMC+3w175bjqWH8bT7hcwSAPmqAD7O8ken2m/+SMLan074
-	lrsAkXsS81wtlGgK4X6n0lrK/K6k2fivpq4QCH9/pOB5eViAr4kOZrmcj9V24ES61/ScS1IntlSe4
-	wuWuGYUGAjeYvIZSgbAtXIFo7PrZCHAOaJdJgN8kwS+sF4pXrwEC9wrrmXnErT+4vo51TcM6OiCkj
-	0r7QC8jQ==;
+	bh=XB7Wf5LgsYf36+k+zhs9TduHabjcJcCiXT3QAGky0tQ=; b=faJiVFUob/1dLXkU6Mq68//tIH
+	oG4VjdlWZnmuzYkBJKnntd8qYM/ZPDyC3klLh8Pg1jJYtPiKI09DqRPHcj1onb5zcbhgNjJxaDqsF
+	VWzCrvsSLk3UoMf4Ko8CrYswIAu5FyBAsPO3rvDRSDfL6VUTKpMz1R0eKaKg8UVpV8MlSWVRtdzva
+	NzkYEDfHx+wUVMyDBkQ/zobrPAHmLzZZm2+Xf1CpJQJ+c1lAUNCmk9SLGUXeCjUQcMDjTHVrwTmkO
+	YFeqt3vVN/UnvEgDrh8PquAoHB9AYBbP87XPM9MpJQTsN/RlVgL9AzzilhAaSxsu3ZlCoE5p11MV4
+	h1jlUedw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqxmO-001JcD-0n;
-	Thu, 12 Oct 2023 15:39:16 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1qqyoV-001S8e-24;
+	Thu, 12 Oct 2023 16:45:31 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqxmK-001Jac-33
+	id 1qqyoS-001S7D-03
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Oct 2023 15:39:14 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-32c9f2ce71aso923715f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 08:39:10 -0700 (PDT)
+	Thu, 12 Oct 2023 16:45:29 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-53e08b60febso1554202a12.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 09:45:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697125149; x=1697729949; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5Wg3EaV0LyOJdSGTmlTY0VxnIGoAeFlp+VouKoS5lNQ=;
-        b=H+BdlhWpuCI+db7vryIJXOsnW+CVCW0sZIkejIHOnvFDC79wg+D4+5cujQ9ms/Bvm7
-         Von0btQ5O1Iy+uW8PlXv9d7vwcg53cSmaYWNgOnGDgoL4FIVwEHJ4piVtYkwlbIF6GSw
-         EVzLuxnqGkDIikGfWF/E98NwAtap7BwLMbbC/u5xttPD7dnF1v5DJGKAwi/HEoypiXKn
-         Xtm8lmQYfmmhFNg7bZdWCI/Tf3kN8U3eZJuc29hIB+Qkmv2tFEa04wQcZ5bkFTEEnBwF
-         SN0SwHnES8kytzHDUJF2ChGFCApbuDLHIxwDGkYtHn8Cf915eXGGu/hiLQw3ezBrX12I
-         +YmA==
+        d=chromium.org; s=google; t=1697129123; x=1697733923; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XB7Wf5LgsYf36+k+zhs9TduHabjcJcCiXT3QAGky0tQ=;
+        b=fH1Y6pfn+N+gSgsfwxqrLrEMWsqbCh459kq79CQ+0b9KU38DjD1cnxeCre2pzVgFPb
+         5hNdHOHDULuormM5TJElmj57Z1UIXx8AXCXyH0K1i+PXMCJQWTyU7x0ma7XwtANWXz9H
+         OpBjTqRfsxBfJJgLDB3fc2p8nvIM7MLoXdixA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697125149; x=1697729949;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5Wg3EaV0LyOJdSGTmlTY0VxnIGoAeFlp+VouKoS5lNQ=;
-        b=a3hD45KdRQSHEkM30Ud5H1gPSvPEPovhsgg7D3aEsrm1BzyxLYPMkIF3J0DssdF8lZ
-         SMi1DQWN/v24EUF55Bll+0inNimtI7Qq/U7BIAU35AWxquZX2gquwttuT4fsol9HTCZU
-         wZW8zzwvDLn4+v6bTPCOvrejiuCPan1p1Hl+bfVRgpp03C7hGCz5ktsL55xewAA4SZ8S
-         AM7XFmz+DGy1rigEdA5NDY0a7WCAQXKilKfLBCg+Fe/pgPSoMzuM9bztO/JLjBCu4/tY
-         aEIOXORpQ+C/zSEQZ0oQNJ5FM9bf65n2X/5G/UAdZk/xxX6zdjTJv58zMXDwWvwhTPoU
-         hBTg==
-X-Gm-Message-State: AOJu0YyS2FPibJhXwi+q99rYrZrOIJknjc7Tg+YB0v8PdyHgHk7zfgPg
-	ApHi3eWR50YMwo5h5FEaZU2OFQ==
-X-Google-Smtp-Source: AGHT+IHijqQwPNdUCGMZLUhukz1Vn3a+qjqDBNhrhGPBsyvXuCmqOgvZ6RIuMv02qW+CQW/fPpew8A==
-X-Received: by 2002:a5d:5f04:0:b0:32d:8872:aacb with SMTP id cl4-20020a5d5f04000000b0032d8872aacbmr4751690wrb.53.1697125149337;
-        Thu, 12 Oct 2023 08:39:09 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0? ([2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0])
-        by smtp.googlemail.com with ESMTPSA id f8-20020adfe908000000b0032d8ce46caasm2778956wrm.93.2023.10.12.08.39.08
+        d=1e100.net; s=20230601; t=1697129123; x=1697733923;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XB7Wf5LgsYf36+k+zhs9TduHabjcJcCiXT3QAGky0tQ=;
+        b=AazXU79G9ugUAGzseT/IqTHFq3BRZ5m7pQAl4PDGelHZdoCaxLyUyXyFfxfkKM2jPe
+         aUPpVsB47F2MPqOY+IJYWUp4JvhaDAF7sg+55zBSIVOjBd42mMwXE/l4rkC/PgPBsT1J
+         SMxH49VASmt/XKpcAsiZROKgoFZ0IKyF4nApliipqV9V6zssx8DvbLYmf8VGoRWzAp8z
+         ZW9ZbUC23M2FFvZhZDUIYarRS56jji9GW80b8sAhReRh/20tVjGiXZjiBQlddiOBKd2r
+         SbXdQTZlXdUVWrvg8e62asEFqlnfUsXYjGbl/xfiU7Z4qLACa0vg0oQSY2q2Jx5tHvwh
+         ujFg==
+X-Gm-Message-State: AOJu0YzXr96O/tea8zJHnLQ/FR94p5bs9g88AQXDQ4M3wWXoR2tHvUVJ
+	87oDg7Flmz/oape5mc55ATX8Fvueh+2AUUGyo8p0nQ==
+X-Google-Smtp-Source: AGHT+IFduZumTtJmp26sA5mj2Xeu2HmOHiVQrQHBO1mh0ckz8jBtXrI7o3DMxIMHYN+tmXS6QqdDEg==
+X-Received: by 2002:a17:906:20dd:b0:9ba:399b:61b0 with SMTP id c29-20020a17090620dd00b009ba399b61b0mr8258006ejc.66.1697129122827;
+        Thu, 12 Oct 2023 09:45:22 -0700 (PDT)
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com. [209.85.128.48])
+        by smtp.gmail.com with ESMTPSA id p6-20020a1709061b4600b0098e2969ed44sm11172975ejg.45.2023.10.12.09.45.22
+        for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Oct 2023 08:39:08 -0700 (PDT)
-Message-ID: <a3255da4-b2af-4403-af68-3067a5fd49bf@linaro.org>
-Date: Thu, 12 Oct 2023 17:39:08 +0200
+        Thu, 12 Oct 2023 09:45:22 -0700 (PDT)
+Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-405459d9a96so1965e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 09:45:22 -0700 (PDT)
+X-Received: by 2002:a05:600c:3c96:b0:3f6:f4b:d4a6 with SMTP id
+ bg22-20020a05600c3c9600b003f60f4bd4a6mr262956wmb.7.1697129121865; Thu, 12 Oct
+ 2023 09:45:21 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Subject: thermal: Fix potential race condition in
- suspend/resume
-Content-Language: en-US
-To: Bo Ye <bo.ye@mediatek.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: yugang.wang@mediatek.com, yongdong.zhang@mediatek.com,
- browse.zhang@mediatek.com, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230916113327.85693-1-bo.ye@mediatek.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230916113327.85693-1-bo.ye@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230925150010.1.Iff672233861bcc4cf25a7ad0a81308adc3bda8a4@changeid>
+ <b0037c9f-588b-4eb8-6415-0fe75bed264f@collabora.com> <CAD=FV=UWQgLLfU4X+6OUR5AWOkJKwG9J7BbKGRCgze6LTY6JNw@mail.gmail.com>
+ <CAD=FV=UqG6DiAyjcLKeoUWKutepGd46Zx=8O-NWKoYC-fZEG6g@mail.gmail.com> <c3380c97-1b8c-5a68-168e-fc6150701365@postmarketos.org>
+In-Reply-To: <c3380c97-1b8c-5a68-168e-fc6150701365@postmarketos.org>
+From: Doug Anderson <dianders@chromium.org>
+Date: Thu, 12 Oct 2023 09:45:09 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=WAYYv5h6oWWhEJHyZesE5cguBqVufCmK6s4gvMeNkCWg@mail.gmail.com>
+Message-ID: <CAD=FV=WAYYv5h6oWWhEJHyZesE5cguBqVufCmK6s4gvMeNkCWg@mail.gmail.com>
+Subject: Re: [PATCH] drm/panel: Move AUX B116XW03 out of panel-edp back to panel-simple
+To: Anton Bambura <jenneron@postmarketos.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, matthias.bgg@gmail.com, 
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, airlied@gmail.com, daniel@ffwll.ch, 
+	jitao.shi@mediatek.com, linus.walleij@linaro.org, 
+	linux-kernel@vger.kernel.org, neil.armstrong@linaro.org, 
+	quic_jesszhan@quicinc.com, sam@ravnborg.org, 
+	Anton Bambura <jenneron@protonmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_083913_016530_978377D5 
-X-CRM114-Status: GOOD (  21.25  )
+X-CRM114-CacheID: sfid-20231012_094528_053925_A2D42E1A 
+X-CRM114-Status: GOOD (  36.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,75 +105,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/09/2023 13:33, Bo Ye wrote:
-> From: "yugang.wang" <yugang.wang@mediatek.com>
-> 
-> Body:
-> This patch fixes a race condition during system resume. It occurs if
-> the system is exiting a suspend state and a user is trying to
-> register/unregister a thermal zone concurrently. The root cause is
-> that both actions access the `thermal_tz_list`.
+Hi,
 
-I'm not sure the tasks are already thawed during POST_RESTORE, so no 
-user can unload a driver and then reaching the race window.
+On Sun, Oct 8, 2023 at 1:52=E2=80=AFPM Anton Bambura <jenneron@postmarketos=
+.org> wrote:
+>
+>
+> On 10/5/23 21:10, Doug Anderson wrote:
+> > Hi,
+> >
+> > On Tue, Sep 26, 2023 at 7:01=E2=80=AFAM Doug Anderson <dianders@chromiu=
+m.org> wrote:
+> >> Hi,
+> >>
+> >> On Tue, Sep 26, 2023 at 1:06=E2=80=AFAM AngeloGioacchino Del Regno
+> >> <angelogioacchino.delregno@collabora.com> wrote:
+> >>> Il 26/09/23 00:00, Douglas Anderson ha scritto:
+> >>>> In commit 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of
+> >>>> panel-simple") I moved a pile of panels out of panel-simple driver
+> >>>> into the newly created panel-edp driver. One of those panels, howeve=
+r,
+> >>>> shouldn't have been moved.
+> >>>>
+> >>>> As is clear from commit e35e305eff0f ("drm/panel: simple: Add AUO
+> >>>> B116XW03 panel support"), AUX B116XW03 is an LVDS panel. It's used i=
+n
+> >>>> exynos5250-snow and exynos5420-peach-pit where it's clear that the
+> >>>> panel is hooked up with LVDS. Furthermore, searching for datasheets =
+I
+> >>>> found one that makes it clear that this panel is LVDS.
+> >>>>
+> >>>> As far as I can tell, I got confused because in commit 88d3457ceb82
+> >>>> ("drm/panel: auo,b116xw03: fix flash backlight when power on") Jitao
+> >>>> Shi added "DRM_MODE_CONNECTOR_eDP". That seems wrong. Looking at the
+> >>>> downstream ChromeOS trees, it seems like some Mediatek boards are
+> >>>> using a panel that they call "auo,b116xw03" that's an eDP panel. The
+> >>>> best I can guess is that they actually have a different panel that h=
+as
+> >>>> similar timing. If so then the proper panel should be used or they
+> >>>> should switch to the generic "edp-panel" compatible.
+> >>>>
+> >>>> When moving this back to panel-edp, I wasn't sure what to use for
+> >>>> .bus_flags and .bus_format and whether to add the extra "enable" del=
+ay
+> >>>> from commit 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash
+> >>>> backlight when power on"). I've added formats/flags/delays based on =
+my
+> >>>> (inexpert) analysis of the datasheet. These are untested.
+> >>>>
+> >>>> NOTE: if/when this is backported to stable, we might run into some
+> >>>> trouble. Specifically, before 474c162878ba ("arm64: dts: mt8183:
+> >>>> jacuzzi: Move panel under aux-bus") this panel was used by
+> >>>> "mt8183-kukui-jacuzzi", which assumed it was an eDP panel. I don't
+> >>>> know what to suggest for that other than someone making up a bogus
+> >>>> panel for jacuzzi that's just for the stable channel.
+> >>>>
+> >>>> Fixes: 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight w=
+hen power on")
+> >>>> Fixes: 5f04e7ce392d ("drm/panel-edp: Split eDP panels out of panel-s=
+imple")
+> >>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> >>>> ---
+> >>>> I haven't had a snow or peach-pit hooked up for debugging / testing
+> >>>> for years. I presume that they must be broken and hope that this fix=
+es
+> >>>> them.
+> >>> We could avoid backport breakages by avoiding to backport this to any=
+ kernel
+> >>> that doesn't contain commit 474c162878ba ("arm64: dts: mt8183: jacuzz=
+i: Move
+> >>> panel under aux-bus")... because creating a dummy panel to get two wr=
+ongs
+> >>> right is definitely not ok.
+> >> Sure, except that leaves us with ... a breakage. :-P
+> >>
+> >> Although I haven't tested it, I have a hard time believing that
+> >> exynos5250-snow and exynos5420-peach-pit will work properly with the
+> >> panel defined as an eDP panel. That means that they will be broken. If
+> >> someone cared to get those fixed in a stable backport then we'd be
+> >> stuck deciding who to break. If you have any brilliant ideas then I'm
+> >> all ears.
+> >>
+> >> ...then again, I presume this has been broken since commit
+> >> 88d3457ceb82 ("drm/panel: auo,b116xw03: fix flash backlight when power
+> >> on"). That was a little over 3 years ago. Maybe I'm wrong and somehow
+> >> things still limp along and sorta work even though the panel is
+> >> defined incorrectly?
+> > I dug out a exynos5250-snow out of my pile and booted postmarket OS on
+> > it, which was shockingly easy/pleasant (kudos to those involved!). I
+> > found that it was booting a kernel based on 6.1.24. Digging into
+> > sysfs, I found that indeed it appeared to be using the "panel-edp"
+> > driver, so I guess it is limping along with the wrong driver and wrong
+> > flags...
+> >
+> > It wasn't totally clear for me how to build a new kernel and deploy it
+> > for postmarket OS, so I wasn't able to confirm this change. I've CCed
+> > the person listed on the postmarket OS wiki though to see if they have
+> > any insight.
+> Tested it on peach-pit using linux-next with this patch applied. Panel
+> still works and "dmesg | grep panel" returns panel_simple instead of
+> panel_edp.
+>
+> Tested-by: Anton Bambura <jenneron@postmarketos.org>
 
-Is that an observed issue?
+Pushed to drm-misc-fixes:
 
+ad3e33fe071d drm/panel: Move AUX B116XW03 out of panel-edp back to panel-si=
+mple
 
-> In detail:
-> 
-> 1. At PM_POST_SUSPEND during the resume, the system reads all thermal
->     zones in `thermal_tz_list`, then resets and updates their
->     temperatures.
-> 2. When registering/unregistering a thermal zone, the
->     `thermal_tz_list` gets manipulated.
-> 
-> These two actions might occur concurrently, causing a race condition.
-> To solve this issue, we introduce a mutex lock to protect
-> `thermal_tz_list` from being modified while it's being read and
-> updated during the resume from suspend.
-> 
-> Kernel oops excerpt related to this fix:
-> 
-> [ 5201.869845] [T316822] pc: [0xffffffeb7d4876f0] mutex_lock+0x34/0x170
-> [ 5201.869856] [T316822] lr: [0xffffffeb7ca98a84] thermal_pm_notify+0xd4/0x26c
-> [... cut for brevity ...]
-> [ 5201.871061] [T316822]  suspend_prepare+0x150/0x470
-> [ 5201.871067] [T316822]  enter_state+0x84/0x6f4
-> [ 5201.871076] [T316822]  state_store+0x15c/0x1e8
-> 
-> Change-Id: Ifdbdecba17093f91eab7e36ce04b46d311ca6568
-> Signed-off-by: yugang.wang <yugang.wang@mediatek.com>
-> Signed-off-by: Bo Ye <bo.ye@mediatek.com>
-> ---
->   drivers/thermal/thermal_core.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-> index 8717a3343512..a7a18ed57b6d 100644
-> --- a/drivers/thermal/thermal_core.c
-> +++ b/drivers/thermal/thermal_core.c
-> @@ -1529,12 +1529,14 @@ static int thermal_pm_notify(struct notifier_block *nb,
->   	case PM_POST_HIBERNATION:
->   	case PM_POST_RESTORE:
->   	case PM_POST_SUSPEND:
-> +		mutex_lock(&thermal_list_lock);
->   		atomic_set(&in_suspend, 0);
->   		list_for_each_entry(tz, &thermal_tz_list, node) {
->   			thermal_zone_device_init(tz);
->   			thermal_zone_device_update(tz,
->   						   THERMAL_EVENT_UNSPECIFIED);
->   		}
-> +		mutex_unlock(&thermal_list_lock);
->   		break;
->   	default:
->   		break;
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
-
+-Doug
 
