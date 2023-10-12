@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 949C0CDB47E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 11:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA97CDB46E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Oct 2023 11:49:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dreqWwoXmak59SsnpmmXUjxLjs31zjo08LBSQeCifLE=; b=JaT0gAhM2nGIOlijKaQfeltTTS
-	VUQA2FMXmXRPDSeAJnr193Vjkn6ay6y9v/1kCBkWQ20t5fZObPCbK2SuMD7L4hbQhz+8EKLpIQDr5
-	RVfE9vSLDa4MZOroPxTxMku9dnMXyY7n8NTvRahDmENfEo8NZeMP98xPLm3HMm5GUmE6RkxuBYOtw
-	fBXG3wb6vN4dp8kE+BgF75u2B0l65bOFd+Pld31JZKecFd+uMFkRAZbtBf+vpb7hrh7SAj3oXT/uu
-	U0w+nd4JBRzXWz9Px6WB/KT9Jx8FdJn3rNqG62fBpNawtyWwT2ZJQJVmK5rPFVB4NvNJudHrcTRda
-	i6tcxYWA==;
+	bh=nQfxfWgxf+UciazPlm08ZD4s+pDT829wW2uEfBoYZ54=; b=VDy2iwECEgqSlI2llN/wW63uth
+	c8dafvwlrozXtrR7t19YS3dTTf2vN98RzEsvWkyKxTXoB4mnGymQsASoU4SlZExH0a4DvQZZwKAfy
+	TmO1vhD1A6mOE+hZXTBtYhkhfEh6Nr5WNBYUBO1xU9vvKc7f7TRsJoRR/dSfaUwcuhR6JZ3Pipzma
+	CmkAFOb9/NtRxoUjH2D23aZUfUs1iPUFyBssTIhmeLXUbR3/n6os1yib20CkXDA2MRrItqv5dWkML
+	jjSpuhQ7FH4ZQq+/l+BsYV8gDHoZuab9t3fiN+qhRhEtQgezkEhTeZWdUThVLVicgHpAxXc0UEcoM
+	sibOsNDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qquCG-000qXX-1z;
-	Thu, 12 Oct 2023 11:49:44 +0000
+	id 1qquCI-000qZL-2e;
+	Thu, 12 Oct 2023 11:49:46 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqu9i-000o7P-37;
+	id 1qqu9h-000o51-1A;
 	Thu, 12 Oct 2023 11:47:11 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5CC6E6607387;
-	Thu, 12 Oct 2023 12:47:05 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BDD416607350;
+	Thu, 12 Oct 2023 12:47:03 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697111225;
-	bh=z1P/3O08IkeE+Et5UD27w3xE7KdKdzhm59GKXS9wTKw=;
+	s=mail; t=1697111224;
+	bh=VxrSf2TjcSSXRnDg1WucVdGn4nlvPFqwpAeCOwuv/a0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GBfEFpriASh4jR02Y1szsu1UfdrTYdCX5K+WBMax3riKRsFRZ1KjEqdKOcJm3hpst
-	 XCkYcDe+3NDvFH1C5l/ukP352uv/2c/8d1DMu8DMwJ9bxtxD2dfGv4yT8hiCvjczP7
-	 cJ362c/PfZcPMJGirgfoGCQ4wFnCTWqB3JkFTaUkVqhQ14MsMTPaV6loOk8fRkb4YR
-	 s2RusMwI2wj0VrSEm0hs8rjb3xog/azFUd70IO3Rmm5fSAROzxwyGr/g++0T0Yu1rX
-	 peL1zDxhtonNox+4AABvY63ch13qFxZbtpKKxDI+WFFxVc5Eby8OdLPr611MxlwFlx
-	 F1QKszrE2jIwA==
+	b=EzeW+HbJ86unAEmGAC4vwmJ5F7x1j/bC6V+hGCcN+5PwyTHBMfIvdhLsKjsTR6ZbX
+	 fzQPZLHybtEUgDa7WYxo0o71ObcPkUH5LzJLacnFer5iGKBIpLqBWJNeysKjFDobrB
+	 X7RqRCOAfXa11sAbZyri9l/IiKiV5KSN/bTFfS4qB4aHNQeBlbvv/aUcts+CkrS5tV
+	 adUoQc3HeGOD5k8DFDyMzyGsgMG+ObIy+0OIIKbroXzOYavehZpulR1xFNOWu3iMnl
+	 wzWotHSL9RGn3Rx45EgailuFTCK+EenWeSiFlZqoXd0HP0/RT/jPvM85wcM/pkWObV
+	 o/vagGaCYrGdQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -61,19 +61,19 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: [PATCH v11 30/56] media: ti: Use queue min_buffers_needed field to set the min number of buffers
-Date: Thu, 12 Oct 2023 13:46:16 +0200
-Message-Id: <20231012114642.19040-31-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 27/56] media: coda: Stop direct calls to queue num_buffers field
+Date: Thu, 12 Oct 2023 13:46:13 +0200
+Message-Id: <20231012114642.19040-28-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_044707_265161_1C958D13 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20231012_044705_589464_3AB1E0F2 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,138 +88,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When queue min_buffers_needed field is correctly set vb2 queue_setup()
-does take care of it and we can remove the checks from drivers.
+Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+CC: Philipp Zabel <p.zabel@pengutronix.de>
 ---
- drivers/media/platform/ti/am437x/am437x-vpfe.c   | 7 ++-----
- drivers/media/platform/ti/cal/cal-video.c        | 5 +----
- drivers/media/platform/ti/davinci/vpif_capture.c | 5 +----
- drivers/media/platform/ti/davinci/vpif_display.c | 5 +----
- drivers/media/platform/ti/omap/omap_vout.c       | 5 +++--
- 5 files changed, 8 insertions(+), 19 deletions(-)
+ drivers/media/platform/chips-media/coda-common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/ti/am437x/am437x-vpfe.c b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-index 5fa2ea9025d9..80a74ee59bb9 100644
---- a/drivers/media/platform/ti/am437x/am437x-vpfe.c
-+++ b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-@@ -1772,9 +1772,6 @@ static int vpfe_queue_setup(struct vb2_queue *vq,
- 	struct vpfe_device *vpfe = vb2_get_drv_priv(vq);
- 	unsigned size = vpfe->fmt.fmt.pix.sizeimage;
+diff --git a/drivers/media/platform/chips-media/coda-common.c b/drivers/media/platform/chips-media/coda-common.c
+index cc4892129aaf..f1d85758f6dd 100644
+--- a/drivers/media/platform/chips-media/coda-common.c
++++ b/drivers/media/platform/chips-media/coda-common.c
+@@ -794,7 +794,7 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
  
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
--
- 	if (*nplanes) {
- 		if (sizes[0] < size)
- 			return -EINVAL;
-@@ -1785,7 +1782,7 @@ static int vpfe_queue_setup(struct vb2_queue *vq,
- 	sizes[0] = size;
- 
- 	vpfe_dbg(1, vpfe,
--		"nbuffers=%d, size=%u\n", *nbuffers, sizes[0]);
-+		"nbuffers=%u, size=%u\n", vb2_get_num_buffers(vq), sizes[0]);
- 
- 	/* Calculate field offset */
- 	vpfe_calculate_offsets(vpfe);
-@@ -2233,7 +2230,7 @@ static int vpfe_probe_complete(struct vpfe_device *vpfe)
- 	q->buf_struct_size = sizeof(struct vpfe_cap_buffer);
- 	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
- 	q->lock = &vpfe->lock;
--	q->min_buffers_needed = 1;
-+	q->min_buffers_needed = 3;
- 	q->dev = vpfe->pdev;
- 
- 	err = vb2_queue_init(q);
-diff --git a/drivers/media/platform/ti/cal/cal-video.c b/drivers/media/platform/ti/cal/cal-video.c
-index a8abcd0fee17..924465b37e5f 100644
---- a/drivers/media/platform/ti/cal/cal-video.c
-+++ b/drivers/media/platform/ti/cal/cal-video.c
-@@ -604,9 +604,6 @@ static int cal_queue_setup(struct vb2_queue *vq,
- 	struct cal_ctx *ctx = vb2_get_drv_priv(vq);
- 	unsigned int size = ctx->v_fmt.fmt.pix.sizeimage;
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
--
- 	if (*nplanes) {
- 		if (sizes[0] < size)
- 			return -EINVAL;
-@@ -616,7 +613,7 @@ static int cal_queue_setup(struct vb2_queue *vq,
- 	*nplanes = 1;
- 	sizes[0] = size;
- 
--	ctx_dbg(3, ctx, "nbuffers=%d, size=%d\n", *nbuffers, sizes[0]);
-+	ctx_dbg(3, ctx, "nbuffers=%d, size=%d\n", vb2_get_num_buffers(vq), sizes[0]);
- 
- 	return 0;
- }
-diff --git a/drivers/media/platform/ti/davinci/vpif_capture.c b/drivers/media/platform/ti/davinci/vpif_capture.c
-index 99fae8830c41..8a4cc62cf562 100644
---- a/drivers/media/platform/ti/davinci/vpif_capture.c
-+++ b/drivers/media/platform/ti/davinci/vpif_capture.c
-@@ -122,9 +122,6 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
- 		size = sizes[0];
+ 	if (vb2_is_busy(vq)) {
+ 		v4l2_err(&ctx->dev->v4l2_dev, "%s: %s queue busy: %d\n",
+-			 __func__, v4l2_type_names[f->type], vq->num_buffers);
++			 __func__, v4l2_type_names[f->type], vb2_get_num_buffers(vq));
+ 		return -EBUSY;
  	}
  
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
--
- 	*nplanes = 1;
- 	sizes[0] = size;
- 
-@@ -1428,7 +1425,7 @@ static int vpif_probe_complete(void)
- 		q->mem_ops = &vb2_dma_contig_memops;
- 		q->buf_struct_size = sizeof(struct vpif_cap_buffer);
- 		q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
--		q->min_buffers_needed = 1;
-+		q->min_buffers_needed = 3;
- 		q->lock = &common->lock;
- 		q->dev = vpif_dev;
- 
-diff --git a/drivers/media/platform/ti/davinci/vpif_display.c b/drivers/media/platform/ti/davinci/vpif_display.c
-index f8ec2991c667..6fc32314cf9c 100644
---- a/drivers/media/platform/ti/davinci/vpif_display.c
-+++ b/drivers/media/platform/ti/davinci/vpif_display.c
-@@ -122,9 +122,6 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
- 		size = sizes[0];
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
--
- 	*nplanes = 1;
- 	sizes[0] = size;
- 
-@@ -1168,7 +1165,7 @@ static int vpif_probe_complete(void)
- 		q->mem_ops = &vb2_dma_contig_memops;
- 		q->buf_struct_size = sizeof(struct vpif_disp_buffer);
- 		q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
--		q->min_buffers_needed = 1;
-+		q->min_buffers_needed = 3;
- 		q->lock = &common->lock;
- 		q->dev = vpif_dev;
- 		err = vb2_queue_init(q);
-diff --git a/drivers/media/platform/ti/omap/omap_vout.c b/drivers/media/platform/ti/omap/omap_vout.c
-index 4143274089c3..72ce903717d3 100644
---- a/drivers/media/platform/ti/omap/omap_vout.c
-+++ b/drivers/media/platform/ti/omap/omap_vout.c
-@@ -944,10 +944,11 @@ static int omap_vout_vb2_queue_setup(struct vb2_queue *vq,
- 				     struct device *alloc_devs[])
- {
- 	struct omap_vout_device *vout = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	int size = vout->pix.sizeimage;
- 
--	if (is_rotation_enabled(vout) && vq->num_buffers + *nbufs > VRFB_NUM_BUFS) {
--		*nbufs = VRFB_NUM_BUFS - vq->num_buffers;
-+	if (is_rotation_enabled(vout) && q_num_bufs + *nbufs > VRFB_NUM_BUFS) {
-+		*nbufs = VRFB_NUM_BUFS - q_num_bufs;
- 		if (*nbufs == 0)
- 			return -EINVAL;
- 	}
 -- 
 2.39.2
 
