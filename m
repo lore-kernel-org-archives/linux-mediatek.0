@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83CDBCDB47E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 16:33:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B30B7CDB486
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 16:42:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kTN2loqrcEaBYbY1WHMRH/B8y09M49Nf4CIuqrkaHwM=; b=mYrGl8P5s8UhR2KTjb8/zU3a7l
-	D1tDsNJF0jXqFCicc3f5MEWpPnXX6aiMwmfhn0vcqENdvUodH6crim+U3kAhhZscYcYfw9lpC1rvE
-	y4pDk7yKRAEgAwvzztoVJko44v1mgb7YNPog1fHlXwrlwaTjHiLqce6WmxiA3BDc1/tEv6tDOOd0O
-	xlyCqMei4Xw5B/ICCGltez871kAB9YYSPG5LYBbqZn+ALrPbSXVzzQYOM3oLu4GIYF0jzvcFixvOp
-	oJE3D/hK6QnT/j1N8NjOuOCmxrWUAURAgnSj2HSg8xIiQ37ncUudPlpU22OvPJd3GfUZoHElL9vKV
-	vXPzWgMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=I82J6tKVpwxNq9aEGQO/8yoS1Ouunq9K13m48AlSuB8=; b=oX1qfSg1B74AZBLarPu/w8/fG5
+	1HtlElCr1pPFQBz2S3ELPBbBQCChurB0aRLcgZUcCiB5d4/sdyQO7/ZDHqERo+A4s1LObQFiaf/Sj
+	v5J6BrQ17b6l1yjGhQHtUXsd5W3d43tWNQucJySkJGHzcj4LoxdTOgf5JqiIdED4Ef4NXSX3wnv5K
+	BnM+Yn4gZUmJu7Ikto+sVwD0ZhDYoHPNKH1XYSyvgslXZTGN76aarZ2EFW4/2MAQNKRikR/mU5fDI
+	ouwk5ZaGHlI2FxrZaexHLyn8FKiOvqasI2XvVlTqhXWlb8zhL0jZhO/VX2LdC8DWhTgob78jba3h6
+	xrGYxPaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrL6e-003sZu-1b;
-	Fri, 13 Oct 2023 16:33:44 +0000
-Received: from mail-oa1-f41.google.com ([209.85.160.41])
+	id 1qrLFF-003tru-1H;
+	Fri, 13 Oct 2023 16:42:37 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrL6c-003sYb-0g
-	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Oct 2023 16:33:43 +0000
-Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-1e10ba12fd3so1288572fac.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Oct 2023 09:33:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697214820; x=1697819620;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kTN2loqrcEaBYbY1WHMRH/B8y09M49Nf4CIuqrkaHwM=;
-        b=Ve7eiEFVLlVuUESOFgS0l7LZ7EImikVBbyVZjdp41WoG6h2ei7uXOmNNOa+ObCXlDn
-         ybiaPMFM+woOsGqYMgLxb3G21WrzTCaV7wiG4iZLze3Cs3gkuij/XHRZoFCcUWItWjf0
-         BH53kY9V0Uxt0XLgIroOxqHrISX6POkaIv4uhCLM2cnm2okTMGteMK4+NSXuGQQ0fHJc
-         Gmjtr8yGibhvhMGcAjC7Io330lewVlJj68rtbron6pnchiTYbxeTtZ0nzGn2W+75bSX5
-         tzyOTRJaFGBmGzxQwViParuPxeE3qU8I5zkVvxcQ/iuzpOe4pZpuXr2FJR2oh33R0a2S
-         DPTQ==
-X-Gm-Message-State: AOJu0YwRczrYal4EMNghVZf65wJ8KieBMdwhGprOeH4C9hD5xYc0dMEF
-	FYlsece6XlXOrYrFcO5B29g=
-X-Google-Smtp-Source: AGHT+IErzh9fHI8XgM9IAnJuH3I/OxiTpALdkmg+1lAEo52E44ghLqKHqaBGLD4ZVEM3FM4nPb3ZOQ==
-X-Received: by 2002:a05:6870:8181:b0:1e9:b653:94d with SMTP id k1-20020a056870818100b001e9b653094dmr5709127oae.1.1697214819921;
-        Fri, 13 Oct 2023 09:33:39 -0700 (PDT)
-Received: from [192.168.51.14] (c-73-231-117-72.hsd1.ca.comcast.net. [73.231.117.72])
-        by smtp.gmail.com with ESMTPSA id c14-20020a63724e000000b005897bfc2ed3sm3581014pgn.93.2023.10.13.09.33.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Oct 2023 09:33:39 -0700 (PDT)
-Message-ID: <dd6f13e7-ae2f-4821-849d-8ca43ad48144@acm.org>
-Date: Fri, 13 Oct 2023 09:33:37 -0700
+	id 1qrLFA-003toi-2d;
+	Fri, 13 Oct 2023 16:42:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 2D17ACE315D;
+	Fri, 13 Oct 2023 16:42:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C518C433C8;
+	Fri, 13 Oct 2023 16:42:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1697215350;
+	bh=MqC3yrRRj3UMGOPti8ERknVNqGEUu0oFiV03E0Vidv0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=b86OTm7/vWPz1lXdWBiZn7RcGveX1aFsvL5jmXTq2YbcyNGIbGhWA6q1/AnMGbd1N
+	 IFYYegR+vc8lMskeUk8lajThoc+bo1PlPWPhNqD2fwOG3AfKYpg90Eza/kNH0uSNPW
+	 Jky7Vj9783vlIkTQS3O7jJucPYVzjXAq/DJZUjUVY+A/BEROWzFLMN0GpWgbN/I8Vu
+	 ImQsRWZuesvRBHjxd0H3/8ZdxSWJjJnhbYb4F5CAQ1P15D5R2lTSA+hkWwJq0LpHAe
+	 Bn/6fD9G+fr9mHm/5sCM1EEe3TdFQCGEcv6U3ysqKGhpLI6CBcvRuzJ9zOUE+g+0U1
+	 YdquVEXDnza8g==
+Date: Fri, 13 Oct 2023 11:42:28 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
+Cc: "Rafael J . Wysocki" <rafael@kernel.org>, linux-pci@vger.kernel.org,
+	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Lukas Wunner <lukas@wunner.de>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Emmanuel Grumbach <emmanuel.grumbach@intel.com>,
+	LKML <linux-kernel@vger.kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>, ath10k@lists.infradead.org,
+	ath11k@lists.infradead.org, ath12k@lists.infradead.org,
+	intel-wired-lan@lists.osuosl.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+	Netdev <netdev@vger.kernel.org>
+Subject: Re: [PATCH v2 03/13] PCI/ASPM: Disable ASPM when driver requests it
+Message-ID: <20231013164228.GA1117889@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] ufs: core: fix abnormal scale up after last cmd
- finish
-Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com
-References: <20230831130826.5592-1-peter.wang@mediatek.com>
- <20230831130826.5592-3-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20230831130826.5592-3-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <aa3386a4-c22d-6d5d-112d-f36b22cda6d3@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_093342_252375_348C1232 
-X-CRM114-Status: UNSURE (   5.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231013_094233_197241_07A7B50C 
+X-CRM114-Status: GOOD (  29.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,13 +83,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/31/23 06:08, peter.wang@mediatek.com wrote:
-> When ufshcd_clk_scaling_suspend_work(Thread A) running and new command
-> coming, ufshcd_clk_scaling_start_busy(Thread B) may get host_lock
-> after Thread A first time release host_lock. Then Thread A second time
-> get host_lock will set clk_scaling.window_start_t = 0 which scale up
-> clock abnormal next polling_ms time.
-> Also inlines another __ufshcd_suspend_clkscaling calls.
+On Thu, Oct 12, 2023 at 01:56:16PM +0300, Ilpo Järvinen wrote:
+> On Wed, 11 Oct 2023, Bjorn Helgaas wrote:
+> > On Mon, Sep 18, 2023 at 04:10:53PM +0300, Ilpo Järvinen wrote:
+> > > PCI core/ASPM service driver allows controlling ASPM state through
+> > > pci_disable_link_state() and pci_enable_link_state() API. It was
+> > > decided earlier (see the Link below), to not allow ASPM changes when OS
+> > > does not have control over it but only log a warning about the problem
+> > > (commit 2add0ec14c25 ("PCI/ASPM: Warn when driver asks to disable ASPM,
+> > > but we can't do it")). Similarly, if ASPM is not enabled through
+> > > config, ASPM cannot be disabled.
+> ...
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+> > This disables *all* ASPM states, unlike the version when
+> > CONFIG_PCIEASPM is enabled.  I suppose there's a reason, and maybe a
+> > comment could elaborate on it?
+> >
+> > When CONFIG_PCIEASPM is not enabled, I don't think we actively
+> > *disable* ASPM in the hardware; we just leave it as-is, so firmware
+> > might have left it enabled.
+> 
+> This whole trickery is intended for drivers that do not want to have ASPM 
+> because the devices are broken with it. So leaving it as-is is not really 
+> an option (as demonstrated by the custom workarounds).
+
+Right.
+
+> > Conceptually it seems like the LNKCTL updates here should be the same
+> > whether CONFIG_PCIEASPM is enabled or not (subject to the question
+> > above).
+> > 
+> > When CONFIG_PCIEASPM is enabled, we might need to do more stuff, but
+> > it seems like the core should be the same.
+> 
+> So you think it's safer to partially disable ASPM (as per driver's 
+> request) rather than disable it completely? I got the impression that the 
+> latter might be safer from what Rafael said earlier but I suppose I might 
+> have misinterpreted him since he didn't exactly say that it might be safer 
+> to _completely_ disable it.
+
+My question is whether the state of the device should depend on
+CONFIG_PCIEASPM.  If the driver does this:
+
+  pci_disable_link_state(PCIE_LINK_STATE_L0S)
+
+do we want to leave L1 enabled when CONFIG_PCIEASPM=y but disable L1
+when CONFIG_PCIEASPM is unset?
+
+I can see arguments both ways.  My thought was that it would be nice
+to end up with a single implementation of pci_disable_link_state()
+with an #ifdef around the CONFIG_PCIEASPM-enabled stuff because it
+makes the code easier to read.
+
+Bjorn
 
