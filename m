@@ -4,92 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7505ECDB483
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 16:25:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E07E0CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 16:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p1UPZMSkgkIyz+Vra1Gma2AD0nnQUamicNB8T2Fp4Ik=; b=PCpLBDKiYXuNGj/O/s08W/pqeF
-	9YXATM9slRKakymw4bK+X/W6wONQqQ+b/V2MTe1zMxW1AVeaH+IpOrw0yDcR5bV2jUPc5MkP2MTw3
-	1Ir3pXd2MAmtKx73MgtaVhtMM2AQWRw9xlZFPdwwr3+sNQptz4Yy2omQwjzRvCjGjb1oM/x2wF5QS
-	WSfpj2TizRMLY2XtdnOIIp81K3BnOlzIuc0myjVkRMeMQe4l8XtLhXy+A0ooVXhdk3607LAISqIT7
-	Fg+hRFTVlRzuZinvB6FNFqFv+vMIWO7nd5vLcyBr5lRsdrKYXh8M4iReszOprj7HI/qUWrpmidfBb
-	Ct1i+GDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dDChyjARcHDkjDQPX6XB8cVwDI75Vj0OVvNyqfGNTb8=; b=iHn5R59hgxjCGCcX/BvF1bqORP
+	PiGr/5Go+VfF7BofLHcMFzBr/N40kEbvFM4JbxkLfbmGbLeqVqgbPEYxt1zx8rgHhPKPU61zT63ln
+	1CXU3D/BM3tZwRZEITsJNQ/Uwt0/UcHmbfHn/4323JAdDjEUFP0nxnotWZaTgvMpYdhnRe+TWscra
+	mScQc1ZM01fxjXvT1HzKovCYpy+EDLscSikPeT9h6mkIJ5vxP7/IIzK9gvV97hURZWKAt/wobHhUT
+	yblen/uA6/+snXEDmiLahQdPpWAgC3XMJmJH1odVZxqzdXrxpQNzen9Y1L8D9Z8Igifozcdx6i991
+	yIuwTUPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrKyN-003rCO-0Z;
-	Fri, 13 Oct 2023 16:25:11 +0000
-Received: from mail-ot1-f43.google.com ([209.85.210.43])
+	id 1qrL0I-003rVe-2B;
+	Fri, 13 Oct 2023 16:27:10 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrKyK-003rBk-1a
+	id 1qrL0F-003rTh-15
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Oct 2023 16:25:09 +0000
-Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-6c0b8f42409so1451375a34.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Oct 2023 09:25:06 -0700 (PDT)
+	Fri, 13 Oct 2023 16:27:09 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-9be3b66f254so15657766b.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Oct 2023 09:27:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1697214421; x=1697819221; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=dDChyjARcHDkjDQPX6XB8cVwDI75Vj0OVvNyqfGNTb8=;
+        b=LHiJuAZJYkYvp0J1n+MTY4Q5q759o4Z8ZV2r6NN5LclxxECl69ESTRF43Bfv0KkFBC
+         C6DBQz278B0lEyjKGDyArFq2GkCUf0cWOg2pS8/gnfm52WfpALc4zPAK/YuOyh2p1k/C
+         Pih5wFIcLrHbqGp5/VPxJ2G9P/csSOXEwJFJyIvv6VTc1fX4gDTSH6Ah4uWeHSJ6XSu2
+         SQSsL4ZdUlKx5Y44OEdspOTEputQRn/+BBI9y94srumbsbDtE6gj8tRakZeYS0ncV5pO
+         hQBIwz1pw37TYITz0WdhFNtq4C8jRpWlQtP3KeeD6QQHOAwpfEOwmnqCD/guWQ6B6h6u
+         EyIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697214306; x=1697819106;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=p1UPZMSkgkIyz+Vra1Gma2AD0nnQUamicNB8T2Fp4Ik=;
-        b=wVEiOo3GPJslLoqOVzch9Wzio+S8OGGjbAXVGIk7iUz2G/j8frl0Tuda4AZYDc7I4z
-         UWnPBfJA5jI6d7NJpm/TZjxkEuXb0fG4mTWInpEksJHyH+nqqnjZmAya21e+GU5FzLgv
-         FxAugZjPncptZ9Z3rQdQ4QPDvwdOyCYFfa3yvXoAHMfbMD0OUi+Nc8dRsByJdcpi4l92
-         Wqq+Vy8tHJpDNbAQdFZao0c/6u0kRdeKhpPrv7RyXRtFS/aF9ioL5Tv+kmWus/fNfXip
-         +n9YnAlInaDcg2o3rpyiHUaYOmqJgOacgLEkI9yOaz4cJFvxHUPQ3OAojEKT8OZnQzB3
-         g66Q==
-X-Gm-Message-State: AOJu0YzxuWzJit/oZD9EbDJvX2P3+LtSsrs95f/k6Cj4da9jBqE/7mKi
-	8EV/cSHii/JJG2fCkhCo1D8=
-X-Google-Smtp-Source: AGHT+IE8q9T0QFZWQdEfbvIJy8QqOvoNnNJ/2tOQ1A2x9Asl91CGy/lxD72TnZBes+dsnajzXAC6JQ==
-X-Received: by 2002:a9d:7d8a:0:b0:6bc:65ad:1b08 with SMTP id j10-20020a9d7d8a000000b006bc65ad1b08mr26718029otn.28.1697214305886;
-        Fri, 13 Oct 2023 09:25:05 -0700 (PDT)
-Received: from [192.168.51.14] (c-73-231-117-72.hsd1.ca.comcast.net. [73.231.117.72])
-        by smtp.gmail.com with ESMTPSA id o4-20020aa79784000000b006934a1c69f8sm2520692pfp.24.2023.10.13.09.25.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Oct 2023 09:25:05 -0700 (PDT)
-Message-ID: <cc40e03a-1e43-4659-8579-1b9d22d7c34a@acm.org>
-Date: Fri, 13 Oct 2023 09:25:03 -0700
+        d=1e100.net; s=20230601; t=1697214421; x=1697819221;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dDChyjARcHDkjDQPX6XB8cVwDI75Vj0OVvNyqfGNTb8=;
+        b=N5piW0E2E5waCxBvKy7q3KCIEQgAihTEbxBM1e+/CzrUtfQOYHpMF7W+U4Cs2oiqM7
+         0lGCjeRODMpykCweUSKA2Hrhy/YFatinjRmFZntStqgIBi6Ecq1xIS7O/3kQfaxXxBVA
+         OB+DdHzIH6T68oVkYtoUHzvgldQWh9qDPjzwYQmvj6B7yiWVv1WF+hRGGMcy8Xnxyscb
+         a+U0GcmbrVcdQBQdDPjlwa/rDWFLZE2p9LxXPn3ZF2f/MXTFWgdMasJ8fqqUxLLeyzuK
+         zeynMCvXBSqNnmK9ECHelaVbt/QzA0RqrKLzg8qHXTrxJL1xjEUu8tzT75L/xOnHc1G1
+         9dhw==
+X-Gm-Message-State: AOJu0Yw+TjXXqy2KkPEQbI/7n0uAKbORW2G2j8sd2vrsXViKJ57zastN
+	epuWnd0/Lmtm+eZN++BegGcDuCssZLp2HqGiu+k5zWpM3mWzi3cMH7M=
+X-Google-Smtp-Source: AGHT+IH4mCWm8Z2elsfB5wPDuFnQnwc2DSuvszMcvKnLJwB6uCPWL0qpI196Srkb4PahcQqJyczrTAjD9wvlQcukgRA=
+X-Received: by 2002:a17:907:74b:b0:9bd:bbc1:1c5f with SMTP id
+ xc11-20020a170907074b00b009bdbbc11c5fmr1802252ejb.35.1697214421164; Fri, 13
+ Oct 2023 09:27:01 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] ufs: core: fix abnormal scale up after last cmd
- finish
-Content-Language: en-US
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, =?UTF-8?B?TGluIEd1aSAo5qGC5p6X?=
- =?UTF-8?Q?=29?= <Lin.Gui@mediatek.com>,
- =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
- =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
- <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
- <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
- <Qilin.Tan@mediatek.com>
-References: <20230831130826.5592-1-peter.wang@mediatek.com>
- <20230831130826.5592-3-peter.wang@mediatek.com>
- <5afd3b643d75cd3a65adba84b2d31ef355e58abe.camel@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <5afd3b643d75cd3a65adba84b2d31ef355e58abe.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20231006073831.10402-1-shawn.sung@mediatek.com> <20231006073831.10402-5-shawn.sung@mediatek.com>
+In-Reply-To: <20231006073831.10402-5-shawn.sung@mediatek.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Fri, 13 Oct 2023 17:26:47 +0100
+Message-ID: <CAPj87rMUbP12uwzyhV=94wR7LkQK4JfTB4kEMGADq2YJOk8Vrw@mail.gmail.com>
+Subject: Re: [PATCH v7 04/23] dt-bindings: display: mediatek: padding: Add MT8188
+To: Hsiao Chien Sung <shawn.sung@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	devicetree@vger.kernel.org, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, 
+	Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, "Nancy . Lin" <nancy.lin@mediatek.com>, 
+	linux-mediatek@lists.infradead.org, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_092508_535890_E79E9DC9 
-X-CRM114-Status: UNSURE (   6.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231013_092707_545721_AF78C151 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,18 +93,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/13/23 02:42, Peter Wang (王信友) wrote:
-> This patch still need your review.
+Hi Shawn,
 
-Hi Peter,
+On Fri, 6 Oct 2023 at 08:38, Hsiao Chien Sung <shawn.sung@mediatek.com> wrote:
+> +  Padding provides ability to add pixels to width and height of a layer with
+> +  specified colors. Due to hardware design, Mixer in VDOSYS1 requires
+> +  width of a layer to be 2-pixel-align, or 4-pixel-align when ETHDR is enabled,
+> +  we need Padding to deal with odd width.
+> +  Please notice that even if the Padding is in bypass mode, settings in
+> +  register must be cleared to 0, or undefined behaviors could happen.
 
-Although I can see that patch 2/3 made it to lore.kernel.org, I did not receive
-that patch in my mailbox. This probably was caused by an issue by the mailserver
-I'm using. I will download the emails I'm missing from lore.kernel.org and review
-these patches.
+If I understand the driver correctly, padding is automatically applied
+to compensate for unaligned dimensions. The first/last rows/columns of
+the overlay area will be filled with a specified colour (black?) to
+preserve the area. This is unfortunately not OK to do transparently.
+Userspace must be aware of this policy decision and specifically
+request it. If not, the atomic request check should fail and tell
+userspace that the requested configuration is not possible to achieve.
 
-Thanks,
-
-Bart.
-
+Cheers,
+Daniel
 
