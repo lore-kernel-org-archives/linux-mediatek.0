@@ -4,98 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4624FCDB47E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 19:11:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3545CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 19:47:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OIApqMtAf+eEfCsXpXLPAMDeUbkWbPlPHXxQvDgA8ZU=; b=TA6/0GaYQI9Y3CFc9ICQ6Wq/I7
-	1JBLFgsCtRiDWxvaQ6DcMDM8tJf2CRsvfYeRfSKSjyfhjwE6A/cibbFbWxYslfbqoPJxX6CSmoyyX
-	FsQ6xASv5aZN1+Zqymtj+Tp3Tl9wrWRmp1ozPqFLPCme2Yok6GxDJBaBWfylUqJ2R3i5dw2dH04aO
-	dvcyB1ikyUHyap7FXVlOdQdhtaYerK8v2TnhRPuBIq2vPtIEkgw/GlLUXPCj5krU+YfogEKy9cBEs
-	6Zqk04cMEpW730y8kNfMwO5sSXG9Gcjr86M7SJHMkARRKN8A5u23g1LmQ2etJIV6/rPFW40Xyq6/2
-	EJpujLiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mHGY1rNgdssEAkSd/6ZBfSHP677hALKRsWOmZt1w4io=; b=wIwJyeL2VWqDCHN1grm1kQGWTH
+	jYqkl54y+MkafZDu9s77Ja+8vrgZAlUkiZrw+XDrpMv66LT5cHR4Pbvavho2ifzCV3ZyU5IhNMNLz
+	NC+hJv4DaxCdCh0XudOBu3O/TSNAI6y6rbhr+VetoUW0dvtsMfaRyQz+TORKQRev9eiOG2zXUpaLD
+	UCWei5/+MeyvOkkTCd+dtox4ngfRwgQ7MfreV1mo4fgKj2xY/oOKBXUVoZRFvDF4Dt95l/Ik2ZMra
+	NIkVYMsnpjlFnowI6W4sdIB08zLI+48i6g1Rt9dJLE+1sjTOtunuKoChT+lr7JLC/cunjl6ZjxswP
+	l18p0Ayw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrNZ7-0047Ni-2Y;
-	Fri, 13 Oct 2023 19:11:17 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1qrO7y-004A16-2j;
+	Fri, 13 Oct 2023 19:47:18 +0000
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrNZ2-0047LC-2u
+	id 1qrO7w-0049zm-0L
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Oct 2023 19:11:15 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1c9d4f08d7cso26665ad.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Oct 2023 12:11:09 -0700 (PDT)
+	Fri, 13 Oct 2023 19:47:17 +0000
+Received: by mail-yw1-x114a.google.com with SMTP id 00721157ae682-5a7bcbb95b2so38813107b3.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Oct 2023 12:47:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1697224269; x=1697829069; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OIApqMtAf+eEfCsXpXLPAMDeUbkWbPlPHXxQvDgA8ZU=;
-        b=opj0AHVBBRNpEq8kPphy64kmEkxqN0jdp1MYWiH9iua/2dL7LJHw2j6R7SaTK56LjB
-         W4T9g+XRuPm/SvfW38etH442kIXJNI/qVOkAoOgVKo9v6Ytnu8PE6u8RmWb6ycYkZ2UX
-         SNmUIfIAOjwA06qpFCdsgN2BvQ/QOCOmqu0TV33Zwbld/rzbi2oEJ43/XPige+OHSpmM
-         i6JPJFhZV8Qc/sC5o/QPtvGMmNJ2UuLoaJiy6l0v92uzL7NFKp7RyZGh+7cUGx9DWGtl
-         XnVlaruSEJaZw14JiaL3fYTFlpG6EfoKjN5ixQMHPqH3qAaKL3KStZrXPU05rb5pF8n0
-         Co5w==
+        d=google.com; s=20230601; t=1697226433; x=1697831233; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=mHGY1rNgdssEAkSd/6ZBfSHP677hALKRsWOmZt1w4io=;
+        b=wScbfybBySJu5Lf4WWrFUNA+9UL4ttuRmYFw0Z5pYw41mwDnn37yWiPYroGWnrFKZd
+         hTn3q++Fy8FraDYGmq1P2VpuaFQe/ubKpPL8A22COJxgsCEA5yB9qlDEtoeJuAzgxpfo
+         XTJqAFX4qTTuGOhKnuZbypMAhqYCQdcxsqisZle8pALVNibyHod72moKfW7e8a8tvqVX
+         RqVfr5+2MvTfNyrvummtVNHZPcLooIIY7CfnEUlaVM6qbu09F1fhy6xWXp/ykfPxTfSM
+         W1Ucwws5Lqo++yre+kikmS1/bz4i212wjn0t2MlABOs1U3NcPimtvbtwq0V6gn681M69
+         hCCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697224269; x=1697829069;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OIApqMtAf+eEfCsXpXLPAMDeUbkWbPlPHXxQvDgA8ZU=;
-        b=EjXBz4unQBj1F5ubQvOXBtAVVXgsynwlAdOBiC5q+jINxdEgiO6rFG8Hc1FLihcJVP
-         YeYshGBsTXefoasuI0rduDWxXVj0Ytn4WtlCnu+vmWihXqisfHRZCalMQeBrIP5CrnSr
-         95VuGzSQvXlq1mgNXvIIvWs0thVMWNgx6QX5//9MWG8pIWo5of/S5/KglWIsRDG/r5sE
-         4EnpGl1VrMfJ1DDzlNTHM3KcadLsEjWJEDIiLVlO7Y5ebvGMAZ07RAMMlWNz0vTrNhgK
-         NET/68U7x240kQeQTeIZWhOMMRlhfhd9JCCR/XFwXaX+tD1XgzGa1dqUr7J4nELbMuLl
-         StOQ==
-X-Gm-Message-State: AOJu0Yw1HEoS9q9JuGkhcWHL/IP5PkByD5YwDtJ5RbZh/iuKgceF0RTD
-	HmcRocEll97XN7E+gTmG8HBEyDcNfAyMzkl+KO8d
-X-Google-Smtp-Source: AGHT+IEbp+zs59rwJa1MDe1tv5wsWi8dFryOgKdUJ954CEvyw0oPHsE6G9aZGZSlQ2dzDzA0ijsFPKGAHWeYvLgdlco=
-X-Received: by 2002:a17:902:d544:b0:1c5:ca8d:136b with SMTP id
- z4-20020a170902d54400b001c5ca8d136bmr14874plf.14.1697224268678; Fri, 13 Oct
- 2023 12:11:08 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230911023038.30649-1-yong.wu@mediatek.com> <20230911023038.30649-6-yong.wu@mediatek.com>
- <d0373c02-9b22-661f-9930-ca720053c2a0@collabora.com> <a115a2a5d3ac218e6db65ccdb0a1876f9cfca02b.camel@mediatek.com>
- <d798b15b-6f35-96db-e3f7-5c0bcc5d46a2@collabora.com> <a4ecc2792f3a4d3159e34415be984ff7d5f5e263.camel@mediatek.com>
- <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain> <3aaafe47-3733-a4d5-038d-a7e439309282@collabora.com>
- <CA+ddPcP4=p37cV5Tbn5zTUbiL4ou+Yqb=5rS+O_ff8ZUw64D3Q@mail.gmail.com>
- <80695726-1a98-12d4-ad7d-d731f2f3caeb@collabora.com> <CA+ddPcPES=4FcQRkvVnW=C9mL6hCxVfCcoLDJSjb58UiDmS_Mg@mail.gmail.com>
- <32e515e1-b7a2-de3c-723b-ade3ec760b4d@collabora.com>
-In-Reply-To: <32e515e1-b7a2-de3c-723b-ade3ec760b4d@collabora.com>
-From: Jeffrey Kardatzke <jkardatzke@google.com>
-Date: Fri, 13 Oct 2023 12:10:56 -0700
-Message-ID: <CA+ddPcNMBhXPNie3XUzbnCME_KccOxsNsWREmO80nwhSskN7JQ@mail.gmail.com>
-Subject: Re: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: Joakim Bech <joakim.bech@linaro.org>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"christian.koenig@amd.com" <christian.koenig@amd.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"robh+dt@kernel.org" <robh+dt@kernel.org>, "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"jstultz@google.com" <jstultz@google.com>, 
-	"linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, 
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	=?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?= <Jianjiao.Zeng@mediatek.com>, 
-	=?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>, 
-	"conor+dt@kernel.org" <conor+dt@kernel.org>, "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>, 
-	"tjmercier@google.com" <tjmercier@google.com>, 
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+        d=1e100.net; s=20230601; t=1697226433; x=1697831233;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=mHGY1rNgdssEAkSd/6ZBfSHP677hALKRsWOmZt1w4io=;
+        b=BTN2M64NpBl46tIIA29ci8zsOQcdRmmiCzis2aKQHicECOASYxd0E78KvvGp++ML8o
+         aDxosL+Vn/ztLcaUwVPYwrewCZTJj8cZFAtPE2Mxz89XZ1bvYMhFZmzCJwnoXSadxCGv
+         +7BTscChOhyE/gU+3J+PgodQv7ggrXuk6nypepJBYNQeHAi4P1bBqpUGBvOt9g7RRDkG
+         xBlOYMjhVz+WsnU6W22JM7Dd/xYFuoqS6AVXyOeGbVV4Q3G349toOk82/hDuo/PBKlAn
+         js8dcNuPMvY4vYZH+8pXY1urezbxAowildr/JVpt8GIJQWfkiWIhGSpH7J/z2JgHdfl4
+         66pQ==
+X-Gm-Message-State: AOJu0YxQPQtvrtu6Afbe9lPoSH6IJrLQR6VhC6a2WHvoEImIojE+xAGl
+	PJOcQREvNV/0goAdATER2TlVYn0BL047
+X-Google-Smtp-Source: AGHT+IHpmQg2Q8i1hn/xSsGU1Xlpm5F24a4h6RyCnX+WmtsHD+RkrppicP7DiSaF/ezg06qukkb3PlzMghkW
+X-Received: from jiangzp-glinux-dev.c.googlers.com ([fda3:e722:ac3:cc00:20:ed76:c0a8:38e4])
+ (user=jiangzp job=sendgmr) by 2002:a81:a84a:0:b0:59b:e97e:f7df with SMTP id
+ f71-20020a81a84a000000b0059be97ef7dfmr537451ywh.2.1697226432947; Fri, 13 Oct
+ 2023 12:47:12 -0700 (PDT)
+Date: Fri, 13 Oct 2023 12:47:07 -0700
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.42.0.655.g421f12c284-goog
+Message-ID: <20231013124707.kernel.v3.1.I6dbfc1fedddf0633b55ce7e7a10ef7f3929a9bdc@changeid>
+Subject: [kernel PATCH v3] Bluetooth: btmtksdio: enable bluetooth wakeup in
+ system suspend
+From: Zhengping Jiang <jiangzp@google.com>
+To: linux-bluetooth@vger.kernel.org, marcel@holtmann.org, luiz.dentz@gmail.com
+Cc: chromeos-bluetooth-upstreaming@chromium.org, 
+	Zhengping Jiang <jiangzp@google.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Johan Hedberg <johan.hedberg@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_121112_941280_311C9829 
-X-CRM114-Status: GOOD (  49.75  )
+X-CRM114-CacheID: sfid-20231013_124716_145722_D7C5CD9B 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,175 +90,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sorry for the delayed reply, needed to get some more info. This really
-wouldn't be possible due to the limitation on the number of
-regions...for example only 32 regions can be defined on some SoCs, and
-you'd run out of regions really fast trying to do this. That's why
-this is creating heaps for those regions and then allocations are
-performed within the defined region is the preferred strategy.
+The BTMTKSDIO_BT_WAKE_ENABLED flag is set for bluetooth interrupt
+during system suspend and increases wakeup count for bluetooth event.
 
+Signed-off-by: Zhengping Jiang <jiangzp@google.com>
+---
 
-On Thu, Sep 28, 2023 at 11:54=E2=80=AFPM Benjamin Gaignard
-<benjamin.gaignard@collabora.com> wrote:
->
->
-> Le 28/09/2023 =C3=A0 19:48, Jeffrey Kardatzke a =C3=A9crit :
-> > On Thu, Sep 28, 2023 at 1:30=E2=80=AFAM Benjamin Gaignard
-> > <benjamin.gaignard@collabora.com> wrote:
-> >>
-> >> Le 27/09/2023 =C3=A0 20:56, Jeffrey Kardatzke a =C3=A9crit :
-> >>> On Wed, Sep 27, 2023 at 8:18=E2=80=AFAM Benjamin Gaignard
-> >>> <benjamin.gaignard@collabora.com> wrote:
-> >>>> Le 27/09/2023 =C3=A0 15:46, Joakim Bech a =C3=A9crit :
-> >>>>> On Mon, Sep 25, 2023 at 12:49:50PM +0000, Yong Wu (=E5=90=B4=E5=8B=
-=87) wrote:
-> >>>>>> On Tue, 2023-09-12 at 11:32 +0200, AngeloGioacchino Del Regno wrot=
-e:
-> >>>>>>> Il 12/09/23 08:17, Yong Wu (=E5=90=B4=E5=8B=87) ha scritto:
-> >>>>>>>> On Mon, 2023-09-11 at 11:29 +0200, AngeloGioacchino Del Regno
-> >>>>>>>> wrote:
-> >>>>>>>>> Il 11/09/23 04:30, Yong Wu ha scritto:
-> >>>>>>>>>> The TEE probe later than dma-buf heap, and PROBE_DEDER doesn't
-> >>>>>>>>>> work
-> >>>>>>>>>> here since this is not a platform driver, therefore initialise
-> >>>>>>>>>> the
-> >>>>>>>>>> TEE
-> >>>>>>>>>> context/session while we allocate the first secure buffer.
-> >>>>>>>>>>
-> >>>>>>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> >>>>>>>>>> ---
-> >>>>>>>>>>       drivers/dma-buf/heaps/mtk_secure_heap.c | 61
-> >>>>>>>>>> +++++++++++++++++++++++++
-> >>>>>>>>>>       1 file changed, 61 insertions(+)
-> >>>>>>>>>>
-> >>>>>>>>>> diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c
-> >>>>>>>>>> b/drivers/dma-
-> >>>>>>>>>> buf/heaps/mtk_secure_heap.c
-> >>>>>>>>>> index bbf1c8dce23e..e3da33a3d083 100644
-> >>>>>>>>>> --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
-> >>>>>>>>>> +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
-> >>>>>>>>>> @@ -10,6 +10,12 @@
-> >>>>>>>>>>       #include <linux/err.h>
-> >>>>>>>>>>       #include <linux/module.h>
-> >>>>>>>>>>       #include <linux/slab.h>
-> >>>>>>>>>> +#include <linux/tee_drv.h>
-> >>>>>>>>>> +#include <linux/uuid.h>
-> >>>>>>>>>> +
-> >>>>>>>>>> +#define TZ_TA_MEM_UUID          "4477588a-8476-11e2-ad15-
-> >>>>>>>>>> e41f1390d676"
-> >>>>>>>>>> +
-> >>>>>>>>> Is this UUID the same for all SoCs and all TZ versions?
-> >>>>>>>> Yes. It is the same for all SoCs and all TZ versions currently.
-> >>>>>>>>
-> >>>>>>> That's good news!
-> >>>>>>>
-> >>>>>>> Is this UUID used in any userspace component? (example: Android
-> >>>>>>> HALs?)
-> >>>>>> No. Userspace never use it. If userspace would like to allocate th=
-is
-> >>>>>> secure buffer, it can achieve through the existing dmabuf IOCTL vi=
-a
-> >>>>>> /dev/dma_heap/mtk_svp node.
-> >>>>>>
-> >>>>> In general I think as mentioned elsewhere in comments, that there i=
-sn't
-> >>>>> that much here that seems to be unique for MediaTek in this patch
-> >>>>> series, so I think it worth to see whether this whole patch set can=
- be
-> >>>>> made more generic. Having said that, the UUID is always unique for =
-a
-> >>>>> certain Trusted Application. So, it's not entirely true saying that=
- the
-> >>>>> UUID is the same for all SoCs and all TrustZone versions. It might =
-be
-> >>>>> true for a family of MediaTek devices and the TEE in use, but not
-> >>>>> generically.
-> >>>>>
-> >>>>> So, if we need to differentiate between different TA implementation=
-s,
-> >>>>> then we need different UUIDs. If it would be possible to make this =
-patch
-> >>>>> set generic, then it sounds like a single UUID would be sufficient,=
- but
-> >>>>> that would imply that all TA's supporting such a generic UUID would=
- be
-> >>>>> implemented the same from an API point of view. Which also means th=
-at
-> >>>>> for example Trusted Application function ID's needs to be the same =
-etc.
-> >>>>> Not impossible to achieve, but still not easy (different TEE follow=
-s
-> >>>>> different specifications) and it's not typically something we've do=
-ne in
-> >>>>> the past.
-> >>>>>
-> >>>>> Unfortunately there is no standardized database of TA's describing =
-what
-> >>>>> they implement and support.
-> >>>>>
-> >>>>> As an alternative, we could implement a query call in the TEE answe=
-ring,
-> >>>>> "What UUID does your TA have that implements secure unmapped heap?"=
-.
-> >>>>> I.e., something that reminds of a lookup table. Then we wouldn't ha=
-ve to
-> >>>>> carry this in UAPI, DT or anywhere else.
-> >>>> Joakim does a TA could offer a generic API and hide the hardware spe=
-cific
-> >>>> details (like kernel uAPI does for drivers) ?
-> >>> It would have to go through another layer (like the tee driver) to be
-> >>> a generic API. The main issue with TAs is that they have UUIDs you
-> >>> need to connect to and specific codes for each function; so we should
-> >>> abstract at a layer above where those exist in the dma-heap code.
-> >>>> Aside that question I wonder what are the needs to perform a 'secure=
-' playback.
-> >>>> I have in mind 2 requirements:
-> >>>> - secure memory regions, which means configure the hardware to ensur=
-e that only
-> >>>> dedicated hardware blocks and read or write into it.
-> >>>> - set hardware blocks in secure modes so they access to secure memor=
-y.
-> >>>> Do you see something else ?
-> >>> This is more or less what is required, but this is out of scope for
-> >>> the Linux kernel since it can't be trusted to do these things...this
-> >>> is all done in firmware or the TEE itself.
-> >> Yes kernel can't be trusted to do these things but know what we need c=
-ould help
-> >> to define a API for a generic TA.
-> >>
-> >> Just to brainstorm on mailing list:
-> >> What about a TA API like
-> >> TA_secure_memory_region() and TA_unsecure_memory_region() with paramet=
-ers like:
-> >> - device identifier (an ID or compatible string maybe)
-> >> - memory region (physical address, size, offset)
-> >> - requested access rights (read, write)
-> >>
-> >> and on kernel side a IOMMU driver because it basically have all this i=
-nformation already
-> >> (device attachment, kernel map/unmap).
-> >>
-> >> In my mind it sound like a solution to limit the impact (new controls,=
- new memory type)
-> >> inside v4l2. Probably we won't need new heap either.
-> >> All hardware dedicated implementations could live inside the TA which =
-can offer a generic
-> >> API.
-> > The main problem with that type of design is the limitations of
-> > TrustZone memory protection. Usually there is a limit to the number of
-> > regions you can define for memory protection (and there is on
-> > Mediatek). So you can't pass an arbitrary memory region and mark it
-> > protected/unprotected at a given time. You need to establish these
-> > regions in the firmware instead and then configure those regions for
-> > protection in the firmware or the TEE.
->
-> The TEE iommu could be aware of these limitations and merge the regions w=
-hen possible
-> plus we can define a CMA region for each device to limit the secured memo=
-ry fragmentation.
->
-> >
-> >>>> Regards,
-> >>>> Benjamin
-> >>>>
+Changes in v3:
+- Replace deprecated macro.
+
+Changes in v2:
+- Add Bluetooth prefix to patch subject
+- Fix warnings regarding using plain integer as NULL
+- Add static to btmtksdio_pm_ops
+
+Changes in v1:
+- Add BTMTKSDIO_BT_WAKE_ENABLED flag
+- Call pm_wakeup_event in btmtksdio_interrupt
+
+ drivers/bluetooth/btmtksdio.c | 44 ++++++++++++++++++++++++++++++-----
+ 1 file changed, 38 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index f9a3444753c2..ff4868c83cd8 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -118,6 +118,7 @@ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
+ #define BTMTKSDIO_FUNC_ENABLED		3
+ #define BTMTKSDIO_PATCH_ENABLED		4
+ #define BTMTKSDIO_HW_RESET_ACTIVE	5
++#define BTMTKSDIO_BT_WAKE_ENABLED	6
+ 
+ struct mtkbtsdio_hdr {
+ 	__le16	len;
+@@ -554,7 +555,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 	sdio_claim_host(bdev->func);
+ 
+ 	/* Disable interrupt */
+-	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
++	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
+ 
+ 	txrx_timeout = jiffies + 5 * HZ;
+ 
+@@ -576,7 +577,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 		if ((int_status & FW_MAILBOX_INT) &&
+ 		    bdev->data->chipid == 0x7921) {
+ 			sdio_writel(bdev->func, PH2DSM0R_DRIVER_OWN,
+-				    MTK_REG_PH2DSM0R, 0);
++				    MTK_REG_PH2DSM0R, NULL);
+ 		}
+ 
+ 		if (int_status & FW_OWN_BACK_INT)
+@@ -608,7 +609,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 	} while (int_status || time_is_before_jiffies(txrx_timeout));
+ 
+ 	/* Enable interrupt */
+-	sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, 0);
++	sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, NULL);
+ 
+ 	sdio_release_host(bdev->func);
+ 
+@@ -620,8 +621,14 @@ static void btmtksdio_interrupt(struct sdio_func *func)
+ {
+ 	struct btmtksdio_dev *bdev = sdio_get_drvdata(func);
+ 
++	if (test_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state)) {
++		if (bdev->hdev->suspended)
++			pm_wakeup_event(bdev->dev, 0);
++		clear_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state);
++	}
++
+ 	/* Disable interrupt */
+-	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
++	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
+ 
+ 	schedule_work(&bdev->txrx_work);
+ }
+@@ -1454,6 +1461,23 @@ static int btmtksdio_runtime_suspend(struct device *dev)
+ 	return err;
+ }
+ 
++static int btmtksdio_system_suspend(struct device *dev)
++{
++	struct sdio_func *func = dev_to_sdio_func(dev);
++	struct btmtksdio_dev *bdev;
++
++	bdev = sdio_get_drvdata(func);
++	if (!bdev)
++		return 0;
++
++	if (!test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
++		return 0;
++
++	set_bit(BTMTKSDIO_BT_WAKE_ENABLED, &bdev->tx_state);
++
++	return btmtksdio_runtime_suspend(dev);
++}
++
+ static int btmtksdio_runtime_resume(struct device *dev)
+ {
+ 	struct sdio_func *func = dev_to_sdio_func(dev);
+@@ -1474,8 +1498,16 @@ static int btmtksdio_runtime_resume(struct device *dev)
+ 	return err;
+ }
+ 
+-static UNIVERSAL_DEV_PM_OPS(btmtksdio_pm_ops, btmtksdio_runtime_suspend,
+-			    btmtksdio_runtime_resume, NULL);
++static int btmtksdio_system_resume(struct device *dev)
++{
++	return btmtksdio_runtime_resume(dev);
++}
++
++static const struct dev_pm_ops btmtksdio_pm_ops = {
++	SYSTEM_SLEEP_PM_OPS(btmtksdio_system_suspend, btmtksdio_system_resume)
++	RUNTIME_PM_OPS(btmtksdio_runtime_suspend, btmtksdio_runtime_resume, NULL)
++};
++
+ #define BTMTKSDIO_PM_OPS (&btmtksdio_pm_ops)
+ #else	/* CONFIG_PM */
+ #define BTMTKSDIO_PM_OPS NULL
+-- 
+2.42.0.655.g421f12c284-goog
+
 
