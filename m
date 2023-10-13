@@ -4,79 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85CA9CDB47E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 18:19:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4624FCDB47E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 19:11:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rEgHxjwiwSD+JRPgq4r1DGbDGCyxlMf5LLDf02rxVSQ=; b=AYkMcNYsJ6nrSP9iVjMRwiTIOL
-	bbphjHk1KXgxui04GoQ/hWetDAi0YoY8h2zofoE4dYaoEKDaLCrtHAZwSY8UsehhI8Wj2QM9sJEr2
-	pWsDHod+f1ujO2ELvJy/LmfDGnmreT6WlFJld1GRs/RHnn5hh72HWdCBAUo1k9y02FLffleIwMLeM
-	ZC4UpZAvp5L5st4+lN/LQvdwGD6bpko0ManzYTgtAm8uhbS5FmuxajyRXqbihyYCecAjGE9F07hIn
-	9QvLlyTRaxkQm4421InFs4ccreesZ5PdzVqo7Q15Bd1R+OlLy1RGkbvEuA3TnwCcTuhxbHRXL92rO
-	FufMGuWg==;
+	bh=OIApqMtAf+eEfCsXpXLPAMDeUbkWbPlPHXxQvDgA8ZU=; b=TA6/0GaYQI9Y3CFc9ICQ6Wq/I7
+	1JBLFgsCtRiDWxvaQ6DcMDM8tJf2CRsvfYeRfSKSjyfhjwE6A/cibbFbWxYslfbqoPJxX6CSmoyyX
+	FsQ6xASv5aZN1+Zqymtj+Tp3Tl9wrWRmp1ozPqFLPCme2Yok6GxDJBaBWfylUqJ2R3i5dw2dH04aO
+	dvcyB1ikyUHyap7FXVlOdQdhtaYerK8v2TnhRPuBIq2vPtIEkgw/GlLUXPCj5krU+YfogEKy9cBEs
+	6Zqk04cMEpW730y8kNfMwO5sSXG9Gcjr86M7SJHMkARRKN8A5u23g1LmQ2etJIV6/rPFW40Xyq6/2
+	EJpujLiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrMl3-0042Zn-10;
-	Fri, 13 Oct 2023 18:19:33 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1qrNZ7-0047Ni-2Y;
+	Fri, 13 Oct 2023 19:11:17 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrMkz-0042Z7-2P
+	id 1qrNZ2-0047LC-2u
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Oct 2023 18:19:31 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-50797cf5b69so1564057e87.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Oct 2023 11:19:29 -0700 (PDT)
+	Fri, 13 Oct 2023 19:11:15 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1c9d4f08d7cso26665ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Oct 2023 12:11:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1697221168; x=1697825968; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1697224269; x=1697829069; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=rEgHxjwiwSD+JRPgq4r1DGbDGCyxlMf5LLDf02rxVSQ=;
-        b=PvIF2Y+07lTcbVswzMuWq4WK0CCqKGoF3rpihWbQHnu3T5RMbPhqCF1J/p/4KDP5bX
-         fPZYI3myNNEh2EDmw2XUx4BnEE5AaZnrdwSFk8pNc6GwaEWxygc0K7i4UtPHyXI3F0RS
-         62lBs4Ku/X4RV9HuulYujDKOMvMMIeEtBF+HY=
+        bh=OIApqMtAf+eEfCsXpXLPAMDeUbkWbPlPHXxQvDgA8ZU=;
+        b=opj0AHVBBRNpEq8kPphy64kmEkxqN0jdp1MYWiH9iua/2dL7LJHw2j6R7SaTK56LjB
+         W4T9g+XRuPm/SvfW38etH442kIXJNI/qVOkAoOgVKo9v6Ytnu8PE6u8RmWb6ycYkZ2UX
+         SNmUIfIAOjwA06qpFCdsgN2BvQ/QOCOmqu0TV33Zwbld/rzbi2oEJ43/XPige+OHSpmM
+         i6JPJFhZV8Qc/sC5o/QPtvGMmNJ2UuLoaJiy6l0v92uzL7NFKp7RyZGh+7cUGx9DWGtl
+         XnVlaruSEJaZw14JiaL3fYTFlpG6EfoKjN5ixQMHPqH3qAaKL3KStZrXPU05rb5pF8n0
+         Co5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697221168; x=1697825968;
+        d=1e100.net; s=20230601; t=1697224269; x=1697829069;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=rEgHxjwiwSD+JRPgq4r1DGbDGCyxlMf5LLDf02rxVSQ=;
-        b=X25FKKUYTONAKMBJgU5QLh6pxNayfHMGkEwnvAeJoWtdgrojW6ThV8CVhSr/a3fvVZ
-         qgl6LJezXCg4l1NDHW0gkEqjpJFaMRlDx/6vXNtlWYo+gxc2f6P17SQK9MVA/TKkeKAn
-         ftUdcB6hFXZQ5UIaF0CKKCOzPQdBtqMzC3lMjPi24rv8+ujZ9isBflo13z/4oUi38ekK
-         WRcCK952KQiJlnMIwJgWCp6A4SGJ5PCWbMtEl24KtYrqaqWmH++2ZrPQ9cA0s//2cv+d
-         pitqL4HBt7R4UYXfLkYwqyEpZ90gZZbFNsxx50fDN5YegqU22sCr5T473fjXbiImkkME
-         MsNQ==
-X-Gm-Message-State: AOJu0Yx5P29Iq/ND09MRrMRVAjpGRSXO4Bmryl+blBBA9z5nfvkqRtXX
-	RGNdv1WhRvjjVO12WV54+ZP0BwMVTuNsphoVhWe6jg==
-X-Google-Smtp-Source: AGHT+IHCR/XWbMEw/7F9XyyRPeoXZ9MnoyEFxOLCKO/wr0+Lb7yofS3QRyunjmulj+PrGwKMooLxL/YlXpRMF32w0gU=
-X-Received: by 2002:ac2:5976:0:b0:507:96cd:928c with SMTP id
- h22-20020ac25976000000b0050796cd928cmr3079950lfp.48.1697221167978; Fri, 13
- Oct 2023 11:19:27 -0700 (PDT)
+        bh=OIApqMtAf+eEfCsXpXLPAMDeUbkWbPlPHXxQvDgA8ZU=;
+        b=EjXBz4unQBj1F5ubQvOXBtAVVXgsynwlAdOBiC5q+jINxdEgiO6rFG8Hc1FLihcJVP
+         YeYshGBsTXefoasuI0rduDWxXVj0Ytn4WtlCnu+vmWihXqisfHRZCalMQeBrIP5CrnSr
+         95VuGzSQvXlq1mgNXvIIvWs0thVMWNgx6QX5//9MWG8pIWo5of/S5/KglWIsRDG/r5sE
+         4EnpGl1VrMfJ1DDzlNTHM3KcadLsEjWJEDIiLVlO7Y5ebvGMAZ07RAMMlWNz0vTrNhgK
+         NET/68U7x240kQeQTeIZWhOMMRlhfhd9JCCR/XFwXaX+tD1XgzGa1dqUr7J4nELbMuLl
+         StOQ==
+X-Gm-Message-State: AOJu0Yw1HEoS9q9JuGkhcWHL/IP5PkByD5YwDtJ5RbZh/iuKgceF0RTD
+	HmcRocEll97XN7E+gTmG8HBEyDcNfAyMzkl+KO8d
+X-Google-Smtp-Source: AGHT+IEbp+zs59rwJa1MDe1tv5wsWi8dFryOgKdUJ954CEvyw0oPHsE6G9aZGZSlQ2dzDzA0ijsFPKGAHWeYvLgdlco=
+X-Received: by 2002:a17:902:d544:b0:1c5:ca8d:136b with SMTP id
+ z4-20020a170902d54400b001c5ca8d136bmr14874plf.14.1697224268678; Fri, 13 Oct
+ 2023 12:11:08 -0700 (PDT)
 MIME-Version: 1.0
-References: <20231012230237.2676469-1-wenst@chromium.org> <20231012230237.2676469-3-wenst@chromium.org>
- <20231013-washer-mortally-b27c196ac50f@spud> <CAGXv+5GF7HfQSOg9c=G+c4DPUW24Ax7LX4raTynDbE3xc8iCdg@mail.gmail.com>
- <20231013-panic-vaseline-350c10e7d585@spud>
-In-Reply-To: <20231013-panic-vaseline-350c10e7d585@spud>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 13 Oct 2023 11:19:16 -0700
-Message-ID: <CAGXv+5EmLDWi3Lnca1vPft=9z9Cp2L2ee08in_b_21hipf9ieQ@mail.gmail.com>
-Subject: Re: [PATCH 2/9] dt-bindings: arm: mediatek: Add MT8186 Tentacruel /
- Tentacool Chromebooks
-To: Conor Dooley <conor@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230911023038.30649-1-yong.wu@mediatek.com> <20230911023038.30649-6-yong.wu@mediatek.com>
+ <d0373c02-9b22-661f-9930-ca720053c2a0@collabora.com> <a115a2a5d3ac218e6db65ccdb0a1876f9cfca02b.camel@mediatek.com>
+ <d798b15b-6f35-96db-e3f7-5c0bcc5d46a2@collabora.com> <a4ecc2792f3a4d3159e34415be984ff7d5f5e263.camel@mediatek.com>
+ <20230927134614.kp27moxdw72jiu4y@pop-os.localdomain> <3aaafe47-3733-a4d5-038d-a7e439309282@collabora.com>
+ <CA+ddPcP4=p37cV5Tbn5zTUbiL4ou+Yqb=5rS+O_ff8ZUw64D3Q@mail.gmail.com>
+ <80695726-1a98-12d4-ad7d-d731f2f3caeb@collabora.com> <CA+ddPcPES=4FcQRkvVnW=C9mL6hCxVfCcoLDJSjb58UiDmS_Mg@mail.gmail.com>
+ <32e515e1-b7a2-de3c-723b-ade3ec760b4d@collabora.com>
+In-Reply-To: <32e515e1-b7a2-de3c-723b-ade3ec760b4d@collabora.com>
+From: Jeffrey Kardatzke <jkardatzke@google.com>
+Date: Fri, 13 Oct 2023 12:10:56 -0700
+Message-ID: <CA+ddPcNMBhXPNie3XUzbnCME_KccOxsNsWREmO80nwhSskN7JQ@mail.gmail.com>
+Subject: Re: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: Joakim Bech <joakim.bech@linaro.org>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"christian.koenig@amd.com" <christian.koenig@amd.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"robh+dt@kernel.org" <robh+dt@kernel.org>, "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"jstultz@google.com" <jstultz@google.com>, 
+	"linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	=?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?= <Jianjiao.Zeng@mediatek.com>, 
+	=?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>, 
+	"conor+dt@kernel.org" <conor+dt@kernel.org>, "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>, 
+	"tjmercier@google.com" <tjmercier@google.com>, 
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_111929_802086_ECB9CCD2 
-X-CRM114-Status: GOOD (  40.35  )
+X-CRM114-CacheID: sfid-20231013_121112_941280_311C9829 
+X-CRM114-Status: GOOD (  49.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,182 +110,175 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 13, 2023 at 10:55=E2=80=AFAM Conor Dooley <conor@kernel.org> wr=
-ote:
+Sorry for the delayed reply, needed to get some more info. This really
+wouldn't be possible due to the limitation on the number of
+regions...for example only 32 regions can be defined on some SoCs, and
+you'd run out of regions really fast trying to do this. That's why
+this is creating heaps for those regions and then allocations are
+performed within the defined region is the preferred strategy.
+
+
+On Thu, Sep 28, 2023 at 11:54=E2=80=AFPM Benjamin Gaignard
+<benjamin.gaignard@collabora.com> wrote:
 >
-> On Fri, Oct 13, 2023 at 10:29:25AM -0700, Chen-Yu Tsai wrote:
-> > On Fri, Oct 13, 2023 at 8:11=E2=80=AFAM Conor Dooley <conor@kernel.org>=
- wrote:
-> > >
-> > > On Fri, Oct 13, 2023 at 07:02:28AM +0800, Chen-Yu Tsai wrote:
-> > > > Add entries for MT8186 based Tentacruel / Tentacool Chromebooks. Th=
-e two
-> > > > are based on the same board design: the former is a convertible dev=
-ice
-> > > > with a touchscreen, stylus, and some extra buttons; the latter is a
-> > > > clamshell device and lacks these additional features.
-> > > >
-> > > > The two devices both have two variants. The difference is a second
-> > > > source touchpad controller that shares the same address as the orig=
-inal,
-> > > > but is incompatible.
-> > >
-> > > > The extra SKU IDs for the Tentacruel devices map to different senso=
-r
-> > > > components attached to the Embedded Controller. These are not visib=
-le
-> > > > to the main processor.
-> > >
-> > > Wha? Given your ordering, is a "google,tentacruel-sku262144" a super-=
-set
-> > > of "google,tentacruel-sku262145"? If not, this compatible ordering
-> > > doesn't make sense. I can't tell from your description, and the
-> > > absence of a
-> > > items:
-> > >           - const: google,tentacruel-sku262145
-> > >           - const: google,tentacruel-sku262146
-> > >           - const: google,tentacruel-sku262147
-> > >           - const: google,tentacruel
-> > >           - const: mediatek,mt8186
-> > > suggests that there is no google,tentacruel-sku262145
-> > > device?
-> >
-> > AFAIK all four SKUs exist. And as far as the main processor is concerne=
-d,
-> > they look completely identical, so they should share the same device tr=
-ee.
-> > As mentioned in the commit message, the differences are only visible to
-> > the embedded controller, which fuses the sensor inputs.
 >
-> Then it makes very little sense to write a binding like this.
-> If this was just for the 252144 SKU, this would be fine.
-> For the other SKUs, there is no way to uniquely identify them, as
-> all four of google,tentacruel-sku262144, google,tentacruel-sku262145,
-> google,tentacruel-sku262146 and google,tentacruel-sku262147 must be
-> present.
-> Given that, why even bother including the SKUs in the first place,
-> since no information can be derived from them that cannot be derived
-> from google,tentacruel?
-> There's something that I am clearly missing here...
-
-There are incompatible variants of google,tentacruel. This is why this
-patch has four google,tentacruel based entries. Of them, two are Tentacool,
-which are clamshell laptops, and two of them are Tentacruel, which are
-convertibles.
-
-Within each group there are two variants: the second variant swaps out
-the I2C touchpad controller. These two controllers use the same I2C
-address but use different compatible strings, so it's not possible to
-have them coexist within the same device tree file like we do for many
-other second source components.
-
-So the relationship looks like the following:
-
-google,tentacruel --- Tentacruel --- google,tentacruel-sku26214[4567]
-                   |              |
-                   |              -- google,tentacruel-sku2621{48,49,50,51}
-                   |
-                   -- Tentacool ---- google,tentacruel-sku327681
-                                 |
-                                 --- google,tentacruel-sku327683
-
-Also, the devices themselves only know their own SKU ID. The firmware
-will generate a list of compatible strings like:
-
-  google,tentacruel-rev4-sku262144
-  google,tentacruel-rev4
-  google,tentacruel-sku262144
-  google,tentacruel
-
-and try to find a match in the kernel FIT image. The method we currently
-use is to include all the applicable board compatible strings.
-
-> Also, why is the order inverted, with the lower SKUs being super-sets of
-> the higher ones? The Hana one you show below makes a little more sense
-> in that regard.
-
-Either way works. The SKU IDs have no particular order. Nor do the
-individual bits in the SKU ID have meaning. They are just arbitrarily
-assigned by the manufacturer. They just have to all be present so any
-of the SKUs will match.
-
-Hope that explains things better.
-
-
-Regards
-ChenYu
-
-> > Writing it this way avoids having four identical device tree files.
+> Le 28/09/2023 =C3=A0 19:48, Jeffrey Kardatzke a =C3=A9crit :
+> > On Thu, Sep 28, 2023 at 1:30=E2=80=AFAM Benjamin Gaignard
+> > <benjamin.gaignard@collabora.com> wrote:
+> >>
+> >> Le 27/09/2023 =C3=A0 20:56, Jeffrey Kardatzke a =C3=A9crit :
+> >>> On Wed, Sep 27, 2023 at 8:18=E2=80=AFAM Benjamin Gaignard
+> >>> <benjamin.gaignard@collabora.com> wrote:
+> >>>> Le 27/09/2023 =C3=A0 15:46, Joakim Bech a =C3=A9crit :
+> >>>>> On Mon, Sep 25, 2023 at 12:49:50PM +0000, Yong Wu (=E5=90=B4=E5=8B=
+=87) wrote:
+> >>>>>> On Tue, 2023-09-12 at 11:32 +0200, AngeloGioacchino Del Regno wrot=
+e:
+> >>>>>>> Il 12/09/23 08:17, Yong Wu (=E5=90=B4=E5=8B=87) ha scritto:
+> >>>>>>>> On Mon, 2023-09-11 at 11:29 +0200, AngeloGioacchino Del Regno
+> >>>>>>>> wrote:
+> >>>>>>>>> Il 11/09/23 04:30, Yong Wu ha scritto:
+> >>>>>>>>>> The TEE probe later than dma-buf heap, and PROBE_DEDER doesn't
+> >>>>>>>>>> work
+> >>>>>>>>>> here since this is not a platform driver, therefore initialise
+> >>>>>>>>>> the
+> >>>>>>>>>> TEE
+> >>>>>>>>>> context/session while we allocate the first secure buffer.
+> >>>>>>>>>>
+> >>>>>>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> >>>>>>>>>> ---
+> >>>>>>>>>>       drivers/dma-buf/heaps/mtk_secure_heap.c | 61
+> >>>>>>>>>> +++++++++++++++++++++++++
+> >>>>>>>>>>       1 file changed, 61 insertions(+)
+> >>>>>>>>>>
+> >>>>>>>>>> diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>>>>>> b/drivers/dma-
+> >>>>>>>>>> buf/heaps/mtk_secure_heap.c
+> >>>>>>>>>> index bbf1c8dce23e..e3da33a3d083 100644
+> >>>>>>>>>> --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>>>>>> +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
+> >>>>>>>>>> @@ -10,6 +10,12 @@
+> >>>>>>>>>>       #include <linux/err.h>
+> >>>>>>>>>>       #include <linux/module.h>
+> >>>>>>>>>>       #include <linux/slab.h>
+> >>>>>>>>>> +#include <linux/tee_drv.h>
+> >>>>>>>>>> +#include <linux/uuid.h>
+> >>>>>>>>>> +
+> >>>>>>>>>> +#define TZ_TA_MEM_UUID          "4477588a-8476-11e2-ad15-
+> >>>>>>>>>> e41f1390d676"
+> >>>>>>>>>> +
+> >>>>>>>>> Is this UUID the same for all SoCs and all TZ versions?
+> >>>>>>>> Yes. It is the same for all SoCs and all TZ versions currently.
+> >>>>>>>>
+> >>>>>>> That's good news!
+> >>>>>>>
+> >>>>>>> Is this UUID used in any userspace component? (example: Android
+> >>>>>>> HALs?)
+> >>>>>> No. Userspace never use it. If userspace would like to allocate th=
+is
+> >>>>>> secure buffer, it can achieve through the existing dmabuf IOCTL vi=
+a
+> >>>>>> /dev/dma_heap/mtk_svp node.
+> >>>>>>
+> >>>>> In general I think as mentioned elsewhere in comments, that there i=
+sn't
+> >>>>> that much here that seems to be unique for MediaTek in this patch
+> >>>>> series, so I think it worth to see whether this whole patch set can=
+ be
+> >>>>> made more generic. Having said that, the UUID is always unique for =
+a
+> >>>>> certain Trusted Application. So, it's not entirely true saying that=
+ the
+> >>>>> UUID is the same for all SoCs and all TrustZone versions. It might =
+be
+> >>>>> true for a family of MediaTek devices and the TEE in use, but not
+> >>>>> generically.
+> >>>>>
+> >>>>> So, if we need to differentiate between different TA implementation=
+s,
+> >>>>> then we need different UUIDs. If it would be possible to make this =
+patch
+> >>>>> set generic, then it sounds like a single UUID would be sufficient,=
+ but
+> >>>>> that would imply that all TA's supporting such a generic UUID would=
+ be
+> >>>>> implemented the same from an API point of view. Which also means th=
+at
+> >>>>> for example Trusted Application function ID's needs to be the same =
+etc.
+> >>>>> Not impossible to achieve, but still not easy (different TEE follow=
+s
+> >>>>> different specifications) and it's not typically something we've do=
+ne in
+> >>>>> the past.
+> >>>>>
+> >>>>> Unfortunately there is no standardized database of TA's describing =
+what
+> >>>>> they implement and support.
+> >>>>>
+> >>>>> As an alternative, we could implement a query call in the TEE answe=
+ring,
+> >>>>> "What UUID does your TA have that implements secure unmapped heap?"=
+.
+> >>>>> I.e., something that reminds of a lookup table. Then we wouldn't ha=
+ve to
+> >>>>> carry this in UAPI, DT or anywhere else.
+> >>>> Joakim does a TA could offer a generic API and hide the hardware spe=
+cific
+> >>>> details (like kernel uAPI does for drivers) ?
+> >>> It would have to go through another layer (like the tee driver) to be
+> >>> a generic API. The main issue with TAs is that they have UUIDs you
+> >>> need to connect to and specific codes for each function; so we should
+> >>> abstract at a layer above where those exist in the dma-heap code.
+> >>>> Aside that question I wonder what are the needs to perform a 'secure=
+' playback.
+> >>>> I have in mind 2 requirements:
+> >>>> - secure memory regions, which means configure the hardware to ensur=
+e that only
+> >>>> dedicated hardware blocks and read or write into it.
+> >>>> - set hardware blocks in secure modes so they access to secure memor=
+y.
+> >>>> Do you see something else ?
+> >>> This is more or less what is required, but this is out of scope for
+> >>> the Linux kernel since it can't be trusted to do these things...this
+> >>> is all done in firmware or the TEE itself.
+> >> Yes kernel can't be trusted to do these things but know what we need c=
+ould help
+> >> to define a API for a generic TA.
+> >>
+> >> Just to brainstorm on mailing list:
+> >> What about a TA API like
+> >> TA_secure_memory_region() and TA_unsecure_memory_region() with paramet=
+ers like:
+> >> - device identifier (an ID or compatible string maybe)
+> >> - memory region (physical address, size, offset)
+> >> - requested access rights (read, write)
+> >>
+> >> and on kernel side a IOMMU driver because it basically have all this i=
+nformation already
+> >> (device attachment, kernel map/unmap).
+> >>
+> >> In my mind it sound like a solution to limit the impact (new controls,=
+ new memory type)
+> >> inside v4l2. Probably we won't need new heap either.
+> >> All hardware dedicated implementations could live inside the TA which =
+can offer a generic
+> >> API.
+> > The main problem with that type of design is the limitations of
+> > TrustZone memory protection. Usually there is a limit to the number of
+> > regions you can define for memory protection (and there is on
+> > Mediatek). So you can't pass an arbitrary memory region and mark it
+> > protected/unprotected at a given time. You need to establish these
+> > regions in the firmware instead and then configure those regions for
+> > protection in the firmware or the TEE.
+>
+> The TEE iommu could be aware of these limitations and merge the regions w=
+hen possible
+> plus we can define a CMA region for each device to limit the secured memo=
+ry fragmentation.
+>
 > >
-> > We also do this for many other device families, though those cover
-> > different revisions, such as:
-> >
-> >       - description: Google Hana (Lenovo Chromebook N23 Yoga, C330, 300=
-e,...)
-> >         items:
-> >           - const: google,hana-rev6
-> >           - const: google,hana-rev5
-> >           - const: google,hana-rev4
-> >           - const: google,hana-rev3
-> >           - const: google,hana
-> >           - const: mediatek,mt8173
-> >
-> >
-> > ChenYu
-> >
-> > > Cheers,
-> > > Conor.
-> > >
-> > > >
-> > > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > > ---
-> > > >  .../devicetree/bindings/arm/mediatek.yaml     | 26 +++++++++++++++=
-++++
-> > > >  1 file changed, 26 insertions(+)
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/=
-Documentation/devicetree/bindings/arm/mediatek.yaml
-> > > > index 60337b439744..aa7e6734b336 100644
-> > > > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > > > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > > > @@ -206,6 +206,32 @@ properties:
-> > > >            - enum:
-> > > >                - mediatek,mt8183-pumpkin
-> > > >            - const: mediatek,mt8183
-> > > > +      - description: Google Tentacruel (ASUS Chromebook CM14 Flip =
-CM1402F)
-> > > > +        items:
-> > > > +          - const: google,tentacruel-sku262144
-> > > > +          - const: google,tentacruel-sku262145
-> > > > +          - const: google,tentacruel-sku262146
-> > > > +          - const: google,tentacruel-sku262147
-> > > > +          - const: google,tentacruel
-> > > > +          - const: mediatek,mt8186
-> > > > +      - description: Google Tentacruel (ASUS Chromebook CM14 Flip =
-CM1402F)
-> > > > +        items:
-> > > > +          - const: google,tentacruel-sku262148
-> > > > +          - const: google,tentacruel-sku262149
-> > > > +          - const: google,tentacruel-sku262150
-> > > > +          - const: google,tentacruel-sku262151
-> > > > +          - const: google,tentacruel
-> > > > +          - const: mediatek,mt8186
-> > > > +      - description: Google Tentacool (ASUS Chromebook CM14 CM1402=
-C)
-> > > > +        items:
-> > > > +          - const: google,tentacruel-sku327681
-> > > > +          - const: google,tentacruel
-> > > > +          - const: mediatek,mt8186
-> > > > +      - description: Google Tentacool (ASUS Chromebook CM14 CM1402=
-C)
-> > > > +        items:
-> > > > +          - const: google,tentacruel-sku327683
-> > > > +          - const: google,tentacruel
-> > > > +          - const: mediatek,mt8186
-> > > >        - items:
-> > > >            - enum:
-> > > >                - mediatek,mt8186-evb
-> > > > --
-> > > > 2.42.0.655.g421f12c284-goog
-> > > >
+> >>>> Regards,
+> >>>> Benjamin
+> >>>>
 
