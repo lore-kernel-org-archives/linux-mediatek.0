@@ -4,72 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B2E6CDB483
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 06:48:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D61B4C41513
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 06:49:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xg8DR7IIpWoIImQHT4suZa4nRL7bnKbhLujSOpMsVhQ=; b=vaDP0fv9YkqTPYddTreRV0QQ0C
-	pd4hJaMB+Ycx7N4WUSLQE8aOwu+y855l+XqWDBuPhWq6HAXx1KgrpzvPq/D39VOW1kojA5OqWrpfD
-	4YwbIth+ieYgTc9+tx38VOh0PHC9Ybnboetgx8GLSxD67yJ49R0OQLkZQeAgIhdz5CZvNXlbsA1at
-	iB9NKQYhP6T/0MJnDi4uxf+ERbYD5TxKepmTGuU9vABelNewk+4aBefoUU/jjFLz9RAbnhopXjXTD
-	tWW+VvRExZV//GEHqLwi7f15Lz0tKIMXHtAA4HMlzZMy2EKRxwRYqJ57w1Z+6M+3pTl5ZRZ8VoriV
-	DayMHeRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t2VbTHuOYQMEtxcLnmdeRWBq/2F+g/Zf0eDRJkGO3F4=; b=e9Mwhua08lco1cihzRH5dZg7AM
+	DtYDW1uzk0lNnIPJZdLZpT46gnf1dpO9Fnvup0hIUQNRRwonmoMgGVlLkkIJ0709HSFCcUHXDcxjU
+	i95fPReuGdCkgBh+BbXGFm7DAs2+ztnj++jZUpWWTjC9OxejyuAKqz2fQ+S4J3ZGVS8THEOTxw1be
+	bOm17G3zt47ynf6EzccU+RgdZJJk1JtrgCXaDQ5AU9+Q0A3a9hxG+kKsXKadRw9plyWmBXczfC6pH
+	N4+G/8doPfyRCLj1ZqHjo1rI9/Wbnrk4IrFjIJ2S3bHEXDGoYOYIDgWGZrdWqAfxmH9vIMFNLJB+S
+	9JOboHzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrBy5-002dXZ-0v;
-	Fri, 13 Oct 2023 06:48:17 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1qrBzB-002e1N-2C;
+	Fri, 13 Oct 2023 06:49:25 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrBxy-002dN1-1u;
-	Fri, 13 Oct 2023 06:48:14 +0000
-Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.57])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4S6H6k1BHdzVl9N;
-	Fri, 13 Oct 2023 14:44:30 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Fri, 13 Oct 2023 14:48:02 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Alexander
- Duyck <alexander.duyck@gmail.com>, Liang Chen <liangchen.linux@gmail.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>, Michael Chan
-	<michael.chan@broadcom.com>, Eric Dumazet <edumazet@google.com>, Yisen Zhuang
-	<yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Jesse
- Brandeburg <jesse.brandeburg@intel.com>, Tony Nguyen
-	<anthony.l.nguyen@intel.com>, Sunil Goutham <sgoutham@marvell.com>, Geetha
- sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
-	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>, Leon
- Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang
-	<sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Jesper Dangaard Brouer
-	<hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	<intel-wired-lan@lists.osuosl.org>, <linux-rdma@vger.kernel.org>,
-	<linux-wireless@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH net-next v11 3/6] page_pool: remove PP_FLAG_PAGE_FRAG
-Date: Fri, 13 Oct 2023 14:48:23 +0800
-Message-ID: <20231013064827.61135-4-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20231013064827.61135-1-linyunsheng@huawei.com>
-References: <20231013064827.61135-1-linyunsheng@huawei.com>
+	id 1qrBz8-002e09-1D
+	for linux-mediatek@lists.infradead.org;
+	Fri, 13 Oct 2023 06:49:25 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-32d895584f1so1581150f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 23:49:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697179761; x=1697784561; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=t2VbTHuOYQMEtxcLnmdeRWBq/2F+g/Zf0eDRJkGO3F4=;
+        b=t0t9xLkZv6KAyvbpgWTHvDg0J6QZ8EIBTmSB9l43KneNW8ThxKJ0HwoPOR+5ljyh9K
+         I3cBd+s0uWpI0h7xQN8RFLPf9C3lKij9bVoyy+xlA7x2FjY3CwP9vB1aM7E6xO4X02Dr
+         BKMEV+fCAelxViJiSR+9CaawmXEcLkngNSCiH9dZgcCQDaILLQfaHEu/EIiHc7LCot/f
+         zrBpOJP6VZpJ6zae0r94aR2Gte9qOR98XLtGj1jzIWMHc6Sg5ZHX3Tck2IjtXAW6hML5
+         tMXAu18iWwlf7ibU+3TvY1Ea7MDg3ZPNTSTi7jjqqopnGyqRtqxi+sry1uM/9jvFJZMb
+         S/Qw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697179761; x=1697784561;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=t2VbTHuOYQMEtxcLnmdeRWBq/2F+g/Zf0eDRJkGO3F4=;
+        b=TuDJBPLV/YFeMW7NzNVn7bnKw4RkYZ6D9XrP7JQzMuP+sG6LGoYdH/p7vIoWzTNaAe
+         RzZcM2PVGYInxkNHt27kcIY7Ayly0RrxecyRopIIQT14Nml/kV0i8Q5d+nSYieN5Fcy2
+         M7TFLU75tWxAJQ23rb3HeS5VGbSGEuUx5fcaiQ8UQAxYF0kd9vRW/OjY1WEMXRbYX/A9
+         VlD9id6t1AhVYfKAhjJbAkx9fhVz7P+ySe1kquPdwJzGp4rLbDQEatuAflvzzaPPMmnv
+         RAUwaqfbae3n4p6zQWpXLbPIVCYTwnpxIAEI74pAiA491oeNX3LzTqKEmOI2ULOzdI+g
+         3xIg==
+X-Gm-Message-State: AOJu0YyD84CGknpJV1WwID2IycK4J+mAXXGDEcPoxbkpOZ6VTwAFtXsR
+	4t79IlWFOfIfDnEt0Z9GI6uh/w==
+X-Google-Smtp-Source: AGHT+IGZMXd2r1ViYo0Of1THYELk6tHbu+Ld7t1fqQplT/kxHciDw+AXiCoskIVClCvMLhNqPMnH0w==
+X-Received: by 2002:a05:6000:4b:b0:32d:9ce0:35ae with SMTP id k11-20020a056000004b00b0032d9ce035aemr576099wrx.52.1697179760922;
+        Thu, 12 Oct 2023 23:49:20 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.100])
+        by smtp.gmail.com with ESMTPSA id n9-20020adff089000000b0031ad2f9269dsm19962518wro.40.2023.10.12.23.49.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Oct 2023 23:49:20 -0700 (PDT)
+Message-ID: <f285dc8b-f95f-47ad-b2d6-95b90b42e5ce@linaro.org>
+Date: Fri, 13 Oct 2023 08:49:19 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- dggpemm500005.china.huawei.com (7.185.36.74)
-X-CFilter-Loop: Reflected
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 06/16] dt-bindings: media: mediatek: mdp3: add
+ component FG for MT8195
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20231012084037.19376-1-moudy.ho@mediatek.com>
+ <20231012084037.19376-7-moudy.ho@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231012084037.19376-7-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_234811_064389_60F071C0 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20231012_234922_422052_2273A408 
+X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,160 +150,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PP_FLAG_PAGE_FRAG is not really needed after pp_frag_count
-handling is unified and page_pool_alloc_frag() is supported
-in 32-bit arch with 64-bit DMA, so remove it.
+On 12/10/2023 10:40, Moudy Ho wrote:
+> Add the fundamental hardware configuration of component FG,
+> which is controlled by MDP3 on MT8195.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-CC: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-CC: Liang Chen <liangchen.linux@gmail.com>
-CC: Alexander Lobakin <aleksander.lobakin@intel.com>
----
- drivers/net/ethernet/broadcom/bnxt/bnxt.c                | 2 --
- drivers/net/ethernet/hisilicon/hns3/hns3_enet.c          | 3 +--
- drivers/net/ethernet/intel/idpf/idpf_txrx.c              | 3 ---
- drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c | 2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en_main.c        | 2 +-
- drivers/net/wireless/mediatek/mt76/mac80211.c            | 2 +-
- include/net/page_pool/types.h                            | 6 ++----
- net/core/page_pool.c                                     | 3 +--
- net/core/skbuff.c                                        | 2 +-
- 9 files changed, 8 insertions(+), 17 deletions(-)
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-index b0ca3b319e4f..96d11f41dd38 100644
---- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-+++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-@@ -3250,8 +3250,6 @@ static int bnxt_alloc_rx_page_pool(struct bnxt *bp,
- 	pp.dma_dir = bp->rx_dir;
- 	pp.max_len = PAGE_SIZE;
- 	pp.flags = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV;
--	if (PAGE_SIZE > BNXT_RX_PAGE_SIZE)
--		pp.flags |= PP_FLAG_PAGE_FRAG;
- 
- 	rxr->page_pool = page_pool_create(&pp);
- 	if (IS_ERR(rxr->page_pool)) {
-diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-index cf50368441b7..06117502001f 100644
---- a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-+++ b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-@@ -4940,8 +4940,7 @@ static void hns3_put_ring_config(struct hns3_nic_priv *priv)
- static void hns3_alloc_page_pool(struct hns3_enet_ring *ring)
- {
- 	struct page_pool_params pp_params = {
--		.flags = PP_FLAG_DMA_MAP | PP_FLAG_PAGE_FRAG |
--				PP_FLAG_DMA_SYNC_DEV,
-+		.flags = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
- 		.order = hns3_page_order(ring),
- 		.pool_size = ring->desc_num * hns3_buf_size(ring) /
- 				(PAGE_SIZE << hns3_page_order(ring)),
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 6fa79898c42c..55a099986b55 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -595,9 +595,6 @@ static struct page_pool *idpf_rx_create_page_pool(struct idpf_queue *rxbufq)
- 		.offset		= 0,
- 	};
- 
--	if (rxbufq->rx_buf_size == IDPF_RX_BUF_2048)
--		pp.flags |= PP_FLAG_PAGE_FRAG;
--
- 	return page_pool_create(&pp);
- }
- 
-diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-index 818ce76185b2..1a42bfded872 100644
---- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-+++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-@@ -1404,7 +1404,7 @@ int otx2_pool_init(struct otx2_nic *pfvf, u16 pool_id,
- 	}
- 
- 	pp_params.order = get_order(buf_size);
--	pp_params.flags = PP_FLAG_PAGE_FRAG | PP_FLAG_DMA_MAP;
-+	pp_params.flags = PP_FLAG_DMA_MAP;
- 	pp_params.pool_size = min(OTX2_PAGE_POOL_SZ, numptrs);
- 	pp_params.nid = NUMA_NO_NODE;
- 	pp_params.dev = pfvf->dev;
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-index acb40770cf0c..a5441dea3463 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-@@ -834,7 +834,7 @@ static int mlx5e_alloc_rq(struct mlx5e_params *params,
- 		struct page_pool_params pp_params = { 0 };
- 
- 		pp_params.order     = 0;
--		pp_params.flags     = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV | PP_FLAG_PAGE_FRAG;
-+		pp_params.flags     = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV;
- 		pp_params.pool_size = pool_size;
- 		pp_params.nid       = node;
- 		pp_params.dev       = rq->pdev;
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index d158320bc15d..fe7cc67b7ee2 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -566,7 +566,7 @@ int mt76_create_page_pool(struct mt76_dev *dev, struct mt76_queue *q)
- {
- 	struct page_pool_params pp_params = {
- 		.order = 0,
--		.flags = PP_FLAG_PAGE_FRAG,
-+		.flags = 0,
- 		.nid = NUMA_NO_NODE,
- 		.dev = dev->dma_dev,
- 	};
-diff --git a/include/net/page_pool/types.h b/include/net/page_pool/types.h
-index 887e7946a597..6fc5134095ed 100644
---- a/include/net/page_pool/types.h
-+++ b/include/net/page_pool/types.h
-@@ -17,10 +17,8 @@
- 					* Please note DMA-sync-for-CPU is still
- 					* device driver responsibility
- 					*/
--#define PP_FLAG_PAGE_FRAG	BIT(2) /* for page frag feature */
- #define PP_FLAG_ALL		(PP_FLAG_DMA_MAP |\
--				 PP_FLAG_DMA_SYNC_DEV |\
--				 PP_FLAG_PAGE_FRAG)
-+				 PP_FLAG_DMA_SYNC_DEV)
- 
- /*
-  * Fast allocation side cache array/stack
-@@ -45,7 +43,7 @@ struct pp_alloc_cache {
- 
- /**
-  * struct page_pool_params - page pool parameters
-- * @flags:	PP_FLAG_DMA_MAP, PP_FLAG_DMA_SYNC_DEV, PP_FLAG_PAGE_FRAG
-+ * @flags:	PP_FLAG_DMA_MAP, PP_FLAG_DMA_SYNC_DEV
-  * @order:	2^order pages on allocation
-  * @pool_size:	size of the ptr_ring
-  * @nid:	NUMA node id to allocate from pages from
-diff --git a/net/core/page_pool.c b/net/core/page_pool.c
-index 953535cab081..2a3671c97ca7 100644
---- a/net/core/page_pool.c
-+++ b/net/core/page_pool.c
-@@ -756,8 +756,7 @@ struct page *page_pool_alloc_frag(struct page_pool *pool,
- 	unsigned int max_size = PAGE_SIZE << pool->p.order;
- 	struct page *page = pool->frag_page;
- 
--	if (WARN_ON(!(pool->p.flags & PP_FLAG_PAGE_FRAG) ||
--		    size > max_size))
-+	if (WARN_ON(size > max_size))
- 		return NULL;
- 
- 	size = ALIGN(size, dma_get_cache_alignment());
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 0401f40973a5..ced4549b06c5 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -5764,7 +5764,7 @@ bool skb_try_coalesce(struct sk_buff *to, struct sk_buff *from,
- 	/* In general, avoid mixing page_pool and non-page_pool allocated
- 	 * pages within the same SKB. Additionally avoid dealing with clones
- 	 * with page_pool pages, in case the SKB is using page_pool fragment
--	 * references (PP_FLAG_PAGE_FRAG). Since we only take full page
-+	 * references (page_pool_alloc_frag()). Since we only take full page
- 	 * references for cloned SKBs at the moment that would result in
- 	 * inconsistent reference counts.
- 	 * In theory we could take full references if @from is cloned and
--- 
-2.33.0
+Best regards,
+Krzysztof
 
 
