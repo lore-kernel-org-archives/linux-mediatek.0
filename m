@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D61B4C41513
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 06:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 163C1CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 06:49:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t2VbTHuOYQMEtxcLnmdeRWBq/2F+g/Zf0eDRJkGO3F4=; b=e9Mwhua08lco1cihzRH5dZg7AM
-	DtYDW1uzk0lNnIPJZdLZpT46gnf1dpO9Fnvup0hIUQNRRwonmoMgGVlLkkIJ0709HSFCcUHXDcxjU
-	i95fPReuGdCkgBh+BbXGFm7DAs2+ztnj++jZUpWWTjC9OxejyuAKqz2fQ+S4J3ZGVS8THEOTxw1be
-	bOm17G3zt47ynf6EzccU+RgdZJJk1JtrgCXaDQ5AU9+Q0A3a9hxG+kKsXKadRw9plyWmBXczfC6pH
-	N4+G/8doPfyRCLj1ZqHjo1rI9/Wbnrk4IrFjIJ2S3bHEXDGoYOYIDgWGZrdWqAfxmH9vIMFNLJB+S
-	9JOboHzA==;
+	bh=nkoCSM1ABtqDXvYJzGFHcVaBiD5BwS+b9b7ESsnLlh8=; b=xlvCZ1U+4QNdgs+rgJcT+YBbs0
+	2B0brP4pRjCnGyzdfXUw5+OgFJFBm3td2whAVOfH+EwLNFvob6NuWzvS5MMUQaNxTp3Mt03/BtSsz
+	owhoiDBMLgG1/CUCYsGSIgdYi/LZiPGKAM6NvvU9L/4gsDzHmLRrrEmWqCzpcYWSPff76NbqEBvu6
+	hXP4q/fcKkCyF55Hxh6EsbrWDzkfgYzQsFqLSSNknsHN1UGVuORKLev1R3g3jP5lKbaWTZHd5aOo9
+	bJVw2fSxZkTiVrMlHDNdL6UtKe6HyezTMMVGsbzmu26ZKN03LmqUa+4AK91v3ehJm62GkFY4a1gGn
+	x1kY1D7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrBzB-002e1N-2C;
-	Fri, 13 Oct 2023 06:49:25 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1qrBzf-002eBD-2t;
+	Fri, 13 Oct 2023 06:49:55 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrBz8-002e09-1D
+	id 1qrBze-002e9V-0k
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Oct 2023 06:49:25 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-32d895584f1so1581150f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 23:49:22 -0700 (PDT)
+	Fri, 13 Oct 2023 06:49:55 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40537481094so19096425e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Oct 2023 23:49:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697179761; x=1697784561; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1697179791; x=1697784591; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=t2VbTHuOYQMEtxcLnmdeRWBq/2F+g/Zf0eDRJkGO3F4=;
-        b=t0t9xLkZv6KAyvbpgWTHvDg0J6QZ8EIBTmSB9l43KneNW8ThxKJ0HwoPOR+5ljyh9K
-         I3cBd+s0uWpI0h7xQN8RFLPf9C3lKij9bVoyy+xlA7x2FjY3CwP9vB1aM7E6xO4X02Dr
-         BKMEV+fCAelxViJiSR+9CaawmXEcLkngNSCiH9dZgcCQDaILLQfaHEu/EIiHc7LCot/f
-         zrBpOJP6VZpJ6zae0r94aR2Gte9qOR98XLtGj1jzIWMHc6Sg5ZHX3Tck2IjtXAW6hML5
-         tMXAu18iWwlf7ibU+3TvY1Ea7MDg3ZPNTSTi7jjqqopnGyqRtqxi+sry1uM/9jvFJZMb
-         S/Qw==
+        bh=nkoCSM1ABtqDXvYJzGFHcVaBiD5BwS+b9b7ESsnLlh8=;
+        b=zsAAenGHlUAzBQbHtkdE4yLstW5kL8zsqLs574AOUubHeEVVc/mbD1EGVsdupDwCGx
+         bjPEDfPr2OnWO79qJtJOMAiv8WKuyX2GJno9WPWmrM6C1sjggXIB2E+uLWhg1q57z6/3
+         kDKqJ6DSWx9jOLB/SYOrpzSA2SEnoPoo0ddpj8mZYe5ylUeV0cEkB+3MNqZX7gpmVL4s
+         ZLteCXTTN+0Zq5kyNQwLlu/KNR+vXdadeLx7WsJYzabuQS55iHtVkRwo/ZN4t11aQ+yh
+         HRRJnWhXtSguQZkQNPmVGINSN31ActtNeIQNnd7j1tFVk/UQ8JkGVpy/sXjW6o6+P3wS
+         tUfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697179761; x=1697784561;
+        d=1e100.net; s=20230601; t=1697179791; x=1697784591;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=t2VbTHuOYQMEtxcLnmdeRWBq/2F+g/Zf0eDRJkGO3F4=;
-        b=TuDJBPLV/YFeMW7NzNVn7bnKw4RkYZ6D9XrP7JQzMuP+sG6LGoYdH/p7vIoWzTNaAe
-         RzZcM2PVGYInxkNHt27kcIY7Ayly0RrxecyRopIIQT14Nml/kV0i8Q5d+nSYieN5Fcy2
-         M7TFLU75tWxAJQ23rb3HeS5VGbSGEuUx5fcaiQ8UQAxYF0kd9vRW/OjY1WEMXRbYX/A9
-         VlD9id6t1AhVYfKAhjJbAkx9fhVz7P+ySe1kquPdwJzGp4rLbDQEatuAflvzzaPPMmnv
-         RAUwaqfbae3n4p6zQWpXLbPIVCYTwnpxIAEI74pAiA491oeNX3LzTqKEmOI2ULOzdI+g
-         3xIg==
-X-Gm-Message-State: AOJu0YyD84CGknpJV1WwID2IycK4J+mAXXGDEcPoxbkpOZ6VTwAFtXsR
-	4t79IlWFOfIfDnEt0Z9GI6uh/w==
-X-Google-Smtp-Source: AGHT+IGZMXd2r1ViYo0Of1THYELk6tHbu+Ld7t1fqQplT/kxHciDw+AXiCoskIVClCvMLhNqPMnH0w==
-X-Received: by 2002:a05:6000:4b:b0:32d:9ce0:35ae with SMTP id k11-20020a056000004b00b0032d9ce035aemr576099wrx.52.1697179760922;
-        Thu, 12 Oct 2023 23:49:20 -0700 (PDT)
+        bh=nkoCSM1ABtqDXvYJzGFHcVaBiD5BwS+b9b7ESsnLlh8=;
+        b=rlqcGqmuYSRER/+WFpc0jF5O3qdi484eiMlwOSqFynvRmzKfjoLXSJiqCO7Z4+zcrQ
+         Og/LPsk4gOEFQwGh0V8lCOuCXgNwvygBzM2OxGjIG4RQO7HvZiSMWBgO593ljXT6utFJ
+         LPvLhaiAgiSFUE+DfCjVPKvMUnRw1l4ReArLEyv8Cu9HkwgN7RARQ4mRtdUhihbIRg+x
+         OHOq06/kytetAYXIFOgMTslQekO7KbJ4OiyTTwFUlPXx/IDjL1/mtVRI+tS2CmAPzBWv
+         qQQaF8Aj17pUPWRamMKIkwNbYTJnbKzMWWeAuTKGaR/yho9Lx67LRshr35otbi/PklfN
+         vxpA==
+X-Gm-Message-State: AOJu0YzVLAHpY8l/OiXqueDN7iARlmnCYNy2WM/lIfsG7yHQj5y6HiEC
+	MufxEM39wQTXVMimAAsDTGbf6Q==
+X-Google-Smtp-Source: AGHT+IHsrzXz/ZgyWXbrtdy/kdSrit1jKBtnrg/JPGcuQ+jQcuolHeYjDnNNR3QA1GgvRVPNdMOmTA==
+X-Received: by 2002:a05:600c:5120:b0:407:5b54:bb09 with SMTP id o32-20020a05600c512000b004075b54bb09mr7201979wms.7.1697179791336;
+        Thu, 12 Oct 2023 23:49:51 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.219.100])
-        by smtp.gmail.com with ESMTPSA id n9-20020adff089000000b0031ad2f9269dsm19962518wro.40.2023.10.12.23.49.19
+        by smtp.gmail.com with ESMTPSA id n9-20020adff089000000b0031ad2f9269dsm19962518wro.40.2023.10.12.23.49.49
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Oct 2023 23:49:20 -0700 (PDT)
-Message-ID: <f285dc8b-f95f-47ad-b2d6-95b90b42e5ce@linaro.org>
-Date: Fri, 13 Oct 2023 08:49:19 +0200
+        Thu, 12 Oct 2023 23:49:50 -0700 (PDT)
+Message-ID: <1c8814f1-9c7f-4962-93fd-14d3d39ce1ce@linaro.org>
+Date: Fri, 13 Oct 2023 08:49:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 06/16] dt-bindings: media: mediatek: mdp3: add
- component FG for MT8195
+Subject: Re: [PATCH v7 07/16] dt-bindings: media: mediatek: mdp3: add
+ component HDR for MT8195
 Content-Language: en-US
 To: Moudy Ho <moudy.ho@mediatek.com>, Chun-Kuang Hu
  <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
@@ -83,7 +83,7 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 References: <20231012084037.19376-1-moudy.ho@mediatek.com>
- <20231012084037.19376-7-moudy.ho@mediatek.com>
+ <20231012084037.19376-8-moudy.ho@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -129,12 +129,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231012084037.19376-7-moudy.ho@mediatek.com>
+In-Reply-To: <20231012084037.19376-8-moudy.ho@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_234922_422052_2273A408 
-X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-CacheID: sfid-20231012_234954_279781_AA72F052 
+X-CRM114-Status: UNSURE (   6.68  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -151,11 +151,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 12/10/2023 10:40, Moudy Ho wrote:
-> Add the fundamental hardware configuration of component FG,
+> Add the fundamental hardware configuration of component HDR,
 > which is controlled by MDP3 on MT8195.
 > 
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
