@@ -4,68 +4,180 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7C53CDB483
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 17:55:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 187B4CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 17:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	In-Reply-To:Date:References:Message-ID:From:Subject:Cc:To:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P4pXwvC7L3TcoRa/I7CPrKJwmMxTwKYKe13IVdcGA7w=; b=K4PO78C+nptbmBSK2G6zhfld9t
-	D8QmL+7MfwdXLkHHoUqZIflyiDjYZ17lbLn4h8TeueDYteFJRtG1dK566zRCk9EyKqzJuTNw01ugL
-	fAntuMTjaUhd//ePZHn786xYt4CtUHRLG2N8rRbdxjxa7DDc0iiw/pDcL4OSGwRYJBk0VKi4rTpNZ
-	gxpZBkve2E9w6DlZAA67clZSIaaxVL7jnRuiSNzZI2eDSupdzxNOkJqjunH1RgtdF5iM/q8rlCwSd
-	ncEe2HV6kzF5MWzLm7K654H9WLmQ8iN7FZ7n7ReJh8YF4+E4p5tTj4PN6FBnxBdlE6MUvtWajK+HN
-	ipkkO7cQ==;
+	bh=M3uyyy85u6HLx4zNDAlxiJww1bysjE8MNiec4SRRW20=; b=AeoPgmkC+4Pkz8jtXeYawltBwG
+	hyOC/6371DFAPoIlDkNkwuiJEHLCkAdMgT3hlSt6dOhzZdNbRhxJaAkGmRYy3tYQ/zg4URfShDANe
+	37y3wlmW4cdzZ9QlUIL4cV8mZIrI6arxtNP1n5ogkYjvW+3pPib47bUh2qKTLJSRCvku9DYBbOHqJ
+	79r2ksstZVZcO5V9AfGfGYTB52++Y5trZnDtJW+xRMUHUe8aNodp090Zy9m1/tUKvQgCENU29E9lc
+	8aWd7t5Cqcnh7Q03ZMiByZ/PAfkgItL79ymDKU9NCMye4st7NrXUO8JedyxfrmEhR+nuX2N1B9DBS
+	R12NIrtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrMNS-0040RQ-24;
-	Fri, 13 Oct 2023 17:55:10 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qrMRi-0040nS-32;
+	Fri, 13 Oct 2023 17:59:34 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrMNP-0040Qc-1q;
-	Fri, 13 Oct 2023 17:55:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 1DC78B82ADF;
-	Fri, 13 Oct 2023 17:55:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 661EBC433C7;
-	Fri, 13 Oct 2023 17:55:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697219705;
-	bh=7IamPXTmz8rMuid6Tr9dVZoV3lmTXmDMvdIcBzXdT7A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rjET7qMd2cdxkddUY8YlBjojhX6lMYkx7Y805KW6478kUEPfy0tZ/vzU1kh+HH2wB
-	 hKXl/GuHRBBYoeENwBoPanwRT9cha7kYXprM82kqBQOg/kP0nzja9Yj+DaXy8yiEkb
-	 uEzQ9Q/tqJbXdS1Nnqzrdx0SBnyIrDAwhP9z5Fx/Z7S+jOGnqBGTC4klhWb0V/A6Le
-	 6bQR+y3cgLTZToI3cIE0bg8uIs1wSdWpvRANW1l2QCyNlL8JXc6ai5fYC+32N6yubA
-	 8cvYEdy/LZTx9J2cHHZ7ZKEbD8sB//rXEQmMS4sKrlqzZfPTKBXw6Qeems1Xk859pd
-	 003wY0EBdRxRA==
-Date: Fri, 13 Oct 2023 18:55:01 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/9] dt-bindings: arm: mediatek: Add MT8186 Tentacruel /
- Tentacool Chromebooks
-Message-ID: <20231013-panic-vaseline-350c10e7d585@spud>
-References: <20231012230237.2676469-1-wenst@chromium.org>
- <20231012230237.2676469-3-wenst@chromium.org>
- <20231013-washer-mortally-b27c196ac50f@spud>
- <CAGXv+5GF7HfQSOg9c=G+c4DPUW24Ax7LX4raTynDbE3xc8iCdg@mail.gmail.com>
+	id 1qrMRf-0040ms-1T
+	for linux-mediatek@lists.infradead.org;
+	Fri, 13 Oct 2023 17:59:32 +0000
+Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39DHiTrF027370;
+	Fri, 13 Oct 2023 17:59:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : content-type :
+ mime-version; s=corp-2023-03-30;
+ bh=M3uyyy85u6HLx4zNDAlxiJww1bysjE8MNiec4SRRW20=;
+ b=fSY4gNZRkoYGAMMWRm/DCnkLagVkx7MZlxh4N5MNWEMoz+rOKJQtex/FEz0tUCItDgrj
+ yMSyRIrIz4QgbkIGX8MIX/njTJ+bElUwqAEt37GxNYti5ctEcRTJK0e67Sfm44Az9YcU
+ 4M0pPb6pbdf69cV51NUpqupadGBcWFpxWNZlgUbw3sIuJOLJ2idXFi3SVzvdwdRqZ3fi
+ 7YJ5vIpFcPCB91PFQQn3i+vFi7bCo/Vm7/Jp/cZzc7NkExLG/ACjFIN7y4k1EMMbACod
+ gG8mQzXmiycv/AFwAF5vetAg/lJoiFDT5+fUzROYuyPrI763Uidg/wbskuH4AZS1dovG 2w== 
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3tjx8cnn5g-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 13 Oct 2023 17:59:15 +0000
+Received: from pps.filterd (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 39DGsRse020186;
+	Fri, 13 Oct 2023 17:59:14 GMT
+Received: from nam10-mw2-obe.outbound.protection.outlook.com (mail-mw2nam10lp2101.outbound.protection.outlook.com [104.47.55.101])
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 3tptcjx7e8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 13 Oct 2023 17:59:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JGGExVvfnwI8YOqF8Jlar6BSecKsYKqO1+2EYuq/AN9qUm2HMv1plpQ8eINUngrtodzfhmW8BcgibMVw1auPbORvLrK/tGlJymqwehZZ798b1LqJYjvxunRBaZO8ddWBgLYJYpuesQXq9lMo6ctja4158jWN16jm2gSPTukzGYjImqn+fExSDJXZE+0TsScded/XdClW3MpxbmIhNZjCsHidhkv5jLZl5INffKquSgWtD1yri9z0fRrtoR6mRHBwBdeYbpjKv9RjdEx6NTRTfV2JKTssExdwR2O/Riq/D/u5dcdaf3aPoSiKL06vRSPgOw4am1GfvJ8tnP/g1TyGqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=M3uyyy85u6HLx4zNDAlxiJww1bysjE8MNiec4SRRW20=;
+ b=EzMD3NFS3/jxrNs6Himhzxd9KI5Ne0/U0sFeTm5vDpIfFwpxe8egx6u8xKHJE0tn8HCP40Vofuw7VJQNCnnZsKJ+YfKGfrFHXKq3hMKYR6USkS5E3+73NYVoGZ1f54BnidkthP7X5s0Q4iGMSI1HfM70rgphynZcvfMgOlpAOntg/c1PkRXVEgmwDVjn+C/8e7SkAbD+0Uh+utIh4PLND7eiWW1s6RBDsY/BymdfCBFXp8lzqWryCJrrt8SJhjxEOUzfDbZKCMuSGOT7rQK+YrePQrKZD73lvW5tRyUVqTaenGj6/yGFeIZfq3oSRwQvanjZsFkEDoj+0BZZaHNUrA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=M3uyyy85u6HLx4zNDAlxiJww1bysjE8MNiec4SRRW20=;
+ b=qNd48PxDfcufP09udo/cjgxIgW+nVkWnYB3iPsTSDxfGkBo+qmfNXyZUTxHVaJGxmex+tlFAYI8HDVnmdSlxNmb5JpXeSETVn04USFB/jjx1uvZXFryMsRpjQ3UwSxXOq0UM8NxMERoUGOAPgJpy3KNsfgS54pWYS4kT0gdhIl4=
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
+ by CY8PR10MB6852.namprd10.prod.outlook.com (2603:10b6:930:84::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.45; Fri, 13 Oct
+ 2023 17:59:12 +0000
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::1ae3:44f0:f5b:2383]) by PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::1ae3:44f0:f5b:2383%4]) with mapi id 15.20.6863.046; Fri, 13 Oct 2023
+ 17:59:12 +0000
+To: peter.wang@mediatek.com, Bart Van Assche <bvanassche@acm.org>
+Cc: stanley.chu@mediatek.com, linux-scsi@vger.kernel.org,
+        martin.petersen@oracle.com, avri.altman@wdc.com,
+        alim.akhtar@samsung.com, jejb@linux.ibm.com, wsd_upstream@mediatek.com,
+        linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com,
+        alice.chao@mediatek.com, cc.chou@mediatek.com,
+        chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
+        powen.kao@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
+        tun-yu.yu@mediatek.com, eddie.huang@mediatek.com,
+        naomi.chu@mediatek.com
+Subject: Re: [PATCH v2 2/3] ufs: core: fix abnormal scale up after last cmd
+ finish
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1edhymmk1.fsf@ca-mkp.ca.oracle.com>
+References: <20230831130826.5592-1-peter.wang@mediatek.com>
+	<20230831130826.5592-3-peter.wang@mediatek.com>
+	<dd6f13e7-ae2f-4821-849d-8ca43ad48144@acm.org>
+Date: Fri, 13 Oct 2023 13:59:10 -0400
+In-Reply-To: <dd6f13e7-ae2f-4821-849d-8ca43ad48144@acm.org> (Bart Van Assche's
+	message of "Fri, 13 Oct 2023 09:33:37 -0700")
+Content-Type: text/plain
+X-ClientProxiedBy: SJ0PR03CA0348.namprd03.prod.outlook.com
+ (2603:10b6:a03:39c::23) To PH0PR10MB4759.namprd10.prod.outlook.com
+ (2603:10b6:510:3d::12)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="9NYY4vQdb9ornYDu"
-Content-Disposition: inline
-In-Reply-To: <CAGXv+5GF7HfQSOg9c=G+c4DPUW24Ax7LX4raTynDbE3xc8iCdg@mail.gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR10MB4759:EE_|CY8PR10MB6852:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8ad3a443-a650-4dd9-5c7a-08dbcc161b36
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: rqNXvU2duYPUBMfA/fX1XvDfwS/XryTRAKS2Ia/dejjFsijg8ELIrPQXA8rCQRZaHpPADexfZZtBcSFda6deLWhNFlkTx0ErtsR6MEcykyxY3WoVIHXpFdyR9uZLwouFiI/g/E/FRqxJ38VhoionoNOqowg8jMGvjZUweYxR8AurjsIyTUIhr/4Vo0jCAhNaxtfpDRcLcNicPK4LbAV5OCcDhBc/4or015EjwBq5OoADaaFlJdGUFvjmZhFwo3VgyMGaKnrznxgr773EUgALYzsbrj0DUNzVM6kvX2e0fHKB2S1UsYuah5zN6R8vnL1ZDfUCMsYiy65NUTcNqr3TRiIK2wxz4+o43+TCiONNBM1LvCe2BsDRAkww/5tF4Im9ubRbYdMVk9vzvKzt+C+T06dwjie0dmZlDyORD/AwJhXvvuYqRqaX7aqv8vGRTokerE70OmVfriKLAtMTOsqpk26LzDzaf/S6EgCczt38JTpUaaslxcn1W/dowJhMT0OxQv5wLPlYxsltDUxDboYpCNVhltS/pwIF6oqkrbh8MNj6vZ05KwQ9aqdz9kUx45/X
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(346002)(366004)(136003)(396003)(39860400002)(376002)(230922051799003)(186009)(1800799009)(451199024)(64100799003)(36916002)(6512007)(53546011)(6486002)(86362001)(6506007)(38100700002)(7416002)(4744005)(6916009)(83380400001)(478600001)(41300700001)(26005)(8936002)(8676002)(4326008)(316002)(2906002)(66476007)(66946007)(66556008)(5660300002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?22o5raSamPMMHDA8di0754N5adxeUy/AQbUZD0BO/YyvGMgVNiV5EQ4/5dNm?=
+ =?us-ascii?Q?MqSneGBIIBn50Lo+zcooukfjyWe5ZeKP1SOUbFiFGKnxAZOVa3+E+24vx4kx?=
+ =?us-ascii?Q?s1mM80NKtGnbA3Zg40Ql5CaSFh4u6tvQha2CoUGz/HsYjVNIOOwJyU9XZeDN?=
+ =?us-ascii?Q?k/5qMXV4zlCygEKsVGkijYP3MN7aVKUBzTcaExWoxT+qTFC3G6AWShQzjNgK?=
+ =?us-ascii?Q?0JSWhjI6VNjDkXuzdlhT76FgZ4VmbkutVTz84a7XURYlqANYfeAakSp8lI41?=
+ =?us-ascii?Q?IT+5kRbAbowig+l70Lx73rKpK1N+TCpW061SFtN2h+fuc8oGkasE0u8hqng0?=
+ =?us-ascii?Q?xuACDELxHOdUVd4FXIoHgRhU9bQF0VQj8Z8A1c3ZjJF3eXReUPR1ENnRKn8A?=
+ =?us-ascii?Q?fPXJPNMhQ+BdMvUS5yRK0ABQwtr8L85TR9G6F3PpJgsjTA6eyqsQugsK7Mbq?=
+ =?us-ascii?Q?T5NY2MFLyvhzuzak+PPiUHD5a9j5tgb/cFzp/OH3llw2hWihP6ubApGLuIdq?=
+ =?us-ascii?Q?sOV9Nilc1oHWGuaMb9AqcS+jVmDTVGSqrQJMbvN86SFkkEBiD5zs/CdJPiIi?=
+ =?us-ascii?Q?9aPXTtJl04RTWIJrwzDNYTaO3xpHrjFDu9neA7l3plidjhxgDtz1LDuoFR13?=
+ =?us-ascii?Q?vLrZKf1kfXAF/+mnumgad/GPqidydWy/oOnKMaU5iJzftzRlaZ3OcTs4MNXR?=
+ =?us-ascii?Q?R2gC9n3BBozsdvQC78QftS7vFjnoxA+Jg/CJ8KtMH473pKaL5USkfODf02ac?=
+ =?us-ascii?Q?r9wNmQC/XkKBnjIm6F+uJxpz5gmK4AhjgjpTx6SU4p7z6kfGm1n/kSs+gqb5?=
+ =?us-ascii?Q?SDi/ynKLo1UWWvpDYl/tFSpH1QdyuLc2DcZBq809cET1Vd2583lsTrjmfrCh?=
+ =?us-ascii?Q?Cs+LqBQZmtfpZOwuzPSRSdfG8JlOfdAWVYmMpNJ8/2NWErJZzMdSUGQ9jmKL?=
+ =?us-ascii?Q?IjCEFXcJwiudTizmB6gRvFCtOAg0R5nYrZb3wayRDHXfO+5YdH+7P7Nndjmm?=
+ =?us-ascii?Q?MBNpBNyzYKEjCEmwSmwIGqjRUPY4rbd5nXiQTVPVarydEArdzTnCqL+IeZ/1?=
+ =?us-ascii?Q?hlqHnT00Pu6niKjBOaLViTOmmiosbFrprLa3+aefR49pOfqX+CM5CiIjuxgu?=
+ =?us-ascii?Q?6Udeg4lBZkmpNkWFdB3Qlvk+m1M+unAeXZgB7yzaTaC5GZe4tThpvyBLxFE9?=
+ =?us-ascii?Q?1fMRhEG9JN/jaq5JUwjieHcnkOpgnGSfIoObhTfUnjwoGEFjP1/1XonuixkT?=
+ =?us-ascii?Q?3mWH1Y65e/6dkmRQgEaxqLGLBeoTaNYjwDCNxkm+p/Wv7vvdSO9y41h0LmBo?=
+ =?us-ascii?Q?0ZklQqGgQogtmXXkBLnZSruWGSBLk3Lw1zNjJ657mVDVesiH3ebh9l8AxKBu?=
+ =?us-ascii?Q?F7R3sfTYo8257Zr/LnYAVCzSzS4Apk6+XKS6h4unJWv2C7vUs+qOp6Sbgweq?=
+ =?us-ascii?Q?2bK4AQDtnaG85TRDWzdnDswZGpGMmHrrRAeqWdn2FNcrVLnoViudonhCy6be?=
+ =?us-ascii?Q?Lev22kLyc8j7s1qXqCn6kEibFYNJcFXA5K9wRj2lsN+Q75/ipP2k1+GpAn7R?=
+ =?us-ascii?Q?elsAxVRxMK1L5UCnbZn0Yh2uGKzqREqje8+yFgYjQk6k8aulSegQ849f95Xj?=
+ =?us-ascii?Q?Lw=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?us-ascii?Q?Ow6DkZwZzOFXFL/a7oxORW8s7gxU9vY4Mk9rHJX8ephu0HKmGA5UdsXzYnJm?=
+ =?us-ascii?Q?/woN3HGO8tYM38cGHlFotQ+pJeOFDZ9dFaEb8tvnKAREi5Rocya2+Ay77HhQ?=
+ =?us-ascii?Q?hkQMCPTGI58m/dKN9lWvepjVXpRcmkYssbl3fzEDuhADq5ffdKVyqOvgg/vn?=
+ =?us-ascii?Q?NVf6ooYKrTLfR03REhjehkFlHDpYBmZsaNwPfoIeghxjhXefgFUyITGagB32?=
+ =?us-ascii?Q?biPv2oOoVyKng1Ml0KJ6vhLcB/zySjOtSUTfs2TmPmT7tjqkB13Ccgv68HVU?=
+ =?us-ascii?Q?wL6R85CzoJAp//IUnU4CJeYJc7WItjdYZ87y+Vqlr/5T1Dk8KDr7gbOt/xF8?=
+ =?us-ascii?Q?lT+axNwVmPAVc6m4Om6uv2BzTJ/DwXk7Mr5DOr29DFA3a3SjtUe94RFAVZve?=
+ =?us-ascii?Q?QYMhpzAlKVM8Aoz2KKJ+5E9asExnMPlpIn+JcDWa9JNcQ3kM/dAASTUHg+Dg?=
+ =?us-ascii?Q?1We6fv04RrrQfLFtBDpxNQRNgTEu0eXO/5B7QhXc5OGo9ByM+AP2DsI0sZaD?=
+ =?us-ascii?Q?gwG4Y3sQGHG2cQ2Equz59SKsRXZz3KcR5m0+owlI6ocvQpgFMm+CZquhNm3E?=
+ =?us-ascii?Q?4t0sSx7hKBeU0oAlu44QxHUT2C0h4JK1eKIKXcL0tTc+AI06FCTnuEjemTFV?=
+ =?us-ascii?Q?r/rqrpJeDNUuL5nkj3suPaD+4IQ+84AnqUP7tc+Nf0JfbR5E9g9yh1U7a0Xj?=
+ =?us-ascii?Q?YYJYBkzFYXbs0l1ayqbo8pd0k2ju5h4GYJTAIGJBFlhSG6pUfeRqnOHviIUP?=
+ =?us-ascii?Q?CE5XMHEuGtEL7eE70yikBOw4neMefNktO8+syKCBWb/DQZmWsZZQmzlxFZeX?=
+ =?us-ascii?Q?fHw6PnKaKqBbplvCa3Eu3zI7DQcEEd603kiT0+bNEnm14wFgbLhCG9svZva2?=
+ =?us-ascii?Q?b3y1RF0QKblrslBTTnmKsaeztqnty6n3Wfnk9/BXaSbRuNGyDdCuH7Qv6JxG?=
+ =?us-ascii?Q?eeP2e14SgTfY9522QkHCCQ=3D=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8ad3a443-a650-4dd9-5c7a-08dbcc161b36
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2023 17:59:12.2168
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0BiZ4cz/+5jViea3W5yd89QES6ehDJ9gBAHthyZfhArYheqwCDt8wyut3Lc7PMGy0Cu5oI+pIC4w+BQ/MzA1pBLz1xdjlhodWMZUHKtMChQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR10MB6852
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-13_09,2023-10-12_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0 adultscore=0
+ suspectscore=0 phishscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310130154
+X-Proofpoint-ORIG-GUID: Nd3vUYUNd-rSDnLDIbVPKqKcwRAZS_CC
+X-Proofpoint-GUID: Nd3vUYUNd-rSDnLDIbVPKqKcwRAZS_CC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_105507_911957_A240E30F 
-X-CRM114-Status: GOOD (  32.46  )
+X-CRM114-CacheID: sfid-20231013_105931_667613_DCD02231 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,146 +193,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---9NYY4vQdb9ornYDu
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On 8/31/23 06:08, peter.wang@mediatek.com wrote:
+>> When ufshcd_clk_scaling_suspend_work(Thread A) running and new command
+>> coming, ufshcd_clk_scaling_start_busy(Thread B) may get host_lock
+>> after Thread A first time release host_lock. Then Thread A second time
+>> get host_lock will set clk_scaling.window_start_t = 0 which scale up
+>> clock abnormal next polling_ms time.
+>> Also inlines another __ufshcd_suspend_clkscaling calls.
+>
+> Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
-On Fri, Oct 13, 2023 at 10:29:25AM -0700, Chen-Yu Tsai wrote:
-> On Fri, Oct 13, 2023 at 8:11=E2=80=AFAM Conor Dooley <conor@kernel.org> w=
-rote:
-> >
-> > On Fri, Oct 13, 2023 at 07:02:28AM +0800, Chen-Yu Tsai wrote:
-> > > Add entries for MT8186 based Tentacruel / Tentacool Chromebooks. The =
-two
-> > > are based on the same board design: the former is a convertible device
-> > > with a touchscreen, stylus, and some extra buttons; the latter is a
-> > > clamshell device and lacks these additional features.
-> > >
-> > > The two devices both have two variants. The difference is a second
-> > > source touchpad controller that shares the same address as the origin=
-al,
-> > > but is incompatible.
-> >
-> > > The extra SKU IDs for the Tentacruel devices map to different sensor
-> > > components attached to the Embedded Controller. These are not visible
-> > > to the main processor.
-> >
-> > Wha? Given your ordering, is a "google,tentacruel-sku262144" a super-set
-> > of "google,tentacruel-sku262145"? If not, this compatible ordering
-> > doesn't make sense. I can't tell from your description, and the
-> > absence of a
-> > items:
-> >           - const: google,tentacruel-sku262145
-> >           - const: google,tentacruel-sku262146
-> >           - const: google,tentacruel-sku262147
-> >           - const: google,tentacruel
-> >           - const: mediatek,mt8186
-> > suggests that there is no google,tentacruel-sku262145
-> > device?
->=20
-> AFAIK all four SKUs exist. And as far as the main processor is concerned,
-> they look completely identical, so they should share the same device tree.
-> As mentioned in the commit message, the differences are only visible to
-> the embedded controller, which fuses the sensor inputs.
+Applied 1-3 to 6.7/scsi-staging, thanks!
 
-Then it makes very little sense to write a binding like this.
-If this was just for the 252144 SKU, this would be fine.
-For the other SKUs, there is no way to uniquely identify them, as
-all four of google,tentacruel-sku262144, google,tentacruel-sku262145,
-google,tentacruel-sku262146 and google,tentacruel-sku262147 must be
-present.
-Given that, why even bother including the SKUs in the first place,
-since no information can be derived from them that cannot be derived
-=66rom google,tentacruel?
-There's something that I am clearly missing here...
-
-Also, why is the order inverted, with the lower SKUs being super-sets of
-the higher ones? The Hana one you show below makes a little more sense
-in that regard.
-
-> Writing it this way avoids having four identical device tree files.
->=20
-> We also do this for many other device families, though those cover
-> different revisions, such as:
->=20
->       - description: Google Hana (Lenovo Chromebook N23 Yoga, C330, 300e,=
-=2E..)
->         items:
->           - const: google,hana-rev6
->           - const: google,hana-rev5
->           - const: google,hana-rev4
->           - const: google,hana-rev3
->           - const: google,hana
->           - const: mediatek,mt8173
->=20
->=20
-> ChenYu
->=20
-> > Cheers,
-> > Conor.
-> >
-> > >
-> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > ---
-> > >  .../devicetree/bindings/arm/mediatek.yaml     | 26 +++++++++++++++++=
-++
-> > >  1 file changed, 26 insertions(+)
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Do=
-cumentation/devicetree/bindings/arm/mediatek.yaml
-> > > index 60337b439744..aa7e6734b336 100644
-> > > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > > @@ -206,6 +206,32 @@ properties:
-> > >            - enum:
-> > >                - mediatek,mt8183-pumpkin
-> > >            - const: mediatek,mt8183
-> > > +      - description: Google Tentacruel (ASUS Chromebook CM14 Flip CM=
-1402F)
-> > > +        items:
-> > > +          - const: google,tentacruel-sku262144
-> > > +          - const: google,tentacruel-sku262145
-> > > +          - const: google,tentacruel-sku262146
-> > > +          - const: google,tentacruel-sku262147
-> > > +          - const: google,tentacruel
-> > > +          - const: mediatek,mt8186
-> > > +      - description: Google Tentacruel (ASUS Chromebook CM14 Flip CM=
-1402F)
-> > > +        items:
-> > > +          - const: google,tentacruel-sku262148
-> > > +          - const: google,tentacruel-sku262149
-> > > +          - const: google,tentacruel-sku262150
-> > > +          - const: google,tentacruel-sku262151
-> > > +          - const: google,tentacruel
-> > > +          - const: mediatek,mt8186
-> > > +      - description: Google Tentacool (ASUS Chromebook CM14 CM1402C)
-> > > +        items:
-> > > +          - const: google,tentacruel-sku327681
-> > > +          - const: google,tentacruel
-> > > +          - const: mediatek,mt8186
-> > > +      - description: Google Tentacool (ASUS Chromebook CM14 CM1402C)
-> > > +        items:
-> > > +          - const: google,tentacruel-sku327683
-> > > +          - const: google,tentacruel
-> > > +          - const: mediatek,mt8186
-> > >        - items:
-> > >            - enum:
-> > >                - mediatek,mt8186-evb
-> > > --
-> > > 2.42.0.655.g421f12c284-goog
-> > >
-
---9NYY4vQdb9ornYDu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZSmEdQAKCRB4tDGHoIJi
-0vjhAP9fKNGUBz2HMnG2ILJzOr0cgfze+4tqoryOMOIyWAjHDAEAwCbqZBVwT61j
-WfBudZ6XiijDWDUaS2LAIEvxmyMGzAs=
-=TciW
------END PGP SIGNATURE-----
-
---9NYY4vQdb9ornYDu--
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
