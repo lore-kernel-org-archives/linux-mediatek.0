@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64876CDB47E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 15:12:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7505ECDB483
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Oct 2023 16:25:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VGn3EdAmkk/eJLD0T01DAReNyRIW3mgYLaps7MvCEU8=; b=MyafeNyI5y5wocKU0q3hlQsY8P
-	+cxDnGf+La+nV4RponMBgiQYsS2NHxOKAcHT8/yVjmdNQGQ49SVUzqgsEDZrUSmEPmiSt/fWxGeG0
-	GQND9rnBJaDwRiYsV02qsu0JB2N+jKIWV3RBxjXUmHNGZN9oOM/gICuDMVpd87vimO2mPlAxCYY+e
-	gnqcpybp6qLCQ+WFBkRiibTk6kHHLDA1KqR2VE6OtCbANbed0a+GYYMrTm0PKMEMmyEC9/uxflw12
-	y0H1vWC4GXPyUdfTue+NVpjwJKKtP+PWYWYmdeOfwGlqbEgna+Sb8SS+odo0fw1cvz0EwAPQE1IV/
-	dptY3B1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p1UPZMSkgkIyz+Vra1Gma2AD0nnQUamicNB8T2Fp4Ik=; b=PCpLBDKiYXuNGj/O/s08W/pqeF
+	9YXATM9slRKakymw4bK+X/W6wONQqQ+b/V2MTe1zMxW1AVeaH+IpOrw0yDcR5bV2jUPc5MkP2MTw3
+	1Ir3pXd2MAmtKx73MgtaVhtMM2AQWRw9xlZFPdwwr3+sNQptz4Yy2omQwjzRvCjGjb1oM/x2wF5QS
+	WSfpj2TizRMLY2XtdnOIIp81K3BnOlzIuc0myjVkRMeMQe4l8XtLhXy+A0ooVXhdk3607LAISqIT7
+	Fg+hRFTVlRzuZinvB6FNFqFv+vMIWO7nd5vLcyBr5lRsdrKYXh8M4iReszOprj7HI/qUWrpmidfBb
+	Ct1i+GDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrJpy-003ecA-0X;
-	Fri, 13 Oct 2023 15:12:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qrKyN-003rCO-0Z;
+	Fri, 13 Oct 2023 16:25:11 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrJpu-003eau-2L;
-	Fri, 13 Oct 2023 15:12:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 094AF6215E;
-	Fri, 13 Oct 2023 15:12:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A706CC433C8;
-	Fri, 13 Oct 2023 15:12:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697209941;
-	bh=4E09wJEx+hUjRW7ZMgCIOg2Gy6RCgWzCpZcW8uW0hV8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cEw1/nod0VWsOUN96f/HB/xl14XHvv7bs8HaaT9VgRUOIoCZr4Oa8kO+poHc9DIv1
-	 /jto6hgFaVnMLq5MlmrXPgdoL9rahdni23v4TZElMiKN+RkaJaVtqclD0v9SfILjM+
-	 bMlJtFdwtTOBZrUxWNkPsbSt64bj1Sv/8AuCsCX1wEI0AYD66b23bisvUxoJ2uP6S1
-	 OOB5KT1DZ7koGouBAB8r0hvq0IOAawxcFxE1raczRRrel472KVzLjuw90HdRGA3eXr
-	 eF1flLrayL6Mrw9vHsyw7N/Lp3KGwM3zOjSGZ4oXGoReV7SzCuZT5QOpgbHBvISlv5
-	 hvpIyTL8eqDSA==
-Date: Fri, 13 Oct 2023 16:12:17 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 3/9] dt-bindings: arm: mediatek: Add MT8186 Steelix
- Chromebook
-Message-ID: <20231013-playoff-unsmooth-2d3c8b30790e@spud>
-References: <20231012230237.2676469-1-wenst@chromium.org>
- <20231012230237.2676469-4-wenst@chromium.org>
+	id 1qrKyK-003rBk-1a
+	for linux-mediatek@lists.infradead.org;
+	Fri, 13 Oct 2023 16:25:09 +0000
+Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-6c0b8f42409so1451375a34.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Oct 2023 09:25:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697214306; x=1697819106;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=p1UPZMSkgkIyz+Vra1Gma2AD0nnQUamicNB8T2Fp4Ik=;
+        b=wVEiOo3GPJslLoqOVzch9Wzio+S8OGGjbAXVGIk7iUz2G/j8frl0Tuda4AZYDc7I4z
+         UWnPBfJA5jI6d7NJpm/TZjxkEuXb0fG4mTWInpEksJHyH+nqqnjZmAya21e+GU5FzLgv
+         FxAugZjPncptZ9Z3rQdQ4QPDvwdOyCYFfa3yvXoAHMfbMD0OUi+Nc8dRsByJdcpi4l92
+         Wqq+Vy8tHJpDNbAQdFZao0c/6u0kRdeKhpPrv7RyXRtFS/aF9ioL5Tv+kmWus/fNfXip
+         +n9YnAlInaDcg2o3rpyiHUaYOmqJgOacgLEkI9yOaz4cJFvxHUPQ3OAojEKT8OZnQzB3
+         g66Q==
+X-Gm-Message-State: AOJu0YzxuWzJit/oZD9EbDJvX2P3+LtSsrs95f/k6Cj4da9jBqE/7mKi
+	8EV/cSHii/JJG2fCkhCo1D8=
+X-Google-Smtp-Source: AGHT+IE8q9T0QFZWQdEfbvIJy8QqOvoNnNJ/2tOQ1A2x9Asl91CGy/lxD72TnZBes+dsnajzXAC6JQ==
+X-Received: by 2002:a9d:7d8a:0:b0:6bc:65ad:1b08 with SMTP id j10-20020a9d7d8a000000b006bc65ad1b08mr26718029otn.28.1697214305886;
+        Fri, 13 Oct 2023 09:25:05 -0700 (PDT)
+Received: from [192.168.51.14] (c-73-231-117-72.hsd1.ca.comcast.net. [73.231.117.72])
+        by smtp.gmail.com with ESMTPSA id o4-20020aa79784000000b006934a1c69f8sm2520692pfp.24.2023.10.13.09.25.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Oct 2023 09:25:05 -0700 (PDT)
+Message-ID: <cc40e03a-1e43-4659-8579-1b9d22d7c34a@acm.org>
+Date: Fri, 13 Oct 2023 09:25:03 -0700
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="HPmS7nFTK45JskTw"
-Content-Disposition: inline
-In-Reply-To: <20231012230237.2676469-4-wenst@chromium.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] ufs: core: fix abnormal scale up after last cmd
+ finish
+Content-Language: en-US
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>, =?UTF-8?B?TGluIEd1aSAo5qGC5p6X?=
+ =?UTF-8?Q?=29?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
+ <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+ <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>
+References: <20230831130826.5592-1-peter.wang@mediatek.com>
+ <20230831130826.5592-3-peter.wang@mediatek.com>
+ <5afd3b643d75cd3a65adba84b2d31ef355e58abe.camel@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <5afd3b643d75cd3a65adba84b2d31ef355e58abe.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_081222_808897_1912434D 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20231013_092508_535890_E79E9DC9 
+X-CRM114-Status: UNSURE (   6.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +104,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 10/13/23 02:42, Peter Wang (王信友) wrote:
+> This patch still need your review.
 
---HPmS7nFTK45JskTw
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi Peter,
 
-On Fri, Oct 13, 2023 at 07:02:29AM +0800, Chen-Yu Tsai wrote:
-> Add an entry for the MT8186 based Steelix Chromebook, also known as the
-> Lenovo 300e Yoga Chromebook Gen 4.
->=20
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
->  1 file changed, 7 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
-ntation/devicetree/bindings/arm/mediatek.yaml
-> index aa7e6734b336..fafd5e18f640 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -206,6 +206,13 @@ properties:
->            - enum:
->                - mediatek,mt8183-pumpkin
->            - const: mediatek,mt8183
-> +      - description: Google Steelix (Lenovo 300e Yoga Chromebook Gen 4)
-> +        items:
-> +          - enum:
-> +              - google,steelix-sku131072
-> +              - google,steelix-sku131073
+Although I can see that patch 2/3 made it to lore.kernel.org, I did not receive
+that patch in my mailbox. This probably was caused by an issue by the mailserver
+I'm using. I will download the emails I'm missing from lore.kernel.org and review
+these patches.
 
-This one makes sense though, because both of the SKUs are in an enum.
+Thanks,
 
-> +          - const: google,steelix
-> +          - const: mediatek,mt8186
->        - description: Google Tentacruel (ASUS Chromebook CM14 Flip CM1402=
-F)
->          items:
->            - const: google,tentacruel-sku262144
-> --=20
-> 2.42.0.655.g421f12c284-goog
->=20
+Bart.
 
---HPmS7nFTK45JskTw
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZSleUQAKCRB4tDGHoIJi
-0v6CAQCmJE4kCmgE2JDh5U5bt3i9neQPQ4ZHWoVy6VSjohWS5AD/QfDDtg1Oc4Ft
-FZpadGnpde7ftxx7TPCKzl7RQjgdOQw=
-=ZIPt
------END PGP SIGNATURE-----
-
---HPmS7nFTK45JskTw--
 
