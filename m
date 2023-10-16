@@ -4,89 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 174E7CDB465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 21:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E349ECDB474
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 21:51:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YU8u+sBPim2K3r5DGxEa61RapakHy3YnHZgIMLk+JTo=; b=RjUbewKo5gGQmPaEswM2XwmMA+
-	JI7MGHVxONd2SK0/6eooDqxB7zr5MArGXxmzypXctNCwfRQaUPm97hjLgS/cKuxqTMtdS9DIEZ7mX
-	6tOFbGiYIMMJ89ARQxqFJHF2MijyC909NhGWJY2IAdY+Jq1sHGBNZsIMWSK/ehbB/0En+DPZGN9xZ
-	XDe5ux7t8O5T7v5r9dZMra1aE0Fzm3D7Y8EnyNPmZax4r5UiolIXmDP13qMEJ0YhVaT3eYUA84oQt
-	LE46+NuI6/Vi86Ld+XF0GPCxzWStv8HPx7lmtCIfakPJ3g9vEP6iJqn3SN7WtupWMjlfqx81UGEpo
-	sX/nBijA==;
+	bh=1mx9lccHq3HkbvSbAjueQ7LtepY+D1AIjHJYd1rv7ik=; b=BgTkI3l3C5u7gp5XrK/HTBPaea
+	hxt28xbNO1qRUG2On8rPVgIObHVopmse6gfad3Uz74ypNUPGQo3vgO/hSr2LMLDoIF5cRfRIDHWCC
+	+s0alQpyeVgUv44dCXM3hBO+chYy2rONbvSXtXV1wdHhYalaPCyYkmktUUv+rQkhrekE9X1agvoP0
+	vDOdZ2t16Enm5J/LR3pT3ZeC2ZzXzO6gSgioBOI86ard3o3P4OQOtrJ5rtiawFd8Pvl+LbvCsYfwg
+	U36czSrmTJ2Y7gnVIXD4tdCwdcDBflkNCDxg6tCfTG1rrhvk8r1yp2mlW33eGqj4qLOvP6fvR6Fi2
+	nWware2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsVP3-00Ac1a-2o;
-	Mon, 16 Oct 2023 21:45:33 +0000
-Received: from mail-ot1-f45.google.com ([209.85.210.45])
+	id 1qsVUh-00AdMj-21;
+	Mon, 16 Oct 2023 21:51:23 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsVOZ-00Abb1-1v;
-	Mon, 16 Oct 2023 21:45:05 +0000
-Received: by mail-ot1-f45.google.com with SMTP id 46e09a7af769-6c6368a1a97so3017801a34.1;
-        Mon, 16 Oct 2023 14:45:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697492699; x=1698097499;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YU8u+sBPim2K3r5DGxEa61RapakHy3YnHZgIMLk+JTo=;
-        b=to+LWTctFXr2hlX6QO+YwrtPXLeLNadnXMl5BpnC+FU0ALs7UsC9DMualaps5ieIdA
-         TGhB4pH3mt8+Aevt+3xM58T3hdFmb+tYbeuRLRZoTLKh29NpyXoVyZPZ+RUOJfY5F/TW
-         R+2S0vRs4OBhoE0oWMNW91Hb35hsW9j5mx1GeEGtWSBowdn6ypq4haWVnUxoTPM7xRaV
-         J/bG0C78ax83JmRod5ygFGQa3/tx2ZJKOSiEsVX1KDxwJ6Fot6qlfcl1BhLSjfmIy58M
-         R9MKsr0RNMxjuAYwwXjOjuhEbJ6mLyYb7Dlh9Lj4MVtLQFp+GqNjKdUQt6WT15QDZ8RR
-         mPZg==
-X-Gm-Message-State: AOJu0YyZBWR0xisJPZsTXgSunWFv4yNhrzvifRIWltPtwLgE3oDUeNN9
-	f611Jz926DIfF69y6XPhuChXlv0ztQ==
-X-Google-Smtp-Source: AGHT+IHVJZSvo9G+71y8WVX1VKgCtT5MDvO9YigKl0mCdN/122ZVPZKl1yBarH7bSgYTtsYqwjxrTA==
-X-Received: by 2002:a05:6870:310f:b0:1e9:a85a:9ec0 with SMTP id v15-20020a056870310f00b001e9a85a9ec0mr40962oaa.0.1697492699637;
-        Mon, 16 Oct 2023 14:44:59 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id g9-20020a9d5f89000000b006bdcef91e61sm29973oti.17.2023.10.16.14.44.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Oct 2023 14:44:58 -0700 (PDT)
-Received: (nullmailer pid 3823218 invoked by uid 1000);
-	Mon, 16 Oct 2023 21:44:35 -0000
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 16 Oct 2023 16:44:24 -0500
-Subject: [PATCH net-next 5/8] dt-bindings: net: ethernet-switch: Rename
- $defs "base" to 'ethernet-ports'
+	id 1qsVUe-00AdLK-1e;
+	Mon, 16 Oct 2023 21:51:21 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A289389D;
+	Mon, 16 Oct 2023 23:51:12 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1697493072;
+	bh=4hjvHsVqzqOYZWkil1rRouOrvHTjXpzmHt0/v6juDpA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=vfhAjRiSLGTvVpo/2J6z2VgAuv4xIyAzbKcecBMDmxlrYOfHiJF69kMmQvhW+cMxk
+	 d8dVJb9pA3IrnKGR57GCBS8OsW8JK53uYrd4Rmdqy7QQmBBHy5Iuo4lHB29B2XW5cV
+	 MJAwlyU77yI18m23q+T3HdXwe/x+aL6GpgBoeAv4=
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Fabien Parent <fabien.parent@linaro.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Julien Stephan <jstephan@baylibre.com>,
+	Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>,
+	Ted Larson <ted@ologicinc.com>
+Subject: [PATCH v1 1/3] dt-bindings: vendor-prefixes: Add prefix for OLogic, Inc.
+Date: Tue, 17 Oct 2023 00:51:21 +0300
+Message-ID: <20231016215123.30343-2-laurent.pinchart@ideasonboard.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231016215123.30343-1-laurent.pinchart@ideasonboard.com>
+References: <20231016215123.30343-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20231016-dt-net-cleanups-v1-5-a525a090b444@kernel.org>
-References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
-In-Reply-To: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
-To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Andrew Lunn <andrew@lunn.ch>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Linus Walleij <linus.walleij@linaro.org>, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, 
-	=?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Maxime Ripard <mripard@kernel.org>, =?UTF-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>, 
-	Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, 
-	John Crispin <john@phrozen.org>, Gerhard Engleder <gerhard@engleder-embedded.com>, 
-	Heiner Kallweit <hkallweit1@gmail.com>, Sergey Shtylyov <s.shtylyov@omp.ru>, 
-	Sergei Shtylyov <sergei.shtylyov@gmail.com>, Justin Chen <justin.chen@broadcom.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>, 
-	Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com
-X-Mailer: b4 0.13-dev
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_144503_686994_713085DA 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20231016_145120_698038_68FC76D6 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,33 +77,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The name "base" is misleading as the definition is for a complete schema
-definition without additional properties allowed, not a "base class".
-Align the same to be the same as dsa.yaml. This schema file without any
-json pointer path is the base schema which can be extended.
+Add a DT vendor prefix for OLogic, Inc. OLogic is a hardware and system
+design company that manufactures, among other things, development boards
+with MediaTek SoCs.
 
-There are not yet any references to $defs/base to update.
-
-Signed-off-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- Documentation/devicetree/bindings/net/ethernet-switch.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/ethernet-switch.yaml b/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-index 688938c2e261..72ac67ca3415 100644
---- a/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-+++ b/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-@@ -53,7 +53,7 @@ oneOf:
- additionalProperties: true
- 
- $defs:
--  base:
-+  ethernet-ports:
-     description: An ethernet switch without any extra port properties
-     $ref: '#'
- 
-
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 573578db9509..247b724bc01f 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -981,6 +981,8 @@ patternProperties:
+     description: Oki Electric Industry Co., Ltd.
+   "^olimex,.*":
+     description: OLIMEX Ltd.
++  "^ologic,.*":
++    description: OLogic, Inc.
+   "^olpc,.*":
+     description: One Laptop Per Child
+   "^oneplus,.*":
 -- 
-2.42.0
+Regards,
+
+Laurent Pinchart
 
 
