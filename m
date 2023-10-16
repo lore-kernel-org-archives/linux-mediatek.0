@@ -4,68 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74659CDB465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 14:31:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 748CDCDB465
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 14:33:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pogla2ixenuu9Whu/Txm0dkQOdChFbDxggoz3QMNrmQ=; b=slbs6L3wZNLVlc6qazUnaNHUcP
-	c4kfVz64Oz3zUCpCjj+IUacwsWDn0bNoJ5jhzViMZsZGmz6O0RrSsKHy4ZWc9xosYd2o24RwL8zDJ
-	oNQDYa+tlrXiQf3Xm4lIBCXpcJ3qC2sfm0e4RuBFfhVmIvrokpIbFDC3jvWwT49pNwdAVZ8XRPpnC
-	OntDvwnDfTjBNBbsIQmgTNsgmu38IqIDqBMOgU2ao3cZyfnDpHXu9ORhewAvHPCcXGEkQewqdwjJ+
-	gf/L4hfPUHW5AoSBnS3Jd8efyf+RcrG6lJKusyDbgCHLWRzM+4ZRaKMrBlHY+pqWjU7V7Y6wrN916
-	qyxUdjYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RZL33r01zN/4YXlBL4wYBXBNUwSgMKem3Isvpwjn0ag=; b=GO0dKS331MgNUq6rHFHtTlJREL
+	Ws5nxU/1lH9rd28pSw4TkM3x9vsY7eEwjgZCDrRseni8xWHnfCY5TWLvEio/GKCIsUytIo58JWC7Y
+	8oneDrNFBSfhPhb8LYLrIOBYgtE1d8Kbb2qRo/Pu2VnOFi/6u7NDnSKs37aZOZvftqlb97fXMbHzK
+	j6HistImd+vtZiFLUVm2CYhyzW3CsRdiS27DnbzHPLsAdjnaQIM794oDd/aG3n9BkGJs4mFqLE0hG
+	VPln4nUqVhkxCAMVYJSDsuY8O0kWdV1qEsfSAS2t5n8xgn+fDkwxeOC1Er2qi4nkIp+VF87UBSKix
+	UvfMZTOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsOcV-009s9w-1S;
-	Mon, 16 Oct 2023 14:30:59 +0000
-Received: from mail-oo1-f51.google.com ([209.85.161.51])
+	id 1qsOeo-009sPM-1C;
+	Mon, 16 Oct 2023 14:33:22 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsOcS-009s9F-07;
-	Mon, 16 Oct 2023 14:30:57 +0000
-Received: by mail-oo1-f51.google.com with SMTP id 006d021491bc7-57b635e3fd9so2280407eaf.3;
-        Mon, 16 Oct 2023 07:30:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697466654; x=1698071454;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pogla2ixenuu9Whu/Txm0dkQOdChFbDxggoz3QMNrmQ=;
-        b=fCLoNf1kQoo/EMu4/1kvM0GEDdIAHqCocVC/h/Tf/m/Ca/3bfrVJuNuUazW8IQ6m8q
-         hLvtxiB/c8FL1wpCaLuXL3SWOcLOWGh3AV47YOi6QvM/RPxEbHGwRoqqGjNyVrAmnSYq
-         2mH9xB+EbuEmpJTRpCOoKlle+h1kWR11yKgt22jY6KGpvUJm4B7RxEXw3N7Agky5kM0z
-         +LUkxgaFI5gQ7NvV8CxeSKcc5vF39sWV75125Es9locbf50TYITDKeiszxt/fyEuqINh
-         wBzzo0mMdTp0Oz/zKAmEFQqD2UCIt+SenvoRpg9VB7axuHlzYaRfVdtH/Uq1VsgNwf4v
-         DnsQ==
-X-Gm-Message-State: AOJu0YwcRFA7PSjW9K3Pm4whveKZpJ16ORuxI+4tyk0CLbX76L1Zj64I
-	4jlqDHVpdr6C18kvKzra5w==
-X-Google-Smtp-Source: AGHT+IHx8iGwaQriKRdE3MbfGOtdCCNfmu6tH2ejuHsm2/UZEYPWAT5EG1IdyqRY9fD+m2NiQmDXHQ==
-X-Received: by 2002:a4a:9b88:0:b0:57b:575f:4f8c with SMTP id x8-20020a4a9b88000000b0057b575f4f8cmr29144162ooj.9.1697466654636;
-        Mon, 16 Oct 2023 07:30:54 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id cj25-20020a056820221900b0057e54da7201sm1093968oob.35.2023.10.16.07.30.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Oct 2023 07:30:53 -0700 (PDT)
-Received: (nullmailer pid 2775610 invoked by uid 1000);
-	Mon, 16 Oct 2023 14:30:52 -0000
-Date: Mon, 16 Oct 2023 09:30:52 -0500
-From: Rob Herring <robh@kernel.org>
-To: Eugen Hristev <eugen.hristev@collabora.com>
-Cc: krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, lgirdwood@gmail.com, broonie@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v5] dt-bindings: arm: mediatek: convert audsys and
- mt2701-afe-pcm to yaml
-Message-ID: <20231016143052.GA2770481-robh@kernel.org>
-References: <20231013140505.483766-1-eugen.hristev@collabora.com>
+	id 1qsOei-009sNl-0p;
+	Mon, 16 Oct 2023 14:33:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id B0A15B8164C;
+	Mon, 16 Oct 2023 14:33:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 364EBC433C8;
+	Mon, 16 Oct 2023 14:33:11 +0000 (UTC)
+Message-ID: <953e9c30-0060-45b7-b6e3-8f03d331b6b8@xs4all.nl>
+Date: Mon, 16 Oct 2023 16:33:09 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231013140505.483766-1-eugen.hristev@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 45/56] media: test-drivers: vivid: Increase max
+ supported buffers for capture queues
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
+ <20231012114642.19040-46-benjamin.gaignard@collabora.com>
+ <0ca82921-b71a-4d87-a1f1-6a6158f07c8c@xs4all.nl>
+ <b689e7d2-ff87-499e-a165-d227b1865488@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <b689e7d2-ff87-499e-a165-d227b1865488@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_073056_098501_CF715A21 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20231016_073316_461196_67B5E1B6 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +71,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 13, 2023 at 05:05:05PM +0300, Eugen Hristev wrote:
-> Convert the mediatek,audsys binding to YAML, together with the associated
-> binding bindings/sound/mt2701-afe-pcm.yaml .
+On 16/10/2023 16:20, Benjamin Gaignard wrote:
 > 
-> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
-> ---
-> Changes in v5:
-> - removed example for mt2701-audio
-> - renamed mt2701-afe-pcm to mt2701-audio
-> - added clock cells as required, removed reg from required, in audsys binding
-> - removed reference comment in mt2701-audio
-> - removed assigned clocks from mt2701-audio
+> Le 16/10/2023 à 12:32, Hans Verkuil a écrit :
+>> On 12/10/2023 13:46, Benjamin Gaignard wrote:
+>>> Change the maximum number of buffers of some capture queues in order
+>>> to test max_num_buffers field.
+>>>
+>>> Allow to allocate up to:
+>>> - 64 buffers for video capture queue.
+>>> - 1024 buffers for sdr capture queue.
+>>> - 32768 buffers for vbi capture queue.
+>>>
+>>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>>> ---
+>>>   drivers/media/test-drivers/vivid/vivid-core.c | 7 +++++++
+>>>   1 file changed, 7 insertions(+)
+>>>
+>>> diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
+>>> index 394c9f81ea72..b5656330578d 100644
+>>> --- a/drivers/media/test-drivers/vivid/vivid-core.c
+>>> +++ b/drivers/media/test-drivers/vivid/vivid-core.c
+>>> @@ -876,6 +876,13 @@ static int vivid_create_queue(struct vivid_dev *dev,
+>>>       q->type = buf_type;
+>>>       q->io_modes = VB2_MMAP | VB2_DMABUF;
+>>>       q->io_modes |= V4L2_TYPE_IS_OUTPUT(buf_type) ?  VB2_WRITE : VB2_READ;
+>>> +    if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
+>>> +        q->max_num_buffers = 64;
+>>> +    if (buf_type == V4L2_BUF_TYPE_SDR_CAPTURE)
+>>> +        q->max_num_buffers = 1024;
+>>> +    if (buf_type == V4L2_BUF_TYPE_VBI_CAPTURE)
+>>> +        q->max_num_buffers = 32768;
+>> This should use the same calculation as MAX_BUFFER_INDEX.
+>>
+>> I wonder if those defines should move to videobuf2-core.h instead.
 > 
-> Changes in v4:
-> - fix error reported by Rob's bot : 
-> ./Documentation/devicetree/bindings/sound/mt2701-afe-pcm.yaml:11:4: [error] missing starting space in comment (comments)
+> I'm not sure about what you want here, q->max_num_buffers is clamped in vb2_core_queue_init():
 > 
-> Changes in v3:
-> - not added Rb Conor Dooley since the patch was changed in a big essence
-> - As per review by Krzysztof, also convert the mt2701-afe-pcm and reference
-> the correct schema in the audsys binding.
+> /* The maximum is limited by offset cookie encoding pattern */
+> q->max_num_buffers = min_t(unsigned int, q->max_num_buffers, MAX_BUFFER_INDEX);
 > 
-> Changes in v2:
-> - remove comment reference to inexistent binding
-> 
-> 
->  .../bindings/arm/mediatek/mediatek,audsys.txt |  39 -----
->  .../arm/mediatek/mediatek,audsys.yaml         | 153 ++++++++++++++++++
->  .../bindings/sound/mt2701-afe-pcm.txt         | 146 -----------------
->  .../bindings/sound/mt2701-audio.yaml          | 117 ++++++++++++++
+> Do you want to reuse MAX_BUFFER_INDEX for these drivers ?
 
-mediatek,mt2701-audio.yaml
+Ah, I forgot about the clamping.
 
-With that,
+Add a comment like this:
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+/*
+ * The maximum number of buffers is 32768 if PAGE_SHIFT == 12,
+ * see also MAX_BUFFER_INDEX in videobuf2-core.c. It will be less if
+ * PAGE_SHIFT > 12, but then max_num_buffers will be clamped by
+ * videobuf2-core.c to MAX_BUFFER_INDEX.
+ */
+
+Regards,
+
+	Hans
+
+> 
+> Regards,
+> Benjamin
+> 
+>>
+>> Regards,
+>>
+>>     Hans
+>>
+>>> +
+>>>       if (allocators[dev->inst] != 1)
+>>>           q->io_modes |= VB2_USERPTR;
+>>>       q->drv_priv = dev;
+>>
+
 
