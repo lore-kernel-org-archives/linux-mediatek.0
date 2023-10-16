@@ -4,76 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFAF8CDB485
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 12:57:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D25F9CDB465
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 13:48:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N3i6JO7r5YhMWXN58yToQ1tEvBzWCurztd7n3uMj7kM=; b=h1leMh1g3+WnUt4VU1KghEAUz4
-	eKJGQan+UMCaqpWo0I09ExT7wCi7Lx+69s08Z0LoJ3BHlR0VSlFdP6GzTgYJYhXpBmze1o/uH/ipY
-	j3D9htPxUfBlhJNvTl7nk8peyoBj6c+fp+jWHe840jVEE7/wj5NxgOZKdZeZBxsuypYTUL4VWxzu0
-	QagdIATShyRpc6Q7REsSTtSDGVGvKREs4W+fMYO2J92zR+UcywjpXNRqqT9LYaDqy7xK7ro0zTz+h
-	fdARyHwSK4pKhfaFmI88GM9J6fUt6u9KqFCrV6PB1B8X/XhVCSp9xyxc9DV6W/ZNPwfDyZuAvfgYV
-	R90GeCbw==;
+	bh=NUeU0iErqaa5qk+xFDaFjl24jQwLWaAnjow5uV0snzI=; b=pONQMp2sBPURrKVMY1s4041VZN
+	Fb6lu3NAn0DXBBrSg48z/BnHjyXxENIJ5CZQKsw6EHAlV9xI4TB76AXgsEpTmrB39Ar31lFA7ZnaN
+	40ajqzNU6dJWOpqWqASGDG/DVQkHAAtUj3Ox5iNYUq4i1sW4PpL0I+xezDKgsCWkprlxDnl4mKKCa
+	k4qYUj3LRafQTgKdJJRbNJ6sRHAppbZnGWehk1IhrE3brEROddtf2AISEKhuW6BLIBXw4DfKgMiTx
+	reTzFE16Nkxg6vng2nks/WwvcdTDy4oqUkpeb6QAUHu24/c6hx+xCUQ+BwNWx1e+80s1T4dTTuFz9
+	lcE1BnCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsN9r-009evt-08;
-	Mon, 16 Oct 2023 12:57:19 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1qsNx4-009mgt-2N;
+	Mon, 16 Oct 2023 13:48:10 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsN9m-009euW-1l;
-	Mon, 16 Oct 2023 12:57:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1697461035; x=1728997035;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=33VN831uWAKG7f4eIn44PpDJgWUV0McuEtJM+oSWIh4=;
-  b=lp+N0iDegos1KqT0YHUk8zJeCMUF891HPeNecMLT7Z88naTNfHsSkcgx
-   QxsDd2OdH3NF6sY33CXGJ4W+CGAtBN77FUNwqpiuOt87MfgdZkxRN9Bet
-   RFydGD5hSKrn3dlXzv3QToJkFQYsOY3JgFlyLabT2FGG2lDaFscvR9Jkj
-   +2CDwF9J9ZAqUy/r21UPBBeql4cOU2JxUlKDVIdLMrB+C5+Hszkz+1P5/
-   ErO19JsuND5+5Y1ETsrzEzVJLcoUFVaRi7yVk5ahk0RznzNH82YU9Bn+H
-   uRMz7/OESAn0Ioe7hyo4wV0qlPQZ/AMsLSvgfPGb32Xu+fssy3JVhbOQF
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="4130584"
-X-IronPort-AV: E=Sophos;i="6.03,229,1694761200"; 
-   d="scan'208";a="4130584"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2023 05:57:13 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="1087063948"
-X-IronPort-AV: E=Sophos;i="6.03,229,1694761200"; 
-   d="scan'208";a="1087063948"
-Received: from rhaeussl-mobl.ger.corp.intel.com (HELO bhoerz-mobl1.ger.corp.intel.com) ([10.252.59.103])
-  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2023 05:57:07 -0700
-Date: Mon, 16 Oct 2023 15:57:05 +0300 (EEST)
-From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-cc: linux-pci@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
-    Rob Herring <robh@kernel.org>, 
-    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
-    Lukas Wunner <lukas@wunner.de>, "Rafael J . Wysocki" <rafael@kernel.org>, 
-    Heiner Kallweit <hkallweit1@gmail.com>, 
-    Emmanuel Grumbach <emmanuel.grumbach@intel.com>, 
-    LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-    ath10k@lists.infradead.org, ath11k@lists.infradead.org, 
-    ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org, 
-    linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, 
-    linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, 
-    linux-wireless@vger.kernel.org, Netdev <netdev@vger.kernel.org>
-Subject: Re: [PATCH v2 05/13] PCI/ASPM: Add pci_enable_link_state()
-In-Reply-To: <20231013164850.GA1118214@bhelgaas>
-Message-ID: <9da430a3-9336-8e75-7385-3d5ddcb6cb7@linux.intel.com>
-References: <20231013164850.GA1118214@bhelgaas>
+	id 1qsNwy-009mfD-37;
+	Mon, 16 Oct 2023 13:48:09 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 3EDE6814;
+	Mon, 16 Oct 2023 15:47:52 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1697464072;
+	bh=f97DIqnul/BgQzKIc92p98PsvcgheZXYtkIIEDSitQg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hkY+O935WG4/lTsCXW1DTzUuFu9IGE3NfAAO9f/R3DH9d5HVLKMgqrksba/GoNZJl
+	 o8uyAVyyFfy2K12+hJE6TTvTwTcbdFwkut0zmC6fPsWhysSNXy3BR2KZGwr0SR/Ove
+	 aDTYRSjgpOamg/llJuUJZQt0BJ6FnLkhgMJ0z20E=
+Date: Mon, 16 Oct 2023 16:48:04 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+Cc: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-serial@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
+	gregkh@linuxfoundation.org, krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org, maz@kernel.org, tglx@linutronix.de
+Subject: Re: [PATCH v11 3/3] arm64: dts: mediatek: Initial mt8365-evk support
+Message-ID: <20231016134804.GA15778@pendragon.ideasonboard.com>
+References: <20230309213501.794764-1-bero@baylibre.com>
+ <20230309213501.794764-4-bero@baylibre.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1750157713-1697461032=:1986"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230309213501.794764-4-bero@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_055714_652251_7F6BD44E 
-X-CRM114-Status: GOOD (  43.65  )
+X-CRM114-CacheID: sfid-20231016_064805_165107_AB573257 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,109 +71,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Hello,
 
---8323329-1750157713-1697461032=:1986
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
+A bit of a late reply, but I've just noticed an issue related to this
+patch.
 
-On Fri, 13 Oct 2023, Bjorn Helgaas wrote:
-
-> On Thu, Oct 12, 2023 at 03:53:39PM +0300, Ilpo Järvinen wrote:
-> > On Wed, 11 Oct 2023, Bjorn Helgaas wrote:
-> > > On Mon, Sep 18, 2023 at 04:10:55PM +0300, Ilpo Järvinen wrote:
-> > > > pci_disable_link_state() lacks a symmetric pair. Some drivers want to
-> > > > disable ASPM during certain phases of their operation but then
-> > > > re-enable it later on. If pci_disable_link_state() is made for the
-> > > > device, there is currently no way to re-enable the states that were
-> > > > disabled.
-> > > 
-> > > pci_disable_link_state() gives drivers a way to disable specified ASPM
-> > > states using a bitmask (PCIE_LINK_STATE_L0S, PCIE_LINK_STATE_L1,
-> > > PCIE_LINK_STATE_L1_1, etc), but IIUC the driver can't tell exactly
-> > > what changed and can't directly restore the original state, e.g.,
-> > > 
-> > >   - PCIE_LINK_STATE_L1 enabled initially
-> > >   - driver calls pci_disable_link_state(PCIE_LINK_STATE_L0S)
-> > >   - driver calls pci_enable_link_state(PCIE_LINK_STATE_L0S)
-> > >   - PCIE_LINK_STATE_L0S and PCIE_LINK_STATE_L1 are enabled now
-> > > 
-> > > Now PCIE_LINK_STATE_L0S is enabled even though it was not initially
-> > > enabled.  Maybe that's what we want; I dunno.
-> > > 
-> > > pci_disable_link_state() currently returns success/failure, but only
-> > > r8169 and mt76 even check, and only rtl_init_one() (r8169) has a
-> > > non-trivial reason, so it's conceivable that it could return a bitmask
-> > > instead.
-> > 
-> > It's great that you suggested this since it's actually what also I've been 
-> > started to think should be done instead of this straightforward approach
-> > I used in V2. 
-> > 
-> > That is, don't have the drivers to get anything directly from LNKCTL
-> > but they should get everything through the API provided by the 
-> > disable/enable calls which makes it easy for the driver to pass the same
-> > value back into the enable call.
-> > 
-> > > > Add pci_enable_link_state() to remove ASPM states from the state
-> > > > disable mask.
-> > > > 
-> > > > Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
-> > > > ---
-> > > >  drivers/pci/pcie/aspm.c | 42 +++++++++++++++++++++++++++++++++++++++++
-> > > >  include/linux/pci.h     |  2 ++
-> > > >  2 files changed, 44 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
-> > > > index 91dc95aca90f..f45d18d47c20 100644
-> > > > --- a/drivers/pci/pcie/aspm.c
-> > > > +++ b/drivers/pci/pcie/aspm.c
-> > > > @@ -1117,6 +1117,48 @@ int pci_disable_link_state(struct pci_dev *pdev, int state)
-> > > >  }
-> > > >  EXPORT_SYMBOL(pci_disable_link_state);
-> > > >  
-> > > > +/**
-> > > > + * pci_enable_link_state - Re-enable device's link state
-> > > > + * @pdev: PCI device
-> > > > + * @state: ASPM link states to re-enable
-> > > > + *
-> > > > + * Enable device's link state that were previously disable so the link is
-> > > 
-> > > "state[s] that were previously disable[d]" alludes to the use case you
-> > > have in mind, but I don't think it describes how this function
-> > > actually works.  This function just makes it possible to enable the
-> > > specified states.  The @state parameter may have nothing to do with
-> > > any previously disabled states.
-> > 
-> > Yes, it's what I've been thinking between the lines. But I see your point 
-> > that this API didn't make it easy/obvious as is.
-> > 
-> > Would you want me to enforce it too besides altering the API such that the 
-> > states are actually returned from disable call? (I don't personally find
-> > that necessary as long as the API pair itself makes it obvious what the 
-> > driver is expect to pass there.)
+On Thu, Mar 09, 2023 at 10:35:01PM +0100, Bernhard Rosenkränzer wrote:
+> From: Fabien Parent <fparent@baylibre.com>
 > 
-> This was just a comment about the doc not matching the function
-> behavior.
+> This adds minimal support for the Mediatek 8365 SOC and the EVK reference
+> board, allowing the board to boot to initramfs with serial port I/O.
 > 
-> I think we have to support pci_enable_link_state() even if the driver
-> hasn't previously called pci_disable_link_state(), so drivers have to
-> be able to specify the pci_enable_link_state() @state from scratch.
-> 
-> Does that answer the enforcement question?
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> [bero@baylibre.com: Removed parts depending on drivers that aren't upstream yet, cleanups, add CPU cache layout, add systimer, fix GIC]
+> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> [aouledameur@baylibre.com: Fix systimer properties]
+> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Tested-by: Kevin Hilman <khilman@baylibre.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+>  arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 168 +++++++++
+>  arch/arm64/boot/dts/mediatek/mt8365.dtsi    | 377 ++++++++++++++++++++
+>  3 files changed, 546 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365.dtsi
 
-Yes.
+[snip]
+
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> new file mode 100644
+> index 0000000000000..351197c453c91
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> @@ -0,0 +1,377 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * (C) 2018 MediaTek Inc.
+> + * Copyright (C) 2022 BayLibre SAS
+> + * Fabien Parent <fparent@baylibre.com>
+> + * Bernhard Rosenkränzer <bero@baylibre.com>
+> + */
+> +#include <dt-bindings/clock/mediatek,mt8365-clk.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/phy/phy.h>
+> +
+> +/ {
+
+[snip]
+
+> +	soc {
+
+[snip]
+
+> +		infracfg: syscon@10001000 {
+> +			compatible = "mediatek,mt8365-infracfg", "syscon";
+> +			reg = <0 0x10001000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+
+[snip]
+
+> +		infracfg_nao: infracfg@1020e000 {
+> +			compatible = "mediatek,mt8365-infracfg", "syscon";
+> +			reg = <0 0x1020e000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+
+These two nodes cause the infracfg clocks to be registered twice, with
+the second probe of the clk-mt8365 driver failing with -EEXIST.
+
+[snip]
+
+> +	};
+
+[snip]
+
+> +};
 
 -- 
- i.
+Regards,
 
-> I don't think we can
-> really enforce anything other than that @state specifies valid ASPM
-> states.
-> 
-> Bjorn
-> 
-
---8323329-1750157713-1697461032=:1986--
+Laurent Pinchart
 
