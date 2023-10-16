@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73F06CDB465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 21:45:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3F2FCDB474
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 21:45:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ht8N98xxNnhr4mxygYrnIRrNI1WvXoWdTJ8XF/XP/F8=; b=mWiZCVExQ9s7WsiZDSlonb9feR
-	mEdzZnq4r7GWfwtWjDiT4AM6hkl2/+MiqOHxxu86oOYa1fRLsayEXEWfcr91CUeqF5QhAeo+IwVCv
-	vMDpX/9m+wDlKSj0mTf/dlTolVe5xGI03eiz4mwnqfL49cMEuckBh29MqeAZuYEolJXGh/k/zGEff
-	1e3KQeW+7UEVGa1g683gE/IZ9Zme8lchSFIfVF93/BEesiW+eGTMyt/xSiyXeREWtBnCJN9kypdp1
-	mJL/aMeXg5smTVh0R5p+tBdNmIIfXDsUSwPc87b1leBLyQt7DRPrhIUpipL30tiZC0DgbTl5arnRC
-	7sY8uPAQ==;
+	bh=tgkZY4yEAeEqDfcsSpYD9I+A+ikpbLIHeBQl2vVrEO0=; b=gDFOHipoQ+QaE3iPq4MeW9QJ5S
+	0HKl9N70cV2M9BSU9TbnijHQSDjaVTVe4VDmPDtQu+UAAupaaGppkonGioj9tGPmvHZ5wUj8RP0Hl
+	DXXV183J3OldIRlksjlA1DJNVUcFvedU6cELgWC6gEALs4wTz2pUkbz8XoJTdkhqheOaX+NX9SsGp
+	4bYIv1elOaygysyc9gUC/A0U/AtpnQlj6vPVgf7Uxd+TSSBCkgP0U+XEA1GBoi4cMGq5dZdNdhgVR
+	dWWq09/eYwXug1lnNRrg+76BR/ttsTE2q3TTj1WASHrZzD6rn9JAvGJIkiq0ScemD3iINNcH/8W5/
+	JF8+kyPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsVOd-00Abhd-0l;
-	Mon, 16 Oct 2023 21:45:07 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1qsVOm-00AboX-1I;
+	Mon, 16 Oct 2023 21:45:16 +0000
+Received: from mail-oa1-f44.google.com ([209.85.160.44])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsVOR-00AbVb-2b;
-	Mon, 16 Oct 2023 21:44:57 +0000
-Received: by mail-oi1-f173.google.com with SMTP id 5614622812f47-3b2b1af964dso2631538b6e.1;
-        Mon, 16 Oct 2023 14:44:53 -0700 (PDT)
+	id 1qsVOT-00AbY8-2G;
+	Mon, 16 Oct 2023 21:44:58 +0000
+Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-1e9d0fc55beso1840264fac.3;
+        Mon, 16 Oct 2023 14:44:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697492692; x=1698097492;
+        d=1e100.net; s=20230601; t=1697492694; x=1698097494;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ht8N98xxNnhr4mxygYrnIRrNI1WvXoWdTJ8XF/XP/F8=;
-        b=AMnIlPSFHHsxD67d1BhL5p8a2epbzQfMHLVf+hUieu4e5uYEkRhGb9C3OBLp81oCYg
-         EJL1utVDdLhWTYNN1QRRdu3Ql+xyW8niPqCU2xpfRU4aB8SA5JP2rJQffEmekls3iPEJ
-         QVd81NmO+IyhY8Hbp9+dc+QqeDZKvjtw5xiIXZ7iONQM8A782IgAlk+I00w1KTAC7GFk
-         aQ+gLkzWt4AIOzZTJnaIhf/AsiBxPrG3QEICpNzjydZqc8xOTywYv0JIzmpI6/oJcUuH
-         Pwn34rAIM3oemKEPb8kFSWTnAGpHUeMnWxmb6gXgImntv8Csyjvf0jwmrxmPg8e5TELd
-         9Alw==
-X-Gm-Message-State: AOJu0YyHoouVW93KcC95EgQEaLcd8nYNtzZnQuNpCB91CuFQ2Q/B1gjf
-	ApsvlyIv/kVP6ecPXW5PVyJgiwzu6w==
-X-Google-Smtp-Source: AGHT+IGRRlSS/F1kWukUHeHHHZmSLPVKA0n8LTYOyHwpWpjScHo01PEc7nh9ywAQ/bdErdN4oiSVXg==
-X-Received: by 2002:a05:6808:3a82:b0:3ae:1446:d48b with SMTP id fb2-20020a0568083a8200b003ae1446d48bmr592595oib.3.1697492691930;
-        Mon, 16 Oct 2023 14:44:51 -0700 (PDT)
+        bh=tgkZY4yEAeEqDfcsSpYD9I+A+ikpbLIHeBQl2vVrEO0=;
+        b=kEbDgk1G3l3hkoxj0qlRD9+b7JtyO6HzqsA2DBhLNCD2Z4okD/qQc3ayphmgCM5x8o
+         HiDIOV32WrqYda0zo7l99s95yTIA9h+fu/3+brgGnyoqMTusrIxX9V1ENkcNi5W1BfdS
+         cKju8uAPr0mCORmBM9JLh8/HAnjQwi7/6ezbQDE1+r+VG9Scl/eT3SDdbY2TqtZTFX1X
+         pqh9RtPl6rONrxAQ6EGdnWxpFcN2jj2QWYISE85f9eH22TR+o6gZ/o9mRhDPcecqaVMm
+         Vt7K5rGuTA542DQIAJngx4w6TJVnEZqoT2/cl1SdrWQC/m5qt5+B2n941/KkK0Qkm6b3
+         T+Ow==
+X-Gm-Message-State: AOJu0YyZI7Q/iUlJp4EebVTpbTFuKrCh8HPJAPhWaPLXqqfPeOisGUQN
+	8UBB73M1imlyf3o6lwACxRYxkto3Cg==
+X-Google-Smtp-Source: AGHT+IER0+zM9rQTeSBTpDXhq27aL8B0l2V/HFAOMXgvaN9iR4T6Jv7HeoKsOLVk8pksacBkXQt5/g==
+X-Received: by 2002:a05:6870:858c:b0:1d5:aed5:6579 with SMTP id f12-20020a056870858c00b001d5aed56579mr328754oal.4.1697492694494;
+        Mon, 16 Oct 2023 14:44:54 -0700 (PDT)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id v11-20020a54448b000000b003af732a2054sm28836oiv.57.2023.10.16.14.44.49
+        by smtp.gmail.com with ESMTPSA id r5-20020a05687032c500b001e5dd8a29c6sm8595oac.29.2023.10.16.14.44.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Oct 2023 14:44:51 -0700 (PDT)
-Received: (nullmailer pid 3823220 invoked by uid 1000);
+        Mon, 16 Oct 2023 14:44:53 -0700 (PDT)
+Received: (nullmailer pid 3823224 invoked by uid 1000);
 	Mon, 16 Oct 2023 21:44:35 -0000
 From: Rob Herring <robh@kernel.org>
-Date: Mon, 16 Oct 2023 16:44:25 -0500
-Subject: [PATCH net-next 6/8] dt-bindings: net: mscc,vsc7514-switch:
- Clean-up example indentation
+Date: Mon, 16 Oct 2023 16:44:27 -0500
+Subject: [PATCH net-next 8/8] dt-bindings: net: dsa: Drop 'ethernet-ports'
+ node properties
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231016-dt-net-cleanups-v1-6-a525a090b444@kernel.org>
+Message-Id: <20231016-dt-net-cleanups-v1-8-a525a090b444@kernel.org>
 References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
 In-Reply-To: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
 To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
@@ -85,8 +85,9 @@ To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
 Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_144455_866281_7E5880DD 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20231016_144457_738634_D54645CE 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,65 +102,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The indentation for the example is completely messed up for
-'ethernet-ports'. Fix it.
+Constraints on 'ethernet-ports' node properties are already defined by the
+reference to ethernet-switch.yaml, so they can be dropped from the DSA
+schema.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/net/mscc,vsc7514-switch.yaml          | 32 +++++++++++-----------
- 1 file changed, 16 insertions(+), 16 deletions(-)
+ Documentation/devicetree/bindings/net/dsa/dsa.yaml | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-index 8ee2c7d7ff42..07de52a3a295 100644
---- a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-+++ b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-@@ -185,7 +185,7 @@ examples:
-     };
-   # VSC7512 (DSA)
-   - |
--    ethernet-switch@1{
-+    ethernet-switch@1 {
-       compatible = "mscc,vsc7512-switch";
-       reg = <0x71010000 0x10000>,
-             <0x71030000 0x10000>,
-@@ -212,22 +212,22 @@ examples:
-             "port7", "port8", "port9", "port10", "qsys",
-             "ana", "s0", "s1", "s2";
+diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+index e6010821f86f..6107189d276a 100644
+--- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+@@ -40,15 +40,6 @@ $defs:
  
--            ethernet-ports {
--            #address-cells = <1>;
--            #size-cells = <0>;
+     patternProperties:
+       "^(ethernet-)?ports$":
+-        type: object
+-        additionalProperties: false
 -
--           port@0 {
--            reg = <0>;
--            ethernet = <&mac_sw>;
--            phy-handle = <&phy0>;
--            phy-mode = "internal";
--          };
--          port@1 {
--            reg = <1>;
--            phy-handle = <&phy1>;
--            phy-mode = "internal";
--          };
-+      ethernet-ports {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        port@0 {
-+          reg = <0>;
-+          ethernet = <&mac_sw>;
-+          phy-handle = <&phy0>;
-+          phy-mode = "internal";
-+        };
-+        port@1 {
-+          reg = <1>;
-+          phy-handle = <&phy1>;
-+          phy-mode = "internal";
-         };
-       };
-+    };
- 
- ...
+-        properties:
+-          '#address-cells':
+-            const: 1
+-          '#size-cells':
+-            const: 0
+-
+         patternProperties:
+           "^(ethernet-)?port@[0-9a-f]+$":
+             description: Ethernet switch ports
 
 -- 
 2.42.0
