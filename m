@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD16C41513
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 14:27:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74659CDB465
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 14:31:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-ID:Content-Type:
-	MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G306ZVGwbXghiwC0xWLHGeMQFVwUdjAIzsHEoKwjinI=; b=sp8qHGGnml3xM6wHw7fW2Phzim
-	oI32UmZzLe7wN6fWW6uLsb+P3VVFniYHSxxcNkL2hWbR6l1qNGJDuqYcct/KLkZZh8uurOqpc2D3b
-	32yu62hcVF0X0qSBkVkgijvd/ZoCYXAfdXPUTEHwvw6am2Xxsqum26onjUUK+/nZE2Pw2mrgcr00i
-	vIjliXBdUkCE9wPXXtKwDQSVQe88Jgw3lEK/1PgUHkeVOnko6cFthIATWd4SWCjw/vJVgsJGTs0zD
-	if5ithcr4rXgxxaTzltSEB84Ysj9f8Iufu+oMwCFclJ8Ir7zmiB4+5mfkxCNDT6rSPZgHJ6ore0aK
-	RqrVQFYQ==;
+	bh=pogla2ixenuu9Whu/Txm0dkQOdChFbDxggoz3QMNrmQ=; b=slbs6L3wZNLVlc6qazUnaNHUcP
+	c4kfVz64Oz3zUCpCjj+IUacwsWDn0bNoJ5jhzViMZsZGmz6O0RrSsKHy4ZWc9xosYd2o24RwL8zDJ
+	oNQDYa+tlrXiQf3Xm4lIBCXpcJ3qC2sfm0e4RuBFfhVmIvrokpIbFDC3jvWwT49pNwdAVZ8XRPpnC
+	OntDvwnDfTjBNBbsIQmgTNsgmu38IqIDqBMOgU2ao3cZyfnDpHXu9ORhewAvHPCcXGEkQewqdwjJ+
+	gf/L4hfPUHW5AoSBnS3Jd8efyf+RcrG6lJKusyDbgCHLWRzM+4ZRaKMrBlHY+pqWjU7V7Y6wrN916
+	qyxUdjYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsOZY-009riw-2z;
-	Mon, 16 Oct 2023 14:27:56 +0000
-Received: from mgamail.intel.com ([134.134.136.24])
+	id 1qsOcV-009s9w-1S;
+	Mon, 16 Oct 2023 14:30:59 +0000
+Received: from mail-oo1-f51.google.com ([209.85.161.51])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsOZU-009rgf-2A;
-	Mon, 16 Oct 2023 14:27:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1697466472; x=1729002472;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version:content-id;
-  bh=WAHtEU+QRIIV0hjjctV4dFUOMA87lFSZZckv/e6FmbI=;
-  b=IkTX6lhlY1FuqijdSWvkIzdDkZDGD46bsHERHQbhLODCsVzoxC9LqPd4
-   u9JsyuuJ8gq3jYan1Pttp8LidJ/z81B7hCN51dWkZ+AQp3vfQSBFAC2tr
-   FLPggcUPSVWGNweI7nHriuXEBBWT95mwuqp0NdiZYc84CiZW8aAky7/+t
-   ko3E9uGNo27Mst/GHEGrnZjNoUUHX3uQ3X8WclFs7xrduH6gAF8hKAsHW
-   MHwl/xY/q4Y8wJjvv1NQ9GDtVZNGDhozt0mvMHk5N/VxuN5+HpgOll/lZ
-   G1ADAo++W6ePndVIW34cJm5HFYjaDjTOwzHIUdM7W2WCRaBc7MhvALhIn
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="388396816"
-X-IronPort-AV: E=Sophos;i="6.03,229,1694761200"; 
-   d="scan'208";a="388396816"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2023 07:27:48 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="759416190"
-X-IronPort-AV: E=Sophos;i="6.03,229,1694761200"; 
-   d="scan'208";a="759416190"
-Received: from rhaeussl-mobl.ger.corp.intel.com ([10.252.59.103])
-  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2023 07:27:40 -0700
-Date: Mon, 16 Oct 2023 17:27:37 +0300 (EEST)
-From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
-To: Bjorn Helgaas <helgaas@kernel.org>, 
-    "Rafael J . Wysocki" <rafael@kernel.org>
-cc: linux-pci@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
-    Rob Herring <robh@kernel.org>, 
-    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
-    Lukas Wunner <lukas@wunner.de>, Heiner Kallweit <hkallweit1@gmail.com>, 
-    Emmanuel Grumbach <emmanuel.grumbach@intel.com>, 
-    LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-    ath10k@lists.infradead.org, ath11k@lists.infradead.org, 
-    ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org, 
-    linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, 
-    linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, 
-    linux-wireless@vger.kernel.org, Netdev <netdev@vger.kernel.org>
-Subject: Re: [PATCH v2 03/13] PCI/ASPM: Disable ASPM when driver requests
- it
-In-Reply-To: <20231013164228.GA1117889@bhelgaas>
-Message-ID: <a434d9f-48ec-cfe5-900-8923361798a9@linux.intel.com>
-References: <20231013164228.GA1117889@bhelgaas>
+	id 1qsOcS-009s9F-07;
+	Mon, 16 Oct 2023 14:30:57 +0000
+Received: by mail-oo1-f51.google.com with SMTP id 006d021491bc7-57b635e3fd9so2280407eaf.3;
+        Mon, 16 Oct 2023 07:30:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697466654; x=1698071454;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pogla2ixenuu9Whu/Txm0dkQOdChFbDxggoz3QMNrmQ=;
+        b=fCLoNf1kQoo/EMu4/1kvM0GEDdIAHqCocVC/h/Tf/m/Ca/3bfrVJuNuUazW8IQ6m8q
+         hLvtxiB/c8FL1wpCaLuXL3SWOcLOWGh3AV47YOi6QvM/RPxEbHGwRoqqGjNyVrAmnSYq
+         2mH9xB+EbuEmpJTRpCOoKlle+h1kWR11yKgt22jY6KGpvUJm4B7RxEXw3N7Agky5kM0z
+         +LUkxgaFI5gQ7NvV8CxeSKcc5vF39sWV75125Es9locbf50TYITDKeiszxt/fyEuqINh
+         wBzzo0mMdTp0Oz/zKAmEFQqD2UCIt+SenvoRpg9VB7axuHlzYaRfVdtH/Uq1VsgNwf4v
+         DnsQ==
+X-Gm-Message-State: AOJu0YwcRFA7PSjW9K3Pm4whveKZpJ16ORuxI+4tyk0CLbX76L1Zj64I
+	4jlqDHVpdr6C18kvKzra5w==
+X-Google-Smtp-Source: AGHT+IHx8iGwaQriKRdE3MbfGOtdCCNfmu6tH2ejuHsm2/UZEYPWAT5EG1IdyqRY9fD+m2NiQmDXHQ==
+X-Received: by 2002:a4a:9b88:0:b0:57b:575f:4f8c with SMTP id x8-20020a4a9b88000000b0057b575f4f8cmr29144162ooj.9.1697466654636;
+        Mon, 16 Oct 2023 07:30:54 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id cj25-20020a056820221900b0057e54da7201sm1093968oob.35.2023.10.16.07.30.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Oct 2023 07:30:53 -0700 (PDT)
+Received: (nullmailer pid 2775610 invoked by uid 1000);
+	Mon, 16 Oct 2023 14:30:52 -0000
+Date: Mon, 16 Oct 2023 09:30:52 -0500
+From: Rob Herring <robh@kernel.org>
+To: Eugen Hristev <eugen.hristev@collabora.com>
+Cc: krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, lgirdwood@gmail.com, broonie@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v5] dt-bindings: arm: mediatek: convert audsys and
+ mt2701-afe-pcm to yaml
+Message-ID: <20231016143052.GA2770481-robh@kernel.org>
+References: <20231013140505.483766-1-eugen.hristev@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-158890400-1697462044=:1986"
-Content-ID: <58c8d854-b57c-582-1ba0-efeb857febe@linux.intel.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231013140505.483766-1-eugen.hristev@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_072752_769021_2149A43A 
-X-CRM114-Status: GOOD (  38.01  )
+X-CRM114-CacheID: sfid-20231016_073056_098501_CF715A21 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,91 +80,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-158890400-1697462044=:1986
-Content-Type: text/plain; CHARSET=ISO-8859-15
-Content-Transfer-Encoding: 8BIT
-Content-ID: <a321263b-cac2-11d0-6cb1-43cc78d1c6d1@linux.intel.com>
-
-On Fri, 13 Oct 2023, Bjorn Helgaas wrote:
-> On Thu, Oct 12, 2023 at 01:56:16PM +0300, Ilpo Järvinen wrote:
-> > On Wed, 11 Oct 2023, Bjorn Helgaas wrote:
-> > > On Mon, Sep 18, 2023 at 04:10:53PM +0300, Ilpo Järvinen wrote:
-> > > > PCI core/ASPM service driver allows controlling ASPM state through
-> > > > pci_disable_link_state() and pci_enable_link_state() API. It was
-> > > > decided earlier (see the Link below), to not allow ASPM changes when OS
-> > > > does not have control over it but only log a warning about the problem
-> > > > (commit 2add0ec14c25 ("PCI/ASPM: Warn when driver asks to disable ASPM,
-> > > > but we can't do it")). Similarly, if ASPM is not enabled through
-> > > > config, ASPM cannot be disabled.
-> > ...
+On Fri, Oct 13, 2023 at 05:05:05PM +0300, Eugen Hristev wrote:
+> Convert the mediatek,audsys binding to YAML, together with the associated
+> binding bindings/sound/mt2701-afe-pcm.yaml .
 > 
-> > > This disables *all* ASPM states, unlike the version when
-> > > CONFIG_PCIEASPM is enabled.  I suppose there's a reason, and maybe a
-> > > comment could elaborate on it?
-> > >
-> > > When CONFIG_PCIEASPM is not enabled, I don't think we actively
-> > > *disable* ASPM in the hardware; we just leave it as-is, so firmware
-> > > might have left it enabled.
-> > 
-> > This whole trickery is intended for drivers that do not want to have ASPM 
-> > because the devices are broken with it. So leaving it as-is is not really 
-> > an option (as demonstrated by the custom workarounds).
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+> ---
+> Changes in v5:
+> - removed example for mt2701-audio
+> - renamed mt2701-afe-pcm to mt2701-audio
+> - added clock cells as required, removed reg from required, in audsys binding
+> - removed reference comment in mt2701-audio
+> - removed assigned clocks from mt2701-audio
 > 
-> Right.
+> Changes in v4:
+> - fix error reported by Rob's bot : 
+> ./Documentation/devicetree/bindings/sound/mt2701-afe-pcm.yaml:11:4: [error] missing starting space in comment (comments)
 > 
-> > > Conceptually it seems like the LNKCTL updates here should be the same
-> > > whether CONFIG_PCIEASPM is enabled or not (subject to the question
-> > > above).
-> > > 
-> > > When CONFIG_PCIEASPM is enabled, we might need to do more stuff, but
-> > > it seems like the core should be the same.
-> > 
-> > So you think it's safer to partially disable ASPM (as per driver's 
-> > request) rather than disable it completely? I got the impression that the 
-> > latter might be safer from what Rafael said earlier but I suppose I might 
-> > have misinterpreted him since he didn't exactly say that it might be safer 
-> > to _completely_ disable it.
+> Changes in v3:
+> - not added Rb Conor Dooley since the patch was changed in a big essence
+> - As per review by Krzysztof, also convert the mt2701-afe-pcm and reference
+> the correct schema in the audsys binding.
 > 
-> My question is whether the state of the device should depend on
-> CONFIG_PCIEASPM.  If the driver does this:
+> Changes in v2:
+> - remove comment reference to inexistent binding
 > 
->   pci_disable_link_state(PCIE_LINK_STATE_L0S)
 > 
-> do we want to leave L1 enabled when CONFIG_PCIEASPM=y but disable L1
-> when CONFIG_PCIEASPM is unset?
-> 
-> I can see arguments both ways.  My thought was that it would be nice
-> to end up with a single implementation of pci_disable_link_state()
-> with an #ifdef around the CONFIG_PCIEASPM-enabled stuff because it
-> makes the code easier to read.
+>  .../bindings/arm/mediatek/mediatek,audsys.txt |  39 -----
+>  .../arm/mediatek/mediatek,audsys.yaml         | 153 ++++++++++++++++++
+>  .../bindings/sound/mt2701-afe-pcm.txt         | 146 -----------------
+>  .../bindings/sound/mt2701-audio.yaml          | 117 ++++++++++++++
 
-Hi Bjorn,
+mediatek,mt2701-audio.yaml
 
-Thanks a lot for all your feedback so far, it has been very helpful.
+With that,
 
-I think there's still one important thing to discuss and none of the 
-comments have covered that area so far.
-
-The drivers that have workaround are not going to turn more dangerous than 
-they're already without this change, so we're mostly within charted waters 
-there even with what you propose. However, I think the bigger catch and 
-potential source of problems, with both this v2 and your alternative, are 
-the drivers that do not have the workarounds around CONFIG_PCIEASPM=n 
-and/or _OSC permissions. Those code paths just call 
-pci_disable_link_state() and do nothing else.
-
-Do you think it's okay to alter the behavior for those drivers too 
-(disable ASPM where it previously was a no-op)?
-
-I'm okay with going the direction you indicated but I just wanted to ask
-this in advance before reworking the behavior so I can take that detail 
-also into account.
-
-
--- 
- i.
---8323329-158890400-1697462044=:1986--
+Reviewed-by: Rob Herring <robh@kernel.org>
 
