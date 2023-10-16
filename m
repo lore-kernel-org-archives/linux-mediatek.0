@@ -4,60 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B95ABCDB465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 13:49:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 028B1C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 14:21:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SZV4EDZxu11ZehAURzaqAFVqCrv5j+mo+YLi4NuuYYs=; b=ANbsvOcN8X+WxKILbKsgR6LSiT
-	D2D5xM4x86JDF/hNcw4hdE2KmX9/CYEdwuL3ObWfmqIphaQ5ReUDWbOjYScVRuR+HlGW5Qi/Js73m
-	1OjNEznD0RA6oojYohpHJIPO/o+OZZqjb5XeeC/M+HmnS3Gk2kbLTimwYQSKI4JK8OkshpvFidL6g
-	rlijgBw0IbKLlq5Fx+z9jyHHwKmzXYENO+j/BavIGRZGFCIa3yVzikNODB2MZA7Qj9LUumI6N7FUg
-	THncKrNoAelJj5JaQrvozF+TkWbmy0wVbhAvq1/XF4A8i6p/8m4fh8ItJyWzcXB7z/tPmyV869E9c
-	SlL9WrmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KES0qKbicUtkHeDA01vT90sM8TZzq0snxQN6ReVe14A=; b=dA3vhftUkMHC+fyg0Em/sA9gmc
+	YiVWBI+4hvmU36rXp9nxOmBJrhJL3d3rf/FWTstxftfY4H9Y9KtyyocfpGViUS6lygMQByMR0k4pK
+	d3HNFBST5xPgfTMIiT9xdtd6o4P1QDiTtALCShGjIV+4Cpi1V/G+WlvXdbAR36twh7jbQ6b5lMqcF
+	sNXiZASkN8CA5lFfwgGqWLg+kFoCmZanDaWQNS6L09lATXU7Jh3uVN4YVEBBZ+M7ntk8aOdaUCQRg
+	/tprBswyYLQPmen3Nsx06f6dFB+2fvLaUCNuMaDWmLnBJOH841FdROIqnQRrmjy/C5mEqfRdU6iSU
+	h0GiHzkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsNyC-009mtj-2K;
-	Mon, 16 Oct 2023 13:49:20 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qsOSq-009r3G-2o;
+	Mon, 16 Oct 2023 14:21:00 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsNy8-009msi-2q;
-	Mon, 16 Oct 2023 13:49:19 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A23CC814;
-	Mon, 16 Oct 2023 15:49:09 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1697464149;
-	bh=t+PLOpuYLM9fzpu9xviRvNQwyTYfO+G1IWfy8+wyL2Y=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nGDLclfqRR8+n8ZgI6ljy/el2KWIiCfzcS913xdb/xuu5px5BBNqyK4DHaPvlDA52
-	 rvkIZZvLdIkQJ3h8kM6OcJ1WfBqfDNkBgooQEgQO3dOK+GumUmBmC+Oy5VYmLJUW4u
-	 vy6niDqta9QmRoC7+yzNLMDzOk4VEfMxikxlAsyE=
-Date: Mon, 16 Oct 2023 16:49:22 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-serial@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
-	gregkh@linuxfoundation.org, krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org, maz@kernel.org, tglx@linutronix.de
-Subject: Re: [PATCH v11 3/3] arm64: dts: mediatek: Initial mt8365-evk support
-Message-ID: <20231016134922.GA6523@pendragon.ideasonboard.com>
-References: <20230309213501.794764-1-bero@baylibre.com>
- <20230309213501.794764-4-bero@baylibre.com>
- <20231016134804.GA15778@pendragon.ideasonboard.com>
+	id 1qsOSn-009r1b-2f;
+	Mon, 16 Oct 2023 14:20:59 +0000
+Received: from [IPV6:2a01:e0a:120:3210:e07f:e79d:cb73:481b] (unknown [IPv6:2a01:e0a:120:3210:e07f:e79d:cb73:481b])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7B8AB66071C7;
+	Mon, 16 Oct 2023 15:20:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697466053;
+	bh=c/L8dFl388l4YQCDz27EHWC74G2f0t+CGWGDGeHXxIA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TAuSs6sYKBn1pNWDBY8a/rjZSeEKDhnhW0jJDLB5hhIl4bEgokQoe/H7qHSkEuHnZ
+	 d11Ftw1Icbpqx3LmTZTNS73YUWg3Ut4+nZz0laSrd/sfMHp8qRtRXBXax8TxNnnX8D
+	 s0fvJ40lAvvX9ub9o70tTXBmnQdrOkaamT5vyScngNztRGde7fWfO1X5aGMEWc9ezA
+	 JX8WWyQ0yXffPc8mhrO8+XDrruoNVMw6MUn7Ms13ZfVnj99mPu+1U7bxBhezz5vn96
+	 vd7ucQAnxX17sG4Jzkxe1TAr6T66A4JUEtf3Pz5oVG83gpWUgWvVkJAL5IYUz0W0Vt
+	 DLPOJJK9DhrAw==
+Message-ID: <b689e7d2-ff87-499e-a165-d227b1865488@collabora.com>
+Date: Mon, 16 Oct 2023 16:20:51 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 45/56] media: test-drivers: vivid: Increase max
+ supported buffers for capture queues
+Content-Language: en-US
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
+ <20231012114642.19040-46-benjamin.gaignard@collabora.com>
+ <0ca82921-b71a-4d87-a1f1-6a6158f07c8c@xs4all.nl>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <0ca82921-b71a-4d87-a1f1-6a6158f07c8c@xs4all.nl>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231016134804.GA15778@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_064917_059429_53361690 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20231016_072058_080618_C173E0BF 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,94 +82,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 16, 2023 at 04:48:06PM +0300, Laurent Pinchart wrote:
-> Hello,
-> 
-> A bit of a late reply, but I've just noticed an issue related to this
-> patch.
-> 
-> On Thu, Mar 09, 2023 at 10:35:01PM +0100, Bernhard Rosenkränzer wrote:
-> > From: Fabien Parent <fparent@baylibre.com>
-> > 
-> > This adds minimal support for the Mediatek 8365 SOC and the EVK reference
-> > board, allowing the board to boot to initramfs with serial port I/O.
-> > 
-> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> > [bero@baylibre.com: Removed parts depending on drivers that aren't upstream yet, cleanups, add CPU cache layout, add systimer, fix GIC]
-> > Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-> > [aouledameur@baylibre.com: Fix systimer properties]
-> > Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > Tested-by: Kevin Hilman <khilman@baylibre.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > ---
-> >  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
-> >  arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 168 +++++++++
-> >  arch/arm64/boot/dts/mediatek/mt8365.dtsi    | 377 ++++++++++++++++++++
-> >  3 files changed, 546 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> 
-> [snip]
-> 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> > new file mode 100644
-> > index 0000000000000..351197c453c91
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> > @@ -0,0 +1,377 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * (C) 2018 MediaTek Inc.
-> > + * Copyright (C) 2022 BayLibre SAS
-> > + * Fabien Parent <fparent@baylibre.com>
-> > + * Bernhard Rosenkränzer <bero@baylibre.com>
-> > + */
-> > +#include <dt-bindings/clock/mediatek,mt8365-clk.h>
-> > +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +#include <dt-bindings/interrupt-controller/irq.h>
-> > +#include <dt-bindings/phy/phy.h>
-> > +
-> > +/ {
-> 
-> [snip]
-> 
-> > +	soc {
-> 
-> [snip]
-> 
-> > +		infracfg: syscon@10001000 {
-> > +			compatible = "mediatek,mt8365-infracfg", "syscon";
-> > +			reg = <0 0x10001000 0 0x1000>;
-> > +			#clock-cells = <1>;
-> > +		};
-> 
-> [snip]
-> 
-> > +		infracfg_nao: infracfg@1020e000 {
-> > +			compatible = "mediatek,mt8365-infracfg", "syscon";
-> > +			reg = <0 0x1020e000 0 0x1000>;
-> > +			#clock-cells = <1>;
-> > +		};
-> 
-> These two nodes cause the infracfg clocks to be registered twice, with
-> the second probe of the clk-mt8365 driver failing with -EEXIST.
 
-These are the messages printed by v6.6-rc6:
+Le 16/10/2023 à 12:32, Hans Verkuil a écrit :
+> On 12/10/2023 13:46, Benjamin Gaignard wrote:
+>> Change the maximum number of buffers of some capture queues in order
+>> to test max_num_buffers field.
+>>
+>> Allow to allocate up to:
+>> - 64 buffers for video capture queue.
+>> - 1024 buffers for sdr capture queue.
+>> - 32768 buffers for vbi capture queue.
+>>
+>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>> ---
+>>   drivers/media/test-drivers/vivid/vivid-core.c | 7 +++++++
+>>   1 file changed, 7 insertions(+)
+>>
+>> diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
+>> index 394c9f81ea72..b5656330578d 100644
+>> --- a/drivers/media/test-drivers/vivid/vivid-core.c
+>> +++ b/drivers/media/test-drivers/vivid/vivid-core.c
+>> @@ -876,6 +876,13 @@ static int vivid_create_queue(struct vivid_dev *dev,
+>>   	q->type = buf_type;
+>>   	q->io_modes = VB2_MMAP | VB2_DMABUF;
+>>   	q->io_modes |= V4L2_TYPE_IS_OUTPUT(buf_type) ?  VB2_WRITE : VB2_READ;
+>> +	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
+>> +		q->max_num_buffers = 64;
+>> +	if (buf_type == V4L2_BUF_TYPE_SDR_CAPTURE)
+>> +		q->max_num_buffers = 1024;
+>> +	if (buf_type == V4L2_BUF_TYPE_VBI_CAPTURE)
+>> +		q->max_num_buffers = 32768;
+> This should use the same calculation as MAX_BUFFER_INDEX.
+>
+> I wonder if those defines should move to videobuf2-core.h instead.
 
-[    0.540254] Failed to register clk ifr_pmic_tmr: -EEXIST
-[    0.541003] clk-mt8365: probe of 1020e000.infracfg failed with error -17
+I'm not sure about what you want here, q->max_num_buffers is clamped in vb2_core_queue_init():
 
-> [snip]
-> 
-> > +	};
-> 
-> [snip]
-> 
-> > +};
+/* The maximum is limited by offset cookie encoding pattern */
+q->max_num_buffers = min_t(unsigned int, q->max_num_buffers, MAX_BUFFER_INDEX);
 
--- 
+Do you want to reuse MAX_BUFFER_INDEX for these drivers ?
+
 Regards,
+Benjamin
 
-Laurent Pinchart
+>
+> Regards,
+>
+> 	Hans
+>
+>> +
+>>   	if (allocators[dev->inst] != 1)
+>>   		q->io_modes |= VB2_USERPTR;
+>>   	q->drv_priv = dev;
+>
 
