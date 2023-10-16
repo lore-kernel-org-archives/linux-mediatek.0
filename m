@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ACE8CDB465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 12:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFAF8CDB485
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 12:57:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cVzRG9ApdX/sN1cH+kYhUYUx5+Ndn1g/pVRNKePZsWo=; b=gtafQV6xx96an9vjdy83KktwrA
-	nrB5SGdvZU6YdtCdHZMD2h513QxxrM5636343pTtklu0oPhtiXakGQxn7vrMh+8Q1sjtmby6eO+XE
-	MtkGViiP6TdX3ME1K1YEm5ybtqZXmOPigLgDO886JZLgKlUye+EEU83TEPrPiIYiREMGmP4fOjF82
-	6MjrHqqwVwCHJEcyOtmdBP+qoQmD8nDzjvBwkQ9l3ugkQv72/4CNdiMcK2Mzlr1fRRplfCUanvnhD
-	P1IAkCyWlegL8AaskQ5JNlfCAgo/z6HymGwyyAyajJmOkRV57wImdtes+ZrhiwciRrCAMYVKnjGTk
-	LyulNNtQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N3i6JO7r5YhMWXN58yToQ1tEvBzWCurztd7n3uMj7kM=; b=h1leMh1g3+WnUt4VU1KghEAUz4
+	eKJGQan+UMCaqpWo0I09ExT7wCi7Lx+69s08Z0LoJ3BHlR0VSlFdP6GzTgYJYhXpBmze1o/uH/ipY
+	j3D9htPxUfBlhJNvTl7nk8peyoBj6c+fp+jWHe840jVEE7/wj5NxgOZKdZeZBxsuypYTUL4VWxzu0
+	QagdIATShyRpc6Q7REsSTtSDGVGvKREs4W+fMYO2J92zR+UcywjpXNRqqT9LYaDqy7xK7ro0zTz+h
+	fdARyHwSK4pKhfaFmI88GM9J6fUt6u9KqFCrV6PB1B8X/XhVCSp9xyxc9DV6W/ZNPwfDyZuAvfgYV
+	R90GeCbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsMKO-009YMJ-2B;
-	Mon, 16 Oct 2023 12:04:08 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qsN9r-009evt-08;
+	Mon, 16 Oct 2023 12:57:19 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsMKK-009YGH-0a;
-	Mon, 16 Oct 2023 12:04:07 +0000
-Received: from [IPV6:2a01:e0a:120:3210:e07f:e79d:cb73:481b] (unknown [IPv6:2a01:e0a:120:3210:e07f:e79d:cb73:481b])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 83AFA66072A4;
-	Mon, 16 Oct 2023 13:03:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697457834;
-	bh=iYgCzRqO6Qa3b4Tby41RH9rHWkNCrR9Sd3PxDUSIk6o=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZUsQXsRU/ZWAEB4W4JKw1q3xUkwMwYOmTpWwRgsajebGDLCxwm+kVy7Z8LHRoEJWc
-	 5xfTJWVevl///r91HTXqTFRlg2mweYUJztF0ccs2bsZEIePq19LseIg8R9byveKZHZ
-	 JbcGz+MEQ9d6S0R4tUVpUp3OJLfaU5g8DYvqax3062YQJK1vHL5B+c4w3TMyl/Z4Gx
-	 B4lq9C5gerNoy4Ky5ooCfhYEAZm4muUQ79ilmpWpEQgEVRwtvc5SAo+9OKUWMI/s58
-	 tWntcL/E8dKCwDg5jHDVMVHlsqObqv+ORG6QItg94/Vss/pud2pohKIX766C7z9UhY
-	 rsFwLTKpU8NNQ==
-Message-ID: <3a4f6fc1-6632-43f0-a5ab-55694c3de55f@collabora.com>
-Date: Mon, 16 Oct 2023 14:03:52 +0200
+	id 1qsN9m-009euW-1l;
+	Mon, 16 Oct 2023 12:57:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1697461035; x=1728997035;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=33VN831uWAKG7f4eIn44PpDJgWUV0McuEtJM+oSWIh4=;
+  b=lp+N0iDegos1KqT0YHUk8zJeCMUF891HPeNecMLT7Z88naTNfHsSkcgx
+   QxsDd2OdH3NF6sY33CXGJ4W+CGAtBN77FUNwqpiuOt87MfgdZkxRN9Bet
+   RFydGD5hSKrn3dlXzv3QToJkFQYsOY3JgFlyLabT2FGG2lDaFscvR9Jkj
+   +2CDwF9J9ZAqUy/r21UPBBeql4cOU2JxUlKDVIdLMrB+C5+Hszkz+1P5/
+   ErO19JsuND5+5Y1ETsrzEzVJLcoUFVaRi7yVk5ahk0RznzNH82YU9Bn+H
+   uRMz7/OESAn0Ioe7hyo4wV0qlPQZ/AMsLSvgfPGb32Xu+fssy3JVhbOQF
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="4130584"
+X-IronPort-AV: E=Sophos;i="6.03,229,1694761200"; 
+   d="scan'208";a="4130584"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2023 05:57:13 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="1087063948"
+X-IronPort-AV: E=Sophos;i="6.03,229,1694761200"; 
+   d="scan'208";a="1087063948"
+Received: from rhaeussl-mobl.ger.corp.intel.com (HELO bhoerz-mobl1.ger.corp.intel.com) ([10.252.59.103])
+  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2023 05:57:07 -0700
+Date: Mon, 16 Oct 2023 15:57:05 +0300 (EEST)
+From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+cc: linux-pci@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
+    Rob Herring <robh@kernel.org>, 
+    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
+    Lukas Wunner <lukas@wunner.de>, "Rafael J . Wysocki" <rafael@kernel.org>, 
+    Heiner Kallweit <hkallweit1@gmail.com>, 
+    Emmanuel Grumbach <emmanuel.grumbach@intel.com>, 
+    LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+    ath10k@lists.infradead.org, ath11k@lists.infradead.org, 
+    ath12k@lists.infradead.org, intel-wired-lan@lists.osuosl.org, 
+    linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, 
+    linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org, 
+    linux-wireless@vger.kernel.org, Netdev <netdev@vger.kernel.org>
+Subject: Re: [PATCH v2 05/13] PCI/ASPM: Add pci_enable_link_state()
+In-Reply-To: <20231013164850.GA1118214@bhelgaas>
+Message-ID: <9da430a3-9336-8e75-7385-3d5ddcb6cb7@linux.intel.com>
+References: <20231013164850.GA1118214@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 00/56] Add DELETE_BUF ioctl
-Content-Language: en-US
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
- <14198188-3519-46fb-abb6-0b1376f30b9d@xs4all.nl>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <14198188-3519-46fb-abb6-0b1376f30b9d@xs4all.nl>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/mixed; boundary="8323329-1750157713-1697461032=:1986"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_050404_488360_523C6867 
-X-CRM114-Status: GOOD (  33.09  )
+X-CRM114-CacheID: sfid-20231016_055714_652251_7F6BD44E 
+X-CRM114-Status: GOOD (  43.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,252 +88,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Le 16/10/2023 à 12:39, Hans Verkuil a écrit :
-> Hi Benjamin,
->
-> On 12/10/2023 13:45, Benjamin Gaignard wrote:
->> Unlike when resolution change on keyframes, dynamic resolution change
->> on inter frames doesn't allow to do a stream off/on sequence because
->> it is need to keep all previous references alive to decode inter frames.
->> This constraint have two main problems:
->> - more memory consumption.
->> - more buffers in use.
->> To solve these issue this series introduce DELETE_BUFS ioctl and remove
->> the 32 buffers limit per queue.
->>
->> VP9 conformance tests using fluster give a score of 210/305.
->> The 20 resize inter tests (vp90-2-21-resize_inter_* files) are ok
->> but require to use postprocessor.
->>
->> Kernel branch is available here:
->> https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v11
->>
->> GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
->> change is here:
->> https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
-> I did another review. Mainly small stuff, but I realized in my review of 40/56 that
-> the use of min_buffers_needed is a mess, and you will need to revisit any driver
-> patches where you change that value, or where you drop the number of buffers check
-> in queue_setup because you rely on min_buffers_needed.
+--8323329-1750157713-1697461032=:1986
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
 
-Ok I will comeback to the version where I only use vb2_get_num_buffers() is these drivers.
+On Fri, 13 Oct 2023, Bjorn Helgaas wrote:
 
-Regards,
-Benjamin
+> On Thu, Oct 12, 2023 at 03:53:39PM +0300, Ilpo Järvinen wrote:
+> > On Wed, 11 Oct 2023, Bjorn Helgaas wrote:
+> > > On Mon, Sep 18, 2023 at 04:10:55PM +0300, Ilpo Järvinen wrote:
+> > > > pci_disable_link_state() lacks a symmetric pair. Some drivers want to
+> > > > disable ASPM during certain phases of their operation but then
+> > > > re-enable it later on. If pci_disable_link_state() is made for the
+> > > > device, there is currently no way to re-enable the states that were
+> > > > disabled.
+> > > 
+> > > pci_disable_link_state() gives drivers a way to disable specified ASPM
+> > > states using a bitmask (PCIE_LINK_STATE_L0S, PCIE_LINK_STATE_L1,
+> > > PCIE_LINK_STATE_L1_1, etc), but IIUC the driver can't tell exactly
+> > > what changed and can't directly restore the original state, e.g.,
+> > > 
+> > >   - PCIE_LINK_STATE_L1 enabled initially
+> > >   - driver calls pci_disable_link_state(PCIE_LINK_STATE_L0S)
+> > >   - driver calls pci_enable_link_state(PCIE_LINK_STATE_L0S)
+> > >   - PCIE_LINK_STATE_L0S and PCIE_LINK_STATE_L1 are enabled now
+> > > 
+> > > Now PCIE_LINK_STATE_L0S is enabled even though it was not initially
+> > > enabled.  Maybe that's what we want; I dunno.
+> > > 
+> > > pci_disable_link_state() currently returns success/failure, but only
+> > > r8169 and mt76 even check, and only rtl_init_one() (r8169) has a
+> > > non-trivial reason, so it's conceivable that it could return a bitmask
+> > > instead.
+> > 
+> > It's great that you suggested this since it's actually what also I've been 
+> > started to think should be done instead of this straightforward approach
+> > I used in V2. 
+> > 
+> > That is, don't have the drivers to get anything directly from LNKCTL
+> > but they should get everything through the API provided by the 
+> > disable/enable calls which makes it easy for the driver to pass the same
+> > value back into the enable call.
+> > 
+> > > > Add pci_enable_link_state() to remove ASPM states from the state
+> > > > disable mask.
+> > > > 
+> > > > Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+> > > > ---
+> > > >  drivers/pci/pcie/aspm.c | 42 +++++++++++++++++++++++++++++++++++++++++
+> > > >  include/linux/pci.h     |  2 ++
+> > > >  2 files changed, 44 insertions(+)
+> > > > 
+> > > > diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+> > > > index 91dc95aca90f..f45d18d47c20 100644
+> > > > --- a/drivers/pci/pcie/aspm.c
+> > > > +++ b/drivers/pci/pcie/aspm.c
+> > > > @@ -1117,6 +1117,48 @@ int pci_disable_link_state(struct pci_dev *pdev, int state)
+> > > >  }
+> > > >  EXPORT_SYMBOL(pci_disable_link_state);
+> > > >  
+> > > > +/**
+> > > > + * pci_enable_link_state - Re-enable device's link state
+> > > > + * @pdev: PCI device
+> > > > + * @state: ASPM link states to re-enable
+> > > > + *
+> > > > + * Enable device's link state that were previously disable so the link is
+> > > 
+> > > "state[s] that were previously disable[d]" alludes to the use case you
+> > > have in mind, but I don't think it describes how this function
+> > > actually works.  This function just makes it possible to enable the
+> > > specified states.  The @state parameter may have nothing to do with
+> > > any previously disabled states.
+> > 
+> > Yes, it's what I've been thinking between the lines. But I see your point 
+> > that this API didn't make it easy/obvious as is.
+> > 
+> > Would you want me to enforce it too besides altering the API such that the 
+> > states are actually returned from disable call? (I don't personally find
+> > that necessary as long as the API pair itself makes it obvious what the 
+> > driver is expect to pass there.)
+> 
+> This was just a comment about the doc not matching the function
+> behavior.
+> 
+> I think we have to support pci_enable_link_state() even if the driver
+> hasn't previously called pci_disable_link_state(), so drivers have to
+> be able to specify the pci_enable_link_state() @state from scratch.
+> 
+> Does that answer the enforcement question?
 
->
-> I think it is likely that we need to take another very good look at this before we
-> implement VIDIOC_DELETE_BUFS.
->
-> I have also posted a PR where I ask Mauro to merge patch 07/56 for 6.7 to get
-> the vb2_get_num_buffers helper in. We'll see if that will happen since it is a
-> bit late for that.
->
-> Regards,
->
-> 	Hans
->
->> changes in version 11:
->> - Patches ordering:
->>    1 to 3: clean up
->>    3 to 42: use vb2_get_buffer() and vb2_get_num_buffers()
->>    43 to 46: allow to use more than 32 buffers per queue
->>    47 to 50: allow verisilicon driver to do VP9 dynamic resolution change
->>              (which was the main purpose of this work)
->>    51 to 56: prepare and introduce delete buffers feature.
->> - Add a patch to rename 'off' to offset.
->> - Add maintainers CC to drivers patches
->>
->> changes in version 10:
->> - Make BUFFER_INDEX_MASK definition more readable
->> - Rebase on media_stage/master branch and add a patch for nuvoton
->>    driver.
->> - Fix issue on patch 13
->>
->> changes in version 9:
->> - BUFFER_INDEX_MASK now depends on PAGE_SHIFT value to match
->>    architectures requirements.
->> - Correctly initialize max_num_buffers in vb2_core_queue_init()
->> - run 'test-media -kmemleak mc' on top of the series and on patches 1 to 47 without failures.
->> - fix compilation issue in patch 50
->>
->> changes in version 8:
->> - Add V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS and new 'max_buffers' field in v4l2_create_buffers
->>    structure to report the maximum number of buffers that a queue could allocate.
->> - Add V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS to indicate that a queue support
->>    DELETE_BUFS ioctl.
->> - Make some test drivers use more than 32 buffers and DELETE_BUFS ioctl.
->> - Fix remarks done by Hans
->> - Move "media: core: Rework how create_buf index returned value is
->>    computed" patch to the top of the serie.
->>
->> changes in version 7:
->> - Use a bitmap to know which entries are valid in queue bufs array.
->>    The number of buffers in the queue could must calculated from the
->>    bitmap so num_buffers becomes useless. This led to add quite few
->>    patches to remove it from all the drivers.
->>    Note: despiste my attention I may have miss some calls to
->>    num_buffers...
->> - Split patches to make them more readable.
->> - Run v4l2-compliance with additional delete-bufs tests.
->> - Run ./test-media -kmemleak vivid and no more failures.
->>    Note: I had to remove USERPTR streaming test because they to much
->>    frequentely hit get_framevec bug. It is not related to my series
->>    since this happens all the time on master branch.
->> - Fix Hans remarks on v6
->>
->> changes in version 6:
->> - Get a patch per driver to use vb2_get_buffer() instead of directly access
->>    to queue buffers array.
->> - Add lock in vb2_core_delete_buf()
->> - Use vb2_buffer instead of index
->> - Fix various comments
->> - Change buffer index name to BUFFER_INDEX_MASK
->> - Stop spamming kernel log with unbalanced counters
->>
->> Benjamin Gaignard (56):
->>    media: videobuf2: Rename offset parameter
->>    media: videobuf2: Rework offset 'cookie' encoding pattern
->>    media: videobuf2: Stop spamming kernel log with all queue counter
->>    media: videobuf2: Use vb2_buffer instead of index
->>    media: videobuf2: Access vb2_queue bufs array through helper functions
->>    media: videobuf2: Remove duplicated index vs q->num_buffers check
->>    media: videobuf2: Add helper to get queue number of buffers
->>    media: videobuf2: Use vb2_get_num_buffers() helper
->>    media: amphion: Use vb2_get_buffer() instead of directly access to
->>      buffers array
->>    media: amphion: Stop direct calls to queue num_buffers field
->>    media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
->>      to buffers array
->>    media: mediatek: vdec: Remove useless loop
->>    media: mediatek: vcodec: Stop direct calls to queue num_buffers field
->>    media: sti: hva: Use vb2_get_buffer() instead of directly access to
->>      buffers array
->>    media: visl: Use vb2_get_buffer() instead of directly access to
->>      buffers array
->>    media: atomisp: Use vb2_get_buffer() instead of directly access to
->>      buffers array
->>    media: atomisp: Stop direct calls to queue num_buffers field
->>    media: dvb-core: Use vb2_get_buffer() instead of directly access to
->>      buffers array
->>    media: dvb-core: Do not initialize twice queue num_buffer field
->>    media: dvb-frontends: rtl2832_srd: Use queue min_buffers_needed field
->>    media: video-i2c: Set min_buffers_needed to 2
->>    media: pci: cx18: Set correct value to min_buffers_needed field
->>    media: pci: dt3155: Remove useless check
->>    media: pci: netup_unidvb: Remove useless number of buffers check
->>    media: pci: tw68: Stop direct calls to queue num_buffers field
->>    media: pci: tw686x: Set min_buffers_needed to 3
->>    media: coda: Stop direct calls to queue num_buffers field
->>    media: nxp: Stop direct calls to queue num_buffers field
->>    media: renesas: Set min_buffers_needed to 16
->>    media: ti: Use queue min_buffers_needed field to set the min number of
->>      buffers
->>    media: verisilicon: Stop direct calls to queue num_buffers field
->>    media: test-drivers: Stop direct calls to queue num_buffers field
->>    media: usb: airspy: Set min_buffers_needed to 8
->>    media: usb: cx231xx: Set min_buffers_needed to CX231XX_MIN_BUF
->>    media: usb: hackrf: Set min_buffers_needed to 8
->>    media: usb: usbtv: Set min_buffers_needed to 2
->>    media: imx: Stop direct calls to queue num_buffers field
->>    media: meson: vdec: Stop direct calls to queue num_buffers field
->>    touchscreen: sur40: Stop direct calls to queue num_buffers field
->>    sample: v4l: Stop direct calls to queue num_buffers field
->>    media: cedrus: Stop direct calls to queue num_buffers field
->>    media: nuvoton: Stop direct calls to queue num_buffers field
->>    media: videobuf2: Be more flexible on the number of queue stored
->>      buffers
->>    media: core: Report the maximum possible number of buffers for the
->>      queue
->>    media: test-drivers: vivid: Increase max supported buffers for capture
->>      queues
->>    media: test-drivers: vicodec: Increase max supported capture queue
->>      buffers
->>    media: verisilicon: Refactor postprocessor to store more buffers
->>    media: verisilicon: Store chroma and motion vectors offset
->>    media: verisilicon: g2: Use common helpers to compute chroma and mv
->>      offsets
->>    media: verisilicon: vp9: Allow to change resolution while streaming
->>    media: core: Rework how create_buf index returned value is computed
->>    media: core: Add bitmap manage bufs array entries
->>    media: core: Free range of buffers
->>    media: v4l2: Add DELETE_BUFS ioctl
->>    media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
->>    media: test-drivers: Use helper for DELETE_BUFS ioctl
->>
->>   .../userspace-api/media/v4l/user-func.rst     |   1 +
->>   .../media/v4l/vidioc-create-bufs.rst          |   8 +-
->>   .../media/v4l/vidioc-delete-bufs.rst          |  80 +++
->>   .../media/v4l/vidioc-reqbufs.rst              |   2 +
->>   drivers/input/touchscreen/sur40.c             |   5 +-
->>   .../media/common/videobuf2/videobuf2-core.c   | 567 +++++++++++-------
->>   .../media/common/videobuf2/videobuf2-v4l2.c   | 116 +++-
->>   drivers/media/dvb-core/dvb_vb2.c              |  17 +-
->>   drivers/media/dvb-frontends/rtl2832_sdr.c     |   9 +-
->>   drivers/media/i2c/video-i2c.c                 |   5 +-
->>   drivers/media/pci/cx18/cx18-streams.c         |  13 +-
->>   drivers/media/pci/dt3155/dt3155.c             |   2 -
->>   .../pci/netup_unidvb/netup_unidvb_core.c      |   4 +-
->>   drivers/media/pci/tw68/tw68-video.c           |   6 +-
->>   drivers/media/pci/tw686x/tw686x-video.c       |  13 +-
->>   drivers/media/platform/amphion/vpu_dbg.c      |  30 +-
->>   drivers/media/platform/amphion/vpu_v4l2.c     |   4 +-
->>   .../media/platform/chips-media/coda-common.c  |   2 +-
->>   .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   7 +-
->>   .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   9 +-
->>   .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +-
->>   drivers/media/platform/nuvoton/npcm-video.c   |   2 +-
->>   drivers/media/platform/nxp/imx7-media-csi.c   |   7 +-
->>   drivers/media/platform/renesas/rcar_drif.c    |   8 +-
->>   drivers/media/platform/st/sti/hva/hva-v4l2.c  |   9 +-
->>   .../media/platform/ti/am437x/am437x-vpfe.c    |   7 +-
->>   drivers/media/platform/ti/cal/cal-video.c     |   5 +-
->>   .../media/platform/ti/davinci/vpif_capture.c  |   5 +-
->>   .../media/platform/ti/davinci/vpif_display.c  |   5 +-
->>   drivers/media/platform/ti/omap/omap_vout.c    |   5 +-
->>   drivers/media/platform/verisilicon/hantro.h   |   9 +-
->>   .../media/platform/verisilicon/hantro_drv.c   |   5 +-
->>   .../media/platform/verisilicon/hantro_g2.c    |  14 +
->>   .../platform/verisilicon/hantro_g2_hevc_dec.c |  18 +-
->>   .../platform/verisilicon/hantro_g2_vp9_dec.c  |  28 +-
->>   .../media/platform/verisilicon/hantro_hw.h    |   7 +-
->>   .../platform/verisilicon/hantro_postproc.c    |  93 ++-
->>   .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
->>   .../media/test-drivers/vicodec/vicodec-core.c |   3 +
->>   drivers/media/test-drivers/vim2m.c            |   2 +
->>   .../media/test-drivers/vimc/vimc-capture.c    |   2 +
->>   drivers/media/test-drivers/visl/visl-dec.c    |  32 +-
->>   drivers/media/test-drivers/visl/visl-video.c  |   2 +
->>   drivers/media/test-drivers/vivid/vivid-core.c |  14 +
->>   .../media/test-drivers/vivid/vivid-meta-cap.c |   3 -
->>   .../media/test-drivers/vivid/vivid-meta-out.c |   5 +-
->>   .../test-drivers/vivid/vivid-touch-cap.c      |   5 +-
->>   .../media/test-drivers/vivid/vivid-vbi-cap.c  |   5 +-
->>   .../media/test-drivers/vivid/vivid-vbi-out.c  |   5 +-
->>   .../media/test-drivers/vivid/vivid-vid-cap.c  |   5 +-
->>   .../media/test-drivers/vivid/vivid-vid-out.c  |   5 +-
->>   drivers/media/usb/airspy/airspy.c             |   9 +-
->>   drivers/media/usb/cx231xx/cx231xx-417.c       |   4 +-
->>   drivers/media/usb/cx231xx/cx231xx-video.c     |   4 +-
->>   drivers/media/usb/hackrf/hackrf.c             |   9 +-
->>   drivers/media/usb/usbtv/usbtv-video.c         |   3 +-
->>   drivers/media/v4l2-core/v4l2-dev.c            |   1 +
->>   drivers/media/v4l2-core/v4l2-ioctl.c          |  21 +-
->>   drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
->>   .../staging/media/atomisp/pci/atomisp_ioctl.c |   4 +-
->>   drivers/staging/media/imx/imx-media-capture.c |   7 +-
->>   drivers/staging/media/meson/vdec/vdec.c       |  13 +-
->>   .../staging/media/sunxi/cedrus/cedrus_h264.c  |   8 +-
->>   .../staging/media/sunxi/cedrus/cedrus_h265.c  |   9 +-
->>   include/media/v4l2-ioctl.h                    |   4 +
->>   include/media/v4l2-mem2mem.h                  |  12 +
->>   include/media/videobuf2-core.h                |  65 +-
->>   include/media/videobuf2-v4l2.h                |  13 +
->>   include/uapi/linux/videodev2.h                |  24 +-
->>   samples/v4l/v4l2-pci-skeleton.c               |   5 +-
->>   70 files changed, 972 insertions(+), 507 deletions(-)
->>   create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
->>
->
+Yes.
+
+-- 
+ i.
+
+> I don't think we can
+> really enforce anything other than that @state specifies valid ASPM
+> states.
+> 
+> Bjorn
+> 
+
+--8323329-1750157713-1697461032=:1986--
 
