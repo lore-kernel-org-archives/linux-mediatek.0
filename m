@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E349ECDB474
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 21:51:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20BE4CDB465
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 21:51:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1mx9lccHq3HkbvSbAjueQ7LtepY+D1AIjHJYd1rv7ik=; b=BgTkI3l3C5u7gp5XrK/HTBPaea
-	hxt28xbNO1qRUG2On8rPVgIObHVopmse6gfad3Uz74ypNUPGQo3vgO/hSr2LMLDoIF5cRfRIDHWCC
-	+s0alQpyeVgUv44dCXM3hBO+chYy2rONbvSXtXV1wdHhYalaPCyYkmktUUv+rQkhrekE9X1agvoP0
-	vDOdZ2t16Enm5J/LR3pT3ZeC2ZzXzO6gSgioBOI86ard3o3P4OQOtrJ5rtiawFd8Pvl+LbvCsYfwg
-	U36czSrmTJ2Y7gnVIXD4tdCwdcDBflkNCDxg6tCfTG1rrhvk8r1yp2mlW33eGqj4qLOvP6fvR6Fi2
-	nWware2w==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j3l4fAGaqWTJv9cSVW4cB5gatKCd4RNRO2qeEH9WQOA=; b=qSa6ZN4EvvZ3As2nSQHDyl1A0T
+	2swmmoEnMqu4Ps3AVxyZrMCaO58YPM5fJQRJC5a0A/+DpwdCztj6snJDbvFlHKyPuEaQ42sTrHYpP
+	ZAre6ul01VdsaCitL+omo9lCB4FGW5f6/dxMZkA5m+wjJndWHbWb9EtI/KS8jwG0OPQjwnvzi+XhT
+	kKhMEy20iLZP7E5Mwg8BiJcxYTQY/tDDCnl36zWFVuKz8J5NWp5DXz8smmGCQLS+DMcoypz/ZIecz
+	QCy+FnGoCj/hmg26UE0iOpfYEpAxw9tgKP443L45vAYkMHjyRYvL0lw+Nm8X7U+9ar0fQXDjwMMiU
+	kttXa2Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsVUh-00AdMj-21;
+	id 1qsVUh-00AdNB-3B;
 	Mon, 16 Oct 2023 21:51:23 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsVUe-00AdLK-1e;
+	id 1qsVUe-00AdLJ-1e;
 	Mon, 16 Oct 2023 21:51:21 +0000
 Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A289389D;
-	Mon, 16 Oct 2023 23:51:12 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 621C4552;
+	Mon, 16 Oct 2023 23:51:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1697493072;
-	bh=4hjvHsVqzqOYZWkil1rRouOrvHTjXpzmHt0/v6juDpA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=vfhAjRiSLGTvVpo/2J6z2VgAuv4xIyAzbKcecBMDmxlrYOfHiJF69kMmQvhW+cMxk
-	 d8dVJb9pA3IrnKGR57GCBS8OsW8JK53uYrd4Rmdqy7QQmBBHy5Iuo4lHB29B2XW5cV
-	 MJAwlyU77yI18m23q+T3HdXwe/x+aL6GpgBoeAv4=
+	s=mail; t=1697493071;
+	bh=3d/7SCNqU7/RsD8wbHd7RzFgECg/EnHTwz1WsD2cXBM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=E9DxHMUhrSgScicLIJZ7TZp+dReeHAPEp6ezW9T5qkOiEb/fZr9+HfES7DXcem75W
+	 vO6hm7oPoXMys1jwE/h71rUnz6aVN1zYsGSAv6Vs83vQBIRAdYHZdyqKNbjyLigZ/c
+	 grKgp/7YeXy7aBYBy6jcEQKxBcjyxz5W6IF/qf2Y=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-mediatek@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -51,18 +51,15 @@ Cc: devicetree@vger.kernel.org,
 	Julien Stephan <jstephan@baylibre.com>,
 	Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>,
 	Ted Larson <ted@ologicinc.com>
-Subject: [PATCH v1 1/3] dt-bindings: vendor-prefixes: Add prefix for OLogic, Inc.
-Date: Tue, 17 Oct 2023 00:51:21 +0300
-Message-ID: <20231016215123.30343-2-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v1 0/2] arm64: dts: mediatek: Add device tree for MT8365-based Pumpkin i350
+Date: Tue, 17 Oct 2023 00:51:20 +0300
+Message-ID: <20231016215123.30343-1-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231016215123.30343-1-laurent.pinchart@ideasonboard.com>
-References: <20231016215123.30343-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_145120_698038_68FC76D6 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231016_145120_698200_301E7A2C 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,28 +74,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a DT vendor prefix for OLogic, Inc. OLogic is a hardware and system
-design company that manufactures, among other things, development boards
-with MediaTek SoCs.
+Hello,
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+This small patch series adds a device tree for the Pumpkin i350 board
+made by OLogic. It starts with two small patches to add a vendor prefix
+for OLogic (1/3) and a compatible string for the board (2/3), and then
+adds the device tree (3/3).
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-index 573578db9509..247b724bc01f 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-@@ -981,6 +981,8 @@ patternProperties:
-     description: Oki Electric Industry Co., Ltd.
-   "^olimex,.*":
-     description: OLIMEX Ltd.
-+  "^ologic,.*":
-+    description: OLogic, Inc.
-   "^olpc,.*":
-     description: One Laptop Per Child
-   "^oneplus,.*":
+The device tree is based on work from Fabien Parent, with a few features
+added, and a set of devices removed:
+
+- Audio support, as I can't easily test it at the moment due to lack of
+  local access to the board.
+
+- Display support, for the same reason.
+
+- Dual-role USB support, due to missing bindings and drivers for the
+  TUSB322 in the upstream kernel.
+
+Support for the crypto processor (ATECC608B) and the WiFi/Bluetooth
+module (MT7663S) is also missing, but this wasn't present in the BSP
+either.
+
+Once camera support for the MT8365 lands upstream, I will probably send
+patches for DT integration with this board.
+
+Laurent Pinchart (3):
+  dt-bindings: vendor-prefixes: Add prefix for OLogic, Inc.
+  dt-bindings: arm64: dts: mediatek: Add ologic,pumpkin-i350 board
+  arm64: dts: mediatek: Add device tree for MT8365-based Pumpkin i350
+
+ .../devicetree/bindings/arm/mediatek.yaml     |   1 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ .../boot/dts/mediatek/mt8365-pumpkin.dts      | 542 ++++++++++++++++++
+ 4 files changed, 546 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
+
+
+base-commit: 58720809f52779dc0f08e53e54b014209d13eebb
 -- 
 Regards,
 
