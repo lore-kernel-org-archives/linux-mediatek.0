@@ -4,81 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E4A7CDB465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 06:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 656CCCDB465
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 07:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=969Bqk5Iw5hnZHxjN31bqZT8jd0W5KgkuSGYWGgbXPA=; b=igfcflWEPKH600+H5iE4L8hm5Q
-	Fgg6PBdaIn6G1zigVsInhIOJxyWL3uwXQTPhPMEod4aBM78D1q+lWpyCaMXDG6NYHeI34sF1dPLFR
-	Cms7f0a6/KgYOcR9ndyJH0W+difL/UEcljjQ65h6YEpLE31mRc9YBGqs+7oby8GPfKXy5vFR65Cdq
-	RiA2xk+IL9lQodsKMBBWw03tX/mIjuEdAg/NF762/nbduuIOqwnlYjMklQVTONYfahiMVrAqP5LjR
-	XDIJ3OOaYWAbQoGLeEeDqY7lt53Bm+cn9ru4c1DLEj7Yz1qITDp6HO7a8+NwrJVDzuh2Mw7EuVzj9
-	xn6Spulw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=S68uQrkWFLHu4QM9Nv59QFJjz06unKvNHBZQp+v4C9s=; b=tcp0i9DDw8ZcXGxI4sH0ACXaZZ
+	t6f8nhLcqq824Z5grJTgLUyoy+ERwNL9WagLuwPmax/Nh41vgXXCG6yrm2hnqIzCaOU/Vbv2U7TrD
+	tQ9wBdm7rV81XYUdtoviDgR7r42u3+pylN6o+olijMt1XPDv8rDItzCHODRg4VFjx4bi4K1shmZa9
+	BZwjuEbExWxrx/CESdyg+U6hbX1yrgJa/w/UjVKSP6HbAYOePxgPSr06OMbPbtsbQjhlLopICaIXr
+	AWYiCbxpT80tHItRdorMjcu29sQCXGXzyUUlG3u3DiN8ydwMduJ5WaUcMLhD3HyM15BOqsa7idCiS
+	AuP/XviQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsHLM-008Z3b-0r;
-	Mon, 16 Oct 2023 06:44:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qsI85-008fQZ-0R;
+	Mon, 16 Oct 2023 07:35:09 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsHL8-008Yvs-1r;
-	Mon, 16 Oct 2023 06:44:36 +0000
-X-UUID: 759223166bef11ee9b7791016c24628a-20231015
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=969Bqk5Iw5hnZHxjN31bqZT8jd0W5KgkuSGYWGgbXPA=;
-	b=HWHu2zDIFgQnCphnXLyr4+o+oM/C/sxAYofP2PSuzBOhJRcL6Zix+Yxa1GJXzG4J3hzH6dqy7NOBJwJZcJBb+AdIUWLU7OglhVSx/gSQF62BaUfSAzBHgIj1NwfakgfixmM8rXePUsJPDqoMHbQveXsZZoqeBZ4tBNOF1J7qLhs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:f813adb3-9b40-43d9-9fb3-2b7c15acf79f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:0ef62ac4-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 759223166bef11ee9b7791016c24628a-20231015
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 473889550; Sun, 15 Oct 2023 23:44:30 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 16 Oct 2023 14:43:54 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 16 Oct 2023 14:43:53 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 7/7] media: mediatek: vcodec: Setting the supported vp9 profile for each platform
-Date: Mon, 16 Oct 2023 14:43:46 +0800
-Message-ID: <20231016064346.31451-7-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231016064346.31451-1-yunfei.dong@mediatek.com>
-References: <20231016064346.31451-1-yunfei.dong@mediatek.com>
+	id 1qsI80-008fOu-1n;
+	Mon, 16 Oct 2023 07:35:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 56973B810D8;
+	Mon, 16 Oct 2023 07:35:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDF79C433C7;
+	Mon, 16 Oct 2023 07:34:58 +0000 (UTC)
+Message-ID: <cc3dfda8-aacd-4bab-95f4-291221979552@xs4all.nl>
+Date: Mon, 16 Oct 2023 09:34:56 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 04/56] media: videobuf2: Use vb2_buffer instead of
+ index
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
+ <20231012114642.19040-5-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20231012114642.19040-5-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231015_234434_668026_E852D097 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20231016_003504_867388_C23924A9 
+X-CRM114-Status: GOOD (  27.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,62 +69,359 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The supported format type of different platforms are not the
-same. Need to set the supported profile according to the chip name.
+On 12/10/2023 13:45, Benjamin Gaignard wrote:
+> Directly use vb2_buffer pointer instead of index inside queue array.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../media/common/videobuf2/videobuf2-core.c   | 40 ++++++-------------
+>  .../media/common/videobuf2/videobuf2-v4l2.c   | 30 ++++++++++++--
+>  drivers/media/dvb-core/dvb_vb2.c              |  6 +--
+>  include/media/videobuf2-core.h                | 16 ++++----
+>  4 files changed, 49 insertions(+), 43 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 47dba2a20d73..968b7c0e7934 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -654,9 +654,9 @@ static bool __buffers_in_use(struct vb2_queue *q)
+>  	return false;
+>  }
+>  
+> -void vb2_core_querybuf(struct vb2_queue *q, unsigned int index, void *pb)
+> +void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
+>  {
+> -	call_void_bufop(q, fill_user_buffer, q->bufs[index], pb);
+> +	call_void_bufop(q, fill_user_buffer, vb, pb);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_querybuf);
+>  
+> @@ -1490,9 +1490,6 @@ static void vb2_req_unprepare(struct media_request_object *obj)
+>  	WARN_ON(!vb->req_obj.req);
+>  }
+>  
+> -int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+> -		  struct media_request *req);
+> -
+>  static void vb2_req_queue(struct media_request_object *obj)
+>  {
+>  	struct vb2_buffer *vb = container_of(obj, struct vb2_buffer, req_obj);
+> @@ -1507,7 +1504,7 @@ static void vb2_req_queue(struct media_request_object *obj)
+>  	 * set. We just ignore that, and expect this will be caught the
+>  	 * next time vb2_req_prepare() is called.
+>  	 */
+> -	err = vb2_core_qbuf(vb->vb2_queue, vb->index, NULL, NULL);
+> +	err = vb2_core_qbuf(vb->vb2_queue, vb, NULL, NULL);
+>  	WARN_ON_ONCE(err && err != -EIO);
+>  	mutex_unlock(vb->vb2_queue->lock);
+>  }
+> @@ -1562,12 +1559,10 @@ unsigned int vb2_request_buffer_cnt(struct media_request *req)
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_request_buffer_cnt);
+>  
+> -int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
+> +int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
+>  {
+> -	struct vb2_buffer *vb;
+>  	int ret;
+>  
+> -	vb = q->bufs[index];
+>  	if (vb->state != VB2_BUF_STATE_DEQUEUED) {
+>  		dprintk(q, 1, "invalid buffer state %s\n",
+>  			vb2_state_name(vb->state));
+> @@ -1654,10 +1649,9 @@ static int vb2_start_streaming(struct vb2_queue *q)
+>  	return ret;
+>  }
+>  
+> -int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+> +int vb2_core_qbuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb,
+>  		  struct media_request *req)
+>  {
+> -	struct vb2_buffer *vb;
+>  	enum vb2_buffer_state orig_state;
+>  	int ret;
+>  
+> @@ -1666,8 +1660,6 @@ int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+>  		return -EIO;
+>  	}
+>  
+> -	vb = q->bufs[index];
+> -
+>  	if (!req && vb->state != VB2_BUF_STATE_IN_REQUEST &&
+>  	    q->requires_requests) {
+>  		dprintk(q, 1, "qbuf requires a request\n");
+> @@ -2240,9 +2232,8 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+>  }
+>  
+>  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+> -		unsigned int index, unsigned int plane, unsigned int flags)
+> +		    struct vb2_buffer *vb, unsigned int plane, unsigned int flags)
+>  {
+> -	struct vb2_buffer *vb = NULL;
+>  	struct vb2_plane *vb_plane;
+>  	int ret;
+>  	struct dma_buf *dbuf;
+> @@ -2267,13 +2258,6 @@ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (index >= q->num_buffers) {
+> -		dprintk(q, 1, "buffer index out of range\n");
+> -		return -EINVAL;
+> -	}
+> -
+> -	vb = q->bufs[index];
+> -
+>  	if (plane >= vb->num_planes) {
+>  		dprintk(q, 1, "buffer plane out of range\n");
+>  		return -EINVAL;
+> @@ -2292,20 +2276,20 @@ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+>  			      flags & O_ACCMODE);
+>  	if (IS_ERR_OR_NULL(dbuf)) {
+>  		dprintk(q, 1, "failed to export buffer %d, plane %d\n",
+> -			index, plane);
+> +			vb->index, plane);
+>  		return -EINVAL;
+>  	}
+>  
+>  	ret = dma_buf_fd(dbuf, flags & ~O_ACCMODE);
+>  	if (ret < 0) {
+>  		dprintk(q, 3, "buffer %d, plane %d failed to export (%d)\n",
+> -			index, plane, ret);
+> +			vb->index, plane, ret);
+>  		dma_buf_put(dbuf);
+>  		return ret;
+>  	}
+>  
+>  	dprintk(q, 3, "buffer %d, plane %d exported as %d descriptor\n",
+> -		index, plane, ret);
+> +		vb->index, plane, ret);
+>  	*fd = ret;
+>  
+>  	return 0;
+> @@ -2710,7 +2694,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  		 * Queue all buffers.
+>  		 */
+>  		for (i = 0; i < q->num_buffers; i++) {
+> -			ret = vb2_core_qbuf(q, i, NULL, NULL);
+> +			ret = vb2_core_qbuf(q, q->bufs[i], NULL, NULL);
+>  			if (ret)
+>  				goto err_reqbufs;
+>  			fileio->bufs[i].queued = 1;
+> @@ -2895,7 +2879,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  
+>  		if (copy_timestamp)
+>  			b->timestamp = ktime_get_ns();
+> -		ret = vb2_core_qbuf(q, index, NULL, NULL);
+> +		ret = vb2_core_qbuf(q, b, NULL, NULL);
+>  		dprintk(q, 5, "vb2_qbuf result: %d\n", ret);
+>  		if (ret)
+>  			return ret;
+> @@ -2998,7 +2982,7 @@ static int vb2_thread(void *data)
+>  		if (copy_timestamp)
+>  			vb->timestamp = ktime_get_ns();
+>  		if (!threadio->stop)
+> -			ret = vb2_core_qbuf(q, vb->index, NULL, NULL);
+> +			ret = vb2_core_qbuf(q, vb, NULL, NULL);
+>  		call_void_qop(q, wait_prepare, q);
+>  		if (ret || threadio->stop)
+>  			break;
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index c7a54d82a55e..697c8a9f98cd 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -667,7 +667,7 @@ int vb2_querybuf(struct vb2_queue *q, struct v4l2_buffer *b)
+>  	vb = q->bufs[b->index];
+>  	ret = __verify_planes_array(vb, b);
+>  	if (!ret)
+> -		vb2_core_querybuf(q, b->index, b);
+> +		vb2_core_querybuf(q, vb, b);
+>  	return ret;
+>  }
+>  EXPORT_SYMBOL(vb2_querybuf);
+> @@ -723,6 +723,7 @@ EXPORT_SYMBOL_GPL(vb2_reqbufs);
+>  int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
+>  		    struct v4l2_buffer *b)
+>  {
+> +	struct vb2_buffer *vb;
+>  	int ret;
+>  
+>  	if (vb2_fileio_is_active(q)) {
+> @@ -733,9 +734,15 @@ int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
+>  	if (b->flags & V4L2_BUF_FLAG_REQUEST_FD)
+>  		return -EINVAL;
+>  
+> +	if (b->index >= q->num_buffers) {
+> +		dprintk(q, 1, "buffer index out of range\n");
+> +		return -EINVAL;
+> +	}
+> +	vb = q->bufs[b->index];
+> +
+>  	ret = vb2_queue_or_prepare_buf(q, mdev, b, true, NULL);
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 22 ++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+I see that there is a similar 'if (b->index >= q->num_buffers)' check in
+vb2_queue_or_prepare_buf(). I think it would be better if this function
+gets a struct vb2_buffer * argument as well.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index 02985184fa0f..ae181498c3c3 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -109,7 +109,8 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
- 			.id = V4L2_CID_MPEG_VIDEO_VP9_PROFILE,
- 			.min = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
- 			.def = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
--			.max = V4L2_MPEG_VIDEO_VP9_PROFILE_3,
-+			.max = V4L2_MPEG_VIDEO_VP9_PROFILE_2,
-+			.menu_skip_mask = BIT(V4L2_MPEG_VIDEO_VP9_PROFILE_1),
- 		},
- 		.codec_type = V4L2_PIX_FMT_VP9_FRAME,
- 	},
-@@ -630,6 +631,20 @@ static void mtk_vcodec_dec_fill_vp9_level(struct v4l2_ctrl_config *cfg,
- 	};
- }
- 
-+static void mtk_vcodec_dec_fill_vp9_profile(struct v4l2_ctrl_config *cfg,
-+					    struct mtk_vcodec_dec_ctx *ctx)
-+{
-+	switch (ctx->dev->chip_name) {
-+	case MTK_VDEC_MT8188:
-+	case MTK_VDEC_MT8195:
-+		cfg->max = V4L2_MPEG_VIDEO_VP9_PROFILE_2;
-+		break;
-+	default:
-+		cfg->max = V4L2_MPEG_VIDEO_VP9_PROFILE_1;
-+		break;
-+	};
-+}
-+
- static void mtk_vcodec_dec_reset_controls(struct v4l2_ctrl_config *cfg,
- 					  struct mtk_vcodec_dec_ctx *ctx)
- {
-@@ -656,6 +671,11 @@ static void mtk_vcodec_dec_reset_controls(struct v4l2_ctrl_config *cfg,
- 		mtk_v4l2_vdec_dbg(3, ctx, "h265 supported profile: %lld %lld", cfg->max,
- 				  cfg->menu_skip_mask);
- 		break;
-+	case V4L2_CID_MPEG_VIDEO_VP9_PROFILE:
-+		mtk_vcodec_dec_fill_vp9_profile(cfg, ctx);
-+		mtk_v4l2_vdec_dbg(3, ctx, "vp9 supported profile: %lld %lld", cfg->max,
-+				  cfg->menu_skip_mask);
-+		break;
- 	default:
- 		break;
- 	};
--- 
-2.18.0
+So: vb2_queue_or_prepare_buf(q, mdev, vb, b, ...).
+
+Regards,
+
+	Hans
+
+>  
+> -	return ret ? ret : vb2_core_prepare_buf(q, b->index, b);
+> +	return ret ? ret : vb2_core_prepare_buf(q, vb, b);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_prepare_buf);
+>  
+> @@ -803,6 +810,7 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
+>  	     struct v4l2_buffer *b)
+>  {
+>  	struct media_request *req = NULL;
+> +	struct vb2_buffer *vb;
+>  	int ret;
+>  
+>  	if (vb2_fileio_is_active(q)) {
+> @@ -810,10 +818,16 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
+>  		return -EBUSY;
+>  	}
+>  
+> +	if (b->index >= q->num_buffers) {
+> +		dprintk(q, 1, "buffer index out of range\n");
+> +		return -EINVAL;
+> +	}
+> +	vb = q->bufs[b->index];
+> +
+>  	ret = vb2_queue_or_prepare_buf(q, mdev, b, false, &req);
+>  	if (ret)
+>  		return ret;
+> -	ret = vb2_core_qbuf(q, b->index, b, req);
+> +	ret = vb2_core_qbuf(q, vb, b, req);
+>  	if (req)
+>  		media_request_put(req);
+>  	return ret;
+> @@ -873,7 +887,15 @@ EXPORT_SYMBOL_GPL(vb2_streamoff);
+>  
+>  int vb2_expbuf(struct vb2_queue *q, struct v4l2_exportbuffer *eb)
+>  {
+> -	return vb2_core_expbuf(q, &eb->fd, eb->type, eb->index,
+> +	struct vb2_buffer *vb;
+> +
+> +	if (eb->index >= q->num_buffers) {
+> +		dprintk(q, 1, "buffer index out of range\n");
+> +		return -EINVAL;
+> +	}
+> +	vb = q->bufs[eb->index];
+> +
+> +	return vb2_core_expbuf(q, &eb->fd, eb->type, vb,
+>  				eb->plane, eb->flags);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_expbuf);
+> diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
+> index 909df82fed33..b322ef179f05 100644
+> --- a/drivers/media/dvb-core/dvb_vb2.c
+> +++ b/drivers/media/dvb-core/dvb_vb2.c
+> @@ -360,7 +360,7 @@ int dvb_vb2_querybuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
+>  		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
+>  		return -EINVAL;
+>  	}
+> -	vb2_core_querybuf(&ctx->vb_q, b->index, b);
+> +	vb2_core_querybuf(&ctx->vb_q, q->bufs[b->index], b);
+>  	dprintk(3, "[%s] index=%d\n", ctx->name, b->index);
+>  	return 0;
+>  }
+> @@ -370,7 +370,7 @@ int dvb_vb2_expbuf(struct dvb_vb2_ctx *ctx, struct dmx_exportbuffer *exp)
+>  	struct vb2_queue *q = &ctx->vb_q;
+>  	int ret;
+>  
+> -	ret = vb2_core_expbuf(&ctx->vb_q, &exp->fd, q->type, exp->index,
+> +	ret = vb2_core_expbuf(&ctx->vb_q, &exp->fd, q->type, q->bufs[exp->index],
+>  			      0, exp->flags);
+>  	if (ret) {
+>  		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
+> @@ -391,7 +391,7 @@ int dvb_vb2_qbuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
+>  		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
+>  		return -EINVAL;
+>  	}
+> -	ret = vb2_core_qbuf(&ctx->vb_q, b->index, b, NULL);
+> +	ret = vb2_core_qbuf(&ctx->vb_q, q->bufs[b->index], b, NULL);
+>  	if (ret) {
+>  		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
+>  			b->index, ret);
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 4b6a9d2ea372..cd3ff1cd759d 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -747,7 +747,7 @@ int vb2_wait_for_all_buffers(struct vb2_queue *q);
+>  /**
+>   * vb2_core_querybuf() - query video buffer information.
+>   * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+> - * @index:	id number of the buffer.
+> + * @vb:		pointer to struct &vb2_buffer.
+>   * @pb:		buffer struct passed from userspace.
+>   *
+>   * Videobuf2 core helper to implement VIDIOC_QUERYBUF() operation. It is called
+> @@ -759,7 +759,7 @@ int vb2_wait_for_all_buffers(struct vb2_queue *q);
+>   *
+>   * Return: returns zero on success; an error code otherwise.
+>   */
+> -void vb2_core_querybuf(struct vb2_queue *q, unsigned int index, void *pb);
+> +void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+>  
+>  /**
+>   * vb2_core_reqbufs() - Initiate streaming.
+> @@ -823,7 +823,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>   * vb2_core_prepare_buf() - Pass ownership of a buffer from userspace
+>   *			to the kernel.
+>   * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+> - * @index:	id number of the buffer.
+> + * @vb:		pointer to struct &vb2_buffer.
+>   * @pb:		buffer structure passed from userspace to
+>   *		&v4l2_ioctl_ops->vidioc_prepare_buf handler in driver.
+>   *
+> @@ -839,13 +839,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>   *
+>   * Return: returns zero on success; an error code otherwise.
+>   */
+> -int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb);
+> +int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+>  
+>  /**
+>   * vb2_core_qbuf() - Queue a buffer from userspace
+>   *
+>   * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+> - * @index:	id number of the buffer
+> + * @vb:		pointer to struct &vb2_buffer.
+>   * @pb:		buffer structure passed from userspace to
+>   *		v4l2_ioctl_ops->vidioc_qbuf handler in driver
+>   * @req:	pointer to &struct media_request, may be NULL.
+> @@ -867,7 +867,7 @@ int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb);
+>   *
+>   * Return: returns zero on success; an error code otherwise.
+>   */
+> -int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+> +int vb2_core_qbuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb,
+>  		  struct media_request *req);
+>  
+>  /**
+> @@ -931,7 +931,7 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type);
+>   * @fd:		pointer to the file descriptor associated with DMABUF
+>   *		(set by driver).
+>   * @type:	buffer type.
+> - * @index:	id number of the buffer.
+> + * @vb:		pointer to struct &vb2_buffer.
+>   * @plane:	index of the plane to be exported, 0 for single plane queues
+>   * @flags:	file flags for newly created file, as defined at
+>   *		include/uapi/asm-generic/fcntl.h.
+> @@ -945,7 +945,7 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type);
+>   * Return: returns zero on success; an error code otherwise.
+>   */
+>  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+> -		unsigned int index, unsigned int plane, unsigned int flags);
+> +		    struct vb2_buffer *vb, unsigned int plane, unsigned int flags);
+>  
+>  /**
+>   * vb2_core_queue_init() - initialize a videobuf2 queue
 
 
