@@ -4,90 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04A2FCDB465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 08:02:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F34F1CDB482
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 08:09:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lvF2PcqRl9KSZwBr6MB/2HHkdrTa98SVPuAoc53btQU=; b=OqsVbLJYll0yAuDgBtLEYUw/qv
-	FecCdt/gBFPEatlXokWLupVgEvcjrjvBiOO9+Bq6leNHoZRYygD4r+JSfFtLCXp6pdDjWg3jZ9r2i
-	ExY2NtlnA7tyWbJLLhZt/i9WVQFRV0WwvIeLQSGzOluYkovhVeMGwaO9X8kZa5NJ8MwHIG8mc2Wjf
-	WMcHxw+M5lKuRoA4YxtagELIFTJk3oIxN2YqOk1Op8fSBlonT9nu5LDhkf0GK5SdZ11vHmZeHYOIN
-	TcbG4XolwoI5I97l74tTVa14OC6E3HZT2oEknXotSAeQ3RLl5Ubo2uaIlF6RU16EA4Kq4ntap0/ov
-	Yknqus4A==;
+	bh=tB3Bc/ssb3vIlA4YWqZ8iK43TjE+R7bJgWp8fYBZZ+Y=; b=S3b4NDD+ZZC4ukQH/aWTVN6vMb
+	7zeOyPduIGP/7vmqVOvDYdo9ozW4uAN1pX+EBmPQcrtUd4oEfUovnRU9WlbtXkWo1mqXOap4yhaew
+	0PmeBoPg13MKiwz8ozbcIfq+H9yJwlHbrvqp/R78QLRGhznP28SFzFBBG4sZJTkNErQZY6tZh0EbY
+	FQlBT9Il61xkIYVDEz5/wQ151mbEvV9BF1zDHtiVrWQEQzeHxhaARm2yMvijHP/R7yT+Oo6LetheD
+	HzT1eZ6yHYcUjimaY7U/sCXySX8digYouhx75wx0HiP6sPNiHhHriCW4Gbw618hPLxZLvtkHhVvwj
+	dbf08WdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsIYc-008k8g-2k;
-	Mon, 16 Oct 2023 08:02:34 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1qsIes-008msc-31;
+	Mon, 16 Oct 2023 08:09:02 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsIYV-008k1Z-1f;
-	Mon, 16 Oct 2023 08:02:32 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-533c5d10dc7so7257968a12.3;
-        Mon, 16 Oct 2023 01:02:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697443343; x=1698048143; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lvF2PcqRl9KSZwBr6MB/2HHkdrTa98SVPuAoc53btQU=;
-        b=lFYN6vzxtXinJxwzsio4ydvxq8wsY9uQ8xfdDYa7TfQRDmn+m01FZsZROjyygxcSgS
-         uziGffZVx8Wwrw+PeYN6EtYLrT8hCcKdEJavpDxqQK7GE//R1XWt/F8U7mipKmzpg81O
-         SNhydZcFi1niwTNZXDpXo3FMjIELrmVz0wosiweqaMMJB32X8fxOZqxlpGKDUoCcmSr7
-         5VllC71xVdMyfPzsi8JfXyEOnJMGN6RLMzTrc41YxovtSljRjUqAbwEyGG7bWqkqMrvM
-         IhWELD2RhLXOzagRViDKNWd6yC/8LfDxCv5eZdG6YsfaB2TyzzVPq+zFnFFdAIRc+UEM
-         ghOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697443343; x=1698048143;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lvF2PcqRl9KSZwBr6MB/2HHkdrTa98SVPuAoc53btQU=;
-        b=wUS20074Zb66xuDYv2CTuuiQyMUlL+xmcrB5vIcO1yFVH3z5R4UC64I+kdB7tOSLFF
-         HLQCCPKroL2tbgd+g71yQ/SP0EPnoC/cVEjwNNZvlAAHyx6s2+ZbZwDeY2UOectd+xVs
-         taZ4q6j+b2ffjNVDzCUPBrOJvz7iOkooEjtOMpvWC/ID6sQmrGtzl3NvAbyPGGFEMvxR
-         mq8awiRnX9nDZpr6Lmr1fQtQyimojbk7e58od5UcBLA2kk79olsACSIsrMN5XsG8McdY
-         NyOl2oHNvgNAvRHldaHK3UKVmDESw2qXDrqQ6YslCFWusMArZ79yZbb8JZUd6GjGygKl
-         oeMw==
-X-Gm-Message-State: AOJu0YwKlT3cDo1pR8uacvt0aaAMYa+5tPikRqmnC54gBvy9zKYaVXzo
-	kbdkWB6gsRiJ3s4QOGgxZDM=
-X-Google-Smtp-Source: AGHT+IElTsjn90fwq4hatmt/dgv1pYY/XJlmk6y+MMUK7RR8JqCX9MwWGnjQLP+uu5RVV+AOlO0f2Q==
-X-Received: by 2002:a05:6402:5192:b0:53e:2b80:2f74 with SMTP id q18-20020a056402519200b0053e2b802f74mr9645102edd.0.1697443342650;
-        Mon, 16 Oct 2023 01:02:22 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id u26-20020a50951a000000b0053ecef8786asm1190691eda.75.2023.10.16.01.02.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 16 Oct 2023 01:02:21 -0700 (PDT)
-Message-ID: <a2cbe324-9226-1d9d-2e7f-3ce7fcb706a0@gmail.com>
-Date: Mon, 16 Oct 2023 10:02:20 +0200
+	id 1qsIeo-008mpy-1E;
+	Mon, 16 Oct 2023 08:09:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9CE8960C82;
+	Mon, 16 Oct 2023 08:08:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F19AC433C7;
+	Mon, 16 Oct 2023 08:08:54 +0000 (UTC)
+Message-ID: <e7a9d7c8-79ea-4fbf-b37a-bf540e4ee379@xs4all.nl>
+Date: Mon, 16 Oct 2023 10:08:52 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [GIT PULL] arm64: dts: mediatek: Updates for v6.7
-Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <matthias.bgg@gmail.com>
-To: Arnd Bergmann <arnd@arndb.de>, arm <arm@kernel.org>,
- SoC Team <soc@kernel.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
- Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-References: <7a877ad9-481f-bad8-5cad-5d013c6cd70d@gmail.com>
- <ae62c7e0-3e72-403c-abb4-569573037980@app.fastmail.com>
- <aca26ff7-801c-65ad-0cc2-fef8a4f74e27@gmail.com>
-In-Reply-To: <aca26ff7-801c-65ad-0cc2-fef8a4f74e27@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 08/56] media: videobuf2: Use vb2_get_num_buffers()
+ helper
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
+ <20231012114642.19040-9-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20231012114642.19040-9-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_010227_556075_FBA85482 
-X-CRM114-Status: GOOD (  29.71  )
+X-CRM114-CacheID: sfid-20231016_010858_540598_D1C08122 
+X-CRM114-Status: GOOD (  45.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,134 +69,433 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd,
+On 12/10/2023 13:45, Benjamin Gaignard wrote:
+> Stop using queue num_buffers field directly, instead use
+> vb2_get_num_buffers().
+> This prepare the replacement of num_buffers be a bitmap
+> field which is need for delete buffers feature.
 
-please find below the new tag, based on v6.6-rc3 this time, sorry for the mess.
-Please let me know if you need that in a separate patch or not. I'll no go 
-forward and delete the old tag.
+"This prepares for the future 'delete buffers' feature where there are
+holes in the buffer indices."
+
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../media/common/videobuf2/videobuf2-core.c   | 111 ++++++++++--------
+>  .../media/common/videobuf2/videobuf2-v4l2.c   |   4 +-
+>  2 files changed, 64 insertions(+), 51 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 66d0f42f5691..c427aca285e3 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -429,6 +429,8 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
+>   */
+>  static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
+>  {
+> +	if (vb->vb2_queue->num_buffers)
+> +		vb->vb2_queue->num_buffers--;
+>  	vb->vb2_queue->bufs[vb->index] = NULL;
+>  	vb->vb2_queue = NULL;
+>  }
+> @@ -512,12 +514,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>   */
+>  static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+>  {
+> -	unsigned int buffer;
+> +	unsigned int buffer = 0;
+> +	long i;
+>  	struct vb2_buffer *vb;
+>  
+> -	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
+> -	     ++buffer) {
+> -		vb = vb2_get_buffer(q, buffer);
+> +	for (i = vb2_get_num_buffers(q); i >= 0 && buffer < buffers; i--) {
+> +		vb = vb2_get_buffer(q, i);
+>  		if (!vb)
+>  			continue;
+>  
+> @@ -528,6 +530,7 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+>  			__vb2_buf_dmabuf_put(vb);
+>  		else
+>  			__vb2_buf_userptr_put(vb);
+> +		buffer++;
+>  	}
+>  }
+
+Is there actually any reason for changing this function? We're not deleting buffers
+yet, so there is no need to change this at all, not until we add that new feature.
+
+The new code is rather confusing (complex loop condition), and it will change again
+in patch 53/56 to something that makes more sense. I'd just drop this change and leave
+the loop as-is (except for using vb2_get_num_buffers).
+
+>  
+> @@ -539,16 +542,20 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+>  static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+>  {
+>  	unsigned int buffer;
+> +	long i;
+>  
+>  	lockdep_assert_held(&q->mmap_lock);
+>  
+>  	/* Call driver-provided cleanup function for each buffer, if provided */
+> -	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
+> -	     ++buffer) {
+> -		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+> +	for (i = vb2_get_num_buffers(q), buffer = 0; i >= 0 && buffer < buffers; i--) {
+> +		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+>  
+> -		if (vb && vb->planes[0].mem_priv)
+> +		if (!vb)
+> +			continue;
+> +		if (vb->planes[0].mem_priv) {
+>  			call_void_vb_qop(vb, buf_cleanup, vb);
+> +			buffer++;
+> +		}
+>  	}
+>  
+>  	/* Release video buffer memory */
+> @@ -559,7 +566,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+>  	 * Check that all the calls were balanced during the life-time of this
+>  	 * queue. If not then dump the counters to the kernel log.
+>  	 */
+> -	if (q->num_buffers) {
+> +	if (vb2_get_num_buffers(q)) {
+>  		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
+>  				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
+>  				  q->cnt_wait_prepare != q->cnt_wait_finish;
+> @@ -585,7 +592,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+>  		q->cnt_stop_streaming = 0;
+>  		q->cnt_unprepare_streaming = 0;
+>  	}
+> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+> +	for (buffer = 0; buffer < vb2_get_num_buffers(q); buffer++) {
+>  		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+>  		bool unbalanced;
+>  
+> @@ -637,19 +644,18 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+>  #endif
+>  
+>  	/* Free vb2 buffers */
+> -	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
+> -	     ++buffer) {
+> -		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+> +	for (i = vb2_get_num_buffers(q), buffer = 0; i >= 0 && buffer < buffers; i--) {
+> +		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+>  
+>  		if (!vb)
+>  			continue;
+>  
+>  		vb2_queue_remove_buffer(vb);
+>  		kfree(vb);
+> +		buffer++;
+>  	}
+>  
+> -	q->num_buffers -= buffers;
+> -	if (!q->num_buffers) {
+> +	if (!vb2_get_num_buffers(q)) {
+>  		q->memory = VB2_MEMORY_UNKNOWN;
+>  		INIT_LIST_HEAD(&q->queued_list);
+>  	}
+
+Same here. Only replace q->num_buffers with vb2_get_num_buffers(q), otherwise
+leave it as-is.
+
+> @@ -680,7 +686,7 @@ EXPORT_SYMBOL(vb2_buffer_in_use);
+>  static bool __buffers_in_use(struct vb2_queue *q)
+>  {
+>  	unsigned int buffer;
+> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+> +	for (buffer = 0; buffer < vb2_get_num_buffers(q); ++buffer) {
+>  		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+>  
+>  		if (!vb)
+> @@ -806,6 +812,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		     unsigned int flags, unsigned int *count)
+>  {
+>  	unsigned int num_buffers, allocated_buffers, num_planes = 0;
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+>  	unsigned int i;
+> @@ -821,7 +828,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		return -EBUSY;
+>  	}
+>  
+> -	if (*count == 0 || q->num_buffers != 0 ||
+> +	if (*count == 0 || q_num_bufs != 0 ||
+>  	    (q->memory != VB2_MEMORY_UNKNOWN && q->memory != memory) ||
+>  	    !verify_coherency_flags(q, non_coherent_mem)) {
+>  		/*
+> @@ -839,7 +846,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		 * queued without ever calling STREAMON.
+>  		 */
+>  		__vb2_queue_cancel(q);
+> -		__vb2_queue_free(q, q->num_buffers);
+> +		__vb2_queue_free(q, q_num_bufs);
+>  		mutex_unlock(&q->mmap_lock);
+>  
+>  		/*
+> @@ -934,7 +941,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	if (ret < 0) {
+>  		/*
+>  		 * Note: __vb2_queue_free() will subtract 'allocated_buffers'
+> -		 * from q->num_buffers and it will reset q->memory to
+> +		 * from already queued buffers and it will reset q->memory to
+>  		 * VB2_MEMORY_UNKNOWN.
+>  		 */
+>  		__vb2_queue_free(q, allocated_buffers);
+> @@ -968,10 +975,11 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned int num_planes = 0, num_buffers, allocated_buffers;
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+> -	bool no_previous_buffers = !q->num_buffers;
+> -	int ret;
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+> +	bool no_previous_buffers = !q_num_bufs;
+> +	int ret = 0;
+>  
+> -	if (q->num_buffers == VB2_MAX_FRAME) {
+> +	if (q_num_bufs == VB2_MAX_FRAME) {
+>  		dprintk(q, 1, "maximum number of buffers already allocated\n");
+>  		return -ENOBUFS;
+>  	}
+> @@ -1000,7 +1008,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  			return -EINVAL;
+>  	}
+>  
+> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
+> +	num_buffers = min(*count, VB2_MAX_FRAME - q_num_bufs);
+>  
+>  	if (requested_planes && requested_sizes) {
+>  		num_planes = requested_planes;
+> @@ -1032,7 +1040,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		num_buffers = allocated_buffers;
+>  
+>  		/*
+> -		 * q->num_buffers contains the total number of buffers, that the
+> +		 * num_buffers contains the total number of buffers, that the
+>  		 * queue driver has set up
+>  		 */
+>  		ret = call_qop(q, queue_setup, q, &num_buffers,
+> @@ -1053,7 +1061,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	if (ret < 0) {
+>  		/*
+>  		 * Note: __vb2_queue_free() will subtract 'allocated_buffers'
+> -		 * from q->num_buffers and it will reset q->memory to
+> +		 * from already queued buffers and it will reset q->memory to
+>  		 * VB2_MEMORY_UNKNOWN.
+>  		 */
+>  		__vb2_queue_free(q, allocated_buffers);
+> @@ -1670,7 +1678,7 @@ static int vb2_start_streaming(struct vb2_queue *q)
+>  		 * Forcefully reclaim buffers if the driver did not
+>  		 * correctly return them to vb2.
+>  		 */
+> -		for (i = 0; i < q->num_buffers; ++i) {
+> +		for (i = 0; i < vb2_get_num_buffers(q); ++i) {
+>  			vb = vb2_get_buffer(q, i);
+>  
+>  			if (!vb)
+> @@ -2076,9 +2084,8 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
+>  	 * to vb2 in stop_streaming().
+>  	 */
+>  	if (WARN_ON(atomic_read(&q->owned_by_drv_count))) {
+> -		for (i = 0; i < q->num_buffers; ++i) {
+> +		for (i = 0; i < vb2_get_num_buffers(q); i++) {
+>  			struct vb2_buffer *vb = vb2_get_buffer(q, i);
+> -
+
+Spurious line deletion?
+
+>  			if (!vb)
+>  				continue;
+>  
+> @@ -2120,10 +2127,9 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
+>  	 * call to __fill_user_buffer() after buf_finish(). That order can't
+>  	 * be changed, so we can't move the buf_finish() to __vb2_dqbuf().
+>  	 */
+> -	for (i = 0; i < q->num_buffers; ++i) {
+> +	for (i = 0; i < vb2_get_num_buffers(q); i++) {
+>  		struct vb2_buffer *vb;
+>  		struct media_request *req;
+> -
+
+Spurious line deletion?
+
+>  		vb = vb2_get_buffer(q, i);
+>  		if (!vb)
+>  			continue;
+> @@ -2168,6 +2174,7 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
+>  
+>  int vb2_core_streamon(struct vb2_queue *q, unsigned int type)
+>  {
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+>  	int ret;
+>  
+>  	if (type != q->type) {
+> @@ -2180,12 +2187,12 @@ int vb2_core_streamon(struct vb2_queue *q, unsigned int type)
+>  		return 0;
+>  	}
+>  
+> -	if (!q->num_buffers) {
+> +	if (!q_num_bufs) {
+>  		dprintk(q, 1, "no buffers have been allocated\n");
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (q->num_buffers < q->min_buffers_needed) {
+> +	if (q_num_bufs < q->min_buffers_needed) {
+>  		dprintk(q, 1, "need at least %u allocated buffers\n",
+>  				q->min_buffers_needed);
+>  		return -EINVAL;
+> @@ -2513,7 +2520,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
+>  	__vb2_cleanup_fileio(q);
+>  	__vb2_queue_cancel(q);
+>  	mutex_lock(&q->mmap_lock);
+> -	__vb2_queue_free(q, q->num_buffers);
+> +	__vb2_queue_free(q, vb2_get_num_buffers(q));
+> +	q->num_buffers = 0;
+>  	mutex_unlock(&q->mmap_lock);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+> @@ -2542,7 +2550,7 @@ __poll_t vb2_core_poll(struct vb2_queue *q, struct file *file,
+>  	/*
+>  	 * Start file I/O emulator only if streaming API has not been used yet.
+>  	 */
+> -	if (q->num_buffers == 0 && !vb2_fileio_is_active(q)) {
+> +	if (vb2_get_num_buffers(q) == 0 && !vb2_fileio_is_active(q)) {
+>  		if (!q->is_output && (q->io_modes & VB2_READ) &&
+>  				(req_events & (EPOLLIN | EPOLLRDNORM))) {
+>  			if (__vb2_init_fileio(q, 1))
+> @@ -2580,7 +2588,7 @@ __poll_t vb2_core_poll(struct vb2_queue *q, struct file *file,
+>  	 * For output streams you can call write() as long as there are fewer
+>  	 * buffers queued than there are buffers available.
+>  	 */
+> -	if (q->is_output && q->fileio && q->queued_count < q->num_buffers)
+> +	if (q->is_output && q->fileio && q->queued_count < vb2_get_num_buffers(q))
+>  		return EPOLLOUT | EPOLLWRNORM;
+>  
+>  	if (list_empty(&q->done_list)) {
+> @@ -2629,8 +2637,8 @@ struct vb2_fileio_buf {
+>   * struct vb2_fileio_data - queue context used by file io emulator
+>   *
+>   * @cur_index:	the index of the buffer currently being read from or
+> - *		written to. If equal to q->num_buffers then a new buffer
+> - *		must be dequeued.
+> + *		written to. If equal to number of already queues buffers
+
+queues -> queued
+
+> + *		then a new buffer must be dequeued.
+>   * @initial_index: in the read() case all buffers are queued up immediately
+>   *		in __vb2_init_fileio() and __vb2_perform_fileio() just cycles
+>   *		buffers. However, in the write() case no buffers are initially
+> @@ -2640,7 +2648,7 @@ struct vb2_fileio_buf {
+>   *		buffers. This means that initially __vb2_perform_fileio()
+>   *		needs to know what buffer index to use when it is queuing up
+>   *		the buffers for the first time. That initial index is stored
+> - *		in this field. Once it is equal to q->num_buffers all
+> + *		in this field. Once it is equal to num_buffers all
+>   *		available buffers have been queued and __vb2_perform_fileio()
+>   *		should start the normal dequeue/queue cycle.
+>   *
+> @@ -2690,7 +2698,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  	/*
+>  	 * Check if streaming api has not been already activated.
+>  	 */
+> -	if (q->streaming || q->num_buffers > 0)
+> +	if (q->streaming || vb2_get_num_buffers(q) > 0)
+>  		return -EBUSY;
+>  
+>  	/*
+> @@ -2740,7 +2748,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  	/*
+>  	 * Get kernel address of each buffer.
+>  	 */
+> -	for (i = 0; i < q->num_buffers; i++) {
+> +	for (i = 0; i < vb2_get_num_buffers(q); i++) {
+>  		vb = vb2_get_buffer(q, i);
+>  		WARN_ON_ONCE(!vb);
+>  
+> @@ -2759,18 +2767,23 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  		/*
+>  		 * Queue all buffers.
+>  		 */
+> -		for (i = 0; i < q->num_buffers; i++) {
+> -			ret = vb2_core_qbuf(q, q->bufs[i], NULL, NULL);
+> +		for (i = 0; i < vb2_get_num_buffers(q); i++) {
+> +			struct vb2_buffer *vb2 = vb2_get_buffer(q, i);
+> +
+> +			if (!vb2)
+> +				continue;
+> +
+> +			ret = vb2_core_qbuf(q, vb2, NULL, NULL);
+>  			if (ret)
+>  				goto err_reqbufs;
+>  			fileio->bufs[i].queued = 1;
+>  		}
+>  		/*
+>  		 * All buffers have been queued, so mark that by setting
+> -		 * initial_index to q->num_buffers
+> +		 * initial_index to num_buffers
+>  		 */
+> -		fileio->initial_index = q->num_buffers;
+> -		fileio->cur_index = q->num_buffers;
+> +		fileio->initial_index = vb2_get_num_buffers(q);
+> +		fileio->cur_index = fileio->initial_index;
+>  	}
+>  
+>  	/*
+> @@ -2964,12 +2977,12 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  		 * If we are queuing up buffers for the first time, then
+>  		 * increase initial_index by one.
+>  		 */
+> -		if (fileio->initial_index < q->num_buffers)
+> +		if (fileio->initial_index < vb2_get_num_buffers(q))
+>  			fileio->initial_index++;
+>  		/*
+>  		 * The next buffer to use is either a buffer that's going to be
+> -		 * queued for the first time (initial_index < q->num_buffers)
+> -		 * or it is equal to q->num_buffers, meaning that the next
+> +		 * queued for the first time (initial_index < num_buffers)
+> +		 * or it is equal to num_buffers, meaning that the next
+>  		 * time we need to dequeue a buffer since we've now queued up
+>  		 * all the 'first time' buffers.
+>  		 */
+> @@ -3016,7 +3029,7 @@ static int vb2_thread(void *data)
+>  	int ret = 0;
+>  
+>  	if (q->is_output) {
+> -		prequeue = q->num_buffers;
+> +		prequeue = vb2_get_num_buffers(q);
+>  		copy_timestamp = q->copy_timestamp;
+>  	}
+>  
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index b9df2bdae389..daa07f62c219 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -628,7 +628,7 @@ struct vb2_buffer *vb2_find_buffer(struct vb2_queue *q, u64 timestamp)
+>  	 * This loop doesn't scale if there is a really large number of buffers.
+>  	 * Maybe something more efficient will be needed in this case.
+>  	 */
+> -	for (i = 0; i < q->num_buffers; i++) {
+> +	for (i = 0; i < vb2_get_num_buffers(q); i++) {
+>  		vb2 = vb2_get_buffer(q, i);
+>  
+>  		if (!vb2)
+> @@ -762,7 +762,7 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+>  
+>  	fill_buf_caps(q, &create->capabilities);
+>  	validate_memory_flags(q, create->memory, &create->flags);
+> -	create->index = q->num_buffers;
+> +	create->index = vb2_get_num_buffers(q);
+>  	if (create->count == 0)
+>  		return ret != -EBUSY ? ret : 0;
+>  
 
 Regards,
-Matthias
 
----
-
-The following changes since commit 6465e260f48790807eef06b583b38ca9789b6072:
-
-   Linux 6.6-rc3 (2023-09-24 14:31:13 -0700)
-
-are available in the Git repository at:
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
-tags/v6.6-next-dts64.2
-
-for you to fetch changes up to 976868a021ee654f4cf6eb6a2f40f95c78c04093:
-
-   arm64: dts: mediatek: cherry: Configure eDP and internal display (2023-10-16 
-09:55:08 +0200)
-
-----------------------------------------------------------------
-MediaTek ARM64 DTS updates for v6.7
-
-- Add support for SMI/IOMMU/LARBs, power domains and multimedia
-   related subsystems for the MT8365 SoC
-- Add support for MediaTek Genio 1200 IoT evaluation board
-- Add support for newer revisions of MT8192 Chromebooks
-- Add support for internal eDP display on MT8195 Cherry Chromebooks
-- Add display and display backlight support for the Helio X10 SoC and
-   for the Sony Xperia M5 smartphone
-
-----------------------------------------------------------------
-Alexandre Mergnat (7):
-       arm64: dts: mediatek: add mmsys support for mt8365 SoC
-       arm64: dts: mediatek: add camsys support for mt8365 SoC
-       arm64: dts: mediatek: add apu support for mt8365 SoC
-       arm64: dts: mediatek: add power domain support for mt8365 SoC
-       arm64: dts: mediatek: add smi support for mt8365 SoC
-       arm64: dts: mediatek: add larb support for mt8365 SoC
-       arm64: dts: mediatek: add iommu support for mt8365 SoC
-
-AngeloGioacchino Del Regno (4):
-       arm64: dts: mediatek: mt6795: Add support for display blocks and DPI/DSI
-       arm64: dts: mediatek: mt6795-xperia-m5: Add display backlight support
-       arm64: dts: mediatek: mt6795-xperia-m5: Add DSI Display and its vregs
-       arm64: dts: mediatek: cherry: Configure eDP and internal display
-
-Chen-Yu Tsai (1):
-       arm64: dts: mediatek: mt8183-kukui: Add PMIC regulator supplies
-
-Macpaul Lin (2):
-       dt-bindings: arm64: mediatek: add mt8395-evk board
-       arm64: dts: mediatek: add device-tree for Genio 1200 EVK board
-
-Nícolas F. R. A. Prado (5):
-       dt-bindings: arm64: dts: mediatek: Add rev5-sku2 of hayato
-       dt-bindings: arm64: dts: mediatek: Add rev4 of spherion
-       arm64: dts: mediatek: Remove asurada-audio dtsi files
-       arm64: dts: mediatek: Add hayato-rev5-sku2
-       arm64: dts: mediatek: Add spherion-rev4
-
-  .../devicetree/bindings/arm/mediatek.yaml          |  16 +
-  arch/arm64/boot/dts/mediatek/Makefile              |   3 +
-  .../boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 101 +++
-  arch/arm64/boot/dts/mediatek/mt6795.dtsi           | 253 +++++-
-  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |  28 +
-  .../mt8192-asurada-audio-rt1015p-rt5682.dtsi       |  19 -
-  .../dts/mediatek/mt8192-asurada-audio-rt1015p.dtsi |  26 -
-  .../dts/mediatek/mt8192-asurada-audio-rt5682.dtsi  |  21 -
-  .../boot/dts/mediatek/mt8192-asurada-hayato-r1.dts |  19 +-
-  .../dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts |  64 ++
-  .../dts/mediatek/mt8192-asurada-spherion-r0.dts    |  19 +-
-  .../dts/mediatek/mt8192-asurada-spherion-r4.dts    |  77 ++
-  arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi   |  28 +
-  arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi    |  33 +
-  arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 210 +++++
-  .../boot/dts/mediatek/mt8395-genio-1200-evk.dts    | 901 +++++++++++++++++++++
-  16 files changed, 1749 insertions(+), 69 deletions(-)
-  delete mode 100644 
-arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682.dtsi
-  delete mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p.dtsi
-  delete mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682.dtsi
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-
-On 16/10/2023 09:52, Matthias Brugger wrote:
-> Hi Arnd,
-> 
-> On 13/10/2023 22:40, Arnd Bergmann wrote:
->> On Mon, Oct 9, 2023, at 12:34, Matthias Brugger wrote:
->>> Hi Arnd and Olof,
->>>
->>> Please find below a few patches for the 64 bit DTS files targeted for v6.7.
->>>
->>> The patches were picked up with the help from Angelo.
->>> With these changes we have now support for the Genio 1200 EVK board for IoT
->>> applications. Also the MT8365 from the same business line has much more support
->>> of peripherals.
->>> Also support for the new 4th revision of the Acer Chromebook 514 was added. The
->>> difference with older board is the audio codec used.
->>> On the Mobile phone side of things, support for the Helio X10, which is used by
->>> the Sony Xperia M5 got support for the display.
->>
->> Hi Matthias,
->>
->> The contents all look good and I'm happy to merge them, but I noticed that
->> the branch is based on -rc4, while my soc/dt branch is based on -rc3.
->>
->> Pulling it in would slightly mess up the git history and the 'git request-pull'
->> output because of the backmerge of the mainline contents. Do you
->> have a hard dependency on something that went into rc4, or can you
->> rebase the branch to -rc3 or earlier?
->>
->> I usually recommend using -rc1 as a base unless there is an important
->> dependency on something that was merged later.
->>
-> 
-> AFAIK ther is no dependency on -rc4. I'll send a new pull request based on the 
-> correct -rc3
-> 
-> Sorry for that.
-> 
-> Regards,
-> Matthias
+	Hans
 
