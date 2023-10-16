@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0674CDB465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 21:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73F06CDB465
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Oct 2023 21:45:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RjGwCRfeJ6jyUkUfij15uJxe6Br0BrgfpLSpLSGPlOQ=; b=aiqd2vSKV4TwApkflpU/VwMPGk
-	CHDVuQpCc5aQ2Q3eT3bs/8UP5scudbogz+v4Y00SDVgPEatHuO5Cu6ZUBZl/Hljx7zCWLoIYYojci
-	4rLE9VPOSoOdRTlPwU8PVWtiZPdCEaZPpzQ6dz6ScGv9cy8LYo5L2vg82YYFFceJmwwGdqjbbS/jE
-	OahNQFYOv6/GWlTAGAH064Rjw7BmPnVMoQuyt7lStlCUI6ivHHN/uJuFn2srM7NPX1ZC5kfh+f3Hi
-	I8Y0e5sXQeJSVr25kS4NzJ76eJ9HRA84PuMyYw20QqhA5UgYSJeIhjf+J9PguOzOBvUk4jm4oNGHU
-	13Jx6RDg==;
+	bh=ht8N98xxNnhr4mxygYrnIRrNI1WvXoWdTJ8XF/XP/F8=; b=mWiZCVExQ9s7WsiZDSlonb9feR
+	mEdzZnq4r7GWfwtWjDiT4AM6hkl2/+MiqOHxxu86oOYa1fRLsayEXEWfcr91CUeqF5QhAeo+IwVCv
+	vMDpX/9m+wDlKSj0mTf/dlTolVe5xGI03eiz4mwnqfL49cMEuckBh29MqeAZuYEolJXGh/k/zGEff
+	1e3KQeW+7UEVGa1g683gE/IZ9Zme8lchSFIfVF93/BEesiW+eGTMyt/xSiyXeREWtBnCJN9kypdp1
+	mJL/aMeXg5smTVh0R5p+tBdNmIIfXDsUSwPc87b1leBLyQt7DRPrhIUpipL30tiZC0DgbTl5arnRC
+	7sY8uPAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsVOa-00AbdX-0l;
-	Mon, 16 Oct 2023 21:45:04 +0000
-Received: from mail-oi1-f169.google.com ([209.85.167.169])
+	id 1qsVOd-00Abhd-0l;
+	Mon, 16 Oct 2023 21:45:07 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsVOO-00AbTY-0Y;
-	Mon, 16 Oct 2023 21:44:53 +0000
-Received: by mail-oi1-f169.google.com with SMTP id 5614622812f47-3b2b1b25547so2199567b6e.3;
-        Mon, 16 Oct 2023 14:44:50 -0700 (PDT)
+	id 1qsVOR-00AbVb-2b;
+	Mon, 16 Oct 2023 21:44:57 +0000
+Received: by mail-oi1-f173.google.com with SMTP id 5614622812f47-3b2b1af964dso2631538b6e.1;
+        Mon, 16 Oct 2023 14:44:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697492689; x=1698097489;
+        d=1e100.net; s=20230601; t=1697492692; x=1698097492;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=RjGwCRfeJ6jyUkUfij15uJxe6Br0BrgfpLSpLSGPlOQ=;
-        b=AZq+P+2+BT1vbbQSokOiNVrEP2iMJ1Qm3q4mhBjXFgF9i7EssZ60rVWARVc2nTzT9V
-         0eX6RZvu5PJb+n5Hr6V9GFm/DXN1y269psjYCvR2cXYNhuZhHrnf+3/iXaBvSJVvnpze
-         4k/g3Css/aE3itQ7f7iQ00HJ9I/GvH04/6h0sjtGET0MeaXnvKwfoDfVbt5Jdm0bsHDe
-         1OZf3j8AT/H6PKmC3q7JR3VGBb8nVy05ijLgs9BFG4EdojlDKQm19UsQn3GbR11JRrz8
-         +w0S5frG+K0tBMsoT9ErbTL6W7TqOQG0+fQ0WVQ3Td3HMym0lSvwSy5x4lDDJVwTLD/c
-         3qOQ==
-X-Gm-Message-State: AOJu0Yx0kCmGPiXT48oYdMNIahUqQDDr1FLgRjMXXNqOZTdXtJIfpV+R
-	AyrldZckjBV43nHmL9GaihRhwlFQEw==
-X-Google-Smtp-Source: AGHT+IG+MUFDErrTfJWVkRN5eb91KPhnPO15E/39mPn136AxbnLR+bGvAhs0Li2tuR7K6Spxnt7dpA==
-X-Received: by 2002:a54:478c:0:b0:3a8:80ea:f0c6 with SMTP id o12-20020a54478c000000b003a880eaf0c6mr591052oic.29.1697492689379;
-        Mon, 16 Oct 2023 14:44:49 -0700 (PDT)
+        bh=ht8N98xxNnhr4mxygYrnIRrNI1WvXoWdTJ8XF/XP/F8=;
+        b=AMnIlPSFHHsxD67d1BhL5p8a2epbzQfMHLVf+hUieu4e5uYEkRhGb9C3OBLp81oCYg
+         EJL1utVDdLhWTYNN1QRRdu3Ql+xyW8niPqCU2xpfRU4aB8SA5JP2rJQffEmekls3iPEJ
+         QVd81NmO+IyhY8Hbp9+dc+QqeDZKvjtw5xiIXZ7iONQM8A782IgAlk+I00w1KTAC7GFk
+         aQ+gLkzWt4AIOzZTJnaIhf/AsiBxPrG3QEICpNzjydZqc8xOTywYv0JIzmpI6/oJcUuH
+         Pwn34rAIM3oemKEPb8kFSWTnAGpHUeMnWxmb6gXgImntv8Csyjvf0jwmrxmPg8e5TELd
+         9Alw==
+X-Gm-Message-State: AOJu0YyHoouVW93KcC95EgQEaLcd8nYNtzZnQuNpCB91CuFQ2Q/B1gjf
+	ApsvlyIv/kVP6ecPXW5PVyJgiwzu6w==
+X-Google-Smtp-Source: AGHT+IGRRlSS/F1kWukUHeHHHZmSLPVKA0n8LTYOyHwpWpjScHo01PEc7nh9ywAQ/bdErdN4oiSVXg==
+X-Received: by 2002:a05:6808:3a82:b0:3ae:1446:d48b with SMTP id fb2-20020a0568083a8200b003ae1446d48bmr592595oib.3.1697492691930;
+        Mon, 16 Oct 2023 14:44:51 -0700 (PDT)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id x10-20020a05680801ca00b003adfc72ed20sm31622oic.17.2023.10.16.14.44.47
+        by smtp.gmail.com with ESMTPSA id v11-20020a54448b000000b003af732a2054sm28836oiv.57.2023.10.16.14.44.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Oct 2023 14:44:48 -0700 (PDT)
-Received: (nullmailer pid 3823210 invoked by uid 1000);
+        Mon, 16 Oct 2023 14:44:51 -0700 (PDT)
+Received: (nullmailer pid 3823220 invoked by uid 1000);
 	Mon, 16 Oct 2023 21:44:35 -0000
 From: Rob Herring <robh@kernel.org>
-Date: Mon, 16 Oct 2023 16:44:20 -0500
-Subject: [PATCH net-next 1/8] dt-bindings: net: Add missing
- (unevaluated|additional)Properties on child node schemas
+Date: Mon, 16 Oct 2023 16:44:25 -0500
+Subject: [PATCH net-next 6/8] dt-bindings: net: mscc,vsc7514-switch:
+ Clean-up example indentation
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
+Message-Id: <20231016-dt-net-cleanups-v1-6-a525a090b444@kernel.org>
 References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
 In-Reply-To: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
 To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
@@ -85,8 +85,8 @@ To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
 Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_144452_209806_4EADD535 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20231016_144455_866281_7E5880DD 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,174 +101,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Just as unevaluatedProperties or additionalProperties are required at
-the top level of schemas, they should (and will) also be required for
-child node schemas. That ensures only documented properties are
-present for any node.
-
-Add unevaluatedProperties or additionalProperties as appropriate.
+The indentation for the example is completely messed up for
+'ethernet-ports'. Fix it.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- .../devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml     |  2 ++
- Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml        |  1 +
- Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml |  2 ++
- .../devicetree/bindings/net/dsa/microchip,lan937x.yaml         |  1 +
- Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml     |  2 ++
- Documentation/devicetree/bindings/net/dsa/qca8k.yaml           |  1 +
- Documentation/devicetree/bindings/net/dsa/realtek.yaml         |  2 ++
- .../devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml        | 10 ++--------
- Documentation/devicetree/bindings/net/engleder,tsnep.yaml      |  1 +
- Documentation/devicetree/bindings/net/nxp,tja11xx.yaml         |  1 +
- 10 files changed, 15 insertions(+), 8 deletions(-)
+ .../bindings/net/mscc,vsc7514-switch.yaml          | 32 +++++++++++-----------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml b/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
-index 4bfac9186886..7fe0352dff0f 100644
---- a/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
-+++ b/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
-@@ -158,6 +158,8 @@ allOf:
-               patternProperties:
-                 "^ethernet-phy@[0-9a-f]$":
-                   type: object
-+                  $ref: ethernet-phy.yaml#
-+                  unevaluatedProperties: false
-                   description:
-                     Integrated PHY node
+diff --git a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
+index 8ee2c7d7ff42..07de52a3a295 100644
+--- a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
++++ b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
+@@ -185,7 +185,7 @@ examples:
+     };
+   # VSC7512 (DSA)
+   - |
+-    ethernet-switch@1{
++    ethernet-switch@1 {
+       compatible = "mscc,vsc7512-switch";
+       reg = <0x71010000 0x10000>,
+             <0x71030000 0x10000>,
+@@ -212,22 +212,22 @@ examples:
+             "port7", "port8", "port9", "port10", "qsys",
+             "ana", "s0", "s1", "s2";
  
-diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-index b06c416893ff..f21bdd0f408d 100644
---- a/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-@@ -78,6 +78,7 @@ properties:
- 
-   ports:
-     type: object
-+    additionalProperties: true
- 
-     patternProperties:
-       '^port@[0-9a-f]$':
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index e532c6b795f4..20f7ba4e2203 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -154,10 +154,12 @@ properties:
- patternProperties:
-   "^(ethernet-)?ports$":
-     type: object
-+    additionalProperties: true
- 
-     patternProperties:
-       "^(ethernet-)?port@[0-9]+$":
-         type: object
-+        additionalProperties: true
- 
-         properties:
-           reg:
-diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-index 8d7e878b84dc..6a4d90d550b6 100644
---- a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-@@ -37,6 +37,7 @@ properties:
- 
- patternProperties:
-   "^(ethernet-)?ports$":
-+    additionalProperties: true
-     patternProperties:
-       "^(ethernet-)?port@[0-9]+$":
-         allOf:
-diff --git a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
-index 4d5f5cc6d031..d179c6971193 100644
---- a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
-@@ -43,6 +43,7 @@ properties:
-   # PHY 1.
-   mdios:
-     type: object
-+    additionalProperties: false
- 
-     properties:
-       '#address-cells':
-@@ -74,6 +75,7 @@ properties:
- 
- patternProperties:
-   "^(ethernet-)?ports$":
-+    additionalProperties: true
-     patternProperties:
-       "^(ethernet-)?port@[0-9]+$":
-         allOf:
-diff --git a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-index df64eebebe18..167398ab253a 100644
---- a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-@@ -73,6 +73,7 @@ $ref: dsa.yaml#
- patternProperties:
-   "^(ethernet-)?ports$":
-     type: object
-+    additionalProperties: true
-     patternProperties:
-       "^(ethernet-)?port@[0-6]$":
-         type: object
-diff --git a/Documentation/devicetree/bindings/net/dsa/realtek.yaml b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-index cfd69c2604ea..cce692f57b08 100644
---- a/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-@@ -68,6 +68,8 @@ properties:
- 
-   interrupt-controller:
-     type: object
-+    additionalProperties: false
+-            ethernet-ports {
+-            #address-cells = <1>;
+-            #size-cells = <0>;
+-
+-           port@0 {
+-            reg = <0>;
+-            ethernet = <&mac_sw>;
+-            phy-handle = <&phy0>;
+-            phy-mode = "internal";
+-          };
+-          port@1 {
+-            reg = <1>;
+-            phy-handle = <&phy1>;
+-            phy-mode = "internal";
+-          };
++      ethernet-ports {
++        #address-cells = <1>;
++        #size-cells = <0>;
 +
-     description: |
-       This defines an interrupt controller with an IRQ line (typically
-       a GPIO) that will demultiplex and handle the interrupt from the single
-diff --git a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-index 833d2f68daa1..ea285ef3e64f 100644
---- a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-@@ -61,17 +61,11 @@ properties:
++        port@0 {
++          reg = <0>;
++          ethernet = <&mac_sw>;
++          phy-handle = <&phy0>;
++          phy-mode = "internal";
++        };
++        port@1 {
++          reg = <1>;
++          phy-handle = <&phy1>;
++          phy-mode = "internal";
+         };
+       };
++    };
  
-   ethernet-ports:
-     type: object
--    properties:
--      '#address-cells':
--        const: 1
--      '#size-cells':
--        const: 0
--
-+    additionalProperties: true
-     patternProperties:
-       "^(ethernet-)?port@[0-4]$":
-         type: object
--        description: Ethernet switch ports
--
-+        additionalProperties: true
-         properties:
-           pcs-handle:
-             maxItems: 1
-diff --git a/Documentation/devicetree/bindings/net/engleder,tsnep.yaml b/Documentation/devicetree/bindings/net/engleder,tsnep.yaml
-index 82a5d7927ca4..34fd24ff6a71 100644
---- a/Documentation/devicetree/bindings/net/engleder,tsnep.yaml
-+++ b/Documentation/devicetree/bindings/net/engleder,tsnep.yaml
-@@ -63,6 +63,7 @@ properties:
-   mdio:
-     type: object
-     $ref: mdio.yaml#
-+    unevaluatedProperties: false
-     description: optional node for embedded MDIO controller
- 
- required:
-diff --git a/Documentation/devicetree/bindings/net/nxp,tja11xx.yaml b/Documentation/devicetree/bindings/net/nxp,tja11xx.yaml
-index ab8867e6939b..85bfa45f5122 100644
---- a/Documentation/devicetree/bindings/net/nxp,tja11xx.yaml
-+++ b/Documentation/devicetree/bindings/net/nxp,tja11xx.yaml
-@@ -20,6 +20,7 @@ allOf:
- patternProperties:
-   "^ethernet-phy@[0-9a-f]+$":
-     type: object
-+    additionalProperties: false
-     description: |
-       Some packages have multiple PHYs. Secondary PHY should be defines as
-       subnode of the first (parent) PHY.
+ ...
 
 -- 
 2.42.0
