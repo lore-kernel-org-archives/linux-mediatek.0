@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7067CDB483
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 14:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2E0CDB486
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 14:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iUzjZA489/+UwrvFBWnO5FhMcqK8gCrGIVm2rKTGExc=; b=YpCu/zwJ77KgVU7V9HMYnEhklR
-	JlJ23F34Ehd5nh/dDS9wQ5m87lBzndFszNj7GlgJimzRW4t6bXodDQ+Fzw3W8DQAbJFcEbM1IyfEw
-	optpN0kZkzdRQ2GwX69voRQH0PiCa3GjldVE8WdBUUq+kTjT24CXKGGmjNhGBQfABs6MQTlntM/sW
-	Lesr3iWVQZ644piILZw/+xBZ34etgjwWPERIvknxGv3ZijLIEXb7SONllVKtmHp/p6Pj6vtz7lC5l
-	fMDDmj3BccQaU8tnQ826U8e/2/+01hXJX66T8dpBOmTExMJd/N4G6y4T9WAD288xA6ceYJV6FCDzL
-	Y02y+LPA==;
+	bh=r6Eo2vRkhAxdOpYpqNbsdaTSx/y+NlSxqt8wWRoUchM=; b=bs4pIhxa/lSvJCuZd0VZ/hRAlC
+	R3zEJYqubLb3g1XA1uUxCBLzlgVeLuTB3+CZ9JO3nms35fbvq0Gq6PsXlybA31zv18E+Uw6DUneca
+	Qx5K5bwyRKbqcWDTaM4KB6X7+ztS48eNTnGGWKAt9sm3ekf6tOIyaSQ42t6/lW7w8E0wJOL54lxM+
+	+2RW/j+AKiG/GJsdZOc7srQ4HXX7fCD8Bat1QseHNpYTXWDo0sGb1NYnREUqRi3fUC0XTNbTRy7XX
+	5HizHysUgdIutW0OXzJoKk3uxolAH+NLa+39cV4mfTbTBpJ/C/avJN1RS4wG+pY/iYQeYSAMxrUrM
+	ll9qZo6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslOn-00CazI-0F;
-	Tue, 17 Oct 2023 14:50:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qslOo-00Cb0z-0d;
+	Tue, 17 Oct 2023 14:50:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslMn-00CYzU-1x;
-	Tue, 17 Oct 2023 14:48:23 +0000
+	id 1qslMu-00CZ7t-10;
+	Tue, 17 Oct 2023 14:48:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=r6Eo2vRkhAxdOpYpqNbsdaTSx/y+NlSxqt8wWRoUchM=; b=Vr3ek3iy3jiL4YIyLhoVsugg3W
+	eVSXtzedsG42n/5O/xzt7JTsZ4zTp4quzGCy0+rsTiKI+KFZQiLww9hyB9IIAStWIHvAOwk6dzM5m
+	dc1Keim08SH8ojsoNhrdmb2G1P4VarXhRJL27+qNreo5QnWe5tl8eUrou2vNGTqUQnLx6nVW1fk+b
+	XJf+o6U92lND1Ta3Wb71mggQWYQR2qsmTtclbhsY1QJXn08BiNdqplnnNyqgrrWi5XcsWNTx9MEUe
+	4qVkXtwHcFaWyAqnnnDWDqydPq6jOjOWDmnwt+e5/lTO1vxyJJBPVRzZ0j8XhpD59WlBTMlPzVad1
+	owREubTQ==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qslMq-0079zA-1U;
+	Tue, 17 Oct 2023 14:48:22 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7205:da49:a7e8:59f8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 54E126607375;
-	Tue, 17 Oct 2023 15:48:15 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 79C136607322;
+	Tue, 17 Oct 2023 15:48:17 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697554095;
-	bh=XncDOWWMuPZSxD68Y9kDXDjEfVt/yc45C6+oTQD6xKw=;
+	s=mail; t=1697554097;
+	bh=/dEmIdIJBXPR3lp68L0eO8Ks+TlFFI9ywnMWFSnMh5w=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eugusbxbRhpH6t3IJEtRO10Utlf0w1h9mdOPq3QxSjGG4IQpCzzJ7//dscMwfNzA+
-	 hqC73V8yfPK+JiOrY3cCPS9xG/d69omFGiN0r3ZjPF+Mp2i3+7qhGYzzoUf0CPZL9I
-	 toBF4q5txeaIziTdACljNvBHmTFM6dknaxipMlOoEKG1EL4Ix3wnBotEMmmTFRDMj3
-	 0+/JNrEisC0ml2sF62HT89yQVvC23PIEkYsLfQeoCn7CfiIhXtOzfK2pZblujEBMu0
-	 djACjsvHNL/BTCpWmJGhUA3O2GAMgF2isfyysq9YATncOnO69BmawkJvlCkMEnaQwy
-	 SiHpLPD9ahdOQ==
+	b=N+CeSGxVGpilyS+eYAD3rNm3nqwbVoBc+iuKh+sCyXkkQK3W+dOC8G1mJ/qtF9AOd
+	 sPu9Jc9gHHpVW5IcYiomB1lLQEDCqU+Mo7IK1uYN/tBXXr5aXiFdCbh04rde8gbqWg
+	 rOIm0K3O4/Xh4Bd6snBfxXs6aLlfRIumD1HSbsxy20RTjTbx74fQu22Yq0TwS2MZaM
+	 ezz5C2dezU6iIL6wobIlSmLs5diDGy124WjJ/wLguhIoS2GKOtHdU/LO2NvKdVV99x
+	 zuheO+ACvn6U07LZlsdTVm5+CN82ScwojLxX2kA0wmbjP9zy+OZbPBxLcACv0Nxfy4
+	 4iLb9jbV1mUbw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -61,20 +75,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Sergey Kozlov <serjk@netup.ru>,
-	Abylay Ospan <aospan@netup.ru>
-Subject: [PATCH v12 23/56] media: pci: cx18: Stop direct calls to queue num_buffers field
-Date: Tue, 17 Oct 2023 16:47:23 +0200
-Message-Id: <20231017144756.34719-24-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 27/56] media: coda: Stop direct calls to queue num_buffers field
+Date: Tue, 17 Oct 2023 16:47:27 +0200
+Message-Id: <20231017144756.34719-28-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_074817_815462_334A525C 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20231017_154820_924733_3DEC7909 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,35 +106,24 @@ This allows us to change how the number of buffers is computed in the
 futur.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Sergey Kozlov <serjk@netup.ru>
-CC: Abylay Ospan <aospan@netup.ru>
+CC: Philipp Zabel <p.zabel@pengutronix.de>
 ---
- drivers/media/pci/cx18/cx18-streams.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/media/platform/chips-media/coda-common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/pci/cx18/cx18-streams.c b/drivers/media/pci/cx18/cx18-streams.c
-index 597472754c4c..cfbc4a907802 100644
---- a/drivers/media/pci/cx18/cx18-streams.c
-+++ b/drivers/media/pci/cx18/cx18-streams.c
-@@ -104,6 +104,7 @@ static int cx18_queue_setup(struct vb2_queue *vq,
- 			    unsigned int *nbuffers, unsigned int *nplanes,
- 			    unsigned int sizes[], struct device *alloc_devs[])
- {
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	struct cx18_stream *s = vb2_get_drv_priv(vq);
- 	struct cx18 *cx = s->cx;
- 	unsigned int szimage;
-@@ -121,8 +122,8 @@ static int cx18_queue_setup(struct vb2_queue *vq,
- 	 * Let's request at least three buffers: two for the
- 	 * DMA engine and one for userspace.
- 	 */
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 3)
-+		*nbuffers = 3 - q_num_bufs;
+diff --git a/drivers/media/platform/chips-media/coda-common.c b/drivers/media/platform/chips-media/coda-common.c
+index cc4892129aaf..f1d85758f6dd 100644
+--- a/drivers/media/platform/chips-media/coda-common.c
++++ b/drivers/media/platform/chips-media/coda-common.c
+@@ -794,7 +794,7 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
  
- 	if (*nplanes) {
- 		if (*nplanes != 1 || sizes[0] < szimage)
+ 	if (vb2_is_busy(vq)) {
+ 		v4l2_err(&ctx->dev->v4l2_dev, "%s: %s queue busy: %d\n",
+-			 __func__, v4l2_type_names[f->type], vq->num_buffers);
++			 __func__, v4l2_type_names[f->type], vb2_get_num_buffers(vq));
+ 		return -EBUSY;
+ 	}
+ 
 -- 
 2.39.2
 
