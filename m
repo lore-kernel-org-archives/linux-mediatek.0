@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65810CDB474
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:18:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02049CDB482
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a3dOuK5Q1nWYdp/XGRioa7ns2FtW8R9e080YCNvoHuQ=; b=pzhTrVYKUB2UE8q+/6sNrYrtCi
-	67FmSIWWjzrRFSPHnkylmSBaK5p0lBSDXTgAMkABQncC3010YsJVHYecwHoEXXitW4PVeFj6dVy+0
-	/Khm2nCA/PhrLUmFrYP9R+utUGoZRVQfeSr09O9fd6u8BMrnhtNSPaIgsnKW1agCyKwniUtKKLs7h
-	Ec33HY/UsBfmq3yqZPOCFjW44xdzGA5Ipubx5ITeGsT8Uv0en148SVaMDrFnfhGseG3MeZ7tEEpnT
-	YmO2p+YmHnXBiap8deISA7jUCE4vj+PnXdXoWkTMqTYq9oxF6hGPKnnD5mXDK0ozbXFy5txWxlZvJ
-	xFnxWWHg==;
+	bh=dB0ZtuvBpzCfJmkGB4L4RLzR1f5mVGD2uoUp3Ko3U84=; b=UncXeD12FwEMT4NhwBidDL5OVy
+	207qyOMk3nlp3m38gIL43u8r72zJ+enfJ9qoy0t5/hB49AjA594RjZeF6j83jhkgyL8g+nENDEAkc
+	AjcyyGvPfOoi2Bdwg53NolBYw2G7a9wfGzsIg8oyFWBNDjqp7vcWxoTU3t2BrTMu0+YYepnbe+FYL
+	7lToMzSS6XqTF3RpERvqIQA5X1lbKbcn+Xknyq5Jn+1esV8WjwRq5godT1jFr1S9fnu3weTRD+At8
+	+x05fhRSIWFRk/WPO0GRlKaM31VaVlh8IM+x6A4gTvcq6A4qdD0p0rwmSYJ/03zWs/sej0IrmFCBt
+	mo1qhDIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdPn-00BOYM-0v;
-	Tue, 17 Oct 2023 06:18:51 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1qsdRj-00BOzI-2w;
+	Tue, 17 Oct 2023 06:20:51 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdPk-00BOWI-15
+	id 1qsdRh-00BOyR-1D
 	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Oct 2023 06:18:49 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-4079ed65582so2108655e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Oct 2023 23:18:45 -0700 (PDT)
+	Tue, 17 Oct 2023 06:20:50 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-405361bb94eso60194315e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Oct 2023 23:20:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697523524; x=1698128324; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1697523645; x=1698128445; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=a3dOuK5Q1nWYdp/XGRioa7ns2FtW8R9e080YCNvoHuQ=;
-        b=liBJZPBTWMkrjigjPIv86ca/NaC3tp7ZYDB/zC5Pg5JRBpMOC7vbrzXMXe0TTzE9e5
-         TNJvFCHZKcqssSSSGHJ1Tldclks9ktFOAI8YA8ToL4z+KNjmnZDq2pfdr9FQ0Yshpeff
-         ZOro410WEG6prXgDU9STgKEC1Mck0l79XK7cteEzkfs+gXiEDvWjxaWG6tkQsVUteo03
-         yYXG0iyrSTe8BvdFeAYFe3UKaJVMRTnJTP/tiDVRibsLNpmhvT+e5OYEZR9ODATLCThM
-         22M33RP1I4lKlw6Z9kRZXVU9vImLmm3lp8MkBhYiUKH+ZXaG6L5YTTz4wCNaDYCBO2KR
-         EXkw==
+        bh=dB0ZtuvBpzCfJmkGB4L4RLzR1f5mVGD2uoUp3Ko3U84=;
+        b=XVMXG1IbeJosKv5HkXxd0pPuEkSfhOnKxLV/N4Hs0F7qYKcJxqShLDoE/0/G2I8Sci
+         x6dVKn35qQrdKf1h/PXo1VLoO7afbrE6rm2BvE1qxHJ37/Y5kj7AFrf319D6XBJxqJ9S
+         KA9jDYCqApa0qnrKgfNTjgBduw3DPRxuKyKPR4jIjF+NzD5+WUl/kac6UZOdkxgpxATj
+         kAgElASCm8bnF0R2D+v68+644yWQ6v3NkJ35TKXuNk9LX1RW6JrQqweMrpi1TBM4O3Tg
+         rOLOuZwUJ30MXodnLEQSu/xjxcXuVFArPO/q5AaPBabOf0MUkNDzVB4jz+/+K39uuGmT
+         q86w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697523524; x=1698128324;
+        d=1e100.net; s=20230601; t=1697523645; x=1698128445;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=a3dOuK5Q1nWYdp/XGRioa7ns2FtW8R9e080YCNvoHuQ=;
-        b=m0T86l1edprgxflumeu+3pI60o5eVyh00Z5ycx5W1GsI6yGzTJDR1ItYpLBfZ/KDca
-         CkcdoLtAAr5AtHZ7p6bazKmB90sFJg9oXNO1FIPVnFh/+bsAuXcc3dzXWCazQmK7gNOY
-         /MjavkTh3kUVrqj6udQxSlQTtSiTe9oO57eVY7ES7uf3DadXj/zaYMKud0hh7A3ILSSU
-         aNQAW6V0Z6Qvly5O0SWT0L9ZwW/7aTpUhIv6288KnMq4I48tD5C6Ib4lXdzwTnzSHDf+
-         uC1QWq4r81VwHir5M8y6tjmbj4jN4qYXm83fcc2Zz0NeIkTBy4jwC5zmHyPVtXv2bfr8
-         jJxg==
-X-Gm-Message-State: AOJu0YyTO8nWNoCJAA8E7aiJts/llXwvvvA9MJ7LyFEaqT4vG799eGzt
-	ucpJTwzHzaSUCQZWj3dA6rmVaA==
-X-Google-Smtp-Source: AGHT+IH2HD0Kw17+D5WJdsZcIFTTaQBd+8/i4k3D2JhWMOtoRJSpEIfxYI1Aj/TjXHMfBz9PYbYuAg==
-X-Received: by 2002:a05:600c:19c6:b0:405:75f0:fd31 with SMTP id u6-20020a05600c19c600b0040575f0fd31mr1051655wmq.31.1697523523967;
-        Mon, 16 Oct 2023 23:18:43 -0700 (PDT)
+        bh=dB0ZtuvBpzCfJmkGB4L4RLzR1f5mVGD2uoUp3Ko3U84=;
+        b=eGg64a8/egyHsQLFimjy7jsuT7LXVDUnc17CLJ9G7kNzx/swPlPV/aUeNoKeUj2HwK
+         IcP8DyvVQI/mn+o0aZrImSwyEVRu13gBmxcx4oH/JGnv4MrruXoe6UqByZuZqvW7/BtB
+         owUIp1HZTMLtJuoDLT42r4IKtE4kaYXcfX7gIRtOpFkS3uEIAjf7+qEWFQZVc2OU+fkF
+         hAeU6p0p0gwaSygNoE+fyi8HSdfz7/ePFz582EUbZscsXdWpsW+vduUdqOvh5Fyh0jMp
+         NSc6XtKeoQZvwPUY/HyXMIGv0IgG04NS+6jLqmuVCVYK7gY8gpPvciUpQp8FuFkq/Jtc
+         or+Q==
+X-Gm-Message-State: AOJu0YyT9NWXVnFdMjHmxE5IkvSnPhDBXTh5ptw+kt5+0MjGOvT50sqP
+	01qD8TDFViTmnbntkV8TJkEGIw==
+X-Google-Smtp-Source: AGHT+IH8jUdJj/EBHL7IvUZhzkN0+At2Kj8Rew3Vm6nc6CtxKM3p6dRkn/8AW9max/0BjYJNKTtfiQ==
+X-Received: by 2002:adf:f4c3:0:b0:32d:8189:c065 with SMTP id h3-20020adff4c3000000b0032d8189c065mr1356435wrp.58.1697523645662;
+        Mon, 16 Oct 2023 23:20:45 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.219.154])
-        by smtp.gmail.com with ESMTPSA id az15-20020a05600c600f00b004081a011c0esm330813wmb.12.2023.10.16.23.18.42
+        by smtp.gmail.com with ESMTPSA id o8-20020adfcf08000000b00326dd5486dcsm867476wrj.107.2023.10.16.23.20.44
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 16 Oct 2023 23:18:43 -0700 (PDT)
-Message-ID: <d5630654-4c6b-476d-aa9e-52b9a213351f@linaro.org>
-Date: Tue, 17 Oct 2023 08:18:41 +0200
+        Mon, 16 Oct 2023 23:20:45 -0700 (PDT)
+Message-ID: <62514f27-ec39-4b1c-870a-38e3dd7add1f@linaro.org>
+Date: Tue, 17 Oct 2023 08:20:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/3] dt-bindings: vendor-prefixes: Add prefix for
- OLogic, Inc.
+Subject: Re: [PATCH v1 2/3] dt-bindings: arm64: dts: mediatek: Add
+ ologic,pumpkin-i350 board
 Content-Language: en-US
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  linux-mediatek@lists.infradead.org
@@ -84,7 +84,7 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>,
  Ted Larson <ted@ologicinc.com>
 References: <20231016215123.30343-1-laurent.pinchart@ideasonboard.com>
- <20231016215123.30343-2-laurent.pinchart@ideasonboard.com>
+ <20231016215123.30343-3-laurent.pinchart@ideasonboard.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -130,12 +130,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231016215123.30343-2-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <20231016215123.30343-3-laurent.pinchart@ideasonboard.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_231848_377372_5C3B0D9E 
-X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-CacheID: sfid-20231016_232049_414546_68004D04 
+X-CRM114-Status: UNSURE (   6.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -152,9 +152,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 16/10/2023 23:51, Laurent Pinchart wrote:
-> Add a DT vendor prefix for OLogic, Inc. OLogic is a hardware and system
-> design company that manufactures, among other things, development boards
-> with MediaTek SoCs.
+> Add a compatible string for the Pumpkin i350 board, an MT8365-based
+> board developed by OLogic.
 > 
 > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 > ---
