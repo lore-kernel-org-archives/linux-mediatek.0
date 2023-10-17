@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADDE9CDB482
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 08:43:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A6FDCDB482
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 08:55:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5yRkvg/BC5iPAbuClQNPELXEuB2hUBZzgja5G8q2UHQ=; b=kJy97BwsissWepydD99q/dSYtO
-	tRx9C3D46fj3jUWgrooSZErRjHiQPFfdx9UfAa/1PM1q0/usD0YSfdEHBJz/gy9ZW+9QSij+IfPH0
-	m/6HbPaoXTK+CCjMrSqENWzp2kSToGN17sDLFTUyCRpYheg2+d1vp7D/Vge92ui2AuwpylpL/JS8A
-	R9hENgTV6QvI+y70IDlIavsh7kU0OM0cVa7pMu9XSIMyuYLmoE9RdQyCKDUMWmu6cy2WxzRrJ6DE/
-	sj+rWOouc8eRxamTq84lMxj6AEixnH0GLjIaYNaNYGaKBg7htWOGr7HNOEM8uNSB7lGLuRffH1rku
-	qZ679t0Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7iqwM5opDjnD+ixELUSySOVNyUQv89SINtLl3/UxmFE=; b=F8KiMYET28d59qcyAXDLYXkzYE
+	F91V47A127M9bGtCrG5/jyz5cMQPKoAjjjKA4RVRuRQKCsCBjb4dhpCsm99eHC6xX5O8Dfi7xH2f2
+	lgURcULxflRbVF1QZin6eZAP3KmsExA24Z1d9JDesLieoFvZQwPqfcftN1EC1/m/b4Uf5ea9oYcxu
+	sxUZS5A39A0QEyFNJuNO8GuLbW8Aoi56Uo1wCj/RpcTHx+/87195fIcFXJheQ7gE7d+j3FP1ZZ31m
+	uz430pSiPOnJRHgync5d19B5/wekUAPKBI8pnmQb6Cu6AWG8SyImBHWvTgS4RJdn0U5vuk5NWoppe
+	ME/Qk29Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsfft-00Biih-2C;
-	Tue, 17 Oct 2023 08:43:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qsfrE-00Bk7C-37;
+	Tue, 17 Oct 2023 08:55:20 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsffr-00Bihh-0m
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Oct 2023 08:43:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4D37061321;
-	Tue, 17 Oct 2023 08:43:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB809C433C7;
-	Tue, 17 Oct 2023 08:43:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697532214;
-	bh=CuMFUN7SSAJyB5Hs2Sw1yPemkO2qhqwV3uarBTFnFsc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Jfo+B2I8RflD38I2fr0TkxwP3YiH8ldKGiaD0Z7y9lFawxu7zg4RgBVu5yw5fdi0a
-	 wRurigC6+9sehsxN+piW9AtmgeYw10xAWKekLmrWXHk++KAd2oSzhe72EKB1dZbXzi
-	 +zdDrALYdprbZQcIy6svl+6eO1RYch7MjjLo+MU+S6K0jLcxCSs+JOMhYkpa+XqrS+
-	 +5QhkyBeH9cu0Is691po8zR4M0BrSbRNoPBbuiFqfg2PVNx29hMkRTgdn2BsaSvvHY
-	 1izyoBWnc7YjCDQiINlYya1B1WKot/Riwkxrc56t/jPSut8pv3IF5oIddNWhMYPiHh
-	 0VBKbCyyB/YPw==
-Message-ID: <82958ea9-cc1c-44af-9144-53cf2bd5c23b@kernel.org>
-Date: Tue, 17 Oct 2023 17:43:30 +0900
+	id 1qsfrA-00Bk5j-2X;
+	Tue, 17 Oct 2023 08:55:18 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 59F8C60012;
+	Tue, 17 Oct 2023 08:54:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1697532905;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=7iqwM5opDjnD+ixELUSySOVNyUQv89SINtLl3/UxmFE=;
+	b=YLPmSv2BCtXDB0ajUoTbluwBFmwofXadtU+GsY+4Sr2bStC/+57qJWEqHQxugCysJoJknP
+	/xES24Lgh/2iCrJ6gc7yDMdmhyFcxsPClA+nGs1zBJbYjmdnMazWn/GFZ5Ij1hd1/iYEOE
+	rnGM6Lou0DwZIc0pn6ZJD1neN06P0aE0s9hFnJ2NWCTv4jEGZeXwQLDI8oLcKrCQmu51Es
+	7Jaiw6FtcmzGD+tpz84+I5MJUp7c7og8dHm3VZNJP0PnF+sH4k76GF8Z+2YN+Oz/ROwvGD
+	z2Tzp5Q1gVXIAkN0JI1fQPn1a/bIY4ituL/pt69IiaEMm5cR9NQcbCEJEEXjLA==
+Date: Tue, 17 Oct 2023 10:54:58 +0200
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
+	ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl, nicolas.dufresne@collabora.com,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com, Maxime Ripard <mripard@kernel.org>
+Subject: Re: [PATCH v11 41/56] media: cedrus: Stop direct calls to queue
+ num_buffers field
+Message-ID: <ZS5L4l2PzQgpJXua@aptenodytes>
+References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
+ <20231012114642.19040-42-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] PM / devfreq: mediatek: unlock on error in
- mtk_ccifreq_target()
-Content-Language: en-US
-To: Dan Carpenter <dan.carpenter@linaro.org>,
- Mark Tseng <chun-jen.tseng@mediatek.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- kernel-janitors@vger.kernel.org
-References: <1bada9b2-d276-4123-bfdf-03d165569543@moroto.mountain>
-From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <1bada9b2-d276-4123-bfdf-03d165569543@moroto.mountain>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="5XMse7FBKsXwfxlj"
+Content-Disposition: inline
+In-Reply-To: <20231012114642.19040-42-benjamin.gaignard@collabora.com>
+X-GND-Sasl: paul.kocialkowski@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_014335_319555_7BE3B5F0 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20231017_015517_142178_2F362F93 
+X-CRM114-Status: GOOD (  19.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,35 +79,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23. 10. 12. 18:41, Dan Carpenter wrote:
-> Call mutex_unlock(&drv->reg_lock) before returning the error code.
-> 
-> Fixes: d2805601988f ("PM / devfreq: mediatek: protect oop in critical session")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+
+--5XMse7FBKsXwfxlj
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Benjamin,
+
+On Thu 12 Oct 23, 13:46, Benjamin Gaignard wrote:
+> Use vb2_get_num_buffers() and queue max_num_buffers field
+> to avoid using queue num_buffer field directly.
+
+Thanks for the patch, this is indeed a nice cleanup and safer usage.
+Maybe the commit message needs to reflect why this change is welcome,
+not just what is being changed.
+
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> CC: Maxime Ripard <mripard@kernel.org>
+> CC: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 > ---
->  drivers/devfreq/mtk-cci-devfreq.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
-> index b0ed25e33f2b..11bc3d03494c 100644
-> --- a/drivers/devfreq/mtk-cci-devfreq.c
-> +++ b/drivers/devfreq/mtk-cci-devfreq.c
-> @@ -146,7 +146,8 @@ static int mtk_ccifreq_target(struct device *dev, unsigned long *freq,
->  	opp = devfreq_recommended_opp(dev, &opp_rate, 1);
->  	if (IS_ERR(opp)) {
->  		dev_err(dev, "failed to find opp for freq: %ld\n", opp_rate);
-> -		return PTR_ERR(opp);
-> +		ret = PTR_ERR(opp);
-> +		goto out_unlock;
->  	}
->  
->  	voltage = dev_pm_opp_get_voltage(opp);
+>  drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 8 ++++++--
+>  drivers/staging/media/sunxi/cedrus/cedrus_h265.c | 9 +++++++--
+>  2 files changed, 13 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers/s=
+taging/media/sunxi/cedrus/cedrus_h264.c
+> index dfb401df138a..95e490532a87 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> @@ -653,8 +653,12 @@ static void cedrus_h264_stop(struct cedrus_ctx *ctx)
+> =20
+>  	vq =3D v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+> =20
+> -	for (i =3D 0; i < vq->num_buffers; i++) {
+> -		buf =3D vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
+> +	for (i =3D 0; i < vb2_get_num_buffers(vq); i++) {
+> +		struct vb2_buffer *vb =3D vb2_get_buffer(vq, i);
+> +
+> +		if (!vb)
+> +			continue;
 
-Applied it. Thanks.
+Please add a newline here to be consistent with the other block being chang=
+ed.
 
--- 
-Best Regards,
-Samsung Electronics
-Chanwoo Choi
+With this change and the commit log reworked, you can consider this:
+Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 
+Thanks!
+
+Paul
+
+> +		buf =3D vb2_to_cedrus_buffer(vb);
+> =20
+>  		if (buf->codec.h264.mv_col_buf_size > 0) {
+>  			dma_free_attrs(dev->dev,
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/s=
+taging/media/sunxi/cedrus/cedrus_h265.c
+> index fc9297232456..52e94c8f2f01 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> @@ -869,8 +869,13 @@ static void cedrus_h265_stop(struct cedrus_ctx *ctx)
+> =20
+>  	vq =3D v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+> =20
+> -	for (i =3D 0; i < vq->num_buffers; i++) {
+> -		buf =3D vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
+> +	for (i =3D 0; i < vb2_get_num_buffers(vq); i++) {
+> +		struct vb2_buffer *vb =3D vb2_get_buffer(vq, i);
+> +
+> +		if (!vb)
+> +			continue;
+> +
+> +		buf =3D vb2_to_cedrus_buffer(vb);
+> =20
+>  		if (buf->codec.h265.mv_col_buf_size > 0) {
+>  			dma_free_attrs(dev->dev,
+> --=20
+> 2.39.2
+>=20
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--5XMse7FBKsXwfxlj
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmUuS+IACgkQ3cLmz3+f
+v9GV5wf/TYcN6gfAAjC5SFlkLJBI/nxR5YwIXXCHBgPuQD+SDdeQNLb/OK6/EjCw
+N8zdNrQdsMqz+Hm6oO5qJqU/MLD8+HLPgnFNSA/+tK7uynPhFwNaJ29bDaONj9KA
+kPiJruAS/e5SXFfEdhWnHxSz+OQWvqrOBAZj/WV/OVvm/Azl9oXg67oLddms1HV7
+5Gv7y0H2u60hmsjfTptTA1MwOKjZfKDpyuSr2iENNAiJTP1H6zjnY3f7aB5JjlP5
+kWrZG+P/x6WrrX62qyWdHVq366vg9bNyLrkDyxMxz/tcjShPcfyQQ7cU/15IKpGi
+uLOnI40+m0H1qMX4rElL2jp59ZfMLQ==
+=Xf+i
+-----END PGP SIGNATURE-----
+
+--5XMse7FBKsXwfxlj--
 
