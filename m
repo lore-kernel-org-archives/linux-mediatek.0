@@ -4,91 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60291CDB474
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65810CDB474
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:18:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MPuv30uv9FasPPW84MTqa0P9OrABIfXuwPIC7B6YSO0=; b=YGrKjizqM/OBaBQwkgJlkjEGEz
-	QCiZQL4e36H+RYGnRs11A3Hy7bBxNE3tnS77VRpJ4e/rvB3Mkz60x8HFIXKN/DAPAz6lk8nhVL+t2
-	f5PgnO7IhzlHGUvmPGNJiOUyPZ98SJILBzve5QHmyuHNxYsO0cw9jtkfyDv12vmrMYJwO0JB2hiHj
-	REbb8e6klB3Ntdboek9GkKexzzpxw5SAcWSb+8XADr+QwIb0U5OGnsMAHP70qVy+S/yh+crHzyNDD
-	IXR3WGLRWeyRL7wi9INzEg2ySjSkwcqfLIPq6Q5WHzzB1AvQKAgPJOVpECpHQiM//O6aH/HNHdTPP
-	iPLj4CKQ==;
+	bh=a3dOuK5Q1nWYdp/XGRioa7ns2FtW8R9e080YCNvoHuQ=; b=pzhTrVYKUB2UE8q+/6sNrYrtCi
+	67FmSIWWjzrRFSPHnkylmSBaK5p0lBSDXTgAMkABQncC3010YsJVHYecwHoEXXitW4PVeFj6dVy+0
+	/Khm2nCA/PhrLUmFrYP9R+utUGoZRVQfeSr09O9fd6u8BMrnhtNSPaIgsnKW1agCyKwniUtKKLs7h
+	Ec33HY/UsBfmq3yqZPOCFjW44xdzGA5Ipubx5ITeGsT8Uv0en148SVaMDrFnfhGseG3MeZ7tEEpnT
+	YmO2p+YmHnXBiap8deISA7jUCE4vj+PnXdXoWkTMqTYq9oxF6hGPKnnD5mXDK0ozbXFy5txWxlZvJ
+	xFnxWWHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdMP-00BNov-0d;
-	Tue, 17 Oct 2023 06:15:21 +0000
-Received: from relay3-d.mail.gandi.net ([217.70.183.195])
+	id 1qsdPn-00BOYM-0v;
+	Tue, 17 Oct 2023 06:18:51 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdML-00BNno-11;
-	Tue, 17 Oct 2023 06:15:18 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id B11C460008;
-	Tue, 17 Oct 2023 06:14:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1697523311;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MPuv30uv9FasPPW84MTqa0P9OrABIfXuwPIC7B6YSO0=;
-	b=AeL30HLYNJdO3uijbN1aNhaKJ7e0ZN0+f1wyjGKF304vxytdUpwYZADQo1IU7oj1VFH0gz
-	RzY9yNdsN3SbbcKADAD1rn7S9/gfzQqkvNQ0I3tGpKMLFqVHEswiSsGV8GYWfQkMQ8aCPd
-	Rv7pzBe2fIo5Q0fLGhHwEKaxW6SVzrqKjKKnnk5VvTi/nKuq1wkN9u08/k+hpIBq1SNCQO
-	nhp+7YI4VPgV3c2VE6CnRYC/4Ov/PpQhbUy6ycPZjAbbHAtFHIW4vM0GvDKvlkhLZouu5r
-	+3PwNgPOKHdzjcO/amI84TtI8FFLLmNnNewvE15H3k86gupGVBjdV/ylS+F+Xg==
-Message-ID: <c48db3ac-ed79-4c30-b2f9-f7808fd82328@arinc9.com>
-Date: Tue, 17 Oct 2023 09:14:40 +0300
+	id 1qsdPk-00BOWI-15
+	for linux-mediatek@lists.infradead.org;
+	Tue, 17 Oct 2023 06:18:49 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-4079ed65582so2108655e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Oct 2023 23:18:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697523524; x=1698128324; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=a3dOuK5Q1nWYdp/XGRioa7ns2FtW8R9e080YCNvoHuQ=;
+        b=liBJZPBTWMkrjigjPIv86ca/NaC3tp7ZYDB/zC5Pg5JRBpMOC7vbrzXMXe0TTzE9e5
+         TNJvFCHZKcqssSSSGHJ1Tldclks9ktFOAI8YA8ToL4z+KNjmnZDq2pfdr9FQ0Yshpeff
+         ZOro410WEG6prXgDU9STgKEC1Mck0l79XK7cteEzkfs+gXiEDvWjxaWG6tkQsVUteo03
+         yYXG0iyrSTe8BvdFeAYFe3UKaJVMRTnJTP/tiDVRibsLNpmhvT+e5OYEZR9ODATLCThM
+         22M33RP1I4lKlw6Z9kRZXVU9vImLmm3lp8MkBhYiUKH+ZXaG6L5YTTz4wCNaDYCBO2KR
+         EXkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697523524; x=1698128324;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=a3dOuK5Q1nWYdp/XGRioa7ns2FtW8R9e080YCNvoHuQ=;
+        b=m0T86l1edprgxflumeu+3pI60o5eVyh00Z5ycx5W1GsI6yGzTJDR1ItYpLBfZ/KDca
+         CkcdoLtAAr5AtHZ7p6bazKmB90sFJg9oXNO1FIPVnFh/+bsAuXcc3dzXWCazQmK7gNOY
+         /MjavkTh3kUVrqj6udQxSlQTtSiTe9oO57eVY7ES7uf3DadXj/zaYMKud0hh7A3ILSSU
+         aNQAW6V0Z6Qvly5O0SWT0L9ZwW/7aTpUhIv6288KnMq4I48tD5C6Ib4lXdzwTnzSHDf+
+         uC1QWq4r81VwHir5M8y6tjmbj4jN4qYXm83fcc2Zz0NeIkTBy4jwC5zmHyPVtXv2bfr8
+         jJxg==
+X-Gm-Message-State: AOJu0YyTO8nWNoCJAA8E7aiJts/llXwvvvA9MJ7LyFEaqT4vG799eGzt
+	ucpJTwzHzaSUCQZWj3dA6rmVaA==
+X-Google-Smtp-Source: AGHT+IH2HD0Kw17+D5WJdsZcIFTTaQBd+8/i4k3D2JhWMOtoRJSpEIfxYI1Aj/TjXHMfBz9PYbYuAg==
+X-Received: by 2002:a05:600c:19c6:b0:405:75f0:fd31 with SMTP id u6-20020a05600c19c600b0040575f0fd31mr1051655wmq.31.1697523523967;
+        Mon, 16 Oct 2023 23:18:43 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.154])
+        by smtp.gmail.com with ESMTPSA id az15-20020a05600c600f00b004081a011c0esm330813wmb.12.2023.10.16.23.18.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 16 Oct 2023 23:18:43 -0700 (PDT)
+Message-ID: <d5630654-4c6b-476d-aa9e-52b9a213351f@linaro.org>
+Date: Tue, 17 Oct 2023 08:18:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 1/8] dt-bindings: net: Add missing
- (unevaluated|additional)Properties on child node schemas
-To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
- John Crispin <john@phrozen.org>,
- Gerhard Engleder <gerhard@engleder-embedded.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Sergey Shtylyov <s.shtylyov@omp.ru>,
- Sergei Shtylyov <sergei.shtylyov@gmail.com>,
- Justin Chen <justin.chen@broadcom.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com
-References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
- <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
+Subject: Re: [PATCH v1 1/3] dt-bindings: vendor-prefixes: Add prefix for
+ OLogic, Inc.
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Paul Elder <paul.elder@ideasonboard.com>,
+ Fabien Parent <fabien.parent@linaro.org>,
+ Alexandre Mergnat <amergnat@baylibre.com>,
+ Julien Stephan <jstephan@baylibre.com>,
+ Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>,
+ Ted Larson <ted@ologicinc.com>
+References: <20231016215123.30343-1-laurent.pinchart@ideasonboard.com>
+ <20231016215123.30343-2-laurent.pinchart@ideasonboard.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231016215123.30343-2-laurent.pinchart@ideasonboard.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_231517_514270_C231D4B4 
-X-CRM114-Status: UNSURE (   7.47  )
+X-CRM114-CacheID: sfid-20231016_231848_377372_5C3B0D9E 
+X-CRM114-Status: UNSURE (   6.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,17 +151,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17.10.2023 00:44, Rob Herring wrote:
-> Just as unevaluatedProperties or additionalProperties are required at
-> the top level of schemas, they should (and will) also be required for
-> child node schemas. That ensures only documented properties are
-> present for any node.
+On 16/10/2023 23:51, Laurent Pinchart wrote:
+> Add a DT vendor prefix for OLogic, Inc. OLogic is a hardware and system
+> design company that manufactures, among other things, development boards
+> with MediaTek SoCs.
 > 
-> Add unevaluatedProperties or additionalProperties as appropriate.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> ---
 
-Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Arınç
+Best regards,
+Krzysztof
+
 
