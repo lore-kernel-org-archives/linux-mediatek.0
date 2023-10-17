@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B096CDB474
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 10:32:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA58FCDB474
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 10:47:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+K+3JIwzLJ1xe1pfEwC6uRFOP3htc9XeHBDh+1iliMM=; b=ahUKZNy7LQARl77q5yND7lmXNS
-	o/A+9smU+ZlJ4s2ppNFpRDt8NW3s2RGqi8Kvo5YE/FZnLj/rpum9n18yA3EqMwEB6jzFGETg4UI5P
-	uaf8YH0KkFjtKZyMN0GFZXWTRBT4K2liIxd/GhS/qTcIxrG/TVpdqeNMj0T8Ajqa+/LmB7b5SgjRR
-	s9y32DEKbomt/KsRHQW7EhQwaswER9V/F/ayQ/ENBFHIKYn0r22uSX/BW9Zvkh/8GvMVlh0wO/PQB
-	d6OfGRFIxrOAwsQFZAvdPfAuwjRgcU9qmvjclmm7b4fTIv94ppXTij5rJ/ToCDZzmJZEYUoDhqciQ
-	IN/rRvYw==;
+	bh=57aA+Yevu0Vkusk3HwtOIAHNCUG0o9JbSlAB2n8pFx0=; b=hQAkHRnZAAZHQj0vy8ULdR5SKi
+	BbjgCGK109XIvjheVQQnbmyxV7zFubrxodRpplCOhHd83udogMXTW6UUKHrpLm6F2UkKOCz5K+PIk
+	/B43bdCT1mW7Ui/AsHCvS3u2qs45XvdqLUI6GXyhzvoM+2Ia2lnNS+6N7n1q8Q7S4l7YRucLQWNvh
+	lVNPF+MGuRWqr834WDfA6IynUz5op4PMt+GUW5UZyB6DutJzMIh/VGbTnn/I8BQwJuOVM94TagWsr
+	tuoKsXUBjS9IIi5vekb9XJdxqapTv4WQ4ky+H9MpfnSM3PnrA6QL+gJ/Y09hVlBlzfKCwPkZzZe1W
+	wk7eu3jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qshNf-00C624-1f;
-	Tue, 17 Oct 2023 10:32:55 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qshbI-00C7JE-1b;
+	Tue, 17 Oct 2023 10:47:00 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qshNb-00C61P-2O
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Oct 2023 10:32:53 +0000
+	id 1qshbE-00C7Hx-2y;
+	Tue, 17 Oct 2023 10:46:58 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1EA6A66072ED;
-	Tue, 17 Oct 2023 11:32:49 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1E1FF66072ED;
+	Tue, 17 Oct 2023 11:46:52 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697538770;
-	bh=Yuzeico+9BX44/F83mznBU79r2PrtZxBdBYdsAKolDk=;
+	s=mail; t=1697539613;
+	bh=43RqoOrp7C9YDJYiZ/6Y2gmR3yeEBUCIjOC3q2aGqy0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=V5oX5SV9blZ+Jh0eY5jDSoFJcXbeVR88J/S6QbUluAtCrPBI/8gMJHKOFu29Upxbk
-	 7NQ38qpgTBMgzuI7+bd8oQks+S9POG1uh+wNlJTr3+r/ysR3O/9NryqnZNQLi7p0+c
-	 Za+RcUrLNqJ/fWHZxk6yC2Dt8vyWAuIvKu6kAf+T0BoQA+qobegz+pnwYi/yi16kil
-	 vvnjAtPhHxaJJxlUYOtZ6CL3cHof7pyiwUDGiPVqFZ8GgxEvLLdqktza9TnehYnlYV
-	 0E7ANUUOTsOx9Lmoy8CfWmXFs5God1wNm4R6zxWXGMihbT9k6v6uXqm0UHoe4OH/mL
-	 7Qy0GsGTPqsTQ==
-Message-ID: <927e7d50-826d-4c92-9931-3c59b18c6945@collabora.com>
-Date: Tue, 17 Oct 2023 12:32:46 +0200
+	b=VYYkhGiy37nSyJaxRJT4IxzWUww80wgKI0eXZKU7PLdK461OI7knxjxDYuTQwl729
+	 XLk3IFqwJ9wQcoFcoYAxLtACTj3RVfrSZhHMt64oiL0YmaNdxFQfbTpBR7zciqGlyn
+	 HUOyD1N/5OF3b/S3D+O4uOCcTOLvPQe1WWDsIRLp1HZ4s13cgfl66xA9fdLuerIOgS
+	 00bDFsopHT2dR35lDFx6ivP3NDg6Zn2pSNm4Jjbd4ljBZzPZrWyodJNLq0x//MVnRc
+	 IYmE1lLsbnw1TNHNzmEMMlvGxAVr9r+xNjP26ZUyNyipPxd6ZKxaBwo9jQ+3HFWg7h
+	 DkUuqsYgYzWWA==
+Message-ID: <f9c9f496-3da4-4780-b4e3-742f24e18765@collabora.com>
+Date: Tue, 17 Oct 2023 12:46:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/6] wifi: mt76: mt7921: update the channel usage when
- the regd domain changed
+Subject: Re: [PATCH v7 15/16] dt-bindings: display: mediatek: split: add
+ compatible for MT8195
 Content-Language: en-US
-To: Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
- Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
- <Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
- CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
- Stella Chang <Stella.Chang@mediatek.com>, Quan Zhou
- <quan.zhou@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <cover.1696039301.git.deren.wu@mediatek.com>
- <14b7b24fbe0029cac43d2c0c9e471b118419ad8e.1696039301.git.deren.wu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Moudy Ho <moudy.ho@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20231012084037.19376-1-moudy.ho@mediatek.com>
+ <20231012084037.19376-16-moudy.ho@mediatek.com>
+ <a05a7fb0-2de8-4d59-af8b-41b5a19de927@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <14b7b24fbe0029cac43d2c0c9e471b118419ad8e.1696039301.git.deren.wu@mediatek.com>
+In-Reply-To: <a05a7fb0-2de8-4d59-af8b-41b5a19de927@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_033252_082264_57A6120A 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20231017_034657_096881_8ED06465 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,84 +87,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/09/23 04:25, Deren Wu ha scritto:
-> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Il 16/10/23 18:21, Krzysztof Kozlowski ha scritto:
+> On 12/10/2023 10:40, Moudy Ho wrote:
+>> Add compatible string and GCE property for MT8195 SPLIT, of
+>> which is operated by MDP3.
+>>
+>> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+>> ---
 > 
-> The 5.9/6GHz channel license of a certain platform device has been
-> regulated in various countries. That may be difference with standard
-> Liunx regulatory domain settings. In this case, when .reg_notifier()
-> called for regulatory change, mt792x chipset should update the channel
-> usage based on clc or dts configurations.
+> After feedback from Angelo:
 > 
-> Channel would be disabled by following cases.
-> * clc report the particular UNII-x is disabled.
-> * dts enabled and the channel is not configured.
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > 
-> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 
-Hello,
-this patch is giving a kernel panic on the MT8195 Acer Tomato Chromebook.
-
-
-Please refer to this stacktrace:
-
-<1>[   19.442078] Unable to handle kernel NULL pointer dereference at virtual 
-address 0000000000000014
-<1>[   19.457535] Mem abort info:
-<1>[   19.465329]   ESR = 0x0000000096000004
-<1>[   19.473295]   EC = 0x25: DABT (current EL), IL = 32 bits
-<1>[   19.482354]   SET = 0, FnV = 0
-<1>[   19.489143]   EA = 0, S1PTW = 0
-<1>[   19.495991]   FSC = 0x04: level 0 translation fault
-<1>[   19.504554] Data abort info:
-<1>[   19.511111]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
-<1>[   19.520269]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-<1>[   19.528988]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-<1>[   19.537960] user pgtable: 4k pages, 48-bit VAs, pgdp=00000001027a9000
-<1>[   19.548014] [0000000000000014] pgd=0000000000000000, p4d=0000000000000000
-<0>[   19.558429] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
-<4>[   19.568270] Modules linked in: mt7921e mt7921_common mt792x_lib 
-mt76_connac_lib mt76 mac80211 btusb btintel cfg80211 btmtk snd_sof_ipc_msg_injector 
-btrtl snd_sof_ipc_flood_test btbcm bluetooth snd_sof_mt8195 uvcvideo 
-mtk_adsp_common snd_sof_xtensa_dsp uvc snd_sof_of snd_sof videobuf2_vmalloc 
-ecdh_generic ecc snd_sof_utils cros_ec_lid_angle cros_ec_sensors crct10dif_ce 
-cros_ec_sensors_core cros_usbpd_logger crypto_user fuse ip_tables ipv6
-<4>[   19.614237] CPU: 1 PID: 105 Comm: kworker/1:1 Not tainted 
-6.6.0-rc6-next-20231017+ #324
-<4>[   19.625957] Hardware name: Acer Tomato (rev2) board (DT)
-<4>[   19.634970] Workqueue: events mt7921_init_work [mt7921_common]
-<4>[   19.644522] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-<4>[   19.655182] pc : mt7921_regd_notifier+0x180/0x290 [mt7921_common]
-<4>[   19.664983] lr : mt7921_regd_notifier+0xd4/0x290 [mt7921_common]
-<4>[   19.674679] sp : ffff800080acba80
-<4>[   19.681649] x29: ffff800080acba80 x28: 0000000000000000 x27: ffff4faf16032148
-<4>[   19.692483] x26: 0000000000000000 x25: 0000000000000000 x24: ffff4faf1603afa0
-<4>[   19.703294] x23: 00000000ffffe926 x22: ffff4faf16031fa0 x21: 0000000000000023
-<4>[   19.714108] x20: 000000000000001c x19: ffff4faf16ba6f40 x18: 00000000ff1d6000
-<4>[   19.724928] x17: 0000000000000000 x16: ffffac6b891c2750 x15: ffff800081051000
-<4>[   19.735722] x14: 0000000000000180 x13: 0000000000000000 x12: 0000000000000002
-<4>[   19.746478] x11: 0000000000000002 x10: ffff4faf01c21780 x9 : ffffac6b891c282c
-<4>[   19.757214] x8 : 00000000006c0000 x7 : ffffac6b6b020cf0 x6 : ffffac6b6b020ce8
-<4>[   19.767945] x5 : ffffac6b6b020d00 x4 : ffffac6b6b020cf8 x3 : ffff4faf16035fa0
-<4>[   19.778648] x2 : 0000000000000000 x1 : 000000000000001c x0 : 0000000000000031
-<4>[   19.789366] Call trace:
-<4>[   19.795381]  mt7921_regd_notifier+0x180/0x290 [mt7921_common]
-<4>[   19.804675]  wiphy_update_regulatory+0x2bc/0xa08 [cfg80211]
-<4>[   19.813864]  wiphy_regulatory_register+0x4c/0x88 [cfg80211]
-<4>[   19.823029]  wiphy_register+0x75c/0x8d0 [cfg80211]
-<4>[   19.831446]  ieee80211_register_hw+0x70c/0xc10 [mac80211]
-<4>[   19.840479]  mt76_register_device+0x168/0x2e8 [mt76]
-<4>[   19.849008]  mt7921_init_work+0xdc/0x250 [mt7921_common]
-<4>[   19.857817]  process_one_work+0x148/0x3c0
-<4>[   19.865292]  worker_thread+0x32c/0x450
-<4>[   19.872489]  kthread+0x11c/0x128
-<4>[   19.879173]  ret_from_fork+0x10/0x20
-<0>[   19.886153] Code: f0000041 9100a021 94000aef aa0003f9 (b9401780)
-<4>[   19.895634] ---[ end trace 0000000000000000 ]---
-
-Regards,
-Angelo
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
