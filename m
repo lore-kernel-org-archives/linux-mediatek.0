@@ -4,91 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 535ACCDB474
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD25ECDB474
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:47:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aMTy2aajhBK124+9B/NhradBNHtYp8yU8KpYvs1pqVY=; b=mMcIe95zt36yui9eEqtwCI/vyV
-	zsFoW/6ygGwGdZol2BNtRB+Z341iFK0uVYQ0u9GkihzL+YpP8iBF8HPkqUcjo2vMpMSDTyPRjCPM6
-	c4DQpypEmaZ3lN0q1ZiY97MPotn1E0qUHpgsQEM+K19gBvEtZX4+jWAvPssW6KFyeaJVvtqoZuTEM
-	lgbgSzrIiKQO8AQOMwuJoTXUcnkrG8eTJo8yb8EXvrg/6mCKaReQRsseOQTUP1vgUJuNTQ2DnB4r3
-	Y8XAd2aAMcqYtW4nzZyb3oiFCSrgMd76PMhuB/eqGap/zu7hIz3Wsro8+z78FCgfvpCMlfpVjblC7
-	V+2dm6xg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qLWx+HZRKPvH3+Dk9QJq2Dd9wV6RcWPjJPAYx49RqJs=; b=ysdIW6hWo/sw+IjgPDl7F+vMZO
+	2caJWV8eEIvwwqNTrtYoKL5xhrBdVm2mtPWxPoOkXT4znuGXrI0hOM1Z12e4wwGfPURCyyOHkq+B+
+	WIQrjLhh+Bp2GP2kA+gTzA/wUK6OkwIrUT8c8GLs/yYKGxOfRQcBDc8f7XnhIal4MBSEvESLeHBUH
+	ZXmP8YOsKp9LiOeZfsrQCPFE/6gE17gRDJc1cxYKn10IrL8QSTCjRcCBxF9RmjN/eQTFcGkSXhQB7
+	rCHZ5kQrnuExP8pqSFcUcChA0sNOotHgnOHKkLF9C5/r5WxF9BwtucVhG0y57mXroNsq8CUIAH0Ga
+	9FObRaGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdob-00BSO5-2v;
-	Tue, 17 Oct 2023 06:44:29 +0000
-Received: from relay3-d.mail.gandi.net ([217.70.183.195])
+	id 1qsdrS-00BT17-2b;
+	Tue, 17 Oct 2023 06:47:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdoX-00BSLz-2v;
-	Tue, 17 Oct 2023 06:44:27 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 49C166000A;
-	Tue, 17 Oct 2023 06:44:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1697525062;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=aMTy2aajhBK124+9B/NhradBNHtYp8yU8KpYvs1pqVY=;
-	b=nbcwPe/ZaywJ1so6xOi/nu77b3TS9079dNSCr2O6Rmm2OQJAPgKE8eAJhuAEL6oo/1tozM
-	kporfPh/mQ5A7ItyPBiQIbWYbOxXkLG4/9U3uZOn3G8TVGmqu7W6wqu/uHaDhiFZW/rFAm
-	Hfjoo8N/fRT3lsEgt62KHR5ujnTdaCm9wsVnF36omhVCDwM/zsd6ShJLFn7bc0fqDa5BmH
-	WQe9/F37E/8j7JR8hSkJhTgLVEFwj6qumZSYgo+HxpGh/m9EXIWz2CgK6gONtqtV5dBCM+
-	q9PGRx9nE9doX75/4yT8xeMnAQylPNobxoBDIyQU5T2F0ZFGJA9btzQy10wE8g==
-Message-ID: <1864d057-3b9c-447a-9f00-c8ad2fbb74d1@arinc9.com>
-Date: Tue, 17 Oct 2023 09:43:53 +0300
+	id 1qsdrQ-00BT0V-2Z;
+	Tue, 17 Oct 2023 06:47:25 +0000
+X-UUID: 05b364ae6cb911ee86758d4a7c00f3a0-20231016
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qLWx+HZRKPvH3+Dk9QJq2Dd9wV6RcWPjJPAYx49RqJs=;
+	b=IH+6i2lCE5TOj0N1rrkvk2tKLtdQxIQYE1OhNZevmL9bzy7A3NHJzqmYgkZCCyJH29FQyleoau/3Fqy63YHXwWiictz+JtpbBVLtuf7Sfh4YoXpJt1fQMVaaXKi8p8gdNRWOHawlr8w6A4ZuxhBgLS/DGmJ23Dg2nh/WwrnHdes=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:f0836385-4c26-460c-ba36-2cabf40c4358,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5f78ec9,CLOUDID:76eb36c4-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 05b364ae6cb911ee86758d4a7c00f3a0-20231016
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1065655357; Mon, 16 Oct 2023 23:47:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 17 Oct 2023 14:47:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 17 Oct 2023 14:47:18 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Sean Paul <sean@poorly.run>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Jason-JH Lin
+	<jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>
+Subject: [PATCH v3 04/11] drm/mediatek: Add OVL compatible name for MT8195
+Date: Tue, 17 Oct 2023 14:47:10 +0800
+Message-ID: <20231017064717.21616-5-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231017064717.21616-1-shawn.sung@mediatek.com>
+References: <20231017064717.21616-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 6/8] dt-bindings: net: mscc,vsc7514-switch:
- Clean-up example indentation
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
- John Crispin <john@phrozen.org>,
- Gerhard Engleder <gerhard@engleder-embedded.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Sergey Shtylyov <s.shtylyov@omp.ru>,
- Sergei Shtylyov <sergei.shtylyov@gmail.com>,
- Justin Chen <justin.chen@broadcom.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com
-References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
- <20231016-dt-net-cleanups-v1-6-a525a090b444@kernel.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20231016-dt-net-cleanups-v1-6-a525a090b444@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_234426_233055_038BCED3 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20231016_234724_839464_141CF3E4 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,65 +92,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17.10.2023 00:44, Rob Herring wrote:
-> The indentation for the example is completely messed up for
-> 'ethernet-ports'. Fix it.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->   .../bindings/net/mscc,vsc7514-switch.yaml          | 32 +++++++++++-----------
->   1 file changed, 16 insertions(+), 16 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-> index 8ee2c7d7ff42..07de52a3a295 100644
-> --- a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-> +++ b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-> @@ -185,7 +185,7 @@ examples:
->       };
->     # VSC7512 (DSA)
->     - |
-> -    ethernet-switch@1{
-> +    ethernet-switch@1 {
->         compatible = "mscc,vsc7512-switch";
->         reg = <0x71010000 0x10000>,
->               <0x71030000 0x10000>,
-> @@ -212,22 +212,22 @@ examples:
->               "port7", "port8", "port9", "port10", "qsys",
->               "ana", "s0", "s1", "s2";
->   
-> -            ethernet-ports {
-> -            #address-cells = <1>;
-> -            #size-cells = <0>;
-> -
-> -           port@0 {
-> -            reg = <0>;
-> -            ethernet = <&mac_sw>;
-> -            phy-handle = <&phy0>;
-> -            phy-mode = "internal";
-> -          };
-> -          port@1 {
-> -            reg = <1>;
-> -            phy-handle = <&phy1>;
-> -            phy-mode = "internal";
-> -          };
-> +      ethernet-ports {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        port@0 {
-> +          reg = <0>;
-> +          ethernet = <&mac_sw>;
-> +          phy-handle = <&phy0>;
-> +          phy-mode = "internal";
-> +        };
+Add OVL compatible name for MT8195.
 
-Could use 4-space indentation as described here.
+Without this commit, DRM won't work after modifying
+the device tree.
 
-https://www.kernel.org/doc/html/latest/devicetree/bindings/writing-schema.html#example-schema
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Regardless:
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index eecfeb8fbde1..5d551bff6b3f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -767,6 +767,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_OVL },
+ 	{ .compatible = "mediatek,mt8192-disp-ovl",
+ 	  .data = (void *)MTK_DISP_OVL },
++	{ .compatible = "mediatek,mt8195-disp-ovl",
++	  .data = (void *)MTK_DISP_OVL },
+ 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
+ 	  .data = (void *)MTK_DISP_OVL_2L },
+ 	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
+-- 
+2.18.0
 
-Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-
-Arınç
 
