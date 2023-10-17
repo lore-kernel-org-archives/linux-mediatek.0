@@ -4,93 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD76BCDB474
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 19:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F06B0CDB484
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 19:27:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hRbfGybtcC4Q4xK9Jhz49EEEj1HrZpSkJKq488b1wYI=; b=d3taHu2k5Prze76+jVZUMdcWJI
-	C4kNye+wvHu07BmKjJAH6JszqbBA76QPPO92Ge+qe9VjoZlwfcxYDXP9jWsUb/11upjM53J/zKK3B
-	ELJbYiQrU/of4+QFL1MSvrigxVXXDK6aGdD6FDucKLEQpgyzOf2+3IqffJnLLOFbbeR5PzrHuhcp1
-	5hixzWK7Q258Jj6RwADzbWiYQdZ2uyRvDTJMq8PLBo88dioIY4ie5E2YJKCI/E5BxKYxIlj9tMzYN
-	yIQgbGnPPgAIJ+Q0eH5dtnolewaIJr5bHlwiV6gtetdEVeUEnMD71o8SMRB9XeNjAx3tHRLMbSfTZ
-	Xo+kEevw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/WIYTERMpa/hQ3nYRT3WjhR5KvI3DYiqFx8C9H6a/AQ=; b=ndy+hf76APWF4uQWIiQR5z6zfH
+	2sTv0+bASo4Zyz1ONydXXuGffd40Gy5YTQxNidsZ8w0ybMKYPo0q73Cn0VZGm3Rwme0OLr4pm6zws
+	0MiIgF8TX3cajzEkWGivJMJBB1iFJ0/l2PXWcGoonQPiFwA04CkIugkdYffLyfOas9Jy/0qwaUdpa
+	qkWZR4xCG+iu8nTuAdI8nnRlvt28nHmKew1+25fyGBVcEiXffMTV0PMYJ/CHF6NsQItZbvuDi8zE2
+	axBep+oqw9UBjXW2K/Helx4fXjE27VwBCSSgNUihSZfpb7zrsBNd7/DUT65SiX6+qvcYkcbMxw/Jw
+	Zbl3FIEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qspbL-00D4pp-1w;
-	Tue, 17 Oct 2023 19:19:35 +0000
-Received: from mx11lb.world4you.com ([81.19.149.121])
+	id 1qspjP-00D5lE-2X;
+	Tue, 17 Oct 2023 19:27:55 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qspbH-00D4ko-2F;
-	Tue, 17 Oct 2023 19:19:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=hRbfGybtcC4Q4xK9Jhz49EEEj1HrZpSkJKq488b1wYI=; b=f3O6uWhfVuFcx5VC4Lri+Z8xMP
-	aEAuW35JcCDw5jyvHUXN3ojVvwLDrrKBdcXWV35W/scFFPYxd/XGYrSFvo7AMm1p+AcgQuC5HxjHh
-	4tLECcrM98rS0sfpSF238CJu0LyNkPyA/fEFFJQoq3wZ3pRV5a9B7XA1KST8l+3I6Qyg=;
-Received: from [88.117.60.21] (helo=[10.0.0.160])
-	by mx11lb.world4you.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <gerhard@engleder-embedded.com>)
-	id 1qspai-0000aP-2c;
-	Tue, 17 Oct 2023 21:18:56 +0200
-Message-ID: <00181d0f-e7b3-4fb1-a3f7-12935ab03f8b@engleder-embedded.com>
-Date: Tue, 17 Oct 2023 21:18:51 +0200
+	id 1qspjM-00D5ij-1M;
+	Tue, 17 Oct 2023 19:27:53 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-32dc918d454so605426f8f.2;
+        Tue, 17 Oct 2023 12:27:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1697570869; x=1698175669; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=/WIYTERMpa/hQ3nYRT3WjhR5KvI3DYiqFx8C9H6a/AQ=;
+        b=PJGnpj3IrSE49jh+zuRLwn8I6+YmxnREZsvCWtN7RYbsJ6bNSksb8w3pEwPbw/B6Q3
+         TTTCx+xoI9b8Oz5DylW5WF6saXZbxo4Wg3jOB1sb8d+nK6UIfV22N05vMOFIG2WDuuyM
+         Xnv923JD0dXM7FAZ0SprJz6IbGwxBbZPoQXjkpzZdUXC9jlNjaByOdx59QTaKEt5fzTn
+         cV/tPUOTQkPouLEpJeWbmBfBUTNSyDmNJZvWDz6c9zZ+AnznmKEwcDi9ln/3cEThm9lz
+         E3XhZtsc6SAlz6uYpBCS6gF+WJouXp2IpIfdE9iqWZwUeok009E+o3gTXlchOE7WP7No
+         qKbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697570869; x=1698175669;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/WIYTERMpa/hQ3nYRT3WjhR5KvI3DYiqFx8C9H6a/AQ=;
+        b=v4acyOLw9SLgAziOqZ8tcjrnurQl2mYR8el/v196UWqyiwoBqYbUssjl9rb4A2oOPE
+         9fHO84xjgM2dz7RyKS0kt8ftdwstmpK5Xs15ZGCzRELs/AD+wbnVB4K3BqHPk03krYvn
+         kHThIsQJc+bA6lZlN27F6eI3p3qB/62wrURPLOHZycUuXqdS2gouFg+cBEhtoT351Ubj
+         +YlX+RlxOW+4ZhdyG/ndrXWgIaM/qdOD6AqGl8gXFj2/h5mYqSJi3jtnu8BIh/RLxni3
+         CdMCHAPNtoWZrwaT2uPuSIdDmCctgwM9Wgjo36Ud7+vE5sKW9jEK60owct9x+cSaUDly
+         Yfug==
+X-Gm-Message-State: AOJu0Yx4XHY7erPoPeNNBr13j7aAFelQOiz3h5LAAiZPHaJD8giQXc2W
+	2S946R54uKnwlNohudncrYs=
+X-Google-Smtp-Source: AGHT+IH1sIJVj6vXFk3PsUqXsDejVqOQyTaC/4Gh2c9aKr1SO/xiGQdSW9KnyI9IseCxWCSAKxk3+A==
+X-Received: by 2002:adf:f7c3:0:b0:32d:89b5:7fd9 with SMTP id a3-20020adff7c3000000b0032d89b57fd9mr2562686wrq.56.1697570868914;
+        Tue, 17 Oct 2023 12:27:48 -0700 (PDT)
+Received: from localhost.localdomain (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
+        by smtp.googlemail.com with ESMTPSA id o2-20020adfeac2000000b0032cc35c2ef7sm435897wrn.29.2023.10.17.12.27.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Oct 2023 12:27:48 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kalle Valo <kvalo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Simon Horman <horms@kernel.org>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Nicolas Cavallari <nicolas.cavallari@green-communications.fr>,
+	Daniel Golle <daniel@makrotopia.org>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: stable@vger.kernel.org
+Subject: [net-next RFC PATCH 1/6] wifi: mt76: fix broken precal loading from MTD for mt7915
+Date: Tue, 17 Oct 2023 21:05:05 +0200
+Message-Id: <20231017190510.27163-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 1/8] dt-bindings: net: Add missing
- (unevaluated|additional)Properties on child node schemas
-To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>,
- =?UTF-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
- John Crispin <john@phrozen.org>, Heiner Kallweit <hkallweit1@gmail.com>,
- Sergey Shtylyov <s.shtylyov@omp.ru>,
- Sergei Shtylyov <sergei.shtylyov@gmail.com>,
- Justin Chen <justin.chen@broadcom.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com
-References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
- <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
-Content-Language: en-US
-From: Gerhard Engleder <gerhard@engleder-embedded.com>
-In-Reply-To: <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AV-Do-Run: Yes
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_121931_749421_9B8BDAF5 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231017_122752_484573_57E42617 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,32 +102,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.10.23 23:44, Rob Herring wrote:
-> Just as unevaluatedProperties or additionalProperties are required at
-> the top level of schemas, they should (and will) also be required for
-> child node schemas. That ensures only documented properties are
-> present for any node.
-> 
-> Add unevaluatedProperties or additionalProperties as appropriate.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->   .../devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml     |  2 ++
->   Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml        |  1 +
->   Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml |  2 ++
->   .../devicetree/bindings/net/dsa/microchip,lan937x.yaml         |  1 +
->   Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml     |  2 ++
->   Documentation/devicetree/bindings/net/dsa/qca8k.yaml           |  1 +
->   Documentation/devicetree/bindings/net/dsa/realtek.yaml         |  2 ++
->   .../devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml        | 10 ++--------
->   Documentation/devicetree/bindings/net/engleder,tsnep.yaml      |  1 +
+Commit 495184ac91bb ("mt76: mt7915: add support for applying
+pre-calibration data") was fundamentally broken and never worked.
 
-Looks good for tsnep.
+The idea (before NVMEM support) was to expand the MTD function and pass
+an additional offset. For normal EEPROM load the offset would always be
+0. For the purpose of precal loading, an offset was passed that was
+internally the size of EEPROM, since precal data is right after the
+EEPROM.
 
-Reviewed-by: Gerhard Engleder <gerhard@engleder-embedded.com>
+Problem is that the offset value passed is never handled and is actually
+overwrite by
 
-Thank you!
+	offset = be32_to_cpup(list);
+	ret = mtd_read(mtd, offset, len, &retlen, eep);
 
->   Documentation/devicetree/bindings/net/nxp,tja11xx.yaml         |  1 +
->   10 files changed, 15 insertions(+), 8 deletions(-)
+resulting in the passed offset value always ingnored. (and even passing
+garbage data as precal as the start of the EEPROM is getting read)
+
+Fix this by adding to the current offset value, the offset from DT to
+correctly read the piece of data at the requested location.
+
+Cc: stable@vger.kernel.org
+Fixes: 495184ac91bb ("mt76: mt7915: add support for applying pre-calibration data")
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 36564930aef1..2558788f7ffb 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -67,7 +67,7 @@ static int mt76_get_of_epprom_from_mtd(struct mt76_dev *dev, void *eep, int offs
+ 		goto out_put_node;
+ 	}
+ 
+-	offset = be32_to_cpup(list);
++	offset += be32_to_cpup(list);
+ 	ret = mtd_read(mtd, offset, len, &retlen, eep);
+ 	put_mtd_device(mtd);
+ 	if (mtd_is_bitflip(ret))
+-- 
+2.40.1
+
 
