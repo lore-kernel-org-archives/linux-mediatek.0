@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C31BCDB482
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 09:41:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C703CCDB474
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 09:41:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=++CJ7QxLtaHeBuA9TRIlF+Gy5JqJ4WRktMBp4loDimQ=; b=XYgLhKsHWjoCHy
-	iX9TdXV1M/jj6CvMe7NJXL5F+kGC3TVTco5KZPumjef+owkpjbOZV5jpfqHD/HSj7kb3EVTrYynL7
-	+yEgfrFHq3xPFinTBPFxUZu54uig8HK49rDfnRC+Ft4wbZCAuoGdwm3+BKoa921NWsuomlmdp/WCx
-	N6va7pFz832QwhmpC4gKvwqnl0NzdA6vVW97X0LfEm46RpABa8LATfGM8iMcpPWBB28YaxlyurwCb
-	HHRprRpQIEPuvWhrxfE6tYyR+I0efd6hm+VegZZaSCIiy/6lNAJyuGT1S16ZJCy6jN+wS2SmozKeO
-	HrXHONExGjZiWTjmG8vg==;
+	List-Owner; bh=rvAjyHmpESeXmAdr3inkzIl9gaUnPMPzXNrDd4aQ7MM=; b=1dNiiQL3+108nU
+	Dspx2WyRHO++4hZhp/5zcM9bK/XrIN9wQB/4Tfp6/T/nsu84NBt/nlobD0SzmxIDpw7BQNqZAjWw3
+	96cXXQ4Z4zSCK3lr7Hxpg80/0vZZYBxr6u49fNItI20NgGU7xPVdjTxUkPa3/J7EPTi5NIlSBVqFC
+	2/21Urx4CAs9ZcvTD4kWBN3Zojj5ghJzdYT9o6wL85UBVnGZPv+NxGS/2tmw6TTc18cZKPXhkkJmF
+	zpdHmq8Qil0XK54EwHDTfE766D3rKGkoJ39YU/5Kk0B1NLCrJQmugTlBvzptihnPnY3YKcEmKNqdg
+	IlKt4o8nFidDaRIQi0Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsgZf-00BrMP-1N;
-	Tue, 17 Oct 2023 09:41:15 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qsgZm-00BrSA-2L;
+	Tue, 17 Oct 2023 09:41:22 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsgZc-00BrKL-0f;
-	Tue, 17 Oct 2023 09:41:13 +0000
+	id 1qsgZf-00BrLy-2P;
+	Tue, 17 Oct 2023 09:41:19 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DB11166072E4;
-	Tue, 17 Oct 2023 10:41:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 58CA2660576A;
+	Tue, 17 Oct 2023 10:41:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697535671;
-	bh=uWopz2l4ztZi8CjWSNtPqJmsfX3SAwxisTyb3uW4K9Y=;
+	s=mail; t=1697535674;
+	bh=z6cx5xbScEFvi74Y8YW+wBFTf6OEBDNmHdkfrDRMSKI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YnAkHri1PFq3SlqsU5RkPFJFbj5O5ZbLnTuXp9y3BAkedLQu2JUqQ5UQe9e9dPnwE
-	 Qm1J/IE68xyiWtFpuvbIdj+GDINugnH/JwVjRhbTuXgLzs9qQ8TF8rVMMtrv+Km7q4
-	 id5zWDCqUbXvPRUoiDZ+AnVuph74xvMAZ5RvjODk244QzcHWsRRVNnce8gEQHB3ytZ
-	 uRKJyp4TIv/eOX9+cx358V3RWZMudce6RS44c94kDDKwnq/g96ojrEPH5l/OL9elnn
-	 +3xz0oVAToJ1JzgjQ2dcB2KRd5BdSSSMjT2CFnGSidMvCNAANtuwl6RsIzQwRgyInQ
-	 ssONO8WMuGNrw==
-Message-ID: <3aa34fa5-1dea-4cbf-8a31-a405581edbe8@collabora.com>
-Date: Tue, 17 Oct 2023 11:41:09 +0200
+	b=BuwGK6PrXkUVAeqQZqB6OFFpXr2sYaFJUWuy7ub/IB0DiTCCf+Np3f6bU6Iv1JGZR
+	 Rq44p5YonyW8WPo/VV8mI0Twc4lWNj4JUKauj53zP0LoxB29TWBE+OCxaEdTM7pdTx
+	 14ZAAsnsULxXHduIeGBOcEZNfKS10xb8+gftoBdzvRiyyinvU2kgKjIZwPnDOX+XfJ
+	 BJZO8R/Nnwnn6XP3H+scPaQu+bwB7WUkhVzFb51A+Jdc3B68CypVbKiw8daJwnJoYI
+	 7UO48nMIyscBKOxkDOAxANVWx8YB6NifI3fkFdsTh4MdMv9/WVMusKPD9EcVTuBvYb
+	 lYP15KpAyV7NA==
+Message-ID: <fdd3d6fc-fe73-4048-9c22-bc880f5d58d0@collabora.com>
+Date: Tue, 17 Oct 2023 11:41:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 15/23] drm/mediatek: Manage component's clock with
+Subject: Re: [PATCH v8 16/23] drm/mediatek: Start/Stop components with
  function pointers
 Content-Language: en-US
 To: Hsiao Chien Sung <shawn.sung@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
 References: <20231016104010.3270-1-shawn.sung@mediatek.com>
- <20231016104010.3270-16-shawn.sung@mediatek.com>
+ <20231016104010.3270-17-shawn.sung@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231016104010.3270-16-shawn.sung@mediatek.com>
+In-Reply-To: <20231016104010.3270-17-shawn.sung@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_024112_371474_66DA7D3D 
-X-CRM114-Status: UNSURE (   6.88  )
+X-CRM114-CacheID: sfid-20231017_024115_922641_5F221077 
+X-CRM114-Status: UNSURE (   6.78  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,7 +81,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 16/10/23 12:40, Hsiao Chien Sung ha scritto:
 > By registering component related functions to the pointers,
 > we can easily manage them within a for-loop and simplify the
-> logic of clock control significantly.
+> logic of component start/stop process.
 > 
 > Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
