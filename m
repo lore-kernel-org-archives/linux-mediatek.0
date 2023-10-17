@@ -4,89 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31642CDB465
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 01:16:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3154DCDB465
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 01:27:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=opnExgwbbL1TNsd4q1u0OvZXeCsyuI9xelnxo5wUzj0=; b=LHN9ERiJlKnKnZ2UniM5aD2FEj
-	ZuAsqjPFdB8BcGDwBPMSRGCzDzrmsyF/qwDQrgrbTXU0tmk6s46TDG2GH6FUbW1rRWf4UW8CNYb9D
-	DhogFSBPxlHFFOwj7PaKLgY020JXg6Ygk+zoAGd9FaTzlXtg0XAydhT/JpKA8o/2/IwiCKyr+8PEe
-	cZVq0K/hBsmy2fqcWqD721ySe04yMyRIlxXz86npNGxTyI4nb9Mu4p6gCvfGzTlAd1+0ylGEjQKVu
-	lXYjezfZ+5qnkOku6GqqnUWpdVSHU9LrcdBQmrqNUj0dpuGErt+jEHUkI+xDsJ3SBUAYUf5gygL2G
-	44Uch7vw==;
+	bh=3YDzvNxn+MoyQTnYAhAbfA6DPGHOeFv5XtyflR0kScs=; b=jtVJaD1vjc32/SWLASQy9NY6b6
+	I+0bGyBh7eNqxeNsP1JaZq1lrMMWSCfFRgu1FCFlB+1xhIuKbYnRjd0QKPO4NVluY0JWiCt5xaAW2
+	md7KtkHKwV0VVGSybYULIX4s7J9DY+cBLnQ5SFghUbVxB//UuR6yqaY7oPKkFSP6eorUS+Gq8PdKz
+	q81dSq25AaWyUCqZ+I8/KcM47uW5m5b4qmtwV5sq4z/1XH/6IfbwDpSrLdy9zs/QTHJEDvhWQsvLi
+	ZDp5aPtX+VSeEfvTpvnA3CQOp1v0fwphxd2k2yfQbD2WTbMKgXUFLNmQrmG7rmJxLzzH9HEAD4nms
+	3VFWtdKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsYh9-00Aycu-2h;
-	Tue, 17 Oct 2023 01:16:27 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1qsYrs-00AzID-2s;
+	Tue, 17 Oct 2023 01:27:32 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsYh6-00AycV-0p
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Oct 2023 01:16:25 +0000
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39GKO4nD027764;
-	Tue, 17 Oct 2023 01:12:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=corp-2023-03-30;
- bh=opnExgwbbL1TNsd4q1u0OvZXeCsyuI9xelnxo5wUzj0=;
- b=F0S48YwnX2g5IEITg60c+onhuzMPETjCam9/JZF3i1uEg7tdRMldNAqrp6t9Ji+rf2GU
- cD/lnYtZPapUaUJCm8r7R6LseHrNkLjWQGGtynNtrz80BS4GyphHOkn5CFJvNQ4Q3rNb
- pKq1tDx4Y74qwU4QNOWkip9vOSqZrKU16LFEUTS68ThNif3Jqk+xsKbluJ3ZnYiRzkV6
- xrz9WZYW644ZH72BTDDgrMNo10xI42uY8hYj1CNDz6/R7z6VIKHhjvntX+bOuUjLY50h
- TxQ4Ep2b8CdBbOrFnAuZnQJRITFiwcngj/mP0ObFJAA2mWuPH2QWQKOffEESfoXC/1Ih Gw== 
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3tqk1cc2kn-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 17 Oct 2023 01:12:14 +0000
-Received: from pps.filterd (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 39GMeXsj027313;
-	Tue, 17 Oct 2023 01:12:13 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 3trg5366s9-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 17 Oct 2023 01:12:13 +0000
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39H1C3sw039761;
-	Tue, 17 Oct 2023 01:12:13 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 3trg5366mf-9;
-	Tue, 17 Oct 2023 01:12:13 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: stanley.chu@mediatek.com, linux-scsi@vger.kernel.org, avri.altman@wdc.com,
-        alim.akhtar@samsung.com, jejb@linux.ibm.com, peter.wang@mediatek.com
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
-        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-        cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-        jiajie.hao@mediatek.com, powen.kao@mediatek.com,
-        qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
-        eddie.huang@mediatek.com, naomi.chu@mediatek.com
-Subject: Re: [PATCH v2 0/3] Fix abnormal clock scaling behaviors
-Date: Mon, 16 Oct 2023 21:11:56 -0400
-Message-Id: <169750286898.2183937.14025381804375591209.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230831130826.5592-1-peter.wang@mediatek.com>
-References: <20230831130826.5592-1-peter.wang@mediatek.com>
+	id 1qsYrp-00AzH2-0k;
+	Tue, 17 Oct 2023 01:27:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id D55EAB81B86;
+	Tue, 17 Oct 2023 01:27:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9245CC433C7;
+	Tue, 17 Oct 2023 01:27:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1697506047;
+	bh=s+jRDW+2r/hfeMcX43wig5Zoi67P+MBXYRuEZHkr50I=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=HogMLJfecZN17MTZr096mjcZ2IDGruz/FY7v83Gb7/ZDvPTIL+WdGM2mSjH7TIQeV
+	 lkrcwJlrreWA553L9DrttaF+M7rIPrW9D9ajMAl90ghSw45tWbn0TqygnVdba71bsJ
+	 BvKjL+VYXfZH4UypliqZOJuU3w2NObAhUxlv8cKc2lrEzWW7ASoP3AVNUGpU8o8sPF
+	 UnRi6125QGaEN9A5JIvhzI7DWQnCDQH6LUuKqXlkSo5Jy3x640fO1wpZfyv1n/b4q+
+	 D0RssdFIOutKYuMPzDFSpjElHznI23230BDvGHOLDdKzk7TVCqfAwWBq2gAt0PN03C
+	 fcg5fAqQT0iKw==
+Date: Mon, 16 Oct 2023 18:27:25 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: <davem@davemloft.net>, <pabeni@redhat.com>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH net-next v11 0/6] introduce page_pool_alloc() related
+ API
+Message-ID: <20231016182725.6aa5544f@kernel.org>
+In-Reply-To: <20231013064827.61135-1-linyunsheng@huawei.com>
+References: <20231013064827.61135-1-linyunsheng@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-16_13,2023-10-12_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 mlxscore=0 phishscore=0
- malwarescore=0 suspectscore=0 mlxlogscore=919 spamscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2309180000
- definitions=main-2310170008
-X-Proofpoint-ORIG-GUID: Krpi_kbYhiiJotK72Z1Mddkto6w1PVPk
-X-Proofpoint-GUID: Krpi_kbYhiiJotK72Z1Mddkto6w1PVPk
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_181624_429556_7BACE880 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20231016_182729_426617_A33BD844 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,26 +77,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 31 Aug 2023 21:08:23 +0800, peter.wang@mediatek.com wrote:
+On Fri, 13 Oct 2023 14:48:20 +0800 Yunsheng Lin wrote:
+> v5 RFC: Add a new page_pool_cache_alloc() API, and other minor
+>         change as discussed in v4. As there seems to be three
+>         comsumers that might be made use of the new API, so
+>         repost it as RFC and CC the relevant authors to see
+>         if the new API fits their need.
 
-> This patch fix abnormal clock scaling behaviors.
-> 
-> Peter Wang (3):
->   ufs: core: only suspend clock scaling if scale down
->   ufs: core: fix abnormal scale up after last cmd finish
->   ufs: core: fix abnormal scale up after scale down
-> 
-> [...]
-
-Applied to 6.7/scsi-queue, thanks!
-
-[1/3] ufs: core: only suspend clock scaling if scale down
-      https://git.kernel.org/mkp/scsi/c/1d969731b87f
-[2/3] ufs: core: fix abnormal scale up after last cmd finish
-      https://git.kernel.org/mkp/scsi/c/6fd53da45bbc
-[3/3] ufs: core: fix abnormal scale up after scale down
-      https://git.kernel.org/mkp/scsi/c/b50d9c27a31e
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+I have looked thru the v4 discussion (admittedly it was pretty huge).
+I can't find where the "cache" API was suggested.
+And I can't figure out now what the "cache" in the name is referring to.
+Looks like these are just convenience wrappers which return VA instead
+of struct page..
 
