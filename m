@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BE7BCDB474
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 09:40:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA0E2CDB483
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 09:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jVKq64oLccJKdh7m/NCXbw69+JVkBEcMAVQb+o1q+u0=; b=DTckKcveAWQT80
-	7uD5qsW89FAAiWEb8cWH2481LgpzmUIKO1noQQa9lQoA/dU2g7Ql46WOHM6Pzti6ZxYhEzPxtzlMy
-	YZmv4RDPJk0eJQE1n/0hzDbPDUDt24LQj1uoidkXcK7YKnX00yYlOddrAaryDMvMjL0iUlRaC/AIC
-	frOuXVICEDkgEA76GM2GBLLJiMdhE3h1VdrOGBG+Rd2RT7Why92axvMBmJpv/uvA9jagAAXUWRmWG
-	TqN60gDJuqGVq2OsOeZ8B4ODkDBa/FzfYB8Bn1ZlCdkMJh6svs+0Rd14rUVpCRbntwUTyveq6AiiO
-	sm4oRiwDV3RuZYmtBTmA==;
+	List-Owner; bh=UlhJQL8my2WazQsPBVuN+5UeM6CVgSdMVhPmQJZBWQA=; b=lbJF/qR1yUeQcO
+	9pTg6ToAm9brpFRU11FFPzeV7aWYzSpFef5qBbbUoXQHNIeNyTW9BY5XQCuqki+Np818OhKFpvL3U
+	FhSMw+vEE2jMjK38bQSfNhN6h23oD7l8tqTr8GR1aeT0Tc3ZFxmvKxgy8eTi2hgoFY8DZ50nGZZJA
+	cLM0PPtqsNCCeMTKfTO9Nl1STMmcWEC4Qr9h1HXyH8Hqh9sgTaMnr5KOYNKb3M59VoruN5bPv51NW
+	yGPk0HSheTfhET14OaIdme/FOb7ghiVuefyApD415Fy3Ekhrs9JjXtoUN3ncb1GZe5zHkSvev2G9R
+	PoBvIxvY23MIGcPxcYjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsgZ3-00BqzU-17;
-	Tue, 17 Oct 2023 09:40:37 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qsgZB-00Br42-1t;
+	Tue, 17 Oct 2023 09:40:45 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsgZ0-00Bqx9-0f;
-	Tue, 17 Oct 2023 09:40:35 +0000
+	id 1qsgZ7-00BqzZ-06;
+	Tue, 17 Oct 2023 09:40:43 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E9D38660576A;
-	Tue, 17 Oct 2023 10:40:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EADD066072E4;
+	Tue, 17 Oct 2023 10:40:35 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697535632;
-	bh=8obL4OVXO9sFwfVYUpTBsRzHOYzSvmoihOjSYGp9i44=;
+	s=mail; t=1697535637;
+	bh=pTIG+UaZLvweFTKVyDhXiVp6/MgmwKQ3DTn4wDvjAIk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EMkihf8Fk5OjNDu/XsvQ+cb8204a4y0/7NV8g8FdPb91aX9NH9oYVLrnYYAW4FWDX
-	 pZsvh16JKElW7AcogvZ7CViJ0M3fKcBOvyyapBk3W/swlu1VkQPG3IiHmYAHFKVsrJ
-	 dBSG/1RqG6hJBRPx7JfMUyO4nVHXq9APO/i7b/LU3qFrF+P3MLm+tPI9xLJfKZh4Qj
-	 487vlCT4T3tbNgL312hIbS52yTqX91qdivxcRTS7UDrsfs/K26FOvOFe/sQb2vcB7L
-	 SWUUfNPj0oWM4Z4zdgej3AswW2hiEuJ8nQSWmFyon/WX+FnbFjKJG8u9MC+suRmCrt
-	 Cd+w+Iv/2CdIw==
-Message-ID: <c186ca79-a347-4f93-a439-54ca9b0d3323@collabora.com>
-Date: Tue, 17 Oct 2023 11:40:28 +0200
+	b=SSMnMTlaM0CCto38SBAO6czACb95JrYB/25YAH2568IIwGr88UZMQeVoe7wVv91iY
+	 BG7aZluVr2SBJE2SjbUmzNS/KOi5ofQ9OaAphKyyt78EwgrE8ODLHptYTnu4Er0ajG
+	 u7tJVpXILhlkSX+Yxlg3FCvoiJdGRaLgaVs5FazEz5FXPLN9wIIrFnUYB8XavuCLlq
+	 6G6hsHSyqdH5ikbinHCKS6WTK+6cA6U+HQk5rujEtFXdly/+t/9LE/+moMdEcCPh8q
+	 cIo+yO0ebwcabLFH/hLWwi1RFGuyq2VgITUJTr9csJOo4sNmAaLHL9tLUO/hBwm1Fe
+	 5sAZhk7NlcbQQ==
+Message-ID: <c8bc0ce6-0743-4847-97d4-c51d516a6950@collabora.com>
+Date: Tue, 17 Oct 2023 11:40:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 11/23] drm/mediatek: Rename OVL_ADAPTOR_TYPE_RDMA
+Subject: Re: [PATCH v8 12/23] drm/mediatek: Refine device table of OVL adaptor
 Content-Language: en-US
 To: Hsiao Chien Sung <shawn.sung@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
 References: <20231016104010.3270-1-shawn.sung@mediatek.com>
- <20231016104010.3270-12-shawn.sung@mediatek.com>
+ <20231016104010.3270-13-shawn.sung@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231016104010.3270-12-shawn.sung@mediatek.com>
+In-Reply-To: <20231016104010.3270-13-shawn.sung@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_024034_381510_FD592683 
-X-CRM114-Status: UNSURE (   6.49  )
+X-CRM114-CacheID: sfid-20231017_024041_208780_94B63E4A 
+X-CRM114-Status: UNSURE (   7.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,8 +78,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 16/10/23 12:39, Hsiao Chien Sung ha scritto:
-> Rename OVL_ADAPTOR_TYPE_RDMA to OVL_ADAPTOR_TYPE_MDP_RDMA
-> to align the naming rule of mtk_ovl_adaptor_comp_id.
+> - Adjust indentation to align with other files
+> - Sort device table in alphabetical order
+> - Add sentinel to device table
 > 
 > Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
