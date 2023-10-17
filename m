@@ -4,42 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E078BCDB483
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 19:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE174C41513
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 19:05:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L3PfUtHnhBSSCkO7osbhNe//iLC/B8joXGE1PccdduM=; b=3aiAKfhtYNj6l9epUXKK3uFdL3
-	/UakpGZCshb2g0ZZnFnsVm0NKok2gBtaZOcdNzw5K/fa1vSeJ8gpuDX3ZUojBUFrgdRN7r2e2SXub
-	0LgzuTfvdga4ucI0HUNLVswo4KGJzlSt3tUgwcmASsK1Wnx67TimID1Rs3u7dtFaeZWQS4yV/wUmq
-	q8bwYE9hFLc/UTeaQbttCpJF00rYZVt3OUYtNbHvT8WpHEM6+eh+6JpPwU5IpHckKM+CRSIUC7/WH
-	saovxJD3g62ArOp+B0wel0cswGycYbRl3XGgs/BjydECBPaHbfEtEc/xGX0Lepf0Uc2hpgjbytTl/
-	3cZuQsZA==;
+	bh=L3PfUtHnhBSSCkO7osbhNe//iLC/B8joXGE1PccdduM=; b=z8uFsDCgJr4ETXU/STwfI/CeQ1
+	RmcH0Bts+N3zDTi+gSPydL5EHGxs0pPMjLyzLrlUgAF0mp3noNl6ycc7wN+O5bFDojWwuF5a2Kn/U
+	IrJuO61WzWJS0Al2YncCncBBMdf8/I0adfWKIOWz7GAe27NSx69nqvWLBLGk5eep3QtmDN7IHOjcD
+	89SmZgHFkVaHvaCYd/lFyGbFihiaYjPyLQ+k+Wj5OfujtYSpO1AdCAUiYlGSVnblcmp1BKrakDW7+
+	75sKQ6i2oK07ms8uIdqIw2inWHJ7izBDIKG7HtdANvsJ/EA8tDf6C59UoIMIXlCP5RzsdVW/qR4UD
+	5OeHFuAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qspL0-00D25v-21;
-	Tue, 17 Oct 2023 19:02:42 +0000
-Received: from [2a01:2a8:8f03:b001:97bb:be5f:f990:97fe] (helo=emag.lindev.ch)
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qspKd-00D1tN-0A;
-	Tue, 17 Oct 2023 19:02:21 +0000
-Received: from ryzen9.fritz.box (unknown [81.221.122.240])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bero@lindev.ch)
-	by emag.lindev.ch (Postfix) with ESMTPSA id 640B720046B;
-	Tue, 17 Oct 2023 20:55:41 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lindev.ch; s=default;
-	t=1697568968; bh=m/FZi1EUFGOpL27ZJu9SFCLqewFhxDwg/9DzzkcAj38=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=pKBj92SAqqRthF4wUXdBrt0QDK5ZGGIa7x14O3qQ4wWxwoC2KfffQ3E4plGZX+GUM
-	 BX8Dzezi5kU8dMdjAUtd2qJHkLtnmeY2D6vLUzhbaezImuayNMBVgHonulyUE1heYV
-	 tAhBRvNzrhtvysE43L+kvCtAoaJZQJAaD6iRQGsE=
-From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@lindev.ch>
+	id 1qspO9-00D2on-1L;
+	Tue, 17 Oct 2023 19:05:57 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qspO5-00D2lP-0E
+	for linux-mediatek@lists.infradead.org;
+	Tue, 17 Oct 2023 19:05:55 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-53da72739c3so10084545a12.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Oct 2023 12:05:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1697569551; x=1698174351; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=L3PfUtHnhBSSCkO7osbhNe//iLC/B8joXGE1PccdduM=;
+        b=gy4m5Nlz6AT1eLi9NrbUZ/tKi87DdELiyfBIDmwMWZ7z98OCVITDJKtPc7l34RdUqm
+         l9kfQkjoH8RKdWCxvIBcBw49EXeIQjiL+kEKfpbh0PzsNUpW3EGpYFy9w1uuweE+W+MR
+         Q4hP3OrdMtQuubqllvO8sZrsAfvusSG1ltR4A1XAt9YTLA8IktKYnGifubsGGHzCWrtf
+         pDs7WbzMFcxKF2NO80GHbBRMpfLjaVDLUBswg3cI2cdN/nWLKUpy7FsdZIn4XNTjn2LS
+         w4z+S1p9Q2dOQGtAxHuHu14oQkZ6UcBUi8b98YdlE0S9X0YSkqlij2K/U2LUCmvSbDtJ
+         te9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697569551; x=1698174351;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=L3PfUtHnhBSSCkO7osbhNe//iLC/B8joXGE1PccdduM=;
+        b=NTeKY/isMwWNuWdgCyycNuznDMqHXu1uUfykNzWmIvFj37XN5JnwhoofcHy9K32oYJ
+         Z2r4IESjStc/5Fw8UngdcfQs5shWATslbJ5jXe5Y9b55sX7Yd0AeetylDkbj+793cfFC
+         svabwpy2YC22xixnBi4UYtSB8xGJk7BF3JahHMwNaQcSk7L+IHzT4SQ5+OYb/WGVryHk
+         qbIVo428Orezu8zGOh3QhTu8CbIX4gtrQ0Y9a0pYiqk5eX6gvH7sLm9rSpiqXBGcB5QV
+         oFRw+r5QP6yasFV2XmBjOxbHfNboh5GAab6LEbbOQQCHX+s2TdUeCO5xj53JK2DcvPaJ
+         G1vA==
+X-Gm-Message-State: AOJu0Ywt87+3q3WSrLHlJPutPDLS/+clftu09Rxw33Meh0Hpr9PGSVsO
+	DaTLP/UBqgimc8H5YzzkvR0w+Q==
+X-Google-Smtp-Source: AGHT+IEme+oxNBzK6XLtyhQrXq8tPu43IhnnTxWMT8vQzl+Bn4BOhjIsVHMgrkyWgFTWDXYxrrRtXQ==
+X-Received: by 2002:a50:f60d:0:b0:53d:d7e5:a9b9 with SMTP id c13-20020a50f60d000000b0053dd7e5a9b9mr2528742edn.0.1697569551503;
+        Tue, 17 Oct 2023 12:05:51 -0700 (PDT)
+Received: from ryzen9.fritz.box ([2a01:2a8:8f03:b001:fe65:a70:2777:ab31])
+        by smtp.gmail.com with ESMTPSA id bq14-20020a056402214e00b00537963f692esm1637990edb.0.2023.10.17.12.05.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Oct 2023 12:05:51 -0700 (PDT)
+From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
 To: daniel.lezcano@linaro.org,
 	angelogioacchino.delregno@collabora.com,
 	rafael@kernel.org,
@@ -64,17 +87,17 @@ Cc: linux-pm@vger.kernel.org,
 	amergnat@baylibre.com,
 	khilman@baylibre.com
 Subject: [PATCH v5 4/5] arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones
-Date: Tue, 17 Oct 2023 20:55:54 +0200
-Message-ID: <20231017185555.142062-5-bero@lindev.ch>
+Date: Tue, 17 Oct 2023 21:05:44 +0200
+Message-ID: <20231017190545.157282-5-bero@baylibre.com>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231017185555.142062-1-bero@lindev.ch>
-References: <20231017185555.142062-1-bero@lindev.ch>
+In-Reply-To: <20231017190545.157282-1-bero@baylibre.com>
+References: <20231017190545.157282-1-bero@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_120219_409807_2FEFBD5C 
-X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-CacheID: sfid-20231017_120553_111915_80F87ABF 
+X-CRM114-Status: UNSURE (   9.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
