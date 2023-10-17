@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8166CDB474
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 08:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A01DCDB484
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 08:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tDJzj58ZIpn8Z0V4dg9eKbc6ykqotojQjlSqUC9w7gM=; b=eYczaK1BjB2Ak4ZbEksf/ooFhk
-	7oAeyNlatnIY/R85yKwvftMxvMXkXnys/Sh67QNfj+2CKEEbRJLahqpxDn7rHzpJoPm8uEc6/wMkK
-	966dDPDFSkcgg4zAjjHI+YUpRH9+WXl+WAw0LBn/8OUOo8OJ9VOOGJlcITHZLiO7OvbEjTK8sj6Yw
-	KOYd4ydQhfIJYwrhvqhRP8QNZcHMUCEKW0pUfE6ZIImD+NH+DC+TM89V/lWIB8k0J8CNQLSeT7RQA
-	UDfDUiXA9O10IKB+gTyI5pZs8e+pTPWTk42P/NDj23VAmVXGAYamdVfgyd0Mu+BuOgYsHcJ+WzQHi
-	MrzkA48g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5mWE3ioyQaxDSod4iM87Tqs0+a3jEsBLfvJyNoNblIM=; b=4tACBzVsLjXwYNNXJAWFlBow6L
+	pDYtIrhuKRAQZolwVqGDfueCmseQXVGyqjOCE5PTawjqRb/ToAtDvmK75j94U30HNyyp4Qdj19tkl
+	LNjJOCuze6bzZjG8C6mADjPoxkPnn7lRXHrC9bqd2ydB9qpQ0MHwbnDQD5xoicY4w8l7D9VQNaLAv
+	kxm5HKYcoGa5di4sXPbrTetWGKc4ytMqlhbYnzY5oZ3jahz54CGOugxlStV/WCZo99ODKGoMTl80V
+	+JBJP8kvuI9VryUGN8ORnQU9CBSchqZE0x6SbvM13pDh59DSGNd4RHWdjV9Rgob+a5D6xmwjxBArb
+	wy07bFhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsfaz-00BiAz-0t;
-	Tue, 17 Oct 2023 08:38:33 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qsffS-00Bic7-0G;
+	Tue, 17 Oct 2023 08:43:10 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsfav-00Bi9b-2M;
-	Tue, 17 Oct 2023 08:38:31 +0000
-Received: from [IPV6:2a02:2f04:a37:9d00:b380:eb44:83c6:6b95] (unknown [IPv6:2a02:2f04:a37:9d00:b380:eb44:83c6:6b95])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 845E46606EE0;
-	Tue, 17 Oct 2023 09:38:23 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697531905;
-	bh=BSMLjbZcuwNhTxKRB4oqXbZT9i1jbW/ydiS26D4uPQo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YccWFxDrI8/xGCFcYHGPIGLkbs3FwJSrgHRhoi/litiDLuS1CxIw4ySYdnuJ8lItu
-	 WzDLqQC3CRZtWwaLBfTSnbQJBLym84QrfASDpyxRuuXL2bsqz+M7kG7M0kbHGjbLwf
-	 dLUkSDFMW/FkEQT064gjl3eyspBjwHgrkCUJl94+POe+wGE+XGg1KGty/TPJ87R4q5
-	 MYRT95fAvjchdgY/66rT1FDXzl7Dlbg9fO1NO1Fw16lczTXnINqM1qAjKwlhsaWC+A
-	 HWPHkMPr3wXb+woclNkb0EuKT+/OYEWA4bha8ZmCoIXVAxX94RaNKNhzVIE36vk3xN
-	 pn0TCXNIllB/A==
-Message-ID: <ecd6a00f-2166-48b7-a6ae-e165a2a6d70b@collabora.com>
-Date: Tue, 17 Oct 2023 11:38:20 +0300
+	id 1qsffN-00BiZE-0L
+	for linux-mediatek@lists.infradead.org;
+	Tue, 17 Oct 2023 08:43:09 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-991c786369cso873110866b.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Oct 2023 01:43:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1697532182; x=1698136982; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=5mWE3ioyQaxDSod4iM87Tqs0+a3jEsBLfvJyNoNblIM=;
+        b=I3pOdBo8qMhGMM7H25n0UP3JHJvFq2+HDXQ1uafAnKlB0lIwf3ZeM4RSGX3OjPTb2N
+         /pt7WWpMa+4bQq0EjLtr/c7bQL+9CEzDIU1U1cpfoDF9CALrkShlZ+utHYMTPVemSP1/
+         MHH4NAhE2NeEvfuhHw3DFm0hXtmou6zK6NkaN7VOljq1Q5IH+mD1oPkH6sjiFkgO8mN1
+         h+sfEnKS+W7h4tZ/XDIOenBEMDpaOQTc2g/V1qdHeUspZR4QVOUrcjDXYbjwIu9o0a4d
+         OZOpY5aEHBjLq8Kb9Ey7Q2RaZgrGz5rFVknjzjrYCHMZ3A2KuTxDEfQWk+NY0MXMGRLF
+         GL0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697532182; x=1698136982;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5mWE3ioyQaxDSod4iM87Tqs0+a3jEsBLfvJyNoNblIM=;
+        b=lwgLqfon56Dfgg2VC8EJtasqiNpWUQFakeiJR11KxshwMPtx0gB+c4bvrAkvidZlxe
+         BCEUU63pVnxFYn0OoypMjezH3+qWBaff7OBaB1eCp/wZonX8NgO8jdMu11Yq6hvwK5Tp
+         VUxCkUc7Gut3dNk1g8o9TARQAp9JxEYjm4LtcQAiaHEy6VyS6WMUbJkN4sponMoohZL7
+         lRwB1XGNwd4clm6nGzoSAzOtUltlHh2ZNedqVz5hxenvDHKxKcLBCHPq3ZYLscdqESt+
+         6ZTj2lRR/ZDDYQUSLR3iPGk1uz1tXrpG2OObhnu8lnKf0+5BkCeTV/k1Y9nEPLvN3ldr
+         DPrQ==
+X-Gm-Message-State: AOJu0Ywh53QVjKMxftLDYJId/EupRvXoB9PBZLoOghL9Dj2R9N1Q0U2T
+	toL/ZufQ75fXdSM7mT7lADbTaA==
+X-Google-Smtp-Source: AGHT+IGqNGsH0DhEU+PTpv1aQpuhvhpsLwVB8CXj5e5ZEBB+NTCBmRB3K2VAr1Lf6lDIB8I9SInX3A==
+X-Received: by 2002:a17:906:c105:b0:9be:aebc:d479 with SMTP id do5-20020a170906c10500b009beaebcd479mr1140349ejc.19.1697532182082;
+        Tue, 17 Oct 2023 01:43:02 -0700 (PDT)
+Received: from blmsp ([2001:4091:a246:8222:872:4a5b:b69c:1318])
+        by smtp.gmail.com with ESMTPSA id j5-20020a170906474500b009a1c05bd672sm789525ejs.127.2023.10.17.01.43.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Oct 2023 01:43:01 -0700 (PDT)
+Date: Tue, 17 Oct 2023 10:43:00 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>,
+	"Rafael J . Wysocki" <rafael@kernel.org>,
+	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] thermal/drivers/mediatek: Fix probe for THERMAL_V2
+Message-ID: <20231017084300.c6wsozaqg7ztgkf2@blmsp>
+References: <20230918100706.1229239-1-msp@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v4 4/4] arm64: dts: Add MediaTek MT8188 dts and
- evaluation board and Makefile
-To: Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?=
- <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230921060235.32478-1-jason-ch.chen@mediatek.com>
- <20230921060235.32478-5-jason-ch.chen@mediatek.com>
-Content-Language: en-US
-From: Eugen Hristev <eugen.hristev@collabora.com>
-In-Reply-To: <20230921060235.32478-5-jason-ch.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230918100706.1229239-1-msp@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_013829_942866_84F665E0 
-X-CRM114-Status: GOOD (  12.38  )
+X-CRM114-CacheID: sfid-20231017_014305_342038_B80B9257 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,74 +88,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/21/23 09:02, Jason-ch Chen wrote:
-> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
+Hi Daniel,
+
+On Mon, Sep 18, 2023 at 12:07:06PM +0200, Markus Schneider-Pargmann wrote:
+> Fix the probe function to call mtk_thermal_release_periodic_ts for
+> everything != MTK_THERMAL_V1. This was accidentally changed from V1
+> to V2 in the original patch.
 > 
-> MT8188 is a SoC based on 64bit ARMv8 architecture. It contains 6 CA55
-> and 2 CA78 cores. MT8188 share many HW IP with MT65xx series.
-> 
-> We add basic chip support for MediaTek MT8188 on evaluation board.
-> 
-> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reported-by: Frank Wunderlich <frank-w@public-files.de>
+> Closes: https://lore.kernel.org/lkml/B0B3775B-B8D1-4284-814F-4F41EC22F532@public-files.de/
+> Reported-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Closes: https://lore.kernel.org/lkml/07a569b9-e691-64ea-dd65-3b49842af33d@linaro.org/
+> Fixes: 33140e668b10 ("thermal/drivers/mediatek: Control buffer enablement tweaks")
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+
+Did you have a chance to have a look at this fix and the other one for
+auxadc_thermal?
+  https://lore.kernel.org/linux-arm-kernel/20230907112018.52811-1-linux@fw-web.de/
+
+Thanks!
+
+Best,
+Markus
+
 > ---
->   arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->   arch/arm64/boot/dts/mediatek/mt8188-evb.dts | 400 ++++++++
->   arch/arm64/boot/dts/mediatek/mt8188.dtsi    | 951 ++++++++++++++++++++
->   3 files changed, 1352 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-evb.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>  drivers/thermal/mediatek/auxadc_thermal.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-
-[...]
-
-> +	soc {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		gic: interrupt-controller@c000000 {
-
-Hi Jason,
-
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:320.37-341.5: Warning 
-(avoid_unnecessary_addr_size): /soc/interrupt-controller@c000000: 
-unnecessary #address-cells/#size-cells without "ranges" or child "reg" 
-property
-
-
-This warning pops up when trying dtbs_check.
-Can you have a look please ?
-
-Eugen
-
-> +			compatible = "arm,gic-v3";
-> +			#interrupt-cells = <4>;
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			#redistributor-regions = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupt-controller;
-> +			reg = <0 0x0c000000 0 0x40000>,
-> +			      <0 0x0c040000 0 0x200000>;
-> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-> +
-> +			ppi-partitions {
-> +				ppi_cluster0: interrupt-partition-0 {
-> +					affinity = <&cpu0 &cpu1 &cpu2 &cpu3 &cpu4 &cpu5>;
-> +				};
-> +
-> +				ppi_cluster1: interrupt-partition-1 {
-> +					affinity = <&cpu6 &cpu7>;
-> +				};
-> +			};
-> +		};
-> +
-
-[...]
-
+> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
+> index 843214d30bd8..8b0edb204844 100644
+> --- a/drivers/thermal/mediatek/auxadc_thermal.c
+> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
+> @@ -1267,7 +1267,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>  
+>  	mtk_thermal_turn_on_buffer(mt, apmixed_base);
+>  
+> -	if (mt->conf->version != MTK_THERMAL_V2)
+> +	if (mt->conf->version != MTK_THERMAL_V1)
+>  		mtk_thermal_release_periodic_ts(mt, auxadc_base);
+>  
+>  	if (mt->conf->version == MTK_THERMAL_V1)
+> -- 
+> 2.40.1
+> 
 
