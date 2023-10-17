@@ -4,100 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51232CDB485
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 19:06:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD76BCDB474
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 19:19:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OVZCqq/chP4rxGDQYZJWg42hg+RWlOex6MbvzquphzE=; b=K3foLteaWG1kLYbXmm+cogBcaj
-	Moxz82eXqAkjFjKkqqQaeUDIXLeTx/ToCqzRAC4SR+ujyyoVWKQBRhbEJL/bLsZ0DozwoSyDGQ3rU
-	trlCCZmJv0I/zr/Fa8cj7S3CE1UHutRk07d96u7lH1xTPgClj5U+BOOgbZRJLzqbTo2KMx/NIrI8c
-	gIhBt6zcnIQo8KeJfySu4iLLjeBqPj1N9FAC6m9ptTNMeNP024LiIxQ6OIdO17Me00xo+Cz2wet16
-	puDv2w0P5qSzYpF/3ZXAy99HSo5MyUJPdjgr95rkS7Eq0RitfiSlptyvoQvgkkJ+nL63wuS45PBT+
-	o/3Eirjg==;
+	bh=hRbfGybtcC4Q4xK9Jhz49EEEj1HrZpSkJKq488b1wYI=; b=d3taHu2k5Prze76+jVZUMdcWJI
+	C4kNye+wvHu07BmKjJAH6JszqbBA76QPPO92Ge+qe9VjoZlwfcxYDXP9jWsUb/11upjM53J/zKK3B
+	ELJbYiQrU/of4+QFL1MSvrigxVXXDK6aGdD6FDucKLEQpgyzOf2+3IqffJnLLOFbbeR5PzrHuhcp1
+	5hixzWK7Q258Jj6RwADzbWiYQdZ2uyRvDTJMq8PLBo88dioIY4ie5E2YJKCI/E5BxKYxIlj9tMzYN
+	yIQgbGnPPgAIJ+Q0eH5dtnolewaIJr5bHlwiV6gtetdEVeUEnMD71o8SMRB9XeNjAx3tHRLMbSfTZ
+	Xo+kEevw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qspOO-00D2y7-0Q;
-	Tue, 17 Oct 2023 19:06:12 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1qspbL-00D4pp-1w;
+	Tue, 17 Oct 2023 19:19:35 +0000
+Received: from mx11lb.world4you.com ([81.19.149.121])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qspOA-00D2ls-32
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Oct 2023 19:06:00 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-53e08b60febso9379187a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Oct 2023 12:05:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1697569553; x=1698174353; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OVZCqq/chP4rxGDQYZJWg42hg+RWlOex6MbvzquphzE=;
-        b=Eqre3sl/3VltlJ/tNSbtwMDORFTWFwyckvCK5gmKK4co3dx3E5TLX9ZIo2QGKUV3kk
-         WaebV3REkS+kAXVudoSiqCKMKW69ERpZ0xvD2zLqR0sft3TumNtRbx5VtR/uNIDvm6bz
-         afAIvEuIgLWkAmqg0JCwAOtFEuWH5OXqi5eaiPa5CLoXNe+j2wIqtMvKaBsQNi9Lb/cX
-         jMz/GjJVFwVZGKlDZjiFDoUYXzbhF4600ezl7wsJjAKVjo9eQdnKL3NMK8qlXhpRAqhl
-         FzB7X9HalfraD6pHXairZUlsJU/03CiPxM4kp1IwMYfv1I2dtFAv5gaT3iNOS5vINxBU
-         TjFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697569553; x=1698174353;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OVZCqq/chP4rxGDQYZJWg42hg+RWlOex6MbvzquphzE=;
-        b=prC+9EVQGnEsv51CQmeaPH+6Kz+U16oxi70tPwgWVcf15C9gJhu9T93BaHx9fm1+Ob
-         u78mNHJlUQ6d8UXXlKX5l81xk/oHIxawB+uBgLECfmvuWQ3QDmtFac4uT6Dn5xMiMrR2
-         nyONoXJPo8UCV6tZLnjtR+fNCmbsZDJJ+jA8oU6CYWqSDikvy7ro7Q2RefLv0lfpIb4r
-         XFjMk9rp1+4QGQOUucB+n/ZYWKiLXHl0XvdJgZQsv+cCdUTZcsI/7wT29fHH/Fw5ZqoQ
-         NWcQIcK2J5pFhcO9Qef37ai7qgKEpTficYwwsOaE+k8DO/4wmt8bP4Vb5wqfsh8UwlJn
-         vacA==
-X-Gm-Message-State: AOJu0YwSEFpMJCYrhj5vGSp1JmPoS5tmSrddiJRm7pcB5LgY6iOpDCiT
-	QjwLj8iVC5iZiqzVbCgaOBiDNQ==
-X-Google-Smtp-Source: AGHT+IHj2HuyJALAM/occuP6U4giNRg5GB6Vy2tZcBVRhxnSKtz5iV+Nt8aVKPhjOfSd93WeNRPaAA==
-X-Received: by 2002:a50:8719:0:b0:533:9df5:ede with SMTP id i25-20020a508719000000b005339df50edemr2459365edb.14.1697569552825;
-        Tue, 17 Oct 2023 12:05:52 -0700 (PDT)
-Received: from ryzen9.fritz.box ([2a01:2a8:8f03:b001:fe65:a70:2777:ab31])
-        by smtp.gmail.com with ESMTPSA id bq14-20020a056402214e00b00537963f692esm1637990edb.0.2023.10.17.12.05.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Oct 2023 12:05:52 -0700 (PDT)
-From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-To: daniel.lezcano@linaro.org,
-	angelogioacchino.delregno@collabora.com,
-	rafael@kernel.org,
-	amitk@kernel.org,
-	rui.zhang@intel.com,
-	matthias.bgg@gmail.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	dunlap@infradead.org,
-	e.xingchen@zte.com.cn,
-	p.zabel@pengutronix.de
-Cc: linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	wenst@chromium.org,
-	ames.lo@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com,
-	abailon@baylibre.com,
-	amergnat@baylibre.com,
-	khilman@baylibre.com
-Subject: [PATCH v5 5/5] thermal/drivers/mediatek/lvts_thermal: Update calibration data documentation
-Date: Tue, 17 Oct 2023 21:05:45 +0200
-Message-ID: <20231017190545.157282-6-bero@baylibre.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231017190545.157282-1-bero@baylibre.com>
-References: <20231017190545.157282-1-bero@baylibre.com>
+	id 1qspbH-00D4ko-2F;
+	Tue, 17 Oct 2023 19:19:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=hRbfGybtcC4Q4xK9Jhz49EEEj1HrZpSkJKq488b1wYI=; b=f3O6uWhfVuFcx5VC4Lri+Z8xMP
+	aEAuW35JcCDw5jyvHUXN3ojVvwLDrrKBdcXWV35W/scFFPYxd/XGYrSFvo7AMm1p+AcgQuC5HxjHh
+	4tLECcrM98rS0sfpSF238CJu0LyNkPyA/fEFFJQoq3wZ3pRV5a9B7XA1KST8l+3I6Qyg=;
+Received: from [88.117.60.21] (helo=[10.0.0.160])
+	by mx11lb.world4you.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <gerhard@engleder-embedded.com>)
+	id 1qspai-0000aP-2c;
+	Tue, 17 Oct 2023 21:18:56 +0200
+Message-ID: <00181d0f-e7b3-4fb1-a3f7-12935ab03f8b@engleder-embedded.com>
+Date: Tue, 17 Oct 2023 21:18:51 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 1/8] dt-bindings: net: Add missing
+ (unevaluated|additional)Properties on child node schemas
+To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>,
+ =?UTF-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
+ John Crispin <john@phrozen.org>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Sergey Shtylyov <s.shtylyov@omp.ru>,
+ Sergei Shtylyov <sergei.shtylyov@gmail.com>,
+ Justin Chen <justin.chen@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com
+References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
+ <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
+Content-Language: en-US
+From: Gerhard Engleder <gerhard@engleder-embedded.com>
+In-Reply-To: <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AV-Do-Run: Yes
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_120558_990646_B195315A 
-X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-CacheID: sfid-20231017_121931_749421_9B8BDAF5 
+X-CRM114-Status: UNSURE (   9.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,70 +105,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Balsam CHIHI <bchihi@baylibre.com>
+On 16.10.23 23:44, Rob Herring wrote:
+> Just as unevaluatedProperties or additionalProperties are required at
+> the top level of schemas, they should (and will) also be required for
+> child node schemas. That ensures only documented properties are
+> present for any node.
+> 
+> Add unevaluatedProperties or additionalProperties as appropriate.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>   .../devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml     |  2 ++
+>   Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml        |  1 +
+>   Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml |  2 ++
+>   .../devicetree/bindings/net/dsa/microchip,lan937x.yaml         |  1 +
+>   Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml     |  2 ++
+>   Documentation/devicetree/bindings/net/dsa/qca8k.yaml           |  1 +
+>   Documentation/devicetree/bindings/net/dsa/realtek.yaml         |  2 ++
+>   .../devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml        | 10 ++--------
+>   Documentation/devicetree/bindings/net/engleder,tsnep.yaml      |  1 +
 
-Update LVTS calibration data documentation for mt8192 and mt8195.
+Looks good for tsnep.
 
-Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-[bero@baylibre.com: Fix issues pointed out by Nícolas F. R. A. Prado <nfraprado@collabora.com>]
-Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- drivers/thermal/mediatek/lvts_thermal.c | 31 +++++++++++++++++++++++--
- 1 file changed, 29 insertions(+), 2 deletions(-)
+Reviewed-by: Gerhard Engleder <gerhard@engleder-embedded.com>
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 487401424951d..15fcf573f5cc5 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -604,7 +604,34 @@ static int lvts_sensor_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
-  * The efuse blob values follows the sensor enumeration per thermal
-  * controller. The decoding of the stream is as follow:
-  *
-- * stream index map for MCU Domain :
-+ * MT8192 :
-+ * Stream index map for MCU Domain mt8192 :
-+ *
-+ * <-----mcu-tc#0-----> <-----sensor#0----->        <-----sensor#1----->
-+ *  0x01 | 0x02 | 0x03 | 0x04 | 0x05 | 0x06 | 0x07 | 0x08 | 0x09 | 0x0A | 0x0B
-+ *
-+ * <-----sensor#2----->        <-----sensor#3----->
-+ *  0x0C | 0x0D | 0x0E | 0x0F | 0x10 | 0x11 | 0x12 | 0x13
-+ *
-+ * <-----sensor#4----->        <-----sensor#5----->        <-----sensor#6----->        <-----sensor#7----->
-+ *  0x14 | 0x15 | 0x16 | 0x17 | 0x18 | 0x19 | 0x1A | 0x1B | 0x1C | 0x1D | 0x1E | 0x1F | 0x20 | 0x21 | 0x22 | 0x23
-+ *
-+ * Stream index map for AP Domain mt8192 :
-+ *
-+ * <-----sensor#0----->        <-----sensor#1----->
-+ *  0x24 | 0x25 | 0x26 | 0x27 | 0x28 | 0x29 | 0x2A | 0x2B
-+ *
-+ * <-----sensor#2----->        <-----sensor#3----->
-+ *  0x2C | 0x2D | 0x2E | 0x2F | 0x30 | 0x31 | 0x32 | 0x33
-+ *
-+ * <-----sensor#4----->        <-----sensor#5----->
-+ *  0x34 | 0x35 | 0x36 | 0x37 | 0x38 | 0x39 | 0x3A | 0x3B
-+ *
-+ * <-----sensor#6----->        <-----sensor#7----->        <-----sensor#8----->
-+ *  0x3C | 0x3D | 0x3E | 0x3F | 0x40 | 0x41 | 0x42 | 0x43 | 0x44 | 0x45 | 0x46 | 0x47
-+ *
-+ * MT8195 :
-+ * Stream index map for MCU Domain mt8195 :
-  *
-  * <-----mcu-tc#0-----> <-----sensor#0-----> <-----sensor#1----->
-  *  0x01 | 0x02 | 0x03 | 0x04 | 0x05 | 0x06 | 0x07 | 0x08 | 0x09
-@@ -615,7 +642,7 @@ static int lvts_sensor_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
-  * <-----mcu-tc#2-----> <-----sensor#4-----> <-----sensor#5-----> <-----sensor#6-----> <-----sensor#7----->
-  *  0x13 | 0x14 | 0x15 | 0x16 | 0x17 | 0x18 | 0x19 | 0x1A | 0x1B | 0x1C | 0x1D | 0x1E | 0x1F | 0x20 | 0x21
-  *
-- * stream index map for AP Domain :
-+ * Stream index map for AP Domain mt8195 :
-  *
-  * <-----ap--tc#0-----> <-----sensor#0-----> <-----sensor#1----->
-  *  0x22 | 0x23 | 0x24 | 0x25 | 0x26 | 0x27 | 0x28 | 0x29 | 0x2A
--- 
-2.42.0
+Thank you!
 
+>   Documentation/devicetree/bindings/net/nxp,tja11xx.yaml         |  1 +
+>   10 files changed, 15 insertions(+), 8 deletions(-)
 
