@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A22CDB482
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 11:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4FC2CDB474
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 13:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3f8o9PjXxUPwVElK1Y3ywIy3QQmJTQGDlfsj+b6JTwE=; b=qQTTEGiTPCD1lp
-	DJ+tiPUChFANMwdvAFIl0SAFLagO+8/4RXPwxhjtvzbpjvTdCSKANmCE5gmA8KJt2cYU42tuw8Gz7
-	ITV6B2g5BIlVrc7/aGLAcYzdU291JrSy42UfRXaWVjz31J4ZbJfZN3wq96Whwf5K/VlMBCSXlGVGt
-	n3DkKBv5M757psjLD5GYPmnYQ2NM8a8oKNXJ5h416ZF9AXK48zmRoawmFbcW9vO59ST3ngW/RTUeP
-	YYuK82MPsQvTvL51WUwA8oDPJRx8P2l14MN7DrMiKmxDu6gT4XiOGOHg5gAbunOhh481HPNly8oqe
-	yOKCpYmOyH+BdDt+Mwkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pjZPD+Q6gEJDqeg9XXTZCDYC3n1QQtLd8PFq3pc15VI=; b=bPazx62EL8iGTZKFGCZwi0KphB
+	Qc3aBMIAwoCOhY+wqXYChK7AhsO0QEzMQ2oWPZLJ7Rrj2vn747mNsfH3/AAnluCHMeuOC4gPIYim0
+	Ld+hrHpOwRYCnHb5RDX+bu7LLzka6Hb/AsqXxsKfKTtZGOzL93lREpeFX+jhokiNeTpjwrbG5G8lp
+	zhtrxP60XSQv99vRSYRBsRlAKTQGVuxCrIL1hSrj+KS3FbjbnqoTlYeydahUisJBCrh5iW6csZtru
+	75+7SvoLj65tsJU2LMOhbvrqjma5H44WLBq2hNjQoaE1zCqgvnlXNUUbcByEr0M0qASii0UsDVCNm
+	vAxOqBIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsihN-00CFsK-1O;
-	Tue, 17 Oct 2023 11:57:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qsjmK-00CLe1-2G;
+	Tue, 17 Oct 2023 13:06:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsihK-00CFrj-39;
-	Tue, 17 Oct 2023 11:57:20 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3F06566084C6;
-	Tue, 17 Oct 2023 12:57:14 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697543835;
-	bh=AyuqoMdszEZGzIWvv2uoi2F/5G+cqfsrjpIs6w3mh0I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ww2qGQ2R4Q6QkN5em1t0y5CZi7yoro3gEHwoYsemaDDR9jjn28lISZtaFBK22Z1fk
-	 Qi92yYJksMQk3MpU7+yeaK/LgcMWwAA5RfaB/1U51LpTELkztPmxND2KmcXhICOHtn
-	 GPmzSZVJjMD5HZGPIWJmpRH782qrcpshwshkEQlHvFs3fNlf4SV9qhEZcIJNgweKDI
-	 u4YeRzIOvORqPiLscuglPAvVuURm6xg6p4fCF08oJkvFpUMKxIpUu6nA2z+ZS9EhMX
-	 53zsfsZi75dcGYTTo5cDDirk2VaTeIzEgyAEG0zjFTeaIbeXeQiEMPZeRHApfijy3r
-	 9f6y9uDcT5T3A==
-Message-ID: <ff9374af-2664-4bd0-a13f-257fbf09dc2a@collabora.com>
-Date: Tue, 17 Oct 2023 13:57:12 +0200
+	id 1qsjmH-00CLdU-2J
+	for linux-mediatek@lists.infradead.org;
+	Tue, 17 Oct 2023 13:06:31 +0000
+X-UUID: f8bb8bf26ced11ee9b7791016c24628a-20231017
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pjZPD+Q6gEJDqeg9XXTZCDYC3n1QQtLd8PFq3pc15VI=;
+	b=YpwYAJlmo3ZJg806rjmFM2ezqbrQEC9+lAoxKvrvV5efAb8qS3V0Xmh12Mxwptp80fj/mG26LxZQ3k9b5eFrU4tbomHgxnvgt6/1YandHvmFR8QF2DDV8DexwPI0uDSsshDFHRfKlxrM4TX/5+rJv5c9WEHADXu/XG9P+8SP1Wo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:2a3e5a33-5516-4567-8ecb-c26267297b81,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:38ece5f0-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: f8bb8bf26ced11ee9b7791016c24628a-20231017
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 406725135; Tue, 17 Oct 2023 06:06:23 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 17 Oct 2023 21:06:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 17 Oct 2023 21:06:20 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
+	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7921: fix kernel panic by accessing invalid 6GHz channel info
+Date: Tue, 17 Oct 2023 21:04:24 +0800
+Message-ID: <b3c45980a230f17af186d4004107ed27ee952cc9.1697547461.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 15/23] drm/mediatek: Manage component's clock with
- function pointers
-Content-Language: en-US
-To: =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-References: <20231016104010.3270-1-shawn.sung@mediatek.com>
- <20231016104010.3270-16-shawn.sung@mediatek.com>
- <91932706-c42c-4c10-96bd-c8a91b7d82f0@collabora.com>
- <714697a54f449cbc78620f7482ca78173fc94230.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <714697a54f449cbc78620f7482ca78173fc94230.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_045719_174150_76BB791B 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20231017_060629_770678_B17BA35C 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,72 +87,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?B?TmF0aGFuIEx1ICjlkYLmnbHpnJYp?= <Nathan.Lu@mediatek.com>, "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "sean@poorly.run" <sean@poorly.run>, "johnson.wang@mediatek.corp-partner.google.com" <johnson.wang@mediatek.corp-partner.google.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?WW9uZ3FpYW5nIE5pdSAo54mb5rC45by6KQ==?= <yongqiang.niu@mediatek.com>, "hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "mchehab@kernel.org" <mchehab@kernel.org>, "airlied@gmail.com" <airlied@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/10/23 12:50, Shawn Sung (宋孝謙) ha scritto:
-> Hi Angelo,
-> 
-> On Tue, 2023-10-17 at 11:47 +0200, AngeloGioacchino Del Regno wrote:
->> Il 16/10/23 12:40, Hsiao Chien Sung ha scritto:
->>> By registering component related functions to the pointers,
->>> we can easily manage them within a for-loop and simplify the
->>> logic of clock control significantly.
->>>
->>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->>> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
->>> ---
->>>    .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 111 +++++++----
->>> -------
->>>    1 file changed, 44 insertions(+), 67 deletions(-)
->>>
->>> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
->>> b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
->>> index 60e5dfe9ef0d..fffef2a4f919 100644
->>> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
->>> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
->>> @@ -53,6 +53,7 @@ struct ovl_adaptor_comp_match {
->>>    	enum mtk_ovl_adaptor_comp_type type;
->>>    	enum mtk_ddp_comp_id comp_id;
->>>    	int alias_id;
->>> +	const struct mtk_ddp_comp_funcs *funcs;
->>>    };
->>>    
->>>    struct mtk_disp_ovl_adaptor {
->>> @@ -67,20 +68,35 @@ static const char * const
->>> private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
->>>    	[OVL_ADAPTOR_TYPE_MERGE]	= "merge",
->>>    };
->>>    
->>> +static const struct mtk_ddp_comp_funcs _ethdr = {
->>
->> Sorry I just noticed that; can you please remove the leading "_" from
->> all
->> of those?
->>
->> _ethdr -> ethdr or mtk_ethdr
->> _merge -> merge or mtk_merge
->> _rdma  -> rdma  or mtk_rdma
->>
->> Thanks,
->> Angelo
->>
-> 
-> Sure. Will do in the next version.
-> The reason I didn't use mtk_* is simply because of the column width
-> will exceed 100 characaters.
-> 
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Okay that would not be good, I guess that just `ethdr`, `merge`, `rdma` will
-be fine then.
+When the chip not support 6GHz capability, the channels of 6GHz information
+should not be updated.
 
-Cheers,
-Angelo
+May get the stacktrace without this patch.
+<1>[   19.442078] Unable to handle kernel NULL pointer dereference at
+virtual address 0000000000000014
+<1>[   19.457535] Mem abort info:
+<1>[   19.465329]   ESR = 0x0000000096000004
+<1>[   19.473295]   EC = 0x25: DABT (current EL), IL = 32 bits
+<1>[   19.482354]   SET = 0, FnV = 0
+<1>[   19.489143]   EA = 0, S1PTW = 0
+<1>[   19.495991]   FSC = 0x04: level 0 translation fault
+<1>[   19.504554] Data abort info:
+<1>[   19.511111]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+<1>[   19.520269]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+<1>[   19.528988]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+<1>[   19.537960] user pgtable: 4k pages, 48-bit VAs, pgdp=00000001027a9000
+<1>[   19.548014] [0000000000000014] pgd=0000000000000000, p4d=000000000000
+<0>[   19.558429] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+<4>[   19.568270] Modules linked in: mt7921e mt7921_common mt792x_lib
+mt76_connac_lib mt76 mac80211 btusb btintel cfg80211 btmtk snd_sof_ipc_msg_
+btrtl snd_sof_ipc_flood_test btbcm bluetooth snd_sof_mt8195 uvcvideo
+mtk_adsp_common snd_sof_xtensa_dsp uvc snd_sof_of snd_sof videobuf2_vmalloc
+ecdh_generic ecc snd_sof_utils cros_ec_lid_angle cros_ec_sensors crct10dif_
+cros_ec_sensors_core cros_usbpd_logger crypto_user fuse ip_tables ipv6
+<4>[   19.614237] CPU: 1 PID: 105 Comm: kworker/1:1 Not tainted
+6.6.0-rc6-next-20231017+ #324
+<4>[   19.625957] Hardware name: Acer Tomato (rev2) board (DT)
+<4>[   19.634970] Workqueue: events mt7921_init_work [mt7921_common]
+<4>[   19.644522] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTY
+<4>[   19.655182] pc : mt7921_regd_notifier+0x180/0x290 [mt7921_common]
+<4>[   19.664983] lr : mt7921_regd_notifier+0xd4/0x290 [mt7921_common]
+<4>[   19.674679] sp : ffff800080acba80
+<4>[   19.681649] x29: ffff800080acba80 x28: 0000000000000000 x27: ffff4faf
+<4>[   19.692483] x26: 0000000000000000 x25: 0000000000000000 x24: ffff4faf
+<4>[   19.703294] x23: 00000000ffffe926 x22: ffff4faf16031fa0 x21: 00000000
+<4>[   19.714108] x20: 000000000000001c x19: ffff4faf16ba6f40 x18: 00000000
+<4>[   19.724928] x17: 0000000000000000 x16: ffffac6b891c2750 x15: ffff8000
+<4>[   19.735722] x14: 0000000000000180 x13: 0000000000000000 x12: 00000000
+<4>[   19.746478] x11: 0000000000000002 x10: ffff4faf01c21780 x9 : ffffac6b
+<4>[   19.757214] x8 : 00000000006c0000 x7 : ffffac6b6b020cf0 x6 : ffffac6b
+<4>[   19.767945] x5 : ffffac6b6b020d00 x4 : ffffac6b6b020cf8 x3 : ffff4faf
+<4>[   19.778648] x2 : 0000000000000000 x1 : 000000000000001c x0 : 00000000
+<4>[   19.789366] Call trace:
+<4>[   19.795381]  mt7921_regd_notifier+0x180/0x290 [mt7921_common]
+<4>[   19.804675]  wiphy_update_regulatory+0x2bc/0xa08 [cfg80211]
+<4>[   19.813864]  wiphy_regulatory_register+0x4c/0x88 [cfg80211]
+<4>[   19.823029]  wiphy_register+0x75c/0x8d0 [cfg80211]
+<4>[   19.831446]  ieee80211_register_hw+0x70c/0xc10 [mac80211]
+<4>[   19.840479]  mt76_register_device+0x168/0x2e8 [mt76]
+<4>[   19.849008]  mt7921_init_work+0xdc/0x250 [mt7921_common]
+<4>[   19.857817]  process_one_work+0x148/0x3c0
+<4>[   19.865292]  worker_thread+0x32c/0x450
+<4>[   19.872489]  kthread+0x11c/0x128
+<4>[   19.879173]  ret_from_fork+0x10/0x20
+<0>[   19.886153] Code: f0000041 9100a021 94000aef aa0003f9 (b9401780)
+<4>[   19.895634] ---[ end trace 0000000000000000 ]---
 
-> Thanks,
-> Shawn
+Reported-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Closes: https://lore.kernel.org/all/927e7d50-826d-4c92-9931-3c59b18c6945@collabora.com/
+Fixes: 09382d8f8641 ("mt7921: update the channel usage when the regd domain changed")
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 55baac70860b..7d6a9d746011 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -88,6 +88,9 @@ mt7921_regd_channel_update(struct wiphy *wiphy, struct mt792x_dev *dev)
+ 	}
+ 
+ 	sband = wiphy->bands[NL80211_BAND_6GHZ];
++	if (!sband)
++		return;
++
+ 	band_np = np ? of_get_child_by_name(np, "txpower-6g") : NULL;
+ 	for (i = 0; i < sband->n_channels; i++) {
+ 		ch = &sband->channels[i];
+-- 
+2.18.0
 
 
