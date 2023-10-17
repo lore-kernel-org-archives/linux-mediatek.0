@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30789CDB474
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C834ACDB482
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:50:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z2zOntco4Z27phuy5b1/fLXxkl8Lyl4EPnZgMlQhiIs=; b=reYUd5C6QLHdiJ3aV3V9D+eLOl
-	6gQ48KlALKJTTKGuZf5+hJLhSPDGdy1Z+/RQ7lN3bmCwBNUyEloGnz0n96gyRtyT5l/GACAkwAoj/
-	m+36UO1VTcmzxKFHDxfRcnCr/JDY/n2YfD1mXmo0ForR4Ph2b7Xt1B4lHUzXCXkOzPMA8YdSbzv4h
-	aQ8UD3g1oEmprSYNKAT/HWX6YPCpwg2A1TQQfMSEtpnU6jeGnOjQXvlCD1DQRqepbCXSiYKYX8BwZ
-	pEu1m0yrxKS8rhKyCH2rBiagoYaygU3y8PSjgIkAaWMlXWsDBqhvjSMpMkxN74jTxoAHIStlvuCkP
-	/Hm7VWew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yw165YShD+jYsQ+zSro7G//NnpP1K1ncZ/t1U1FhzLI=; b=ah37cwE3EsBIgsAavIGR75SZw5
+	WFxiEdsrVE8RfbPPZItoQmy6+unUU5u3HDpw8lkFs5/X4faAuQswpb4wEINIQaFZIgkgZiD4SCWCS
+	u3ZR/Yf5AdaY39Jfy0IiPaIKEq3F0afdi0e/6FsekXn3IFsUcL6i8/Q6SE4MAHaDn+siVwzxBsJeo
+	1FM/aHtPncoFO0vmsT2xIvoE/7EoxMFFQ6ep06wvN2vFr//EmuNO7U7za0FyCiB3I1ufIV3V8j1Xm
+	SPO04xOvS0Kfs4oq9S0SJRkWP6xKSBobVPk7md3INxzMPdlkZMODFF5HFZo09/rfFXaAUxsDIdU35
+	srCYO0DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdsk-00BTqm-0W;
-	Tue, 17 Oct 2023 06:48:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qsdu0-00BUAr-2H;
+	Tue, 17 Oct 2023 06:50:04 +0000
+Received: from relay8-d.mail.gandi.net ([217.70.183.201])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdsa-00BTii-0e;
-	Tue, 17 Oct 2023 06:48:39 +0000
-X-UUID: 2cd244106cb911ee9b7791016c24628a-20231016
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Z2zOntco4Z27phuy5b1/fLXxkl8Lyl4EPnZgMlQhiIs=;
-	b=D8WaTIpzMrlnYANJFNkdzDDsi0f/YMLKzcPhCLvplqVUtQAC9FaPz5LfsqlTuZKYNBIXMXL+VT6Rnr9Pd9LFjq0pUEnSydchbVMgHgnuneUx5tBh4cCDh/MXtMj3usuUt1GB1Yo6xYbsgkyuV1V5U23VScvm96IeiJCo89epXAk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:0dfc314c-d9bf-420c-ab32-a369565407f7,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:5f78ec9,CLOUDID:e1ee36c4-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2cd244106cb911ee9b7791016c24628a-20231016
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1036608562; Mon, 16 Oct 2023 23:48:27 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 17 Oct 2023 14:47:19 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 17 Oct 2023 14:47:19 +0800
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, "Chen-Yu
- Tsai" <wenst@chromium.org>, Sean Paul <sean@poorly.run>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, Singo Chang
-	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Jason-JH Lin
-	<jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>
-Subject: [PATCH v3 07/11] drm/mediatek: Support alpha blending in VDOSYS0
-Date: Tue, 17 Oct 2023 14:47:13 +0800
-Message-ID: <20231017064717.21616-8-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231017064717.21616-1-shawn.sung@mediatek.com>
-References: <20231017064717.21616-1-shawn.sung@mediatek.com>
+	id 1qsdtx-00BU9P-1G;
+	Tue, 17 Oct 2023 06:50:02 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id DD45E1BF20B;
+	Tue, 17 Oct 2023 06:49:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1697525397;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=yw165YShD+jYsQ+zSro7G//NnpP1K1ncZ/t1U1FhzLI=;
+	b=K3HR3OuGuZQEF1YGIv9YEsfVAK99h+pZPuj6kp3k2EvhxVXdr4s6+d3zjPPZlVMg5cjYf3
+	kuQ9XCxp+7y9qBFuK4rXvFDG7/7/7bdRKFnEz001yMzhwsHBMO81/Q+ePRdG2DlGPHKO5P
+	37WavWXhDZeVhmMIjiV1V5X90X/lFreP7zPOEhENI+w8vajSraa7Ki9g9xbpmYiQyCWZ8M
+	baxiyzwvBF6HHNmdsQ+5hwGwP1CBvDH2P40zmgKTSIti8NRC6k0l5wNwHKXgXYKqIa05XA
+	s86aXC3Gp7jYgppjXLBXVgGN4DGUhEjWjLDDZEOKn0dQr1HBeD7ciSbi7L6Vjw==
+Message-ID: <b6da29fb-243b-4b85-9ed9-4e266422264c@arinc9.com>
+Date: Tue, 17 Oct 2023 09:49:29 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--11.236600-8.000000
-X-TMASE-MatchedRID: GlUfE5FNQQz2fv0LTPfvM5JAa1C/+FcuEbxKVXd70tWU8ftiyKjZrRsY
-	DextMHGuGJd2qe6nWQsaTIVsbS1pG+F/B1jEjV+6y7TSWcbz49b/lBG+uXYJkNchlMhSt6FexEs
-	GD8geUL38aLTyW2a3YkhxRggzEU3FMH15eekLeUiHZXNSWjgdU4ED+PNzPecBRQ0dAChl/lz8/L
-	2o6LnOlxWt9a3ryuo3lHJpPX3ZHleyRDt3x3st943NgkEqAN0RpwnFZnn+VHwHBp+1KU23QYFaK
-	sEtPT2WFm9c8s2OWMvrSFeO0C8F5I9oUcx9VMLgFEUknJ/kEl7dB/CxWTRRu25FeHtsUoHuPmT0
-	js3FXVC5lpKwiuLw5JGumwfIFp5jAUfAWyyQaUW+68HqACCvKA==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--11.236600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: FCB9604EA221C53E732E0093068681EECA5186819A4692C8AE7D4BDC42D0E7452000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 8/8] dt-bindings: net: dsa: Drop 'ethernet-ports'
+ node properties
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
+ John Crispin <john@phrozen.org>,
+ Gerhard Engleder <gerhard@engleder-embedded.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Sergey Shtylyov <s.shtylyov@omp.ru>,
+ Sergei Shtylyov <sergei.shtylyov@gmail.com>,
+ Justin Chen <justin.chen@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Grygorii Strashko <grygorii.strashko@ti.com>, Sekhar Nori <nsekhar@ti.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com
+References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
+ <20231016-dt-net-cleanups-v1-8-a525a090b444@kernel.org>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20231016-dt-net-cleanups-v1-8-a525a090b444@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_234836_245452_1E232F4D 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20231016_235001_563907_B0E32BE7 
+X-CRM114-Status: UNSURE (   6.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,338 +104,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support premultiply and coverage alpha blending modes.
+On 17.10.2023 00:44, Rob Herring wrote:
+> Constraints on 'ethernet-ports' node properties are already defined by the
+> reference to ethernet-switch.yaml, so they can be dropped from the DSA
+> schema.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 202 +++++++++++++++++++++---
- 1 file changed, 178 insertions(+), 24 deletions(-)
+Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 5aaf4342cdbd..75de1350e337 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -31,6 +31,7 @@
- #define OVL_LAYER_SMI_ID_EN				BIT(0)
- #define OVL_BGCLR_SEL_IN				BIT(2)
- #define OVL_LAYER_AFBC_EN(n)				BIT(4+n)
-+#define OVL_OUTPUT_CLAMP				BIT(26)
- #define DISP_REG_OVL_ROI_BGCLR			0x0028
- #define DISP_REG_OVL_SRC_CON			0x002c
- #define DISP_REG_OVL_CON(n)			(0x0030 + 0x20 * (n))
-@@ -39,10 +40,28 @@
- #define DISP_REG_OVL_PITCH_MSB(n)		(0x0040 + 0x20 * (n))
- #define OVL_PITCH_MSB_2ND_SUBBUF			BIT(16)
- #define DISP_REG_OVL_PITCH(n)			(0x0044 + 0x20 * (n))
-+#define OVL_CONST_BLEND					BIT(28)
- #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
- #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
- #define DISP_REG_OVL_ADDR_MT2701		0x0040
- #define DISP_REG_OVL_CLRFMT_EXT			0x02D0
-+#define DISP_REG_OVL_CLRFMT_EXT1		0x02D8
-+#define OVL_CLRFMT_EXT1_CSC_EN(n)			(1 << (((n) * 4) + 1))
-+#define DISP_REG_OVL_Y2R_PARA_R0(n)		(0x0134 + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_RMY				(GENMASK(14, 0))
-+#define DISP_REG_OVL_Y2R_PARA_G0(n)		(0x013c + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_GMU				(GENMASK(30, 16))
-+#define DISP_REG_OVL_Y2R_PARA_B1(n)		(0x0148 + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_BMV				(GENMASK(14, 0))
-+#define DISP_REG_OVL_Y2R_PARA_YUV_A_0(n)	(0x014c + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_YA				(GENMASK(10, 0))
-+#define OVL_Y2R_PARA_C_CF_UA				(GENMASK(26, 16))
-+#define DISP_REG_OVL_Y2R_PARA_YUV_A_1(n)	(0x0150 + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_VA				(GENMASK(10, 0))
-+#define DISP_REG_OVL_Y2R_PRE_ADD2(n)		(0x0154 + 0x28 * (n))
-+#define DISP_REG_OVL_R2R_R0(n)			(0x0500 + 0x40 * (n))
-+#define DISP_REG_OVL_R2R_G1(n)			(0x0510 + 0x40 * (n))
-+#define DISP_REG_OVL_R2R_B2(n)			(0x0520 + 0x40 * (n))
- #define DISP_REG_OVL_ADDR_MT8173		0x0f40
- #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
- #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
-@@ -52,13 +71,19 @@
- #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
- #define GMC_THRESHOLD_LOW	((1 << GMC_THRESHOLD_BITS) / 8)
- 
--#define OVL_CON_BYTE_SWAP	BIT(24)
--#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
--#define OVL_CON_CLRFMT_RGB	(1 << 12)
--#define OVL_CON_CLRFMT_RGBA8888	(2 << 12)
--#define OVL_CON_CLRFMT_ARGB8888	(3 << 12)
--#define OVL_CON_CLRFMT_UYVY	(4 << 12)
--#define OVL_CON_CLRFMT_YUYV	(5 << 12)
-+#define OVL_CON_CLRFMT_MAN		BIT(23)
-+#define OVL_CON_BYTE_SWAP		BIT(24)
-+#define OVL_CON_RGB_SWAP		BIT(25)
-+#define OVL_CON_MTX_AUTO_DIS		BIT(26)
-+#define OVL_CON_MTX_EN			BIT(27)
-+#define OVL_CON_CLRFMT_RGB		(1 << 12)
-+#define OVL_CON_CLRFMT_RGBA8888		(2 << 12)
-+#define OVL_CON_CLRFMT_ARGB8888		(3 << 12)
-+#define OVL_CON_CLRFMT_PARGB8888	(OVL_CON_CLRFMT_ARGB8888 | OVL_CON_CLRFMT_MAN)
-+#define OVL_CON_CLRFMT_UYVY		(4 << 12)
-+#define OVL_CON_CLRFMT_YUYV		(5 << 12)
-+#define OVL_CON_MTX_YUV_TO_RGB		(6 << 16)
-+#define OVL_CON_MTX_PROGRAMMABLE	(8 << 16)
- #define OVL_CON_CLRFMT_RGB565(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
- 					0 : OVL_CON_CLRFMT_RGB)
- #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
-@@ -72,6 +97,22 @@
- #define	OVL_CON_VIRT_FLIP	BIT(9)
- #define	OVL_CON_HORZ_FLIP	BIT(10)
- 
-+static inline bool is_10bit_rgb(u32 fmt)
-+{
-+	switch (fmt) {
-+	case DRM_FORMAT_XRGB2101010:
-+	case DRM_FORMAT_ARGB2101010:
-+	case DRM_FORMAT_RGBX1010102:
-+	case DRM_FORMAT_RGBA1010102:
-+	case DRM_FORMAT_XBGR2101010:
-+	case DRM_FORMAT_ABGR2101010:
-+	case DRM_FORMAT_BGRX1010102:
-+	case DRM_FORMAT_BGRA1010102:
-+		return true;
-+	}
-+	return false;
-+}
-+
- static const u32 mt8173_formats[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
-@@ -89,12 +130,20 @@ static const u32 mt8173_formats[] = {
- static const u32 mt8195_formats[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
-+	DRM_FORMAT_XRGB2101010,
- 	DRM_FORMAT_ARGB2101010,
- 	DRM_FORMAT_BGRX8888,
- 	DRM_FORMAT_BGRA8888,
-+	DRM_FORMAT_BGRX1010102,
- 	DRM_FORMAT_BGRA1010102,
- 	DRM_FORMAT_ABGR8888,
- 	DRM_FORMAT_XBGR8888,
-+	DRM_FORMAT_XBGR2101010,
-+	DRM_FORMAT_ABGR2101010,
-+	DRM_FORMAT_RGBX8888,
-+	DRM_FORMAT_RGBA8888,
-+	DRM_FORMAT_RGBX1010102,
-+	DRM_FORMAT_RGBA1010102,
- 	DRM_FORMAT_RGB888,
- 	DRM_FORMAT_BGR888,
- 	DRM_FORMAT_RGB565,
-@@ -208,14 +257,19 @@ void mtk_ovl_clk_disable(struct device *dev)
- void mtk_ovl_start(struct device *dev)
- {
- 	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
-+	unsigned int reg = readl(ovl->regs + DISP_REG_OVL_DATAPATH_CON);
- 
--	if (ovl->data->smi_id_en) {
--		unsigned int reg;
-+	if (ovl->data->smi_id_en)
-+		reg |= OVL_LAYER_SMI_ID_EN;
- 
--		reg = readl(ovl->regs + DISP_REG_OVL_DATAPATH_CON);
--		reg = reg | OVL_LAYER_SMI_ID_EN;
--		writel_relaxed(reg, ovl->regs + DISP_REG_OVL_DATAPATH_CON);
--	}
-+	/*
-+	 * clamp output to 10 bits per channel
-+	 * overflow and underflow usually happens when doing Y2R conversion
-+	 * this bit should be always enable to avoid this kind of situation
-+	 */
-+	reg |= OVL_OUTPUT_CLAMP;
-+
-+	writel_relaxed(reg, ovl->regs + DISP_REG_OVL_DATAPATH_CON);
- 	writel_relaxed(0x1, ovl->regs + DISP_REG_OVL_EN);
- }
- 
-@@ -254,9 +308,7 @@ static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
- 	reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
- 	reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
- 
--	if (format == DRM_FORMAT_RGBA1010102 ||
--	    format == DRM_FORMAT_BGRA1010102 ||
--	    format == DRM_FORMAT_ARGB2101010)
-+	if (is_10bit_rgb(format))
- 		bit_depth = OVL_CON_CLRFMT_10_BIT;
- 
- 	reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
-@@ -274,7 +326,8 @@ void mtk_ovl_config(struct device *dev, unsigned int w,
- 	if (w != 0 && h != 0)
- 		mtk_ddp_write_relaxed(cmdq_pkt, h << 16 | w, &ovl->cmdq_reg, ovl->regs,
- 				      DISP_REG_OVL_ROI_SIZE);
--	mtk_ddp_write_relaxed(cmdq_pkt, 0x0, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_ROI_BGCLR);
-+	mtk_ddp_write_relaxed(cmdq_pkt, 0xff000000, &ovl->cmdq_reg, ovl->regs,
-+			      DISP_REG_OVL_ROI_BGCLR);
- 
- 	mtk_ddp_write(cmdq_pkt, 0x1, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_RST);
- 	mtk_ddp_write(cmdq_pkt, 0x0, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_RST);
-@@ -357,7 +410,8 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
- 		      DISP_REG_OVL_RDMA_CTRL(idx));
- }
- 
--static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
-+static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
-+				    unsigned int blend_mode)
- {
- 	/* The return value in switch "MEM_MODE_INPUT_FORMAT_XXX"
- 	 * is defined in mediatek HW data sheet.
-@@ -376,17 +430,37 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
- 		return OVL_CON_CLRFMT_RGB888(ovl) | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_RGBX8888:
- 	case DRM_FORMAT_RGBA8888:
-+		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
-+		       OVL_CON_CLRFMT_ARGB8888 :
-+		       OVL_CON_CLRFMT_PARGB8888;
-+	case DRM_FORMAT_RGBX1010102:
-+	case DRM_FORMAT_RGBA1010102:
- 		return OVL_CON_CLRFMT_ARGB8888;
- 	case DRM_FORMAT_BGRX8888:
- 	case DRM_FORMAT_BGRA8888:
-+		return OVL_CON_BYTE_SWAP |
-+		       (blend_mode == DRM_MODE_BLEND_COVERAGE ?
-+		       OVL_CON_CLRFMT_ARGB8888 :
-+		       OVL_CON_CLRFMT_PARGB8888);
-+	case DRM_FORMAT_BGRX1010102:
- 	case DRM_FORMAT_BGRA1010102:
- 		return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_XRGB8888:
- 	case DRM_FORMAT_ARGB8888:
-+		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
-+		       OVL_CON_CLRFMT_RGBA8888 :
-+		       OVL_CON_CLRFMT_PARGB8888;
-+	case DRM_FORMAT_XRGB2101010:
- 	case DRM_FORMAT_ARGB2101010:
- 		return OVL_CON_CLRFMT_RGBA8888;
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
-+		return OVL_CON_RGB_SWAP |
-+		       (blend_mode == DRM_MODE_BLEND_COVERAGE ?
-+		       OVL_CON_CLRFMT_RGBA8888 :
-+		       OVL_CON_CLRFMT_PARGB8888);
-+	case DRM_FORMAT_XBGR2101010:
-+	case DRM_FORMAT_ABGR2101010:
- 		return OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_UYVY:
- 		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
-@@ -408,6 +482,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	unsigned int fmt = pending->format;
- 	unsigned int offset = (pending->y << 16) | pending->x;
- 	unsigned int src_size = (pending->height << 16) | pending->width;
-+	unsigned int blend_mode = state->base.pixel_blend_mode;
-+	unsigned int ignore_pixel_alpha = 0;
- 	unsigned int con;
- 	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
- 	union overlay_pitch {
-@@ -420,14 +496,92 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 
- 	overlay_pitch.pitch = pitch;
- 
--	if (!pending->enable) {
-+	if (!pending->enable || !pending->width || !pending->height) {
- 		mtk_ovl_layer_off(dev, idx, cmdq_pkt);
- 		return;
- 	}
- 
--	con = ovl_fmt_convert(ovl, fmt);
--	if (state->base.fb && state->base.fb->format->has_alpha)
--		con |= OVL_CON_AEN | OVL_CON_ALPHA;
-+	con = ovl_fmt_convert(ovl, fmt, blend_mode);
-+	if (state->base.fb) {
-+		con |= OVL_CON_AEN;
-+		con |= state->base.alpha & 0xff;
-+	}
-+
-+	if (blend_mode == DRM_MODE_BLEND_PIXEL_NONE ||
-+	    (state->base.fb && !state->base.fb->format->has_alpha))
-+		ignore_pixel_alpha = OVL_CONST_BLEND;
-+
-+	/* need to do Y2R and R2R to reduce 10bit data to 8bit for CRC calculation */
-+	if (ovl->data->supports_clrfmt_ext) {
-+		u32 y2r_coef = 0, y2r_offset = 0, r2r_coef = 0, csc_en = 0;
-+
-+		if (is_10bit_rgb(fmt)) {
-+			con |= OVL_CON_MTX_AUTO_DIS | OVL_CON_MTX_EN | OVL_CON_MTX_PROGRAMMABLE;
-+
-+			/*
-+			 * Y2R coef setting
-+			 * bit 13 is 2^1, bit 12 is 2^0, bit 11 is 2^-1,
-+			 * bit 10 is 2^-2 = 0.25
-+			 */
-+			y2r_coef = BIT(10);
-+
-+			/* -1 in 10bit */
-+			y2r_offset = GENMASK(10, 0) - 1;
-+
-+			/*
-+			 * R2R coef setting
-+			 * bit 19 is 2^1, bit 18 is 2^0, bit 17 is 2^-1,
-+			 * bit 20 is 2^2 = 4
-+			 */
-+			r2r_coef = BIT(20);
-+
-+			/* CSC_EN is for R2R */
-+			csc_en = OVL_CLRFMT_EXT1_CSC_EN(idx);
-+
-+			/*
-+			 * 1. YUV input data - 1 and shift right for 2 bits to remove it
-+			 * [R']   [0.25    0    0]   [Y in - 1]
-+			 * [G'] = [   0 0.25    0] * [U in - 1]
-+			 * [B']   [   0    0 0.25]   [V in - 1]
-+			 *
-+			 * 2. shift left for 2 bit letting the last 2 bits become 0
-+			 * [R out]   [ 4  0  0]   [R']
-+			 * [G out] = [ 0  4  0] * [G']
-+			 * [B out]   [ 0  0  4]   [B']
-+			 */
-+		}
-+
-+		mtk_ddp_write_mask(cmdq_pkt, y2r_coef,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_R0(idx),
-+				   OVL_Y2R_PARA_C_CF_RMY);
-+		mtk_ddp_write_mask(cmdq_pkt, (y2r_coef << 16),
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_G0(idx),
-+				   OVL_Y2R_PARA_C_CF_GMU);
-+		mtk_ddp_write_mask(cmdq_pkt, y2r_coef,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_B1(idx),
-+				   OVL_Y2R_PARA_C_CF_BMV);
-+
-+		mtk_ddp_write_mask(cmdq_pkt, y2r_offset,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_YUV_A_0(idx),
-+				   OVL_Y2R_PARA_C_CF_YA);
-+		mtk_ddp_write_mask(cmdq_pkt, (y2r_offset << 16),
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_YUV_A_0(idx),
-+				   OVL_Y2R_PARA_C_CF_UA);
-+		mtk_ddp_write_mask(cmdq_pkt, y2r_offset,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_YUV_A_1(idx),
-+				   OVL_Y2R_PARA_C_CF_VA);
-+
-+		mtk_ddp_write_relaxed(cmdq_pkt, r2r_coef,
-+				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_R2R_R0(idx));
-+		mtk_ddp_write_relaxed(cmdq_pkt, r2r_coef,
-+				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_R2R_G1(idx));
-+		mtk_ddp_write_relaxed(cmdq_pkt, r2r_coef,
-+				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_R2R_B2(idx));
-+
-+		mtk_ddp_write_mask(cmdq_pkt, csc_en,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_CLRFMT_EXT1,
-+				   OVL_CLRFMT_EXT1_CSC_EN(idx));
-+	}
- 
- 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
- 		con |= OVL_CON_VIRT_FLIP;
-@@ -444,8 +598,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 
- 	mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_CON(idx));
--	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb, &ovl->cmdq_reg, ovl->regs,
--			      DISP_REG_OVL_PITCH(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb | ignore_pixel_alpha,
-+			      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH(idx));
- 	mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_SRC_SIZE(idx));
- 	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
--- 
-2.18.0
-
+Arınç
 
