@@ -4,80 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C43DCDB484
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40158CDB483
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Oct 2023 06:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qLDvJRaObGr082wCAW6Drq7jAnuTss6flPcAJFYd2TU=; b=dq663rlZVQeJzTXfReeFtChmEF
-	pfwSKVSXSaWAtOU8PG6kKnvwPO4/shzpoy2tr8E21PJybki7F+jOFjceAtMHXDFghAmc5Ln2W8fIV
-	usjuJS+Hg24FEGgKjfSh1k7IXV+HaQRDUxECWoqKQXL14AsTGxM0Xcw076HtoO/L40jy5bTNYmktI
-	/FM4yPexcB7jPZ7CrwvVx94O8gYuGpHaogEid5diwoBjJH3hM0xsn9/fTl4B+u0b8KQB9QmcEchCK
-	Ccotf8gSXtI7BuWjLeJ4YBHCZEwpfYIoDmxDLyvPRhqpy3nKAKKMX2herin269hT5ZdePmJnC4Jhe
-	ZuwNajVw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qf+7xfahKnfF6lGO2CMiwO2Ukoj8O7Qnr8MyqJJEMnY=; b=4W3qoum/J6CPl/WsTJEY8zTBxl
+	oWdkl71XhwZsBEwJj24Tq7yohtdQgZtvxZbBsqjxXGvoCTdch8oydMeAL9kdI8Sx8kbjFhpSJc1KC
+	/gu37MuUd76LtArH1+w3C3ftGfE9HHp5JeuHuv2rHK5Hc/9+yAFK2XS+/HRxjR3PdJodmERYOjeAE
+	JlX9u5Eq/LgDzXmAAVXHxb9P4f3jGNuN2h9xLbQF0abpzuwf5CnNqO7URnM5QKWQROHP7cvrKA10d
+	rT5Y70NVaL/gA83HmffhGhQj8Sre+Gr8Eb/WtVAKrh8vI4eWERk9N7TjkmK6hC6nRWd1KFfWoO5B4
+	iyr7EZ8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsds0-00BTNn-1G;
-	Tue, 17 Oct 2023 06:48:00 +0000
+	id 1qsds3-00BTQy-1u;
+	Tue, 17 Oct 2023 06:48:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsdrx-00BTMJ-2W;
-	Tue, 17 Oct 2023 06:47:59 +0000
-X-UUID: 195a5a3a6cb911ee86758d4a7c00f3a0-20231016
+	id 1qsds0-00BTO8-2Q;
+	Tue, 17 Oct 2023 06:48:02 +0000
+X-UUID: 198d503e6cb911ee86758d4a7c00f3a0-20231016
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qLDvJRaObGr082wCAW6Drq7jAnuTss6flPcAJFYd2TU=;
-	b=MI4RocpHH4fXDWrWbjPTvoO9sUo3zAwVZ10IvhGjzqj0gv0/91u57vu36m69fcS/zfOGWJyR02kcZKac4VzgO+KQFGczO/pa7hbPvY16JUfsCe//E4tjmtDcOOKE0aO3+NK1FNtrXc1F0qdOw1IvGeeERYC49hF+/NpKTmhfpgI=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qf+7xfahKnfF6lGO2CMiwO2Ukoj8O7Qnr8MyqJJEMnY=;
+	b=Azykfa5FNMaYj3Kyj5WzXx4S2bJtkLV6HZ2+96hRjv28lq9kxFS+oSvcAz7/2QSdsFjUBuoPIOfdFa2CHuRHcmfb0lwsM9UZurQecwHoW2iFbSSbzDlpR5bYRG1+72+7rE1iB1xvwVSSO4AusWnh9Jfzdy1tsgUhQ3S/v+BTvBI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:8440a40a-3ca3-4a31-80c5-b0e975c3659b,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:514952c3-13c7-4ed2-b4a5-a9fae92c57a8,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:f7ec36c4-1e57-4345-9d31-31ad9818b39f,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:21032015-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 195a5a3a6cb911ee86758d4a7c00f3a0-20231016
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 198d503e6cb911ee86758d4a7c00f3a0-20231016
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1047526841; Mon, 16 Oct 2023 23:47:54 -0700
+	with ESMTP id 1493640854; Mon, 16 Oct 2023 23:47:54 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 17 Oct 2023 14:47:19 +0800
+ 15.2.1118.26; Tue, 17 Oct 2023 14:47:18 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 17 Oct 2023 14:47:19 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 17 Oct 2023 14:47:18 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>
 CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Sean Paul <sean@poorly.run>,
+	Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, "Chen-Yu
+ Tsai" <wenst@chromium.org>, Sean Paul <sean@poorly.run>,
 	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, Singo Chang
 	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Jason-JH Lin
 	<jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>
-Subject: [PATCH v3 08/11] drm/mediatek: Support alpha blending in VDOSYS1
-Date: Tue, 17 Oct 2023 14:47:14 +0800
-Message-ID: <20231017064717.21616-9-shawn.sung@mediatek.com>
+Subject: [PATCH v3 00/11] Support IGT in display driver
+Date: Tue, 17 Oct 2023 14:47:06 +0800
+Message-ID: <20231017064717.21616-1-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231017064717.21616-1-shawn.sung@mediatek.com>
-References: <20231017064717.21616-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.125500-8.000000
+X-TMASE-MatchedRID: 2M1vhZdKI+q0Ksgzm0Grb0vrB8UvzFr4uLwbhNl9B5VcKZwALwMGswaT
+	alM8C773zVZHFuZcThYl6rr8933abg7WYEeNmTZn7spMO3HwKCAhHWssEmb8zsRd6VScTqylI6E
+	H/j35nyhiYqp1f8ouR+8AJ9RS6zXQD7+f/jfUYxID2WXLXdz+AbLiLKO9VZOinaIcQMBRvbSjxY
+	yRBa/qJcFwgTvxipFajoczmuoPCq1sVXiEzAZQKTrxL9jf8Q32kxH4pkZWPWronF1rgIxheCQGD
+	b1YJqxA
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.125500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 1B8B68A1E5211F3A5AD423F4B16ADFB010B6C5046DBD0491A959E66D86B718892000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_234757_823140_AC5BC95F 
-X-CRM114-Status: GOOD (  16.97  )
+X-CRM114-CacheID: sfid-20231016_234800_800268_41DE2BE8 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,118 +102,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support premultiply and coverage alpha blending modes.
+This series is based on mediatek-drm-next.
 
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  2 +-
- drivers/gpu/drm/mediatek/mtk_ethdr.c          | 48 +++++++++++++++----
- 2 files changed, 39 insertions(+), 11 deletions(-)
+This series adds support for running IGT (Intel GPU Tool) tests
+with MediaTek display driver. The following changes will be
+applied:
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 8de57a5f5518..b69ac90b2e65 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -156,7 +156,7 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
- 	merge = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 + idx];
- 	ethdr = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0];
- 
--	if (!pending->enable) {
-+	if (!pending->enable || !pending->width || !pending->height) {
- 		mtk_merge_stop_cmdq(merge, cmdq_pkt);
- 		mtk_mdp_rdma_stop(rdma_l, cmdq_pkt);
- 		mtk_mdp_rdma_stop(rdma_r, cmdq_pkt);
-diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-index 73dc4da3ba3b..648e14e85bd0 100644
---- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-@@ -5,6 +5,7 @@
- 
- #include <drm/drm_fourcc.h>
- #include <drm/drm_framebuffer.h>
-+#include <drm/drm_blend.h>
- #include <linux/clk.h>
- #include <linux/component.h>
- #include <linux/of_device.h>
-@@ -35,6 +36,7 @@
- #define MIX_SRC_L0_EN				BIT(0)
- #define MIX_L_SRC_CON(n)		(0x28 + 0x18 * (n))
- #define NON_PREMULTI_SOURCE			(2 << 12)
-+#define PREMULTI_SOURCE				(3 << 12)
- #define MIX_L_SRC_SIZE(n)		(0x30 + 0x18 * (n))
- #define MIX_L_SRC_OFFSET(n)		(0x34 + 0x18 * (n))
- #define MIX_FUNC_DCM0			0x120
-@@ -153,33 +155,59 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
- 	struct mtk_plane_pending_state *pending = &state->pending;
- 	unsigned int offset = (pending->x & 1) << 31 | pending->y << 16 | pending->x;
- 	unsigned int align_width = ALIGN_DOWN(pending->width, 2);
--	unsigned int alpha_con = 0;
-+	unsigned int mix_con = NON_PREMULTI_SOURCE;
-+	bool replace_src_a = false;
-+
-+	union format {
-+		u32 raw;
-+		u8 str[5];
-+	} format;
- 
- 	dev_dbg(dev, "%s+ idx:%d", __func__, idx);
- 
- 	if (idx >= 4)
- 		return;
- 
--	if (!pending->enable) {
-+	if (!pending->enable || !pending->width || !pending->height) {
-+		/*
-+		 * instead of disabling layer with MIX_SRC_CON directly
-+		 * set the size to 0 to avoid screen shift due to mode switch
-+		 */
- 		mtk_ddp_write(cmdq_pkt, 0, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_SIZE(idx));
- 		return;
- 	}
- 
--	if (state->base.fb && state->base.fb->format->has_alpha)
--		alpha_con = MIXER_ALPHA_AEN | MIXER_ALPHA;
-+	mix_con |= MIXER_ALPHA_AEN | (state->base.alpha & MIXER_ALPHA);
-+
-+	if (state->base.pixel_blend_mode != DRM_MODE_BLEND_COVERAGE)
-+		mix_con |= PREMULTI_SOURCE;
-+
-+	if (state->base.pixel_blend_mode == DRM_MODE_BLEND_PIXEL_NONE ||
-+	    (state->base.fb && !state->base.fb->format->has_alpha)) {
-+		/*
-+		 * Mixer doesn't support CONST_BLD mode,
-+		 * use a trick to make the output equivalent
-+		 */
-+		replace_src_a = true;
-+	}
-+
-+	format.raw = pending->format;
-+
-+	dev_dbg(dev, "L%d: %ux%u(%u,%u)%s: SCA=0x%x(%u), MIX=0x%x\n", idx,
-+		pending->width, pending->height, pending->x, pending->y,
-+		format.str, (state->base.alpha & MIXER_ALPHA),
-+		state->base.pixel_blend_mode, mix_con);
- 
--	mtk_mmsys_mixer_in_config(priv->mmsys_dev, idx + 1, alpha_con ? false : true,
--				  DEFAULT_9BIT_ALPHA,
-+	mtk_mmsys_mixer_in_config(priv->mmsys_dev, idx + 1, replace_src_a, MIXER_ALPHA,
- 				  pending->x & 1 ? MIXER_INX_MODE_EVEN_EXTEND :
- 				  MIXER_INX_MODE_BYPASS, align_width / 2 - 1, cmdq_pkt);
- 
- 	mtk_ddp_write(cmdq_pkt, pending->height << 16 | align_width, &mixer->cmdq_base,
- 		      mixer->regs, MIX_L_SRC_SIZE(idx));
- 	mtk_ddp_write(cmdq_pkt, offset, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_OFFSET(idx));
--	mtk_ddp_write_mask(cmdq_pkt, alpha_con, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_CON(idx),
--			   0x1ff);
--	mtk_ddp_write_mask(cmdq_pkt, BIT(idx), &mixer->cmdq_base, mixer->regs, MIX_SRC_CON,
--			   BIT(idx));
-+	mtk_ddp_write(cmdq_pkt, mix_con, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_CON(idx));
-+	mtk_ddp_write_mask(cmdq_pkt, BIT(idx), &mixer->cmdq_base, mixer->regs,
-+			   MIX_SRC_CON, BIT(idx));
- }
- 
- void mtk_ethdr_config(struct device *dev, unsigned int w,
--- 
+1. Add a new API for creating GCE thread loop to retrieve CRCs
+   from the hardware component
+2. Support hardware CRC calculation in both VDOSYS0 and VDOSYS1
+3. Support alpha blending in both VDOSYS0 and VDOSYS1
+
+Changes in v3:
+- Modify the dt-binding document of Mediatek OVL
+- Set DRM mode configs accroding to the hardware capabilities
+- Replace cmdq_pkt_jump_absolute() with cmdq_pkt_jump()
+
+Changes in v2:
+- Simplify CMDQ by adding commands that are currently used only
+- Integrate CRC related codes into new APIs for Mixer and OVL to reuse
+- Add CPU version CRC retrieval when CMDQ is disabled
+
+Hsiao Chien Sung (11):
+  soc: mediatek: Add register definitions for GCE
+  soc: mediatek: Disable 9-bit alpha in ETHDR
+  dt-bindings: display: mediatek: ovl: Modify rules for MT8195/MT8188
+  drm/mediatek: Add OVL compatible name for MT8195
+  drm/mediatek: Set DRM mode configs accordingly
+  drm/mediatek: Support alpha blending in display driver
+  drm/mediatek: Support alpha blending in VDOSYS0
+  drm/mediatek: Support alpha blending in VDOSYS1
+  drm/mediatek: Support CRC in display driver
+  drm/mediatek: Support CRC in VDOSYS0
+  drm/mediatek: Support CRC in VDOSYS1
+
+ .../display/mediatek/mediatek,ovl.yaml        |  12 +-
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   6 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c       | 309 ++++++++++++++++--
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  23 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 261 ++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |  39 +++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |   6 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  35 ++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  40 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  19 ++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c      |  11 +
+ drivers/gpu/drm/mediatek/mtk_ethdr.c          | 121 ++++++-
+ drivers/gpu/drm/mediatek/mtk_ethdr.h          |   5 +
+ drivers/soc/mediatek/mtk-mmsys.c              |   1 +
+ include/linux/soc/mediatek/mtk-cmdq.h         |  10 +
+ 15 files changed, 839 insertions(+), 59 deletions(-)
+
+--
 2.18.0
 
 
