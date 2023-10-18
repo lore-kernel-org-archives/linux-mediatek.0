@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC126C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 09:38:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F4C7C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 09:43:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IbgzvwEWY0paOvS4a1Cw5jqHB1lNTJk4ThEHr41IM7c=; b=exQCGQWPXrbVN4Dl4Ag218aWEu
-	0aXBWMOKV4UPtDhqzXel9HRDcshyNs93IOrc01UZHaj53dfEzSxfmvD0LYcNbhaBpbJv92SDoOu3L
-	k+JbgDT5r9g41zj3myb5f0pT/3rvhpHqtvQqxA5CrMkEIF8YJsudG8uFU+FcpA76Mebt5sN+gBqGE
-	99o/Xz29NqfQYXSrJymITmo1K8954FDdewkAxB2BIviaGRPHyRPoa70CydduMxEr0ehEBg4WDP+0Q
-	mNOl5dEJSDfsI9jc/qAz9leencj/4UqIFDoAcqkLOI5fl6KghWZuwrixzRUMkkgJyjizNLhLVsYy4
-	wv5TbOyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tLGoCCqEwS5Rzm6vkLqOJ5b4zPigqMnDTy/qrc3lO8U=; b=QCKE7q6Cn8NR3r6tuxM+riDXeD
+	8shrmdW+wz10X5CPDM8X57E/aYS8ZAjVn2SmYJU0moxE6FYlTVcszliNxx6R/ljpJncA/LbPZpRGf
+	ADGE6HKXDlssh4XYYdElBYf7L/T1WtP/bW57cSvs4uiAeU6hyiXnYmScjJzvi1KITnlkd0vBTZ4aD
+	N5b9lQmbx00+VdixAyYovvECxLrlkQ+H6eQ01ga1vj6vi+VdJyBuHok45PZYFKmbewZnUzBO1+9Yt
+	ESAAOq1eijwWWMhpVHS5sfxc2F3lTZQMjoB7yriwQOzhI7+r2RHYgGqysAIkY4kPOKgCX0uh/I4GP
+	OhJj+8YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCzDe-00BDu7-0p;
-	Tue, 12 Dec 2023 09:38:26 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rCzI4-00BEFW-1U;
+	Tue, 12 Dec 2023 09:43:00 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCzDb-00BDtc-1x
+	id 1rCzI1-00BEEy-1Y
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Dec 2023 09:38:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702373902;
-	bh=oxKgRG6quJSZbHx7hNPWtIKRcBJUqNGwD9FJGRZkKHE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CVmSDqG3KenL7h+0OLy1a1lk+5fH2z99MwyzCMhg7wXCoFDJVwSa6WkzUDOzGBv26
-	 STQDtJhkPEWudJB4/hJMO1oa6ekN6rEpVGYEtr7zLBuDxPUdcdCFXr19EFKK/iffp7
-	 5RfC2wxN3hEceo+W2C7ij/avNO/lj+s2KU/RLlCFw3viBebVblEYckttIy2QRIlMZJ
-	 Hv623Gg2EYz4JTrx9WIvmVTphCOcjih4cSdGWe3bXDXSd5PcT0Z+fT02dxZKvs0ReC
-	 j2D89tIeIJ9rSHxVXpeX/8qs0kCNso0V7BhEhbtDXkjaUn0faWF1f22RlCej2lY38Y
-	 qqS7vA5PnSZMQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 692973781423;
-	Tue, 12 Dec 2023 09:38:21 +0000 (UTC)
-Message-ID: <254e8913-7f42-4af0-af9b-ee32b4fccdc2@collabora.com>
-Date: Tue, 12 Dec 2023 10:38:20 +0100
+	Tue, 12 Dec 2023 09:42:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 6EDFACE13AD;
+	Tue, 12 Dec 2023 09:42:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12753C433C8;
+	Tue, 12 Dec 2023 09:42:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702374173;
+	bh=muw+Ud0YjfawGe9Cq2DB3pHB3fHCLByUAzvENR+KUes=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QZZDaECK3qYLvq+KzWWIGu/tekcFSES+1JnM7EEKKVENT3sxhN5vJdU17UqdlLvU7
+	 LmDhRg8bQP8EBl+ppzA+4IH6LqqHZDzrgnVNsyL2Hyi6nBV2dRZtr0KxawXrv5godC
+	 Nl7g2BCzCHmLWdndiQbrwn+8NAcUvMZxMQAT2LQB4KkylKPJ5jT218UbZxOqF1ylUM
+	 hHLXKkjR6kjTEFM7MvOjrqQCaJQITRvM9EvIQl7TYlOdMzBNr0f5t21Kx2+VFsWtii
+	 KrNHpXrGSV9JYkUreY1d8xDzyQwc95ivuQuE7bnxrebWzaNonWf9CSKY2T2JUSyV9i
+	 rSJSizzbKr24Q==
+Date: Wed, 18 Oct 2023 10:09:10 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Kalle Valo <kvalo@kernel.org>
+Cc: Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+	Jakub Kicinski <kuba@kernel.org>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>,
+	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
+	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
+	Stella Chang <Stella.Chang@mediatek.com>,
+	Quan Zhou <quan.zhou@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [next v2] wifi: mt76: mt7921: fix kernel panic by accessing
+ invalid 6GHz channel info
+Message-ID: <ZS+Spsy/1H+GUz2C@lore-rh-laptop>
+References: <cf77a58a60d81c77a28388bc8d312b87ffb48434.1697603002.git.deren.wu@mediatek.com>
+ <871qds31rw.fsf@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [v8 3/4] ASoC: mediatek: mt8188-mt6359: add es8326 support
-Content-Language: en-US
-To: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Cc: lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, perex@perex.cz,
- trevor.wu@mediatek.com, allen-kh.cheng@mediatek.com,
- kuninori.morimoto.gx@renesas.com, linux-mediatek@lists.infradead.org
-References: <20231208070933.720324-1-zhourui@huaqin.corp-partner.google.com>
- <20231208070933.720324-4-zhourui@huaqin.corp-partner.google.com>
- <db3429e0-0173-4f13-bccb-78ac56ad4ed9@collabora.com>
- <CABRjgzvUz6BTSFHCMAGL6e3LWMyGfnJsJJ0j1M_CvBr9wMb49A@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CABRjgzvUz6BTSFHCMAGL6e3LWMyGfnJsJJ0j1M_CvBr9wMb49A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="oyYY5ye5rkYVGNeM"
+Content-Disposition: inline
+In-Reply-To: <871qds31rw.fsf@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_013823_843297_A490D8E2 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231212_014257_983830_3E22990A 
+X-CRM114-Status: GOOD (  12.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,24 +90,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/12/23 05:04, Rui Zhou ha scritto:
-> Hi Angelo,
-> Because the TDM interface defined by mt8188_max98390_ops sets a fixed 4
-> slots, so if the current sound card only supports two amps, we need to skip
-> this setting.
-> By the way, do you think this comment is okay?
-> /*
->   * The TDM protocol settings with fixed 4 slots are defined in
->   * mt8188_max98390_ops. Two amps is I2S mode,
->   * SOC and codec don't require TDM settings.
-> */
-> if (!(card_data->quirk & MAX98390_TWO_AMP)) {
-> dai_link->ops = &mt8188_max98390_ops;
-> }
 
-That's perfect. Waiting for v9.
+--oyYY5ye5rkYVGNeM
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Cheers,
-Angelo
+> Deren Wu <deren.wu@mediatek.com> writes:
+>=20
+> > From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> >
+> > When the chip not support 6GHz capability, the channels of 6GHz informa=
+tion
+> > should not be updated.
+> >
+> > May get the stacktrace without this patch.
+> > <1>[   19.442078] Unable to handle kernel NULL pointer dereference at
+> > virtual address 0000000000000014
+> > <1>[   19.457535] Mem abort info:
+> > <1>[   19.465329]   ESR =3D 0x0000000096000004
+> > <1>[   19.473295]   EC =3D 0x25: DABT (current EL), IL =3D 32 bits
+> > <1>[   19.482354]   SET =3D 0, FnV =3D 0
+> > <1>[   19.489143]   EA =3D 0, S1PTW =3D 0
+> > <1>[   19.495991]   FSC =3D 0x04: level 0 translation fault
+> > <1>[   19.504554] Data abort info:
+> > <1>[   19.511111]   ISV =3D 0, ISS =3D 0x00000004, ISS2 =3D 0x00000000
+> > <1>[   19.520269]   CM =3D 0, WnR =3D 0, TnD =3D 0, TagAccess =3D 0
+> > <1>[   19.528988]   GCS =3D 0, Overlay =3D 0, DirtyBit =3D 0, Xs =3D 0
+> > <1>[   19.537960] user pgtable: 4k pages, 48-bit VAs, pgdp=3D0000000102=
+7a9000
+> > <1>[   19.548014] [0000000000000014] pgd=3D0000000000000000, p4d=3D0000=
+00000000
+> > <0>[   19.558429] Internal error: Oops: 0000000096000004 [#1] PREEMPT S=
+MP
+> > <4>[   19.568270] Modules linked in: mt7921e mt7921_common mt792x_lib
+> > mt76_connac_lib mt76 mac80211 btusb btintel cfg80211 btmtk snd_sof_ipc_=
+msg_
+> > btrtl snd_sof_ipc_flood_test btbcm bluetooth snd_sof_mt8195 uvcvideo
+> > mtk_adsp_common snd_sof_xtensa_dsp uvc snd_sof_of snd_sof videobuf2_vma=
+lloc
+> > ecdh_generic ecc snd_sof_utils cros_ec_lid_angle cros_ec_sensors crct10=
+dif_
+> > cros_ec_sensors_core cros_usbpd_logger crypto_user fuse ip_tables ipv6
+> > <4>[   19.614237] CPU: 1 PID: 105 Comm: kworker/1:1 Not tainted
+> > 6.6.0-rc6-next-20231017+ #324
+> > <4>[   19.625957] Hardware name: Acer Tomato (rev2) board (DT)
+> > <4>[   19.634970] Workqueue: events mt7921_init_work [mt7921_common]
+> > <4>[   19.644522] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS=
+ BTY
+> > <4>[   19.655182] pc : mt7921_regd_notifier+0x180/0x290 [mt7921_common]
+> > <4>[   19.664983] lr : mt7921_regd_notifier+0xd4/0x290 [mt7921_common]
+> > <4>[   19.674679] sp : ffff800080acba80
+> > <4>[   19.681649] x29: ffff800080acba80 x28: 0000000000000000 x27: ffff=
+4faf
+> > <4>[   19.692483] x26: 0000000000000000 x25: 0000000000000000 x24: ffff=
+4faf
+> > <4>[   19.703294] x23: 00000000ffffe926 x22: ffff4faf16031fa0 x21: 0000=
+0000
+> > <4>[   19.714108] x20: 000000000000001c x19: ffff4faf16ba6f40 x18: 0000=
+0000
+> > <4>[   19.724928] x17: 0000000000000000 x16: ffffac6b891c2750 x15: ffff=
+8000
+> > <4>[   19.735722] x14: 0000000000000180 x13: 0000000000000000 x12: 0000=
+0000
+> > <4>[   19.746478] x11: 0000000000000002 x10: ffff4faf01c21780 x9 : ffff=
+ac6b
+> > <4>[   19.757214] x8 : 00000000006c0000 x7 : ffffac6b6b020cf0 x6 : ffff=
+ac6b
+> > <4>[   19.767945] x5 : ffffac6b6b020d00 x4 : ffffac6b6b020cf8 x3 : ffff=
+4faf
+> > <4>[   19.778648] x2 : 0000000000000000 x1 : 000000000000001c x0 : 0000=
+0000
+> > <4>[   19.789366] Call trace:
+> > <4>[   19.795381]  mt7921_regd_notifier+0x180/0x290 [mt7921_common]
+> > <4>[   19.804675]  wiphy_update_regulatory+0x2bc/0xa08 [cfg80211]
+> > <4>[   19.813864]  wiphy_regulatory_register+0x4c/0x88 [cfg80211]
+> > <4>[   19.823029]  wiphy_register+0x75c/0x8d0 [cfg80211]
+> > <4>[   19.831446]  ieee80211_register_hw+0x70c/0xc10 [mac80211]
+> > <4>[   19.840479]  mt76_register_device+0x168/0x2e8 [mt76]
+> > <4>[   19.849008]  mt7921_init_work+0xdc/0x250 [mt7921_common]
+> > <4>[   19.857817]  process_one_work+0x148/0x3c0
+> > <4>[   19.865292]  worker_thread+0x32c/0x450
+> > <4>[   19.872489]  kthread+0x11c/0x128
+> > <4>[   19.879173]  ret_from_fork+0x10/0x20
+> > <0>[   19.886153] Code: f0000041 9100a021 94000aef aa0003f9 (b9401780)
+> > <4>[   19.895634] ---[ end trace 0000000000000000 ]---
+> >
+> > Reported-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> > Closes: https://lore.kernel.org/all/927e7d50-826d-4c92-9931-3c59b18c694=
+5@collabora.com/
+> > Fixes: 09382d8f8641 ("mt7921: update the channel usage when the regd do=
+main changed")
+> > Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> > Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+>=20
+> I assumed I should take this directly to net-next so assigned to me on
+> patchwork. Felix&Lorenzo, ack?
 
+Fine to me.
+
+Regards,
+Lorenzo
+
+>=20
+> --=20
+> https://patchwork.kernel.org/project/linux-wireless/list/
+>=20
+> https://wireless.wiki.kernel.org/en/developers/documentation/submittingpa=
+tches
+
+--oyYY5ye5rkYVGNeM
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZS+SowAKCRA6cBh0uS2t
+rGpkAQDZhGGAUcw9Dh76XkrAld+ZUdn5iroV0rrxkzsMCKpJlQEAt0vb6Tqj30h5
+7JtqAzP9eyWQ1Xn7KwJV/Zrr6HMgtg4=
+=hYdm
+-----END PGP SIGNATURE-----
+
+--oyYY5ye5rkYVGNeM--
 
