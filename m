@@ -4,57 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 359FBCDB483
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 11:17:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB18CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 11:47:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zte5xDwfH05geqK+G7MpYIK3L6O6/ajSOBZeEyo/JOY=; b=xgcREs1A6qs6MfMCGpHqCGMZr+
-	ut6TksG4kov6TXt/CW3qFCaFtUz5bdxxjLOTnnX4Dy5/Y23Q0r8CWBVIsPJfVjqa784eSdCgtKo+N
-	TEFjHLSUJ0AN/o0s3WiF3v7cAC8J/QH8ZftcUCfq/wcAeI38/4EJapQLg7feBSB/8N66emmqk+wSV
-	j4UEtcbu87bCydgRwYmKYiekeH7xk1lz28g16qUFQYL7F/7WZeudeEbaIxGpqArO7YmYW82kzp3Wp
-	97OdtNNrnIN3qsGBc6xBiQl+1Su/fGM3TOtHb3zQ0xeJ6Uh31FiFJfJllAjIBlBTIS/cGwvnX1nJb
-	q1Scf78Q==;
+	bh=HhHxm4Nu7YsVcGaDN9VwImjKACPtmosd6jbOd+Re/cE=; b=vkVA1XfftNthgU2VEvVnEuEAZV
+	xbX9cMsiOHg03EILG50rcxp020xjPsuiqANco7kg6DgFAFP5VkDeQjS1TXsNUronxXfFIRm8LvPvI
+	5vrRo1QTkqgoizG+Ch7VQGEdc1Ldos92n3aKPwY8HGfUuzqLdpGKaOLsqJASKEmAbkJ+sFM3Xa7JK
+	g0m/FvnQ1ZU/ymUX1F4UDOXRmkdIjwLoCbUUevWVDWO96JQwSaPm/0+yiaT9vb05ygvp3CJHlW629
+	3ql0XIV/pr4zPHedXEhIXd5Dv4TcqsXuwbk/yLNQu4YeSYmJfHGJmwWTmab1UzWZYiGCGEgXhjM6j
+	qze3glNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt4YU-00EX9T-0R;
-	Wed, 18 Oct 2023 11:17:38 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qt51X-00Eb3H-2s;
+	Wed, 18 Oct 2023 11:47:39 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt4YR-00EX7q-00;
-	Wed, 18 Oct 2023 11:17:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 14E9DCE247E;
-	Wed, 18 Oct 2023 11:17:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EA9FC433C8;
-	Wed, 18 Oct 2023 11:17:23 +0000 (UTC)
-Message-ID: <ffb32ac3-67ce-4401-9750-6c97ba28d051@xs4all.nl>
-Date: Wed, 18 Oct 2023 13:17:21 +0200
+	id 1qt51S-00Eb19-2T;
+	Wed, 18 Oct 2023 11:47:36 +0000
+Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.54])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4S9TVJ4M6WzvQ7d;
+	Wed, 18 Oct 2023 19:42:32 +0800 (CST)
+Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
+ (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 18 Oct
+ 2023 19:47:17 +0800
+Subject: Re: [PATCH net-next v11 0/6] introduce page_pool_alloc() related API
+To: Jakub Kicinski <kuba@kernel.org>
+CC: <davem@davemloft.net>, <pabeni@redhat.com>, <netdev@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Alexander Duyck <alexander.duyck@gmail.com>
+References: <20231013064827.61135-1-linyunsheng@huawei.com>
+ <20231016182725.6aa5544f@kernel.org>
+ <2059ea42-f5cb-1366-804e-7036fb40cdaa@huawei.com>
+ <20231017081303.769e4fbe@kernel.org>
+From: Yunsheng Lin <linyunsheng@huawei.com>
+Message-ID: <67f2af29-59b8-a9e2-1c31-c9a625e4c4b3@huawei.com>
+Date: Wed, 18 Oct 2023 19:47:16 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 44/56] media: core: Report the maximum possible number
- of buffers for the queue
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
- <20231017144756.34719-45-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20231017144756.34719-45-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20231017081303.769e4fbe@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.69.30.204]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_041735_394362_0BAE920E 
-X-CRM114-Status: GOOD (  26.33  )
+X-CRM114-CacheID: sfid-20231018_044735_048894_DD5F68E7 
+X-CRM114-Status: GOOD (  19.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,166 +78,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/10/2023 16:47, Benjamin Gaignard wrote:
-> Use one of the struct v4l2_create_buffers reserved bytes to report
-> the maximum possible number of buffers for the queue.
-> V4l2 framework set V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS flags in queue
-> capabilities so userland can know when the field is valid.
+On 2023/10/17 23:13, Jakub Kicinski wrote:
+> On Tue, 17 Oct 2023 15:56:48 +0800 Yunsheng Lin wrote:
+>>> And I can't figure out now what the "cache" in the name is referring to.
+>>> Looks like these are just convenience wrappers which return VA instead
+>>> of struct page..  
+>>
+>> Yes, it is corresponding to some API like napi_alloc_frag() returning va
+>> instead of 'struct page' mentioned in patch 5.
+>>
+>> Anyway, naming is hard, any suggestion for a better naming is always
+>> welcomed:)
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../userspace-api/media/v4l/vidioc-create-bufs.rst        | 8 ++++++--
->  Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst  | 1 +
->  drivers/media/common/videobuf2/videobuf2-v4l2.c           | 2 ++
->  drivers/media/v4l2-core/v4l2-ioctl.c                      | 4 ++--
->  include/uapi/linux/videodev2.h                            | 7 ++++++-
->  5 files changed, 17 insertions(+), 5 deletions(-)
+> I'd just throw a _va (for virtual address) at the end. And not really
+
+_va seems fine:)
+
+> mention it in the documentation. Plus the kdoc of the function should
+> say that this is just a thin wrapper around other page pool APIs, and
+> it's safe to mix it with other page pool APIs?
+
+I am not sure I understand what do 'safe' and 'mix' mean here.
+
+For 'safe' part, I suppose you mean if there is a va accociated with
+a 'struct page' without calling some API like kmap()? For that, I suppose
+it is safe when the driver is calling page_pool API without the
+__GFP_HIGHMEM flag. Maybe we should mention that in the kdoc and give a
+warning if page_pool_*alloc_va() is called with the __GFP_HIGHMEM flag?
+
+For the 'mix', I suppose you mean the below:
+1. Allocate a page with the page_pool_*alloc_va() API and free a page with
+   page_pool_free() API.
+2. Allocate a page with the page_pool_*alloc() API and free a page with
+   page_pool_free_va() API.
+
+For 1, it seems it is ok as some virt_to_head_page() and page_address() call
+between va and 'struct page' does not seem to change anything if we have
+enforce page_pool_*alloc_va() to be called without the __GFP_HIGHMEM flag.
+
+For 2, If the va is returned from page_address() which the allocation API is
+called without __GFP_HIGHMEM flag. If not, the va is from kmap*()? which means
+we may be calling page_pool_free_va() before kunmap*()? Is that possible?
+
+
+> .
 > 
-> diff --git a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
-> index a048a9f6b7b6..380195c2a00a 100644
-> --- a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
-> +++ b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
-> @@ -116,9 +116,13 @@ than the number requested.
->        - ``flags``
->        - Specifies additional buffer management attributes.
->  	See :ref:`memory-flags`.
-> -
->      * - __u32
-> -      - ``reserved``\ [6]
-> +      - ``max_num_buffers``
-> +      - If V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS capability flag is set
-
-If -> If the
-
-> +        this field indicate the maximum possible number of buffers
-
-indicate -> indicates
-
-> +        for this queue.
-> +    * - __u32
-> +      - ``reserved``\ [5]
->        - A place holder for future extensions. Drivers and applications
->  	must set the array to zero.
->  
-> diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-> index 099fa6695167..0b3a41a45d05 100644
-> --- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-> +++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-> @@ -120,6 +120,7 @@ aborting or finishing any DMA in progress, an implicit
->  .. _V4L2-BUF-CAP-SUPPORTS-ORPHANED-BUFS:
->  .. _V4L2-BUF-CAP-SUPPORTS-M2M-HOLD-CAPTURE-BUF:
->  .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
-> +.. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
->  
->  .. raw:: latex
->  
-> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> index f3cf4b235c1f..201438ffd13f 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> @@ -680,6 +680,7 @@ EXPORT_SYMBOL(vb2_querybuf);
->  static void fill_buf_caps(struct vb2_queue *q, u32 *caps)
->  {
->  	*caps = V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS;
-> +	*caps |= V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS;
-
-Hmm. This flag is set for both VIDIOC_REQBUFS and _CREATE_BUFS, but the
-max_num_buffers field is only reported through VIDIOC_CREATE_BUFS.
-
-I think this flag should be set in vb2_create_bufs() only.
-
-Alternatively, we add a max_num_buffers field to struct v4l2_requestbuffers
-as well:
-
-struct v4l2_requestbuffers {
-        __u32                   count;
-        __u32                   type;           /* enum v4l2_buf_type */
-        __u32                   memory;         /* enum v4l2_memory */
-        __u32                   capabilities;
-        __u8                    flags;
-        __u8                    reserved[1];
-	__u16			max_num_buffers;
-};
-
-Since 32768 is the max for max_num_buffers, this will fit in a u16.
-
-I'm not sure it is worth the effort, though. How likely is it that there
-is a driver supporting more than 32 buffers, yet does not support CREATE_BUFS?
-
-So for now, I think it is best to just set this BUF_CAP flag in vb2_create_bufs()
-only. But if you have better suggestions, then let me know!
-
-Regards,
-
-	Hans
-
->  	if (q->io_modes & VB2_MMAP)
->  		*caps |= V4L2_BUF_CAP_SUPPORTS_MMAP;
->  	if (q->io_modes & VB2_USERPTR)
-> @@ -762,6 +763,7 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
->  	fill_buf_caps(q, &create->capabilities);
->  	validate_memory_flags(q, create->memory, &create->flags);
->  	create->index = vb2_get_num_buffers(q);
-> +	create->max_num_buffers = q->max_num_buffers;
->  	if (create->count == 0)
->  		return ret != -EBUSY ? ret : 0;
->  
-> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-> index 9b1de54ce379..628b013ca0c4 100644
-> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
-> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-> @@ -483,9 +483,9 @@ static void v4l_print_create_buffers(const void *arg, bool write_only)
->  {
->  	const struct v4l2_create_buffers *p = arg;
->  
-> -	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, ",
-> +	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, max buffers=%u",
->  		p->index, p->count, prt_names(p->memory, v4l2_memory_names),
-> -		p->capabilities);
-> +		p->capabilities, p->max_num_buffers);
->  	v4l_print_format(&p->format, write_only);
->  }
->  
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-> index c3d4e490ce7c..13ddb5abf584 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -1035,6 +1035,7 @@ struct v4l2_requestbuffers {
->  #define V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS		(1 << 4)
->  #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
->  #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
-> +#define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
->  
->  /**
->   * struct v4l2_plane - plane info for multi-planar buffers
-> @@ -2605,6 +2606,9 @@ struct v4l2_dbg_chip_info {
->   * @flags:	additional buffer management attributes (ignored unless the
->   *		queue has V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS capability
->   *		and configured for MMAP streaming I/O).
-> + * @max_num_buffers: if V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS capability flag is set
-
-if -> if the
-
-> + *		this field indicate the maximum possible number of buffers
-
-indicate -> indicates
-
-> + *		for this queue.
->   * @reserved:	future extensions
->   */
->  struct v4l2_create_buffers {
-> @@ -2614,7 +2618,8 @@ struct v4l2_create_buffers {
->  	struct v4l2_format	format;
->  	__u32			capabilities;
->  	__u32			flags;
-> -	__u32			reserved[6];
-> +	__u32			max_num_buffers;
-> +	__u32			reserved[5];
->  };
->  
->  /*
-
-Regards,
-
-	Hans
 
