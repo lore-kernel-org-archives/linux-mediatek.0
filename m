@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B71D2CDB47E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 04:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A43CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 06:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4QOGGOLiik8Arl3pEVCeppnfrraDdUFVHpnNeQMy0ZQ=; b=GmTz7uVv0WdnVm/YSjrBZ4RSuf
-	4SJBrqwXnf67UK09m334XKbrVB/krbk5Ilftt3u1SSRVwEjjlxElfPi3un3HAuFzqZ8XVJl/ahUNZ
-	+MFP1cSmDBaOi+22DGEdsnJVb+h8br8lLiR3xNNrWN/uRzt+lLe7MaN6/Hp1ZOUpl69W7dQiXzDZv
-	MPuBO+pbczVBnKeqQr/XGrLgCscSXF2U2HkEGd+JPAHkcTdSbQlq9tTqaYOw/GWfRPGNFfqJF2ptf
-	54p3XnWSUGZs+/5kL1EOWDY8vFoJpBMtqI9p38Rocl1ZDt2n7gsQudWuMogidgqUaqgvTOrlTjq3n
-	jXJUVt2A==;
+	bh=o7TLM22Wmba41bgkB9fdo/HPdJHUvAgwM7SdATtZCKs=; b=I+9KSPQzUs05GhEaQ4zZwkMVgh
+	hnFC8DtGX8xR2Sdk3jKaLaVlEDNnsTeA1ksl/sxIJyqAqaAy0NasujHDSzALIpMzaU3l1oLeg+O+A
+	nXZQmlQpPIXGYaYKSyodCry16qzrujkhGLG1IWdNBAkELyvOanw22duYSA29y/O4h8qs/GtttavRu
+	0jFqRcj9H0RfV5YdP2N2jfi3rQH/llj6OzbHwfcCIpasweVem07PQKRQyf8Te14gqLOVwYC8CoPVg
+	84qhAOyQCtW2qHcDVwwgYcIOUPg0vvPap3LDt6l+pDJ+xk7KOYJv8sJfskzSeoa8Yk2G2qNO8RujJ
+	rdCjzQ/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsycD-00DmxY-2D;
-	Wed, 18 Oct 2023 04:57:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qszf0-00Ds6Q-10;
+	Wed, 18 Oct 2023 06:04:02 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsycA-00Dmwa-1s;
-	Wed, 18 Oct 2023 04:57:03 +0000
-X-UUID: c46484aa6d7211ee9b7791016c24628a-20231017
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4QOGGOLiik8Arl3pEVCeppnfrraDdUFVHpnNeQMy0ZQ=;
-	b=E7x5CwWU3WA/RfMOH0x5UZ+cKYe2qd7tX1VRcU7Wqla4IX55RxQAY+hhVBHyvCjoYlIVp7R1cBx4J49Bq9fCzcaN2IKWU55EKlyAjwiw+5E2AZvzYQwI8b8IaQdktOY6+wRkeLIuIGqCYGbm6TETNm6PjZr4iggBEMYb2yRs1+E=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:5e8ca546-95a2-4c83-a986-2b76229a5d9f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:a44741c4-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: c46484aa6d7211ee9b7791016c24628a-20231017
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1970538170; Tue, 17 Oct 2023 21:56:58 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 18 Oct 2023 12:36:54 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 18 Oct 2023 12:36:54 +0800
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
- Hu <ck.hu@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v9 18/23] drm/mediatek: Add Padding to OVL adaptor
-Date: Wed, 18 Oct 2023 12:36:45 +0800
-Message-ID: <20231018043650.22532-19-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231018043650.22532-1-shawn.sung@mediatek.com>
-References: <20231018043650.22532-1-shawn.sung@mediatek.com>
+	id 1qszew-00Ds5Q-3A
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Oct 2023 06:04:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 1A989CE2314;
+	Wed, 18 Oct 2023 06:03:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 847E7C433C8;
+	Wed, 18 Oct 2023 06:03:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1697609034;
+	bh=Djzi1NuVDLlPwGRlitqHObrsX7ODU1p3B7yM65Bk/0s=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=kzzwQ/Vva5kn+XiCa+emJ7bu6nHA2BpEWYvmubMbMqouvRnWF9+O11qdG7oKAagQM
+	 qAWB/3Egcv9Tyul1pXIx8RylkZYQCN68E/KWu3T0v91h1vq1QfjaSENkOtkeF8aJSn
+	 JTOfhNyyh3IcsXl1l2Z7VM5VvLq9Glu4QW9/k6VD+rGNTaZ7TL/KYr673IHIdghnPz
+	 b1HZq0HP1Ch4FJ9zjXDTtXJWiClI9jHG9UZRiyGm9U94Law/OsZnOxM+0fvALiXUoJ
+	 dxnt9SzYgMP6cUw+mhdbSg4UC6YPYydAEf5iForUtAfV9MzO/sXgQov+QiSP42E8ay
+	 SncO95GaJiebA==
+From: Kalle Valo <kvalo@kernel.org>
+To: Deren Wu <deren.wu@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,
+  Jakub Kicinski <kuba@kernel.org>,  "David S . Miller"
+ <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>,  Paolo Abeni
+ <pabeni@redhat.com>,  Sean Wang <sean.wang@mediatek.com>,  Soul Huang
+ <Soul.Huang@mediatek.com>,  Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+  Leon Yen <Leon.Yen@mediatek.com>,  Eric-SY Chang
+ <Eric-SY.Chang@mediatek.com>,  KM Lin <km.lin@mediatek.com>,  Robin Chiu
+ <robin.chiu@mediatek.com>,  CH Yeh <ch.yeh@mediatek.com>,  Posh Sun
+ <posh.sun@mediatek.com>,  Stella Chang <Stella.Chang@mediatek.com>,  Quan
+ Zhou <quan.zhou@mediatek.com>,  Ryder Lee <ryder.lee@mediatek.com>,
+  Shayne Chen <shayne.chen@mediatek.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  linux-wireless
+ <linux-wireless@vger.kernel.org>,  linux-mediatek
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [next v2] wifi: mt76: mt7921: fix kernel panic by accessing
+ invalid 6GHz channel info
+References: <cf77a58a60d81c77a28388bc8d312b87ffb48434.1697603002.git.deren.wu@mediatek.com>
+Date: Wed, 18 Oct 2023 09:03:47 +0300
+In-Reply-To: <cf77a58a60d81c77a28388bc8d312b87ffb48434.1697603002.git.deren.wu@mediatek.com>
+	(Deren Wu's message of "Wed, 18 Oct 2023 12:29:35 +0800")
+Message-ID: <871qds31rw.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_215702_629971_B2E75F3C 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20231017_230359_381550_3E1CDCE3 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,91 +82,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Johnson Wang <johnson.wang@mediatek.corp-partner.google.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>, Sean Paul <sean@poorly.run>, devicetree@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 Padding to OVL adaptor to probe the driver.
+Deren Wu <deren.wu@mediatek.com> writes:
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+>
+> When the chip not support 6GHz capability, the channels of 6GHz information
+> should not be updated.
+>
+> May get the stacktrace without this patch.
+> <1>[   19.442078] Unable to handle kernel NULL pointer dereference at
+> virtual address 0000000000000014
+> <1>[   19.457535] Mem abort info:
+> <1>[   19.465329]   ESR = 0x0000000096000004
+> <1>[   19.473295]   EC = 0x25: DABT (current EL), IL = 32 bits
+> <1>[   19.482354]   SET = 0, FnV = 0
+> <1>[   19.489143]   EA = 0, S1PTW = 0
+> <1>[   19.495991]   FSC = 0x04: level 0 translation fault
+> <1>[   19.504554] Data abort info:
+> <1>[   19.511111]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+> <1>[   19.520269]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+> <1>[   19.528988]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+> <1>[   19.537960] user pgtable: 4k pages, 48-bit VAs, pgdp=00000001027a9000
+> <1>[   19.548014] [0000000000000014] pgd=0000000000000000, p4d=000000000000
+> <0>[   19.558429] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+> <4>[   19.568270] Modules linked in: mt7921e mt7921_common mt792x_lib
+> mt76_connac_lib mt76 mac80211 btusb btintel cfg80211 btmtk snd_sof_ipc_msg_
+> btrtl snd_sof_ipc_flood_test btbcm bluetooth snd_sof_mt8195 uvcvideo
+> mtk_adsp_common snd_sof_xtensa_dsp uvc snd_sof_of snd_sof videobuf2_vmalloc
+> ecdh_generic ecc snd_sof_utils cros_ec_lid_angle cros_ec_sensors crct10dif_
+> cros_ec_sensors_core cros_usbpd_logger crypto_user fuse ip_tables ipv6
+> <4>[   19.614237] CPU: 1 PID: 105 Comm: kworker/1:1 Not tainted
+> 6.6.0-rc6-next-20231017+ #324
+> <4>[   19.625957] Hardware name: Acer Tomato (rev2) board (DT)
+> <4>[   19.634970] Workqueue: events mt7921_init_work [mt7921_common]
+> <4>[   19.644522] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTY
+> <4>[   19.655182] pc : mt7921_regd_notifier+0x180/0x290 [mt7921_common]
+> <4>[   19.664983] lr : mt7921_regd_notifier+0xd4/0x290 [mt7921_common]
+> <4>[   19.674679] sp : ffff800080acba80
+> <4>[   19.681649] x29: ffff800080acba80 x28: 0000000000000000 x27: ffff4faf
+> <4>[   19.692483] x26: 0000000000000000 x25: 0000000000000000 x24: ffff4faf
+> <4>[   19.703294] x23: 00000000ffffe926 x22: ffff4faf16031fa0 x21: 00000000
+> <4>[   19.714108] x20: 000000000000001c x19: ffff4faf16ba6f40 x18: 00000000
+> <4>[   19.724928] x17: 0000000000000000 x16: ffffac6b891c2750 x15: ffff8000
+> <4>[   19.735722] x14: 0000000000000180 x13: 0000000000000000 x12: 00000000
+> <4>[   19.746478] x11: 0000000000000002 x10: ffff4faf01c21780 x9 : ffffac6b
+> <4>[   19.757214] x8 : 00000000006c0000 x7 : ffffac6b6b020cf0 x6 : ffffac6b
+> <4>[   19.767945] x5 : ffffac6b6b020d00 x4 : ffffac6b6b020cf8 x3 : ffff4faf
+> <4>[   19.778648] x2 : 0000000000000000 x1 : 000000000000001c x0 : 00000000
+> <4>[   19.789366] Call trace:
+> <4>[   19.795381]  mt7921_regd_notifier+0x180/0x290 [mt7921_common]
+> <4>[   19.804675]  wiphy_update_regulatory+0x2bc/0xa08 [cfg80211]
+> <4>[   19.813864]  wiphy_regulatory_register+0x4c/0x88 [cfg80211]
+> <4>[   19.823029]  wiphy_register+0x75c/0x8d0 [cfg80211]
+> <4>[   19.831446]  ieee80211_register_hw+0x70c/0xc10 [mac80211]
+> <4>[   19.840479]  mt76_register_device+0x168/0x2e8 [mt76]
+> <4>[   19.849008]  mt7921_init_work+0xdc/0x250 [mt7921_common]
+> <4>[   19.857817]  process_one_work+0x148/0x3c0
+> <4>[   19.865292]  worker_thread+0x32c/0x450
+> <4>[   19.872489]  kthread+0x11c/0x128
+> <4>[   19.879173]  ret_from_fork+0x10/0x20
+> <0>[   19.886153] Code: f0000041 9100a021 94000aef aa0003f9 (b9401780)
+> <4>[   19.895634] ---[ end trace 0000000000000000 ]---
+>
+> Reported-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Closes: https://lore.kernel.org/all/927e7d50-826d-4c92-9931-3c59b18c6945@collabora.com/
+> Fixes: 09382d8f8641 ("mt7921: update the channel usage when the regd domain changed")
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 249d2182ebc7..753a7f829173 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -29,6 +29,7 @@ enum mtk_ovl_adaptor_comp_type {
- 	OVL_ADAPTOR_TYPE_ETHDR,
- 	OVL_ADAPTOR_TYPE_MDP_RDMA,
- 	OVL_ADAPTOR_TYPE_MERGE,
-+	OVL_ADAPTOR_TYPE_PADDING,
- 	OVL_ADAPTOR_TYPE_NUM,
- };
- 
-@@ -46,6 +47,14 @@ enum mtk_ovl_adaptor_comp_id {
- 	OVL_ADAPTOR_MERGE1,
- 	OVL_ADAPTOR_MERGE2,
- 	OVL_ADAPTOR_MERGE3,
-+	OVL_ADAPTOR_PADDING0,
-+	OVL_ADAPTOR_PADDING1,
-+	OVL_ADAPTOR_PADDING2,
-+	OVL_ADAPTOR_PADDING3,
-+	OVL_ADAPTOR_PADDING4,
-+	OVL_ADAPTOR_PADDING5,
-+	OVL_ADAPTOR_PADDING6,
-+	OVL_ADAPTOR_PADDING7,
- 	OVL_ADAPTOR_ID_MAX
- };
- 
-@@ -66,6 +75,7 @@ static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
- 	[OVL_ADAPTOR_TYPE_ETHDR]	= "ethdr",
- 	[OVL_ADAPTOR_TYPE_MDP_RDMA]	= "vdo1-rdma",
- 	[OVL_ADAPTOR_TYPE_MERGE]	= "merge",
-+	[OVL_ADAPTOR_TYPE_PADDING]	= "padding",
- };
- 
- static const struct mtk_ddp_comp_funcs ethdr = {
-@@ -80,6 +90,13 @@ static const struct mtk_ddp_comp_funcs merge = {
- 	.clk_disable = mtk_merge_clk_disable,
- };
- 
-+static const struct mtk_ddp_comp_funcs padding = {
-+	.clk_enable = mtk_padding_clk_enable,
-+	.clk_disable = mtk_padding_clk_disable,
-+	.start = mtk_padding_start,
-+	.stop = mtk_padding_stop,
-+};
-+
- static const struct mtk_ddp_comp_funcs rdma = {
- 	.clk_enable = mtk_mdp_rdma_clk_enable,
- 	.clk_disable = mtk_mdp_rdma_clk_disable,
-@@ -99,6 +116,14 @@ static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
- 	[OVL_ADAPTOR_MERGE1] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE2, 2, &merge },
- 	[OVL_ADAPTOR_MERGE2] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE3, 3, &merge },
- 	[OVL_ADAPTOR_MERGE3] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE4, 4, &merge },
-+	[OVL_ADAPTOR_PADDING0] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING0, 0, &padding },
-+	[OVL_ADAPTOR_PADDING1] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING1, 1, &padding },
-+	[OVL_ADAPTOR_PADDING2] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING2, 2, &padding },
-+	[OVL_ADAPTOR_PADDING3] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING3, 3, &padding },
-+	[OVL_ADAPTOR_PADDING4] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING4, 4, &padding },
-+	[OVL_ADAPTOR_PADDING5] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING5, 5, &padding },
-+	[OVL_ADAPTOR_PADDING6] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING6, 6, &padding },
-+	[OVL_ADAPTOR_PADDING7] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING7, 7, &padding },
- };
- 
- void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
-@@ -369,6 +394,7 @@ static int ovl_adaptor_comp_get_id(struct device *dev, struct device_node *node,
- }
- 
- static const struct of_device_id mtk_ovl_adaptor_comp_dt_ids[] = {
-+	{ .compatible = "mediatek,mt8188-padding", .data = (void *)OVL_ADAPTOR_TYPE_PADDING },
- 	{ .compatible = "mediatek,mt8195-disp-ethdr", .data = (void *)OVL_ADAPTOR_TYPE_ETHDR },
- 	{ .compatible = "mediatek,mt8195-disp-merge", .data = (void *)OVL_ADAPTOR_TYPE_MERGE },
- 	{ .compatible = "mediatek,mt8195-vdo1-rdma", .data = (void *)OVL_ADAPTOR_TYPE_MDP_RDMA },
+I assumed I should take this directly to net-next so assigned to me on
+patchwork. Felix&Lorenzo, ack?
+
 -- 
-2.18.0
+https://patchwork.kernel.org/project/linux-wireless/list/
 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
