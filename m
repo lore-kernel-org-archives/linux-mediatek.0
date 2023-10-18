@@ -4,92 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFFE9CDB482
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 13:11:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82C63CDB482
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 13:25:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DGsOIe2+gPILwGffb1seZvDCNStpRAryY2lIF4RhpfU=; b=iwBjHhBZEWGGJ9bxeuOIilARro
-	XpKxl3WUjn9oVQ+m3CHY0P+R5lcY3X315H3Dd9aMbwa+fHubro3RHhhx8CkmjmN3MEuFRxM77Ny9v
-	8Wxg663jVeGhITdk+ERoYZGT3u/ykJ0YMT1e6xCmNPYTkIea01ojHq+kSiFFy/5fX2jZ7S0Ltw8hY
-	9vmnI17Xu/sssZ/fHxuQ+HF2zCNBa8bHbAx3ijAG/UR7vTr55ZlkfejZY9DJbUcpcJgawOxpnCRI5
-	4zHxXHLFqEDhke4CDosCR42FYRlHslF2xvj1ZFIfBLlO/QwaYDRb6vXzaM7fYlfYC2/OV9xjjF9CE
-	XHUp4g0w==;
+	bh=J1R2Rr1jU/wF+7t7rTzdeT1/U8jF/CmiZuYGx2lkCs4=; b=dsSVkwhF7E6o0n8zO55+OOEggC
+	pCxrfMKc2CJV6hECXXpfUO5RkawYJkRgBnyGr+VKeCkFCzQ6voLi96cbVO8d4dbTvt+WR2at+Dn0z
+	r+5zfmfSPcRqyaiMOeH2+xdTR3EqJFePQciQP4kgJPB/GoU3vjRKNnGtHDG9CgAsdzd6rQM0z0nmQ
+	8grYQa7ac2PSVdwpKB/rHk+UqPutCPbrpFSpbqSO20zkcyQjT1FB4Ewtwi9ZDZ4JNuk7vghM2nqz7
+	2eGw0qHonr4+6N4hy56dcFos00Mj+sMOyP7aeG91khT0UQakpvxF0Bm+sZJCktS8W7Vj8ySF2Eqh6
+	VJlI+sOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt6KO-00EkXm-1x;
-	Wed, 18 Oct 2023 13:11:12 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1qt6Xv-00Elq6-1X;
+	Wed, 18 Oct 2023 13:25:11 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt6K2-00EkOE-1r;
-	Wed, 18 Oct 2023 13:10:51 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40839807e82so6244575e9.0;
-        Wed, 18 Oct 2023 06:10:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697634648; x=1698239448; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DGsOIe2+gPILwGffb1seZvDCNStpRAryY2lIF4RhpfU=;
-        b=lvTUjnnqlpG3cYdnct1Kb82d0iyLKfYoK/jyNOnzF99M9mcBD6BXcx0XevXPa0WB7Z
-         j3sU2me2AnMlHPOtBhR3QgDLwk2+lzfPVAWkE1h3Qr6W05bBlihtXycpNNLyBPl2eRZ+
-         V0R2eM/aYPytxsD9UjLiPjyE2Cbm0oeCxVGApV4wvhC2PoSrv91nQdRgb9zXIB0WvFNj
-         Hr3Mzhg2rqgAFNRbvtD9GTd2Z1k80yU2PsON9lvKMZV7FK4WjJAcQPNYsla7kWcA3bZH
-         WfeKEugCrfyTUyLfQM/tB4GrO2583YJSnvPi3Em7/9KM6gYqXap+pjI89OijHZrTFnzz
-         BX+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697634648; x=1698239448;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=DGsOIe2+gPILwGffb1seZvDCNStpRAryY2lIF4RhpfU=;
-        b=ljrljTheU5gm3oFF5+SGMbeclCUBjDS4NU8bxhwwqpZOBmXxzJMHSfZXzPmwvF9yQK
-         tGLKzHNfxOc92gjZDpH9Y55mx9fPr2Dj1eXjGw+2B2FrEyZQWL969wV1qrXDzU55nQM4
-         DVt5+FDBrtxFqXpiSNlpQ8kC97M0mXgu7ZfXOF8IKrpjq3rNKU0bGENQ0/fQJpLBw6kE
-         4mwPegHgXAKZNRO4AuBPWhkQc3PNnQJBs1qiDsT9N5167Y/pj2tH9YgCpwECOfUjiVwK
-         zmyTGzdqKMWgjH3o6nHhNv2GIxKa5ADQElPK/1lLquGko9uS+vF+xdUQiImV7MRVhmoH
-         fsbA==
-X-Gm-Message-State: AOJu0YztXPrhPpoYg1dXgdcYndrcj7aW+PDLDBYeV2HT3ZEgSBqzPQgJ
-	TgKHMlAvQo4MCrZk8EOzE7s=
-X-Google-Smtp-Source: AGHT+IE+sCuWLXpMpKKSnIlfOUq+4N22pU9jPx36Nsbry/7Ty+ZgoJU7ODY9iOR5ZJrkAcpV+SNbSw==
-X-Received: by 2002:a05:600c:4ecb:b0:3fe:1fd9:bedf with SMTP id g11-20020a05600c4ecb00b003fe1fd9bedfmr4798254wmq.11.1697634647542;
-        Wed, 18 Oct 2023 06:10:47 -0700 (PDT)
-Received: from localhost.localdomain (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.googlemail.com with ESMTPSA id u6-20020a05600c138600b004064288597bsm1677426wmf.30.2023.10.18.06.10.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 06:10:47 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Nicolas Cavallari <nicolas.cavallari@green-communications.fr>,
-	Daniel Golle <daniel@makrotopia.org>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Shiji Yang <yangshiji66@outlook.com>
-Subject: [PATCH v2 6/6] wifi: mt76: permit to load precal from NVMEM cell for mt7915
-Date: Wed, 18 Oct 2023 15:09:42 +0200
-Message-Id: <20231018130942.31187-6-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20231018130942.31187-1-ansuelsmth@gmail.com>
-References: <20231018130942.31187-1-ansuelsmth@gmail.com>
+	id 1qt6Xr-00Elnv-1n;
+	Wed, 18 Oct 2023 13:25:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 1591BB82360;
+	Wed, 18 Oct 2023 13:24:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CC2DC433CD;
+	Wed, 18 Oct 2023 13:24:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1697635498;
+	bh=y7R3Xc7b/dDNyN2IeFpAjUBAw7DegSFH5XvMPARiVk4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=HqRRQnvPK9Llpsr83E0oTzhy/MdvDrNQkXWi1wfdt0swbneeg0G4qXpRNX0H2YOU8
+	 2s/GzaMVN5v/JizxnGYjamOybkFMBWCSqMvH1s0EJKOBdkW0BIVnuibasbKNkxp2r1
+	 Iwxr32Ep7jAMWk7Ii3r6oIFRubLOCdh50Mf2Bosg/+LM93+ZMNIQipIqrP4OpQuQVB
+	 YQyqyXkE6wzhg/dconNrBQ1Mq6EzoUgRspIbWiMlvHn+DTtkk3XDou8f58qRH3rApf
+	 FyJxSaDGH60zhVh5e+mCRFTEy1EmvbeeNGHgX7nXeq0waUYlQmVvdYKcmnHdCOhX0X
+	 mdU01qZUKbTJw==
+Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-2c501bd6ff1so80952171fa.3;
+        Wed, 18 Oct 2023 06:24:58 -0700 (PDT)
+X-Gm-Message-State: AOJu0YxaBmkbj2ywKLPLBfS9PviaCW/47ISwA2Pj9K//8aBCwgQx/oz6
+	WgJ202RTTjUr8iE1gY7N1aZXSfZ3rcrKLG8Ldg==
+X-Google-Smtp-Source: AGHT+IE2erweQk78p2WZGcYNeJzi7UyNstiTigaugME3+3bf0yEm/om0FbaNsQp91jAtR+tU1eTO2SwDaQRNiTjDk+0=
+X-Received: by 2002:a2e:9457:0:b0:2b9:4b2e:5420 with SMTP id
+ o23-20020a2e9457000000b002b94b2e5420mr3825894ljh.52.1697635496365; Wed, 18
+ Oct 2023 06:24:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20230523104234.7849-1-angelogioacchino.delregno@collabora.com>
+ <20230915101124.283232-1-mwalle@kernel.org> <54a04d22-7ec1-473b-ab57-f6339b2cc782@collabora.com>
+In-Reply-To: <54a04d22-7ec1-473b-ab57-f6339b2cc782@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 18 Oct 2023 21:24:40 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_85g9bvVDUqK3ePd+7cWvqmVU4zRb=f4QxU_=A9eZaEpw@mail.gmail.com>
+Message-ID: <CAAOTY_85g9bvVDUqK3ePd+7cWvqmVU4zRb=f4QxU_=A9eZaEpw@mail.gmail.com>
+Subject: Re: [PATCH] drm: mediatek: mtk_dsi: Fix NO_EOT_PACKET settings/handling
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Michael Walle <mwalle@kernel.org>, airlied@gmail.com, chunkuang.hu@kernel.org, 
+	ck.hu@mediatek.com, daniel@ffwll.ch, dri-devel@lists.freedesktop.org, 
+	jitao.shi@mediatek.com, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	matthias.bgg@gmail.com, p.zabel@pengutronix.de, shaoming.chen@mediatek.com, 
+	yt.shen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_061050_641470_0FA1D32B 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20231018_062507_918104_38672439 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,44 +84,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Permit to load precal from NVMEM cell for mt7915. The NVMEM cell must be
-named "precal" to be correctly loaded.
+Hi, Angelo:
 
-NVMEM cell must already account the correct offset and be placed after
-the EEPROM as the function expect the data right from the start.
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2023=E5=B9=B410=E6=9C=8818=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=886:=
+21=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Il 15/09/23 12:11, Michael Walle ha scritto:
+> >> Due to the initial confusion about MIPI_DSI_MODE_EOT_PACKET, properly
+> >> renamed to MIPI_DSI_MODE_NO_EOT_PACKET, reflecting its actual meaning,
+> >> both the DSI_TXRX_CON register setting for bit (HSTX_)DIS_EOT and the
+> >> later calculation for horizontal sync-active (HSA), back (HBP) and
+> >> front (HFP) porches got incorrect due to the logic being inverted.
+> >>
+> >> This means that a number of settings were wrong because....:
+> >>   - DSI_TXRX_CON register setting: bit (HSTX_)DIS_EOT should be
+> >>     set in order to disable the End of Transmission packet;
+> >>   - Horizontal Sync and Back/Front porches: The delta used to
+> >>     calculate all of HSA, HBP and HFP should account for the
+> >>     additional EOT packet.
+> >>
+> >> Before this change...
+> >>   - Bit (HSTX_)DIS_EOT was being set when EOT packet was enabled;
+> >>   - For HSA/HBP/HFP delta... all three were wrong, as words were
+> >>     added when EOT disabled, instead of when EOT packet enabled!
+> >>
+> >> Invert the logic around flag MIPI_DSI_MODE_NO_EOT_PACKET in the
+> >> MediaTek DSI driver to fix the aforementioned issues.
+> >>
+> >> Fixes: 8b2b99fd7931 ("drm/mediatek: dsi: Fine tune the line time cause=
+d by EOTp")
+> >> Fixes: 2d52bfba09d1 ("drm/mediatek: add non-continuous clock mode and =
+EOT packet control")
+> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@c=
+ollabora.com>
+> >
+>
+> Hello CK,
+>
+> can you please pick this fix?
 
-Tested-by: Shiji Yang <yangshiji66@outlook.com>
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+Applied with the changing
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-index 5228f710b3da..3bb2643d1b26 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-@@ -11,6 +11,7 @@ static int mt7915_eeprom_load_precal(struct mt7915_dev *dev)
- 	u8 *eeprom = mdev->eeprom.data;
- 	u32 val = eeprom[MT_EE_DO_PRE_CAL];
- 	u32 offs;
-+	int ret;
- 
- 	if (!dev->flash_mode)
- 		return 0;
-@@ -25,7 +26,11 @@ static int mt7915_eeprom_load_precal(struct mt7915_dev *dev)
- 
- 	offs = is_mt7915(&dev->mt76) ? MT_EE_PRECAL : MT_EE_PRECAL_V2;
- 
--	return mt76_get_of_data_from_mtd(mdev, dev->cal, offs, val);
-+	ret = mt76_get_of_data_from_mtd(mdev, dev->cal, offs, val);
-+	if (!ret)
-+		return ret;
-+
-+	return mt76_get_of_data_from_nvmem(mdev, dev->cal, "precal", val);
- }
- 
- static int mt7915_check_eeprom(struct mt7915_dev *dev)
--- 
-2.40.1
+Fixes: 2d52bfba09d1 ("drm/mediatek: add non-continuous clock mode and
+EOT packet control")
 
+to
+
+Fixes: c87d1c4b5b9a ("drm/mediatek: dsi: Use symbolized register definition=
+")
+
+Regards,
+Chun-Kuang.
+
+>
+> Thanks,
+> Angelo
+>
 
