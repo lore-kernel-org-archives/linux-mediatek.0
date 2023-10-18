@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6567DCDB47E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 04:37:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA78CDB488
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 04:37:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oOExZfi3ZwsinMwpbhDKJn1i8xkobiv3Uwmdg8bEDNU=; b=R/9mSD9SbyjwimweI8fv20XrGf
-	wdQ1E6WdLNiD3Yoit8UYrKBv9e9K2sH2bP9yYCejDy9FsLg+lLM5e+hSDUe0RyVXspA3aqEB9HE2h
-	54e/da6IICsKLFVckeJfu5FLNNgyR+svh8opZu+nJrMD6SBQsBLB0fd6iCMs/flAniouLYLJ4H060
-	MKr+UHcuIkqQWQV81O3T2bLwDw9+oTjUdF6hB7UIdC++VdAGt/FrIwqq6Ga3S2McXJ2mJJ0/KS5yl
-	IMwAtaJQW0s1+9VjzBdzaDWN0wnpXuo3slu2s7oG9GrarcnW7O/BSdqBlloJXOC5wXW7xi9f4YLuc
-	G+h4TvAw==;
+	bh=Wozuhtglut+ndUHShnMeAzlYbB4PJVGI5Nszul9Bf/4=; b=H2kgH8LSo6c9GXzOnZvESOo4up
+	uq4/Hm+bEqxVcMxFFbERXCvnDL5uL4lJpaxd9nk+zzCmunOBKrwbk6AgcA3LcO3XuLzIzjh/aovx0
+	AZezbsatYRd7QeH2eyb75FNyOol7aRIpT5ex8RWfCJynDf9PDaDzxELaZpLA1oT55My0uPlnm/WxK
+	ixWb6xP1RFJtnjj3IHJzqRRkUCr5Kw+hXITS44h7Dip0ikM+yESSzHLkmckOsIjEFfLzmhH5bAOAu
+	nOi/bjh4uyPb1Xg8YRJep1D+MHvDglNQXr+Pl+EdECwIUguWgMzyktA/Bwi58YSqHbI39Z1ddTXgB
+	+AEu2PMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsyJM-00DkVn-2U;
-	Wed, 18 Oct 2023 04:37:36 +0000
+	id 1qsyJX-00DkhG-0h;
+	Wed, 18 Oct 2023 04:37:47 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsyIo-00DjuZ-17;
-	Wed, 18 Oct 2023 04:37:05 +0000
-X-UUID: f8729bb86d6f11ee86758d4a7c00f3a0-20231017
+	id 1qsyIp-00Djst-2Q;
+	Wed, 18 Oct 2023 04:37:06 +0000
+X-UUID: f838f9da6d6f11ee86758d4a7c00f3a0-20231017
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oOExZfi3ZwsinMwpbhDKJn1i8xkobiv3Uwmdg8bEDNU=;
-	b=gU1CdrYaNfQq1ME/zVDeCNhBRIJ3roiTwiExWG3/LscxIdKpWXhhELt+9o4iCaxsoDvXfDZ9xOtOD2xjiCuCaoDDmkdWzKCQNqAonaoemIy2n9w/iUfb/m6AsA/4ua/EqJoDqPQxmKAjIpr4O1JE3m+kuLAh9L9gljJmb4pPJC0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Wozuhtglut+ndUHShnMeAzlYbB4PJVGI5Nszul9Bf/4=;
+	b=FflVIFDf1ZQYGpIkQKdohijnJDTooZB4STr4B/3FXps9tuQ8TwDwAruuv6f1s0S+X3lvreApu/yO1ttpO70zty2d1+iKa05BVCDU09r2DWqyPiGyAQLEDPCBrNJhYMBQFzeN4acbWAAN0Yg0xGUwj0I6jPEwXLwJGn4xqIg6uD0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:80836cfd-3c5a-4216-ac18-a323abee6ce0,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:d14b54a6-f60a-48a3-91ee-5fef1c503ae7,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:a6e90fc0-14cc-44ca-b657-2d2783296e72,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:1c392a15-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: f8729bb86d6f11ee86758d4a7c00f3a0-20231017
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: f838f9da6d6f11ee86758d4a7c00f3a0-20231017
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1403220766; Tue, 17 Oct 2023 21:36:57 -0700
+	with ESMTP id 45150639; Tue, 17 Oct 2023 21:36:56 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 18 Oct 2023 12:36:53 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.1118.26 via Frontend Transport; Wed, 18 Oct 2023 12:36:53 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
- Hu <ck.hu@mediatek.com>, Krzysztof Kozlowski
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
+ Hu" <ck.hu@mediatek.com>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v9 14/23] drm/mediatek: Add component ID to component match structure
-Date: Wed, 18 Oct 2023 12:36:41 +0800
-Message-ID: <20231018043650.22532-15-shawn.sung@mediatek.com>
+Subject: [PATCH v9 13/23] drm/mediatek: Sort OVL adaptor components
+Date: Wed, 18 Oct 2023 12:36:40 +0800
+Message-ID: <20231018043650.22532-14-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231018043650.22532-1-shawn.sung@mediatek.com>
 References: <20231018043650.22532-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.685800-8.000000
+X-TMASE-MatchedRID: quu5fX4+30yl84HKYQ35vJJAa1C/+FcuI9yVcHNDU7aOUV82NDH4ArEw
+	JWI3UXVeT/ci3LQKeFGkV7miV6Ja8a6UR+fsf9oD9Jn/ZrGuc8GwR/wKmchi2clk/SMg0CpQo8W
+	MkQWv6iXBcIE78YqRWo6HM5rqDwqtJaSK8G4paHjFOBYL3FhNDW7AVAZUmN5/Z4ZLVoZtDxC/ye
+	6c/iCV6A==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.685800-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 8029C103A0E2EE75ADF336BCE9F343C0F8A7AE7E552F965DAE6A8B4C0F4EA7622000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_213702_402005_57B60AFC 
-X-CRM114-Status: GOOD (  16.96  )
+X-CRM114-CacheID: sfid-20231017_213703_826409_C36A50C2 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,123 +96,122 @@ Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add component ID to component match structure so we can
-configure them with a for-loop.
-
-The main reason we do such code refactoring is that
-there is a new hardware component called "Padding" since
-MT8188, while MT8195 doesn't have this module, we can't
-use the original logic to manage the components.
-
-While MT8195 does not define Padding in the device tree,
-the corresponding components will be NULL and being skipped
-by the functions.
+Sort OVL adaptor components' names in alphabetical order.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 69 ++++++++-----------
- 1 file changed, 30 insertions(+), 39 deletions(-)
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 094e508ac70b..60e5dfe9ef0d 100644
+index 1b39ee6957fc..094e508ac70b 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -51,6 +51,7 @@ enum mtk_ovl_adaptor_comp_id {
+@@ -26,13 +26,14 @@
+ #define MTK_OVL_ADAPTOR_LAYER_NUM 4
  
- struct ovl_adaptor_comp_match {
- 	enum mtk_ovl_adaptor_comp_type type;
-+	enum mtk_ddp_comp_id comp_id;
- 	int alias_id;
+ enum mtk_ovl_adaptor_comp_type {
+-	OVL_ADAPTOR_TYPE_MDP_RDMA = 0,
+-	OVL_ADAPTOR_TYPE_MERGE,
+ 	OVL_ADAPTOR_TYPE_ETHDR,
++	OVL_ADAPTOR_TYPE_MDP_RDMA,
++	OVL_ADAPTOR_TYPE_MERGE,
+ 	OVL_ADAPTOR_TYPE_NUM,
  };
  
-@@ -67,19 +68,19 @@ static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
+ enum mtk_ovl_adaptor_comp_id {
++	OVL_ADAPTOR_ETHDR0,
+ 	OVL_ADAPTOR_MDP_RDMA0,
+ 	OVL_ADAPTOR_MDP_RDMA1,
+ 	OVL_ADAPTOR_MDP_RDMA2,
+@@ -45,7 +46,6 @@ enum mtk_ovl_adaptor_comp_id {
+ 	OVL_ADAPTOR_MERGE1,
+ 	OVL_ADAPTOR_MERGE2,
+ 	OVL_ADAPTOR_MERGE3,
+-	OVL_ADAPTOR_ETHDR0,
+ 	OVL_ADAPTOR_ID_MAX
+ };
+ 
+@@ -61,12 +61,13 @@ struct mtk_disp_ovl_adaptor {
+ };
+ 
+ static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
++	[OVL_ADAPTOR_TYPE_ETHDR]	= "ethdr",
+ 	[OVL_ADAPTOR_TYPE_MDP_RDMA]	= "vdo1-rdma",
+ 	[OVL_ADAPTOR_TYPE_MERGE]	= "merge",
+-	[OVL_ADAPTOR_TYPE_ETHDR]	= "ethdr",
  };
  
  static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
++	[OVL_ADAPTOR_ETHDR0]	= { OVL_ADAPTOR_TYPE_ETHDR, 0 },
+ 	[OVL_ADAPTOR_MDP_RDMA0]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 0 },
+ 	[OVL_ADAPTOR_MDP_RDMA1]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 1 },
+ 	[OVL_ADAPTOR_MDP_RDMA2]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 2 },
+@@ -79,7 +80,6 @@ static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
+ 	[OVL_ADAPTOR_MERGE1]	= { OVL_ADAPTOR_TYPE_MERGE, 2 },
+ 	[OVL_ADAPTOR_MERGE2]	= { OVL_ADAPTOR_TYPE_MERGE, 3 },
+ 	[OVL_ADAPTOR_MERGE3]	= { OVL_ADAPTOR_TYPE_MERGE, 4 },
 -	[OVL_ADAPTOR_ETHDR0]	= { OVL_ADAPTOR_TYPE_ETHDR, 0 },
--	[OVL_ADAPTOR_MDP_RDMA0]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 0 },
--	[OVL_ADAPTOR_MDP_RDMA1]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 1 },
--	[OVL_ADAPTOR_MDP_RDMA2]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 2 },
--	[OVL_ADAPTOR_MDP_RDMA3]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 3 },
--	[OVL_ADAPTOR_MDP_RDMA4]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 4 },
--	[OVL_ADAPTOR_MDP_RDMA5]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 5 },
--	[OVL_ADAPTOR_MDP_RDMA6]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 6 },
--	[OVL_ADAPTOR_MDP_RDMA7]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 7 },
--	[OVL_ADAPTOR_MERGE0]	= { OVL_ADAPTOR_TYPE_MERGE, 1 },
--	[OVL_ADAPTOR_MERGE1]	= { OVL_ADAPTOR_TYPE_MERGE, 2 },
--	[OVL_ADAPTOR_MERGE2]	= { OVL_ADAPTOR_TYPE_MERGE, 3 },
--	[OVL_ADAPTOR_MERGE3]	= { OVL_ADAPTOR_TYPE_MERGE, 4 },
-+	[OVL_ADAPTOR_ETHDR0] = { OVL_ADAPTOR_TYPE_ETHDR, DDP_COMPONENT_ETHDR_MIXER, 0 },
-+	[OVL_ADAPTOR_MDP_RDMA0] = { OVL_ADAPTOR_TYPE_MDP_RDMA, DDP_COMPONENT_MDP_RDMA0, 0 },
-+	[OVL_ADAPTOR_MDP_RDMA1] = { OVL_ADAPTOR_TYPE_MDP_RDMA, DDP_COMPONENT_MDP_RDMA1, 1 },
-+	[OVL_ADAPTOR_MDP_RDMA2] = { OVL_ADAPTOR_TYPE_MDP_RDMA, DDP_COMPONENT_MDP_RDMA2, 2 },
-+	[OVL_ADAPTOR_MDP_RDMA3] = { OVL_ADAPTOR_TYPE_MDP_RDMA, DDP_COMPONENT_MDP_RDMA3, 3 },
-+	[OVL_ADAPTOR_MDP_RDMA4] = { OVL_ADAPTOR_TYPE_MDP_RDMA, DDP_COMPONENT_MDP_RDMA4, 4 },
-+	[OVL_ADAPTOR_MDP_RDMA5] = { OVL_ADAPTOR_TYPE_MDP_RDMA, DDP_COMPONENT_MDP_RDMA5, 5 },
-+	[OVL_ADAPTOR_MDP_RDMA6] = { OVL_ADAPTOR_TYPE_MDP_RDMA, DDP_COMPONENT_MDP_RDMA6, 6 },
-+	[OVL_ADAPTOR_MDP_RDMA7] = { OVL_ADAPTOR_TYPE_MDP_RDMA, DDP_COMPONENT_MDP_RDMA7, 7 },
-+	[OVL_ADAPTOR_MERGE0] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE1, 1 },
-+	[OVL_ADAPTOR_MERGE1] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE2, 2 },
-+	[OVL_ADAPTOR_MERGE2] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE3, 3 },
-+	[OVL_ADAPTOR_MERGE3] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE4, 4 },
  };
  
  void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
-@@ -313,36 +314,26 @@ size_t mtk_ovl_adaptor_get_num_formats(struct device *dev)
+@@ -313,6 +313,7 @@ size_t mtk_ovl_adaptor_get_num_formats(struct device *dev)
  
  void mtk_ovl_adaptor_add_comp(struct device *dev, struct mtk_mutex *mutex)
  {
++	mtk_mutex_add_comp(mutex, DDP_COMPONENT_ETHDR_MIXER);
+ 	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA0);
+ 	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA1);
+ 	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA2);
+@@ -325,11 +326,11 @@ void mtk_ovl_adaptor_add_comp(struct device *dev, struct mtk_mutex *mutex)
+ 	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE2);
+ 	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE3);
+ 	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE4);
 -	mtk_mutex_add_comp(mutex, DDP_COMPONENT_ETHDR_MIXER);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA0);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA1);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA2);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA3);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA4);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA5);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA6);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA7);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE1);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE2);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE3);
--	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE4);
-+	int i;
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
-+		if (!ovl_adaptor->ovl_adaptor_comp[i])
-+			continue;
-+		mtk_mutex_add_comp(mutex, comp_matches[i].comp_id);
-+	}
  }
  
  void mtk_ovl_adaptor_remove_comp(struct device *dev, struct mtk_mutex *mutex)
  {
++	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_ETHDR_MIXER);
+ 	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA0);
+ 	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA1);
+ 	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA2);
+@@ -342,11 +343,11 @@ void mtk_ovl_adaptor_remove_comp(struct device *dev, struct mtk_mutex *mutex)
+ 	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE2);
+ 	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE3);
+ 	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE4);
 -	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_ETHDR_MIXER);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA0);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA1);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA2);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA3);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA4);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA5);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA6);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA7);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE1);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE2);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE3);
--	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE4);
-+	int i;
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
-+		if (!ovl_adaptor->ovl_adaptor_comp[i])
-+			continue;
-+		mtk_mutex_remove_comp(mutex, comp_matches[i].comp_id);
-+	}
  }
  
  void mtk_ovl_adaptor_connect(struct device *dev, struct device *mmsys_dev, unsigned int next)
+ {
++	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_ETHDR_MIXER, next);
+ 	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MDP_RDMA0, DDP_COMPONENT_MERGE1);
+ 	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MDP_RDMA1, DDP_COMPONENT_MERGE1);
+ 	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MDP_RDMA2, DDP_COMPONENT_MERGE2);
+@@ -354,11 +355,11 @@ void mtk_ovl_adaptor_connect(struct device *dev, struct device *mmsys_dev, unsig
+ 	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MERGE2, DDP_COMPONENT_ETHDR_MIXER);
+ 	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MERGE3, DDP_COMPONENT_ETHDR_MIXER);
+ 	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MERGE4, DDP_COMPONENT_ETHDR_MIXER);
+-	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_ETHDR_MIXER, next);
+ }
+ 
+ void mtk_ovl_adaptor_disconnect(struct device *dev, struct device *mmsys_dev, unsigned int next)
+ {
++	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_ETHDR_MIXER, next);
+ 	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MDP_RDMA0, DDP_COMPONENT_MERGE1);
+ 	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MDP_RDMA1, DDP_COMPONENT_MERGE1);
+ 	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MDP_RDMA2, DDP_COMPONENT_MERGE2);
+@@ -366,7 +367,6 @@ void mtk_ovl_adaptor_disconnect(struct device *dev, struct device *mmsys_dev, un
+ 	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MERGE2, DDP_COMPONENT_ETHDR_MIXER);
+ 	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MERGE3, DDP_COMPONENT_ETHDR_MIXER);
+ 	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MERGE4, DDP_COMPONENT_ETHDR_MIXER);
+-	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_ETHDR_MIXER, next);
+ }
+ 
+ static int ovl_adaptor_comp_get_id(struct device *dev, struct device_node *node,
 -- 
 2.18.0
 
