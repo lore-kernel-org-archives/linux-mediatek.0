@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1990CDB47E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 13:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFFE9CDB482
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 13:11:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z3Xg+Zl530t6+yLtJ2L7UJ10F06niahRGDT6Y4EkH+w=; b=qBeYkayxZz7Xq+p+7RFE8+R71i
-	pzJtIqA1yqD4VXoNYHCmuHxzA3Tt9lQItqrkQ6cZOkFXglef0bN41Z3pYeBKgb6/neyrCTzfoZNKc
-	R8pzWk5vzkNECC0p6O+dgdmtF0RJZaAmT9TiM1kiVKng28kcDE2JehZ0BC89zi5Iuze9hrzgyt7C0
-	xHGVgMQdi1YDNMo1DoInd6DSytsQayNiS/BbgiQDMunS6jUOQuW1YQsRWaQb3ktmdf7NOBUTlBg0y
-	PQVn7PYvLKzmUpwv3VEe3zNKSY4m1CBbWRmjHS0UdHgW0qik2xZk8aWoiTYcL3tweYIFdK3phQVeu
-	BDJTmEXQ==;
+	bh=DGsOIe2+gPILwGffb1seZvDCNStpRAryY2lIF4RhpfU=; b=iwBjHhBZEWGGJ9bxeuOIilARro
+	XpKxl3WUjn9oVQ+m3CHY0P+R5lcY3X315H3Dd9aMbwa+fHubro3RHhhx8CkmjmN3MEuFRxM77Ny9v
+	8Wxg663jVeGhITdk+ERoYZGT3u/ykJ0YMT1e6xCmNPYTkIea01ojHq+kSiFFy/5fX2jZ7S0Ltw8hY
+	9vmnI17Xu/sssZ/fHxuQ+HF2zCNBa8bHbAx3ijAG/UR7vTr55ZlkfejZY9DJbUcpcJgawOxpnCRI5
+	4zHxXHLFqEDhke4CDosCR42FYRlHslF2xvj1ZFIfBLlO/QwaYDRb6vXzaM7fYlfYC2/OV9xjjF9CE
+	XHUp4g0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt6KN-00EkX6-29;
-	Wed, 18 Oct 2023 13:11:11 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1qt6KO-00EkXm-1x;
+	Wed, 18 Oct 2023 13:11:12 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt6K0-00EkNH-2r;
-	Wed, 18 Oct 2023 13:10:50 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-40839807e82so6244205e9.0;
-        Wed, 18 Oct 2023 06:10:47 -0700 (PDT)
+	id 1qt6K2-00EkOE-1r;
+	Wed, 18 Oct 2023 13:10:51 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40839807e82so6244575e9.0;
+        Wed, 18 Oct 2023 06:10:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697634646; x=1698239446; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1697634648; x=1698239448; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Z3Xg+Zl530t6+yLtJ2L7UJ10F06niahRGDT6Y4EkH+w=;
-        b=Y5Qi+BeywyQLOZ7Pd5e3dOuGgfxBO/VLAGkhE8ErVQRdfNgsL00+vDBBt2QC4rU1zk
-         1Lx6RGuGALY9a2CnOK6W7ncPOftYNtlq8rr1kyNqdxn9H+tqnxIZ3PbQ8a1LerHdch+C
-         VQ7+oVQ6skpxTYCIgjZ2+hIEcZFPaEMvhx15VClnea0TONucHM9nYSHOwNGLOUOjG5y7
-         YAR7kvHNepcItWRcqmlUb41KY+tBQN2V8i75bc/zVctpfuZUsbehCRBOijEzFUl4xbBn
-         wm8wgTBu+LjzM5Q5+ukQxEn1Q1b3O2ziW2YS3XkELpwXHmiDZRbww14dzRttYqBgsSfp
-         DNgw==
+        bh=DGsOIe2+gPILwGffb1seZvDCNStpRAryY2lIF4RhpfU=;
+        b=lvTUjnnqlpG3cYdnct1Kb82d0iyLKfYoK/jyNOnzF99M9mcBD6BXcx0XevXPa0WB7Z
+         j3sU2me2AnMlHPOtBhR3QgDLwk2+lzfPVAWkE1h3Qr6W05bBlihtXycpNNLyBPl2eRZ+
+         V0R2eM/aYPytxsD9UjLiPjyE2Cbm0oeCxVGApV4wvhC2PoSrv91nQdRgb9zXIB0WvFNj
+         Hr3Mzhg2rqgAFNRbvtD9GTd2Z1k80yU2PsON9lvKMZV7FK4WjJAcQPNYsla7kWcA3bZH
+         WfeKEugCrfyTUyLfQM/tB4GrO2583YJSnvPi3Em7/9KM6gYqXap+pjI89OijHZrTFnzz
+         BX+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697634646; x=1698239446;
+        d=1e100.net; s=20230601; t=1697634648; x=1698239448;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Z3Xg+Zl530t6+yLtJ2L7UJ10F06niahRGDT6Y4EkH+w=;
-        b=jlZAWOPBcg47xdE3mHKBa1nFaOd6Rc6iUiKs/eS5FmWx9OwMjJRgeH9gf66Kk1QQ2l
-         N44No6TX5HjQNVE2afpMyQlWF2FKNKoX2HL/336/jFP2VOj/WbL7+HOcxKQBl6jU8BBE
-         0L684pzlGS+0UP3D36y2OfArARLFcz8O8dFqFJBg2+bemfJtwNrPoXsvpIyJBU571Qag
-         CXcDRuyTP6IKLK4V0rp1weCosjOSQFG8ZqCLH0difw0gdqtmx4yeX4onIhkTsjgmzdxR
-         h+klmnTopDHmM4qnoNJMKjTvYVB8l9OGR3hRLVMnGcr5827XSYW6ghMbu05rQcpjRirE
-         Z9YQ==
-X-Gm-Message-State: AOJu0YwWb1XtAYu2Grv6Dg/CVqENVcP/exjmw4E7Dt5Wucw6dnExtIVD
-	J1ONcBovhMpX9xPwKLG7OMI=
-X-Google-Smtp-Source: AGHT+IHEbRqesj7l3D4EwIgtEAeke37ZIpRp6Fma1JEUtHbnVo9gJbSp4GsHnwTbRcZjmmaHwkjWiA==
-X-Received: by 2002:a05:600c:4d0d:b0:405:3f06:d2ef with SMTP id u13-20020a05600c4d0d00b004053f06d2efmr4621449wmp.4.1697634646084;
-        Wed, 18 Oct 2023 06:10:46 -0700 (PDT)
+        bh=DGsOIe2+gPILwGffb1seZvDCNStpRAryY2lIF4RhpfU=;
+        b=ljrljTheU5gm3oFF5+SGMbeclCUBjDS4NU8bxhwwqpZOBmXxzJMHSfZXzPmwvF9yQK
+         tGLKzHNfxOc92gjZDpH9Y55mx9fPr2Dj1eXjGw+2B2FrEyZQWL969wV1qrXDzU55nQM4
+         DVt5+FDBrtxFqXpiSNlpQ8kC97M0mXgu7ZfXOF8IKrpjq3rNKU0bGENQ0/fQJpLBw6kE
+         4mwPegHgXAKZNRO4AuBPWhkQc3PNnQJBs1qiDsT9N5167Y/pj2tH9YgCpwECOfUjiVwK
+         zmyTGzdqKMWgjH3o6nHhNv2GIxKa5ADQElPK/1lLquGko9uS+vF+xdUQiImV7MRVhmoH
+         fsbA==
+X-Gm-Message-State: AOJu0YztXPrhPpoYg1dXgdcYndrcj7aW+PDLDBYeV2HT3ZEgSBqzPQgJ
+	TgKHMlAvQo4MCrZk8EOzE7s=
+X-Google-Smtp-Source: AGHT+IE+sCuWLXpMpKKSnIlfOUq+4N22pU9jPx36Nsbry/7Ty+ZgoJU7ODY9iOR5ZJrkAcpV+SNbSw==
+X-Received: by 2002:a05:600c:4ecb:b0:3fe:1fd9:bedf with SMTP id g11-20020a05600c4ecb00b003fe1fd9bedfmr4798254wmq.11.1697634647542;
+        Wed, 18 Oct 2023 06:10:47 -0700 (PDT)
 Received: from localhost.localdomain (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.googlemail.com with ESMTPSA id u6-20020a05600c138600b004064288597bsm1677426wmf.30.2023.10.18.06.10.45
+        by smtp.googlemail.com with ESMTPSA id u6-20020a05600c138600b004064288597bsm1677426wmf.30.2023.10.18.06.10.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 06:10:45 -0700 (PDT)
+        Wed, 18 Oct 2023 06:10:47 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -79,17 +79,17 @@ To: Felix Fietkau <nbd@nbd.name>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Shiji Yang <yangshiji66@outlook.com>
-Subject: [PATCH v2 5/6] wifi: mt76: permit to use alternative cell name to eeprom NVMEM load
-Date: Wed, 18 Oct 2023 15:09:41 +0200
-Message-Id: <20231018130942.31187-5-ansuelsmth@gmail.com>
+Subject: [PATCH v2 6/6] wifi: mt76: permit to load precal from NVMEM cell for mt7915
+Date: Wed, 18 Oct 2023 15:09:42 +0200
+Message-Id: <20231018130942.31187-6-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231018130942.31187-1-ansuelsmth@gmail.com>
 References: <20231018130942.31187-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_061048_925510_D73C209C 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20231018_061050_641470_0FA1D32B 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,74 +104,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Generilize mt76_get_of_eeprom_from_nvmem to use alternative cell name by
-passing the cell name as an arg and expose it.
+Permit to load precal from NVMEM cell for mt7915. The NVMEM cell must be
+named "precal" to be correctly loaded.
 
-Rename it to mt76_get_of_data_from_nvmem to better reflect the now more
-generic usage.
-
-This is to permit driver to load additional cell, like precal cell.
+NVMEM cell must already account the correct offset and be placed after
+the EEPROM as the function expect the data right from the start.
 
 Tested-by: Shiji Yang <yangshiji66@outlook.com>
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/eeprom.c | 8 +++++---
- drivers/net/wireless/mediatek/mt76/mt76.h   | 2 ++
- 2 files changed, 7 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index 748f4b643a5e..ac6c0a0e876f 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -107,7 +107,8 @@ int mt76_get_of_data_from_mtd(struct mt76_dev *dev, void *eep, int offset, int l
- }
- EXPORT_SYMBOL_GPL(mt76_get_of_data_from_mtd);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index 5228f710b3da..3bb2643d1b26 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -11,6 +11,7 @@ static int mt7915_eeprom_load_precal(struct mt7915_dev *dev)
+ 	u8 *eeprom = mdev->eeprom.data;
+ 	u32 val = eeprom[MT_EE_DO_PRE_CAL];
+ 	u32 offs;
++	int ret;
  
--static int mt76_get_of_eeprom_from_nvmem(struct mt76_dev *dev, void *eep, int len)
-+int mt76_get_of_data_from_nvmem(struct mt76_dev *dev, void *eep,
-+				const char *cell_name, int len)
- {
- 	struct device_node *np = dev->dev->of_node;
- 	struct nvmem_cell *cell;
-@@ -115,7 +116,7 @@ static int mt76_get_of_eeprom_from_nvmem(struct mt76_dev *dev, void *eep, int le
- 	size_t retlen;
- 	int ret = 0;
- 
--	cell = of_nvmem_cell_get(np, "eeprom");
-+	cell = of_nvmem_cell_get(np, cell_name);
- 	if (IS_ERR(cell))
- 		return PTR_ERR(cell);
- 
-@@ -137,6 +138,7 @@ static int mt76_get_of_eeprom_from_nvmem(struct mt76_dev *dev, void *eep, int le
- 
- 	return ret;
- }
-+EXPORT_SYMBOL_GPL(mt76_get_of_data_from_nvmem);
- 
- static int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int len)
- {
-@@ -154,7 +156,7 @@ static int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int len)
- 	if (!ret)
+ 	if (!dev->flash_mode)
  		return 0;
+@@ -25,7 +26,11 @@ static int mt7915_eeprom_load_precal(struct mt7915_dev *dev)
  
--	return mt76_get_of_eeprom_from_nvmem(dev, eep, len);
-+	return mt76_get_of_data_from_nvmem(dev, eep, "eeprom", len);
+ 	offs = is_mt7915(&dev->mt76) ? MT_EE_PRECAL : MT_EE_PRECAL_V2;
+ 
+-	return mt76_get_of_data_from_mtd(mdev, dev->cal, offs, val);
++	ret = mt76_get_of_data_from_mtd(mdev, dev->cal, offs, val);
++	if (!ret)
++		return ret;
++
++	return mt76_get_of_data_from_nvmem(mdev, dev->cal, "precal", val);
  }
  
- void
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 41e4f398083e..c9934258c49d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1096,6 +1096,8 @@ void mt76_seq_puts_array(struct seq_file *file, const char *str,
- int mt76_eeprom_init(struct mt76_dev *dev, int len);
- void mt76_eeprom_override(struct mt76_phy *phy);
- int mt76_get_of_data_from_mtd(struct mt76_dev *dev, void *eep, int offset, int len);
-+int mt76_get_of_data_from_nvmem(struct mt76_dev *dev, void *eep,
-+				const char *cell_name, int len);
- 
- struct mt76_queue *
- mt76_init_queue(struct mt76_dev *dev, int qid, int idx, int n_desc,
+ static int mt7915_check_eeprom(struct mt7915_dev *dev)
 -- 
 2.40.1
 
