@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C589FCDB483
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 06:07:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DCD2CDB483
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 08:03:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R86kxfqrPEtr495qKYbi8YP7lktM7XvKgX2nq4nlfuU=; b=fNAxyFsNv+yyfaGqstZY1KMWHf
-	0kB8gjynumcwwU3m+LnaJMd6aowZ5IsaQs19WQnyqMTLN0tDMA+MdsSYiSZkgjaKs6cuPn5ykpp8J
-	QJmqcrPyz0gItz3rtWGiaBIjh6A+Vj53ckSrtRuTZpB3DQyDlCb4wym9HcfL8FKpbD3WtoMglqgSx
-	VCgc1TtlkzNkaqsyoVxoCZK+Vt1UmiFCYQercJb8foU+fa5qHP4swyDSgO7h+T3SLRwn8R153folB
-	wPNihQVqIYdi6UGa0knkpX7izg7iMyshr9fxZSKWzXRGqrAVW4tX7PFSSou5CC5oqu7527nuoUVlM
-	fZ0wHYwQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7hsD5vD9Cjx2BCY5Q6/OISnydcdVDR38WkVMtbdVpXo=; b=Nat9rBV9l9dwxKjDvvq6rTBLST
+	Mr3b5Wx3FMMfgreIiOnohG6QRTQ6PaB7REG4sv1VSf7RJpsyOdt3cba08hhfkFNDAzefmxB5DmhnC
+	XG8MVAET7VNwGjHHXxN2qF4W5D51U71dLejLr5E1S7Sgd5/MewLlKDV0PnfgiJtXloCw38zGwsPPe
+	hvnyuDydM6tPqPsTZcrSFA/ll+YBzCYXFulEuxweMqJnKmVBuv6s/uA542oNgfcMw9aDT1SlJ3MX9
+	3F15USLS4nW+2avsvWQlSbznbCtzlUpIjzMhsXxvYK4fwH92vsOHvbytfpFsTUbesThV/DaUKPwPD
+	cY3CcWdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsziO-00DsGT-1n;
-	Wed, 18 Oct 2023 06:07:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qt1WI-00E5mg-2m;
+	Wed, 18 Oct 2023 08:03:10 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsziL-00DsFe-0m;
-	Wed, 18 Oct 2023 06:07:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7332A61683;
-	Wed, 18 Oct 2023 06:07:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16DEBC433C8;
-	Wed, 18 Oct 2023 06:07:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697609248;
-	bh=h/auq6HpOSLO/N4BVvzPRBs8wFljerSgSeyenywRUl4=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=k14kdHnxqZ97agAIFMyDjHuczUDMuqPTAoLnzIWFM/jPbjraO7DPPFJFC4bivqoYY
-	 JUrGrG3gf2H1E5+HjEQyhA/kUpvKYZDW1vX1/mfoLEz36vdzWRBb9cuzmjwm7HDdBz
-	 ErG81JZoUVatTvvMWFjw4PVEXH9ux8VZ9/FVi7xx1VWYv3lEdqFRqjEQqyPMyqiymI
-	 zotak707hUoVBhZoqA7uDfLuGoarDlAd/657b3Fggk8958IssNB6Al2XRFLWx+XKIt
-	 Vr4VJCltmeYRZv6QYuHCPYLPLqVISx0UJRvMfqNhO8Lg81W4CHb6YqQeASv5wmx6EO
-	 ihCvlCrWBobyQ==
-From: Kalle Valo <kvalo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,
-  Ryder Lee <ryder.lee@mediatek.com>,  Shayne Chen
- <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>,  Matthias
- Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Simon Horman
- <horms@kernel.org>,  Alexander Couzens <lynxis@fe80.eu>,  Nicolas
- Cavallari <nicolas.cavallari@green-communications.fr>,  Daniel Golle
- <daniel@makrotopia.org>,  linux-wireless@vger.kernel.org,
-  linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
-  linux-mediatek@lists.infradead.org,  stable@vger.kernel.org
-Subject: Re: [net-next RFC PATCH 1/6] wifi: mt76: fix broken precal loading
- from MTD for mt7915
-References: <20231017190510.27163-1-ansuelsmth@gmail.com>
-Date: Wed, 18 Oct 2023 09:10:07 +0300
-In-Reply-To: <20231017190510.27163-1-ansuelsmth@gmail.com> (Christian
-	Marangi's message of "Tue, 17 Oct 2023 21:05:05 +0200")
-Message-ID: <87a5sgea0w.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	id 1qt1WF-00E5kU-1X;
+	Wed, 18 Oct 2023 08:03:08 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8D53566072F7;
+	Wed, 18 Oct 2023 09:03:04 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697616185;
+	bh=W7GxTlEixMdAxKZq0tsZum0HrzgUBhC6N7AdE2HVxoU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lNnitz0XmCeTy8Vlxhor5LzFCpex8bro109TuG0Gd2Y+yHii47AqBwdp4g0aDFeBO
+	 5zR481K72GHnXqwRyrz0MgU3Ivru+nrJwGOn716mt6Ggxpfc1Ypl7XtgnUMBm0s9Vv
+	 42O9Q1yz/vGbM23gNa+uUD00g+Quf4gMU0FQ0npzXzEThgKc8AF6N5XE2gI79HwoXE
+	 mkjizcJoIZoVCFk4wuCLMilPl69peRWPIK1zrsy6X1RmqdU1bBT49QcLUxk20VHU2+
+	 fU9EDRLU6/6SjG9hWctROeVSbSNxjiyNoMP5lYXE2z49TEznnH8fdyCKIR42B+ZU9G
+	 fzGL5l9WNqpkA==
+Message-ID: <64dcbd70-7553-4a86-91a3-6986854c51ba@collabora.com>
+Date: Wed, 18 Oct 2023 10:03:02 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 3/5] thermal/drivers/mediatek/lvts_thermal: Add mt8192
+ support
+Content-Language: en-US
+To: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+ daniel.lezcano@linaro.org, rafael@kernel.org, amitk@kernel.org,
+ rui.zhang@intel.com, matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, dunlap@infradead.org,
+ e.xingchen@zte.com.cn, p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, wenst@chromium.org, ames.lo@mediatek.com,
+ rex-bc.chen@mediatek.com, nfraprado@collabora.com, abailon@baylibre.com,
+ amergnat@baylibre.com, khilman@baylibre.com
+References: <20231017190545.157282-1-bero@baylibre.com>
+ <20231017190545.157282-4-bero@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231017190545.157282-4-bero@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_230729_326797_D33D9A7F 
-X-CRM114-Status: GOOD (  15.11  )
+X-CRM114-CacheID: sfid-20231018_010307_716576_BF488EC8 
+X-CRM114-Status: UNSURE (   6.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,37 +84,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Christian Marangi <ansuelsmth@gmail.com> writes:
+Il 17/10/23 21:05, Bernhard Rosenkränzer ha scritto:
+> From: Balsam CHIHI <bchihi@baylibre.com>
+> 
+> Add LVTS Driver support for MT8192.
+> 
+> Co-developed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> [bero@baylibre.com: cosmetic changes, rebase]
+> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-> Commit 495184ac91bb ("mt76: mt7915: add support for applying
-> pre-calibration data") was fundamentally broken and never worked.
->
-> The idea (before NVMEM support) was to expand the MTD function and pass
-> an additional offset. For normal EEPROM load the offset would always be
-> 0. For the purpose of precal loading, an offset was passed that was
-> internally the size of EEPROM, since precal data is right after the
-> EEPROM.
->
-> Problem is that the offset value passed is never handled and is actually
-> overwrite by
->
-> 	offset = be32_to_cpup(list);
-> 	ret = mtd_read(mtd, offset, len, &retlen, eep);
->
-> resulting in the passed offset value always ingnored. (and even passing
-> garbage data as precal as the start of the EEPROM is getting read)
->
-> Fix this by adding to the current offset value, the offset from DT to
-> correctly read the piece of data at the requested location.
->
-> Cc: stable@vger.kernel.org
-> Fixes: 495184ac91bb ("mt76: mt7915: add support for applying pre-calibration data")
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-mt76 patches go to Felix's tree, not net-next.
-
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
