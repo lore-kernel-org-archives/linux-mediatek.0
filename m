@@ -4,82 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3A3CDB47E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 09:57:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83BD7CDB482
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Oct 2023 10:19:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7BiiFcmmCiNj3LecX6OCrxhnQVAh1Ic9WQCeBx3SSIM=; b=Naj3E2MWJlRTbHCd3inAhNdbK6
-	NDYJUYegdSAtffCXf3oZ/x7ydPz3yDXSsY6RvkvxrB4lU076tN38mLweX4zSBna3uz8GVwOype0aU
-	elOjneslOPVFZRZIxaGO6awxKf7Z6RWtibU+dp/wozQBTf70HypArDvwfvPmBSkbmCYWh8tevTpk+
-	bQp2IUnBSFEJe4P6V2h/i7CwfocAUjjLzBCzrogbN9QW6uYZoU/MZ8tJLSwR5RFAfp9xi/8qmV9gV
-	YWT01wdxsLdQQu3GgCrvr/RyepRQkZxdldVEiyJcRlss134Xt3E3DjmLxhbijHQXpguF01aT0VXRC
-	U57zuZvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DSbqtCMvkCPkjdDUzhwmnBKAujQc8Px24RjnCiOCI6g=; b=vj7NZGNaiFSQOGW1JDF3I/uC6h
+	32pRUWRPzWhYfqOEFUwFeq7W4utlJQnzteMjkEGBaDnNnYfkPf1GqmgbCvrZW4SS38NTyxzx5cpCO
+	55ZOjng5yEjvOHodLHwaWCwhyD6dKQy38WI+5lfthmPOlV2uwYJpP8eAQqWniVaukXiY4Qd5gTROh
+	toP4fUEb8BGNSmsDe3AyXa/kIlCdh45KRhp21GocbZVKOCMCw+f0r6hrzWNQuzsW8fnaQ08bdIRS8
+	ymvmHzJbWWofE5sGVo52pGP35e2pBnm42Xe/RylhGrTqkjiF9gzSox++ZLXuxKfahkqyjWbBCq5aK
+	HgVbZWaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt3Ix-00EKTt-0X;
-	Wed, 18 Oct 2023 09:57:31 +0000
-Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
+	id 1qt3e9-00EQUk-0Y;
+	Wed, 18 Oct 2023 10:19:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt3Is-00EKS8-35
-	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Oct 2023 09:57:29 +0000
-Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-1e10507a4d6so4614211fac.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Oct 2023 02:57:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1697623044; x=1698227844; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=7BiiFcmmCiNj3LecX6OCrxhnQVAh1Ic9WQCeBx3SSIM=;
-        b=srnQp0ozhqnGp54C1dqx7VfCu5BhtQKi1RSNn3A0WOWQHVybTTqCvIzEAEprRrmTb4
-         +ndI5n8AmcMdOifByeU8jenkIXcENsYWrlLPe3at+lGO136Km4YYMh8VIDcurHYsusJk
-         KsU04HIVU+GQ+BpRW8+BoYnic1FYy3td9Lz6liyxIfWH79B8Z5MHlc6gYT0Ajj3DRwLV
-         0yFjoCOVtU8e5qtWgv6RuhTF4e1xYxdyM0vPYeJDhD4B8qYBivxpzUe3S3SvS6PRhcnc
-         4F74hnkjsG3t9WYoO4drpDIIntdcBbMiOe4bxya2j3ZJTNfoxkPOrEeGYAUKiv9Eo6i/
-         Nb8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697623044; x=1698227844;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7BiiFcmmCiNj3LecX6OCrxhnQVAh1Ic9WQCeBx3SSIM=;
-        b=Ib59WpAohMKFjnsorPPrgz9DVFMMEcPh++HNsZhz3h0wl8WQH21HzT6fbUbldXHBlS
-         3Y9HbraoHWLbYt1nrnV0wLThzmvbRyPkv9ofDZblBeavpw2y25IKIZCDaVLe1ISW+nMC
-         ZkBhPcjFNdm4bGaUHOarc7BrkH7Jj096jXgahdA8c2eCCT94JyZh6KfMFoFxS8GVzL2y
-         p4h9YXW8TAHisIrdW/2+syq6TOeqKabcYt6BJno36/d+kjxJBo4eGkIXSJwZWBaUItp4
-         KTpVlU8oBIkkT8/tmj993HYdOo3mtVxT++YGh499z6prixvj5QUF2TZhRF3DD8gHW1W0
-         PGHw==
-X-Gm-Message-State: AOJu0Yy5oWcauw0iCW8VJDybv7fEK/MaYx8d3AKaxZ65ER8VffuRQrDR
-	tLzL5Umxk1zWEN9wf8W5/wP+UI3rOPaXrdQHtCr2yg==
-X-Google-Smtp-Source: AGHT+IGgvTbYU5kAQ82x1eFJVsu/1pPvWmCD2rUCbOzwMrNjpSgu4ojXK1qUS7A/ozCqhTWYWn/CkMe98pIFz+h8TFQ=
-X-Received: by 2002:a05:6870:179a:b0:1d5:8d8b:dcc with SMTP id
- r26-20020a056870179a00b001d58d8b0dccmr4682983oae.18.1697623043809; Wed, 18
- Oct 2023 02:57:23 -0700 (PDT)
+	id 1qt3e5-00EQTh-2X;
+	Wed, 18 Oct 2023 10:19:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0BF8F6170B;
+	Wed, 18 Oct 2023 10:19:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C089EC433C8;
+	Wed, 18 Oct 2023 10:19:17 +0000 (UTC)
+Message-ID: <0fb31f73-2743-44c0-af1b-ac30c582e45a@xs4all.nl>
+Date: Wed, 18 Oct 2023 12:19:16 +0200
 MIME-Version: 1.0
-References: <20231017190545.157282-1-bero@baylibre.com> <CAGXv+5FwkBU3wfyZWWaiOgzLACfMVs4Bnu2KM4oSCUa28SzXVw@mail.gmail.com>
-In-Reply-To: <CAGXv+5FwkBU3wfyZWWaiOgzLACfMVs4Bnu2KM4oSCUa28SzXVw@mail.gmail.com>
-From: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-Date: Wed, 18 Oct 2023 11:57:12 +0200
-Message-ID: <CAP2ifjN-z9R=HS06RYPnTrMYondrtobkoPOJDR6js=r8astKJQ@mail.gmail.com>
-Subject: Re: [PATCH v5 0/5] Add LVTS support for mt8192
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com, 
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
-	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	dunlap@infradead.org, e.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, ames.lo@mediatek.com, rex-bc.chen@mediatek.com, 
-	nfraprado@collabora.com, abailon@baylibre.com, amergnat@baylibre.com, 
-	khilman@baylibre.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 22/56] media: pci: tw686x: Set min_buffers_needed to 3
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
+ <20231017144756.34719-23-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20231017144756.34719-23-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_025726_990726_0A180291 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231018_031921_865002_28DF46E1 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,20 +68,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 17/10/2023 16:47, Benjamin Gaignard wrote:
+> vb2 queue_setup checks for a minimum number of buffers so set
+> min_buffers_needed to 3 and remove the useless check in
+> tw686x_queue_setup().
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+> ---
+>  drivers/media/pci/tw686x/tw686x-video.c | 13 +++++--------
+>  1 file changed, 5 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/media/pci/tw686x/tw686x-video.c b/drivers/media/pci/tw686x/tw686x-video.c
+> index 3ebf7a2c95f0..74cd864365aa 100644
+> --- a/drivers/media/pci/tw686x/tw686x-video.c
+> +++ b/drivers/media/pci/tw686x/tw686x-video.c
+> @@ -426,13 +426,6 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
+>  	unsigned int szimage =
+>  		(vc->width * vc->height * vc->format->depth) >> 3;
+>  
+> -	/*
+> -	 * Let's request at least three buffers: two for the
+> -	 * DMA engine and one for userspace.
+> -	 */
+> -	if (vq->num_buffers + *nbuffers < 3)
+> -		*nbuffers = 3 - vq->num_buffers;
+> -
+>  	if (*nplanes) {
+>  		if (*nplanes != 1 || sizes[0] < szimage)
+>  			return -EINVAL;
+> @@ -1221,7 +1214,11 @@ int tw686x_video_init(struct tw686x_dev *dev)
+>  		vc->vidq.ops = &tw686x_video_qops;
+>  		vc->vidq.mem_ops = dev->dma_ops->mem_ops;
+>  		vc->vidq.timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+> -		vc->vidq.min_buffers_needed = 2;
+> +		/*
+> +		 * Let's request at least three buffers: two for the
+> +		 * DMA engine and one for userspace.
+> +		 */
+> +		vc->vidq.min_buffers_needed = 3;
 
-On Wed, 18 Oct 2023 at 02:07, Chen-Yu Tsai <wenst@chromium.org> wrote:
->
-> I see two series in my inbox and on the mailing list. Which one is the
-> correct one?
+Don't touch min_buffers_needed, just keep the current check in queue_setup.
 
-They're identical except I accidentally sent them out using my private
-email (that happens to be on a mail server hosted on my DSL line, so a
-number of MLs drop it because of dialup blacklists) first. I resent it
-using my work email when the error messages about that started
-flooding my inbox. Sorry about the confusion - but code wise it
-doesn't matter, v5 is v5.
+Regards,
 
-ttyl
-bero
+	Hans
+
+>  		vc->vidq.lock = &vc->vb_mutex;
+>  		vc->vidq.gfp_flags = dev->dma_mode != TW686X_DMA_MODE_MEMCPY ?
+>  				     GFP_DMA32 : 0;
+
 
