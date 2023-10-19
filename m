@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A4E0CDB482
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD1D9CDB488
 	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:53:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=r1jkO4k3l6cCbx1y4oin9pC+5njN3Ba88Mnr/CtVEcw=; b=Njp4vQORsGPlP9xw2ZmqVkj4u0
-	OhIKDY5Ez6ESQ5AhQwtjGSClh1h7ytteiH1zcyDG6zGFDqrKzsVCHwCjU3ycOzq5TRrbgpgzSfFk0
-	/gWXoXIBZzGQTg5FpwMrm89OxREP2wY2v4bm48I+R29mdve7i4iW7EHSn+BQH9YpK+L/E9htt2OLt
-	W2ukDTqhqSeYlvmNpjmgl9XXnHLGl23FS4VG4tL4nIKcyoxqyrGQ7r7ooZnMgWwm+PHrcT3q5Xsew
-	Ku+v5UT+ljdkfXKQwCI4qSXrKYfa+9OGP+CTRkOj/nKwJ38cKR9UjtpAIRblWkDFjVzlyG+eSR1i4
-	dEzUycuA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iWmHL8Of6DBw/g3XEBJR3E+ZMFz/yY6lkptLTAnFnAY=; b=zA71+ihrFWXXqev4QKM87xI48J
+	nF+f/DATodjqq5QFvOlHVg9UI9TGNh+sTWDIHDCX19Z/a88EO2fzMkZ2Uv837Xug8nfGygMJ5HU5X
+	vu0qA+gVoemOW7iFUFEyinHXuOe9puBrONexJGdzC3QafNHErY+k1HaXG1yHAOEkLSxk77Iu2JOh7
+	oF622u5/82rdKJoIN0ZpGV2yS+UFtgXeS0lhJbbxStAsU5t6LsfTsMQa7Ba6840gHxBvNajWoRA+k
+	LlnpIYHVAA8Jm4FcN33+/t8uVoZQ/OavZvaWICeB237gDdyASQzXLO/A2J2xn1ehU91gwrSikSxw/
+	nXP6rZqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWd-00HO73-27;
-	Thu, 19 Oct 2023 12:53:19 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qtSWe-00HO7c-10;
+	Thu, 19 Oct 2023 12:53:20 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSVy-00HNG1-0w;
+	id 1qtSVy-00HNHe-0i;
 	Thu, 19 Oct 2023 12:52:44 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 96A7E660732D;
-	Thu, 19 Oct 2023 13:52:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A86F86607341;
+	Thu, 19 Oct 2023 13:52:34 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719951;
-	bh=Abzjk6a8uejkrxQwKZXIm4Vvmm8k6nlRAqg0GllSd3Y=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Eo1OmeQnbdwU6/tOtFY05Q0m/TTLTDTPiokkflhGYso7ef3WRvMPp76G+DuoY+fwV
-	 WbIXS+H8aa3QQDyzGEQBvMKB7assR/+wz2kzA0sUYM6bQOSQdW2SHgxaXd7LE7NUs6
-	 qbv75nhxbXAD0EfctS0QPbFaWflIMKPugvWqTW8fYewV4nY2c2gFL3LhuM5rKS5b3O
-	 RUi0QHXRlttqwlhaC3TQb7mvcZMnagj0ITcCe1vuFofQ6OHohKO7DBr6ji9PZDf/Ls
-	 4kaffhI75QfXTqNcv1iGjkNT/5/4jUP2q3tEhU0QyFyN05FdygK0GP55AHi0nybqw7
-	 mmpa3ZDkFG5Bg==
+	s=mail; t=1697719955;
+	bh=DeELvsvGfX8ufPLrGM7lR1Bfmn8jvw7ej7nSKD+mebw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=NT3rFbaLac+W+nlACtRlThRPNEkJ/LM2tLRRqz3KsPCV5V3jG3hvQi7sSlgCQmOFU
+	 YtCZEk8TKiNir2o84JP3qBwcK24c0bQXDRJfh0BILDXeTtw0bc23n189BFu0MdIbxO
+	 SfEgXPLAgRudP85UkhJh9s1e+LsnmfgE1x2A16oc8tVcPuTh5ux3W7BmrnuZO/fqMy
+	 eUq3ItE0byZIHfNEx66Cu+3s/o957klD+43O9KWhGYEb1FN1AR8+vaIgvOW78sTNym
+	 8+l+TBSMq+12KOw8Se0x/l78vKHi7eZSKYsXssGiicMXESotZjD9Ld9hckTznEhWdh
+	 Y+UrDc2/scbXw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,15 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v13 00/56] Add DELETE_BUF ioctl
-Date: Thu, 19 Oct 2023 14:51:26 +0200
-Message-Id: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 08/56] media: videobuf2: Use vb2_get_num_buffers() helper
+Date: Thu, 19 Oct 2023 14:51:34 +0200
+Message-Id: <20231019125222.21370-9-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
+References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_055238_600774_705D6AB8 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20231019_055238_540004_55E06108 
+X-CRM114-Status: GOOD (  33.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,207 +87,385 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Unlike when resolution change on keyframes, dynamic resolution change
-on inter frames doesn't allow to do a stream off/on sequence because
-it is need to keep all previous references alive to decode inter frames.
-This constraint have two main problems:
-- more memory consumption.
-- more buffers in use.
-To solve these issue this series introduce DELETE_BUFS ioctl and remove
-the 32 buffers limit per queue.
+Stop using queue num_buffers field directly, instead use
+vb2_get_num_buffers().
+This prepares for the future 'delete buffers' feature where there are
+holes in the buffer indices.
 
-VP9 conformance tests using fluster give a score of 210/305.
-The 20 resize inter tests (vp90-2-21-resize_inter_* files) are ok
-but require to use postprocessor.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 92 +++++++++++--------
+ .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +-
+ 2 files changed, 54 insertions(+), 42 deletions(-)
 
-Kernel branch is available here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v13
-
-GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
-change is here:
-https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
-
-changes in version 13:
-- Fix typo and wording in commits messages.
-- Only apply V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS on createbufs ioctl
-- Fix queue setup test in test-drivers
-
-changes in version 12:
-- Change flag name to V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS.
-- Rework some commits message.
-- Change vb2_queue_or_prepare_buf() prototype.
-- Rework patches where 'min_buffers_needed' was badly used.
-
-changes in version 11:
-- Patches ordering:
-  1 to 3: clean up
-  3 to 42: use vb2_get_buffer() and vb2_get_num_buffers()
-  43 to 46: allow to use more than 32 buffers per queue
-  47 to 50: allow verisilicon driver to do VP9 dynamic resolution change
-            (which was the main purpose of this work)
-  51 to 56: prepare and introduce delete buffers feature.
-- Add a patch to rename 'off' to offset.
-- Add maintainers CC to drivers patches
-
-changes in version 10:
-- Make BUFFER_INDEX_MASK definition more readable
-- Rebase on media_stage/master branch and add a patch for nuvoton
-  driver.
-- Fix issue on patch 13
-
-changes in version 9:
-- BUFFER_INDEX_MASK now depends on PAGE_SHIFT value to match
-  architectures requirements.
-- Correctly initialize max_num_buffers in vb2_core_queue_init()
-- run 'test-media -kmemleak mc' on top of the series and on patches 1 to 47 without failures.
-- fix compilation issue in patch 50
-
-
-
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index b406a30a9b35..c5c5ae4d213d 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -444,13 +444,14 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ 			     unsigned int num_buffers, unsigned int num_planes,
+ 			     const unsigned plane_sizes[VB2_MAX_PLANES])
+ {
++	unsigned int q_num_buffers = vb2_get_num_buffers(q);
+ 	unsigned int buffer, plane;
+ 	struct vb2_buffer *vb;
+ 	int ret;
  
-Benjamin Gaignard (56):
-  media: videobuf2: Rename offset parameter
-  media: videobuf2: Rework offset 'cookie' encoding pattern
-  media: videobuf2: Stop spamming kernel log with all queue counter
-  media: videobuf2: Use vb2_buffer instead of index
-  media: videobuf2: Access vb2_queue bufs array through helper functions
-  media: videobuf2: Remove duplicated index vs q->num_buffers check
-  media: videobuf2: Add helper to get queue number of buffers
-  media: videobuf2: Use vb2_get_num_buffers() helper
-  media: amphion: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: amphion: Stop direct calls to queue num_buffers field
-  media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
-    to buffers array
-  media: mediatek: vdec: Remove useless loop
-  media: mediatek: vcodec: Stop direct calls to queue num_buffers field
-  media: sti: hva: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: visl: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: atomisp: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: atomisp: Stop direct calls to queue num_buffers field
-  media: dvb-core: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: dvb-core: Do not initialize twice queue num_buffer field
-  media: dvb-frontends: rtl2832: Stop direct calls to queue num_buffers
-    field
-  media: pci: dt3155: Remove useless check
-  media: pci: tw686x: Stop direct calls to queue num_buffers field
-  media: pci: cx18: Stop direct calls to queue num_buffers field
-  media: pci: netup_unidvb: Stop direct calls to queue num_buffers field
-  media: pci: tw68: Stop direct calls to queue num_buffers field
-  media: i2c: video-i2c: Stop direct calls to queue num_buffers field
-  media: coda: Stop direct calls to queue num_buffers field
-  media: nxp: Stop direct calls to queue num_buffers field
-  media: verisilicon: Stop direct calls to queue num_buffers field
-  media: test-drivers: Stop direct calls to queue num_buffers field
-  media: imx: Stop direct calls to queue num_buffers field
-  media: meson: vdec: Stop direct calls to queue num_buffers field
-  touchscreen: sur40: Stop direct calls to queue num_buffers field
-  sample: v4l: Stop direct calls to queue num_buffers field
-  media: cedrus: Stop direct calls to queue num_buffers field
-  media: nuvoton: Stop direct calls to queue num_buffers field
-  media: renesas: Stop direct calls to queue num_buffers field
-  media: ti: Stop direct calls to queue num_buffers field
-  media: usb: airspy: Stop direct calls to queue num_buffers field
-  media: usb: cx231xx: Stop direct calls to queue num_buffers field
-  media: usb: hackrf: Stop direct calls to queue num_buffers field
-  media: usb: usbtv: Stop direct calls to queue num_buffers field
-  media: videobuf2: Be more flexible on the number of queue stored
-    buffers
-  media: core: Report the maximum possible number of buffers for the
-    queue
-  media: test-drivers: vivid: Increase max supported buffers for capture
-    queues
-  media: test-drivers: vicodec: Increase max supported capture queue
-    buffers
-  media: verisilicon: Refactor postprocessor to store more buffers
-  media: verisilicon: Store chroma and motion vectors offset
-  media: verisilicon: g2: Use common helpers to compute chroma and mv
-    offsets
-  media: verisilicon: vp9: Allow to change resolution while streaming
-  media: core: Rework how create_buf index returned value is computed
-  media: core: Add bitmap manage bufs array entries
-  media: core: Free range of buffers
-  media: v4l2: Add DELETE_BUFS ioctl
-  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-  media: test-drivers: Use helper for DELETE_BUFS ioctl
-
- .../userspace-api/media/v4l/user-func.rst     |   1 +
- .../media/v4l/vidioc-create-bufs.rst          |   8 +-
- .../media/v4l/vidioc-delete-bufs.rst          |  80 +++
- .../media/v4l/vidioc-reqbufs.rst              |   2 +
- drivers/input/touchscreen/sur40.c             |   5 +-
- .../media/common/videobuf2/videobuf2-core.c   | 569 +++++++++++-------
- .../media/common/videobuf2/videobuf2-v4l2.c   | 125 ++--
- drivers/media/dvb-core/dvb_vb2.c              |  17 +-
- drivers/media/dvb-frontends/rtl2832_sdr.c     |   5 +-
- drivers/media/i2c/video-i2c.c                 |   5 +-
- drivers/media/pci/cx18/cx18-streams.c         |   5 +-
- drivers/media/pci/dt3155/dt3155.c             |   2 -
- .../pci/netup_unidvb/netup_unidvb_core.c      |   5 +-
- drivers/media/pci/tw68/tw68-video.c           |   4 +-
- drivers/media/pci/tw686x/tw686x-video.c       |   5 +-
- drivers/media/platform/amphion/vpu_dbg.c      |  30 +-
- drivers/media/platform/amphion/vpu_v4l2.c     |   4 +-
- .../media/platform/chips-media/coda-common.c  |   2 +-
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   7 +-
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   9 +-
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +-
- drivers/media/platform/nuvoton/npcm-video.c   |   2 +-
- drivers/media/platform/nxp/imx7-media-csi.c   |   7 +-
- drivers/media/platform/renesas/rcar_drif.c    |   5 +-
- drivers/media/platform/st/sti/hva/hva-v4l2.c  |   9 +-
- .../media/platform/ti/am437x/am437x-vpfe.c    |   5 +-
- drivers/media/platform/ti/cal/cal-video.c     |   5 +-
- .../media/platform/ti/davinci/vpif_capture.c  |   5 +-
- .../media/platform/ti/davinci/vpif_display.c  |   5 +-
- drivers/media/platform/ti/omap/omap_vout.c    |   5 +-
- drivers/media/platform/verisilicon/hantro.h   |   9 +-
- .../media/platform/verisilicon/hantro_drv.c   |   5 +-
- .../media/platform/verisilicon/hantro_g2.c    |  14 +
- .../platform/verisilicon/hantro_g2_hevc_dec.c |  18 +-
- .../platform/verisilicon/hantro_g2_vp9_dec.c  |  28 +-
- .../media/platform/verisilicon/hantro_hw.h    |   7 +-
- .../platform/verisilicon/hantro_postproc.c    |  93 ++-
- .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
- .../media/test-drivers/vicodec/vicodec-core.c |   3 +
- drivers/media/test-drivers/vim2m.c            |   2 +
- .../media/test-drivers/vimc/vimc-capture.c    |   2 +
- drivers/media/test-drivers/visl/visl-dec.c    |  32 +-
- drivers/media/test-drivers/visl/visl-video.c  |   2 +
- drivers/media/test-drivers/vivid/vivid-core.c |  21 +
- .../media/test-drivers/vivid/vivid-meta-cap.c |   3 -
- .../media/test-drivers/vivid/vivid-meta-out.c |   5 +-
- .../test-drivers/vivid/vivid-touch-cap.c      |   5 +-
- .../media/test-drivers/vivid/vivid-vbi-cap.c  |   3 -
- .../media/test-drivers/vivid/vivid-vbi-out.c  |   3 -
- .../media/test-drivers/vivid/vivid-vid-cap.c  |   3 -
- .../media/test-drivers/vivid/vivid-vid-out.c  |   5 +-
- drivers/media/usb/airspy/airspy.c             |   5 +-
- drivers/media/usb/cx231xx/cx231xx-417.c       |   5 +-
- drivers/media/usb/cx231xx/cx231xx-video.c     |   5 +-
- drivers/media/usb/hackrf/hackrf.c             |   5 +-
- drivers/media/usb/usbtv/usbtv-video.c         |   5 +-
- drivers/media/v4l2-core/v4l2-dev.c            |   1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |  21 +-
- drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
- .../staging/media/atomisp/pci/atomisp_ioctl.c |   4 +-
- drivers/staging/media/imx/imx-media-capture.c |   7 +-
- drivers/staging/media/meson/vdec/vdec.c       |  13 +-
- .../staging/media/sunxi/cedrus/cedrus_h264.c  |   9 +-
- .../staging/media/sunxi/cedrus/cedrus_h265.c  |   9 +-
- include/media/v4l2-ioctl.h                    |   4 +
- include/media/v4l2-mem2mem.h                  |  12 +
- include/media/videobuf2-core.h                |  65 +-
- include/media/videobuf2-v4l2.h                |  13 +
- include/uapi/linux/videodev2.h                |  24 +-
- samples/v4l/v4l2-pci-skeleton.c               |   5 +-
- 70 files changed, 990 insertions(+), 472 deletions(-)
- create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-
+ 	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
+ 	num_buffers = min_t(unsigned int, num_buffers,
+-			    VB2_MAX_FRAME - q->num_buffers);
++			    VB2_MAX_FRAME - q_num_buffers);
+ 
+ 	for (buffer = 0; buffer < num_buffers; ++buffer) {
+ 		/* Allocate vb2 buffer structures */
+@@ -470,7 +471,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ 			vb->planes[plane].min_length = plane_sizes[plane];
+ 		}
+ 
+-		vb2_queue_add_buffer(q, vb, q->num_buffers + buffer);
++		vb2_queue_add_buffer(q, vb, q_num_buffers + buffer);
+ 		call_void_bufop(q, init_buffer, vb);
+ 
+ 		/* Allocate video buffer memory for the MMAP type */
+@@ -514,8 +515,9 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+ {
+ 	unsigned int buffer;
+ 	struct vb2_buffer *vb;
++	unsigned int q_num_buffers = vb2_get_num_buffers(q);
+ 
+-	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
++	for (buffer = q_num_buffers - buffers; buffer < q_num_buffers;
+ 	     ++buffer) {
+ 		vb = vb2_get_buffer(q, buffer);
+ 		if (!vb)
+@@ -539,11 +541,12 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ {
+ 	unsigned int buffer;
++	unsigned int q_num_buffers = vb2_get_num_buffers(q);
+ 
+ 	lockdep_assert_held(&q->mmap_lock);
+ 
+ 	/* Call driver-provided cleanup function for each buffer, if provided */
+-	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
++	for (buffer = q_num_buffers - buffers; buffer < q_num_buffers;
+ 	     ++buffer) {
+ 		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+ 
+@@ -559,7 +562,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ 	 * Check that all the calls were balanced during the life-time of this
+ 	 * queue. If not then dump the counters to the kernel log.
+ 	 */
+-	if (q->num_buffers) {
++	if (q_num_buffers) {
+ 		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
+ 				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
+ 				  q->cnt_wait_prepare != q->cnt_wait_finish;
+@@ -585,7 +588,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ 		q->cnt_stop_streaming = 0;
+ 		q->cnt_unprepare_streaming = 0;
+ 	}
+-	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
++	for (buffer = 0; buffer < vb2_get_num_buffers(q); buffer++) {
+ 		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+ 		bool unbalanced;
+ 
+@@ -637,7 +640,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ #endif
+ 
+ 	/* Free vb2 buffers */
+-	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
++	for (buffer = q_num_buffers - buffers; buffer < q_num_buffers;
+ 	     ++buffer) {
+ 		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+ 
+@@ -649,7 +652,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ 	}
+ 
+ 	q->num_buffers -= buffers;
+-	if (!q->num_buffers) {
++	if (!vb2_get_num_buffers(q)) {
+ 		q->memory = VB2_MEMORY_UNKNOWN;
+ 		INIT_LIST_HEAD(&q->queued_list);
+ 	}
+@@ -680,7 +683,7 @@ EXPORT_SYMBOL(vb2_buffer_in_use);
+ static bool __buffers_in_use(struct vb2_queue *q)
+ {
+ 	unsigned int buffer;
+-	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
++	for (buffer = 0; buffer < vb2_get_num_buffers(q); ++buffer) {
+ 		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+ 
+ 		if (!vb)
+@@ -806,6 +809,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		     unsigned int flags, unsigned int *count)
+ {
+ 	unsigned int num_buffers, allocated_buffers, num_planes = 0;
++	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+ 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+ 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+ 	unsigned int i;
+@@ -821,7 +825,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		return -EBUSY;
+ 	}
+ 
+-	if (*count == 0 || q->num_buffers != 0 ||
++	if (*count == 0 || q_num_bufs != 0 ||
+ 	    (q->memory != VB2_MEMORY_UNKNOWN && q->memory != memory) ||
+ 	    !verify_coherency_flags(q, non_coherent_mem)) {
+ 		/*
+@@ -839,7 +843,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		 * queued without ever calling STREAMON.
+ 		 */
+ 		__vb2_queue_cancel(q);
+-		__vb2_queue_free(q, q->num_buffers);
++		__vb2_queue_free(q, q_num_bufs);
+ 		mutex_unlock(&q->mmap_lock);
+ 
+ 		/*
+@@ -934,7 +938,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	if (ret < 0) {
+ 		/*
+ 		 * Note: __vb2_queue_free() will subtract 'allocated_buffers'
+-		 * from q->num_buffers and it will reset q->memory to
++		 * from already queued buffers and it will reset q->memory to
+ 		 * VB2_MEMORY_UNKNOWN.
+ 		 */
+ 		__vb2_queue_free(q, allocated_buffers);
+@@ -968,10 +972,11 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	unsigned int num_planes = 0, num_buffers, allocated_buffers;
+ 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+ 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+-	bool no_previous_buffers = !q->num_buffers;
+-	int ret;
++	unsigned int q_num_bufs = vb2_get_num_buffers(q);
++	bool no_previous_buffers = !q_num_bufs;
++	int ret = 0;
+ 
+-	if (q->num_buffers == VB2_MAX_FRAME) {
++	if (q_num_bufs == VB2_MAX_FRAME) {
+ 		dprintk(q, 1, "maximum number of buffers already allocated\n");
+ 		return -ENOBUFS;
+ 	}
+@@ -1000,7 +1005,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 			return -EINVAL;
+ 	}
+ 
+-	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
++	num_buffers = min(*count, VB2_MAX_FRAME - q_num_bufs);
+ 
+ 	if (requested_planes && requested_sizes) {
+ 		num_planes = requested_planes;
+@@ -1032,7 +1037,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		num_buffers = allocated_buffers;
+ 
+ 		/*
+-		 * q->num_buffers contains the total number of buffers, that the
++		 * num_buffers contains the total number of buffers, that the
+ 		 * queue driver has set up
+ 		 */
+ 		ret = call_qop(q, queue_setup, q, &num_buffers,
+@@ -1053,7 +1058,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	if (ret < 0) {
+ 		/*
+ 		 * Note: __vb2_queue_free() will subtract 'allocated_buffers'
+-		 * from q->num_buffers and it will reset q->memory to
++		 * from already queued buffers and it will reset q->memory to
+ 		 * VB2_MEMORY_UNKNOWN.
+ 		 */
+ 		__vb2_queue_free(q, allocated_buffers);
+@@ -1670,7 +1675,7 @@ static int vb2_start_streaming(struct vb2_queue *q)
+ 		 * Forcefully reclaim buffers if the driver did not
+ 		 * correctly return them to vb2.
+ 		 */
+-		for (i = 0; i < q->num_buffers; ++i) {
++		for (i = 0; i < vb2_get_num_buffers(q); ++i) {
+ 			vb = vb2_get_buffer(q, i);
+ 
+ 			if (!vb)
+@@ -2076,7 +2081,7 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
+ 	 * to vb2 in stop_streaming().
+ 	 */
+ 	if (WARN_ON(atomic_read(&q->owned_by_drv_count))) {
+-		for (i = 0; i < q->num_buffers; ++i) {
++		for (i = 0; i < vb2_get_num_buffers(q); i++) {
+ 			struct vb2_buffer *vb = vb2_get_buffer(q, i);
+ 
+ 			if (!vb)
+@@ -2120,7 +2125,7 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
+ 	 * call to __fill_user_buffer() after buf_finish(). That order can't
+ 	 * be changed, so we can't move the buf_finish() to __vb2_dqbuf().
+ 	 */
+-	for (i = 0; i < q->num_buffers; ++i) {
++	for (i = 0; i < vb2_get_num_buffers(q); i++) {
+ 		struct vb2_buffer *vb;
+ 		struct media_request *req;
+ 
+@@ -2168,6 +2173,7 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
+ 
+ int vb2_core_streamon(struct vb2_queue *q, unsigned int type)
+ {
++	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+ 	int ret;
+ 
+ 	if (type != q->type) {
+@@ -2180,12 +2186,12 @@ int vb2_core_streamon(struct vb2_queue *q, unsigned int type)
+ 		return 0;
+ 	}
+ 
+-	if (!q->num_buffers) {
++	if (!q_num_bufs) {
+ 		dprintk(q, 1, "no buffers have been allocated\n");
+ 		return -EINVAL;
+ 	}
+ 
+-	if (q->num_buffers < q->min_buffers_needed) {
++	if (q_num_bufs < q->min_buffers_needed) {
+ 		dprintk(q, 1, "need at least %u allocated buffers\n",
+ 				q->min_buffers_needed);
+ 		return -EINVAL;
+@@ -2513,7 +2519,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
+ 	__vb2_cleanup_fileio(q);
+ 	__vb2_queue_cancel(q);
+ 	mutex_lock(&q->mmap_lock);
+-	__vb2_queue_free(q, q->num_buffers);
++	__vb2_queue_free(q, vb2_get_num_buffers(q));
++	q->num_buffers = 0;
+ 	mutex_unlock(&q->mmap_lock);
+ }
+ EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+@@ -2542,7 +2549,7 @@ __poll_t vb2_core_poll(struct vb2_queue *q, struct file *file,
+ 	/*
+ 	 * Start file I/O emulator only if streaming API has not been used yet.
+ 	 */
+-	if (q->num_buffers == 0 && !vb2_fileio_is_active(q)) {
++	if (vb2_get_num_buffers(q) == 0 && !vb2_fileio_is_active(q)) {
+ 		if (!q->is_output && (q->io_modes & VB2_READ) &&
+ 				(req_events & (EPOLLIN | EPOLLRDNORM))) {
+ 			if (__vb2_init_fileio(q, 1))
+@@ -2580,7 +2587,7 @@ __poll_t vb2_core_poll(struct vb2_queue *q, struct file *file,
+ 	 * For output streams you can call write() as long as there are fewer
+ 	 * buffers queued than there are buffers available.
+ 	 */
+-	if (q->is_output && q->fileio && q->queued_count < q->num_buffers)
++	if (q->is_output && q->fileio && q->queued_count < vb2_get_num_buffers(q))
+ 		return EPOLLOUT | EPOLLWRNORM;
+ 
+ 	if (list_empty(&q->done_list)) {
+@@ -2629,8 +2636,8 @@ struct vb2_fileio_buf {
+  * struct vb2_fileio_data - queue context used by file io emulator
+  *
+  * @cur_index:	the index of the buffer currently being read from or
+- *		written to. If equal to q->num_buffers then a new buffer
+- *		must be dequeued.
++ *		written to. If equal to number of already queued buffers
++ *		then a new buffer must be dequeued.
+  * @initial_index: in the read() case all buffers are queued up immediately
+  *		in __vb2_init_fileio() and __vb2_perform_fileio() just cycles
+  *		buffers. However, in the write() case no buffers are initially
+@@ -2640,7 +2647,7 @@ struct vb2_fileio_buf {
+  *		buffers. This means that initially __vb2_perform_fileio()
+  *		needs to know what buffer index to use when it is queuing up
+  *		the buffers for the first time. That initial index is stored
+- *		in this field. Once it is equal to q->num_buffers all
++ *		in this field. Once it is equal to num_buffers all
+  *		available buffers have been queued and __vb2_perform_fileio()
+  *		should start the normal dequeue/queue cycle.
+  *
+@@ -2690,7 +2697,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+ 	/*
+ 	 * Check if streaming api has not been already activated.
+ 	 */
+-	if (q->streaming || q->num_buffers > 0)
++	if (q->streaming || vb2_get_num_buffers(q) > 0)
+ 		return -EBUSY;
+ 
+ 	/*
+@@ -2740,7 +2747,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+ 	/*
+ 	 * Get kernel address of each buffer.
+ 	 */
+-	for (i = 0; i < q->num_buffers; i++) {
++	for (i = 0; i < vb2_get_num_buffers(q); i++) {
+ 		/* vb can never be NULL when using fileio. */
+ 		vb = vb2_get_buffer(q, i);
+ 
+@@ -2759,18 +2766,23 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+ 		/*
+ 		 * Queue all buffers.
+ 		 */
+-		for (i = 0; i < q->num_buffers; i++) {
+-			ret = vb2_core_qbuf(q, q->bufs[i], NULL, NULL);
++		for (i = 0; i < vb2_get_num_buffers(q); i++) {
++			struct vb2_buffer *vb2 = vb2_get_buffer(q, i);
++
++			if (!vb2)
++				continue;
++
++			ret = vb2_core_qbuf(q, vb2, NULL, NULL);
+ 			if (ret)
+ 				goto err_reqbufs;
+ 			fileio->bufs[i].queued = 1;
+ 		}
+ 		/*
+ 		 * All buffers have been queued, so mark that by setting
+-		 * initial_index to q->num_buffers
++		 * initial_index to num_buffers
+ 		 */
+-		fileio->initial_index = q->num_buffers;
+-		fileio->cur_index = q->num_buffers;
++		fileio->initial_index = vb2_get_num_buffers(q);
++		fileio->cur_index = fileio->initial_index;
+ 	}
+ 
+ 	/*
+@@ -2964,12 +2976,12 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+ 		 * If we are queuing up buffers for the first time, then
+ 		 * increase initial_index by one.
+ 		 */
+-		if (fileio->initial_index < q->num_buffers)
++		if (fileio->initial_index < vb2_get_num_buffers(q))
+ 			fileio->initial_index++;
+ 		/*
+ 		 * The next buffer to use is either a buffer that's going to be
+-		 * queued for the first time (initial_index < q->num_buffers)
+-		 * or it is equal to q->num_buffers, meaning that the next
++		 * queued for the first time (initial_index < num_buffers)
++		 * or it is equal to num_buffers, meaning that the next
+ 		 * time we need to dequeue a buffer since we've now queued up
+ 		 * all the 'first time' buffers.
+ 		 */
+@@ -3016,7 +3028,7 @@ static int vb2_thread(void *data)
+ 	int ret = 0;
+ 
+ 	if (q->is_output) {
+-		prequeue = q->num_buffers;
++		prequeue = vb2_get_num_buffers(q);
+ 		copy_timestamp = q->copy_timestamp;
+ 	}
+ 
+diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+index c6ebc8d2c537..7d798fb15c0b 100644
+--- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
++++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+@@ -627,7 +627,7 @@ struct vb2_buffer *vb2_find_buffer(struct vb2_queue *q, u64 timestamp)
+ 	 * This loop doesn't scale if there is a really large number of buffers.
+ 	 * Maybe something more efficient will be needed in this case.
+ 	 */
+-	for (i = 0; i < q->num_buffers; i++) {
++	for (i = 0; i < vb2_get_num_buffers(q); i++) {
+ 		vb2 = vb2_get_buffer(q, i);
+ 
+ 		if (!vb2)
+@@ -761,7 +761,7 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+ 
+ 	fill_buf_caps(q, &create->capabilities);
+ 	validate_memory_flags(q, create->memory, &create->flags);
+-	create->index = q->num_buffers;
++	create->index = vb2_get_num_buffers(q);
+ 	if (create->count == 0)
+ 		return ret != -EBUSY ? ret : 0;
+ 
 -- 
 2.39.2
 
