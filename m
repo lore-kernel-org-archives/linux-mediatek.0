@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65602CDB465
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57060CDB465
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CTgl6xngO65iKhymXT7HIetO51+xtsYJiS6ML4a8e/8=; b=qHlBEztnyr2iCdbY4PHFKlzKeB
-	HDT1bVD/tNwkj4iRh+JSFKDraF1BUlY2cwbHkXoSMVuTWEDYtgiV8AtPGLIr3x7jvwonHUsRs2HGS
-	4NhsoRevfKYG555tT1yk0UWxPg2XW0pSCOGUITtMTfZTkOFgPM3hQNmpLx76IKekZTxrq38sfMST5
-	lbR7K/kxNCUVqf/3Zx3C9qRYbvOMqr1XErvBzJo6xBe77nkbD71CuuR1mrl0ENSPTcQ9WQD2TNTol
-	s+ZWb/Fx7jICVStYxF5TjfWIOreoqulZEAwSSstrcj+Ce+nGvgo6ioJaAUPc3M6W7yXXKlB7k3Wqc
-	4hEG3miA==;
+	bh=naO0ArV+Rq86QocR3tMDAsTcPVQkObJXSWE2h8O75mE=; b=CpyB768XngohKCWDCwMRcwOVy7
+	U6oL1yVXMs2jwZ7D1d6kD/WvAP8SKtPXht/lC0xB7xAPcL+scumpx6s0Kx9e8zvmzaVWbHSlsmDL2
+	zsJuzjZLDQ3Qonrqz1tp3stw1l37mP6WJPCCDZQstYYcau38NrF4UKYYz4gPEwH8CI3I3w3tGMtk8
+	swkL0ejp57lhGsgf55Y9wZFDoPP6pC3HHw3drFXLMehWGNuDVxU5FagSx4x+z2gBOjNACziaXaAvB
+	pCazpzEqlNQKT84DLJiNPb7uGK+gRMayamIwxCCUipMqZvyfU0e2LnPL+jKZsxNkq1mswqBfh7hNx
+	RXPziSUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSQM-00HMQt-0y;
-	Thu, 19 Oct 2023 12:46:50 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1qtSQZ-00HMWG-0g;
+	Thu, 19 Oct 2023 12:47:03 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSQJ-00HMOp-0O
+	id 1qtSQS-00HMRq-0z
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Oct 2023 12:46:48 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4083ac51d8aso16301665e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Oct 2023 05:46:44 -0700 (PDT)
+	Thu, 19 Oct 2023 12:46:57 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4083dbc43cfso13030945e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Oct 2023 05:46:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1697719603; x=1698324403; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1697719612; x=1698324412; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=CTgl6xngO65iKhymXT7HIetO51+xtsYJiS6ML4a8e/8=;
-        b=UO9iWbXtw6c6EiqF/RNOrAuAzjXB/QAq6HXM9Uvzk1D1DXUq63pGXVW8JVV5zsCZCP
-         th668GzQucVvISmTdNw0jcYAbzi15cWvfGKlVA08Yteqt1U++ntTpRH2QTf/COLZi2hZ
-         4V+CS+eO3XG37U/1Ydw46buRTPzbo8ZKCKUPbPyk+UCYW0d9cK44NO3ZondSArB/qvRJ
-         0eUDxGj1M7TETfKdHgmE8pbiSY0Vabh5skT4VbFxa5hlrQL7RZQBorgojRW7ZWdnBhAT
-         kyYheJj0/PhblDn9bHFkvXvvQm1Fn9zSSXhclwmsaxGvPOP3deVBFPXjRXrdG3EjVG1c
-         0UUw==
+        bh=naO0ArV+Rq86QocR3tMDAsTcPVQkObJXSWE2h8O75mE=;
+        b=gC2XmQPg0j+GSqAngnvDScQMyeziTg5IaMLmdrZ2HiuZxU109fMxc4b9RH2JL+MrjT
+         jCONJkbF+/Za6ydN+1BeX/9LStkPQMkdj37ruqMByHOS2H2Ym3ZXcBzNkhJqrdaTfvCi
+         tLFwwnzp6+QWAwFDKJ2XGkuMQ8XgITmh0LHcsosDtLs5oZf6MC4AzGFgB1fhrB2+0kxT
+         oWW6+MT77UsJKblhQTERp/knwLywJHsLI88FEscrNj6AE1Xna0YnwLp6l+LCO2wemQ+/
+         xgSWkOdw8JNw6Hq/46FrQAqcJt6Wt9S2KmkGfzO+y3y1bKRqnDjst9uxfdgCIaIxLcrW
+         JtTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697719603; x=1698324403;
+        d=1e100.net; s=20230601; t=1697719612; x=1698324412;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=CTgl6xngO65iKhymXT7HIetO51+xtsYJiS6ML4a8e/8=;
-        b=h0kpt721Dd2F95wLj02U0H7VlMlaTkJVT3WAXOyfB5YTcaTDwVucwB7kQeTCSZKQSf
-         Xqnl0B4rXQB+JRk+prZ0lrumlWMqTGiJr5w1vI7O0NaODZuHPCqkA5imV/I25U6NnsLT
-         sWHhWWL876m+529mpvoEceVYuHBKKh+OO/3EKoX7FV4sXO3lp8Br4ttYYeiTsMXrxArO
-         tYf8IOa+LTHigNBgriS3t4VIJtzLlYGECKssjB+yjb6R9B1y4K9R9i+nkkGTURIKYzFo
-         yDEymznQFfo6c8UbgAmaMgPcDURPTg0IHyYd5yPtzuWmxAxRDXDR+ni+6OwFk+FsJP2B
-         sypQ==
-X-Gm-Message-State: AOJu0YzB9yJq5G58rbmA0+KaISpwiyt5wAezbX0UxF+hIEP1mD31KCvi
-	87R+5nAXcczwR3tfPbx+ifHZ8Q==
-X-Google-Smtp-Source: AGHT+IG7h8a4Xd5yDZnL4mNiude1M2sXIEnG8lQMAVhxRSv7BWqLsyYopBV+Dkbb9yKTdr/dF5LqOw==
-X-Received: by 2002:a05:600c:46d2:b0:408:4120:bab7 with SMTP id q18-20020a05600c46d200b004084120bab7mr1794262wmo.15.1697719603324;
-        Thu, 19 Oct 2023 05:46:43 -0700 (PDT)
+        bh=naO0ArV+Rq86QocR3tMDAsTcPVQkObJXSWE2h8O75mE=;
+        b=Eh56K+Dd6CirV3sNpwCt3LSt956dZyNUSMYdqSPHtADVyC+zZ1Q5r7H/Azq+qjIE83
+         Auj5ZBjJlymzU4N16dzleT2tzMM6HY3DZ4liTrH4JNLumnbmv2mZVVeNe4XwPWd7RyMv
+         3UClb6a1HraH7Oo9TN41tyIP7sPaJOI634JSoJlRiLGta7H6dQ4EFtXZHOJzlZjzrwmV
+         w+1KCdsfIWRNra2+skd6aSVTmlil8r+5wp48BywR95WPcdE3P3SSdrEc9yKPuX0tlqxS
+         bxWnSctEc/K/4377VT4AIIBy0/iroh/lf04zyV/+rYYVSCJATKnjFIZawtXxVfXI7Sjh
+         Ikdg==
+X-Gm-Message-State: AOJu0Yzj0BZYxAzs9m76OMUeCr3jPVaXvuP4PG1JLG3TPi/N5yRwr/MR
+	yn201lOC4c4l33yFsOsJ6Agp7w==
+X-Google-Smtp-Source: AGHT+IEww6Zn2OArX7FoTzmoLU1HGPD7xbs5yK+OIFpoRrGazQCxszROKhxnLYgi/b2b2bUJfLhwtA==
+X-Received: by 2002:a05:600c:4591:b0:406:8465:d299 with SMTP id r17-20020a05600c459100b004068465d299mr1797890wmo.7.1697719611910;
+        Thu, 19 Oct 2023 05:46:51 -0700 (PDT)
 Received: from [10.1.5.76] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id r4-20020a05600c35c400b0040531f5c51asm4476866wmq.5.2023.10.19.05.46.42
+        by smtp.gmail.com with ESMTPSA id r4-20020a05600c35c400b0040531f5c51asm4476866wmq.5.2023.10.19.05.46.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Oct 2023 05:46:43 -0700 (PDT)
-Message-ID: <5b4e2ed9-c312-4df8-8d5f-65fb4a619b2f@baylibre.com>
-Date: Thu, 19 Oct 2023 14:46:42 +0200
+        Thu, 19 Oct 2023 05:46:51 -0700 (PDT)
+Message-ID: <68bb1c4b-da47-44ec-88b7-9ec18d607f7a@baylibre.com>
+Date: Thu, 19 Oct 2023 14:46:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/3] dt-bindings: vendor-prefixes: Add prefix for
- OLogic, Inc.
+Subject: Re: [PATCH v1 2/3] dt-bindings: arm64: dts: mediatek: Add
+ ologic,pumpkin-i350 board
 Content-Language: en-US
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  linux-mediatek@lists.infradead.org
@@ -83,14 +83,14 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>,
  Ted Larson <ted@ologicinc.com>
 References: <20231016215123.30343-1-laurent.pinchart@ideasonboard.com>
- <20231016215123.30343-2-laurent.pinchart@ideasonboard.com>
+ <20231016215123.30343-3-laurent.pinchart@ideasonboard.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20231016215123.30343-2-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <20231016215123.30343-3-laurent.pinchart@ideasonboard.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_054647_159116_43948854 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20231019_054656_351415_1FB44FFA 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,28 +108,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 16/10/2023 23:51, Laurent Pinchart wrote:
-> Add a DT vendor prefix for OLogic, Inc. OLogic is a hardware and system
-> design company that manufactures, among other things, development boards
-> with MediaTek SoCs.
+> Add a compatible string for the Pumpkin i350 board, an MT8365-based
+> board developed by OLogic.
 > 
 > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 > ---
->   Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->   1 file changed, 2 insertions(+)
+>   Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> index 573578db9509..247b724bc01f 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> @@ -981,6 +981,8 @@ patternProperties:
->       description: Oki Electric Industry Co., Ltd.
->     "^olimex,.*":
->       description: OLIMEX Ltd.
-> +  "^ologic,.*":
-> +    description: OLogic, Inc.
->     "^olpc,.*":
->       description: One Laptop Per Child
->     "^oneplus,.*":
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index ae12b1cab9fb..dc34e62c6756 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -247,6 +247,7 @@ properties:
+>         - items:
+>             - enum:
+>                 - mediatek,mt8365-evk
+> +              - ologic,pumpkin-i350
+>             - const: mediatek,mt8365
+>         - items:
+>             - enum:
 
 -- 
 Regards,
