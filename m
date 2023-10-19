@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 734C0CDB482
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 04:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03110CDB483
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 04:46:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LLKCqAQkXIt5yyS3YauV6hUjXjexODPbf5Fe1p8Y7gs=; b=rx6N9J9u8DKC6+PsoM9Ie4RxmC
-	jqeUZ2RrRHIgXhPPs+cg5jKcHrrMUzOaJYbCld/INczSBepNwXnd88CD8upm75d43YSuk8iLZfqkg
-	H5PUU8nbJbBi8LZOEAeqxtkioYijD1RplYJhdBa15yK7v3+mDM5z8/WD+xkJn1KlAon7Xi6HdVaQF
-	+5gYSg7/R0Xl12fZZkznLGIF3Y0oXVinXJUp2SDBmZTCHM5qeAw1X4W9BzF9MHgtMY/J/lOC4pUz+
-	/6K+bLMu/7hXBZNDw3vIJSQLwv1REWU1Ka5Wi8pQPuh3jwlf3691ruHHMeg/MIWx73bo3SDKtoBZ6
-	udPTqPmg==;
+	bh=cgGbWowjAL2zs3mLBEJcUx/pV6qG4ZvKU4TS6EdpuLU=; b=RAHMrx+m6NkMovDQVcGO1OfWXi
+	Wd4UmKt571Frrqnf/2/kqvZjjVxL5+DGHBZvcE+OrSIEitFyGs2mWMxga/LgZ5z47X3Ihe96Pv4fO
+	uJx6cRrYQsFzLijg1lTaZEuctQJN8jfMbSxGtWANpFIl3THq/hal2UoRwbbBMaP2sLFH+QMvsk8dw
+	YCK/49QuPhk8fEIY03NAEaq3cXEE1PTcGD87BZ9pt051CVAmBjat/3IoOBZROZC5DoIPKvlDst63r
+	xh9Ia3fdXO5He/R4peJHGblrVqesCaOSFf6bdNvw0ubNvtCM9LOkKPfJCGPV1iU95vsJUUXzlBELr
+	No01ps/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtKuw-00GIw9-11;
-	Thu, 19 Oct 2023 04:45:54 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qtKvO-00GJ1J-2w;
+	Thu, 19 Oct 2023 04:46:22 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtKus-00GIvS-0s;
-	Thu, 19 Oct 2023 04:45:52 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39J47EYO030685;
-	Thu, 19 Oct 2023 04:45:34 GMT
+	id 1qtKvM-00GJ0h-0n;
+	Thu, 19 Oct 2023 04:46:21 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39J47toU010578;
+	Thu, 19 Oct 2023 04:46:08 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
  mime-version : subject : to : cc : references : from : in-reply-to :
  content-type : content-transfer-encoding; s=qcppdkim1;
- bh=LLKCqAQkXIt5yyS3YauV6hUjXjexODPbf5Fe1p8Y7gs=;
- b=cTuGhnsgxlwDSLqGnKjVLUcHWuDA3XkIITG39wfht2GrX4y/oYPoQYbEQnKcR4smQ6PS
- LctuHOCD5zKk0x5yOKKgNNUq5UqvTY3PcsXhjLTdjwPrlNeCo9d2wEcDy7X5OjwWQS0+
- sY3DnaRJKIqveO9yb5021KtXcemXK/byI16g1qMzZUQlFmHP+hciEpNqsi+t7tq+9Chs
- jYgDuwyn02VO4+d+9C9w7kJZRjeaGHestuUoru7nO1Bt/NY7wqL1lXGITG0Kngw1rjS4
- rxsSRojeH/AsNrnEUFVM/XxedEYrrdM79034cZl3UhGQT8aaX4+3mMtvv76EIoyvGraU Dg== 
-Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ttcuv26mn-1
+ bh=cgGbWowjAL2zs3mLBEJcUx/pV6qG4ZvKU4TS6EdpuLU=;
+ b=VjfazaVu5K1pCGlRWGA2ekNNn4kqyassqIhdc+iFxaaygvJ2mdaCd/7b9yJIoM5F4cEx
+ xYf6IDbQzpTLjZ8wUxkwkqRCjCfCT+ArdkdYlUr8Al5KwEN9mkvDjKauO5j4Q4gsZmFY
+ D1DMZZs9S8ShjZt8+rcy3Spb5z9UJFizEpz6r3qN5mTUt0IV7INC1SZiXklswkRGOK7z
+ 8WuGdz6P6hFKLEdimH19dWNIiEMGpYDgleN1oR0NlYpj+kxBngg7R2q+BW+YWXosoYaD
+ qulGlvwE0+7khqhp7itNNp0MMgVb9WlvjpkUGHl1y9WNrvQn9iyd9Iw+WZln3WFzTR8X 0g== 
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ttnnagwwh-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 19 Oct 2023 04:45:34 +0000
+	Thu, 19 Oct 2023 04:46:08 +0000
 Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39J4jXxi004486
+	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39J4k7qw002336
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 19 Oct 2023 04:45:33 GMT
+	Thu, 19 Oct 2023 04:46:07 GMT
 Received: from [10.216.19.246] (10.80.80.8) by nalasex01a.na.qualcomm.com
  (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.39; Wed, 18 Oct
- 2023 21:45:24 -0700
-Message-ID: <5d806772-a2b4-4304-be45-7c2ed2930fcc@quicinc.com>
-Date: Thu, 19 Oct 2023 10:15:24 +0530
+ 2023 21:45:58 -0700
+Message-ID: <e7d72a94-4804-4297-8d3a-2191e2886bfc@quicinc.com>
+Date: Thu, 19 Oct 2023 10:15:58 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/9] dma-buf: heaps: Initialise MediaTek secure heap
+Subject: Re: [PATCH 6/9] dma-buf: heaps: mtk_sec_heap: Add tee service call
+ for buffer allocating/freeing
 Content-Language: en-US
 To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
         Sumit
@@ -74,11 +75,12 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
         <linaro-mm-sig@lists.linaro.org>,
         <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>, <jianjiao.zeng@mediatek.com>,
-        <kuohong.wang@mediatek.com>
+        <kuohong.wang@mediatek.com>, Anan Sun
+	<anan.sun@mediatek.com>
 References: <20230911023038.30649-1-yong.wu@mediatek.com>
- <20230911023038.30649-5-yong.wu@mediatek.com>
+ <20230911023038.30649-7-yong.wu@mediatek.com>
 From: Vijayanand Jitta <quic_vjitta@quicinc.com>
-In-Reply-To: <20230911023038.30649-5-yong.wu@mediatek.com>
+In-Reply-To: <20230911023038.30649-7-yong.wu@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.80.80.8]
@@ -86,19 +88,19 @@ X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nalasex01a.na.qualcomm.com (10.47.209.196)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: CPwMUBJQsnSw-RhST_Y5Uy1hTw1cat2n
-X-Proofpoint-GUID: CPwMUBJQsnSw-RhST_Y5Uy1hTw1cat2n
+X-Proofpoint-GUID: 31cIZ-IT-H_-Z_BV13ryeh6KElChoOsz
+X-Proofpoint-ORIG-GUID: 31cIZ-IT-H_-Z_BV13ryeh6KElChoOsz
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-19_02,2023-10-18_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 mlxscore=0
- malwarescore=0 phishscore=0 lowpriorityscore=0 impostorscore=0
- suspectscore=0 mlxlogscore=999 spamscore=0 priorityscore=1501 bulkscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0 mlxscore=0
+ phishscore=0 adultscore=0 malwarescore=0 spamscore=0 bulkscore=0
+ clxscore=1011 mlxlogscore=999 impostorscore=0 suspectscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2309180000 definitions=main-2310190039
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_214550_431579_F55A5FC2 
-X-CRM114-Status: GOOD (  30.00  )
+X-CRM114-CacheID: sfid-20231018_214620_288979_CF99F4D9 
+X-CRM114-Status: GOOD (  26.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,152 +118,136 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 9/11/2023 8:00 AM, Yong Wu wrote:
-> Initialise a mtk_svp heap. Currently just add a null heap, Prepare for
-> the later patches.
+> Add TEE service call for secure memory allocating/freeing.
 > 
+> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->  drivers/dma-buf/heaps/Kconfig           |  8 ++
->  drivers/dma-buf/heaps/Makefile          |  1 +
->  drivers/dma-buf/heaps/mtk_secure_heap.c | 99 +++++++++++++++++++++++++
->  3 files changed, 108 insertions(+)
->  create mode 100644 drivers/dma-buf/heaps/mtk_secure_heap.c
+>  drivers/dma-buf/heaps/mtk_secure_heap.c | 69 ++++++++++++++++++++++++-
+>  1 file changed, 68 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kconfig
-> index a5eef06c4226..729c0cf3eb7c 100644
-> --- a/drivers/dma-buf/heaps/Kconfig
-> +++ b/drivers/dma-buf/heaps/Kconfig
-> @@ -12,3 +12,11 @@ config DMABUF_HEAPS_CMA
->  	  Choose this option to enable dma-buf CMA heap. This heap is backed
->  	  by the Contiguous Memory Allocator (CMA). If your system has these
->  	  regions, you should say Y here.
-> +
-> +config DMABUF_HEAPS_MTK_SECURE
-> +	bool "DMA-BUF MediaTek Secure Heap"
-> +	depends on DMABUF_HEAPS && TEE
-> +	help
-> +	  Choose this option to enable dma-buf MediaTek secure heap for Secure
-> +	  Video Path. This heap is backed by TEE client interfaces. If in
-> +	  doubt, say N.
-> diff --git a/drivers/dma-buf/heaps/Makefile b/drivers/dma-buf/heaps/Makefile
-> index 974467791032..df559dbe33fe 100644
-> --- a/drivers/dma-buf/heaps/Makefile
-> +++ b/drivers/dma-buf/heaps/Makefile
-> @@ -1,3 +1,4 @@
->  # SPDX-License-Identifier: GPL-2.0
->  obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)	+= system_heap.o
->  obj-$(CONFIG_DMABUF_HEAPS_CMA)		+= cma_heap.o
-> +obj-$(CONFIG_DMABUF_HEAPS_MTK_SECURE)	+= mtk_secure_heap.o
 > diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c b/drivers/dma-buf/heaps/mtk_secure_heap.c
-> new file mode 100644
-> index 000000000000..bbf1c8dce23e
-> --- /dev/null
+> index e3da33a3d083..14c2a16a7164 100644
+> --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
 > +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
-> @@ -0,0 +1,99 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * DMABUF mtk_secure_heap exporter
-> + *
-> + * Copyright (C) 2023 MediaTek Inc.
-> + */
+> @@ -17,6 +17,9 @@
+>  
+>  #define MTK_TEE_PARAM_NUM		4
+>  
+> +#define TZCMD_MEM_SECURECM_UNREF	7
+> +#define TZCMD_MEM_SECURECM_ZALLOC	15
 > +
-> +#include <linux/dma-buf.h>
-> +#include <linux/dma-heap.h>
-> +#include <linux/err.h>
-> +#include <linux/module.h>
-> +#include <linux/slab.h>
+>  /*
+>   * MediaTek secure (chunk) memory type
+>   *
+> @@ -29,6 +32,8 @@ enum kree_mem_type {
+>  struct mtk_secure_heap_buffer {
+>  	struct dma_heap		*heap;
+>  	size_t			size;
 > +
-> +/*
-> + * MediaTek secure (chunk) memory type
-> + *
-> + * @KREE_MEM_SEC_CM_TZ: static chunk memory carved out for trustzone.
-> + */
-> +enum kree_mem_type {
-> +	KREE_MEM_SEC_CM_TZ = 1,
-> +};
-> +
-> +struct mtk_secure_heap_buffer {
-> +	struct dma_heap		*heap;
-> +	size_t			size;
-> +};
-> +
-> +struct mtk_secure_heap {
-> +	const char		*name;
-> +	const enum kree_mem_type mem_type;
-> +};
-> +
-> +static struct dma_buf *
-> +mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
-> +		      unsigned long fd_flags, unsigned long heap_flags)
+> +	u32			sec_handle;
+>  };
+>  
+>  struct mtk_secure_heap {
+> @@ -80,6 +85,63 @@ static int mtk_kree_secure_session_init(struct mtk_secure_heap *sec_heap)
+>  	return ret;
+>  }
+>  
+> +static int
+> +mtk_sec_mem_tee_service_call(struct tee_context *tee_ctx, u32 session,
+> +			     unsigned int command, struct tee_param *params)
 > +{
-> +	struct mtk_secure_heap_buffer *sec_buf;
-> +	DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
-> +	struct dma_buf *dmabuf;
+> +	struct tee_ioctl_invoke_arg arg = {0};
 > +	int ret;
 > +
-> +	sec_buf = kzalloc(sizeof(*sec_buf), GFP_KERNEL);
+> +	arg.num_params = MTK_TEE_PARAM_NUM;
+> +	arg.session = session;
+> +	arg.func = command;
+> +
+> +	ret = tee_client_invoke_func(tee_ctx, &arg, params);
+> +	if (ret < 0 || arg.ret) {
+> +		pr_err("%s: cmd %d ret %d:%x.\n", __func__, command, ret, arg.ret);
+> +		ret = -EOPNOTSUPP;
+> +	}
+> +	return ret;
+> +}
+> +
+> +static int mtk_sec_mem_allocate(struct mtk_secure_heap *sec_heap,
+> +				struct mtk_secure_heap_buffer *sec_buf)
+> +{
+> +	struct tee_param params[MTK_TEE_PARAM_NUM] = {0};
+> +	u32 mem_session = sec_heap->mem_session;
+> +	int ret;
+> +
+> +	params[0].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
+> +	params[0].u.value.a = SZ_4K;			/* alignment */
+> +	params[0].u.value.b = sec_heap->mem_type;	/* memory type */
+> +	params[1].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
+> +	params[1].u.value.a = sec_buf->size;
+> +	params[2].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INOUT;
+> +
+> +	/* Always request zeroed buffer */
+> +	ret = mtk_sec_mem_tee_service_call(sec_heap->tee_ctx, mem_session,
+> +					   TZCMD_MEM_SECURECM_ZALLOC, params);
 
-As we know, kzalloc can only allocate 4MB at max. So, secure heap has this limitation.
-can we have a way to allocate more memory in secure heap ? maybe similar to how system heap does?
+I see here optee calls are being used to secure memory.
+
+For a secure heap, there can be multiple ways on how we want to secure memory,
+for eg : by using qcom_scm_assign_mem.
+
+This interface restricts securing memory to only optee calls.
+can we have a way to choose ops that we want to secure memory ? 
 
 Thanks,
 Vijay
 
-> +	if (!sec_buf)
-> +		return ERR_PTR(-ENOMEM);
+> +	if (ret)
+> +		return -ENOMEM;
 > +
-> +	sec_buf->size = size;
-> +	sec_buf->heap = heap;
-> +
-> +	exp_info.exp_name = dma_heap_get_name(heap);
-> +	exp_info.size = sec_buf->size;
-> +	exp_info.flags = fd_flags;
-> +	exp_info.priv = sec_buf;
-> +
-> +	dmabuf = dma_buf_export(&exp_info);
-> +	if (IS_ERR(dmabuf)) {
-> +		ret = PTR_ERR(dmabuf);
-> +		goto err_free_buf;
-> +	}
-> +
-> +	return dmabuf;
-> +
-> +err_free_buf:
-> +	kfree(sec_buf);
-> +	return ERR_PTR(ret);
-> +}
-> +
-> +static const struct dma_heap_ops mtk_sec_heap_ops = {
-> +	.allocate	= mtk_sec_heap_allocate,
-> +};
-> +
-> +static struct mtk_secure_heap mtk_sec_heap[] = {
-> +	{
-> +		.name		= "mtk_svp",
-> +		.mem_type	= KREE_MEM_SEC_CM_TZ,
-> +	},
-> +};
-> +
-> +static int mtk_sec_heap_init(void)
-> +{
-> +	struct mtk_secure_heap *sec_heap = mtk_sec_heap;
-> +	struct dma_heap_export_info exp_info;
-> +	struct dma_heap *heap;
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(mtk_sec_heap); i++, sec_heap++) {
-> +		exp_info.name = sec_heap->name;
-> +		exp_info.ops = &mtk_sec_heap_ops;
-> +		exp_info.priv = (void *)sec_heap;
-> +
-> +		heap = dma_heap_add(&exp_info);
-> +		if (IS_ERR(heap))
-> +			return PTR_ERR(heap);
-> +	}
+> +	sec_buf->sec_handle = params[2].u.value.a;
 > +	return 0;
 > +}
 > +
-> +module_init(mtk_sec_heap_init);
-> +MODULE_DESCRIPTION("MediaTek Secure Heap Driver");
-> +MODULE_LICENSE("GPL");
+> +static void mtk_sec_mem_release(struct mtk_secure_heap *sec_heap,
+> +				struct mtk_secure_heap_buffer *sec_buf)
+> +{
+> +	struct tee_param params[MTK_TEE_PARAM_NUM] = {0};
+> +	u32 mem_session = sec_heap->mem_session;
+> +
+> +	params[0].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
+> +	params[0].u.value.a = sec_buf->sec_handle;
+> +	params[1].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_OUTPUT;
+> +
+> +	mtk_sec_mem_tee_service_call(sec_heap->tee_ctx, mem_session,
+> +				     TZCMD_MEM_SECURECM_UNREF, params);
+> +}
+> +
+>  static struct dma_buf *
+>  mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
+>  		      unsigned long fd_flags, unsigned long heap_flags)
+> @@ -107,6 +169,9 @@ mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
+>  	sec_buf->size = size;
+>  	sec_buf->heap = heap;
+>  
+> +	ret = mtk_sec_mem_allocate(sec_heap, sec_buf);
+> +	if (ret)
+> +		goto err_free_buf;
+>  	exp_info.exp_name = dma_heap_get_name(heap);
+>  	exp_info.size = sec_buf->size;
+>  	exp_info.flags = fd_flags;
+> @@ -115,11 +180,13 @@ mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
+>  	dmabuf = dma_buf_export(&exp_info);
+>  	if (IS_ERR(dmabuf)) {
+>  		ret = PTR_ERR(dmabuf);
+> -		goto err_free_buf;
+> +		goto err_free_sec_mem;
+>  	}
+>  
+>  	return dmabuf;
+>  
+> +err_free_sec_mem:
+> +	mtk_sec_mem_release(sec_heap, sec_buf);
+>  err_free_buf:
+>  	kfree(sec_buf);
+>  	return ERR_PTR(ret);
 
