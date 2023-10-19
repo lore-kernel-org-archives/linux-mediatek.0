@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEA28CDB482
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:49:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C2D1CDB484
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:52:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FB9tOOhyXlyaymxGCaC56dWreRbJtoiUoglPshV0iEw=; b=lpNryUz0lHJWb8irTfdFKqpd13
-	WDmaFPKiaMTWXRgpR2uSishBzoXUYziR26Ig1Tt6TezHKTJkWFvuEAMVUGaEzBOIKCGWOkEzw+NiH
-	tFPulof841Mo8MPev8/IMJ/bqRGizGA6JE8Q/F4DYZ8HdWftpIpBiS72dS9mIlFnIUpXGqLQ/1mAa
-	Ut1oQXzkokC+q59ol6E/1cd5TmY7GYOTaQzv6nsoBc1z/AWm9tXzUQLYh0UJvA7zgxJIEd8y2oHuu
-	tT/OvqQOS8selILXeBrQK6ofYil7TI00ir6besV9aKddaxfeodCxpUKwLO9a4XWecE9iyUPycqH2a
-	R0cm9Qqg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P++PSUnKxA1FoBnWZtRCB7asB3D81oFP8RoeOwSpsrM=; b=mMjwUFhlDdqKI1D4ZAtvjL7F7z
+	OjsgkCuykK3tu/eUSDWgK4KDFyj+MhuVMdRZ69TKSJVIFfYB/T1ExCxJo5RChvtlYyBkatMA9fHUA
+	J/dF1WTmzroraaTmym5G29phTZyIfDdndK/LtvU0galtrGMfO5oDGV4nXuPTx/PtQ9ojYblKf7az0
+	IU/AwdHHb5em91bfvAQbTYT0nWqIvxBYDSDCEfAHLcbAllNDUl7WSm4rkrW4/gGhdI1pK5cAPoeom
+	b9gGbfJ06N5Gms7zf4Hl/blJtBNh5HEilK1Oo8fgnRkD4VJWLxFeNAC2mveg+NxEZUfdR7499cxXz
+	Kmili+tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSSu-00HMqD-20;
-	Thu, 19 Oct 2023 12:49:28 +0000
+	id 1qtSW0-00HNLJ-2J;
+	Thu, 19 Oct 2023 12:52:40 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSSr-00HMpJ-1B;
-	Thu, 19 Oct 2023 12:49:27 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	id 1qtSVu-00HNG4-2k;
+	Thu, 19 Oct 2023 12:52:37 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DC10D660732D;
-	Thu, 19 Oct 2023 13:49:20 +0100 (BST)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A17456607331;
+	Thu, 19 Oct 2023 13:52:31 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719761;
-	bh=cSZfxWoSCWS2x6FEp2VdlrLkR6g3cTGCjH9LiGJQjsc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Byw5jZaTstRkh8IuXf+2axodIjrnKzDkwHKOGhM9abUwqgSnmOTbPiSBR2ey/dFPM
-	 zW+XgpaWlo/sxBhnpMQVLvG3hjxMF4bNMLnihyHhHawu2ey/jP665086EZcOy58Ezm
-	 X2Ivc1hTg0VE1kdLlsmDjyuo95G5JdvOUMobxTDWJ74rkmE2CuqDPHwDCyUEFTGX0q
-	 PgTR1pENCUmmdhhyr97KeN0bwOuaf/hUqt/LGuqP5WzY31esNqaIl+Ex0IuIsH6Gov
-	 6Q5Tndd5Ur9TGDdZWhve2jISHTk2w4K2U6uWcOjZow9vgTv/SxcTQzRwZ6WhBNgxGO
-	 I9p615dFIsnJw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sboyd@kernel.org
-Cc: mturquette@baylibre.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	u.kleine-koenig@pengutronix.de,
-	chun-jie.chen@mediatek.com,
-	miles.chen@mediatek.com,
-	linux-clk@vger.kernel.org,
+	s=mail; t=1697719952;
+	bh=7foNNb6amO3+FMMwIl173lEOz6gYhJG/dA79F9jwpAU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=i9dS1+mQOAJtsUDP6CQAOSwd2HoajdX0VZDRle2Y/D6DE8GT/HTayhK8zFKqSUSzj
+	 L2oWPgKkGiR5NCLtcOF0ijNVgEjyrzEj3NyFuwwIOcTTd3oLAkJQ/eb+oCmF+Kg71X
+	 KMM72CakLpPkH7iBuXxHh50SGADIvjPApmjzkxY5wNMX15jDvTLI32Ig125izKAxHo
+	 ce9CvzVH/4bbjzLTxMiotzeTPkIZTF7toJAd5JR1WcXn4tj3dpFVSOjXyzBycS2N0c
+	 UE7W8N5FaFHugWkgXbCyMTq0EfQZtU8cbadNWdTSZJ5hm7l8nKzKgZDfzfrog2ebBb
+	 MxCtjFdUAV3gQ==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] clk: mediatek: mt8186: Change I2C 4/5/6 ap clocks parent to infra
-Date: Thu, 19 Oct 2023 14:49:14 +0200
-Message-ID: <20231019124914.13545-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.42.0
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 02/56] media: videobuf2: Rework offset 'cookie' encoding pattern
+Date: Thu, 19 Oct 2023 14:51:28 +0200
+Message-Id: <20231019125222.21370-3-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
+References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_054925_686444_FC97E63A 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20231019_055235_170773_DB267B4D 
+X-CRM114-Status: GOOD (  21.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,75 +87,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the parenting of clocks imp_iic_wrap_ap_clock_i2c{4-6}, as those
-are effectively parented to infra_ao_i2c{4-6} and not to the I2C_AP.
-This permits the correct (and full) enablement and disablement of the
-I2C4, I2C5 and I2C6 bus clocks, satisfying the whole clock tree of
-those.
+Change how offset 'cookie' field value is computed to make possible
+to use more buffers.
+The maximum number of buffers depends of PAGE_SHIFT value and can
+go up to 0x7fff when PAGE_SHIFT = 12.
+With this encoding pattern we know the maximum number that a queue
+could store so we can check it at  queue init time.
+It also make easier and faster to find buffer and plane from using
+the offset field.
+Change __find_plane_by_offset() prototype to return the video buffer
+itself rather than it index.
 
-As an example, when requesting to enable imp_iic_wrap_ap_clock_i2c4:
-
-Before: infra_ao_i2c_ap -> imp_iic_wrap_ap_clock_i2c4
-After:  infra_ao_i2c_ap -> infra_ao_i2c4 -> imp_iic_wrap_ap_clock_i2c4
-
-Fixes: 66cd0b4b0ce5 ("clk: mediatek: Add MT8186 imp i2c wrapper clock support")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c | 6 +++---
- drivers/clk/mediatek/clk-mt8186-infra_ao.c     | 6 +++---
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ .../media/common/videobuf2/videobuf2-core.c   | 73 +++++++++----------
+ 1 file changed, 35 insertions(+), 38 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c
-index 640ccb553274..871b8ff4c287 100644
---- a/drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c
-+++ b/drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c
-@@ -29,11 +29,11 @@ static const struct mtk_gate imp_iic_wrap_clks[] = {
- 	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C3,
- 		"imp_iic_wrap_ap_clock_i2c3", "infra_ao_i2c_ap", 3),
- 	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C4,
--		"imp_iic_wrap_ap_clock_i2c4", "infra_ao_i2c_ap", 4),
-+		"imp_iic_wrap_ap_clock_i2c4", "infra_ao_i2c4", 4),
- 	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C5,
--		"imp_iic_wrap_ap_clock_i2c5", "infra_ao_i2c_ap", 5),
-+		"imp_iic_wrap_ap_clock_i2c5", "infra_ao_i2c5", 5),
- 	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C6,
--		"imp_iic_wrap_ap_clock_i2c6", "infra_ao_i2c_ap", 6),
-+		"imp_iic_wrap_ap_clock_i2c6", "infra_ao_i2c6", 6),
- 	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C7,
- 		"imp_iic_wrap_ap_clock_i2c7", "infra_ao_i2c_ap", 7),
- 	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C8,
-diff --git a/drivers/clk/mediatek/clk-mt8186-infra_ao.c b/drivers/clk/mediatek/clk-mt8186-infra_ao.c
-index 837304cd0ed7..c490f1a310f8 100644
---- a/drivers/clk/mediatek/clk-mt8186-infra_ao.c
-+++ b/drivers/clk/mediatek/clk-mt8186-infra_ao.c
-@@ -132,7 +132,7 @@ static const struct mtk_gate infra_ao_clks[] = {
- 	GATE_INFRA_AO2(CLK_INFRA_AO_AUDIO_26M_BCLK, "infra_ao_audio26m", "clk26m", 4),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_SSUSB_TOP_P1_HCLK, "infra_ao_ssusb_p1_hclk", "top_axi", 5),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_SPI1, "infra_ao_spi1", "top_spi", 6),
--	GATE_INFRA_AO2(CLK_INFRA_AO_I2C4, "infra_ao_i2c4", "top_i2c", 7),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_I2C4, "infra_ao_i2c4", "infra_ao_i2c_ap", 7),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_MODEM_TEMP_SHARE, "infra_ao_mdtemp", "clk26m", 8),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_SPI2, "infra_ao_spi2", "top_spi", 9),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_SPI3, "infra_ao_spi3", "top_spi", 10),
-@@ -145,7 +145,7 @@ static const struct mtk_gate infra_ao_clks[] = {
- 	GATE_INFRA_AO2_FLAGS(CLK_INFRA_AO_SSPM, "infra_ao_sspm", "top_sspm", 15, CLK_IS_CRITICAL),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_SSUSB_TOP_P1_SYS,
- 		       "infra_ao_ssusb_p1_sys", "top_ssusb_1p", 16),
--	GATE_INFRA_AO2(CLK_INFRA_AO_I2C5, "infra_ao_i2c5", "top_i2c", 18),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_I2C5, "infra_ao_i2c5", "infra_ao_i2c_ap", 18),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_I2C5_ARBITER, "infra_ao_i2c5a", "top_i2c", 19),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_I2C5_IMM, "infra_ao_i2c5_imm", "top_i2c", 20),
- 	GATE_INFRA_AO2(CLK_INFRA_AO_I2C1_ARBITER, "infra_ao_i2c1a", "top_i2c", 21),
-@@ -167,7 +167,7 @@ static const struct mtk_gate infra_ao_clks[] = {
- 			     CLK_IS_CRITICAL),
- 	GATE_INFRA_AO3_FLAGS(CLK_INFRA_AO_SSPM_32K_SELF, "infra_ao_sspm_32k", "clk32k", 4,
- 			     CLK_IS_CRITICAL),
--	GATE_INFRA_AO3(CLK_INFRA_AO_I2C6, "infra_ao_i2c6", "top_i2c", 6),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_I2C6, "infra_ao_i2c6", "infra_ao_i2c_ap", 6),
- 	GATE_INFRA_AO3(CLK_INFRA_AO_AP_MSDC0, "infra_ao_ap_msdc0", "top_axi", 7),
- 	GATE_INFRA_AO3(CLK_INFRA_AO_MD_MSDC0, "infra_ao_md_msdc0", "top_axi", 8),
- 	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC0_SRC, "infra_ao_msdc0_clk", "top_msdc50_0", 9),
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index a5e57affeb30..09be8e026044 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -31,6 +31,11 @@
+ 
+ #include <trace/events/vb2.h>
+ 
++#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
++#define PLANE_INDEX_MASK	0x7
++#define MAX_BUFFER_INDEX	BIT_MASK(30 - PLANE_INDEX_SHIFT)
++#define BUFFER_INDEX_MASK	(MAX_BUFFER_INDEX - 1)
++
+ static int debug;
+ module_param(debug, int, 0644);
+ 
+@@ -358,21 +363,27 @@ static void __setup_offsets(struct vb2_buffer *vb)
+ 	unsigned int plane;
+ 	unsigned long offset = 0;
+ 
+-	if (vb->index) {
+-		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+-		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+-
+-		offset = PAGE_ALIGN(p->m.offset + p->length);
+-	}
++	/*
++	 * The offset "cookie" value has the following constraints:
++	 * - a buffer can have up to 8 planes.
++	 * - v4l2 mem2mem uses bit 30 to distinguish between
++	 *   OUTPUT (aka "source", bit 30 is 0) and
++	 *   CAPTURE (aka "destination", bit 30 is 1) buffers.
++	 * - must be page aligned
++	 * That led to this bit mapping when PAGE_SHIFT = 12:
++	 * |30                |29        15|14       12|11 0|
++	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
++	 * where there are 15 bits to store the buffer index.
++	 * Depending on PAGE_SHIFT value we can have fewer bits
++	 * to store the buffer index.
++	 */
++	offset = vb->index << PLANE_INDEX_SHIFT;
+ 
+ 	for (plane = 0; plane < vb->num_planes; ++plane) {
+-		vb->planes[plane].m.offset = offset;
++		vb->planes[plane].m.offset = offset + (plane << PAGE_SHIFT);
+ 
+ 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+ 				vb->index, plane, offset);
+-
+-		offset += vb->planes[plane].length;
+-		offset = PAGE_ALIGN(offset);
+ 	}
+ }
+ 
+@@ -2188,10 +2199,9 @@ EXPORT_SYMBOL_GPL(vb2_core_streamoff);
+  * __find_plane_by_offset() - find plane associated with the given offset
+  */
+ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+-			unsigned int *_buffer, unsigned int *_plane)
++			struct vb2_buffer **vb, unsigned int *plane)
+ {
+-	struct vb2_buffer *vb;
+-	unsigned int buffer, plane;
++	unsigned int buffer;
+ 
+ 	/*
+ 	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
+@@ -2209,24 +2219,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+ 		return -EBUSY;
+ 	}
+ 
+-	/*
+-	 * Go over all buffers and their planes, comparing the given offset
+-	 * with an offset assigned to each plane. If a match is found,
+-	 * return its buffer and plane numbers.
+-	 */
+-	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+-		vb = q->bufs[buffer];
++	/* Get buffer and plane from the offset */
++	buffer = (offset >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
++	*plane = (offset >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+ 
+-		for (plane = 0; plane < vb->num_planes; ++plane) {
+-			if (vb->planes[plane].m.offset == offset) {
+-				*_buffer = buffer;
+-				*_plane = plane;
+-				return 0;
+-			}
+-		}
+-	}
++	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
++		return -EINVAL;
+ 
+-	return -EINVAL;
++	*vb = q->bufs[buffer];
++	return 0;
+ }
+ 
+ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+@@ -2306,7 +2307,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ {
+ 	unsigned long offset = vma->vm_pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+-	unsigned int buffer = 0, plane = 0;
++	unsigned int plane = 0;
+ 	int ret;
+ 	unsigned long length;
+ 
+@@ -2335,12 +2336,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
++	ret = __find_plane_by_offset(q, offset, &vb, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
+-	vb = q->bufs[buffer];
+-
+ 	/*
+ 	 * MMAP requires page_aligned buffers.
+ 	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
+@@ -2368,7 +2367,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	if (ret)
+ 		return ret;
+ 
+-	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
++	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(vb2_mmap);
+@@ -2382,7 +2381,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ {
+ 	unsigned long offset = pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+-	unsigned int buffer, plane;
++	unsigned int plane;
+ 	void *vaddr;
+ 	int ret;
+ 
+@@ -2392,12 +2391,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
++	ret = __find_plane_by_offset(q, offset, &vb, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
+-	vb = q->bufs[buffer];
+-
+ 	vaddr = vb2_plane_vaddr(vb, plane);
+ 	mutex_unlock(&q->mmap_lock);
+ 	return vaddr ? (unsigned long)vaddr : -EINVAL;
 -- 
-2.42.0
+2.39.2
 
 
