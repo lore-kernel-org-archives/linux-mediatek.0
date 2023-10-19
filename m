@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E620CCDB465
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 05:57:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E17CDB482
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 05:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I5bHp2Idet6yLfI5Lir8hzLHmuP6B43xrBEPhePUh0g=; b=KaDN0buaezWSdUitsPyFu4jre0
-	KcmtSHbcS9Pzxc35gx5tq0VsJ1Ar3jO2XennC+L/gYeTcD/NnIacxkmkZ9EGDO94alGrxGff1areQ
-	FyJTrnjrUwbwnftIVU5uI+fp59O6JHahD3gSvtJ8fLrjbsPbBiJxjVm7yweMmsU5FsHxo7/C8t9MJ
-	B6wTljkXoJ25hiXV8eYP2QGzK9xW4HaVFPFi9H2uk8u+aqIJ5+XhPmbT8nACBMVRoZH3yQEQ8eWUA
-	XtUCxzfqwo9tiJ0XH7bMtmTjKbk2NgBbrUSTn9+ZASvMN9iMgQN9dQ6Gv4J3QyL+Z86Gp/WtGDSmE
-	n0BkyUFA==;
+	bh=qzov/hpN4iX0pmFofJu6L2TrY3LTWXYkPYFRwpImDAk=; b=CYVinjoYwtPw+HefbXE/cR2RQ0
+	ytGY/6BHnxUGJMr7JafODTYg2+ibYQxjQwK4KsxO6zuoP9Ik3vvKblAO1B9yIDTMzTzXn8uttvrdC
+	GlXd5LJ6tpIKdglUXGYpC0q0dwWekvkCa7v/uSYWE6VEdYYBOjVdcBX5d27PNytPPDQTDXesPMTIw
+	fbjZhpSO6ALlunAG9aYJgeZajTDe7Uw4UWDxiSVagbYCwDV56tiumkzEYQQ/2+aN+x5M7Hf67eHKk
+	cbVC+9ZVF18VNpKSkB7qYtafiOWYhAvNWsHWVC9SoEG+PjTNnXvJutXF4dPNsy3s/Yq3aLYm7NnCR
+	EQCot2JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtM2M-00GQUv-2K;
-	Thu, 19 Oct 2023 05:57:38 +0000
+	id 1qtM2O-00GQVu-06;
+	Thu, 19 Oct 2023 05:57:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtM1p-00GQ5f-29;
-	Thu, 19 Oct 2023 05:57:11 +0000
-X-UUID: 517f9aec6e4411ee9b7791016c24628a-20231018
+	id 1qtM1q-00GQ6q-21;
+	Thu, 19 Oct 2023 05:57:12 +0000
+X-UUID: 50f5d7ee6e4411ee9b7791016c24628a-20231018
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=I5bHp2Idet6yLfI5Lir8hzLHmuP6B43xrBEPhePUh0g=;
-	b=HIqud0EgsAuLmW4UTp4H22dgGjtd1+4C5mUL10raw9opZ9dNb9ak28LXRbxnfxbF6PX1NnKUAb75tG9Zg9uRKOC8ABFUaslCL3wPOXolFalkAQb84B2J+7SR98S0c5njk/ldXf3fx+eCDB0qQV/7Oa3z13IGmhTh+wjsdboz8KA=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qzov/hpN4iX0pmFofJu6L2TrY3LTWXYkPYFRwpImDAk=;
+	b=VxaA96ER+cN3q/g0DVfD/5o8H0a6S5ktINrRgEeiH7Ic66vr2WxvQORsx6wjtSLVbeISzRdXFGpJArO2uOkQOxPCR/OiaeIcw0tE7Izt7cgaCjNabY5a+6wcuNDXlmU/7Kw887OfXTlbpsvakboYV/OItLbBtbpzfoBVxRYJ7y4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:b3ec8053-679b-4601-abf1-ee75abe89bc6,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:c4691cc0-14cc-44ca-b657-2d2783296e72,B
+X-CID-O-INFO: VERSION:1.1.32,REQID:4eb07155-cb85-4380-a255-926568590bdf,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:5f78ec9,CLOUDID:73d2f8f0-9a6e-4c39-b73e-f2bc08ca3dc5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 517f9aec6e4411ee9b7791016c24628a-20231018
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 50f5d7ee6e4411ee9b7791016c24628a-20231018
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 150277629; Wed, 18 Oct 2023 22:56:59 -0700
+	with ESMTP id 552350735; Wed, 18 Oct 2023 22:56:59 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 19 Oct 2023 13:56:23 +0800
+ 15.2.1118.26; Thu, 19 Oct 2023 13:56:21 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 19 Oct 2023 13:56:23 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 19 Oct 2023 13:56:21 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
  Hu <ck.hu@mediatek.com>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v10 16/24] drm/mediatek: Start/Stop components with function pointers
-Date: Thu, 19 Oct 2023 13:56:11 +0800
-Message-ID: <20231019055619.19358-17-shawn.sung@mediatek.com>
+Subject: [PATCH v10 09/24] soc: mediatek: Support reset bit mapping in mmsys driver
+Date: Thu, 19 Oct 2023 13:56:04 +0800
+Message-ID: <20231019055619.19358-10-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231019055619.19358-1-shawn.sung@mediatek.com>
 References: <20231019055619.19358-1-shawn.sung@mediatek.com>
@@ -68,8 +68,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_225705_743606_3578F4E1 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20231018_225706_688096_64A42969 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,63 +85,59 @@ Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-By registering component related functions to the pointers,
-we can easily manage them within a for-loop and simplify the
-logic of component start/stop process.
+- Reset ID must starts from 0 and be consecutive, but
+  the reset bits in our hardware design is not continuous,
+  some bits are left unused, we need a map to solve the problem
+- Use old style 1-to-1 mapping if .rst_tb is not defined
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 20 +++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
+ drivers/soc/mediatek/mtk-mmsys.c | 9 +++++++++
+ drivers/soc/mediatek/mtk-mmsys.h | 3 +++
+ 2 files changed, 12 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index aab98adcd9a4..07ab0e7c3d3b 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -71,6 +71,8 @@ static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
- static const struct mtk_ddp_comp_funcs ethdr = {
- 	.clk_enable = mtk_ethdr_clk_enable,
- 	.clk_disable = mtk_ethdr_clk_disable,
-+	.start = mtk_ethdr_start,
-+	.stop = mtk_ethdr_stop,
- };
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index b1db09e19905..3a7108eefe9d 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -314,6 +314,15 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
+ 	u32 offset;
+ 	u32 reg;
  
- static const struct mtk_ddp_comp_funcs merge = {
-@@ -190,16 +192,30 @@ void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
- 
- void mtk_ovl_adaptor_start(struct device *dev)
- {
-+	int i;
- 	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
- 
--	mtk_ethdr_start(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
-+		if (!ovl_adaptor->ovl_adaptor_comp[i] ||
-+		    !comp_matches[i].funcs->start)
-+			continue;
-+
-+		comp_matches[i].funcs->start(ovl_adaptor->ovl_adaptor_comp[i]);
++	if (mmsys->data->rst_tb) {
++		if (id >= mmsys->data->num_resets) {
++			dev_err(rcdev->dev, "Invalid reset ID: %lu (>=%u)\n",
++				id, mmsys->data->num_resets);
++			return -EINVAL;
++		}
++		id = mmsys->data->rst_tb[id];
 +	}
- }
- 
- void mtk_ovl_adaptor_stop(struct device *dev)
- {
-+	int i;
- 	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
- 
--	mtk_ethdr_stop(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
-+		if (!ovl_adaptor->ovl_adaptor_comp[i] ||
-+		    !comp_matches[i].funcs->stop)
-+			continue;
 +
-+		comp_matches[i].funcs->stop(ovl_adaptor->ovl_adaptor_comp[i]);
-+	}
- }
+ 	offset = (id / MMSYS_SW_RESET_PER_REG) * sizeof(u32);
+ 	id = id % MMSYS_SW_RESET_PER_REG;
+ 	reg = mmsys->data->sw0_rst_offset + offset;
+diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+index 9d8507f98b7a..d370192737ca 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.h
++++ b/drivers/soc/mediatek/mtk-mmsys.h
+@@ -78,6 +78,8 @@
+ #define DSI_SEL_IN_RDMA				0x1
+ #define DSI_SEL_IN_MASK				0x1
  
- /**
++#define MMSYS_RST_NR(bank, bit) (((bank) * 32) + (bit))
++
+ struct mtk_mmsys_routes {
+ 	u32 from_comp;
+ 	u32 to_comp;
+@@ -119,6 +121,7 @@ struct mtk_mmsys_driver_data {
+ 	const struct mtk_mmsys_routes *routes;
+ 	const unsigned int num_routes;
+ 	const u16 sw0_rst_offset;
++	const u8 *rst_tb;
+ 	const u32 num_resets;
+ 	const bool is_vppsys;
+ 	const u8 vsync_len;
 -- 
 2.18.0
 
