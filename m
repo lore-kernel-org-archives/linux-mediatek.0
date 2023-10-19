@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ECA3CDB484
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D18B0CDB485
 	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fK24xR2X/J25Varz1gbRDc6OpGweyQO05x32Hb3s1QQ=; b=nJHWpsR1b4R3uLc05UYmRgf2i3
-	CuG31fBEf8oPotVoes4hgrJ9iJPgPB551IMse1FxfbmrU5eXe3z/BG7Vkt2inkUY4/rA+mokL8z0w
-	Qr5n8xu4JRPMayG8tFaD3VHS7ItdLiJx4LYYbOg2W/l8aaLj+A2Sr8o9mikTp5pwVCoy24JciWCXH
-	YSVQsEq4PFA4aqQ+k0D6Y4covRHnZ/V34Q45S2BT27M0Ox+WpFbBJXwa8NxdmlHXLBo8OY7j+NgFy
-	0IMEeEgTY5NzfHa4TDUDI6zLB/oh/3rXlKZqRHhLsn1meB20xcteYxtROs8QXv2z1Gd4tm1Udp7f8
-	HHm1JXjQ==;
+	bh=8DpoE1AoK2fP+RIvieFAiWcgzt2e00XMFBFnulvtgj0=; b=LNCTKLp81xunzaw4bI0FcN/aWl
+	pGnke1Zv9FRgYqavmVNnEPD8GRSxnCglZb9oU3s4uQOTRU00GcaP0g/F/zx8R2TEXhaHVrCzhOsUD
+	d0b7BDyIRYHh+W0sBC8ueOkdO0atGosv6/S24Z6XN4Pc9soqWQJ3M/IW5if7id8rCHOKbuGTbWMOP
+	nX4RNWm0LUWvpQtI00qU8l9jLRoMoXkL1x4WQHISbrJiCAK8ggT0N6CSK8lsaPnl0MlyF6FN2sllY
+	YIVlgehnbwruklBZYnhiyOyYyIIcNExh+AoJCqVzKUGWfLkqSNMm6N8NPPXtNp0n371KPnOcNOaIX
+	U89c7KBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSYA-00HPi0-1F;
-	Thu, 19 Oct 2023 12:54:54 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qtSY9-00HPh7-26;
+	Thu, 19 Oct 2023 12:54:53 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWA-00HNWB-1I;
-	Thu, 19 Oct 2023 12:52:56 +0000
+	id 1qtSWE-00HNcQ-2B;
+	Thu, 19 Oct 2023 12:52:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=8DpoE1AoK2fP+RIvieFAiWcgzt2e00XMFBFnulvtgj0=; b=EO9wLxUg58ImWXNVXjk7st1act
+	tFudt1gktj3z347ECAs3zyWJR11RetZ7skhWs8k4LLK1KDGUJplQ/hyLFW6dOXt/bGDB7SaltyQeh
+	nVSEb1Lsc2R22QGKBnK5+8ixmpxnsWgTYuYxCdATrdShyQy4lzs89Gw1IASQ8+apewcwRr3jj9PKT
+	tyYyiXVNcZIN/V5qbIO0FyOCjP7v+q74yI8pqPN2jB/jjzzAZwjAZasmCCYU1YU6JwJ1q1/vRWpwf
+	uVTXECGLxdv9UujykbaVshSpvR4ggxR5NmMqMkMAXZ4dXbkplGHF1Z6T68Zm9qgxi+QYvAypiH/K7
+	51FYiSog==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qtSW5-009rST-0M;
+	Thu, 19 Oct 2023 12:52:48 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 370B4660732D;
-	Thu, 19 Oct 2023 13:52:45 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 33CCD6607347;
+	Thu, 19 Oct 2023 13:52:36 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719965;
-	bh=0si/CGsRIyBb9jphgz7l+oPg0Kqq5VWdQXJtmyKQgDU=;
+	s=mail; t=1697719956;
+	bh=U25RUhgn4wrEJgYWeqq/JM19FcBBlklJam1nCiVEFHQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Css8WBlndr9EW1UXlIjURZ3Nu18CsJJeK+0Qcw2PB0yct03NFvq69+ABfbzohF1UT
-	 OE7vLtmM6NIfMaSJ5hgvGAo8nSJyl4ThkzuxI5HO/tZTfeDXKAwX7LorF0FgI9oGD9
-	 vkNLI5FRdcLmjcldJTOotoSeMotLJhqcrALo5Yye7lUAeCiySPzMLV9zaTWRcbMm+K
-	 KBDT/CletrsX4TgA8htEjjUJnIAXMgbTe8QxdPqi3r0ePATTln9RP+OdF7Gd0l963t
-	 wM85YPlWqYp/66kNVIklMBiCALJbpxYE8yVVVRS8GSRjb4LSGyR/cfyZGES7ugJ8WK
-	 gQkv37fIw4Wbg==
+	b=AYpmPP36T5mPlYAQ7Ljy1EP2tvHb4iQb5fs2G7SGU61EmhAkf7s7SPmgA/jwHxORZ
+	 77IBBOP8nPtKSQr4wPDLxe2O1oVoVdTAfzGTB2gunIGV/Lqm1+PcxifxMQuMBnf2Le
+	 cS2eGpXcsaEAKiM9/3Cdwl0Ur8FLSQPonBhM7tGNNvbPR0KvQFBrYOVwQatbNEpNyb
+	 xvdPCYMjh4kzc4TEy/SFtvRzmh9xYUTsitvPkf1heJxMZlV+C1O9I5oxUoY7g5k0Oy
+	 UbB8Ff82YtWx1jsbO4pEcfmox9FBANJZ4lAs9MqDSoxy1M6dZ1KrG5fLMrGCus0Ehs
+	 S3FOa+K7h674A==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,20 +76,19 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Martin Kepplinger <martink@posteo.de>
-Subject: [PATCH v13 28/56] media: nxp: Stop direct calls to queue num_buffers field
-Date: Thu, 19 Oct 2023 14:51:54 +0200
-Message-Id: <20231019125222.21370-29-benjamin.gaignard@collabora.com>
+	Bin Liu <bin.liu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v13 11/56] media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Thu, 19 Oct 2023 14:51:37 +0200
+Message-Id: <20231019125222.21370-12-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_055250_600205_6BF29B39 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20231019_135245_433690_F8410812 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,47 +103,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-This allows us to change how the number of buffers is computed in the
-future.
+Use vb2_get_buffer() instead of direct access to the vb2_queue bufs array.
+This allows us to change the type of the bufs in the future.
+After each call to vb2_get_buffer() we need to be sure that we get
+a valid pointer so check the return value of all of them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Rui Miguel Silva <rmfrfs@gmail.com>
-CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-CC: Martin Kepplinger <martink@posteo.de>
+CC: Bin Liu <bin.liu@mediatek.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- drivers/media/platform/nxp/imx7-media-csi.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/nxp/imx7-media-csi.c b/drivers/media/platform/nxp/imx7-media-csi.c
-index 15049c6aab37..4c467fb82789 100644
---- a/drivers/media/platform/nxp/imx7-media-csi.c
-+++ b/drivers/media/platform/nxp/imx7-media-csi.c
-@@ -1245,6 +1245,7 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
- 				      struct device *alloc_devs[])
- {
- 	struct imx7_csi *csi = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	struct v4l2_pix_format *pix = &csi->vdev_fmt;
- 	unsigned int count = *nbuffers;
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 7194f88edc0f..73a063b1569b 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -598,12 +598,11 @@ static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+ 		goto end;
  
-@@ -1254,14 +1255,14 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
- 	if (*nplanes) {
- 		if (*nplanes != 1 || sizes[0] < pix->sizeimage)
- 			return -EINVAL;
--		count += vq->num_buffers;
-+		count += q_num_bufs;
+ 	vq = v4l2_m2m_get_vq(fh->m2m_ctx, buf->type);
+-	if (buf->index >= vq->num_buffers) {
+-		dev_err(ctx->jpeg->dev, "buffer index out of range\n");
++	vb = vb2_get_buffer(vq, buf->index);
++	if (!vb) {
++		dev_err(ctx->jpeg->dev, "buffer not found\n");
+ 		return -EINVAL;
  	}
- 
- 	count = min_t(__u32, IMX7_CSI_VIDEO_MEM_LIMIT / pix->sizeimage, count);
- 
- 	if (*nplanes)
--		*nbuffers = (count < vq->num_buffers) ? 0 :
--			count - vq->num_buffers;
-+		*nbuffers = (count < q_num_bufs) ? 0 :
-+			count - q_num_bufs;
- 	else
- 		*nbuffers = count;
+-
+-	vb = vq->bufs[buf->index];
+ 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+ 	jpeg_src_buf->bs_size = buf->m.planes[0].bytesused;
  
 -- 
 2.39.2
