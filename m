@@ -4,89 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 843BCCDB485
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB4B4CDB465
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 13:18:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uXd4l4Pl6p2u86yQdaRkv4bDOJFZxKbIe4Sw9HIEWm4=; b=feFGEEeYu4utJjzzDgsnCtnARr
-	SLRsmdaJ8kA2YEH+33AgGbDWbbXEINtC+Mtszz+Hpu2WzTtlrb63s/tdQ9k0D8eitL5ooMopiuK2c
-	CFaWjNi5juLp+FVSLU3pR9vs8r/I/KbtBMSq+iUlnHt+Pu0kMrr3j29peiyQxeA16RMoshalHCU9R
-	JHH2vPoW6teVgkMvbBOs1DJ1EWf68S8QYlbTo4QfzX/IfWcabk5FtMquCzyMIYl8bUkdW0Xd2+B/j
-	GwcLPWLeQBBTjx2yK+pmnpee9c/B9MjenaPB+K27Bu83kXovA++mkhWmOi8VgaqN/OKaLMi4F+SUR
-	k5SVt14A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dOMFQ4KhhgNN9uiVFnKX2Q/Idi24XPkIW6kBXq+OOHE=; b=Q1p5qongrMgQQwnL0v0434Bk9f
+	0MVfg8K3pxg04mGyIKPGEkN3Gmk0G9TKXWM3vH8yVhedxX+V6Rhlv1EmJPw9uFM6i5TBw4TJLZZjT
+	GVdiRqJc+D4eNZC9X58Bn9KZMUi95oZq4fK9BCEvPb1tNOdnWbj1EHItpcdF+ETK5sQotKuFdPv6o
+	srHhNDTJFoLUhmHl7yOLkRkmxK4vyJQrnZ5Ao/yrFeTxMnnxt9Qx3lxgj1Ex9QxLRKvk1pMOoFZWU
+	R1aL8XxSab79ytQxmbOF/zgzaJvX4GVikJfWaO+Q9gaQT2iVu7fEDE2RkWydGuE0/tg9+dnGRZbWl
+	0f/SE7ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSak-00HSKk-2d;
-	Thu, 19 Oct 2023 12:57:34 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qtSuo-00HVW4-10;
+	Thu, 19 Oct 2023 13:18:18 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWS-00HNun-0S;
-	Thu, 19 Oct 2023 12:53:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=uXd4l4Pl6p2u86yQdaRkv4bDOJFZxKbIe4Sw9HIEWm4=; b=kURpjJp9G8gqUV/IJBMmiGxugN
-	+RnsKL4xTGBBOr2KEdOzAlcDehbw2IGGjqRGyMOWN5udo8NWoujutw2vd1FlDDijMe6qCU40s0TLe
-	ow0SRTgOLFZI4g5PbGu2xm7L/MpWO7LI2ed9Wgzk5DMHMJWwISchnIELcDwcyotxtGZrjhoGFcPGC
-	phDJjFKJfxdP4+30QJ2j//mUi5fa4Yihlk1lKDznowv66sAYyB6KakII9z+x59uTYincN4t1y5dUA
-	dF552CDjPUMQX7h0JBdKxmq23RZLkhoFwP7c7KsNqoZHVizRLgp+W6E4VwDGT0p/GQFpcAqLFLUMQ
-	GYJ1m4pQ==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWJ-009rZs-2Z;
-	Thu, 19 Oct 2023 12:53:06 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0E1096607397;
-	Thu, 19 Oct 2023 13:52:57 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719977;
-	bh=MnEpAX6paYYqEEhaTQi4aP3SQzg49BXA5RiIYY/VWXg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nmZ/okqU0DGfibsynmYKnGC/WK4Qm85BL6KXRB6RpN6BTnGVJSRTyCAcURs3k87uK
-	 f5YKa551uxSxuzNWoD/gc9RiLpzHcHhBsuS74pURwluo6TsF232xgfCt9SobIWRmLR
-	 LVJChj1PG1VIAsBptJMVyY3YT5OD9f3HAj0zhJAcrXK/NtgZTxserl7M8uHo9neZ8q
-	 lcFPF0xl0kjUsUFOF7gQWbk8rP/pkfJLI6WfPTtZsH2mL4K7SGyjAQYV8yQQmugCni
-	 fYH30INWKz9+YUzOXWlLGgy9UloQaL3ZTSyVVzMP9qgqPhr52fQV26z6ewt4Sb0qnm
-	 UG7G8nogMTyQw==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1qtSuk-00HVUb-1U;
+	Thu, 19 Oct 2023 13:18:15 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-99c3c8adb27so1252040666b.1;
+        Thu, 19 Oct 2023 06:18:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1697721490; x=1698326290; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=dOMFQ4KhhgNN9uiVFnKX2Q/Idi24XPkIW6kBXq+OOHE=;
+        b=GwkJk909yRy29d7/NiQgP8s/gSgiZhcBerU974b9pcqNXbuIUkN+bvq6mLxu85Um8N
+         rsfKmJR5ypsHWWg1gYpUmvKXAygmMGqFoprZ5V92Y5/Zg+cxYYWTj9/VOcs0TDhvYfqf
+         6j76JDCOzlxIAubNN4Shw8SLjU3b3SjkR0Q3GDKOVW6cjqEH0jMWJfQ+TZRR/KTus5fJ
+         6zDLNF5Xift6TUov8cXfuMIvexePZhfOkTOioP63BW1JcvZrlKC5VA6+nhoKTaKeKwti
+         Gvm6/AEwuHZgf/3bQzOjR1/WvxQCG/tJkrN4uUN8+q3dDccJ3NeSaKFhOA6Mpzow7iz3
+         7Vjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697721490; x=1698326290;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dOMFQ4KhhgNN9uiVFnKX2Q/Idi24XPkIW6kBXq+OOHE=;
+        b=tRpl/5VFA+ZB53QJKhsRS30TPownun3QSrcwqmn7qdxCJVi+fahxAnxrDknuUfmKAt
+         psd0gbv4KBp7a1D3tb45NIqaXNo4lBlrtxMn0g4PixhsB1k+xhxLjcAmddb/ZQzG7aSv
+         BlITsJmopasieBPRs2GlldCjeMsifEILvVISyNvSGsJH7cavVl8JNoj85xMakekP2ey/
+         HJu/pd4QFfC3rPkJKH60Vjcyxj19YtqpqpAY2D7cX8xQLuQmaSoBJouPSNjtSA2lONxu
+         d3NzvDoBy7oWUtViQHEhoPoIMs4Xg7ZdxDcdv0R5eQ7o7WgpeekDZsiLOtVgXfEvbsBS
+         iAbw==
+X-Gm-Message-State: AOJu0YyBLM2crIUQ/ttiTC+O+VPvc9CNxS14zJQJq7a4Mdp1KFCeJscP
+	toYBpj2BQlsiZPzg/SGoOQ4=
+X-Google-Smtp-Source: AGHT+IGeV/PAyeS5ZcSZyKizUQ5u38iNo53UbAIyLr9nNzHgjNSBIjErmYPUXpk3hLMaNF1I+onEEQ==
+X-Received: by 2002:a17:907:97d0:b0:9aa:63d:9ede with SMTP id js16-20020a17090797d000b009aa063d9edemr2084080ejc.9.1697721490291;
+        Thu, 19 Oct 2023 06:18:10 -0700 (PDT)
+Received: from skbuf ([188.26.57.160])
+        by smtp.gmail.com with ESMTPSA id qt16-20020a170906ecf000b0099c53c44083sm3596979ejb.79.2023.10.19.06.18.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Oct 2023 06:18:09 -0700 (PDT)
+Date: Thu, 19 Oct 2023 16:18:06 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	John Crispin <john@phrozen.org>,
+	Gerhard Engleder <gerhard@engleder-embedded.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Sergey Shtylyov <s.shtylyov@omp.ru>,
+	Sergei Shtylyov <sergei.shtylyov@gmail.com>,
+	Justin Chen <justin.chen@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Grygorii Strashko <grygorii.strashko@ti.com>,
+	Sekhar Nori <nsekhar@ti.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v13 51/56] media: core: Rework how create_buf index returned value is computed
-Date: Thu, 19 Oct 2023 14:52:17 +0200
-Message-Id: <20231019125222.21370-52-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
-References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
+	linux-renesas-soc@vger.kernel.org,
+	bcm-kernel-feedback-list@broadcom.com
+Subject: Re: [PATCH net-next 1/8] dt-bindings: net: Add missing
+ (unevaluated|additional)Properties on child node schemas
+Message-ID: <20231019131806.lbzydoplodybvb62@skbuf>
+References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
+ <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
+ <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
+ <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
+ <20231016-dt-net-cleanups-v1-1-a525a090b444@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_135300_364017_F27722EF 
-X-CRM114-Status: GOOD (  19.53  )
+X-CRM114-CacheID: sfid-20231019_061814_504733_AAD1BFF4 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,163 +132,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When DELETE_BUFS will be introduced holes could created in bufs array.
-To be able to reuse these unused indices reworking how create->index
-is set is mandatory.
-Let __vb2_queue_alloc() decide which first index is correct and
-forward this to the caller.
+Hi Rob,
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/common/videobuf2/videobuf2-core.c   | 22 ++++++++++++-------
- .../media/common/videobuf2/videobuf2-v4l2.c   | 20 +++++++++++------
- include/media/videobuf2-core.h                |  5 ++++-
- 3 files changed, 31 insertions(+), 16 deletions(-)
+On Mon, Oct 16, 2023 at 04:44:20PM -0500, Rob Herring wrote:
+> Just as unevaluatedProperties or additionalProperties are required at
+> the top level of schemas, they should (and will) also be required for
+> child node schemas. That ensures only documented properties are
+> present for any node.
+> 
+> Add unevaluatedProperties or additionalProperties as appropriate.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+> diff --git a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
+> index 833d2f68daa1..ea285ef3e64f 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
+> @@ -61,17 +61,11 @@ properties:
+>  
+>    ethernet-ports:
+>      type: object
+> -    properties:
+> -      '#address-cells':
+> -        const: 1
+> -      '#size-cells':
+> -        const: 0
+> -
+> +    additionalProperties: true
+>      patternProperties:
+>        "^(ethernet-)?port@[0-4]$":
+>          type: object
+> -        description: Ethernet switch ports
+> -
+> +        additionalProperties: true
+>          properties:
+>            pcs-handle:
+>              maxItems: 1
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 72ef7179d80a..2c8cf479a962 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -442,16 +442,21 @@ static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
-  */
- static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 			     unsigned int num_buffers, unsigned int num_planes,
--			     const unsigned plane_sizes[VB2_MAX_PLANES])
-+			     const unsigned plane_sizes[VB2_MAX_PLANES],
-+			     unsigned int *first_index)
- {
--	unsigned int q_num_buffers = vb2_get_num_buffers(q);
- 	unsigned int buffer, plane;
- 	struct vb2_buffer *vb;
-+	unsigned long index;
- 	int ret;
- 
- 	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
- 	num_buffers = min_t(unsigned int, num_buffers,
--			    q->max_num_buffers - q_num_buffers);
-+			    q->max_num_buffers - vb2_get_num_buffers(q));
-+
-+	index = vb2_get_num_buffers(q);
-+
-+	*first_index = index;
- 
- 	for (buffer = 0; buffer < num_buffers; ++buffer) {
- 		/* Allocate vb2 buffer structures */
-@@ -471,7 +476,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 			vb->planes[plane].min_length = plane_sizes[plane];
- 		}
- 
--		vb2_queue_add_buffer(q, vb, q_num_buffers + buffer);
-+		vb2_queue_add_buffer(q, vb, index++);
- 		call_void_bufop(q, init_buffer, vb);
- 
- 		/* Allocate video buffer memory for the MMAP type */
-@@ -812,7 +817,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
- 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
--	unsigned int i;
-+	unsigned int i, first_index;
- 	int ret = 0;
- 
- 	if (q->streaming) {
-@@ -898,7 +903,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 
- 	/* Finally, allocate buffers and video memory */
- 	allocated_buffers =
--		__vb2_queue_alloc(q, memory, num_buffers, num_planes, plane_sizes);
-+		__vb2_queue_alloc(q, memory, num_buffers, num_planes, plane_sizes, &first_index);
- 	if (allocated_buffers == 0) {
- 		dprintk(q, 1, "memory allocation failed\n");
- 		ret = -ENOMEM;
-@@ -972,7 +977,8 @@ EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
- int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			 unsigned int flags, unsigned int *count,
- 			 unsigned int requested_planes,
--			 const unsigned int requested_sizes[])
-+			 const unsigned int requested_sizes[],
-+			 unsigned int *first_index)
- {
- 	unsigned int num_planes = 0, num_buffers, allocated_buffers;
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
-@@ -1034,7 +1040,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 
- 	/* Finally, allocate buffers and video memory */
- 	allocated_buffers = __vb2_queue_alloc(q, memory, num_buffers,
--				num_planes, plane_sizes);
-+				num_planes, plane_sizes, first_index);
- 	if (allocated_buffers == 0) {
- 		dprintk(q, 1, "memory allocation failed\n");
- 		ret = -ENOMEM;
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index bdfc3a253c65..56daf3b5b2ba 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -805,11 +805,16 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
- 	for (i = 0; i < requested_planes; i++)
- 		if (requested_sizes[i] == 0)
- 			return -EINVAL;
--	return ret ? ret : vb2_core_create_bufs(q, create->memory,
--						create->flags,
--						&create->count,
--						requested_planes,
--						requested_sizes);
-+	if (ret)
-+		return ret;
-+
-+	ret = vb2_core_create_bufs(q, create->memory,
-+				   create->flags,
-+				   &create->count,
-+				   requested_planes,
-+				   requested_sizes,
-+				   &create->index);
-+	return ret;
- }
- EXPORT_SYMBOL_GPL(vb2_create_bufs);
- 
-@@ -1037,15 +1042,16 @@ int vb2_ioctl_create_bufs(struct file *file, void *priv,
- 	int res = vb2_verify_memory_type(vdev->queue, p->memory,
- 			p->format.type);
- 
--	p->index = vdev->queue->num_buffers;
- 	fill_buf_caps(vdev->queue, &p->capabilities);
- 	validate_memory_flags(vdev->queue, p->memory, &p->flags);
- 	/*
- 	 * If count == 0, then just check if memory and type are valid.
- 	 * Any -EBUSY result from vb2_verify_memory_type can be mapped to 0.
- 	 */
--	if (p->count == 0)
-+	if (p->count == 0) {
-+		p->index = vb2_get_num_buffers(vdev->queue);
- 		return res != -EBUSY ? res : 0;
-+	}
- 	if (res)
- 		return res;
- 	if (vb2_queue_is_busy(vdev->queue, file))
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index e77a397195f2..6986ff4b77cd 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -803,6 +803,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
-  * @count: requested buffer count.
-  * @requested_planes: number of planes requested.
-  * @requested_sizes: array with the size of the planes.
-+ * @first_index: index of the first created buffer, all allocated buffers have
-+ *		 indices in the range [first..first+count]
-  *
-  * Videobuf2 core helper to implement VIDIOC_CREATE_BUFS() operation. It is
-  * called internally by VB2 by an API-specific handler, like
-@@ -819,7 +821,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			 unsigned int flags, unsigned int *count,
- 			 unsigned int requested_planes,
--			 const unsigned int requested_sizes[]);
-+			 const unsigned int requested_sizes[],
-+			 unsigned int *first_index);
- 
- /**
-  * vb2_core_prepare_buf() - Pass ownership of a buffer from userspace
--- 
-2.39.2
-
+For my edification, this patch removes #address-cells and #size-cells
+at the same time, because "additionalProperties: true" (which was also
+implied before) doesn't care if they aren't defined in this sub-schema,
+and they are defined through $ref: dsa.yaml#/$defs/ethernet-ports,
+right?
 
