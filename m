@@ -4,91 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56EFBCDB484
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 08:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEB39CDB465
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 08:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6JocWFvICwQAu51spYQ9UkYkn/vFA+DgKSrhAcOeN84=; b=P7r02oWDyN93UQTSx+EpgnW5LO
-	/31KGiJIppc/bpzIaf9qvTD/uQm0S87zgwtKVncdeidVFLzPQSGZbobXAyy2CHBLJsgX5UG+hziDs
-	GjuoPF8Q3SwK+sX0fZ20FRK/oIOZLdNKcP+1TUOTm8GVkHoyDu63S7xPz/RHXf7OJTQr8pzTaAztI
-	pSnd+kkxV/i+eRHxJi59POjnk9+JOiG0d0WaiEa9IGtGJE+z4TOqwyQ1Dbv/nGCu2w7l+AfbqswlM
-	1ZKgpZqu0eGKlXdGFXrs05vJzi7lB4jZwMtPDaVzxJRknM6x9S+1OrWqgHIQiguikOcGqPN24RTFx
-	8kKqZfoA==;
+	bh=v8Difn/D+XiTI90dIkn0xG+fv+x0la3KPldZ4kHjxUY=; b=jcitbqbDPkwk71et4o9hFoGvH4
+	iG/Q3BB55TBYGuSjgyh4/qTpc3L6PAU7CKeLi6nYljC/KuyOQEnJB/Dwa7dzTVfJIeF73h65nUwG5
+	zzK7u1hAVQTeAV2guvfmuKOHXLjYcj3r1BXfsp0iSDKM4BZu53PN58+7gkzuGSwjTL8nQBNRm+JbQ
+	5SM6tYIZiIlNf+lmBrNhiZKkXeeG/39wuH7/H2Xut++6LvD4I5mqKl3sClmVM2OjyTuf9tfiCV0yB
+	EkQ9AJeX+lrWg95onEzLPJuZjiQ75Hs/oiyclmHjqvn4eBDmSrMoEfj8E+ziPn8yZYzcmf3eG5nil
+	pJs9h9uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtOIl-00GhQc-0R;
-	Thu, 19 Oct 2023 08:22:43 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1qtOLc-00Gi2B-2C;
+	Thu, 19 Oct 2023 08:25:40 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtOIL-00GhDV-2G
+	id 1qtOLZ-00GhzW-34
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Oct 2023 08:22:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1697703735;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6JocWFvICwQAu51spYQ9UkYkn/vFA+DgKSrhAcOeN84=;
-	b=gEVcq8vIybTNYurjtxpBsSia4IwH29VGU5myeiiwMECo2CDZgWOR0ObrymUYAfJXOEPaTv
-	MSqNxz9C6McSlDUDNe235d0L86dWf+U3JZTtdRefpm6r9VmJCzjPvkt7htIE8FxJqQGQCE
-	27stwpw5k2mBd9uIaUkRkbZxrJOQrJE=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-472-ZSGcRnwwMLWXWruC5TXZPw-1; Thu, 19 Oct 2023 04:20:28 -0400
-X-MC-Unique: ZSGcRnwwMLWXWruC5TXZPw-1
-Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-99bcb13d8ddso568358866b.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Oct 2023 01:20:28 -0700 (PDT)
+	Thu, 19 Oct 2023 08:25:39 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-53d9b94731aso13447091a12.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Oct 2023 01:25:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1697703920; x=1698308720; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=v8Difn/D+XiTI90dIkn0xG+fv+x0la3KPldZ4kHjxUY=;
+        b=OmR2A4WbhGU7rg3LnQ4VXP/P1ab1OCUbmHeiLyq0aD49ylfgRpJ9KPD/+8lgx6PP78
+         xPGjdLsB1K21+rLEC1QOzAvGUKDhyw5k9S5W77mreqJTeAAZkGJhmwr6CuELLlSBd45r
+         4trV7Tt25U3AYaE7PkCdsms91SnfRq3mc1KRQXiRMqFXaiZ6vzeqbG5T5IyFEK27M/0b
+         1qsvNfDxPpvaXzfLqrOFZTpgmCxW2PFajrm9zgR3BJzOJ+IkPYmfW01WRrJm4+3FYd12
+         dOD68db2Mshq92x0dYcfL1rAgY+1x2eT/NWYxZ4QvIryraLjBM6a6beBOl+Dsfb3r+8+
+         Fnog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697703627; x=1698308427;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6JocWFvICwQAu51spYQ9UkYkn/vFA+DgKSrhAcOeN84=;
-        b=YI81T6sJvRpUSr6NZnaQ4Myp5XK0zYxkOghgFp64BngEcpx0lo9FmtvxFH4fp2wPDJ
-         pP1YCqPHfkwv0JdJhnKBR+DZIwy+eJWvHMLdGHIgunh78AfkbHCuqVR5Cnh8GCP2TbZI
-         YzZgfwep4RKyI8cauwl112lAn5uAu6pNuyG1seiUWyVEoM8ugsfkbvQe6180lyaFHHpT
-         1ztUyOy9QqQhHh1P0ehcE6ZV9/gIWyHzfLinOpwa8BOVaMNsjbU6X9I9+ZxJGE5Vi0xa
-         zswrxGkkozbE53LGQpXtbtkkGgE1TOB/6ggbnzeIcJ4Ut0psuXm0rSYo/VkPxXol6hWi
-         upjw==
-X-Gm-Message-State: AOJu0YxEZFbEnKFWFrNzUbol0xrKj+i57g5yZ0gHSMQn8kR8kOojpylj
-	MerFePIiZNL/PdLwu4f0xoOxBkdtGO27X/GUpDf9NaU48YIbBouqeVfdlN5C7LH5hYz7QYRa2yp
-	8p3NQdehnJNJdtfppzKXEmeT/05frFaRV
-X-Received: by 2002:a17:907:7b89:b0:9c5:844f:a7f4 with SMTP id ne9-20020a1709077b8900b009c5844fa7f4mr1416925ejc.35.1697703627226;
-        Thu, 19 Oct 2023 01:20:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGTnMKXbHzCyh0CpWl8FqNt59EDAGlNA5Kw8X7mQsKbdb09VixEWWMGkJGLb9zHxDpsNDg2ag==
-X-Received: by 2002:a17:907:7b89:b0:9c5:844f:a7f4 with SMTP id ne9-20020a1709077b8900b009c5844fa7f4mr1416904ejc.35.1697703626942;
-        Thu, 19 Oct 2023 01:20:26 -0700 (PDT)
-Received: from localhost ([193.32.126.216])
-        by smtp.gmail.com with ESMTPSA id rn1-20020a170906d92100b0099d45ed589csm3040281ejb.125.2023.10.19.01.20.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Oct 2023 01:20:26 -0700 (PDT)
-Date: Thu, 19 Oct 2023 10:20:25 +0200
-From: Maxime Ripard <mripard@redhat.com>
+        d=1e100.net; s=20230601; t=1697703920; x=1698308720;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=v8Difn/D+XiTI90dIkn0xG+fv+x0la3KPldZ4kHjxUY=;
+        b=nSZURb873KYwPbgfjltlSSz4wS+6BVX+xO99f83SVF/vwvyKpPxJJXzHvqHwJfBqbf
+         F3xYtdAjlfLIACv0cepi6tMvzLl3TsiL6+gS66FGSLFrSVjdfINFU3qj/J9O7bH9D3ze
+         vmdQGzzGiK3MOcYH1/b6cISwBMU+Dwzv950kBHySQJ3CDcPMDR/gTJviJUaToqUF4zA7
+         Be05UDj8+S10YINaOAkTudDuIJ345xqGV5cM54jXSoy971D5bySF9ZEyy0bFq+iyv8ay
+         WETI9rii3lrqnRK74s13K2E00wd+4B5U184lb5ze3wc7ayDneOwWrCj8Y/qB2da97gRW
+         TzYA==
+X-Gm-Message-State: AOJu0YwETB2Fi2+vTchh9HpMUdzmNNzf0UlLRDlp10YnOVaBYflSovzT
+	rJ1DyFuFPpgZJfAnbI5BGMFW4Br3lR4m2Vefn0HB1w==
+X-Google-Smtp-Source: AGHT+IERXq0bO1AmEurHewxhpzh6tNz4IbqMPHu+sifIOgs6RxCQnRc88SwKIglHJnVB5fDIiwqiPj8rxg9FYRI0joA=
+X-Received: by 2002:a17:907:97c2:b0:9c1:4343:60ab with SMTP id
+ js2-20020a17090797c200b009c1434360abmr974298ejc.10.1697703919882; Thu, 19 Oct
+ 2023 01:25:19 -0700 (PDT)
+MIME-Version: 1.0
+References: <20231019070650.61159-1-vignesh.raman@collabora.com> <20231019070650.61159-10-vignesh.raman@collabora.com>
+In-Reply-To: <20231019070650.61159-10-vignesh.raman@collabora.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Thu, 19 Oct 2023 10:25:07 +0200
+Message-ID: <CAPj87rP=22Fw0h42U-p9fHd=6OHOu9Lj9kbpVMQVqL9U6BRE1A@mail.gmail.com>
+Subject: Re: [PATCH v5 9/9] drm: ci: Update xfails
 To: Vignesh Raman <vignesh.raman@collabora.com>
 Cc: helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, 
-	david.heidelberg@collabora.com, sergi.blanch.torne@collabora.com, guilherme.gallo@collabora.com, 
-	daniels@collabora.com, gustavo.padovan@collabora.com, emma@anholt.net, 
-	robdclark@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, virtualization@lists.linux-foundation.org, 
-	linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH v5 9/9] drm: ci: Update xfails
-Message-ID: <clpne3ctm2aptl6whv4nxqsjcrqfggkdckocusxjksjirvflsm@6dppwwlqg4bt>
-References: <20231019070650.61159-1-vignesh.raman@collabora.com>
- <20231019070650.61159-10-vignesh.raman@collabora.com>
-MIME-Version: 1.0
-In-Reply-To: <20231019070650.61159-10-vignesh.raman@collabora.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+	daniels@collabora.com, emma@anholt.net, gustavo.padovan@collabora.com, 
+	linux-arm-msm@vger.kernel.org, guilherme.gallo@collabora.com, 
+	sergi.blanch.torne@collabora.com, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org, 
+	david.heidelberg@collabora.com, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_012217_811572_BFF5528E 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20231019_012537_987060_4B627AEC 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,30 +90,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Vignesh,
 
-On Thu, Oct 19, 2023 at 12:36:50PM +0530, Vignesh Raman wrote:
-> diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-> new file mode 100644
-> index 000000000000..8b12e97d59f3
-> --- /dev/null
-> +++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-> @@ -0,0 +1,9 @@
-> +# https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1013138
-> +# https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1012894
-> +# https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1013011
-> +# https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1013055
-> +kms_cursor_legacy@cursor-vs-flip-atomic-transitions
-> +kms_force_connector_basic@force-edid
-> +kms_force_connector_basic@prune-stale-modes
-> +kms_prop_blob@invalid-set-prop
-> +kms_prop_blob@invalid-set-prop-any
+On Thu, 19 Oct 2023 at 09:07, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+> +# Some tests crashes with malloc error and IGT tests floods
+> +# the CI log with error messages and we end up with a warning message
+> +# Job's log exceeded limit of 4194304 bytes.
+> +# Job execution will continue but no more output will be collected.
 
-We agreed recently to provide more context to flakes going forward, see:
-https://lore.kernel.org/dri-devel/ax6tspeffujmk2vpvh6rwclqkkavpezvcubra25vs2ev7f5njs@2rpnycg2rgnj/
+This is just from GitLab warning that we have a huge log, so not
+related to the actual fails here.
 
-I'll send a doc update to make that formal (and discuss it at XDC if needed)
+> +# Below is the error log:
+> +# malloc(): corrupted top size
+> +# Received signal SIGABRT.
+> +# Stack trace:
+> +#  #0 [fatal_sig_handler+0x17b]
+> +#  #1 [__sigaction+0x40]
+> +#  #2 [pthread_key_delete+0x14c]
+> +#  #3 [gsignal+0x12]
+> +#  #4 [abort+0xd3]
+> +#  #5 [__fsetlocking+0x290]
+> +#  #6 [timer_settime+0x37a]
+> +#  #7 [__default_morecore+0x1f1b]
+> +#  #8 [__libc_calloc+0x161]
+> +#  #9 [drmModeGetPlaneResources+0x44]
+> +#  #10 [igt_display_require+0x194]
+> +#  #11 [__igt_unique____real_main1356+0x93c]
+> +#  #12 [main+0x3f]
+> +#  #13 [__libc_init_first+0x8a]
+> +#  #14 [__libc_start_main+0x85]
+> +#  #15 [_start+0x21]
+> +# malloc(): corrupted top size
 
-Maxime
+By the time we get this error, it indicates that there was previously
+memory corruption, but it is only being noticed at a later point. The
+skip lists here are way too big - stuff like drm_read is common
+testing not affected by virtio at all - so we really need to isolate
+the test which is actually breaking things.
 
+The way to do this would be to use valgrind to detect where the memory
+corruption is. VirtIO can be run locally so this is something you can
+do on your machine.
+
+Cheers,
+Daniel
 
