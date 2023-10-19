@@ -4,58 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5112CDB465
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C1BFCDB485
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eCePPCjQglISWJ8e2J07nT0sMEaACefdvzp9l+FQ9+E=; b=W3Sl4uPbsymkGqBUL75/t/uKgm
-	6aKXkGv+Ye5Wc40EMW/iNjpnxduzAteAlpyWkhw67qUzCIl+bUqtTRUvd0oUDIHC1jioU69z8V25r
-	pKzLpYRPg8p1Bv/QP5lntyE8LPs0RYwP90fgzp7nmiTjMnyjmwlP3SbbMMYE4MO8laKcOUxNCBA7t
-	qTApXdDr1KgJxv1BkuCuWsBvWa7njTOFpEvda19ZQPwE8s5ABgj37kaY9CokdBRvtjPfdrJUlXX3r
-	PNB+7sEZOuT9d5ay8K2sDI2P/p5DMszVm+reW5he1RHTmE5swij5mnlVvFctdBEOBi7jycCMdsicr
-	qNkOMAMQ==;
+	bh=rDZ5S4QbwaTBx24HSBQddHus2mJryWMzPAdt5ItaHrI=; b=LJsjG4DIhzyl2mj9wdtawQNPzp
+	9nAKpXDvaMDewV/6ncPepvHZK+kZc4+vAs+DS5mk8mwFMwhao+12BwjU0xCY+ynjCXdT7y2ik/F87
+	1/dJxfQRHjXlNhm1EFk5Kep2A0Lhk+9DNB/LgU52SO4psae7SyP05rOXoiT92awD+KrGTKdhxDNFY
+	YjokbMbD655dd8fcOnoqlBP85Dw0g9We0lKY6NjrnHfijES5ZVyw9gsqliUAPWHdqXDkDYX4JYLVt
+	TCv62nevrvLss3NdhuQ+qvPuty8NCNaWMLoSgcNPUs71h9pLKS4eLw9yZdHE59IEXJmUCYbTCzjhZ
+	PtDomLdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSaS-00HS0N-1b;
-	Thu, 19 Oct 2023 12:57:16 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWO-00HNpZ-1u;
-	Thu, 19 Oct 2023 12:53:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=eCePPCjQglISWJ8e2J07nT0sMEaACefdvzp9l+FQ9+E=; b=CHbBKDCcWdD4AjdCMv4Iv2//ZC
-	nNWiVD9xAzQ2adFg8gQrJieQx8tyztPczAw5wrZfx0MPFkxqAHDRyyC9/wTnD4nA6yB+vDn5YTa2U
-	LLn5NYQ3HtubmQY015kVDMSD2LxXQSFvsY77b3leNCpG8WaJjHGoOqJD/gwwSHNBKVrfBM1CFl9Ob
-	yxRm/O10Fz1RjWFCeAau1s2rreLKm9I7ytKcM601qysO2UHFfG3a2hdLGmcBosepMqPr/LwMHNs8S
-	CP/AVctpkzz0dkQPhv4/senvG0/ZB1x1vzQt5NxMTWgQQeN7bj2s2hc9E6JphgM3BbR7rCtrP9KhA
-	RSBnNkgA==;
+	id 1qtSaX-00HS6N-11;
+	Thu, 19 Oct 2023 12:57:21 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qtSWK-0077oV-KH; Thu, 19 Oct 2023 12:53:02 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qtSWH-00HNg1-1P;
+	Thu, 19 Oct 2023 12:53:03 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 83682660734C;
-	Thu, 19 Oct 2023 13:52:57 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 131FF6607390;
+	Thu, 19 Oct 2023 13:52:55 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719977;
-	bh=oj1c3lOtNZD9WKVM3HjUaAmnUw1gzcNQvZo6oWpLItQ=;
+	s=mail; t=1697719975;
+	bh=Io9Tjb5cn8uE3Kz5+BqDVsKX8mjkDcVIhuocPLDRTU4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JwjJEHaFNfJc/duuRMWLXRRpnE2GkJfXSQ9eil+u4RAXzEIxKvoWmRQdG8PlMitNQ
-	 iSpxTIFR0S6Ukte5GbL5I+DBGqarWLwyOSX6458syafJelfrACidSoTQkGgdQXdFvv
-	 PYgSGkxTS1fmc4MHss7XOTTPDwrUVIJWhPPw7EP3C/5RDQJXto+7bnawE3ELheMeF+
-	 jaUVB8pOyHaKQwyOeD3h6kp3xGjkVYB0SPGzOL0WhDJuNWw7DLa/aEuQJMQT7FDklW
-	 8POLfoKI4RDQmqokIfcqT+ZpdCrs4llEeExL5wH5NSKQteMnocICerEP/CKXkz9KhB
-	 AwepGPJlAOmoQ==
+	b=Om1yrOKnRERhQsTNdyiP4XVZHA8qez3FrmxJcATlkZ+vR72GYp0K0mgfGMSpJOLtZ
+	 Vt4D0HXYJep12Tsd6BydQNRACi1bvnCLSYI9aYy4loIdo7BjQrD1UI+TMH9LoX1xRq
+	 2DY7gAKV1RFlosxmDkiaZF9PF1xf5QyWdEwc71n56RNiSKD1DHsnkgzRaK/a48KdRV
+	 8/NwxMLwQEyHHWmj0ftMjw6M2AktXmRYJ0YL/v0wBVFWmqHm2Sqytsie0Wk8SI5M/1
+	 ES5s7JMpXsruyX/OTuVXaOWRcxkM6kj96UDTRNb2MgaZZHR6KLB+LbIPJ1zRDMturi
+	 X6dNSXWo5AIvQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -75,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v13 52/56] media: core: Add bitmap manage bufs array entries
-Date: Thu, 19 Oct 2023 14:52:18 +0200
-Message-Id: <20231019125222.21370-53-benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 47/56] media: verisilicon: Refactor postprocessor to store more buffers
+Date: Thu, 19 Oct 2023 14:52:13 +0200
+Message-Id: <20231019125222.21370-48-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_135300_696944_90D6F7AD 
-X-CRM114-Status: GOOD (  18.49  )
+X-CRM114-CacheID: sfid-20231019_055258_312716_2C15BE0A 
+X-CRM114-Status: GOOD (  22.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,209 +87,237 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a bitmap field to know which of bufs array entries are
-used or not.
-Remove no more used num_buffers field from queue structure.
-Use bitmap_find_next_zero_area() to find the first possible
-range when creating new buffers to fill the gaps.
+Since vb2 queue can store more than VB2_MAX_FRAME buffers, the
+postprocessor buffer storage must be capable to store more buffers too.
+Change static dec_q array to allocated array to be capable to store
+up to queue 'max_num_buffers'.
+Keep allocating queue 'num_buffers' at queue setup time but also allows
+to allocate postprocessors buffers on the fly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+CC: Philipp Zabel <p.zabel@pengutronix.de>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 42 +++++++++++++++----
- include/media/videobuf2-core.h                | 15 ++++---
- 2 files changed, 42 insertions(+), 15 deletions(-)
+ drivers/media/platform/verisilicon/hantro.h   |  7 +-
+ .../media/platform/verisilicon/hantro_drv.c   |  4 +-
+ .../media/platform/verisilicon/hantro_hw.h    |  4 +-
+ .../platform/verisilicon/hantro_postproc.c    | 93 +++++++++++++++----
+ .../media/platform/verisilicon/hantro_v4l2.c  |  2 +-
+ 5 files changed, 85 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 2c8cf479a962..6e88406fcae9 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -416,11 +416,12 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
-  */
- static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
- {
--	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
-+	WARN_ON(index >= q->max_num_buffers || test_bit(index, q->bufs_bitmap));
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 77aee9489516..0948b04a9f8d 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -469,11 +469,14 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
+ bool hantro_needs_postproc(const struct hantro_ctx *ctx,
+ 			   const struct hantro_fmt *fmt);
  
- 	q->bufs[index] = vb;
- 	vb->index = index;
- 	vb->vb2_queue = q;
-+	set_bit(index, q->bufs_bitmap);
++dma_addr_t
++hantro_postproc_get_dec_buf_addr(struct hantro_ctx *ctx, int index);
++
+ static inline dma_addr_t
+ hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
+ {
+ 	if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt))
+-		return ctx->postproc.dec_q[vb->index].dma;
++		return hantro_postproc_get_dec_buf_addr(ctx, vb->index);
+ 	return vb2_dma_contig_plane_dma_addr(vb, 0);
  }
+ 
+@@ -485,8 +488,8 @@ vb2_to_hantro_decoded_buf(struct vb2_buffer *buf)
+ 
+ void hantro_postproc_disable(struct hantro_ctx *ctx);
+ void hantro_postproc_enable(struct hantro_ctx *ctx);
++int hantro_postproc_init(struct hantro_ctx *ctx);
+ void hantro_postproc_free(struct hantro_ctx *ctx);
+-int hantro_postproc_alloc(struct hantro_ctx *ctx);
+ int hanto_postproc_enum_framesizes(struct hantro_ctx *ctx,
+ 				   struct v4l2_frmsizeenum *fsize);
+ 
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index a9fa05ac56a9..7f5b82eb6649 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -235,8 +235,10 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 	 * The Kernel needs access to the JPEG destination buffer for the
+ 	 * JPEG encoder to fill in the JPEG headers.
+ 	 */
+-	if (!ctx->is_encoder)
++	if (!ctx->is_encoder) {
+ 		dst_vq->dma_attrs |= DMA_ATTR_NO_KERNEL_MAPPING;
++		dst_vq->max_num_buffers = MAX_POSTPROC_BUFFERS;
++	}
+ 
+ 	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	dst_vq->io_modes = VB2_MMAP | VB2_DMABUF;
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index 7f33f7b07ce4..292a76ef643e 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -40,6 +40,8 @@
+ 
+ #define AV1_MAX_FRAME_BUF_COUNT	(V4L2_AV1_TOTAL_REFS_PER_FRAME + 1)
+ 
++#define MAX_POSTPROC_BUFFERS	64
++
+ struct hantro_dev;
+ struct hantro_ctx;
+ struct hantro_buf;
+@@ -336,7 +338,7 @@ struct hantro_av1_dec_hw_ctx {
+  * @dec_q:		References buffers, in decoder format.
+  */
+ struct hantro_postproc_ctx {
+-	struct hantro_aux_buf dec_q[VB2_MAX_FRAME];
++	struct hantro_aux_buf dec_q[MAX_POSTPROC_BUFFERS];
+ };
  
  /**
-@@ -429,6 +430,7 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
-  */
- static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index 8f8f17e671ce..41e93176300b 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -177,9 +177,11 @@ static int hantro_postproc_g2_enum_framesizes(struct hantro_ctx *ctx,
+ void hantro_postproc_free(struct hantro_ctx *ctx)
  {
-+	clear_bit(vb->index, vb->vb2_queue->bufs_bitmap);
- 	vb->vb2_queue->bufs[vb->index] = NULL;
- 	vb->vb2_queue = NULL;
- }
-@@ -450,11 +452,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned long index;
- 	int ret;
+ 	struct hantro_dev *vpu = ctx->dev;
++	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
++	struct vb2_queue *queue = &m2m_ctx->cap_q_ctx.q;
+ 	unsigned int i;
  
--	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
-+	/* Ensure that vb2_get_num_buffers(q) + num_buffers is no more than q->max_num_buffers */
- 	num_buffers = min_t(unsigned int, num_buffers,
- 			    q->max_num_buffers - vb2_get_num_buffers(q));
+-	for (i = 0; i < VB2_MAX_FRAME; ++i) {
++	for (i = 0; i < queue->max_num_buffers; ++i) {
+ 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
  
--	index = vb2_get_num_buffers(q);
-+	index = bitmap_find_next_zero_area(q->bufs_bitmap, q->max_num_buffers,
-+					   0, num_buffers, 0);
- 
- 	*first_index = index;
- 
-@@ -656,7 +659,6 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 		kfree(vb);
+ 		if (priv->cpu) {
+@@ -190,20 +192,17 @@ void hantro_postproc_free(struct hantro_ctx *ctx)
  	}
- 
--	q->num_buffers -= buffers;
- 	if (!vb2_get_num_buffers(q)) {
- 		q->memory = VB2_MEMORY_UNKNOWN;
- 		INIT_LIST_HEAD(&q->queued_list);
-@@ -874,6 +876,14 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
- 	if (!q->bufs)
- 		ret = -ENOMEM;
-+
-+	if (!q->bufs_bitmap)
-+		q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+	if (!q->bufs_bitmap) {
-+		ret = -ENOMEM;
-+		kfree(q->bufs);
-+		q->bufs = NULL;
-+	}
- 	q->memory = memory;
- 	mutex_unlock(&q->mmap_lock);
- 	if (ret)
-@@ -943,7 +953,6 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
- 
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers = allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -970,6 +979,10 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	mutex_lock(&q->mmap_lock);
- 	q->memory = VB2_MEMORY_UNKNOWN;
- 	mutex_unlock(&q->mmap_lock);
-+	kfree(q->bufs);
-+	q->bufs = NULL;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
- 	return ret;
  }
- EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
-@@ -1006,9 +1019,19 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		q->memory = memory;
- 		if (!q->bufs)
- 			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
--		if (!q->bufs)
-+		if (!q->bufs) {
- 			ret = -ENOMEM;
-+			goto unlock;
-+		}
-+		if (!q->bufs_bitmap)
-+			q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+		if (!q->bufs_bitmap) {
-+			ret = -ENOMEM;
-+			kfree(q->bufs);
-+			q->bufs = NULL;
-+		}
- 		mutex_unlock(&q->mmap_lock);
-+unlock:
- 		if (ret)
- 			return ret;
- 		q->waiting_for_buffers = !q->is_output;
-@@ -1070,7 +1093,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
  
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers += allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -2549,7 +2571,9 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	__vb2_queue_free(q, q->max_num_buffers);
- 	kfree(q->bufs);
- 	q->bufs = NULL;
--	q->num_buffers = 0;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
-+
- 	mutex_unlock(&q->mmap_lock);
- }
- EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-@@ -2904,7 +2928,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
- 	 * Check if we need to dequeue the buffer.
- 	 */
- 	index = fileio->cur_index;
--	if (index >= q->num_buffers) {
-+	if (!test_bit(index, q->bufs_bitmap)) {
- 		struct vb2_buffer *b;
- 
- 		/*
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 6986ff4b77cd..288477075a0e 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -346,7 +346,7 @@ struct vb2_buffer {
-  *			describes the requested number of planes and sizes\[\]
-  *			contains the requested plane sizes. In this case
-  *			\*num_buffers are being allocated additionally to
-- *			q->num_buffers. If either \*num_planes or the requested
-+ *			queue buffers. If either \*num_planes or the requested
-  *			sizes are invalid callback must return %-EINVAL.
-  * @wait_prepare:	release any locks taken while calling vb2 functions;
-  *			it is called before an ioctl needs to wait for a new
-@@ -557,7 +557,7 @@ struct vb2_buf_ops {
-  * @memory:	current memory type used
-  * @dma_dir:	DMA mapping direction.
-  * @bufs:	videobuf2 buffer structures
-- * @num_buffers: number of allocated/used buffers
-+ * @bufs_bitmap: bitmap to manage bufs entries.
-  * @max_num_buffers: upper limit of number of allocated/used buffers
-  * @queued_list: list of buffers currently queued from userspace
-  * @queued_count: number of buffers queued and ready for streaming.
-@@ -621,7 +621,7 @@ struct vb2_queue {
- 	unsigned int			memory;
- 	enum dma_data_direction		dma_dir;
- 	struct vb2_buffer		**bufs;
--	unsigned int			num_buffers;
-+	unsigned long			*bufs_bitmap;
- 	unsigned int			max_num_buffers;
- 
- 	struct list_head		queued_list;
-@@ -1150,7 +1150,10 @@ static inline bool vb2_fileio_is_active(struct vb2_queue *q)
-  */
- static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
+-int hantro_postproc_alloc(struct hantro_ctx *ctx)
++static unsigned int hantro_postproc_buffer_size(struct hantro_ctx *ctx)
  {
--	return q->num_buffers;
-+	if (!q->bufs_bitmap)
+-	struct hantro_dev *vpu = ctx->dev;
+-	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+-	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
+-	unsigned int num_buffers = vb2_get_num_buffers(cap_queue);
+ 	struct v4l2_pix_format_mplane pix_mp;
+ 	const struct hantro_fmt *fmt;
+-	unsigned int i, buf_size;
++	unsigned int buf_size;
+ 
+ 	/* this should always pick native format */
+ 	fmt = hantro_get_default_fmt(ctx, false, ctx->bit_depth, HANTRO_AUTO_POSTPROC);
+ 	if (!fmt)
+-		return -EINVAL;
 +		return 0;
 +
-+	return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
+ 	v4l2_fill_pixfmt_mp(&pix_mp, fmt->fourcc, ctx->src_fmt.width,
+ 			    ctx->src_fmt.height);
+ 
+@@ -221,23 +220,77 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
+ 		buf_size += hantro_av1_mv_size(pix_mp.width,
+ 					       pix_mp.height);
+ 
+-	for (i = 0; i < num_buffers; ++i) {
+-		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
++	return buf_size;
++}
++
++static int hantro_postproc_alloc(struct hantro_ctx *ctx, int index)
++{
++	struct hantro_dev *vpu = ctx->dev;
++	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
++	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
++
++	if (!buf_size)
++		return -EINVAL;
++
++	/*
++	 * The buffers on this queue are meant as intermediate
++	 * buffers for the decoder, so no mapping is needed.
++	 */
++	priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
++	priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
++				    GFP_KERNEL, priv->attrs);
++	if (!priv->cpu)
++		return -ENOMEM;
++	priv->size = buf_size;
++
++	return 0;
++}
+ 
+-		/*
+-		 * The buffers on this queue are meant as intermediate
+-		 * buffers for the decoder, so no mapping is needed.
+-		 */
+-		priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
+-		priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
+-					    GFP_KERNEL, priv->attrs);
+-		if (!priv->cpu)
+-			return -ENOMEM;
+-		priv->size = buf_size;
++int hantro_postproc_init(struct hantro_ctx *ctx)
++{
++	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
++	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
++	unsigned int num_buffers = vb2_get_num_buffers(cap_queue);
++	unsigned int i;
++	int ret;
++
++	for (i = 0; i < num_buffers; i++) {
++		ret = hantro_postproc_alloc(ctx, i);
++		if (ret)
++			return ret;
+ 	}
++
+ 	return 0;
  }
  
- /**
-@@ -1253,13 +1256,13 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
- static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
- 						unsigned int index)
++dma_addr_t
++hantro_postproc_get_dec_buf_addr(struct hantro_ctx *ctx, int index)
++{
++	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
++	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
++	struct hantro_dev *vpu = ctx->dev;
++	int ret;
++
++	if (priv->size < buf_size && priv->cpu) {
++		/* buffer is too small, release it */
++		dma_free_attrs(vpu->dev, priv->size, priv->cpu,
++			       priv->dma, priv->attrs);
++		priv->cpu = NULL;
++	}
++
++	if (!priv->cpu) {
++		/* buffer not already allocated, try getting a new one */
++		ret = hantro_postproc_alloc(ctx, index);
++		if (ret)
++			return 0;
++	}
++
++	if (!priv->cpu)
++		return 0;
++
++	return priv->dma;
++}
++
+ static void hantro_postproc_g1_disable(struct hantro_ctx *ctx)
  {
--	if (!q->bufs)
-+	if (!q->bufs_bitmap)
- 		return NULL;
+ 	struct hantro_dev *vpu = ctx->dev;
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index b3ae037a50f6..f0d8b165abcd 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -933,7 +933,7 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
+ 		}
  
- 	if (index >= q->max_num_buffers)
- 		return NULL;
- 
--	if (index < q->num_buffers)
-+	if (test_bit(index, q->bufs_bitmap))
- 		return q->bufs[index];
- 	return NULL;
- }
+ 		if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt)) {
+-			ret = hantro_postproc_alloc(ctx);
++			ret = hantro_postproc_init(ctx);
+ 			if (ret)
+ 				goto err_codec_exit;
+ 		}
 -- 
 2.39.2
 
