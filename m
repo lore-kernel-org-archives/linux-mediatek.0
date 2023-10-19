@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65867CDB482
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 13:56:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB5E9CDB465
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 14:00:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2cNE1nD+f5XXbe8SV+FdMXaOF2j/f3k6LirCh+aRx20=; b=AeC4ZeBX6kXULNZtFDhWlnEd8H
-	VMfcsYaOt2/q/u0E9SQjBy0Z1pE5jCPUSWrvRuCzgFC5mRQ8TPnEmoFAqJQnfitx84ELLPDaVl7i/
-	kIYAhvgVSCNtjS5j8kJfLUMODYkHZF9lIrkeSDBEUmYfxDAqdtZcuT5gTngFECmgTTNAYjSkcFjjF
-	Lva8iV4cAR48RACRA1M4CpclWri/uB/LQeQ+qGZ5mg57d/Y97hOPjLWeA9qX4gDmO+Dm1saV4boBr
-	hU1Op49Q4SUOBdKSxhnectWUBUbMXyYr2q9vb1tAEjInGYhtEukUmPGSruAzAwivzy6WZhN9GYw07
-	dz+Nn+ew==;
+	bh=EuTgtxyPbErCrKgvGy4Be2VTKeTj33LFpgdcasSoc4k=; b=sS6Dt91C6aHSj3D4bur9TGTMPB
+	xC8tgGFfCSNLysDbVZKwsvMYre0NOFYzm57yW8kQ79vYJjnoNORjF4iK3dpBhaxi7biKMQcaJc18f
+	VAlRGavhmp6LRJ/z24zn1Ss+J2fBCSmIJfMVIQtzU1VunO4qX7tZ6B/9qdVOZcOBa3Ec0ypOSGBnk
+	rKIxrRWJAitjomDRmTS/SCpLwG8JFa7f+smqtJNqWsytoAhpdSTZlDfFVtMEu7kGNHCEPf4GZiaVg
+	QggHf1ENA1vG4/Vo8y/bpGJs0e+XOfoA5kVMx6ZkNd324CZSRemsMx+vfRHhxaw7hzXVk/6Cyrlxb
+	fgL5qfbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtTVY-00HZsh-1E;
-	Thu, 19 Oct 2023 13:56:16 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qtTZm-00HaaO-1L;
+	Thu, 19 Oct 2023 14:00:38 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtTVV-00HZqV-0w;
-	Thu, 19 Oct 2023 13:56:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 37EE0CE2CCC;
-	Thu, 19 Oct 2023 13:56:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4BBDC433CA;
-	Thu, 19 Oct 2023 13:56:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697723768;
-	bh=yZ/ARB3p2Ke8tobvsFJ9flTddNYrmRG++q6KJRo0w3Q=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=tc74ML9w33RHuzPXDk4Y/0aY9YgCu4WG2S+FQ6bNMA5UdG3O8Mb3PgIAQ7Tc+a3Q/
-	 0ZL5nTecGbR8+xaaPo4O/FiCJVYmgI27BJ2lgquzmTQQR8JgyS6Ymj2IdCbyK9IBPa
-	 81/sPnuoj7QsXhkHW822S2PbJMLzH+gRvjtTwQVioEcS8HoIf3/WRbPUSwffmZoMJK
-	 LOonxjQLVsqd2n+87kEzJst2h5dF/St27OteDkkSqAhF0cccL+nCBW9uWW9aVyLH/f
-	 tP04RxZbcGQo0ecHgE6XeIWOsl0kPN+3eczB7zs8or/sOJU2U098PDuONOzIaHv81/
-	 v9ZzTgUYDBw9Q==
-Date: Thu, 19 Oct 2023 06:56:06 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: <davem@davemloft.net>, <pabeni@redhat.com>, <netdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Alexander Duyck
- <alexander.duyck@gmail.com>
-Subject: Re: [PATCH net-next v11 0/6] introduce page_pool_alloc() related
- API
-Message-ID: <20231019065606.525309a6@kernel.org>
-In-Reply-To: <fd8a3e6d-579f-666d-7674-67732e250978@huawei.com>
-References: <20231013064827.61135-1-linyunsheng@huawei.com>
-	<20231016182725.6aa5544f@kernel.org>
-	<2059ea42-f5cb-1366-804e-7036fb40cdaa@huawei.com>
-	<20231017081303.769e4fbe@kernel.org>
-	<67f2af29-59b8-a9e2-1c31-c9a625e4c4b3@huawei.com>
-	<20231018083516.60f64c1a@kernel.org>
-	<fd8a3e6d-579f-666d-7674-67732e250978@huawei.com>
+	id 1qtSVv-00HNG5-04;
+	Thu, 19 Oct 2023 12:52:37 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 26A8B6607332;
+	Thu, 19 Oct 2023 13:52:32 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697719952;
+	bh=xMJ8tMojfr13gTY+PpecndOGeS4i3P9Tk9kRrGKcBSQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=EtIkbWAVNV0zrcnTNqNK5FgGVRgJwxe/LxAW0zi46t1YvYYgLO/Q8dlpSw4zeW/w+
+	 iJwCM5dZ3+UpAgP13Ln7b78mpO3Mj+oY5gjEFCjo/KXZc34HmFSaCmAw9gcNeikulJ
+	 GwYctCrepjmRf/NvYuTXtcQPXiqVTmGIqAlBSp79QLrwNfv7dAM096Sqdelh8L0Jxf
+	 roturVKO7mkRKvEBfyAC0Y6x81eCUcShohkcl8shkvOYndlxr89g2nKidrW/z5ws1V
+	 Csh3WaPinlY4mpo1LP7e8aQa84DQkkik2iacyG7YoBeW7EqH0nCD3G1q/Cgu0vqMLJ
+	 m+kCJJ2xgPKhA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 03/56] media: videobuf2: Stop spamming kernel log with all queue counter
+Date: Thu, 19 Oct 2023 14:51:29 +0200
+Message-Id: <20231019125222.21370-4-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
+References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_065613_497940_47E94345 
-X-CRM114-Status: UNSURE (   6.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231019_055235_313570_3AF0329A 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,11 +87,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 Oct 2023 21:22:07 +0800 Yunsheng Lin wrote:
-> > Sounds good. Warning wrapped in #if CONFIG_DEBUG_NET perhaps?  
-> 
-> How about something like __get_free_pages() does with gfp flags?
-> https://elixir.free-electrons.com/linux/v6.4-rc6/source/mm/page_alloc.c#L4818
+Only report unbalanced queue counters do avoid spamming kernel log
+with useless information.
 
-Fine by me!
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 79 +++++++++++--------
+ 1 file changed, 44 insertions(+), 35 deletions(-)
+
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 09be8e026044..47dba2a20d73 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -533,25 +533,26 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ 
+ #ifdef CONFIG_VIDEO_ADV_DEBUG
+ 	/*
+-	 * Check that all the calls were balances during the life-time of this
+-	 * queue. If not (or if the debug level is 1 or up), then dump the
+-	 * counters to the kernel log.
++	 * Check that all the calls were balanced during the life-time of this
++	 * queue. If not then dump the counters to the kernel log.
+ 	 */
+ 	if (q->num_buffers) {
+ 		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
+ 				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
+ 				  q->cnt_wait_prepare != q->cnt_wait_finish;
+ 
+-		if (unbalanced || debug) {
+-			pr_info("counters for queue %p:%s\n", q,
+-				unbalanced ? " UNBALANCED!" : "");
+-			pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
+-				q->cnt_queue_setup, q->cnt_start_streaming,
+-				q->cnt_stop_streaming);
+-			pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
+-				q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
+-			pr_info("     wait_prepare: %u wait_finish: %u\n",
+-				q->cnt_wait_prepare, q->cnt_wait_finish);
++		if (unbalanced) {
++			pr_info("unbalanced counters for queue %p:\n", q);
++			if (q->cnt_start_streaming != q->cnt_stop_streaming)
++				pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
++					q->cnt_queue_setup, q->cnt_start_streaming,
++					q->cnt_stop_streaming);
++			if (q->cnt_prepare_streaming != q->cnt_unprepare_streaming)
++				pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
++					q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
++			if (q->cnt_wait_prepare != q->cnt_wait_finish)
++				pr_info("     wait_prepare: %u wait_finish: %u\n",
++					q->cnt_wait_prepare, q->cnt_wait_finish);
+ 		}
+ 		q->cnt_queue_setup = 0;
+ 		q->cnt_wait_prepare = 0;
+@@ -572,29 +573,37 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ 				  vb->cnt_buf_prepare != vb->cnt_buf_finish ||
+ 				  vb->cnt_buf_init != vb->cnt_buf_cleanup;
+ 
+-		if (unbalanced || debug) {
+-			pr_info("   counters for queue %p, buffer %d:%s\n",
+-				q, buffer, unbalanced ? " UNBALANCED!" : "");
+-			pr_info("     buf_init: %u buf_cleanup: %u buf_prepare: %u buf_finish: %u\n",
+-				vb->cnt_buf_init, vb->cnt_buf_cleanup,
+-				vb->cnt_buf_prepare, vb->cnt_buf_finish);
+-			pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
+-				vb->cnt_buf_out_validate, vb->cnt_buf_queue,
+-				vb->cnt_buf_done, vb->cnt_buf_request_complete);
+-			pr_info("     alloc: %u put: %u prepare: %u finish: %u mmap: %u\n",
+-				vb->cnt_mem_alloc, vb->cnt_mem_put,
+-				vb->cnt_mem_prepare, vb->cnt_mem_finish,
+-				vb->cnt_mem_mmap);
+-			pr_info("     get_userptr: %u put_userptr: %u\n",
+-				vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
+-			pr_info("     attach_dmabuf: %u detach_dmabuf: %u map_dmabuf: %u unmap_dmabuf: %u\n",
+-				vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf,
+-				vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
+-			pr_info("     get_dmabuf: %u num_users: %u vaddr: %u cookie: %u\n",
++		if (unbalanced) {
++			pr_info("unbalanced counters for queue %p, buffer %d:\n",
++				q, buffer);
++			if (vb->cnt_buf_init != vb->cnt_buf_cleanup)
++				pr_info("     buf_init: %u buf_cleanup: %u\n",
++					vb->cnt_buf_init, vb->cnt_buf_cleanup);
++			if (vb->cnt_buf_prepare != vb->cnt_buf_finish)
++				pr_info("     buf_prepare: %u buf_finish: %u\n",
++					vb->cnt_buf_prepare, vb->cnt_buf_finish);
++			if (vb->cnt_buf_queue != vb->cnt_buf_done)
++				pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
++					vb->cnt_buf_out_validate, vb->cnt_buf_queue,
++					vb->cnt_buf_done, vb->cnt_buf_request_complete);
++			if (vb->cnt_mem_alloc != vb->cnt_mem_put)
++				pr_info("     alloc: %u put: %u\n",
++					vb->cnt_mem_alloc, vb->cnt_mem_put);
++			if (vb->cnt_mem_prepare != vb->cnt_mem_finish)
++				pr_info("     prepare: %u finish: %u\n",
++					vb->cnt_mem_prepare, vb->cnt_mem_finish);
++			if (vb->cnt_mem_get_userptr != vb->cnt_mem_put_userptr)
++				pr_info("     get_userptr: %u put_userptr: %u\n",
++					vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
++			if (vb->cnt_mem_attach_dmabuf != vb->cnt_mem_detach_dmabuf)
++				pr_info("     attach_dmabuf: %u detach_dmabuf: %u\n",
++					vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf);
++			if (vb->cnt_mem_map_dmabuf != vb->cnt_mem_unmap_dmabuf)
++				pr_info("     map_dmabuf: %u unmap_dmabuf: %u\n",
++					vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
++			pr_info("     get_dmabuf: %u num_users: %u\n",
+ 				vb->cnt_mem_get_dmabuf,
+-				vb->cnt_mem_num_users,
+-				vb->cnt_mem_vaddr,
+-				vb->cnt_mem_cookie);
++				vb->cnt_mem_num_users);
+ 		}
+ 	}
+ #endif
+-- 
+2.39.2
+
 
