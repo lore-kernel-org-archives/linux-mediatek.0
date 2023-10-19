@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41AAACDB483
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 07:07:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3FA3CDB484
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 07:07:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Xhleiw11bGsl6zM1decihz0tTeo/WuUswqx/sQvon5c=; b=i+etBOA7SxH5KU0EkgSP7UjzOK
-	xqi67qCEznnWRruitDfJMNR7wGEtXiYxiZUyjqdMIka2T87O/K77XGe7aYqk+Df8XA6CzknsCm+cz
-	hxfmgeEXzoIMXuaBGBVf80X5BOWH1KXDt0Hqjg7d1rtPnmTZMlwdpX/4TyorCF+x8VDvD7AEv1Sy6
-	212UkImn4kJ2DQmnSzt1AzamLcUWxTYR5AfImRPMYILTta33eRBbRUysJqtMT6QA9OYfnPHyDxpWq
-	fEfWM9T6OFAKQc56Jcb1yCSjWEjYgJ5wpdQ4aTidVX1ojd2lQMWa9HH7vAmhjKLNr64VFAFihDoDe
-	L8wvbtQQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VK8gmZgwdW+6qfofVFZrHYCzUY50uLPP6kpSTi5R/es=; b=cMgkxi8jUJr9fo/4sjzsa4D9qY
+	RAiZ8ZLR/FpD9G79D4+XdxE3VMzasC1K8NLi+LE+YYedoui/dB3vfs6KADO4t3NfOHSVrXigcl+S0
+	aDqqDo4wQ1AT9gtXY9y/QWsvOkwqpnjf6qyC0qn3awzlnEnu0kHqfp8MfkjDyFlkHeLgmf9qx9E/+
+	UplhVA68u1xmWdeFkhMyHssPBBHc31beHi9R4Y9Lku/dB7KCYn7usR/bi1qaPK6CG/IqiIX1L1/56
+	Yfe579EKgRUpkKNpKFeGUs1wqs/qZHmo8NnVd1W/MiOicahUVFm76hG7QIOCbx32CprnI91p5kj/n
+	Vdytk2Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtN7p-00GZRc-2w;
-	Thu, 19 Oct 2023 07:07:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qtN7s-00GZT4-25;
+	Thu, 19 Oct 2023 07:07:24 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtN7m-00GZPs-38
+	id 1qtN7o-00GZQS-1l
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Oct 2023 07:07:20 +0000
+	Thu, 19 Oct 2023 07:07:21 +0000
 Received: from localhost.localdomain (unknown [103.93.195.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 351C866072FF;
-	Thu, 19 Oct 2023 08:07:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3D31B6607322;
+	Thu, 19 Oct 2023 08:07:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697699232;
-	bh=I4hBGs/HJ8k3t8nfnj4dAkAmQbAnaSwbAUThvvkg8jk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=AakY+UE1mc5G+tAnTqM7HiXheibOrcmjs+RLmSecJq8IzBN9A2MCrV2Am3kkVgsQo
-	 pWAL3vEwtF8LUi280O2p5oPsV0pJnNlicci01VEDCTGG8e8Uvscu4QSU8ZKPzaG96J
-	 rixx/tXD2Skv6C+cBmzA+PDS6qtRwU5KyZQzCglkyq1u2KcQ0a/JBISgffKx4sQQba
-	 qjVbocZGvTaTn6f8m5UmGd0Fn0XyVvFt0bpXLOZVAxHM9+I3Ktvvwriz/fy76z6Ell
-	 dqYnYH0IimrZiynT0wGMWuEVgv+xmYmHBgpushbri71Oq/L5eOCoduKz2wvtxo/c4B
-	 pVkS8L++Vqv8w==
+	s=mail; t=1697699236;
+	bh=/C8YPSzfmGfNXN2UJl9h+rxFsn3jEPSYXPfQD4IqLZc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mq3qoxXAxIFlfkg6DERtIOb4ooKVeQutWJMrypQ8ggbyqun4jLC5Ozdqhu0NA7lQl
+	 eF8Dk1LR3OPy1jNrAu/HrCFf2+8gZfTctYSG9tsyOMCREbICRmsdWnh4NnybzQSy3s
+	 q40GkVQi0FNcaQQbA9aWGXr334QNrNbyT0tXIEt2bCPolxN8zlkzI9RqPecCMdE9O+
+	 kPX/gv6sy4HyX72z737gFD1zgthm1mslKWznRQzTjOpxI2/1rPv4hMQmxEVhRMhB+U
+	 7dHQMT445y0ddW7Dl9Fzfi71nufcSIXcjQlm5vSoxndOuFyMKXLL4/hj6Vx7XmsYzJ
+	 teHSbZIKp+EKQ==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -60,15 +60,18 @@ Cc: david.heidelberg@collabora.com,
 	linux-mediatek@lists.infradead.org,
 	virtualization@lists.linux-foundation.org,
 	linux-arm-msm@vger.kernel.org
-Subject: [PATCH v5 0/9] drm: ci: fixes
-Date: Thu, 19 Oct 2023 12:36:41 +0530
-Message-Id: <20231019070650.61159-1-vignesh.raman@collabora.com>
+Subject: [PATCH v5 1/9] drm: ci: igt_runner: Remove todo
+Date: Thu, 19 Oct 2023 12:36:42 +0530
+Message-Id: <20231019070650.61159-2-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20231019070650.61159-1-vignesh.raman@collabora.com>
+References: <20231019070650.61159-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_000719_225731_ECFBA4D3 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20231019_000720_707256_2620257E 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,61 +86,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patch series contains improvements, enabling new ci jobs which
-enables testing for Mediatek MT8173, Qualcomm APQ 8016 and VirtIO GPU,
-fixing issues with the ci jobs and updating the expectation files.
+/sys/kernel/debug/dri/*/state exist for every atomic KMS driver.
+We do not test non-atomic drivers, so remove the todo.
 
-This series depends on the below patches,
-[PATCH 0/9] drm/ci: fixes and improvements
-https://www.spinics.net/lists/kernel/msg4959629.html
+Acked-by: Helen Koike <helen.koike@collabora.com>
+Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+---
 
 v2:
-  - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
-  - Reworded the commit message for enabling jobs
-  - Added a new patch in the series to use scripts/config to enable/disable configs
+  - No changes
 
 v3:
-  - New patch in the series to add device tree overlay in arch/arm64/boot/dts/qcom
-  - drm-ci scripts to use device tree overlay from arch/arm64/boot/dts/qcom and compile base device tree with overlay support
-  - New patch in the series to enable CONFIG_REGULATOR_DA9211 in defconfig
-  - Remove CONFIG_RTC_DRV_MT6397=y as it is already enabled in defconfig
+  - No changes
 
 v4:
-  - Drop 'enable CONFIG_REGULATOR_DA9211 in defconfig' patch as it is sent upstream as a seperate patch
-  - Use apq8016-sbc-usb-host.dtb which allows the USB controllers to work in host mode.
-    This patch depends on https://lore.kernel.org/lkml/20230911161518.650726-1-vignesh.raman@collabora.com/
+  - No changes
 
 v5:
-  - Added a new patch in the series to set IGT_FORCE_DRIVER to 'mediatek' for mt8173
-  - Added a new patch in the series to make artifacts available for virtio jobs
-  - Added a new patch in the series to add pipeline url to fails and flakes files
-  - Generate fails and flakes file with the updated xfails script - https://www.spinics.net/lists/kernel/msg4959630.html
-  - Drop 'virtio: Update ci variables' patch as the tests which causes the malloc issue are skipped
+  - No changes
+  
+---
+ drivers/gpu/drm/ci/igt_runner.sh | 1 -
+ 1 file changed, 1 deletion(-)
 
-Vignesh Raman (9):
-  drm: ci: igt_runner: Remove todo
-  drm: ci: Force db410c to host mode
-  drm: ci: Enable regulator
-  drm: ci: Enable new jobs
-  drm: ci: Use scripts/config to enable/disable configs
-  drm: ci: mediatek: Set IGT_FORCE_DRIVER for mt8173
-  drm: ci: virtio: Make artifacts available
-  drm: ci: Add pipeline url to fails and flakes files
-  drm: ci: Update xfails
-
- drivers/gpu/drm/ci/arm64.config               |   1 +
- drivers/gpu/drm/ci/build.sh                   |  16 +-
- drivers/gpu/drm/ci/igt_runner.sh              |   5 +-
- drivers/gpu/drm/ci/test.yml                   |  13 +-
- .../drm/ci/xfails/mediatek-mt8173-fails.txt   |  24 +-
- .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |   9 +
- .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |  17 +-
- drivers/gpu/drm/ci/xfails/update-xfails.py    |   6 +
- .../drm/ci/xfails/virtio_gpu-none-fails.txt   |  65 +-
- .../drm/ci/xfails/virtio_gpu-none-skips.txt   | 632 +++++++++++++++++-
- 10 files changed, 704 insertions(+), 84 deletions(-)
- create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-
+diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
+index 2f815ee3a8a3..c6cf963592c5 100755
+--- a/drivers/gpu/drm/ci/igt_runner.sh
++++ b/drivers/gpu/drm/ci/igt_runner.sh
+@@ -15,7 +15,6 @@ cat /sys/kernel/debug/device_component/*
+ '
+ 
+ # Dump drm state to confirm that kernel was able to find a connected display:
+-# TODO this path might not exist for all drivers.. maybe run modetest instead?
+ set +e
+ cat /sys/kernel/debug/dri/*/state
+ set -e
 -- 
 2.40.1
 
