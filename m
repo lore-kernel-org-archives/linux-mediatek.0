@@ -4,85 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89FE1CDB47E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 02:11:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FF71CDB465
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 04:45:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TesY55WayWThzDzzYAmx0jlTWe8bYphYnJXBdBkbqm4=; b=TIYaSMOmglSK8LbsBKkufdDIGJ
-	kcCFazGwMtRjaNqrtxtGfg5P71W+wOTTqeT5QRUyG493p0j76bSmGoS5f4j2VOv1aISjj2JS19lV9
-	uxCv9iTM0Y+nzDgxJEny/qETOPxYrcL78u1lJuzHL1mgRFD37/IzIxBXR83gC1ZkcO0osrCbZZcnm
-	pJOGE1WkIus3+iS2ztw8D4o1lmW4F/HsYLy9eOD+42AEhICrYmewz1j8RYDG0rA2U+i4sjW2Wejg9
-	3lnbXPUxOug5gwgzJVazD0/Jmytq0m1DrtGYxprob+x8O+1s3c/JX6KgvrB6dH8XLoT7RdickyyV+
-	qMdYzp4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+ugDTtE0N5pIP+bbxhOpFwqhGnBHp8dix51AVdVNmjI=; b=SVp8aEN2K2QoTOLeAhs1clpvyW
+	4LOfNA2lRDE+Uq1FeDalINeL2bgSOxE3eRTljSBHbnrJ/nxZ5ugn0DQON2kOIVsSGCT4VnH5muS8g
+	wrSviYxcPPBDFbbiqc0OwCjnOFtLDG0RVDSptFp3rOgmky/o0/FywI4Q6NlcSUoDiHCfojZ9kQxbZ
+	xeBJVq8SPTW6EQAdTDi13EjWviY3dOM9tOgwKVfcToW0dt+LQgpUuNsrSYkKmJhJjAsJmxsFw7RPO
+	BuudTNn9L2DO9srOvvW31My+iTQnWGgaH4O2uhhMPudi2C0mRMDs39EW0DTSnsnve+x70oTXf69mN
+	qCqaqlDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtIVs-00G6do-0x;
-	Thu, 19 Oct 2023 02:11:52 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1qtKu7-00GIo1-0c;
+	Thu, 19 Oct 2023 04:45:03 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtIVn-00G6cX-35
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Oct 2023 02:11:51 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-6bd96cfb99cso3360070b3a.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Oct 2023 19:11:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1697681506; x=1698286306; darn=lists.infradead.org;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=TesY55WayWThzDzzYAmx0jlTWe8bYphYnJXBdBkbqm4=;
-        b=gMub6IoH0NWoCtWSOOYzsuNuLEuInG0zZDd5qw2B2+lTuTUtfehR15g5Uc60bRTM4u
-         ns6eTQRP4KKM14FtIFYfFvoR66hAK/IgbsvbenZ/CGP2DJfxMQR5R/2Xm6wXHznOKFP7
-         EXFICfDe6EvQ8GlIxhAmy1+EGpSFdFJHUbgCrMYNTA+HOcww4jPb9g0GGGJ/RoWzPAdj
-         LEXk7n734ph5+t93psPm2Uso835Uoh1nKOYMlCoWYpmUSyOg6Us6/LoDtAHDh6SY0pY1
-         5UidBfQWePGOTQ0mdcc1+xxSLlD6nCmarYp97Z6hgE+SZlqdUjmTyTRUcZZdJHuQ6nM4
-         aHag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697681506; x=1698286306;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TesY55WayWThzDzzYAmx0jlTWe8bYphYnJXBdBkbqm4=;
-        b=VRC9R5KuMrpY3EYs2pD/htC6UtMM7BMb/LVCpoTelKFfxpRKs2ClXPykvQffutocxv
-         p2kPiVR02Dz/rBVastn4OmrLuiuEAu/5XwldTdVHDE4G4qqAXGdzDE+MfEfwGYbXfKa0
-         jF61mn8ZjbxdecfZQea11XffO/oLHpfOIFcMhb+99SPmJZCqjow0xOeP2dsKb+yqK44h
-         XFpQaIhwYXFDnLwtM4C7Q+m86E5FhY8kbt4d67reJSyPifgBabd+/kbRHvSx3A6aKl5O
-         t8uM0dSZssturQpo7zPfqj122unBbeEN2bYSMG8xgQfSpge4+ual0BjuhDURE9ESGQCY
-         JTDA==
-X-Gm-Message-State: AOJu0YwwJ9crS9bptqKpsg5Osdvgwce4fem0P9AhYCEHuFJG60jwTQhw
-	J0UGrWGvU8FqBCkjNRfdTb/HJA==
-X-Google-Smtp-Source: AGHT+IEjGbSHVE9/MFrqNqEm01C96ZHgZKf48mYBwZfkvR+TH1wdoxro0LKzp/BecYxza4103ygmyg==
-X-Received: by 2002:a05:6a00:23c9:b0:693:3cac:7897 with SMTP id g9-20020a056a0023c900b006933cac7897mr947076pfc.9.1697681506266;
-        Wed, 18 Oct 2023 19:11:46 -0700 (PDT)
-Received: from ubuntu.huaqin.com ([101.78.151.205])
-        by smtp.gmail.com with ESMTPSA id d7-20020aa797a7000000b0068fadc9226dsm3974278pfq.33.2023.10.18.19.11.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 19:11:46 -0700 (PDT)
-From: xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	robh+dt@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	matthias.bgg@gmail.com,
-	perex@perex.cz,
-	trevor.wu@mediatek.com,
-	jiaxin.yu@mediatek.com
-Cc: alsa-devel@alsa-project.org,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
-Subject: [v1 2/2] ASoC: mediatek: mt8186_mt6366_rt1019_rt5682s: add rt5650 support
-Date: Thu, 19 Oct 2023 10:11:33 +0800
-Message-Id: <20231019021133.23855-3-xiazhengqiao@huaqin.corp-partner.google.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20231019021133.23855-1-xiazhengqiao@huaqin.corp-partner.google.com>
-References: <20231019021133.23855-1-xiazhengqiao@huaqin.corp-partner.google.com>
+	id 1qtKu3-00GImf-2x;
+	Thu, 19 Oct 2023 04:45:01 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39J4N061015623;
+	Thu, 19 Oct 2023 04:44:42 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=+ugDTtE0N5pIP+bbxhOpFwqhGnBHp8dix51AVdVNmjI=;
+ b=nXh8jcJMjbwNDlgTbyO4nJVcjRiJc/JawzpuRc0IrUlnQUYa743bURCiUPGUdZXKghUe
+ sFv6JARIsxdhvzuTvfCmwILcxHvnCTWRQwwFkbFwKAsm1WeFGhhIuvvZaAsIjfexmxT/
+ XLKvOloHIsj0h596xV05Yb7j5gqMxfkU3iKnUab5ssaUXl9e1Dz59e8YEesPodfso2ic
+ 7J48ll5bv1UaRcXGenNxuOi+ChpoLkL/pkloCxTOc34pgT2T6ohwHHo4+YyAjrPI4k7P
+ PTRUwjG/lTGhkBhQBaf57GTmtfRWBX6NzqxWONInX9Rtr3xAson5hsNvxDg7X8yaj0nr xw== 
+Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tth2f1pm9-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 19 Oct 2023 04:44:42 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39J4ifLU003377
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 19 Oct 2023 04:44:41 GMT
+Received: from [10.216.19.246] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.39; Wed, 18 Oct
+ 2023 21:44:33 -0700
+Message-ID: <423c28cc-e6b0-4e82-8f38-3f4fe22076c2@quicinc.com>
+Date: Thu, 19 Oct 2023 10:14:13 +0530
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/9] dma-buf: heaps: Add MediaTek secure heap
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+        Sumit
+ Semwal <sumit.semwal@linaro.org>, <christian.koenig@amd.com>,
+        Matthias
+ Brugger <matthias.bgg@gmail.com>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley
+	<conor+dt@kernel.org>,
+        Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+        Brian Starkey <Brian.Starkey@arm.com>,
+        John Stultz <jstultz@google.com>, <tjmercier@google.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+        <linaro-mm-sig@lists.linaro.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, <jianjiao.zeng@mediatek.com>,
+        <kuohong.wang@mediatek.com>
+References: <20230911023038.30649-1-yong.wu@mediatek.com>
+From: Vijayanand Jitta <quic_vjitta@quicinc.com>
+In-Reply-To: <20230911023038.30649-1-yong.wu@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: Lc4B_SAVgouSoZ-DK34n-SzwIOaz_pQs
+X-Proofpoint-GUID: Lc4B_SAVgouSoZ-DK34n-SzwIOaz_pQs
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-19_02,2023-10-18_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxscore=0
+ mlxlogscore=943 spamscore=0 malwarescore=0 suspectscore=0
+ lowpriorityscore=0 impostorscore=0 priorityscore=1501 clxscore=1011
+ adultscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310190039
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_191147_997173_2BD21BE0 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20231018_214500_000240_C01F699B 
+X-CRM114-Status: GOOD (  22.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,112 +112,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To use RT5650 as the codec and the amp, add a new
-sound card named mt8186_rt5650.
 
-Signed-off-by: xiazhengqiao <xiazhengqiao@huaqin.corp-partner.google.com>
----
- sound/soc/mediatek/Kconfig                    |  1 +
- .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     | 45 ++++++++++++++++++-
- 2 files changed, 45 insertions(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 43c8fea00439..b93d455744ab 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -210,6 +210,7 @@ config SND_SOC_MT8186_MT6366_RT1019_RT5682S
- 	select SND_SOC_MAX98357A
- 	select SND_SOC_RT1015P
- 	select SND_SOC_RT5682S
-+	select SND_SOC_RT5645
- 	select SND_SOC_BT_SCO
- 	select SND_SOC_DMIC
- 	select SND_SOC_HDMI_CODEC
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-index 4684bfd89ecd..8c534c338f0e 100644
---- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-@@ -170,6 +170,7 @@ static int mt8186_rt5682s_init(struct snd_soc_pcm_runtime *rtd)
- 	struct snd_soc_component *cmpnt_codec =
- 		snd_soc_rtd_to_codec(rtd, 0)->component;
- 	int ret;
-+	int type;
- 
- 	ret = mt8186_dai_i2s_set_share(afe, "I2S1", "I2S0");
- 	if (ret) {
-@@ -193,7 +194,8 @@ static int mt8186_rt5682s_init(struct snd_soc_pcm_runtime *rtd)
- 	snd_jack_set_key(jack->jack, SND_JACK_BTN_2, KEY_VOLUMEUP);
- 	snd_jack_set_key(jack->jack, SND_JACK_BTN_3, KEY_VOLUMEDOWN);
- 
--	return snd_soc_component_set_jack(cmpnt_codec, jack, NULL);
-+	type = SND_JACK_HEADSET | SND_JACK_BTN_0 | SND_JACK_BTN_1 | SND_JACK_BTN_2 | SND_JACK_BTN_3;
-+	return snd_soc_component_set_jack(cmpnt_codec, jack, (void *)&type);
- }
- 
- static int mt8186_rt5682s_i2s_hw_params(struct snd_pcm_substream *substream,
-@@ -1058,6 +1060,28 @@ mt8186_mt6366_rt1019_rt5682s_routes[] = {
- 	{"DSP_DL2_VIRT", NULL, SOF_DMA_DL2},
- };
- 
-+static const struct snd_soc_dapm_route
-+mt8186_mt6366_rt5650_routes[] = {
-+	/* SPK */
-+	{"Speakers", NULL, "SPOL"},
-+	{"Speakers", NULL, "SPOR"},
-+	/* Headset */
-+	{ "Headphone", NULL, "HPOL" },
-+	{ "Headphone", NULL, "HPOR" },
-+	{ "IN1P", NULL, "Headset Mic" },
-+	{ "IN1N", NULL, "Headset Mic"},
-+	/* HDMI */
-+	{ "HDMI1", NULL, "TX" },
-+	/* SOF Uplink */
-+	{SOF_DMA_UL1, NULL, "UL1_CH1"},
-+	{SOF_DMA_UL1, NULL, "UL1_CH2"},
-+	{SOF_DMA_UL2, NULL, "UL2_CH1"},
-+	{SOF_DMA_UL2, NULL, "UL2_CH2"},
-+	/* SOF Downlink */
-+	{"DSP_DL1_VIRT", NULL, SOF_DMA_DL1},
-+	{"DSP_DL2_VIRT", NULL, SOF_DMA_DL2},
-+};
-+
- static const struct snd_kcontrol_new
- mt8186_mt6366_rt1019_rt5682s_controls[] = {
- 	SOC_DAPM_PIN_SWITCH("Speakers"),
-@@ -1096,6 +1120,21 @@ static struct snd_soc_card mt8186_mt6366_rt5682s_max98360_soc_card = {
- 	.num_configs = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_codec_conf),
- };
- 
-+static struct snd_soc_card mt8186_mt6366_rt5650_soc_card = {
-+	.name = "mt8186_rt5650",
-+	.owner = THIS_MODULE,
-+	.dai_link = mt8186_mt6366_rt1019_rt5682s_dai_links,
-+	.num_links = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_dai_links),
-+	.controls = mt8186_mt6366_rt1019_rt5682s_controls,
-+	.num_controls = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_controls),
-+	.dapm_widgets = mt8186_mt6366_rt1019_rt5682s_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_widgets),
-+	.dapm_routes = mt8186_mt6366_rt5650_routes,
-+	.num_dapm_routes = ARRAY_SIZE(mt8186_mt6366_rt5650_routes),
-+	.codec_conf = mt8186_mt6366_rt1019_rt5682s_codec_conf,
-+	.num_configs = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_codec_conf),
-+};
-+
- static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
- {
- 	struct snd_soc_card *card;
-@@ -1253,6 +1292,10 @@ static const struct of_device_id mt8186_mt6366_rt1019_rt5682s_dt_match[] = {
- 		.compatible = "mediatek,mt8186-mt6366-rt5682s-max98360-sound",
- 		.data = &mt8186_mt6366_rt5682s_max98360_soc_card,
- 	},
-+	{
-+		.compatible = "mediatek,mt8186-mt6366-rt5650-sound",
-+		.data = &mt8186_mt6366_rt5650_soc_card,
-+	},
- 	{}
- };
- MODULE_DEVICE_TABLE(of, mt8186_mt6366_rt1019_rt5682s_dt_match);
--- 
-2.17.1
+On 9/11/2023 8:00 AM, Yong Wu wrote:
+> This patchset consists of two parts, the first is from John and TJ.
+> It adds some heap interfaces, then our kernel users could allocate buffer
+> from special heap. The second part is adding MTK secure heap for SVP
+> (Secure Video Path). A total of two heaps are added, one is mtk_svp and
+> the other is mtk_svp_cma. The mtk_svp buffer is reserved for the secure
+> world after bootup and it is used for ES/working buffer, while the
+> mtk_svp_cma buffer is dynamically reserved for the secure world and will
+> be get ready when we start playing secure videos, this heap is used for the
+> frame buffer. Once the security video playing is complete, the CMA will be
+> released.
+> 
+> For easier viewing, I've split the new heap file into several patches.
+> 
+> The consumers of new heap and new interfaces are our codec and drm which
+> will send upstream soon, probably this week.
+> 
+> Base on v6.6-rc1.
+> 
+> John Stultz (2):
+>   dma-heap: Add proper kref handling on dma-buf heaps
+>   dma-heap: Provide accessors so that in-kernel drivers can allocate
+>     dmabufs from specific heaps
+> 
+> T.J. Mercier (1):
+>   dma-buf: heaps: Deduplicate docs and adopt common format
+> 
+> Yong Wu (6):
+>   dma-buf: heaps: Initialise MediaTek secure heap
+>   dma-buf: heaps: mtk_sec_heap: Initialise tee session
+>   dma-buf: heaps: mtk_sec_heap: Add tee service call for buffer
+>     allocating/freeing
+>   dma-buf: heaps: mtk_sec_heap: Add dma_ops
+>   dt-bindings: reserved-memory: MediaTek: Add reserved memory for SVP
+>   dma_buf: heaps: mtk_sec_heap: Add a new CMA heap
+> 
+>  .../mediatek,secure_cma_chunkmem.yaml         |  42 ++
+>  drivers/dma-buf/dma-heap.c                    | 127 +++--
+>  drivers/dma-buf/heaps/Kconfig                 |   8 +
+>  drivers/dma-buf/heaps/Makefile                |   1 +
+>  drivers/dma-buf/heaps/mtk_secure_heap.c       | 458 ++++++++++++++++++
+>  include/linux/dma-heap.h                      |  42 +-
+>  6 files changed, 630 insertions(+), 48 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,secure_cma_chunkmem.yaml
+>  create mode 100644 drivers/dma-buf/heaps/mtk_secure_heap.c
+> 
+
+Thanks for this patch series.
+
+In Qualcomm as well we have similar usecases which need secure heap. We are working on
+posting them upstream, would share more details on usecases soon.
+
+Have few comments on the current implementation.
+
+1) I see most the implementation here is mtk specific, even file names ,heap names etc.
+   But secure heap is a common requirement, can we keep naming as well generic may be secure_heap ?
+
+2) secure heap has two parts, one is allocation and other one is securing the memory.
+   Have few comments on making these interfaces generic, would post those on corresponding 
+   patches.
+
+Thanks,
+Vijay
+   
 
 
