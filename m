@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7039DCDB465
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 09:08:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC100CDB482
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 09:10:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S7KO5S+b5mp49mpy1BBk5vDyjhtRVL3Y9AIN7tGvWpo=; b=OugJ9P6bucrvEu
-	+XPM1qDrBeMLq3bA7dIlJYto9ICMYm+UFL6p/A2nvGGpmBufAPtZMYJ+uE8s6Y1jzzs6ifOUlSx5w
-	E3OE2cofEHouM9NDKpMud4zVgoKD9VycK8Q4DzWQdXhqiqHTMZIIF8baLea9ZpjHTBxP0B8XvqW/I
-	apOX/YEtDBcJkLu1aP0X+fIaC9EjbJUZK1xX/5bBunX97ptxzt1/4EgM+Dz51UmF+4qSqW8dOiD03
-	1zo+6AOHgY8qPULk2EBkSCwgfQDL8fvDb5nwS7ax+G7WlK/PVwp0AwsMSd5qecSgURb7OHlSLw7kr
-	6kB53UzY4/4h1jzK/SEQ==;
+	List-Owner; bh=4kHwBP5TmglWeyLM2uAXFDBhIJc7mwoDreMSrjfVmEg=; b=vdtk2iBZkMlhFr
+	+qVTUGyGUBdItFXYu56vYI2pvPsaESMvPkT+A4tfLhk+1RMQ6NbEbT30W1O4+s3BM41N/yBTtq0kv
+	XQJc8zNULV571TshaogCfMmVgJgEfGAt0t3YPuPFyUoy9oZL/Rdc3N8qBSE1wg1hltUbGeXpznHg5
+	/AJwzAeCuUDnpYDAjvAgJoFi+6ab43PW/qXSkX+HH2cnrRL379LYNaYvnUq3mZIYHLNCIA4d4CRuU
+	7bZAKAkd/pu0sNacetDlri/rPBKuJy9VM49S30BzXxcS2RXCyWt2Z3QgJ1e2CRnsHZT53QX+ofWyf
+	Ye16q/m96UtL8fxTz3AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtP0Z-00GoAE-0s;
-	Thu, 19 Oct 2023 09:07:59 +0000
+	id 1qtP2k-00GobK-21;
+	Thu, 19 Oct 2023 09:10:14 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtP0Q-00Go5T-0m;
-	Thu, 19 Oct 2023 09:07:51 +0000
+	id 1qtP2h-00GoaL-1v;
+	Thu, 19 Oct 2023 09:10:13 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 12B4D6607323;
-	Thu, 19 Oct 2023 10:07:48 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 447F46607322;
+	Thu, 19 Oct 2023 10:10:09 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697706469;
-	bh=i4wN4m4h2lJzPVgsUhjbrbiElmhqA0fmSzmkzrYrPWo=;
+	s=mail; t=1697706610;
+	bh=6NkwFDgWb/X/jYOH8bEds6VmnsGIsFGtiEKSMzCUZYY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FDlbibuIvhnNoxRHgtGqCpkWiPIo+sf4Cym/EB/rZhahxHY6GN91Y9Zvx9lACMTP0
-	 0n50RaX+pPgmbBj+Og56zGRzTMqp1ZSb5u2f2yeeWirimR40+VEctVjtGU7rsJpmvw
-	 Ygzh8rR+xWHPzy6ZBtqzNegZCdVi5481tBqSfxX7+mud+xcGAwckpl/+19oi3d4xBX
-	 th2O3dEsmzcWw7ccBsqC8pyZSYzlIQPWJalIIu26qTle5PXYUVccoEiH17lTHeuNT4
-	 tGxRewA1F5G8O/t4PDkWlfcGzNAI0DIOhq2O/LgjXr3US9DQwcja4foO5pMJigTNc2
-	 jiI2/SYOHsWtA==
-Message-ID: <0815ab39-8796-4719-bec5-489aace1cb7c@collabora.com>
-Date: Thu, 19 Oct 2023 11:07:47 +0200
+	b=Y/7g/d7dL9TZcG3/BQm1YCsHmANvQhFhrsYk0HkfUkSBmpTeJXt1DxN2itG6BUQJT
+	 Let4OzWB82X6Y4F7gQ8HcpnUS1rHwZFWejXoGmNnemPihgPKntGLGWlxLuWV+LMTcY
+	 Bsde1Wptf5usUVAjD1iEWHPLrIPeRDVKeXKctKX88q/Yzk7GxtXdZhcGLiITl35r02
+	 P7nk4zcCmW/8rSGHt+ntGsRtd+opQ8DVjBJQvoDDtml4ZPp8B/Ja/nnwW9ttfXUTdA
+	 yslzYhQ/XtnC+cyf83ydPthWd7vvyeZWmA+rvRky1UScwl9pEReOBxyp5U2qC8x22O
+	 tZMN9vHxlEfyA==
+Message-ID: <0a3b0755-73e3-4698-9a3a-be38578ceb3f@collabora.com>
+Date: Thu, 19 Oct 2023 11:10:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 14/24] drm/mediatek: Power on/off devices with
- function pointers
+Subject: Re: [PATCH v10 20/24] drm/mediatek: Add Padding to OVL adaptor
 Content-Language: en-US
 To: Hsiao Chien Sung <shawn.sung@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
 References: <20231019055619.19358-1-shawn.sung@mediatek.com>
- <20231019055619.19358-15-shawn.sung@mediatek.com>
+ <20231019055619.19358-21-shawn.sung@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231019055619.19358-15-shawn.sung@mediatek.com>
+In-Reply-To: <20231019055619.19358-21-shawn.sung@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_020750_408298_02330D32 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20231019_021011_911108_BDF73A98 
+X-CRM114-Status: GOOD (  16.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,18 +77,95 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 19/10/23 07:56, Hsiao Chien Sung ha scritto:
-> Different from OVL, OVL adaptor is a pseudo device so we didn't
-> define it in the device tree, consequently, pm_runtime_resume_and_get()
-> called by .atomic_enable() powers on no device. For this reason, we
-> implement a function to power on the RDMAs in OVL adaptor, and the
-> system will make sure the IOMMUs are powered on as well because of the
-> device link (iommus) in the RDMA nodes in DTS.
+> Add MT8188 Padding to OVL adaptor to probe the driver.
 > 
-> This patch separates power and clock management process, it would be
-> easier to maintain and extensions.
-> 
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> ---
+>   .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 26 +++++++++++++++++++
+>   1 file changed, 26 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> index f46ca1c68610..f693b47745ba 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> @@ -29,6 +29,7 @@ enum mtk_ovl_adaptor_comp_type {
+>   	OVL_ADAPTOR_TYPE_ETHDR,
+>   	OVL_ADAPTOR_TYPE_MDP_RDMA,
+>   	OVL_ADAPTOR_TYPE_MERGE,
+> +	OVL_ADAPTOR_TYPE_PADDING,
+>   	OVL_ADAPTOR_TYPE_NUM,
+>   };
+>   
+> @@ -46,6 +47,14 @@ enum mtk_ovl_adaptor_comp_id {
+>   	OVL_ADAPTOR_MERGE1,
+>   	OVL_ADAPTOR_MERGE2,
+>   	OVL_ADAPTOR_MERGE3,
+> +	OVL_ADAPTOR_PADDING0,
+> +	OVL_ADAPTOR_PADDING1,
+> +	OVL_ADAPTOR_PADDING2,
+> +	OVL_ADAPTOR_PADDING3,
+> +	OVL_ADAPTOR_PADDING4,
+> +	OVL_ADAPTOR_PADDING5,
+> +	OVL_ADAPTOR_PADDING6,
+> +	OVL_ADAPTOR_PADDING7,
+>   	OVL_ADAPTOR_ID_MAX
+>   };
+>   
+> @@ -66,6 +75,7 @@ static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
+>   	[OVL_ADAPTOR_TYPE_ETHDR]	= "ethdr",
+>   	[OVL_ADAPTOR_TYPE_MDP_RDMA]	= "vdo1-rdma",
+>   	[OVL_ADAPTOR_TYPE_MERGE]	= "merge",
+> +	[OVL_ADAPTOR_TYPE_PADDING]	= "padding",
+>   };
+>   
+>   static const struct mtk_ddp_comp_funcs ethdr = {
+> @@ -80,6 +90,13 @@ static const struct mtk_ddp_comp_funcs merge = {
+>   	.clk_disable = mtk_merge_clk_disable,
+>   };
+>   
+> +static const struct mtk_ddp_comp_funcs padding = {
+> +	.clk_enable = mtk_padding_clk_enable,
+> +	.clk_disable = mtk_padding_clk_disable,
+> +	.start = mtk_padding_start,
+> +	.stop = mtk_padding_stop,
+> +};
+> +
+>   static const struct mtk_ddp_comp_funcs rdma = {
+>   	.power_on = mtk_mdp_rdma_power_on,
+>   	.power_off = mtk_mdp_rdma_power_off,
+> @@ -101,6 +118,14 @@ static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
+>   	[OVL_ADAPTOR_MERGE1] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE2, 2, &merge },
+>   	[OVL_ADAPTOR_MERGE2] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE3, 3, &merge },
+>   	[OVL_ADAPTOR_MERGE3] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE4, 4, &merge },
+> +	[OVL_ADAPTOR_PADDING0] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING0, 0, &padding },
+> +	[OVL_ADAPTOR_PADDING1] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING1, 1, &padding },
+> +	[OVL_ADAPTOR_PADDING2] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING2, 2, &padding },
+> +	[OVL_ADAPTOR_PADDING3] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING3, 3, &padding },
+> +	[OVL_ADAPTOR_PADDING4] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING4, 4, &padding },
+> +	[OVL_ADAPTOR_PADDING5] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING5, 5, &padding },
+> +	[OVL_ADAPTOR_PADDING6] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING6, 6, &padding },
+> +	[OVL_ADAPTOR_PADDING7] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING7, 7, &padding },
+>   };
+>   
+>   void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
+> @@ -436,6 +461,7 @@ static int ovl_adaptor_comp_get_id(struct device *dev, struct device_node *node,
+>   }
+>   
+>   static const struct of_device_id mtk_ovl_adaptor_comp_dt_ids[] = {
+> +	{ .compatible = "mediatek,mt8188-padding", .data = (void *)OVL_ADAPTOR_TYPE_PADDING },
+
+Uhm, for consistency I'd call this "mediatek,mt8188-disp-padding" (you don't have
+to drop Reviewed-by tags for such a change, not here and not in the yaml commit),
+but it's fine if you have reasons against that.
+
+So, regardless of this being changed or not
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+>   	{ .compatible = "mediatek,mt8195-disp-ethdr", .data = (void *)OVL_ADAPTOR_TYPE_ETHDR },
+>   	{ .compatible = "mediatek,mt8195-disp-merge", .data = (void *)OVL_ADAPTOR_TYPE_MERGE },
+>   	{ .compatible = "mediatek,mt8195-vdo1-rdma", .data = (void *)OVL_ADAPTOR_TYPE_MDP_RDMA },
+
 
 
