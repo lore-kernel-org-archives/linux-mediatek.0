@@ -4,159 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1689BCDB482
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 13:50:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65867CDB482
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 13:56:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W0kqFBNo98aU4IfNBMZu4u7+sSyE3KNHVRewog815zo=; b=yJxkuqh0DZXW9qz/x40+fa5sQW
-	dJPYh0+V5c3aWHT957Y/tpk2iQCrb/hShSvG7zjFuLtYGMmY0c6WhjYCaOX9iGYj6EGQ/SQO42oo+
-	7p7AMq4copefOuy+dbniPTlK4UNhgX7w7Z80AVxp4jjmzXfkcclycdn8SsQYlX2RXXCy7/eC8zB5M
-	qULjrepE+jFQA2bbrQ7vJaCYZHazIHw07z3MSteXqmKOcJ7ZRiEaRigJ34DkIXPVMiZltS8rjnWJy
-	9y5HISbACBUxmw2R/P6JDKvBjkZFwreub1wzIwkoH1fPHWTXupqQeMFuZiRZXN0NLPupmWMYN2DWH
-	4U7CKdAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2cNE1nD+f5XXbe8SV+FdMXaOF2j/f3k6LirCh+aRx20=; b=AeC4ZeBX6kXULNZtFDhWlnEd8H
+	VMfcsYaOt2/q/u0E9SQjBy0Z1pE5jCPUSWrvRuCzgFC5mRQ8TPnEmoFAqJQnfitx84ELLPDaVl7i/
+	kIYAhvgVSCNtjS5j8kJfLUMODYkHZF9lIrkeSDBEUmYfxDAqdtZcuT5gTngFECmgTTNAYjSkcFjjF
+	Lva8iV4cAR48RACRA1M4CpclWri/uB/LQeQ+qGZ5mg57d/Y97hOPjLWeA9qX4gDmO+Dm1saV4boBr
+	hU1Op49Q4SUOBdKSxhnectWUBUbMXyYr2q9vb1tAEjInGYhtEukUmPGSruAzAwivzy6WZhN9GYw07
+	dz+Nn+ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtTQ4-00HZCQ-30;
-	Thu, 19 Oct 2023 13:50:36 +0000
-Received: from mail-db5eur01on0610.outbound.protection.outlook.com ([2a01:111:f400:fe02::610] helo=EUR01-DB5-obe.outbound.protection.outlook.com)
+	id 1qtTVY-00HZsh-1E;
+	Thu, 19 Oct 2023 13:56:16 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtTPw-00HZ9K-11;
-	Thu, 19 Oct 2023 13:50:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CPF3gxeqwj5GlY+5zGIuOKmbDiUQI866jEGIu7tO9yUkpIImazDYhG7Z6QPfEIyyUkmPlfQmMXL2FTOUf+YX40lGRUOMLE8ujMQh1MTg7Lg+IbmaClS9ZPGSkECWon74eg5Wj8fQJ4IYVc3Pl3D9uCJqn9jVnFhxpPcka+sPCTXeJWgiVPEmc2YQRL2bHlJKfIC20QK0i/H3X3HBdTeHEcPBZqHHrm8p9pVJPa+WneU3z5MK4+yOa9PAkcKDwr6qy57KYMIv0v5W1p5u/zL+EYO0e+4i+N/K1rlwObPQAzKLpcZIXgLL4/Z6JwDhwIZDqJWpSEc/AgcSblo7HGtQ6Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=W0kqFBNo98aU4IfNBMZu4u7+sSyE3KNHVRewog815zo=;
- b=ceh141Rb2h/6w+lpRcsOJ/WYKjL3Hk/xA5N7niHAew/9Bl2y0hIg7Mz+d5PlqKBufHurGqAyUFc15b/ebA6mfsVFqGnqaZpQuMGdSdDZ+3vhhwQv/DA3jlYVq7v6TLqSL6HzSeJRITfUSUXOj1kiaaocDaHAvHN6M3wQIEPVQXjuGl9qb1UclubEXesf3yEU6BakioSOwIJD5wE66vyXZNPuODbbw+KeQeIDTJBdg+nprWT9s+NFwV0BpRbc6/XSfOEt0CXl6RYlNvNoDL3pK9oBCT3goaRTFmVNiVblwFSq+goV+Ua+70C5SrWOy3JIifa0oSryYXsUeCZggJ72jg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=W0kqFBNo98aU4IfNBMZu4u7+sSyE3KNHVRewog815zo=;
- b=WZRtvd6u2cumpcMKoRGMOiA0Z87v2VKFW2ZwMNsG7PW+H4sIN+0NP4GcSf/SK7X2DMP+/8GbqAPJ3FBho4O4sMqR23nCOqH0ADPHIGyIGlJSfQJKl6udJnAklrzJi474syLXlZQ56BKDGL9MA+GHTsii7oNDZnGOnf+jICYqXjU=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM0PR04MB6452.eurprd04.prod.outlook.com (2603:10a6:208:16d::21)
- by DBBPR04MB7803.eurprd04.prod.outlook.com (2603:10a6:10:1e5::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.23; Thu, 19 Oct
- 2023 13:34:44 +0000
-Received: from AM0PR04MB6452.eurprd04.prod.outlook.com
- ([fe80::992:76c8:4771:8367]) by AM0PR04MB6452.eurprd04.prod.outlook.com
- ([fe80::992:76c8:4771:8367%7]) with mapi id 15.20.6907.022; Thu, 19 Oct 2023
- 13:34:43 +0000
-Date: Thu, 19 Oct 2023 16:34:37 +0300
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Rob Herring <robh@kernel.org>,
-	Colin Foster <colin.foster@in-advantage.com>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	John Crispin <john@phrozen.org>,
-	Gerhard Engleder <gerhard@engleder-embedded.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Sergey Shtylyov <s.shtylyov@omp.ru>,
-	Sergei Shtylyov <sergei.shtylyov@gmail.com>,
-	Justin Chen <justin.chen@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Sekhar Nori <nsekhar@ti.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	bcm-kernel-feedback-list@broadcom.com
-Subject: Re: [PATCH net-next 4/8] dt-bindings: net: ethernet-switch: Add
- missing 'ethernet-ports' level
-Message-ID: <20231019133437.24p5sakrile4ceah@skbuf>
-References: <20231016-dt-net-cleanups-v1-0-a525a090b444@kernel.org>
- <20231016-dt-net-cleanups-v1-4-a525a090b444@kernel.org>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231016-dt-net-cleanups-v1-4-a525a090b444@kernel.org>
-X-ClientProxiedBy: AM0PR03CA0023.eurprd03.prod.outlook.com
- (2603:10a6:208:14::36) To AM0PR04MB6452.eurprd04.prod.outlook.com
- (2603:10a6:208:16d::21)
+	id 1qtTVV-00HZqV-0w;
+	Thu, 19 Oct 2023 13:56:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 37EE0CE2CCC;
+	Thu, 19 Oct 2023 13:56:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4BBDC433CA;
+	Thu, 19 Oct 2023 13:56:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1697723768;
+	bh=yZ/ARB3p2Ke8tobvsFJ9flTddNYrmRG++q6KJRo0w3Q=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=tc74ML9w33RHuzPXDk4Y/0aY9YgCu4WG2S+FQ6bNMA5UdG3O8Mb3PgIAQ7Tc+a3Q/
+	 0ZL5nTecGbR8+xaaPo4O/FiCJVYmgI27BJ2lgquzmTQQR8JgyS6Ymj2IdCbyK9IBPa
+	 81/sPnuoj7QsXhkHW822S2PbJMLzH+gRvjtTwQVioEcS8HoIf3/WRbPUSwffmZoMJK
+	 LOonxjQLVsqd2n+87kEzJst2h5dF/St27OteDkkSqAhF0cccL+nCBW9uWW9aVyLH/f
+	 tP04RxZbcGQo0ecHgE6XeIWOsl0kPN+3eczB7zs8or/sOJU2U098PDuONOzIaHv81/
+	 v9ZzTgUYDBw9Q==
+Date: Thu, 19 Oct 2023 06:56:06 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: <davem@davemloft.net>, <pabeni@redhat.com>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Alexander Duyck
+ <alexander.duyck@gmail.com>
+Subject: Re: [PATCH net-next v11 0/6] introduce page_pool_alloc() related
+ API
+Message-ID: <20231019065606.525309a6@kernel.org>
+In-Reply-To: <fd8a3e6d-579f-666d-7674-67732e250978@huawei.com>
+References: <20231013064827.61135-1-linyunsheng@huawei.com>
+	<20231016182725.6aa5544f@kernel.org>
+	<2059ea42-f5cb-1366-804e-7036fb40cdaa@huawei.com>
+	<20231017081303.769e4fbe@kernel.org>
+	<67f2af29-59b8-a9e2-1c31-c9a625e4c4b3@huawei.com>
+	<20231018083516.60f64c1a@kernel.org>
+	<fd8a3e6d-579f-666d-7674-67732e250978@huawei.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM0PR04MB6452:EE_|DBBPR04MB7803:EE_
-X-MS-Office365-Filtering-Correlation-Id: 46b3c85e-36d1-4705-14b6-08dbd0a82732
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: F3Hwe79EJ6V3FMFlmr6mLa3UiTfB6ftI/Gc1nBdB4bCgszKeyglI6/Mq8uaWfyr5lZXxLdKc6JoRJ9EFI8zvOzgkx5RLw5Jj7MC+rwkFtKyAvPDB84CxJ0ovCVW/YpDZCWA1rsnwkl+jpFLh6Kp3uCl8Za6XWyi1z1DsGINk8HbJ74CU4+PoWTDYBQGqCLn/NDWpm8Grq7mDcymGmik3SuLDq0YrlwbKfHHMg+zAzqlZEq4W9rpHZadUwIbr2VZI4XVWTgDbqgQceZRlwToyzyz38Ld0Eynghbji1Tf23eIQ5jRTSFBvHbH6B/P2mfgN6yiPUJhsgm5jV24f+7ZRSCOKbH5cM/ekba7swP1Zzs5FLwZxeo6GCqZ0c6v9gu7ewnaWzii+ZXpVTKugAztobSWLsjdJwQ3b/7SccaEONryvrvfNKbj4HR2I2RnBMOfwpiZVJrO8F+vsgUBiHuZf4aOwmqp5D2EufdxLdXSB+nkW9FEGoMOGa142ASN2f7KABnxd8OqX68DGQ1UVdAh/FzoY8OiyK/dQXYvmtO6VpjlkT4gMR2Li1Ak3SS4moL2r
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM0PR04MB6452.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7916004)(136003)(39860400002)(396003)(366004)(346002)(376002)(230922051799003)(64100799003)(451199024)(186009)(1800799009)(9686003)(6512007)(26005)(1076003)(6506007)(33716001)(8676002)(83380400001)(7406005)(478600001)(7416002)(2906002)(8936002)(4326008)(110136005)(6486002)(66476007)(41300700001)(5660300002)(66946007)(54906003)(316002)(66556008)(6666004)(44832011)(38100700002)(86362001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+LfafpbwDlbpN74M6LEv1ugDc8jZRNS5F10A/9O31p0LsC1ZfQFRKvAp+tM0?=
- =?us-ascii?Q?WoZKmO+e+PUvmfKmzg41L1RAVGVRQxpZnY/tpPIPnNRzqGktJ+W16UzrQaGx?=
- =?us-ascii?Q?hGgI0Ml0psPY89+HCaz3Q5pn+6xefKYnF9Ar3goLpcLGS5Uv3TzI87TdD/Rq?=
- =?us-ascii?Q?qK0wn91jpKlTosEDQIoK+g/Bcd1aqlXY8qY0lunoLmIOdOBMLyrNkvEo8JdP?=
- =?us-ascii?Q?R1UnPAHjHcgROFUHLNeu3EGDYN3NuwcEFL6o1jaW77PjB3a52sbHgr+G+ELa?=
- =?us-ascii?Q?RZmex7GX/FP0yKH/q/juou9ZN2yeyHIz4xx1b58os7S7jDB25M/hGqnGGmyI?=
- =?us-ascii?Q?I2GXsNFxz78NtzkeTC2sgwcoheQ2EoBSWieX93hPhx9mVBejCyi3iYsHYUbm?=
- =?us-ascii?Q?F0h0z/kHvB9uo+MSJoWKVJymuXRvGuxgMXWtnenyV8ZuT8LDcccgc7AQXokr?=
- =?us-ascii?Q?8DT38NvkX7ttu/GiF30+Q9VEAiCaBeNt3230OatM+P0tpp9mdMNESNRi81GM?=
- =?us-ascii?Q?Mj0d1vtk8x58D7C2TGXoXsAnLIzB7mMe5UF88mHkSp0huPNZc6VoA8/iJzBg?=
- =?us-ascii?Q?z0+rDdUckdUCSp0ZlLGPQNTeqnjnj7eu49VUZ8iU5SONE8Jpf2iykIb7DlQC?=
- =?us-ascii?Q?54j9sW9U650B3vZvSSWhria5pJR288hwJR5cBOENzD79N/gfLvTxsAVhU4vu?=
- =?us-ascii?Q?Qt5GiGSnYL4SeWp8iCoxkSSYRDFtaIM4xfUKeAXytQHpovtxEaT5AoTHGgHJ?=
- =?us-ascii?Q?rI3jJIChmfQFcKdxyAyqKk36Kry5UOrwipZaHyq3PJ6sqs9TZIsPkkwsaG4h?=
- =?us-ascii?Q?amXc5stSkhRzHMUIsvtde0H8ciYNaX5N2DJNx6jMqom/wM91OAjIZRITu3D1?=
- =?us-ascii?Q?QhzOBLG86hW1Lu2DUDigj1e2hXSqtDdi9hZ5Mm7ai5ro8FhoTfOpymH/8yzt?=
- =?us-ascii?Q?EicE5rMZoiiwT+INk8OWj6owSg+d4MS+GdMJ3nNDi5OXR2VhrsCKDoToVTn8?=
- =?us-ascii?Q?BVJVe8LpBKh9Awdq6x+W1IqqCLCootrmuBh733OqD0c3bOFRMTJ6Dc2KeDae?=
- =?us-ascii?Q?fe7jKRL1lL5FRqD6Pu5V9Op6gA1/eJEZeKta+QJl3qUhu3Dlt/c4PLhNz/Nc?=
- =?us-ascii?Q?WZwLoa8IkfR5rn77n0drqjyuIYGLULg5XXajeMfWCsWyHDnECifbPSbRvwna?=
- =?us-ascii?Q?uKL/D4eO0nMVNxEdXLGkf78YrX6FQ5ODXo2TSbCNGl7RodfPqAin3uRujyg/?=
- =?us-ascii?Q?bpJkbv0jVPbpJu611WYkg9cKz9FAc62o+uj7t0cBcER/1YKKLtaPHA9Nhs9T?=
- =?us-ascii?Q?Wg+j1mHPYF6NVal6vvU+iYp9V68EJtp/2VeLPEmXoO1QxhHAWlaloSghSwq9?=
- =?us-ascii?Q?tDJyWFKW61gUhXudk5X88fPuIhI1J8fZ/5rz7Y0B1M4zppBYJFw8aAP4ECAZ?=
- =?us-ascii?Q?CU9ecSeEi7GwEXT8nLC/TwI3PbdADFPb6Xkr9xsSTlQXTdT4jRln/xkhibxg?=
- =?us-ascii?Q?spEA+q3I5rbHCdWnoTd20SC66eUjVULW2gJh0YpPzg6iTMFWrTWrxaUB9HfO?=
- =?us-ascii?Q?ACR1rRYcSIwgd/cMo5aFEx//NtNeBSzWn6/WSPBsIjg3aZyMDvpvlwsBVON/?=
- =?us-ascii?Q?vQ=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 46b3c85e-36d1-4705-14b6-08dbd0a82732
-X-MS-Exchange-CrossTenant-AuthSource: AM0PR04MB6452.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Oct 2023 13:34:43.7193
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: cdBlmn0RdBfHkXHCatIN6sa+9ifNN/1oGotmTm1+fKMw+OSsW51sUxhFT9G+8AVe+fN3d4YiNw8Ear2jymfhfA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB7803
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_065028_356202_4C8034DD 
-X-CRM114-Status: GOOD (  17.91  )
+X-CRM114-CacheID: sfid-20231019_065613_497940_47E94345 
+X-CRM114-Status: UNSURE (   6.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,51 +85,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 16, 2023 at 04:44:23PM -0500, Rob Herring wrote:
-> The '$defs/ethernet-ports' schema is referenced by schemas defining a
-> child node 'ethernet-ports', but this schema misses the
-> 'ethernet-ports' node. It would work if referring schemas made a
-> reference like this:
+On Thu, 19 Oct 2023 21:22:07 +0800 Yunsheng Lin wrote:
+> > Sounds good. Warning wrapped in #if CONFIG_DEBUG_NET perhaps?  
 > 
-> properties:
->   ethernet-ports:
->     $ref: ethernet-switch.yaml#/$defs/ethernet-ports
-> 
-> However, that would be different from how dsa.yaml works. For
-> consistency, align the schema definition with dsa.yaml and add the
-> missing level.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  Documentation/devicetree/bindings/net/ethernet-switch.yaml | 10 ++++++----
->  1 file changed, 6 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/ethernet-switch.yaml b/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-> index dcbffe19d71a..688938c2e261 100644
-> --- a/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-> +++ b/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-> @@ -58,9 +58,11 @@ $defs:
->      $ref: '#'
->  
->      patternProperties:
-> -      "^(ethernet-)?port@[0-9a-f]+$":
-> -        description: Ethernet switch ports
-> -        $ref: ethernet-switch-port.yaml#
-> -        unevaluatedProperties: false
-> +      "^(ethernet-)?ports$":
-> +        patternProperties:
-> +          "^(ethernet-)?port@[0-9a-f]+$":
-> +            description: Ethernet switch ports
-> +            $ref: ethernet-switch-port.yaml#
-> +            unevaluatedProperties: false
->  
->  ...
-> 
-> -- 
-> 2.42.0
->
+> How about something like __get_free_pages() does with gfp flags?
+> https://elixir.free-electrons.com/linux/v6.4-rc6/source/mm/page_alloc.c#L4818
 
-Huh, interesting.
-
-Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+Fine by me!
 
