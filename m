@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 367ADCDB482
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 07:13:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 181E9CDB465
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Oct 2023 07:55:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ExAtAUFm918w30hOEMgGU1kfUzyycn7oMYoVsXzuFQ=; b=4d1vu5KvQqRp+Zcc5SJo6PsRcQ
-	AWCJHPJ+w/AQWkLUcXvorX6M/gWOpXk8YR9GRqwxBGJ2Ia8tMlNSm5FM9wtJIhwtsozm1dbfbZbf0
-	NNQ8wC2HFBpgyMRpOGexm77r0Ge6D/OnsU8UVCclMxY6CmFu3+6YDBhRC6RY1gNGYwy8rAhVWI9Kt
-	1yGmBAznFJ9lWuOKtCCKygpqP/ZtpVX3EaxTfJypTh0AUYfhxOWggsX68ik3wfcS0jFoT8noXq9vL
-	/4oOuuEmW8lczcSdJRJQpkoQoneGQFxOmW3ZhheES7oSjCRsEidqTfbi5hyRkQwgaPE3ftyVaeRvt
-	57mlyXiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+DZ9ypkqR65NcGpwVfVZuOuQBJBNHwGt5NBXY+YxBhY=; b=Ow7HLmajsiTBmmHHp4X76v2qiS
+	x9B/gaXNo9uJZUnj1H9GzSF9AQ8rWG7LykKLJ4UJDscg3c98xoc2i4u8SfhtadkAgWek80ZvBgvQn
+	k6XGiRSNreQxyOrYEeHW6uNN8seop9lLYHHunaNqvH/QHQE/5W/40Ls70EJBDFyYbs/TCttLc2YQw
+	XCEQBCbjJVLnyI4SSpMdQsTNTxMwH5lvT4aI9gXUvcoznVL/8Ra2XFUmTeyYi8qKOOUJWmPuIg3N3
+	bhKunKlwrjPogZNKX2ljsmcKs7cUqO6jKT67/1+zLPtBMpOsE5jgk6/T23pAScOa6qyLQnkcmUS6u
+	JG7+5wXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtNDa-00GaAA-2L;
-	Thu, 19 Oct 2023 07:13:18 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1qtNs8-00GeC4-08;
+	Thu, 19 Oct 2023 07:55:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtNDX-00Ga9P-0i;
-	Thu, 19 Oct 2023 07:13:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=/ExAtAUFm918w30hOEMgGU1kfUzyycn7oMYoVsXzuFQ=; b=SHj4LQnzfHMa1yHTUuvP7nMolw
-	VpESHZXD7leV7Tbxyrk8gTDRViNqV7hH7qjyAKEWJSWNKlsUSjEXsDGqfQHkuNBhM10wHuK18kDBv
-	6sfgJG1uJU0m0OEIDstoqhoxmXcZCshS/z5rpOaHEiPwEGUsanO8VOHiSc/rk4xoKPerI6QP5fo2x
-	Pj6SuGxSsFToLToB+dKON9i1ajaoXSnK+tXiGX4gvE8SxT+c3ey7hGilx/Dhe6FAnpk4sdQg0XG2E
-	5szP3MrjA/amJ6XvPiyo0+C/gipY7t1QhISPZ3uSOxSbTzc+lfA9jXw5+PPxc4PZ0iRK8GQtocbhf
-	1cGobnRA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:40768)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1qtNDJ-0006Vk-0Q;
-	Thu, 19 Oct 2023 08:13:01 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1qtNDC-0000EU-DM; Thu, 19 Oct 2023 08:12:54 +0100
-Date: Thu, 19 Oct 2023 08:12:54 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Mark-PK Tsai =?utf-8?B?KOiUoeaym+WJmyk=?= <Mark-PK.Tsai@mediatek.com>
-Cc: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"xuewen.yan@unisoc.com" <xuewen.yan@unisoc.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	YJ Chiang =?utf-8?B?KOaxn+iLseadsCk=?= <yj.chiang@mediatek.com>
-Subject: Re: [PATCH v2] ARM: vfp: Add missing VFP instructions to
- neon_support_hook
-Message-ID: <ZTDW9nflL1TM0svt@shell.armlinux.org.uk>
-References: <20230925131720.7672-1-mark-pk.tsai@mediatek.com>
- <7e68377e780a2f4312a69ce8afda0cda8ad84568.camel@mediatek.com>
+	id 1qtNs5-00GeB8-1S;
+	Thu, 19 Oct 2023 07:55:10 +0000
+X-UUID: cf7bc9606e5411ee9b7791016c24628a-20231019
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+DZ9ypkqR65NcGpwVfVZuOuQBJBNHwGt5NBXY+YxBhY=;
+	b=Q6Il1hWAccgs6rsDegTDl0u5H5HDE5ft2FRBYalZG6MpfvVfQW7VSilun3DtxtMJ9CIUu/p1ocFQVUrMlCtuPn+7vVuaaEUyPZ2BwPNEn7UBE6Pc+0zvYNUcHGv20CO77GCIeKDXGEO4Kr5RCnEYGqiESRp2r0WoxY+HKM8KqGY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:d88eb0c4-2386-4a32-bdc9-7adf9540ed73,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:5640faf0-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: cf7bc9606e5411ee9b7791016c24628a-20231019
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jason-ch.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 782336239; Thu, 19 Oct 2023 00:55:03 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 19 Oct 2023 15:55:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 19 Oct 2023 15:55:00 +0800
+From: Jason-ch Chen <jason-ch.chen@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Eugen Hristev
+	<eugen.hristev@collabora.com>, Bartosz Golaszewski <brgl@bgdev.pl>, Alexandre
+ Mergnat <amergnat@baylibre.com>
+CC: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	jason-ch chen <Jason-ch.Chen@mediatek.com>
+Subject: [PATCH v5 0/4] Add basic node support for MediaTek MT8188 SoC
+Date: Thu, 19 Oct 2023 15:54:54 +0800
+Message-ID: <20231019075458.28290-1-jason-ch.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <7e68377e780a2f4312a69ce8afda0cda8ad84568.camel@mediatek.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_001315_259517_C511EC35 
-X-CRM114-Status: GOOD (  18.88  )
+X-CRM114-CacheID: sfid-20231019_005509_500093_721D0B24 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,63 +90,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 11, 2023 at 02:49:44AM +0000, Mark-PK Tsai (蔡沛剛) wrote:
-> On Mon, 2023-09-25 at 21:17 +0800, Mark-PK Tsai wrote:
-> > Add the missing "Unconditional Advanced SIMD and floating-point
-> > instructions" in [1] to the VFP undef hook.
-> > 
-> > This commit addresses the issue reported in [2], where
-> > executing the vudot instruction on a platform with FEAT_DotProd
-> > support resulted in an undefined instruction error.
-> > 
-> > Link: 
-> > https://developer.arm.com/documentation/ddi0597/2023-06/?lang=en [1]
-> > Link: 
-> > https://lore.kernel.org/lkml/20230920083907.30479-1-mark-pk.tsai@mediatek.com/
-> >  [2]
-> > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> > ---
-> >  arch/arm/vfp/vfpmodule.c | 18 ++++++++++++++++++
-> >  1 file changed, 18 insertions(+)
-> > 
-> > diff --git a/arch/arm/vfp/vfpmodule.c b/arch/arm/vfp/vfpmodule.c
-> > index 7e8773a2d99d..b68efe643a12 100644
-> > --- a/arch/arm/vfp/vfpmodule.c
-> > +++ b/arch/arm/vfp/vfpmodule.c
-> > @@ -800,6 +800,24 @@ static struct undef_hook neon_support_hook[] =
-> > {{
-> >  	.cpsr_mask	= PSR_T_BIT,
-> >  	.cpsr_val	= PSR_T_BIT,
-> >  	.fn		= vfp_support_entry,
-> > +}, {
-> > +	.instr_mask	= 0xff000800,
-> > +	.instr_val	= 0xfc000800,
-> > +	.cpsr_mask	= 0,
-> > +	.cpsr_val	= 0,
-> > +	.fn		= vfp_support_entry,
-> > +}, {
-> > +	.instr_mask	= 0xff000800,
-> > +	.instr_val	= 0xfd000800,
-> > +	.cpsr_mask	= 0,
-> > +	.cpsr_val	= 0,
-> > +	.fn		= vfp_support_entry,
-> > +}, {
-> > +	.instr_mask	= 0xff000800,
-> > +	.instr_val	= 0xfe000800,
-> > +	.cpsr_mask	= 0,
-> > +	.cpsr_val	= 0,
-> > +	.fn		= vfp_support_entry,
-> >  }};
-> 
-> Could someone please kindly review this patch?
-> Thanks.
+From: jason-ch chen <Jason-ch.Chen@mediatek.com>
 
-And if someone drops it into the patch system then it might get applied
-before the merge window.
+MT8188 is a SoC based on 64bit ARMv8 architecture.
+It contains 6 CA55 and 2 CA78 cores.
+MT8188 share many HW IP with MT65xx series.
 
-Thanks.
+This patchset was tested on MT8188 evaluation board to shell.
+
+Based on tag: next-20231018, linux-next/master
+
+Changes in v5:
+- Remove unnecessary always-on regulator nodes
+- Fix dtbs_check warning
+
+Changes in v4:
+- Explain the reason of modifying pwrap binding file, and correct the
+  subject
+- Fix reviewer's comments
+
+Changes in v3:
+- Remove the duplicated part of mt8188 in the pwrap yaml file
+- Fix reviewer's comments about coding style
+
+Changes in v2:
+- Add MT8188 PMIC Wrapper compatible to binding document
+- Fix reviewer's comments
+
+jason-ch chen (4):
+  dt-bindings: arm: Add compatible for MediaTek MT8188
+  dt-bindings: arm: mediatek: Add mt8188 pericfg compatible
+  dt-bindings: soc: mediatek: pwrap: Modify compatible for MT8188
+  arm64: dts: Add MediaTek MT8188 dts and evaluation board and Makefile
+
+ .../devicetree/bindings/arm/mediatek.yaml     |   4 +
+ .../arm/mediatek/mediatek,pericfg.yaml        |   1 +
+ .../bindings/soc/mediatek/mediatek,pwrap.yaml |   6 +-
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ arch/arm64/boot/dts/mediatek/mt8188-evb.dts   | 388 +++++++
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 949 ++++++++++++++++++
+ 6 files changed, 1348 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8188.dtsi
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.18.0
+
 
