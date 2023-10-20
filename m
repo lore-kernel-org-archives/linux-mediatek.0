@@ -4,87 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C17FC07480
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Oct 2023 10:32:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE46FC001DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Oct 2023 10:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=igrslGOc8lOfnbcsO3yOOnOBbB2z/+ZB5557ersesus=; b=Wl0wHydhenOrJgARXCNc22k4uV
-	TT9qbk6xj4LhKYhMH6ZL6wz6a4Kj4Xdpm6uP1VzIj4yV/s+M5T7CPhxIBOnDjsvTPaItGmSPbnMxi
-	HImYVYuj1z1zishKqns/Y/Vhim/GBGsMEEAjJ4pn63G95HvWLF6ei7Cm2UvBpSeUamJLV0qyfMy4L
-	kiX3p8NDYjz1/xrfmfndbAlr5iHyw/4Y5v2e/Vj7irYG9l7ZyoLz/DBPn5pOlMnAzgnv/gl754DLH
-	Mab+h3kjA4PE0N5rCbiVovnOh+3twBB/uoNk1hMkOPTUKdqozYtElAY9eL/5i/LNnJ9YgyG3rnfhn
-	I7iGaVng==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YMMG/tb4IX1WSyS7ju2h9GeYKV/cO01qmXX681UsrrE=; b=11iYCs4Fw8H4y/F09ktTDQfX5p
+	HUtz9nBwmqU/sJY+1QHssLzszX5vHyA8HRpgORh2J9cZpYh6IxJadCEzfZBjbDuQCdqIx/joDefY7
+	gl4poCFbJK6yEpwJ+uw1HSDR+9iP1qaio5PG64SyN52Aon4zV4kbYpOnSrs8TEKRHFNob1WcxPlKs
+	BvVSDoVAJG/p1qo0GWNHfWy98zX65lTKwmQs1urzopjtWr4vDEiI+qsmR0HLlzjqsjzq9LO2vOiqV
+	E4e97yRAqfCFFYqwHv4n+graW4zVU0i0QU5m77KKqAVKi0ec5MAZ+Wwatax+i17j2ZiUKCY434KPX
+	3phn6qNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtmnu-001meA-1I;
-	Fri, 20 Oct 2023 10:32:30 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1qtn0X-001rC3-0p;
+	Fri, 20 Oct 2023 10:45:33 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtmnr-001mcv-23
+	id 1qtn0T-001r6J-1S
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Oct 2023 10:32:29 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-32d885e97e2so466069f8f.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Oct 2023 03:32:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1697797944; x=1698402744; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=igrslGOc8lOfnbcsO3yOOnOBbB2z/+ZB5557ersesus=;
-        b=Qve/3yrBukybmjpVV5wo9ljcV5Xrk6rk2EU+N1eq0V/BFiCH7hctL33KeWXZCr4/I9
-         EKxGtwer/MYBD68SE9mv3vtIcQhIcwG3EE3/Fxrjtpajxp2qX4jlqgJCrHm6I39iR80K
-         8keMSGYz8F2kX+VY2LN8MukPz9X8ai/nDCDfDSkxyw607lgPsbQywTDNa9A29O/rdc6u
-         lhawppQdIFvD46Rbr/R3TAuCUL7crt7hJCl+Etqmbz3lRRFtXtc8Z4lmERXozmHT49Jd
-         j+bFZC+cAfPoPPsLWD3vOMVe7TnMC6m+jvijPwTQ/CJQqbO+djY/NxH5d3UpRY7gf0WP
-         ahOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697797944; x=1698402744;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=igrslGOc8lOfnbcsO3yOOnOBbB2z/+ZB5557ersesus=;
-        b=UV72FOkwjmh/LgAYL8fdHNu8asciMvimpSnRlvXHQMTqTmQfkntmoo0B4CUDVoDg6v
-         DMjKuDnoHH2XTPww7Jnb2i3q3WkDEOFdxMgWwZamlYxxF5RD+Y2jjbPcBDTalR46Drh2
-         YVN+L5KHl/dvbHzE5Ph7PvlUwpzO5JgaiYjFlKUG3PzYlCzmG3tEt42/1oKhG54TwGlU
-         nCl9IavLiDX5+bAATG38wH6GfWWnhedNMBNUfK6o5sdonOadIfmkXwKp21IW3b7hgF6v
-         L9zp313ukKAxYcl0trz43dgS7kwCpeWRLfbRbsUzs2A953t5JkIJtcTDABtN5Ttb4G9r
-         LzFw==
-X-Gm-Message-State: AOJu0YwgFKIfMozamCO3Ggad1WOBtUgJp2s3IZpGQLVrk6shggKcsuni
-	8ewHoepHZ+NlTjCI6+q4rDIcRw==
-X-Google-Smtp-Source: AGHT+IHvZz/X5JQHO3BEuu44B8mjF8wsdVBvnEP3zzsL+PMw2pSuhiBl3H5XEium7IMjvWbKbHSz2g==
-X-Received: by 2002:adf:ec03:0:b0:32d:d879:1c3 with SMTP id x3-20020adfec03000000b0032dd87901c3mr1041129wrn.31.1697797943877;
-        Fri, 20 Oct 2023 03:32:23 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id y10-20020a5d470a000000b0032d9efeccd8sm1396888wrq.51.2023.10.20.03.32.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Oct 2023 03:32:23 -0700 (PDT)
-Message-ID: <b372ef8c-7f3f-483b-8cc2-d927a60050be@baylibre.com>
-Date: Fri, 20 Oct 2023 12:32:22 +0200
+	Fri, 20 Oct 2023 10:45:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 83BBCCE2769;
+	Fri, 20 Oct 2023 10:45:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 682CBC433C8;
+	Fri, 20 Oct 2023 10:45:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1697798726;
+	bh=QYS87VmaIdJZXTsmHkpT3eJIWnTu6R6ehZGHddHZ7wU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=VGizGXMHT4W3/Co3ME+YVe+7x/7WBwX0D1xOQYvkWA0br54GW3a7VU7uxvHFTwfDp
+	 f80FkmdT2gCfaODjryh2NJC6N8TZx2bvSusxkG9qba0vri5/J0NachhotBBuBh/AFE
+	 rOnjk5DUcpjqmaRWWTaVpWBlHJZnN9UAivgpz77OzbpfafbIOweGSi9nV1rRixnvTY
+	 JiYoD6R0cVA2C63lnAf0idhABLkQDmqg5iriN2HRRs0+CJ+rSEp+kassuBiW0hf9mk
+	 VQhQhYJn1JzLwj8vRyO2ci9GOB+bXXiW9TD+rzoWXrlTeW7eBY+2e1t1cD13jsZ2Am
+	 z592wJUPXtXkw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Cc: lorenzo.bianconi@redhat.com,
+	linux-wireless@vger.kernel.org,
+	ryder.lee@mediatek.com,
+	evelyn.tsai@mediatek.com,
+	shayne.chen@mediatek.com,
+	Bo.Jiao@mediatek.com,
+	sujuan.chen@mediatek.com,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt76: mt7915: fallback to non-wed mode if platform_get_resource fails in mt7915_mmio_wed_init()
+Date: Fri, 20 Oct 2023 12:45:19 +0200
+Message-ID: <6481c37a50fb68db56af88e07e31da71d04aff40.1697798663.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: mtk-jpeg: Fix use after free bug due to error path
- handling in mtk_jpeg_dec_device_run
-Content-Language: en-US
-To: Zheng Wang <zyytlz.wz@163.com>, dmitry.osipenko@collabora.com
-Cc: Kyrie.Wu@mediatek.com, bin.liu@mediatek.com, mchehab@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Irui.Wang@mediatek.com, security@kernel.org, hackerzheng666@gmail.com,
- 1395428693sheep@gmail.com, alex000young@gmail.com, wenst@chromium.org,
- stable@vger.kernel.org
-References: <20231020040732.2499269-1-zyytlz.wz@163.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20231020040732.2499269-1-zyytlz.wz@163.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231020_033227_736840_21CC5F9B 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20231020_034529_707958_512F88EE 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,31 +76,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+mt76 assumes mt7915_mmio_wed_init can fail just after wed driver has
+been attached running mtk_wed_device_attach().
+Fall back to non-wed mode if platform_get_resource fails in
+mt7915_mmio_wed_init routines.
 
-On 20/10/2023 06:07, Zheng Wang wrote:
-> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with 
-> mtk_jpeg_job_timeout_work. In mtk_jpeg_dec_device_run, if error happens 
-> in mtk_jpeg_set_dec_dst, it will finally start the worker while mark the 
-> job as finished by invoking v4l2_m2m_job_finish. There are two methods 
-> to trigger the bug. If we remove the module, it which will call 
-> mtk_jpeg_remove to make cleanup. The possible sequence is as follows, 
-> which will cause a use-after-free bug. CPU0 CPU1 mtk_jpeg_dec_... | 
-> start worker | |mtk_jpeg_job_timeout_work mtk_jpeg_remove | 
-> v4l2_m2m_release | kfree(m2m_dev); | | | v4l2_m2m_get_curr_priv | 
-> m2m_dev->curr_ctx //use If we close the file descriptor, which will call 
-> mtk_jpeg_release, it will have a similar sequence. Fix this bug by start 
-> timeout worker only if started jpegdec worker successfully so the 
-> v4l2_m2m_job_finish will only be called on either 
-> mtk_jpeg_job_timeout_work or mtk_jpeg_dec_device_run. This patch also 
-> reverts commit c677d7ae8314 ("media: mtk-jpeg: Fix use after free bug 
-> due to uncanceled work") for this patch also fixed the use-after-free 
-> bug mentioned before. Before mtk_jpeg_remove is invoked, 
-> mtk_jpeg_release must be invoked to close opened files. And it will call 
-> v4l2_m2m_cancel_job to wait for the timeout worker finished so the 
-> canceling in mtk_jpeg_remove is unnecessary.
+Fixes: eebb70976be5 ("wifi: mt76: mt7915: enable wed for mt7986-wmac chipset")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mmio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+index c404c90b58a6..aff4f21e843d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+@@ -636,7 +636,7 @@ int mt7915_mmio_wed_init(struct mt7915_dev *dev, void *pdev_ptr,
+ 
+ 		res = platform_get_resource(plat_dev, IORESOURCE_MEM, 0);
+ 		if (!res)
+-			return -ENOMEM;
++			return 0;
+ 
+ 		wed->wlan.platform_dev = plat_dev;
+ 		wed->wlan.bus_type = MTK_WED_BUS_AXI;
 -- 
-Regards,
-Alexandre
+2.41.0
+
 
