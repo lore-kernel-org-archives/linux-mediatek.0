@@ -4,196 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23B8CCDB47E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Oct 2023 10:03:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 242ACCDB47E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Oct 2023 10:07:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ukCOhZTg1cMbzr0HUQZWo5sBjxxbqsjmw4GQljFbAf0=; b=LGFHvPU4SRzqqyvFEAzbA0CK8h
-	60XttCJibK5RdIZKlnA5xD6qzUpNAfisJ1RXZ02mr2NaEbCjpMOWDemRzRMQ58ED4ZrVBKE/Wz7bq
-	CPQJ7G4D17QebPOUPyOtH/SYLYGSbY00bhFgGzLkMRMe3S9p+hbVApP7GZi8kpfHK6wp2uodHCRvP
-	5fgeEoDee1GFeU+PEA0quGLhbsBy+eGMG/6vellZ3bzfF1DCOAqylflstQo9kdN0pFaFSk3fZepw6
-	lmqXIGT+pzcxtRP88jy7f2ETkI07qadFCgQDP1WcwXVRBrRleEsC8Tepg17nbiLzanUpgmo64DFoA
-	zsqBwk6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U60xRu3muth06imj7dV2lIvp06gGg+EXmKMXyWpygio=; b=EriemnZ4gzK7JciWr25Dl0NrJy
+	JCWmSbUBPuCmZIleNuqLhBgHIu4Vj5ZsvRjed4CAWdT62HWmoJmHZd763+UZ3Hw7hinNZKSGSjccd
+	OIqg/TQjxEv3b3ilhYkPOWfbsqIAwhDiOQ5R66gyiTUdGWS0kj3PYTaigOvJ4LBK1m0X9WONVUadC
+	5idWCpzTM8yXcHelE19ynY5lBqsPHC0DR5PitUuI5vx7A4WgSv33EGTiLFSjVcw2qYJeprKaSHuCa
+	3MYPZ/RrG0h+/71XrEdrDlnMyNyxGWQDR9TphZ8PSTTS5gpNbvtrEQ6mjPaMBd/ixOu+AdKdCniF/
+	jPiWJFvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtmLT-001jhZ-2a;
-	Fri, 20 Oct 2023 10:03:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qtmPM-001k6B-05;
+	Fri, 20 Oct 2023 10:07:08 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtmLQ-001jg2-1C;
-	Fri, 20 Oct 2023 10:03:05 +0000
-X-UUID: d9bbfb086f2f11ee86758d4a7c00f3a0-20231020
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=ukCOhZTg1cMbzr0HUQZWo5sBjxxbqsjmw4GQljFbAf0=;
-	b=C/MM9gfxSZo7/iQmz1JV+kPgv5JAnBkXVfGeffIi2hXAhyk8aV/Sv7O4QM+KG5hX6E4rEV59SH3PgQ6CXGDvYUNfHhuTmpwaP8aYpES696uEqO+qPj8JnG7vkzEN7Z/0X47p2wti+QOJ0Ub6MWIJ2A2cgkQBVtwnzfrykBulrCw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:875d1a3d-9cd5-41b9-8dc7-5836b705a137,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:7af61dd7-04a0-4e50-8742-3543eab8cb8e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d9bbfb086f2f11ee86758d4a7c00f3a0-20231020
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1761861360; Fri, 20 Oct 2023 03:03:00 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 20 Oct 2023 18:02:24 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 20 Oct 2023 18:02:23 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=N9iMnYSlu82fO0BiSGBjSaKx41XCjpeiKqTGbCdYuIWq/kIB2tU9wHV2kyJYn05ZUnu0J7l8j8nagmmZN9sYTP8zQh+pdLd5U8DhO/ssy87xPxxpV3xBeDx6K00dTw57c2UEMlKPjJzrSAqqFS/gky2LReNXtWUkgImcRdxSAOkGGKW5J9GAwSm9rlQNJSGu8TemlA8xZqtIYHvO/p0SbBBojzvYqV0FrXTtK4KAXSgDY1YKVEGWd5/FKdHgc8ujHrJdPGyVeQE/Vz+PjX/akPYVFcGvewIL3HezZ3saQ7nRVgF5n7h3Uf4obqhSnpLyiO0bADfRA4FXABDYq9qgAw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ukCOhZTg1cMbzr0HUQZWo5sBjxxbqsjmw4GQljFbAf0=;
- b=F0JqFuXypzlwiA+cuZXut0ZgiZtRvvdGGx4my5KlyTcCWQHlG2HkVF6USVOu22KxVtDmXlbp9PAUkmECggZ8jpOm3xGM3QAY6iPFQfjeVa8NpjD0QIRnXGrzbO25irCP8Gx81rIBFt8JTehnJCCRXT62MvhFgcrxih0qy/T0saK8NrlYynQjzCqG0wi6XKJoD3gN8oOD89UVf5XfWjnWK5mySTDRp6j2anFTPGy7/P3L9c6L2FY9QwGt03xNlK/urNj9ngtE0mbjJlwpP4fiwy4Ks88Aq6PQD5lslhcfAJJMOT1bTQMhr2e2FtHH73T9Ef6WYOO8IheErEvwSMXkkw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1qtmPI-001k3j-0k
+	for linux-mediatek@lists.infradead.org;
+	Fri, 20 Oct 2023 10:07:06 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-507b9408c61so774188e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Oct 2023 03:06:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ukCOhZTg1cMbzr0HUQZWo5sBjxxbqsjmw4GQljFbAf0=;
- b=ldfAOyeElrv5A8lvELaRSknQif1sKwYz055hwDvjD6Db4YSPPtmNRlQkvBAwg4IlLN2XnN7cowg3SVOpUBSaiHuE27p4dtgxtOrgLmTjWmzChuLG46cXCfUr/FaOSXJG4PyiSZKjPPAGvDPffGtEXNcBPwau1vmCDJ7cOMNvML4=
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
- TYZPR03MB5408.apcprd03.prod.outlook.com (2603:1096:400:35::14) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6907.24; Fri, 20 Oct 2023 10:01:19 +0000
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::3dfd:5783:26bf:c189]) by SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::3dfd:5783:26bf:c189%4]) with mapi id 15.20.6907.025; Fri, 20 Oct 2023
- 10:01:19 +0000
-From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-To: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"christian.koenig@amd.com" <christian.koenig@amd.com>,
-	"quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"jstultz@google.com" <jstultz@google.com>, "linaro-mm-sig@lists.linaro.org"
-	<linaro-mm-sig@lists.linaro.org>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>,
-	=?utf-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
-	<Jianjiao.Zeng@mediatek.com>, =?utf-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?=
-	<kuohong.wang@mediatek.com>, =?utf-8?B?QW5hbiBTdW4gKOWtmeWuieWuiSk=?=
-	<Anan.Sun@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
-	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
-	"tjmercier@google.com" <tjmercier@google.com>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 6/9] dma-buf: heaps: mtk_sec_heap: Add tee service call
- for buffer allocating/freeing
-Thread-Topic: [PATCH 6/9] dma-buf: heaps: mtk_sec_heap: Add tee service call
- for buffer allocating/freeing
-Thread-Index: AQHZ5FgqDwsDNAc9xUe5kPjiMIdpmrBQxZ0AgAHqcIA=
-Date: Fri, 20 Oct 2023 10:01:19 +0000
-Message-ID: <7a2995de23c24ef22c071c6976c02b97e9b50126.camel@mediatek.com>
-References: <20230911023038.30649-1-yong.wu@mediatek.com>
-	 <20230911023038.30649-7-yong.wu@mediatek.com>
-	 <e7d72a94-4804-4297-8d3a-2191e2886bfc@quicinc.com>
-In-Reply-To: <e7d72a94-4804-4297-8d3a-2191e2886bfc@quicinc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|TYZPR03MB5408:EE_
-x-ms-office365-filtering-correlation-id: 7fbe873a-6f36-4e7a-66d9-08dbd1538209
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: UhV2OQ1f9P8KvOVJmY6XdSUV5JVZKXws4dvA6WU/wj8WY9kDkhu3TPDA8sjGjL/+des78qj7D6LOBiXtI87Qj8nKXlGcLwqerWxjUiM/uRxKvDjpbJwnOFqkQVkazr6SlflHW5bPzFOeSQlqncXtAeqTvxM+m7d2tbQcApRy7W6R2WZBIN4Nu27um/w1w7WK0qxCTWHqWRC+FPKF9KRAky51l6e/5LgSluJwCGFCjWC57QHTKrfZyNhvGUjLsgFTaeYvN5CqnahjGrpeN+b3JeIDuHbP2cKok84UgtMQbsmfh9JEsllO5MEhcrT7L6VMPkXO5yQkGqggM2gepcMcCVtK5K1ergA0Qe6SSXOMex3kofM/toBw0Iqc3xgbmbOiRRhYYG5DSFRRCkVm3tk80cJCVUTTN4AbLfgfXbiHfvBaFWjCAA7u3skk6iKVpQU8DrB4gB/wQWsSL9oy30OORDxSaqMoU9o05jjiRQnBBxIDuphZifdDjnt8Ns4wuYp9DAm5wBsn1OtzoDOfDAyGMvEjI1pE3RbxQXTMYSHeNtrCP58+VieZjtrhv4bXpmWKkYBk8oWaDkeSdeV4Dcb/NgcGLHRu0x6OxoQtScLPsSCPoyVuvYpOnwqDOlz7AjVHQV+AP/pzzzyxMipkifRJ4+Ax00UPAiYtzmunagIgLd12sAEZ7MmJVvuOickIwtsh
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(136003)(346002)(366004)(376002)(39860400002)(396003)(230922051799003)(451199024)(186009)(64100799003)(1800799009)(76116006)(66946007)(64756008)(66476007)(66446008)(54906003)(66556008)(110136005)(6486002)(478600001)(83380400001)(6512007)(53546011)(71200400001)(6506007)(122000001)(316002)(36756003)(85182001)(4001150100001)(38100700002)(38070700009)(7416002)(2906002)(86362001)(4326008)(8936002)(26005)(8676002)(41300700001)(2616005)(5660300002)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RGpoRnVYYW52SloxQnpXRk91WFZLY1o2dzc0N3ZOZ3Z0QVNtMWIrVzBHMUNx?=
- =?utf-8?B?eWZPd21TREVXczI4Y0I2SkM5aXQyUmVZL0tHV0xnL3lnWFpTNlJsUDlnR05V?=
- =?utf-8?B?MGt5K3lHWWRLc2ZMUEZDTmlOWG9taXhkMkM4bXFBY0NzWUwxMVdnZ2toMUR6?=
- =?utf-8?B?djNqbTUwL3Jkb0FCYXpCUnFyYWVRNVpsMEdkOHJKZUpWWVVXclYxb1k2WEF0?=
- =?utf-8?B?ZzVwZjcxcTRhdlZwVE5xWkpqTlFTTEJ4a2V0YVEyTUIyb2t1S3VMTUhhV0E2?=
- =?utf-8?B?NTNzVkJYRHV0cGxnc2xidmZtZ1pMRlNIUDZuMjd6NGJRQkxtZlBpVVRTK2V1?=
- =?utf-8?B?ekk4czFPRmEraThEM3NFZlNjSEUxdStmT3JlUWdwSURRS2xUZXFrYjJnQnJm?=
- =?utf-8?B?amNCZ3U4Qm5RZVlYalJxMkxIQ0NJelh2MDI2YzVoMGlZcVdEdm9FMXljTkFs?=
- =?utf-8?B?Q2lrS0hGWjBHK0dXcml6OWVKL1lXa3ZoN0pBZFJoWGNNOE0rckx3Y05peTJE?=
- =?utf-8?B?NVdGcFRRcEFUT0psdktFTStVRFZmYWRQSmVxaTZCclFJV3ZJOEZHSkUvT05J?=
- =?utf-8?B?VDFUS1FRbVJjL1dKRzdRS09mREdxVFdnb0JKVnF2VW0vSlYwbkJaMFhJWW5G?=
- =?utf-8?B?d0ZqUGhmLzBSSTFMQUh0ZStWaWR0dnlsaUU0QjNyK21BT2RaOXoyN2ZDS25q?=
- =?utf-8?B?YUFkclFIWDFud2x6bjMzL2YxY084T0ZmWWJvYXp6UzVEeit1d1VZZmZwOVZ6?=
- =?utf-8?B?L2ZIbHIxVTRlSGFHM2ZTbUcrZTNmcEc5U0ZlYWd3Q1E0aFNaTUlJWFNBYUE3?=
- =?utf-8?B?ajJDREpPeFpjMk9LajJvU3FuZld6Y2IvejMram9ta2ZzajZBY0VUOFczMWhv?=
- =?utf-8?B?Umt3TTIwSEM1L2VBbjJkbGNld2lCb2t4NUZkU0QrRVNwT1MxUXVnc3IveHNI?=
- =?utf-8?B?czh4U2JYdks1TmdxNSt3VVM4VU9UNHRWejU4bjNKNWNrYmFNRGU3eCttVWhD?=
- =?utf-8?B?S29QM21sSmhsTnZYd3hjYndGeWZDT3V5MmdiT0MyNVJ4T2dNU1ZoZ2Q3eEZX?=
- =?utf-8?B?RUFPa0RpdGg2NVR2UjFkNkZldFR5bEJXWTN0VDRPZjNlbGs2dnI3bVUvSzFm?=
- =?utf-8?B?TGNqZjRRN25DUDg2NGlWRStpL2JzS3RBZHNtb2lNMXEyS3VBSXFCbGhmbTQ0?=
- =?utf-8?B?TG41STJ4ckdISUFiVmxaaitiVnVoZWZWblR3QTdzZGpMeVo5bWc0NTVuTitC?=
- =?utf-8?B?QlJTWW5kQWxmbFYwazZmb3laR3VVK0d5SXFYL2tpWkpCV3R5ai9CNExTZnBa?=
- =?utf-8?B?WFphRWJYdzkrSHlLbUlHRis0Y3QrbDBZYWRqalFYYlUrVGY4QUFTL2NldDJJ?=
- =?utf-8?B?dlFLUTRQQlpTWmU4SlZMOVlOb1FCV2o0cVliR01STUhaRklPMTlKVVhOK1g5?=
- =?utf-8?B?UWllMDVFMU5XRHo1ekFhWkczNVBhNjZFSC9NM25kVGJzOUVGSjFVc0hOMEpG?=
- =?utf-8?B?QWpKK2RLaTRzMWZjQk13bksrZGtIU2ZPaGlPQ0h0bjFuYlBxL3cyek9NSlhY?=
- =?utf-8?B?TVpkR2swWXFZQlBKSUlVRSswM1VRaTR0b2ZKaVN0T2pXK3FkeE4wb1ZnY3FB?=
- =?utf-8?B?TXg5YStnalJPd3dqSllxbm05aDBVNTlkOVEvNTgyS05qWlRVZlhvTmIycVZO?=
- =?utf-8?B?TVVOT1NrUDVBN2NyNHcyUVV4dU8xR0JTZk5zWVkrZVZOWnRieUtJcXEwYTd1?=
- =?utf-8?B?UnRKY1BqZnlCTEZlTUl5bldzTi9SUVEwcUFoOU0zY0x0TEpSdlhPc3BLMTBw?=
- =?utf-8?B?OUpaenFtOGZNdGNZNVVJY3RLaFltS1FaOXlIdSt5SlFZejZsVnFvMUZRVEJ0?=
- =?utf-8?B?WU4rSkxidWhjbVo5dTgrTUdBRHo4MWFKOGxkQ2lxbEphbFVHTXZCRkR3ME1B?=
- =?utf-8?B?akZjRDBsZlUxRjRuR0w5Y1JkTGx2d1lJMEFXSFc2aW5jV2U5TEo5VzNzTmVX?=
- =?utf-8?B?eWlEek1uWHU3b1AybHNHTnpFQ3FKZzJoaCtYVDdud24vY1pKVTJ4WjY2K0RX?=
- =?utf-8?B?YUJkb2NyWmo5VGQxNXkrM0Rna09lZjZJTUFQeXE2YmlYQisxS0QrQWhlMzF1?=
- =?utf-8?B?OWxjd3VEeTh4aENUeWVmckNwZ0hEWjh1WWhxMnNnSWFROFhiSnNoTjV6NE9U?=
- =?utf-8?B?aEE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <A120DE4D9B11BB4E9A25C442F4B6D15B@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1697796416; x=1698401216; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=U60xRu3muth06imj7dV2lIvp06gGg+EXmKMXyWpygio=;
+        b=Y0JCN1XpjXVhZTk2uOYmtn6ayfvtKCumBCoFHlFZczPzBQ/CoogEqaaOJqYRdBvHcO
+         /FRoOL//XKvKhuX8GXtNVViXhrArW+1jns3hJtSpLOPEGT7rNSOZi2Vzjm4/WyKKDwEC
+         7XoTlk17YfNMQ6xcZLJKL1wxKrmc9yBAi3t98=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697796416; x=1698401216;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=U60xRu3muth06imj7dV2lIvp06gGg+EXmKMXyWpygio=;
+        b=Pu7rHli0x1IudYf2Lhgh63g0/BjyqmzKOtNNDoevtLGct63E2abgIeS5jMFAZfdjym
+         3m46Lk41fjlusJIGYrfGN1k8B08dLkxiRbfRZUQ7EXxUZfxwZBek4DQwtT4P/pBUTjWj
+         9z6lqdbqhR5mc5Px8XORqVNQZpKnBSh1WpWwX7UJ3vmn3gLq2fSvpX3JQnh489dtilai
+         kSqIfhs98GsoXPpwH8tBeymoxxWTmkB80Nhj4DqOiJVoP3RCVbDwrbclH39ZqWbHDvDG
+         xoUR/0aRRp+03v4meXAclJXQKv7Kxr5nig1tSoc9cll1O9DYx0Mghg5aiqouctR8mcX+
+         xtCA==
+X-Gm-Message-State: AOJu0Yyd24Ttl1gQ6jlwCVVhovMop1uubffMCti/wjYyxrdKcNIFbcsB
+	DPNqcbayb9TfxFxL54snlQ34v5gxlhlx/tNrcNf3Ow==
+X-Google-Smtp-Source: AGHT+IGMgUhxeAaKaib8jj8BktoeGnz9Vt6YddVIkuEOsf7lHfREqf/7V17tOsIuYSEJ0VxY4zzdyMBMFhYnMoAkzgg=
+X-Received: by 2002:ac2:46f9:0:b0:507:9702:8e0f with SMTP id
+ q25-20020ac246f9000000b0050797028e0fmr868400lfo.25.1697796415848; Fri, 20 Oct
+ 2023 03:06:55 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7fbe873a-6f36-4e7a-66d9-08dbd1538209
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Oct 2023 10:01:19.7163
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7MeeWuS896n1WsAm/I6sioC0+v6q86WcZnmRcnpskzhqOTMCDaZOS5Y1UJ4XRce68EGX9DykS6qTfL4xiH6UqQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB5408
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--24.656400-8.000000
-X-TMASE-MatchedRID: gIwa0kWWszLUL3YCMmnG4uYAh37ZsBDC1kqyrcMalqUNcckEPxfz2DEU
-	xl1gE1bkfdd9BtGlLLzx1uczIHKx54/qvvWxLCnegOqr/r0d+Cx+Mk6ACsw4JlwpnAAvAwazCS6
-	IUmxCo5HtLocRZnnK+tsIe/TXUbL1idh40yl3wZCVOwZbcOalS4fsPVs/8Vw6CqIJhrrDy28bOO
-	kcH9zseSrlq6rYWJgzqYoaR830XIVxzwb0rKc346ngbqTYC4GHmGSSol4Uei26pZ/o2Hu2YZ/ih
-	Jrtaz9W4vM1YF6AJbY9l7H+TFQgdbew1twePJJB3QfwsVk0Ubv+efAnnZBiLyF6bSSak9kx
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--24.656400-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 7A2BC4B9017573CE1F2DA9D4E1799009D5A7FD0A1250DB93FFCAA19CCFA931152000:8
-X-MTK: N
+References: <20231012230237.2676469-1-wenst@chromium.org> <20231012230237.2676469-3-wenst@chromium.org>
+ <20231013-washer-mortally-b27c196ac50f@spud> <CAGXv+5GF7HfQSOg9c=G+c4DPUW24Ax7LX4raTynDbE3xc8iCdg@mail.gmail.com>
+ <20231013-panic-vaseline-350c10e7d585@spud> <CAGXv+5EmLDWi3Lnca1vPft=9z9Cp2L2ee08in_b_21hipf9ieQ@mail.gmail.com>
+ <20231014-proud-levers-eb03f30a0a9a@spud> <CAGXv+5F-x9m2WYZm-YLaxqio=VnfKkL26gLFbayJctBEJrSM6A@mail.gmail.com>
+ <20231018-earpiece-dimmed-81c0f728d0b6@spud>
+In-Reply-To: <20231018-earpiece-dimmed-81c0f728d0b6@spud>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 20 Oct 2023 18:06:44 +0800
+Message-ID: <CAGXv+5F8rLOnUuCJ_PYxqXYN68Hd7OafLR0a6+kHV-n2wuR5=A@mail.gmail.com>
+Subject: Re: [PATCH 2/9] dt-bindings: arm: mediatek: Add MT8186 Tentacruel /
+ Tentacool Chromebooks
+To: Conor Dooley <conor@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231020_030304_423677_64C3EE3E 
-X-CRM114-Status: GOOD (  18.31  )
+X-CRM114-CacheID: sfid-20231020_030704_271583_D8982404 
+X-CRM114-Status: GOOD (  62.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -208,69 +93,216 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgVmlqYXlhbmFuZCwNCg0KVGhhbmtzIHZlcnkgbXVjaCBmb3IgeW91ciByZXZpZXcuDQoNCk9u
-IFRodSwgMjAyMy0xMC0xOSBhdCAxMDoxNSArMDUzMCwgVmlqYXlhbmFuZCBKaXR0YSB3cm90ZToN
-Cj4gIAkgDQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBsaW5rcyBvciBv
-cGVuIGF0dGFjaG1lbnRzIHVudGlsDQo+IHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3Ig
-dGhlIGNvbnRlbnQuDQo+ICANCj4gDQo+IE9uIDkvMTEvMjAyMyA4OjAwIEFNLCBZb25nIFd1IHdy
-b3RlOg0KPiA+IEFkZCBURUUgc2VydmljZSBjYWxsIGZvciBzZWN1cmUgbWVtb3J5IGFsbG9jYXRp
-bmcvZnJlZWluZy4NCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBBbmFuIFN1biA8YW5hbi5zdW5A
-bWVkaWF0ZWsuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFlvbmcgV3UgPHlvbmcud3VAbWVkaWF0
-ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICBkcml2ZXJzL2RtYS1idWYvaGVhcHMvbXRrX3NlY3VyZV9o
-ZWFwLmMgfCA2OQ0KPiArKysrKysrKysrKysrKysrKysrKysrKystDQo+ID4gIDEgZmlsZSBjaGFu
-Z2VkLCA2OCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pDQo+ID4gDQo+ID4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZG1hLWJ1Zi9oZWFwcy9tdGtfc2VjdXJlX2hlYXAuYyBiL2RyaXZlcnMvZG1h
-LQ0KPiBidWYvaGVhcHMvbXRrX3NlY3VyZV9oZWFwLmMNCj4gPiBpbmRleCBlM2RhMzNhM2QwODMu
-LjE0YzJhMTZhNzE2NCAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL2RtYS1idWYvaGVhcHMvbXRr
-X3NlY3VyZV9oZWFwLmMNCj4gPiArKysgYi9kcml2ZXJzL2RtYS1idWYvaGVhcHMvbXRrX3NlY3Vy
-ZV9oZWFwLmMNCj4gPiBAQCAtMTcsNiArMTcsOSBAQA0KPiA+ICANCj4gPiAgI2RlZmluZSBNVEtf
-VEVFX1BBUkFNX05VTTQNCj4gPiAgDQo+ID4gKyNkZWZpbmUgVFpDTURfTUVNX1NFQ1VSRUNNX1VO
-UkVGNw0KPiA+ICsjZGVmaW5lIFRaQ01EX01FTV9TRUNVUkVDTV9aQUxMT0MxNQ0KPiA+ICsNCj4g
-PiAgLyoNCj4gPiAgICogTWVkaWFUZWsgc2VjdXJlIChjaHVuaykgbWVtb3J5IHR5cGUNCj4gPiAg
-ICoNCj4gPiBAQCAtMjksNiArMzIsOCBAQCBlbnVtIGtyZWVfbWVtX3R5cGUgew0KPiA+ICBzdHJ1
-Y3QgbXRrX3NlY3VyZV9oZWFwX2J1ZmZlciB7DQo+ID4gIHN0cnVjdCBkbWFfaGVhcCpoZWFwOw0K
-PiA+ICBzaXplX3RzaXplOw0KPiA+ICsNCj4gPiArdTMyc2VjX2hhbmRsZTsNCj4gPiAgfTsNCj4g
-PiAgDQo+ID4gIHN0cnVjdCBtdGtfc2VjdXJlX2hlYXAgew0KPiA+IEBAIC04MCw2ICs4NSw2MyBA
-QCBzdGF0aWMgaW50IG10a19rcmVlX3NlY3VyZV9zZXNzaW9uX2luaXQoc3RydWN0DQo+IG10a19z
-ZWN1cmVfaGVhcCAqc2VjX2hlYXApDQo+ID4gIHJldHVybiByZXQ7DQo+ID4gIH0NCj4gPiAgDQo+
-ID4gK3N0YXRpYyBpbnQNCj4gPiArbXRrX3NlY19tZW1fdGVlX3NlcnZpY2VfY2FsbChzdHJ1Y3Qg
-dGVlX2NvbnRleHQgKnRlZV9jdHgsIHUzMg0KPiBzZXNzaW9uLA0KPiA+ICsgICAgIHVuc2lnbmVk
-IGludCBjb21tYW5kLCBzdHJ1Y3QgdGVlX3BhcmFtICpwYXJhbXMpDQo+ID4gK3sNCj4gPiArc3Ry
-dWN0IHRlZV9pb2N0bF9pbnZva2VfYXJnIGFyZyA9IHswfTsNCj4gPiAraW50IHJldDsNCj4gPiAr
-DQo+ID4gK2FyZy5udW1fcGFyYW1zID0gTVRLX1RFRV9QQVJBTV9OVU07DQo+ID4gK2FyZy5zZXNz
-aW9uID0gc2Vzc2lvbjsNCj4gPiArYXJnLmZ1bmMgPSBjb21tYW5kOw0KPiA+ICsNCj4gPiArcmV0
-ID0gdGVlX2NsaWVudF9pbnZva2VfZnVuYyh0ZWVfY3R4LCAmYXJnLCBwYXJhbXMpOw0KPiA+ICtp
-ZiAocmV0IDwgMCB8fCBhcmcucmV0KSB7DQo+ID4gK3ByX2VycigiJXM6IGNtZCAlZCByZXQgJWQ6
-JXguXG4iLCBfX2Z1bmNfXywgY29tbWFuZCwgcmV0LA0KPiBhcmcucmV0KTsNCj4gPiArcmV0ID0g
-LUVPUE5PVFNVUFA7DQo+ID4gK30NCj4gPiArcmV0dXJuIHJldDsNCj4gPiArfQ0KPiA+ICsNCj4g
-PiArc3RhdGljIGludCBtdGtfc2VjX21lbV9hbGxvY2F0ZShzdHJ1Y3QgbXRrX3NlY3VyZV9oZWFw
-ICpzZWNfaGVhcCwNCj4gPiArc3RydWN0IG10a19zZWN1cmVfaGVhcF9idWZmZXIgKnNlY19idWYp
-DQo+ID4gK3sNCj4gPiArc3RydWN0IHRlZV9wYXJhbSBwYXJhbXNbTVRLX1RFRV9QQVJBTV9OVU1d
-ID0gezB9Ow0KPiA+ICt1MzIgbWVtX3Nlc3Npb24gPSBzZWNfaGVhcC0+bWVtX3Nlc3Npb247DQo+
-ID4gK2ludCByZXQ7DQo+ID4gKw0KPiA+ICtwYXJhbXNbMF0uYXR0ciA9IFRFRV9JT0NUTF9QQVJB
-TV9BVFRSX1RZUEVfVkFMVUVfSU5QVVQ7DQo+ID4gK3BhcmFtc1swXS51LnZhbHVlLmEgPSBTWl80
-SzsvKiBhbGlnbm1lbnQgKi8NCj4gPiArcGFyYW1zWzBdLnUudmFsdWUuYiA9IHNlY19oZWFwLT5t
-ZW1fdHlwZTsvKiBtZW1vcnkgdHlwZSAqLw0KPiA+ICtwYXJhbXNbMV0uYXR0ciA9IFRFRV9JT0NU
-TF9QQVJBTV9BVFRSX1RZUEVfVkFMVUVfSU5QVVQ7DQo+ID4gK3BhcmFtc1sxXS51LnZhbHVlLmEg
-PSBzZWNfYnVmLT5zaXplOw0KPiA+ICtwYXJhbXNbMl0uYXR0ciA9IFRFRV9JT0NUTF9QQVJBTV9B
-VFRSX1RZUEVfVkFMVUVfSU5PVVQ7DQo+ID4gKw0KPiA+ICsvKiBBbHdheXMgcmVxdWVzdCB6ZXJv
-ZWQgYnVmZmVyICovDQo+ID4gK3JldCA9IG10a19zZWNfbWVtX3RlZV9zZXJ2aWNlX2NhbGwoc2Vj
-X2hlYXAtPnRlZV9jdHgsIG1lbV9zZXNzaW9uLA0KPiA+ICsgICBUWkNNRF9NRU1fU0VDVVJFQ01f
-WkFMTE9DLCBwYXJhbXMpOw0KPiANCj4gSSBzZWUgaGVyZSBvcHRlZSBjYWxscyBhcmUgYmVpbmcg
-dXNlZCB0byBzZWN1cmUgbWVtb3J5Lg0KPiANCj4gRm9yIGEgc2VjdXJlIGhlYXAsIHRoZXJlIGNh
-biBiZSBtdWx0aXBsZSB3YXlzIG9uIGhvdyB3ZSB3YW50IHRvDQo+IHNlY3VyZSBtZW1vcnksDQo+
-IGZvciBlZyA6IGJ5IHVzaW5nIHFjb21fc2NtX2Fzc2lnbl9tZW0uDQo+IA0KPiBUaGlzIGludGVy
-ZmFjZSByZXN0cmljdHMgc2VjdXJpbmcgbWVtb3J5IHRvIG9ubHkgb3B0ZWUgY2FsbHMuDQo+IGNh
-biB3ZSBoYXZlIGEgd2F5IHRvIGNob29zZSBvcHMgdGhhdCB3ZSB3YW50IHRvIHNlY3VyZSBtZW1v
-cnkgPyANCg0KVGhhbmtzIGZvciB0aGlzIHN1Z2dlc3Rpb24uIFNvIGl0IGxvb2tzIGxpa2UgdGhl
-cmUgYXJlIGZvdXIgb3BlcmF0aW9ucw0KaW4gdGhlIGFic3RyYWN0IG9wcy4gU29tZXRoaW5nIGxp
-a2UgdGhpcz8NCg0Kc3RydWN0IHNlY19tZW1vcnlfb3BzIHsNCiAgIGludCAoKnNlY19tZW1vcnlf
-aW5pdCkoKSAgIC8vd2UgbmVlZCBpbml0aWFsaXNlIHRlZSBzZXNzaW9uIGhlcmUuDQogICBpbnQg
-KCpzZWNfbWVtb3J5X2FsbG9jKSgpDQogICBpbnQgKCpzZWNfbWVtb3J5X2ZyZWUpKCkNCiAgIHZv
-aWQgKCpzZWNfbWVtb3J5X3VuaW5pdCkoKQ0KfQ0KICAgDQpEbyB5b3UgYWxzbyBuZWVkIHRlZSBv
-cGVyYXRpb24gbGlrZSB0ZWVfY2xpZW50X29wZW5fc2Vzc2lvbiBhbmQNCnRlZV9jbGllbnRfaW52
-b2tlX2Z1bmM/DQppZiBzbywgeW91ciBVVUlEIGFuZCBURUUgY29tbWFuZCBJRCB2YWx1ZSBhcmUg
-YWxzbyBkaWZmZXJlbnQsIHJpZ2h0Pw0KICAgDQpXZSBtYXkgYWxzbyBuZWVkIG5ldyBtYWNyb3Mg
-b24gaG93IHRvIGNob29zZSBkaWZmZXJlbnQgc2VjX21lbW9yeV9vcHMNCnNpbmNlIHdlIGRvbid0
-IGhhdmUgZGlmZmVyZW50IGJpbmRpbmdzLg0KDQo+IA0KPiBUaGFua3MsDQo+IFZpamF5DQo=
+On Wed, Oct 18, 2023 at 11:07=E2=80=AFPM Conor Dooley <conor@kernel.org> wr=
+ote:
+>
+> On Sun, Oct 15, 2023 at 11:15:22PM -0700, Chen-Yu Tsai wrote:
+> > On Sat, Oct 14, 2023 at 6:40=E2=80=AFAM Conor Dooley <conor@kernel.org>=
+ wrote:
+> > >
+> > > On Fri, Oct 13, 2023 at 11:19:16AM -0700, Chen-Yu Tsai wrote:
+> > > > On Fri, Oct 13, 2023 at 10:55=E2=80=AFAM Conor Dooley <conor@kernel=
+.org> wrote:
+> > > > >
+> > > > > On Fri, Oct 13, 2023 at 10:29:25AM -0700, Chen-Yu Tsai wrote:
+> > > > > > On Fri, Oct 13, 2023 at 8:11=E2=80=AFAM Conor Dooley <conor@ker=
+nel.org> wrote:
+> > > > > > >
+> > > > > > > On Fri, Oct 13, 2023 at 07:02:28AM +0800, Chen-Yu Tsai wrote:
+> > > > > > > > Add entries for MT8186 based Tentacruel / Tentacool Chromeb=
+ooks. The two
+> > > > > > > > are based on the same board design: the former is a convert=
+ible device
+> > > > > > > > with a touchscreen, stylus, and some extra buttons; the lat=
+ter is a
+> > > > > > > > clamshell device and lacks these additional features.
+> > > > > > > >
+> > > > > > > > The two devices both have two variants. The difference is a=
+ second
+> > > > > > > > source touchpad controller that shares the same address as =
+the original,
+> > > > > > > > but is incompatible.
+> > > > > > >
+> > > > > > > > The extra SKU IDs for the Tentacruel devices map to differe=
+nt sensor
+> > > > > > > > components attached to the Embedded Controller. These are n=
+ot visible
+> > > > > > > > to the main processor.
+> > > > > > >
+> > > > > > > Wha? Given your ordering, is a "google,tentacruel-sku262144" =
+a super-set
+> > > > > > > of "google,tentacruel-sku262145"? If not, this compatible ord=
+ering
+> > > > > > > doesn't make sense. I can't tell from your description, and t=
+he
+> > > > > > > absence of a
+> > > > > > > items:
+> > > > > > >           - const: google,tentacruel-sku262145
+> > > > > > >           - const: google,tentacruel-sku262146
+> > > > > > >           - const: google,tentacruel-sku262147
+> > > > > > >           - const: google,tentacruel
+> > > > > > >           - const: mediatek,mt8186
+> > > > > > > suggests that there is no google,tentacruel-sku262145
+> > > > > > > device?
+> > > > > >
+> > > > > > AFAIK all four SKUs exist. And as far as the main processor is =
+concerned,
+> > > > > > they look completely identical, so they should share the same d=
+evice tree.
+> > > > > > As mentioned in the commit message, the differences are only vi=
+sible to
+> > > > > > the embedded controller, which fuses the sensor inputs.
+> > > > >
+> > > > > Then it makes very little sense to write a binding like this.
+> > > > > If this was just for the 252144 SKU, this would be fine.
+> > > > > For the other SKUs, there is no way to uniquely identify them, as
+> > > > > all four of google,tentacruel-sku262144, google,tentacruel-sku262=
+145,
+> > > > > google,tentacruel-sku262146 and google,tentacruel-sku262147 must =
+be
+> > > > > present.
+> > > > > Given that, why even bother including the SKUs in the first place=
+,
+> > > > > since no information can be derived from them that cannot be deri=
+ved
+> > > > > from google,tentacruel?
+> > > > > There's something that I am clearly missing here...
+> > > >
+> > > > There are incompatible variants of google,tentacruel. This is why t=
+his
+> > > > patch has four google,tentacruel based entries. Of them, two are Te=
+ntacool,
+> > > > which are clamshell laptops, and two of them are Tentacruel, which =
+are
+> > > > convertibles.
+> > > >
+> > > > Within each group there are two variants: the second variant swaps =
+out
+> > > > the I2C touchpad controller. These two controllers use the same I2C
+> > > > address but use different compatible strings, so it's not possible =
+to
+> > > > have them coexist within the same device tree file like we do for m=
+any
+> > > > other second source components.
+> > > >
+> > > > So the relationship looks like the following:
+> > > >
+> > > > google,tentacruel --- Tentacruel --- google,tentacruel-sku26214[456=
+7]
+> > > >                    |              |
+> > > >                    |              -- google,tentacruel-sku2621{48,4=
+9,50,51}
+> > > >                    |
+> > > >                    -- Tentacool ---- google,tentacruel-sku327681
+> > > >                                  |
+> > > >                                  --- google,tentacruel-sku327683
+> > > >
+> > > > Also, the devices themselves only know their own SKU ID. The firmwa=
+re
+> > > > will generate a list of compatible strings like:
+> > > >
+> > > >   google,tentacruel-rev4-sku262144
+> > > >   google,tentacruel-rev4
+> > > >   google,tentacruel-sku262144
+> > > >   google,tentacruel
+> > > >
+> > > > and try to find a match in the kernel FIT image. The method we curr=
+ently
+> > > > use is to include all the applicable board compatible strings.
+> > >
+> > > Then it seems like what you need is something like
+> > > oneOf:
+> > >   - items:
+> > >       - const: google,tentacruel-sku262144
+> > >       - const: google,tentacruel
+> > >       - const: mediatek,mt8186
+> > >   - items:
+> > >       - enum:
+> > >           - google,tentacruel-sku262145
+> > >           - google,tentacruel-sku262146
+> > >           - google,tentacruel-sku262147
+> > >       - const: google,tentacruel-sku262144
+> > >       - const: google,tentacruel
+> > >       - const: mediatek,mt8186
+> > >
+> > > What you have at the moment just seems like a hack because you want t=
+o
+> > > stuff all of these compatible strings into a single dts.
+> >
+> > It is. And it works OK downstream. The reason we want to stuff them in
+> > one dts is because the firmware will not generate the fallback to
+> > sku262144 as the scheme above suggests.
+>
+> I'm not going to ack the hack that you have here, sorry. Maybe Rob or
+
+I understand.
+
+> Krzysztof will. The list your firmware generates above doesn't even
+> match the contents of this patch, with the extra "rev-4" compatibles.
+
+The firmware generates a list of compatibles that it will go through and
+try to find a matching compatible with. I believe the intent was not to
+use it as "a list of compatibles" in the usual sense. The kernel image
+comes bundled with a whole bunch of device trees, and the firmware just
+tries to find the best or most specific match. The firmware only knows
+about itself, and does not know about adjacent or similar SKUs or
+revisions.
+
+The process is described in detail in the kernel tree in
+
+    Documentation/arch/arm/google/chromebook-boot-flow.rst
+
+or https://docs.kernel.org/arch/arm/google/chromebook-boot-flow.html
+
+> > Having three or four identical device trees just with different board
+> > compatible string sequences to me seems a bit redundant, and it does
+> > end up bloating our FIT image a bit, which impacts boot time.
+>
+> I'm not aware of the capabilities of your bootloader when it comes to
+> setting properties before passing them to the kernel, but that is what I
+> would be doing to cut down on having 4 different dtbs.
+
+That could be a solution for future devices, but the devices this series
+covers are already on the market. The firmware on these devices is very
+hard to update, and there is no guarantee that the device ever gets
+updated. Sometimes these extra SKUs or component changes happen after
+the device is in production, due to inventory issues or EOL of components.
+This is what happened here.
+
+Then there's sometimes the problem where we are originally shipping with
+downstream patches / bindings that may change as they are upstreamed.
+This is something we are trying to fix by having our vendors upstream
+earlier, but sometimes we do end up carrying some stuff downstream
+regardless.
+
+Also, doing the customization in firmware would be somewhat fragile as
+we end up trying to keep two separate software packages in sync.
+
+
+I talked to Doug Anderson about this, and his "of: device: Support 2nd
+sources of probeable but undiscoverable devices" proposal (specifically,
+the second proposal [1] after Rob nacked the first one) could help solve
+this as well. Part of what we have with the Tentacruel series is second
+source drop-in components, which is the same issue that the proposal
+wants to solve.
+
+Specifically, instead of the firmware solution you proposed, there would
+be a hardware prober driver running early in the kernel that deals with
+the board specifics, either by checking the SKU ID passed in by the
+firmware (in inserted device tree nodes), or by manually probing the
+hardware in some board specific way and tweaking the device tree to
+match. It would know what needs to be handled for each device series.
+
+With this scheme, we would be able to merge some of the device trees
+together, though I'm not sure we would want to merge all of
+"google,tentacruel", as that would also cover variants of different
+form factors. I guess it depends on how much editing or probing we
+want to allow in the board manager.
+
+
+Thanks
+ChenYu
+
+[1] https://lore.kernel.org/linux-devicetree/CAD=3DFV=3DUjVAgT-febtj4=3DUZ2=
+GQp01D-ern2Ff9+ODcHeQBOsdTQ@mail.gmail.com/
 
