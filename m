@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F146CDB474
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Oct 2023 10:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E5E9CDB47E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Oct 2023 10:31:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=phX7zoNmQ4vjkVmy9mNoa9A7qxze2JuzGhv7Ze0dzzs=; b=SnIHPcmXe3w+3QrB+2J6AeA/iX
-	J7KV9BPYJsg4Y4h1OfJMK+lN8BUFSDgNEQwo1aISOt4wbHNqxR72ZJQBWlqtQy0pcGEx+49noD4eQ
-	dctp6WRe1ymH5lYpI/Rj7OlGxTO8JsP4KbOB9e9HnubGfIUYasQ9naBoFHJrA/+M7jZMZ2pPxIwi4
-	HxkDQtQfXwELVj05QUvIv16OGYiBNLVVpxdk5RAlgdpyhE+PYst18DSUu1FYlC/4evVUljhIG7IKh
-	F3h1UOwGoqaoFdwdSnP3aSWMcI5Avd/A3Vobp9K79zCm6UguLqiyaR7yNAMUFEYH5yG18t2csPUop
-	ZbwfMETw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nPLH7R4XSVcyLNccc/8QcnyX6OOBnmC5bYTy+ODrsfg=; b=noJY42hpwMCBv+F2LpUcAA7EGc
+	H67Uj7tyb6q73E2e9aNxbKIPIgsKyefCgc5SYMRVnMVR05yRurw2CsT3HpoWIftA/KP51X9dZ0vEA
+	83JeztWd5Yg3a3UYdsK+FYrbwFkDx3Q2wlfOCFZuHRD84AiRbtyd1PC5EKhk1W8K8TQe3P7uRO4Z2
+	imBFYZ5VGvKIbu28oSRgB9PRgJnmeblTscwpj0df71kVyDRB/QyAd2YTbJIkkEavchF5kMwphHVyw
+	yEEiSR+XEOF0L2Q7/TopENQQ3jtyVDAmZofFDNpsjOcuh+cLpOHWCK5zsekQCha/HmJF/UTjtVu0i
+	C/ikXssw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtmmr-001mLT-1d;
-	Fri, 20 Oct 2023 10:31:25 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qtmmw-001mMo-3B;
+	Fri, 20 Oct 2023 10:31:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtmmp-001mKk-0f
+	id 1qtmmt-001mLS-39
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Oct 2023 10:31:24 +0000
+	Fri, 20 Oct 2023 10:31:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 3821EB83052;
-	Fri, 20 Oct 2023 10:31:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4398DC433C8;
-	Fri, 20 Oct 2023 10:31:20 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 001AA62036;
+	Fri, 20 Oct 2023 10:31:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D5B4C433C9;
+	Fri, 20 Oct 2023 10:31:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697797880;
-	bh=QG0eqApJv057ZhUcrZWheMwZD0XE0lTlkrDwaucJpqk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=doOaSRLpZMJzggL6jVoa8LczUhdPDxKgghOhWEAAEQ6N9cIx+6JPLuagVPdgniFDf
-	 Mv2ROcU+avVJQyrW+SFw2zv7hT7Y+XWH9iR6QHi1SE1flpQsiMcjDXuEaEVxTepaAY
-	 v195HEop5kBSf6Y6JpZaOLZn2IDmMmoEtLwTkLQ8tKlwMQIjXaa6rMzDO9P3OHNBOm
-	 p3v/MyaPS3N/B2IM0jLnEnUSCe47WBtAKQbC8E0gJx36AcfPkvGqMwB+Q5dMCFROsn
-	 9Ap2HGu2T8x+zGMVfKjwqK5ApijAfdpy1RZesDg+LYDDKnIYciTmWh11nrXUu55+Bl
-	 oh2UJC1WjV95A==
+	s=k20201202; t=1697797884;
+	bh=oXyUA0uN5v3peBVNB2eKJz/PM1Cdu9sHgmbRhC84ez8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=YG2JKbVr98w6Pm28h1MiXdltGalSzK9Y2YNleWMdDBAdj0gdaw7HC8JJmIqWGW7DS
+	 Ch4FirVN/Dea37UYp/naiXYSke+YEoHhnfVwbZnajTXQjZNF1cdEp5SCat+i5HJ2ai
+	 ER7iiihEL97XNVu5j9XAgySMD8dzeoJ3BIobRkGBYDGJRkDJV3QzZ4dOwZo3D4rtAg
+	 b82hbJWlniOxOWfX11P6g70VAU40gdDr3Vp0W0EiHJFTSkLlVAkWUvyyhSWceLrRmz
+	 pCceRjwjN96KJHKQI1kY6/B2ykCbg9aKiJZTdwiBJOBrSYbnf8awcvzPEgyOpGY3gt
+	 y04lkdtEQSVjQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
 Cc: lorenzo.bianconi@redhat.com,
@@ -52,16 +52,17 @@ Cc: lorenzo.bianconi@redhat.com,
 	Bo.Jiao@mediatek.com,
 	sujuan.chen@mediatek.com,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 00/13] wifi: mt7996: add wed support
-Date: Fri, 20 Oct 2023 12:30:47 +0200
-Message-ID: <cover.1697797422.git.lorenzo@kernel.org>
+Subject: [PATCH v3 01/13] wifi: mt76: mmio: move mt76_mmio_wed_{init,release}_rx_buf in common code
+Date: Fri, 20 Oct 2023 12:30:48 +0200
+Message-ID: <a735e42be4b328bfa90a1a631a77bf3b13143131.1697797422.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <cover.1697797422.git.lorenzo@kernel.org>
+References: <cover.1697797422.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231020_033123_532754_C84CE0D4 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231020_033128_101732_23DCA8FB 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,67 +77,222 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to MT7915, introduce Wireless Ethernet Dispatcher (WED)
-support for MT7996 driver to offload transmitted/received traffic.
+Move mt76_mmio_wed_init_rx_buf and mt76_mmio_wed_release_rx_buf routines
+in common code.
+This is a preliminary patch to introduce WED support for mt7996
 
-Changes since v2:
-- fix compilation errors if wed is not enabled
-- add RRO garbage collector patch to the series
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mmio.c     | 75 ++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  5 ++
+ .../net/wireless/mediatek/mt76/mt7915/mmio.c  | 78 +------------------
+ 3 files changed, 82 insertions(+), 76 deletions(-)
 
-Changes since v1:
-- add wed reset support
-- unmap rro buffer on module unload
-- check ind reason to check if the rx buffer must be discarded
-
-Bo Jiao (1):
-  wifi: mt76: mt7996: add wed rx support
-
-Lorenzo Bianconi (11):
-  wifi: mt76: mmio: move mt76_mmio_wed_{init,release}_rx_buf in common
-    code
-  wifi: mt76: move mt76_mmio_wed_offload_{enable,disable} in common code
-  wifi: mt76: move mt76_net_setup_tc in common code
-  wifi: mt76: introduce mt76_queue_is_wed_tx_free utility routine
-  wifi: mt76: introduce wed pointer in mt76_queue
-  wifi: mt76: increase MT_QFLAG_WED_TYPE size
-  wifi: mt76: dma: introduce __mt76_dma_queue_reset utility routine
-  wifi: mt76: mt7996: use u16 for val field in mt7996_mcu_set_rro
-    signature
-  mt76: move wed reset common code in mt76 module
-  mt76: mt7996: add wed reset support
-  wifi: mt76: mt7996: add wed rro delete session garbage collector
-
-Sujuan Chen (1):
-  wifi: mt76: mt7996: add wed tx support
-
- drivers/net/wireless/mediatek/mt76/dma.c      | 246 +++++++++++-----
- drivers/net/wireless/mediatek/mt76/dma.h      |  52 ++++
- drivers/net/wireless/mediatek/mt76/mac80211.c |  19 +-
- drivers/net/wireless/mediatek/mt76/mmio.c     | 105 +++++++
- drivers/net/wireless/mediatek/mt76/mt76.h     |  96 +++++-
- .../net/wireless/mediatek/mt76/mt7603/dma.c   |   9 +-
- .../net/wireless/mediatek/mt76/mt7615/dma.c   |   6 +-
- .../net/wireless/mediatek/mt76/mt76_connac.h  |   3 +-
- .../wireless/mediatek/mt76/mt76_connac_mac.c  |   5 +-
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   1 +
- .../net/wireless/mediatek/mt76/mt76x02_mmio.c |   5 +-
- .../net/wireless/mediatek/mt76/mt7915/dma.c   |  46 +--
- .../net/wireless/mediatek/mt76/mt7915/main.c  |  16 +-
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  | 116 +-------
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7925/pci.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7996/dma.c   | 276 ++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7996/init.c  | 256 +++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7996/mac.c   | 122 +++++++-
- .../net/wireless/mediatek/mt76/mt7996/main.c  |  42 +++
- .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 115 +++++++-
- .../net/wireless/mediatek/mt76/mt7996/mcu.h   |  37 +++
- .../net/wireless/mediatek/mt76/mt7996/mmio.c  | 245 ++++++++++++++--
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  79 ++++-
- .../net/wireless/mediatek/mt76/mt7996/pci.c   |  61 ++--
- .../net/wireless/mediatek/mt76/mt7996/regs.h  |  78 ++++-
- 26 files changed, 1695 insertions(+), 345 deletions(-)
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mmio.c b/drivers/net/wireless/mediatek/mt76/mmio.c
+index 86e3d2ac4d0d..350650a0fce2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mmio.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include "mt76.h"
++#include "dma.h"
+ #include "trace.h"
+ 
+ static u32 mt76_mmio_rr(struct mt76_dev *dev, u32 offset)
+@@ -84,6 +85,80 @@ void mt76_set_irq_mask(struct mt76_dev *dev, u32 addr,
+ }
+ EXPORT_SYMBOL_GPL(mt76_set_irq_mask);
+ 
++#ifdef CONFIG_NET_MEDIATEK_SOC_WED
++void mt76_mmio_wed_release_rx_buf(struct mtk_wed_device *wed)
++{
++	struct mt76_dev *dev = container_of(wed, struct mt76_dev, mmio.wed);
++	int i;
++
++	for (i = 0; i < dev->rx_token_size; i++) {
++		struct mt76_txwi_cache *t;
++
++		t = mt76_rx_token_release(dev, i);
++		if (!t || !t->ptr)
++			continue;
++
++		mt76_put_page_pool_buf(t->ptr, false);
++		t->ptr = NULL;
++
++		mt76_put_rxwi(dev, t);
++	}
++
++	mt76_free_pending_rxwi(dev);
++}
++EXPORT_SYMBOL_GPL(mt76_mmio_wed_release_rx_buf);
++
++u32 mt76_mmio_wed_init_rx_buf(struct mtk_wed_device *wed, int size)
++{
++	struct mt76_dev *dev = container_of(wed, struct mt76_dev, mmio.wed);
++	struct mtk_wed_bm_desc *desc = wed->rx_buf_ring.desc;
++	struct mt76_queue *q = &dev->q_rx[MT_RXQ_MAIN];
++	int i, len = SKB_WITH_OVERHEAD(q->buf_size);
++	struct mt76_txwi_cache *t = NULL;
++
++	for (i = 0; i < size; i++) {
++		enum dma_data_direction dir;
++		dma_addr_t addr;
++		u32 offset;
++		int token;
++		void *buf;
++
++		t = mt76_get_rxwi(dev);
++		if (!t)
++			goto unmap;
++
++		buf = mt76_get_page_pool_buf(q, &offset, q->buf_size);
++		if (!buf)
++			goto unmap;
++
++		addr = page_pool_get_dma_addr(virt_to_head_page(buf)) + offset;
++		dir = page_pool_get_dma_dir(q->page_pool);
++		dma_sync_single_for_device(dev->dma_dev, addr, len, dir);
++
++		desc->buf0 = cpu_to_le32(addr);
++		token = mt76_rx_token_consume(dev, buf, t, addr);
++		if (token < 0) {
++			mt76_put_page_pool_buf(buf, false);
++			goto unmap;
++		}
++
++		desc->token |= cpu_to_le32(FIELD_PREP(MT_DMA_CTL_TOKEN,
++						      token));
++		desc++;
++	}
++
++	return 0;
++
++unmap:
++	if (t)
++		mt76_put_rxwi(dev, t);
++	mt76_mmio_wed_release_rx_buf(wed);
++
++	return -ENOMEM;
++}
++EXPORT_SYMBOL_GPL(mt76_mmio_wed_init_rx_buf);
++#endif /*CONFIG_NET_MEDIATEK_SOC_WED */
++
+ void mt76_mmio_init(struct mt76_dev *dev, void __iomem *regs)
+ {
+ 	static const struct mt76_bus_ops mt76_mmio_ops = {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index ea828ba0b83a..11212b6153ab 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1057,6 +1057,11 @@ static inline u16 mt76_rev(struct mt76_dev *dev)
+ 	return dev->rev & 0xffff;
+ }
+ 
++#ifdef CONFIG_NET_MEDIATEK_SOC_WED
++u32 mt76_mmio_wed_init_rx_buf(struct mtk_wed_device *wed, int size);
++void mt76_mmio_wed_release_rx_buf(struct mtk_wed_device *wed);
++#endif /*CONFIG_NET_MEDIATEK_SOC_WED */
++
+ #define mt76xx_chip(dev) mt76_chip(&((dev)->mt76))
+ #define mt76xx_rev(dev) mt76_rev(&((dev)->mt76))
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+index e7d8e03f826f..1621a8150798 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+@@ -567,80 +567,6 @@ static void mt7915_mmio_wed_offload_disable(struct mtk_wed_device *wed)
+ 	spin_unlock_bh(&dev->mt76.token_lock);
+ }
+ 
+-static void mt7915_mmio_wed_release_rx_buf(struct mtk_wed_device *wed)
+-{
+-	struct mt7915_dev *dev;
+-	int i;
+-
+-	dev = container_of(wed, struct mt7915_dev, mt76.mmio.wed);
+-	for (i = 0; i < dev->mt76.rx_token_size; i++) {
+-		struct mt76_txwi_cache *t;
+-
+-		t = mt76_rx_token_release(&dev->mt76, i);
+-		if (!t || !t->ptr)
+-			continue;
+-
+-		mt76_put_page_pool_buf(t->ptr, false);
+-		t->ptr = NULL;
+-
+-		mt76_put_rxwi(&dev->mt76, t);
+-	}
+-
+-	mt76_free_pending_rxwi(&dev->mt76);
+-}
+-
+-static u32 mt7915_mmio_wed_init_rx_buf(struct mtk_wed_device *wed, int size)
+-{
+-	struct mtk_wed_bm_desc *desc = wed->rx_buf_ring.desc;
+-	struct mt76_txwi_cache *t = NULL;
+-	struct mt7915_dev *dev;
+-	struct mt76_queue *q;
+-	int i, len;
+-
+-	dev = container_of(wed, struct mt7915_dev, mt76.mmio.wed);
+-	q = &dev->mt76.q_rx[MT_RXQ_MAIN];
+-	len = SKB_WITH_OVERHEAD(q->buf_size);
+-
+-	for (i = 0; i < size; i++) {
+-		enum dma_data_direction dir;
+-		dma_addr_t addr;
+-		u32 offset;
+-		int token;
+-		void *buf;
+-
+-		t = mt76_get_rxwi(&dev->mt76);
+-		if (!t)
+-			goto unmap;
+-
+-		buf = mt76_get_page_pool_buf(q, &offset, q->buf_size);
+-		if (!buf)
+-			goto unmap;
+-
+-		addr = page_pool_get_dma_addr(virt_to_head_page(buf)) + offset;
+-		dir = page_pool_get_dma_dir(q->page_pool);
+-		dma_sync_single_for_device(dev->mt76.dma_dev, addr, len, dir);
+-
+-		desc->buf0 = cpu_to_le32(addr);
+-		token = mt76_rx_token_consume(&dev->mt76, buf, t, addr);
+-		if (token < 0) {
+-			mt76_put_page_pool_buf(buf, false);
+-			goto unmap;
+-		}
+-
+-		desc->token |= cpu_to_le32(FIELD_PREP(MT_DMA_CTL_TOKEN,
+-						      token));
+-		desc++;
+-	}
+-
+-	return 0;
+-
+-unmap:
+-	if (t)
+-		mt76_put_rxwi(&dev->mt76, t);
+-	mt7915_mmio_wed_release_rx_buf(wed);
+-	return -ENOMEM;
+-}
+-
+ static void mt7915_mmio_wed_update_rx_stats(struct mtk_wed_device *wed,
+ 					    struct mtk_wed_wo_rx_stats *stats)
+ {
+@@ -780,8 +706,8 @@ int mt7915_mmio_wed_init(struct mt7915_dev *dev, void *pdev_ptr,
+ 	wed->wlan.init_buf = mt7915_wed_init_buf;
+ 	wed->wlan.offload_enable = mt7915_mmio_wed_offload_enable;
+ 	wed->wlan.offload_disable = mt7915_mmio_wed_offload_disable;
+-	wed->wlan.init_rx_buf = mt7915_mmio_wed_init_rx_buf;
+-	wed->wlan.release_rx_buf = mt7915_mmio_wed_release_rx_buf;
++	wed->wlan.init_rx_buf = mt76_mmio_wed_init_rx_buf;
++	wed->wlan.release_rx_buf = mt76_mmio_wed_release_rx_buf;
+ 	wed->wlan.update_wo_rx_stats = mt7915_mmio_wed_update_rx_stats;
+ 	wed->wlan.reset = mt7915_mmio_wed_reset;
+ 	wed->wlan.reset_complete = mt7915_mmio_wed_reset_complete;
 -- 
 2.41.0
 
