@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F4B8C004C0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Oct 2023 09:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37BA2C001E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Oct 2023 09:47:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t6XV7ZOZ5sxNwLuNQUrBkYHe15NsQYIiKQKf6rI365A=; b=bCaVePRS+M7lDTQpEsiyXFTN3Q
-	R+sx+GNVtUIAQEcu4K7KfTm+RnwYv+rPHArc6iwKlM7V9G3R43OzbwVjl0kvmcvUhGb2c0uZJLkaZ
-	eOMcRribpiBFnn5sDWIngz4QMSZzmw359TPJZb45U02JUzNmM9KcGIXEA//2NPHZEc+ZlZNk+fWsc
-	81sr3r4mlfWQI7RR2WlNadc2qAQfpw0yvW4en3xTQ7WfY+2UdfcW9vsoCrJ2/hUiq9o/Ub05bCnEH
-	IoImEXlI9/QVr1cxYgL6OffE7zzKbzaJV254G3a9RRriFKGdbQD4geLyDsWC5/mHhsBNQmeIZhl3v
-	ZRWq+7ow==;
+	bh=FBfsiUSQkdCIlnohOzVPszUMDeDer7x3urIdLkjY4rU=; b=RCRV/USN2HkISs3C347lypEfsJ
+	jLHIadNFn+6HapAiTFf7nmaOnaYc2TeF/h6nGj5qhQICcYvuNDnBF0hepA2xW1wXLahSWSMZLE59k
+	riOr3DeZWlhEav5ZQpHUz7nsWjmUp9Gv8lk4ldX++jsAbHLiu2QnPUch+CZn93xxG2kTFKQu/zB0j
+	4NKojyWO2ivgPto0LU+b+VZc6281orqxmoX3ngGC1X1vDJ6hd9hDETjhHkRw9zuQ76Bk4Ae2Vz5VL
+	D6ZiTOQZ/FI+HDYgfzGw6deN7BL3LUMFV+MEtVbzmOWKNx0iMvBWAdkuq/Wstc/zDqpNarHxGDxPC
+	lErA4Ahg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qu8Z0-003ijA-13;
-	Sat, 21 Oct 2023 09:46:34 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qu8Zd-003ivF-0H;
+	Sat, 21 Oct 2023 09:47:13 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qu8Yt-003ihO-1Y;
-	Sat, 21 Oct 2023 09:46:31 +0000
+	id 1qu8ZX-003itD-1L;
+	Sat, 21 Oct 2023 09:47:11 +0000
 Received: from localhost (89-26-75-29.dyn.cablelink.at [89.26.75.29])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sebastianfricke)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EBA6E6607314;
-	Sat, 21 Oct 2023 10:46:25 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1A1116607314;
+	Sat, 21 Oct 2023 10:47:06 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697881586;
-	bh=ranZ/xz6l4WEDciVcdayV2d/fBaGqPFcb9cReyxfJek=;
+	s=mail; t=1697881626;
+	bh=LyoLLL+0iahSppNDISM/wLW84taWhA7/2bDg/F2nugo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MH7g6sYFh6FQAp71WE6jqiplPQcs4ks/N9KnR4EbsvP783RaWyvIp8SGEN3D4MPAH
-	 6sdGxqqdO0J6ugevH4xSnoWlw2xCnDa5mzisTUBaCqX71ud7DOFakUmp05+toUCcif
-	 v3yaFPBE1skfyJmGrPuljRxqZNx5e1ohqsXtiQbiLggYXaUWdr/4jz7+eQOK59mgf/
-	 hESh0JiYUHeim/+C/nje7H0cwaIaFl1rMxKcqTQr8iCpX/+/WBJLcMes+qxFpq6Uly
-	 SWx3wvyj9pbzQaz8kplnMvkJTjaBgJ/MsQGxpRpl2MXsHE7rXJ0IxhUpTYdvfeFTYZ
-	 zY8GNFu1BZ6qQ==
-Date: Sat, 21 Oct 2023 11:46:22 +0200
+	b=PAhJwMvCVbrkmjr9krtydeV9DW1KH2ILFowN0whOdr85b4XLh7mx7JD9a8I4i1y3h
+	 EvcONPCQPCSki02bKyvS8lozJ3ipOk7L4/hXUy422Vn8r23RFI61Sn83clYm7dxZAD
+	 gmakw809pKliCTZYNNFw77Ydxsa7b//TiBROoHVyt+xDs6N0sYjXfCKVVY4vq/Jjwh
+	 OSW40rIzyKvD1keBSG3/wKnIHeyCa1KOUoNNmfYzvktbPLp7vJK7mOmZTuyr38KXgO
+	 rnhrdSKdp4iyy2JRpbjR9Pbh6zXbzwicFI1xN+oDSKaQp9cCxexNfiSZPW6fMoRz6S
+	 SuTJhiPD1SxfQ==
+Date: Sat, 21 Oct 2023 11:47:03 +0200
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>
 Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
@@ -60,18 +60,19 @@ Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH 1/7] media: mediatek: vcodec: Getting the chip name of
- each platform
-Message-ID: <20231021094622.vozvbdzw46ke272e@basti-XPS-13-9310>
+Subject: Re: [PATCH 2/7] media: mediatek: vcodec: Setting the supported h264
+ level for each platform
+Message-ID: <20231021094703.ght7jrrrv6n2u5ef@basti-XPS-13-9310>
 References: <20231016064346.31451-1-yunfei.dong@mediatek.com>
- <20231021083015.ivxvmrm7fq5pofdp@basti-XPS-13-9310>
+ <20231016064346.31451-2-yunfei.dong@mediatek.com>
+ <20231021092345.2636a7utfdb3nbv5@basti-XPS-13-9310>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Disposition: inline
-In-Reply-To: <20231021083015.ivxvmrm7fq5pofdp@basti-XPS-13-9310>
+In-Reply-To: <20231021092345.2636a7utfdb3nbv5@basti-XPS-13-9310>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231021_024627_788779_3BB95090 
-X-CRM114-Status: GOOD (  22.23  )
+X-CRM114-CacheID: sfid-20231021_024707_718733_89404585 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,194 +89,104 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hey Yunfei,
 
-please replace "Getting" with "Get" in the title and replace "of each"
-with "for each".
+please replace Setting with Set in the title.
 
-On 21.10.2023 10:30, Sebastian Fricke wrote:
+On 21.10.2023 11:23, Sebastian Fricke wrote:
 >Hey Yunfei,
 >
->Thanks for your patches!
->
->Could you provide a cover-letter for the next version please?
->This will help to get a good context of why we need these changes and to
->store the changelog in a helpful manner.
->Thanks.
->
 >On 16.10.2023 14:43, Yunfei Dong wrote:
->>Getting the chip name of each platform according to the device
->>compatible to set different parameter.
+>>The supported resolution and fps of different platforms are not the
+>>same. Need to set the supported level according to the chip name.
 >
->I would reword this commit description slightly, basically what you
->change is that you store the chip name in context permanently and that
->you utilize a enum to be more descriptive.
+>I would suggest the following rewording:
 >
->So how about:
+>Set the maximum H264 codec level for each platform.
+>The various mediatek platforms support different levels for decoding,
+>the level of the codec limits among others the maximum resolution, bit
+>rate and frame rate for the decoder.
 >
->"""
->Store the name of the chip in the context of the driver in order to be
->able to choose the correct configuration values for the different codecs.
->Use a enum value instead of an integer to store a more descriptive name.
->"""
->
->A few more comments below.
->
->>
->>Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
->>---
->>.../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 24 +----------------
->>.../vcodec/decoder/mtk_vcodec_dec_drv.c       | 26 +++++++++++++++++++
->>.../vcodec/decoder/mtk_vcodec_dec_drv.h       | 17 ++++++++++++
->>3 files changed, 44 insertions(+), 23 deletions(-)
->>
->>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
->>index 91ed576d6821..ba742f0e391d 100644
->>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
->>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
->>@@ -208,36 +208,14 @@ static int vidioc_vdec_dqbuf(struct file *file, void *priv,
->>	return v4l2_m2m_dqbuf(file, ctx->m2m_ctx, buf);
->>}
->>
->>-static int mtk_vcodec_dec_get_chip_name(void *priv)
->>-{
->>-	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
->>-	struct device *dev = &ctx->dev->plat_dev->dev;
->>-
->>-	if (of_device_is_compatible(dev->of_node, "mediatek,mt8173-vcodec-dec"))
->>-		return 8173;
->>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8183-vcodec-dec"))
->>-		return 8183;
->>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8192-vcodec-dec"))
->>-		return 8192;
->>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-dec"))
->>-		return 8195;
->>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8186-vcodec-dec"))
->>-		return 8186;
->>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-vcodec-dec"))
->>-		return 8188;
->>-	else
->>-		return 8173;
->>-}
->>-
->>static int vidioc_vdec_querycap(struct file *file, void *priv,
->>				struct v4l2_capability *cap)
->>{
->>	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
->>	struct device *dev = &ctx->dev->plat_dev->dev;
->>-	int platform_name = mtk_vcodec_dec_get_chip_name(priv);
->>
->>	strscpy(cap->driver, dev->driver->name, sizeof(cap->driver));
->>-	snprintf(cap->card, sizeof(cap->card), "MT%d video decoder", platform_name);
->>+	snprintf(cap->card, sizeof(cap->card), "MT%d video decoder", ctx->dev->chip_name);
->>
->>	return 0;
->>}
->>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
->>index 0a89ce452ac3..f47c98faf068 100644
->>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
->>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
->>@@ -326,6 +326,26 @@ static const struct v4l2_file_operations mtk_vcodec_fops = {
->>	.mmap		= v4l2_m2m_fop_mmap,
->>};
->>
->>+static void mtk_vcodec_dec_get_chip_name(struct mtk_vcodec_dec_dev *vdec_dev)
->>+{
->>+	struct device *dev = &vdec_dev->plat_dev->dev;
->>+
->>+	if (of_device_is_compatible(dev->of_node, "mediatek,mt8173-vcodec-dec"))
->>+		vdec_dev->chip_name = MTK_VDEC_MT8173;
->>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8183-vcodec-dec"))
->>+		vdec_dev->chip_name = MTK_VDEC_MT8183;
->>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8192-vcodec-dec"))
->>+		vdec_dev->chip_name = MTK_VDEC_MT8192;
->>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-dec"))
->>+		vdec_dev->chip_name = MTK_VDEC_MT8195;
->>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8186-vcodec-dec"))
->>+		vdec_dev->chip_name = MTK_VDEC_MT8186;
->>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-vcodec-dec"))
->>+		vdec_dev->chip_name = MTK_VDEC_MT8188;
->>+	else
->>+		vdec_dev->chip_name = MTK_VDEC_INVAL;
->>+}
->>+
->>static int mtk_vcodec_probe(struct platform_device *pdev)
->>{
->>	struct mtk_vcodec_dec_dev *dev;
->>@@ -341,6 +361,12 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->>	INIT_LIST_HEAD(&dev->ctx_list);
->>	dev->plat_dev = pdev;
->>
->>+	mtk_vcodec_dec_get_chip_name(dev);
->>+	if (dev->chip_name == MTK_VDEC_INVAL) {
->>+		dev_err(&pdev->dev, "Failed to get decoder chip name");
->>+		return -EINVAL;
->>+	}
->>+
->>	dev->vdec_pdata = of_device_get_match_data(&pdev->dev);
->>	if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
->>				  &rproc_phandle)) {
->>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
->>index 7e36b2c69b7d..8f228ba9aa47 100644
->>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
->>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
->>@@ -18,6 +18,19 @@
->>#define IS_VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
->>#define IS_VDEC_INNER_RACING(capability) ((capability) & MTK_VCODEC_INNER_RACING)
->>
->>+/*
->>+ * enum mtk_vcodec_dec_chip_name - Structure used to separate different platform
->>+ */
->
->I don't feel like this comment is terribly helpful because it is pretty
->clear what the enum is about, I would just drop it.
->
->>+enum mtk_vcodec_dec_chip_name {
->>+	MTK_VDEC_INVAL = 0,
->>+	MTK_VDEC_MT8173 = 8173,
->>+	MTK_VDEC_MT8183 = 8183,
->>+	MTK_VDEC_MT8186 = 8186,
->>+	MTK_VDEC_MT8188 = 8188,
->>+	MTK_VDEC_MT8192 = 8192,
->>+	MTK_VDEC_MT8195 = 8195,
->>+};
->>+
->>/*
->> * enum mtk_vdec_format_types - Structure used to get supported
->> *		  format types according to decoder capability
->>@@ -249,6 +262,8 @@ struct mtk_vcodec_dec_ctx {
->> * @vdec_racing_info: record register value
->> * @dec_racing_info_mutex: mutex lock used for inner racing mode
->> * @dbgfs: debug log related information
->>+ *
->>+ * @chip_name: the chip name used to separate different platform
->
->I wouldn't repeat chip name in the description and specify more
->concretely why we need to separate the platforms.
->
->My suggestion:
->
-> * @chip_name: used to distinguish platforms and select the correct codec configuration values.
->
->> */
->>struct mtk_vcodec_dec_dev {
->>	struct v4l2_device v4l2_dev;
->>@@ -289,6 +304,8 @@ struct mtk_vcodec_dec_dev {
->>	/* Protects access to vdec_racing_info data */
->>	struct mutex dec_racing_info_mutex;
->>	struct mtk_vcodec_dbgfs dbgfs;
->>+
->>+	enum mtk_vcodec_dec_chip_name chip_name;
->>};
->>
->>static inline struct mtk_vcodec_dec_ctx *fh_to_dec_ctx(struct v4l2_fh *fh)
->
->Besides those small wording choices, the patch looks good.
->
->So with these issues resolved:
->
+>With that you can add:
 >Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 >
 >Regards,
 >Sebastian
+>
+>>
+>>Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+>>---
+>>.../vcodec/decoder/mtk_vcodec_dec_stateless.c | 45 +++++++++++++++++++
+>>1 file changed, 45 insertions(+)
+>>
+>>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+>>index e29c9c58f3da..f4af81bddc58 100644
+>>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+>>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+>>@@ -56,6 +56,15 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
+>>		},
+>>		.codec_type = V4L2_PIX_FMT_H264_SLICE,
+>>	},
+>>+	{
+>>+		.cfg = {
+>>+			.id = V4L2_CID_MPEG_VIDEO_H264_LEVEL,
+>>+			.min = V4L2_MPEG_VIDEO_H264_LEVEL_1_0,
+>>+			.def = V4L2_MPEG_VIDEO_H264_LEVEL_4_1,
+>>+			.max = V4L2_MPEG_VIDEO_H264_LEVEL_4_2,
+>>+		},
+>>+		.codec_type = V4L2_PIX_FMT_H264_SLICE,
+>>+	},
+>>	{
+>>		.cfg = {
+>>			.id = V4L2_CID_STATELESS_H264_DECODE_MODE,
+>>@@ -519,6 +528,40 @@ static const struct v4l2_ctrl_ops mtk_vcodec_dec_ctrl_ops = {
+>>	.s_ctrl = mtk_vdec_s_ctrl,
+>>};
+>>
+>>+static void mtk_vcodec_dec_fill_h264_level(struct v4l2_ctrl_config *cfg,
+>>+					   struct mtk_vcodec_dec_ctx *ctx)
+>>+{
+>>+	switch (ctx->dev->chip_name) {
+>>+	case MTK_VDEC_MT8192:
+>>+		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_5_1;
+>>+		break;
+>>+	case MTK_VDEC_MT8188:
+>>+	case MTK_VDEC_MT8195:
+>>+		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_5_2;
+>>+		break;
+>>+	case MTK_VDEC_MT8183:
+>>+	case MTK_VDEC_MT8186:
+>>+		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_4_2;
+>>+		break;
+>>+	default:
+>>+		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_4_1;
+>>+		break;
+>>+	};
+>>+}
+>>+
+>>+static void mtk_vcodec_dec_reset_controls(struct v4l2_ctrl_config *cfg,
+>>+					  struct mtk_vcodec_dec_ctx *ctx)
+>>+{
+>>+	switch (cfg->id) {
+>>+	case V4L2_CID_MPEG_VIDEO_H264_LEVEL:
+>>+		mtk_vcodec_dec_fill_h264_level(cfg, ctx);
+>>+		mtk_v4l2_vdec_dbg(3, ctx, "h264 supported level: %lld %lld", cfg->max, cfg->def);
+>>+		break;
+>>+	default:
+>>+		break;
+>>+	};
+>>+}
+>>+
+>>static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
+>>{
+>>	unsigned int i;
+>>@@ -532,6 +575,8 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
+>>	for (i = 0; i < NUM_CTRLS; i++) {
+>>		struct v4l2_ctrl_config cfg = mtk_stateless_controls[i].cfg;
+>>		cfg.ops = &mtk_vcodec_dec_ctrl_ops;
+>>+
+>>+		mtk_vcodec_dec_reset_controls(&cfg, ctx);
+>>		v4l2_ctrl_new_custom(&ctx->ctrl_hdl, &cfg, NULL);
+>>		if (ctx->ctrl_hdl.error) {
+>>			mtk_v4l2_vdec_err(ctx, "Adding control %d failed %d", i,
 >>-- 
 >>2.18.0
 >>
