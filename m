@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D005FCDB474
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Oct 2023 15:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E28BFC001E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Oct 2023 08:30:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bc35yOlvo7gMAt6p8UvPS3UHqC9Rd7j7/WZ/iRf/6b8=; b=uWcx/AKBsOecW+vqo5sIAbvMa3
-	8o32Npp02EdXqO0Th5atebF1KoDckpjESgc4mC7C7f/6AFuhbUGpZQuDIr1vfobOF/AcSF6QSxap7
-	B2MBCRZK7rMoTQwGiYzMDBHg+eyjl/KzcsorNb9z1YBLIkfkqRhkiPeXwz80nHySU5ZL7TMPKJ0RH
-	KOMdPFtVPW/rzThSWVNpMtYfedKm6mCyAXabnEHdWkESzYy3j22VEMEE8tJUGaxKpNNP8YgSdplP5
-	A4yvisGsD/IrSIRgaVgQ0Q1O+/jQfk8UcHWx/DhnOCBqC5kFqEcDFw4CIqqbXyfWNp2KMgO2uEjp/
-	V7IdnR4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j8PPGY1+eZMPFLSPoygNXgH7Lv6quYEDVf441nvyjjY=; b=D0zmT6x+3j8tf28sNBWuuOw9Id
+	21w/8IQhoFqHeLPjxXmNQLSpAPtyAXHHCJNBux/avXxdI+sBLo3cs+4HITbLdAUVTbd6XENalmGnv
+	1RP3apD9GGBhCnULcAjL4BPq+fgoYV51lCsbET+RGtFH7MQtkWRV7D8ymzleefrr4ptXbeCphExg1
+	uMBNiDQsym+vDh/VD3Ck3ov9/fLUjSFURrPzoUyvMT+LLk/PEr2KmL1fC+0XJ+52VoaPgG+8AiIVf
+	5S0zrq11qrCC6lqRAtQhWklDv4WSowpRwgUmwph9lLA9HA+CBlivg7VJLeGN79kACCILo6hKrDQdx
+	51ShCb3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtrEA-002aaS-1M;
-	Fri, 20 Oct 2023 15:15:54 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qu7Nb-003eSY-0Z;
+	Sat, 21 Oct 2023 08:30:43 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtrE7-002aY5-0W
-	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Oct 2023 15:15:53 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qtrE1-0000gr-7N; Fri, 20 Oct 2023 17:15:45 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qtrDz-0033cB-Rt; Fri, 20 Oct 2023 17:15:43 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qtrDz-002aWP-Hr; Fri, 20 Oct 2023 17:15:43 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-usb@vger.kernel.org,
+	id 1qu7NU-003eRJ-1K;
+	Sat, 21 Oct 2023 08:30:40 +0000
+Received: from localhost (89-26-75-29.dyn.cablelink.at [89.26.75.29])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sebastianfricke)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1D4736607314;
+	Sat, 21 Oct 2023 09:30:19 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697877019;
+	bh=kIE/B1VBG9CnAwJuFyku+qlURqJ0Uw31i7DxVdQN65k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LGkgia41S68jSewltRL/bH/v/umy0Z+so9Bif1odI2i+Gu0Cy0HGV38ibuGXfsIx3
+	 ZnVv5ktjdCCH6ZK9Jq5INlYrzKZ0rK7IvL7iKhGB5JOYyJ5U/5h4+5O21+RgOvYa2/
+	 gAB1UmynDzkph8VGg23pJ81YtSmmjK4DzrZgSpnuynhUy1kSlRwlbAhW9UtM+XnqK1
+	 2a3FrO1v33rtCv6UCoVFxR8MidOv33cBmUGK4qzD0GbDtLEEfYfu3iTXZ/raAKXbls
+	 bmlDa89kdLtNvO4TYcOnGK8wMtbDca0M6TdMb/MwsxJgfdMbfXLxT+r6NV1+WXuTTA
+	 wWPlTqdiUGVIA==
+Date: Sat, 21 Oct 2023 10:30:15 +0200
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Nathan Hebert <nhebert@chromium.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	kernel@pengutronix.de
-Subject: [PATCH v3] usb: mtu3: Convert to platform remove callback returning void
-Date: Fri, 20 Oct 2023 17:15:38 +0200
-Message-ID: <20231020151537.2202675-2-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.42.0
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH 1/7] media: mediatek: vcodec: Getting the chip name of
+ each platform
+Message-ID: <20231021083015.ivxvmrm7fq5pofdp@basti-XPS-13-9310>
+References: <20231016064346.31451-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3276; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=5te6rft8Xh5PpQ5BujZTLunAUrXlCOfxv6+ytIbWu1s=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlMpmavi4cw3Qhslrae61n6rVTXG6x9s3KACxnO hzTEfBb3TyJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZTKZmgAKCRCPgPtYfRL+ TtGSCACF02KJb7auDo0h7N6WUMVosNAziZMu/RGTzB2lD48oG18EHIe8hC6/GAuDSo4w/vJnNY4 KbFLZudnARtOcfCG9DV7R0d6LwhBz+jxag4CkQknvRTSIoBn4eeRA2BF7evsTLgAGO6ol/OH/SU D5Z56+U3CP2SRd+SDybUgG98JY1mZzUNhjRPi/fWFOVHi+rneeW3C/01SKTfCHoaI68g3wiZU11 NF/2FjRw7uDHKQQNQa7fCgibq4NBXII4wvp4eVETqmzpUPPqCQ28Hhc/yddBCwcbHKC39OWVzuX MiO3QQ07y/tqZeuu+d7R9CHBFBuwAPc0nm4mgsuriEFKKUjl
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Disposition: inline
+In-Reply-To: <20231016064346.31451-1-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231020_081551_218098_D0BA14C3 
-X-CRM114-Status: GOOD (  19.63  )
+X-CRM114-CacheID: sfid-20231021_013036_731230_7B33BC29 
+X-CRM114-Status: GOOD (  22.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,94 +85,191 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is (mostly) ignored
-and this typically results in resource leaks. To improve here there is a
-quest to make the remove callback return void. In the first step of this
-quest all drivers are converted to .remove_new() which already returns
-void.
+Hey Yunfei,
 
-The function mtu3_remove() can only return a non-zero value if
-ssusb->dr_mode is neiter USB_DR_MODE_PERIPHERAL nor USB_DR_MODE_HOST nor
-USB_DR_MODE_OTG. In this case however the probe callback doesn't succeed
-and so the remove callback isn't called at all. So the code branch
-resulting in this error path could just be dropped were it not for the
-compiler choking on "enumeration value 'USB_DR_MODE_UNKNOWN' not handled
-in switch [-Werror=switch]". So instead replace this code path by a
-WARN_ON and then mtu3_remove() be converted to return void trivially.
+Thanks for your patches!
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
-Changes since v2 that sent with Message-Id:
-20230914200251.919584-1-u.kleine-koenig@pengutronix.de:
+Could you provide a cover-letter for the next version please?
+This will help to get a good context of why we need these changes and to
+store the changelog in a helpful manner.
+Thanks.
 
- - Drop WARN_ON
- - Rebase to a newer tree
+On 16.10.2023 14:43, Yunfei Dong wrote:
+>Getting the chip name of each platform according to the device
+>compatible to set different parameter.
 
-Changes since (implicit) v1 sent with Message-Id:
-20230709163335.3458886-1-u.kleine-koenig@pengutronix.de:
+I would reword this commit description slightly, basically what you
+change is that you store the chip name in context permanently and that
+you utilize a enum to be more descriptive.
 
- - Keep case USB_DR_MODE_UNKNOWN to cope for the compiler being called
-   with -Werror=switch.
- - Rebase to a newer tree
+So how about:
 
- drivers/usb/mtu3/mtu3_plat.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+"""
+Store the name of the chip in the context of the driver in order to be
+able to choose the correct configuration values for the different codecs.
+Use a enum value instead of an integer to store a more descriptive name.
+"""
 
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index 6f264b129243..6858ed9fc3b2 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -451,7 +451,7 @@ static int mtu3_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtu3_remove(struct platform_device *pdev)
-+static void mtu3_remove(struct platform_device *pdev)
- {
- 	struct ssusb_mtk *ssusb = platform_get_drvdata(pdev);
- 
-@@ -469,8 +469,16 @@ static int mtu3_remove(struct platform_device *pdev)
- 		ssusb_gadget_exit(ssusb);
- 		ssusb_host_exit(ssusb);
- 		break;
--	default:
--		return -EINVAL;
-+	case USB_DR_MODE_UNKNOWN:
-+		/*
-+		 * This cannot happen because with dr_mode ==
-+		 * USB_DR_MODE_UNKNOWN, .probe() doesn't succeed and so
-+		 * .remove() wouldn't be called at all. However (little
-+		 * surprising) the compiler isn't smart enough to see that, so
-+		 * we explicitly have this case item to not make the compiler
-+		 * wail about an unhandled enumeration value.
-+		 */
-+		break;
- 	}
- 
- 	ssusb_rscs_exit(ssusb);
-@@ -478,8 +486,6 @@ static int mtu3_remove(struct platform_device *pdev)
- 	pm_runtime_disable(&pdev->dev);
- 	pm_runtime_put_noidle(&pdev->dev);
- 	pm_runtime_set_suspended(&pdev->dev);
--
--	return 0;
- }
- 
- static int resume_ip_and_ports(struct ssusb_mtk *ssusb, pm_message_t msg)
-@@ -615,7 +621,7 @@ MODULE_DEVICE_TABLE(of, mtu3_of_match);
- 
- static struct platform_driver mtu3_driver = {
- 	.probe = mtu3_probe,
--	.remove = mtu3_remove,
-+	.remove_new = mtu3_remove,
- 	.driver = {
- 		.name = MTU3_DRIVER_NAME,
- 		.pm = DEV_PM_OPS,
+A few more comments below.
 
-base-commit: 2030579113a1b1b5bfd7ff24c0852847836d8fd1
--- 
-2.42.0
+>
+>Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+>---
+> .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 24 +----------------
+> .../vcodec/decoder/mtk_vcodec_dec_drv.c       | 26 +++++++++++++++++++
+> .../vcodec/decoder/mtk_vcodec_dec_drv.h       | 17 ++++++++++++
+> 3 files changed, 44 insertions(+), 23 deletions(-)
+>
+>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+>index 91ed576d6821..ba742f0e391d 100644
+>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+>@@ -208,36 +208,14 @@ static int vidioc_vdec_dqbuf(struct file *file, void *priv,
+> 	return v4l2_m2m_dqbuf(file, ctx->m2m_ctx, buf);
+> }
+>
+>-static int mtk_vcodec_dec_get_chip_name(void *priv)
+>-{
+>-	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
+>-	struct device *dev = &ctx->dev->plat_dev->dev;
+>-
+>-	if (of_device_is_compatible(dev->of_node, "mediatek,mt8173-vcodec-dec"))
+>-		return 8173;
+>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8183-vcodec-dec"))
+>-		return 8183;
+>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8192-vcodec-dec"))
+>-		return 8192;
+>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-dec"))
+>-		return 8195;
+>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8186-vcodec-dec"))
+>-		return 8186;
+>-	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-vcodec-dec"))
+>-		return 8188;
+>-	else
+>-		return 8173;
+>-}
+>-
+> static int vidioc_vdec_querycap(struct file *file, void *priv,
+> 				struct v4l2_capability *cap)
+> {
+> 	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
+> 	struct device *dev = &ctx->dev->plat_dev->dev;
+>-	int platform_name = mtk_vcodec_dec_get_chip_name(priv);
+>
+> 	strscpy(cap->driver, dev->driver->name, sizeof(cap->driver));
+>-	snprintf(cap->card, sizeof(cap->card), "MT%d video decoder", platform_name);
+>+	snprintf(cap->card, sizeof(cap->card), "MT%d video decoder", ctx->dev->chip_name);
+>
+> 	return 0;
+> }
+>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+>index 0a89ce452ac3..f47c98faf068 100644
+>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+>@@ -326,6 +326,26 @@ static const struct v4l2_file_operations mtk_vcodec_fops = {
+> 	.mmap		= v4l2_m2m_fop_mmap,
+> };
+>
+>+static void mtk_vcodec_dec_get_chip_name(struct mtk_vcodec_dec_dev *vdec_dev)
+>+{
+>+	struct device *dev = &vdec_dev->plat_dev->dev;
+>+
+>+	if (of_device_is_compatible(dev->of_node, "mediatek,mt8173-vcodec-dec"))
+>+		vdec_dev->chip_name = MTK_VDEC_MT8173;
+>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8183-vcodec-dec"))
+>+		vdec_dev->chip_name = MTK_VDEC_MT8183;
+>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8192-vcodec-dec"))
+>+		vdec_dev->chip_name = MTK_VDEC_MT8192;
+>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-dec"))
+>+		vdec_dev->chip_name = MTK_VDEC_MT8195;
+>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8186-vcodec-dec"))
+>+		vdec_dev->chip_name = MTK_VDEC_MT8186;
+>+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-vcodec-dec"))
+>+		vdec_dev->chip_name = MTK_VDEC_MT8188;
+>+	else
+>+		vdec_dev->chip_name = MTK_VDEC_INVAL;
+>+}
+>+
+> static int mtk_vcodec_probe(struct platform_device *pdev)
+> {
+> 	struct mtk_vcodec_dec_dev *dev;
+>@@ -341,6 +361,12 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+> 	INIT_LIST_HEAD(&dev->ctx_list);
+> 	dev->plat_dev = pdev;
+>
+>+	mtk_vcodec_dec_get_chip_name(dev);
+>+	if (dev->chip_name == MTK_VDEC_INVAL) {
+>+		dev_err(&pdev->dev, "Failed to get decoder chip name");
+>+		return -EINVAL;
+>+	}
+>+
+> 	dev->vdec_pdata = of_device_get_match_data(&pdev->dev);
+> 	if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+> 				  &rproc_phandle)) {
+>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+>index 7e36b2c69b7d..8f228ba9aa47 100644
+>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+>@@ -18,6 +18,19 @@
+> #define IS_VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
+> #define IS_VDEC_INNER_RACING(capability) ((capability) & MTK_VCODEC_INNER_RACING)
+>
+>+/*
+>+ * enum mtk_vcodec_dec_chip_name - Structure used to separate different platform
+>+ */
 
+I don't feel like this comment is terribly helpful because it is pretty
+clear what the enum is about, I would just drop it.
+
+>+enum mtk_vcodec_dec_chip_name {
+>+	MTK_VDEC_INVAL = 0,
+>+	MTK_VDEC_MT8173 = 8173,
+>+	MTK_VDEC_MT8183 = 8183,
+>+	MTK_VDEC_MT8186 = 8186,
+>+	MTK_VDEC_MT8188 = 8188,
+>+	MTK_VDEC_MT8192 = 8192,
+>+	MTK_VDEC_MT8195 = 8195,
+>+};
+>+
+> /*
+>  * enum mtk_vdec_format_types - Structure used to get supported
+>  *		  format types according to decoder capability
+>@@ -249,6 +262,8 @@ struct mtk_vcodec_dec_ctx {
+>  * @vdec_racing_info: record register value
+>  * @dec_racing_info_mutex: mutex lock used for inner racing mode
+>  * @dbgfs: debug log related information
+>+ *
+>+ * @chip_name: the chip name used to separate different platform
+
+I wouldn't repeat chip name in the description and specify more
+concretely why we need to separate the platforms.
+
+My suggestion:
+
+  * @chip_name: used to distinguish platforms and select the correct codec configuration values.
+
+>  */
+> struct mtk_vcodec_dec_dev {
+> 	struct v4l2_device v4l2_dev;
+>@@ -289,6 +304,8 @@ struct mtk_vcodec_dec_dev {
+> 	/* Protects access to vdec_racing_info data */
+> 	struct mutex dec_racing_info_mutex;
+> 	struct mtk_vcodec_dbgfs dbgfs;
+>+
+>+	enum mtk_vcodec_dec_chip_name chip_name;
+> };
+>
+> static inline struct mtk_vcodec_dec_ctx *fh_to_dec_ctx(struct v4l2_fh *fh)
+
+Besides those small wording choices, the patch looks good.
+
+So with these issues resolved:
+
+Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+
+Regards,
+Sebastian
+>-- 
+>2.18.0
+>
 
