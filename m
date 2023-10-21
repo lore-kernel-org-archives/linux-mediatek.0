@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 089E0C004C0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Oct 2023 09:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C6A6C00A98
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Oct 2023 09:25:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gWwCRUUUhdASapsIpqzOtfRnaXAdOmrmx3sZzHAqGGg=; b=hqZrvWzDoYogEjgvLLt34W7POZ
-	Yq6NrNGuzAN2qUHWU3jwNSGQnCtLp/Tjt57g+eBCCWZg/Rxm6PXT3ZVuzgQ7C1I/DMJxtR68jDTbp
-	Rqt3UsNLEazdX9nAgHgienYsW8YhGnJxs7vDtXw4r3Yz92nkREPCrbBYnjO7AU20w1EFXwih03nFX
-	QKIcEYjwkp0Jpqd13vex1T3fHkTT3YbUlx/ZuO9ZAtepUYr1nl6kYQQFwgrRscGvm5GLtyYpjL02S
-	tAlUwWeUgqx+qMt9rpxcnvz6OXtVqthBUj+dQzsmp4CBHrSyPlnfCjPHWyg+wjKFqiWNmvEVt4YwG
-	4GDTfuMg==;
+	bh=UjrE0xb1F8PO0O3yiV7vAqIvkO3BQ+nO5QWRbU9foF4=; b=WfPUCkTeGxaP1jH+6m5cCtjb9K
+	yDRMrBeDM4+Ik2zkmrZQFBp0tzczbQgsEACK1px110URP2X1zpPEsqJn/aQHGUDMCdg11+Rr7AQ8q
+	iypTp02aaL881TKTD6TpWRA+bntclmCx0u4PqWZgEa4XvSz7fw3MrsY7BqZ+U1WZAY/3B15mQphm6
+	8V2WjITHuLoXwGIJEw5Fu7Y5tPtAlWvUK8xjxAJ0v2ADXhGOYcmBkwNoSThXXWgregxx1qk3EuNTw
+	NLznNr3HHlwFIRxsfHzReyO8ZuX3sFeQC18wtonrYnly/KKUmUTIQFkwS48scoDVogKufOwId0F0I
+	YoXEx5sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qu8D7-003hLX-2u;
-	Sat, 21 Oct 2023 09:23:57 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qu8Er-003hT8-1g;
+	Sat, 21 Oct 2023 09:25:45 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qu8D1-003hKb-0p;
-	Sat, 21 Oct 2023 09:23:55 +0000
+	id 1qu8El-003hSI-1n;
+	Sat, 21 Oct 2023 09:25:43 +0000
 Received: from localhost (89-26-75-29.dyn.cablelink.at [89.26.75.29])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sebastianfricke)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 000716607314;
-	Sat, 21 Oct 2023 10:23:47 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F1BD06607337;
+	Sat, 21 Oct 2023 10:25:37 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697880228;
-	bh=WlVZ7ZMsuMZogPd2cfuUgr4t+u7d4kIFM09tuxRbbmo=;
+	s=mail; t=1697880338;
+	bh=tHF89MFfLcL7e+zhlIBsjsDendLMw9pOYO/8Zqw5oH8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ovFYUc4skr4Qg0XjjInKUXk17nnLmnaEkhzy/jbXkz2m4gjMjRTB4ynAeEhdhRH0M
-	 weOq5lC3Xa3CcnjSD7X137iNyleDhN2cJ4UjnY7eZWHwMUhN13xoIxuj0wUsuCnWcs
-	 nhCqxL+GtEZAXykzkcr13RZMmWXrwIZZqZlP8FSCyTJZSs602jTd0gLqGOzimpAIOZ
-	 MOVQq99IfypacrSyXe2qp75HAN/LvgN2iB3gG42L0J6+5fBOXo3rpCw+8blfBnuAGs
-	 XQxv5N6283jQ032buhuEmH00Ds46HhT3xgEqXo15BBBgnb8u7k00BePZkY3GsbxnWQ
-	 Q2aF5rFymXJIw==
-Date: Sat, 21 Oct 2023 11:23:45 +0200
+	b=L5rpE5dpesmdENn4qbO++LTB3Yae6XBFFoJhp6UnpZBdxWMH54o1os8PR+uiWt1wI
+	 3XUyccg/eZDO1xOJECICqFS3Z4lOOXxLpEP/6QyWYXM0zsDdqF76nN3lNkUg19yxLA
+	 j2rYyN3hG4ZWJeyMc0BjaJUfor36x0NC7iJk45FrAw4qGHF+gJTUHSSpp5WWVjZCJS
+	 AhTZ268gIHuqMCShURLjVQZJAQ80FFkTdJsvbFYICLpHtehtqPDJbEgcUXWPHMVfmD
+	 m3RMlAw5gJdrMW80hVjnz74aQOyIaGoJad5363NsYcQ57cMAUwjnE7Sk/iUwSGmKAG
+	 jMpRPQpXHPXoA==
+Date: Sat, 21 Oct 2023 11:25:35 +0200
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>
 Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
@@ -60,18 +60,18 @@ Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH 2/7] media: mediatek: vcodec: Setting the supported h264
+Subject: Re: [PATCH 3/7] media: mediatek: vcodec: Setting the supported h265
  level for each platform
-Message-ID: <20231021092345.2636a7utfdb3nbv5@basti-XPS-13-9310>
+Message-ID: <20231021092535.hna2fzgbevluczm4@basti-XPS-13-9310>
 References: <20231016064346.31451-1-yunfei.dong@mediatek.com>
- <20231016064346.31451-2-yunfei.dong@mediatek.com>
+ <20231016064346.31451-3-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Disposition: inline
-In-Reply-To: <20231016064346.31451-2-yunfei.dong@mediatek.com>
+In-Reply-To: <20231016064346.31451-3-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231021_022351_746907_A4EAF985 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20231021_022539_728671_9E68E416 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,7 +94,7 @@ On 16.10.2023 14:43, Yunfei Dong wrote:
 
 I would suggest the following rewording:
 
-Set the maximum H264 codec level for each platform.
+Set the maximum H265 codec level for each platform.
 The various mediatek platforms support different levels for decoding,
 the level of the codec limits among others the maximum resolution, bit
 rate and frame rate for the decoder.
@@ -105,82 +105,64 @@ Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 Regards,
 Sebastian
 
->
 >Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 >---
-> .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 45 +++++++++++++++++++
-> 1 file changed, 45 insertions(+)
+> .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 28 +++++++++++++++++++
+> 1 file changed, 28 insertions(+)
 >
 >diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
->index e29c9c58f3da..f4af81bddc58 100644
+>index f4af81bddc58..1fdb21dbacb8 100644
 >--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
 >+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
->@@ -56,6 +56,15 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
+>@@ -147,6 +147,16 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
 > 		},
-> 		.codec_type = V4L2_PIX_FMT_H264_SLICE,
+> 		.codec_type = V4L2_PIX_FMT_HEVC_SLICE,
 > 	},
 >+	{
 >+		.cfg = {
->+			.id = V4L2_CID_MPEG_VIDEO_H264_LEVEL,
->+			.min = V4L2_MPEG_VIDEO_H264_LEVEL_1_0,
->+			.def = V4L2_MPEG_VIDEO_H264_LEVEL_4_1,
->+			.max = V4L2_MPEG_VIDEO_H264_LEVEL_4_2,
+>+			.id = V4L2_CID_MPEG_VIDEO_HEVC_LEVEL,
+>+			.min = V4L2_MPEG_VIDEO_HEVC_LEVEL_1,
+>+			.def = V4L2_MPEG_VIDEO_HEVC_LEVEL_4,
+>+			.max = V4L2_MPEG_VIDEO_HEVC_LEVEL_4_1,
 >+		},
->+		.codec_type = V4L2_PIX_FMT_H264_SLICE,
+>+		.codec_type = V4L2_PIX_FMT_HEVC_SLICE,
 >+	},
+>+
 > 	{
 > 		.cfg = {
-> 			.id = V4L2_CID_STATELESS_H264_DECODE_MODE,
->@@ -519,6 +528,40 @@ static const struct v4l2_ctrl_ops mtk_vcodec_dec_ctrl_ops = {
-> 	.s_ctrl = mtk_vdec_s_ctrl,
-> };
+> 			.id = V4L2_CID_STATELESS_HEVC_DECODE_MODE,
+>@@ -549,6 +559,20 @@ static void mtk_vcodec_dec_fill_h264_level(struct v4l2_ctrl_config *cfg,
+> 	};
+> }
 >
->+static void mtk_vcodec_dec_fill_h264_level(struct v4l2_ctrl_config *cfg,
+>+static void mtk_vcodec_dec_fill_h265_level(struct v4l2_ctrl_config *cfg,
 >+					   struct mtk_vcodec_dec_ctx *ctx)
 >+{
 >+	switch (ctx->dev->chip_name) {
->+	case MTK_VDEC_MT8192:
->+		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_5_1;
->+		break;
 >+	case MTK_VDEC_MT8188:
 >+	case MTK_VDEC_MT8195:
->+		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_5_2;
->+		break;
->+	case MTK_VDEC_MT8183:
->+	case MTK_VDEC_MT8186:
->+		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_4_2;
+>+		cfg->max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_1;
 >+		break;
 >+	default:
->+		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_4_1;
+>+		cfg->max = V4L2_MPEG_VIDEO_HEVC_LEVEL_4;
 >+		break;
 >+	};
 >+}
 >+
->+static void mtk_vcodec_dec_reset_controls(struct v4l2_ctrl_config *cfg,
->+					  struct mtk_vcodec_dec_ctx *ctx)
->+{
->+	switch (cfg->id) {
->+	case V4L2_CID_MPEG_VIDEO_H264_LEVEL:
->+		mtk_vcodec_dec_fill_h264_level(cfg, ctx);
->+		mtk_v4l2_vdec_dbg(3, ctx, "h264 supported level: %lld %lld", cfg->max, cfg->def);
->+		break;
->+	default:
->+		break;
->+	};
->+}
->+
-> static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
+> static void mtk_vcodec_dec_reset_controls(struct v4l2_ctrl_config *cfg,
+> 					  struct mtk_vcodec_dec_ctx *ctx)
 > {
-> 	unsigned int i;
->@@ -532,6 +575,8 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
-> 	for (i = 0; i < NUM_CTRLS; i++) {
-> 		struct v4l2_ctrl_config cfg = mtk_stateless_controls[i].cfg;
-> 		cfg.ops = &mtk_vcodec_dec_ctrl_ops;
->+
->+		mtk_vcodec_dec_reset_controls(&cfg, ctx);
-> 		v4l2_ctrl_new_custom(&ctx->ctrl_hdl, &cfg, NULL);
-> 		if (ctx->ctrl_hdl.error) {
-> 			mtk_v4l2_vdec_err(ctx, "Adding control %d failed %d", i,
+>@@ -557,6 +581,10 @@ static void mtk_vcodec_dec_reset_controls(struct v4l2_ctrl_config *cfg,
+> 		mtk_vcodec_dec_fill_h264_level(cfg, ctx);
+> 		mtk_v4l2_vdec_dbg(3, ctx, "h264 supported level: %lld %lld", cfg->max, cfg->def);
+> 		break;
+>+	case V4L2_CID_MPEG_VIDEO_HEVC_LEVEL:
+>+		mtk_vcodec_dec_fill_h265_level(cfg, ctx);
+>+		mtk_v4l2_vdec_dbg(3, ctx, "h265 supported level: %lld %lld", cfg->max, cfg->def);
+>+		break;
+> 	default:
+> 		break;
+> 	};
 >-- 
 >2.18.0
 >
