@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E5ACDB474
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 09:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03AFEC004C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 09:56:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uu/sTtccUwF0ah9E+SK4dukpMAzlv54jZyNo0CSiF0c=; b=XuaazySu2PvTQXWidfDLfj8inE
-	51zObn3UQ5dNZ6QiXdn0ZQkKi4l7EPDlRJmfAdNLTIbJFLHHBVA9O5Q/Iitim9Oo1I629kfvU/ki9
-	7YabM4EyRsANU56tTwd+TsNFAqZdFLtgqdXXz1TZLvZIkLJm2nIKNgzPjoNjvq3zbMH3V9+84kneg
-	zt79ivqIbiQLJX/zeHQ/S1kVlCvzwuVFTG6+VQzxpK+c8vDaf6UUR25ZLl6cHfkLyGnI0UoZjbYjX
-	inD3g/Z/m8QVE4GoDPgWRDggZ6YiAEJdm0xVKpLRSXkgAysM7NXTlhJNHvJYfF4CUz9e2UvRhwSa6
-	wIattr1w==;
+	bh=sijvR+hKjJi+AfXfyjsruHtUHe1YLoATqzDljEq9PNo=; b=uLDdRXUp1pfrnYNiCQhs+e0SNG
+	OKlbcXtFHgGzgaMSA6aoxNjb91wWy9lsylJMuOxSnKBxa8OmCGwB988Y6zXWiBM+c+8QJBxSd/iiR
+	Xzjnh+3PqZMIx2p1CcNxDKRbHccK3TFeOk1i6uvRgG3GKALSfma/v9b4vF83mpweO2YUUgLdWTheG
+	ArWx+U3x+scdnH9MN/5MRYOtiZZg6h/NNjbYLpMjZjACiAp/Lrt0Fplq7A/g/UuAi4S0Mas7WUUDQ
+	GUYgide2FyKSTJjQxS2wVwTPyYZCkoVygLNCobk2ETEn2wgMaf855N1ve9xnhElS72bBFUC8zvB2l
+	YTWz7CHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qurfF-006xKI-1E;
-	Mon, 23 Oct 2023 09:56:01 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1qurfF-006xL1-3B;
+	Mon, 23 Oct 2023 09:56:02 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qureM-006wXN-0q
+	id 1qureM-006wVf-2T
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 09:55:07 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-32da7ac5c4fso2149103f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 02:55:06 -0700 (PDT)
+	Mon, 23 Oct 2023 09:55:08 +0000
+Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2c4fe37f166so43316841fa.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 02:55:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1698054905; x=1698659705; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1698054902; x=1698659702; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Uu/sTtccUwF0ah9E+SK4dukpMAzlv54jZyNo0CSiF0c=;
-        b=Uotgxo3bE1iNVmngUF9VtWlO7cmMEMza37WNVRYfRPOCHV14xJopkoBfkRNfAGVmVU
-         /y28OnW+2XdBdpfFrPZG+5wDMaFLQ/FH0sYY2iHkoAO6MVssL8FG4be4Dc1y8Q9ejjYE
-         9OKvLiuffjsXAWiiJNakxHVR3crcLBeo2IzxC4UCiF0XGRQa8OUmNAScgkUOBcV1C++M
-         Teqpqaqk3xbbdwWTx5xm9Ky2K9CD9ADuHdvZvi9o9sxx/eUwjAxF9aQ/YP9TrlQUtvG3
-         af/eeQ21Ao2Fnu3J2mnJVdRQ1H/QzDsC+IsEmvdVoyz1CbWJLp1mJZYXtsEk1xACHKzS
-         TX2Q==
+        bh=sijvR+hKjJi+AfXfyjsruHtUHe1YLoATqzDljEq9PNo=;
+        b=mTC692F/FVYfYeghQDaoFCkfGdde1MgeV011RKQC/W6jvzEkQD0I3HS/pfYZogByTs
+         IFBdqZC/GD0nwUhj/GNmrhmpPVEaPXWX7b5uXgEQte0+suTg5s1JDkYbgq+kIdEzS6L+
+         1woG+LDixy5G8+nLdorXTwf2zfNmAcmMIKvEkq5jRTezUfgpVCqQD3lxvHhy+f8yIxM7
+         mhZQ4usMMxw0cEUSpn1OnSXT8ZIPaA2byV+bzI344dIwIJ8Hd11Ix/U448wLvlFgedG+
+         No2PRAVkpDXZ4Wmu+XX9GlxUIFQCUtc+VI238vg8XcvXuHbHEVvNxueEeSYZUep0adOw
+         tqCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698054905; x=1698659705;
+        d=1e100.net; s=20230601; t=1698054902; x=1698659702;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Uu/sTtccUwF0ah9E+SK4dukpMAzlv54jZyNo0CSiF0c=;
-        b=tmHAGllx0dlYS1PFbwy41/kHqQXQT+4nnKOjGIf4OXA0bJ/Nf903ru6Xk1L6JKWcwW
-         1PIUP8LsD23ZyhEb6zV8c9ro2Rtd9t1f9EP7qqyakwrPSExAnAORU3N5j4FLXwSWi2oz
-         LdFdd6xXT5WibGYdPRRE90ZjG+c0LgMqwoMvJ2iKPkshSaux5cGSg7Zgz5eEAVg1scls
-         1XsdXCZElaPoSPQ2owbTJKVYdpKhSrasfircq3qNUsJDHJYXnH+ZA1L44uWfYL8ZjxR7
-         Z0j/9ZHzhwV0UhacpOlQdEby1IijEhtjqNhKI1y10tBbh61FSMt4ap39n4/LopwWljBm
-         fgYw==
-X-Gm-Message-State: AOJu0Yy/qbPHeceJGE/QnnxD3Co+uksENLdZA1DRQTNLUYyB9o56oBnF
-	BUsDl4H8GkA0RJKd7r1QO6Nx/g==
-X-Google-Smtp-Source: AGHT+IFC/yAsny5qrYVg+EkJz4fUi483BdHJQWDTMZauGOFIlXds5DqFSdeJFZSj0XyhBOmMbTRyIg==
-X-Received: by 2002:a5d:5267:0:b0:31f:f65f:74ac with SMTP id l7-20020a5d5267000000b0031ff65f74acmr7213785wrc.70.1698054905019;
-        Mon, 23 Oct 2023 02:55:05 -0700 (PDT)
+        bh=sijvR+hKjJi+AfXfyjsruHtUHe1YLoATqzDljEq9PNo=;
+        b=GkVtuZO6zuW3EelFJeXDlF4eCXVGyzZap7y1z+We2LDGR/jlP8sCACYLX/MYXU75/A
+         0haUvulXJpAOMJpGK9JCUopnfooUaHc2UEFRsN6+VM7ukuFyOV6Ap3kbpHuY8f2VB3qR
+         byoyh8f1UFjho8EDUNpD0CAF9XQLMebWEbdDhNtojxz2glTE6W4AWG/a0R34oStoWLfO
+         cH5eI5TkkgAr1/Fk9W5tmPVvJT3lwMmv17biJejAjCdGjEmCopUsZbDkWBxWfW2YMXUF
+         ooUxFTt9NhWXGTNuPrHFT2hH6rOVbSU/XnOdhh4/dJZA2OqnQW1UyqNyMS3rDAutaQkL
+         0T+g==
+X-Gm-Message-State: AOJu0Ywo1ZsRPFrIGXUDLfIlGLz0zzPSq1VsebkxHYlIQ3Sb08dpmNFm
+	m9t7E7WUCYBcD1lcwf6rutDudg==
+X-Google-Smtp-Source: AGHT+IF54Qe6n/zvNqpT0Lxz4KVrjRL1LPUYGQ1mvRY5NOKen/Ok/2JBtT1ZFsNaf/o7AVD7jqRWnw==
+X-Received: by 2002:a2e:a792:0:b0:2bf:e9e8:de23 with SMTP id c18-20020a2ea792000000b002bfe9e8de23mr7862726ljf.16.1698054902708;
+        Mon, 23 Oct 2023 02:55:02 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id u14-20020a5d468e000000b00323330edbc7sm7428801wrq.20.2023.10.23.02.55.02
+        by smtp.gmail.com with ESMTPSA id u14-20020a5d468e000000b00323330edbc7sm7428801wrq.20.2023.10.23.02.55.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 02:55:04 -0700 (PDT)
+        Mon, 23 Oct 2023 02:55:02 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
@@ -84,17 +84,17 @@ To: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-tegra@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [RFT PATCH 14/17] ASoC: mediatek: mt8188: Handle component name prefix
-Date: Mon, 23 Oct 2023 11:54:25 +0200
-Message-Id: <20231023095428.166563-15-krzysztof.kozlowski@linaro.org>
+Subject: [RFT PATCH 13/17] ASoC: mediatek: mt8186: Handle component name prefix
+Date: Mon, 23 Oct 2023 11:54:24 +0200
+Message-Id: <20231023095428.166563-14-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
 References: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_025506_297627_985A17DD 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20231023_025506_809196_D7A0A483 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,29 +114,80 @@ to include also the component's name prefix.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ sound/soc/mediatek/mt8186/mt8186-dai-adda.c    | 2 +-
+ sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c | 2 +-
+ sound/soc/mediatek/mt8186/mt8186-dai-i2s.c     | 4 ++--
+ sound/soc/mediatek/mt8186/mt8186-dai-src.c     | 4 ++--
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-index 16440dd0a89c..2a48f5fd6826 100644
---- a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-@@ -576,13 +576,13 @@ static int mtk_apll_event(struct snd_soc_dapm_widget *w,
+diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
+index 247ab8df941f..85ae3f76d951 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
++++ b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
+@@ -321,7 +321,7 @@ static int mtk_adda_mtkaif_cfg_event(struct snd_soc_dapm_widget *w,
+ 					   MTKAIF_RXIF_CLKINV_ADC_MASK_SFT,
+ 					   BIT(MTKAIF_RXIF_CLKINV_ADC_SFT));
+ 
+-			if (strcmp(w->name, "ADDA_MTKAIF_CFG") == 0) {
++			if (snd_soc_dapm_widget_name_cmp(w, "ADDA_MTKAIF_CFG") == 0) {
+ 				if (afe_priv->mtkaif_chosen_phase[0] < 0 &&
+ 				    afe_priv->mtkaif_chosen_phase[1] < 0) {
+ 					dev_err(afe->dev,
+diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c b/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
+index 33edd6cbde12..75cb30790b1b 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
++++ b/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
+@@ -47,7 +47,7 @@ static int mtk_hw_gain_event(struct snd_soc_dapm_widget *w,
+ 
+ 	switch (event) {
+ 	case SND_SOC_DAPM_PRE_PMU:
+-		if (strcmp(w->name, HW_GAIN_1_EN_W_NAME) == 0) {
++		if (snd_soc_dapm_widget_name_cmp(w, HW_GAIN_1_EN_W_NAME) == 0) {
+ 			gain_cur = AFE_GAIN1_CUR;
+ 			gain_con1 = AFE_GAIN1_CON1;
+ 		} else {
+diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-i2s.c b/sound/soc/mediatek/mt8186/mt8186-dai-i2s.c
+index f07181be4370..7c4021221950 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-dai-i2s.c
++++ b/sound/soc/mediatek/mt8186/mt8186-dai-i2s.c
+@@ -393,13 +393,13 @@ static int mtk_apll_event(struct snd_soc_dapm_widget *w,
  
  	switch (event) {
  	case SND_SOC_DAPM_PRE_PMU:
 -		if (strcmp(w->name, APLL1_W_NAME) == 0)
 +		if (snd_soc_dapm_widget_name_cmp(w, APLL1_W_NAME) == 0)
- 			mt8188_apll1_enable(afe);
+ 			mt8186_apll1_enable(afe);
  		else
- 			mt8188_apll2_enable(afe);
+ 			mt8186_apll2_enable(afe);
  		break;
  	case SND_SOC_DAPM_POST_PMD:
 -		if (strcmp(w->name, APLL1_W_NAME) == 0)
 +		if (snd_soc_dapm_widget_name_cmp(w, APLL1_W_NAME) == 0)
- 			mt8188_apll1_disable(afe);
+ 			mt8186_apll1_disable(afe);
  		else
- 			mt8188_apll2_disable(afe);
+ 			mt8186_apll2_disable(afe);
+diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-src.c b/sound/soc/mediatek/mt8186/mt8186-dai-src.c
+index 67989ffd67ca..e475f4591aef 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-dai-src.c
++++ b/sound/soc/mediatek/mt8186/mt8186-dai-src.c
+@@ -322,7 +322,7 @@ static int mtk_hw_src_event(struct snd_soc_dapm_widget *w,
+ 	struct mtk_afe_src_priv *src_priv;
+ 	unsigned int reg;
+ 
+-	if (strcmp(w->name, HW_SRC_1_EN_W_NAME) == 0)
++	if (snd_soc_dapm_widget_name_cmp(w, HW_SRC_1_EN_W_NAME) == 0)
+ 		id = MT8186_DAI_SRC_1;
+ 	else
+ 		id = MT8186_DAI_SRC_2;
+@@ -487,7 +487,7 @@ static int mtk_afe_src_en_connect(struct snd_soc_dapm_widget *source,
+ 	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+ 	struct mtk_afe_src_priv *src_priv;
+ 
+-	if (strcmp(w->name, HW_SRC_1_EN_W_NAME) == 0)
++	if (snd_soc_dapm_widget_name_cmp(w, HW_SRC_1_EN_W_NAME) == 0)
+ 		src_priv = afe_priv->dai_priv[MT8186_DAI_SRC_1];
+ 	else
+ 		src_priv = afe_priv->dai_priv[MT8186_DAI_SRC_2];
 -- 
 2.34.1
 
