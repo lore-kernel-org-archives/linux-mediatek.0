@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 872ABC001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 09:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C4EECDB474
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 09:50:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MlLCMO2N3fN3eL/icaJtxp40PwVzmgwPPW8h/MtZUaM=; b=dj2RKBYePGclDLvX6z1dr8DLlS
-	ciDRTI0JL08K0eM4PEVdEg7nMVRGZKkrPSWNDeHfWSClDQlJF1lKFtY6W6DVKp4r5X4TM4ZUZZWg/
-	Pj0yJddEAOGW0DNd7FBnOiFRqbUfQulNee6JGKlHM3ROebSlk+5WbixnHFkRj1Tt4kxnYPRyAFhAN
-	C5CXU9yMli94NtodiUWFKVATeKsVb8HuGYuBtmW532TOFbslOd7Ov+/5KAvruai9nqsO0nCo8LqMK
-	6g4S6pEFCWvudm0p3rZ59olR/ZADpAx12/PAIoe3/hviYZSktylJGQ4y7ZZ8TScSRMdOtEp1hBQYg
-	a21QFuiw==;
+	bh=gLtT3OGHQNy4t1l9kfVNGgnAkgPU++xDd8dzeZ+gbt8=; b=a+mEiorMpRhAMgyv8hLfzhXmY6
+	yMGgIWpko+y5E0vTjuzkr8lgcaoPv+BHdtS16/F31tNg4VB4dEcQX8qZNh2jgYQmQbs0AmiiDQToK
+	HYj5xuOt1MOR4d8El2yaPzzSHTXGafpbZbn+xq9e5xop4fHfkh9RWE0IB4v7H24EiJomUzky0dy6m
+	qOq2NDlo9Mz7/su81g5xV9znmhVZGoOwaqryMLdpAuoMBSJRS4wxlqDxLvm0+SQOeUeca5sHGiPEb
+	P01SoeAp8Vdisoqm09SXL4URNsvlS6b8t/6Wi653Q/QHK7Vh4vJJ2rrmbqrTBxxq4TD01OzNm3X9f
+	ZrCrzJ2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qurZt-006vXO-0f;
-	Mon, 23 Oct 2023 09:50:29 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qura2-006vaK-1F;
+	Mon, 23 Oct 2023 09:50:38 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qurZq-006vVk-0i;
-	Mon, 23 Oct 2023 09:50:27 +0000
+	id 1qurZr-006vVt-07;
+	Mon, 23 Oct 2023 09:50:28 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C29666606EE0;
-	Mon, 23 Oct 2023 10:50:23 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BAC4D6606F51;
+	Mon, 23 Oct 2023 10:50:24 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698054624;
-	bh=aA6ESkypsjz5E0SurIMDE0S1ZQYHkS4/L2TIdvlGBnk=;
+	s=mail; t=1698054625;
+	bh=jGS4wjjKQT+jnkpy/yvPYn70Z9+yx4rAHIJ/2NeAlz4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kn3tWDPHCBaP4raiGT0kwFXFW4iXv4ed+RaeZqavGZ/1gv0wVgLsft88MbOtl61a6
-	 D4FlF8d+do6USOyIZomvPWwG4Q8C/FDC7JU/eJepWcW3n6nBAlgHR3ebBCZ2p5uqiW
-	 tU+yg/FrOs3VO/NxU6inArO+93sSdJRBen6wPT8G2xL7mIg467uM5JU1VvGgmAQ+nw
-	 Ra/4A5dbLGlawIGks32V65ZbJIkFEA2l0hKrWIk/25LfENSh0jCwOBZpQcKfMmB7bW
-	 0twji3N8p4BKOGNaPzRkQE0Ow2K+56ZVU7+/b/d98g414yaBlTBq8i9HMFIIAvco9Y
-	 fLqge0Cqc/OTA==
-Message-ID: <72277a7e-83a6-4947-8f2a-4881aa8ac766@collabora.com>
-Date: Mon, 23 Oct 2023 11:50:20 +0200
+	b=Aqh47hyd/S0BF0/zcRu4GCSeAePAoEpctZeh9g60YdqSt63KwdcI0vNUEtGmjzazQ
+	 oIBC4wFm4988DN9q9cf8o5ml5uVfkS1ygKLhO1Rti2q7UkCIF896zt7Attj6dwsdaG
+	 eS9QE6BFDNKFczC5BD0sXUq7IWeC/ikLLnZtRQWURAjN889N73j8DYNGKctgKA/HTY
+	 6RAvQMtlO3quQWOcCoGG0IwTwaGMN6xtsAtycrDHotzUxV8k3h588A9159nzBWLya1
+	 LiNRRRK8YkzgVgrYbNnB2NGw+eL3dTsXWr4Q94FNwu8cqDzqgLzm8SB/q+rH6bvlmG
+	 q5uPF/OWocVsw==
+Message-ID: <e7668af8-f2b4-479b-80a3-2677d180e641@collabora.com>
+Date: Mon, 23 Oct 2023 11:50:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 6/9] mailbox: mediatek: Add CMDQ driver support for
- mt8188
+Subject: Re: [PATCH v2 5/9] soc: mailbox: Add cmdq_pkt_finalize_loop to
+ support looping cmd with irq
 Content-Language: en-US
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
  Jassi Brar <jassisinghbrar@gmail.com>,
@@ -64,15 +64,14 @@ Cc: Conor Dooley <conor+dt@kernel.org>,
  Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
  Shawn Sung <shawn.sung@mediatek.com>
 References: <20231023043751.17114-1-jason-jh.lin@mediatek.com>
- <20231023043751.17114-7-jason-jh.lin@mediatek.com>
+ <20231023043751.17114-6-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231023043751.17114-7-jason-jh.lin@mediatek.com>
+In-Reply-To: <20231023043751.17114-6-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_025026_455761_FC78DD23 
-X-CRM114-Status: UNSURE (   7.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231023_025027_202895_10A2BE2B 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,16 +87,41 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 23/10/23 06:37, Jason-JH.Lin ha scritto:
-> Add CMDQ driver support for mt8188 by adding its compatible and
-> driver data in CMDQ driver.
+> Add cmdq_pkt_finalize_loop to CMDQ driver.
+> 
+> cmdq_pkt_finalize_loop appends end of command(EOC) instruction and
+> jump to start of command buffer instruction to make the command
+> buffer loopable.
+> 
+> GCE irq occurs when GCE executes to the EOC instruction.
+> CMDQ client can use a loop flag to mark the CMDQ packet as looping
+> packet. If the CMDQ packet is a loopping packet, GCE irq handler
+> won't delete the CMDQ task and disable the GCE thread.
 > 
 > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c       | 11 +++++++++++
+>   drivers/soc/mediatek/mtk-cmdq-helper.c   | 23 +++++++++++++++++++++++
+>   include/linux/mailbox/mtk-cmdq-mailbox.h |  1 +
+>   include/linux/soc/mediatek/mtk-cmdq.h    |  8 ++++++++
+>   4 files changed, 43 insertions(+)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 4d62b07c1411..56fe01cd9731 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
 
-Please fix the commit title...
+It's true that without the changes in soc/mediatek this is not doing anything, but
+mailbox/mtk-cmdq-mailbox.c goes through a different maintainer...
 
-mailbox: mtk-cmdq: Add support for MT8188 mailbox
+Please split the changes to drivers/mailbox/mtk-cmdq-mailbox.c and its header to a
+different commit.
 
-Regards,
+Hint:
+1. soc: mediatek: cmdq: Add cmdq_pkt_finalize_loop for looping cmd with irq
+2. mailbox: mtk-cmdq: Support GCE loop packets in interrupt handler
+
+Thanks,
 Angelo
 
 
