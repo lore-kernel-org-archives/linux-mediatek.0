@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D8ECC25B47
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 17:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA70C25B46
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 21:44:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=irV0VUUwRZrTXggfYga2gNBn6gArQz2SoKZWk9/C7D8=; b=G+7xYBNDZP1BxNJcznQpTg/rCr
-	UnhAmp9AHxk54HNNpbumJ3BtzbAgnOGDme+Dni19jwufHc7A6gxWX1KXBYdRojrzTvf9KEQUl+D+h
-	JDIDZYaRuvUqg0jqtYuUshn6aTN0MDKDpDCdESXKXTyoFeBdQi83GF4ZSoD1xoYIADsF7WIjGW5c1
-	ezrTNkFXiz8tq0sJCnwFXCvHBPdHxwY/K7h97iW2hGAA+kKFShTGN8J9dhJmNs0xonYUQeBeFGPmy
-	VLr74gj3oqty6HKCPDZWN9vjOdGFEGS7PRkxpLsFvW7Ume0F5kFNqt4jbgIPGBmmKbGLw7mDLdHI8
-	d/3C/YHQ==;
+	bh=GPiY9DhcgyT8PO/MaTJjDTwLbX06exj9+1KXGF/0n1w=; b=ua2T2RF9JJ9+x11tKIig6niUUu
+	3mFZrVA0JzIyEib4lu1sF/gO489Zhde2JTiVoHsM6lrnjYV9WaQCXTa60roipd63kQpZB2fDID9UU
+	XBbotJO6VB57dA+0FTIidWAcEx2oXvWwB1R/ydgEq/c/gOczW/HfP/di9h2nkRz9H+Esa9J1Qph9Z
+	+rkKS+e3jLZT5TFZ6SeL0QtThJ8AMkbUZA3nLTTJMqhCDALD1o9R6uoRSUqqyBlIAGHVeh6SwgxQb
+	Bn50Qt3svEw9bVq4stKXhiNZC1mIJ6pXCB/uYP/q+AmU02VQgz10aGORQs9lYPKIKIKDQJ9j6Hoi0
+	73R9TWig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quyt0-007ykD-0b;
-	Mon, 23 Oct 2023 17:38:42 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qv2j7-008KSj-1i;
+	Mon, 23 Oct 2023 21:44:45 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quysx-007yiq-1I;
-	Mon, 23 Oct 2023 17:38:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 829DCCE276B;
-	Mon, 23 Oct 2023 17:38:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A5BDC433C7;
-	Mon, 23 Oct 2023 17:38:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698082716;
-	bh=eZlZ0RSR8neaBBF+HvzJKthBOQ2i00NRtc83TDbgb/M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GZcoCvRUwfcmv7oI3ZoKRQE+hLDNpdANz8/BDEmtdrSB2ioRBIq6ZoJEeGHZTPrQ6
-	 gnxXS1y2gCKIIOUH86xYNxb6Cw1d0qkGZ6JYlMefFOdOgsiepFUfajPb+0UdftD+ao
-	 e7EK2ytUx3z+ij79CECne+/7u91MfFH+FZORhv7ytIhrgJPcSFQ8MwD+wAyWV5nbOP
-	 FqKH0wpAQmjLNmJr84u1AgLEWBQFaKtk+m+dL+bvfW7mCQjhSpwgNHTXV80gLlneKT
-	 1nhCgO0oxC5wcJMmyCa1r/z2anONnpe0U+eedfEA7GRxCX1i7O3rvm7G66ryiZ3gCP
-	 B4q/ik75qZn6A==
-Date: Mon, 23 Oct 2023 18:38:30 +0100
-From: Conor Dooley <conor@kernel.org>
+	id 1qv2j1-008KS3-1e
+	for linux-mediatek@lists.infradead.org;
+	Mon, 23 Oct 2023 21:44:41 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qv2id-0004tw-1w; Mon, 23 Oct 2023 23:44:15 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qv2ia-003nh8-FN; Mon, 23 Oct 2023 23:44:12 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qv2ia-004fZY-5P; Mon, 23 Oct 2023 23:44:12 +0200
+Date: Mon, 23 Oct 2023 23:44:11 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 To: Alexandre Mergnat <amergnat@baylibre.com>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
@@ -55,24 +54,27 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Jitao Shi <jitao.shi@mediatek.com>,
 	Xinlei Lee <xinlei.lee@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
 	Thierry Reding <thierry.reding@gmail.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
 	Catalin Marinas <catalin.marinas@arm.com>,
 	Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH 11/18] dt-bindings: pwm: add power-domains property
-Message-ID: <20231023-oppose-tamper-36d526ece102@spud>
+Subject: Re: [PATCH 12/18] dt-bindings: pwm: add binding for mt8365 SoC
+Message-ID: <20231023214411.sbrdqgethas25rkd@pengutronix.de>
 References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
- <20231023-display-support-v1-11-5c860ed5c33b@baylibre.com>
+ <20231023-display-support-v1-12-5c860ed5c33b@baylibre.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="cS4xr49HXM/FpVea"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="b5norgtzwaifdmor"
 Content-Disposition: inline
-In-Reply-To: <20231023-display-support-v1-11-5c860ed5c33b@baylibre.com>
+In-Reply-To: <20231023-display-support-v1-12-5c860ed5c33b@baylibre.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_103839_796837_85E6C611 
-X-CRM114-Status: GOOD (  18.21  )
+X-CRM114-CacheID: sfid-20231023_144439_568700_B91654B2 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,78 +90,42 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---cS4xr49HXM/FpVea
-Content-Type: text/plain; charset=us-ascii
+--b5norgtzwaifdmor
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Yo,
-
-On Mon, Oct 23, 2023 at 04:40:11PM +0200, Alexandre Mergnat wrote:
-> According to the Mediatek datasheet, the display PWM block has a power
-> domain.
-
-Datasheet for which soc? The mt8173? Is it valid for all devices in this
-binding?
-
-Cheers,
-Conor.
-
+On Mon, Oct 23, 2023 at 04:40:12PM +0200, Alexandre Mergnat wrote:
+> Display PWM for MT8365 is compatible with MT8183. Then, add MT8365 binding
+> along with MT8183 SoC.
 >=20
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->  Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 8 ++++++++
->  1 file changed, 8 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml=
- b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> index 153e146df7d4..efe0cacf55b7 100644
-> --- a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> +++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> @@ -53,6 +53,12 @@ properties:
->        - const: main
->        - const: mm
-> =20
-> +  power-domains:
-> +    maxItems: 1
-> +    description: A phandle and PM domain specifier as defined by binding=
-s of
-> +      the power controller specified by phandle. See
-> +      Documentation/devicetree/bindings/power/power-domain.yaml for deta=
-ils.
-> +
->  required:
->    - compatible
->    - reg
-> @@ -67,6 +73,7 @@ examples:
->      #include <dt-bindings/interrupt-controller/arm-gic.h>
->      #include <dt-bindings/clock/mt8173-clk.h>
->      #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/power/mt8173-power.h>
-> =20
->      pwm0: pwm@1401e000 {
->          compatible =3D "mediatek,mt8173-disp-pwm";
-> @@ -75,4 +82,5 @@ examples:
->          clocks =3D <&mmsys CLK_MM_DISP_PWM026M>,
->                   <&mmsys CLK_MM_DISP_PWM0MM>;
->          clock-names =3D "main", "mm";
-> +        power-domains =3D <&spm MT8173_POWER_DOMAIN_MM>;
->      };
->=20
-> --=20
-> 2.25.1
->=20
 
---cS4xr49HXM/FpVea
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+
+What is the merge plan here? Should the whole series go in via drm?
+
+Thanks
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--b5norgtzwaifdmor
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZTavlQAKCRB4tDGHoIJi
-0v6MAP9Wb3x+52wloDaXjDqYEnoDpprt4+MalmIoclgMkfOMIQEAhpm3TcXRGiJp
-BzZXQcz8bAvgaFDyy5KvWovrZlrFSgE=
-=4JSZ
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmU26SsACgkQj4D7WH0S
+/k5kxAf/R3wtiK6qh3Wc2Q4gR52nWYNIG4VuPK2gTmsXJK0QtdJnUAhBk9EZRxrv
+KxLX41glIN1g7bGG9+9Jh95i+ExJ4w59eQLYiJJOWk1mf6yH+YkJVEudZlj0ixSM
+RQu5gUyk2Rh3hed5809Q3uWqiMvzRSccXvaVVZ0GOQ00Ix9eUwnjPAnUtPL6dImI
+zsOkPfGpGySlFQVWlO1OkCNdkpmtvBxUa6rQNDKBDq2KZD1QaPormKtyZwj5m9fo
+KBJ7Ejxt9QpHjYrV1QHEqRGMdP6UIvQ4nicVXKz9LsepygiOLm2wCj3G4sYYjbMb
+9FHfTBcv2lNXdX6iJj0aN+9S5JTIXw==
+=F4fn
 -----END PGP SIGNATURE-----
 
---cS4xr49HXM/FpVea--
+--b5norgtzwaifdmor--
 
