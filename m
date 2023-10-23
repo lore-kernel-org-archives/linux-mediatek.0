@@ -4,82 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD524C001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 03:17:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B5CC001E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 04:38:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zWD/0C1R8GP7QSgH+H1V2Hdqamu8Yrw8EeQW94hFmqE=; b=ZsNTe2a8vHYvzeCDn1B/8T3h2I
-	vazc66S2B1QtsmrM9fD17vsGdCM8Ov4Q4WjdtLXuOPhmTi7+MKcadEXINNjn9qU+t1zFsASi9K6W9
-	ElMjX+FsPJQE7w5VqMXnkUNglcyRH8yh0r/DvBZ9jE2GfHtU+VdNYgD1MvvHYeF5F4GUu3rnkRYHV
-	M0kmAYuqNWRM0fIa0xibcXHvcUyLdATPoXXa7pYoqJsVWex8Xa8PhptsbzNAKpSQefp/kui01JYaB
-	dhBFV/1D2WCQuPCtqimU4eErCi/kl6oUZbGQ7Gi8LAzdpek6tPNaDdGq2LMi/DMKeiD0b+eTcZmVq
-	Hv9u24Iw==;
+	bh=Z+/P4vnIK2Ka7ViS3nfcfMvHx8CdSa4sK8SaGjXTTfA=; b=J1sA208ZSOus2tK1ejD3M0H0Rc
+	DCEfdOau3UT8WvWHyZoQUv0+gwPUPA6hst6M++Ddys5t1BGipSfUZyBzwguHt9/wJZSi4AEAwwOSi
+	BdvzV6mTfdRxZxeWudgjCLWCFx+eVbpnqOXbiX54mwKNSYVyXKaScABp7MU0fNwM0aDMEhZ5qkKTN
+	6i73k6xNexK1Po5mTJVzuKwkH8k0ON33Y2N1kGWg2cWYogjzz77YDasjsEH9K04adBvhfdYG9DXS2
+	8T1CQMB2xGjiyvJopmzItypSh03Igwf7aqruooBEg51XLBNAFfsxLN+2O8LRpE/alQvNPlPllEfEI
+	NWqLpKpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qulR8-006JVz-1r;
-	Mon, 23 Oct 2023 03:17:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qumhd-006OaW-00;
+	Mon, 23 Oct 2023 04:38:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qulR1-006JTd-2T;
-	Mon, 23 Oct 2023 03:16:57 +0000
-X-UUID: 9cdd451e715211ee9b7791016c24628a-20231022
+	id 1qumhY-006OYn-0y;
+	Mon, 23 Oct 2023 04:38:05 +0000
+X-UUID: f0438d20715d11ee86758d4a7c00f3a0-20231022
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zWD/0C1R8GP7QSgH+H1V2Hdqamu8Yrw8EeQW94hFmqE=;
-	b=mD0vwbMwEx1kj58LGntT2Jdsc+WbcUhZpukwXTC4N1KGTiXm3D6OBF54Rg/FYUJ1Yuw9YCyb6GrMZdImMRWAKwR3pi8uOH3OtF5mg9idy2c1gBhfCRqUcuCnkocJDvSdytIeYboAhp/aTIV8jnuPDC9aZnt6Z37GLMP9pmXqQF0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Z+/P4vnIK2Ka7ViS3nfcfMvHx8CdSa4sK8SaGjXTTfA=;
+	b=KQgRoaQVBTENi/9Mj1RtQthr2TuCtsaB+bo3YA2J2wDmJ1k596xQriBce0J6qBc7o7YWrVnzKUvuK+Y0FSK3FwsbQeYvZtyJjSqetsdi+dj8o+MR1ITSq0uPkSuRk7T3QOeFabZC0Zd3e3HwRI9FNqgAEN0/LsluE/vC0+leYVA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:2fc8279b-bf7c-4657-9531-4a0662444bd4,IP:0,U
+X-CID-O-INFO: VERSION:1.1.32,REQID:921e83ef-e42f-47b5-bd97-c64032ee7e23,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:688730d7-04a0-4e50-8742-3543eab8cb8e,B
+X-CID-META: VersionHash:5f78ec9,CLOUDID:73ff8194-10ce-4e4b-85c2-c9b5229ff92b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9cdd451e715211ee9b7791016c24628a-20231022
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
+X-UUID: f0438d20715d11ee86758d4a7c00f3a0-20231022
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 611658888; Sun, 22 Oct 2023 20:16:52 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 2066525514; Sun, 22 Oct 2023 21:37:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 23 Oct 2023 11:06:49 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 23 Oct 2023 11:06:48 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Sebastian Fricke <sebastian.fricke@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,7/7] media: mediatek: vcodec: Set the supported vp9 profile for each platform
-Date: Mon, 23 Oct 2023 11:06:40 +0800
-Message-ID: <20231023030640.16393-8-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231023030640.16393-1-yunfei.dong@mediatek.com>
-References: <20231023030640.16393-1-yunfei.dong@mediatek.com>
+ 15.2.1118.26; Mon, 23 Oct 2023 12:37:53 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 23 Oct 2023 12:37:53 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+CC: Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jeffrey Kardatzke
+	<jkardatzke@google.com>, Jason-ch Chen <jason-ch.chen@mediatek.com>, "Johnson
+ Wang" <johnson.wang@mediatek.com>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, "Nancy
+ Lin" <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>
+Subject: [PATCH v2 1/9] dt-bindings: gce: mt8195: Add  CMDQ_SYNC_TOKEN_SECURE_THR_EOF event id
+Date: Mon, 23 Oct 2023 12:37:43 +0800
+Message-ID: <20231023043751.17114-2-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231023043751.17114-1-jason-jh.lin@mediatek.com>
+References: <20231023043751.17114-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--6.916700-8.000000
+X-TMASE-MatchedRID: IajWZngc9jMepnz2STo7dG3NvezwBrVmWIY1mtkm5WDfUZT83lbkEKr+
+	XcmqaRdP2YJ36PQpkbxcQcZU6RHBSpH0YXYnbGozFEUknJ/kEl5jFT88f69nG/oLR4+zsDTtjoc
+	zmuoPCq013lqSCSy62Ckfi332ba81z9MznZrI2ArgCJXl+Q/4b9q3pvrxn4wTQwymtxuJ6y0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--6.916700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 226DC81E61C736BCE8D18E9F6809EBAEF63BA28418595AE619577313A3B831312000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231022_201655_808930_62AD2EA5 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20231022_213804_341083_014251CF 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,63 +103,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set the maximum VP9 codec profile for each platform.
-The various mediatek platforms support different profiles for decoding,
-the profile of the codec limits the capabilities for decoding.
+CMDQ_SYNC_TOKEN_SECURE_THR_EOF is used as secure irq to notify CMDQ
+driver in the normal world that GCE secure thread has completed a task
+in thee secure world.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 22 ++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+ include/dt-bindings/gce/mt8195-gce.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index eb8590edb579..d54b3833790d 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -109,7 +109,8 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
- 			.id = V4L2_CID_MPEG_VIDEO_VP9_PROFILE,
- 			.min = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
- 			.def = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
--			.max = V4L2_MPEG_VIDEO_VP9_PROFILE_3,
-+			.max = V4L2_MPEG_VIDEO_VP9_PROFILE_2,
-+			.menu_skip_mask = BIT(V4L2_MPEG_VIDEO_VP9_PROFILE_1),
- 		},
- 		.codec_type = V4L2_PIX_FMT_VP9_FRAME,
- 	},
-@@ -632,6 +633,20 @@ static void mtk_vcodec_dec_fill_vp9_level(struct v4l2_ctrl_config *cfg,
- 	};
- }
+diff --git a/include/dt-bindings/gce/mt8195-gce.h b/include/dt-bindings/gce/mt8195-gce.h
+index dcfb302b8a5b..9f99da3363b9 100644
+--- a/include/dt-bindings/gce/mt8195-gce.h
++++ b/include/dt-bindings/gce/mt8195-gce.h
+@@ -809,4 +809,10 @@
+ /* end of hw event */
+ #define CMDQ_MAX_HW_EVENT				1019
  
-+static void mtk_vcodec_dec_fill_vp9_profile(struct v4l2_ctrl_config *cfg,
-+					    struct mtk_vcodec_dec_ctx *ctx)
-+{
-+	switch (ctx->dev->chip_name) {
-+	case MTK_VDEC_MT8188:
-+	case MTK_VDEC_MT8195:
-+		cfg->max = V4L2_MPEG_VIDEO_VP9_PROFILE_2;
-+		break;
-+	default:
-+		cfg->max = V4L2_MPEG_VIDEO_VP9_PROFILE_1;
-+		break;
-+	};
-+}
++/*
++ * Notify normal CMDQ there are some secure task done,
++ * this token sync with secure world.
++ */
++#define CMDQ_SYNC_TOKEN_SECURE_THR_EOF			980
 +
- static void mtk_vcodec_dec_reset_controls(struct v4l2_ctrl_config *cfg,
- 					  struct mtk_vcodec_dec_ctx *ctx)
- {
-@@ -658,6 +673,11 @@ static void mtk_vcodec_dec_reset_controls(struct v4l2_ctrl_config *cfg,
- 		mtk_v4l2_vdec_dbg(3, ctx, "h265 supported profile: %lld %lld", cfg->max,
- 				  cfg->menu_skip_mask);
- 		break;
-+	case V4L2_CID_MPEG_VIDEO_VP9_PROFILE:
-+		mtk_vcodec_dec_fill_vp9_profile(cfg, ctx);
-+		mtk_v4l2_vdec_dbg(3, ctx, "vp9 supported profile: %lld %lld", cfg->max,
-+				  cfg->menu_skip_mask);
-+		break;
- 	default:
- 		break;
- 	};
+ #endif
 -- 
 2.18.0
 
