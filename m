@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38389C25B46
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 17:04:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D6EFC25B47
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 17:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LeEK8YK/Qmt8aW/nVau7BtSeeGLKHMBHQNZXUYZ8jNo=; b=UloX32e6DArtfISd/M9qaXqsAu
-	xmLefpiM80mS86MtIF2+lSUIZJ07Lo4hMhJAvQ/XcGP5K+fr+C4mu/z2IVGXIIprmqxaBsjaiCnk6
-	zfeW6qEFQ5Shx4RnjRnShsTQGV8f1fyoPoge0cESHsu/MoRv5nmxKusmsJykPjySLr8+EA710M4Q4
-	tLDfAEzMWtYsG7wT3vN2Wh7sZSW4+Bj+YXTdD3DuW0xD118to67RNC3+W1UZUMVzGDk3DsRXthe0j
-	y5dRKpy3x6fLcIyUfTKiSfFM2ouaYFk4UeVTb1PiKoGXhuXr3UTuAyF6IWpJniP2LIxHdFVaIrmen
-	uBAwYQOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:Cc:To:
+	References:In-Reply-To:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=djQ4x/wq9DDQuq/tvubwZ8KMURUdDqziJTS0Z0uck+o=; b=3IXAgaD1kfWuFcRlvKnM6g9vfm
+	gLk9iNsQq37ntIrgL6AKrb8grwxKCI39cgjX5tu7DQH4kHc0sm/kd1NHthDsnavzdNpItWqTPgVmK
+	KmUpsHpT8xLE+cF9ZL+8rOB9q+JNvyZ2ouv1QvmdRvnR1i3M9WfsNvGV+g7k4duraIUEw+CCPsaNu
+	/AtanCyrZ2WqF3Amc/e4T8aS6P+I+lsCrLvkhMZ0rIzf4WFX+uypsrw3PFhoN5ZB7/ZWHqMGwNbPp
+	9pgk4/i/p+FaYkoEAKlNEKQBuAxol8z7dZB77fIaFrQgefjNe4DEmnxZdGyVc2w1jiGXm66+0e33v
+	oMHZqYgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quyLZ-007tBv-2c;
-	Mon, 23 Oct 2023 17:04:09 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1quyiT-007vzH-0N;
+	Mon, 23 Oct 2023 17:27:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quyLW-007tAb-0V;
-	Mon, 23 Oct 2023 17:04:07 +0000
+	id 1quyiQ-007vyA-1C
+	for linux-mediatek@lists.infradead.org;
+	Mon, 23 Oct 2023 17:27:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 8B053B81A71;
-	Mon, 23 Oct 2023 17:04:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92865C433C7;
-	Mon, 23 Oct 2023 17:03:59 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5FD3F62629;
+	Mon, 23 Oct 2023 17:27:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CA5DC433C8;
+	Mon, 23 Oct 2023 17:27:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698080643;
-	bh=Z9iY3lsaZZ0k2Yw6281j4HRYsuuLhnj+PAotK0K3VDc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PDyPGJr3cK+jKb5Cq6EVOd3FAvj4jLd1F5V5I2zaSliCU4SDbKApT9Rn3rgvbcB/e
-	 h96zO1DsiEGno/PSW6UhjDGACMyFRcts7xpOnFhKLV24YqpawYWsdPdFRBT571oEMZ
-	 IrPmsb6HRdJTq6n+Uo836v53fH/5gKP0iIFMPA07msGpOWiK8AWIQCoUZlyWW3uKZU
-	 a4I1A3mdePhDk5Lb5DHLzXBL4tTlGwxyfeeKf4eIfCyNzdv/xppPOA4Ij+9U3pc+Dt
-	 +ISwR95IHhxVQJQntGzb62eA2io51O2nTyxGhxyj6gJbmUC38uTS0jCnBdxWs2kRa0
-	 TizIz5NDcMF+w==
-Date: Mon, 23 Oct 2023 18:03:57 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jitao Shi <jitao.shi@mediatek.com>,
-	Xinlei Lee <xinlei.lee@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH 01/18] dt-bindings: display: mediatek: aal: add binding
- for MT8365 SoC
-Message-ID: <20231023-sharpness-uplifting-634566c6b4ff@spud>
-References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
- <20231023-display-support-v1-1-5c860ed5c33b@baylibre.com>
+	s=k20201202; t=1698082065;
+	bh=Tv4ouv0dyZkXdrZ2Jtv8p8V35lNdTX3igXUFKwHpCd0=;
+	h=Subject:From:In-Reply-To:References:To:Cc:Date:From;
+	b=hb+SH/STzoGRxC4ssiuV1nqao3LBhhXv9PRJLq0J+0k3Pomeb+cErOoVXNN8Acng2
+	 lFUaf96tJDw3xCBHL8+yIp2qw6jvxpukYalvie2oxF3QKPP8wtAzSjqHUNzJmQKB7S
+	 /S/Wc7k+HwDWs10yyw8sgj8rm0CJbgoOZmTLDycpSuFa9iqSmSs++0+HQ9vluO64sr
+	 H3UxU13yjvvoQHvHlgyMyKBdXgaHPKMWZgdgUb9f0nD4UfEntkedi+QwQ/zJOQjew2
+	 hW3ZabeWmHYkZo5aKK1ZiHxn1CFDW1tkebnjcIS53TFNV4mSwA+OsalyEYCwpuFsLO
+	 XVPpS8IxY2IGA==
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="PbLYAkV5QGg0voCF"
-Content-Disposition: inline
-In-Reply-To: <20231023-display-support-v1-1-5c860ed5c33b@baylibre.com>
+Content-Transfer-Encoding: 7bit
+Subject: Re: [next,v2] wifi: mt76: mt7921: fix kernel panic by accessing
+ invalid 6GHz channel info
+From: Kalle Valo <kvalo@kernel.org>
+In-Reply-To: <cf77a58a60d81c77a28388bc8d312b87ffb48434.1697603002.git.deren.wu@mediatek.com>
+References: <cf77a58a60d81c77a28388bc8d312b87ffb48434.1697603002.git.deren.wu@mediatek.com>
+To: Deren Wu <deren.wu@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+ Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+ Leon Yen <Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+ CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
+ Stella Chang <Stella.Chang@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ AngeloGioacchino Del Regno
+        <angelogioacchino.delregno@collabora.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Deren Wu <deren.wu@mediatek.com>
+User-Agent: pwcli/0.1.1-git (https://github.com/kvalo/pwcli/) Python/3.11.2
+Message-ID: <169808205862.695306.10760960481097586396.kvalo@kernel.org>
+Date: Mon, 23 Oct 2023 17:27:40 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_100406_591389_A5DA2EF9 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20231023_102746_489737_12296BB9 
+X-CRM114-Status: UNSURE (   7.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,58 +87,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Deren Wu <deren.wu@mediatek.com> wrote:
 
---PbLYAkV5QGg0voCF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> 
+> When the chip not support 6GHz capability, the channels of 6GHz information
+> should not be updated. This caused a crash:
+> 
+> [   19.442078] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000014
+> [   19.457535] Mem abort info:
+> [   19.465329]   ESR = 0x0000000096000004
+> [   19.473295]   EC = 0x25: DABT (current EL), IL = 32 bits
+> [   19.482354]   SET = 0, FnV = 0
+> [   19.489143]   EA = 0, S1PTW = 0
+> [   19.495991]   FSC = 0x04: level 0 translation fault
+> [   19.504554] Data abort info:
+> [   19.511111]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+> [   19.520269]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+> [   19.528988]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+> [   19.537960] user pgtable: 4k pages, 48-bit VAs, pgdp=00000001027a9000
+> [   19.548014] [0000000000000014] pgd=0000000000000000, p4d=000000000000
+> [   19.558429] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+> [   19.568270] Modules linked in: mt7921e mt7921_common mt792x_lib
+> mt76_connac_lib mt76 mac80211 btusb btintel cfg80211 btmtk snd_sof_ipc_msg_
+> btrtl snd_sof_ipc_flood_test btbcm bluetooth snd_sof_mt8195 uvcvideo
+> mtk_adsp_common snd_sof_xtensa_dsp uvc snd_sof_of snd_sof videobuf2_vmalloc
+> ecdh_generic ecc snd_sof_utils cros_ec_lid_angle cros_ec_sensors crct10dif_
+> cros_ec_sensors_core cros_usbpd_logger crypto_user fuse ip_tables ipv6
+> [   19.614237] CPU: 1 PID: 105 Comm: kworker/1:1 Not tainted 6.6.0-rc6-next-20231017+ #324
+> [   19.625957] Hardware name: Acer Tomato (rev2) board (DT)
+> [   19.634970] Workqueue: events mt7921_init_work [mt7921_common]
+> [   19.644522] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTY
+> [   19.655182] pc : mt7921_regd_notifier+0x180/0x290 [mt7921_common]
+> [   19.664983] lr : mt7921_regd_notifier+0xd4/0x290 [mt7921_common]
+> [   19.674679] sp : ffff800080acba80
+> [   19.681649] x29: ffff800080acba80 x28: 0000000000000000 x27: ffff4faf
+> [   19.692483] x26: 0000000000000000 x25: 0000000000000000 x24: ffff4faf
+> [   19.703294] x23: 00000000ffffe926 x22: ffff4faf16031fa0 x21: 00000000
+> [   19.714108] x20: 000000000000001c x19: ffff4faf16ba6f40 x18: 00000000
+> [   19.724928] x17: 0000000000000000 x16: ffffac6b891c2750 x15: ffff8000
+> [   19.735722] x14: 0000000000000180 x13: 0000000000000000 x12: 00000000
+> [   19.746478] x11: 0000000000000002 x10: ffff4faf01c21780 x9 : ffffac6b
+> [   19.757214] x8 : 00000000006c0000 x7 : ffffac6b6b020cf0 x6 : ffffac6b
+> [   19.767945] x5 : ffffac6b6b020d00 x4 : ffffac6b6b020cf8 x3 : ffff4faf
+> [   19.778648] x2 : 0000000000000000 x1 : 000000000000001c x0 : 00000000
+> [   19.789366] Call trace:
+> [   19.795381]  mt7921_regd_notifier+0x180/0x290 [mt7921_common]
+> [   19.804675]  wiphy_update_regulatory+0x2bc/0xa08 [cfg80211]
+> [   19.813864]  wiphy_regulatory_register+0x4c/0x88 [cfg80211]
+> [   19.823029]  wiphy_register+0x75c/0x8d0 [cfg80211]
+> [   19.831446]  ieee80211_register_hw+0x70c/0xc10 [mac80211]
+> [   19.840479]  mt76_register_device+0x168/0x2e8 [mt76]
+> [   19.849008]  mt7921_init_work+0xdc/0x250 [mt7921_common]
+> [   19.857817]  process_one_work+0x148/0x3c0
+> [   19.865292]  worker_thread+0x32c/0x450
+> [   19.872489]  kthread+0x11c/0x128
+> [   19.879173]  ret_from_fork+0x10/0x20
+> [   19.886153] Code: f0000041 9100a021 94000aef aa0003f9 (b9401780)
+> [   19.895634] ---[ end trace 0000000000000000 ]---
+> 
+> Reported-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Closes: https://lore.kernel.org/all/927e7d50-826d-4c92-9931-3c59b18c6945@collabora.com/
+> Fixes: 09382d8f8641 ("wifi: mt76: mt7921: update the channel usage when the regd domain changed")
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-On Mon, Oct 23, 2023 at 04:40:01PM +0200, Alexandre Mergnat wrote:
-> Display Adaptive Ambient Light for MT8365 is compatible with another SoC.
+Patch applied to wireless-next.git, thanks.
 
-> Then, add MT8365 binding along with MT8183 SoC.
+169b7acb847e wifi: mt76: mt7921: fix kernel panic by accessing invalid 6GHz channel info
 
-s/binding/compatible/, here and in the subject.
+-- 
+https://patchwork.kernel.org/project/linux-wireless/patch/cf77a58a60d81c77a28388bc8d312b87ffb48434.1697603002.git.deren.wu@mediatek.com/
 
-Cheers,
-Conor.
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
->=20
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->  Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml | 1=
- +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.=
-yaml
-> index 7fd42c8fdc32..840b48a878ca 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> @@ -35,6 +35,7 @@ properties:
->                - mediatek,mt8188-disp-aal
->                - mediatek,mt8192-disp-aal
->                - mediatek,mt8195-disp-aal
-> +              - mediatek,mt8365-disp-aal
->            - const: mediatek,mt8183-disp-aal
-> =20
->    reg:
->=20
-> --=20
-> 2.25.1
->=20
-
---PbLYAkV5QGg0voCF
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZTanfQAKCRB4tDGHoIJi
-0tPUAP9cTTvfIBq9I7y7WjmhtsRZbhjBWhdUzs8mmYekmW17xAEAnCJCpDVwVruG
-ZkQOxyU76MLSecahlFO14YNh1wBwEAk=
-=wX+W
------END PGP SIGNATURE-----
-
---PbLYAkV5QGg0voCF--
 
