@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85196C00A8F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0431C25B41
 	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 09:55:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,56 +12,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TezS6fAbmZRfIE/9gAJPYUtZvuonet12GZ8K7ihJ9/I=; b=1ldt+Ik7rVgqAAOREwgqTHzUAN
-	pI2v1YFMZPtdyKkckJWCqaqnudDAVi5wEaQ1/c2pzdiuYzUMTuSqCRqv+bZ4dxhbr0I3NZVKKjSnB
-	/5c9FSRjlgw7Hti/GfQmrAvF/g4XKeKeSUMHiMQlsOShUfE9ql3cWUAjodNnxsGzcNLy7SOfOFrgp
-	iSooKQHgPeQLsi+jb+U0NsxMIwb2KSe87Bx6UxW0dCMvev0k43lHL4tvX/Gz3veOXbIC1nVJmlu1g
-	xTDtrLLERr0P7o1C1MoRc95NmUJmEjwV08Ss3pUKpEh4K1O7pXWpenV8LZ7rhwRmnB9SKPn3dJ5K3
-	EkVEHwRA==;
+	bh=mg1xiJ4tpWrc01TGrYLaIzComQYv1hvzEAR610Ntv3U=; b=dcCDFL3FIO8brQq82wIbc8eW/P
+	ZC/zB1gHDT28hUKZ1s2ijnrwhmVs1aTJ1UiU9eh3nTx5AozCx0FVRcznqWdQWSY9wYwHjLQ64/Tf4
+	UWVgshi+daRHIXIMs78dDwS9aIwoEzbbHwITldeH+9V71VErrtIi0MC9Ow1YT6g62RcCxgtI1cX+M
+	/eyK80CfMjCDelXJ/Odc8BljN/bRDc7WQsl+VRObXlYqi/VA9NAlWxOC+iOSHc6i+yBt0UqlyB3xN
+	7SQJZmGXcfEgLXZzV/w4cwQ+aRU3nETvmBwE0UEsdtI37xmTIC6z9//s2iUYbGGqyBcUEBkg3sr1w
+	z0tJs1WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qureE-006wQi-2l;
-	Mon, 23 Oct 2023 09:54:58 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1qureF-006wRA-1C;
+	Mon, 23 Oct 2023 09:54:59 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qure2-006wCu-01
+	id 1qure4-006wET-2g
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 09:54:47 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-32dd70c5401so2160278f8f.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 02:54:45 -0700 (PDT)
+	Mon, 23 Oct 2023 09:54:50 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-50797cf5b69so4201997e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 02:54:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1698054884; x=1698659684; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1698054886; x=1698659686; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TezS6fAbmZRfIE/9gAJPYUtZvuonet12GZ8K7ihJ9/I=;
-        b=WYl97ENvxBFVDw4c7F7jUnBb7vlZh9L/LenPCmTkOVL1vTXQ8QBFN9ofct2YD++rXe
-         nLsE3utz1HwX1Aq8IJolIlqtrjnZAb3gYCcgB6Bc/W8sdO2uQXIvghwGbLTNRH6SRIAK
-         cETK3F3I9z+4Fz2p8iJZPicAOmixiYe6cPXrtgZtrekZqo6mnZQ5IngYYXTr/xbJfYwM
-         Uv05DBsdI25MqnDo1o9uoqwrGe5Mk9hjfW3HrKizekbB80jlsn51Jjh0keAefL1kUGpz
-         o27hyg0Stl4wY0g1MSrQ1Lgw+IYgqLhNjAFnpWvq7wbYBeH3C1PG6jAhfg8VYFkjjG05
-         s0dA==
+        bh=mg1xiJ4tpWrc01TGrYLaIzComQYv1hvzEAR610Ntv3U=;
+        b=b2/+XrPn2ZOeEtaJbxQ/A9nd2NX3kN61R+tujC3pb1IkZkQqr17a0rbRzV6fymVB6A
+         TznNZDDlkTUyhJe1yAU4gfVNMJlayU3A5dNFxLxzihiJQdFiwk0141LZJCKcvXgeRC6B
+         wsp1j0NkL219SlGtaPxuJNW+eu5H3PIKSi2ig3kt8yxi/XOFxwEa8B8e4a9y/Z6uvrYU
+         VRZnbkDNNmKK5e8V3AWxHWbxAue6R+m2XcKDF2tezwu3KYKzrPPutHEltmdb9grIV3DW
+         gtXjg9xmPL9zWrbeO6jP2PlmMF/7KsURPW0sLuaBDCdV5eyKbm6VpJrCMfbTIlV3R836
+         XmGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698054884; x=1698659684;
+        d=1e100.net; s=20230601; t=1698054886; x=1698659686;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TezS6fAbmZRfIE/9gAJPYUtZvuonet12GZ8K7ihJ9/I=;
-        b=DqNRs0kPP7ecCAMlXTq7YZmAXCWoQCtWhD+ekE+hU5bM0gcVMeHERcV1hNSDarQNt6
-         pzj+uYcS9uufCTCgqFjY7U+ONcxM6sZw409FaE23NvqiRDiAVE/8FPrUbIn2e7aRZlq6
-         8iFm7nDKH7QvWk1atVnIenHIjvVNC3uT6VTUhVJAAUsSVn2pOIE7EelQFR0Urfdau1Qd
-         IUcg8L8mn+GFzsBsBgfak1urjHjdWD9O+Q96mQu/fNq5mHpgKq0277QeIhrfDxm4WUnN
-         0u17KHBR1oM5LosmsTGMOpcn3esawHFxhgIET1VN/gMpcsOP/eR9tbpr2QXvmkXFjZO2
-         D/hQ==
-X-Gm-Message-State: AOJu0YzzMUA/omyb0gl5MzXFhB9zjRVQ6MRCjtZlmAUT6VPNxY571h35
-	YtikbjmDCBx23r7ScwsGnNZXUA==
-X-Google-Smtp-Source: AGHT+IHsx/9dXkgIRE0i/tyQBHSemsOVRBosIhYnxE5jqsYSPyBJogKhqbIAWQxRyZ17AF8k0sON7w==
-X-Received: by 2002:adf:f603:0:b0:31a:d450:c513 with SMTP id t3-20020adff603000000b0031ad450c513mr6210328wrp.26.1698054884307;
-        Mon, 23 Oct 2023 02:54:44 -0700 (PDT)
+        bh=mg1xiJ4tpWrc01TGrYLaIzComQYv1hvzEAR610Ntv3U=;
+        b=LADlmD/H2cH1PZjEwcUpiY9MrmRXH4RBUCcW0EshWvqh1qKomah5HXnAg1Dq7Mnyd4
+         kMI6W4pmzz0vyhBEuW4kmJIMtnrVwlFTTTIbqNKaf9wCZdERKNoR8kVxpZ21azW+VFc3
+         qymshLY6jlxG2M/DJZil526xWjFLn7YiuseqMN3ZA/pKFyrVRBlHfDRxdrJ61mfE2Jsp
+         6QWSAIuN9vGJJMw3W/t7ODV8Nh/pNu+OrkpL2uimktivEE35fc/xpPM/BMdC6KGk94Hk
+         Z3RcirSxmn2m9B0ff1JK87n45JLMVcsrhW7v6H71lV6fvulEeWprDFk7sLayjh4/ocMQ
+         PpNg==
+X-Gm-Message-State: AOJu0YyK9dJ/+Rv3XodKdjzFYlioX5W7NcX7qaBe5o09Dyg6M3HP4ofV
+	bXS8riY+UHajRFnHv/UMmAltig==
+X-Google-Smtp-Source: AGHT+IGVnDVUzhqtZG2Rxtx8SwcXnzeMCoNHkuKGJvqRY3jD0nxvOcWU8+AB175lzXv5OfVrm4BxmA==
+X-Received: by 2002:ac2:4430:0:b0:500:b7ed:105a with SMTP id w16-20020ac24430000000b00500b7ed105amr6312430lfl.29.1698054886439;
+        Mon, 23 Oct 2023 02:54:46 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id u14-20020a5d468e000000b00323330edbc7sm7428801wrq.20.2023.10.23.02.54.42
+        by smtp.gmail.com with ESMTPSA id u14-20020a5d468e000000b00323330edbc7sm7428801wrq.20.2023.10.23.02.54.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 02:54:43 -0700 (PDT)
+        Mon, 23 Oct 2023 02:54:46 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
@@ -84,17 +84,17 @@ To: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-tegra@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [RFT PATCH 05/17] ASoC: codecs: max9867: Handle component name prefix
-Date: Mon, 23 Oct 2023 11:54:16 +0200
-Message-Id: <20231023095428.166563-6-krzysztof.kozlowski@linaro.org>
+Subject: [RFT PATCH 06/17] ASoC: codecs: rt5682s: Handle component name prefix
+Date: Mon, 23 Oct 2023 11:54:17 +0200
+Message-Id: <20231023095428.166563-7-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
 References: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_025446_041576_B106720F 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20231023_025448_870319_E23731C8 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,31 +114,25 @@ to include also the component's name prefix.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- sound/soc/codecs/max9867.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ sound/soc/codecs/rt5682s.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/codecs/max9867.c b/sound/soc/codecs/max9867.c
-index b616ad39858c..3b9dd158c34b 100644
---- a/sound/soc/codecs/max9867.c
-+++ b/sound/soc/codecs/max9867.c
-@@ -56,13 +56,13 @@ static int max9867_adc_dac_event(struct snd_soc_dapm_widget *w,
- 	struct max9867_priv *max9867 = snd_soc_component_get_drvdata(component);
- 	enum max9867_adc_dac adc_dac;
+diff --git a/sound/soc/codecs/rt5682s.c b/sound/soc/codecs/rt5682s.c
+index 68ac5ea50396..c261c33c4be7 100644
+--- a/sound/soc/codecs/rt5682s.c
++++ b/sound/soc/codecs/rt5682s.c
+@@ -1323,9 +1323,9 @@ static int set_i2s_event(struct snd_soc_dapm_widget *w,
+ 	if (SND_SOC_DAPM_EVENT_ON(event))
+ 		on = 1;
  
--	if (!strcmp(w->name, "ADCL"))
-+	if (!snd_soc_dapm_widget_name_cmp(w, "ADCL"))
- 		adc_dac = MAX9867_ADC_LEFT;
--	else if (!strcmp(w->name, "ADCR"))
-+	else if (!snd_soc_dapm_widget_name_cmp(w, "ADCR"))
- 		adc_dac = MAX9867_ADC_RIGHT;
--	else if (!strcmp(w->name, "DACL"))
-+	else if (!snd_soc_dapm_widget_name_cmp(w, "DACL"))
- 		adc_dac = MAX9867_DAC_LEFT;
--	else if (!strcmp(w->name, "DACR"))
-+	else if (!snd_soc_dapm_widget_name_cmp(w, "DACR"))
- 		adc_dac = MAX9867_DAC_RIGHT;
- 	else
- 		return 0;
+-	if (!strcmp(w->name, "I2S1") && !rt5682s->wclk_enabled)
++	if (!snd_soc_dapm_widget_name_cmp(w, "I2S1") && !rt5682s->wclk_enabled)
+ 		rt5682s_set_i2s(rt5682s, RT5682S_AIF1, on);
+-	else if (!strcmp(w->name, "I2S2"))
++	else if (!snd_soc_dapm_widget_name_cmp(w, "I2S2"))
+ 		rt5682s_set_i2s(rt5682s, RT5682S_AIF2, on);
+ 
+ 	return 0;
 -- 
 2.34.1
 
