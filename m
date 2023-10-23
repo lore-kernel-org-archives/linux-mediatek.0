@@ -4,108 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B429C001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 14:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47027C25B41
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 15:17:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=595ulVabtRF3llgdI31WX9Gdt75QPCMf8//5psjHRtY=; b=DYPnFpdYF9Yv6F7tzNO3cvsyYy
-	Ub9XMc52jiMaZdbHGvLv3SsKABUZcBChfQ1kqXCAMA/9t7nXiKz2FlAFjmmjCK9kKLdcX9W2bAExa
-	YpCexjWHlfCMmMfWoxhM0SQf2v9wIjY33SaJiNb3rAo6ZyMzazd4qF8SPPoS7YYDjwHbraEGRcPZv
-	Y6BATBcxr3idCsFigPGITKdGrMFfCgYUVTCa0jmK0OfkleM1gLgiiAZRx/7T12cWaSHISHWlF+PDi
-	WdxXHvujpFP7oF36/IgKdJU/4gsRSHei85nMsDo33BQmOBpa1DVfp8i5wfF0VhNi0VIyKoSMhbVj7
-	pwER7zng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jAyRkZU+G6EHBgXjNlQRdapo8Bo6bVrz7BpJ95EsKKo=; b=v3XyqA4bUJZzeEFF02eRclyD1u
+	TivfGzv1HTizhgVk5hPBbShCJpiK0PtoFOYZMZzeY2nBtiZkenN0VAJ8z+N6AROxl9IUJpxFI6a6U
+	dgTAAs8Xa8dzlYNlPjrrkfK6HHNdhsOQ6HWyCXLyadzf+mmTSbhFrnIMKHww76Svo36S6if0Jb/nX
+	UdPuyojcL+6peehinsE8p9EcFBAeSexE47qLiQrk7lS70StTZiW9FjiVkwGz1tUnS6ys+9Sotdr39
+	kh2caP18Ql4V5UJT1SIU5/w3ah26bs+d4h6XE3p+y0UzGN3dc+J/C8WujBcEkvQeDr/zVaw9ImWtn
+	9OTixceQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quw86-007ahk-2w;
-	Mon, 23 Oct 2023 14:42:06 +0000
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
+	id 1quwg5-007fXj-0S;
+	Mon, 23 Oct 2023 15:17:13 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quw7O-007a3Y-1j
-	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 14:41:26 +0000
-Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-777719639adso208513485a.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 07:41:22 -0700 (PDT)
+	id 1quwg1-007fWW-1o;
+	Mon, 23 Oct 2023 15:17:10 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4084095722aso27986805e9.1;
+        Mon, 23 Oct 2023 08:17:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1698072082; x=1698676882; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=595ulVabtRF3llgdI31WX9Gdt75QPCMf8//5psjHRtY=;
-        b=0aYnnmiXZyrtionYzSwqkIh3bARqvxdWMiE7ZHCcxtGYznmd4IfISlNAwekOyqCr3E
-         RewyTAe10L/OKf5DQxplIXcIyZIt+iLA5U0hP0AZFB5cJCoWYEXBQMh6ah2yXMT5az/C
-         k6bH1tEultgItDrbtBQecjsOQfG1RIDVfHF27WNhDugsyGBvCQQzfx5l+auORQNXw4hy
-         ppE7FEMdunPi2LYfMQdKx0L+P193CgM+idZCYur1S59+KVC9yPSwcwINLg/y9tnLyD1O
-         xwK/CKwSl2nRXopOpXzo6Qrtxt3UFBEMcV9L2ZNB9byqEm8ro5wh/MWEiFDe2uvhDgS9
-         Q04g==
+        d=gmail.com; s=20230601; t=1698074226; x=1698679026; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=jAyRkZU+G6EHBgXjNlQRdapo8Bo6bVrz7BpJ95EsKKo=;
+        b=LM/6g+C0W3qxMQbBItwW+yz6BimLvOvTmpwDLbi4briDSDbCzBMAHKM8MZjJYweXkI
+         95ZVpDjHRNC6YIx+mg8x4patZRPoygrTuTkRAb2DYzyZ0dhacAxyHMzlmDpGcO42fmkP
+         jkF1NMVATkRH7YS06vLWdefqNG4g4b9siGSoO24VnCbmTn1VqGS6eq9lzmW+kNQkDmsr
+         XA7/D3wVzlrFaw49MkRQzhT/yySkIvc8k8QqA3fstl3MmnxP+nCbgTMwwXCEucJ3cC70
+         8ALTbVMbaa/CIOzoBFD7alSdmCSgY/+n16naCKH+pCnR4yHb2yFc1qrx1eNgeOkAsa2R
+         1YlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698072082; x=1698676882;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=595ulVabtRF3llgdI31WX9Gdt75QPCMf8//5psjHRtY=;
-        b=rGB4z04b1PTmxxN2HZXr5+pXnes+H6ZCF+8y0NicwN+xwV7OrkvfjLpK7SrU0AUXU+
-         U2phdEqIrg2HE8hKXPa6RgiwTzmLhdxmB0dPRYU5GzhNsLsJwkqym2ej7Iw/JeerVk95
-         gZBZnbRKF7StBQ3hrQdY9aUirw2lMK6ahddOTFDPnX12LUt1zimzkuqDYy2qk74TBV65
-         AOFCnfJs5xcDryoYwRoc6zgcTq7xqAZqvlWD+k+BqGwAY51BptFbJTVnA36dX9XAxZba
-         fMkJ2sjcTl+61vKDL77ig3/rTD+pKygfvYOFq0kFyROqkGt1nU+GaoMlagGbpObmoW1R
-         YJHQ==
-X-Gm-Message-State: AOJu0YxhMnd/OyKY0jGGQTQA2QOPJxjvTA3zOgOWkhcGBw9fyVOwUqDH
-	cINFlQOUAEPHhFFzaMMounIBDg==
-X-Google-Smtp-Source: AGHT+IEcl8tn7kc5yak43uDO4NKC4OFhGJ1HhbnGe+skc/PMjn6o3r+j8Un5vwm66cBdZQOBlHJ8Rw==
-X-Received: by 2002:a05:620a:bc9:b0:76e:f62e:45cc with SMTP id s9-20020a05620a0bc900b0076ef62e45ccmr9656082qki.32.1698072081572;
-        Mon, 23 Oct 2023 07:41:21 -0700 (PDT)
-Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id f1-20020a05620a408100b007789a3499casm2725020qko.115.2023.10.23.07.41.18
+        d=1e100.net; s=20230601; t=1698074226; x=1698679026;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jAyRkZU+G6EHBgXjNlQRdapo8Bo6bVrz7BpJ95EsKKo=;
+        b=sV6FobJPW28siDCvLCQ2aUDrhK0VeHNsGz+Fh5NIjJ4fJJCtsXOn6zzIh+wGyewWQv
+         5sifE/cuAkmqzTB5EptevaTlfyEJKu7zYCTkqrstfyHxur1hjLaIcePl3VKIVBlzsNgA
+         /QIHqdnscBfGoHOKHYdHP/Yg+klyRfUs/s2JQQ6F378F/4zGQA1QivZAgnmV1LJRZ8dH
+         gFT+nautzB+NlWoya4EypwFT+xvBZBSUPM5mfL73uCKY0FsZKGtV75wRx9L7d/V/nuDx
+         qjdDF8YVtFUhX4pyDw3EFSOQfSc9TbfypRPEKKAbPoqDGMFHsT0DgkWQZrKOtjdobuVc
+         E5lg==
+X-Gm-Message-State: AOJu0YwfrZvatZyADmmzhgR3CLryiCQnlKrEdMMUNbRH87k9uCcr4pK5
+	zfqeKEOIuATfDJGg+9gnm1w=
+X-Google-Smtp-Source: AGHT+IG/PhtGCsg7wXm8Rc5Irl5IiMZvAOjGLp6Od9Km/HS5gzwHrgf4OZgoP6sqwU+2RfvtoTXxsQ==
+X-Received: by 2002:adf:9dcb:0:b0:32d:a29a:b6ef with SMTP id q11-20020adf9dcb000000b0032da29ab6efmr6726291wre.23.1698074225584;
+        Mon, 23 Oct 2023 08:17:05 -0700 (PDT)
+Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net. [80.193.200.194])
+        by smtp.gmail.com with ESMTPSA id b16-20020a5d5510000000b0032d2489a399sm7913701wrv.49.2023.10.23.08.17.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 07:41:21 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 23 Oct 2023 16:40:18 +0200
-Subject: [PATCH 18/18] arm64: dts: mediatek: add display support for
- mt8365-evk
+        Mon, 23 Oct 2023 08:17:05 -0700 (PDT)
+From: Colin Ian King <colin.i.king@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH][next] ASoC: mediatek: mt8186: remove redundant assignments to variable tdm_con
+Date: Mon, 23 Oct 2023 16:17:04 +0100
+Message-Id: <20231023151704.670240-1-colin.i.king@gmail.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v1-18-5c860ed5c33b@baylibre.com>
-References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
-In-Reply-To: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jitao Shi <jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>, 
- CK Hu <ck.hu@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6023; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=pcJBtWjpwilqxNWOakxNZQwRB91WeJf0Sg90BfqV228=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBlNoXPkea0Zqy/PQcdnRsfgCu3AEXfk7wmG8tbv9W6
- 6/bMYLmJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZTaFzwAKCRArRkmdfjHURSDAEA
- CQA7Cf4KSXMTBTFLJLDn3nVGt/R5YFfqc4INXDjm6cldZkidaTUTKIifrfDCxHp1r0Ja/JaBxMYzh0
- pHhJvAuYtIecogTkNQHbTaEPok1TVVQBfaC39ZpgywxOcQ5R4V5wmk3JZo7ZSibtsAgR+NsmIDQXD1
- gMcHUflijw+a1lUpZ3wIGoCtZbrP/M+Gas8r4P6vb7YOIEP4kFZinEF+hPfGadJ7SAzsKKeOS2Am2q
- tiiB2z92LubE4muqkhtO4YRYBrSLpNkF52xFJfMkp8uweHjtZr8PCrr8AsRMr3ktLamN03DP1LKDDj
- 2FzODsOY5xZ9SxTdcO5ktlVOW9oyereFUcwssEjDOSm3KneJeNTPngCGOdk+cxVYvKD05XG7WmxJLx
- Uk6KmO2qNJkS3JSRK6PRltlbvAk3zvHerOVqe1ytnDco6jzVC8hdmhQkOKGLl9l7wUGt93yBAFYYBA
- 3UUUwXMvgprT3kjgAmhG1P0utomkLEv00dx3r7MhZEFIkKAo++sOZspVHKQNkmAe6HtWJ7Qe24ZjPg
- lqqmS2yVrDfBExc1i7WvB4nAC0RpGxnkLTV4AjGMsXk0sTh76HJXEAGlACHyNPpd5V+zTZ6z6cXVdq
- MPQDooC/3O8BIsyi+aQiGQNxmm8cZQnAU/HDVEjWBR0A6OWhBeZxaSBmuYrQ==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_074122_621987_EAE418C6 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20231023_081709_601212_D6318CCB 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,247 +96,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MIPI DSI:
-- Add "vsys_lcm_reg" regulator support and setup the "mt6357_vsim1_reg",
-to power the pannel plugged to the DSI connector.
-- Setup the Display Parallel Interface.
-  - Add the startek kd070fhfid015 pannel support.
+There are two occurrences where variable tdm_con is being initialized
+to zero and the next statement re-assigns tdm_con to a new value. The
+initializations are redundant and can be removed.
 
-HDMI:
-- Add HDMI connector support.
-- Add the "ite,it66121" HDMI bridge support, driven by I2C1.
-- Setup the Display Parallel Interface.
-
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 183 ++++++++++++++++++++++++++++
- 1 file changed, 183 insertions(+)
+ sound/soc/mediatek/mt8186/mt8186-dai-tdm.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-index 50cbaefa1a99..823d7623b8b8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-@@ -26,6 +26,18 @@ chosen {
- 		stdout-path = "serial0:921600n8";
- 	};
+diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c b/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+index 4148dceb3a4c..ef2801f84d27 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
++++ b/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+@@ -416,12 +416,10 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_substream *substream,
+ 	regmap_update_bits(afe->regmap, ETDM_IN1_CON1, ETDM_IN_CON1_CTRL_MASK, tdm_con);
  
-+	connector {
-+		compatible = "hdmi-connector";
-+		label = "hdmi";
-+		type = "d";
-+
-+		port {
-+			hdmi_connector_in: endpoint {
-+				remote-endpoint = <&hdmi_connector_out>;
-+			};
-+		};
-+	};
-+
- 	firmware {
- 		optee {
- 			compatible = "linaro,optee-tz";
-@@ -86,6 +98,57 @@ optee_reserved: optee@43200000 {
- 			reg = <0 0x43200000 0 0x00c00000>;
- 		};
- 	};
-+
-+	vsys_lcm_reg: regulator-vsys-lcm {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&pio 129 GPIO_ACTIVE_HIGH>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-name = "vsys_lcm";
-+	};
-+};
-+
-+&dpi0 {
-+	pinctrl-0 = <&dpi_default_pins>;
-+	pinctrl-1 = <&dpi_idle_pins>;
-+	pinctrl-names = "default", "sleep";
-+	status = "okay";
-+
-+	port {
-+		dpi_out: endpoint {
-+			remote-endpoint = <&it66121_in>;
-+		};
-+	};
-+};
-+
-+
-+&dsi0 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	panel@0 {
-+		compatible = "startek,kd070fhfid015";
-+		status = "okay";
-+		reg = <0>;
-+		enable-gpios = <&pio 67 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
-+		iovcc-supply = <&mt6357_vsim1_reg>;
-+		power-supply = <&vsys_lcm_reg>;
-+
-+		port {
-+			panel_in: endpoint {
-+				remote-endpoint = <&dsi_out>;
-+			};
-+		};
-+	};
-+
-+	port {
-+		dsi_out: endpoint {
-+			remote-endpoint = <&panel_in>;
-+		};
-+	};
- };
+ 	/* ETDM_IN1_CON3 */
+-	tdm_con = 0;
+ 	tdm_con = ETDM_IN_CON3_FS(tran_rate);
+ 	regmap_update_bits(afe->regmap, ETDM_IN1_CON3, ETDM_IN_CON3_CTRL_MASK, tdm_con);
  
- &cpu0 {
-@@ -138,6 +201,50 @@ &i2c0 {
- 	status = "okay";
- };
- 
-+&i2c1 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	clock-div = <2>;
-+	clock-frequency = <100000>;
-+	pinctrl-0 = <&i2c1_pins>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+
-+	it66121hdmitx: it66121hdmitx@4c {
-+		#sound-dai-cells = <0>;
-+		compatible = "ite,it66121";
-+		interrupt-parent = <&pio>;
-+		interrupts = <68 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-0 = <&ite_pins>;
-+		pinctrl-names = "default";
-+		reg = <0x4c>;
-+		reset-gpios = <&pio 69 GPIO_ACTIVE_LOW>;
-+		vcn18-supply = <&mt6357_vsim2_reg>;
-+		vcn33-supply = <&mt6357_vibr_reg>;
-+		vrf12-supply = <&mt6357_vrf12_reg>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+				it66121_in: endpoint {
-+					bus-width = <12>;
-+					remote-endpoint = <&dpi_out>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+				hdmi_connector_out: endpoint {
-+					remote-endpoint = <&hdmi_connector_in>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
- &mmc0 {
- 	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
- 	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-@@ -180,7 +287,55 @@ &mt6357_pmic {
- 	#interrupt-cells = <2>;
- };
- 
-+&mt6357_vsim1_reg {
-+	regulator-min-microvolt = <1800000>;
-+	regulator-max-microvolt = <1800000>;
-+};
-+
- &pio {
-+	dpi_default_pins: dpi-default-pins {
-+		pins {
-+			pinmux = <MT8365_PIN_0_GPIO0__FUNC_DPI_D0>,
-+				 <MT8365_PIN_1_GPIO1__FUNC_DPI_D1>,
-+				 <MT8365_PIN_2_GPIO2__FUNC_DPI_D2>,
-+				 <MT8365_PIN_3_GPIO3__FUNC_DPI_D3>,
-+				 <MT8365_PIN_4_GPIO4__FUNC_DPI_D4>,
-+				 <MT8365_PIN_5_GPIO5__FUNC_DPI_D5>,
-+				 <MT8365_PIN_6_GPIO6__FUNC_DPI_D6>,
-+				 <MT8365_PIN_7_GPIO7__FUNC_DPI_D7>,
-+				 <MT8365_PIN_8_GPIO8__FUNC_DPI_D8>,
-+				 <MT8365_PIN_9_GPIO9__FUNC_DPI_D9>,
-+				 <MT8365_PIN_10_GPIO10__FUNC_DPI_D10>,
-+				 <MT8365_PIN_11_GPIO11__FUNC_DPI_D11>,
-+				 <MT8365_PIN_12_GPIO12__FUNC_DPI_DE>,
-+				 <MT8365_PIN_13_GPIO13__FUNC_DPI_VSYNC>,
-+				 <MT8365_PIN_14_GPIO14__FUNC_DPI_CK>,
-+				 <MT8365_PIN_15_GPIO15__FUNC_DPI_HSYNC>;
-+			drive-strength = <MTK_DRIVE_4mA>;
-+		};
-+	};
-+
-+	dpi_idle_pins: dpi-idle-pins {
-+		pins {
-+			pinmux = <MT8365_PIN_0_GPIO0__FUNC_GPIO0>,
-+				 <MT8365_PIN_1_GPIO1__FUNC_GPIO1>,
-+				 <MT8365_PIN_2_GPIO2__FUNC_GPIO2>,
-+				 <MT8365_PIN_3_GPIO3__FUNC_GPIO3>,
-+				 <MT8365_PIN_4_GPIO4__FUNC_GPIO4>,
-+				 <MT8365_PIN_5_GPIO5__FUNC_GPIO5>,
-+				 <MT8365_PIN_6_GPIO6__FUNC_GPIO6>,
-+				 <MT8365_PIN_7_GPIO7__FUNC_GPIO7>,
-+				 <MT8365_PIN_8_GPIO8__FUNC_GPIO8>,
-+				 <MT8365_PIN_9_GPIO9__FUNC_GPIO9>,
-+				 <MT8365_PIN_10_GPIO10__FUNC_GPIO10>,
-+				 <MT8365_PIN_11_GPIO11__FUNC_GPIO11>,
-+				 <MT8365_PIN_12_GPIO12__FUNC_GPIO12>,
-+				 <MT8365_PIN_13_GPIO13__FUNC_GPIO13>,
-+				 <MT8365_PIN_14_GPIO14__FUNC_GPIO14>,
-+				 <MT8365_PIN_15_GPIO15__FUNC_GPIO15>;
-+		};
-+	};
-+
- 	ethernet_pins: ethernet-pins {
- 		phy_reset_pins {
- 			pinmux = <MT8365_PIN_133_TDM_TX_DATA1__FUNC_GPIO133>;
-@@ -222,6 +377,34 @@ pins {
- 		};
- 	};
- 
-+	i2c1_pins: i2c1-pins {
-+		pins {
-+			pinmux = <MT8365_PIN_59_SDA1__FUNC_SDA1_0>,
-+				 <MT8365_PIN_60_SCL1__FUNC_SCL1_0>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	ite_pins: ite-pins {
-+
-+		irq_ite_pins {
-+			pinmux = <MT8365_PIN_68_CMDAT0__FUNC_GPIO68>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pwr_pins {
-+			pinmux = <MT8365_PIN_70_CMDAT2__FUNC_GPIO70>,
-+				 <MT8365_PIN_71_CMDAT3__FUNC_GPIO71>;
-+			output-high;
-+		};
-+
-+		rst_ite_pins {
-+			pinmux = <MT8365_PIN_69_CMDAT1__FUNC_GPIO69>;
-+			output-high;
-+		};
-+	};
-+
- 	mmc0_default_pins: mmc0-default-pins {
- 		clk-pins {
- 			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
-
+ 	/* ETDM_IN1_CON4 */
+-	tdm_con = 0;
+ 	tdm_con = ETDM_IN_CON4_FS(tran_relatch_rate);
+ 	if (slave_mode) {
+ 		if (lrck_inv)
 -- 
-2.25.1
+2.39.2
 
 
