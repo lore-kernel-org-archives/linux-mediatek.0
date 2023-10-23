@@ -4,70 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF71C001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 07:49:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65545C001E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 08:08:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h1egdcegKVgaOdKiP+gNXcXb+D2VWBFMtoacFPUByKc=; b=SnIaOaWnrhY5CCLU+8jDvhbHff
-	llI9bpMrYYx6WdYMNHGJM1eCibBHluf7mxONwIdW3WNp3EEh1I8CutuTYlvFK/8qBryP4A8Vp/TCE
-	CFix6cFvvz5G9yRMQemt/EgaExOjKi3ob8Ddpk68MhMJUneAy/4HKdHBdKVEKyXmSIulMc7Om+BBz
-	c4L3/NhXY06zXRfK0rIULkpLLSkqPLnVUQ6dYc4poM+2Sl0if4JnU6nBUHJ/VRuQkc7QGnnTVqbAP
-	XssIYtiowNX1Wo2pSlh+N2lNhMA3stfxPoxR1lZtWIbX17Zt5lMGUMkkDFoFgs9ot1K5ogJ2Z0Z4F
-	b3MA2Jcg==;
+	bh=WlqHPiFzmi/Q4iejtrKp2oYMYrBA2gXSJVYBgnHPzmI=; b=l2a7uoLz/1/6pxT5MYQE0ytQb0
+	AjG/iCUnvcF586AyH9Ng+zSHbpDAGvrD8u6C3DN7BciDdAj0fS3GNTa+0pNpv+hgGS2WptXUej9Dk
+	+o+VMAmVgmNqP8OH+C7u860u4+pyu6aoauqatIppUkIBhzmDfBZwFfA2BFEZxvnzfuZq3xuwqFZCS
+	76bw5ev/39DJ25hJzLD5MGiOcXO/FhqdT8uOTd8JEKXxWUN1LigX35bpVNhjcmFk/5uM/TiHp1Meb
+	lt6Irvm/B2md2RXgMrhgRtOamMiAkk8tbABKbIfdnYyJ+ErTY0CN0KKtHHFgOUlya2uOhFP/23DMo
+	I98jxBQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quphC-006gRx-1g;
-	Mon, 23 Oct 2023 07:49:54 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1qupzS-006iRK-17;
+	Mon, 23 Oct 2023 08:08:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quphA-006gPj-06
-	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 07:49:53 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-9b1ebc80d0aso433434066b.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 00:49:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1698047390; x=1698652190; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=h1egdcegKVgaOdKiP+gNXcXb+D2VWBFMtoacFPUByKc=;
-        b=q8ppgU/sjGXvf5vqM5ftsZj/gEUWqblJUCtuYWd5QC0nITUeExlc0PwScl2KXfLAu7
-         m7Cz4A0eBWIKIudlgbVb7okOm4ha8a5HbgGcjDJp48JEXbTu4p9dRm3Fabix2eGmxVpt
-         DOAxsJlL160v0N6fkfcUZTgMPzdghbVmWP4wKzsYcrXalwDH16A+ZzaezvO2Bb62FOsP
-         ay67ZbOBn+GGoje6WckI40ULNWYkK0s+o4mFIHrRel+x+SdY+f6VGNOuvIsvkIzi4Ga4
-         zhMcku5y9Vl/8WNswHgBUs4BRzxoPkvUX+IYhFxzrSVC1xxQ6em6qHLCv82pHPTNj1GS
-         C+vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698047390; x=1698652190;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=h1egdcegKVgaOdKiP+gNXcXb+D2VWBFMtoacFPUByKc=;
-        b=XLO91VT7nBvwwh6OfT1u9t4gwNB8NaGb8++Asd/SocMUT0mbrI76N+550XetlEswUt
-         T4uhx3rgUhWMbdWVGSq7j6pe70B8RERjGULT/Wt80i749B9/1X6POQPx8qN/i564eTW+
-         ArMPFeeDV3IJPLyPqyT+eOKtEXX07WD7gOIyZSKL39GSB+2VPSHrianwTRJpu5CcrTmh
-         v9GsB7QTfXIj931yzGwrz1He4Mxm/9aN8rynGoFGA9IpuKqTF79aZHa/QEe/M/EgQ83S
-         rNUa/mzHNpLFfFr25pEE8bvuY/dnSA2E0Wvycb079qwBdFnkGH+qhDKdWI6bS8O4uCK2
-         iAHA==
-X-Gm-Message-State: AOJu0YyASLG6rcZyae49nbtIncw4HG3YjFtAQRnQNflvCoi6PsS7OSgV
-	uJZaTFChQNF39+9iyaUa7zzojg==
-X-Google-Smtp-Source: AGHT+IENU5W4iBpOdEJpBUNU0khO21TvIp4fjLVobYErdP0qpi+ubCCU7bEQY8BuKcYng5ufQWOdZg==
-X-Received: by 2002:a17:907:5c2:b0:9ae:961a:de81 with SMTP id wg2-20020a17090705c200b009ae961ade81mr7478213ejb.27.1698047390307;
-        Mon, 23 Oct 2023 00:49:50 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id c6-20020a170906528600b00997e99a662bsm6208105ejm.20.2023.10.23.00.49.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Oct 2023 00:49:49 -0700 (PDT)
-Message-ID: <374a6fe3-23f5-4450-8ef6-8e0478c7ade5@linaro.org>
-Date: Mon, 23 Oct 2023 09:49:48 +0200
+	id 1qupzP-006iQr-0n;
+	Mon, 23 Oct 2023 08:08:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E5020618B6;
+	Mon, 23 Oct 2023 08:08:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80C5FC433C8;
+	Mon, 23 Oct 2023 08:08:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1698048521;
+	bh=gIFQhTvqGdNzzQnbfwhXj+zvGCDk0ZqqNvVguD3XlLo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=gxFt+Wv+D6ClLy2PJ9yIKqBsGwwWDSxYQ61BUgkC9hH01Wlz28wYHAOfE5G1JNRWe
+	 E9RaA7SBFTpwgcgo5H/jlt9naJS4jaWrqbBhlp7wkQOU9tyc/BqBcpphD8NUurpvcv
+	 B1pevMJgq+dVwB3CGkDyvsyNFf3t7rafJnvHEoKeTkrl2xFaBKA1QiROjyOhQOQU80
+	 ETc4+vcLX6Y6Y7KdzBga8Tny0P+9KxVRm12r3/BPqVuY0YsHRbtq+zyF6tiLoT85Fs
+	 GsiDhGZkpXrk98ZT21o12swy/3m/3OEq/kOR5JMQMS+ESKGU+Yak13cKYO6zulM1or
+	 yjkMWHflxYvbw==
+Message-ID: <2c148c48-278d-4b80-b689-971980dddd53@kernel.org>
+Date: Mon, 23 Oct 2023 10:08:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/9] dt-bindings: mailbox: Add property for CMDQ secure
- driver
+Subject: Re: [PATCH v2 1/9] dt-bindings: gce: mt8195: Add
+ CMDQ_SYNC_TOKEN_SECURE_THR_EOF event id
 Content-Language: en-US
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
  Jassi Brar <jassisinghbrar@gmail.com>,
@@ -85,9 +64,9 @@ Cc: Conor Dooley <conor+dt@kernel.org>,
  Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
  Shawn Sung <shawn.sung@mediatek.com>
 References: <20231023043751.17114-1-jason-jh.lin@mediatek.com>
- <20231023043751.17114-3-jason-jh.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ <20231023043751.17114-2-jason-jh.lin@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
  JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
@@ -97,46 +76,46 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  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
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231023043751.17114-3-jason-jh.lin@mediatek.com>
+ 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 fv0=
+In-Reply-To: <20231023043751.17114-2-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_004952_074104_BF6B1608 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20231023_010843_389429_5C94EA6B 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,45 +131,23 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 23/10/2023 06:37, Jason-JH.Lin wrote:
-> Add mboxes to define a GCE loopping thread as a secure irq handler.
-> Add mediatek,gce-events to define a GCE event siganl sent from CMDQ
-> TA driver in secure world as a secure irq.
-> 
-> These 2 properties are required for CMDQ secure driver.
+> CMDQ_SYNC_TOKEN_SECURE_THR_EOF is used as secure irq to notify CMDQ
+> driver in the normal world that GCE secure thread has completed a task
+> in thee secure world.
 > 
 > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->  .../bindings/mailbox/mediatek,gce-mailbox.yaml         | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-> index cef9d7601398..65fb93bb53b6 100644
-> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-> @@ -49,6 +49,16 @@ properties:
->      items:
->        - const: gce
->  
-> +  mboxes:
-> +    maxItems: 1
-> +
-> +  mediatek,gce-events:
-> +    description:
-> +      The event id which is mapping to the specific hardware event signal
-> +      to gce. The event id is defined in the gce header
-> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> +    $ref: /schemas/types.yaml#/definitions/uint32-array
 
-Nothing improved.
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC. It might happen, that command when run on an older
+kernel, gives you outdated entries. Therefore please be sure you base
+your patches on recent Linux kernel.
 
-This is a friendly reminder during the review process.
+You missed at least devicetree list (maybe more), so this won't be
+tested by automated tooling. Performing review on untested code might be
+a waste of time, thus I will skip this patch entirely till you follow
+the process allowing the patch to be tested.
 
-It seems my previous comments were not fully addressed. Maybe my
-feedback got lost between the quotes, maybe you just forgot to apply it.
-Please go back to the previous discussion and either implement all
-requested changes or keep discussing them.
-
-Thank you.
+Please kindly resend and include all necessary To/Cc entries.
 
 Best regards,
 Krzysztof
