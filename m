@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF0FC004C0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 14:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65ABAC001E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 14:41:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pH3GFq5D69xS1Tzi4QqCw1RIdz10bV1qyKuEWVVtejs=; b=Lvoinus2W/PROMBidsPJqoOG56
-	8EIaDyqz64b8M8OnHna5sbmLTY8udIAeKjSYw+XwinN/gCROMD+bb5iCL75hhL471xLWwFP0cG8DD
-	d3ZWCEtE5NgziQlea+ELUs5Z91E5YtxQznwFMZy7r9oMqd0d0eC2MnEnVAJy/pCVvjnw9zlppv2yL
-	99jlq7tZU/E7BWlNoTluF9PqQZBpBZ8YxXUmzT+FoOMfTv3vRHF32o+akFtGG6UIWHSLmcVzkIjna
-	XtLZwElIxI1a4QuYleaYr3xvXu6NpnSikTM9HzyMUCC0Tyyz2lCUQRaaFPcEdFQ/Tz1cAGD9jZa7V
-	bYGqw77A==;
+	bh=lrjsDP60ERtc9IKYDTr7nIZNfIMcm83JakwGPMNEVVw=; b=ZWrd9+pF5E+Pq41vh7UKrL58qI
+	qdKU3PS9NTlslcrah1+fGeZJ0muV9qp+9lp38IWqQFE2dzpymzwWjc5aYFKD9xZCnUqTp7lJugHJt
+	h2fvD2QTfQCxgwa9d9zeLmVes1BITud+rKBVRsB5k73Hu4SfYup+kTZEm8q+p+lTG8XP/fLVl+vx1
+	CkFTzjEGeLbRikHlpjFSnPyduYanCqcFQkB4zTQR1M5+aIn5+EL29n7dFnRHzv6HhfVtQjS/Zf+0Z
+	Tlp7EY+Ui4db5IDmS8minKd4RXLw20MSz60oKfsRstbj+zoEi+JZtcgNKdJLBZob5PN5NCIHiG9K/
+	o6FhN20A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quw7w-007aWl-1v;
-	Mon, 23 Oct 2023 14:41:56 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1quw7x-007aY3-2i;
+	Mon, 23 Oct 2023 14:41:57 +0000
+Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quw77-007Zp3-0I
+	id 1quw7A-007Zse-36
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 14:41:06 +0000
-Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-6ce344fa7e4so2389353a34.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 07:41:04 -0700 (PDT)
+	Mon, 23 Oct 2023 14:41:10 +0000
+Received: by mail-ua1-x935.google.com with SMTP id a1e0cc1a2514c-7b6eda04180so976824241.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 07:41:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1698072064; x=1698676864; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1698072067; x=1698676867; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=pH3GFq5D69xS1Tzi4QqCw1RIdz10bV1qyKuEWVVtejs=;
-        b=i69CTRUeVkBN6Ecd7A28B+jfj4odDhp7GGYZT59MjajcH9mUuzhe9c4qvvG1DG/N4k
-         OkB/qKMJ3+Px/5qwBhcRjEHui6jDktJMDNBf6fO2nESpFJBUbEOSdA38IcG/j0U1yuxI
-         9AanIMPVJej29fEXG6pbHN/jpxcoAdaAcwAD5PEM9YKe6FxJ1PLqWN9IPE0RlseipsGs
-         y+QRC/bAwyzpsjlUaRSNqoqO2W54yQpfaDOCUwcCbSFX5P1YL6zZu5OM40i7N4L9UTrE
-         pFI78Wtj6WosQ7v/IBdou1rUQFOlg9NkkLF4+RHpSVKUWIVOvtJTyxKqaYQhzH43It7o
-         JLsg==
+        bh=lrjsDP60ERtc9IKYDTr7nIZNfIMcm83JakwGPMNEVVw=;
+        b=lsYtRRKdHWuvS7Q1Py3t0G1TsCClZamqiy1XEHN99xG0m/VIBYHtZ44IhbUU7A8HVi
+         wJ0kxofW/XqF5CLXEdavGYyRJ98tU2YfZlv+pKQzaTQdEWX/NOXQMfofe0d/UnvqQBEy
+         LJd4bM78wE4I9q9mPX4awZIOjIYVo0iMZsWw8cULCPapRW/x42m0yG7oA2Fn0vuFUFnE
+         IDe4xp2DTpDDil+K955x+y27vI4CNCDfzY3HQJbpPYZaJt3diTHDxR+9sUNiT+NBtKPW
+         MFf+4+nc3EYQnjAUAzc2JqbWfwPw3dMQDSCA40apqEAJiRQPT3MFBTQINoU2p9vHnalT
+         s4/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698072064; x=1698676864;
+        d=1e100.net; s=20230601; t=1698072067; x=1698676867;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pH3GFq5D69xS1Tzi4QqCw1RIdz10bV1qyKuEWVVtejs=;
-        b=MLFaWru/LMpYSeQGhSRI8zk/9YKxFbgBcyZBBXzD2nrctX6zgLslJwiwOo8A5Tx+Le
-         De5zkIAVneuifTRRQJkuZtACfvdFf/F1qh0cSVMKd17LYU3bsJrGXCbNQbz1+y8+Zi0i
-         HINb9dSdAPXj8ooKEHzbTKRdRZ7mz/YIYa7iprKopBYMiFAxJyPk8VwHxXDGOmTk9j64
-         MgW96oYuW2JDQY7FLsOTvAPpFrEsk7HFQ2Sybh8jZn4OHkgfffApXSuq5cXqNtySzcFP
-         OJjACJQXAlZAL9fFE0A2CsWTe+BmqbWc4IRFEvqC4eWnCSnv7oqVcCEMHj8tvq6u0ugA
-         fL9w==
-X-Gm-Message-State: AOJu0YwFyxaBGviCWfLFvolsQG4fISWOMOQcwdkRnorc1eUoSjZsuLT/
-	FllS351dQ+j4T80l2WpyxR3SYw==
-X-Google-Smtp-Source: AGHT+IH1IkI6TnT+ttcmCoscPeOrIopE1WBAZEg4r9UimrR6CIMRAoo8nMxYKo95tMWEpnGtVl6eKw==
-X-Received: by 2002:a9d:6188:0:b0:6bd:c8c2:b70f with SMTP id g8-20020a9d6188000000b006bdc8c2b70fmr9880668otk.34.1698072063987;
-        Mon, 23 Oct 2023 07:41:03 -0700 (PDT)
+        bh=lrjsDP60ERtc9IKYDTr7nIZNfIMcm83JakwGPMNEVVw=;
+        b=OaUJW5fanjtOcdN9iltp5fP3zFQB39PUh34Pv2FXWNoOn0uFd1LPSQ3N2lwTNWD6t8
+         ynZDFYq+PF2KNqLtwgvh3bJsqVr4MMGe++MRCU1eFRD+Cz43McgBfF+qAOqEnD51owhc
+         GtFVB1fBwXltmMYJOsAY/NwvHaqGLZyC0z6//E2XyBDDJ/SmK7WxHb7UvBzS5qru2Wwc
+         AO3KTC9DEl+AJ7/QEc8dfi+OMVHgtjuZxUuuK/aEjozqU/nmf96z6xJogBe8wYfjs4lD
+         JMPSzksxGRQ2KJaDoZ9g/8+8ObPvuX4Tke792z6bn5ONNvuX7Z8g0kbpcKFOzhNe5ddg
+         2yGw==
+X-Gm-Message-State: AOJu0YxBG1nDO9PCGE7hq3cbQtgmXVVRyVXZUBaGvsKeXBv8wcVeD0Ul
+	Hzamt2ff5/xrYUREUMqTH44N/g==
+X-Google-Smtp-Source: AGHT+IFCZPHLErko3PXnNt9gQ8dzsRqAd72bTaozBkI3aLRX3aVqekVz0T9UEND3nPPNVWsw1x/D5g==
+X-Received: by 2002:a05:6102:2089:b0:458:32f7:30ad with SMTP id h9-20020a056102208900b0045832f730admr8598946vsr.24.1698072067569;
+        Mon, 23 Oct 2023 07:41:07 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id f1-20020a05620a408100b007789a3499casm2725020qko.115.2023.10.23.07.41.00
+        by smtp.googlemail.com with ESMTPSA id f1-20020a05620a408100b007789a3499casm2725020qko.115.2023.10.23.07.41.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 07:41:03 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 23 Oct 2023 16:40:13 +0200
-Subject: [PATCH 13/18] drm/mediatek: dsi: Improves the DSI lane setup
- robustness
+        Mon, 23 Oct 2023 07:41:07 -0700 (PDT)
+From: amergnat@baylibre.com
+Date: Mon, 23 Oct 2023 16:40:14 +0200
+Subject: [PATCH 14/18] drm/mediatek: dpi: add support for dpi clock
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v1-13-5c860ed5c33b@baylibre.com>
+Message-Id: <20231023-display-support-v1-14-5c860ed5c33b@baylibre.com>
 References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
 In-Reply-To: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -86,26 +85,27 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Fabien Parent <fparent@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1234; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=M0lgMNEWbaoZ4qkfmFQ2d2c6SqYe0EzRwVFM4lhot+4=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBlNoXP9F3RAu1ZKmUXEIyW8a/kP5CK+Jb3tGF7IdoH
- 1RqcA3mJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZTaFzwAKCRArRkmdfjHURTPOD/
- 9t+6pSLsY0qJ4yNYIAy8Yj64n+qV7yRH4vlC9ppkx91ePv2Sf/rsw1+QRG5hlj0j3d5dWf0ZGe/qPt
- DjapblIQRzzn7BcMUQD/gavAeQ+YuLMd4IOyVk4uXEBjys9STpAuYQuKC03y3NcyjL6JWTj2fmFXTq
- FSDDYsV/wNBpk5ALR2J7sE92+GGZXhthAmqro6CeVxpKs8z4H+c8lJOUUGaohZDWJkzoPl3QJssrhq
- XljafCvUMlRJYbGBRWHusF+de6q6F9tY7mJoX2udGUIrH/cZR16ydBWCpSVaFEKmGEioAQXsFQ1JpS
- 3/FHHTBX2h2nfGJQ2eT5muUbMii7hB7u5QWiVCF3BFBfzU4ketZCF3bj5Dk9xLBskq1ddV951Z1VJq
- aWbuUgtjoALtwalhNzN12FffvNPsJIBz4z1TjRHf/cK4a6jaXgVBorbrdg3g+HRu0BH+uAGnC6c1j1
- BZhh5BAQvMKdxFZnbk/zwmdsmAwXbfIPVcs2R2rk5mriJ4BOy13/lj/L2c/671sxkorHAFPtQUsi9I
- 4XIePB314S80C1hBbP4Le8sz3x/gPiLeaQOFxu1Y38FmqYPDFc9iZvDBov3qmHwo1awkx6YyeMuOrY
- kr/y4GCxn8tSG8oU6g3QQsh+p+1wUWzZ6V47BRTgBHkVb5pT5lxJo6zeFjNg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5504; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=gNNMmG/tic5FCAz01Mxk94pBODEehb9j1DvbosxWwjM=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBlNoXPtvxxoh6jBrTsWy5g9sqziSKeYRBQSeK2X9qj
+ pLF6+oGJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZTaFzwAKCRArRkmdfjHURTkGD/
+ 9aHtaIPalJ9hCBJVp5Cm+eMJS63WzvlzUNGpmZTUXItS7gLNhiSr5M9Ygkx2cEbtyjitdJsef3ebnI
+ CbVf/pWb3thpVnIj2emA0T4Ft/AvZDt5A69fkPmF0PrrVI1d7IPf336AX5AIsJKIlB+cchIXGi4oOh
+ VcSTryoyVCGkKCmID4fVfNyVHV1Fxw1dTipJbS12OvX9fwfCclZHjoikr/B8G6xSopAC66omgAJTbD
+ GJ/nV8ATBffGjCldK8zWsdXhnhMdOVG4nJgjN18FH8IgkPRd8e4/U6SX0Qj/NdTphyWitHWxmt8a3J
+ 2LyqB+lcQ49WBFaLOs7qxG1u1ZCZyElHol4PLbjye0nJdWyNlnMW7yTbODQgwaMpJ4s0/SHlV2+c6o
+ 4Z0L64Ie/RWZdHX3gXB2q+MZJKcx7lpbST/D3q4GumpmPewlHH95Z8ewyluHzWINNM4FSfWCszIE/a
+ I9xFyVeZB1Qo1hzvaVrEj+u9Wtko52r9LNrmvJi+Yds9DdVxwMkDwuPGCF3SdSeEv/sHVvPbrGkXTw
+ Ni1R85QW/UwDwmlAqvlu6ntr0MwqOwZ6Qy6BTGrKnXRTfxP9iAlV3E1beT/pOqKF0gY69zplnECvOy
+ j9CUjsKAn7VaC/s6pr6m0Yx1QK6UQhrO3tl4u84dpMgDExKgpTM/DcDiEkCQ==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_074105_128360_C999E8D6 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20231023_074109_039839_83B0CF59 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,37 +120,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently, mtk_dsi_lane_ready (which setup the DSI lane) is triggered
-before mtk_dsi_poweron. lanes_ready flag toggle to true during
-mtk_dsi_lane_ready function, and the DSI module is set up during
-mtk_dsi_poweron.
+From: Fabien Parent <fparent@baylibre.com>
 
-Later, during panel driver init, mtk_dsi_lane_ready is triggered but does
-nothing because lanes are considered ready. Unfortunately, when the panel
-driver try to communicate, the DSI returns a timeout.
+MT8365 requires an additional clock for DPI. Add support for that
+additional clock.
 
-The solution found here is to put lanes_ready flag to false after the DSI
-module setup into mtk_dsi_poweron to init the DSI lanes after the power /
-setup of the DSI module.
-
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 50 +++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 49 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index d8bfc2cce54d..81cf0ddcc399 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -668,6 +668,8 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
- 	mtk_dsi_config_vdo_timing(dsi);
- 	mtk_dsi_set_interrupt_enable(dsi);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 2f931e4e2b60..ddd7c54febe6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -70,6 +70,7 @@ struct mtk_dpi {
+ 	struct device *mmsys_dev;
+ 	struct clk *engine_clk;
+ 	struct clk *pixel_clk;
++	struct clk *dpi_clk;
+ 	struct clk *tvd_clk;
+ 	int irq;
+ 	struct drm_display_mode mode;
+@@ -137,6 +138,7 @@ struct mtk_dpi_yc_limit {
+  * @csc_enable_bit: Enable bit of CSC.
+  * @pixels_per_iter: Quantity of transferred pixels per iteration.
+  * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs to be set in MMSYS.
++ * @is_dpi_clk_req: Support the additionnal DPI clock.
+  */
+ struct mtk_dpi_conf {
+ 	unsigned int (*cal_factor)(int clock);
+@@ -156,6 +158,7 @@ struct mtk_dpi_conf {
+ 	u32 csc_enable_bit;
+ 	u32 pixels_per_iter;
+ 	bool edge_cfg_in_mmsys;
++	bool is_dpi_clk_req;
+ };
  
-+	dsi->lanes_ready = false;
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+@@ -472,6 +475,7 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+ 	mtk_dpi_disable(dpi);
+ 	clk_disable_unprepare(dpi->pixel_clk);
+ 	clk_disable_unprepare(dpi->engine_clk);
++	clk_disable_unprepare(dpi->dpi_clk);
+ }
+ 
+ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+@@ -481,10 +485,16 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+ 	if (++dpi->refcount != 1)
+ 		return 0;
+ 
++	ret = clk_prepare_enable(dpi->dpi_clk);
++	if (ret) {
++		dev_err(dpi->dev, "failed to enable dpi clock: %d\n", ret);
++		goto err_refcount;
++	}
 +
- 	return 0;
- err_disable_engine_clk:
- 	clk_disable_unprepare(dsi->engine_clk);
+ 	ret = clk_prepare_enable(dpi->engine_clk);
+ 	if (ret) {
+ 		dev_err(dpi->dev, "Failed to enable engine clock: %d\n", ret);
+-		goto err_refcount;
++		goto err_engine;
+ 	}
+ 
+ 	ret = clk_prepare_enable(dpi->pixel_clk);
+@@ -497,6 +507,8 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+ 
+ err_pixel:
+ 	clk_disable_unprepare(dpi->engine_clk);
++err_engine:
++	clk_disable_unprepare(dpi->dpi_clk);
+ err_refcount:
+ 	dpi->refcount--;
+ 	return ret;
+@@ -902,6 +914,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
+ 	.channel_swap_shift = CH_SWAP,
+ 	.yuv422_en_bit = YUV422_EN,
+ 	.csc_enable_bit = CSC_ENABLE,
++	.is_dpi_clk_req = false,
+ };
+ 
+ static const struct mtk_dpi_conf mt2701_conf = {
+@@ -920,6 +933,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
+ 	.channel_swap_shift = CH_SWAP,
+ 	.yuv422_en_bit = YUV422_EN,
+ 	.csc_enable_bit = CSC_ENABLE,
++	.is_dpi_clk_req = false,
+ };
+ 
+ static const struct mtk_dpi_conf mt8183_conf = {
+@@ -937,6 +951,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
+ 	.channel_swap_shift = CH_SWAP,
+ 	.yuv422_en_bit = YUV422_EN,
+ 	.csc_enable_bit = CSC_ENABLE,
++	.is_dpi_clk_req = false,
+ };
+ 
+ static const struct mtk_dpi_conf mt8186_conf = {
+@@ -969,6 +984,7 @@ static const struct mtk_dpi_conf mt8188_dpintf_conf = {
+ 	.channel_swap_shift = DPINTF_CH_SWAP,
+ 	.yuv422_en_bit = DPINTF_YUV422_EN,
+ 	.csc_enable_bit = DPINTF_CSC_ENABLE,
++	.is_dpi_clk_req = false,
+ };
+ 
+ static const struct mtk_dpi_conf mt8192_conf = {
+@@ -986,6 +1002,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
+ 	.channel_swap_shift = CH_SWAP,
+ 	.yuv422_en_bit = YUV422_EN,
+ 	.csc_enable_bit = CSC_ENABLE,
++	.is_dpi_clk_req = false,
+ };
+ 
+ static const struct mtk_dpi_conf mt8195_dpintf_conf = {
+@@ -1000,6 +1017,25 @@ static const struct mtk_dpi_conf mt8195_dpintf_conf = {
+ 	.channel_swap_shift = DPINTF_CH_SWAP,
+ 	.yuv422_en_bit = DPINTF_YUV422_EN,
+ 	.csc_enable_bit = DPINTF_CSC_ENABLE,
++	.is_dpi_clk_req = false,
++};
++
++static const struct mtk_dpi_conf mt8365_conf = {
++	.cal_factor = mt8183_calculate_factor,
++	.channel_swap_shift = CH_SWAP,
++	.csc_enable_bit = CSC_ENABLE,
++	.dimension_mask = HPW_MASK,
++	.hvsize_mask = HSIZE_MASK,
++	.is_ck_de_pol = true,
++	.is_dpi_clk_req = true,
++	.max_clock_khz = 150000,
++	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
++	.output_fmts = mt8183_output_fmts,
++	.pixels_per_iter = 1,
++	.reg_h_fre_con = 0xe0,
++	.support_direct_pin = true,
++	.swap_input_support = true,
++	.yuv422_en_bit = YUV422_EN,
+ };
+ 
+ static int mtk_dpi_probe(struct platform_device *pdev)
+@@ -1056,6 +1092,17 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, PTR_ERR(dpi->tvd_clk),
+ 				     "Failed to get tvdpll clock\n");
+ 
++	if (dpi->conf->is_dpi_clk_req) {
++		dpi->dpi_clk = devm_clk_get(dev, "dpi");
++		if (IS_ERR(dpi->dpi_clk)) {
++			ret = PTR_ERR(dpi->dpi_clk);
++			if (ret != -EPROBE_DEFER)
++				dev_err(dev, "Failed to get dpi clock: %d\n", ret);
++
++			return ret;
++		}
++	}
++
+ 	dpi->irq = platform_get_irq(pdev, 0);
+ 	if (dpi->irq < 0)
+ 		return dpi->irq;
+@@ -1097,6 +1144,7 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8188-dp-intf", .data = &mt8188_dpintf_conf },
+ 	{ .compatible = "mediatek,mt8192-dpi", .data = &mt8192_conf },
+ 	{ .compatible = "mediatek,mt8195-dp-intf", .data = &mt8195_dpintf_conf },
++	{ .compatible = "mediatek,mt8365-dpi", .data = &mt8365_conf },
+ 	{ /* sentinel */ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
 
 -- 
 2.25.1
