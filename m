@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAB23C004C0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 09:56:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0381C001E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 09:56:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZC07USduWdC7NjdC5xCXcdF31ciW6Iy95zkt28zTytw=; b=QUtZdmwKq8HDhminPZLkUfLWKJ
-	0skEvBtMKhj52SNcm78q5y4e74a5sGARiEe7Ars/Dnf3Y2qQLG90sjWKdRBtG2PEW9RGTLJxwYZi2
-	Nj1rBpnyjJOULze9Uzawd6xF38JufIjc2s+5/k32A3+rRKKcK701U9pNgQCJ+u/V4QmFzRvkbJqul
-	oFylXxvYOxN7I0B3CGU8naAHIPMxtOy5LDbHErWFtkZTewS5e+G+7TIy9lAQufQX0ZVP+3w9mj48D
-	JeIT8/dqzBnW/E8iiv2Rq3OrJvuzl+Pws6uXvrJg/I0mPjEE7AbYpxgWgo0+UgVRqFCHB9SjHw/H0
-	m3UNnwUA==;
+	bh=G81EZhNEBfjywIhuDWJjtpTXYP61176MP839Y8OZoG8=; b=mcIzadJjXukxI62d9MoU4E87ko
+	fVjHWL/0r+l2IS/D01Svdfr4RBX0U+lYEdt4x5xvmIApU0ue3CSRzGl68f35KGdElc9oySkHWbUWP
+	8/jkZa5aapxcYcEvBVcpUmD4OcfPJ6S03bBRZf/2KdCJg7QZoiJN69um6jUr/WARI/gI2BDXfDfSD
+	Uq52n+fDQwZZrwJZs+JST6tX5UK1IbPbAUaKSbn3qf9qwqLkUEDEjlo+anC1+//3lofnecoMkkzZ2
+	v0bed6ETswxHl40NKjwqscmHPy2A/Rs0SY3JAFCxRPdml1RR0+v3vDmmkPm0SlIyZEBeWOhdcuhpB
+	rp6r9sXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qurfm-006xhP-1C;
-	Mon, 23 Oct 2023 09:56:34 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1qurfn-006xhm-0C;
+	Mon, 23 Oct 2023 09:56:35 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qureQ-006wc5-1v
+	id 1qureS-006weH-2Q
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 09:55:12 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-32caaa1c493so2237546f8f.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 02:55:10 -0700 (PDT)
+	Mon, 23 Oct 2023 09:55:14 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-32da4ffd7e5so1725553f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 02:55:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1698054909; x=1698659709; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1698054911; x=1698659711; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZC07USduWdC7NjdC5xCXcdF31ciW6Iy95zkt28zTytw=;
-        b=dIG6ySz/UNEoLYPwgtadc2X+sSv01tJlB1FeTRkt2fXnZd+hd82JkObhbIOdPWFYuv
-         h7aMVdK7fpOk3orO/vKlmx4IshaW20kZJc6yiqBExPoaaAQB9wNd9ZLO25kKKHZmascq
-         3yhpdBkItrKh6vRWx/6/lo3UdeidyKpYFZuPlBiAqWRji4Q9HcC0JZJ7gwrFzJVARCOj
-         th3uLemccMQwPX6uyEZu/e8LIsxlBed1NXGhc2BskukDUsUwN43S4DLADy6pp8OtzphK
-         DXZ9vWnKPgbNI2SWYoomEnBCLVh64NPnbJjyaZgR0x7C93j9CKvj63tP7Orupqw4MTYM
-         nTIQ==
+        bh=G81EZhNEBfjywIhuDWJjtpTXYP61176MP839Y8OZoG8=;
+        b=J7T6p0od4pEeDOcbxJoXJcDzJGB+Z0x9xJ+2WwIuOphndrldZFzaEhzEEbtPEk3/ko
+         BNB+OJLPa8cGtXFvsFzygFgCHyEnmlxTqNPFldduZhhVSm9i8hncu18458ZSfyZJEqxE
+         bdILQ/PMKbkeDM74qVwvajf48J0ckCNJ+xB22q3XZ+kaFvGtqpLPG7qzosJ6USkuhZo3
+         0XuiDbD45lLu6dGglv6Ae/p8ZUA0a5ar4PVyijChIydfUQWMPmJbhJ0CHQWl/3urvWL6
+         spliZ63U5C1vuqUN1bShQJGVp/fHE5nqvOuqwPmJaRlqFVhRp7Nvj4bv4HAjLd2x0tV5
+         P35w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698054909; x=1698659709;
+        d=1e100.net; s=20230601; t=1698054911; x=1698659711;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ZC07USduWdC7NjdC5xCXcdF31ciW6Iy95zkt28zTytw=;
-        b=nqfz5Ilw1bNp8+/sKm87My5u9H2cFoxCYfPV4Khuh9Zz2WWniAqFlnmMx0eJAhfapO
-         NOyYa3+9DkrQBQZbJZCXges8cTEtmH7fzbx9ZklXBF5tjtV7ruuBaEi4Uk/C+zgd+HXX
-         wT174CFMvt0qF767dqz/h+wRoCRAv4NyP/qh6zPlWp3J56t/9ey1KlO97ccGsHUAHbYh
-         1i66tDYBGhHCrNZ7RuJYkGPnFWNP2sIgQ1y9+Wsoai0fiiGRR/dFDCYHG8mBt3d2sS6m
-         R4lZlOu30n6V5vIvKF2vHvexiWfrWr47TjrizoU0tlaGlk1ZlG4QfJsdMv1u464/OxYv
-         x3IQ==
-X-Gm-Message-State: AOJu0YxB8NiwfdF6zmUYVmxOQ7+xwGFPQgI+L8EVFMdPzJwZFYchsC7j
-	RMrxqOSZ2nAaWlO2fScs0TD0FQ==
-X-Google-Smtp-Source: AGHT+IEj7uxeA3nMNUo9sdq2wgfqK3o3A7RdYb9gMk09HGqmRvuI7EP8mG67nJpViU+BpTyEwFeWzQ==
-X-Received: by 2002:adf:e80a:0:b0:32d:8c6d:cda4 with SMTP id o10-20020adfe80a000000b0032d8c6dcda4mr6419354wrm.43.1698054909354;
-        Mon, 23 Oct 2023 02:55:09 -0700 (PDT)
+        bh=G81EZhNEBfjywIhuDWJjtpTXYP61176MP839Y8OZoG8=;
+        b=Vqwhx/cZKnqDmXt902V2dl9QAfzAMeBo9FWMugPMc/ehmOJPFNfsJ8KRN/+BcX8ug9
+         NtSQZgSVlrpxoqnkzG0MDS7kzpMvomoaWusYuFxbGv4JTueaSNtIanX2AKgoWN7OEPE3
+         Y7Ob5fy9VqTbjcbQvKQBVmmB+XdVjpRuB6SVlMky3sksYXfG5V7DtTN2bmAoxN4SJAr1
+         MvrIfuhndHXqV3x26yrnQ7tP+eZlzVxl/4GORhbrMjiktM/OZpYn+9IwsCpzlDBxnCKD
+         ZIbjxJRZfdNKoFDVHsSRvLZfGB3AKeULnjRA4esfkPqgzFXgImguljjU3vYi6kOAahPq
+         g+2g==
+X-Gm-Message-State: AOJu0Yx2r6o7+pevt8qPn75Q0IcEIeCKADd9F2TwbU3D8Ug/mRq1CUAX
+	kFt3BvfXkSoIaPypIDAuO3VdXQ==
+X-Google-Smtp-Source: AGHT+IF2iXpBOUlnIxhQVTQ1O4HJJuZY9k94V739kocrPuR1iW5RroQxWCPWTyJ4Y36tYCQLJLsx0Q==
+X-Received: by 2002:adf:a499:0:b0:32d:a3f7:f0dd with SMTP id g25-20020adfa499000000b0032da3f7f0ddmr10781049wrb.25.1698054911534;
+        Mon, 23 Oct 2023 02:55:11 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id u14-20020a5d468e000000b00323330edbc7sm7428801wrq.20.2023.10.23.02.55.07
+        by smtp.gmail.com with ESMTPSA id u14-20020a5d468e000000b00323330edbc7sm7428801wrq.20.2023.10.23.02.55.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 02:55:08 -0700 (PDT)
+        Mon, 23 Oct 2023 02:55:11 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
@@ -84,17 +84,18 @@ To: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-tegra@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [RFT PATCH 16/17] ASoC: samsung: speyside: Handle component name prefix
-Date: Mon, 23 Oct 2023 11:54:27 +0200
-Message-Id: <20231023095428.166563-17-krzysztof.kozlowski@linaro.org>
+Subject: [RFT PATCH 17/17] ASoC: tegra: machine: Handle component name prefix
+Date: Mon, 23 Oct 2023 11:54:28 +0200
+Message-Id: <20231023095428.166563-18-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
 References: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_025510_663422_5DDADE16 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20231023_025512_802604_E52DD3E7 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,25 +115,41 @@ to include also the component's name prefix.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- sound/soc/samsung/speyside.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ sound/soc/tegra/tegra_asoc_machine.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/sound/soc/samsung/speyside.c b/sound/soc/samsung/speyside.c
-index 43519572dc69..79476e8eb680 100644
---- a/sound/soc/samsung/speyside.c
-+++ b/sound/soc/samsung/speyside.c
-@@ -111,9 +111,9 @@ static int speyside_jack_polarity;
- static int speyside_get_micbias(struct snd_soc_dapm_widget *source,
- 				struct snd_soc_dapm_widget *sink)
- {
--	if (speyside_jack_polarity && (strcmp(source->name, "MICB1") == 0))
-+	if (speyside_jack_polarity && (snd_soc_dapm_widget_name_cmp(source, "MICB1") == 0))
- 		return 1;
--	if (!speyside_jack_polarity && (strcmp(source->name, "MICB2") == 0))
-+	if (!speyside_jack_polarity && (snd_soc_dapm_widget_name_cmp(source, "MICB2") == 0))
- 		return 1;
+diff --git a/sound/soc/tegra/tegra_asoc_machine.c b/sound/soc/tegra/tegra_asoc_machine.c
+index 3caadee9584f..192e9692bdf2 100644
+--- a/sound/soc/tegra/tegra_asoc_machine.c
++++ b/sound/soc/tegra/tegra_asoc_machine.c
+@@ -81,19 +81,23 @@ static int tegra_machine_event(struct snd_soc_dapm_widget *w,
+ 	struct snd_soc_dapm_context *dapm = w->dapm;
+ 	struct tegra_machine *machine = snd_soc_card_get_drvdata(dapm->card);
  
- 	return 0;
+-	if (!strcmp(w->name, "Int Spk") || !strcmp(w->name, "Speakers"))
++	if (!snd_soc_dapm_widget_name_cmp(w, "Int Spk") ||
++	    !snd_soc_dapm_widget_name_cmp(w, "Speakers"))
+ 		gpiod_set_value_cansleep(machine->gpiod_spkr_en,
+ 					 SND_SOC_DAPM_EVENT_ON(event));
+ 
+-	if (!strcmp(w->name, "Mic Jack") || !strcmp(w->name, "Headset Mic"))
++	if (!snd_soc_dapm_widget_name_cmp(w, "Mic Jack") ||
++	    !snd_soc_dapm_widget_name_cmp(w, "Headset Mic"))
+ 		gpiod_set_value_cansleep(machine->gpiod_ext_mic_en,
+ 					 SND_SOC_DAPM_EVENT_ON(event));
+ 
+-	if (!strcmp(w->name, "Int Mic") || !strcmp(w->name, "Internal Mic 2"))
++	if (!snd_soc_dapm_widget_name_cmp(w, "Int Mic") ||
++	    !snd_soc_dapm_widget_name_cmp(w, "Internal Mic 2"))
+ 		gpiod_set_value_cansleep(machine->gpiod_int_mic_en,
+ 					 SND_SOC_DAPM_EVENT_ON(event));
+ 
+-	if (!strcmp(w->name, "Headphone") || !strcmp(w->name, "Headphone Jack"))
++	if (!snd_soc_dapm_widget_name_cmp(w, "Headphone") ||
++	    !snd_soc_dapm_widget_name_cmp(w, "Headphone Jack"))
+ 		gpiod_set_value_cansleep(machine->gpiod_hp_mute,
+ 					 !SND_SOC_DAPM_EVENT_ON(event));
+ 
 -- 
 2.34.1
 
