@@ -4,91 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B05E8C25B42
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 08:39:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 800BACDB474
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 08:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zyvq3zj0ZsAJGQXIA6vzTqhBS5BH63U7uR/45f1g2j0=; b=JhWNe/N9hGtdhO8kkgfFi0tYDV
-	feqEYBt8pZmidLhXhtYXe5hM5dZ+NOtrqy1mmHlevdcVvApxTb7WZD2YAVyx5hVS5z9Yen9aEZUYg
-	W3aYbD7Pjn/hjbI1nNy1H08YnbaVDZ+I6tepG059Wiv5N34+RhomFxeNK/APPyBZdwfoY9oJ4SeJo
-	gOcNmcpgN+BpEmbjr/ZOiPTP/ojCS+Ul/yLKG/LfUfIKMDnJYTHcJGtTfGw531BwypARc4KsClysX
-	jvYYvpC6aZlIJQfNBZTq8ZFcDIaALdQclOXjYkZvVoLR7wIaoPwjvrJOA8QtnM1vRXfqLVToAutzj
-	CIn9qE/Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aT+hmc/ohCU2Jrv9aRpigkkuftKHFJwHjRM8gm4kYpk=; b=VMQDX1St1wW/L8B93laPh42m4k
+	iaozljgfD+KcHvBW2g+dPTlIZLAFjWfNbHled7gn0z09bJUeUnbrIseTvVw0F2R+TxQBmhkwpY1KS
+	vjIoksPkWt+JrP7bk6LwA7El7JRAChdv2dzMefyttZTnK57iFh+SgTIwUmfpd07gn2gDxBxXSj+tK
+	Qb9Ij2rNsVjTkWxLKC4426HeTylw3TlsyY7yFnSHMrn54Fk9u4oOxfe/4klDZvU9vyILqykQg7yps
+	XuSHT7ovSBw06/HydDH8IjzhkhfDAjHcoHQN8Bh9T8G2qlpgNwFoKpnpYpGEJxxL5Znldyx5aXGXi
+	lKyYXAqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quqTC-006nN9-1n;
-	Mon, 23 Oct 2023 08:39:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1quqk6-006pQa-1T;
+	Mon, 23 Oct 2023 08:56:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quqT6-006nKK-2r;
-	Mon, 23 Oct 2023 08:39:26 +0000
-X-UUID: a84d9ab6717f11ee9b7791016c24628a-20231023
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Zyvq3zj0ZsAJGQXIA6vzTqhBS5BH63U7uR/45f1g2j0=;
-	b=aL7bz8dlGy0RJ/6S/wDfPueJdviE7kI3IEs9DnBONf0T0gN2Ly4aslOT1qxAxcglBY7ET7y1vzmb5dQwmpiRRX4AOqF2Oa+wk4irjt0cYH2nNfmcQu5287vzQUGVkCQQnspkVBjNPP0WbbbFusBtnJ20eOd9AZS7xXyL4/wkXGo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:88cb0ebc-36b5-4914-882d-c898d0e5da7a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:52d28494-10ce-4e4b-85c2-c9b5229ff92b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a84d9ab6717f11ee9b7791016c24628a-20231023
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <jason-ch.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1203967013; Mon, 23 Oct 2023 01:39:19 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 23 Oct 2023 16:38:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 23 Oct 2023 16:38:42 +0800
-From: Jason-ch Chen <jason-ch.chen@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Eugen Hristev
-	<eugen.hristev@collabora.com>, Bartosz Golaszewski <brgl@bgdev.pl>,
-	"Alexandre Mergnat" <amergnat@baylibre.com>
-CC: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	jason-ch chen <Jason-ch.Chen@mediatek.com>
-Subject: [PATCH v6 1/4] dt-bindings: arm: Add compatible for MediaTek MT8188
-Date: Mon, 23 Oct 2023 16:38:36 +0800
-Message-ID: <20231023083839.24453-2-jason-ch.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231023083839.24453-1-jason-ch.chen@mediatek.com>
-References: <20231023083839.24453-1-jason-ch.chen@mediatek.com>
+	id 1quqk1-006pNP-2d;
+	Mon, 23 Oct 2023 08:56:55 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6500F660708F;
+	Mon, 23 Oct 2023 09:56:48 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698051409;
+	bh=dFvx+49S3jFnjbYP/SDDTVnsInLkM7iL6PkoHtIthX0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RVEWfNph9KqE4Mw6VpLodWjXCU7tkP1G4gPeA8oZlDQDYvFHMonzcvegivjtuR+6O
+	 MuTAoFZnfyuIfml2eGL9n8iWHiTXVaphfrcjswc4g4irTF4L9xOAVD8n01gGUSgd2d
+	 Kk2mSmsawIkFL8l4qKcUMktO6VEXfaOMvF62HywGQGJn8crXHZvogvfkn2CALdlNg5
+	 fNmLuQ+qgg9PEi25UhA2rPp60RedCock6MdA0+Fjgh3ESlZoNWPpIAGHn7RLKMRmgV
+	 zokbhLQBjzj/YXXBjhU9kO1n56xrvm6C40rP1IaLq15JnuhVOfatBgzuBeGrGGxoBN
+	 2HIeAA/O3N3xQ==
+Message-ID: <5bdb0e3a-e3d9-4014-8f0b-014f8d2f6f9a@collabora.com>
+Date: Mon, 23 Oct 2023 10:56:46 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.837000-8.000000
-X-TMASE-MatchedRID: 943eAS8JJcmQwm5+b+ZNPYv73wEu0Nx76SXuwUgGH0iyrCkM9r1bWjcG
-	i0cOVVas5o/rYvVL+ieAMuqetGVetnyef22ep6XYxlblqLlYqXLfFhOrg1H0HKmabKgcYOqNYng
-	xHwEIsWithhb0nQmYmJ+h0tU6ESPSTTSvPfR6ay8NJBjaOh/RjMjGu+2zznhoUE2EtHzkH8mOh+
-	wyNBrFXDJiNuKohDcKzKSG3JdyKAPqtV2AGMNPaiHWPYzouJUy
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.837000-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 0164221D62CC64E85320D656CFF4C0C1D32CB0D462C72BA8953577BDE5C83A452000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2,7/7] media: mediatek: vcodec: Set the supported vp9
+ profile for each platform
+Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20231023030640.16393-1-yunfei.dong@mediatek.com>
+ <20231023030640.16393-8-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231023030640.16393-8-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_013924_926265_61804835 
-X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-CacheID: sfid-20231023_015654_017852_92E2DCB1 
+X-CRM114-Status: UNSURE (   6.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,34 +87,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: jason-ch chen <Jason-ch.Chen@mediatek.com>
+Il 23/10/23 05:06, Yunfei Dong ha scritto:
+> Set the maximum VP9 codec profile for each platform.
+> The various mediatek platforms support different profiles for decoding,
+> the profile of the codec limits the capabilities for decoding.
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 
-This commit adds dt-binding documentation for the MediaTek MT8188
-reference board.
-
-Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
- Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index a5999b3afc35..45b3613e9a1c 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -174,6 +174,10 @@ properties:
-           - enum:
-               - mediatek,mt8186-evb
-           - const: mediatek,mt8186
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-evb
-+          - const: mediatek,mt8188
-       - items:
-           - enum:
-               - mediatek,mt8192-evb
--- 
-2.18.0
 
 
