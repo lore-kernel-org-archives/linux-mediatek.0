@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 583B5C00A8F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 14:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF4A3C001E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 14:41:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SkwhU2F4TXr5U8/eIVmqKK74gpv3rz72+n1Z9i4NLQY=; b=0nN3id6SfyMRHmtry4DKOWsR5g
-	SfmtHsDnV1GNGEOh5pkEirinMD24+wnGDYysO+aXq7hjEnx2yXytZ46v+gu0Hb2lqOheCbPef9Lmq
-	ecqS2D0olesteEcAYye58yJKWMu9Og/TXnFJV1UXmcCuCmIprxxji8yNPd4GIKefcqu6AWhoONs7A
-	vI1/XPBdlLJBAtbFrWUjeYN8gxl6w/4sChB5gnhnVq+b4HEOQzhFaa8Xpwl5sxTrwvs35Yi7XO02Q
-	XSePNmIUXc77V6G9ZRQzqE/HYCEcb3QXfeh+/Eb31hyR1MSq6cVSY9s9f2kC1MQdeFDa/ZipRXfeT
-	fVGPbc9w==;
+	bh=JHlKinnyvGcWLyX/UpwiSi0uqGe6vbSuDhHVYP6fxiQ=; b=ZczxgFM9L/QhkedZzAVAWE6ZDP
+	oRP1I0eMf79/iu7wyd/2RUSBpLFMECuoJ06VDn7U0/2XLsDYkeDU/vdOK/9oBfeq81idLo0qyikYW
+	oZkjWgI7RZv0M3H1PWEI3gQmdfj8/ojgaoSEPOnoPocU70gS6BFStnk949hBMJNZ6Xrcgl1NaiZD5
+	LBfLcyzaPH6wMmi7EfO5I9O2F8u2KBfdiSLW6nZf3CAASqoV1I2InCtlOoRsaWOZh9PelHIkNo+m+
+	u0lOfRDEjlK/XVAqzPrpCqWCKXJCc+U1g3x5rREQqfoPHS1jGV9fWGcGA95zbuGpfAHvpvaSQz+It
+	stIy3sug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quw6n-007Zab-10;
-	Mon, 23 Oct 2023 14:40:45 +0000
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
+	id 1quw71-007ZlS-2N;
+	Mon, 23 Oct 2023 14:40:59 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quw6b-007ZRm-0v
+	id 1quw6f-007ZUd-13
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 14:40:35 +0000
-Received: by mail-qk1-x734.google.com with SMTP id af79cd13be357-778940531dbso209174685a.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 07:40:33 -0700 (PDT)
+	Mon, 23 Oct 2023 14:40:38 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-778940531dbso209178885a.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 07:40:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1698072032; x=1698676832; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1698072036; x=1698676836; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=SkwhU2F4TXr5U8/eIVmqKK74gpv3rz72+n1Z9i4NLQY=;
-        b=dMsSjB8Wqp/Go52ISPCkHAGyM5Un0ZUvJNSSpOdhFg/g1FtP0vn7l7BjqefG32BGc7
-         pYD38mEqIFKlAsWLYB79en3v+GltqGBoWNTG8m6tqI0Jc86hSES+RApUMsBFFvEUtGRX
-         PhVca1aoP/w4NXI7UO2ea2n5Th3zAb8qWt+IapxuNHaaVJ6SNkvm4Xx10gCIZPlGsE6c
-         EPg8vH6H+Og4SD/y8/6DkfhVluC/LojMN+qZSjel1Gm9+Nj8BdVHoZ5vOo3FEXYPg7ww
-         1Jwkub2QbgrJ/j+2RLHgcsuf3+tD2tn5YFMo15j3Z3f05hBp7NUjNQMmBSzJ7NagNtO0
-         ljmw==
+        bh=JHlKinnyvGcWLyX/UpwiSi0uqGe6vbSuDhHVYP6fxiQ=;
+        b=HJ/mt00rhcv3twLzwrlfiQ2nY74+cZUiR0g9EtKeyUC1r8DydBtpCwjZV8/ZqkBUEL
+         5CdsK9ZlBwtzv+V1aXHkQMRZMYelH8vcyVTqdnvxZGOnUabkOOy3ozufbCbEZiUVmkXy
+         Db+xSt++IOsdL78RAcQCWUwZz+McG7aTuciG1Q+1OpWMmzRKnlI5LFfrsMnTzn7l2TzS
+         TEB3I/JQ7VElurOZ/f7jeuJRtgBXSe4nMBZo8g/5g/nHECtMcZObTGSoyNregrHFAWub
+         O4aWe/UsUOVyXE/TDL+BHiGObDamSKECKDmN6ZR/wRWJMb7tzY6vXmgFAhkhmPiz+7NG
+         7iAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698072032; x=1698676832;
+        d=1e100.net; s=20230601; t=1698072036; x=1698676836;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SkwhU2F4TXr5U8/eIVmqKK74gpv3rz72+n1Z9i4NLQY=;
-        b=FaLVX0AarMkeIJNd0uwdxmE6IEA3cbtv0OtG1P0Wz+uYFjN8aTu7RQkNvTi9qdikzo
-         hOEIPdAi+WAweUaO5qIPYaCOXYjYXbcxpC5lkzjGk7jeyetDLYBtGSNba0qmGiBb9H7f
-         kQ4IC2NCg/8vSO/vbgtZGUnI+MGgwJ4Qhrg+mQyGOXi5ujlRhRGapRi7n5M7vyewnHmM
-         cPwScTlbCf1k5s40m/ZwyfH3RN+/TYHR/H2ixTB4bODKO/RtZynI1ZQNu0AwbH/kdGDK
-         c7Wdl/hueIYudgNaSqOdgMgpzVJ3m4oCamQynNl+YFzySd6ycgCtilQwJ+DA6gPJkIrf
-         GUdg==
-X-Gm-Message-State: AOJu0YyDemq9J2zmQTsHwSDiBYkVRlDfRodwEGlLLuJYTE3qrwHXbsJ9
-	r2Xk1vvW4uDFn3xpkD0wNIY14A==
-X-Google-Smtp-Source: AGHT+IFoXaN6pVThre1z/S0bbgU8FS54cZC6t6c+5RXc70MLFec5xoE9QM4x8jGHB1G542vMIjK6xQ==
-X-Received: by 2002:a05:620a:1a09:b0:777:74dd:621d with SMTP id bk9-20020a05620a1a0900b0077774dd621dmr9306621qkb.15.1698072032470;
-        Mon, 23 Oct 2023 07:40:32 -0700 (PDT)
+        bh=JHlKinnyvGcWLyX/UpwiSi0uqGe6vbSuDhHVYP6fxiQ=;
+        b=VI5EnS9lPmawtvNgR4PUBiKb7y8A3mNLSRsWBlF4o9H+juaq3s39vO0f3741WT311/
+         zwAIel/JBQ2lBbOAMs24CPN60Erml8lB56UC0OIMx6smyQgk+6MPG9Eqco+/pRdB2mHL
+         M9tO3waia4JNS/6sJrdvfpWXztCniuhvzmdT3Zi+MX+wN091dUr5+/fBuK/uq6QO8IRw
+         9gFk4haKkGOwBTYNAgJc2vLymeeCXKHOcrPUcvOjKcYY4c3G59ZmjQQ62TMf1cOie9f2
+         506Q658/YxnCHVvDTgo6ydfFwI0EClZ8Pk1hc3TpL2W5XQ7KW8+AKCjlBZKSRTl4ZLxg
+         xZ/Q==
+X-Gm-Message-State: AOJu0Yzhe5au27NehnqdbNJlivPwuAQpQFRKK6oMniFurwcOsrCXKtzU
+	HXsUB9rkTUqXfMmFpAZ6ZILdew==
+X-Google-Smtp-Source: AGHT+IEiBk1UARjKqcmuU2E5mciS/+khU+Ezo/QX4nadgM/Ncz49UAdPF0+0FFE8lX/iNwYnZl5nXQ==
+X-Received: by 2002:ae9:e912:0:b0:774:3235:4e6d with SMTP id x18-20020ae9e912000000b0077432354e6dmr8721774qkf.21.1698072035914;
+        Mon, 23 Oct 2023 07:40:35 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id f1-20020a05620a408100b007789a3499casm2725020qko.115.2023.10.23.07.40.29
+        by smtp.googlemail.com with ESMTPSA id f1-20020a05620a408100b007789a3499casm2725020qko.115.2023.10.23.07.40.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 07:40:32 -0700 (PDT)
+        Mon, 23 Oct 2023 07:40:35 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 23 Oct 2023 16:40:04 +0200
-Subject: [PATCH 04/18] dt-bindings: display: mediatek: dither: add binding
- for MT8365 SoC
+Date: Mon, 23 Oct 2023 16:40:05 +0200
+Subject: [PATCH 05/18] dt-bindings: display: mediatek: dsi: add binding for
+ MT8365 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v1-4-5c860ed5c33b@baylibre.com>
+Message-Id: <20231023-display-support-v1-5-5c860ed5c33b@baylibre.com>
 References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
 In-Reply-To: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -88,24 +88,24 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, 
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=938; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=tYxquOkpHCbnFi05aHcxCGsRKb8h7qDvHcF/fXuV370=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBlNoXOkwi2U4WCrequXuzYCvok2QkmF3+0zqAfxGGm
- J896eL6JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZTaFzgAKCRArRkmdfjHURViaD/
- oCnO3B16x6z8742sQoq3Qz35HJC9XGKiHeYoOY2xIdc2g7wjcBOLaA02OVr7AbLQPFMJ4zskMA4uaz
- IjSpJd6ha3Gdh4fql86jC1THgW8paGXUOfdna0fEdRXWf/TpfPschReTyn1q6a1YHdByWrYAXbyhkV
- JOOZp7q5szn7Cr+4KUdiAUsdynt83BQMUiWxOf0fwa4+vO/EVy9Ufs9m6xtufJJFGgoEH+UjxHzyrf
- 58I40s5RZyWwQo7GAu3VWsqrcMUF/txYb5il27M5gdXSfPH6HbTubmMMBNXMAhm4i9TC172GOCUsXX
- XqCMkDF9xwCbjqPQJgdRR+4Ld+2PpWrTjNEEhf3YGGMV1i2kVJWY4Rk4j5EaNJ3nZvhFng8fnpzwZh
- YcU9lkXwpHD3nfO/9Ll7J7tvDexb3pD5v+M3EsS4ViFAmKogqOXS5Ev99oBj6D5lbzcgB/wryuRK6q
- XGoVJ75TlSy6Yg3XFIMggMWra+1FonABuOdIZx1Zm89vE5/w/MIJ3h4pYuQUSJ6KXdTc7V+nCgGo6N
- BSGnJVYub2dD0vJxKOSqnG2fESwz2kTkO9lcuCYpmW3LkfpxIdfwU0TxKYAmRtGuwsJ6deFOp0NsCM
- SujXn5rcipp1UgI6zjCqhbxOV3FyFENNZ6M3tN9RKHtk0ZN9xiIRoicfSzOA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=898; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=+OlEWEvMUxFbKjJVjIiLf0e0kaqCLKK8Af5H5ievjhM=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBlNoXPZJ/cY4ERZiiSBfVRRGRyTqsN8HRcTtNer+op
+ /GLORxmJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZTaFzwAKCRArRkmdfjHURV0oD/
+ 0VXz2ryPfkA3GQgZfBGaQjZnLlqT71UDJqxrP4rzcrY58feUXLCqvam9ncDhmdgUSBM+aphUEBydzM
+ WJH8b2LKpzmJaj5S8Wqz5jyP/D0snP4yShSpzIKA0W84vr969DljY9A0mz82JprPusmwLUWBpr873x
+ iUD+sj9hNpR9mIu1BN+rAFj3se1zGrhWPAk+djg4GQC9Tlg3UAUwS87Qk3jA2xTlaeCRgv18Jngq0S
+ ar9r0GTuD5IwHO4szV96F6eF77D6EWrNEcTHm6jbcdSEfQP2ecIjNOuTt85fAwTjhXqzXIby6ng1U1
+ wdeBarMnV+qZIaOTiwl/3E3/+LnkQ2zZR1t1mJ6EyaQtWiyETT5bkYubyh5XsUAO1069iV+6uA3M8q
+ ucsPRUSAqTSZ2fKX0yK/gwnSj432MKNFNMBnL4hPOGQcznyrlQpqZadpPUqvk6pCpGNDcvILphvWQ0
+ AKifv6jwJLQfWb3FTbAtPoa9uRffmwzNlaub6T8EwrebyoGUFyIj4769lqi4XlYSHr2rk9hYlyQBYo
+ vAxhRBm3jOkj8U2LWqL3zaFMr+epUIWc5htDqbxnXwi3apKidDY68sPFZ98mk5xBmITeY+ueR/Rry5
+ n4zO4J4zgWT5Ss7YzL7jjwLr3MVXV8PDgniVA2BSyJ9UDXJM/TiRtPE3v0DQ==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_074033_323790_3B98C752 
-X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-CacheID: sfid-20231023_074037_363383_D4B414E1 
+X-CRM114-Status: UNSURE (   9.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,26 +121,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Display Dither for MT8365 is compatible with another SoC.
+Display Serial Interface for MT8365 is compatible with another SoC.
 Then, add MT8365 binding along with MT8183 SoC.
 
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-index 1588b3f7cec7..6fceb1f95d2a 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-@@ -30,6 +30,7 @@ properties:
-               - mediatek,mt8188-disp-dither
-               - mediatek,mt8192-disp-dither
-               - mediatek,mt8195-disp-dither
-+              - mediatek,mt8365-disp-dither
-           - const: mediatek,mt8183-disp-dither
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+index 12441b937684..2479b9e4abd2 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+@@ -34,6 +34,8 @@ properties:
+           - enum:
+               - mediatek,mt6795-dsi
+           - const: mediatek,mt8173-dsi
++              - mediatek,mt8365-dsi
++          - const: mediatek,mt8183-dsi
  
    reg:
+     maxItems: 1
 
 -- 
 2.25.1
