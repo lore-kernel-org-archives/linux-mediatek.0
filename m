@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D37EC001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 07:47:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C2B5CDB474
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 07:49:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uInDQi5hkTSDKcRYo0hzYhBHCzPIaLZJWqXIlWN4pBw=; b=SACBlEqwy9mTcg6YwZg2U/zN/M
-	ohhc60CJojWMc/oTXxLQ3UQ3GI6v/HEfD69SEOFae68C+LdVNY/syOzpj4DPPhxY8fwkT/iiocNJL
-	tmrF6H+k1uXhaaXF8xFvvUcJkAj3Vsq6Tqoll/3gKtTrwQGXj0kwo7YPOGRrQn+voVNl29LkibD9N
-	QCXtpISI2LDdL8aiDCwUozdqMBhsc03lIZ93klWU6HemHvxvrh2mruEMuXRfiE5LHQSmp0Nb8KgYm
-	FRjvoHQPnVQBI8nls5Mu+3T+zBx27Nfc9X/U2rf19t7z4WXJdfk4fEeCRMmZkoBUeXxWjnZCEobU4
-	bKErUNoA==;
+	bh=EbenLzpl5Ov1tFOe5S/hmXCeHst/G68xqTO1qvU7hds=; b=AGlIRr8AEzybPx/6YigzQHxTJU
+	zBOzPGK4uHlC/hVIatzTiYVw4pVCEqsvqKT/CKh9OK2pEzGsSLF5u26sEwP5FN7GfDSzHyf6PTOBX
+	jy8l5pUijw7G8rQMIMHrSpm6HVM8nJ++DNdRsLNsvHORq49HNqd6A81vvC1XyPDoe8NIj032+QpFc
+	do0LzhChAsGl5HQx5Slb42kRWuCOMYOwcc+u8K3PmuRPgtaT3Et+mMwJ6/Tjfbhng+JQQooXVHMoh
+	2U+lwUcLTl/TDUncSWj1ye2woKUc28jczzq27ROFI9uamdHB4DrWgC+TYhfoVXEdDRlpSy9CENLXu
+	oJHNJTVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qupeh-006g0M-0l;
-	Mon, 23 Oct 2023 07:47:19 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1qupgS-006gIa-36;
+	Mon, 23 Oct 2023 07:49:08 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qupee-006fxs-09
+	id 1qupgQ-006gHF-01
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 07:47:17 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-54041e33845so1384644a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 00:47:14 -0700 (PDT)
+	Mon, 23 Oct 2023 07:49:07 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-9c41e95efcbso420370866b.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 00:49:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1698047233; x=1698652033; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=uInDQi5hkTSDKcRYo0hzYhBHCzPIaLZJWqXIlWN4pBw=;
-        b=WF7JhA+gUGNJDAasRExU1qNsbVCYN/9LzXMVaWFo4NLtEotvoSNE4JNUY/Dt91A1bI
-         EB7aZVvVxQ9VTUEYh7M67ZIDkBt9UOC8P15HFJy/AnOr3NDVhOdNEuw1zLfM7y68lIQu
-         NajbtiQ7lqyYbxk9GOm011M0cVCl3yPpSf/RLByqs3N/MbFBpMcwGreBqFTxAog5yB1c
-         e+ecyhYpjUCpjDyGZOTk1TmrstQt0jtyejdV6x7IGq4LcysevZsBLaGQf/l35fNm7Ys2
-         3GxohAOhpNBNW0pcV4aN5RWtQ1vHdnjHz6Ll5LWx8dDQyacBYqU6xXswbXDY/jQm+7Xv
-         CdhA==
+        d=linaro.org; s=google; t=1698047343; x=1698652143; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
+         :from:content-language:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=EbenLzpl5Ov1tFOe5S/hmXCeHst/G68xqTO1qvU7hds=;
+        b=woGrBhLrE3HWf3oPyOs1ss0WaeXQsj4joecOglsQK3Sll+99TH+ntQ1yw7EWFGbdfK
+         HGI5gYpjGgkNF+vICaVCcAwQ4aGL9XvpJ7l9PX7iiIEkBiVGp6QDP951UZzlT+8QtWEl
+         5TFxCiSIo07frY4Y/pvhMPrjJH3Mk/DE9VvTZhi7S7z1JzDOYQ/syCqDdw5A81VSxqfB
+         hUgean0JseqAWrhDbM0Brs4Fm0J01uP3/tJEKZWFUVOXi3m4l2kprwg9ui5Q6yzvd8Xh
+         WrqSPCdIBc+t6yhYhIzPQHa3cHfgPhilXXys1R1VsKQlICNhXJJF2c4pMs2MKuPAlb5Y
+         yijA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698047233; x=1698652033;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uInDQi5hkTSDKcRYo0hzYhBHCzPIaLZJWqXIlWN4pBw=;
-        b=u0/CPA88Ef7nJXavR8DLoYDPWckk68UU0pYPwhbu8vPmd5ZNA67oxNdNs8KmrE/FE/
-         clk+aYcvZ8+8yxBcfD117DbURHZp1Ky8p0XzpYWQyW7kFJfTSmPLIWJuyuIGHF6ZFTuS
-         dVTIeafePONd/Ms9NrSFN27NvLbPE6OOS2jYvRtL7nXd8KMyhp8QDTP06vJzbye85ppm
-         A2y6ZpQ9J/8aQ2jIX/9VFcHCVUn+QdFZ79AxuNc5ds/1RByytthKgEDjJ6ccOJWbKimv
-         FimjZH+ROz4eFGkHTB9GLNGvDGCpF15Aq+ZufZOOatOAQj5A2+HsquhEzLLpH1Zh+f5Z
-         oY1g==
-X-Gm-Message-State: AOJu0YwhWX7XazzPZvDGpMmbsxK72WSXsXBiq74cf2vp7FkRRbW/XEv8
-	LmbTj0KvSUMo/VD9z2U4juBClg==
-X-Google-Smtp-Source: AGHT+IG52Ja6SfCTWSuU1Cd43Xf2Exs6nvBaYEOimfthvt2nDnMTNLji9R4VMwh9MfbU8RmsOM/a2A==
-X-Received: by 2002:a17:907:97c2:b0:9bf:4e0b:fb08 with SMTP id js2-20020a17090797c200b009bf4e0bfb08mr6715509ejc.16.1698047233033;
-        Mon, 23 Oct 2023 00:47:13 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1698047343; x=1698652143;
+        h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
+         :from:content-language:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EbenLzpl5Ov1tFOe5S/hmXCeHst/G68xqTO1qvU7hds=;
+        b=s9oW2/Kd27ZzEmMBdU6FRCBf1ia7ZCbjsmv0rDTNWnVqX1Ac+T63cVZA6YNc+R+35y
+         KuBnsJpuUquN2W1GMQGgA+pDnRNAcbcgB5YkxsNRzrwxFAJk12SAZu/dK/NJ/JH/WBtl
+         CnhVpqJkLvXEdeUp9pf3Z6uaGFKK8Z5XuyqIbpqfOe9+tY1qfq90KClABlUTYoWmeV0O
+         QOWvu7UjEUDzE+miqy+ZxZh1yxw/hsuAMzCjI+cvAjUziQjdsyiTtN4ms+pE7Zd4PQ6F
+         uLGM+kBoFX+8TewUS7xlNkh5lLSmgXzugEwnzP+2TkC0o+4BLkIWmEeXv6XrGyU0qZM8
+         WyzQ==
+X-Gm-Message-State: AOJu0Yy9s2H+XBKyinoyv4O0ugDXgZ51kZ3ii0tyx9Ij0+n89zCoCoMX
+	iKtsB8dUHGWiKQBjXiEYWTapUg==
+X-Google-Smtp-Source: AGHT+IHgp6VUiM3lPCx+45GCBdXVY5V9pfZj8qFI5nanVQpKoZUrUGIpCKFw696vggtfRpnpm9EGew==
+X-Received: by 2002:a17:907:a4b:b0:9c6:4dec:b1f0 with SMTP id be11-20020a1709070a4b00b009c64decb1f0mr6060793ejc.74.1698047343597;
+        Mon, 23 Oct 2023 00:49:03 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id g27-20020a170906395b00b00988dbbd1f7esm6108680eje.213.2023.10.23.00.47.11
+        by smtp.gmail.com with ESMTPSA id c6-20020a170906528600b00997e99a662bsm6208105ejm.20.2023.10.23.00.49.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Oct 2023 00:47:12 -0700 (PDT)
-Message-ID: <d93ff8f4-984a-4a20-9b81-5c088baf12e8@linaro.org>
-Date: Mon, 23 Oct 2023 09:47:10 +0200
+        Mon, 23 Oct 2023 00:49:03 -0700 (PDT)
+Message-ID: <28cec468-e575-4d76-ac3b-52528ec5aebb@linaro.org>
+Date: Mon, 23 Oct 2023 09:49:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/9] dt-bindings: gce: mt8195: Add
  CMDQ_SYNC_TOKEN_SECURE_THR_EOF event id
 Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
  Jassi Brar <jassisinghbrar@gmail.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -86,7 +88,7 @@ Cc: Conor Dooley <conor+dt@kernel.org>,
  Shawn Sung <shawn.sung@mediatek.com>
 References: <20231023043751.17114-1-jason-jh.lin@mediatek.com>
  <20231023043751.17114-2-jason-jh.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ <d93ff8f4-984a-4a20-9b81-5c088baf12e8@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -131,12 +133,13 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231023043751.17114-2-jason-jh.lin@mediatek.com>
+In-Reply-To: <d93ff8f4-984a-4a20-9b81-5c088baf12e8@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_004716_086069_88C9BE81 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20231023_004906_046016_B0F9571A 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,42 +154,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/10/2023 06:37, Jason-JH.Lin wrote:
-> CMDQ_SYNC_TOKEN_SECURE_THR_EOF is used as secure irq to notify CMDQ
-> driver in the normal world that GCE secure thread has completed a task
-> in thee secure world.
-
-s/thee/the/
-
+On 23/10/2023 09:47, Krzysztof Kozlowski wrote:
+> On 23/10/2023 06:37, Jason-JH.Lin wrote:
+>> CMDQ_SYNC_TOKEN_SECURE_THR_EOF is used as secure irq to notify CMDQ
+>> driver in the normal world that GCE secure thread has completed a task
+>> in thee secure world.
 > 
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
-
-This is a new patch, so you must mention it in the changelog. There is
-nothing in the changelog saying about this new patch.
-
-
->  include/dt-bindings/gce/mt8195-gce.h | 6 ++++++
->  1 file changed, 6 insertions(+)
+> s/thee/the/
 > 
-> diff --git a/include/dt-bindings/gce/mt8195-gce.h b/include/dt-bindings/gce/mt8195-gce.h
-> index dcfb302b8a5b..9f99da3363b9 100644
-> --- a/include/dt-bindings/gce/mt8195-gce.h
-> +++ b/include/dt-bindings/gce/mt8195-gce.h
-> @@ -809,4 +809,10 @@
->  /* end of hw event */
->  #define CMDQ_MAX_HW_EVENT				1019
->  
-> +/*
-> + * Notify normal CMDQ there are some secure task done,
-> + * this token sync with secure world.
-> + */
-> +#define CMDQ_SYNC_TOKEN_SECURE_THR_EOF			980
+>>
+>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>> ---
+> 
+> This is a new patch, so you must mention it in the changelog. There is
+> nothing in the changelog saying about this new patch.
 
-Why is this below 1019? Your driver calls it also even, so is this an
-event or not?
-
-Your driver does not use this value, so does it mean FW uses it?
+Hm, now I found previous thread. I asked to squash the patch with the
+binding.
 
 Best regards,
 Krzysztof
