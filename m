@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF605C001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 06:59:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55299C001E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 07:00:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5AggOw4gyhQlmzq+AcacEhd6fE3kwcmhNbn+RHnF4ZA=; b=wXAYEYAXlZ/OF/EYnYQeCTaavG
-	l6KH3pTxrh4+TsJ63DQ9sti5d+HMRgcVPvl7es0jIhw5Zsbi/d/jil8g/ijv+I00ljUO17KUMyVHC
-	8ZpoGhDZm0OUPAUcUwfFJTcsrOHRjz/lKxhh8mftWJ4j+rD3Zk0turwlcDPAVCHKckl1XbItbgMH5
-	hsLbEpfmM44BGeMZpppH5EmohbYiMdSIYPW1NgkdT+EqCO75tas2BTe3pLw0kj7K6QhA9Lf88aHot
-	91/vXyT6iNMla/9ba+e1eoOtY/9aC8acZ8pirM9lekryqBHV/SPGwCzM2PcPvkULbuTPd0Iwi/TkN
-	xPcwYLLw==;
+	bh=fJ+L8z2++KdugvZa/TRNkYv4iFz/Yo8vEvV3D34lpNE=; b=vjaACR4afjX3zpyJb+EaUpVoq5
+	zfyJ4y2Dl47y7i1arKRmCNg7+fPXw44L/A2e6Zcjgsm5Z1O/UtGXUwBPwP/Vb6kqK7ujcqptbiASU
+	sDNHgneVw3QoE5F8lfz/i9FE/6eqbEsRqSiY7shc9I7J9mFHIWjTJT7Va4zMg9QkH8p5qYxRwn2Gx
+	EDEaNrpe/lTZeAHE01ZA6uWv2V7VziA0tb0SLESHNRB9cHbZlhEpayuHs96A8VcLo0/3kHU7XOApn
+	K/imDz2CQjKx8L0vrZOpab3p91C0f9Xc/FMfyR1malBXLdGsPqaALTDdqxi2W/mg/Jycn+tcTF6Ul
+	KUs9rkAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quoty-006awR-36;
-	Mon, 23 Oct 2023 06:59:02 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1quovM-006b7z-0M;
+	Mon, 23 Oct 2023 07:00:28 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quotv-006avC-2B
+	id 1quovJ-006b6l-2p
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 06:59:01 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-507be298d2aso4245915e87.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 22 Oct 2023 23:58:55 -0700 (PDT)
+	Mon, 23 Oct 2023 07:00:27 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-507c8316abcso3864373e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 00:00:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1698044334; x=1698649134; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1698044420; x=1698649220; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5AggOw4gyhQlmzq+AcacEhd6fE3kwcmhNbn+RHnF4ZA=;
-        b=UyiFNbV19l2Sa/r9AgkTXm99YtM/T4qch/HFBWI8JNGzx1EQXy6j3yCPzqF5kO5vpT
-         GEN8HSjFD7dH9QobiDGzHcyZcawY6C5uZZWbn8OHhHgsuzOss9/UFJ8UHFb4fiPyN3cl
-         sWXv3s9tsMmVYinDVjanlM3FcoTAlH9vl4bzI=
+        bh=fJ+L8z2++KdugvZa/TRNkYv4iFz/Yo8vEvV3D34lpNE=;
+        b=iqMwR1NitH82m4HH/RhPm6DzJGn0JGzUmC2hWYzqPuo5e+6j1tC3XEKZpI+l/8eXQh
+         mFq1SQ9C/i65ZLWHlI8xMLTx/1UhV3h4FLL8CVFfg7jlNsGUWH9QK8FsySsH21RbNCFr
+         2D/3MT6BOmtWpxzwuKl/pS6AV5xJLoyR7vAho=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698044334; x=1698649134;
+        d=1e100.net; s=20230601; t=1698044420; x=1698649220;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=5AggOw4gyhQlmzq+AcacEhd6fE3kwcmhNbn+RHnF4ZA=;
-        b=E9VyfHV8cYKg2FzIjdbEsvuQUhEA48ehZ6a6DC3+jpbMGP6r3IpXhiHFup2HvLsUxm
-         KUV1ylzVS27MVTe8lww3TCEhZ2hcTmsYp2LUACKzErTQRRhUczyRmu0nQdE9FK3FgkIA
-         dOh1Wia65/0RoQUFyy+pcjojKHCrGRCKgGR7nl3iYoIOsjqrtr3Z+ySUwLhnMb6lr1V5
-         T1+ekbCbaJRmy1dGigoOMfIcj09FO01V0TDweHxQWgemCDU3d2melhj8uPMY5thyjjwF
-         U8J/eevQOSm/Elqklxb9mkrAlCAbwIIXf1KUu9jYmKIvZbupN6tz6vVcOJjciN+GC4vS
-         Oflg==
-X-Gm-Message-State: AOJu0Yz8cTJHapX2dTxPQTD00yFZsVKQdWP+V5yqTma84jKFHbkAeyJA
-	kX8SuMX4axyZu0ebL27rWU/+PYYPTBKuXRUtU885FA==
-X-Google-Smtp-Source: AGHT+IEDEEegpRAkeIAJjsJe5uw5u6Zg24Rc0CspNAaKu7rz0BnbylYUTnsliwahaGAHqAtyyNPM2eftcw6EcoW+izM=
-X-Received: by 2002:a19:645c:0:b0:505:6c99:bd7c with SMTP id
- b28-20020a19645c000000b005056c99bd7cmr4901040lfj.57.1698044334323; Sun, 22
- Oct 2023 23:58:54 -0700 (PDT)
+        bh=fJ+L8z2++KdugvZa/TRNkYv4iFz/Yo8vEvV3D34lpNE=;
+        b=Kx26tN11qsjUUG+3SOnFRICfFw4ZU/FG0vJ//6oJXNAIHRXS0bqhAQLtl3Ab5E4PT3
+         G9qAqsgnx+VS3+KSRF2OeW3xdr9oMeYnt9vWSFfYSEm4i7EGKbfE3FMTxec3R08Zz7c7
+         v7HEcxWNnsqXGgGhn7ZVxylD8Pu38tbNrEaqTb1npIKdQXWxqNtRaV/NP1ZfKNNN5M/8
+         Q7PCUbuYmwxNWYpUTi6j/+GV7kgNhYhsgE6G6vep2c53ednabY3fLXoncSCFWYDHFbj/
+         rFEndJc9VFXJNIpfFmW6dclfoAeIURumus7MAPOH4GJx0dGao/L4T122vIIV1jq3vq2D
+         5XeA==
+X-Gm-Message-State: AOJu0YwP5HXdCPby6iiLdNZTw0rejnr55u+uQIDkrcSxHXQUlUwsH+e4
+	e/54syoHAjmmgMWGoW6EIzlgDynuoVOe+GA6ggu/uQ==
+X-Google-Smtp-Source: AGHT+IHwxDq3JgGLwq8PRk/AjyW+M05CrhYWE435S1X1mmyZlKTfIy/kiPzAMT03iJC6FZQbnSByYGmjwr2oBHJYVA8=
+X-Received: by 2002:a05:6512:4002:b0:507:b911:f869 with SMTP id
+ br2-20020a056512400200b00507b911f869mr6888686lfb.43.1698044420324; Mon, 23
+ Oct 2023 00:00:20 -0700 (PDT)
 MIME-Version: 1.0
-References: <20231018103546.48174-1-angelogioacchino.delregno@collabora.com>
- <20231018103546.48174-2-angelogioacchino.delregno@collabora.com> <CAGb2v674=OTe9oDktH_BdrV7bdWQfk_2KkC-xdSckBu4ZoLrcQ@mail.gmail.com>
-In-Reply-To: <CAGb2v674=OTe9oDktH_BdrV7bdWQfk_2KkC-xdSckBu4ZoLrcQ@mail.gmail.com>
+References: <20231018103546.48174-1-angelogioacchino.delregno@collabora.com> <20231018103546.48174-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231018103546.48174-3-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 23 Oct 2023 14:58:43 +0800
-Message-ID: <CAGXv+5FTFght35TFzHO4H_hWumKoBqemeiun2wssEVcxrLGO6Q@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] clk: mediatek: clk-mux: Support custom parent
- indices for muxes
+Date: Mon, 23 Oct 2023 15:00:09 +0800
+Message-ID: <CAGXv+5EoVnfCLfJ+6t8FiwuJq-eyZQZNh9H+7TD+yGkEWFO3pw@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] clk: mediatek: mt8195-topckgen: Refactor parents
+ for top_dp/edp muxes
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com, 
 	msp@baylibre.com, amergnat@baylibre.com, yangyingliang@huawei.com, 
@@ -74,8 +73,8 @@ Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231022_235859_750008_DE6754F4 
-X-CRM114-Status: GOOD (  32.49  )
+X-CRM114-CacheID: sfid-20231023_000025_950189_3FA61399 
+X-CRM114-Status: GOOD (  22.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,244 +89,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 23, 2023 at 2:57=E2=80=AFPM Chen-Yu Tsai <wens@kernel.org> wrot=
-e:
+On Wed, Oct 18, 2023 at 6:35=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> On Wed, Oct 18, 2023 at 6:36=E2=80=AFPM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> >
-> > Add support for customized parent indices for MediaTek muxes: this is
-> > necessary for the case in which we want to exclude some clocks from
-> > a mux's parent clocks list, where the exclusions are not from the
-> > very bottom of the list but either in the middle or the beginning.
-> >
-> > Example:
-> > - MUX1 (all parents)
-> >   - parent1; idx=3D0
-> >   - parent2; idx=3D1
-> >   - parent3; idx=3D2
-> >
-> > - MUX1 (wanted parents)
-> >   - parent1; idx=3D0
-> >   - parent3; idx=3D2
-> >
-> > To achieve that add a `parent_index` array pointer to struct mtk_mux,
-> > then in .set_parent(), .get_parent() callbacks check if this array
-> > was populated and eventually get the index from that.
-> >
-> > Also, to avoid updating all clock drivers for all SoCs, rename the
-> > "main" macro to __GATE_CLR_SET_UPD_FLAGS (so, `__` was added) and
-> > add the new member to it; furthermore, GATE_CLK_SET_UPD_FLAGS has
-> > been reintroduced as being fully compatible with the older version.
-> >
-> > The new parent_index can be specified with the new `_INDEXED`
-> > variants of the MUX_GATE_CLR_SET_UPD_xxxx macros.
-> >
-> > Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
-llabora.com>
-> > ---
-> >  drivers/clk/mediatek/clk-mux.c | 14 +++++++++++
-> >  drivers/clk/mediatek/clk-mux.h | 43 ++++++++++++++++++++++++++++++----
-> >  2 files changed, 53 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-=
-mux.c
-> > index c93bc7f926e5..60990296450b 100644
-> > --- a/drivers/clk/mediatek/clk-mux.c
-> > +++ b/drivers/clk/mediatek/clk-mux.c
-> > @@ -89,6 +89,17 @@ static u8 mtk_clk_mux_get_parent(struct clk_hw *hw)
-> >         regmap_read(mux->regmap, mux->data->mux_ofs, &val);
-> >         val =3D (val >> mux->data->mux_shift) & mask;
-> >
-> > +       if (mux->data->parent_index) {
-> > +               int i;
-> > +
-> > +               for (i =3D 0; i < mux->data->num_parents; i++)
-> > +                       if (mux->data->parent_index[i] =3D=3D val)
-> > +                               return i;
-> > +
-> > +               /* Not found: return an impossible index to generate er=
-ror */
-> > +               return mux->data->num_parents + 1;
-> > +       }
-> > +
-> >         return val;
-> >  }
-> >
-> > @@ -104,6 +115,9 @@ static int mtk_clk_mux_set_parent_setclr_lock(struc=
-t clk_hw *hw, u8 index)
-> >         else
-> >                 __acquire(mux->lock);
-> >
-> > +       if (mux->data->parent_index)
-> > +               index =3D mux->data->parent_index[index];
-> > +
-> >         regmap_read(mux->regmap, mux->data->mux_ofs, &orig);
-> >         val =3D (orig & ~(mask << mux->data->mux_shift))
-> >                         | (index << mux->data->mux_shift);
-> > diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-=
-mux.h
-> > index 7ecb963b0ec6..943ad1d7ce4b 100644
-> > --- a/drivers/clk/mediatek/clk-mux.h
-> > +++ b/drivers/clk/mediatek/clk-mux.h
-> > @@ -21,6 +21,7 @@ struct mtk_mux {
-> >         int id;
-> >         const char *name;
-> >         const char * const *parent_names;
-> > +       const u8 *parent_index;
-> >         unsigned int flags;
-> >
-> >         u32 mux_ofs;
-> > @@ -37,9 +38,10 @@ struct mtk_mux {
-> >         signed char num_parents;
-> >  };
-> >
-> > -#define GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,        =
- \
-> > -                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,    =
- \
-> > -                       _gate, _upd_ofs, _upd, _flags, _ops) {         =
- \
-> > +#define __GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _paridx,       =
-         \
-> > +                        _num_parents, _mux_ofs, _mux_set_ofs,         =
- \
-> > +                        _mux_clr_ofs, _shift, _width, _gate, _upd_ofs,=
- \
-> > +                        _upd, _flags, _ops) {                         =
- \
+> The top_dp and top_edp muxes can be both parented to either TVDPLL1
+> or TVDPLL2, two identically specced PLLs for the specific purpose of
+> giving out pixel clock: this becomes a problem when the MediaTek
+> DisplayPort Interface (DPI) driver tries to set the pixel clock rate.
 >
-> Nit: I would take this opportunity to fix up the alignment of the lines
-> here, as well as for the new macros. Also you needn't wrap the lines at
-> 80 characters. Instead I would wrap where it makes more sense, like group
-> arguments for the same type (parents / mux / gate / update ...) on the
-> same line if possible.
+> In the usecase of two simultaneous outputs (using two controllers),
+> it was seen that one of the displays would sometimes display garbled
+> output (if any at all) and this was because:
+>  - top_edp was set to TVDPLL1, outputting X GHz
+>  - top_dp was set to TVDPLL2, outputting Y GHz
+>    - mtk_dpi calls clk_set_rate(top_edp, Z GHz)
+>      - top_dp is switched to TVDPLL1
+>      - TVDPLL1 changes its rate, top_edp outputs the wrong rate.
+>      - eDP display is garbled
 >
-> Otherwise,
+> To solve this issue, remove all TVDPLL1 parents from `top_dp` and
+> all TVDPLL2 parents from `top_edp`, plus, necessarily switch both
+> clocks to use the new MUX_GATE_CLR_SET_UPD_INDEXED() macro to be
+> able to use the right bit index for the new parents list.
 >
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/clk/mediatek/clk-mt8195-topckgen.c | 22 ++++++++++++++--------
+>  1 file changed, 14 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/med=
+iatek/clk-mt8195-topckgen.c
+> index 5c426a1c94c7..4529255376e9 100644
+> --- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> @@ -417,15 +417,21 @@ static const char * const pwrmcu_parents[] =3D {
 
-And of course I meant to send this from my chromium.org address...
+
+Nit: I'd add a comment saying this list isn't the full list for reasons.
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-> >                 .id =3D _id,                                           =
-   \
-> >                 .name =3D _name,                                       =
-   \
-> >                 .mux_ofs =3D _mux_ofs,                                 =
-   \
-> > @@ -51,11 +53,28 @@ struct mtk_mux {
-> >                 .gate_shift =3D _gate,                                 =
-   \
-> >                 .upd_shift =3D _upd,                                   =
-   \
-> >                 .parent_names =3D _parents,                            =
-   \
-> > -               .num_parents =3D ARRAY_SIZE(_parents),                 =
-   \
-> > +               .parent_index =3D _paridx,                             =
-   \
-> > +               .num_parents =3D _num_parents,                         =
-   \
-> >                 .flags =3D _flags,                                     =
-   \
-> >                 .ops =3D &_ops,                                        =
-   \
-> >         }
-> >
-> > +#define GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,        =
- \
-> > +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,    =
- \
-> > +                       _gate, _upd_ofs, _upd, _flags, _ops)           =
- \
-> > +               __GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents,         =
- \
-> > +                       NULL, ARRAY_SIZE(_parents), _mux_ofs,          =
- \
-> > +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,    =
- \
-> > +                       _gate, _upd_ofs, _upd, _flags, _ops)           =
- \
-> > +
-> > +#define GATE_CLR_SET_UPD_FLAGS_INDEXED(_id, _name, _parents, _paridx, =
- \
-> > +                        _mux_ofs, _mux_set_ofs, _mux_clr_ofs, _shift, =
- \
-> > +                        _width, _gate, _upd_ofs, _upd, _flags, _ops)  =
- \
-> > +               __GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents,         =
- \
-> > +                       _paridx, ARRAY_SIZE(_paridx), _mux_ofs,        =
- \
-> > +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,    =
- \
-> > +                       _gate, _upd_ofs, _upd, _flags, _ops)           =
- \
-> > +
-> >  extern const struct clk_ops mtk_mux_clr_set_upd_ops;
-> >  extern const struct clk_ops mtk_mux_gate_clr_set_upd_ops;
-> >
-> > @@ -67,6 +86,14 @@ extern const struct clk_ops mtk_mux_gate_clr_set_upd=
-_ops;
-> >                         _gate, _upd_ofs, _upd, _flags,                 =
- \
-> >                         mtk_mux_gate_clr_set_upd_ops)
-> >
-> > +#define MUX_GATE_CLR_SET_UPD_FLAGS_INDEXED(_id, _name, _parents,      =
- \
-> > +                       _paridx, _mux_ofs, _mux_set_ofs, _mux_clr_ofs, =
- \
-> > +                       _shift, _width, _gate, _upd_ofs, _upd, _flags) =
- \
-> > +               GATE_CLR_SET_UPD_FLAGS_INDEXED(_id, _name, _parents,   =
- \
-> > +                       _paridx, _mux_ofs, _mux_set_ofs, _mux_clr_ofs, =
- \
-> > +                       _shift, _width, _gate, _upd_ofs, _upd, _flags, =
- \
-> > +                       mtk_mux_gate_clr_set_upd_ops)
-> > +
-> >  #define MUX_GATE_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,          =
- \
-> >                         _mux_set_ofs, _mux_clr_ofs, _shift, _width,    =
- \
-> >                         _gate, _upd_ofs, _upd)                         =
- \
-> > @@ -75,6 +102,14 @@ extern const struct clk_ops mtk_mux_gate_clr_set_up=
-d_ops;
-> >                         _width, _gate, _upd_ofs, _upd,                 =
- \
-> >                         CLK_SET_RATE_PARENT)
-> >
-> > +#define MUX_GATE_CLR_SET_UPD_INDEXED(_id, _name, _parents, _paridx,   =
- \
-> > +                       _mux_ofs, _mux_set_ofs, _mux_clr_ofs, _shift,  =
- \
-> > +                       _width, _gate, _upd_ofs, _upd)                 =
- \
-> > +               MUX_GATE_CLR_SET_UPD_FLAGS_INDEXED(_id, _name,         =
- \
-> > +                       _parents, _paridx, _mux_ofs, _mux_set_ofs,     =
- \
-> > +                       _mux_clr_ofs, _shift, _width, _gate, _upd_ofs, =
- \
-> > +                       _upd, CLK_SET_RATE_PARENT)
-> > +
-> >  #define MUX_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,               =
-         \
-> >                         _mux_set_ofs, _mux_clr_ofs, _shift, _width,    =
- \
-> >                         _upd_ofs, _upd)                                =
- \
-> > --
-> > 2.42.0
-> >
-> >
-> > _______________________________________________
-> > linux-arm-kernel mailing list
-> > linux-arm-kernel@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>  static const char * const dp_parents[] =3D {
+>         "clk26m",
+> -       "tvdpll1_d2",
+>         "tvdpll2_d2",
+> -       "tvdpll1_d4",
+>         "tvdpll2_d4",
+> -       "tvdpll1_d8",
+>         "tvdpll2_d8",
+> -       "tvdpll1_d16",
+>         "tvdpll2_d16"
+>  };
+> +static const u8 dp_parents_idx[] =3D { 0, 2, 4, 6, 8 };
+> +
+> +static const char * const edp_parents[] =3D {
+> +       "clk26m",
+> +       "tvdpll1_d2",
+> +       "tvdpll1_d4",
+> +       "tvdpll1_d8",
+> +       "tvdpll1_d16"
+> +};
+> +static const u8 edp_parents_idx[] =3D { 0, 1, 3, 5, 7 };
+>
+>  static const char * const disp_pwm_parents[] =3D {
+>         "clk26m",
+> @@ -957,11 +963,11 @@ static const struct mtk_mux top_mtk_muxes[] =3D {
+>         MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_PWRMCU, "top_pwrmcu",
+>                 pwrmcu_parents, 0x08C, 0x090, 0x094, 16, 3, 23, 0x08, 6,
+>                 CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+> -       MUX_GATE_CLR_SET_UPD(CLK_TOP_DP, "top_dp",
+> -               dp_parents, 0x08C, 0x090, 0x094, 24, 4, 31, 0x08, 7),
+> +       MUX_GATE_CLR_SET_UPD_INDEXED(CLK_TOP_DP, "top_dp",
+> +               dp_parents, dp_parents_idx, 0x08C, 0x090, 0x094, 24, 4, 3=
+1, 0x08, 7),
+>         /* CLK_CFG_10 */
+> -       MUX_GATE_CLR_SET_UPD(CLK_TOP_EDP, "top_edp",
+> -               dp_parents, 0x098, 0x09C, 0x0A0, 0, 4, 7, 0x08, 8),
+> +       MUX_GATE_CLR_SET_UPD_INDEXED(CLK_TOP_EDP, "top_edp",
+> +               edp_parents, edp_parents_idx, 0x098, 0x09C, 0x0A0, 0, 4, =
+7, 0x08, 8),
+>         MUX_GATE_CLR_SET_UPD(CLK_TOP_DPI, "top_dpi",
+>                 dp_parents, 0x098, 0x09C, 0x0A0, 8, 4, 15, 0x08, 9),
+>         MUX_GATE_CLR_SET_UPD(CLK_TOP_DISP_PWM0, "top_disp_pwm0",
+> --
+> 2.42.0
+>
 
