@@ -4,95 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94618C00A8F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 09:46:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7C77C00A8F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 09:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YxL8IXJxK6nZZcgY+jbWAe4cJBK0AaStast6oXjM8uc=; b=h9PmWVzwrxW6GUCViNBnvK4WZc
-	5q2IloXxIRXuCX+PAOVgigqeyyyKyzzfieuGYW7pa8BhT6k4iGXK8PdrzGGwv8mjYXi5B9dReq1Xz
-	W5quSPhLJfS6fhT0cWGuDM3bFtRMFBu0C1P+yQSydKenxvfb5JA2zJTSOyqlQPaczWDzjns3fLRck
-	SawZ7Bpbga98bokTm+x5MX/OHzL4LLjqFSn1CIkPdOZOTIrlatDKUGNWfA3F5VjDNstU/L9aKjekS
-	tOEEkSOus3Q8IcdgVU20zUyx93ChIyzOpSMTemt0IMogHjj905BvIzadjikDoh6L4i/aexzfYJ4th
-	Ywy+xeZg==;
+	bh=x6MWUd7aqJU+RyKZEkGxK6HLsZy1LBZI2NHtQ/z43aI=; b=EP6UEFqTDscjvcKZOMpXVclLPD
+	4y94myBwf3sY8Pj7o9dORn1cFIfFjj0OnxLnKwOjG83F5owyHGU+oQCTqt9GPCcrwLVT8g2qtk8es
+	D+5ebmTSzLVXcoSrVyFhA1C21syFNJofDu2/OG4Vc9knTzMAuI2BfjW2bHeOEfaWEjbahUy9cqInm
+	ix0zGIWUB/geKceXWjIMPEGW6UbvEYR96vs5ZawnjJmwHPPIUOkeYofKIaNq5YwHNo2fu/94xr3H5
+	aJ+fBiRvEQORXBoIL9M/Q6dXy1Qc1Uw6pHcABcdNCXe5VL4CbQLOqcm1mXLjNA1ZfMI5IpoWiL/gz
+	nrjJx1sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvDza-009M3C-1V;
-	Tue, 24 Oct 2023 09:46:30 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1qvE0c-009M8l-2W;
+	Tue, 24 Oct 2023 09:47:34 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvDzW-009M1g-1d
+	id 1qvE0a-009M80-1k
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Oct 2023 09:46:28 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4083f613275so35048355e9.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Oct 2023 02:46:24 -0700 (PDT)
+	Tue, 24 Oct 2023 09:47:33 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4084de32db5so36678825e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Oct 2023 02:47:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1698140783; x=1698745583; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1698140851; x=1698745651; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=YxL8IXJxK6nZZcgY+jbWAe4cJBK0AaStast6oXjM8uc=;
-        b=yEMFoAhG2vl3+pA8QbxcHsYGqCb4oz66Jy6NmmEnqdcTrSmJS7u8znP6VCCzdM39Z2
-         LgvqTzrvjcnawYzFYF+K2kdqyyHSrUQfE84NdPxWMCepGjhA/REbp24r30nSTAfn5sFf
-         nV2O3NtJ5Hl3CGtdoh7+C8Ixotkx1BrYG+nK+3Ix4x2Wf/yHhYNIz2UXsoX6mZzXaogg
-         rcyO6avx6H18jzyqJdfjeaJzMl7Vz/myyIvKFTnyYs8oRSTXarrnNyzuKlMM3VkdbLus
-         VsA3s5qaEd3YLcJEYszTTWYPQyrG3g3TdBJJDbrDXWnfvyLS/iyvKc4mj2OcuGpz4TLs
-         7uEQ==
+        bh=x6MWUd7aqJU+RyKZEkGxK6HLsZy1LBZI2NHtQ/z43aI=;
+        b=r17l22zLvsFuPZ+Wd8Pe8O1UMOo8PvgBxmSp9ulqHFkYlS0C7i7ULhLkV/04hc4Fpu
+         O+Habm2qhA2mqJvgw9TWrq/tBy6En1Io1t+zOM/a4ieDKmCqnBVH1tqdkyYPOkCWZ6JM
+         nfeqeqHpFl1bZp1wcUxd6OXzHmbNnb4lUdCRhulbPa9w97CZ5ZuAk2XJHEK4TvsghgY9
+         Oz9N2achkpe4YnN7dvqFHKQ+soZgKXyzp2JsoKw+h8qjw3WRdfMQq6mT6dhnLeyCgGLl
+         BXydOcpVZ3nC84ERIRqAG/SH4/fyBxSgZjLZxPkEtc9ZYYjND7fWvxjVnQdplPyezMHf
+         LJqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698140783; x=1698745583;
+        d=1e100.net; s=20230601; t=1698140851; x=1698745651;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YxL8IXJxK6nZZcgY+jbWAe4cJBK0AaStast6oXjM8uc=;
-        b=f5A2twIvPUul0IviPXNtggUE3doUhgfWIabAjyDziwl1ZzUhdPLuHy+f4KLbQQstLG
-         JCiirnZbbFCwbYSCcNUX8EsPABuc+JRymwBdvPsfAg3rZc6iJt7pcepxwGl694pzljf8
-         Xat09UQDm8hkiUkgvxidRRDrIjSWewexxA8hMP+FzcxpF+36geoud3oDoOyctxjpUlKG
-         KE3yicrgu8rHDekY4qEio+PhYefAMuNO5BtgjKd/FDhpErKDigI2LfT/WI7IX4NPkn52
-         pi+DDzHRHaBdSaI6GYnswFvcz0Jh4eKWh3C/e6w9cUVpgTusUVm6wgrX/SXmTyNXqy5T
-         zl8A==
-X-Gm-Message-State: AOJu0YzfDbXrGyUjsOgquhLSZXwdQ3bW4Ywffe7QHx/1OnmqhNaAmrHP
-	08UhIl3oyoERZD6QYzjRK3YP7L4a+YEX3YPIHBD9OQ==
-X-Google-Smtp-Source: AGHT+IGuXGfq4qBu5yB+kGBPSeAFqqYtQZB3elN3KJ3fMidrIDYRjfHKeVHnH6iQcYfviEGedXATNw==
-X-Received: by 2002:a7b:c8c2:0:b0:409:101e:235a with SMTP id f2-20020a7bc8c2000000b00409101e235amr901405wml.28.1698140782643;
-        Tue, 24 Oct 2023 02:46:22 -0700 (PDT)
+        bh=x6MWUd7aqJU+RyKZEkGxK6HLsZy1LBZI2NHtQ/z43aI=;
+        b=iS3I+nzlNd7ePh4olG+tWtl4B+wrA8df0V3g+jRO4YHPMTNN6yYkQdM3ZRWPHbwsbJ
+         FZy5/Hdx5HkpF+Usf5sOl7YFuY3Zhi79ghqCon2bikDeXbLhNnLFDM2NFIKLYhqOVPR2
+         aKwunfhxWEp1ru7qaNKjW1PzBAtvljc47+AzfuHYo/ue5VTqTXt90ucaFmbdc0HsrV1y
+         ouaQZZIrb5VuAC3mt0oVwdHLRkuwtsnpeCgtzyt5WR0sOz/g8AGJod9fFeZG3h78G5xC
+         AFI5YArBzyousyvyntET+O8HWQTZ/qjshzr97R2fM0Vk8OxUOZ4UJz8NbGCv3B8RaJzy
+         kdyg==
+X-Gm-Message-State: AOJu0Ywic5u6qkuAhen0fAvkbx+pi9iF9+0EIk1iTryl47lo+LiVvBPB
+	kEqC90QKlMmJDEvPE9UlBpF4+Q==
+X-Google-Smtp-Source: AGHT+IEQBKgigKRTPFTRZ1HUumAXzBLooE6sUMLZ71bOwGt4iZlfl+uviaSnAYq2eru3B4WrrZD2NQ==
+X-Received: by 2002:a05:600c:1907:b0:408:6fae:1aae with SMTP id j7-20020a05600c190700b004086fae1aaemr6443536wmq.31.1698140851135;
+        Tue, 24 Oct 2023 02:47:31 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id r8-20020adff108000000b0032db1d741a6sm9602052wro.99.2023.10.24.02.46.21
+        by smtp.gmail.com with ESMTPSA id r8-20020adff108000000b0032db1d741a6sm9602052wro.99.2023.10.24.02.47.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Oct 2023 02:46:22 -0700 (PDT)
-Message-ID: <314a5b37-bdc4-41d1-a3de-c6d557628be9@baylibre.com>
-Date: Tue, 24 Oct 2023 11:46:21 +0200
+        Tue, 24 Oct 2023 02:47:30 -0700 (PDT)
+Message-ID: <037d24b9-38ea-4da5-a1d2-8ace4d9dfa5c@baylibre.com>
+Date: Tue, 24 Oct 2023 11:47:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 4/4] arm64: dts: Add MediaTek MT8188 dts and evaluation
- board and Makefile
+Subject: Re: [PATCH 03/18] dt-bindings: display: mediatek: color: add binding
+ for MT8365 SoC
 Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Eugen Hristev <eugen.hristev@collabora.com>,
- Bartosz Golaszewski <brgl@bgdev.pl>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20231023083839.24453-1-jason-ch.chen@mediatek.com>
- <20231023083839.24453-5-jason-ch.chen@mediatek.com>
- <a1846955-e6d9-4217-8c9f-1f20be166f4b@baylibre.com>
- <CAGXv+5Gdr4DuiGAZFdVdqjj8Rv2Onq78k+=Mmu0MOe=rxQkr3A@mail.gmail.com>
+ Jitao Shi <jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org
+References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
+ <20231023-display-support-v1-3-5c860ed5c33b@baylibre.com>
+ <CAGXv+5Hwe8jhgthnxwXEPezhwvhfcE=WMp_My3W8FisRagRTKQ@mail.gmail.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <CAGXv+5Gdr4DuiGAZFdVdqjj8Rv2Onq78k+=Mmu0MOe=rxQkr3A@mail.gmail.com>
+In-Reply-To: <CAGXv+5Hwe8jhgthnxwXEPezhwvhfcE=WMp_My3W8FisRagRTKQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_024626_551909_7A581044 
-X-CRM114-Status: GOOD (  21.01  )
+X-CRM114-CacheID: sfid-20231024_024732_581022_EEF22D0F 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,163 +110,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 24/10/2023 11:36, Chen-Yu Tsai wrote:
-> Hi,
+On 24/10/2023 11:40, Chen-Yu Tsai wrote:
+> On Mon, Oct 23, 2023 at 10:40 PM Alexandre Mergnat
+> <amergnat@baylibre.com> wrote:
+>>
+>> Display Color for MT8365 is compatible with another SoC.
+>> Then, add MT8365 binding along with MT8183 SoC.
 > 
-> On Mon, Oct 23, 2023 at 6:55 PM Alexandre Mergnat <amergnat@baylibre.com> wrote:
->>
->>
->>
->> On 23/10/2023 10:38, Jason-ch Chen wrote:
->>> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
->>>
->>> MT8188 is a SoC based on 64bit ARMv8 architecture. It contains 6 CA55
->>> and 2 CA78 cores. MT8188 share many HW IP with MT65xx series.
->>>
->>> We add basic chip support for MediaTek MT8188 on evaluation board.
->>>
->>> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
->>> ---
->>>    arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->>>    arch/arm64/boot/dts/mediatek/mt8188-evb.dts | 387 ++++++++
->>>    arch/arm64/boot/dts/mediatek/mt8188.dtsi    | 956 ++++++++++++++++++++
->>>    3 files changed, 1344 insertions(+)
->>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-evb.dts
->>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188.dtsi
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
->>> index e6e7592a3645..8900b939ed52 100644
->>> --- a/arch/arm64/boot/dts/mediatek/Makefile
->>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->>> @@ -44,6 +44,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
->>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-evb.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r5-sku2.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
+> This unfortunately doesn't match what the patch is doing.
 
-..snip..
+Yeah, I fixed it for v2.
 
->>
->> Order:
->>
->>
->> #address-cells = <1>;
->> #size-cells = <0>;
->>
->> pinctrl-0 = <&nor_pins_default>;
->> pinctrl-names = "default";
-> 
-> I think pinctrl-names before pinctrl-* makes more sense. We declare the
-> names and by extension how many pinctrl-N entries are needed first. The
-> vast majority of the arm64 device tree files have pinctrl-names before
-> pinctrl-N. The only platform that exclusively has pinctrl-N before
-> pinctrl-names is amlogic.
-> 
-
-AFAIK, people have it own logic explanation to justify order.
-Personally, I use the dumb and generic one: pack related properties and 
-alphabetical order.
-
-Anyway, I don't have strong opinion of that
-
-> If there's a preference for a particular order platform-wide or tree-wide
-> then it should probably be documented somewhere?
-> 
-
-I'm agree
-
->> status = "okay";
-> 
-> I think #address-cells and #size-cells belong at the end of the list,
-> even after "status", just before any child nodes. They describe
-> properties or requirements for the child nodes, not for the node they
-> sit in.
-> 
->>> +
->>> +     flash@0 {
->>> +             compatible = "jedec,spi-nor";
->>> +             reg = <0>;
->>> +             spi-max-frequency = <52000000>;
->>> +     };
->>> +};
->>> +
->>
->> ..snip..
->>
->>> +
->>> +&pmic {
->>> +     interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
->>> +};
->>> +
->>> +&scp {
->>> +     memory-region = <&scp_mem_reserved>;
->>> +     status = "okay";
->>> +};
->>> +
->>> +&spi0 {
->>> +     pinctrl-names = "default";
->>> +     pinctrl-0 = <&spi0_pins>;
->>
->> Order:
->>
->> pinctrl-0 = <&spi0_pins>;
->> pinctrl-names = "default";
->>
->> Please apply this to other nodes
-> 
-> See above.
 > 
 > ChenYu
 > 
->>> +     status = "okay";
->>> +};
->>> +
->>> +&spi1 {
->>> +     pinctrl-names = "default";
->>> +     pinctrl-0 = <&spi1_pins>;
->>> +     status = "okay";
->>> +};
->>> +
->>> +&spi2 {
->>> +     pinctrl-names = "default";
->>> +     pinctrl-0 = <&spi2_pins>;
->>> +     status = "okay";
->>> +};
->>> +
->>> +&u3phy0 {
->>> +     status = "okay";
->>> +};
->>> +
->>> +&u3phy1 {
->>> +     status = "okay";
->>> +};
->>> +
->>> +&u3phy2 {
->>> +     status = "okay";
->>> +};
->>> +
->>> +&uart0 {
->>> +     pinctrl-names = "default";
->>> +     pinctrl-0 = <&uart0_pins>;
->>> +     status = "okay";
->>> +};
->>> +
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> ---
+>>   Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml | 1 +
+>>   1 file changed, 1 insertion(+)
 >>
->> ..snip..
->>
->>> +             };
->>> +     };
->>> +};
->>
->> After that:
->> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+>> index f21e44092043..fbf15242af52 100644
+>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+>> @@ -39,6 +39,7 @@ properties:
+>>                 - mediatek,mt8188-disp-color
+>>                 - mediatek,mt8192-disp-color
+>>                 - mediatek,mt8195-disp-color
+>> +              - mediatek,mt8365-disp-color
+>>             - const: mediatek,mt8173-disp-color
+>>     reg:
+>>       maxItems: 1
 >>
 >> --
->> Regards,
->> Alexandre
+>> 2.25.1
+>>
+>>
 
 -- 
 Regards,
