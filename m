@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01531C00A8F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 13:18:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 025E9C07545
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 13:21:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1669Hl6Ks0FQv/7szMzI1OYODzfDqUz/lTvAbJbZ7pQ=; b=ayYw1ghk9laCe60em2uxgGT+8r
-	Dqb/OSKjh2km+FDabAkHVJm6Vufs+sVWLuH+9TkCC4L14GXYtdGiyDn7jF4HO9Ewpbq9yHTD66Jb8
-	7vB9kpzn1E0TRbbBID0vEb5Jsz9DjFXqs7wXo8YjxbiZGHlyz0Q/NFQKC4urANppqzSZfgaVG5eA7
-	Mj3Ean9taWw/pY8TMNFsstsV3tRlSU/4HmjkK2ssnr8g+ejm6ULa/QO15CnR89BLZMtrlX0EkqXyx
-	3YF6MLaYfWC6Cej+Up4qzoIqDLQ7MCuyMT225esnS+fyLMwKFht7nAABZLKySnwbdAxPirz96CJlt
-	50OWdfzg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3bwWmp38+I/LoyedglLaGgKkEJRhkTImvrhTZ0gSEPs=; b=RvAeZ3t5IQv0NRpgHc4UUqRmsx
+	OxLvs8cqQbEvuk2FB/qEt9m+JtqCZUxOJMYv6mT8JzbrlfO64ozWVKpM7jDKYYCr33mSUX+vFwpPA
+	Wqh+ZLMEM6x9JMzIOvc25YCnMToHoE6Q8Q4oB9tvUt3UExa15mmCrk3fN6UeetFK6vAaqii43IHdQ
+	R5g8igmNKf8IRGg89PLqpMbrf7ZaqLFYC/EZ9tPvefaqYgRyPLwKF1AW8fjJn/rGwAsT/DRUBsGV3
+	UrKDYaR1v03+uJXcPLTJ2DGLSvGOJ2/LaALuR7zPlvUNE8qXkHJHjDyR5UbtgtvoJL3Tky+DC/ERj
+	Wo8wyZVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvHIk-009ukK-3D;
-	Tue, 24 Oct 2023 13:18:31 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qvHLd-009vib-1q;
+	Tue, 24 Oct 2023 13:21:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvHIg-009uh0-1k;
-	Tue, 24 Oct 2023 13:18:28 +0000
-Received: from [192.168.2.43] (109-252-153-31.dynamic.spd-mgts.ru [109.252.153.31])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dmitry.osipenko)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E7E0A6606F65;
-	Tue, 24 Oct 2023 14:18:14 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698153496;
-	bh=ZdNDKOXjLrdi253ASqG3On1nms5VdNUTOFAf7syjdvQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J9AOWejTF4j3Axawxdi6Wese0sV0Fgpn1yfckKxnBdUMW9QbJ4aXHxWPq24gSILSI
-	 TWA1G3NavJBoB0+HoRgbISU9iHdWULRDF89dYFpMCs83a/lrtAstQrBuOoEuf/MZq9
-	 mwPlx6EbSW9dzk+I3aaPxRSKlfk6GvxrocDsuRxS/UMkgjPVfXKh2wH5EhHayCdwpu
-	 qfe7hoXfms7HHUgh0znYH0vvU+NVW24crg++n5pVMw7//VS65gFjTjfO7Uhlqmh1bh
-	 39zvb35EdAq9PZVGQts+k5ToyDyexWRc3HM0Nu926LXPdpMdQtVWWGIAdXFe1QmUJA
-	 H/zfqim9qdkug==
-Message-ID: <46f704c2-ba42-4e16-d798-ea2171e5ba16@collabora.com>
-Date: Tue, 24 Oct 2023 16:18:11 +0300
+	id 1qvHL9-009vHz-2z;
+	Tue, 24 Oct 2023 13:21:05 +0000
+X-UUID: 29d841b2727011ee86758d4a7c00f3a0-20231024
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3bwWmp38+I/LoyedglLaGgKkEJRhkTImvrhTZ0gSEPs=;
+	b=dq3DeErwjc+8f7bMDljmBvqKLDnnKkgGu1HrzwoE2mGhIN9H/6wCUS8fp9hIMFuGmoVV/OxvPh0NW90O3+W3taT+rv3kvZvhgwiOoOS4Cu7y03c0GKn7iz8amhfKYtJ7ULfJ7b6XH2EdxqyRCmjKW65qmo96ssgRaK32wjYa1R8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:3a6236d7-b4ba-46fc-ba50-d20a02e5e1c7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5f78ec9,CLOUDID:5aa49394-10ce-4e4b-85c2-c9b5229ff92b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 29d841b2727011ee86758d4a7c00f3a0-20231024
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 41173955; Tue, 24 Oct 2023 06:20:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 24 Oct 2023 21:00:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 24 Oct 2023 21:00:52 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
+ Hu" <ck.hu@mediatek.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v11 01/23] dt-bindings: display: mediatek: ethdr: Add compatible for MT8188
+Date: Tue, 24 Oct 2023 21:00:26 +0800
+Message-ID: <20231024130048.14749-2-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231024130048.14749-1-shawn.sung@mediatek.com>
+References: <20231024130048.14749-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH] media: mtk-jpeg: Fix use after free bug due to error path
- handling in mtk_jpeg_dec_device_run
-Content-Language: en-US
-To: Zheng Wang <zyytlz.wz@163.com>
-Cc: Kyrie.Wu@mediatek.com, bin.liu@mediatek.com, mchehab@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Irui.Wang@mediatek.com, security@kernel.org, hackerzheng666@gmail.com,
- 1395428693sheep@gmail.com, alex000young@gmail.com, amergnat@baylibre.com,
- wenst@chromium.org, stable@vger.kernel.org
-References: <20231020040732.2499269-1-zyytlz.wz@163.com>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <20231020040732.2499269-1-zyytlz.wz@163.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--0.514200-8.000000
+X-TMASE-MatchedRID: tiRXYRqWr+sDh1tb/sWFHED6z8N1m1ALqm/9CTn1HV3fUZT83lbkED1/
+	uZDvFhzjSBg3ErWyNT+HEeMTfR0Cex8TzIzimOwPC24oEZ6SpSmb4wHqRpnaDhUxVZ+Rusinlhs
+	Lt/52TF0AWrHvp7qOwsHzTd24q1uoA2TD8tY3kE5k1ZaUl3aMTw3PBm/Zic8sCGQAUePfIpy/dt
+	4cTkSYy0ma3zYT97IFAYfQIAUhBayZvmCbKVb49sZL6x5U/HridGByp+zdaDg=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--0.514200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: EA8FF3962E4E370D60D700DE634DC6D8E34558CCC8C6AA2E2AC9D1F09361D8262000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_061826_874211_3C641336 
-X-CRM114-Status: GOOD (  26.99  )
+X-CRM114-CacheID: sfid-20231024_062059_998650_42775B50 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,118 +93,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Johnson Wang <johnson.wang@mediatek.corp-partner.google.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>, Sean Paul <sean@poorly.run>, devicetree@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/20/23 07:07, Zheng Wang wrote:
-> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
-> mtk_jpeg_job_timeout_work.
-> 
-> In mtk_jpeg_dec_device_run, if error happens in
-> mtk_jpeg_set_dec_dst, it will finally start the worker while
-> mark the job as finished by invoking v4l2_m2m_job_finish.
-> 
-> There are two methods to trigger the bug. If we remove the
-> module, it which will call mtk_jpeg_remove to make cleanup.
-> The possible sequence is as follows, which will cause a
-> use-after-free bug.
-> 
-> CPU0                  CPU1
-> mtk_jpeg_dec_...    |
->   start worker	    |
->                     |mtk_jpeg_job_timeout_work
-> mtk_jpeg_remove     |
->   v4l2_m2m_release  |
->     kfree(m2m_dev); |
->                     |
->                     | v4l2_m2m_get_curr_priv
->                     |   m2m_dev->curr_ctx //use
-> 
-> If we close the file descriptor, which will call mtk_jpeg_release,
-> it will have a similar sequence.
-> 
-> Fix this bug by start timeout worker only if started jpegdec worker
-> successfully so the v4l2_m2m_job_finish will only be called on
-> either mtk_jpeg_job_timeout_work or mtk_jpeg_dec_device_run.
-> 
-> This patch also reverts commit c677d7ae8314 
-> ("media: mtk-jpeg: Fix use after free bug due to uncanceled work")
-> for this patch also fixed the use-after-free bug mentioned before.
-> Before mtk_jpeg_remove is invoked, mtk_jpeg_release must be invoked
-> to close opened files. And it will call v4l2_m2m_cancel_job to wait
-> for the timeout worker finished so the canceling in mtk_jpeg_remove
-> is unnecessary.
-> 
-> Fixes: b2f0d2724ba4 ("[media] vcodec: mediatek: Add Mediatek JPEG Decoder Driver")
-> Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
-> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> Cc: stable@vger.kernel.org
-> ---
->  .../media/platform/mediatek/jpeg/mtk_jpeg_core.c    | 13 ++++++-------
->  1 file changed, 6 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index 7194f88edc0f..c3456c700c07 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -1021,13 +1021,13 @@ static void mtk_jpeg_dec_device_run(void *priv)
->  	if (ret < 0)
->  		goto dec_end;
->  
-> -	schedule_delayed_work(&jpeg->job_timeout_work,
-> -			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-> -
->  	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
->  	if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, &dst_buf->vb2_buf, &fb))
->  		goto dec_end;
->  
-> +	schedule_delayed_work(&jpeg->job_timeout_work,
-> +			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-> +
->  	spin_lock_irqsave(&jpeg->hw_lock, flags);
->  	mtk_jpeg_dec_reset(jpeg->reg_base);
->  	mtk_jpeg_dec_set_config(jpeg->reg_base,
-> @@ -1403,7 +1403,6 @@ static void mtk_jpeg_remove(struct platform_device *pdev)
->  {
->  	struct mtk_jpeg_dev *jpeg = platform_get_drvdata(pdev);
->  
-> -	cancel_delayed_work_sync(&jpeg->job_timeout_work);
->  	pm_runtime_disable(&pdev->dev);
->  	video_unregister_device(jpeg->vdev);
->  	v4l2_m2m_release(jpeg->m2m_dev);
-> @@ -1750,9 +1749,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
->  	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
->  	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
->  
-> -	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
-> -			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-> -
->  	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
->  	if (mtk_jpeg_set_dec_dst(ctx,
->  				 &jpeg_src_buf->dec_param,
-> @@ -1762,6 +1758,9 @@ static void mtk_jpegdec_worker(struct work_struct *work)
->  		goto setdst_end;
->  	}
->  
-> +	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
-> +			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-> +
->  	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
->  	ctx->total_frame_num++;
->  	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
+Add compatible name for MediaTek MT8188 ETHDR.
 
-What about to split this patch into 3 patches:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ .../bindings/display/mediatek/mediatek,ethdr.yaml           | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-1. will remove cancel_delayed_work_sync()
-2. will update mtk_jpeg_dec_device_run()
-3. will update mtk_jpegdec_worker()
-
-The reason for splitting is because the multi-core mtk_jpegdec_worker()
-doesn't present in older stable kernels, and thus, the patch isn't
-backportable as-is.
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+index 801fa66ae615..677882348ede 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+@@ -23,7 +23,11 @@ description:
+ 
+ properties:
+   compatible:
+-    const: mediatek,mt8195-disp-ethdr
++    oneOf:
++      - const: mediatek,mt8195-disp-ethdr
++      - items:
++          - const: mediatek,mt8188-disp-ethdr
++          - const: mediatek,mt8195-disp-ethdr
+ 
+   reg:
+     maxItems: 7
 -- 
-Best regards,
-Dmitry
+2.18.0
 
 
