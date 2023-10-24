@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA70C25B46
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Oct 2023 21:44:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FC06C25B67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 00:07:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GPiY9DhcgyT8PO/MaTJjDTwLbX06exj9+1KXGF/0n1w=; b=ua2T2RF9JJ9+x11tKIig6niUUu
-	3mFZrVA0JzIyEib4lu1sF/gO489Zhde2JTiVoHsM6lrnjYV9WaQCXTa60roipd63kQpZB2fDID9UU
-	XBbotJO6VB57dA+0FTIidWAcEx2oXvWwB1R/ydgEq/c/gOczW/HfP/di9h2nkRz9H+Esa9J1Qph9Z
-	+rkKS+e3jLZT5TFZ6SeL0QtThJ8AMkbUZA3nLTTJMqhCDALD1o9R6uoRSUqqyBlIAGHVeh6SwgxQb
-	Bn50Qt3svEw9bVq4stKXhiNZC1mIJ6pXCB/uYP/q+AmU02VQgz10aGORQs9lYPKIKIKDQJ9j6Hoi0
-	73R9TWig==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8KIyXKnp9ik2LhvuJOfiqnewO+JX1rYsLQwadh3j9eo=; b=0UMZTth0rWMPBm
+	rhiG0Dr9Uqi03J7LH7nTz9kOYb/ps/nE0JLAb521IjAUPKn9PjA+Y/CinLuApOzQW+agHqKEy2ljN
+	RyTuvnjKMPATLg0aJBcKQcsS9S9QmIbcXPh6W8kTf9NZyjflI3Ms/jHfkuApBc07fCE0tA9vnMaoz
+	zZDDuGTTGYaS0uZJU9rxMIqX3UiDftDfVfN9WqWO8TBHbxTdcPdfXUZaJa6K+ZSiwzXebWGEaL2Ak
+	wcv3q/RQ2jfSIa78vZn62VznESdLlk0Kcr73Sku9tvzQx++eAASVn/87Rs/aGv3x6hV7E/JGgTEVj
+	Ky3Dw8okw1osgb0yCRxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qv2j7-008KSj-1i;
-	Mon, 23 Oct 2023 21:44:45 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qv4xN-008Uor-0I;
+	Tue, 24 Oct 2023 00:07:37 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qv2j1-008KS3-1e
+	id 1qv4xJ-008Umn-19
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Oct 2023 21:44:41 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qv2id-0004tw-1w; Mon, 23 Oct 2023 23:44:15 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qv2ia-003nh8-FN; Mon, 23 Oct 2023 23:44:12 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qv2ia-004fZY-5P; Mon, 23 Oct 2023 23:44:12 +0200
-Date: Mon, 23 Oct 2023 23:44:11 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	Tue, 24 Oct 2023 00:07:35 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-1c9b7c234a7so32963455ad.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 17:07:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1698106050; x=1698710850; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=8KIyXKnp9ik2LhvuJOfiqnewO+JX1rYsLQwadh3j9eo=;
+        b=ofD11OQmFXw9BYOAXNcYf6oTwvpCzqOwbR/NbWFW3xeOF299DwgvoUON/n3ZZ6/FTB
+         YghFNrehKNIvOvesN45cZ5p0ax7bUh4IAXHrX01ADodop0MUs/TYZhrroEiRDA+HOjFa
+         petg6Yp/qsSAesGujjgse7xzi3q/t2TqoMkD0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698106050; x=1698710850;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8KIyXKnp9ik2LhvuJOfiqnewO+JX1rYsLQwadh3j9eo=;
+        b=FNEAZHWEHgIrZ/GzcsNyRDJfN3FNfLkEgu5ExUtUCzQeYB10VNjxAsUH1zjrTRW9FX
+         0ojOyGRSxzNkfV7THriEtop3bpyz62mJJDQv7dZ1ExGHkZT1/CkLJ43QBE9FFVn7vIKX
+         0k5pbfSGo00NzKBCV9ic7mRhEh6Z2WQxP1GtFpHdi4em56zZ5MqEq+Nmui8RkcW54XAk
+         VfNo63IO382FXruGXKyCRO/0FiRb1BNW3mISiBfYjHzqVBSDL+CI0FAdrGpH7wADJvcK
+         s2xG7WeK1uCtyrbvl8Ha7N5Vz5CLX0GkMGyqSVqD1w5t2DLCyyOaPg/0TA8yEFvkUWBE
+         kegw==
+X-Gm-Message-State: AOJu0YywzG6+HIp0siqHS18ir6MQIeX+VlN9+Evi2jCwR7HWzZYqWjOY
+	D9VWbMXr2hst+ZudRA5ot71EXQ==
+X-Google-Smtp-Source: AGHT+IHiQ5fMHyiReBzHBkMvPSaaCCS/bkotYyZaskZvzm6qK4GNEDtEwtoub82tMAHIemj7mRkj9Q==
+X-Received: by 2002:a17:902:d484:b0:1c9:cf1e:f907 with SMTP id c4-20020a170902d48400b001c9cf1ef907mr14511451plg.57.1698106049960;
+        Mon, 23 Oct 2023 17:07:29 -0700 (PDT)
+Received: from hsinyi.sjc.corp.google.com ([2620:15c:9d:2:5a2d:c345:7f3f:d26c])
+        by smtp.gmail.com with ESMTPSA id a10-20020a170902ecca00b001c5dea67c26sm6505510plh.233.2023.10.23.17.07.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Oct 2023 17:07:29 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jitao Shi <jitao.shi@mediatek.com>,
-	Xinlei Lee <xinlei.lee@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH 12/18] dt-bindings: pwm: add binding for mt8365 SoC
-Message-ID: <20231023214411.sbrdqgethas25rkd@pengutronix.de>
-References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
- <20231023-display-support-v1-12-5c860ed5c33b@baylibre.com>
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: [PATCH 0/6] Add a few mt8183 follower boards.
+Date: Mon, 23 Oct 2023 17:02:23 -0700
+Message-ID: <20231024000724.57714-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.42.0.758.gaed0368e0e-goog
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="b5norgtzwaifdmor"
-Content-Disposition: inline
-In-Reply-To: <20231023-display-support-v1-12-5c860ed5c33b@baylibre.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_144439_568700_B91654B2 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20231023_170733_421601_CDEC714C 
+X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,46 +83,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add makomo, pico, and katsu which are mt8183 followers.
 
---b5norgtzwaifdmor
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hsin-Yi Wang (6):
+  dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-katsu
+  arm64: dts: mt8183: Add kukui katsu board
+  dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-jacuzzi-makomo
+  arm64: dts: mt8183: Add jacuzzi makomo board
+  dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-jacuzzi-pico
+  arm64: dts: mt8183: Add jacuzzi pico/pico6 board
 
-On Mon, Oct 23, 2023 at 04:40:12PM +0200, Alexandre Mergnat wrote:
-> Display PWM for MT8365 is compatible with MT8183. Then, add MT8365 binding
-> along with MT8183 SoC.
->=20
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+ .../devicetree/bindings/arm/mediatek.yaml     |  25 ++++
+ .../mt8183-kukui-jacuzzi-makomo-sku0.dts      |  25 ++++
+ .../mt8183-kukui-jacuzzi-makomo-sku1.dts      |  25 ++++
+ .../mediatek/mt8183-kukui-jacuzzi-pico.dts    |  36 ++++++
+ .../mediatek/mt8183-kukui-jacuzzi-pico6.dts   | 110 ++++++++++++++++++
+ .../dts/mediatek/mt8183-kukui-katsu-sku38.dts |  44 +++++++
+ .../boot/dts/mediatek/mt8183-kukui-katsu.dts  |  40 +++++++
+ 7 files changed, 305 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu.dts
 
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+-- 
+2.42.0.758.gaed0368e0e-goog
 
-What is the merge plan here? Should the whole series go in via drm?
-
-Thanks
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---b5norgtzwaifdmor
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmU26SsACgkQj4D7WH0S
-/k5kxAf/R3wtiK6qh3Wc2Q4gR52nWYNIG4VuPK2gTmsXJK0QtdJnUAhBk9EZRxrv
-KxLX41glIN1g7bGG9+9Jh95i+ExJ4w59eQLYiJJOWk1mf6yH+YkJVEudZlj0ixSM
-RQu5gUyk2Rh3hed5809Q3uWqiMvzRSccXvaVVZ0GOQ00Ix9eUwnjPAnUtPL6dImI
-zsOkPfGpGySlFQVWlO1OkCNdkpmtvBxUa6rQNDKBDq2KZD1QaPormKtyZwj5m9fo
-KBJ7Ejxt9QpHjYrV1QHEqRGMdP6UIvQ4nicVXKz9LsepygiOLm2wCj3G4sYYjbMb
-9FHfTBcv2lNXdX6iJj0aN+9S5JTIXw==
-=F4fn
------END PGP SIGNATURE-----
-
---b5norgtzwaifdmor--
 
