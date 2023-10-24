@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B026C00A8F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 08:38:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FC46C07545
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 08:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y4PWArW22R6B3miFOEbDU3CL0QbzGQgOdbqceBKuuSw=; b=dSpae6+CuQOu0XjJKSHlgs/67F
-	qTGMseCmXGOhaahvDdsQtUcmWffptBlCMN7EVz3I7hnnXHcQrJK1VFMfVFcIDJP5N0XeKXu+iaYG5
-	ICcPeeM1W0SjYLG2W2GhPAmBF7j0sQA95RFh7XIuVgRemLSIoho5KLkOHuVA6P4GgIxfAqWXq7MFc
-	mdMEo8yuYwiR5d3hImk1mnHbyyIQtVecJAyuSlqAVpYKuIrATFrEl7OHiHg1pI7OzczVLfHQO2URP
-	3Gs2jT3TTcexKfrLaA9XtpA2rt06183yR0W+roxGyxfnSjESrnId8VRzn9XjBJX5O3i2xGJsu21Di
-	ABksQ6yw==;
+	bh=uCj2IgkUDlajoplCrGWYmz0OFDA/lDCIKIzHWtIEixQ=; b=2n05sqqNOKUmo/LEAqqF0WBkqw
+	UD+uj8rrD9UStZ4Lgom/DYuteqvza35s7GZa/K1kLz8YNqO/I41/z4WPPZbreqAE5m8xIU/u3IEWs
+	Q8bBP1Ncz/SAEyeESMlR8FrtfRW6zb2BLlbpRzDRSxsiCs7nNE+sT/hU3ZBVqQcd70BykVHZM2NZl
+	beHbwvcpoQ9qmKZArAc68u6QUNL0V+pmQl+b+Ns4/fr9nztTE30wAlzy3UFlBTvXrIQpJjuOjsthu
+	YhFDZxo3MI61jb27Spin0l8alLw9ih+oe7Bg2ayDOtj8VG8MEV9JY26SA3WXNnikdvvD7zN52xfgI
+	G67sTXjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvCvM-009Cy9-0f;
-	Tue, 24 Oct 2023 08:38:04 +0000
+	id 1qvCvS-009D2b-1D;
+	Tue, 24 Oct 2023 08:38:10 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvCv7-009Cou-0g;
-	Tue, 24 Oct 2023 08:37:51 +0000
+	id 1qvCv7-009Cow-0g;
+	Tue, 24 Oct 2023 08:37:52 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0E7EB6607319;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8962866072F1;
 	Tue, 24 Oct 2023 09:37:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1698136666;
-	bh=FF3lJgYHVALCQHIDEXOEKU3cOZle3CdbuED79YvXitU=;
+	bh=WS4wMhjmoXB+4KzW8/mmKMaxnWopID7042hz0hzqCPI=;
 	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=OUb3eACj3xQGewl3YdR/vJuIOZbKMgBA5N2kjOCD1ToSUgPwGGNu5tXlrKsO3xnSL
-	 9u5kTaAUYdo7sC8NItfTiESkX3WgmR97Rg/j0+G7V0UpCNyWjyEF2Rhmlsmhav2y7M
-	 XneWpo4hDLDiHYdGlfX7ag280Qi/yunxMtuErJdF/bakqC5LIOEBfqBxveVgnC3aKl
-	 TyTG4G7oC/5R0X04XNlm/hVCO2bLaVlFeOtCaht27jC7H7ossZEisU+aeIGERp1d9+
-	 XEsh5c9GO3eAPmUPuDmHBnakjk0yh/wlJIbwg1/1R9SQb1GZ3lkDXML1J785Bbuj3p
-	 6pkUKXhqEwPmQ==
-Message-ID: <2c757018-f643-4d47-a24c-d0326633a7b4@collabora.com>
-Date: Tue, 24 Oct 2023 10:37:41 +0200
+	b=eJ9le+nLZg9pbxpMxzRMNDH6/UrDCFWmuw2GXy0t7tkJ1eUQNOTsjN4wli1ugzVpF
+	 DbWdhtDLI3iDTuCtlWZf55OH5C4tqWY18DwcpUC5M9eb/eVL335V9yiDVCdwHZ1O1Z
+	 yCafNmjINX8hYF27U+DWGfqH2s1FMdPWvbOuxMSlIB29jhDG8M57VZl8b/VuD5hV1E
+	 yiwVXyrYdZe6hCODrmdVz8+5yuIS+vxeOlJwbHfYsx6YeXowWRqBUfViFqT9mu0ahR
+	 D/7OhmY3bzU44sdIbx4UHc5p49yXwv5f1qT5Z/vnuUScVk+SI5Z6jqKAhvS8Fa6aDO
+	 MLGXsXE9n1UiQ==
+Message-ID: <0fa3bc67-baa4-4a7b-a2f2-43aee03ff77f@collabora.com>
+Date: Tue, 24 Oct 2023 10:37:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 08/11] drm/mediatek: Add secure layer config support
- for ovl_adaptor
+Subject: Re: [PATCH v2 07/11] drm/mediatek: Add secure layer config support
+ for ovl
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -66,14 +66,14 @@ Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  Jeffrey Kardatzke <jkardatzke@google.com>
 References: <20231023044549.21412-1-jason-jh.lin@mediatek.com>
- <20231023044549.21412-9-jason-jh.lin@mediatek.com>
+ <20231023044549.21412-8-jason-jh.lin@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20231023044549.21412-9-jason-jh.lin@mediatek.com>
+In-Reply-To: <20231023044549.21412-8-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_013749_397261_486E4FF1 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20231024_013749_501398_ACB2B601 
+X-CRM114-Status: GOOD (  22.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,83 +89,130 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 23/10/23 06:45, Jason-JH.Lin ha scritto:
-> Add secure layer config support for ovl_adaptor and sub driver mdp_rdma.
+> Add secure layer config support for ovl.
 > 
 > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 > ---
->   drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c |  3 +++
->   drivers/gpu/drm/mediatek/mtk_mdp_rdma.c         | 11 ++++++++---
->   drivers/gpu/drm/mediatek/mtk_mdp_rdma.h         |  2 ++
->   3 files changed, 13 insertions(+), 3 deletions(-)
+>   drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  3 ++
+>   drivers/gpu/drm/mediatek/mtk_disp_ovl.c       | 31 +++++++++++++++++--
+>   .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 12 +++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  2 ++
+>   4 files changed, 46 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-> index 28a0bccfb0b9..274961222672 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-> @@ -153,6 +153,9 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
->   	rdma_config.pitch = pending->pitch;
->   	rdma_config.fmt = pending->format;
->   	rdma_config.color_encoding = pending->color_encoding;
-> +	rdma_config.source_size = (pending->height - 1) * pending->pitch +
-> +				  pending->width * fmt_info->cpp[0];
-> +	rdma_config.is_sec = state->pending.is_sec;
->   	mtk_mdp_rdma_config(rdma_l, &rdma_config, cmdq_pkt);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index 2254038519e1..dec937b183a8 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -9,6 +9,7 @@
+>   #include <linux/soc/mediatek/mtk-cmdq.h>
+>   #include <linux/soc/mediatek/mtk-mmsys.h>
+>   #include <linux/soc/mediatek/mtk-mutex.h>
+> +#include "mtk_drm_ddp_comp.h"
+>   #include "mtk_drm_plane.h"
+>   #include "mtk_mdp_rdma.h"
 >   
->   	if (use_dual_pipe) {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-> index c3adaeefd551..1c4798e3bbc3 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-> @@ -94,6 +94,7 @@ struct mtk_mdp_rdma {
->   	void __iomem		*regs;
->   	struct clk		*clk;
->   	struct cmdq_client_reg	cmdq_reg;
-> +	resource_size_t		regs_pa;
+> @@ -79,6 +80,7 @@ void mtk_ovl_clk_disable(struct device *dev);
+>   void mtk_ovl_config(struct device *dev, unsigned int w,
+>   		    unsigned int h, unsigned int vrefresh,
+>   		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+> +u64 mtk_ovl_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx);
+>   int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
+>   			struct mtk_plane_state *mtk_state);
+>   void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+> @@ -112,6 +114,7 @@ void mtk_ovl_adaptor_clk_disable(struct device *dev);
+>   void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
+>   			    unsigned int h, unsigned int vrefresh,
+>   			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+> +u64 mtk_ovl_adaptor_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx);
+>   void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
+>   				  struct mtk_plane_state *state,
+>   				  struct cmdq_pkt *cmdq_pkt);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index 2bffe4245466..76e832e4875a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -46,6 +46,7 @@
+>   #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
+>   #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
+>   #define DISP_REG_OVL_HDR_PITCH(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x08)
+> +#define DISP_REG_OVL_SECURE			0x0fc0
+>   
+>   #define GMC_THRESHOLD_BITS	16
+>   #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
+> @@ -126,8 +127,19 @@ struct mtk_disp_ovl {
+>   	const struct mtk_disp_ovl_data	*data;
+>   	void				(*vblank_cb)(void *data);
+>   	void				*vblank_cb_data;
+> +	resource_size_t			regs_pa;
 >   };
 >   
->   static unsigned int rdma_fmt_convert(unsigned int fmt)
-> @@ -198,9 +199,12 @@ void mtk_mdp_rdma_config(struct device *dev, struct mtk_mdp_rdma_cfg *cfg,
->   	else
->   		mtk_ddp_write_mask(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
->   				   MDP_RDMA_SRC_CON, FLD_OUTPUT_ARGB);
-> -
-> -	mtk_ddp_write_mask(cmdq_pkt, cfg->addr0, &priv->cmdq_reg, priv->regs,
-> -			   MDP_RDMA_SRC_BASE_0, FLD_SRC_BASE_0);
-> +	if (cfg->is_sec)
-> +		mtk_ddp_sec_write(cmdq_pkt, priv->regs_pa + MDP_RDMA_SRC_BASE_0,
-> +				  cfg->addr0, CMDQ_IWC_H_2_MVA, 0, cfg->source_size, 0);
-> +	else
-> +		mtk_ddp_write_mask(cmdq_pkt, cfg->addr0, &priv->cmdq_reg, priv->regs,
-> +				   MDP_RDMA_SRC_BASE_0, FLD_SRC_BASE_0);
+> +u64 mtk_ovl_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx)
+> +{
+> +	if (comp->id == DDP_COMPONENT_OVL0)
+> +		return 1ULL << CMDQ_SEC_DISP_OVL0;
+
+This is BIT_ULL():
+
+return BIT_ULL(CMDQ_SEC_DISP_OVL0);
+
+> +	else if (comp->id == DDP_COMPONENT_OVL1)
+> +		return 1ULL << CMDQ_SEC_DISP_OVL1;
+> +
+> +	return 0;
+> +}
+> +
+>   static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
+>   {
+>   	struct mtk_disp_ovl *priv = dev_id;
+> @@ -449,8 +461,22 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+>   			      DISP_REG_OVL_SRC_SIZE(idx));
+>   	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
+>   			      DISP_REG_OVL_OFFSET(idx));
+> -	mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
+> -			      DISP_REG_OVL_ADDR(ovl, idx));
+> +
+> +	if (state->pending.is_sec) {
+> +		const struct drm_format_info *fmt_info = drm_format_info(fmt);
+> +		unsigned int buf_size = (pending->height - 1) * pending->pitch +
+> +					pending->width * fmt_info->cpp[0];
+> +
+> +		mtk_ddp_write_mask(cmdq_pkt, BIT(idx), &ovl->cmdq_reg, ovl->regs,
+> +				   DISP_REG_OVL_SECURE, BIT(idx));
+> +		mtk_ddp_sec_write(cmdq_pkt, ovl->regs_pa + DISP_REG_OVL_ADDR(ovl, idx),
+> +				  pending->addr, CMDQ_IWC_H_2_MVA, 0, buf_size, 0);
+> +	} else {
+> +		mtk_ddp_write_mask(cmdq_pkt, 0, &ovl->cmdq_reg, ovl->regs,
+> +				   DISP_REG_OVL_SECURE, BIT(idx));
+> +		mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
+> +				      DISP_REG_OVL_ADDR(ovl, idx));
+> +	}
 >   
->   	mtk_ddp_write_mask(cmdq_pkt, src_pitch_y, &priv->cmdq_reg, priv->regs,
->   			   MDP_RDMA_MF_BKGD_SIZE_IN_BYTE, FLD_MF_BKGD_WB);
-> @@ -285,6 +289,7 @@ static int mtk_mdp_rdma_probe(struct platform_device *pdev)
->   		return -ENOMEM;
+>   	if (is_afbc) {
+>   		mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
+> @@ -529,6 +555,7 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+>   	}
 >   
 >   	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 > +	priv->regs_pa = res->start;
 >   	priv->regs = devm_ioremap_resource(dev, res);
 >   	if (IS_ERR(priv->regs)) {
->   		dev_err(dev, "failed to ioremap rdma\n");
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-> index 9943ee3aac31..9add18e96319 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-> @@ -15,6 +15,8 @@ struct mtk_mdp_rdma_cfg {
->   	unsigned int	y_top;
->   	int		fmt;
->   	int		color_encoding;
-> +	unsigned int	source_size;
-> +	unsigned int	is_sec;
+>   		dev_err(dev, "failed to ioremap ovl\n");
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> index 6bf6367853fb..28a0bccfb0b9 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> @@ -83,6 +83,18 @@ static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
+>   	[OVL_ADAPTOR_ETHDR0]	= { OVL_ADAPTOR_TYPE_ETHDR, 0 },
+>   };
+>   
+> +static const u64 ovl_adaptor_sec_port[] = {
+> +	1ULL << CMDQ_SEC_VDO1_DISP_RDMA_L0,
 
-is_secure looks better.
+BIT_ULL(CMDQ_SEC_VDO1_DISP_RDMA_L0),
+BIT_ULL(......),
+
 
 Regards,
 Angelo
-
->   };
->   
->   #endif // __MTK_MDP_RDMA_H__
 
 
