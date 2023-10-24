@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 165B2C25B6C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 15:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01358C25B6C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 15:22:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wTdO2bwcmB9lYlvex/v8irD1Z/qXj6h+zhKj6aeNxjE=; b=R//+VaVk4PH01w
-	zz8jaMaAbcOit7IBFRFvWu9D8SVOT1/xhh9YQ2r6/Xc+KWj2XII1YpjjQwuS8NYUWl+M3dCiEczJG
-	TwgnLOWe0e0/EK/UXuzZNA0SgM/v0vCcriI/hFRqG6YSao4626+YguPXmpJfMQDhwIwxevYSNU6+m
-	5o9BoRHy5qK48J+hrqzADRZDnT95lwL1mMOjxE753i33z/RKMK1a1YXmaZuer0C60VCQ2FyhrDRKi
-	PfzBFfGCiX8XyePcesLwGAEkWpXyuBIR87+9ORYZ9+zomlB5cu4D1AsHuzuczmML7X6dY+2Sx2O1U
-	RhszoN+Unqbqyvc++zsg==;
+	List-Owner; bh=CrLguzqmsBX1wh2886rw/oRPFldPzwSDNCeDBDlDpbk=; b=e3V/Wq2EJUQb6v
+	sMs+7qJoMo5ij0BQp80b1BElgYtxft5FtCw1x94+rdK3y6DvLKDuqJsdcL115WArmwYhGF7UH5MiU
+	7kB9PxHbu8GCSVnsAZmzNWMQGEZR2KnLirk/YzHlbHcpp/NiJqMQFD0a9sr9N7RmTKH+6woAeoD7Z
+	AuYteTHBzzWTChXl71yNQvayNuTdxe6E+kYT295k41Zs7mQQRWhlQG9QTXYvdXhkAhDhb3LdVlryK
+	VoAg2mf/Ki0SeBKlb2e7obGJnYMjsOMoH/d++f/y9hotAB0430a31TkZUHLcT1ixzl1KoIIGd//BF
+	cozzFD7GECWu40tCl/Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvJEt-00AJs1-24;
-	Tue, 24 Oct 2023 15:22:39 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1qvJF6-00AK3U-1F;
+	Tue, 24 Oct 2023 15:22:52 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvJDW-00AIi2-2R
+	id 1qvJEW-00AJXS-1j
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 24 Oct 2023 15:22:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=CrLguzqmsBX1wh2886rw/oRPFldPzwSDNCeDBDlDpbk=; b=ZL7Wd0H+gDgrtBCdpNI20xUjiT
+	HnQseI+3vifGIrBNnoOC7I9Isn3RENpUcUgVKD/L6i6J7JARYx4Hc3upHdigA/TUYZmEjXoEx30Sk
+	8XPIzf7fppgfHCnTEsrU5nwfLqFk9hN2Y0Y8LN+R/YSVLYzEz7Ai8btZ5Yjql4UkB1LNWO7ZdkJm3
+	RmErKXWlBgCEJG3bqfpbMWtulRvFGv7NFouWf6s5m0SZOI2ZgrLoJHZKyekPpehimvlmBxLuK0eug
+	4SSJeaC0wIfhtr/knGbGlouAsRwK1FoykbOuFFO66fGtQEdWuILi8ECF4YwTkbjgSZcXBTc6rWB/m
+	xc5Je69w==;
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qvJEQ-00FbXM-2m
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Oct 2023 15:21:24 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-9a58dbd5daeso693435766b.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Oct 2023 08:21:13 -0700 (PDT)
+	Tue, 24 Oct 2023 15:22:14 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-53e04b17132so7175558a12.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Oct 2023 08:22:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1698160871; x=1698765671; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1698160924; x=1698765724; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=wTdO2bwcmB9lYlvex/v8irD1Z/qXj6h+zhKj6aeNxjE=;
-        b=ikauOpKK5gzAhu3emP3/OO17Y4+G89FqipDtHYeLW1s1P8Z4CQn9lYpv9rCca2+dWe
-         IFGvpiXB+lQhNcje2alP2BTUfHi7xSWYnAAj1a7wkeEUImxeQZ8Wgk7MvAQiu+Ir17d4
-         2LIl/rsGt6VYpdcK1+6V08tNnkAdy5OFYp696TP5lQMH+AC9WfO9ZLR/Gn6CcrYclPA0
-         13QNDkf8jaRHGns6Ax3XUieGKR6p/Zh6aHkv1fb6xIGHxi0ZS1e/AWRbraw7plSxuzng
-         OpnGnv8h6DhrBGduKK+OozxeI5gh3W7yCaz2O+bikr1GNyTldIThbM6kUv4md5AmNkpj
-         yMGA==
+        bh=CrLguzqmsBX1wh2886rw/oRPFldPzwSDNCeDBDlDpbk=;
+        b=CLsiSYlzNyA9P6FqjFVWIO+UCEsySBsVfWqmvGdbmufAUUR5kB2H9r9s/xPp1yp4XT
+         jA89YQOKFLQHeLa4mx1ZswypX3vOQRAMl3db8XPbuMRQ7yy/HOJsrA/7k6pTBNQBINs/
+         iMM4CkQInkcWMasUP0PA53PYMlqKULOU9gFf9hEWa/uIkW2F1BIfhW7jSyCXAm/xaMsB
+         WGxrPnr8QG2wZx+x5lXZlWs8Obm0xcHLRCG38RqfdyJMFbf02zuPN6eXC1JR/YJGUfub
+         in395z12K+9Zo6omZX3qpKCD+i0XAAwsOeIox+znAbnosKemFpSbS6eDIBxsmlfwq3gK
+         AJMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698160871; x=1698765671;
+        d=1e100.net; s=20230601; t=1698160924; x=1698765724;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wTdO2bwcmB9lYlvex/v8irD1Z/qXj6h+zhKj6aeNxjE=;
-        b=C7i0SvMr3DjmDHin8ySp9GaR/uvkl4O0MXF57JW8cxK9nMH9CQhFdet4ndfp+o5TCj
-         riMQYM5RzVzxnQAsB/iZVE9oOf2gF5YZOc5GqF9zw7xhBhl9P3luB7/sp6RG7IpwJtuc
-         w/lE0aVWKgF5WVQOfkA5ovjE8Q5DP9Q5bOmaoJPK0jGMuVaDOdHnIHGJQXsgQtrDS6Uu
-         7Q/VyWrrKvkLSSuulzhvyOKPSyxJCFiL7lEVSY8RmAOun1/xPK/f2LBXfr2n4wjm6gsj
-         QXalEBWNY+GUiJYipGWW0A97Gf+lOaGN9O19kZD85nkJg2InwmwjOIHPO9gJDXEhsabl
-         kxCg==
-X-Gm-Message-State: AOJu0YyW+HrzJwMMIuYWaqJ/ErMsfV53to/62B1Kqxst0Uj+kctgMwEI
-	02lXbPbhufdmPQSERQw4ELgm/g==
-X-Google-Smtp-Source: AGHT+IGJvICTlih/IQgT9bU7ZF9jpMZEmwZ5YEul1Gj+xewH/MJCPF+oJmRnccdYIuc61kE2u8i3zA==
-X-Received: by 2002:a17:907:9618:b0:9af:4561:591d with SMTP id gb24-20020a170907961800b009af4561591dmr9682642ejc.18.1698160871622;
-        Tue, 24 Oct 2023 08:21:11 -0700 (PDT)
+        bh=CrLguzqmsBX1wh2886rw/oRPFldPzwSDNCeDBDlDpbk=;
+        b=rHA2dsJrZOg5SxOT8k59HyI1KdTkID35kbkVuidzGbX5FJoazbNKJDhgHPZdSNTS5R
+         AkLYc2VQz1FKzz6cHNL47WmZzIPh1S0NtQF7adOD7rXpEXf4c6k1FLaH9eu150m0rPGU
+         ck52dOCuy6QWGfRiiw8TeqUq9evQYlutcbQEAONdUthFzhcpa1+CTMgIy/57fr/Pu59Q
+         wjylsiBbVtTOPtNVjSj7UnFME5hpqDhxP6GTevPryuzodMFI5naDamVJiHscqRpEy7hh
+         bdwpnLBEtL0o9yHjAdGbxixswWgi4VPfwzXpMRluONR2L9U6xUbSrLD3K0XeSb6dWCPL
+         BegQ==
+X-Gm-Message-State: AOJu0YwBHPn8iiAlh2CofNKfFNA8xMcpXlmKoMogeHs2w2ctjlUEuohN
+	fbki1J494t2dImbaD8BITl0WGQ==
+X-Google-Smtp-Source: AGHT+IF+njeaPb0/PHYDKAchULPofnaS00XxZyQKvP8VftgcuCv2zu93TrgOHMJ5K3IjvdfOu4p3sA==
+X-Received: by 2002:a17:907:72d0:b0:99d:e617:abeb with SMTP id du16-20020a17090772d000b0099de617abebmr9565488ejc.23.1698160923908;
+        Tue, 24 Oct 2023 08:22:03 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id ze15-20020a170906ef8f00b009bf7a4d591bsm8335546ejb.45.2023.10.24.08.21.09
+        by smtp.gmail.com with ESMTPSA id ze15-20020a170906ef8f00b009bf7a4d591bsm8335546ejb.45.2023.10.24.08.22.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Oct 2023 08:21:10 -0700 (PDT)
-Message-ID: <53e9351a-87ca-42f1-b0a5-624c1fd86623@linaro.org>
-Date: Tue, 24 Oct 2023 17:21:09 +0200
+        Tue, 24 Oct 2023 08:22:03 -0700 (PDT)
+Message-ID: <97679363-2544-4d96-b382-e81917853ff5@linaro.org>
+Date: Tue, 24 Oct 2023 17:22:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/6] arm64: dts: mt8183: Add jacuzzi pico/pico6 board
+Subject: Re: [PATCH 4/6] arm64: dts: mt8183: Add jacuzzi makomo board
 Content-Language: en-US
 To: Hsin-Yi Wang <hsinyi@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
 References: <20231024000724.57714-1-hsinyi@chromium.org>
- <20231024000724.57714-7-hsinyi@chromium.org>
+ <20231024000724.57714-5-hsinyi@chromium.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -119,12 +134,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231024000724.57714-7-hsinyi@chromium.org>
+In-Reply-To: <20231024000724.57714-5-hsinyi@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_082114_834166_0BF38550 
-X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-CacheID: sfid-20231024_162211_148075_71E2877F 
+X-CRM114-Status: UNSURE (   8.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -142,25 +157,22 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 24/10/2023 02:02, Hsin-Yi Wang wrote:
-> pico is also known as Acer Chromebook Spin 311.
+> makomo is also known as Lenovo 100e Chromebook 2nd Gen MTK 2.
 > 
 > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
+>  .../mt8183-kukui-jacuzzi-makomo-sku0.dts      | 25 +++++++++++++++++++
+>  .../mt8183-kukui-jacuzzi-makomo-sku1.dts      | 25 +++++++++++++++++++
+>  2 files changed, 50 insertions(+)
 
-...
 
-> +&wifi_pwrseq {
-> +	post-power-on-delay-ms = <50>;
 > +
-> +	/* Toggle WIFI_ENABLE to reset the chip. */
-> +	reset-gpios = <&pio 8 1>;
-
-Use proper defines.
-
+> +&qca_wifi {
+> +	qcom,ath10k-calibration-variant = "GO_FENNEL14";
 > +};
 > +
-> +&wifi_pins_pwrseq {
-> +	pins_wifi_enable {
+> +&mmc1_pins_uhs {
+> +	pins_clk {
 
 No underscores in node names.
 
