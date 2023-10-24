@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FC46C07545
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B803FC25B47
 	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 08:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uCj2IgkUDlajoplCrGWYmz0OFDA/lDCIKIzHWtIEixQ=; b=2n05sqqNOKUmo/LEAqqF0WBkqw
-	UD+uj8rrD9UStZ4Lgom/DYuteqvza35s7GZa/K1kLz8YNqO/I41/z4WPPZbreqAE5m8xIU/u3IEWs
-	Q8bBP1Ncz/SAEyeESMlR8FrtfRW6zb2BLlbpRzDRSxsiCs7nNE+sT/hU3ZBVqQcd70BykVHZM2NZl
-	beHbwvcpoQ9qmKZArAc68u6QUNL0V+pmQl+b+Ns4/fr9nztTE30wAlzy3UFlBTvXrIQpJjuOjsthu
-	YhFDZxo3MI61jb27Spin0l8alLw9ih+oe7Bg2ayDOtj8VG8MEV9JY26SA3WXNnikdvvD7zN52xfgI
-	G67sTXjQ==;
+	bh=lC3zMshmUnRwdMmYnVixUV3PR0tHSJRe1/YRUw0meRw=; b=ppxroy6A6TlqDNb/JWCcQiug+h
+	gHJ7dAsWM7i7qUUdOlNGq0a7fLScRkyFTQL8TTxY5u0KLe3cfk7PEyctc/ABa28VN0mb2+6sf4gEa
+	EZ2WtJia0XGs6arjCy+lbF2crII2cZPxS0OcKf7e8snWseu1/P6BdfNAvQ6Wwr1wXQcgrU+s7NJkt
+	e8VNoEuB47+EJ7sfn9yUchGc4/V6LVXwNLHF3hskAT4qH5jttYLwzoar8SbVJrzhPn44nNrPtRAlT
+	Tdv6Un0SWIxAHf17xgRitZkBnwd6ygmH30+w/xgqZa4Xemzfkgfh/BZOtVQdYALOR4pifvS3n28Hm
+	/ln3h2IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvCvS-009D2b-1D;
+	id 1qvCvS-009D2r-2J;
 	Tue, 24 Oct 2023 08:38:10 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvCv7-009Cow-0g;
+	id 1qvCv7-009Coy-1D;
 	Tue, 24 Oct 2023 08:37:52 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8962866072F1;
-	Tue, 24 Oct 2023 09:37:45 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 325426607331;
+	Tue, 24 Oct 2023 09:37:47 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698136666;
-	bh=WS4wMhjmoXB+4KzW8/mmKMaxnWopID7042hz0hzqCPI=;
+	s=mail; t=1698136668;
+	bh=VjoK/UpW7x3c/luSkS5Ar1F1xcKYV0zP1oysQkO4Dqo=;
 	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=eJ9le+nLZg9pbxpMxzRMNDH6/UrDCFWmuw2GXy0t7tkJ1eUQNOTsjN4wli1ugzVpF
-	 DbWdhtDLI3iDTuCtlWZf55OH5C4tqWY18DwcpUC5M9eb/eVL335V9yiDVCdwHZ1O1Z
-	 yCafNmjINX8hYF27U+DWGfqH2s1FMdPWvbOuxMSlIB29jhDG8M57VZl8b/VuD5hV1E
-	 yiwVXyrYdZe6hCODrmdVz8+5yuIS+vxeOlJwbHfYsx6YeXowWRqBUfViFqT9mu0ahR
-	 D/7OhmY3bzU44sdIbx4UHc5p49yXwv5f1qT5Z/vnuUScVk+SI5Z6jqKAhvS8Fa6aDO
-	 MLGXsXE9n1UiQ==
-Message-ID: <0fa3bc67-baa4-4a7b-a2f2-43aee03ff77f@collabora.com>
-Date: Tue, 24 Oct 2023 10:37:42 +0200
+	b=om24qMicEbGsV7OOOh0R08uWayYYF0H4/nMVQInkmy08Ep6Xw1NPbr1Kbt2q7K9fa
+	 8Nal+lKJG6W5251Z0kFwHVY3G+uxDb5AjHVcfJYuMIh7nR9LHJLi1Eom2s/G1xoI0b
+	 5HkK5MwBExvVorp9LgpWz2cme25fkU3uXpcAs7wNuawEvNXH6V5KFm1uHAKz0z0Odr
+	 LZ0Dqnik6LQMcu76qopqCwPOX5G8hzcPvYQqEu5SNMwlXL0RulhsUZOacYJQEuRQZ+
+	 E0HBZPy9dhd8x7AXe0JZGq+UU29Rqy++qQMGD4RHjJYajHDrYT9x8C2g5LCR9QTtwA
+	 1Tckojwl7l2eg==
+Message-ID: <654f22f8-5070-4064-bcc3-5259345e4ca8@collabora.com>
+Date: Tue, 24 Oct 2023 10:37:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 07/11] drm/mediatek: Add secure layer config support
- for ovl
+Subject: Re: [PATCH v2 01/11] drm/mediatek: Add interface to allocate MediaTek
+ GEM buffer.
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -64,16 +64,18 @@ Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
  Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
  Shawn Sung <shawn.sung@mediatek.com>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
- Jeffrey Kardatzke <jkardatzke@google.com>
+ Jeffrey Kardatzke <jkardatzke@google.com>, CK Hu <ck.hu@mediatek.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
 References: <20231023044549.21412-1-jason-jh.lin@mediatek.com>
- <20231023044549.21412-8-jason-jh.lin@mediatek.com>
+ <20231023044549.21412-2-jason-jh.lin@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20231023044549.21412-8-jason-jh.lin@mediatek.com>
+In-Reply-To: <20231023044549.21412-2-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_013749_501398_ACB2B601 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20231024_013749_673110_BDEDE91A 
+X-CRM114-Status: GOOD (  30.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,128 +91,173 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 23/10/23 06:45, Jason-JH.Lin ha scritto:
-> Add secure layer config support for ovl.
+> From: CK Hu <ck.hu@mediatek.com>
 > 
+> Add an interface to allocate MediaTek GEM buffers, allow the IOCTLs
+> to be used by render nodes.
+> This patch also sets the RENDER driver feature.
+> 
+> Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->   drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  3 ++
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c       | 31 +++++++++++++++++--
->   .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 12 +++++++
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  2 ++
->   4 files changed, 46 insertions(+), 2 deletions(-)
+> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+> Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+> Tested-by: Daniel Kurtz <djkurtz@chromium.org>
+> Tested-by: Pi-Hsun Shih <pihsun@chromium.org>
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> index 2254038519e1..dec937b183a8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> @@ -9,6 +9,7 @@
->   #include <linux/soc/mediatek/mtk-cmdq.h>
->   #include <linux/soc/mediatek/mtk-mmsys.h>
->   #include <linux/soc/mediatek/mtk-mutex.h>
-> +#include "mtk_drm_ddp_comp.h"
->   #include "mtk_drm_plane.h"
->   #include "mtk_mdp_rdma.h"
+> ---
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 13 ++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_gem.c | 39 +++++++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_gem.h | 12 ++++++
+>   include/uapi/drm/mediatek_drm.h        | 58 ++++++++++++++++++++++++++
+>   4 files changed, 122 insertions(+)
+>   create mode 100644 include/uapi/drm/mediatek_drm.h
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 93552d76b6e7..e3e9dbdf265b 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -24,6 +24,7 @@
+>   #include <drm/drm_of.h>
+>   #include <drm/drm_probe_helper.h>
+>   #include <drm/drm_vblank.h>
+> +#include <drm/mediatek_drm.h>
 >   
-> @@ -79,6 +80,7 @@ void mtk_ovl_clk_disable(struct device *dev);
->   void mtk_ovl_config(struct device *dev, unsigned int w,
->   		    unsigned int h, unsigned int vrefresh,
->   		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-> +u64 mtk_ovl_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx);
->   int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
->   			struct mtk_plane_state *mtk_state);
->   void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
-> @@ -112,6 +114,7 @@ void mtk_ovl_adaptor_clk_disable(struct device *dev);
->   void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
->   			    unsigned int h, unsigned int vrefresh,
->   			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-> +u64 mtk_ovl_adaptor_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx);
->   void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
->   				  struct mtk_plane_state *state,
->   				  struct cmdq_pkt *cmdq_pkt);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 2bffe4245466..76e832e4875a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -46,6 +46,7 @@
->   #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
->   #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
->   #define DISP_REG_OVL_HDR_PITCH(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x08)
-> +#define DISP_REG_OVL_SECURE			0x0fc0
+>   #include "mtk_drm_crtc.h"
+>   #include "mtk_drm_ddp_comp.h"
+> @@ -541,6 +542,14 @@ static void mtk_drm_kms_deinit(struct drm_device *drm)
+>   	component_unbind_all(drm->dev, drm);
+>   }
 >   
->   #define GMC_THRESHOLD_BITS	16
->   #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
-> @@ -126,8 +127,19 @@ struct mtk_disp_ovl {
->   	const struct mtk_disp_ovl_data	*data;
->   	void				(*vblank_cb)(void *data);
->   	void				*vblank_cb_data;
-> +	resource_size_t			regs_pa;
->   };
->   
-> +u64 mtk_ovl_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx)
-> +{
-> +	if (comp->id == DDP_COMPONENT_OVL0)
-> +		return 1ULL << CMDQ_SEC_DISP_OVL0;
-
-This is BIT_ULL():
-
-return BIT_ULL(CMDQ_SEC_DISP_OVL0);
-
-> +	else if (comp->id == DDP_COMPONENT_OVL1)
-> +		return 1ULL << CMDQ_SEC_DISP_OVL1;
+> +static const struct drm_ioctl_desc mtk_ioctls[] = {
+> +	DRM_IOCTL_DEF_DRV(MTK_GEM_CREATE, mtk_gem_create_ioctl,
+> +			  DRM_UNLOCKED | DRM_AUTH | DRM_RENDER_ALLOW),
+> +	DRM_IOCTL_DEF_DRV(MTK_GEM_MAP_OFFSET,
+> +			  mtk_gem_map_offset_ioctl,
+> +			  DRM_UNLOCKED | DRM_AUTH | DRM_RENDER_ALLOW),
+> +};
 > +
-> +	return 0;
+>   DEFINE_DRM_GEM_FOPS(mtk_drm_fops);
+>   
+>   /*
+> @@ -562,6 +571,10 @@ static const struct drm_driver mtk_drm_driver = {
+>   
+>   	.gem_prime_import = mtk_drm_gem_prime_import,
+>   	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
+> +
+> +	.ioctls = mtk_ioctls,
+> +	.num_ioctls = ARRAY_SIZE(mtk_ioctls),
+> +
+>   	.fops = &mtk_drm_fops,
+>   
+>   	.name = DRIVER_NAME,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> index 9f364df52478..bcce723f257d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> @@ -4,6 +4,7 @@
+>    */
+>   
+>   #include <linux/dma-buf.h>
+> +#include <drm/mediatek_drm.h>
+>   
+>   #include <drm/drm.h>
+>   #include <drm/drm_device.h>
+> @@ -272,3 +273,41 @@ void mtk_drm_gem_prime_vunmap(struct drm_gem_object *obj,
+>   	mtk_gem->kvaddr = NULL;
+>   	kfree(mtk_gem->pages);
+>   }
+> +
+> +int mtk_gem_map_offset_ioctl(struct drm_device *drm, void *data,
+> +			     struct drm_file *file_priv)
+> +{
+> +	struct drm_mtk_gem_map_off *args = data;
+> +
+> +	return drm_gem_dumb_map_offset(file_priv, drm, args->handle,
+> +				       &args->offset);
 > +}
 > +
->   static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
->   {
->   	struct mtk_disp_ovl *priv = dev_id;
-> @@ -449,8 +461,22 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
->   			      DISP_REG_OVL_SRC_SIZE(idx));
->   	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
->   			      DISP_REG_OVL_OFFSET(idx));
-> -	mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-> -			      DISP_REG_OVL_ADDR(ovl, idx));
+> +int mtk_gem_create_ioctl(struct drm_device *dev, void *data,
+> +			 struct drm_file *file_priv)
+> +{
+> +	struct mtk_drm_gem_obj *mtk_gem;
+> +	struct drm_mtk_gem_create *args = data;
+> +	int ret;
 > +
-> +	if (state->pending.is_sec) {
-> +		const struct drm_format_info *fmt_info = drm_format_info(fmt);
-> +		unsigned int buf_size = (pending->height - 1) * pending->pitch +
-> +					pending->width * fmt_info->cpp[0];
+> +	mtk_gem = mtk_drm_gem_create(dev, args->size, false);
+> +	if (IS_ERR(mtk_gem))
+> +		return PTR_ERR(mtk_gem);
 > +
-> +		mtk_ddp_write_mask(cmdq_pkt, BIT(idx), &ovl->cmdq_reg, ovl->regs,
-> +				   DISP_REG_OVL_SECURE, BIT(idx));
-> +		mtk_ddp_sec_write(cmdq_pkt, ovl->regs_pa + DISP_REG_OVL_ADDR(ovl, idx),
-> +				  pending->addr, CMDQ_IWC_H_2_MVA, 0, buf_size, 0);
-> +	} else {
-> +		mtk_ddp_write_mask(cmdq_pkt, 0, &ovl->cmdq_reg, ovl->regs,
-> +				   DISP_REG_OVL_SECURE, BIT(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_ADDR(ovl, idx));
-> +	}
+> +	/*
+> +	 * allocate a id of idr table where the obj is registered
+> +	 * and handle has the id what user can see.
+> +	 */
+> +	ret = drm_gem_handle_create(file_priv, &mtk_gem->base, &args->handle);
+> +	if (ret)
+> +		goto err_handle_create;
+> +
+> +	/* drop reference from allocate - handle holds it now. */
+> +	drm_gem_object_put(&mtk_gem->base);
+> +
+> +	return 0;
+> +
+> +err_handle_create:
+> +	mtk_drm_gem_free_object(&mtk_gem->base);
+> +	return ret;
+> +}
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+> index 78f23b07a02e..90f3d2916ec5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+> @@ -46,4 +46,16 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map);
+>   void mtk_drm_gem_prime_vunmap(struct drm_gem_object *obj,
+>   			      struct iosys_map *map);
 >   
->   	if (is_afbc) {
->   		mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
-> @@ -529,6 +555,7 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
->   	}
->   
->   	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	priv->regs_pa = res->start;
->   	priv->regs = devm_ioremap_resource(dev, res);
->   	if (IS_ERR(priv->regs)) {
->   		dev_err(dev, "failed to ioremap ovl\n");
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-> index 6bf6367853fb..28a0bccfb0b9 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-> @@ -83,6 +83,18 @@ static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
->   	[OVL_ADAPTOR_ETHDR0]	= { OVL_ADAPTOR_TYPE_ETHDR, 0 },
->   };
->   
-> +static const u64 ovl_adaptor_sec_port[] = {
-> +	1ULL << CMDQ_SEC_VDO1_DISP_RDMA_L0,
+> +/*
+> + * request gem object creation and buffer allocation as the size
+> + * that it is calculated with framebuffer information such as width,
+> + * height and bpp.
+> + */
+> +int mtk_gem_create_ioctl(struct drm_device *dev, void *data,
+> +			 struct drm_file *file_priv);
+> +
+> +/* get buffer offset to map to user space. */
+> +int mtk_gem_map_offset_ioctl(struct drm_device *dev, void *data,
+> +			     struct drm_file *file_priv);
+> +
+>   #endif
+> diff --git a/include/uapi/drm/mediatek_drm.h b/include/uapi/drm/mediatek_drm.h
+> new file mode 100644
+> index 000000000000..c050de320a84
+> --- /dev/null
+> +++ b/include/uapi/drm/mediatek_drm.h
+> @@ -0,0 +1,58 @@
+> +/* SPDX-License-Identifier: GPL-2.0+ WITH Linux-syscall-note */
+> +/*
+> + * Copyright (c) 2015 MediaTek Inc.
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#ifndef _UAPI_MEDIATEK_DRM_H
+> +#define _UAPI_MEDIATEK_DRM_H
+> +
+> +#include <drm/drm.h>
+> +
+> +/**
+> + * User-desired buffer creation information structure.
 
-BIT_ULL(CMDQ_SEC_VDO1_DISP_RDMA_L0),
-BIT_ULL(......),
+You're almost there.... Read:
 
+https://docs.kernel.org/doc-guide/kernel-doc.html#structure-union-and-enumeration-documentation
 
 Regards,
 Angelo
