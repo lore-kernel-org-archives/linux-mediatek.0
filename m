@@ -4,84 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06A16C07545
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 13:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01531C00A8F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 13:18:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=V/96WPswKcBGVW2RKfpfPf9twyY3/Kf4WZ0VWxugkAY=; b=mp1
-	na3Xn9cQQcVnvi/ZpF1umDbpTfdm5MTF0zAdEU8N5+7vJ2TajoGBBHGseL2AX4nG3YOap71pFb1f8
-	IBI7kTE1WzQJJdI9sBqJiDzJQymvQJhr1l+CzXPQqYdcOWgQEgwq2HSQ3Iti0rOnkXur9XM8g+0JX
-	xJnCjzrdj+2FoTiBPVndMeDuPsnyRxTMQIkLrCsxgYaZwJgAnEaGWYwclyKPmP8dxCclVaS98Xx5h
-	s/HY1EQBAkSkW14wFYpIsq6J78JQn4kLFdYnRPfALEj8/ecJvnV3LJd5ppvGZFmljI/kW8kO6Jkf/
-	S56XhGwK7CftjRWYl5hdCkXQ+abfahA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1669Hl6Ks0FQv/7szMzI1OYODzfDqUz/lTvAbJbZ7pQ=; b=ayYw1ghk9laCe60em2uxgGT+8r
+	Dqb/OSKjh2km+FDabAkHVJm6Vufs+sVWLuH+9TkCC4L14GXYtdGiyDn7jF4HO9Ewpbq9yHTD66Jb8
+	7vB9kpzn1E0TRbbBID0vEb5Jsz9DjFXqs7wXo8YjxbiZGHlyz0Q/NFQKC4urANppqzSZfgaVG5eA7
+	Mj3Ean9taWw/pY8TMNFsstsV3tRlSU/4HmjkK2ssnr8g+ejm6ULa/QO15CnR89BLZMtrlX0EkqXyx
+	3YF6MLaYfWC6Cej+Up4qzoIqDLQ7MCuyMT225esnS+fyLMwKFht7nAABZLKySnwbdAxPirz96CJlt
+	50OWdfzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvHBZ-009tqi-2P;
-	Tue, 24 Oct 2023 13:11:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qvHIk-009ukK-3D;
+	Tue, 24 Oct 2023 13:18:31 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvHBW-009tq1-0u;
-	Tue, 24 Oct 2023 13:11:03 +0000
-X-UUID: c45b2d6e726e11ee86758d4a7c00f3a0-20231024
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=V/96WPswKcBGVW2RKfpfPf9twyY3/Kf4WZ0VWxugkAY=;
-	b=EN3o8w03bZgpZqPckIesSncz7MPedW3dnlrlwuJOKO4kY+FRDXawCjqVRM1LD6CEuuH2Si4ujrouxBdi+O+HVZ456Emh6llQg8lyQxIp+2HpSmvCdYgS+RFXdTIPTnt+BFSBBuYUc1pv7UX1dfa6yKpSz6JnYWxFJ2IvrnUs1gg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:559cacb4-8067-48b0-8a11-0f8cfafdc590,IP:0,U
-	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:5f78ec9,CLOUDID:5f939394-10ce-4e4b-85c2-c9b5229ff92b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: c45b2d6e726e11ee86758d4a7c00f3a0-20231024
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1724604388; Tue, 24 Oct 2023 06:10:56 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 24 Oct 2023 21:00:51 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 24 Oct 2023 21:00:51 +0800
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
- Hu" <ck.hu@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v11 00/23] Add display driver for MT8188 VDOSYS1
-Date: Tue, 24 Oct 2023 21:00:25 +0800
-Message-ID: <20231024130048.14749-1-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qvHIg-009uh0-1k;
+	Tue, 24 Oct 2023 13:18:28 +0000
+Received: from [192.168.2.43] (109-252-153-31.dynamic.spd-mgts.ru [109.252.153.31])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: dmitry.osipenko)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E7E0A6606F65;
+	Tue, 24 Oct 2023 14:18:14 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698153496;
+	bh=ZdNDKOXjLrdi253ASqG3On1nms5VdNUTOFAf7syjdvQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=J9AOWejTF4j3Axawxdi6Wese0sV0Fgpn1yfckKxnBdUMW9QbJ4aXHxWPq24gSILSI
+	 TWA1G3NavJBoB0+HoRgbISU9iHdWULRDF89dYFpMCs83a/lrtAstQrBuOoEuf/MZq9
+	 mwPlx6EbSW9dzk+I3aaPxRSKlfk6GvxrocDsuRxS/UMkgjPVfXKh2wH5EhHayCdwpu
+	 qfe7hoXfms7HHUgh0znYH0vvU+NVW24crg++n5pVMw7//VS65gFjTjfO7Uhlqmh1bh
+	 39zvb35EdAq9PZVGQts+k5ToyDyexWRc3HM0Nu926LXPdpMdQtVWWGIAdXFe1QmUJA
+	 H/zfqim9qdkug==
+Message-ID: <46f704c2-ba42-4e16-d798-ea2171e5ba16@collabora.com>
+Date: Tue, 24 Oct 2023 16:18:11 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.087300-8.000000
-X-TMASE-MatchedRID: SOyT7GaTUYHmOzW2IQkhLISvKOGqLLPKfLPKYyLDlAdUjspoiX02Fw3J
-	2slQCgvmfMtvnnFP0XiIMJ/v7Y5X97JN15vcogu+VU3yVpaj3QyMjqpeR/YVDWecrqZc3vabFEF
-	kjDWppsnBfR/WU+6YOLarhEB4xGYZ+uobhwVz9gDLtNJZxvPj1pKLNrbpy/A0grAXgr/AjP0MhQ
-	WlzVDAVWdNfQ/gmrCQASo1XNPhrPpmmT12WpbGAj9B1SHosSXQYQXxsZnRwoK8NrbzjPvzJ2hyl
-	Wuy2341id8I3ssVPENypjYJtCokIGaAyMVnPatLkkBrUL/4Vy4j3JVwc0NTto5RXzY0MfgCMDPF
-	cR5xz2RZfh5NyMNmxIAy6p60ZV62fJ5/bZ6npdg7AFczfjr/7CED7qr0ErNomJ9V/T+p9TqxZ6Y
-	PVMw1Xgu+a2/6V/5vVYSDFXwlmz0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.087300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 6D6A65416BD5D04AF31EBE9A568C294115A631C580EF18D534B7FE7AB129AED82000:8
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH] media: mtk-jpeg: Fix use after free bug due to error path
+ handling in mtk_jpeg_dec_device_run
+Content-Language: en-US
+To: Zheng Wang <zyytlz.wz@163.com>
+Cc: Kyrie.Wu@mediatek.com, bin.liu@mediatek.com, mchehab@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Irui.Wang@mediatek.com, security@kernel.org, hackerzheng666@gmail.com,
+ 1395428693sheep@gmail.com, alex000young@gmail.com, amergnat@baylibre.com,
+ wenst@chromium.org, stable@vger.kernel.org
+References: <20231020040732.2499269-1-zyytlz.wz@163.com>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20231020040732.2499269-1-zyytlz.wz@163.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_061102_355498_05A8DD5C 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20231024_061826_874211_3C641336 
+X-CRM114-Status: GOOD (  26.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,122 +78,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Johnson Wang <johnson.wang@mediatek.corp-partner.google.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>, Sean Paul <sean@poorly.run>, devicetree@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series is based on mediatek-drm-next branch of
-kernel/git/chunkuang.hu/linux.git.
+On 10/20/23 07:07, Zheng Wang wrote:
+> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
+> mtk_jpeg_job_timeout_work.
+> 
+> In mtk_jpeg_dec_device_run, if error happens in
+> mtk_jpeg_set_dec_dst, it will finally start the worker while
+> mark the job as finished by invoking v4l2_m2m_job_finish.
+> 
+> There are two methods to trigger the bug. If we remove the
+> module, it which will call mtk_jpeg_remove to make cleanup.
+> The possible sequence is as follows, which will cause a
+> use-after-free bug.
+> 
+> CPU0                  CPU1
+> mtk_jpeg_dec_...    |
+>   start worker	    |
+>                     |mtk_jpeg_job_timeout_work
+> mtk_jpeg_remove     |
+>   v4l2_m2m_release  |
+>     kfree(m2m_dev); |
+>                     |
+>                     | v4l2_m2m_get_curr_priv
+>                     |   m2m_dev->curr_ctx //use
+> 
+> If we close the file descriptor, which will call mtk_jpeg_release,
+> it will have a similar sequence.
+> 
+> Fix this bug by start timeout worker only if started jpegdec worker
+> successfully so the v4l2_m2m_job_finish will only be called on
+> either mtk_jpeg_job_timeout_work or mtk_jpeg_dec_device_run.
+> 
+> This patch also reverts commit c677d7ae8314 
+> ("media: mtk-jpeg: Fix use after free bug due to uncanceled work")
+> for this patch also fixed the use-after-free bug mentioned before.
+> Before mtk_jpeg_remove is invoked, mtk_jpeg_release must be invoked
+> to close opened files. And it will call v4l2_m2m_cancel_job to wait
+> for the timeout worker finished so the canceling in mtk_jpeg_remove
+> is unnecessary.
+> 
+> Fixes: b2f0d2724ba4 ("[media] vcodec: mediatek: Add Mediatek JPEG Decoder Driver")
+> Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Cc: stable@vger.kernel.org
+> ---
+>  .../media/platform/mediatek/jpeg/mtk_jpeg_core.c    | 13 ++++++-------
+>  1 file changed, 6 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 7194f88edc0f..c3456c700c07 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1021,13 +1021,13 @@ static void mtk_jpeg_dec_device_run(void *priv)
+>  	if (ret < 0)
+>  		goto dec_end;
+>  
+> -	schedule_delayed_work(&jpeg->job_timeout_work,
+> -			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+> -
+>  	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
+>  	if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, &dst_buf->vb2_buf, &fb))
+>  		goto dec_end;
+>  
+> +	schedule_delayed_work(&jpeg->job_timeout_work,
+> +			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+> +
+>  	spin_lock_irqsave(&jpeg->hw_lock, flags);
+>  	mtk_jpeg_dec_reset(jpeg->reg_base);
+>  	mtk_jpeg_dec_set_config(jpeg->reg_base,
+> @@ -1403,7 +1403,6 @@ static void mtk_jpeg_remove(struct platform_device *pdev)
+>  {
+>  	struct mtk_jpeg_dev *jpeg = platform_get_drvdata(pdev);
+>  
+> -	cancel_delayed_work_sync(&jpeg->job_timeout_work);
+>  	pm_runtime_disable(&pdev->dev);
+>  	video_unregister_device(jpeg->vdev);
+>  	v4l2_m2m_release(jpeg->m2m_dev);
+> @@ -1750,9 +1749,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+>  	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+>  	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+>  
+> -	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
+> -			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+> -
+>  	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
+>  	if (mtk_jpeg_set_dec_dst(ctx,
+>  				 &jpeg_src_buf->dec_param,
+> @@ -1762,6 +1758,9 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+>  		goto setdst_end;
+>  	}
+>  
+> +	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
+> +			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+> +
+>  	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
+>  	ctx->total_frame_num++;
+>  	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
 
-Changes in v11:
-- Change "mtk-padding" to "mtk-disp-padding" for consistency
-- Remove patch "drm/mediatek: Remove ineffectual power management codes
-  for backward compatibility
+What about to split this patch into 3 patches:
 
-Changes in v10:
-- Remove "Reviewed-by" tags from the following commits:
-    - drm/mediatek: Power on/off devices with function pointers
-    - drm/mediatek: Manage component's clock with function pointers
-- Separate the commit into smaller ones
-    - (new) drm/mediatek: Remove ineffectual power management codes
+1. will remove cancel_delayed_work_sync()
+2. will update mtk_jpeg_dec_device_run()
+3. will update mtk_jpegdec_worker()
 
-Changes in v9:
-- Add a static inline function to power off the device
-- Change driver name to "mediatek-disp-padding"
-- Fix typo and kernel doc format error
+The reason for splitting is because the multi-core mtk_jpegdec_worker()
+doesn't present in older stable kernels, and thus, the patch isn't
+backportable as-is.
 
-Changes in v8:
-- Power on/off the components with .power_on() and .power_off()
-- Remove mtk_padding_config()
-- Remove "Reviewed-by" tags from "drm/mediatek: Add Padding to OVL adaptor"
-
-Changes in v7:
-- Start/Stop the components in OVL Adaptor with function pointers
-- Refine Padding driver
-- Fix underrun when the layer is switching off
-
-Changes in v6:
-- Separate the commits into smaller ones
-- Add DPI input mode setting
-- Fix VDOSYS1 power-on issues
-
-Changes in v5:
-- Reuse .clk_enable/.clk_disable in struct mtk_ddp_comp_funcs
-  in mtk_disp_ovl_adaptor.c
-- Adjust commits order
-
-Changes in v4:
-- Add new functions in mtk_disp_ovl_adaptor.c to enable/disable
-  components and reuse them when clock enable/disable
-- Rename components in mtk_disp_ovl_adaptor.c and sort them in
-  alphabetical order
-
-Changes in v3:
-- Define macro MMSYS_RST_NR in mtk-mmsys.h and update reset table
-- Fix typos (ETDHR -> ETHDR, VSNYC -> VSYNC)
-- Rebase dt-bindings on linux-next
-- Refine description of Padding
-- Squash reset bit map commits for VDO0 and VDO1 into one
-
-Changes in v2:
-- Remove redundant compatibles of MT8188 because it shares the same
-  configuration with MT8195
-- Separate dt-bindings by modules
-- Support reset bit mapping in mmsys driver
-
-Hsiao Chien Sung (23):
-  dt-bindings: display: mediatek: ethdr: Add compatible for MT8188
-  dt-bindings: display: mediatek: mdp-rdma: Add compatible for MT8188
-  dt-bindings: display: mediatek: merge: Add compatible for MT8188
-  dt-bindings: display: mediatek: padding: Add MT8188
-  dt-bindings: arm: mediatek: Add compatible for MT8188
-  dt-bindings: reset: mt8188: Add VDOSYS reset control bits
-  soc: mediatek: Support MT8188 VDOSYS1 in mtk-mmsys
-  soc: mediatek: Support MT8188 VDOSYS1 Padding in mtk-mmsys
-  soc: mediatek: Support reset bit mapping in mmsys driver
-  soc: mediatek: Add MT8188 VDOSYS reset bit map
-  drm/mediatek: Rename OVL_ADAPTOR_TYPE_RDMA
-  drm/mediatek: Add component ID to component match structure
-  drm/mediatek: Manage component's clock with function pointers
-  drm/mediatek: Power on/off devices with function pointers
-  drm/mediatek: Start/Stop components with function pointers
-  drm/mediatek: Sort OVL adaptor components
-  drm/mediatek: Refine device table of OVL adaptor
-  drm/mediatek: Support MT8188 Padding in display driver
-  drm/mediatek: Add Padding to OVL adaptor
-  drm/mediatek: Return error if MDP RDMA failed to enable the clock
-  drm/mediatek: Remove the redundant driver data for DPI
-  drm/mediatek: Fix underrun in VDO1 when switches off the layer
-  drm/mediatek: Support MT8188 VDOSYS1 in display driver
-
- .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
- .../display/mediatek/mediatek,ethdr.yaml      |   6 +-
- .../display/mediatek/mediatek,mdp-rdma.yaml   |   6 +-
- .../display/mediatek/mediatek,merge.yaml      |   3 +
- .../display/mediatek/mediatek,padding.yaml    |  81 ++++++
- drivers/gpu/drm/mediatek/Makefile             |   3 +-
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   8 +
- drivers/gpu/drm/mediatek/mtk_disp_merge.c     |   2 +-
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 274 +++++++++++-------
- drivers/gpu/drm/mediatek/mtk_dpi.c            |  16 +-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  10 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |   2 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  20 ++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   5 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       |  19 +-
- drivers/gpu/drm/mediatek/mtk_padding.c        | 160 ++++++++++
- drivers/soc/mediatek/mt8188-mmsys.h           | 210 ++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.c              |  27 ++
- drivers/soc/mediatek/mtk-mmsys.h              |  32 ++
- drivers/soc/mediatek/mtk-mutex.c              |  51 ++++
- include/dt-bindings/reset/mt8188-resets.h     |  75 +++++
- include/linux/soc/mediatek/mtk-mmsys.h        |   8 +
- 23 files changed, 890 insertions(+), 131 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
- create mode 100644 drivers/gpu/drm/mediatek/mtk_padding.c
-
---
-2.18.0
+-- 
+Best regards,
+Dmitry
 
 
