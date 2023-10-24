@@ -4,73 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70403C00A8F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 14:15:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ABA3C07545
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 14:25:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VP/1tDlzIPrQAvOfYhnWvYsMQpUhOw6iHjDPTiQLtRA=; b=TDqcnZ+n0Wbsbar067Q2YUbtE9
-	7kP7LbyubG/FAdSdGb+kmJ2wmSL9m5NthaXE1gmNm01THRdE/G3oU2YgwhOG1QTNDUwBVkPd+9Uoc
-	OB+7A3HoyngwzgOVJiUT1tWpftqg3iNdB5+HcOOv0KQYTFZVAIwIzwoimsoro54LADsVWOAam4kGP
-	cY3bed7YaMJ6Kzf3gfTUN9Gl9zd0rJmLmYS2nPEIS3TYjl3qRKm4uTyBnJO2TKXOI5eS1O5fqT3eT
-	bt1vXMfjnVr21ZFRn4/cmZ4Q1LIThWzBlDvEmg6cc4Sw+eFmiwPEAeJlolWCuz8kbpUtAZr1DgcNs
-	9+uWFrVQ==;
+	bh=sTENRnFDH/MiSBA8uB23f0CHV3Zm50OBvimHwqLqTLY=; b=c5/x29ums2UCFBNVcCtpzQCwts
+	S/AP4W+X6NXg7aI1rbZgcquhZsZ/gdrM7uG8ckGxVdZJFJgviM/fcdqpX2sX0GWrNU3zDhsPi6ghb
+	ezNKecEd2sBih6gWu7E6prK+xHGhioCxxnQ7cl0IIpTv6QUxiDZ4pCd36/TNRtME+WAHEExPW0f+p
+	XIXSSnrRtb3umhPPTka2YW4ueYnVHcC9TSoL3HRMztiauDGnL2RU2T8hv3kHzWasPhlUq/h0TmufC
+	w03AVtK4+WtU9xgfQcfUcWcl2vmjkv9rAe+9/kRLmSqAL7WXbAgW5OY8Yu4RIOuMph/ivBRyfojHT
+	4H6vKGhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvIBo-00A6YW-2D;
-	Tue, 24 Oct 2023 14:15:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qvILH-00A7aG-1A;
+	Tue, 24 Oct 2023 14:25:11 +0000
+Received: from mail-oo1-f41.google.com ([209.85.161.41])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvH1s-009qVw-2L;
-	Tue, 24 Oct 2023 13:01:12 +0000
-X-UUID: 5e279e70726d11ee86758d4a7c00f3a0-20231024
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VP/1tDlzIPrQAvOfYhnWvYsMQpUhOw6iHjDPTiQLtRA=;
-	b=jsyqzqdqRZJkemAbjvhtnLic0YuN8mZoiFCqiF5LspOCExjQKUHJZtCGqV9QjdYfCg2iQHQyip8KYwS1AzOTZ094jEQ2F2AJn55IV65p5kL9c/oWgOGZkli0A+hxsa6/7zt+1veeD+kBh5saqTmWfiWGpY0t6fSM0rrJMX2MQiA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:ad96849e-d0b2-4de4-bca0-af91d5bc83de,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:19dab6fb-4a48-46e2-b946-12f04f20af8c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 5e279e70726d11ee86758d4a7c00f3a0-20231024
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1050071935; Tue, 24 Oct 2023 06:00:55 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 24 Oct 2023 21:00:52 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 24 Oct 2023 21:00:52 +0800
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
- Hu <ck.hu@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v11 03/23] dt-bindings: display: mediatek: merge: Add compatible for MT8188
-Date: Tue, 24 Oct 2023 21:00:28 +0800
-Message-ID: <20231024130048.14749-4-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231024130048.14749-1-shawn.sung@mediatek.com>
-References: <20231024130048.14749-1-shawn.sung@mediatek.com>
+	id 1qvILC-00A7Xk-1Z;
+	Tue, 24 Oct 2023 14:25:08 +0000
+Received: by mail-oo1-f41.google.com with SMTP id 006d021491bc7-5845213c583so1504672eaf.0;
+        Tue, 24 Oct 2023 07:25:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698157503; x=1698762303;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=sTENRnFDH/MiSBA8uB23f0CHV3Zm50OBvimHwqLqTLY=;
+        b=tFA1u1k3glBZNnGOWSd+SPPdVpLS39aSzJQezUHquaZGusfDbkGuII5h+0GrC74z5B
+         X78eyzsDrcMEyrNxUT7RzTShB5itOHAl9QU1jT9d2OOZEuG6g7nGOtH/3BTu7Rgmi/Vc
+         eCP/0OeKts7HeFC49NLBElgdsab4MKWy/iRwWzYGGAR89B92kGzZvcIFZEzXLZn57/Mx
+         ZHCFcOWonzB4evPspSeAoVWf4Fr5e6tk+llpdJ2H9zQQz8b6e8L1otxlCSxDmEy1r/vE
+         n9kH0NdAcBf7n5zWdbZyCQ61gu0TRDJrOkwBhpwe37Dy7wPrhyhZfy6HbZZgjZFyIN01
+         jDxg==
+X-Gm-Message-State: AOJu0Yzy2BjgeB+K4tfND1VUAeWhTo5U4mW9GF6AeB0LbnjQKimokywm
+	52d1F0VmAqrnn4mfjiCPCQ==
+X-Google-Smtp-Source: AGHT+IFi+wUzpHfgZ8zfKt641YNAo4P94oG7imu28ijkctLr8rSHz5f9MF1hyEAgXwXwercbvcmRUQ==
+X-Received: by 2002:a05:6870:1f0c:b0:1e9:bbfe:6457 with SMTP id pd12-20020a0568701f0c00b001e9bbfe6457mr15080276oab.6.1698157502801;
+        Tue, 24 Oct 2023 07:25:02 -0700 (PDT)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id k7-20020a056870d38700b001e9a7280a30sm2187892oag.0.2023.10.24.07.24.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Oct 2023 07:25:02 -0700 (PDT)
+Received: (nullmailer pid 3693654 invoked by uid 1000);
+	Tue, 24 Oct 2023 14:24:57 -0000
+Date: Tue, 24 Oct 2023 09:24:57 -0500
+From: Rob Herring <robh@kernel.org>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, 
+	Vignesh Raghavendra <vigneshr@ti.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Hector Martin <marcan@marcan.st>, 
+	Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Vincent Shih <vincent.sunplus@gmail.com>, Alessandro Zummo <a.zummo@towertech.it>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Christian Marangi <ansuelsmth@gmail.com>, Anson Huang <Anson.Huang@nxp.com>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Lala Lin <lala.lin@mediatek.com>, 
+	Komal Bajaj <quic_kbajaj@quicinc.com>, Kumar Thella <sthella@codeaurora.org>, 
+	Keiji Hayashibara <hayashibara.keiji@socionext.com>, linux-mtd@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-rtc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject: Re: [PATCH V2] dt-bindings: nvmem: move deprecated cells binding to
+ its own file
+Message-ID: <20231024142457.GA3684864-robh@kernel.org>
+References: <20231003064018.7502-1-zajec5@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231003064018.7502-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_060104_866540_53CFA13C 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231024_072506_532232_EBDD6C15 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +102,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Johnson Wang <johnson.wang@mediatek.corp-partner.google.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>, Sean Paul <sean@poorly.run>, devicetree@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible name for MediaTek MT8188 MERGE.
+On Tue, Oct 03, 2023 at 08:40:18AM +0200, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> Support for old NVMEM fixed cells was deprecated in favour of
+> "fixed-layout". It's still part of the nvmem.yaml though and may be
+> unknowingly used by new bindings added without much of analyze.
+> 
+> To make it more difficult to accidentally support old syntax move its
+> binding to separated file with "deprecated" in its name.
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
+> V2: Fix path to nvmem-deprecated-cells.yaml in amlogic,meson6-rtc.yaml
+> 
+>  .../devicetree/bindings/mtd/mtd.yaml          |  7 ++++-
+>  .../bindings/mtd/partitions/nvmem-cells.yaml  |  1 +
+>  .../nvmem/amlogic,meson-gxbb-efuse.yaml       |  1 +
+>  .../bindings/nvmem/amlogic,meson6-efuse.yaml  |  1 +
+>  .../bindings/nvmem/apple,efuses.yaml          |  1 +
+>  .../devicetree/bindings/nvmem/imx-ocotp.yaml  |  1 +
+>  .../bindings/nvmem/mediatek,efuse.yaml        |  1 +
+>  .../nvmem/microchip,sama7g5-otpc.yaml         |  1 +
+>  .../devicetree/bindings/nvmem/mxs-ocotp.yaml  |  1 +
+>  .../nvmem/nvmem-deprecated-cells.yaml         | 28 +++++++++++++++++++
+>  .../devicetree/bindings/nvmem/nvmem.yaml      |  9 ------
+>  .../bindings/nvmem/qcom,qfprom.yaml           |  1 +
+>  .../bindings/nvmem/qcom,sec-qfprom.yaml       |  1 +
+>  .../bindings/nvmem/qcom,spmi-sdam.yaml        |  1 +
+>  .../bindings/nvmem/rockchip,otp.yaml          |  1 +
+>  .../bindings/nvmem/rockchip-efuse.yaml        |  1 +
+>  .../nvmem/socionext,uniphier-efuse.yaml       |  1 +
+>  .../bindings/nvmem/sunplus,sp7021-ocotp.yaml  |  1 +
+>  .../bindings/rtc/amlogic,meson6-rtc.yaml      |  1 +
+>  19 files changed, 50 insertions(+), 10 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/nvmem/nvmem-deprecated-cells.yaml
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- .../devicetree/bindings/display/mediatek/mediatek,merge.yaml   | 3 +++
- 1 file changed, 3 insertions(+)
+You missed allwinner,sun4i-a10-sid.yaml and at24.yaml 
+(arch/arm/boot/dts/broadcom/bcm53016-meraki-mr32.dts). Maybe we want to 
+fix the latter case because at24 will continually have new users.
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-index eead5cb8636e..5c678695162e 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-@@ -27,6 +27,9 @@ properties:
-       - items:
-           - const: mediatek,mt6795-disp-merge
-           - const: mediatek,mt8173-disp-merge
-+      - items:
-+          - const: mediatek,mt8188-disp-merge
-+          - const: mediatek,mt8195-disp-merge
- 
-   reg:
-     maxItems: 1
--- 
-2.18.0
-
+Rob
 
