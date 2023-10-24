@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFB05C25B67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 00:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63E1BC25B67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 00:46:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9VOeGW1+YeyU2G0JvKEORbZjMo9uwDqxfDmsj8nfnjM=; b=GD+nL63EZUzvZ/
-	eC2ST0vrJ05BK29Y0lxhAfIvqZVonmzoXrx1hkw2egFerVlLWLWmS+pdbfGW/BlHaQ2M+aAYhOmT6
-	cA5/mOZRl+smvGSJywP62UHqOoScu89sjwzUmG97CTiat2ma8S65fIlrjP6FBBQ8IvuaPaN5kjgJB
-	Z6Eq7ezI1DAXZCQGqb1TIU4wAre5YfzPAv3gVFa74bCahuM7JsFRd+tQ4JgXWfSS2/RNcXiNt4/Ci
-	Ye2DVtP0ViiRk39gNb0MinxcKXMglOjMmxf8zsBecYCoVoGKTiG5YW3pNHnQYETGXP2TkFvGzADRM
-	Q+hGemtx6N1phFNPdcww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6IvmF21Mv3IeyWXjBmr7pklV2wwNcuIsNfumsNBWsts=; b=aTEQIAXDXDOFoai2/IL1Bx30ha
+	8P5118gRj487i24i2ExerV2qOyv0Saoq8cLmwnUpm7h8KipzazNdRhYWQQ/i1pV2l1vw8OfKebnEu
+	fZoBRIOqg09qi9JBDNN3+rDYmoHqHZ1YMwTw5xXY0pCyLM93nvXzHcpBCMKJD/O+PamOcE/5j5liM
+	smaWltS2pWC60M0rqyBFiaAP4AMGGzuPqmWUL7nAQxtayrL2fnQUx25xub14oY3iHp/r1nAn4SUXJ
+	h6vDGEb3DYyZIAYzFdswZN78/PHXgTBGo+kVs0wloMtCHiDRadkjd7ccY6F0bJep2F1LDXQl9y06z
+	TtA6Hjzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qv4xx-008V5o-2Q;
-	Tue, 24 Oct 2023 00:08:13 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1qv5Yj-008XNf-0L;
+	Tue, 24 Oct 2023 00:46:13 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qv4xP-008Uog-1T
-	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Oct 2023 00:07:42 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-1c87a85332bso32959195ad.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Oct 2023 17:07:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1698106056; x=1698710856; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9VOeGW1+YeyU2G0JvKEORbZjMo9uwDqxfDmsj8nfnjM=;
-        b=bzYpqqm2rFOitm9VGc4EoFAptEFSoVZ2AX0buuEcT/V0cPNLfaGFjr63XkEz8ZOlRA
-         wbMkIEv7iEd2vIuv4L0yBe0awNlDx3fT2eNTe1NWB4HKQq0rjaPlKEOC3h/7lS3zgPgs
-         qB928PxHfjqtxkNSsGQF81F/OgNVd9/isq9Mo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698106056; x=1698710856;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9VOeGW1+YeyU2G0JvKEORbZjMo9uwDqxfDmsj8nfnjM=;
-        b=C/9C1AVUHXxTQGQuZdFZTJfQnGnIE/g3s8S3IQpSRpF4yMFpfnFsCDtoDryhcskn6H
-         mA4RNQKYZRIrehCJFSJ446XhYEAqPU7T+Z3eBtLawjoWCj+lPXlyd4XzOInZT4hE5Dvn
-         t0XbR7AiS9+i5/lGBUCccniS8uskyleEahY6lXVN3066uXlPccJ3h15sz1cb+WmMPYs1
-         hvESO93aqRhVmBAIZ/Fv/cxEMsucg1i9Yk1W+qrEfGNHr7k+V3+IO80wu/LL6sLf2URK
-         E8iPnyHKOHSXFo+0/VbpKBhKWX9DNRPXtO7b+Bo060UI3fmivaaRUHHxQ7qPUDy2PLVh
-         bhSg==
-X-Gm-Message-State: AOJu0YzPeYIu0RUG8Gq4xi28bDei8aBmKOX5BMN6/e9cN8J8vhdLvE64
-	3yB6hYcRSWgfcqi7ip7bLNcZoA==
-X-Google-Smtp-Source: AGHT+IGJlNox07Z+qWP/5jJ6ZTp86n/wGTcwmCUD6ggrOUjFIR1tQ0GTE4odCzw3VRIeGQT7pg3Dbg==
-X-Received: by 2002:a17:902:ce88:b0:1ca:92a:df0 with SMTP id f8-20020a170902ce8800b001ca092a0df0mr11804998plg.59.1698106055836;
-        Mon, 23 Oct 2023 17:07:35 -0700 (PDT)
-Received: from hsinyi.sjc.corp.google.com ([2620:15c:9d:2:5a2d:c345:7f3f:d26c])
-        by smtp.gmail.com with ESMTPSA id a10-20020a170902ecca00b001c5dea67c26sm6505510plh.233.2023.10.23.17.07.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 17:07:35 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [PATCH 5/6] dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-jacuzzi-pico
-Date: Mon, 23 Oct 2023 17:02:28 -0700
-Message-ID: <20231024000724.57714-6-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.42.0.758.gaed0368e0e-goog
-In-Reply-To: <20231024000724.57714-1-hsinyi@chromium.org>
-References: <20231024000724.57714-1-hsinyi@chromium.org>
+	id 1qv5Yf-008XMu-0i;
+	Tue, 24 Oct 2023 00:46:11 +0000
+Received: from localhost.localdomain (unknown [IPv6:2804:14d:e646:872b:1c98:7e30:3cb0:3153])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: koike)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 41A42660576C;
+	Tue, 24 Oct 2023 01:45:58 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698108363;
+	bh=SaswpbkVdrBVcEGwp2lysUkf3YilP1553pBismvxcjA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=FFExJTwgJfJ1YZGhj9AzbLdAUhcCUl7vNL/Awb7A0/xQjNofjw5SyM10sNLwdbmFT
+	 uYzDioj9bfSZDBneky+GDZ9c+JywnWD21SNM0dOFAWr8hLi8S/iRxcw6ZlGQF66qmq
+	 VogL9/FhDcS9Okopg8JBJ3uEmLvIUEynTrFEtA/BPdv6vwYU4ccNHmL9knpPwhliga
+	 3zwsAFuiGb+NdrFZgqK4oPA4jFFfxdmw5oQPf8LHg4v850fM+YL6TRrjyCgtp905HH
+	 4M324hoKmU+GX6KM75r8Z/My9p1hDsA7j+hvc2Va3EpLEJasXXOkaY8+K7kneIQJmc
+	 qHpEQGEmhXMQg==
+From: Helen Koike <helen.koike@collabora.com>
+To: dri-devel@lists.freedesktop.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robdclark@chromium.org,
+	dmitry.baryshkov@linaro.org,
+	vignesh.raman@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	guilherme.gallo@collabora.com,
+	david.heidelberg@collabora.com,
+	quic_abhinavk@quicinc.com,
+	quic_jesszhan@quicinc.com,
+	mripard@kernel.org,
+	daniels@collabora.com,
+	Helen Koike <helen.koike@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 00/10] drm/ci: fixes and improvements
+Date: Mon, 23 Oct 2023 21:45:15 -0300
+Message-Id: <20231024004525.169002-1-helen.koike@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_170739_504228_E0CBDD44 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231023_174609_590989_73582578 
+X-CRM114-Status: GOOD (  15.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,36 +82,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add pico (sku1) and pico6 (sku2).
+This series contains the several fixes, making drm/ci much
+more reliable and useful.
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
+Highlights:
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index b131e0bdbf01..6bb1d80dd4eb 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -262,6 +262,13 @@ properties:
-           - const: google,makomo-rev5-sku1
-           - const: google,makomo
-           - const: mediatek,mt8183
-+      - description: Google Pico (Acer Chromebook Spin 311)
-+        items:
-+          - enum:
-+              - google,pico-sku1
-+              - google,pico-sku2
-+          - const: google,pico
-+          - const: mediatek,mt8183
-       - description: Google Willow (Acer Chromebook 311 C722/C722T)
-         items:
-           - enum:
+* Current DRM/CI in drm-misc is broken, this series fixes it with mesa
+  uprev (commit 1/9).
+
+* The fails.txt and flakes.txt lists were generated by a bogus script,
+  this series restart that initial list from scratch (commit 5/9),
+  which reduced considerably the number of flakes.
+
+* Jobs are run in a subset of available DUTs in the Lava farm
+  (commit 6/9) to not block merge requests for Mesa3D.
+
+* Add python script update-xfails.py to update the xfails lists
+  (commit 3/9).
+
+Tested on https://gitlab.freedesktop.org/helen.fornazier/linux/-/pipelines/1014358
+
+To work properly, the following patches are also required:
+
+[PATCH 2/2] drm/ci: force-enable CONFIG_MSM_MMCC_8996 as built-in
+https://patchwork.kernel.org/project/linux-arm-msm/patch/20231008132320.762542-2-dmitry.baryshkov@linaro.org/
+
+[PATCH] drm/ci: Enable CONFIG_BACKLIGHT_CLASS_DEVICE
+https://patchwork.kernel.org/project/dri-devel/patch/20231002164715.157298-1-robdclark@gmail.com/
+
+v3 changes:
+- adjust timeout of i915 so jobs can pass
+- small adjustments in the flakes list
+- point requirements.txt to new ci-collate to fix flakes
+- update to latest version of mesa to get the patch that disables bare-metal retries
+- fix typos
+
+Helen Koike (10):
+  drm/ci: uprev mesa version: fix container build & crosvm
+  drm/ci: fix DEBIAN_ARCH and get amdgpu probing
+  drm/ci: add helper script update-xfails.py
+  drm/ci: uprev IGT and make sure core_getversion is run
+  drm/ci: clean up xfails (specially flakes list)
+  drm/ci: add subset-1-gfx to LAVA_TAGS and adjust shards
+  drm/ci: increase i915 job timeout to 1h30m
+  drm/ci: export kernel config
+  drm/ci: do not automatically retry on error
+  drm/ci: docs: add step about how to request privileges
+
+ Documentation/gpu/automated_testing.rst       |   7 +-
+ drivers/gpu/drm/ci/build.sh                   |   3 +-
+ drivers/gpu/drm/ci/build.yml                  |   1 +
+ drivers/gpu/drm/ci/gitlab-ci.yml              |  38 ++--
+ drivers/gpu/drm/ci/igt_runner.sh              |  31 ++-
+ drivers/gpu/drm/ci/image-tags.yml             |   6 +-
+ drivers/gpu/drm/ci/lava-submit.sh             |   6 +-
+ drivers/gpu/drm/ci/test.yml                   |  34 +--
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |  12 +-
+ .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |  20 --
+ drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |   9 +
+ .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |  32 ---
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |  11 -
+ drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |   1 -
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |  14 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |  38 ----
+ drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |  17 ++
+ drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt |  41 ----
+ drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   7 +
+ drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |  25 ---
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   1 -
+ drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt |   5 -
+ drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt |   1 -
+ .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |   0
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   5 +-
+ .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |  14 --
+ .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |  14 +-
+ .../gpu/drm/ci/xfails/meson-g12b-flakes.txt   |   4 -
+ .../gpu/drm/ci/xfails/msm-apq8016-flakes.txt  |   4 -
+ .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |   2 +
+ .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |   4 -
+ .../gpu/drm/ci/xfails/msm-sc7180-fails.txt    |  15 +-
+ .../gpu/drm/ci/xfails/msm-sc7180-flakes.txt   |  24 ++-
+ .../gpu/drm/ci/xfails/msm-sc7180-skips.txt    |  18 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |   9 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |  19 +-
+ drivers/gpu/drm/ci/xfails/requirements.txt    |  17 ++
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   6 +
+ .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |   9 -
+ .../drm/ci/xfails/rockchip-rk3399-fails.txt   |  40 +++-
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  28 +--
+ drivers/gpu/drm/ci/xfails/update-xfails.py    | 204 ++++++++++++++++++
+ .../drm/ci/xfails/virtio_gpu-none-flakes.txt  |   0
+ 43 files changed, 464 insertions(+), 332 deletions(-)
+ delete mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/requirements.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
+ create mode 100755 drivers/gpu/drm/ci/xfails/update-xfails.py
+ delete mode 100644 drivers/gpu/drm/ci/xfails/virtio_gpu-none-flakes.txt
+
 -- 
-2.42.0.758.gaed0368e0e-goog
+2.39.2
 
 
