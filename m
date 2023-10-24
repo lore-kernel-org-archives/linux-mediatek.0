@@ -4,98 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E8F7C25B70
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 13:03:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06A16C07545
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 13:11:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SqpcqcoJjkFKSwF2F7GjLuy8TwwHoQkHLyekelq8u4I=; b=KkmP82H5xGroo4X0Pe/5GrCpC6
-	fVdpRgbjqcG+/WhtIYCBOQrtuXE8bhbyIWJq0R/rEjqQSwESEQHRq7kiEJGxgkKJDeXsEozdThwto
-	v9rJcjHrl3THF3IkP84C+GAfyh8IhwWxpoTkR3NrkL3OVhH9Y4HEmk/XnulZXIgDPO21AjQo156yW
-	Uo6VpzURbQ9p4xF62Q9mcCNcxTAdUg9GbMnyIzvciHvy0gP48gT7PplDgRXttLTSjxgH5Q4mMeFW+
-	zdt4ZGXRZ3xRFl4T2QiFrpAfIarMvQYYdG8JWV3BwHn51UvnbUFXJ1ABhfDILOoIBwKKU+QtLmIz/
-	MeWGGizQ==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=V/96WPswKcBGVW2RKfpfPf9twyY3/Kf4WZ0VWxugkAY=; b=mp1
+	na3Xn9cQQcVnvi/ZpF1umDbpTfdm5MTF0zAdEU8N5+7vJ2TajoGBBHGseL2AX4nG3YOap71pFb1f8
+	IBI7kTE1WzQJJdI9sBqJiDzJQymvQJhr1l+CzXPQqYdcOWgQEgwq2HSQ3Iti0rOnkXur9XM8g+0JX
+	xJnCjzrdj+2FoTiBPVndMeDuPsnyRxTMQIkLrCsxgYaZwJgAnEaGWYwclyKPmP8dxCclVaS98Xx5h
+	s/HY1EQBAkSkW14wFYpIsq6J78JQn4kLFdYnRPfALEj8/ecJvnV3LJd5ppvGZFmljI/kW8kO6Jkf/
+	S56XhGwK7CftjRWYl5hdCkXQ+abfahA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvH4W-009sC5-0A;
-	Tue, 24 Oct 2023 13:03:48 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qvHBZ-009tqi-2P;
+	Tue, 24 Oct 2023 13:11:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvH2e-009r9L-1b;
-	Tue, 24 Oct 2023 13:01:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=SqpcqcoJjkFKSwF2F7GjLuy8TwwHoQkHLyekelq8u4I=; b=i6Qpv8CLdjYVdiNkHfKN7zeM06
-	nwVLQzZBzM5nEZ0/IxX5rdcpm8ruEXIDl1jMIQQ4suxmI2g3QUOtypGesveoEyFYZ+pBt6ak8UPtZ
-	5iqwcvaF8LG1PlWhleX8amNiUV/kGc+pbvbWAWYdYQEdM7CpTBuwtPDLXMFTHSiB5KyEQGfX6C8aS
-	V2EsteF0Pa1gxIRoMgHwGV1oR2xduA4wzp70dPOlaeQoRanj6zS+j5Y86cvCzk4iy+mqrMKqATcQZ
-	lDNsktAvKZplPdsrLrt8z6K5CIZ+xGS1YhhlRF83gwSf6zufvppnLTfIbjoELK9ySIwus6KdpgCBY
-	hWYNQA4A==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvH2V-00FWn3-2T;
-	Tue, 24 Oct 2023 13:01:51 +0000
-X-UUID: 72ebee9c726d11ee9b7791016c24628a-20231024
+	id 1qvHBW-009tq1-0u;
+	Tue, 24 Oct 2023 13:11:03 +0000
+X-UUID: c45b2d6e726e11ee86758d4a7c00f3a0-20231024
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SqpcqcoJjkFKSwF2F7GjLuy8TwwHoQkHLyekelq8u4I=;
-	b=k7kQw8t0lWYzvfVNuQvOs4GZCkoiFiynLrVH/5RkCUshEi7hxKaEC15dzrNwNBxHLkcf23HWUrn5Ka4SdGoj/iU2G1iDmfyUlsK5xwL7WnqNd+h6xi1K1gW79M6c7lIGPSmf3c4Mm2lz4DbTWHBbzHGX/PqRAMDAERBdPsAxBL4=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=V/96WPswKcBGVW2RKfpfPf9twyY3/Kf4WZ0VWxugkAY=;
+	b=EN3o8w03bZgpZqPckIesSncz7MPedW3dnlrlwuJOKO4kY+FRDXawCjqVRM1LD6CEuuH2Si4ujrouxBdi+O+HVZ456Emh6llQg8lyQxIp+2HpSmvCdYgS+RFXdTIPTnt+BFSBBuYUc1pv7UX1dfa6yKpSz6JnYWxFJ2IvrnUs1gg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:86d4ce3a-237a-4e79-8fbd-ac581fe88b52,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:63829394-10ce-4e4b-85c2-c9b5229ff92b,B
+X-CID-O-INFO: VERSION:1.1.32,REQID:559cacb4-8067-48b0-8a11-0f8cfafdc590,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:5f78ec9,CLOUDID:5f939394-10ce-4e4b-85c2-c9b5229ff92b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 72ebee9c726d11ee9b7791016c24628a-20231024
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+X-UUID: c45b2d6e726e11ee86758d4a7c00f3a0-20231024
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2017579705; Tue, 24 Oct 2023 06:01:30 -0700
+	with ESMTP id 1724604388; Tue, 24 Oct 2023 06:10:56 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 24 Oct 2023 21:00:55 +0800
+ 15.2.1118.26; Tue, 24 Oct 2023 21:00:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 24 Oct 2023 21:00:55 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 24 Oct 2023 21:00:51 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
  Hu" <ck.hu@mediatek.com>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v11 17/23] drm/mediatek: Refine device table of OVL adaptor
-Date: Tue, 24 Oct 2023 21:00:42 +0800
-Message-ID: <20231024130048.14749-18-shawn.sung@mediatek.com>
+Subject: [PATCH v11 00/23] Add display driver for MT8188 VDOSYS1
+Date: Tue, 24 Oct 2023 21:00:25 +0800
+Message-ID: <20231024130048.14749-1-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231024130048.14749-1-shawn.sung@mediatek.com>
-References: <20231024130048.14749-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.635000-8.000000
-X-TMASE-MatchedRID: j34N8PQvhP8eszLHPCQb9B+WEMjoO9WWCt59Uh3p/NVcKZwALwMGs0fp
-	kQx2u0Ks+qmOSYkzMxknOAFYLaUTjQDNPxu11HXj4pdq9sdj8LV9LQinZ4QefPcjNeVeWlqY+gt
-	Hj7OwNO1YDuIRWpqxhlN2D/LzWZyyhp22LCZ7ETnRPgiaEFLtWkFM85dtOQqmwPzJ0OlA2ZcbEh
-	p6dU4MXJ9jegfk4wi8iIj3rZvs2VuQkKVvpycGDXZrUbEZipAEiWT09mQz7szw9kH8zAy44SIdu
-	k5Jkjd3wL6SxPpr1/I=
+X-TM-AS-Result: No-10--8.087300-8.000000
+X-TMASE-MatchedRID: SOyT7GaTUYHmOzW2IQkhLISvKOGqLLPKfLPKYyLDlAdUjspoiX02Fw3J
+	2slQCgvmfMtvnnFP0XiIMJ/v7Y5X97JN15vcogu+VU3yVpaj3QyMjqpeR/YVDWecrqZc3vabFEF
+	kjDWppsnBfR/WU+6YOLarhEB4xGYZ+uobhwVz9gDLtNJZxvPj1pKLNrbpy/A0grAXgr/AjP0MhQ
+	WlzVDAVWdNfQ/gmrCQASo1XNPhrPpmmT12WpbGAj9B1SHosSXQYQXxsZnRwoK8NrbzjPvzJ2hyl
+	Wuy2341id8I3ssVPENypjYJtCokIGaAyMVnPatLkkBrUL/4Vy4j3JVwc0NTto5RXzY0MfgCMDPF
+	cR5xz2RZfh5NyMNmxIAy6p60ZV62fJ5/bZ6npdg7AFczfjr/7CED7qr0ErNomJ9V/T+p9TqxZ6Y
+	PVMw1Xgu+a2/6V/5vVYSDFXwlmz0=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.635000-8.000000
+X-TMASE-Result: 10--8.087300-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 446CFF5E1B8E2EC22FE4634E07705D8F2511343BAFE37762B60C715711A9E9742000:8
+X-TM-SNTS-SMTP: 6D6A65416BD5D04AF31EBE9A568C294115A631C580EF18D534B7FE7AB129AED82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_140147_921808_706147C9 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20231024_061102_355498_05A8DD5C 
+X-CRM114-Status: GOOD (  18.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,44 +97,118 @@ Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Adjust indentation to align with other files
-- Sort device table in alphabetical order
-- Add sentinel to device table
+This series is based on mediatek-drm-next branch of
+kernel/git/chunkuang.hu/linux.git.
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 15 ++++-----------
- 1 file changed, 4 insertions(+), 11 deletions(-)
+Changes in v11:
+- Change "mtk-padding" to "mtk-disp-padding" for consistency
+- Remove patch "drm/mediatek: Remove ineffectual power management codes
+  for backward compatibility
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 23c2a7488d81..df6e6cb0a9ef 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -436,17 +436,10 @@ static int ovl_adaptor_comp_get_id(struct device *dev, struct device_node *node,
- }
- 
- static const struct of_device_id mtk_ovl_adaptor_comp_dt_ids[] = {
--	{
--		.compatible = "mediatek,mt8195-vdo1-rdma",
--		.data = (void *)OVL_ADAPTOR_TYPE_MDP_RDMA,
--	}, {
--		.compatible = "mediatek,mt8195-disp-merge",
--		.data = (void *)OVL_ADAPTOR_TYPE_MERGE,
--	}, {
--		.compatible = "mediatek,mt8195-disp-ethdr",
--		.data = (void *)OVL_ADAPTOR_TYPE_ETHDR,
--	},
--	{},
-+	{ .compatible = "mediatek,mt8195-disp-ethdr", .data = (void *)OVL_ADAPTOR_TYPE_ETHDR },
-+	{ .compatible = "mediatek,mt8195-disp-merge", .data = (void *)OVL_ADAPTOR_TYPE_MERGE },
-+	{ .compatible = "mediatek,mt8195-vdo1-rdma", .data = (void *)OVL_ADAPTOR_TYPE_MDP_RDMA },
-+	{ /* sentinel */ }
- };
- 
- static int compare_of(struct device *dev, void *data)
--- 
+Changes in v10:
+- Remove "Reviewed-by" tags from the following commits:
+    - drm/mediatek: Power on/off devices with function pointers
+    - drm/mediatek: Manage component's clock with function pointers
+- Separate the commit into smaller ones
+    - (new) drm/mediatek: Remove ineffectual power management codes
+
+Changes in v9:
+- Add a static inline function to power off the device
+- Change driver name to "mediatek-disp-padding"
+- Fix typo and kernel doc format error
+
+Changes in v8:
+- Power on/off the components with .power_on() and .power_off()
+- Remove mtk_padding_config()
+- Remove "Reviewed-by" tags from "drm/mediatek: Add Padding to OVL adaptor"
+
+Changes in v7:
+- Start/Stop the components in OVL Adaptor with function pointers
+- Refine Padding driver
+- Fix underrun when the layer is switching off
+
+Changes in v6:
+- Separate the commits into smaller ones
+- Add DPI input mode setting
+- Fix VDOSYS1 power-on issues
+
+Changes in v5:
+- Reuse .clk_enable/.clk_disable in struct mtk_ddp_comp_funcs
+  in mtk_disp_ovl_adaptor.c
+- Adjust commits order
+
+Changes in v4:
+- Add new functions in mtk_disp_ovl_adaptor.c to enable/disable
+  components and reuse them when clock enable/disable
+- Rename components in mtk_disp_ovl_adaptor.c and sort them in
+  alphabetical order
+
+Changes in v3:
+- Define macro MMSYS_RST_NR in mtk-mmsys.h and update reset table
+- Fix typos (ETDHR -> ETHDR, VSNYC -> VSYNC)
+- Rebase dt-bindings on linux-next
+- Refine description of Padding
+- Squash reset bit map commits for VDO0 and VDO1 into one
+
+Changes in v2:
+- Remove redundant compatibles of MT8188 because it shares the same
+  configuration with MT8195
+- Separate dt-bindings by modules
+- Support reset bit mapping in mmsys driver
+
+Hsiao Chien Sung (23):
+  dt-bindings: display: mediatek: ethdr: Add compatible for MT8188
+  dt-bindings: display: mediatek: mdp-rdma: Add compatible for MT8188
+  dt-bindings: display: mediatek: merge: Add compatible for MT8188
+  dt-bindings: display: mediatek: padding: Add MT8188
+  dt-bindings: arm: mediatek: Add compatible for MT8188
+  dt-bindings: reset: mt8188: Add VDOSYS reset control bits
+  soc: mediatek: Support MT8188 VDOSYS1 in mtk-mmsys
+  soc: mediatek: Support MT8188 VDOSYS1 Padding in mtk-mmsys
+  soc: mediatek: Support reset bit mapping in mmsys driver
+  soc: mediatek: Add MT8188 VDOSYS reset bit map
+  drm/mediatek: Rename OVL_ADAPTOR_TYPE_RDMA
+  drm/mediatek: Add component ID to component match structure
+  drm/mediatek: Manage component's clock with function pointers
+  drm/mediatek: Power on/off devices with function pointers
+  drm/mediatek: Start/Stop components with function pointers
+  drm/mediatek: Sort OVL adaptor components
+  drm/mediatek: Refine device table of OVL adaptor
+  drm/mediatek: Support MT8188 Padding in display driver
+  drm/mediatek: Add Padding to OVL adaptor
+  drm/mediatek: Return error if MDP RDMA failed to enable the clock
+  drm/mediatek: Remove the redundant driver data for DPI
+  drm/mediatek: Fix underrun in VDO1 when switches off the layer
+  drm/mediatek: Support MT8188 VDOSYS1 in display driver
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
+ .../display/mediatek/mediatek,ethdr.yaml      |   6 +-
+ .../display/mediatek/mediatek,mdp-rdma.yaml   |   6 +-
+ .../display/mediatek/mediatek,merge.yaml      |   3 +
+ .../display/mediatek/mediatek,padding.yaml    |  81 ++++++
+ drivers/gpu/drm/mediatek/Makefile             |   3 +-
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   8 +
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c     |   2 +-
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 274 +++++++++++-------
+ drivers/gpu/drm/mediatek/mtk_dpi.c            |  16 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  10 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  20 ++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   5 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       |  19 +-
+ drivers/gpu/drm/mediatek/mtk_padding.c        | 160 ++++++++++
+ drivers/soc/mediatek/mt8188-mmsys.h           | 210 ++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c              |  27 ++
+ drivers/soc/mediatek/mtk-mmsys.h              |  32 ++
+ drivers/soc/mediatek/mtk-mutex.c              |  51 ++++
+ include/dt-bindings/reset/mt8188-resets.h     |  75 +++++
+ include/linux/soc/mediatek/mtk-mmsys.h        |   8 +
+ 23 files changed, 890 insertions(+), 131 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_padding.c
+
+--
 2.18.0
 
 
