@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4EFEC25B6D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BA50C25B48
 	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 13:03:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,90 +12,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K35JS8Ar5MRk6sNwyWlENETaimMQcw4rGeg37mEpJ9w=; b=JFUdBdx67AtHtxykcNpmMKY/O5
-	+8DlFnJ/Fm/H0s6qwZOQubmusvUPflb6HuPEMsDRq3RD6MvZvfc8FU977YYz8JBu9PuUZcmB6TSa9
-	qH6TpocRS4UxPpmosGORt2az7SMOpUkUvdcoiF8h84GBFRV5GwZfwHa7gb5ycR4DiqJX1O7covCwB
-	qBwwPKx/JvMqAmoMeUK6LkGPFZ/NNhZrJNl9KHNiY9FFeb+hI/5S2ptr0JvKZ6imQwTQG+73STRCK
-	7A5Mk87f5bSxHAcIXRdppRtKaaqT6LVQKWmwzQOx9g8sA+2CZJR8vjupi2qfjfvay4ruX2EzGpStK
-	Qw06K52w==;
+	bh=2DOefE/BgmEdi0p2M6AmOArg8I0tcDEEeXoYsJEKfSI=; b=pfdM57qPZLjcpe/XB02MCQ7iWL
+	ZsM6hRLreKhJyefXppZhGJjbVzn54dp22WGTzde0JQqJa+hxU4GxVCtytTv2CnzWXc4eZ3sDDHUrJ
+	+4fpuThOZsHX74sDEw5O0fVMhiDdJN9fvbb6GczgRo72SUGuj2Bg4OJdhMfG/Mrc3T8sfxSHnA7XI
+	+b2iXkKuqu8GoBLvmY5S8M9jFgd7xrwqGHrcMCzYUs9yi3h7yKpxF+JnPlw9SX+E5kbQcB9jAGHTO
+	Hy9/Zy1f71UPEevLUfM3MuqrkewSTkWJpuIXquNEXJMa01FSgfqg8nhrP5OBjhMLcA5WJAIJN8lHx
+	mgQeq1xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvH4T-009s9C-1u;
-	Tue, 24 Oct 2023 13:03:45 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvH2b-009r62-01;
-	Tue, 24 Oct 2023 13:01:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=K35JS8Ar5MRk6sNwyWlENETaimMQcw4rGeg37mEpJ9w=; b=MSeyUxHGm5W5urXpZBa+o/2ohy
-	1SX6YQ4ojbqK2poxE9PYHi4FGLpXbeSKc19vyfSjEI1/Eec712WbpaSyXlteZBtJGYi4XbRmFBzPw
-	rDjvXLaWpx33j4f13hPw3zvfFWgFAU3jujQ3cTbTbvnacfIWJHVV1MNtgxbIErC3uSJa6FEODJfMK
-	i3p82PgW1cnXkHpJxAz9/En3y8ZjrCUG0nxjb1Xj3shrwcarp7Nj0JKaZKFSsIX5tlehIPwrVEVfv
-	cZmPLRJR4ngUQ/WJCR8swL6qvvJtzCJfvZAI5VdGddlL6N2QkEuy5KMXgkMKSkDzA5VWNWTJ+hwmm
-	KJhja5Vg==;
+	id 1qvH4S-009s8N-2x;
+	Tue, 24 Oct 2023 13:03:44 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvH2R-00FWTH-1H;
-	Tue, 24 Oct 2023 13:01:42 +0000
-X-UUID: 7261afb6726d11ee9b7791016c24628a-20231024
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qvH2T-009qzl-0V;
+	Tue, 24 Oct 2023 13:01:47 +0000
+X-UUID: 73762cd8726d11ee9b7791016c24628a-20231024
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=K35JS8Ar5MRk6sNwyWlENETaimMQcw4rGeg37mEpJ9w=;
-	b=ijesMfT0K3YMMjike9SgOGdsjqOgrkq7boiorEkp6FsFImvd8z3pn9wdy9qDytafxVuxiWPcePaSGDB1TcNyiomeGWM0Nlg3sf3QyFaYWA9uMjbUB4K2a+aOQFHSYW/+4yg0PhTU/obObNx1jhaD7N7l7V6NI5xL8MqPpwmLJ6k=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2DOefE/BgmEdi0p2M6AmOArg8I0tcDEEeXoYsJEKfSI=;
+	b=X8N2e/JEqIh4mBZLAujABZjJ/adOXIWvisbyzN8bQq2ZiLzhPFQI4jhdfACw/Q5HOzvxoNuDG2T/vXVpv4nNynZ6HTTgSHP9CMJaClJKncPO8j/hut92WI9WBt6FandASDDI1q5yh9w0bvoOw5B3UYUweC+R/Fm+G1RcFiLtSWc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:3ca930b4-550f-47ee-8543-d9777efd7648,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:9adbb6fb-4a48-46e2-b946-12f04f20af8c,B
+X-CID-O-INFO: VERSION:1.1.32,REQID:b23e45ae-48a3-4453-851d-0b2b014089a8,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5f78ec9,CLOUDID:addbb6fb-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 7261afb6726d11ee9b7791016c24628a-20231024
+X-UUID: 73762cd8726d11ee9b7791016c24628a-20231024
 Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 578950247; Tue, 24 Oct 2023 06:01:29 -0700
+	with ESMTP id 310659481; Tue, 24 Oct 2023 06:01:30 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 24 Oct 2023 21:00:54 +0800
+ 15.2.1118.26; Tue, 24 Oct 2023 21:00:56 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 24 Oct 2023 21:00:54 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 24 Oct 2023 21:00:56 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
  Hu" <ck.hu@mediatek.com>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v11 11/23] drm/mediatek: Rename OVL_ADAPTOR_TYPE_RDMA
-Date: Tue, 24 Oct 2023 21:00:36 +0800
-Message-ID: <20231024130048.14749-12-shawn.sung@mediatek.com>
+Subject: [PATCH v11 23/23] drm/mediatek: Support MT8188 VDOSYS1 in display driver
+Date: Tue, 24 Oct 2023 21:00:48 +0800
+Message-ID: <20231024130048.14749-24-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231024130048.14749-1-shawn.sung@mediatek.com>
 References: <20231024130048.14749-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.211800-8.000000
-X-TMASE-MatchedRID: 7KGNpgCqvMgsROGFNX5ZrmNW0DAjL5p+Wot5Z16+u74IgSDinsA6bPDR
-	cRAxsuj7GQdEeHBaW01gHnELoaUKtnitpEURV7wGFYJUGv4DL3x9LQinZ4QefPcjNeVeWlqY+gt
-	Hj7OwNO2I3adjBtsMrDVCQU7hwbjMBxDhT1ORu67ubEgNcWJI//ne1K2RD3ieycak14p6yEmwb+
-	3ZXutX6dY22OiBabPZh9KkXlLItXLbiZlm4K/VY3ZrUbEZipAEiWT09mQz7szw9kH8zAy44aOuV
-	Lnx3A74
+X-TM-AS-Result: No-10--6.544100-8.000000
+X-TMASE-MatchedRID: k6EjByr1NNCA1UdczcLx7jvfsoCuAcP+uLwbhNl9B5VcKZwALwMGs43y
+	qnCHUnfZLYexjI/F2s67aBKK8e6y8yUtdpGicV4RKaMQ6tw7oDJMkOX0UoduuQqiCYa6w8tv5pf
+	3ZiBJgsHc0NDBaoYShZjXlVZ6P0cvj2hRzH1UwuAURSScn+QSXt0H8LFZNFG7bkV4e2xSge4sw3
+	GEmIriBSUhMPBH5sX4M517nGGNRDAnSTeZe+bs5kuFvzEYSdV+
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.211800-8.000000
+X-TMASE-Result: 10--6.544100-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: ECAEB028893178C07F4E405BC3A73DDD5783C1FCDFA1E01F7CBD5E4618FC2F8D2000:8
+X-TM-SNTS-SMTP: 36A1E4630DC185BA63407A1899DFFFB27C60BD7074A8A3E76D5D150055864B442000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_140139_937623_F0EF388A 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20231024_060141_211030_C83B9B4F 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,69 +96,42 @@ Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rename OVL_ADAPTOR_TYPE_RDMA to OVL_ADAPTOR_TYPE_MDP_RDMA
-to align the naming rule of mtk_ovl_adaptor_comp_id.
+- The mmsys_dev_num in MT8188 VDOSYS0 was set to 1 since
+  VDOSYS1 was not available before. Increase it to support
+  VDOSYS1 in display driver.
+- Add compatible name for MT8188 VDOSYS1
+  (shares the same driver data with MT8195 VDOSYS1)
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index f2f6a5c01a6d..33b0f74937a2 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -26,7 +26,7 @@
- #define MTK_OVL_ADAPTOR_LAYER_NUM 4
- 
- enum mtk_ovl_adaptor_comp_type {
--	OVL_ADAPTOR_TYPE_RDMA = 0,
-+	OVL_ADAPTOR_TYPE_MDP_RDMA = 0,
- 	OVL_ADAPTOR_TYPE_MERGE,
- 	OVL_ADAPTOR_TYPE_ETHDR,
- 	OVL_ADAPTOR_TYPE_NUM,
-@@ -61,20 +61,20 @@ struct mtk_disp_ovl_adaptor {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 62e6e9785443..eecfeb8fbde1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -303,7 +303,7 @@ static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
+ 	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
+ 	.conn_routes = mt8188_mtk_ddp_main_routes,
+ 	.conn_routes_num = ARRAY_SIZE(mt8188_mtk_ddp_main_routes),
+-	.mmsys_dev_num = 1,
++	.mmsys_dev_num = 2,
  };
- 
- static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
--	[OVL_ADAPTOR_TYPE_RDMA]		= "vdo1-rdma",
-+	[OVL_ADAPTOR_TYPE_MDP_RDMA]	= "vdo1-rdma",
- 	[OVL_ADAPTOR_TYPE_MERGE]	= "merge",
- 	[OVL_ADAPTOR_TYPE_ETHDR]	= "ethdr",
- };
- 
- static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
--	[OVL_ADAPTOR_MDP_RDMA0]	= { OVL_ADAPTOR_TYPE_RDMA, 0 },
--	[OVL_ADAPTOR_MDP_RDMA1]	= { OVL_ADAPTOR_TYPE_RDMA, 1 },
--	[OVL_ADAPTOR_MDP_RDMA2]	= { OVL_ADAPTOR_TYPE_RDMA, 2 },
--	[OVL_ADAPTOR_MDP_RDMA3]	= { OVL_ADAPTOR_TYPE_RDMA, 3 },
--	[OVL_ADAPTOR_MDP_RDMA4]	= { OVL_ADAPTOR_TYPE_RDMA, 4 },
--	[OVL_ADAPTOR_MDP_RDMA5]	= { OVL_ADAPTOR_TYPE_RDMA, 5 },
--	[OVL_ADAPTOR_MDP_RDMA6]	= { OVL_ADAPTOR_TYPE_RDMA, 6 },
--	[OVL_ADAPTOR_MDP_RDMA7]	= { OVL_ADAPTOR_TYPE_RDMA, 7 },
-+	[OVL_ADAPTOR_MDP_RDMA0]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 0 },
-+	[OVL_ADAPTOR_MDP_RDMA1]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 1 },
-+	[OVL_ADAPTOR_MDP_RDMA2]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 2 },
-+	[OVL_ADAPTOR_MDP_RDMA3]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 3 },
-+	[OVL_ADAPTOR_MDP_RDMA4]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 4 },
-+	[OVL_ADAPTOR_MDP_RDMA5]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 5 },
-+	[OVL_ADAPTOR_MDP_RDMA6]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 6 },
-+	[OVL_ADAPTOR_MDP_RDMA7]	= { OVL_ADAPTOR_TYPE_MDP_RDMA, 7 },
- 	[OVL_ADAPTOR_MERGE0]	= { OVL_ADAPTOR_TYPE_MERGE, 1 },
- 	[OVL_ADAPTOR_MERGE1]	= { OVL_ADAPTOR_TYPE_MERGE, 2 },
- 	[OVL_ADAPTOR_MERGE2]	= { OVL_ADAPTOR_TYPE_MERGE, 3 },
-@@ -387,7 +387,7 @@ static int ovl_adaptor_comp_get_id(struct device *dev, struct device_node *node,
- static const struct of_device_id mtk_ovl_adaptor_comp_dt_ids[] = {
- 	{
- 		.compatible = "mediatek,mt8195-vdo1-rdma",
--		.data = (void *)OVL_ADAPTOR_TYPE_RDMA,
-+		.data = (void *)OVL_ADAPTOR_TYPE_MDP_RDMA,
- 	}, {
- 		.compatible = "mediatek,mt8195-disp-merge",
- 		.data = (void *)OVL_ADAPTOR_TYPE_MERGE,
--- 
+
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+@@ -344,6 +344,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8186_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8188-vdosys0",
+ 	  .data = &mt8188_vdosys0_driver_data},
++	{ .compatible = "mediatek,mt8188-vdosys1",
++	  .data = &mt8195_vdosys1_driver_data},
+ 	{ .compatible = "mediatek,mt8192-mmsys",
+ 	  .data = &mt8192_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8195-mmsys",
+--
 2.18.0
 
 
