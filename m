@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8103FC07545
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 08:54:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53D8DC25B47
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 08:55:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DGW+Ssmyy4MwXNh9rplFKo//VpciDIHIyVQNuCfEdTc=; b=ljNH1MrKWAAjrX0ApNW8SFBeJu
-	+WsWqAzxPGmnC9Vk2EvlCeg6liCm9nBMjBrOMM5vR/9gwBlRrd9LPbGQZjtzqP+zUR7Jp7r9MnUx2
-	KDxWY5EWYJ2bcFjAXvoEqFf1FaL2+qwCjPTG9KuF3KOIbxXUCuz8LBNkE2B55QuUOAZwxdy4My+2U
-	sKzyX7YAwLiE+k1IK7cvFASJ0qpWEaeE+9qIrhkllt9GWk1DPcjZI2p1mqyPJp4Xseagt2NwR1e9l
-	IcFgNDqoQXaqkpX9M0cPwV53kNyP/nJtiJ6avJ0tb/lVHcwaNF9xmZCqZnfh00O+c41OaK/hBFEMS
-	NhdxqNog==;
+	bh=X9obi+dFD4ZozxhiYuMcykiHogKYWSTwiNLe6dQZ3lc=; b=gQyIhA3LKwKU9QU0Ag17yBdLI2
+	NRn+FeO9O4dlJDR2MwJG0oMoj+jbI4KzcR1S55OewLYZ/aWfRMK5B5RTpIAdsqtyMXFtPEFPrhIpS
+	gRb7AddYiAHSbUg/5iZwc7I+Woig24EVBbmp9cPSq0e4boCH/N/qmU4tCqz2Tof6v/hIEYS3UnkaQ
+	H0gIhZ2exaRwNwxUzSXMAA09yuOtaCUJp2xZ/KHLhwUA4EFa0h+MNVo3uzlQ+Y4zEIMmQD/J5+fP9
+	wZkEY3tUo3v510A5ugHd3GIOiqDoYHvNl1cqoDzMz65LokfKhhaJQPSOQTiYsKKA+HQ9mxdevxPPX
+	vyHjULTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvDBd-009F4B-1x;
-	Tue, 24 Oct 2023 08:54:53 +0000
+	id 1qvDBl-009F70-1M;
+	Tue, 24 Oct 2023 08:55:01 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvDBS-009F0M-1Y;
-	Tue, 24 Oct 2023 08:54:43 +0000
+	id 1qvDBT-009F17-2p;
+	Tue, 24 Oct 2023 08:54:45 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2B2D76607324;
-	Tue, 24 Oct 2023 09:54:40 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BCA126607333;
+	Tue, 24 Oct 2023 09:54:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698137681;
-	bh=VI/Y25XEqSA3SbhcywY0RAYmG7kmKXN4kUFw9lzcX+k=;
+	s=mail; t=1698137682;
+	bh=dr+lBL0FhFKWb9fkKS+Z6wsuWwCRxXkpjetaSpWWU+U=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=hxXKixMYA8uGV+JtRbFbhMk8P5mEagP8YYp9wipvRCfb8Qh8y6vOUmZp6+TCWkCuZ
-	 IFJ1+SH9h9pW7OVXNt24mHJbdB4vpM5IccdtUwe4HDwR/QvToxoHElURTRkH7GGofS
-	 LziwQ+sg5aPuLqsQzUNePA6kojjSMkmnHm9DlbIt82SxRT+AoxmBytblzjIXPx2tJq
-	 rVMFHc8Mvre2wZVYRu6ah6+JzXWUMCgnH7AXrSiRnTNGN9lfdQ47QBDma6pJ9v03oz
-	 1Mcduurdja2BlZvMeZmedcgNKg2B4el02XJUNz97Vwf2B1+Gboubc1KYuG6XRxqfuk
-	 PF8UAbpmWOpOA==
-Message-ID: <2038380d-1ea2-4130-b567-eb16ba6dcbec@collabora.com>
-Date: Tue, 24 Oct 2023 10:54:37 +0200
+	b=bPW+1ZcdTwOj8FBFdw4I1Syr+MSKAzRplZWmKVS/Oha2M90esVoa40WRkeVK6YskO
+	 ApEVEqmiNecwv6GeZZUYLGaKA0ENmqYZzd0uEJ5nOZ1F3VjggVuL112IH1bSN4PwUz
+	 BPX8ehk3k/QfbNBxFzEqij0ZP4ScW2EEFBCR5+SPeXtujlLhGddPioGPNYDMDtNhIa
+	 AcreHulGkzPzw4tHY89U7nnqI2HmQXEVf1M1uJONmTdnSb368Q4KXe6Bny81oRs8AX
+	 3/hrOPRv48li6rfPnCgbVH2CKyw4txDkHZL7wyUcxmN1P9N+P7yq2jCGJLhq6mZOn9
+	 yw4/8S1kzLmGw==
+Message-ID: <faee7aea-bf08-4a5b-be88-e04656039844@collabora.com>
+Date: Tue, 24 Oct 2023 10:54:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFT PATCH 14/17] ASoC: mediatek: mt8188: Handle component name
+Subject: Re: [RFT PATCH 13/17] ASoC: mediatek: mt8186: Handle component name
  prefix
 Content-Language: en-US
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
@@ -64,13 +64,13 @@ To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-tegra@vger.kernel.org
 References: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
- <20231023095428.166563-15-krzysztof.kozlowski@linaro.org>
+ <20231023095428.166563-14-krzysztof.kozlowski@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231023095428.166563-15-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20231023095428.166563-14-krzysztof.kozlowski@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_015442_650016_00A848A5 
+X-CRM114-CacheID: sfid-20231024_015444_065511_CD15031B 
 X-CRM114-Status: UNSURE (   5.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -94,6 +94,6 @@ Il 23/10/23 11:54, Krzysztof Kozlowski ha scritto:
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
