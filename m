@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 189A6C07545
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 08:55:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABCF3C07545
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 09:12:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DGW+Ssmyy4MwXNh9rplFKo//VpciDIHIyVQNuCfEdTc=; b=qkjFbUD262Hi14ONJPVwtwvB0F
-	Hm28gO1++i7cV35YjQc1kDUYYRP+UzhhK8RFINu08vIuAV//KRhmzEU6xqKWF+gRQ8dlakJB0/eWW
-	okncbO/0zdI4uubk84Xv6zUtqlW9fjJVML5XAOhsOO/24wspMXpCmlDIfzliywVMMcamwjAS9ch/p
-	Sn2Q5TB0D3DGNvDc90+IAg6TNsjMfsEU6ydZHEoIkwjlEfXe5ONURp0bl5MZoPh83d8RfK/8IcBhr
-	ZTp0t8E6V4UOHCuDD6ElxuTD8sxeXudNh4Aev5KGCfCtC+8YnoreN54mrfhY+ZB1EZ0LHwr0Lyf96
-	6aDBY1Ew==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sybnXNhD5+oCArfJxuphx2AU8zUd+pBN0TGU3ZyVgPU=; b=IYF8niqeF2ossgEI0W69lfMtmG
+	stidM7p3AA2gZVPBUh/Y6RR8MtRMfvwYiiqdT9R9+79m9Zx7yeTgEbmLbgO2rYfwvifg/prx/AMYY
+	afOLMdS8jZb1nv31XZFFry4UxqjV3WvW+7UWYgLNCBj49qWgqV8fO1w5yRUDzcnmDJQBHgAoP/uE0
+	8qA1IUW4M1xrreZ8zVsofEsxrw81aYsH/cICfflXf8eb+LMqmcPvyto/ellO9WckpOfAPvy/HWJYc
+	0ufh2h6ky+lBStULHdi+CgYaaE2g+qEkkLHaV2xHQg+N+TYNDCi8BH3z9suWxOvBlslnU8a5JhhNx
+	h1HaeS7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvDBl-009F6l-0J;
-	Tue, 24 Oct 2023 08:55:01 +0000
+	id 1qvDT4-009HBB-2Q;
+	Tue, 24 Oct 2023 09:12:54 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvDBT-009F0l-1G;
-	Tue, 24 Oct 2023 08:54:45 +0000
+	id 1qvDT2-009HAd-0A;
+	Tue, 24 Oct 2023 09:12:53 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5BEDE6607331;
-	Tue, 24 Oct 2023 09:54:41 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 271BE66072F6;
+	Tue, 24 Oct 2023 10:12:48 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698137682;
-	bh=VI/Y25XEqSA3SbhcywY0RAYmG7kmKXN4kUFw9lzcX+k=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=j90A8ETr4geEi4CEGY63sExDY6LWoWzC9w34VLmFbz0Ax27274b3bX6FLA5Yla7Ye
-	 NrvHZFwdSWyZFEV1FV2AkxkUpE/uT/dcNVpASPz2NOgr+WmX53SHpee81XPUdzxx2T
-	 VQrE89O2dlVmhg74VaAI77C0/JKZytqyKv4VQx6T2O7VnWSvnBxTvNhJa1E9dwWeTq
-	 dwgAX6K71QVhXaU102he57qygE3ubL4CBtJIrP9dUER7mAYpixoOZotRZltP4yRR8X
-	 qzAC91kVbLPsz9qwuKOIR60Tec2gtPiWVDY8EgQtgbpDBHbWPazJHQ7YNTsAUiuzFq
-	 u+TOsYfNg1szA==
-Message-ID: <72e5b30e-d65b-4530-ba6e-31082a059cb1@collabora.com>
-Date: Tue, 24 Oct 2023 10:54:41 +0200
+	s=mail; t=1698138769;
+	bh=XfXPQ0oVnRctPph3CPb1I9j9606bGUTiH9V9O3ZMIGk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZAayU1HWjcx40JeBjgKxWYWr2uAdaRzRDwg9CptGRQK3F8N4pyyUl2MsZhjqgUsQD
+	 fhbujYDWpmUiB7lf2ZUIY/Xu5puKX9BnVL5bj/iwpU7ejqKeJGJ6QbSFys85w9jz0Q
+	 kbioJO+PH7U7OYD0xsCDzUgpA/uWV4NE9CPdTF02KEEc5cONRV686zrqpC1gL8lZYE
+	 zlOo8aeMWJR46gNbtozQval7ZcQpcrrmQFPKf9lg7yH565yJyyiSrBSPtDfYCyKSMu
+	 aJN/1EZcPEim62/9Ew16sOnkydctMMXSRwMOtR6x2wlHI2uFOxKc+AJSNUkdG2TM2f
+	 6FrBSYu0Pe33g==
+Message-ID: <cf25a3cc-6411-45f5-bc7a-6b69cf28c860@collabora.com>
+Date: Tue, 24 Oct 2023 11:12:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFT PATCH 12/17] ASoC: mediatek: mt8183: Handle component name
- prefix
+Subject: Re: [PATCH 14/18] drm/mediatek: dpi: add support for dpi clock
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Lars-Peter Clausen <lars@metafoo.de>, =?UTF-8?Q?Nuno_S=C3=A1?=
- <nuno.sa@analog.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Banajit Goswami <bgoswami@quicinc.com>, Oder Chiou <oder_chiou@realtek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
+To: amergnat@baylibre.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>,
+ Xinlei Lee <xinlei.lee@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
  Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org, patches@opensource.cirrus.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org
-References: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
- <20231023095428.166563-13-krzysztof.kozlowski@linaro.org>
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
+ Fabien Parent <fparent@baylibre.com>
+References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
+ <20231023-display-support-v1-14-5c860ed5c33b@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231023095428.166563-13-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20231023-display-support-v1-14-5c860ed5c33b@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_015443_555491_86588E5A 
-X-CRM114-Status: UNSURE (   5.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231024_021252_238739_64C843E7 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,13 +86,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/10/23 11:54, Krzysztof Kozlowski ha scritto:
-> Use snd_soc_dapm_widget_name_cmp() helper when comparing widget names,
-> to include also the component's name prefix.
+Il 23/10/23 16:40, amergnat@baylibre.com ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> MT8365 requires an additional clock for DPI. Add support for that
+> additional clock.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I'm not convinced that this is right... at all.
 
+ From a fast check of the MT8365 DPI clocks, I can see that the DPI0 clock declares
+parent VPLL_DPIX (a fixed clock), but nothing ever has VPLL_DPIX_EN (which is the
+GATE clock, enabling output of DPIx VPLL?).
+
+But then, there's even more: no clock ever references the CLK_TOP_DPI0_SEL nor the
+CLK_TOP_DPI1_SEL gate, which is a PLL parent selector... in other platforms, that
+is muxing through the TVDPLL, but on MT8365 that is LVDSPLL?!
+
+I have many questions now:
+* Two PLLs are apparently brought up, but which one is the right one?!
+   * Is the LVDS PLL really used for DisplayPort? (dpi0_sel)
+   * Is the VPLL_DPIx PLL used for DisplayPort instead? (dpi0_dpi0)
+* Why is the LVDSTX_PXL clock using the same PLL as DPI0?!
+   * Why is the VPLL_DPIx gate never enabled?
+* Are you sure that CLK_MM_DPI0_DPI0's parent shouldn't be dpi0_sel instead?
+* Where is DPI1 in this SoC? Why is there a dpi1_sel clock, but no MM clock
+   for the DPI1 controller? Is there any DPI1 controller, even?!
+   * Why is there a DPI1 MUX, if there's no DPI1 controller?!
+
+Answering all those questions will lead you to the right change, which I believe
+to be in the clock drivers, not here in mtk_dpi.c.
+
+Cheers!
+Angelo
 
 
