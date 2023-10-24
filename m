@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E21BC00A8F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 18:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED5CFC25B47
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 19:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VzohQsev/vBngZfZZmdTac8/On7np9NwAKFAiiKaXqc=; b=fxAf9n/YCTl8OWeAL/UWeb3WT3
-	dXq5RXtTn7bH2YjiZBSWUe5AU+x5KrPWuJhXKAr7mK5/H0VPlQG4EOIsVVni/lVcJoW1FmKRYZRur
-	coU2c+syQxpLKWoQVGyZP6HFuEW5Qr8Dp2TqOPOvp1a1+PqYkGW9nSxMdBRR3X3AF+zY5y6VGthdC
-	k6czp7Kx50W105zWWRAqPXdVWtR/o4naanq6hrmYuERkIoI7HBu791q8KJT6dEqAeE7I0E4cyF+5s
-	cWDHcjPThCe5Xciwu4dt93WmD0Rz81j+qX6SH+9nC+kPI7SAL1a00szdJ03oO1wQVz21K+SkussDk
-	bvMxvZBA==;
+	bh=GtjJN2v2IlRgjr2CSbemGBy1a2c5zb3n0c0gdEv0B28=; b=IEUSDDkN2Bg5CgLyK9oeNPaDVQ
+	3yaLAZbpNyIPIg3vCuTETzBqoDcgJQs3shUjGtY0CaSlabQE8FFTt0xcqlW9LT3QmUCInJK5MJroM
+	1Q3X0izuCoSFy/YxN/jfJpvhn1IoBn8XQXBTaQR9QRnPt0uDwAUB4mDhWPOn/std0Hwa8xQrpWkg3
+	3ZX4sA02IAnq+fgSchlwc0O6Auh2oYYnXsUiCE6S3XE+iQjmtYhmDpD4rXjH1iRE5y4ZrVqWX3MGz
+	Z85yF1cQP8DHDiI2L/4P6cFzWVIAwSZiZHoxtLNGsnZvJ4W9QZfB5e6Jb8ZmQ/unDCrY4bVc1i6Xp
+	ovwVA1Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvMXE-00Ahay-0M;
-	Tue, 24 Oct 2023 18:53:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qvMe0-00AiAn-2W;
+	Tue, 24 Oct 2023 19:00:48 +0000
+Received: from mail-pg1-f177.google.com ([209.85.215.177])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvMX6-00AhYj-0F;
-	Tue, 24 Oct 2023 18:53:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E27CF61470;
-	Tue, 24 Oct 2023 18:53:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 945ECC433C8;
-	Tue, 24 Oct 2023 18:53:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698173617;
-	bh=Q7AQ8oRrcdeG+H+90jdi3d1PI7uSdUbtZvihZFgYw2Y=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=DhD9CmR9cubugRb44Rs4NUYR5/idllTmfjVSEheguSSbt/3VVJYgdZtKzONNdhwTM
-	 qC5+d29qkLvZm79zotQxiYd+JOMeiDwHmbtEqAr6UphPOUS3bxsPdKv6RENTs7V+17
-	 2Nivw8KuvYtYO4M9r2kJsrqoo7kZsft/TuXEYMKf5Cr+FJqeAXml2wjHgJP/LjxDwn
-	 2TpTfAnWlmYMbS/SQyy4zxSZle5auGVN4/Av73i4XAk3NhU1FSZEYVqit1Lt3DbkQ4
-	 erLNTMcUa1MV4tMt4SggyUqcQjbyphc6ELGXOzUOAZOjIpNRE62t0f6J5annN9NoDK
-	 SbbKfl9H6qtvw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Maso Huang <maso.huang@mediatek.com>
-In-Reply-To: <20231024035019.11732-1-maso.huang@mediatek.com>
-References: <20231024035019.11732-1-maso.huang@mediatek.com>
-Subject: Re: [PATCH v2 0/3] ASoC: mediatek: Remove redundant code and add
- sample rate checker of MT7986 SoC
-Message-Id: <169817361532.82257.15939611846447961034.b4-ty@kernel.org>
-Date: Tue, 24 Oct 2023 19:53:35 +0100
+	id 1qvMdx-00Ai8p-1t;
+	Tue, 24 Oct 2023 19:00:46 +0000
+Received: by mail-pg1-f177.google.com with SMTP id 41be03b00d2f7-5a1d89ff4b9so2757934a12.0;
+        Tue, 24 Oct 2023 12:00:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698174042; x=1698778842;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=GtjJN2v2IlRgjr2CSbemGBy1a2c5zb3n0c0gdEv0B28=;
+        b=RA1Z8xSDzlDChNwzDuK1N+uCN6jDh/isSr67Ymo5lDKwOnoRhDoKgbYIEbpaG0Cpgi
+         pmzYiPfuMqZnyiZEbcTwTu3N+VIX2Na7PgX6D6lM6rz6V0nVyR4MGLrwUna/ZKc6AdyS
+         I2L/709XAjHgD4sVjcWLwNI+rIkeFZFX5rylaNi/nzSSzmH+p8Pi4c8zyavZeOMKR9xS
+         DpLbvvzrpcSiQQ/EaQ4RSkJfUROrBbxZNycYWiPPvEhJqy8r+UGDF732UBHxxn+ENsPb
+         LjVJr8X5pQTTqP9LUqMDb8cFBFdaaXheTRVFUvyPSpmRUXFbOE07SvqgupTAKpPowuky
+         /KRA==
+X-Gm-Message-State: AOJu0YwxtEPFSIOcLpGP1N2P9LxsxJMCDqtX6XxdDEEu4cXhqFvhmWYa
+	C8uH3MyBtbhd/++AtLawG1Q=
+X-Google-Smtp-Source: AGHT+IHsv5pOf8N3VUIytVRyVB9Ag28Vf17S2OMnOiTsoiNnHHFSV+7JY3DQK15yqjmDVmK91Ns3tg==
+X-Received: by 2002:a17:90a:1a10:b0:269:c7d:aac5 with SMTP id 16-20020a17090a1a1000b002690c7daac5mr9609930pjk.3.1698174042065;
+        Tue, 24 Oct 2023 12:00:42 -0700 (PDT)
+Received: from ?IPV6:2620:15c:211:201:30e1:c9d3:6b41:493d? ([2620:15c:211:201:30e1:c9d3:6b41:493d])
+        by smtp.gmail.com with ESMTPSA id az7-20020a17090b028700b0027d157e686asm7177565pjb.49.2023.10.24.12.00.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 24 Oct 2023 12:00:41 -0700 (PDT)
+Message-ID: <6a89fb45-b940-4db8-9025-944ccd2d4628@acm.org>
+Date: Tue, 24 Oct 2023 12:00:39 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] core: ufs: fix racing issue between force complete
+ and isr
+Content-Language: en-US
+To: alice.chao@mediatek.com, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
+ peter.wang@mediatek.com, powen.kao@mediatek.com, naomi.chu@mediatek.com,
+ cc.chou@mediatek.com, tun-yu.yu@mediatek.com, chun-hung.wu@mediatek.com,
+ casper.li@mediatek.com, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231024084324.12197-1-alice.chao@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20231024084324.12197-1-alice.chao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-0438c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_115340_156408_C681CB1A 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20231024_120045_625344_6A68F462 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,48 +89,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 24 Oct 2023 11:50:16 +0800, Maso Huang wrote:
-> Changes in v2:
->  - devide v1 patch [1/2] into v2 [1/3] [2/3] with appropriate title and description
->  - refine error log based on reviewer's suggestions [3/3]
-> 
-> 1. Drop the remove callback of mt7986_wm8960.
-> 2. Remove the mt7986_wm8960_priv structure
-> 3. Add sample rate checker.
-> Patches are based on broonie tree "for-next" branch.
-> 
-> [...]
+On 10/24/23 01:43, alice.chao@mediatek.com wrote:
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index 8382e8cfa414..ef6bd146a767 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -5518,13 +5518,13 @@ static void ufshcd_mcq_compl_pending_transfer(struct ufs_hba *hba,
+>   			 * For those cmds of which the cqes are not present
+>   			 * in the cq, complete them explicitly.
+>   			 */
+> +			spin_lock_irqsave(&hwq->cq_lock, flags);
+>   			if (cmd && !test_bit(SCMD_STATE_COMPLETE, &cmd->state)) {
+> -				spin_lock_irqsave(&hwq->cq_lock, flags);
+>   				set_host_byte(cmd, DID_REQUEUE);
+>   				ufshcd_release_scsi_cmd(hba, lrbp);
+>   				scsi_done(cmd);
+> -				spin_unlock_irqrestore(&hwq->cq_lock, flags);
+>   			}
+> +			spin_unlock_irqrestore(&hwq->cq_lock, flags);
+>   		} else {
+>   			ufshcd_mcq_poll_cqe_lock(hba, hwq);
+>   		}
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/3] ASoC: mediatek: mt7986: drop the remove callback of mt7986_wm8960
-      commit: 3e92ea2a460bc410789b24f328de9985ddc3eea6
-[2/3] ASoC: mediatek: mt7986: remove the mt7986_wm8960_priv structure
-      commit: 0f10adb0ed0c0d74f8bc5facf2c70bc515210295
-[3/3] ASoC: mediatek: mt7986: add sample rate checker
-      commit: 0e20929434080aa87614fa0135c97bb9337ece27
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
 
