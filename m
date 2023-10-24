@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ABF2C25B47
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 09:24:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D186C00A8F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Oct 2023 09:26:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/6KTT677Fj+6j9NiGm8ZaAxogvUkXATayoSrNlGSNS0=; b=NTT1pNsWsSxUu9yR2WdpdYjk51
-	o4K/b6m4GBHQ3NWrzvhxD25O7E8rxo9u7vtZ6CaAJ6xsD8zuxYwma8ebcrhc8oCcqWcjyZXCdnjLO
-	0ZKBiqh8ZcPLlf0FP9c++x2pd6tcHsIIULDTxu8iSM0DBycWPmrMQcd6c9Up6wPcjYHIqBf4kp0bw
-	tQsz4jyMqPEzM3GKdqsYTK+iQpuSk98esIckt5jwZLBHeHuMw+DIcthFCV+maNDcIAnhbiwC4wZ9l
-	XByZUYay7Z6RzZGnix09MJVpw2xq+cZJUojqUtOsWkWiwyU6cnjQYVWnw0FJnHvOt7lGBn/K8VRxP
-	XYbcIH7A==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vFntV1bfW7JX4+UwQxyzMVXuGZ48jhWeHzoq8ru6h2o=; b=tLHqZk49Qp9ixQyaR4N8ymjKrU
+	P2ncMzMt2Mi0RslV8zAZpL6N4zhfBKLYmhCvrSkpXNdCOeRBa+egO85HAuWJK1JcbmYDrRfn3gtpd
+	O6lOphUnRT4SqZzDOdKx023+CMd2Z3jwLhEoUbHdSfksJ7eXBUVnm/EJu6A7vt4PJ9vztuISL/VCE
+	02SokV7w7M2VQl370HtGjGP7MHpvGGgsdfdui4oxolP/V5H1KCWUYwYY84Q38UNRL2gyLV1tlkiZv
+	9FBISNZBxWYenoLL4OJNZSTDIqwp6eRADoddDk53uEz9wt4UdGphfHF8+fW8/WDFzJrC1vVBUuCLy
+	NFpNObpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvDeb-009Iae-1g;
-	Tue, 24 Oct 2023 09:24:49 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qvDgD-009JKs-0D;
+	Tue, 24 Oct 2023 09:26:29 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvDeY-009IZU-2I;
-	Tue, 24 Oct 2023 09:24:48 +0000
+	id 1qvDg8-009JHR-1e;
+	Tue, 24 Oct 2023 09:26:25 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B69C26603102;
-	Tue, 24 Oct 2023 10:24:44 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8C5976603102;
+	Tue, 24 Oct 2023 10:26:22 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698139485;
-	bh=CAUfYWv2YFj91XMjH++uo8N0caauvtIZueuVlwW7mbo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q2vRtHctkDuGlt4k0zp+0BXBxiyfukhatXmuBJqcYzfgGaCIYCbbJmXkbbknOmKan
-	 9BwzJrRl9ZdtfsypGKlWCl+lkA+IYn+WLtgF2Y+KTOJ2TYf1sf8k/RUmX/kgUo+GEc
-	 0jmp8FprvOCcqT/AmxpOewj9+XrPBTxsOSUtuoD8oSgB1fiNYK0T20vvscfvGTpJ1C
-	 vlcaZtEcemS4kp/QZdRDvp7AQOcTKaalkwQPB5jb60c50j1MAK2Jb1thmzlZZ+eUcW
-	 4PpkgPGsi31/xlxoqf/p7DTrOafWnnfd0N8c7iYkUraQQCilVhl4Vq00kccbDHjDTL
-	 7o/IPw5gQ68Lg==
-Message-ID: <01a4467c-6a6e-472d-94bb-930ab12b5358@collabora.com>
-Date: Tue, 24 Oct 2023 11:24:42 +0200
+	s=mail; t=1698139583;
+	bh=x0hoEPrZVpDP8h39Ok3fCECmUX60IQWzTwTBbMbxSLw=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=Ce9179+qx9pPm44JUfD0tJRXYpicaelpwO+Odd61yCpYnmAZ5s9P02yZn5ttY+A6r
+	 pCYS1artduAaa/0dE9tSDqjMf7pSaHXpmWNeMg3D2ZfQZXHujsHO5ISRxs7rGR/i+E
+	 OfUHa22kpx1q/A1QwIIapWiQEFUBp/YWGMkAfUhaKxfdXuzdzAOgETnEhEr5fGqufk
+	 QW2gIWyZMfQwE5Gjez6vguZJKU7iGitWb7of0eP32mONUEaHcIy1mu6ekaJ7s80mM9
+	 fp4Cnk1nV6Tjx2Pv2gQtubXGK+thr1yqtk/s91r1LUoWjktfEmRBIMDgZanXhpEWIH
+	 R1OyQbH721FXA==
+Message-ID: <1b92e452-c325-4f6f-8ac3-22086c4a7b2e@collabora.com>
+Date: Tue, 24 Oct 2023 11:26:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] clk: mediatek: fix double free in
- mtk_clk_register_pllfh()
+Subject: Re: [PATCH v2 1/3] ASoC: mediatek: mt7986: drop the remove callback
+ of mt7986_wm8960
 Content-Language: en-US
-To: Dan Carpenter <dan.carpenter@linaro.org>,
- Johnson Wang <johnson.wang@mediatek.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Edward-JW Yang <edward-jw.yang@mediatek.com>,
- Chen-Yu Tsai <wenst@chromium.org>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel-janitors@vger.kernel.org
-References: <cd7fa365-28cc-4c34-ac64-6da57c98baa6@moroto.mountain>
+To: Maso Huang <maso.huang@mediatek.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231024035019.11732-1-maso.huang@mediatek.com>
+ <20231024035019.11732-2-maso.huang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <cd7fa365-28cc-4c34-ac64-6da57c98baa6@moroto.mountain>
+In-Reply-To: <20231024035019.11732-2-maso.huang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_022446_879538_C67FCE87 
-X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-CacheID: sfid-20231024_022624_693596_1236AAD3 
+X-CRM114-Status: UNSURE (   6.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,18 +80,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/10/23 07:00, Dan Carpenter ha scritto:
-> The mtk_clk_register_pll_ops() currently frees the "pll" parameter.
-> The function has two callers, mtk_clk_register_pll() and
-> mtk_clk_register_pllfh().  The first one, the _pll() function relies on
-> the free, but for the second _pllfh() function it causes a double free
-> bug.
+Il 24/10/23 05:50, Maso Huang ha scritto:
+> Drop the remove callback of mt7986_wm8960.
 > 
-> Really the frees should be done in the caller because that's where
-> the allocation is.
-> 
-> Fixes: d7964de8a8ea ("clk: mediatek: Add new clock driver to handle FHCTL hardware")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+> Signed-off-by: Maso Huang <maso.huang@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
