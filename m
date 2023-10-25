@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1FB1C25B6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 21:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDDB2C0032E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 23:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mvz4tU2Qi3kZRU4orX2BxAMTB3NfFO65aFnqQhNCI7Y=; b=r7Vu37lOvjOwRHAXLtp45akWqt
-	1rXgdUhGv6h0JxhxXx4s57nw6CsSfZwB15rCubofR9+kuPDRrkLAuPz6oHrhbKJSxArXZL+7MoKQr
-	WGa2gvv25kr3vYo5wo/1jiYnwFbz6ku2e9k5UZH1YerW/uN7/axzQhxsJHn+EWvxqbXwe3gQ6P6Lm
-	Qy/vdDemsKQtXNa6Acf/Ch3sMVPaebgi6egnz7lXUPhQk2tb5ByXx4Mqq5T+vOQDGTkkQUZgjyVMO
-	cUGVEHIfnhfmaSHioYDpPTjUiagAkk4AEyUQjhQHoxW25XxsMdQJ/IN8ckswLOvwX3/qmsjKWNvU9
-	IKl6pAnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BO8xex5TrqKc5bh/hA+OWln73QdvPyAo1WOD+A9cnLY=; b=w2QLTYnhYvNgCr3griQmmme/jC
+	Q7gEmUq4rYiFNeWyr6BSoESOdy8rXzMaYrlJNJrQzQ1z64q0hjAC6sJpYacoqZ7rPP6ViGLyyElT8
+	5YH34ecIMvqgTXYmIdsxiQ2CA1l22ApukdsbVxnVCFSNwDd7o1OJz7PYcFwdHn201YwLx3EbG1FAF
+	WSzUEtzNJOZAPUPr3jcm0pv122XtB2A4jEGwwUUcO33/ve7m4qZKC1tFS7vmttSkkLac8hB0+kQRt
+	4d/CRKtCG52Vr6fBZ83xN2ias5b3Bm3xfbg4+xLMvbYC4WWtSGlF74JRLWxR2kxnTab9/qtg8bLDh
+	ZUJQ867A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvlrR-00DD9s-2U;
-	Wed, 25 Oct 2023 21:56:21 +0000
-Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
+	id 1qvnOz-00DJzX-2M;
+	Wed, 25 Oct 2023 23:35:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvlqg-00DCn5-1Y
+	id 1qvnOw-00DJyq-0u
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Oct 2023 21:55:38 +0000
-Received: by mail-oo1-xc30.google.com with SMTP id 006d021491bc7-5842ea6f4d5so178606eaf.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Oct 2023 14:55:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1698270932; x=1698875732; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mvz4tU2Qi3kZRU4orX2BxAMTB3NfFO65aFnqQhNCI7Y=;
-        b=ZZhNIILgqBC9eco0pbtkm+PGcE1uQwEqCd4CQNoU6wEip/mW+0tuRlWTV8wkOalPBM
-         P+Oo20b6fYMK12HslZNtCh3HS7wWYzuvO7tp9Ct2y32pg779AAGCwxB3d5Qo0uU87Jda
-         TYmDmczJd1TASGd2I8ghSLSo8SMyQv72M7qNA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698270932; x=1698875732;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mvz4tU2Qi3kZRU4orX2BxAMTB3NfFO65aFnqQhNCI7Y=;
-        b=rTpZNA+Znff1wjDIlqIb1acXBcCxtfKeLE2NH/3cgdCHQ0QvOW1dRzT7JO0LQDy7CH
-         mZQTbHokaj+ByCAa2HJZ8dG/bC448zSiJTAS2jEoKT7wfYyk0eLPKdD5I6b9RhoF8Ocf
-         0+1BxPKvufcJTFQ6OAfTEea8SHQ8fzBMdnfdveVG+RuwCthGrfw33f63QarRXAB4oRj7
-         EtjwolLhtPLk0lqj1KEB0uhNFju5yuKg/XhTm52rGl0vsIQb61Uww9Uwk76w7vKoB2xm
-         5XhK/yPHg0tSLnrIsgoVoXelbFtkKkXOjDaRTDdWD9KKwCKZ8gpdV+pJigmB6E0RZ+qy
-         U3uA==
-X-Gm-Message-State: AOJu0YzL23fbf1EDnOKXkaA3WLrLZpAuEwdCiWVKSJEA7gsyAxoGR4BG
-	yv6g4c7MbAkMmzOyUtxbpYXbRw==
-X-Google-Smtp-Source: AGHT+IFzZGyrSX4bCvvYPaMFtrc5/5C2CQegRX6eJpmjL60TzO3nh2cFdtwYMUQ8abYyMq08g1gEfA==
-X-Received: by 2002:a05:6359:2e88:b0:168:dc03:5b90 with SMTP id rp8-20020a0563592e8800b00168dc035b90mr9214497rwb.23.1698270932278;
-        Wed, 25 Oct 2023 14:55:32 -0700 (PDT)
-Received: from hsinyi.sjc.corp.google.com ([2620:15c:9d:2:f0fe:5c3b:1d70:d0bb])
-        by smtp.gmail.com with ESMTPSA id w14-20020a63160e000000b005b8ebef9fa0sm2994943pgl.83.2023.10.25.14.55.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Oct 2023 14:55:31 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 7/7] arm64: dts: mt8183: Add jacuzzi pico/pico6 board
-Date: Wed, 25 Oct 2023 14:48:49 -0700
-Message-ID: <20231025215517.1388735-8-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.42.0.758.gaed0368e0e-goog
-In-Reply-To: <20231025215517.1388735-1-hsinyi@chromium.org>
-References: <20231025215517.1388735-1-hsinyi@chromium.org>
+	Wed, 25 Oct 2023 23:35:04 +0000
+X-UUID: 1b1e3904738f11ee9b7791016c24628a-20231025
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BO8xex5TrqKc5bh/hA+OWln73QdvPyAo1WOD+A9cnLY=;
+	b=cakzDXp9PjZWLEHBOvwe85foTmN85PQRz5ImF0GO87lsBtT5/gPkchBq6q2k8gTdxbHLf8n712o8M0qSTI3IWu1wKIFv/9l+N3tLFhjn1lJdtd9UenxWlZr6DMVr5AFAAsk3h2HXTQWFUPGcf1vt6jH18+eyoplm9s9xuqHAv8o=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:386cc519-e03b-47c8-87a2-f2efb3cbaad6,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:5f78ec9,CLOUDID:278652d7-04a0-4e50-8742-3543eab8cb8e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 1b1e3904738f11ee9b7791016c24628a-20231025
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1421430010; Wed, 25 Oct 2023 16:34:56 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 26 Oct 2023 07:34:22 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 26 Oct 2023 07:34:22 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Peter Chiu
+	<chui-hao.chiu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 1/2] wifi: mt76: mt7915: enable mt7986 and mt7916 pre-calibration support
+Date: Thu, 26 Oct 2023 07:34:20 +0800
+Message-ID: <f21b261373fc221b8370264c44ee751fa85cf41c.1698274193.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--10.657900-8.000000
+X-TMASE-MatchedRID: fnR2S3QqRUoVAKRaMHqjDlz+axQLnAVBI5K4Cd+0ao/N1rLqpIKz42mt
+	ukJWdiprNJnt9TW/xwZX/sAhRmSCr+n7m7FfgPpPS3OTftLNfg05QyrxWymujdq1QfwtMOlPpQm
+	bCq8RaKGyNEPkdHcNkr/yMxJu7qUwlwt7DABrvp+O0rt0LpQGeWf6wD367Vgt82HMiBe0UlUYEU
+	tWQA3BEMSUQ1jnXMOcMdLQNZUMEkTx3YzTiJbL8h3EEAbn+GRbU+A7YkpDJ1i+FARAmHPCpuJz0
+	/I2b9TR4vM1YF6AJbbCCfuIMF6xLcK21zBg2KlfGM6W3U+LnndyhLF+UJD6ydHOvrNLoDEnJMLo
+	W9dlXdp7a5Ka2JuTgg==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--10.657900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 3B8F6AA5FE336E0DBE28363D30D2A0D7C440CBEBAC3059ADF149881E885CD6BC2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_145534_545664_2AA957F2 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20231025_163502_360301_311AD013 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,189 +97,274 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pico is also known as Acer Chromebook Spin 311.
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Add pre-calibration for mt7986 and mt7916. Their group cal size are
+54k and 94k for 2G + 5G and 2G + 6G, respectively. DPD size is 300k.
+
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/Makefile         |   2 +
- .../mediatek/mt8183-kukui-jacuzzi-pico.dts    |  36 ++++++
- .../mediatek/mt8183-kukui-jacuzzi-pico6.dts   | 110 ++++++++++++++++++
- 3 files changed, 148 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
+ .../wireless/mediatek/mt76/mt7915/eeprom.c    |  11 +-
+ .../wireless/mediatek/mt76/mt7915/eeprom.h    |  34 +++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 100 ++++++++++++++----
+ 3 files changed, 114 insertions(+), 31 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 1b85a8c12850..ed174dde97e1 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -34,6 +34,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kappa.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kenzo.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-makomo-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-makomo-sku1.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-pico.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-pico6.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico.dts
-new file mode 100644
-index 000000000000..e230323b3a54
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico.dts
-@@ -0,0 +1,36 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2023 Google LLC
-+ */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index 76be7308460b..45b216ca7c3c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -9,16 +9,15 @@ static int mt7915_eeprom_load_precal(struct mt7915_dev *dev)
+ {
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	u8 *eeprom = mdev->eeprom.data;
+-	u32 val = eeprom[MT_EE_DO_PRE_CAL];
+-	u32 offs;
++	u32 offs = is_mt7915(&dev->mt76) ? MT_EE_DO_PRE_CAL : MT_EE_DO_PRE_CAL_V2;
++	u32 val;
+ 
+-	if (!dev->flash_mode)
++	if (!dev->flash_mode || !eeprom[offs])
+ 		return 0;
+ 
+-	if (val != (MT_EE_WIFI_CAL_DPD | MT_EE_WIFI_CAL_GROUP))
+-		return 0;
++	val = mt7915_get_cal_group_size(dev) +
++	      (is_mt7915(&dev->mt76) ? MT_EE_CAL_DPD_SIZE : MT_EE_CAL_DPD_SIZE_V2);
+ 
+-	val = MT_EE_CAL_GROUP_SIZE + MT_EE_CAL_DPD_SIZE;
+ 	dev->cal = devm_kzalloc(mdev->dev, val, GFP_KERNEL);
+ 	if (!dev->cal)
+ 		return -ENOMEM;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+index f3e56817d36e..84c1903b2a6c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+@@ -19,6 +19,7 @@ enum mt7915_eeprom_field {
+ 	MT_EE_DDIE_FT_VERSION =	0x050,
+ 	MT_EE_DO_PRE_CAL =	0x062,
+ 	MT_EE_WIFI_CONF =	0x190,
++	MT_EE_DO_PRE_CAL_V2 =	0x19a,
+ 	MT_EE_RATE_DELTA_2G =	0x252,
+ 	MT_EE_RATE_DELTA_5G =	0x29d,
+ 	MT_EE_TX0_POWER_2G =	0x2fc,
+@@ -39,10 +40,18 @@ enum mt7915_eeprom_field {
+ };
+ 
+ #define MT_EE_WIFI_CAL_GROUP			BIT(0)
+-#define MT_EE_WIFI_CAL_DPD			GENMASK(2, 1)
++#define MT_EE_WIFI_CAL_DPD_5G			BIT(1)
++#define MT_EE_WIFI_CAL_DPD_2G			BIT(2)
++#define MT_EE_WIFI_CAL_DPD_6G			BIT(3)
++#define MT_EE_WIFI_CAL_DPD			GENMASK(3, 1)
+ #define MT_EE_CAL_UNIT				1024
+-#define MT_EE_CAL_GROUP_SIZE			(49 * MT_EE_CAL_UNIT + 16)
++#define MT_EE_CAL_GROUP_SIZE_7915		(49 * MT_EE_CAL_UNIT + 16)
++#define MT_EE_CAL_GROUP_SIZE_7916		(54 * MT_EE_CAL_UNIT + 16)
++#define MT_EE_CAL_GROUP_SIZE_7975		(54 * MT_EE_CAL_UNIT + 16)
++#define MT_EE_CAL_GROUP_SIZE_7976		(94 * MT_EE_CAL_UNIT + 16)
++#define MT_EE_CAL_GROUP_SIZE_7916_6G		(94 * MT_EE_CAL_UNIT + 16)
+ #define MT_EE_CAL_DPD_SIZE			(54 * MT_EE_CAL_UNIT)
++#define MT_EE_CAL_DPD_SIZE_V2			(300 * MT_EE_CAL_UNIT)
+ 
+ #define MT_EE_WIFI_CONF0_TX_PATH		GENMASK(2, 0)
+ #define MT_EE_WIFI_CONF0_BAND_SEL		GENMASK(7, 6)
+@@ -155,6 +164,27 @@ mt7915_tssi_enabled(struct mt7915_dev *dev, enum nl80211_band band)
+ 		return val & MT_EE_WIFI_CONF7_TSSI0_5G;
+ }
+ 
++static inline u32
++mt7915_get_cal_group_size(struct mt7915_dev *dev)
++{
++	if (is_mt7915(&dev->mt76)) {
++		return MT_EE_CAL_GROUP_SIZE_7915;
++	} else if (is_mt7916(&dev->mt76)) {
++		u8 *eep = dev->mt76.eeprom.data;
++		u32 val = eep[MT_EE_WIFI_CONF + 1];
 +
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi.dtsi"
-+#include "mt8183-kukui-audio-ts3a227e-max98357a.dtsi"
++		val = FIELD_GET(MT_EE_WIFI_CONF0_BAND_SEL, val);
 +
-+/ {
-+	model = "Google pico board";
-+	chassis-type = "convertible";
-+	compatible = "google,pico-sku1", "google,pico", "mediatek,mt8183";
-+};
++		return (val == MT_EE_V2_BAND_SEL_6GHZ) ?
++			MT_EE_CAL_GROUP_SIZE_7916_6G :
++			MT_EE_CAL_GROUP_SIZE_7916;
++	} else if (mt7915_check_adie(dev, false)) {
++		return MT_EE_CAL_GROUP_SIZE_7976;
++	} else {
++		return MT_EE_CAL_GROUP_SIZE_7975;
++	}
++}
 +
-+&i2c_tunnel {
-+	google,remote-bus = <0>;
-+};
-+
-+&i2c2 {
-+	i2c-scl-internal-delay-ns = <25000>;
-+
-+	trackpad@2c {
-+		compatible = "hid-over-i2c";
-+		reg = <0x2c>;
-+		hid-descr-addr = <0x20>;
-+
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&trackpad_pins>;
-+
-+		interrupts-extended = <&pio 7 IRQ_TYPE_LEVEL_LOW>;
-+
-+		wakeup-source;
+ extern const u8 mt7915_sku_group_len[MAX_SKU_RATE_GROUP_NUM];
+ 
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index b22f06d4411a..da3ee9f91704 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2904,9 +2904,10 @@ static int mt7915_mcu_set_pre_cal(struct mt7915_dev *dev, u8 idx,
+ int mt7915_mcu_apply_group_cal(struct mt7915_dev *dev)
+ {
+ 	u8 idx = 0, *cal = dev->cal, *eep = dev->mt76.eeprom.data;
+-	u32 total = MT_EE_CAL_GROUP_SIZE;
++	u32 total = mt7915_get_cal_group_size(dev);
++	u32 offs = is_mt7915(&dev->mt76) ? MT_EE_DO_PRE_CAL : MT_EE_DO_PRE_CAL_V2;
+ 
+-	if (!(eep[MT_EE_DO_PRE_CAL] & MT_EE_WIFI_CAL_GROUP))
++	if (!(eep[offs] & MT_EE_WIFI_CAL_GROUP))
+ 		return 0;
+ 
+ 	/*
+@@ -2942,9 +2943,9 @@ static int mt7915_find_freq_idx(const u16 *freqs, int n_freqs, u16 cur)
+ 	return -1;
+ }
+ 
+-static int mt7915_dpd_freq_idx(u16 freq, u8 bw)
++static int mt7915_dpd_freq_idx(struct mt7915_dev *dev, u16 freq, u8 bw)
+ {
+-	static const u16 freq_list[] = {
++	const u16 freq_list_v1[] = {
+ 		5180, 5200, 5220, 5240,
+ 		5260, 5280, 5300, 5320,
+ 		5500, 5520, 5540, 5560,
+@@ -2952,65 +2953,118 @@ static int mt7915_dpd_freq_idx(u16 freq, u8 bw)
+ 		5660, 5680, 5700, 5745,
+ 		5765, 5785, 5805, 5825
+ 	};
+-	int offset_2g = ARRAY_SIZE(freq_list);
+-	int idx;
++	const u16 freq_list_v2[] = {
++		/* 6G BW20 */
++		5955, 5975, 5995, 6015,
++		6035, 6055, 6075, 6095,
++		6115, 6135, 6155, 6175,
++		6195, 6215, 6235, 6255,
++		6275, 6295, 6315, 6335,
++		6355, 6375, 6395, 6415,
++		6435, 6455, 6475, 6495,
++		6515, 6535, 6555, 6575,
++		6595, 6615, 6635, 6655,
++		6675, 6695, 6715, 6735,
++		6755, 6775, 6795, 6815,
++		6835, 6855, 6875, 6895,
++		6915, 6935, 6955, 6975,
++		6995, 7015, 7035, 7055,
++		7075, 7095, 7115,
++		/* 6G BW160 */
++		6025, 6185, 6345, 6505,
++		6665, 6825, 6985,
++		/* 5G BW20 */
++		5180, 5200, 5220, 5240,
++		5260, 5280, 5300, 5320,
++		5500, 5520, 5540, 5560,
++		5580, 5600, 5620, 5640,
++		5660, 5680, 5700, 5720,
++		5745, 5765, 5785, 5805,
++		5825, 5845, 5865, 5885,
++		/* 5G BW160 */
++		5250, 5570, 5815
 +	};
-+};
++	const u16 *freq_list;
++	int n_freqs, idx;
 +
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
-new file mode 100644
-index 000000000000..a2e74b829320
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
-@@ -0,0 +1,110 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2023 Google LLC
-+ */
++	if (is_mt7915(&dev->mt76)) {
++		freq_list = freq_list_v1;
++		n_freqs = ARRAY_SIZE(freq_list_v1);
++	} else {
++		freq_list = freq_list_v2;
++		n_freqs = ARRAY_SIZE(freq_list_v2);
++	}
+ 
+ 	if (freq < 4000) {
+ 		if (freq < 2432)
+-			return offset_2g;
++			return n_freqs;
+ 		if (freq < 2457)
+-			return offset_2g + 1;
++			return n_freqs + 1;
+ 
+-		return offset_2g + 2;
++		return n_freqs + 2;
+ 	}
+ 
+-	if (bw == NL80211_CHAN_WIDTH_80P80 || bw == NL80211_CHAN_WIDTH_160)
++	if (bw == NL80211_CHAN_WIDTH_80P80)
+ 		return -1;
+ 
+ 	if (bw != NL80211_CHAN_WIDTH_20) {
+-		idx = mt7915_find_freq_idx(freq_list, ARRAY_SIZE(freq_list),
+-					   freq + 10);
++		idx = mt7915_find_freq_idx(freq_list, n_freqs, freq + 10);
+ 		if (idx >= 0)
+ 			return idx;
+ 
+-		idx = mt7915_find_freq_idx(freq_list, ARRAY_SIZE(freq_list),
+-					   freq - 10);
++		idx = mt7915_find_freq_idx(freq_list, n_freqs, freq - 10);
+ 		if (idx >= 0)
+ 			return idx;
+ 	}
+ 
+-	return mt7915_find_freq_idx(freq_list, ARRAY_SIZE(freq_list), freq);
++	return mt7915_find_freq_idx(freq_list, n_freqs, freq);
+ }
+ 
+ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy)
+ {
+ 	struct mt7915_dev *dev = phy->dev;
+ 	struct cfg80211_chan_def *chandef = &phy->mt76->chandef;
+-	u16 total = 2, center_freq = chandef->center_freq1;
+-	u8 *cal = dev->cal, *eep = dev->mt76.eeprom.data;
++	u32 offs = is_mt7915(&dev->mt76) ? MT_EE_DO_PRE_CAL : MT_EE_DO_PRE_CAL_V2;
++	u8 mask, num, *cal = dev->cal, *eep = dev->mt76.eeprom.data;
+ 	int idx;
+ 
+-	if (!(eep[MT_EE_DO_PRE_CAL] & MT_EE_WIFI_CAL_DPD))
++	switch (chandef->chan->band) {
++	case NL80211_BAND_2GHZ:
++		mask = MT_EE_WIFI_CAL_DPD_2G;
++		break;
++	case NL80211_BAND_5GHZ:
++		mask = MT_EE_WIFI_CAL_DPD_5G;
++		break;
++	case NL80211_BAND_6GHZ:
++		mask = MT_EE_WIFI_CAL_DPD_6G;
++		break;
++	default:
++		mask = 0;
++		break;
++	}
 +
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi.dtsi"
-+#include "mt8183-kukui-audio-ts3a227e-max98357a.dtsi"
-+
-+/ {
-+	model = "Google pico6 board";
-+	chassis-type = "convertible";
-+	compatible = "google,pico-sku2", "google,pico", "mediatek,mt8183";
-+
-+	bt_wakeup: bt-wakeup {
-+		compatible = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_pins_wakeup>;
-+
-+		wobt {
-+			label = "Wake on BT";
-+			gpios = <&pio 42 GPIO_ACTIVE_HIGH>;
-+			linux,code = <KEY_WAKEUP>;
-+			wakeup-source;
-+		};
-+	};
-+};
-+
-+&i2c_tunnel {
-+	google,remote-bus = <0>;
-+};
-+
-+&i2c2 {
-+	i2c-scl-internal-delay-ns = <25000>;
-+
-+	trackpad@2c {
-+		compatible = "hid-over-i2c";
-+		reg = <0x2c>;
-+		hid-descr-addr = <0x20>;
-+
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&trackpad_pins>;
-+
-+		interrupts-extended = <&pio 7 IRQ_TYPE_LEVEL_LOW>;
-+
-+		wakeup-source;
-+	};
-+};
-+
-+&wifi_wakeup {
-+	wowlan {
-+		gpios = <&pio 113 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&wifi_pwrseq {
-+	post-power-on-delay-ms = <50>;
-+
-+	/* Toggle WIFI_ENABLE to reset the chip. */
-+	reset-gpios = <&pio 8 GPIO_ACTIVE_LOW>;
-+};
-+
-+&wifi_pins_pwrseq {
-+	pins-wifi-enable {
-+		pinmux = <PINMUX_GPIO8__FUNC_GPIO8>;
-+	};
-+};
-+
-+&mmc1_pins_default {
-+	pins-cmd-dat {
-+		drive-strength = <MTK_DRIVE_6mA>;
-+	};
-+	pins-clk {
-+		drive-strength = <MTK_DRIVE_6mA>;
-+	};
-+};
-+
-+&mmc1_pins_uhs {
-+	pins-clk {
-+		drive-strength = <MTK_DRIVE_6mA>;
-+	};
-+};
-+
-+&mmc1 {
-+	bt_reset: bt-reset {
-+		compatible = "mediatek,mt7921s-bluetooth";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_pins_reset>;
-+		reset-gpios = <&pio 120 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&pio {
-+	bt_pins_wakeup: bt-pins-wakeup {
-+		piins-bt-wakeup {
-+			pinmux = <PINMUX_GPIO42__FUNC_GPIO42>;
-+			input-enable;
-+		};
-+	};
-+
-+	bt_pins_reset: bt-pins-reset {
-+		pins-bt-reset {
-+			pinmux = <PINMUX_GPIO120__FUNC_GPIO120>;
-+			output-high;
-+		};
-+	};
-+};
-+
-+/delete-node/ &bluetooth;
-+/delete-node/ &bt_pins;
++	if (!(eep[offs] & mask))
+ 		return 0;
+ 
+-	idx = mt7915_dpd_freq_idx(center_freq, chandef->width);
++	idx = mt7915_dpd_freq_idx(dev, chandef->center_freq1, chandef->width);
+ 	if (idx < 0)
+ 		return -EINVAL;
+ 
+ 	/* Items: Tx DPD, Tx Flatness */
+-	idx = idx * 2;
+-	cal += MT_EE_CAL_GROUP_SIZE;
++	num = is_mt7915(&dev->mt76) ? 2 : 3;
++	idx *= num;
++	cal += mt7915_get_cal_group_size(dev) + (idx * MT_EE_CAL_UNIT);
+ 
+-	while (total--) {
++	while (num--) {
+ 		int ret;
+ 
+-		cal += (idx * MT_EE_CAL_UNIT);
+ 		ret = mt7915_mcu_set_pre_cal(dev, idx, cal, MT_EE_CAL_UNIT,
+ 					     MCU_EXT_CMD(DPD_PRE_CAL_INFO));
+ 		if (ret)
+ 			return ret;
+ 
+ 		idx++;
++		cal += MT_EE_CAL_UNIT;
+ 	}
+ 
+ 	return 0;
 -- 
-2.42.0.758.gaed0368e0e-goog
+2.39.0
 
 
