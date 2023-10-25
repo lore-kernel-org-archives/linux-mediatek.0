@@ -4,80 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE41C07545
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 13:10:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25AD1C0032E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 14:49:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:References:In-Reply-To:Date:Content-Type:Subject:To
-	:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IrvAV1obHso1O+ajYqrCb5vdUfaxx393rNDbhqEvVeA=; b=gCce6yOxMJC/H3
-	zI+cFln3jCgB7Z4cKjH3S5tDQFIlF6XK5yNoI+JhSeGn2g+j6MZjF3ruP742K9tBpznVCp2XhWQpM
-	fY41Y+WLwicqLeMn7FvwZAxhccGxkCua3iC9qltrcuIPl5CvZDHHobW3Bu6CMYZ9gv3FUX9khSZ95
-	KuvLJcUclnfvxWxG9gjG7teY7/AIqygCJxziSxg751sX6UEvIjAN4Fjrfnq/ukIfrnkwQR4S6+Oig
-	1v48kk3vvw/gpB18Xi3hiBCMOFRljrUDT3Vre/cOiWEMgzRyIfsM7KUncxC5bS4YUEQ5wOTj3Z73A
-	wLdftcnROLmfaG1XBcnQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X8LCmvk0SXiK2y1ToQ68zjhYsoeD3iuvdRmz0k44Qh4=; b=S9iiYwB2mpwvJ6aS0yA5QLxNIN
+	Ze3qBjQdxdvnKW/KGl6TtRWPcqagHZFUl81BOXwnh9lcUCYG2nJOcBAKy8acpNNgR8pYbJb7Tv5PX
+	LgmcS2FDdB12hFkeXyFEpWr62YchL+LV1bYYbj0nYsGdfxzIMTNccu4OMM56oKAZ+nbP1xp5QndP6
+	GZgCGDr+M3LtHmv2PUnJHoRNCmsVMkMr5WPZtGIo2rWye3ebnHUxXzkvKu2D+Sz0NbgRrmoc+USzA
+	fO5AjoHIjmO200j4QYfQc08tLyRLsqbRmteMow+f2ccbjj3z6LsxseFMIUWE5MYDd/tMvnb9nNiBJ
+	IqLvC9Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvdeg-00CNUf-0M;
-	Wed, 25 Oct 2023 13:10:38 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1qvfCW-00CYNo-2Y;
+	Wed, 25 Oct 2023 14:49:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvdeZ-00CNTw-1v;
-	Wed, 25 Oct 2023 13:10:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1698239426; x=1698844226; i=frank-w@public-files.de;
-	bh=7jPZj6qMCgHOu6av6FIRfofY9VKc2ZV6MSDD2uvQnbs=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:
-	 References;
-	b=e2KRo06l685MDTT2IQ866oo13sQoPcQKg1FZDn+0sLUG1Ir8WbVybZpyqh6NAVc/
-	 qHQekuYk0vyR4lmuAW7UrzYw3v8BfTqB8W3HG3wCW8YxiYbCThlUNVTp+D+m49f6H
-	 GqOfMe0E6RUFLxKXSxiqu4seHtBHSddXqf3VWNeG6kFEPiBBO4lqQ287BPrsLSCoW
-	 TW+5Pr6bFAG5u0kJtxjCqcWaSZ1G/2PiHEP33dm/F01Hy+7RO4OnfvIW2gMo1TrHH
-	 p4aS5invnLjm2dlW0k69g8WJfytOfwlJ9QjDCn+keuzFz4v7UCw9eYu/03G+azAyY
-	 p+d92eI3QQWt+tka+g==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.159.50] ([217.61.159.50]) by web-mail.gmx.net
- (3c-app-gmx-bs29.server.lan [172.19.170.81]) (via HTTP); Wed, 25 Oct 2023
- 15:10:26 +0200
+	id 1qvfCS-00CYMo-23;
+	Wed, 25 Oct 2023 14:49:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id AA2BA630BF;
+	Wed, 25 Oct 2023 14:49:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E5ECC433C8;
+	Wed, 25 Oct 2023 14:49:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1698245374;
+	bh=g8c0ZqXEd+5miVwaaQEwfnrYYAhfuPmdWpJQcdlsakE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZvuYL0CkCqKmU8kEiF8yK/BtZZR7hOAaiJ2a2gYPUHteYQ6YOZey5rLFET4OueViT
+	 MXbzzmDscQU5O6f+R/kV3rfcUCJxQJHV1ElJF56953GXqTyfBJ0XHzbXValfLXc5Ql
+	 FB2R8+PzCtwp4y7awD1H26vEjCodXSR3GTmsrpPQOc52bf5US7wNT/ZztcsSn9P2/4
+	 r2bypPZVFR+vZTWi9RAbRdy4Cam+I1HGY6+BFiQlxeW9ee1PASJy7FTAlT68VPW1tN
+	 R3TpuzqoyoLi3j+PdSt7cczRvR3YQR7TUkZck/pm0lyXxjNdz26xnm97uYXPBDgf48
+	 MystXecyzwGXg==
+Date: Wed, 25 Oct 2023 15:49:28 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH 3/6] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-makomo
+Message-ID: <20231025-charity-replica-9c9b03380d7f@spud>
+References: <20231024000724.57714-1-hsinyi@chromium.org>
+ <20231024000724.57714-4-hsinyi@chromium.org>
+ <20231024-bobbed-although-06f341259ebb@spud>
+ <CAJMQK-hvhjNGFUfgqb7pm=pAYjJ0wZAhkPGXxDCUJ5cnUDh2gw@mail.gmail.com>
 MIME-Version: 1.0
-Message-ID: <trinity-90f622f9-7087-46fb-bdc8-f835f6953133-1698239425846@3c-app-gmx-bs29>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Aw: [RFC v1] arm64: dts: mediatek: add dtbs with applied overlays
- for bpi-r3
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 25 Oct 2023 15:10:26 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <trinity-3fe161a2-70f1-4619-be28-199ea6201668-1696078629921@3c-app-gmx-bs36>
-References: <20230916083214.7059-1-linux@fw-web.de>
- <trinity-3fe161a2-70f1-4619-be28-199ea6201668-1696078629921@3c-app-gmx-bs36>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:xBaV5gaQxcMH7sF3CwbQqcmcEOYpwqE2HKE6ZjVU3FZAoVImMFMjF0g6KxmeJOlU5mJOm
- WvWaESRS7SVw7/feimx5TLexZIAfMlzIiBc1YAjKxRnqw7vcoApcisc+7KS8k2vJDNSrV3TTwxSJ
- eM1ONTa84gFD0xI/zFlUWH7OA8IQ7GUmbmnnxhRd+pyuoDDVzCaw1bsGaavW2mw6r5On9MmPEVV0
- m1v4htPTZ/lZxuvLtYF3JR2TwD6HpP5bwbaPJGV3KwQjiOWgyRU4GUfz8PCUaMuaF/poIs6M6pWh
- vA=
-UI-OutboundReport: notjunk:1;M01:P0:bRVUAUtmxag=;sy/FO8yvWMnVb45XOxGtb8pEu7z
- yTtrDC5R9wzMGtzA8EvwkC4cCIDzCKx9qSAesCRulHpygZqavJOSRSl42Kt3+g7KSLqqROMLS
- +E5bCOCPwjZX/4lMKaxP+AESzVroqADuPqDRobUT7fGbtexeTfp3CELUFXBX+Xp7zyhAvGFSm
- SpdLFTEcitZGzHlrwE/eHDNIb2uqtWmTRjav/e0kckQ/cqOfr2ue+crpfa0DpdNUeqZvfYVdG
- Vi0ihPzzoVfJGuXpmOMeHJaf22wYqwAlsJ0PcWd2rNdNVf0sJH0/Q7Ju7FWL+0/HFCX4OK08C
- 8NrrNpDy/w2CgjTsBDcG5+gIdvrxGxPkXKn22GyvgdMqOX+dyBm1odRIRecWnOeVj9qNbWvBx
- d8KVdOmL17cUM61lloyrOYgoi5VYC9qOHFaVk6yyKIoxSgELxbhuqjwaRYiFK1NhzJesPjbOD
- X72DrJiiOMxraH6KSqyq/QpsRBuA2vbg9dOacVYyHy7QZGJNi+MMExMoYwfMmmxEK2Le18MAt
- duGFBI7XN0ylDDMSWYtP25A7j+yBpLZXuSRDzdUK+4WbrdH3JCWudAy7xbz0+ZKlOCmBxDBvN
- 2reGIxXpCZEk1W9wgJmNmYpqDo+wxcspXiuPn4Uv/syeUaps/w982Pu2bUlWn8l70dNBmRMvc
- mMi8GgNYwZHN4LIIIpxh2v0LKJ6F/6TnyMBHvv+JKqnXd9tWndoifGDzZGmvDJcJ8aFsC0MPL
- P2WmA7id/lyYfRsR+QLNsfsRu+U+bEM+sa0fyCGfF4aO7WVDmT7XLBO8muAcW0tbIvy6Nq1vV
- dVYc7UAjDTOYv6plGeOQ3+2Q==
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ZJFVlm9+Zn/c9yF1"
+Content-Disposition: inline
+In-Reply-To: <CAJMQK-hvhjNGFUfgqb7pm=pAYjJ0wZAhkPGXxDCUJ5cnUDh2gw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_061032_259063_D23F9B92 
-X-CRM114-Status: GOOD (  17.62  )
+X-CRM114-CacheID: sfid-20231025_074936_760060_EC0172E3 
+X-CRM114-Status: GOOD (  19.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,104 +70,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>, =?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
 
-thinked a bit again on this Patch as i try to summarize sent patches
-in 1 series to make it easier for maintainer to pick up.
+--ZJFVlm9+Zn/c9yF1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> > Gesendet: Samstag, 16. September 2023 um 10:32 Uhr
-> > Von: "Frank Wunderlich" <linux@fw-web.de>
-> > An: linux-mediatek@lists.infradead.org
-> > Cc: "Frank Wunderlich" <frank-w@public-files.de>, "Matthias Brugger" <=
-matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.de=
-lregno@collabora.com>, "Rob Herring" <robh+dt@kernel.org>, "Krzysztof Kozl=
-owski" <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley" <conor+dt@kerne=
-l.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-> > Betreff: [RFC v1] arm64: dts: mediatek: add dtbs with applied overlays=
- for bpi-r3
+On Tue, Oct 24, 2023 at 11:22:00AM -0700, Hsin-Yi Wang wrote:
+> On Tue, Oct 24, 2023 at 8:17=E2=80=AFAM Conor Dooley <conor@kernel.org> w=
+rote:
 > >
-> > From: Frank Wunderlich <frank-w@public-files.de>
+> > On Mon, Oct 23, 2023 at 05:02:26PM -0700, Hsin-Yi Wang wrote:
+> > > Add makomo sku0 and sku1 which uses different audio codec.
+> > >
+> > > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> > > ---
+> > >  Documentation/devicetree/bindings/arm/mediatek.yaml | 12 ++++++++++++
+> > >  1 file changed, 12 insertions(+)
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Do=
+cumentation/devicetree/bindings/arm/mediatek.yaml
+> > > index fe8c488a3207..b131e0bdbf01 100644
+> > > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> > > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> > > @@ -250,6 +250,18 @@ properties:
+> > >                - google,kodama-sku32
+> > >            - const: google,kodama
+> > >            - const: mediatek,mt8183
+> > > +      - description: Google Makomo (Lenovo 100e Chromebook 2nd Gen M=
+TK 2)
+> > > +        items:
+> > > +          - const: google,makomo-rev4-sku0
+> > > +          - const: google,makomo-rev5-sku0
 > >
-> > Build devicetree binaries for testing overlays and providing users
-> > full dtb without using overlays.
+> > With these bindings, how does one describe a makomo-rev5-sku0?
+> > What you have here is only suitable for describing the makomo-rev4-sku0.
 > >
-> > Suggested-by: Rob Herring <robh+dt@kernel.org>
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> > based on discussion here:
-> > https://lore.kernel.org/all/CAL_JsqK_3xxD0DFwipXO85P=3Dq=3DEYjUdjE1_8g=
-1MKtvw3vVzx5A@mail.gmail.com/
-> > https://lore.kernel.org/all/CAL_JsqJSi=3DkJSix=3Df3787ULZnaCy_Y26Phdhy=
-5y9fat_vkDuUw@mail.gmail.com/
-> > ---
-> >  arch/arm64/boot/dts/mediatek/Makefile | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/d=
-ts/mediatek/Makefile
-> > index c99c3372a4b5..18be027bf6b4 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -13,6 +13,14 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-b=
-pi-r3-emmc.dtbo
-> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand.dtbo
-> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor.dtbo
-> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd.dtbo
-> > +mt7986a-bananapi-bpi-r3-emmc-nand-dtbs :=3D mt7986a-bananapi-bpi-r3.d=
-tb mt7986a-bananapi-bpi-r3-emmc.dtbo mt7986a-bananapi-bpi-r3-nand.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nand.dt=
-b
-> > +mt7986a-bananapi-bpi-r3-emmc-nor-dtbs :=3D mt7986a-bananapi-bpi-r3.dt=
-b mt7986a-bananapi-bpi-r3-emmc.dtbo mt7986a-bananapi-bpi-r3-nor.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nor.dtb
-> > +mt7986a-bananapi-bpi-r3-sd-nand-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb=
- mt7986a-bananapi-bpi-r3-sd.dtbo mt7986a-bananapi-bpi-r3-nand.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nand.dtb
-> > +mt7986a-bananapi-bpi-r3-sd-nor-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb =
-mt7986a-bananapi-bpi-r3-sd.dtbo mt7986a-bananapi-bpi-r3-nor.dtbo
+> makomo-rev5-sku0 and makomo-rev4-sku0 uses the same dts:
+>=20
+> compatible =3D "google,makomo-rev4-sku0", "google,makomo-rev5-sku0",
+>                       "google,makomo", "mediatek,mt8183";
+>=20
+> In this case, can bindings be listed like that?
 
-maybe this is nicer?
+On a rev5-sku0, the first compatible should be the most specific one,
+which would mean:
 
-mt7986a-bananapi-bpi-r3-emmc-nand-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb \
-					  mt7986a-bananapi-bpi-r3-emmc.dtbo \
-					  mt7986a-bananapi-bpi-r3-nand.dtbo
-dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nand.dtb
-mt7986a-bananapi-bpi-r3-emmc-nor-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb \
-					 mt7986a-bananapi-bpi-r3-emmc.dtbo \
-					 mt7986a-bananapi-bpi-r3-nor.dtbo
-dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nor.dtb
-mt7986a-bananapi-bpi-r3-sd-nand-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb \
-					mt7986a-bananapi-bpi-r3-sd.dtbo \
-					mt7986a-bananapi-bpi-r3-nand.dtbo
-dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nand.dtb
-mt7986a-bananapi-bpi-r3-sd-nor-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb \
-				       mt7986a-bananapi-bpi-r3-sd.dtbo \
-				       mt7986a-bananapi-bpi-r3-nor.dtbo
-dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nor.dtb
+compatible =3D "google,makomo-rev5-sku0", "google,makomo", "mediatek,mt8183=
+";
 
-here i tried to align the text on first name, but this results in visible =
-stairs.
-maybe only 1 tab to indent here (or anything else)? what do you think? In =
-the end
-better readable as 1 long line.
+I said the same on other google laptop bindings before, but I'm not
+really happy with these compatible configurations, that seem conjured up
+to suit your firmware. It'd make far more sense to me to have a setup
+that permitted:
+compatible =3D "google,makomo-sku0-rev5", "google,makomo-sku0", "google,mak=
+omo", "mediatek,mt8183";
+and
+compatible =3D "google,makomo-sku0-rev4", "google,makomo-sku0", "google,mak=
+omo", "mediatek,mt8183";
 
-the SATA-Patch [1] will then add a line to each of the 4 blocks here (+5 l=
-ines in total except changes by adding the backslash).
+Cheers,
+Conor.
 
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nor.dtb
-> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-rfb.dtb
-> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986b-rfb.dtb
-> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8167-pumpkin.dtb
-> > --
-> > 2.34.1
-> >
+> > > +          - const: google,makomo
+> > > +          - const: mediatek,mt8183
+> > > +      - description: Google Makomo (Lenovo 100e Chromebook 2nd Gen M=
+TK 2)
+> > > +        items:
+> > > +          - const: google,makomo-rev4-sku1
+> > > +          - const: google,makomo-rev5-sku1
+> > > +          - const: google,makomo
+> > > +          - const: mediatek,mt8183
+> > >        - description: Google Willow (Acer Chromebook 311 C722/C722T)
+> > >          items:
+> > >            - enum:
+> > > --
+> > > 2.42.0.758.gaed0368e0e-goog
+> > >
 
-regards Frank
+--ZJFVlm9+Zn/c9yF1
+Content-Type: application/pgp-signature; name="signature.asc"
 
-[1] https://patchwork.kernel.org/project/linux-mediatek/patch/202309010727=
-30.13571-1-linux@fw-web.de/
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZTkq+AAKCRB4tDGHoIJi
+0rnGAP9ZabySIiA8SVpNMYulGM3x3bCMQhPDIuSRdNFrqvuBKgEApPdAFGmmDMNE
+Pqyn5ngRg4/wRf9xVNi8zaqOYEf2ug0=
+=ShOI
+-----END PGP SIGNATURE-----
+
+--ZJFVlm9+Zn/c9yF1--
 
