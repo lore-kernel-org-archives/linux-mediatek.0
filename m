@@ -4,96 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 885E9C0032E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 08:58:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 332ABC0032E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 09:38:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5zkch3mSEJZ0E9AdlA4GQWgLG+OEFfNA8pOLGU7VfLY=; b=2QLH6AgJFn7Nt4Fy1wBDirxQ2s
-	II+PuF5IikrFVLwC7LVkqyKbnJBBptuFRmbW0y+SaKG6zxGzBvy8ASrZfG0c9YXDzyUJLjujSpmoi
-	L7Y2V+JsGTSigENdgKygoFyy5r37tJ+RJKGFD2qx+Q+FuvH277/32Nk8LxVgkm5JhrPI9XJALV/zJ
-	OeZ4YUT5am10Y2w4MbJak1319sdvuwajP9KGvHcS5BA3pXDWGtfphVCrsb7kO06NZ3vd/3cgOPXo6
-	r6BUQJXgjyNv+L1iUUicUphb03ogfjDqVqAyZcdIVis4FBEWHCXbB5o8LqUaoPXFKM93OG165D7Hu
-	8FBWOitQ==;
+	bh=8eODRSxQvH6l/Czcg0/j2iz+S1VUweybADz6qXDQINA=; b=RaTSudIvx0MNGF2b2wVm5iTy2x
+	0A+S7VDA9HBKaiI1CPil4BddN28xbNw3ANqUi8Z/8x4VViTgbTyUSdccdYdsQs3UlNRkSGFNuE4JR
+	7MlPgh0OCho4Pw0nXUK1JAs54WrZ2TvAPJLp4kXkTk5wohwkenE6hY2AsNabFtGDVLKvEhd9Uj3Bu
+	KHA33SLQ9nBEu0PvX+8FMkWJb1nCikpvWQsiDHHGlgREggAPSiD89PVsKrgZPFIEcHcw/H9NeIgoG
+	NE6LVANnaM/TAQw8TDPTsjV0pg4WNcj4K/bBctvH8FawiGG/sIRcLKqL/0FsFtQJGkT81tJDuR6ol
+	a7aPul7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvZiB-00BlRU-1n;
-	Wed, 25 Oct 2023 08:57:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qvaLV-00BqOo-0M;
+	Wed, 25 Oct 2023 09:38:37 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvZi9-00BlQX-0Q;
-	Wed, 25 Oct 2023 08:57:58 +0000
-X-UUID: 93d2c6b0731411ee9b7791016c24628a-20231025
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5zkch3mSEJZ0E9AdlA4GQWgLG+OEFfNA8pOLGU7VfLY=;
-	b=giOou+BurqmiI5tLpdca/H8HEfU716IzOYKEEBMWAMSyTjbIOo1HwixBAqct9ZowU6xpJDY/gkebwVVIHdOfTjJD31WQz0/2CY77RC+lC6eKQXISJiPn1Lr7ELZlSGygIBZs03Wg3f9EVYV5/WQWKyd11kREOIBUXxx03QssO8Y=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:1be0bb45-8954-4634-a53f-9a30478fb974,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:c8e2c0fb-4a48-46e2-b946-12f04f20af8c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 93d2c6b0731411ee9b7791016c24628a-20231025
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <chun-hung.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 384164979; Wed, 25 Oct 2023 01:57:51 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 25 Oct 2023 16:57:12 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 25 Oct 2023 16:57:12 +0800
-From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, "James E . J . Bottomley"
-	<jejb@linux.ibm.com>, "Martin K . Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Can Guo <quic_cang@quicinc.com>,
-	Manivannan Sadhasivam <mani@kernel.org>, Asutosh Das
-	<quic_asutoshd@quicinc.com>, "Bao D . Nguyen" <quic_nguyenb@quicinc.com>,
-	Yang Li <yang.lee@linux.alibaba.com>, Eric Biggers <ebiggers@google.com>,
-	Keoseong Park <keosung.park@samsung.com>, Arthur Simchaev
-	<Arthur.Simchaev@wdc.com>
-CC: <wsd_upstream@mediatek.com>, <casper.li@mediatek.com>,
-	<peter.wang@mediatek.com>, <powen.kao@mediatek.com>,
-	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <lin.gui@mediatek.com>, <eddie.huang@mediatek.com>,
-	<qilin.tan@mediatek.com>, <linux-scsi@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <kernel-team@android.com>, Chun-Hung Wu
-	<chun-hung.wu@mediatek.com>
-Subject: [PATCH v1 0/1] ufs: core: Add host quirk QUIRK_MCQ_EXPAND_QUEUE_SLOT
-Date: Wed, 25 Oct 2023 16:56:53 +0800
-Message-ID: <20231025085656.10848-1-chun-hung.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qvaLR-00BqMB-1b;
+	Wed, 25 Oct 2023 09:38:34 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C8D5966071C9;
+	Wed, 25 Oct 2023 10:38:28 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698226709;
+	bh=ZrAdIgYw0YdPdTX7tItDF5DGAV3QupHqDDWzmNm1c+c=;
+	h=From:To:Cc:Subject:Date:From;
+	b=EhfPYNC3T4Ms23Bb5R5utO6DTa+B1SQAOTbXoR8CVO3FmUBTc3XdlwGhViTjyvpVT
+	 QpMUqAvl77CKwtxzmoNF2QBw+YY/EkHnerpKFbJ9Uzrcd1gsExqWDPytB1EcdvqKmu
+	 nFNZXOzldsNOuzweFKFPHt5gXDzWnikp+G4dF0GkQ8I7lv0ByFzNiKlY2l9lrhvtC2
+	 m0H806Mds/D3QD6Dg1unFBQZ2FkJPf0NJnYoYseVoVPPfI162tAghcfJ6n7LxiOASI
+	 vxZJ6nBT8j6mJ/S5QiFeAoNGTwcO9B2uaYugUFePyc/CmuK8A23U+pO9CJlTej0/H7
+	 wZfymARrR2Jeg==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: hsinyi@chromium.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	erin.lo@mediatek.com,
+	eddie.huang@mediatek.com,
+	pihsun@chromium.org,
+	fparent@baylibre.com,
+	chunfeng.yun@mediatek.com,
+	gregkh@linuxfoundation.org,
+	michael.kao@mediatek.com,
+	mka@chromium.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/8] MediaTek ARM64 devicetrees fixes and improvements
+Date: Wed, 25 Oct 2023 11:38:08 +0200
+Message-ID: <20231025093816.44327-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.511800-8.000000
-X-TMASE-MatchedRID: uajpMFX5fhcAb75z7qUG0lz+axQLnAVBK2i9pofGVSu6SmGkMbaxzqPF
-	jJEFr+olKE0Je8DR/D4Qr/RhSnHzg90H8LFZNFG71sULACB0qRKUOL+zMbQzLC1Pjbl2IIImF+6
-	oUWsfRNyCu9TcHpuLYi2cdJTMdLTMF0aD5ljt43pMcHZD6gqu7wxMjfifIXfowkvVoA11Twp+3B
-	ndfXUhXQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.511800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 843DDFDE3226983DC684E2279F9EB70224AF7BBF85DA7A8D9AAA75B38B48E7E22000:8
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_015757_174056_C94C4FD1 
-X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-CacheID: sfid-20231025_023833_729274_627C86A9 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,17 +86,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support quirk for host controller not able to distinguish
-queue full or empty.
+This series performs some cleanup and adds some fixes to the MediaTek
+ARM64 devicetrees.
 
-Alice Chao (1):
-  ufs: core: Add host quirk QUIRK_MCQ_EXPAND_QUEUE_SLOT
+In short:
+ - Changes all instances of interrupt-parent = <...>; interrupts = <...>
+   to one single interrupts-extended = <...> line
+ - Moves interrupts from MT6358 dtsi to board files (as those are board
+   specific, not PMIC specific!)
+ - Fixes various devicetree warnings
 
- drivers/ufs/core/ufs-mcq.c |  5 ++++-
- include/ufs/ufshcd.h       | 11 +++++++++++
- 2 files changed, 15 insertions(+), 1 deletion(-)
+AngeloGioacchino Del Regno (8):
+  arm64: dts: mediatek: mt8183: Use interrupts-extended where possible
+  arm64: dts: mediatek: mt8173: Use interrupts-extended where possible
+  arm64: dts: mediatek: Use interrupts-extended where possible
+  arm64: dts: mediatek: Move MT6358 PMIC interrupts to MT8183 boards
+  arm64: dts: mediatek: mt8183: Fix unit address for scp reserved memory
+  arm64: dts: mediatek: mt8183-evb: Fix unit_address_vs_reg warning on
+    ntc
+  arm64: dts: mediatek: mt8173-evb: Fix regulator-fixed node names
+  arm64: dts: mediatek: mt8183: Move thermal-zones to the root node
+
+ arch/arm64/boot/dts/mediatek/mt6358.dtsi      |   2 -
+ .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  |   3 +-
+ .../dts/mediatek/mt7986a-bananapi-bpi-r3.dts  |   3 +-
+ .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |   9 +-
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  24 +-
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts   |   7 +-
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   8 +-
+ .../mediatek/mt8183-kukui-audio-da7219.dtsi   |   3 +-
+ .../mediatek/mt8183-kukui-audio-ts3a227e.dtsi |   3 +-
+ .../mediatek/mt8183-kukui-jacuzzi-damu.dts    |   3 +-
+ .../mt8183-kukui-jacuzzi-fennel-sku1.dts      |   3 +-
+ .../mt8183-kukui-jacuzzi-fennel-sku6.dts      |   3 +-
+ .../mt8183-kukui-jacuzzi-fennel-sku7.dts      |   3 +-
+ .../dts/mediatek/mt8183-kukui-kakadu.dtsi     |   3 +-
+ .../dts/mediatek/mt8183-kukui-kodama.dtsi     |   3 +-
+ .../boot/dts/mediatek/mt8183-kukui-krane.dtsi |   3 +-
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  12 +-
+ .../boot/dts/mediatek/mt8183-pumpkin.dts      |   4 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 242 +++++++++---------
+ .../dts/mediatek/mt8395-genio-1200-evk.dts    |   6 +-
+ 20 files changed, 165 insertions(+), 182 deletions(-)
 
 -- 
-2.18.0
+2.42.0
 
 
