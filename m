@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A65DC0032E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 12:28:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 645A7C07545
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 12:28:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rTaL6HJh/KcNARwsOX7O8uVlMjxZTa3ShYLlPA/+9M4=; b=1IB/iLr7b0Szwf
-	VVfByZ8p3+3ItL2Ci2Jm26UrmEjKr1iV8CFyQ5hLkJlT+VSxTko5z5qr3EQUSAkpWbSUVthjgnN9/
-	6SJwjJ5I89u90zQsGwRn2oY0gbziIswdTbgrlue8ehoSfuWo46fJhd9SIgT1LE/KJ+JXRZpCkIwRL
-	VxCklA++t0O68FosU7SCvokJ3qiWLplpoHUyoP222HYq+m8JRA6tBs0yoduPcQ4d02c+Wa4ypWWCq
-	wbWfZeBh0X4Tzxod0JobQFhYxXkOQTY8s5ZjVlsrZWcqn8o0YA5Pdz1T1WxXYa1atgoDTm61eGHlR
-	H26mvUH8nUbI+kTYZ4Fw==;
+	List-Owner; bh=AU4NsX3aqIRrHJNOsCUNCEFXkSM3To+xX/RUEvIJ3tk=; b=ynM3xi77dKPXBF
+	4V+layOrI0kvfKgcmVDl6oTxvCXfVnRFpFGKfUqBF/LTWa8NXwNo2p0eEXd2nIngH+69zxLJFtdPm
+	9yZ9EAesn/z3KzjhKLe6ZWGRDZF/lWUvcweQo9c5d6mzICHc7DwvG5ry6vtAqjjYWR9Yat9RvLrZX
+	lwT90QklkZQWSCKn5z95vT8uNamPynV7CuVtkjiuUKbL53Br5O60rnOtrY0iR1Lu+/tdt5Q9UE2pT
+	bJGoPRbRk2VSibJyMBNXp01DXT39+Ft+ykKQdZIKiXtf0Mtw9FLLxmy8sbni65x2fQxdiKwtb1Hkp
+	embnXfjrf3lqMBrCcqBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvd0A-00CJ1N-0o;
-	Wed, 25 Oct 2023 12:28:46 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qvd0J-00CJ3i-1H;
+	Wed, 25 Oct 2023 12:28:55 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvd05-00CJ0X-33;
-	Wed, 25 Oct 2023 12:28:43 +0000
+	id 1qvd0F-00CJ0r-2D;
+	Wed, 25 Oct 2023 12:28:53 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E21C866057B6;
-	Wed, 25 Oct 2023 13:28:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 96B5B660731F;
+	Wed, 25 Oct 2023 13:28:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698236919;
-	bh=gPu5UO/dDesJd0vNYgX/o5DUmSc+x9DabufbUTnvVmQ=;
+	s=mail; t=1698236922;
+	bh=XVUNCwXvwwO8iAGXwgWiNkikQdtq3Qfu7s3r4hSQ49Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CF0u5Kr3b4aMruI4Jj65mOHt0c5Z+sjObOUfXD6Bx7L960gfSfMrnb1jqYbDVRZ1T
-	 DwpfN9UWTZKZYzUhWKumxgPO2eKzc6uSTyl67mp73gdr7gSdpqyExUOq0zCWsh/pYq
-	 nsPNrq44kXf0jv8+8RARtOyBEekB8dOSH3/4OPuxtbpLgHWh9E5QJJQNinutndWPuR
-	 d3OtIR0ZUd6MeKjvB0qyzpttCzGx5P63NRgUpDGecKKZLN4VCNndoLbhe3/GJQkwNw
-	 NnBtueWHL9UpYfNvEO4RZOCDfT6aAID6V04LWOHsrkwQ5AJaK6m901lLSLa1Ff7IK6
-	 UemZ1pfRxwE+w==
-Message-ID: <9dbcc12a-1729-43bb-88f3-c3d8b71acd94@collabora.com>
-Date: Wed, 25 Oct 2023 14:28:36 +0200
+	b=VvaXFBCXSZopdm9zEMBPwk52IGi4WqgdVNuy/su89jrUPEmGfR3Oh2C+7rodLTPs8
+	 MsF+R+8rndzXh7Dwkmx4UoffY9LX9WYImV1DCu4O2I238ybFyQmHsTCnJGatMusYbT
+	 7VcI//prbtGebFGqWqNCwPBHw2BCcEglfjRgxFarDMdoaTth2X6hboQhferuPcYshq
+	 56XPcLdv+MLLr8x4ZtmzjbYwdwhedhEQ9SCGVXTZ0tJBEa13eO52w4TZ/J5sEJ9D7F
+	 INdKjtHNV9aNoJhlN0RIeMd3oi/fI/446tUbAV/ytB/IE40yf3xBjrp9zcJ3XLlmiF
+	 07Pdti5Kv8WHw==
+Message-ID: <42c8fbc2-49db-4cca-aabe-520e4eee597a@collabora.com>
+Date: Wed, 25 Oct 2023 14:28:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/3] arm64: dts: mt7986: define 3W max power to both
- SFP on BPI-R3
+Subject: Re: [PATCH v1 2/3] arm64: dts: mt7986: change cooling trips
 Content-Language: en-US
 To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
 References: <20230820153135.42588-1-linux@fw-web.de>
- <20230820153135.42588-2-linux@fw-web.de>
+ <20230820153135.42588-3-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230820153135.42588-2-linux@fw-web.de>
+In-Reply-To: <20230820153135.42588-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_052842_134380_BF71C90E 
-X-CRM114-Status: UNSURE (   7.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231025_052851_888612_A0A95971 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,14 +77,64 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 20/08/23 17:31, Frank Wunderlich ha scritto:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> All SFP power supplies are connected to the system VDD33 which is 3v3/8A.
-> Set 3A per SFP slot to allow SFPs work which need more power than the
-> default 1W.
+> Add Critical and hot trips for emergency system shutdown and limiting
+> system load.
 > 
-> Fixes: 8e01fb15b815 ("arm64: dts: mt7986: add Bananapi R3")
+> Change passive trip to active to make sure fan is activated on the
+> lowest trip.
+> 
+> Fixes: 1f5be05132f3 ("arm64: dts: mt7986: add thermal-zones")
+> Suggested-by: Daniel Golle <daniel@makrotopia.org>
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 20 ++++++++++++++++----
+>   1 file changed, 16 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index 207510abda89..36d8945400df 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -614,22 +614,34 @@ cpu_thermal: cpu-thermal {
+>   			thermal-sensors = <&thermal 0>;
+>   
+>   			trips {
+> +				cpu_trip_crit: crit {
+> +					temperature = <125000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +
+> +				cpu_trip_hot: hot {
+> +					temperature = <120000>;
+> +					hysteresis = <2000>;
+> +					type = "hot";
+> +				};
+> +
+>   				cpu_trip_active_high: active-high {
+>   					temperature = <115000>;
+>   					hysteresis = <2000>;
+>   					type = "active";
+>   				};
+>   
+> -				cpu_trip_active_low: active-low {
+> +				cpu_trip_active_med: active-med {
+>   					temperature = <85000>;
+>   					hysteresis = <2000>;
+>   					type = "active";
+>   				};
+>   
+> -				cpu_trip_passive: passive {
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Rule of thumb is that each commit has to build on its own: this will break build
+because of mt7986a-bananapi-bpi-r3.dts referencing the now unexistant
+cpu_trip_passive phandle.
 
+Solving that is simple.
+Merge commit [2/3] and [3/3] in a single commit.
+
+Obviously, retain both fixes tags :-)
+
+Cheers,
+Angelo
 
 
