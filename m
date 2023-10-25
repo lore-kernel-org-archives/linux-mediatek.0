@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9876BC25B47
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 17:08:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D30AC0032E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Oct 2023 17:09:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bac0cPNtRqeMT6ltBwYDY11vruRiib1jT+EBIKA5buQ=; b=ICcFyxfOSuyk10
-	i5IFFt5f+DLjsoFHKw0ok91pEmKsWUm3CALk1aKPafEnMNZSDSfif0MxRBrMRA/LWKmby/8I3qKyN
-	Odzq6C51CGYP1+OCQaOli2Nf2HSUQL9jGmVr6pvvkyJnF/p0MSVowakDkFbFSXdGXP/1EZB7s+IZq
-	ZghlYNl0O/X5zKcFheITUl0etH0EPxUyxPMUhfaW0V+YmqvTKHwLjH6+Vzl5/+fdA0zBkdxLAG9jh
-	vHutSB/PpgglRigPO9L/v0GvPnBphiUrc+74OLR7XqHzJB5TAh7r4XFMad0XxbXh9ifJYspRLQ0ZH
-	Pb7ZWQjFp1m+XZj1cpDA==;
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0665A9x6QlRYnS9Etes7tT5/Mif1F5zTWwPvutSrAPg=; b=U3zSPnfNNtD6Yj
+	LkMLyyyh8dIRd5M5jEK3wTxkHSuk8DE85/Iz/71DZHWJbRrHFmPofOkdMy3zl45SsmVX+BdXezCOP
+	Tdl10PwITi0hK22A+bb69kbokjqzHeH+O0elrQiYd6jdoSbywE/lKgyNEuhQWdA8dZ/up71mz8NFs
+	oyk5sDNOPyXZ6FnDxflujNFdBwYYd4Gu68Jr4luwt1WJzkUyKext3jv36A147sb7fhR6FuVoKODRI
+	MYiSE+7kf7IuuwSexzq7uNurQ5fYJ7MBQRC6dmvCtAcvb2Q5npz32xPLkl4pRlDvt039Js1SeAZTi
+	6STc5gvtzBf6rEECf9wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvhNG-00CksL-0z;
-	Wed, 25 Oct 2023 17:08:54 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1qvhNO-00CkwD-2M;
+	Wed, 25 Oct 2023 17:09:02 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvhNB-00Ckp9-1g;
-	Wed, 25 Oct 2023 17:08:51 +0000
+	id 1qvhNB-00Ckp7-1o;
+	Wed, 25 Oct 2023 17:08:52 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id 968DA3FC25;
-	Wed, 25 Oct 2023 17:08:43 +0000 (UTC)
+	by mxout3.routing.net (Postfix) with ESMTP id E17B4625F9;
+	Wed, 25 Oct 2023 17:08:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	s=20200217; t=1698253723;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Bac0cPNtRqeMT6ltBwYDY11vruRiib1jT+EBIKA5buQ=;
-	b=Gql11qAG1rQf0U7yBatwmKbA0iV7KgSvliP/+cIz3IjPjCEw9PeyUftMorgZD/fAvWB9tR
-	3P/01PexfIvBZs58mWou57ZQL2KYJ8I9f6szVIN3hj5o7Azquh6RKbmFP7p5ylTJDIjHOd
-	mkfvTt/wEds8iweT4efe3s/NGU/fbGs=
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=0665A9x6QlRYnS9Etes7tT5/Mif1F5zTWwPvutSrAPg=;
+	b=rvm/NFkLEWSsqXzjols28RiFyiBk3ob7Vu3l+nD0eM5i8ATrLKUYssp+YNqtdh1TCha588
+	rMyUaLd8CMGOuKBZHHew6GTy+oisu+5lNgCXvIeXh1qpdZtkDrR0bR1WzCo0txtZX521nA
+	tl1P6mEWEdf4N2WqWfL+vbpxwZR3W90=
 Received: from frank-G5.. (fttx-pool-217.61.159.50.bambit.de [217.61.159.50])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id DEE393608ED;
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 1092A3607E4;
 	Wed, 25 Oct 2023 17:08:42 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 1/5] arm64: dts: mt7986: fix emmc hs400 mode without uboot initialization
-Date: Wed, 25 Oct 2023 19:08:28 +0200
-Message-Id: <20231025170832.78727-2-linux@fw-web.de>
+Subject: [PATCH v2 0/5] mt7986 DTS Patches
+Date: Wed, 25 Oct 2023 19:08:27 +0200
+Message-Id: <20231025170832.78727-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231025170832.78727-1-linux@fw-web.de>
-References: <20231025170832.78727-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: e843dea4-707f-44c8-985a-73ad6095ed42
+X-Mail-ID: 17890061-734c-4475-9c1d-3c0bf0eeb55e
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_100849_746689_30CCED5E 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20231025_100849_746694_3289F2B6 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,46 +64,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Conor Dooley <conor+dt@kernel.org>, Daniel Golle <daniel@makrotopia.org>, stable@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Conor Dooley <conor+dt@kernel.org>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eric Woudstra <ericwouds@gmail.com>
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Eric reports errors on emmc with hs400 mode when booting linux on bpi-r3
-without uboot [1]. Booting with uboot does not show this because clocks
-seem to be initialized by uboot.
+Hi,
 
-Fix this by adding assigned-clocks and assigned-clock-parents like it's
-done in uboot [2].
+i collected the open dts patches for mt7986 to make it easier for mtk
+maintainer to pick them up.
 
-[1] https://forum.banana-pi.org/t/bpi-r3-kernel-fails-setting-emmc-clock-to-416m-depends-on-u-boot/15170
-[2] https://github.com/u-boot/u-boot/blob/master/arch/arm/dts/mt7986.dtsi#L287
+so the following patches/series are superseeded:
 
-Cc: stable@vger.kernel.org
-Fixes: 513b49d19b34 ("arm64: dts: mt7986: add mmc related device nodes")
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
+- Fix emmc hs400 mode on mt7986
+  https://patchwork.kernel.org/project/linux-mediatek/list/?series=761293
+- mt7986 DTS fixes (for thermal and sfp)
+  https://patchwork.kernel.org/project/linux-mediatek/list/?series=777712
+- arm64: dts: mediatek: add dtbs with applied overlays for bpi-r3
+  https://patchwork.kernel.org/project/linux-mediatek/patch/20230916083214.7059-1-linux@fw-web.de/
+- arm64: dts: mt7986: add overlay for SATA power socket on BPI-R3
+  https://patchwork.kernel.org/project/linux-mediatek/patch/20230901072730.13571-1-linux@fw-web.de/
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index 24eda00e320d..77ddd9e44ed2 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -374,6 +374,10 @@ mmc0: mmc@11230000 {
- 			reg = <0 0x11230000 0 0x1000>,
- 			      <0 0x11c20000 0 0x1000>;
- 			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH>;
-+			assigned-clocks = <&topckgen CLK_TOP_EMMC_416M_SEL>,
-+					  <&topckgen CLK_TOP_EMMC_250M_SEL>;
-+			assigned-clock-parents = <&apmixedsys CLK_APMIXED_MPLL>,
-+						 <&topckgen CLK_TOP_NET1PLL_D5_D2>;
- 			clocks = <&topckgen CLK_TOP_EMMC_416M_SEL>,
- 				 <&infracfg CLK_INFRA_MSDC_HCK_CK>,
- 				 <&infracfg CLK_INFRA_MSDC_CK>,
+updated the dtbs overlay patch to make it better readable based on 
+arm64/boot/dts/ti/Makefile and squashed 2 patches from the thermal-zone
+series.
+
+sidenote for angelo: after this series only the thermal driver patch is
+open from the list i've sent to you if this goes through your tree.
+
+regards Frank
+
+Eric Woudstra (1):
+  arm64: dts: mt7986: fix emmc hs400 mode without uboot initialization
+
+Frank Wunderlich (4):
+  arm64: dts: mt7986: define 3W max power to both SFP on BPI-R3
+  arm64: dts: mt7986: change cooling trips
+  arm64: dts: mt7986: add dtbs with applied overlays for bpi-r3
+  arm64: dts: mt7986: add overlay for SATA power socket on BPI-R3
+
+ arch/arm64/boot/dts/mediatek/Makefile         | 27 +++++++++++++
+ .../mt7986a-bananapi-bpi-r3-sata.dtso         | 39 +++++++++++++++++++
+ .../dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 12 +++---
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     | 24 ++++++++++--
+ 4 files changed, 93 insertions(+), 9 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso
+
 -- 
 2.34.1
 
