@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C32FC25B6B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 19:14:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A86EBC25B6B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 19:14:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CAO4Vq2lAtqVduwbRFXBpJqHTTi1hnz8FUzyO8B5YMU=; b=XrDdOVUorknOyfgjtLIdUjJhfY
-	8ydJ+QZF2MWujgi6p/rm7euxuGIuhYSrrQZ2Sa33C0C1H6N5tvlr9gCCMDy5JC+TMxvqfQUqgF3NJ
-	Qxfvq0cf/TLxxROFXk0JXFFTKBEhmAeSI9FGZzmuoB5IFu3bXmIn+8D2QsfSsDx95ljwe2MNeToOc
-	1j9x/Wh4gGzW4aaMqsUuOGvn3NwTEalOTT5z22g3c/VIZ1DunJ0ZfepPjFFMgwppinHbNelXvH8ul
-	HhBz7oEv8z0egRkj8rks+JrhUQsC4b4xbdHCMgnNvXR8m6r9roG/t/sGe13NXDTfqAcMqXlWH4TGn
-	XYkNk8wg==;
+	bh=ymcTSMtDLHHq71nFPpNk2uBvq4G7e2/sBgD9CU8KCYw=; b=mOs+qIlGPSIvm9PBIzgHaIZqjF
+	ytZjE8JGMQfmuYa/lz0fEcLScjCVDU2Brrbg5X8clfW2e+qHIUgwK9Qb2D2LDed95evvy8r9YBg7E
+	xr2npUx81aX/CkgP8jJi6GySMFMnI8xuaVixcUjH3IRSG+NR5ZY0yMV/tUwnjSmVBUVY5hYfIagnc
+	FikKs6Ua7D4/OFQOmCj0uTqPf/WwCmJaJBZ0BujNCSmGZDDYW71+Y3RV61nBAHWpy3J7z/m2Dqff/
+	NhoFHzfbdP/FWOyUoGDy87e+/JFpePiKsVdp9/4IouE+lIwWFbevc68V92xPfXeCo6N27Izz2wWTR
+	pUMZSwgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw5oH-00F2PM-0l;
-	Thu, 26 Oct 2023 19:14:25 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1qw5oQ-00F2SE-1x;
+	Thu, 26 Oct 2023 19:14:34 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw5nm-00F27f-1s
+	id 1qw5nm-00F28N-2G
 	for linux-mediatek@lists.infradead.org;
 	Thu, 26 Oct 2023 19:13:58 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-280011e94ddso606740a91.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Oct 2023 12:13:51 -0700 (PDT)
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-27db9fdec0dso1075418a91.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Oct 2023 12:13:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1698347631; x=1698952431; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1698347633; x=1698952433; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CAO4Vq2lAtqVduwbRFXBpJqHTTi1hnz8FUzyO8B5YMU=;
-        b=PKVzNL8m9F92HD46zvOr/jzx1FrxP/cQNNWZBVck7aunFvGaswSjJjhDuI6ssi79vC
-         2TbLhgHacn90Ct5BWsvJUxbuWpzWMhy1GdDl7xhRAhh0f8s3o4rvI6bj9OaZ4Glkx+rf
-         opiorcawrSm4WLws/tktC2iVXlhMgFjVao2GQ=
+        bh=ymcTSMtDLHHq71nFPpNk2uBvq4G7e2/sBgD9CU8KCYw=;
+        b=VOx9jh3xOnKztItiuA8CEM1sFEd7/J7vL2Vp7qhm/Ue4zB0AH62ZDocKC52/KVOYh9
+         nM90MU0LBrGwwvQovoluLDL0bcrAkRmwsRTAQwM0fB9/LR+5xLyQXqdF1M+wdYPogsCx
+         MqN1kCIF0UMFAT5AyYElXJE4HK5BAEYrz/Kk4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698347631; x=1698952431;
+        d=1e100.net; s=20230601; t=1698347633; x=1698952433;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=CAO4Vq2lAtqVduwbRFXBpJqHTTi1hnz8FUzyO8B5YMU=;
-        b=ipQU1L4mqnJibi7VBGXkVWZj0cJ1AcWF4jQdabteYi6Wa2mWLI6oxBifwLToden9II
-         m5GzvKs057u2zbfj6n7QkKr0dezKga0lVhpLG74TOnF36mG0rmxg3icGwth6yXq8pBOm
-         0dUt17ZLlo8wPaYmmmSJxNbE0ke1B6Gj2P/HXpFJbRrtvZrbapY/1zdc+h3n3CTQxP3A
-         DlYBp+F/oUjv9Y93ZsN1E/aeUWpNJ9XG1bQEM1h46lhZhU9gO381MKBlHgNGi64e1enB
-         GQj1DlBeJXyxgZeg30XcqHXz0b0yyctpyYi2Bziyrt6rnASGzP/jKizAQ1hJCvfrXwYr
-         NANA==
-X-Gm-Message-State: AOJu0YymhN+K9f/tnIP5QPcd41CY2lcH5INKeTE7RaR1Obn32J825ssL
-	1ONeChqC3drkK1DGDRCeATW1og==
-X-Google-Smtp-Source: AGHT+IE6uCrGdUzHI14GAQsOlabr/a7U4b+OoiEvBWYCgy4ZHcU/W16zsfazUOqGXXykfy7jnZB7rA==
-X-Received: by 2002:a17:90a:db92:b0:280:e0:9071 with SMTP id h18-20020a17090adb9200b0028000e09071mr520259pjv.28.1698347631047;
-        Thu, 26 Oct 2023 12:13:51 -0700 (PDT)
+        bh=ymcTSMtDLHHq71nFPpNk2uBvq4G7e2/sBgD9CU8KCYw=;
+        b=GLHWppw8meN9t6LoxBoppN/gaBfuNRnUG1DSnfJ1AquapLrbzZi9co7oy++V5KPLOD
+         quwB0uuSv+TAY/88Q8TYiq+RFcvuQvPlzfd5VmQnd1Rk5GycVWFeOc7ZdcTUFhvwSVu1
+         a8FGrpmZwnSiihiJaEJKVsAotXe0abkOkky9jLQYmP61+Kyumu9e8OC+nfoCQIzEUyy3
+         9h+XiUwCgDjRJxfFCd2MIPyxx7lgSxV+CCSrYPZ0zCbRjxO0mcbC50MyFJ3YFMKx51HG
+         5dzkiJVfLoHYgMI2y962JbHMZ6CA/LpnSd0reMZJGmKvbUDwjO58WfCQ8dkAhg5XhHfo
+         2kYg==
+X-Gm-Message-State: AOJu0YwTLnSKXXZWaXdamRK4dVa/aEB3EwkNqdpMBlucr4Yysm9S++Fb
+	57xhBc7AVIobBJWHhUjpbZYheA==
+X-Google-Smtp-Source: AGHT+IHgWafWGCPc4fytC4Sbz3TS+J9+az9DjgeXUARPGps1DNFwHFfZHrZIwyi3DJOvEqNBHlCllw==
+X-Received: by 2002:a17:90b:3901:b0:27d:b811:2fe4 with SMTP id ob1-20020a17090b390100b0027db8112fe4mr496194pjb.26.1698347633233;
+        Thu, 26 Oct 2023 12:13:53 -0700 (PDT)
 Received: from hsinyi.sjc.corp.google.com ([2620:15c:9d:2:f0fe:5c3b:1d70:d0bb])
-        by smtp.gmail.com with ESMTPSA id 22-20020a17090a031600b0027476c68cc3sm2183639pje.22.2023.10.26.12.13.50
+        by smtp.gmail.com with ESMTPSA id 22-20020a17090a031600b0027476c68cc3sm2183639pje.22.2023.10.26.12.13.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Oct 2023 12:13:50 -0700 (PDT)
+        Thu, 26 Oct 2023 12:13:52 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -73,17 +73,17 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 3/7] arm64: dts: mt8183: Add kukui katsu board
-Date: Thu, 26 Oct 2023 12:09:12 -0700
-Message-ID: <20231026191343.3345279-4-hsinyi@chromium.org>
+Subject: [PATCH v4 5/7] arm64: dts: mt8183: Add jacuzzi makomo board
+Date: Thu, 26 Oct 2023 12:09:14 -0700
+Message-ID: <20231026191343.3345279-6-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.42.0.820.g83a721a137-goog
 In-Reply-To: <20231026191343.3345279-1-hsinyi@chromium.org>
 References: <20231026191343.3345279-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231026_121354_642750_4B9A5E5F 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20231026_121354_765338_2C172D40 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,208 +98,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-katsu is also known as ASUS Chromebook Detachable CZ1.
-
-Let katsu and kakadu set its own touchscreen and panel compatible. Remove
-these setting from the common dtsi for readability.
+makomo is also known as Lenovo 100e Chromebook 2nd Gen MTK 2.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/Makefile         |  2 +
- .../mediatek/mt8183-kukui-kakadu-sku22.dts    | 18 +++++++++
- .../boot/dts/mediatek/mt8183-kukui-kakadu.dts | 18 +++++++++
- .../dts/mediatek/mt8183-kukui-kakadu.dtsi     | 14 +------
- .../dts/mediatek/mt8183-kukui-katsu-sku32.dts | 36 +++++++++++++++++
- .../dts/mediatek/mt8183-kukui-katsu-sku38.dts | 40 +++++++++++++++++++
- 6 files changed, 115 insertions(+), 13 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+ arch/arm64/boot/dts/mediatek/Makefile         |  2 ++
+ .../mt8183-kukui-jacuzzi-makomo-sku0.dts      | 24 +++++++++++++++++++
+ .../mt8183-kukui-jacuzzi-makomo-sku1.dts      | 24 +++++++++++++++++++
+ 3 files changed, 50 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
 
 diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index e6e7592a3645..a13419e67e8e 100644
+index a13419e67e8e..1b85a8c12850 100644
 --- a/arch/arm64/boot/dts/mediatek/Makefile
 +++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -36,6 +36,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku0.dtb
+@@ -32,6 +32,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-fennel14-sku2.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-juniper-sku16.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kappa.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kenzo.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-makomo-sku0.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-makomo-sku1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku0.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku1.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu-sku22.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-katsu-sku32.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-katsu-sku38.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku16.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku272.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku288.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dts
-index fcce8ea1232e..1ecf39458d93 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dts
-@@ -14,6 +14,24 @@ / {
- 		     "google,kakadu", "mediatek,mt8183";
- };
- 
-+&i2c0 {
-+	touchscreen: touchscreen@10 {
-+		compatible = "hid-over-i2c";
-+		reg = <0x10>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&open_touch>;
-+
-+		interrupts-extended = <&pio 155 IRQ_TYPE_EDGE_FALLING>;
-+
-+		post-power-on-delay-ms = <10>;
-+		hid-descr-addr = <0x0001>;
-+	};
-+};
-+
-+&panel {
-+	compatible = "boe,tv105wum-nw0";
-+};
-+
- &sound {
- 	compatible = "mediatek,mt8183_mt6358_ts3a227_rt1015p";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts
-index ebfabba72507..ba74109a4909 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts
-@@ -13,3 +13,21 @@ / {
- 	compatible = "google,kakadu-rev3", "google,kakadu-rev2",
- 			"google,kakadu", "mediatek,mt8183";
- };
-+
-+&i2c0 {
-+	touchscreen: touchscreen@10 {
-+		compatible = "hid-over-i2c";
-+		reg = <0x10>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&open_touch>;
-+
-+		interrupts-extended = <&pio 155 IRQ_TYPE_EDGE_FALLING>;
-+
-+		post-power-on-delay-ms = <10>;
-+		hid-descr-addr = <0x0001>;
-+	};
-+};
-+
-+&panel {
-+	compatible = "boe,tv105wum-nw0";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-index a23543d7a11e..b6a9830af269 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-@@ -63,18 +63,6 @@ &bluetooth {
- 
- &i2c0 {
- 	status = "okay";
--
--	touchscreen: touchscreen@10 {
--		compatible = "hid-over-i2c";
--		reg = <0x10>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&open_touch>;
--
--		interrupts-extended = <&pio 155 IRQ_TYPE_EDGE_FALLING>;
--
--		post-power-on-delay-ms = <10>;
--		hid-descr-addr = <0x0001>;
--	};
- };
- 
- &mt6358_vcama2_reg {
-@@ -383,5 +371,5 @@ &qca_wifi {
- 
- &panel {
- 	status = "okay";
--	compatible = "boe,tv105wum-nw0";
-+	/* compatible will be set in board dts */
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
 new file mode 100644
-index 000000000000..05361008e8ac
+index 000000000000..4eb2a0d571af
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
-@@ -0,0 +1,36 @@
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
+@@ -0,0 +1,24 @@
 +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +/*
 + * Copyright 2023 Google LLC
 + */
 +
 +/dts-v1/;
-+#include "mt8183-kukui-kakadu.dtsi"
++#include "mt8183-kukui-jacuzzi-fennel.dtsi"
 +#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
 +
 +/ {
-+	model = "Google katsu board";
-+	chassis-type = "tablet";
-+	compatible = "google,katsu-sku32", "google,katsu", "mediatek,mt8183";
-+};
-+
-+&i2c0 {
-+	touchscreen1: touchscreen@5d {
-+		compatible = "goodix,gt7375p";
-+		reg = <0x5d>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&open_touch>;
-+
-+		interrupts-extended = <&pio 155 IRQ_TYPE_LEVEL_LOW>;
-+
-+		reset-gpios = <&pio 156 GPIO_ACTIVE_LOW>;
-+		vdd-supply = <&lcd_pp3300>;
-+	};
-+};
-+
-+&panel {
-+	compatible = "starry,2081101qfh032011-53g";
++	model = "Google makomo sku0 board";
++	chassis-type = "laptop";
++	compatible = "google,makomo-sku0", "google,makomo", "mediatek,mt8183";
 +};
 +
 +&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_KATSU";
++	qcom,ath10k-calibration-variant = "GO_FENNEL14";
 +};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
++
++&mmc1_pins_uhs {
++	pins-clk {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
 new file mode 100644
-index 000000000000..cf008ed82878
+index 000000000000..6a733361e8ae
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
-@@ -0,0 +1,40 @@
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
+@@ -0,0 +1,24 @@
 +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +/*
 + * Copyright 2023 Google LLC
 + */
 +
 +/dts-v1/;
-+#include "mt8183-kukui-kakadu.dtsi"
-+#include "mt8183-kukui-audio-rt1015p.dtsi"
++#include "mt8183-kukui-jacuzzi-fennel.dtsi"
++#include "mt8183-kukui-audio-ts3a227e-rt1015p.dtsi"
 +
 +/ {
-+	model = "Google katsu sku38 board";
-+	chassis-type = "tablet";
-+	compatible = "google,katsu-sku38", "google,katsu", "mediatek,mt8183";
-+};
-+
-+&i2c0 {
-+	touchscreen1: touchscreen@5d {
-+		compatible = "goodix,gt7375p";
-+		reg = <0x5d>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&open_touch>;
-+
-+		interrupts-extended = <&pio 155 IRQ_TYPE_LEVEL_LOW>;
-+
-+		reset-gpios = <&pio 156 GPIO_ACTIVE_LOW>;
-+		vdd-supply = <&lcd_pp3300>;
-+	};
-+};
-+
-+&panel {
-+	compatible = "starry,2081101qfh032011-53g";
++	model = "Google makomo sku1 board";
++	chassis-type = "laptop";
++	compatible = "google,makomo-sku1", "google,makomo", "mediatek,mt8183";
 +};
 +
 +&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_KATSU";
++	qcom,ath10k-calibration-variant = "GO_FENNEL14";
 +};
 +
-+&sound {
-+	compatible = "mediatek,mt8183_mt6358_ts3a227_rt1015p";
++&mmc1_pins_uhs {
++	pins-clk {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
 +};
 -- 
 2.42.0.820.g83a721a137-goog
