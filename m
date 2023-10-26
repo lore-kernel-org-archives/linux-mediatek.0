@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E52D5C25B67
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 12:38:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DE83C25B48
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 13:26:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mYlGtsDkwIplMMDKnitSehXlNwqD+lQR4ItqdPikmlA=; b=gVQ79v/aIf6CqGtEMzCXaVmrKZ
-	d0/7Yl6bvFKXv3NcudHixKB84oddHapAngOEBqc/karAh9SD8wBm9i/MmD7fM75a12pi86hL216kr
-	Ngsz5Lbd9dvwvXl5Px2NtU2p/Gbkg9QOLECG/LmeHOlh6VNtYGk7ZSA8v7Okk6AJqTN9C3rVJ2yNs
-	Eb2PRYoYDqgz3EnRsP4t+HfuLxCrPfcV8UYbLyuCyYG9usR3ihpApelT6D6kWJBk61bOzRYq/oNCE
-	MBEJFGoOeo3Vi43Gn4ZMxJLJLi4C7Ngpsvtd0p/087hPo/4HFdbp2JqAU9iNoKJamdFW7cXIdJgnP
-	uEWwGfsQ==;
+	bh=G/E2rGA/v3rpY5I3VGxpN2pFTdEWIE/a4R5EeimnTx0=; b=KokiFfqB7BkO31ytwbBKP01TRC
+	GHjdnrZ/P2TdEWhoWjt0bPzUFT8A8cpoPxeOjebDfy9ZCuiqtJLkGK6TktFVZF/FlA2zIxuN27fx2
+	0qNDy1I+UDLRi2hvTOLHjfWL08KenBHcmtAQdldakjNPWVvnnrHIiBYYCBdph7kj6jYNkES34MxBq
+	6Bgx9JlT6LlxQRXE9jCKl0Nc20LdRaG33pUlFnO6A6Na4aboUGGs0AHkoPTLqqTyMqwCYkAj9R1w0
+	RqujPSyNNISiOsJLa4xzckdcKBLhOGEw7mfLfirnHcd0cbe2yWUFl7DHx1PewOwqvdPD8n1qOXr6A
+	y7YsJxNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvzdO-00ES8k-0O;
-	Thu, 26 Oct 2023 12:38:46 +0000
-Received: from mail-ot1-f45.google.com ([209.85.210.45])
+	id 1qw0NT-00EYZn-3C;
+	Thu, 26 Oct 2023 13:26:23 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvzdK-00ES7e-36;
-	Thu, 26 Oct 2023 12:38:44 +0000
-Received: by mail-ot1-f45.google.com with SMTP id 46e09a7af769-6c496719a9aso423057a34.0;
-        Thu, 26 Oct 2023 05:38:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698323920; x=1698928720;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=mYlGtsDkwIplMMDKnitSehXlNwqD+lQR4ItqdPikmlA=;
-        b=Mt9y+P/8Yd0K8vIWHTbZvhUcVvC/dCWMNW3+rHSXwQ5CKrNDBwV6zA3fKs1vP3KcBL
-         gbRvWv3gT3wE3s4/3/c0TJmca0+b60TvYFiDyl+sxgiaAdBT149k2ZRGFhdLRzKe7Mst
-         KoimOtM9cU5ReSGo0cvhhtv4p47NYQRlq47EkBLIzdTwVte4yda0Pk5SzBpSYwkM0+SQ
-         950qSCDLRTXgBu/ct7arYUhAX2i9e3x6VMNvTYCkXcrnh3rxPtjFCaNFR1XIo+ypHHZz
-         /L2lKnenI+3wEKSKnutaCPWE0FT6XsvfpiSK0XNUTh623xXOfjpp+J19O1hBN/uRxt2x
-         7LmA==
-X-Gm-Message-State: AOJu0YygI00YSB0viKLiPQlL07BwsM3DhYVQwVaVxLRLN2mJoRpt0jQk
-	Ca0PjGouFk80BXpDHMD01Q==
-X-Google-Smtp-Source: AGHT+IGPNkjxWdQ54Pt7m6sZj9ctL7yRpUNOch/924+5N+/XoEwdc5zfnlX7MrRmcNHcUD8UlspAKA==
-X-Received: by 2002:a9d:63d7:0:b0:6b4:4ee1:b525 with SMTP id e23-20020a9d63d7000000b006b44ee1b525mr1369239otl.1.1698323920284;
-        Thu, 26 Oct 2023 05:38:40 -0700 (PDT)
-Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id v7-20020a9d6047000000b006ce33902b07sm2589636otj.30.2023.10.26.05.38.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Oct 2023 05:38:39 -0700 (PDT)
-Received: (nullmailer pid 3459246 invoked by uid 1000);
-	Thu, 26 Oct 2023 12:38:38 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1qw0NQ-00EYYj-2N;
+	Thu, 26 Oct 2023 13:26:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 96575CE3F62;
+	Thu, 26 Oct 2023 13:26:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C8E9C433C8;
+	Thu, 26 Oct 2023 13:26:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1698326776;
+	bh=EkEQs9N23jDDNdbmrMAfm/n0wa1XEFhc3nFLxMLQBfk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=phCC8uNydBc6FI51+5GxUnplh0W6pHKM/k1kCBdgKGdSLVRB25tPZzMSM5b9CSEi6
+	 NnDL+8L6rdKgTWVvBT/NBBIj0EfltwYqA99WgClIVDgnKFQTa5pKv5sHghnpJ6iH2L
+	 a1Dz1GENta9hCJTNryRzvDwV+Ex5MzGGjK22BdAgwJwpcbcrXqx+zZ2otAAu/7NPZe
+	 y1m71EsEfiDdLlwmTX0xT8jkN/b+wKmE7vvRFfWoJIgWZ2xPFy7gBBBGAqFAEw8MkG
+	 rKx97y13DM1ZB7pbH/QFsTr7zFLVbyFrDGPF9dKYp0U4R2ckI7QXWHf+yEJ8U2aqn9
+	 uWfObGYv/9nUg==
+From: Maxime Ripard <mripard@kernel.org>
+To: dri-devel@lists.freedesktop.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Helen Koike <helen.koike@collabora.com>
+Cc: robdclark@chromium.org, dmitry.baryshkov@linaro.org, 
+ vignesh.raman@collabora.com, sergi.blanch.torne@collabora.com, 
+ guilherme.gallo@collabora.com, david.heidelberg@collabora.com, 
+ quic_abhinavk@quicinc.com, quic_jesszhan@quicinc.com, daniels@collabora.com, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20231024004525.169002-1-helen.koike@collabora.com>
+References: <20231024004525.169002-1-helen.koike@collabora.com>
+Subject: Re: [PATCH v3 00/10] drm/ci: fixes and improvements
+Message-Id: <169832677439.958223.17998130799046222765.b4-ty@kernel.org>
+Date: Thu, 26 Oct 2023 15:26:14 +0200
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, =?utf-8?q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>, Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <20231025215517.1388735-5-hsinyi@chromium.org>
-References: <20231025215517.1388735-1-hsinyi@chromium.org>
- <20231025215517.1388735-5-hsinyi@chromium.org>
-Message-Id: <169828011805.2202183.11133384715258450793.robh@kernel.org>
-Subject: Re: [PATCH v3 4/7] dt-bindings: arm64: dts: mediatek: Add
- mt8183-kukui-jacuzzi-makomo
-Date: Thu, 26 Oct 2023 07:38:38 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231026_053843_003486_256FDBC1 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20231026_062620_954511_944BFF8C 
+X-CRM114-Status: UNSURE (   6.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,55 +79,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 25 Oct 2023 14:48:46 -0700, Hsin-Yi Wang wrote:
-> Add makomo sku0 and sku1 which uses different audio codec.
+On Mon, 23 Oct 2023 21:45:15 -0300, Helen Koike wrote:
+> This series contains the several fixes, making drm/ci much
+> more reliable and useful.
 > 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
-> v2->v3: remove rev since match on sku is sufficient.
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
->  1 file changed, 7 insertions(+)
+> Highlights:
 > 
+> * Current DRM/CI in drm-misc is broken, this series fixes it with mesa
+>   uprev (commit 1/9).
+> 
+> [...]
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Applied to drm/drm-misc (drm-misc-next).
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:42:items: 'oneOf' conditional failed, one must be fixed:
-	[{'enum': [{'const': 'google,makomo-sku0'}, {'const': 'google,makomo-sku1'}]}, {'const': 'google,makomo'}, {'const': 'mediatek,mt8183'}] is not of type 'object'
-	/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:42:items:0:enum: 'oneOf' conditional failed, one must be fixed:
-		{'const': 'google,makomo-sku0'} is not of type 'integer'
-		{'const': 'google,makomo-sku0'} is not of type 'string'
-		{'const': 'google,makomo-sku1'} is not of type 'integer'
-		{'const': 'google,makomo-sku1'} is not of type 'string'
-		hint: "enum" must be an array of either integers or strings
-		from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
-	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:42:items: 'oneOf' conditional failed, one must be fixed:
-	[{'enum': [{'const': 'google,makomo-sku0'}, {'const': 'google,makomo-sku1'}]}, {'const': 'google,makomo'}, {'const': 'mediatek,mt8183'}] is not of type 'object'
-	{'const': 'google,makomo-sku0'} is not of type 'string'
-	{'const': 'google,makomo-sku1'} is not of type 'string'
-	from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20231025215517.1388735-5-hsinyi@chromium.org
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+Thanks!
+Maxime
 
 
