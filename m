@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A86EBC25B6B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 19:14:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D120C25B48
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 19:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ymcTSMtDLHHq71nFPpNk2uBvq4G7e2/sBgD9CU8KCYw=; b=mOs+qIlGPSIvm9PBIzgHaIZqjF
-	ytZjE8JGMQfmuYa/lz0fEcLScjCVDU2Brrbg5X8clfW2e+qHIUgwK9Qb2D2LDed95evvy8r9YBg7E
-	xr2npUx81aX/CkgP8jJi6GySMFMnI8xuaVixcUjH3IRSG+NR5ZY0yMV/tUwnjSmVBUVY5hYfIagnc
-	FikKs6Ua7D4/OFQOmCj0uTqPf/WwCmJaJBZ0BujNCSmGZDDYW71+Y3RV61nBAHWpy3J7z/m2Dqff/
-	NhoFHzfbdP/FWOyUoGDy87e+/JFpePiKsVdp9/4IouE+lIwWFbevc68V92xPfXeCo6N27Izz2wWTR
-	pUMZSwgg==;
+	bh=LKO2g208XzCfOsORI6ZMG1mCYRoaMgItfO0wExwA+14=; b=hlLLyxXPNAQ8GTG3Pvw1K4XjbA
+	5WOc9gcsmcfmrscvuvmwmTsV0uGnXf4FLwwSpTILgLENppGXEbjQDBw2f73Q9mvBL/SjteiH/Fr+L
+	p4dQ7TdJfYM9DYtq4yWyWO25mJ23ymK1c/ZFENS1xkbuMRlHyiP/P7A3e/M5VLug5rZQZ2LRbnang
+	khh9Hx47Z6nYln/xkNegFRk3k3lYFDGkkYNR+99U+E17ktOSBt78OgW15Db/Zqdj7IbDoVfCt9oBh
+	ZAQ8cyp+qFPWyu1L5KnIQDS8PUa2FYQ69A0EBF7II68olEaXwOTP161FVZ/FelqnARaN8UWReMzxC
+	gypP6Nxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw5oQ-00F2SE-1x;
+	id 1qw5oQ-00F2SV-37;
 	Thu, 26 Oct 2023 19:14:34 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw5nm-00F28N-2G
+	id 1qw5np-00F29B-0k
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Oct 2023 19:13:58 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-27db9fdec0dso1075418a91.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Oct 2023 12:13:53 -0700 (PDT)
+	Thu, 26 Oct 2023 19:13:59 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-5aa7fdd1420so1046221a12.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Oct 2023 12:13:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1698347633; x=1698952433; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1698347634; x=1698952434; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ymcTSMtDLHHq71nFPpNk2uBvq4G7e2/sBgD9CU8KCYw=;
-        b=VOx9jh3xOnKztItiuA8CEM1sFEd7/J7vL2Vp7qhm/Ue4zB0AH62ZDocKC52/KVOYh9
-         nM90MU0LBrGwwvQovoluLDL0bcrAkRmwsRTAQwM0fB9/LR+5xLyQXqdF1M+wdYPogsCx
-         MqN1kCIF0UMFAT5AyYElXJE4HK5BAEYrz/Kk4=
+        bh=LKO2g208XzCfOsORI6ZMG1mCYRoaMgItfO0wExwA+14=;
+        b=FYXlrJmnryJZS8pe7HR1umJOYvrIOpV5Vu572IImiumh7A5mQaNcbv7XPEG5Klz5bA
+         fknx7pNDh+x/NKYMB909fzESb6BIfopoqRGD/vFYFBVbkLJFHVxmVDvL78Cni12XUScD
+         r7Vu+evnbTX0Jk2hPOTFCndv6tE+fE+0WJOko=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698347633; x=1698952433;
+        d=1e100.net; s=20230601; t=1698347634; x=1698952434;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ymcTSMtDLHHq71nFPpNk2uBvq4G7e2/sBgD9CU8KCYw=;
-        b=GLHWppw8meN9t6LoxBoppN/gaBfuNRnUG1DSnfJ1AquapLrbzZi9co7oy++V5KPLOD
-         quwB0uuSv+TAY/88Q8TYiq+RFcvuQvPlzfd5VmQnd1Rk5GycVWFeOc7ZdcTUFhvwSVu1
-         a8FGrpmZwnSiihiJaEJKVsAotXe0abkOkky9jLQYmP61+Kyumu9e8OC+nfoCQIzEUyy3
-         9h+XiUwCgDjRJxfFCd2MIPyxx7lgSxV+CCSrYPZ0zCbRjxO0mcbC50MyFJ3YFMKx51HG
-         5dzkiJVfLoHYgMI2y962JbHMZ6CA/LpnSd0reMZJGmKvbUDwjO58WfCQ8dkAhg5XhHfo
-         2kYg==
-X-Gm-Message-State: AOJu0YwTLnSKXXZWaXdamRK4dVa/aEB3EwkNqdpMBlucr4Yysm9S++Fb
-	57xhBc7AVIobBJWHhUjpbZYheA==
-X-Google-Smtp-Source: AGHT+IHgWafWGCPc4fytC4Sbz3TS+J9+az9DjgeXUARPGps1DNFwHFfZHrZIwyi3DJOvEqNBHlCllw==
-X-Received: by 2002:a17:90b:3901:b0:27d:b811:2fe4 with SMTP id ob1-20020a17090b390100b0027db8112fe4mr496194pjb.26.1698347633233;
-        Thu, 26 Oct 2023 12:13:53 -0700 (PDT)
+        bh=LKO2g208XzCfOsORI6ZMG1mCYRoaMgItfO0wExwA+14=;
+        b=wtS7UlInFlxhagMnEEKdkgC0rJHwbwBOJUKxND91WFiKTOd0bP3ykVJwkSXAzRlRjZ
+         SvWoDZ1vv3NwT+ETSwYBSmA5Vps//MIN3J57+Wc+BVQd2fWlhQy2RDiRvWF+WiSAHar+
+         Hq9cCRC2kSyHqCXAuE6+ueAP+wY+g79hnJpPSdfY669L6pSlT1IK0qui5Do3JuLtp1Or
+         knBO8bZysy8Dm8OU6JaTINGoJBKSsthaYXgvE8LLPyWJIyL8AHeCLVrUZX3NO9UGdnn3
+         nL2RZvgk0n9QKXgpSlEzFPo2sd3G84w0kRDs9JMBo3XJQ8C1Htp07oUFg7twONQLEQR1
+         hLsQ==
+X-Gm-Message-State: AOJu0Yxom1pVRymq4atz90evsUe0m0mR07DVcBcuNLbb/E0JNSIBxzRr
+	N+1Yjc3mEuarRGwWNsNcpnPQ2A==
+X-Google-Smtp-Source: AGHT+IEmsklJ5EWfVQVMeGYaB6B6U1UOfAuEgiqRe/EIB/KFs8EkGHLZUt6Yhm9lhheQgYiVB6Lw/Q==
+X-Received: by 2002:a17:90b:f0a:b0:27d:37bb:12c0 with SMTP id br10-20020a17090b0f0a00b0027d37bb12c0mr449838pjb.36.1698347634291;
+        Thu, 26 Oct 2023 12:13:54 -0700 (PDT)
 Received: from hsinyi.sjc.corp.google.com ([2620:15c:9d:2:f0fe:5c3b:1d70:d0bb])
-        by smtp.gmail.com with ESMTPSA id 22-20020a17090a031600b0027476c68cc3sm2183639pje.22.2023.10.26.12.13.52
+        by smtp.gmail.com with ESMTPSA id 22-20020a17090a031600b0027476c68cc3sm2183639pje.22.2023.10.26.12.13.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Oct 2023 12:13:52 -0700 (PDT)
+        Thu, 26 Oct 2023 12:13:54 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -73,17 +73,18 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 5/7] arm64: dts: mt8183: Add jacuzzi makomo board
-Date: Thu, 26 Oct 2023 12:09:14 -0700
-Message-ID: <20231026191343.3345279-6-hsinyi@chromium.org>
+Subject: [PATCH v4 6/7] dt-bindings: arm64: mediatek: Add mt8183-kukui-jacuzzi-pico
+Date: Thu, 26 Oct 2023 12:09:15 -0700
+Message-ID: <20231026191343.3345279-7-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.42.0.820.g83a721a137-goog
 In-Reply-To: <20231026191343.3345279-1-hsinyi@chromium.org>
 References: <20231026191343.3345279-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231026_121354_765338_2C172D40 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20231026_121357_311396_BAF3733A 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,90 +99,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-makomo is also known as Lenovo 100e Chromebook 2nd Gen MTK 2.
+Add pico (sku1) and pico6 (sku2).
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- arch/arm64/boot/dts/mediatek/Makefile         |  2 ++
- .../mt8183-kukui-jacuzzi-makomo-sku0.dts      | 24 +++++++++++++++++++
- .../mt8183-kukui-jacuzzi-makomo-sku1.dts      | 24 +++++++++++++++++++
- 3 files changed, 50 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index a13419e67e8e..1b85a8c12850 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -32,6 +32,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-fennel14-sku2.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-juniper-sku16.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kappa.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kenzo.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-makomo-sku0.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-makomo-sku1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
-new file mode 100644
-index 000000000000..4eb2a0d571af
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
-@@ -0,0 +1,24 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2023 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi-fennel.dtsi"
-+#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
-+
-+/ {
-+	model = "Google makomo sku0 board";
-+	chassis-type = "laptop";
-+	compatible = "google,makomo-sku0", "google,makomo", "mediatek,mt8183";
-+};
-+
-+&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_FENNEL14";
-+};
-+
-+&mmc1_pins_uhs {
-+	pins-clk {
-+		drive-strength = <MTK_DRIVE_6mA>;
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
-new file mode 100644
-index 000000000000..6a733361e8ae
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
-@@ -0,0 +1,24 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2023 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi-fennel.dtsi"
-+#include "mt8183-kukui-audio-ts3a227e-rt1015p.dtsi"
-+
-+/ {
-+	model = "Google makomo sku1 board";
-+	chassis-type = "laptop";
-+	compatible = "google,makomo-sku1", "google,makomo", "mediatek,mt8183";
-+};
-+
-+&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_FENNEL14";
-+};
-+
-+&mmc1_pins_uhs {
-+	pins-clk {
-+		drive-strength = <MTK_DRIVE_6mA>;
-+	};
-+};
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index c937f49ba3b4..f133d9673803 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -258,6 +258,13 @@ properties:
+               - google,makomo-sku1
+           - const: google,makomo
+           - const: mediatek,mt8183
++      - description: Google Pico (Acer Chromebook Spin 311)
++        items:
++          - enum:
++              - google,pico-sku1
++              - google,pico-sku2
++          - const: google,pico
++          - const: mediatek,mt8183
+       - description: Google Willow (Acer Chromebook 311 C722/C722T)
+         items:
+           - enum:
 -- 
 2.42.0.820.g83a721a137-goog
 
