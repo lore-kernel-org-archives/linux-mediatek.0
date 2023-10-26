@@ -4,91 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 618D8C25B6B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 05:43:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43120C25B6B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 08:03:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rG2UysggiUwoOTUDtuwATYwEsAqlGEHP6tlUqmAyNpE=; b=EbkRod0AECUGZmCBmT4cI7+ago
-	2U/v2peuE+Eg+4nemkCy8c80lclGplqNEgMmEmR6P/Hani/BSMVr35vjKG5cONJh/6wokGaTzpF15
-	MZLUXN6xLUA1AqleVQqLFR9bGbJeXOpQ2JfxGsoIeLj3fYrwHVjO2qMO/qUgmANIR4Et/2LmHtYe6
-	bjopr/ZmFpwX6r9ytZMWel8u/owozq60hhuH6somf2vxpLK9GQN8Y6vSZ3+jbcMC0RLYPIrbh7A2W
-	cLOBrgprbjdxW7p4MJnppX/HOJo1zijSEolKyobzdOe/X+vM+klR1af5z9Tp3rvrEA4JV1E7mmtY6
-	CIFooudQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=onYoBp1EMC6/QTpT6OCGAQ6IXqywW+2+9GZ+lRLg8pI=; b=xnyYC7nSwy3Zgh
+	y/qMlCB/xMMMyBdK8FRdTajuITwbWgK96wAft536oYPrgaBqJVr7CCxR0GWPcV6xNSS+OZqQTN7pF
+	qx7zpRsdXYGEy/G8v3UtYnQjqTuh9YJzz4lJfJiGRdmYNgO5FWjyOlwmiUcBKgJ/dF8KHCKDBDaHD
+	he/pD+BQp9Wmwl5zzFWKGAQiCNrjdRZz4wFO99HqOgVsSBOCl5XJAm3ZS1nD9+lZzGNGaDv+3HClM
+	aAQgvTKqUBRI2UgzUjmS3MgEELkWwlc94V43NMW82BazGsrVje3eV+NhqCbUO6jhDuI5NQD/EeSVR
+	BUs6ihf98Vpxku3pk+rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvt9O-00Diun-1F;
-	Thu, 26 Oct 2023 05:43:22 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1qvvKt-00DuSi-0o;
+	Thu, 26 Oct 2023 08:03:23 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvt9L-00Dit2-2a;
-	Thu, 26 Oct 2023 05:43:21 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-9b9faf05f51so69605766b.2;
-        Wed, 25 Oct 2023 22:43:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698298998; x=1698903798; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:to:from:subject:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rG2UysggiUwoOTUDtuwATYwEsAqlGEHP6tlUqmAyNpE=;
-        b=Y8Xx/+9ITIDPzBxz2gChObCVaAYOEHkCa6/PNb4vz8cqXJLZsqm/O2vGwpLXXw0bj1
-         /rowrPVcKIXpyMMQD22fROlPeZTK2+641iKxLPrtyAOlRV47EzCsGVmVXpjf+Tx757y5
-         2ZPEUl11Vjb6XTwuJ8SDa9t3IqsdRwQfzaw/j692XaB1rFe8zkiRviQN7YV8OplhxBGy
-         X6S9RpWmISy9dn5w77jR/AeuIR0stJYB4q/tVdukUgu9CDJZT8p1WwqdFwOHG6uyOwVB
-         zHcBz8K+lGVzCfP3hGQDrmau0E4OndkMfkg7YZDGWpyWO+bgRJ2HcAizerQLNCR78eaS
-         rUeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698298998; x=1698903798;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:to:from:subject:message-id:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=rG2UysggiUwoOTUDtuwATYwEsAqlGEHP6tlUqmAyNpE=;
-        b=JpaF8RC291YnRT40JMGN1sajgTMOrw7It0SyiMkWWj5qJ07zGp5izvTbhG7T74NLTN
-         FBce2BZ5I3MBAW5VICBkKRRkN8gO8AoFonmJbNA3cT50zN7qm/nnScvjuge3a4K7yiHw
-         qutzlomA0B36ZNlo2tY4sj2zy6JhQFPnMbedOn9h1hEioMSmODRhZYc/gVVQpdaQTWvD
-         3srj/v65lsH+gusRz7PWwWbvtYNOHarQ1gptrEFLop7JSXXPJ6+1JZbV27wQ4N6aGKxe
-         YQdaXij25fDtdA5Dho/sCHkEIWsJku/8Bbe37q6jok+OPFeQz6qkmlRYolQSwaiFJHcv
-         XMRw==
-X-Gm-Message-State: AOJu0YwWDfGeZbmp3Vb75IviEf+otA7m0qxhkNndnqBUkmESNx18IDNm
-	qxOqseC8r/79g7biziAmLmI=
-X-Google-Smtp-Source: AGHT+IE2Vvk6/8UrLk+Fqp68uEGIMn/w0ixG329AL4BRaLr6Z9i9Tbw3TAkzOcjxqMEkG/Sa24yY7g==
-X-Received: by 2002:a17:907:7285:b0:9b2:be5e:7545 with SMTP id dt5-20020a170907728500b009b2be5e7545mr13394942ejc.36.1698298997475;
-        Wed, 25 Oct 2023 22:43:17 -0700 (PDT)
-Received: from ?IPv6:2001:a61:3456:4e01:6ae:b55a:bd1d:57fc? ([2001:a61:3456:4e01:6ae:b55a:bd1d:57fc])
-        by smtp.gmail.com with ESMTPSA id y19-20020a170906519300b009adc7733f98sm11085906ejk.97.2023.10.25.22.43.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Oct 2023 22:43:17 -0700 (PDT)
-Message-ID: <a9bb417341ee2f13c63f13afc1a5a3be330dcf07.camel@gmail.com>
-Subject: Re: [RFT PATCH 03/17] ASoC: codecs: adav80x: Handle component name
- prefix
-From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
- <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Lars-Peter Clausen
- <lars@metafoo.de>, Nuno =?ISO-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Banajit Goswami
- <bgoswami@quicinc.com>, Oder Chiou <oder_chiou@realtek.com>, Matthias
- Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Sylwester Nawrocki
- <s.nawrocki@samsung.com>, Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,  alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org,  patches@opensource.cirrus.com,
- linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org
-Date: Thu, 26 Oct 2023 07:43:15 +0200
-In-Reply-To: <20231023095428.166563-4-krzysztof.kozlowski@linaro.org>
-References: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
-	 <20231023095428.166563-4-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	id 1qvvKr-00DuS9-13;
+	Thu, 26 Oct 2023 08:03:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=onYoBp1EMC6/QTpT6OCGAQ6IXqywW+2+9GZ+lRLg8pI=; b=HKeGLCrN80k2xcp63tQNMZF6Ro
+	AZ+aGFtDGp8OAxGIXKCQJ4YffAoHCNGA53r81uDVZJ9O+Wwf9UaZqiR0Qcq2TgRkohvX+uduCpl9d
+	dzG4A3af83zTXeUdp5rUwgvdjMxG9b8sBQqtuuWfKwnLIQGuBN737iWET5jOz3iv1f0JE/QiCX+Sr
+	BK0U5JGjLr8wRPKjLpG6Ug5lZEkD5yCfIPAc8oiqYAYUoSPyxN38NUvSCJ4XjigAtg+M9wpR7Ptqc
+	yJCoJhX4GsQvaJHBnw35z8QlYgD28pIr6fTO5olioBOKk1eBwNdUe3ItrNng0UAenoKGrxeIzA/We
+	L0sDtAyA==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qvvKl-00H8xT-2N;
+	Thu, 26 Oct 2023 08:03:19 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 577C5660732A;
+	Thu, 26 Oct 2023 09:03:11 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698307391;
+	bh=Fef1hJcTSlQGakVzORPVPnqgvkpRbVwgbom99kx0qPg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NPyWBOIhlwpM5HsEwVY0+sZFCDYnVMiPjyyFrTPzdbZTTomuxzFPWJeDFB8UIY3un
+	 73ZrPdp2gJlVKtCsj9aNqVe+V+B4V7QweJuNjvnpV63I6sftQeFDGrNz/w1jhIk1eO
+	 c4SH04h7SDCJBa7C8GTyUETNxcblLNo4tUNXd0Yh9K+LRXq0x6AfTF8j/ZbK8W4c2r
+	 D08KUAm8AN5rgtaErjHHMH6LM6QZP9AHVbO2G2VdASPf8+/LDa4hHTaz/iKe3eXeyz
+	 Xu+eqiWZlZC5tMxgK4yofLDPGrssSeNKnTGNuTOdX1Z8sThBefFdoapjS4BL7bxegn
+	 i889ScG4tR3Dw==
+Message-ID: <831e792e-683b-4305-a451-16bb6736280a@collabora.com>
+Date: Thu, 26 Oct 2023 10:03:08 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 5/5] arm64: dts: mt7986: add overlay for SATA power
+ socket on BPI-R3
+Content-Language: en-US
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+References: <20231025170832.78727-1-linux@fw-web.de>
+ <20231025170832.78727-6-linux@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231025170832.78727-6-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_224319_898072_0DAFE540 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20231026_090316_713064_67578BC4 
+X-CRM114-Status: GOOD (  20.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,39 +85,141 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Conor Dooley <conor+dt@kernel.org>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2023-10-23 at 11:54 +0200, Krzysztof Kozlowski wrote:
-> Use snd_soc_dapm_widget_name_cmp() helper when comparing widget names,
-> to include also the component's name prefix.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Il 25/10/23 19:08, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Bananapi R3 has a Power socket entended for using external SATA drives.
+> This Socket is off by default but can be switched with gpio 8.
+> 
+> Add an overlay to activate it.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
+> v2:
+> - rebase on the patch "add dtbs with applied overlays for bpi-r3"
+> - add sata-overlay to the full dtbs
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile         | 13 +++++--
+>   .../mt7986a-bananapi-bpi-r3-sata.dtso         | 39 +++++++++++++++++++
+>   2 files changed, 48 insertions(+), 4 deletions(-)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 24eeba0703ce..c3b236a47513 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -13,26 +13,31 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sata.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
 
-Reviewed-by: Nuno Sa <nuno.sa@analog.com>
+The devicetree overlays make no sense without a base devicetree, right? :-)
 
-> =C2=A0sound/soc/codecs/adav80x.c | 2 +-
-> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/sound/soc/codecs/adav80x.c b/sound/soc/codecs/adav80x.c
-> index bb08969c5917..c8c0fc928211 100644
-> --- a/sound/soc/codecs/adav80x.c
-> +++ b/sound/soc/codecs/adav80x.c
-> @@ -229,7 +229,7 @@ static int adav80x_dapm_sysclk_check(struct snd_soc_d=
-apm_widget
-> *source,
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0return 0;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-> =C2=A0
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return strcmp(source->name, cl=
-k) =3D=3D 0;
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return snd_soc_dapm_widget_nam=
-e_cmp(source, clk) =3D=3D 0;
-> =C2=A0}
-> =C2=A0
-> =C2=A0static int adav80x_dapm_pll_check(struct snd_soc_dapm_widget *sourc=
-e,
+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo <-- makes no sense!
+
+Check how it's done in freescale (nxp) and renesas... and there's also one instance
+of overlays in qualcomm.
+
+In short:
+  - Remove all of the dtb-$(CONFIG_ARCH_MEDIATEK) += blah.dtbo
+  - xxxx-dtbs:= blah.dtb blah-overlay.dtbo, dtb-$(CONFIG_ARCH_MEDIATEK) += xxxx.dtb
+    is correct.
+
+>   mt7986a-bananapi-bpi-r3-emmc-nand-dtbs := \
+>   	mt7986a-bananapi-bpi-r3.dtb \
+>   	mt7986a-bananapi-bpi-r3-emmc.dtbo \
+> -	mt7986a-bananapi-bpi-r3-nand.dtbo
+> +	mt7986a-bananapi-bpi-r3-nand.dtbo \
+> +	mt7986a-bananapi-bpi-r3-sata.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc-nand.dtb
+>   mt7986a-bananapi-bpi-r3-emmc-nor-dtbs := \
+>   	mt7986a-bananapi-bpi-r3.dtb \
+>   	mt7986a-bananapi-bpi-r3-emmc.dtbo \
+> -	mt7986a-bananapi-bpi-r3-nor.dtbo
+> +	mt7986a-bananapi-bpi-r3-nor.dtbo \
+> +	mt7986a-bananapi-bpi-r3-sata.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc-nor.dtb
+>   mt7986a-bananapi-bpi-r3-sd-nand-dtbs := \
+>   	mt7986a-bananapi-bpi-r3.dtb \
+>   	mt7986a-bananapi-bpi-r3-sd.dtbo \
+> -	mt7986a-bananapi-bpi-r3-nand.dtbo
+> +	mt7986a-bananapi-bpi-r3-nand.dtbo \
+> +	mt7986a-bananapi-bpi-r3-sata.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd-nand.dtb
+>   mt7986a-bananapi-bpi-r3-sd-nor-dtbs := \
+>   	mt7986a-bananapi-bpi-r3.dtb \
+>   	mt7986a-bananapi-bpi-r3-sd.dtbo \
+> -	mt7986a-bananapi-bpi-r3-nor.dtbo
+> +	mt7986a-bananapi-bpi-r3-nor.dtbo \
+> +	mt7986a-bananapi-bpi-r3-sata.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd-nor.dtb
+>   
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso
+> new file mode 100644
+> index 000000000000..6ab06813412a
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso
+> @@ -0,0 +1,39 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Frank Wunderlich <frank-w@public-files.de>
+> + */
+> +
+> +/dts-v1/;
+> +/plugin/;
+> +
+> +#include <dt-bindings/gpio/gpio.h>
+> +
+> +/ {
+> +	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+> +
+> +	fragment@0 {
+> +		target-path = "/";
+> +		__overlay__ {
+
+This could be easier, I think.
+
+&{/} {
+
+	reg_sata12v: regulator-sata12v {
+		....
+	};
+
+	something_else: something-else { ... };
+};
+
+Regards,
+Angelo
+
+> +			reg_sata12v: regulator-sata12v {
+> +				compatible = "regulator-fixed";
+> +				regulator-name = "sata12v";
+> +				regulator-min-microvolt = <12000000>;
+> +				regulator-max-microvolt = <12000000>;
+> +				gpio = <&pio 8 GPIO_ACTIVE_HIGH>;
+> +				enable-active-high;
+> +				regulator-always-on;
+> +			};
+> +
+> +			reg_sata5v: regulator-sata5v {
+> +				compatible = "regulator-fixed";
+> +				regulator-name = "sata5v";
+> +				regulator-min-microvolt = <5000000>;
+> +				regulator-max-microvolt = <5000000>;
+> +				regulator-always-on;
+> +				vin-supply = <&reg_sata12v>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
 
 
