@@ -4,71 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F67BC25B48
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 17:10:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6275BC25B48
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 19:13:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lBaJpxUQ436RwEeH2JrcVb/jgx/Zu9JsFS6J2noPx3A=; b=0Z4LpSFm0Xa8rAXb0tUArJnAvY
-	vpxCLtFPq7eK2/RTMIFoWdaH6nuUfyvNvjHGC2EN/bYL9E+m9ULlThQXj6x5tHO//yo4klA/keSJZ
-	vnE96j7qYO2VNXsrQY0WAS4uouRLrjnSlTrFMB/uVyQW7krFjVhEYMhpi5Q145lc60VRkqNTOE1J/
-	iR1zsJHqfjN3QTwGeM/LBkxQODCNcjARJ+Rbw1JU1Iw3Jizhe2rb1jkBpVgGEKnzZ2zp69TagxyDU
-	XvD/Hzxt+G9zGcEyAe3TzPF4HiDs95XvPl5BkAZ6PoZn+GDkP0Yk3PqwfzUCfDfvfCXHadNxWdPNF
-	o41gNwrw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Ch2xr7WSfAQsekJPDJjz2RgxrfMVUniFSWo5hCYQcEI=; b=NlQaZmGBoKlrDAzy3QLC8/x+Zi
+	IDVMZ1rhJfPZPiCqlE0nR//H5P4/EC0MQI3SaNoAw694j4EPzZL9NUkLkgpOjLKlS7ovHGN4y18YM
+	wT8wDycJTH/d8pdcn3P9T4PIc5wUpu43pVEh233aSqvG4xU7+pzIlxigqaegSju0edTGDZZHS40cA
+	08EIwP8TVr5NKXW/61X88rEMxzkL5dzjFaoTTlkjFKsOM/FHyZk1bJOmREGIIaNciUrHnrSQuEsrf
+	JQQZmc36wIPbVMRwhHnGodanIZAei8yvlrfUfuDt79E84b2bPrPbZNkhN37s5dCvabuHvOoUYLyzX
+	51CUZXMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw3sN-00EuZe-0V;
-	Thu, 26 Oct 2023 17:10:31 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qw5nn-00F2AU-1h;
+	Thu, 26 Oct 2023 19:13:55 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw3sJ-00EuYu-2J;
-	Thu, 26 Oct 2023 17:10:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id E17E0B836CB;
-	Thu, 26 Oct 2023 17:10:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28356C433CD;
-	Thu, 26 Oct 2023 17:10:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698340225;
-	bh=Va1jEBWyzwHMFJmzyliMsvcYTsQhokdCctBTTd7BWks=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=PhIcRJkAlRvEUJKrmKS2QMIqgY34kubBOM7CJ2dz9jx7eL/QMCkhRfmsJygzZf/cQ
-	 DlrzJl4vB5hk4L6rcHwKbGdUGfx2P9LIIEn7xYjzdaTpX1aZoRRQw3IReF+Duv/Gud
-	 lFTgp3N/zdkkA1VTMjkdtkeDcx9Tqr2vDotqSL/pqYAFZDutEnNid/HWFiRCHVSI9q
-	 7XWl3TAWHeb78ij9BENyAptFlO3Elvew6KX+mk22drx7L/Wg66PR5MUfmW55RJMQ3M
-	 tFuMYbozMKxsHov4K4u2DHDxeiwG+mLafID8JZemuGSS8g6pgy1v6q0IhE5KSgCUXx
-	 pWjp0dPIJFVwA==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Lars-Peter Clausen <lars@metafoo.de>, 
- =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
- Banajit Goswami <bgoswami@quicinc.com>, Oder Chiou <oder_chiou@realtek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sylwester Nawrocki <s.nawrocki@samsung.com>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, alsa-devel@alsa-project.org, 
- linux-kernel@vger.kernel.org, patches@opensource.cirrus.com, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-tegra@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
-References: <20231023095428.166563-1-krzysztof.kozlowski@linaro.org>
-Subject: Re: [RFT PATCH 00/17] ASoC: fix widget name comparisons (consider
- DAI name prefix)
-Message-Id: <169834021871.149939.12687771696008766047.b4-ty@kernel.org>
-Date: Thu, 26 Oct 2023 18:10:18 +0100
+	id 1qw5nk-00F27V-1V
+	for linux-mediatek@lists.infradead.org;
+	Thu, 26 Oct 2023 19:13:53 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-27d0e3d823fso1024814a91.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Oct 2023 12:13:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1698347628; x=1698952428; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ch2xr7WSfAQsekJPDJjz2RgxrfMVUniFSWo5hCYQcEI=;
+        b=AV0mAO1Tove+n4mU89zQ9r9Lx9VNToHQoSJ+XNmwynfPRkbKJ8mQBO4MaA/oNAHMcy
+         c0u+pRbtFOzoQ6zMPX4QT2Ntj5DKwaPhANWa/wGIHu/Ap+mHazjG+ylxAzINmaIk1PFp
+         Qj8QcuP3Ecl/zLmo0wiu3GIYw41nOHG4LHd0A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698347628; x=1698952428;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Ch2xr7WSfAQsekJPDJjz2RgxrfMVUniFSWo5hCYQcEI=;
+        b=HNyxB75MFMzwsXT36eAU9tr5Kj3UJ0x6wrVgjab5qGe7dKVXRMSpJp6BhJHStouJBb
+         K6WfbAaWpTBt7E8/Pw4Dd9IIeY5K1/zkOiOXYHR4/7kEbRt5GYhuiqrQQUpqaytDZmrT
+         g44+aw9lyLasU1I+y7/RxCpY9oILzvpsE7djOjDiqsjwlfe9GdcYPT5MQ7/28TwxOWZ3
+         S5oYTkmkBkRN2GMyQmfwKvgziwrrY1cxNJhGl6on+s11ZRA75iydEwGnpOQHXy6Spj/8
+         dmnBUrkKmi1QMfQ9lG6j0Dssrxo+xySipj22vVlUtessWwkpNfg2fEIQJ5IYBbWNWUgv
+         InLQ==
+X-Gm-Message-State: AOJu0YzCIGTmgUhXrcu8ymY9OlnXJfL31+q9iedRZ5jEE0YCkucJxOwO
+	HME/KCptHa9AOf+SrU+lhNSWPA==
+X-Google-Smtp-Source: AGHT+IHUqjqOZtBWong8vFEikEVD8olSnLJyI2zsl2FBwBwf0Fg0LjpZS1EX2gbS3zNjBHJCDytTbg==
+X-Received: by 2002:a17:90a:1957:b0:280:205:9ba2 with SMTP id 23-20020a17090a195700b0028002059ba2mr448867pjh.5.1698347627814;
+        Thu, 26 Oct 2023 12:13:47 -0700 (PDT)
+Received: from hsinyi.sjc.corp.google.com ([2620:15c:9d:2:f0fe:5c3b:1d70:d0bb])
+        by smtp.gmail.com with ESMTPSA id 22-20020a17090a031600b0027476c68cc3sm2183639pje.22.2023.10.26.12.13.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Oct 2023 12:13:47 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v4 0/7] Add a few mt8183 follower boards.
+Date: Thu, 26 Oct 2023 12:09:09 -0700
+Message-ID: <20231026191343.3345279-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.42.0.820.g83a721a137-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-0438c
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231026_101028_058344_9C260998 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20231026_121352_565797_981F4A34 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,76 +96,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 Oct 2023 11:54:11 +0200, Krzysztof Kozlowski wrote:
-> Some codec drivers compare widget names with strcmp, ignoring
-> the component name prefix.  If prefix is used, the comparisons start failing.
-> 
-> Except Qualcomm lpass-rx-macro, none of the patches were tested
-> on hardware.
-> 
-> Best regards,
-> Krzysztof
-> 
-> [...]
+Add makomo, pico, and katsu which are mt8183 followers.
 
-Applied to
+v4: based on https://lore.kernel.org/all/20231025093816.44327-1-angelogioacchino.delregno@collabora.com/
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Hsin-Yi Wang (7):
+  arm64: dts: mt8183: kukui: Fix underscores in node names
+  dt-bindings: arm64: mediatek: Add mt8183-kukui-katsu
+  arm64: dts: mt8183: Add kukui katsu board
+  dt-bindings: arm64: mediatek: Add mt8183-kukui-jacuzzi-makomo
+  arm64: dts: mt8183: Add jacuzzi makomo board
+  dt-bindings: arm64: mediatek: Add mt8183-kukui-jacuzzi-pico
+  arm64: dts: mt8183: Add jacuzzi pico/pico6 board
 
-Thanks!
+ .../devicetree/bindings/arm/mediatek.yaml     |  21 ++++
+ arch/arm64/boot/dts/mediatek/Makefile         |   6 +
+ .../mt8183-kukui-jacuzzi-makomo-sku0.dts      |  24 ++++
+ .../mt8183-kukui-jacuzzi-makomo-sku1.dts      |  24 ++++
+ .../mediatek/mt8183-kukui-jacuzzi-pico.dts    |  36 ++++++
+ .../mediatek/mt8183-kukui-jacuzzi-pico6.dts   | 110 ++++++++++++++++++
+ .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    |   6 +-
+ .../mediatek/mt8183-kukui-kakadu-sku22.dts    |  18 +++
+ .../boot/dts/mediatek/mt8183-kukui-kakadu.dts |  18 +++
+ .../dts/mediatek/mt8183-kukui-kakadu.dtsi     |  14 +--
+ .../dts/mediatek/mt8183-kukui-katsu-sku32.dts |  36 ++++++
+ .../dts/mediatek/mt8183-kukui-katsu-sku38.dts |  40 +++++++
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  94 +++++++--------
+ 13 files changed, 384 insertions(+), 63 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
 
-[01/17] ASoC: codecs: 88pm860x: Handle component name prefix
-        commit: ccd0c6c7097b52b01a2c5951cfe96714d4421cd2
-[02/17] ASoC: codecs: adau1373: Handle component name prefix
-        commit: 7a0762587a814387e631c07ae81169a7c646f012
-[03/17] ASoC: codecs: adav80x: Handle component name prefix
-        commit: ecea1812b911fed5e675b2d37b29ad4265c067ce
-[04/17] ASoC: codecs: lpass-rx-macro: Handle component name prefix
-        commit: 5efc1c903e2b43a267ad13696698fcc152ed873a
-[05/17] ASoC: codecs: max9867: Handle component name prefix
-        commit: a1fa72a780f428ddc956cf5ed4b97e2be76ceba3
-[06/17] ASoC: codecs: rt5682s: Handle component name prefix
-        commit: b2056ce3cf61a39796041dc5c94d7255de7f9f0c
-[07/17] ASoC: codecs: rtq9128: Handle component name prefix
-        commit: e2d38e1196f61735716f9c2dd89dff32c0655529
-[08/17] ASoC: codecs: wcd9335: Handle component name prefix
-        commit: 7df1e6a3c608ab0c345b8898f9ee5d5ac19f2eb4
-[09/17] ASoC: codecs: wm8962: Handle component name prefix
-        commit: e54db8826f48c9ca52f2abd108d6e030ff20cae5
-[10/17] ASoC: codecs: wm8994: Handle component name prefix
-        commit: e13b63c47578a27dbf8907974f0dcba0bb2efe58
-[11/17] ASoC: codecs: wm8995: Handle component name prefix
-        commit: 343b62590d5b950c8bf7f78fef7c81103c5f982c
-[12/17] ASoC: mediatek: mt8183: Handle component name prefix
-        commit: e84c7f5db97474cb4becd863a93d4ea541dc4110
-[13/17] ASoC: mediatek: mt8186: Handle component name prefix
-        commit: 0fe153a99fcc2edeae4e863b03c5a8f71376629e
-[14/17] ASoC: mediatek: mt8188: Handle component name prefix
-        commit: d1ecaabe9f1a669354de7420261bd8737da4bf48
-[15/17] ASoC: mediatek: mt8192: Handle component name prefix
-        commit: 86cfaf99e4d3c7b4707fb8cc9eb06d8db10c1414
-[16/17] ASoC: samsung: speyside: Handle component name prefix
-        commit: 317dd0dbadd8bd4de2d69fa6a0611456f3e15b1a
-[17/17] ASoC: tegra: machine: Handle component name prefix
-        commit: f82eb06a40c86c9a82537e956de401d497203d3a
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+-- 
+2.42.0.820.g83a721a137-goog
 
 
