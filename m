@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4740DC25B6B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 11:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E52D5C25B67
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 12:38:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=flUD6mTD/c2VMPuK6uMqPkRVKwv8/SMR5jxoz/9eFNg=; b=s7Q5Yao4/WAU3v9TI97em6swL1
-	6RdlK/44A0X0mOc0xUtfbVKFcobkMdQVJsTICQfDEATxGzDMy1B3+mTeGLw8t/UcXEqo58UfiR1yg
-	0nB1VqrzVROmheB4nuNSb8VFTU991dSy9k85TwrDafV8Ls/v554JXApYFky0STc3UhegkzgpHllbr
-	B/kA/WVZbeQTkiyvwOzQsa/ZtDtiV86Cyupn8P17obia+E8FXu2HG/B20l35U2/wkxOO8xFlkgrVA
-	avdKXbnLU85lctV7L5f4j7WXvsiYIw6Or5lpqbZHm/kSpJAlrWWjd3lHGjdNbFWlJnufSpHQMHV2t
-	WTV1LT1Q==;
+	bh=mYlGtsDkwIplMMDKnitSehXlNwqD+lQR4ItqdPikmlA=; b=gVQ79v/aIf6CqGtEMzCXaVmrKZ
+	d0/7Yl6bvFKXv3NcudHixKB84oddHapAngOEBqc/karAh9SD8wBm9i/MmD7fM75a12pi86hL216kr
+	Ngsz5Lbd9dvwvXl5Px2NtU2p/Gbkg9QOLECG/LmeHOlh6VNtYGk7ZSA8v7Okk6AJqTN9C3rVJ2yNs
+	Eb2PRYoYDqgz3EnRsP4t+HfuLxCrPfcV8UYbLyuCyYG9usR3ihpApelT6D6kWJBk61bOzRYq/oNCE
+	MBEJFGoOeo3Vi43Gn4ZMxJLJLi4C7Ngpsvtd0p/087hPo/4HFdbp2JqAU9iNoKJamdFW7cXIdJgnP
+	uEWwGfsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvynd-00EO8B-0q;
-	Thu, 26 Oct 2023 11:45:17 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qvzdO-00ES8k-0O;
+	Thu, 26 Oct 2023 12:38:46 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvyna-00EO5X-1O;
-	Thu, 26 Oct 2023 11:45:15 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5328566072F9;
-	Thu, 26 Oct 2023 12:45:03 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698320703;
-	bh=5RoWXkPv8UrV5cMyCQWqrIIGsEZRri7N1//OlH5MbZQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YPDDXhKeYw2cV8KqViXmYh0quv3bmsMbiuq+he0zLeLNLO+p8nsr0BQdSJu4oIT/o
-	 spx974GAd0EZYgge2VQHU3sTi4TQ2+TPwEhADqbAOZa2G4utG0XzGzoZFRNkhs9ql9
-	 5eqKds2E3zdj5ZBjkWTvxhISNn6ffURVFBNFOQ4n/QPrrdQ5t4fUxfILTKqZnWpb6p
-	 X9AoM23YCWRF4thzv94mql54eYpENzI5VjJazB28KHwkFmQSHRdcAK9F4p/FUvHoDb
-	 lW6KvG+oW6uv9BIGcUb8WIe3pcJQRDR2A9uKea8afEd9hLCIfSSfSsRFQaL6bt2/8G
-	 21OkrFgT9ipTQ==
-Message-ID: <a7321404-0c8f-430c-b14c-7ffc9e4fc5d7@collabora.com>
-Date: Thu, 26 Oct 2023 13:45:00 +0200
+	id 1qvzdK-00ES7e-36;
+	Thu, 26 Oct 2023 12:38:44 +0000
+Received: by mail-ot1-f45.google.com with SMTP id 46e09a7af769-6c496719a9aso423057a34.0;
+        Thu, 26 Oct 2023 05:38:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698323920; x=1698928720;
+        h=date:subject:message-id:references:in-reply-to:cc:to:from
+         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=mYlGtsDkwIplMMDKnitSehXlNwqD+lQR4ItqdPikmlA=;
+        b=Mt9y+P/8Yd0K8vIWHTbZvhUcVvC/dCWMNW3+rHSXwQ5CKrNDBwV6zA3fKs1vP3KcBL
+         gbRvWv3gT3wE3s4/3/c0TJmca0+b60TvYFiDyl+sxgiaAdBT149k2ZRGFhdLRzKe7Mst
+         KoimOtM9cU5ReSGo0cvhhtv4p47NYQRlq47EkBLIzdTwVte4yda0Pk5SzBpSYwkM0+SQ
+         950qSCDLRTXgBu/ct7arYUhAX2i9e3x6VMNvTYCkXcrnh3rxPtjFCaNFR1XIo+ypHHZz
+         /L2lKnenI+3wEKSKnutaCPWE0FT6XsvfpiSK0XNUTh623xXOfjpp+J19O1hBN/uRxt2x
+         7LmA==
+X-Gm-Message-State: AOJu0YygI00YSB0viKLiPQlL07BwsM3DhYVQwVaVxLRLN2mJoRpt0jQk
+	Ca0PjGouFk80BXpDHMD01Q==
+X-Google-Smtp-Source: AGHT+IGPNkjxWdQ54Pt7m6sZj9ctL7yRpUNOch/924+5N+/XoEwdc5zfnlX7MrRmcNHcUD8UlspAKA==
+X-Received: by 2002:a9d:63d7:0:b0:6b4:4ee1:b525 with SMTP id e23-20020a9d63d7000000b006b44ee1b525mr1369239otl.1.1698323920284;
+        Thu, 26 Oct 2023 05:38:40 -0700 (PDT)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id v7-20020a9d6047000000b006ce33902b07sm2589636otj.30.2023.10.26.05.38.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Oct 2023 05:38:39 -0700 (PDT)
+Received: (nullmailer pid 3459246 invoked by uid 1000);
+	Thu, 26 Oct 2023 12:38:38 -0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] clk: mediatek: mt8188: probe vpp with
- mtk_clk_simple_probe()
-Content-Language: en-US
-To: "yu-chang.lee" <yu-chang.lee@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Moudy Ho <moudy.ho@mediatek.com>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20231026113830.29215-1-yu-chang.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231026113830.29215-1-yu-chang.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Rob Herring <robh@kernel.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, =?utf-8?q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>, Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <20231025215517.1388735-5-hsinyi@chromium.org>
+References: <20231025215517.1388735-1-hsinyi@chromium.org>
+ <20231025215517.1388735-5-hsinyi@chromium.org>
+Message-Id: <169828011805.2202183.11133384715258450793.robh@kernel.org>
+Subject: Re: [PATCH v3 4/7] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-makomo
+Date: Thu, 26 Oct 2023 07:38:38 -0500
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231026_044514_618006_0BD3C2D1 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20231026_053843_003486_256FDBC1 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,99 +81,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/10/23 13:38, yu-chang.lee ha scritto:
-> switch to the common mtk_clk_simple_probe() function for all of the
-> clock drivers that are registering as platform drivers.
+
+On Wed, 25 Oct 2023 14:48:46 -0700, Hsin-Yi Wang wrote:
+> Add makomo sku0 and sku1 which uses different audio codec.
 > 
-
-So VPPSYS0 and VPPSYS1 aren't dependant on MMSYS anymore?
-
-Like this, it doesn't look like this will ever work fine, so if you want
-that to happen, you must provide a good explanation, and then, since MT8188
-and MT8195's VPPSYS are practically the same, you should also convert MT8195
-to do the same, and make sure that everything works as expected before sending
-a commit upstream.
-
-Please, explain.
-
-Thanks,
-Angelo
-
-> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
->   drivers/clk/mediatek/clk-mt8188-vpp0.c | 14 +++++++++++---
->   drivers/clk/mediatek/clk-mt8188-vpp1.c | 14 +++++++++++---
->   2 files changed, 22 insertions(+), 6 deletions(-)
+> v2->v3: remove rev since match on sku is sufficient.
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
-> diff --git a/drivers/clk/mediatek/clk-mt8188-vpp0.c b/drivers/clk/mediatek/clk-mt8188-vpp0.c
-> index e7b02b26fefb..18fffa191ee1 100644
-> --- a/drivers/clk/mediatek/clk-mt8188-vpp0.c
-> +++ b/drivers/clk/mediatek/clk-mt8188-vpp0.c
-> @@ -96,6 +96,15 @@ static const struct mtk_clk_desc vpp0_desc = {
->   	.num_clks = ARRAY_SIZE(vpp0_clks),
->   };
->   
-> +static const struct of_device_id of_match_clk_mt8188_vpp0[] = {
-> +	{
-> +		.compatible = "mediatek,mt8188-vppsys0",
-> +		.data = &vpp0_desc,
-> +	}, {
-> +		/* sentinel */
-> +	}
-> +};
-> +
->   static const struct platform_device_id clk_mt8188_vpp0_id_table[] = {
->   	{ .name = "clk-mt8188-vpp0", .driver_data = (kernel_ulong_t)&vpp0_desc },
->   	{ /* sentinel */ }
-> @@ -103,12 +112,11 @@ static const struct platform_device_id clk_mt8188_vpp0_id_table[] = {
->   MODULE_DEVICE_TABLE(platform, clk_mt8188_vpp0_id_table);
->   
->   static struct platform_driver clk_mt8188_vpp0_drv = {
-> -	.probe = mtk_clk_pdev_probe,
-> -	.remove_new = mtk_clk_pdev_remove,
-> +	.probe = mtk_clk_simple_probe,
->   	.driver = {
->   		.name = "clk-mt8188-vpp0",
-> +		.of_match_table = of_match_clk_mt8188_vpp0,
->   	},
-> -	.id_table = clk_mt8188_vpp0_id_table,
->   };
->   module_platform_driver(clk_mt8188_vpp0_drv);
->   MODULE_LICENSE("GPL");
-> diff --git a/drivers/clk/mediatek/clk-mt8188-vpp1.c b/drivers/clk/mediatek/clk-mt8188-vpp1.c
-> index e8f0f7eca097..f4b35336d427 100644
-> --- a/drivers/clk/mediatek/clk-mt8188-vpp1.c
-> +++ b/drivers/clk/mediatek/clk-mt8188-vpp1.c
-> @@ -91,6 +91,15 @@ static const struct mtk_clk_desc vpp1_desc = {
->   	.num_clks = ARRAY_SIZE(vpp1_clks),
->   };
->   
-> +static const struct of_device_id of_match_clk_mt8188_vpp1[] = {
-> +	{
-> +		.compatible = "mediatek,mt8188-vppsys1",
-> +		.data = &vpp1_desc,
-> +	}, {
-> +		/* sentinel */
-> +	}
-> +};
-> +
->   static const struct platform_device_id clk_mt8188_vpp1_id_table[] = {
->   	{ .name = "clk-mt8188-vpp1", .driver_data = (kernel_ulong_t)&vpp1_desc },
->   	{ /* sentinel */ }
-> @@ -98,12 +107,11 @@ static const struct platform_device_id clk_mt8188_vpp1_id_table[] = {
->   MODULE_DEVICE_TABLE(platform, clk_mt8188_vpp1_id_table);
->   
->   static struct platform_driver clk_mt8188_vpp1_drv = {
-> -	.probe = mtk_clk_pdev_probe,
-> -	.remove_new = mtk_clk_pdev_remove,
-> +	.probe = mtk_clk_simple_probe,
->   	.driver = {
->   		.name = "clk-mt8188-vpp1",
-> +		.of_match_table = of_match_clk_mt8188_vpp1,
->   	},
-> -	.id_table = clk_mt8188_vpp1_id_table,
->   };
->   module_platform_driver(clk_mt8188_vpp1_drv);
->   MODULE_LICENSE("GPL");
+
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:42:items: 'oneOf' conditional failed, one must be fixed:
+	[{'enum': [{'const': 'google,makomo-sku0'}, {'const': 'google,makomo-sku1'}]}, {'const': 'google,makomo'}, {'const': 'mediatek,mt8183'}] is not of type 'object'
+	/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:42:items:0:enum: 'oneOf' conditional failed, one must be fixed:
+		{'const': 'google,makomo-sku0'} is not of type 'integer'
+		{'const': 'google,makomo-sku0'} is not of type 'string'
+		{'const': 'google,makomo-sku1'} is not of type 'integer'
+		{'const': 'google,makomo-sku1'} is not of type 'string'
+		hint: "enum" must be an array of either integers or strings
+		from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:42:items: 'oneOf' conditional failed, one must be fixed:
+	[{'enum': [{'const': 'google,makomo-sku0'}, {'const': 'google,makomo-sku1'}]}, {'const': 'google,makomo'}, {'const': 'mediatek,mt8183'}] is not of type 'object'
+	{'const': 'google,makomo-sku0'} is not of type 'string'
+	{'const': 'google,makomo-sku1'} is not of type 'string'
+	from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20231025215517.1388735-5-hsinyi@chromium.org
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
