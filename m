@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40360C25B48
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 21:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D28FEC25B72
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Oct 2023 21:56:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gwxImxb5RLH8OL3B8MAUHnS9LkcjmuszpBarjHsX6aA=; b=DJge9I8ucIhR0D/h66Ls0W8HuE
-	2O8U5JADwFehKVxYjdBDDcanbWLKN8OybgLwQjRJ3Ww5skhN8wn31uutIGi+9E54BgZVndu1Tgg/o
-	th+x5KxMfoUqoh8u19mvd5PnBO4kyTuQYU/OoLr71DhydaYWIfceUN2AZP4C9zaqV5EPrGqQkDEuD
-	F0yZdtghlLAqeQiMN0gbxvA+PUEEFgY2PLMbRA+8C2tWTeg2yt1cwiWpMjHi/4pdIInqTE+Wje3V6
-	GPqkG5e08tSEat/0cKeud61MGXVLeR+2R4eLsOUZcWkiWrtFS6iPJv4KlN6RUIs3iOdbQIqS+iiCh
-	89Bp8wEA==;
+	Subject:Message-ID:References:Mime-Version:In-Reply-To:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BGnfO5yo1brrl3JG1fuz3XeacVop9nGYIXct/GsCbHA=; b=gzNHWHEV+yxXzrHhaF8toREc6/
+	b2ULqTLz1ckk6Ed5aDEBM6BI9A/2eG9zCtlFfWKNuQrtBL6ftkLQpF7xNwoUbHFddQiDnU22LdDIG
+	f+2a812BIH1pRu1W26Mt/syiB5ZVtw6m1XkZSAeEfo/ne0n+ZI8HvHt1j2B4JDgO8ztAa2ElTkBH/
+	DZnwYnUvPeCHlxaAcEj5YIr4OkufyU2rZar/Z72fahirT51YSro6z2dBg3By88d0X9YDicmpc5ayW
+	lrw7MXJhK2Sl0w7mq/EWWU2CM4KZMhJyg6ylHgAKfeX3bQqdvum5dzaQjHaavY+lWXhYvJQ5r0t8O
+	RnkB0AwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw8Ky-00FCrf-05;
-	Thu, 26 Oct 2023 21:56:20 +0000
-Received: from mail-ot1-x349.google.com ([2607:f8b0:4864:20::349])
+	id 1qw8L0-00FCsq-2I;
+	Thu, 26 Oct 2023 21:56:22 +0000
+Received: from mail-oi1-x249.google.com ([2607:f8b0:4864:20::249])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw8Ku-00FCpr-1b
+	id 1qw8Kw-00FCpu-0G
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Oct 2023 21:56:18 +0000
-Received: by mail-ot1-x349.google.com with SMTP id 46e09a7af769-6ce2b33816eso1756914a34.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Oct 2023 14:56:14 -0700 (PDT)
+	Thu, 26 Oct 2023 21:56:19 +0000
+Received: by mail-oi1-x249.google.com with SMTP id 5614622812f47-3b2e7ae47d1so2122899b6e.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Oct 2023 14:56:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1698357374; x=1698962174; darn=lists.infradead.org;
-        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=gwxImxb5RLH8OL3B8MAUHnS9LkcjmuszpBarjHsX6aA=;
-        b=mZ/q78u6GwhSeEXEAr6bf5vHaGmT9i0vkUnfGo+7aYEdimrHh9cqa3hEsyyz9OWiaE
-         RZJa4b5EG/pvao7FNe7HJVbogkYGP35cmZ3XL99BO70crk6q6fBm/BzcToZ/VH3Igjuv
-         BX4pvmt23EAMWZsEsuFuYhVFDgXiesojWLqZyI8JGWeQoE0NDwnH+ml6rHC/HZqMY0AO
-         bZYMY4Sg53XMuhlHsy61w9ohdCUz4GZCaCT7UUJu18Yog4ipOx2CIko4EIjCBKfM4KQO
-         ibcE80CgzcnLjo6+cI6xnCd4y623n4b6Ej6IJLn+YdQW0hIicnUjcjOvxO9uM2tCY4FW
-         rGGA==
+        d=google.com; s=20230601; t=1698357375; x=1698962175; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=BGnfO5yo1brrl3JG1fuz3XeacVop9nGYIXct/GsCbHA=;
+        b=becVg6Mh9diSUpDYK1ZyRlvWOQ6ma9kddftHtOAY9KedMASsY7o7cGeNIc/mFwmnAY
+         Z9w7fW1MzYhAaM8hqDmvqB0A4ELJxuhgnjLiw1Yez+JoqVfM6YvNiAkRd+GERrXwmH+K
+         oOTMIRvD/l2Mvn2i3y8YbcTpNsihk0WvBNo2DE1kkt1dOYkrV384M7a5FT0sGgsLIfRp
+         xweGSM1mAs87NgFTWErZwK06d6QuFDArPZjUgZT7p7zXgbEIV5VBGu9EnfLRzbAzE2XK
+         t19X4XeVLUM17Vl+13ilx2XJLjUqdsdE/eiuwOMU1YIhP1+xNiuNIB+fVNNA3vo2JFF9
+         0K6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698357374; x=1698962174;
-        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=gwxImxb5RLH8OL3B8MAUHnS9LkcjmuszpBarjHsX6aA=;
-        b=nKYr9+W9UsnzF/k6NKeTNB0z54i/M+b+7G1BOu2tqsiEChh8jgrd9r2ZUOxMrudTDi
-         7ECKXSv8Gro3g0IIgqBHTzSPQvsjAVMviWxoVQJ5MUzX90zsCOE6YKglJwUdfyYW725I
-         JLPlkLRrW4fhY4sNDo8gQFGKUx8q/gzftjCOhkbCqzKF9625CXZqfWpwUJ5mX4PmFC8T
-         Mm0iJOBa/l16nld4iD83eqdVSoOh9KHzdVzCMqQO10aG2miPOJjg9eAgDtxe0hOaNebE
-         7V6RNuy+tO/aQgnZNwV2nTNJ09VRDNm478PNo0CNpeaXBZGVSU8Ww/acaGdpV1d7h+kN
-         plKw==
-X-Gm-Message-State: AOJu0YwH2zm1ZZuxi34y8t1rgJPe9wKDr4Py9ffcETfQItJahEcl80/t
-	SHlkrwkBdXhnWwjob7T6U/hnjFxnGV5XZuRnxg==
-X-Google-Smtp-Source: AGHT+IHuXfBeHuh2fX/Y9P8Jed9OYgg7W3aDTalU6lHHqRyoYhupQv6dysAhVbsXsQm4ZlWRI0+3yNMnmE7nQTcWSA==
+        d=1e100.net; s=20230601; t=1698357375; x=1698962175;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BGnfO5yo1brrl3JG1fuz3XeacVop9nGYIXct/GsCbHA=;
+        b=gRkoXpAP5MWcyq1PUikJ69X5hsXTEITp71DAfahwEGb9T7dmjtZR9VnoPqEQRJweyT
+         iJphOfp0KKIbMlTyBazsGYoDPxBYggDW3DhNVixALis/O0dnThnj+InfXIUFMkpM0ki5
+         tdlIck/7WHlEaQ/xGfBd8zMwYsfIfOUqGMFQr/ncBnFuvOJmzpRnrRiyT70ix0WehrBv
+         G4OQBLNZ2mdqujHz/UBeFixHQGpWeW5UlW9i+KgNoAiBO6KI3TFWL/UOTQEYcrIX9g5a
+         5+dX0bQit+1J9B99L9vVDSKXkKd1K4XAD79Yv83utwRSSpKwgFxWutY1G+031yKMea+Y
+         HsHQ==
+X-Gm-Message-State: AOJu0YyilssT7UvTcJMIG3pcDkqOvFDnrMiJ1+t+hCZxrvGJ0MXTVR1Z
+	Ls3kFCGlevIYvsF58QZt0LBqKDVEzpS3c6M5qg==
+X-Google-Smtp-Source: AGHT+IF5gOPekjq4+QDN3pBVLuKGKeKe6H18GFsh2OoUyXeyiM7MMvJg4zKShMICsysc3GRHujvfELlFaE0x7zGmTQ==
 X-Received: from jstitt-linux1.c.googlers.com ([fda3:e722:ac3:cc00:2b:ff92:c0a8:23b5])
- (user=justinstitt job=sendgmr) by 2002:a05:6830:4863:b0:6bc:ce86:20bd with
- SMTP id dx3-20020a056830486300b006bcce8620bdmr145125otb.7.1698357373819; Thu,
- 26 Oct 2023 14:56:13 -0700 (PDT)
-Date: Thu, 26 Oct 2023 21:56:06 +0000
+ (user=justinstitt job=sendgmr) by 2002:a05:6808:f01:b0:3ad:f860:b315 with
+ SMTP id m1-20020a0568080f0100b003adf860b315mr220107oiw.2.1698357374848; Thu,
+ 26 Oct 2023 14:56:14 -0700 (PDT)
+Date: Thu, 26 Oct 2023 21:56:07 +0000
+In-Reply-To: <20231026-ethtool_puts_impl-v2-0-0d67cbdd0538@google.com>
 Mime-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAHfgOmUC/32NXQqDMBCEryL73JT81Ip98h5FJOqqC+qGJBWLe
- PcGD9DHb4b55oCAnjDAKzvA40aBeE2gbxl0k11HFNQnBi21UVLnAuMUmefGfWJoaHGzsOpRlMP
- QdgVKSDvncaD9cr5hxT1CndKJQmT/vY42dXV/nJsSUjxtbmxpetMWuhqZxxnvHS9Qn+f5A1met uu5AAAA
+References: <20231026-ethtool_puts_impl-v2-0-0d67cbdd0538@google.com>
 X-Developer-Key: i=justinstitt@google.com; a=ed25519; pk=tC3hNkJQTpNX/gLKxTNQKDmiQl6QjBNCGKJINqAdJsE=
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1698357372; l=4361;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1698357372; l=2655;
  i=justinstitt@google.com; s=20230717; h=from:subject:message-id;
- bh=EZQlqjeEntj5cFwO6GI9jdpBEdboCVbH85bMhi+VXog=; b=Wvnt8258jSja8OkGW51MkkX+Rpzp76iqKXSvCgM5ODfnW8jb2N0rjVr/xWqewdj9pjdMT2fDu
- L9TXUPrVOavBryg3ZKrVPnteeICUAm+k0GnhL8/NG0ZI/VctNl20MW4
+ bh=8djdPmMRDp1kcBXDhs8ygPXLuTfgtvGs7Yo95u6cw0k=; b=oxdmPg9KABeZlWyohpoRER6suttzISQsU1pFrM2utjhSx+ViWnRXf8IVNcElP/r+ITJcWQj9E
+ seeyc13ojC5BXu0aQZG5KcerhesMEYloY+EmDxWK7pulBdKUNUGMRBN
 X-Mailer: b4 0.12.3
-Message-ID: <20231026-ethtool_puts_impl-v2-0-0d67cbdd0538@google.com>
-Subject: [PATCH next v2 0/3] ethtool: Add ethtool_puts()
+Message-ID: <20231026-ethtool_puts_impl-v2-1-0d67cbdd0538@google.com>
+Subject: [PATCH next v2 1/3] ethtool: Implement ethtool_puts()
 From: Justin Stitt <justinstitt@google.com>
 To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Shay Agroskin <shayagr@amazon.com>, 
@@ -109,8 +108,8 @@ Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
 	bpf@vger.kernel.org, Justin Stitt <justinstitt@google.com>
 Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231026_145616_533955_6D025496 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20231026_145618_121778_24AF3B1E 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,111 +124,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Use strscpy() to implement ethtool_puts().
 
-This series aims to implement ethtool_puts() and send out a wave 1 of
-conversions from ethtool_sprintf(). There's also a checkpatch patch
-included to check for the cases listed below.
-
-This was sparked from recent discussion here [1]
-
-The conversions are used in cases where ethtool_sprintf() was being used
-with just two arguments:
-|       ethtool_sprintf(&data, buffer[i].name);
-or when it's used with format string: "%s"
-|       ethtool_sprintf(&data, "%s", buffer[i].name);
-which both now become:
-|       ethtool_puts(&data, buffer[i].name);
-
-The first case commonly triggers a -Wformat-security warning with Clang
-due to potential problems with format flags present in the strings [3].
-
-The second is just a bit weird with a plain-ol' "%s".
-
-v2 (and newer) of this patch is targeted at linux-next so that we can
-catch some of the patches I sent [2] using this "%s" pattern and replace
-them before they hit mainline.
-
-Changes found with Cocci [4] and grep [5].
-
-[1]: https://lore.kernel.org/all/202310141935.B326C9E@keescook/
-[2]: https://lore.kernel.org/all/?q=dfb%3Aethtool_sprintf+AND+f%3Ajustinstitt
-[3]: https://lore.kernel.org/all/202310101528.9496539BE@keescook/
-[4]: (script authored by Kees w/ modifications from Joe)
-@replace_2_args@
-expression BUF;
-expression VAR;
-@@
-
--       ethtool_sprintf(BUF, VAR)
-+       ethtool_puts(BUF, VAR)
-
-@replace_3_args@
-expression BUF;
-expression VAR;
-@@
-
--       ethtool_sprintf(BUF, "%s", VAR)
-+       ethtool_puts(BUF, VAR)
-
--       ethtool_sprintf(&BUF, "%s", VAR)
-+       ethtool_puts(&BUF, VAR)
-
-[5]: $ rg "ethtool_sprintf\(\s*[^,)]+\s*,\s*[^,)]+\s*\)"
+Functionally the same as ethtool_sprintf() when it's used with two
+arguments or with just "%s" format specifier.
 
 Signed-off-by: Justin Stitt <justinstitt@google.com>
 ---
-Changes in v2:
-- wrap lines better in replacement (thanks Joe, Kees)
-- add --fix to checkpatch (thanks Joe)
-- clean up checkpatch formatting (thanks Joe, et al.)
-- rebase against next
-- Link to v1: https://lore.kernel.org/r/20231025-ethtool_puts_impl-v1-0-6a53a93d3b72@google.com
+ include/linux/ethtool.h | 34 +++++++++++++++++++++++-----------
+ net/ethtool/ioctl.c     |  7 +++++++
+ 2 files changed, 30 insertions(+), 11 deletions(-)
 
----
-Justin Stitt (3):
-      ethtool: Implement ethtool_puts()
-      checkpatch: add ethtool_sprintf rules
-      treewide: Convert some ethtool_sprintf() to ethtool_puts()
+diff --git a/include/linux/ethtool.h b/include/linux/ethtool.h
+index 226a36ed5aa1..7129dd2e227c 100644
+--- a/include/linux/ethtool.h
++++ b/include/linux/ethtool.h
+@@ -1053,22 +1053,34 @@ static inline int ethtool_mm_frag_size_min_to_add(u32 val_min, u32 *val_add,
+  */
+ extern __printf(2, 3) void ethtool_sprintf(u8 **data, const char *fmt, ...);
+ 
++/**
++ * ethtool_puts - Write string to ethtool string data
++ * @data: Pointer to start of string to update
++ * @str: String to write
++ *
++ * Write string to data. Update data to point at start of next
++ * string.
++ *
++ * Prefer this function to ethtool_sprintf() when given only
++ * two arguments or if @fmt is just "%s".
++ */
++extern void ethtool_puts(u8 **data, const char *str);
++
+ /* Link mode to forced speed capabilities maps */
+ struct ethtool_forced_speed_map {
+-	u32		speed;
++	u32 speed;
+ 	__ETHTOOL_DECLARE_LINK_MODE_MASK(caps);
+ 
+-	const u32	*cap_arr;
+-	u32		arr_size;
++	const u32 *cap_arr;
++	u32 arr_size;
+ };
+ 
+-#define ETHTOOL_FORCED_SPEED_MAP(prefix, value)				\
+-{									\
+-	.speed		= SPEED_##value,				\
+-	.cap_arr	= prefix##_##value,				\
+-	.arr_size	= ARRAY_SIZE(prefix##_##value),			\
+-}
++#define ETHTOOL_FORCED_SPEED_MAP(prefix, value)                      \
++	{                                                            \
++		.speed = SPEED_##value, .cap_arr = prefix##_##value, \
++		.arr_size = ARRAY_SIZE(prefix##_##value),            \
++	}
+ 
+-void
+-ethtool_forced_speed_maps_init(struct ethtool_forced_speed_map *maps, u32 size);
++void ethtool_forced_speed_maps_init(struct ethtool_forced_speed_map *maps,
++				    u32 size);
+ #endif /* _LINUX_ETHTOOL_H */
+diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
+index 0b0ce4f81c01..abdf05edf804 100644
+--- a/net/ethtool/ioctl.c
++++ b/net/ethtool/ioctl.c
+@@ -1991,6 +1991,13 @@ __printf(2, 3) void ethtool_sprintf(u8 **data, const char *fmt, ...)
+ }
+ EXPORT_SYMBOL(ethtool_sprintf);
+ 
++void ethtool_puts(u8 **data, const char *str)
++{
++	strscpy(*data, str, ETH_GSTRING_LEN);
++	*data += ETH_GSTRING_LEN;
++}
++EXPORT_SYMBOL(ethtool_puts);
++
+ static int ethtool_phys_id(struct net_device *dev, void __user *useraddr)
+ {
+ 	struct ethtool_value id;
 
- drivers/net/dsa/lantiq_gswip.c                     |  2 +-
- drivers/net/dsa/mt7530.c                           |  2 +-
- drivers/net/dsa/qca/qca8k-common.c                 |  2 +-
- drivers/net/dsa/realtek/rtl8365mb.c                |  2 +-
- drivers/net/dsa/realtek/rtl8366-core.c             |  2 +-
- drivers/net/dsa/vitesse-vsc73xx-core.c             |  8 +--
- drivers/net/ethernet/amazon/ena/ena_ethtool.c      |  4 +-
- drivers/net/ethernet/brocade/bna/bnad_ethtool.c    |  2 +-
- drivers/net/ethernet/freescale/fec_main.c          |  4 +-
- .../net/ethernet/fungible/funeth/funeth_ethtool.c  |  8 +--
- drivers/net/ethernet/hisilicon/hns/hns_dsaf_gmac.c |  2 +-
- .../net/ethernet/hisilicon/hns/hns_dsaf_xgmac.c    |  2 +-
- drivers/net/ethernet/hisilicon/hns/hns_ethtool.c   | 65 +++++++++++-----------
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c     |  6 +-
- drivers/net/ethernet/intel/iavf/iavf_ethtool.c     |  3 +-
- drivers/net/ethernet/intel/ice/ice_ethtool.c       |  9 +--
- drivers/net/ethernet/intel/idpf/idpf_ethtool.c     |  2 +-
- drivers/net/ethernet/intel/igb/igb_ethtool.c       |  6 +-
- drivers/net/ethernet/intel/igc/igc_ethtool.c       |  6 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c   |  5 +-
- .../net/ethernet/microchip/sparx5/sparx5_ethtool.c |  2 +-
- .../net/ethernet/netronome/nfp/nfp_net_ethtool.c   | 44 +++++++--------
- drivers/net/ethernet/pensando/ionic/ionic_stats.c  |  4 +-
- drivers/net/ethernet/wangxun/libwx/wx_ethtool.c    |  2 +-
- drivers/net/hyperv/netvsc_drv.c                    |  4 +-
- drivers/net/phy/nxp-tja11xx.c                      |  2 +-
- drivers/net/phy/smsc.c                             |  2 +-
- drivers/net/vmxnet3/vmxnet3_ethtool.c              | 10 ++--
- include/linux/ethtool.h                            | 34 +++++++----
- net/ethtool/ioctl.c                                |  7 +++
- scripts/checkpatch.pl                              | 19 +++++++
- 31 files changed, 149 insertions(+), 123 deletions(-)
----
-base-commit: 2ef7141596eed0b4b45ef18b3626f428a6b0a822
-change-id: 20231025-ethtool_puts_impl-a1479ffbc7e0
-
-Best regards,
---
-Justin Stitt <justinstitt@google.com>
+-- 
+2.42.0.820.g83a721a137-goog
 
 
