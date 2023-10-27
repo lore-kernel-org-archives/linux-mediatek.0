@@ -4,64 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A89FFC25B47
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Oct 2023 12:19:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA50C25B6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Oct 2023 19:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tlBxoC+sK96n/v3m/RumocRNJtAVOXSAgmpSkzUvfTs=; b=S0ZXj3mYCCHPzSSu8AMaZxvG4s
-	ISle+tNE7rIj6YgmrORoOBRYOkBUj5ek6VWqhpA8Gu9uJoCRH7Q0MJzovWRdLs3c2j0s+Z6Ae63Vp
-	wC8tGHfs2wYSreJlwzT4xfCm1iZx47FxIWAC2yL+K4FMjuB7E3Se8bp2m677cf0z5y4yDT9cRwVCS
-	1GdvY2EV/XJ+pg8d1nQtLLUj/PO8mkORTmuheWv8b2ypyChtdRE1sWkBzkuBeLRxRmAub+rPd819s
-	iqK2Dilkq2rG8I6fVd/lRIcJU0PhtAjBHQwi2GCkZ/agw65vCvGfImmkgzxwCAmWKYHEX/2Cs0xE8
-	jUl80Nzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HResry5JndYeZBSzTVAWBwxzRl7+fUNF38GNSOea4NU=; b=WGx3w47v+i8vM/dStqahbU4eh2
+	vNP9GxfDHjhbJkKgv/WYvoRR0OVLsSP5ud5HqVBlu27RQtRTddw1dIo7Z5DULBrLL/6PyNrRQB5FB
+	s1vr3FEbtsQCJKfw8kJ7fI8qOrD58v6B9bBpc4PO6H+CLi+X96VAwo8/H+udj6gry+uuAcWXIWe2I
+	N8XIeALP2bEmE8M3BDBC5aEUoixkhUBrdu2lvM91/28BcQXYFksvCNK/jKSowmWVHOaNCpvzbJRkY
+	7AA3Wo3RYHy0P/zsNsF9NhUTX2CuuQ7TX6HC3sdkCNv8oFViVPvJsrEIpK9FXr95kzqzb7fo4eWZU
+	7EwlhFaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwLoM-00GNCp-1h;
-	Fri, 27 Oct 2023 12:19:34 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qwSf4-00H89Z-0O;
+	Fri, 27 Oct 2023 19:38:26 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwLoI-00GNBQ-1g
+	id 1qwSf0-00H88W-2L
 	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Oct 2023 12:19:32 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C373C74A;
-	Fri, 27 Oct 2023 14:19:09 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1698409150;
-	bh=xE45iya/4WrngKR3yPrHKJ+AzVa+Tyq3D5LIwRQlwl8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jIVqzBY3pPIK7wRL1q77EfHBUVKvy/bAEvLYmw4VpEwvpYvpuh6yWkcgNjIH9SDOJ
-	 K/QEPcGFlJWFKs/FDnKzYfq2tFVuXXufB3lfC7WfIbJ81KoadtXEwLMpElc+QZU6P2
-	 9TSYIRxqu2n7l0Kx4LZt2OQJCw8QtkUO3YdhuzcQ=
-Date: Fri, 27 Oct 2023 15:19:29 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Sakari Ailus <sakari.ailus@iki.fi>
-Cc: linux-media@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 1/3] dt-bindings: media: Add bindings for THine
- THP7312 ISP
-Message-ID: <20231027121929.GC12144@pendragon.ideasonboard.com>
-References: <20231017132103.9914-1-laurent.pinchart@ideasonboard.com>
- <20231017132103.9914-2-laurent.pinchart@ideasonboard.com>
- <ZTulSCwfyEF9exu9@valkosipuli.retiisi.eu>
+	Fri, 27 Oct 2023 19:38:24 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-9c41e95efcbso343884466b.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 27 Oct 2023 12:38:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1698435499; x=1699040299; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HResry5JndYeZBSzTVAWBwxzRl7+fUNF38GNSOea4NU=;
+        b=uSSaz1d1ddqV2ZNOvQo0iU//aU+61pKK9DyqtbgDCeaDd9Ldlmpzh3p2uRtMmuGUmN
+         fKTpCE9PLUL1d3m88ZXm1oxb58Nfwela3yboehgwr6bo85UWN6cSJDN7A9d2i0wm3vMP
+         o47WGn2IgiXxrHKGqu4JQ4spFI0ZcJclrDN727WtF6Zr3DIT/XWto5BFBIROl7oo0Qni
+         zMUWKYo5BYvjpBMMPMpbNUWVU+hq4w2eyxNXBUs4h8MGa12gBcb+MjNKTGgPu1JPvIeX
+         kNk+erTugq2vUUUFzZY2zUNrEgMZPqZ/I4IIL89xHR0v/QhwKRn4WxacootPp11vFcZJ
+         tdew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698435499; x=1699040299;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HResry5JndYeZBSzTVAWBwxzRl7+fUNF38GNSOea4NU=;
+        b=nbXJnjVcFzrB+w6GbbpM3OI48fpIDDNgolHwhJ7H5eCbQTJH/V0g+t9nNIy7VTL3yY
+         mAvr2gK6PHuWzJQCGYISjzO4js//ti35WCCRJI8ZKzYlrqloOELFHjts9hDse3eILGnN
+         pBAoQaNyDABEUmgvAKQb/rU0o9fHdPpeuEKbYmIbuYRfG+rfS6F2f2KAn0XZ6jq5C+x9
+         2CzMaxVXnZeUlcPTV5Y30gQ/BNG968OnNNT8QhVNSUcC9p6oykpFkKcXkqsOJqnzf7cK
+         vsWDQGKLMh4yzivePcoLxVHBu9W2RB9VEvjyKxEiQfjSl3AxtetLz257jzn6tazMLfrZ
+         dcnQ==
+X-Gm-Message-State: AOJu0YwnJU/ncDlCZWUyEGthk2HjV4AmVQmPw9PlJtE0UY+pj5H3epDc
+	ZIB0378YJIPoCRBVbBAMpgkqYKm2TgffcWlvERRYfg==
+X-Google-Smtp-Source: AGHT+IGfiH7/vZwPOYNJYfiPFBz2VHBIUsAkZ3hwTXH1qOBLB7kLIxeiWKyV6/erRjPKyouXW2aFwt8n98N0Q3p+tfY=
+X-Received: by 2002:a17:907:9341:b0:9b2:b71f:83be with SMTP id
+ bv1-20020a170907934100b009b2b71f83bemr3210322ejc.1.1698435498762; Fri, 27 Oct
+ 2023 12:38:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <ZTulSCwfyEF9exu9@valkosipuli.retiisi.eu>
+References: <20231026-ethtool_puts_impl-v2-0-0d67cbdd0538@google.com>
+ <20231026-ethtool_puts_impl-v2-1-0d67cbdd0538@google.com> <20231026220248.blgf7kgt5fkkbg7f@skbuf>
+ <CAFhGd8rWOE8zGFCdjM6i8H3TP8q5BFFxMGCk0n-nmLmjHojefg@mail.gmail.com> <20231026222548.rqbp5ktgo2mysl6w@skbuf>
+In-Reply-To: <20231026222548.rqbp5ktgo2mysl6w@skbuf>
+From: Justin Stitt <justinstitt@google.com>
+Date: Fri, 27 Oct 2023 12:38:06 -0700
+Message-ID: <CAFhGd8r9Y2tavxA2KVpELm-SRdvD+iEmYW=s7tf_dPpmVT3WeA@mail.gmail.com>
+Subject: Re: [PATCH next v2 1/3] ethtool: Implement ethtool_puts()
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: GR-Linux-NIC-Dev@marvell.com, UNGLinuxDriver@microchip.com, 
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+	intel-wired-lan@lists.osuosl.org, oss-drivers@corigine.com, 
+	linux-hyperv@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231027_051930_719890_95BAA367 
-X-CRM114-Status: GOOD (  37.77  )
+X-CRM114-CacheID: sfid-20231027_123822_795106_8E7CFA25 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,315 +93,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
+On Thu, Oct 26, 2023 at 3:25=E2=80=AFPM Vladimir Oltean <olteanv@gmail.com>=
+ wrote:
+>
+> On Thu, Oct 26, 2023 at 03:09:59PM -0700, Justin Stitt wrote:
+> > Should I undo this? I want my patch against next since it's targeting
+> > some stuff in-flight over there. BUT, I also want ethtool_puts() to be
+> > directly below ethtool_sprintf() in the source code. What to do?
+>
+> (removing everyone except the lists from CC, I don't want to go to email
+> arest because of spamming too many recipients)
+>
+> What is the stuff in-flight in next that this is targeting?
+>
+> And why would anything prevent you from putting ethtool_puts() directly
+> below ethtool_sprintf()?
 
-On Fri, Oct 27, 2023 at 11:55:52AM +0000, Sakari Ailus wrote:
-> Hi Laurent,
-> 
-> Thank you for the patchset any my apologies for not reviewing it earlier.
+The in-flight stuff consists of patches I sent changing some strncpy() usag=
+e
+to
 
-No worries. Thank you for reviewing it now :-)
+ethtool_sprintf(&data, "%s", something[i].name);
 
-> On Tue, Oct 17, 2023 at 04:21:01PM +0300, Laurent Pinchart wrote:
-> > From: Paul Elder <paul.elder@ideasonboard.com>
-> > 
-> > The THP7312 is an external ISP from THine. Add DT bindings for it.
-> > 
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Co-developed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> > Changes since v2:
-> > 
-> > - Drop description of reg property
-> > - Improve thine,boot-mode property documentation
-> > - Making thine,boot-mode property optional
-> > - Don't use underscores in supplies names
-> > ---
-> >  .../bindings/media/i2c/thine,thp7312.yaml     | 226 ++++++++++++++++++
-> >  MAINTAINERS                                   |   7 +
-> >  2 files changed, 233 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml b/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
-> > new file mode 100644
-> > index 000000000000..0758d8d44826
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
-> > @@ -0,0 +1,226 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +# Copyright (c) 2023 Ideas on Board
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/i2c/thine,thp7312.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: THine THP7312
-> > +
-> > +maintainers:
-> > +  - Paul Elder <paul.elder@@ideasonboard.com>
-> > +
-> > +description:
-> > +  The THP7312 is a standalone ISP controlled over i2c, and is capable of
-> > +  various image processing and correction functions, including 3A control. It
-> > +  can be connected to CMOS image sensors from various vendors, supporting both
-> > +  MIPI CSI-2 and parallel interfaces. It can also output on either MIPI CSI-2
-> > +  or parallel. The hardware is capable of transmitting and receiving MIPI
-> > +  interlaved data strams with data types or multiple virtual channel
-> > +  identifiers.
-> > +
-> > +allOf:
-> > +  - $ref: ../video-interface-devices.yaml#
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: thine,thp7312
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    maxItems: 1
-> > +    description: CLKI clock input
-> > +
-> > +  thine,boot-mode:
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    minimum: 0
-> > +    maximum: 1
-> > +    default: 1
-> > +    description:
-> > +      Boot mode of the THP7312, reflecting the value of the BOOT[0] pin strap.
-> > +      0 is for the SPI/2-wire slave boot, 1 is for the SPI master boot (from
-> > +      external flash ROM).
-> > +
-> > +  reset-gpios:
-> > +    maxItems: 1
-> > +    description:
-> > +      Reference to the GPIO connected to the RESET_N pin, if any.
-> > +      Must be released (set high) after all supplies are applied.
-> > +
-> > +  vddcore-supply:
-> > +    description:
-> > +      1.2V supply for core, PLL, MIPI rx and MIPI tx.
-> > +
-> > +  vhtermrx-supply:
-> > +    description:
-> > +      Supply for input (RX). 1.8V for MIPI, or 1.8/2.8/3.3V for parallel.
-> > +
-> > +  vddtx-supply:
-> > +    description:
-> > +      Supply for output (TX). 1.8V for MIPI, or 1.8/2.8/3.3V for parallel.
-> > +
-> > +  vddhost-supply:
-> > +    description:
-> > +      Supply for host interface. 1.8V, 2.8V, or 3.3V.
-> > +
-> > +  vddcmos-supply:
-> > +    description:
-> > +      Supply for sensor interface. 1.8V, 2.8V, or 3.3V.
-> > +
-> > +  vddgpio-0-supply:
-> > +    description:
-> > +      Supply for GPIO_0. 1.8V, 2.8V, or 3.3V.
-> > +
-> > +  vddgpio-1-supply:
-> > +    description:
-> > +      Supply for GPIO_1. 1.8V, 2.8V, or 3.3V.
-> > +
-> > +  orientation: true
-> > +  rotation: true
-> > +
-> > +  port:
-> > +    $ref: /schemas/graph.yaml#/$defs/port-base
-> > +    additionalProperties: false
-> > +
-> > +    properties:
-> > +      endpoint:
-> > +        $ref: /schemas/media/video-interfaces.yaml#
-> > +        unevaluatedProperties: false
-> > +
-> > +        properties:
-> > +          data-lanes:
-> > +            description:
-> > +              This property is for lane reordering between the THP7312 and the
-> > +              SoC. The sensor supports either two-lane, or four-lane operation.
-> > +              If this property is omitted four-lane operation is assumed. For
-> > +              two-lane operation the property must be set to <1 2>.
-> 
-> How are link frequencies determined by the device?
+We can see them here [1]. I went for this approach initially but then
+discussion came up about introducing ethtool_puts() which now
+made my patches (some accepted into next already) semi-outdated
+and in need of another swap from sprintf->puts() -- hence this series.
 
-The link frequency is not under direct control of the host. There are
-registers to select between mode presets, each of them producing a
-particular link frequency.
+As far as the rebase, I simply took my commits and placed them on
+top of next/master and got merge conflicts when ethtool_puts()
+was placed below ethtool_sprintf(). All I have to do is move the hunks
+around but since I formatted the file it's appearing in the diff. v3 will
+be a clean diff.
 
-> The description above also says the parallel interface is supported. The
-> bindings do not reflect that however.
-> 
-> Same for the sensor node below.
-> 
-> Is the intention to add support for these later on? In that case you'll
-> need bus-type and default that to CSI-2 for DTs conforming to these
-> bindings.
 
-While documentation claims that parallel interfaces are supported, we
-haven't been able to test this at all, due to lack of a suitable
-hardware test platform. The intention is indeed to add support for them
-later. I will add the bus-type property here.
+[1]: https://lore.kernel.org/all/?q=3Ddfb:ethtool_sprintf%20AND%20f:justins=
+titt
 
-> > +            minItems: 2
-> > +            maxItems: 4
-> > +            items:
-> > +              maximum: 4
-> > +
-> > +  sensors:
-> > +    type: object
-> > +    description: List of connected sensors
-> > +
-> > +    properties:
-> > +      "#address-cells":
-> > +        const: 1
-> > +
-> > +      "#size-cells":
-> > +        const: 0
-> > +
-> > +    patternProperties:
-> > +      "^sensor@[01]":
-> > +        type: object
-> > +        description:
-> > +          Sensors connected to the first and second input, with one node per
-> > +          sensor.
-> > +
-> > +        properties:
-> > +          thine,model:
-> > +            $ref: /schemas/types.yaml#/definitions/string
-> > +            description:
-> > +              Model of the connected sensors. Must be a valid compatible string.
-> > +
-> > +          reg:
-> > +            maxItems: 1
-> > +            description: THP7312 input port number
-> > +
-> > +          data-lanes:
-> > +            $ref: /schemas/media/video-interfaces.yaml#/properties/data-lanes
-> > +            items:
-> > +              maxItems: 4
-> > +            description:
-> > +              This property is for lane reordering between the THP7312 and the imaging
-> > +              sensor that it is connected to.
-> > +
-> > +        patternProperties:
-> > +          ".*-supply":
-> > +            description: Power supplies for the sensor
-> > +
-> > +        required:
-> > +          - reg
-> > +          - data-lanes
-> > +
-> > +        additionalProperties: false
-> > +
-> > +    required:
-> > +      - "#address-cells"
-> > +      - "#size-cells"
-> > +
-> > +    additionalProperties: false
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - reset-gpios
-> > +  - clocks
-> > +  - vddcore-supply
-> > +  - vhtermrx-supply
-> > +  - vddtx-supply
-> > +  - vddhost-supply
-> > +  - vddcmos-supply
-> > +  - vddgpio-0-supply
-> > +  - vddgpio-1-supply
-> > +  - sensors
-> > +  - port
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +
-> > +    i2c {
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +
-> > +        camera@61 {
-> > +            compatible = "thine,thp7312";
-> > +            reg = <0x61>;
-> > +
-> > +            pinctrl-names = "default";
-> > +            pinctrl-0 = <&cam1_pins_default>;
-> > +
-> > +            reset-gpios = <&pio 119 GPIO_ACTIVE_LOW>;
-> > +            clocks = <&camera61_clk>;
-> > +
-> > +            vddcore-supply = <&vsys_v4p2>;
-> > +            vhtermrx-supply = <&vsys_v4p2>;
-> > +            vddtx-supply = <&vsys_v4p2>;
-> > +            vddhost-supply = <&vsys_v4p2>;
-> > +            vddcmos-supply = <&vsys_v4p2>;
-> > +            vddgpio-0-supply = <&vsys_v4p2>;
-> > +            vddgpio-1-supply = <&vsys_v4p2>;
-> > +
-> > +            orientation = <0>;
-> > +            rotation = <0>;
-> > +
-> > +            sensors {
-> > +                #address-cells = <1>;
-> > +                #size-cells = <0>;
-> > +
-> > +                sensor@0 {
-> > +                    thine,model = "sony,imx258";
-> > +                    reg = <0>;
-> > +
-> > +                    data-lanes = <4 1 3 2>;
-> 
-> Does the device support lane mapping?
-
-Yes it does, both on the input and output.
-
-> > +
-> > +                    dovdd-supply = <&vsys_v4p2>;
-> > +                    avdd-supply = <&vsys_v4p2>;
-> > +                    dvdd-supply = <&vsys_v4p2>;
-> > +                };
-> > +            };
-> > +
-> > +            port {
-> > +                thp7312_2_endpoint: endpoint {
-> > +                    remote-endpoint = <&mipi_thp7312_2>;
-> > +                    data-lanes = <4 2 1 3>;
-> > +                };
-> > +            };
-> > +    	  };
-> > +    };
-> > +...
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 3b47e0b56859..7451367e6780 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -21448,6 +21448,13 @@ S:	Maintained
-> >  F:	Documentation/ABI/testing/sysfs-class-firmware-attributes
-> >  F:	drivers/platform/x86/think-lmi.?
-> >  
-> > +THP7312 ISP DRIVER
-> > +M:	Paul Elder <paul.elder@ideasonboard.com>
-> > +L:	linux-media@vger.kernel.org
-> > +S:	Maintained
-> > +T:	git git://linuxtv.org/media_tree.git
-> > +F:	Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
-> > +
-> >  THUNDERBOLT DMA TRAFFIC TEST DRIVER
-> >  M:	Isaac Hazan <isaac.hazan@intel.com>
-> >  L:	linux-usb@vger.kernel.org
-
--- 
-Regards,
-
-Laurent Pinchart
+Thanks
+Justin
 
