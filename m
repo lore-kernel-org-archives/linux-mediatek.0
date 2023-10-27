@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10269C25B67
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Oct 2023 09:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D248C25B67
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Oct 2023 09:19:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZYvJWf+GN8rYbJBn1IFT3mrdYzrKe6A0aYWfjBjhd6E=; b=k9yeJ+Y13qWtpJu/ZMFLAJdhmY
-	OCdBtUW1GNWbVtCZVVvQLtrtT+OftG/PuA76eFxA+ZuY94r31j2C8P79Sto2jUEMRBvWu+fiVU6Qo
-	ZBOiZuhh8CQSIY8lPfXYAWeG7Fdk6IZEp432iqvSLc0iDI+FRgwAsqa6dr4iLQrEblgh5PsmEek3T
-	v21LWrDfI5+ZHxlUtQyFTg+ei/0ee8aSDCsAtGVK4lpnGEGsm5yJABDZfQOpqTwXT4r0h3n+5pk4T
-	nhk7zXcFuUNbb4XWbWhvkSyFIeIoE9rlL8b1RAZFIBZ0J+HLIn8R4eAfk5mJZvLGXcuizEA2Szz36
-	jkHjXlXA==;
+	bh=PzNylZQPe72kv7lQwIcpgOIDAmXNbLyg1TXLLWgVRXs=; b=ZK65EdjLalNUKLI7992ryTyTlu
+	k9S0tJxnIHxql7nkFsWgLXo2TgUqteD8Kf1V1YgFNh/oqvEaZusDUgY3/OuqNyEdH6yW3LAvwG8aS
+	+a86C0rVD0DXM9AD5PsvJLiHkYCwT8cX8Ia/2jXJxI+6uM5E4nA3fQ2HAzUZg4ELlBb3w15vQyh5n
+	pucGcnW5fBYhFKidjsbSXA/TNIQG7ssjemsmc1JxZw25DNfmaKv+PgOFgHCbqyZFyT44QoogP8LQp
+	IDvYJMbWqc4gx8o+QYFgivPOdmheenyH3VlzP+iC12AgXGtwgzXjbmgMlhu9N1GcA4je1cKBrRLyi
+	ZonF9ptQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwIyG-00G0gt-0V;
-	Fri, 27 Oct 2023 09:17:36 +0000
-Received: from m12.mail.163.com ([220.181.12.217])
+	id 1qwJ0M-00G0rk-1B;
+	Fri, 27 Oct 2023 09:19:46 +0000
+Received: from m15.mail.163.com ([45.254.50.220])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwIyC-00G0fn-2u;
-	Fri, 27 Oct 2023 09:17:34 +0000
+	id 1qwJ0I-00G0qm-2M;
+	Fri, 27 Oct 2023 09:19:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=ZYvJW
-	f+GN8rYbJBn1IFT3mrdYzrKe6A0aYWfjBjhd6E=; b=ckiM1oDvdwLrdawG2pc3M
-	j9aLlD88UlfOYVRWSjhZpCCSWen0Y/Gdi/4cuyznANpvX3tHCIdQLdQ3zAlfQvHf
-	ghzCLUPbQ7RZ4CkqeS41XbVAsM1Cz39zbLSc4k7BHTcDhNw3xhDYb2irI2texiHq
-	OLQrhy/Jjs+krEm/NqNhQA=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=PzNyl
+	ZQPe72kv7lQwIcpgOIDAmXNbLyg1TXLLWgVRXs=; b=jZyS5KyldBlYbDPrhRgv7
+	EJlquVWUDw4MCzLxO1mg+veTPUIm9Aoh6cjTPBVbrBC40Ky8jlhSHs8IZgLxKKQC
+	6MeDSq8LnyUg+nNuvhqzSAL+klZS9Df5Djcgt3IrDIF75zFZLaGLFCLgfBb9quKp
+	+0chaCw7dL02+ZoMwZSipU=
 Received: from leanderwang-LC4.localdomain (unknown [111.206.145.21])
-	by zwqz-smtp-mta-g4-2 (Coremail) with SMTP id _____wDXnzDefztlgV6KBg--.4819S2;
-	Fri, 27 Oct 2023 17:16:15 +0800 (CST)
+	by zwqz-smtp-mta-g2-2 (Coremail) with SMTP id _____wBHL5VbgDtlSc85BA--.14166S2;
+	Fri, 27 Oct 2023 17:18:19 +0800 (CST)
 From: Zheng Wang <zyytlz.wz@163.com>
 To: dmitry.osipenko@collabora.com
 Cc: Kyrie.Wu@mediatek.com,
@@ -53,24 +53,24 @@ Cc: Kyrie.Wu@mediatek.com,
 	alex000young@gmail.com,
 	amergnat@baylibre.com,
 	wenst@chromium.org,
-	Zheng Wang <zyytlz.wz@163.com>
-Subject: [PATCH 0/2] media: mtk-jpeg: Remove cancel worker in mtk_jpeg_remove to avoid the crash of multi-core JPEG devices
-Date: Fri, 27 Oct 2023 17:16:12 +0800
-Message-Id: <20231027091612.38896-1-zyytlz.wz@163.com>
+	Zheng Wang <zyytlz.wz@163.com>,
+	stable@vger.kernel.org
+Subject: [PATCH 1/2] media: mtk-jpeg: Fix use after free bug due to error path handling in mtk_jpeg_dec_device_run
+Date: Fri, 27 Oct 2023 17:18:16 +0800
+Message-Id: <20231027091816.39000-1-zyytlz.wz@163.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDXnzDefztlgV6KBg--.4819S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Zw4rtF48tF1UJF4fZr4xWFg_yoW8JF4Dpr
-	WfK348CrWUWF4qgw4DJa47ZFyrGwnaya40gr47uwn2q393XFsrt34jya4FqFWxZF9FkFW3
-	tF1FvryfWF4jvFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zR1rWrUUUUU=
+X-CM-TRANSID: _____wBHL5VbgDtlSc85BA--.14166S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7uF1rGr1fJr1kJFW3KF43GFg_yoW8tw4fpr
+	Zagw4DCFWUWrs0gr4UAa4UZF1rC398JF12gr1S9wn3Z343XFs7Jry0ya4IqFWIyr9rCa4r
+	Xr10934xJrWDZFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRUKsUUUUUU=
 X-Originating-IP: [111.206.145.21]
-X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/1tbiXRAWU1WBq4ptKAAAs4
+X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/1tbiXRkWU1WBq4p1UQAAsQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231027_021733_355557_35EB3A56 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231027_021943_320595_E632048D 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,33 +85,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch reverts commit c677d7ae8314
-("media: mtk-jpeg: Fix use after free bug due to uncanceled work").
-The job_timeout_work is initialized only for
-the single-core JPEG device so it will cause the crash for multi-core
-JPEG devices.
+In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
+mtk_jpeg_job_timeout_work.
 
-Fix it by removing the cancel_delayed_work_sync function.
+In mtk_jpeg_dec_device_run, if error happens in
+mtk_jpeg_set_dec_dst, it will finally start the worker while
+mark the job as finished by invoking v4l2_m2m_job_finish.
 
-Fixes: c677d7ae8314 ("media: mtk-jpeg: Fix use after free bug due to uncanceled work")
+There are two methods to trigger the bug. If we remove the
+module, it which will call mtk_jpeg_remove to make cleanup.
+The possible sequence is as follows, which will cause a
+use-after-free bug.
+
+CPU0                  CPU1
+mtk_jpeg_dec_...    |
+  start worker	    |
+                    |mtk_jpeg_job_timeout_work
+mtk_jpeg_remove     |
+  v4l2_m2m_release  |
+    kfree(m2m_dev); |
+                    |
+                    | v4l2_m2m_get_curr_priv
+                    |   m2m_dev->curr_ctx //use
+
+If we close the file descriptor, which will call mtk_jpeg_release,
+it will have a similar sequence.
+
+Fix this bug by starting timeout worker only if started jpegdec worker
+successfully. Then v4l2_m2m_job_finish will only be called in
+either mtk_jpeg_job_timeout_work or mtk_jpeg_dec_device_run.
+Fixes: b2f0d2724ba4 ("[media] vcodec: mediatek: Add Mediatek JPEG Decoder Driver")
 Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
 Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: stable@vger.kernel.org
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 7194f88edc0f..60425c99a2b8 100644
+index 7194f88edc0f..252ba9b6857b 100644
 --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1403,7 +1403,6 @@ static void mtk_jpeg_remove(struct platform_device *pdev)
- {
- 	struct mtk_jpeg_dev *jpeg = platform_get_drvdata(pdev);
+@@ -1021,13 +1021,13 @@ static void mtk_jpeg_dec_device_run(void *priv)
+ 	if (ret < 0)
+ 		goto dec_end;
  
--	cancel_delayed_work_sync(&jpeg->job_timeout_work);
- 	pm_runtime_disable(&pdev->dev);
- 	video_unregister_device(jpeg->vdev);
- 	v4l2_m2m_release(jpeg->m2m_dev);
+-	schedule_delayed_work(&jpeg->job_timeout_work,
+-			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+-
+ 	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
+ 	if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, &dst_buf->vb2_buf, &fb))
+ 		goto dec_end;
+ 
++	schedule_delayed_work(&jpeg->job_timeout_work,
++			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
++
+ 	spin_lock_irqsave(&jpeg->hw_lock, flags);
+ 	mtk_jpeg_dec_reset(jpeg->reg_base);
+ 	mtk_jpeg_dec_set_config(jpeg->reg_base,
 -- 
 2.25.1
 
