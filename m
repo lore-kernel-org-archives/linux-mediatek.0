@@ -4,70 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D7D8C25B47
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Oct 2023 19:40:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CE6EC25B6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Oct 2023 20:46:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xzKQXsJ9PPJ95N5huUjFyALdgbkkeZmKhRTaQ99Yt+o=; b=BxGBCHdcltwnP4+dXbWHutYUwg
-	5viloTJ3lvDEhHFoVp1wXujX0/EEVAPnnIdOrqbz9r5DSVWvYMEOO+hxXOo5yitWaNyuN5av8fTIl
-	8FuFazF+l+A35oymqh01mHmHFGRAFrumthHSHIkqaWpyIxHZw1pxO/bkPKfk1mvHXdjAAAk5CmOdQ
-	dyKpJ7gH+QbPpxS9gL7abAG4pwHBzXBeY5JzLgjwaH1Dq94hzxOWY5CEZCxyvk28hnzzCwpKGkFtf
-	7HVcY2qshA3UM700VTyXbBG7Ln6RJBn1Fc+jjh33NKUZUIVFZ80jvzk9V5NtWxih96mfyzbD/MhXT
-	8SxPYR/Q==;
+	bh=ZWT6rg+UcGuVHCGktF1X9nMLt5S5rmKf4Xsx5qvsANI=; b=49xL8IqGJRGxQy95eHUPLmNiML
+	qT1MU1mVCTLTGxBLW6HDoC8EV1iAyGjqqFu6f3cRr65woXSg0W70hMCM0b4wIqa8OlFyMQPf47Dkh
+	Nvq9Psun4VQpAHO+LFOPI081+cvlsMd4vAeqxYHg1Yut60cvrUo+VHE67tllpYFu+DaEpbLNyjXZt
+	oFMmRqVzldnF+LhBPSSf7BZDQqjSnLqpl3ICbNXPcZV87cpMFbfEqlW+Gb/I54w/xtYRdkqIVnST9
+	br4kRHh3wg4iLS/q20Syk4UUoXlkqdl1qwJgYKb2X54tg4rxE+vDSkYbnGRDHARHW7GceqtXaq30I
+	mBuktVaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwShW-00H8LT-0c;
-	Fri, 27 Oct 2023 19:40:58 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1qwTiU-00HBhM-02;
+	Fri, 27 Oct 2023 20:46:02 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwShS-00H8Kp-2O
-	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Oct 2023 19:40:56 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-9c3aec5f326so747736466b.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Oct 2023 12:40:52 -0700 (PDT)
+	id 1qwSZX-00H6w8-1X
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 27 Oct 2023 19:32:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+	Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=ZWT6rg+UcGuVHCGktF1X9nMLt5S5rmKf4Xsx5qvsANI=; b=FkpkfsA0YD175StFoV9CJq6tf7
+	AxRPwrGKnH//iwLU3HD56PZQRlQAd3iRxKFp8h+VRRyg12vGR30gjy00HHz8C5rYYmN66+251/gtO
+	PTvts5+pszzTsupNb/tOoRHZA9SMARRQCSuGkB5q/B88E9uRkBonfsRAFOVirgqJAge0MakR8cCI7
+	eUCj2DnitZnwH7wUwCPF9SEuSLHQn1DITrLar3oRTjtC0qbUfxsIum2d3KIGTQh59+KQ5xSCxw3sc
+	r2CkEslun/9z5AJJq4PctHL4/pGUXCaaoEUtxUngRWzHyysZpGl7qb5jj/mmAPB4dAOBs77orHIDO
+	n/9IBTkg==;
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1qwSZS-005Bcx-My
+	for linux-mediatek@lists.infradead.org; Fri, 27 Oct 2023 19:32:42 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-9d10972e63eso62074066b.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 27 Oct 2023 12:32:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1698435651; x=1699040451; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1698435155; x=1699039955; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xzKQXsJ9PPJ95N5huUjFyALdgbkkeZmKhRTaQ99Yt+o=;
-        b=FKJCmDx2erucv0dCbl3fPmszEDvcQ04MD41X9QSSTiStJTdik9mpwj0DwsCKjoK+9/
-         jufLiD8xVdNvUWCjlXkBK97XHLIcG0MbUGfzTknuLNTVmeVwrtz6S7cGnXMWwjHtWvwu
-         jjVwAuHCwz3bFMMjcRkqB1j2hfpg5c4zgzRhmAfu8iGlzJlssDQVG9WgvZk0ZQ0j85Qo
-         NydqhmI8LWwNGwREQ+2K9FCRpVDnBsvXzId64on9VjRAJ+omZ0FYgLJ2j1t73Bfbihvq
-         3fi35SOu1HGV4GZ+ho9nhzA/dRJ2hrLD0/qXUv1N0SKuABWFlahNqT7a/eJ94GPR/H/9
-         ORLg==
+        bh=ZWT6rg+UcGuVHCGktF1X9nMLt5S5rmKf4Xsx5qvsANI=;
+        b=DbNivZZDRlmsG5wBlj1Tbv8i8fZF4niPmIRCmIY8ehilIDFoT+WF7Fv35fqEp5pT9K
+         ygdb1Icp7IkU4XpCj/IsfOHmDhfWqtvj+zM91e9TlIrH3tqiHlO7ren/dXI/dH4pcmfq
+         SKDH1XIZh1edHbog0PjjEUPhTj7MLIFkKMhiBCCu1+o/KQo+W7ht4R83NBA+qDKhuHVN
+         Q+1FIDDWcENkmzhVQYKNh4u5bIpyoaDBOkTHp5S/WlyrdQMkDLN7Hidc9lPpLlz5M+O0
+         aljvBoNzswVLSUbKn6xpO3Q9XoAZnwmo6r9zE+jCXEgARCcM9/F27NfiHtEcOGs9CSXK
+         nRRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698435651; x=1699040451;
+        d=1e100.net; s=20230601; t=1698435155; x=1699039955;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xzKQXsJ9PPJ95N5huUjFyALdgbkkeZmKhRTaQ99Yt+o=;
-        b=WUNrDJjj7mQbG0rKts80254bIgi/v0fYRdXMrQPQHxG/JEXHp9qWvslN8Jo08cJp/Z
-         04E1SErA/Gv7xeJyKitPVGSAoHoMu8W26VYmqGw7Zt9D3tssxfWicyKLJ1G2UkE9fneS
-         0QQwbRZ/PkohySgf9cnQaQvr1sIguGz4BUj+s1XtKXXQzX936nQuk1JPlqQjtzaB+ttp
-         /BFRokoamRawiQsDooHcQ/ag/LAaPOObZ+u8efXWAcP33Ifg35Of00UiPSNgk1pJxUod
-         IeAaw7zeJ+EvIcn4WYgTdDRQjzaykVmNAyf8adatcMBx3uZ1JbOwIlRGvqgKw07g8upv
-         Sz9A==
-X-Gm-Message-State: AOJu0YxpwOTx2NqN7KEZdzEesDnQhKJCV/YMMpm3+ow6BktxZJXyrvt6
-	ICitk1q/btpWGMKH1Xztksf4qIiEWvavAXEY+9W+qw==
-X-Google-Smtp-Source: AGHT+IEPfEM/trnfZm6cOr0U7cu+iGr19zJct2V4K5qR5GqFK9SelPMa/Z/9udzIJpJO7oi3U+zFq2t/7LTPw2L/vcI=
-X-Received: by 2002:a17:907:2da3:b0:9c3:97d7:2c67 with SMTP id
- gt35-20020a1709072da300b009c397d72c67mr3978966ejc.25.1698435651329; Fri, 27
- Oct 2023 12:40:51 -0700 (PDT)
+        bh=ZWT6rg+UcGuVHCGktF1X9nMLt5S5rmKf4Xsx5qvsANI=;
+        b=AsFzQBCAxvMnhROD4u9VHeky0p5vSxJ97E2EpUzN5xWbdZEx1rSck+RzcdEu36nMWW
+         1fwPkoTKoPzG7NwZz2aUKIO9rNp5vgHGZ83Ya/6oIuXvWs59jfZE+sqyTDFc574EwBQ1
+         xsyJJIrxqDktTMsRXo6+wG1XKQniYUloh0DVfT9AiEcEMprJNZa3FYdVS9HCSydmr52L
+         jxpGRAUfYkFzvX6wzYjELCASd+sminlOYv3cZUhIW4pDA3x2AnmrmSCVSOgLCXM81r0J
+         msHy5sgrBiANrfOLJ3TsReqec0c2+0gxN6izvG+CqjmRDz6R+/FYXwnzzl8dumTUZ7Fr
+         WHMg==
+X-Gm-Message-State: AOJu0Yz/Pi58bavcKzR76pdGr7dXcaV+jBcSNPdF+09ciBF0tHZn0Hpg
+	lLNYuv6sjZ9SMu+HlGoWqxnfGPUQ6jAkO1x0dLqD2g==
+X-Google-Smtp-Source: AGHT+IHAODo9hINKXNlQvGgAqxNPpRnNjd4AA89Jgp1KLx343fQyHwwoszpkk3UnOGcXvbD6V54sQTKCIm/OR/KX2/4=
+X-Received: by 2002:a17:907:a0a:b0:9bf:b129:5984 with SMTP id
+ bb10-20020a1709070a0a00b009bfb1295984mr2459494ejc.77.1698435154557; Fri, 27
+ Oct 2023 12:32:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20231026-ethtool_puts_impl-v2-0-0d67cbdd0538@google.com>
- <20231026-ethtool_puts_impl-v2-2-0d67cbdd0538@google.com> <8521c712250bcffce5c71e8d2b2574de786d4572.camel@perches.com>
-In-Reply-To: <8521c712250bcffce5c71e8d2b2574de786d4572.camel@perches.com>
+References: <20231026-ethtool_puts_impl-v2-0-0d67cbdd0538@google.com> <eda2f651-93f7-46c5-be7e-e8295903cc1e@lunn.ch>
+In-Reply-To: <eda2f651-93f7-46c5-be7e-e8295903cc1e@lunn.ch>
 From: Justin Stitt <justinstitt@google.com>
-Date: Fri, 27 Oct 2023 12:40:39 -0700
-Message-ID: <CAFhGd8p9ytqbRuqgWmKe=zCg7Nhft0NMvbuuEyjAQHNAcBedaQ@mail.gmail.com>
-Subject: Re: [PATCH next v2 2/3] checkpatch: add ethtool_sprintf rules
-To: Joe Perches <joe@perches.com>
+Date: Fri, 27 Oct 2023 12:32:22 -0700
+Message-ID: <CAFhGd8rSw7RRXTh0XE6EekPKeka34k5RT93gzqvP8s=PntCdsA@mail.gmail.com>
+Subject: Re: [PATCH next v2 0/3] ethtool: Add ethtool_puts()
+To: Andrew Lunn <andrew@lunn.ch>
 Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Shay Agroskin <shayagr@amazon.com>, 
 	Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>, Noam Dagan <ndagan@amazon.com>, 
@@ -79,11 +92,10 @@ Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
 	Shannon Nelson <shannon.nelson@amd.com>, Brett Creeley <brett.creeley@amd.com>, drivers@pensando.io, 
 	"K. Y. Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
 	Dexuan Cui <decui@microsoft.com>, Ronak Doshi <doshir@vmware.com>, 
-	VMware PV-Drivers Reviewers <pv-drivers@vmware.com>, Andy Whitcroft <apw@canonical.com>, 
+	VMware PV-Drivers Reviewers <pv-drivers@vmware.com>, Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, 
 	Dwaipayan Ray <dwaipayanray1@gmail.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>, 
-	Hauke Mehrtens <hauke@hauke-m.de>, Andrew Lunn <andrew@lunn.ch>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, 
-	=?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
+	Hauke Mehrtens <hauke@hauke-m.de>, Florian Fainelli <f.fainelli@gmail.com>, 
+	Vladimir Oltean <olteanv@gmail.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
 	Daniel Golle <daniel@makrotopia.org>, Landen Chao <Landen.Chao@mediatek.com>, 
 	DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -105,8 +117,8 @@ Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231027_124054_883750_C4820D03 
-X-CRM114-Status: GOOD (  20.89  )
+X-CRM114-CacheID: sfid-20231027_203238_762006_B6F4FABF 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,79 +133,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 26, 2023 at 3:39=E2=80=AFPM Joe Perches <joe@perches.com> wrote=
-:
+On Thu, Oct 26, 2023 at 5:25=E2=80=AFPM Andrew Lunn <andrew@lunn.ch> wrote:
 >
-> On Thu, 2023-10-26 at 21:56 +0000, Justin Stitt wrote:
-> > Add some warnings for using ethtool_sprintf() where a simple
-> > ethtool_puts() would suffice.
-> []
-> > diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-> []
-> > @@ -7011,6 +7011,25 @@ sub process {
-> >                            "Prefer strscpy, strscpy_pad, or __nonstring=
- over strncpy - see: https://github.com/KSPP/linux/issues/90\n" . $herecurr=
-);
-> >               }
-> >
-> > +# ethtool_sprintf uses that should likely be ethtool_puts
-> > +             if ($line =3D~ /\bethtool_sprintf\s*\(\s*$FuncArg\s*,\s*$=
-FuncArg\s*\)/) {
-> > +                     if(WARN("ETHTOOL_SPRINTF",
-> > +                        "Prefer ethtool_puts over ethtool_sprintf with=
- only two arguments\n" . $herecurr) &&
-> > +         $fix) {
-> > +         $fixed[$fixlinenr] =3D~ s/ethtool_sprintf\s*\(/ethtool_puts\(=
-/;
-> > +       }
-> > +             }
-> > +
-> > +             # use $rawline because $line loses %s via sanitization an=
-d thus we can't match against it.
-> > +             if ($rawline =3D~ /\bethtool_sprintf\s*\(\s*$FuncArg\s*,\=
-s*\"\%s\"\s*,\s*$FuncArg\s*\)/) {
-> > +                     if(WARN("ETHTOOL_SPRINTF",
-> > +                        "Prefer ethtool_puts over ethtool_sprintf with=
- standalone \"%s\" specifier\n" . $herecurr) &&
-> > +         $fix) {
-> > +         $fixed[$fixlinenr] =3D~ s/ethtool_sprintf\s*\(\s*(.*?),.*?,(.=
-*?)\)/ethtool_puts\($1,$2)/;
+> > Changes in v2:
+> > - wrap lines better in replacement (thanks Joe, Kees)
+> > - add --fix to checkpatch (thanks Joe)
+> > - clean up checkpatch formatting (thanks Joe, et al.)
+> > - rebase against next
 >
-> Thanks, but:
->
-> This fix wouldn't work if the first argument was itself a function
-> with multiple arguments.
->
-> And this is whitespace formatted incorrectly.
->
-> It:
->
-> o needs a space after if
-> o needs a space after the comma in the fix
-> o needs to use the appropriate amount and tabs for indentation
-> o needs alignment to open parentheses
-> o the backslashes are not required in the fix block
->
-> Do you want me to push what I wrote in the link below?
-> https://lore.kernel.org/lkml/7eec92d9e72d28e7b5202f41b02a383eb28ddd26.cam=
-el@perches.com/
+> Please could you explain the rebase against next? As Vladimir pointed
+> out, all the patches are to drivers/net, so anything in flight should
+> be in net-next, merged by the netdev Maintainers.
 
-Ah, I didn't see you provided a diff in previous thread.
-
-Yeah you can push it but it's not really a standalone so perhaps I'll
-just steal the diff and
-wrap into v3?
+OK, should v3 be against net-next? I opted for next as a catch-all.
 
 >
-> > +       }
-> > +             }
-> > +
-> > +
-> >  # typecasts on min/max could be min_t/max_t
-> >               if ($perl_version_ok &&
-> >                   defined $stat &&
-> >
->
+>     Andrew
 
 Thanks
 Justin
