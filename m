@@ -4,76 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8879DC25B70
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Oct 2023 07:49:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAC42C25B70
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Oct 2023 08:43:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rC45s2Jyub7fWFn1EI6e4gJJfhPFCT9vWPXzknaUnRE=; b=W6PbG4Xj9qSFV3EGjFMyJfN2NB
-	25Tq/OqesLocNZHb6qGXSnlcTeApyStNi76UWkW92okk6LeJEeVePaJPTU+GzD+Ps9nUxZDS5cmPR
-	F2e5ZSLIu3xMdRdi/AB9E/LxRvBM+trwZweqqZgrR0+URFcLjO/D2ku2OUxSWpFn5KwMkioD6PubJ
-	cZfwicccRcPhQq2OKLxYv8UoTPaBL3ejDUdpIxTKG59AqDzjE48TtXecJqbSZm0kXcRqmeTLCV6tn
-	6eFsl8RBN80h9CSMjqPb5zYhtdVPiCwuWV7qlnssdsg5eO2xpxleD5hhxcsWCzXV00GItXzg0VKyS
-	YqEdZ8WA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VcyzQ2NeYWUVU838NXIO17JVGw61EnQMWdi7e/381zA=; b=bKij2qEEnTmf5J7De0gFLwg26g
+	gW2vGydGwTGGEX0pbrj90bn5XDJm5l22wr3g9JJYOvXJGkoeVC5j3Pl6uuggzrxO9kQhetzh2VCsY
+	L9QoQtWw77+qEHEiFdt5DlQzK6HoJesE17EhEjMCr5AKSDe9FAEA+2K77Wcm9OS5YJaQfkhelM2m3
+	AqbwrrNdTKzXqAEwPLVL+uOqM6z1XlTbbK4cxP2nftO5OaASFa50Ir91KcQuzsHn5cq80y0soIrVE
+	X+eYCaAQTMFdiScPx6MODrUJ5R0BODYGYky6KFN14dpSaDHbwHpk+QghTLyXTXGx1nTZpYQ68Ajae
+	dnA80Mww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwHaw-00Fq7Y-25;
-	Fri, 27 Oct 2023 07:49:26 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qwIRR-00FxY0-2a;
+	Fri, 27 Oct 2023 08:43:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwHar-00Fq5H-27;
-	Fri, 27 Oct 2023 07:49:23 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7B91A66071F1;
-	Fri, 27 Oct 2023 08:49:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698392960;
-	bh=Er+OOdHx8cqMGoyhVTFB/h3ZeQ5UpwzOAINq1iZlNLk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=M63W0c8d6DK7x4LW4zyjIjII746ijWuH/1ezuv/K4K+nH7aQE6DLRqsgmuFA7I0Y3
-	 71APbBnTVGs0PTjje78/VwpX3GOKrGPgpyWPAZ4hQZE2wXvrJCuVsrlrGn21TgZLCe
-	 j9EWvRpL1pUpq21H/9dqH/bkFqAcIarSLs0tOh/PuNNgYyaCZbcdXwA0OcbvYLdTbn
-	 EkvyG6n2oYetTalfwyjHnRmYahgAqk99UfllpMBWAaj1ln2f9QW3EtRoPzvfNKDEEt
-	 /3OQKzcSgYNijy3AJquk6n/T6+ZcKMSfAQdJ/gd84gQ/PCA24GzFmhxVZq6oRRtow5
-	 +btqrh59MTglA==
-Message-ID: <b8b2ff9d-293d-4e21-b3b2-92b456b8f7c4@collabora.com>
-Date: Fri, 27 Oct 2023 09:49:17 +0200
+	id 1qwIRP-00FxXC-2p
+	for linux-mediatek@lists.infradead.org;
+	Fri, 27 Oct 2023 08:43:41 +0000
+X-UUID: ea7bf16274a411ee9b7791016c24628a-20231027
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VcyzQ2NeYWUVU838NXIO17JVGw61EnQMWdi7e/381zA=;
+	b=PlSNIqIyH+uOTmuhN3OfBEjheZtn5ANtrQOjCymKJj4pE3dtzBeAn3PhCmg9YgiTdYjIJYNmJsyy7fikQLilVziVAnKGSBJ7E+uIqUI/M37wfolOu5JjUtgbFudxH9mJ7hE2i+gY8CNTNcsg97GOZBiRvtXFJLSngtxBijSNUdM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:07b5fc0a-5b45-406b-938b-9079a6a41283,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5f78ec9,CLOUDID:f434f771-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: ea7bf16274a411ee9b7791016c24628a-20231027
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1398258287; Fri, 27 Oct 2023 01:43:35 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 27 Oct 2023 16:43:32 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 27 Oct 2023 16:43:32 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>
+Subject: [PATCH v1] ufs: core: fix racing issue between ufshcd_mcq_abort and ISR
+Date: Fri, 27 Oct 2023 16:43:29 +0800
+Message-ID: <20231027084329.4067-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] clk: mediatek: mt8188: probe vpp with
- mtk_clk_simple_probe()
-Content-Language: en-US
-To: =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>,
- "sboyd@kernel.org" <sboyd@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "u.kleine-koenig@pengutronix.de" <u.kleine-koenig@pengutronix.de>,
- =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>
-References: <20231026113830.29215-1-yu-chang.lee@mediatek.com>
- <a7321404-0c8f-430c-b14c-7ffc9e4fc5d7@collabora.com>
- <aeb71e4321637fdebd414acf58480e520afd2b15.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <aeb71e4321637fdebd414acf58480e520afd2b15.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.853700-8.000000
+X-TMASE-MatchedRID: sBypFcuOxUYMQLXc2MGSbBuZoNKc6pl+WPJn4UmMuVJ0cpXNtrVD/RFG
+	4EGBR4d4nFnqwstPnWZOTRDyBol0uXAvdl/gU+kWydRN/Yyg4pid2Wz0X3OaLd9RlPzeVuQQ8rM
+	P48ANS13i8zVgXoAltsIJ+4gwXrEtwrbXMGDYqV94uFxKD13nMe+qZbkhrKAvDcHRGkNOD0huqx
+	mYCr02+2o6x355ikkS
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.853700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 6956C7A927BB23CF71FBC2478C5F13C21FD7890C25E3F5B2D56A548C830530692000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231027_004921_976133_9DCD7E45 
-X-CRM114-Status: GOOD (  21.41  )
+X-CRM114-CacheID: sfid-20231027_014339_919482_34CC9F47 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,142 +101,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/10/23 09:42, Yu-chang Lee (李禹璋) ha scritto:
-> On Thu, 2023-10-26 at 13:45 +0200, AngeloGioacchino Del Regno wrote:
->> Il 26/10/23 13:38, yu-chang.lee ha scritto:
->>> switch to the common mtk_clk_simple_probe() function for all of the
->>> clock drivers that are registering as platform drivers.
->>>
->>
->> So VPPSYS0 and VPPSYS1 aren't dependant on MMSYS anymore?
->>
->> Like this, it doesn't look like this will ever work fine, so if you
->> want
->> that to happen, you must provide a good explanation, and then, since
->> MT8188
->> and MT8195's VPPSYS are practically the same, you should also convert
->> MT8195
->> to do the same, and make sure that everything works as expected
->> before sending
->> a commit upstream.
->>
->> Please, explain.
->>
->> Thanks,
->> Angelo
->>
-> Hi Angelo,
-> 
-> Thanks for your time and timely feedback. I don't find mt8188-vpp1 and
-> mt8188-vpp0 in mtk-mmsys.c. and thought probed them with
-> mtk_simple_probe(), refer to your comment on in this patch
-> "clk:
-> mediatek: Switch to mtk_clk_simple_probe() where possible", will be a
+From: Peter Wang <peter.wang@mediatek.com>
 
-Just to clarify: mtk_clk_pdev_probe() is mtk_clk_simple_probe() for
-pdev, nothing more and nothing less :-)
+If command timeout happen and cq complete irq raise at the same time,
+ufshcd_mcq_abort null the lprb->cmd and NULL poiner KE in ISR.
+Below is error log.
 
-> good idea. On the other hand mt8195 does have dependency on MMSYS, so I
-> don't think the same change work on mt8195.
-> 
+ufshcd_abort: Device abort task at tag 18
+Unable to handle kernel NULL pointer dereference at virtual address
+0000000000000108
+pc : [0xffffffe27ef867ac] scsi_dma_unmap+0xc/0x44
+lr : [0xffffffe27f1b898c] ufshcd_release_scsi_cmd+0x24/0x114
 
-Ok, then that's simply because MT8188 MDP3 is not upstream yet: that's going to
-happen, meaning that MT8188 will have the same mmsys dependency as MT8195 soon.
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufs-mcq.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Sorry, this commit is not valid. NACK.
-
-Thanks!
-Angelo
-
-> Best Regards,
-> YuChang
-> 
->>> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
->>> ---
->>>    drivers/clk/mediatek/clk-mt8188-vpp0.c | 14 +++++++++++---
->>>    drivers/clk/mediatek/clk-mt8188-vpp1.c | 14 +++++++++++---
->>>    2 files changed, 22 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/drivers/clk/mediatek/clk-mt8188-vpp0.c
->>> b/drivers/clk/mediatek/clk-mt8188-vpp0.c
->>> index e7b02b26fefb..18fffa191ee1 100644
->>> --- a/drivers/clk/mediatek/clk-mt8188-vpp0.c
->>> +++ b/drivers/clk/mediatek/clk-mt8188-vpp0.c
->>> @@ -96,6 +96,15 @@ static const struct mtk_clk_desc vpp0_desc = {
->>>    	.num_clks = ARRAY_SIZE(vpp0_clks),
->>>    };
->>>    
->>> +static const struct of_device_id of_match_clk_mt8188_vpp0[] = {
->>> +	{
->>> +		.compatible = "mediatek,mt8188-vppsys0",
->>> +		.data = &vpp0_desc,
->>> +	}, {
->>> +		/* sentinel */
->>> +	}
->>> +};
->>> +
->>>    static const struct platform_device_id clk_mt8188_vpp0_id_table[]
->>> = {
->>>    	{ .name = "clk-mt8188-vpp0", .driver_data =
->>> (kernel_ulong_t)&vpp0_desc },
->>>    	{ /* sentinel */ }
->>> @@ -103,12 +112,11 @@ static const struct platform_device_id
->>> clk_mt8188_vpp0_id_table[] = {
->>>    MODULE_DEVICE_TABLE(platform, clk_mt8188_vpp0_id_table);
->>>    
->>>    static struct platform_driver clk_mt8188_vpp0_drv = {
->>> -	.probe = mtk_clk_pdev_probe,
->>> -	.remove_new = mtk_clk_pdev_remove,
->>> +	.probe = mtk_clk_simple_probe,
->>>    	.driver = {
->>>    		.name = "clk-mt8188-vpp0",
->>> +		.of_match_table = of_match_clk_mt8188_vpp0,
->>>    	},
->>> -	.id_table = clk_mt8188_vpp0_id_table,
->>>    };
->>>    module_platform_driver(clk_mt8188_vpp0_drv);
->>>    MODULE_LICENSE("GPL");
->>> diff --git a/drivers/clk/mediatek/clk-mt8188-vpp1.c
->>> b/drivers/clk/mediatek/clk-mt8188-vpp1.c
->>> index e8f0f7eca097..f4b35336d427 100644
->>> --- a/drivers/clk/mediatek/clk-mt8188-vpp1.c
->>> +++ b/drivers/clk/mediatek/clk-mt8188-vpp1.c
->>> @@ -91,6 +91,15 @@ static const struct mtk_clk_desc vpp1_desc = {
->>>    	.num_clks = ARRAY_SIZE(vpp1_clks),
->>>    };
->>>    
->>> +static const struct of_device_id of_match_clk_mt8188_vpp1[] = {
->>> +	{
->>> +		.compatible = "mediatek,mt8188-vppsys1",
->>> +		.data = &vpp1_desc,
->>> +	}, {
->>> +		/* sentinel */
->>> +	}
->>> +};
->>> +
->>>    static const struct platform_device_id clk_mt8188_vpp1_id_table[]
->>> = {
->>>    	{ .name = "clk-mt8188-vpp1", .driver_data =
->>> (kernel_ulong_t)&vpp1_desc },
->>>    	{ /* sentinel */ }
->>> @@ -98,12 +107,11 @@ static const struct platform_device_id
->>> clk_mt8188_vpp1_id_table[] = {
->>>    MODULE_DEVICE_TABLE(platform, clk_mt8188_vpp1_id_table);
->>>    
->>>    static struct platform_driver clk_mt8188_vpp1_drv = {
->>> -	.probe = mtk_clk_pdev_probe,
->>> -	.remove_new = mtk_clk_pdev_remove,
->>> +	.probe = mtk_clk_simple_probe,
->>>    	.driver = {
->>>    		.name = "clk-mt8188-vpp1",
->>> +		.of_match_table = of_match_clk_mt8188_vpp1,
->>>    	},
->>> -	.id_table = clk_mt8188_vpp1_id_table,
->>>    };
->>>    module_platform_driver(clk_mt8188_vpp1_drv);
->>>    MODULE_LICENSE("GPL");
->>
->>
-
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 2ba8ec254dce..6ea96406f2bf 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -630,6 +630,7 @@ int ufshcd_mcq_abort(struct scsi_cmnd *cmd)
+ 	int tag = scsi_cmd_to_rq(cmd)->tag;
+ 	struct ufshcd_lrb *lrbp = &hba->lrb[tag];
+ 	struct ufs_hw_queue *hwq;
++	unsigned long flags;
+ 	int err = FAILED;
+ 
+ 	if (!ufshcd_cmd_inflight(lrbp->cmd)) {
+@@ -670,8 +671,10 @@ int ufshcd_mcq_abort(struct scsi_cmnd *cmd)
+ 	}
+ 
+ 	err = SUCCESS;
++	spin_lock_irqsave(&hwq->cq_lock, flags);
+ 	if (ufshcd_cmd_inflight(lrbp->cmd))
+ 		ufshcd_release_scsi_cmd(hba, lrbp);
++	spin_unlock_irqrestore(&hwq->cq_lock, flags);
+ 
+ out:
+ 	return err;
+-- 
+2.18.0
 
 
