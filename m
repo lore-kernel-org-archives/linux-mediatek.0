@@ -4,83 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18422C0032E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Oct 2023 07:58:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 743FBC0032E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Oct 2023 09:10:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wirm5Q3dcoOD4F+NMOnOVCZSztH47TeUP0VbK8KxV8I=; b=JimCC+GCFRpDPyd+GQwmaVjT8o
-	LtgbQ0NdXoKXbWaBi+tMgx4KGft/AhMuE2MbFMPuU+vyXpEX0jvYci38F7oIOA+mB+22QwCTe89ck
-	QPKa2FxnqCNkAlHRofo7GMsMZneFKeml+lEyXxBEJYewJwgiAV5H5fzxY/BrSh42p/qTElFPwkaIE
-	cbfIzUs/B13BXG5aaneaqSJk60+gmaSy+8OPW3DQifaDarwfr5KXR8Px2BTnijqR7QnFlntpn/mqS
-	vpR+ykmAeFwZniFuyd6cEQkYoT6kThRYbTfg18WPRuXgO+w++p5uAmUJOOQDvD/deSD5JaggcqoC1
-	xvExbHkw==;
+	bh=RiRQw3JVo7CVRHS4YrqVN+xHaSdr88jKnb69gh9us5k=; b=IlPlOHq+f+egNpSBWOko69C4qz
+	PjbdduUBNpZviQbJfxhFSm5DSobnlTAT8yrAQ516hQ2xJPoge5qfPTcHlPn4KNepyjK9SxRZC8VQX
+	p65NUpfiI8hrfxxQxoeQY7SC60iCPWeY+0tXbgDqtQFywCyCm0hG0ExcBCp7QAcSS/1DniMaUJBCY
+	9/Nja+JodXXyl+HGmprrqf0t8PJR6anlwE1BfDN4gR0wX9ZIO9UpdqW0oKKic3vD4b4X+5YxjqqRh
+	BgaKt5YJwl+Xbcez+ffqQqv0bV7Mo2WZaQhK7mjgU2zWWDvETbA7NRSweL99SnVV/LN16ciMBq1xE
+	Y1zO0g8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qweCu-0009d2-0k;
-	Sat, 28 Oct 2023 07:58:08 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1qwfLC-000DFj-17;
+	Sat, 28 Oct 2023 09:10:46 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qweCr-0009bh-03
+	id 1qwfL9-000DEn-1A
 	for linux-mediatek@lists.infradead.org;
-	Sat, 28 Oct 2023 07:58:06 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2c54c8934abso40672871fa.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 28 Oct 2023 00:58:03 -0700 (PDT)
+	Sat, 28 Oct 2023 09:10:45 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5079f9ec8d9so3188969e87.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 28 Oct 2023 02:10:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1698479882; x=1699084682; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1698484231; x=1699089031; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Wirm5Q3dcoOD4F+NMOnOVCZSztH47TeUP0VbK8KxV8I=;
-        b=Xn68ZQmel4TAB+xdrqj834iz4gXsgR94CgGxtRg8aJtk9z23ENdDjXjo6EFJeegNBc
-         1KPL49F6xcMKW+RzxFsvP9XuTRvbFkwpJk1Qmi6zGYcsPC6e8rFe3X5XkUHVWchYKB1w
-         eIgqO3FW4aR6F+b+jO9e0m+qFVwtIWuu5Z7GDFmyywpDgvHJl6j+W4r81WdiUhOszYzx
-         FbnGyUb2jR5MhC656JzCD5WD1WigfE2kcbA8Dv16gK4bBLOLnuhhjanW4PEtHtJR1fu9
-         daboqmSqNTujchainhCvf9pos6rJ0YD0xMJyqZVPAH7+yfj6iaPmvyWRsnUK0haVXUks
-         a98g==
+        bh=RiRQw3JVo7CVRHS4YrqVN+xHaSdr88jKnb69gh9us5k=;
+        b=MXsY7p9ScN0Y9iqKdO77ZxXAhBwNxKHjVR+5x5nNtkf7zsxYrYWERR63r4iO8oPs5A
+         TWfuL1UTYYciRo2/XPhjbd6x7PS+09AL1O2KjtVsMcIi706LZe8ltNqSfkC3VKeI3TdN
+         CzhOc0V+i7lSauigifLpXBAJL64KKxgNWlB3mWGJzoKLY4oenHQm0ClnIU532lR8Bs/L
+         tdTQUftjK8V4JAtzipK3IP9nH+W/GJU+Z1ktS8BdJjAxCbehPoqv4fotiQtJ/NgvHT97
+         mleO/27c+aBcKYDs/63n/LqcVAOE8vg2j2i3xCrXSQ1aUmibXA02qc5eZvoxOgVgUoBX
+         d2zQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698479882; x=1699084682;
+        d=1e100.net; s=20230601; t=1698484231; x=1699089031;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Wirm5Q3dcoOD4F+NMOnOVCZSztH47TeUP0VbK8KxV8I=;
-        b=CQ09MDWTLmSacr/9GoaYWbxNgGLcf5yjS0LRVEZfbFJGTWrI9dpQBJlmfTBs6a7H34
-         oNVa/ctbu8iW9QLthiKFuqw57Byz2h2eIcjX3s4kFHPRp88e7+vGqpoGl10pbbW1uoj+
-         W8HcySp4183pS13qY/hwyTXHJVvT5EveRyeKg5iTcBTBcGa4QEpg/g7krLNUcKPBW5Js
-         JVI5gj9Eupd1JVI84RcUPWveeJOuO45g3k2CuWunWHlawSPjKDxPRo4fI64Ys+jHZP3i
-         rtPJ4sX7b8y1LDhTgJ5cQ64P/ysoI1Fw/z+kgVkli3SJ7ySW4/IGngAKx8aILc5+Refw
-         ZwFg==
-X-Gm-Message-State: AOJu0YwWfzXTextg3b/Q3vDl9A/pI+8PJTy0VMx+DYN8FHrDz8UcUgt1
-	nd03TZHr79G1lcEGw2Ow7ViCHg==
-X-Google-Smtp-Source: AGHT+IGxGFiRG1NAScIBM73dNIGn1bPLnq8cjpK6Q4S6ezx5gtbaCjjBVAQ/T8ESnBZnRDnq8nm6Hw==
-X-Received: by 2002:a05:6512:1107:b0:508:1178:efa4 with SMTP id l7-20020a056512110700b005081178efa4mr4083984lfg.55.1698479881784;
-        Sat, 28 Oct 2023 00:58:01 -0700 (PDT)
+        bh=RiRQw3JVo7CVRHS4YrqVN+xHaSdr88jKnb69gh9us5k=;
+        b=xStV3FEne/yPYDpXU4iTzQVzFTlCd64f1/Jdx1axRS9w7MhhCIGqxvPelXu4BoTH4k
+         qypJh2axdEt16WxjbX9H9yWv5xxvvvGczrRQ8B7HBLZ2KM+ECWCCgnKJXVn7ySXJZ72y
+         lDQRj8dHWa9XfVnEKBORilMSB1VuuA3auAEhUaAXPRTIuuuIDTlUiUSuK/hyloSRfH2Z
+         mp8SCvyELxsLbLjPQ4coyPEwldSb+IZpNX9sSykvJYge0muTwaU4/36IgAgExZ/uK2Zl
+         SptwZI0xqMXULSOIl8kguilVbOct9ta3njY1ErxIwVDkg4UZVSjxQZIZkWoC67yZZZCS
+         zPjA==
+X-Gm-Message-State: AOJu0Yw+0ypajqbgtrQM2vbD+3WE6DMLGZ1e26+cXaX4X9uy4qMM0P5B
+	+wQS97Ep/JOjiK4swDs7mQxX5Q==
+X-Google-Smtp-Source: AGHT+IHGiXAdvPS5Bqqb1yd9rOjeYrzC9VjJrUDozq+YnoTQOhChm7NQv7446Uwtkfa+/xegf273Ug==
+X-Received: by 2002:a19:644e:0:b0:504:3499:7c2b with SMTP id b14-20020a19644e000000b0050434997c2bmr1594540lfj.21.1698484230726;
+        Sat, 28 Oct 2023 02:10:30 -0700 (PDT)
 Received: from [192.168.0.22] ([78.10.206.168])
-        by smtp.gmail.com with ESMTPSA id f22-20020ac251b6000000b005007e7211f7sm571734lfk.21.2023.10.28.00.58.00
+        by smtp.gmail.com with ESMTPSA id a25-20020ac25219000000b005057830c24dsm587389lfl.141.2023.10.28.02.10.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 28 Oct 2023 00:58:01 -0700 (PDT)
-Message-ID: <2a29c027-4431-4693-98d4-ba09ad46591b@linaro.org>
-Date: Sat, 28 Oct 2023 09:57:59 +0200
+        Sat, 28 Oct 2023 02:10:30 -0700 (PDT)
+Message-ID: <f9dd6f3f-4608-4cec-9e54-eeaeb95bca97@linaro.org>
+Date: Sat, 28 Oct 2023 11:10:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/7] Add a few mt8183 follower boards.
+Subject: Re: [PATCH v2 2/9] dt-bindings: mailbox: Add property for CMDQ secure
+ driver
 Content-Language: en-US
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20231026191343.3345279-1-hsinyi@chromium.org>
- <7b737537-38f2-4404-b469-c67005cdaf83@linaro.org>
- <CAJMQK-jQUHz8-hEx4DzNU3cOnN59JG1xFBPH5mUndLV-rbk+Jg@mail.gmail.com>
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+ =?UTF-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
+ =?UTF-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
+ <Jason-ch.Chen@mediatek.com>, =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
+ <Shawn.Sung@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
+ <Nancy.Lin@mediatek.com>, "jkardatzke@google.com" <jkardatzke@google.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+References: <20231023043751.17114-1-jason-jh.lin@mediatek.com>
+ <20231023043751.17114-3-jason-jh.lin@mediatek.com>
+ <374a6fe3-23f5-4450-8ef6-8e0478c7ade5@linaro.org>
+ <c04109bb54d6d4cf728488a8ed697df0b71f4e46.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -126,12 +139,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <CAJMQK-jQUHz8-hEx4DzNU3cOnN59JG1xFBPH5mUndLV-rbk+Jg@mail.gmail.com>
+In-Reply-To: <c04109bb54d6d4cf728488a8ed697df0b71f4e46.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231028_005805_051474_43114B99 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20231028_021043_483757_970AD840 
+X-CRM114-Status: GOOD (  20.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,31 +159,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/10/2023 23:22, Hsin-Yi Wang wrote:
-> On Fri, Oct 27, 2023 at 4:17 AM Krzysztof Kozlowski
-> <krzysztof.kozlowski@linaro.org> wrote:
->>
->> On 26/10/2023 21:09, Hsin-Yi Wang wrote:
->>> Add makomo, pico, and katsu which are mt8183 followers.
->>>
->>> v4: based on https://lore.kernel.org/all/20231025093816.44327-1-angelogioacchino.delregno@collabora.com/
->>>
->>
->> Where is the changelog? It's already v4 and still no changelog...
->>
+On 24/10/2023 18:37, Jason-JH Lin (林睿祥) wrote:
+> Hi Krzysztof,
 > 
-> v3:https://patchwork.kernel.org/project/linux-mediatek/cover/20231025215517.1388735-1-hsinyi@chromium.org/
-> v2:https://patchwork.kernel.org/project/linux-mediatek/cover/20231024212618.1079676-1-hsinyi@chromium.org/
-> v1:https://patchwork.kernel.org/project/linux-mediatek/cover/20231024000724.57714-1-hsinyi@chromium.org/
+> Thanks for the reviews.
 > 
-> changelog with previous version are in each of the patchset. eg:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20231025215517.1388735-5-hsinyi@chromium.org/
+> On Mon, 2023-10-23 at 09:49 +0200, Krzysztof Kozlowski wrote:
+>>  	 
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>  On 23/10/2023 06:37, Jason-JH.Lin wrote:
+>>> Add mboxes to define a GCE loopping thread as a secure irq handler.
+>>> Add mediatek,gce-events to define a GCE event siganl sent from CMDQ
+>>> TA driver in secure world as a secure irq.
+>>>
+>>> These 2 properties are required for CMDQ secure driver.
+>>>
+>>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>>> ---
+>>>  .../bindings/mailbox/mediatek,gce-mailbox.yaml         | 10
+>> ++++++++++
+>>>  1 file changed, 10 insertions(+)
+>>>
+>>> diff --git
+>> a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml 
+>> b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+>>> index cef9d7601398..65fb93bb53b6 100644
+>>> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-
+>> mailbox.yaml
+>>> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-
+>> mailbox.yaml
+>>> @@ -49,6 +49,16 @@ properties:
+>>>      items:
+>>>        - const: gce
+>>>  
+>>> +  mboxes:
+>>> +    maxItems: 1
+>>> +
+>>> +  mediatek,gce-events:
+>>> +    description:
+>>> +      The event id which is mapping to the specific hardware event
+>> signal
+>>> +      to gce. The event id is defined in the gce header
+>>> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
+>>> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+>>
+>> Nothing improved.
+>>
+>> This is a friendly reminder during the review process.
+>>
+>> It seems my previous comments were not fully addressed. Maybe my
+> 
+> Sorry, I didn't find your comments in the previous patch here:
+> 
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20230918192204.32263-2-jason-jh.lin@mediatek.com/
+> 
+> Could you please comment again?
+> Thank you very much.
 
-One would think but:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20231025215517.1388735-7-hsinyi@chromium.org/
-https://patchwork.kernel.org/project/linux-mediatek/patch/20231025215517.1388735-3-hsinyi@chromium.org/
+Please implement Rob's feedback.
+> 
+> 
+> And I do see Rob's comment, so I sync the mediatek,gce-events property
+> definition from other yaml where used this property.
+> 
+> Should I also modify the definition of mediatek,gce-events property to
+> reference to mediatek,gce-mailbox.yaml for other yaml?
 
-Usually expected is in such case to wrote "v4: No changes".
+You need single definition in one of the bindings or in shared bindings.
+Depends on the users of this property.
+
 
 Best regards,
 Krzysztof
