@@ -4,108 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2F9AC27C49
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Oct 2023 01:20:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18422C0032E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Oct 2023 07:58:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0g5kyZ0hA+DlGKnaeXH//43ksUqY7YG+r7+U+dNLRdo=; b=q20Y0a8kd43Osxgc2Yo8TtccZt
-	SjofwRQAnkdIliyzmJpY5sNfvVzqxsAbgiYsR7vIPSMGf2oJBPpXxIGq3BrtjzpvkkHUXfj5BUe5a
-	1QKfOsSF+xkvqz4IAS7wjmZKOjYCw5QwJIqyK+DXWg7BHmQvAMleB/vlxr55avVfkb4aoRC/x6BTT
-	xrPPSV1m3bGJE4vvdkHGowfdmb1WddLS/+1ektnLhlc0SxDhXb1ZIjpFjy0jZh3fhq82HG3jIF2Ef
-	niHqmVgz1zrw9HER4egqk6L0Ds78EpkOCEmdLvoV15wRVjYzBICtJKpiZTCiZ1o0KOJGOYClJUlv7
-	jDnfuEEw==;
+	bh=Wirm5Q3dcoOD4F+NMOnOVCZSztH47TeUP0VbK8KxV8I=; b=JimCC+GCFRpDPyd+GQwmaVjT8o
+	LtgbQ0NdXoKXbWaBi+tMgx4KGft/AhMuE2MbFMPuU+vyXpEX0jvYci38F7oIOA+mB+22QwCTe89ck
+	QPKa2FxnqCNkAlHRofo7GMsMZneFKeml+lEyXxBEJYewJwgiAV5H5fzxY/BrSh42p/qTElFPwkaIE
+	cbfIzUs/B13BXG5aaneaqSJk60+gmaSy+8OPW3DQifaDarwfr5KXR8Px2BTnijqR7QnFlntpn/mqS
+	vpR+ykmAeFwZniFuyd6cEQkYoT6kThRYbTfg18WPRuXgO+w++p5uAmUJOOQDvD/deSD5JaggcqoC1
+	xvExbHkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwY04-00HRHi-2c;
-	Sat, 28 Oct 2023 01:20:28 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1qweCu-0009d2-0k;
+	Sat, 28 Oct 2023 07:58:08 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwY01-00HRGs-2t
+	id 1qweCr-0009bh-03
 	for linux-mediatek@lists.infradead.org;
-	Sat, 28 Oct 2023 01:20:27 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-9d0b4dfd60dso143772366b.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Oct 2023 18:20:21 -0700 (PDT)
+	Sat, 28 Oct 2023 07:58:06 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2c54c8934abso40672871fa.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 28 Oct 2023 00:58:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1698456020; x=1699060820; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0g5kyZ0hA+DlGKnaeXH//43ksUqY7YG+r7+U+dNLRdo=;
-        b=xHth2Ay/uMXQXFqZSTeNKMDBMQwvoIGnbeL4RKWaoODCUAFX7gD5gC9JQ45M2OyEfW
-         1IsqWLEHBEirLOkYoRI6zkeboHOssALb7F6z/JEiTbfH229zKRYhmqDKmoY+G3L5t03R
-         kWUd9a+qJ8OO+s81A1O2gdOBBA6FpJfmSNgPXDBKvRKrxSkG+TFBS8q7F2g6B2JtmwkD
-         vN+++UzcguHYhVBh/j/orUK7RNe0FOugwP5Zc2apJwNH4xwkPmZjmdK0KW0YA90kZ8G8
-         vYGlpfyhbhVAWaUXyoMiwXc1xg0viDI+8ii/+Lbg2Z7t2uVt7xCOLyHX6dzVec7pHbq8
-         w/iw==
+        d=linaro.org; s=google; t=1698479882; x=1699084682; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Wirm5Q3dcoOD4F+NMOnOVCZSztH47TeUP0VbK8KxV8I=;
+        b=Xn68ZQmel4TAB+xdrqj834iz4gXsgR94CgGxtRg8aJtk9z23ENdDjXjo6EFJeegNBc
+         1KPL49F6xcMKW+RzxFsvP9XuTRvbFkwpJk1Qmi6zGYcsPC6e8rFe3X5XkUHVWchYKB1w
+         eIgqO3FW4aR6F+b+jO9e0m+qFVwtIWuu5Z7GDFmyywpDgvHJl6j+W4r81WdiUhOszYzx
+         FbnGyUb2jR5MhC656JzCD5WD1WigfE2kcbA8Dv16gK4bBLOLnuhhjanW4PEtHtJR1fu9
+         daboqmSqNTujchainhCvf9pos6rJ0YD0xMJyqZVPAH7+yfj6iaPmvyWRsnUK0haVXUks
+         a98g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698456020; x=1699060820;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0g5kyZ0hA+DlGKnaeXH//43ksUqY7YG+r7+U+dNLRdo=;
-        b=V5awHRtXfxpkoSo1SmRm16n/FpR44HtC9K3lw2anoXlNNNV6M02XIBr0ZwbshlAcGS
-         9jOUvX58jdFCcGXibRNP6y3ctWWinf1ZxTJ1/iWhwAvqP5FqZ/9Ag7hcNxjqVuyqgvnD
-         XGrBu8NUOioxkbpZ5ZdHzpTdmy1YI8Tscuw9Gg5N2shfATZ8k4grJM5Lv+FKMVH4G3vU
-         Xse7YlsmqwRDQNL1K3510XAqEFa7fkwy+XrFzHoh8D8z14cMZLk7WoJsyeevmV51JpjR
-         WKOktfmXavFcp1/kqRIJLfdMZtqctoG967RnZuC+6pfVRZtDzHnumavZKHYHKgoQbWIN
-         Ybcg==
-X-Gm-Message-State: AOJu0Yy4AuZ2qtLydN2hdLQWiT7PqzBqbvIF5KfSsa8PrQr3bTFfdQao
-	aMqf4swOpiuzXpeGtJ1mMF+wpDmfnVp8O+tcqj3ZvQ==
-X-Google-Smtp-Source: AGHT+IHxolWSAC4XvBLAiS8bNkb50iFHz5nOkd4FFLXw/+WDrtcRsN44VBQ67SWxWTbp7GfzFR6SM97u7XxM3x0zW6s=
-X-Received: by 2002:a17:906:fe46:b0:9c3:b3cb:29b2 with SMTP id
- wz6-20020a170906fe4600b009c3b3cb29b2mr3275410ejb.42.1698456020364; Fri, 27
- Oct 2023 18:20:20 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1698479882; x=1699084682;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Wirm5Q3dcoOD4F+NMOnOVCZSztH47TeUP0VbK8KxV8I=;
+        b=CQ09MDWTLmSacr/9GoaYWbxNgGLcf5yjS0LRVEZfbFJGTWrI9dpQBJlmfTBs6a7H34
+         oNVa/ctbu8iW9QLthiKFuqw57Byz2h2eIcjX3s4kFHPRp88e7+vGqpoGl10pbbW1uoj+
+         W8HcySp4183pS13qY/hwyTXHJVvT5EveRyeKg5iTcBTBcGa4QEpg/g7krLNUcKPBW5Js
+         JVI5gj9Eupd1JVI84RcUPWveeJOuO45g3k2CuWunWHlawSPjKDxPRo4fI64Ys+jHZP3i
+         rtPJ4sX7b8y1LDhTgJ5cQ64P/ysoI1Fw/z+kgVkli3SJ7ySW4/IGngAKx8aILc5+Refw
+         ZwFg==
+X-Gm-Message-State: AOJu0YwWfzXTextg3b/Q3vDl9A/pI+8PJTy0VMx+DYN8FHrDz8UcUgt1
+	nd03TZHr79G1lcEGw2Ow7ViCHg==
+X-Google-Smtp-Source: AGHT+IGxGFiRG1NAScIBM73dNIGn1bPLnq8cjpK6Q4S6ezx5gtbaCjjBVAQ/T8ESnBZnRDnq8nm6Hw==
+X-Received: by 2002:a05:6512:1107:b0:508:1178:efa4 with SMTP id l7-20020a056512110700b005081178efa4mr4083984lfg.55.1698479881784;
+        Sat, 28 Oct 2023 00:58:01 -0700 (PDT)
+Received: from [192.168.0.22] ([78.10.206.168])
+        by smtp.gmail.com with ESMTPSA id f22-20020ac251b6000000b005007e7211f7sm571734lfk.21.2023.10.28.00.58.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 28 Oct 2023 00:58:01 -0700 (PDT)
+Message-ID: <2a29c027-4431-4693-98d4-ba09ad46591b@linaro.org>
+Date: Sat, 28 Oct 2023 09:57:59 +0200
 MIME-Version: 1.0
-References: <20231027-ethtool_puts_impl-v3-0-3466ac679304@google.com>
- <20231027-ethtool_puts_impl-v3-1-3466ac679304@google.com> <8ca4ba13-1bcf-4c7b-91b6-8c77fbe55b30@lunn.ch>
-In-Reply-To: <8ca4ba13-1bcf-4c7b-91b6-8c77fbe55b30@lunn.ch>
-From: Justin Stitt <justinstitt@google.com>
-Date: Fri, 27 Oct 2023 18:20:08 -0700
-Message-ID: <CAFhGd8p8mmGfR-eTu_g3k64Z79z=M1xfjTFDhmJ1XaszCtQx1w@mail.gmail.com>
-Subject: Re: [PATCH net-next v3 1/3] ethtool: Implement ethtool_puts()
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Shay Agroskin <shayagr@amazon.com>, 
-	Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>, Noam Dagan <ndagan@amazon.com>, 
-	Saeed Bishara <saeedb@amazon.com>, Rasesh Mody <rmody@marvell.com>, 
-	Sudarsana Kalluru <skalluru@marvell.com>, GR-Linux-NIC-Dev@marvell.com, 
-	Dimitris Michailidis <dmichail@fungible.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Jesse Brandeburg <jesse.brandeburg@intel.com>, 
-	Tony Nguyen <anthony.l.nguyen@intel.com>, Louis Peens <louis.peens@corigine.com>, 
-	Shannon Nelson <shannon.nelson@amd.com>, Brett Creeley <brett.creeley@amd.com>, drivers@pensando.io, 
-	"K. Y. Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
-	Dexuan Cui <decui@microsoft.com>, Ronak Doshi <doshir@vmware.com>, 
-	VMware PV-Drivers Reviewers <pv-drivers@vmware.com>, Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, 
-	Dwaipayan Ray <dwaipayanray1@gmail.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>, 
-	Hauke Mehrtens <hauke@hauke-m.de>, Florian Fainelli <f.fainelli@gmail.com>, 
-	Vladimir Oltean <olteanv@gmail.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
-	Daniel Golle <daniel@makrotopia.org>, Landen Chao <Landen.Chao@mediatek.com>, 
-	DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, 
-	Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, 
-	Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Lars Povlsen <lars.povlsen@microchip.com>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Jiawen Wu <jiawenwu@trustnetic.com>, Mengyuan Lou <mengyuanlou@net-swift.com>, 
-	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, linux-kernel@vger.kernel.org, 
-	netdev@vger.kernel.org, Nick Desaulniers <ndesaulniers@google.com>, 
-	Nathan Chancellor <nathan@kernel.org>, Kees Cook <keescook@chromium.org>, 
-	intel-wired-lan@lists.osuosl.org, oss-drivers@corigine.com, 
-	linux-hyperv@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/7] Add a few mt8183 follower boards.
+Content-Language: en-US
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231026191343.3345279-1-hsinyi@chromium.org>
+ <7b737537-38f2-4404-b469-c67005cdaf83@linaro.org>
+ <CAJMQK-jQUHz8-hEx4DzNU3cOnN59JG1xFBPH5mUndLV-rbk+Jg@mail.gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <CAJMQK-jQUHz8-hEx4DzNU3cOnN59JG1xFBPH5mUndLV-rbk+Jg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231027_182025_961950_A00E9E08 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20231028_005805_051474_43114B99 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,30 +146,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 27, 2023 at 4:43=E2=80=AFPM Andrew Lunn <andrew@lunn.ch> wrote:
->
-> > +/**
-> > + * ethtool_puts - Write string to ethtool string data
-> > + * @data: Pointer to start of string to update
->
-> Isn't it actually a pointer to a pointer to the start of string to
-> update?
+On 27/10/2023 23:22, Hsin-Yi Wang wrote:
+> On Fri, Oct 27, 2023 at 4:17 AM Krzysztof Kozlowski
+> <krzysztof.kozlowski@linaro.org> wrote:
+>>
+>> On 26/10/2023 21:09, Hsin-Yi Wang wrote:
+>>> Add makomo, pico, and katsu which are mt8183 followers.
+>>>
+>>> v4: based on https://lore.kernel.org/all/20231025093816.44327-1-angelogioacchino.delregno@collabora.com/
+>>>
+>>
+>> Where is the changelog? It's already v4 and still no changelog...
+>>
+> 
+> v3:https://patchwork.kernel.org/project/linux-mediatek/cover/20231025215517.1388735-1-hsinyi@chromium.org/
+> v2:https://patchwork.kernel.org/project/linux-mediatek/cover/20231024212618.1079676-1-hsinyi@chromium.org/
+> v1:https://patchwork.kernel.org/project/linux-mediatek/cover/20231024000724.57714-1-hsinyi@chromium.org/
+> 
+> changelog with previous version are in each of the patchset. eg:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20231025215517.1388735-5-hsinyi@chromium.org/
 
-I suppose.
+One would think but:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20231025215517.1388735-7-hsinyi@chromium.org/
+https://patchwork.kernel.org/project/linux-mediatek/patch/20231025215517.1388735-3-hsinyi@chromium.org/
 
-FWIW, I just copy-pasted the sprintf doc and tweaked:
-/**
- * ethtool_sprintf - Write formatted string to ethtool string data
- * @data: Pointer to start of string to update
- * @fmt: Format of string to write
- *
- * Write formatted string to data. Update data to point at start of
- * next string.
- */
+Usually expected is in such case to wrote "v4: No changes".
 
+Best regards,
+Krzysztof
 
->
-> > +extern void ethtool_puts(u8 **data, const char *str);
->
->         Andrew
 
