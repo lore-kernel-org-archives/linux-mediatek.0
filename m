@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B3D4C4167D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FFF9C0018A
 	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 13:32:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,31 +12,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q6sbpVGmIKnIkaWNdoJXuDzsZVLOpnvefmnj1HoXjvE=; b=2WOIrFoNEyEX4qt4YTgMAEZoqP
-	0ry/DV1g05n+PIBM/B7PcyvUc8VJPQ1p7CojcjKsnsovBnR1mFo4BhNpynOorsvpldUQw7Vec8qAr
-	wkhlNNe9OEykgbPdPPc9foNH9+Fh1036ED3Do5o128wR2AIRrrTGwxxT0DlfAwTCn/Txs/zg6K158
-	sE6wdmqIbXaAF47Q6VtY3ILx+rGTVjyVriepDXjFMyoRDXVZJTZ86Hozo2WwP/07+5srP3uH1zGqk
-	JwpmEnZZ5xUuf1/03S1BnR1qsFbm5/1ZBv8QEisgWwOwXUiN655xSpeS78ov2nfv3B5WVkrG0r2Zt
-	MMD6yprQ==;
+	bh=HhqBRMMvICLrgxbsoCE8YTRohy6osTBU+k8/hzuErkU=; b=E2FRBYvZvUCrtX+qTzzOtit9cQ
+	7TSbCQinIaunl5YDgUPjvNJMu4V8L/wuHIoh6G/5VU4VNfHSF0iObkgOTX0+qb+vFXqZiklfdj56Y
+	WkznUaqm63d3Cp3p5BS9taC748uwx6tu8uWV8XfaLCEr6nZSq46FfJss1wQSO3Yg/MP6j+emiYv45
+	nxnLoTdQdJ5j94962JmigKHL5KuUPGhzHfKO8fXZSDs9cfFWZ28Idho01vkpdZRDGlKdyVrh5MPcF
+	O4ErS7Y5lJ7WrcizOjFH1KbZmdlBYahjy+Qvk45/g1Ao/7ylNsL4YEHfuEvXdvuFkxxzsYnmQiVkb
+	Fe24qgmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxSNu-003PwT-36;
-	Mon, 30 Oct 2023 13:32:50 +0000
+	id 1qxSNv-003Pwj-0o;
+	Mon, 30 Oct 2023 13:32:51 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxSNp-003Pu7-2E
+	id 1qxSNp-003Ptr-0L
 	for linux-mediatek@lists.infradead.org;
 	Mon, 30 Oct 2023 13:32:48 +0000
 Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E65DE844;
-	Mon, 30 Oct 2023 14:32:28 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9774D75B;
+	Mon, 30 Oct 2023 14:32:27 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1698672749;
-	bh=T1cC7/GK3i9yLoUiF4PF7mMwGujeWNJA0OTnbuy5EZw=;
+	s=mail; t=1698672747;
+	bh=w/kUjJtGbF0kHtt8zvglqPzCRzWWaMmv7WKE26WiqNg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Cql+nG2vqtcRzHnprf+KhX9ea0Saeo2n1GsB0inGdLXWEJAOL/gA0CgXFY4GJ0WCf
-	 IlCRj1xzONOG6tH7M1PPGKcrUiOhLYuAqAR8ppf8Eb5w69yOf3Og36UuQ48O6ZJnvV
-	 vmsOGy02MlrghJcZXtgLAlg2PIrdBce1X6IiAFLQ=
+	b=a34cTksB4Arf9zE738jlMdrJ2fPHJySX3C6Ic45+k1iLOQ2Nyx0tfG8MroXqcP85v
+	 yyddi4gTa91fvC7tBrLk9U8Kiv5pbLy0zVVMLTGpBOQxs8yXwuPqqpBxfoC1+FqCZn
+	 xQ+tZvGOFI4bmA6Mjb3i4mi3oHtrvCym86cihX5M=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Paul Elder <paul.elder@ideasonboard.com>,
@@ -45,18 +45,22 @@ Cc: Paul Elder <paul.elder@ideasonboard.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Julien Stephan <jstephan@baylibre.com>,
 	Sakari Ailus <sakari.ailus@iki.fi>,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v5 2/3] media: uapi: Add controls for the THP7312 ISP
-Date: Mon, 30 Oct 2023 15:32:46 +0200
-Message-ID: <20231030133247.11243-3-laurent.pinchart@ideasonboard.com>
+	linux-mediatek@lists.infradead.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org
+Subject: [PATCH v5 1/3] dt-bindings: media: Add bindings for THine THP7312 ISP
+Date: Mon, 30 Oct 2023 15:32:45 +0200
+Message-ID: <20231030133247.11243-2-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231030133247.11243-1-laurent.pinchart@ideasonboard.com>
 References: <20231030133247.11243-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231030_063245_871302_3192A093 
-X-CRM114-Status: GOOD (  18.08  )
+X-CRM114-CacheID: sfid-20231030_063245_425239_6A8D3E25 
+X-CRM114-Status: GOOD (  21.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,132 +75,286 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The THP7312 is an external ISP from THine. As such, it implements a
-large number of parameters to control all aspects of the image
-processing. Many of those controls are already standard in V4L2, but
-some are fairly device-specific.
+From: Paul Elder <paul.elder@ideasonboard.com>
 
-Reserve a range of 32 controls for the device. The driver will implement
-4 device-specific controls to start with, define and document them. 28
-additional device-specific controls should be enough for future
-development.
+The THP7312 is an external ISP from THine. Add DT bindings for it.
 
-Co-developed-by: Paul Elder <paul.elder@ideasonboard.com>
 Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+Co-developed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../userspace-api/media/drivers/index.rst     |  1 +
- .../userspace-api/media/drivers/thp7312.rst   | 32 +++++++++++++++++++
- MAINTAINERS                                   |  2 ++
- include/uapi/linux/thp7312.h                  | 19 +++++++++++
- include/uapi/linux/v4l2-controls.h            |  6 ++++
- 5 files changed, 60 insertions(+)
- create mode 100644 Documentation/userspace-api/media/drivers/thp7312.rst
- create mode 100644 include/uapi/linux/thp7312.h
+Changes since v4:
 
-diff --git a/Documentation/userspace-api/media/drivers/index.rst b/Documentation/userspace-api/media/drivers/index.rst
-index 1726f8ec86fa..6b62c818899f 100644
---- a/Documentation/userspace-api/media/drivers/index.rst
-+++ b/Documentation/userspace-api/media/drivers/index.rst
-@@ -41,4 +41,5 @@ For more details see the file COPYING in the source distribution of Linux.
- 	npcm-video
- 	omap3isp-uapi
- 	st-vgxy61
-+	thp7312
- 	uvcvideo
-diff --git a/Documentation/userspace-api/media/drivers/thp7312.rst b/Documentation/userspace-api/media/drivers/thp7312.rst
+- Add bus-type property
+
+Changes since v2:
+
+- Drop description of reg property
+- Improve thine,boot-mode property documentation
+- Making thine,boot-mode property optional
+- Don't use underscores in supplies names
+---
+ .../bindings/media/i2c/thine,thp7312.yaml     | 231 ++++++++++++++++++
+ MAINTAINERS                                   |   7 +
+ 2 files changed, 238 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml b/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
 new file mode 100644
-index 000000000000..7a40c42b1db9
+index 000000000000..a576a8669644
 --- /dev/null
-+++ b/Documentation/userspace-api/media/drivers/thp7312.rst
-@@ -0,0 +1,32 @@
-+.. SPDX-License-Identifier: GPL-2.0-only
++++ b/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
+@@ -0,0 +1,231 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++# Copyright (c) 2023 Ideas on Board
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/i2c/thine,thp7312.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+THine THP7312 ISP driver
-+========================
++title: THine THP7312
 +
-+The THP7312 driver implements the following driver-specific controls:
++maintainers:
++  - Paul Elder <paul.elder@@ideasonboard.com>
 +
-+``V4L2_CID_THP7312_LOW_LIGHT_COMPENSATION``
-+    Enable/Disable auto-adjustment, based on lighting conditions, of the frame
-+    rate when auto-exposure is enabled.
++description:
++  The THP7312 is a standalone ISP controlled over i2c, and is capable of
++  various image processing and correction functions, including 3A control. It
++  can be connected to CMOS image sensors from various vendors, supporting both
++  MIPI CSI-2 and parallel interfaces. It can also output on either MIPI CSI-2
++  or parallel. The hardware is capable of transmitting and receiving MIPI
++  interlaved data strams with data types or multiple virtual channel
++  identifiers.
 +
-+``V4L2_CID_THP7312_AUTO_FOCUS_METHOD``
-+    Set method of auto-focus. Only takes effect when auto-focus is enabled.
++allOf:
++  - $ref: ../video-interface-devices.yaml#
 +
-+    .. flat-table::
-+        :header-rows:  0
-+        :stub-columns: 0
-+        :widths:       1 4
++properties:
++  compatible:
++    const: thine,thp7312
 +
-+        * - ``0``
-+          - Contrast-based auto focus
-+        * - ``1``
-+          - PDAF
-+        * - ``2``
-+          - Hybrid of contrast-based and PDAF
++  reg:
++    maxItems: 1
 +
-+``V4L2_CID_THP7312_NOISE_REDUCTION_AUTO``
-+    Enable/Disable auto noise reduction.
++  clocks:
++    maxItems: 1
++    description: CLKI clock input
 +
-+``V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE``
-+    Set the noise reduction strength, where 0 is the weakest and 10 is the
-+    strongest.
++  thine,boot-mode:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 0
++    maximum: 1
++    default: 1
++    description:
++      Boot mode of the THP7312, reflecting the value of the BOOT[0] pin strap.
++      0 is for the SPI/2-wire slave boot, 1 is for the SPI master boot (from
++      external flash ROM).
++
++  reset-gpios:
++    maxItems: 1
++    description:
++      Reference to the GPIO connected to the RESET_N pin, if any.
++      Must be released (set high) after all supplies are applied.
++
++  vddcore-supply:
++    description:
++      1.2V supply for core, PLL, MIPI rx and MIPI tx.
++
++  vhtermrx-supply:
++    description:
++      Supply for input (RX). 1.8V for MIPI, or 1.8/2.8/3.3V for parallel.
++
++  vddtx-supply:
++    description:
++      Supply for output (TX). 1.8V for MIPI, or 1.8/2.8/3.3V for parallel.
++
++  vddhost-supply:
++    description:
++      Supply for host interface. 1.8V, 2.8V, or 3.3V.
++
++  vddcmos-supply:
++    description:
++      Supply for sensor interface. 1.8V, 2.8V, or 3.3V.
++
++  vddgpio-0-supply:
++    description:
++      Supply for GPIO_0. 1.8V, 2.8V, or 3.3V.
++
++  vddgpio-1-supply:
++    description:
++      Supply for GPIO_1. 1.8V, 2.8V, or 3.3V.
++
++  orientation: true
++  rotation: true
++
++  port:
++    $ref: /schemas/graph.yaml#/$defs/port-base
++    additionalProperties: false
++
++    properties:
++      endpoint:
++        $ref: /schemas/media/video-interfaces.yaml#
++        unevaluatedProperties: false
++
++        properties:
++          bus-type:
++            const: 4 # CSI-2 D-PHY
++
++          data-lanes:
++            description:
++              This property is for lane reordering between the THP7312 and the
++              SoC. The sensor supports either two-lane, or four-lane operation.
++              If this property is omitted four-lane operation is assumed. For
++              two-lane operation the property must be set to <1 2>.
++            minItems: 2
++            maxItems: 4
++            items:
++              maximum: 4
++
++  sensors:
++    type: object
++    description: List of connected sensors
++
++    properties:
++      "#address-cells":
++        const: 1
++
++      "#size-cells":
++        const: 0
++
++    patternProperties:
++      "^sensor@[01]":
++        type: object
++        description:
++          Sensors connected to the first and second input, with one node per
++          sensor.
++
++        properties:
++          thine,model:
++            $ref: /schemas/types.yaml#/definitions/string
++            description:
++              Model of the connected sensors. Must be a valid compatible string.
++
++          reg:
++            maxItems: 1
++            description: THP7312 input port number
++
++          data-lanes:
++            $ref: /schemas/media/video-interfaces.yaml#/properties/data-lanes
++            items:
++              maxItems: 4
++            description:
++              This property is for lane reordering between the THP7312 and the imaging
++              sensor that it is connected to.
++
++        patternProperties:
++          ".*-supply":
++            description: Power supplies for the sensor
++
++        required:
++          - reg
++          - data-lanes
++
++        additionalProperties: false
++
++    required:
++      - "#address-cells"
++      - "#size-cells"
++
++    additionalProperties: false
++
++required:
++  - compatible
++  - reg
++  - reset-gpios
++  - clocks
++  - vddcore-supply
++  - vhtermrx-supply
++  - vddtx-supply
++  - vddhost-supply
++  - vddcmos-supply
++  - vddgpio-0-supply
++  - vddgpio-1-supply
++  - sensors
++  - port
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/media/video-interfaces.h>
++
++    i2c {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        camera@61 {
++            compatible = "thine,thp7312";
++            reg = <0x61>;
++
++            pinctrl-names = "default";
++            pinctrl-0 = <&cam1_pins_default>;
++
++            reset-gpios = <&pio 119 GPIO_ACTIVE_LOW>;
++            clocks = <&camera61_clk>;
++
++            vddcore-supply = <&vsys_v4p2>;
++            vhtermrx-supply = <&vsys_v4p2>;
++            vddtx-supply = <&vsys_v4p2>;
++            vddhost-supply = <&vsys_v4p2>;
++            vddcmos-supply = <&vsys_v4p2>;
++            vddgpio-0-supply = <&vsys_v4p2>;
++            vddgpio-1-supply = <&vsys_v4p2>;
++
++            orientation = <0>;
++            rotation = <0>;
++
++            sensors {
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                sensor@0 {
++                    thine,model = "sony,imx258";
++                    reg = <0>;
++
++                    data-lanes = <4 1 3 2>;
++
++                    dovdd-supply = <&vsys_v4p2>;
++                    avdd-supply = <&vsys_v4p2>;
++                    dvdd-supply = <&vsys_v4p2>;
++                };
++            };
++
++            port {
++                thp7312_2_endpoint: endpoint {
++                    remote-endpoint = <&mipi_thp7312_2>;
++                    bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
++                    data-lanes = <4 2 1 3>;
++                };
++            };
++        };
++    };
++...
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 2e094a7e7d07..1d20f080c752 100644
+index f3e6dbbbbccb..2e094a7e7d07 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -21454,6 +21454,8 @@ L:	linux-media@vger.kernel.org
- S:	Maintained
- T:	git git://linuxtv.org/media_tree.git
- F:	Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
-+F:	Documentation/userspace-api/media/drivers/thp7312.rst
-+F:	include/uapi/linux/thp7312.h
+@@ -21448,6 +21448,13 @@ S:	Maintained
+ F:	Documentation/ABI/testing/sysfs-class-firmware-attributes
+ F:	drivers/platform/x86/think-lmi.?
  
++THP7312 ISP DRIVER
++M:	Paul Elder <paul.elder@ideasonboard.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++T:	git git://linuxtv.org/media_tree.git
++F:	Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
++
  THUNDERBOLT DMA TRAFFIC TEST DRIVER
  M:	Isaac Hazan <isaac.hazan@intel.com>
-diff --git a/include/uapi/linux/thp7312.h b/include/uapi/linux/thp7312.h
-new file mode 100644
-index 000000000000..2b629e05daf9
---- /dev/null
-+++ b/include/uapi/linux/thp7312.h
-@@ -0,0 +1,19 @@
-+/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
-+/*
-+ * THine THP7312 user space header file.
-+ *
-+ * Copyright (C) 2021 THine Electronics, Inc.
-+ * Copyright (C) 2023 Ideas on Board Oy
-+ */
-+
-+#ifndef __UAPI_THP7312_H_
-+#define __UAPI_THP7312_H_
-+
-+#include <linux/v4l2-controls.h>
-+
-+#define V4L2_CID_THP7312_LOW_LIGHT_COMPENSATION		(V4L2_CID_USER_THP7312_BASE + 0x01)
-+#define V4L2_CID_THP7312_AUTO_FOCUS_METHOD		(V4L2_CID_USER_THP7312_BASE + 0x02)
-+#define V4L2_CID_THP7312_NOISE_REDUCTION_AUTO		(V4L2_CID_USER_THP7312_BASE + 0x03)
-+#define V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE	(V4L2_CID_USER_THP7312_BASE + 0x04)
-+
-+#endif /* __UAPI_THP7312_H_ */
-diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index 68db66d4aae8..99c3f5e99da7 100644
---- a/include/uapi/linux/v4l2-controls.h
-+++ b/include/uapi/linux/v4l2-controls.h
-@@ -209,6 +209,12 @@ enum v4l2_colorfx {
-  */
- #define V4L2_CID_USER_NPCM_BASE			(V4L2_CID_USER_BASE + 0x11b0)
- 
-+/*
-+ * The base for THine THP7312 driver controls.
-+ * We reserve 32 controls for this driver.
-+ */
-+#define V4L2_CID_USER_THP7312_BASE		(V4L2_CID_USER_BASE + 0x11c0)
-+
- /* MPEG-class control IDs */
- /* The MPEG controls are applicable to all codec controls
-  * and the 'MPEG' part of the define is historical */
+ L:	linux-usb@vger.kernel.org
 -- 
 Regards,
 
