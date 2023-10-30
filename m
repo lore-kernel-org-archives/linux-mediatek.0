@@ -4,95 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11C81C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 10:01:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EACDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 10:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jo1hObxFgl0F8f5AcHw6jWjMvrguUHZ7O2Ic6a912lU=; b=UfHXmMvn8uLs139TskYspZ75VY
-	2DPdj0pPs/Vfb6CqA+86zTM7FcefjMjdw5/GwxZlrmOvy3+z62w0tIzVLfpnfZDzQYZoP1OHGTvEW
-	kjktP/5ixgswgdMIw+j88Kvd4a0NKsJUaYYLePztoXreyK/O2BSZ0W8MlDzDDU0AjpPS3lBTAG/iy
-	U/xl5y8FXcqq4SaKVe8HqJ+n/BSyPSTBEiCiWoLJ4T46lm6PJfri9rKL0euJLy3EuRQDsjTFAyGbf
-	cUX9gOs1WZT2sdKZj7eSvxIgxzxNtrimXyHoBWQr52BUJaCxX+1ufEHj2vT666KFO4wlp1hfh0JbR
-	k7p3+2sw==;
+	bh=ZbKsTEXQ06nZKi8eEHm/YLTPz1FZJoAUmXN9IUI475U=; b=n9eC0qHrOVmoJikO/v5WQRKPcd
+	x01PMfSONr6UY3XPp/+ZCOq3HA2AxO8OJ9PBNWqhQupaB90JUGBS9JXQQ4nUqwWMK3QktjRvnvAIy
+	SC/bGamiwOypgmLXyf/I6H90RCrFh41PRhTGR9YrskdFHQXSC05/atNFIYMh5lLBOS0Vf5uYbuuqs
+	H5jmQsiDSwX3RRD+4hTHqXhQVPGdMM1WOI4OqnzKCNsK3iYyLkeu0T/ZIIDnbLemphH05LZF3kk/1
+	7WX0X45fEzAbK8Iq0OY13RKUF2hh/VNpcWVk2NaMmmqpHyu+JIQoTKDv97Z3q45trUVTWFg1hry0w
+	EpvbZohg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxP5K-002ynX-2R;
-	Mon, 30 Oct 2023 10:01:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qxP5O-002yrH-1E;
+	Mon, 30 Oct 2023 10:01:30 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxP50-002yTN-04;
+	id 1qxP50-002yWK-04;
 	Mon, 30 Oct 2023 10:01:12 +0000
-X-UUID: 38ebf3de770b11ee9b7791016c24628a-20231030
+X-UUID: 3abbe0d4770b11ee86758d4a7c00f3a0-20231030
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jo1hObxFgl0F8f5AcHw6jWjMvrguUHZ7O2Ic6a912lU=;
-	b=MolPEu5JGM2PhqWNULQDyUiP2MqH8VjJWwED14HFcDE63Am7sgZ0ij60PQ5Kxvv1XgZdibFH3fKMXVGgzMrvNfcyJ9ha6+UOTwOpcX4pHPVJ7+qw9GTromy0h84hxSwLTl6XnPREfTibAVF8TPghA0EuA14ZoMDuE9W1GpHTvCU=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ZbKsTEXQ06nZKi8eEHm/YLTPz1FZJoAUmXN9IUI475U=;
+	b=H0UJ1vyCzqKB0rQKS4b3VG/lmxkomn+poRT2w4svzakmXjWAtDZa0lHC2enMC3k/MbiF8wG8j2TOf6gFFb1cIhCjAi0D+TCLJBOp4MEzfpE9AUZU+IZmSKw40lEN3e5WOzH8ODXELwzoDNAUGbvfcBYHzB//86/fo6eKqoHeKTY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:3c739b81-f4de-44a5-99fd-abc7359a7a65,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:364b77b,CLOUDID:41c5cb94-10ce-4e4b-85c2-c9b5229ff92b,B
+X-CID-O-INFO: VERSION:1.1.33,REQID:ce508bfe-324d-458a-a15e-f32a75d83452,IP:0,U
+	RL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:20
+X-CID-META: VersionHash:364b77b,CLOUDID:d43b0e72-1bd3-4f48-b671-ada88705968c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 38ebf3de770b11ee9b7791016c24628a-20231030
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 3abbe0d4770b11ee86758d4a7c00f3a0-20231030
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 167188249; Mon, 30 Oct 2023 03:00:57 -0700
+	with ESMTP id 1163765288; Mon, 30 Oct 2023 03:01:00 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 30 Oct 2023 18:00:23 +0800
+ 15.2.1118.26; Mon, 30 Oct 2023 18:00:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 30 Oct 2023 18:00:23 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 30 Oct 2023 18:00:24 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	<p.zabel@pengutronix.de>, Maarten Lankhorst
 	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
-	<conor+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Hans Verkuil
 	<hverkuil-cisco@xs4all.nl>
 CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Moudy
- Ho" <moudy.ho@mediatek.com>
-Subject: [PATCH v8 01/16] dt-bindings: media: mediatek: mdp3: correct RDMA and WROT node with generic names
-Date: Mon, 30 Oct 2023 18:00:07 +0800
-Message-ID: <20231030100022.9262-2-moudy.ho@mediatek.com>
+	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Moudy
+ Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v8 06/16] dt-bindings: media: mediatek: mdp3: add component FG for MT8195
+Date: Mon, 30 Oct 2023 18:00:12 +0800
+Message-ID: <20231030100022.9262-7-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231030100022.9262-1-moudy.ho@mediatek.com>
 References: <20231030100022.9262-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.069300-8.000000
-X-TMASE-MatchedRID: fqobMUxwriteJRw5hj8/hCZm6wdY+F8KvtVce6w5+K8QHQ+7AkbTsXGp
-	r8/fPJWivQEW+BqnrVrnftxNodBrx8RBLZ5x+SkXH5YQyOg71ZYW40XiUkbrG9zOQo7mTgA+gT4
-	HLsARG1siA7lT3EYqXMCl/H6TvsoyfyoI97TEvxDdQFsmvD2aF30tCKdnhB589yM15V5aWpj6C0
-	ePs7A07bPc2SM55IWTEuWIMizKVcgj3xHkfYyBbghfjsft4ylftTANX/L85TsBgnXS2r9efsAvE
-	+5Ll8kwkOhGKBYh93YBIkWfxN2ph2T5Bq5czqY4dmtRsRmKkASJZPT2ZDPuzPD2QfzMDLjhIh26
-	TkmSN3fAvpLE+mvX8g==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.069300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 8AA03BBF88E85500B2DB7F87D11529387D99DA604E5062EEA756EF876044B37C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231030_030106_151314_75909AE9 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20231030_030106_128831_F2A0E369 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,116 +94,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DMA-related nodes RDMA/WROT in MDP3 should be changed to generic names.
-In addition, fix improper space indent in example.
+Add the fundamental hardware configuration of component FG,
+which is controlled by MDP3 on MT8195.
 
-Fixes: 4ad7b39623ab ("media: dt-binding: mediatek: add bindings for MediaTek MDP3 components")
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <zangelogioacchino.delregno@collabora.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../bindings/media/mediatek,mdp3-rdma.yaml    | 29 +++++++++++--------
- .../bindings/media/mediatek,mdp3-wrot.yaml    | 23 +++++++++------
- 2 files changed, 31 insertions(+), 21 deletions(-)
+ .../bindings/media/mediatek,mdp3-fg.yaml      | 61 +++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-index 7032c7e15039..3e128733ef53 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -61,6 +61,9 @@ properties:
-       - description: used for 1st data pipe from RDMA
-       - description: used for 2nd data pipe from RDMA
- 
-+  '#dma-cells':
-+    const: 1
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+new file mode 100644
+index 000000000000..03f31b009085
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+@@ -0,0 +1,61 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-fg.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- required:
-   - compatible
-   - reg
-@@ -70,6 +73,7 @@ required:
-   - clocks
-   - iommus
-   - mboxes
-+  - '#dma-cells'
- 
- additionalProperties: false
- 
-@@ -80,16 +84,17 @@ examples:
-     #include <dt-bindings/power/mt8183-power.h>
-     #include <dt-bindings/memory/mt8183-larb-port.h>
- 
--    mdp3_rdma0: mdp3-rdma0@14001000 {
--      compatible = "mediatek,mt8183-mdp3-rdma";
--      reg = <0x14001000 0x1000>;
--      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
--      mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
--                            <CMDQ_EVENT_MDP_RDMA0_EOF>;
--      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
--      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
--               <&mmsys CLK_MM_MDP_RSZ1>;
--      iommus = <&iommu>;
--      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
--               <&gce 21 CMDQ_THR_PRIO_LOWEST>;
-+    dma-controller@14001000 {
-+        compatible = "mediatek,mt8183-mdp3-rdma";
-+        reg = <0x14001000 0x1000>;
-+        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-+        mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-+                              <CMDQ_EVENT_MDP_RDMA0_EOF>;
-+        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+        clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-+                 <&mmsys CLK_MM_MDP_RSZ1>;
-+        iommus = <&iommu>;
-+        mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
-+                 <&gce 21 CMDQ_THR_PRIO_LOWEST>;
-+        #dma-cells = <1>;
-     };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-index 0baa77198fa2..64ea98aa0592 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-@@ -50,6 +50,9 @@ properties:
-   iommus:
-     maxItems: 1
- 
-+  '#dma-cells':
-+    const: 1
++title: MediaTek Media Data Path 3 Film Grain
 +
- required:
-   - compatible
-   - reg
-@@ -58,6 +61,7 @@ required:
-   - power-domains
-   - clocks
-   - iommus
-+  - '#dma-cells'
- 
- additionalProperties: false
- 
-@@ -68,13 +72,14 @@ examples:
-     #include <dt-bindings/power/mt8183-power.h>
-     #include <dt-bindings/memory/mt8183-larb-port.h>
- 
--    mdp3_wrot0: mdp3-wrot0@14005000 {
--      compatible = "mediatek,mt8183-mdp3-wrot";
--      reg = <0x14005000 0x1000>;
--      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
--      mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
--                            <CMDQ_EVENT_MDP_WROT0_EOF>;
--      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
--      clocks = <&mmsys CLK_MM_MDP_WROT0>;
--      iommus = <&iommu>;
-+    dma-controller@14005000 {
-+        compatible = "mediatek,mt8183-mdp3-wrot";
-+        reg = <0x14005000 0x1000>;
-+        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-+        mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
-+                              <CMDQ_EVENT_MDP_WROT0_EOF>;
-+        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+        clocks = <&mmsys CLK_MM_MDP_WROT0>;
-+        iommus = <&iommu>;
-+        #dma-cells = <1>;
-     };
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description:
++  Film Grain (FG) is a Media Data Path 3 (MDP3) component used to add
++  the film grain according to the AOMedia Video 1 (AV1) standard.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-fg
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    description:
++      The register of display function block to be set by gce. There are 4 arguments,
++      such as gce node, subsys id, offset and register size. The subsys id that is
++      mapping to the register of display function blocks is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    display@14002000 {
++        compatible = "mediatek,mt8195-mdp3-fg";
++        reg = <0x14002000 0x1000>;
++        mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x2000 0x1000>;
++        clocks = <&vppsys0 CLK_VPP0_MDP_FG>;
++    };
 -- 
 2.18.0
 
