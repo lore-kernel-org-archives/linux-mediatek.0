@@ -4,81 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 158C9C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 07:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5CFEC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 08:07:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OS97Gly969hAZsKV6Q2Qngs0Z2OBQT8NYeJbqEJuAuQ=; b=UDW3UUBnE/h4IWCFPHT4D18Z9E
-	yWuXRslzE8fxxGrqnLw1hasHKLsT243dGmzR4Rnn4vn2htSbFB+D02VYDWAoSqn/gvdn2SpKjFK7o
-	wqZdhIVcVQsQnlVYrhl/PPenCJ+MN74hc4r8Rr8WrecwvTgGaSeiMAxd5HMI8YohFXpYMD+HZQj8Q
-	B95QtwXBpm/Z1MhjV4dMUdxkfSvyZYUH7kevXecdc581A92iJd7gmd3UxjCDWrM/D91kN84IWSCHG
-	fJW2UzLbCX84CDd6jzT0hLiyDfavHD+QcN9uHQu0neOI0zXrrqUxBirhHF0J1l/9c160P78yCHrCT
-	fMOcpUew==;
+	bh=CzfcykcmaTk3q+/0NaoWixc3ET1mX3McxzjIyfp2wBs=; b=YDVdU+VDz6VEbB/TGp7ZlefYl8
+	2/fiARsjDKDHPSA5Vu2dTib2j58lZPNbmfYOQolPzfYZGwj/HdqEZb9rYDsfZ6G/1Jx2b/x7XjJch
+	pAypzoOFx8nqbxxbGIYIf8iGTVVIN6Pdek8dKsaeMYsrkyJYGi28BAtX0Z5P/B4flK/pRGsnRaKiY
+	mEbALEAjNU5VmcHaiarhUF6igdZ4PoUMyjN6qlg+ta12OAlnr6ZnfQHr+tu9JFYtcJSFelSF+4Msj
+	cl4mCQm724fe7YvGfb/qejV7cYBLDt/gM72veX60ni31BfjHzWPjyfElCGZKyRmAH1svIh0kuXqgr
+	SNl1LJmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxMld-002m3v-0H;
-	Mon, 30 Oct 2023 07:32:57 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1qxNIe-002oNT-2J;
+	Mon, 30 Oct 2023 08:07:04 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxMla-002m0U-0j
-	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Oct 2023 07:32:55 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id 46e09a7af769-6ce2fc858feso2438798a34.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 Oct 2023 00:32:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1698651161; x=1699255961; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OS97Gly969hAZsKV6Q2Qngs0Z2OBQT8NYeJbqEJuAuQ=;
-        b=LKw0AADGqPe+zcAM/UUZYyxHWk2dLmvFIZPaSvzIpFFzb3UZTelyap+mPNgPCTMqeZ
-         REAwrgXBhAOAIdMBQIH5BPyYAglT6EnzPSWffSgFDxIrOfjEUPhUTinTefiCwFE1IIC7
-         Mekdk0FcjcmyZ5z8uAvk2u9R1O05x9Gyl45fc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698651161; x=1699255961;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OS97Gly969hAZsKV6Q2Qngs0Z2OBQT8NYeJbqEJuAuQ=;
-        b=YzNGGHwAAhCdRqeUQUZqrQdSbntl5ax1ca1F63DyjXwJfPe41mdf89Cmh2GiVnjxH7
-         dB33XgbPGPMZ+l0Jbqe8sEVpW4nszovvxHdQMv+oDoTdHF0gd8/qTcWPtp7UPkI4xXIt
-         e465VeawZBnki66zsb4mPMkDO0wgn4wzj+GcIH+CBiq2kHzlkiH0wA47pEs9ZS0BvuK5
-         bkYHsL9QzSrLz/JnuGL2nPRWvnMfzq18wccMNJlTsWee6Jxp6bTc6UOXwNjIrI8RZL7E
-         GpkcSnK5XeQELO2RiKAgNEsBVwV/ynrVqVCBm22CVPts3FnG0AT4xJBK8jYSFbvEtMHN
-         gCpA==
-X-Gm-Message-State: AOJu0YxJoMIxsmIRlW9iWEb/KX17jkkUsy7uL/wXl6qW7jih/FqJ47QD
-	bZBzrZM3tctKBXeGQi2FsJeLoj17XfUiZvUIgglbKQ==
-X-Google-Smtp-Source: AGHT+IHL77UHTDV9OUWcsYurFmch++YSkIivuvKwbAT5lRWUVjbYbXkzJwGr33gA4/ptF3SP0jdxYIFIU1nbetPUscM=
-X-Received: by 2002:a05:6830:4ac:b0:6ce:25a2:67cf with SMTP id
- l12-20020a05683004ac00b006ce25a267cfmr7644490otd.26.1698651161064; Mon, 30
- Oct 2023 00:32:41 -0700 (PDT)
+	id 1qxNIb-002oMa-23;
+	Mon, 30 Oct 2023 08:07:03 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39U63n84009873;
+	Mon, 30 Oct 2023 08:06:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=CzfcykcmaTk3q+/0NaoWixc3ET1mX3McxzjIyfp2wBs=;
+ b=lTlSH6dhTjIrXQOwZfsNIwf/mYTcvIIeTWZlscz7Aft2kKkPw4jDWwL9MwVnGbdpbgtr
+ VE+ni0iEaFgVzXn25C3z6GnVJDHnWuGVMQveMf8zhfB5wh7T+31YwbxG1bJuaCUamFDD
+ 5MR75Iy28MOzmTKUWuqgmZA5uLXy0Uzc0m8i5Y71E0QDpkqv2tdnYgaGZmHCwr9xtPTx
+ 1Dg+10To9X50cfnPPC+yVqIQt5aZguKICXhc1Oai8qEycgrjv5IFQUpIPoJ4Fk1MiGGG
+ HUZIM3uvmoScZBdaBbRtle9ci52UR25lRZWjC44COb32hxYd0dYuY7yqH5fQaPb6Tw9+ Rg== 
+Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3u0sambbx8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 30 Oct 2023 08:06:45 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39U86i6W017093
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 30 Oct 2023 08:06:44 GMT
+Received: from [10.216.19.181] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.39; Mon, 30 Oct
+ 2023 01:06:37 -0700
+Message-ID: <91f0a8cf-3aef-4c54-b4b6-afd76cd5fdc8@quicinc.com>
+Date: Mon, 30 Oct 2023 13:36:33 +0530
 MIME-Version: 1.0
-References: <20231026191343.3345279-1-hsinyi@chromium.org> <7b737537-38f2-4404-b469-c67005cdaf83@linaro.org>
- <CAJMQK-jQUHz8-hEx4DzNU3cOnN59JG1xFBPH5mUndLV-rbk+Jg@mail.gmail.com> <2a29c027-4431-4693-98d4-ba09ad46591b@linaro.org>
-In-Reply-To: <2a29c027-4431-4693-98d4-ba09ad46591b@linaro.org>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Mon, 30 Oct 2023 00:32:15 -0700
-Message-ID: <CAJMQK-jNa2ZTV4mSjMoPasM8TJVetExrWqZ_+6t77rVeAqqSCQ@mail.gmail.com>
-Subject: Re: [PATCH v4 0/7] Add a few mt8183 follower boards.
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, 
-	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	=?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/9] dma-buf: heaps: Initialise MediaTek secure heap
+Content-Language: en-US
+To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+        "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+        "christian.koenig@amd.com"
+	<christian.koenig@amd.com>,
+        "robh+dt@kernel.org" <robh+dt@kernel.org>,
+        "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+        "jstultz@google.com" <jstultz@google.com>,
+        "linaro-mm-sig@lists.linaro.org"
+	<linaro-mm-sig@lists.linaro.org>,
+        "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>,
+        "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>,
+        =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
+	<Jianjiao.Zeng@mediatek.com>,
+        =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?=
+	<kuohong.wang@mediatek.com>,
+        "conor+dt@kernel.org" <conor+dt@kernel.org>,
+        "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
+        "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+        "tjmercier@google.com" <tjmercier@google.com>,
+        "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+        "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+        "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+        "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+References: <20230911023038.30649-1-yong.wu@mediatek.com>
+ <20230911023038.30649-5-yong.wu@mediatek.com>
+ <5d806772-a2b4-4304-be45-7c2ed2930fcc@quicinc.com>
+ <c8bf01a083182fdc83742de8daad8c5ce8d56d5b.camel@mediatek.com>
+ <ac44de13-f4e0-4bae-b06b-af90fadaa96c@quicinc.com>
+ <7eb7ca8f64789c4eb5096e19f4cf15f6b53bb260.camel@mediatek.com>
+From: Vijayanand Jitta <quic_vjitta@quicinc.com>
+In-Reply-To: <7eb7ca8f64789c4eb5096e19f4cf15f6b53bb260.camel@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: VBWUIqmr2oYncc2Y5rCxBHtjSNGlkbSV
+X-Proofpoint-ORIG-GUID: VBWUIqmr2oYncc2Y5rCxBHtjSNGlkbSV
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-30_06,2023-10-27_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0
+ priorityscore=1501 bulkscore=0 spamscore=0 mlxscore=0 phishscore=0
+ suspectscore=0 adultscore=0 clxscore=1015 mlxlogscore=999 impostorscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2310240000 definitions=main-2310300060
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231030_003254_264194_68768288 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20231030_010701_850066_115F0495 
+X-CRM114-Status: GOOD (  27.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +127,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 28, 2023 at 12:58=E2=80=AFAM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> On 27/10/2023 23:22, Hsin-Yi Wang wrote:
-> > On Fri, Oct 27, 2023 at 4:17=E2=80=AFAM Krzysztof Kozlowski
-> > <krzysztof.kozlowski@linaro.org> wrote:
-> >>
-> >> On 26/10/2023 21:09, Hsin-Yi Wang wrote:
-> >>> Add makomo, pico, and katsu which are mt8183 followers.
-> >>>
-> >>> v4: based on https://lore.kernel.org/all/20231025093816.44327-1-angel=
-ogioacchino.delregno@collabora.com/
-> >>>
-> >>
-> >> Where is the changelog? It's already v4 and still no changelog...
-> >>
-> >
-> > v3:https://patchwork.kernel.org/project/linux-mediatek/cover/2023102521=
-5517.1388735-1-hsinyi@chromium.org/
-> > v2:https://patchwork.kernel.org/project/linux-mediatek/cover/2023102421=
-2618.1079676-1-hsinyi@chromium.org/
-> > v1:https://patchwork.kernel.org/project/linux-mediatek/cover/2023102400=
-0724.57714-1-hsinyi@chromium.org/
-> >
-> > changelog with previous version are in each of the patchset. eg:
-> > https://patchwork.kernel.org/project/linux-mediatek/patch/2023102521551=
-7.1388735-5-hsinyi@chromium.org/
->
-> One would think but:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20231025215517.=
-1388735-7-hsinyi@chromium.org/
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20231025215517.=
-1388735-3-hsinyi@chromium.org/
->
-> Usually expected is in such case to wrote "v4: No changes".
 
-Got it. Would add this notice next time. Thanks!
 
->
-> Best regards,
-> Krzysztof
->
+On 10/27/2023 1:17 PM, Yong Wu (吴勇) wrote:
+> On Thu, 2023-10-26 at 10:18 +0530, Vijayanand Jitta wrote:
+>>  	 
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>  
+>>
+>> On 10/20/2023 3:29 PM, Yong Wu (吴勇) wrote:
+>>> On Thu, 2023-10-19 at 10:15 +0530, Vijayanand Jitta wrote:
+>>>>   
+>>>> External email : Please do not click links or open attachments
+>> until
+>>>> you have verified the sender or the content.
+>>>>  
+>>>>
+>>>> On 9/11/2023 8:00 AM, Yong Wu wrote:
+>>>>> Initialise a mtk_svp heap. Currently just add a null heap,
+>> Prepare
+>>>> for
+>>>>> the later patches.
+>>>>>
+>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>>>> ---
+>>>>>  drivers/dma-buf/heaps/Kconfig           |  8 ++
+>>>>>  drivers/dma-buf/heaps/Makefile          |  1 +
+>>>>>  drivers/dma-buf/heaps/mtk_secure_heap.c | 99
+>>>> +++++++++++++++++++++++++
+> 
+> [...]
+> 
+>>>>> +
+>>>>> +static struct dma_buf *
+>>>>> +mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
+>>>>> +      unsigned long fd_flags, unsigned long heap_flags)
+>>>>> +{
+>>>>> +struct mtk_secure_heap_buffer *sec_buf;
+>>>>> +DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
+>>>>> +struct dma_buf *dmabuf;
+>>>>> +int ret;
+>>>>> +
+>>>>> +sec_buf = kzalloc(sizeof(*sec_buf), GFP_KERNEL);
+>>>>
+>>>> As we know, kzalloc can only allocate 4MB at max. So, secure heap
+>> has
+>>>> this limitation.
+>>>> can we have a way to allocate more memory in secure heap ? maybe
+>>>> similar to how system heap does?
+>>>
+>>> This is just the size of a internal structure. I guess you mean the
+>>> secure memory size here. Regarding secure memory allocating flow,
+>> our
+>>> flow may be different with yours.
+>>>
+>>> Let me explain our flow, we have two secure buffer types(heaps).
+>>> a) mtk_svp
+>>> b) mtk_svp_cma which requires the cma binding.
+>>>
+>>> The memory management of both is inside the TEE. We only need to
+>> tell
+>>> the TEE which type and size of buffer we want, and then the TEE
+>> will
+>>> perform and return the memory handle to the kernel. The
+>>> kzalloc/alloc_pages is for the normal buffers.
+>>>
+>>> Regarding the CMA buffer, we only call cma_alloc once, and its
+>>> management is also within the TEE.
+>>>
+>>
+>> Thanks for the details.
+>>
+>> I see for mvp_svp, allocation is also specific to TEE, as TEE takes
+>> care of allocation as well.
+> 
+> Yes. The allocation management of these two heaps is in the TEE.
+> 
+>>
+>> I was thinking if allocation path can also be made generic ? without
+>> having
+>> dependency on TEE.
+>> For eg : A case where we want to allocate from kernel and secure that
+>> memory,
+>> the current secure heap design can't be used. 
+> 
+> Sorry, This may be because our HW is special. The HW could protect a
+> certain region, but it can only protect 32 regions. So we cannot
+> allocate them in the kernel arbitrarily and then enter TEE to protect
+> them.
+> 
+
+Got your point , I see for your case allocation must happen in TEE.
+I was just saying if we want to make secure heap generic and remove
+hard dependency on TEE, we must have a way to allocate irrespective
+of what hypervisor/TZ being used. As current design for secure heap
+assumes OPTEE.
+
+We have a case where allocation happens in kernel and we secure it
+using qcom_scm_assign_mem , this wouldn't be possible with current
+design.
+
+Probably some ops to allocate, similar to ops you pointed out to secure ?
+in you case these ops would just allocate the internal structure.
+
+Thanks,
+Vijay
+
+>>
+>> Also i suppose TEE allocates contiguous memory for mtk_svp ? or does
+>> it support
+>> scattered memory ?
+> 
+> Yes. After the TEE runs for a period of time, the TEE memory will
+> become discontinuous, and a secure IOMMU exists in the TEE.
+> 
+>>>>
+>>>> Thanks,
+>>>> Vijay
+>>>>
 
