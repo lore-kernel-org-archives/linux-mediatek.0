@@ -4,101 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC6FCC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 08:09:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D3ACC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 09:04:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wdLbmNkZHwC81DUonhNviILxZ3gL1acKOh4/pnU2af4=; b=qFTrlwO2lLY0kXK8UGCElv69ha
-	+XiBNHI3n1Z5bbnjJ3UXqFfn4lsB1ccFXedav3LbIlvasa7NQcRN2c9ly0h8AH4VWbP8oD7MpdVdu
-	uOrCNoP5/8ec2H0CuCFW981JHc88kRQrwfTEla8gXuhxLyJ0vg9Xc1oOvkG4F5FpCR9m8xzJep6fk
-	8EjcLUyXA8ORR0pLtxR2YyrkwDFSpA4+tVbYS0atwkGxsSiUClI15Fxztm5J2annIR/t6xL5Su75L
-	2DtL4aAx73U5lx+Jib2dvxVmsnk1EQeZSS9zs0lVGVBgRAjlQtRs0bE/L6HLRbPeAaadNrNVdZ9Ib
-	KeS3D7hg==;
+	bh=jpW8nuYKQCNcvGDsf1014WZCblos7bNZyKdTpmIH2FQ=; b=Q41zHfZZWfoZQnB1smbBacbDcq
+	6KvP6nmkuUFrY+34Uapr+N6UWy3sFwkaLzrLCcvTFHYkdhpIrx9QulkTWsVU3SFo62MbH08ypQgHy
+	QNX1UUdGd1s5Sjp0DfCcETGyqbs8Y4DNLcctC+9dQnFnXr5gfVF5OM/fRcjmaw0SJTuqXFEiERwDw
+	0kLTsAexVJofrnNl22Em42itK9s7EL6+Myx9L4pRtFVqzYch2DWJ+DaHGyOd1Fjm1vngkRdlb5rv2
+	YYkgdMkIP2HuVuDeBFBSxiRCMpvwwK9VG8Rmkk+pjASkUWAHrlOip6DL3MihJnFRzDlgmJJipRzpW
+	qIQeGwdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxNLN-002odD-2O;
-	Mon, 30 Oct 2023 08:09:53 +0000
-Received: from lahtoruutu.iki.fi ([185.185.170.37])
+	id 1qxOCB-002sfq-1M;
+	Mon, 30 Oct 2023 09:04:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxNLJ-002ocJ-2R
-	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Oct 2023 08:09:51 +0000
-Received: from hillosipuli.retiisi.eu (185-9-10-242.cust.suomicom.net [185.9.10.242])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sailus)
-	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4SJmC85Yftz49Q2C;
-	Mon, 30 Oct 2023 10:09:37 +0200 (EET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
-	t=1698653381;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=wdLbmNkZHwC81DUonhNviILxZ3gL1acKOh4/pnU2af4=;
-	b=mLcmwhtlZFvqDtPgCJML1UNiOlHCZx0EhKnXCYIl/pRM0YG5ybM5fsJ/jaNS5OkEKINBsr
-	lTu0XEdaIKLNmgDI8kFPwienoe9dTJ7QMpihx69DZE96yWZbzRFkvNFEVwKgeQHKpQ75SH
-	9HY6kqoC2Q05x8G1/FwB5hDabYrT2VZXs9EfJjr/l3t5BT1MuEz6XcGj7ednSQ+jvcz+H2
-	BVrHaaraDldrRGzqfL47dUlvIAP0kGhALY5MWvBszibGzEhLs4Y9/eZblfSdcedaAd0wfy
-	Yeg79mmM0S+UQbhasfey92aLSt6VKgGdRbymCzzR2g++Xs9YTMDY1FX7PT9RsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
-	s=lahtoruutu; t=1698653381;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=wdLbmNkZHwC81DUonhNviILxZ3gL1acKOh4/pnU2af4=;
-	b=mfE8md0tLwQywuGjZHhpgYXVGDvOITPhwNC3B+CFRYXUNlTDMZ2FQyqvhcj5wTRwbtYMrw
-	je1+o5sl1S+84JSy90ILw+qR9wyLivPvN1ACshnnQdbluDzAfmek//eHRQRf5D9MoaVMcJ
-	xrDPIum5s/Uwk6S8TPzmApUkW3g2o1PTt99/nKg8J02hzE4KDeNjRF8Yt4T7Z6iJQBUCxO
-	MXWtGjdp403+C2GO4VLhRqHq7ipKTbuO79kumKOrV3jF6y9nTIrn8kijzwM01S3XEeGzYw
-	kEzateNIF2/WLk3WENC5zy3tPjHwUIaCkt3pRWxuPz14qaKzYQHA7EOga4aYBA==
-ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1698653381; a=rsa-sha256;
-	cv=none;
-	b=suDw42o0yYrTxqgkbFhvrZVZ/Si5OZPQ9cIRSay7Yus7SoGwh47jscQzcZjbM2SUVoOE4D
-	KAbbBgOiVNVGEyEyKubogsQdepALsi1GHORI/a49RzN1dX4NYdbDtMYe3YAk6WdHfwnL2P
-	lA9DbVorfMHtFflVmfJk9a31g11olWx6zZkiAidQL3PFfxUzsphoaX/fS4tUdFF15GLudI
-	eWYzybuctscSDveaSLMX0+qdNElHhONgAEBrqYrDNNLSNn0sRvr+MXroXIj7HtbtjpQhCz
-	64yDqX4GfPA9hAQ8F7s2YUJpEG45p1ZNLdc6UBIgDa3k971RQ08TvAQ1OJSmpA==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
-Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 975F9634C93;
-	Mon, 30 Oct 2023 10:09:36 +0200 (EET)
-Date: Mon, 30 Oct 2023 08:09:36 +0000
-From: Sakari Ailus <sakari.ailus@iki.fi>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 3/3] media: i2c: Add driver for THine THP7312
-Message-ID: <ZT9kwC3abUKR9fgQ@valkosipuli.retiisi.eu>
-References: <20231017132103.9914-1-laurent.pinchart@ideasonboard.com>
- <20231017132103.9914-4-laurent.pinchart@ideasonboard.com>
- <ZTutbU1XG_jKZbIp@valkosipuli.retiisi.eu>
- <20231027124529.GA19539@pendragon.ideasonboard.com>
- <ZTvOIQSmpytUisUD@valkosipuli.retiisi.eu>
- <20231028151858.GB20465@pendragon.ideasonboard.com>
+	id 1qxOC8-002sfE-1N;
+	Mon, 30 Oct 2023 09:04:25 +0000
+X-UUID: 4ea0a70e770311ee9b7791016c24628a-20231030
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jpW8nuYKQCNcvGDsf1014WZCblos7bNZyKdTpmIH2FQ=;
+	b=JVin93lwmuIwizSs6Kf/pUP/kCmCYFgR0jYV6OdliDwa1DZpE5ILxNlf8J0cPkbkRcaRhclziqA2V0S8b/ttglCDBmrzoILL0r7w7UIM+c1dn+BwsI73KAcL14A7ovSCZ9rHU+dOK/7Ay4b+i4ItRgDM1cGXMn9gMG1iIX2d6AU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32,REQID:b775f933-2c43-443b-a690-6ef7d17f0b48,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:5f78ec9,CLOUDID:e367eefb-4a48-46e2-b946-12f04f20af8c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 4ea0a70e770311ee9b7791016c24628a-20231030
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 35577836; Mon, 30 Oct 2023 02:04:18 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 30 Oct 2023 17:03:13 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 30 Oct 2023 17:03:13 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
+ Hu" <ck.hu@mediatek.com>, Sean Paul <seanpaul@chromium.org>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+	David Airlie <airlied@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, Hsiao Chien Sung <shawn.sung@mediatek.com>
+Subject: [PATCH v2 1/1] drm/mediatek: Fix errors when reporting rotation capability
+Date: Mon, 30 Oct 2023 17:03:12 +0800
+Message-ID: <20231030090312.7758-2-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231030090312.7758-1-shawn.sung@mediatek.com>
+References: <20231030090312.7758-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231028151858.GB20465@pendragon.ideasonboard.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.845500-8.000000
+X-TMASE-MatchedRID: 2T4BY0PVJD8ijAXMyA8nC+7KTDtx8Cgg6SXuwUgGH0hbKBBN5zqG8AYB
+	5gsbo0L8o5qw/iFKtvaIJs0Up7vkWIPN2a+Tga3SFYJUGv4DL3yZ2scyRQceryI9JQsGBsNv1Fv
+	g6E0U6v+4+90dmk+Zo+3NnYNx6mdYKGxJMBjfwlWxCl9NrK01yIv8pidhVYOU/vhiW664SDOrKq
+	FreRg70NAOjQU9UCdqp9q9Zbsl6Oa72iRvlw4XNp4CIKY/Hg3AGdQnQSTrKGPEQdG7H66TyMdRT
+	5TQAJnA6oja9AxlelDUKCQ01ZUHMmpdp3WWW7eFiT0Pr/5TunGeqD9WtJkSIw==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.845500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 8FB96CD340DE745395AEC7BD8EDD4C0A760F1B1D46FA0E65C709EFE94C49C5442000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231030_010949_980243_20EFC9E1 
-X-CRM114-Status: GOOD (  57.34  )
+X-CRM114-CacheID: sfid-20231030_020424_472626_BA554F4A 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,242 +99,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
+For CRTCs that doesn't support rotation should still return
+DRM_MODE_ROTATE_0. Returns hardware capabilities accordingly.
 
-On Sat, Oct 28, 2023 at 06:18:58PM +0300, Laurent Pinchart wrote:
-> On Fri, Oct 27, 2023 at 02:50:09PM +0000, Sakari Ailus wrote:
-> > Hi Laurent,
-> > 
-> > On Fri, Oct 27, 2023 at 03:45:29PM +0300, Laurent Pinchart wrote:
-> > 
-> > ...
-> > 
-> > > > > +#include <linux/clk.h>
-> > > > > +#include <linux/delay.h>
-> > > > > +#include <linux/device.h>
-> > > > > +#include <linux/firmware.h>
-> > > > > +#include <linux/gpio/consumer.h>
-> > > > > +#include <linux/i2c.h>
-> > > > > +#include <linux/init.h>
-> > > > > +#include <linux/iopoll.h>
-> > > > > +#include <linux/kernel.h>
-> > > > > +#include <linux/module.h>
-> > > > > +#include <linux/mtd/spi-nor.h>
-> > > > > +#include <linux/of_device.h>
-> > > > > +#include <linux/pm_runtime.h>
-> > > > > +#include <linux/regulator/consumer.h>
-> > > > > +#include <linux/slab.h>
-> > > > > +#include <linux/thp7312.h>
-> > > > 
-> > > > uapi/linux/thp7321.h ?
-> > > 
-> > > Is that needed ?
-> > 
-> > It's a UAPI header. Wouldn't it be reasonable to include it that way
-> > (instead of relying on searching include/uapi as well)?
-> 
-> There are some occurences of '#include <uapi/' in drivers/ (I counted
-> 338), but why is that better ?
+Fixes: 84d805753983 ("drm/mediatek: Support reflect-y plane rotation")
 
-I'd presume that at some point the -Iinclude/uapi will be cleaned up and
-then the only option remains to include it from there directly. Why not to
-do it already now?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  1 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c       | 30 ++++++++++---------
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  5 ++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c      |  2 +-
+ 5 files changed, 24 insertions(+), 15 deletions(-)
 
-> 
-> > > > > +	struct {
-> > > > > +		struct v4l2_ctrl *noise_reduction_auto;
-> > > > > +		struct v4l2_ctrl *noise_reduction_absolute;
-> > > > > +	};
-> > > > > +
-> > > > > +	const char *fw_name;
-> > > > > +	u8 *fw_data;
-> > > > > +	size_t fw_size;
-> > > > > +
-> > > > > +	u8 fw_major_version;
-> > > > > +	u8 fw_minor_version;
-> > > > > +
-> > > > > +	/* Lock to protect fw_cancel */
-> > > > > +	struct mutex fw_lock;
-> > > > > +	struct fw_upload *fwl;
-> > > > > +	bool fw_cancel;
-> > > > 
-> > > > Arranging this right after fw_* would save some memory.
-> > > 
-> > > After what ? I assume you mean fw_*_version ? It would, but it would
-> > > feel a bit out of place. I'll see what I can do.
-> > 
-> > Yes. There doesn't seem to be any firm ordering here either. Up to you.
-> > 
-> > ...
-> > 
-> > > > > +	val = ((conv_lanes[3] & 0x03) << 6) |
-> > > > > +	      ((conv_lanes[2] & 0x03) << 4) |
-> > > > > +	      ((conv_lanes[1] & 0x03) << 2) |
-> > > > > +	       (conv_lanes[0] & 0x03);
-> > > > 
-> > > > You could construct val in the loop and drop conv_lanes altogether.
-> > > > 
-> > > > I.e.
-> > > > 
-> > > > 		val |= (i & 0x03) << ((lanes[i] - 1) * 2);
-> > > > 
-> > > > And assign val to 0 in declaration.
-> > > 
-> > > I think I'll compute it at probe time and cache it instead.
-> > 
-> > If you don't need anything else in the endpoint, you could move it out of
-> > the device context struct.
-> 
-> That's what I've now done, yes.
-> 
-> > > > > +	for (rate = mode->rates; rate->fps; ++rate, --index) {
-> > > > > +		if (!index) {
-> > > > > +			fie->interval.numerator = 1;
-> > > > > +			fie->interval.denominator = rate->fps;
-> > > > 
-> > > > Maybe a newline here?
-> > > 
-> > > If that makes you happy :-)
-> > 
-> > Newlines are great (when they are at the right places)!
-> > 
-> > > > > +	case V4L2_CID_THP7312_NOISE_REDUCTION_AUTO:
-> > > > > +	case V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE:
-> > > > > +		/* Ignore the manually set value if auto has been set */
-> > > > > +		value = thp7312->noise_reduction_auto->val
-> > > > > +		      ? 0 : 0x80 | (thp7312->noise_reduction_absolute->val & 0x7f);
-> > > > 
-> > > > "?" should be on the preceding line.
-> > > 
-> > > Isn't that a matter of coding style preference ?
-> > 
-> > Yes, indeed, and I recall GNU coding style is shunned upon here. :-)
-> > 
-> > > > > +
-> > > > > +		cci_write(thp7312->regmap, THP7312_REG_NOISE_REDUCTION, value,
-> > > > > +			  &ret);
-> > > > > +		break;
-> > > > > +
-> > > > > +	case V4L2_CID_AUTO_WHITE_BALANCE:
-> > > > > +		value = ctrl->val ? THP7312_WB_MODE_AUTO : THP7312_WB_MODE_MANUAL;
-> > > > 
-> > > > I'd do this in the call, up to you.
-> > > 
-> > > Only if you allow lines longer than 80 columns ;-)
-> > 
-> > I don't think you need longer lines for that, do you?
-> > 
-> > > > > +
-> > > > > +		cci_write(thp7312->regmap, THP7312_REG_WB_MODE, value, &ret);
-> > > > > +		break;
-> > > > > +
-> > 
-> > ...
-> > 
-> > > > > +static enum fw_upload_err thp7312_fw_write_to_flash(struct thp7312_device *thp7312,
-> > > > > +						    u32 dest, u32 write_size)
-> > > > > +{
-> > > > > +	u8 command[sizeof(thp7312_cmd_write_ram_to_flash) + 6];
-> > > > > +	static const u32 cmd_size = sizeof(thp7312_cmd_write_ram_to_flash);
-> > > > > +	u64 val;
-> > > > > +	int ret;
-> > > > > +
-> > > > > +	memcpy(command, thp7312_cmd_write_ram_to_flash, cmd_size);
-> > > > > +
-> > > > > +	command[cmd_size] = (dest & 0xff0000) >> 16;
-> > > > > +	command[cmd_size + 1] = (dest & 0x00ff00) >> 8;
-> > > > > +	command[cmd_size + 2] = (dest & 0x0000ff);
-> > > > > +	command[cmd_size + 3] = ((write_size - 1) & 0xff0000) >> 16;
-> > > > > +	command[cmd_size + 4] = ((write_size - 1) & 0x00ff00) >> 8;
-> > > > > +	command[cmd_size + 5] = ((write_size - 1) & 0x0000ff);
-> > > > > +
-> > > > > +	ret = thp7312_write_buf(thp7312, command, sizeof(command));
-> > > > > +	if (ret < 0)
-> > > > > +		return FW_UPLOAD_ERR_RW_ERROR;
-> > > > > +
-> > > > > +	usleep_range(8000000, 8100000);
-> > > > 
-> > > > I guess there's time to make some tea here?
-> > > 
-> > > For a flash infusion, gong fu style, probably.
-> > > 
-> > > We don't have much documentation about the exact values of the delays
-> > > that are needed, and why :-(
-> > 
-> > I have even less documentation (none) on this device. Is polling an option,
-> > as you're reading a register to verify the operation was successful?
-> 
-> I'll try to ask and get more information. As firmware update is an
-> uncommon and not time-sensitive operation, I'd rather be cautious here
-> and not over-optimize.
-
-If this is only done in order to *upgrade* the firmware, it's certainly not
-a concern IMO.
-
-> 
-> > > > > +
-> > > > > +	ret = cci_read(thp7312->regmap, THP7312_REG_FW_VERIFY_RESULT, &val,
-> > > > > +		       NULL);
-> > > > > +	if (ret < 0)
-> > > > > +		return FW_UPLOAD_ERR_RW_ERROR;
-> > > > > +
-> > > > > +	return val ?  FW_UPLOAD_ERR_HW_ERROR : FW_UPLOAD_ERR_NONE;
-> > > > > +}
-> > 
-> > ...
-> > 
-> > > > > +	/*
-> > > > > +	 * Register a device for the sensor, to support usage of the regulator
-> > > > > +	 * API.
-> > > > > +	 */
-> > > > > +	sensor->dev = kzalloc(sizeof(*sensor->dev), GFP_KERNEL);
-> > > > > +	if (!sensor->dev)
-> > > > > +		return -ENOMEM;
-> > > > > +
-> > > > > +	sensor->dev->parent = dev;
-> > > > > +	sensor->dev->of_node = of_node_get(sensor->of_node);
-> > > > 
-> > > > This device could well find its way to a non-OF system. Could you use the
-> > > > fwnode property API instead?
-> > > 
-> > > I'm pretty sure there will be problems if someone was using this driver
-> > > on an ACPI-based system, so trying to pretend it's supported without
-> > > being able to test it may not be the best use of development time. I'll
-> > > try, but if I hit any issue, I'll keep using the OF-specific functions
-> > > in the next version.
-> > 
-> > I'd suggest to use OF functions if there's no corresponding fwnode function
-> > available. The intention is they cover the same scope, so it is likely
-> > something that's missing will be added sooner or later.
-> 
-> I understand, but if the conversion is not complete, it's not very
-> valuable. I have no objection against using the fwnode API in the
-> driver, but I'll let someone else handle it when and if needed.
-
-If you leave it using OF-only API now in a driver that is not bound to OF
-in any way, someone moving it to fwnode later may not be able to test it on
-OF, increasing the likelihood something breaks. So use fwnode API where you
-can now, and we'll address that one call later on.
-
-> 
-> > > > > +	/* Retrieve the sensor index from the reg property. */
-> > > > > +	ret = of_property_read_u32(node, "reg", &reg);
-> > > > > +	if (ret < 0) {
-> > > > > +		dev_err(dev, "'reg' property missing in sensor node\n");
-> > > > 
-> > > > Shouldn't you assume it's zero instead?
-> > > 
-> > > The property is mandatory.
-> > 
-> > You could also make it optional as that appears to be the general practice.
-> > Up to you.
-> 
-> I think it's easier to keep it mandatory.
-
-Ack.
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 4d6e8b667bc3..c5afeb7c5527 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -127,6 +127,7 @@ void mtk_ovl_adaptor_register_vblank_cb(struct device *dev, void (*vblank_cb)(vo
+ void mtk_ovl_adaptor_unregister_vblank_cb(struct device *dev);
+ void mtk_ovl_adaptor_enable_vblank(struct device *dev);
+ void mtk_ovl_adaptor_disable_vblank(struct device *dev);
++unsigned int mtk_ovl_adaptor_supported_rotations(struct device *dev);
+ void mtk_ovl_adaptor_start(struct device *dev);
+ void mtk_ovl_adaptor_stop(struct device *dev);
+ unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index ecc38932fd44..bca7b2f4b1d9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -177,6 +177,7 @@ static const u32 mt8195_ovl_crc_ofs[] = {
+  * @supports_clrfmt_ext: whether the ovl supports clear format (for alpha blend)
+  * @crc_ofs: crc offset table
+  * @crc_cnt: count of crc registers (could be more than one bank)
++ * @rotations: supported rotations
+  */
+ struct mtk_disp_ovl_data {
+ 	unsigned int addr;
+@@ -190,6 +191,7 @@ struct mtk_disp_ovl_data {
+ 	bool supports_clrfmt_ext;
+ 	const u32 *crc_ofs;
+ 	size_t crc_cnt;
++	unsigned int rotations;
+ };
+ 
+ /**
+@@ -415,35 +417,26 @@ unsigned int mtk_ovl_layer_nr(struct device *dev)
+ 
+ unsigned int mtk_ovl_supported_rotations(struct device *dev)
+ {
+-	return DRM_MODE_ROTATE_0 | DRM_MODE_ROTATE_180 |
+-	       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y;
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++
++	return ovl->data->rotations ?: DRM_MODE_ROTATE_0;
+ }
+ 
+ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
+ 			struct mtk_plane_state *mtk_state)
+ {
+ 	struct drm_plane_state *state = &mtk_state->base;
+-	unsigned int rotation = 0;
+ 
+-	rotation = drm_rotation_simplify(state->rotation,
+-					 DRM_MODE_ROTATE_0 |
+-					 DRM_MODE_REFLECT_X |
+-					 DRM_MODE_REFLECT_Y);
+-	rotation &= ~DRM_MODE_ROTATE_0;
+-
+-	/* We can only do reflection, not rotation */
+-	if ((rotation & DRM_MODE_ROTATE_MASK) != 0)
++	if (state->rotation & ~mtk_ovl_supported_rotations(dev))
+ 		return -EINVAL;
+ 
+ 	/*
+ 	 * TODO: Rotating/reflecting YUV buffers is not supported at this time.
+ 	 *	 Only RGB[AX] variants are supported.
+ 	 */
+-	if (state->fb->format->is_yuv && rotation != 0)
++	if (state->fb->format->is_yuv && (state->rotation & ~DRM_MODE_ROTATE_0))
+ 		return -EINVAL;
+ 
+-	state->rotation = rotation;
+-
+ 	return 0;
+ }
+ 
+@@ -883,6 +876,15 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
+ 	.supports_clrfmt_ext = true,
+ 	.crc_ofs = mt8195_ovl_crc_ofs,
+ 	.crc_cnt = ARRAY_SIZE(mt8195_ovl_crc_ofs),
++
++	/*
++	 * although OVL only supports reflections on MT8195,
++	 * reflect x + reflect y = rotate 180
++	 */
++	.rotations = DRM_MODE_ROTATE_0   |
++		     DRM_MODE_ROTATE_180 |
++		     DRM_MODE_REFLECT_X  |
++		     DRM_MODE_REFLECT_Y,
+ };
+ 
+ static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index 4398db9a6276..b0d3ebdba93a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -383,6 +383,11 @@ void mtk_ovl_adaptor_register_vblank_cb(struct device *dev, void (*vblank_cb)(vo
+ 				     vblank_cb, vblank_cb_data);
+ }
+ 
++unsigned int mtk_ovl_adaptor_supported_rotations(struct device *dev)
++{
++	return DRM_MODE_ROTATE_0;
++}
++
+ void mtk_ovl_adaptor_unregister_vblank_cb(struct device *dev)
+ {
+ 	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index ffa4868b1222..206dd6f6f99e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -422,6 +422,7 @@ static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
+ 	.remove = mtk_ovl_adaptor_remove_comp,
+ 	.get_formats = mtk_ovl_adaptor_get_formats,
+ 	.get_num_formats = mtk_ovl_adaptor_get_num_formats,
++	.supported_rotations = mtk_ovl_adaptor_supported_rotations,
+ };
+ 
+ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index e2ec61b69618..894c39a38a58 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -344,7 +344,7 @@ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 		return err;
+ 	}
+ 
+-	if (supported_rotations & ~DRM_MODE_ROTATE_0) {
++	if (supported_rotations) {
+ 		err = drm_plane_create_rotation_property(plane,
+ 							 DRM_MODE_ROTATE_0,
+ 							 supported_rotations);
 -- 
-Regards,
+2.39.2
 
-Sakari Ailus
 
