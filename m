@@ -4,86 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E15BC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 10:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 911AEC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Oct 2023 10:42:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J2kxc3oKbOck1uppNrqtWT5A1Sb51+PDVb6r0qeviTA=; b=Slv1zmRYBFPcJepRo2flsum/S+
-	TFqiywBAuFIqr/fDLjAT6UlrbLTDVNyj1HHnYr0Op03ME3VQZ+45O6jdxlGo9EfWT7wVtY41Mte5C
-	LX+kfs2DzG5bIalmfCyfPByea/ncmWzLuzYUMgTE5ywVSjA0i9gyZ8JlLSpfGY5hi1ITm+BxcPq7x
-	MKwEKIZ10UupIPm0SOyH8AztE3LrIXGbve/Zc3CO+ytjhEEbu/YwVIFRWnI0fXklMumgq/DYko2j6
-	XECWK76G2fJCkemYuLEMuDZTlutNO4kzmrhceuYtChx6Vv/nYVyofTwqkisvP7An230f4Jo7I098C
-	PW/N51VA==;
+	bh=6qT2uI+uqb73z8336JtN6DUoboEk8kIqKtFhzp5XR8o=; b=Vn1K5W5Zf33bzSlKmodqoqaSv2
+	mEHmpw1QBA5cgFZEMtvZJYop8RvpimY81R++gUS44/keGs25vQ7C+YOgXBdLUS30mUyjDj0IyzziS
+	NBhlxg1pMZ0e+SuK6n6hJgXSbsDSy/beVVeAwLZZzA86yE36mSnrF1j/rGO6afcOzdD1FPDNsrM/D
+	ooP9GIc3bc/PFO9BqOyqty5eteNoGmX3zM6QduIYtT2D9AmTdRZYSBTABalzFJgCbIOEoCMMhXiJm
+	dhQvWFdZi3Yh/5u/ljwUvSRUYcOi+bN+X2+Ukakqr5wwulI2+kY/dQ4UccMNvn8sks4E9pjAJDmDY
+	C8vAgdow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxPUN-0038v4-07;
-	Mon, 30 Oct 2023 10:27:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qxPjH-003Bzv-25;
+	Mon, 30 Oct 2023 10:42:43 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxPUK-0038nv-12;
-	Mon, 30 Oct 2023 10:27:17 +0000
-X-UUID: df1e28be770e11ee86758d4a7c00f3a0-20231030
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=J2kxc3oKbOck1uppNrqtWT5A1Sb51+PDVb6r0qeviTA=;
-	b=IbF/YUjrwVM29kFvy1REmLWaSenMPCa4RFL74o/0OgW0tei8O9fyrK+BPi2Y/5eSdP+kuGRAsM1PBhkVFhooXiORE6PKJEVrMdxYLdaZkWSCesbemNvHSvJ87pZTPMGPsLC09KaVJWQL5+bkVDbMmOYcJryJdDzUarTFPZ3gPn0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:c5550c42-cca2-4c65-ba16-23c76cda79f3,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:364b77b,CLOUDID:61fecb94-10ce-4e4b-85c2-c9b5229ff92b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: df1e28be770e11ee86758d4a7c00f3a0-20231030
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1988753876; Mon, 30 Oct 2023 03:27:05 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 30 Oct 2023 18:06:28 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 30 Oct 2023 18:06:28 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v8 06/12] media: platform: mtk-mdp3: avoid multiple driver registrations
-Date: Mon, 30 Oct 2023 18:06:20 +0800
-Message-ID: <20231030100626.12564-7-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231030100626.12564-1-moudy.ho@mediatek.com>
-References: <20231030100626.12564-1-moudy.ho@mediatek.com>
+	id 1qxPjE-003Bz8-0P
+	for linux-mediatek@lists.infradead.org;
+	Mon, 30 Oct 2023 10:42:42 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2D750AE;
+	Mon, 30 Oct 2023 11:42:20 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1698662540;
+	bh=N/AB8vEHluaW8g7hMALFHWDvfNj9MxXkl6VVzLU1ZFo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=thjjjzO2GUKIT3V2LY4Ax5wU6N3F38hqmSNjWMdgZ2LU9vwgsBAHm+GAnbKeSoHcj
+	 dqiznrvYd/ClZ9bLpxbA/qSARgZiMVEJRJPC4V8XkSgXABEtH05F9u/DyjertWilK7
+	 HTQMDE/aJhbJVFdLrbAQHQFbR/btb0WgFPIxVOM4=
+Date: Mon, 30 Oct 2023 12:42:41 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Sakari Ailus <sakari.ailus@iki.fi>
+Cc: linux-media@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 3/3] media: i2c: Add driver for THine THP7312
+Message-ID: <20231030104241.GJ12144@pendragon.ideasonboard.com>
+References: <20231017132103.9914-1-laurent.pinchart@ideasonboard.com>
+ <20231017132103.9914-4-laurent.pinchart@ideasonboard.com>
+ <ZTutbU1XG_jKZbIp@valkosipuli.retiisi.eu>
+ <20231027124529.GA19539@pendragon.ideasonboard.com>
+ <ZTvOIQSmpytUisUD@valkosipuli.retiisi.eu>
+ <20231028151858.GB20465@pendragon.ideasonboard.com>
+ <ZT9kwC3abUKR9fgQ@valkosipuli.retiisi.eu>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.179200-8.000000
-X-TMASE-MatchedRID: PQIaRDv4+w4BCIpkUn74FLg7LINv5AfgLL6mJOIs/vYs/uUAk6xP7PlY
-	oV6p/cSxARdN2JeGGT9JYgJHd90gXxElELPcdUQnGVyS87Wb4lzEoDEGChh7CVlDV0KgHSWHvlJ
-	3+emUkhzi8zVgXoAltsIJ+4gwXrEtIAcCikR3vq9hm4Y1VTjopK50kiJ9WXKWCs0VwnvRHN49I/
-	WHSbgMDIKBaDypH2iz
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.179200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: FFA80988CCDBFC2BD2ED71DBA6756B1CE320C53312EB7E13EC11BA3536DD544F2000:8
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <ZT9kwC3abUKR9fgQ@valkosipuli.retiisi.eu>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231030_032716_377640_B11F813C 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20231030_034240_306506_3458A8FE 
+X-CRM114-Status: GOOD (  64.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,76 +79,249 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The amount of MDP3 driver probes is determined by the registered
-clocks of MMSYS.
-Since MT8195 MDP3 utilizes VPPSYS0 and VPPSYS1, it's necessary to
-prevent multiple driver registrations.
+Hi Sakari,
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c  | 1 +
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 8 ++++++++
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h | 1 +
- 3 files changed, 10 insertions(+)
+On Mon, Oct 30, 2023 at 08:09:36AM +0000, Sakari Ailus wrote:
+> On Sat, Oct 28, 2023 at 06:18:58PM +0300, Laurent Pinchart wrote:
+> > On Fri, Oct 27, 2023 at 02:50:09PM +0000, Sakari Ailus wrote:
+> > > On Fri, Oct 27, 2023 at 03:45:29PM +0300, Laurent Pinchart wrote:
+> > > 
+> > > ...
+> > > 
+> > > > > > +#include <linux/clk.h>
+> > > > > > +#include <linux/delay.h>
+> > > > > > +#include <linux/device.h>
+> > > > > > +#include <linux/firmware.h>
+> > > > > > +#include <linux/gpio/consumer.h>
+> > > > > > +#include <linux/i2c.h>
+> > > > > > +#include <linux/init.h>
+> > > > > > +#include <linux/iopoll.h>
+> > > > > > +#include <linux/kernel.h>
+> > > > > > +#include <linux/module.h>
+> > > > > > +#include <linux/mtd/spi-nor.h>
+> > > > > > +#include <linux/of_device.h>
+> > > > > > +#include <linux/pm_runtime.h>
+> > > > > > +#include <linux/regulator/consumer.h>
+> > > > > > +#include <linux/slab.h>
+> > > > > > +#include <linux/thp7312.h>
+> > > > > 
+> > > > > uapi/linux/thp7321.h ?
+> > > > 
+> > > > Is that needed ?
+> > > 
+> > > It's a UAPI header. Wouldn't it be reasonable to include it that way
+> > > (instead of relying on searching include/uapi as well)?
+> > 
+> > There are some occurences of '#include <uapi/' in drivers/ (I counted
+> > 338), but why is that better ?
+> 
+> I'd presume that at some point the -Iinclude/uapi will be cleaned up and
+> then the only option remains to include it from there directly. Why not to
+> do it already now?
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-index fe92c0474bfa..6f77c33074ec 100644
---- a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-@@ -410,6 +410,7 @@ static const struct mdp_pipe_info mt8183_pipe_info[] = {
- 
- const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
- 	.mdp_plat_id = MT8183,
-+	.mdp_con_res = 0x14001000,
- 	.mdp_probe_infra = mt8183_mdp_probe_infra,
- 	.mdp_cfg = &mt8183_plat_cfg,
- 	.mdp_mutex_table_idx = mt8183_mutex_idx,
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 8959f83eb5b5..b214510ac42d 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -211,6 +211,7 @@ static int mdp_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct mdp_dev *mdp;
- 	struct platform_device *mm_pdev;
-+	struct resource *res;
- 	int ret, i, mutex_id;
- 
- 	mdp = kzalloc(sizeof(*mdp), GFP_KERNEL);
-@@ -222,6 +223,12 @@ static int mdp_probe(struct platform_device *pdev)
- 	mdp->pdev = pdev;
- 	mdp->mdp_data = of_device_get_match_data(&pdev->dev);
- 
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	if (res->start != mdp->mdp_data->mdp_con_res) {
-+		platform_set_drvdata(pdev, mdp);
-+		goto success_return;
-+	}
-+
- 	ret = mdp_mm_subsys_deploy(mdp, MDP_INFRA_MMSYS);
- 	if (ret)
- 		goto err_destroy_device;
-@@ -307,6 +314,7 @@ static int mdp_probe(struct platform_device *pdev)
- 		goto err_unregister_device;
- 	}
- 
-+success_return:
- 	dev_dbg(dev, "mdp-%d registered successfully\n", pdev->id);
- 	return 0;
- 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index ece6509666fd..22d1b17ef2fc 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-@@ -71,6 +71,7 @@ enum mdp_pipe_id {
- 
- struct mtk_mdp_driver_data {
- 	const int mdp_plat_id;
-+	const resource_size_t mdp_con_res;
- 	const struct of_device_id *mdp_probe_infra;
- 	const struct mdp_platform_config *mdp_cfg;
- 	const u32 *mdp_mutex_table_idx;
+Will it be ? I've never heard of such a plan, but I may have missed it.
+I thought it was a feature meant to stay, and the recommended way to
+include headers in the uapi/ directory.
+
+> > > > > > +	struct {
+> > > > > > +		struct v4l2_ctrl *noise_reduction_auto;
+> > > > > > +		struct v4l2_ctrl *noise_reduction_absolute;
+> > > > > > +	};
+> > > > > > +
+> > > > > > +	const char *fw_name;
+> > > > > > +	u8 *fw_data;
+> > > > > > +	size_t fw_size;
+> > > > > > +
+> > > > > > +	u8 fw_major_version;
+> > > > > > +	u8 fw_minor_version;
+> > > > > > +
+> > > > > > +	/* Lock to protect fw_cancel */
+> > > > > > +	struct mutex fw_lock;
+> > > > > > +	struct fw_upload *fwl;
+> > > > > > +	bool fw_cancel;
+> > > > > 
+> > > > > Arranging this right after fw_* would save some memory.
+> > > > 
+> > > > After what ? I assume you mean fw_*_version ? It would, but it would
+> > > > feel a bit out of place. I'll see what I can do.
+> > > 
+> > > Yes. There doesn't seem to be any firm ordering here either. Up to you.
+> > > 
+> > > ...
+> > > 
+> > > > > > +	val = ((conv_lanes[3] & 0x03) << 6) |
+> > > > > > +	      ((conv_lanes[2] & 0x03) << 4) |
+> > > > > > +	      ((conv_lanes[1] & 0x03) << 2) |
+> > > > > > +	       (conv_lanes[0] & 0x03);
+> > > > > 
+> > > > > You could construct val in the loop and drop conv_lanes altogether.
+> > > > > 
+> > > > > I.e.
+> > > > > 
+> > > > > 		val |= (i & 0x03) << ((lanes[i] - 1) * 2);
+> > > > > 
+> > > > > And assign val to 0 in declaration.
+> > > > 
+> > > > I think I'll compute it at probe time and cache it instead.
+> > > 
+> > > If you don't need anything else in the endpoint, you could move it out of
+> > > the device context struct.
+> > 
+> > That's what I've now done, yes.
+> > 
+> > > > > > +	for (rate = mode->rates; rate->fps; ++rate, --index) {
+> > > > > > +		if (!index) {
+> > > > > > +			fie->interval.numerator = 1;
+> > > > > > +			fie->interval.denominator = rate->fps;
+> > > > > 
+> > > > > Maybe a newline here?
+> > > > 
+> > > > If that makes you happy :-)
+> > > 
+> > > Newlines are great (when they are at the right places)!
+> > > 
+> > > > > > +	case V4L2_CID_THP7312_NOISE_REDUCTION_AUTO:
+> > > > > > +	case V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE:
+> > > > > > +		/* Ignore the manually set value if auto has been set */
+> > > > > > +		value = thp7312->noise_reduction_auto->val
+> > > > > > +		      ? 0 : 0x80 | (thp7312->noise_reduction_absolute->val & 0x7f);
+> > > > > 
+> > > > > "?" should be on the preceding line.
+> > > > 
+> > > > Isn't that a matter of coding style preference ?
+> > > 
+> > > Yes, indeed, and I recall GNU coding style is shunned upon here. :-)
+> > > 
+> > > > > > +
+> > > > > > +		cci_write(thp7312->regmap, THP7312_REG_NOISE_REDUCTION, value,
+> > > > > > +			  &ret);
+> > > > > > +		break;
+> > > > > > +
+> > > > > > +	case V4L2_CID_AUTO_WHITE_BALANCE:
+> > > > > > +		value = ctrl->val ? THP7312_WB_MODE_AUTO : THP7312_WB_MODE_MANUAL;
+> > > > > 
+> > > > > I'd do this in the call, up to you.
+> > > > 
+> > > > Only if you allow lines longer than 80 columns ;-)
+> > > 
+> > > I don't think you need longer lines for that, do you?
+> > > 
+> > > > > > +
+> > > > > > +		cci_write(thp7312->regmap, THP7312_REG_WB_MODE, value, &ret);
+> > > > > > +		break;
+> > > > > > +
+> > > 
+> > > ...
+> > > 
+> > > > > > +static enum fw_upload_err thp7312_fw_write_to_flash(struct thp7312_device *thp7312,
+> > > > > > +						    u32 dest, u32 write_size)
+> > > > > > +{
+> > > > > > +	u8 command[sizeof(thp7312_cmd_write_ram_to_flash) + 6];
+> > > > > > +	static const u32 cmd_size = sizeof(thp7312_cmd_write_ram_to_flash);
+> > > > > > +	u64 val;
+> > > > > > +	int ret;
+> > > > > > +
+> > > > > > +	memcpy(command, thp7312_cmd_write_ram_to_flash, cmd_size);
+> > > > > > +
+> > > > > > +	command[cmd_size] = (dest & 0xff0000) >> 16;
+> > > > > > +	command[cmd_size + 1] = (dest & 0x00ff00) >> 8;
+> > > > > > +	command[cmd_size + 2] = (dest & 0x0000ff);
+> > > > > > +	command[cmd_size + 3] = ((write_size - 1) & 0xff0000) >> 16;
+> > > > > > +	command[cmd_size + 4] = ((write_size - 1) & 0x00ff00) >> 8;
+> > > > > > +	command[cmd_size + 5] = ((write_size - 1) & 0x0000ff);
+> > > > > > +
+> > > > > > +	ret = thp7312_write_buf(thp7312, command, sizeof(command));
+> > > > > > +	if (ret < 0)
+> > > > > > +		return FW_UPLOAD_ERR_RW_ERROR;
+> > > > > > +
+> > > > > > +	usleep_range(8000000, 8100000);
+> > > > > 
+> > > > > I guess there's time to make some tea here?
+> > > > 
+> > > > For a flash infusion, gong fu style, probably.
+> > > > 
+> > > > We don't have much documentation about the exact values of the delays
+> > > > that are needed, and why :-(
+> > > 
+> > > I have even less documentation (none) on this device. Is polling an option,
+> > > as you're reading a register to verify the operation was successful?
+> > 
+> > I'll try to ask and get more information. As firmware update is an
+> > uncommon and not time-sensitive operation, I'd rather be cautious here
+> > and not over-optimize.
+> 
+> If this is only done in order to *upgrade* the firmware, it's certainly not
+> a concern IMO.
+
+Yes, this is about flashing a new firmware to the device, not loading a
+firmware at runtime. You need to boot the chip with a pin strapped to
+select the firmware upgrade mode.
+
+> > > > > > +
+> > > > > > +	ret = cci_read(thp7312->regmap, THP7312_REG_FW_VERIFY_RESULT, &val,
+> > > > > > +		       NULL);
+> > > > > > +	if (ret < 0)
+> > > > > > +		return FW_UPLOAD_ERR_RW_ERROR;
+> > > > > > +
+> > > > > > +	return val ?  FW_UPLOAD_ERR_HW_ERROR : FW_UPLOAD_ERR_NONE;
+> > > > > > +}
+> > > 
+> > > ...
+> > > 
+> > > > > > +	/*
+> > > > > > +	 * Register a device for the sensor, to support usage of the regulator
+> > > > > > +	 * API.
+> > > > > > +	 */
+> > > > > > +	sensor->dev = kzalloc(sizeof(*sensor->dev), GFP_KERNEL);
+> > > > > > +	if (!sensor->dev)
+> > > > > > +		return -ENOMEM;
+> > > > > > +
+> > > > > > +	sensor->dev->parent = dev;
+> > > > > > +	sensor->dev->of_node = of_node_get(sensor->of_node);
+> > > > > 
+> > > > > This device could well find its way to a non-OF system. Could you use the
+> > > > > fwnode property API instead?
+> > > > 
+> > > > I'm pretty sure there will be problems if someone was using this driver
+> > > > on an ACPI-based system, so trying to pretend it's supported without
+> > > > being able to test it may not be the best use of development time. I'll
+> > > > try, but if I hit any issue, I'll keep using the OF-specific functions
+> > > > in the next version.
+> > > 
+> > > I'd suggest to use OF functions if there's no corresponding fwnode function
+> > > available. The intention is they cover the same scope, so it is likely
+> > > something that's missing will be added sooner or later.
+> > 
+> > I understand, but if the conversion is not complete, it's not very
+> > valuable. I have no objection against using the fwnode API in the
+> > driver, but I'll let someone else handle it when and if needed.
+> 
+> If you leave it using OF-only API now in a driver that is not bound to OF
+> in any way, someone moving it to fwnode later may not be able to test it on
+> OF, increasing the likelihood something breaks. So use fwnode API where you
+> can now, and we'll address that one call later on.
+
+Sorry, this is extra work for very little gain (if any) now, so I don't
+plan to do so if I can't implement a full conversion.
+
+> > > > > > +	/* Retrieve the sensor index from the reg property. */
+> > > > > > +	ret = of_property_read_u32(node, "reg", &reg);
+> > > > > > +	if (ret < 0) {
+> > > > > > +		dev_err(dev, "'reg' property missing in sensor node\n");
+> > > > > 
+> > > > > Shouldn't you assume it's zero instead?
+> > > > 
+> > > > The property is mandatory.
+> > > 
+> > > You could also make it optional as that appears to be the general practice.
+> > > Up to you.
+> > 
+> > I think it's easier to keep it mandatory.
+> 
+> Ack.
+
 -- 
-2.18.0
+Regards,
 
+Laurent Pinchart
 
