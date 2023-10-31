@@ -4,76 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A4EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 16:38:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B09ADC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 16:38:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ao2LyBn2rnPSsSTXV0MzcLMfBZjF1jr+nzoTcvVyecU=; b=lP21LhYi6djOw9mrOTvVxv4QL5
-	uYdUY5fLs/YHfDYBWFFOih6TO02BtZLOb3ZUKFfnk4rp3KlBu4XXQ4LWc+OM3Dy52lOxdMFDdgrw4
-	g0KY2+WOLLCpXLaPDBJ2ya74Tc2RWQYOHPvyWksoGGmcQ8KPFHCoerK0nnAGUooETu+XFCwolM7OW
-	t8vtQXVQ/dF6oWMq1euSLVxvRzBiM5u5aRgNhicV+SvX2D7rHVTQsICEQRZigGPyg5P9lMedI305J
-	0ZijmkEADLbdcJgEAoc+398EKx7O1YgKMy4ufyNyh7/80rGky40Sae0V+GWv3wqxRVwpgUpYTPB8N
-	3LsPJxKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9SvlkoeKowfsPCSgEcDhTecKaiZsQ0uIbfz7tpllvqA=; b=0zcEA2eOWbbjPcPG4D4eC2wAN7
+	dXhDEquBkxPLrYGV3cMcfcaqiCpmBfTDWPQ2Z7lacvZHu3QP3xT5VUgkjYE86A69eYzBjMNt5owHq
+	GzeBBz+PkZbQwE8BKiRV0b6pgbih5QQUS1vJ9qD4wVsBLaadNpVlzth4d6HC+yDP4tlBzxumjTvya
+	y09NHCn6MTnoDeNgec0umjnZ/+ZcITnGYkR/h4lr6ezQXnEZvIDBlFwbBZoKdB5uocCQi5Dmgt7gi
+	4DXNDvwbyqZfcqNtMvYnImtDBdx0WpDgduhbDlERD1cULNHEPJETGDrfKoiV1EphcGH76zeBn3c+k
+	spryoyFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrks-005g2Z-00;
-	Tue, 31 Oct 2023 16:38:14 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qxrl3-005g9d-2b;
+	Tue, 31 Oct 2023 16:38:25 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrfG-005chV-1C;
-	Tue, 31 Oct 2023 16:32:28 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c562:2ef4:80c0:92f])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C5F8D66073B4;
-	Tue, 31 Oct 2023 16:32:24 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698769945;
-	bh=dzwa/jYB5Q8JSc9NA/K1ZmfJPhSPTZE1y6AwFUzPpGM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KSLfitASYnY4seXf1ApXpKJuFXuX1SzHJLUjcVgcpCcdeQ+W+Z+gSJJMu7I3YCdkc
-	 hGhinoZF9R8E9pCPN9wHEp5hf+mMhRvJbnUxkmgzwnRw46DAnWEHem4H9Qy2nw7XFu
-	 0fmJ4MaKb6VWkIqTe6JDLweeqp7q20mLuI7uDBEfWstNMzexl6zbr2ejYPhCieVN3J
-	 187Bdb6crSUTN2hJr0sTiEgEUdvnlaL7D28U1DVGTAaAsxvHUy92h6L3kH5n5OY3Gr
-	 VdoWEJfXdZNks2lZ6xi8kbUHE/0qz9wENMhgHbU46D7HoXlt1QKgKUgQX2S2cy6ht1
-	 axQSPo0S/P1Ew==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: [PATCH v14 38/56] media: ti: Stop direct calls to queue num_buffers field
-Date: Tue, 31 Oct 2023 17:30:46 +0100
-Message-Id: <20231031163104.112469-39-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+	id 1qxrfJ-005chS-09
+	for linux-mediatek@lists.infradead.org;
+	Tue, 31 Oct 2023 16:32:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1698769949; x=1730305949;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=SAVUUSy6kEq+VaAk+hGdPRfOn1rye2cEo6cJ7P/cJ4A=;
+  b=Mhvf6wW83Q863cl15m9l7p1+fArk9M+mDE9Jv9NB4xKr9vg/P1BHRU0l
+   ObcNTzyGtkVPdbBg+nUpcIXAhQITg0osUwGWI6QJu82WoK11P5AjjDK3P
+   zeoeW6pbiHD7u+a+XMNl5YIqRmPxmJxBivSCZ70rWa31ER4xVzxTM0nkD
+   2q+L5eWQxDuUcSIYOkzxVow1ufp8+8LiNfAI6QVca+CmuJ0YzfOuXkaTd
+   yjpk/Z0gbCV25zDyfjwd9vJVe/3WIbdIU06opu/MlJYVYCdQ6vZXRzsMF
+   hYKkpJloLPyVIEfjJDSZRGWCoX8yJMzeXPuuiIloD0XW7fajTO7G0RUab
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="1172521"
+X-IronPort-AV: E=Sophos;i="6.03,265,1694761200"; 
+   d="scan'208";a="1172521"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2023 09:32:25 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="851293283"
+X-IronPort-AV: E=Sophos;i="6.03,265,1694761200"; 
+   d="scan'208";a="851293283"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by FMSMGA003.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2023 09:32:21 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.97-RC3)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1qxrf8-0000000ACil-13uQ;
+	Tue, 31 Oct 2023 18:32:18 +0200
+Date: Tue, 31 Oct 2023 18:32:17 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-acpi@vger.kernel.org, linux-media@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/1] device property: Add fwnode_name_eq()
+Message-ID: <ZUEsEQQTTlXmOHPt@smile.fi.intel.com>
+References: <20231031135306.1106640-1-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231031135306.1106640-1-sakari.ailus@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_093226_684224_61958187 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20231031_093229_166110_D4B7F236 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,119 +94,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-This allows us to change how the number of buffers is computed in the
-future.
+On Tue, Oct 31, 2023 at 03:53:06PM +0200, Sakari Ailus wrote:
+> Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
+> on fwnode property API. The same convention of ending the comparison at
+> '@' (besides '\0') is applied on also both ACPI and swnode. The function
+> is intended for comparing unit address-less node names on DT and firmware
+> or swnodes compliant with DT bindings.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
----
- drivers/media/platform/ti/am437x/am437x-vpfe.c   | 5 +++--
- drivers/media/platform/ti/cal/cal-video.c        | 5 +++--
- drivers/media/platform/ti/davinci/vpif_capture.c | 5 +++--
- drivers/media/platform/ti/davinci/vpif_display.c | 5 +++--
- drivers/media/platform/ti/omap/omap_vout.c       | 5 +++--
- 5 files changed, 15 insertions(+), 10 deletions(-)
+Some comments below.
 
-diff --git a/drivers/media/platform/ti/am437x/am437x-vpfe.c b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-index 5fa2ea9025d9..f18acf9286a2 100644
---- a/drivers/media/platform/ti/am437x/am437x-vpfe.c
-+++ b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-@@ -1771,9 +1771,10 @@ static int vpfe_queue_setup(struct vb2_queue *vq,
- {
- 	struct vpfe_device *vpfe = vb2_get_drv_priv(vq);
- 	unsigned size = vpfe->fmt.fmt.pix.sizeimage;
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 3)
-+		*nbuffers = 3 - q_num_bufs;
- 
- 	if (*nplanes) {
- 		if (sizes[0] < size)
-diff --git a/drivers/media/platform/ti/cal/cal-video.c b/drivers/media/platform/ti/cal/cal-video.c
-index a8abcd0fee17..94e67c057a20 100644
---- a/drivers/media/platform/ti/cal/cal-video.c
-+++ b/drivers/media/platform/ti/cal/cal-video.c
-@@ -603,9 +603,10 @@ static int cal_queue_setup(struct vb2_queue *vq,
- {
- 	struct cal_ctx *ctx = vb2_get_drv_priv(vq);
- 	unsigned int size = ctx->v_fmt.fmt.pix.sizeimage;
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 3)
-+		*nbuffers = 3 - q_num_bufs;
- 
- 	if (*nplanes) {
- 		if (sizes[0] < size)
-diff --git a/drivers/media/platform/ti/davinci/vpif_capture.c b/drivers/media/platform/ti/davinci/vpif_capture.c
-index 99fae8830c41..fc42b4bc37e6 100644
---- a/drivers/media/platform/ti/davinci/vpif_capture.c
-+++ b/drivers/media/platform/ti/davinci/vpif_capture.c
-@@ -113,6 +113,7 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
- 	struct channel_obj *ch = vb2_get_drv_priv(vq);
- 	struct common_obj *common = &ch->common[VPIF_VIDEO_INDEX];
- 	unsigned size = common->fmt.fmt.pix.sizeimage;
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 
- 	vpif_dbg(2, debug, "vpif_buffer_setup\n");
- 
-@@ -122,8 +123,8 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
- 		size = sizes[0];
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 3)
-+		*nbuffers = 3 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	sizes[0] = size;
-diff --git a/drivers/media/platform/ti/davinci/vpif_display.c b/drivers/media/platform/ti/davinci/vpif_display.c
-index f8ec2991c667..9dbab1003c1d 100644
---- a/drivers/media/platform/ti/davinci/vpif_display.c
-+++ b/drivers/media/platform/ti/davinci/vpif_display.c
-@@ -115,6 +115,7 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
- 	struct channel_obj *ch = vb2_get_drv_priv(vq);
- 	struct common_obj *common = &ch->common[VPIF_VIDEO_INDEX];
- 	unsigned size = common->fmt.fmt.pix.sizeimage;
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 
- 	if (*nplanes) {
- 		if (sizes[0] < size)
-@@ -122,8 +123,8 @@ static int vpif_buffer_queue_setup(struct vb2_queue *vq,
- 		size = sizes[0];
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 3)
-+		*nbuffers = 3 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	sizes[0] = size;
-diff --git a/drivers/media/platform/ti/omap/omap_vout.c b/drivers/media/platform/ti/omap/omap_vout.c
-index 4143274089c3..72ce903717d3 100644
---- a/drivers/media/platform/ti/omap/omap_vout.c
-+++ b/drivers/media/platform/ti/omap/omap_vout.c
-@@ -944,10 +944,11 @@ static int omap_vout_vb2_queue_setup(struct vb2_queue *vq,
- 				     struct device *alloc_devs[])
- {
- 	struct omap_vout_device *vout = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	int size = vout->pix.sizeimage;
- 
--	if (is_rotation_enabled(vout) && vq->num_buffers + *nbufs > VRFB_NUM_BUFS) {
--		*nbufs = VRFB_NUM_BUFS - vq->num_buffers;
-+	if (is_rotation_enabled(vout) && q_num_bufs + *nbufs > VRFB_NUM_BUFS) {
-+		*nbufs = VRFB_NUM_BUFS - q_num_bufs;
- 		if (*nbufs == 0)
- 			return -EINVAL;
- 	}
+...
+
+> Would you be able to use this to replace of_node_name_eq()?
+
+Can you point out to the use case? Maybe it can be rewritten using existing
+APIs?
+
+...
+
+> +	len = strchrnul(node_name, '@') - node_name;
+
+> +	return strlen(name) == len && !strncmp(node_name, name, len);
+
+Seems like this is reimplementation of str_has_prefix().
+
+	len = strchrnul(node_name, '@') - node_name;
+	return str_has_prefix(node_name, name) == len;
+
 -- 
-2.39.2
+With Best Regards,
+Andy Shevchenko
+
 
 
