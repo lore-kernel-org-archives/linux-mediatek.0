@@ -4,65 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 200F0C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 10:32:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2689C4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 10:45:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=F09VthF3SOwL7AJzpPS1gMu9ksJqqw5f9cVnGbYgdxg=; b=clQ/QPctrNha+68EvZNn4dUdbl
-	rMYc5VhyMUjZ1lhSv2JcXe61h8e7w9N1E5+W97wLy/uSDi+zwLOCTJc/EnFnpdeAqHxyzH9GNCfky
-	9F43Wj+TxnR2s0wIisesBT0cfwnkP3I9zNowzOyvueCGJUBLJLVkxpV5PIrVXPAtYS0M8NLblQkD1
-	gIXtpKmxvn4zXcz5KFo7KNRpi47z9CvUWTTTDuJParxHzysDJvmr7zuD6lIPf2S9xt7hFjmznC5Th
-	9Pky/xT4tpffiMRAAaO8bz9Ns5G6vm0S1uq6Zh0EqArN1li0UetGEhqI94nYliaCGJcD3gD3z8Rf2
-	xe3NsPIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=H2lTLELFem5DpyMRkdv4gKGJZh1wufBq0gXd/vl7M/4=; b=ecbtGoL4bXjyXkfMYt/WssUSPh
+	07lUqyHamV3MdkP+3RPYm71CM4xloeHm6tfdjHtE1E+GR/rJcETqe+AFFUD3U/oGr+FfDD/tutJ29
+	4Vp3v2iUSfy0WB1didzx8eHCk/6b39NNGA7BIL6uFro8xFbEO7lxQLNvdeBMcpidyUkHocGJVyTic
+	IUUd6c7JyIDnImGQOQqP1Zb0uFzuCXb5/h3kGRf45X+kI1JuOs3xvd3/y8nU3QB48qDJUZ0t5dcSZ
+	sctSQs7sSj04yFSF9yAj80d3fgRptAdMfDi/rovxElwYLJt42ZCdV4NHZzqtoo/ZoSuyNbSRd8PwH
+	SGHi5AFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxm2c-0056UD-0c;
-	Tue, 31 Oct 2023 10:32:10 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qxmFr-0057Dl-2z;
+	Tue, 31 Oct 2023 10:45:51 +0000
+Received: from meesny.iki.fi ([2001:67c:2b0:1c1::201])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxm2Y-0056TO-17;
-	Tue, 31 Oct 2023 10:32:07 +0000
-Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
+	id 1qxmFo-0057DJ-3A
+	for linux-mediatek@lists.infradead.org;
+	Tue, 31 Oct 2023 10:45:50 +0000
+Received: from hillosipuli.retiisi.eu (185-9-10-242.cust.suomicom.net [185.9.10.242])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CA86E6607390;
-	Tue, 31 Oct 2023 10:31:58 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698748319;
-	bh=snKMPEw3/sZymut9YKmskK4tpvE9vyUtyrcQQzMwW3g=;
-	h=From:To:Cc:Subject:Date:From;
-	b=SAS7GJNIQK8qjHN8XRik3kZcD9sZCZkLAl3ZTwDYA4pvOqVkjXXyjUtk43OuWY7Wg
-	 vvWrfQtDqiggNTVVpNKRAgMyHLIio/ULcMREQHw++q7xU9AUB0uMdj80jCMEGPgDwY
-	 gnbLmepTCgkAIXfTRQMjMDbXMlLbMjYiS4WrwhRPTWDmm01BaYQp/gpBBtOqeS0pCz
-	 d+Qb8LNoyvs1LaOCK3B5seqliWSRwh6o9S+W3XgwfSzwpEy22kJAMQHEwQMvjOLc9b
-	 YtfTdv+jCOBmpYtFX8xDQiAIMiKTaNPVWU4LlU82zBA7SA7yDsbDPGUHlKOforksXZ
-	 adNjdphnFv7Zw==
-From: Eugen Hristev <eugen.hristev@collabora.com>
-To: broonie@kernel.org,
-	jiaxin.yu@mediatek.com,
-	linux-sound@vger.kernel.org
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	(Authenticated sender: sailus)
+	by meesny.iki.fi (Postfix) with ESMTPSA id 4SKRcb54RKzyVh;
+	Tue, 31 Oct 2023 12:45:32 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
+	t=1698749140;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=H2lTLELFem5DpyMRkdv4gKGJZh1wufBq0gXd/vl7M/4=;
+	b=EkXQoSVZGmFemBFTHWAdK9B3PlBiIgzTwNAryId/lHPjdby06VLELfz1g8/VGH2qlddXXn
+	1IoWoKi48Rr2/d8RLTcQF+iwuBqxr9sY6eRJ1599LJDHLOhO6RDEer7qvhQKIe0o31vQoT
+	wP2fmUCL58V46bwRUK+vAZNaHur06qE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=meesny; t=1698749140;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=H2lTLELFem5DpyMRkdv4gKGJZh1wufBq0gXd/vl7M/4=;
+	b=WISYaPU85RWcHvAKGGrKQ4EgBk8ywzHCjYAuLLgDhxUkRjK26t8FdG24C4KSSOl4VKbJwI
+	3pfBP7opfKQdRCRUb6H3r7g6SjZDRko0FFvmJ+ArHygsQxevUMBlvcLoWRzxEDmWi+cswJ
+	+/XJ2d+5amv0U0qPV08YLbizZ+Cj05E=
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Seal: i=1; s=meesny; d=iki.fi; t=1698749140; a=rsa-sha256; cv=none;
+	b=h0e5b9otCvJfu2Nll35AaiO2PeUTitwLs9ScHKesSN/xKrNgRT4mJGzgHq7QLR4Zp3iRo3
+	L6NfZpoct4UQQAKzTOfTHGOosUZu490gF0zObv1cifmoSPPXF4vg73GgqiD49k3fRwkll0
+	C5XWvaVBT3PZKlgBzKEZqkbWGDISMuI=
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 337FB634C93;
+	Tue, 31 Oct 2023 12:45:32 +0200 (EET)
+Date: Tue, 31 Oct 2023 10:45:32 +0000
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	Eugen Hristev <eugen.hristev@collabora.com>
-Subject: [PATCH] ASoC: mediatek: mt8186_mt6366_rt1019_rt5682s: trivial: fix error messages
-Date: Tue, 31 Oct 2023 12:31:39 +0200
-Message-Id: <20231031103139.77395-1-eugen.hristev@collabora.com>
-X-Mailer: git-send-email 2.34.1
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: Re: [PATCH v4 3/3] media: i2c: Add driver for THine THP7312
+Message-ID: <ZUDatMX10WK0bdid@valkosipuli.retiisi.eu>
+References: <20231017132103.9914-1-laurent.pinchart@ideasonboard.com>
+ <20231017132103.9914-4-laurent.pinchart@ideasonboard.com>
+ <ZTutbU1XG_jKZbIp@valkosipuli.retiisi.eu>
+ <20231027124529.GA19539@pendragon.ideasonboard.com>
+ <ZTvOIQSmpytUisUD@valkosipuli.retiisi.eu>
+ <20231028151858.GB20465@pendragon.ideasonboard.com>
+ <ZT9kwC3abUKR9fgQ@valkosipuli.retiisi.eu>
+ <20231030104241.GJ12144@pendragon.ideasonboard.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231030104241.GJ12144@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_033206_605494_5B2D7784 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20231031_034549_204666_BA8B39C2 
+X-CRM114-Status: GOOD (  47.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,40 +109,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Property 'playback-codecs' is referenced as 'speaker-codec' in the error
-message, and this can lead to confusion.
-Correct the error message such that the correct property name is
-referenced.
+Hi Laurent,
 
-Fixes: 0da16e370dd7 ("ASoC: mediatek: mt8186: add machine driver with mt6366, rt1019 and rt5682s")
-Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
----
- sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Mon, Oct 30, 2023 at 12:42:41PM +0200, Laurent Pinchart wrote:
+> Hi Sakari,
+> 
+> On Mon, Oct 30, 2023 at 08:09:36AM +0000, Sakari Ailus wrote:
+> > On Sat, Oct 28, 2023 at 06:18:58PM +0300, Laurent Pinchart wrote:
+> > > On Fri, Oct 27, 2023 at 02:50:09PM +0000, Sakari Ailus wrote:
+> > > > On Fri, Oct 27, 2023 at 03:45:29PM +0300, Laurent Pinchart wrote:
+> > > > 
+> > > > ...
+> > > > 
+> > > > > > > +#include <linux/clk.h>
+> > > > > > > +#include <linux/delay.h>
+> > > > > > > +#include <linux/device.h>
+> > > > > > > +#include <linux/firmware.h>
+> > > > > > > +#include <linux/gpio/consumer.h>
+> > > > > > > +#include <linux/i2c.h>
+> > > > > > > +#include <linux/init.h>
+> > > > > > > +#include <linux/iopoll.h>
+> > > > > > > +#include <linux/kernel.h>
+> > > > > > > +#include <linux/module.h>
+> > > > > > > +#include <linux/mtd/spi-nor.h>
+> > > > > > > +#include <linux/of_device.h>
+> > > > > > > +#include <linux/pm_runtime.h>
+> > > > > > > +#include <linux/regulator/consumer.h>
+> > > > > > > +#include <linux/slab.h>
+> > > > > > > +#include <linux/thp7312.h>
+> > > > > > 
+> > > > > > uapi/linux/thp7321.h ?
+> > > > > 
+> > > > > Is that needed ?
+> > > > 
+> > > > It's a UAPI header. Wouldn't it be reasonable to include it that way
+> > > > (instead of relying on searching include/uapi as well)?
+> > > 
+> > > There are some occurences of '#include <uapi/' in drivers/ (I counted
+> > > 338), but why is that better ?
+> > 
+> > I'd presume that at some point the -Iinclude/uapi will be cleaned up and
+> > then the only option remains to include it from there directly. Why not to
+> > do it already now?
+> 
+> Will it be ? I've never heard of such a plan, but I may have missed it.
+> I thought it was a feature meant to stay, and the recommended way to
+> include headers in the uapi/ directory.
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-index 6dfcfcf47cab..f78197c8e582 100644
---- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-@@ -1216,7 +1216,7 @@ static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
- 	playback_codec = of_get_child_by_name(pdev->dev.of_node, "playback-codecs");
- 	if (!playback_codec) {
- 		ret = -EINVAL;
--		dev_err_probe(&pdev->dev, ret, "Property 'speaker-codecs' missing or invalid\n");
-+		dev_err_probe(&pdev->dev, ret, "Property 'playback-codecs' missing or invalid\n");
- 		goto err_playback_codec;
- 	}
- 
-@@ -1230,7 +1230,7 @@ static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
- 	for_each_card_prelinks(card, i, dai_link) {
- 		ret = mt8186_mt6366_card_set_be_link(card, dai_link, playback_codec, "I2S3");
- 		if (ret) {
--			dev_err_probe(&pdev->dev, ret, "%s set speaker_codec fail\n",
-+			dev_err_probe(&pdev->dev, ret, "%s set playback_codec fail\n",
- 				      dai_link->name);
- 			goto err_probe;
- 		}
+I'm not sure if anyone is cleaning that up actively but it seems like a
+fairly obvious candidate for cleanup.
+
+...
+
+> > > > > > > +	/*
+> > > > > > > +	 * Register a device for the sensor, to support usage of the regulator
+> > > > > > > +	 * API.
+> > > > > > > +	 */
+> > > > > > > +	sensor->dev = kzalloc(sizeof(*sensor->dev), GFP_KERNEL);
+> > > > > > > +	if (!sensor->dev)
+> > > > > > > +		return -ENOMEM;
+> > > > > > > +
+> > > > > > > +	sensor->dev->parent = dev;
+> > > > > > > +	sensor->dev->of_node = of_node_get(sensor->of_node);
+> > > > > > 
+> > > > > > This device could well find its way to a non-OF system. Could you use the
+> > > > > > fwnode property API instead?
+> > > > > 
+> > > > > I'm pretty sure there will be problems if someone was using this driver
+> > > > > on an ACPI-based system, so trying to pretend it's supported without
+> > > > > being able to test it may not be the best use of development time. I'll
+> > > > > try, but if I hit any issue, I'll keep using the OF-specific functions
+> > > > > in the next version.
+> > > > 
+> > > > I'd suggest to use OF functions if there's no corresponding fwnode function
+> > > > available. The intention is they cover the same scope, so it is likely
+> > > > something that's missing will be added sooner or later.
+> > > 
+> > > I understand, but if the conversion is not complete, it's not very
+> > > valuable. I have no objection against using the fwnode API in the
+> > > driver, but I'll let someone else handle it when and if needed.
+> > 
+> > If you leave it using OF-only API now in a driver that is not bound to OF
+> > in any way, someone moving it to fwnode later may not be able to test it on
+> > OF, increasing the likelihood something breaks. So use fwnode API where you
+> > can now, and we'll address that one call later on.
+> 
+> Sorry, this is extra work for very little gain (if any) now, so I don't
+> plan to do so if I can't implement a full conversion.
+
+I don't see why would you leave this for someone else to clean up later.
+It's called "technical debt". Similarly, we have no ACPI-only sensor
+drivers that would use ACPI specific functions that would not be available
+on non-ACPI systems --- they've all used the fwnode API, missing just
+regulators, clocks and GPIOs.
+
+If you like, I think we could have an fwnode version of the same function,
+to be used with DT binding compliant format for the device in ACPI DSDT.
+Plain ACPI would have no need for the function.
+
+Cc Andy, too.
+
 -- 
-2.34.1
+Regards,
 
+Sakari Ailus
 
