@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EF34C4167D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 17:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9ABFC4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 21:49:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cghi8HzRqMQtZYMVfq+8g/GwoACch6SchmkRjnW1zRM=; b=eFKi6l78TpHBcNK6pxquzYYA6o
-	IgGsQ+41q3LSHaqkcQAkdFiX3yGD32XwhYXErmmeHEB43E6+8R3LV/tyNQtvSWXBHEaJADqb6/erg
-	SJXhYgmmcIxdg7ieY1BaPri+eQsESsnW6TzvI2HpaOYLj4+0TD2oQZVkrZeK2sAOhJgIcMZFRjiZM
-	yfaxvCf+bS0WOZSjVHRi28tN5Zk/5FFQw+KoHU33YNGfxIYqTttpnNnGW++MhTfns4IP163tpbpM8
-	eGCJXkthu90+H+cbbzxec8pGPe706gJPkt7mG2gPrFsiaZEtNRrq//D4W2jO9jrdz60LS2wkGSZK1
-	kuqlaAjg==;
+	bh=glxxDtJUb1rmlWRXCnJcp7hDgB5WWCtpgPGmB2j511U=; b=nuZlaV6/HK3JE/AcnnXJu+Qoqn
+	4QeEe5NxRiVG1iwgwZAq/jRJSmbmLXwnbKyUmI9/G2BUNlV9M9zVkYZRu7KWe6RsQicPK48iyIawR
+	kood/e1TfZqeU6NXTSHedfNRhjw1Mq/v4Z3D1rJ7DZboyU6/HsszTB7a1Wvpy4WTgrTwbveSCOOQy
+	9GqmacOyb0p1leGw8q1Oci9cuHhgefPVt9rUYS9kXi1YMEPjo+DwnQKX1cb6ErqirvmEBKG76Gqjc
+	1mrNGrJNFaZxC/EDA++t3p/mpveLL9HW/h4qLS7ihmTTkn8VGceX9LVj18pZr5wZqkptaQgKgrRBx
+	rmI8s4HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxsxg-005tpr-0U;
-	Tue, 31 Oct 2023 17:55:32 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1qxwcR-006BjY-17;
+	Tue, 31 Oct 2023 21:49:51 +0000
+Received: from mgamail.intel.com ([134.134.136.100])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxsxd-005tp8-0S;
-	Tue, 31 Oct 2023 17:55:30 +0000
-Received: by mail-oi1-f173.google.com with SMTP id 5614622812f47-3b2e72fe47fso3861085b6e.1;
-        Tue, 31 Oct 2023 10:55:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698774928; x=1699379728;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cghi8HzRqMQtZYMVfq+8g/GwoACch6SchmkRjnW1zRM=;
-        b=kAiGnIuanzBOJjZSzAc6GurB0asUnAgNv2JOP9biHNBVAGrc93Y+NN5ZYJl9Oeib/H
-         O0jEjXHBgrmLFmSpzNuwzJo/2adusePfyMoDeEsly4YBMLXtb2wprhQQh07aDnX3E2it
-         oNvcKhD1IEvJ3Ln5UuNKrAbFhXPLzNh1jmzFN2/pM2p4IILTSZumAvvyhz3CMsmm7GBr
-         ULvc7zi4XTBp+AHh9gVrofnEw/GyvmNGCmxVkfsd8K/kNlIO96VEuJ4CRGthcbXIJ8mn
-         dDgraQwnHCSkBvHZ9dXQFs3dZpyY01R6wEEmDjaT60XMBwcKhvBuY0VenMJrLh/brqTn
-         2Aww==
-X-Gm-Message-State: AOJu0Yz+S6RrTptnjcJud8vB+pFzZBY0tSckYQHVg2wk3Mz9xsthu5kC
-	tKgslGy/h3hpA9RLrJwxmA==
-X-Google-Smtp-Source: AGHT+IEzgDoWb29ZJLyxAQR/UtzwH60FOikEPz4ULoPEiWOeX2qzVl3h09iHl3uA/9qvyP/m3aTQpw==
-X-Received: by 2002:aca:d03:0:b0:3ae:126b:8bfc with SMTP id 3-20020aca0d03000000b003ae126b8bfcmr13403099oin.4.1698774928201;
-        Tue, 31 Oct 2023 10:55:28 -0700 (PDT)
-Received: from herring.priv ([4.31.143.193])
-        by smtp.gmail.com with ESMTPSA id z3-20020a056808048300b003b2e7231faasm328109oid.28.2023.10.31.10.55.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Oct 2023 10:55:27 -0700 (PDT)
-Received: (nullmailer pid 1810151 invoked by uid 1000);
-	Tue, 31 Oct 2023 17:55:26 -0000
-Date: Tue, 31 Oct 2023 12:55:26 -0500
-From: Rob Herring <robh@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, Maxime Ripard <mripard@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, David Airlie <airlied@gmail.com>, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: Re: [PATCH v9 03/16] dt-bindings: media: mediatek: mdp3: add config
- for MT8195 RDMA
-Message-ID: <169877492598.1810050.14443640728512842209.robh@kernel.org>
-References: <20231031083357.13775-1-moudy.ho@mediatek.com>
- <20231031083357.13775-4-moudy.ho@mediatek.com>
+	id 1qxwcO-006Bic-33
+	for linux-mediatek@lists.infradead.org;
+	Tue, 31 Oct 2023 21:49:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1698788988; x=1730324988;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=600Nvh60124lsqCSvHFqzYzSMSzi4J7+aWhMqXLTTIM=;
+  b=Z/7IZc+2cHfJcqr3csNzobzT2JGCD3h5xWRTjNzlhWDJHiczANBDleAm
+   CDljuPiuRFZEvcjV7vO9bhanL6Tu74hYKaVBMmMYVmYcN/flu3c9qyBDE
+   55BWJpIwkoHdYQ3lfEcbrFVjrQi8VlSssztpJpRYOFjY50pUnav1FbepQ
+   pqbLDeeRO52I3W3XaO92jVnSVXbEf39v66luugeH+ToAqBF7J/nYfDSs8
+   vgfRu5HRd0ajeRrfWih9+qPFYO+B0tQgIZh7UWKEnVKEEA78xmQ+JYm/i
+   t63tHiSKP9OhtGb3mExoJxyWDl+Ipa9HsbZ3YvAPdWiCe7dO3PECcoMSE
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="454850529"
+X-IronPort-AV: E=Sophos;i="6.03,266,1694761200"; 
+   d="scan'208";a="454850529"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2023 14:49:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="760748094"
+X-IronPort-AV: E=Sophos;i="6.03,266,1694761200"; 
+   d="scan'208";a="760748094"
+Received: from lkp-server01.sh.intel.com (HELO 17d9e85e5079) ([10.239.97.150])
+  by orsmga002.jf.intel.com with ESMTP; 31 Oct 2023 14:49:42 -0700
+Received: from kbuild by 17d9e85e5079 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qxwcG-0000PI-0V;
+	Tue, 31 Oct 2023 21:49:40 +0000
+Date: Wed, 1 Nov 2023 05:49:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-acpi@vger.kernel.org
+Cc: oe-kbuild-all@lists.linux.dev,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-media@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/1] device property: Add fwnode_name_eq()
+Message-ID: <202311010542.1tRHV0in-lkp@intel.com>
+References: <20231031135306.1106640-1-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231031083357.13775-4-moudy.ho@mediatek.com>
+In-Reply-To: <20231031135306.1106640-1-sakari.ailus@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_105529_177531_56893346 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20231031_144949_048032_ABAA47ED 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,18 +95,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Sakari,
 
-On Tue, 31 Oct 2023 16:33:44 +0800, Moudy Ho wrote:
-> Added the configuration for MT8195 RDMA. In comparison to MT8183, it
-> no longer shares SRAM with RSZ, and there are now preconfigured 5 mbox.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/media/mediatek,mdp3-rdma.yaml    | 21 +++++++++++++++++++
->  1 file changed, 21 insertions(+)
-> 
+kernel test robot noticed the following build warnings:
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+[auto build test WARNING on driver-core/driver-core-testing]
+[also build test WARNING on driver-core/driver-core-next driver-core/driver-core-linus linus/master v6.6 next-20231031]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
+url:    https://github.com/intel-lab-lkp/linux/commits/Sakari-Ailus/device-property-Add-fwnode_name_eq/20231031-224454
+base:   driver-core/driver-core-testing
+patch link:    https://lore.kernel.org/r/20231031135306.1106640-1-sakari.ailus%40linux.intel.com
+patch subject: [PATCH 1/1] device property: Add fwnode_name_eq()
+config: sh-allnoconfig (https://download.01.org/0day-ci/archive/20231101/202311010542.1tRHV0in-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231101/202311010542.1tRHV0in-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202311010542.1tRHV0in-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/base/property.c:611: warning: Function parameter or member 'fwnode' not described in 'fwnode_name_eq'
+
+
+vim +611 drivers/base/property.c
+
+   596	
+   597	/**
+   598	 * fwnode_name_eq - Return true if node name is equal
+   599	 * @fwnode The firmware node
+   600	 * @name: The name to which to compare the node name
+   601	 *
+   602	 * Compare the name provided as an argument to the name of the node, stopping
+   603	 * the comparison to either '\0' or '@' character, whichever comes first. This
+   604	 * function is generally used for comparing node names while ignoring the
+   605	 * possible unit address of the node.
+   606	 *
+   607	 * Return: true if the node name matches with the name provided in the @name
+   608	 * argument, false otherwise.
+   609	 */
+   610	bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name)
+ > 611	{
+   612		const char *node_name;
+   613		unsigned int len;
+   614	
+   615		node_name = fwnode_get_name(fwnode);
+   616		if (!node_name)
+   617			return false;
+   618	
+   619		len = strchrnul(node_name, '@') - node_name;
+   620	
+   621		return strlen(name) == len && !strncmp(node_name, name, len);
+   622	}
+   623	EXPORT_SYMBOL_GPL(fwnode_name_eq);
+   624	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
