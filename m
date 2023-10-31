@@ -4,97 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2689C4167D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 10:45:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB14C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 13:17:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H2lTLELFem5DpyMRkdv4gKGJZh1wufBq0gXd/vl7M/4=; b=ecbtGoL4bXjyXkfMYt/WssUSPh
-	07lUqyHamV3MdkP+3RPYm71CM4xloeHm6tfdjHtE1E+GR/rJcETqe+AFFUD3U/oGr+FfDD/tutJ29
-	4Vp3v2iUSfy0WB1didzx8eHCk/6b39NNGA7BIL6uFro8xFbEO7lxQLNvdeBMcpidyUkHocGJVyTic
-	IUUd6c7JyIDnImGQOQqP1Zb0uFzuCXb5/h3kGRf45X+kI1JuOs3xvd3/y8nU3QB48qDJUZ0t5dcSZ
-	sctSQs7sSj04yFSF9yAj80d3fgRptAdMfDi/rovxElwYLJt42ZCdV4NHZzqtoo/ZoSuyNbSRd8PwH
-	SGHi5AFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GH1r7oKy0y44dj360FiE9Us94vZ/qTRz9aTS7IJbd10=; b=RtVYi1k4V1qexA6OmSH35/oOpC
+	oTycxEQqK86igxrwggv1Lr8I2z9MhS6wbcEyE4g0GVj58skotUX4QS3TD0k5F2PvwW8sWO2NasVPG
+	JafJSYlrJYZSSHH4pfYkEzW/pmPsB3uYe8xu/uKmkXEDUR7sYSQ5/0vy/pNDkjfqC+IwqLqHZjHBc
+	zcBIfruIj1zsVQJGrzkFGBYOm9rNU3I4EpRTCcsq/WYrY/FwOM4nMuJcQSmlnlBp4aEbUidG2c68r
+	bK+m8fLncFVynm96wHuXUnsLr/rBhsBwJZ5KI2aV+80PCOiBt861ISRZNsK35qngAolvXGTItIwoj
+	jcKJytng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxmFr-0057Dl-2z;
-	Tue, 31 Oct 2023 10:45:51 +0000
-Received: from meesny.iki.fi ([2001:67c:2b0:1c1::201])
+	id 1qxocI-005KZO-26;
+	Tue, 31 Oct 2023 13:17:10 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxmFo-0057DJ-3A
-	for linux-mediatek@lists.infradead.org;
-	Tue, 31 Oct 2023 10:45:50 +0000
-Received: from hillosipuli.retiisi.eu (185-9-10-242.cust.suomicom.net [185.9.10.242])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	id 1qxocE-005KXm-35;
+	Tue, 31 Oct 2023 13:17:09 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sailus)
-	by meesny.iki.fi (Postfix) with ESMTPSA id 4SKRcb54RKzyVh;
-	Tue, 31 Oct 2023 12:45:32 +0200 (EET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
-	t=1698749140;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=H2lTLELFem5DpyMRkdv4gKGJZh1wufBq0gXd/vl7M/4=;
-	b=EkXQoSVZGmFemBFTHWAdK9B3PlBiIgzTwNAryId/lHPjdby06VLELfz1g8/VGH2qlddXXn
-	1IoWoKi48Rr2/d8RLTcQF+iwuBqxr9sY6eRJ1599LJDHLOhO6RDEer7qvhQKIe0o31vQoT
-	wP2fmUCL58V46bwRUK+vAZNaHur06qE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
-	s=meesny; t=1698749140;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=H2lTLELFem5DpyMRkdv4gKGJZh1wufBq0gXd/vl7M/4=;
-	b=WISYaPU85RWcHvAKGGrKQ4EgBk8ywzHCjYAuLLgDhxUkRjK26t8FdG24C4KSSOl4VKbJwI
-	3pfBP7opfKQdRCRUb6H3r7g6SjZDRko0FFvmJ+ArHygsQxevUMBlvcLoWRzxEDmWi+cswJ
-	+/XJ2d+5amv0U0qPV08YLbizZ+Cj05E=
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
-ARC-Seal: i=1; s=meesny; d=iki.fi; t=1698749140; a=rsa-sha256; cv=none;
-	b=h0e5b9otCvJfu2Nll35AaiO2PeUTitwLs9ScHKesSN/xKrNgRT4mJGzgHq7QLR4Zp3iRo3
-	L6NfZpoct4UQQAKzTOfTHGOosUZu490gF0zObv1cifmoSPPXF4vg73GgqiD49k3fRwkll0
-	C5XWvaVBT3PZKlgBzKEZqkbWGDISMuI=
-Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 337FB634C93;
-	Tue, 31 Oct 2023 12:45:32 +0200 (EET)
-Date: Tue, 31 Oct 2023 10:45:32 +0000
-From: Sakari Ailus <sakari.ailus@iki.fi>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Subject: Re: [PATCH v4 3/3] media: i2c: Add driver for THine THP7312
-Message-ID: <ZUDatMX10WK0bdid@valkosipuli.retiisi.eu>
-References: <20231017132103.9914-1-laurent.pinchart@ideasonboard.com>
- <20231017132103.9914-4-laurent.pinchart@ideasonboard.com>
- <ZTutbU1XG_jKZbIp@valkosipuli.retiisi.eu>
- <20231027124529.GA19539@pendragon.ideasonboard.com>
- <ZTvOIQSmpytUisUD@valkosipuli.retiisi.eu>
- <20231028151858.GB20465@pendragon.ideasonboard.com>
- <ZT9kwC3abUKR9fgQ@valkosipuli.retiisi.eu>
- <20231030104241.GJ12144@pendragon.ideasonboard.com>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D7B1366073A3;
+	Tue, 31 Oct 2023 13:16:59 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698758220;
+	bh=UKig+LuihbJ88pZrqsdMkSm6GIDrEJck0xJqKEx+xT8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=heU/JmH5bzkBexwGGbhEbA2kshYTP/yFEexLfR0na3soREvJWMZbMgw79+2gwCwMt
+	 F+tEJDK14a+T+Vq2da+/j19xmN7Hjr4QzsCduGwPan6KMhAl2odY0UqnkXZjs+3/Uy
+	 iyZd8pINFEQ3IobDyIbhsRB3m66+AOxnXblcTQvgC4BVw5oU9cw5EYouoG/8rPFtUC
+	 HH+QNAl7XMxJr5VoMj9rBdKE6v35OZagcosKuzqFRaeC5WjXvrcaJH+KldiY5HU61h
+	 dBY/PKGKYmz0oyJUnvDs5fnbsHPKQDKEqqYfvjeXVTXmt5htOtYacdOgJWEWQfSBky
+	 wvflJV5wkGfuw==
+Message-ID: <e17f5c83-80b2-4cbd-8e56-c484b6848e22@collabora.com>
+Date: Tue, 31 Oct 2023 14:16:57 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231030104241.GJ12144@pendragon.ideasonboard.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] MT8195 Cherry: Assign MFG vregs for power saving
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20231030132523.86123-1-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5FWPZYjsXse58k5HyMijkrKBDYw0k4wpdfGv99ur8=5yg@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5FWPZYjsXse58k5HyMijkrKBDYw0k4wpdfGv99ur8=5yg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_034549_204666_BA8B39C2 
-X-CRM114-Status: GOOD (  47.54  )
+X-CRM114-CacheID: sfid-20231031_061707_131290_A1C6DD8E 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,108 +78,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
-
-On Mon, Oct 30, 2023 at 12:42:41PM +0200, Laurent Pinchart wrote:
-> Hi Sakari,
+Il 31/10/23 10:19, Chen-Yu Tsai ha scritto:
+> On Mon, Oct 30, 2023 at 9:25 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> This series assigns the right regulators to MFG0 and MFG1, respectively
+>> VGPU (GPU Core) and VSRAM_OTHERS (GPU SRAM), and removes the property
+>> regulator-always-on from both.
+>>
+>> This allows to save power both during runtime suspend and during system
+>> sleep; specifically because:
+>>   1. The GPU SRAM regulator is switched off during runtime suspend
+>>   2. The GPU Core regulator is switched off during system sleep
+>>
+>> Of course, in order for those power saving actions to actually take
+>> place, it is required to also have the code in [1].
+>> Anyway, even without series [1], this will not introduce any unstability
+>> as the Vgpu regulator will simply not ever get turned off.
+>>
+>> [1]: https://lore.kernel.org/r/20231030132257.85379-1-angelogioacchino.delregno@collabora.com
+>>
+>> AngeloGioacchino Del Regno (2):
+>>    arm64: dts: mediatek: mt8195-cherry: Add MFG0 domain supply
+>>    arm64: dts: mediatek: mt8195-cherry: Assign sram supply to MFG1 pd
 > 
-> On Mon, Oct 30, 2023 at 08:09:36AM +0000, Sakari Ailus wrote:
-> > On Sat, Oct 28, 2023 at 06:18:58PM +0300, Laurent Pinchart wrote:
-> > > On Fri, Oct 27, 2023 at 02:50:09PM +0000, Sakari Ailus wrote:
-> > > > On Fri, Oct 27, 2023 at 03:45:29PM +0300, Laurent Pinchart wrote:
-> > > > 
-> > > > ...
-> > > > 
-> > > > > > > +#include <linux/clk.h>
-> > > > > > > +#include <linux/delay.h>
-> > > > > > > +#include <linux/device.h>
-> > > > > > > +#include <linux/firmware.h>
-> > > > > > > +#include <linux/gpio/consumer.h>
-> > > > > > > +#include <linux/i2c.h>
-> > > > > > > +#include <linux/init.h>
-> > > > > > > +#include <linux/iopoll.h>
-> > > > > > > +#include <linux/kernel.h>
-> > > > > > > +#include <linux/module.h>
-> > > > > > > +#include <linux/mtd/spi-nor.h>
-> > > > > > > +#include <linux/of_device.h>
-> > > > > > > +#include <linux/pm_runtime.h>
-> > > > > > > +#include <linux/regulator/consumer.h>
-> > > > > > > +#include <linux/slab.h>
-> > > > > > > +#include <linux/thp7312.h>
-> > > > > > 
-> > > > > > uapi/linux/thp7321.h ?
-> > > > > 
-> > > > > Is that needed ?
-> > > > 
-> > > > It's a UAPI header. Wouldn't it be reasonable to include it that way
-> > > > (instead of relying on searching include/uapi as well)?
-> > > 
-> > > There are some occurences of '#include <uapi/' in drivers/ (I counted
-> > > 338), but why is that better ?
-> > 
-> > I'd presume that at some point the -Iinclude/uapi will be cleaned up and
-> > then the only option remains to include it from there directly. Why not to
-> > do it already now?
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 > 
-> Will it be ? I've never heard of such a plan, but I may have missed it.
-> I thought it was a feature meant to stay, and the recommended way to
-> include headers in the uapi/ directory.
+> on Tomato without the power saving patches. Regulators are correctly
+> requested and I can see the SRAM regulator get turned on and off with
+> GPU usage.
 
-I'm not sure if anyone is cleaning that up actively but it seems like a
-fairly obvious candidate for cleanup.
+Yes, I confirm that the sram vreg going on/off is expected even without the power
+saving patches (as the power domain refcount decreases during runtime suspend).
 
-...
+Thanks!
 
-> > > > > > > +	/*
-> > > > > > > +	 * Register a device for the sensor, to support usage of the regulator
-> > > > > > > +	 * API.
-> > > > > > > +	 */
-> > > > > > > +	sensor->dev = kzalloc(sizeof(*sensor->dev), GFP_KERNEL);
-> > > > > > > +	if (!sensor->dev)
-> > > > > > > +		return -ENOMEM;
-> > > > > > > +
-> > > > > > > +	sensor->dev->parent = dev;
-> > > > > > > +	sensor->dev->of_node = of_node_get(sensor->of_node);
-> > > > > > 
-> > > > > > This device could well find its way to a non-OF system. Could you use the
-> > > > > > fwnode property API instead?
-> > > > > 
-> > > > > I'm pretty sure there will be problems if someone was using this driver
-> > > > > on an ACPI-based system, so trying to pretend it's supported without
-> > > > > being able to test it may not be the best use of development time. I'll
-> > > > > try, but if I hit any issue, I'll keep using the OF-specific functions
-> > > > > in the next version.
-> > > > 
-> > > > I'd suggest to use OF functions if there's no corresponding fwnode function
-> > > > available. The intention is they cover the same scope, so it is likely
-> > > > something that's missing will be added sooner or later.
-> > > 
-> > > I understand, but if the conversion is not complete, it's not very
-> > > valuable. I have no objection against using the fwnode API in the
-> > > driver, but I'll let someone else handle it when and if needed.
-> > 
-> > If you leave it using OF-only API now in a driver that is not bound to OF
-> > in any way, someone moving it to fwnode later may not be able to test it on
-> > OF, increasing the likelihood something breaks. So use fwnode API where you
-> > can now, and we'll address that one call later on.
-> 
-> Sorry, this is extra work for very little gain (if any) now, so I don't
-> plan to do so if I can't implement a full conversion.
+Angelo
 
-I don't see why would you leave this for someone else to clean up later.
-It's called "technical debt". Similarly, we have no ACPI-only sensor
-drivers that would use ACPI specific functions that would not be available
-on non-ACPI systems --- they've all used the fwnode API, missing just
-regulators, clocks and GPIOs.
-
-If you like, I think we could have an fwnode version of the same function,
-to be used with DT binding compliant format for the device in ACPI DSDT.
-Plain ACPI would have no need for the function.
-
-Cc Andy, too.
-
--- 
-Regards,
-
-Sakari Ailus
 
