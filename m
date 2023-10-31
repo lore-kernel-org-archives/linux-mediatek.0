@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D923C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 17:20:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD71AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 17:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s8+3OvEfjQ1ZOh8i5uNro/eWl301+Vobeupuf3v4yaM=; b=maG+zvMNCjlg+GJRaKVE/KlzbF
-	rN8/E8aG4jWrPJJAz4VAVdFGX7kuInVl46cu0k7AnsYDfOZX1753vqPVW8dUFY410/9pRx07wp7gt
-	iCp8dPO3qiW6VNxsm4InbCgSzZScuQaEibxuXxeSrJiNm+o+3mFeD+D8owd56rSB1EuCDKH+kzzds
-	GILg8dGkCa/dubO9sxclHaUkfzYstNiuIwh6rHt2i4otM07ilCD9Wu5849vofPr13OMfIrC6yKHIB
-	5nWWfLjT87yScfA/FO7ENsjPn2malB9LTEQW/5dxRddBML+PKhq9EY5E9l+lGCJfS/sl98DiC9P+a
-	K9dgHJFQ==;
+	bh=3sOmvixHfQMEf6cSX5X+V5dJf4sK0eb9T02qoOsLX1I=; b=3IrvKvn4pXrxsEuHOHeMD76b2E
+	bG3iVDgg0ErmtUB5MhtvQ2fU6NTrgPimQ+TZw9O9mZAjzMz1VUWkgUkpx0k1SXSOasGf4XSmyOmcz
+	mHS0Njdaroj4Sg7W2zRUCZ2XTWJVHw7dRTlugXrWT3gdn+b/EFDqeqzINVpjtpYDInMldbHti+Vde
+	EytKxlYs7s3sPfqGLtpS/3a6uXqMNVgdNCchW+l2ZWFNjv5Cgy32C7w0vEPs4Srzt/AAqj2/e47rh
+	uBxgBxGCoxLUzexbgdx+uEn2HcH8vASfqtbylpbfFi6APe3Z3ZC4iAp15TIIyi0zM+pJRGleZ5sEu
+	3RC/qE7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxsQ8-005q44-25;
-	Tue, 31 Oct 2023 17:20:52 +0000
-Received: from mail-oi1-f182.google.com ([209.85.167.182])
+	id 1qxsxQ-005tnQ-33;
+	Tue, 31 Oct 2023 17:55:16 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxsQ5-005q2y-0g;
-	Tue, 31 Oct 2023 17:20:50 +0000
-Received: by mail-oi1-f182.google.com with SMTP id 5614622812f47-3b566ee5f1dso485618b6e.0;
-        Tue, 31 Oct 2023 10:20:45 -0700 (PDT)
+	id 1qxsxM-005tkw-2u;
+	Tue, 31 Oct 2023 17:55:14 +0000
+Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-6ce37d0f1a9so3752662a34.0;
+        Tue, 31 Oct 2023 10:55:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698772844; x=1699377644;
+        d=1e100.net; s=20230601; t=1698774907; x=1699379707;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=s8+3OvEfjQ1ZOh8i5uNro/eWl301+Vobeupuf3v4yaM=;
-        b=WN4LEOzY79oAGdY5jCnb6p5NLBDv2+lA5cm8Q3XxFhmE/80xXe2/NlIdiwhg8JoTcI
-         DjxvEEejGpwYD1ebK+eKpXddRXQOqxjbEXipCW1oDCLzHmS65bB6KO5hIkIAOCs+zY/s
-         wHD2HwpQ0UOlcRvD21FzLW5pTyp+yXZPkHCVdzCosHYte4OwqS/I6gyEujquHLgYy5xL
-         cmk1/+HDQO9G9jsHfpcO7UmjFxAka+C/j0IQ/wNFJDXb91mVUmdNBTd7YIRyBmzcpoB7
-         3moGvtEREwOEzx2WwVyHf/S+MEtdVYgci6LPm9c9+zzZ4wG6rYdfQe/nrC4qr9CZ4QfM
-         YAhw==
-X-Gm-Message-State: AOJu0YxkbhBfi2QbjLXRCPLcGk/DfL2r2ygDnW7o5nx4pNW5FIyccspo
-	WKxY6ZmqP5U35gtwCm4imQ==
-X-Google-Smtp-Source: AGHT+IGz/RjS0dxuITvu3VVAWhlbRHi/yN8c+EsRazfPmzlB0JHyujRyURQ9PYb8VuqE36ZzsnxseQ==
-X-Received: by 2002:a05:6808:218b:b0:3ae:16b6:6346 with SMTP id be11-20020a056808218b00b003ae16b66346mr16940183oib.7.1698772843765;
-        Tue, 31 Oct 2023 10:20:43 -0700 (PDT)
+        bh=3sOmvixHfQMEf6cSX5X+V5dJf4sK0eb9T02qoOsLX1I=;
+        b=hCczlONelN6/7Auc5AY6rB1X4MEfW4DweaJ8hiZw7FZOtMZHhD35r41zCSFqMo6vwF
+         AcKQXpJZvd9rbl0bA6sOHt2aFusb8J4fxgJPrDA8riim0ZF1TsJPHKmlKwcPkZara/la
+         /vdr9b8hWZUlmrivt91s7KAVPk7i6/xy8CsaK9+cowoH2guelNvhTAE1nuZtaMJoBKh2
+         7PbKvgEgsKTkU3PUCpUwtrMexfOcCubYh7uOmzjYaawwvA/smmLelFK8yp52gvFS90g+
+         Vq5/jepBFA4Tc4p2L7h1JniAcicqGegc86rCvSfUmcoq27Kl2bRzAD5zPP6K9JalHaTH
+         Yr8g==
+X-Gm-Message-State: AOJu0YyasQssV1D1TzMoywmY3J7WMmu/Lm7a7/6G7AqdxoyrlNQ4E2ZG
+	XPvVieGb8phTQdy7sStLRw==
+X-Google-Smtp-Source: AGHT+IFmuj30SZPqXu2EIXyI7kKLettnOwn2LVc9BC4D5MXj13OHIw3L94S9nKTG5g66A8WPtZAtEA==
+X-Received: by 2002:a05:6870:cd93:b0:1e9:97cc:59ff with SMTP id xb19-20020a056870cd9300b001e997cc59ffmr16786765oab.9.1698774907268;
+        Tue, 31 Oct 2023 10:55:07 -0700 (PDT)
 Received: from herring.priv ([4.31.143.193])
-        by smtp.gmail.com with ESMTPSA id dn3-20020a056808618300b003b274008e46sm331948oib.0.2023.10.31.10.20.42
+        by smtp.gmail.com with ESMTPSA id n1-20020a056870034100b001e9b02b00e9sm368369oaf.22.2023.10.31.10.55.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Oct 2023 10:20:43 -0700 (PDT)
-Received: (nullmailer pid 1762172 invoked by uid 1000);
-	Tue, 31 Oct 2023 17:20:42 -0000
-Date: Tue, 31 Oct 2023 12:20:42 -0500
+        Tue, 31 Oct 2023 10:55:06 -0700 (PDT)
+Received: (nullmailer pid 1809590 invoked by uid 1000);
+	Tue, 31 Oct 2023 17:55:05 -0000
+Date: Tue, 31 Oct 2023 12:55:05 -0500
 From: Rob Herring <robh@kernel.org>
 To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-arm-kernel@lists.infradead.org, David Airlie <airlied@gmail.com>, devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v9 16/16] dt-bindings: display: mediatek: padding: add
- compatible for MT8195
-Message-ID: <169877278691.1760720.771717804140685552.robh@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel@ffwll.ch>, linux-media@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, dri-devel@lists.freedesktop.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-kernel@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v9 02/16] dt-bindings: media: mediatek: mdp3: merge the
+ indentical RDMA under display
+Message-ID: <169877490486.1809532.9023561200743242448.robh@kernel.org>
 References: <20231031083357.13775-1-moudy.ho@mediatek.com>
- <20231031083357.13775-17-moudy.ho@mediatek.com>
+ <20231031083357.13775-3-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231031083357.13775-17-moudy.ho@mediatek.com>
+In-Reply-To: <20231031083357.13775-3-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_102049_250324_798F04AB 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20231031_105512_941893_E9A49612 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +82,25 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 31 Oct 2023 16:33:57 +0800, Moudy Ho wrote:
-> Add a compatible string for the PADDING block in MediaTek MT8195 that
-> is controlled by MDP3.
+On Tue, 31 Oct 2023 16:33:43 +0800, Moudy Ho wrote:
+> To simplify maintenance and avoid branches, the identical component
+> should be merged and placed in the path belonging to the MDP
+> (from display/* to media/*).
+> 
+> In addition, currently only MDP utilizes RDMA through CMDQ, and the
+> necessary properties for "mediatek,gce-events", and "mboxes" have been
+> set up for this purpose.
+> Within DISP, it directly receives component interrupt signals.
 > 
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/display/mediatek/mediatek,padding.yaml           | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>  .../display/mediatek/mediatek,mdp-rdma.yaml   | 88 -------------------
+>  .../bindings/media/mediatek,mdp3-rdma.yaml    | 42 ++++++++-
+>  2 files changed, 38 insertions(+), 92 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
 > 
 
-
-Please add Acked-by/Reviewed-by tags when posting new versions. However,
-there's no need to repost patches *only* to add the tags. The upstream
-maintainer will do that for acks received on the version they apply.
-
-If a tag was not added on purpose, please state why and what changed.
-
-Missing tags:
-
-Acked-by: Rob Herring <robh@kernel.org>
-
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 
