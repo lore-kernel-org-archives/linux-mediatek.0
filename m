@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 379C3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 14:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C39DC41535
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 16:31:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N9qfLEK06TzSqBUhhY7WhDo85mwqQZMQIqOjJBw25iQ=; b=UgoPnBI5OsHXOX+mLrsS9rurOy
-	oQdL500KrrF8ZhhFIQKVCBc8JZqBlHRyEgl5efdQLf366l4im3LKkLzkjvlHTJ6f91NLtB6eJ7Bg8
-	1nleG9rZqqpkIeWF5ZcA7UDnGaz6ddMcPJ4MLVZz1jJFjjjTbRXN57VxrGtSaGFV1qvhmLJQ1ACxl
-	FadF0mULfq9aGa1q0ASHEDrNHctArYJJRyXZp7m0mX833ak3lrWbofMcnm3C0dlz8FrTpedcBoEhj
-	pJwVWXCqw8lGyuIRbrmAVC4kz3xBDvBaLJSKkzDHBEQ7m7bPbbKlDSkmNerBJkSMIopDYGTQ74wkF
-	21rhwW0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=550DOzdL1zOaHllTmtFMoxZ3IysCR+iaNOfDprHzYLo=; b=1niAU9kNUpKyuEWZ4nDT1oKREt
+	zQxfgNvebOgYGSVcMpVTgNJkadzU0ba5lb9bFBuwBJrIyAdlont7XxlnPGR6g8Ds6pT1JNNuxqLWV
+	6gs4g7rUZ+TRxzXwSSii8McskyEJ51P1+yUOYA5LPx3dABBbhmgDCfXBXKe/u8pJSG4TcZ58VghHZ
+	AityOp1Bcc17nGzwDHni7+4LsEsgiJeVutCm7rc+dGEynAmoarr3lAoM+sJboanK53UJURxQWUZtn
+	BVBOd1/5PFpB8CZ2jm9UA7gOLglHKuDffYJ2ZPUJQM+lpuUS4wyv2cNhTMRy3OF4fkhANNCV7MUrf
+	pQ6h0sBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxpfy-005Qws-0Y;
-	Tue, 31 Oct 2023 14:25:02 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qxreD-005bjo-26;
+	Tue, 31 Oct 2023 16:31:21 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxpfv-005QvH-2i
-	for linux-mediatek@lists.infradead.org;
-	Tue, 31 Oct 2023 14:25:01 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7D1682E4;
-	Tue, 31 Oct 2023 15:24:36 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1698762276;
-	bh=kAQwZszGVqNC6vjTX1Xv7edKgIaht2Jp7zfOZLOGIjQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Zl4qkg5H7sStGk4TZMyJ/0s3iI3RLNHuFhVJBtpYWHY0CjpWSl86a9JxIvqDFZrG9
-	 KPwNQi9O0Vv26HEHXdWWaHam+XKVHV+EmuZuefKHHqpOJ7Zr63QDAarRy0mcfsdM1W
-	 P4U/+o6TdPfE++DwHGjVYtPWL4Hwr/pzzIkpqXEE=
-Date: Tue, 31 Oct 2023 16:24:59 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Sakari Ailus <sakari.ailus@iki.fi>, linux-media@vger.kernel.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 3/3] media: i2c: Add driver for THine THP7312
-Message-ID: <20231031142459.GB14322@pendragon.ideasonboard.com>
-References: <20231017132103.9914-1-laurent.pinchart@ideasonboard.com>
- <20231017132103.9914-4-laurent.pinchart@ideasonboard.com>
- <ZTutbU1XG_jKZbIp@valkosipuli.retiisi.eu>
- <20231027124529.GA19539@pendragon.ideasonboard.com>
- <ZTvOIQSmpytUisUD@valkosipuli.retiisi.eu>
- <20231028151858.GB20465@pendragon.ideasonboard.com>
- <ZT9kwC3abUKR9fgQ@valkosipuli.retiisi.eu>
- <20231030104241.GJ12144@pendragon.ideasonboard.com>
- <ZUDatMX10WK0bdid@valkosipuli.retiisi.eu>
- <ZUEEBXfjTPqnnL9b@smile.fi.intel.com>
+	id 1qxre9-005bgj-0k;
+	Tue, 31 Oct 2023 16:31:19 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c562:2ef4:80c0:92f])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 473C66607326;
+	Tue, 31 Oct 2023 16:31:12 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698769872;
+	bh=kP9uwiPo3RfpuFdvtUM95GSE9NX5OYIkBs61eXFwbS4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=LZ+1Q2zP6PrbdGx2PFDNSvHIHj4ui6I11PX0RVtBwIIIvC5x/gz1c2Tk29d9UlDJX
+	 IaLSnvO67dEHUyjWpQFkDvawlmI4H7VZ8Zigge4yU9W14F0aBBUS/dQMM6E3l4PG7U
+	 XWXRAWlU8PFzkzIwY+r3+hnJC3v9kgnZPbQZKjjXqrxUvkEvXkjzwq9zgSI3/s+jKF
+	 tok6w97B8GTKDNgLyCg1+0GeyTAcqu9xlvrWlbft+CtPHuBdy778ceMYGl14oWBKnd
+	 bB1LRAcTP6qDNXt2BFpyHNi/xIWhU0pZ9Ax1t2NZrfiyf/COnM26ldTCBuWhvHJg+H
+	 SVT6/nTHzzzgA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v14 00/56] Add DELETE_BUF ioctl
+Date: Tue, 31 Oct 2023 17:30:08 +0100
+Message-Id: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <ZUEEBXfjTPqnnL9b@smile.fi.intel.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_072500_047046_E94D77B8 
-X-CRM114-Status: GOOD (  47.84  )
+X-CRM114-CacheID: sfid-20231031_093117_584430_A29A9B6B 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,94 +85,188 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 31, 2023 at 03:41:25PM +0200, Andy Shevchenko wrote:
-> On Tue, Oct 31, 2023 at 10:45:32AM +0000, Sakari Ailus wrote:
-> > On Mon, Oct 30, 2023 at 12:42:41PM +0200, Laurent Pinchart wrote:
-> > > On Mon, Oct 30, 2023 at 08:09:36AM +0000, Sakari Ailus wrote:
-> > > > On Sat, Oct 28, 2023 at 06:18:58PM +0300, Laurent Pinchart wrote:
-> > > > > On Fri, Oct 27, 2023 at 02:50:09PM +0000, Sakari Ailus wrote:
-> > > > > > On Fri, Oct 27, 2023 at 03:45:29PM +0300, Laurent Pinchart wrote:
-> 
-> ...
-> 
-> > > > > > > > > +#include <linux/of_device.h>
-> 
-> I believe this shouldn't (mustn't?) be used in a new code.
-> Rob have been doing a big job of replacing some OF-specific
-> APIs by generic ones.
-> 
-> ...
-> 
-> > > > > > > > uapi/linux/thp7321.h ?
-> 
-> Why does the driver even have that?! Does it allow direct IOCTLs? Some
-> other hardware information that should be supplied via "abstract"
-> (presumably existing IOCTL)?
+Unlike when resolution change on keyframes, dynamic resolution change
+on inter frames doesn't allow to do a stream off/on sequence because
+it is need to keep all previous references alive to decode inter frames.
+This constraint have two main problems:
+- more memory consumption.
+- more buffers in use.
+To solve these issue this series introduce DELETE_BUFS ioctl and remove
+the 32 buffers limit per queue.
 
-Custome V4L2 controls.
+VP9 conformance tests using fluster give a score of 210/305.
+The 20 resize inter tests (vp90-2-21-resize_inter_* files) are ok
+but require to use postprocessor.
 
-> ...
-> 
-> > > > > > > > > +	sensor->dev->parent = dev;
-> > > > > > > > > +	sensor->dev->of_node = of_node_get(sensor->of_node);
-> 
-> This should be device_set_node().
-> 
-> > > > > > > > This device could well find its way to a non-OF system. Could you use the
-> > > > > > > > fwnode property API instead?
-> > > > > > > 
-> > > > > > > I'm pretty sure there will be problems if someone was using this driver
-> > > > > > > on an ACPI-based system, so trying to pretend it's supported without
-> > > > > > > being able to test it may not be the best use of development time. I'll
-> > > > > > > try, but if I hit any issue, I'll keep using the OF-specific functions
-> > > > > > > in the next version.
-> 
-> Besides ACPI it may be other ways of instantiating the driver.
-> And we, in general, asking for creating OF-independent drivers as long
-> as there is no strong evidence that the platform itself and the particular
-> hardware never ever will have anything than OF. And it almost always
-> not true for discrete (outside the SoC) components.
+Kernel branch is available here:
+https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v14
 
-I'm fine making drivers OF-independent even without any clear evidence
-that the device will be used on a non-OF platform when doing so does not
-incur an unreasonable extra development cost.
+GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
+change is here:
+https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
 
-> > > > > > I'd suggest to use OF functions if there's no corresponding fwnode function
-> > > > > > available. The intention is they cover the same scope, so it is likely
-> > > > > > something that's missing will be added sooner or later.
-> > > > > 
-> > > > > I understand, but if the conversion is not complete, it's not very
-> > > > > valuable. I have no objection against using the fwnode API in the
-> > > > > driver, but I'll let someone else handle it when and if needed.
-> > > > 
-> > > > If you leave it using OF-only API now in a driver that is not bound to OF
-> > > > in any way, someone moving it to fwnode later may not be able to test it on
-> > > > OF, increasing the likelihood something breaks. So use fwnode API where you
-> > > > can now, and we'll address that one call later on.
-> > > 
-> > > Sorry, this is extra work for very little gain (if any) now, so I don't
-> > > plan to do so if I can't implement a full conversion.
-> > 
-> > I don't see why would you leave this for someone else to clean up later.
-> > It's called "technical debt". Similarly, we have no ACPI-only sensor
-> > drivers that would use ACPI specific functions that would not be available
-> > on non-ACPI systems --- they've all used the fwnode API, missing just
-> > regulators, clocks and GPIOs.
-> 
-> I agree with Sakari. Let's reduce the scope of ACPI/OF/etc-specific functions
-> in the drivers. There are really little that have no generic counterparts.
-> And most of the usages are special cases.
+changes in version 14:
+- Add max_num_buffers fields in v4l2_create_buffers32 structure and copy
+  it from/to user data.
+- Fix patch 44 commit header.
+- Fix v4l_print_create_buffers() log.
 
-Sakar has submitted a patch to add one missing fwnode function. If it
-gets accepted, I'll try it out and see if I can convert this driver. I
-will still not do a partial conversion if I hit any other blocker.
+changes in version 13:
+- Fix typo and wording in commits messages.
+- Only apply V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS on createbufs ioctl
+- Fix queue setup test in test-drivers
 
-> > If you like, I think we could have an fwnode version of the same function,
-> > to be used with DT binding compliant format for the device in ACPI DSDT.
-> > Plain ACPI would have no need for the function.
+changes in version 12:
+- Change flag name to V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS.
+- Rework some commits message.
+- Change vb2_queue_or_prepare_buf() prototype.
+- Rework patches where 'min_buffers_needed' was badly used.
+
+Benjamin Gaignard (56):
+  media: videobuf2: Rename offset parameter
+  media: videobuf2: Rework offset 'cookie' encoding pattern
+  media: videobuf2: Stop spamming kernel log with all queue counter
+  media: videobuf2: Use vb2_buffer instead of index
+  media: videobuf2: Access vb2_queue bufs array through helper functions
+  media: videobuf2: Remove duplicated index vs q->num_buffers check
+  media: videobuf2: Add helper to get queue number of buffers
+  media: videobuf2: Use vb2_get_num_buffers() helper
+  media: amphion: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: amphion: Stop direct calls to queue num_buffers field
+  media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
+    to buffers array
+  media: mediatek: vdec: Remove useless loop
+  media: mediatek: vcodec: Stop direct calls to queue num_buffers field
+  media: sti: hva: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: visl: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: atomisp: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: atomisp: Stop direct calls to queue num_buffers field
+  media: dvb-core: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: dvb-core: Do not initialize twice queue num_buffer field
+  media: dvb-frontends: rtl2832: Stop direct calls to queue num_buffers
+    field
+  media: pci: dt3155: Remove useless check
+  media: pci: tw686x: Stop direct calls to queue num_buffers field
+  media: pci: cx18: Stop direct calls to queue num_buffers field
+  media: pci: netup_unidvb: Stop direct calls to queue num_buffers field
+  media: pci: tw68: Stop direct calls to queue num_buffers field
+  media: i2c: video-i2c: Stop direct calls to queue num_buffers field
+  media: coda: Stop direct calls to queue num_buffers field
+  media: nxp: Stop direct calls to queue num_buffers field
+  media: verisilicon: Stop direct calls to queue num_buffers field
+  media: test-drivers: Stop direct calls to queue num_buffers field
+  media: imx: Stop direct calls to queue num_buffers field
+  media: meson: vdec: Stop direct calls to queue num_buffers field
+  touchscreen: sur40: Stop direct calls to queue num_buffers field
+  sample: v4l: Stop direct calls to queue num_buffers field
+  media: cedrus: Stop direct calls to queue num_buffers field
+  media: nuvoton: Stop direct calls to queue num_buffers field
+  media: renesas: Stop direct calls to queue num_buffers field
+  media: ti: Stop direct calls to queue num_buffers field
+  media: usb: airspy: Stop direct calls to queue num_buffers field
+  media: usb: cx231xx: Stop direct calls to queue num_buffers field
+  media: usb: hackrf: Stop direct calls to queue num_buffers field
+  media: usb: usbtv: Stop direct calls to queue num_buffers field
+  media: videobuf2: Be more flexible on the number of queue stored
+    buffers
+  media: core: Report the maximum possible number of buffers for the
+    queue
+  media: test-drivers: vivid: Increase max supported buffers for capture
+    queues
+  media: test-drivers: vicodec: Increase max supported capture queue
+    buffers
+  media: verisilicon: Refactor postprocessor to store more buffers
+  media: verisilicon: Store chroma and motion vectors offset
+  media: verisilicon: g2: Use common helpers to compute chroma and mv
+    offsets
+  media: verisilicon: vp9: Allow to change resolution while streaming
+  media: core: Rework how create_buf index returned value is computed
+  media: core: Add bitmap manage bufs array entries
+  media: core: Free range of buffers
+  media: v4l2: Add DELETE_BUFS ioctl
+  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+  media: test-drivers: Use helper for DELETE_BUFS ioctl
+
+ .../userspace-api/media/v4l/user-func.rst     |   1 +
+ .../media/v4l/vidioc-create-bufs.rst          |   8 +-
+ .../media/v4l/vidioc-delete-bufs.rst          |  80 +++
+ .../media/v4l/vidioc-reqbufs.rst              |   2 +
+ drivers/input/touchscreen/sur40.c             |   5 +-
+ .../media/common/videobuf2/videobuf2-core.c   | 569 +++++++++++-------
+ .../media/common/videobuf2/videobuf2-v4l2.c   | 125 ++--
+ drivers/media/dvb-core/dvb_vb2.c              |  17 +-
+ drivers/media/dvb-frontends/rtl2832_sdr.c     |   5 +-
+ drivers/media/i2c/video-i2c.c                 |   5 +-
+ drivers/media/pci/cx18/cx18-streams.c         |   5 +-
+ drivers/media/pci/dt3155/dt3155.c             |   2 -
+ .../pci/netup_unidvb/netup_unidvb_core.c      |   5 +-
+ drivers/media/pci/tw68/tw68-video.c           |   4 +-
+ drivers/media/pci/tw686x/tw686x-video.c       |   5 +-
+ drivers/media/platform/amphion/vpu_dbg.c      |  30 +-
+ drivers/media/platform/amphion/vpu_v4l2.c     |   4 +-
+ .../media/platform/chips-media/coda-common.c  |   2 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   7 +-
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   9 +-
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +-
+ drivers/media/platform/nuvoton/npcm-video.c   |   2 +-
+ drivers/media/platform/nxp/imx7-media-csi.c   |   7 +-
+ drivers/media/platform/renesas/rcar_drif.c    |   5 +-
+ drivers/media/platform/st/sti/hva/hva-v4l2.c  |   9 +-
+ .../media/platform/ti/am437x/am437x-vpfe.c    |   5 +-
+ drivers/media/platform/ti/cal/cal-video.c     |   5 +-
+ .../media/platform/ti/davinci/vpif_capture.c  |   5 +-
+ .../media/platform/ti/davinci/vpif_display.c  |   5 +-
+ drivers/media/platform/ti/omap/omap_vout.c    |   5 +-
+ drivers/media/platform/verisilicon/hantro.h   |   9 +-
+ .../media/platform/verisilicon/hantro_drv.c   |   5 +-
+ .../media/platform/verisilicon/hantro_g2.c    |  14 +
+ .../platform/verisilicon/hantro_g2_hevc_dec.c |  18 +-
+ .../platform/verisilicon/hantro_g2_vp9_dec.c  |  28 +-
+ .../media/platform/verisilicon/hantro_hw.h    |   7 +-
+ .../platform/verisilicon/hantro_postproc.c    |  93 ++-
+ .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
+ .../media/test-drivers/vicodec/vicodec-core.c |   3 +
+ drivers/media/test-drivers/vim2m.c            |   2 +
+ .../media/test-drivers/vimc/vimc-capture.c    |   2 +
+ drivers/media/test-drivers/visl/visl-dec.c    |  32 +-
+ drivers/media/test-drivers/visl/visl-video.c  |   2 +
+ drivers/media/test-drivers/vivid/vivid-core.c |  21 +
+ .../media/test-drivers/vivid/vivid-meta-cap.c |   3 -
+ .../media/test-drivers/vivid/vivid-meta-out.c |   5 +-
+ .../test-drivers/vivid/vivid-touch-cap.c      |   5 +-
+ .../media/test-drivers/vivid/vivid-vbi-cap.c  |   3 -
+ .../media/test-drivers/vivid/vivid-vbi-out.c  |   3 -
+ .../media/test-drivers/vivid/vivid-vid-cap.c  |   3 -
+ .../media/test-drivers/vivid/vivid-vid-out.c  |   5 +-
+ drivers/media/usb/airspy/airspy.c             |   5 +-
+ drivers/media/usb/cx231xx/cx231xx-417.c       |   5 +-
+ drivers/media/usb/cx231xx/cx231xx-video.c     |   5 +-
+ drivers/media/usb/hackrf/hackrf.c             |   5 +-
+ drivers/media/usb/usbtv/usbtv-video.c         |   5 +-
+ drivers/media/v4l2-core/v4l2-compat-ioctl32.c |   9 +-
+ drivers/media/v4l2-core/v4l2-dev.c            |   1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |  21 +-
+ drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
+ .../staging/media/atomisp/pci/atomisp_ioctl.c |   4 +-
+ drivers/staging/media/imx/imx-media-capture.c |   7 +-
+ drivers/staging/media/meson/vdec/vdec.c       |  13 +-
+ .../staging/media/sunxi/cedrus/cedrus_h264.c  |   9 +-
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |   9 +-
+ include/media/v4l2-ioctl.h                    |   4 +
+ include/media/v4l2-mem2mem.h                  |  12 +
+ include/media/videobuf2-core.h                |  65 +-
+ include/media/videobuf2-v4l2.h                |  13 +
+ include/uapi/linux/videodev2.h                |  24 +-
+ samples/v4l/v4l2-pci-skeleton.c               |   5 +-
+ 71 files changed, 998 insertions(+), 473 deletions(-)
+ create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
 
 -- 
-Regards,
+2.39.2
 
-Laurent Pinchart
 
