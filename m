@@ -4,90 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F5B1C4167D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 16:43:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F636C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 17:05:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x0aSRGK7V7Agk2EElJvIfXoGNzDMCct5cZHLWuLmi24=; b=SO1Lcy8tcawuaqCGklY8v0/JHv
-	Gwk/gS+LEFNAYViwn4jKMfe1MNcdhD+4eWCCkCjxrlCcmg76q1szH0oisFov96fo3+4gn1CvBQQ8k
-	CrltxKljlUJ1jhREkxsZnfMyajfTvUOcRXZVAuzCD3izEe+jgOPhdJhtMQpBcUQraUN4rPXfCiz3L
-	CBpcut/eBYDY53DuvvIHB17f90b2spO+MO+TWtT4r7uH8wYY2TCr+F6Kq7PRFzYlyK1wiR7x33isG
-	YszXmbxMXmKVZgONjLayEejI9PseOmie5Lqv5OTrUFxT9eUNOw4uyQ5JuZoKol75oLDcVjJyJ75Pa
-	NlyLD2DA==;
+	bh=lJsF7AJAK+e7Asn9vLeIIh1oY+HkJEEp7Zvo8B1BNo0=; b=HzGVzc1DROaPPNyvOApkL2hsV1
+	hP/H74rKk8ou+X9RBrhhz6XFpfHPCg4pTC2AJQuU4+2Qvjk/fxR/kqj01HnAh2vtFc3Fais10yZ+H
+	Au9wZbu1r8BLvl4NB3JYXnfO9OHofkSci88ESB7F3/VXvD7DeuvzSxv+JdbRyAi7854BlOwTViy32
+	Apf9GAakQcn56az3tiKLGp67wrzBc8YU3M/Z4fyNAPBfl0a2pN5n2dBW6m04e7PKtY06lzwmxMBYh
+	3kgfeSfDaZQwzdPNIIj09RlLxhCcruCT7iEvc9w45906TJSUYfKQRUPVq9D1PraIKWXdZH1oHa6hK
+	AYT9Jw5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrqJ-005iOV-1c;
-	Tue, 31 Oct 2023 16:43:51 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1qxsBK-005oQ0-0N;
+	Tue, 31 Oct 2023 17:05:34 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrqH-005iL7-0o
+	id 1qxsBG-005oNj-0X
 	for linux-mediatek@lists.infradead.org;
-	Tue, 31 Oct 2023 16:43:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1698770629; x=1730306629;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=7B5NIFZnAMgt5AVmwDkbgyLx7q+R9dV1QKWlaH93HYc=;
-  b=RAguxMZVALAC5eHDxgNKSgBR/PfNjRIT6gf1bvok7pqvpzCJlFrsd2E0
-   Nq99xX8kib6nSmWkP8fbbhbgzrfLhKfJfhFW2uOSl+1b1QE1pI+1ZFUAD
-   DWALV3t48vK/WKOITdrzjnwH8JuAhIRTCAVA+6gZCR2pDcKyuCae/o02Z
-   DFN7SlnHwwQqw3vGGCqO6ZInRbjLoS/j/3q8eZLMooVXiaeo/3RLiFzin
-   xVHhY12XrBrY/DjPXR2rw5gwC0nxSGqN7QHxD9UNwhat8tQ2/fvAxm9Pc
-   +V9KwBXOXDsl4mAO0ijx73RIkS48kEGrdADEbodBvXk0lUn6sZtmRvuJd
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="6950417"
-X-IronPort-AV: E=Sophos;i="6.03,265,1694761200"; 
-   d="scan'208";a="6950417"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2023 09:43:45 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="1092068287"
-X-IronPort-AV: E=Sophos;i="6.03,265,1694761200"; 
-   d="scan'208";a="1092068287"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmsmga005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2023 09:43:42 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.97-RC3)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qxrq6-0000000ACtG-3U8G;
-	Tue, 31 Oct 2023 18:43:38 +0200
-Date: Tue, 31 Oct 2023 18:43:38 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+	Tue, 31 Oct 2023 17:05:32 +0000
+Received: by mail-oi1-f173.google.com with SMTP id 5614622812f47-3add37de892so3002327b6e.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 Oct 2023 10:05:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698771928; x=1699376728;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lJsF7AJAK+e7Asn9vLeIIh1oY+HkJEEp7Zvo8B1BNo0=;
+        b=RghJN3bKg03Ef99mmpv2CjZ4nSTToElTzAXX0CD6Xb7ChgB/OYqpAf7Dmx84yRFkm8
+         f53Js9F1S72fS6ZX7bnVNZkHr0E9UbfSIzsomwGm+xXlxy64fGWN2NdQAgAQHl8QCQkM
+         tvaHwENNppi9WQUnTPPGeUWfCOerzsExbdDjWmeJD4tviGnbe8ln2ZPrcD5ufWmNOZxH
+         Ju6jh7Wcu5cIo6BJLGiZ5gSlIv1uawoXfYKZjeUlsVHkyyWpypOZ7UU+8cmU7TyJomgN
+         BiiDV5GPcIaDBwaE2CZawC5lTddsMpkGBCYSJjbX6PyT5XnlCCEJpBwM7Omlw3v+uinb
+         qHOQ==
+X-Gm-Message-State: AOJu0Yw3dIWlnKOcsVqBUEDzfPLZHeQHNIlKhFc612YaFKgCF8uSVVob
+	EzMmtCvXq7cR6dcaSFYQdA==
+X-Google-Smtp-Source: AGHT+IF0jedOpOs5qASaTIhyv15lBIK/T1+/sxVBA9QUfeUnKykQxde6NqqhaGig3TtTcA51wWQnQQ==
+X-Received: by 2002:a05:6808:1586:b0:3b2:f393:dab1 with SMTP id t6-20020a056808158600b003b2f393dab1mr14430742oiw.21.1698771927296;
+        Tue, 31 Oct 2023 10:05:27 -0700 (PDT)
+Received: from herring.priv ([4.31.143.193])
+        by smtp.gmail.com with ESMTPSA id n3-20020a05680803a300b003b2daf09267sm313610oie.48.2023.10.31.10.05.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 31 Oct 2023 10:05:26 -0700 (PDT)
+Received: (nullmailer pid 1739759 invoked by uid 1000);
+	Tue, 31 Oct 2023 17:05:25 -0000
+Date: Tue, 31 Oct 2023 12:05:25 -0500
+From: Rob Herring <robh@kernel.org>
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Sakari Ailus <sakari.ailus@iki.fi>, linux-media@vger.kernel.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 3/3] media: i2c: Add driver for THine THP7312
-Message-ID: <ZUEuuqLv7p0nB9a-@smile.fi.intel.com>
-References: <20231017132103.9914-4-laurent.pinchart@ideasonboard.com>
- <ZTutbU1XG_jKZbIp@valkosipuli.retiisi.eu>
- <20231027124529.GA19539@pendragon.ideasonboard.com>
- <ZTvOIQSmpytUisUD@valkosipuli.retiisi.eu>
- <20231028151858.GB20465@pendragon.ideasonboard.com>
- <ZT9kwC3abUKR9fgQ@valkosipuli.retiisi.eu>
- <20231030104241.GJ12144@pendragon.ideasonboard.com>
- <ZUDatMX10WK0bdid@valkosipuli.retiisi.eu>
- <ZUEEBXfjTPqnnL9b@smile.fi.intel.com>
- <20231031142459.GB14322@pendragon.ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Julien Stephan <jstephan@baylibre.com>, Sakari Ailus <sakari.ailus@iki.fi>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
+Subject: Re: [PATCH v5 1/3] dt-bindings: media: Add bindings for THine
+ THP7312 ISP
+Message-ID: <20231031170525.GA1728781-robh@kernel.org>
+References: <20231030133247.11243-1-laurent.pinchart@ideasonboard.com>
+ <20231030133247.11243-2-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231031142459.GB14322@pendragon.ideasonboard.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <20231030133247.11243-2-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_094349_333712_739806A8 
-X-CRM114-Status: GOOD (  15.75  )
+X-CRM114-CacheID: sfid-20231031_100530_204192_1C8710B8 
+X-CRM114-Status: GOOD (  30.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,31 +82,306 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 31, 2023 at 04:24:59PM +0200, Laurent Pinchart wrote:
-> On Tue, Oct 31, 2023 at 03:41:25PM +0200, Andy Shevchenko wrote:
-> > On Tue, Oct 31, 2023 at 10:45:32AM +0000, Sakari Ailus wrote:
-
-...
-
-> > I agree with Sakari. Let's reduce the scope of ACPI/OF/etc-specific functions
-> > in the drivers. There are really little that have no generic counterparts.
-> > And most of the usages are special cases.
+On Mon, Oct 30, 2023 at 03:32:45PM +0200, Laurent Pinchart wrote:
+> From: Paul Elder <paul.elder@ideasonboard.com>
 > 
-> Sakar has submitted a patch to add one missing fwnode function.
+> The THP7312 is an external ISP from THine. Add DT bindings for it.
+> 
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> Co-developed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+> Changes since v4:
+> 
+> - Add bus-type property
+> 
+> Changes since v2:
+> 
+> - Drop description of reg property
+> - Improve thine,boot-mode property documentation
+> - Making thine,boot-mode property optional
+> - Don't use underscores in supplies names
+> ---
+>  .../bindings/media/i2c/thine,thp7312.yaml     | 231 ++++++++++++++++++
+>  MAINTAINERS                                   |   7 +
+>  2 files changed, 238 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml b/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
+> new file mode 100644
+> index 000000000000..a576a8669644
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
+> @@ -0,0 +1,231 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +# Copyright (c) 2023 Ideas on Board
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/i2c/thine,thp7312.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: THine THP7312
+> +
+> +maintainers:
+> +  - Paul Elder <paul.elder@@ideasonboard.com>
+> +
+> +description:
+> +  The THP7312 is a standalone ISP controlled over i2c, and is capable of
+> +  various image processing and correction functions, including 3A control. It
+> +  can be connected to CMOS image sensors from various vendors, supporting both
+> +  MIPI CSI-2 and parallel interfaces. It can also output on either MIPI CSI-2
+> +  or parallel. The hardware is capable of transmitting and receiving MIPI
+> +  interlaved data strams with data types or multiple virtual channel
+> +  identifiers.
+> +
+> +allOf:
+> +  - $ref: ../video-interface-devices.yaml#
 
-I have reviewed it already :-)
+/schemas/media/...
 
-> If it gets accepted, I'll try it out and see if I can convert this driver.
+> +
+> +properties:
+> +  compatible:
+> +    const: thine,thp7312
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +    description: CLKI clock input
+> +
+> +  thine,boot-mode:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    minimum: 0
+> +    maximum: 1
+> +    default: 1
+> +    description:
+> +      Boot mode of the THP7312, reflecting the value of the BOOT[0] pin strap.
+> +      0 is for the SPI/2-wire slave boot, 1 is for the SPI master boot (from
+> +      external flash ROM).
+> +
+> +  reset-gpios:
+> +    maxItems: 1
+> +    description:
+> +      Reference to the GPIO connected to the RESET_N pin, if any.
+> +      Must be released (set high) after all supplies are applied.
+> +
+> +  vddcore-supply:
+> +    description:
+> +      1.2V supply for core, PLL, MIPI rx and MIPI tx.
+> +
+> +  vhtermrx-supply:
+> +    description:
+> +      Supply for input (RX). 1.8V for MIPI, or 1.8/2.8/3.3V for parallel.
+> +
+> +  vddtx-supply:
+> +    description:
+> +      Supply for output (TX). 1.8V for MIPI, or 1.8/2.8/3.3V for parallel.
+> +
+> +  vddhost-supply:
+> +    description:
+> +      Supply for host interface. 1.8V, 2.8V, or 3.3V.
+> +
+> +  vddcmos-supply:
+> +    description:
+> +      Supply for sensor interface. 1.8V, 2.8V, or 3.3V.
+> +
+> +  vddgpio-0-supply:
+> +    description:
+> +      Supply for GPIO_0. 1.8V, 2.8V, or 3.3V.
+> +
+> +  vddgpio-1-supply:
+> +    description:
+> +      Supply for GPIO_1. 1.8V, 2.8V, or 3.3V.
+> +
+> +  orientation: true
+> +  rotation: true
+> +
+> +  port:
+> +    $ref: /schemas/graph.yaml#/$defs/port-base
+> +    additionalProperties: false
+> +
+> +    properties:
+> +      endpoint:
+> +        $ref: /schemas/media/video-interfaces.yaml#
+> +        unevaluatedProperties: false
+> +
+> +        properties:
+> +          bus-type:
+> +            const: 4 # CSI-2 D-PHY
+> +
+> +          data-lanes:
+> +            description:
+> +              This property is for lane reordering between the THP7312 and the
+> +              SoC. The sensor supports either two-lane, or four-lane operation.
+> +              If this property is omitted four-lane operation is assumed. For
+> +              two-lane operation the property must be set to <1 2>.
+> +            minItems: 2
+> +            maxItems: 4
+> +            items:
+> +              maximum: 4
+> +
+> +  sensors:
+> +    type: object
+> +    description: List of connected sensors
+> +
+> +    properties:
+> +      "#address-cells":
+> +        const: 1
+> +
+> +      "#size-cells":
+> +        const: 0
+> +
+> +    patternProperties:
+> +      "^sensor@[01]":
 
-I'm sure we can make this happen, but let's see...
+Missing a '$' on the end.
 
-> I will still not do a partial conversion if I hit any other blocker.
+> +        type: object
+> +        description:
+> +          Sensors connected to the first and second input, with one node per
+> +          sensor.
+> +
+> +        properties:
+> +          thine,model:
+> +            $ref: /schemas/types.yaml#/definitions/string
+> +            description:
+> +              Model of the connected sensors. Must be a valid compatible string.
+> +
+> +          reg:
+> +            maxItems: 1
+> +            description: THP7312 input port number
 
-If any other issues, don't hesitate to report!
+items:
+  - maximum: 1
 
--- 
-With Best Regards,
-Andy Shevchenko
+> +
+> +          data-lanes:
+> +            $ref: /schemas/media/video-interfaces.yaml#/properties/data-lanes
+> +            items:
+> +              maxItems: 4
+> +            description:
+> +              This property is for lane reordering between the THP7312 and the imaging
+> +              sensor that it is connected to.
+> +
+> +        patternProperties:
+> +          ".*-supply":
 
+"-supply$"
 
+> +            description: Power supplies for the sensor
+
+Perhaps some reasoning why any supply name is allowed here?
+
+> +
+> +        required:
+> +          - reg
+> +          - data-lanes
+> +
+> +        additionalProperties: false
+> +
+> +    required:
+> +      - "#address-cells"
+> +      - "#size-cells"
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reset-gpios
+> +  - clocks
+> +  - vddcore-supply
+> +  - vhtermrx-supply
+> +  - vddtx-supply
+> +  - vddhost-supply
+> +  - vddcmos-supply
+> +  - vddgpio-0-supply
+> +  - vddgpio-1-supply
+> +  - sensors
+> +  - port
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    #include <dt-bindings/media/video-interfaces.h>
+> +
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        camera@61 {
+> +            compatible = "thine,thp7312";
+> +            reg = <0x61>;
+> +
+> +            pinctrl-names = "default";
+> +            pinctrl-0 = <&cam1_pins_default>;
+> +
+> +            reset-gpios = <&pio 119 GPIO_ACTIVE_LOW>;
+> +            clocks = <&camera61_clk>;
+> +
+> +            vddcore-supply = <&vsys_v4p2>;
+> +            vhtermrx-supply = <&vsys_v4p2>;
+> +            vddtx-supply = <&vsys_v4p2>;
+> +            vddhost-supply = <&vsys_v4p2>;
+> +            vddcmos-supply = <&vsys_v4p2>;
+> +            vddgpio-0-supply = <&vsys_v4p2>;
+> +            vddgpio-1-supply = <&vsys_v4p2>;
+> +
+> +            orientation = <0>;
+> +            rotation = <0>;
+> +
+> +            sensors {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                sensor@0 {
+> +                    thine,model = "sony,imx258";
+> +                    reg = <0>;
+> +
+> +                    data-lanes = <4 1 3 2>;
+> +
+> +                    dovdd-supply = <&vsys_v4p2>;
+> +                    avdd-supply = <&vsys_v4p2>;
+> +                    dvdd-supply = <&vsys_v4p2>;
+> +                };
+> +            };
+> +
+> +            port {
+> +                thp7312_2_endpoint: endpoint {
+> +                    remote-endpoint = <&mipi_thp7312_2>;
+> +                    bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
+> +                    data-lanes = <4 2 1 3>;
+> +                };
+> +            };
+> +        };
+> +    };
+> +...
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index f3e6dbbbbccb..2e094a7e7d07 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -21448,6 +21448,13 @@ S:	Maintained
+>  F:	Documentation/ABI/testing/sysfs-class-firmware-attributes
+>  F:	drivers/platform/x86/think-lmi.?
+>  
+> +THP7312 ISP DRIVER
+> +M:	Paul Elder <paul.elder@ideasonboard.com>
+> +L:	linux-media@vger.kernel.org
+> +S:	Maintained
+> +T:	git git://linuxtv.org/media_tree.git
+> +F:	Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
+> +
+>  THUNDERBOLT DMA TRAFFIC TEST DRIVER
+>  M:	Isaac Hazan <isaac.hazan@intel.com>
+>  L:	linux-usb@vger.kernel.org
+> -- 
+> Regards,
+> 
+> Laurent Pinchart
+> 
 
