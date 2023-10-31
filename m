@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF35C4167D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 16:36:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7965C4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 16:36:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=atK/kDvG1BdB1Ql0lxnu55jjgzpi7DAGGZ/ctT2lERg=; b=p31b3btQr2X2zMgRoAHabshWzc
-	5n1RAsIGC0vlSno5gAA3EEE9Sy4gO2JQWJO/2Vc8P7fZNVeVjaXrKLj2V3V3uSDBv8x13Ta3yHSEm
-	oeOcBYmmYthMR9EqmrvNJvLj/mgZNS1gnW2K4yQh8KFsb/qJwFjZzZuIij9EQO8+Cw5SEOW/fRjis
-	0Ropn2QZm/h21gY93J6T0uCNbjdbAGbQFFVfOA8K4vzqrKv111vAFRfkzDml000OwKlz117La8vXo
-	8xkQ5fhGqu4GjRMtrrrP81wVXaZJmCuMG3JiyXgWnvwUgn3u3D5JHgKj6tFtH18tXxr/vCIRHaU61
-	pth4MNIA==;
+	bh=x/BZi6jAexYwrvs36rAttaRt0faTc90UjxSi//s/6JA=; b=zf8NZ1qZ2RZKyUJyARi2OByc3K
+	lD+5Z+MBYohHfsQtQpH40E2+vjBPrlw9zykxstyTJyO2wHsf/wRaENpP+/++e0i/C3Nfs3M8nx3Jt
+	PuOJ2557DybWsMmxyOuIIbo8BMsacu/HFc3myvPz68yd1gjk61hLmZmyinY4l1MWbKaEh7h8Zsr3X
+	DSa77S4T2DJ4DGJXYfix6RAP7A2ZzUvNahNCqDn93aRL8+gXSErOf1nrQqpqoKzGtxD3hChF1lZ7c
+	7j0uxnGHy/xweQRS7dfT8FR5NZVJnIzaMWLvJMHCHPPjvkslWv6QWmjzNHM7uBwcChDeR7apJdjck
+	B82/+65Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrjF-005fD4-21;
-	Tue, 31 Oct 2023 16:36:33 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qxrjR-005fJX-33;
+	Tue, 31 Oct 2023 16:36:45 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxreq-005cK9-26;
-	Tue, 31 Oct 2023 16:32:02 +0000
+	id 1qxres-005cLr-17;
+	Tue, 31 Oct 2023 16:32:04 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c562:2ef4:80c0:92f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 15EA366073C2;
-	Tue, 31 Oct 2023 16:31:59 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AFF3066073B9;
+	Tue, 31 Oct 2023 16:32:00 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698769919;
-	bh=DdlxkRuWKO9j/krVAsdkWz62fUG/5l8klfwhgZtW1d4=;
+	s=mail; t=1698769921;
+	bh=DN10seno4ctykt3zMW3u3yNedtr/M9AvxUqQB0rIcw8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jsZn+w9AGvdKGzrY+2z3fatrE1MKDJr2cgINg+ChcyXE6FwDgydRlJ+zp+pBj1HNo
-	 SAAcPE1fqzvGJcvELQJkHxpYFP87r/UYB6BVMb0v9PmCMCU44d9T+1nDepbQf7Kju2
-	 47vNleTl1+X29J+P34rflAOb+WYbhWhW+VcJgLEww4qmy+frNk5mcjxt+lCZ2dutrG
-	 OVokWnBeg2D5wvdLnjTyhQcG+141GcRS08hZD1tSIXHBXj5nSba8kXbQ/O5wR6yCwv
-	 EjrzcxcJ1Q3Beb6fLJmgH3ujKoz9PszEh7uAIrIs74wILR21u5Majy27QtJEwDf6c4
-	 gNOUD8kLKXbog==
+	b=hUGAwzA90yRpd1pLjaXIdAaACsJUbjL78tE8KESOgP+A7cIGneqXcI76YAE38k0tp
+	 MKHKzfbOtkkvQc12qRpLf/skzGmkMNLUBdJqT5UHQl/MbQgFlq74T524AYqnb+3C2c
+	 x5c5IZWhnoaBoT5wlkPNGu13FcApwhegpBKuHsgGwWDIysWJOu/QpJdJfR3dMnJ+mW
+	 qkKkWtboewHHWqhKUwQfD8GRMbbvrnIH5aBkgkWuOwWqO4tPwxJmkV/XJz5ndlOL4P
+	 MD9eTZTNTEKKQ5Z2Y1E0HjnEtYHo2iMOwe2HELM5JQQBHFyAgS1N5+roNvu3XUB4Nj
+	 YRFelWT/vXd6w==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -61,19 +61,19 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v14 29/56] media: verisilicon: Stop direct calls to queue num_buffers field
-Date: Tue, 31 Oct 2023 17:30:37 +0100
-Message-Id: <20231031163104.112469-30-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Daniel Almeida <daniel.almeida@collabora.com>
+Subject: [PATCH v14 30/56] media: test-drivers: Stop direct calls to queue num_buffers field
+Date: Tue, 31 Oct 2023 17:30:38 +0100
+Message-Id: <20231031163104.112469-31-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_093200_834183_62140FFA 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231031_093202_640949_39CC994D 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,26 +91,164 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
 This allows us to change how the number of buffers is computed in the
 future.
+If 'min_buffers_needed' is set remove useless checks in queue setup
+functions.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+CC: Daniel Almeida <daniel.almeida@collabora.com>
 ---
- drivers/media/platform/verisilicon/hantro_postproc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/test-drivers/visl/visl-dec.c         | 4 ++--
+ drivers/media/test-drivers/vivid/vivid-meta-cap.c  | 3 ---
+ drivers/media/test-drivers/vivid/vivid-meta-out.c  | 5 +++--
+ drivers/media/test-drivers/vivid/vivid-touch-cap.c | 5 +++--
+ drivers/media/test-drivers/vivid/vivid-vbi-cap.c   | 3 ---
+ drivers/media/test-drivers/vivid/vivid-vbi-out.c   | 3 ---
+ drivers/media/test-drivers/vivid/vivid-vid-cap.c   | 3 ---
+ drivers/media/test-drivers/vivid/vivid-vid-out.c   | 5 +----
+ 8 files changed, 9 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-index 64d6fb852ae9..8f8f17e671ce 100644
---- a/drivers/media/platform/verisilicon/hantro_postproc.c
-+++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-@@ -195,7 +195,7 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
- 	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
--	unsigned int num_buffers = cap_queue->num_buffers;
-+	unsigned int num_buffers = vb2_get_num_buffers(cap_queue);
- 	struct v4l2_pix_format_mplane pix_mp;
- 	const struct hantro_fmt *fmt;
- 	unsigned int i, buf_size;
+diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
+index ba20ea998d19..4672dc5e52bb 100644
+--- a/drivers/media/test-drivers/visl/visl-dec.c
++++ b/drivers/media/test-drivers/visl/visl-dec.c
+@@ -287,7 +287,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+ 	frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
+ 
+ 	len = 0;
+-	for (i = 0; i < out_q->num_buffers; i++) {
++	for (i = 0; i < vb2_get_num_buffers(out_q); i++) {
+ 		char entry[] = "index: %u, state: %s, request_fd: %d, ";
+ 		u32 old_len = len;
+ 		struct vb2_buffer *vb2;
+@@ -347,7 +347,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+ 	frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
+ 
+ 	len = 0;
+-	for (i = 0; i < cap_q->num_buffers; i++) {
++	for (i = 0; i < vb2_get_num_buffers(cap_q); i++) {
+ 		u32 old_len = len;
+ 		struct vb2_buffer *vb2;
+ 		char *q_status;
+diff --git a/drivers/media/test-drivers/vivid/vivid-meta-cap.c b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
+index 780f96860a6d..0a718d037e59 100644
+--- a/drivers/media/test-drivers/vivid/vivid-meta-cap.c
++++ b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
+@@ -30,9 +30,6 @@ static int meta_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 		sizes[0] = size;
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+-
+ 	*nplanes = 1;
+ 	return 0;
+ }
+diff --git a/drivers/media/test-drivers/vivid/vivid-meta-out.c b/drivers/media/test-drivers/vivid/vivid-meta-out.c
+index 95835b52b58f..4a569a6e58be 100644
+--- a/drivers/media/test-drivers/vivid/vivid-meta-out.c
++++ b/drivers/media/test-drivers/vivid/vivid-meta-out.c
+@@ -18,6 +18,7 @@ static int meta_out_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 				struct device *alloc_devs[])
+ {
+ 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	unsigned int size =  sizeof(struct vivid_meta_out_buf);
+ 
+ 	if (!vivid_is_webcam(dev))
+@@ -30,8 +31,8 @@ static int meta_out_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 		sizes[0] = size;
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
+ 
+ 	*nplanes = 1;
+ 	return 0;
+diff --git a/drivers/media/test-drivers/vivid/vivid-touch-cap.c b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
+index c7f6e23df51e..4b3c6ea0afde 100644
+--- a/drivers/media/test-drivers/vivid/vivid-touch-cap.c
++++ b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
+@@ -13,6 +13,7 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 				 struct device *alloc_devs[])
+ {
+ 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	struct v4l2_pix_format *f = &dev->tch_format;
+ 	unsigned int size = f->sizeimage;
+ 
+@@ -23,8 +24,8 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 		sizes[0] = size;
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
+ 
+ 	*nplanes = 1;
+ 	return 0;
+diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
+index b65b02eeeb97..3840b3a664ac 100644
+--- a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
++++ b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
+@@ -134,9 +134,6 @@ static int vbi_cap_queue_setup(struct vb2_queue *vq,
+ 
+ 	sizes[0] = size;
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+-
+ 	*nplanes = 1;
+ 	return 0;
+ }
+diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-out.c b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
+index cd56476902a2..434a10676417 100644
+--- a/drivers/media/test-drivers/vivid/vivid-vbi-out.c
++++ b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
+@@ -30,9 +30,6 @@ static int vbi_out_queue_setup(struct vb2_queue *vq,
+ 
+ 	sizes[0] = size;
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+-
+ 	*nplanes = 1;
+ 	return 0;
+ }
+diff --git a/drivers/media/test-drivers/vivid/vivid-vid-cap.c b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
+index 3a06df35a2d7..2804975fe278 100644
+--- a/drivers/media/test-drivers/vivid/vivid-vid-cap.c
++++ b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
+@@ -117,9 +117,6 @@ static int vid_cap_queue_setup(struct vb2_queue *vq,
+ 					dev->fmt_cap->data_offset[p];
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+-
+ 	*nplanes = buffers;
+ 
+ 	dprintk(dev, 1, "%s: count=%d\n", __func__, *nbuffers);
+diff --git a/drivers/media/test-drivers/vivid/vivid-vid-out.c b/drivers/media/test-drivers/vivid/vivid-vid-out.c
+index 184a6df2c29f..24c6dc896255 100644
+--- a/drivers/media/test-drivers/vivid/vivid-vid-out.c
++++ b/drivers/media/test-drivers/vivid/vivid-vid-out.c
+@@ -73,12 +73,9 @@ static int vid_out_queue_setup(struct vb2_queue *vq,
+ 				       vfmt->data_offset[p] : size;
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+-
+ 	*nplanes = planes;
+ 
+-	dprintk(dev, 1, "%s: count=%d\n", __func__, *nbuffers);
++	dprintk(dev, 1, "%s: count=%u\n", __func__, vb2_get_num_buffers(vq));
+ 	for (p = 0; p < planes; p++)
+ 		dprintk(dev, 1, "%s: size[%u]=%u\n", __func__, p, sizes[p]);
+ 	return 0;
 -- 
 2.39.2
 
