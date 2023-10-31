@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE866C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 07:17:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42542C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Oct 2023 07:17:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SJWU5tnjso1vDAK736GkMoFEm3BXg8uhBy9G73LcJvU=; b=SQuKV6vHrNVJbfjVXR1qqPmbTh
-	n0oMYsvy1eFX5+iIDFKYr96Ro9wyOjXI8CaoZdyQ5bue2vV76tLgyO9N/+0c8o5vKZZnVlljpqXTL
-	Pc3wi6p+pD2lRjGUj9ae9Vvs7BWg4pWf9u3TFobOEaaiuzQGk4xQhTl+JtlfXq4hNWVJr0zuM3rv6
-	gvj4vxXTSLBoOyQ6ssQ4qrRVmuqdi0dfnanYdxAl5Pt/ed3ibiAH/6slv+DlB5PqcAD4P6n7ccZWU
-	DSoM8TldVYs5XMJGs4+oKJxRUT3Fpm8EjXlMyC/Ufg0NcK1I76GHheJmv70vUr/4d48humx038tte
-	k3UcYP8A==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6VOElouc2GMG6bSXp2UcAdff2CtTi6AX9Q0p7itVxKA=; b=QczqnPRvpQ/MgqzNasBUwF7j9m
+	du1iRF5jz7Y4+OCN83AukPkdlqtEE7k9D7K0T5Lba0PN0Cw6ImWfwhaByWg1zSWDn0YMr8OQphXEH
+	rRTe3VUdpHfep959Ugd2sDMtOoH0LhOLvSO6DPcM8cp9esbfVFGLnQr18g4IBihB25FLaaYsE2a0h
+	5CmWudBrNt3rWbo/o/iyVeMDQWoSFpaDb0ZUrVP00Aab2IE9vnQlgTa1WyoHKpdQYF/5WA3zEVkk6
+	XRGKbPm44Bsp5+u75ZKr6oG4sst+2TxICZjudhFekGfQC3SDQGpLTmxW779IPUDewyx0ZPY3zk9du
+	cC9C70hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxj0L-004ft4-2q;
-	Tue, 31 Oct 2023 07:17:37 +0000
-Received: from m12.mail.163.com ([220.181.12.198])
+	id 1qxj0W-004fww-1E;
+	Tue, 31 Oct 2023 07:17:48 +0000
+Received: from m12.mail.163.com ([220.181.12.215])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxj0H-004fr7-2N;
-	Tue, 31 Oct 2023 07:17:35 +0000
+	id 1qxj0H-004fr4-2n;
+	Tue, 31 Oct 2023 07:17:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=SJWU5
-	tnjso1vDAK736GkMoFEm3BXg8uhBy9G73LcJvU=; b=atXhhDwUyy89XVbCFZ8ia
-	BSGTaJeLg4Fst7Xvz07DcCB3s2IveiCSNDwyx6ET5JKTU/mIL4uV1VdQNGgeu2uA
-	ZwlUCsopSlc4U0e2wor87qqHUaR+9p3uJ22Hnln5J28XI8ZGlNmIQ60EbhDwijYQ
-	OIA8q5oU/DwWKnhc1Od4f8=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=6VOEl
+	ouc2GMG6bSXp2UcAdff2CtTi6AX9Q0p7itVxKA=; b=hNxmtqR1fN7BA3q1g2ICx
+	VRxNm0SfZHNYL8L8HAhhbgtHVZzrPE1itUvu7NgCwp0KV49XJXkpVznmWmoByFuM
+	ZYiUfcvatLYHhxg7N8z/1ySEFYA3dV9lQPRlnpf4eOujyUP0z17QjALMBAKvGuE9
+	+Wfd3c+X9AnW5EUCrnsBaU=
 Received: from leanderwang-LC4.localdomain (unknown [111.206.145.21])
-	by zwqz-smtp-mta-g3-3 (Coremail) with SMTP id _____wBn3ojfqUBlwMj4AQ--.51864S3;
-	Tue, 31 Oct 2023 15:16:49 +0800 (CST)
+	by zwqz-smtp-mta-g3-3 (Coremail) with SMTP id _____wBn3ojfqUBlwMj4AQ--.51864S2;
+	Tue, 31 Oct 2023 15:16:48 +0800 (CST)
 From: Zheng Wang <zyytlz.wz@163.com>
 To: dmitry.osipenko@collabora.com
 Cc: Kyrie.Wu@mediatek.com,
@@ -54,24 +54,23 @@ Cc: Kyrie.Wu@mediatek.com,
 	amergnat@baylibre.com,
 	wenst@chromium.org,
 	Zheng Wang <zyytlz.wz@163.com>
-Subject: [PATCH v2 1/3] media: mtk-jpeg: Remove cancel worker in mtk_jpeg_remove to  avoid the crash of multi-core JPEG devices
-Date: Tue, 31 Oct 2023 15:16:42 +0800
-Message-Id: <20231031071644.20086-2-zyytlz.wz@163.com>
+Subject: [PATCH v2 0/3] Fix use-after-free bug in mtk_jpeg_dec_device_run
+Date: Tue, 31 Oct 2023 15:16:41 +0800
+Message-Id: <20231031071644.20086-1-zyytlz.wz@163.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231031071644.20086-1-zyytlz.wz@163.com>
-References: <20231031071644.20086-1-zyytlz.wz@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBn3ojfqUBlwMj4AQ--.51864S3
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Zw4rtF48tF1UJF4fZr4xWFg_yoW8Gr45pF
-	WfK348CrWUGF4qgryDAa47ZFy5Gwnaya40gr47uwn2q393XF47t34jya4FqFWxXF9rCFy3
-	tF1FvryfWF4jvFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziqQ6QUUUUU=
+X-CM-TRANSID: _____wBn3ojfqUBlwMj4AQ--.51864S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Jw4xJry8Zw1DWryDtw4DCFg_yoWkArX_WF
+	9Y9wn7uw18G3srJF4ayFy5ZrW8GFy7KF45GFZ8KFs5JFy5XFZIqF1vyrZ3uan3Wa12vF43
+	Gr4FqF4UXw1j9jkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_1v3UUUUUU==
 X-Originating-IP: [111.206.145.21]
-X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/1tbiXB8aU1Xl78YxZAAAsG
+X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/xtbBdgAaU2DkptftmgAAs9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_001734_167568_3EEC8983 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20231031_001734_658215_21E71424 
+X-CRM114-Status: UNSURE (   7.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,36 +85,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch reverts commit c677d7ae8314
-("media: mtk-jpeg: Fix use after free bug due to uncanceled work").
-The job_timeout_work is initialized only for
-the single-core JPEG device so it will cause the crash for multi-core
-JPEG devices.
+Hello,
 
-Fix it by removing the cancel_delayed_work_sync function.
+This v2 series fixes the use-after-free bug in mtk_jpeg_dec_device_run.
+It inclues reverting the incomplete fix before and make the right fix.
+Also,it fixes the error of timeout-worker-schedule in multiple-core
+devices.
 
-Fixes: c677d7ae8314 ("media: mtk-jpeg: Fix use after free bug due to uncanceled work")
-Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
-Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
----
-v2:
-- put the patches into a single series suggested by Dmitry
----
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 1 -
- 1 file changed, 1 deletion(-)
+1. Remove cancel worker in mtk_jpeg_remove for the worker is only
+registered in single-core device but we try to cacnel it in both
+single-core and multiple-core devices.
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 7194f88edc0f..60425c99a2b8 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1403,7 +1403,6 @@ static void mtk_jpeg_remove(struct platform_device *pdev)
- {
- 	struct mtk_jpeg_dev *jpeg = platform_get_drvdata(pdev);
- 
--	cancel_delayed_work_sync(&jpeg->job_timeout_work);
- 	pm_runtime_disable(&pdev->dev);
- 	video_unregister_device(jpeg->vdev);
- 	v4l2_m2m_release(jpeg->m2m_dev);
+2. Fix use-after-free bug by delay the schedule_delayed_work only if
+mtk_jpeg_set_dec_dst runs successfully.
+
+3. Delay the schedule_delayed_work in mtk_jpegdec_worker as it has same
+code logic in mtk_jpeg_dec_device_run.
+
+version 2 changes
+
+-put the patches into on series suggested by Dmitry
+
+Zheng Wang (3):
+  media: mtk-jpeg: Remove cancel worker in mtk_jpeg_remove to avoid the
+    crash of multi-core JPEG devices
+  media: mtk-jpeg: Fix use after free bug due to error path handling
+    in mtk_jpeg_dec_device_run
+  media: mtk-jpeg: Fix timeout schedule error in mtk_jpegdec_worker.
+
+ .../media/platform/mediatek/jpeg/mtk_jpeg_core.c    | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
 -- 
 2.25.1
 
