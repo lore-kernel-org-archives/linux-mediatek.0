@@ -4,82 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8497C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 10:07:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12219C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 11:03:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qYIwEi2Wd+4TePNzi94mb6f7lO2b/AohyfB/LcSkyNU=; b=Ef8auOaWuGGGaIiMClWSNYC/3x
-	NZE1rDRaTm7W6LsAUs/wju0aVi50pVKwuYFQYWPL7GenLfxuw3aso+EvZFup4B1ULyNciWJki2wNA
-	iahE3r+1WmZyTnDJrH4JbfB/E3GEyykXpjzazzucTWtc/wvgorMxp3zOy5S2uW/YHlQ7W4chiyJT8
-	N2pOwcCSEMlm7s8qZErKqIFT0sESeKvgnWKTxCaRdI24zsCy9LxFYrHK/KBerIg/yQIYIwulMq8fs
-	iYGFZQPdzPyYfjNEZvZUHH96FRieP5UI1I1VzTiYyAOsy0N77Ab/+qgovl2kvfjGmZDeJQGxQptUi
-	jPw7PAyg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=adWZD/CiITfd8laT0/jLN0Y2PiLZRZKUPz8HB2rWHdc=; b=4PzIBgL14GxmoS
+	lGMn/qkoQIyyHen3BrtZ9wGXcRkRa1GUEebDLyqoK8Mn6VkLVeho+WEzw04EaQ0SJQuq1L1usGFkS
+	tOchDh6odgWXwCBoYqU4dTu3+cIfz24Lqdnl5WpuDSBvm8aVBhSPTOJRh12svo2zTVM/Eb/c3LUus
+	YqkVrHAcmzoViFRO+ZnoE+PEVGHrot8Gr7NiMiwrGkmyOiEM70yzMLR4B5BcG52a/kBMFU5vhjS6J
+	6A0gqtcEJMXBRteSDo8P2evWJxChmK/aqE0KfLpnKrP3/EiuWPYCH0cjqEYo1XiE798Mc4xpgHqOP
+	n2eKxr0pbRZPKfNXugZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy88W-0070nf-04;
-	Wed, 01 Nov 2023 10:07:44 +0000
-Received: from mgamail.intel.com ([134.134.136.31])
+	id 1qy90Y-007EpM-2h;
+	Wed, 01 Nov 2023 11:03:34 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy88Q-0070ka-1q
+	id 1qy90T-007Enk-0o
 	for linux-mediatek@lists.infradead.org;
-	Wed, 01 Nov 2023 10:07:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1698833258; x=1730369258;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/G6YHPcZjKp/CrBMDSSrt2epiYSXFZcrqUWw6QsDyWY=;
-  b=KlUp3GNSt7hjbcSsGg8e016t9dyBOk6rqhBFosZgXyTliaXQjhJMOSD6
-   I4UftPMPKo/yuCTWvreQlUBq0fl1ZYKYIbnMacGpd56kOT1qFnW02eNXx
-   ZyhuFos+ub2Gjhn49hGcB3i7avBEI06sBrdLaVnYbnWW7sIOD/RkvGwlw
-   1gZKiG41MTzvLahKw4skJcwPnaFWQvcPGveDG2rbwTRv0dvdmYTxhr4dj
-   1jyGEji8nV+oBGwhqlPuECPokwMrdvrR0asSxFJNDzw9V3KoiGJYj6+PJ
-   9vDrb3giAAVl43oz53LF979tM1DrEgbHGnAq2Pp00uBzVNSry2XDMX849
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="452756083"
-X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
-   d="scan'208";a="452756083"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 03:07:37 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="851533391"
-X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
-   d="scan'208";a="851533391"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 03:07:33 -0700
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id F006C1207A3;
-	Wed,  1 Nov 2023 12:00:15 +0200 (EET)
-Date: Wed, 1 Nov 2023 10:00:15 +0000
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: linux-acpi@vger.kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-media@vger.kernel.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, rafael@kernel.org
-Subject: Re: [PATCH v2 1/1] device property: Add fwnode_name_eq()
-Message-ID: <ZUIhr1Wiy96PMEKx@kekkonen.localdomain>
-References: <20231101072729.1142578-1-sakari.ailus@linux.intel.com>
- <ZUIfSIWze4llNJfd@smile.fi.intel.com>
+	Wed, 01 Nov 2023 11:03:33 +0000
+Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	id 1qy90N-00073n-Qa; Wed, 01 Nov 2023 12:03:23 +0100
+Message-ID: <7a9a1b2f-a3df-4806-a7b3-992f974c2d06@leemhuis.info>
+Date: Wed, 1 Nov 2023 12:03:23 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZUIfSIWze4llNJfd@smile.fi.intel.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: regression with 33140e668b10 thermal/drivers/mediatek: Control
+ buffer enablement tweaks
+Content-Language: en-US, de-DE
+From: "Linux regression tracking #update (Thorsten Leemhuis)"
+ <regressions@leemhuis.info>
+To: Bagas Sanjaya <bagasdotme@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Linux Regressions <regressions@lists.linux.dev>
+References: <trinity-6713557b-fe0a-4dae-84aa-1aa86f7619fa-1693473911557@3c-app-gmx-bs12>
+ <ZPBjGWPjSfl-HmDJ@debian.me>
+ <e264149e-c053-4346-a645-e694ed791569@leemhuis.info>
+In-Reply-To: <e264149e-c053-4346-a645-e694ed791569@leemhuis.info>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1698836609;b5b816c2;
+X-HE-SMSGID: 1qy90N-00073n-Qa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231101_030738_662797_760B2480 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20231101_040329_452998_96EA7235 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,35 +65,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 01, 2023 at 11:50:00AM +0200, Andy Shevchenko wrote:
-> On Wed, Nov 01, 2023 at 09:27:29AM +0200, Sakari Ailus wrote:
-> > Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
-> > on fwnode property API. The same convention of ending the comparison at
-> > '@' (besides '\0') is applied on also both ACPI and swnode. The function
-> > is intended for comparing unit address-less node names on DT and firmware
-> > or swnodes compliant with DT bindings.
-> 
-> ...
-> 
-> > - Use size_t type for len.
-> 
-> Strictly speaking it should be ptrdiff_t according to the code.
+[TLDR: This mail in primarily relevant for Linux regression tracking. A
+change or fix related to the regression discussed in this thread was
+posted or applied, but it did not use a Closes: tag to point to the
+report, as Linus and the documentation call for. Things happen, no
+worries -- but now the regression tracking bot needs to be told manually
+about the fix. See link in footer if these mails annoy you.]
 
-It'll be compared to size_t right after. ptrdiff_t is signed and we know we
-have a positive number here so size_t seems like a better choice.
-
+On 12.09.23 14:23, Linux regression tracking #update (Thorsten Leemhuis)
+wrote:
 > 
-> ...
+> On 31.08.23 11:53, Bagas Sanjaya wrote:
+>> On Thu, Aug 31, 2023 at 11:25:11AM +0200, Frank Wunderlich wrote:
+>>>
+>>> The commit 33140e668b10 "thermal/drivers/mediatek: Control buffer enablement tweaks" is merged between 6.3 and 6.4 and causes a regression where temperature cannot be read correctly at least for mt7986/Bpi-R3.
+>>>
+>>> bpi-r3 ~ # cat /sys/class/thermal/thermal_zone0/temp
+>>> -274000
+>>>
+>>> after reverting the commit and fixing some build-errors in 6.5-rc7 because new members used in mt8365_thermal_data too, we can read temperature on mt7986 again.
+>>>
+>>
+>> Thanks for the regression report. I'm adding it to regzbot:
+>>
+>> #regzbot ^introduced: 33140e668b1020
+>> #regzbot title: incorrect temperature on MT7986 due to tweaking buffer
 > 
-> > + * the comparison to either '\0' or '@' character
 > 
-> NUL is a human-readable substitution to less parsable '\0'.
+> #regzbot monitor:
+> https://lore.kernel.org/all/20230907112018.52811-1-linux@fw-web.de/
+> #regzbot fix: thermal/drivers/mediatek: Fix control buffer enablement on
+> MT7896
+> #regzbot ignore-activity
 
-I can send v3 with that but I'll wait a bit if there are more comments.
+patch title changed, hence:
 
--- 
-Sakari Ailus
+#regzbot fix: 5055fadfa7e16f242
+#regzbot ignore-activity
+
+Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+--
+Everything you wanna know about Linux kernel regression tracking:
+https://linux-regtracking.leemhuis.info/about/#tldr
+That page also explains what to do if mails like this annoy you.
 
