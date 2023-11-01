@@ -4,67 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA084C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 09:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8497C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 10:07:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VLokDDeUmqYRRJWiE6rl7SGUQtXK/4RB+bpLxyFfC4Y=; b=pdrRoKnkhAiQG7+GUQx7iT9xXq
-	JleMAKKnJ+r+4G0m6/4w/lzMMaupWMyNJDE1GX0HbV9jEwrQTFDxFsyhbK5sGjvjK4KkCZnoNQbge
-	+lw6+Anuf+wx61z0XYRqkbvKWcRmdZni8JiPTn7NDUk5bjycYyqk4nfPe4XWqvUy3gMA2dzcfwbFU
-	HsAfNdtXGjrFImWdlgHL2udmvGVcWfRshneiajaXkl2DXq2cMa+ddIdCZvdi0/J72DrE2ko89ZZYi
-	c0yVddQADQ1VBBAyHnrhm7ON0AKIMtier3pOWIui9oWdgK4hyuC6R9XY2V40N3DLbqJqpf7fBMimV
-	c6jNzLlA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qYIwEi2Wd+4TePNzi94mb6f7lO2b/AohyfB/LcSkyNU=; b=Ef8auOaWuGGGaIiMClWSNYC/3x
+	NZE1rDRaTm7W6LsAUs/wju0aVi50pVKwuYFQYWPL7GenLfxuw3aso+EvZFup4B1ULyNciWJki2wNA
+	iahE3r+1WmZyTnDJrH4JbfB/E3GEyykXpjzazzucTWtc/wvgorMxp3zOy5S2uW/YHlQ7W4chiyJT8
+	N2pOwcCSEMlm7s8qZErKqIFT0sESeKvgnWKTxCaRdI24zsCy9LxFYrHK/KBerIg/yQIYIwulMq8fs
+	iYGFZQPdzPyYfjNEZvZUHH96FRieP5UI1I1VzTiYyAOsy0N77Ab/+qgovl2kvfjGmZDeJQGxQptUi
+	jPw7PAyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy7wq-006zcO-2w;
-	Wed, 01 Nov 2023 09:55:40 +0000
-Received: from mail-lf1-f43.google.com ([209.85.167.43])
+	id 1qy88W-0070nf-04;
+	Wed, 01 Nov 2023 10:07:44 +0000
+Received: from mgamail.intel.com ([134.134.136.31])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy7wn-006zbl-0E;
-	Wed, 01 Nov 2023 09:55:38 +0000
-Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-507a29c7eefso9433197e87.1;
-        Wed, 01 Nov 2023 02:55:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698832534; x=1699437334;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=VLokDDeUmqYRRJWiE6rl7SGUQtXK/4RB+bpLxyFfC4Y=;
-        b=gQD0U8qoK5/B6f27+Oj1r0Yxx189B8sVXY5HTGFeWcNZy4MsFz4G8d7zS+eMjxPlgg
-         bPvDiaUtTfBu9WzT+zrYhGwo+QHY+gyfnzx5P1B1jRCHt4KaU/Q1RY/53enEkxygima+
-         yp7OB7gzMeBvEzmnIeBzGabPtU+YY5EX8U9sB9taK27OsQI6obUgGl1IJeh/RLcjU6dD
-         AVwYKLN/lw8ysxOKYurlK3Kzz0yevIHMioAEM4zPwyGGLH0y3OKamLeAYXtmiHLhB49a
-         kHAxN+Iu1FaRLUMMlkBiDaJAcDYomMZGxK1+U8vUcwtAWqDZ+7UtQSK7Uq9eBu18zDGn
-         WABA==
-X-Gm-Message-State: AOJu0YwSE1mYDWCAjzhB/tqtibgKEfstwzHDKYJhmp3YCpqdbmNSr9+4
-	Wv8oqPS+2pQOog02DzX/F9/Bm42th4t0DQ==
-X-Google-Smtp-Source: AGHT+IG9dIQGWQj/99HHkunl3VNNLt6J/GTKRcX+Vc0XmliTPanSMBlSHaGQwMaxqaA0wqC+H4+DVA==
-X-Received: by 2002:a05:6512:ba7:b0:509:2b82:385c with SMTP id b39-20020a0565120ba700b005092b82385cmr5894208lfv.61.1698832534082;
-        Wed, 01 Nov 2023 02:55:34 -0700 (PDT)
-Received: from redmibookpro.tendawifi.com ([217.155.96.227])
-        by smtp.googlemail.com with ESMTPSA id a18-20020a5d5092000000b0032db8f7f378sm3723707wrt.71.2023.11.01.02.55.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Nov 2023 02:55:33 -0700 (PDT)
-From: Tom Waldron <tom@baremetal.dev>
-To: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Tom Waldron <tom@baremetal.dev>
-Subject: [PATCH 1/1] wifi: mt76: mt7921: Add a new VID/PID 0b48/7922 for MT7922
-Date: Wed,  1 Nov 2023 09:55:33 +0000
-Message-ID: <20231101095533.45258-1-tom@baremetal.dev>
-X-Mailer: git-send-email 2.41.0
+	id 1qy88Q-0070ka-1q
+	for linux-mediatek@lists.infradead.org;
+	Wed, 01 Nov 2023 10:07:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1698833258; x=1730369258;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=/G6YHPcZjKp/CrBMDSSrt2epiYSXFZcrqUWw6QsDyWY=;
+  b=KlUp3GNSt7hjbcSsGg8e016t9dyBOk6rqhBFosZgXyTliaXQjhJMOSD6
+   I4UftPMPKo/yuCTWvreQlUBq0fl1ZYKYIbnMacGpd56kOT1qFnW02eNXx
+   ZyhuFos+ub2Gjhn49hGcB3i7avBEI06sBrdLaVnYbnWW7sIOD/RkvGwlw
+   1gZKiG41MTzvLahKw4skJcwPnaFWQvcPGveDG2rbwTRv0dvdmYTxhr4dj
+   1jyGEji8nV+oBGwhqlPuECPokwMrdvrR0asSxFJNDzw9V3KoiGJYj6+PJ
+   9vDrb3giAAVl43oz53LF979tM1DrEgbHGnAq2Pp00uBzVNSry2XDMX849
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="452756083"
+X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
+   d="scan'208";a="452756083"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 03:07:37 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="851533391"
+X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
+   d="scan'208";a="851533391"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 03:07:33 -0700
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id F006C1207A3;
+	Wed,  1 Nov 2023 12:00:15 +0200 (EET)
+Date: Wed, 1 Nov 2023 10:00:15 +0000
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: linux-acpi@vger.kernel.org,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-media@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, rafael@kernel.org
+Subject: Re: [PATCH v2 1/1] device property: Add fwnode_name_eq()
+Message-ID: <ZUIhr1Wiy96PMEKx@kekkonen.localdomain>
+References: <20231101072729.1142578-1-sakari.ailus@linux.intel.com>
+ <ZUIfSIWze4llNJfd@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZUIfSIWze4llNJfd@smile.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231101_025537_114161_3A01B105 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231101_030738_662797_760B2480 
+X-CRM114-Status: GOOD (  16.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,28 +94,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add VID/PID 0b48/7922 for MediaTek MT7922 wifi chip.
-Change tested on Redmi Book Pro 15 2023 (Fedora 38).
+On Wed, Nov 01, 2023 at 11:50:00AM +0200, Andy Shevchenko wrote:
+> On Wed, Nov 01, 2023 at 09:27:29AM +0200, Sakari Ailus wrote:
+> > Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
+> > on fwnode property API. The same convention of ending the comparison at
+> > '@' (besides '\0') is applied on also both ACPI and swnode. The function
+> > is intended for comparing unit address-less node names on DT and firmware
+> > or swnodes compliant with DT bindings.
+> 
+> ...
+> 
+> > - Use size_t type for len.
+> 
+> Strictly speaking it should be ptrdiff_t according to the code.
 
-Signed-off-by: Tom Waldron <tom@baremetal.dev>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
- 1 file changed, 2 insertions(+)
+It'll be compared to size_t right after. ptrdiff_t is signed and we know we
+have a positive number here so size_t seems like a better choice.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 3dda84a93..ba805cb02 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -21,6 +21,8 @@ static const struct pci_device_id mt7921_pci_device_table[] = {
- 		.driver_data = (kernel_ulong_t)MT7921_FIRMWARE_WM },
- 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0616),
- 		.driver_data = (kernel_ulong_t)MT7922_FIRMWARE_WM },
-+	{ PCI_DEVICE(0x0b48, 0x7922),
-+		.driver_data = (kernel_ulong_t)MT7922_FIRMWARE_WM },
- 	{ },
- };
- 
+> 
+> ...
+> 
+> > + * the comparison to either '\0' or '@' character
+> 
+> NUL is a human-readable substitution to less parsable '\0'.
+
+I can send v3 with that but I'll wait a bit if there are more comments.
+
 -- 
-2.41.0
-
+Sakari Ailus
 
