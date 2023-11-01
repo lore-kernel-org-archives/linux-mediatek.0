@@ -4,90 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA8E5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 08:25:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD7D8C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 09:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KCWoOkADGi3pf16iXii6gF1epRUY5KMhPNsP3Vz+1tk=; b=dwhr9aRJRJhCyxgEkJBo+Ykkj8
-	HVSPZ4yd0lYNkKSjl0ZOcm2GlOTr6VGPJilKnQXplSc01NbSLByLHo05TkIVRWqDK1InmNT7eoaZr
-	iwhrt/DT+gcE5Wk08N0suXaddiMr0hAF6LOjhBoYFEco7WsNDTKHid2mhDVjEPmC1AiGfRIiBQwG2
-	IK+RPZ1BTTnjLXGIlpXj72gbX0cgevinSB1NEsgOHhF79a1hcKfjZhdrY5EaLJZt/vgOUSV+IaNwI
-	5tIZFG8QsSJUQ/5LR9lRdMwGgtITV+lWCI9ct+v3kjmLsFrgj5JR3HsyD4dAzekfyy9wG6G1HDh2S
-	isjM8Ihw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tZvjBeHjmV69CgMVNZbE0cIToofesYTCR9zR6lGEUxw=; b=FRKxBRlcJt5WaY64RoOkLFgLt8
+	v+L3ng2trSUSgUr+13MxkZAa3zt+tFIXuXv5LJK3LWRdJ667Bd2xer25yTq57Jxu86FCYo8sk9/s0
+	71lyLOunObOepoEHmqLJU38scSZ1bx5Lfk79F3AFaxWd5R9eyTKfD0eVL6lhqOZmijDeRVZgggC0Y
+	IZzP154g3ynLLlbDsRo0l046IhSNeYaYrAnennne7105m1U5qCfjscdfOTQwcnumJ0BBWeVGnQozs
+	4YhV6PVmmC8Nq7fDcdT+wbIf0QWremafj5Ndyd+oCJEUi6V/XQVDVXB3i8EoUEo9GCaI/m0tvBd7+
+	mwc581uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy6Xi-006sgd-3B;
-	Wed, 01 Nov 2023 08:25:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qy7ra-006zK9-2R;
+	Wed, 01 Nov 2023 09:50:14 +0000
+Received: from mgamail.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy6Xe-006sg4-0D;
-	Wed, 01 Nov 2023 08:25:37 +0000
-X-UUID: 374416fc789011ee9b7791016c24628a-20231101
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KCWoOkADGi3pf16iXii6gF1epRUY5KMhPNsP3Vz+1tk=;
-	b=hK5vA88zhgciR6/n5SAyoEAuCOWEF8Cz10S+YZrG79UQx+3A9KeRKkdGfTWCQTs416K3VN08RCsp9Ha7fVJSRaFzNWPEtYZhLvJmP8MGly9Ln6rMCoZ8T7qlsYhNddzxtzxkbx8YkvM9nA/S3oeyA5MG19s3jy6WleTxImGdiVQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:5173933d-7f24-42e2-abe6-88bed26c8dcc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:df272572-1bd3-4f48-b671-ada88705968c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 374416fc789011ee9b7791016c24628a-20231101
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <naomi.chu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1492770950; Wed, 01 Nov 2023 01:25:29 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 1 Nov 2023 16:25:26 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 1 Nov 2023 16:25:26 +0800
-From: <naomi.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
-	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
-	<casper.li@mediatek.com>, <powen.kao@mediatek.com>,
-	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
-	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
-	<eddie.huang@mediatek.com>
-Subject: [PATCH v2 1/1] ufs: core: Expand MCQ queue slot to DeviceQueueDepth + 1
-Date: Wed, 1 Nov 2023 16:24:00 +0800
-Message-ID: <20231101082402.20856-1-naomi.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qy7rV-006zJX-0f
+	for linux-mediatek@lists.infradead.org;
+	Wed, 01 Nov 2023 09:50:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1698832209; x=1730368209;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=zDiWeh0tO0Ei/h8vXh3lQTonMfi7WIE4tqSqr/o3WIQ=;
+  b=cbEYbcudVGSn6XziMFLlRyKNyrMPNlOk9tmxdJJU6S7mqpgv8nz8r3tj
+   4a6L41+rAizg+sVhMUnVi/9gHGirrTPMfPMII+/oUsF7aRB5Rz0IHsToV
+   NcRITrt0ZtM8/wfZbsVTVDNVFKj5k+Nj7h23NQVMVk/QOMr9gNOPtnaSw
+   BXQ8vrLz5MR3L5MmK/avjUG84U8PosbHtw+njh3ZWoF+wOkPI/fk1RPkg
+   KdscAvTotPlzHGtKvnCJOKjhFUFcmOc/3OfWOLoabsDxsK4FCZqvIueaq
+   MWbetcos6viZVJI33MkTj8hUtuLQ2Hr/GwBXZRgX8UZSirMwNb44unLfU
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="388287350"
+X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
+   d="scan'208";a="388287350"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 02:50:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="904594825"
+X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
+   d="scan'208";a="904594825"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmsmga001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 02:50:04 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.97-RC3)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1qy7rM-0000000APbY-2ezT;
+	Wed, 01 Nov 2023 11:50:00 +0200
+Date: Wed, 1 Nov 2023 11:50:00 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-acpi@vger.kernel.org,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-media@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, rafael@kernel.org
+Subject: Re: [PATCH v2 1/1] device property: Add fwnode_name_eq()
+Message-ID: <ZUIfSIWze4llNJfd@smile.fi.intel.com>
+References: <20231101072729.1142578-1-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--1.647600-8.000000
-X-TMASE-MatchedRID: PwZ81m9fkLaip6xhGipIWeE86+k9uTZHm7HdiLHHK2fDTXM3VzSaIq5F
-	Is0KOiYRIV4u8YKdeKsO1mVtY5XA0K+/EguYor8cFEUknJ/kEl5jFT88f69nG/oLR4+zsDTt9xS
-	3mVzWUuCMx6OO8+QGvqyt7lbAoL3b1b5ciGqgyyK4b9vVA7cUDFBSi7IIue1t1wsfMy1ANRCOCM
-	KUG2SbSV6NqXp1TIWNF6B/icpS7PJfNYyP36YXk3mVKZusLp922v9OjYWA2uMMswg45VMfPadst
-	5iAforfVlxr1FJij9s=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.647600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 61078AB8541BEB98FED27B874E254886E6683CAA7E4EC8BE8F5C84142B73FAFC2000:8
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231101072729.1142578-1-sakari.ailus@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231101_012534_111770_74469BB9 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20231101_025009_261402_01E9336D 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,29 +95,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Naomi Chu <naomi.chu@mediatek.com>
+On Wed, Nov 01, 2023 at 09:27:29AM +0200, Sakari Ailus wrote:
+> Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
+> on fwnode property API. The same convention of ending the comparison at
+> '@' (besides '\0') is applied on also both ACPI and swnode. The function
+> is intended for comparing unit address-less node names on DT and firmware
+> or swnodes compliant with DT bindings.
 
-Allow UFSHCI 4.0 controllers to fully utilize MCQ queue slots.
+...
 
-Signed-off-by: Naomi Chu <naomi.chu@mediatek.com>
----
- drivers/ufs/core/ufs-mcq.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> - Use size_t type for len.
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 2ba8ec254dce..5c75ab9d6bb5 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -436,7 +436,7 @@ int ufshcd_mcq_init(struct ufs_hba *hba)
- 
- 	for (i = 0; i < hba->nr_hw_queues; i++) {
- 		hwq = &hba->uhq[i];
--		hwq->max_entries = hba->nutrs;
-+		hwq->max_entries = hba->nutrs + 1;
- 		spin_lock_init(&hwq->sq_lock);
- 		spin_lock_init(&hwq->cq_lock);
- 		mutex_init(&hwq->sq_mutex);
+Strictly speaking it should be ptrdiff_t according to the code.
+
+...
+
+> + * the comparison to either '\0' or '@' character
+
+NUL is a human-readable substitution to less parsable '\0'.
+
 -- 
-2.18.0
+With Best Regards,
+Andy Shevchenko
+
 
 
