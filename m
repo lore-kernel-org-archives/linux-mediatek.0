@@ -4,34 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEB87C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 15:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7E45C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 15:58:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Ov9TiPDknb6R9yF2IVYZFuRm6kOrz1Qf6/9qeS+Jpgw=; b=4NgEgUkm8y2JB+CAm27l2yvU2f
-	hJnCgfTdqHNzLGntzWOyXcxp7PobrAhfJ1KM0Bk+TNGoTotOKemlH26Jl/zYYt/YEgCoj75nC0P2l
-	eiFDi79ZIXn75XcOTIYruIdxOFio1PIfHRmksZWxG06i/IurfozdWzmqkzzCBGAFBllaQsgR4rsaD
-	Kj2Y92BNT6fyKBA9DWjDMHfTy69wLTPUW4WKPrwNhFJ3IXFYXXSAiSGXCa4lpnm8vlGSB6GwNSFSb
-	0gM/ICP9R5H8aUvhWik8/j2mUD8uBzM/W22fljTxcC1ofKG5gbDm+UNTM8G25tuk4hdkEmD64fbiT
-	J45RMpWw==;
+	bh=Ov9TiPDknb6R9yF2IVYZFuRm6kOrz1Qf6/9qeS+Jpgw=; b=08zypM53lmx326kjepH/ko+4pj
+	rNaMEGnhvz4ERiXVJlY7k+WOn0SCWMGdQJljENbb3Su582toC9YS/RmAkkut03/hWdn56WyxOKCJw
+	PINqdgucHugqNrXrARrvLaFgYrTuaUT+SdcuBmLBS3YfqPvNzAnCMcjEI2ANp64+6h+XEWSzebMVm
+	XcbZLQq07HMiGV4LGDmWnyhTTzJf/TGv6r+SqNwGZbOFeXJ95Z2xr6x4FLPlUB8U1MhmH2oSu7ygj
+	Ztpj/EgaMovz3/GkRFhQ8a82QRmwA66rXIowqRabZOqg8u/l0bXjpcach4+bkXyZcNbVmYJtiarkF
+	Tg/2AUqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyDTW-007lp8-2U;
-	Wed, 01 Nov 2023 15:49:46 +0000
+	id 1qyDbW-007maU-2W;
+	Wed, 01 Nov 2023 15:58:02 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyDTR-007loR-39;
-	Wed, 01 Nov 2023 15:49:45 +0000
-X-UUID: 42e426c678ce11ee9b7791016c24628a-20231101
+	id 1qyDbR-007mZi-02;
+	Wed, 01 Nov 2023 15:58:00 +0000
+X-UUID: 6a33816c78cf11ee9b7791016c24628a-20231101
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
 	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Ov9TiPDknb6R9yF2IVYZFuRm6kOrz1Qf6/9qeS+Jpgw=;
-	b=tn1FxN3s2FjIgUDdiAJzn5pnR/1n9IYeqXV652hLmM9ru50zq1/xEx+1JcA7P787YHkiA0SXF4MAgwlhwENK5MqoBb6jC3W/Bas1/cd0IjjmpVyj/0aCAlwC4ajot/X/QpbVSqV70weS6mNe6NExJtAkFkJB4q8/hFeT/Jug6hI=;
+	b=eRKHuDNR7dwvvJC73Gf2FnXBKgTtvdU2LnK0b/TF9b04figWWQG0nT55jpzRc63BdYeulD1QNeCi7J/BirD08Ye9h1aeFYDNAzXlj5abPelL2N1B4DAjuS+D3WkKujoZy4g79VhTkECX9hKXLsjrDDIDDO0qsW4lnvdDg0q4h0M=;
+X-CID-CACHE: Type:Local,Time:202311010849-07,HitQuantity:1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:e7bf9b1d-1561-429d-a760-399d008c5819,IP:0,U
+X-CID-O-INFO: VERSION:1.1.33,REQID:fe422fb5-f3c9-427d-ab9e-a15d51e95809,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
 X-CID-META: VersionHash:364b77b,CLOUDID:c53de694-10ce-4e4b-85c2-c9b5229ff92b,B
@@ -41,18 +42,18 @@ X-CID-META: VersionHash:364b77b,CLOUDID:c53de694-10ce-4e4b-85c2-c9b5229ff92b,B
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 42e426c678ce11ee9b7791016c24628a-20231101
+X-UUID: 6a33816c78cf11ee9b7791016c24628a-20231101
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <bo.ye@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1841572025; Wed, 01 Nov 2023 08:49:37 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 1827127839; Wed, 01 Nov 2023 08:57:53 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 1 Nov 2023 23:49:34 +0800
+ 15.2.1118.26; Wed, 1 Nov 2023 23:37:49 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 1 Nov 2023 23:49:33 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 1 Nov 2023 23:37:48 +0800
 From: Bo Ye <bo.ye@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
@@ -62,29 +63,15 @@ CC: <yongdong.zhang@mediatek.com>, <browse.zhang@mediatek.com>,
 	<linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
 Subject: [PATCH] mmc: add wp_grp_size node
-Date: Wed, 1 Nov 2023 23:49:26 +0800
-Message-ID: <20231101154927.119312-1-bo.ye@mediatek.com>
+Date: Wed, 1 Nov 2023 23:37:37 +0800
+Message-ID: <20231101153738.118659-1-bo.ye@mediatek.com>
 X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.192800-8.000000
-X-TMASE-MatchedRID: th1XRPLu1HNGlhjnipkGEAwfhKwa9GwD+lX/RcQoG2FX4H/AHZTAKiQH
-	YX2qyjfSlB6IdnaWhV1I7JPsZpNRgcL2WgOVZLNHhDqIQb7sQecK3n1SHen81VeilmPI7oJlf8S
-	IQrqULYwLYtJsevMdjZZLxtyQINIccMMjBRRYYhwflhDI6DvVlkJfxXUWJFGS31GU/N5W5BBLR6
-	I6ytdxONZKQinVddBT3D2hj0hvDabf0vAzbUUm26am63kopwnT57kkHY8cvsS6Kbobcv5luFpqk
-	DNHM8v+nFqPTSvsB8lzQ71/lVVm1vJMF6pylZNW1tU7lyp9XhEoPUUDFlEi1db1HR1TV5h03x8z
-	1cIgGiHi8zVgXoAltsIJ+4gwXrEtIAcCikR3vq9j6bKbLCMItm8ICwgw12VPO6dim/ocNbcn4VX
-	tjVje77MxnEq2nQWr
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.192800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 0F899615BDE2A6CD307BF16FE736E603887F1EBB5A91C4D58CC90BFFF96AE5642000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231101_084942_022047_2BF9DD41 
-X-CRM114-Status: GOOD (  16.52  )
+X-CRM114-CacheID: sfid-20231101_085757_058214_00C5B43A 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
