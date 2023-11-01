@@ -4,73 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0BACC4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 14:03:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED838C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 15:00:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gisn127HjRfCqlCw+GGWcrZ4rm16EE8igW2fuBilOVI=; b=b4ffgfHzRFbY4e7AdPS7okqHDj
-	+EiSjJ8FQMSqVsVH+/2zjHmY7h2KqDLC8xh5zWL4GB7Aeb4tuUmA1Chc6T0W7nVXLfRzORuabsfJ/
-	dhD1TioXSGuQEHwjRPf4xozo2ZPdHVcCMNKw7YafICmbT18sMcuz4EOsmJ6Kv6lXpX8AVA8foncUo
-	KeNOYBjybFYMCisObe2a5rEwdGDjEH5v9RLG1sidqn9SBRjo49NT2e5ruLRoNyXfcjopsTieN7dyV
-	7IML87bE1uPAI5Zzpppw0YevIQZvtizAKvVJGaMA5OJNcvgv0mHGeAURCb/ThdVfohoV99q16M2c0
-	VYqFTbxA==;
+	bh=xsqoYf19Nj3jN1AzYoKcH12P3D9fgKAXh71guXQrXYk=; b=fmwamP/tDOrX+9UE8nZWg5RWuq
+	f4aQZriocNZ+mapp3gGYuF8Qpr/ufY8c6gG4f1qzxe80Y6/Xqi6tCe4O059SDbU+MEOFf83Cz0Ah3
+	EhIPjEFiyhZEM0yaOa95oG7RaNUtNBMVd0yQa7K8Yj6leaC0refoI3LaO2GbYAxnqdSsTFlJC2EOQ
+	EjeCsQROJssMDXgDPMsDehTW9BRsVcxefDwprxvt8En9L2DkzXce/bHffPhd05MhpHcBRJnTzY99u
+	1gUuvoof8tkxHRbOhW0g19Daqai6vnj5ETbrZwRtRbrcvL6y5Awz9TJV81N4pE+DiE0FOLJYYnPic
+	eihxv1Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyBop-007cWL-02;
-	Wed, 01 Nov 2023 14:03:39 +0000
-Received: from mail-ej1-f49.google.com ([209.85.218.49])
+	id 1qyCi5-007hbe-2h;
+	Wed, 01 Nov 2023 15:00:45 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyBol-007cUI-0B;
-	Wed, 01 Nov 2023 14:03:36 +0000
-Received: by mail-ej1-f49.google.com with SMTP id a640c23a62f3a-9ae2cc4d17eso1050000966b.1;
-        Wed, 01 Nov 2023 07:03:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698847412; x=1699452212;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Gisn127HjRfCqlCw+GGWcrZ4rm16EE8igW2fuBilOVI=;
-        b=elXwt4S45zXEoP1o5lf7tWxY/zEP1StLzKMEBR4y3JvCB99mrXLH37WCgMJy2gAXF7
-         /FXN2SFkzDzS+fIKVV0wd//Ux+try6BjKrkYp3LSc2q02vxxt+EZSktvp2AgxCTRux6h
-         9zBjvMs0AdEO2m1YuDZNwcjNuOWQhRmWR5sfAsUeS5R2XPGb9hzRz3LIf/BO45meV8b7
-         muFbL3fM2ahpeqfiHRWE0U19L1yOutAeLJt6BAH8S7yEYiz6seYoWivbx6ceznRQAYqR
-         8LYcZ24sqxds5HIqq5yBbXmbV60fZ2jx9Ms3HWlnPvXPJDrJuIzTgSc1hGoCiyZNZ63J
-         hwVw==
-X-Gm-Message-State: AOJu0YyV1YCjCFr91hP156v9PuVNMf9/ZEoNxGBEnlt4ye7+OczIRqp6
-	blUJUEYiDBEByR0PwU2eEk8PZKuKqYt6iA==
-X-Google-Smtp-Source: AGHT+IF1QekBYYqf+y3ZlDA54W0gvXVK0841pNrGigyw+/OgYsezb06vOevf5cG2IcfoW21bN5i0uA==
-X-Received: by 2002:a17:907:78b:b0:9d3:8d1e:cf0 with SMTP id xd11-20020a170907078b00b009d38d1e0cf0mr1756318ejb.54.1698847411552;
-        Wed, 01 Nov 2023 07:03:31 -0700 (PDT)
-Received: from mail-ej1-f48.google.com (mail-ej1-f48.google.com. [209.85.218.48])
-        by smtp.gmail.com with ESMTPSA id l19-20020a170906a41300b009ad81554c1bsm2421511ejz.55.2023.11.01.07.03.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Nov 2023 07:03:31 -0700 (PDT)
-Received: by mail-ej1-f48.google.com with SMTP id a640c23a62f3a-9936b3d0286so1050975966b.0;
-        Wed, 01 Nov 2023 07:03:31 -0700 (PDT)
-X-Received: by 2002:a17:907:764c:b0:9b8:b683:5837 with SMTP id
- kj12-20020a170907764c00b009b8b6835837mr1531634ejc.46.1698847411026; Wed, 01
- Nov 2023 07:03:31 -0700 (PDT)
+	id 1qyCi1-007hZ1-2J;
+	Wed, 01 Nov 2023 15:00:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C53A061229;
+	Wed,  1 Nov 2023 15:00:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB0C5C433C8;
+	Wed,  1 Nov 2023 15:00:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1698850840;
+	bh=61VJ8pl4e3NGwPPj59m3HBRGj5+ApAztxPeXNk4KdN4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=C/H7TOP9PGYTmwk/6ArJ9rVSu9xTz850uhD7MPwufzxy0ADppO+ofF/Kg2me+Vrdi
+	 yoqJwLr6lLXYnngLyzbAzxb2blibWSz+RIaHTlGDh5Buezwt4Bbp97SMuEu2D89dC/
+	 W0mLnX8jIVpbDLYTOmqKkiAzTsjllZaO2MQrj/2D1nnRDe2pvnFGz482RQr7WRDf6Z
+	 iBhTfXJX7ZOOERwko2yo99IaOSrVmT2X7pGYUaDlngsHMy2JOF9LSkvshcaGXqnrNC
+	 31OuRZ3yZkvvQ3bpWv+3DPyW7TVt8cQThD3XlYQ/m5n61cAvOj3utUvHUmyD5SFQIZ
+	 KNyPci3/0YpuQ==
+Date: Wed, 1 Nov 2023 16:00:36 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Tom Waldron <tom@baremetal.dev>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/1] wifi: mt76: mt7921: Add a new VID/PID 0b48/7922 for
+ MT7922
+Message-ID: <ZUJoFAcKMrVD5Glo@lore-desk>
+References: <20231101095533.45258-1-tom@baremetal.dev>
 MIME-Version: 1.0
-References: <20231101095533.45258-1-tom@baremetal.dev> <87o7gdbog8.fsf@kernel.org>
-In-Reply-To: <87o7gdbog8.fsf@kernel.org>
-From: Tom Waldron <tom@baremetal.dev>
-Date: Wed, 1 Nov 2023 14:03:19 +0000
-X-Gmail-Original-Message-ID: <CANjHDnCFMVayX7fHBYJc8GwdNS8wrnrJYMx-0ZrB++9kP2ojUQ@mail.gmail.com>
-Message-ID: <CANjHDnCFMVayX7fHBYJc8GwdNS8wrnrJYMx-0ZrB++9kP2ojUQ@mail.gmail.com>
-Subject: Re: [PATCH 1/1] wifi: mt76: mt7921: Add a new VID/PID 0b48/7922 for MT7922
-To: Kalle Valo <kvalo@kernel.org>
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="wsOepGTnfH8POUN2"
+Content-Disposition: inline
+In-Reply-To: <20231101095533.45258-1-tom@baremetal.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231101_070335_097734_F6F56880 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20231101_080041_810596_580ADC5D 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,26 +73,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Yes, it seems I missed some of the output from get_maintainer.pl and
-only caught the last few lines. I've CC's some of the others including
-Felix & Lorenzo.
 
-Thank you for spotting this, Kalle.
+--wsOepGTnfH8POUN2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+> Add VID/PID 0b48/7922 for MediaTek MT7922 wifi chip.
+> Change tested on Redmi Book Pro 15 2023 (Fedora 38).
+>=20
+> Signed-off-by: Tom Waldron <tom@baremetal.dev>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/pci.c
+> index 3dda84a93..ba805cb02 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> @@ -21,6 +21,8 @@ static const struct pci_device_id mt7921_pci_device_tab=
+le[] =3D {
+>  		.driver_data =3D (kernel_ulong_t)MT7921_FIRMWARE_WM },
+>  	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0616),
+>  		.driver_data =3D (kernel_ulong_t)MT7922_FIRMWARE_WM },
+> +	{ PCI_DEVICE(0x0b48, 0x7922),
+> +		.driver_data =3D (kernel_ulong_t)MT7922_FIRMWARE_WM },
 
-On Wed, 1 Nov 2023 at 13:19, Kalle Valo <kvalo@kernel.org> wrote:
->
-> Tom Waldron <tom@baremetal.dev> writes:
->
-> > Add VID/PID 0b48/7922 for MediaTek MT7922 wifi chip.
-> > Change tested on Redmi Book Pro 15 2023 (Fedora 38).
-> >
-> > Signed-off-by: Tom Waldron <tom@baremetal.dev>
->
-> Should I take this to wireless? Felix&Lorenzo, ack?
->
-> --
-> https://patchwork.kernel.org/project/linux-wireless/list/
->
-> https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+is PCI VID 0x0b48 PCI_VENDOR_ID_ITTIM?
+
+Regards,
+Lorenzo
+
+>  	{ },
+>  };
+> =20
+> --=20
+> 2.41.0
+>=20
+
+--wsOepGTnfH8POUN2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZUJoFAAKCRA6cBh0uS2t
+rAJOAP0caGBM5srfImXm+Ko83soD7yWACQIuY/L49z76kaIv1AEAvMHiruc7+J3r
+WUbEUXvt6Qv/7cAabeUjYTV9C6lEJwI=
+=ylh9
+-----END PGP SIGNATURE-----
+
+--wsOepGTnfH8POUN2--
 
