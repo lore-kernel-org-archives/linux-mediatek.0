@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81368C4167D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 07:27:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BEA3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 07:48:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HmSBAY8PA2zsV0dP9/v78sGTLFJZT37yhSFVQHelIOk=; b=QFr18E+ZZ16zCup73l1VB49xD9
-	ST5bV8hRVJNju63xbE11CLwDqCu3t15+JXWURAxw5r4l0v7mh73lrZBDnGFRMQvD7q9eZXEatkL4k
-	UHYumIof9ruk+Tf3tnzmZLnY0MaSzIHVtLHARI0K916tTrDjHkKDKNvK4bNu1fFW0yLuzIYV3izIg
-	ArWu+zhI+274xwklFO9xhH+WbeidGfr2AhNLzqVS/0ImuOPOA6qmZin9vJ+6WgGTBxhpauNYFRsUh
-	bK3C+eoUoBilU6X3TEx/JBSrOLVJJXNWiL2BJJM8iooKaxb7Gaf7OrYfRC1Td8sw5hv+T1BL6urcA
-	4Xf8Wsxw==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3FsMbYpTiMYqkAMRh2iMcSXUmtPxFHR20j5JyXg6b4M=; b=29KZA26NAgx1XBnD5Uedv0Z4OK
+	IsHjIEPosvU3yl94v/AqqN4pF72P0tTnykC3AWv6DDIQW6RaLXt0WR1sFrgQF1YekK+BOXJXvvL4n
+	oTr4zeY5X29/IvX3hjg1njTfIsWYA7OF2rED8OwsVGxVJ4G6S8PEX+N7mq4YvHGzOxckuch/iX4DZ
+	ozpkxr7MEg7qTKn17xXoFGfzzW9ofk6p13mFcn5wdMzbGbVfJy7WaUtDY91UrOVHowKHJzrZXr7vJ
+	odSOxW68AfLE3wQcxVpkNN6AIusBVznjwLOdRueGRtfRCkvpsuuh4gunMiDkd0NZzSxlEAgS2D4Z3
+	2sCbCL8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy5dg-006oPG-23;
-	Wed, 01 Nov 2023 07:27:44 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1qy5xu-006pfe-0N;
+	Wed, 01 Nov 2023 07:48:38 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy5db-006oOf-0x
+	id 1qy5xl-006pdH-0f
 	for linux-mediatek@lists.infradead.org;
-	Wed, 01 Nov 2023 07:27:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1698823659; x=1730359659;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=7pm77fK1ke7gShb15risUQeIqhs8IPiEf1lI1Wzsra0=;
-  b=UaObx+q2Ng0P2hnqtZp3iHKPEyq/sLe7PEP+nUxb7xsaKeJ5lN3nhy8y
-   SWSrfcFKv7j90USJPYJs0Gjuw4ZGlwWtPtljmGLWFCRTsqaWgUitu54X6
-   Bnend8KpAP+W+Z4eNxiLAnMDj5LXBHgbRbLauyut4xX3H/DY+bpcvrRfX
-   zfwmePdeOOw9V5u3AVxq1iea0dGithBlHi5dVZFqLmZWZmMDk5CePRbsn
-   5JZGvgArjXTyExOdtShcL6DfKxoSspTz6pbFTmLBHP2tUNavXVacI29ch
-   80wm3KgVhXX2WKToRXtgrGmafQ1zLXg4SQS7CcYkaU3VmsZCFxRk51Qn0
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="7076854"
-X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
-   d="scan'208";a="7076854"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 00:27:38 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="904568442"
-X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
-   d="scan'208";a="904568442"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 00:27:34 -0700
-Received: from svinhufvud.ger.corp.intel.com (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with ESMTP id D33AC11F929;
-	Wed,  1 Nov 2023 09:27:29 +0200 (EET)
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: linux-acpi@vger.kernel.org
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-media@vger.kernel.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	rafael@kernel.org
-Subject: [PATCH v2 1/1] device property: Add fwnode_name_eq()
-Date: Wed,  1 Nov 2023 09:27:29 +0200
-Message-Id: <20231101072729.1142578-1-sakari.ailus@linux.intel.com>
-X-Mailer: git-send-email 2.39.2
+	Wed, 01 Nov 2023 07:48:36 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-507c5249d55so9354725e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Nov 2023 00:48:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1698824906; x=1699429706; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3FsMbYpTiMYqkAMRh2iMcSXUmtPxFHR20j5JyXg6b4M=;
+        b=QgOXss3Anq/F1bHx70+8CMTw8Rjo7n/MZaI29FE6U9wxjNz9tUnmXPwrpRfbBmr4e+
+         CyIVkPgOetV8eNgG+h6vSz5LYIy+RJzSMPBJO5qonvIxVOpUxS6/poEDUDgIFO6Fe5a7
+         JwdYpsuZN77pnVBcttwn955/Mb6UAFCOA+w7Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698824906; x=1699429706;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3FsMbYpTiMYqkAMRh2iMcSXUmtPxFHR20j5JyXg6b4M=;
+        b=NhCI63Rx80nHUaTYhTqhXY7kNEbH7dps3QFIcYLwmw6Zgd6k0QDDpoqmLLwDyUJbT5
+         wLiclcFJixUQvvRt8A4R7FsKVXnGlg9fARCR4LtNXnwYgQ2rmC/ZUhZiZyQx6vhCrEI/
+         eHIx33YtR/543QYUhfhLwkCB4dGpA9spOH1hOuxkUJPRPIOb8F7S+VSEGjj33uekfuzO
+         IVSuLZ3ec5sydWhIgQyq2AnRmZTX7nFm/D/9Vgl3cl8vfdrsxxmyz+YgU+UZXq3lQa40
+         ozmSZ4+cqS89+E1t86O9bRFcMABJu+/CVTLViSkGrT5rGzbVt+Qh5KM5rVxviAUHUYik
+         BimQ==
+X-Gm-Message-State: AOJu0YwYeeclrXaDx2sB0IMTm8NQeLgibNGY07ryQoyTkkaNNg6HK0Tg
+	TIt/j1pjdEXGcTqF27ozzAWmy/n4Ps/NGwBqhMa3Jg==
+X-Google-Smtp-Source: AGHT+IHb720Mp++uF3jtmrbstofD30uRzGxLHYFtlscMBIS2t1anyqM04XA/N+dotAjZKWcN9wzkVE+nHn4VLLg4pJQ=
+X-Received: by 2002:a19:915b:0:b0:505:8075:7c10 with SMTP id
+ y27-20020a19915b000000b0050580757c10mr10829367lfj.25.1698824905985; Wed, 01
+ Nov 2023 00:48:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20231030105656.7288-1-yu-chang.lee@mediatek.com>
+In-Reply-To: <20231030105656.7288-1-yu-chang.lee@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 1 Nov 2023 15:48:14 +0800
+Message-ID: <CAGXv+5EvB5_ZK02nz5USFj_cou3mr28oN+1YMKS6MxBAYE1dyw@mail.gmail.com>
+Subject: Re: [PATCH] clk: mediatek: mt8188: Set clock parent for TOP_EDP and TOP_DP
+To: "yu-chang.lee" <yu-chang.lee@mediatek.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Markus Schneider-Pargmann <msp@baylibre.com>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Rob Herring <robh@kernel.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	"Garmin . Chang" <Garmin.Chang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231101_002739_374530_C9764A0F 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20231101_004829_250326_B62FAAA4 
+X-CRM114-Status: GOOD (  24.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,80 +91,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
-on fwnode property API. The same convention of ending the comparison at
-'@' (besides '\0') is applied on also both ACPI and swnode. The function
-is intended for comparing unit address-less node names on DT and firmware
-or swnodes compliant with DT bindings.
+On Mon, Oct 30, 2023 at 6:57=E2=80=AFPM yu-chang.lee <yu-chang.lee@mediatek=
+.com> wrote:
+>
+> Modify MT8188 edp, dp clock and add .determine_rate() callback to
+> dynamically set parent for TOP_EDP and TOP_DP. By separating tvdpll
+> output into different interval, we can make sure VCO operate at optimal
+> condition.
 
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
----
-since v1:
+This patch does two things: a) separate eDP and DP clocks onto two separate
+PLLs, and b) customize how the parent (divider) is selected. They should
+be separate patches.
 
-- Use str_has_prefix().
+(a) can be done like how Angelo proposed for MT8195 [1]. If PLL separation
+is all you need, please post a patch like it.
 
-- Fix kernel-doc for @fwnode argument.
+It's unclear to me how (b) is an improvement over existing code. The MediaT=
+ek
+clock driver library already specifies proper ranges for the PLLs, and the
+mux code should go through all the clock parents and choose one that can
+generate a clock rate closest to the requested one while using one of the
+dividers and a PLL rate within spec. If that isn't working, it should be
+fixed, not worked around.
 
-- Use size_t type for len.
 
-The patch is untested.
+Regards
+ChenYu
 
- drivers/base/property.c  | 28 ++++++++++++++++++++++++++++
- include/linux/property.h |  1 +
- 2 files changed, 29 insertions(+)
+[1] https://lore.kernel.org/linux-mediatek/20231018103546.48174-1-angelogio=
+acchino.delregno@collabora.com/
 
-diff --git a/drivers/base/property.c b/drivers/base/property.c
-index 8c40abed7852..89a6e0833356 100644
---- a/drivers/base/property.c
-+++ b/drivers/base/property.c
-@@ -594,6 +594,34 @@ const char *fwnode_get_name_prefix(const struct fwnode_handle *fwnode)
- 	return fwnode_call_ptr_op(fwnode, get_name_prefix);
- }
- 
-+/**
-+ * fwnode_name_eq - Return true if node name is equal
-+ * @fwnode: The firmware node
-+ * @name: The name to which to compare the node name
-+ *
-+ * Compare the name provided as an argument to the name of the node, stopping
-+ * the comparison to either '\0' or '@' character, whichever comes first. This
-+ * function is generally used for comparing node names while ignoring the
-+ * possible unit address of the node.
-+ *
-+ * Return: true if the node name matches with the name provided in the @name
-+ * argument, false otherwise.
-+ */
-+bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name)
-+{
-+	const char *node_name;
-+	size_t len;
-+
-+	node_name = fwnode_get_name(fwnode);
-+	if (!node_name)
-+		return false;
-+
-+	len = strchrnul(node_name, '@') - node_name;
-+
-+	return str_has_prefix(node_name, name) == len;
-+}
-+EXPORT_SYMBOL_GPL(fwnode_name_eq);
-+
- /**
-  * fwnode_get_parent - Return parent firwmare node
-  * @fwnode: Firmware whose parent is retrieved
-diff --git a/include/linux/property.h b/include/linux/property.h
-index 083a1f41364b..096ade186601 100644
---- a/include/linux/property.h
-+++ b/include/linux/property.h
-@@ -108,6 +108,7 @@ struct fwnode_handle *fwnode_find_reference(const struct fwnode_handle *fwnode,
- 
- const char *fwnode_get_name(const struct fwnode_handle *fwnode);
- const char *fwnode_get_name_prefix(const struct fwnode_handle *fwnode);
-+bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name);
- 
- struct fwnode_handle *fwnode_get_parent(const struct fwnode_handle *fwnode);
- struct fwnode_handle *fwnode_get_next_parent(struct fwnode_handle *fwnode);
--- 
-2.39.2
-
+>
+> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
+> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
+>
+> ---
+>  drivers/clk/mediatek/clk-mt8188-topckgen.c | 74 +++++++++++++++++++++-
+>  1 file changed, 72 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8188-topckgen.c b/drivers/clk/med=
+iatek/clk-mt8188-topckgen.c
+> index e330a4f9a0c3..921fb31fe4b1 100644
+> --- a/drivers/clk/mediatek/clk-mt8188-topckgen.c
+> +++ b/drivers/clk/mediatek/clk-mt8188-topckgen.c
+> @@ -487,6 +487,74 @@ static const char * const dp_parents[] =3D {
+>         "tvdpll2_d16"
+>  };
+>
+> +#define VCO_OPP_LOW    7000000
+> +#define VCO_OPP_MEDIUM 200000000
+> +
+> +enum dp_edp_parent_index {
+> +       PLL_D4 =3D 2,
+> +       PLL_D8,
+> +       PLL_D16
+> +};
+> +
+> +static int dp_clk_determine_rate(struct clk_hw *hw,
+> +                                  struct clk_rate_request *req)
+> +{
+> +       const char *clk_hw_name =3D clk_hw_get_name(hw);
+> +       unsigned int pow, parent_id, is_edp =3D 0;
+> +       struct clk_rate_request parent_req =3D *req;
+> +       struct clk_hw *parent_hw =3D clk_hw_get_parent(hw);
+> +       unsigned long parent_rate =3D clk_hw_get_rate(parent_hw);
+> +       int ret =3D 0;
+> +
+> +       if (!strncmp(clk_hw_name, "top_edp", 7))
+> +               is_edp =3D 1;
+> +
+> +       if (req->rate < VCO_OPP_LOW)
+> +               pow =3D PLL_D16;
+> +       else if (req->rate < VCO_OPP_MEDIUM)
+> +               pow =3D PLL_D8;
+> +       else
+> +               pow =3D PLL_D4;
+> +
+> +       if (is_edp)
+> +               parent_id =3D (pow << 1) - 1;
+> +       else
+> +               parent_id =3D pow << 1;
+> +
+> +       /* re-parenting and determine rate */
+> +       if (clk_hw_can_set_rate_parent(hw)) {
+> +               parent_hw =3D clk_hw_get_parent_by_index(hw, parent_id);
+> +               ret =3D __clk_determine_rate(parent_hw, &parent_req);
+> +               if (ret)
+> +                       return ret;
+> +
+> +               req->best_parent_hw =3D parent_hw;
+> +               req->rate =3D req->best_parent_rate =3D parent_req.rate;
+> +       } else {
+> +               req->best_parent_hw =3D parent_hw;
+> +               req->rate =3D req->best_parent_rate =3D parent_rate;
+> +       }
+> +
+> +       return ret;
+> +}
+> +
+> +static struct clk_ops dp_clk_ops;
+> +
+> +static void dp_clk_ops_init(void)
+> +{
+> +       dp_clk_ops =3D mtk_mux_gate_clr_set_upd_ops;
+> +       dp_clk_ops.determine_rate =3D dp_clk_determine_rate;
+> +}
+> +
+> +#define DP_MUX(_id, _name, _parents, _mux_ofs, _mux_set_ofs,   \
+> +                _mux_clr_ofs, _shift, _width, _gate, _upd_ofs, \
+> +                _upd)  \
+> +       GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,  \
+> +               _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
+> +               _gate, _upd_ofs, _upd, CLK_SET_RATE_PARENT,     \
+> +               dp_clk_ops)
+> +
+> +
+>  static const char * const edp_parents[] =3D {
+>         "clk26m",
+>         "tvdpll1_d2",
+> @@ -1038,9 +1106,9 @@ static const struct mtk_mux top_mtk_muxes[] =3D {
+>         MUX_GATE_CLR_SET_UPD(CLK_TOP_SSPM, "top_sspm",
+>                              sspm_parents, 0x080, 0x084, 0x088, 24, 4, 31=
+, 0x08, 3),
+>         /* CLK_CFG_9 */
+> -       MUX_GATE_CLR_SET_UPD(CLK_TOP_DP, "top_dp",
+> +       DP_MUX(CLK_TOP_DP, "top_dp",
+>                              dp_parents, 0x08C, 0x090, 0x094, 0, 4, 7, 0x=
+08, 4),
+> -       MUX_GATE_CLR_SET_UPD(CLK_TOP_EDP, "top_edp",
+> +       DP_MUX(CLK_TOP_EDP, "top_edp",
+>                              edp_parents, 0x08C, 0x090, 0x094, 8, 4, 15, =
+0x08, 5),
+>         MUX_GATE_CLR_SET_UPD(CLK_TOP_DPI, "top_dpi",
+>                              dpi_parents, 0x08C, 0x090, 0x094, 16, 4, 23,=
+ 0x08, 6),
+> @@ -1267,6 +1335,8 @@ static int clk_mt8188_topck_probe(struct platform_d=
+evice *pdev)
+>                 goto free_top_data;
+>         }
+>
+> +       dp_clk_ops_init();
+> +
+>         r =3D mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_=
+fixed_clks),
+>                                         top_clk_data);
+>         if (r)
+> --
+> 2.18.0
+>
+>
 
