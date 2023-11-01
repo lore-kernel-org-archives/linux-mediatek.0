@@ -4,116 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 002B0C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 05:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81368C4167D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Nov 2023 07:27:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GfLm8bZeUAykuu82ydWVftHzqeTVKiAcmOTSLXWPDDg=; b=0XwO9eJ6mvKASZQoSvJK0vGNZK
-	94y4wVUvBEK2aEYrylLUWGl2zPpBmRK5Yd4CjvS6JNoes64Bmzbhv2ppekbsEtpUS2mZ/WCADHwRR
-	3InkTMe3UBKXOR9gupQbjhEhUXEqZ6VclUWJYUiRAbr3XwSUOLwHlm20l/MqND3gxhVhMQJseVWRx
-	d/WLvHdRzYdHkwbTj7/HzIoNTBisErMb86GVHhkW7OvR72aPekIU0Oijy5AX5A5eoxOZCq7Dp5xt9
-	1GJynC4+GCbKtTlr8aMPhfmvy+SMaG/KxiRGspn9T6ET84Y1TAM1KFm/9QUKbMLAyx55lr3mgowvh
-	eeM6YEQw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HmSBAY8PA2zsV0dP9/v78sGTLFJZT37yhSFVQHelIOk=; b=QFr18E+ZZ16zCup73l1VB49xD9
+	ST5bV8hRVJNju63xbE11CLwDqCu3t15+JXWURAxw5r4l0v7mh73lrZBDnGFRMQvD7q9eZXEatkL4k
+	UHYumIof9ruk+Tf3tnzmZLnY0MaSzIHVtLHARI0K916tTrDjHkKDKNvK4bNu1fFW0yLuzIYV3izIg
+	ArWu+zhI+274xwklFO9xhH+WbeidGfr2AhNLzqVS/0ImuOPOA6qmZin9vJ+6WgGTBxhpauNYFRsUh
+	bK3C+eoUoBilU6X3TEx/JBSrOLVJJXNWiL2BJJM8iooKaxb7Gaf7OrYfRC1Td8sw5hv+T1BL6urcA
+	4Xf8Wsxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy48O-006ipA-2p;
-	Wed, 01 Nov 2023 05:51:20 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qy5dg-006oPG-23;
+	Wed, 01 Nov 2023 07:27:44 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qy48I-006iob-0l;
-	Wed, 01 Nov 2023 05:51:18 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3A15348n002105;
-	Wed, 1 Nov 2023 05:50:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=GfLm8bZeUAykuu82ydWVftHzqeTVKiAcmOTSLXWPDDg=;
- b=cRR3VSN38PGsxg2BMtm6tFVOgb21bCnZBy8xFHAjvxRtn0Q6TYG3Q9qBPrC5cTiK2G4s
- df6hXirXQVo5ucpBl77nfpGP5ZHFNezACSVaYsu8ogYu39KAN8DxIvPW0L8opzUq15eO
- NcdGFypTD3VdthAB1C+nNBUROSdI8E2IVQQvy8yfvKhj+iGzMibayBZXhChgxcDVUJwG
- iuJSr0IbzZYtnSePx3WPWNP/McWFODjyzjAfy78dDDWrfctxsRU1r6qXYl3UIBSYitA2
- pCJWGCpbbdTZekZwcbT9LfSNqwr0jyKVaFcAIT5+Ru578xLdjqbwvHqvSNP0A+kkpPYi Pw== 
-Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3u3a5eh064-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 01 Nov 2023 05:50:57 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3A15ouLW032477
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 1 Nov 2023 05:50:56 GMT
-Received: from [10.214.67.72] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.39; Tue, 31 Oct
- 2023 22:50:49 -0700
-Message-ID: <a83b00c4-a33a-4687-b024-173c6c5a66a0@quicinc.com>
-Date: Wed, 1 Nov 2023 11:20:45 +0530
+	id 1qy5db-006oOf-0x
+	for linux-mediatek@lists.infradead.org;
+	Wed, 01 Nov 2023 07:27:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1698823659; x=1730359659;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=7pm77fK1ke7gShb15risUQeIqhs8IPiEf1lI1Wzsra0=;
+  b=UaObx+q2Ng0P2hnqtZp3iHKPEyq/sLe7PEP+nUxb7xsaKeJ5lN3nhy8y
+   SWSrfcFKv7j90USJPYJs0Gjuw4ZGlwWtPtljmGLWFCRTsqaWgUitu54X6
+   Bnend8KpAP+W+Z4eNxiLAnMDj5LXBHgbRbLauyut4xX3H/DY+bpcvrRfX
+   zfwmePdeOOw9V5u3AVxq1iea0dGithBlHi5dVZFqLmZWZmMDk5CePRbsn
+   5JZGvgArjXTyExOdtShcL6DfKxoSspTz6pbFTmLBHP2tUNavXVacI29ch
+   80wm3KgVhXX2WKToRXtgrGmafQ1zLXg4SQS7CcYkaU3VmsZCFxRk51Qn0
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="7076854"
+X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
+   d="scan'208";a="7076854"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 00:27:38 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10880"; a="904568442"
+X-IronPort-AV: E=Sophos;i="6.03,267,1694761200"; 
+   d="scan'208";a="904568442"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2023 00:27:34 -0700
+Received: from svinhufvud.ger.corp.intel.com (localhost [IPv6:::1])
+	by kekkonen.fi.intel.com (Postfix) with ESMTP id D33AC11F929;
+	Wed,  1 Nov 2023 09:27:29 +0200 (EET)
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: linux-acpi@vger.kernel.org
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-media@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	rafael@kernel.org
+Subject: [PATCH v2 1/1] device property: Add fwnode_name_eq()
+Date: Wed,  1 Nov 2023 09:27:29 +0200
+Message-Id: <20231101072729.1142578-1-sakari.ailus@linux.intel.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/9] dt-bindings: reserved-memory: MediaTek: Add reserved
- memory for SVP
-Content-Language: en-US
-To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
-        "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-        "christian.koenig@amd.com"
-	<christian.koenig@amd.com>,
-        "quic_vjitta@quicinc.com"
-	<quic_vjitta@quicinc.com>,
-        "robh+dt@kernel.org" <robh+dt@kernel.org>,
-        "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-        "jstultz@google.com" <jstultz@google.com>,
-        "linaro-mm-sig@lists.linaro.org"
-	<linaro-mm-sig@lists.linaro.org>,
-        "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>,
-        "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>,
-        =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
-	<Jianjiao.Zeng@mediatek.com>,
-        =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?=
-	<kuohong.wang@mediatek.com>,
-        "conor+dt@kernel.org" <conor+dt@kernel.org>,
-        "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
-        "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
-        "tjmercier@google.com" <tjmercier@google.com>,
-        "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-        "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-        "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-        "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-References: <20230911023038.30649-1-yong.wu@mediatek.com>
- <20230911023038.30649-9-yong.wu@mediatek.com>
- <d4d471e7-64cf-42bf-a061-82934c904691@quicinc.com>
- <2c3ad77806df3ef23cb69336f2049821529e337b.camel@mediatek.com>
-From: Jaskaran Singh <quic_jasksing@quicinc.com>
-In-Reply-To: <2c3ad77806df3ef23cb69336f2049821529e337b.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: mvhv334wkL28YRcs-bX1bkeddaiQ8P7B
-X-Proofpoint-ORIG-GUID: mvhv334wkL28YRcs-bX1bkeddaiQ8P7B
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-01_03,2023-10-31_03,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011
- priorityscore=1501 bulkscore=0 adultscore=0 spamscore=0 lowpriorityscore=0
- malwarescore=0 phishscore=0 impostorscore=0 mlxscore=0 mlxlogscore=999
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2310240000 definitions=main-2311010050
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_225114_724699_CF1AD315 
-X-CRM114-Status: GOOD (  21.74  )
+X-CRM114-CacheID: sfid-20231101_002739_374530_C9764A0F 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,53 +93,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/20/2023 3:20 PM, Yong Wu (吴勇) wrote:
-> On Thu, 2023-10-19 at 10:16 +0530, Vijayanand Jitta wrote:
->>  	 
->> Instead of having a vendor specific binding for cma area, How about
->> retrieving
->>
-> https://lore.kernel.org/lkml/1594948208-4739-1-git-send-email-hayashi.kunihiko@socionext.com/
->>  ?
->> dma_heap_add_cma can just associate cma region and create a heap. So,
->> we can reuse cma heap
->> code for allocation instead of replicating that code here.
->>
-> 
-> Thanks for the reference. I guess we can't use it. There are two
-> reasons:
->   
-> a) The secure heap driver is a pure software driver and we have no
-> device for it, therefore we cannot call dma_heap_add_cma.
->   
+Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
+on fwnode property API. The same convention of ending the comparison at
+'@' (besides '\0') is applied on also both ACPI and swnode. The function
+is intended for comparing unit address-less node names on DT and firmware
+or swnodes compliant with DT bindings.
 
-Hi Yong,
+Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+---
+since v1:
 
-We're considering using struct cma as the function argument to
-dma_heap_add_cma() rather than struct device. Would this help
-resolve the problem of usage with dma_heap_add_cma()?
+- Use str_has_prefix().
 
-> b) The CMA area here is dynamic for SVP. Normally this CMA can be used
-> in the kernel. In the SVP case we use cma_alloc to get it and pass the
-> entire CMA physical start address and size into TEE to protect the CMA
-> region. The original CMA heap cannot help with the TEE part.
->
+- Fix kernel-doc for @fwnode argument.
 
-Referring the conversation at
-https://lore.kernel.org/lkml/7a2995de23c24ef22c071c6976c02b97e9b50126.camel@mediatek.com/;
+- Use size_t type for len.
 
-since we're considering abstracting secure mem ops, would it make sense
-to use the default CMA heap ops (cma_heap_ops), allocate buffers from it
-and secure each allocated buffer?
+The patch is untested.
 
-Thanks,
-Jaskaran.
+ drivers/base/property.c  | 28 ++++++++++++++++++++++++++++
+ include/linux/property.h |  1 +
+ 2 files changed, 29 insertions(+)
 
-> Thanks.
-> 
->> Thanks,
->> Vijay
->>
->>
->>
+diff --git a/drivers/base/property.c b/drivers/base/property.c
+index 8c40abed7852..89a6e0833356 100644
+--- a/drivers/base/property.c
++++ b/drivers/base/property.c
+@@ -594,6 +594,34 @@ const char *fwnode_get_name_prefix(const struct fwnode_handle *fwnode)
+ 	return fwnode_call_ptr_op(fwnode, get_name_prefix);
+ }
+ 
++/**
++ * fwnode_name_eq - Return true if node name is equal
++ * @fwnode: The firmware node
++ * @name: The name to which to compare the node name
++ *
++ * Compare the name provided as an argument to the name of the node, stopping
++ * the comparison to either '\0' or '@' character, whichever comes first. This
++ * function is generally used for comparing node names while ignoring the
++ * possible unit address of the node.
++ *
++ * Return: true if the node name matches with the name provided in the @name
++ * argument, false otherwise.
++ */
++bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name)
++{
++	const char *node_name;
++	size_t len;
++
++	node_name = fwnode_get_name(fwnode);
++	if (!node_name)
++		return false;
++
++	len = strchrnul(node_name, '@') - node_name;
++
++	return str_has_prefix(node_name, name) == len;
++}
++EXPORT_SYMBOL_GPL(fwnode_name_eq);
++
+ /**
+  * fwnode_get_parent - Return parent firwmare node
+  * @fwnode: Firmware whose parent is retrieved
+diff --git a/include/linux/property.h b/include/linux/property.h
+index 083a1f41364b..096ade186601 100644
+--- a/include/linux/property.h
++++ b/include/linux/property.h
+@@ -108,6 +108,7 @@ struct fwnode_handle *fwnode_find_reference(const struct fwnode_handle *fwnode,
+ 
+ const char *fwnode_get_name(const struct fwnode_handle *fwnode);
+ const char *fwnode_get_name_prefix(const struct fwnode_handle *fwnode);
++bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name);
+ 
+ struct fwnode_handle *fwnode_get_parent(const struct fwnode_handle *fwnode);
+ struct fwnode_handle *fwnode_get_next_parent(struct fwnode_handle *fwnode);
+-- 
+2.39.2
+
 
