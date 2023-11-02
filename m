@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A909C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 12:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C3D4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 13:24:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4noGxVeBaozZSr63hPAI+0rSprh0astSK1St0pl2xws=; b=2Q3fwsHeh163AKtrOpkBZq3o27
-	nZ/omAm2oq8KwGBBe2hlR/iwkDEd5u3Z5ebhqGF+gsDVCnkydbKLT//X7oPehRsrC6pr1MCbDU0ku
-	yycbBLDrJeYpJ9bQ30nx5cSXWRaP3ccKvzYhFm7kgjsjDi0hGc8kxE5agoHIdYwXX7Xq45V3aFQ2H
-	iAsCcTxw0Anowffv588IZpWAwZY/hDZLTEx9hUZDdVGZ7X18jkY2+i/4kDytU9OuXS6HFQnCFlNn9
-	d5YGSK42dK/WTXRgrYReo9r6ZVAhRIDVS4C59i5+tEliyin2Js80LjCmhKLVOOJWKAGmTJztQVVdI
-	UKgnYmXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PVyozoiaeEmN1Mqspc/fEt9AeFWqakfpxz9o248h/pM=; b=1DjhnmXDdfW99t1axFKAep9mXP
+	qasnypRkWdwWWMyXrUuZxfhCou/n/DdqMjd90VVZchNtU25bJmhWDffptPmSpc9Q+qepTSabGWFlH
+	+UnnIV/bO0mmI44trdf8pie4giIRwosXWuQoQJSy6h9wxHsndnD+ZN+Urf+LHwf5fDPA3UAi0OSeT
+	7VJIfBUvhaj6rWrujHSlOvR7rGEBWfsO/cinxE2PB6onNdkq8naKktpQD1Wi5c9/MjdTX/xwERIYq
+	vMmnsqWuQ8yD/LxXJt/2X2uFP7NLg4hZe7aOLGL3XQt/Qa9GABV1mLmL/ib8PrhdE/xkeP2X/RWJP
+	3oHxcd/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyXGP-009UQG-27;
-	Thu, 02 Nov 2023 12:57:33 +0000
-Received: from mgamail.intel.com ([192.55.52.151])
+	id 1qyXgE-009WpQ-1Q;
+	Thu, 02 Nov 2023 13:24:14 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyXGJ-009UP5-23
-	for linux-mediatek@lists.infradead.org;
-	Thu, 02 Nov 2023 12:57:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1698929847; x=1730465847;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=RMDM7reEs0Ot39FWgYWerv/kjGQiEL5fgEgqqZjutMA=;
-  b=ehrURnF44BgN+dj9bmJFI1DgTVSBUvbTR5negKvjLwGBD7h/WXMtKArE
-   ctZ3J/r4dhtvWI6Ic4fnOIc9VLLk8w3pop1BPVxEQZ36rAs1g6Sb2KcyS
-   8kk3578GsrTb0BaTk3s+euYnQgkh2by9gWflm+9eWEcJZ7L65iSHuSkvG
-   oOWa9hR2b6oupowRJbftofdb8/DkrnGrKEClndklY3sSxjXntmj0B+TDR
-   iEXQ96BWbuXpWikPIi8UT1HHhQ/v2jfsCaGCiGtQGF9bwkVVBJzfRTkWH
-   VQ0g51pz/0oqMua7/4FrMjPtd6/JMQSV+uQqr0Tp7Yz+VdZRawx4KUNdo
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10881"; a="368910189"
-X-IronPort-AV: E=Sophos;i="6.03,271,1694761200"; 
-   d="scan'208";a="368910189"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2023 05:57:17 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10881"; a="904999992"
-X-IronPort-AV: E=Sophos;i="6.03,271,1694761200"; 
-   d="scan'208";a="904999992"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmsmga001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2023 05:57:13 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.97-RC3)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qyXG2-0000000Agsi-2RZT;
-	Thu, 02 Nov 2023 14:57:10 +0200
-Date: Thu, 2 Nov 2023 14:57:10 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-acpi@vger.kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-media@vger.kernel.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, rafael@kernel.org
-Subject: Re: [PATCH v2 1/1] device property: Add fwnode_name_eq()
-Message-ID: <ZUOcpr01VRWdBL-E@smile.fi.intel.com>
-References: <20231101072729.1142578-1-sakari.ailus@linux.intel.com>
- <ZUIfSIWze4llNJfd@smile.fi.intel.com>
- <ZUIhr1Wiy96PMEKx@kekkonen.localdomain>
+	id 1qyXgA-009WmW-0a;
+	Thu, 02 Nov 2023 13:24:12 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2c5056059e0so13038551fa.3;
+        Thu, 02 Nov 2023 06:24:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1698931446; x=1699536246; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PVyozoiaeEmN1Mqspc/fEt9AeFWqakfpxz9o248h/pM=;
+        b=aLyfVgB5VX3I7apZfEqYiIyrZm0nyKOcQDH+aoUEAKBMvfhrNmL4IyinPDg8WMIcu9
+         AZunmuu/kYAOTC7yYpGeDkZq8Fiptb/j5JTBBaxHPrFzK1vW3m9/ebHcmlAB+o9C9GyV
+         9udFqNQBFdSM6NYz6aeUpg/KZF7F0y22bMrYCP/EPuqO1gmQ93K4W9YO7N7MSw4mWlOy
+         ZoQxwngvlPajdSkAZ5+O3uFAPUlBsRnH+lbRZWz8NWAgsGNpg8cw8xPOFpiY/4/KfT1I
+         QJz6QisKfV8BbmxqtS1XA7I6wCpET3VZe/Nh8vIDg4fcGf7xE2LwFRoGwiq4Qz9UZGhn
+         xo0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698931446; x=1699536246;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PVyozoiaeEmN1Mqspc/fEt9AeFWqakfpxz9o248h/pM=;
+        b=pM0aD9TzJEFey3Puazj14rFSlqJ+meZNpCkSe4Yth6D1CrWdQxSxMqTjqz43I1Yaog
+         B7cA2+KteBepJmWxqKFvS6yHW+/dDl/oI/a6UhOtdZZ0byK0nmhZDOSdLo9fsmTjChCg
+         upgzEQlN1VuN0c7+lkrytr+F1WjX88JAMtOo9ltL7d4TcbPXwUGvomYDw/uNcocwFghg
+         PSC8kyXApc8mmtMHeJ1HzkOIV0nylTTM49rdPJYs1Yxq+i/9SWg8lHZc42KQcge8pU1i
+         QwGewkMK1rFO/XOkzLCBRbQzPBHs7T3EYLxtxskpWJyLXFkax8hVQeS+D0hgX0S/Ticz
+         OpyQ==
+X-Gm-Message-State: AOJu0Yz/KszTE8xH8f9CEH5H6fjbRZwn2YH7BYLXyVV9e07XqyRTtfoA
+	E2wANLstaISHmbzpXQNQsjATww/wpyKTj8FGIA==
+X-Google-Smtp-Source: AGHT+IFw8HNGzdISsA+wihixwdCY6OGHchatKKYXsaUOf/XMUPEES0QyeTbJFs3CMlJoKYUCvmxw0QjnLeqQO6kPsOM=
+X-Received: by 2002:a2e:bc29:0:b0:2c5:b583:f167 with SMTP id
+ b41-20020a2ebc29000000b002c5b583f167mr17564967ljf.34.1698931445262; Thu, 02
+ Nov 2023 06:24:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZUIhr1Wiy96PMEKx@kekkonen.localdomain>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20231102052426.12006-1-naomi.chu@mediatek.com> <20231102052426.12006-2-naomi.chu@mediatek.com>
+In-Reply-To: <20231102052426.12006-2-naomi.chu@mediatek.com>
+From: Stanley Chu <chu.stanley@gmail.com>
+Date: Thu, 2 Nov 2023 22:23:53 +0900
+Message-ID: <CAGaU9a8Vn20Bx71mtUPYJgSgO11FXv4bNzScso7Dn2n36etaFw@mail.gmail.com>
+Subject: Re: [PATCH v3 1/1] ufs: core: Expand MCQ queue slot to
+ DeviceQueueDepth + 1
+To: naomi.chu@mediatek.com
+Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
+	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Asutosh Das <quic_asutoshd@quicinc.com>, 
+	Can Guo <quic_cang@quicinc.com>, wsd_upstream@mediatek.com, peter.wang@mediatek.com, 
+	casper.li@mediatek.com, powen.kao@mediatek.com, alice.chao@mediatek.com, 
+	chun-hung.wu@mediatek.com, cc.chou@mediatek.com, eddie.huang@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231102_055727_691506_FDAB39EF 
-X-CRM114-Status: GOOD (  17.08  )
+X-CRM114-CacheID: sfid-20231102_062410_227618_83CDBF1C 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,35 +96,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 01, 2023 at 10:00:15AM +0000, Sakari Ailus wrote:
-> On Wed, Nov 01, 2023 at 11:50:00AM +0200, Andy Shevchenko wrote:
-> > On Wed, Nov 01, 2023 at 09:27:29AM +0200, Sakari Ailus wrote:
+On Thu, Nov 2, 2023 at 2:26=E2=80=AFPM <naomi.chu@mediatek.com> wrote:
+>
+> From: Naomi Chu <naomi.chu@mediatek.com>
+>
+> The UFSHCI 4.0 specification mandates that there should always be at
+> least one empty slot in each queue for distinguishing between full and
+> empty states. Enlarge the `hwq->max_entries` to `DeviceQueueDepth +1`
+> to allow UFSHCI 4.0 controllers to fully utilize MCQ queue slots.
+>
+> Fixes: 4682abfae2eb ("scsi: ufs: core: mcq: Allocate memory for MCQ mode"=
+)
+> Signed-off-by: Naomi Chu <naomi.chu@mediatek.com>
+> ---
+>  drivers/ufs/core/ufs-mcq.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-...
-
-> > > - Use size_t type for len.
-> > 
-> > Strictly speaking it should be ptrdiff_t according to the code.
-> 
-> It'll be compared to size_t right after. ptrdiff_t is signed and we know we
-> have a positive number here so size_t seems like a better choice.
-
-Yeah, this is downsides of C language and typing system.
-But diff between pointers returns ptrdiff_t result.
-
-...
-
-> > > + * the comparison to either '\0' or '@' character
-> > 
-> > NUL is a human-readable substitution to less parsable '\0'.
-> 
-> I can send v3 with that but I'll wait a bit if there are more comments.
-
-Why not? You got tags, so I'll give mine with this being addressed.
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
