@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A726C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 11:54:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A909C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 12:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sQSk/EYc4Eb1/7L2n2nuR4Dvm3YrnTWdbi833gRN4fo=; b=enpyQARtEAXbSyRMew51aQVkZ8
-	ZFqck/A2J0ahhFxY0LXhlPmRt0fhSLeuGPhsOl1x96kWZHRJBNE4Kje8JijhMp/ZDYYDj1JDVE263
-	PLYI9WulPDkK+PirQ5ufVCjSmXy+brxKRCmoOuLF1qrTqx6ux8DQyVR6d1+Us1jM2xqSUzp5yhEmu
-	BZH2U0UBW8FN00S7xQwaBWSBYyDgzyutwru/PmSlNIWcuxotHdWuRs1MtZnUm5Yf7qYH6RG+ECV6a
-	7+UkX8/Laq3is+2b9p5cMdIWcXtkBGHsPMMg7P13hG8dT1T873N2oQjFJ9C88/We5UVe98KuhXonr
-	NHILMJ9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4noGxVeBaozZSr63hPAI+0rSprh0astSK1St0pl2xws=; b=2Q3fwsHeh163AKtrOpkBZq3o27
+	nZ/omAm2oq8KwGBBe2hlR/iwkDEd5u3Z5ebhqGF+gsDVCnkydbKLT//X7oPehRsrC6pr1MCbDU0ku
+	yycbBLDrJeYpJ9bQ30nx5cSXWRaP3ccKvzYhFm7kgjsjDi0hGc8kxE5agoHIdYwXX7Xq45V3aFQ2H
+	iAsCcTxw0Anowffv588IZpWAwZY/hDZLTEx9hUZDdVGZ7X18jkY2+i/4kDytU9OuXS6HFQnCFlNn9
+	d5YGSK42dK/WTXRgrYReo9r6ZVAhRIDVS4C59i5+tEliyin2Js80LjCmhKLVOOJWKAGmTJztQVVdI
+	UKgnYmXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyWHO-009OEQ-02;
-	Thu, 02 Nov 2023 11:54:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qyXGP-009UQG-27;
+	Thu, 02 Nov 2023 12:57:33 +0000
+Received: from mgamail.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyWHI-009ODU-2Y;
-	Thu, 02 Nov 2023 11:54:28 +0000
-X-UUID: 8c81fd0a797611ee9b7791016c24628a-20231102
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=sQSk/EYc4Eb1/7L2n2nuR4Dvm3YrnTWdbi833gRN4fo=;
-	b=alY5hJ0WkPSa4XoaX72lk185Kcjo9YV4q4NJy3ctlTLgiu75SjxUZe4J79OrQUDA5khQWQqHIQNPlT9xl7Zr+zgCdON9+a2JSmh4ztw7EwYK1HB7Jmu1eUkr3VA0jEjLIvLcPfbvK5H1hlL5Oyz+hx+Tnm9OUPhzw4/DCfsLAro=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:6d624978-697d-4c7e-92c1-e268c58c4928,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:364b77b,CLOUDID:20279b5f-c89d-4129-91cb-8ebfae4653fc,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 8c81fd0a797611ee9b7791016c24628a-20231102
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yu-chang.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 243298876; Thu, 02 Nov 2023 04:54:16 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 2 Nov 2023 19:34:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 2 Nov 2023 19:34:13 +0800
-From: yu-chang.lee <yu-chang.lee@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, "yu-chang . lee"
-	<yu-chang.lee@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] soc: mediatek: mmsys: Add support for MT8188 VPPSYS
-Date: Thu, 2 Nov 2023 19:33:45 +0800
-Message-ID: <20231102113345.24775-1-yu-chang.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qyXGJ-009UP5-23
+	for linux-mediatek@lists.infradead.org;
+	Thu, 02 Nov 2023 12:57:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1698929847; x=1730465847;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=RMDM7reEs0Ot39FWgYWerv/kjGQiEL5fgEgqqZjutMA=;
+  b=ehrURnF44BgN+dj9bmJFI1DgTVSBUvbTR5negKvjLwGBD7h/WXMtKArE
+   ctZ3J/r4dhtvWI6Ic4fnOIc9VLLk8w3pop1BPVxEQZ36rAs1g6Sb2KcyS
+   8kk3578GsrTb0BaTk3s+euYnQgkh2by9gWflm+9eWEcJZ7L65iSHuSkvG
+   oOWa9hR2b6oupowRJbftofdb8/DkrnGrKEClndklY3sSxjXntmj0B+TDR
+   iEXQ96BWbuXpWikPIi8UT1HHhQ/v2jfsCaGCiGtQGF9bwkVVBJzfRTkWH
+   VQ0g51pz/0oqMua7/4FrMjPtd6/JMQSV+uQqr0Tp7Yz+VdZRawx4KUNdo
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10881"; a="368910189"
+X-IronPort-AV: E=Sophos;i="6.03,271,1694761200"; 
+   d="scan'208";a="368910189"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2023 05:57:17 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10881"; a="904999992"
+X-IronPort-AV: E=Sophos;i="6.03,271,1694761200"; 
+   d="scan'208";a="904999992"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmsmga001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2023 05:57:13 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.97-RC3)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1qyXG2-0000000Agsi-2RZT;
+	Thu, 02 Nov 2023 14:57:10 +0200
+Date: Thu, 2 Nov 2023 14:57:10 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-acpi@vger.kernel.org,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-media@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, rafael@kernel.org
+Subject: Re: [PATCH v2 1/1] device property: Add fwnode_name_eq()
+Message-ID: <ZUOcpr01VRWdBL-E@smile.fi.intel.com>
+References: <20231101072729.1142578-1-sakari.ailus@linux.intel.com>
+ <ZUIfSIWze4llNJfd@smile.fi.intel.com>
+ <ZUIhr1Wiy96PMEKx@kekkonen.localdomain>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZUIhr1Wiy96PMEKx@kekkonen.localdomain>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231102_045424_829917_8FA0C634 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20231102_055727_691506_FDAB39EF 
+X-CRM114-Status: GOOD (  17.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,44 +97,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 VPPSYS0 and VPPSYS1 driver data.
+On Wed, Nov 01, 2023 at 10:00:15AM +0000, Sakari Ailus wrote:
+> On Wed, Nov 01, 2023 at 11:50:00AM +0200, Andy Shevchenko wrote:
+> > On Wed, Nov 01, 2023 at 09:27:29AM +0200, Sakari Ailus wrote:
 
-Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
----
- drivers/soc/mediatek/mtk-mmsys.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+...
 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 7630e1d9b3a4..591e92468bea 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -89,6 +89,16 @@ static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
- 	.num_routes = ARRAY_SIZE(mmsys_mt8188_routing_table),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8188_vppsys0_driver_data = {
-+	.clk_driver = "clk-mt8188-vpp0",
-+	.is_vppsys = true,
-+};
-+
-+static const struct mtk_mmsys_driver_data mt8188_vppsys1_driver_data = {
-+	.clk_driver = "clk-mt8188-vpp1",
-+	.is_vppsys = true,
-+};
-+
- static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
- 	.clk_driver = "clk-mt8192-mm",
- 	.routes = mmsys_mt8192_routing_table,
-@@ -440,6 +450,8 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
- 	{ .compatible = "mediatek,mt8183-mmsys", .data = &mt8183_mmsys_driver_data },
- 	{ .compatible = "mediatek,mt8186-mmsys", .data = &mt8186_mmsys_driver_data },
- 	{ .compatible = "mediatek,mt8188-vdosys0", .data = &mt8188_vdosys0_driver_data },
-+	{ .compatible = "mediatek,mt8188-vppsys0", .data = &mt8188_vppsys0_driver_data },
-+	{ .compatible = "mediatek,mt8188-vppsys1", .data = &mt8188_vppsys1_driver_data },
- 	{ .compatible = "mediatek,mt8192-mmsys", .data = &mt8192_mmsys_driver_data },
- 	/* "mediatek,mt8195-mmsys" compatible is deprecated */
- 	{ .compatible = "mediatek,mt8195-mmsys", .data = &mt8195_vdosys0_driver_data },
+> > > - Use size_t type for len.
+> > 
+> > Strictly speaking it should be ptrdiff_t according to the code.
+> 
+> It'll be compared to size_t right after. ptrdiff_t is signed and we know we
+> have a positive number here so size_t seems like a better choice.
+
+Yeah, this is downsides of C language and typing system.
+But diff between pointers returns ptrdiff_t result.
+
+...
+
+> > > + * the comparison to either '\0' or '@' character
+> > 
+> > NUL is a human-readable substitution to less parsable '\0'.
+> 
+> I can send v3 with that but I'll wait a bit if there are more comments.
+
+Why not? You got tags, so I'll give mine with this being addressed.
+
 -- 
-2.18.0
+With Best Regards,
+Andy Shevchenko
+
 
 
