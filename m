@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1DB5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 10:04:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCA9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 10:04:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X5py3cy/xu4oqRWHELduhlbDNGtG9oSPSUrEgSMyuSY=; b=1Ax/Qa73WvE47tQclA3vo8POnX
-	64lDtaS4B+CZDfgTulygGYLWODyBvxTX2CIR/r0f0JYOKnQb+pO23Nnwu6LIp44xDp0aRo+orxQcx
-	ly7avlWx+oMZDnCNcED3SxhdeG+dLWQSXAmI9/rbye68Bl58hfjVeul4wmM+73VdXSjgtJAVnaT4f
-	7a9Z2QmOlfVODaVG7RcecchirhTjtAKxYi3rCcvGMk/KS07m075lkz/PesSQd6X4J0GSjuii6goKe
-	zKdTU51X07TyYlZXePc9LSlzZjgKHqG2avta3pgt7O0y+AB58yTMkrQH0/1jBXC5Nlaj6lpE9f8g2
-	vqTCFldw==;
+	bh=6tm6jshgx8T5Ti6+7XGq+GsuHEOIcZDBKFrCXiPYgjQ=; b=Sa9r9QmpkPYEHahbXZc7t7wUNK
+	ai2QpqGbSn7gBEz9JzhApuak4SS52ENb2nhMNQPDNe3UAgM8uOp3cYTVqm6r03kEnVC4WTlRvRnWS
+	qbIYsZNvMCpBugQdz+Ia7M1vikzLGZYOSvLOVWKLkkvwQ56A3F1sTA+gF1fZUjse8em1s6qh/eZLp
+	oP27eD4+h4D9z3NVwQ0aGBTSakn2zKDMtXOWSnsEdwTBo83+sOcS4ybzGaZFLopNEl/3AvzCgi65Y
+	a6c0uM/pvftlEOsrbppRQop+su2+O23cbcxBClZH1fWP77Xe73jfnR9Exv0c92oqmp2p9W9UJ39Ol
+	3LxowQPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyUYu-0095R3-2Z;
-	Thu, 02 Nov 2023 10:04:28 +0000
+	id 1qyUZ0-0095SO-0u;
+	Thu, 02 Nov 2023 10:04:34 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyUYp-0095QA-2t
+	id 1qyUYu-0095RA-39
 	for linux-mediatek@lists.infradead.org;
-	Thu, 02 Nov 2023 10:04:27 +0000
-X-UUID: 2ed4539c796711ee86758d4a7c00f3a0-20231102
+	Thu, 02 Nov 2023 10:04:32 +0000
+X-UUID: 33dfc09c796711ee86758d4a7c00f3a0-20231102
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=X5py3cy/xu4oqRWHELduhlbDNGtG9oSPSUrEgSMyuSY=;
-	b=OKzgji8JPctjRJRLQYOzfWrQa6DlkdXWETRT4ZoDZGai1FHvcFzTylXFsqrxFMA6VAj+cxrqi8wIlsoXAFvzMRsf/9JVICOOD41f/YyTsvkljrCO1PY82lFr1PrHEnv2Ip3Mbr1duMaVlhNUojjZL3pXOyyfOtSlKEHq8kn76/Y=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6tm6jshgx8T5Ti6+7XGq+GsuHEOIcZDBKFrCXiPYgjQ=;
+	b=H7/7KWZtd1RUa4d1PmUAQLo9yn9eo3IXud4nm5AZaFywJ1RMjrWE8KvZPtnbtT3NtDuz6IeLYMhfNGgQoKuEpTIHSIREmRKX1hax06doNMMKmqNY6qqMaDZNnAjjc75Ru/0i4diCLThlQqjlLK7uD94sKDWEMP88SQviwXMjfjU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:52a598ae-4631-4890-abbb-fec0076ea2a9,IP:0,U
+X-CID-O-INFO: VERSION:1.1.33,REQID:177b7881-18e6-46cf-b1cc-1e5e3317e6d5,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:bc2c9a5f-c89d-4129-91cb-8ebfae4653fc,B
+X-CID-META: VersionHash:364b77b,CLOUDID:949112fc-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2ed4539c796711ee86758d4a7c00f3a0-20231102
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 33dfc09c796711ee86758d4a7c00f3a0-20231102
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 251627473; Thu, 02 Nov 2023 03:04:16 -0700
+	with ESMTP id 591032109; Thu, 02 Nov 2023 03:04:25 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 2 Nov 2023 18:04:14 +0800
+ 15.2.1118.26; Thu, 2 Nov 2023 18:03:50 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 2 Nov 2023 18:04:14 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 2 Nov 2023 18:03:50 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, MeiChia Chiu
-	<meichia.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 8/8] wifi: mt76: connac: fix EHT phy mode check
-Date: Thu, 2 Nov 2023 18:03:02 +0800
-Message-ID: <20231102100302.22160-8-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Benjamin Lin
+	<benjamin-jw.lin@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 4/8] wifi: mt76: mt7996: switch to mcu command for TX GI report
+Date: Thu, 2 Nov 2023 18:02:58 +0800
+Message-ID: <20231102100302.22160-4-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231102100302.22160-1-shayne.chen@mediatek.com>
 References: <20231102100302.22160-1-shayne.chen@mediatek.com>
@@ -71,8 +71,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231102_030423_937221_E38AE33C 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20231102_030429_024015_B1DD7B97 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,31 +87,238 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: MeiChia Chiu <meichia.chiu@mediatek.com>
+From: Benjamin Lin <benjamin-jw.lin@mediatek.com>
 
-Add a BSS eht_support check before returning EHT phy mode. Without this
-patch, there might be an inconsistency where the softmac layer thinks
-the BSS is in HE mode, while the FW thinks it is in EHT mode.
+During runtime, the GI value in the WTBL is not updated in real-time. To
+obtain the latest results for the TX GI, switch to use an MCU command.
 
-Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  2 +-
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   | 48 ++-----------------
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |  1 +
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 47 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   | 22 +++++++++
+ 5 files changed, 74 insertions(+), 46 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index ae6bf3c968df..b475555097ff 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1359,7 +1359,7 @@ u8 mt76_connac_get_phy_mode_ext(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 	sband = phy->hw->wiphy->bands[band];
- 	eht_cap = ieee80211_get_eht_iftype_cap(sband, vif->type);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 65844de6dccd..0185804d8ce3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1328,7 +1328,7 @@ enum {
+ };
  
--	if (!eht_cap || !eht_cap->has_eht)
-+	if (!eht_cap || !eht_cap->has_eht || !vif->bss_conf.eht_support)
- 		return mode;
+ enum UNI_ALL_STA_INFO_TAG {
+-	UNI_ALL_STA_TX_RATE,
++	UNI_ALL_STA_TXRX_RATE,
+ 	UNI_ALL_STA_TX_STAT,
+ 	UNI_ALL_STA_TXRX_ADM_STAT,
+ 	UNI_ALL_STA_TXRX_AIR_TIME,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 56dfbeb51504..9db610e2645f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -102,7 +102,6 @@ static void mt7996_mac_sta_poll(struct mt7996_dev *dev)
+ 	};
+ 	struct ieee80211_sta *sta;
+ 	struct mt7996_sta *msta;
+-	struct rate_info *rate;
+ 	u32 tx_time[IEEE80211_NUM_ACS], rx_time[IEEE80211_NUM_ACS];
+ 	LIST_HEAD(sta_poll_list);
+ 	int i;
+@@ -118,7 +117,6 @@ static void mt7996_mac_sta_poll(struct mt7996_dev *dev)
+ 		u32 addr, val;
+ 		u16 idx;
+ 		s8 rssi[4];
+-		u8 bw;
  
- 	switch (band) {
+ 		spin_lock_bh(&dev->mt76.sta_poll_lock);
+ 		if (list_empty(&sta_poll_list)) {
+@@ -174,49 +172,6 @@ static void mt7996_mac_sta_poll(struct mt7996_dev *dev)
+ 			ieee80211_sta_register_airtime(sta, tid, tx_cur, rx_cur);
+ 		}
+ 
+-		/* We don't support reading GI info from txs packets.
+-		 * For accurate tx status reporting and AQL improvement,
+-		 * we need to make sure that flags match so polling GI
+-		 * from per-sta counters directly.
+-		 */
+-		rate = &msta->wcid.rate;
+-
+-		switch (rate->bw) {
+-		case RATE_INFO_BW_320:
+-			bw = IEEE80211_STA_RX_BW_320;
+-			break;
+-		case RATE_INFO_BW_160:
+-			bw = IEEE80211_STA_RX_BW_160;
+-			break;
+-		case RATE_INFO_BW_80:
+-			bw = IEEE80211_STA_RX_BW_80;
+-			break;
+-		case RATE_INFO_BW_40:
+-			bw = IEEE80211_STA_RX_BW_40;
+-			break;
+-		default:
+-			bw = IEEE80211_STA_RX_BW_20;
+-			break;
+-		}
+-
+-		addr = mt7996_mac_wtbl_lmac_addr(dev, idx, 6);
+-		val = mt76_rr(dev, addr);
+-		if (rate->flags & RATE_INFO_FLAGS_EHT_MCS) {
+-			addr = mt7996_mac_wtbl_lmac_addr(dev, idx, 5);
+-			val = mt76_rr(dev, addr);
+-			rate->eht_gi = FIELD_GET(GENMASK(25, 24), val);
+-		} else if (rate->flags & RATE_INFO_FLAGS_HE_MCS) {
+-			u8 offs = 24 + 2 * bw;
+-
+-			rate->he_gi = (val & (0x3 << offs)) >> offs;
+-		} else if (rate->flags &
+-			   (RATE_INFO_FLAGS_VHT_MCS | RATE_INFO_FLAGS_MCS)) {
+-			if (val & BIT(12 + bw))
+-				rate->flags |= RATE_INFO_FLAGS_SHORT_GI;
+-			else
+-				rate->flags &= ~RATE_INFO_FLAGS_SHORT_GI;
+-		}
+-
+ 		/* get signal strength of resp frames (CTS/BA/ACK) */
+ 		addr = mt7996_mac_wtbl_lmac_addr(dev, idx, 34);
+ 		val = mt76_rr(dev, addr);
+@@ -1298,6 +1253,8 @@ mt7996_mac_add_txs_skb(struct mt7996_dev *dev, struct mt76_wcid *wcid,
+ 			goto out;
+ 
+ 		rate.flags = RATE_INFO_FLAGS_VHT_MCS;
++		if (wcid->rate.flags & RATE_INFO_FLAGS_SHORT_GI)
++			rate.flags |= RATE_INFO_FLAGS_SHORT_GI;
+ 		break;
+ 	case MT_PHY_TYPE_HE_SU:
+ 	case MT_PHY_TYPE_HE_EXT_SU:
+@@ -2312,6 +2269,7 @@ void mt7996_mac_work(struct work_struct *work)
+ 
+ 		mt7996_mac_update_stats(phy);
+ 
++		mt7996_mcu_get_all_sta_info(phy, UNI_ALL_STA_TXRX_RATE);
+ 		if (mtk_wed_device_active(&phy->dev->mt76.mmio.wed)) {
+ 			mt7996_mcu_get_all_sta_info(phy, UNI_ALL_STA_TXRX_ADM_STAT);
+ 			mt7996_mcu_get_all_sta_info(phy, UNI_ALL_STA_TXRX_MSDU_COUNT);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 7336eaa7b9ae..d9ba57ae9fdc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -998,6 +998,7 @@ static void mt7996_sta_statistics(struct ieee80211_hw *hw,
+ 			sinfo->txrate.he_gi = txrate->he_gi;
+ 			sinfo->txrate.he_dcm = txrate->he_dcm;
+ 			sinfo->txrate.he_ru_alloc = txrate->he_ru_alloc;
++			sinfo->txrate.eht_gi = txrate->eht_gi;
+ 		}
+ 		sinfo->txrate.flags = txrate->flags;
+ 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_BITRATE);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 8141c24ade50..b8d0b52be1e7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -449,6 +449,43 @@ mt7996_mcu_ie_countdown(struct mt7996_dev *dev, struct sk_buff *skb)
+ 	}
+ }
+ 
++static int
++mt7996_mcu_update_tx_gi(struct rate_info *rate, struct all_sta_trx_rate *mcu_rate)
++{
++	switch (mcu_rate->tx_mode) {
++	case MT_PHY_TYPE_CCK:
++	case MT_PHY_TYPE_OFDM:
++		break;
++	case MT_PHY_TYPE_HT:
++	case MT_PHY_TYPE_HT_GF:
++	case MT_PHY_TYPE_VHT:
++		if (mcu_rate->tx_gi)
++			rate->flags |= RATE_INFO_FLAGS_SHORT_GI;
++		else
++			rate->flags &= ~RATE_INFO_FLAGS_SHORT_GI;
++		break;
++	case MT_PHY_TYPE_HE_SU:
++	case MT_PHY_TYPE_HE_EXT_SU:
++	case MT_PHY_TYPE_HE_TB:
++	case MT_PHY_TYPE_HE_MU:
++		if (mcu_rate->tx_gi > NL80211_RATE_INFO_HE_GI_3_2)
++			return -EINVAL;
++		rate->he_gi = mcu_rate->tx_gi;
++		break;
++	case MT_PHY_TYPE_EHT_SU:
++	case MT_PHY_TYPE_EHT_TRIG:
++	case MT_PHY_TYPE_EHT_MU:
++		if (mcu_rate->tx_gi > NL80211_RATE_INFO_EHT_GI_3_2)
++			return -EINVAL;
++		rate->eht_gi = mcu_rate->tx_gi;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static void
+ mt7996_mcu_rx_all_sta_info_event(struct mt7996_dev *dev, struct sk_buff *skb)
+ {
+@@ -465,6 +502,16 @@ mt7996_mcu_rx_all_sta_info_event(struct mt7996_dev *dev, struct sk_buff *skb)
+ 		struct mt76_wcid *wcid;
+ 
+ 		switch (le16_to_cpu(res->tag)) {
++		case UNI_ALL_STA_TXRX_RATE:
++			wlan_idx = le16_to_cpu(res->rate[i].wlan_idx);
++			wcid = rcu_dereference(dev->mt76.wcid[wlan_idx]);
++
++			if (!wcid)
++				break;
++
++			if (mt7996_mcu_update_tx_gi(&wcid->rate, &res->rate[i]))
++				dev_err(dev->mt76.dev, "Failed to update TX GI\n");
++			break;
+ 		case UNI_ALL_STA_TXRX_ADM_STAT:
+ 			wlan_idx = le16_to_cpu(res->adm_stat[i].wlan_idx);
+ 			wcid = rcu_dereference(dev->mt76.wcid[wlan_idx]);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+index 1562c8a6a821..328edc354165 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+@@ -175,6 +175,27 @@ struct mt7996_mcu_mib {
+ 	__le64 data;
+ } __packed;
+ 
++struct all_sta_trx_rate {
++	__le16 wlan_idx;
++	u8 __rsv1[2];
++	u8 tx_mode;
++	u8 flags;
++	u8 tx_stbc;
++	u8 tx_gi;
++	u8 tx_bw;
++	u8 tx_ldpc;
++	u8 tx_mcs;
++	u8 tx_nss;
++	u8 rx_rate;
++	u8 rx_mode;
++	u8 rx_nsts;
++	u8 rx_gi;
++	u8 rx_coding;
++	u8 rx_stbc;
++	u8 rx_bw;
++	u8 __rsv2;
++} __packed;
++
+ struct mt7996_mcu_all_sta_info_event {
+ 	u8 rsv[4];
+ 	__le16 tag;
+@@ -185,6 +206,7 @@ struct mt7996_mcu_all_sta_info_event {
+ 	u8 rsv3[2];
+ 
+ 	union {
++		struct all_sta_trx_rate rate[0];
+ 		struct {
+ 			__le16 wlan_idx;
+ 			u8 rsv[2];
 -- 
 2.39.2
 
