@@ -4,127 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF972C4167D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 16:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3425DC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 18:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kxIjzgtac17joB3G5uo4aMkhNeY6QslIKQxDZ8iOLNE=; b=vJhjFBDcPlgn/kVlYXB5D2Q+0L
-	rkePdQOxaLg2UUf+m1BMk1bZE7jqRiyqWWhsckfUxb+v5kI37Nu65hITBqZTETOVfT7SBNYpgmRq/
-	S9B/fxGlOULu6zLiabn7XAoHir+ckLUY3pXMTdHLUfNgH3/f1QqBtyM6/sujyG7Tl4vaBt9Olxkx7
-	5iPV8ROcqKlpOR70Ej5uAXbKhYfUfz8e0S6wrge8gg6PCWWUVTrU1LKrzqzXdhuCrBx19FdJb+Urj
-	8K+X5G4gSu1m1T9hOWlgiJ4ntxAebTYhZtxkyS4C3icF9R1Z61FtEg26TI9LfVnbWqUJ/1+m1pIBx
-	PJX22oqQ==;
+	bh=GwZROZlK9UfWkKR+Oep5UTLdUA8cSVn3j1Qp9AwudVw=; b=AVuAqBcZ3KVo3OUTDak7jl6ZQu
+	XqYWfR1UhEasz4ZNjteDRssKqsTRYp4+2HtWgUdfBoWPyg5brNCpL3Nxi7f81q4gqQHcu7u4NKLMq
+	ZgUK4MuhbtVM6Mphgrssmao5bmz2dV5EpAQ/HkTkRRRA+MW6tv6EoDe9OvPDZqXCiFtkkrGqYeaJK
+	2meinup/87z9Pm7VNBQ3TPZoJYthKi0QWvYzfqiL2eeQHXfgZREjwORP3MfTjgXLGb4UHbcJ4e9Sj
+	uu1gSOqarxaPLH4YEJYyi1v8Z5HGGPCdnEBCXifJh7iAFRvPSKyDLuu7lI9M/ml++jUw1BPEvFOP3
+	Ddq44/pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyb1a-009vsa-3C;
-	Thu, 02 Nov 2023 16:58:30 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qycrD-00A7N3-31;
+	Thu, 02 Nov 2023 18:55:55 +0000
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyb1X-009vqZ-2N
+	id 1qycr8-00A7Ku-1c
 	for linux-mediatek@lists.infradead.org;
-	Thu, 02 Nov 2023 16:58:29 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qyb0K-000357-QY; Thu, 02 Nov 2023 17:57:12 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qyb0F-0067Eo-8v; Thu, 02 Nov 2023 17:57:07 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qyb0E-00Bjbm-TZ; Thu, 02 Nov 2023 17:57:06 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Tomi Valkeinen <tomi.valkeinen@ti.com>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Alexey Brodkin <abrodkin@synopsys.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Aradhya Bhatia <a-bhatia1@ti.com>,
-	Nikhil Devshatwar <nikhil.nd@ti.com>,
-	Javier Martinez Canillas <javierm@redhat.com>,
-	Zhu Wang <wangzhu9@huawei.com>,
-	Rob Herring <robh@kernel.org>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Steven Price <steven.price@arm.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Thierry Reding <treding@nvidia.com>,
-	Marian Cichy <m.cichy@pengutronix.de>,
-	Dan Carpenter <error27@gmail.com>,
-	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-	Edmund Dea <edmund.j.dea@intel.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Ben Skeggs <bskeggs@redhat.com>,
-	Karol Herbst <kherbst@redhat.com>,
-	Lyude Paul <lyude@redhat.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Deepak R Varma <drv@mailo.com>,
-	Jani Nikula <jani.nikula@intel.com>,
-	Jyri Sarha <jyri.sarha@iki.fi>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	dri-devel@lists.freedesktop.org,
-	kernel@pengutronix.de,
-	Russell King <linux+etnaviv@armlinux.org.uk>,
-	Christian Gmeiner <christian.gmeiner@gmail.com>,
-	etnaviv@lists.freedesktop.org,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	linux-amlogic@lists.infradead.org,
-	nouveau@lists.freedesktop.org
-Subject: [PATCH v3 00/16] drm: Convert to platform remove callback returning void
-Date: Thu,  2 Nov 2023 17:56:41 +0100
-Message-ID: <20231102165640.3307820-18-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.42.0
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4120; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=6QYM0SU3kXEp/3Rx24czlnqsJN0YtugMXofEMzocIhI=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlQ9TJCnXlJTkkfRNtfDCRgNgoYImgoMcqTIUGU YPFEI8hNtuJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZUPUyQAKCRCPgPtYfRL+ TlE1B/9NxDv3OWR8FrrOhkWCsLmrwRFKWVyDmyJSx60Ka0DnSfGX5PCxeEQX54ei+hOZqfLgOrV dyJPHuu/UbIkK39U0o0NSnUyxMAdg0IUMyOtDMNTgWD+4xmfMqH6d2PacWn5ecdXfhgoLTEGO0J Efnk/t1kkH8kW4oj8RUKjDSUb9qdDuuKfvqki0nTiWtiYujDISWZRNVCHeSiRItvUBj5pyei3sh TmKFd9Rcv/2AjgpC3Yq2P6GtbftnRl90/79DwE6NBT7fpR+h5KWk5xDyijTkL2zKpArX16e/QLc eXdbf6zdC11Tt5f6LOJ9xMQA1iPo4CxvwDoCJ4yHiVLd3jFk
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+	Thu, 02 Nov 2023 18:55:54 +0000
+Received: by mail-yb1-xb49.google.com with SMTP id 3f1490d57ef6-da31ec03186so1111394276.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Nov 2023 11:55:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1698951349; x=1699556149; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=GwZROZlK9UfWkKR+Oep5UTLdUA8cSVn3j1Qp9AwudVw=;
+        b=YQxjzzTru7yFBxg1xNz3pTMkbfrxGc2bHq7UDUMZlspbwmTBq4vAqbg3nR/RIN4rm3
+         cTO2MKqiXGxzRhSv1Rv4h8IC2QJdEyStxrm5MDA/HmOXMssNOeGwQEWHlH13RpWcu6fX
+         my5RJacvNM2GGFfrZh8cgSuF5dHqGRszDQF0nGpQsM7yZ6MwJuGLG4n8pu1K+0MlLWSb
+         80lof42w2tIhU1XEigaR+AzTjHIZd7IKY8pdcy/8p7d2frMjps3LcI1/XH9WwTxODuN2
+         5kFlTsYg0fS07C5SlWM5ziee9HB70klHlQF9CkzYue1WEAPMYosfq02lL43ndZl3elMl
+         gXEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698951349; x=1699556149;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=GwZROZlK9UfWkKR+Oep5UTLdUA8cSVn3j1Qp9AwudVw=;
+        b=HAtZLLiSWocZLGXPD5KdfhyB0yVvz9bj3fvN4ev2x4P+xSJ0//vfAyN9jWm7t1qsDN
+         LdB4XBNr8NPsSmZZM2gsKtN0OITlBIJ6mhTZNBda4xVrYILn020fZXjbVm1qKdNw0iZw
+         r8Js6TvwMaYZvLEKLeWwLVpsLd41GEyag8rEh/9gPjdROcl9uMQwi9TPXSRYo9L6LQkJ
+         B9dTw4Uc5h7BL4uvNfUBl/TJZeuA1kQmQ6ivyJl/EOm/dYj9nhZzGAEDFGjAuOSiNY+5
+         OtYJqpl7p3sHTT65fJZ4AkGdVPDpaolPGcHgM7E8UlYST1jXItQyjeUBKp0+eb3S+3Zb
+         fpnA==
+X-Gm-Message-State: AOJu0YxTNWMYg6FYI65C9GEzyK2BMdQtr4fv9RXEqhV+XiVBRm6xVPMr
+	Lshcgkl/nR229D8H/ZcCbtl9ZePVhaPnkvSURg==
+X-Google-Smtp-Source: AGHT+IHU+DjdhGyfLwL6+kKjSdSmxJWkpryViec8cwwDoWtQDNOiyfbquBqPfJ/wOCFKMWI8x2MjGy7G4ggPBzP5Kg==
+X-Received: from jstitt-linux1.c.googlers.com ([fda3:e722:ac3:cc00:2b:ff92:c0a8:23b5])
+ (user=justinstitt job=sendgmr) by 2002:a05:6902:45:b0:d9b:59c3:6eef with SMTP
+ id m5-20020a056902004500b00d9b59c36eefmr8657ybh.0.1698951348803; Thu, 02 Nov
+ 2023 11:55:48 -0700 (PDT)
+Date: Thu, 02 Nov 2023 18:55:41 +0000
+Mime-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAK3wQ2UC/33NQQqDMBQE0KuUrJsS8zWpXfUepUhMvhpQIyYVi
+ 3j3BleWSpfDMG8W4nG06MnttJARJ+ut62NIzyeiG9XXSK2JmXDGIWE8oxia4FxbDK/gC9sNLVV
+ JKvOqKrVERuJuGLGy82Y+SI+B9jgH8oxNY31w43s7m5Kt/+NOCWVUqAxUDgZKye+1c3WLF+26j Zv4nhBHBI8EM0Lq0hiWwfWHgD0hjwiIBKRCKC1kDiz9ItZ1/QDJe1zHQwEAAA==
+X-Developer-Key: i=justinstitt@google.com; a=ed25519; pk=tC3hNkJQTpNX/gLKxTNQKDmiQl6QjBNCGKJINqAdJsE=
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1698951347; l=4723;
+ i=justinstitt@google.com; s=20230717; h=from:subject:message-id;
+ bh=jFTdO8kx/UlazPhR0MRqYdFyWA/L3tuMaQQIucen34M=; b=v2F1dfbbHaeo64cGZOjBP3/iolmGrFIsPfCBQHud2JK2GSSDr5CUsMsWVAeI/q16gcG+J6OW+
+ QYzrftVSbVSBn7OqwukQ4KtKDMdJQi+bVfKV5GmEwqA8bEfbAtqp47F
+X-Mailer: b4 0.12.3
+Message-ID: <20231102-ethtool_puts_impl-v4-0-14e1e9278496@google.com>
+Subject: [PATCH net-next v4 0/3] ethtool: Add ethtool_puts()
+From: Justin Stitt <justinstitt@google.com>
+To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Shay Agroskin <shayagr@amazon.com>, 
+	Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>, Noam Dagan <ndagan@amazon.com>, 
+	Saeed Bishara <saeedb@amazon.com>, Rasesh Mody <rmody@marvell.com>, 
+	Sudarsana Kalluru <skalluru@marvell.com>, GR-Linux-NIC-Dev@marvell.com, 
+	Dimitris Michailidis <dmichail@fungible.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
+	Salil Mehta <salil.mehta@huawei.com>, Jesse Brandeburg <jesse.brandeburg@intel.com>, 
+	Tony Nguyen <anthony.l.nguyen@intel.com>, Louis Peens <louis.peens@corigine.com>, 
+	Shannon Nelson <shannon.nelson@amd.com>, Brett Creeley <brett.creeley@amd.com>, drivers@pensando.io, 
+	"K. Y. Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
+	Dexuan Cui <decui@microsoft.com>, Ronak Doshi <doshir@vmware.com>, 
+	VMware PV-Drivers Reviewers <pv-drivers@vmware.com>, Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, 
+	Dwaipayan Ray <dwaipayanray1@gmail.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>, 
+	Hauke Mehrtens <hauke@hauke-m.de>, Andrew Lunn <andrew@lunn.ch>, 
+	Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, 
+	"=?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?=" <arinc.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>, 
+	Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Linus Walleij <linus.walleij@linaro.org>, 
+	"=?utf-8?q?Alvin_=C5=A0ipraga?=" <alsi@bang-olufsen.dk>, Wei Fang <wei.fang@nxp.com>, 
+	Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Lars Povlsen <lars.povlsen@microchip.com>, 
+	Steen Hegelund <Steen.Hegelund@microchip.com>, Daniel Machon <daniel.machon@microchip.com>, 
+	UNGLinuxDriver@microchip.com, Jiawen Wu <jiawenwu@trustnetic.com>, 
+	Mengyuan Lou <mengyuanlou@net-swift.com>, Heiner Kallweit <hkallweit1@gmail.com>, 
+	Russell King <linux@armlinux.org.uk>, Alexei Starovoitov <ast@kernel.org>, 
+	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
+	John Fastabend <john.fastabend@gmail.com>
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+	Nick Desaulniers <ndesaulniers@google.com>, Nathan Chancellor <nathan@kernel.org>, 
+	Kees Cook <keescook@chromium.org>, intel-wired-lan@lists.osuosl.org, 
+	oss-drivers@corigine.com, linux-hyperv@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	bpf@vger.kernel.org, Justin Stitt <justinstitt@google.com>
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231102_095827_931252_A21A6D1E 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20231102_115550_538150_97D66602 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,88 +125,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Hi,
 
-this series converts all platform drivers below drivers/gpu/drm to use
-.remove_new(). It starts with a fix for a problem that potentially might
-crash the kernel that I stumbled over while implementing the conversion.
+This series aims to implement ethtool_puts() and send out a wave 1 of
+conversions from ethtool_sprintf(). There's also a checkpatch patch
+included to check for the cases listed below.
 
-Some of the conversion patches following this fix were already send in
-earlier series:
+This was sparked from recent discussion here [1]
 
-	https://lore.kernel.org/dri-devel/20230801110239.831099-1-u.kleine-koenig@pengutronix.de
-	https://lore.kernel.org/dri-devel/20230318190804.234610-1-u.kleine-koenig@pengutronix.de
+The conversions are used in cases where ethtool_sprintf() was being used
+with just two arguments:
+|       ethtool_sprintf(&data, buffer[i].name);
+or when it's used with format string: "%s"
+|       ethtool_sprintf(&data, "%s", buffer[i].name);
+which both now become:
+|       ethtool_puts(&data, buffer[i].name);
 
-and three patches (bridge/tpd12s015, exynos + tilcdc) are new. Parts of
-the above series were picked up, the patches resend here are not.
+The first case commonly triggers a -Wformat-security warning with Clang
+due to potential problems with format flags present in the strings [3].
 
-See commit 5c5a7680e67b ("platform: Provide a remove callback that
-returns no value") for an extended explanation and the eventual goal.
+The second is just a bit weird with a plain-ol' "%s".
 
-Compared to the earlier submissions this patch series is rebased to
-today's drm-misc-next. Otherwise there is no relevant change.
+Changes found with Cocci [4] and grep [5].
 
-Best regards
-Uwe
+[1]: https://lore.kernel.org/all/202310141935.B326C9E@keescook/
+[2]: https://lore.kernel.org/all/?q=dfb%3Aethtool_sprintf+AND+f%3Ajustinstitt
+[3]: https://lore.kernel.org/all/202310101528.9496539BE@keescook/
+[4]: (script authored by Kees w/ modifications from Joe)
+@replace_2_args@
+expression BUF;
+expression VAR;
+@@
 
-Uwe Kleine-König (16):
-  drm/bridge: tpd12s015: Drop buggy __exit annotation for remove
-    function
-  drm/arcpgu: Convert to platform remove callback returning void
-  drm/armada: Convert to platform remove callback returning void
-  drm/bridge: cdns-mhdp8546: Improve error reporting in remove callback
-  drm/bridge: cdns-mhdp8546: Convert to platform remove callback
-    returning void
-  drm/bridge: tpd12s015: Convert to platform remove callback returning
-    void
-  drm/etnaviv: Convert to platform remove callback returning void
-  drm/exynos: Convert to platform remove callback returning void
-  drm/imx/dcss: Convert to platform remove callback returning void
-  drm/imx: lcdc: Convert to platform remove callback returning void
-  drm/kmb: Convert to platform remove callback returning void
-  drm/mediatek: Convert to platform remove callback returning void
-  drm/meson: Convert to platform remove callback returning void
-  drm/nouveau: Convert to platform remove callback returning void
-  drm/sprd: Convert to platform remove callback returning void
-  drm/tilcdc: Convert to platform remove callback returning void
+-       ethtool_sprintf(BUF, VAR)
++       ethtool_puts(BUF, VAR)
 
- drivers/gpu/drm/armada/armada_crtc.c          |  5 ++---
- drivers/gpu/drm/armada/armada_drv.c           |  5 ++---
- .../drm/bridge/cadence/cdns-mhdp8546-core.c   | 22 +++++++++----------
- drivers/gpu/drm/bridge/ti-tpd12s015.c         |  6 ++---
- drivers/gpu/drm/etnaviv/etnaviv_drv.c         |  6 ++---
- drivers/gpu/drm/etnaviv/etnaviv_gpu.c         |  5 ++---
- drivers/gpu/drm/exynos/exynos5433_drm_decon.c |  6 ++---
- drivers/gpu/drm/exynos/exynos7_drm_decon.c    |  6 ++---
- drivers/gpu/drm/exynos/exynos_dp.c            |  6 ++---
- drivers/gpu/drm/exynos/exynos_drm_drv.c       |  5 ++---
- drivers/gpu/drm/exynos/exynos_drm_fimc.c      |  6 ++---
- drivers/gpu/drm/exynos/exynos_drm_fimd.c      |  6 ++---
- drivers/gpu/drm/exynos/exynos_drm_g2d.c       |  6 ++---
- drivers/gpu/drm/exynos/exynos_drm_gsc.c       |  6 ++---
- drivers/gpu/drm/exynos/exynos_drm_mic.c       |  6 ++---
- drivers/gpu/drm/exynos/exynos_drm_rotator.c   |  6 ++---
- drivers/gpu/drm/exynos/exynos_drm_scaler.c    |  6 ++---
- drivers/gpu/drm/exynos/exynos_drm_vidi.c      |  6 ++---
- drivers/gpu/drm/exynos/exynos_hdmi.c          |  6 ++---
- drivers/gpu/drm/exynos/exynos_mixer.c         |  6 ++---
- drivers/gpu/drm/imx/dcss/dcss-drv.c           |  6 ++---
- drivers/gpu/drm/imx/lcdc/imx-lcdc.c           |  6 ++---
- drivers/gpu/drm/kmb/kmb_drv.c                 |  5 ++---
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  5 ++---
- drivers/gpu/drm/mediatek/mtk_ethdr.c          |  5 ++---
- drivers/gpu/drm/meson/meson_dw_mipi_dsi.c     |  6 ++---
- drivers/gpu/drm/nouveau/nouveau_platform.c    |  5 ++---
- drivers/gpu/drm/sprd/sprd_dpu.c               |  6 ++---
- drivers/gpu/drm/sprd/sprd_drm.c               |  5 ++---
- drivers/gpu/drm/sprd/sprd_dsi.c               |  6 ++---
- drivers/gpu/drm/tilcdc/tilcdc_drv.c           |  9 ++++----
- drivers/gpu/drm/tiny/arcpgu.c                 |  6 ++---
- 32 files changed, 74 insertions(+), 128 deletions(-)
+@replace_3_args@
+expression BUF;
+expression VAR;
+@@
 
+-       ethtool_sprintf(BUF, "%s", VAR)
++       ethtool_puts(BUF, VAR)
 
-base-commit: 6fd9487147c4f18ad77eea00bd8c9189eec74a3e
--- 
-2.42.0
+-       ethtool_sprintf(&BUF, "%s", VAR)
++       ethtool_puts(&BUF, VAR)
+
+[5]: $ rg "ethtool_sprintf\(\s*[^,)]+\s*,\s*[^,)]+\s*\)"
+
+Signed-off-by: Justin Stitt <justinstitt@google.com>
+---
+Changes in v4:
+- update documentation to match:
+  https://lore.kernel.org/all/20231028192511.100001-1-andrew@lunn.ch/
+
+- Link to v3: https://lore.kernel.org/r/20231027-ethtool_puts_impl-v3-0-3466ac679304@google.com
+
+Changes in v3:
+- fix force_speed_maps merge conflict + formatting (thanks Vladimir)
+- rebase onto net-next (thanks Andrew, Vladimir)
+- change subject (thanks Vladimir)
+- fix checkpatch formatting + implementation (thanks Joe)
+- Link to v2: https://lore.kernel.org/r/20231026-ethtool_puts_impl-v2-0-0d67cbdd0538@google.com
+
+Changes in v2:
+- wrap lines better in replacement (thanks Joe, Kees)
+- add --fix to checkpatch (thanks Joe)
+- clean up checkpatch formatting (thanks Joe, et al.)
+- rebase against next
+- Link to v1: https://lore.kernel.org/r/20231025-ethtool_puts_impl-v1-0-6a53a93d3b72@google.com
+
+---
+Justin Stitt (3):
+      ethtool: Implement ethtool_puts()
+      checkpatch: add ethtool_sprintf rules
+      net: Convert some ethtool_sprintf() to ethtool_puts()
+
+ drivers/net/dsa/lantiq_gswip.c                     |  2 +-
+ drivers/net/dsa/mt7530.c                           |  2 +-
+ drivers/net/dsa/qca/qca8k-common.c                 |  2 +-
+ drivers/net/dsa/realtek/rtl8365mb.c                |  2 +-
+ drivers/net/dsa/realtek/rtl8366-core.c             |  2 +-
+ drivers/net/dsa/vitesse-vsc73xx-core.c             |  8 +--
+ drivers/net/ethernet/amazon/ena/ena_ethtool.c      |  4 +-
+ drivers/net/ethernet/brocade/bna/bnad_ethtool.c    |  2 +-
+ drivers/net/ethernet/freescale/fec_main.c          |  4 +-
+ .../net/ethernet/fungible/funeth/funeth_ethtool.c  |  8 +--
+ drivers/net/ethernet/hisilicon/hns/hns_dsaf_gmac.c |  2 +-
+ .../net/ethernet/hisilicon/hns/hns_dsaf_xgmac.c    |  2 +-
+ drivers/net/ethernet/hisilicon/hns/hns_ethtool.c   | 65 +++++++++++-----------
+ drivers/net/ethernet/intel/i40e/i40e_ethtool.c     |  6 +-
+ drivers/net/ethernet/intel/iavf/iavf_ethtool.c     |  3 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c       |  9 +--
+ drivers/net/ethernet/intel/idpf/idpf_ethtool.c     |  2 +-
+ drivers/net/ethernet/intel/igb/igb_ethtool.c       |  6 +-
+ drivers/net/ethernet/intel/igc/igc_ethtool.c       |  6 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c   |  5 +-
+ .../net/ethernet/microchip/sparx5/sparx5_ethtool.c |  2 +-
+ .../net/ethernet/netronome/nfp/nfp_net_ethtool.c   | 44 +++++++--------
+ drivers/net/ethernet/pensando/ionic/ionic_stats.c  |  4 +-
+ drivers/net/ethernet/wangxun/libwx/wx_ethtool.c    |  2 +-
+ drivers/net/hyperv/netvsc_drv.c                    |  4 +-
+ drivers/net/phy/nxp-tja11xx.c                      |  2 +-
+ drivers/net/phy/smsc.c                             |  2 +-
+ drivers/net/vmxnet3/vmxnet3_ethtool.c              | 10 ++--
+ include/linux/ethtool.h                            | 13 +++++
+ net/ethtool/ioctl.c                                |  7 +++
+ scripts/checkpatch.pl                              | 19 +++++++
+ 31 files changed, 139 insertions(+), 112 deletions(-)
+---
+base-commit: 3a04927f8d4b7a4f008f04af41e31173002eb1ea
+change-id: 20231025-ethtool_puts_impl-a1479ffbc7e0
+
+Best regards,
+--
+Justin Stitt <justinstitt@google.com>
 
 
