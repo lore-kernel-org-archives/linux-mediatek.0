@@ -4,81 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33CABC4167D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 08:22:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EB45C4167D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Nov 2023 10:03:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BFd4+wem+3X5g2JjqRrNb7SRINDhkOdO8KWdJILCZFQ=; b=P1wwdMf6OCaNGQV1M+jcSM5Svn
-	/QAPMhoxcKzjhFo8AZnVR1G9SGv/NE/Ooh/iEXBM7Hjt1pQ+qc7X+jZVcYMU1uuCF7shVHxEB1XX5
-	WLfidaSAxeK82lct9dgH7VX00tpoFQAqpppip5fWk7vSLBNdQiUz0i/22p2ln3bmKkjitwCBCqaja
-	ThY8xPsLlevpVWNa90N+2EGE0+7it53JM3l5CL+BbKMwqs14MF0+EFcBraPqRlOQFz5AoK9sau0TD
-	h0jIAnxCl3ulIy6755XeqjjXJdGaF6C+VUib3Z8pWRnbDaWXbdBnkn4Jfm/aupr1mNiRyIzSykQOR
-	ERKHaH9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UNvh0VXbgAqVoyRMm94PG4IB+UUQaRSiIIfSgsWnx0A=; b=Fw+2vuGgrai4Q1oAAGgSQSbvKF
+	IS8gvu/xU1JuoA26DYOFKQt0R/eCilK/jC3J7xtbh1XYyxoSom9gB43Yf1iB8fWpWMee8ctguZIze
+	6T9CDaNOsh8kq1b3bGaEgjqBbp+r52maCMeRMQHDdHUhhoQiYCWvtMUcoQkBiuD7DMJHlMt5ZWm/Z
+	ocpwJbxiEmPRI361VcQqy3N7Pg+IL5lhtJ5MZ5MhqSpSmzBKh+ilI49iRpRqhG42renl8MNJYjEka
+	67XJ78Af3g2teevHu4yut5yHnne6cQge9fSwWfGVEZbJgUxb7jMyckKPFTSqt/LK74lYeBl/aqEPm
+	Llp91vRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qySyT-008xp9-0q;
-	Thu, 02 Nov 2023 08:22:45 +0000
-Received: from mgamail.intel.com ([192.55.52.93])
+	id 1qyUYH-0095Io-1Y;
+	Thu, 02 Nov 2023 10:03:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qySyN-008xoF-2v
+	id 1qyUYC-0095Hr-0W
 	for linux-mediatek@lists.infradead.org;
-	Thu, 02 Nov 2023 08:22:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1698913359; x=1730449359;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=vBSds/gTpfNc10t6+hxe6aDfRKotMg4nmb4CB+V0TUo=;
-  b=nJ1hciEzQb02eqfnYs7ewhQ0j1Gh+qp0x2dNV+B2r3Dg0iUBlDfbZ7Ff
-   m6oA90k4YEHe74cKGeYHtBeO3rLZ6/nKh9B/m9MiL20p1B9YJxw+gyTQ/
-   kYRUr8Ilyqi1zfplSZqRFo2qvS8KoXSAKRbVBusGgVafXCH+nJpL1422P
-   9veOw9SJCjOzbHSG9rdSMdvkr0H0cJEzPO43/sS9y323s5w7DT7FMrQ6w
-   /gMWoAlDCvEBPEyqY8evzy59btTQ9YwZDxcMPnkQZrZ1rSgImRPZIFJUc
-   B0uJaRlcGB5Rz59IVBCqXoxnWp8fhr7jl+1z7IyJB751mWPE44v0RdQ8Q
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10881"; a="385837181"
-X-IronPort-AV: E=Sophos;i="6.03,270,1694761200"; 
-   d="scan'208";a="385837181"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2023 01:22:38 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10881"; a="878160265"
-X-IronPort-AV: E=Sophos;i="6.03,270,1694761200"; 
-   d="scan'208";a="878160265"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2023 01:22:34 -0700
-Received: from svinhufvud.ger.corp.intel.com (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with ESMTP id B3C5111F9E8;
-	Thu,  2 Nov 2023 10:16:13 +0200 (EET)
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: linux-acpi@vger.kernel.org,
-	rafael@kernel.org
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-media@vger.kernel.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 1/1] device property: Add fwnode_name_eq()
-Date: Thu,  2 Nov 2023 10:16:11 +0200
-Message-Id: <20231102081611.1179964-1-sakari.ailus@linux.intel.com>
-X-Mailer: git-send-email 2.39.2
+	Thu, 02 Nov 2023 10:03:48 +0000
+X-UUID: 16b2aee4796711ee9b7791016c24628a-20231102
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UNvh0VXbgAqVoyRMm94PG4IB+UUQaRSiIIfSgsWnx0A=;
+	b=ZUbVAqiPZKnJKhDg/Z7MJBw2R8FIPEs+jlM9Heqj56X/XbCTYCz4dzm+DulsURvqNv25itqDF4wWeLhCgASW5HsRa438NDK/C/hiahb4gfI0oYxCzy2TFCszWIe87DTtXoobgRnWdweqXCa6TCD9qQYIjr48DfuRq4BKBOmptOY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:fd76aead-f240-4049-befd-ce640cbd76ca,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:f0c03172-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 16b2aee4796711ee9b7791016c24628a-20231102
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2118357647; Thu, 02 Nov 2023 03:03:36 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 2 Nov 2023 18:03:33 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 2 Nov 2023 18:03:33 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>,
+	Allen Ye <allen.ye@mediatek.com>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>
+Subject: [PATCH 2/8] wifi: mt76: mt7996: add txpower setting support
+Date: Thu, 2 Nov 2023 18:02:56 +0800
+Message-ID: <20231102100302.22160-2-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231102100302.22160-1-shayne.chen@mediatek.com>
+References: <20231102100302.22160-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--11.972900-8.000000
+X-TMASE-MatchedRID: tpf4JaSfocooMmKpHm2CtRn0UD4GU5IqrXeN27EOXQLfUZT83lbkEOOA
+	Q6TuIiqMdg66vheo1qK9cOdjc/43leHxFb2pjr4bR/j040fRFpKxIYWToTws97lmMfLNiukavYJ
+	m+b+NbBQ/R6pk1J76xCO6eMWU6NXnOVzKEd+ERcp1e7Xbb6Im2uU28KlVaRfjFLXUWU5hGiEqF7
+	M65VRIS7kKMS2U/j0b1JjReh+rYBijbvGIi5SCUOE9BBUXDccUi+Y+Qw3Txz/xSV7YBeBhS3uer
+	PMb7lIQLrbcyKMEIWNSm/bsjKT6beOwSINwNY6ongIgpj8eDcAZ1CdBJOsoY8RB0bsfrpPIXzYx
+	eQR1DvsnqYbWRpemWfvFaj2DWl0XYjuBP5po/6v6jwR+aTFxF0VRK1CexylI
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--11.972900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 8CC7C83060962BEC7206BF0736D81032746DBB79E7B96C2D88B45687FF608F762000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231102_012239_989919_596C3BD4 
-X-CRM114-Status: GOOD (  13.93  )
+X-CRM114-CacheID: sfid-20231102_030344_208858_D547592E 
+X-CRM114-Status: GOOD (  15.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,83 +101,168 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
-on fwnode property API. The same convention of ending the comparison at
-'@' (besides NUL) is applied on also both ACPI and swnode. The function
-is intended for comparing unit address-less node names on DT and firmware
-or swnodes compliant with DT bindings.
+Add support for setting txpower from upper layer and configuring per-rate
+txpower limit table.
 
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Tested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Co-developed-by: Allen Ye <allen.ye@mediatek.com>
+Signed-off-by: Allen Ye <allen.ye@mediatek.com>
+Co-developed-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
-Hi Rafael,
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |  8 +++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 58 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   | 16 +++++
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  3 +
+ 4 files changed, 85 insertions(+)
 
-Could we merge this via the media tree (pending further review comments,
-if any)? There'a a patch to be merged via that tree which will depend on
-fwnode_name_eq(), namely:
-<URL:https://lore.kernel.org/linux-media/20231030133247.11243-1-laurent.pinchart@ideasonboard.com/T/#m489b7e83cbc755815c5002f85454a76bfb41adb2>.
-
-since v2:
-
-- Use NUL instead of '\0' and "at" instead of "to" (before "stopping
-  comparison").
-
- drivers/base/property.c  | 28 ++++++++++++++++++++++++++++
- include/linux/property.h |  1 +
- 2 files changed, 29 insertions(+)
-
-diff --git a/drivers/base/property.c b/drivers/base/property.c
-index 8667b13639d2..572e065e8797 100644
---- a/drivers/base/property.c
-+++ b/drivers/base/property.c
-@@ -595,6 +595,34 @@ const char *fwnode_get_name_prefix(const struct fwnode_handle *fwnode)
- 	return fwnode_call_ptr_op(fwnode, get_name_prefix);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 9f12b47eb2bf..7336eaa7b9ae 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -396,6 +396,13 @@ static int mt7996_config(struct ieee80211_hw *hw, u32 changed)
+ 		ieee80211_wake_queues(hw);
+ 	}
+ 
++	if (changed & (IEEE80211_CONF_CHANGE_POWER |
++		       IEEE80211_CONF_CHANGE_CHANNEL)) {
++		ret = mt7996_mcu_set_txpower_sku(phy);
++		if (ret)
++			return ret;
++	}
++
+ 	mutex_lock(&dev->mt76.mutex);
+ 
+ 	if (changed & IEEE80211_CONF_CHANGE_MONITOR) {
+@@ -965,6 +972,7 @@ mt7996_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
+ 	mt76_set_stream_caps(phy->mt76, true);
+ 	mt7996_set_stream_vht_txbf_caps(phy);
+ 	mt7996_set_stream_he_eht_caps(phy);
++	mt7996_mcu_set_txpower_sku(phy);
+ 
+ 	mutex_unlock(&dev->mt76.mutex);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 8097924d460b..8141c24ade50 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -4353,3 +4353,61 @@ int mt7996_mcu_wed_rro_reset_sessions(struct mt7996_dev *dev, u16 id)
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(RRO), &req,
+ 				 sizeof(req), true);
  }
- 
-+/**
-+ * fwnode_name_eq - Return true if node name is equal
-+ * @fwnode: The firmware node
-+ * @name: The name to which to compare the node name
-+ *
-+ * Compare the name provided as an argument to the name of the node, stopping
-+ * the comparison at either NUL or '@' character, whichever comes first. This
-+ * function is generally used for comparing node names while ignoring the
-+ * possible unit address of the node.
-+ *
-+ * Return: true if the node name matches with the name provided in the @name
-+ * argument, false otherwise.
-+ */
-+bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name)
++
++int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy)
 +{
-+	const char *node_name;
-+	size_t len;
++#define TX_POWER_LIMIT_TABLE_RATE	0
++	struct mt7996_dev *dev = phy->dev;
++	struct mt76_phy *mphy = phy->mt76;
++	struct ieee80211_hw *hw = mphy->hw;
++	struct tx_power_limit_table_ctrl {
++		u8 __rsv1[4];
 +
-+	node_name = fwnode_get_name(fwnode);
-+	if (!node_name)
-+		return false;
++		__le16 tag;
++		__le16 len;
++		u8 power_ctrl_id;
++		u8 power_limit_type;
++		u8 band_idx;
++	} __packed req = {
++		.tag = cpu_to_le16(UNI_TXPOWER_POWER_LIMIT_TABLE_CTRL),
++		.len = cpu_to_le16(sizeof(req) + MT7996_SKU_RATE_NUM - 4),
++		.power_ctrl_id = UNI_TXPOWER_POWER_LIMIT_TABLE_CTRL,
++		.power_limit_type = TX_POWER_LIMIT_TABLE_RATE,
++		.band_idx = phy->mt76->band_idx,
++	};
++	struct mt76_power_limits la = {};
++	struct sk_buff *skb;
++	int i, tx_power;
 +
-+	len = strchrnul(node_name, '@') - node_name;
++	tx_power = mt7996_get_power_bound(phy, hw->conf.power_level);
++	tx_power = mt76_get_rate_power_limits(mphy, mphy->chandef.chan,
++					      &la, tx_power);
++	mphy->txpower_cur = tx_power;
 +
-+	return str_has_prefix(node_name, name) == len;
++	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL,
++				 sizeof(req) + MT7996_SKU_RATE_NUM);
++	if (!skb)
++		return -ENOMEM;
++
++	skb_put_data(skb, &req, sizeof(req));
++	/* cck and ofdm */
++	skb_put_data(skb, &la.cck, sizeof(la.cck) + sizeof(la.ofdm));
++	/* ht20 */
++	skb_put_data(skb, &la.mcs[0], 8);
++	/* ht40 */
++	skb_put_data(skb, &la.mcs[1], 9);
++
++	/* vht */
++	for (i = 0; i < 4; i++) {
++		skb_put_data(skb, &la.mcs[i], sizeof(la.mcs[i]));
++		skb_put_zero(skb, 2);  /* padding */
++	}
++
++	/* he */
++	skb_put_data(skb, &la.ru[0], sizeof(la.ru));
++	/* eht */
++	skb_put_data(skb, &la.eht[0], sizeof(la.eht));
++
++	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				     MCU_WM_UNI_CMD(TXPOWER), true);
 +}
-+EXPORT_SYMBOL_GPL(fwnode_name_eq);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+index a3eae32c8f10..1562c8a6a821 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+@@ -762,6 +762,18 @@ enum {
+ #define MT7996_MAX_BSS_OFFLOAD_SIZE	(MT7996_MAX_BEACON_SIZE +		\
+ 					 MT7996_BEACON_UPDATE_SIZE)
+ 
++static inline s8
++mt7996_get_power_bound(struct mt7996_phy *phy, s8 txpower)
++{
++	struct mt76_phy *mphy = phy->mt76;
++	int n_chains = hweight16(mphy->chainmask);
 +
- /**
-  * fwnode_get_parent - Return parent firwmare node
-  * @fwnode: Firmware whose parent is retrieved
-diff --git a/include/linux/property.h b/include/linux/property.h
-index 083a1f41364b..096ade186601 100644
---- a/include/linux/property.h
-+++ b/include/linux/property.h
-@@ -108,6 +108,7 @@ struct fwnode_handle *fwnode_find_reference(const struct fwnode_handle *fwnode,
++	txpower = mt76_get_sar_power(mphy, mphy->chandef.chan, txpower * 2);
++	txpower -= mt76_tx_power_nss_delta(n_chains);
++
++	return txpower;
++}
++
+ enum {
+ 	UNI_BAND_CONFIG_RADIO_ENABLE,
+ 	UNI_BAND_CONFIG_RTS_THRESHOLD = 0x08,
+@@ -830,6 +842,10 @@ enum {
+ 	UNI_CMD_THERMAL_PROTECT_DUTY_CONFIG,
+ };
  
- const char *fwnode_get_name(const struct fwnode_handle *fwnode);
- const char *fwnode_get_name_prefix(const struct fwnode_handle *fwnode);
-+bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name);
++enum {
++	UNI_TXPOWER_POWER_LIMIT_TABLE_CTRL = 4,
++};
++
+ enum {
+ 	UNI_CMD_ACCESS_REG_BASIC = 0x0,
+ 	UNI_CMD_ACCESS_RF_REG_BASIC,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index d3eb564623ae..c62a42512bd6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -42,6 +42,8 @@
+ #define MT7996_CFEND_RATE_DEFAULT	0x49	/* OFDM 24M */
+ #define MT7996_CFEND_RATE_11B		0x03	/* 11B LP, 11M */
  
- struct fwnode_handle *fwnode_get_parent(const struct fwnode_handle *fwnode);
- struct fwnode_handle *fwnode_get_next_parent(struct fwnode_handle *fwnode);
++#define MT7996_SKU_RATE_NUM		417
++
+ #define MT7996_MAX_TWT_AGRT		16
+ #define MT7996_MAX_STA_TWT_AGRT		8
+ #define MT7996_MAX_QUEUE		(__MT_RXQ_MAX +	__MT_MCUQ_MAX + 3)
+@@ -471,6 +473,7 @@ int mt7996_mcu_get_chan_mib_info(struct mt7996_phy *phy, bool chan_switch);
+ int mt7996_mcu_get_temperature(struct mt7996_phy *phy);
+ int mt7996_mcu_set_thermal_throttling(struct mt7996_phy *phy, u8 state);
+ int mt7996_mcu_set_thermal_protect(struct mt7996_phy *phy, bool enable);
++int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy);
+ int mt7996_mcu_rdd_cmd(struct mt7996_dev *dev, int cmd, u8 index,
+ 		       u8 rx_sel, u8 val);
+ int mt7996_mcu_rdd_background_enable(struct mt7996_phy *phy,
 -- 
 2.39.2
 
