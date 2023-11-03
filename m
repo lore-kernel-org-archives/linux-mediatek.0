@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A43C0C4167B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5069C4167D
 	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Nov 2023 10:25:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DZdIyikMfnrodPEHNt5aGKcjoSWgjnIKhJ0XKLuZw7s=; b=DL4LrEboQR+u3cEa/FkSZK2NM/
-	TVoMuovrM1aSWm8rYo8oEu5Nnws1vnJejHP+evP7qigcewXK9EFw+ML8wSM2bP32Kp9q7viApgySK
-	f2suFdmAzgZuIjAuEfktc0rZBT55x41BFMnBfoXQ5S5rF2n8gjXXoYBaI1pDp2XWirZZ1B0p+gZT6
-	WV+08XfVI/MPhC2uwCOozkW9gzG9u757aLeIQsWZ2bOGMiEjgWJWpdHPlI2kHejRkdDt32ALTrLbl
-	d76oqyUkq+rMoQtYWDQqsjVNGOq0cAOQ97QAKdpHmtExOVr6RpPZ9cc9jMcj1SPLIkRdXptz4SS4W
-	O8sPgrzA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=53ceob+6a533yho+MmhIjIX00lQUi4UituM/WOdutB4=; b=3ZOcbPGSlcYqyY3KZ31/wHPHMB
+	/uDKK2qfZMBJ8yxzVByFqrO6fiZTVQGNBFSqtnvGd/+3dc/QdwMDh9Ml9QttaL+AU8Yh8i8facwH3
+	mjR4jjC4UR02lONcfUlPyfIGjGE0zfXEiRRuBkXKAEtmZJFitidyz+KgzZRnH/KzRz6nIGwrMIh80
+	0X8qwC1uQ89KqWcG8HEReUOIYP5D1f/5X7b8ikZIuPYN7Um0jUseln3Wb/FbI8el9V3xAPxV45Quo
+	cDNfvRYOe99bj0R7i0xrq0xthEcIlsUshzb7vmO842CNCHeFzPLCOEK8I9PwHhreElN7XiOU+xcLw
+	soo2p9FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyrNA-00B7CY-0f;
+	id 1qyrNA-00B7Ce-1d;
 	Fri, 03 Nov 2023 10:25:52 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyrN3-00B7Av-0V;
+	id 1qyrN3-00B7Aw-0W;
 	Fri, 03 Nov 2023 10:25:49 +0000
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D8F1D66073DD;
-	Fri,  3 Nov 2023 10:25:37 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0329466073DE;
+	Fri,  3 Nov 2023 10:25:38 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699007138;
-	bh=t7bVxWTHowbVZgsQgpfEarvJNLmrYsIn0CaEB3pSMdM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=CHZN2KFUpjDkfC6IPrjt7KsQRoxk8bJY/VPr5xcU6AEm8ggzikFi6+ADOQ7Jze/mE
-	 dzppBNmE3fPZWukPx8/n6GXc7dCrlxoWDXAf7LmwKKaZfob2Tl/HiTwSs2fYYIyp1S
-	 PJy2B1+JGLnKZWJE/YeRFNTr4t/5ekX/9fnXWoHjDQ1pN8YT7w96gb8PyaR5fALIsy
-	 kzxw0QRq1J7x2CsDOO2IPkPZyZqyHaXuMaZ5gIopvaWoBuC2fXFIChuFJNJGqbsmnF
-	 nRROdTTVHAd+bLrtoDO9aAkshAPIwc2xOBJeFgvPDp0gzQAhHDKChu0sbs/7bFcD9G
-	 ZZCNc9W/C5X5g==
+	s=mail; t=1699007139;
+	bh=ydznuU/qU3/4n+XPC3QC8kIGBDwC8DDVTRqGgET/oCs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Rkix/j9I+4gs44C7mjbgydNfyMKLtz3f4n246CHqkRX8x8QV1GpVdf8mlBZuIMzW/
+	 AoPWLbtsK4Ggdi4WN6OugknS0bVlrRt9FuOuLUvrSKTmi46fEPXPiTzudYSJJdXwEQ
+	 FHo4HcLKrc3dPhw7FZ+iYfOvhgLXVzjmXVQiSmSgUg2t6vmDwKEmRIGIH+GEeJ5oVn
+	 GMUGzCEJjpwLq6f7/D84y18L60rvQVk30lhm75j8F/tFdKWJfcS3AYqFmaeA6SEMnF
+	 yrFfLhuqww6ePYlpbLTqZ8Ueuf0aDveqijdtPiJdEREv4XqMTXlV32SEcigUxwlnX2
+	 wbms8ucuRy/+Q==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: sboyd@kernel.org
 Cc: mturquette@baylibre.com,
@@ -58,16 +58,17 @@ Cc: mturquette@baylibre.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v3 0/3] MediaTek clocks: Support mux indices list and 8195 DP
-Date: Fri,  3 Nov 2023 11:25:30 +0100
-Message-ID: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 1/3] clk: mediatek: clk-mux: Support custom parent indices for muxes
+Date: Fri,  3 Nov 2023 11:25:31 +0100
+Message-ID: <20231103102533.69280-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com>
+References: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231103_032545_396474_7084A3A2 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231103_032545_448456_5D8C5C17 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,53 +83,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v3:
- - Rebased on next-20231025
- - Added comment in the code explaining why the dp/edp parents lists
-   are split in one PLL per interface
- - Added a commit performing the same reparenting on MT8188 as well
+Add support for customized parent indices for MediaTek muxes: this is
+necessary for the case in which we want to exclude some clocks from
+a mux's parent clocks list, where the exclusions are not from the
+very bottom of the list but either in the middle or the beginning.
 
-Changes in v2:
- - Rebased on next-20231018
+Example:
+- MUX1 (all parents)
+  - parent1; idx=0
+  - parent2; idx=1
+  - parent3; idx=2
 
-This series adds support to specify custom parent indices for MediaTek
-MUX clocks, necessary to avoid setting the same parent PLL for MT8195's
-top_dp and top_edp clocks, solving DP+eDP concurrent output issues.
+- MUX1 (wanted parents)
+  - parent1; idx=0
+  - parent3; idx=2
 
-No fixes tags are provided as the clk-mux commit introduces new logic
-and the actual MT8195 fix depends on that.
+To achieve that add a `parent_index` array pointer to struct mtk_mux,
+then in .set_parent(), .get_parent() callbacks check if this array
+was populated and eventually get the index from that.
 
-This commit was tested on the Acer Tomato Chromebook (MT8195) with
-dual concurrent display outputs (internal eDP panel and TypeC->DP->HDMI
-adapter connected to Samsung UE40JU6400 4k TV); resolution switch on
-DP was also tested; eDP output is not paused and internal display keeps
-working as expected.
+Also, to avoid updating all clock drivers for all SoCs, rename the
+"main" macro to __GATE_CLR_SET_UPD_FLAGS (so, `__` was added) and
+add the new member to it; furthermore, GATE_CLK_SET_UPD_FLAGS has
+been reintroduced as being fully compatible with the older version.
 
+The new parent_index can be specified with the new `_INDEXED`
+variants of the MUX_GATE_CLR_SET_UPD_xxxx macros.
 
-After feedback on v1 of this series (effectively the same as v2, except
-for the rebase), I looked for an alternative solution with using
-clk_set_rate_exclusive() as proposed. Couldn't find any, as that still
-doesn't give any guarantee about selecting the same PLL that the driver
-was manipulating before setting the right divider MUX, hence that still
-wouldn't work correctly.
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/clk/mediatek/clk-mux.c | 14 +++++++++++
+ drivers/clk/mediatek/clk-mux.h | 43 ++++++++++++++++++++++++++++++----
+ 2 files changed, 53 insertions(+), 4 deletions(-)
 
-For more context, please look at the conversation at [1].
-
-Cheers!
-
-[1] https://lore.kernel.org/linux-arm-kernel/20230713072138.84117-1-angelogioacchino.delregno@collabora.com
-
-AngeloGioacchino Del Regno (3):
-  clk: mediatek: clk-mux: Support custom parent indices for muxes
-  clk: mediatek: mt8195-topckgen: Refactor parents for top_dp/edp muxes
-  clk: mediatek: mt8188-topckgen: Refactor parents for top_dp/edp muxes
-
- drivers/clk/mediatek/clk-mt8188-topckgen.c | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8195-topckgen.c | 27 ++++++++++----
- drivers/clk/mediatek/clk-mux.c             | 14 +++++++
- drivers/clk/mediatek/clk-mux.h             | 43 ++++++++++++++++++++--
- 4 files changed, 86 insertions(+), 25 deletions(-)
-
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index c93bc7f926e5..60990296450b 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -89,6 +89,17 @@ static u8 mtk_clk_mux_get_parent(struct clk_hw *hw)
+ 	regmap_read(mux->regmap, mux->data->mux_ofs, &val);
+ 	val = (val >> mux->data->mux_shift) & mask;
+ 
++	if (mux->data->parent_index) {
++		int i;
++
++		for (i = 0; i < mux->data->num_parents; i++)
++			if (mux->data->parent_index[i] == val)
++				return i;
++
++		/* Not found: return an impossible index to generate error */
++		return mux->data->num_parents + 1;
++	}
++
+ 	return val;
+ }
+ 
+@@ -104,6 +115,9 @@ static int mtk_clk_mux_set_parent_setclr_lock(struct clk_hw *hw, u8 index)
+ 	else
+ 		__acquire(mux->lock);
+ 
++	if (mux->data->parent_index)
++		index = mux->data->parent_index[index];
++
+ 	regmap_read(mux->regmap, mux->data->mux_ofs, &orig);
+ 	val = (orig & ~(mask << mux->data->mux_shift))
+ 			| (index << mux->data->mux_shift);
+diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
+index 7ecb963b0ec6..943ad1d7ce4b 100644
+--- a/drivers/clk/mediatek/clk-mux.h
++++ b/drivers/clk/mediatek/clk-mux.h
+@@ -21,6 +21,7 @@ struct mtk_mux {
+ 	int id;
+ 	const char *name;
+ 	const char * const *parent_names;
++	const u8 *parent_index;
+ 	unsigned int flags;
+ 
+ 	u32 mux_ofs;
+@@ -37,9 +38,10 @@ struct mtk_mux {
+ 	signed char num_parents;
+ };
+ 
+-#define GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,		\
+-			_mux_set_ofs, _mux_clr_ofs, _shift, _width,	\
+-			_gate, _upd_ofs, _upd, _flags, _ops) {		\
++#define __GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _paridx,		\
++			 _num_parents, _mux_ofs, _mux_set_ofs,		\
++			 _mux_clr_ofs, _shift, _width, _gate, _upd_ofs,	\
++			 _upd, _flags, _ops) {				\
+ 		.id = _id,						\
+ 		.name = _name,						\
+ 		.mux_ofs = _mux_ofs,					\
+@@ -51,11 +53,28 @@ struct mtk_mux {
+ 		.gate_shift = _gate,					\
+ 		.upd_shift = _upd,					\
+ 		.parent_names = _parents,				\
+-		.num_parents = ARRAY_SIZE(_parents),			\
++		.parent_index = _paridx,				\
++		.num_parents = _num_parents,				\
+ 		.flags = _flags,					\
+ 		.ops = &_ops,						\
+ 	}
+ 
++#define GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,		\
++			_mux_set_ofs, _mux_clr_ofs, _shift, _width,	\
++			_gate, _upd_ofs, _upd, _flags, _ops)		\
++		__GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents,		\
++			NULL, ARRAY_SIZE(_parents), _mux_ofs,		\
++			_mux_set_ofs, _mux_clr_ofs, _shift, _width,	\
++			_gate, _upd_ofs, _upd, _flags, _ops)		\
++
++#define GATE_CLR_SET_UPD_FLAGS_INDEXED(_id, _name, _parents, _paridx,	\
++			 _mux_ofs, _mux_set_ofs, _mux_clr_ofs, _shift,	\
++			 _width, _gate, _upd_ofs, _upd, _flags, _ops)	\
++		__GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents,		\
++			_paridx, ARRAY_SIZE(_paridx), _mux_ofs,		\
++			_mux_set_ofs, _mux_clr_ofs, _shift, _width,	\
++			_gate, _upd_ofs, _upd, _flags, _ops)		\
++
+ extern const struct clk_ops mtk_mux_clr_set_upd_ops;
+ extern const struct clk_ops mtk_mux_gate_clr_set_upd_ops;
+ 
+@@ -67,6 +86,14 @@ extern const struct clk_ops mtk_mux_gate_clr_set_upd_ops;
+ 			_gate, _upd_ofs, _upd, _flags,			\
+ 			mtk_mux_gate_clr_set_upd_ops)
+ 
++#define MUX_GATE_CLR_SET_UPD_FLAGS_INDEXED(_id, _name, _parents,	\
++			_paridx, _mux_ofs, _mux_set_ofs, _mux_clr_ofs,	\
++			_shift, _width, _gate, _upd_ofs, _upd, _flags)	\
++		GATE_CLR_SET_UPD_FLAGS_INDEXED(_id, _name, _parents,	\
++			_paridx, _mux_ofs, _mux_set_ofs, _mux_clr_ofs,	\
++			_shift, _width, _gate, _upd_ofs, _upd, _flags,	\
++			mtk_mux_gate_clr_set_upd_ops)
++
+ #define MUX_GATE_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,		\
+ 			_mux_set_ofs, _mux_clr_ofs, _shift, _width,	\
+ 			_gate, _upd_ofs, _upd)				\
+@@ -75,6 +102,14 @@ extern const struct clk_ops mtk_mux_gate_clr_set_upd_ops;
+ 			_width, _gate, _upd_ofs, _upd,			\
+ 			CLK_SET_RATE_PARENT)
+ 
++#define MUX_GATE_CLR_SET_UPD_INDEXED(_id, _name, _parents, _paridx,	\
++			_mux_ofs, _mux_set_ofs, _mux_clr_ofs, _shift,	\
++			_width, _gate, _upd_ofs, _upd)			\
++		MUX_GATE_CLR_SET_UPD_FLAGS_INDEXED(_id, _name,		\
++			_parents, _paridx, _mux_ofs, _mux_set_ofs,	\
++			_mux_clr_ofs, _shift, _width, _gate, _upd_ofs,	\
++			_upd, CLK_SET_RATE_PARENT)
++
+ #define MUX_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,			\
+ 			_mux_set_ofs, _mux_clr_ofs, _shift, _width,	\
+ 			_upd_ofs, _upd)					\
 -- 
 2.42.0
 
