@@ -4,89 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02BB4C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Nov 2023 09:55:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A43C0C4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Nov 2023 10:25:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SSxEHER9rgZJO6xVEezgZza82f7zlYSaeP4HD1Wipa4=; b=HQBaQUAC941l+dwBVnhBtMho3K
-	jYJaLzbN4siHsfitYoHCJMdhf8RSYRf5SaSSYdlVgDc7WF1PCoXxe4WqDXfo7QmVnGP+vfE6OAJ/5
-	zeUqbNrBOpOYsgDmaHDrn2QAzkPxIedstyVcmmlQq+716XYhLVal06DcUnABuQUwO2HnySX4/Nl+i
-	wo6jAEfZv/iQDvHCWW15bI1vo60d8qaExD9pPeqGhXSshS8y9VVCDEOpeoUalufmJj0D8ktNvTbTI
-	TZ4/v7Rs3CW17MILE/SlCNy9pp7ikZNH4fWmH2TyTji9D3KTcV7aGh/3ifPtVrzoxfEuRGfDXibdu
-	XwkyKpHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DZdIyikMfnrodPEHNt5aGKcjoSWgjnIKhJ0XKLuZw7s=; b=DL4LrEboQR+u3cEa/FkSZK2NM/
+	TVoMuovrM1aSWm8rYo8oEu5Nnws1vnJejHP+evP7qigcewXK9EFw+ML8wSM2bP32Kp9q7viApgySK
+	f2suFdmAzgZuIjAuEfktc0rZBT55x41BFMnBfoXQ5S5rF2n8gjXXoYBaI1pDp2XWirZZ1B0p+gZT6
+	WV+08XfVI/MPhC2uwCOozkW9gzG9u757aLeIQsWZ2bOGMiEjgWJWpdHPlI2kHejRkdDt32ALTrLbl
+	d76oqyUkq+rMoQtYWDQqsjVNGOq0cAOQ97QAKdpHmtExOVr6RpPZ9cc9jMcj1SPLIkRdXptz4SS4W
+	O8sPgrzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyqtm-00B5GZ-0N;
-	Fri, 03 Nov 2023 09:55:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qyrNA-00B7CY-0f;
+	Fri, 03 Nov 2023 10:25:52 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyqtf-00B5DY-2h;
-	Fri, 03 Nov 2023 09:55:27 +0000
-X-UUID: 1940202e7a2f11ee9b7791016c24628a-20231103
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SSxEHER9rgZJO6xVEezgZza82f7zlYSaeP4HD1Wipa4=;
-	b=XhoycgLrsLIkL/p2GmDL7fcAKoFNp6bjCG/pe1I4D5iyUPDodFEcg6c6UW45Nk2jLjp18n2wZHxvtiwB3dypAvodZuVyMkohCj1DmydrzMW/IMn+911n1gUcj8+JhCNEZxZB8rMlsk680tAnFUhp7UGECUpLlWR/SvbL1hcJHt4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:6f2bce9b-bffa-40d6-b128-5b9ed77b90a3,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:5e87fa94-10ce-4e4b-85c2-c9b5229ff92b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 1940202e7a2f11ee9b7791016c24628a-20231103
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 528157695; Fri, 03 Nov 2023 02:55:20 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 3 Nov 2023 17:54:41 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 3 Nov 2023 17:54:41 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <pierre-louis.bossart@linux.intel.com>, <peter.ujfalusi@linux.intel.com>,
-	<yung-chuan.liao@linux.intel.com>, <ranjani.sridharan@linux.intel.com>,
-	<kai.vehmanen@linux.intel.com>, <daniel.baluta@nxp.com>,
-	<broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <trevor.wu@mediatek.com>, <yc.hung@mediatek.com>,
-	<sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH 3/3] ASoC: SOF: mediatek: remove unused variables
-Date: Fri, 3 Nov 2023 17:54:32 +0800
-Message-ID: <20231103095433.10475-4-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231103095433.10475-1-trevor.wu@mediatek.com>
-References: <20231103095433.10475-1-trevor.wu@mediatek.com>
+	id 1qyrN3-00B7Av-0V;
+	Fri, 03 Nov 2023 10:25:49 +0000
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D8F1D66073DD;
+	Fri,  3 Nov 2023 10:25:37 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699007138;
+	bh=t7bVxWTHowbVZgsQgpfEarvJNLmrYsIn0CaEB3pSMdM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=CHZN2KFUpjDkfC6IPrjt7KsQRoxk8bJY/VPr5xcU6AEm8ggzikFi6+ADOQ7Jze/mE
+	 dzppBNmE3fPZWukPx8/n6GXc7dCrlxoWDXAf7LmwKKaZfob2Tl/HiTwSs2fYYIyp1S
+	 PJy2B1+JGLnKZWJE/YeRFNTr4t/5ekX/9fnXWoHjDQ1pN8YT7w96gb8PyaR5fALIsy
+	 kzxw0QRq1J7x2CsDOO2IPkPZyZqyHaXuMaZ5gIopvaWoBuC2fXFIChuFJNJGqbsmnF
+	 nRROdTTVHAd+bLrtoDO9aAkshAPIwc2xOBJeFgvPDp0gzQAhHDKChu0sbs/7bFcD9G
+	 ZZCNc9W/C5X5g==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: sboyd@kernel.org
+Cc: mturquette@baylibre.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	wenst@chromium.org,
+	msp@baylibre.com,
+	amergnat@baylibre.com,
+	yangyingliang@huawei.com,
+	u.kleine-koenig@pengutronix.de,
+	linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v3 0/3] MediaTek clocks: Support mux indices list and 8195 DP
+Date: Fri,  3 Nov 2023 11:25:30 +0100
+Message-ID: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.994200-8.000000
-X-TMASE-MatchedRID: tbBnGR+nfu7HO8eAxCOj9uEbUg4xvs+wYKeVO7aMEHPfUZT83lbkEGOr
-	KvsUT0pAXTvgb5xI7gVpnryVaiXugB8TzIzimOwPC24oEZ6SpSmcfuxsiY4QFDraVU6lwonzkc5
-	WVJ1GXnkS2VhzX+fgmBqqw4SleYJWMr1nDozz1oXRaxPVfNDWN0QrY6+5fQPAwAu7lS0AxFfi54
-	NN52oAEEma3zYT97IFAYfQIAUhBayZvmCbKVb49sZL6x5U/HriPpCuffGH9zI=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.994200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 073E768117C1B0B82F8444E44C9CD65E3774C4004192C4ABD2DE76B85F9A1C532000:8
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231103_025523_887585_F36815B1 
-X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-CacheID: sfid-20231103_032545_396474_7084A3A2 
+X-CRM114-Status: UNSURE (   9.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,38 +82,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To prevent confusion on the follow-up platform, it is necessary to
-remove any unused variables within the struct mtk_adsp_chip_info.
+Changes in v3:
+ - Rebased on next-20231025
+ - Added comment in the code explaining why the dp/edp parents lists
+   are split in one PLL per interface
+ - Added a commit performing the same reparenting on MT8188 as well
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-Reviewed-by: Yaochun Hung <yc.hung@mediatek.com>
----
- sound/soc/sof/mediatek/adsp_helper.h | 4 ----
- 1 file changed, 4 deletions(-)
+Changes in v2:
+ - Rebased on next-20231018
 
-diff --git a/sound/soc/sof/mediatek/adsp_helper.h b/sound/soc/sof/mediatek/adsp_helper.h
-index d41e904e6614..35527567962e 100644
---- a/sound/soc/sof/mediatek/adsp_helper.h
-+++ b/sound/soc/sof/mediatek/adsp_helper.h
-@@ -15,17 +15,13 @@
- struct mtk_adsp_chip_info {
- 	phys_addr_t pa_sram;
- 	phys_addr_t pa_dram; /* adsp dram physical base */
--	phys_addr_t pa_shared_dram; /* adsp dram physical base */
- 	phys_addr_t pa_cfgreg;
- 	u32 sramsize;
- 	u32 dramsize;
- 	u32 cfgregsize;
--	u32 shared_size;
- 	void __iomem *va_sram; /* corresponding to pa_sram */
- 	void __iomem *va_dram; /* corresponding to pa_dram */
- 	void __iomem *va_cfgreg;
--	void __iomem *shared_sram; /* part of  va_sram */
--	void __iomem *shared_dram; /* part of  va_dram */
- 	phys_addr_t adsp_bootup_addr;
- 	int dram_offset; /*dram offset between system and dsp view*/
- 
+This series adds support to specify custom parent indices for MediaTek
+MUX clocks, necessary to avoid setting the same parent PLL for MT8195's
+top_dp and top_edp clocks, solving DP+eDP concurrent output issues.
+
+No fixes tags are provided as the clk-mux commit introduces new logic
+and the actual MT8195 fix depends on that.
+
+This commit was tested on the Acer Tomato Chromebook (MT8195) with
+dual concurrent display outputs (internal eDP panel and TypeC->DP->HDMI
+adapter connected to Samsung UE40JU6400 4k TV); resolution switch on
+DP was also tested; eDP output is not paused and internal display keeps
+working as expected.
+
+
+After feedback on v1 of this series (effectively the same as v2, except
+for the rebase), I looked for an alternative solution with using
+clk_set_rate_exclusive() as proposed. Couldn't find any, as that still
+doesn't give any guarantee about selecting the same PLL that the driver
+was manipulating before setting the right divider MUX, hence that still
+wouldn't work correctly.
+
+For more context, please look at the conversation at [1].
+
+Cheers!
+
+[1] https://lore.kernel.org/linux-arm-kernel/20230713072138.84117-1-angelogioacchino.delregno@collabora.com
+
+AngeloGioacchino Del Regno (3):
+  clk: mediatek: clk-mux: Support custom parent indices for muxes
+  clk: mediatek: mt8195-topckgen: Refactor parents for top_dp/edp muxes
+  clk: mediatek: mt8188-topckgen: Refactor parents for top_dp/edp muxes
+
+ drivers/clk/mediatek/clk-mt8188-topckgen.c | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8195-topckgen.c | 27 ++++++++++----
+ drivers/clk/mediatek/clk-mux.c             | 14 +++++++
+ drivers/clk/mediatek/clk-mux.h             | 43 ++++++++++++++++++++--
+ 4 files changed, 86 insertions(+), 25 deletions(-)
+
 -- 
-2.18.0
+2.42.0
 
 
