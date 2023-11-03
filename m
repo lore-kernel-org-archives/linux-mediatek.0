@@ -4,54 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 307AEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Nov 2023 08:15:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EEBBC4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Nov 2023 08:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nc5z+fIoiWRGbEoDiN5kVtNuvPICZUxfahsCp834BCE=; b=o70Ln9KhW88B3BDkMaGE/qVkqG
-	0b6oemGb9UFXDZhq9v2eFV3aOdDitpHXjlTimLC8ODFmjUDNTCm9vEOlF+F6wZblorotDg8jj1bNS
-	w9E4/2qsYJiEC2Z97DB4fpv81ynqiHhKVE9HDO3Hfub6zar9sipJi2/HXNxa7Iu1dWQBs3Iqqe0LP
-	FRPHKW4+1+cJXrWygNpTyTAq4bg7CqPtdd0gRRA36KHCkJApBNz8yiE/+ptN+M8gZCXI7G+w9V9LK
-	MmT7cqZHjLZjbX7s9+bpJ8vSudtx8proep5Zsc39CWm64adgGUMXhnayDnW2/gDUOMY4j6ZYEd0iM
-	gh5poP2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YqRt4kuv1VFAG7p8NK8Gh24k9KSkWw3VYFzDtJzWfZ4=; b=fDlTKfN4xUmN8LBaeOmtkZaiiz
+	xKDUc79yjQDCwB2RJfgToHPIO+eTzfAVejiJiWDPTuYkdoGHDFw648a3ePgdvIjIa8Ze9KEJ1jI6L
+	CmA+Tj1PA8CbaFwpExpjBDZG+2mHkaSCVy5qP9DsdSrYxCbTOPwFGEitykVNH94M81+w3R9uwlTe4
+	mra278ODVhrK145Svn6Spwmgc2NO0YaBKraS364hTswOuKpi/7mbS5vstkvTkf/yBDleOuKZ5ml5L
+	4d9faZdz2egY5fZ3pvhkE1p++KezmzPjY41wCdZ9dka6xEDLy5mbpqJwN9KcNUAIZqu5kBHsMvL7l
+	XTeg8qkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qypL6-00Axfi-0x;
-	Fri, 03 Nov 2023 08:15:36 +0000
-Received: from hch by bombadil.infradead.org with local (Exim 4.96 #2 (Red Hat Linux))
-	id 1qypL3-00AxfM-33;
-	Fri, 03 Nov 2023 08:15:33 +0000
-Date: Fri, 3 Nov 2023 01:15:33 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Ed Tsai =?utf-8?B?KOiUoeWul+i7kik=?= <Ed.Tsai@mediatek.com>
-Cc: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"axboe@kernel.dk" <axboe@kernel.dk>,
-	Will Shiu =?utf-8?B?KOioseaBreeRnCk=?= <Will.Shiu@mediatek.com>,
-	Peter Wang =?utf-8?B?KOeOi+S/oeWPiyk=?= <peter.wang@mediatek.com>,
-	"linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Alice Chao =?utf-8?B?KOi2meePruWdhyk=?= <Alice.Chao@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	Casper Li =?utf-8?B?KOadjuS4reamrik=?= <casper.li@mediatek.com>,
-	Chun-Hung Wu =?utf-8?B?KOW3q+mnv+Wujyk=?= <Chun-hung.Wu@mediatek.com>,
-	Powen Kao =?utf-8?B?KOmrmOS8r+aWhyk=?= <Powen.Kao@mediatek.com>,
-	Naomi Chu =?utf-8?B?KOacseipoOeUsCk=?= <Naomi.Chu@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Stanley Chu =?utf-8?B?KOacseWOn+mZnik=?= <stanley.chu@mediatek.com>
-Subject: Re: [PATCH 1/1] block: Check the queue limit before bio submitting
-Message-ID: <ZUSsJbcSPSR52J2l@infradead.org>
-References: <20231025092255.27930-1-ed.tsai@mediatek.com>
- <64db8f5406571c2f89b70f852eb411320201abe6.camel@mediatek.com>
+	id 1qypWo-00AyoZ-22;
+	Fri, 03 Nov 2023 08:27:42 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qypWi-00AynA-05;
+	Fri, 03 Nov 2023 08:27:40 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 54DB166073C9;
+	Fri,  3 Nov 2023 08:27:31 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699000052;
+	bh=kQYtpasdSDbX4pdFU8I6JnSdF+myp1yFX1gld+RQjmY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YrFnO0gM0RKayDoldHI+mOt2OVS1jGHJ58/eDn/yls7tAqxKN2lNovb72cQU2pgWM
+	 Yv1Hj9nv+DMZ0xuJ+VLAL3rDEngS5gLiOMoXJsF9eKrhbHqr2ggNP2/sLCIcjtNnP4
+	 QZI3WK0IMLLWE/dJbso8SKy6yAE/YACux2PGoHI+1nv1mBewgg/i1osRfPxQpOEu//
+	 Y/pxwZSjvTqTCVdBPruojF6B6CAaC6wSKaSEp/NeLCQlGfmvllHXhlaZbWwIEYwIlI
+	 Z6AoGWaQNsqfW3l1eDKqb8mZ4BLjgD571nH1ImiIXRuN2ko/ZxrH8VQy4m8ryJDPBv
+	 7VYZs3q8V4DwA==
+Message-ID: <63fecefb-61bf-4232-ab91-db04e3212f14@collabora.com>
+Date: Fri, 3 Nov 2023 09:27:27 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <64db8f5406571c2f89b70f852eb411320201abe6.camel@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mmc: add wp_grp_size node
+To: Bo Ye <bo.ye@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: yongdong.zhang@mediatek.com, browse.zhang@mediatek.com,
+ lin.gui@mediatek.com, qilin.tan@mediatek.com, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231101154927.119312-1-bo.ye@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20231101154927.119312-1-bo.ye@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20231103_012736_401600_C9A3489A 
+X-CRM114-Status: GOOD (  23.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,8 +77,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-You need to look into the splitting code to see why the splits are
-suboptimal for your device.  We can't limit the upper bio size as
-we have code relying on it not having arbitrary limits.
+Il 01/11/23 16:49, Bo Ye ha scritto:
+> From: "lin.gui" <lin.gui@mediatek.com>
+> 
+> Detail:
+> Add node "wp_grp_size", corresponding to WP_GRP_SIZE
+> (write protect group size) of eMMC's CSD register.
+> 
+> Scenario:
+> The eMMC card can be set into write-protected mode to
+> prevent data from being accidentally modified or deleted.
+> Wp_grp_size (Write Protect Group Size) refers to an
+> attribute of the eMMC card, used to manage write protection,
+> and is the CSD register  [36:32] of the eMMC device.
+> Wp_grp_size (Write Protect Group Size) indicates how many
+> eMMC blocks are contained in each write protection group on the eMMC card.
+> 
+> Final rendered file:
+> "/sys/class/mmc_host/mmc0/mmc0:0001/wp_grp_size"
+> 
+> Signed-off-by: lin.gui <lin.gui@mediatek.com>
+> Change-Id: I73952dbde2db375ba918daadb3264380b7863096
+
+The change-id tag means nothing upstream. Please remove.
+
+Also, the recipients list doesn't look right. Please use scripts/get_maintainer.pl
+to get the right recipients list, or your patch will be ignored.
+
+> ---
+>   drivers/mmc/core/mmc.c   | 16 +++++++++++++++-
+>   include/linux/mmc/card.h |  2 ++
+>   2 files changed, 17 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> index 4a4bab9aa726..9b67e49a9e63 100644
+> --- a/drivers/mmc/core/mmc.c
+> +++ b/drivers/mmc/core/mmc.c
+> @@ -136,6 +136,17 @@ static void mmc_set_erase_size(struct mmc_card *card)
+>   	mmc_init_erase(card);
+>   }
+>   
+> +
+> +static void mmc_set_wp_grp_size(struct mmc_card *card)
+> +{
+> +	if (card->ext_csd.erase_group_def & 1)
+> +		card->wp_grp_size = card->ext_csd.hc_erase_size *
+> +			card->ext_csd.raw_hc_erase_gap_size;
+> +	else
+> +		card->wp_grp_size = card->csd.erase_size *
+> +			(card->csd.wp_grp_size + 1);
+> +}
+> +
+>   /*
+>    * Given a 128-bit response, decode to our card CSD structure.
+>    */
+> @@ -186,6 +197,7 @@ static int mmc_decode_csd(struct mmc_card *card)
+>   		b = UNSTUFF_BITS(resp, 37, 5);
+>   		csd->erase_size = (a + 1) * (b + 1);
+>   		csd->erase_size <<= csd->write_blkbits - 9;
+> +		csd->wp_grp_size = UNSTUFF_BITS(resp, 32, 5);
+>   	}
+>   
+>   	return 0;
+> @@ -791,6 +803,7 @@ MMC_DEV_ATTR(csd, "%08x%08x%08x%08x\n", card->raw_csd[0], card->raw_csd[1],
+>   MMC_DEV_ATTR(date, "%02d/%04d\n", card->cid.month, card->cid.year);
+>   MMC_DEV_ATTR(erase_size, "%u\n", card->erase_size << 9);
+>   MMC_DEV_ATTR(preferred_erase_size, "%u\n", card->pref_erase << 9);
+> +MMC_DEV_ATTR(wp_grp_size, "%u\n", card->wp_grp_size << 9);
+>   MMC_DEV_ATTR(ffu_capable, "%d\n", card->ext_csd.ffu_capable);
+>   MMC_DEV_ATTR(hwrev, "0x%x\n", card->cid.hwrev);
+>   MMC_DEV_ATTR(manfid, "0x%06x\n", card->cid.manfid);
+> @@ -851,6 +864,7 @@ static struct attribute *mmc_std_attrs[] = {
+>   	&dev_attr_date.attr,
+>   	&dev_attr_erase_size.attr,
+>   	&dev_attr_preferred_erase_size.attr,
+> +	&dev_attr_wp_grp_size.attr,
+>   	&dev_attr_fwrev.attr,
+>   	&dev_attr_ffu_capable.attr,
+>   	&dev_attr_hwrev.attr,
+> @@ -1759,7 +1773,7 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
+>   			mmc_set_erase_size(card);
+>   		}
+>   	}
+> -
+> +	mmc_set_wp_grp_size(card);
+>   	/*
+>   	 * Ensure eMMC user default partition is enabled
+>   	 */
+> diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
+> index daa2f40d9ce6..62873ecc52f1 100644
+> --- a/include/linux/mmc/card.h
+> +++ b/include/linux/mmc/card.h
+> @@ -32,6 +32,7 @@ struct mmc_csd {
+>   	unsigned int		r2w_factor;
+>   	unsigned int		max_dtr;
+>   	unsigned int		erase_size;		/* In sectors */
+> +	unsigned int		wp_grp_size;
+>   	unsigned int		read_blkbits;
+>   	unsigned int		write_blkbits;
+>   	unsigned int		capacity;
+> @@ -304,6 +305,7 @@ struct mmc_card {
+>   	unsigned int		eg_boundary;	/* don't cross erase-group boundaries */
+>   	unsigned int		erase_arg;	/* erase / trim / discard */
+>    	u8			erased_byte;	/* value of erased bytes */
+> +	unsigned int		wp_grp_size; /* write group size in sectors */
+
+There should be a tabulation before the comment, not a space.
+
+Regards,
+Angelo
 
 
