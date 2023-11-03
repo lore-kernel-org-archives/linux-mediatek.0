@@ -4,73 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D552C4167D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Nov 2023 14:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8103C4167D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Nov 2023 14:57:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rnLwrLAyR7JqlbWF71omz9lusykP8cULNd4VOIkaf+c=; b=avtYZ9kXMaa8Z7U/m/NJEvo900
-	7R3ZOPbNj9HeOHprutnizy5JWTjy4+I62cuXrivTBCSgJloNaIk4EgZszOnhvaRNjKyRe29BlyBRv
-	a/QUEt1Np0QKJ4d5pSVPkTGyTaXYQJam3zcyOwrG9hH4IxvR+//2k+KU4ZcS/VBtLYUDO+SuwUnx+
-	oFWAEY+2n0303grI20GN3yorxBTpaB1N+riMmGjr8eycmQ7EMAF6Fgg0SXIBHS1xF6U+GndNbkf5J
-	vetrWjOaQTlXV+jB+a87aLoInNGodtpZ61YRwb8+vQh9bXm2XdOqlY7ViTWFDPKmx1eIAV/66y9dF
-	Lxew5QMQ==;
+	bh=/pQmloQJnPzW3AQi+grxv5YPEbH7FoGxYsG2frmI2Ik=; b=WoBtn5e9YSBekDLaZN6csL0bM4
+	GnNgCkkDROqTb5KLUw5tTtz7yc/wYmWdMLP5gVEMBIxmEFeesqs+tm3ojreEqthwy4F8S/uvIUIgT
+	c5Z3NUx15EPLcIslo7z5lW0DVvBBD+Z7ifshPG84xMinJOo4/Kt/wSG3vIQKb2/N274iHh+kyIYB6
+	BXbKvHFASAF/LSWTEq9+oSNXjWm6TT1zpCdmd3EqRvXUZyXc4Toya5aO9kAQKo3fUTo/3assKysuA
+	/oxRQqFOEhM9M0jGfBuLfxe8XRoY5w0ZkSovlA2sip+QZsk24LjhGKfzMDpdsgvH2LKMsnoP/CKYq
+	cEAXPA+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyvTW-00BcMh-03;
-	Fri, 03 Nov 2023 14:48:42 +0000
-Received: from mail-oo1-f44.google.com ([209.85.161.44])
+	id 1qyvc1-00BdVq-1g;
+	Fri, 03 Nov 2023 14:57:29 +0000
+Received: from mail-pl1-f181.google.com ([209.85.214.181])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyvTT-00BcLp-0t
+	id 1qyvby-00BdVH-0p
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Nov 2023 14:48:40 +0000
-Received: by mail-oo1-f44.google.com with SMTP id 006d021491bc7-5872c652a66so237095eaf.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Nov 2023 07:48:37 -0700 (PDT)
+	Fri, 03 Nov 2023 14:57:27 +0000
+Received: by mail-pl1-f181.google.com with SMTP id d9443c01a7336-1cc3bc5df96so17787445ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Nov 2023 07:57:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699022917; x=1699627717;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rnLwrLAyR7JqlbWF71omz9lusykP8cULNd4VOIkaf+c=;
-        b=eOLhRGM7b2LZsA6UNANly3WCL2i6Bz3bVdSOLEzdqpjAhqG50TYd7jubi4fa+/SFiC
-         JjC6evFGRvm/FepHJo8BBzUNegwf7jlzGzA0P0mk1YZ4SXTMkeAbAqGNAdCKZl7OQuW2
-         RIicrQ/uEdEN3V4kIX7mBeYRXGguCV4z1gxPGTDuz4C5kix8M4cglUluRXLSloZVrQPB
-         6f9khfhsozPSLEbFPcWcER2qRVlFw7H6dBJ/efJRpNOYkt47IEM78ANd+uueAokRWjJn
-         DLrCjtQlSS1JegfFzi5NSAdNYZ66ERUpjbxcMfRlkUg3JLSUkn47JTTId3ZJbNv4d36m
-         5ieA==
-X-Gm-Message-State: AOJu0Yxbml5ZTQ7UgtQZR1dIGGdMDiXL+h7ho48cjv2g8g3htMYCRx8T
-	krR5gyCLC4YgJVUZjjaBbt1zeO4h9/G5Vrp0jHk=
-X-Google-Smtp-Source: AGHT+IGjKURclSqydK6kWxSfSIlPGOuR/YzJpciRF8vTZTp9AyFyQ8kyZAOBh+/mGVNZoVSC6t7kXDM8p9kJK8d0aM0=
-X-Received: by 2002:a05:6820:1899:b0:581:e7b8:dd77 with SMTP id
- bm25-20020a056820189900b00581e7b8dd77mr24924270oob.1.1699022916970; Fri, 03
- Nov 2023 07:48:36 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1699023444; x=1699628244;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/pQmloQJnPzW3AQi+grxv5YPEbH7FoGxYsG2frmI2Ik=;
+        b=YksZ9CpkCZ+o2vWIzy9P8kLkitwgLO1Z4IhOGoXJDzY0RB86JSIfMmsfDZy29UJHcZ
+         uuRdVG62Wz5F3/k7U38L0OwdaFWTzmMEir1WBPdfhmTLhpyzaHOJXDbMorpI+u3slZhp
+         yR7ged5V0KaFFgOwCINJ5vPUDWftkKbv9kMLo9pY7QyrJAreW36oZmSZo6cSRpXZcnAz
+         AWM7eZ7XI+XduJPO9d6hXKfpJyI0jK8hp2EEiAfXea6JLxOGcj5IPHaX2Srq6aMgxoaE
+         I6TOwCIMyxEojC9tPLs+62zUHtzPCUhGnqtFcPpTgRSVnfbobBdBWkPD2MIx4fyqmeAX
+         uFKg==
+X-Gm-Message-State: AOJu0YzR3jwQ9ylh5guVLJbTY9yjroR/k9+/4s6ijCUIRnha4MqHxRte
+	SmV4MgqcrKOpHARP9aiH8h0=
+X-Google-Smtp-Source: AGHT+IGw7ClGS24M2p/OtXtTzs7B2bXAaeiosKkYdtiBRLKDcjbT9LerWlVVCM0Xu0491oL017zk/g==
+X-Received: by 2002:a17:90b:111:b0:27d:61ff:3d3b with SMTP id p17-20020a17090b011100b0027d61ff3d3bmr18548594pjz.38.1699023443825;
+        Fri, 03 Nov 2023 07:57:23 -0700 (PDT)
+Received: from [192.168.51.14] (c-73-231-117-72.hsd1.ca.comcast.net. [73.231.117.72])
+        by smtp.gmail.com with ESMTPSA id ml3-20020a17090b360300b0028010142010sm1558584pjb.21.2023.11.03.07.57.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 03 Nov 2023 07:57:22 -0700 (PDT)
+Message-ID: <a017262a-b367-4500-90a9-bc099fe08a5d@acm.org>
+Date: Fri, 3 Nov 2023 07:57:20 -0700
 MIME-Version: 1.0
-References: <20231102081611.1179964-1-sakari.ailus@linux.intel.com>
-In-Reply-To: <20231102081611.1179964-1-sakari.ailus@linux.intel.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Fri, 3 Nov 2023 15:48:23 +0100
-Message-ID: <CAJZ5v0h5q__nbfxLUN-cZDSvjTCJHSZwoDEz_cq+bUJGSn1u-A@mail.gmail.com>
-Subject: Re: [PATCH v3 1/1] device property: Add fwnode_name_eq()
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-acpi@vger.kernel.org, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, linux-media@vger.kernel.org, 
-	Paul Elder <paul.elder@ideasonboard.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] ufs: core: fix racing issue between ufshcd_mcq_abort
+ and ISR
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com
+References: <20231027084329.4067-1-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20231027084329.4067-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231103_074839_315572_9EDB50ED 
-X-CRM114-Status: GOOD (  22.23  )
+X-CRM114-CacheID: sfid-20231103_075726_312076_26635ECA 
+X-CRM114-Status: UNSURE (   5.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,107 +88,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 2, 2023 at 9:22=E2=80=AFAM Sakari Ailus
-<sakari.ailus@linux.intel.com> wrote:
->
-> Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
-> on fwnode property API. The same convention of ending the comparison at
-> '@' (besides NUL) is applied on also both ACPI and swnode. The function
-> is intended for comparing unit address-less node names on DT and firmware
-> or swnodes compliant with DT bindings.
->
-> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Tested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> ---
-> Hi Rafael,
->
-> Could we merge this via the media tree (pending further review comments,
-> if any)?
+On 10/27/23 01:43, peter.wang@mediatek.com wrote:
+> If command timeout happen and cq complete irq raise at the same time,
+> ufshcd_mcq_abort null the lprb->cmd and NULL poiner KE in ISR.
 
-This would be fine with me, so please feel free to add
+Please add a Fixes: tag. Otherwise this patch looks good to me.
 
-Acked-by: Rafael J. Wysocki <rafael@kernel.org>
+Thanks,
 
-to this patch (when ready), but you need to ask Greg about it, because
-he's been handling device properties changes lately.
-
-> There'a a patch to be merged via that tree which will depend on
-> fwnode_name_eq(), namely:
-> <URL:https://lore.kernel.org/linux-media/20231030133247.11243-1-laurent.p=
-inchart@ideasonboard.com/T/#m489b7e83cbc755815c5002f85454a76bfb41adb2>.
->
-> since v2:
->
-> - Use NUL instead of '\0' and "at" instead of "to" (before "stopping
->   comparison").
->
->  drivers/base/property.c  | 28 ++++++++++++++++++++++++++++
->  include/linux/property.h |  1 +
->  2 files changed, 29 insertions(+)
->
-> diff --git a/drivers/base/property.c b/drivers/base/property.c
-> index 8667b13639d2..572e065e8797 100644
-> --- a/drivers/base/property.c
-> +++ b/drivers/base/property.c
-> @@ -595,6 +595,34 @@ const char *fwnode_get_name_prefix(const struct fwno=
-de_handle *fwnode)
->         return fwnode_call_ptr_op(fwnode, get_name_prefix);
->  }
->
-> +/**
-> + * fwnode_name_eq - Return true if node name is equal
-> + * @fwnode: The firmware node
-> + * @name: The name to which to compare the node name
-> + *
-> + * Compare the name provided as an argument to the name of the node, sto=
-pping
-> + * the comparison at either NUL or '@' character, whichever comes first.=
- This
-> + * function is generally used for comparing node names while ignoring th=
-e
-> + * possible unit address of the node.
-> + *
-> + * Return: true if the node name matches with the name provided in the @=
-name
-> + * argument, false otherwise.
-> + */
-> +bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name=
-)
-> +{
-> +       const char *node_name;
-> +       size_t len;
-> +
-> +       node_name =3D fwnode_get_name(fwnode);
-> +       if (!node_name)
-> +               return false;
-> +
-> +       len =3D strchrnul(node_name, '@') - node_name;
-> +
-> +       return str_has_prefix(node_name, name) =3D=3D len;
-> +}
-> +EXPORT_SYMBOL_GPL(fwnode_name_eq);
-> +
->  /**
->   * fwnode_get_parent - Return parent firwmare node
->   * @fwnode: Firmware whose parent is retrieved
-> diff --git a/include/linux/property.h b/include/linux/property.h
-> index 083a1f41364b..096ade186601 100644
-> --- a/include/linux/property.h
-> +++ b/include/linux/property.h
-> @@ -108,6 +108,7 @@ struct fwnode_handle *fwnode_find_reference(const str=
-uct fwnode_handle *fwnode,
->
->  const char *fwnode_get_name(const struct fwnode_handle *fwnode);
->  const char *fwnode_get_name_prefix(const struct fwnode_handle *fwnode);
-> +bool fwnode_name_eq(const struct fwnode_handle *fwnode, const char *name=
-);
->
->  struct fwnode_handle *fwnode_get_parent(const struct fwnode_handle *fwno=
-de);
->  struct fwnode_handle *fwnode_get_next_parent(struct fwnode_handle *fwnod=
-e);
-> --
-> 2.39.2
->
+Bart.
 
