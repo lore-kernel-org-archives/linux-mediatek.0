@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C294C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Nov 2023 03:43:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C002DC4167B
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Nov 2023 21:16:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S1LrTjRfjBJLKAZKTPJ3e6IBQx9TBLxXp5gJn/UCemk=; b=BqPAXjCveLqKvfzeV1+jlkHcT2
-	eLeABbwj4UVK756qsIIWMrndyvOlpfDnStS7EDVdpFNmJ+lvbj0R1mGFf12TRzi73ruMr03QsSKaI
-	EnWdfkacHWEtxW+b+VIdcG++OS91euyooJ5abV+eHp1smcQHEbOvdDG6XU5+/xmwfjGnbS8i+Rjyl
-	v9LglkNsKDOYc5U4j+c/0YJQx4Wb0MaOQ2Eb2Z+TycwBIQviuKN7yoi4AqI5epwMdexMCmZBHgB3V
-	vweBdlFuNP6zm1m6Y/VbY7WGPyfTeCgW9T38VWifk3vqiSsJCYmBWKFdwqyi8YaaJQ77TJWJv9h1U
-	xP5VTDZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SXBbfAa9sQW5emrnvAEGrPxHnFY7IXOkE7l8qn7ct7Q=; b=pA1dbF5ctT6oYTlawB1nvDGCiF
+	nTUNjma7ab2iBaUJAr8+SF9X5oRo2AKNW2CFYg5pb4g6eFEPvdrMPH72Jn04+KFdbVRVcVj8kVJmg
+	0iTVfGb6HLTFJQDUQWtRUpqu5NtjQ6kQuzk7Sx/SWA19JlDYUx0bMHkvPANp6H+SrRNmjpdrSO4fF
+	q3vihTVT93+PRBgOGbUKYdkMbDqtzmxYxZZ8J7GnzGZ+vbV6lds7yy2npiulliClDxe9lcPsyv85s
+	QHIqDn7vWRayL+1bpvmPBri20yR4ajVgkwEbXUsrE5awnX1aaydacKe0IoZrfQ9htqFi82P2xZRJ9
+	bO6fbDDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qz7Zl-00CZtQ-1Y;
-	Sat, 04 Nov 2023 03:43:57 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1qzNzt-00E2Ks-0M;
+	Sat, 04 Nov 2023 21:16:01 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qz7Zi-00CZsr-14
+	id 1qzNzn-00E2Hf-1d
 	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Nov 2023 03:43:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1699069432;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=S1LrTjRfjBJLKAZKTPJ3e6IBQx9TBLxXp5gJn/UCemk=;
-	b=MdTdZ7nVA0Zslbyp0NMbvSo5FUKtTGmHnxewcbvt6SH6lAsmjyuFPSV7m1m1/JxeKxF3W7
-	7hG8d0PZXDEVPMjDD3xlo8KfSC8nLR+ryH9676aQ4X8/rrOIA9WKyBHa/Ids+rNcx9fuRF
-	iq/NElQWowDeHtipIc18h019B15abRc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-679-uSNpMGNxPwW7gYHyU4CZ-g-1; Fri, 03 Nov 2023 23:43:51 -0400
-X-MC-Unique: uSNpMGNxPwW7gYHyU4CZ-g-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9A8C282401E;
-	Sat,  4 Nov 2023 03:43:50 +0000 (UTC)
-Received: from fedora (unknown [10.72.120.13])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 59EFD2166B26;
-	Sat,  4 Nov 2023 03:43:40 +0000 (UTC)
-Date: Sat, 4 Nov 2023 11:43:36 +0800
-From: Ming Lei <ming.lei@redhat.com>
-To: Ed Tsai =?utf-8?B?KOiUoeWul+i7kik=?= <Ed.Tsai@mediatek.com>
-Cc: Will Shiu =?utf-8?B?KOioseaBreeRnCk=?= <Will.Shiu@mediatek.com>,
-	Peter Wang =?utf-8?B?KOeOi+S/oeWPiyk=?= <peter.wang@mediatek.com>,
-	"linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Alice Chao =?utf-8?B?KOi2meePruWdhyk=?= <Alice.Chao@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	"axboe@kernel.dk" <axboe@kernel.dk>,
-	Casper Li =?utf-8?B?KOadjuS4reamrik=?= <casper.li@mediatek.com>,
-	Chun-Hung Wu =?utf-8?B?KOW3q+mnv+Wujyk=?= <Chun-hung.Wu@mediatek.com>,
-	Powen Kao =?utf-8?B?KOmrmOS8r+aWhyk=?= <Powen.Kao@mediatek.com>,
-	Naomi Chu =?utf-8?B?KOacseipoOeUsCk=?= <Naomi.Chu@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Stanley Chu =?utf-8?B?KOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	ming.lei@redhat.com
-Subject: Re: [PATCH 1/1] block: Check the queue limit before bio submitting
-Message-ID: <ZUW96Ha5GoJePD8Y@fedora>
-References: <20231025092255.27930-1-ed.tsai@mediatek.com>
- <64db8f5406571c2f89b70f852eb411320201abe6.camel@mediatek.com>
- <ZUUd48QF/TEGFzPy@fedora>
- <cf09a768d0e116bfaf01a1592a7ae95a10b4c2cf.camel@mediatek.com>
+	Sat, 04 Nov 2023 21:15:56 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qzNza-0007x9-IB; Sat, 04 Nov 2023 22:15:42 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qzNzZ-006e1Q-FH; Sat, 04 Nov 2023 22:15:41 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qzNzZ-00D1bF-6D; Sat, 04 Nov 2023 22:15:41 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Sebastian Reichel <sre@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pm@vger.kernel.org,
+	kernel@pengutronix.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 08/14] power: reset: mt6323-poweroff: Convert to platform remove callback returning void
+Date: Sat,  4 Nov 2023 22:15:10 +0100
+Message-ID: <20231104211501.3676352-24-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
+References: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1813; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=+ks+08sNas6pRwQOIu9JqI3KzDyMtEsulLgfZXQOgLc=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlRrRfbtVNNlwYL9e4IQ3CBHffi67iJXbrWETgo wljmV/D+IeJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZUa0XwAKCRCPgPtYfRL+ Tv5UB/9Cyj7hmzhYSg/jRT/T2W3i95PssgWRVEh5CX70+1G/lp2Vkon6fJxXqOQASadNr36iiy+ JETjkP6mjXsqcQs9vwbSXVK1VWPah3sC93rWO+8nBDQPNdksfNccp5R6/vbqZr2d3oIwgdpjxfu LU1Eedx/SSpCa/XvnQ8WstE0J6xQMLXZ7+iT23K2tFkranQkfn5TD1TfW7KYZjsziMncru/dESa gvXn27dj84G3VQW2a2rdGirOxcyQrbus+HiDgJq8tJIYOTlodGxcui5khY6x1S8GzaC0fEa/WFu Is7YBPo+hjgAux4wwm0N2zuVckwFRa5abA4J7QuKwjHSMMoT
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <cf09a768d0e116bfaf01a1592a7ae95a10b4c2cf.camel@mediatek.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231103_204354_465146_3A36C827 
-X-CRM114-Status: GOOD (  53.50  )
+X-CRM114-CacheID: sfid-20231104_141555_544036_174AB256 
+X-CRM114-Status: GOOD (  16.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,258 +81,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 04, 2023 at 01:11:02AM +0000, Ed Tsai (蔡宗軒) wrote:
-> On Sat, 2023-11-04 at 00:20 +0800, Ming Lei wrote:
-> >  On Wed, Nov 01, 2023 at 02:23:26AM +0000, Ed Tsai (蔡宗軒) wrote:
-> > > On Wed, 2023-10-25 at 17:22 +0800, ed.tsai@mediatek.com wrote:
-> > > > From: Ed Tsai <ed.tsai@mediatek.com>
-> > > > 
-> > > > Referring to commit 07173c3ec276 ("block: enable multipage
-> > bvecs"),
-> > > > each bio_vec now holds more than one page, potentially exceeding
-> > > > 1MB in size and causing alignment issues with the queue limit.
-> > > > 
-> > > > In a sequential read/write scenario, the file system maximizes
-> > the
-> > > > bio's capacity before submitting. However, misalignment with the
-> > > > queue limit can result in the bio being split into smaller I/O
-> > > > operations.
-> > > > 
-> > > > For instance, assuming the maximum I/O size is set to 512KB and
-> > the
-> > > > memory is highly fragmented, resulting in each bio containing
-> > only
-> > > > one 2-pages bio_vec (i.e., bi_size = 1028KB). This would cause
-> > the
-> > > > bio to be split into two 512KB portions and one 4KB portion. As a
-> > > > result, the originally expected continuous large I/O operations
-> > are
-> > > > interspersed with many small I/O operations.
-> > > > 
-> > > > To address this issue, this patch adds a check for the
-> > max_sectors
-> > > > before submitting the bio. This allows the upper layers to
-> > > > proactively
-> > > > detect and handle alignment issues.
-> > > > 
-> > > > I performed the Antutu V10 Storage Test on a UFS 4.0 device,
-> > which
-> > > > resulted in a significant improvement in the Sequential test:
-> > > > 
-> > > > Sequential Read (average of 5 rounds):
-> > > > Original: 3033.7 MB/sec
-> > > > Patched: 3520.9 MB/sec
-> > > > 
-> > > > Sequential Write (average of 5 rounds):
-> > > > Original: 2225.4 MB/sec
-> > > > Patched: 2800.3 MB/sec
-> > > > 
-> > > > Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
-> > > > ---
-> > > >  block/bio.c | 6 ++++++
-> > > >  1 file changed, 6 insertions(+)
-> > > > 
-> > > > diff --git a/block/bio.c b/block/bio.c
-> > > > index 816d412c06e9..a4a1f775b9ea 100644
-> > > > --- a/block/bio.c
-> > > > +++ b/block/bio.c
-> > > > @@ -1227,6 +1227,7 @@ static int __bio_iov_iter_get_pages(struct
-> > bio
-> > > > *bio, struct iov_iter *iter)
-> > > >  iov_iter_extraction_t extraction_flags = 0;
-> > > >  unsigned short nr_pages = bio->bi_max_vecs - bio->bi_vcnt;
-> > > >  unsigned short entries_left = bio->bi_max_vecs - bio->bi_vcnt;
-> > > > +struct queue_limits *lim = &bdev_get_queue(bio->bi_bdev)-
-> > > > >limits;
-> > > >  struct bio_vec *bv = bio->bi_io_vec + bio->bi_vcnt;
-> > > >  struct page **pages = (struct page **)bv;
-> > > >  ssize_t size, left;
-> > > > @@ -1275,6 +1276,11 @@ static int __bio_iov_iter_get_pages(struct
-> > bio
-> > > > *bio, struct iov_iter *iter)
-> > > >  struct page *page = pages[i];
-> > > >  
-> > > >  len = min_t(size_t, PAGE_SIZE - offset, left);
-> > > > +if (bio->bi_iter.bi_size + len >
-> > > > +    lim->max_sectors << SECTOR_SHIFT) {
-> > > > +ret = left;
-> > > > +break;
-> > > > +}
-> > > >  if (bio_op(bio) == REQ_OP_ZONE_APPEND) {
-> > > >  ret = bio_iov_add_zone_append_page(bio, page,
-> > > > len,
-> > > >  offset);
-> > > > -- 
-> > > > 2.18.0
-> > > > 
-> > > 
-> > > 
-> > > Hi Jens,
-> > > 
-> > > Just to clarify any potential confusion, I would like to provide
-> > > further details based on the assumed scenario mentioned above.
-> > > 
-> > > When the upper layer continuously sends 1028KB full-sized bios for
-> > > sequential reads, the Block Layer sees the following sequence:
-> > > submit bio: size = 1028KB, start LBA = n
-> > > submit bio: size = 1028KB, start LBA = n + 1028KB 
-> > > submit bio: size = 1028KB, start LBA = n + 2056KB
-> > > ...
-> > > 
-> > > However, due to the queue limit restricting the I/O size to a
-> > maximum
-> > > of 512KB, the Block Layer splits into the following sequence:
-> > > submit bio: size = 512KB, start LBA = n
-> > > submit bio: size = 512KB, start LBA = n +  512KB
-> > > submit bio: size =   4KB, start LBA = n + 1024KB
-> > > submit bio: size = 512KB, start LBA = n + 1028KB
-> > > submit bio: size = 512KB, start LBA = n + 1540KB
-> > > submit bio: size =   4KB, start LBA = n + 2052KB
-> > > submit bio: size = 512KB, start LBA = n + 2056KB
-> > > submit bio: size = 512KB, start LBA = n + 2568KB
-> > > submit bio: size =   4KB, start LBA = n + 3080KB
-> > > ...
-> > > 
-> > > The original expectation was for the storage to receive large,
-> > > contiguous requests. However, due to non-alignment, many small I/O
-> > > requests are generated. This problem is easily visible because the
-> > > user pages passed in are often allocated by the buddy system as
-> > order 0
-> > > pages during page faults, resulting in highly non-contiguous
-> > memory.
-> > 
-> > If order 0 page is added to bio, the multipage bvec becomes nop
-> > basically(256bvec holds 256 pages), then how can it make a difference
-> > for you?
-> 
-> 
-> 
-> > 
-> > > 
-> > > As observed in the Antutu Sequential Read test below, it is similar
-> > to
-> > > the description above where the splitting caused by the queue limit
-> > > leaves small requests sandwiched in between:
-> > > 
-> > > block_bio_queue: 8,32 R 86925864 + 2144 [Thread-51]
-> > > block_split: 8,32 R 86925864 / 86926888 [Thread-51]
-> > > block_split: 8,32 R 86926888 / 86927912 [Thread-51]
-> > > block_rq_issue: 8,32 R 524288 () 86925864 + 1024 [Thread-51]
-> > > block_rq_issue: 8,32 R 524288 () 86926888 + 1024 [Thread-51]
-> > > block_bio_queue: 8,32 R 86928008 + 2144 [Thread-51]
-> > > block_split: 8,32 R 86928008 / 86929032 [Thread-51]
-> > > block_split: 8,32 R 86929032 / 86930056 [Thread-51]
-> > > block_rq_issue: 8,32 R 524288 () 86928008 + 1024 [Thread-51]
-> > > block_rq_issue: 8,32 R 49152 () 86927912 + 96 [Thread-51]
-> > > block_rq_issue: 8,32 R 524288 () 86929032 + 1024 [Thread-51]
-> > > block_bio_queue: 8,32 R 86930152 + 2112 [Thread-51]
-> > > block_split: 8,32 R 86930152 / 86931176 [Thread-51]
-> > > block_split: 8,32 R 86931176 / 86932200 [Thread-51]
-> > > block_rq_issue: 8,32 R 524288 () 86930152 + 1024 [Thread-51]
-> > > block_rq_issue: 8,32 R 49152 () 86930056 + 96 [Thread-51]
-> > > block_rq_issue: 8,32 R 524288 () 86931176 + 1024 [Thread-51]
-> > > block_bio_queue: 8,32 R 86932264 + 2096 [Thread-51]
-> > > block_split: 8,32 R 86932264 / 86933288 [Thread-51]
-> > > block_split: 8,32 R 86933288 / 86934312 [Thread-51]
-> > > block_rq_issue: 8,32 R 524288 () 86932264 + 1024 [Thread-51]
-> > > block_rq_issue: 8,32 R 32768 () 86932200 + 64 [Thread-51]
-> > > block_rq_issue: 8,32 R 524288 () 86933288 + 1024 [Thread-51]
-> > > 
-> > > I simply prevents non-aligned situations in bio_iov_iter_get_pages.
-> > 
-> > But there is still 4KB IO left if you limit max bio size is 512KB,
-> > then how does this 4KB IO finally go in case of 1028KB IO?
-> > 
-> > > Besides making the upper layer application aware of the queue
-> > limit, I
-> > > would appreciate any other directions or suggestions you may have.
-> > 
-> > The problem is related with IO size from application.
-> > 
-> > If you send unaligned IO, you can't avoid the last IO with small
-> > size, no
-> > matter if block layer bio split is involved or not. Your patch just
-> > lets
-> > __bio_iov_iter_get_pages split the bio, and you still have 4KB left
-> > finally when application submits 1028KB, right?
-> > 
-> > Then I don't understand why your patch improves sequential IO
-> > performance.
-> > 
-> > Thanks,
-> > Ming
-> > 
-> 
-> The application performs I/O with a sufficitenly large I/O size,
-> causing it to constantly fill up and submit full bios. However, in the
-> iomap direct I/O scenario, pages are added to the bio one by one from
-> the user buffer. This typically triggers page faults, resulting in the
-> allocation of order 0 pages from the buddy system.
-> 
-> The remaining amount of each order in the buddy system varies over
-> time. If there are not enough pages available in a particular order,
-> pages are split from higher orders. When pages are obtained from the
-> higher order, the user buffer may contain some small consecutive
-> patterns.
-> 
-> In summary, the physical layout of the user buffer is unpredictable,
-> and when it contains some small consecutive patterns, the size of the
-> bio becomes randomly unaligned during filling.
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is ignored (apart
+from emitting a warning) and this typically results in resource leaks.
 
-Yes, multipage bvec depends on physical layout of user buffer, but it
-doesn't affect bio size, which is decided by userspace, and the bvec
-page layout doesn't affect IO pattern.
+To improve here there is a quest to make the remove callback return
+void. In the first step of this quest all drivers are converted to
+.remove_new(), which already returns void. Eventually after all drivers
+are converted, .remove_new() will be renamed to .remove().
 
-If userspace submits 1028K IO, the IO is split into 512K, 512K and 4K,
-no matter if each bvec includes how many pages.
+Trivially convert this driver from always returning zero in the remove
+callback to the void returning variant.
 
-If userspace submits very large IO, such as 512M, which will be split
-into 1K bios with 512K size.
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+---
+ drivers/power/reset/mt6323-poweroff.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-You patch doesn't makes any difference actually from block layer
-viewpoint, such as:
-
-1) dd if=/dev/ublkb0 of=/dev/null bs=1028k count=1 iflag=direct
-
-2) observe IO pattern by the following bpftrace:
-
-kprobe:blk_mq_start_request
-{
-	$rq = (struct request *)arg0;
-
-	printf("%lu %16s %d %d: %s %s bio %lx-%lu\n",
-		nsecs / 1000,  comm, pid, cpu, ksym(reg("ip")),
-		$rq->q->disk->disk_name, $rq->__sector, $rq->__data_len);
-}
-
-3) no matter if your patch is applied or not, the following pattern
-is always observed:
-
-117828811               dd 1475 0: blk_mq_start_request ublkb0 bio 0-524288
-117828823               dd 1475 0: blk_mq_start_request ublkb0 bio 400-524288
-117828825               dd 1475 0: blk_mq_start_request ublkb0 bio 800-4096
-
-Similar pattern can be observed when running dd inside FS(xfs).
-
-> 
-> This patch limits the bio to be filled up to the max_sectors. The
-> submission is an async operation, so once the bio is queued, it will
-> immediately return and continue filled and submit the next bio.
-
-bio split doesn't change this behavior too, the difference is just how
-many bios the upper layer(iomap) observed.
-
-Your patch just moves the split into upper layer, and iomap can see
-3 bios with your patch when `dd bs=1028K`, and in vanilla tree, iomap
-just submits single bio with 1028K, block layer splits it into
-512k, 512k, and 4k. So finally UFS driver observes same IO pattern.
-
-In short, please root cause why your patch improves performance, or
-please share your workloads, so we can observe the IO pattern and
-related mm/fs behavior and try to root cause it.
-
-
-Thanks,
-Ming
+diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
+index 108167f7738b..57a63c0ab7fb 100644
+--- a/drivers/power/reset/mt6323-poweroff.c
++++ b/drivers/power/reset/mt6323-poweroff.c
+@@ -70,12 +70,10 @@ static int mt6323_pwrc_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static int mt6323_pwrc_remove(struct platform_device *pdev)
++static void mt6323_pwrc_remove(struct platform_device *pdev)
+ {
+ 	if (pm_power_off == &mt6323_do_pwroff)
+ 		pm_power_off = NULL;
+-
+-	return 0;
+ }
+ 
+ static const struct of_device_id mt6323_pwrc_dt_match[] = {
+@@ -86,7 +84,7 @@ MODULE_DEVICE_TABLE(of, mt6323_pwrc_dt_match);
+ 
+ static struct platform_driver mt6323_pwrc_driver = {
+ 	.probe          = mt6323_pwrc_probe,
+-	.remove         = mt6323_pwrc_remove,
++	.remove_new     = mt6323_pwrc_remove,
+ 	.driver         = {
+ 		.name   = "mt6323-pwrc",
+ 		.of_match_table = mt6323_pwrc_dt_match,
+-- 
+2.42.0
 
 
