@@ -4,60 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C002DC4167B
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Nov 2023 21:16:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71BFDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Nov 2023 21:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SXBbfAa9sQW5emrnvAEGrPxHnFY7IXOkE7l8qn7ct7Q=; b=pA1dbF5ctT6oYTlawB1nvDGCiF
-	nTUNjma7ab2iBaUJAr8+SF9X5oRo2AKNW2CFYg5pb4g6eFEPvdrMPH72Jn04+KFdbVRVcVj8kVJmg
-	0iTVfGb6HLTFJQDUQWtRUpqu5NtjQ6kQuzk7Sx/SWA19JlDYUx0bMHkvPANp6H+SrRNmjpdrSO4fF
-	q3vihTVT93+PRBgOGbUKYdkMbDqtzmxYxZZ8J7GnzGZ+vbV6lds7yy2npiulliClDxe9lcPsyv85s
-	QHIqDn7vWRayL+1bpvmPBri20yR4ajVgkwEbXUsrE5awnX1aaydacKe0IoZrfQ9htqFi82P2xZRJ9
-	bO6fbDDQ==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6M0D9BQ+lOg0p5KgeoB2Jl9hOTGWoaB4HcAGLuCtQrs=; b=gyOpRR++jgPJCMAAGZDHc5LsX+
+	WDwKu6iHfzVDJt7gKBtSf/U7cuU/5nq+Z06p92Ez3q6PTMYgmkaGD9NXkALBd17cQFdvWgE8BhXkF
+	jwn2+0/NhINdQbH9aQl2bwwcshWlYAcrsZKT/GJZrUqItDsKbZLPtb0GXw3eZn9xZmXv+y1MTrokr
+	FVsTHLqXETtJkX9MxZd10wIZLoL/ptsIO35wfTzTkYK2NDk9FQEhywf3pn4twlDUsqitioxuqNdQM
+	BreQEhYe7sBArXekxqf1tYqV9C9AiuVdwaBzuduV3HXqGRB2pPReORmbNLdpgQDR86fUfCGUlER1k
+	gAqBy2cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzNzt-00E2Ks-0M;
-	Sat, 04 Nov 2023 21:16:01 +0000
+	id 1qzNzw-00E2M6-0g;
+	Sat, 04 Nov 2023 21:16:04 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzNzn-00E2Hf-1d
+	id 1qzNzr-00E2JV-1T
 	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Nov 2023 21:15:56 +0000
+	Sat, 04 Nov 2023 21:16:00 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qzNza-0007x9-IB; Sat, 04 Nov 2023 22:15:42 +0100
+	id 1qzNza-0007wk-IH; Sat, 04 Nov 2023 22:15:42 +0100
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qzNzZ-006e1Q-FH; Sat, 04 Nov 2023 22:15:41 +0100
+	id 1qzNzX-006e11-N8; Sat, 04 Nov 2023 22:15:39 +0100
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qzNzZ-00D1bF-6D; Sat, 04 Nov 2023 22:15:41 +0100
+	id 1qzNzX-00D1ak-Dc; Sat, 04 Nov 2023 22:15:39 +0100
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 To: Sebastian Reichel <sre@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>,
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@pengutronix.de,
+	linux-kbuild@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@gmail.com>,
+	linux-actions@lists.infradead.org,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org,
-	kernel@pengutronix.de,
-	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 08/14] power: reset: mt6323-poweroff: Convert to platform remove callback returning void
-Date: Sat,  4 Nov 2023 22:15:10 +0100
-Message-ID: <20231104211501.3676352-24-u.kleine-koenig@pengutronix.de>
+Subject: [PATCH 00/14] power: reset: Drop platform_driver_probe() and convert to platform remove callback returning void
+Date: Sat,  4 Nov 2023 22:15:02 +0100
+Message-ID: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
-References: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1813; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=+ks+08sNas6pRwQOIu9JqI3KzDyMtEsulLgfZXQOgLc=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlRrRfbtVNNlwYL9e4IQ3CBHffi67iJXbrWETgo wljmV/D+IeJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZUa0XwAKCRCPgPtYfRL+ Tv5UB/9Cyj7hmzhYSg/jRT/T2W3i95PssgWRVEh5CX70+1G/lp2Vkon6fJxXqOQASadNr36iiy+ JETjkP6mjXsqcQs9vwbSXVK1VWPah3sC93rWO+8nBDQPNdksfNccp5R6/vbqZr2d3oIwgdpjxfu LU1Eedx/SSpCa/XvnQ8WstE0J6xQMLXZ7+iT23K2tFkranQkfn5TD1TfW7KYZjsziMncru/dESa gvXn27dj84G3VQW2a2rdGirOxcyQrbus+HiDgJq8tJIYOTlodGxcui5khY6x1S8GzaC0fEa/WFu Is7YBPo+hjgAux4wwm0N2zuVckwFRa5abA4J7QuKwjHSMMoT
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3239; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=ASJpJ0PbRdt9ZtFZlOFmy3zBFQUV+f7OBE5g1UcY3qM=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlRrRW2nlD3Bq26a3P3sYG5qAEG5GwUfm6B9YOc 7QqQI7xub+JATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZUa0VgAKCRCPgPtYfRL+ Ts6VB/9MYH4OE9JZxwtQ11ZFXv37CHQWuj2H7yDF2BNpbvz84sSUIBsB2cZ/P7qmXPmDGGnN9YH R/at02fE+3cIvpTPFySkqRu+sErOGGxzGIlcb+TY3IMtSpAfGsw19fH6vdOUiwweAAvFp6haRF6 ftt1EHSNdOTPHV3DMCX7XsfCW9JAuhaaDbXEoJwMB6JjqA4o/DJrEI+JANq5W/hKFvSY1C0Z0AT Q/XMroNdUYtHirVUJ7JqurjHCeYLVWXlHLSuEtyLMq6g+zpQOWbPuUdBP/iRLJx8dDd4b/IRuEa 5YUGw7TsAGg7bR/dIxQ3GGTak4rbbahwjrJV9xcC40W0gL7Q
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -65,8 +70,8 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231104_141555_544036_174AB256 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20231104_141559_500761_CFFF4C6F 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,51 +86,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is ignored (apart
-from emitting a warning) and this typically results in resource leaks.
+Hello,
 
-To improve here there is a quest to make the remove callback return
-void. In the first step of this quest all drivers are converted to
-.remove_new(), which already returns void. Eventually after all drivers
-are converted, .remove_new() will be renamed to .remove().
+there are two different types of patches here that would justify to
+different series. But as the patches are not independant I chose to put
+them in a single series.
 
-Trivially convert this driver from always returning zero in the remove
-callback to the void returning variant.
+The first three patches drop usage of platform_driver_probe(). This is a
+concept that isn't so relevant any more today. I didn't check, but it
+saves typically only a few 100k and there are thoughts to deprecate it
+to simplify the core. Getting the usage right is not trivial though the
+at91 drivers got it nearly right. The alternative to these patches is to
+add __ref to the driver struct ideally with a comment describing the
+need like is e.g. done in commit 5b44abbc39ca ("platform/x86: hp-wmi::
+Mark driver struct with __refdata to prevent section mismatch warning").
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/power/reset/mt6323-poweroff.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+The remaining patches convert the platform drivers to .remove_new(), see
+commit 5c5a7680e67b ("platform: Provide a remove callback that returns
+no value") for an extended explanation and the eventual goal. All
+conversions but one are trivial as the remove functions return zero
+unconditionally. The only exception is the tps65086-restart driver.
 
-diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
-index 108167f7738b..57a63c0ab7fb 100644
---- a/drivers/power/reset/mt6323-poweroff.c
-+++ b/drivers/power/reset/mt6323-poweroff.c
-@@ -70,12 +70,10 @@ static int mt6323_pwrc_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
--static int mt6323_pwrc_remove(struct platform_device *pdev)
-+static void mt6323_pwrc_remove(struct platform_device *pdev)
- {
- 	if (pm_power_off == &mt6323_do_pwroff)
- 		pm_power_off = NULL;
--
--	return 0;
- }
- 
- static const struct of_device_id mt6323_pwrc_dt_match[] = {
-@@ -86,7 +84,7 @@ MODULE_DEVICE_TABLE(of, mt6323_pwrc_dt_match);
- 
- static struct platform_driver mt6323_pwrc_driver = {
- 	.probe          = mt6323_pwrc_probe,
--	.remove         = mt6323_pwrc_remove,
-+	.remove_new     = mt6323_pwrc_remove,
- 	.driver         = {
- 		.name   = "mt6323-pwrc",
- 		.of_match_table = mt6323_pwrc_dt_match,
+Best regards
+Uwe
+
+Uwe Kleine-König (14):
+  power: reset: at91-poweroff: Stop using module_platform_driver_probe()
+  power: reset: at91-reset:: Stop using module_platform_driver_probe()
+  power: reset: at91-sama5d2_shdwc: Stop using
+    module_platform_driver_probe()
+  power: reset: as3722-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: at91-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: atc260x-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: ltc2952-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: mt6323-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: qnap-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: regulator-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: restart-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: rmobile-reset: Convert to platform remove callback
+    returning void
+  power: reset: syscon-poweroff: Convert to platform remove callback
+    returning void
+  power: reset: tps65086-restart: Convert to platform remove callback
+    returning void
+
+ drivers/power/reset/as3722-poweroff.c    |  6 ++----
+ drivers/power/reset/at91-poweroff.c      | 11 +++++------
+ drivers/power/reset/at91-reset.c         |  9 +++++----
+ drivers/power/reset/at91-sama5d2_shdwc.c |  9 +++++----
+ drivers/power/reset/atc260x-poweroff.c   |  6 ++----
+ drivers/power/reset/ltc2952-poweroff.c   |  5 ++---
+ drivers/power/reset/mt6323-poweroff.c    |  6 ++----
+ drivers/power/reset/qnap-poweroff.c      |  5 ++---
+ drivers/power/reset/regulator-poweroff.c |  6 ++----
+ drivers/power/reset/restart-poweroff.c   |  6 ++----
+ drivers/power/reset/rmobile-reset.c      |  5 ++---
+ drivers/power/reset/syscon-poweroff.c    |  6 ++----
+ drivers/power/reset/tps65086-restart.c   | 12 +++++++-----
+ 13 files changed, 40 insertions(+), 52 deletions(-)
+
+
+base-commit: e27090b1413ff236ca1aec26d6b022149115de2c
 -- 
 2.42.0
 
