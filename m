@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C451EC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 12:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D806EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 12:04:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tVaVgcWmYIHj2pHGluQbn0rpuoRR+zljiuHJ/MBOFCw=; b=2/fiandpLdcvQR4Qb1mw8VJCHz
-	Da3YUpORhiwsbMR248OCQtoqrIYD9JNJ6Nt0G6cnB0OzygmJmHutV7RyHd23P0Gt+HSdiS4VFONhz
-	VheA86EveDFNODtxuOAotW+4WMEJjYN5Y3Pc1WZp7m5XO6O/OOlWq3w0mEPEWkA4o7e9bQg3g1JaC
-	L7fkMmP9HQUKyPgoVw5EItkdi4uW6PKLIHE+0pvm4OU8eel5xEEvP82aqg4lRw0i33qbcVd0+07Cz
-	zlPT5lWrWOErciWLdDEUc7tjU3AUE6rX64qdgPmiHZYZCcswxdbPCZrAKsa8KddVV5Dg3WKUI/69H
-	QW5AKt1w==;
+	bh=11cm6mkMOeKy8KRZ5/JdXgNCQ+O8tHBs6aQAfH5nRTE=; b=bQ048UxTY7Y+DBxAqqx6Ap5jv5
+	vUvwKQwlxryvWsHH+nmVmNXzLsMTrT7PFBPquprQ/ZbOwCU8tCcvwZjqB9FHmrPx8yZpH1o/kYFS+
+	ch1Oo1RkJyBTyHwTzYemky36EKGDLT1ALa1S2m6lo/MkzongUUQFiqqwAwYA2V+au7qsiHrBKoipx
+	vq37yWCqA1lkZ03ujKmwPTx7+fn4JBsoFUooZm/3okZQDe/f3nHfmiviYrqsaKhW/DyUPMb9Nst4g
+	WcTTuqHQ/W21bHE2X2Kx9qNFwnynwMdN1R1zIWnxczmkDS0SJCC3/HHCfRRcqB6yF0aSAq4uLOA2E
+	I/VOGyCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzyLa-00GZws-2G;
-	Mon, 06 Nov 2023 12:04:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qzyLd-00GZzY-1o;
+	Mon, 06 Nov 2023 12:04:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzyLW-00GZs8-0Y;
-	Mon, 06 Nov 2023 12:04:48 +0000
-X-UUID: aa18bf2e7c9c11ee86758d4a7c00f3a0-20231106
+	id 1qzyLb-00GZx3-05;
+	Mon, 06 Nov 2023 12:04:52 +0000
+X-UUID: acc001107c9c11ee9b7791016c24628a-20231106
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tVaVgcWmYIHj2pHGluQbn0rpuoRR+zljiuHJ/MBOFCw=;
-	b=M8f6eEkb1DUhNWjtAOWZ4rzmkDTVkoVhrf6DYKfxigsHYdut7aIyoK51OvPV5f3bHPbMwOXnPODKz/Rqo21PwWXX5GSe1R7Ce/k6BG2rGfrx4wzr8DMW6hyrmGJ3N543+vGzfhfFl3YUrVXsa5rja+kDBwNf5ZFaBKrhr7Yw3Jw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=11cm6mkMOeKy8KRZ5/JdXgNCQ+O8tHBs6aQAfH5nRTE=;
+	b=shIXUA817u7X6lvlb0A5I4mF/bzpZ+sy3T3nJwzLPuwOn7b75OELuZyT4OOpD5sFO2dYTlzlMH8A/WD32OhYwpSLQ7NJ/rLeY2KacHxl21ZSiTbvrR1028SIaJX+/+Rhl2zp/HJKwJ15Bip7krUK7i73f2y95Eh8ZQjoTi0WY3I=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:bde0e25f-326e-4ec9-97f5-b4eff07765c6,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:364b77b,CLOUDID:3c2135fc-4a48-46e2-b946-12f04f20af8c,B
+X-CID-O-INFO: VERSION:1.1.33,REQID:be5584b1-1701-43fe-85b7-06ed60c8bf45,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:364b77b,CLOUDID:642135fc-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: aa18bf2e7c9c11ee86758d4a7c00f3a0-20231106
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: acc001107c9c11ee9b7791016c24628a-20231106
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1703640698; Mon, 06 Nov 2023 05:04:40 -0700
+	with ESMTP id 1371641557; Mon, 06 Nov 2023 05:04:45 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 6 Nov 2023 20:04:37 +0800
+ 15.2.1118.26; Mon, 6 Nov 2023 20:04:42 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 6 Nov 2023 20:04:36 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 6 Nov 2023 20:04:41 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>, "T . J . Mercier"
 	<tjmercier@google.com>, John Stultz <jstultz@google.com>, Yong Wu
@@ -63,37 +63,25 @@ To: Jeffrey Kardatzke <jkardatzke@google.com>, "T . J . Mercier"
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
 CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
- Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
+ Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,11/21] media: mediatek: vcodec: initialize msg and vsi information
-Date: Mon, 6 Nov 2023 20:04:13 +0800
-Message-ID: <20231106120423.23364-12-yunfei.dong@mediatek.com>
+Subject: [PATCH v2,15/21] media: mediatek: vcodec: Add one plane format
+Date: Mon, 6 Nov 2023 20:04:17 +0800
+Message-ID: <20231106120423.23364-16-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231106120423.23364-1-yunfei.dong@mediatek.com>
 References: <20231106120423.23364-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.774500-8.000000
-X-TMASE-MatchedRID: VIoFwzWR3P4iRWw1gHaWSxuZoNKc6pl+MJlSCRpjLV32MjGUf5GHsWb6
-	PphVtfZgVkkQSrH2rvhtS1CTbpfjUP/Js/ghYmSK7spMO3HwKCARWG8HyxfLI7lmMfLNiukaG/k
-	B0flY/cWGe+0MUSZloS2Rxuw/iP4W2HzzjwqZ3wJPuMJi/ZAk8V3HHpZF/7mw/RM/+SKR6qe25B
-	ylI3cMJL1QsHlkpLKtihP7kE5hi1yxP8oxx7elnqngbqTYC4GHfS0Ip2eEHnz3IzXlXlpamPoLR
-	4+zsDTtJLIWFE2XGROOsz0bfyUKqPA/0LVjLQbAtIKt2xWbYd4XLAtmd93HrVZca9RSYo/b
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.774500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5DDA425E4D4C3F6E5CB842B0964AD12BAB325EF28E55F76735815215484D039F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_040446_275371_B003336C 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20231106_040451_071754_6D73CBCB 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,141 +96,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to initialize msg and vsi information before sending to optee-os, then
-calling optee invoke command to send the information to optee-os.
-
-For the optee communication interface is different with scp, using
-flag to separate them.
+Adding capture formats to support V4L2_PIX_FMT_MS21. This format has
+one plane and only be used for secure video playback at current period.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
- .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 49 ++++++++++++++++---
- .../mediatek/vcodec/decoder/vdec_vpu_if.h     |  4 ++
- 3 files changed, 49 insertions(+), 6 deletions(-)
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c    | 4 +++-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c   | 9 ++++++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index 7a320d1e37e8..ce05e403553e 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -165,6 +165,7 @@ struct mtk_vcodec_dec_pdata {
-  * @vpu_inst: vpu instance pointer.
-  *
-  * @is_10bit_bitstream: set to true if it's 10bit bitstream
-+ * @is_secure_playback: Secure Video Playback (SVP) mode
-  */
- struct mtk_vcodec_dec_ctx {
- 	enum mtk_instance_type type;
-@@ -210,6 +211,7 @@ struct mtk_vcodec_dec_ctx {
- 	void *vpu_inst;
- 
- 	bool is_10bit_bitstream;
-+	bool is_secure_playback;
- };
- 
- /**
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-index 82e57ae983d5..5336769a3fb5 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-@@ -148,7 +148,10 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 
- static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
- {
--	int err, id, msgid;
-+	struct mtk_vdec_optee_data_to_shm *optee_data;
-+	int data_size, id, hw_id, msgid;
-+	void *ack_msg, *data_msg;
-+	int err;
- 
- 	msgid = *(uint32_t *)msg;
- 	mtk_vdec_debug(vpu->ctx, "id=%X", msgid);
-@@ -158,16 +161,46 @@ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
- 
- 	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
- 		if (msgid == AP_IPIMSG_DEC_CORE ||
--		    msgid == AP_IPIMSG_DEC_CORE_END)
-+		    msgid == AP_IPIMSG_DEC_CORE_END) {
-+			optee_data = &vpu->core_optee_info;
- 			id = vpu->core_id;
--		else
-+		} else {
-+			optee_data = &vpu->lat_optee_info;
- 			id = vpu->id;
-+		}
- 	} else {
-+		optee_data = &vpu->lat_optee_info;
- 		id = vpu->id;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+index 91ed576d6821..1c6ecaa0c874 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+@@ -49,7 +49,9 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_dec_ctx *ctx, int format_inde
+ 		num_frame_count++;
  	}
  
--	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg,
--				     len, 2000);
-+	if (!vpu->ctx->is_secure_playback) {
-+		err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg, len, 2000);
-+	} else {
-+		hw_id = (id == SCP_IPI_VDEC_LAT) ? MTK_VDEC_LAT0 : MTK_VDEC_CORE;
-+
-+		mtk_vcodec_dec_optee_set_data(optee_data, msg, len, OPTEE_MSG_INDEX);
-+
-+		/* There is no need to copy the data (VSI) message to shared memory,
-+		 * but we still need to set the buffer size to a non-zero value.
-+		 */
-+		if (msgid == AP_IPIMSG_DEC_CORE || msgid == AP_IPIMSG_DEC_START) {
-+			data_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private,
-+								    hw_id, OPTEE_DATA_INDEX);
-+			data_size = mtk_vcodec_dec_get_shm_buffer_size(vpu->ctx->dev->optee_private,
-+								       hw_id, OPTEE_DATA_INDEX);
-+			mtk_vcodec_dec_optee_set_data(optee_data, data_msg, data_size,
-+						      OPTEE_DATA_INDEX);
-+		}
-+
-+		err = mtk_vcodec_dec_optee_invokd_cmd(vpu->ctx->dev->optee_private,
-+						      hw_id, optee_data);
-+		vpu->failure = err;
-+
-+		ack_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private, hw_id,
-+							   OPTEE_MSG_INDEX);
-+		vpu_dec_ipi_handler(ack_msg, 0, vpu->ctx->dev);
-+	}
-+
- 	if (err) {
- 		mtk_vdec_err(vpu->ctx, "send fail vpu_id=%d msg_id=%X status=%d",
- 			     id, msgid, err);
-@@ -213,7 +246,11 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
- 		return err;
+-	if (num_frame_count == 1 || (!ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MM21))
++	if ((!ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MM21) ||
++	    (ctx->is_secure_playback && fmt->fourcc == V4L2_PIX_FMT_MS21) ||
++	    num_frame_count == 1)
+ 		return true;
+ 
+ 	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+index e29c9c58f3da..0f9cd5abd025 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+@@ -200,7 +200,7 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
+ 
+ #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
+ 
+-static struct mtk_video_fmt mtk_video_formats[9];
++static struct mtk_video_fmt mtk_video_formats[10];
+ 
+ static struct mtk_video_fmt default_out_format;
+ static struct mtk_video_fmt default_cap_format;
+@@ -604,6 +604,11 @@ static void mtk_vcodec_add_formats(unsigned int fourcc,
+ 		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
+ 		mtk_video_formats[count_formats].num_planes = 2;
+ 		break;
++	case V4L2_PIX_FMT_MS21:
++		mtk_video_formats[count_formats].fourcc = fourcc;
++		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
++		mtk_video_formats[count_formats].num_planes = 1;
++		break;
+ 	default:
+ 		mtk_v4l2_vdec_err(ctx, "Can not add unsupported format type");
+ 		return;
+@@ -632,6 +637,8 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_dec_ctx *ctx)
+ 		cap_format_count++;
  	}
- 
--	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
-+	/* Using tee interface to communicate with optee os directly for SVP mode,
-+	 * fw ipi interface is used for normal playback.
-+	 */
-+	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE &&
-+	    !vpu->ctx->is_secure_playback) {
- 		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
- 						 vpu->core_id, vpu->handler,
- 						 "vdec", vpu->ctx->dev);
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
-index fbb3f34a73f0..946e5abcc7d3 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
-@@ -28,6 +28,8 @@ struct mtk_vcodec_dec_ctx;
-  * @codec_type     : use codec type to separate different codecs
-  * @capture_type:	used capture type to separate different capture format
-  * @fb_sz  : frame buffer size of each plane
-+ * @lat_optee_info  : used to send msg to optee shm buffer
-+ * @core_optee_info  : used to send msg to optee shm buffer
-  */
- struct vdec_vpu_inst {
- 	int id;
-@@ -44,6 +46,8 @@ struct vdec_vpu_inst {
- 	unsigned int codec_type;
- 	unsigned int capture_type;
- 	unsigned int fb_sz[2];
-+	struct mtk_vdec_optee_data_to_shm lat_optee_info;
-+	struct mtk_vdec_optee_data_to_shm core_optee_info;
- };
- 
- /**
+ 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_MS21, ctx);
++		cap_format_count++;
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
+ 		cap_format_count++;
+ 	}
 -- 
 2.18.0
 
