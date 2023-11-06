@@ -4,92 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D7DAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 11:55:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B84C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 12:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gI3xCMXfcB+src4UwQsehw1949W0KFbwKLmzbP4s340=; b=bUk4JK+ax6NWUjU6h7Puflas41
-	e1uRYrwhm8JJUA8EJ9yRkLBkr9Som43dhGEyDjMgHLHMFOeUbc4NVCCSJdCe02yd9WrmxM6RM5P3E
-	ldlvxDFkuyfmKGj3CzvbAAhFnnPJeP6l/hUW7ENBV0DsnH8Y9RWrfaDUMXOVPLyZ0XDmC+KswkzmB
-	x4pUH+cIkrRZghV1FyHQ1bdd2RyUus4FJdqbNQwoT7gVl2JeJeYYRkLmDhuY549xvDP9z2ZSAFQcy
-	OGCzqaRV57SISg+NH1zwbxu8d1CwkM6kYfiLYubW78NpmB7B3NiU2f7kLrrQN43sHk8+akfWRoiRO
-	rGj0Bkiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ciPtDPF+TnvenA4+CRoRDc5pTrR/o2srfttrAr9XbFM=; b=jSSC9BmYWOyO0LDm30BF9vFHRG
+	5FExXlK0jdxtelenSUAMutSe8VtQfMZLIdZ/WimO2xs1rFo9VFeqDlUI0B1VuORlvNv1RkriU+sJM
+	/ZBDLY/WeVS2eEZk+SOrpXsAn7fkeLaUWMe37L3N4Tji+MzXnISH3CU7GA9uqFYxZO38FntVpNYJC
+	raoMoDCAaBdf0UGP2Q7zlv6u/ROTp1bJo4JOp2Cy0NeCzffBVUE3mtzeSI6O67LCe+aVLcDbZhEIz
+	oDLSkGdxoJcuzJeAEjyBt8teU5jJxCPZ/Xa714vcHoFbIo9KFr1oXuv8qF49kWwbMrg+TWS3mzhKG
+	0B5sxcJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzyC7-00GYYT-1P;
-	Mon, 06 Nov 2023 11:55:03 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1qzyLQ-00GZog-1t;
+	Mon, 06 Nov 2023 12:04:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzyC4-00GYVi-1u
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Nov 2023 11:55:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1699271699;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gI3xCMXfcB+src4UwQsehw1949W0KFbwKLmzbP4s340=;
-	b=CRvSwJY1sha2t/O71C6tqGdW8p918vPdFNKkNXUgEb0Iqmr/WtjFG25GHQCW/x5SaTw1de
-	wx7k6ULLN1DhLLweXJEeAaLXX0sPTHzKBjgOXQyCDY8NDp7MzvT0hMRIC4JAIh36pAOmWR
-	BYF+JBayMPOO4XpwwW15QbsouHtTJdM=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-166-0TncSstmNjedbITciSgJZw-1; Mon,
- 06 Nov 2023 06:54:44 -0500
-X-MC-Unique: 0TncSstmNjedbITciSgJZw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 67E122823810;
-	Mon,  6 Nov 2023 11:54:43 +0000 (UTC)
-Received: from fedora (unknown [10.72.120.12])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9C0D440C6EB9;
-	Mon,  6 Nov 2023 11:54:34 +0000 (UTC)
-Date: Mon, 6 Nov 2023 19:54:30 +0800
-From: Ming Lei <ming.lei@redhat.com>
-To: Ed Tsai =?utf-8?B?KOiUoeWul+i7kik=?= <Ed.Tsai@mediatek.com>
-Cc: Will Shiu =?utf-8?B?KOioseaBreeRnCk=?= <Will.Shiu@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Peter Wang =?utf-8?B?KOeOi+S/oeWPiyk=?= <peter.wang@mediatek.com>,
-	"linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
-	Alice Chao =?utf-8?B?KOi2meePruWdhyk=?= <Alice.Chao@mediatek.com>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	"axboe@kernel.dk" <axboe@kernel.dk>,
-	Casper Li =?utf-8?B?KOadjuS4reamrik=?= <casper.li@mediatek.com>,
-	Chun-Hung Wu =?utf-8?B?KOW3q+mnv+Wujyk=?= <Chun-hung.Wu@mediatek.com>,
-	Powen Kao =?utf-8?B?KOmrmOS8r+aWhyk=?= <Powen.Kao@mediatek.com>,
-	Naomi Chu =?utf-8?B?KOacseipoOeUsCk=?= <Naomi.Chu@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Stanley Chu =?utf-8?B?KOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	ming.lei@redhat.com
-Subject: Re: [PATCH 1/1] block: Check the queue limit before bio submitting
-Message-ID: <ZUjT11xUNM7u/UjV@fedora>
-References: <20231025092255.27930-1-ed.tsai@mediatek.com>
- <64db8f5406571c2f89b70f852eb411320201abe6.camel@mediatek.com>
- <ZUUd48QF/TEGFzPy@fedora>
- <cf09a768d0e116bfaf01a1592a7ae95a10b4c2cf.camel@mediatek.com>
- <ZUW96Ha5GoJePD8Y@fedora>
- <2bc847a83849973b7658145f2efdda86cc47e3d5.camel@mediatek.com>
- <5ecedad658bf28abf9bbeeb70dcac09b4b404cf5.camel@mediatek.com>
- <ZUhxS9JMyPK+v6Ec@fedora>
+	id 1qzyLN-00GZnl-0h;
+	Mon, 06 Nov 2023 12:04:38 +0000
+X-UUID: a37ddbb87c9c11ee9b7791016c24628a-20231106
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ciPtDPF+TnvenA4+CRoRDc5pTrR/o2srfttrAr9XbFM=;
+	b=rHPSFYIkaxU2nXNe2RQAoaBnDiJM8d653V/QBp9cuXFEyVUpiTOQw5yiY1wMkYMnCxXEHCx7KjfEmeRsM2rLSgMuUUcL7VncrM3VFYNOVPb7ubm7Q+mvW+p5XsfMdyuONjB3NYThIJSwbCU6Fu38SQPnJKZgK/JdJDUjTl4UojA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:8e8f4025-dc85-43bc-b557-626d29501048,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:364b77b,CLOUDID:d9475472-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-UUID: a37ddbb87c9c11ee9b7791016c24628a-20231106
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1391133489; Mon, 06 Nov 2023 05:04:29 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 6 Nov 2023 20:04:25 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 6 Nov 2023 20:04:24 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Jeffrey Kardatzke <jkardatzke@google.com>, "T . J . Mercier"
+	<tjmercier@google.com>, John Stultz <jstultz@google.com>, Yong Wu
+	<yong.wu@mediatek.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
+ Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2,00/21] add driver to support secure video decoder
+Date: Mon, 6 Nov 2023 20:04:02 +0800
+Message-ID: <20231106120423.23364-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZUhxS9JMyPK+v6Ec@fedora>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.630100-8.000000
+X-TMASE-MatchedRID: JhRlCkpv+Yto4JO2ZJOtUQI0yP/uoH+DFJFr2qlKix/b6Y+fnTZUL2F6
+	OnunDMpM0iYP9KyvWGiNbWLcD74x2aTBNmfHIEnzhv1+2J3yQFxQCOsAlaxN72ecrqZc3vabxxE
+	lGvP0lfgvVtEpvFuMNUGaeX/AzQEV4Yh4UkkUHv7uykw7cfAoIOiZcG9oG7pOX15NJHwjp24IXI
+	ywbHNrmD5Cz4k65D4iLsOyjR5rXS8cqJwtUHLtOWZUc2jtcaSdUKlt4AyW7uDjud2x7TPVt2OrK
+	vsUT0pAVLAa8KXwKt7H3jW5bUH06n3BSdKn4WxeH5YQyOg71ZZ9LQinZ4QefPcjNeVeWlqY+gtH
+	j7OwNO2I3adjBtsMrOnbgh6EIA/muHu85lBc1WzDJAu5FtdmRomKnf8sKUzK+iEHvAMRWIrGDon
+	WJihmxwh1J4CodOOy49vZlki2pPVE4C0jRE0xOqMnTJRI0XInfXwUEm1ouDzLDYxFC1/7rn6GdN
+	k4NWmA
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.630100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 40AEF5215B6F64F5A62676A1632BA663CD157F81013A9B5FA3644D2E695F517A2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_035500_712352_7D3EF266 
-X-CRM114-Status: GOOD (  25.55  )
+X-CRM114-CacheID: sfid-20231106_040437_305832_6CFE6DE2 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,93 +109,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 06, 2023 at 12:53:31PM +0800, Ming Lei wrote:
-> On Mon, Nov 06, 2023 at 01:40:12AM +0000, Ed Tsai (蔡宗軒) wrote:
-> > On Mon, 2023-11-06 at 09:33 +0800, Ed Tsai wrote:
-> > > On Sat, 2023-11-04 at 11:43 +0800, Ming Lei wrote:
-> 
-> ...
-> 
-> > Sorry for missing out on my dd command. Here it is:
-> > dd if=/data/test_file of=/dev/null bs=64m count=1 iflag=direct
-> 
-> OK, thanks for the sharing.
-> 
-> I understand the issue now, but not sure if it is one good idea to check
-> queue limit in __bio_iov_iter_get_pages():
-> 
-> 1) bio->bi_bdev may not be set
-> 
-> 2) what matters is actually bio's alignment, and bio size still can
-> be big enough
-> 
-> So I cooked one patch, and it should address your issue:
+This patch series is consists of four parts. The first is from Jeffrey,
+adding secure memory flag in v4l2 framework to support request secure
+buffer.
 
-The following one fixes several bugs, and is verified to be capable of
-making big & aligned bios, feel free to run your test against this one:
+The second and third parts are from John and T.J, adding some heap
+interfaces, then our kernel users could allocate buffer from special
+heap. The patch v1 is inside below dmabuf link.
+https://lore.kernel.org/linux-mediatek/20230911023038.30649-1-yong.wu@mediatek.com/
+To avoid confusing, move them into vcodec patchset since we use the
+new interfaces directly.
 
- block/bio.c | 28 +++++++++++++++++++++++++++-
- 1 file changed, 27 insertions(+), 1 deletion(-)
+The fourth part is mediatek decoder driver, adding tee interface to
+support secure video decoder(svp).
 
-diff --git a/block/bio.c b/block/bio.c
-index 816d412c06e9..80b36ce57510 100644
---- a/block/bio.c
-+++ b/block/bio.c
-@@ -1211,6 +1211,7 @@ static int bio_iov_add_zone_append_page(struct bio *bio, struct page *page,
- }
- 
- #define PAGE_PTRS_PER_BVEC     (sizeof(struct bio_vec) / sizeof(struct page *))
-+#define BIO_CHUNK_SIZE	(256U << 10)
- 
- /**
-  * __bio_iov_iter_get_pages - pin user or kernel pages and add them to a bio
-@@ -1266,6 +1267,31 @@ static int __bio_iov_iter_get_pages(struct bio *bio, struct iov_iter *iter)
- 		size -= trim;
- 	}
- 
-+	/*
-+	 * Try to make bio aligned with 128KB if it isn't the last one, so
-+	 * we can avoid small bio in case of big chunk sequential IO because
-+	 * of bio split and multipage bvec.
-+	 *
-+	 * If nothing is added to this bio, simply allow unaligned since we
-+	 * have chance to add more bytes
-+	 */
-+	if (iov_iter_count(iter) && bio->bi_iter.bi_size) {
-+		unsigned int aligned_size = (bio->bi_iter.bi_size + size) &
-+			~(BIO_CHUNK_SIZE - 1);
-+
-+		if (aligned_size <= bio->bi_iter.bi_size) {
-+			/* stop to add page if this bio can't keep aligned */
-+			if (!(bio->bi_iter.bi_size & (BIO_CHUNK_SIZE - 1))) {
-+				ret = left = size;
-+				goto revert;
-+			}
-+		} else {
-+			aligned_size -= bio->bi_iter.bi_size;
-+			iov_iter_revert(iter, size - aligned_size);
-+			size = aligned_size;
-+		}
-+	}
-+
- 	if (unlikely(!size)) {
- 		ret = -EFAULT;
- 		goto out;
-@@ -1285,7 +1311,7 @@ static int __bio_iov_iter_get_pages(struct bio *bio, struct iov_iter *iter)
- 
- 		offset = 0;
- 	}
--
-+revert:
- 	iov_iter_revert(iter, left);
- out:
- 	while (i < nr_pages)
+Patch 1~4   add secure memory flag in v4l2 framework with Jeffrey's patch.
+Patch 5~7   support allocate dmabufs from specific with John and T.J's patch.
+Patch 8~11  initialize tee related interface and parameters.
+Patch 12    allocate/free secure memory.
+Patch 13    map vsi for secure mode.
+Patch 14~16 support one plane capture buffer.
+Patch 17~18 re-construct h264 driver to support secure mode.
+Patch 19    disable interrupt.
+Patch 20    support tee decode.
+Patch 21    move init decoder interface to setup queue.
+---
+Changed in v2:
+- remove setting decoder mode and getting secure handle from decode
+- add Jeffrey's patch
+- add John and T.J's patch
+- getting secure flag with request buffer
+- fix some comments from patch v1
+---
+Jeffrey Kardatzke (4):
+  v4l2: add secure memory flags
+  v4l2: handle secure memory flags in queue setup
+  v4l2: verify secure dmabufs are used in secure queue
+  v4l: add documentation for secure memory flag
+
+John Stultz (2):
+  dma-heap: Add proper kref handling on dma-buf heaps
+  dma-heap: Provide accessors so that in-kernel drivers can allocate
+    dmabufs from specific heaps
+
+T.J. Mercier (1):
+  dma-buf: heaps: Deduplicate docs and adopt common format
+
+Yunfei Dong (14):
+  media: mediatek: vcodec: add tee client interface to communiate with
+    optee-os
+  media: mediatek: vcodec: allocate tee share memory
+  media: mediatek: vcodec: send share memory data to optee
+  media: mediatek: vcodec: initialize msg and vsi information
+  media: mediatek: vcodec: add interface to allocate/free secure memory
+  media: mediatek: vcodec: using shared memory as vsi address
+  media: mediatek: vcodec: Add capture format to support one plane
+    memory
+  media: mediatek: vcodec: Add one plane format
+  media: medkatek: vcodec: support one plane capture buffer
+  media: medkatek: vcodec: re-construct h264 driver to support svp mode
+  media: medkatek: vcodec: remove parse nal_info in kernel
+  media: medkatek: vcodec: disable wait interrupt for svp mode
+  media: medkatek: vcodec: support tee decoder
+  media: mediatek: vcodec: move vdec init interface to setup callback
+
+ .../userspace-api/media/v4l/buffer.rst        |   8 +-
+ .../media/v4l/pixfmt-reserved.rst             |   8 +
+ drivers/dma-buf/dma-heap.c                    | 139 +++++--
+ .../media/common/videobuf2/videobuf2-core.c   |  25 ++
+ .../common/videobuf2/videobuf2-dma-contig.c   |   6 +
+ .../media/common/videobuf2/videobuf2-dma-sg.c |   6 +
+ .../media/common/videobuf2/videobuf2-v4l2.c   |  33 +-
+ .../media/platform/mediatek/vcodec/Kconfig    |   1 +
+ .../mediatek/vcodec/common/mtk_vcodec_util.c  | 121 +++++-
+ .../mediatek/vcodec/common/mtk_vcodec_util.h  |   3 +
+ .../platform/mediatek/vcodec/decoder/Makefile |   1 +
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 155 ++++---
+ .../vcodec/decoder/mtk_vcodec_dec_drv.c       |   8 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   7 +
+ .../vcodec/decoder/mtk_vcodec_dec_hw.c        |  34 +-
+ .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 383 ++++++++++++++++++
+ .../vcodec/decoder/mtk_vcodec_dec_optee.h     | 156 +++++++
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c |  35 +-
+ .../decoder/vdec/vdec_h264_req_common.c       |  11 +-
+ .../decoder/vdec/vdec_h264_req_multi_if.c     | 334 +++++++++------
+ .../mediatek/vcodec/decoder/vdec_drv_if.c     |   4 +-
+ .../mediatek/vcodec/decoder/vdec_msg_queue.c  |   9 +-
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     |  57 ++-
+ .../mediatek/vcodec/decoder/vdec_vpu_if.h     |   4 +
+ drivers/media/v4l2-core/v4l2-common.c         |   2 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
+ include/linux/dma-heap.h                      |  29 +-
+ include/media/videobuf2-core.h                |   8 +-
+ include/uapi/linux/videodev2.h                |   3 +
+ 29 files changed, 1292 insertions(+), 299 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
+
 -- 
-2.41.0
-
-
-
-Thanks, 
-Ming
+2.18.0
 
 
