@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D51AFC0018C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 12:05:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97753C0018A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 12:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qwM6JgCEYya6p3UBStFyf78I7pEgy/IRsIjn5bFayA8=; b=PBfv3sbbNgrTsk4XcmnWdPKJhq
-	EQTVcrrwdNSI2PtDlA2lKAMt6hIkkQzaLDbQ1DQv/5xYbeZwIgd/qifbV4ocdGVqc0VanhivjMaOL
-	rOEWunN7qQhVIwPZNlkEwBra1j8+SDdDMifM9maiBMAjwfswZS7tRpe9DK5m2/M1KLvBow0bAsnFu
-	LeZpaPI6kKn6iwHZiuMXnWdSohS0nPgBH/l5+yV+n8U53IsZvl+HSZUzuMBblU09CRxTV/rfwxzJ9
-	Pl9kYcycRZgAKvxqTtDviMS1RnOFWcsBL0W8mppihhN9Z7lowxbEcBm2KSVHiTfkgjc0SFzVx2CqQ
-	w6RqrF3A==;
+	bh=urgImsiByBgrXegm6WMvOjpTwwvXom0xQlrJXyilo6s=; b=BSSEl4XgaetqJRYEVSXDHzC8rb
+	jhNAzOSWdGWynYuiCqv0YmM4oaPYg2Z7EiY2n27NKcMIKiTGLaDMC2IEYnsoGGfC21mSW9xN0X3+s
+	p7dvF9QBqekFRRzmNoxAIKslJCQotJSCj4dJomCXATrefW4Z4zRrFctV+4c2eKvv3YZ/YyJu7TxcK
+	5dvv6AMVl8y/ULNOLfHi7ZuQoxsBC6LrGH4OIcEWEwnezMIWlnQF2o98iKaeSgOk1tARhmYHiuQ+3
+	MUCjBLWqM+VeNyekbkm15dN6Eg8xwqUlkH5yUMfjetah+RMJDJQDbGGs1GxyfLTJWWcptx6OR6fk2
+	H8gj8gvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzyME-00GaY1-1K;
-	Mon, 06 Nov 2023 12:05:30 +0000
+	id 1qzyMF-00GaZ1-1e;
+	Mon, 06 Nov 2023 12:05:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzyLw-00GaFx-0w;
-	Mon, 06 Nov 2023 12:05:16 +0000
-X-UUID: b82d89be7c9c11ee9b7791016c24628a-20231106
+	id 1qzyLx-00GaCl-3C;
+	Mon, 06 Nov 2023 12:05:17 +0000
+X-UUID: b966dc547c9c11ee9b7791016c24628a-20231106
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qwM6JgCEYya6p3UBStFyf78I7pEgy/IRsIjn5bFayA8=;
-	b=RFI96rZcLsJevE0uMqjFKJC+dEPiSSqLvTaPY3OFOgnEE4lC4mbW4f79aPx8U4737+rl+keSFlIEaWZrMJXEcObZvy8xn0HONTTHxmKzr9K/bf90FPufFm2MZsitJIiiogHnbrcYE/eOaC+k3xhTsnx3dpppVb4VX+lRwDQGXLI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=urgImsiByBgrXegm6WMvOjpTwwvXom0xQlrJXyilo6s=;
+	b=qKnkrskHkY+kzMklu//q1b2259OyPitj+miD50DZQlG6D8h8G38SermwJPEjR+cL03dnF+W9n8bTD8PVrcfUDh/jBt6NVc5Zy33m76/N8UOD0+UdEmFslcg6gGJudsjD+4W4PrVk4SIUOubtO3Ze0sbembvpGXwdLkWmSLipc4k=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:4c44b4b1-99bf-4c2a-a27f-9b9c1bad2c48,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:364b77b,CLOUDID:bbb8bc5f-c89d-4129-91cb-8ebfae4653fc,B
+X-CID-O-INFO: VERSION:1.1.33,REQID:f25f2220-ecc3-49c9-977b-df7a815752dd,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:fb2135fc-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b82d89be7c9c11ee9b7791016c24628a-20231106
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: b966dc547c9c11ee9b7791016c24628a-20231106
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 48839023; Mon, 06 Nov 2023 05:05:04 -0700
+	with ESMTP id 1390952422; Mon, 06 Nov 2023 05:05:06 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 6 Nov 2023 20:04:40 +0800
+ 15.2.1118.26; Mon, 6 Nov 2023 20:04:30 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 6 Nov 2023 20:04:39 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 6 Nov 2023 20:04:29 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>, "T . J . Mercier"
 	<tjmercier@google.com>, John Stultz <jstultz@google.com>, Yong Wu
@@ -63,37 +63,25 @@ To: Jeffrey Kardatzke <jkardatzke@google.com>, "T . J . Mercier"
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
 CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
- Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
+ Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,13/21] media: mediatek: vcodec: using shared memory as vsi address
-Date: Mon, 6 Nov 2023 20:04:15 +0800
-Message-ID: <20231106120423.23364-14-yunfei.dong@mediatek.com>
+Subject: [PATCH v2,04/21] v4l: add documentation for secure memory flag
+Date: Mon, 6 Nov 2023 20:04:06 +0800
+Message-ID: <20231106120423.23364-5-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231106120423.23364-1-yunfei.dong@mediatek.com>
 References: <20231106120423.23364-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.493000-8.000000
-X-TMASE-MatchedRID: TPKnaArzlb40Z9sXcK7F6QPZZctd3P4BK2i9pofGVSsKogmGusPLb/BY
-	Ro06eVj3M+9E78FP+k6T5In082VlTzMbZlaZZohC58dk5sbwmyhfyi4Yas3gTZsoi2XrUn/Jn6K
-	dMrRsL14qtq5d3cxkNd9Yv5wIp3lSt60hkI2pQ2CK7F3rMBgxv9NV+Z1yWVO7LpxXk6BRcsulY5
-	wiqJsM8FAMrTQJzVe/7D3+NuuC+kMY6u4FG2zDe9AA3GMQ1DAU82Gj2QC3yG0smXVK/H8eHzG7s
-	r7xobSAsPEFD+rZA81DDKa3G4nrLQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.493000-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 578BF55B4EDF51CDEEAFC7C1F95B51468103DEFA18F116A0255C345EAC416E992000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_040512_418209_C8A30C3A 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20231106_040514_122249_C78E7700 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,54 +96,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The vsi buffer is allocated by tee share memory for svp mode, need to
-use the share memory as the vsi address to store vsi data.
+From: Jeffrey Kardatzke <jkardatzke@google.com>
 
+Adds documentation for V4L2_MEMORY_FLAG_SECURE.
+
+Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../vcodec/decoder/vdec/vdec_h264_req_multi_if.c         | 9 +++++++--
- .../media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c | 8 ++++++--
- 2 files changed, 13 insertions(+), 4 deletions(-)
+ Documentation/userspace-api/media/v4l/buffer.rst | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-index 0e741e0dc8ba..4967e0f0984d 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-@@ -417,8 +417,13 @@ static int vdec_h264_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
+index 52bbee81c080..a5a7d1c72d53 100644
+--- a/Documentation/userspace-api/media/v4l/buffer.rst
++++ b/Documentation/userspace-api/media/v4l/buffer.rst
+@@ -696,7 +696,7 @@ enum v4l2_memory
  
- 	vsi_size = round_up(sizeof(struct vdec_h264_slice_vsi), VCODEC_DEC_ALIGNED_64);
- 	inst->vsi = inst->vpu.vsi;
--	inst->vsi_core =
--		(struct vdec_h264_slice_vsi *)(((char *)inst->vpu.vsi) + vsi_size);
-+	if (ctx->is_secure_playback)
-+		inst->vsi_core =
-+			mtk_vcodec_dec_get_shm_buffer_va(ctx->dev->optee_private, MTK_VDEC_CORE,
-+							 OPTEE_DATA_INDEX);
-+	else
-+		inst->vsi_core =
-+			(struct vdec_h264_slice_vsi *)(((char *)inst->vpu.vsi) + vsi_size);
- 	inst->resolution_changed = true;
- 	inst->realloc_mv_buf = true;
+ .. _memory-flags:
  
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-index 5336769a3fb5..5c31641e9abe 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-@@ -18,8 +18,12 @@ static void handle_init_ack_msg(const struct vdec_vpu_ipi_init_ack *msg)
+-Memory Consistency Flags
++Memory Flags
+ ------------------------
  
- 	/* mapping VPU address to kernel virtual address */
- 	/* the content in vsi is initialized to 0 in VPU */
--	vpu->vsi = mtk_vcodec_fw_map_dm_addr(vpu->ctx->dev->fw_handler,
--					     msg->vpu_inst_addr);
-+	if (vpu->ctx->is_secure_playback)
-+		vpu->vsi = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private,
-+							    MTK_VDEC_LAT0, OPTEE_DATA_INDEX);
-+	else
-+		vpu->vsi = mtk_vcodec_fw_map_dm_addr(vpu->ctx->dev->fw_handler,
-+						     msg->vpu_inst_addr);
- 	vpu->inst_addr = msg->vpu_inst_addr;
+ .. raw:: latex
+@@ -728,6 +728,12 @@ Memory Consistency Flags
+ 	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+ 	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+ 	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
++    * .. _`V4L2-MEMORY-FLAG-SECURE`:
++
++      - ``V4L2_MEMORY_FLAG_SECURE``
++      - 0x00000002
++      - DMA bufs passed into the queue will be validated to ensure they were
++	allocated from a secure dma-heap.
  
- 	mtk_vdec_debug(vpu->ctx, "- vpu_inst_addr = 0x%x", vpu->inst_addr);
+ .. raw:: latex
+ 
 -- 
 2.18.0
 
