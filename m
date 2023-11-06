@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66D52C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 12:32:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC583C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 12:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3qBAXrYySG6gKAUgAaqB0D2cyXPEZ9RG8xo9I9FYLfQ=; b=sRgCH/yPAbATDHnDudKYwokQCW
-	rG/TuFLebb3psZ8XYifHiEPkUr6y9rLOr9s6QlxI796RfEKJLEZXz0sTy3BY2IoqtEDP63mfd7sBD
-	khruDNJI6gaKr0bDKIECgWGagtm+7G81xiKR7aH3Qgw/GWynnlkYt8orYZX4gLB+TF59S1Uivq5rF
-	zm6FNi+ycKwUSU7gCEF7cf793fOAugJ8YjZW96x/LWcziRNOAsqyvNZZEKqAw3XRBK/ajeBKagUst
-	E9QiV8pWKADp4MpiLJnwB8wxHz4wm05x13/fCX/q4xjs8ZzQNZkhhTVVtG5fPx5J6N7DzhCThfQv9
-	mSHX9rdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zftzNnO+MyTAFGe68P3+dw5SW+vA2JVSFH6N10VRkHg=; b=k+jKmCBZy4/cX3/78zZHsz1/0M
+	edpqevPtQHXaMGiyJX/HOC8h2fRXJcUAP7t/nhI4qXC46P8pTrZ8nDfl9ys5TD5Q2Whmvoxy8glIT
+	2oEF0Mj01aIxoc9lschgi700WsVjr4Y+xXsfGmF+3SB/sqMdV6+26Hd8GtN8RTiezBHDZ4MvZ6t1u
+	Wm2aL27i9eoLd8sAIZ3dthEcO6/lu0C/PV1hbSbJzpAyr2dTt6eDd7EQBJwEfRe08LvSqcPlMQIpl
+	FZfi83wXczHPZWezewdrr/SmkEb0PmvQaB6UQoxLcmLdTayej1T5xz9AR7k7ntNZo3rSfmjVH1wfL
+	PDM+S2vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzymQ-00Gdm4-1B;
-	Mon, 06 Nov 2023 12:32:34 +0000
-Received: from mgamail.intel.com ([134.134.136.65])
+	id 1qzyyG-00Gf0P-1z;
+	Mon, 06 Nov 2023 12:44:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzymO-00GdlQ-0i
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Nov 2023 12:32:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1699273952; x=1730809952;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=tlgggN3W4d6dfZnKBFVMDarO3TDJrGS0z905ubna8TY=;
-  b=gqnZ3uqclQC0nCLfcYD5gbO/hDr4TINLAQRg8OOTUMVoUI7ZlTPJFtLN
-   wPjyfYXlHtpQ9RUO3ZRdqec/JOIABeJjAjBsgn8gHHJ4dPK+Uhlq/XgOy
-   xVOkeWwO2bZCJO9gt8NMTU3LixP4yM8O5TX69j/L4V7Y6QtXa7JsxW+Hl
-   6TL8ZmsgLcYrqp+O3E8YbDsbDU03v8rVUCkTvplSuOFZrte4jawv3cUT/
-   mls74237FcpIW7rCk8bcrf98ie6Eswl1ARMa/lkLGFNxTn6Op30NTozVv
-   QUTEKHxcbd+qOo2tmMVFGmXr8s2pyu069OCQ06zQVIrcHLxQtqc08S4jX
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10885"; a="393158895"
-X-IronPort-AV: E=Sophos;i="6.03,281,1694761200"; 
-   d="scan'208";a="393158895"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Nov 2023 04:32:28 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10885"; a="712187400"
-X-IronPort-AV: E=Sophos;i="6.03,281,1694761200"; 
-   d="scan'208";a="712187400"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Nov 2023 04:32:24 -0800
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id B256011F724;
-	Mon,  6 Nov 2023 14:32:21 +0200 (EET)
-Date: Mon, 6 Nov 2023 12:32:21 +0000
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: linux-acpi@vger.kernel.org, rafael@kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-media@vger.kernel.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 1/1] device property: Add fwnode_name_eq()
-Message-ID: <ZUjc1amZ9YfPwpNZ@kekkonen.localdomain>
-References: <20231103070631.1223643-1-sakari.ailus@linux.intel.com>
- <ZUjOEsQSjom4SdOg@smile.fi.intel.com>
+	id 1qzyyD-00Geym-1L;
+	Mon, 06 Nov 2023 12:44:46 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C36AE6607482;
+	Mon,  6 Nov 2023 12:44:42 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699274683;
+	bh=+ayWnCIJkXFbMbvFLWZ8twgHit1NMR0N6o/rMjRk7Nk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WuNhD0AhVAtckAur993ehd0flOlQec9k7sNhWu6wiS1x5UPjlcMLW+Qlb6cI/n9m3
+	 v92XUFmkQ9hPW6sKVEFZYCqT5uPWyhO+KwCDeBF0afCsgYMNCpmcRnk8SEzCdt3teK
+	 t10brGh2UiWLk1DruW7jP5vuWIM7f4hzb9BrqH/viAY3/iE2ovO+vaiBJB+3x49UvN
+	 Ro74URxDunE4mIkcGkWcSarXB4egRSmqzDVfA4r2NdrEkW8oXaHZk8r783KUhYnEyv
+	 kT6H+y3JfiZSatGnhDBDBioXEpP/J0J5AzYcMD69ZxkYIiyLo/h5RRDS2/k67fc59z
+	 GrbV1QaokQ6ZA==
+Message-ID: <646ef874-dbbd-448d-8b66-d847f3f8e268@collabora.com>
+Date: Mon, 6 Nov 2023 13:44:39 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZUjOEsQSjom4SdOg@smile.fi.intel.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 12/12] media: platform: mtk-mdp3: add support for
+ parallel pipe to improve FPS
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231030100626.12564-1-moudy.ho@mediatek.com>
+ <20231030100626.12564-13-moudy.ho@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231030100626.12564-13-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_043232_443641_CEE081BB 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20231106_044445_649877_5A6556EF 
+X-CRM114-Status: UNSURE (   8.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,20 +80,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 06, 2023 at 01:29:22PM +0200, Andy Shevchenko wrote:
-> On Fri, Nov 03, 2023 at 09:06:31AM +0200, Sakari Ailus wrote:
-> > Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
-> > on fwnode property API. The same convention of ending the comparison at
-> > '@' (besides NUL) is applied on also both ACPI and swnode. The function
-> > is intended for comparing unit address-less node names on DT and firmware
-> > or swnodes compliant with DT bindings.
+Il 30/10/23 11:06, Moudy Ho ha scritto:
+> In some chips, MDP3 has the ability to utilize two pipelines to
+> parallelly process a single frame.
+> To enable this feature, multiple CMDQ clients and packets need to
+> be configured at the same time.
 > 
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> 
-> I believe I gave already the tag...
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 
-I guess I've missed it earlier... Thanks!
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
--- 
-Sakari Ailus
 
