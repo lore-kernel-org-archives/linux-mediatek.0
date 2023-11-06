@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CD44C4167D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 08:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08A3FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 08:49:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=emAennya0OqtYB2dkUpmiIHkyUHKysLXATHHh/QpHgk=; b=osrjW8AKqJLo7zNuzy0k81rCE2
-	i4orJGnQX9lwhTc1hlRJzzv++bXXaO2Z2EOdMJoOynTNsOnLA44vER0eMfJHK0NadWWHcDAvxjImv
-	Bz0xJ2K6ufhtg9DS8WzFewthVU4k8M9S2+RDTL4EVk4COSfXNNDdSroK8V1LOu42GlCLGAdb3Z03P
-	DpIMwvcL/ttAwTqprpSXL9S4E1ErriBl3/S5A4i8kJEbDQ6Vby5SYQ/gO8DuM5iNMDsTSJpJOmSQl
-	cosbJBTxF3iIPlY3/Mqq8D4JxgD/ckbxms5UEz/3txAhB9jRSbems1/ZL6sdPeFLrxKQHJJXk+JJ3
-	rmD/SgGg==;
+	bh=0gN+B8/PE2qyDHk/Z9ADAHy7PMk78GnR2T4p9mNQ4MY=; b=Gz2hTJbs0gUrmucMQpU6JTS544
+	jEHe6GjtjHDjnC7sxXJgAUTxmXhcYAZ9/ZcUr9mIOkjLjbrt44INuYQqL7ZbjRta5shS7iEJ/dKtS
+	kcq7j7fpMMEsbULT7j9glHFYH3Dj5d9bhFVPcmu8JbtTssLkKc9SXBqAnzgiAdSrMRDXdwuInVfas
+	7wje0kajwTJRhzLJvIoNfXYHwXQWfz2NfQGTRMOkfcsE1WyOlvlB3FVX1psl2sEJPpC7e8uzZBUjz
+	gUKIYgb6hx2S15Cqwc4vDrGz9c+OoKdjtQBD40QzTIuNhln74WrOWA983FurqhyesUXpAUs4xiSQN
+	KA04Uxfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzvGH-00G67B-0q;
-	Mon, 06 Nov 2023 08:47:09 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qzvI8-00G6Kr-2y;
+	Mon, 06 Nov 2023 08:49:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzvGD-00G64j-2N;
-	Mon, 06 Nov 2023 08:47:07 +0000
+	id 1qzvI5-00G6JH-0e;
+	Mon, 06 Nov 2023 08:49:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 16FD9B80D90;
-	Mon,  6 Nov 2023 08:46:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3131C433C8;
-	Mon,  6 Nov 2023 08:46:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A307860DCA;
+	Mon,  6 Nov 2023 08:49:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 606F6C433C8;
+	Mon,  6 Nov 2023 08:48:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699260413;
-	bh=EaE06MUOi4Z9hzm+8bzA2VlC213fJCA/ZHevwrNS3qc=;
+	s=k20201202; t=1699260540;
+	bh=3kUvMLllZC7k4tgPL27MuqZrMvRrgrW6s8SmGJN+mGg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jMOAsqINnXt3znOUvi4mL6sl+x+5lSJXYViB8rfO8rEXSimHD/joRpCtkhV2/GKfI
-	 XD4Fhw5Q8ey+5T5Ef0baW8japB7kubRw+YZLgmO2qqMCe6omPxnQQQQawADalQihZ+
-	 hC5AEKPIl9HxHOMcDVHXXu5sVLastfgioI9TZl8nCZ8gqmKAGN5jBWl/l9OOS6GKIT
-	 ehkQGDGOwst3seD5O+uahvD+kKANrJjatz22IF0EXrqLuH1QKaeb4f7KkEdUAvTGaH
-	 4ct4baQfiPXrDclMYeMUtXKKdj84I+gOgo6U+4VGVlzShYX3lvDyF8sJRw0jnpgrLw
-	 pR1uxhi1fZQFQ==
-Message-ID: <1b66b6bc-2a9a-4caa-b4f5-c88f098475e2@kernel.org>
-Date: Mon, 6 Nov 2023 09:46:42 +0100
+	b=L+uQ+HyHFx+Yu5IQWXR82kbYPe3HfizXjY22JrCHyjA2TLxeenomtJJP17ruuyLiJ
+	 esBr5LJIS0D/bAtkN+w9UZ2y8Py9SZZQZE+ob3aQEH3+oMymQh4A5zSpBgms3P6/Hz
+	 GdNA+EAf/XXzOzOto8poXNBh0UYnbTQTVSy7ltTukQfiuLxP29LdXZ3N6mVzCLTcW6
+	 A7TI9c+7dBRVHxGf61HjAR3jyTO3//AbXUFRXc5Vw67n292UG4QXvPHxjcCRYpYfal
+	 uI4GusQRFZJ0xH/mFo8uZyMVqFAHYLjSL6hExyJe7STUEy7UyBqnDC2MXDWdDKQq/H
+	 fYOm+7EqGWmlw==
+Message-ID: <d2f18887-6920-461c-8c1d-2abd1f7101a0@kernel.org>
+Date: Mon, 6 Nov 2023 09:48:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] PCI: mediatek-gen3: Add power and reset control
- feature for downstream component
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jian Yang <jian.yang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
+Subject: Re: [PATCH v4 1/2] dt-bindings: PCI: mediatek-gen3: Add support for
+ controlling power and reset
+Content-Language: en-US
+To: Jian Yang <jian.yang@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
  Jianjun Wang <jianjun.wang@mediatek.com>
 Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -58,14 +59,9 @@ Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chuanjia.Liu@mediatek.com, Jieyy.Yang@mediatek.com,
- Qizhong.Cheng@mediatek.com, Jianguo.Zhang@mediatek.com,
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
- Abel Vesa <abel.vesa@linaro.org>
+ Qizhong.Cheng@mediatek.com, Jianguo.Zhang@mediatek.com
 References: <20231106061220.21485-1-jian.yang@mediatek.com>
- <20231106061220.21485-3-jian.yang@mediatek.com>
- <ce2c96f9-7895-41fc-a5f9-617b79f64f96@kernel.org>
- <74e491ce-24c6-4d7a-a1b3-708857f03887@collabora.com>
-Content-Language: en-US
+ <20231106061220.21485-2-jian.yang@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -110,12 +106,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <74e491ce-24c6-4d7a-a1b3-708857f03887@collabora.com>
+In-Reply-To: <20231106061220.21485-2-jian.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_004706_075633_7D6E3C8B 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20231106_004901_327052_4A95F3A7 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,48 +126,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/11/2023 09:36, AngeloGioacchino Del Regno wrote:
-> Il 06/11/23 08:53, Krzysztof Kozlowski ha scritto:
->> On 06/11/2023 07:12, Jian Yang wrote:
->>> From: "jian.yang" <jian.yang@mediatek.com>
->>>
->>> Make MediaTek's controller driver capable of controlling power
->>> supplies and reset pin of a downstream component in power-on and
->>> power-off process.
->>>
->>> Some downstream components (e.g., a WIFI chip) may need an extra
->>> reset other than PERST# and their power supplies, depending on
->>> the requirements of platform, may need to controlled by their
->>> parent's driver. To meet the requirements described above, I add this
->>> feature to MediaTek's PCIe controller driver as an optional feature.
->>
->> NAK, strong NAK. This should be done in a generic way because nothing
->> here is specific to Mediatek.
->>
->> You just implement power sequencing of devices through quirks specific
->> to one controller.
->>
->> Work with others to provide common solution.
->> https://lpc.events/event/17/contributions/1507/
->>
+On 06/11/2023 07:12, Jian Yang wrote:
+> From: "jian.yang" <jian.yang@mediatek.com>
 > 
-> I agree that working with everyone else by adding pwrseq is a must, but other
-> other PCIe controllers are doing the exact same as this patch: if the supply
-> and gpio names are aligned with the others, why shouldn't we let this in and
-> then convert this driver, along with the others, to the new pwrseq subsystem
-> when it's ready?
-
-Because you already push to the PCI controller bindings new properties
-which are not properties of the PCI controller.
-
+> Add new properties to support control power supplies and reset pin of
+> a downstream component.
 > 
-> That, because I expect the pwrseq to require a bit more time before being
-> ready to get upstream.
+> Signed-off-by: jian.yang <jian.yang@mediatek.com>
+> ---
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      | 30 +++++++++++++++++++
+>  1 file changed, 30 insertions(+)
 > 
-> P.S.: Check Tegra, Broadcom, RockChip DW, IMX6Q-pcie.
+> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> index 7e8c7a2a5f9b..a4f6b48d57fa 100644
+> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> @@ -84,6 +84,26 @@ properties:
+>      items:
+>        enum: [ phy, mac ]
+>  
+> +  vpcie1v8-supply:
+> +    description:
+> +      The regulator phandle that provides 1.8V power from root port to a
+> +      downstream component.
+> +
+> +  vpcie3v3-supply:
+> +    description:
+> +      The regulator phandle that provides 3.3V power from root port to a
+> +      downstream component.
 
-Every new hack will not make it faster. :( At some point one have to say
-- enough of hacks, start doing it properly with upstream.
+How 3.3V supply can go from root port to downstream? Do you mean that
+root port is the regulator itself (regulator provider)?
+
+Sorry, all these supplies look like hacks - stuffing PCI device
+properties into the PCI controller node.
 
 Best regards,
 Krzysztof
