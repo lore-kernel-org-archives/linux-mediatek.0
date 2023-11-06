@@ -4,74 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 604ACC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 07:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52F6BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 07:54:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J37wmEwEMmX9LbSDRr+Nj79WDT7N0f7jeuPPtyfYH5g=; b=Nusoum4VHHHj/E4s2qGT/t48ZD
-	uiYWkOygnq3sWE4pWLYyoxOGf/8D6tWGbbXQCUYp4VTFHEK36dhZsjCec6bpML9Tiw7slR5eHILFJ
-	rAM+/xiLbmRZuFCrl+13AdG/ofNrKrpT/+TFZ3VbOasYtVQFJ6aVADMn4WW6oVo1/3hu00hJ6LQv7
-	1VfTYxEODicnb/3THpRFhip3Mnk2ktZkcfRa8bL1O+Pag8yL2cRhlM9iPw2O75Sz0ef0yGDNCd9wS
-	/3Fq6qLu34dXc2UV72U18Fbnkfv9almyBGd5mvquI6bHva42Rri2KzQOltKJEUtx8QyDT6eRII7hL
-	PbyL9MmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R5CWOlDqxLeHfXcUXtrvxD/drID+gh8MYfEZje+UPyU=; b=C5o39esMs0TS/ETlpBryvQx21J
+	7fH5URVjIx8IdnnfK/RGuKdqnw0nGCXLi0xXwgRlAhuD6Y3qy3DkxUcJ9IIUSC238cebRWdVkhjkO
+	AKvMJ9q2eDEQHoMw3p1Kgio96rKcQOG1j2b0TYNtnXPgHs0GxU9mbCsY7UksJNV0HwoX80X/s7TK3
+	Mm41Gf/nATMo3FKO7E6euE2u5tIFQyeFT4y3OZCeBMmZKu3fIm5g/uNRLMeJ6OwAMEdh0akk4/Bbs
+	56cLfYCoEfT+Wkboc3UxX8Bxbne6dtRdAvlwaJRCY1EO0G+eIU2tGMiwelXyBpaUReuKkhEJE9e6A
+	7cwJdjug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzuQS-00G2CN-0p;
-	Mon, 06 Nov 2023 07:53:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qzuQt-00G2GZ-0G;
+	Mon, 06 Nov 2023 07:54:03 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzuQN-00G2A9-1M
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Nov 2023 07:53:34 +0000
-X-UUID: 906e7cee7c7911ee86758d4a7c00f3a0-20231106
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=J37wmEwEMmX9LbSDRr+Nj79WDT7N0f7jeuPPtyfYH5g=;
-	b=h6rdLHVRDLub79PgxUqfpKU30aAZRya9HMmpUAKTKkdxPjuWVgu4/Xxc8lxiBe91zGlYQ3mrJ4zvXSLGM+hi3i9JWhJsniWtK/iRjYZRJMlfaikx0X7Wd9Ll+nZe5Ot0KOPlqvJJ4D7EgET3PoCScO2wXfpRtoX9R1U7RbhbStE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:f066a7c9-8614-4723-a794-312aac57c0aa,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:7a9432fc-4a48-46e2-b946-12f04f20af8c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 906e7cee7c7911ee86758d4a7c00f3a0-20231106
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <michael-cy.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 541169714; Mon, 06 Nov 2023 00:53:25 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 6 Nov 2023 15:33:22 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 6 Nov 2023 15:33:22 +0800
-From: Michael-CY Lee <michael-cy.lee@mediatek.com>
-To: linux-wireless <linux-wireless@vger.kernel.org>
-CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael-CY Lee
-	<michael-cy.lee@mediatek.com>
-Subject: [PATCH 2/2] wifi: mac80211: Refactor STA CSA parsing flow
-Date: Mon, 6 Nov 2023 15:33:01 +0800
-Message-ID: <20231106073301.7351-2-michael-cy.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231106073301.7351-1-michael-cy.lee@mediatek.com>
-References: <20231106073301.7351-1-michael-cy.lee@mediatek.com>
+	id 1qzuQp-00G2FV-1x;
+	Mon, 06 Nov 2023 07:54:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 970B4CE04A8;
+	Mon,  6 Nov 2023 07:53:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E34C7C433C9;
+	Mon,  6 Nov 2023 07:53:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1699257236;
+	bh=1lvQWl4CfXhED/r0/C0UpDtEwhQ6AYy9bJQipe3ejXU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ofG0kCc5SbUIgrx/dTCQm9AwEADHP45pCfaAeoAHH8SrbN+CBJTvbWqPm4ngtiuHI
+	 7LunnXGceG5/cVHyyBElA3a9+DvIBu2VAnpBLCeUHDI4q60GtoaXcl+qkNlq4dpxi+
+	 xsnjr/+xs9e67yR5AFhyaoXKOdQkbJQDs+CMzlmNzjFauP2dKjfi1UdAkwOkzDFoRg
+	 vdp5qz6hX8ceGdOilo8IS1krv0YiChtOdIUeJAVLoG98vxmWMqIAMXN5Tvl6ywyzOo
+	 HDWC9R3B0RevLw7TGbT0hPuqz8HDE8+f+lw4o/+N7fVsoq72EVqzmMEfcRfZesJuFD
+	 F+3kE6/iTAUfg==
+Message-ID: <ce2c96f9-7895-41fc-a5f9-617b79f64f96@kernel.org>
+Date: Mon, 6 Nov 2023 08:53:44 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/2] PCI: mediatek-gen3: Add power and reset control
+ feature for downstream component
+Content-Language: en-US
+To: Jian Yang <jian.yang@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Chuanjia.Liu@mediatek.com, Jieyy.Yang@mediatek.com,
+ Qizhong.Cheng@mediatek.com, Jianguo.Zhang@mediatek.com,
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+ Abel Vesa <abel.vesa@linaro.org>
+References: <20231106061220.21485-1-jian.yang@mediatek.com>
+ <20231106061220.21485-3-jian.yang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20231106061220.21485-3-jian.yang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231105_235331_464352_EDB2303A 
-X-CRM114-Status: GOOD (  23.33  )
+X-CRM114-CacheID: sfid-20231105_235400_004628_353C967C 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,644 +128,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Wi-Fi Standard (IEEE 802.11-2020 9.4.2.160) initially specified that
-the Wide Bandwidth Channel Switch (WBCS) IE subfields have same definitions
-as the S1G or VHT Operation Information according to the operating band.
+On 06/11/2023 07:12, Jian Yang wrote:
+> From: "jian.yang" <jian.yang@mediatek.com>
+> 
+> Make MediaTek's controller driver capable of controlling power
+> supplies and reset pin of a downstream component in power-on and
+> power-off process.
+> 
+> Some downstream components (e.g., a WIFI chip) may need an extra
+> reset other than PERST# and their power supplies, depending on
+> the requirements of platform, may need to controlled by their
+> parent's driver. To meet the requirements described above, I add this
+> feature to MediaTek's PCIe controller driver as an optional feature.
 
-However, it did not change the definitions in the amendment for 6 GHz
-(IEEE 802.11ax-2021), so the logic remain the same for handling the WBCS
-IE even if there is no VHT mode in 6 GHz.
+NAK, strong NAK. This should be done in a generic way because nothing
+here is specific to Mediatek.
 
-Now the Wi-Fi Standard draft (IEEE P80211be D3.2 9.4.2.159) modifies the
-defitions, making the WBCS IE subfields follow the definitions of S1G,
-VHT and HE Operation Information in S1G, 5 GHz and 6 GHz band, respectively.
+You just implement power sequencing of devices through quirks specific
+to one controller.
 
-APs in 6 GHz band might use the VHT or HE Operation Information to build
-a WBCS IE according to the Wi-Fi Standard they follow. Originally, the STA
-just parsed the WBCS IE as VHT Operation Inforamtion, which was wrong if
-the AP was actually build the IE by the HE Operation Information.
+Work with others to provide common solution.
+https://lpc.events/event/17/contributions/1507/
 
-To avoid the ambiguity, STA should prefer the op_class in the Extended
-Channel Switch Announcement (ECSA) IE rathen than the WBCS IE. If the ECSA
-IE is not presented in a channel switch to 6 GHz, the STA should be aware
-of the possible ambiguity when parsing the WBCS IE.
-
-To derive the correct bandwidtin in use, the STA should check the
-combination of new channel width, ccfs0 and ccfs1, see the following
-table:
-
-| width|          ccfs1|            ccfs2| new BW in MHz|
----------------------------------------------------------
-|     0|    center freq|                0|            40|
-|     1|    center freq|                0|            80|
-|     1| primary 80 MHz| secondary 80 MHz|         80P80|
-|     1| primary 80 MHz|      center freq|           160|
-|     1|    center freq|                0|            40|
-|     2|    center freq|                0|           160|
-|     2|    center freq|                0|            80|
-|     3| primary 80 MHz| secondary 80 MHz|         80P80|
-|     3| primary 80 MHz|      center freq|           160|
-
-This patch refactors the STA parsing CSA flow:
-
-1. If the BWI IE is not presented while the ECSA IE is presented, this
-   patch uses the subfield op_class to build the HT, VHT and HE operation
-   in 2.4 GHz, 5 GHz and 6 GHz band, respectively.
-2. If the BWI and ECSA IE are NOT presented while the WBCS IE is presented,
-   the new channel width is at least 40 MHz.
-   Therefore this patch first prepares a 40 MHz chandef, then builds the
-   HT, VHT and HE operation in 2 GHz, 5 GHz and 6 GHz band, respectively.
-   In the 6 GHz band, this patch checks the combination of new channel
-   width, ccfs0 and ccfs1 to build the correct HE operation.
-3. From the HT/VHT/HE operation created in step 1 or 2, this patch then
-   creates the chandef and assigns it to csa_ie.
-
-Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
-Signed-off-by: Money Wang <money.wang@mediatek.com>
----
- net/mac80211/spectmgmt.c | 512 ++++++++++++++++++++++++++++++++++-----
- 1 file changed, 456 insertions(+), 56 deletions(-)
-
-diff --git a/net/mac80211/spectmgmt.c b/net/mac80211/spectmgmt.c
-index 55959b0b24c5..39441a4955eb 100644
---- a/net/mac80211/spectmgmt.c
-+++ b/net/mac80211/spectmgmt.c
-@@ -19,6 +19,332 @@
- #include "sta_info.h"
- #include "wme.h"
- 
-+static inline void
-+op_class_to_6ghz_he_eht_oper(u8 op_class, struct ieee80211_channel *chan,
-+			     struct ieee80211_he_operation *he_oper,
-+			     struct ieee80211_eht_operation *eht_oper)
-+{
-+	u8 new_chan_width;
-+	u32 he_oper_params, center_freq1 = 0, center_freq2 = 0;
-+	struct ieee80211_he_6ghz_oper *he_6ghz_oper;
-+	struct ieee80211_eht_operation_info *eht_oper_info;
-+
-+	new_chan_width = ieee80211_operating_class_to_chan_width(op_class);
-+	if (!ieee80211_operating_class_to_center_freq(op_class, chan,
-+						      &center_freq1,
-+						      &center_freq2)) {
-+		new_chan_width = NL80211_CHAN_WIDTH_20;
-+		center_freq1 = chan->center_freq;
-+	}
-+
-+	he_oper_params =
-+		u32_encode_bits(1, IEEE80211_HE_OPERATION_6GHZ_OP_INFO);
-+	he_oper->he_oper_params = cpu_to_le32(he_oper_params);
-+
-+	he_6ghz_oper = (struct ieee80211_he_6ghz_oper *)he_oper->optional;
-+	he_6ghz_oper->primary =
-+		ieee80211_frequency_to_channel(chan->center_freq);
-+	he_6ghz_oper->ccfs0 = ieee80211_frequency_to_channel(center_freq1);
-+	he_6ghz_oper->ccfs1 = center_freq2 ?
-+		ieee80211_frequency_to_channel(center_freq2) : 0;
-+
-+	switch (new_chan_width) {
-+	case NL80211_CHAN_WIDTH_320:
-+		/* Cannot derive center frequency of 320 MHZ from op_class
-+		 * since it might be 320 Mhz-1 or 320 Mhz-2.
-+		 */
-+		WARN_ON(1);
-+		break;
-+	case NL80211_CHAN_WIDTH_160:
-+		he_6ghz_oper->ccfs1 = he_6ghz_oper->ccfs0;
-+		he_6ghz_oper->ccfs0 += chan->center_freq < center_freq1 ? -8 : 8;
-+		fallthrough;
-+	case NL80211_CHAN_WIDTH_80P80:
-+		he_6ghz_oper->control =
-+			IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_160MHZ;
-+		break;
-+	case NL80211_CHAN_WIDTH_80:
-+		he_6ghz_oper->control =
-+			IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_80MHZ;
-+		break;
-+	case NL80211_CHAN_WIDTH_40:
-+		he_6ghz_oper->control =
-+			IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_40MHZ;
-+		break;
-+	default:
-+		he_6ghz_oper->control =
-+			IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_20MHZ;
-+		break;
-+	}
-+
-+	eht_oper->params = IEEE80211_EHT_OPER_INFO_PRESENT;
-+
-+	eht_oper_info =
-+		(struct ieee80211_eht_operation_info *)eht_oper->optional;
-+	eht_oper_info->control = he_6ghz_oper->control;
-+	eht_oper_info->ccfs0 = he_6ghz_oper->ccfs0;
-+	eht_oper_info->ccfs1 = he_6ghz_oper->ccfs1;
-+}
-+
-+static inline void
-+wbcs_ie_to_6ghz_he_eht_oper(const struct ieee80211_wide_bw_chansw_ie *wbcs_ie,
-+			    u8 new_chan_no,
-+			    struct ieee80211_he_operation *he_oper,
-+			    struct ieee80211_eht_operation *eht_oper)
-+{
-+	u32 he_oper_params;
-+	struct ieee80211_he_6ghz_oper *he_6ghz_oper;
-+	struct ieee80211_eht_operation_info *eht_oper_info;
-+	bool fallback_20mhz;
-+	u8 ccfs_diff;
-+
-+	he_oper_params =
-+		u32_encode_bits(1, IEEE80211_HE_OPERATION_6GHZ_OP_INFO);
-+	he_oper->he_oper_params = cpu_to_le32(he_oper_params);
-+
-+	he_6ghz_oper = (struct ieee80211_he_6ghz_oper *)he_oper->optional;
-+	he_6ghz_oper->primary = new_chan_no;
-+
-+	/* The Wide Bandwidth Channel Switch IE in a 6 GHz BSS migth be
-+	 * deprecated VHT operation, VHT operation (IEEE 802.11-2020 9.4.2.160)
-+	 * or HE operation (IEEE P80211be D3.2 9.4.2.159).
-+	 * Check the combination of width, ccfs0 and ccfs1 to build the correct
-+	 * HE/EHT operation.
-+	 */
-+	he_6ghz_oper->ccfs0 = wbcs_ie->new_center_freq_seg0;
-+	he_6ghz_oper->ccfs1 = wbcs_ie->new_center_freq_seg1;
-+	switch (wbcs_ie->new_channel_width) {
-+	case 0:
-+		/* Must be [deprecated] VHT operation with 40 MHz bandwidth */
-+		he_6ghz_oper->control =
-+			IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_40MHZ;
-+		break;
-+	case 1:
-+		if (he_6ghz_oper->ccfs1) {
-+			/* VHT operation with 160/80P80 MHz bandwidth */
-+			he_6ghz_oper->control =
-+				IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_160MHZ;
-+		} else if ((he_6ghz_oper->ccfs0 - 7) % 16 == 0) {
-+			/* [deprecated] VHT operation with 80 MHz bandwidth */
-+			he_6ghz_oper->control =
-+				IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_80MHZ;
-+		} else {
-+			/* HE operation with 40 MHz bandwidth */
-+			he_6ghz_oper->control =
-+				IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_40MHZ;
-+		}
-+		break;
-+	case 2:
-+		if ((he_6ghz_oper->ccfs0 - 15) % 32 == 0) {
-+			/* deprecated VHT operation with 160 MHz bandwidth */
-+			he_6ghz_oper->control =
-+				IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_160MHZ;
-+			he_6ghz_oper->ccfs1 = he_6ghz_oper->ccfs0;
-+			he_6ghz_oper->ccfs0 +=
-+				new_chan_no < he_6ghz_oper->ccfs0 ? -8 : 8;
-+		} else {
-+			/* HE operation with 80 MHz bandwidth */
-+			he_6ghz_oper->control =
-+				IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_80MHZ;
-+		}
-+		break;
-+	case 3:
-+		/* Can be
-+		 * 1. deprecated VHT operation with 80P80 MHz bandwidth
-+		 * 2. HE operation with 160/80P80 MHz bandwidth
-+		 */
-+		he_6ghz_oper->control =
-+			IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_160MHZ;
-+		break;
-+	case 4:
-+		/* 320 MHz bandwidth
-+		 * TODO channel switch to 320 MHz bandwidth should be indiated
-+		 * by Bandwidth Indication IE (IEEE P80211be D3.2 9.4.2.159)
-+		 */
-+		he_6ghz_oper->control = IEEE80211_EHT_OPER_CHAN_WIDTH_320MHZ;
-+		break;
-+	default:
-+		/* Ignore invalid width */
-+		break;
-+	}
-+
-+	/* Validate the relationship between new channel width and center frequency
-+	 * segments, and fallback to 20 MHz if the relationship is wrong.
-+	 */
-+	fallback_20mhz = false;
-+	switch (he_6ghz_oper->control) {
-+	case IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_40MHZ:
-+		if ((he_6ghz_oper->ccfs0 - 3) % 8 != 0)
-+			fallback_20mhz = true;
-+		break;
-+	case IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_80MHZ:
-+		if ((he_6ghz_oper->ccfs0 - 7) % 16 != 0)
-+			fallback_20mhz = true;
-+		break;
-+	case IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_160MHZ:
-+		ccfs_diff = abs(he_6ghz_oper->ccfs1 - he_6ghz_oper->ccfs0);
-+		if ((ccfs_diff == 8 && (he_6ghz_oper->ccfs1 - 15) % 32 != 0) ||
-+		    (ccfs_diff > 16 && ((he_6ghz_oper->ccfs0 - 7) % 16 != 0 ||
-+		    (he_6ghz_oper->ccfs1 - 7) % 16 != 0)))
-+			fallback_20mhz = true;
-+		break;
-+	case IEEE80211_EHT_OPER_CHAN_WIDTH_320MHZ:
-+		if ((he_6ghz_oper->ccfs1 - 31) % 32 != 0)
-+			fallback_20mhz = true;
-+		break;
-+	}
-+
-+	if (fallback_20mhz) {
-+		he_6ghz_oper->control =
-+			IEEE80211_HE_6GHZ_OPER_CTRL_CHANWIDTH_20MHZ;
-+		he_6ghz_oper->ccfs0 = he_6ghz_oper->primary;
-+		he_6ghz_oper->ccfs1 = 0;
-+	}
-+
-+	eht_oper->params = IEEE80211_EHT_OPER_INFO_PRESENT;
-+	eht_oper_info =
-+		(struct ieee80211_eht_operation_info *)eht_oper->optional;
-+	eht_oper_info->control = he_6ghz_oper->control;
-+	eht_oper_info->ccfs0 = he_6ghz_oper->ccfs0;
-+	eht_oper_info->ccfs1 = he_6ghz_oper->ccfs1;
-+}
-+
-+static inline void
-+op_class_to_ht_vht_oper(u8 op_class, struct ieee80211_channel *chan,
-+			struct ieee80211_ht_operation *ht_oper,
-+			struct ieee80211_vht_operation *vht_oper)
-+{
-+	u8 new_chan_width;
-+	u32 center_freq1 = 0, center_freq2 = 0;
-+
-+	new_chan_width = ieee80211_operating_class_to_chan_width(op_class);
-+	if (!ieee80211_operating_class_to_center_freq(op_class, chan,
-+						      &center_freq1,
-+						      &center_freq2)) {
-+		new_chan_width = NL80211_CHAN_WIDTH_20;
-+		center_freq1 = chan->center_freq;
-+	}
-+
-+	vht_oper->center_freq_seg0_idx =
-+		ieee80211_frequency_to_channel(center_freq1);
-+	vht_oper->center_freq_seg1_idx = center_freq2 ?
-+		ieee80211_frequency_to_channel(center_freq2) : 0;
-+
-+	ht_oper->ht_param = (chan->center_freq / 20) & 1 ?
-+				IEEE80211_HT_PARAM_CHA_SEC_ABOVE :
-+				IEEE80211_HT_PARAM_CHA_SEC_BELOW;
-+
-+	switch (new_chan_width) {
-+	case NL80211_CHAN_WIDTH_320:
-+		WARN_ON(1);
-+		break;
-+	case NL80211_CHAN_WIDTH_160:
-+		vht_oper->chan_width = IEEE80211_VHT_CHANWIDTH_80MHZ;
-+		vht_oper->center_freq_seg1_idx = vht_oper->center_freq_seg0_idx;
-+		vht_oper->center_freq_seg0_idx +=
-+			chan->center_freq < center_freq1 ? -8 : 8;
-+		break;
-+	case NL80211_CHAN_WIDTH_80P80:
-+		vht_oper->chan_width = IEEE80211_VHT_CHANWIDTH_80MHZ;
-+		break;
-+	case NL80211_CHAN_WIDTH_80:
-+		vht_oper->chan_width = IEEE80211_VHT_CHANWIDTH_80MHZ;
-+		break;
-+	default:
-+		vht_oper->chan_width = IEEE80211_VHT_CHANWIDTH_USE_HT;
-+		if (chan->center_freq != center_freq1)
-+			ht_oper->ht_param = chan->center_freq > center_freq1 ?
-+				IEEE80211_HT_PARAM_CHA_SEC_BELOW :
-+				IEEE80211_HT_PARAM_CHA_SEC_ABOVE;
-+		else
-+			ht_oper->ht_param = IEEE80211_HT_PARAM_CHA_SEC_NONE;
-+	}
-+
-+	ht_oper->operation_mode =
-+		cpu_to_le16(vht_oper->center_freq_seg1_idx <<
-+				IEEE80211_HT_OP_MODE_CCFS2_SHIFT);
-+}
-+
-+static inline void
-+wbcs_ie_to_ht_vht_oper(struct ieee80211_channel *chan,
-+		       const struct ieee80211_wide_bw_chansw_ie *wbcs_ie,
-+		       struct ieee80211_ht_operation *ht_oper,
-+		       struct ieee80211_vht_operation *vht_oper)
-+{
-+	u8 new_chan_width, new_ccfs0, new_ccfs1;
-+	bool fallback_20mhz;
-+
-+	new_chan_width = wbcs_ie->new_channel_width;
-+	new_ccfs0 = wbcs_ie->new_center_freq_seg0;
-+	new_ccfs1 = wbcs_ie->new_center_freq_seg1;
-+
-+	/* Validate the relationship between new channel width and center frequency
-+	 * segments, and fallback to 20 MHz if the relationship is wrong.
-+	 */
-+	fallback_20mhz = false;
-+	switch (new_chan_width) {
-+	case IEEE80211_VHT_CHANWIDTH_USE_HT:
-+		/* If the wide bandwidth channel switch IE is presented,
-+		 * the new channel width is at least 40 MHz.
-+		 */
-+		if (!new_ccfs1) {
-+			new_ccfs0 -= (new_ccfs0 >= 149) ? 151 : 38;
-+			if (new_ccfs0 % 8 != 0)
-+				fallback_20mhz = true;
-+		} else {
-+			fallback_20mhz = true;
-+		}
-+		break;
-+	case IEEE80211_VHT_CHANWIDTH_80MHZ:
-+		if (!new_ccfs1) {
-+			new_ccfs0 -= (new_ccfs0 >= 149) ? 155 : 42;
-+			if (new_ccfs0 % 16 != 0)
-+				fallback_20mhz = true;
-+			break;
-+		} else if (abs(new_ccfs1 - new_ccfs0) == 8) {
-+			new_ccfs0 = new_ccfs1;
-+			new_ccfs1 = 0;
-+		}
-+		fallthrough;
-+	case IEEE80211_VHT_CHANWIDTH_160MHZ:
-+		if (!new_ccfs1) {
-+			if (new_ccfs0 != 50 && new_ccfs0 != 114 && new_ccfs0 != 163)
-+				fallback_20mhz = true;
-+			break;
-+		}
-+		fallthrough;
-+	case IEEE80211_VHT_CHANWIDTH_80P80MHZ:
-+		new_ccfs0 -= (new_ccfs0 >= 149) ? 155 : 42;
-+		new_ccfs1 -= (new_ccfs1 >= 149) ? 155 : 42;
-+		if (new_ccfs0 % 16 != 0 || new_ccfs1 % 16 != 0)
-+			fallback_20mhz = true;
-+		break;
-+	default:
-+		fallback_20mhz = true;
-+	}
-+
-+	if (fallback_20mhz) {
-+		ht_oper->ht_param = IEEE80211_HT_PARAM_CHA_SEC_NONE;
-+
-+		vht_oper->chan_width = IEEE80211_VHT_CHANWIDTH_USE_HT;
-+		vht_oper->center_freq_seg0_idx =
-+			ieee80211_frequency_to_channel(chan->center_freq);
-+		vht_oper->center_freq_seg1_idx = 0;
-+
-+	} else {
-+		ht_oper->ht_param = (chan->center_freq / 20) & 1 ?
-+					IEEE80211_HT_PARAM_CHA_SEC_ABOVE :
-+					IEEE80211_HT_PARAM_CHA_SEC_BELOW;
-+
-+		vht_oper->chan_width = new_chan_width;
-+		vht_oper->center_freq_seg0_idx = wbcs_ie->new_center_freq_seg0;
-+		vht_oper->center_freq_seg1_idx = wbcs_ie->new_center_freq_seg1;
-+	}
-+
-+	ht_oper->operation_mode = cpu_to_le16(vht_oper->center_freq_seg1_idx <<
-+					      IEEE80211_HT_OP_MODE_CCFS2_SHIFT);
-+}
-+
- int ieee80211_parse_ch_switch_ie(struct ieee80211_sub_if_data *sdata,
- 				 struct ieee802_11_elems *elems,
- 				 enum nl80211_band current_band,
-@@ -26,14 +352,21 @@ int ieee80211_parse_ch_switch_ie(struct ieee80211_sub_if_data *sdata,
- 				 ieee80211_conn_flags_t conn_flags, u8 *bssid,
- 				 struct ieee80211_csa_ie *csa_ie)
- {
-+	struct ieee80211_supported_band *sband;
- 	enum nl80211_band new_band = current_band;
--	int new_freq;
--	u8 new_chan_no;
-+	int new_freq, size;
-+	u8 new_chan_no = 0, new_op_class = 0;
- 	struct ieee80211_channel *new_chan;
--	struct cfg80211_chan_def new_vht_chandef = {};
-+	struct cfg80211_chan_def new_chandef = {};
- 	const struct ieee80211_sec_chan_offs_ie *sec_chan_offs;
- 	const struct ieee80211_wide_bw_chansw_ie *wide_bw_chansw_ie;
- 	const struct ieee80211_bandwidth_indication *bwi;
-+	const struct ieee80211_ext_chansw_ie *ext_chansw_ie;
-+	struct ieee80211_ht_operation *ht_oper;
-+	struct ieee80211_vht_operation *vht_oper;
-+	struct ieee80211_he_operation *he_oper;
-+	struct ieee80211_eht_operation *eht_oper;
-+	struct ieee80211_sta_ht_cap sta_ht_cap;
- 	int secondary_channel_offset = -1;
- 
- 	memset(csa_ie, 0, sizeof(*csa_ie));
-@@ -41,6 +374,7 @@ int ieee80211_parse_ch_switch_ie(struct ieee80211_sub_if_data *sdata,
- 	sec_chan_offs = elems->sec_chan_offs;
- 	wide_bw_chansw_ie = elems->wide_bw_chansw_ie;
- 	bwi = elems->bandwidth_indication;
-+	ext_chansw_ie = elems->ext_chansw_ie;
- 
- 	if (conn_flags & (IEEE80211_CONN_DISABLE_HT |
- 			  IEEE80211_CONN_DISABLE_40MHZ)) {
-@@ -48,29 +382,30 @@ int ieee80211_parse_ch_switch_ie(struct ieee80211_sub_if_data *sdata,
- 		wide_bw_chansw_ie = NULL;
- 	}
- 
--	if (conn_flags & IEEE80211_CONN_DISABLE_VHT)
--		wide_bw_chansw_ie = NULL;
--
--	if (elems->ext_chansw_ie) {
--		if (!ieee80211_operating_class_to_band(
--				elems->ext_chansw_ie->new_operating_class,
--				&new_band)) {
--			sdata_info(sdata,
--				   "cannot understand ECSA IE operating class, %d, ignoring\n",
--				   elems->ext_chansw_ie->new_operating_class);
-+	if (ext_chansw_ie) {
-+		new_op_class = ext_chansw_ie->new_operating_class;
-+		if (!ieee80211_operating_class_to_band(new_op_class, &new_band)) {
-+			new_op_class = 0;
-+			sdata_info(sdata, "cannot understand ECSA IE "
-+					  "operating class, %d, ignoring\n",
-+				   ext_chansw_ie->new_operating_class);
-+		} else {
-+			new_chan_no = ext_chansw_ie->new_ch_num;
-+			csa_ie->count = ext_chansw_ie->count;
-+			csa_ie->mode = ext_chansw_ie->mode;
- 		}
--		new_chan_no = elems->ext_chansw_ie->new_ch_num;
--		csa_ie->count = elems->ext_chansw_ie->count;
--		csa_ie->mode = elems->ext_chansw_ie->mode;
--	} else if (elems->ch_switch_ie) {
-+	}
-+
-+	if (!new_op_class && elems->ch_switch_ie) {
- 		new_chan_no = elems->ch_switch_ie->new_ch_num;
- 		csa_ie->count = elems->ch_switch_ie->count;
- 		csa_ie->mode = elems->ch_switch_ie->mode;
--	} else {
--		/* nothing here we understand */
--		return 1;
- 	}
- 
-+	/* nothing here we understand */
-+	if (!new_chan_no)
-+		return 1;
-+
- 	/* Mesh Channel Switch Parameters Element */
- 	if (elems->mesh_chansw_params_ie) {
- 		csa_ie->ttl = elems->mesh_chansw_params_ie->mesh_ttl;
-@@ -136,59 +471,124 @@ int ieee80211_parse_ch_switch_ie(struct ieee80211_sub_if_data *sdata,
- 
- 	if (bwi) {
- 		/* start with the CSA one */
--		new_vht_chandef = csa_ie->chandef;
-+		new_chandef = csa_ie->chandef;
- 		/* and update the width accordingly */
- 		/* FIXME: support 160/320 */
- 		ieee80211_chandef_eht_oper(&bwi->info, true, true,
--					   &new_vht_chandef);
--	} else if (wide_bw_chansw_ie) {
--		u8 new_seg1 = wide_bw_chansw_ie->new_center_freq_seg1;
--		struct ieee80211_vht_operation vht_oper = {
--			.chan_width =
--				wide_bw_chansw_ie->new_channel_width,
--			.center_freq_seg0_idx =
--				wide_bw_chansw_ie->new_center_freq_seg0,
--			.center_freq_seg1_idx = new_seg1,
--			/* .basic_mcs_set doesn't matter */
--		};
--		struct ieee80211_ht_operation ht_oper = {
--			.operation_mode =
--				cpu_to_le16(new_seg1 <<
--					    IEEE80211_HT_OP_MODE_CCFS2_SHIFT),
--		};
--
--		/* default, for the case of IEEE80211_VHT_CHANWIDTH_USE_HT,
--		 * to the previously parsed chandef
--		 */
--		new_vht_chandef = csa_ie->chandef;
-+					   &new_chandef);
-+	} else if (new_band == NL80211_BAND_6GHZ) {
-+		size = sizeof(struct ieee80211_he_operation) +
-+		       sizeof(struct ieee80211_he_6ghz_oper);
-+		he_oper = kzalloc(size, GFP_KERNEL);
-+		if (!he_oper)
-+			return -ENOMEM;
-+
-+		size = sizeof(struct ieee80211_eht_operation) +
-+		       sizeof(struct ieee80211_eht_operation_info);
-+		eht_oper = kzalloc(size, GFP_KERNEL);
-+		if (!eht_oper) {
-+			kfree(he_oper);
-+			return -ENOMEM;
-+		}
-+
-+		if (new_op_class && new_op_class != 135 && new_op_class != 137) {
-+			/* There is no way to tell the ccfs1 for op_class 135
-+			 * (80P80 MHz) and 137 (320 MHz).
-+			 */
-+			op_class_to_6ghz_he_eht_oper(new_op_class, new_chan,
-+						     he_oper, eht_oper);
-+		} else if (wide_bw_chansw_ie) {
-+			wbcs_ie_to_6ghz_he_eht_oper(wide_bw_chansw_ie,
-+						    new_chan_no, he_oper,
-+						    eht_oper);
-+		}
-+
-+		new_chandef = csa_ie->chandef;
- 
- 		/* ignore if parsing fails */
--		if (!ieee80211_chandef_vht_oper(&sdata->local->hw,
--						vht_cap_info,
--						&vht_oper, &ht_oper,
--						&new_vht_chandef))
--			new_vht_chandef.chan = NULL;
-+		if (!ieee80211_chandef_he_6ghz_oper(sdata, he_oper, eht_oper,
-+						    &new_chandef))
-+			new_chandef.chan = NULL;
-+
-+		kfree(he_oper);
-+		kfree(eht_oper);
-+	} else {
-+		sband = sdata->local->hw.wiphy->bands[new_band];
-+		memcpy(&sta_ht_cap, &sband->ht_cap, sizeof(sta_ht_cap));
-+		ieee80211_apply_htcap_overrides(sdata, &sta_ht_cap);
-+
-+		if (!sta_ht_cap.ht_supported ||
-+		    !(sta_ht_cap.cap & IEEE80211_HT_CAP_SUP_WIDTH_20_40))
-+			goto out;
-+
-+		ht_oper = kzalloc(sizeof(*ht_oper), GFP_KERNEL);
-+		if (!ht_oper)
-+			return -ENOMEM;
-+
-+		vht_oper = kzalloc(sizeof(*vht_oper), GFP_KERNEL);
-+		if (!vht_oper) {
-+			kfree(ht_oper);
-+			return -ENOMEM;
-+		}
-+
-+		if (new_op_class && new_op_class != 130) {
-+			/* There is no way to tell the ccfs1 for op_class 130
-+			 * (80P80 MHz).
-+			 */
-+			op_class_to_ht_vht_oper(new_op_class, new_chan, ht_oper,
-+						vht_oper);
-+		} else if (wide_bw_chansw_ie && new_band == NL80211_BAND_5GHZ &&
-+			   sband->vht_cap.vht_supported) {
-+			/* It is assumed that there is no WBCS IE in the beacon
-+			 * from a 2 GHz BSS during a channel switch.
-+			 */
-+			wbcs_ie_to_ht_vht_oper(new_chan, wide_bw_chansw_ie,
-+					       ht_oper, vht_oper);
-+		} else {
-+			kfree(ht_oper);
-+			kfree(vht_oper);
-+			goto out;
-+		}
-+
-+		new_chandef = csa_ie->chandef;
-+
-+		ieee80211_chandef_ht_oper(ht_oper, &new_chandef);
-+
-+		/* ignore if parsing fails */
-+		if (sband->vht_cap.vht_supported &&
-+		    !ieee80211_chandef_vht_oper(&sdata->local->hw, vht_cap_info,
-+						vht_oper, ht_oper, &new_chandef))
-+			new_chandef.chan = NULL;
-+
-+		kfree(ht_oper);
-+		kfree(vht_oper);
-+	}
-+
-+	if (new_chandef.chan) {
-+		if (conn_flags & IEEE80211_CONN_DISABLE_320MHZ &&
-+		    new_chandef.width == NL80211_CHAN_WIDTH_320)
-+			ieee80211_chandef_downgrade(&new_chandef);
- 
- 		if (conn_flags & IEEE80211_CONN_DISABLE_80P80MHZ &&
--		    new_vht_chandef.width == NL80211_CHAN_WIDTH_80P80)
--			ieee80211_chandef_downgrade(&new_vht_chandef);
-+		    new_chandef.width == NL80211_CHAN_WIDTH_80P80)
-+			ieee80211_chandef_downgrade(&new_chandef);
-+
- 		if (conn_flags & IEEE80211_CONN_DISABLE_160MHZ &&
--		    new_vht_chandef.width == NL80211_CHAN_WIDTH_160)
--			ieee80211_chandef_downgrade(&new_vht_chandef);
--	}
-+		    new_chandef.width == NL80211_CHAN_WIDTH_160)
-+			ieee80211_chandef_downgrade(&new_chandef);
- 
--	/* if VHT data is there validate & use it */
--	if (new_vht_chandef.chan) {
--		if (!cfg80211_chandef_compatible(&new_vht_chandef,
-+		if (!cfg80211_chandef_compatible(&new_chandef,
- 						 &csa_ie->chandef)) {
- 			sdata_info(sdata,
- 				   "BSS %pM: CSA has inconsistent channel data, disconnecting\n",
- 				   bssid);
- 			return -EINVAL;
- 		}
--		csa_ie->chandef = new_vht_chandef;
-+
-+		csa_ie->chandef = new_chandef;
- 	}
- 
-+out:
- 	if (elems->max_channel_switch_time)
- 		csa_ie->max_switch_time =
- 			(elems->max_channel_switch_time[0] << 0) |
--- 
-2.25.1
+Best regards,
+Krzysztof
 
 
