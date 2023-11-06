@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90495C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 07:06:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03D40C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 07:33:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6x6syHYv6B5JOmlNh5XvQB7b07Sol2Uh3+zOoIhcFs4=; b=qIwTt13kw7jLIsY1VfMh9Fs7r4
-	U7ZPqtLkRKSGo+Stez6Vafp170lC4kBdjJH91SU7nqwevrqSlLfOh9W3hef4JSGGbMFlPlecCoJx+
-	zx0lmmk6FbjC7cCshKzpv55Z79qwkxFqbWPJkd9nsxp1/12AwnD/Zu6DuoyA2GdIfiqeJfOCTOTbm
-	AZI6W5rYmpas1PrsF+K4P1Bx/zq5VB23LCULfu1Fzy7oszgd95yqeCfV6VdPhZXkz5rjlBLgRLKhb
-	HYmEXJlh9qQup3NqDSPcQZNAJHvx2LKjonjFAWLdzSgY133Lb4DD/KVqyuodbsaDhY7qoLAo82OSL
-	Qbb2p1OA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sEgSEnQbFXgxG6NeOQ04GanNJBjCDl7IpccGy+iMAlw=; b=k48YO0bZm7DdzAG5/sjVY603IK
+	MxBjmB4cuGx49XnyKdt2k9gQAFuLmq9M2n2Lq1f7DQ2r/Twv7+5Mrmp3D2Jjzx2RC/HP7lTIfwO4N
+	EGvbULEpxwofdAnG+RPPEFDepLx7Mr9FhM2tljfc9T6WwjBdo+cdc5WfxY6U8CzmeflHYMLusUg8Y
+	b5QPgRQFmSi6EhTb3m9Og0BAQCwS5N5NgAs9ufomeAiSEoBWn6sUMf50wqeLdGbXJTK4vXbMPULOg
+	mum8z4FGYPr4wif0CsMu+DQSww9FVjDGO27H4pRf4854YJ1kA3p+UceN0vvdY+sXWWst9L33Bfv3h
+	AHwbXTiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qztgp-00Fylz-2d;
-	Mon, 06 Nov 2023 07:06:27 +0000
-Received: from mgamail.intel.com ([192.55.52.88])
+	id 1qzu71-00G0xt-2Q;
+	Mon, 06 Nov 2023 07:33:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qztgn-00Fyl9-09
+	id 1qzu6y-00G0wv-04
 	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Nov 2023 07:06:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1699254384; x=1730790384;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=G9ErlH/+M/Rbhu99aimM6BxS7FI2wLaofzX009O7Z7A=;
-  b=LkZ7LKVUcPdCP6tAZipzaUvEEsGS2yNZgkroTffs4kpH2K0Y3ofLKsVj
-   4kh4tBurqjY2wn+mB323zW1zFjgF2olo0lUAvCjczGRArr0DZmh8lqBix
-   l71VDWH20c9cL8BGQXEHimspfohkk8Pzu6TBBuQIm0uaSoFq8fi1ZDZm2
-   It2sn0+cZh1e4bzUT6PbHDoSAfoo9gaqbmVfiZHX6Fj/JaXuane3Dm2ZS
-   KAAfrb7UoRpOzBjvmZ6ZbUNAWVVAPd8RvAQCdQXA8KmDAv3phR8X8rzV2
-   cqoVBtDEzAFJvHO6KMrAcGRe6ydlFagdHbutya2jl+7R6ApI7rnBc+A72
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10885"; a="420334508"
-X-IronPort-AV: E=Sophos;i="6.03,280,1694761200"; 
-   d="scan'208";a="420334508"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2023 23:06:18 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10885"; a="828122027"
-X-IronPort-AV: E=Sophos;i="6.03,280,1694761200"; 
-   d="scan'208";a="828122027"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2023 23:06:14 -0800
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with ESMTP id 7DCEC11F724;
-	Mon,  6 Nov 2023 09:06:11 +0200 (EET)
-Date: Mon, 6 Nov 2023 07:06:11 +0000
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: linux-acpi@vger.kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-media@vger.kernel.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v3 1/1] device property: Add fwnode_name_eq()
-Message-ID: <ZUiQY9s0DKmkbzAR@kekkonen.localdomain>
-References: <20231102081611.1179964-1-sakari.ailus@linux.intel.com>
- <CAJZ5v0h5q__nbfxLUN-cZDSvjTCJHSZwoDEz_cq+bUJGSn1u-A@mail.gmail.com>
+	Mon, 06 Nov 2023 07:33:29 +0000
+X-UUID: c357f30e7c7611ee9b7791016c24628a-20231106
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=sEgSEnQbFXgxG6NeOQ04GanNJBjCDl7IpccGy+iMAlw=;
+	b=EOX72Ly7Z8SX0UigHCb7fNhBKhV991/F04LFzu+WxDMaliyXkPZ9E82Hr36s8Ic+beQafVoie21qqIxWbsLP3vZFnI6zh8oAwy88JSJ5XXpxqsBZvRm6eL4KMvz+t/wnMQQ7L1OaBfFRZg1UMdAbnq/oWL+RAYSW8L5fkwAWWS4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:d2d30295-c21a-4c00-974b-6b7dcf942f14,IP:0,U
+	RL:0,TC:0,Content:28,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:28
+X-CID-META: VersionHash:364b77b,CLOUDID:1f7d5172-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: c357f30e7c7611ee9b7791016c24628a-20231106
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <michael-cy.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1838736531; Mon, 06 Nov 2023 00:33:22 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 6 Nov 2023 15:33:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 6 Nov 2023 15:33:16 +0800
+From: Michael-CY Lee <michael-cy.lee@mediatek.com>
+To: linux-wireless <linux-wireless@vger.kernel.org>
+CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael-CY Lee
+	<michael-cy.lee@mediatek.com>
+Subject: [PATCH 1/2] wifi: mac80211: Add utilities for converting op_class
+Date: Mon, 6 Nov 2023 15:33:00 +0800
+Message-ID: <20231106073301.7351-1-michael-cy.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAJZ5v0h5q__nbfxLUN-cZDSvjTCJHSZwoDEz_cq+bUJGSn1u-A@mail.gmail.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.734600-8.000000
+X-TMASE-MatchedRID: eRTSjinPTx/LmQtq4MlK+Y3NgkEqAN0Rdp9Xbh4iYgemg3jaUxa3Xm7H
+	Y6NYk3sysRIB98XGTDmkeU7arquyzm94Ipa1otxo0Xw0ILvo/uUK3n1SHen81Wd6vNuG6Cqyd08
+	/L3uZvStYCJ44nEJdXtzwcvqyVpsQ98hoZRVgb5UxKOWR6zQpr7yfV74eQpk+myiLZetSf8mfop
+	0ytGwvXiq2rl3dzGQ1GpeevGsoI5dBAEXSY1UI/iMsdLUlYLDS+iTL84G/4otWuHo0DYuXYodN4
+	vE6BmvAX6lC/7CWuLjRL+K7ck5di/l6T6YtYwawQkjxHSeqDeEXRoPmWO3jekxwdkPqCq7vDEyN
+	+J8hd+jCS9WgDXVPCn7cGd19dSFd
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.734600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 4F19A249D6128A7C53E8164A4BC0866B8BEDCC4B55ADC3827A215E8E8EA2E2372000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231105_230625_117199_2063AEC9 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20231105_233328_094401_C44406E0 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,41 +97,191 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rafael,
+These utilities include converting op_class to nl80211 channel width and
+center frequency.
 
-On Fri, Nov 03, 2023 at 03:48:23PM +0100, Rafael J. Wysocki wrote:
-> On Thu, Nov 2, 2023 at 9:22 AM Sakari Ailus
-> <sakari.ailus@linux.intel.com> wrote:
-> >
-> > Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
-> > on fwnode property API. The same convention of ending the comparison at
-> > '@' (besides NUL) is applied on also both ACPI and swnode. The function
-> > is intended for comparing unit address-less node names on DT and firmware
-> > or swnodes compliant with DT bindings.
-> >
-> > Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> > Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Tested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> > Hi Rafael,
-> >
-> > Could we merge this via the media tree (pending further review comments,
-> > if any)?
-> 
-> This would be fine with me, so please feel free to add
-> 
-> Acked-by: Rafael J. Wysocki <rafael@kernel.org>
+Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+Signed-off-by: Money Wang <money.wang@mediatek.com>
+---
+ include/net/cfg80211.h |  25 ++++++++
+ net/wireless/util.c    | 127 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 152 insertions(+)
 
-Thanks!
-
-> 
-> to this patch (when ready), but you need to ask Greg about it, because
-> he's been handling device properties changes lately.
-
-I must have missed this somehow... I'll resend v4.
-
+diff --git a/include/net/cfg80211.h b/include/net/cfg80211.h
+index b137a33a1b68..a226d1cae7f7 100644
+--- a/include/net/cfg80211.h
++++ b/include/net/cfg80211.h
+@@ -8669,6 +8669,31 @@ void cfg80211_ch_switch_started_notify(struct net_device *dev,
+ bool ieee80211_operating_class_to_band(u8 operating_class,
+ 				       enum nl80211_band *band);
+ 
++/**
++ * ieee80211_operating_class_to_center_freq - convert operating class to
++ * center frequency
++ *
++ * @operating_class: the operating class to convert
++ * @chan: the ieee80211_channel to convert
++ * @center_freq1: cneter frequency 1 pointer to fill
++ * @center_freq2: cneter frequency 2 pointer to fill
++ *
++ * Returns %true if the conversion was successful, %false otherwise.
++ */
++bool ieee80211_operating_class_to_center_freq(u8 operating_class,
++					      struct ieee80211_channel *chan,
++					      u32 *center_freq1,
++					      u32 *center_freq2);
++
++/**
++ * ieee80211_operating_class_to_chan_width - convert operating class to
++ * nl80211 channel width
++ *
++ * @operating_class: the operating class to convert
++ */
++enum nl80211_chan_width
++ieee80211_operating_class_to_chan_width(u8 operating_class);
++
+ /**
+  * ieee80211_chandef_to_operating_class - convert chandef to operation class
+  *
+diff --git a/net/wireless/util.c b/net/wireless/util.c
+index 626b858b4b35..08a62dd5a855 100644
+--- a/net/wireless/util.c
++++ b/net/wireless/util.c
+@@ -2017,6 +2017,133 @@ bool ieee80211_operating_class_to_band(u8 operating_class,
+ }
+ EXPORT_SYMBOL(ieee80211_operating_class_to_band);
+ 
++bool ieee80211_operating_class_to_center_freq(u8 operating_class,
++					      struct ieee80211_channel *chan,
++					      u32 *center_freq1,
++					      u32 *center_freq2)
++{
++	u32 control_freq, offset;
++	enum nl80211_band band;
++
++	control_freq = chan->center_freq;
++	if (!ieee80211_operating_class_to_band(operating_class, &band))
++		return false;
++
++	if (band != chan->band)
++		return false;
++
++	if (control_freq >= 5955)
++		offset = control_freq - 5955;
++	else if (control_freq >= 5745)
++		offset = control_freq - 5745;
++	else if (control_freq >= 5180)
++		offset = control_freq - 5180;
++	offset /= 20;
++
++	*center_freq2 = 0;
++	switch (operating_class) {
++	case 81:  /* 2 GHz band; 20 MHz; channels 1..13 */
++	case 82:  /* 2 GHz band; 20 MHz; channel 14 */
++	case 115: /* 5 GHz band; 20 MHz; channels 36,40,44,48 */
++	case 118: /* 5 GHz band; 20 MHz; channels 52,56,60,64 */
++	case 121: /* 5 GHz band; 20 MHz; channels 100..144 */
++	case 124: /* 5 GHz band; 20 MHz; channels 149,153,157,161 */
++	case 125: /* 5 GHz band; 20 MHz; channels 149..177 */
++	case 131: /* 6 GHz band; 20 MHz; channels 1..233*/
++	case 136: /* 6 GHz band; 20 MHz; channel 2 */
++		*center_freq1 = control_freq;
++		return true;
++	case 83:  /* 2 GHz band; 40 MHz; channels 1..9 */
++	case 116: /* 5 GHz band; 40 MHz; channels 36,44 */
++	case 119: /* 5 GHz band; 40 MHz; channels 52,60 */
++	case 122: /* 5 GHz band; 40 MHz; channels 100,108,116,124,132,140 */
++	case 126: /* 5 GHz band; 40 MHz; channels 149,157,165,173 */
++		*center_freq1 = control_freq + 10;
++		return true;
++	case 84:  /* 2 GHz band; 40 MHz; channels 5..13 */
++	case 117: /* 5 GHz band; 40 MHz; channels 40,48 */
++	case 120: /* 5 GHz band; 40 MHz; channels 56,64 */
++	case 123: /* 5 GHz band; 40 MHz; channels 104,112,120,128,136,144 */
++	case 127: /* 5 GHz band; 40 MHz; channels 153,161,169,177 */
++		*center_freq1 = control_freq - 10;
++		return true;
++	case 132: /* 6 GHz band; 40 MHz; channels 1,5,..,229*/
++		*center_freq1 = control_freq + 10 - (offset & 1) * 20;
++		return true;
++	case 128: /* 5 GHz band; 80 MHz; channels 36..64,100..144,149..177 */
++		*center_freq1 = control_freq + 30 - (offset & 3) * 20;
++		return true;
++	case 130: /* 5 GHz band; 80+80 MHz; channels 36..64,100..144,149..177 */
++		/* TODO How to know the center_freq2 of 80+80 MHz?*/
++		*center_freq1 = 0;
++		return false;
++	case 133: /* 6 GHz band; 80 MHz; channels 1,5,..,229 */
++		*center_freq1 = control_freq + 30 - (offset & 3) * 20;
++		return true;
++	case 129: /* 5 GHz band; 160 MHz; channels 36..64,100..144,149..177 */
++		*center_freq1 = control_freq + 70 - (offset & 7) * 20;
++		return true;
++	case 134: /* 6 GHz band; 160 MHz; channels 1,5,..,229 */
++		*center_freq1 = control_freq + 70 - (offset & 7) * 20;
++		return true;
++	case 135: /* 6 GHz band; 80+80 MHz; channels 1,5,..,229 */
++		/* TODO How to know the center_freq2 of 80+80 MHz?*/
++		*center_freq1 = 0;
++		return false;
++	case 137: /* 6 GHz band; 320 MHz; channels 1,5,..,229 */
++		/* TODO it's 320 MHz-1 or 320 MHz-2 channelization? */
++		*center_freq1 = 0;
++		return false;
++	default:
++		return false;
++	}
++}
++EXPORT_SYMBOL(ieee80211_operating_class_to_center_freq);
++
++enum nl80211_chan_width
++ieee80211_operating_class_to_chan_width(u8 operating_class)
++{
++	switch (operating_class) {
++	case 81:  /* 2 GHz band; 20 MHz; channels 1..13 */
++	case 82:  /* 2 GHz band; 20 MHz; channel 14 */
++	case 115: /* 5 GHz band; 20 MHz; channels 36,40,44,48 */
++	case 118: /* 5 GHz band; 20 MHz; channels 52,56,60,64 */
++	case 121: /* 5 GHz band; 20 MHz; channels 100..144 */
++	case 124: /* 5 GHz band; 20 MHz; channels 149,153,157,161 */
++	case 125: /* 5 GHz band; 20 MHz; channels 149..177 */
++	case 131: /* 6 GHz band; 20 MHz; channels 1..233*/
++	case 136: /* 6 GHz band; 20 MHz; channel 2 */
++		return NL80211_CHAN_WIDTH_20;
++	case 83:  /* 2 GHz band; 40 MHz; channels 1..9 */
++	case 84:  /* 2 GHz band; 40 MHz; channels 5..13 */
++	case 116: /* 5 GHz band; 40 MHz; channels 36,44 */
++	case 117: /* 5 GHz band; 40 MHz; channels 40,48 */
++	case 119: /* 5 GHz band; 40 MHz; channels 52,60 */
++	case 120: /* 5 GHz band; 40 MHz; channels 56,64 */
++	case 122: /* 5 GHz band; 40 MHz; channels 100,108,116,124,132,140 */
++	case 123: /* 5 GHz band; 40 MHz; channels 104,112,120,128,136,144 */
++	case 126: /* 5 GHz band; 40 MHz; channels 149,157,165,173 */
++	case 127: /* 5 GHz band; 40 MHz; channels 153,161,169,177 */
++	case 132: /* 6 GHz band; 40 MHz; channels 1,5,..,229*/
++		return NL80211_CHAN_WIDTH_40;
++	case 128: /* 5 GHz band; 80 MHz; channels 36..64,100..144,149..177 */
++	case 133: /* 6 GHz band; 80 MHz; channels 1,5,..,229 */
++		return NL80211_CHAN_WIDTH_80;
++	case 130: /* 5 GHz band; 80+80 MHz; channels 36..64,100..144,149..177 */
++	case 135: /* 6 GHz band; 80+80 MHz; channels 1,5,..,229 */
++		return NL80211_CHAN_WIDTH_80P80;
++	case 129: /* 5 GHz band; 160 MHz; channels 36..64,100..144,149..177 */
++	case 134: /* 6 GHz band; 160 MHz; channels 1,5,..,229 */
++		return NL80211_CHAN_WIDTH_160;
++	case 137: /* 6 GHz band; 320 MHz; channels 1,5,..,229 */
++		return NL80211_CHAN_WIDTH_320;
++	default:
++		WARN_ON(1);
++		return NL80211_CHAN_WIDTH_20_NOHT;
++	}
++}
++EXPORT_SYMBOL(ieee80211_operating_class_to_chan_width);
++
+ bool ieee80211_chandef_to_operating_class(struct cfg80211_chan_def *chandef,
+ 					  u8 *op_class)
+ {
 -- 
-Regards,
+2.25.1
 
-Sakari Ailus
 
