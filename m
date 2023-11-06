@@ -4,77 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5654FC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 08:58:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A612C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 11:29:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BhaNPZ5ALKGhgIwmnk7EA8sPdVUBa/gDuKElje8KGZk=; b=KOY8RIXV3zNK40R8CayduzbXAi
-	tbmDgT7lzxxGCw8UAqBnlbnY2HQ/tVoW0YZngWnPqivXm8ZKaaEyu2uX679uMlKabYak5/F/+VFS8
-	0QWt5lk2GReqkKVUlKp2b3NZTDEeCBflWofAtsZ+RuIS55v3fQiR1IWB/1wahPUITZBJNokFClwNI
-	agmdz24oksLD7mFRGwZTRYeBZatKT4eLJBcxvm8zqyc9art1Nwlwxhwcnf+3VM39VN3tFYgo+6CRV
-	1CYqJVyeeK3iFS7V0j5ahXpeOZ6QtH1LI5BEEtSSWp8DNd0gyaLOCQudElHSx+oUWmOzJdKdGYBUW
-	OXbBb+hQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KoxMQSqOv7vvDAYBkEMCWq6frWY+pFf3hORuM+NLbTg=; b=4/n1KKnHqWFVDELWyD4eodWGUz
+	2N+PxGXQoLGiTApGIK2be3kTTH8amaLZ1+Ya+vmXejtVx5DMWbjsbFtFQSpsFDwHf0MS2ssFVlgTZ
+	RmiU/z4+FaDwXfzqOYDRZ5a9subHF46IhMkJIhf55zE6GucPRoP5EtJNrxYn/kM4YaWdDFYAY82hR
+	LHlu40+YNYhN2hk3xAqpoBry/eeWz0/9Ayj1dwC7JQdvfK6jj0167emu4ovGfFxCfln/E//v+HxDh
+	Od1Vmy+Tm9BHFOW5JZ62Bd2KNYJZ8qRwQVGKrVJSPw20w5hjrLp1xGFKvPwYcj0ZXohbkmNJ9BKTE
+	D1jkakdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzvRD-00G7Y9-0e;
-	Mon, 06 Nov 2023 08:58:27 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1qzxnR-00GOEh-1l;
+	Mon, 06 Nov 2023 11:29:33 +0000
+Received: from mgamail.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzvRA-00G7XE-3A
+	id 1qzxnP-00GOEI-0e
 	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Nov 2023 08:58:26 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-507962561adso5488353e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Nov 2023 00:58:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699261101; x=1699865901; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BhaNPZ5ALKGhgIwmnk7EA8sPdVUBa/gDuKElje8KGZk=;
-        b=llgBs7AQSS/0RWEJFpZRiiYXvRKXbbUNyJcRAHeEEYaLAN6zpqF8w//ydSThbMTH11
-         ty9Y2IgCdHFItih5NC1YjObp6G7+hJesVfqJb0Nqh93yAbJYFp3lBUaWJ/ETGBQL+Sjs
-         JS+qNIuidQz19AFvYvgq98q3FsLt+UACjhKfI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699261101; x=1699865901;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BhaNPZ5ALKGhgIwmnk7EA8sPdVUBa/gDuKElje8KGZk=;
-        b=Kt7dFtNzqkL4YxNm+yumZz7W2mi7oPq4sioYfqo2T3Im9AQb3TU9bC6wxp+ZA5+zsF
-         d25U5kuHMaQr1HPRJyejAbhdH+bCzh68ni0Zh6uMFHqsjDmgF5peSbFEOCg5IuvIcU6Q
-         JxH0ER6klzLTVGzm7JncSEezniRni+MuYwqqQJMQM5kY583vWll18XTWRPNlENoENAYV
-         De1ZJHoevJwncH+ki4Tc5u1J2vQQmOhL/WxH6FTrbATh4udhxcmDu5yWZlw7BmqOcQtN
-         7tk11jGcLg5o7CXdJv1uQT/UTbjzqE/o0mdgkjWRo9tOfaPyb54Yl8b3NvEFBZf3O53v
-         mJFg==
-X-Gm-Message-State: AOJu0Yyag3sgo8pdY1YMZGlMJPmW+qUcmK0+Uc0G23f0p+xt+LAhH1Xe
-	Fs58+/lpA+fN1UrD1fxCTWKEZTrst+6L+RbbyUe1JQ==
-X-Google-Smtp-Source: AGHT+IFkEVvTTQVRt+p9CHlozj8K2Y8M2HQgxYsSM7s84s2T7tu9AUMdVItvQURRV6ZxtQMxORH9/2hymWtojECviag=
-X-Received: by 2002:a05:6512:3245:b0:509:49fc:c25c with SMTP id
- c5-20020a056512324500b0050949fcc25cmr8787028lfr.28.1699261101126; Mon, 06 Nov
- 2023 00:58:21 -0800 (PST)
+	Mon, 06 Nov 2023 11:29:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1699270171; x=1730806171;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=dVbgGjQlfi/ag2GwhO/7mrluIesj2NDfOw+Ao81CCzM=;
+  b=NIs4fRk4JAi4oiKyUTv1qLzcz2oWgDksuC6ymjrldPCoW2eyGkRUt69M
+   ZqXenNI40f7PkdfZ71yoLs6yRQAAFxOKzs6Bh0lvZn1yK8AIZNJrvCGdC
+   THKfu70zvrv2+N8x5+MrdUixGIShzJvipSa9V22OAzK0uWXo1HN6rT4Rw
+   Z03P0HC7M1CVPGofF9AGxNR4klXxbA95PkHIBLeRCk+uccbyO3LEzGHtw
+   1KRjd4NulS7U969cWGyxEaFdQJBu/sr0/OLZEAgCiJXHFTBEBp8EyuwuN
+   +gUgkMfpm5tyQCmR3Ol5x9NU05VUADZT2hbXLzdo4LMc9LUd2SkbG8gX9
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10885"; a="386431926"
+X-IronPort-AV: E=Sophos;i="6.03,281,1694761200"; 
+   d="scan'208";a="386431926"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Nov 2023 03:29:30 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10885"; a="762294686"
+X-IronPort-AV: E=Sophos;i="6.03,281,1694761200"; 
+   d="scan'208";a="762294686"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Nov 2023 03:29:26 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.97-RC3)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1qzxnH-0000000BmAW-0nCG;
+	Mon, 06 Nov 2023 13:29:23 +0200
+Date: Mon, 6 Nov 2023 13:29:22 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-acpi@vger.kernel.org, rafael@kernel.org,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-media@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 1/1] device property: Add fwnode_name_eq()
+Message-ID: <ZUjOEsQSjom4SdOg@smile.fi.intel.com>
+References: <20231103070631.1223643-1-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
-References: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com> <20231103102533.69280-4-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231103102533.69280-4-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 6 Nov 2023 16:58:09 +0800
-Message-ID: <CAGXv+5Hjj1=5Tii1-Pt01oVdPE2qCc8E0DVjzm7UeA_m5cMW=A@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] clk: mediatek: mt8188-topckgen: Refactor parents
- for top_dp/edp muxes
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com, 
-	msp@baylibre.com, amergnat@baylibre.com, yangyingliang@huawei.com, 
-	u.kleine-koenig@pengutronix.de, linux-clk@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231103070631.1223643-1-sakari.ailus@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_005825_058091_A9C3CDDF 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20231106_032931_252417_7FA20094 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +95,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 3, 2023 at 6:25=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> The top_dp and top_edp muxes can be both parented to either TVDPLL1
-> or TVDPLL2, two identically specced PLLs for the specific purpose of
-> giving out pixel clock: this becomes a problem when the MediaTek
-> DisplayPort Interface (DPI) driver tries to set the pixel clock rate.
->
-> In the usecase of two simultaneous outputs (using two controllers),
-> it was seen that one of the displays would sometimes display garbled
-> output (if any at all) and this was because:
->  - top_edp was set to TVDPLL1, outputting X GHz
->  - top_dp was set to TVDPLL2, outputting Y GHz
->    - mtk_dpi calls clk_set_rate(top_edp, Z GHz)
->  - top_dp is switched to TVDPLL1
->  - TVDPLL1 changes its rate, top_edp outputs the wrong rate.
->  - eDP display is garbled
->
-> To solve this issue, remove all TVDPLL1 parents from `top_dp` and
-> all TVDPLL2 parents from `top_edp`, plus, necessarily switch both
-> clocks to use the new MUX_GATE_CLR_SET_UPD_INDEXED() macro to be
-> able to use the right bit index for the new parents list.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+On Fri, Nov 03, 2023 at 09:06:31AM +0200, Sakari Ailus wrote:
+> Add fwnode_name_eq() to implement the functionality of of_node_name_eq()
+> on fwnode property API. The same convention of ending the comparison at
+> '@' (besides NUL) is applied on also both ACPI and swnode. The function
+> is intended for comparing unit address-less node names on DT and firmware
+> or swnodes compliant with DT bindings.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+I believe I gave already the tag...
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
