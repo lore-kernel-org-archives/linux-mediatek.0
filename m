@@ -4,76 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A87A2C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 18:05:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2823DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Nov 2023 22:39:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Hd8uhGvTzF9AgKLCd+Lbl7J9eRzvxUH/L+jeg+epcU=; b=b82KNQDoG870IHtmXIN2rwpgnu
-	3/TP5cJ845QFTWo2UvOYS7tX2+i0CL1wan+72M6TZRhgGxcHYOJ98oxTb5++nIWjHyfd+ICMw0mlc
-	FBv4LQpHDUMYTOsSvQkT3n7z/bpWT2hInyEX+bIAyVVmij+SagRBnSY8fnw+kQw2fJSYbr9A1AjWj
-	pDXQcFd4O6uKsvP8uppbxZrzPWquEraeXw2WFzXDwfG5HAvNtkhvnCP2ShR548dUrdwQBgzbexwD3
-	eoXCoXmYRMqkXMEL1C1MWNQSMP7rJHTMeBLfHFMKIq8U+n7GgI4dZgULPFTMlTz+vLJnJW2qOSgki
-	9JzWwQUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jnSDzk8wrqhQGpd94G/JRsvh5jl3zlwkyNlzJaFcsvc=; b=0o9il+UNafa+tX18qK4LObpMnR
+	gN5s+Eijpfk15Apo5HQ+XXwEZ3vkoJ4cc4MHqXznn3/YdoqUCPIYKEIjGqYsCF6pidwZQn6vaC/3D
+	Rjt887xnbv5efXfy/nV1IzdS4cB0ZVY0DDYhjWw5wwkeP6icTKeC1IPK6pSD/brwSNOwWNW+bKdCD
+	TstrPqdSiANGV0Uj8jdgWfyQSVeTDGF8fcJmA4zKOmNnZtL1zoCK5To8qwt0Tv6N6b5Xy+mEvloPq
+	Q9OwGD2wbHv+MnSc6ITdCexf57FPbQ1hIgirwav8/eobrDaQ6cQXXkCKmKJw7wC4fITeJai6iEEfA
+	S/j/+YGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r03y8-00HHx6-0C;
-	Mon, 06 Nov 2023 18:05:00 +0000
-Received: from mail-pf1-f179.google.com ([209.85.210.179])
+	id 1r08Fh-0004Tu-1Z;
+	Mon, 06 Nov 2023 22:39:25 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r03y5-00HHwH-1C
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Nov 2023 18:04:58 +0000
-Received: by mail-pf1-f179.google.com with SMTP id d2e1a72fcca58-6c3363a2b93so4265176b3a.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Nov 2023 10:04:51 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699293891; x=1699898691;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6Hd8uhGvTzF9AgKLCd+Lbl7J9eRzvxUH/L+jeg+epcU=;
-        b=kS8s0lmCJoRTBX35JzRX3EpZDTUCH+N1UxdLeJD/C8ibKoBgx8Fp8HrVQf5Atw1eFV
-         Bd/8AKdIO+gtSC2/e5I1ELdXOTOeyUMpLh+MZc8gfl8AIbnw4Qw96ao8zNtoK6rylpxg
-         iOQy9/i6swx5xLjTAzGiidDnucKKjgV3YlnSkqnmSsMvaumMizzfuozzDwoz09tz1q2G
-         68OztVa9A4yUerUiNOg7+F79VfK4Gtuwh5RQWfADVCRPzXPAh5WcPqwhFjltiz1ia+29
-         Ez9SCzTHegn6nZofFScf28ByGwMIwnbDdJoyv9C8oa2sQ2kY7pXi8Btz6HwyTwwBpU3O
-         yAbA==
-X-Gm-Message-State: AOJu0Yz3jGhb31VyfQQisd5+bieCRhhy7Io0yzZVUSOKUY2pBG6p+Zo/
-	KjANUaOajU1JvrG5mGE4WlU=
-X-Google-Smtp-Source: AGHT+IG67a2JGponoHPmNCrlxe2OH3T4lJvGgK8UtvTUsThCl+UbtrEA9Chm1YEYKJhc0HFBHSl80A==
-X-Received: by 2002:a05:6a20:8427:b0:16c:b95c:6d35 with SMTP id c39-20020a056a20842700b0016cb95c6d35mr39820960pzd.50.1699293890807;
-        Mon, 06 Nov 2023 10:04:50 -0800 (PST)
-Received: from ?IPV6:2620:0:1000:8411:ac50:9303:758b:edb9? ([2620:0:1000:8411:ac50:9303:758b:edb9])
-        by smtp.gmail.com with ESMTPSA id z19-20020a63e113000000b005b7e3eddb87sm74212pgh.61.2023.11.06.10.04.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 Nov 2023 10:04:47 -0800 (PST)
-Message-ID: <c5f9e06f-a098-49d0-9255-7cfc4dd3db10@acm.org>
-Date: Mon, 6 Nov 2023 10:04:45 -0800
+	id 1r08Fe-0004S9-1w;
+	Mon, 06 Nov 2023 22:39:23 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1r08FI-0004vV-2h;
+	Mon, 06 Nov 2023 22:39:00 +0000
+Date: Mon, 6 Nov 2023 22:38:53 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	Howard Hsu <howard-yh.hsu@mediatek.com>,
+	Rany Hany <rany_hany@riseup.net>, Simon Horman <horms@kernel.org>,
+	Alexander Couzens <lynxis@fe80.eu>, linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 1/2] wifi: mt76: mt7915: fix EEPROM offset of TSSI flag on
+ MT7981
+Message-ID: <58c999ad9fd073183bec5532fe62782b7d4be0d5.1699310162.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ufs: core: fix racing issue between ufshcd_mcq_abort
- and ISR
-Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, stable@vger.kernel.org
-References: <20231106075117.8995-1-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20231106075117.8995-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_100457_426198_DD2A9711 
-X-CRM114-Status: UNSURE (   5.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231106_143922_639637_725F4ADE 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,10 +71,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/5/23 23:51, peter.wang@mediatek.com wrote:
-> If command timeout happen and cq complete irq raise at the same time,
-> ufshcd_mcq_abort null the lprb->cmd and NULL poiner KE in ISR.
-> Below is error log.
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+The offset of the TSSI flag on the EEPROM of MT7981 devices was wrong.
+Set the correct offset instead.
+
+Fixes: 6bad146d162e ("wifi: mt76: mt7915: add support for MT7981")
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+index f3e56817d36e9..adc26a222823b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+@@ -144,7 +144,8 @@ static inline bool
+ mt7915_tssi_enabled(struct mt7915_dev *dev, enum nl80211_band band)
+ {
+ 	u8 *eep = dev->mt76.eeprom.data;
+-	u8 val = eep[MT_EE_WIFI_CONF + 7];
++	u8 offs = is_mt7981(&dev->mt76) ? 8 : 7;
++	u8 val = eep[MT_EE_WIFI_CONF + offs];
+ 
+ 	if (band == NL80211_BAND_2GHZ)
+ 		return val & MT_EE_WIFI_CONF7_TSSI0_2G;
+-- 
+2.42.0
+
 
