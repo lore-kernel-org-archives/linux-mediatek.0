@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D85EC4167D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 16:30:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49AF6C4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 17:43:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ih/04GUpR19XO263tnxpqBao6FFVu5bYKBuaFpE6nbQ=; b=cOZ4qa8BW40ifFhp4Ldsy0wOKc
-	W+04jVMuTN3MH7JDhMbWNT4Ncnxsl7i7G/nscrloCR8rU28aAliaWO3lajOL7om7Jb2NKtz4VJXyB
-	+m5nJSGiTfTNdLRN4UPA5pPxKpkv0CrxTKIT4cdWDd6OC9ZD4KMdBZaQU0CxwiE9hvN52RMuHNbdU
-	CT4wvGeG3pLqjRh19SJ3LDyneEvXgbILEZTSDwasXgrO/bI68+aCnK1KEJXXUD2gdnUsZWk969i+b
-	2rP4BbSmPT10gxqPhQ8rXO0z1yL2oMDbRl78hZPc2MuUTOvbTKn9LrNNTMHsVAjY9d+WRcvAiX1f4
-	h4EnEAbw==;
+	bh=4A03ygw6xwhkX5Kf2nZd7QKNjkDnXF2q25kBAveJ/Fs=; b=1undHB2PPN6QVLHNwT8Q1zkydO
+	5xZzof3AKSMdfSM2b0WVQ1U7Xzph27auZpcQZD3RlULL3hZXScndJr6abgKgws5Vw3Mk7jnCGgPNO
+	gM6d3vJMploCyBhNnXTyWWQUA3q6biFCNS2DQ529E1FACR0cQzBj/Aa0rarAMc5Ege8c4qzyDAI+Z
+	guJP0J0d+R167I+VtFtd1QmKsKHQf9+KIeRX26Wi7f8kxqsyFKG2JJ9Zjtw8c3Js6UL2tUUKIsrSS
+	5DEYZJG9rk6Khl63+apbtX+eLMp2A7nZzgqoR2mLx5U1YdPM7yVn6YGGIkPUwrZedTL2s9kOUWEjM
+	clKDSLaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0Oxr-0020T7-1E;
-	Tue, 07 Nov 2023 16:30:07 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r0Q6V-0026a3-0o;
+	Tue, 07 Nov 2023 17:43:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0Oxo-0020SQ-1h;
-	Tue, 07 Nov 2023 16:30:06 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 21AE3660746E;
-	Tue,  7 Nov 2023 16:30:01 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699374602;
-	bh=RHKkcTh5W8SNMFNToY6SNfNKENo7Fq1KXtu4W+ceTuE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LAf+hzM9mXiDoJToArNMavA1JgIt6kye5VZXmT3OvHSGeBG67O9MR+7rGDoCaCH6j
-	 gMWqoNuNwDQhrO4Eo6xgrLtlnXT4efBtHTpDZRcSuWmSigRZciginRoOJCKGz6ZicK
-	 SM8xl3EvAqBURHXnIbDVPDcF17bJZ6qIsOf6AdcyXlk3POaB2GunoYjxojA5wZgBtf
-	 PyCby+CaYh1i9gpXCQWpIyLqH1KXwIVPvqkNhjzrR4D4eAVMa96dFKDlItLVt2YvQu
-	 aPQ5AHQLrlgVWoIgXfezQ2BtN5gn7IryiF2Yv4g9XWTqU8eVa8pBWSUT6jX6r+n1g6
-	 09h8PECT66eUw==
-Message-ID: <9b2e37a0-32ee-4aa4-99e8-d37103674847@collabora.com>
-Date: Tue, 7 Nov 2023 17:29:58 +0100
+	id 1r0Q6R-0026Yb-1x;
+	Tue, 07 Nov 2023 17:43:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0846B612DA;
+	Tue,  7 Nov 2023 17:43:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E65AC433C7;
+	Tue,  7 Nov 2023 17:43:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1699378981;
+	bh=AA29qJmLk5KV97FY2zltETr0dL2/GW30s2k0IJRqsJ8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=KjYMFS4RKf6uYko4T43yEVuaUcBj+EzN33jxepRw/8L/c7DQRQ/FXw9E/FMRQuF59
+	 JzQGYvu/AFH60XsGCXIAtsKh08uZy9xA4k/D9KG5SE6hx1HspbgSSm6iF5vLMkCmts
+	 jj0w1YDg4AsdODnUp7GJWHTD4Ne0jghsSw8IvuUZRhXd+sKewXvLkhXtzu0yy+OYk6
+	 viUqbRK45BkAmYTYtR+bTTfm3kuFqY3brlSCXse9jrJnBQkzt7vY3rnC4gyyS1E9ln
+	 VEEIXSoLDoj25YqrDxZw6lLGly0uwImWCuynKe7vXrna67RtKHG0VOBdBaei+5oaMW
+	 mnPf+GsASX3yA==
+Received: from disco-boy.misterjones.org ([217.182.43.188] helo=www.loen.fr)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1r0Q6N-00BD8q-4T;
+	Tue, 07 Nov 2023 17:42:59 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+Date: Tue, 07 Nov 2023 17:42:58 +0000
+From: Marc Zyngier <maz@kernel.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Mark Rutland <mark.rutland@arm.com>, Catalin Marinas
+ <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Chen-Yu Tsai
+ <wenst@chromium.org>, Amit Daniel Kachhap <amit.kachhap@arm.com>, James
+ Morse <james.morse@arm.com>, Joey Gouly <joey.gouly@arm.com>, Mark Brown
+ <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas
+ Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v2 1/2] arm64: Move Mediatek GIC quirk handling from
  irqchip to core
-To: Douglas Anderson <dianders@chromium.org>, Marc Zyngier <maz@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Amit Daniel Kachhap <amit.kachhap@arm.com>,
- James Morse <james.morse@arm.com>, Joey Gouly <joey.gouly@arm.com>,
- Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <CAD=FV=Xv7XKvePTZ6LKT97EViG81d8hqk+T68B5eXamKTU407A@mail.gmail.com>
 References: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <9b2e37a0-32ee-4aa4-99e8-d37103674847@collabora.com>
+ <CAD=FV=Xv7XKvePTZ6LKT97EViG81d8hqk+T68B5eXamKTU407A@mail.gmail.com>
+User-Agent: Roundcube Webmail/1.4.15
+Message-ID: <e2e7762bfd16f67bdc253dc23a967c46@kernel.org>
+X-Sender: maz@kernel.org
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 217.182.43.188
+X-SA-Exim-Rcpt-To: dianders@chromium.org, angelogioacchino.delregno@collabora.com, mark.rutland@arm.com, catalin.marinas@arm.com, will@kernel.org, wenst@chromium.org, amit.kachhap@arm.com, james.morse@arm.com, joey.gouly@arm.com, broonie@kernel.org, matthias.bgg@gmail.com, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_083004_729177_A795E956 
-X-CRM114-Status: GOOD (  28.82  )
+X-CRM114-CacheID: sfid-20231107_094303_745120_C1166B2D 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,87 +92,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/11/23 16:26, Douglas Anderson ha scritto:
-> In commit 44bd78dd2b88 ("irqchip/gic-v3: Disable pseudo NMIs on
-> Mediatek devices w/ firmware issues") we added a method for detecting
-> Mediatek devices with broken firmware and disabled pseudo-NMI. While
-> that worked, it didn't address the problem at a deep enough level.
+On 2023-11-07 17:37, Doug Anderson wrote:
+> Hi,
 > 
-> The fundamental issue with this broken firmware is that it's not
-> saving and restoring several important GICR registers. The current
-> list is believed to be:
-> * GICR_NUM_IPRIORITYR
-> * GICR_CTLR
-> * GICR_ISPENDR0
-> * GICR_ISACTIVER0
-> * GICR_NSACR
+> On Tue, Nov 7, 2023 at 8:30 AM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>> 
+>> > +static __init void detect_system_supports_pseudo_nmi(void)
+>> > +{
+>> > +     struct device_node *np;
+>> > +
+>> > +     if (!enable_pseudo_nmi)
+>> > +             return;
+>> > +
+>> > +     /*
+>> > +      * Detect broken Mediatek firmware that doesn't properly save and
+>> 
+>> s/Mediatek/MediaTek/g
+>> 
+>> Apart from that,
+>> 
+>> Reviewed-by: AngeloGioacchino Del Regno 
+>> <angelogioacchino.delregno@collabora.com>
+>> 
+>> On MT8195, MT8192, MT8186:
+>> Tested-by: AngeloGioacchino Del Regno 
+>> <angelogioacchino.delregno@collabora.com>
 > 
-> Pseudo-NMI didn't work because it was the only thing (currently) in
-> the kernel that relied on the broken registers, so forcing pseudo-NMI
-> off was an effective fix. However, it could be observed that calling
-> system_uses_irq_prio_masking() on these systems still returned
-> "true". That caused confusion and led to the need for
-> commit a07a59415217 ("arm64: smp: avoid NMI IPIs with broken MediaTek
-> FW"). It's worried that the incorrect value returned by
-> system_uses_irq_prio_masking() on these systems will continue to
-> confuse future developers.
-> 
-> Let's fix the issue a little more completely by disabling IRQ
-> priorities at a deeper level in the kernel. Once we do this we can
-> revert some of the other bits of code dealing with this quirk.
-> 
-> This includes a partial revert of commit 44bd78dd2b88
-> ("irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware
-> issues"). This isn't a full revert because it leaves some of the
-> changes to the "quirks" structure around in case future code needs it.
-> 
-> Suggested-by: Mark Rutland <mark.rutland@arm.com>
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> 
-> Changes in v2:
-> - Just detect the quirk once at init time.
-> - Fixed typo in subject: s/GiC/GIC.
-> - Squash in ("Remove Mediatek pseudo-NMI firmware quirk handling").
-> 
->   arch/arm64/kernel/cpufeature.c | 46 ++++++++++++++++++++++++++++------
->   drivers/irqchip/irq-gic-v3.c   | 22 +---------------
->   2 files changed, 39 insertions(+), 29 deletions(-)
-> 
-> diff --git a/arch/arm64/kernel/cpufeature.c b/arch/arm64/kernel/cpufeature.c
-> index f6b2e2906fc9..928124ea2e96 100644
-> --- a/arch/arm64/kernel/cpufeature.c
-> +++ b/arch/arm64/kernel/cpufeature.c
-> @@ -999,6 +999,37 @@ static void init_32bit_cpu_features(struct cpuinfo_32bit *info)
->   	init_cpu_ftr_reg(SYS_MVFR2_EL1, info->reg_mvfr2);
->   }
->   
-> +#ifdef CONFIG_ARM64_PSEUDO_NMI
-> +static bool enable_pseudo_nmi;
-> +
-> +static int __init early_enable_pseudo_nmi(char *p)
-> +{
-> +	return kstrtobool(p, &enable_pseudo_nmi);
-> +}
-> +early_param("irqchip.gicv3_pseudo_nmi", early_enable_pseudo_nmi);
-> +
-> +static __init void detect_system_supports_pseudo_nmi(void)
-> +{
-> +	struct device_node *np;
-> +
-> +	if (!enable_pseudo_nmi)
-> +		return;
-> +
-> +	/*
-> +	 * Detect broken Mediatek firmware that doesn't properly save and
+> Thanks! Unless someone wants me to spin it more quickly, I'll plan to
+> send a V3 with the Mediatek=>MediaTek change tomorrow.
 
-s/Mediatek/MediaTek/g
+I really don't think that's worth the effort.
 
-Apart from that,
+Catalin can fix this when applying the patch, and even then,
+nobody is going to notice that sort of pretty irrelevant
+detail.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-On MT8195, MT8192, MT8186:
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+         M.
+-- 
+Jazz is not dead. It just smells funny...
 
