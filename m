@@ -4,88 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70004C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 03:16:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C56D4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 03:49:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aXgqzLiXrvIaHuM1rt9FyNKWnryjml/ID0Eul+9i+Wo=; b=1Gzo9cTkfHlykoAn+AqyWqXc4q
-	LiIcS/rDmpuT6OqSIftsG1x2NMbTCrmsrpZ1EDSFl+ZMLeYEreBvbjcM2AoEci1crYeZ1MzUcljHj
-	ldF3LtY2DZyAHc5GLWP0F43LRqfIl5RqogWO0QeTz3YPpSrIT12jM7UrgwNVJ699aSSiihbLepq4L
-	WrQc3NmxR0leUrTn+elluzzBxNaeYSyQaNVWtP8X4it3FIbOJ25VABkxRY2l3qkHmfA3htw3Bh7/c
-	NbCYY8XS7T1N5jCzL5XtPSwUpZbBERxfVWiI37KQfxkMz2bEjR3XqoP1C81DxTxz+V67zbU84pD+C
-	OljyeR7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y9FCMlk2IkrIEzQB8L9xTTGDJXhqSvTWTL0IDXr95cA=; b=tZnY9UviaGZovV40FvqtHt/NLk
+	RSp08naoq+Y/P5CsAODN4qGo2Ur0ceI3exomEbIYFEer11DfSZA0YQWO6ynL2yXkDQy+KJDnFDarp
+	yQIGBqpbjKzXhhgol+gz0BytnYqqQSyj+V/HpiQcmrde9C1hvK9Vt6/rz+9GgCYL5whOCTOMIwP4p
+	xtLDNDI5I350ZqcjBoPRuYhPWjgUQycIaAJsGQ2RLWn+o1NUEZcHcsfUOEjqmIxjCTOlEBjwP+TnL
+	y2cVwS7nz8zVwU8yzWpm31F/OMyZE0tykyjOCFwV7p6I3NEPrb9Rk7vvK9sVSMp2jELEzLwW92UN7
+	YRmHtSag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0CZM-000PId-1W;
-	Tue, 07 Nov 2023 03:16:00 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1r0D5c-000S9W-2q;
+	Tue, 07 Nov 2023 03:49:20 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0CZJ-000PIG-2J
+	id 1r0D5Z-000S8P-37
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Nov 2023 03:15:58 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-6b5cac99cfdso4270711b3a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Nov 2023 19:15:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1699326957; x=1699931757; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aXgqzLiXrvIaHuM1rt9FyNKWnryjml/ID0Eul+9i+Wo=;
-        b=2/92X6ogOjE+YSWKTtl2h513ISysgrWmMM87jsci791DLbZytegTa5DDLU2ltW+4G6
-         VVaQJiX5eQSqH8VSUbWNjdZX8OjwKIQdH8845nN3kSZEgkgZ4DZAgDrB3YIZIj8ntSKO
-         6z0sl59mIIx+EgXohnB1rd3cshj0lQ/9h1bTEI2zsnFd/IdLn4jpKOvrs7HALJ7xUBJ6
-         YwSTtHGDDBJ8wdmBrMd0irLuV0pmBlpUwub5DOQeDCnNvQJOwTjOHt2I0IdXV7S0TpOl
-         u0ihIClNoZJbGAouy6XgjM4Xww9m2wHukbGyGvYzEn6MLOxMoXJn+SM63fc510D6I3r4
-         aVMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699326957; x=1699931757;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aXgqzLiXrvIaHuM1rt9FyNKWnryjml/ID0Eul+9i+Wo=;
-        b=JiI1MBIZNuxSdsGv4v5tyJfXtjZzxAhGW6Mplvkdrb5tM6Kav+Tu3QBD60PvR0JBMo
-         oKl1ONatlBflLIumjV+RdkrBHmVJ/HP4XX+Q9Px67a6A/oAuKqxBNmqfC35/Xvi3Xh6k
-         qO9VMq20YPtSkieo3kNQutniF5I3KI6tbVzGVvtTJv41NHUQ+VOLwi32DBc6/nN6znGu
-         DfOCr77TxqN2bwyaX+MBk6vu0CZwILM0rn70+sT7Q5Ztp4TEHw0H18VqGhuYr2FXde9R
-         fZXPVjPrca6hGj7gr9xB5FoxUt9eEp9IBBm8yhYWzDHLtLmmSue9dFK7VhJVNilRQc9+
-         HU1g==
-X-Gm-Message-State: AOJu0YyJ4l4Y3r9dd+5Vo1V7GCN1Dvj7VtSOebLAQYdvxEOKrXmhBFtW
-	2ly1sKh+YXJJHKDle6F+DYVVJw==
-X-Google-Smtp-Source: AGHT+IEo7nU/DVUDeg9e9x0ikbysieK8MO7gaPBW/inkvx+TVX6zgih1HIifyR3sMMvxN1sEzi6JWg==
-X-Received: by 2002:a05:6a20:a103:b0:16b:b900:2d6d with SMTP id q3-20020a056a20a10300b0016bb9002d6dmr28811185pzk.60.1699326956801;
-        Mon, 06 Nov 2023 19:15:56 -0800 (PST)
-Received: from localhost.localdomain ([101.78.151.194])
-        by smtp.gmail.com with ESMTPSA id jk4-20020a170903330400b001c9bc811d4dsm6552282plb.295.2023.11.06.19.15.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 19:15:56 -0800 (PST)
-From: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-To: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	perex@perex.cz,
-	allen-kh.cheng@mediatek.com,
-	kuninori.morimoto.gx@renesas.com
-Cc: linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Subject: [v1 3/3] ASoC: mediatek: mt8188-mt6359: add two amps support
-Date: Tue,  7 Nov 2023 11:14:42 +0800
-Message-Id: <20231107031442.2768765-4-zhourui@huaqin.corp-partner.google.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231107031442.2768765-1-zhourui@huaqin.corp-partner.google.com>
-References: <20231107031442.2768765-1-zhourui@huaqin.corp-partner.google.com>
+	Tue, 07 Nov 2023 03:49:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1699328956;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Y9FCMlk2IkrIEzQB8L9xTTGDJXhqSvTWTL0IDXr95cA=;
+	b=JwTJyonESdtAFMNOD2kJOIVPqf2Nm1kQFchLZaNmdVyrU06yagz5Tgd3DV0mBLIoQYf1co
+	ylt9Iz5zI34UfOUakWm1VIYCu/TanxMVOb3i0sFr1G3U1EVlPmCYjyma4g/gHUrURS8CzT
+	L3hXgIcogUYJpL0oL6NG4g6iDGi7u/U=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-112-H3pkEELXNwqDhxmZ4mCm1w-1; Mon, 06 Nov 2023 22:48:58 -0500
+X-MC-Unique: H3pkEELXNwqDhxmZ4mCm1w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B7C1F185A781;
+	Tue,  7 Nov 2023 03:48:57 +0000 (UTC)
+Received: from fedora (unknown [10.72.120.4])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 18CD240C6EB9;
+	Tue,  7 Nov 2023 03:48:48 +0000 (UTC)
+Date: Tue, 7 Nov 2023 11:48:44 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Ed Tsai =?utf-8?B?KOiUoeWul+i7kik=?= <Ed.Tsai@mediatek.com>
+Cc: Will Shiu =?utf-8?B?KOioseaBreeRnCk=?= <Will.Shiu@mediatek.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	Peter Wang =?utf-8?B?KOeOi+S/oeWPiyk=?= <peter.wang@mediatek.com>,
+	Alice Chao =?utf-8?B?KOi2meePruWdhyk=?= <Alice.Chao@mediatek.com>,
+	"linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
+	wsd_upstream <wsd_upstream@mediatek.com>,
+	"axboe@kernel.dk" <axboe@kernel.dk>,
+	Casper Li =?utf-8?B?KOadjuS4reamrik=?= <casper.li@mediatek.com>,
+	Chun-Hung Wu =?utf-8?B?KOW3q+mnv+Wujyk=?= <Chun-hung.Wu@mediatek.com>,
+	Powen Kao =?utf-8?B?KOmrmOS8r+aWhyk=?= <Powen.Kao@mediatek.com>,
+	Naomi Chu =?utf-8?B?KOacseipoOeUsCk=?= <Naomi.Chu@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Stanley Chu =?utf-8?B?KOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	ming.lei@redhat.com
+Subject: Re: [PATCH 1/1] block: Check the queue limit before bio submitting
+Message-ID: <ZUmznGeKhJKnE7wx@fedora>
+References: <20231025092255.27930-1-ed.tsai@mediatek.com>
+ <64db8f5406571c2f89b70f852eb411320201abe6.camel@mediatek.com>
+ <ZUUd48QF/TEGFzPy@fedora>
+ <cf09a768d0e116bfaf01a1592a7ae95a10b4c2cf.camel@mediatek.com>
+ <ZUW96Ha5GoJePD8Y@fedora>
+ <2bc847a83849973b7658145f2efdda86cc47e3d5.camel@mediatek.com>
+ <5ecedad658bf28abf9bbeeb70dcac09b4b404cf5.camel@mediatek.com>
+ <ZUhxS9JMyPK+v6Ec@fedora>
+ <ZUjT11xUNM7u/UjV@fedora>
+ <fb568e7a1020ef6d2d22f3f0771034b1dc699fb9.camel@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <fb568e7a1020ef6d2d22f3f0771034b1dc699fb9.camel@mediatek.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_191557_778941_0E9F3D41 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20231106_194918_111776_D3869792 
+X-CRM114-Status: GOOD (  46.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,27 +106,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support codec rt5682 using two amps.
+On Tue, Nov 07, 2023 at 02:53:20AM +0000, Ed Tsai (蔡宗軒) wrote:
+> On Mon, 2023-11-06 at 19:54 +0800, Ming Lei wrote:
+> >  On Mon, Nov 06, 2023 at 12:53:31PM +0800, Ming Lei wrote:
+> > > On Mon, Nov 06, 2023 at 01:40:12AM +0000, Ed Tsai (蔡宗軒) wrote:
+> > > > On Mon, 2023-11-06 at 09:33 +0800, Ed Tsai wrote:
+> > > > > On Sat, 2023-11-04 at 11:43 +0800, Ming Lei wrote:
+> > > 
+> > > ...
+> > > 
+> > > > Sorry for missing out on my dd command. Here it is:
+> > > > dd if=/data/test_file of=/dev/null bs=64m count=1 iflag=direct
+> > > 
+> > > OK, thanks for the sharing.
+> > > 
+> > > I understand the issue now, but not sure if it is one good idea to
+> > check
+> > > queue limit in __bio_iov_iter_get_pages():
+> > > 
+> > > 1) bio->bi_bdev may not be set
+> > > 
+> > > 2) what matters is actually bio's alignment, and bio size still can
+> > > be big enough
+> > > 
+> > > So I cooked one patch, and it should address your issue:
+> > 
+> > The following one fixes several bugs, and is verified to be capable
+> > of
+> > making big & aligned bios, feel free to run your test against this
+> > one:
+> > 
+> >  block/bio.c | 28 +++++++++++++++++++++++++++-
+> >  1 file changed, 27 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/block/bio.c b/block/bio.c
+> > index 816d412c06e9..80b36ce57510 100644
+> > --- a/block/bio.c
+> > +++ b/block/bio.c
+> > @@ -1211,6 +1211,7 @@ static int bio_iov_add_zone_append_page(struct
+> > bio *bio, struct page *page,
+> >  }
+> >  
+> >  #define PAGE_PTRS_PER_BVEC     (sizeof(struct bio_vec) /
+> > sizeof(struct page *))
+> > +#define BIO_CHUNK_SIZE(256U << 10)
+> >  
+> >  /**
+> >   * __bio_iov_iter_get_pages - pin user or kernel pages and add them
+> > to a bio
+> > @@ -1266,6 +1267,31 @@ static int __bio_iov_iter_get_pages(struct bio
+> > *bio, struct iov_iter *iter)
+> >  size -= trim;
+> >  }
+> >  
+> > +/*
+> > + * Try to make bio aligned with 128KB if it isn't the last one, so
+> > + * we can avoid small bio in case of big chunk sequential IO because
+> > + * of bio split and multipage bvec.
+> > + *
+> > + * If nothing is added to this bio, simply allow unaligned since we
+> > + * have chance to add more bytes
+> > + */
+> > +if (iov_iter_count(iter) && bio->bi_iter.bi_size) {
+> > +unsigned int aligned_size = (bio->bi_iter.bi_size + size) &
+> > +~(BIO_CHUNK_SIZE - 1);
+> > +
+> > +if (aligned_size <= bio->bi_iter.bi_size) {
+> > +/* stop to add page if this bio can't keep aligned */
+> > +if (!(bio->bi_iter.bi_size & (BIO_CHUNK_SIZE - 1))) {
+> > +ret = left = size;
+> > +goto revert;
+> > +}
+> > +} else {
+> > +aligned_size -= bio->bi_iter.bi_size;
+> > +iov_iter_revert(iter, size - aligned_size);
+> > +size = aligned_size;
+> > +}
+> > +}
+> > +
+> >  if (unlikely(!size)) {
+> >  ret = -EFAULT;
+> >  goto out;
+> > @@ -1285,7 +1311,7 @@ static int __bio_iov_iter_get_pages(struct bio
+> > *bio, struct iov_iter *iter)
+> >  
+> >  offset = 0;
+> >  }
+> > -
+> > +revert:
+> >  iov_iter_revert(iter, left);
+> >  out:
+> >  while (i < nr_pages)
+> > -- 
+> > 2.41.0
+> > 
+> > 
+> > 
+> > Thanks, 
+> > Ming
+> > 
+> 
+> The latest patch you provided with 256 alignment does help alleviate
+> the severity of fragmentation. However, the actual aligned size may
+> vary depending on the device. Using a fixed and universal size of 128
+> or 256KB only provides partial relief from fragmentation.
+> 
+> I performed a dd direct I/O read of 64MB with your patch, and although
+> most of the bios were aligned, there were still cases of missalignment
+> to the device limit (e.g., 512MB for my device), as shown below:
 
-Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
----
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+512MB is really big, and actually you have reached 3520MB in READ by
+limiting max bio size to 1MB in your original patch.
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index e994faa3556b..917640939621 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -1549,7 +1549,7 @@ static struct mt8188_card_data mt8188_nau8825_card = {
- 
- static struct mt8188_card_data mt8188_rt5682s_card = {
- 	.name = "mt8188_rt5682s",
--	.quirk = RT5682S_HS_PRESENT,
-+	.quirk = RT5682S_HS_PRESENT | MAX98390_TWO_AMP,
- };
- 
- static struct mt8188_card_data mt8188_es8326_card = {
--- 
-2.25.1
+Just be curious what is the data if you change to align with max sectors
+against my last patch? which can try to maximize & align bio.
+
+> 
+> dd [000] ..... 392.976830: block_bio_queue: 254,52 R 2997760 + 3584
+> dd [000] ..... 392.979940: block_bio_queue: 254,52 R 3001344 + 3584
+> dd [000] ..... 392.983235: block_bio_queue: 254,52 R 3004928 + 3584
+> dd [000] ..... 392.986468: block_bio_queue: 254,52 R 3008512 + 3584
+
+Yeah, I thought that 128KB should be fine for usual hardware, but
+looks not good enough.
+
+> 
+> Comparing the results of the Antutu Sequential test to the previous
+> data, it is indeed an improvement, but still a slight difference with
+> limiting the bio size to max_sectors:
+> 
+> Sequential Read (average of 5 rounds):
+> Original: 3033.7 MB/sec
+> Limited to max_sectors: 3520.9 MB/sec
+> Aligned 256KB: 3471.5 MB/sec
+> 
+> Sequential Write (average of 5 rounds):
+> Original: 2225.4 MB/sec
+> Limited to max_sectors: 2800.3 MB/sec
+> Aligned 256KB: 2618.1 MB/sec
+
+Thanks for sharing the data.
+
+> 
+> What if we limit the bio size only for those who have set the
+> max_sectors?
+
+I think it may be doable, but need more smart approach for avoiding
+extra cost of iov_iter_revert(), and one way is to add bio_shrink()
+(or bio_revert()) to run the alignment just once.
+
+I will think further and write a new patch if it is doable.
+
+
+
+Thanks,
+Ming
 
 
