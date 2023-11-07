@@ -4,70 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED62BC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 15:49:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5643DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 15:57:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q9C0O1fHLMhMrPIX9ZHFbv65e3WJBykSAqF8GaVeHCI=; b=MY9gUVXjqqSxTtOOORvyS+wDt4
-	VOgMI4HCCH0au344NwOqeNGy53SNN7/RH3Bg1qw7TE7h5zneAEDi8j7hfQ6Zio20jZhkIF7Rbzq+M
-	29c1A2TEmyQotUEHRB15e6EEhQi6pUcGHS08Gl3sWHmon8vmkKSVy6D75aGynp/04aWlBD8LICJfq
-	XnL6XlGhbuq4YJAnxh62Kr7R5OwuTnCptCCjaFgM1cOHF9WEuJRvJlrU+83BO8UMbNScxau0oZl9G
-	bcd7NA9txtCE1p11IUB8i9dSsdF/lKmnJguCkmCiNnM+Cl5FzW/dOv0J6IMZEaAAOc0LPbOk1+EPw
-	vJrYuqsQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LhQa5i2LFy/RF9Ap2ZmQjfJT0WNdPHiQnsQUoHcyGdg=; b=wRZblyCvBXqnECgs1WLVs1mTGZ
+	VyFqIz/smY7pdsd/W2qb6QGhsxvq/2w1ictOIqC1w6vaZlEWKkgj+5442TghLGVHiSgg1O62cqD+1
+	EB4pJ8yRrIR7Ku0ZO/n98qhyYwja5fXmVKwAUzdi8Ke6cjfH+wW/gcouefk8r0lSLW1ctC5CQTnwl
+	bNqxD3mStUVL2akW70yghSQTz2ecVuvuChuHJEIkXKWPIxwsfHjHKQ0OHf10bN83LDk9uin4+/Mlb
+	CKkIF5DLjvMyb3XSEdm9kVDCxgxmHKPLGoGiuWhIkKGdMUvONOE9ZqKIhS8opgbNby/jxnecuI5wt
+	QvXBJ8qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0OKe-001tYm-00;
-	Tue, 07 Nov 2023 15:49:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r0OS2-001w3K-0R;
+	Tue, 07 Nov 2023 15:57:14 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0OKa-001tXG-2g;
-	Tue, 07 Nov 2023 15:49:34 +0000
+	id 1r0ORy-001w1r-1g;
+	Tue, 07 Nov 2023 15:57:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5B67961255;
-	Tue,  7 Nov 2023 15:49:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC42FC433C7;
-	Tue,  7 Nov 2023 15:49:30 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 35B4BB81618;
+	Tue,  7 Nov 2023 15:57:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 818CFC433C9;
+	Tue,  7 Nov 2023 15:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699372172;
-	bh=wQ1PQM7f/JCvzuyybW/BE93r8Z0xUqIiIBrvLO+vPEM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=f8TmrTSZtf6pcmxeRiV70QUW6c5JcFs2HQgOnOAOqo25TTtho7qxV4jSByKiAWeuq
-	 lNAcoAQ+Lb+98rlIgdYa62bl5hl9ef327xMAYFy3CHBru5hxtOGFRvd713Ws17onfk
-	 A4KOuMzy63jTE30EueW/vZgA72jHLeQA9HHN0C/6k7GwDRHLztpEOlkNpcJjb/Wq3c
-	 2V1u+g/NQPGQsbce9LHizFN+5kimavvGAHZEzFSAsTAP7KNVW5iRoIlYTrol1y6TYV
-	 TxuADtwBbeULL+ESf43w34qUXEDZrm/OeN2jHbvoVcBu1qpBGFbCU/RoFsaLcm/J/o
-	 u9AK+z9uEuKbQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	s=k20201202; t=1699372628;
+	bh=JY60Lx5ZvGXboVH+s2MR9Ye3RuI2c9Q7hwNs+uhiPf8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=HsvPjn9rl1D3gxOxWU03YB+Z9Qf3ye5PKtE6TceSmX6XNY3pNr1shquC3d2iQruKS
+	 kdYX6dpSGkhCXjpEq55veRve1ASe1wmGf7eK3tac+xg9KRDfJiPm/4P6mvB0SI2xfp
+	 fivSC0dZFyqthKJ57w7+fRSH6+toerlJdK87mygd2zI0mpb8nohhnkXceBj2e/buW3
+	 x1OOBXQ+wmVaZOGR9Vh5MuZbMwXr8kPC6jvcppNS7TWvbMI0pk8jE/ttrW5F+jNfIE
+	 dfd6L54sJx1UPByyupwP7WFTWiXImpw8L0ajrOiSzDRhJ15oP6n78/W1q/6Tdy2WVx
+	 t5po7FMeN29iw==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1r0ORt-00BB5G-Ri;
+	Tue, 07 Nov 2023 15:57:06 +0000
+Date: Tue, 07 Nov 2023 15:57:05 +0000
+Message-ID: <86cywl1rqm.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Amit Daniel Kachhap <amit.kachhap@arm.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	James Morse <james.morse@arm.com>,
+	Joey Gouly <joey.gouly@arm.com>,
 	Mark Brown <broonie@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	brgl@bgdev.pl,
-	matthias.bgg@gmail.com,
-	linux-gpio@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
 	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.5 17/34] gpiolib: of: Add quirk for mt2701-cs42448 ASoC sound
-Date: Tue,  7 Nov 2023 10:47:57 -0500
-Message-ID: <20231107154846.3766119-17-sashal@kernel.org>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231107154846.3766119-1-sashal@kernel.org>
-References: <20231107154846.3766119-1-sashal@kernel.org>
-MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.5.10
-Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v2 1/2] arm64: Move Mediatek GIC quirk handling from irqchip to core
+In-Reply-To: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
+References: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.1
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: dianders@chromium.org, mark.rutland@arm.com, catalin.marinas@arm.com, will@kernel.org, wenst@chromium.org, amit.kachhap@arm.com, angelogioacchino.delregno@collabora.com, james.morse@arm.com, joey.gouly@arm.com, broonie@kernel.org, matthias.bgg@gmail.com, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_074932_920073_BC1CC686 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20231107_075710_832195_4F0EA299 
+X-CRM114-Status: GOOD (  24.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,40 +94,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Linus Walleij <linus.walleij@linaro.org>
+On Tue, 07 Nov 2023 15:26:56 +0000,
+Douglas Anderson <dianders@chromium.org> wrote:
+> 
+> In commit 44bd78dd2b88 ("irqchip/gic-v3: Disable pseudo NMIs on
+> Mediatek devices w/ firmware issues") we added a method for detecting
+> Mediatek devices with broken firmware and disabled pseudo-NMI. While
+> that worked, it didn't address the problem at a deep enough level.
+> 
+> The fundamental issue with this broken firmware is that it's not
+> saving and restoring several important GICR registers. The current
+> list is believed to be:
+> * GICR_NUM_IPRIORITYR
+> * GICR_CTLR
+> * GICR_ISPENDR0
+> * GICR_ISACTIVER0
+> * GICR_NSACR
+> 
+> Pseudo-NMI didn't work because it was the only thing (currently) in
+> the kernel that relied on the broken registers, so forcing pseudo-NMI
+> off was an effective fix. However, it could be observed that calling
+> system_uses_irq_prio_masking() on these systems still returned
+> "true". That caused confusion and led to the need for
+> commit a07a59415217 ("arm64: smp: avoid NMI IPIs with broken MediaTek
+> FW"). It's worried that the incorrect value returned by
+> system_uses_irq_prio_masking() on these systems will continue to
+> confuse future developers.
+> 
+> Let's fix the issue a little more completely by disabling IRQ
+> priorities at a deeper level in the kernel. Once we do this we can
+> revert some of the other bits of code dealing with this quirk.
+> 
+> This includes a partial revert of commit 44bd78dd2b88
+> ("irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware
+> issues"). This isn't a full revert because it leaves some of the
+> changes to the "quirks" structure around in case future code needs it.
+> 
+> Suggested-by: Mark Rutland <mark.rutland@arm.com>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-[ Upstream commit 9e189e80dcb68528dea9e061d9704993f98cb84f ]
+Acked-by: Marc Zyngier <maz@kernel.org>
 
-These gpio names are due to old DT bindings not following the
-"-gpio"/"-gpios" conventions. Handle it using a quirk so the
-driver can just look up the GPIOs.
+	M.
 
-Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
-Acked-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Link: https://lore.kernel.org/r/20231006-descriptors-asoc-mediatek-v1-1-07fe79f337f5@linaro.org
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/gpio/gpiolib-of.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/drivers/gpio/gpiolib-of.c b/drivers/gpio/gpiolib-of.c
-index 1436cdb5fa268..219bf8a82d8f9 100644
---- a/drivers/gpio/gpiolib-of.c
-+++ b/drivers/gpio/gpiolib-of.c
-@@ -496,6 +496,10 @@ static struct gpio_desc *of_find_gpio_rename(struct device_node *np,
- #if IS_ENABLED(CONFIG_SND_SOC_CS42L56)
- 		{ "reset",	"cirrus,gpio-nreset",	"cirrus,cs42l56" },
- #endif
-+#if IS_ENABLED(CONFIG_SND_SOC_MT2701_CS42448)
-+		{ "i2s1-in-sel-gpio1",	NULL,	"mediatek,mt2701-cs42448-machine" },
-+		{ "i2s1-in-sel-gpio2",	NULL,	"mediatek,mt2701-cs42448-machine" },
-+#endif
- #if IS_ENABLED(CONFIG_SND_SOC_TLV320AIC3X)
- 		{ "reset",	"gpio-reset",	"ti,tlv320aic3x" },
- 		{ "reset",	"gpio-reset",	"ti,tlv320aic33" },
 -- 
-2.42.0
-
+Without deviation from the norm, progress is not possible.
 
