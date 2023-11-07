@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8A7C4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71EC7C0018C
 	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 08:31:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3aiigtJ5jGtX/62TO6ou9gRvo+vmI9ed3VsEtdh4dtY=; b=lM/dboFRK+j/yf1UYfMBtTNiJm
-	gi92G5mNoQkqxg29PzjlCQt//m/ntjSXpukwzXX+B1DYPPFkU7gBMzaeta3gi60TPdc1B0dH9MRym
-	D6daWP54GS3wzw+s6xyECn1+SZdZ3wrmto/qgJ38fE28TDYiI+l/m+gKwItIPuLk1fMy6e5QjBHmm
-	QbDiHGaUEh2hBvM7OKUXjXrCByO3Cj4mmI31MloGzC2taHrzIrySuymqIyBWZmJnNhCMFjJblhShL
-	8YjKJVfnz3PuFwxn888KwQnS16gkXSXL/XHaSguD8tuQNCMfcSo8o1BbOp7WTXUnXqq0yFOu+ZO3T
-	jj+lnZKQ==;
+	bh=biOdr//NNaFWYf7Eq0GEPRMRBbQ6wB/xHGVW+Fuxl50=; b=AlUkN7x75uohyqxEUKyk2hSKh5
+	J5HdThyRR013qUkBcXC9mj+44lHgvmSHZ3Oou5BjRvvT+obIN3x7c8GDigW4P9QVvJ2gwMGdgSq6q
+	HsW6UMIToEGiMHl4bpTKXqHfsUnGymH27QpVeg8nwqUxC4NWnvB2wh5OvHCwMQnljpWJFv0GMCsQf
+	biwCel2ycOOFqd0hrJi5F7+ou0yC6WFtalRynEOrndoO20sT6MjQW5hrxL0ehJO5qk8shNxwQSnWY
+	TB84NuuAkFWP3zJEcgw2t1k4pEJHYthVwN0Mm2v9EyLRUNxPchBjo82vXZTHqaYP8V/3rcM0jOKtt
+	m544LRbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0HUE-000p3U-3A;
-	Tue, 07 Nov 2023 08:31:02 +0000
+	id 1r0HUF-000p3l-11;
+	Tue, 07 Nov 2023 08:31:03 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0HUC-000p2F-1M
+	id 1r0HUD-000p2P-16
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Nov 2023 08:31:01 +0000
+	Tue, 07 Nov 2023 08:31:02 +0000
 Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1F74D66074BA;
-	Tue,  7 Nov 2023 08:30:56 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 772F566074B9;
+	Tue,  7 Nov 2023 08:30:59 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699345856;
-	bh=ZMrrFLvLdqin6a1tq6YFP6vBhnFIzClUM0C0/GpzRCA=;
+	s=mail; t=1699345860;
+	bh=yKQJD7ZBKcHGUWXd3GzZKFwSDEFqn99afjMFFcXUvPk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JgrbOsq9foxIZ+xviHYv/2qRAcRyjEel94au6B9XpJenVvERZbFVeEU3czhV3QSJa
-	 AGzHDWBS5T3DBsK7fT73N5oTgssoQP12SORYOtxNKWGYh41AioBVxiTqMT2WROPQG0
-	 dNw7Yser3cGFrb10UEflVyTEMVT3qrDW6cygsoB5OOzcvC1xVx2X1/RYzcNoeS2SBu
-	 6y2L1MSIxsjR5PA1wA6rzFYqsmtuzcrLQ17q6+DoffhdNhpzvWM5tTzWsfJyiXlvJ/
-	 NrEpqDWsTd28NSix6vgvUeuhV+y1akXoomDLoAHdDI3tXvZZbUbrflBaz+0R4yrFTm
-	 Ygf22Z1g0bUww==
-Message-ID: <c64bced1-36da-4b31-b06b-c4313e893cd7@collabora.com>
-Date: Tue, 7 Nov 2023 09:30:53 +0100
+	b=H+0nBzSe19XoVpVr9bCgr39Iajf6iRKPqjdGq6A8H4pSYZqIpM+XWP3mAQgK/Zz4N
+	 LGCTHH3czA+q6HGIyytlZt3SFEc2mQQ4AGpEib8j7oh9l+FW4kKv1HHDJVfxf41+BR
+	 /TR0W80lq7GhqW81Nl/uRdvRjetw2oT9mNdbNT1Vdv8aPfKKhH3Y2HKGVEvPhYbubY
+	 nze16TJlZyI0nwHXgxv5oLQR0hTIJLnFFzF2M671ejbIesIvbVgFPn7xeKlo616GLG
+	 KV2POp7SS2UOONs6wzmCWqo1+fp+uREC8XmgN89y+cFWM6qaEPb67C5pPc7vJ5I+Mk
+	 7IN6OqUK/8kmQ==
+Message-ID: <9a30463b-3581-4738-9eea-b45e0c9a1d7a@collabora.com>
+Date: Tue, 7 Nov 2023 09:30:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [v1 1/3] ASoC: dt-bindings: mt8188-mt6359: add es8326 support
+Subject: Re: [v1 3/3] ASoC: mediatek: mt8188-mt6359: add two amps support
 Content-Language: en-US
 To: Rui Zhou <zhourui@huaqin.corp-partner.google.com>, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, perex@perex.cz,
@@ -56,15 +56,14 @@ To: Rui Zhou <zhourui@huaqin.corp-partner.google.com>, robh+dt@kernel.org,
 Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 References: <20231107031442.2768765-1-zhourui@huaqin.corp-partner.google.com>
- <20231107031442.2768765-2-zhourui@huaqin.corp-partner.google.com>
+ <20231107031442.2768765-4-zhourui@huaqin.corp-partner.google.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231107031442.2768765-2-zhourui@huaqin.corp-partner.google.com>
+In-Reply-To: <20231107031442.2768765-4-zhourui@huaqin.corp-partner.google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_003100_624110_BDF7F32B 
-X-CRM114-Status: UNSURE (   4.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231107_003101_503590_D12777F5 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,11 +79,37 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 07/11/23 04:14, Rui Zhou ha scritto:
-> Add compatible string "mediatek,mt8188-es8326" to support new board
-> with es8326 codec.
+> Support codec rt5682 using two amps.
 > 
 > Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
 
+Can you please change the commit description so that it's clear that you're adding
+the two amps support to the RT5682s variant? As it is right now, it reads like you
+are adding that globally.
+
+ASoC: mediatek: mt8188-mt6359: Enable dual amp for mt8188_rt5682s
+
+After which:
+
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> ---
+>   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> index e994faa3556b..917640939621 100644
+> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> @@ -1549,7 +1549,7 @@ static struct mt8188_card_data mt8188_nau8825_card = {
+>   
+>   static struct mt8188_card_data mt8188_rt5682s_card = {
+>   	.name = "mt8188_rt5682s",
+> -	.quirk = RT5682S_HS_PRESENT,
+> +	.quirk = RT5682S_HS_PRESENT | MAX98390_TWO_AMP,
+>   };
+>   
+>   static struct mt8188_card_data mt8188_es8326_card = {
+
 
 
