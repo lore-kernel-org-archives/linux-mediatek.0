@@ -4,49 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84567C41535
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 12:08:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7658BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 12:10:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/Vc6WFNVVAwMtEPJchw9LOfr6Ync1saa1KrfHxCIrcc=; b=azGNByqAL2/JVqJO91tofWrZoy
-	AHE5EnIRlYzPcu0Sy7t1bvHfM3TzCvYJc+OgLuN6fvG6WzXprAknDAwho+23nH/56nit2nka2zvFo
-	64QBdW1jRrpb5Fu5+LO9ytGeqAHahAJ1o9DaAf55ZozLfAkVPxY4z4wc8CfNr9itmAooe4j6QeH4A
-	5728b3csqHkmVZTZHMUs6poV2G92Ko1MnWvVKXA1Ti+BZqCa4uZgKjIvX40COGTbZw5e46SNdgL9Q
-	R/2Bn6bBmIGr3H8fF2IG43HC+GuD47gtm4bSAMPybFO76Y3nz7qsYVoybVuSqmKt3dYQT77hGQFlI
-	eiWqMsig==;
+	bh=OqFAcn67xdIPvMTpb+pwW2NWP1yShjr0DAYpYyk9nNE=; b=ApfmQjoUGtSHu+LaF5B834cvtr
+	NIafn/SoI1o9gNt5k+Od8O7LzLg65ikHaTsixQ7l9y90H0oqviU8UIJaTleqeNdta9cerrIDAyl4U
+	r5z4djtrPgIMfiu/gw7CfuDlDh6HDeYqiAJ9XqiGzMOhRpgWHCLGgfdwfpCAfrjhKZZwHWtjeHkJq
+	YtZ/ELdGDGvRfkKdJ0ZPcwDhYDRsgui7ovOn/rnVfN9WSQnyMZVj2+Vzl2//LZOxQ/IvnofZHQSyr
+	JmQKnMTQlftH78vZF+41seHRKXH2+Bkp4mOQ6KibhaLPx9sCtjW2B9JxR4AeqqCiW6gh2Cax6SuoC
+	RFmOcM/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0KsJ-001PbC-1O;
-	Tue, 07 Nov 2023 12:08:07 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1r0KuA-001QDM-1H;
+	Tue, 07 Nov 2023 12:10:02 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0KsF-001PYc-0l;
-	Tue, 07 Nov 2023 12:08:04 +0000
+	id 1r0Ku6-001QB0-2n;
+	Tue, 07 Nov 2023 12:10:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id C8ADCB8168D;
-	Tue,  7 Nov 2023 12:08:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4469FC433C9;
-	Tue,  7 Nov 2023 12:07:59 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id C2996CE0F18;
+	Tue,  7 Nov 2023 12:09:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 065BFC433CD;
+	Tue,  7 Nov 2023 12:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699358881;
-	bh=YTyv8HJFV07JTyfEcbnVeoTNlm0GOpkdppOSK7jQbjc=;
+	s=k20201202; t=1699358994;
+	bh=dmtJAUGRYxZHciadibakhst4NtRR0Kw1nvLI2n5q/VU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ac/X6xfWt0oQPG5YEXB19Fzr3YVwYAk20xouHyThRLditKwPLkqtDPOJzXmVzyJZ/
-	 bUGZXruu8LCo9T9QLBlo/WKs3i0+nPzpOLNXc8B2Xzk5kIx9YC4Q6mRIWzdX4JF5Vw
-	 u5ABYNQv9sboPTnh843T4CxnNA+CBHGpmeFQz0lIwmNa7n6x9nmRg0r2ULGwHiNavi
-	 o+CK3mq858NPMo6xDkxNIROak4m3MPXoJpGEBWgKZS2aXzuQd2matuWOiu0p1phJyK
-	 6L91KjXPtLrf4f4I0iOLr32TxeBdr9QaBs7DYexWAq9iJD2rL8Oxn5jRB1qmVsGTS9
-	 m3Ee/DEqz/xNA==
+	b=I9dnJHVM+MkrNaGu+yoEs67LDbRgiUq3aCaNvJ3QbcXss4BJEED8PpPqZxjQq5Ywu
+	 rkhOVhWHfMnxy8uZXwRwZ943URMgLyB/GZ77e6gYOxMo9aXtwb8O5l/zCTUZTlUqbV
+	 umcqmzPbVc5t8RA+oDYxRFruKi9AC113NYT85yPxJQJigCI6F6yrshwFFJGLaLMVCo
+	 YVwASxngjM6zaDNkY0Dcq1ixOivPpGKE8jodgmp1li99LpL6bSd+l9fcVndwlGgzNO
+	 IYOEiHTXLHItqd5hI0qMpvuZOv/lCV2WKeKTl88usORihNWeAdtP0oM5qDhHaERFg1
+	 3bf/6ot30OvbA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
+Cc: Ingo Rohloff <lundril@gmx.de>,
 	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
@@ -54,26 +52,29 @@ Cc: StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
 	kvalo@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	chui-hao.chiu@mediatek.com,
-	meichia.chiu@mediatek.com,
-	howard-yh.hsu@mediatek.com,
+	bhelgaas@google.com,
+	deren.wu@mediatek.com,
+	sean.wang@mediatek.com,
+	quan.zhou@mediatek.com,
+	Leon.Yen@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 15/31] wifi: mt76: get rid of false alamrs of tx emission issues
-Date: Tue,  7 Nov 2023 07:06:02 -0500
-Message-ID: <20231107120704.3756327-15-sashal@kernel.org>
+	linux-mediatek@lists.infradead.org,
+	linux-pci@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.5 13/30] wifi: mt76: mt7921e: Support MT7992 IP in Xiaomi Redmibook 15 Pro (2023)
+Date: Tue,  7 Nov 2023 07:08:28 -0500
+Message-ID: <20231107120922.3757126-13-sashal@kernel.org>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231107120704.3756327-1-sashal@kernel.org>
-References: <20231107120704.3756327-1-sashal@kernel.org>
+In-Reply-To: <20231107120922.3757126-1-sashal@kernel.org>
+References: <20231107120922.3757126-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6
+X-stable-base: Linux 6.5.10
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_040803_570753_048F054F 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20231107_040959_081804_A7DB081F 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,62 +89,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+From: Ingo Rohloff <lundril@gmx.de>
 
-[ Upstream commit 413f05d68d11981f5984b49214d3a5a0d88079b1 ]
+[ Upstream commit fce9c967820a72f600abbf061d7077861685a14d ]
 
-When the set_chan_info command is set with CH_SWITCH_NORMAL reason,
-even if the action is UNI_CHANNEL_RX_PATH, it'll still generate some
-unexpected tones, which might confuse DFS CAC tests that there are some
-tone leakages. To get rid of these kinds of false alarms, always bypass
-DPD calibration when IEEE80211_CONF_IDLE is set.
+In the Xiaomi Redmibook 15 Pro (2023) laptop I have got, a wifi chip is
+used, which according to its PCI Vendor ID is from "ITTIM Technology".
 
-Reviewed-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+This chip works flawlessly with the mt7921e module.  The driver doesn't
+bind to this PCI device, because the Vendor ID from "ITTIM Technology" is
+not recognized.
+
+This patch adds the PCI Vendor ID from "ITTIM Technology" to the list of
+PCI Vendor IDs and lets the mt7921e driver bind to the mentioned wifi
+chip.
+
+Signed-off-by: Ingo Rohloff <lundril@gmx.de>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 6 +++---
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 6 +++---
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
+ include/linux/pci_ids.h                         | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 50ae7bf3af91c..b8bc7a885b108 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2725,10 +2725,10 @@ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
- 	if (mt76_connac_spe_idx(phy->mt76->antenna_mask))
- 		req.tx_path_num = fls(phy->mt76->antenna_mask);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 95610a117d2f0..ed5a220763ce6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -17,6 +17,8 @@ static const struct pci_device_id mt7921_pci_device_table[] = {
+ 		.driver_data = (kernel_ulong_t)MT7921_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7922),
+ 		.driver_data = (kernel_ulong_t)MT7922_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_ITTIM, 0x7922),
++		.driver_data = (kernel_ulong_t)MT7922_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0608),
+ 		.driver_data = (kernel_ulong_t)MT7921_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0616),
+diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+index 8f9a459e16718..e0a11d34ec998 100644
+--- a/include/linux/pci_ids.h
++++ b/include/linux/pci_ids.h
+@@ -180,6 +180,8 @@
+ #define PCI_DEVICE_ID_BERKOM_A4T		0xffa4
+ #define PCI_DEVICE_ID_BERKOM_SCITEL_QUADRO	0xffa8
  
--	if (cmd == MCU_EXT_CMD(SET_RX_PATH) ||
--	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
-+	if (dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
- 		req.switch_reason = CH_SWITCH_NORMAL;
--	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
-+	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL ||
-+		 phy->mt76->hw->conf.flags & IEEE80211_CONF_IDLE)
- 		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
- 	else if (!cfg80211_reg_can_beacon(phy->mt76->hw->wiphy, chandef,
- 					  NL80211_IFTYPE_AP))
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 4a30db49ef33f..a9bd7e0d93595 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -2960,10 +2960,10 @@ int mt7996_mcu_set_chan_info(struct mt7996_phy *phy, u16 tag)
- 		.channel_band = ch_band[chandef->chan->band],
- 	};
- 
--	if (tag == UNI_CHANNEL_RX_PATH ||
--	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
-+	if (dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
- 		req.switch_reason = CH_SWITCH_NORMAL;
--	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
-+	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL ||
-+		 phy->mt76->hw->conf.flags & IEEE80211_CONF_IDLE)
- 		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
- 	else if (!cfg80211_reg_can_beacon(phy->mt76->hw->wiphy, chandef,
- 					  NL80211_IFTYPE_AP))
++#define PCI_VENDOR_ID_ITTIM		0x0b48
++
+ #define PCI_VENDOR_ID_COMPAQ		0x0e11
+ #define PCI_DEVICE_ID_COMPAQ_TOKENRING	0x0508
+ #define PCI_DEVICE_ID_COMPAQ_TACHYON	0xa0fc
 -- 
 2.42.0
 
