@@ -4,92 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C243C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 17:55:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F70AC4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 19:36:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OCPAQiBeVySoeJKAHJeq5sOYdSn0tG90ibTG5f+jP5s=; b=2qU3VB3yHtsEvpswcrIMQmZm0M
-	9Bss4u2L/JUIsZichm3eVsFiDa7+owFp3hNdntszs3rPbIG01n6wVJqqMcOJu0l/6Y+yKs/lozNfA
-	BSEMVLx9IivYoDkXZxXviYNrZ2WZEy6PwM5m2bZpd4c0856F4GUUpGlnvJ8vl8VyOrzLKHRdmJNPe
-	cF4tD0qVWSjV+pb9WfmhxSMNtvgk7sINLKH/dG8r9qOfdHyodUOeb+uSG8E9QKl62t522Z/3Wkc6h
-	rvqOrpfojis1lxONwhpM88f70aECPZnk8cjyYfcls5msmltsNf1AuQIQLxdL/fSgWqWA/+aMSJL1x
-	THgJRiiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f2GkHL9Asj7cZ9gDAWnYJZ3/Dq1fD/MZuGhccXlmPBI=; b=tQwPkTfCzV98vmRyoFwGxIhTIQ
+	+JpnpepOd4NgsFrGweuEbUb0FpPkOVbomwW6XdBOU40cNavpGvNHuEkuCbDWymYL0sVsgurQnGnZ1
+	uTszwB7IizipFyKUaG3CUU04p5kj9FnOPK167jdyfvNmiOByafFFgT+tdQ9Xnhau0eF5ETslvhf+F
+	QNjorv5P7/mi6hS9v1lE0W7PBzMAciecHtR4MPG2KuvHpTymMYzu2eNwB/b4eksPvnFYHN/GRVk91
+	oaueDMxcA2FbBZsvhwpmT6z9WB5rAM+HBVgf5faZbUgwBR/uezvOooJRl/3GWOk2NkLsoChmT5EEP
+	yaoTOyZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0QIq-0028lL-0p;
-	Tue, 07 Nov 2023 17:55:52 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1r0RsE-002HSg-2o;
+	Tue, 07 Nov 2023 19:36:30 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0QIo-0028jn-0b
+	id 1r0RsB-002HRs-1g
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Nov 2023 17:55:51 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-32deb2809daso3542020f8f.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Nov 2023 09:55:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699379746; x=1699984546; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OCPAQiBeVySoeJKAHJeq5sOYdSn0tG90ibTG5f+jP5s=;
-        b=Ix41WoNeK7pxg/Y9M1ZBWQhblrfBu1niyCk7aAGEhEV4iVJ4cTiVIyO1sJUyVxb3Vh
-         Zaj77lISEIOv9/80qkCR6XHYZYnj1HY2843GRGT3gBPb6YYS3JSgL7m8Mv4flFWpdotb
-         qQ+QKggrJQdJQDvnm15pekYVP3+37ZUD+9+i0=
+	Tue, 07 Nov 2023 19:36:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1699385785;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=f2GkHL9Asj7cZ9gDAWnYJZ3/Dq1fD/MZuGhccXlmPBI=;
+	b=MgREWolNd1OUGwr4kUNuSSAb+3Cf4DB7DMJ6pfT8lNvGQRTQDXvOZSPCmyD+TA+kvoWMC+
+	mJ0b7TkM2NU1Ut0nQ9hGr0YB9rLGnoBe9b75MZPfEQRUunLEH9wuzs01O/WRXgJcSjBXJ3
+	D5QDXqEVlYuyFD9rbih1RVQyOf84Jxw=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-635-zVLkI6aPNSWZOlmeZr87jQ-1; Tue, 07 Nov 2023 14:36:24 -0500
+X-MC-Unique: zVLkI6aPNSWZOlmeZr87jQ-1
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-778b25af933so689035585a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Nov 2023 11:36:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699379746; x=1699984546;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OCPAQiBeVySoeJKAHJeq5sOYdSn0tG90ibTG5f+jP5s=;
-        b=faqR8J8enIV4qBS9sDKy/2MzROWBgDtwRvF66MoBd5kcJBARlJ693AoMkGMrC4W3ba
-         ZPAc/tEnmRtnOHDckd2kkSJNWCOjklmQPhbPoaVho8F1WGAHIl0BKzcM8k9agDt3pq5K
-         je7Jjsm/gkgijtxHzGQc2GSB3Cni5HVucezdBzAkR24QD/20MWb4RhGxC/9Mq3sN91Xr
-         r0om1/xaOuBCYOMfM75cwj2a63npsgpcIGy8Rk6FkVPe/vwLMKDlkzql0KUSi1WDR3wH
-         PzaHDp201r/6l/pdjmNzAd4drjNVc7+MCTeNO9YsJAPx1lyR+57/Qz6bu96W1lcIMGmk
-         aMKQ==
-X-Gm-Message-State: AOJu0Yx+2JTv203rWgkTjPdtzKrA+ZGSxoxAj+Khq4dER6UxHKE8zshR
-	ueYJix1EjU2mkJA1ueKdAXoJ1liv7pIHi/kO7euimoum
-X-Google-Smtp-Source: AGHT+IFgfd/H2RQx0zTKGtSQAkZuopJASCBVZ8PFiHIYhX2jjebip5xpWK5HrdZ0YFz4IJ+sNJ+o2A==
-X-Received: by 2002:a17:907:d19:b0:9bf:4e0b:fb05 with SMTP id gn25-20020a1709070d1900b009bf4e0bfb05mr17572877ejc.11.1699379277045;
-        Tue, 07 Nov 2023 09:47:57 -0800 (PST)
-Received: from mail-wm1-f44.google.com (mail-wm1-f44.google.com. [209.85.128.44])
-        by smtp.gmail.com with ESMTPSA id k27-20020a1709063e1b00b009de467a25d5sm1316748eji.13.2023.11.07.09.47.55
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Nov 2023 09:47:56 -0800 (PST)
-Received: by mail-wm1-f44.google.com with SMTP id 5b1f17b1804b1-40853f2e93eso3765e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Nov 2023 09:47:55 -0800 (PST)
-X-Received: by 2002:a05:600c:2217:b0:3f4:fb7:48d4 with SMTP id
- z23-20020a05600c221700b003f40fb748d4mr101271wml.3.1699379275221; Tue, 07 Nov
- 2023 09:47:55 -0800 (PST)
+        d=1e100.net; s=20230601; t=1699385784; x=1699990584;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=f2GkHL9Asj7cZ9gDAWnYJZ3/Dq1fD/MZuGhccXlmPBI=;
+        b=LPlKbFB7lEOO8n077twMmqpM096wgLn8cm5TQHVd3qq9Hon3dNhvOFmxcOdEjYk79s
+         p1bLIQqfuQrjMvfT2Mrc60u5+5CVDQiIf4NFxnbyFNwPDaBQesKhjqdX6NyK8hkrjR+f
+         LNc8MDyJdsFu6H97O8oQVNlPEEqCxiQzyrtvCc8guDzKr2CCkLFQF1cpKqtzzfKztJww
+         3SIxwYkSO7DElG0+dSAw3jp1kLO2ksaw+emVIY9vbCAv4mtmGQUSKad5+CLeEOqW58Dk
+         MLcCjyQim25c3efGPcrCNxirpbGl3eYvVXhIGvU5+qyFbhrJS3qtDaSOGbrgN7fneBuP
+         l7QA==
+X-Gm-Message-State: AOJu0YwbWOoQE47j+c8KeLauQ1Ffub4X51U7JsU/N+om48zoGp3IplX4
+	kYxoI1eFAr1c71pnkJpA+cIAvhDMPYf9B2tXDjuYObRJjr+q+toqgv6HrdMjQpOd96FiNdhTumt
+	AI+ilaEhWLx+MkQ0EUmdg9MwAhDhWGVuH
+X-Received: by 2002:ad4:5ecf:0:b0:675:6a83:8084 with SMTP id jm15-20020ad45ecf000000b006756a838084mr17136092qvb.14.1699385783791;
+        Tue, 07 Nov 2023 11:36:23 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHCasVvUsu1Pm+2+uqpGskpzIAz52YVkupGLyfFo54ljOeoSzf1eiTLLEVSdNTLByNhDpkAJg==
+X-Received: by 2002:ad4:5ecf:0:b0:675:6a83:8084 with SMTP id jm15-20020ad45ecf000000b006756a838084mr17136067qvb.14.1699385783454;
+        Tue, 07 Nov 2023 11:36:23 -0800 (PST)
+Received: from fedora ([2600:1700:1ff0:d0e0::37])
+        by smtp.gmail.com with ESMTPSA id k16-20020ad44210000000b0067169e210b3sm206076qvp.70.2023.11.07.11.36.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Nov 2023 11:36:23 -0800 (PST)
+Date: Tue, 7 Nov 2023 13:36:20 -0600
+From: Andrew Halaney <ahalaney@redhat.com>
+To: Can Guo <cang@qti.qualcomm.com>
+Cc: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org, 
+	stanley.chu@mediatek.com, adrian.hunter@intel.com, beanhuo@micron.com, avri.altman@wdc.com, 
+	junwoo80.lee@samsung.com, martin.petersen@oracle.com, linux-scsi@vger.kernel.org, 
+	Alim Akhtar <alim.akhtar@samsung.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Brian Masney <bmasney@redhat.com>, 
+	"moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..." <linux-mediatek@lists.infradead.org>, 
+	"open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..." <linux-arm-msm@vger.kernel.org>
+Subject: Re: [PATCH v2 1/7] scsi: ufs: host: Rename structure ufs_dev_params
+ to ufs_host_params
+Message-ID: <fcovysoo6vxvqdrypfbnfyclrmifibio46rne5zhiqnmqhzd7k@5ltemasdhfxp>
+References: <1699332374-9324-1-git-send-email-cang@qti.qualcomm.com>
+ <1699332374-9324-2-git-send-email-cang@qti.qualcomm.com>
 MIME-Version: 1.0
-References: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
- <9b2e37a0-32ee-4aa4-99e8-d37103674847@collabora.com> <CAD=FV=Xv7XKvePTZ6LKT97EViG81d8hqk+T68B5eXamKTU407A@mail.gmail.com>
- <e2e7762bfd16f67bdc253dc23a967c46@kernel.org>
-In-Reply-To: <e2e7762bfd16f67bdc253dc23a967c46@kernel.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 7 Nov 2023 09:47:43 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=X-5Z0ucRqrqkoEf9T+f7zQeXq2bJ3hpPw=d11mAdvgbQ@mail.gmail.com>
-Message-ID: <CAD=FV=X-5Z0ucRqrqkoEf9T+f7zQeXq2bJ3hpPw=d11mAdvgbQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] arm64: Move Mediatek GIC quirk handling from
- irqchip to core
-To: Marc Zyngier <maz@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, 
-	Will Deacon <will@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Amit Daniel Kachhap <amit.kachhap@arm.com>, James Morse <james.morse@arm.com>, 
-	Joey Gouly <joey.gouly@arm.com>, Mark Brown <broonie@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1699332374-9324-2-git-send-email-cang@qti.qualcomm.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_095550_246860_30E2A95A 
-X-CRM114-Status: GOOD (  18.26  )
+X-CRM114-CacheID: sfid-20231107_113627_675676_A97A8D6C 
+X-CRM114-Status: GOOD (  21.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,49 +111,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, Nov 06, 2023 at 08:46:07PM -0800, Can Guo wrote:
+> From: Can Guo <quic_cang@quicinc.com>
+> 
+> Structure ufs_dev_params is actually used in UFS host vendor drivers to
+> declare host specific power mode parameters, like ufs_<vendor>_params or
+> host_cap, which makes the code not very straightforward to read. Rename the
+> structure ufs_dev_params to ufs_host_params and unify the declarations in
+> all vendor drivers to host_params.
+> 
+> In addition, rename the two functions ufshcd_init_dev_pwr_param() and
 
-On Tue, Nov 7, 2023 at 9:43=E2=80=AFAM Marc Zyngier <maz@kernel.org> wrote:
->
-> On 2023-11-07 17:37, Doug Anderson wrote:
-> > Hi,
-> >
-> > On Tue, Nov 7, 2023 at 8:30=E2=80=AFAM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> > +static __init void detect_system_supports_pseudo_nmi(void)
-> >> > +{
-> >> > +     struct device_node *np;
-> >> > +
-> >> > +     if (!enable_pseudo_nmi)
-> >> > +             return;
-> >> > +
-> >> > +     /*
-> >> > +      * Detect broken Mediatek firmware that doesn't properly save =
-and
-> >>
-> >> s/Mediatek/MediaTek/g
-> >>
-> >> Apart from that,
-> >>
-> >> Reviewed-by: AngeloGioacchino Del Regno
-> >> <angelogioacchino.delregno@collabora.com>
-> >>
-> >> On MT8195, MT8192, MT8186:
-> >> Tested-by: AngeloGioacchino Del Regno
-> >> <angelogioacchino.delregno@collabora.com>
-> >
-> > Thanks! Unless someone wants me to spin it more quickly, I'll plan to
-> > send a V3 with the Mediatek=3D>MediaTek change tomorrow.
->
-> I really don't think that's worth the effort.
->
-> Catalin can fix this when applying the patch, and even then,
-> nobody is going to notice that sort of pretty irrelevant
-> detail.
+nit: s/ufshcd_init_dev_pwr_param/ufshcd_init_pwr_dev_param/
 
-Sure, that's fine with me too--just trying to be helpful! OK, I won't
-plan to spin the patch unless someone tells me otherwise.
+> ufshcd_get_dev_pwr_param() which work based on the ufs_host_params to
 
--Doug
+nit: s/ufshcd_get_dev_pwr_param/ufshcd_get_pwr_dev_param/
+
+> ufshcd_init_host_param() and ufshcd_negotiate_pwr_param() respectively to
+> avoid confusions.
+> 
+> This change does not change any functionalities or logic.
+> 
+> Signed-off-by: Can Guo <quic_cang@quicinc.com>
+> ---
+>  drivers/ufs/host/ufs-exynos.c    |  7 +++---
+>  drivers/ufs/host/ufs-hisi.c      | 11 ++++-----
+>  drivers/ufs/host/ufs-mediatek.c  | 12 ++++------
+>  drivers/ufs/host/ufs-qcom.c      | 12 ++++------
+>  drivers/ufs/host/ufshcd-pltfrm.c | 49 ++++++++++++++++++++--------------------
+>  drivers/ufs/host/ufshcd-pltfrm.h | 10 ++++----
+>  6 files changed, 47 insertions(+), 54 deletions(-)
+> 
+
+<snip>
+
+> diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
+> index da2558e..6e65b61 100644
+> --- a/drivers/ufs/host/ufshcd-pltfrm.c
+> +++ b/drivers/ufs/host/ufshcd-pltfrm.c
+> @@ -285,17 +285,17 @@ static int ufshcd_parse_operating_points(struct ufs_hba *hba)
+>  }
+>  
+>  /**
+> - * ufshcd_get_pwr_dev_param - get finally agreed attributes for
+> + * ufshcd_negotiate_pwr_param - get finally agreed attributes for
+>   *                            power mode change
+> - * @pltfrm_param: pointer to platform parameters
+> + * @host_param: pointer to platform parameters
+>   * @dev_max: pointer to device attributes
+>   * @agreed_pwr: returned agreed attributes
+>   *
+>   * Return: 0 on success, non-zero value on failure.
+>   */
+> -int ufshcd_get_pwr_dev_param(const struct ufs_dev_params *pltfrm_param,
+> -			     const struct ufs_pa_layer_attr *dev_max,
+> -			     struct ufs_pa_layer_attr *agreed_pwr)
+> +int ufshcd_negotiate_pwr_param(const struct ufs_host_params *host_param,
+> +			       const struct ufs_pa_layer_attr *dev_max,
+> +			       struct ufs_pa_layer_attr *agreed_pwr)
+>  {
+>  	int min_pltfrm_gear;
+
+If you're going to change pltfrm -> host, maybe do so for
+min_pltfrm_gear too? I think this all reads nicer with the functions
+changed as is, but the consistency would be nice in my opinion.
+
+Outside of those nits, I think this reads nicer now as well.
+
+Acked-by: Andrew Halaney <ahalaney@redhat.com>
+
 
