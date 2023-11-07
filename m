@@ -4,82 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5643DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 15:57:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D85EC4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 16:30:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LhQa5i2LFy/RF9Ap2ZmQjfJT0WNdPHiQnsQUoHcyGdg=; b=wRZblyCvBXqnECgs1WLVs1mTGZ
-	VyFqIz/smY7pdsd/W2qb6QGhsxvq/2w1ictOIqC1w6vaZlEWKkgj+5442TghLGVHiSgg1O62cqD+1
-	EB4pJ8yRrIR7Ku0ZO/n98qhyYwja5fXmVKwAUzdi8Ke6cjfH+wW/gcouefk8r0lSLW1ctC5CQTnwl
-	bNqxD3mStUVL2akW70yghSQTz2ecVuvuChuHJEIkXKWPIxwsfHjHKQ0OHf10bN83LDk9uin4+/Mlb
-	CKkIF5DLjvMyb3XSEdm9kVDCxgxmHKPLGoGiuWhIkKGdMUvONOE9ZqKIhS8opgbNby/jxnecuI5wt
-	QvXBJ8qg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ih/04GUpR19XO263tnxpqBao6FFVu5bYKBuaFpE6nbQ=; b=cOZ4qa8BW40ifFhp4Ldsy0wOKc
+	W+04jVMuTN3MH7JDhMbWNT4Ncnxsl7i7G/nscrloCR8rU28aAliaWO3lajOL7om7Jb2NKtz4VJXyB
+	+m5nJSGiTfTNdLRN4UPA5pPxKpkv0CrxTKIT4cdWDd6OC9ZD4KMdBZaQU0CxwiE9hvN52RMuHNbdU
+	CT4wvGeG3pLqjRh19SJ3LDyneEvXgbILEZTSDwasXgrO/bI68+aCnK1KEJXXUD2gdnUsZWk969i+b
+	2rP4BbSmPT10gxqPhQ8rXO0z1yL2oMDbRl78hZPc2MuUTOvbTKn9LrNNTMHsVAjY9d+WRcvAiX1f4
+	h4EnEAbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0OS2-001w3K-0R;
-	Tue, 07 Nov 2023 15:57:14 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1r0Oxr-0020T7-1E;
+	Tue, 07 Nov 2023 16:30:07 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0ORy-001w1r-1g;
-	Tue, 07 Nov 2023 15:57:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 35B4BB81618;
-	Tue,  7 Nov 2023 15:57:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 818CFC433C9;
-	Tue,  7 Nov 2023 15:57:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699372628;
-	bh=JY60Lx5ZvGXboVH+s2MR9Ye3RuI2c9Q7hwNs+uhiPf8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=HsvPjn9rl1D3gxOxWU03YB+Z9Qf3ye5PKtE6TceSmX6XNY3pNr1shquC3d2iQruKS
-	 kdYX6dpSGkhCXjpEq55veRve1ASe1wmGf7eK3tac+xg9KRDfJiPm/4P6mvB0SI2xfp
-	 fivSC0dZFyqthKJ57w7+fRSH6+toerlJdK87mygd2zI0mpb8nohhnkXceBj2e/buW3
-	 x1OOBXQ+wmVaZOGR9Vh5MuZbMwXr8kPC6jvcppNS7TWvbMI0pk8jE/ttrW5F+jNfIE
-	 dfd6L54sJx1UPByyupwP7WFTWiXImpw8L0ajrOiSzDRhJ15oP6n78/W1q/6Tdy2WVx
-	 t5po7FMeN29iw==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1r0ORt-00BB5G-Ri;
-	Tue, 07 Nov 2023 15:57:06 +0000
-Date: Tue, 07 Nov 2023 15:57:05 +0000
-Message-ID: <86cywl1rqm.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Amit Daniel Kachhap <amit.kachhap@arm.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	James Morse <james.morse@arm.com>,
-	Joey Gouly <joey.gouly@arm.com>,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/2] arm64: Move Mediatek GIC quirk handling from irqchip to core
-In-Reply-To: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
+	id 1r0Oxo-0020SQ-1h;
+	Tue, 07 Nov 2023 16:30:06 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 21AE3660746E;
+	Tue,  7 Nov 2023 16:30:01 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699374602;
+	bh=RHKkcTh5W8SNMFNToY6SNfNKENo7Fq1KXtu4W+ceTuE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LAf+hzM9mXiDoJToArNMavA1JgIt6kye5VZXmT3OvHSGeBG67O9MR+7rGDoCaCH6j
+	 gMWqoNuNwDQhrO4Eo6xgrLtlnXT4efBtHTpDZRcSuWmSigRZciginRoOJCKGz6ZicK
+	 SM8xl3EvAqBURHXnIbDVPDcF17bJZ6qIsOf6AdcyXlk3POaB2GunoYjxojA5wZgBtf
+	 PyCby+CaYh1i9gpXCQWpIyLqH1KXwIVPvqkNhjzrR4D4eAVMa96dFKDlItLVt2YvQu
+	 aPQ5AHQLrlgVWoIgXfezQ2BtN5gn7IryiF2Yv4g9XWTqU8eVa8pBWSUT6jX6r+n1g6
+	 09h8PECT66eUw==
+Message-ID: <9b2e37a0-32ee-4aa4-99e8-d37103674847@collabora.com>
+Date: Tue, 7 Nov 2023 17:29:58 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] arm64: Move Mediatek GIC quirk handling from
+ irqchip to core
+To: Douglas Anderson <dianders@chromium.org>, Marc Zyngier <maz@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Amit Daniel Kachhap <amit.kachhap@arm.com>,
+ James Morse <james.morse@arm.com>, Joey Gouly <joey.gouly@arm.com>,
+ Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 References: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.1
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: dianders@chromium.org, mark.rutland@arm.com, catalin.marinas@arm.com, will@kernel.org, wenst@chromium.org, amit.kachhap@arm.com, angelogioacchino.delregno@collabora.com, james.morse@arm.com, joey.gouly@arm.com, broonie@kernel.org, matthias.bgg@gmail.com, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_075710_832195_4F0EA299 
-X-CRM114-Status: GOOD (  24.91  )
+X-CRM114-CacheID: sfid-20231107_083004_729177_A795E956 
+X-CRM114-Status: GOOD (  28.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,9 +81,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 07 Nov 2023 15:26:56 +0000,
-Douglas Anderson <dianders@chromium.org> wrote:
-> 
+Il 07/11/23 16:26, Douglas Anderson ha scritto:
 > In commit 44bd78dd2b88 ("irqchip/gic-v3: Disable pseudo NMIs on
 > Mediatek devices w/ firmware issues") we added a method for detecting
 > Mediatek devices with broken firmware and disabled pseudo-NMI. While
@@ -132,11 +117,51 @@ Douglas Anderson <dianders@chromium.org> wrote:
 > 
 > Suggested-by: Mark Rutland <mark.rutland@arm.com>
 > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> 
+> Changes in v2:
+> - Just detect the quirk once at init time.
+> - Fixed typo in subject: s/GiC/GIC.
+> - Squash in ("Remove Mediatek pseudo-NMI firmware quirk handling").
+> 
+>   arch/arm64/kernel/cpufeature.c | 46 ++++++++++++++++++++++++++++------
+>   drivers/irqchip/irq-gic-v3.c   | 22 +---------------
+>   2 files changed, 39 insertions(+), 29 deletions(-)
+> 
+> diff --git a/arch/arm64/kernel/cpufeature.c b/arch/arm64/kernel/cpufeature.c
+> index f6b2e2906fc9..928124ea2e96 100644
+> --- a/arch/arm64/kernel/cpufeature.c
+> +++ b/arch/arm64/kernel/cpufeature.c
+> @@ -999,6 +999,37 @@ static void init_32bit_cpu_features(struct cpuinfo_32bit *info)
+>   	init_cpu_ftr_reg(SYS_MVFR2_EL1, info->reg_mvfr2);
+>   }
+>   
+> +#ifdef CONFIG_ARM64_PSEUDO_NMI
+> +static bool enable_pseudo_nmi;
+> +
+> +static int __init early_enable_pseudo_nmi(char *p)
+> +{
+> +	return kstrtobool(p, &enable_pseudo_nmi);
+> +}
+> +early_param("irqchip.gicv3_pseudo_nmi", early_enable_pseudo_nmi);
+> +
+> +static __init void detect_system_supports_pseudo_nmi(void)
+> +{
+> +	struct device_node *np;
+> +
+> +	if (!enable_pseudo_nmi)
+> +		return;
+> +
+> +	/*
+> +	 * Detect broken Mediatek firmware that doesn't properly save and
 
-Acked-by: Marc Zyngier <maz@kernel.org>
+s/Mediatek/MediaTek/g
 
-	M.
+Apart from that,
 
--- 
-Without deviation from the norm, progress is not possible.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+On MT8195, MT8192, MT8186:
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
