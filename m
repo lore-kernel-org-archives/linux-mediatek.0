@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D808C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 11:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1587DC4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Nov 2023 12:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+qfHGaw+qQc3teLfUDPF4NRMrRggBRJWg7K58kjcQCA=; b=ef0ZeBHwjviAGwZ2u5xgKiXFR3
-	tPhjZ9lXigvVmEVXy6nmnkFWVTRry/kKNNamfo+crHjS4EwRKTcSgWb1KErN7Oi8wCCBrXic8ze4t
-	6tsiIp0uYxt1brxrG8NF0OEYr0hvSEAVWuWSWbJzkwOpudPnnUQyyOyrI4ugOsvdkRQibIU1aLTw2
-	+ySnKo4rYfragOoJimRrQpp77x8L5daAyyuJ6zMnii3kIMCZb4SpKy+Jg9t/S3UBVanWM7eOeqws8
-	QzaeanXz2dv+wgtgoBdU9MknU1VjW3YNZRzAdy31UiCvGPHqngDHwJxoDEYJkSTOCkmkTR7AyTzBW
-	RfF/h5EA==;
+	bh=9hZXqDNfGnWCtiqC27m093+MHMh07cF7j843aJEOT8Q=; b=ELZhULUn+FO9qkAx8SXkmZYIDm
+	mfNuZW4efiRg7xkxL3ZEIVWNXmtWWfCBP/XXL+uoUIpyeLSQGSPvriXa0FD2EPe9ffnRVECzO2rKd
+	2r4N67zimRWuTywHQzXpDApfDS1QDxINraBa/+ozA1niec4eeKWBP+ksKpY0XsDpZoraTfpdLWzbv
+	FbJ1iGgS005WbgbEiBEJn1ketv81frbHe79qusQV3oAqFCINDflyCVdGsYCUpqnaPiXTdX9wRt82M
+	t/07mifZhjMuBRu9uosAGH6vsm3Ia9KVg0irWSYRUOeDcAFJrLI/EQgyNLAp6tqYwbn+yGmwPPXtQ
+	AeZFwBHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0KOf-001JEW-1x;
-	Tue, 07 Nov 2023 11:37:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r0Krv-001PSx-14;
+	Tue, 07 Nov 2023 12:07:43 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0KOb-001J9L-3C;
-	Tue, 07 Nov 2023 11:37:27 +0000
+	id 1r0Krr-001PQc-3C;
+	Tue, 07 Nov 2023 12:07:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8047F61172;
-	Tue,  7 Nov 2023 11:37:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23444C433C7;
-	Tue,  7 Nov 2023 11:37:21 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 7818CB8165B;
+	Tue,  7 Nov 2023 12:07:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD27EC433CB;
+	Tue,  7 Nov 2023 12:07:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699357041;
-	bh=txhWC7Qk/B+OuUbVMEFoUuEQ+inCT1iopvkXocpTbpQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=nLI4zejY3Awsws4zBH2Um0JJUz32OBAW7xmtGH7vvZ1dz1Wu0Rp63D1NMYOQXwRJ+
-	 e2a8+oHGAthz7QNzYYBdR5AUn4kOpZzbO6Cjmcbj7eg1/erqLEYbnyQvAskU3bHWbu
-	 2oObyICVXiIDe2rEgcmPqBhe6flbtAbFCFwxEP8IanBA1QiVHM9LEi0YoeALUlV071
-	 s0vILooiXx8N8Nn5zY1nzleZOTlHZ9R6Gq6PZrkmvOCUimLuASBXz9YsTwaR8tjryv
-	 +fxmj+smX+T4+1+fa/9brOIy0AdErquwXKZJekQLIaOoaMWlBpKNrlZ4k3xgVdNZ2Q
-	 yKkzmCLIX72DQ==
-Received: from disco-boy.misterjones.org ([217.182.43.188] helo=www.loen.fr)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1r0KOU-00B4hc-CM;
-	Tue, 07 Nov 2023 11:37:18 +0000
+	s=k20201202; t=1699358857;
+	bh=s7IkpwFkvc63VeyiRhEpqYii0TAbOTbVdNVK41uQ8yE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=n0FAgYfUWostZTAzlsE+DFZsR9+r+CFeDugaZId5BiNY9/sCjrP6esgmarSpKltyd
+	 JJ0QQene7pH5PT/ReNI7HIcsWPI0HCilnPLUn+K0eQuccGger1/wOaRFaHXo0lVxzb
+	 5qnEDasf2aNgi8q2YvhhMA/X4AwfoXNQuw+L07+Nh7selII/fWvvUV7EVII3A4NtIP
+	 OP/C7yDMJAZwpkJJ9A0m1g6qNvdVFyVNiLmMkSJUUUAG8Jero6ZEO4tf3wzViUPna6
+	 ouiZlopoY9jrzYbDVdXkbMZpnlWg/9t9SGKE7diXG4tiPGwTRvsML8EILAarQJajau
+	 PfwsBtJ1fYRUQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Ingo Rohloff <lundril@gmx.de>,
+	Felix Fietkau <nbd@nbd.name>,
+	Sasha Levin <sashal@kernel.org>,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	bhelgaas@google.com,
+	deren.wu@mediatek.com,
+	sean.wang@mediatek.com,
+	quan.zhou@mediatek.com,
+	Leon.Yen@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pci@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.6 13/31] wifi: mt76: mt7921e: Support MT7992 IP in Xiaomi Redmibook 15 Pro (2023)
+Date: Tue,  7 Nov 2023 07:06:00 -0500
+Message-ID: <20231107120704.3756327-13-sashal@kernel.org>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231107120704.3756327-1-sashal@kernel.org>
+References: <20231107120704.3756327-1-sashal@kernel.org>
 MIME-Version: 1.0
-Date: Tue, 07 Nov 2023 11:37:18 +0000
-From: Marc Zyngier <maz@kernel.org>
-To: Doug Anderson <dianders@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Catalin Marinas
- <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Chen-Yu Tsai
- <wenst@chromium.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 3/3] irqchip/gic-v3: Remove Mediatek pseudo-NMI firmware
- quirk handling
-In-Reply-To: <CAD=FV=UVkE9k=o3-3UT2L172hhAH-gtpe5ByELN8srC+a-7mJw@mail.gmail.com>
-References: <20231006151547.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
- <20231006151547.3.Ie582d33cfe46f9ec2248e7f2dabdd6bbd66486a6@changeid>
- <ZS-8k22ZWgn5hcCd@FVFF77S0Q05N>
- <CAD=FV=UVkE9k=o3-3UT2L172hhAH-gtpe5ByELN8srC+a-7mJw@mail.gmail.com>
-User-Agent: Roundcube Webmail/1.4.15
-Message-ID: <0efbd5a2cfb5dab0876038ae726dc180@kernel.org>
-X-Sender: maz@kernel.org
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.6
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 217.182.43.188
-X-SA-Exim-Rcpt-To: dianders@chromium.org, mark.rutland@arm.com, catalin.marinas@arm.com, will@kernel.org, wenst@chromium.org, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_033726_178800_DED622E5 
-X-CRM114-Status: GOOD (  21.23  )
+X-CRM114-CacheID: sfid-20231107_040740_166963_017F72ED 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,49 +89,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-10-30 23:01, Doug Anderson wrote:
-> Hi,
-> 
-> On Wed, Oct 18, 2023 at 4:08 AM Mark Rutland <mark.rutland@arm.com> 
-> wrote:
->> 
->> On Fri, Oct 06, 2023 at 03:15:53PM -0700, Douglas Anderson wrote:
->> > This is a partial revert of commit 44bd78dd2b88 ("irqchip/gic-v3:
->> > Disable pseudo NMIs on Mediatek devices w/ firmware issues"). In the
->> > patch ("arm64: Disable GiC priorities on Mediatek devices w/ firmware
->> > issues") we've moved the quirk handling to another place and so it's
->> > not needed in the GiC driver.
->> >
->> > NOTE: this isn't a full revert because it leaves some of the changes
->> > to the "quirks" structure around in case future code needs it.
->> >
->> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
->> > ---
->> 
->> I think it might make sense to fold this into the patch adding the 
->> cpucap
->> detection. Otherwise, if you apply my suggestions to the first patch, 
->> there's a
->> 2-commit window where we'll have two places that log that NMI is being 
->> disabled
->> due to the FW issue. That's not a functional issue, so doesn't matter 
->> that
->> much.
->> 
->> Either way:
->> 
->> Acked-by: Mark Rutland <mark.rutland@arm.com>
-> 
-> I'm happy to go either way so I'd love some advice from maintainers
-> (Marc Zyngier, Catalin Marinas, Will Deacon) about what you'd prefer.
+From: Ingo Rohloff <lundril@gmx.de>
 
-I honestly don't mind either way. The sooner we have these fixes
-upstream, the better, so my only advise would be to respin it
-shortly.
+[ Upstream commit fce9c967820a72f600abbf061d7077861685a14d ]
 
-Thanks,
+In the Xiaomi Redmibook 15 Pro (2023) laptop I have got, a wifi chip is
+used, which according to its PCI Vendor ID is from "ITTIM Technology".
 
-         M.
+This chip works flawlessly with the mt7921e module.  The driver doesn't
+bind to this PCI device, because the Vendor ID from "ITTIM Technology" is
+not recognized.
+
+This patch adds the PCI Vendor ID from "ITTIM Technology" to the list of
+PCI Vendor IDs and lets the mt7921e driver bind to the mentioned wifi
+chip.
+
+Signed-off-by: Ingo Rohloff <lundril@gmx.de>
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
+ include/linux/pci_ids.h                         | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 3dda84a937175..f04e7095e1810 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -17,6 +17,8 @@ static const struct pci_device_id mt7921_pci_device_table[] = {
+ 		.driver_data = (kernel_ulong_t)MT7921_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7922),
+ 		.driver_data = (kernel_ulong_t)MT7922_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_ITTIM, 0x7922),
++		.driver_data = (kernel_ulong_t)MT7922_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0608),
+ 		.driver_data = (kernel_ulong_t)MT7921_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0616),
+diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+index 5fb3d4c393a9e..0328a4c01e0bf 100644
+--- a/include/linux/pci_ids.h
++++ b/include/linux/pci_ids.h
+@@ -180,6 +180,8 @@
+ #define PCI_DEVICE_ID_BERKOM_A4T		0xffa4
+ #define PCI_DEVICE_ID_BERKOM_SCITEL_QUADRO	0xffa8
+ 
++#define PCI_VENDOR_ID_ITTIM		0x0b48
++
+ #define PCI_VENDOR_ID_COMPAQ		0x0e11
+ #define PCI_DEVICE_ID_COMPAQ_TOKENRING	0x0508
+ #define PCI_DEVICE_ID_COMPAQ_TACHYON	0xa0fc
 -- 
-Jazz is not dead. It just smells funny...
+2.42.0
+
 
