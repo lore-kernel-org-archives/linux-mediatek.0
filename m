@@ -4,81 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B37F1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 02:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56067C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 05:12:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vR16R3nH7fmv/BxEUykAASSecaa8iTYdR38F9yHcXJs=; b=T3WDtEmrAG8uVw23+HpvQQ/0vn
-	h8/En1tmToyQ3R2/mJUjH7FzzX0iknnJ9OvC86fArgsag7MQGOuJAft94vPaOKPrn+klFn2rL2rJ1
-	4K0l5lKfENHPowpelz5Vt58wG+aK2K4AxhOFKAqyQePraKUkrW+MSFsKQAHDdwlEvaJm9YOUAmxqQ
-	BEufM2hohD0os/+09SCEENbE824HoZsff4QjLTUsH2/5pCXJGklTPrc7qKbi2jrME56XdM0hS8pqu
-	eyvhZREGwMO/eJMRJ0bcA56jLvRqdy3xRldVkLuh6avYTx6WK5H6uQWl/L8Ddhtp/iT4z4qbG0y81
-	uRouHVWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vYEGIjLp5xJEcVCGOC022B2zW3ROZi8ZYt6PPhsqajk=; b=XaGYGGWubSMQ1EnwBs4owzMpbM
+	Yg4EdC+j/lzFDI0+9GV5EmUFTTxigT5Nf5qzjkzkUg33iSqlINi0QF6MsV7H+VOMjJZj/BD41MErn
+	ULeLHS21uH2hRRQeYudmhF5tJkk2ey8szwSf/B/ehUlqP4D3m4RJzC6QtfpA5toX4n+ogDittWr1b
+	6fkQEQ/rSW9ed7Lhd5s5yxmg3b9mUpgfxdH7htSKGoMSRAhy8VSA//C/a84kiQ5e82B3XcPKuyZOM
+	VsiV4qAqV1umaXbrl8D6FkxVBzyB7JUYPdYcsLB1F4EIrT2/qqK6q11medotgBRntq5BbD/8lh+Ym
+	cQ/kNYdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0Ykh-002qHM-2L;
-	Wed, 08 Nov 2023 02:57:11 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1r0arT-002yWn-0k;
+	Wed, 08 Nov 2023 05:12:19 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0Yke-002qG8-1z;
-	Wed, 08 Nov 2023 02:57:10 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-5bd5809f63aso2607664a12.3;
-        Tue, 07 Nov 2023 18:57:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1699412225; x=1700017025; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vR16R3nH7fmv/BxEUykAASSecaa8iTYdR38F9yHcXJs=;
-        b=Yjb0iJzY2NFTGwrusi/KxyoSF1k45XeeOUTmFYZd2rUBECQPHYBAbBH2fTHoDNVXVW
-         X1/i2qgXLR1TIbuCVrWkEamMIMB1Tt+qPTdRr08w6SK4Ak4kkrl3J3WITFLgZEq1GoBP
-         UDWe7EXv2ML5RrCWOkX4geJkymRsiCNRCx27H1DvFqNIAfiGuW5EVb9OH5Rx+FtVntzM
-         JbBLjAZX0W4xyJ+O7hEj58paKR9caGRvFdBI3snVhAU1tzndC1HMMpsVPuhuiOo7K4ok
-         iz5tqGzLlKM8fVnpbXyKw+X6f2Las8Fe7BhVtVix61RXZm2Dfo8BoZ7xJhP2Ib7SpLB2
-         kf1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699412225; x=1700017025;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vR16R3nH7fmv/BxEUykAASSecaa8iTYdR38F9yHcXJs=;
-        b=Iu24e35AX8oJw7tXhOK4cyul0+G6TkocE0WZ7ugiA2BwvLai9p45CFv60EeOENhmaz
-         I+Tj8NfGdUGamrpWC5FOG0SYyxk8ZL4s1PQ6PKcrfdE0OwaObxLahlz7SKk00UmpWpsx
-         wcAAE54cKKcFIcbcqPVohvngQVidE10DtnTnrtozhCgMJ1QFiYe7Ynb1wpoOrzumnYG8
-         m+3E87kGAI2dxaKtyhgX/VggOEk+2xyTiVTU7tZamN3pyb0jjyR4aCvDYn7V8+l7pRZD
-         O+7dmd5EAioQu5ammaKoiScZ2SWuhzS/CYCqBeHkA7I/EEhAXznhshzhxwWAAmj7Lqx/
-         fuVQ==
-X-Gm-Message-State: AOJu0YyNBPnF2349GbVechPg4gPx51UrSe09hxp0yERoXsbveWlwpISA
-	WRlK7v6V+vBV8FUIfKhu4Sv1qD7pi2UTpz4SZ3k=
-X-Google-Smtp-Source: AGHT+IF3q4D8mSxtA0NdLkdfYSoxbFu7W4fzZDtMoDCUqUarRgS7ohRJloJqc4hOG4cnBnvyiD/RosFjWtNu0PZ4qcQ=
-X-Received: by 2002:a05:6300:8004:b0:180:eef7:b3b7 with SMTP id
- an4-20020a056300800400b00180eef7b3b7mr1118305pzc.51.1699412224768; Tue, 07
- Nov 2023 18:57:04 -0800 (PST)
+	id 1r0arO-002yVh-2I;
+	Wed, 08 Nov 2023 05:12:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 0A3B4CE09CF;
+	Wed,  8 Nov 2023 05:12:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B04AC433C8;
+	Wed,  8 Nov 2023 05:12:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1699420329;
+	bh=K+zY1vd1AzBR15/wm5/FSyF+NoBWbzgaQbhnrvCfoLU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Z3o2DN0FT6oReDKlnXQHft1tS9hlS2i6wraxS3Ci/99sPljKNxq34lz0+OSVDqLVk
+	 wSDFq2YvuzZWCVfh61kXWeuK3eC72BVjJxTelEF9zZrwh7+RJGk+zU1jM2P8uKrXHm
+	 qgNvoivRkZbcPg0SKuh32B6ayrIRPY6wQfW1fMfGdFtIa3Upo9HiAeMUDF4Zupshfw
+	 REvGWYC22S5V9pGRs3zlYgwATd06FEaR4gdu/zgOfIBlTz7FRtLtAX3DBG9/79VbCg
+	 QiVrFvTBORa75F38YpfzjfDpu8wHPRjcU7SWzMHOlISFPKNZS2f3OGl8+4WUOq+6+2
+	 y7pwNGdhtJ2Wg==
+Date: Wed, 8 Nov 2023 10:41:56 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Can Guo <cang@qti.qualcomm.com>
+Cc: quic_cang@quicinc.com, bvanassche@acm.org, stanley.chu@mediatek.com,
+	adrian.hunter@intel.com, beanhuo@micron.com, avri.altman@wdc.com,
+	junwoo80.lee@samsung.com, martin.petersen@oracle.com,
+	linux-scsi@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2 0/7] Enable HS-G5 support on SM8550
+Message-ID: <20231108051156.GB3296@thinkpad>
+References: <1699332374-9324-1-git-send-email-cang@qti.qualcomm.com>
 MIME-Version: 1.0
-References: <20231106144811.868127-1-zyytlz.wz@163.com> <b5f9d751-5425-4281-8a21-99e92bd447b7@xs4all.nl>
-In-Reply-To: <b5f9d751-5425-4281-8a21-99e92bd447b7@xs4all.nl>
-From: Zheng Hacker <hackerzheng666@gmail.com>
-Date: Wed, 8 Nov 2023 10:56:52 +0800
-Message-ID: <CAJedcCwaHCEksJpUz1Y0s-SX2zd_ncfOZs53qiMcaeBN2sw1YQ@mail.gmail.com>
-Subject: Re: [RESEND PATCH v2 0/3] Fix use-after-free bug in
- mtk_jpeg_dec_device_run and fix schedule error in mtk_jpegdec_worker
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Zheng Wang <zyytlz.wz@163.com>, dmitry.osipenko@collabora.com, Kyrie.Wu@mediatek.com, 
-	bin.liu@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com, 
-	security@kernel.org, amergnat@baylibre.com, wenst@chromium.org, 
-	stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1699332374-9324-1-git-send-email-cang@qti.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_185708_658335_1BF2BA7D 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20231107_211215_102221_F40E2399 
+X-CRM114-Status: GOOD (  17.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,59 +78,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hans Verkuil <hverkuil@xs4all.nl> =E4=BA=8E2023=E5=B9=B411=E6=9C=887=E6=97=
-=A5=E5=91=A8=E4=BA=8C 18:14=E5=86=99=E9=81=93=EF=BC=9A
->
-> On 06/11/2023 15:48, Zheng Wang wrote:
-> > Hello,
-> >
-> > This v2 series fixes the use-after-free bug in mtk_jpeg_dec_device_run.
-> > This patch fixes the security bug in chrome-os.
-> > It inclues reverting the incomplete fix before and make the right fix.
-> > Also,it fixes the error of timeout-worker-schedule in multiple-core
-> > devices.
-> >
-> > 1. Remove cancel worker in mtk_jpeg_remove for the worker is only
-> > registered in single-core device but we try to cacnel it in both
-> > single-core and multiple-core devices.
-> >
-> > 2. Fix use-after-free bug by delay the schedule_delayed_work only if
-> > mtk_jpeg_set_dec_dst runs successfully.
-> >
-> > 3. Delay the schedule_delayed_work in mtk_jpegdec_worker as it has same
-> > code logic in mtk_jpeg_dec_device_run.
-> >
-> > version 2 changes
-> >
-> > -put the patches into on series suggested by Dmitry
-> >
-> > Zheng Wang (3):
-> >   media: mtk-jpeg: Remove cancel worker in mtk_jpeg_remove to avoid the
-> >     crash of multi-core JPEG devices
-> >   media: mtk-jpeg: Fix use after free bug due to error path handling
-> >     in mtk_jpeg_dec_device_run
-> >   media: mtk-jpeg: Fix timeout schedule error in mtk_jpegdec_worker.
-> >
-> >  .../media/platform/mediatek/jpeg/mtk_jpeg_core.c    | 13 ++++++-------
-> >  1 file changed, 6 insertions(+), 7 deletions(-)
-> >
->
-> Please don't resend. If it is in patchwork.linuxtv.org then it is good.
-> Fixes (unless they fix something really nasty) can take several weeks bef=
-ore
-> they are picked up. I usually schedule 2 or 3 rounds per kernel cycle whe=
-re
-> I go through all the pending patches with fixes.
->
+On Mon, Nov 06, 2023 at 08:46:06PM -0800, Can Guo wrote:
+> This series enables HS-G5 support on SM8550.
+> 
+> This series is rebased on below changes from Mani -
+> https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-1-manivannan.sadhasivam@linaro.org/
+> https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-2-manivannan.sadhasivam@linaro.org/
+> 
+> This series is tested on below HW combinations -
+> SM8550 MTP + UFS4.0
+> SM8550 QRD + UFS3.1
+> SM8450 MTP + UFS3.1 (for regression test)
+> 
 
-Oh Sorry for my rudeness. And I'm deeply appreciative of your contributions
-to the community.
+You are sending the patches from QTI email and that's not supposed to happen I
+believe.
 
-Best regards,
-Zheng
+- Mani
 
+> v1 -> v2:
+> 1. Removed 2 changes which were exposing power info in sysfs
+> 2. Removed 1 change which was moving data structs to phy-qcom-qmp-ufs.h
+> 3. Added one new change (the 1st one) to clean up usage of ufs_dev_params based on comments from Mani
+> 4. Adjusted the logic of UFS device version detection according to comments from Mani:
+> 	4.1 For HW version < 0x5, go through dual init
+>  	4.2 For HW version >= 0x5
+> 		a. If UFS device version is populated, one init is required
+> 		b. If UFS device version is not populated, go through dual init
+> 
+> Bao D. Nguyen (1):
+>   scsi: ufs: ufs-qcom: Add support for UFS device version detection
+> 
+> Can Guo (6):
+>   scsi: ufs: host: Rename structure ufs_dev_params to ufs_host_params
+>   scsi: ufs: ufs-qcom: Setup host power mode during init
+>   scsi: ufs: ufs-qcom: Allow the first init start with the maximum
+>     supported gear
+>   scsi: ufs: ufs-qcom: Limit HS-G5 Rate-A to hosts with HW version 5
+>   scsi: ufs: ufs-qcom: Set initial PHY gear to max HS gear for HW ver 5
+>     and newer
+>   phy: qualcomm: phy-qcom-qmp-ufs: Add High Speed Gear 5 support for
+>     SM8550
+> 
+>  drivers/phy/qualcomm/phy-qcom-qmp-pcs-ufs-v6.h     |   2 +
+>  drivers/phy/qualcomm/phy-qcom-qmp-qserdes-com-v6.h |   2 +
+>  .../qualcomm/phy-qcom-qmp-qserdes-txrx-ufs-v6.h    |  12 +++
+>  drivers/phy/qualcomm/phy-qcom-qmp-ufs.c            | 112 ++++++++++++++++++---
+>  drivers/ufs/host/ufs-exynos.c                      |   7 +-
+>  drivers/ufs/host/ufs-hisi.c                        |  11 +-
+>  drivers/ufs/host/ufs-mediatek.c                    |  12 +--
+>  drivers/ufs/host/ufs-qcom.c                        |  78 ++++++++++----
+>  drivers/ufs/host/ufs-qcom.h                        |   3 +
+>  drivers/ufs/host/ufshcd-pltfrm.c                   |  49 +++++----
+>  drivers/ufs/host/ufshcd-pltfrm.h                   |  10 +-
+>  11 files changed, 217 insertions(+), 81 deletions(-)
+> 
+> -- 
+> 2.7.4
+> 
 
-> Regards,
->
->         Hans
+-- 
+மணிவண்ணன் சதாசிவம்
 
