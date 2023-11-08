@@ -4,114 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48A08C4167D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 07:49:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 531D0C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 08:08:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D/dxczvvsYMr70g43cKzL3igpf+UjlHp4+Ee7UJnllU=; b=QNtTwefY/A6W+IiNi9/1T+vncN
-	Lzn13vxEbbOxJubYe0dUp5kyh6JBDFa40B+6HLx7qVb8LuLjuSLfpzH2dEVU5YeSNyILrmGiiOrRb
-	rdL8XTJGgGSewOVaEtdjcn45ZOFbPfL/rszptAJ61KcFn2LP+TSI4XNt81bkA8+DvpNDS88gb18jv
-	3IT8qk3W4Xzqok85SPgDzhR6FvhaXcXsTsEGQiS0dN5378ZeYKbFd9wSAETqEnerbh3l3stfxsh/u
-	xsmJW2sK7t9S93POv/vIXukDbxeO0JzN/1UyFU6WoFLeEskce7VLs1ISct9+3AtVx+9rjw/uiVuQr
-	9ZDC06pw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=puwfUPVQu7oFXEq/1mHuROgiKKRZ4MTZNB8W80860Cw=; b=RasurACuoVWBwOqTgY0ErRYYl0
+	MBQ4rIjeu+esT4uB7G/kd4ElfWEIU8ZPxZYJD68+I08H1ux5vVB8Ao/RHi81md0Ytj5EhHoiUivMt
+	hwZ24AnhQ+ijVNa8/KmgneBYGAcuB8c6fGPaaGR/jKLzDzvW3HxyBG+6zTNRTowKdBxb/OIYJhvyp
+	aadSZxpD2EBNbX1FFJQxxyumoIQjHr4PpnL0jU0iPGt3cW3jfvVzBHKomTLm8VQmalqb/cNteF4A7
+	HwEovbRzkAdSqiRextjbESJ41XTBRxLIxh5h8pB7zL2NTfEvG49qoEVxlwMj9GC5zjAUKmZnFVIRm
+	VyhdoGLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0dJZ-003Cz3-0d;
-	Wed, 08 Nov 2023 07:49:29 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1r0dbk-003FH2-0m;
+	Wed, 08 Nov 2023 08:08:16 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0dJW-003Cxw-02;
-	Wed, 08 Nov 2023 07:49:27 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3A84RObF008885;
-	Wed, 8 Nov 2023 07:49:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=D/dxczvvsYMr70g43cKzL3igpf+UjlHp4+Ee7UJnllU=;
- b=l+uk7QZDvNc8jP1YMs5hPUuXUatbQFZxc0Rys3VgEHl8rzwI8KF0PU+oycOY8jxtpyR8
- NqvuxITx9crlasRm+qW1haxRKcwQ4iH+bn2NecyNiI5YygArdlSIZFnv8iysZ0j/ce6L
- rqwrbVyBgxfFghipmpWIXC8jWpENbe82Sc49Pl+PDOG2dk/vI1PAfjUGGkcKQ5HzBjc9
- BbHsPiokz+XbitrcG1BInnwXDqqZfbCKorVEO0cdn99Z5B5RZWBKNNzzDT/790Lh4kfG
- ZyzwmhLP51p/BIfoEZDZnYAMaJRr2WM8DQXuwn3YHugkM2xK4tuBrTNDYj3Bbr9q9oH0 7A== 
-Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3u7w2ch0t0-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 08 Nov 2023 07:49:08 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3A87mjiA007746
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 8 Nov 2023 07:48:45 GMT
-Received: from [10.253.34.202] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.39; Tue, 7 Nov
- 2023 23:48:40 -0800
-Message-ID: <351a7a54-1aeb-f226-855b-30291e9edd80@quicinc.com>
-Date: Wed, 8 Nov 2023 15:48:38 +0800
+	id 1r0dbg-003FFi-2X
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Nov 2023 08:08:15 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1cc921a4632so55328065ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Nov 2023 00:08:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1699430892; x=1700035692; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=puwfUPVQu7oFXEq/1mHuROgiKKRZ4MTZNB8W80860Cw=;
+        b=BsFMY7LsxKg6A829mc8eI+w1+FcJMu/JgYEVR0hREJDw9MxhHIk9yUdM3IqzfkRplm
+         BI/Hc6BRcNCifu5nwgaJWzzUBdfNdSoBWmglskXzZu4DKhzadumtOQ6hNhVgEsW7Kfxc
+         S1nKwwHpkgfTm6I46q+x0UeFHqkGqOkEKAd/0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699430892; x=1700035692;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=puwfUPVQu7oFXEq/1mHuROgiKKRZ4MTZNB8W80860Cw=;
+        b=K5imzdDvNCBNNrnI6NPy7PvEl0Tw7DGDdq62lIIz/SmNTvTFdC7W17wBYYM4Qbiufq
+         5ni7+pNDiHzW8RRdL9+IEvUHDSQoBmjwJp0oBBvPKyPaP+A7XyNVLgPow/x9dMcFTKIQ
+         6m6nDr6Y0Sp9xdDDZTk6LH+U28Yp1+5ToM238R86xRhfDKFUWBoSb9hXmfm3Ud+jkd+b
+         EzoMLlzwLPHcDFAkxcsii4QBuOGRqZ6g9S/j+TXjLlCt+67bKBbzGZw6OoILU4LhF3jc
+         Ljs5GGi59m7mT4QLHm2XMoNKynLL4Gyh0kgLVVZNchjqph7ar5NkP5m2NOk94lop//2Y
+         Kg5A==
+X-Gm-Message-State: AOJu0YyEIIqa+ax1BZo71J4ucjoPTIV5cc/zE6hSsXxhcn86FvQEdvTy
+	OQEIrQ6tIswVD98iq03ulWfcnQ==
+X-Google-Smtp-Source: AGHT+IF7qdw5a2CNuka9sr3LG+/Q+MPLzrvbr0/7g9h9ngOXAkzC7G//HFfZtC5SRFRHS/0DcDuzgQ==
+X-Received: by 2002:a17:902:6b88:b0:1cc:2eda:bde8 with SMTP id p8-20020a1709026b8800b001cc2edabde8mr1238261plk.24.1699430892090;
+        Wed, 08 Nov 2023 00:08:12 -0800 (PST)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id c5-20020a170902d90500b001c9b35287aesm1112462plz.88.2023.11.08.00.08.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Nov 2023 00:08:11 -0800 (PST)
+Date: Wed, 8 Nov 2023 08:08:07 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com
+Subject: Re: [PATCH v14 04/56] media: videobuf2: Use vb2_buffer instead of
+ index
+Message-ID: <20231108080807.42gw7roitxmw33un@chromium.org>
+References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-5-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v2 1/7] scsi: ufs: host: Rename structure ufs_dev_params
- to ufs_host_params
-Content-Language: en-US
-To: Bart Van Assche <bvanassche@acm.org>, Can Guo <cang@qti.qualcomm.com>,
-        <mani@kernel.org>, <stanley.chu@mediatek.com>,
-        <adrian.hunter@intel.com>, <beanhuo@micron.com>, <avri.altman@wdc.com>,
-        <junwoo80.lee@samsung.com>, <martin.petersen@oracle.com>
-CC: <linux-scsi@vger.kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>,
-        Andy Gross <agross@kernel.org>,
-        "Bjorn
- Andersson" <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?=
-	<u.kleine-koenig@pengutronix.de>,
-        Brian Masney <bmasney@redhat.com>,
-        "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
-	<linux-arm-kernel@lists.infradead.org>,
-        "open list:ARM/SAMSUNG S3C, S5P AND
- EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>,
-        open list
-	<linux-kernel@vger.kernel.org>,
-        "moderated list:UNIVERSAL FLASH STORAGE HOST
- CONTROLLER DRIVER..." <linux-mediatek@lists.infradead.org>,
-        "open
- list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
-	<linux-arm-msm@vger.kernel.org>
-References: <1699332374-9324-1-git-send-email-cang@qti.qualcomm.com>
- <1699332374-9324-2-git-send-email-cang@qti.qualcomm.com>
- <74f98f63-3200-4485-bbf0-819800837ee9@acm.org>
-From: Can Guo <quic_cang@quicinc.com>
-In-Reply-To: <74f98f63-3200-4485-bbf0-819800837ee9@acm.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: UYbZiAHeFoDrEtDh_Tq4xe_sc4f_RE9k
-X-Proofpoint-ORIG-GUID: UYbZiAHeFoDrEtDh_Tq4xe_sc4f_RE9k
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-08_01,2023-11-07_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
- lowpriorityscore=0 spamscore=0 clxscore=1015 malwarescore=0 phishscore=0
- bulkscore=0 mlxlogscore=999 suspectscore=0 adultscore=0 priorityscore=1501
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2311080064
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231031163104.112469-5-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_234926_058382_37347E5A 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20231108_000812_876363_B8A5B45B 
+X-CRM114-Status: GOOD (  30.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,34 +95,402 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bart,
+Hi Benjamin,
 
-On 11/8/2023 4:56 AM, Bart Van Assche wrote:
-> On 11/6/23 20:46, Can Guo wrote:
->>   /**
->> - * ufshcd_get_pwr_dev_param - get finally agreed attributes for
->> + * ufshcd_negotiate_pwr_param - get finally agreed attributes for
->>    *                            power mode change
->
-> Since you are renaming the function, please also change the description
-> of the function into something more meaningful, e.g. "find power mode
-> settings that are supported by both the controller and the device".
-Sure, will do.
->
->> - * @pltfrm_param: pointer to platform parameters
->> + * @host_param: pointer to platform parameters
->
-> Please make sure that the argument name and argument description are in
-> sync.
-Sure.
->
-> Thanks,
->
-> Bart.
+On Tue, Oct 31, 2023 at 05:30:12PM +0100, Benjamin Gaignard wrote:
+> Directly use vb2_buffer pointer instead of index inside queue array.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../media/common/videobuf2/videobuf2-core.c   | 40 +++++----------
+>  .../media/common/videobuf2/videobuf2-v4l2.c   | 51 +++++++++++--------
+>  drivers/media/dvb-core/dvb_vb2.c              |  6 +--
+>  include/media/videobuf2-core.h                | 16 +++---
+>  4 files changed, 53 insertions(+), 60 deletions(-)
+> 
 
+I just wanted to say that I really love this patch. Going well in the
+direction I wanted to push it to, but never had enough time to do it.
+Thanks!
 
-Thanks,
+Best regards,
+Tomasz
 
-Can Guo.
-
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 47dba2a20d73..968b7c0e7934 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -654,9 +654,9 @@ static bool __buffers_in_use(struct vb2_queue *q)
+>  	return false;
+>  }
+>  
+> -void vb2_core_querybuf(struct vb2_queue *q, unsigned int index, void *pb)
+> +void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
+>  {
+> -	call_void_bufop(q, fill_user_buffer, q->bufs[index], pb);
+> +	call_void_bufop(q, fill_user_buffer, vb, pb);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_querybuf);
+>  
+> @@ -1490,9 +1490,6 @@ static void vb2_req_unprepare(struct media_request_object *obj)
+>  	WARN_ON(!vb->req_obj.req);
+>  }
+>  
+> -int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+> -		  struct media_request *req);
+> -
+>  static void vb2_req_queue(struct media_request_object *obj)
+>  {
+>  	struct vb2_buffer *vb = container_of(obj, struct vb2_buffer, req_obj);
+> @@ -1507,7 +1504,7 @@ static void vb2_req_queue(struct media_request_object *obj)
+>  	 * set. We just ignore that, and expect this will be caught the
+>  	 * next time vb2_req_prepare() is called.
+>  	 */
+> -	err = vb2_core_qbuf(vb->vb2_queue, vb->index, NULL, NULL);
+> +	err = vb2_core_qbuf(vb->vb2_queue, vb, NULL, NULL);
+>  	WARN_ON_ONCE(err && err != -EIO);
+>  	mutex_unlock(vb->vb2_queue->lock);
+>  }
+> @@ -1562,12 +1559,10 @@ unsigned int vb2_request_buffer_cnt(struct media_request *req)
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_request_buffer_cnt);
+>  
+> -int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
+> +int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
+>  {
+> -	struct vb2_buffer *vb;
+>  	int ret;
+>  
+> -	vb = q->bufs[index];
+>  	if (vb->state != VB2_BUF_STATE_DEQUEUED) {
+>  		dprintk(q, 1, "invalid buffer state %s\n",
+>  			vb2_state_name(vb->state));
+> @@ -1654,10 +1649,9 @@ static int vb2_start_streaming(struct vb2_queue *q)
+>  	return ret;
+>  }
+>  
+> -int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+> +int vb2_core_qbuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb,
+>  		  struct media_request *req)
+>  {
+> -	struct vb2_buffer *vb;
+>  	enum vb2_buffer_state orig_state;
+>  	int ret;
+>  
+> @@ -1666,8 +1660,6 @@ int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+>  		return -EIO;
+>  	}
+>  
+> -	vb = q->bufs[index];
+> -
+>  	if (!req && vb->state != VB2_BUF_STATE_IN_REQUEST &&
+>  	    q->requires_requests) {
+>  		dprintk(q, 1, "qbuf requires a request\n");
+> @@ -2240,9 +2232,8 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+>  }
+>  
+>  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+> -		unsigned int index, unsigned int plane, unsigned int flags)
+> +		    struct vb2_buffer *vb, unsigned int plane, unsigned int flags)
+>  {
+> -	struct vb2_buffer *vb = NULL;
+>  	struct vb2_plane *vb_plane;
+>  	int ret;
+>  	struct dma_buf *dbuf;
+> @@ -2267,13 +2258,6 @@ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (index >= q->num_buffers) {
+> -		dprintk(q, 1, "buffer index out of range\n");
+> -		return -EINVAL;
+> -	}
+> -
+> -	vb = q->bufs[index];
+> -
+>  	if (plane >= vb->num_planes) {
+>  		dprintk(q, 1, "buffer plane out of range\n");
+>  		return -EINVAL;
+> @@ -2292,20 +2276,20 @@ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+>  			      flags & O_ACCMODE);
+>  	if (IS_ERR_OR_NULL(dbuf)) {
+>  		dprintk(q, 1, "failed to export buffer %d, plane %d\n",
+> -			index, plane);
+> +			vb->index, plane);
+>  		return -EINVAL;
+>  	}
+>  
+>  	ret = dma_buf_fd(dbuf, flags & ~O_ACCMODE);
+>  	if (ret < 0) {
+>  		dprintk(q, 3, "buffer %d, plane %d failed to export (%d)\n",
+> -			index, plane, ret);
+> +			vb->index, plane, ret);
+>  		dma_buf_put(dbuf);
+>  		return ret;
+>  	}
+>  
+>  	dprintk(q, 3, "buffer %d, plane %d exported as %d descriptor\n",
+> -		index, plane, ret);
+> +		vb->index, plane, ret);
+>  	*fd = ret;
+>  
+>  	return 0;
+> @@ -2710,7 +2694,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  		 * Queue all buffers.
+>  		 */
+>  		for (i = 0; i < q->num_buffers; i++) {
+> -			ret = vb2_core_qbuf(q, i, NULL, NULL);
+> +			ret = vb2_core_qbuf(q, q->bufs[i], NULL, NULL);
+>  			if (ret)
+>  				goto err_reqbufs;
+>  			fileio->bufs[i].queued = 1;
+> @@ -2895,7 +2879,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  
+>  		if (copy_timestamp)
+>  			b->timestamp = ktime_get_ns();
+> -		ret = vb2_core_qbuf(q, index, NULL, NULL);
+> +		ret = vb2_core_qbuf(q, b, NULL, NULL);
+>  		dprintk(q, 5, "vb2_qbuf result: %d\n", ret);
+>  		if (ret)
+>  			return ret;
+> @@ -2998,7 +2982,7 @@ static int vb2_thread(void *data)
+>  		if (copy_timestamp)
+>  			vb->timestamp = ktime_get_ns();
+>  		if (!threadio->stop)
+> -			ret = vb2_core_qbuf(q, vb->index, NULL, NULL);
+> +			ret = vb2_core_qbuf(q, vb, NULL, NULL);
+>  		call_void_qop(q, wait_prepare, q);
+>  		if (ret || threadio->stop)
+>  			break;
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index c7a54d82a55e..d19d82a75ac6 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -364,13 +364,12 @@ static void set_buffer_cache_hints(struct vb2_queue *q,
+>  }
+>  
+>  static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
+> -				    struct v4l2_buffer *b, bool is_prepare,
+> -				    struct media_request **p_req)
+> +				    struct vb2_buffer *vb, struct v4l2_buffer *b,
+> +				    bool is_prepare, struct media_request **p_req)
+>  {
+>  	const char *opname = is_prepare ? "prepare_buf" : "qbuf";
+>  	struct media_request *req;
+>  	struct vb2_v4l2_buffer *vbuf;
+> -	struct vb2_buffer *vb;
+>  	int ret;
+>  
+>  	if (b->type != q->type) {
+> @@ -378,23 +377,11 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (b->index >= q->num_buffers) {
+> -		dprintk(q, 1, "%s: buffer index out of range\n", opname);
+> -		return -EINVAL;
+> -	}
+> -
+> -	if (q->bufs[b->index] == NULL) {
+> -		/* Should never happen */
+> -		dprintk(q, 1, "%s: buffer is NULL\n", opname);
+> -		return -EINVAL;
+> -	}
+> -
+>  	if (b->memory != q->memory) {
+>  		dprintk(q, 1, "%s: invalid memory type\n", opname);
+>  		return -EINVAL;
+>  	}
+>  
+> -	vb = q->bufs[b->index];
+>  	vbuf = to_vb2_v4l2_buffer(vb);
+>  	ret = __verify_planes_array(vb, b);
+>  	if (ret)
+> @@ -667,7 +654,7 @@ int vb2_querybuf(struct vb2_queue *q, struct v4l2_buffer *b)
+>  	vb = q->bufs[b->index];
+>  	ret = __verify_planes_array(vb, b);
+>  	if (!ret)
+> -		vb2_core_querybuf(q, b->index, b);
+> +		vb2_core_querybuf(q, vb, b);
+>  	return ret;
+>  }
+>  EXPORT_SYMBOL(vb2_querybuf);
+> @@ -723,6 +710,7 @@ EXPORT_SYMBOL_GPL(vb2_reqbufs);
+>  int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
+>  		    struct v4l2_buffer *b)
+>  {
+> +	struct vb2_buffer *vb;
+>  	int ret;
+>  
+>  	if (vb2_fileio_is_active(q)) {
+> @@ -733,9 +721,15 @@ int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
+>  	if (b->flags & V4L2_BUF_FLAG_REQUEST_FD)
+>  		return -EINVAL;
+>  
+> -	ret = vb2_queue_or_prepare_buf(q, mdev, b, true, NULL);
+> +	if (b->index >= q->num_buffers) {
+> +		dprintk(q, 1, "buffer index out of range\n");
+> +		return -EINVAL;
+> +	}
+> +	vb = q->bufs[b->index];
+>  
+> -	return ret ? ret : vb2_core_prepare_buf(q, b->index, b);
+> +	ret = vb2_queue_or_prepare_buf(q, mdev, vb, b, true, NULL);
+> +
+> +	return ret ? ret : vb2_core_prepare_buf(q, vb, b);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_prepare_buf);
+>  
+> @@ -803,6 +797,7 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
+>  	     struct v4l2_buffer *b)
+>  {
+>  	struct media_request *req = NULL;
+> +	struct vb2_buffer *vb;
+>  	int ret;
+>  
+>  	if (vb2_fileio_is_active(q)) {
+> @@ -810,10 +805,16 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
+>  		return -EBUSY;
+>  	}
+>  
+> -	ret = vb2_queue_or_prepare_buf(q, mdev, b, false, &req);
+> +	if (b->index >= q->num_buffers) {
+> +		dprintk(q, 1, "buffer index out of range\n");
+> +		return -EINVAL;
+> +	}
+> +	vb = q->bufs[b->index];
+> +
+> +	ret = vb2_queue_or_prepare_buf(q, mdev, vb, b, false, &req);
+>  	if (ret)
+>  		return ret;
+> -	ret = vb2_core_qbuf(q, b->index, b, req);
+> +	ret = vb2_core_qbuf(q, vb, b, req);
+>  	if (req)
+>  		media_request_put(req);
+>  	return ret;
+> @@ -873,7 +874,15 @@ EXPORT_SYMBOL_GPL(vb2_streamoff);
+>  
+>  int vb2_expbuf(struct vb2_queue *q, struct v4l2_exportbuffer *eb)
+>  {
+> -	return vb2_core_expbuf(q, &eb->fd, eb->type, eb->index,
+> +	struct vb2_buffer *vb;
+> +
+> +	if (eb->index >= q->num_buffers) {
+> +		dprintk(q, 1, "buffer index out of range\n");
+> +		return -EINVAL;
+> +	}
+> +	vb = q->bufs[eb->index];
+> +
+> +	return vb2_core_expbuf(q, &eb->fd, eb->type, vb,
+>  				eb->plane, eb->flags);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_expbuf);
+> diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
+> index 909df82fed33..b322ef179f05 100644
+> --- a/drivers/media/dvb-core/dvb_vb2.c
+> +++ b/drivers/media/dvb-core/dvb_vb2.c
+> @@ -360,7 +360,7 @@ int dvb_vb2_querybuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
+>  		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
+>  		return -EINVAL;
+>  	}
+> -	vb2_core_querybuf(&ctx->vb_q, b->index, b);
+> +	vb2_core_querybuf(&ctx->vb_q, q->bufs[b->index], b);
+>  	dprintk(3, "[%s] index=%d\n", ctx->name, b->index);
+>  	return 0;
+>  }
+> @@ -370,7 +370,7 @@ int dvb_vb2_expbuf(struct dvb_vb2_ctx *ctx, struct dmx_exportbuffer *exp)
+>  	struct vb2_queue *q = &ctx->vb_q;
+>  	int ret;
+>  
+> -	ret = vb2_core_expbuf(&ctx->vb_q, &exp->fd, q->type, exp->index,
+> +	ret = vb2_core_expbuf(&ctx->vb_q, &exp->fd, q->type, q->bufs[exp->index],
+>  			      0, exp->flags);
+>  	if (ret) {
+>  		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
+> @@ -391,7 +391,7 @@ int dvb_vb2_qbuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
+>  		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
+>  		return -EINVAL;
+>  	}
+> -	ret = vb2_core_qbuf(&ctx->vb_q, b->index, b, NULL);
+> +	ret = vb2_core_qbuf(&ctx->vb_q, q->bufs[b->index], b, NULL);
+>  	if (ret) {
+>  		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
+>  			b->index, ret);
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 4b6a9d2ea372..cd3ff1cd759d 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -747,7 +747,7 @@ int vb2_wait_for_all_buffers(struct vb2_queue *q);
+>  /**
+>   * vb2_core_querybuf() - query video buffer information.
+>   * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+> - * @index:	id number of the buffer.
+> + * @vb:		pointer to struct &vb2_buffer.
+>   * @pb:		buffer struct passed from userspace.
+>   *
+>   * Videobuf2 core helper to implement VIDIOC_QUERYBUF() operation. It is called
+> @@ -759,7 +759,7 @@ int vb2_wait_for_all_buffers(struct vb2_queue *q);
+>   *
+>   * Return: returns zero on success; an error code otherwise.
+>   */
+> -void vb2_core_querybuf(struct vb2_queue *q, unsigned int index, void *pb);
+> +void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+>  
+>  /**
+>   * vb2_core_reqbufs() - Initiate streaming.
+> @@ -823,7 +823,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>   * vb2_core_prepare_buf() - Pass ownership of a buffer from userspace
+>   *			to the kernel.
+>   * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+> - * @index:	id number of the buffer.
+> + * @vb:		pointer to struct &vb2_buffer.
+>   * @pb:		buffer structure passed from userspace to
+>   *		&v4l2_ioctl_ops->vidioc_prepare_buf handler in driver.
+>   *
+> @@ -839,13 +839,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>   *
+>   * Return: returns zero on success; an error code otherwise.
+>   */
+> -int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb);
+> +int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+>  
+>  /**
+>   * vb2_core_qbuf() - Queue a buffer from userspace
+>   *
+>   * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+> - * @index:	id number of the buffer
+> + * @vb:		pointer to struct &vb2_buffer.
+>   * @pb:		buffer structure passed from userspace to
+>   *		v4l2_ioctl_ops->vidioc_qbuf handler in driver
+>   * @req:	pointer to &struct media_request, may be NULL.
+> @@ -867,7 +867,7 @@ int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb);
+>   *
+>   * Return: returns zero on success; an error code otherwise.
+>   */
+> -int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+> +int vb2_core_qbuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb,
+>  		  struct media_request *req);
+>  
+>  /**
+> @@ -931,7 +931,7 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type);
+>   * @fd:		pointer to the file descriptor associated with DMABUF
+>   *		(set by driver).
+>   * @type:	buffer type.
+> - * @index:	id number of the buffer.
+> + * @vb:		pointer to struct &vb2_buffer.
+>   * @plane:	index of the plane to be exported, 0 for single plane queues
+>   * @flags:	file flags for newly created file, as defined at
+>   *		include/uapi/asm-generic/fcntl.h.
+> @@ -945,7 +945,7 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type);
+>   * Return: returns zero on success; an error code otherwise.
+>   */
+>  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+> -		unsigned int index, unsigned int plane, unsigned int flags);
+> +		    struct vb2_buffer *vb, unsigned int plane, unsigned int flags);
+>  
+>  /**
+>   * vb2_core_queue_init() - initialize a videobuf2 queue
+> -- 
+> 2.39.2
+> 
 
