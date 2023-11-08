@@ -4,83 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56E8FC4167D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 10:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762E3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 11:29:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gKTyWokpX5cgue49QDtZFQPjUpwVAu8TbIboU5lRKS0=; b=DJr583mJSxpk3vyBLeG8Rw7Gaj
-	CLwofAwsOPrchGzjZBiX0wzN2dnQLBQTBiizkVV4cdoGoIwaK7DmnsvrNFJV36/td0JZerEGQhN+d
-	uWggImJLFgewtMz2HwybJCGdHQUic2Y9491Ls37EjPQ/Ht9eZLRd6X/STZfVALcFRzSQSxqt7xpfT
-	pU8L3w3cMC9nx2J4Ob2sBJuQAEzhzFcYzd0XVamMh2PKlvnww9VBk2y+me2aWsqHVriqiwxtOTFqQ
-	9pA/Zyogux6Ym3Zht1OHLuYOTsDA3QNI0mpbWa1mE9SJjZTK/Ky7SYMVU+pRlFm5P5drRDaKN4LG6
-	LnZzyA4Q==;
+	bh=QPmG7YeVYKmioXhdR73/gZdy8nfhlo6rs7dHURDaJCU=; b=xSRDamKTKpC5P9uIp5Y183X8vC
+	fiKtCh8RSxTPdGt9xrimq1r9rNsboB9VzrI3BsYARmtjKvzBpDe2Xgr/xxewf+j/dPVNs3+76EaqB
+	itZxLzTC5KYH5r6c7kbAlijaaba94ldcNiabAlkujqGDIxYTy/4ZvMPESlP2aECzWbETMZ5BlcUq2
+	/Va1XiKaf09UdQjGY6bD6UdFiVB+syAtsQJjPRtu3O7klHGJ+KW4xP4tGx2EhP25FW9aGT3OONCLl
+	19n8Vdg1iLwr67VbARObr5Yct7RpcxtDhmij3ULvv+tWiQ1QHkhobGjuM6pDsdzmV3l1IMmpZdCdN
+	IHISCtoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0g3F-003TlH-2z;
-	Wed, 08 Nov 2023 10:44:49 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0g3B-003Tfc-0E
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Nov 2023 10:44:48 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-6c43f830566so1399695b3a.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Nov 2023 02:44:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699440284; x=1700045084; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=gKTyWokpX5cgue49QDtZFQPjUpwVAu8TbIboU5lRKS0=;
-        b=ZT0WlVQC6Z0Pkv/j8D6ZSY6mw7630QOB2n+HO0aKZ4Q743x5602Z/6kyZahE/3+Isa
-         BjJp0eH8CUUbFwOzdsEyBkqrlFrtmAucCR9fHvNAv1xzMMsVMaF9ljAEFB2WGzXoaKTw
-         mNhCBc/rH/lBTQTYUgBxoHbz9qrNK4Tpq2lpo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699440284; x=1700045084;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gKTyWokpX5cgue49QDtZFQPjUpwVAu8TbIboU5lRKS0=;
-        b=xMMPPBi6DbZpzdeCKfc4Mm502PRmdl6HEcKO+ozIw1rerm2K9Vr9ckgm9YMEjme9V5
-         OT3X1X86n8uAvmOK77sGF6wdspZLVrmnSkIwSuDHY9oM7c1xgEeGKDOjxxptTfeFG6Tb
-         SS1l7TnnuctmhajPgc1AHAsaIESeNDU5wMnHcIVwCeuHc2xcSWw8zwreabt2EOTHnoNS
-         nQ82sUvTwP7EHxcAfvSNvesq+ijQNTU0lKSUI40YK3cnOoby0d2wjcdGpFNhHDjFcma8
-         ooahYFy5DFeu1m6LrnjvqiON5ReqiHJICEyZFkFgs/1og29N7ru8Pv6OfT32ryKfP3Ro
-         WRjA==
-X-Gm-Message-State: AOJu0YxC4kxif08GIqZyizIgstjsYBDg4duVw2HipVFMVz5Q8KHL/K74
-	+b89u5yKKCfDfV+UV+w+z2/WSg==
-X-Google-Smtp-Source: AGHT+IEzqy1BibD2RC0l4kCSPsKsVPKvQCQxco2ue8t7SCmmOXz1P0lkP95g4IaHmCfbUqjrwn7xKw==
-X-Received: by 2002:a05:6a20:7f97:b0:14c:daa9:5e22 with SMTP id d23-20020a056a207f9700b0014cdaa95e22mr1989536pzj.45.1699440283822;
-        Wed, 08 Nov 2023 02:44:43 -0800 (PST)
-Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id w12-20020a170902e88c00b001bb3beb2bc6sm1450272plg.65.2023.11.08.02.44.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Nov 2023 02:44:43 -0800 (PST)
-Date: Wed, 8 Nov 2023 10:44:39 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v14 52/56] media: core: Add bitmap manage bufs array
- entries
-Message-ID: <20231108104439.oxpbbd2yro7u57t4@chromium.org>
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-53-benjamin.gaignard@collabora.com>
+	id 1r0gk8-003ZQO-1R;
+	Wed, 08 Nov 2023 11:29:08 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1r0gk4-003ZPW-0U;
+	Wed, 08 Nov 2023 11:29:05 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 830001477;
+	Wed,  8 Nov 2023 03:29:45 -0800 (PST)
+Received: from FVFF77S0Q05N (unknown [10.57.37.113])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C6ADF3F703;
+	Wed,  8 Nov 2023 03:28:58 -0800 (PST)
+Date: Wed, 8 Nov 2023 11:28:55 +0000
+From: Mark Rutland <mark.rutland@arm.com>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Marc Zyngier <maz@kernel.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
+	Amit Daniel Kachhap <amit.kachhap@arm.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	James Morse <james.morse@arm.com>, Joey Gouly <joey.gouly@arm.com>,
+	Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] arm64: Move Mediatek GIC quirk handling from
+ irqchip to core
+Message-ID: <ZUtw95AZ4sCbvqBk@FVFF77S0Q05N>
+References: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231031163104.112469-53-benjamin.gaignard@collabora.com>
+In-Reply-To: <20231107072651.v2.1.Ide945748593cffd8ff0feb9ae22b795935b944d6@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231108_024445_176695_337B4DA2 
-X-CRM114-Status: GOOD (  34.27  )
+X-CRM114-CacheID: sfid-20231108_032904_284686_0502401D 
+X-CRM114-Status: GOOD (  40.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,242 +71,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 31, 2023 at 05:31:00PM +0100, Benjamin Gaignard wrote:
-> Add a bitmap field to know which of bufs array entries are
-> used or not.
-> Remove no more used num_buffers field from queue structure.
-> Use bitmap_find_next_zero_area() to find the first possible
-> range when creating new buffers to fill the gaps.
+On Tue, Nov 07, 2023 at 07:26:56AM -0800, Douglas Anderson wrote:
+> In commit 44bd78dd2b88 ("irqchip/gic-v3: Disable pseudo NMIs on
+> Mediatek devices w/ firmware issues") we added a method for detecting
+> Mediatek devices with broken firmware and disabled pseudo-NMI. While
+> that worked, it didn't address the problem at a deep enough level.
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> The fundamental issue with this broken firmware is that it's not
+> saving and restoring several important GICR registers. The current
+> list is believed to be:
+> * GICR_NUM_IPRIORITYR
+> * GICR_CTLR
+> * GICR_ISPENDR0
+> * GICR_ISACTIVER0
+> * GICR_NSACR
+> 
+> Pseudo-NMI didn't work because it was the only thing (currently) in
+> the kernel that relied on the broken registers, so forcing pseudo-NMI
+> off was an effective fix. However, it could be observed that calling
+> system_uses_irq_prio_masking() on these systems still returned
+> "true". That caused confusion and led to the need for
+> commit a07a59415217 ("arm64: smp: avoid NMI IPIs with broken MediaTek
+> FW"). It's worried that the incorrect value returned by
+> system_uses_irq_prio_masking() on these systems will continue to
+> confuse future developers.
+> 
+> Let's fix the issue a little more completely by disabling IRQ
+> priorities at a deeper level in the kernel. Once we do this we can
+> revert some of the other bits of code dealing with this quirk.
+> 
+> This includes a partial revert of commit 44bd78dd2b88
+> ("irqchip/gic-v3: Disable pseudo NMIs on Mediatek devices w/ firmware
+> issues"). This isn't a full revert because it leaves some of the
+> changes to the "quirks" structure around in case future code needs it.
+> 
+> Suggested-by: Mark Rutland <mark.rutland@arm.com>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+Acked-by: Mark Rutland <mark.rutland@arm.com>
+
+Mark.
+
 > ---
->  .../media/common/videobuf2/videobuf2-core.c   | 42 +++++++++++++++----
->  include/media/videobuf2-core.h                | 15 ++++---
->  2 files changed, 42 insertions(+), 15 deletions(-)
 > 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index 2c8cf479a962..6e88406fcae9 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -416,11 +416,12 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->   */
->  static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
->  {
-> -	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
-> +	WARN_ON(index >= q->max_num_buffers || test_bit(index, q->bufs_bitmap));
->  
->  	q->bufs[index] = vb;
->  	vb->index = index;
->  	vb->vb2_queue = q;
-> +	set_bit(index, q->bufs_bitmap);
+> Changes in v2:
+> - Just detect the quirk once at init time.
+> - Fixed typo in subject: s/GiC/GIC.
+> - Squash in ("Remove Mediatek pseudo-NMI firmware quirk handling").
+> 
+>  arch/arm64/kernel/cpufeature.c | 46 ++++++++++++++++++++++++++++------
+>  drivers/irqchip/irq-gic-v3.c   | 22 +---------------
+>  2 files changed, 39 insertions(+), 29 deletions(-)
+> 
+> diff --git a/arch/arm64/kernel/cpufeature.c b/arch/arm64/kernel/cpufeature.c
+> index f6b2e2906fc9..928124ea2e96 100644
+> --- a/arch/arm64/kernel/cpufeature.c
+> +++ b/arch/arm64/kernel/cpufeature.c
+> @@ -999,6 +999,37 @@ static void init_32bit_cpu_features(struct cpuinfo_32bit *info)
+>  	init_cpu_ftr_reg(SYS_MVFR2_EL1, info->reg_mvfr2);
 >  }
 >  
->  /**
-> @@ -429,6 +430,7 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
->   */
->  static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
->  {
-> +	clear_bit(vb->index, vb->vb2_queue->bufs_bitmap);
->  	vb->vb2_queue->bufs[vb->index] = NULL;
->  	vb->vb2_queue = NULL;
->  }
-> @@ -450,11 +452,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  	unsigned long index;
->  	int ret;
->  
-> -	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
-> +	/* Ensure that vb2_get_num_buffers(q) + num_buffers is no more than q->max_num_buffers */
->  	num_buffers = min_t(unsigned int, num_buffers,
->  			    q->max_num_buffers - vb2_get_num_buffers(q));
->  
-> -	index = vb2_get_num_buffers(q);
-> +	index = bitmap_find_next_zero_area(q->bufs_bitmap, q->max_num_buffers,
-> +					   0, num_buffers, 0);
->  
->  	*first_index = index;
->  
-> @@ -656,7 +659,6 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
->  		kfree(vb);
->  	}
->  
-> -	q->num_buffers -= buffers;
->  	if (!vb2_get_num_buffers(q)) {
->  		q->memory = VB2_MEMORY_UNKNOWN;
->  		INIT_LIST_HEAD(&q->queued_list);
-> @@ -874,6 +876,14 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
->  	if (!q->bufs)
->  		ret = -ENOMEM;
+> +#ifdef CONFIG_ARM64_PSEUDO_NMI
+> +static bool enable_pseudo_nmi;
 > +
-> +	if (!q->bufs_bitmap)
-> +		q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-> +	if (!q->bufs_bitmap) {
-> +		ret = -ENOMEM;
-> +		kfree(q->bufs);
-> +		q->bufs = NULL;
+> +static int __init early_enable_pseudo_nmi(char *p)
+> +{
+> +	return kstrtobool(p, &enable_pseudo_nmi);
+> +}
+> +early_param("irqchip.gicv3_pseudo_nmi", early_enable_pseudo_nmi);
+> +
+> +static __init void detect_system_supports_pseudo_nmi(void)
+> +{
+> +	struct device_node *np;
+> +
+> +	if (!enable_pseudo_nmi)
+> +		return;
+> +
+> +	/*
+> +	 * Detect broken Mediatek firmware that doesn't properly save and
+> +	 * restore GIC priorities.
+> +	 */
+> +	np = of_find_compatible_node(NULL, NULL, "arm,gic-v3");
+> +	if (np && of_property_read_bool(np, "mediatek,broken-save-restore-fw")) {
+> +		pr_info("Pseudo-NMI disabled due to Mediatek Chromebook GICR save problem\n");
+> +		enable_pseudo_nmi = false;
 > +	}
->  	q->memory = memory;
->  	mutex_unlock(&q->mmap_lock);
->  	if (ret)
-> @@ -943,7 +953,6 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	}
->  
->  	mutex_lock(&q->mmap_lock);
-> -	q->num_buffers = allocated_buffers;
->  
->  	if (ret < 0) {
->  		/*
-> @@ -970,6 +979,10 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	mutex_lock(&q->mmap_lock);
->  	q->memory = VB2_MEMORY_UNKNOWN;
->  	mutex_unlock(&q->mmap_lock);
-> +	kfree(q->bufs);
-> +	q->bufs = NULL;
-> +	bitmap_free(q->bufs_bitmap);
-> +	q->bufs_bitmap = NULL;
->  	return ret;
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
-> @@ -1006,9 +1019,19 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  		q->memory = memory;
->  		if (!q->bufs)
->  			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
-> -		if (!q->bufs)
-> +		if (!q->bufs) {
->  			ret = -ENOMEM;
-> +			goto unlock;
-> +		}
-> +		if (!q->bufs_bitmap)
-> +			q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-
-Same as with the kcalloc(). Why not just allocate this in the core code,
-e.g. vb2_core_queue_init()?
-
-Actually, is it because we want to avoid allocating
-resources early, before the need to actually use the vb2 queue?
-If so, could this go to some other core function that runs later, e.g. __vb2_queue_alloc()?
-
-> +		if (!q->bufs_bitmap) {
-> +			ret = -ENOMEM;
-> +			kfree(q->bufs);
-> +			q->bufs = NULL;
-> +		}
->  		mutex_unlock(&q->mmap_lock);
-> +unlock:
->  		if (ret)
->  			return ret;
->  		q->waiting_for_buffers = !q->is_output;
-> @@ -1070,7 +1093,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  	}
->  
->  	mutex_lock(&q->mmap_lock);
-> -	q->num_buffers += allocated_buffers;
->  
->  	if (ret < 0) {
->  		/*
-> @@ -2549,7 +2571,9 @@ void vb2_core_queue_release(struct vb2_queue *q)
->  	__vb2_queue_free(q, q->max_num_buffers);
->  	kfree(q->bufs);
->  	q->bufs = NULL;
-> -	q->num_buffers = 0;
-> +	bitmap_free(q->bufs_bitmap);
-> +	q->bufs_bitmap = NULL;
+> +	of_node_put(np);
+> +}
+> +#else /* CONFIG_ARM64_PSEUDO_NMI */
+> +static inline void detect_system_supports_pseudo_nmi(void) { }
+> +#endif
 > +
->  	mutex_unlock(&q->mmap_lock);
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-> @@ -2904,7 +2928,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
->  	 * Check if we need to dequeue the buffer.
+>  void __init init_cpu_features(struct cpuinfo_arm64 *info)
+>  {
+>  	/* Before we start using the tables, make sure it is sorted */
+> @@ -1057,6 +1088,13 @@ void __init init_cpu_features(struct cpuinfo_arm64 *info)
 >  	 */
->  	index = fileio->cur_index;
-> -	if (index >= q->num_buffers) {
-> +	if (!test_bit(index, q->bufs_bitmap)) {
-
-I don't like this low level manipulation of queue internals here (after all
-the work other patches did to use helpers). Why not just keep
-vb2_get_num_buffers() here?
-
->  		struct vb2_buffer *b;
+>  	init_cpucap_indirect_list();
 >  
->  		/*
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 6986ff4b77cd..288477075a0e 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -346,7 +346,7 @@ struct vb2_buffer {
->   *			describes the requested number of planes and sizes\[\]
->   *			contains the requested plane sizes. In this case
->   *			\*num_buffers are being allocated additionally to
-> - *			q->num_buffers. If either \*num_planes or the requested
-> + *			queue buffers. If either \*num_planes or the requested
-
-Perhaps "the buffers already in the queue"?
-
->   *			sizes are invalid callback must return %-EINVAL.
->   * @wait_prepare:	release any locks taken while calling vb2 functions;
->   *			it is called before an ioctl needs to wait for a new
-> @@ -557,7 +557,7 @@ struct vb2_buf_ops {
->   * @memory:	current memory type used
->   * @dma_dir:	DMA mapping direction.
->   * @bufs:	videobuf2 buffer structures
-> - * @num_buffers: number of allocated/used buffers
-> + * @bufs_bitmap: bitmap to manage bufs entries.
-
-Perhaps "bitmap tracking whether each bufs[] entry is used"?
-
->   * @max_num_buffers: upper limit of number of allocated/used buffers
->   * @queued_list: list of buffers currently queued from userspace
->   * @queued_count: number of buffers queued and ready for streaming.
-> @@ -621,7 +621,7 @@ struct vb2_queue {
->  	unsigned int			memory;
->  	enum dma_data_direction		dma_dir;
->  	struct vb2_buffer		**bufs;
-> -	unsigned int			num_buffers;
-> +	unsigned long			*bufs_bitmap;
->  	unsigned int			max_num_buffers;
->  
->  	struct list_head		queued_list;
-> @@ -1150,7 +1150,10 @@ static inline bool vb2_fileio_is_active(struct vb2_queue *q)
->   */
->  static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
->  {
-> -	return q->num_buffers;
-> +	if (!q->bufs_bitmap)
-> +		return 0;
+> +	/*
+> +	 * Detect broken pseudo-NMI. Must be called _before_ the call to
+> +	 * setup_boot_cpu_capabilities() since it interacts with
+> +	 * can_use_gic_priorities().
+> +	 */
+> +	detect_system_supports_pseudo_nmi();
 > +
-> +	return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
-
-Hmm, could we just cache the number of buffers we have, so that we don't
-have to go over the entire bitmap every time? (Basically just keep the
-code that we had for handling q->num_buffers before this patch.)
-
->  }
+>  	/*
+>  	 * Detect and enable early CPU capabilities based on the boot CPU,
+>  	 * after we have initialised the CPU feature infrastructure.
+> @@ -2085,14 +2123,6 @@ static void cpu_enable_e0pd(struct arm64_cpu_capabilities const *cap)
+>  #endif /* CONFIG_ARM64_E0PD */
 >  
->  /**
-> @@ -1253,13 +1256,13 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
->  static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
->  						unsigned int index)
+>  #ifdef CONFIG_ARM64_PSEUDO_NMI
+> -static bool enable_pseudo_nmi;
+> -
+> -static int __init early_enable_pseudo_nmi(char *p)
+> -{
+> -	return kstrtobool(p, &enable_pseudo_nmi);
+> -}
+> -early_param("irqchip.gicv3_pseudo_nmi", early_enable_pseudo_nmi);
+> -
+>  static bool can_use_gic_priorities(const struct arm64_cpu_capabilities *entry,
+>  				   int scope)
 >  {
-> -	if (!q->bufs)
-> +	if (!q->bufs_bitmap)
->  		return NULL;
+> diff --git a/drivers/irqchip/irq-gic-v3.c b/drivers/irqchip/irq-gic-v3.c
+> index 68d11ccee441..1ba674367ee3 100644
+> --- a/drivers/irqchip/irq-gic-v3.c
+> +++ b/drivers/irqchip/irq-gic-v3.c
+> @@ -39,8 +39,7 @@
 >  
->  	if (index >= q->max_num_buffers)
->  		return NULL;
+>  #define FLAGS_WORKAROUND_GICR_WAKER_MSM8996	(1ULL << 0)
+>  #define FLAGS_WORKAROUND_CAVIUM_ERRATUM_38539	(1ULL << 1)
+> -#define FLAGS_WORKAROUND_MTK_GICR_SAVE		(1ULL << 2)
+> -#define FLAGS_WORKAROUND_ASR_ERRATUM_8601001	(1ULL << 3)
+> +#define FLAGS_WORKAROUND_ASR_ERRATUM_8601001	(1ULL << 2)
 >  
-> -	if (index < q->num_buffers)
-> +	if (test_bit(index, q->bufs_bitmap))
-
-Aha, I see why we need the extra condition above now. Perhaps it should've
-been added in this patch instead?
-
->  		return q->bufs[index];
->  	return NULL;
+>  #define GIC_IRQ_TYPE_PARTITION	(GIC_IRQ_TYPE_LPI + 1)
+>  
+> @@ -1779,15 +1778,6 @@ static bool gic_enable_quirk_msm8996(void *data)
+>  	return true;
 >  }
+>  
+> -static bool gic_enable_quirk_mtk_gicr(void *data)
+> -{
+> -	struct gic_chip_data *d = data;
+> -
+> -	d->flags |= FLAGS_WORKAROUND_MTK_GICR_SAVE;
+> -
+> -	return true;
+> -}
+> -
+>  static bool gic_enable_quirk_cavium_38539(void *data)
+>  {
+>  	struct gic_chip_data *d = data;
+> @@ -1888,11 +1878,6 @@ static const struct gic_quirk gic_quirks[] = {
+>  		.compatible = "asr,asr8601-gic-v3",
+>  		.init	= gic_enable_quirk_asr8601,
+>  	},
+> -	{
+> -		.desc	= "GICv3: Mediatek Chromebook GICR save problem",
+> -		.property = "mediatek,broken-save-restore-fw",
+> -		.init	= gic_enable_quirk_mtk_gicr,
+> -	},
+>  	{
+>  		.desc	= "GICv3: HIP06 erratum 161010803",
+>  		.iidr	= 0x0204043b,
+> @@ -1959,11 +1944,6 @@ static void gic_enable_nmi_support(void)
+>  	if (!gic_prio_masking_enabled())
+>  		return;
+>  
+> -	if (gic_data.flags & FLAGS_WORKAROUND_MTK_GICR_SAVE) {
+> -		pr_warn("Skipping NMI enable due to firmware issues\n");
+> -		return;
+> -	}
+> -
+>  	rdist_nmi_refs = kcalloc(gic_data.ppi_nr + SGI_NR,
+>  				 sizeof(*rdist_nmi_refs), GFP_KERNEL);
+>  	if (!rdist_nmi_refs)
 > -- 
-> 2.39.2
+> 2.42.0.869.gea05f2083d-goog
 > 
-
-Best regards,
-Tomasz
 
