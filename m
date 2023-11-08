@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390B4C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 10:24:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE9E6C4167D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 10:25:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dSHpWDlAyfJyOGsIApYR9Ror/UYeRgH6DP/oCc5ghJA=; b=0gluIBf9x0BDTLl195c1r9bQYK
-	HFxZsjSuByEKYgcozdo4knmM0eosGh2J1QsgQxJq/OomEiP6GHxnyceHy4zlPY5aMxqSk3pNMtyzV
-	1YBrMEDdOf/kRy0mMaLBAlEeeuhDlzPXT6nYqbRanZyWOm4j/GzJ8qWSxTEI8XebEW3rdwOhf/tcp
-	KklqPhje0qW9LkeDhLiLGQQuD67MTZAqJ9HG1JPtRD0trcCB5mkER7o/jS5ShhOmL82MugXFHAaSI
-	vGcat5AmEtx49B+oGrDe9cKmRThhOztR2S1oO2l6N2FAw/fV/9K0itdafwRJT4a858AUToCJbEbTL
-	KSrkRg8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AW2nNfFoSBUvri95yHzg350P/gBr0ph64fnSY8oJhYs=; b=YCcoRRcMEmK8Zv88oJzruekZmC
+	1SXPCJOxuAH1xozbaUWfqq0aoiSLjCvlPYffP4K9bdE9Yc9G27K4ZMxxCK8bycdYvFjlClYPt460J
+	1o5Hft8SA6dtDLf+AjbtVYvx/6wBDW9nteJU5rNfYeleQs5935cFyjAm6rFrYX2k6wy490DPjNRwM
+	Du/QaSd54lJF9Ybm5OyhBg1HBhibu73abjIVWcNXike+sYkNrjEfwFKqe+vk8o1qXUtBazSCM3d9r
+	z6QP9kUM5YVn9SSESCB7LvCep2G3b2+XGtmjE85LY5AVvYQCPUeVuOFtRUNG5BrwgnxmTly/9t26l
+	GQrUOseg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0fk2-003R9D-0O;
-	Wed, 08 Nov 2023 10:24:58 +0000
-Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
+	id 1r0fkW-003RFE-2R;
+	Wed, 08 Nov 2023 10:25:28 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0fjv-003R5w-30
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Nov 2023 10:24:55 +0000
-Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-6ce322b62aeso4041048a34.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Nov 2023 02:24:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699439089; x=1700043889; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=dSHpWDlAyfJyOGsIApYR9Ror/UYeRgH6DP/oCc5ghJA=;
-        b=Nulg/oCZ1mRfzu7BlOj5DNMYzyhqS+PtwPkBhXMgMtZ3gWb4qCQHa67vGDnkhY4816
-         7PotSpjE7d5l++2SVQjkUy+9iuTx6rgjyLvElVxvfFhXElnVlba+tH8bXB5fQLfUF4oi
-         DzHL9JCSCahZdROx2s8UWTi1gJ1JBVD9o62qI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699439089; x=1700043889;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dSHpWDlAyfJyOGsIApYR9Ror/UYeRgH6DP/oCc5ghJA=;
-        b=WWj5+0rHMCJR4YSDlqKHPdGK/MHQ9hYNrO+fjB14mjrVatgyRTWNNgS4pxuJctm9gW
-         ADd/Mz9cWHA/3QW5nAI+TSz91FqQ5KCe9PHEJSe+D1CEXaR1iUNSX3iQOqLMF1KEGxHB
-         hFi4qJorMUOIEdk3UYGCWLD68KA58hPe5V2+k+sEMTfHU7YyZCq6MUR0ZIP3t8Vp86w7
-         9zWM3SdKO3FJs3JGf//Mb+CaDZZ0rCVQ09ILsFrLIVbV4/bVzRHUjDGo2mMM5SP1uSTn
-         oR+wsAIXEFIa5HlMoXuKazT7sswbGVQ3fS1lEu97Wp8METwNFfcL4zDO32caTM7py5YG
-         v5JQ==
-X-Gm-Message-State: AOJu0YwTUXlrLbPvK4+0baRgJlSrd6vR7jNHSe4AGZ0ItwN9BOoO4Xm4
-	exzMm0oOmkextfLDq2d/TpCG+w==
-X-Google-Smtp-Source: AGHT+IFC4arPwc7Ao+r49qVHskOHs0pQDlbxHhN99WlxfDDWkvA/EGgTU6FSwYze80/m+Anmlsedpg==
-X-Received: by 2002:a9d:5e13:0:b0:6c6:18c7:7ca2 with SMTP id d19-20020a9d5e13000000b006c618c77ca2mr1574486oti.12.1699439088694;
-        Wed, 08 Nov 2023 02:24:48 -0800 (PST)
-Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id 83-20020a630256000000b005aa800c149bsm2838329pgc.39.2023.11.08.02.24.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Nov 2023 02:24:48 -0800 (PST)
-Date: Wed, 8 Nov 2023 10:24:44 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v14.1] media: videobuf2: Be more flexible on the number
- of queue stored buffers
-Message-ID: <20231108102444.4yp7y7mgsociy725@chromium.org>
-References: <20231106143940.324020-1-benjamin.gaignard@collabora.com>
+	id 1r0fkT-003RE8-0K;
+	Wed, 08 Nov 2023 10:25:26 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E66836607479;
+	Wed,  8 Nov 2023 10:25:22 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699439123;
+	bh=OZoOlukZrdzbFvt6S2UQgIRYEsNDObjxtvTcrLKVge8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jtmkPzgYDtgX2bmJjmCa2lz4SefqscfmnQNC8rGdYUUVLv7u8qt44PbWh9oZXbFNp
+	 hDv8SlCw09oUGHeXEmlWT5op8FIQKT6uMTgPz0MeC7UjHyGR23UqJDGCusZ8Jh908D
+	 1aFp/TMCyfWgSePVoCw934Vwx0u+SNCxoqgtdHZV23kVt2212yturoajfmsWEym+V2
+	 nhCeNhiyalq5j7Q7GZoJjpHDMnWnOSv5h/OKn6b+A+Q0qokdtl97ijnfU1WUhhMp8o
+	 A8vmWq/sC/lTrto6gfDULQirX9qCLkT81yJk86ZXSJILkUJepMFoH+dYywWsJREdyH
+	 Oo40MG9u1qVvQ==
+Message-ID: <cf73377f-8413-46d0-bcd8-9d12c2c38bc7@collabora.com>
+Date: Wed, 8 Nov 2023 11:25:19 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231106143940.324020-1-benjamin.gaignard@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8186: Add I2C arbiter clocks to
+ i2c 1/2/5
+Content-Language: en-US
+To: =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsik=?=
+ <Allen-KH.Cheng@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
+References: <20231020075540.15191-1-angelogioacchino.delregno@collabora.com>
+ <8414e0ccdb5f456877df06d4e5c6befff5463991.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <8414e0ccdb5f456877df06d4e5c6befff5463991.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231108_022451_995738_AD1D3441 
-X-CRM114-Status: GOOD (  37.75  )
+X-CRM114-CacheID: sfid-20231108_022525_268690_1985FB8B 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,252 +86,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 06, 2023 at 03:39:40PM +0100, Benjamin Gaignard wrote:
-> Add 'max_num_buffers' field in vb2_queue struct to let drivers decide
-> how many buffers could be stored in a queue.
-> This require 'bufs' array to be allocated at queue init time and freed
-> when releasing the queue.
-> By default VB2_MAX_FRAME remains the limit.
+Il 08/11/23 07:56, Yu-chang Lee (李禹璋) ha scritto:
+> On Fri, 2023-10-20 at 09:55 +0200, AngeloGioacchino Del Regno wrote:
+>> The I2C busses 1, 2 and 5 have got a separated arbiter clock: add it
+>> to their respective nodes.
+>>
+>> Fixes: 2e78620b1350 ("arm64: dts: Add MediaTek MT8186 dts and
+>> evaluation board and Makefile")
+>> Signed-off-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 15 +++++++++------
+>>   1 file changed, 9 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+>> b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+>> index f04ae70c470a..af6f6687de35 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+>> @@ -1224,8 +1224,9 @@ i2c1: i2c@11008000 {
+>>   			      <0 0x10200200 0 0x100>;
+>>   			interrupts = <GIC_SPI 106 IRQ_TYPE_LEVEL_HIGH
+>> 0>;
+>>   			clocks = <&imp_iic_wrap
+>> CLK_IMP_IIC_WRAP_AP_CLOCK_I2C1>,
+>> -				 <&infracfg_ao CLK_INFRA_AO_AP_DMA>;
+>> -			clock-names = "main", "dma";
+>> +				 <&infracfg_ao CLK_INFRA_AO_AP_DMA>,
+>> +				 <&infracfg_ao
+>> CLK_INFRA_AO_I2C1_ARBITER>;
+>> +			clock-names = "main", "dma", "arb";
+>>   			clock-div = <1>;
+>>   			#address-cells = <1>;
+>>   			#size-cells = <0>;
+>> @@ -1238,8 +1239,9 @@ i2c2: i2c@11009000 {
+>>   			      <0 0x10200300 0 0x180>;
+>>   			interrupts = <GIC_SPI 107 IRQ_TYPE_LEVEL_HIGH
+>> 0>;
+>>   			clocks = <&imp_iic_wrap
+>> CLK_IMP_IIC_WRAP_AP_CLOCK_I2C2>,
+>> -				 <&infracfg_ao CLK_INFRA_AO_AP_DMA>;
+>> -			clock-names = "main", "dma";
+>> +				 <&infracfg_ao CLK_INFRA_AO_AP_DMA>,
+>> +				 <&infracfg_ao
+>> CLK_INFRA_AO_I2C2_ARBITER>;
+>> +			clock-names = "main", "dma", "arb";
+>>   			clock-div = <1>;
+>>   			#address-cells = <1>;
+>>   			#size-cells = <0>;
+>> @@ -1280,8 +1282,9 @@ i2c5: i2c@11016000 {
+>>   			      <0 0x10200700 0 0x100>;
+>>   			interrupts = <GIC_SPI 354 IRQ_TYPE_LEVEL_HIGH
+>> 0>;
+>>   			clocks = <&imp_iic_wrap
+>> CLK_IMP_IIC_WRAP_AP_CLOCK_I2C5>,
+>> -				 <&infracfg_ao CLK_INFRA_AO_AP_DMA>;
+>> -			clock-names = "main", "dma";
+>> +				 <&infracfg_ao CLK_INFRA_AO_AP_DMA>,
+>> +				 <&infracfg_ao
+>> CLK_INFRA_AO_I2C5_ARBITER>;
+>> +			clock-names = "main", "dma", "arb";
+>>   			clock-div = <1>;
+>>   			#address-cells = <1>;
+>>   			#size-cells = <0>;
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-> ---
-> version 14.1:
-> - Do not change the number of freed buffers in vb2_core_queue_release().
+> In previous discussion[1], if the arbiter clock is not added into dts
+> node does trackpad lost its functionality before system suspend/resume?
+> And is this patch meant to solve the same issue in [1]?
 > 
->  .../media/common/videobuf2/videobuf2-core.c   | 39 +++++++++++++++----
->  .../media/common/videobuf2/videobuf2-v4l2.c   |  6 +--
->  include/media/videobuf2-core.h                | 10 ++++-
->  3 files changed, 43 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index c5c5ae4d213d..5711c6a130fd 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -416,7 +416,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->   */
->  static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
->  {
-> -	WARN_ON(index >= VB2_MAX_FRAME || q->bufs[index]);
-> +	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
->  
->  	q->bufs[index] = vb;
->  	vb->index = index;
-> @@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  	struct vb2_buffer *vb;
->  	int ret;
->  
-> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
-> +	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
-
-Perhaps "the number of buffers already in the queue"?
-
->  	num_buffers = min_t(unsigned int, num_buffers,
-> -			    VB2_MAX_FRAME - q_num_buffers);
-> +			    q->max_num_buffers - q_num_buffers);
->  
->  	for (buffer = 0; buffer < num_buffers; ++buffer) {
->  		/* Allocate vb2 buffer structures */
-> @@ -813,7 +813,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
->  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
->  	unsigned int i;
-> -	int ret;
-> +	int ret = 0;
->  
->  	if (q->streaming) {
->  		dprintk(q, 1, "streaming active\n");
-> @@ -857,17 +857,22 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	/*
->  	 * Make sure the requested values and current defaults are sane.
->  	 */
-> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
-
-Do we really want to remove this warning completely?
-
->  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
-> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
-> +	num_buffers = min_t(unsigned int, num_buffers, q->max_num_buffers);
->  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
->  	/*
->  	 * Set this now to ensure that drivers see the correct q->memory value
->  	 * in the queue_setup op.
->  	 */
->  	mutex_lock(&q->mmap_lock);
-> +	if (!q->bufs)
-> +		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
-
-Shouldn't this happen in core code rather than the v4l2-specific ioctl
-helper? Since we just allocate the maximum possible size, then maybe
-vb2_core_queue_init()?
-
-> +	if (!q->bufs)
-> +		ret = -ENOMEM;
->  	q->memory = memory;
->  	mutex_unlock(&q->mmap_lock);
-> +	if (ret)
-> +		return ret;
->  	set_queue_coherency(q, non_coherent_mem);
->  
->  	/*
-> @@ -976,7 +981,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  	bool no_previous_buffers = !q_num_bufs;
->  	int ret = 0;
->  
-> -	if (q_num_bufs == VB2_MAX_FRAME) {
-> +	if (q->num_buffers == q->max_num_buffers) {
->  		dprintk(q, 1, "maximum number of buffers already allocated\n");
->  		return -ENOBUFS;
->  	}
-> @@ -993,7 +998,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  		 */
->  		mutex_lock(&q->mmap_lock);
->  		q->memory = memory;
-> +		if (!q->bufs)
-> +			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
-
-Ditto.
-
-> +		if (!q->bufs)
-> +			ret = -ENOMEM;
->  		mutex_unlock(&q->mmap_lock);
-> +		if (ret)
-> +			return ret;
->  		q->waiting_for_buffers = !q->is_output;
->  		set_queue_coherency(q, non_coherent_mem);
->  	} else {
-> @@ -1005,7 +1016,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  			return -EINVAL;
->  	}
->  
-> -	num_buffers = min(*count, VB2_MAX_FRAME - q_num_bufs);
-> +	num_buffers = min(*count, q->max_num_buffers - q_num_bufs);
->  
->  	if (requested_planes && requested_sizes) {
->  		num_planes = requested_planes;
-> @@ -2465,6 +2476,12 @@ int vb2_core_queue_init(struct vb2_queue *q)
->  	/*
->  	 * Sanity check
->  	 */
-> +	if (!q->max_num_buffers)
-> +		q->max_num_buffers = VB2_MAX_FRAME;
-
-Can we add a comment here to explain that this is for backwards
-compatibility with drivers which don't support more buffers?
-
-Actually, we should probably document in kerneldoc for vb2_queue that 0 is
-an allowed and special value.
-
-> +
-> +	/* The maximum is limited by offset cookie encoding pattern */
-> +	q->max_num_buffers = min_t(unsigned int, q->max_num_buffers, MAX_BUFFER_INDEX);
-> +
->  	if (WARN_ON(!q)			  ||
->  	    WARN_ON(!q->ops)		  ||
->  	    WARN_ON(!q->mem_ops)	  ||
-> @@ -2474,6 +2491,10 @@ int vb2_core_queue_init(struct vb2_queue *q)
->  	    WARN_ON(!q->ops->buf_queue))
->  		return -EINVAL;
->  
-> +	if (WARN_ON(q->max_num_buffers > MAX_BUFFER_INDEX) ||
-
-Hmm, how is this possible?
-
-> +	    WARN_ON(q->min_buffers_needed > q->max_num_buffers))
-> +		return -EINVAL;
-
-I have a loose recollection that it's allowed for a driver to change this
-value depending on the configuration. You may want to double check if any
-driver doesn't do so already if we want to disallow that. (and also
-document that it's not allowed)
-
-> +
->  	if (WARN_ON(q->requires_requests && !q->supports_requests))
->  		return -EINVAL;
->  
-> @@ -2520,6 +2541,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
->  	__vb2_queue_cancel(q);
->  	mutex_lock(&q->mmap_lock);
->  	__vb2_queue_free(q, vb2_get_num_buffers(q));
-> +	kfree(q->bufs);
-> +	q->bufs = NULL;
->  	q->num_buffers = 0;
->  	mutex_unlock(&q->mmap_lock);
->  }
-> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> index 7d798fb15c0b..f3cf4b235c1f 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> @@ -627,7 +627,7 @@ struct vb2_buffer *vb2_find_buffer(struct vb2_queue *q, u64 timestamp)
->  	 * This loop doesn't scale if there is a really large number of buffers.
->  	 * Maybe something more efficient will be needed in this case.
->  	 */
-> -	for (i = 0; i < vb2_get_num_buffers(q); i++) {
-> +	for (i = 0; i < q->max_num_buffers; i++) {
->  		vb2 = vb2_get_buffer(q, i);
->  
->  		if (!vb2)
-> @@ -1142,7 +1142,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
->  
->  	if (lock)
->  		mutex_lock(lock);
-> -	if (file->private_data == vdev->queue->owner) {
-> +	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
->  		vb2_queue_release(vdev->queue);
->  		vdev->queue->owner = NULL;
->  	}
-> @@ -1270,7 +1270,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
->  	 */
->  	get_device(&vdev->dev);
->  	video_unregister_device(vdev);
-> -	if (vdev->queue && vdev->queue->owner) {
-> +	if (vdev->queue) {
->  		struct mutex *lock = vdev->queue->lock ?
->  			vdev->queue->lock : vdev->lock;
->  
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 8f9d9e4af5b1..e77a397195f2 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
->   * @dma_dir:	DMA mapping direction.
->   * @bufs:	videobuf2 buffer structures
->   * @num_buffers: number of allocated/used buffers
-> + * @max_num_buffers: upper limit of number of allocated/used buffers
->   * @queued_list: list of buffers currently queued from userspace
->   * @queued_count: number of buffers queued and ready for streaming.
->   * @owned_by_drv_count: number of buffers owned by the driver
-> @@ -619,8 +620,9 @@ struct vb2_queue {
->  	struct mutex			mmap_lock;
->  	unsigned int			memory;
->  	enum dma_data_direction		dma_dir;
-> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
-> +	struct vb2_buffer		**bufs;
->  	unsigned int			num_buffers;
-> +	unsigned int			max_num_buffers;
->  
->  	struct list_head		queued_list;
->  	unsigned int			queued_count;
-> @@ -1248,6 +1250,12 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
->  static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
->  						unsigned int index)
->  {
-> +	if (!q->bufs)
-> +		return NULL;
-> +
-> +	if (index >= q->max_num_buffers)
-
-Wouldn't this be already prevented by the condition below?
-
-> +		return NULL;
-> +
->  	if (index < q->num_buffers)
->  		return q->bufs[index];
->  	return NULL;
-> -- 
-> 2.39.2
+> Reply on behalf of our i2c PIC.
 > 
 
-Best regards,
-Tomasz
+Yes, it loses functionality sometimes after PM resume, but with this added clock
+the problem is solved.
+
+And yes, it's the same as [1].
+
+Regards,
+Angelo
+
+
 
