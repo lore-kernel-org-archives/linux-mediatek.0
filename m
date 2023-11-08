@@ -4,87 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E059C4167D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 01:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B37F1C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Nov 2023 02:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9SiLJUSDJPEiwUcRyYgG9IhzIobpNTw6nwSCUfBk4uA=; b=kO4BBUitKsgCw9WhZQsimzaga6
-	Pl3aad0QDOg6GNRhoE6lk86k8mr0C2A2Fi4kFViEN8QgFiXlM58QIS3/7+uvGs3tvZ0OIA2Zg5jPn
-	ErSceiKGiANyK5DiNObOFH5XbS+qqmcPWFBYbQkdhwZR8rPTV3ePySD53kvw76BDDcb8Xg9r3blcf
-	/kj7D7rR7D5O73R54jEd5gnawoKt9ATGUwcfQsZFdPpsvLxSOd7z0ATniS2NpRl2R2+ds2xcKl9cu
-	4k9iTGwdd2Suv3mFbMVqB0jCil7Nd/dxvWthTUv3ogPRKssmETKQNh3C7Xp93DN5GOUCl/b1eoryO
-	d39GA3/g==;
+	bh=vR16R3nH7fmv/BxEUykAASSecaa8iTYdR38F9yHcXJs=; b=T3WDtEmrAG8uVw23+HpvQQ/0vn
+	h8/En1tmToyQ3R2/mJUjH7FzzX0iknnJ9OvC86fArgsag7MQGOuJAft94vPaOKPrn+klFn2rL2rJ1
+	4K0l5lKfENHPowpelz5Vt58wG+aK2K4AxhOFKAqyQePraKUkrW+MSFsKQAHDdwlEvaJm9YOUAmxqQ
+	BEufM2hohD0os/+09SCEENbE824HoZsff4QjLTUsH2/5pCXJGklTPrc7qKbi2jrME56XdM0hS8pqu
+	eyvhZREGwMO/eJMRJ0bcA56jLvRqdy3xRldVkLuh6avYTx6WK5H6uQWl/L8Ddhtp/iT4z4qbG0y81
+	uRouHVWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0XL6-002lJB-1u;
-	Wed, 08 Nov 2023 01:26:40 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1r0Ykh-002qHM-2L;
+	Wed, 08 Nov 2023 02:57:11 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0XL4-002lI7-05
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Nov 2023 01:26:39 +0000
-Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-6ce291b5df9so3957334a34.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Nov 2023 17:26:37 -0800 (PST)
+	id 1r0Yke-002qG8-1z;
+	Wed, 08 Nov 2023 02:57:10 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-5bd5809f63aso2607664a12.3;
+        Tue, 07 Nov 2023 18:57:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1699406797; x=1700011597; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1699412225; x=1700017025; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9SiLJUSDJPEiwUcRyYgG9IhzIobpNTw6nwSCUfBk4uA=;
-        b=ez6ZmeIuoDu74l78uTnQyxW6WgGweazQpmJPPL+OeghwLpNDPN9MdTuna/vi1P2EC6
-         siJ6PZpGNPyPCrLS7qGlmtTVrAsZtynFdKAHtfle7R5xuaKarfy05XSumWzz6midDQVX
-         AYn9pM0rGvVvO1feLsDrXIlp6SjYBAiGOjPU80YWQ3+V0KL2wjbsoL8G8ly1KpL2zy5/
-         gUaHp26VkycNLSZIYKiTwQ9wo5EAjeZc0r5d0f5jUd1xqfvIBz8SWr1dJqZP946Hc5hP
-         x5aEJ7li/rndcXdHd/D3uavOAgnHSs7tFjWP70PFwdncVMC3APXy+zUakstSVwiYgML0
-         Gqtw==
+        bh=vR16R3nH7fmv/BxEUykAASSecaa8iTYdR38F9yHcXJs=;
+        b=Yjb0iJzY2NFTGwrusi/KxyoSF1k45XeeOUTmFYZd2rUBECQPHYBAbBH2fTHoDNVXVW
+         X1/i2qgXLR1TIbuCVrWkEamMIMB1Tt+qPTdRr08w6SK4Ak4kkrl3J3WITFLgZEq1GoBP
+         UDWe7EXv2ML5RrCWOkX4geJkymRsiCNRCx27H1DvFqNIAfiGuW5EVb9OH5Rx+FtVntzM
+         JbBLjAZX0W4xyJ+O7hEj58paKR9caGRvFdBI3snVhAU1tzndC1HMMpsVPuhuiOo7K4ok
+         iz5tqGzLlKM8fVnpbXyKw+X6f2Las8Fe7BhVtVix61RXZm2Dfo8BoZ7xJhP2Ib7SpLB2
+         kf1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699406797; x=1700011597;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1699412225; x=1700017025;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9SiLJUSDJPEiwUcRyYgG9IhzIobpNTw6nwSCUfBk4uA=;
-        b=kT1UsbO4xp9nvxXg7AjrHfVG7HTo1WmorXtz2+TAV1q56V2AQwdjUgKlgmKM8ucfAl
-         AEputd3DVM/59J32Ss2EfvoY0Kmffab6XbfFzO1+UrqhLGPKDbfH7hVYkRN4CZI+eRkp
-         cUzAO6EGt/y4PgDJVAiWkTf+GLsnRve6hjOLqXqTMZdQw0Dx0lzwWoo1XQcn/vX7tkJV
-         ero0rav1LLWSwavYYzd3qmEFgCG/vHv1Y/XvagNo7wWVORfWRyckSTWs47ggwMYVdILq
-         ovFWWjUzXpBNM8qDhEsgUeLmL/Lnh0yDNzuYGLAdqZ36KkBGsNPeirJ2GZ27dTY12kFV
-         tmBw==
-X-Gm-Message-State: AOJu0Yyt1TZul0ILn10j6OkxkLRNnOPucF3Z5frA98ivWGen5JOPsHK8
-	sg75jsGk3hQCJ3L2xlbSKCSf+g==
-X-Google-Smtp-Source: AGHT+IG1TxlhL3TtLFaeQZBn42HOgBQwc1TatXKxW0BgjspTjLVIuoBs4Ry4AXaVGHML15Q30DBlJg==
-X-Received: by 2002:a05:6830:3d02:b0:6bf:1e78:cc52 with SMTP id eu2-20020a0568303d0200b006bf1e78cc52mr575386otb.25.1699406796902;
-        Tue, 07 Nov 2023 17:26:36 -0800 (PST)
-Received: from localhost.localdomain ([101.78.151.194])
-        by smtp.gmail.com with ESMTPSA id h7-20020a62b407000000b0069323619f69sm7966778pfn.143.2023.11.07.17.26.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Nov 2023 17:26:36 -0800 (PST)
-From: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-To: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	perex@perex.cz,
-	allen-kh.cheng@mediatek.com,
-	kuninori.morimoto.gx@renesas.com
-Cc: linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Subject: [PATCH v2 3/3] ASoC: mediatek: mt8188-mt6359: Limit RT5682s to only supports dual channels
-Date: Wed,  8 Nov 2023 09:26:17 +0800
-Message-Id: <20231108012617.3973539-4-zhourui@huaqin.corp-partner.google.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231108012617.3973539-1-zhourui@huaqin.corp-partner.google.com>
-References: <20231108012617.3973539-1-zhourui@huaqin.corp-partner.google.com>
+        bh=vR16R3nH7fmv/BxEUykAASSecaa8iTYdR38F9yHcXJs=;
+        b=Iu24e35AX8oJw7tXhOK4cyul0+G6TkocE0WZ7ugiA2BwvLai9p45CFv60EeOENhmaz
+         I+Tj8NfGdUGamrpWC5FOG0SYyxk8ZL4s1PQ6PKcrfdE0OwaObxLahlz7SKk00UmpWpsx
+         wcAAE54cKKcFIcbcqPVohvngQVidE10DtnTnrtozhCgMJ1QFiYe7Ynb1wpoOrzumnYG8
+         m+3E87kGAI2dxaKtyhgX/VggOEk+2xyTiVTU7tZamN3pyb0jjyR4aCvDYn7V8+l7pRZD
+         O+7dmd5EAioQu5ammaKoiScZ2SWuhzS/CYCqBeHkA7I/EEhAXznhshzhxwWAAmj7Lqx/
+         fuVQ==
+X-Gm-Message-State: AOJu0YyNBPnF2349GbVechPg4gPx51UrSe09hxp0yERoXsbveWlwpISA
+	WRlK7v6V+vBV8FUIfKhu4Sv1qD7pi2UTpz4SZ3k=
+X-Google-Smtp-Source: AGHT+IF3q4D8mSxtA0NdLkdfYSoxbFu7W4fzZDtMoDCUqUarRgS7ohRJloJqc4hOG4cnBnvyiD/RosFjWtNu0PZ4qcQ=
+X-Received: by 2002:a05:6300:8004:b0:180:eef7:b3b7 with SMTP id
+ an4-20020a056300800400b00180eef7b3b7mr1118305pzc.51.1699412224768; Tue, 07
+ Nov 2023 18:57:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20231106144811.868127-1-zyytlz.wz@163.com> <b5f9d751-5425-4281-8a21-99e92bd447b7@xs4all.nl>
+In-Reply-To: <b5f9d751-5425-4281-8a21-99e92bd447b7@xs4all.nl>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Wed, 8 Nov 2023 10:56:52 +0800
+Message-ID: <CAJedcCwaHCEksJpUz1Y0s-SX2zd_ncfOZs53qiMcaeBN2sw1YQ@mail.gmail.com>
+Subject: Re: [RESEND PATCH v2 0/3] Fix use-after-free bug in
+ mtk_jpeg_dec_device_run and fix schedule error in mtk_jpegdec_worker
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Zheng Wang <zyytlz.wz@163.com>, dmitry.osipenko@collabora.com, Kyrie.Wu@mediatek.com, 
+	bin.liu@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com, 
+	security@kernel.org, amergnat@baylibre.com, wenst@chromium.org, 
+	stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_172638_075133_A365E0D5 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20231107_185708_658335_1BF2BA7D 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,28 +93,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Limit RT5682s to only support dual channels, not four channels.
+Hans Verkuil <hverkuil@xs4all.nl> =E4=BA=8E2023=E5=B9=B411=E6=9C=887=E6=97=
+=A5=E5=91=A8=E4=BA=8C 18:14=E5=86=99=E9=81=93=EF=BC=9A
+>
+> On 06/11/2023 15:48, Zheng Wang wrote:
+> > Hello,
+> >
+> > This v2 series fixes the use-after-free bug in mtk_jpeg_dec_device_run.
+> > This patch fixes the security bug in chrome-os.
+> > It inclues reverting the incomplete fix before and make the right fix.
+> > Also,it fixes the error of timeout-worker-schedule in multiple-core
+> > devices.
+> >
+> > 1. Remove cancel worker in mtk_jpeg_remove for the worker is only
+> > registered in single-core device but we try to cacnel it in both
+> > single-core and multiple-core devices.
+> >
+> > 2. Fix use-after-free bug by delay the schedule_delayed_work only if
+> > mtk_jpeg_set_dec_dst runs successfully.
+> >
+> > 3. Delay the schedule_delayed_work in mtk_jpegdec_worker as it has same
+> > code logic in mtk_jpeg_dec_device_run.
+> >
+> > version 2 changes
+> >
+> > -put the patches into on series suggested by Dmitry
+> >
+> > Zheng Wang (3):
+> >   media: mtk-jpeg: Remove cancel worker in mtk_jpeg_remove to avoid the
+> >     crash of multi-core JPEG devices
+> >   media: mtk-jpeg: Fix use after free bug due to error path handling
+> >     in mtk_jpeg_dec_device_run
+> >   media: mtk-jpeg: Fix timeout schedule error in mtk_jpegdec_worker.
+> >
+> >  .../media/platform/mediatek/jpeg/mtk_jpeg_core.c    | 13 ++++++-------
+> >  1 file changed, 6 insertions(+), 7 deletions(-)
+> >
+>
+> Please don't resend. If it is in patchwork.linuxtv.org then it is good.
+> Fixes (unless they fix something really nasty) can take several weeks bef=
+ore
+> they are picked up. I usually schedule 2 or 3 rounds per kernel cycle whe=
+re
+> I go through all the pending patches with fixes.
+>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
----
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Oh Sorry for my rudeness. And I'm deeply appreciative of your contributions
+to the community.
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index e994faa3556b..917640939621 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -1549,7 +1549,7 @@ static struct mt8188_card_data mt8188_nau8825_card = {
- 
- static struct mt8188_card_data mt8188_rt5682s_card = {
- 	.name = "mt8188_rt5682s",
--	.quirk = RT5682S_HS_PRESENT,
-+	.quirk = RT5682S_HS_PRESENT | MAX98390_TWO_AMP,
- };
- 
- static struct mt8188_card_data mt8188_es8326_card = {
--- 
-2.25.1
+Best regards,
+Zheng
 
+
+> Regards,
+>
+>         Hans
 
