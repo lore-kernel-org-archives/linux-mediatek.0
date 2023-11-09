@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE1D4C4167D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:31:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF687C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:32:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jaVhrMbyE3tdFXi9+sEIrOIPFz7iUSZ9py306BFhmgg=; b=rYCqHtP9gKkDBWotV+nk1B2IoC
-	JQpNIK0Os9D8NaQVmBOuX5f6gjVeiL1AJY4BrWmpePftiBhBJ3s5lk9XtSSbfQXf/GojoEsAKiMMt
-	2/9dLWGzpezx50LR6UksQSXdo3dun0+5c/8ke46cUUu9qIKNDJoQFE6ek+Y1O37BidiD2ZKf3/ARQ
-	koAH6tZ8s3Xb6nnB2Pu7U5kcEwQfP4uClCqOKmnwh/D9NDhdxnepiU7MR7FaYtJBQVs6gMu1lE8ja
-	cft1K1rjdwzhxYwNV304Uxr4ctf1Af6aDP7xMDBslC7qh8AmMAnuHQR7LAnLltRNJskVR9f3cUtKf
-	ngE1zfMA==;
+	bh=eyJy+KB2yrU2jS4YZ2E7jhMtCKTphFUm247LzNYFak0=; b=OBVjyumWrByT95bxPLLCcpcK7f
+	1SiZf7OiD+MI5sswm+8otD21Sqkm/8rfoTlt1RIA8tIJvJ5/5MqBsxcKD8/UE0JzuR1kpe3wtseUF
+	MeIxy/0J0OXqz9ON8WIc/Xo3LiIRV8nQi28FOXNbVWLifn4BH4ydupzP2KjYZhSDHQzd2OHD7px+a
+	RiqcU4SD5KEvQwe7U/MzHnW7XTGXRA4xOyiIoKMfnfZSUPEq2j0g174qyz5vu1lzQ7bQGMDvnng5N
+	1NfJmz9jM3OiRZQ91kVIVTlthZ9RpZiQFJj0B9UrNoPiMjxQGFxPM8+k6MbyC1JEk/W7G1YtysctN
+	/6KrtIXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r17w3-006j0y-1c;
-	Thu, 09 Nov 2023 16:31:15 +0000
+	id 1r17ws-006j8B-2H;
+	Thu, 09 Nov 2023 16:32:06 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r17w0-006iza-2Q;
-	Thu, 09 Nov 2023 16:31:14 +0000
+	id 1r17wp-006j6v-0P;
+	Thu, 09 Nov 2023 16:32:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 5D9C9B82127;
-	Thu,  9 Nov 2023 16:31:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35470C433C8;
-	Thu,  9 Nov 2023 16:31:04 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id B5C01B82146;
+	Thu,  9 Nov 2023 16:32:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4AB02C433C7;
+	Thu,  9 Nov 2023 16:31:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699547470;
-	bh=AK5QOaCNW1qivV+BYTR3YnR/G6fmazfZw1BFo9i/I8Y=;
+	s=k20201202; t=1699547521;
+	bh=eyJy+KB2yrU2jS4YZ2E7jhMtCKTphFUm247LzNYFak0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dCDKHAWc8GzWZaHEeBRX7yAELr/JlykCtzuNyWDV8G6s4IJapux5ievprmDk8hoNh
-	 +IfFY8UUNu7ys7ZoZpQSK4w0vcmV/7zw1cE8Gc7s7SQ01bW5yQh4I/zYsyY1rO8Y78
-	 MnAQUmw4d0Dr6crv2EW+HDqcsYnILfzf1G7n7Wbtr1WNxJ8vBnKfivJ4yyQMxVbps7
-	 e/DPY9xjHf6hk9dbNHNUv4ZXApTbklHffx++AjXNQgJ1kAlvKdJpZT+6CHAQjEJlnt
-	 MQNdRR643rFePXalxe5mT7Jh5bSGMBczLeguxUTptvxc5ZW/0NBR+jVEXqec/vFocR
-	 +TWwlH6TYnTLg==
-Message-ID: <e23e344f-8712-4bd9-a229-763adda6226e@kernel.org>
-Date: Thu, 9 Nov 2023 17:31:04 +0100
+	b=MEteikMmBebP0j32ex8X+OX+01N5y0Nq5pNAgLPKi66pOoDE008T7vpNltppNbzJO
+	 jq0JIcVr+8t+bMejNCRvkmB+/TyKr/ZzRwM7CoCO6++jDLqsmh8L6KXAl68KgJcuCw
+	 MDc0JjIJ44Xn8x/iJEAjyCA0x3Ba4uCS5ntb15+OAjC49EWAiogj5iHMkroHs8Io+9
+	 egrzNgXHKloT5q2R3quq8X+BXl0f3lOVJIZrUIeKhuVOPejh8Zb7eQXWlUnvdX/oWL
+	 6xnTyarKhUHDWptVNF3L5YZORxDxm2omeoxeBYYXfRQDcgtMjRMXxEqfKOFrEIHN/G
+	 UmhThrULFsHYw==
+Message-ID: <17b5c388-7f42-4f7f-9c8b-d4a1f0ee9823@kernel.org>
+Date: Thu, 9 Nov 2023 17:31:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RESEND 2/3] dt-bindings: clock: mediatek: Remove compatible for
@@ -109,8 +109,8 @@ In-Reply-To: <20231109111122.371-3-yu-chang.lee@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083113_086356_E99BD486 
-X-CRM114-Status: UNSURE (   7.07  )
+X-CRM114-CacheID: sfid-20231109_083203_460913_71C68872 
+X-CRM114-Status: UNSURE (   4.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -128,15 +128,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On 09/11/2023 12:11, yu-chang.lee wrote:
 > Remove VPPSYS0, VPPSYS1 compatible on Mediatek MT8188.
-> 
-> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
-> ---
 
-Please use scripts/get_maintainers.pl to get a list of necessary people
-and lists to CC (and consider --no-git-fallback argument). It might
-happen, that command when run on an older kernel, gives you outdated
-entries. Therefore please be sure you base your patches on recent Linux
-kernel.
+Why? Your commit must answer this, not describe obvious stuff.
 
 Best regards,
 Krzysztof
