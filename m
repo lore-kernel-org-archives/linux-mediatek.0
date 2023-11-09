@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3255FC4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 10:06:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DC86C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 10:06:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fJvWVs2pvEah4vcu8xn+6aEsMzIEVFQ3nL2+j2vnxy4=; b=ZTSky0dPqGd1Nz2lhKRk57/5pf
-	yy87RKo/dd4WKFzbEihdl7otOl8lXwOd3kDAJNuBPOx2bkF3xHFPMk6OluHHAA9QZyxOJJt7rs0xX
-	9/BoDzeJV1sQazQYmoiRKDaJYOZQJVhduvTql+NAZrFm9ZXMVtfuWay4JGKSQIIutJjDIp674//qN
-	2PzwJHtDI0eAmnf1xCvp9JboN3fREygm6hg0adYZel0dk4AkSgYZw3PJ6c/TnJibZzpGUxg3zL3z+
-	Rl2hm3JNulrxg9xI/F8pkHOoNSchubmPFJOYEfIH0iEZ0bmLjaA1nk12IFpj+vqG/VS9FeLoc1je1
-	dSBUb/hw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DGm2vHynu/hBFToljMIoyOJ5nVIf243JSwQjqrxxy/0=; b=QM8L+TD2SXJ7vWE4HfPrwW/JhZ
+	MavHEzaN8HX50PLbr2z+F/EnqbuV0Xeq6TAMzJCeGi3Puwckz+8f2fUUDvNfa1KA44M8ysAYzgG8o
+	XCD2TBU2ElZdzsQo34oKU22IgoVK2UMfXAXKT2D8c1oCd+fixwAKI8tYOf+WrKfLGpvixXPSxnNeh
+	wnJPHrbz4qDfmaXo4hYrcMMuuXpmChwyvQ2CnZBpmalvAMVtkklgzIelocCYUauizT2NNav0eQab6
+	urkLGNkVZrhMBfEU8AdmXECdNUAH2ODdIpSUJ4dxBQWq/j2NCXdrj8CAH3u6nQUaKj2OUbDlOKH7O
+	vjXeTWNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r11vx-005reZ-01;
-	Thu, 09 Nov 2023 10:06:45 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1r11w0-005rhf-2x;
+	Thu, 09 Nov 2023 10:06:48 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r11vu-005rdI-0Y
+	id 1r11vy-005rel-0M
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Nov 2023 10:06:44 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-5bd33a450fdso592125a12.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Nov 2023 02:06:40 -0800 (PST)
+	Thu, 09 Nov 2023 10:06:47 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-1cc3388621cso14306495ad.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Nov 2023 02:06:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699524400; x=1700129200; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=fJvWVs2pvEah4vcu8xn+6aEsMzIEVFQ3nL2+j2vnxy4=;
-        b=WJ+mnhrvtZGuC4MFBzy/9jm6R3+8IG5yir7/MQ/TqTmiCqW+lECBW1a6d3EcTTdDWr
-         bvh8YfjfYWGeNTxrRefhBRE/zikv5ewNujBXFDJCFEPIaOJ3E1lk+ar9FlMrEwGiUO0z
-         4+zbNAO84dSgnZ4nr7tIqBDKeZv+IWA3QHk3A=
+        d=chromium.org; s=google; t=1699524405; x=1700129205; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DGm2vHynu/hBFToljMIoyOJ5nVIf243JSwQjqrxxy/0=;
+        b=dBe6G9szctzL1OtjSNKJMKbE+ud/M5ClXmwaf5OPygTxbRkhbA0tJ4HOcXKhPURXsv
+         jPUfFG0L43V5Fzs54zAtvaLWoKGG2tr2JA5rTRt25i9wTvY2Zz5J0zHhEs8btbA7qrQc
+         +79xvGyNJWQJIS3iFTgOR3kRK7xDsz3rebBik=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699524400; x=1700129200;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=fJvWVs2pvEah4vcu8xn+6aEsMzIEVFQ3nL2+j2vnxy4=;
-        b=q67MR5oyRAj4DkOCPbmvYcKPvqS9oJXyKdxcMago3/0S9rZEbqPWP1FLaRr8AXQJmk
-         Pm+6jVvS5+eHSZFTRoSCFyYm1dEhj1BEFhHr8Dd+PioJDlR82EytSQvxcSNaURfdDv1V
-         y1136W5y+NPErJVyrZEGFdKuNDc9tJuaz7CYYQz1IChSjx7iyKDcicGqdwoRIbGDuYv1
-         2LlB8rgJjRUZGA1wNkjy5YkQc8j9pNKqHfx8cVmI4+9rswCs9XNhfinCgbsXDohIdyoS
-         c3clRCF+iYhUB16AmS7CMOizoQy8G9pK997Xy1rnjEPCM+eqxINjENoz8ltFZaeuQ69A
-         72Ow==
-X-Gm-Message-State: AOJu0YxiEIeXa7IsJO1uxPmF7WDyDfLQVVAfPEi/JDl/5eBBZpO9pOT4
-	mDop6OgfmGbi+v/vDX7m0T5ZhA==
-X-Google-Smtp-Source: AGHT+IHHefmAjeD5eN0+LN0jhER8LNSGYduJSaVRik8xs8t3KLkMHkAAnrszpGlm6KPVGIKhFjBxqA==
-X-Received: by 2002:a17:902:d48b:b0:1c0:cbaf:6930 with SMTP id c11-20020a170902d48b00b001c0cbaf6930mr5153488plg.54.1699524400148;
-        Thu, 09 Nov 2023 02:06:40 -0800 (PST)
+        d=1e100.net; s=20230601; t=1699524405; x=1700129205;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=DGm2vHynu/hBFToljMIoyOJ5nVIf243JSwQjqrxxy/0=;
+        b=GcVfjD+SrU7C93u42D5ubbWawaJwlUFt3vppMGXr153X8ZAj4qHrMaaWCY28rlyWV6
+         PoVIOLLAVEohYyGOB/lnWNxLKF3+cqBv8RxrRS+iWcmYAgkljhjaWo7/WL5XrifE6uHP
+         +x+KnU/illrbs39jopsaXu2aiXxYaeN0q13hJo7WASQrFFbc6v3dOEFGjoxLXICbqsxu
+         A6hdcwAcg4CbMLi400RPhuHQNlQgVR9OgXefMeJlRlamkfSWVLKlNc3b3nunv+kzCzIE
+         rPpNSDyQJrjgj0zhcDZHxdZqoDh3Ybjm+CFY++RxEUAXAzjikmItU+KpnW42fL6m3Ix/
+         R3Sw==
+X-Gm-Message-State: AOJu0Yyq1ZSHVJWu7LL+HF2nzk/HjmZxt3PhUf4ItgvoqIv1GAxfgU0K
+	PMBpj0WGl0Gob18xSQt66sbOKQ==
+X-Google-Smtp-Source: AGHT+IFiKBNutMsj7ANOubArOU/tBBm0unUxGA8equMZgzL/JO0wpYcbiQ5Wq/R+556TKcVcpFKnlQ==
+X-Received: by 2002:a17:902:ec89:b0:1cc:436f:70c2 with SMTP id x9-20020a170902ec8900b001cc436f70c2mr7534166plg.9.1699524404876;
+        Thu, 09 Nov 2023 02:06:44 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:6f57:d4c:468c:5daf])
-        by smtp.gmail.com with ESMTPSA id c13-20020a170902d48d00b001c60ba709b7sm3127511plg.125.2023.11.09.02.06.35
+        by smtp.gmail.com with ESMTPSA id c13-20020a170902d48d00b001c60ba709b7sm3127511plg.125.2023.11.09.02.06.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Nov 2023 02:06:39 -0800 (PST)
+        Thu, 09 Nov 2023 02:06:44 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh+dt@kernel.org>,
 	Frank Rowand <frowand.list@gmail.com>,
@@ -88,15 +89,17 @@ Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>
-Subject: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
-Date: Thu,  9 Nov 2023 18:05:57 +0800
-Message-ID: <20231109100606.1245545-1-wenst@chromium.org>
+Subject: [RFC PATCH v2 1/7] of: base: Add of_device_is_fail
+Date: Thu,  9 Nov 2023 18:05:58 +0800
+Message-ID: <20231109100606.1245545-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.42.0.869.gea05f2083d-goog
+In-Reply-To: <20231109100606.1245545-1-wenst@chromium.org>
+References: <20231109100606.1245545-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_020642_231050_8D643D80 
-X-CRM114-Status: GOOD (  35.38  )
+X-CRM114-CacheID: sfid-20231109_020646_151467_A4FB67B9 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,179 +114,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+In some cases we want to check that a device is not only unavailable,
+but specifically marked as "fail".
 
-This v2 series continues Doug's "of: device: Support 2nd sources of
-probeable but undiscoverable devices" [1] series, but follows the scheme
-suggested by Rob, marking all second source component device nodes
-as "fail-needs-probe-XXX", and having a hardware prober driver enable
-the one of them. I tried to include everyone from the original Cc: list.
-Please let me know if you would like to be dropped from future
-submissions.
+This will be used in a following change in the hardware prober driver.
 
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/of/base.c  | 20 ++++++++++++++++++++
+ include/linux/of.h |  6 ++++++
+ 2 files changed, 26 insertions(+)
 
-For the I2C component (touchscreens and trackpads) case from the
-original series, the hardware prober driver finds the particular
-class of device in the device tree, gets its parent I2C adapter,
-and tries to initiate a simple I2C read for each device under that
-I2C bus. When it finds one that responds, it considers that one
-present, marks it as "okay", and returns, letting the driver core
-actually probe the device.
-
-This works fine in most cases since these components are connected
-via ribbon cable and always have the same resources. The driver as
-implemented currently doesn't deal with regulators or GPIO pins,
-since in the existing device trees they are either always on for
-regulators, or have GPIO hogs or pinmux and pinconfig directly
-tied to the pin controller.
-
-
-Another case this driver could handle is selecting components based
-on some identifier passed in by the firmware. On Chromebooks we have
-a SKU ID which is inserted by the bootloader at
-/firmware/coreboot/sku-id. When a new combination of components is
-introduced, a new SKU ID is allocated to it. To have SKU ID based
-device trees, we would need to have one per SKU ID. This ends up
-increasing the number of device trees we have a lot. The recent
-MT8186 devices already have 10+10 SKUs [2], with possibly more to come.
-
-Instead, we could have just one device tree for each device, with
-component options listed and marked as "fail-needs-probe-XXX", and
-let the hardware prober enable one of them based on the given SKU ID.
-The driver will also fix up OF graph remote endpoints to point to the
-enabled component.
-
-The MT8186 Corsola series [2] can also benefit from this, though I
-haven't implemented anything yet.
-
-
-Patch 1 adds of_device_is_fail() for the new driver to use.
-
-Patch 2 implements the first case, probing the I2C bus for presence
-of components. This initial version targets the Hana Chromebooks.
-
-Patch 3 modifies the Hana device tree and marks the touchscreens
-and trackpads as "fail-needs-probe-XXX", ready for the driver to
-probe.
-
-Patch 4 adds a missing touchscreen variant to Hana.
-
-Patch 5 implements the second case, selectively enabling components
-based on the SKU ID. This initial version targets the Krane ChromeOS
-tablet, which has two possible MIPI DSI display panel options.
-
-Patch 6 drops Krane's SKU-specific compatible strings from the bindings.
-
-Patch 7 merges Krane's SKU-specific device trees into one, with the
-device tree now containing two possible panels. This unfortunately
-introduces a dtc warning:
-
-    arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dts:81.13-83.6:
-        Warning (graph_endpoint): /soc/dsi@14014000/panel2@0/port/endpoint:
-	graph connection to node '/soc/dsi@14014000/ports/port/endpoint'
-	    is not bidirectional
-
-
-Please take a look.
-
-Johan, I'm not sure if this works as is for the Lenovo Thinkpad 13S
-case, since it looks like the trackpad shares the I2C bus with the
-keyboard.
-
-
-Thanks
-ChenYu
-
-
-Background as given in Doug's cover letter:
-
-Support for multiple "equivalent" sources for components (also known
-as second sourcing components) is a standard practice that helps keep
-cost down and also makes sure that if one component is unavailable due
-to a shortage that we don't need to stop production for the whole
-product.
-
-Some components are very easy to second source. eMMC, for instance, is
-fully discoverable and probable so you can stuff a wide variety of
-similar eMMC chips on your board and things will work without a hitch.
-
-Some components are more difficult to second source, specifically
-because it's difficult for software to probe what component is present
-on any given board. In cases like this software is provided
-supplementary information to help it, like a GPIO strap or a SKU ID
-programmed into an EEPROM. This helpful information can allow the
-bootloader to select a different device tree. The various different
-"SKUs" of different Chromebooks are examples of this.
-
-Some components are somewhere in between. These in-between components
-are the subject of this patch. Specifically, these components are
-easily "probeable" but not easily "discoverable".
-
-A good example of a probeable but undiscoverable device is an
-i2c-connected touchscreen or trackpad. Two separate components may be
-electrically compatible with each other and may have compatible power
-sequencing requirements but may require different software. If
-software is told about the different possible components (because it
-can't discover them), it can safely probe them to figure out which
-ones are present.
-
-On systems using device tree, if we want to tell the OS about all of
-the different components we need to list them all in the device
-tree. This leads to a problem. The multiple sources for components
-likely use the same resources (GPIOs, interrupts, regulators). If the
-OS tries to probe all of these components at the same time then it
-will detect a resource conflict and that's a fatal error.
-
-The fact that Linux can't handle these probeable but undiscoverable
-devices well has had a few consequences:
-1. In some cases, we've abandoned the idea of second sourcing
-   components for a given board, which increases cost / generates
-   manufacturing headaches.
-2. In some cases, we've been forced to add some sort of strapping /
-   EEPROM to indicate which component is present. This adds difficulty
-   to manufacturing / refurb processes.
-3. In some cases, we've managed to make things work by the skin of our
-   teeth through slightly hacky solutions. Specifically, if we remove
-   the "pinctrl" entry from the various options then it won't
-   conflict. Regulators inherently can have more than one consumer, so
-   as long as there are no GPIOs involved in power sequencing and
-   probing devices then things can work. This is how
-   "sc8280xp-lenovo-thinkpad-x13s" works and also how
-   "mt8173-elm-hana" works.
-
-End of background from Doug's cover letter.
-
-[1] https://lore.kernel.org/all/20230921102420.RFC.1.I9dddd99ccdca175e3ceb1b9fa1827df0928c5101@changeid/
-[2] https://lore.kernel.org/linux-mediatek/20231012230237.2676469-1-wenst@chromium.org/
-
-Chen-Yu Tsai (7):
-  of: base: Add of_device_is_fail
-  of: Introduce hardware prober driver
-  arm64: dts: mediatek: mt8173-elm-hana: Mark touchscreens and trackpads
-    as fail
-  arm64: dts: mediatek: mt8173-elm-hana: Add G2touch G7500 touchscreen
-  of: hw_prober: Support Chromebook SKU ID based component selection
-  dt-bindings: arm: mediatek: Remove SKU specific compatibles for Google
-    Krane
-  arm64: dts: mediatek: mt8183-kukui: Merge Krane device trees
-
- .../devicetree/bindings/arm/mediatek.yaml     |   3 -
- arch/arm64/boot/dts/mediatek/Makefile         |   3 +-
- .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |  20 ++
- .../dts/mediatek/mt8183-kukui-krane-sku0.dts  |  24 --
- .../mediatek/mt8183-kukui-krane-sku176.dts    |  24 --
- ...ukui-krane.dtsi => mt8183-kukui-krane.dts} |  47 ++-
- drivers/of/Kconfig                            |  13 +
- drivers/of/Makefile                           |   1 +
- drivers/of/base.c                             |  20 ++
- drivers/of/hw_prober.c                        | 314 ++++++++++++++++++
- include/linux/of.h                            |   6 +
- 11 files changed, 418 insertions(+), 57 deletions(-)
- delete mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
- delete mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
- rename arch/arm64/boot/dts/mediatek/{mt8183-kukui-krane.dtsi => mt8183-kukui-krane.dts} (86%)
- create mode 100644 drivers/of/hw_prober.c
-
+diff --git a/drivers/of/base.c b/drivers/of/base.c
+index 8d93cb6ea9cd..2726e5dce1bf 100644
+--- a/drivers/of/base.c
++++ b/drivers/of/base.c
+@@ -486,6 +486,26 @@ static bool __of_device_is_fail(const struct device_node *device)
+ 	return !strcmp(status, "fail") || !strncmp(status, "fail-", 5);
+ }
+ 
++/**
++ *  of_device_is_fail - check if a device has status "fail" or "fail-..."
++ *
++ *  @device: Node to check status for
++ *
++ *  Return: True if the status property is set to "fail" or "fail-..." (for any
++ *  error code suffix), false otherwise
++ */
++bool of_device_is_fail(const struct device_node *device)
++{
++	unsigned long flags;
++	bool res;
++
++	raw_spin_lock_irqsave(&devtree_lock, flags);
++	res = __of_device_is_fail(device);
++	raw_spin_unlock_irqrestore(&devtree_lock, flags);
++	return res;
++}
++EXPORT_SYMBOL(of_device_is_fail);
++
+ /**
+  *  of_device_is_big_endian - check if a device has BE registers
+  *
+diff --git a/include/linux/of.h b/include/linux/of.h
+index 6a9ddf20e79a..463fbf0072bd 100644
+--- a/include/linux/of.h
++++ b/include/linux/of.h
+@@ -350,6 +350,7 @@ extern int of_device_is_compatible(const struct device_node *device,
+ extern int of_device_compatible_match(const struct device_node *device,
+ 				      const char *const *compat);
+ extern bool of_device_is_available(const struct device_node *device);
++extern bool of_device_is_fail(const struct device_node *device);
+ extern bool of_device_is_big_endian(const struct device_node *device);
+ extern const void *of_get_property(const struct device_node *node,
+ 				const char *name,
+@@ -584,6 +585,11 @@ static inline bool of_device_is_available(const struct device_node *device)
+ 	return false;
+ }
+ 
++static inline bool of_device_is_fail(const struct device_node *device)
++{
++	return false;
++}
++
+ static inline bool of_device_is_big_endian(const struct device_node *device)
+ {
+ 	return false;
 -- 
 2.42.0.869.gea05f2083d-goog
 
