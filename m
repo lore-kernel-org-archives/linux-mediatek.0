@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F0A0C4167D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 09:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF69C0018C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 09:21:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iH+BCkWuyzEprew3PF01/uBudjXoxuLxJGSDgAZQKOc=; b=rcuPomp5QQOuM4rprG/KR4+64S
-	mZ06tlNXFA079MrYNWAmW7apMD2h1uSI+TuoURFPESZhyVCbR55/GCIzbFlzsRY5HDsyCgkAlAs+g
-	VjYA5OT21ZVir097h7coxKcG64UdYg7fJvDOOam3TcV5bPZ50eRxdS5cIsk0Xg8Ss0fdFmzyruivF
-	uFM73gNxyEKrLCSoIZMc7DimIIknw3Q5PAelv5G2P1ZrNGhf2iVf06mVcEw1/sm6SAvbyfpK9w8/c
-	1vI4h+WkSylGcBJCnhatpXrLQ0LiqpcBfVH2AT2L4g0I1AqxRiuZUn4Mgg2BxX/tWbL7cTInAV5gQ
-	n4zDZkVQ==;
+	bh=fBP6+EqlzuwrtK4xfY952Hat5KwWKHqQX7JuxQgkQqE=; b=PBh/XkhEQUpVLwM5wW3FwX2GFa
+	sb9WilkQaBZ+/bB3MO2mw/2l5Dcb4Xs+Bx58xh3dyc6+sAKy84fYNd1/0tGiU+3NJy9ZuS8PYVELh
+	CdrD1iIsXHjDHe2IL+ho2OG713ZsnQBJQ6Pv49wsOdBw098W0DkCMUI40bSfGGoOKS369weeGIVOS
+	cw8g9DOc9BmNOZnpyMk9MyZ6K4n0VB0daoE851p+G6AkYkG61XTGMR/M9UmmMhWXREQ532eXpCXsx
+	vIffyTMZNeIN5gi13OybUsbo+MrXKU/do/sNbuw6+hP4rN4UVv9RVSNnQslNIJ04GOP/rff5/ePRf
+	ef+874RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r118G-005kWo-0i;
-	Thu, 09 Nov 2023 09:15:24 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r11Eb-005lTE-2h;
+	Thu, 09 Nov 2023 09:21:57 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r118D-005kVN-0K;
-	Thu, 09 Nov 2023 09:15:22 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	id 1r11EX-005lRV-2y;
+	Thu, 09 Nov 2023 09:21:55 +0000
+Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 31F126607410;
-	Thu,  9 Nov 2023 09:15:19 +0000 (GMT)
+	(Authenticated sender: andrzej.p)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 09BF76607410;
+	Thu,  9 Nov 2023 09:21:50 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699521319;
-	bh=7E495mU7BugXetHo15jEPw07igwc/8Jw3mgxbekLybc=;
+	s=mail; t=1699521712;
+	bh=f8JXp5DFigmWZNSo/1/xIIcN/xL2hsK0xHFmM9ZToL0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XfBLTN+CXU+gg+KTN2BCtfLv3c4NautMO+PV5X0bavRwxKLeKIICb+XDy4dcR97nI
-	 HNtrfoRI9D8GQvH1n7rg8+dm05v0EwSJwLYP80DTf1/4Xu/D5C891IOFmUGKPH1WvY
-	 umOnA8ejsNAylamAhHk8g48Zrc3gHv6Ru+xqWX6Ysd8eREKFjD8QHS9+tXGh/xL/5i
-	 Ba2zo2ctz8ChQ+tPWVyOAXUHP2G49XISME1ZuVLnFHzeYO/6dHt4HESs4wPDeFTwkK
-	 8ACzW1pc2qYfquXs6ire8pi1D3vjnfXy0OX/jJoiP9VGjxfLbUgge/sjg+qMvdts2O
-	 XVDvyFmkXsFeg==
-Message-ID: <c28c99b8-36f8-479a-adbf-442c87062ca2@collabora.com>
-Date: Thu, 9 Nov 2023 10:15:16 +0100
+	b=GhASGxhw40oITC1953wmOIZmXueh8mIWI9sy6ITxawXx67Jiz7uuD3m3plQGR3GFS
+	 +mKwqeGFgJrCX8RMLO919BPvowQy4hSLxkXaIm6936+JP9oyW2S5tlDXWw/L88jNQK
+	 g9Te4OtfxIx5Tek0ycpNfoJkR4YE4pXWTanCUigOuyE09hKEgZ+s7w3efbXOwfwGGc
+	 ZV0VsLNy2f7kP0z8DRpX07zRPjLug6VKyUkqCwmZInQe+H6wrdzkcbMaOhbsl549iF
+	 eX4oZzV6YbVIt6HLkUf0+OcsfKSscbztj7pSjrVs3/D266AeoVEMLaGuvWab6LMxXh
+	 FPFtvJ9TBQ5Tw==
+Message-ID: <7972851a-9a78-426a-b864-4de8411cd15a@collabora.com>
+Date: Thu, 9 Nov 2023 10:21:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] dt-bindings: clock: mediatek: Remove compatible for
- MT8188 VPPSYS
+Subject: Re: [PATCH v14 13/56] media: mediatek: vcodec: Stop direct calls to
+ queue num_buffers field
 Content-Language: en-US
-To: "yu-chang.lee" <yu-chang.lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>
-Cc: Nathan Lu <nathan.lu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
- "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, linux-kernel@vger.kernel.org,
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+ nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20231109082201.7698-1-yu-chang.lee@mediatek.com>
- <20231109082201.7698-3-yu-chang.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231109082201.7698-3-yu-chang.lee@mediatek.com>
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com,
+ Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-14-benjamin.gaignard@collabora.com>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+In-Reply-To: <20231031163104.112469-14-benjamin.gaignard@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_011521_269348_B12E3A6A 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20231109_012154_086435_2315CCA3 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,37 +83,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/11/23 09:22, yu-chang.lee ha scritto:
-> Remove VPPSYS0, VPPSYS1 compatible on Mediatek MT8188.
+W dniu 31.10.2023 o 17:30, Benjamin Gaignard pisze:
+> Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+> This allows us to change how the number of buffers is computed in the
+> future.
 > 
-> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
-The mail recipients are wrong/incomplete. This patch cannot ever possibly get
-upstream if you don't Cc the right people/lists.
+Reviewed-by: Andrzej Pietrasiewicz <anrdzej.p@collabora.com>
 
-Please use scripts/get_maintainer.pl to get the right list of recipients and
-resend.
-
-Thanks,
-Angelo
-
+> CC: Bin Liu <bin.liu@mediatek.com>
+> CC: Matthias Brugger <matthias.bgg@gmail.com>
 > ---
->   .../devicetree/bindings/clock/mediatek,mt8188-clock.yaml        | 2 --
->   1 file changed, 2 deletions(-)
+>   drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
-> index d7214d97b2ba..860570320545 100644
-> --- a/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
-> @@ -43,8 +43,6 @@ properties:
->         - mediatek,mt8188-vdecsys
->         - mediatek,mt8188-vdecsys-soc
->         - mediatek,mt8188-vencsys
-> -      - mediatek,mt8188-vppsys0
-> -      - mediatek,mt8188-vppsys1
->         - mediatek,mt8188-wpesys
->         - mediatek,mt8188-wpesys-vpp0
+> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+> index eb381fa6e7d1..181884e798fd 100644
+> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+> @@ -912,7 +912,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
+>   	return 0;
 >   
-
+>   err_start_stream:
+> -	for (i = 0; i < q->num_buffers; ++i) {
+> +	for (i = 0; i < vb2_get_num_buffers(q); ++i) {
+>   		struct vb2_buffer *buf = vb2_get_buffer(q, i);
+>   
+>   		/*
 
 
