@@ -4,70 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAE82C41535
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 10:06:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3255FC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 10:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T+B8vWiKa6N/QVQqPqE/07U5rbQv1BZo66hlUoWPuvQ=; b=SjGIYWqyAZAAlEf47bsOD1CeB9
-	ujW7SrrXeo+QeXbp9NEj1u/DBwqVWRykw3myg3Ggzf2FHwQ7mjazfs07jINDY0bvpeDH9qKaO2WlO
-	j2ubQZwLPOerk6AKgT8d2BAMUcw5yqiY6J/wEoT2+DShqQLXPhbMynYNmMh7lwrXdRhSaOFWu7oFH
-	Cs4WBwvIEltD9ul39l8TBAU0TCQNeiw2igW9sKCkMaswfaSAwsAkcfyYusEwEWaic51jtB6csxgDz
-	/URNRjltLnGY6FO2BvSbkctdtI8NtYtdnOb2NbVJ7Ndx8euBfWJQuDpNhLL9l+mc1M6nvuSVHunsj
-	iHBB4smQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fJvWVs2pvEah4vcu8xn+6aEsMzIEVFQ3nL2+j2vnxy4=; b=ZTSky0dPqGd1Nz2lhKRk57/5pf
+	yy87RKo/dd4WKFzbEihdl7otOl8lXwOd3kDAJNuBPOx2bkF3xHFPMk6OluHHAA9QZyxOJJt7rs0xX
+	9/BoDzeJV1sQazQYmoiRKDaJYOZQJVhduvTql+NAZrFm9ZXMVtfuWay4JGKSQIIutJjDIp674//qN
+	2PzwJHtDI0eAmnf1xCvp9JboN3fREygm6hg0adYZel0dk4AkSgYZw3PJ6c/TnJibZzpGUxg3zL3z+
+	Rl2hm3JNulrxg9xI/F8pkHOoNSchubmPFJOYEfIH0iEZ0bmLjaA1nk12IFpj+vqG/VS9FeLoc1je1
+	dSBUb/hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r11vI-005rSA-26;
-	Thu, 09 Nov 2023 10:06:04 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r11vx-005reZ-01;
+	Thu, 09 Nov 2023 10:06:45 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r11vE-005rR2-2Y;
-	Thu, 09 Nov 2023 10:06:02 +0000
-Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3760C6607435;
-	Thu,  9 Nov 2023 10:05:58 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699524359;
-	bh=UJuIMITlo4Vgq8DsEXFYPS1YQZCqvGhIqg5ZZ7SVEPE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZZTzL9AccMhtEEEUj0qc1XRdMjJ5UIEw8Rn1j0Ues6tELlQiKYoXsUOHEhug4eTb1
-	 08fCo9nV2UzGSbOz4kF7j6SanHTfgSHAVihmWzzMbZJXmmOtTJf0TdtpM93OZivRQE
-	 LSWuzm7quXfM+Uj6Kx307tyKffOqt+dg5vyEQbYzWwN05SfKgmoDJL4J8m6j0PDT3T
-	 je5lY28C/9OB7oKHrJDcIzwipA3P3wLZyPh4WgHqdRLpS7B1W1R0hE7hEIhTMcFU5f
-	 5kchFbGmgmqknDT6HEuzhdX7dte9kiVtx7DE/tn4Ao2HUeVbZ4Dj6C+9XY1R/EiSQC
-	 A8Q7aJegjSoaw==
-Message-ID: <ef2c7f81-7846-4ee2-b52d-061177df9755@collabora.com>
-Date: Thu, 9 Nov 2023 11:05:55 +0100
+	id 1r11vu-005rdI-0Y
+	for linux-mediatek@lists.infradead.org;
+	Thu, 09 Nov 2023 10:06:44 +0000
+Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-5bd33a450fdso592125a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Nov 2023 02:06:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1699524400; x=1700129200; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=fJvWVs2pvEah4vcu8xn+6aEsMzIEVFQ3nL2+j2vnxy4=;
+        b=WJ+mnhrvtZGuC4MFBzy/9jm6R3+8IG5yir7/MQ/TqTmiCqW+lECBW1a6d3EcTTdDWr
+         bvh8YfjfYWGeNTxrRefhBRE/zikv5ewNujBXFDJCFEPIaOJ3E1lk+ar9FlMrEwGiUO0z
+         4+zbNAO84dSgnZ4nr7tIqBDKeZv+IWA3QHk3A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699524400; x=1700129200;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fJvWVs2pvEah4vcu8xn+6aEsMzIEVFQ3nL2+j2vnxy4=;
+        b=q67MR5oyRAj4DkOCPbmvYcKPvqS9oJXyKdxcMago3/0S9rZEbqPWP1FLaRr8AXQJmk
+         Pm+6jVvS5+eHSZFTRoSCFyYm1dEhj1BEFhHr8Dd+PioJDlR82EytSQvxcSNaURfdDv1V
+         y1136W5y+NPErJVyrZEGFdKuNDc9tJuaz7CYYQz1IChSjx7iyKDcicGqdwoRIbGDuYv1
+         2LlB8rgJjRUZGA1wNkjy5YkQc8j9pNKqHfx8cVmI4+9rswCs9XNhfinCgbsXDohIdyoS
+         c3clRCF+iYhUB16AmS7CMOizoQy8G9pK997Xy1rnjEPCM+eqxINjENoz8ltFZaeuQ69A
+         72Ow==
+X-Gm-Message-State: AOJu0YxiEIeXa7IsJO1uxPmF7WDyDfLQVVAfPEi/JDl/5eBBZpO9pOT4
+	mDop6OgfmGbi+v/vDX7m0T5ZhA==
+X-Google-Smtp-Source: AGHT+IHHefmAjeD5eN0+LN0jhER8LNSGYduJSaVRik8xs8t3KLkMHkAAnrszpGlm6KPVGIKhFjBxqA==
+X-Received: by 2002:a17:902:d48b:b0:1c0:cbaf:6930 with SMTP id c11-20020a170902d48b00b001c0cbaf6930mr5153488plg.54.1699524400148;
+        Thu, 09 Nov 2023 02:06:40 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:6f57:d4c:468c:5daf])
+        by smtp.gmail.com with ESMTPSA id c13-20020a170902d48d00b001c60ba709b7sm3127511plg.125.2023.11.09.02.06.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Nov 2023 02:06:39 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Frank Rowand <frowand.list@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	andriy.shevchenko@linux.intel.com,
+	Jiri Kosina <jikos@kernel.org>,
+	linus.walleij@linaro.org,
+	broonie@kernel.org,
+	gregkh@linuxfoundation.org,
+	hdegoede@redhat.com,
+	james.clark@arm.com,
+	james@equiv.tech,
+	keescook@chromium.org,
+	petr.tesarik.ext@huawei.com,
+	rafael@kernel.org,
+	tglx@linutronix.de,
+	Jeff LaBundy <jeff@labundy.com>,
+	linux-input@vger.kernel.org,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>
+Subject: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
+Date: Thu,  9 Nov 2023 18:05:57 +0800
+Message-ID: <20231109100606.1245545-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.42.0.869.gea05f2083d-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 22/56] media: pci: tw686x: Stop direct calls to queue
- num_buffers field
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-23-benjamin.gaignard@collabora.com>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <20231031163104.112469-23-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_020600_958852_B534212D 
-X-CRM114-Status: GOOD (  16.29  )
+X-CRM114-CacheID: sfid-20231109_020642_231050_8D643D80 
+X-CRM114-Status: GOOD (  35.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,42 +111,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-W dniu 31.10.2023 o 17:30, Benjamin Gaignard pisze:
-> Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-> This allows us to change how the number of buffers is computed in the
-> future.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Hi everyone,
 
-Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+This v2 series continues Doug's "of: device: Support 2nd sources of
+probeable but undiscoverable devices" [1] series, but follows the scheme
+suggested by Rob, marking all second source component device nodes
+as "fail-needs-probe-XXX", and having a hardware prober driver enable
+the one of them. I tried to include everyone from the original Cc: list.
+Please let me know if you would like to be dropped from future
+submissions.
 
-> CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-> ---
->   drivers/media/pci/tw686x/tw686x-video.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/pci/tw686x/tw686x-video.c b/drivers/media/pci/tw686x/tw686x-video.c
-> index 3ebf7a2c95f0..6bc6d143d18c 100644
-> --- a/drivers/media/pci/tw686x/tw686x-video.c
-> +++ b/drivers/media/pci/tw686x/tw686x-video.c
-> @@ -423,6 +423,7 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
->   			      unsigned int sizes[], struct device *alloc_devs[])
->   {
->   	struct tw686x_video_channel *vc = vb2_get_drv_priv(vq);
-> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
->   	unsigned int szimage =
->   		(vc->width * vc->height * vc->format->depth) >> 3;
->   
-> @@ -430,8 +431,8 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
->   	 * Let's request at least three buffers: two for the
->   	 * DMA engine and one for userspace.
->   	 */
-> -	if (vq->num_buffers + *nbuffers < 3)
-> -		*nbuffers = 3 - vq->num_buffers;
-> +	if (q_num_bufs + *nbuffers < 3)
-> +		*nbuffers = 3 - q_num_bufs;
->   
->   	if (*nplanes) {
->   		if (*nplanes != 1 || sizes[0] < szimage)
+
+For the I2C component (touchscreens and trackpads) case from the
+original series, the hardware prober driver finds the particular
+class of device in the device tree, gets its parent I2C adapter,
+and tries to initiate a simple I2C read for each device under that
+I2C bus. When it finds one that responds, it considers that one
+present, marks it as "okay", and returns, letting the driver core
+actually probe the device.
+
+This works fine in most cases since these components are connected
+via ribbon cable and always have the same resources. The driver as
+implemented currently doesn't deal with regulators or GPIO pins,
+since in the existing device trees they are either always on for
+regulators, or have GPIO hogs or pinmux and pinconfig directly
+tied to the pin controller.
+
+
+Another case this driver could handle is selecting components based
+on some identifier passed in by the firmware. On Chromebooks we have
+a SKU ID which is inserted by the bootloader at
+/firmware/coreboot/sku-id. When a new combination of components is
+introduced, a new SKU ID is allocated to it. To have SKU ID based
+device trees, we would need to have one per SKU ID. This ends up
+increasing the number of device trees we have a lot. The recent
+MT8186 devices already have 10+10 SKUs [2], with possibly more to come.
+
+Instead, we could have just one device tree for each device, with
+component options listed and marked as "fail-needs-probe-XXX", and
+let the hardware prober enable one of them based on the given SKU ID.
+The driver will also fix up OF graph remote endpoints to point to the
+enabled component.
+
+The MT8186 Corsola series [2] can also benefit from this, though I
+haven't implemented anything yet.
+
+
+Patch 1 adds of_device_is_fail() for the new driver to use.
+
+Patch 2 implements the first case, probing the I2C bus for presence
+of components. This initial version targets the Hana Chromebooks.
+
+Patch 3 modifies the Hana device tree and marks the touchscreens
+and trackpads as "fail-needs-probe-XXX", ready for the driver to
+probe.
+
+Patch 4 adds a missing touchscreen variant to Hana.
+
+Patch 5 implements the second case, selectively enabling components
+based on the SKU ID. This initial version targets the Krane ChromeOS
+tablet, which has two possible MIPI DSI display panel options.
+
+Patch 6 drops Krane's SKU-specific compatible strings from the bindings.
+
+Patch 7 merges Krane's SKU-specific device trees into one, with the
+device tree now containing two possible panels. This unfortunately
+introduces a dtc warning:
+
+    arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dts:81.13-83.6:
+        Warning (graph_endpoint): /soc/dsi@14014000/panel2@0/port/endpoint:
+	graph connection to node '/soc/dsi@14014000/ports/port/endpoint'
+	    is not bidirectional
+
+
+Please take a look.
+
+Johan, I'm not sure if this works as is for the Lenovo Thinkpad 13S
+case, since it looks like the trackpad shares the I2C bus with the
+keyboard.
+
+
+Thanks
+ChenYu
+
+
+Background as given in Doug's cover letter:
+
+Support for multiple "equivalent" sources for components (also known
+as second sourcing components) is a standard practice that helps keep
+cost down and also makes sure that if one component is unavailable due
+to a shortage that we don't need to stop production for the whole
+product.
+
+Some components are very easy to second source. eMMC, for instance, is
+fully discoverable and probable so you can stuff a wide variety of
+similar eMMC chips on your board and things will work without a hitch.
+
+Some components are more difficult to second source, specifically
+because it's difficult for software to probe what component is present
+on any given board. In cases like this software is provided
+supplementary information to help it, like a GPIO strap or a SKU ID
+programmed into an EEPROM. This helpful information can allow the
+bootloader to select a different device tree. The various different
+"SKUs" of different Chromebooks are examples of this.
+
+Some components are somewhere in between. These in-between components
+are the subject of this patch. Specifically, these components are
+easily "probeable" but not easily "discoverable".
+
+A good example of a probeable but undiscoverable device is an
+i2c-connected touchscreen or trackpad. Two separate components may be
+electrically compatible with each other and may have compatible power
+sequencing requirements but may require different software. If
+software is told about the different possible components (because it
+can't discover them), it can safely probe them to figure out which
+ones are present.
+
+On systems using device tree, if we want to tell the OS about all of
+the different components we need to list them all in the device
+tree. This leads to a problem. The multiple sources for components
+likely use the same resources (GPIOs, interrupts, regulators). If the
+OS tries to probe all of these components at the same time then it
+will detect a resource conflict and that's a fatal error.
+
+The fact that Linux can't handle these probeable but undiscoverable
+devices well has had a few consequences:
+1. In some cases, we've abandoned the idea of second sourcing
+   components for a given board, which increases cost / generates
+   manufacturing headaches.
+2. In some cases, we've been forced to add some sort of strapping /
+   EEPROM to indicate which component is present. This adds difficulty
+   to manufacturing / refurb processes.
+3. In some cases, we've managed to make things work by the skin of our
+   teeth through slightly hacky solutions. Specifically, if we remove
+   the "pinctrl" entry from the various options then it won't
+   conflict. Regulators inherently can have more than one consumer, so
+   as long as there are no GPIOs involved in power sequencing and
+   probing devices then things can work. This is how
+   "sc8280xp-lenovo-thinkpad-x13s" works and also how
+   "mt8173-elm-hana" works.
+
+End of background from Doug's cover letter.
+
+[1] https://lore.kernel.org/all/20230921102420.RFC.1.I9dddd99ccdca175e3ceb1b9fa1827df0928c5101@changeid/
+[2] https://lore.kernel.org/linux-mediatek/20231012230237.2676469-1-wenst@chromium.org/
+
+Chen-Yu Tsai (7):
+  of: base: Add of_device_is_fail
+  of: Introduce hardware prober driver
+  arm64: dts: mediatek: mt8173-elm-hana: Mark touchscreens and trackpads
+    as fail
+  arm64: dts: mediatek: mt8173-elm-hana: Add G2touch G7500 touchscreen
+  of: hw_prober: Support Chromebook SKU ID based component selection
+  dt-bindings: arm: mediatek: Remove SKU specific compatibles for Google
+    Krane
+  arm64: dts: mediatek: mt8183-kukui: Merge Krane device trees
+
+ .../devicetree/bindings/arm/mediatek.yaml     |   3 -
+ arch/arm64/boot/dts/mediatek/Makefile         |   3 +-
+ .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |  20 ++
+ .../dts/mediatek/mt8183-kukui-krane-sku0.dts  |  24 --
+ .../mediatek/mt8183-kukui-krane-sku176.dts    |  24 --
+ ...ukui-krane.dtsi => mt8183-kukui-krane.dts} |  47 ++-
+ drivers/of/Kconfig                            |  13 +
+ drivers/of/Makefile                           |   1 +
+ drivers/of/base.c                             |  20 ++
+ drivers/of/hw_prober.c                        | 314 ++++++++++++++++++
+ include/linux/of.h                            |   6 +
+ 11 files changed, 418 insertions(+), 57 deletions(-)
+ delete mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
+ delete mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
+ rename arch/arm64/boot/dts/mediatek/{mt8183-kukui-krane.dtsi => mt8183-kukui-krane.dts} (86%)
+ create mode 100644 drivers/of/hw_prober.c
+
+-- 
+2.42.0.869.gea05f2083d-goog
 
 
