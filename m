@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 809D2C4167D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 11:43:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B323C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 12:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ne1aBBePrlHq/E+vPtBQxqp5bzFyFJ70egihBnu7bqI=; b=xLP52tTUxwFMEJjMNeQ4dmrYSA
-	UsADz4tbRw4TSwlWaIKV1n4QANp4MiCxJ/LunfdcmloqTrmZbYAF0Bbq4p+JMT+N165nth57kAnHB
-	bgGLKj7fBSA9G+HUXvgsT5+8Dzl2qsC8rcDgWX5JdClPvjp7P0CyFgeUuW34DFVkMZ8e743kmYEHI
-	RCCMjayvFX+O5i7n46pmF+gfa6iZolzo+IlJtXmk9DYZeOhfbmdQcdPIKIFQ+CwBSgayBmEC7GjPD
-	G2iRcBAoTFCqilt1UQ5h7I0EmH+Y7oNBbvfQZORVMqiuiMLoTUfsZq8o0c2XjrXEFydiEQ0K3DBKm
-	K1EkrFuQ==;
+	bh=OPGo97GKydI4secdjdarpHTeULV8qFEvB1bl86si/t4=; b=VuhkvN4BBt0mfFipAITr497EWj
+	8rJHdBGKcvr2bnLMWvJQcwzPDMn5WEQJcX6hNEXTDdK6tUMMvF4kxONbiVDbAfBHxmCDTUaJizw+f
+	HtOQea3xyQXX8K0xUXFQJKnudapMcBBQ3qEiBchEcrbp9STanPilFCY1dhh4TSgtSPTHSm6rJXkR9
+	Txcr1WMj0luHqWEjwaP3627UNqNxdOmLtVUoZYPD2X9r3QS0FozpZK0U06wNFlh7pHDvbZg30u0Lt
+	TjYKyb5eagxJHOXkD8GFborTvm648c8hYFHQS4QVQ8/PpB9rawl+ug2Ao3lCbYqi+7KClEWrjyvWv
+	27iLS0HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r13Rr-00673U-1W;
-	Thu, 09 Nov 2023 11:43:47 +0000
+	id 1r149c-006Jut-1B;
+	Thu, 09 Nov 2023 12:29:00 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r13Ro-00671c-09;
-	Thu, 09 Nov 2023 11:43:45 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	id 1r149Y-006JtU-0m;
+	Thu, 09 Nov 2023 12:28:58 +0000
+Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C3C10660747A;
-	Thu,  9 Nov 2023 11:43:41 +0000 (GMT)
+	(Authenticated sender: andrzej.p)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 191B9660747A;
+	Thu,  9 Nov 2023 12:28:51 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699530222;
-	bh=DG8lr3XMae8Z37XwliFHKZ7pVaHUuHV+P2yiDaz3Oio=;
+	s=mail; t=1699532932;
+	bh=wvBhmLqQREGAx7oI3reWe2l9af2k7nuNnRJBg9FCTr4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BCf56i/2+y3kfhSgdkJ0WVHPmfgOZYAPl/ndNlg9NVEq2TPiRjIJYnU+skFKe//UO
-	 qdn6f3SlBvs29wO7gS9EEMFXGMvyivr+sC2Snr3n5VYoL131ouojvT3kf7scVQBxgf
-	 1Wt/7vFk7tUdL/4B6GNUVEGfhDSXCOl0pAHdUaMfTQ1hNuEI/8zfUnM+yMTbpU/Gkb
-	 vghdjRYF4N+o6sqCA+LBtkU+aPu8VEolXBLWkoZaAWRsf3jwTckIj66cZYLyGfb4WR
-	 A8acdIiyk9oQx/w9kFKVRR29XSxjXx/SAPANomowA1EE5cCbv3ZzQXyfV86HXzEPqn
-	 TbtaOnQbplE5Q==
-Message-ID: <8ff82531-e2e8-4cdf-833b-ac964c1258c5@collabora.com>
-Date: Thu, 9 Nov 2023 12:43:41 +0100
+	b=ExFkeytFlei55dbrJW6zpwbv5BYV0MbggCVBUcXQBNiM1/sHKVg/JpGHHnF2s7dCo
+	 Li7kwuM3z+7qXVFORQmvymicrppZRH85wCQZMsLN7f2rgCEglpxhTv+fZXy1dydcfZ
+	 GDPGLHh38V93b/yBaJnXaWSZu8x0I2yvc5VO/fwGRtCEslW39AR1gB+B3PTFdL5qGz
+	 AMVyazugfVnHbygYcv7/22BzSpfukJJssucjtrgWIK7MpRgrNQQGriMw40W5F1QCE7
+	 kDLVkR3xW9NLYiRr0GvcgEm+RhVsP7ysyGmCBgF3XENKjRaE7uMREYvh+oM8G0SNNZ
+	 aZ86u3NgLFyKg==
+Message-ID: <25614b04-4bb5-4b32-b41f-92477d1117a0@collabora.com>
+Date: Thu, 9 Nov 2023 13:28:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND 3/3] dt-bindings: arm:mediatek: mmsys: Add VPPSYS
- compatible for MT8188
+Subject: Re: [PATCH v14 44/56] media: core: Report the maximum possible number
+ of buffers for the queue
 Content-Language: en-US
-To: "yu-chang.lee" <yu-chang.lee@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "Nancy . Lin" <nancy.lin@mediatek.com>, Nathan Lu
- <nathan.lu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
- "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
- Garmin Chang <garmin.chang@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20231109111122.371-1-yu-chang.lee@mediatek.com>
- <20231109111122.371-4-yu-chang.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231109111122.371-4-yu-chang.lee@mediatek.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+ nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-45-benjamin.gaignard@collabora.com>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+In-Reply-To: <20231031163104.112469-45-benjamin.gaignard@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_034344_214846_49E49105 
-X-CRM114-Status: UNSURE (   5.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231109_042856_568663_6857DFD1 
+X-CRM114-Status: GOOD (  22.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,15 +82,173 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/11/23 12:11, yu-chang.lee ha scritto:
-> Add VPPSYS0, VPPSYS1 compatible on Mediatek MT8188.
+Hi Benjamin,
+
+
+W dniu 31.10.2023 o 17:30, Benjamin Gaignard pisze:
+> Use one of the struct v4l2_create_buffers reserved bytes to report
+
+I initially thought you were using literally a single byte, which made
+no sense to me given that values much larger than 255 are sometimes going to be
+stored there.
+
+Maybe rephrase this to:
+
+Use one element of the struct v4l2_create_buffers "reserved" array to report...
+
+With that you can add my
+
+Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+
+
+> the maximum possible number of buffers for the queue.
+> V4l2 framework set V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS flags in queue
+> capabilities so userland can know when the field is valid.
+> Does the same change in v4l2_create_buffers32 structure.
 > 
-> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
-
-P.S.: there's a missing space in the commit title that can be eventually be
-fixed while applying.
-
-dt-bindings: arm: mediatek: mmsys: Add VPPSYS compatible for MT8188
-
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>   .../userspace-api/media/v4l/vidioc-create-bufs.rst       | 8 ++++++--
+>   Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst | 1 +
+>   drivers/media/common/videobuf2/videobuf2-v4l2.c          | 2 ++
+>   drivers/media/v4l2-core/v4l2-compat-ioctl32.c            | 9 ++++++++-
+>   drivers/media/v4l2-core/v4l2-ioctl.c                     | 4 ++--
+>   include/uapi/linux/videodev2.h                           | 7 ++++++-
+>   6 files changed, 25 insertions(+), 6 deletions(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+> index a048a9f6b7b6..49232c9006c2 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
+> @@ -116,9 +116,13 @@ than the number requested.
+>         - ``flags``
+>         - Specifies additional buffer management attributes.
+>   	See :ref:`memory-flags`.
+> -
+>       * - __u32
+> -      - ``reserved``\ [6]
+> +      - ``max_num_buffers``
+> +      - If the V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS capability flag is set
+> +        this field indicates the maximum possible number of buffers
+> +        for this queue.
+> +    * - __u32
+> +      - ``reserved``\ [5]
+>         - A place holder for future extensions. Drivers and applications
+>   	must set the array to zero.
+>   
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> index 099fa6695167..0b3a41a45d05 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> @@ -120,6 +120,7 @@ aborting or finishing any DMA in progress, an implicit
+>   .. _V4L2-BUF-CAP-SUPPORTS-ORPHANED-BUFS:
+>   .. _V4L2-BUF-CAP-SUPPORTS-M2M-HOLD-CAPTURE-BUF:
+>   .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
+> +.. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
+>   
+>   .. raw:: latex
+>   
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index f3cf4b235c1f..bdfc3a253c65 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -762,6 +762,8 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+>   	fill_buf_caps(q, &create->capabilities);
+>   	validate_memory_flags(q, create->memory, &create->flags);
+>   	create->index = vb2_get_num_buffers(q);
+> +	create->max_num_buffers = q->max_num_buffers;
+> +	create->capabilities |= V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS;
+>   	if (create->count == 0)
+>   		return ret != -EBUSY ? ret : 0;
+>   
+> diff --git a/drivers/media/v4l2-core/v4l2-compat-ioctl32.c b/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+> index f3bed37859a2..5aac5cf780b3 100644
+> --- a/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+> +++ b/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+> @@ -116,6 +116,9 @@ struct v4l2_format32 {
+>    * @flags:	additional buffer management attributes (ignored unless the
+>    *		queue has V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS capability and
+>    *		configured for MMAP streaming I/O).
+> + * @max_num_buffers: if V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS capability flag is set
+> + *		this field indicate the maximum possible number of buffers
+> + *		for this queue.
+>    * @reserved:	future extensions
+>    */
+>   struct v4l2_create_buffers32 {
+> @@ -125,7 +128,8 @@ struct v4l2_create_buffers32 {
+>   	struct v4l2_format32	format;
+>   	__u32			capabilities;
+>   	__u32			flags;
+> -	__u32			reserved[6];
+> +	__u32			max_num_buffers;
+> +	__u32			reserved[5];
+>   };
+>   
+>   static int get_v4l2_format32(struct v4l2_format *p64,
+> @@ -175,6 +179,8 @@ static int get_v4l2_create32(struct v4l2_create_buffers *p64,
+>   		return -EFAULT;
+>   	if (copy_from_user(&p64->flags, &p32->flags, sizeof(p32->flags)))
+>   		return -EFAULT;
+> +	if (copy_from_user(&p64->max_num_buffers, &p32->max_num_buffers, sizeof(p32->max_num_buffers)))
+> +		return -EFAULT;
+>   	return get_v4l2_format32(&p64->format, &p32->format);
+>   }
+>   
+> @@ -221,6 +227,7 @@ static int put_v4l2_create32(struct v4l2_create_buffers *p64,
+>   			 offsetof(struct v4l2_create_buffers32, format)) ||
+>   	    put_user(p64->capabilities, &p32->capabilities) ||
+>   	    put_user(p64->flags, &p32->flags) ||
+> +	    put_user(p64->max_num_buffers, &p32->max_num_buffers) ||
+>   	    copy_to_user(p32->reserved, p64->reserved, sizeof(p64->reserved)))
+>   		return -EFAULT;
+>   	return put_v4l2_format32(&p64->format, &p32->format);
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index 9b1de54ce379..4d90424cbfc4 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -483,9 +483,9 @@ static void v4l_print_create_buffers(const void *arg, bool write_only)
+>   {
+>   	const struct v4l2_create_buffers *p = arg;
+>   
+> -	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, ",
+> +	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, max num buffers=%u",
+>   		p->index, p->count, prt_names(p->memory, v4l2_memory_names),
+> -		p->capabilities);
+> +		p->capabilities, p->max_num_buffers);
+>   	v4l_print_format(&p->format, write_only);
+>   }
+>   
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index c3d4e490ce7c..13ddb5abf584 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -1035,6 +1035,7 @@ struct v4l2_requestbuffers {
+>   #define V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS		(1 << 4)
+>   #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
+>   #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
+> +#define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
+>   
+>   /**
+>    * struct v4l2_plane - plane info for multi-planar buffers
+> @@ -2605,6 +2606,9 @@ struct v4l2_dbg_chip_info {
+>    * @flags:	additional buffer management attributes (ignored unless the
+>    *		queue has V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS capability
+>    *		and configured for MMAP streaming I/O).
+> + * @max_num_buffers: if V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS capability flag is set
+> + *		this field indicate the maximum possible number of buffers
+> + *		for this queue.
+>    * @reserved:	future extensions
+>    */
+>   struct v4l2_create_buffers {
+> @@ -2614,7 +2618,8 @@ struct v4l2_create_buffers {
+>   	struct v4l2_format	format;
+>   	__u32			capabilities;
+>   	__u32			flags;
+> -	__u32			reserved[6];
+> +	__u32			max_num_buffers;
+> +	__u32			reserved[5];
+>   };
+>   
+>   /*
 
 
