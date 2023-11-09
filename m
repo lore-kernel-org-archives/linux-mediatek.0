@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A0AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:31:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE1D4C4167D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5/znY4HCFVEVBJydXXpYZ6FSw54o9hilGLCdUAKvJ6U=; b=LtC1nSiWfCQPNIP4XuTc8OcP7M
-	99TRmIl1F4QwswCfL9Dn9fyOy1E8GHloV+LuOeHXy5IL30T1bi6qvt8mn2MTiVWzQCL582LNGHpPq
-	x0Jw3zKHKndHl91f5/t5Z/KY6Y6W3EWtvZaK3+mo9rVMYnYDM58Y8CjR5Gd99B5u1LmgaEme9+kvv
-	P7oGVDTTbunlChZK3Lo3yyA/O5dYFNawwaCe0dBjc4lLt5WQE5hdzA29n9wt8rgvMiY6H3XzNCuyK
-	bqILZS25CItbjcQqYo/L+cJiocsq9JPMC4RVQ5G3kZGj3pmrk0c6fSzcbhipPfx+qyEKH/eTurxcw
-	PkPYxjnA==;
+	bh=jaVhrMbyE3tdFXi9+sEIrOIPFz7iUSZ9py306BFhmgg=; b=rYCqHtP9gKkDBWotV+nk1B2IoC
+	JQpNIK0Os9D8NaQVmBOuX5f6gjVeiL1AJY4BrWmpePftiBhBJ3s5lk9XtSSbfQXf/GojoEsAKiMMt
+	2/9dLWGzpezx50LR6UksQSXdo3dun0+5c/8ke46cUUu9qIKNDJoQFE6ek+Y1O37BidiD2ZKf3/ARQ
+	koAH6tZ8s3Xb6nnB2Pu7U5kcEwQfP4uClCqOKmnwh/D9NDhdxnepiU7MR7FaYtJBQVs6gMu1lE8ja
+	cft1K1rjdwzhxYwNV304Uxr4ctf1Af6aDP7xMDBslC7qh8AmMAnuHQR7LAnLltRNJskVR9f3cUtKf
+	ngE1zfMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r17vp-006ixr-2o;
-	Thu, 09 Nov 2023 16:31:01 +0000
+	id 1r17w3-006j0y-1c;
+	Thu, 09 Nov 2023 16:31:15 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r17vm-006iwb-0l;
-	Thu, 09 Nov 2023 16:30:59 +0000
+	id 1r17w0-006iza-2Q;
+	Thu, 09 Nov 2023 16:31:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 784BFB82146;
-	Thu,  9 Nov 2023 16:30:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0E66C433C7;
-	Thu,  9 Nov 2023 16:30:52 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 5D9C9B82127;
+	Thu,  9 Nov 2023 16:31:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35470C433C8;
+	Thu,  9 Nov 2023 16:31:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699547455;
-	bh=5/znY4HCFVEVBJydXXpYZ6FSw54o9hilGLCdUAKvJ6U=;
+	s=k20201202; t=1699547470;
+	bh=AK5QOaCNW1qivV+BYTR3YnR/G6fmazfZw1BFo9i/I8Y=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gaIHc/3eRrfzh8HmTNcsQUbkoyvp9byyCuRYpZFewfbEZM6iQHj26noMmqAAQEli0
-	 lqunzQKVvm8mM3oQeekJaVRBAe/5XWX6Gz7EX/gdMpfBmNv29CHqgXVtXZox6jKS1X
-	 2efpaJGdsuAk1L+6XTgU6io0Fpk1T83NJ31wPysNKWfBKdabnjsz/1whiffx92bmVJ
-	 mvt19EvP3EDvct21zYSRdgIoknQ15tNN5W3lym8NXOExtB5KCa91rZi00KKDiz6fUW
-	 bAaq0fiLBKv5D3fDcPEVySaG8N4IeOcFggwssjyA5w6TmL3+BvhZOzgDFWeBh4/Gr2
-	 sHkz1k3vSWwFQ==
-Message-ID: <ac0cc141-05af-49bd-bf7b-e9f1e6d77f4f@kernel.org>
-Date: Thu, 9 Nov 2023 17:30:49 +0100
+	b=dCDKHAWc8GzWZaHEeBRX7yAELr/JlykCtzuNyWDV8G6s4IJapux5ievprmDk8hoNh
+	 +IfFY8UUNu7ys7ZoZpQSK4w0vcmV/7zw1cE8Gc7s7SQ01bW5yQh4I/zYsyY1rO8Y78
+	 MnAQUmw4d0Dr6crv2EW+HDqcsYnILfzf1G7n7Wbtr1WNxJ8vBnKfivJ4yyQMxVbps7
+	 e/DPY9xjHf6hk9dbNHNUv4ZXApTbklHffx++AjXNQgJ1kAlvKdJpZT+6CHAQjEJlnt
+	 MQNdRR643rFePXalxe5mT7Jh5bSGMBczLeguxUTptvxc5ZW/0NBR+jVEXqec/vFocR
+	 +TWwlH6TYnTLg==
+Message-ID: <e23e344f-8712-4bd9-a229-763adda6226e@kernel.org>
+Date: Thu, 9 Nov 2023 17:31:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] dt-bindings: clock: mediatek: Remove compatible for
+Subject: Re: [RESEND 2/3] dt-bindings: clock: mediatek: Remove compatible for
  MT8188 VPPSYS
 Content-Language: en-US
-To: =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "nfraprado@collabora.com" <nfraprado@collabora.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?TmF0aGFuIEx1ICjlkYLmnbHpnJYp?= <Nathan.Lu@mediatek.com>,
- =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20231109082201.7698-1-yu-chang.lee@mediatek.com>
- <20231109082201.7698-3-yu-chang.lee@mediatek.com>
- <c28c99b8-36f8-479a-adbf-442c87062ca2@collabora.com>
- <5abd0e8f60ec569336fe650af1f69dcd5a53a23e.camel@mediatek.com>
+To: "yu-chang.lee" <yu-chang.lee@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "Nancy . Lin" <nancy.lin@mediatek.com>, Nathan Lu
+ <nathan.lu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
+ "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+ Garmin Chang <garmin.chang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231109111122.371-1-yu-chang.lee@mediatek.com>
+ <20231109111122.371-3-yu-chang.lee@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -110,12 +105,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <5abd0e8f60ec569336fe650af1f69dcd5a53a23e.camel@mediatek.com>
+In-Reply-To: <20231109111122.371-3-yu-chang.lee@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083058_667601_0EE50461 
-X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-CacheID: sfid-20231109_083113_086356_E99BD486 
+X-CRM114-Status: UNSURE (   7.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -131,29 +126,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/11/2023 12:14, Yu-chang Lee (李禹璋) wrote:
-> On Thu, 2023-11-09 at 10:15 +0100, AngeloGioacchino Del Regno wrote:
->> Il 09/11/23 09:22, yu-chang.lee ha scritto:
->>> Remove VPPSYS0, VPPSYS1 compatible on Mediatek MT8188.
->>>
->>> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
->>
->> The mail recipients are wrong/incomplete. This patch cannot ever
->> possibly get
->> upstream if you don't Cc the right people/lists.
->>
->> Please use scripts/get_maintainer.pl to get the right list of
->> recipients and
->> resend.
->>
->> Thanks,
->> Angelo
->>
-> Thank for your time and patience, I already resend the same series with
-> list script provided.
+On 09/11/2023 12:11, yu-chang.lee wrote:
+> Remove VPPSYS0, VPPSYS1 compatible on Mediatek MT8188.
+> 
+> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
+> ---
 
-Oh, really? Please point me to this submission where you Cc all
-maintainers presented by get_maintainer.pl.
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC (and consider --no-git-fallback argument). It might
+happen, that command when run on an older kernel, gives you outdated
+entries. Therefore please be sure you base your patches on recent Linux
+kernel.
 
 Best regards,
 Krzysztof
