@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9365DC4167D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 11:36:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9A88C4167D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 11:37:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=klAz5yh+EvO3eoSVw0wEtLyBHT2XfW8hl2uFiWVcpQg=; b=Mf5DBP7vgC+yt5YYyVx9UTdBNO
-	JP5C7yDclwbMVb5V/uYkNUTVbfKjzN3kwb69xFvHkOdluOUBs6onlKceENZa0vPDobXcH7JM088eO
-	BkQ/vkmnzY4VcQFC5qQx1DQe7uYlzsm3JVNVkn44jZz7/PW7RUH+f6/IvrieHEJNCR31u50M+zTqI
-	QP5f54OXoS3YoGAuLsjRBtK45dFWaAMYnjg42xAHOl1/x+PIcmNVQC6yvhIk1WBk0qa2rk5utO9UY
-	cZjPRDntq/V7XdyaFugxAKw6wkbCl6s3EGMdWpdDFXYi/UMie7SuFXX+CAuRfdxuta14gSMnz3dJv
-	lO+nY7tQ==;
+	bh=6vGZlxlav8fm15o7rvMptOrvxOU3vdYS1uEl5ZsODMU=; b=As5GL0w2v5eDKWdwJ7jj/+ppHM
+	3IsT6dHRRvwDqaSEu+pmIAnBe5Ewp+BjPyTaEGNNdO+AxImXPzAe3GuyumY3QB9WY2oxx4JphGuyM
+	NuQfqdeElMiENdFlp3zZpoTIq2oiXE5brceuLEmbvbqwRb6TXjSJQ+f41malnlWCiS4j9CwTvFPrT
+	gKKGaMzI4nGXz2INmfSbKSAmKDGDh6NePaqDWlvrDU8qoBq9vf3jVNi6nlJssDUCspHYKW2NdLxIv
+	w66uHHiwqNEkoBwCkMiogDGxvNf1Z6C/EcdNyl6GWcP+4mURhalC8QUFLC3HHM8js5l27tElvKFVf
+	XyUBTYCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r13KY-0065MG-2E;
-	Thu, 09 Nov 2023 11:36:14 +0000
+	id 1r13Lb-0065Zl-1m;
+	Thu, 09 Nov 2023 11:37:19 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r13KV-0065LT-2K;
-	Thu, 09 Nov 2023 11:36:13 +0000
+	id 1r13LY-0065Y6-1M;
+	Thu, 09 Nov 2023 11:37:17 +0000
 Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E3BB66607421;
-	Thu,  9 Nov 2023 11:36:08 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D800F660748C;
+	Thu,  9 Nov 2023 11:37:13 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699529770;
-	bh=0/A01qhv+t/yxdlH4Uvpb5ikYV4gg6UyE57UO6NZhgw=;
+	s=mail; t=1699529835;
+	bh=wUHoc5zpet6eywYkyKBwFgxm3jsVkAzT68bGG5YHoIY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FG515hO3HjrUoULvSvT8VrKX3xPTGhoWcL+Y7qvZnyMA2aPTy1YXj9DAPO31UMTjV
-	 M/ZEPpT/iG2nkXY83ACoykIN132N+TFuiFhdo0aWI6PGD5X7Phrc3REt048TB4woQk
-	 9iGfao44RM9abMps+U1mSCMncgz79o40ckh7ufYYzdUX2YVX4PQF0X8HBebiEDSSWG
-	 4Cecd4zyffcfzbnw5gccysBL1rHboOZlrtGTDdpVvF3o/E3Zp4+oya3OKcYFCZnsNO
-	 65Bkdk/aIsPuTaaKA4VzyvIPvAuXZbKmazdg5DnfnFxIDoHo1fE31/HeQZjIqUw2dE
-	 /cc2HV0dy3luA==
-Message-ID: <ff26f953-35cc-4206-a8e9-86cf05acdc71@collabora.com>
-Date: Thu, 9 Nov 2023 12:36:08 +0100
+	b=nkL9i3Il5m690763T3RMOIMD67YVb03EoPmOSqYCDXOlmo75ZLTIXKuy//GXgwLul
+	 uHn26mhT0z35qefwsRtuufOwdrvykYJ8yyJxfdZYR35hTqHqOwkvo+PZqZNnqGsIbd
+	 SU6USvy4GtCn+VvxmLwPKldxc/wQZo5JRJ7DozA1H1nunrbt4KeMQQersrLbciEYSn
+	 WxOMSIeKEp8qJPfQRDgBgiJPjFO3xp+Xw2LSYJQOJJyVpdFFXAKd/Jy1k3El9zI0e9
+	 PQj0GdJqxJ6wQZTY/33Fb8MpBnn2SFQNtLojwoPhM00+gFhQZMh5KLSVfO7ckAd9Mp
+	 FBE0SBgZySLyA==
+Message-ID: <71cfb62d-1ad0-41cf-ac7e-f0a9ac6fe926@collabora.com>
+Date: Thu, 9 Nov 2023 12:37:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 41/56] media: usb: hackrf: Stop direct calls to queue
+Subject: Re: [PATCH v14 42/56] media: usb: usbtv: Stop direct calls to queue
  num_buffers field
 Content-Language: en-US
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
@@ -58,17 +58,16 @@ To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
 Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com,
- Antti Palosaari <crope@iki.fi>
+ linux-staging@lists.linux.dev, kernel@collabora.com
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-42-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-43-benjamin.gaignard@collabora.com>
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <20231031163104.112469-42-benjamin.gaignard@collabora.com>
+In-Reply-To: <20231031163104.112469-43-benjamin.gaignard@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_033611_892637_B7881550 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20231109_033716_609110_266D277A 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,30 +91,26 @@ W dniu 31.10.2023 o 17:30, Benjamin Gaignard pisze:
 
 Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 
-> CC: Antti Palosaari <crope@iki.fi>
 > ---
->   drivers/media/usb/hackrf/hackrf.c | 5 +++--
+>   drivers/media/usb/usbtv/usbtv-video.c | 5 +++--
 >   1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/media/usb/hackrf/hackrf.c b/drivers/media/usb/hackrf/hackrf.c
-> index 3e535be2c520..9c0ecd5f056c 100644
-> --- a/drivers/media/usb/hackrf/hackrf.c
-> +++ b/drivers/media/usb/hackrf/hackrf.c
-> @@ -753,12 +753,13 @@ static int hackrf_queue_setup(struct vb2_queue *vq,
->   		unsigned int *nplanes, unsigned int sizes[], struct device *alloc_devs[])
+> diff --git a/drivers/media/usb/usbtv/usbtv-video.c b/drivers/media/usb/usbtv/usbtv-video.c
+> index 1e30e05953dc..62a583040cd4 100644
+> --- a/drivers/media/usb/usbtv/usbtv-video.c
+> +++ b/drivers/media/usb/usbtv/usbtv-video.c
+> @@ -726,9 +726,10 @@ static int usbtv_queue_setup(struct vb2_queue *vq,
 >   {
->   	struct hackrf_dev *dev = vb2_get_drv_priv(vq);
+>   	struct usbtv *usbtv = vb2_get_drv_priv(vq);
+>   	unsigned size = USBTV_CHUNK * usbtv->n_chunks * 2 * sizeof(u32);
 > +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
 >   
->   	dev_dbg(dev->dev, "nbuffers=%d\n", *nbuffers);
->   
->   	/* Need at least 8 buffers */
-> -	if (vq->num_buffers + *nbuffers < 8)
-> -		*nbuffers = 8 - vq->num_buffers;
-> +	if (q_num_bufs + *nbuffers < 8)
-> +		*nbuffers = 8 - q_num_bufs;
+> -	if (vq->num_buffers + *nbuffers < 2)
+> -		*nbuffers = 2 - vq->num_buffers;
+> +	if (q_num_bufs + *nbuffers < 2)
+> +		*nbuffers = 2 - q_num_bufs;
+>   	if (*nplanes)
+>   		return sizes[0] < size ? -EINVAL : 0;
 >   	*nplanes = 1;
->   	sizes[0] = PAGE_ALIGN(dev->buffersize);
->   
 
 
