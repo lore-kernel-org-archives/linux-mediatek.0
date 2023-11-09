@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C64C4167D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:40:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CA53C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:40:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I6eSKfGM822OZfxk/qba/KowQQXtBHIRasHV5cN7ns4=; b=TkCbDdL0IE4i2NiSxtzNcxHWbH
-	LddwJagxQwUixXRcKGqa3/nq7JvKr3HoylpSD9j0sgxz7T2fipG7RXusWq8u2szPtUhHmNZMlcC8P
-	AIqaDRPwB29CtcbaQAfd0PqfDJLzz7H4yTJfgCkitpKiY6gbynLE3j6odmQ1i1Crm7TeHAxBmIO8n
-	Jac/WrC+TMVGOUhztms//fgTXO1OU8iqyxjk6xZ9P2cPGZCiWaYw9M/XeTlbnwwuQTOWLOnmCNGk8
-	zZYZ5AzmYrnLk+caVrfxrKs0/3xjhvwyrsdA82WJoHT4QNUIp7sdB5iwYzYTjnZB2il5O3YiOK0lI
-	gV8kAlFQ==;
+	bh=65ffQXwjxHl4Yt+PQsr/3eZAUK0C3YsnI+fG/OSgATY=; b=PVcGzIgcY2n7tNi3z8PjkZWDr0
+	EHbZMaOQsIVFJZNMtU4YF7kAk493bluSARU4gGZpoSWQ/vj+MLY5zodyKwzuuSRU/HUbN3q6lYSk+
+	zeHBH3Ndh7XDEKH9c0RcWrxrSOPkb+6XC0gSIqLHlMbrePKfd9QDkhC//LgMfByymfUo6hu8Sgq59
+	YesDIGh7wEABBUtDwRxn2ALGPUhaUH929bnQW43XZ9RCibqH45wXRtnAOtL4ECjU0oTR54DMlkIn7
+	mB9w3qIzfR1h5/baAYnjsrLGAwQSmBT5QYDP2e3ud9ly0850v54rA2zaCt5h1AhWxp7Y+i/u++GVG
+	HCaRMlmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1857-006oIy-2x;
-	Thu, 09 Nov 2023 16:40:37 +0000
+	id 1r185H-006oVD-2K;
+	Thu, 09 Nov 2023 16:40:47 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r183C-006m15-0t;
-	Thu, 09 Nov 2023 16:38:47 +0000
+	id 1r183F-006m4K-1C;
+	Thu, 09 Nov 2023 16:38:50 +0000
 Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D6D5A66076C5;
-	Thu,  9 Nov 2023 16:38:35 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1546B66076A5;
+	Thu,  9 Nov 2023 16:38:39 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699547916;
-	bh=YtbmcbhNvbDBINI9lxYBaiInifnOxrUmV+MuBuuk8ew=;
+	s=mail; t=1699547920;
+	bh=rr4rP0Crb+WDIxtOV1N9MVPAGcsX+s0VJSsVhFdm/dQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gRXqlgIFvdUsmX/IG7E0BWpswcKKMjSmmb3+kedqXV/hSXQq8ubnch5Y7Bpa9tej/
-	 ErkeWbMF3aR6hrcWvVo7MF8fhEGtcBvwXCnzpw6Q9ZejT+VJiTXdxKWJn36zqHfhSg
-	 Q4C3lhz96Ta1ayyVDk7F7nhEI6LF7nyXjEGJgar8AlfsR4sNFRqDOD8Uj6iD0uwyHy
-	 c2klKRfSurbTnDrqqFioALpEGSn/axm2ZnraDj87w38/PYdlVEjNABl9rZp90gxERg
-	 nlms4jycOxN7V52dznz0Eac1aYk9n6Eu5CouewEg9u8lmaY+urYCwbl/3Si6m5rQ1Q
-	 h7I6ar1TLEx9g==
+	b=ScHcMUi2GUsZ0weFhAMSgy/8wR9mabB1ejGsnnf/qOZ4doSMw39Ol90njSEEQroiE
+	 mLT3kTSO99ED6iSXhsJRgYi9d8W3v5VEKYLa5aMJ6pFh93nPUgh/l2HJseusIVCJwY
+	 UCmpS4SdNfpKnz7l8tpp93tiaODPuCAjuw1dKxZsYuwC4dbB+uVtY/dY2hgu+bymoj
+	 cy97O8V3USgCCA5nk7QJsLArcYe5s3r3vKeoOb8LnzoyBBqCsVCHeI73Xlkds7J9h0
+	 86lpaP6gYfth0OOiiaWx9cNyEjC8JP/Tt5ElAEQOvsDpE5k+LBsltyjQEU8MzjX1cN
+	 V9tgSrBVQlOPw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -63,17 +63,17 @@ Cc: linux-media@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: [PATCH v15 47/56] media: verisilicon: Refactor postprocessor to store more buffers
-Date: Thu,  9 Nov 2023 17:35:03 +0100
-Message-Id: <20231109163512.179524-48-benjamin.gaignard@collabora.com>
+Subject: [PATCH v15 49/56] media: verisilicon: g2: Use common helpers to compute chroma and mv offsets
+Date: Thu,  9 Nov 2023 17:35:05 +0100
+Message-Id: <20231109163512.179524-50-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 References: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083838_587082_F39EC649 
-X-CRM114-Status: GOOD (  22.36  )
+X-CRM114-CacheID: sfid-20231109_083841_699487_47888460 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,238 +88,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since vb2 queue can store more than VB2_MAX_FRAME buffers, the
-postprocessor buffer storage must be capable to store more buffers too.
-Change static dec_q array to allocated array to be capable to store
-up to queue 'max_num_buffers'.
-Keep allocating queue 'num_buffers' at queue setup time but also allows
-to allocate postprocessors buffers on the fly.
+HEVC and VP9 are running on the same hardware and share the same
+chroma and motion vectors offset constraint.
+Create common helpers functions for these computation.
+Source and destination buffer height may not be the same because
+alignment constraint are different so use destination height to
+compute chroma offset because we target this buffer as hardware
+output.
+To be able to use the helpers in both VP9 HEVC code remove dec_params
+and use context->bit_depth instead.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 CC: Philipp Zabel <p.zabel@pengutronix.de>
 ---
- drivers/media/platform/verisilicon/hantro.h   |  7 +-
- .../media/platform/verisilicon/hantro_drv.c   |  4 +-
- .../media/platform/verisilicon/hantro_hw.h    |  4 +-
- .../platform/verisilicon/hantro_postproc.c    | 93 +++++++++++++++----
- .../media/platform/verisilicon/hantro_v4l2.c  |  2 +-
- 5 files changed, 85 insertions(+), 25 deletions(-)
+ .../media/platform/verisilicon/hantro_g2.c    | 14 ++++++++++
+ .../platform/verisilicon/hantro_g2_hevc_dec.c | 18 ++-----------
+ .../platform/verisilicon/hantro_g2_vp9_dec.c  | 26 +++----------------
+ .../media/platform/verisilicon/hantro_hw.h    |  3 +++
+ 4 files changed, 23 insertions(+), 38 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index 77aee9489516..0948b04a9f8d 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -469,11 +469,14 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
- bool hantro_needs_postproc(const struct hantro_ctx *ctx,
- 			   const struct hantro_fmt *fmt);
+diff --git a/drivers/media/platform/verisilicon/hantro_g2.c b/drivers/media/platform/verisilicon/hantro_g2.c
+index ee5f14c5f8f2..b880a6849d58 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2.c
++++ b/drivers/media/platform/verisilicon/hantro_g2.c
+@@ -8,6 +8,8 @@
+ #include "hantro_hw.h"
+ #include "hantro_g2_regs.h"
  
-+dma_addr_t
-+hantro_postproc_get_dec_buf_addr(struct hantro_ctx *ctx, int index);
++#define G2_ALIGN	16
 +
- static inline dma_addr_t
- hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
+ void hantro_g2_check_idle(struct hantro_dev *vpu)
  {
- 	if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt))
--		return ctx->postproc.dec_q[vb->index].dma;
-+		return hantro_postproc_get_dec_buf_addr(ctx, vb->index);
- 	return vb2_dma_contig_plane_dma_addr(vb, 0);
+ 	int i;
+@@ -42,3 +44,15 @@ irqreturn_t hantro_g2_irq(int irq, void *dev_id)
+ 
+ 	return IRQ_HANDLED;
  }
- 
-@@ -485,8 +488,8 @@ vb2_to_hantro_decoded_buf(struct vb2_buffer *buf)
- 
- void hantro_postproc_disable(struct hantro_ctx *ctx);
- void hantro_postproc_enable(struct hantro_ctx *ctx);
-+int hantro_postproc_init(struct hantro_ctx *ctx);
- void hantro_postproc_free(struct hantro_ctx *ctx);
--int hantro_postproc_alloc(struct hantro_ctx *ctx);
- int hanto_postproc_enum_framesizes(struct hantro_ctx *ctx,
- 				   struct v4l2_frmsizeenum *fsize);
- 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index a9fa05ac56a9..7f5b82eb6649 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -235,8 +235,10 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	 * The Kernel needs access to the JPEG destination buffer for the
- 	 * JPEG encoder to fill in the JPEG headers.
- 	 */
--	if (!ctx->is_encoder)
-+	if (!ctx->is_encoder) {
- 		dst_vq->dma_attrs |= DMA_ATTR_NO_KERNEL_MAPPING;
-+		dst_vq->max_num_buffers = MAX_POSTPROC_BUFFERS;
-+	}
- 
- 	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
- 	dst_vq->io_modes = VB2_MMAP | VB2_DMABUF;
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index 7f33f7b07ce4..292a76ef643e 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -40,6 +40,8 @@
- 
- #define AV1_MAX_FRAME_BUF_COUNT	(V4L2_AV1_TOTAL_REFS_PER_FRAME + 1)
- 
-+#define MAX_POSTPROC_BUFFERS	64
 +
- struct hantro_dev;
- struct hantro_ctx;
- struct hantro_buf;
-@@ -336,7 +338,7 @@ struct hantro_av1_dec_hw_ctx {
-  * @dec_q:		References buffers, in decoder format.
-  */
- struct hantro_postproc_ctx {
--	struct hantro_aux_buf dec_q[VB2_MAX_FRAME];
-+	struct hantro_aux_buf dec_q[MAX_POSTPROC_BUFFERS];
- };
++size_t hantro_g2_chroma_offset(struct hantro_ctx *ctx)
++{
++	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
++}
++
++size_t hantro_g2_motion_vectors_offset(struct hantro_ctx *ctx)
++{
++	size_t cr_offset = hantro_g2_chroma_offset(ctx);
++
++	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
++}
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
+index a9d4ac84a8d8..d3f8c33eb16c 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
+@@ -8,20 +8,6 @@
+ #include "hantro_hw.h"
+ #include "hantro_g2_regs.h"
  
- /**
-diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-index 8f8f17e671ce..41e93176300b 100644
---- a/drivers/media/platform/verisilicon/hantro_postproc.c
-+++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-@@ -177,9 +177,11 @@ static int hantro_postproc_g2_enum_framesizes(struct hantro_ctx *ctx,
- void hantro_postproc_free(struct hantro_ctx *ctx)
+-#define G2_ALIGN	16
+-
+-static size_t hantro_hevc_chroma_offset(struct hantro_ctx *ctx)
+-{
+-	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
+-}
+-
+-static size_t hantro_hevc_motion_vectors_offset(struct hantro_ctx *ctx)
+-{
+-	size_t cr_offset = hantro_hevc_chroma_offset(ctx);
+-
+-	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
+-}
+-
+ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
  {
  	struct hantro_dev *vpu = ctx->dev;
-+	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-+	struct vb2_queue *queue = &m2m_ctx->cap_q_ctx.q;
- 	unsigned int i;
+@@ -384,8 +370,8 @@ static int set_ref(struct hantro_ctx *ctx)
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *vb2_dst;
+ 	struct hantro_decoded_buffer *dst;
+-	size_t cr_offset = hantro_hevc_chroma_offset(ctx);
+-	size_t mv_offset = hantro_hevc_motion_vectors_offset(ctx);
++	size_t cr_offset = hantro_g2_chroma_offset(ctx);
++	size_t mv_offset = hantro_g2_motion_vectors_offset(ctx);
+ 	u32 max_ref_frames;
+ 	u16 dpb_longterm_e;
+ 	static const struct hantro_reg cur_poc[] = {
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+index 6db1c32fce4d..342e543dee4c 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+@@ -16,8 +16,6 @@
+ #include "hantro_vp9.h"
+ #include "hantro_g2_regs.h"
  
--	for (i = 0; i < VB2_MAX_FRAME; ++i) {
-+	for (i = 0; i < queue->max_num_buffers; ++i) {
- 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
- 
- 		if (priv->cpu) {
-@@ -190,20 +192,17 @@ void hantro_postproc_free(struct hantro_ctx *ctx)
- 	}
- }
- 
--int hantro_postproc_alloc(struct hantro_ctx *ctx)
-+static unsigned int hantro_postproc_buffer_size(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
--	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
--	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
--	unsigned int num_buffers = vb2_get_num_buffers(cap_queue);
- 	struct v4l2_pix_format_mplane pix_mp;
- 	const struct hantro_fmt *fmt;
--	unsigned int i, buf_size;
-+	unsigned int buf_size;
- 
- 	/* this should always pick native format */
- 	fmt = hantro_get_default_fmt(ctx, false, ctx->bit_depth, HANTRO_AUTO_POSTPROC);
- 	if (!fmt)
--		return -EINVAL;
-+		return 0;
-+
- 	v4l2_fill_pixfmt_mp(&pix_mp, fmt->fourcc, ctx->src_fmt.width,
- 			    ctx->src_fmt.height);
- 
-@@ -221,23 +220,77 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
- 		buf_size += hantro_av1_mv_size(pix_mp.width,
- 					       pix_mp.height);
- 
--	for (i = 0; i < num_buffers; ++i) {
--		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
-+	return buf_size;
-+}
-+
-+static int hantro_postproc_alloc(struct hantro_ctx *ctx, int index)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
-+	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
-+
-+	if (!buf_size)
-+		return -EINVAL;
-+
-+	/*
-+	 * The buffers on this queue are meant as intermediate
-+	 * buffers for the decoder, so no mapping is needed.
-+	 */
-+	priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
-+	priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
-+				    GFP_KERNEL, priv->attrs);
-+	if (!priv->cpu)
-+		return -ENOMEM;
-+	priv->size = buf_size;
-+
-+	return 0;
-+}
- 
--		/*
--		 * The buffers on this queue are meant as intermediate
--		 * buffers for the decoder, so no mapping is needed.
--		 */
--		priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
--		priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
--					    GFP_KERNEL, priv->attrs);
--		if (!priv->cpu)
--			return -ENOMEM;
--		priv->size = buf_size;
-+int hantro_postproc_init(struct hantro_ctx *ctx)
-+{
-+	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-+	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
-+	unsigned int num_buffers = vb2_get_num_buffers(cap_queue);
-+	unsigned int i;
-+	int ret;
-+
-+	for (i = 0; i < num_buffers; i++) {
-+		ret = hantro_postproc_alloc(ctx, i);
-+		if (ret)
-+			return ret;
- 	}
-+
+-#define G2_ALIGN 16
+-
+ enum hantro_ref_frames {
+ 	INTRA_FRAME = 0,
+ 	LAST_FRAME = 1,
+@@ -90,22 +88,6 @@ static int start_prepare_run(struct hantro_ctx *ctx, const struct v4l2_ctrl_vp9_
  	return 0;
  }
  
-+dma_addr_t
-+hantro_postproc_get_dec_buf_addr(struct hantro_ctx *ctx, int index)
-+{
-+	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
-+	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
-+	struct hantro_dev *vpu = ctx->dev;
-+	int ret;
-+
-+	if (priv->size < buf_size && priv->cpu) {
-+		/* buffer is too small, release it */
-+		dma_free_attrs(vpu->dev, priv->size, priv->cpu,
-+			       priv->dma, priv->attrs);
-+		priv->cpu = NULL;
-+	}
-+
-+	if (!priv->cpu) {
-+		/* buffer not already allocated, try getting a new one */
-+		ret = hantro_postproc_alloc(ctx, index);
-+		if (ret)
-+			return 0;
-+	}
-+
-+	if (!priv->cpu)
-+		return 0;
-+
-+	return priv->dma;
-+}
-+
- static void hantro_postproc_g1_disable(struct hantro_ctx *ctx)
+-static size_t chroma_offset(const struct hantro_ctx *ctx,
+-			    const struct v4l2_ctrl_vp9_frame *dec_params)
+-{
+-	int bytes_per_pixel = dec_params->bit_depth == 8 ? 1 : 2;
+-
+-	return ctx->src_fmt.width * ctx->src_fmt.height * bytes_per_pixel;
+-}
+-
+-static size_t mv_offset(const struct hantro_ctx *ctx,
+-			const struct v4l2_ctrl_vp9_frame *dec_params)
+-{
+-	size_t cr_offset = chroma_offset(ctx, dec_params);
+-
+-	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
+-}
+-
+ static struct hantro_decoded_buffer *
+ get_ref_buf(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp)
  {
- 	struct hantro_dev *vpu = ctx->dev;
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index b3ae037a50f6..f0d8b165abcd 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -933,7 +933,7 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
- 		}
+@@ -156,13 +138,13 @@ static void config_output(struct hantro_ctx *ctx,
+ 	luma_addr = hantro_get_dec_buf_addr(ctx, &dst->base.vb.vb2_buf);
+ 	hantro_write_addr(ctx->dev, G2_OUT_LUMA_ADDR, luma_addr);
  
- 		if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt)) {
--			ret = hantro_postproc_alloc(ctx);
-+			ret = hantro_postproc_init(ctx);
- 			if (ret)
- 				goto err_codec_exit;
- 		}
+-	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
++	chroma_addr = luma_addr + hantro_g2_chroma_offset(ctx);
+ 	hantro_write_addr(ctx->dev, G2_OUT_CHROMA_ADDR, chroma_addr);
+-	dst->vp9.chroma_offset = chroma_offset(ctx, dec_params);
++	dst->vp9.chroma_offset = hantro_g2_chroma_offset(ctx);
+ 
+-	mv_addr = luma_addr + mv_offset(ctx, dec_params);
++	mv_addr = luma_addr + hantro_g2_motion_vectors_offset(ctx);
+ 	hantro_write_addr(ctx->dev, G2_OUT_MV_ADDR, mv_addr);
+-	dst->vp9.mv_offset = mv_offset(ctx, dec_params);
++	dst->vp9.mv_offset = hantro_g2_motion_vectors_offset(ctx);
+ }
+ 
+ struct hantro_vp9_ref_reg {
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index 292a76ef643e..9aec8a79acdc 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -521,6 +521,9 @@ hantro_av1_mv_size(unsigned int width, unsigned int height)
+ 	return ALIGN(num_sbs * 384, 16) * 2 + 512;
+ }
+ 
++size_t hantro_g2_chroma_offset(struct hantro_ctx *ctx);
++size_t hantro_g2_motion_vectors_offset(struct hantro_ctx *ctx);
++
+ int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
+ int rockchip_vpu2_mpeg2_dec_run(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
 -- 
 2.39.2
 
