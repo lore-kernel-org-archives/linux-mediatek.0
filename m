@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3467C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 10:13:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87511C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 10:14:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XJtoQqfGZU7EFeulD2oiiIozNHmB7uONCk6W7yIQ6Go=; b=FbtQQaj9Z1A2TsFl6CFkXmMlGs
-	+wgSYwHXfolRrOUjZ/juwtKjQ6PJScqiEfRPaMzzfb4TdooMay7Ka16pZwc4ckVIhSJ8Gao0NZiiU
-	TWQZ6OnEtZM8KhOquSLWRzEtZU2z8/7Ug/wx+aE4Lb1aQU1uzRmyKt9u9VyLGU04rZA3JwpJjjxJH
-	dEXMgRYluLLd/1QPMBufERlAex2HEvTRbPjx7HRKMe5EyeLaIDCTvj59kidE9qJdljr2p7oDOURiB
-	gtWB8LybJhAOf71ThRoFXFtEiqVCaIkpnGPqFDYKFwIp9oKoPtE2MYoDGpUbO8YoZkxo8edVG/45L
-	0/4FAWcQ==;
+	bh=Hi1E76xSXBmToF025D6ID4u6rWwptVihvShYHyk0QUw=; b=y7ASOUJSbfcR3oNbA5OyuF2Hpb
+	ytXBlIMXpfbBvfGwwhCNTG+RVCs3plDxJGE/Of5rldA4npFVeqU3fZyMrwxWZxQJV+Inz60VOhyt7
+	SfL5dxkbXcsX/RwKgYHMEmdcVZjYNn0KPEt6fXzj3O/4z/am3k9vwebSBMza7cUkxPpfkdhd/Fuby
+	qSYpN3Wv8aFPOVMTwSs84D/SU3kPTx4d+ZQuLgktSmVR7uM9Y7OTEhIxbNAN9Sl4mWmxQxBk9CJYW
+	aw+aGHi0LBbxmIGQQH4fdCaRW/HAlWpytWD/1OtvFcIA+RgWUtJbM4CZEPRpUGaLYQHcp+vqKL3/H
+	6pgl6VyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r122b-005tO3-2j;
-	Thu, 09 Nov 2023 10:13:37 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r123m-005teO-1X;
+	Thu, 09 Nov 2023 10:14:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r122Y-005tN8-1Q;
-	Thu, 09 Nov 2023 10:13:35 +0000
-Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
+	id 1r123j-005tcQ-0s;
+	Thu, 09 Nov 2023 10:14:48 +0000
+Received: from [100.98.136.55] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB51C660745D;
-	Thu,  9 Nov 2023 10:13:31 +0000 (GMT)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 16FA0660745F;
+	Thu,  9 Nov 2023 10:14:43 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699524813;
-	bh=tF00I9rvCUL/jzVG4vb3E9oiI67esankiKYonVaACl8=;
+	s=mail; t=1699524884;
+	bh=DYQUOdQcPcJ4Aq46KvrXHshkkZ0xtkz1temE8dvo4hY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iL0EXaSzBN2yXBqt+in7a4pGMkwKIY7NFpOgD7ZWB0RKGkReOXRfR2KOFHOZlmF2e
-	 XnFpq97cHi8jlcDHVlUlbKYWUCHva3Vk3O8ZGybGOyJ0GlVH80bryLtHMeYCA4GN6E
-	 zcLMXldER/e4h+WpVYXyahJgKhgRA8NJwrLinO9jL1fDQpal8aGE68DSOLh+aHIhfx
-	 nXFi+GF7906kxKNhhIRSFrRNe4YQdozco1jRJDTp3ONQ/z0Ovf9P7Coz/xEKtbM8mg
-	 +p/q7Z/0kwExiPmOen9bJS2pO2hOcxKkqDAWUwZlvOEuQCEEQ29yeodPb6koT+A/4I
-	 y4kzLsW4dxrgw==
-Message-ID: <99945dbe-194b-429c-b8ea-fc71dbc0b3b4@collabora.com>
-Date: Thu, 9 Nov 2023 11:13:28 +0100
+	b=jGFnl9QYxLTR1iCasDsKgh5KjX0WEiVITzhb2iP3q2GV6W7TaWBnb8T3n4llYsxIT
+	 7foTAs37hfm+thUbvOafvV6atzvZBSxXd+IYp+P97xkAA34AGjDhixQHoTJFQNS6Hb
+	 QsnIe4dAkBAnWYUHUiKV3HHD9Cl33RYsFbJGwgkb/54LkLTIWZUL3ZWPeffNrD1M/o
+	 ReO1b1RAmKUUeFqiEF29N3EQibA1Px8cNTrth7gkES0UPscm2JQbvpDeUHJLQysYPh
+	 15JWxvJm1jX7z737UZrErqZ7swEBsl+XDlYV6vGCU4k+EfuyGJ+EBKg6RjOQZZzS+B
+	 uGhYi+jKIeUvQ==
+Message-ID: <a8bbf1b7-5f9b-4466-84ec-88f3fb2568dc@collabora.com>
+Date: Thu, 9 Nov 2023 11:14:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 25/56] media: pci: tw68: Stop direct calls to queue
- num_buffers field
+Subject: Re: [PATCH v14 19/56] media: dvb-core: Do not initialize twice queue
+ num_buffer field
 Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, mchehab@kernel.org,
  tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
  ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
  gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
@@ -58,17 +58,17 @@ To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
 Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com,
- Fabrizio Castro <fabrizio.castro.jz@renesas.com>
+ linux-staging@lists.linux.dev, kernel@collabora.com
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-26-benjamin.gaignard@collabora.com>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <20231031163104.112469-26-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-20-benjamin.gaignard@collabora.com>
+ <fc11c361-7d5b-493f-96c8-8495293f2544@collabora.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <fc11c361-7d5b-493f-96c8-8495293f2544@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_021334_610207_9339D710 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20231109_021447_464691_5C20B279 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,49 +83,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
 
-W dniu 31.10.2023 o 17:30, Benjamin Gaignard pisze:
-> Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-> This allows us to change how the number of buffers is computed in the
-> future.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> CC: Fabrizio Castro <fabrizio.castro.jz@renesas.com>
-> ---
->   drivers/media/pci/tw68/tw68-video.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/pci/tw68/tw68-video.c b/drivers/media/pci/tw68/tw68-video.c
-> index 773a18702d36..35296c226019 100644
-> --- a/drivers/media/pci/tw68/tw68-video.c
-> +++ b/drivers/media/pci/tw68/tw68-video.c
-> @@ -360,13 +360,13 @@ static int tw68_queue_setup(struct vb2_queue *q,
->   			   unsigned int sizes[], struct device *alloc_devs[])
->   {
->   	struct tw68_dev *dev = vb2_get_drv_priv(q);
+Le 09/11/2023 à 10:50, Andrzej Pietrasiewicz a écrit :
+> Hi Benjamin,
+>
+> W dniu 31.10.2023 o 17:30, Benjamin Gaignard pisze:
+>> The above memset already zeroed all the ctx fields, it is useless
+>> to do it here again.
+>>
+>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>> ---
+>>   drivers/media/dvb-core/dvb_vb2.c | 1 -
+>>   1 file changed, 1 deletion(-)
+>>
+>> diff --git a/drivers/media/dvb-core/dvb_vb2.c 
+>> b/drivers/media/dvb-core/dvb_vb2.c
+>> index 3a966fdf814c..a731b755a0b9 100644
+>> --- a/drivers/media/dvb-core/dvb_vb2.c
+>> +++ b/drivers/media/dvb-core/dvb_vb2.c
+>> @@ -177,7 +177,6 @@ int dvb_vb2_init(struct dvb_vb2_ctx *ctx, const 
+>> char *name, int nonblocking)
+>>       q->ops = &dvb_vb2_qops;
+>>       q->mem_ops = &vb2_vmalloc_memops;
+>>       q->buf_ops = &dvb_vb2_buf_ops;
+>> -    q->num_buffers = 0;
+>
+> A few lines above this one is this:
+>
+>     q->is_output = 0;
+>
+> Can this also be included in this (cleanup) patch?
 
-Why not
+Nice catch, I will add it.
 
-	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+Thanks,
+Benjamin
 
-just like in other patches in the series?
-
-Regards,
-
-Andrzej
-
-> -	unsigned tot_bufs = q->num_buffers + *num_buffers;
-> +	unsigned tot_bufs = vb2_get_num_buffers(q) + *num_buffers;
->   	unsigned size = (dev->fmt->depth * dev->width * dev->height) >> 3;
->   
->   	if (tot_bufs < 2)
->   		tot_bufs = 2;
->   	tot_bufs = tw68_buffer_count(size, tot_bufs);
-> -	*num_buffers = tot_bufs - q->num_buffers;
-> +	*num_buffers = tot_bufs - vb2_get_num_buffers(q);
->   	/*
->   	 * We allow create_bufs, but only if the sizeimage is >= as the
->   	 * current sizeimage. The tw68_buffer_count calculation becomes quite
-
+>
+> Regards,
+>
+> Andrzej
+>
+>>       ret = vb2_core_queue_init(q);
+>>       if (ret) {
+>>           ctx->state = DVB_VB2_STATE_NONE;
+>
+> _______________________________________________
+> Kernel mailing list -- kernel@mailman.collabora.com
+> To unsubscribe send an email to kernel-leave@mailman.collabora.com
 
