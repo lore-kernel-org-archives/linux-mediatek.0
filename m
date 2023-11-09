@@ -4,91 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F4F7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 07:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 903E6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 08:22:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1ZGyCYYTcq3tfAOSXtV2/dw7L3jydVZ3P+lrWN5MQ7s=; b=F1e7JLeAg93iPspkmX+g5BqP3g
-	FgprTqcak9cK3m1ZhofqTZDQkyQiiISKYJ7XDUfzzMbUxZqL/tQztWFm1r7qv6amkKXW4HtftUabE
-	sqBq37F78xEKsHpHIWvHLUKLJyQlqJp3pdlMTv5z2ZNTGDP11Mhzw1YEAz21n0zmy21nNnWTZ9waY
-	BLxjRIMa+I6mF97VPyWrmEqSk9Fufl9mbBWVS7ieXOf2mUD5WW1sPtoqkKuCpnCPQbKGFUPQCr5Sr
-	+iK+z0xxzZ+nRt6v+7C1y03V2hjIpJ2IaSPZY5nKZUkc69K7wjyrN0/jpWcn/ZuncaDliDcM4r1nw
-	C1drxYMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BU/vb1T4/AmX8PsznKUvM9J58WiKN7FOTpgWz4HqPsE=; b=oD/r78UO+UOABfWRVHYWFO+bUb
+	AFgW07iEU6hvmvxsCk5qnUINqpf+w8MUtME++bY/1MywTDYcgFphfDG4OSaujAnCuvn039hxCw9k8
+	oELTMxmFhUSMNMDI5myjJISRCIv7ephYXL/5siipys0kdmqG97pYGcV4wIPe3zxoqLueuIWLnN8Cu
+	GIrruPCOgB7Dzdc7D/SefACRocJC01SBU7icABj7wePV17v77VInkV4dHOrcKj2DDnnmTHGERnaHs
+	YQQJ/7TbkWufE/y8q+3ti3meoaQNU8ca4w3diQZPEuLItF3cIyYUseDNpf97LG+NmaRoWwIGSRVqE
+	HiDzx/7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0zT8-005VGO-0h;
-	Thu, 09 Nov 2023 07:28:50 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1r10J8-005bPt-1f;
+	Thu, 09 Nov 2023 08:22:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0zT5-005VEg-1e
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Nov 2023 07:28:48 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-9df8d0c556eso81467466b.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Nov 2023 23:28:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699514921; x=1700119721; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1ZGyCYYTcq3tfAOSXtV2/dw7L3jydVZ3P+lrWN5MQ7s=;
-        b=hMMvP1C0RwlAf+3uPvX7T1DeZ/LsulaL7rSos9xXmzSAO9WE+gzegu8UWefsD9kg+e
-         s1N4ka3De9N5RcGvWZaoIdIZH6KqcYlkfXWcoY87Vd3WM40BDYZIzrDdn6TKSksX9QBT
-         KYl8K/AwU/2NZOq+MjgnkzjGQpK2I7sqxH7cY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699514921; x=1700119721;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1ZGyCYYTcq3tfAOSXtV2/dw7L3jydVZ3P+lrWN5MQ7s=;
-        b=JirqS4XKLbPozhUUBx8AAb+dB+oEk6UxJG/hBBXc2fhyxPIoAUF+ZK8p4sHsf2Pbrm
-         lU4BgZgKOY+H61VJooluiJEkVPRTGFrP0mWrqKB/4e6rP/lquM2wQhcD3BJgGIKyCRCO
-         cdUFUhfzlcr2v2A4YslPZTFAj6npUsM28u6BBiGHcTA/QvaktDZ4IjE6YBSiUpmnj6rN
-         Bn3zhXVda8kvQcz5llif7agC4eaWHnUM3Wux9OfdnwOhLgc9tgypLr2WqvTVmz1xE7cK
-         YWb6ZTOPPVGOnnL61/A//Y0nRgNnjOAms2mHR4rtRkF8YYpF4L+MrNo+4V2g1mSGJ4EQ
-         3nGQ==
-X-Gm-Message-State: AOJu0YzpZLX+PoZZPu0mHKYVt5c7hrgMXB+bShw1AOxyKez19FwtqIxB
-	b2+GLiBFX7M6r3dQA9c7y1749TI26+GKUmFEc3IL0ExC
-X-Google-Smtp-Source: AGHT+IHBv45XwZnZQYoeAnvxFVJfCvxP7PsB0ZuctG28qmsC4P+F1VJXN+eCKCHBsRNABlmFSsA49A==
-X-Received: by 2002:a17:906:4fcc:b0:9ba:65e:7529 with SMTP id i12-20020a1709064fcc00b009ba065e7529mr3767144ejw.68.1699514921155;
-        Wed, 08 Nov 2023 23:28:41 -0800 (PST)
-Received: from mail-wm1-f52.google.com (mail-wm1-f52.google.com. [209.85.128.52])
-        by smtp.gmail.com with ESMTPSA id a17-20020a170906685100b009aa292a2df2sm2158453ejs.217.2023.11.08.23.28.40
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Nov 2023 23:28:41 -0800 (PST)
-Received: by mail-wm1-f52.google.com with SMTP id 5b1f17b1804b1-40790b0a224so3361355e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Nov 2023 23:28:40 -0800 (PST)
-X-Received: by 2002:adf:e311:0:b0:32c:ea14:89e5 with SMTP id
- b17-20020adfe311000000b0032cea1489e5mr3220105wrj.39.1699514920620; Wed, 08
- Nov 2023 23:28:40 -0800 (PST)
+	id 1r10J5-005bNS-25;
+	Thu, 09 Nov 2023 08:22:33 +0000
+X-UUID: 1b7aee387ed911ee9b7791016c24628a-20231109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BU/vb1T4/AmX8PsznKUvM9J58WiKN7FOTpgWz4HqPsE=;
+	b=nBI1toItkOIXUxdOG4/u26ienwqmarM3CkMIqMb3gErVN5fdFxvE55wx8lHPFchNPSoiR4A8yB8Q/Mf0oj/GNMyOoBtkI13e0Yy2p/1ZcuOAER8xw0jc6KXnO7QeOLQvy8GU2nxUZr6Ek5pR6b335pBujn4kq3tOe54d46dNpew=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:d2993fec-fabd-4b62-9224-5a6ffc158ab3,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:364b77b,CLOUDID:40cb7472-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 1b7aee387ed911ee9b7791016c24628a-20231109
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <yu-chang.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 833492450; Thu, 09 Nov 2023 01:22:22 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 9 Nov 2023 16:22:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 9 Nov 2023 16:22:02 +0800
+From: yu-chang.lee <yu-chang.lee@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>
+CC: Nathan Lu <nathan.lu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "yu-chang . lee"
+	<yu-chang.lee@mediatek.com>
+Subject: [PATCH 1/3] soc: mediatek: mmsys: Add support for MT8188 VPPSYS
+Date: Thu, 9 Nov 2023 16:21:59 +0800
+Message-ID: <20231109082201.7698-2-yu-chang.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231109082201.7698-1-yu-chang.lee@mediatek.com>
+References: <20231109082201.7698-1-yu-chang.lee@mediatek.com>
 MIME-Version: 1.0
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-53-benjamin.gaignard@collabora.com>
- <20231108104439.oxpbbd2yro7u57t4@chromium.org> <e9eeac63-b4d5-4710-bb85-b0997dce55cc@collabora.com>
-In-Reply-To: <e9eeac63-b4d5-4710-bb85-b0997dce55cc@collabora.com>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Thu, 9 Nov 2023 16:28:20 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5AH6x461-a2=2JmzUhW2pWacgwj1w3SZH1kfMBbsmaZ3A@mail.gmail.com>
-Message-ID: <CAAFQd5AH6x461-a2=2JmzUhW2pWacgwj1w3SZH1kfMBbsmaZ3A@mail.gmail.com>
-Subject: Re: [PATCH v14 52/56] media: core: Add bitmap manage bufs array entries
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com, 
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, 
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl, 
-	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
-	kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.713300-8.000000
+X-TMASE-MatchedRID: cAwOsowI+VI9S3IiQd+eNQPZZctd3P4B7f6JAS2hKPjzYcyIF7RSVUJM
+	0WayO38293LsYxp0JcCAMuqetGVetnyef22ep6XYOwBXM346/+yM9Ua9k8upKwxegQaluhXR/2K
+	hHD7tAS9MLZjh2GXqCdemleE2qBNU
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.713300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: AD6E27B88C9127213837B2B8D37D4225CD92AD89CCF4C621C718CBBE78B2CC6F2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231108_232847_545749_BE86D704 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20231109_002231_694377_7C7F69E3 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,67 +100,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 9, 2023 at 12:30=E2=80=AFAM Benjamin Gaignard
-<benjamin.gaignard@collabora.com> wrote:
->
->
-> Le 08/11/2023 =C3=A0 11:44, Tomasz Figa a =C3=A9crit :
-> > On Tue, Oct 31, 2023 at 05:31:00PM +0100, Benjamin Gaignard wrote:
-[snip]
-> >> @@ -1150,7 +1150,10 @@ static inline bool vb2_fileio_is_active(struct =
-vb2_queue *q)
-> >>    */
-> >>   static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
-> >>   {
-> >> -    return q->num_buffers;
-> >> +    if (!q->bufs_bitmap)
-> >> +            return 0;
-> >> +
-> >> +    return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
-> > Hmm, could we just cache the number of buffers we have, so that we don'=
-t
-> > have to go over the entire bitmap every time? (Basically just keep the
-> > code that we had for handling q->num_buffers before this patch.)
->
-> I would prefer no duplicate how the number of buffers in a queue is compu=
-ted
-> and bitmap offer helpers for that. Why not use it ?
->
+Add MT8188 VPPSYS0 and VPPSYS1 driver data.
 
-bitmap_weight() can become costly when the number of buffers grows.
-Since it's easy to track how many buffers we add and remove, we could
-just cache that number and then any code could call
-vb2_get_num_buffers() whenever it needs the buffer count without
-caring how costly it is.
+Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-mmsys.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-> >
-> >>   }
-> >>
-> >>   /**
-> >> @@ -1253,13 +1256,13 @@ static inline void vb2_clear_last_buffer_deque=
-ued(struct vb2_queue *q)
-> >>   static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
-> >>                                              unsigned int index)
-> >>   {
-> >> -    if (!q->bufs)
-> >> +    if (!q->bufs_bitmap)
-> >>              return NULL;
-> >>
-> >>      if (index >=3D q->max_num_buffers)
-> >>              return NULL;
-> >>
-> >> -    if (index < q->num_buffers)
-> >> +    if (test_bit(index, q->bufs_bitmap))
-> > Aha, I see why we need the extra condition above now. Perhaps it should=
-'ve
-> > been added in this patch instead?
->
-> For me it was more explicit do introduce it at the same time that
-> max_num_buffers field.
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 88209102ff3b..1e5239cc5445 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -89,6 +89,16 @@ static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
+ 	.num_routes = ARRAY_SIZE(mmsys_mt8188_routing_table),
+ };
+ 
++static const struct mtk_mmsys_driver_data mt8188_vppsys0_driver_data = {
++	.clk_driver = "clk-mt8188-vpp0",
++	.is_vppsys = true,
++};
++
++static const struct mtk_mmsys_driver_data mt8188_vppsys1_driver_data = {
++	.clk_driver = "clk-mt8188-vpp1",
++	.is_vppsys = true,
++};
++
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt8192-mm",
+ 	.routes = mmsys_mt8192_routing_table,
+@@ -429,6 +439,8 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+ 	{ .compatible = "mediatek,mt8183-mmsys", .data = &mt8183_mmsys_driver_data },
+ 	{ .compatible = "mediatek,mt8186-mmsys", .data = &mt8186_mmsys_driver_data },
+ 	{ .compatible = "mediatek,mt8188-vdosys0", .data = &mt8188_vdosys0_driver_data },
++	{ .compatible = "mediatek,mt8188-vppsys0", .data = &mt8188_vppsys0_driver_data },
++	{ .compatible = "mediatek,mt8188-vppsys1", .data = &mt8188_vppsys1_driver_data },
+ 	{ .compatible = "mediatek,mt8192-mmsys", .data = &mt8192_mmsys_driver_data },
+ 	/* "mediatek,mt8195-mmsys" compatible is deprecated */
+ 	{ .compatible = "mediatek,mt8195-mmsys", .data = &mt8195_vdosys0_driver_data },
+-- 
+2.18.0
 
-Okay. I don't have a strong opinion, especially since it was just an
-intermediate patch.
-
-Best regards,
-Tomasz
 
