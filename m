@@ -4,84 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C268C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 17:15:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B748FC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 17:54:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Z8arH/L8dbgBy2K8H+HC60RfY1WMKLKdBsQeTpXgQI=; b=gfYEntkVCwspncajo4r6K6CW+y
-	z+7RkKuUlrHGQiiJYsyMQO2LhRh4/XYH88fXCufY28ecGXDlMZOzVS0bcG80p5JBndYHhOs1hiR+4
-	8peBv3vj0YV3tJ3Uh0C6iUXjF7ukO681aKThvEf5vRMBR7zBvOYFIB5H3HNKQ/Oh5Rwkh+Ha/e8D4
-	OmlLFXcymoGrpSD/7a3Zt2RBC9KdbSq4feGi1oAfKsGoGb7Odk624mHbtK8CANB5KCDa1RWb3DDrq
-	xXXRqNGd0eZjGWccQ1tmNxShv0pDm8acd6Vf+gKSKHEFCbloYKjiNgSXIkPqkJpiBdUqtfGrew4Yf
-	d2IZ1Nxg==;
+	bh=3NbPiTIoq9Iu3/BZf6Uz1ICWS633W8xbJBK7KccYOVA=; b=mTug2LLR6OJujaUBCuoUQti3qe
+	ZFd/eMPLF/AqvTqrAUqMQDO3bidBgHmRaSe36x762RE60Qv/UBK2ove/teZ6gSzM2T0EM71nUK899
+	Av0MEmtN0iBBwECwD24U+yfx3pqQGqdaEztlZAPrwVnhal03cJBKQBTkTA/9IiY4kkmnNstbmZBmE
+	/2p+MSQcgRitOKdHkp5FaWMncwP32tIVk4PRPrypsVzhrEcdMMwzjuk7QB0fFpCKY33mvbWPJ+5Zm
+	hTy9SKjZgmEp1NPHWupF/5PhbhaTVV7bNHXU5e31uNQUF5zrZ/5rqouCjpaDpBhEKVpHrauFHVWg7
+	LKlh2Xrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r18cS-006t4N-2h;
-	Thu, 09 Nov 2023 17:15:04 +0000
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
+	id 1r19Ev-006z1r-2g;
+	Thu, 09 Nov 2023 17:54:49 +0000
+Received: from mgamail.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r18cO-006t0w-1H
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Nov 2023 17:15:02 +0000
-Received: by mail-qk1-x736.google.com with SMTP id af79cd13be357-778940531dbso68718085a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Nov 2023 09:14:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1699550097; x=1700154897; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=6Z8arH/L8dbgBy2K8H+HC60RfY1WMKLKdBsQeTpXgQI=;
-        b=SmK0wTBVUqnp1fmGpD6D3jKoCKsWjQ+7/M5AzySH++L58Cb5l2ogy+wi9caneETDq6
-         ATJ3WDYPUq2mvXaGNeFZgeT8PVBMhEMI0stBYxskxm1rPYSEj8x5fJROmMMh2btvq6AP
-         uLCQqQ9+ColBMhj/8atwIx1ROmAMX1V8O1gEIEaVw8i12NeyPYoFUvzl6L4nJcBzk+gA
-         rniK6V9X/czCPjxKsUd7X7o3xSYrHYVr7vUSjqTbesL5BhGJt2FTM45sOx/gDXDD/LFl
-         C1/EL+Mk8F8BXdOBxq1xuUm8LDzP9kZ8TcH/gS0aqcWo+ftCjU58swASSizB7hkReYMK
-         GEXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699550097; x=1700154897;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6Z8arH/L8dbgBy2K8H+HC60RfY1WMKLKdBsQeTpXgQI=;
-        b=ueOeKI75GrnygOU4CkYgnZ6g+jYgHOMneyASpsPC76KgJFTAUxjCQ1CGuTQfPVDl4O
-         LM1dDN87C/j20SoqcP6lo+3D1RmkA3q0vvz1oO9tLTovjkvccqfs+gjGVpZPqlz7WQ2+
-         QSFFRvLUlPlWCMerDdTfMmjd14E5WMr4GaBLQkoAhtabRNLnudfqdYLwnkiQi5Kei7r5
-         Ep7OzLOQCBVdbeScjRvzcj7cb13DBOwdB+MycgbE0QENP+/BAN4l3g9fL+R/sFeeyzDM
-         0FrHgyx9SnKINPAgpYeantd4ZMeFNM8OGA/x1mml4RrmIqI2hvPwXN55c9e0d/wb5aFa
-         0/SA==
-X-Gm-Message-State: AOJu0YyPzwE8YtO9fDogZpsxIIZb4kJwnLY3PzUR1dylCs4fIbXA28kD
-	R0ftIz99FG7nqCECE8aw1ksHEA==
-X-Google-Smtp-Source: AGHT+IHk0n0eRBECeJL4V3CQV/YSwTJA0WV6rOAi2qVWDwbsxMkM1rm/tlV9wSVWqrrPcgEnKL7yxQ==
-X-Received: by 2002:ae9:e214:0:b0:777:617d:5f6b with SMTP id c20-20020ae9e214000000b00777617d5f6bmr5042051qkc.36.1699550096816;
-        Thu, 09 Nov 2023 09:14:56 -0800 (PST)
-Received: from ?IPv6:2606:6d00:17:6dc0::c73? ([2606:6d00:17:6dc0::c73])
-        by smtp.gmail.com with ESMTPSA id d27-20020a05620a137b00b00772662b7804sm34891qkl.100.2023.11.09.09.14.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Nov 2023 09:14:56 -0800 (PST)
-Message-ID: <74c95ceb6c8554fb850ce79d6c75b1ca5a6b2514.camel@ndufresne.ca>
-Subject: Re: [PATCH v8 00/12] add support MDP3 on MT8195 platform
-From: nicolas@ndufresne.ca
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans
- Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Thu, 09 Nov 2023 12:14:55 -0500
-In-Reply-To: <813b3a54-f973-410f-950b-d99f6e563f1f@collabora.com>
-References: <20231030100626.12564-1-moudy.ho@mediatek.com>
-	 <813b3a54-f973-410f-950b-d99f6e563f1f@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	id 1r19Es-006z0b-2a;
+	Thu, 09 Nov 2023 17:54:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1699552486; x=1731088486;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=W+SHpRUTX0bjysEqjA1XdgPiJiwC/4AQT1Ukvj3HDhQ=;
+  b=OBf/xbhNOrMabnOgs1AUu0iC93PNuefAFkJDFySg5EKGxXXD8ghNS0Q9
+   FNgk/0pK6kC0yvcEBHOtJKAlhsvubfOAMFVjVKv5x48Nm1HxR9XVIJMTy
+   LN8JA52Mx93JciDc3OTcUwIMz3Jl6PhtgKik2hQ/CmzBxZLxuAQrwI8VG
+   AXrnERlY5gwUMMi+D0UVRIDcm6G1e9CGAxXF+x2O+ExBXJbphKpv/0l8W
+   QHgqruFFaNL9L+l6lKR5OnREm6ZXUHlXN8pTpUsFWHFb51jo/39dkHfeQ
+   r2gDKN+XO7itKmublBHb66oJPSIoVUJkP4xTmVqh4OhVLd7+XZoc1RN9R
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10889"; a="389845725"
+X-IronPort-AV: E=Sophos;i="6.03,289,1694761200"; 
+   d="scan'208";a="389845725"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Nov 2023 09:54:44 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10889"; a="854147773"
+X-IronPort-AV: E=Sophos;i="6.03,289,1694761200"; 
+   d="scan'208";a="854147773"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by FMSMGA003.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Nov 2023 09:54:37 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.97-RC3)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1r19Ef-0000000Cekh-33M3;
+	Thu, 09 Nov 2023 19:54:33 +0200
+Date: Thu, 9 Nov 2023 19:54:33 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org,
+	broonie@kernel.org, gregkh@linuxfoundation.org, hdegoede@redhat.com,
+	james.clark@arm.com, james@equiv.tech, keescook@chromium.org,
+	petr.tesarik.ext@huawei.com, rafael@kernel.org, tglx@linutronix.de,
+	Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>
+Subject: Re: [RFC PATCH v2 2/7] of: Introduce hardware prober driver
+Message-ID: <ZU0c2fuRSoqrpffA@smile.fi.intel.com>
+References: <20231109100606.1245545-1-wenst@chromium.org>
+ <20231109100606.1245545-3-wenst@chromium.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231109100606.1245545-3-wenst@chromium.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_091500_645789_5367E564 
-X-CRM114-Status: GOOD (  22.34  )
+X-CRM114-CacheID: sfid-20231109_095446_907180_38C16186 
+X-CRM114-Status: GOOD (  39.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,158 +99,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+On Thu, Nov 09, 2023 at 06:05:59PM +0800, Chen-Yu Tsai wrote:
+> Some devices are designed and manufactured with some components having
+> multiple drop-in replacement options. These components are often
+> connected to the mainboard via ribbon cables, having the same signals
+> and pin assignments across all options. These may include the display
+> panel and touchscreen on laptops and tablets, and the trackpad on
+> laptops. Sometimes which component option is used in a particular device
+> can be detected by some firmware provided identifier, other times that
+> information is not available, and the kernel has to try to probe each
+> device.
+> 
+> This change attempts to make the "probe each device" case cleaner. The
+> current approach is to have all options added and enabled in the device
+> tree. The kernel would then bind each device and run each driver's probe
+> function. This works, but has been broken before due to the introduction
+> of asynchronous probing, causing multiple instances requesting "shared"
+> resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
+> time, with only one instance succeeding. Work arounds for these include
+> moving the pinmux to the parent I2C controller, using GPIO hogs or
+> pinmux settings to keep the GPIO pins in some fixed configuration, and
+> requesting the interrupt line very late. Such configurations can be seen
+> on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
+> Lenovo Thinkpad 13S.
+> 
+> Instead of this delicate dance between drivers and device tree quirks,
+> this change introduces a simple I2C component prober. For any given
+> class of devices on the same I2C bus, it will go through all of them,
+> doing a simple I2C read transfer and see which one of them responds.
+> It will then enable the device that responds.
+> 
+> This requires some minor modifications in the existing device tree.
+> The status for all the device nodes for the component options must be
+> set to "failed-needs-probe-xxx". This makes it clear that some mechanism
+> is needed to enable one of them, and also prevents the prober and device
+> drivers running at the same time.
 
-Le lundi 06 novembre 2023 =C3=A0 13:45 +0100, AngeloGioacchino Del Regno a
-=C3=A9crit=C2=A0:
-> Il 30/10/23 11:06, Moudy Ho ha scritto:
-> > Changes since v7:
-> > - Rebase on linux-next.
-> > - Dependent dtsi files:
-> >    https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D7=
-97543
-> > - Dependent bindings:
-> >    https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D7=
-97555
-> > - Patch [9/12] has made corresponding adjustments in response to the ch=
-anges in
-> >    the compatible name of the PAD component in DTSI and binding.
-> > - Adding WROT compatible name in the MDP driver's of_match_table in [9/=
-12] to
-> >    avoid deactivating 'pm_runtime_*' functions.
-> >=20
->=20
-> On MT8195 Cherry Tomato Chromebook, whole series is
->=20
-> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabor=
-a.com>
+...
 
-Would you mind dropping a short description of what your test consist ?
-Which userspace have been used, did you cover all the pixel formats
-combination ? Did you test scaling, rotation, etc. ?
+> +config HW_PROBER
 
-Nicolas
+config OF_HW_PROBER // or anything with explicit OF
 
->=20
-> > Changes since v6:
-> > - Rebase on v6.6-rc5.
-> > - Dependent dtsi files:
-> >    https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D7=
-92079
-> > - Dependent bindings:
-> >    https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D7=
-92477
-> > - Move the patch that fixes compile warnings from this series and
-> >    create a separate standalone patch.
-> >=20
-> > Changes since v5:
-> > - Rebase on v6.6-rc2.
-> > - Dependent dtsi files:
-> >    https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D7=
-86511
-> > - Dependent bindings:
-> >    https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D7=
-86520
-> > - Integrate MMSY/MUTEX structure in "mdp_probe".
-> > - Fix the build warnings that were detected by the linux-media
-> >    build scripts tool.
-> >=20
-> > Changes since v4:
-> > - Rebase on v6.6-rc1
-> > - Remove any unnecessary DTS settings.
-> > - Adjust the usage of MOD and clock in blending components.
-> >=20
-> > Changes since v3:
-> > - Depend on :
-> >    [1] https://patchwork.kernel.org/project/linux-media/list/?series=3D=
-719841
-> > - Suggested by Krzysztof, integrating all newly added bindings for
-> >    the mt8195 MDP3 into the file "mediatek,mt8195-mdp3.yaml".
-> > - Revise MDP3 nodes with generic names.
-> >=20
-> > Changes since v2:
-> > - Depend on :
-> >    [1] MMSYS/MUTEX: https://patchwork.kernel.org/project/linux-mediatek=
-/list/?series=3D711592
-> >    [2] MDP3: https://patchwork.kernel.org/project/linux-mediatek/list/?=
-series=3D711618
-> > - Suggested by Rob to revise MDP3 bindings to pass dtbs check
-> > - Add parallel paths feature.
-> > - Add blended components settings.
-> >=20
-> > Changes since v1:
-> > - Depend on :
-> >    [1] MDP3 : https://patchwork.kernel.org/project/linux-mediatek/list/=
-?series=3D698872
-> >    [2] MMSYS/MUTEX: https://patchwork.kernel.org/project/linux-mediatek=
-/list/?series=3D684959
-> > - Fix compilation failure due to use of undeclared identifier in file "=
-mtk-mdp3-cmdq.c"
-> >=20
-> > Hello,
-> >=20
-> > This patch is used to add support for MDP3 on the MT8195 platform that
-> > contains more picture quality components, and can arrange more pipeline=
-s
-> > through two sets of MMSYS and MUTEX respectively.
-> >=20
-> > Moudy Ho (12):
-> >    media: platform: mtk-mdp3: add support second sets of MMSYS
-> >    media: platform: mtk-mdp3: add support second sets of MUTEX
-> >    media: platform: mtk-mdp3: introduce more pipelines from MT8195
-> >    media: platform: mtk-mdp3: introduce more MDP3 components
-> >    media: platform: mtk-mdp3: add checks for dummy components
-> >    media: platform: mtk-mdp3: avoid multiple driver registrations
-> >    media: platform: mtk-mdp3: extend GCE event waiting in RDMA and WROT
-> >    media: platform: mtk-mdp3: add support for blending multiple
-> >      components
-> >    media: platform: mtk-mdp3: add mt8195 platform configuration
-> >    media: platform: mtk-mdp3: add mt8195 shared memory configurations
-> >    media: platform: mtk-mdp3: add mt8195 MDP3 component settings
-> >    media: platform: mtk-mdp3: add support for parallel pipe to improve
-> >      FPS
-> >=20
-> >   .../platform/mediatek/mdp3/mdp_cfg_data.c     | 729 +++++++++++++-
-> >   .../platform/mediatek/mdp3/mdp_reg_aal.h      |  25 +
-> >   .../platform/mediatek/mdp3/mdp_reg_color.h    |  31 +
-> >   .../media/platform/mediatek/mdp3/mdp_reg_fg.h |  23 +
-> >   .../platform/mediatek/mdp3/mdp_reg_hdr.h      |  31 +
-> >   .../platform/mediatek/mdp3/mdp_reg_merge.h    |  25 +
-> >   .../platform/mediatek/mdp3/mdp_reg_ovl.h      |  25 +
-> >   .../platform/mediatek/mdp3/mdp_reg_pad.h      |  21 +
-> >   .../platform/mediatek/mdp3/mdp_reg_rdma.h     |  24 +
-> >   .../platform/mediatek/mdp3/mdp_reg_rsz.h      |   2 +
-> >   .../platform/mediatek/mdp3/mdp_reg_tdshp.h    |  34 +
-> >   .../platform/mediatek/mdp3/mdp_reg_wrot.h     |   8 +
-> >   .../platform/mediatek/mdp3/mdp_sm_mt8195.h    | 283 ++++++
-> >   .../platform/mediatek/mdp3/mtk-img-ipi.h      |   4 +
-> >   .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     |   2 +
-> >   .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 440 +++++++--
-> >   .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |   1 +
-> >   .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 895 +++++++++++++++++=
--
-> >   .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  93 +-
-> >   .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 139 ++-
-> >   .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  50 +-
-> >   .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  15 +
-> >   .../platform/mediatek/mdp3/mtk-mdp3-regs.c    |  18 +
-> >   .../platform/mediatek/mdp3/mtk-mdp3-regs.h    |   1 +
-> >   .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     |   3 +-
-> >   25 files changed, 2744 insertions(+), 178 deletions(-)
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_aal.h
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_color=
-.h
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_fg.h
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_hdr.h
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_merge=
-.h
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_ovl.h
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_pad.h
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_tdshp=
-.h
-> >   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_sm_mt8195=
-.h
-> >=20
->=20
+Don't give a false impression that this is something that may works without
+OF support.
+
+...
+
+> +	bool "Hardware Prober driver"
+
+Ditto.
+
+...
+
+> +/*
+> + * hw_prober.c - Hardware prober driver
+
+Do not include filename into the file itself.
+
+> + *
+> + * Copyright (c) 2023 Google LLC
+> + */
+
+...
+
+> +	node = of_find_node_by_name(NULL, node_name);
+> +	if (!node)
+> +		return dev_err_probe(&pdev->dev, -ENODEV, "Could not find %s device node\n",
+> +				     node_name);
+
+With
+
+	struct device *dev = &pdev->dev;
+
+this and other lines can be made neater.
+
+...
+
+
+For better maintenance it's good to have ret assignment be placed here
+
+	ret = 0;
+
+> +	for_each_child_of_node(i2c_node, node) {
+> +		struct property *prop;
+> +		union i2c_smbus_data data;
+> +		u32 addr;
+> +
+> +		if (!of_node_name_prefix(node, node_name))
+> +			continue;
+> +		if (of_property_read_u32(node, "reg", &addr))
+> +			continue;
+> +		if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C_SMBUS_BYTE, &data) < 0)
+> +			continue;
+> +
+> +		dev_info(&pdev->dev, "Enabling %pOF\n", node);
+> +
+> +		prop = kzalloc(sizeof(*prop), GFP_KERNEL);
+> +		if (!prop) {
+> +			ret = -ENOMEM;
+> +			of_node_put(node);
+> +			break;
+> +		}
+> +
+> +		prop->name	= "status";
+> +		prop->length	= 5;
+> +		prop->value	= "okay";
+> +
+> +		/* Found a device that is responding */
+> +		ret = of_update_property(node, prop);
+> +		if (ret)
+> +			kfree(prop);
+> +
+> +		of_node_put(node);
+> +		break;
+> +	}
+
+...
+
+> +static const struct hw_prober_entry hw_prober_platforms[] = {
+> +	{ .compatible = "google,hana", .prober = i2c_component_prober, .data = "touchscreen" },
+> +	{ .compatible = "google,hana", .prober = i2c_component_prober, .data = "trackpad" },
+> +};
+
+Why can't OF ID table be used for this?
+
+...
+
+> +	for (int i = 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
+
+unsigned?
+
+> +		if (of_machine_is_compatible(hw_prober_platforms[i].compatible)) {
+> +			int ret;
+> +
+> +			ret = hw_prober_platforms[i].prober(pdev, hw_prober_platforms[i].data);
+> +			if (ret)
+> +				return ret;
+> +		}
+
+...
+
+> +	pdev = platform_device_register_simple(DRV_NAME, -1, NULL, 0);
+
+-1 is defined in the header, use that definition.
+
+> +	if (!IS_ERR(pdev))
+> +		return 0;
+> +
+> +	platform_driver_unregister(&hw_prober_driver);
+> +
+> +	return PTR_ERR(pdev);
+
+Can you use standard pattern, i.e. checking for the _error_ condition?
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
