@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67FE8C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 20:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D343C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 21:51:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=79oUciC1MphFLchMyW5zN+ld+Ip/ohdJ3MzsnnkdArI=; b=Qg3fNYhdRrf31el1hQCbWj90G3
-	kJD4LaX1xM6cjnnTbbbr6K0zX906NzqJc++hT812BqHCat3q6vUq+mKqZWqGQhueYDQ73EpqK5T3m
-	1Sng0tOOtQ5WlJymRabHxJB9CLaEBEiJ256tS/W5j9mOxt8Qjaj+QyAAXMLGfcM5u1qbJMn7tGb1Y
-	3WRwKnuQq6WmULP2e5DePeVWgynrrnbYtQMoQC3z1J59fMvcKiWSo/InAZEi1ss3+uikzLqpUc7vV
-	SUDx/SY5iLtUk6t9W1vBnNdVbqLC5QgMLxTe2sJmO9Qgou/dnb+SUF9IvDY85sfOQLJ6THQqDuZXy
-	ScvXu+/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1uolZe8cKTsNCbxzystCWtpbdkBcjS+VBbRWLg1T8NM=; b=SSxIKW4YvGZqsCu41SqCcD8Xs/
+	cQvvn/jxSGAJThCXt6IQMi9pUT04vUbgBR+lOVJHnAaD0DsGb5/Y8nky66ydIw4rV43hQFUzf/i4K
+	Z70Gj4nCc6njMogYHboDi24k4XoJ2dh+lGxYCaHhy91VzpWEV3Oup9lkSdLFt2Q/SOl9JgCXQs6yK
+	PmgTyftc4jjOwm5JseUbmWfi1kMBO+29x02jYX+lpTRSx9LUAVKgtzU6YzMpnMCE0YsS9KyZWx7Ol
+	gXu1LcVkgf0EBypQ8tgmuwIeY2OEhFS7A23FDe+XjCjp8eu9GlSzYRFl0PZwNP7yjnBLSTl77BwJD
+	kzC/dp8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1BXY-007AwN-0U;
-	Thu, 09 Nov 2023 20:22:12 +0000
-Received: from mail-vk1-xa2c.google.com ([2607:f8b0:4864:20::a2c])
+	id 1r1Cvr-007ILe-0L;
+	Thu, 09 Nov 2023 21:51:23 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1BXU-007AvF-2M;
-	Thu, 09 Nov 2023 20:22:10 +0000
-Received: by mail-vk1-xa2c.google.com with SMTP id 71dfb90a1353d-4ac42a7bffeso557958e0c.2;
-        Thu, 09 Nov 2023 12:22:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1699561324; x=1700166124; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=79oUciC1MphFLchMyW5zN+ld+Ip/ohdJ3MzsnnkdArI=;
-        b=Y1bHWUvrualm5xtRth7u9xmjC2dDNcaX8/tNudL1jTnDEPPD4wsCpGIULrz3BOhgRM
-         RlLEtQu2eONyD/IezfwSRuKfXcsLX2T3MwBMyw2XB844q+BazzbWFka0RKNOMpg54Ro8
-         7GW5Ahccvfb/Vs7CZemxWPuEHTp1RPO2aMoquRNld/T35i/MV3Pd6tLKCeceZRa9ku/d
-         uw54Y4ISrNc7SnxlIvvYns7vihWduESgPJxM9i+PuAqodsduE1wq48xsiFBpjKiGAAF8
-         AuvhIf4agrehxpo65N1aggVUG5K/Fz1IvJs+aQIvrEhVd8IizMgUa9QQEXNeIJGgMjuZ
-         owVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699561324; x=1700166124;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=79oUciC1MphFLchMyW5zN+ld+Ip/ohdJ3MzsnnkdArI=;
-        b=saSrJypo/9gjo8PiSZHKgOJbylCvdavd2cPTU7zO8pXPK6U4nutrduBlLLrWBMJc+H
-         mVm6vOLUbEANtNoTuAfnset4qH0k4O6oy+X6RENBqPsexKg5+rN5ktGPPTDV+UxcMTNL
-         nShcTeywFoxBoomStIH0hSizr3wBfLZeuwVfrDu1rlpCsejLdxGm2tI2mUJj5a5Kg/Lq
-         cmiIqetBUk/zF0R5KrMNUVTygqrE3W6ulEA/n+s4cjY4H98/3OF3miQAYTDYdbvuxuyD
-         qyc0BSaGiOpnZzlmbuaMsyH95ASHSWKMxikTR73P/ski6t9sPpl7zLDpWXEwk2/+ke+9
-         6/PQ==
-X-Gm-Message-State: AOJu0YwNTy5eAPWoffbwuuhA+Jai1JuhIXqS20gEfEMWFrKo+fODNeN3
-	arFR77DNqUJDhFpdgZLKoF4P3l4cChwjqXPbE08=
-X-Google-Smtp-Source: AGHT+IHeEYBi5nUVdK8O1Fji9SXoWwVQ1ionOejtl0pq9n4Oxy3eyVaDJB4oTZ8X0i5CLfXx5Mqs5VNvA3gtw+Gk21c=
-X-Received: by 2002:a05:6122:1807:b0:4a1:7278:3bf5 with SMTP id
- ay7-20020a056122180700b004a172783bf5mr2992264vkb.4.1699561324079; Thu, 09 Nov
- 2023 12:22:04 -0800 (PST)
+	id 1r1Cvo-007IJb-0j;
+	Thu, 09 Nov 2023 21:51:21 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1r1CvH-0003Tv-1d;
+	Thu, 09 Nov 2023 21:50:47 +0000
+Date: Thu, 9 Nov 2023 21:50:43 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: [RFC PATCH 0/8] Add support for 10G Ethernet SerDes on MT7988
+Message-ID: <cover.1699565880.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20231109163512.179524-14-benjamin.gaignard@collabora.com> <20231109163512.179524-39-benjamin.gaignard@collabora.com>
-In-Reply-To: <20231109163512.179524-39-benjamin.gaignard@collabora.com>
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Date: Thu, 9 Nov 2023 20:21:17 +0000
-Message-ID: <CA+V-a8t33Q5C00dUmo=i=wd5wPzqdCNVO8MLH8to-7Ge9SjYuQ@mail.gmail.com>
-Subject: Re: [PATCH v15 38/56] media: ti: Stop direct calls to queue
- num_buffers field
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com, 
-	ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, 
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl, 
-	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
-	kernel@collabora.com, Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_122208_812946_E20E5085 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20231109_135120_262076_1FE1D602 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,141 +80,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 9, 2023 at 4:38=E2=80=AFPM Benjamin Gaignard
-<benjamin.gaignard@collabora.com> wrote:
->
-> Use vb2_get_num_buffers() to avoid using queue num_buffers field directly=
-.
-> This allows us to change how the number of buffers is computed in the
-> future.
->
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-> CC: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-> ---
->  drivers/media/platform/ti/am437x/am437x-vpfe.c   | 5 +++--
->  drivers/media/platform/ti/cal/cal-video.c        | 5 +++--
->  drivers/media/platform/ti/davinci/vpif_capture.c | 5 +++--
->  drivers/media/platform/ti/davinci/vpif_display.c | 5 +++--
->  drivers/media/platform/ti/omap/omap_vout.c       | 5 +++--
->  5 files changed, 15 insertions(+), 10 deletions(-)
->
-Reviewed-by: Prabhakar <prabhakar.csengg@gmail.com>
+This series aims to add support for GMAC2 and GMAC3 of the MediaTek MT7988 SoC.
+While the vendor SDK stuffs all this into their Ethernet driver, I've tried to
+seperate things into a PHY driver, a PCS driver as well as changes to the
+existing Ethernet and LynxI PCS driver.
 
-Cheers,
-Prabhakar
+                  +----------------+
++--------------+  |  USXGMII PCS   |   +------------------+
+| Ethernet MAC +--+-------------+  +---+ PEXTP SerDes PHY |
++--------------+  |  SGMII PCS  |  |   +------------------+
+                  +-------------+--+
 
-> diff --git a/drivers/media/platform/ti/am437x/am437x-vpfe.c b/drivers/med=
-ia/platform/ti/am437x/am437x-vpfe.c
-> index 5fa2ea9025d9..f18acf9286a2 100644
-> --- a/drivers/media/platform/ti/am437x/am437x-vpfe.c
-> +++ b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-> @@ -1771,9 +1771,10 @@ static int vpfe_queue_setup(struct vb2_queue *vq,
->  {
->         struct vpfe_device *vpfe =3D vb2_get_drv_priv(vq);
->         unsigned size =3D vpfe->fmt.fmt.pix.sizeimage;
-> +       unsigned int q_num_bufs =3D vb2_get_num_buffers(vq);
->
-> -       if (vq->num_buffers + *nbuffers < 3)
-> -               *nbuffers =3D 3 - vq->num_buffers;
-> +       if (q_num_bufs + *nbuffers < 3)
-> +               *nbuffers =3D 3 - q_num_bufs;
->
->         if (*nplanes) {
->                 if (sizes[0] < size)
-> diff --git a/drivers/media/platform/ti/cal/cal-video.c b/drivers/media/pl=
-atform/ti/cal/cal-video.c
-> index a8abcd0fee17..94e67c057a20 100644
-> --- a/drivers/media/platform/ti/cal/cal-video.c
-> +++ b/drivers/media/platform/ti/cal/cal-video.c
-> @@ -603,9 +603,10 @@ static int cal_queue_setup(struct vb2_queue *vq,
->  {
->         struct cal_ctx *ctx =3D vb2_get_drv_priv(vq);
->         unsigned int size =3D ctx->v_fmt.fmt.pix.sizeimage;
-> +       unsigned int q_num_bufs =3D vb2_get_num_buffers(vq);
->
-> -       if (vq->num_buffers + *nbuffers < 3)
-> -               *nbuffers =3D 3 - vq->num_buffers;
-> +       if (q_num_bufs + *nbuffers < 3)
-> +               *nbuffers =3D 3 - q_num_bufs;
->
->         if (*nplanes) {
->                 if (sizes[0] < size)
-> diff --git a/drivers/media/platform/ti/davinci/vpif_capture.c b/drivers/m=
-edia/platform/ti/davinci/vpif_capture.c
-> index 99fae8830c41..fc42b4bc37e6 100644
-> --- a/drivers/media/platform/ti/davinci/vpif_capture.c
-> +++ b/drivers/media/platform/ti/davinci/vpif_capture.c
-> @@ -113,6 +113,7 @@ static int vpif_buffer_queue_setup(struct vb2_queue *=
-vq,
->         struct channel_obj *ch =3D vb2_get_drv_priv(vq);
->         struct common_obj *common =3D &ch->common[VPIF_VIDEO_INDEX];
->         unsigned size =3D common->fmt.fmt.pix.sizeimage;
-> +       unsigned int q_num_bufs =3D vb2_get_num_buffers(vq);
->
->         vpif_dbg(2, debug, "vpif_buffer_setup\n");
->
-> @@ -122,8 +123,8 @@ static int vpif_buffer_queue_setup(struct vb2_queue *=
-vq,
->                 size =3D sizes[0];
->         }
->
-> -       if (vq->num_buffers + *nbuffers < 3)
-> -               *nbuffers =3D 3 - vq->num_buffers;
-> +       if (q_num_bufs + *nbuffers < 3)
-> +               *nbuffers =3D 3 - q_num_bufs;
->
->         *nplanes =3D 1;
->         sizes[0] =3D size;
-> diff --git a/drivers/media/platform/ti/davinci/vpif_display.c b/drivers/m=
-edia/platform/ti/davinci/vpif_display.c
-> index f8ec2991c667..9dbab1003c1d 100644
-> --- a/drivers/media/platform/ti/davinci/vpif_display.c
-> +++ b/drivers/media/platform/ti/davinci/vpif_display.c
-> @@ -115,6 +115,7 @@ static int vpif_buffer_queue_setup(struct vb2_queue *=
-vq,
->         struct channel_obj *ch =3D vb2_get_drv_priv(vq);
->         struct common_obj *common =3D &ch->common[VPIF_VIDEO_INDEX];
->         unsigned size =3D common->fmt.fmt.pix.sizeimage;
-> +       unsigned int q_num_bufs =3D vb2_get_num_buffers(vq);
->
->         if (*nplanes) {
->                 if (sizes[0] < size)
-> @@ -122,8 +123,8 @@ static int vpif_buffer_queue_setup(struct vb2_queue *=
-vq,
->                 size =3D sizes[0];
->         }
->
-> -       if (vq->num_buffers + *nbuffers < 3)
-> -               *nbuffers =3D 3 - vq->num_buffers;
-> +       if (q_num_bufs + *nbuffers < 3)
-> +               *nbuffers =3D 3 - q_num_bufs;
->
->         *nplanes =3D 1;
->         sizes[0] =3D size;
-> diff --git a/drivers/media/platform/ti/omap/omap_vout.c b/drivers/media/p=
-latform/ti/omap/omap_vout.c
-> index 4143274089c3..72ce903717d3 100644
-> --- a/drivers/media/platform/ti/omap/omap_vout.c
-> +++ b/drivers/media/platform/ti/omap/omap_vout.c
-> @@ -944,10 +944,11 @@ static int omap_vout_vb2_queue_setup(struct vb2_que=
-ue *vq,
->                                      struct device *alloc_devs[])
->  {
->         struct omap_vout_device *vout =3D vb2_get_drv_priv(vq);
-> +       unsigned int q_num_bufs =3D vb2_get_num_buffers(vq);
->         int size =3D vout->pix.sizeimage;
->
-> -       if (is_rotation_enabled(vout) && vq->num_buffers + *nbufs > VRFB_=
-NUM_BUFS) {
-> -               *nbufs =3D VRFB_NUM_BUFS - vq->num_buffers;
-> +       if (is_rotation_enabled(vout) && q_num_bufs + *nbufs > VRFB_NUM_B=
-UFS) {
-> +               *nbufs =3D VRFB_NUM_BUFS - q_num_bufs;
->                 if (*nbufs =3D=3D 0)
->                         return -EINVAL;
->         }
-> --
-> 2.39.2
->
+Alltogether this allows using GMAC2 and GMAC3 with all possible interface modes,
+including in-band-status if needed.
+
+Daniel Golle (8):
+  dt-bindings: phy: mediatek,xfi-pextp: add new bindings
+  phy: add driver for MediaTek pextp 10GE SerDes PHY
+  net: pcs: pcs-mtk-lynxi: use 2500Base-X without AN
+  net: pcs: pcs-mtk-lynxi: allow calling with NULL advertising
+  dt-bindings: net: pcs: add bindings for MediaTek USXGMII PCS
+  net: pcs: add driver for MediaTek USXGMII PCS
+  dt-bindings: net: mediatek,net: fix and complete mt7988-eth binding
+  net: ethernet: mtk_eth_soc: add paths and SerDes modes for MT7988
+
+ .../devicetree/bindings/net/mediatek,net.yaml | 171 ++++-
+ .../bindings/net/pcs/mediatek,usxgmii.yaml    | 105 +++
+ .../bindings/phy/mediatek,xfi-pextp.yaml      |  71 ++
+ MAINTAINERS                                   |   3 +
+ drivers/net/ethernet/mediatek/Kconfig         |  17 +
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  | 122 +++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 178 ++++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 105 ++-
+ drivers/net/pcs/Kconfig                       |  10 +
+ drivers/net/pcs/Makefile                      |   1 +
+ drivers/net/pcs/pcs-mtk-lynxi.c               |  38 +-
+ drivers/net/pcs/pcs-mtk-usxgmii.c             | 688 ++++++++++++++++++
+ drivers/phy/mediatek/Kconfig                  |  11 +
+ drivers/phy/mediatek/Makefile                 |   1 +
+ drivers/phy/mediatek/phy-mtk-pextp.c          | 355 +++++++++
+ include/linux/pcs/pcs-mtk-usxgmii.h           |  18 +
+ 16 files changed, 1813 insertions(+), 81 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/pcs/mediatek,usxgmii.yaml
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,xfi-pextp.yaml
+ create mode 100644 drivers/net/pcs/pcs-mtk-usxgmii.c
+ create mode 100644 drivers/phy/mediatek/phy-mtk-pextp.c
+ create mode 100644 include/linux/pcs/pcs-mtk-usxgmii.h
+
+-- 
+2.42.1
 
