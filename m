@@ -4,66 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33EB5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 09:05:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7302C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 09:10:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5STUDR9dG9F4bDls8l1HrX2ScrOcWjiKUVV/Xpqcbyw=; b=mlw5gNBhHb2QHCJMjWMRcZEJxC
-	7cSYShFPwvVWqVdfxIZEHghsA94DL25tt+ses+yEEhPAj/Nre1lLElpyp9w23FKxcxPLHGnQvPDbH
-	NIb9Khzrr8//OH0wCZZRJFgc7ulOrvTvNA+YWD7T1YcI8QggfhzZTPcuATMjeGNDDEtdF83Dse3S1
-	JtITZTBgqJHQImgOxQjbXkJ+Db3bLBQT6mIkg7d/M78/rfWveYj+JmNFXUaSDVb5A3hCp3NL87Uhc
-	yYTXt70w4eQWQ2tBTh/PmYw2PT/WTgXDI4vMplnkUZGQsmBxDDfZ+N5ZnNGXAXbKzEkbWFF+Z+0qM
-	K4uhmOwQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=trb4MuQ6XLLHp9cbrU7Qhxh5OD3/4hryMzvH31htzlg=; b=Ece5w8TOu6bhAm/bPWV4dW/ctz
+	R5vC/3tUL59/4q1A2GK+/UMCnDA/gth0fV5qyTC/aoQBLQKzxhcCe0t0YAP1i1Dohw2Eu1Q223L4C
+	bATOFNIYgaWwEJ0JIoxCwMa3U5qbIGz8kZxcQ3Q8c1ptFtz1eakocnkEwac+bWMas3BPWxKZ4VdFv
+	+RZkRrzGhSrOztyTK4aCub7cSb5+pS+ATe9uKkyY7M68s3d9euE7rU3vAUi4jSAjSiej0HBli86RP
+	W8i3z7n17B7Ntj8aCl7w6VVQ+jo9SMcCvo+awyLFhMvpxfVDeQ56vebSEwToAUxfgTeXLNJHyOUdH
+	3U14WC4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r10yh-005j5w-0m;
-	Thu, 09 Nov 2023 09:05:31 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r113T-005jsT-1k;
+	Thu, 09 Nov 2023 09:10:27 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r10yd-005j48-1i;
-	Thu, 09 Nov 2023 09:05:29 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4B68466073C9;
-	Thu,  9 Nov 2023 09:05:21 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699520723;
-	bh=VZujYMPKmLejiw85oagZfdMcNt6QF3HzE/oXVKwjZHU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=II7DCAcBHDtMNaI7+BirK5Re8/X8GRIN/JAsDBypjm+++Vj0AzHaioRWNUw/asGqY
-	 J0ykE7NMxnyVkGtS7cSmWJ8Z7F/UUerze5xNAfazPhKT/XJ6VBVTn3FoYNnp1uwX3l
-	 S13/fsKUtkJeQaQ/O8tTfZrRfdraOY9GesvwLT6mFzFfb7dQSgfyPt3O+js2D6boJn
-	 NaZKCwimUdtykWCv62Of/W86RQiZhaFeJKtNyQBfgZYhagr94Dtoka6jr208DRZMmL
-	 njtWtvcSBbLSu04UrbzN/bSwmtwb7ewBqCKk1xR7StVH+YtQP/Wao1Mvn69OqEV/ae
-	 6lHecDsIV78Pw==
-Message-ID: <3b6c474f-669d-4c6e-8d56-ea65958a3b48@collabora.com>
-Date: Thu, 9 Nov 2023 10:05:16 +0100
+	id 1r113Q-005jqb-1T
+	for linux-mediatek@lists.infradead.org;
+	Thu, 09 Nov 2023 09:10:26 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-6c4b06af98bso345866b3a.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Nov 2023 01:10:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1699521023; x=1700125823; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=trb4MuQ6XLLHp9cbrU7Qhxh5OD3/4hryMzvH31htzlg=;
+        b=Uo2odeT4PAJFKb/AqM7FGQWX8GdGpw3L9gtvSpVqRu/SiOOA+w1f1qWSuu8cuVsXTA
+         9m2hXqVOjgunekm799+78AkhvnK5yUTNfKXQorRE54cnzTZ3xqK0mV8WPLg7vpWd/u5Y
+         RGPdKdS6cucoUq8rl3McXZZpYJEB9FeG6Yt1Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699521023; x=1700125823;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=trb4MuQ6XLLHp9cbrU7Qhxh5OD3/4hryMzvH31htzlg=;
+        b=M8DdA2ZRkoulS3/aSM239/TZMmBmivW5k9Xz1C4N9SzVS+UeK9EY/SE+H7ScMsTljV
+         Kwb1KZGCtvkxlGvnJLE/DtKwoLHxC98fUAY5A1HkyTDK94n4YaT0B1ly2sI7xewVcKAO
+         Kg7tTESnhULSk6m7fDZXEJQ+gXAI5yuNf2feR4h4tIP91f5XpUlZom6dpKHiZ7dl3Ahe
+         3KUy5AYe26AVzBhuHc+86CgXHim2BCZ7uAi1hKmRHOBCDjWW+SL0hAA/nPCgkYmMwKYt
+         rQTJSeRsytQvHOAbS+TyKpIUfWZQgGnDRe8lWG5peT7KhbV7Z9UX/h0dl3OQ4WBd9y90
+         aH5w==
+X-Gm-Message-State: AOJu0YxKjbQ9A73SrBcgviFm32h87ksu2K7IgQZ+28B+Bgh1GSWoF0Mm
+	1DV6MWGLdoBGXR7B3q9goeo9TQ==
+X-Google-Smtp-Source: AGHT+IHeH9bwSDaqUzS/5j97Pi2uukXE85TheRG3ama6+WbfBb0l8z3y1v7unvrgCAzIC5YVZM0pcw==
+X-Received: by 2002:a05:6a20:7493:b0:15d:e68d:a850 with SMTP id p19-20020a056a20749300b0015de68da850mr4661238pzd.29.1699521022894;
+        Thu, 09 Nov 2023 01:10:22 -0800 (PST)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id i4-20020a17090332c400b001c9d968563csm3041205plr.79.2023.11.09.01.10.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Nov 2023 01:10:22 -0800 (PST)
+Date: Thu, 9 Nov 2023 09:10:18 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com
+Subject: Re: [PATCH v14 53/56] media: core: Free range of buffers
+Message-ID: <20231109091018.tzodchqp44tmwq3k@chromium.org>
+References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-54-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] clock: mediatek: mt8173: Handle unallocated infracfg
- clock data
-To: Alper Nebi Yasak <alpernebiyasak@gmail.com>, linux-kernel@vger.kernel.org
-Cc: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
- Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org,
- Michael Turquette <mturquette@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org
-References: <20231108213734.140707-1-alpernebiyasak@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20231108213734.140707-1-alpernebiyasak@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231031163104.112469-54-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_010527_714757_8FA6C504 
-X-CRM114-Status: GOOD (  33.24  )
+X-CRM114-CacheID: sfid-20231109_011024_524872_6FD0402B 
+X-CRM114-Status: GOOD (  26.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,97 +94,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/11/23 22:33, Alper Nebi Yasak ha scritto:
-> The MT8173 infracfg clock driver does initialization in two steps, via a
-> CLK_OF_DECLARE_DRIVER declaration. However its early init function
-> doesn't get to run when it's built as a module, presumably since it's
-> not loaded by the time it would have been called by of_clk_init(). This
-> causes its second-step probe() to return -ENOMEM when trying to register
-> clocks, as the necessary clock_data struct isn't initialized by the
-> first step.
+On Tue, Oct 31, 2023 at 05:31:01PM +0100, Benjamin Gaignard wrote:
+> Improve __vb2_queue_free() and __vb2_free_mem() to free
+> range of buffers and not only the last few buffers.
+> Intoduce starting index to be flexible on range and change the loops
+> according to this parameters.
 > 
-> MT2701 and MT6797 clock drivers also use this mechanism, but they try to
-> allocate the necessary clock_data structure if missing in the second
-> step. Mimic that for the MT8173 infracfg clock as well to make it work
-> as a module.
-> 
-> Signed-off-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
-> I've tried adding cpumux support to clk-mtk.c then switching this over
-> to simple probe functions and it appears to work for me, though I don't
-> know clock systems enough to recognize if it's subtly broken instead.
-> That'd remove this piece of code, but this might still be worth applying
-> to backport to stable kernels.
+>  .../media/common/videobuf2/videobuf2-core.c   | 59 +++++++++----------
+>  1 file changed, 28 insertions(+), 31 deletions(-)
 > 
-> If I'm reading things correctly, it looks like it would be possible to
-> add cpumux & pll & pllfh support to clk-mtk.c, then move most if not
-> every driver to simple probe, with one file per clock and module
-> support. How much of that is desirable? In what order do the parts need
-> to be registered?
-> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 6e88406fcae9..010a8bca0240 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -519,15 +519,13 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  /*
+>   * __vb2_free_mem() - release all video buffer memory for a given queue
 
-Thing is, if (!infra_clk_data) at infracfg_probe time, then INFRA_CLK_13M==-ENOENT!
-If you do this, you should at least also send a devicetree commit that adds
+This comment is kind of outdated. Maybe we should replace it with
 
-	clk13m: fixed-factor-clock-13m {
-		compatible = "fixed-factor-clock";
-		#clock-cells = <0>;
-		clocks = <&clk26m>;
-		clock-div = <2>;
-		clock-mult = <1>;
-		clock-output-names = "clk13m";
-	};
+	release video buffer memory for a given range of buffers in a given
+	queue
 
-....otherwise this solution is incomplete! ;-)
+?
 
-Regarding the CPUMUX support, when I've restructured the MediaTek clocks, I've also
-been thinking about doing this, but decided not to do it because that'd be a check
-done on ~10 clock drivers per SoC, of which only one is expected to succeed... I
-see that as a waste of cycles at boot...
+>   */
+> -static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+> +static void __vb2_free_mem(struct vb2_queue *q, unsigned int start, unsigned int count)
+>  {
+> -	unsigned int buffer;
+> +	unsigned int i;
+>  	struct vb2_buffer *vb;
+> -	unsigned int q_num_buffers = vb2_get_num_buffers(q);
+>  
+> -	for (buffer = q_num_buffers - buffers; buffer < q_num_buffers;
+> -	     ++buffer) {
+> -		vb = vb2_get_buffer(q, buffer);
+> +	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
 
-...but if anyone thinks otherwise, I'm fine with it...
+We could make this (and all those numerous simialr iterations) more
+efficient by using bitmap helpers (probably wrapped in some vb2 helpers),
+e.g. for_each_set_bit_from() (vb2_for_each_buffer_from()?). It can be done
+in a follow up patch separately from this series though.
 
-Anyway.
+> +		vb = vb2_get_buffer(q, i);
+>  		if (!vb)
+>  			continue;
+>  
+> @@ -542,35 +540,35 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+>  }
+>  
+>  /*
+> - * __vb2_queue_free() - free buffers at the end of the queue - video memory and
+> + * __vb2_queue_free() - free count buffers from start index of the queue - video memory and
 
-Can you please fix the commit title to be consistent with the others and send a v2?
+nit: How about using the @count and @start notation to refer the argument
+names? (Can be done with a follow up patch outside of this series later.)
 
-In this case, that would be
-"clk: mediatek: mt8173-infracfg: Handle unallocated infracfg when module"
+>   * related information, if no buffers are left return the queue to an
+>   * uninitialized state. Might be called even if the queue has already been freed.
+>   */
+> -static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+> +static void __vb2_queue_free(struct vb2_queue *q, unsigned int start, unsigned int count)
+>  {
+> -	unsigned int buffer;
+> -	unsigned int q_num_buffers = vb2_get_num_buffers(q);
+> +	unsigned int i;
+>  
+>  	lockdep_assert_held(&q->mmap_lock);
+>  
+>  	/* Call driver-provided cleanup function for each buffer, if provided */
+> -	for (buffer = q_num_buffers - buffers; buffer < q_num_buffers;
+> -	     ++buffer) {
+> -		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+> +	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
+> +		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+>  
+> -		if (vb && vb->planes[0].mem_priv)
+> +		if (!vb)
+> +			continue;
+> +		if (vb->planes[0].mem_priv)
 
-P.S.: Good job!
+nit: Not sure if we really had to change this, but I'm fine with either.
 
-Cheers,
-Angelo
-
->   drivers/clk/mediatek/clk-mt8173-infracfg.c | 12 +++++++++++-
->   1 file changed, 11 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt8173-infracfg.c b/drivers/clk/mediatek/clk-mt8173-infracfg.c
-> index 2f2f074e231a..ecc8b0063ea5 100644
-> --- a/drivers/clk/mediatek/clk-mt8173-infracfg.c
-> +++ b/drivers/clk/mediatek/clk-mt8173-infracfg.c
-> @@ -98,7 +98,17 @@ CLK_OF_DECLARE_DRIVER(mtk_infrasys, "mediatek,mt8173-infracfg",
->   static int clk_mt8173_infracfg_probe(struct platform_device *pdev)
->   {
->   	struct device_node *node = pdev->dev.of_node;
-> -	int r;
-> +	int r, i;
-> +
-> +	if (!infra_clk_data) {
-> +		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
-> +		if (!infra_clk_data)
-> +			return -ENOMEM;
-> +	} else {
-> +		for (i = 0; i < CLK_INFRA_NR_CLK; i++)
-> +			if (infra_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
-> +				infra_clk_data->hws[i] = ERR_PTR(-ENOENT);
-> +	}
->   
->   	r = mtk_clk_register_gates(&pdev->dev, node, infra_gates,
->   				   ARRAY_SIZE(infra_gates), infra_clk_data);
-> 
-> base-commit: 2220f68f4504aa1ccce0fac721ccdb301e9da32f
-
-
-
+Best regards,
+Tomasz
 
