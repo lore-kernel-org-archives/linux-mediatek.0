@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C6A8C4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7C5FC04FDE
 	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:39:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O5UBtk6PsomZ9FDpFhN4paTBZMB0amCzWb/FHWjfUzc=; b=ghm3J5F5cYGc3RZoH0TnbmisGu
-	McLqfvOu9160nMEyWj5lKTOuuZ+GDiuhI8awaTLs1mJLRi+l8MlqZJa8GaZUfbi7oY+MfQCyNS8fK
-	thM/ulx7kTBxvE5zrGISVKN8bww7En3edCt39L+GKZ+e4L5TuL44L2ZPRqQBz0/PjkUxxuBFEq+CX
-	q9XHTkU8aAK8GvbSX90Yzq3HRTDhbJA0+wjmG4U+QIwI4pufVliqDfq+OCgW9OFfm5Z4aGokkKjBj
-	gjRNjU1mNhflCBaPE5qepK2iJhhAIAHBuPfdcDSG9LPG/Ii6kcm6oA7kMhp4MyzIWpS8cbLyfqxUQ
-	NNz3ewSw==;
+	bh=cjSVV9KOmns+wxjAM4+B6r6mBBl+bkpK5jOFTe+n8+o=; b=f6/UfXqEKduamcniUkAeT4pJNc
+	F8MvLXPgSeCsTRDRMg2sE0EoXRRtf+mqB5MWKwM7ev6TzD6v0PGFczDp1URjmyh4QqEPfBdf4EChJ
+	UacVnTkpDKEDymVjKBsmqR2Vrs7gd7nNBn8x7JM7W3xOGv59kuf8zkCWCLgqxECF6FwxE4pOuDq1Q
+	xUBBUhzf9Bz3dVrOyRuTUagSVHHt2joNowZ4zlx7jXDZxUgTtyx+UeJKeiPxtbML+TJI9+HglsBMm
+	QtDOt0U1Rrxp5RzYxxfpKvky99ntubKXykusSYXUUtlwKCgD+tQzlQsIcsiJuBSetar51yaEq8u6P
+	PThFQWRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r183o-006mez-0F;
+	id 1r183o-006mfp-21;
 	Thu, 09 Nov 2023 16:39:16 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r182f-006lO4-1T;
-	Thu, 09 Nov 2023 16:38:06 +0000
+	id 1r182h-006lQb-1K;
+	Thu, 09 Nov 2023 16:38:09 +0000
 Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 237096607421;
-	Thu,  9 Nov 2023 16:38:03 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F3CD566076AA;
+	Thu,  9 Nov 2023 16:38:04 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699547884;
-	bh=vezolw57Im6DRr5UrQGGrzNIzO39/GydEUKahqKBxH8=;
+	s=mail; t=1699547886;
+	bh=GT8so2nlXz6sVTC6/LVEeyeT6LyqCEc+V+4zR/u/SPw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=J8zKvMICI27yvgnvGQIBMWeJupbn/jDMLV0+XnOmfAYNeQVC02XRx9XlBFqnGhDBS
-	 Vrt3Wm9WLqkxqrd5mpAohUzAQUJxqNmDkePxQmCsDhQURRY0Ei64QYHpORznzoWU9v
-	 sTMFSV1afmOLp1hH0PJSCj9kr9VpcW6SstbNEC01QpHzCzMEPv2duBi0+g1HH0bXSU
-	 L0NGhUP+JWrsVHPG7dEkSEMFyIWSYHwuELNO3JO4IdtFpg23HxvBjjzpckLMGf0mOZ
-	 QQiNKpnmiHGpd+k0u814JyWbjV4tqxH1nHkj6VDT9XZCA8v6VLDST7DMXSCktNug/g
-	 Qb8lFKla65J5g==
+	b=RrtVh9X8Qs3g6cf1NjAny0QHSCivxPRqThyYB+1UeW3i1R3txI7Jyuoyosie0jI4Y
+	 Sobrtwrl9LWhxHkeucSN/nz/SaKMmS25oL/JykL+45iXaI+hXD65e2d9/d0KPTGhA7
+	 4uR0A1VnzatKW+VvZFE30uarEAq7sBjvsUGAhdVDjxKQTQ/XTnG+KqRe7++7zxMAPo
+	 flk+iywS8HYIuCVUyuvGb7Gp5bz00HmhdeDWzxaStHOMZx/gks9MKl7aFliJNMDgJW
+	 G+lORtotlbUF4dWneogGispfaIhp837GUci0YW3ji015RqhSjGIDub+9myfBfLrrZ0
+	 uH/fmoUfRR9BQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,21 +62,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Martin Kepplinger <martink@posteo.de>
-Subject: [PATCH v15 28/56] media: nxp: Stop direct calls to queue num_buffers field
-Date: Thu,  9 Nov 2023 17:34:44 +0100
-Message-Id: <20231109163512.179524-29-benjamin.gaignard@collabora.com>
+	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Subject: [PATCH v15 29/56] media: verisilicon: Stop direct calls to queue num_buffers field
+Date: Thu,  9 Nov 2023 17:34:45 +0100
+Message-Id: <20231109163512.179524-30-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 References: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083805_652043_A41419B3 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20231109_083807_597068_A6AB439E 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,43 +94,24 @@ future.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-CC: Rui Miguel Silva <rmfrfs@gmail.com>
-CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-CC: Martin Kepplinger <martink@posteo.de>
+CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 ---
- drivers/media/platform/nxp/imx7-media-csi.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/media/platform/verisilicon/hantro_postproc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/nxp/imx7-media-csi.c b/drivers/media/platform/nxp/imx7-media-csi.c
-index 15049c6aab37..4c467fb82789 100644
---- a/drivers/media/platform/nxp/imx7-media-csi.c
-+++ b/drivers/media/platform/nxp/imx7-media-csi.c
-@@ -1245,6 +1245,7 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
- 				      struct device *alloc_devs[])
- {
- 	struct imx7_csi *csi = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	struct v4l2_pix_format *pix = &csi->vdev_fmt;
- 	unsigned int count = *nbuffers;
- 
-@@ -1254,14 +1255,14 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
- 	if (*nplanes) {
- 		if (*nplanes != 1 || sizes[0] < pix->sizeimage)
- 			return -EINVAL;
--		count += vq->num_buffers;
-+		count += q_num_bufs;
- 	}
- 
- 	count = min_t(__u32, IMX7_CSI_VIDEO_MEM_LIMIT / pix->sizeimage, count);
- 
- 	if (*nplanes)
--		*nbuffers = (count < vq->num_buffers) ? 0 :
--			count - vq->num_buffers;
-+		*nbuffers = (count < q_num_bufs) ? 0 :
-+			count - q_num_bufs;
- 	else
- 		*nbuffers = count;
- 
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index 64d6fb852ae9..8f8f17e671ce 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -195,7 +195,7 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+ 	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
+-	unsigned int num_buffers = cap_queue->num_buffers;
++	unsigned int num_buffers = vb2_get_num_buffers(cap_queue);
+ 	struct v4l2_pix_format_mplane pix_mp;
+ 	const struct hantro_fmt *fmt;
+ 	unsigned int i, buf_size;
 -- 
 2.39.2
 
