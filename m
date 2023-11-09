@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C165C4167D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:38:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E08BEC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 16:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1/+Lxkbxkr5wpS+uB7VMCTDQQAUTF0dKru7u1Lg24vU=; b=41gJMTw61EIZq6Bbed1RTMqEKN
-	YHZQWHoeRXYaJqMNQ0wo8DWodZa4HU0gsY+npsnE2eNHoJGjhmM5U8s7UG6FdqNcY5t7dDFH/KYK6
-	b2m0VTbTlZ/a0TYBzD1xBTZqnF1GIqRd1gK0GW3k2/tM2wuEvzA2DKSOvXvf10Qa6HsXmMnpFwmv7
-	QYZ4/75TF0xz6FrJ1FWxqi/xtDqYCHpB6H5m4f5jyKhEFbp+MU4RDm1FWIiPfK2u0jvKZfSLWtdgC
-	U+MXdG+VdER4vhhhA6sAKuh+2izR848G+DF+oVf78VzOf7Y547lC0wx4rsFxMq6o0QQ6MuYSmhBeS
-	yMEdV2jw==;
+	bh=Hg1WmUbOrFTWeJAzYZt7/4g4Nr8ZISbOF5fv2h4W4gw=; b=sAWfS06F4Z3EPW1TQcITnLLZ5e
+	kMEGvdWHAL7YkM3YvrBKJj9utbwqbkRpGFDEgMPie9RAGVw5zlT167dXahiYiQM1XgvYCMM+phksW
+	EMtCVKSUC7l8RA7W8xpTIBa9Pn/bRcJj8R3tNxby6VMmfsKNvhXIzXBB3D0FW7cWKWVKDHCr9QyxI
+	Ny0pYLdHMYcUE71xKRg+lRJ9x13j1Zpk8t4+DhbXut7P7/FvIRqOVJLpDSw4AUkeC4p7dtyQY3ITY
+	dsYkPx9n4P62xTyQWfuzuXtdx3FHfHy+E5hEcK7O0poM9DCvUHulPZf1+krer43cCgWZR/yQuo2WZ
+	kyyTkORg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1832-006lr1-1b;
-	Thu, 09 Nov 2023 16:38:28 +0000
+	id 1r1837-006lwz-30;
+	Thu, 09 Nov 2023 16:38:33 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r182U-006lBh-1H;
-	Thu, 09 Nov 2023 16:37:55 +0000
+	id 1r182W-006lDX-17;
+	Thu, 09 Nov 2023 16:37:59 +0000
 Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 414F666076A9;
-	Thu,  9 Nov 2023 16:37:52 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 00F566607421;
+	Thu,  9 Nov 2023 16:37:53 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699547873;
-	bh=tH0dDZoY7AzlQtbTMci7rFl4joXADXoUOtykCWAO0ag=;
+	s=mail; t=1699547875;
+	bh=+Hqk/nxCcDyN1NZIvRoKMHSzkbjjWG5EbAmHVA6LLfM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=C2Z3fvqBe7KzpKhhXolyZoXKhY8XlKdqkwyaHfS4j7hR0A+KSc3wqDK00rvTk1QlQ
-	 DlNaoCYh0e0KuZrEFnIIPt1wxg/PJ/JhzIHpKTaA74980sRTyRI5TpHLqizYVX8BIZ
-	 Ro31Ec6rZE7u6i4/VPruIg8rEe/gc2xycCNvAJgSAR9/2mK9lYjpQzwofp9+7WUDNx
-	 3YH/e0E4vdI6R+/vaOg6h7pnl7NeuIQOcuIPswD95elNNWL+FpR+9VyDYxf9TJ4z+W
-	 SOAqsDyN20SJ3l4V2GnTuzra5nVRwaNMMbkfb3dOb23Kpg+OchP6RWnTmllC6zrZPX
-	 Zt3lCj0D2lwWQ==
+	b=VvoS9CUyCC7fwQzbtIRQaG+szawARH4k2FwfMxPjgDNnPZt6B1RUJf8Zw1V7d2bUk
+	 IQGN2WS5yI3u9i5nAQq7A/6IFKX/zvYEsuayqbQ+JMWJBfdlMNhh550mSlgazuutsu
+	 nZbSMQWZJIv+Z5Af+jVfXZwSeoJhKwP+GWeqW2CnNmhsum1C4cffCXiii5CSN6jdK7
+	 r7O7v8F1WYvhxONDsLsVbM8wvjq8dC8VShyOTe6cVn9WeWZm8juTZccynZC1yxjp0k
+	 AyxNny4UtgDpVOovxBczZLp3X3u1zPuWNW6NIr3D/2Zc98FDsquwlwsSXrRaCM+oZ6
+	 xWQD9j8Y49s4A==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,18 +62,20 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: [PATCH v15 22/56] media: pci: tw686x: Stop direct calls to queue num_buffers field
-Date: Thu,  9 Nov 2023 17:34:38 +0100
-Message-Id: <20231109163512.179524-23-benjamin.gaignard@collabora.com>
+	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+	Sergey Kozlov <serjk@netup.ru>,
+	Abylay Ospan <aospan@netup.ru>
+Subject: [PATCH v15 23/56] media: pci: cx18: Stop direct calls to queue num_buffers field
+Date: Thu,  9 Nov 2023 17:34:39 +0100
+Message-Id: <20231109163512.179524-24-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 References: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083754_576340_AA1C757B 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20231109_083756_547923_1BE79995 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,24 +96,25 @@ future.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+CC: Sergey Kozlov <serjk@netup.ru>
+CC: Abylay Ospan <aospan@netup.ru>
 ---
- drivers/media/pci/tw686x/tw686x-video.c | 5 +++--
+ drivers/media/pci/cx18/cx18-streams.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/pci/tw686x/tw686x-video.c b/drivers/media/pci/tw686x/tw686x-video.c
-index 3ebf7a2c95f0..6bc6d143d18c 100644
---- a/drivers/media/pci/tw686x/tw686x-video.c
-+++ b/drivers/media/pci/tw686x/tw686x-video.c
-@@ -423,6 +423,7 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
- 			      unsigned int sizes[], struct device *alloc_devs[])
+diff --git a/drivers/media/pci/cx18/cx18-streams.c b/drivers/media/pci/cx18/cx18-streams.c
+index 597472754c4c..cfbc4a907802 100644
+--- a/drivers/media/pci/cx18/cx18-streams.c
++++ b/drivers/media/pci/cx18/cx18-streams.c
+@@ -104,6 +104,7 @@ static int cx18_queue_setup(struct vb2_queue *vq,
+ 			    unsigned int *nbuffers, unsigned int *nplanes,
+ 			    unsigned int sizes[], struct device *alloc_devs[])
  {
- 	struct tw686x_video_channel *vc = vb2_get_drv_priv(vq);
 +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	unsigned int szimage =
- 		(vc->width * vc->height * vc->format->depth) >> 3;
- 
-@@ -430,8 +431,8 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
+ 	struct cx18_stream *s = vb2_get_drv_priv(vq);
+ 	struct cx18 *cx = s->cx;
+ 	unsigned int szimage;
+@@ -121,8 +122,8 @@ static int cx18_queue_setup(struct vb2_queue *vq,
  	 * Let's request at least three buffers: two for the
  	 * DMA engine and one for userspace.
  	 */
