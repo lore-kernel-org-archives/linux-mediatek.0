@@ -4,78 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9570C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 15:14:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 006BAC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 15:48:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jYYwk09pvFCfw5gx9REKdZlXnAH9VL/iW8tmM+0dLFM=; b=luotBqOZfgDL6S5pkqPfg7fekp
-	22dTrIx9gOFp31MLaZnpuCwvnVZX6dfY0CoIXaNICMeqc0bMPneFR/T/KyZpYpZ43tOouB2YsOG3m
-	ePnHgF4BAOGtsvkJUHbYkLjZ/ION3lR0iGnEahWbG6gIycz80tHqrMkoXKa5ngKXuMgkZrjYb35vl
-	uE0/7kVCzzGX+/sOBmbkNpxUpWAEXzm9c/GefuSAnLaebnj6s8KRmsxPyjXO5BKL5Aj4hte5y4W8E
-	eD+4ybmJL4PyiOTAE+6g891EAiZ96kB3n3sDaGL3jpvYPDAuXpAelkGIGd67gaH84E8wJ7lKS/ImA
-	jkkykG/w==;
+	bh=5v34RzU5dUkL8uBMl9pysHPzGodWuJPwSn4NQnz3p+M=; b=xObrztVyMMzZKHV9ASOkPWZnp9
+	KOfwZjvpApfgSEVnlgOD7Hn1mX6qbUyMOFOmYMlu72uJCtnk3b/0LeapDu7fcty5Vhw4yu+PuWDOE
+	F//Ave4zb9N2tA8JE4PWecAcTl4QIYFN1csGbx/pqyBAADQHxWLoJsxthb20wou702Mw715xMBad8
+	O1wlojJNezppxyDdZdVhQzkFveSSz5n58hlAPAvMuglPc42tLf7jtu6xX1+CAw3iP80d/t630mW7C
+	H+ItpiskhPf/R76G14Rnc3nfOrdv+A0//NGMpGZaXFRbMvm8cejs72k9iphEaBY9WhUonSY5c10vb
+	9/zdMe/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r16jP-006Ysp-1M;
-	Thu, 09 Nov 2023 15:14:07 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1r17Gt-006ePe-2h;
+	Thu, 09 Nov 2023 15:48:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r16jM-006Yr2-0T;
-	Thu, 09 Nov 2023 15:14:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D86C1CE127F;
-	Thu,  9 Nov 2023 15:14:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 202A7C433C9;
-	Thu,  9 Nov 2023 15:14:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699542841;
-	bh=FU2kTWEV/iC5NrY2xfbnKAFEU4M/r009NlocXokOA4g=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=OwhUAHTP7XFEW9APt8lfsU+L6kwlPSy/LDJoLUFi60vwGMaP+dV92h2wR1o+d5i44
-	 vi4H0U3nJnPAufn0ze87xlh4cmjPUkhWp6wjFgvvL5LgcV2pwA9VV8KRbSzAdgdxrl
-	 xz0nPd5fY3cNYmrtfRoXytUbMge50nUBZIBD1oTvTzhHIkAUBcy9HNTXCH1bOt0pzI
-	 vxlK+A4jke1SOGOMyR3uWxHZvIJjQd2Dqip+8C9yaIvHLyCGNd3W7vq4YJZtnaDhg5
-	 gLeJ77QWcNL2fg8A6Zv6Bnf3NcBXyHCwAyoILeS1DqE83QdBasm/0YsVxRt4RA07kr
-	 o6CT8HG2u4MWA==
-Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5079f9675c6so1265498e87.2;
-        Thu, 09 Nov 2023 07:14:01 -0800 (PST)
-X-Gm-Message-State: AOJu0YzsGGIeMjm/VHaQigDug979ZKUoYtaP211lK271mPhOq9cPWLSs
-	/d2FvAn8ZOGwGHth7mNO6hArZDC6eVWS9Q1xkA==
-X-Google-Smtp-Source: AGHT+IFB6x1gr32VeAyFyy5yY/wT4lO3/ubJla/ZBhOhYyGEqasIDyXQZSSE6pubpoWAO+rGp7sbHnZP7sdHy9aZGiY=
-X-Received: by 2002:a19:f502:0:b0:509:47ba:3160 with SMTP id
- j2-20020a19f502000000b0050947ba3160mr1396690lfb.56.1699542839133; Thu, 09 Nov
- 2023 07:13:59 -0800 (PST)
+	id 1r17Gq-006eO4-1b;
+	Thu, 09 Nov 2023 15:48:42 +0000
+Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: andrzej.p)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E8CB466074E4;
+	Thu,  9 Nov 2023 15:48:35 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699544917;
+	bh=H8fQMzAQclovte9fUhQqhR9RME7QzrA5CMSsHFHHe48=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FqsNW12FTrHddxbUZNTRJLwmHkbFwMt8sMH09J9IDgjXIBafoaSVFK+DV9F+1zmpS
+	 ADOv0ySxbRuwvJn5hgOuv4VweR6twzFBj6j5BmK/LCCIHi16xnOCC2ovhEz4IaYnSG
+	 SbFhF2+BXYzUqBMHc/GEoDq7NQIrouybDhD4Ldq7EQhSPwfRNr+3+zdqe4npLthK+f
+	 0NOXDROw1NV7xabxBFOHtH6Lrns24/CuAUFmsHrwECFRP4ZEFBca4dmCDuonhD4cBB
+	 hvc9vs6nB2oz/aXnbUlUPr1nQ/mVBWn/Bb0yOEn6vge+cIpEEwoIOrmim/RkTWTGCo
+	 8mC9cfVI2Qplw==
+Message-ID: <618d5b67-ba46-4c33-ae7f-990f4b522ba8@collabora.com>
+Date: Thu, 9 Nov 2023 16:48:33 +0100
 MIME-Version: 1.0
-References: <20231109100606.1245545-1-wenst@chromium.org> <20231109100606.1245545-3-wenst@chromium.org>
-In-Reply-To: <20231109100606.1245545-3-wenst@chromium.org>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Thu, 9 Nov 2023 09:13:46 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqJgUNcuXqtzHKdz5FdbxsrnLeZpgq-F+E21BvYS9qL0xg@mail.gmail.com>
-Message-ID: <CAL_JsqJgUNcuXqtzHKdz5FdbxsrnLeZpgq-F+E21BvYS9qL0xg@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 2/7] of: Introduce hardware prober driver
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Frank Rowand <frowand.list@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	andriy.shevchenko@linux.intel.com, Jiri Kosina <jikos@kernel.org>, 
-	linus.walleij@linaro.org, broonie@kernel.org, gregkh@linuxfoundation.org, 
-	hdegoede@redhat.com, james.clark@arm.com, james@equiv.tech, 
-	keescook@chromium.org, rafael@kernel.org, tglx@linutronix.de, 
-	Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
-	Johan Hovold <johan@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v14 35/56] media: cedrus: Stop direct calls to queue
+ num_buffers field
+Content-Language: en-US
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+ nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ kernel@collabora.com, Maxime Ripard <mripard@kernel.org>
+References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-36-benjamin.gaignard@collabora.com>
+ <083e43d9-452a-4b11-b7f1-f75992bc795e@collabora.com>
+ <ZUzpSXDbO60uGr0t@aptenodytes>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+In-Reply-To: <ZUzpSXDbO60uGr0t@aptenodytes>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_071404_526785_E6F670AB 
-X-CRM114-Status: GOOD (  54.72  )
+X-CRM114-CacheID: sfid-20231109_074840_848318_D257DFF3 
+X-CRM114-Status: GOOD (  22.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,286 +85,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 9, 2023 at 4:06=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> wr=
-ote:
->
-> Some devices are designed and manufactured with some components having
-> multiple drop-in replacement options. These components are often
-> connected to the mainboard via ribbon cables, having the same signals
-> and pin assignments across all options. These may include the display
-> panel and touchscreen on laptops and tablets, and the trackpad on
-> laptops. Sometimes which component option is used in a particular device
-> can be detected by some firmware provided identifier, other times that
-> information is not available, and the kernel has to try to probe each
-> device.
->
-> This change attempts to make the "probe each device" case cleaner. The
-> current approach is to have all options added and enabled in the device
-> tree. The kernel would then bind each device and run each driver's probe
-> function. This works, but has been broken before due to the introduction
-> of asynchronous probing, causing multiple instances requesting "shared"
-> resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
-> time, with only one instance succeeding. Work arounds for these include
-> moving the pinmux to the parent I2C controller, using GPIO hogs or
-> pinmux settings to keep the GPIO pins in some fixed configuration, and
-> requesting the interrupt line very late. Such configurations can be seen
-> on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
-> Lenovo Thinkpad 13S.
->
-> Instead of this delicate dance between drivers and device tree quirks,
-> this change introduces a simple I2C component prober. For any given
-> class of devices on the same I2C bus, it will go through all of them,
-> doing a simple I2C read transfer and see which one of them responds.
-> It will then enable the device that responds.
->
-> This requires some minor modifications in the existing device tree.
-> The status for all the device nodes for the component options must be
-> set to "failed-needs-probe-xxx". This makes it clear that some mechanism
-> is needed to enable one of them, and also prevents the prober and device
-> drivers running at the same time.
->
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  drivers/of/Kconfig     |  13 ++++
->  drivers/of/Makefile    |   1 +
->  drivers/of/hw_prober.c | 154 +++++++++++++++++++++++++++++++++++++++++
+Hi Paul,
 
-Not sure about having this in drivers/of/, but fine for now... Really,
-the I2C bus stuff should be in the I2C core with the rest of the code
-that knows how to parse I2C bus nodes.
+W dniu 9.11.2023 o 15:14, Paul Kocialkowski pisze:
+> Hi Andrzej,
+> 
+> On Thu 09 Nov 23, 12:27, Andrzej Pietrasiewicz wrote:
+>> Hi Paul,
+>>
+>> W dniu 31.10.2023 o 17:30, Benjamin Gaignard pisze:
+>>> Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+>>> This allows us to change how the number of buffers is computed in the
+>>> future.
+>>>
+>>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>>> Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+>>
+>> Given you've alaredy A-b, would you be ok with adding this sentence:
+>>
+>> "While at it, check the return value of vb2_get_buffer()."
+>>
+>> to the commit message body?
+> 
+> Not only do I agree, but because this is done in a function returning void,
+> you could even:
+> 
+> if (WARN_ON(!vb))
+> 	continue;
+> 
+> so that it doesn't go completely unnoticed.
+> 
+> What do you think?
+> 
 
->  3 files changed, 168 insertions(+)
->  create mode 100644 drivers/of/hw_prober.c
->
-> diff --git a/drivers/of/Kconfig b/drivers/of/Kconfig
-> index da9826accb1b..269d20d51936 100644
-> --- a/drivers/of/Kconfig
-> +++ b/drivers/of/Kconfig
-> @@ -102,4 +102,17 @@ config OF_OVERLAY
->  config OF_NUMA
->         bool
->
-> +config HW_PROBER
-> +       bool "Hardware Prober driver"
-> +       select I2C
+I'd ask Benjamin.
 
-You should not select I2C, but enable/disable I2C functionality based
-on it being enabled.
+But my take on the direction of changes is that ultimately
+there will be "holes" in the array of allocated buffers (hence the
+bitmap to track which slots are used and which are not). In other words,
+getting a NULL sometimes will be an expected situation, and a WARN() will
+not be appropriate for an expected situation.
 
-> +       select OF_DYNAMIC
-> +       help
-> +         Some devices will have multiple drop-in options for one compone=
-nt.
-> +         In many cases the different options are indistinguishable by th=
-e
-> +         kernel without actually probing each possible option.
-> +
-> +         This driver is meant to handle the probing of such components, =
-and
-> +         update the running device tree such that the correct variant is
-> +         made available.
-> +
->  endif # OF
-> diff --git a/drivers/of/Makefile b/drivers/of/Makefile
-> index eff624854575..ed3875cdc554 100644
-> --- a/drivers/of/Makefile
-> +++ b/drivers/of/Makefile
-> @@ -12,6 +12,7 @@ obj-$(CONFIG_OF_RESERVED_MEM) +=3D of_reserved_mem.o
->  obj-$(CONFIG_OF_RESOLVE)  +=3D resolver.o
->  obj-$(CONFIG_OF_OVERLAY) +=3D overlay.o
->  obj-$(CONFIG_OF_NUMA) +=3D of_numa.o
-> +obj-$(CONFIG_HW_PROBER) +=3D hw_prober.o
->
->  ifdef CONFIG_KEXEC_FILE
->  ifdef CONFIG_OF_FLATTREE
-> diff --git a/drivers/of/hw_prober.c b/drivers/of/hw_prober.c
-> new file mode 100644
-> index 000000000000..442da6eff896
-> --- /dev/null
-> +++ b/drivers/of/hw_prober.c
-> @@ -0,0 +1,154 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * hw_prober.c - Hardware prober driver
-> + *
-> + * Copyright (c) 2023 Google LLC
-> + */
-> +
-> +#include <linux/array_size.h>
-> +#include <linux/i2c.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +
-> +#define DRV_NAME       "hw_prober"
-> +
-> +/**
-> + * struct hw_prober_entry - Holds an entry for the hardware prober
-> + *
-> + * @compatible:        compatible string to match against the machine
-> + * @prober:    prober function to call when machine matches
-> + * @data:      extra data for the prober function
-> + */
-> +struct hw_prober_entry {
-> +       const char *compatible;
-> +       int (*prober)(struct platform_device *pdev, const void *data);
-> +       const void *data;
-> +};
-> +
-> +/*
-> + * Some devices, such as Google Hana Chromebooks, are produced by multip=
-le
-> + * vendors each using their preferred components. This prober assumes su=
-ch
-> + * drop-in parts are on dedicated I2C busses, have non-conflicting addre=
-sses,
-> + * and can be directly probed by seeing which address responds without n=
-eeding
-> + * regulators or GPIOs being enabled or toggled.
-> + */
-> +static int i2c_component_prober(struct platform_device *pdev, const void=
- *data)
-> +{
-> +       const char *node_name =3D data;
-> +       struct device_node *node, *i2c_node;
-> +       struct i2c_adapter *i2c;
-> +       int ret =3D 0;
-> +
-> +       node =3D of_find_node_by_name(NULL, node_name);
-> +       if (!node)
-> +               return dev_err_probe(&pdev->dev, -ENODEV, "Could not find=
- %s device node\n",
-> +                                    node_name);
-> +
-> +       i2c_node =3D of_get_next_parent(node);
-> +       if (strcmp(i2c_node->name, "i2c")) {
+@Benjamin?
 
-We have functions for comparing node names, use them and don't access
-->name directly.
+Regards,
 
-> +               of_node_put(i2c_node);
-> +               return dev_err_probe(&pdev->dev, -EINVAL, "%s device isn'=
-t on I2C bus\n",
-> +                                    node_name);
-> +       }
-> +
-> +       for_each_child_of_node(i2c_node, node) {
-> +               if (!of_node_name_prefix(node, node_name))
-> +                       continue;
-> +               if (!of_device_is_fail(node)) {
-> +                       /* device tree has component already enabled */
+Andrzej
 
-This isn't quite right if there's a disabled device. To check 'is
-enabled', you just need to use of_device_is_available().
+> Cheers,
+> 
+> Paul
+> 
+>> @Benjamin:
+>>
+>> With this change, you can add my
+>>
+>> Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+>>
+>>> CC: Maxime Ripard <mripard@kernel.org>
+>>> ---
+>>>    drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 9 +++++++--
+>>>    drivers/staging/media/sunxi/cedrus/cedrus_h265.c | 9 +++++++--
+>>>    2 files changed, 14 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+>>> index dfb401df138a..3e2843ef6cce 100644
+>>> --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+>>> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+>>> @@ -653,8 +653,13 @@ static void cedrus_h264_stop(struct cedrus_ctx *ctx)
+>>>    	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+>>> -	for (i = 0; i < vq->num_buffers; i++) {
+>>> -		buf = vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
+>>> +	for (i = 0; i < vb2_get_num_buffers(vq); i++) {
+>>> +		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
+>>> +
+>>> +		if (!vb)
+>>> +			continue;
+>>> +
+>>> +		buf = vb2_to_cedrus_buffer(vb);
+>>>    		if (buf->codec.h264.mv_col_buf_size > 0) {
+>>>    			dma_free_attrs(dev->dev,
+>>> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+>>> index fc9297232456..52e94c8f2f01 100644
+>>> --- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+>>> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+>>> @@ -869,8 +869,13 @@ static void cedrus_h265_stop(struct cedrus_ctx *ctx)
+>>>    	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+>>> -	for (i = 0; i < vq->num_buffers; i++) {
+>>> -		buf = vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
+>>> +	for (i = 0; i < vb2_get_num_buffers(vq); i++) {
+>>> +		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
+>>> +
+>>> +		if (!vb)
+>>> +			continue;
+>>> +
+>>> +		buf = vb2_to_cedrus_buffer(vb);
+>>>    		if (buf->codec.h265.mv_col_buf_size > 0) {
+>>>    			dma_free_attrs(dev->dev,
+>>
+> 
+> 
+> _______________________________________________
+> Kernel mailing list -- kernel@mailman.collabora.com
+> To unsubscribe send an email to kernel-leave@mailman.collabora.com
 
-> +                       of_node_put(node);
-> +                       of_node_put(i2c_node);
-> +                       return 0;
-> +               }
-> +       }
-> +
-> +       i2c =3D of_get_i2c_adapter_by_node(i2c_node);
-> +       if (!i2c) {
-> +               of_node_put(i2c_node);
-> +               return dev_err_probe(&pdev->dev, -EPROBE_DEFER, "Couldn't=
- get I2C adapter\n");
-> +       }
-> +
-> +       for_each_child_of_node(i2c_node, node) {
-
-The I2C core will walk the devices too. Perhaps if that saves off a
-list of failed devices, then we don't need to walk the nodes again.
-
-> +               struct property *prop;
-> +               union i2c_smbus_data data;
-> +               u32 addr;
-> +
-> +               if (!of_node_name_prefix(node, node_name))
-> +                       continue;
-> +               if (of_property_read_u32(node, "reg", &addr))
-> +                       continue;
-> +               if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C_S=
-MBUS_BYTE, &data) < 0)
-> +                       continue;
-> +
-> +               dev_info(&pdev->dev, "Enabling %pOF\n", node);
-> +
-> +               prop =3D kzalloc(sizeof(*prop), GFP_KERNEL);
-> +               if (!prop) {
-> +                       ret =3D -ENOMEM;
-> +                       of_node_put(node);
-> +                       break;
-> +               }
-> +
-> +               prop->name      =3D "status";
-> +               prop->length    =3D 5;
-> +               prop->value     =3D "okay";
-> +
-> +               /* Found a device that is responding */
-> +               ret =3D of_update_property(node, prop);
-
-Use the changeset API instead and make an update flavor of
-of_changeset_add_prop_string().
-
-> +               if (ret)
-> +                       kfree(prop);
-> +
-> +               of_node_put(node);
-> +               break;
-> +       }
-> +
-> +       i2c_put_adapter(i2c);
-> +       of_node_put(i2c_node);
-> +
-> +       return ret;
-> +}
-> +
-> +static const struct hw_prober_entry hw_prober_platforms[] =3D {
-> +       { .compatible =3D "google,hana", .prober =3D i2c_component_prober=
-, .data =3D "touchscreen" },
-> +       { .compatible =3D "google,hana", .prober =3D i2c_component_prober=
-, .data =3D "trackpad" },
-
-Not generic code. Needs to be somewhere else.
-
-> +};
-> +
-> +static int hw_prober_probe(struct platform_device *pdev)
-> +{
-> +       for (int i =3D 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
-> +               if (of_machine_is_compatible(hw_prober_platforms[i].compa=
-tible)) {
-> +                       int ret;
-> +
-> +                       ret =3D hw_prober_platforms[i].prober(pdev, hw_pr=
-ober_platforms[i].data);
-> +                       if (ret)
-> +                               return ret;
-> +               }
-> +
-> +       return 0;
-> +}
-> +
-> +static struct platform_driver hw_prober_driver =3D {
-> +       .probe  =3D hw_prober_probe,
-> +       .driver =3D {
-> +               .name =3D DRV_NAME,
-> +       },
-> +};
-> +
-> +static int __init hw_prober_driver_init(void)
-> +{
-> +       struct platform_device *pdev;
-> +       int ret;
-> +
-> +       ret =3D platform_driver_register(&hw_prober_driver);
-> +       if (ret)
-> +               return ret;
-> +
-> +       pdev =3D platform_device_register_simple(DRV_NAME, -1, NULL, 0);
-
-This should be dependent on platforms that need it, not everyone. IOW,
-this is where checking for "google,hana" belongs.
-
-
-Rob
 
