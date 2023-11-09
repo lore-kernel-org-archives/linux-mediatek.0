@@ -4,70 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20492C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 15:00:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9570C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 15:14:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L8MX/CWsJpRioPdRo9KXW/czQDBUa5D8abQNyyRU3js=; b=YGffk7YNl2z9D8M2dp2R+bmALv
-	N9cDgxKeXmmT3+ZNppZ86gxBdtPcYdTjTygzVLy29zwL7sJzCP4hkaA2RkgpfwOnacypdUMvnKajo
-	hbsKPKTQepqR27gyS83XPFlYqXbEp67PvWwpN91Q4totqUWNJnXe/+GX4YJ+DpnIzR+XlUENnBOkd
-	VRAFtDi1domq3HI5aoMztnEYW9xdCawLHJflvTXZMYJLQRyLs34Irt3X5jWAm3fU8Nyq2ZkQGlgoF
-	ugKPNezVR5QpBH1G6pC8/xfQnBKgSBhlWMKdttoVHeA2Dd25pps191Z98svmpwI7yj/RZwJTyJNwA
-	G49vlsUQ==;
+	bh=jYYwk09pvFCfw5gx9REKdZlXnAH9VL/iW8tmM+0dLFM=; b=luotBqOZfgDL6S5pkqPfg7fekp
+	22dTrIx9gOFp31MLaZnpuCwvnVZX6dfY0CoIXaNICMeqc0bMPneFR/T/KyZpYpZ43tOouB2YsOG3m
+	ePnHgF4BAOGtsvkJUHbYkLjZ/ION3lR0iGnEahWbG6gIycz80tHqrMkoXKa5ngKXuMgkZrjYb35vl
+	uE0/7kVCzzGX+/sOBmbkNpxUpWAEXzm9c/GefuSAnLaebnj6s8KRmsxPyjXO5BKL5Aj4hte5y4W8E
+	eD+4ybmJL4PyiOTAE+6g891EAiZ96kB3n3sDaGL3jpvYPDAuXpAelkGIGd67gaH84E8wJ7lKS/ImA
+	jkkykG/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r16Vq-006XC1-1n;
-	Thu, 09 Nov 2023 15:00:06 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r16jP-006Ysp-1M;
+	Thu, 09 Nov 2023 15:14:07 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r16Vl-006XAV-0g;
-	Thu, 09 Nov 2023 15:00:02 +0000
-Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 876C1660741E;
-	Thu,  9 Nov 2023 14:59:57 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699541998;
-	bh=QqR7WPB+/Ya2aRUzfOvGGvpjOokjJ1EE8CvZQdCtRc8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Nh7d1LMKIeIN1PuXQGQ0zMOWkQn0ovCI0hogX7dRL0hIodAnUpsBVN068K/luitTD
-	 5H9d8brps2q1xdXfEGl7S8VcSBc45k0BHueDkVNJDRpBdbl2eZgvp0hmzzhmSdcGAz
-	 DPtxawusYLeJDCZEanUhfwqrjCRgmEiHqjOTXP1gAlm/GREWwA1qQ+dU5Srf6UvAmS
-	 iwkQy7LIMPt2Jn3gbH6KDB+siDm4PB+BL/vkoSVRUtUUn/LolBkw62glgPUF+kwMo2
-	 8cjG97dQ2noCfAnzdYa/GfQ0EHRNek+/IaQ2RA/NcaaDSAiJAOxg5+YdKoxZ4aR9ek
-	 39GOh/3WAnlCw==
-Message-ID: <9af3cedd-1722-4bdf-a95c-15853cafb247@collabora.com>
-Date: Thu, 9 Nov 2023 15:59:54 +0100
+	id 1r16jM-006Yr2-0T;
+	Thu, 09 Nov 2023 15:14:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id D86C1CE127F;
+	Thu,  9 Nov 2023 15:14:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 202A7C433C9;
+	Thu,  9 Nov 2023 15:14:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1699542841;
+	bh=FU2kTWEV/iC5NrY2xfbnKAFEU4M/r009NlocXokOA4g=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=OwhUAHTP7XFEW9APt8lfsU+L6kwlPSy/LDJoLUFi60vwGMaP+dV92h2wR1o+d5i44
+	 vi4H0U3nJnPAufn0ze87xlh4cmjPUkhWp6wjFgvvL5LgcV2pwA9VV8KRbSzAdgdxrl
+	 xz0nPd5fY3cNYmrtfRoXytUbMge50nUBZIBD1oTvTzhHIkAUBcy9HNTXCH1bOt0pzI
+	 vxlK+A4jke1SOGOMyR3uWxHZvIJjQd2Dqip+8C9yaIvHLyCGNd3W7vq4YJZtnaDhg5
+	 gLeJ77QWcNL2fg8A6Zv6Bnf3NcBXyHCwAyoILeS1DqE83QdBasm/0YsVxRt4RA07kr
+	 o6CT8HG2u4MWA==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5079f9675c6so1265498e87.2;
+        Thu, 09 Nov 2023 07:14:01 -0800 (PST)
+X-Gm-Message-State: AOJu0YzsGGIeMjm/VHaQigDug979ZKUoYtaP211lK271mPhOq9cPWLSs
+	/d2FvAn8ZOGwGHth7mNO6hArZDC6eVWS9Q1xkA==
+X-Google-Smtp-Source: AGHT+IFB6x1gr32VeAyFyy5yY/wT4lO3/ubJla/ZBhOhYyGEqasIDyXQZSSE6pubpoWAO+rGp7sbHnZP7sdHy9aZGiY=
+X-Received: by 2002:a19:f502:0:b0:509:47ba:3160 with SMTP id
+ j2-20020a19f502000000b0050947ba3160mr1396690lfb.56.1699542839133; Thu, 09 Nov
+ 2023 07:13:59 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 50/56] media: verisilicon: vp9: Allow to change
- resolution while streaming
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-51-benjamin.gaignard@collabora.com>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <20231031163104.112469-51-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20231109100606.1245545-1-wenst@chromium.org> <20231109100606.1245545-3-wenst@chromium.org>
+In-Reply-To: <20231109100606.1245545-3-wenst@chromium.org>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Thu, 9 Nov 2023 09:13:46 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJgUNcuXqtzHKdz5FdbxsrnLeZpgq-F+E21BvYS9qL0xg@mail.gmail.com>
+Message-ID: <CAL_JsqJgUNcuXqtzHKdz5FdbxsrnLeZpgq-F+E21BvYS9qL0xg@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 2/7] of: Introduce hardware prober driver
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Frank Rowand <frowand.list@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	andriy.shevchenko@linux.intel.com, Jiri Kosina <jikos@kernel.org>, 
+	linus.walleij@linaro.org, broonie@kernel.org, gregkh@linuxfoundation.org, 
+	hdegoede@redhat.com, james.clark@arm.com, james@equiv.tech, 
+	keescook@chromium.org, rafael@kernel.org, tglx@linutronix.de, 
+	Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+	Johan Hovold <johan@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_070001_408845_8500599C 
-X-CRM114-Status: GOOD (  18.80  )
+X-CRM114-CacheID: sfid-20231109_071404_526785_E6F670AB 
+X-CRM114-Status: GOOD (  54.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,69 +90,286 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-W dniu 31.10.2023 o 17:30, Benjamin Gaignard pisze:
-> Remove all checks that prohibit to set a new format while streaming.
-> This allow to change dynamically the resolution if the pixel format
-> remains the same.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-
-Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-
-> CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-> CC: Philipp Zabel <p.zabel@pengutronix.de>
+On Thu, Nov 9, 2023 at 4:06=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> wr=
+ote:
+>
+> Some devices are designed and manufactured with some components having
+> multiple drop-in replacement options. These components are often
+> connected to the mainboard via ribbon cables, having the same signals
+> and pin assignments across all options. These may include the display
+> panel and touchscreen on laptops and tablets, and the trackpad on
+> laptops. Sometimes which component option is used in a particular device
+> can be detected by some firmware provided identifier, other times that
+> information is not available, and the kernel has to try to probe each
+> device.
+>
+> This change attempts to make the "probe each device" case cleaner. The
+> current approach is to have all options added and enabled in the device
+> tree. The kernel would then bind each device and run each driver's probe
+> function. This works, but has been broken before due to the introduction
+> of asynchronous probing, causing multiple instances requesting "shared"
+> resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
+> time, with only one instance succeeding. Work arounds for these include
+> moving the pinmux to the parent I2C controller, using GPIO hogs or
+> pinmux settings to keep the GPIO pins in some fixed configuration, and
+> requesting the interrupt line very late. Such configurations can be seen
+> on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
+> Lenovo Thinkpad 13S.
+>
+> Instead of this delicate dance between drivers and device tree quirks,
+> this change introduces a simple I2C component prober. For any given
+> class of devices on the same I2C bus, it will go through all of them,
+> doing a simple I2C read transfer and see which one of them responds.
+> It will then enable the device that responds.
+>
+> This requires some minor modifications in the existing device tree.
+> The status for all the device nodes for the component options must be
+> set to "failed-needs-probe-xxx". This makes it clear that some mechanism
+> is needed to enable one of them, and also prevents the prober and device
+> drivers running at the same time.
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > ---
->   .../media/platform/verisilicon/hantro_v4l2.c  | 24 +++----------------
->   1 file changed, 3 insertions(+), 21 deletions(-)
-> 
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> index f0d8b165abcd..27a1e77cca38 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -514,25 +514,14 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
->   		return ret;
->   
->   	if (!ctx->is_encoder) {
-> -		struct vb2_queue *peer_vq;
-> -
->   		/*
->   		 * In order to support dynamic resolution change,
->   		 * the decoder admits a resolution change, as long
-> -		 * as the pixelformat remains. Can't be done if streaming.
-> -		 */
-> -		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
-> -		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
-> -			return -EBUSY;
-> -		/*
-> -		 * Since format change on the OUTPUT queue will reset
-> -		 * the CAPTURE queue, we can't allow doing so
-> -		 * when the CAPTURE queue has buffers allocated.
-> +		 * as the pixelformat remains.
->   		 */
-> -		peer_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
-> -					  V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-> -		if (vb2_is_busy(peer_vq))
-> +		if (vb2_is_streaming(vq) && pix_mp->pixelformat != ctx->src_fmt.pixelformat) {
->   			return -EBUSY;
-> +		}
->   	} else {
->   		/*
->   		 * The encoder doesn't admit a format change if
-> @@ -577,15 +566,8 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
->   static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
->   			      struct v4l2_pix_format_mplane *pix_mp)
->   {
-> -	struct vb2_queue *vq;
->   	int ret;
->   
-> -	/* Change not allowed if queue is busy. */
-> -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
-> -			     V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-> -	if (vb2_is_busy(vq))
-> -		return -EBUSY;
-> -
->   	if (ctx->is_encoder) {
->   		struct vb2_queue *peer_vq;
->   
+>  drivers/of/Kconfig     |  13 ++++
+>  drivers/of/Makefile    |   1 +
+>  drivers/of/hw_prober.c | 154 +++++++++++++++++++++++++++++++++++++++++
 
+Not sure about having this in drivers/of/, but fine for now... Really,
+the I2C bus stuff should be in the I2C core with the rest of the code
+that knows how to parse I2C bus nodes.
+
+>  3 files changed, 168 insertions(+)
+>  create mode 100644 drivers/of/hw_prober.c
+>
+> diff --git a/drivers/of/Kconfig b/drivers/of/Kconfig
+> index da9826accb1b..269d20d51936 100644
+> --- a/drivers/of/Kconfig
+> +++ b/drivers/of/Kconfig
+> @@ -102,4 +102,17 @@ config OF_OVERLAY
+>  config OF_NUMA
+>         bool
+>
+> +config HW_PROBER
+> +       bool "Hardware Prober driver"
+> +       select I2C
+
+You should not select I2C, but enable/disable I2C functionality based
+on it being enabled.
+
+> +       select OF_DYNAMIC
+> +       help
+> +         Some devices will have multiple drop-in options for one compone=
+nt.
+> +         In many cases the different options are indistinguishable by th=
+e
+> +         kernel without actually probing each possible option.
+> +
+> +         This driver is meant to handle the probing of such components, =
+and
+> +         update the running device tree such that the correct variant is
+> +         made available.
+> +
+>  endif # OF
+> diff --git a/drivers/of/Makefile b/drivers/of/Makefile
+> index eff624854575..ed3875cdc554 100644
+> --- a/drivers/of/Makefile
+> +++ b/drivers/of/Makefile
+> @@ -12,6 +12,7 @@ obj-$(CONFIG_OF_RESERVED_MEM) +=3D of_reserved_mem.o
+>  obj-$(CONFIG_OF_RESOLVE)  +=3D resolver.o
+>  obj-$(CONFIG_OF_OVERLAY) +=3D overlay.o
+>  obj-$(CONFIG_OF_NUMA) +=3D of_numa.o
+> +obj-$(CONFIG_HW_PROBER) +=3D hw_prober.o
+>
+>  ifdef CONFIG_KEXEC_FILE
+>  ifdef CONFIG_OF_FLATTREE
+> diff --git a/drivers/of/hw_prober.c b/drivers/of/hw_prober.c
+> new file mode 100644
+> index 000000000000..442da6eff896
+> --- /dev/null
+> +++ b/drivers/of/hw_prober.c
+> @@ -0,0 +1,154 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * hw_prober.c - Hardware prober driver
+> + *
+> + * Copyright (c) 2023 Google LLC
+> + */
+> +
+> +#include <linux/array_size.h>
+> +#include <linux/i2c.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +
+> +#define DRV_NAME       "hw_prober"
+> +
+> +/**
+> + * struct hw_prober_entry - Holds an entry for the hardware prober
+> + *
+> + * @compatible:        compatible string to match against the machine
+> + * @prober:    prober function to call when machine matches
+> + * @data:      extra data for the prober function
+> + */
+> +struct hw_prober_entry {
+> +       const char *compatible;
+> +       int (*prober)(struct platform_device *pdev, const void *data);
+> +       const void *data;
+> +};
+> +
+> +/*
+> + * Some devices, such as Google Hana Chromebooks, are produced by multip=
+le
+> + * vendors each using their preferred components. This prober assumes su=
+ch
+> + * drop-in parts are on dedicated I2C busses, have non-conflicting addre=
+sses,
+> + * and can be directly probed by seeing which address responds without n=
+eeding
+> + * regulators or GPIOs being enabled or toggled.
+> + */
+> +static int i2c_component_prober(struct platform_device *pdev, const void=
+ *data)
+> +{
+> +       const char *node_name =3D data;
+> +       struct device_node *node, *i2c_node;
+> +       struct i2c_adapter *i2c;
+> +       int ret =3D 0;
+> +
+> +       node =3D of_find_node_by_name(NULL, node_name);
+> +       if (!node)
+> +               return dev_err_probe(&pdev->dev, -ENODEV, "Could not find=
+ %s device node\n",
+> +                                    node_name);
+> +
+> +       i2c_node =3D of_get_next_parent(node);
+> +       if (strcmp(i2c_node->name, "i2c")) {
+
+We have functions for comparing node names, use them and don't access
+->name directly.
+
+> +               of_node_put(i2c_node);
+> +               return dev_err_probe(&pdev->dev, -EINVAL, "%s device isn'=
+t on I2C bus\n",
+> +                                    node_name);
+> +       }
+> +
+> +       for_each_child_of_node(i2c_node, node) {
+> +               if (!of_node_name_prefix(node, node_name))
+> +                       continue;
+> +               if (!of_device_is_fail(node)) {
+> +                       /* device tree has component already enabled */
+
+This isn't quite right if there's a disabled device. To check 'is
+enabled', you just need to use of_device_is_available().
+
+> +                       of_node_put(node);
+> +                       of_node_put(i2c_node);
+> +                       return 0;
+> +               }
+> +       }
+> +
+> +       i2c =3D of_get_i2c_adapter_by_node(i2c_node);
+> +       if (!i2c) {
+> +               of_node_put(i2c_node);
+> +               return dev_err_probe(&pdev->dev, -EPROBE_DEFER, "Couldn't=
+ get I2C adapter\n");
+> +       }
+> +
+> +       for_each_child_of_node(i2c_node, node) {
+
+The I2C core will walk the devices too. Perhaps if that saves off a
+list of failed devices, then we don't need to walk the nodes again.
+
+> +               struct property *prop;
+> +               union i2c_smbus_data data;
+> +               u32 addr;
+> +
+> +               if (!of_node_name_prefix(node, node_name))
+> +                       continue;
+> +               if (of_property_read_u32(node, "reg", &addr))
+> +                       continue;
+> +               if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C_S=
+MBUS_BYTE, &data) < 0)
+> +                       continue;
+> +
+> +               dev_info(&pdev->dev, "Enabling %pOF\n", node);
+> +
+> +               prop =3D kzalloc(sizeof(*prop), GFP_KERNEL);
+> +               if (!prop) {
+> +                       ret =3D -ENOMEM;
+> +                       of_node_put(node);
+> +                       break;
+> +               }
+> +
+> +               prop->name      =3D "status";
+> +               prop->length    =3D 5;
+> +               prop->value     =3D "okay";
+> +
+> +               /* Found a device that is responding */
+> +               ret =3D of_update_property(node, prop);
+
+Use the changeset API instead and make an update flavor of
+of_changeset_add_prop_string().
+
+> +               if (ret)
+> +                       kfree(prop);
+> +
+> +               of_node_put(node);
+> +               break;
+> +       }
+> +
+> +       i2c_put_adapter(i2c);
+> +       of_node_put(i2c_node);
+> +
+> +       return ret;
+> +}
+> +
+> +static const struct hw_prober_entry hw_prober_platforms[] =3D {
+> +       { .compatible =3D "google,hana", .prober =3D i2c_component_prober=
+, .data =3D "touchscreen" },
+> +       { .compatible =3D "google,hana", .prober =3D i2c_component_prober=
+, .data =3D "trackpad" },
+
+Not generic code. Needs to be somewhere else.
+
+> +};
+> +
+> +static int hw_prober_probe(struct platform_device *pdev)
+> +{
+> +       for (int i =3D 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
+> +               if (of_machine_is_compatible(hw_prober_platforms[i].compa=
+tible)) {
+> +                       int ret;
+> +
+> +                       ret =3D hw_prober_platforms[i].prober(pdev, hw_pr=
+ober_platforms[i].data);
+> +                       if (ret)
+> +                               return ret;
+> +               }
+> +
+> +       return 0;
+> +}
+> +
+> +static struct platform_driver hw_prober_driver =3D {
+> +       .probe  =3D hw_prober_probe,
+> +       .driver =3D {
+> +               .name =3D DRV_NAME,
+> +       },
+> +};
+> +
+> +static int __init hw_prober_driver_init(void)
+> +{
+> +       struct platform_device *pdev;
+> +       int ret;
+> +
+> +       ret =3D platform_driver_register(&hw_prober_driver);
+> +       if (ret)
+> +               return ret;
+> +
+> +       pdev =3D platform_device_register_simple(DRV_NAME, -1, NULL, 0);
+
+This should be dependent on platforms that need it, not everyone. IOW,
+this is where checking for "google,hana" belongs.
+
+
+Rob
 
