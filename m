@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECCF6C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 08:33:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33EB5C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Nov 2023 09:05:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aZVnc9AgDV6+iECXJWjMTt3cI2AykKcbaOkGhYYgovc=; b=s76vjsXCJ7HHISPRrvIExhZ2/h
-	/5R+u07geJuGnVLiTaXOCRh80tTUuhDkz4/hOHqQMRKCBhTekKXXGkU1qNyBpBYzL7oCyWyKDn5Y8
-	mYGO+j78GfvzqeeO0u4aPquTZGQXd+Wv0nHyNtoG32tbFqoc7qR8IJixLdhPReTIUumvgIeLRlEB9
-	rTJaWorJkHF4wEkYd0wDWot8xrS/aoLCTAHYLsRs3DNboG/VTT3E/xMu/mNO4RqucSTUDU7kumy0G
-	vgOeLr2xFCMywbt44KvgxRKaasr8siObuWg5zXT0jHS0cQbaa/LvqYUHNU8hMgYHY9gvFdnZ33+B8
-	05KmGyuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5STUDR9dG9F4bDls8l1HrX2ScrOcWjiKUVV/Xpqcbyw=; b=mlw5gNBhHb2QHCJMjWMRcZEJxC
+	7cSYShFPwvVWqVdfxIZEHghsA94DL25tt+ses+yEEhPAj/Nre1lLElpyp9w23FKxcxPLHGnQvPDbH
+	NIb9Khzrr8//OH0wCZZRJFgc7ulOrvTvNA+YWD7T1YcI8QggfhzZTPcuATMjeGNDDEtdF83Dse3S1
+	JtITZTBgqJHQImgOxQjbXkJ+Db3bLBQT6mIkg7d/M78/rfWveYj+JmNFXUaSDVb5A3hCp3NL87Uhc
+	yYTXt70w4eQWQ2tBTh/PmYw2PT/WTgXDI4vMplnkUZGQsmBxDDfZ+N5ZnNGXAXbKzEkbWFF+Z+0qM
+	K4uhmOwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r10TF-005dVW-35;
-	Thu, 09 Nov 2023 08:33:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1r10yh-005j5w-0m;
+	Thu, 09 Nov 2023 09:05:31 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r10TD-005dUy-2R;
-	Thu, 09 Nov 2023 08:33:01 +0000
-X-UUID: 934272787eda11ee9b7791016c24628a-20231109
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aZVnc9AgDV6+iECXJWjMTt3cI2AykKcbaOkGhYYgovc=;
-	b=pgjJNeh7MswOwM/063ikvU7Tgb+CTxgvPjLAEUz+dn+RndVTzsPZAgmXHQpsh6jDzxO+hoN4hjo74oaTb43QLXipBc2degCTCjev3iVv+3Wi1rxxMU+wygkwGAOIZj/RPebC5MOFCrve0XlMd/dtkOjCsN6w2/vgXyeSKAZCG1M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:845c3f7c-0148-4fa3-b31c-30c74c58ebf8,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:364b77b,CLOUDID:b0813295-10ce-4e4b-85c2-c9b5229ff92b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 934272787eda11ee9b7791016c24628a-20231109
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yu-chang.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1183652009; Thu, 09 Nov 2023 01:32:53 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 9 Nov 2023 16:22:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 9 Nov 2023 16:22:02 +0800
-From: yu-chang.lee <yu-chang.lee@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>
-CC: Nathan Lu <nathan.lu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "yu-chang . lee"
-	<yu-chang.lee@mediatek.com>
-Subject: [PATCH 0/3] Migrate MT8188 VPPSYS 0/1 to mtk-mmsys driver
-Date: Thu, 9 Nov 2023 16:21:58 +0800
-Message-ID: <20231109082201.7698-1-yu-chang.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1r10yd-005j48-1i;
+	Thu, 09 Nov 2023 09:05:29 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4B68466073C9;
+	Thu,  9 Nov 2023 09:05:21 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699520723;
+	bh=VZujYMPKmLejiw85oagZfdMcNt6QF3HzE/oXVKwjZHU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=II7DCAcBHDtMNaI7+BirK5Re8/X8GRIN/JAsDBypjm+++Vj0AzHaioRWNUw/asGqY
+	 J0ykE7NMxnyVkGtS7cSmWJ8Z7F/UUerze5xNAfazPhKT/XJ6VBVTn3FoYNnp1uwX3l
+	 S13/fsKUtkJeQaQ/O8tTfZrRfdraOY9GesvwLT6mFzFfb7dQSgfyPt3O+js2D6boJn
+	 NaZKCwimUdtykWCv62Of/W86RQiZhaFeJKtNyQBfgZYhagr94Dtoka6jr208DRZMmL
+	 njtWtvcSBbLSu04UrbzN/bSwmtwb7ewBqCKk1xR7StVH+YtQP/Wao1Mvn69OqEV/ae
+	 6lHecDsIV78Pw==
+Message-ID: <3b6c474f-669d-4c6e-8d56-ea65958a3b48@collabora.com>
+Date: Thu, 9 Nov 2023 10:05:16 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] clock: mediatek: mt8173: Handle unallocated infracfg
+ clock data
+To: Alper Nebi Yasak <alpernebiyasak@gmail.com>, linux-kernel@vger.kernel.org
+Cc: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+ Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ Michael Turquette <mturquette@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org
+References: <20231108213734.140707-1-alpernebiyasak@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20231108213734.140707-1-alpernebiyasak@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_003259_813509_36C6EC25 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231109_010527_714757_8FA6C504 
+X-CRM114-Status: GOOD (  33.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,28 +78,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Il 08/11/23 22:33, Alper Nebi Yasak ha scritto:
+> The MT8173 infracfg clock driver does initialization in two steps, via a
+> CLK_OF_DECLARE_DRIVER declaration. However its early init function
+> doesn't get to run when it's built as a module, presumably since it's
+> not loaded by the time it would have been called by of_clk_init(). This
+> causes its second-step probe() to return -ENOMEM when trying to register
+> clocks, as the necessary clock_data struct isn't initialized by the
+> first step.
+> 
+> MT2701 and MT6797 clock drivers also use this mechanism, but they try to
+> allocate the necessary clock_data structure if missing in the second
+> step. Mimic that for the MT8173 infracfg clock as well to make it work
+> as a module.
+> 
+> Signed-off-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+> ---
+> I've tried adding cpumux support to clk-mtk.c then switching this over
+> to simple probe functions and it appears to work for me, though I don't
+> know clock systems enough to recognize if it's subtly broken instead.
+> That'd remove this piece of code, but this might still be worth applying
+> to backport to stable kernels.
+> 
+> If I'm reading things correctly, it looks like it would be possible to
+> add cpumux & pll & pllfh support to clk-mtk.c, then move most if not
+> every driver to simple probe, with one file per clock and module
+> support. How much of that is desirable? In what order do the parts need
+> to be registered?
+> 
 
-This series is to reflect VPPSYS' dependency on mtk-mmsys driver for
-mediatek MT8188 platform. The MT8188 VPPSYS 0/1 should be probed 
-from the "mtk-mmsys" driver, which then starts its own clock driver
-as the platform driver.
+Thing is, if (!infra_clk_data) at infracfg_probe time, then INFRA_CLK_13M==-ENOENT!
+If you do this, you should at least also send a devicetree commit that adds
 
-Refer to the suggestion in the following patch
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=796808
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=798392
+	clk13m: fixed-factor-clock-13m {
+		compatible = "fixed-factor-clock";
+		#clock-cells = <0>;
+		clocks = <&clk26m>;
+		clock-div = <2>;
+		clock-mult = <1>;
+		clock-output-names = "clk13m";
+	};
 
-yu-chang.lee (3):
-  soc: mediatek: mmsys: Add support for MT8188 VPPSYS
-  dt-bindings: clock: mediatek: Remove compatible for MT8188 VPPSYS
-  dt-bindings: arm:mediatek: mmsys: Add VPPSYS compatible for MT8188
+....otherwise this solution is incomplete! ;-)
 
- .../bindings/arm/mediatek/mediatek,mmsys.yaml        |  2 ++
- .../bindings/clock/mediatek,mt8188-clock.yaml        |  2 --
- drivers/soc/mediatek/mtk-mmsys.c                     | 12 ++++++++++++
- 3 files changed, 14 insertions(+), 2 deletions(-)
+Regarding the CPUMUX support, when I've restructured the MediaTek clocks, I've also
+been thinking about doing this, but decided not to do it because that'd be a check
+done on ~10 clock drivers per SoC, of which only one is expected to succeed... I
+see that as a waste of cycles at boot...
 
--- 
-2.18.0
+...but if anyone thinks otherwise, I'm fine with it...
+
+Anyway.
+
+Can you please fix the commit title to be consistent with the others and send a v2?
+
+In this case, that would be
+"clk: mediatek: mt8173-infracfg: Handle unallocated infracfg when module"
+
+P.S.: Good job!
+
+Cheers,
+Angelo
+
+>   drivers/clk/mediatek/clk-mt8173-infracfg.c | 12 +++++++++++-
+>   1 file changed, 11 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt8173-infracfg.c b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> index 2f2f074e231a..ecc8b0063ea5 100644
+> --- a/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> +++ b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> @@ -98,7 +98,17 @@ CLK_OF_DECLARE_DRIVER(mtk_infrasys, "mediatek,mt8173-infracfg",
+>   static int clk_mt8173_infracfg_probe(struct platform_device *pdev)
+>   {
+>   	struct device_node *node = pdev->dev.of_node;
+> -	int r;
+> +	int r, i;
+> +
+> +	if (!infra_clk_data) {
+> +		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
+> +		if (!infra_clk_data)
+> +			return -ENOMEM;
+> +	} else {
+> +		for (i = 0; i < CLK_INFRA_NR_CLK; i++)
+> +			if (infra_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
+> +				infra_clk_data->hws[i] = ERR_PTR(-ENOENT);
+> +	}
+>   
+>   	r = mtk_clk_register_gates(&pdev->dev, node, infra_gates,
+>   				   ARRAY_SIZE(infra_gates), infra_clk_data);
+> 
+> base-commit: 2220f68f4504aa1ccce0fac721ccdb301e9da32f
+
+
 
 
