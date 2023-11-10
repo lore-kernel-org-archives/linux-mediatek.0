@@ -4,91 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F8C5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 15:15:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC161C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 15:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AImaWoC/tXOEtHWLdz8sCITz8wYqENXhjXAG+qBs1Ww=; b=LEsEk1pG++r7TZlgG6I/D90iMi
-	irHFOFh7yzaeiHsGfipYU//m93UqzEtOVapCdV4ga2fY1HlI3uwLHKCP1nwgxOm7234i6KjChSUKd
-	RK+RJmhnsnsVtv1bBIBj27rpPjRa9NDvcZ3iwHYt6TNYk7yDp6UcREPukjfC4Nsu5DtfaE296NymI
-	XqXNl91iGdZ+CUm9r09MjQPXGX/1CBhmEXTRmVhkygPOx8A5R2gKW4hwRmEIC0LZ2gO2hdE6Ch6fv
-	d9CMHTtbthi1bDkz2GtR9x4xaG4lze7erBNeCwkXYFcTZGZXv87XDyIWamm8qQZfIUVpsnhDfZUKI
-	TEsiou9A==;
+	Content-Type:In-Reply-To:References:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q60cvDzUAK+1xfeayy1L5bVvq0mLnjZeOOvCKBuUzG0=; b=y6qf7yb5EiHyaKlm96ee54dEFb
+	uL081MKmbChDq3ZQ3noOfl0En4d4wpehT+/SOpHcirHYed82zOj72H9VQb1Nya8nLckbBB/aH5MR2
+	nyMthXCnGY4Se93p2GRSFU9X6wFhgYT7zA/wPWLfsjeV6+9E7uXImgDwpHWe1/65R+7wuKHdRNJHv
+	G4CcM0eXk7Gye+ku3PUbWo82Zrh96h0Dads/It6NL3fdovWyfgjeVdJpMAi0lb9jqKt+SP/FOhfg4
+	Rbm8HXoefIatyoKizsbRnZClgvMOHpDaSB2iTFMVncPWiJp5Dp6mEJyowCECLAJw9age4KQQ38IWM
+	WgmhbnXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1TDz-008zIP-36;
-	Fri, 10 Nov 2023 15:15:11 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1r1TJX-008zoQ-2o;
+	Fri, 10 Nov 2023 15:20:55 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1TDw-008zHe-37
+	id 1r1TJU-008zmt-1A
 	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Nov 2023 15:15:10 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-40891d38e3fso15014535e9.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Nov 2023 07:15:08 -0800 (PST)
+	Fri, 10 Nov 2023 15:20:53 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-53d8320f0easo3476916a12.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Nov 2023 07:20:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699629307; x=1700234107; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
+        d=linaro.org; s=google; t=1699629648; x=1700234448; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:references:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=AImaWoC/tXOEtHWLdz8sCITz8wYqENXhjXAG+qBs1Ww=;
-        b=oWuarvV5kUosB8UlQ7jHziwTP922YpC3t8Kz2G+3x0l1X5B3rdSQjvVwqfznPeegX9
-         sGaMYKQoke1nmObem19EDela4QKhrS19MRhVCfJ+3xPIVGhwbNRrpO8hs+KBNIZIGY3o
-         d0qQJyt/jw0wM+P4S0YcJ92+8IiXE+2ZhHz+uwjp8YUSfT33q4mhwfZ4jX3MdaVX5lHn
-         Dg2B12N9spQme1oSYS7aTvQUnnAta7OAF9kRiBVixio22JpJTyK5kZjlGZ2HbCTAM+B8
-         QweImJUNmD35JTMBXngCf8mAByoBjaaVhVF3MfT7fSONIg4kGMeAYrJvG1/Ry4XdPUTz
-         rovA==
+        bh=Q60cvDzUAK+1xfeayy1L5bVvq0mLnjZeOOvCKBuUzG0=;
+        b=IJv/KgYR7N6WErXZqAfnQsND1nasTPgs7WiO18Otc21JlHnqyuubkZMdh7sggVl206
+         8CTbU2Rd6vfiqzRzxKcjl1sycXkOacGOulya86lRcOQ4FEOONhPnYFsQ48uawVmLvnfd
+         Qx/XWa3Bpu2RwoYS6oHuQrHx7+Vcj+JWqz13WcjFn2CZDVVTb2OKAhlMoCdDMGmSoG3n
+         IrASgvgdOYHKtuxjqr1SfNDVjY//cZ86Nbbvq36kB/5paTHYh7p1638eyhxVfvrKSeY8
+         QN9vETzUngUMI+xChMv5uW7DCmOz5xlC6gLay1l+6DhGr+clG+agxAQN4MzBXjqV0VAV
+         E3xA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699629307; x=1700234107;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1699629648; x=1700234448;
+        h=content-transfer-encoding:in-reply-to:autocrypt:references:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AImaWoC/tXOEtHWLdz8sCITz8wYqENXhjXAG+qBs1Ww=;
-        b=kE0t4ExtZIHBzc5rxmpaGHuQmfHetOjr8qot6AGjS2sqPvcRSjaQFilYeoTUhmnBN/
-         fYJvXn2u1SGx15O3GKK5cme200C6uKKqJRqGu03NzAm733gL23pUbLI7/LYW1gGXPAG5
-         3iY+lN6aQQ9zbqxfioRuzcl3WlTe2+H1xd/V0J+WAlAgpc6+FTEo9UIvP3IsQ2rpf5z6
-         CliWl2dM2Az7Ti6f5DiERMKyzPvqdZ5bJEScLL2o1fYUSK2iEbSlQH/tTQAFDd4uRrDR
-         4RsjKKHDVtXndwShRVpbCDnfk3xx65gHEhrfPWGE6J5QyiuhmgQ4gqTB0PizISgij6p5
-         PWgA==
-X-Gm-Message-State: AOJu0Yx55tqKPxR5x/mU7LhHt5FF775Jf0C8M3hhdnrZSHFgiBWho+zL
-	7nXboB5NEv2ia435vGOex07YGw==
-X-Google-Smtp-Source: AGHT+IG1TYHHTG3svUv7jCY7QOVVGQjPbgYLHfFFQV1Vw2BWE1A9MFglG+K5Ly4wwt4fubC15YtD6w==
-X-Received: by 2002:a05:600c:4f52:b0:409:79cb:81a3 with SMTP id m18-20020a05600c4f5200b0040979cb81a3mr6913523wmq.30.1699629307312;
-        Fri, 10 Nov 2023 07:15:07 -0800 (PST)
+        bh=Q60cvDzUAK+1xfeayy1L5bVvq0mLnjZeOOvCKBuUzG0=;
+        b=Ml4pk7mBUtoLXHCGdj4BMTcje1uMjW2fPC5LViaM7tXl/sRObsp1O4lHQdowO7BJ0k
+         y0zLTkf+snXhAn6brYdDg6Fyyj3vmCoL5ygHI9BxNEqHs7/eprAYGxHj6fsA33o4XM+M
+         FIHUfUgFz6k/QgjhZh4RrSliSNiypbqZH+X/5ZFWRUJ8VkhNiXRvG6ScGigFPhVMuTFE
+         1B+at7VwUriD5pFFuHfzVYzVMG6UZ6ml1BU34gzsZLpiK0t2L3sJMUyYFSoxqXLb4C2J
+         Qm/8TXh3tK06K7yv/lXJ4nUAqDpDOHL8YJcNIV9xKofyTmdlULeLYkBt7iaHuDoxDaCS
+         icpw==
+X-Gm-Message-State: AOJu0YyFeMVDP3ZhDepN2jc08VjTyUUHR2IwHcykwlLzLahh3FCW8lGn
+	/X4hx598a2B2oDDLVm5dVe5i10kbYvb0wfQrhRg=
+X-Google-Smtp-Source: AGHT+IG8736pkNhNNdVrvSwcfmtDnAXVoUjv2Cj4/lEv2B3oApCfgwELeonWsFiocMNu9PYcPv1TFg==
+X-Received: by 2002:a50:d70d:0:b0:543:56c8:f84b with SMTP id t13-20020a50d70d000000b0054356c8f84bmr6961108edi.19.1699629648476;
+        Fri, 10 Nov 2023 07:20:48 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id be7-20020a05600c1e8700b004063c9f68f2sm5428398wmb.26.2023.11.10.07.15.05
+        by smtp.gmail.com with ESMTPSA id b98-20020a509f6b000000b00533dd4d2947sm1287058edf.74.2023.11.10.07.20.46
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Nov 2023 07:15:06 -0800 (PST)
-Message-ID: <6576d4a6-31fa-4780-9a8a-5a1d1974836f@linaro.org>
-Date: Fri, 10 Nov 2023 16:15:04 +0100
+        Fri, 10 Nov 2023 07:20:48 -0800 (PST)
+Message-ID: <fc52c1df-e414-49a9-a3a7-7a4ce45c403e@linaro.org>
+Date: Fri, 10 Nov 2023 16:20:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/2] dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988
  watchdog and toprgu
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Daniel Golle <daniel@makrotopia.org>,
  Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
  <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-watchdog@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <6912f6f406bc45674020681184f3eeca2f2cb63f.1699576174.git.daniel@makrotopia.org>
- <2678cb48-1d2b-47bc-9272-06d9aa140c58@collabora.com>
- <ZU47hV1i66WN8nZJ@makrotopia.org>
- <d7b72b3e-c8f4-4675-ae62-26f5ae576f0a@linaro.org>
- <ZU5A59KO8Y_Q97IG@makrotopia.org>
- <a56cfe76-ab03-4187-b6f1-04a5c3414e64@linaro.org>
- <ZU5DVNOmtyFwUTdC@makrotopia.org>
- <708046ae-a821-420c-959a-ab5cb712aa9e@linaro.org>
- <ZU5IcrjqQpwMopJC@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ <59629ec1-cc0c-4c5a-87cc-ea30d64ec191@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -133,12 +126,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <ZU5IcrjqQpwMopJC@makrotopia.org>
+In-Reply-To: <59629ec1-cc0c-4c5a-87cc-ea30d64ec191@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_071509_009412_8718CC4C 
-X-CRM114-Status: GOOD (  23.26  )
+X-CRM114-CacheID: sfid-20231110_072052_407726_2F8DC0A5 
+X-CRM114-Status: GOOD (  17.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,81 +146,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/11/2023 16:12, Daniel Golle wrote:
->>>>>>>>> diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>>>>>> new file mode 100644
->>>>>>>>> index 0000000000000..fa7c937505e08
->>>>>>>>> --- /dev/null
->>>>>>>>> +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>>>>>> @@ -0,0 +1,12 @@
->>>>>>>>> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->>>>>>>>> +
->>>>>>>>> +/* TOPRGU resets */
->>>>>>>>
->>>>>>>> The first reset is zero, the second reset is one.
->>>>>>>>
->>>>>>>> Where's the zero'th reset? :-)
->>>>>>>
->>>>>>> Currently the reset numbers represent the corresponding bit positions in
->>>>>>> the toprgu register, as this is how the mtk-wdt driver is organized.
->>>>>>>
->>>>>>> So there is probably something at bit 0, and also at bit 3~11 and
->>>>>>> maybe also 17~23, but it's unknown and may be added later once known
->>>>>>> and/or needed.
->>>>>>
->>>>>> There is no need to put register bits, which are not used by the driver,
->>>>>> in the bindings.
->>>>>
->>>>> There aren't. That's why there isn't a zero'th reset (and also not 3~11, 17~24).
->>>>>
->>>>> Or should the driver be reorganized to provide a mapping of logical to
->>>>> physical resets, and then have only the needed once present and start
->>>>> counting logical resets from 0? This is doable, of course, but it's a
->>>>> bit of effort just for the aesthetical goal of starting to count from
->>>>> zero and continous in header file.
->>>>>
->>>>> And, of course, chances are that other currently still unused bits
->>>>> will be needed at a later point which then would mean having to add
->>>>> them in at least 2 places (header file and mapping logical<->physical)
->>>>> where as currently it would just mean adding a line defining it in the
->>>>> header file.
->>>>
->>>> You can do it, but it's not what I wrote here. So bear with me:
->>>>
->>>> "There is no need to put register bits in the bindings."
+On 10/11/2023 09:09, Krzysztof Kozlowski wrote:
+> On 10/11/2023 01:30, Daniel Golle wrote:
+>> Add binding description for mediatek,mt7988-wdt.
 >>
->> No comments here, so I assume you agree with this.
-
-Here is the answer to...
-
->>
->>>>
->>>> You replied "There aren't", which I don't understand in this context. I
->>>> can be clearer:
->>>> Drop this hunk.
->>>
->>> So adding the file to include/dt-bindings/reset/ should go into a
->>> seperate patch? Because including it with the driver itself gave me
->>> a checkpath warning telling me that dt-bindings should go seperate,
->>> which is why I included it with the binding docs.
->>
->> No, I said the hunk should be dropped. Removed.
+>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+>> ---
 > 
-> I guess we are somehow misunderstanding each other.
-> Lets go with an example. I can put the header into a commit of its own,
-> just like commit
-> 5794dda109fc8 dt-bindings: reset: mt7986: Add reset-controller header file
-> https://lore.kernel.org/r/20220105100456.7126-2-sam.shih@mediatek.com
+> ...
 > 
-> Would that be acceptable? And if not, why?
+>> diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+>> new file mode 100644
+>> index 0000000000000..fa7c937505e08
+>> --- /dev/null
+>> +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+>> @@ -0,0 +1,12 @@
+>> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+>> +
+>> +/* TOPRGU resets */
+>> +#define MT7988_TOPRGU_SGMII0_GRST		1
+>> +#define MT7988_TOPRGU_SGMII1_GRST		2
+>> +#define MT7988_TOPRGU_XFI0_GRST			12
+>> +#define MT7988_TOPRGU_XFI1_GRST			13
+>> +#define MT7988_TOPRGU_XFI_PEXTP0_GRST		14
+>> +#define MT7988_TOPRGU_XFI_PEXTP1_GRST		15
+>> +#define MT7988_TOPRGU_XFI_PLL_GRST		16
+> 
+> IDs should start from 0 or 1 and increment by 1. If these are not IDs,
+> then you do not need them in the bindings.
+> 
+> Where is the driver change using these IDs?
 
-...this question.
+You nicely skipped my email and keep pushing the idea of putting this
+into separate patch.
 
-Again, whether this is separate patch - it is still hunk which I think
-should be removed. I gave the reason "why" in this mail thread and in
-multiple other discussions.
+No. Respond to received comments.
 
+> 
+>> +
+>> +#define MT7988_TOPRGU_SW_RST_NUM		24
+> 
+> Why 24? I see 7. Why having it in the bindings in the first place.
+> 
+> It's quite likely I asked the same question about other bindings for
+> Mediatek. I will be asking every time till this is fixed.
 
+No response to this, either.
 
 Best regards,
 Krzysztof
