@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ABC5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 16:03:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA14EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 17:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7LLLmKlkTqdbQdg/nQJ6XhAMm0kN7EMtZc4aqahAzZY=; b=uEjvfw8UMDUnAGZcRpLoVYX51L
-	wen1jHrOgwJoMcSoJBdWwgDIFHBiIt+93gyVbbOkxOXRRB1modKSJYfE02P3/C859/FR+XcbL5whM
-	O0Lq50eVEcC1MsDNn5ce5hR4SrDlvveL3Uu7FI6duh5+5kfGNkMmpqxaf7d0JRfjDANnQ+aRNmOn2
-	Um9znU8wK/Q0wBPaxggrl4g/HY+Nf0XqSmhCo/p7ANlAovh07/4PKo/e/9uuiRRsUeCIA4fJGhyCX
-	mIpDrca4jquiN7AqVYmjsR7fl6n3kBGcAnVDO1yzU6L2HlxzCydef5p5ZjlBOFKIyD0YVFBMCL2fH
-	AtE1Sevg==;
+	bh=uUukze0OUpu+W8N5/1/53AclrKSeBk112sSFme96dmg=; b=03YbMfL4E3lnngqxQ7KosG5tkM
+	RWf5G8d6XBHxGTpY2gcdr3eZZ9eulmOU0ojSAYK/OgCVk/b8eaqHDS3sRyq7Sjoyh8aowpwXg8sIX
+	I+8h2HsfWRejjca82PhUsRf5rgA3fwf5qWP1oNY+cK7Q9njzi55yih6524oAmTAn+YCf5ooRbnG09
+	XLfTID5IH+HYq3CKEwqcop4bOkcDjq/LFpNu5leOO0HKJ7t8MfmYPwtQP9D3feLfikEGjQrD3mVsY
+	ySmZ5j8P8RYcTCi3zQF7Zvh6bhvyJvUY/g2jocCaOBG5mIFLDYdIii56lwq0qJF7Od1ZpqWXCGTM9
+	FKYVh8cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Tz4-0093qC-2Y;
-	Fri, 10 Nov 2023 16:03:50 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1r1Uz8-0097FA-05;
+	Fri, 10 Nov 2023 17:07:58 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Tz2-0093p0-2R
-	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Nov 2023 16:03:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1699632226;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7LLLmKlkTqdbQdg/nQJ6XhAMm0kN7EMtZc4aqahAzZY=;
-	b=e2wWdzeG2j/4TQ8yJoJdg3i/7gtwc8UpDlJtBh3J1cG35p47nkrwI/VWE/y2ZyAYSoESc5
-	dQnM5fP6bhSqDryjBkCPau0lZk3lkB8GrN903kCIU8itfDpNxPl9AT1HNJVZ/sAc77R82t
-	R5DmpWKuq7XvYmpgqcLrBVsPzJpEIrw=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-139-UzdHz-rJN-C_1u5cphBx7g-1; Fri, 10 Nov 2023 11:03:41 -0500
-X-MC-Unique: UzdHz-rJN-C_1u5cphBx7g-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CF577185A786;
-	Fri, 10 Nov 2023 16:03:40 +0000 (UTC)
-Received: from fedora (unknown [10.72.120.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0B54240C6EB9;
-	Fri, 10 Nov 2023 16:03:32 +0000 (UTC)
-Date: Sat, 11 Nov 2023 00:03:26 +0800
-From: Ming Lei <ming.lei@redhat.com>
-To: ed.tsai@mediatek.com
-Cc: hch@lst.de, Jens Axboe <axboe@kernel.dk>,
+	id 1r1Uz3-0097ES-3B;
+	Fri, 10 Nov 2023 17:07:56 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1r1Uyl-0007Mv-3C;
+	Fri, 10 Nov 2023 17:07:36 +0000
+Date: Fri, 10 Nov 2023 17:07:31 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	wsd_upstream@mediatek.com, chun-hung.wu@mediatek.com,
-	casper.li@mediatek.com, will.shiu@mediatek.com,
-	light.hsieh@mediatek.com, linux-block@vger.kernel.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, ming.lei@redhat.com
-Subject: Re: [PATCH v2] block: limit the extract size to align queue limit
-Message-ID: <ZU5UTqnV4En0XBPB@fedora>
-References: <20231110051950.21972-1-ed.tsai@mediatek.com>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988
+ watchdog and toprgu
+Message-ID: <ZU5jU-T0m5QW4ZeF@makrotopia.org>
+References: <2678cb48-1d2b-47bc-9272-06d9aa140c58@collabora.com>
+ <ZU47hV1i66WN8nZJ@makrotopia.org>
+ <d7b72b3e-c8f4-4675-ae62-26f5ae576f0a@linaro.org>
+ <ZU5A59KO8Y_Q97IG@makrotopia.org>
+ <a56cfe76-ab03-4187-b6f1-04a5c3414e64@linaro.org>
+ <ZU5DVNOmtyFwUTdC@makrotopia.org>
+ <708046ae-a821-420c-959a-ab5cb712aa9e@linaro.org>
+ <ZU5IcrjqQpwMopJC@makrotopia.org>
+ <6576d4a6-31fa-4780-9a8a-5a1d1974836f@linaro.org>
+ <bb0ed593-082b-4edd-9a1e-78cccf796677@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231110051950.21972-1-ed.tsai@mediatek.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+In-Reply-To: <bb0ed593-082b-4edd-9a1e-78cccf796677@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_080348_889819_417AE9EF 
-X-CRM114-Status: GOOD (  29.83  )
+X-CRM114-CacheID: sfid-20231110_090754_026287_36A5799F 
+X-CRM114-Status: GOOD (  24.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,125 +80,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 10, 2023 at 01:19:49PM +0800, ed.tsai@mediatek.com wrote:
-> From: Ed Tsai <ed.tsai@mediatek.com>
+On Fri, Nov 10, 2023 at 04:21:35PM +0100, Krzysztof Kozlowski wrote:
+> On 10/11/2023 16:15, Krzysztof Kozlowski wrote:
+> >>>> So adding the file to include/dt-bindings/reset/ should go into a
+> >>>> seperate patch? Because including it with the driver itself gave me
+> >>>> a checkpath warning telling me that dt-bindings should go seperate,
+> >>>> which is why I included it with the binding docs.
+> >>>
+> >>> No, I said the hunk should be dropped. Removed.
+> >>
+> >> I guess we are somehow misunderstanding each other.
+> >> Lets go with an example. I can put the header into a commit of its own,
+> >> just like commit
+> >> 5794dda109fc8 dt-bindings: reset: mt7986: Add reset-controller header file
+> >> https://lore.kernel.org/r/20220105100456.7126-2-sam.shih@mediatek.com
+> >>
+> >> Would that be acceptable? And if not, why?
+> > 
+> > ...this question.
+
+... which you didn't answer. Sorry, but it's not helpful to be polemic
+or ironic in a code review involving non-native English speakers
+trying to understand each others.
+
+> > 
+> > Again, whether this is separate patch - it is still hunk which I think
+> > should be removed. I gave the reason "why" in this mail thread and in
+> > multiple other discussions.
 > 
-> When an application performs a large IO, it fills and submits multiple
-> full bios to the block layer. Referring to commit 07173c3ec276
-> ("block: enable multipage bvecs"), the full bio size is no longer fixed
-> at 1MB but can vary based on the physical memory layout.
-> 
-> The size of the full bio no longer aligns with the maximum IO size of
-> the queue. Therefore, in a 64MB read, you may see many unaligned bios
-> being submitted.
-> 
-> Executing the command to perform a 64MB read:
-> 
-> 	dd if=/data/test_file of=/dev/null bs=64m count=1 iflag=direct
-> 
-> It demonstrates the submission of numerous unaligned bios:
-> 
-> 	block_bio_queue: 254,52 R 2933336 + 2136
-> 	block_bio_queue: 254,52 R 2935472 + 2152
-> 	block_bio_queue: 254,52 R 2937624 + 2128
-> 	block_bio_queue: 254,52 R 2939752 + 2160
-> 
-> This patch limits the number of extract pages to ensure that we submit
-> the bio once we fill enough pages, preventing the block layer from
-> spliting small I/Os in between.
-> 
-> I performed the Antutu V10 Storage Test on a UFS 4.0 device, which
-> resulted in a significant improvement in the Sequential test:
-> 
-> Sequential Read (average of 5 rounds):
-> Original: 3033.7 MB/sec
-> Patched: 3520.9 MB/sec
-> 
-> Sequential Write (average of 5 rounds):
-> Original: 2225.4 MB/sec
-> Patched: 2800.3 MB/sec
-> 
-> Link: https://lore.kernel.org/linux-arm-kernel/20231025092255.27930-1-ed.tsai@mediatek.com/
-> Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
-> 
-> ---
->  block/bio.c | 17 ++++++++++++-----
->  1 file changed, 12 insertions(+), 5 deletions(-)
-> 
-> diff --git a/block/bio.c b/block/bio.c
-> index 816d412c06e9..8d3a112e68da 100644
-> --- a/block/bio.c
-> +++ b/block/bio.c
-> @@ -1227,8 +1227,10 @@ static int __bio_iov_iter_get_pages(struct bio *bio, struct iov_iter *iter)
->  	iov_iter_extraction_t extraction_flags = 0;
->  	unsigned short nr_pages = bio->bi_max_vecs - bio->bi_vcnt;
->  	unsigned short entries_left = bio->bi_max_vecs - bio->bi_vcnt;
-> +	struct block_device *bdev = bio->bi_bdev;
->  	struct bio_vec *bv = bio->bi_io_vec + bio->bi_vcnt;
->  	struct page **pages = (struct page **)bv;
-> +	ssize_t max_extract = UINT_MAX - bio->bi_iter.bi_size;
->  	ssize_t size, left;
->  	unsigned len, i = 0;
->  	size_t offset;
-> @@ -1242,7 +1244,7 @@ static int __bio_iov_iter_get_pages(struct bio *bio, struct iov_iter *iter)
->  	BUILD_BUG_ON(PAGE_PTRS_PER_BVEC < 2);
->  	pages += entries_left * (PAGE_PTRS_PER_BVEC - 1);
->  
-> -	if (bio->bi_bdev && blk_queue_pci_p2pdma(bio->bi_bdev->bd_disk->queue))
-> +	if (bdev && blk_queue_pci_p2pdma(bdev->bd_disk->queue))
->  		extraction_flags |= ITER_ALLOW_P2PDMA;
->  
->  	/*
-> @@ -1252,16 +1254,21 @@ static int __bio_iov_iter_get_pages(struct bio *bio, struct iov_iter *iter)
->  	 * result to ensure the bio's total size is correct. The remainder of
->  	 * the iov data will be picked up in the next bio iteration.
->  	 */
-> -	size = iov_iter_extract_pages(iter, &pages,
-> -				      UINT_MAX - bio->bi_iter.bi_size,
-> +	if (bdev && bio_op(bio) != REQ_OP_ZONE_APPEND) {
-> +		unsigned int max = queue_max_bytes(bdev_get_queue(bdev));
-> +
-> +		max_extract = bio->bi_iter.bi_size ?
-> +			max - bio->bi_iter.bi_size & (max - 1) : max;
-> +	}
-> +	size = iov_iter_extract_pages(iter, &pages, max_extract,
->  				      nr_pages, extraction_flags, &offset);
+> I gave you clear reasoning 7 hours ago:
+> https://lore.kernel.org/all/59629ec1-cc0c-4c5a-87cc-ea30d64ec191@linaro.org/
+> to which you did not respond.
 
-The above is just what I did in the 'slow path' of patch v2[1], and it can't work
-well for every extracting pages which is usually slow, and batching
-extracting pages should be done always, such as:
+Because it doesn't match anything existing regarding MediaTek reset
+drivers, and I was assuming there must be some kind of misunderstanding,
+which is why I replied to your later email in the same thread.
 
-1) build one ublk disk(suppose it is /dev/ublkb0) with max sectors of 32k:
+My assumption that the problem was merely having documentation and
+header combined in a single commit stems from the fact that a very
+similar patch for MT7986[1] was Ack'ed by Rob Herring about a year and
+a half ago; hence the rule you apply here may have always existed, but
+apparently then hasn't been applied in the past.
 
-- rublk add null --io-buf-size=16384 -q 2	[2]
+Literally *all* existing dt-binding headers for MediaTek SoCs follow a
+direct 1:1 mapping of reset bit in hardware and reset number in the
+header files. The driver is simple, all it cares about is the maximum
+number defined in the header (and I like that, because it makes it very
+easy to add new SoCs). At this point the abstraction needed to
+fulfill your request doesn't exist, not for any of the SoCs using
+mtk_wdt.c. It can be implemented, surely, it's a problem computers can
+solve. If that's what you (and current maintainers of that driver)
+would want me to implement, please say so clearly and spell it out.
 
-2) run 64KB IO
-
-fio --direct=1 --size=230G --bsrange=64k-64k --runtime=20 --numjobs=2 --ioengine=libaio \
-	--iodepth=64 --iodepth_batch_submit=64 --iodepth_batch_complete_min=64 --group_reporting=1 \
-	--filename=/dev/ublkb0 --name=/dev/ublkb0-test-randread --rw=randread
-
-In my local VM, read BW is dropped to 3709MB/s from 20GB/s in the above
-fio test with this patch.
-
-The point is that:
-
-1) bio size alignment is only needed in case of multiple bios
-
-2) bio size alignment is needed only when the current bio is approaching
-to become FULL
-
-3) with multiple bvec, it is hard to know how many pages can be held
-in bvecs beforehand
-
-In short, running every alignment is much less efficient.
+Also be clear about if all the other existing headers need to be
+converted, mappings for all SoCs created in the driver, ... all before
+support for MT7988 can go in?
+Or should the existing headers for other MediaTek SoCs remain
+untouched because they are already considered stable API or something?
 
 
-[1] https://lore.kernel.org/linux-block/202311100354.HYfqOQ7o-lkp@intel.com/T/#u
-[2] install rublk via `cargo install --version=^0.1 rublk` and
-CONFIG_BLK_DEV_UBLK is required
+Thank you for your patiente!
 
-Thanks, 
-Ming
 
+Daniel
+
+
+[1]: https://lore.kernel.org/all/Yd4uplioThv8eJJE@robh.at.kernel.org/
 
