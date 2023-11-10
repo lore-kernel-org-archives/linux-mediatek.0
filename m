@@ -4,138 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6E7AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 14:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E883EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 14:51:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cibIQr+/X8pBreupQ/CP91YPdzsodU5WiQdvS2Vhz4o=; b=K5LEIwoJTxhQtHrCaJ72zabZS5
-	9lxYL6e/kzpNi4scpzl2tr3NzzEDA+L2r4STKhVwLnMcpfn3PRGl1Whbs0Q1u4Sr1X2PmTcAq44n4
-	16q3K2NTCS3qCfJHUGBTimY5ESsptvE7MCeho5mLpmYMn/6l6nQq0YeVNJKavZxFNAG7MeFtRQI4G
-	7OUFeLA/QQCE6WsnXn5X/ytUN8BG5axByQUE1TVb/qUkXRyXZc6QTkBAF0RrmXsQ2J2QaeLtidVJf
-	1wzwqCSg5tDqmjByTJP2/DuZUY10mwMKfk336HyZDKerTHn5tRmyeXY7xxD4aCC4pgO/LWxNyA1dp
-	kWhJI4Ig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IMx4KUoW8ubpeDDKPtepBvoiDUW1FAh8CNowygPiDTU=; b=RkvRZJ6Q7Xve4iUPTEK9PkGMwD
+	TtfrcJw+VWjJkinZzK4brVn7sqccXyb1KV2qQt82nzTYBn27n5PH8EVS0n5N9wIMsKFtqm6WBqdFf
+	Q/iPbdKezq+q3pmvRCn3bdq4b3h8p9fYCZkYBHIPn0y/4/r8pS8406yC6pnY4zqwSv0Nbew+xcIHk
+	J15ocgLGfamDLvqZgCUQQga7MD/R01IL2tf4fF4uKr0aYVes/rwyQ6+VVPhfFOGKVCmd5aNjQekdE
+	QaiQlCjCug8u2MRI20aaVhiySnlLmy4qudcmym9ep1T2kAiZlzhP0nH4kHZdX2D0KryJb4q4mrf9x
+	w9rsoOdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Sm8-008wow-29;
-	Fri, 10 Nov 2023 14:46:24 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1r1Sqs-008xEF-2x;
+	Fri, 10 Nov 2023 14:51:18 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Sm4-008wo5-2a
-	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Nov 2023 14:46:22 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-408425c7c10so16008285e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Nov 2023 06:46:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699627577; x=1700232377; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=cibIQr+/X8pBreupQ/CP91YPdzsodU5WiQdvS2Vhz4o=;
-        b=U4xwCZ91shFxdL6kaUDAJcFQ6aSn+3kcAfJHG4U/1wiZEdRx+tJ2EhfbUARyN+pjHi
-         OdjnGHSH3D5c/57eQDjAKE0y9rcR7oOX/UXfS5fLZiJjcMaMlDQBiqnXjfgJyFqI9sD5
-         u846ouGgIgkLXQbVi9i/Jx4dTLMDwKeX5yZzUgwBbBnhaYue9Squg/o8b+ENeFd70iDW
-         v5DG3eSERrIjFtfNuMUYv+Y4g1//FQJEM4pQog25aRyHpYzd2SOeSn5YhgeoAfZejbeg
-         Y4BdhSIGikUAaepj1/CKd2RYjQLls9piYVgh+lrh7f2iAtRGJjwUjx2Ji5Bj6hYJxjr6
-         Q4DA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699627577; x=1700232377;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cibIQr+/X8pBreupQ/CP91YPdzsodU5WiQdvS2Vhz4o=;
-        b=owKuJa66C+wgk3Lu20XKmJloFHqL19Rs/M4Pn1WODgQuOtNb5nw1G4I035QIpM8qDs
-         Dd0FaLqmTQB4cWy4C84dTNph4F7SWtunblkQcE/U4noO6H6t7XUdyDqAG5TBhLCRqxzK
-         r5KmeX5Ii2VYdc6PdbwCtGoF3mPf/Dht/2jVZVcNqZsZbk/p6e7Oyy+2WtETCulpINFE
-         B6UcJm1EmGGfk0Y+FDCju40crcIa1f5ZnFtJHFgGe4AvrHpc9lSdtEGJvUklfGyn0z2m
-         3bG8G3xFwz2S2p72+YE9FZwsDfzW8g1S0FMsWarALbvHGZukqPQ3pxuxweEQ6TdvkVPy
-         izng==
-X-Gm-Message-State: AOJu0YxB+QlU4k2Udaq3swN6RagVEuGnyAuMbef/7FmLKXAPi0uRBrjD
-	54QsQLZH7HBcAuEqsj0YowwEKg==
-X-Google-Smtp-Source: AGHT+IHSDa3PRv8GqbJCthgpgxOHM8T5bClMnnw8Ek09GlOpcXeTBzOUCVvgJ8pRSgZ2CoAyjcajlQ==
-X-Received: by 2002:a05:600c:46d1:b0:405:49aa:d578 with SMTP id q17-20020a05600c46d100b0040549aad578mr7455486wmo.37.1699627577463;
-        Fri, 10 Nov 2023 06:46:17 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id n18-20020a05600c3b9200b0040839fcb217sm3319547wms.8.2023.11.10.06.46.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Nov 2023 06:46:16 -0800 (PST)
-Message-ID: <a56cfe76-ab03-4187-b6f1-04a5c3414e64@linaro.org>
-Date: Fri, 10 Nov 2023 15:46:14 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1r1Sqq-008xDi-1U;
+	Fri, 10 Nov 2023 14:51:17 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1r1Sqf-0006vh-2c;
+	Fri, 10 Nov 2023 14:51:05 +0000
+Date: Fri, 10 Nov 2023 14:51:00 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH 1/2] dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988
  watchdog and toprgu
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Message-ID: <ZU5DVNOmtyFwUTdC@makrotopia.org>
 References: <6912f6f406bc45674020681184f3eeca2f2cb63f.1699576174.git.daniel@makrotopia.org>
  <2678cb48-1d2b-47bc-9272-06d9aa140c58@collabora.com>
  <ZU47hV1i66WN8nZJ@makrotopia.org>
  <d7b72b3e-c8f4-4675-ae62-26f5ae576f0a@linaro.org>
  <ZU5A59KO8Y_Q97IG@makrotopia.org>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <ZU5A59KO8Y_Q97IG@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <a56cfe76-ab03-4187-b6f1-04a5c3414e64@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a56cfe76-ab03-4187-b6f1-04a5c3414e64@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_064620_837543_8D15C71C 
-X-CRM114-Status: GOOD (  27.04  )
+X-CRM114-CacheID: sfid-20231110_065116_523395_A14B382E 
+X-CRM114-Status: GOOD (  36.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,85 +76,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/11/2023 15:40, Daniel Golle wrote:
-> On Fri, Nov 10, 2023 at 03:20:53PM +0100, Krzysztof Kozlowski wrote:
->> On 10/11/2023 15:17, Daniel Golle wrote:
->>> On Fri, Nov 10, 2023 at 12:56:18PM +0100, AngeloGioacchino Del Regno wrote:
->>>> Il 10/11/23 01:30, Daniel Golle ha scritto:
->>>>> Add binding description for mediatek,mt7988-wdt.
->>>>>
->>>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>>>> ---
->>>>>   .../bindings/watchdog/mediatek,mtk-wdt.yaml          |  1 +
->>>>>   include/dt-bindings/reset/mediatek,mt7988-resets.h   | 12 ++++++++++++
->>>>>   2 files changed, 13 insertions(+)
->>>>>   create mode 100644 include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>>
->>>>> diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
->>>>> index cc502838bc398..8d2520241e37f 100644
->>>>> --- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
->>>>> +++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
->>>>> @@ -25,6 +25,7 @@ properties:
->>>>>             - mediatek,mt6735-wdt
->>>>>             - mediatek,mt6795-wdt
->>>>>             - mediatek,mt7986-wdt
->>>>> +          - mediatek,mt7988-wdt
->>>>>             - mediatek,mt8183-wdt
->>>>>             - mediatek,mt8186-wdt
->>>>>             - mediatek,mt8188-wdt
->>>>> diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>> new file mode 100644
->>>>> index 0000000000000..fa7c937505e08
->>>>> --- /dev/null
->>>>> +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>> @@ -0,0 +1,12 @@
->>>>> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->>>>> +
->>>>> +/* TOPRGU resets */
->>>>
->>>> The first reset is zero, the second reset is one.
->>>>
->>>> Where's the zero'th reset? :-)
->>>
->>> Currently the reset numbers represent the corresponding bit positions in
->>> the toprgu register, as this is how the mtk-wdt driver is organized.
->>>
->>> So there is probably something at bit 0, and also at bit 3~11 and
->>> maybe also 17~23, but it's unknown and may be added later once known
->>> and/or needed.
->>
->> There is no need to put register bits, which are not used by the driver,
->> in the bindings.
+On Fri, Nov 10, 2023 at 03:46:14PM +0100, Krzysztof Kozlowski wrote:
+> On 10/11/2023 15:40, Daniel Golle wrote:
+> > On Fri, Nov 10, 2023 at 03:20:53PM +0100, Krzysztof Kozlowski wrote:
+> >> On 10/11/2023 15:17, Daniel Golle wrote:
+> >>> On Fri, Nov 10, 2023 at 12:56:18PM +0100, AngeloGioacchino Del Regno wrote:
+> >>>> Il 10/11/23 01:30, Daniel Golle ha scritto:
+> >>>>> Add binding description for mediatek,mt7988-wdt.
+> >>>>>
+> >>>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> >>>>> ---
+> >>>>>   .../bindings/watchdog/mediatek,mtk-wdt.yaml          |  1 +
+> >>>>>   include/dt-bindings/reset/mediatek,mt7988-resets.h   | 12 ++++++++++++
+> >>>>>   2 files changed, 13 insertions(+)
+> >>>>>   create mode 100644 include/dt-bindings/reset/mediatek,mt7988-resets.h
+> >>>>>
+> >>>>> diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> >>>>> index cc502838bc398..8d2520241e37f 100644
+> >>>>> --- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> >>>>> +++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> >>>>> @@ -25,6 +25,7 @@ properties:
+> >>>>>             - mediatek,mt6735-wdt
+> >>>>>             - mediatek,mt6795-wdt
+> >>>>>             - mediatek,mt7986-wdt
+> >>>>> +          - mediatek,mt7988-wdt
+> >>>>>             - mediatek,mt8183-wdt
+> >>>>>             - mediatek,mt8186-wdt
+> >>>>>             - mediatek,mt8188-wdt
+> >>>>> diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> >>>>> new file mode 100644
+> >>>>> index 0000000000000..fa7c937505e08
+> >>>>> --- /dev/null
+> >>>>> +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> >>>>> @@ -0,0 +1,12 @@
+> >>>>> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+> >>>>> +
+> >>>>> +/* TOPRGU resets */
+> >>>>
+> >>>> The first reset is zero, the second reset is one.
+> >>>>
+> >>>> Where's the zero'th reset? :-)
+> >>>
+> >>> Currently the reset numbers represent the corresponding bit positions in
+> >>> the toprgu register, as this is how the mtk-wdt driver is organized.
+> >>>
+> >>> So there is probably something at bit 0, and also at bit 3~11 and
+> >>> maybe also 17~23, but it's unknown and may be added later once known
+> >>> and/or needed.
+> >>
+> >> There is no need to put register bits, which are not used by the driver,
+> >> in the bindings.
+> > 
+> > There aren't. That's why there isn't a zero'th reset (and also not 3~11, 17~24).
+> > 
+> > Or should the driver be reorganized to provide a mapping of logical to
+> > physical resets, and then have only the needed once present and start
+> > counting logical resets from 0? This is doable, of course, but it's a
+> > bit of effort just for the aesthetical goal of starting to count from
+> > zero and continous in header file.
+> > 
+> > And, of course, chances are that other currently still unused bits
+> > will be needed at a later point which then would mean having to add
+> > them in at least 2 places (header file and mapping logical<->physical)
+> > where as currently it would just mean adding a line defining it in the
+> > header file.
 > 
-> There aren't. That's why there isn't a zero'th reset (and also not 3~11, 17~24).
+> You can do it, but it's not what I wrote here. So bear with me:
 > 
-> Or should the driver be reorganized to provide a mapping of logical to
-> physical resets, and then have only the needed once present and start
-> counting logical resets from 0? This is doable, of course, but it's a
-> bit of effort just for the aesthetical goal of starting to count from
-> zero and continous in header file.
+> "There is no need to put register bits in the bindings."
 > 
-> And, of course, chances are that other currently still unused bits
-> will be needed at a later point which then would mean having to add
-> them in at least 2 places (header file and mapping logical<->physical)
-> where as currently it would just mean adding a line defining it in the
-> header file.
+> You replied "There aren't", which I don't understand in this context. I
+> can be clearer:
+> Drop this hunk.
 
-You can do it, but it's not what I wrote here. So bear with me:
-
-"There is no need to put register bits in the bindings."
-
-You replied "There aren't", which I don't understand in this context. I
-can be clearer:
-Drop this hunk.
+So adding the file to include/dt-bindings/reset/ should go into a
+seperate patch? Because including it with the driver itself gave me
+a checkpath warning telling me that dt-bindings should go seperate,
+which is why I included it with the binding docs.
 
 > 
-> A quick looks at all the other headers in
-> include/dt-binding/reset/mt*-resets.h also shows that currently all of
-> them have unused bits and e.g. infracfg on MT7986 starts counting from
-> 6.
-
-Best regards,
-Krzysztof
-
+> > 
+> > A quick looks at all the other headers in
+> > include/dt-binding/reset/mt*-resets.h also shows that currently all of
+> > them have unused bits and e.g. infracfg on MT7986 starts counting from
+> > 6.
+> 
+> Best regards,
+> Krzysztof
+> 
+> 
 
