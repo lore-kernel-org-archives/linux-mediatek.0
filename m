@@ -4,57 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF0E0C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 00:30:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38823C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 01:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OTbpKvQmZvQRTB0xOPyvktBEEiwJFAjRng6FoiikXPQ=; b=TCuwBRuxPF69166caCo3loWmOG
-	39Q44+M7NOkDSA2GxH/F9Y4U5Vf/StT4lDTiZhG3B4hmGExKjj3SDUeccwcIFxsr4jpR6ht7gdduw
-	qDDW7iL4d/k8yDvb2CqNj/xTR44B2kZxud0+8alKfuzZZNaUMiJTJHD1Lqbf/ATWm4YVS6blm1Hw0
-	LndAaitqLzSmfy9+8IzvLsz503fmHeoHF0zRT5fp6Thirw8Ybi+hmDVnraPGlHeWwb+pNuDsgq+15
-	S//Ta/yJDWNxNrXjsW3qn9lO9+f+AGR+CfuBZMaEr9UcZTtHDtQ9F7Mrcti3j3NBPvFNrzToQ1S8r
-	M9aUCIbw==;
+	bh=LwLaIgMGWJSJFkr+2QiUxV9wT496qyWwMkmiQeFkrzA=; b=ok4JEhRq7JcQqepCuA0ajqtWHi
+	SG7G+eMdI76ITEJHpqoxP1gs5hyZIas/OleMNc5OA4EpUDord5ceuNaTv2bfpbE18OHPxkUiLg1ki
+	x07fwcgnYvLH6MfUe5gF6Vr/cZTv4lyxv7Lut0dJ+M8ADtCM4KLGH1j29FEIVkFnceNp6oUOtQYaa
+	p1pEm3qu59v+mGE47+yBqYTQsQc+pgdBIRGT7UnEAASRZn76Zn64zHwKSKQDwK1Qp8QaPllYnLX2b
+	LSEC5+qKkN7dMHBq2YsZx1cygbfW5QJEjPKLo6J5x+oLrT1AsyPWUrYinQqOigmm1TzSBSE5Fk/Ut
+	45kgvXNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1FQC-007WY4-1q;
-	Fri, 10 Nov 2023 00:30:52 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1r1GLb-007adh-03;
+	Fri, 10 Nov 2023 01:30:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1FQ9-007WWy-2C;
-	Fri, 10 Nov 2023 00:30:51 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1r1FPz-00041m-2U;
-	Fri, 10 Nov 2023 00:30:39 +0000
-Date: Fri, 10 Nov 2023 00:30:36 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/2] watchdog: mediatek: mt7988: add wdt support
-Message-ID: <ddb5b6ca88165aa69f73fe2804eedd0231d8d9e7.1699576174.git.daniel@makrotopia.org>
-References: <6912f6f406bc45674020681184f3eeca2f2cb63f.1699576174.git.daniel@makrotopia.org>
+	id 1r1GLY-007acj-2F;
+	Fri, 10 Nov 2023 01:30:09 +0000
+X-UUID: aa534b7a7f6811ee9b7791016c24628a-20231109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LwLaIgMGWJSJFkr+2QiUxV9wT496qyWwMkmiQeFkrzA=;
+	b=jkMz74ilxxBQnU1Jowy7OJpCrgiO4UuC9KTmUS3wkxl7aYyJkhvvuZ9LDBdZ/DrH1JuL4pf6FNlpxh7e9kowRnXasVaexpvSzMcEUCjBRiajXIaMMxhL/ri/4J4HrrEipPD1pUbEKlahNPcQ248uB1jVjT+YuR40HLdUwCo0OIg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:7b715020-1f69-4475-ab60-e97477ef250b,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:364b77b,CLOUDID:65dde35f-c89d-4129-91cb-8ebfae4653fc,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: aa534b7a7f6811ee9b7791016c24628a-20231109
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <stuart.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1131204619; Thu, 09 Nov 2023 18:30:00 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 10 Nov 2023 09:29:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 10 Nov 2023 09:29:24 +0800
+From: Stuart Lee <stuart.lee@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, Stuart Lee <stuart.lee@mediatek.com>,
+	Lancelot Wu <lancelot.wu@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+	<stable@vger.kernel.org>
+Subject: [PATCH 1/1] drm/mediatek: Fix access violation in mtk_drm_crtc_dma_dev_get
+Date: Fri, 10 Nov 2023 09:29:14 +0800
+Message-ID: <20231110012914.14884-2-stuart.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231110012914.14884-1-stuart.lee@mediatek.com>
+References: <20231110012914.14884-1-stuart.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6912f6f406bc45674020681184f3eeca2f2cb63f.1699576174.git.daniel@makrotopia.org>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_163049_722515_67B742FB 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20231109_173008_740754_0799EED4 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,160 +90,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for watchdog and reset generator unit of the MediaTek
-MT7988 SoC.
+Add error handling to check NULL input in
+mtk_drm_crtc_dma_dev_get function.
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+While display path is not configured correctly, none of crtc is
+established. So the caller of mtk_drm_crtc_dma_dev_get may pass
+input parameter *crtc as NULL, Which may cause coredump when
+we try to get the container of NULL pointer.
+
+Fixes: cb1d6bcca542 ("drm/mediatek: Add dma dev get function")
+Signed-off-by: Stuart Lee <stuart.lee@mediatek.com>
+Cc: stable@vger.kernel.org
 ---
- drivers/watchdog/mtk_wdt.c | 56 +++++++++++++++++++++++++++++++++++++-
- 1 file changed, 55 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index b2330b16b497a..b98b8c29735aa 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -12,6 +12,7 @@
- #include <dt-bindings/reset/mt2712-resets.h>
- #include <dt-bindings/reset/mediatek,mt6795-resets.h>
- #include <dt-bindings/reset/mt7986-resets.h>
-+#include <dt-bindings/reset/mediatek,mt7988-resets.h>
- #include <dt-bindings/reset/mt8183-resets.h>
- #include <dt-bindings/reset/mt8186-resets.h>
- #include <dt-bindings/reset/mt8188-resets.h>
-@@ -58,6 +59,8 @@
- #define WDT_SWSYSRST		0x18U
- #define WDT_SWSYS_RST_KEY	0x88000000
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index c277b9fae950..047c9a31d306 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -921,7 +921,14 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
  
-+#define WDT_SWSYSRST_EN		0xfc
-+
- #define DRV_NAME		"mtk-wdt"
- #define DRV_VERSION		"1.0"
- 
-@@ -71,44 +74,85 @@ struct mtk_wdt_dev {
- 	struct reset_controller_dev rcdev;
- 	bool disable_wdt_extrst;
- 	bool reset_by_toprgu;
-+	bool has_swsysrst_en;
- };
- 
- struct mtk_wdt_data {
- 	int toprgu_sw_rst_num;
-+	bool has_swsysrst_en;
- };
- 
- static const struct mtk_wdt_data mt2712_data = {
- 	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = false,
- };
- 
- static const struct mtk_wdt_data mt6795_data = {
- 	.toprgu_sw_rst_num = MT6795_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = false,
- };
- 
- static const struct mtk_wdt_data mt7986_data = {
- 	.toprgu_sw_rst_num = MT7986_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = false,
-+};
-+
-+static const struct mtk_wdt_data mt7988_data = {
-+	.toprgu_sw_rst_num = MT7988_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = true,
- };
- 
- static const struct mtk_wdt_data mt8183_data = {
- 	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = false,
- };
- 
- static const struct mtk_wdt_data mt8186_data = {
- 	.toprgu_sw_rst_num = MT8186_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = false,
- };
- 
- static const struct mtk_wdt_data mt8188_data = {
- 	.toprgu_sw_rst_num = MT8188_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = false,
- };
- 
- static const struct mtk_wdt_data mt8192_data = {
- 	.toprgu_sw_rst_num = MT8192_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = false,
- };
- 
- static const struct mtk_wdt_data mt8195_data = {
- 	.toprgu_sw_rst_num = MT8195_TOPRGU_SW_RST_NUM,
-+	.has_swsysrst_en = false,
- };
- 
-+static int toprgu_reset_sw_enable(struct reset_controller_dev *rcdev,
-+				  unsigned long id, bool enable)
-+{
-+	unsigned int tmp;
-+	unsigned long flags;
-+	struct mtk_wdt_dev *data =
-+		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
-+
-+	if (!data->has_swsysrst_en)
-+		return 0;
-+
-+	spin_lock_irqsave(&data->lock, flags);
-+
-+	tmp = readl(data->wdt_base + WDT_SWSYSRST_EN);
-+	if (enable)
-+		tmp |= BIT(id);
-+	else
-+		tmp &= ~BIT(id);
-+
-+	writel(tmp, data->wdt_base + WDT_SWSYSRST_EN);
-+
-+	spin_unlock_irqrestore(&data->lock, flags);
-+
-+	return 0;
-+}
-+
- static int toprgu_reset_update(struct reset_controller_dev *rcdev,
- 			       unsigned long id, bool assert)
+ struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
  {
-@@ -135,13 +179,20 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
- static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
- 			       unsigned long id)
- {
-+	int ret;
+-	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
++	struct mtk_drm_crtc *mtk_crtc = NULL;
 +
-+	ret = toprgu_reset_sw_enable(rcdev, id, true);
-+	if (ret)
-+		return ret;
++	if (!crtc)
++		return NULL;
 +
- 	return toprgu_reset_update(rcdev, id, true);
++	mtk_crtc = to_mtk_crtc(crtc);
++	if (!mtk_crtc)
++		return NULL;
+ 
+ 	return mtk_crtc->dma_dev;
  }
- 
- static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
- 				 unsigned long id)
- {
--	return toprgu_reset_update(rcdev, id, false);
-+	toprgu_reset_update(rcdev, id, false);
-+	return toprgu_reset_sw_enable(rcdev, id, false);
- }
- 
- static int toprgu_reset(struct reset_controller_dev *rcdev,
-@@ -406,6 +457,8 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 						       wdt_data->toprgu_sw_rst_num);
- 		if (err)
- 			return err;
-+
-+		mtk_wdt->has_swsysrst_en = wdt_data->has_swsysrst_en;
- 	}
- 
- 	mtk_wdt->disable_wdt_extrst =
-@@ -444,6 +497,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
- 	{ .compatible = "mediatek,mt6589-wdt" },
- 	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
- 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
-+	{ .compatible = "mediatek,mt7988-wdt", .data = &mt7988_data },
- 	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
- 	{ .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
- 	{ .compatible = "mediatek,mt8188-wdt", .data = &mt8188_data },
 -- 
-2.42.1
+2.18.0
+
 
