@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D31BC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 11:04:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA402C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 11:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q8xM6mqCOwX6jg1+OYeVcLIX8mNESZ6ZlG9Sq/zsqbk=; b=CF8Qg+PMAka676trM6tagwZnT+
-	34B1G5R0xnLG5PDtYPLz5xM3vP2h0XGn941fYIlkEbdIobq21y0+yKdZurzE5TV+bTSqNkQzkS6Tw
-	VnRGo5d8K0199ka9M/VuOWTGLDUOx5JyGwb1xF7Ifm/usrSWuIU4X5KRObJ8uFu6rUvB8aovHG6p8
-	+O4qkC0aOt5WHqos11XolD/5njSbUTknM9iNbsYwaFixV89HGnjaPhCk54CrFYxDR3seGuyapsBFS
-	XhVedYcWUIxMZvpwT3hJ5NDPpNtPiv/Qu1xlNXrZNRHhJNcTPG0mHB4OSJ63jauokXo8BYGEmEzZm
-	d/MNv9lg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5QQazbvunFC4r998xwUAin8AEYLxCp8q/EwkmBPO2ZM=; b=BIPinQ0H0cfh9DlRVq9c2MS+j/
+	1s0nDkeoaPo7wIw0HyV8XAWy0qYHZC+2Hod9P1JAhfPEIg8IBBta8D75tWj651JjpHNdZ23RxLfuc
+	cazI57oqgLl77V6D2i+pXVOZucv19Zu7G8DllC0JflJgj9PGGtd0K/K3theR8be1cFUweM6CLp/V7
+	lGl432/1fFolCBFxMQBJ7RpxeOsiKurqe9Abn5T6UwS3unLBYmKfcUKpFHKwtCt57AFAbuX0kxqfE
+	ZPbXUbQPUVzZ8vrcWFzkpqGJBNqwaDMY5KXoTXm7FAUzXRBh4ScWv7wXgrT1hq++QBV4BCAi4RLUH
+	BKlyGJig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1PJ0-008Lod-1S;
-	Fri, 10 Nov 2023 11:04:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r1Q6v-008WiH-1q;
+	Fri, 10 Nov 2023 11:55:41 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1PIw-008LnJ-00;
-	Fri, 10 Nov 2023 11:04:04 +0000
-Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
+	id 1r1Q6r-008Wcv-2l;
+	Fri, 10 Nov 2023 11:55:39 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EC78B66073EB;
-	Fri, 10 Nov 2023 11:03:53 +0000 (GMT)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3821866073D6;
+	Fri, 10 Nov 2023 11:55:32 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699614235;
-	bh=IlFF4hLVYQMy+8z6m7boQ1emEGxM3/fBp3D4sqFY4lo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=O5qOOfkbHwk1EQ79MoiHJUqkRlyLWF59KLiv1aw0WWhGJJ1igR1uGZtohHN0HL8fB
-	 EniGr8zsuLvPLB61+ZBiWTyoufc/iPdUzGCivPmO0wJQg2zbOSaWOxrH/gW78Rk3Zj
-	 e5xDfDQlYjYjwv7HFdNkzibpmDNwpytUEdRm0k2SaoeqmkgwSU0yg3rGvD7Z7YRoVT
-	 hWUmU1Q4jRrs0nZPeKgVlvBEXYF5XmUJIGWz1icdoLxp0zWngiwA/cASOsdqWlEdY7
-	 ZSCVe2KuerHlMq1X7IDv2CHnyq5W5Nqwb/9Br4x6doJqrNs0OlXEyJ54IQSUf2hOqh
-	 3rGPJxP7piJMg==
-Message-ID: <ca386f5c-34b2-4515-99ea-975b009b6628@collabora.com>
-Date: Fri, 10 Nov 2023 12:03:50 +0100
+	s=mail; t=1699617333;
+	bh=38yk6YYYVJElR7zLD5WCKypqClwX0XCjMvdTtIW7UUY=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=j2HO9PT8RWkPtNRS8PtpYBxn3IuQzDgf6neTs/Uzn/JEGoGJRWLbGhRUAx/Tit+gN
+	 M6hy63IbVfDDm5gbDANRpIUziwAWbhLYHq6F8pwqkHLPH/+rdLmoBAwcLIRQ5z8J1Q
+	 nZ0BRrbmvnUOlS3oDmd4nNrCBdaUb4Iu6Cmu+sa3ZGGtyEhCEwPGmvDOkFi8GLVty8
+	 sfAk+sb50KY/tA/h6ZihhdJu6we30NIUN2iyRe2K8sCuDG+YPWoPXbkbx2Nyybts7W
+	 Su23RLZb4UaIL4EPJ+Ed2ABMyvDgcBhmNqhMiyj63RrvN6CASgTGkr5RcEQed/UMf2
+	 0O6NlE+W8aGFg==
+Message-ID: <58b551f2-2d0b-4432-b1fd-edc690f13e4c@collabora.com>
+Date: Fri, 10 Nov 2023 12:55:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v15 30/56] media: test-drivers: Stop direct calls to queue
- num_buffers field
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com,
- Daniel Almeida <daniel.almeida@collabora.com>
-References: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
- <20231109163512.179524-31-benjamin.gaignard@collabora.com>
- <0b79bb25-2e44-4a6d-b306-76477a2c8a08@collabora.com>
- <84f22803-bd25-4985-a17c-b38bd738b487@collabora.com>
+Subject: Re: [PATCH 2/2] watchdog: mediatek: mt7988: add wdt support
+To: Daniel Golle <daniel@makrotopia.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <6912f6f406bc45674020681184f3eeca2f2cb63f.1699576174.git.daniel@makrotopia.org>
+ <ddb5b6ca88165aa69f73fe2804eedd0231d8d9e7.1699576174.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <84f22803-bd25-4985-a17c-b38bd738b487@collabora.com>
+In-Reply-To: <ddb5b6ca88165aa69f73fe2804eedd0231d8d9e7.1699576174.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_030402_308903_0C93667C 
-X-CRM114-Status: GOOD (  21.75  )
+X-CRM114-CacheID: sfid-20231110_035538_173920_1D7237BB 
+X-CRM114-Status: GOOD (  24.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,205 +81,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-W dniu 10.11.2023 o 10:55, Benjamin Gaignard pisze:
+Il 10/11/23 01:30, Daniel Golle ha scritto:
+> Add support for watchdog and reset generator unit of the MediaTek
+> MT7988 SoC.
 > 
-> Le 10/11/2023 à 10:35, Andrzej Pietrasiewicz a écrit :
->> Hi Benjamin,
->>
->> W dniu 9.11.2023 o 17:34, Benjamin Gaignard pisze:
->>> Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
->>> This allows us to change how the number of buffers is computed in the
->>> future.
->>> If 'min_buffers_needed' is set remove useless checks in queue setup
->>> functions.
->>>
->>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->>> CC: Daniel Almeida <daniel.almeida@collabora.com>
->>> ---
->>>   drivers/media/test-drivers/visl/visl-dec.c         | 4 ++--
->>>   drivers/media/test-drivers/vivid/vivid-meta-cap.c  | 3 ---
->>>   drivers/media/test-drivers/vivid/vivid-meta-out.c  | 5 +++--
->>>   drivers/media/test-drivers/vivid/vivid-touch-cap.c | 5 +++--
->>>   drivers/media/test-drivers/vivid/vivid-vbi-cap.c   | 3 ---
->>>   drivers/media/test-drivers/vivid/vivid-vbi-out.c   | 3 ---
->>>   drivers/media/test-drivers/vivid/vivid-vid-cap.c   | 3 ---
->>>   drivers/media/test-drivers/vivid/vivid-vid-out.c   | 5 +----
->>>   8 files changed, 9 insertions(+), 22 deletions(-)
->>>
->>> diff --git a/drivers/media/test-drivers/visl/visl-dec.c 
->>> b/drivers/media/test-drivers/visl/visl-dec.c
->>> index ba20ea998d19..4672dc5e52bb 100644
->>> --- a/drivers/media/test-drivers/visl/visl-dec.c
->>> +++ b/drivers/media/test-drivers/visl/visl-dec.c
->>> @@ -287,7 +287,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct 
->>> visl_run *run)
->>>       frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
->>>         len = 0;
->>> -    for (i = 0; i < out_q->num_buffers; i++) {
->>> +    for (i = 0; i < vb2_get_num_buffers(out_q); i++) {
->>>           char entry[] = "index: %u, state: %s, request_fd: %d, ";
->>>           u32 old_len = len;
->>>           struct vb2_buffer *vb2;
->>> @@ -347,7 +347,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct 
->>> visl_run *run)
->>>       frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
->>>         len = 0;
->>> -    for (i = 0; i < cap_q->num_buffers; i++) {
->>> +    for (i = 0; i < vb2_get_num_buffers(cap_q); i++) {
->>>           u32 old_len = len;
->>>           struct vb2_buffer *vb2;
->>>           char *q_status;
->>> diff --git a/drivers/media/test-drivers/vivid/vivid-meta-cap.c 
->>> b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
->>> index 780f96860a6d..0a718d037e59 100644
->>> --- a/drivers/media/test-drivers/vivid/vivid-meta-cap.c
->>> +++ b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
->>> @@ -30,9 +30,6 @@ static int meta_cap_queue_setup(struct vb2_queue *vq, 
->>> unsigned int *nbuffers,
->>>           sizes[0] = size;
->>>       }
->>>   -    if (vq->num_buffers + *nbuffers < 2)
->>> -        *nbuffers = 2 - vq->num_buffers;
->>> -
->>>       *nplanes = 1;
->>>       return 0;
->>>   }
->>> diff --git a/drivers/media/test-drivers/vivid/vivid-meta-out.c 
->>> b/drivers/media/test-drivers/vivid/vivid-meta-out.c
->>> index 95835b52b58f..4a569a6e58be 100644
->>> --- a/drivers/media/test-drivers/vivid/vivid-meta-out.c
->>> +++ b/drivers/media/test-drivers/vivid/vivid-meta-out.c
->>> @@ -18,6 +18,7 @@ static int meta_out_queue_setup(struct vb2_queue *vq, 
->>> unsigned int *nbuffers,
->>>                   struct device *alloc_devs[])
->>>   {
->>>       struct vivid_dev *dev = vb2_get_drv_priv(vq);
->>> +    unsigned int q_num_bufs = vb2_get_num_buffers(vq);
->>>       unsigned int size =  sizeof(struct vivid_meta_out_buf);
->>>         if (!vivid_is_webcam(dev))
->>> @@ -30,8 +31,8 @@ static int meta_out_queue_setup(struct vb2_queue *vq, 
->>> unsigned int *nbuffers,
->>>           sizes[0] = size;
->>>       }
->>>   -    if (vq->num_buffers + *nbuffers < 2)
->>> -        *nbuffers = 2 - vq->num_buffers;
->>> +    if (q_num_bufs + *nbuffers < 2)
->>> +        *nbuffers = 2 - q_num_bufs;
->>>         *nplanes = 1;
->>>       return 0;
->>> diff --git a/drivers/media/test-drivers/vivid/vivid-touch-cap.c 
->>> b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
->>> index c7f6e23df51e..4b3c6ea0afde 100644
->>> --- a/drivers/media/test-drivers/vivid/vivid-touch-cap.c
->>> +++ b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
->>> @@ -13,6 +13,7 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, 
->>> unsigned int *nbuffers,
->>>                    struct device *alloc_devs[])
->>>   {
->>>       struct vivid_dev *dev = vb2_get_drv_priv(vq);
->>> +    unsigned int q_num_bufs = vb2_get_num_buffers(vq);
->>>       struct v4l2_pix_format *f = &dev->tch_format;
->>>       unsigned int size = f->sizeimage;
->>>   @@ -23,8 +24,8 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, 
->>> unsigned int *nbuffers,
->>>           sizes[0] = size;
->>>       }
->>>   -    if (vq->num_buffers + *nbuffers < 2)
->>> -        *nbuffers = 2 - vq->num_buffers;
->>> +    if (q_num_bufs + *nbuffers < 2)
->>> +        *nbuffers = 2 - q_num_bufs;
->>>         *nplanes = 1;
->>>       return 0;
->>> diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c 
->>> b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
->>> index b65b02eeeb97..3840b3a664ac 100644
->>> --- a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
->>> +++ b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
->>> @@ -134,9 +134,6 @@ static int vbi_cap_queue_setup(struct vb2_queue *vq,
->>>         sizes[0] = size;
->>>   -    if (vq->num_buffers + *nbuffers < 2)
->>> -        *nbuffers = 2 - vq->num_buffers;
->>> -
->>>       *nplanes = 1;
->>>       return 0;
->>>   }
->>> diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-out.c 
->>> b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
->>> index cd56476902a2..434a10676417 100644
->>> --- a/drivers/media/test-drivers/vivid/vivid-vbi-out.c
->>> +++ b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
->>> @@ -30,9 +30,6 @@ static int vbi_out_queue_setup(struct vb2_queue *vq,
->>>         sizes[0] = size;
->>>   -    if (vq->num_buffers + *nbuffers < 2)
->>> -        *nbuffers = 2 - vq->num_buffers;
->>> -
->>>       *nplanes = 1;
->>>       return 0;
->>>   }
->>> diff --git a/drivers/media/test-drivers/vivid/vivid-vid-cap.c 
->>> b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
->>> index 3a06df35a2d7..2804975fe278 100644
->>> --- a/drivers/media/test-drivers/vivid/vivid-vid-cap.c
->>> +++ b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
->>> @@ -117,9 +117,6 @@ static int vid_cap_queue_setup(struct vb2_queue *vq,
->>>                       dev->fmt_cap->data_offset[p];
->>>       }
->>>   -    if (vq->num_buffers + *nbuffers < 2)
->>> -        *nbuffers = 2 - vq->num_buffers;
->>> -
->>>       *nplanes = buffers;
->>>         dprintk(dev, 1, "%s: count=%d\n", __func__, *nbuffers);
->>
->> here the format specifier for "*nbuffers" is "%d"...
->>
->>> diff --git a/drivers/media/test-drivers/vivid/vivid-vid-out.c 
->>> b/drivers/media/test-drivers/vivid/vivid-vid-out.c
->>> index 184a6df2c29f..1653b2988f7e 100644
->>> --- a/drivers/media/test-drivers/vivid/vivid-vid-out.c
->>> +++ b/drivers/media/test-drivers/vivid/vivid-vid-out.c
->>> @@ -73,12 +73,9 @@ static int vid_out_queue_setup(struct vb2_queue *vq,
->>>                          vfmt->data_offset[p] : size;
->>>       }
->>>   -    if (vq->num_buffers + *nbuffers < 2)
->>> -        *nbuffers = 2 - vq->num_buffers;
->>> -
->>>       *nplanes = planes;
->>>   -    dprintk(dev, 1, "%s: count=%d\n", __func__, *nbuffers);
->>> +    dprintk(dev, 1, "%s: count=%u\n", __func__, *nbuffers);
->>
->> ... but here you change it to "%u". Is there a reason for these two to be
->> different? I didn't notice it in the previous version but now it stands out
->> clearly. Probably you changed to %u because of the type returned by
->> vb2_get_num_buffers(). And, actually, *nbuffers _is_ unsigned, too.
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>   drivers/watchdog/mtk_wdt.c | 56 +++++++++++++++++++++++++++++++++++++-
+>   1 file changed, 55 insertions(+), 1 deletion(-)
 > 
-> Like you said *nbuffers is unsigned so %u sound for me.
-> The goal of this patch was to avoid vq->num_buffers usage not to clean up all the
-> file.
-> That could be done in other patch since there is lot to do here.
-> 
+> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> index b2330b16b497a..b98b8c29735aa 100644
+> --- a/drivers/watchdog/mtk_wdt.c
+> +++ b/drivers/watchdog/mtk_wdt.c
+> @@ -12,6 +12,7 @@
+>   #include <dt-bindings/reset/mt2712-resets.h>
+>   #include <dt-bindings/reset/mediatek,mt6795-resets.h>
+>   #include <dt-bindings/reset/mt7986-resets.h>
+> +#include <dt-bindings/reset/mediatek,mt7988-resets.h>
+>   #include <dt-bindings/reset/mt8183-resets.h>
+>   #include <dt-bindings/reset/mt8186-resets.h>
+>   #include <dt-bindings/reset/mt8188-resets.h>
+> @@ -58,6 +59,8 @@
+>   #define WDT_SWSYSRST		0x18U
+>   #define WDT_SWSYS_RST_KEY	0x88000000
+>   
+> +#define WDT_SWSYSRST_EN		0xfc
+> +
+>   #define DRV_NAME		"mtk-wdt"
+>   #define DRV_VERSION		"1.0"
+>   
+> @@ -71,44 +74,85 @@ struct mtk_wdt_dev {
+>   	struct reset_controller_dev rcdev;
+>   	bool disable_wdt_extrst;
+>   	bool reset_by_toprgu;
+> +	bool has_swsysrst_en;
 
-Arguably, if the purpose of this patch is to avoid using vq->num_buffers,
-the line we're discussing could be left unpatched, which minimizes the diffstat.
+mtk_wdt_data is always a const and this has_swsysrst_en member is never supposed
+to change during runtime.
 
-Otherwise, you _are_ changing vid_cap_queue_setup() anyway.
+At this point, just add a pointer to struct mtk_wdt_data in mtk_wdt_dev, then
+instead of mtk_wdt->has_swsysrst_en you check mtk_wdt->pdata->has_swsysrst_en.
 
-Regards,
+>   };
+>   
+>   struct mtk_wdt_data {
+>   	int toprgu_sw_rst_num;
+> +	bool has_swsysrst_en;
+>   };
+>   
+>   static const struct mtk_wdt_data mt2712_data = {
+>   	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = false,
 
-Andrzej
+false == 0; 0 is init default; this assignment is useless.
 
-> Regards,
-> Benjamin
-> 
->>
->> Regards,
->>
->> Andrzej
->>
->>>       for (p = 0; p < planes; p++)
->>>           dprintk(dev, 1, "%s: size[%u]=%u\n", __func__, p, sizes[p]);
->>>       return 0;
->>
+>   };
+>   
+>   static const struct mtk_wdt_data mt6795_data = {
+>   	.toprgu_sw_rst_num = MT6795_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = false,
+>   };
+>   
+>   static const struct mtk_wdt_data mt7986_data = {
+>   	.toprgu_sw_rst_num = MT7986_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = false,
+> +};
+> +
+> +static const struct mtk_wdt_data mt7988_data = {
+> +	.toprgu_sw_rst_num = MT7988_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = true,
+>   };
+>   
+>   static const struct mtk_wdt_data mt8183_data = {
+>   	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = false,
+>   };
+>   
+>   static const struct mtk_wdt_data mt8186_data = {
+>   	.toprgu_sw_rst_num = MT8186_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = false,
+>   };
+>   
+>   static const struct mtk_wdt_data mt8188_data = {
+>   	.toprgu_sw_rst_num = MT8188_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = false,
+>   };
+>   
+>   static const struct mtk_wdt_data mt8192_data = {
+>   	.toprgu_sw_rst_num = MT8192_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = false,
+>   };
+>   
+>   static const struct mtk_wdt_data mt8195_data = {
+>   	.toprgu_sw_rst_num = MT8195_TOPRGU_SW_RST_NUM,
+> +	.has_swsysrst_en = false,
+>   };
+>   
+> +static int toprgu_reset_sw_enable(struct reset_controller_dev *rcdev,
+> +				  unsigned long id, bool enable)
+
+I would transfer this logic inside of toprgu_reset_update() (not literally!).
+
+Doing so means that you would change this function to become
+
+/**
+  * toprgu_reset_sw_en_unlocked - What this function does
+  * params
+  * warn about this *requiring* to be called in locked state
+  * check kerneldoc documentation :)))
+  */
+static void toprgu_reset_sw_en_unlocked(struct mtk_wdt_dev *mtk_wdt,
+					unsigned long id, bool assert)
+{
+	u32 tmp;
+
+	tmp = readl....
+	if (...
+	blahblah
+
+	return 0;
+}
+
+and then call it in toprgu_reset_update(), before spin_unlock_irqrestore() like
+
+{
+	stuff...
+	....
+
+	writel(.... SWSYSRST);
+
+	if (data->pdata->has_swsysrst_en)
+		toprgu_reset_sw_en_unlocked(data, id, assert);
+
+	spin_unlock_irqrestore(...)
+
+	return 0;
+}
+
+> +{
+> +	unsigned int tmp;
+> +	unsigned long flags;
+> +	struct mtk_wdt_dev *data =
+> +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
+> +
+> +	if (!data->has_swsysrst_en)
+> +		return 0;
+> +
+> +	spin_lock_irqsave(&data->lock, flags);
+> +
+> +	tmp = readl(data->wdt_base + WDT_SWSYSRST_EN);
+> +	if (enable)
+> +		tmp |= BIT(id);
+> +	else
+> +		tmp &= ~BIT(id);
+> +
+> +	writel(tmp, data->wdt_base + WDT_SWSYSRST_EN);
+> +
+> +	spin_unlock_irqrestore(&data->lock, flags);
+> +
+> +	return 0;
+> +}
+> +
+>   static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+>   			       unsigned long id, bool assert)
+>   {
+> @@ -135,13 +179,20 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+>   static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
+>   			       unsigned long id)
+>   {
+> +	int ret;
+> +
+> +	ret = toprgu_reset_sw_enable(rcdev, id, true);
+> +	if (ret)
+> +		return ret;
+> +
+>   	return toprgu_reset_update(rcdev, id, true);
+
+...so you don't even touch this function...
+
+>   }
+>   
+>   static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
+>   				 unsigned long id)
+>   {
+> -	return toprgu_reset_update(rcdev, id, false);
+> +	toprgu_reset_update(rcdev, id, false);
+> +	return toprgu_reset_sw_enable(rcdev, id, false);
+
+...nor that one.
+
+>   }
+>   
+>   static int toprgu_reset(struct reset_controller_dev *rcdev,
+
+Cheers!
+Angelo
 
 
