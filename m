@@ -4,75 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A347FC4167D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 15:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B43B9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 15:13:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k5T/hVqE6HFnHgEvDrlT12CFV5SrT6U2H2ef5JCCsPw=; b=a1UaqB9DNh9x1mvTOLDmGx4HLd
-	ZaL6v0HS77inA/+mfVSJ9O3Ym7ld1ChfDggOoiGXK+L84WsGp9N9wQ+6NA77shsXqN8jODwSSFvY+
-	myGxSeCXlAnnpmRE8/44sZMU1s7eSSfhUix1UIl+buSkF3plle00u8u7RCz1ryQsELMCVXgXT6d3A
-	TBhwZgRe1IplDJkhdL93JPgRGcrZMWpQD5x4jiksj1efhBjURkUegmMIv21ab4fU+/m2Rq732gAS7
-	wktwgzujb6mmwYAsbOYu3pnmqi1A1CHMjb2b8oUQJ56GnwO3nQtcx3N5wO7cwLALaIxtMtZLEff+4
-	seF5Nd0A==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uVDypX2FHMLEYAo/wmOnUp9dzR8vVVSP2/7xQKtOce0=; b=NJqmDoknMYfwkq4sP3HAeLRbgw
+	d4mhE+d98/RWQoVSEjnU8EooSTPGngBzKKjoijPV1ScpiqyVcpxp+0jcNGlBdhLPvWebTOAo/ZFPE
+	Q0HuLRJLlLFjDF4ju0if7KCggiLq00Pq11atl/ItvOEIP/C8gng0ztZHLbyS2ypws2gFKDv3IXrRs
+	Fwrmr5pfIXhItWPjollAgsbEnyHFTf1rK6b1vR/3z+tnfZrLOSjjXe7G8dFLmI+POsQHOOa0NPuIk
+	asRDfVnJFT2FySNF2cE+4ZBbOyNAJMhV1/NiqmM/EZ5/cAIKGxm9FyXR4V+nrLJyQgkQ/Oo2ZQtIa
+	zoVmVGOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1T76-008yhH-13;
-	Fri, 10 Nov 2023 15:08:04 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1r1TC2-008z0m-1i;
+	Fri, 10 Nov 2023 15:13:10 +0000
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1T72-008ygC-1r
-	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Nov 2023 15:08:02 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-9e623356d5dso119918166b.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Nov 2023 07:07:56 -0800 (PST)
+	id 1r1TBy-008yzp-20;
+	Fri, 10 Nov 2023 15:13:07 +0000
+Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-6ce2ea3a944so1260866a34.1;
+        Fri, 10 Nov 2023 07:13:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699628875; x=1700233675; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=k5T/hVqE6HFnHgEvDrlT12CFV5SrT6U2H2ef5JCCsPw=;
-        b=Bv3NYtlkEVEx/luuh69gDlRxrUogBkmf4GbTc4C9weQMmUMzHrtaMD9lgA7FdS2hu3
-         llLA8JMg6B0owRFToF5pzTj855YR4/bfYyu+EcmTNkMNpR9dKuL2vbrGQc6moPwO21j2
-         2JboyUWGLfgw1FCxI/5qbdRKgw3HQ8XKeIgi4Hog5EyV3ciL0qxN/5f9Ffamx2jk6ZX9
-         fOGnfSLJrHyE41ApbX9nFGFHWRt9NA73sSguVMy1/tINOG6RAmFL0IHFxsd5QUpDwfeG
-         Gb60szrkqGJvrSAd0HE8leNca7nuMeL5Yxvmo4JG05LazZ6LpJi+n83x/2tan1J4XHSf
-         oNGw==
+        d=gmail.com; s=20230601; t=1699629184; x=1700233984; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :sender:from:to:cc:subject:date:message-id:reply-to;
+        bh=uVDypX2FHMLEYAo/wmOnUp9dzR8vVVSP2/7xQKtOce0=;
+        b=eQv2W/PJiC99ShYfL9pxSnH2PdnXxFg41snoNItla7dAEc9f+7HkomDZzad39+lOFi
+         lyTzeynrtFKPljAy1FyWY8upC2haz8bWLez33sph/vCdY5z3J6D7hV/saTPGKG9XuKWH
+         CbrTIGHDOIB1Q5owE2QeAlpNe0IyIO3WQhoHRhmnaKKVGhkBcre/Ay8fiK/RZkI+I5g1
+         uHvqaHVMjqmYU2pR2VcrCkFksOL4Ab6Co/nDqzJDx6jIf9oXsVfVDMDkL2E7UsHwbFRB
+         C8bFjYeWuzWiRa4EOyTCpUt8Q4xRAo931K0fi/Rwr0LyzS1vNoFR0rOOT+AbPAGR57WT
+         XVsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699628875; x=1700233675;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=k5T/hVqE6HFnHgEvDrlT12CFV5SrT6U2H2ef5JCCsPw=;
-        b=D2/KvpL2iIaCSuL7dVa5RuZWNi1YPc5SmhkaiVMHJn3VoKPa2uqlMTHBFlUvk7CyCo
-         NqjbEP8SxXuNAasPch5XM3wCebdDZktAwe7EUHJXcyR3nf2tyQpb8VYEfzKumLh3CdPV
-         PWxzXy3bmuqEOi3pR9QSPGbvPUDsKdTp2RyBOGUS+DfxKejHV/73YjVqrCdx5B+8rodM
-         ivTCrT01W3YtOHWVJljl8bB88SoJx16Cv49azIY5IGFnsw7b17UMPFZRDmxHG2CgeXEp
-         1V5PsI+aZ81PwydTVuDNuWkEbJMtA51DEj/+nJtwMVbHOgfAtMFJHIlmLCaFpAmw6JF7
-         Js0g==
-X-Gm-Message-State: AOJu0YzsQvdi9lBtw1bxSIrkciuaAKzqgNP7L2yRDfARgNm61p1jF/hj
-	oLNBUJ0MrGBcl5cdIpYvcdX7LA==
-X-Google-Smtp-Source: AGHT+IF82uvpgSwPhGimOClaCkymvkDHTYHUjVee9m9T7bIgafM00ddQ56IzCgRlpPRVATJpeosSCQ==
-X-Received: by 2002:a17:906:4555:b0:9e6:1dc9:9807 with SMTP id s21-20020a170906455500b009e61dc99807mr1118450ejq.77.1699628874949;
-        Fri, 10 Nov 2023 07:07:54 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id pv15-20020a170907208f00b009dd98089a48sm4062986ejb.43.2023.11.10.07.07.52
+        d=1e100.net; s=20230601; t=1699629184; x=1700233984;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :sender:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=uVDypX2FHMLEYAo/wmOnUp9dzR8vVVSP2/7xQKtOce0=;
+        b=KxP8C8SzqR0SkDkvbh7uh6dDXXK07bhc4QlrAXvcWZ4RFUDtbbx+YAZOgzdzLAlZXI
+         CvVJtgxUHWYctj8zBzePDNQrBZD9c2Uw2h49YmRGe5QkjKMSyQcobFj9PacZZSz247id
+         FcCDXTKDHD+N1afdtK3eh0Cq8ZSJ9Rg/odygJ4E8xCUH6LwDcyTd26d4ateui3HLnf1/
+         7kLFh4vgI+2PLLcmR4xN4+aYJ0290v/0LiP6qGpm0QhUjggGIpgCk930taPurU7TOQiC
+         PSYOp3clyPeyO2gAnjZPYT2d7YvHNYixM/MM9yR6X84W2IFIhJXaUBvtvR6oYIE9Byn6
+         B4dw==
+X-Gm-Message-State: AOJu0YzoykYYQkvbg6DKk7ucfj0TBIzSg7BftRnqXAc61b9P4GhCWZ9K
+	BF1UTnie7YvgLDdKqrsfmUA=
+X-Google-Smtp-Source: AGHT+IHw8EI8qT2P8geBeuCeR5v1TS+FXGbNtYjBwkZnXdfsGMiyEKS/jeO58EAhzeKHvYCSIWYBMA==
+X-Received: by 2002:a9d:5d17:0:b0:6c4:e507:3747 with SMTP id b23-20020a9d5d17000000b006c4e5073747mr8128513oti.30.1699629184433;
+        Fri, 10 Nov 2023 07:13:04 -0800 (PST)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id g3-20020ad45423000000b00670c7fd09cbsm2972112qvt.95.2023.11.10.07.13.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Nov 2023 07:07:53 -0800 (PST)
-Message-ID: <708046ae-a821-420c-959a-ab5cb712aa9e@linaro.org>
-Date: Fri, 10 Nov 2023 16:07:51 +0100
+        Fri, 10 Nov 2023 07:13:04 -0800 (PST)
+Message-ID: <47733364-82b5-4052-9bb9-7631668c98a0@roeck-us.net>
+Date: Fri, 10 Nov 2023 07:13:01 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988
- watchdog and toprgu
+Subject: Re: [PATCH 2/2] watchdog: mediatek: mt7988: add wdt support
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
@@ -80,63 +78,58 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <6912f6f406bc45674020681184f3eeca2f2cb63f.1699576174.git.daniel@makrotopia.org>
- <2678cb48-1d2b-47bc-9272-06d9aa140c58@collabora.com>
- <ZU47hV1i66WN8nZJ@makrotopia.org>
- <d7b72b3e-c8f4-4675-ae62-26f5ae576f0a@linaro.org>
- <ZU5A59KO8Y_Q97IG@makrotopia.org>
- <a56cfe76-ab03-4187-b6f1-04a5c3414e64@linaro.org>
- <ZU5DVNOmtyFwUTdC@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <ZU5DVNOmtyFwUTdC@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <ddb5b6ca88165aa69f73fe2804eedd0231d8d9e7.1699576174.git.daniel@makrotopia.org>
+ <58b551f2-2d0b-4432-b1fd-edc690f13e4c@collabora.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
+In-Reply-To: <58b551f2-2d0b-4432-b1fd-edc690f13e4c@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_070800_611591_F2A8C73E 
-X-CRM114-Status: GOOD (  23.68  )
+X-CRM114-CacheID: sfid-20231110_071306_686653_9AF658E2 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,91 +144,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/11/2023 15:51, Daniel Golle wrote:
-> On Fri, Nov 10, 2023 at 03:46:14PM +0100, Krzysztof Kozlowski wrote:
->> On 10/11/2023 15:40, Daniel Golle wrote:
->>> On Fri, Nov 10, 2023 at 03:20:53PM +0100, Krzysztof Kozlowski wrote:
->>>> On 10/11/2023 15:17, Daniel Golle wrote:
->>>>> On Fri, Nov 10, 2023 at 12:56:18PM +0100, AngeloGioacchino Del Regno wrote:
->>>>>> Il 10/11/23 01:30, Daniel Golle ha scritto:
->>>>>>> Add binding description for mediatek,mt7988-wdt.
->>>>>>>
->>>>>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>>>>>> ---
->>>>>>>   .../bindings/watchdog/mediatek,mtk-wdt.yaml          |  1 +
->>>>>>>   include/dt-bindings/reset/mediatek,mt7988-resets.h   | 12 ++++++++++++
->>>>>>>   2 files changed, 13 insertions(+)
->>>>>>>   create mode 100644 include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>>>>
->>>>>>> diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
->>>>>>> index cc502838bc398..8d2520241e37f 100644
->>>>>>> --- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
->>>>>>> +++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
->>>>>>> @@ -25,6 +25,7 @@ properties:
->>>>>>>             - mediatek,mt6735-wdt
->>>>>>>             - mediatek,mt6795-wdt
->>>>>>>             - mediatek,mt7986-wdt
->>>>>>> +          - mediatek,mt7988-wdt
->>>>>>>             - mediatek,mt8183-wdt
->>>>>>>             - mediatek,mt8186-wdt
->>>>>>>             - mediatek,mt8188-wdt
->>>>>>> diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>>>> new file mode 100644
->>>>>>> index 0000000000000..fa7c937505e08
->>>>>>> --- /dev/null
->>>>>>> +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>>>> @@ -0,0 +1,12 @@
->>>>>>> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->>>>>>> +
->>>>>>> +/* TOPRGU resets */
->>>>>>
->>>>>> The first reset is zero, the second reset is one.
->>>>>>
->>>>>> Where's the zero'th reset? :-)
->>>>>
->>>>> Currently the reset numbers represent the corresponding bit positions in
->>>>> the toprgu register, as this is how the mtk-wdt driver is organized.
->>>>>
->>>>> So there is probably something at bit 0, and also at bit 3~11 and
->>>>> maybe also 17~23, but it's unknown and may be added later once known
->>>>> and/or needed.
->>>>
->>>> There is no need to put register bits, which are not used by the driver,
->>>> in the bindings.
->>>
->>> There aren't. That's why there isn't a zero'th reset (and also not 3~11, 17~24).
->>>
->>> Or should the driver be reorganized to provide a mapping of logical to
->>> physical resets, and then have only the needed once present and start
->>> counting logical resets from 0? This is doable, of course, but it's a
->>> bit of effort just for the aesthetical goal of starting to count from
->>> zero and continous in header file.
->>>
->>> And, of course, chances are that other currently still unused bits
->>> will be needed at a later point which then would mean having to add
->>> them in at least 2 places (header file and mapping logical<->physical)
->>> where as currently it would just mean adding a line defining it in the
->>> header file.
+On 11/10/23 03:55, AngeloGioacchino Del Regno wrote:
+> Il 10/11/23 01:30, Daniel Golle ha scritto:
+>> Add support for watchdog and reset generator unit of the MediaTek
+>> MT7988 SoC.
 >>
->> You can do it, but it's not what I wrote here. So bear with me:
+>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+>> ---
+>>   drivers/watchdog/mtk_wdt.c | 56 +++++++++++++++++++++++++++++++++++++-
+>>   1 file changed, 55 insertions(+), 1 deletion(-)
 >>
->> "There is no need to put register bits in the bindings."
-
-No comments here, so I assume you agree with this.
-
->>
->> You replied "There aren't", which I don't understand in this context. I
->> can be clearer:
->> Drop this hunk.
+>> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+>> index b2330b16b497a..b98b8c29735aa 100644
+>> --- a/drivers/watchdog/mtk_wdt.c
+>> +++ b/drivers/watchdog/mtk_wdt.c
+>> @@ -12,6 +12,7 @@
+>>   #include <dt-bindings/reset/mt2712-resets.h>
+>>   #include <dt-bindings/reset/mediatek,mt6795-resets.h>
+>>   #include <dt-bindings/reset/mt7986-resets.h>
+>> +#include <dt-bindings/reset/mediatek,mt7988-resets.h>
+>>   #include <dt-bindings/reset/mt8183-resets.h>
+>>   #include <dt-bindings/reset/mt8186-resets.h>
+>>   #include <dt-bindings/reset/mt8188-resets.h>
+>> @@ -58,6 +59,8 @@
+>>   #define WDT_SWSYSRST        0x18U
+>>   #define WDT_SWSYS_RST_KEY    0x88000000
+>> +#define WDT_SWSYSRST_EN        0xfc
+>> +
+>>   #define DRV_NAME        "mtk-wdt"
+>>   #define DRV_VERSION        "1.0"
+>> @@ -71,44 +74,85 @@ struct mtk_wdt_dev {
+>>       struct reset_controller_dev rcdev;
+>>       bool disable_wdt_extrst;
+>>       bool reset_by_toprgu;
+>> +    bool has_swsysrst_en;
 > 
-> So adding the file to include/dt-bindings/reset/ should go into a
-> seperate patch? Because including it with the driver itself gave me
-> a checkpath warning telling me that dt-bindings should go seperate,
-> which is why I included it with the binding docs.
+> mtk_wdt_data is always a const and this has_swsysrst_en member is never supposed
+> to change during runtime.
+> 
+> At this point, just add a pointer to struct mtk_wdt_data in mtk_wdt_dev, then
+> instead of mtk_wdt->has_swsysrst_en you check mtk_wdt->pdata->has_swsysrst_en.
+> 
 
-No, I said the hunk should be dropped. Removed.
+Oh, I don't know. Personally I dislike having to execute double dereferences
+at runtime. I tend to accept it because people seem to like it, but I really
+don't see the point.
 
-Best regards,
-Krzysztof
+Guenter
 
 
