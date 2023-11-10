@@ -4,72 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C91B9C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 11:57:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69943C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Nov 2023 14:18:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UtxiMqRIq8+NWtEIgUxiI2updzqK0ImPVDt91Nu5bt8=; b=q8lZ52TJk052C7fJQx2vToMtJx
-	roZx8xhoeU07nSkvXMuENY5FpRaATKbxpBv+ACr3hzY9VLOVeyHvsn2L2cXAU15vz1IprnqTXVH8I
-	COgyyCBEdsdsRoPy94b6FJaPXlgTlnMG3g6oegxBo4KtFpq4J2hZgTVQFtHMu6npGnbowLfSRAJep
-	Xgta49K6jmwID4FT4CtSQz4ZuexhchhGa77u8uhcbk3X9qeo8tXxeZNTN57FtUe2JagqhiY1wYta0
-	E4DtYUaXaT9B2xoSVg77oTn1iAtG43AwSjDEqB/ku7o9kBWPkl9iMmxFdYR37P8lpfSQRjCzmBeBp
-	JoCBDHKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Eo1Q/oNe7nFTh0CP5ZR1lPd1dM+E4a2b3RLgxqpIWNo=; b=P9U34Ufpgu5h7f0g3nS4ETo2Ny
+	fG+Q9wo1WcnfVc2V3ocVmKJejPMUiYYFryP3JcfJoFxPCexWNsjDD3H4tSjsFykk242KXaZ03p0+q
+	utGYE941Rf/fSCHTXWnKBn6hGD2cROYtqR1QHObmVx9c46hnOPaoDBz8THWKj3GqdKi3x7K2asOhx
+	0EJZriH0B43Lu68e8Zc6yfCah/E09XVUlhsA873D0FmqYToBHwnX8MH5IUrAOzBCXU2GyH2Y2QFu5
+	rGRS3eU7MmzF09Y81QO/oz/aUdtDxhlZDIlRHgbYwno+dw3MqKhLZaXbrWlH8jfYV7ZQFLDAG878I
+	HSfcLLbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Q8Y-008XkW-2N;
-	Fri, 10 Nov 2023 11:57:22 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r1SKn-008uVl-00;
+	Fri, 10 Nov 2023 14:18:09 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Q8V-008Xhh-1K;
-	Fri, 10 Nov 2023 11:57:20 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4221E66073D6;
-	Fri, 10 Nov 2023 11:57:17 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699617438;
-	bh=yxdMDAZYCs0R8XzpVH/gErPFhSqVtu/4cjaOro2h2b4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WO3nx56UqM87HIFLLfwM2R/w0GJjvdvHpUw6z00XcHu2y+woW1xgDbCtxrNmbLnbJ
-	 etYOhBicHSRnRFOrs2OtpBKDwUUt9BfIC3SdbIFpOsOY4xeruQuEjin51sL+msfcei
-	 YBN3so3JS8iJzJFVY+/AApKOYN90tP2IjNQqKDQEWW2QDN9BMANB9IYjCTtcRL3pnd
-	 WoI/wxS/kE1UcePbmj8LvrfvAQRYxzvvExRX/UMuIATNSVY5Ros/TWFcBGBnIfYLWD
-	 JqSK3iHF+sNyUgbFzfiPuY4mwZYYtZjL7xfp6qqLvVs3XA4C6in3jGgh9NvlYbCwze
-	 jbVQZPB/+a2jg==
-Message-ID: <b56b155c-25c0-4958-9f59-20669ee2ea01@collabora.com>
-Date: Fri, 10 Nov 2023 12:57:17 +0100
+	id 1r1SKj-008uUr-3B;
+	Fri, 10 Nov 2023 14:18:07 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1r1SKQ-0006nA-1x;
+	Fri, 10 Nov 2023 14:17:46 +0000
+Date: Fri, 10 Nov 2023 14:17:41 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988
+ watchdog and toprgu
+Message-ID: <ZU47hV1i66WN8nZJ@makrotopia.org>
+References: <6912f6f406bc45674020681184f3eeca2f2cb63f.1699576174.git.daniel@makrotopia.org>
+ <2678cb48-1d2b-47bc-9272-06d9aa140c58@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] drm/mediatek: Fix access violation in
- mtk_drm_crtc_dma_dev_get
-Content-Language: en-US
-To: Stuart Lee <stuart.lee@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Nancy . Lin" <nancy.lin@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Lancelot Wu
- <lancelot.wu@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
- Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- stable@vger.kernel.org
-References: <20231110012914.14884-1-stuart.lee@mediatek.com>
- <20231110012914.14884-2-stuart.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231110012914.14884-2-stuart.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2678cb48-1d2b-47bc-9272-06d9aa140c58@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_035719_578668_86F7CB26 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231110_061806_028718_CC64B96F 
+X-CRM114-Status: GOOD (  20.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,20 +71,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/11/23 02:29, Stuart Lee ha scritto:
-> Add error handling to check NULL input in
-> mtk_drm_crtc_dma_dev_get function.
+On Fri, Nov 10, 2023 at 12:56:18PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 10/11/23 01:30, Daniel Golle ha scritto:
+> > Add binding description for mediatek,mt7988-wdt.
+> > 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >   .../bindings/watchdog/mediatek,mtk-wdt.yaml          |  1 +
+> >   include/dt-bindings/reset/mediatek,mt7988-resets.h   | 12 ++++++++++++
+> >   2 files changed, 13 insertions(+)
+> >   create mode 100644 include/dt-bindings/reset/mediatek,mt7988-resets.h
+> > 
+> > diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> > index cc502838bc398..8d2520241e37f 100644
+> > --- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> > +++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> > @@ -25,6 +25,7 @@ properties:
+> >             - mediatek,mt6735-wdt
+> >             - mediatek,mt6795-wdt
+> >             - mediatek,mt7986-wdt
+> > +          - mediatek,mt7988-wdt
+> >             - mediatek,mt8183-wdt
+> >             - mediatek,mt8186-wdt
+> >             - mediatek,mt8188-wdt
+> > diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> > new file mode 100644
+> > index 0000000000000..fa7c937505e08
+> > --- /dev/null
+> > +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> > @@ -0,0 +1,12 @@
+> > +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+> > +
+> > +/* TOPRGU resets */
 > 
-> While display path is not configured correctly, none of crtc is
-> established. So the caller of mtk_drm_crtc_dma_dev_get may pass
-> input parameter *crtc as NULL, Which may cause coredump when
-> we try to get the container of NULL pointer.
+> The first reset is zero, the second reset is one.
 > 
-> Fixes: cb1d6bcca542 ("drm/mediatek: Add dma dev get function")
-> Signed-off-by: Stuart Lee <stuart.lee@mediatek.com>
-> Cc: stable@vger.kernel.org
+> Where's the zero'th reset? :-)
 
-Reviewed-by: AngeloGioacchino DEl Regno <angelogioacchino.delregno@collabora.com>
+Currently the reset numbers represent the corresponding bit positions in
+the toprgu register, as this is how the mtk-wdt driver is organized.
 
+So there is probably something at bit 0, and also at bit 3~11 and
+maybe also 17~23, but it's unknown and may be added later once known
+and/or needed.
 
+> 
+> Regards,
+> Angelo
+> 
+> > +#define MT7988_TOPRGU_SGMII0_GRST		1
+> > +#define MT7988_TOPRGU_SGMII1_GRST		2
+> > +#define MT7988_TOPRGU_XFI0_GRST			12
+> > +#define MT7988_TOPRGU_XFI1_GRST			13
+> > +#define MT7988_TOPRGU_XFI_PEXTP0_GRST		14
+> > +#define MT7988_TOPRGU_XFI_PEXTP1_GRST		15
+> > +#define MT7988_TOPRGU_XFI_PLL_GRST		16
+> > +
+> > +#define MT7988_TOPRGU_SW_RST_NUM		24
+> 
+> 
 
