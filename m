@@ -4,86 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DC1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Nov 2023 07:55:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DDB8C4167B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Nov 2023 08:14:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wpvtUlVO2IhJS75FTLKOl44VBAIxaPpUsmZ2qBQY3ek=; b=zO7IT29kiRA2zzquYxc993XU+J
-	mB82eaEQrKl36OZkf911twgrrmR9gC9G/FKrAFays9tIVta5k2fxys/4cvFGFj42SYa2wBhpRogyW
-	XF+IH0nzm0rb/GoHpCU6E+7JHjDV1ZSj1P1gDjyU/i8ranmgmBOmLKzUu5Ql7q9kCzgR2oxnGyqv5
-	4wsfi5z5vLo+ahz/VoE1BD+no1kVQCtPemfaco5PhZGHZIsw52xL1rZ6a0i3bOuGOQzvB4EwVeP76
-	fSbmiqgkzahcvrXMDoAgUlkScuYjOSdzim4fdv7ly05wzFm+nzfsq92hkwUdieSStmB1NZSTJlFs1
-	R8ABazjA==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hbD/sFHhqCgv+rc21fEZQqviHdww1+qYyJF/3ffER+g=; b=gmzL9yK4Ldw7fhL7yNyNX6uUCa
+	zNx6DiOwJkEvxm4kI0miPxC4Wj7oRFWjE8bhluJhKuAr4qj2HnVtXvDvrWBkIftrL9e7X2AziXkMs
+	9cHY2auQfNaH8hz54Bklgn7ymQBqH3eKQOvC98bY4E14jKYo8+/CdF7TaRyvWhj3oPEv0T3zXCoDi
+	8ynXnUQaUqoOCyi8LMcSRnzW1MANFofK5W3XQBLcCZX0tzp/5H9BZTsdfYszIL7POzrQeurfYAobW
+	ifoYV5xv/a31sLjJK11iZUIMiRBcwo7+APC/dakEhwWYisC3npsoC3tXtXcGn92NyE0k4KNn8GWyy
+	fX2cxrmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1ipi-00ADXb-2c;
-	Sat, 11 Nov 2023 07:55:10 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1r1j7y-00AEiq-1U;
+	Sat, 11 Nov 2023 08:14:02 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1ipe-00ADWY-0u
+	id 1r1j7u-00AEge-1n
 	for linux-mediatek@lists.infradead.org;
-	Sat, 11 Nov 2023 07:55:07 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-408382da7f0so21514945e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Nov 2023 23:55:04 -0800 (PST)
+	Sat, 11 Nov 2023 08:14:00 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-40859c464daso21505895e9.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 11 Nov 2023 00:13:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699689303; x=1700294103; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1699690435; x=1700295235; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=wpvtUlVO2IhJS75FTLKOl44VBAIxaPpUsmZ2qBQY3ek=;
-        b=YDcrrQeFViRXbKBUtGjRUyddlZSbrg5Cj8KuX9w0lsT40ubgNaB5MPyFVV5jEaHLbg
-         0qUQD9Q7bupUeMfZMZ9v19l2QW2kcRbJTuFQTHw9LB5utbkkRB0hbFoyI8x0eEdvQEDo
-         WXRxSWR7Ble0J0g5snJhBknHyKv8VmdlZ9mURPWxG+AmHgDIYflbLrHm3h4mF7beaVcY
-         qhXdNSidtK0SqnKFKQ7GmkynD4bagq494jO3WRdmVW0rcET1D3Eue6F87ZWwC1U9fiuP
-         UoWm1m4xYd9oK08pYvO/NJyl+JjyjrCmi7JZmwqLaPKt26pdvBIYlQ1qCcAZvDK7irqG
-         kQdA==
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=hbD/sFHhqCgv+rc21fEZQqviHdww1+qYyJF/3ffER+g=;
+        b=sCJGqziPOhKYsyoEE45ukeOdvHaLqHq5cgECaOSxG6TIeGQisngjt7/6knxoo22Wc1
+         izibXuNQFF5HOMuL+NUkojKPCmrj9aBaYGRD5Z+C3Ymf0wV850Fo8XYHi06qxxAyJVY+
+         DO5202faXyhq1kQkVVmxRD9UsYL7WRMQbS01r8RmwmE7FInHuNqSMABRQVSBQKSIi1/G
+         o51IEGGce0zGqG+r4FdJvTjLFEmlrmR+lcSlLuxIX/s9Nz2clrjorLxWFmCrdDOyLgh7
+         aFDD6w5qvCvzc8kAGwllJWu1l5Pa1ELxiSLepD4rhctP32EeA6NS1J2DrqHHXXSfA3hW
+         Ulfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699689303; x=1700294103;
+        d=1e100.net; s=20230601; t=1699690435; x=1700295235;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wpvtUlVO2IhJS75FTLKOl44VBAIxaPpUsmZ2qBQY3ek=;
-        b=Aplr7hNsfh5/bmj5hsnWjsXf34EbS/qaFfOAnpUI6/yJXBLre/W74pB4QPzdbGqGoD
-         VTW5j8mlXeUJoTdi9FwR6nZ9oL8wSmvOXGl1S/fnd4lr5BRKx+a1suA4+tl+LJJKHGJQ
-         n5q+ZtGOocOOytSZ8ZAMySog32GKU8yQF5E+54RYEljssoXWqojvWZ/5f2aFswJyxoVb
-         nNdE3W/LAT7kEZnacbr7wv93/ri3rwLC81xmAody+4NMs0xuc/JpegqeHoIytGOsLbzi
-         n2gt5/o7F/RWF2PbtSANr7S5l/Mzq538CDsm+qA3DrhNyovp/NXvXSGX7orxyzsXLg0c
-         3NuA==
-X-Gm-Message-State: AOJu0YyHKZaRFKtCr2zBeu2L9fCupecE3cyM5BKA8sRperk73lSfYrvd
-	olOPxmDU4kXfrWlEdQB7MSqjdQ==
-X-Google-Smtp-Source: AGHT+IE4G+AWegdOx9xxri1//vXyFTgcgmLlO+1gKfZm1MBZaiMPn19dmBFUQQzd9WJy157xrwSEVw==
-X-Received: by 2002:a05:600c:1e11:b0:408:3f61:cb4f with SMTP id ay17-20020a05600c1e1100b004083f61cb4fmr968635wmb.23.1699689302966;
-        Fri, 10 Nov 2023 23:55:02 -0800 (PST)
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hbD/sFHhqCgv+rc21fEZQqviHdww1+qYyJF/3ffER+g=;
+        b=AdDlR4V0MdiGoY5iBz1G4tJwetTyNascOslg3754LYxCGTtIFemKCV3kiE+jPsvX1c
+         jTHISxAoF1NdoyXlhvXcobHvY56DgCh0JWjW1xhHfSVxgirbeZTAo5xlxbeys8HqsmNL
+         x/UxZp3UOn40TGM0DROvvJ59fyNuJdwMJ43757dwP3tdP7dTUDVITAPSAj1lkoNAvS66
+         yT7n5NA1BsHXbDiJ5Sq/zhzv19YZZwuLs+B7qV4fPi7AG8HgfRzouHyYPCJX5HWjx2/E
+         0g0J6xONFo49LCaclbRKelr7sOpukIjDYlf9YNQI+U2XHKzZXwoCRfjZm+4FACsriTL2
+         JunQ==
+X-Gm-Message-State: AOJu0Ywsy2zBU2qn7FBMQIt3Z98G0XUlagj1AqV8Ujc1LO+CXxnn6J7B
+	nfGlDahg2mY127oZCK4WJtTCJQ==
+X-Google-Smtp-Source: AGHT+IG8F5780iVYGMmIwg2z/khiYfoNnFqsg579K+pHph0JUAyx+INzjzlKPTIrThsPFg7vXACArg==
+X-Received: by 2002:a05:600c:30d3:b0:409:85d:5a6e with SMTP id h19-20020a05600c30d300b00409085d5a6emr1168539wmn.29.1699690435330;
+        Sat, 11 Nov 2023 00:13:55 -0800 (PST)
 Received: from [10.230.170.72] (46-253-189-43.dynamic.monzoon.net. [46.253.189.43])
-        by smtp.gmail.com with ESMTPSA id c20-20020a05600c0ad400b0040588d85b3asm7098432wmr.15.2023.11.10.23.55.01
+        by smtp.gmail.com with ESMTPSA id hg12-20020a05600c538c00b0040a4835d2b2sm3019298wmb.37.2023.11.11.00.13.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Nov 2023 23:55:02 -0800 (PST)
-Message-ID: <8a0a95a1-eb20-4906-9b15-c20d568b7baa@linaro.org>
-Date: Sat, 11 Nov 2023 08:55:00 +0100
+        Sat, 11 Nov 2023 00:13:54 -0800 (PST)
+Message-ID: <0819b2e0-fa1f-4452-9925-e93b8bb2e940@linaro.org>
+Date: Sat, 11 Nov 2023 09:13:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988
- watchdog and toprgu
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: devicetree@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
+Subject: Re: [RFC PATCH 5/8] dt-bindings: net: pcs: add bindings for MediaTek
+ USXGMII PCS
+To: Daniel Golle <daniel@makrotopia.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, linux-watchdog@vger.kernel.org,
- Guenter Roeck <linux@roeck-us.net>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Conor Dooley <conor+dt@kernel.org>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>,
+ Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>
-References: <6912f6f406bc45674020681184f3eeca2f2cb63f.1699576174.git.daniel@makrotopia.org>
- <59629ec1-cc0c-4c5a-87cc-ea30d64ec191@linaro.org>
- <fc52c1df-e414-49a9-a3a7-7a4ce45c403e@linaro.org>
- <49cd75fd-962f-417c-9196-3c9edd42e4d5@linaro.org>
- <ZU6WfOUF7owz7ZLN@makrotopia.org>
+ linux-phy@lists.infradead.org
+References: <cover.1699565880.git.daniel@makrotopia.org>
+ <2dff6aff7006573d3232ec2ddd93c1792740d4d3.1699565880.git.daniel@makrotopia.org>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -130,12 +135,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <ZU6WfOUF7owz7ZLN@makrotopia.org>
+In-Reply-To: <2dff6aff7006573d3232ec2ddd93c1792740d4d3.1699565880.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_235506_421536_1730A7FC 
-X-CRM114-Status: GOOD (  35.92  )
+X-CRM114-CacheID: sfid-20231111_001358_669484_DDC8CC0E 
+X-CRM114-Status: GOOD (  21.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,116 +155,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/11/2023 21:45, Daniel Golle wrote:
-> On Fri, Nov 10, 2023 at 09:00:26PM +0100, Krzysztof Kozlowski wrote:
->> On 10/11/2023 16:20, Krzysztof Kozlowski wrote:
->>> On 10/11/2023 09:09, Krzysztof Kozlowski wrote:
->>>> On 10/11/2023 01:30, Daniel Golle wrote:
->>>>> Add binding description for mediatek,mt7988-wdt.
->>>>>
->>>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>>>> ---
->>>>
->>>> ...
->>>>
->>>>> diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>> new file mode 100644
->>>>> index 0000000000000..fa7c937505e08
->>>>> --- /dev/null
->>>>> +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
->>>>> @@ -0,0 +1,12 @@
->>>>> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->>>>> +
->>>>> +/* TOPRGU resets */
->>>>> +#define MT7988_TOPRGU_SGMII0_GRST		1
->>>>> +#define MT7988_TOPRGU_SGMII1_GRST		2
->>>>> +#define MT7988_TOPRGU_XFI0_GRST			12
->>>>> +#define MT7988_TOPRGU_XFI1_GRST			13
->>>>> +#define MT7988_TOPRGU_XFI_PEXTP0_GRST		14
->>>>> +#define MT7988_TOPRGU_XFI_PEXTP1_GRST		15
->>>>> +#define MT7988_TOPRGU_XFI_PLL_GRST		16
->>>>
->>>> IDs should start from 0 or 1 and increment by 1. If these are not IDs,
->>>> then you do not need them in the bindings.
->>>>
->>>> Where is the driver change using these IDs?
+On 09/11/2023 22:51, Daniel Golle wrote:
+> MediaTek's USXGMII can be found in the MT7988 SoC. We need to access
+> it in order to configure and monitor the Ethernet SerDes link in
+> USXGMII, 10GBase-R and 5GBase-R mode. By including a wrapped
+> legacy 1000Base-X/2500Base-X/Cisco SGMII LynxI PCS as well, those
+> interface modes are also available.
 > 
-> It isn't needed as the driver doesn't list the IDs. If that would
 
-Then it is no a binding.
+A nit, subject: drop second/last, redundant "bindings for". The
+"dt-bindings" prefix is already stating that these are bindings.
 
-> be true, it would be sufficient to put them into a header next to the
-> driver or defined inside the driver C file.
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  .../bindings/net/pcs/mediatek,usxgmii.yaml    | 105 ++++++++++++++++++
 
-Not related. Binding header is used by both driver and DTS.
+Use compatible as filename (especially that you do not expect it to grow).
 
+>  1 file changed, 105 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/pcs/mediatek,usxgmii.yaml
 > 
-> The defined IDs here are intended to be used in device tree files.
+> diff --git a/Documentation/devicetree/bindings/net/pcs/mediatek,usxgmii.yaml b/Documentation/devicetree/bindings/net/pcs/mediatek,usxgmii.yaml
+> new file mode 100644
+> index 0000000000000..199cf47859e31
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/pcs/mediatek,usxgmii.yaml
+> @@ -0,0 +1,105 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/pcs/mediatek,usxgmii.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek USXGMII PCS
 
-Then not a binding.
+MT7888 I guess?
 
-> 
->>>
->>> You nicely skipped my email and keep pushing the idea of putting this
->>> into separate patch.
->>>
->>> No. Respond to received comments.
->>>
->>>>
->>>>> +
->>>>> +#define MT7988_TOPRGU_SW_RST_NUM		24
->>>>
->>>> Why 24? I see 7. 
-> 
-> Because the wdt on MT7988 has a total of 24 resets. Most of them are
-> (currently, as there are no GPL drops, no publicly available devices,
-> ...) undocumented and are not used in Linux **at this point**. Having
-> to change the driver every time a new reset is discovered or needed to
+> +
+> +maintainers:
+> +  - Daniel Golle <daniel@makrotopia.org>
+> +
+> +description:
+> +  The MediaTek USXGMII PCS provides physical link control and status
+> +  for USXGMII, 10GBase-R and 5GBase-R links on the SerDes interfaces
+> +  provided by the PEXTP PHY.
+> +  In order to also support legacy 2500Base-X, 1000Base-X and Cisco
+> +  SGMII an existing mediatek,*-sgmiisys LynxI PCS is wrapped to
+> +  provide those interfaces modes on the same SerDes interfaces shared
+> +  with the USXGMII PCS.
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: "^pcs@[0-9a-f]+$"
 
-There is no need to change the driver. Once it is set in the binding, to
-let's say 7, it must stay like this. Since this is not representing real
-binding resets (there are 7, not 24) and it is no used in DTS: this is
-not a binding.
+Drop, we do not enforce naming in individual device schemas.
+
+> +
+> +  compatible:
+> +    const: mediatek,mt7988-usxgmiisys
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: USXGMII top-level clock
+> +      - description: SGMII top-level clock
+> +      - description: SGMII subsystem TX clock
+> +      - description: SGMII subsystem RX clock
+> +      - description: XFI PLL clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: usxgmii
+> +      - const: sgmii_sel
+> +      - const: sgmii_tx
+> +      - const: sgmii_rx
+> +      - const: xfi_pll
+> +
+> +  phys:
+> +    items:
+> +      - description: PEXTP SerDes PHY
+> +
+> +  mediatek,sgmiisys:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to the syscon node of the corresponding SGMII LynxI PCS.
+
+"syscon node" is Linux term. Instead describe to what part of hardware
+this phandle is and why do you need it.
+
+> +
+> +  resets:
+> +    items:
+> +      - description: XFI reset
+> +      - description: SGMII reset
+> +
+> +  reset-names:
+> +    items:
+> +      - const: xfi
+> +      - const: sgmii
+> +
+> +  "#pcs-cells":
+> +    const: 0
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - clock-names
+> +  - phys
+> +  - mediatek,sgmiisys
+> +  - resets
+> +  - reset-names
+> +  - "#pcs-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
+> +    #include <dt-bindings/reset/mediatek,mt7988-resets.h>
+> +    soc {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +        usxgmiisys0: pcs@10080000 {
+
+Odd/Messed indentation.
+
+Use 4 spaces for example indentation.
 
 
-> be used is tideous, so I thought the best would be -- as we know the
-> total number of resets -- to already define that, as it's safe to do
-> and won't need to change.
-
-
-> 
->>>> Why having it in the bindings in the first place.
-> 
-> This line can indeed go into the driver, it's not used anywhere else.
-> I was merely immitating the style of all the existing binding headers
-> for similar SoCs and didn't want to stick-out style-wise, also in terms
-> of the added code to the driver which relies on that number being
-> defined in the header for all other SoCs.
-> 
->>>>
->>>> It's quite likely I asked the same question about other bindings for
->>>> Mediatek. I will be asking every time till this is fixed.
->>>
->>> No response to this, either.
->>
->> You still did not respond here. To none of the points here. It's my
->> third ping because I want this to be resolved. But ignoring my emails,
->> and skipping paragraphs of my replies will not lead anywhere.
-> 
-> I have answered to this before:
-> The driver does NOT have any internal list of names of individual
-> resets, it relies on the reset number from device tree matching the bit
-> in the controller, just like for any other MediaTek toprgu already
-> supported by mtk-wdt.c.
-
-Sure, and this is not a binding. Please do not make binding things which
-are not bindings, because later you (you as in plural) come and request
-to change it, which must not be allowed. But because people stuff
-not-binding-things into the binding they use it later as arguments that
-it is allowed to change.
-
-As I wrote before, I complained about this already several times and I
-will be complaining every time.
 
 Best regards,
 Krzysztof
