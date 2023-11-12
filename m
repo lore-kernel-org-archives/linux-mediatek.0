@@ -4,88 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF25C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Nov 2023 23:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18FE2C4167B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Nov 2023 00:45:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eE31/f94lAa9BeiZcowlLqPL7NBQm38pk8tU8F3caVM=; b=utedlg5qzOdW1lxfNTnBHoOcvc
-	BZ7Ijwi5HeNQ5gZuBVxtk/+z0ECNfPokMdAzboHnEYc7Cul0BwdBP4LraD6oHGejE5golsSZImMmz
-	eFIpKzU/dGV8Ie65s2HTuL7Z8cUBOa/BlsQhQCIZUQA+dmQ2dZsocmzbow93d4Bwkc9pAWifPrv3J
-	nL3n4S8PzRsIAlCFP7BB3K9FYEYQrii9ZnVsOF9Rtu56UktTDPLT9/3uymy8rEUlj4n2mYutAV0Fj
-	5SQK7azUkbryV28ihwr3/Z4xPKFcZN26q1skHpzDWGw9s6AUExEC8qUSNs2kccmBVdV1wYfhe8OIj
-	tJQJL5pQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QTf6xGamSJHkzg+LJhUc14c1HpqllogFuMSCOMnpcK0=; b=N4FrUm8lTm2HnzFjX0sMVRON/E
+	PinKfmdd0nZhsg08rsa5g3ACJSafOyfI/BjTKyC4Gytf0kMVMj5cQbjiUrDbcuHHf1Y+Mfw3ScSBT
+	Aa/dmrVoBX9Jm6fJCRXzTvd1s2V9n3X6SA1Wo58g4/veNtwSEopFPLOFq5+1RvkMxqcJKzHsUe6xI
+	VUtkLGPIrt4P3JCbIDIt9Tm6vAhHRztmw0EM0ZkHdOK390q11QpeV5VFOmrf9FlMKnkd/+tA7Ggvo
+	emYkd8CQ+Y5JJQXDowYUH22wwN9sw+fgjPhUKjGkbsBSXFz6NxRH4fISae/Pfbv/DBPik1P42exnv
+	xlqyMv5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1xOy-00BTWD-1Z;
-	Sat, 11 Nov 2023 23:28:32 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1r1ybk-00BWGI-1b;
+	Sun, 12 Nov 2023 00:45:48 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1xOv-00BTVc-2G;
-	Sat, 11 Nov 2023 23:28:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1699745309; x=1731281309;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=yLMN9BN0x0GJyChe1fur9BIfuNV27m8XBnDpqqzLe8E=;
-  b=IPXlis9M7szAT4zS7rIE/41vZW3iQNRrFz4jvVZb6g6vG0tjR4Vg4vy7
-   Uv/RiPbGDSjrcFTRkKBNYPwswoSqPavxX6WkkjyMqP2/4Iyw6/4UtifHW
-   2XDsg3ib3r3HB6PMFVtzgMTVM4ozqG0GIDPqggEXfubSSwgjW6GUkrki7
-   A/I+MCGdGzR15VNIQxyI7r6YyO7Yt0O9HdaJtjrcnMhrXEAKicEtfGoBn
-   NidZvUxWBS+efqXDH+PJQAhpHWxhzZz90p0rkh6LZ2Jf859hh5oHHVxmz
-   qNClGEB65CRyufLMEPfZa4oGy6sXQ/SvMH3UUxML8Kw3oh1B5q+SmsaEG
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10891"; a="3316449"
-X-IronPort-AV: E=Sophos;i="6.03,296,1694761200"; 
-   d="scan'208";a="3316449"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Nov 2023 15:28:22 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10891"; a="764026399"
-X-IronPort-AV: E=Sophos;i="6.03,296,1694761200"; 
-   d="scan'208";a="764026399"
-Received: from lkp-server01.sh.intel.com (HELO 17d9e85e5079) ([10.239.97.150])
-  by orsmga002.jf.intel.com with ESMTP; 11 Nov 2023 15:28:15 -0800
-Received: from kbuild by 17d9e85e5079 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1r1xOf-000AoU-1f;
-	Sat, 11 Nov 2023 23:28:13 +0000
-Date: Sun, 12 Nov 2023 07:28:00 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Sumit Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: oe-kbuild-all@lists.linux.dev, dri-devel@lists.freedesktop.org,
-	John Stultz <jstultz@google.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Jeffrey Kardatzke <jkardatzke@google.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Vijayanand Jitta <quic_vjitta@quicinc.com>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Yong Wu <yong.wu@mediatek.com>, jianjiao.zeng@mediatek.com,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	ckoenig.leichtzumerken@gmail.com, linaro-mm-sig@lists.linaro.org,
-	linux-mediatek@lists.infradead.org,
-	Joakim Bech <joakim.bech@linaro.org>, tjmercier@google.com,
-	linux-arm-kernel@lists.infradead.org,
+	id 1r1ybg-00BWEd-2F
+	for linux-mediatek@lists.infradead.org;
+	Sun, 12 Nov 2023 00:45:46 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A5F9E10FE;
+	Sun, 12 Nov 2023 01:45:16 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1699749916;
+	bh=uGKMyjxeE09SxSoE219DNlH0/EroBN7b4hu+d2BIBf8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=f7s7asEv8mCWfPy5V7Il5JEhEHXUpOGsqAmqBFyibtGWnxtrTq+xiEZdHUQglKCa6
+	 Vt9vPOE4VuHMwaD/69qRpNpJ6opdtRNL5J7ZhEzMy9OtIN8q2S0v8a0O8mSvy/CXah
+	 fUEn9P7yBCNOC2PWCqoeYaQNH+AIlh6Q7pJuXReQ=
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: linux-media@vger.kernel.org
+Cc: Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 4/8] dma-buf: heaps: secure_heap: Add tee memory
- service call
-Message-ID: <202311120707.FDrzrRME-lkp@intel.com>
-References: <20231111111559.8218-5-yong.wu@mediatek.com>
+	Julien Stephan <jstephan@baylibre.com>,
+	Sakari Ailus <sakari.ailus@iki.fi>,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v6 2/3] media: uapi: Add controls for the THP7312 ISP
+Date: Sun, 12 Nov 2023 02:45:43 +0200
+Message-ID: <20231112004544.24877-3-laurent.pinchart@ideasonboard.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231112004544.24877-1-laurent.pinchart@ideasonboard.com>
+References: <20231112004544.24877-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231111111559.8218-5-yong.wu@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231111_152829_789281_9A2F9620 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20231111_164544_879805_C3450F6D 
+X-CRM114-Status: GOOD (  21.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,44 +71,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yong,
+The THP7312 is an external ISP from THine. As such, it implements a
+large number of parameters to control all aspects of the image
+processing. Many of those controls are already standard in V4L2, but
+some are fairly device-specific.
 
-kernel test robot noticed the following build errors:
+Reserve a range of 32 controls for the device. The driver will implement
+4 device-specific controls to start with, define and document them. 28
+additional device-specific controls should be enough for future
+development.
 
-[auto build test ERROR on drm-misc/drm-misc-next]
-[also build test ERROR on robh/for-next drm-tip/drm-tip linus/master v6.6 next-20231110]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Co-developed-by: Paul Elder <paul.elder@ideasonboard.com>
+Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+Changes since v5:
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yong-Wu/dma-buf-heaps-Initialize-a-secure-heap/20231111-192115
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20231111111559.8218-5-yong.wu%40mediatek.com
-patch subject: [PATCH v2 4/8] dma-buf: heaps: secure_heap: Add tee memory service call
-config: powerpc-allmodconfig (https://download.01.org/0day-ci/archive/20231112/202311120707.FDrzrRME-lkp@intel.com/config)
-compiler: powerpc64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231112/202311120707.FDrzrRME-lkp@intel.com/reproduce)
+- Don't expose AF controls if not supported by the sensor
+---
+ .../userspace-api/media/drivers/index.rst     |  1 +
+ .../userspace-api/media/drivers/thp7312.rst   | 39 +++++++++++++++++++
+ MAINTAINERS                                   |  2 +
+ include/uapi/linux/thp7312.h                  | 19 +++++++++
+ include/uapi/linux/v4l2-controls.h            |  6 +++
+ 5 files changed, 67 insertions(+)
+ create mode 100644 Documentation/userspace-api/media/drivers/thp7312.rst
+ create mode 100644 include/uapi/linux/thp7312.h
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202311120707.FDrzrRME-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   powerpc64-linux-ld: warning: discarding dynamic section .glink
-   powerpc64-linux-ld: warning: discarding dynamic section .plt
-   powerpc64-linux-ld: linkage table error against `tee_client_open_session'
-   powerpc64-linux-ld: stubs don't match calculated size
-   powerpc64-linux-ld: can not build stubs: bad value
-   powerpc64-linux-ld: drivers/dma-buf/heaps/secure_heap.o: in function `secure_heap_tee_session_init':
-   secure_heap.c:(.text.secure_heap_tee_session_init+0xd0): undefined reference to `tee_client_open_context'
-   powerpc64-linux-ld: secure_heap.c:(.text.secure_heap_tee_session_init+0x2b4): undefined reference to `tee_client_open_session'
-   powerpc64-linux-ld: secure_heap.c:(.text.secure_heap_tee_session_init+0x458): undefined reference to `tee_client_close_context'
-   powerpc64-linux-ld: drivers/dma-buf/heaps/secure_heap.o: in function `secure_heap_tee_service_call.constprop.0':
->> secure_heap.c:(.text.secure_heap_tee_service_call.constprop.0+0xbc): undefined reference to `tee_client_invoke_func'
-
+diff --git a/Documentation/userspace-api/media/drivers/index.rst b/Documentation/userspace-api/media/drivers/index.rst
+index 1726f8ec86fa..6b62c818899f 100644
+--- a/Documentation/userspace-api/media/drivers/index.rst
++++ b/Documentation/userspace-api/media/drivers/index.rst
+@@ -41,4 +41,5 @@ For more details see the file COPYING in the source distribution of Linux.
+ 	npcm-video
+ 	omap3isp-uapi
+ 	st-vgxy61
++	thp7312
+ 	uvcvideo
+diff --git a/Documentation/userspace-api/media/drivers/thp7312.rst b/Documentation/userspace-api/media/drivers/thp7312.rst
+new file mode 100644
+index 000000000000..7c777e6fb7d2
+--- /dev/null
++++ b/Documentation/userspace-api/media/drivers/thp7312.rst
+@@ -0,0 +1,39 @@
++.. SPDX-License-Identifier: GPL-2.0-only
++
++THine THP7312 ISP driver
++========================
++
++The THP7312 driver implements the following driver-specific controls:
++
++``V4L2_CID_THP7312_LOW_LIGHT_COMPENSATION``
++    Enable/Disable auto-adjustment, based on lighting conditions, of the frame
++    rate when auto-exposure is enabled.
++
++``V4L2_CID_THP7312_AUTO_FOCUS_METHOD``
++    Set method of auto-focus. Only takes effect when auto-focus is enabled.
++
++    .. flat-table::
++        :header-rows:  0
++        :stub-columns: 0
++        :widths:       1 4
++
++        * - ``0``
++          - Contrast-based auto-focus
++        * - ``1``
++          - PDAF
++        * - ``2``
++          - Hybrid of contrast-based and PDAF
++
++    Supported values for the control depend on the camera sensor module
++    connected to the THP7312. If the module doesn't have a focus lens actuator,
++    this control will not be exposed by the THP7312 driver. If the module has a
++    controllable focus lens but the sensor doesn't support PDAF, only the
++    contrast-based auto-focus value will be valid. Otherwise all values for the
++    controls will be supported.
++
++``V4L2_CID_THP7312_NOISE_REDUCTION_AUTO``
++    Enable/Disable auto noise reduction.
++
++``V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE``
++    Set the noise reduction strength, where 0 is the weakest and 10 is the
++    strongest.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 01f18b06f147..1cb8bd0ebec3 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21455,6 +21455,8 @@ L:	linux-media@vger.kernel.org
+ S:	Maintained
+ T:	git git://linuxtv.org/media_tree.git
+ F:	Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
++F:	Documentation/userspace-api/media/drivers/thp7312.rst
++F:	include/uapi/linux/thp7312.h
+ 
+ THUNDERBOLT DMA TRAFFIC TEST DRIVER
+ M:	Isaac Hazan <isaac.hazan@intel.com>
+diff --git a/include/uapi/linux/thp7312.h b/include/uapi/linux/thp7312.h
+new file mode 100644
+index 000000000000..2b629e05daf9
+--- /dev/null
++++ b/include/uapi/linux/thp7312.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
++/*
++ * THine THP7312 user space header file.
++ *
++ * Copyright (C) 2021 THine Electronics, Inc.
++ * Copyright (C) 2023 Ideas on Board Oy
++ */
++
++#ifndef __UAPI_THP7312_H_
++#define __UAPI_THP7312_H_
++
++#include <linux/v4l2-controls.h>
++
++#define V4L2_CID_THP7312_LOW_LIGHT_COMPENSATION		(V4L2_CID_USER_THP7312_BASE + 0x01)
++#define V4L2_CID_THP7312_AUTO_FOCUS_METHOD		(V4L2_CID_USER_THP7312_BASE + 0x02)
++#define V4L2_CID_THP7312_NOISE_REDUCTION_AUTO		(V4L2_CID_USER_THP7312_BASE + 0x03)
++#define V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE	(V4L2_CID_USER_THP7312_BASE + 0x04)
++
++#endif /* __UAPI_THP7312_H_ */
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index 68db66d4aae8..99c3f5e99da7 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -209,6 +209,12 @@ enum v4l2_colorfx {
+  */
+ #define V4L2_CID_USER_NPCM_BASE			(V4L2_CID_USER_BASE + 0x11b0)
+ 
++/*
++ * The base for THine THP7312 driver controls.
++ * We reserve 32 controls for this driver.
++ */
++#define V4L2_CID_USER_THP7312_BASE		(V4L2_CID_USER_BASE + 0x11c0)
++
+ /* MPEG-class control IDs */
+ /* The MPEG controls are applicable to all codec controls
+  * and the 'MPEG' part of the define is historical */
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Regards,
+
+Laurent Pinchart
+
 
