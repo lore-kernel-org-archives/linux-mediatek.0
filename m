@@ -4,75 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CCF5C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 07:07:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 152AFC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 07:07:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0HCmua+yxuFFSNPGmmWV8wqLP15fWKKUDACJzzv4Pzk=; b=LVRSJ7894A9w4FdmZXLSjSeBSr
-	UVvCs3JYZDeVcPef9UqKjvJC4rCnZCs18urokt8YxmKM95GIaCPUei0lwudVPWeGmR0cc2JXkL0aL
-	3VYLFK4L5yTH7oHsEHrNcK8eijFJqOiTA4vboi/wzAQNLaZmn6yW+jEGC7vBYlSytEgSZgqrJmpDc
-	BD9QjGVGEyZU9d/ABR7d5n1PCOM6+QootHxbZefkVKO9u1eQ23HIA+xcZ1Rp2fZbn26ICtcjd6FAh
-	5aZjnGHG7pTd0yqeJKsHZQdLDgNkJAzGiLSGZG1CWjZvpJcGljVumTiGP/8qRVsOi8Xt5crdOLiLi
-	HewkzHYQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jXEkGXbCtbIOJZL0eBlMntvmSAcsoRmhqUeWr+79ffA=; b=YCMKDkYgCy9tE0IGlRKMSvHMqz
+	rs9hRHeLzuK0elyZPuPNZweENx6WzTRj10MzTteqI2Vk1v88/ZrhSbJXBCToDV7bgFj/n/Brvp30w
+	cyLKF4p8ext0iSybe2H99ltDVUH3WH9/xlRNRLeRGaQIUbSS2j8HFSE7KDO280upAAK/ydC88H8dr
+	gNmZvaAzEtxilPWqRs5ViWGBizl9Rcxd9MdI73ZTEh5GrgBsWn3EKGhYCiqkBxNc79eEN5F3//0X2
+	N5VO4Gn+XsjXkUAXUVKZSqE/lzCJCBBsXK9PyarD1HYNmifN3ikq7DSH583UqKUxmI9psl64LkEn2
+	zXqcbK/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2R2m-00DPp9-3C;
-	Mon, 13 Nov 2023 07:07:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1r2R33-00DPt3-0I;
+	Mon, 13 Nov 2023 07:07:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2R2j-00DPnY-2r
+	id 1r2R31-00DPsS-1t
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Nov 2023 07:07:35 +0000
-X-UUID: 4dd079bc81f311ee86758d4a7c00f3a0-20231113
+	Mon, 13 Nov 2023 07:07:52 +0000
+X-UUID: 5aad644c81f311ee9b7791016c24628a-20231113
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0HCmua+yxuFFSNPGmmWV8wqLP15fWKKUDACJzzv4Pzk=;
-	b=rOQh4TZ250AbNixUR2iA+1dGLb+m+MrQ6aE8UIb9gDM7uONcc5NUe7zk3daiS/dDF9f8cR/hB8agNhZLhbynFTUjbhf1yWnHsGToO9pdm/+rcFYsd/iGn1cvkDo01Dxvho9Itvwssdut1Thcrg83ZXliPhnGntbz4IdW5SElBeA=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jXEkGXbCtbIOJZL0eBlMntvmSAcsoRmhqUeWr+79ffA=;
+	b=XUkbZMQquQ+UcjQ0rsZtqx1BfbopKgFNSP+OKvRTJo439sxf5Wc5z61C2GE+urv1FPNHUnQEI908WP7J+bF0xZM9STNgXFvNuDRZhWMjHJ5HqexDrkQRi2HF5YoKMzoUhczmeScfKCQAM/gji62gks3FdHANU3r2TEQNq0oWsuA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:65d6e0d7-ec03-45aa-a5d4-0687167c5f76,IP:0,U
+X-CID-O-INFO: VERSION:1.1.33,REQID:c2dcf177-3d97-407c-8f94-989da93bd98d,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:73d45295-10ce-4e4b-85c2-c9b5229ff92b,B
+X-CID-META: VersionHash:364b77b,CLOUDID:b52776fc-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 4dd079bc81f311ee86758d4a7c00f3a0-20231113
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5aad644c81f311ee9b7791016c24628a-20231113
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 581540848; Mon, 13 Nov 2023 00:07:27 -0700
+	with ESMTP id 1234501871; Mon, 13 Nov 2023 00:07:49 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 13 Nov 2023 15:07:25 +0800
+ 15.2.1118.26; Mon, 13 Nov 2023 15:07:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 13 Nov 2023 15:07:25 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 13 Nov 2023 15:07:13 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
-	<StanleyYP.Wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 4/8] wifi: mt76: mt7996: rework register offsets for mt7992
-Date: Mon, 13 Nov 2023 15:06:15 +0800
-Message-ID: <20231113070619.19964-5-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 0/8] Add MT7992 support
+Date: Mon, 13 Nov 2023 15:06:11 +0800
+Message-ID: <20231113070619.19964-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231113070619.19964-1-shayne.chen@mediatek.com>
-References: <20231113070619.19964-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.991100-8.000000
+X-TMASE-MatchedRID: kSL0NBRKvPcReJdaDf25josKNaNh88CQsf4f4CxxueRcKZwALwMGs4AX
+	rQfh62buh/90MLI5dilYk91062MLlxqXhvBXA7wbpN8sp+Lj7S2uiRuR9mCaureKIZi8OZjkZvo
+	+mFW19mDuzcUA0q2gBaBVvEjzNBpCHxPMjOKY7A8LbigRnpKlKTpcQTtiHDgW3IYlFO6bAPz8mx
+	h8UlOgf4GAyHU6rIh/EaXigxqt+eBmmpZSqWPzmMm15M0FklN1jR3SUzToIMOFoaBrz1hy1aF0b
+	WWhkpVEwZBgUyJVEbl6Fw8/PpTMRaVvmiAyeA2kc5MSfkiJFI5p3LlElBHTlw==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.991100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 9A30C7B4BEA3F2AC459A9BEC0AAE65AAE7B50DBC6A8ADE8B0145ECE5779372942000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231112_230733_925063_9964C4DB 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20231112_230751_627698_C1EDE717 
+X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,236 +97,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+This series adds support for MT7992 (Filogic 660) PCI Wi-Fi device, which
+is a Wi-Fi 7 chipset supporting concurrent dual-band operation on 2.4 GHz
+and 5 GHz.
 
-Add mt7992_offs to differentiate registers that share the same
-definitions with mt7996 chipsets but have differnet offsets.
-This is a preliminary patch for mt7992 chipsets support.
+Benjamin Lin (2):
+  wifi: mt76: mt7996: add DMA support for mt7992
+  wifi: mt76: connac: add new definition of tx descriptor
 
-Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7996/mmio.c  | 59 ++++++++++++++
- .../net/wireless/mediatek/mt76/mt7996/regs.h  | 76 +++++++++++++------
- 2 files changed, 112 insertions(+), 23 deletions(-)
+Shayne Chen (1):
+  wifi: mt76: mt7996: introduce mt7996_band_valid()
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-index 739d7f53d347..b1119f62c946 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-@@ -30,6 +30,58 @@ static const struct __base mt7996_reg_base[] = {
- 	[WF_RATE_BASE]		= { { 0x820ee000, 0x820fe000, 0x830ee000 } },
- };
- 
-+static const u32 mt7996_offs[] = {
-+	[MIB_RVSR0]		= 0x720,
-+	[MIB_RVSR1]		= 0x724,
-+	[MIB_BTSCR5]		= 0x788,
-+	[MIB_BTSCR6]		= 0x798,
-+	[MIB_RSCR1]		= 0x7ac,
-+	[MIB_RSCR27]		= 0x954,
-+	[MIB_RSCR28]		= 0x958,
-+	[MIB_RSCR29]		= 0x95c,
-+	[MIB_RSCR30]		= 0x960,
-+	[MIB_RSCR31]		= 0x964,
-+	[MIB_RSCR33]		= 0x96c,
-+	[MIB_RSCR35]		= 0x974,
-+	[MIB_RSCR36]		= 0x978,
-+	[MIB_BSCR0]		= 0x9cc,
-+	[MIB_BSCR1]		= 0x9d0,
-+	[MIB_BSCR2]		= 0x9d4,
-+	[MIB_BSCR3]		= 0x9d8,
-+	[MIB_BSCR4]		= 0x9dc,
-+	[MIB_BSCR5]		= 0x9e0,
-+	[MIB_BSCR6]		= 0x9e4,
-+	[MIB_BSCR7]		= 0x9e8,
-+	[MIB_BSCR17]		= 0xa10,
-+	[MIB_TRDR1]		= 0xa28,
-+};
-+
-+static const u32 mt7992_offs[] = {
-+	[MIB_RVSR0]		= 0x760,
-+	[MIB_RVSR1]		= 0x764,
-+	[MIB_BTSCR5]		= 0x7c8,
-+	[MIB_BTSCR6]		= 0x7d8,
-+	[MIB_RSCR1]		= 0x7f0,
-+	[MIB_RSCR27]		= 0x998,
-+	[MIB_RSCR28]		= 0x99c,
-+	[MIB_RSCR29]		= 0x9a0,
-+	[MIB_RSCR30]		= 0x9a4,
-+	[MIB_RSCR31]		= 0x9a8,
-+	[MIB_RSCR33]		= 0x9b0,
-+	[MIB_RSCR35]		= 0x9b8,
-+	[MIB_RSCR36]		= 0x9bc,
-+	[MIB_BSCR0]		= 0xac8,
-+	[MIB_BSCR1]		= 0xacc,
-+	[MIB_BSCR2]		= 0xad0,
-+	[MIB_BSCR3]		= 0xad4,
-+	[MIB_BSCR4]		= 0xad8,
-+	[MIB_BSCR5]		= 0xadc,
-+	[MIB_BSCR6]		= 0xae0,
-+	[MIB_BSCR7]		= 0xae4,
-+	[MIB_BSCR17]		= 0xb0c,
-+	[MIB_TRDR1]		= 0xb24,
-+};
-+
- static const struct __map mt7996_reg_map[] = {
- 	{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA_0 (PCIE0 MCU DMA0) */
- 	{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA_1 (PCIE0 MCU DMA1) */
-@@ -382,6 +434,13 @@ static int mt7996_mmio_init(struct mt76_dev *mdev,
- 	switch (device_id) {
- 	case 0x7990:
- 		dev->reg.base = mt7996_reg_base;
-+		dev->reg.offs_rev = mt7996_offs;
-+		dev->reg.map = mt7996_reg_map;
-+		dev->reg.map_size = ARRAY_SIZE(mt7996_reg_map);
-+		break;
-+	case 0x7992:
-+		dev->reg.base = mt7996_reg_base;
-+		dev->reg.offs_rev = mt7992_offs;
- 		dev->reg.map = mt7996_reg_map;
- 		dev->reg.map_size = ARRAY_SIZE(mt7996_reg_map);
- 		break;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-index 6623a6ba12d6..21637e3aae42 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-@@ -19,6 +19,7 @@ struct __base {
- /* used to differentiate between generations */
- struct mt7996_reg_desc {
- 	const struct __base *base;
-+	const u32 *offs_rev;
- 	const struct __map *map;
- 	u32 map_size;
- };
-@@ -39,6 +40,35 @@ enum base_rev {
- 
- #define __BASE(_id, _band)			(dev->reg.base[(_id)].band_base[(_band)])
- 
-+enum offs_rev {
-+	MIB_RVSR0,
-+	MIB_RVSR1,
-+	MIB_BTSCR5,
-+	MIB_BTSCR6,
-+	MIB_RSCR1,
-+	MIB_RSCR27,
-+	MIB_RSCR28,
-+	MIB_RSCR29,
-+	MIB_RSCR30,
-+	MIB_RSCR31,
-+	MIB_RSCR33,
-+	MIB_RSCR35,
-+	MIB_RSCR36,
-+	MIB_BSCR0,
-+	MIB_BSCR1,
-+	MIB_BSCR2,
-+	MIB_BSCR3,
-+	MIB_BSCR4,
-+	MIB_BSCR5,
-+	MIB_BSCR6,
-+	MIB_BSCR7,
-+	MIB_BSCR17,
-+	MIB_TRDR1,
-+	__MT_OFFS_MAX,
-+};
-+
-+#define __OFFS(id)			(dev->reg.offs_rev[(id)])
-+
- /* RRO TOP */
- #define MT_RRO_TOP_BASE				0xA000
- #define MT_RRO_TOP(ofs)				(MT_RRO_TOP_BASE + (ofs))
-@@ -178,32 +208,32 @@ enum base_rev {
- #define MT_WF_MIB_BASE(_band)			__BASE(WF_MIB_BASE, (_band))
- #define MT_WF_MIB(_band, ofs)			(MT_WF_MIB_BASE(_band) + (ofs))
- 
--#define MT_MIB_BSCR0(_band)			MT_WF_MIB(_band, 0x9cc)
--#define MT_MIB_BSCR1(_band)			MT_WF_MIB(_band, 0x9d0)
--#define MT_MIB_BSCR2(_band)			MT_WF_MIB(_band, 0x9d4)
--#define MT_MIB_BSCR3(_band)			MT_WF_MIB(_band, 0x9d8)
--#define MT_MIB_BSCR4(_band)			MT_WF_MIB(_band, 0x9dc)
--#define MT_MIB_BSCR5(_band)			MT_WF_MIB(_band, 0x9e0)
--#define MT_MIB_BSCR6(_band)			MT_WF_MIB(_band, 0x9e4)
--#define MT_MIB_BSCR7(_band)			MT_WF_MIB(_band, 0x9e8)
--#define MT_MIB_BSCR17(_band)			MT_WF_MIB(_band, 0xa10)
-+#define MT_MIB_BSCR0(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR0))
-+#define MT_MIB_BSCR1(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR1))
-+#define MT_MIB_BSCR2(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR2))
-+#define MT_MIB_BSCR3(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR3))
-+#define MT_MIB_BSCR4(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR4))
-+#define MT_MIB_BSCR5(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR5))
-+#define MT_MIB_BSCR6(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR6))
-+#define MT_MIB_BSCR7(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR7))
-+#define MT_MIB_BSCR17(_band)			MT_WF_MIB(_band, __OFFS(MIB_BSCR17))
- 
- #define MT_MIB_TSCR5(_band)			MT_WF_MIB(_band, 0x6c4)
- #define MT_MIB_TSCR6(_band)			MT_WF_MIB(_band, 0x6c8)
- #define MT_MIB_TSCR7(_band)			MT_WF_MIB(_band, 0x6d0)
- 
--#define MT_MIB_RSCR1(_band)			MT_WF_MIB(_band, 0x7ac)
-+#define MT_MIB_RSCR1(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR1))
- /* rx mpdu counter, full 32 bits */
--#define MT_MIB_RSCR31(_band)			MT_WF_MIB(_band, 0x964)
--#define MT_MIB_RSCR33(_band)			MT_WF_MIB(_band, 0x96c)
-+#define MT_MIB_RSCR31(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR31))
-+#define MT_MIB_RSCR33(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR33))
- 
- #define MT_MIB_SDR6(_band)			MT_WF_MIB(_band, 0x020)
- #define MT_MIB_SDR6_CHANNEL_IDL_CNT_MASK	GENMASK(15, 0)
- 
--#define MT_MIB_RVSR0(_band)			MT_WF_MIB(_band, 0x720)
-+#define MT_MIB_RVSR0(_band)			MT_WF_MIB(_band, __OFFS(MIB_RVSR0))
- 
--#define MT_MIB_RSCR35(_band)			MT_WF_MIB(_band, 0x974)
--#define MT_MIB_RSCR36(_band)			MT_WF_MIB(_band, 0x978)
-+#define MT_MIB_RSCR35(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR35))
-+#define MT_MIB_RSCR36(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR36))
- 
- /* tx ampdu cnt, full 32 bits */
- #define MT_MIB_TSCR0(_band)			MT_WF_MIB(_band, 0x6b0)
-@@ -216,16 +246,16 @@ enum base_rev {
- #define MT_MIB_TSCR4(_band)			MT_WF_MIB(_band, 0x6c0)
- 
- /* rx ampdu count, 32-bit */
--#define MT_MIB_RSCR27(_band)			MT_WF_MIB(_band, 0x954)
-+#define MT_MIB_RSCR27(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR27))
- 
- /* rx ampdu bytes count, 32-bit */
--#define MT_MIB_RSCR28(_band)			MT_WF_MIB(_band, 0x958)
-+#define MT_MIB_RSCR28(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR28))
- 
- /* rx ampdu valid subframe count */
--#define MT_MIB_RSCR29(_band)			MT_WF_MIB(_band, 0x95c)
-+#define MT_MIB_RSCR29(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR29))
- 
- /* rx ampdu valid subframe bytes count, 32bits */
--#define MT_MIB_RSCR30(_band)			MT_WF_MIB(_band, 0x960)
-+#define MT_MIB_RSCR30(_band)			MT_WF_MIB(_band, __OFFS(MIB_RSCR30))
- 
- /* remaining windows protected stats */
- #define MT_MIB_SDR27(_band)			MT_WF_MIB(_band, 0x080)
-@@ -234,18 +264,18 @@ enum base_rev {
- #define MT_MIB_SDR28(_band)			MT_WF_MIB(_band, 0x084)
- #define MT_MIB_SDR28_TX_RWP_NEED_CNT		GENMASK(15, 0)
- 
--#define MT_MIB_RVSR1(_band)			MT_WF_MIB(_band, 0x724)
-+#define MT_MIB_RVSR1(_band)			MT_WF_MIB(_band, __OFFS(MIB_RVSR1))
- 
- /* rx blockack count, 32 bits */
- #define MT_MIB_TSCR1(_band)			MT_WF_MIB(_band, 0x6b4)
- 
- #define MT_MIB_BTSCR0(_band)			MT_WF_MIB(_band, 0x5e0)
--#define MT_MIB_BTSCR5(_band)			MT_WF_MIB(_band, 0x788)
--#define MT_MIB_BTSCR6(_band)			MT_WF_MIB(_band, 0x798)
-+#define MT_MIB_BTSCR5(_band)			MT_WF_MIB(_band, __OFFS(MIB_BTSCR5))
-+#define MT_MIB_BTSCR6(_band)			MT_WF_MIB(_band, __OFFS(MIB_BTSCR6))
- 
- #define MT_MIB_BFTFCR(_band)			MT_WF_MIB(_band, 0x5d0)
- 
--#define MT_TX_AGG_CNT(_band, n)			MT_WF_MIB(_band, 0xa28 + ((n) << 2))
-+#define MT_TX_AGG_CNT(_band, n)			MT_WF_MIB(_band, __OFFS(MIB_TRDR1) + ((n) << 2))
- #define MT_MIB_ARNG(_band, n)			MT_WF_MIB(_band, 0x0b0 + ((n) << 2))
- #define MT_MIB_ARNCR_RANGE(val, n)		(((val) >> ((n) << 4)) & GENMASK(9, 0))
- 
+StanleyYP Wang (5):
+  wifi: mt76: connac: add firmware support for mt7992
+  wifi: mt76: mt7996: rework register offsets for mt7992
+  wifi: mt76: mt7996: support mt7992 eeprom loading
+  wifi: mt76: mt7996: adjust interface num and wtbl size for mt7992
+  wifi: mt76: mt7996: add PCI IDs for mt7992
+
+ .../net/wireless/mediatek/mt76/mt76_connac.h  |  5 ++
+ .../wireless/mediatek/mt76/mt76_connac3_mac.h |  1 +
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  3 +-
+ .../net/wireless/mediatek/mt76/mt7996/dma.c   | 72 +++++++++++----
+ .../wireless/mediatek/mt76/mt7996/eeprom.c    | 18 +++-
+ .../net/wireless/mediatek/mt76/mt7996/init.c  | 42 +++++----
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   |  7 +-
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 38 +++++---
+ .../net/wireless/mediatek/mt76/mt7996/mmio.c  | 59 ++++++++++++
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    | 33 +++++--
+ .../net/wireless/mediatek/mt76/mt7996/pci.c   | 12 ++-
+ .../net/wireless/mediatek/mt76/mt7996/regs.h  | 90 +++++++++++++------
+ 12 files changed, 294 insertions(+), 86 deletions(-)
+
 -- 
 2.39.2
 
