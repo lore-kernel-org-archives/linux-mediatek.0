@@ -4,56 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEEB1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 15:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 319DDC4167D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 16:14:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OyQ8BjYHjQMQhpzuppCFeKGNCUaBi+JzVoIeEnA0pj8=; b=dx2nhverTx7WDKAyUVNf7z/VGW
-	wdqwz4Noz5+hRROvmgZ6mguFzlRRIKUnKjgky8rTvgMLFxRV3e5Qs/RqELdem853WxtKaI9NhV0TF
-	KfgLQND8Rj1VS0LCsYG/MCpbt881lcpXssDYC9TkjmxvfpP2GhKNFAN5Gj2Mz260ec7O3OkOYlVhu
-	qHPKeUl2cFKWAaACavM7poE9UH73oWgC6hdr/5Vl/SpZbZAwC86qMdsqjK5JUp6c/mb3qeXcCKcVJ
-	r4nFTsro/iaFLJx6gbd4Wo5wCfJ5jr0F1J+HKoEka15+DdxGWnl/FofAlnNCZ7vRkhVmzd7zQmmx+
-	VtA29Suw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e9eYxP9jo++BrU37sjEo0gWvrNmjZuuIGLRUfvENy9E=; b=hds1sBNquh3QAvC1GUbXYxLavv
+	pg4uW/HtUFnpuIofUYWhIdbVw8RKZ8aTrJyv7nFjtnpt+z0AtKl9k9G4wLsTF+FyH4hf4CWIPjLHI
+	iS/zc4N6/0KMHXKfJeEFY+SePrw3yw42/vdTeWYlQD2tw7S1ySDnjbJMOvE5WmWt1bTeFRBC0wzYa
+	YLpj5/lAtZf1btKTiDb3yk9B0rCXrKUm1Uran8HEojPyzYsNq5Zsx27eL17Uqtot8CWmyKJn9E/jA
+	nRalSUeNJxOJvUDHRiu4jk89Q0+KR976Km5hVkmyUMU0Y2lk4c6i8ScHiPOOi6+bav9Lz85RiHfcr
+	2t097bZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2Z6Y-00EGPl-2R;
-	Mon, 13 Nov 2023 15:44:02 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1r2ZaL-00EJH8-2k;
+	Mon, 13 Nov 2023 16:14:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2Z6V-00EGOL-0Z;
-	Mon, 13 Nov 2023 15:44:00 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1r2Z6M-0003NH-02;
-	Mon, 13 Nov 2023 15:43:50 +0000
-Date: Mon, 13 Nov 2023 15:43:47 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] watchdog: mediatek: mt7988: add wdt support
-Message-ID: <fc1c022551edc9ee2dfaa4c1dcf6b146b5b2aae5.1699890006.git.daniel@makrotopia.org>
-References: <e26a98fd0b7b7b431922405732275bac01eaf220.1699890006.git.daniel@makrotopia.org>
+	id 1r2ZaI-00EJGf-1Q;
+	Mon, 13 Nov 2023 16:14:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 995BF60FA4;
+	Mon, 13 Nov 2023 16:14:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3FE3C433CA;
+	Mon, 13 Nov 2023 16:14:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1699892085;
+	bh=P1HsCRngx2AULeZ5NjJzkJnUfB2/UHXYrbiKx+V3dsw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ZatGpOBLjKNxznQDsZctXqsvFhBhjf8PWoirXtdiwxa9fifmlLOI2Vi5OS8HThuG/
+	 o0pkOtnkwKY26BgyOTV/a2W/SrzsOPiD7t/43Pups9X3OC9Ez3lFdPnntPkKV+tMUX
+	 mW/b5FCxuuoCJ3Md6Wn/MkEviUOTi373Z4cUuveMAruuicBtM2gTQQV/c0wE6Rmrsm
+	 kGyLYCruxDIjr9xg4Xw60IfgcT8FQlxi9wbidKBiquR1IGgYJFkcz88Xg529QIQayz
+	 SJMa4c9HrJsKNUL+GlWwDFhNcW5aTKNdFp+du6qqI3eEjFfsDa0V+Qdeeud+4Im8ON
+	 A/SQ8kpg/rC4w==
+From: Mark Brown <broonie@kernel.org>
+To: pierre-louis.bossart@linux.intel.com, peter.ujfalusi@linux.intel.com, 
+ yung-chuan.liao@linux.intel.com, ranjani.sridharan@linux.intel.com, 
+ kai.vehmanen@linux.intel.com, daniel.baluta@nxp.com, lgirdwood@gmail.com, 
+ tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, Trevor Wu <trevor.wu@mediatek.com>
+Cc: yc.hung@mediatek.com, sound-open-firmware@alsa-project.org, 
+ alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20231103095433.10475-1-trevor.wu@mediatek.com>
+References: <20231103095433.10475-1-trevor.wu@mediatek.com>
+Subject: Re: [PATCH 0/3] ASoC: SOF: mediatek: remove unused variables
+Message-Id: <169989208005.3289099.6135603822989118878.b4-ty@kernel.org>
+Date: Mon, 13 Nov 2023 16:14:40 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e26a98fd0b7b7b431922405732275bac01eaf220.1699890006.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-0438c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_074359_208852_5E76A9D1 
-X-CRM114-Status: GOOD (  15.70  )
+X-CRM114-CacheID: sfid-20231113_081446_544606_3101A697 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,121 +76,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for watchdog and reset generator unit of the MediaTek
-MT7988 SoC.
+On Fri, 03 Nov 2023 17:54:29 +0800, Trevor Wu wrote:
+> There are some variables that are no longer being used because they
+> were declared for the deprecated memory layout. Currently, these code
+> sections confuse the users. Therefore, this series removes the code
+> that was implemented for those variables.
+> 
+> Trevor Wu (3):
+>   ASoC: SOF: mediatek: mt8195: clean up unused code
+>   ASoC: SOF: mediatek: mt8186: clean up unused code
+>   ASoC: SOF: mediatek: remove unused variables
+> 
+> [...]
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v2: call new toprgu_reset_sw_en_unlocked from toprgu_reset_update while
-    holding lock.
+Applied to
 
- drivers/watchdog/mtk_wdt.c | 40 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index b2330b16b497a..5a31a8746e954 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -58,6 +58,8 @@
- #define WDT_SWSYSRST		0x18U
- #define WDT_SWSYS_RST_KEY	0x88000000
- 
-+#define WDT_SWSYSRST_EN		0xfc
-+
- #define DRV_NAME		"mtk-wdt"
- #define DRV_VERSION		"1.0"
- 
-@@ -71,10 +73,12 @@ struct mtk_wdt_dev {
- 	struct reset_controller_dev rcdev;
- 	bool disable_wdt_extrst;
- 	bool reset_by_toprgu;
-+	bool has_swsysrst_en;
- };
- 
- struct mtk_wdt_data {
- 	int toprgu_sw_rst_num;
-+	bool has_swsysrst_en;
- };
- 
- static const struct mtk_wdt_data mt2712_data = {
-@@ -89,6 +93,11 @@ static const struct mtk_wdt_data mt7986_data = {
- 	.toprgu_sw_rst_num = MT7986_TOPRGU_SW_RST_NUM,
- };
- 
-+static const struct mtk_wdt_data mt7988_data = {
-+	.toprgu_sw_rst_num = 24,
-+	.has_swsysrst_en = true,
-+};
-+
- static const struct mtk_wdt_data mt8183_data = {
- 	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
- };
-@@ -109,6 +118,28 @@ static const struct mtk_wdt_data mt8195_data = {
- 	.toprgu_sw_rst_num = MT8195_TOPRGU_SW_RST_NUM,
- };
- 
-+/**
-+ * toprgu_reset_sw_en_unlocked() - enable/disable software control for reset bit
-+ * @mtk_wdt: Pointer to instance of struct mtk_wdt_dev.
-+ * @id: Bit number identifying the reset to be enabled or disabled.
-+ * @enable: If true, enable software control for that bit, disable otherwise.
-+ *
-+ * Context: The caller must hold lock of struct mtk_wdt_dev.
-+ */
-+static void toprgu_reset_sw_en_unlocked(struct mtk_wdt_dev *data,
-+					unsigned long id, bool enable)
-+{
-+	u32 tmp;
-+
-+	tmp = readl(data->wdt_base + WDT_SWSYSRST_EN);
-+	if (enable)
-+		tmp |= BIT(id);
-+	else
-+		tmp &= ~BIT(id);
-+
-+	writel(tmp, data->wdt_base + WDT_SWSYSRST_EN);
-+}
-+
- static int toprgu_reset_update(struct reset_controller_dev *rcdev,
- 			       unsigned long id, bool assert)
- {
-@@ -119,6 +150,9 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
- 
- 	spin_lock_irqsave(&data->lock, flags);
- 
-+	if (assert && data->has_swsysrst_en)
-+		toprgu_reset_sw_en_unlocked(data, id, true);
-+
- 	tmp = readl(data->wdt_base + WDT_SWSYSRST);
- 	if (assert)
- 		tmp |= BIT(id);
-@@ -127,6 +161,9 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
- 	tmp |= WDT_SWSYS_RST_KEY;
- 	writel(tmp, data->wdt_base + WDT_SWSYSRST);
- 
-+	if (!assert && data->has_swsysrst_en)
-+		toprgu_reset_sw_en_unlocked(data, id, false);
-+
- 	spin_unlock_irqrestore(&data->lock, flags);
- 
- 	return 0;
-@@ -406,6 +443,8 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 						       wdt_data->toprgu_sw_rst_num);
- 		if (err)
- 			return err;
-+
-+		mtk_wdt->has_swsysrst_en = wdt_data->has_swsysrst_en;
- 	}
- 
- 	mtk_wdt->disable_wdt_extrst =
-@@ -444,6 +483,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
- 	{ .compatible = "mediatek,mt6589-wdt" },
- 	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
- 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
-+	{ .compatible = "mediatek,mt7988-wdt", .data = &mt7988_data },
- 	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
- 	{ .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
- 	{ .compatible = "mediatek,mt8188-wdt", .data = &mt8188_data },
--- 
-2.42.1
+Thanks!
+
+[1/3] ASoC: SOF: mediatek: mt8195: clean up unused code
+      commit: ab475966455ce285c2c9978a3e3bfe97d75ff8d4
+[2/3] ASoC: SOF: mediatek: mt8186: clean up unused code
+      commit: a4de5a345cf76c6f294a906e11c2fb675a46fd3d
+[3/3] ASoC: SOF: mediatek: remove unused variables
+      commit: 82e340ca3f25dc3ddd20e88e3606ed9006f90f5d
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
