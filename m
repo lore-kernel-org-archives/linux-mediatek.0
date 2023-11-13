@@ -4,98 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CF30C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 11:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3991C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 11:24:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=; b=Oy1bidr9/J652g3y/wgW1cJDks
-	HzjiKMd3MLcc0CthLtHKa4HR6opzNeL7NqbyWFOIGxR+VET2hQaaqPGSIo1omD+2xrTM+Ut6uoy1v
-	cAbSave5VmiXTVFi5sxNkvfYz2f/PLOTS/j9QxlpYCV2+nQ1dQgkQKmF6ao2FJqPYFY7LPlB2AHyR
-	LbzYFV2UzmPV1S26vQrjR2qNN1JtDo48xqaR9nSACjSp7nthMZS7IN0cNtv5DmCEDxawb7PxqPuC+
-	zhT0qQrMEk0ByumS1EurnjI5JhNoLdixu+w8k0KkBQbu3SsmAO9Hhj14fhOpTs/IKKsIPTU4KLPrM
-	AMHeq59g==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ihe5CWoYwzVYQa0PIBn4FXCZubjqfqZzL14QGGmAy2E=; b=BmF2scpkrx8ifV9QLK0s1Dtk9p
+	yt4FqUTtOyzZvclAgflAPVm/SmRayBbs6OhIniTGY+nkmM5izvPQKaxVjz/vTLNT/OoF42vqI+Rz7
+	HTSi4DlAT9xDvSZ/OK/qTXXF4UMSUNBcF4N7GtgZkPb5+ntqXkbipTPF70QN2suIFlJvr6LNQ/yqd
+	vsKelytGgKlgrnE4I5+zXxgML6J0qkDGx0PXJrFXDPH5YC+1t4Kgoh/k3McUG0d7tign4tzd8kkVS
+	2F6fjNgsxjynUreYalh4zEuey3kSUZ11Zpt8lKTkjQEKPeO2T7h97XVglXUOYakePgWf1Pazw/QK5
+	EKSSz31w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2V31-00Dir4-2E;
-	Mon, 13 Nov 2023 11:24:07 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1r2V3C-00DiyE-1i;
+	Mon, 13 Nov 2023 11:24:18 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2V2x-00Diq2-2Q;
-	Mon, 13 Nov 2023 11:24:05 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4083f61322fso33326895e9.1;
-        Mon, 13 Nov 2023 03:24:02 -0800 (PST)
+	id 1r2V38-00DiuL-2N;
+	Mon, 13 Nov 2023 11:24:15 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4083cd3917eso35021265e9.3;
+        Mon, 13 Nov 2023 03:24:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1699874641; x=1700479441; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
-        b=ZtcTSEYNpVz62SqB8w3R3UYFxhGtg83n5TqyHlvKZKWT/H5BNuKvPWJExDDXP0Twlz
-         lDYCtMeOhHUUUs9+mkqTMIn2sbbbQifGS33Mv76pqebe1yROttf0GAZvplIjN5GNb6Xx
-         gbKTr6Mg5XV0hGMCiz46i0yCpC/lJXM6dF3oGLkcOwtc1AtvMfe5XnS5tTgg3WeWdtuG
-         C7z4BJgAdwfl+22UeigtJ+7Rxg6D/Zp82aTtk3Ho5XtyEt1CuiqFgdAE3lFpvqBFIJYH
-         gYBEIZpUURoqMtA8W24mtg2pwMMcInZFjTKStESMeIYb1kqwkPEVVRi1PLBTg2Ye42EX
-         Wsgg==
+        d=gmail.com; s=20230601; t=1699874652; x=1700479452; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ihe5CWoYwzVYQa0PIBn4FXCZubjqfqZzL14QGGmAy2E=;
+        b=XSp3Wq95qHSPVrEEuXP3vWilJO/przl/TwJ2WAWbvQYWYn37OCflibRa7RvDQL92jP
+         JAe6NitEPU5tJLQ/WTCwFlkw8jsBzueD40e7TYTzJwcXbAlHOK6f5J8m9ykx89R1RRN6
+         GVfkKeqS9PXd8oXj+4oBn+IKrXElXgnGUR5YwMweVj5QDywLZ51+L/wfI1NHeYdUSd+J
+         0AyjjBOu1pGudZClUlihBk5YSYdG80gRj5T9D7BxQ/NeuvvtzYsTkhOON4YzbfNrxcX9
+         5wyISi149gZvUlsU+DZFP/427n4qkk5hX6ax0I+NVLj/IkmP54n7YCeTR99ch6geq+ZQ
+         /VgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699874641; x=1700479441;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
-        b=cwjvTDQGO9Vlp133FkVia5PIV7HdCE5FCv0T0bX/jUYCeqP+fMPGuOMf7f2j/UQ4WC
-         3njrITEYcRKzOJwdA6TNMY4Vm3tMO2nJsZp9aOAoihAaD2rM3+sMK6aiHLCgVNnGptrE
-         a+uhILPI8FiVvsNBYUFPWb0MKXHeNnSk0WLqDic0oUiQfx72RwDLOvbCCSdeGlXfPx2+
-         8CUfwDqpQ9pQaiyosYYe+x1OGl+QjzQ+qZGfNv02Rc3PFWXXGnsuzmhyRDILVsrdzShC
-         T75SFMX0uTHj9RSubJzlhB/F6sNOhv8vgYla2omc6aVqNJdBz6QvDdHV7o13+GbVCwVs
-         Vtfw==
-X-Gm-Message-State: AOJu0YzRqNsinQ3LcWKLDJLffAG1OISQsPGIGOvSjl+nau5zoxtuhh3H
-	bWWa4cttSaZvqJp4lXpwUbiERI360W0=
-X-Google-Smtp-Source: AGHT+IHeSfxulnBJhsxmWDCBwohx10bO7bTu1BHjhSiyjqQiFY1QaU+JjC7xoDkTmTAquVkbrdJhaA==
-X-Received: by 2002:a05:600c:4fd2:b0:404:7670:90b8 with SMTP id o18-20020a05600c4fd200b00404767090b8mr5004204wmq.27.1699874640270;
-        Mon, 13 Nov 2023 03:24:00 -0800 (PST)
+        d=1e100.net; s=20230601; t=1699874652; x=1700479452;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ihe5CWoYwzVYQa0PIBn4FXCZubjqfqZzL14QGGmAy2E=;
+        b=CkogFnpZAdqsTQmYgi9Csnt0e1ibF4aaBL8bPFzOYQst03xarFL9VmykpKExlDYuC6
+         ugg13gPfry2NbXaOhoGP7AL8GAZnauJAWdtf3kCj+AsxydA6GgpDv5yukBWKjAwDK8cf
+         DT7Y6ihUPSPtuDbuPj6qu9IOct5gmuq339ksfphaL+ZzR/QsnvYhqrCwDswmRyRxJ5nP
+         F55NRD06WhkmEW4Ts5AXitxzAIdc+GTbGjpZDRX7/TYhedCC3vXnrPWrynt5fGT72/xU
+         bLHcBmdIY0I7iEmKiD/FINXt2T0ITJr4gQSrq4MgFQk4ybN14W7D5PyC1ddxuNO+EEzE
+         FVzg==
+X-Gm-Message-State: AOJu0YwtbUiMS/aGGOm1K2xWO3T3l5DphI9DJiDIVwXI/QDr2kDFhd9e
+	L3BmlNT3sXe10NIUCppno+w=
+X-Google-Smtp-Source: AGHT+IEb96vRjjDVhf2WWvt4ATSMI0ZIHMZT2M821fnApL0F6zP0tqP/mZlSqQGsQCCeZ+/3gKjOXw==
+X-Received: by 2002:a05:600c:4f09:b0:405:336b:8307 with SMTP id l9-20020a05600c4f0900b00405336b8307mr5644653wmq.7.1699874651755;
+        Mon, 13 Nov 2023 03:24:11 -0800 (PST)
 Received: from zotac.lan. (dynamic-2a01-0c22-6e16-fe00-2223-08ff-fe18-0310.c22.pool.telefonica.de. [2a01:c22:6e16:fe00:2223:8ff:fe18:310])
-        by smtp.gmail.com with ESMTPSA id l19-20020a05600c4f1300b0040772138bb7sm13565787wmq.2.2023.11.13.03.23.59
+        by smtp.gmail.com with ESMTPSA id l19-20020a05600c4f1300b0040772138bb7sm13565787wmq.2.2023.11.13.03.24.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Nov 2023 03:23:59 -0800 (PST)
+        Mon, 13 Nov 2023 03:24:11 -0800 (PST)
 From: Heiner Kallweit <hkallweit1@gmail.com>
 To: Wolfram Sang <wsa@kernel.org>,
-	intel-gfx@lists.freedesktop.org
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Cc: linux-i2c@vger.kernel.org,
 	Heiner Kallweit <hkallweit1@gmail.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	linux-fbdev@vger.kernel.org,
-	amd-gfx@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Jocelyn Falempe <jfalempe@redhat.com>,
-	linux-sunxi@lists.linux.dev,
 	linux-mediatek@lists.infradead.org,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Yongqin Liu <yongqin.liu@linaro.org>,
-	John Stultz <jstultz@google.com>
-Subject: [PATCH 00/20] remove I2C_CLASS_DDC support
-Date: Mon, 13 Nov 2023 12:23:24 +0100
-Message-ID: <20231113112344.719-1-hkallweit1@gmail.com>
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 12/20] drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c: remove I2C_CLASS_DDC support
+Date: Mon, 13 Nov 2023 12:23:36 +0100
+Message-ID: <20231113112344.719-13-hkallweit1@gmail.com>
 X-Mailer: git-send-email 2.42.1
+In-Reply-To: <20231113112344.719-1-hkallweit1@gmail.com>
+References: <20231113112344.719-1-hkallweit1@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_032404_081333_076FD6EF 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231113_032414_775182_A6E5B0A9 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,37 +110,20 @@ Preferably this series should be applied via the i2c tree.
 Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 
 ---
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c |    1 -
+ 1 file changed, 1 deletion(-)
 
- drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c           |    1 -
- drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |    1 -
- drivers/gpu/drm/ast/ast_i2c.c                     |    1 -
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c         |    1 -
- drivers/gpu/drm/display/drm_dp_helper.c           |    1 -
- drivers/gpu/drm/display/drm_dp_mst_topology.c     |    1 -
- drivers/gpu/drm/gma500/cdv_intel_dp.c             |    1 -
- drivers/gpu/drm/gma500/intel_gmbus.c              |    1 -
- drivers/gpu/drm/gma500/oaktrail_hdmi_i2c.c        |    1 -
- drivers/gpu/drm/gma500/psb_intel_sdvo.c           |    1 -
- drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_i2c.c   |    1 -
- drivers/gpu/drm/i915/display/intel_gmbus.c        |    1 -
- drivers/gpu/drm/i915/display/intel_sdvo.c         |    1 -
- drivers/gpu/drm/loongson/lsdc_i2c.c               |    1 -
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c           |    1 -
- drivers/gpu/drm/mgag200/mgag200_i2c.c             |    1 -
- drivers/gpu/drm/msm/hdmi/hdmi_i2c.c               |    1 -
- drivers/gpu/drm/radeon/radeon_i2c.c               |    1 -
- drivers/gpu/drm/rockchip/inno_hdmi.c              |    1 -
- drivers/gpu/drm/rockchip/rk3066_hdmi.c            |    1 -
- drivers/gpu/drm/sun4i/sun4i_hdmi_i2c.c            |    1 -
- drivers/video/fbdev/core/fb_ddc.c                 |    1 -
- drivers/video/fbdev/cyber2000fb.c                 |    1 -
- drivers/video/fbdev/i740fb.c                      |    1 -
- drivers/video/fbdev/intelfb/intelfb_i2c.c         |   15 +++++----------
- drivers/video/fbdev/matrox/i2c-matroxfb.c         |   12 ++++--------
- drivers/video/fbdev/s3fb.c                        |    1 -
- drivers/video/fbdev/tdfxfb.c                      |    1 -
- drivers/video/fbdev/tridentfb.c                   |    1 -
- drivers/video/fbdev/via/via_i2c.c                 |    1 -
- include/linux/i2c.h                               |    1 -
- 31 files changed, 9 insertions(+), 47 deletions(-)
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
+index d675c954b..54e46e440 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
+@@ -297,7 +297,6 @@ static int mtk_hdmi_ddc_probe(struct platform_device *pdev)
+ 
+ 	strscpy(ddc->adap.name, "mediatek-hdmi-ddc", sizeof(ddc->adap.name));
+ 	ddc->adap.owner = THIS_MODULE;
+-	ddc->adap.class = I2C_CLASS_DDC;
+ 	ddc->adap.algo = &mtk_hdmi_ddc_algorithm;
+ 	ddc->adap.retries = 3;
+ 	ddc->adap.dev.of_node = dev->of_node;
+
 
