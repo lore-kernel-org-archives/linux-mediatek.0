@@ -4,94 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07AAEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 10:16:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E215C4167D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 10:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uTO0ERk3BWfb6UISnsbuegKh0j43MXQ3l4j0lmIgta4=; b=rG2t/QrNbRAVg2nob3xEPjvArD
-	CDvOQKSQDQNKM9VMI6KmTvl1IPo/1aCuyjLEDaoJnvrQyooC9shsvXWOyVQtGEOYIWi7kP7e6wQhl
-	NfOjFIYkF8OyvWnN5a1CiZGjA23WuBd4uDPmt268OmV1cf/pPvqjz3VxhmoFX3wHYhJtzvBJZ3CO7
-	5fviLiCtxbjgmJuPuNVrSeP0K896HiWQARrT1FxGQYlOLlV7K2WejrBoVuCSwFaLYZKRWCsbx65ZV
-	zqoQ+IKL24xq9VeclHiGaTAPldCKg9TUcVu/ubQnszxcI1hi+gy/HG0/cZ870hOxBurqfKN7azTs4
-	nqaTJDhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rwKUQgZ8c/rCfYaF4u6mj2l9ehYS2OQ+enRdM0kGD08=; b=F/7vWkEURuZim6ZFWUeir6NKQU
+	kWINYdYVzX/0oJ7qBcAJK79qZ2V40oYU9eTTw9tJRnbu4mBPtw/ej/LZhprlzyF03h5xXil5HMXVn
+	aZJhhc7FCXjpiLHIbTmNNTHlLoe/IPtUlGQtGihkgvfobz7FHn0PbUB812ETum7kjmvDKf7rHKgKc
+	2LgVDuQufRVdMRsEd4531neKmvM4KDFLbNzV795wA1936l9oiTPeEyMkgTrmnijRb5Udi0xZUyPKr
+	KHlIx8uPdzmXFx/PPIgrgEe/lvAUu3Noz9X2Sv63UNV8yW71X0d7NbYGtPm8mvJ0LKJO7HlcJIIEH
+	JW4t5MZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2TzI-00DdIy-22;
-	Mon, 13 Nov 2023 10:16:12 +0000
-Received: from mail-ot1-f43.google.com ([209.85.210.43])
+	id 1r2U4D-00Ddt5-2o;
+	Mon, 13 Nov 2023 10:21:17 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2TzE-00DdII-24;
-	Mon, 13 Nov 2023 10:16:09 +0000
-Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-6ce344fa7e4so2686177a34.0;
-        Mon, 13 Nov 2023 02:16:06 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699870565; x=1700475365;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=uTO0ERk3BWfb6UISnsbuegKh0j43MXQ3l4j0lmIgta4=;
-        b=hvHh9OD2vo8jwXvrZ6yeQuAqj+vJFKgcQYIIm4EqVpD8x085AA948k+RtJt2h2GnlU
-         LKrQJtwKWIfgW1f6KixtWFpd0yDUEE9lL2QsXi3dRmTDaauUFAeSagiQwjRc96FKi5DX
-         J3jsHibjBcvStCp4I44VmaKVMfFdq2AqIa8XGMyT2B89zo/11cLPwlDnu7ciOQs1IYmr
-         5XTLBFAW6ux7Giiaaxdxjo/At8MA/9xqupUoAZkbgJzkVTESDmrsAJqwQ4nlomRHky1q
-         sHAJmjfVUMD9ZYERrEuWG28hatjW+s3ZZKQh38LMI/wXUcPxVUFmzaU+XIXtXxIdvkZ4
-         R7Ig==
-X-Gm-Message-State: AOJu0YyYL6PCKecJBMSb73t2lyKhXwWpUkfBzr+4NkV6kv+0XJ9tW871
-	1oDAwOVFLwVosroMz5s7GYYMXKiJczGFaQ==
-X-Google-Smtp-Source: AGHT+IHv3ZBiv+tJx2dCHl6Sc+maIFzuGara/XRhdY+MgIj2ye3Cyl0YoXKg2zdlABplZnJnz0xO6Q==
-X-Received: by 2002:a05:6830:1608:b0:6bc:f6d0:87d2 with SMTP id g8-20020a056830160800b006bcf6d087d2mr5859233otr.38.1699870565597;
-        Mon, 13 Nov 2023 02:16:05 -0800 (PST)
-Received: from mail-oo1-f47.google.com (mail-oo1-f47.google.com. [209.85.161.47])
-        by smtp.gmail.com with ESMTPSA id d12-20020a9d4f0c000000b006ce33dc3004sm781008otl.49.2023.11.13.02.16.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Nov 2023 02:16:04 -0800 (PST)
-Received: by mail-oo1-f47.google.com with SMTP id 006d021491bc7-589d4033e84so2202052eaf.1;
-        Mon, 13 Nov 2023 02:16:04 -0800 (PST)
-X-Received: by 2002:a0d:d74d:0:b0:5a7:d86c:988 with SMTP id
- z74-20020a0dd74d000000b005a7d86c0988mr6382133ywd.28.1699870543575; Mon, 13
- Nov 2023 02:15:43 -0800 (PST)
-MIME-Version: 1.0
-References: <20231110152927.70601-1-u.kleine-koenig@pengutronix.de> <20231110152927.70601-4-u.kleine-koenig@pengutronix.de>
-In-Reply-To: <20231110152927.70601-4-u.kleine-koenig@pengutronix.de>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 13 Nov 2023 11:15:31 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdU8nCWzTuBeSTPkR=heWqdAYrhAJ9ZgydzWNRqkTuT+xg@mail.gmail.com>
-Message-ID: <CAMuHMdU8nCWzTuBeSTPkR=heWqdAYrhAJ9ZgydzWNRqkTuT+xg@mail.gmail.com>
-Subject: Re: [PATCH 03/52] serial: 8250: Convert to platform remove callback
- returning void
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
-	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Al Cooper <alcooperx@gmail.com>, 
-	=?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	John Ogness <john.ogness@linutronix.de>, Thomas Gleixner <tglx@linutronix.de>, 
-	Tony Lindgren <tony@atomide.com>, Petr Mladek <pmladek@suse.com>, 
-	Biju Das <biju.das.jz@bp.renesas.com>, Johan Hovold <johan@kernel.org>, 
-	Chen-Yu Tsai <wenst@chromium.org>, Andi Shyti <andi.shyti@linux.intel.com>, 
-	Thomas Richard <thomas.richard@bootlin.com>, Rob Herring <robh@kernel.org>, 
-	Arnd Bergmann <arnd@arndb.de>, =?UTF-8?Q?Duje_Mihanovi=C4=87?= <duje.mihanovic@skole.hr>, 
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Jacob Keller <jacob.e.keller@intel.com>, 
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>, kernel@pengutronix.de, 
-	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, 
-	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-tegra@vger.kernel.org
+	id 1r2U4A-00Ddrw-1t
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 Nov 2023 10:21:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=rwKUQgZ8c/rCfYaF4u6mj2l9ehYS2OQ+enRdM0kGD08=;
+	t=1699870869; x=1701080469; b=xTEJbuE9EnwcdhCRsDfGk1HJ8D1Q23644CcoYQxIRCx8eZM
+	OPwBGkwYbX6npdW6voLcBrXBRfYpenHcnnVdHLyT3D/HeJE7RQIy/gEeu3hKZCVE3oJ1r2bdq28NP
+	+xFRSCmxwqQAwftkykA/DB6ZKQQpkTq1yC+Lci76IYw07olvJBdFBdetl+RpX4TMwDsLlAhElGO84
+	tmCakU73ooXpjAFKSyl1Ob2jKs7YyBQSLlXyXUkr7ZoEOIu+OjxIKU3HnH7xs9v0kGoct2kHmz7rf
+	B10Kmu5khWdzwRAtV+Ik7x08V7+Xg2Cgzg4sSYqSXHTr3H7KpX1BiuS++ZKPAnkA==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.97)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1r2U3r-00000006dsI-0RQY;
+	Mon, 13 Nov 2023 11:20:55 +0100
+Message-ID: <2eaa04080702230b8dbe3b3541d6d831484c4f1f.camel@sipsolutions.net>
+Subject: Re: [PATCH v2,2/2] wifi: mac80211: Refactor STA CSA parsing flow
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Michael-CY Lee <michael-cy.lee@mediatek.com>, linux-wireless
+	 <linux-wireless@vger.kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Money Wang
+ <money.wang@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>
+Date: Mon, 13 Nov 2023 11:20:53 +0100
+In-Reply-To: <20231113021107.13110-2-michael-cy.lee@mediatek.com>
+References: <20231113021107.13110-1-michael-cy.lee@mediatek.com>
+	 <20231113021107.13110-2-michael-cy.lee@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+MIME-Version: 1.0
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_021608_682325_623AA3C4 
-X-CRM114-Status: GOOD (  20.58  )
+X-CRM114-CacheID: sfid-20231113_022115_103791_8903C26A 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,39 +77,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 10, 2023 at 4:31=E2=80=AFPM Uwe Kleine-K=C3=B6nig
-<u.kleine-koenig@pengutronix.de> wrote:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is ignored (apart
-> from emitting a warning) and this typically results in resource leaks.
->
-> To improve here there is a quest to make the remove callback return
-> void. In the first step of this quest all drivers are converted to
-> .remove_new(), which already returns void. Eventually after all drivers
-> are converted, .remove_new() will be renamed to .remove().
->
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
->
-> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
+On Mon, 2023-11-13 at 10:11 +0800, Michael-CY Lee wrote:
+> The Wi-Fi Standard (IEEE 802.11-2020 9.4.2.160) initially specified that
+> the Wide Bandwidth Channel Switch (WBCS) IE subfields have same definitio=
+ns
+> as the S1G or VHT Operation Information according to the operating band.
+>=20
+> However, it did not change the definitions in the amendment for 6 GHz
+> (IEEE 802.11ax-2021), so the logic remain the same for handling the WBCS
+> IE even if there is no VHT mode in 6 GHz.
+>=20
+> Now the Wi-Fi Standard draft (IEEE P80211be D3.2 9.4.2.159) modifies the
+> defitions, making the WBCS IE subfields follow the definitions of S1G,
 
->  drivers/tty/serial/8250/8250_dw.c           | 6 ++----
->  drivers/tty/serial/8250/8250_em.c           | 5 ++---
+type - definitions
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> VHT and HE Operation Information in S1G, 5 GHz and 6 GHz band, respective=
+ly.
+>=20
+> APs in 6 GHz band might use the VHT or HE Operation Information to build
+> a WBCS IE according to the Wi-Fi Standard they follow. Originally, the ST=
+A
 
-Gr{oetje,eeting}s,
+Probably should say "Element" in place of all those "IE" - the spec
+stopped calling them "Information Elements" a long time ago :)
 
-                        Geert
+> just parsed the WBCS IE as VHT Operation Inforamtion, which was wrong if
+> the AP was actually build the IE by the HE Operation Information.
+>=20
+> To avoid the ambiguity, STA should prefer the op_class in the Extended
+> Channel Switch Announcement (ECSA) IE rathen than the WBCS IE. If the ECS=
+A
 
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
+typo - rather
 
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+> IE is not presented in a channel switch to 6 GHz, the STA should be aware
+> of the possible ambiguity when parsing the WBCS IE.
+>=20
+> To derive the correct bandwidtin in use, the STA should check the
+
+typo - bandwidth in
+
+> +	case 4:
+> +		/* 320 MHz bandwidth
+> +		 * TODO channel switch to 320 MHz bandwidth should be indiated
+> +		 * by Bandwidth Indication IE (IEEE P80211be D3.2 9.4.2.159)
+> +		 */
+> +		he_6ghz_oper->control =3D IEEE80211_EHT_OPER_CHAN_WIDTH_320MHZ;
+> +		break;
+
+I'm not sure what this TODO was meant to refer to, but I do know that
+D4.1 made some changes here, maybe we should check those? I haven't even
+checked what the changes are though.
+
+In any case, checking with a newer draft and using that would seem
+useful?
+
+Haven't really read all the other things here yet, this just caught my
+eye since I also just heard about D4.1 changes, but I don't have that or
+even the old stuff all in my head right now.
+
+johannes
+
 
