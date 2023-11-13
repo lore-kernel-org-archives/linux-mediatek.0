@@ -4,187 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04FC2C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 06:37:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC222C4167D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 07:07:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7/cDFz8daL0+HbvAFgtGnRav/S6t1IgZ4JezatEACec=; b=GKVFfTBLJHLukc6wwdljZ+JUCM
-	Ffzps4+zUB6bls2xneWlg0P2+cROfDEp85bk9yzmqmhjESu0CMMrAYLXkIBBfG1iqP9YRMQaxW/N5
-	pax7j137xJlrimh0AIDSC2IAbB+PRnDtm87iZs+60aTUqRTHOE8o1MkAlgOGj+CFUi2I7O1ZNlmSo
-	7szj4mhlRq3sbCK3YIbAjipevrPKPTIWs/ofDxrHVI+1CkA2j/K33oLLHHnuepTw6PxSWCGuofsls
-	32262oBHF34yYICBk9my1cCL06zYK8AltQDE/Pxh0i9t/UMOWGSmOohV0EwYn8RiFTmgfNqNdCLyb
-	c3V9Elxw==;
+	bh=MOuswpbEwubvPqY+qvHqmihHLe1IZ5lOF2x0v0TqQd8=; b=z39rTEaxvvLDLCD59zd5s9aFL2
+	mtyK7GShozsT0xQlomXyc6/KZ3gPwiM7qa7Qex4EBywzXgTihJdR/e9JOO4WF98PBYWn17xaBXOV0
+	JT5bOYuRqRKrWTZ9NAoNa6D0pxLA/ABu94tlpDsWTtTDGP883RcQqerWeHU8mMMPLSiiGfZ3fCpvq
+	I7EFP9ur7VQePGBse2tcBl6unieeraXjRTPet8VWw8NgTSwzDfBvubgnUDDXcfco1xFJkwR9e0kAC
+	Ahu1GtaYNbYrDZ4tzjyOOMGgAKO3noOBzvLGmg1Y6yHTsRylfrqZ7KglFvdZdcwtymyQIsqlkvqGR
+	b6qIyqYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2QZi-00DOIt-37;
-	Mon, 13 Nov 2023 06:37:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1r2R2l-00DPok-1r;
+	Mon, 13 Nov 2023 07:07:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2QZg-00DOI2-0C;
-	Mon, 13 Nov 2023 06:37:33 +0000
-X-UUID: 191bb33e81ef11ee86758d4a7c00f3a0-20231112
+	id 1r2R2i-00DPn7-1x
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 Nov 2023 07:07:34 +0000
+X-UUID: 4accfe5281f311ee9b7791016c24628a-20231113
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=7/cDFz8daL0+HbvAFgtGnRav/S6t1IgZ4JezatEACec=;
-	b=agQ142QKrI8Is+2YLklskt+QfGjo2ZDYF4b8msO6RGjkZ5XLj4u4170XFTU8jrQU0l/hHk8ApjK0C9/H3PINU0xT5yQ2wTIVRN+sibd5dIKgsCGVXGLnqAHRfYrTgejH0V7liutgYNoVnSZQAlI8W7fpt1dPe+gFrFk83JbkXbk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MOuswpbEwubvPqY+qvHqmihHLe1IZ5lOF2x0v0TqQd8=;
+	b=KA9gLOW5adSRMXbim3wiGmCoP4r58li6wjhJv2saMkwCtFNpVsk10gEPCm795HGgIk/qmmO+hDG+ZdAZvUmDNTbVliZNFwLelWdU6J7PooEyML0gLUtCdN/uJafLxjvYxh3WUewk5XvCxLiqxG8bzoUYyWL4XzOvGHo2+lm7MIg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:1fe94279-fc81-4fe0-a41b-17f361a04ba5,IP:0,U
-	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:364b77b,CLOUDID:c656fd5f-c89d-4129-91cb-8ebfae4653fc,B
+X-CID-O-INFO: VERSION:1.1.33,REQID:3625095b-3d09-4a8b-81e8-ab1aade776c2,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:364b77b,CLOUDID:21d45295-10ce-4e4b-85c2-c9b5229ff92b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 191bb33e81ef11ee86758d4a7c00f3a0-20231112
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 4accfe5281f311ee9b7791016c24628a-20231113
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1497008200; Sun, 12 Nov 2023 23:37:21 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 93245388; Mon, 13 Nov 2023 00:07:22 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 13 Nov 2023 14:37:18 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 13 Nov 2023 14:37:18 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=keJD+wVqTiWxsZ0l7tEJDgv/8I+xAcvZSixg+lpTkG9rAGM8tBnRHmNGyYYUZ6+CUPhZad6mrGwqWpjueB+3sS1JslQvuBGzGTssLvLfQhYiI+q+HvhxgqWwO7z5OGvlX6UHzepWfCzfaqYPfRXysWE+4Gu9rbSxo8cbIbEhnFAgy8puOkSH3LZzLDhgpWt4CwDJMobqsoOo4Hmj6Im7LFalg3IwEZydWNrwpI9As9e3nXn49syCUW/dyPXBeCgExDlMleGUF9kdW2ywkyLMniPxu3Bj2ku+DwtXuFBEAxZuRR8wQyYRYsS458X002QguIIeUJSzS6KR2FuTwmL0Lw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7/cDFz8daL0+HbvAFgtGnRav/S6t1IgZ4JezatEACec=;
- b=nrRxWUmsAsKzLYbqPRJc1XirdtN2pyeAQ8KK8J75S8Q5XAACQoOX+ELWiqimPoX71HkCRV3t0mgL48rOSlyy+FB3qjKTOgEsq5tjOOnG9FG6kk6h7SX6aKkn03O47WPV9ENImjGw02iJIiqoV3aRHSKBQIcbcaCc5te38zBnqtvWAbrwkPCQVuw7OrM5hkvgdm1nh1tw4aw4T09HOOmPv8nqkLxPEJ8WlnqEuglWdQGul3vraiCcNf0LWns4Q5yKs9mZPvdSgPfshPfxY3bw2kwof0KoIPxp1QdWz+tzo+FcJdMtAWf4F8ZJEKWtQINElW9bhCD03XAJI21WC+5XZA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7/cDFz8daL0+HbvAFgtGnRav/S6t1IgZ4JezatEACec=;
- b=Q1fx/yce/RoTgvuG3IqQ7pP8yXy3WhwtcizIhxn0UXM3/KxBzmNXMG0cjbeGDQ3Ed+W6hUWAHmZ0YyVZPN7Czqh72P4+2EQFMXVXKclwURroERaKTvHQMoBYlkjkDpGARZCABLHr3qa16DDOUZDQiqJeEHjjjszLn03Q7q4s0zE=
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
- KL1PR03MB6899.apcprd03.prod.outlook.com (2603:1096:820:9e::13) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6977.29; Mon, 13 Nov 2023 06:37:14 +0000
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::6834:f551:ad97:6f6d]) by SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::6834:f551:ad97:6f6d%6]) with mapi id 15.20.6977.028; Mon, 13 Nov 2023
- 06:37:13 +0000
-From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-To: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"christian.koenig@amd.com" <christian.koenig@amd.com>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>, "sumit.semwal@linaro.org"
-	<sumit.semwal@linaro.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"jstultz@google.com" <jstultz@google.com>, "nicolas@ndufresne.ca"
-	<nicolas@ndufresne.ca>, "linaro-mm-sig@lists.linaro.org"
-	<linaro-mm-sig@lists.linaro.org>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>,
-	=?utf-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
-	<Jianjiao.Zeng@mediatek.com>, =?utf-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?=
-	<kuohong.wang@mediatek.com>, "quic_vjitta@quicinc.com"
-	<quic_vjitta@quicinc.com>, "ckoenig.leichtzumerken@gmail.com"
-	<ckoenig.leichtzumerken@gmail.com>, "jkardatzke@google.com"
-	<jkardatzke@google.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
-	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
-	"tjmercier@google.com" <tjmercier@google.com>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "joakim.bech@linaro.org"
-	<joakim.bech@linaro.org>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 6/8] dt-bindings: reserved-memory: Add secure CMA
- reserved memory range
-Thread-Topic: [PATCH v2 6/8] dt-bindings: reserved-memory: Add secure CMA
- reserved memory range
-Thread-Index: AQHaFJDH3q0MzKy6jU6noAScabHMm7B1EbIAgAK82IA=
-Date: Mon, 13 Nov 2023 06:37:13 +0000
-Message-ID: <5d7b2458b8d1896ce575f4ed2d413f4e8eeb92b4.camel@mediatek.com>
-References: <20231111111559.8218-1-yong.wu@mediatek.com>
-	 <20231111111559.8218-7-yong.wu@mediatek.com>
-	 <0ccee72f-98ac-4a08-9253-9c22dad4d95a@linaro.org>
-In-Reply-To: <0ccee72f-98ac-4a08-9253-9c22dad4d95a@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|KL1PR03MB6899:EE_
-x-ms-office365-filtering-correlation-id: 2c289089-6ff4-4e41-b296-08dbe412f8d9
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ZWLA58sZ56tp47K/uGuwCuNwHMXC58U24adoyDsdnMuj/vjDqMy0Q6kE6QnA3gOsKKgNb6ZdCrfoRt+pHFzKGBR5m2QTncGLIXbc21gWbbVwsWJpQtvxUnSj1jQYq4fAauCSE2S0/2OQV9Bvhr5QK4YIijVI6NzTSSH7joyi7X8kHjBTEAqSeWfvzaeyLZZZI7Ia4oumVizzeXl59onkwt63/ju68lZozCcE4tspTSnvQpLylQS0ZAVjPGJU9RBur3RYYdR35WKhDiC1kerl4OhcvbCfzzIfLUXSPMMf7tgvfkctoDVaG6xWD26OuzeOgygajWCxEOEJ2bXkvFbMh2eeMqfJ07/468UeBcgdHz43iz/Ds4bawGfwutXyWAU/kazky8gfeQ2HbuC7kfW0pokZHR2sapGhxafrFspj8DqcQqBCPfmSY25YOjgkTUWuTfpDB55XZJQiJ4C4pHJuFG00et1Xv818zo4zS5MsazW/2ftQImsUO7ExOXF7uVo2W41lU04xnAczvwmn+hQ+YjdRDfRgpqIt3YpL3c4Vtzs61CrfBAH/AMg0nM7nrnifWqfcLB3uTuOw2eH/fG2ppc1Tk0XMj0PSzr5lArQSQ9iMd9b8/DOtrplX0rWSIAkOaHFriFvkGyQtHE6xMabkVxZV0UKSnSY5+sx+tE2hfCNMmJIyb957WHYgj07hnKhCTXQ2zFW5SrWgDvFqv7vHNXaX7IkImlqWmgK0lZ9+AlCge9+ZSsXx6g4TCrXwhimL
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(396003)(376002)(366004)(346002)(39860400002)(136003)(230273577357003)(230922051799003)(230173577357003)(64100799003)(186009)(1800799009)(451199024)(7416002)(83380400001)(26005)(2906002)(4001150100001)(2616005)(122000001)(38100700002)(86362001)(36756003)(85182001)(38070700009)(41300700001)(8936002)(4326008)(8676002)(71200400001)(54906003)(64756008)(66446008)(66476007)(316002)(478600001)(6486002)(966005)(53546011)(6506007)(66556008)(91956017)(110136005)(66946007)(76116006)(6512007)(5660300002)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YTRvTWVTeDQ4VkpNVEdBVDRsRm5ML1ZBZkltSXU1N1VVVjNmMXc5RnF2bkt0?=
- =?utf-8?B?V1dwTzN0ZnFLRHZna2VUTE4xZk5kOTYwdjZINFpBSGlpVFliSEJKTGVibm9n?=
- =?utf-8?B?Y004c0VJU3NLYnUvcldqeWl0V0J2ckdnTHNGV1U4eWZZNTdoOWpSbWNvbEFY?=
- =?utf-8?B?ZGNUaGk0c2RnNVcrQnFPeUMzWmwyL3k3V2FlSTNHelZjNUg4ajk2dm5BTWhZ?=
- =?utf-8?B?cVZUbVpEN2VvMVVkNHdTMitpck9La2FqNlQwYWhiMUJVUTJHcGMzM1pDdnJD?=
- =?utf-8?B?MmEyTFJ2MWxlbkdjUXpIbUdVdytRc3hKbGxCd3dXWEhqWmR1dG9ZNi9OeWw2?=
- =?utf-8?B?VGVkSjExbFByMFJ3UWF0MWRadFJlSXFhbVJnc2dkelA4cVpBZVdwVU9Ha1Rx?=
- =?utf-8?B?ZTh6b240blErYW10NmpmYzBOa1JyWnlPeU53bVZkZ2NwMnFSaE5FK0JEb2Yv?=
- =?utf-8?B?bUsreXdBaVBRU2RFL3RrcjZDS1lPT3A5ZURFYUtLUzl5SFRMUXIxQmx5QjlH?=
- =?utf-8?B?OU5CdzdVenZaUXorMlJkQjM4VTNNTnpOVmJ0SXZQNVdIWEhnQ09PTng4VEVG?=
- =?utf-8?B?TUh0THFVS3Rpa3V5UDk4K1VmemFZelphSWQ0MW4zWjhJQlhCWjVaR3N1YnJZ?=
- =?utf-8?B?Wm9FVWFMSmhEYnc3cVZ1RW9SRHVwZzdsTVpPVHJ6QUhmaGdVWjhUK3YvTHpI?=
- =?utf-8?B?M00yMitOc0hHbXJXc21BNjk1NkFMcWErWVM1SThnai9xQkR5TE5hckRuODNs?=
- =?utf-8?B?Q1d1empKOU5Qenk0SkxqNXg0VGdDRWZJNlVNMHZtWkovOGVrVkgvZzlXd1A1?=
- =?utf-8?B?akdzUFl6SXdWV2Y1b2hsRTFTWXd6N2VadHV4SlVyUi9CczVNYVdNL0ZmOExo?=
- =?utf-8?B?RDgvT3NqZlFIK2tGbzNuaDdnT3h4UXRWdEZSdmhjbHZrYlVLTmF1WlJiUHRm?=
- =?utf-8?B?REN6VjR3NWYxTmFmdWx0aStpWVNEa3lEVUxQMnJYeU9hSDNrTkVEeFdkN04v?=
- =?utf-8?B?MURyckRQakVlc01FYVhQYUxWWnFSTkdMTjVLZ3lWSzI3L2VOYTNLanNnSUhI?=
- =?utf-8?B?YUtZdnVXb1JwckhuaUxzeUVZdEwreXhseXhFb2sySEZGVGdtS3pjbFNsaS9s?=
- =?utf-8?B?aDNpRFY2VFVhYzNWNTBsL0l5WHkxTUZkMUVhVW9GWVVrSEUvZmdqQUVweWRQ?=
- =?utf-8?B?eXB3c0E4OTFHT3ExdXFBM3lBMGhkeFl4aUdSNkxzSWFrSkVlRTcvdHhmRFpo?=
- =?utf-8?B?S1FyWGhXclN1eEppSUdxaEtkNTJ0UXB4U3RyakVtVlRkQUt4MTNqb1hqMUd1?=
- =?utf-8?B?NVhwYWRrYzB2WFowR3BxL0JCa3B2NUszUFdmV09BV3hBYTloR2xxS1k5cjg1?=
- =?utf-8?B?S1Rkb3NjYldpTVBhbEYwY1pFRmlvdUt0dzV3RlJrTVZrMG1DQ2M1cmljbERO?=
- =?utf-8?B?c1BENFdlNm5nbG0yeGwzSWM1cGhoMEtkaWVITjF4bjFMVGVQZXBTei92cEZG?=
- =?utf-8?B?YWcxUTRzc2U2ellJWnQyMmNXaWNyaXo4MEo0VFB6UmVKRFBjN3RkNmw3aFRU?=
- =?utf-8?B?VnpadnpzNzFwcTArYTBlUWxYZlRnZGFqRnpYZ3RjRDhFNm1BZm1SMlBzMFNW?=
- =?utf-8?B?Q1VWbzFDVUZEdFJOMmtrekJEc0d4Vzc3L2I0L2pNcERiMlY4bkMzWTFTL3ZQ?=
- =?utf-8?B?alR0K1NPL2YxdXIxdVFITmJQakVqUkE4MHJ1NDAzeGRoYVBnSHVFOFNQSVZz?=
- =?utf-8?B?a2pwaEZXWFc5QlhPcFBYYmNJcWR1WldkdHhqS242YzRrUm5XOC9La1RyZUFO?=
- =?utf-8?B?alF0OW10VVZWdWtzeWQ0RWw5RC9OTXNDYlZvSFUrLzV2Q0VKd3YxTnJXSmtD?=
- =?utf-8?B?VFFNb1RkOWZMZzdTRk1wZjNIYmRERWJmb0p1VWxtaXBuZUc5YnZNeGhKNFlv?=
- =?utf-8?B?aWIrSThaQlRHd0pLWW01MkJiSS80b0MrUHpwVFN4anczV3ZlbEswOTdxcXZI?=
- =?utf-8?B?VU16M2toUitjMGtFNW5ZSURtOGxRMWJiOUh5MHV6WU9ZN3FSVUl2MFhoN1h4?=
- =?utf-8?B?VENtUmJWd3AvYXd0VVNVY3h5MDRjNVc2TG50VUNYYWhnTXRmSTFSNUJCVVJF?=
- =?utf-8?Q?DbKXQA7ocVMiuc+MqfJMDoO8j?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <188B1C5740DD1D478C571C7081F5CDCC@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.1118.26; Mon, 13 Nov 2023 15:07:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 13 Nov 2023 15:07:20 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>, Benjamin Lin <benjamin-jw.lin@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 2/8] wifi: mt76: connac: add firmware support for mt7992
+Date: Mon, 13 Nov 2023 15:06:13 +0800
+Message-ID: <20231113070619.19964-3-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231113070619.19964-1-shayne.chen@mediatek.com>
+References: <20231113070619.19964-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2c289089-6ff4-4e41-b296-08dbe412f8d9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Nov 2023 06:37:13.8240
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: z2vzzt3nAOiDwH1V2auYQNwXD6Jc+w7gdbKi6oaJHs7d+MqWh4mCK4BwUpX5aBXpsaYXlFYHgeD0EBKXAs5TNA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB6899
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231112_223732_205796_13B41180 
-X-CRM114-Status: GOOD (  27.71  )
+X-CRM114-CacheID: sfid-20231112_230732_654690_A35743E1 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -199,80 +88,171 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCAyMDIzLTExLTExIGF0IDEzOjQ4ICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtz
-IG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRl
-ciBvciB0aGUgY29udGVudC4NCj4gIE9uIDExLzExLzIwMjMgMTI6MTUsIFlvbmcgV3Ugd3JvdGU6
-DQo+ID4gQWRkIGEgYmluZGluZyBmb3IgZGVzY3JpYmluZyB0aGUgc2VjdXJlIENNQSByZXNlcnZl
-ZCBtZW1vcnkgcmFuZ2UuDQo+IFRoZQ0KPiA+IG1lbW9yeSByYW5nZSBhbHNvIHdpbGwgYmUgZGVm
-aW5lZCBpbiB0aGUgVEVFIGZpcm13YXJlLiBJdCBtZWFucyB0aGUNCj4gVEVFDQo+ID4gd2lsbCBi
-ZSBjb25maWd1cmVkIHdpdGggdGhlIHNhbWUgYWRkcmVzcy9zaXplIHRoYXQgaXMgYmVpbmcgc2V0
-IGluDQo+IHRoaXMNCj4gPiBEVCBub2RlLg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IFlvbmcg
-V3UgPHlvbmcud3VAbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiANCj4gV2hhdCB3YXMgdGhlIG91
-dGNvbWUgb2YgcHJldmlvdXMgZGlzY3Vzc2lvbj8gSSBkb24ndCBzZWUgYW55DQo+IHJlZmVyZW5j
-ZXMNCj4gdG8gdGhlIGNvbmNsdXNpb24gYW5kIHlvdXIgY2hhbmdlbG9nICJSZXdvcmQgdGhlIGR0
-LWJpbmRpbmcNCj4gZGVzY3JpcHRpb24iDQo+IGlzIHdheSB0b28gZ2VuZXJpYy4NCj4gDQo+IFlv
-dSBtdXN0IGV4cGxhaW4gd2hhdCBoYXBwZW5lZCBoZXJlLg0KDQpJIGRvbid0IHRoaW5rIHRoZXJl
-IGlzIGEgZmluYWwgY29uY2x1c2lvbiB5ZXQgaW4gdjEuIEplZmYgaGVscGVkDQpleHBsYWluIHRo
-YXQgdGhpcyByZWdpb24gYWxzbyBpcyBkZWZpbmVkIGluIFRFRSBmaXJtd2FyZS4gSSBwdXQgdGhp
-cyBhDQpiaXQgaW4gdGhlIGNvbW1pdCBtZXNzYWdlIGFib3ZlLg0KDQpTb3JyeSBmb3IgY29uZnVz
-aW5nLg0KDQo+IA0KPiA+ICAuLi4vcmVzZXJ2ZWQtbWVtb3J5L3NlY3VyZV9jbWFfcmVnaW9uLnlh
-bWwgICAgfCA0NA0KPiArKysrKysrKysrKysrKysrKysrDQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA0
-NCBpbnNlcnRpb25zKCspDQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvcmVzZXJ2ZWQtDQo+IG1lbW9yeS9zZWN1cmVfY21hX3JlZ2lvbi55
-YW1sDQo+ID4gDQo+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9yZXNlcnZlZC0NCj4gbWVtb3J5L3NlY3VyZV9jbWFfcmVnaW9uLnlhbWwNCj4gYi9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcmVzZXJ2ZWQtDQo+IG1lbW9yeS9zZWN1cmVf
-Y21hX3JlZ2lvbi55YW1sDQo+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQNCj4gPiBpbmRleCAwMDAw
-MDAwMDAwMDAuLjhhYjU1OTU5NWZiZQ0KPiA+IC0tLSAvZGV2L251bGwNCj4gPiArKysgYi9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcmVzZXJ2ZWQtDQo+IG1lbW9yeS9zZWN1cmVf
-Y21hX3JlZ2lvbi55YW1sDQo+ID4gQEAgLTAsMCArMSw0NCBAQA0KPiA+ICsjIFNQRFgtTGljZW5z
-ZS1JZGVudGlmaWVyOiAoR1BMLTIuMC1vbmx5IE9SIEJTRC0yLUNsYXVzZSkNCj4gPiArJVlBTUwg
-MS4yDQo+ID4gKy0tLQ0KPiA+ICskaWQ6IA0KPiBodHRwOi8vZGV2aWNldHJlZS5vcmcvc2NoZW1h
-cy9yZXNlcnZlZC1tZW1vcnkvc2VjdXJlX2NtYV9yZWdpb24ueWFtbCMNCj4gPiArJHNjaGVtYTog
-aHR0cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9jb3JlLnlhbWwjDQo+ID4gKw0KPiA+
-ICt0aXRsZTogU2VjdXJlIFJlc2VydmVkIENNQSBSZWdpb24NCg0KV2lsbCBjaGFuZ2UgdG86IFNl
-Y3VyZSBSZWdpb24uIElzIGl0IG9rPw0KDQo+ID4gKw0KPiA+ICtkZXNjcmlwdGlvbjoNCj4gPiAr
-ICBUaGlzIGJpbmRpbmcgZGVzY3JpYmVzIGEgQ01BIHJlZ2lvbiB0aGF0IGNhbiBkeW5hbWljYWxs
-eQ0KPiB0cmFuc2l0aW9uDQo+IA0KPiBEZXNjcmliZSB0aGUgaGFyZHdhcmUgb3IgZmlybXdhcmUs
-IG5vdCB0aGUgYmluZGluZy4gRHJvcCBmaXJzdCBmb3VyDQo+IHdvcmRzIGFuZCByZXBocmFzZSBp
-dC4NCg0KTWVtb3J5IHJlZ2lvbiBmb3IgVEVFIHVzYWdlLCB3aGljaCBpcyBhbHNvIGRlZmluZWQg
-aW4gdGhlIFRFRSBmaXJtd2FyZS4NCldoZW4gYW4gYWN0aXZpdHkgKGUuZy4gc2VjdXJlIHZpZGVv
-IHBsYXliYWNrKSByZXF1aXJpbmcgdXNhZ2Ugb2YgdGhpcw0Kc3RhcnRzLCB0aGlzIHJlZ2lvbiB3
-aWxsIGJlIHByb3RlY3RlZCBieSBNUFUgKE1lbW9yeSBQcm90ZWN0IFVuaXQpIGluDQp0aGUgVEVF
-IGZpcm13YXJlLiBBZnRlciB0aGUgYWN0aXZpdHkgaXMgY29tcGxldGVkLCB0aGUgcmVnaW9uIHdp
-bGwgYmUNCnVucHJvdGVjdGVkIGJ5IHRoZSBURUUgYW5kIHVzYWJsZSBieSB0aGUgbm9uLXNlY3Vy
-ZSBzaWRlIChpLmUuIGtlcm5lbA0KYW5kIHVzZXJzcGFjZSkuDQoNCkRvZXMgdGhpcyBkZXNjcmlw
-dGlvbiBtYWtlIHNlbnNlIGZvciB5b3U/DQoNCj4gDQo+ID4gK2JldHdlZW4gc2VjdXJlIGFuZCBu
-b24tc2VjdXJlIHN0YXRlcyB0aGF0IGEgVEVFIGNhbiBhbGxvY2F0ZQ0KPiBtZW1vcnkNCj4gPiAr
-ZnJvbS4NCj4gDQo+IEl0IGRvZXMgbm90IGxvb2sgbGlrZSB5b3UgdGVzdGVkIHRoZSBiaW5kaW5n
-cywgYXQgbGVhc3QgYWZ0ZXIgcXVpY2sNCj4gbG9vay4gUGxlYXNlIHJ1biBgbWFrZSBkdF9iaW5k
-aW5nX2NoZWNrYCAoc2VlDQo+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy93cml0
-aW5nLXNjaGVtYS5yc3QgZm9yDQo+IGluc3RydWN0aW9ucykuDQo+IE1heWJlIHlvdSBuZWVkIHRv
-IHVwZGF0ZSB5b3VyIGR0c2NoZW1hIGFuZCB5YW1sbGludC4NCj4gDQo+IERvIG5vdCBzZW5kIHVu
-dGVzdGVkIGNvZGUuDQoNClNvcnJ5LiBJIHdpbGwgdXBkYXRlIHRoZW0gYW5kIHRlc3QgdGhpcyBi
-ZWZvcmUgc2VuZGluZy4NCg0KPiANCj4gPiArDQo+ID4gK21haW50YWluZXJzOg0KPiA+ICsgIC0g
-WW9uZyBXdSA8eW9uZy53dUBtZWRpYXRlay5jb20+DQo+ID4gKw0KPiA+ICthbGxPZjoNCj4gPiAr
-ICAtICRyZWY6IHJlc2VydmVkLW1lbW9yeS55YW1sDQo+ID4gKw0KPiA+ICtwcm9wZXJ0aWVzOg0K
-PiA+ICsgIGNvbXBhdGlibGU6DQo+ID4gKyAgICBjb25zdDogc2VjdXJlX2NtYV9yZWdpb24NCj4g
-DQo+IFN0aWxsIHdyb25nIGNvbXBhdGlibGUuIExvb2sgYXQgb3RoZXIgYmluZGluZ3MgLSB0aGVy
-ZSBpcyBub3doZXJlDQo+IHVuZGVyc2NvcmUuIExvb2sgYXQgb3RoZXIgcmVzZXJ2ZWQgbWVtb3J5
-IGJpbmRpbmdzIGVzcGVjaWFsbHkuDQo+IA0KPiBBbHNvLCBDTUEgaXMgYSBMaW51eCB0aGluZ3ks
-IHNvIGVpdGhlciBub3Qgc3VpdGFibGUgZm9yIGJpbmRpbmdzIGF0DQo+IGFsbCwNCj4gb3IgeW91
-IG5lZWQgTGludXggc3BlY2lmaWMgY29tcGF0aWJsZS4gSSBkb24ndCBxdWl0ZSBnZXQgd2h5IGRv
-IHlvdQ0KPiBldmVubm90DQo+IHB1dCBDTUEgdGhlcmUgLSBhZGRpbmcgTGludXggc3BlY2lmaWMg
-c3R1ZmYgd2lsbCBnZXQgb2J2aW91cw0KPiBwdXNoYmFjay4uLg0KDQpUaGFua3MuIEkgd2lsbCBj
-aGFuZ2UgdG86IHNlY3VyZS1yZWdpb24uIElzIHRoaXMgb2s/DQoNCj4gDQo+IA0KPiA+ICsNCj4g
-PiArcmVxdWlyZWQ6DQo+ID4gKyAgLSBjb21wYXRpYmxlDQo+ID4gKyAgLSByZWcNCj4gPiArICAt
-IHJldXNhYmxlDQo+ID4gKw0KPiA+ICt1bmV2YWx1YXRlZFByb3BlcnRpZXM6IGZhbHNlDQo+ID4g
-Kw0KPiA+ICtleGFtcGxlczoNCj4gPiArICAtIHwNCj4gPiArDQo+IA0KPiBTdHJheSBibGFuayBs
-aW5lLg0KDQpUaGFua3MgZm9yIHJldmlld2luZyBzbyBjYXJlZnVsLiBXaWxsIGZpeCB0aGlzIGFu
-ZCBiZWxvdy4NCg0KPiANCj4gPiArICAgIHJlc2VydmVkLW1lbW9yeSB7DQo+ID4gKyAgICAgICAg
-I2FkZHJlc3MtY2VsbHMgPSA8MT47DQo+ID4gKyAgICAgICAgI3NpemUtY2VsbHMgPSA8MT47DQo+
-ID4gKyAgICAgICAgcmFuZ2VzOw0KPiA+ICsNCj4gPiArICAgICAgICByZXNlcnZlZC1tZW1vcnlA
-ODAwMDAwMDAgew0KPiA+ICsgICAgICAgICAgICBjb21wYXRpYmxlID0gInNlY3VyZV9jbWFfcmVn
-aW9uIjsNCj4gPiArICAgICAgICAgICAgcmV1c2FibGU7DQo+ID4gKyAgICAgICAgICAgIHJlZyA9
-IDwweDgwMDAwMDAwIDB4MTgwMDAwMDA+Ow0KPiANCj4gcmVnIGlzIHNlY29uZCBwcm9wZXJ0eS4g
-T3BlbiBEVFMgYW5kIGNoZWNrIGhvdyBpdCBpcyB0aGVyZS4NCj4gDQo+ID4gKyAgICAgICAgfTsN
-Cj4gPiArICAgIH07DQo+IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IEtyenlzenRvZg0KPiANCg==
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+
+Support firmware download and enable related AFE PLL for mt7992 chipsets.
+This is a preliminary patch for mt7992 chipsets support.
+
+Co-developed-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+Co-developed-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt76_connac.h  |  5 +++++
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  3 ++-
+ .../net/wireless/mediatek/mt76/mt7996/init.c  |  4 ++++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 22 +++++++++++++++----
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  5 +++++
+ .../net/wireless/mediatek/mt76/mt7996/pci.c   |  4 ++++
+ .../net/wireless/mediatek/mt76/mt7996/regs.h  |  7 ++++++
+ 7 files changed, 45 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+index e5ebde19af8f..fdde3d70b300 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+@@ -222,6 +222,11 @@ static inline bool is_mt7996(struct mt76_dev *dev)
+ 	return mt76_chip(dev) == 0x7990;
+ }
+ 
++static inline bool is_mt7992(struct mt76_dev *dev)
++{
++	return mt76_chip(dev) == 0x7992;
++}
++
+ static inline bool is_mt7622(struct mt76_dev *dev)
+ {
+ 	if (!IS_ENABLED(CONFIG_MT7622_WMAC))
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index b475555097ff..96494ba2fdf7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -67,7 +67,8 @@ int mt76_connac_mcu_init_download(struct mt76_dev *dev, u32 addr, u32 len,
+ 	if ((!is_connac_v1(dev) && addr == MCU_PATCH_ADDRESS) ||
+ 	    (is_mt7921(dev) && addr == 0x900000) ||
+ 	    (is_mt7925(dev) && addr == 0x900000) ||
+-	    (is_mt7996(dev) && addr == 0x900000))
++	    (is_mt7996(dev) && addr == 0x900000) ||
++	    (is_mt7992(dev) && addr == 0x900000))
+ 		cmd = MCU_CMD(PATCH_START_REQ);
+ 	else
+ 		cmd = MCU_CMD(TARGET_ADDRESS_LEN_REQ);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 64fa2f28c8c2..2a7c367afae1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -888,6 +888,10 @@ static int mt7996_init_hardware(struct mt7996_dev *dev)
+ 	int ret, idx;
+ 
+ 	mt76_wr(dev, MT_INT_SOURCE_CSR, ~0);
++	if (is_mt7992(&dev->mt76)) {
++		mt76_rmw(dev, MT_AFE_CTL_BAND_PLL_03(MT_BAND0), MT_AFE_CTL_BAND_PLL_03_MSB_EN, 0);
++		mt76_rmw(dev, MT_AFE_CTL_BAND_PLL_03(MT_BAND1), MT_AFE_CTL_BAND_PLL_03_MSB_EN, 0);
++	}
+ 
+ 	INIT_WORK(&dev->init_work, mt7996_init_work);
+ 	INIT_WORK(&dev->wed_rro.work, mt7996_wed_rro_work);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index d56e63cb11ff..5e7bb97fd4fa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -10,6 +10,20 @@
+ #include "mac.h"
+ #include "eeprom.h"
+ 
++#define fw_name(_dev, name, ...)	({			\
++	char *_fw;						\
++	switch (mt76_chip(&(_dev)->mt76)) {			\
++	case 0x7992:						\
++		_fw = MT7992_##name;				\
++		break;						\
++	case 0x7990:						\
++	default:						\
++		_fw = MT7996_##name;				\
++		break;						\
++	}							\
++	_fw;							\
++})
++
+ struct mt7996_patch_hdr {
+ 	char build_date[16];
+ 	char platform[4];
+@@ -2639,7 +2653,7 @@ static int mt7996_load_patch(struct mt7996_dev *dev)
+ 		return -EAGAIN;
+ 	}
+ 
+-	ret = request_firmware(&fw, MT7996_ROM_PATCH, dev->mt76.dev);
++	ret = request_firmware(&fw, fw_name(dev, ROM_PATCH), dev->mt76.dev);
+ 	if (ret)
+ 		goto out;
+ 
+@@ -2802,17 +2816,17 @@ static int mt7996_load_ram(struct mt7996_dev *dev)
+ {
+ 	int ret;
+ 
+-	ret = __mt7996_load_ram(dev, "WM", MT7996_FIRMWARE_WM,
++	ret = __mt7996_load_ram(dev, "WM", fw_name(dev, FIRMWARE_WM),
+ 				MT7996_RAM_TYPE_WM);
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = __mt7996_load_ram(dev, "DSP", MT7996_FIRMWARE_DSP,
++	ret = __mt7996_load_ram(dev, "DSP", fw_name(dev, FIRMWARE_DSP),
+ 				MT7996_RAM_TYPE_DSP);
+ 	if (ret)
+ 		return ret;
+ 
+-	return __mt7996_load_ram(dev, "WA", MT7996_FIRMWARE_WA,
++	return __mt7996_load_ram(dev, "WA", fw_name(dev, FIRMWARE_WA),
+ 				 MT7996_RAM_TYPE_WA);
+ }
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index aefd09c7d6e6..1a36ef50f6e1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -33,6 +33,11 @@
+ #define MT7996_FIRMWARE_DSP		"mediatek/mt7996/mt7996_dsp.bin"
+ #define MT7996_ROM_PATCH		"mediatek/mt7996/mt7996_rom_patch.bin"
+ 
++#define MT7992_FIRMWARE_WA		"mediatek/mt7996/mt7992_wa.bin"
++#define MT7992_FIRMWARE_WM		"mediatek/mt7996/mt7992_wm.bin"
++#define MT7992_FIRMWARE_DSP		"mediatek/mt7996/mt7992_dsp.bin"
++#define MT7992_ROM_PATCH		"mediatek/mt7996/mt7992_rom_patch.bin"
++
+ #define MT7996_EEPROM_DEFAULT		"mediatek/mt7996/mt7996_eeprom.bin"
+ #define MT7996_EEPROM_SIZE		7680
+ #define MT7996_EEPROM_BLOCK_SIZE	16
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+index 93ecc9a8dde0..baa5fb97a121 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+@@ -244,3 +244,7 @@ MODULE_FIRMWARE(MT7996_FIRMWARE_WA);
+ MODULE_FIRMWARE(MT7996_FIRMWARE_WM);
+ MODULE_FIRMWARE(MT7996_FIRMWARE_DSP);
+ MODULE_FIRMWARE(MT7996_ROM_PATCH);
++MODULE_FIRMWARE(MT7992_FIRMWARE_WA);
++MODULE_FIRMWARE(MT7992_FIRMWARE_WM);
++MODULE_FIRMWARE(MT7992_FIRMWARE_DSP);
++MODULE_FIRMWARE(MT7992_ROM_PATCH);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+index d8904cbc2856..aee577d90ddb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+@@ -683,4 +683,11 @@ enum base_rev {
+ #define MT_MCU_WM_EXCP_LR_CTRL			MT_MCU_WM_EXCP(0x200)
+ #define MT_MCU_WM_EXCP_LR_LOG			MT_MCU_WM_EXCP(0x204)
+ 
++/* CONN AFE CTL CON */
++#define MT_AFE_CTL_BASE				0x18043000
++#define MT_AFE_CTL_BAND(_band, ofs)		(MT_AFE_CTL_BASE + \
++						 ((_band) * 0x1000) + (ofs))
++#define MT_AFE_CTL_BAND_PLL_03(_band)		MT_AFE_CTL_BAND(_band, 0x2c)
++#define MT_AFE_CTL_BAND_PLL_03_MSB_EN		BIT(1)
++
+ #endif
+-- 
+2.39.2
+
 
