@@ -4,64 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 319DDC4167D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 16:14:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 201ECC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 17:50:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e9eYxP9jo++BrU37sjEo0gWvrNmjZuuIGLRUfvENy9E=; b=hds1sBNquh3QAvC1GUbXYxLavv
-	pg4uW/HtUFnpuIofUYWhIdbVw8RKZ8aTrJyv7nFjtnpt+z0AtKl9k9G4wLsTF+FyH4hf4CWIPjLHI
-	iS/zc4N6/0KMHXKfJeEFY+SePrw3yw42/vdTeWYlQD2tw7S1ySDnjbJMOvE5WmWt1bTeFRBC0wzYa
-	YLpj5/lAtZf1btKTiDb3yk9B0rCXrKUm1Uran8HEojPyzYsNq5Zsx27eL17Uqtot8CWmyKJn9E/jA
-	nRalSUeNJxOJvUDHRiu4jk89Q0+KR976Km5hVkmyUMU0Y2lk4c6i8ScHiPOOi6+bav9Lz85RiHfcr
-	2t097bZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OlVdpAafS+/TnL2gNZWocfkiT+WXch7O/Gj4jH3CWTI=; b=RB0V7od2lnHy+9f7kFmMRIq+Ef
+	V39BVJ+GAXt0Mk5o5q13+238O3yl0cSq7Co2GNH8fK5fQ4Ud77PpOn9PyCgSP1J9j0x+lgTO0P2Ly
+	Cov+8tW+HKOPMspmGvUTECsDHNGPZDWbelKquLRNg6x+MLNAmqAKNYbamwhlHE4jNae/9Rsm5Yj48
+	ljLpPuVpX7YTgafNPC9VXYPwKxeE7mKGZIhnLdfcx6UCG1siFrAWDO0/270Lzp27A9bPvgqVnQ3TY
+	sMCQ/N5XbonOkvi9qhJxi3PPrU5UM99AJY1RFcWtBNGKzbKcpqrP//kuvwAiKvo6gK+VmvTJNesRs
+	MuIU6ylw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2ZaL-00EJH8-2k;
-	Mon, 13 Nov 2023 16:14:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r2b4W-00ER8P-2n;
+	Mon, 13 Nov 2023 17:50:04 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2ZaI-00EJGf-1Q;
-	Mon, 13 Nov 2023 16:14:47 +0000
+	id 1r2b4R-00ER74-0A;
+	Mon, 13 Nov 2023 17:50:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 995BF60FA4;
-	Mon, 13 Nov 2023 16:14:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3FE3C433CA;
-	Mon, 13 Nov 2023 16:14:40 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 1DF57B80EF4;
+	Mon, 13 Nov 2023 17:49:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4991AC433C7;
+	Mon, 13 Nov 2023 17:49:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699892085;
-	bh=P1HsCRngx2AULeZ5NjJzkJnUfB2/UHXYrbiKx+V3dsw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ZatGpOBLjKNxznQDsZctXqsvFhBhjf8PWoirXtdiwxa9fifmlLOI2Vi5OS8HThuG/
-	 o0pkOtnkwKY26BgyOTV/a2W/SrzsOPiD7t/43Pups9X3OC9Ez3lFdPnntPkKV+tMUX
-	 mW/b5FCxuuoCJ3Md6Wn/MkEviUOTi373Z4cUuveMAruuicBtM2gTQQV/c0wE6Rmrsm
-	 kGyLYCruxDIjr9xg4Xw60IfgcT8FQlxi9wbidKBiquR1IGgYJFkcz88Xg529QIQayz
-	 SJMa4c9HrJsKNUL+GlWwDFhNcW5aTKNdFp+du6qqI3eEjFfsDa0V+Qdeeud+4Im8ON
-	 A/SQ8kpg/rC4w==
-From: Mark Brown <broonie@kernel.org>
-To: pierre-louis.bossart@linux.intel.com, peter.ujfalusi@linux.intel.com, 
- yung-chuan.liao@linux.intel.com, ranjani.sridharan@linux.intel.com, 
- kai.vehmanen@linux.intel.com, daniel.baluta@nxp.com, lgirdwood@gmail.com, 
- tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, Trevor Wu <trevor.wu@mediatek.com>
-Cc: yc.hung@mediatek.com, sound-open-firmware@alsa-project.org, 
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20231103095433.10475-1-trevor.wu@mediatek.com>
-References: <20231103095433.10475-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH 0/3] ASoC: SOF: mediatek: remove unused variables
-Message-Id: <169989208005.3289099.6135603822989118878.b4-ty@kernel.org>
-Date: Mon, 13 Nov 2023 16:14:40 +0000
+	s=k20201202; t=1699897796;
+	bh=OlVdpAafS+/TnL2gNZWocfkiT+WXch7O/Gj4jH3CWTI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LIjkaZQjXatW09ZeXbTIPo+q5RrNWjCsOk0HG3uQ9jZx/Jj/JwWg8masZL8QKT0ZZ
+	 WQhSyQhVc2mhkpHTByG3kY/lTylyhO+Jz5Xe32ZS4JAfPZ3uZEtnt2UfkpAMfVaYra
+	 Z3MLkka6LfZyMsAw09xuTPN7X38dJDuZgUxM5ddajimSmVXShqJDnkUemjsy82m6XW
+	 kfYKsF2y/34lhawChlHd8v7/XDDz13zS5JPzIQ0wGWvUiEcJxhx8/E8P39xxN3f2nj
+	 yON8dcggobGU7B0jvYDgW8cWNd2lF2xwMBQwNELv/PcH6ryjBoTuxjmxRgM7bnhZrW
+	 B1cIyTJrNKMmw==
+Date: Mon, 13 Nov 2023 12:49:53 -0500
+From: Wolfram Sang <wsa@kernel.org>
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: intel-gfx@lists.freedesktop.org, linux-i2c@vger.kernel.org,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	linux-fbdev@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jocelyn Falempe <jfalempe@redhat.com>, linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>
+Subject: Re: [PATCH 00/20] remove I2C_CLASS_DDC support
+Message-ID: <ZVJhwSS16+/Zzt0f@shikoro>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	intel-gfx@lists.freedesktop.org, linux-i2c@vger.kernel.org,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	linux-fbdev@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jocelyn Falempe <jfalempe@redhat.com>, linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>
+References: <20231113112344.719-1-hkallweit1@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-0438c
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Zxnb7iIcQAl5ewYC"
+Content-Disposition: inline
+In-Reply-To: <20231113112344.719-1-hkallweit1@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_081446_544606_3101A697 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20231113_094959_376284_BA4D972D 
+X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,49 +106,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 03 Nov 2023 17:54:29 +0800, Trevor Wu wrote:
-> There are some variables that are no longer being used because they
-> were declared for the deprecated memory layout. Currently, these code
-> sections confuse the users. Therefore, this series removes the code
-> that was implemented for those variables.
-> 
-> Trevor Wu (3):
->   ASoC: SOF: mediatek: mt8195: clean up unused code
->   ASoC: SOF: mediatek: mt8186: clean up unused code
->   ASoC: SOF: mediatek: remove unused variables
-> 
-> [...]
 
-Applied to
+--Zxnb7iIcQAl5ewYC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Thanks!
+> Preferably this series should be applied via the i2c tree.
 
-[1/3] ASoC: SOF: mediatek: mt8195: clean up unused code
-      commit: ab475966455ce285c2c9978a3e3bfe97d75ff8d4
-[2/3] ASoC: SOF: mediatek: mt8186: clean up unused code
-      commit: a4de5a345cf76c6f294a906e11c2fb675a46fd3d
-[3/3] ASoC: SOF: mediatek: remove unused variables
-      commit: 82e340ca3f25dc3ddd20e88e3606ed9006f90f5d
+Are we in a hurry here, i.e. does it block further development of the
+i801 smbus driver? My gut feeling says the patches should rather go via
+drm and fbdev trees, but I may be convinced otherwise.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+--Zxnb7iIcQAl5ewYC
+Content-Type: application/pgp-signature; name="signature.asc"
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+-----BEGIN PGP SIGNATURE-----
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmVSYcEACgkQFA3kzBSg
+KbZH2w//eUnZg+R48cg2NHPwlDqb/Y0KJdo6xOk9tXkaIu+sNP9+GauuCw1EMTe3
+AIDZoh7pkBamF2ZsoBRIOQOkzRpNj4bN+2L9mbd8SrPSpxaRa8jU3E1prJ7+/NS0
+FJUPmwO6XA9JCOmTtkNvivsp16QjSQfVE+UjbBT0qH0+lKo6RQ9PDbwtIdkmzVOZ
+vGvEqYzOpUB9UkUekEYESgJ/SCbm2lm397qC+d79JXapjDjD8AZliufTjd/jiOCG
+MTVbm6mw9CPGThQsyNd9bjUbaNnqyoz3D0SjxKUG3NPlEYy9uigCj853+J56xO27
+JjENHBt0RFz/oPHWpKko6kfMaDCS7m/aNnETGRuZ4fHBb6rviz/3EGLWYc0HoRds
+6kw7kmMfmh4T0ZMERMDnRsgRiLHzueUujA9Uhh972jiX62CCaWuSjQm/s6lXpAzC
+TT+UETbrdSSX6IJN5eP4E9Rg6ouyKxWGT1N+B4/NPMEjPUfzMFQQgna0ph8aHNcd
+JEI9d/HAUvjvf8tQwo2+1UajwmmX1Yf/C905CT+IGqOLF21LsX7B0zoXELDRsPMD
+ISj6RpuOXI0jhWV6YPlFTA8pFvqvG+lFfpP6kW1VEkYnXMwSbp+K8aN9bcYITWeH
+4OB/vXxnxxEtQ8CgH6yC+jwJWW6jd7KllJQjmD5qi+F4xxOCzwY=
+=fxbp
+-----END PGP SIGNATURE-----
 
-Thanks,
-Mark
-
+--Zxnb7iIcQAl5ewYC--
 
