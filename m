@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1406EC4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8714CC072A2
 	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Nov 2023 17:05:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jMn/mmHqqSrHfajNId3ALKEdf8cATXlVdWY+KsghO+w=; b=KjfFR27s7NH63VLxXdwEIfLp5V
-	p2yPwrBS5S3kU4fh8sclbFciwcZ0DFi2LCh0d6LWh5FOr40pgT+H4RLr35OfsHtQH/NlkIQbnDi7J
-	DcwWZNop9yW6SKLL4KBXQ2B/86AHiFYBjgBl+AhWGNl3PdGZp78jBQiO83cqU5emcskimDyKw9+ea
-	YNKy69kvUaFcbYUlr4oG2OTMpP7Ote74IpGh+vwPLazt3YN5uUFQeYiAzJvbGDc/55rFcIqCtvsLh
-	OfAQ+ZK89Wq6/IWau/IrweGMD9kGhvFibAecBBSNVBQ/t1rEHqZr5APu5SgQIYwNpX3AliF+NQQt1
-	7YrfYDOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OOUfLqvsFeBiDS2V8KZea+Jq9YDVa2LG3oSyoC/hJBA=; b=o0Cs9tDZPYVysAW5CdtUDPH/3w
+	FKIhPueC57dwOgCXyw4LqpLQIMCjZ9nSCqzNFtmkL/aYRzMxWXBccsoRrCec5uQJS0UILxjcbX7Gf
+	ypNDhCYwZeWGRqf1Oo/DOPVitB4B2f1oZ0+/9RQf/bjt7VYsiy9xPj6YJMfTYMl9eHvoC8EryJUWa
+	8L+jajppsIGJtUWGLDhvbZ3Vj6OzLzCsDp2NWxXBpd1bxgXttZ48ac2TqLvKnKNnBPEIorEvYMe99
+	edHDAHFjfti+HaM+YAPtoS65keLtk7omVi5xaJwMxtJYiqWYTZvhKVniZ/V60tneHnhVHe+TBxajw
+	cjMJZBdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2wqT-00GTVF-10;
-	Tue, 14 Nov 2023 17:05:01 +0000
+	id 1r2wqU-00GTW8-0c;
+	Tue, 14 Nov 2023 17:05:02 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2wqQ-00GTT9-0Q;
+	id 1r2wqQ-00GTU7-1H;
 	Tue, 14 Nov 2023 17:04:59 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1r2wq5-0000hS-39;
-	Tue, 14 Nov 2023 17:04:38 +0000
-Date: Tue, 14 Nov 2023 17:04:30 +0000
+	id 1r2wqH-0000hY-1n;
+	Tue, 14 Nov 2023 17:04:49 +0000
+Date: Tue, 14 Nov 2023 17:04:46 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	Guenter Roeck <linux@roeck-us.net>,
@@ -44,16 +44,16 @@ To: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 1/2] dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988
- watchdog and toprgu
-Message-ID: <4d7db8786dce35273db516f3d41228bc27a08fe9.1699980962.git.daniel@makrotopia.org>
+Subject: [PATCH v3 2/2] watchdog: mediatek: mt7988: add wdt support
+Message-ID: <3f5ed9656ea66637d259e9771ed852511369ba9b.1699980962.git.daniel@makrotopia.org>
+References: <4d7db8786dce35273db516f3d41228bc27a08fe9.1699980962.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <4d7db8786dce35273db516f3d41228bc27a08fe9.1699980962.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231114_090458_170531_97940F40 
-X-CRM114-Status: UNSURE (   8.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231114_090458_431246_2A7DEA5A 
+X-CRM114-Status: GOOD (  15.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,31 +68,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible mediatek,mt7988-wdt.
+Add support for watchdog and reset generator unit of the MediaTek
+MT7988 SoC.
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
-v3: no changes
-v2: Drop adding include/dt-binding/mt7988-resets.h as that header is not
-    actually a binding header.
+v3: fix wrong function parameter name in kernel-doc comment
+v2: call new toprgu_reset_sw_en_unlocked from toprgu_reset_update while
+    holding lock.
 
+ drivers/watchdog/mtk_wdt.c | 40 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
- Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-index cc502838bc398..8d2520241e37f 100644
---- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-@@ -25,6 +25,7 @@ properties:
-           - mediatek,mt6735-wdt
-           - mediatek,mt6795-wdt
-           - mediatek,mt7986-wdt
-+          - mediatek,mt7988-wdt
-           - mediatek,mt8183-wdt
-           - mediatek,mt8186-wdt
-           - mediatek,mt8188-wdt
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index b2330b16b497a..3b4ee7185feed 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -58,6 +58,8 @@
+ #define WDT_SWSYSRST		0x18U
+ #define WDT_SWSYS_RST_KEY	0x88000000
+ 
++#define WDT_SWSYSRST_EN		0xfc
++
+ #define DRV_NAME		"mtk-wdt"
+ #define DRV_VERSION		"1.0"
+ 
+@@ -71,10 +73,12 @@ struct mtk_wdt_dev {
+ 	struct reset_controller_dev rcdev;
+ 	bool disable_wdt_extrst;
+ 	bool reset_by_toprgu;
++	bool has_swsysrst_en;
+ };
+ 
+ struct mtk_wdt_data {
+ 	int toprgu_sw_rst_num;
++	bool has_swsysrst_en;
+ };
+ 
+ static const struct mtk_wdt_data mt2712_data = {
+@@ -89,6 +93,11 @@ static const struct mtk_wdt_data mt7986_data = {
+ 	.toprgu_sw_rst_num = MT7986_TOPRGU_SW_RST_NUM,
+ };
+ 
++static const struct mtk_wdt_data mt7988_data = {
++	.toprgu_sw_rst_num = 24,
++	.has_swsysrst_en = true,
++};
++
+ static const struct mtk_wdt_data mt8183_data = {
+ 	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
+ };
+@@ -109,6 +118,28 @@ static const struct mtk_wdt_data mt8195_data = {
+ 	.toprgu_sw_rst_num = MT8195_TOPRGU_SW_RST_NUM,
+ };
+ 
++/**
++ * toprgu_reset_sw_en_unlocked() - enable/disable software control for reset bit
++ * @data: Pointer to instance of driver data.
++ * @id: Bit number identifying the reset to be enabled or disabled.
++ * @enable: If true, enable software control for that bit, disable otherwise.
++ *
++ * Context: The caller must hold lock of struct mtk_wdt_dev.
++ */
++static void toprgu_reset_sw_en_unlocked(struct mtk_wdt_dev *data,
++					unsigned long id, bool enable)
++{
++	u32 tmp;
++
++	tmp = readl(data->wdt_base + WDT_SWSYSRST_EN);
++	if (enable)
++		tmp |= BIT(id);
++	else
++		tmp &= ~BIT(id);
++
++	writel(tmp, data->wdt_base + WDT_SWSYSRST_EN);
++}
++
+ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+ 			       unsigned long id, bool assert)
+ {
+@@ -119,6 +150,9 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+ 
+ 	spin_lock_irqsave(&data->lock, flags);
+ 
++	if (assert && data->has_swsysrst_en)
++		toprgu_reset_sw_en_unlocked(data, id, true);
++
+ 	tmp = readl(data->wdt_base + WDT_SWSYSRST);
+ 	if (assert)
+ 		tmp |= BIT(id);
+@@ -127,6 +161,9 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+ 	tmp |= WDT_SWSYS_RST_KEY;
+ 	writel(tmp, data->wdt_base + WDT_SWSYSRST);
+ 
++	if (!assert && data->has_swsysrst_en)
++		toprgu_reset_sw_en_unlocked(data, id, false);
++
+ 	spin_unlock_irqrestore(&data->lock, flags);
+ 
+ 	return 0;
+@@ -406,6 +443,8 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 						       wdt_data->toprgu_sw_rst_num);
+ 		if (err)
+ 			return err;
++
++		mtk_wdt->has_swsysrst_en = wdt_data->has_swsysrst_en;
+ 	}
+ 
+ 	mtk_wdt->disable_wdt_extrst =
+@@ -444,6 +483,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt6589-wdt" },
+ 	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
+ 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
++	{ .compatible = "mediatek,mt7988-wdt", .data = &mt7988_data },
+ 	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
+ 	{ .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
+ 	{ .compatible = "mediatek,mt8188-wdt", .data = &mt8188_data },
 -- 
 2.42.1
 
