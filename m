@@ -4,56 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8714CC072A2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Nov 2023 17:05:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6A11C4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Nov 2023 17:42:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OOUfLqvsFeBiDS2V8KZea+Jq9YDVa2LG3oSyoC/hJBA=; b=o0Cs9tDZPYVysAW5CdtUDPH/3w
-	FKIhPueC57dwOgCXyw4LqpLQIMCjZ9nSCqzNFtmkL/aYRzMxWXBccsoRrCec5uQJS0UILxjcbX7Gf
-	ypNDhCYwZeWGRqf1Oo/DOPVitB4B2f1oZ0+/9RQf/bjt7VYsiy9xPj6YJMfTYMl9eHvoC8EryJUWa
-	8L+jajppsIGJtUWGLDhvbZ3Vj6OzLzCsDp2NWxXBpd1bxgXttZ48ac2TqLvKnKNnBPEIorEvYMe99
-	edHDAHFjfti+HaM+YAPtoS65keLtk7omVi5xaJwMxtJYiqWYTZvhKVniZ/V60tneHnhVHe+TBxajw
-	cjMJZBdw==;
+	bh=iorJ2YXp6GD6nsZHjXBpsbRpZ4RarxM6ogHKyW8w1DA=; b=VCKisnJ4RHhp7N7ELG4dO0A75M
+	gdnNSTn/2Q++eceNNihYk0+RRADq8ohNuCK0cm6O9gHHe4eECaktX7Tey5YbncWxRL6fEgAFpCe7e
+	UM3uGqfLWRjwsD0EQ8CQNyS8EqNusDvIB7VTXkzQMA3CIfyE/xJ+//NThKUif760qzAqU2t7Ne7kB
+	hTBLAYe/a3vvxhcAZHXOJZUftKeX/00eJegoGuMB/wikitOGjiRg0lkIaT4qIKChME0bjlxeLg2JT
+	ZikUsWuhsXQd8Df6kLnfS0emnSNMZQ3CoBW/FK63UW7bvI27FCy9dMwid3htTLLR7Qlc5YIl3jgSp
+	AFGYTkcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2wqU-00GTW8-0c;
-	Tue, 14 Nov 2023 17:05:02 +0000
+	id 1r2xR3-00GWdt-1v;
+	Tue, 14 Nov 2023 17:42:49 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2wqQ-00GTU7-1H;
-	Tue, 14 Nov 2023 17:04:59 +0000
+	id 1r2xQz-00GWcx-1a;
+	Tue, 14 Nov 2023 17:42:47 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1r2wqH-0000hY-1n;
-	Tue, 14 Nov 2023 17:04:49 +0000
-Date: Tue, 14 Nov 2023 17:04:46 +0000
+	id 1r2xQd-0000r4-31;
+	Tue, 14 Nov 2023 17:42:24 +0000
+Date: Tue, 14 Nov 2023 17:42:16 +0000
 From: Daniel Golle <daniel@makrotopia.org>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Rob Herring <robh+dt@kernel.org>,
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 2/2] watchdog: mediatek: mt7988: add wdt support
-Message-ID: <3f5ed9656ea66637d259e9771ed852511369ba9b.1699980962.git.daniel@makrotopia.org>
-References: <4d7db8786dce35273db516f3d41228bc27a08fe9.1699980962.git.daniel@makrotopia.org>
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [RFC PATCH 7/8] dt-bindings: net: mediatek,net: fix and complete
+ mt7988-eth binding
+Message-ID: <ZVOxeCAUhFPnxzQr@makrotopia.org>
+References: <cover.1699565880.git.daniel@makrotopia.org>
+ <d8152679b6558ce9fd177ff20478e3fbc2ab73b4.1699565880.git.daniel@makrotopia.org>
+ <20231114140719.GA1664629-robh@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <4d7db8786dce35273db516f3d41228bc27a08fe9.1699980962.git.daniel@makrotopia.org>
+In-Reply-To: <20231114140719.GA1664629-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231114_090458_431246_2A7DEA5A 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20231114_094245_678623_601F2F31 
+X-CRM114-Status: GOOD (  28.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,122 +84,322 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for watchdog and reset generator unit of the MediaTek
-MT7988 SoC.
+Hi Rob,
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v3: fix wrong function parameter name in kernel-doc comment
-v2: call new toprgu_reset_sw_en_unlocked from toprgu_reset_update while
-    holding lock.
+thank you for reviewing this patch.
 
- drivers/watchdog/mtk_wdt.c | 40 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
+On Tue, Nov 14, 2023 at 08:07:19AM -0600, Rob Herring wrote:
+> On Thu, Nov 09, 2023 at 09:52:09PM +0000, Daniel Golle wrote:
+> > Remove clocks which were copied from the vendor driver but are now taken
+> > care of by dedicated drivers for PCS and PHY in the upstream driver.
+> > Also remove mediatek,sgmiisys phandle which isn't required on MT7988
+> > because we use pcs-handle on the MAC nodes instead.
+> > Last but not least, add an example for MT7988.
+> 
+> 'Also' is a clue for it should be a separate patch. These changes are 
+> all ABI breakage. Please explain why that's okay.
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index b2330b16b497a..3b4ee7185feed 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -58,6 +58,8 @@
- #define WDT_SWSYSRST		0x18U
- #define WDT_SWSYS_RST_KEY	0x88000000
- 
-+#define WDT_SWSYSRST_EN		0xfc
-+
- #define DRV_NAME		"mtk-wdt"
- #define DRV_VERSION		"1.0"
- 
-@@ -71,10 +73,12 @@ struct mtk_wdt_dev {
- 	struct reset_controller_dev rcdev;
- 	bool disable_wdt_extrst;
- 	bool reset_by_toprgu;
-+	bool has_swsysrst_en;
- };
- 
- struct mtk_wdt_data {
- 	int toprgu_sw_rst_num;
-+	bool has_swsysrst_en;
- };
- 
- static const struct mtk_wdt_data mt2712_data = {
-@@ -89,6 +93,11 @@ static const struct mtk_wdt_data mt7986_data = {
- 	.toprgu_sw_rst_num = MT7986_TOPRGU_SW_RST_NUM,
- };
- 
-+static const struct mtk_wdt_data mt7988_data = {
-+	.toprgu_sw_rst_num = 24,
-+	.has_swsysrst_en = true,
-+};
-+
- static const struct mtk_wdt_data mt8183_data = {
- 	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
- };
-@@ -109,6 +118,28 @@ static const struct mtk_wdt_data mt8195_data = {
- 	.toprgu_sw_rst_num = MT8195_TOPRGU_SW_RST_NUM,
- };
- 
-+/**
-+ * toprgu_reset_sw_en_unlocked() - enable/disable software control for reset bit
-+ * @data: Pointer to instance of driver data.
-+ * @id: Bit number identifying the reset to be enabled or disabled.
-+ * @enable: If true, enable software control for that bit, disable otherwise.
-+ *
-+ * Context: The caller must hold lock of struct mtk_wdt_dev.
-+ */
-+static void toprgu_reset_sw_en_unlocked(struct mtk_wdt_dev *data,
-+					unsigned long id, bool enable)
-+{
-+	u32 tmp;
-+
-+	tmp = readl(data->wdt_base + WDT_SWSYSRST_EN);
-+	if (enable)
-+		tmp |= BIT(id);
-+	else
-+		tmp &= ~BIT(id);
-+
-+	writel(tmp, data->wdt_base + WDT_SWSYSRST_EN);
-+}
-+
- static int toprgu_reset_update(struct reset_controller_dev *rcdev,
- 			       unsigned long id, bool assert)
- {
-@@ -119,6 +150,9 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
- 
- 	spin_lock_irqsave(&data->lock, flags);
- 
-+	if (assert && data->has_swsysrst_en)
-+		toprgu_reset_sw_en_unlocked(data, id, true);
-+
- 	tmp = readl(data->wdt_base + WDT_SWSYSRST);
- 	if (assert)
- 		tmp |= BIT(id);
-@@ -127,6 +161,9 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
- 	tmp |= WDT_SWSYS_RST_KEY;
- 	writel(tmp, data->wdt_base + WDT_SWSYSRST);
- 
-+	if (!assert && data->has_swsysrst_en)
-+		toprgu_reset_sw_en_unlocked(data, id, false);
-+
- 	spin_unlock_irqrestore(&data->lock, flags);
- 
- 	return 0;
-@@ -406,6 +443,8 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 						       wdt_data->toprgu_sw_rst_num);
- 		if (err)
- 			return err;
-+
-+		mtk_wdt->has_swsysrst_en = wdt_data->has_swsysrst_en;
- 	}
- 
- 	mtk_wdt->disable_wdt_extrst =
-@@ -444,6 +483,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
- 	{ .compatible = "mediatek,mt6589-wdt" },
- 	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
- 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
-+	{ .compatible = "mediatek,mt7988-wdt", .data = &mt7988_data },
- 	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
- 	{ .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
- 	{ .compatible = "mediatek,mt8188-wdt", .data = &mt8188_data },
--- 
-2.42.1
+I hope that it's ok because the driver at this point never supported
+any SerDes modes and we are still in the process of bringing up
+mainline support for this SoC. All of clk, pinctrl, reset, ... driver
+and dt-bindings are still pending or being prepared for submission.
+
+> 
+> > 
+> > Fixes: c94a9aabec36 ("dt-bindings: net: mediatek,net: add mt7988-eth binding")
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >  .../devicetree/bindings/net/mediatek,net.yaml | 171 +++++++++++++++---
+> >  1 file changed, 142 insertions(+), 29 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > index e74502a0afe86..c0f7bb6f3ef8d 100644
+> > --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > @@ -27,9 +27,6 @@ properties:
+> >        - mediatek,mt7988-eth
+> >        - ralink,rt5350-eth
+> >  
+> > -  reg:
+> > -    maxItems: 1
+> > -
+> 
+> It's not clear what this change is from the commit msg.
+> 
+> This should stay and be:
+> 
+> reg:
+>   minItems: 1
+>   items:
+>     - description: what's in the 1st region
+>     - description: what's in the 2nd region
+
+Ack.
+
+> 
+> >    clocks: true
+> >    clock-names: true
+> >  
+> > @@ -115,6 +112,9 @@ allOf:
+> >                - mediatek,mt7623-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            maxItems: 3
+> >  
+> > @@ -149,6 +149,9 @@ allOf:
+> >                - mediatek,mt7621-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            maxItems: 1
+> >  
+> > @@ -174,6 +177,9 @@ allOf:
+> >              const: mediatek,mt7622-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            maxItems: 3
+> >  
+> > @@ -215,6 +221,9 @@ allOf:
+> >              const: mediatek,mt7629-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            maxItems: 3
+> >  
+> > @@ -257,6 +266,9 @@ allOf:
+> >              const: mediatek,mt7981-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            minItems: 4
+> >  
+> > @@ -295,6 +307,9 @@ allOf:
+> >              const: mediatek,mt7986-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> 
+> Looks like lots of duplication. Perhaps there's a cleaner way.
+
+Hm, I don't really see any better way. Suggestions anyone?
+
+> 
+> >          interrupts:
+> >            minItems: 4
+> >  
+> > @@ -333,36 +348,32 @@ allOf:
+> >              const: mediatek,mt7988-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 2
+> > +          minItems: 2
+> > +
+> >          interrupts:
+> >            minItems: 4
+> > +          maxItems: 4
+> >  
+> >          clocks:
+> > -          minItems: 34
+> > -          maxItems: 34
+> > +          minItems: 24
+> > +          maxItems: 24
+> >  
+> >          clock-names:
+> >            items:
+> > -            - const: crypto
+> > +            - const: xgp1
+> > +            - const: xgp2
+> > +            - const: xgp3
+> >              - const: fe
+> >              - const: gp2
+> >              - const: gp1
+> >              - const: gp3
+> > +            - const: esw
+> > +            - const: crypto
+> >              - const: ethwarp_wocpu2
+> >              - const: ethwarp_wocpu1
+> >              - const: ethwarp_wocpu0
+> > -            - const: esw
+> > -            - const: netsys0
+> > -            - const: netsys1
+> > -            - const: sgmii_tx250m
+> > -            - const: sgmii_rx250m
+> > -            - const: sgmii2_tx250m
+> > -            - const: sgmii2_rx250m
+> > -            - const: top_usxgmii0_sel
+> > -            - const: top_usxgmii1_sel
+> > -            - const: top_sgm0_sel
+> > -            - const: top_sgm1_sel
+> > -            - const: top_xfi_phy0_xtal_sel
+> > -            - const: top_xfi_phy1_xtal_sel
+> >              - const: top_eth_gmii_sel
+> >              - const: top_eth_refck_50m_sel
+> >              - const: top_eth_sys_200m_sel
+> > @@ -375,18 +386,9 @@ allOf:
+> >              - const: top_netsys_sync_250m_sel
+> >              - const: top_netsys_ppefb_250m_sel
+> >              - const: top_netsys_warp_sel
+> > -            - const: wocpu1
+> > -            - const: wocpu0
+> > -            - const: xgp1
+> > -            - const: xgp2
+> > -            - const: xgp3
+> > -
+> > -        mediatek,sgmiisys:
+> > -          minItems: 2
+> > -          maxItems: 2
+> >  
+> >  patternProperties:
+> > -  "^mac@[0-1]$":
+> > +  "^mac@[0-2]$":
+> >      type: object
+> >      unevaluatedProperties: false
+> >      allOf:
+> > @@ -577,3 +579,114 @@ examples:
+> >          };
+> >        };
+> >      };
+> > +
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
+> > +
+> > +    soc {
+> > +      #address-cells = <2>;
+> > +      #size-cells = <2>;
+> > +
+> > +      ethernet@15100000 {
+> > +        compatible = "mediatek,mt7988-eth";
+> > +        reg = <0 0x15100000 0 0x80000>, <0 0x15400000 0 0x380000>;
+> > +        interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH>,
+> > +                     <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH>,
+> > +                     <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH>,
+> > +                     <GIC_SPI 199 IRQ_TYPE_LEVEL_HIGH>;
+> > +
+> > +        clocks = <&ethsys CLK_ETHDMA_XGP1_EN>,
+> > +                 <&ethsys CLK_ETHDMA_XGP2_EN>,
+> > +                 <&ethsys CLK_ETHDMA_XGP3_EN>,
+> > +                 <&ethsys CLK_ETHDMA_FE_EN>,
+> > +                 <&ethsys CLK_ETHDMA_GP2_EN>,
+> > +                 <&ethsys CLK_ETHDMA_GP1_EN>,
+> > +                 <&ethsys CLK_ETHDMA_GP3_EN>,
+> > +                 <&ethsys CLK_ETHDMA_ESW_EN>,
+> > +                 <&ethsys CLK_ETHDMA_CRYPT0_EN>,
+> > +                 <&ethwarp CLK_ETHWARP_WOCPU2_EN>,
+> > +                 <&ethwarp CLK_ETHWARP_WOCPU1_EN>,
+> > +                 <&ethwarp CLK_ETHWARP_WOCPU0_EN>,
+> > +                 <&topckgen CLK_TOP_ETH_GMII_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_REFCK_50M_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_SYS_200M_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_SYS_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_XGMII_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_MII_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_500M_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_PAO_2X_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_SYNC_250M_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_PPEFB_250M_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_WARP_SEL>;
+> > +
+> > +        clock-names = "xgp1", "xgp2", "xgp3", "fe", "gp2", "gp1",
+> > +                      "gp3", "esw", "crypto",
+> > +                      "ethwarp_wocpu2", "ethwarp_wocpu1",
+> > +                      "ethwarp_wocpu0", "top_eth_gmii_sel",
+> > +                      "top_eth_refck_50m_sel", "top_eth_sys_200m_sel",
+> > +                      "top_eth_sys_sel", "top_eth_xgmii_sel",
+> > +                      "top_eth_mii_sel", "top_netsys_sel",
+> > +                      "top_netsys_500m_sel", "top_netsys_pao_2x_sel",
+> > +                      "top_netsys_sync_250m_sel",
+> > +                      "top_netsys_ppefb_250m_sel",
+> > +                      "top_netsys_warp_sel";
+> > +        assigned-clocks = <&topckgen CLK_TOP_NETSYS_2X_SEL>,
+> > +                          <&topckgen CLK_TOP_NETSYS_GSW_SEL>,
+> > +                          <&topckgen CLK_TOP_USXGMII_SBUS_0_SEL>,
+> > +                          <&topckgen CLK_TOP_USXGMII_SBUS_1_SEL>,
+> > +                          <&topckgen CLK_TOP_SGM_0_SEL>,
+> > +                          <&topckgen CLK_TOP_SGM_1_SEL>;
+> > +        assigned-clock-parents = <&apmixedsys CLK_APMIXED_NET2PLL>,
+> > +                                 <&topckgen CLK_TOP_NET1PLL_D4>,
+> > +                                 <&topckgen CLK_TOP_NET1PLL_D8_D4>,
+> > +                                 <&topckgen CLK_TOP_NET1PLL_D8_D4>,
+> > +                                 <&apmixedsys CLK_APMIXED_SGMPLL>,
+> > +                                 <&apmixedsys CLK_APMIXED_SGMPLL>;
+> > +        mediatek,ethsys = <&ethsys>;
+> > +        mediatek,infracfg = <&topmisc>;
+> > +        #address-cells = <1>;
+> > +        #size-cells = <0>;
+> > +
+> > +        mac@0 {
+> > +          compatible = "mediatek,eth-mac";
+> > +          reg = <0>;
+> > +          phy-mode = "internal";
+> > +          status = "disabled";
+> 
+> Examples should be enabled.
+
+Ack.
+
+> 
+> > +
+> > +          fixed-link {
+> > +            speed = <10000>;
+> > +            full-duplex;
+> > +            pause;
+> > +          };
+> > +        };
+> > +
+> > +        mac@1 {
+> > +          compatible = "mediatek,eth-mac";
+> > +          reg = <1>;
+> > +          status = "disabled";
+> > +          pcs-handle = <&usxgmiisys1>;
+> > +        };
+> > +
+> > +        mac@2 {
+> > +          compatible = "mediatek,eth-mac";
+> > +          reg = <2>;
+> > +          status = "disabled";
+> > +          pcs-handle = <&usxgmiisys0>;
+> > +        };
+> > +
+> > +        mdio_bus: mdio-bus {
+> 
+> mdio {
+> 
+> > +          #address-cells = <1>;
+> > +          #size-cells = <0>;
+> > +
+> > +          /* internal 2.5G PHY */
+> > +          int_2p5g_phy: ethernet-phy@15 {
+> > +            reg = <15>;
+> > +            compatible = "ethernet-phy-ieee802.3-c45";
+> > +            phy-mode = "internal";
+> > +          };
+> > +        };
+> > +      };
+> > +    };
+> > -- 
+> > 2.42.1
+> 
 
