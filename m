@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91683C4167D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Nov 2023 07:05:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08A7EC4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Nov 2023 08:26:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yyb2EwjVD2jfx+kZp1EpPuK0eXya7TglNpKpzi4k5bM=; b=c/4tzU0/drWCjs77YBhPUaz1Tx
-	TWuw26/hHGdVtbM1IkFXqTTbiFwQS53qcAv0se4B3Q/B6MGg/mPOIt5+ItWx9o+h0MVLIT0bP3pMz
-	5vj9m331Xbl0INzFI4IxCqaKIrK2agItD0Ftbjg+HRODEfgLMmtHXNNcido7t9CKjoGhULSHsQ8Pp
-	gejy89YeuTwaqWHB6K/MHWM+htAgeFaOSQiLNuccluehyK9M9x4VPCN92FWYzQze/pN9rwa71Nhd9
-	YmBff4IGtg4CLX6dpjUYneXP3QP7Q6grhF0N4h5YZIa/5na1Wdb4O8f/z8EvWo0mxYFcTTumEro/A
-	q0aESxKw==;
+	bh=ILq+pBwJhinz0+b5/WAiBVX8WQImwlNlm+ztZO2q0tE=; b=O5VQf3xGIF8kcGn+x32R4L83oS
+	FKPMhDkqM91pWXud95XidE0qpEHeooei23fqrZyukPnFjdHXw8U+zole2AkuxjC3Zgw8QzbOwkdUm
+	9iDpyTFd0DaK9xhymSG5ef48b+wftyUoxeemsmaZ6g1gfiHfEqDS+/Oc0xh5ww49G8iXq7ciiboRN
+	s5quGBYmqXlAvVzTiIbdhL8cmi8eOiiybpzGvNScM79BTVeC4UQ9qdvI7cEVrkbNg/oWOz3oB9/E+
+	QyjYJEVJgPu4ZQdUIuoLyVNhXkZDLAYou4DvucW3lKur24axEDx98h8jY/UTvFqsDBSv7pKufNv8J
+	pdYAEd/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2nUO-00FIrn-12;
-	Tue, 14 Nov 2023 07:05:36 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1r2ol3-00FNxe-1q;
+	Tue, 14 Nov 2023 08:26:53 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2nUJ-00FIr2-14
+	id 1r2ol0-00FNwF-2H
 	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Nov 2023 07:05:35 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-50943ccbbaeso7587427e87.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Nov 2023 23:05:30 -0800 (PST)
+	Tue, 14 Nov 2023 08:26:52 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-507b9408c61so7299385e87.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Nov 2023 00:26:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699945529; x=1700550329; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1699950405; x=1700555205; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yyb2EwjVD2jfx+kZp1EpPuK0eXya7TglNpKpzi4k5bM=;
-        b=iFXpT2DJctRuptVZcOJaWhAym5IM5ep1/gEOEzPEn+9gooEenG7MYUzIpqVdEU9loO
-         sjZaXtXsrkmPAM40Upz3M031PubP8JTRpfvVrAnXb1LYU6bxE5gUIQLsbr7MJSaMN2Re
-         Tz9l58IsaegBQ5neVjQichGlgWlnkcQ6rAQRw=
+        bh=ILq+pBwJhinz0+b5/WAiBVX8WQImwlNlm+ztZO2q0tE=;
+        b=LZwMt+2ZLr2KwGWZJxfqZlpIJ7Na6QLKNu8hGvmFUp4M2BzV91FC8mxlV42cNFdkjt
+         PUYp+fj8Gy6+beF5JKvMZV+gitzOYl6q/qKaTk0grwN6cUVXExLZBpD9uTDUDXzTNxxE
+         CLLulIz1mVHp8JV5LgmMQaPJq3J+wn7eUb24E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699945529; x=1700550329;
+        d=1e100.net; s=20230601; t=1699950405; x=1700555205;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yyb2EwjVD2jfx+kZp1EpPuK0eXya7TglNpKpzi4k5bM=;
-        b=VqQSksTPzkJE5Ix733pWPje6cN5NgOhSoAVEhLcRdKnsmvQrsjFjew3dvPQ6ppLhSB
-         sPj4/UXIMJICwPOuAp1pHb0TXbM7MRDBXSjrvi2rxuyvgz3b3vhFDpyWSD5Dgb9R76zA
-         5WtSvVrFSExLVSqRf2FuQF5d+0VYhNDkGWzQVobNatkIFpRz8nljU0tq9Qy37Oib++Jy
-         Z80a1XNJjAZDg9AlSHv5mFCKf+ZRpJgezR8+E2TdOO8l5tI4MnvqiUkTU7dQYdfCqjvP
-         EehFtN2ofQHATPbS7BgOV9rAF+ZPJbvCt5+B1iDf9vk+HOcNdK1LBDGjx/qDGwJWDdJX
-         AZsA==
-X-Gm-Message-State: AOJu0YznJq943uk/2sCAPIxVU20uUyhirOMRBMKmvNDtI36QfU6/f8kI
-	cFtZ5gPDTfvu3fW8BWGAqhWzlOkwd7zK3aYkGJ2I0Q==
-X-Google-Smtp-Source: AGHT+IE75Kw2yjHCmLuUlzVR4qEfz+s0VaQYGbP1keBehuM963WhuH0JPG9R0sbEQN/xTp0cRos+bLKEQ/NqAXRUufY=
-X-Received: by 2002:ac2:5dcd:0:b0:507:b4b7:a198 with SMTP id
- x13-20020ac25dcd000000b00507b4b7a198mr5694032lfq.57.1699945528627; Mon, 13
- Nov 2023 23:05:28 -0800 (PST)
+        bh=ILq+pBwJhinz0+b5/WAiBVX8WQImwlNlm+ztZO2q0tE=;
+        b=aqlQzsdzIOMP1c9KUEpgQs3U4luxrZ3SZFnC3/rmnLIEbMMwg9aCb5JnHPv40wPlSJ
+         rpMweK9ZyGKyeL7NyaUJrX0cdlkfNKvVLpAWfIcjspT5JA7HEyHszCrmawurU5wzA6dt
+         J0IsqOMQLH2h1teBI2TQo0eWUKJgiKVefGFFFsQwa+KDu2zWXhRLHlOLICYIE2ASfuu2
+         2YFQl16oP0CNJ+sNv14IznA8IqG6jR6jZfbfaLC/7oMpqxVSJBj5fZSgwfE8Ayc/EIaQ
+         /xKynfrtNLli6RvZP4vlrrXIgn8QIY1JysuG3svG4beB1xmj3nl3thVQF+CldBU81J8+
+         THJA==
+X-Gm-Message-State: AOJu0Yw5pJigpIHpeg828ngvGESzWfSYUhcpFrovJMHQ9fcNCnzbGPuJ
+	wMnNrrf+N7tJg4p9OZmqpG8TvDEcaYThSxYfcPYQ3g==
+X-Google-Smtp-Source: AGHT+IFHLJT6u/3uDCL4wRLuNxtmKORPhOhSsZa/aUIdnn6bzKIIUglORso7+jCQUT8ooc/QswCAlXzJ69DqRPKrwIw=
+X-Received: by 2002:a05:6512:128b:b0:509:48ad:930d with SMTP id
+ u11-20020a056512128b00b0050948ad930dmr7593209lfs.25.1699950405527; Tue, 14
+ Nov 2023 00:26:45 -0800 (PST)
 MIME-Version: 1.0
-References: <20231109100606.1245545-1-wenst@chromium.org> <859ac058-c50a-4eb8-99b6-3011ef4e7529@collabora.com>
- <CAL_JsqK64w3+r_LJZoh50PzAUcsvH6ahSDCqgSiKrD3LBAXE9g@mail.gmail.com>
-In-Reply-To: <CAL_JsqK64w3+r_LJZoh50PzAUcsvH6ahSDCqgSiKrD3LBAXE9g@mail.gmail.com>
+References: <20231109100606.1245545-1-wenst@chromium.org> <20231109100606.1245545-3-wenst@chromium.org>
+ <ZU0c2fuRSoqrpffA@smile.fi.intel.com>
+In-Reply-To: <ZU0c2fuRSoqrpffA@smile.fi.intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 14 Nov 2023 15:05:17 +0800
-Message-ID: <CAGXv+5Fta3JvtVz6CYg9xRzE+wjoUtpmy1XrCiU7fMbEJbkGgA@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
-To: Rob Herring <robh+dt@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Frank Rowand <frowand.list@gmail.com>, 
+Date: Tue, 14 Nov 2023 16:26:34 +0800
+Message-ID: <CAGXv+5GRHHWjAqsqT+T10vZmc1otJ9ZGJiKroqDs9F40NM5FeQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 2/7] of: Introduce hardware prober driver
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, andriy.shevchenko@linux.intel.com, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
 	Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org, broonie@kernel.org, 
 	gregkh@linuxfoundation.org, hdegoede@redhat.com, james.clark@arm.com, 
 	james@equiv.tech, keescook@chromium.org, petr.tesarik.ext@huawei.com, 
@@ -81,8 +81,8 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_230531_438872_027ED6AC 
-X-CRM114-Status: GOOD (  62.32  )
+X-CRM114-CacheID: sfid-20231114_002650_814899_7239C784 
+X-CRM114-Status: GOOD (  44.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,202 +97,202 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 9, 2023 at 9:52=E2=80=AFPM Rob Herring <robh+dt@kernel.org> wro=
-te:
+On Fri, Nov 10, 2023 at 1:54=E2=80=AFAM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Thu, Nov 9, 2023 at 4:54=E2=80=AFAM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> >
-> > Il 09/11/23 11:05, Chen-Yu Tsai ha scritto:
-> > > Hi everyone,
-> > >
-> > > This v2 series continues Doug's "of: device: Support 2nd sources of
-> > > probeable but undiscoverable devices" [1] series, but follows the sch=
-eme
-> > > suggested by Rob, marking all second source component device nodes
-> > > as "fail-needs-probe-XXX", and having a hardware prober driver enable
-> > > the one of them. I tried to include everyone from the original Cc: li=
-st.
-> > > Please let me know if you would like to be dropped from future
-> > > submissions.
-> > >
-> > >
-> > > For the I2C component (touchscreens and trackpads) case from the
-> > > original series, the hardware prober driver finds the particular
-> > > class of device in the device tree, gets its parent I2C adapter,
-> > > and tries to initiate a simple I2C read for each device under that
-> > > I2C bus. When it finds one that responds, it considers that one
-> > > present, marks it as "okay", and returns, letting the driver core
-> > > actually probe the device.
-> > >
-> > > This works fine in most cases since these components are connected
-> > > via ribbon cable and always have the same resources. The driver as
-> > > implemented currently doesn't deal with regulators or GPIO pins,
-> > > since in the existing device trees they are either always on for
-> > > regulators, or have GPIO hogs or pinmux and pinconfig directly
-> > > tied to the pin controller.
-> > >
-> > >
-> > > Another case this driver could handle is selecting components based
-> > > on some identifier passed in by the firmware. On Chromebooks we have
-> > > a SKU ID which is inserted by the bootloader at
-> > > /firmware/coreboot/sku-id. When a new combination of components is
-> > > introduced, a new SKU ID is allocated to it. To have SKU ID based
-> > > device trees, we would need to have one per SKU ID. This ends up
-> > > increasing the number of device trees we have a lot. The recent
-> > > MT8186 devices already have 10+10 SKUs [2], with possibly more to com=
-e.
-> > >
-> > > Instead, we could have just one device tree for each device, with
-> > > component options listed and marked as "fail-needs-probe-XXX", and
-> > > let the hardware prober enable one of them based on the given SKU ID.
-> > > The driver will also fix up OF graph remote endpoints to point to the
-> > > enabled component.
-> > >
-> > > The MT8186 Corsola series [2] can also benefit from this, though I
-> > > haven't implemented anything yet.
-> > >
-> > >
-> > > Patch 1 adds of_device_is_fail() for the new driver to use.
-> > >
-> > > Patch 2 implements the first case, probing the I2C bus for presence
-> > > of components. This initial version targets the Hana Chromebooks.
-> > >
-> > > Patch 3 modifies the Hana device tree and marks the touchscreens
-> > > and trackpads as "fail-needs-probe-XXX", ready for the driver to
-> > > probe.
-> > >
-> > > Patch 4 adds a missing touchscreen variant to Hana.
-> > >
-> > > Patch 5 implements the second case, selectively enabling components
-> > > based on the SKU ID. This initial version targets the Krane ChromeOS
-> > > tablet, which has two possible MIPI DSI display panel options.
-> > >
-> > > Patch 6 drops Krane's SKU-specific compatible strings from the bindin=
-gs.
-> > >
-> > > Patch 7 merges Krane's SKU-specific device trees into one, with the
-> > > device tree now containing two possible panels. This unfortunately
-> > > introduces a dtc warning:
-> > >
-> > >      arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dts:81.13-83.6:
-> > >          Warning (graph_endpoint): /soc/dsi@14014000/panel2@0/port/en=
-dpoint:
-> > >       graph connection to node '/soc/dsi@14014000/ports/port/endpoint=
-'
-> > >           is not bidirectional
-> > >
-> > >
-> > > Please take a look.
-> > >
-> > > Johan, I'm not sure if this works as is for the Lenovo Thinkpad 13S
-> > > case, since it looks like the trackpad shares the I2C bus with the
-> > > keyboard.
-> > >
-> > >
-> > > Thanks
-> > > ChenYu
-> > >
-> > >
-> > > Background as given in Doug's cover letter:
-> > >
-> > > Support for multiple "equivalent" sources for components (also known
-> > > as second sourcing components) is a standard practice that helps keep
-> > > cost down and also makes sure that if one component is unavailable du=
+> On Thu, Nov 09, 2023 at 06:05:59PM +0800, Chen-Yu Tsai wrote:
+> > Some devices are designed and manufactured with some components having
+> > multiple drop-in replacement options. These components are often
+> > connected to the mainboard via ribbon cables, having the same signals
+> > and pin assignments across all options. These may include the display
+> > panel and touchscreen on laptops and tablets, and the trackpad on
+> > laptops. Sometimes which component option is used in a particular devic=
 e
-> > > to a shortage that we don't need to stop production for the whole
-> > > product.
-> > >
-> > > Some components are very easy to second source. eMMC, for instance, i=
-s
-> > > fully discoverable and probable so you can stuff a wide variety of
-> > > similar eMMC chips on your board and things will work without a hitch=
-.
-> > >
-> > > Some components are more difficult to second source, specifically
-> > > because it's difficult for software to probe what component is presen=
-t
-> > > on any given board. In cases like this software is provided
-> > > supplementary information to help it, like a GPIO strap or a SKU ID
-> > > programmed into an EEPROM. This helpful information can allow the
-> > > bootloader to select a different device tree. The various different
-> > > "SKUs" of different Chromebooks are examples of this.
-> > >
-> > > Some components are somewhere in between. These in-between components
-> > > are the subject of this patch. Specifically, these components are
-> > > easily "probeable" but not easily "discoverable".
-> > >
-> > > A good example of a probeable but undiscoverable device is an
-> > > i2c-connected touchscreen or trackpad. Two separate components may be
-> > > electrically compatible with each other and may have compatible power
-> > > sequencing requirements but may require different software. If
-> > > software is told about the different possible components (because it
-> > > can't discover them), it can safely probe them to figure out which
-> > > ones are present.
-> > >
-> > > On systems using device tree, if we want to tell the OS about all of
-> > > the different components we need to list them all in the device
-> > > tree. This leads to a problem. The multiple sources for components
-> > > likely use the same resources (GPIOs, interrupts, regulators). If the
-> > > OS tries to probe all of these components at the same time then it
-> > > will detect a resource conflict and that's a fatal error.
-> > >
-> > > The fact that Linux can't handle these probeable but undiscoverable
-> > > devices well has had a few consequences:
-> > > 1. In some cases, we've abandoned the idea of second sourcing
-> > >     components for a given board, which increases cost / generates
-> > >     manufacturing headaches.
-> > > 2. In some cases, we've been forced to add some sort of strapping /
-> > >     EEPROM to indicate which component is present. This adds difficul=
-ty
-> > >     to manufacturing / refurb processes.
-> > > 3. In some cases, we've managed to make things work by the skin of ou=
-r
-> > >     teeth through slightly hacky solutions. Specifically, if we remov=
-e
-> > >     the "pinctrl" entry from the various options then it won't
-> > >     conflict. Regulators inherently can have more than one consumer, =
-so
-> > >     as long as there are no GPIOs involved in power sequencing and
-> > >     probing devices then things can work. This is how
-> > >     "sc8280xp-lenovo-thinkpad-x13s" works and also how
-> > >     "mt8173-elm-hana" works.
-> > >
-> > > End of background from Doug's cover letter.
+> > can be detected by some firmware provided identifier, other times that
+> > information is not available, and the kernel has to try to probe each
+> > device.
 > >
-> > I think that using "status" is not a good idea, I find that confusing.
+> > This change attempts to make the "probe each device" case cleaner. The
+> > current approach is to have all options added and enabled in the device
+> > tree. The kernel would then bind each device and run each driver's prob=
+e
+> > function. This works, but has been broken before due to the introductio=
+n
+> > of asynchronous probing, causing multiple instances requesting "shared"
+> > resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
+> > time, with only one instance succeeding. Work arounds for these include
+> > moving the pinmux to the parent I2C controller, using GPIO hogs or
+> > pinmux settings to keep the GPIO pins in some fixed configuration, and
+> > requesting the interrupt line very late. Such configurations can be see=
+n
+> > on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
+> > Lenovo Thinkpad 13S.
+> >
+> > Instead of this delicate dance between drivers and device tree quirks,
+> > this change introduces a simple I2C component prober. For any given
+> > class of devices on the same I2C bus, it will go through all of them,
+> > doing a simple I2C read transfer and see which one of them responds.
+> > It will then enable the device that responds.
+> >
+> > This requires some minor modifications in the existing device tree.
+> > The status for all the device nodes for the component options must be
+> > set to "failed-needs-probe-xxx". This makes it clear that some mechanis=
+m
+> > is needed to enable one of them, and also prevents the prober and devic=
+e
+> > drivers running at the same time.
 >
-> "status" is what defines a device's state in terms of enabled,
-> present, available. That's exactly what we're expressing here.
+> ...
 >
-> Now, I do not think we should be mixing the device class (e.g.
-> touchscreen) into status. I said this on v1, but apparently that was
-> not listened to.
+> > +config HW_PROBER
+>
+> config OF_HW_PROBER // or anything with explicit OF
+>
+> Don't give a false impression that this is something that may works witho=
+ut
+> OF support.
 
-I must have missed it and only took in Doug's final response.
+Ack.
 
-My code doesn't actually use the class in the status property though.
-I will remove it and just keep "fail-needs-probe".
+> ...
+>
+> > +     bool "Hardware Prober driver"
+>
+> Ditto.
 
+Ack.
+
+> ...
+>
+> > +/*
+> > + * hw_prober.c - Hardware prober driver
+>
+> Do not include filename into the file itself.
+
+Ack.
+
+> > + *
+> > + * Copyright (c) 2023 Google LLC
+> > + */
+>
+> ...
+>
+> > +     node =3D of_find_node_by_name(NULL, node_name);
+> > +     if (!node)
+> > +             return dev_err_probe(&pdev->dev, -ENODEV, "Could not find=
+ %s device node\n",
+> > +                                  node_name);
+>
+> With
+>
+>         struct device *dev =3D &pdev->dev;
+>
+> this and other lines can be made neater.
+
+Ack.
+
+> ...
+>
+>
+> For better maintenance it's good to have ret assignment be placed here
+>
+>         ret =3D 0;
+
+Ack.
+
+> > +     for_each_child_of_node(i2c_node, node) {
+> > +             struct property *prop;
+> > +             union i2c_smbus_data data;
+> > +             u32 addr;
+> > +
+> > +             if (!of_node_name_prefix(node, node_name))
+> > +                     continue;
+> > +             if (of_property_read_u32(node, "reg", &addr))
+> > +                     continue;
+> > +             if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C_S=
+MBUS_BYTE, &data) < 0)
+> > +                     continue;
+> > +
+> > +             dev_info(&pdev->dev, "Enabling %pOF\n", node);
+> > +
+> > +             prop =3D kzalloc(sizeof(*prop), GFP_KERNEL);
+> > +             if (!prop) {
+> > +                     ret =3D -ENOMEM;
+> > +                     of_node_put(node);
+> > +                     break;
+> > +             }
+> > +
+> > +             prop->name      =3D "status";
+> > +             prop->length    =3D 5;
+> > +             prop->value     =3D "okay";
+> > +
+> > +             /* Found a device that is responding */
+> > +             ret =3D of_update_property(node, prop);
+> > +             if (ret)
+> > +                     kfree(prop);
+> > +
+> > +             of_node_put(node);
+> > +             break;
+> > +     }
+>
+> ...
+>
+> > +static const struct hw_prober_entry hw_prober_platforms[] =3D {
+> > +     { .compatible =3D "google,hana", .prober =3D i2c_component_prober=
+, .data =3D "touchscreen" },
+> > +     { .compatible =3D "google,hana", .prober =3D i2c_component_prober=
+, .data =3D "trackpad" },
+> > +};
+>
+> Why can't OF ID table be used for this?
+
+My intent was to have this accept a probe function, which may take an extra
+data argument. So either a new structure like the one here, or use OF ID ta=
+ble,
+and then another layer with a struct holding the prober and extra data poin=
+ter.
+
+I'm guessing this will change since Rob thinks the next patch that adds a
+different prober doesn't belong here.
+
+> ...
+>
+> > +     for (int i =3D 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
+>
+> unsigned?
+
+Ack.
+
+> > +             if (of_machine_is_compatible(hw_prober_platforms[i].compa=
+tible)) {
+> > +                     int ret;
+> > +
+> > +                     ret =3D hw_prober_platforms[i].prober(pdev, hw_pr=
+ober_platforms[i].data);
+> > +                     if (ret)
+> > +                             return ret;
+> > +             }
+>
+> ...
+>
+> > +     pdev =3D platform_device_register_simple(DRV_NAME, -1, NULL, 0);
+>
+> -1 is defined in the header, use that definition.
+
+Ack.
+
+> > +     if (!IS_ERR(pdev))
+> > +             return 0;
+> > +
+> > +     platform_driver_unregister(&hw_prober_driver);
+> > +
+> > +     return PTR_ERR(pdev);
+>
+> Can you use standard pattern, i.e. checking for the _error_ condition?
+
+Ack.
+
+
+Thanks
 ChenYu
-
-> >
-> > Perhaps we could have a node like
-> >
-> > something {
-> >         device-class-one =3D <&device1>, <&device2>, <&device3>;
-> >         device-class-two =3D <&device4>, <&device5>, <&device6>;
-> > }
-> >
-> > so that'd be more or less
-> >
-> > hw-prober {
-> >         trackpads =3D <&tp1>, <&tp2>;
-> >         keyboards =3D <&kb1>, <&kb2>;
-> >         touchscreens =3D <&ts1>, <&ts2>;
-> > }
->
-> No. That's more or less what v1 had.
->
-> Rob
 
