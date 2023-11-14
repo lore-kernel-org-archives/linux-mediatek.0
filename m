@@ -4,82 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31308C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Nov 2023 08:58:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 178D9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Nov 2023 09:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EpeuhvaUzx9DVrRpRRSAt7VSJx9fLxiy0TG7WzmpI+s=; b=4AF1jbh1MYWyfuQl1ubiGs+cDU
-	ric02AYlWjvKKV6z5oFtvP6my8f9GJ5Z52PVVrFf40bgkfTWutqp9dioWwNA6t1M7AU3LB/O+EA7l
-	ZIa1k/cXdnscUO/2y/c+JilPYXyRqdHrjNQwVbXPD8ijTjCN3UZp0JxTpn3uVZOSweLurNwnQFBOI
-	W5di548JyUHQ/tTznItxlCIGdrD1vtrqQG+D7dnNE4a6OP8MSBWZ5OJVEwR3j8mo5vFNLNqly+AA4
-	wIHLQAlNvHgh2HDKI2pUhFIQ/p/dljEV0kgvsVspGYZxb+Sso/zRfaV8y7SpTkfJ4qdp4RJSjo4Ae
-	yvxw0k7g==;
+	bh=S7FFin8rpFrowu9bWACjUo3oZH7qAEuMvwUzNC7+1D4=; b=Ptq+DfYPE0Xm4RIxuEvfxhb4qB
+	aR/221/Kf3dZao+OCG/Spo5W6M059xI4qAnduWaVytdvZVHBFIWvCAQZ+bUGboG9deNKdqyS8FykX
+	sn+0F4SiQIIESEuyYiL1N5cZMrn987Iulh82sX3CaQ8G8CGNWv/O6vXGfbsYqnz3qKv+fN94lBZCh
+	na0SiD0C0f77eV1h2IdJoYBLPlZY+NgFu2iPPmXtiyzrWSVTNh6HFVIZaGh2Y7wi8ZQwi1rh3EjHh
+	ZywIqsMlESnT+4zvZg9gLo/hrwneG4S1soT8riGuYLPs9FT2X0YU2Z2LAHKWnrCNln4LLgzAafTUY
+	FfKGU21w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2pFF-00FRFD-0Q;
-	Tue, 14 Nov 2023 08:58:05 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1r2phS-00FVI4-1v;
+	Tue, 14 Nov 2023 09:27:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2pFB-00FREN-2W
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Nov 2023 08:58:04 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5099184f8a3so7264591e87.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Nov 2023 00:58:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699952280; x=1700557080; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EpeuhvaUzx9DVrRpRRSAt7VSJx9fLxiy0TG7WzmpI+s=;
-        b=PpXVJuYTvtQxZiYlLhH8rJ7TkRCuhy7CnkcMPaSAi4c9wTtmZZRtWtajcJzqJh9LBC
-         iTkRNoF1fS5ae8OmKxn/gFBXJ43eru7egG00bNrjTeVkIUjWQXtjltvGGXX0snC3DAjQ
-         q0O17oRsf+j6SwqEwIwBeYAF3N/Rr/+1mkZEc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699952280; x=1700557080;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EpeuhvaUzx9DVrRpRRSAt7VSJx9fLxiy0TG7WzmpI+s=;
-        b=iAiUfuhfV3QNz2g2PWYUlloaWPNAGaC+FgaVlaiaW3AbTodg67sTVYNN+WuIqV0pbM
-         duAIunydoolt13DhFogfCEbBJVTZI0RRT22HA6o1n4Wndvy+hJLOTimNtty5qHi45/A9
-         a63rIrRNeAKE9FEAALBLw0k/1hFSbSxv2mOz22UsUxP697BwbIaA3Zxqf2awZT4IPD13
-         v7BQMSTzxos9NSmb+uwG6+8H5vQ7c1yUD1mo6dMYkaTfs4UvJ9ISZxky4zKUASkqKa/W
-         utzZWltBDwL7PA193SY8M92WLhrqEQvCobOJe+tkEnawqID5YEuQKxXJL19FVl/hiPwd
-         RESA==
-X-Gm-Message-State: AOJu0YyTqPBDBQR3hxYdPfhq+32PZDSVxbTZr8H9uMkCJEmt0Dg+C/0o
-	JkDWGK9NrrjwQ2sRWggpftaIA0NudVL8O7gTQFthCA==
-X-Google-Smtp-Source: AGHT+IGoap3T5IdklsK8edLZEnTxgQRmoWUpdkrbLlyk6n1CM0MxLtok/B+HS4P8gwV2D437XxUZL/WznF8YciQmScQ=
-X-Received: by 2002:a05:6512:3f0:b0:50a:6fc5:e95c with SMTP id
- n16-20020a05651203f000b0050a6fc5e95cmr5220855lfq.60.1699952279990; Tue, 14
- Nov 2023 00:57:59 -0800 (PST)
+	id 1r2phO-00FVFn-1y;
+	Tue, 14 Nov 2023 09:27:12 +0000
+X-UUID: f85c1d3282cf11ee86758d4a7c00f3a0-20231114
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=S7FFin8rpFrowu9bWACjUo3oZH7qAEuMvwUzNC7+1D4=;
+	b=qEJVC4vNBskrUUDtTk6U6efQShJbpBXOCG0B4xsY0hD3osaRE34700lO17QJz9LBQJBWFqsyc+m32njnLOvx8eeMji1B0Ucmo1Em2JtZQb1OwLNWORK/SdDMlbnMU5CjwPnj3KXr2e0r1GgnpacRarGjwrImgxcPjsRI18RzaKQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:41167f03-1ea8-4d9d-8d88-4486570eaea8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:a6076095-10ce-4e4b-85c2-c9b5229ff92b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f85c1d3282cf11ee86758d4a7c00f3a0-20231114
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 401793198; Tue, 14 Nov 2023 02:27:03 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 14 Nov 2023 17:16:59 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Tue, 14 Nov 2023 17:16:50 +0800
+Message-ID: <a6268eb1-0136-7d13-5aae-f8e2a864f090@mediatek.com>
+Date: Tue, 14 Nov 2023 17:16:46 +0800
 MIME-Version: 1.0
-References: <20231109100606.1245545-1-wenst@chromium.org> <859ac058-c50a-4eb8-99b6-3011ef4e7529@collabora.com>
-In-Reply-To: <859ac058-c50a-4eb8-99b6-3011ef4e7529@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 14 Nov 2023 16:57:48 +0800
-Message-ID: <CAGXv+5G+J__Z_YBySxrkthhwa71shq7aCeKZ_DEZCK=PLgYwUg@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, andriy.shevchenko@linux.intel.com, 
-	Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org, broonie@kernel.org, 
-	gregkh@linuxfoundation.org, hdegoede@redhat.com, james.clark@arm.com, 
-	james@equiv.tech, keescook@chromium.org, rafael@kernel.org, 
-	tglx@linutronix.de, Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Douglas Anderson <dianders@chromium.org>, Johan Hovold <johan@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 1/1] drm/mediatek: Fix access violation in
+ mtk_drm_crtc_dma_dev_get
+Content-Language: en-US
+To: Stuart Lee <stuart.lee@mediatek.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, Lancelot Wu
+	<lancelot.wu@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>, Pablo Sun
+	<pablo.sun@mediatek.com>, <stable@vger.kernel.org>, Bear.Wang
+	<bear.wang@mediatek.com>
+References: <20231110012914.14884-1-stuart.lee@mediatek.com>
+ <20231110012914.14884-2-stuart.lee@mediatek.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <20231110012914.14884-2-stuart.lee@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.518000-8.000000
+X-TMASE-MatchedRID: fE0JoqABJp06yy6RAAEPcya1MaKuob8PC/ExpXrHizz8rSaNLblw6tno
+	quRwHY3Bj7Wc8+5sjRThpAulFEAvQ/+rTYoF7KeerK1919cGzDIrHkgIan9a0Wd6vNuG6Cqy0pM
+	6y4hp8eqORmg3vGx7V9sIe/TXUbL1kKjL2IOi2LAVglQa/gMvfJdPjWZp9Ce4W+jwVKpqvlKW1/
+	3TtIf0zi6l7Me4lYYaavSkNIv6dWMC8/gH0ZUaBws9VkfCh3uAkKAa/khZ3iSM2ehTV+imixSli
+	qFp8m5g80gC5XNpZoW7thdnLNxB1Ea2DXGqwZmfDOL14/DRHdBA8JZETQujwvt592eq2xoT8R2R
+	sKRNAl3KcczIzww8nRoRu3pmdZfHok7b0Yft8KGeAiCmPx4NwLTrdaH1ZWqC1B0Hk1Q1KyLgfCf
+	WlnNb/1cppCzPq+1Uymsk/wUE4hpizLd1CYz0L/CAl/12j+ZfYQi/5pFZJQ2XgQHfq3IbwLkmA0
+	dUQbLZPYY2Oko2eT6jXcTK0di+6+7BuoRxOBASO0Hxo74EaE+uqM9Je4eg9TjEr02BXMZhzb1EI
+	PuPmESrQbSvtjL8dVIwYPm973ce
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.518000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 0BC2E4DADE089477D0E3BDFE917D5AC397BF7328650D6F38882ADC7E086DB5162000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231114_005801_842048_5E92B7A9 
-X-CRM114-Status: GOOD (  76.78  )
+X-CRM114-CacheID: sfid-20231114_012710_664029_FE1E66EA 
+X-CRM114-Status: GOOD (  21.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,293 +111,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 9, 2023 at 6:54=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 09/11/23 11:05, Chen-Yu Tsai ha scritto:
-> > Hi everyone,
-> >
-> > This v2 series continues Doug's "of: device: Support 2nd sources of
-> > probeable but undiscoverable devices" [1] series, but follows the schem=
-e
-> > suggested by Rob, marking all second source component device nodes
-> > as "fail-needs-probe-XXX", and having a hardware prober driver enable
-> > the one of them. I tried to include everyone from the original Cc: list=
-.
-> > Please let me know if you would like to be dropped from future
-> > submissions.
-> >
-> >
-> > For the I2C component (touchscreens and trackpads) case from the
-> > original series, the hardware prober driver finds the particular
-> > class of device in the device tree, gets its parent I2C adapter,
-> > and tries to initiate a simple I2C read for each device under that
-> > I2C bus. When it finds one that responds, it considers that one
-> > present, marks it as "okay", and returns, letting the driver core
-> > actually probe the device.
-> >
-> > This works fine in most cases since these components are connected
-> > via ribbon cable and always have the same resources. The driver as
-> > implemented currently doesn't deal with regulators or GPIO pins,
-> > since in the existing device trees they are either always on for
-> > regulators, or have GPIO hogs or pinmux and pinconfig directly
-> > tied to the pin controller.
-> >
-> >
-> > Another case this driver could handle is selecting components based
-> > on some identifier passed in by the firmware. On Chromebooks we have
-> > a SKU ID which is inserted by the bootloader at
-> > /firmware/coreboot/sku-id. When a new combination of components is
-> > introduced, a new SKU ID is allocated to it. To have SKU ID based
-> > device trees, we would need to have one per SKU ID. This ends up
-> > increasing the number of device trees we have a lot. The recent
-> > MT8186 devices already have 10+10 SKUs [2], with possibly more to come.
-> >
-> > Instead, we could have just one device tree for each device, with
-> > component options listed and marked as "fail-needs-probe-XXX", and
-> > let the hardware prober enable one of them based on the given SKU ID.
-> > The driver will also fix up OF graph remote endpoints to point to the
-> > enabled component.
-> >
-> > The MT8186 Corsola series [2] can also benefit from this, though I
-> > haven't implemented anything yet.
-> >
-> >
-> > Patch 1 adds of_device_is_fail() for the new driver to use.
-> >
-> > Patch 2 implements the first case, probing the I2C bus for presence
-> > of components. This initial version targets the Hana Chromebooks.
-> >
-> > Patch 3 modifies the Hana device tree and marks the touchscreens
-> > and trackpads as "fail-needs-probe-XXX", ready for the driver to
-> > probe.
-> >
-> > Patch 4 adds a missing touchscreen variant to Hana.
-> >
-> > Patch 5 implements the second case, selectively enabling components
-> > based on the SKU ID. This initial version targets the Krane ChromeOS
-> > tablet, which has two possible MIPI DSI display panel options.
-> >
-> > Patch 6 drops Krane's SKU-specific compatible strings from the bindings=
-.
-> >
-> > Patch 7 merges Krane's SKU-specific device trees into one, with the
-> > device tree now containing two possible panels. This unfortunately
-> > introduces a dtc warning:
-> >
-> >      arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dts:81.13-83.6:
-> >          Warning (graph_endpoint): /soc/dsi@14014000/panel2@0/port/endp=
-oint:
-> >       graph connection to node '/soc/dsi@14014000/ports/port/endpoint'
-> >           is not bidirectional
-> >
-> >
-> > Please take a look.
-> >
-> > Johan, I'm not sure if this works as is for the Lenovo Thinkpad 13S
-> > case, since it looks like the trackpad shares the I2C bus with the
-> > keyboard.
-> >
-> >
-> > Thanks
-> > ChenYu
-> >
-> >
-> > Background as given in Doug's cover letter:
-> >
-> > Support for multiple "equivalent" sources for components (also known
-> > as second sourcing components) is a standard practice that helps keep
-> > cost down and also makes sure that if one component is unavailable due
-> > to a shortage that we don't need to stop production for the whole
-> > product.
-> >
-> > Some components are very easy to second source. eMMC, for instance, is
-> > fully discoverable and probable so you can stuff a wide variety of
-> > similar eMMC chips on your board and things will work without a hitch.
-> >
-> > Some components are more difficult to second source, specifically
-> > because it's difficult for software to probe what component is present
-> > on any given board. In cases like this software is provided
-> > supplementary information to help it, like a GPIO strap or a SKU ID
-> > programmed into an EEPROM. This helpful information can allow the
-> > bootloader to select a different device tree. The various different
-> > "SKUs" of different Chromebooks are examples of this.
-> >
-> > Some components are somewhere in between. These in-between components
-> > are the subject of this patch. Specifically, these components are
-> > easily "probeable" but not easily "discoverable".
-> >
-> > A good example of a probeable but undiscoverable device is an
-> > i2c-connected touchscreen or trackpad. Two separate components may be
-> > electrically compatible with each other and may have compatible power
-> > sequencing requirements but may require different software. If
-> > software is told about the different possible components (because it
-> > can't discover them), it can safely probe them to figure out which
-> > ones are present.
-> >
-> > On systems using device tree, if we want to tell the OS about all of
-> > the different components we need to list them all in the device
-> > tree. This leads to a problem. The multiple sources for components
-> > likely use the same resources (GPIOs, interrupts, regulators). If the
-> > OS tries to probe all of these components at the same time then it
-> > will detect a resource conflict and that's a fatal error.
-> >
-> > The fact that Linux can't handle these probeable but undiscoverable
-> > devices well has had a few consequences:
-> > 1. In some cases, we've abandoned the idea of second sourcing
-> >     components for a given board, which increases cost / generates
-> >     manufacturing headaches.
-> > 2. In some cases, we've been forced to add some sort of strapping /
-> >     EEPROM to indicate which component is present. This adds difficulty
-> >     to manufacturing / refurb processes.
-> > 3. In some cases, we've managed to make things work by the skin of our
-> >     teeth through slightly hacky solutions. Specifically, if we remove
-> >     the "pinctrl" entry from the various options then it won't
-> >     conflict. Regulators inherently can have more than one consumer, so
-> >     as long as there are no GPIOs involved in power sequencing and
-> >     probing devices then things can work. This is how
-> >     "sc8280xp-lenovo-thinkpad-x13s" works and also how
-> >     "mt8173-elm-hana" works.
-> >
-> > End of background from Doug's cover letter.
->
-> I think that using "status" is not a good idea, I find that confusing.
+On 11/10/23 09:29, Stuart Lee wrote:
+> Add error handling to check NULL input in
+> mtk_drm_crtc_dma_dev_get function.
+> 
+> While display path is not configured correctly, none of crtc is
+> established. So the caller of mtk_drm_crtc_dma_dev_get may pass
+> input parameter *crtc as NULL, Which may cause coredump when
+> we try to get the container of NULL pointer.
+> 
+> Fixes: cb1d6bcca542 ("drm/mediatek: Add dma dev get function")
+> Signed-off-by: Stuart Lee <stuart.lee@mediatek.com>
+> Cc: stable@vger.kernel.org
+> ---
+>   drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 9 ++++++++-
+>   1 file changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index c277b9fae950..047c9a31d306 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -921,7 +921,14 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+>   
+>   struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
+>   {
+> -	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+> +	struct mtk_drm_crtc *mtk_crtc = NULL;
+> +
+> +	if (!crtc)
+> +		return NULL;
+> +
+> +	mtk_crtc = to_mtk_crtc(crtc);
+> +	if (!mtk_crtc)
+> +		return NULL;
+>   
+>   	return mtk_crtc->dma_dev;
+>   }
 
-It isn't a hard requirement. The current I2C prober actually just looks
-at the node name, which already should be a generic class type. It then
-assumes that all the components of the same class that it is supposed
-to probe for are on the same bus. I think this is a fair assumption for
-replaceable parts connected via ribbon cable or co-layout parts?
+Maybe you could attach the stack dump log in commit message next time.
 
-> Perhaps we could have a node like
->
-> something {
->         device-class-one =3D <&device1>, <&device2>, <&device3>;
->         device-class-two =3D <&device4>, <&device5>, <&device6>;
-> }
->
-> so that'd be more or less
->
-> hw-prober {
->         trackpads =3D <&tp1>, <&tp2>;
->         keyboards =3D <&kb1>, <&kb2>;
->         touchscreens =3D <&ts1>, <&ts2>;
-> }
+I've tested this patch with 6.7-rc1 on mt8395-genio-1200-evk.
 
-This was already nacked by Rob.
+The following error dump can be solved with this patch, thanks.
 
-> Besides, something else I can suggest here is to make this more generic: =
-actually,
-> this issue is spread across way more devices than you maybe think... for =
-example,
-> I know of some smartphones that may have the same situation with DSI disp=
-lays and
-> they're sometimes distinguished by an ADC value, sometimes by reading bac=
-k the
-> manufacturer ID (or panel id) through DSI.
+Tested-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-ADC strapping is common. Though we might need some kind of binding about ho=
-w
-to describe the ADC strapping scheme, as this is bound to be different acro=
-ss
-boards.
 
-Reading back from DSI feels problematic to implement. But I don't know much
-about DSI ATM. Doug implied in our offline discussion that DSI panels might
-have power sequencing requirements that are all over the place.
+[    2.804652] mediatek-drm mediatek-drm.6.auto: bound 
+1c110000.vpp-merge (ops mtk_disp_merge_component_ops [mediatek_drm])
+[    2.804660] mediatek-drm mediatek-drm.4.auto: Not creating crtc 0 
+because component 8 is disabled or missing
+[    2.804662] mediatek-drm mediatek-drm.4.auto: Not creating crtc 0 
+because component 9 is disabled or missing
+[    2.804666] Unable to handle kernel NULL pointer dereference at 
+virtual address 00000000000004a0
+[    2.804668] Mem abort info:
+[    2.804669]   ESR = 0x0000000096000004
+[    2.804670]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    2.804671]   SET = 0, FnV = 0
+[    2.804672]   EA = 0, S1PTW = 0
+[    2.804673]   FSC = 0x04: level 0 translation fault
+[    2.804674] Data abort info:
+[    2.804674]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+[    2.804676]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+[    2.804677]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+[    2.804678] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000107380000
+[    2.804680] [00000000000004a0] pgd=0000000000000000, p4d=0000000000000000
+[    2.804683] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+[    2.804684] Modules linked in: mt6315_regulator mtk_jpeg 
+mtk_jpeg_enc_hw crct10dif_ce mtk_jpeg_dec_hw btusb btrtl mtk_vcodec_dec 
+btintel btmtk v4l2_vp9 mtk_vcodec_enc btbcm v4l2_h264 mtk_vcodec_dbgfs 
+mediatek_drm bluetooth mtk_vcodec_common v4l2_mem2mem ecdh_generic 
+videobuf2_dma_contig ecc videobuf2_memops videobuf2_v4l2 rfkill 
+goodix_ts videodev videobuf2_common mc drm_kms_helper mtk_mmsys 
+mtk_mutex mtk_cmdq_helper mcp251xfd mtk_cmdq_mailbox pcie_mediatek_gen3 
+can_dev mtk_scp pwm_mtk_disp mtk_rpmsg rtc_mt6397 mtk_scp_ipi 
+snd_soc_dmic spmi_mtk_pmif mediatek_cpufreq_hw pwm_bl fuse drm backlight 
+ipv6
+[    2.828100] CPU: 7 PID: 56 Comm: kworker/u16:1 Not tainted 
+6.7.0-rc1-mtk+modified #1
+[    2.829073] Hardware name: MediaTek Genio 1200 EVK-P1V2-EMMC (DT)
+[    2.829838] Workqueue: events_unbound deferred_probe_work_func
+[    2.830578] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS 
+BTYPE=--)
+[    2.831452] pc : mtk_drm_crtc_dma_dev_get+0x0/0x8 [mediatek_drm]
+[    2.832212] lr : mtk_drm_bind+0x418/0x5e8 [mediatek_drm]
+[    2.832885] sp : ffff800082d93a20
+[    2.833301] x29: ffff800082d93a40 x28: ffff8000824379c0 x27: 
+ffff80007acc8c10
+[    2.834197] x26: ffff0000c7e3e080 x25: 0000000000000002 x24: 
+0000000000000000
+[    2.835093] x23: ffff0000c7e3e080 x22: 0000000000000002 x21: 
+0000000000000000
+[    2.835989] x20: ffff0000ca5a2800 x19: ffff0000c7e3e080 x18: 
+ffffffffffffffff
+[    2.836884] x17: 69645f6b746d2073 x16: 706f28206c61612e x15: 
+ffff80008288a5aa
+[    2.837779] x14: ffffffffffffffff x13: 0a676e697373696d x12: 
+20726f2064656c62
+[    2.838676] x11: fffffffffffe0000 x10: 0000000000000020 x9 : 
+ffff800082d93900
+[    2.839572] x8 : 0000000000000020 x7 : 20726f2064656c62 x6 : 
+000000000000000c
+[    2.840468] x5 : ffff0001fef70d08 x4 : 0000000000000000 x3 : 
+ffff0000ca5a2ae0
+[    2.841363] x2 : ffff0000ca5a2ae0 x1 : 0000000000000000 x0 : 
+0000000000000000
+[    2.842259] Call trace:
+[    2.842568]  mtk_drm_crtc_dma_dev_get+0x0/0x8 [mediatek_drm]
+[    2.843285]  try_to_bring_up_aggregate_device+0x168/0x1d4
+[    2.843965]  __component_add+0xa4/0x170
+[    2.844448]  component_add+0x14/0x20
+[    2.844898]  mtk_disp_rdma_probe+0x178/0x268 [mediatek_drm]
+[    2.845602]  platform_probe+0x68/0xdc
+[    2.846064]  really_probe+0x148/0x2ac
+[    2.846525]  __driver_probe_device+0x78/0x12c
+[    2.847074]  driver_probe_device+0x40/0x160
+[    2.847600]  __device_attach_driver+0xb8/0x134
+[    2.848158]  bus_for_each_drv+0x84/0xe4
+[    2.848641]  __device_attach+0xac/0x1b8
+[    2.849124]  device_initial_probe+0x14/0x20
+[    2.849651]  bus_probe_device+0xa8/0xac
+[    2.850133]  deferred_probe_work_func+0x88/0xc0
+[    2.850702]  process_one_work+0x138/0x260
+[    2.851209]  worker_thread+0x32c/0x438
+[    2.851681]  kthread+0x118/0x11c
+[    2.852088]  ret_from_fork+0x10/0x20
+[    2.852540] Code: 97fffdec a8c17bfd d50323bf d65f03c0 (f9425000)
+[    2.853305] ---[ end trace 0000000000000000 ]---
+[    4.102725] random: crng init done
 
-> Also, if Chromebooks really need something "special", such as that corebo=
-ot sku-id
-> parameter, I think that this should be registered externally into the hw =
-prober
-> and not embedded inside of the *generic* hw prober driver.
->
-> We can even reuse of_device_id instead of inventing a new hw_prober_entry=
- struct...
->
-> Idea:
->
-> drivers/platform/chrome/cros_of_hw_prober.c
->
-> static int cros_sku_hw_prober(struct platform_device *pdev, const void *d=
-ata)
-> {
->         ...this is your cros_sku_component_selector() function, anyway...
-> }
->
-> static const struct of_device_id cros_hw_prober_ids[] =3D {
->         { .compatible =3D "google,hana", .data =3D something },
->         { /* sentinel */ }
-> };
->
-> static int some_kind_of_early_init_function(something)
-> {
->         int a,b,c,ret,something;
->
->         .. some logic if necessary ..
->
->         return of_hw_prober_register(cros_sku_hw_prober, cros_hw_prober_i=
-ds);
-> }
+Best regards,
+Macpaul Lin
 
-This feels a bit too layered, and requires all the board specific code to
-have an early init function. I think exposing common helper functions for
-boards to implement prober drivers would be better. Then the prober could
-also be a module if that made sense. Given that SoC vendors are making
-clock controller drivers modules, this doesn't seem very far fetched.
-
-> Btw, thanks for starting that. If this will be done the right way, it's g=
-oing to
-> be useful to many, many people.
-
-Right. I only have a limited view of applications, so input is always welco=
-me.
-
-Thanks
-ChenYu
-
-> Regards,
-> Angelo
->
-> >
-> > [1] https://lore.kernel.org/all/20230921102420.RFC.1.I9dddd99ccdca175e3=
-ceb1b9fa1827df0928c5101@changeid/
-> > [2] https://lore.kernel.org/linux-mediatek/20231012230237.2676469-1-wen=
-st@chromium.org/
-> >
-> > Chen-Yu Tsai (7):
-> >    of: base: Add of_device_is_fail
-> >    of: Introduce hardware prober driver
-> >    arm64: dts: mediatek: mt8173-elm-hana: Mark touchscreens and trackpa=
-ds
-> >      as fail
-> >    arm64: dts: mediatek: mt8173-elm-hana: Add G2touch G7500 touchscreen
-> >    of: hw_prober: Support Chromebook SKU ID based component selection
-> >    dt-bindings: arm: mediatek: Remove SKU specific compatibles for Goog=
-le
-> >      Krane
-> >    arm64: dts: mediatek: mt8183-kukui: Merge Krane device trees
-> >
-> >   .../devicetree/bindings/arm/mediatek.yaml     |   3 -
-> >   arch/arm64/boot/dts/mediatek/Makefile         |   3 +-
-> >   .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |  20 ++
-> >   .../dts/mediatek/mt8183-kukui-krane-sku0.dts  |  24 --
-> >   .../mediatek/mt8183-kukui-krane-sku176.dts    |  24 --
-> >   ...ukui-krane.dtsi =3D> mt8183-kukui-krane.dts} |  47 ++-
-> >   drivers/of/Kconfig                            |  13 +
-> >   drivers/of/Makefile                           |   1 +
-> >   drivers/of/base.c                             |  20 ++
-> >   drivers/of/hw_prober.c                        | 314 +++++++++++++++++=
-+
-> >   include/linux/of.h                            |   6 +
-> >   11 files changed, 418 insertions(+), 57 deletions(-)
-> >   delete mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sk=
-u0.dts
-> >   delete mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sk=
-u176.dts
-> >   rename arch/arm64/boot/dts/mediatek/{mt8183-kukui-krane.dtsi =3D> mt8=
-183-kukui-krane.dts} (86%)
-> >   create mode 100644 drivers/of/hw_prober.c
-> >
->
 
