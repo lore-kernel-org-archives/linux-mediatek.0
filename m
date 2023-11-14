@@ -4,69 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3E42C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Nov 2023 23:22:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91683C4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Nov 2023 07:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:
-	Message-Id:References:In-Reply-To:To:From:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=KXcL97M2PMfWlzmjkDxdbFO/ZAhFUdOxEbJqoSct5Tk=; b=GQuRtJSPn/5Fr7D4znE6pJSpC1
-	raelDzy6SVky/JP8wbF6EE3TFZO6P04j87oVycTj7SMpcHsW/KWMBb4M/+8dAn4uaShg3rNPuxteX
-	klCU4xFC/SO/3S+MuYTK/lj5BwTPCVjfDLPwH6K/Xsp8i3zC82Vvzxqgzkj0lbnJJcfTtS/Ja9gmA
-	oOX52wth3l+WShEHBpLnIMKLnwwAGQsvpt71tZCCDIIR/gveF3e/jOlanFZyJyKc0xjbuoDZp7a/1
-	GqLekhuhk4BycJ9n02EnD6WItCrAke3cSTq5AioUEcJVLkc4aOXowyGTFUtddeL16VeMrQNiVnpQz
-	EqO7K3cw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yyb2EwjVD2jfx+kZp1EpPuK0eXya7TglNpKpzi4k5bM=; b=c/4tzU0/drWCjs77YBhPUaz1Tx
+	TWuw26/hHGdVtbM1IkFXqTTbiFwQS53qcAv0se4B3Q/B6MGg/mPOIt5+ItWx9o+h0MVLIT0bP3pMz
+	5vj9m331Xbl0INzFI4IxCqaKIrK2agItD0Ftbjg+HRODEfgLMmtHXNNcido7t9CKjoGhULSHsQ8Pp
+	gejy89YeuTwaqWHB6K/MHWM+htAgeFaOSQiLNuccluehyK9M9x4VPCN92FWYzQze/pN9rwa71Nhd9
+	YmBff4IGtg4CLX6dpjUYneXP3QP7Q6grhF0N4h5YZIa/5na1Wdb4O8f/z8EvWo0mxYFcTTumEro/A
+	q0aESxKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2gGf-00EsC1-0v;
-	Mon, 13 Nov 2023 23:22:57 +0000
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
+	id 1r2nUO-00FIrn-12;
+	Tue, 14 Nov 2023 07:05:36 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2gGc-00EsBc-1Y;
-	Mon, 13 Nov 2023 23:22:55 +0000
-Received: by mail-oi1-f179.google.com with SMTP id 5614622812f47-3b2ec9a79bdso3416941b6e.3;
-        Mon, 13 Nov 2023 15:22:52 -0800 (PST)
+	id 1r2nUJ-00FIr2-14
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Nov 2023 07:05:35 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-50943ccbbaeso7587427e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Nov 2023 23:05:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1699945529; x=1700550329; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yyb2EwjVD2jfx+kZp1EpPuK0eXya7TglNpKpzi4k5bM=;
+        b=iFXpT2DJctRuptVZcOJaWhAym5IM5ep1/gEOEzPEn+9gooEenG7MYUzIpqVdEU9loO
+         sjZaXtXsrkmPAM40Upz3M031PubP8JTRpfvVrAnXb1LYU6bxE5gUIQLsbr7MJSaMN2Re
+         Tz9l58IsaegBQ5neVjQichGlgWlnkcQ6rAQRw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699917772; x=1700522572;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=KXcL97M2PMfWlzmjkDxdbFO/ZAhFUdOxEbJqoSct5Tk=;
-        b=KrJOiyFN92y4fmrOrUCdjbPdtqlnh7Lls7/UGqGOxd/5ibYS6vN9Gm8cd/GN4gtKCz
-         84nIH9US7LSljOgIzAXz9oNGYMDl7yu4US7pIU1JlGba4YRcTsYNXYAoCh58BEfs44D5
-         LQRmgMDsfbLIkj6MhSwG7WPPv1hwcpdLqda3eaCSc4D3Z4MssfEujLyHamtgRWlrXH73
-         FK8nk7xkPNe+KIJrskR7z8Hih1X5hYUySzkxV5pGj5PETHt0PbAtsMihluN/zzeL5jq8
-         6pzMsJgHu++xd3gdBhc1E0kHsWinMC3KhedwvwPit8a782MGWJRb0E4eoIXQTaVckWpS
-         pOug==
-X-Gm-Message-State: AOJu0YxFrEgEMtu4F9xGXLQMkUGNZLc16MPpjzzpMxbGGhiJBi6fjJAE
-	fQYb6WASor3/DoYEq8/yzw==
-X-Google-Smtp-Source: AGHT+IGlXkQYdT9XhConqZT2NSxmZgbwzACO24pvQVBVdxJsyVzbVIViminAyZ2DMyM4K/MElI1rvg==
-X-Received: by 2002:a05:6808:ece:b0:3b5:6432:e0eb with SMTP id q14-20020a0568080ece00b003b56432e0ebmr11884418oiv.38.1699917772257;
-        Mon, 13 Nov 2023 15:22:52 -0800 (PST)
-Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id w19-20020a056808091300b003a747ea96a8sm956613oih.43.2023.11.13.15.22.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Nov 2023 15:22:51 -0800 (PST)
-Received: (nullmailer pid 14741 invoked by uid 1000);
-	Mon, 13 Nov 2023 23:22:50 -0000
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8bit
+        d=1e100.net; s=20230601; t=1699945529; x=1700550329;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=yyb2EwjVD2jfx+kZp1EpPuK0eXya7TglNpKpzi4k5bM=;
+        b=VqQSksTPzkJE5Ix733pWPje6cN5NgOhSoAVEhLcRdKnsmvQrsjFjew3dvPQ6ppLhSB
+         sPj4/UXIMJICwPOuAp1pHb0TXbM7MRDBXSjrvi2rxuyvgz3b3vhFDpyWSD5Dgb9R76zA
+         5WtSvVrFSExLVSqRf2FuQF5d+0VYhNDkGWzQVobNatkIFpRz8nljU0tq9Qy37Oib++Jy
+         Z80a1XNJjAZDg9AlSHv5mFCKf+ZRpJgezR8+E2TdOO8l5tI4MnvqiUkTU7dQYdfCqjvP
+         EehFtN2ofQHATPbS7BgOV9rAF+ZPJbvCt5+B1iDf9vk+HOcNdK1LBDGjx/qDGwJWDdJX
+         AZsA==
+X-Gm-Message-State: AOJu0YznJq943uk/2sCAPIxVU20uUyhirOMRBMKmvNDtI36QfU6/f8kI
+	cFtZ5gPDTfvu3fW8BWGAqhWzlOkwd7zK3aYkGJ2I0Q==
+X-Google-Smtp-Source: AGHT+IE75Kw2yjHCmLuUlzVR4qEfz+s0VaQYGbP1keBehuM963WhuH0JPG9R0sbEQN/xTp0cRos+bLKEQ/NqAXRUufY=
+X-Received: by 2002:ac2:5dcd:0:b0:507:b4b7:a198 with SMTP id
+ x13-20020ac25dcd000000b00507b4b7a198mr5694032lfq.57.1699945528627; Mon, 13
+ Nov 2023 23:05:28 -0800 (PST)
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-In-Reply-To: <42c9447ae32be8aaeca2047a5e97660fb67dd286.1699909748.git.daniel@makrotopia.org>
-References: <cde7269e5975907ed2b7799328ea814e529ecf51.1699909748.git.daniel@makrotopia.org>
- <42c9447ae32be8aaeca2047a5e97660fb67dd286.1699909748.git.daniel@makrotopia.org>
-Message-Id: <169991777049.14724.13556943216352614509.robh@kernel.org>
-Subject: Re: [PATCH 2/4] dt-bindings: clock: mediatek: add clock
- controllers of MT7988
-Date: Mon, 13 Nov 2023 17:22:50 -0600
+References: <20231109100606.1245545-1-wenst@chromium.org> <859ac058-c50a-4eb8-99b6-3011ef4e7529@collabora.com>
+ <CAL_JsqK64w3+r_LJZoh50PzAUcsvH6ahSDCqgSiKrD3LBAXE9g@mail.gmail.com>
+In-Reply-To: <CAL_JsqK64w3+r_LJZoh50PzAUcsvH6ahSDCqgSiKrD3LBAXE9g@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 14 Nov 2023 15:05:17 +0800
+Message-ID: <CAGXv+5Fta3JvtVz6CYg9xRzE+wjoUtpmy1XrCiU7fMbEJbkGgA@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
+To: Rob Herring <robh+dt@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Frank Rowand <frowand.list@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, andriy.shevchenko@linux.intel.com, 
+	Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org, broonie@kernel.org, 
+	gregkh@linuxfoundation.org, hdegoede@redhat.com, james.clark@arm.com, 
+	james@equiv.tech, keescook@chromium.org, petr.tesarik.ext@huawei.com, 
+	rafael@kernel.org, tglx@linutronix.de, Jeff LaBundy <jeff@labundy.com>, 
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+	Johan Hovold <johan@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_152254_535245_985263D5 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20231113_230531_438872_027ED6AC 
+X-CRM114-Status: GOOD (  62.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,56 +94,205 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Edward-JW Yang <edward-jw.yang@mediatek.com>, Eric Dumazet <edumazet@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-clk@vger.kernel.org, Dan Carpenter <dan.carpenter@linaro.org>, Sabrina Dubroca <sd@queasysnail.net>, Johnson Wang <johnson.wang@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Garmin.Chang" <Garmin.Chang@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stephen Boyd <sboyd@kernel.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Nov 9, 2023 at 9:52=E2=80=AFPM Rob Herring <robh+dt@kernel.org> wro=
+te:
+>
+> On Thu, Nov 9, 2023 at 4:54=E2=80=AFAM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+> >
+> > Il 09/11/23 11:05, Chen-Yu Tsai ha scritto:
+> > > Hi everyone,
+> > >
+> > > This v2 series continues Doug's "of: device: Support 2nd sources of
+> > > probeable but undiscoverable devices" [1] series, but follows the sch=
+eme
+> > > suggested by Rob, marking all second source component device nodes
+> > > as "fail-needs-probe-XXX", and having a hardware prober driver enable
+> > > the one of them. I tried to include everyone from the original Cc: li=
+st.
+> > > Please let me know if you would like to be dropped from future
+> > > submissions.
+> > >
+> > >
+> > > For the I2C component (touchscreens and trackpads) case from the
+> > > original series, the hardware prober driver finds the particular
+> > > class of device in the device tree, gets its parent I2C adapter,
+> > > and tries to initiate a simple I2C read for each device under that
+> > > I2C bus. When it finds one that responds, it considers that one
+> > > present, marks it as "okay", and returns, letting the driver core
+> > > actually probe the device.
+> > >
+> > > This works fine in most cases since these components are connected
+> > > via ribbon cable and always have the same resources. The driver as
+> > > implemented currently doesn't deal with regulators or GPIO pins,
+> > > since in the existing device trees they are either always on for
+> > > regulators, or have GPIO hogs or pinmux and pinconfig directly
+> > > tied to the pin controller.
+> > >
+> > >
+> > > Another case this driver could handle is selecting components based
+> > > on some identifier passed in by the firmware. On Chromebooks we have
+> > > a SKU ID which is inserted by the bootloader at
+> > > /firmware/coreboot/sku-id. When a new combination of components is
+> > > introduced, a new SKU ID is allocated to it. To have SKU ID based
+> > > device trees, we would need to have one per SKU ID. This ends up
+> > > increasing the number of device trees we have a lot. The recent
+> > > MT8186 devices already have 10+10 SKUs [2], with possibly more to com=
+e.
+> > >
+> > > Instead, we could have just one device tree for each device, with
+> > > component options listed and marked as "fail-needs-probe-XXX", and
+> > > let the hardware prober enable one of them based on the given SKU ID.
+> > > The driver will also fix up OF graph remote endpoints to point to the
+> > > enabled component.
+> > >
+> > > The MT8186 Corsola series [2] can also benefit from this, though I
+> > > haven't implemented anything yet.
+> > >
+> > >
+> > > Patch 1 adds of_device_is_fail() for the new driver to use.
+> > >
+> > > Patch 2 implements the first case, probing the I2C bus for presence
+> > > of components. This initial version targets the Hana Chromebooks.
+> > >
+> > > Patch 3 modifies the Hana device tree and marks the touchscreens
+> > > and trackpads as "fail-needs-probe-XXX", ready for the driver to
+> > > probe.
+> > >
+> > > Patch 4 adds a missing touchscreen variant to Hana.
+> > >
+> > > Patch 5 implements the second case, selectively enabling components
+> > > based on the SKU ID. This initial version targets the Krane ChromeOS
+> > > tablet, which has two possible MIPI DSI display panel options.
+> > >
+> > > Patch 6 drops Krane's SKU-specific compatible strings from the bindin=
+gs.
+> > >
+> > > Patch 7 merges Krane's SKU-specific device trees into one, with the
+> > > device tree now containing two possible panels. This unfortunately
+> > > introduces a dtc warning:
+> > >
+> > >      arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dts:81.13-83.6:
+> > >          Warning (graph_endpoint): /soc/dsi@14014000/panel2@0/port/en=
+dpoint:
+> > >       graph connection to node '/soc/dsi@14014000/ports/port/endpoint=
+'
+> > >           is not bidirectional
+> > >
+> > >
+> > > Please take a look.
+> > >
+> > > Johan, I'm not sure if this works as is for the Lenovo Thinkpad 13S
+> > > case, since it looks like the trackpad shares the I2C bus with the
+> > > keyboard.
+> > >
+> > >
+> > > Thanks
+> > > ChenYu
+> > >
+> > >
+> > > Background as given in Doug's cover letter:
+> > >
+> > > Support for multiple "equivalent" sources for components (also known
+> > > as second sourcing components) is a standard practice that helps keep
+> > > cost down and also makes sure that if one component is unavailable du=
+e
+> > > to a shortage that we don't need to stop production for the whole
+> > > product.
+> > >
+> > > Some components are very easy to second source. eMMC, for instance, i=
+s
+> > > fully discoverable and probable so you can stuff a wide variety of
+> > > similar eMMC chips on your board and things will work without a hitch=
+.
+> > >
+> > > Some components are more difficult to second source, specifically
+> > > because it's difficult for software to probe what component is presen=
+t
+> > > on any given board. In cases like this software is provided
+> > > supplementary information to help it, like a GPIO strap or a SKU ID
+> > > programmed into an EEPROM. This helpful information can allow the
+> > > bootloader to select a different device tree. The various different
+> > > "SKUs" of different Chromebooks are examples of this.
+> > >
+> > > Some components are somewhere in between. These in-between components
+> > > are the subject of this patch. Specifically, these components are
+> > > easily "probeable" but not easily "discoverable".
+> > >
+> > > A good example of a probeable but undiscoverable device is an
+> > > i2c-connected touchscreen or trackpad. Two separate components may be
+> > > electrically compatible with each other and may have compatible power
+> > > sequencing requirements but may require different software. If
+> > > software is told about the different possible components (because it
+> > > can't discover them), it can safely probe them to figure out which
+> > > ones are present.
+> > >
+> > > On systems using device tree, if we want to tell the OS about all of
+> > > the different components we need to list them all in the device
+> > > tree. This leads to a problem. The multiple sources for components
+> > > likely use the same resources (GPIOs, interrupts, regulators). If the
+> > > OS tries to probe all of these components at the same time then it
+> > > will detect a resource conflict and that's a fatal error.
+> > >
+> > > The fact that Linux can't handle these probeable but undiscoverable
+> > > devices well has had a few consequences:
+> > > 1. In some cases, we've abandoned the idea of second sourcing
+> > >     components for a given board, which increases cost / generates
+> > >     manufacturing headaches.
+> > > 2. In some cases, we've been forced to add some sort of strapping /
+> > >     EEPROM to indicate which component is present. This adds difficul=
+ty
+> > >     to manufacturing / refurb processes.
+> > > 3. In some cases, we've managed to make things work by the skin of ou=
+r
+> > >     teeth through slightly hacky solutions. Specifically, if we remov=
+e
+> > >     the "pinctrl" entry from the various options then it won't
+> > >     conflict. Regulators inherently can have more than one consumer, =
+so
+> > >     as long as there are no GPIOs involved in power sequencing and
+> > >     probing devices then things can work. This is how
+> > >     "sc8280xp-lenovo-thinkpad-x13s" works and also how
+> > >     "mt8173-elm-hana" works.
+> > >
+> > > End of background from Doug's cover letter.
+> >
+> > I think that using "status" is not a good idea, I find that confusing.
+>
+> "status" is what defines a device's state in terms of enabled,
+> present, available. That's exactly what we're expressing here.
+>
+> Now, I do not think we should be mixing the device class (e.g.
+> touchscreen) into status. I said this on v1, but apparently that was
+> not listened to.
 
-On Mon, 13 Nov 2023 21:12:19 +0000, Daniel Golle wrote:
-> Add various clock controllers found in the MT7988 SoC to existing
-> bindings (if applicable) and add files for the new ethwarp, mcusys
-> and xfi-pll clock controllers not previously present in any previous
-> MediaTek SoC.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  .../bindings/arm/mediatek/mediatek,ethsys.txt |  1 +
->  .../arm/mediatek/mediatek,infracfg.yaml       |  1 +
->  .../arm/mediatek/mediatek,mt7988-ethwarp.yaml | 60 +++++++++++++++++++
->  .../arm/mediatek/mediatek,mt7988-mcusys.yaml  | 46 ++++++++++++++
->  .../arm/mediatek/mediatek,mt7988-xfi-pll.yaml | 49 +++++++++++++++
->  .../bindings/clock/mediatek,apmixedsys.yaml   |  1 +
->  .../bindings/clock/mediatek,topckgen.yaml     |  1 +
->  .../bindings/net/pcs/mediatek,sgmiisys.yaml   |  2 +
->  8 files changed, 161 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-xfi-pll.yaml
-> 
+I must have missed it and only took in Doug's final response.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+My code doesn't actually use the class in the status property though.
+I will remove it and just keep "fail-needs-probe".
 
-yamllint warnings/errors:
+ChenYu
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.example.dtb: /example-0/soc/clock-controller@15031000/reset-controller: failed to match any schema with compatible: ['ti,syscon-reset']
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/42c9447ae32be8aaeca2047a5e97660fb67dd286.1699909748.git.daniel@makrotopia.org
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+> >
+> > Perhaps we could have a node like
+> >
+> > something {
+> >         device-class-one =3D <&device1>, <&device2>, <&device3>;
+> >         device-class-two =3D <&device4>, <&device5>, <&device6>;
+> > }
+> >
+> > so that'd be more or less
+> >
+> > hw-prober {
+> >         trackpads =3D <&tp1>, <&tp2>;
+> >         keyboards =3D <&kb1>, <&kb2>;
+> >         touchscreens =3D <&ts1>, <&ts2>;
+> > }
+>
+> No. That's more or less what v1 had.
+>
+> Rob
 
