@@ -4,87 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78C34C48BF9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 13:32:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33218C54FD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 14:42:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=C9bLgmSE/bzwUoE9sEirds2nyAgb0y2Jz1sKDbtfvr8=; b=AcdotdrzIr3wWP3hqAv0dqRDiC
-	GxCjkX+aeTfb6po5DGd78J0lPm8fMT/KQFxqkMxS2TiFBNREILcQ5IgQyq7WEkiuJv6C+Xx0qpaG2
-	ohnZPNc3aN3F8F+64WKAzy2toXG+nGl9CkCTCOK5AHaTKxg4CpVR1waakrGWq9hG7Hn5b4rOgFCRn
-	HhD9g3ucsx/1X+bn4QKW09I01gWSRLRd8HCai/O8vnlv7QvF2zOwuC0cyVc3lk/sCGk6iqxKXxBno
-	nQuiSK2pattTRTtdGjjLU2F7sHyTUwHTXMtiQGM+OjA7wcwoxPbYX/X9ViD+TQSsVsl8tHN1LUXC3
-	S1yldLzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fWWS0Tt0CqDuAycilbDzCsznyX6QyIJantfjqvxLy80=; b=WhFJUZ/+vXh8QRH1beBXFRfl39
+	8c6SX/z5EyWi176DtB9Aam962P0YE3ntZxIChohTQNKW9+Rxc1aI6FCqn2CjgIwKiJ9GRKscT4SlW
+	wFmyj1Irtgr205eGZMlNOeiSKNrgvgzywfuqxmQZdFQ6i3te3wGGyyIwPXIpfLnUR3gsO8+tghoup
+	ODIfoFbZW9BRACtlrYZfpJws7Xn6jeGICCxdK8QQuSu4ZKIKmSMYF8OS8Sbt6567C08fKjOXvm/H3
+	ozuZLCuErRQXEJVanEslfgIlSRYzqL1fu11XTmREK+t/LbRoTeYoa/id8rw+RbPXy+JDWJMf5s3cU
+	xiQYrAqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3G0A-000t5e-1D;
-	Wed, 15 Nov 2023 13:32:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1r3H64-0013OY-1V;
+	Wed, 15 Nov 2023 14:42:28 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3G05-000t4t-1w
+	id 1r3H62-0013NH-1f
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 15 Nov 2023 14:42:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=fWWS0Tt0CqDuAycilbDzCsznyX6QyIJantfjqvxLy80=; b=FpqUgGYjigONftI7QzMlIJuWPw
+	36a6kop8MRRfuuT2iR58l5npPDFPfBPvj9yDISbXet8Oqn6aB/Ce5uC9ZEsEtrNH/yvVzO5rnysnT
+	AZWAZLtPvW5LiJB6Us/HvkULRm2ksEUNAkc6qgeYJvvCSChNn7unAt9MgFqdb+08JrFlcADBeZ3/b
+	Ifm8ZNR8Nip8aQ7EhXGDpJ9BfmpzHWfhhKTahdnnj1OO3d/2ofDytsEizZVQjRQyqnPssJ3JVg2fg
+	DwuxdMaMPW96adb2b7v4ktK53oWTok+B73dlH97U26YMsQVCfxO3dqhqHuyU0Ph4iEFhtbYfoERSn
+	bvuFg9mQ==;
+Received: from sin.source.kernel.org ([145.40.73.55])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r3H5y-0045He-1w
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Nov 2023 13:32:16 +0000
-X-UUID: 250e29d883bb11ee86758d4a7c00f3a0-20231115
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=C9bLgmSE/bzwUoE9sEirds2nyAgb0y2Jz1sKDbtfvr8=;
-	b=ImLO6QUZ/fgbhGiF9jfSOQES9syW6aYWHftjkMJEloObzBVhMzjzMkhnUbXrS/9RFXM4bHb0sMGcVejSFsFdWaNkWMij0Ch/+GhMVviACReIU6K6r2/czyLIXxh1PVlELqsYZjAlwIHzQQSAZ7zce4Pr3GKkdpkCL1TVC4M/sew=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:4d938dd5-9fcd-4b39-b71e-044110d9d59c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:364b77b,CLOUDID:196d6d95-10ce-4e4b-85c2-c9b5229ff92b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 250e29d883bb11ee86758d4a7c00f3a0-20231115
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 233856257; Wed, 15 Nov 2023 06:30:29 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 15 Nov 2023 21:10:26 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 15 Nov 2023 21:10:26 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <stable@vger.kernel.org>
-Subject: [PATCH v2] ufs: core: clear cmd if abort success in mcq mode
-Date: Wed, 15 Nov 2023 21:10:24 +0800
-Message-ID: <20231115131024.15829-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Wed, 15 Nov 2023 14:42:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 9E9A5CE1DC0;
+	Wed, 15 Nov 2023 14:42:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46C35C433C9;
+	Wed, 15 Nov 2023 14:42:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700059335;
+	bh=/VnhW6XNAlYbmraAXUOBLMr1ny5iRNfsObxNKJlK2PM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cfnklic2zj6BLXDMDv5AHq11ZtFjt6/Y4W3IXz3fhfAyvXj/Cyr6LQ7XKQ6BqhV42
+	 QnbLjD4Fo+QNU3qurTgV/2JhzKISXC/eaUZb3ZameW1sC+VgCweeXblVr4KZO9WzPq
+	 nh8z2U5b6W2a8zCYCMVK3iYdqV813Du8dgC35b/AoPtLxFuAzUAA2fxER3Q/VDg0o4
+	 C3IBNvhYj3JZwnsEtuU8jVF+MaJzw3a+CRi+VhcaT2jBYKl/emWQZNtjm9ncFR8wb1
+	 bCCfDXmQK0vZFd6BW3YFXoU9oZgLvwK6Yo6Fbx+OH1FGAM/VxskLK93lpZAlQ8rdrF
+	 7Rp6YLtlk7pfQ==
+Date: Wed, 15 Nov 2023 14:42:11 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+Cc: lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	angelogioacchino.delregno@collabora.com, perex@perex.cz,
+	allen-kh.cheng@mediatek.com, kuninori.morimoto.gx@renesas.com,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5 1/3] ASoC: dt-bindings: mt8188-mt6359: add es8326
+ support
+Message-ID: <20231115-amount-unashamed-ba70aa85b6a9@squawk>
+References: <20231115090903.578438-1-zhourui@huaqin.corp-partner.google.com>
+ <20231115090903.578438-2-zhourui@huaqin.corp-partner.google.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.243600-8.000000
-X-TMASE-MatchedRID: eim6YYjnci0MQLXc2MGSbO7KTDtx8CggCt59Uh3p/NWsafcFLFlU1OhA
-	oL09ZB7k7Oz5SO8AjrR6fWcwarN2OU2VnXMRzIBjMJoQm3jo+mk7pfSjRsD2Og2Y8xyy93kWcam
-	vz988laLcGqNrS/CXVwG2ORx9EyapQq2SOVgDzZ2e7UdJp0QINX0tCKdnhB58x1VpQxNE5Sol1b
-	QZsjoiro6HM5rqDwqtwhyVdat1JJ4YTSC8+eLAsZoa6WdfBq3sGScriA4mVLNnqMsc5IhUrQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.243600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: FCB1E0C5A67EF3923329F8C1EEAB1D739410A2AA11A224C8A64FF2DC537955D42000:8
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="q1LKci4Ma36W9hfw"
+Content-Disposition: inline
+In-Reply-To: <20231115090903.578438-2-zhourui@huaqin.corp-partner.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_053214_899468_0F80E402 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20231115_144222_954489_D8241856 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,56 +93,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
 
-In mcq mode, if cmd is pending in device and abort success, response
-will not return from device. So we need clear this cmd right now,
-else command timeout happen and next time use same tag will have
-warning. WARN_ON(lrbp->cmd).
+--q1LKci4Ma36W9hfw
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Below is error log:
-<3>[ 2277.447611][T21376] ufshcd-mtk 112b0000.ufshci: ufshcd_try_to_abort_task: cmd pending in the device. tag = 7
-<3>[ 2277.476954][T21376] ufshcd-mtk 112b0000.ufshci: Aborting tag 7 / CDB 0x2a succeeded
-<6>[ 2307.551263][T30974] ufshcd-mtk 112b0000.ufshci: ufshcd_abort: Device abort task at tag 7
-<4>[ 2307.623264][  T327] WARNING: CPU: 5 PID: 327 at source/drivers/ufs/core/ufshcd.c:3021 ufshcd_queuecommand+0x66c/0xe34
+On Wed, Nov 15, 2023 at 05:09:01PM +0800, Rui Zhou wrote:
+> Add compatible string "mediatek,mt8188-es8326" to support new board
+> with es8326 codec.
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
 
-Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
-Cc: stable@vger.kernel.org
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Please pick up =E3=81=B1cks from previous submissions:
+https://lore.kernel.org/all/20231108-handmade-cadmium-97ff07964b02@spud/
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 8b1031fb0a44..6aa6f79d7841 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -6444,11 +6444,24 @@ static bool ufshcd_abort_one(struct request *rq, void *priv)
- 	struct scsi_device *sdev = cmd->device;
- 	struct Scsi_Host *shost = sdev->host;
- 	struct ufs_hba *hba = shost_priv(shost);
-+	struct ufshcd_lrb *lrbp = &hba->lrb[tag];
-+	struct ufs_hw_queue *hwq;
-+	unsigned long flags;
- 
- 	*ret = ufshcd_try_to_abort_task(hba, tag);
- 	dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
- 		hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
- 		*ret ? "failed" : "succeeded");
-+
-+	/* Release cmd in mcq mode if abort success */
-+	if (is_mcq_enabled(hba) && (*ret == 0)) {
-+		hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(lrbp->cmd));
-+		spin_lock_irqsave(&hwq->cq_lock, flags);
-+		if (ufshcd_cmd_inflight(lrbp->cmd))
-+			ufshcd_release_scsi_cmd(hba, lrbp);
-+		spin_unlock_irqrestore(&hwq->cq_lock, flags);
-+	}
-+
- 	return *ret == 0;
- }
- 
--- 
-2.18.0
+Cheers,
+Conor.
 
+> ---
+>  .../devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml        | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt63=
+59.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.ya=
+ml
+> index 4c8c95057ef7..f94ad0715e32 100644
+> --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+> @@ -15,6 +15,7 @@ allOf:
+>  properties:
+>    compatible:
+>      enum:
+> +      - mediatek,mt8188-es8326
+>        - mediatek,mt8188-mt6359-evb
+>        - mediatek,mt8188-nau8825
+>        - mediatek,mt8188-rt5682s
+> --=20
+> 2.25.1
+>=20
+
+--q1LKci4Ma36W9hfw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZVTYvwAKCRB4tDGHoIJi
+0utUAP9yU8NM6xdQfcRRp17w+Sf3IPjMeqQeliXk2oT/VoqF9gD8CrphaoCuTs39
+/rOAA0Rl1hqA1krQauB6VANmeuAEgQo=
+=FyXQ
+-----END PGP SIGNATURE-----
+
+--q1LKci4Ma36W9hfw--
 
