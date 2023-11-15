@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 807EBC5AE4A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 19:23:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68FF2C2BB3F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 19:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ldrozAYeineeZ/BF/LEq3IJ2o7DgZwcwEmQt6wI/BQE=; b=0DwDuMt7g3IuYs93ApFZSPk1ym
-	ZOvwSU80GfR3GmCVwy05HUb53bupJffbILZsTcGpzMDszPX5/wqh3ed0joddukFM54/khTOcN+N6U
-	RWw+WadhKmpCF+j3VwG6yYFIf/XqWqx5kiUPLLUkA974g70Pt16iHH0oGWl3q9puw8284t1OaL3Q2
-	LtLSc84QP5YP17uUA6/Y0zdg1zDUTQzS2pGlwep1eZG6Ye8b3cM1NjtwhhUZlClbQKCDv2Yl3mzgE
-	B6aY7kGMf49g1qfFM5K07jj6rxsLp/jpbXZCo8Gh13gOSSxBa0wf/bUyiKck41vkUOjursGvfDqIp
-	ePoCq3Eg==;
+	bh=6X29YxgOJSekJMMYnxMuAiE4h71bPpKLkyOGCG+ZdDw=; b=SA5QRHHMDIMNtLd9PEtMTJzw46
+	HJ8roZqN/q7GNsZ0yuZkEbtbUwRbHN+lSDZVs5Sg3yAExVtq97CaYpyCD/1WVnkpAU10Bk+kBiI1R
+	kv0uqRJObndLLdoDz9pRaJTkcQs6CT/xsRJ7dGdpl+8jsVjDcDzFW7rQCUrrjCITYMw80Ld3kUFHI
+	lHSq9vR2MPr5iOJiKyvNX2ruu7RojNjYIJXSMw4elw6G4/5KLOE09HJK2y+/WIcdw7IKlVW3gfPq5
+	ng5NFdqaWijumx9F+qrqCihLiaVTZ8Y21v+9w0w7/S552NSxuyL6ytd5mO0opKv6Y2gMe0BECXN3s
+	oH67Z9sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3LU7-001a4W-0u;
-	Wed, 15 Nov 2023 19:23:35 +0000
-Received: from mail-pg1-f182.google.com ([209.85.215.182])
+	id 1r3LYv-001afA-0j;
+	Wed, 15 Nov 2023 19:28:33 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3LU5-001a3k-0F
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Nov 2023 19:23:34 +0000
-Received: by mail-pg1-f182.google.com with SMTP id 41be03b00d2f7-5bdc185c449so18689a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 11:23:31 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700076211; x=1700681011;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ldrozAYeineeZ/BF/LEq3IJ2o7DgZwcwEmQt6wI/BQE=;
-        b=J3kHOJaetQUpMhEk7QIhMkrqFBOwNIW6f/Yr2Tkto8wfIKTg8ZGtOwu+xC3ms0f8Jb
-         YdYdthOgBi/6ziNB3HrWXjjCk9Py9PkV3IhA0iZG9ARE9DK5YFcvDE1pLrhAc3Bswb9f
-         lfug+zQMJt9m6/z0bg+8pbRNPhF4OUDm1gyRhF6SrRgQEPG2BWqK5U7vTplP/2uNyBSB
-         sNwRx7dqUI/qqH9KhgKoxTWSP9MYIaPN9ERktSpLqI6Homod4Ata5o2hVC4/xb2jwGII
-         gvC1UFufykqkTl5pnLlXa42dhc4h3H3Efs+kTrBCH7NQgVDH5fKkIdh23hSAbCVHEZ1J
-         3XoA==
-X-Gm-Message-State: AOJu0Yx519oxkUZDeEdrfZIuvMeyn3AvsxFMCg4a9F4MixTV7sCN9GdY
-	Sl+qmpO0Dss9SMil+eBPSAw=
-X-Google-Smtp-Source: AGHT+IGq0v6pa9Jdeag9qRSdRmRPWvaBS8KkivlScZwV+8fLay4ixrQ6HcxZmmpsBH1ODg4GTcks0w==
-X-Received: by 2002:a05:6a20:54a4:b0:17b:3438:cf92 with SMTP id i36-20020a056a2054a400b0017b3438cf92mr12829670pzk.5.1700076210814;
-        Wed, 15 Nov 2023 11:23:30 -0800 (PST)
-Received: from ?IPV6:2620:0:1000:8411:56f1:2160:3a2a:2645? ([2620:0:1000:8411:56f1:2160:3a2a:2645])
-        by smtp.gmail.com with ESMTPSA id k9-20020aa78209000000b00692cac7a065sm3124100pfi.151.2023.11.15.11.23.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Nov 2023 11:23:30 -0800 (PST)
-Message-ID: <03a436a0-b0cf-4173-b846-44509205dacf@acm.org>
-Date: Wed, 15 Nov 2023 11:23:28 -0800
+	id 1r3LYr-001adv-0m;
+	Wed, 15 Nov 2023 19:28:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2D90E617C4;
+	Wed, 15 Nov 2023 19:28:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BE89C43395;
+	Wed, 15 Nov 2023 19:28:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700076507;
+	bh=6X29YxgOJSekJMMYnxMuAiE4h71bPpKLkyOGCG+ZdDw=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Or31r+GDQxBg0Kl8952bupTT20NKuDwPAAhds0bRUOCSZpFXveuXNiRPeMF9U4ZFC
+	 AvZlT63J2FDw7+KmeblxmRPR4g5Vzt0k5NC4KfM41F7s7MjmEPfuSQ+P4J7ydI9oVD
+	 RJiksoxrLz7lCCBhDKMXsqog4bhDw0xNI9zPLaN1G/e6lKLuBptX7qINXIZDokxuWt
+	 WplEtsGC5+kLHE64Dvk+Anp0N+yInACzDd1UP7BuR52jRkPU6rnnE3t9i9qMr9smHu
+	 4SU5hizO3uCkiFzud6h13enoHxr6HU1OvKZM8mdcDPdJqWAWQU2dfZcIq3tmPAasfy
+	 JwiL2+5acw0qg==
+Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-507cee17b00so9567217e87.2;
+        Wed, 15 Nov 2023 11:28:27 -0800 (PST)
+X-Gm-Message-State: AOJu0Yxn3ZN4PQcqKvvdAkX1CCeMAa6a80Zsy8P7KY13WscwXo+Q8suC
+	6gDhkRQJxvdDyLyw9+fCNASDWlivHiZn5LNqIw==
+X-Google-Smtp-Source: AGHT+IGtuiOaHigoe4PCchL0ez6WkPrADjlwvvM4lywCiYHOdKs1gl3YzfWtoBm3uafJe5HtghJLBMHgFaaktMSfqQo=
+X-Received: by 2002:ac2:54b9:0:b0:500:d4d9:25b5 with SMTP id
+ w25-20020ac254b9000000b00500d4d925b5mr9071774lfk.56.1700076505201; Wed, 15
+ Nov 2023 11:28:25 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ufs: core: clear cmd if abort success in mcq mode
-Content-Language: en-US
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, stable@vger.kernel.org
-References: <20231115131024.15829-1-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20231115131024.15829-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20231109100606.1245545-1-wenst@chromium.org> <859ac058-c50a-4eb8-99b6-3011ef4e7529@collabora.com>
+ <CAL_JsqK64w3+r_LJZoh50PzAUcsvH6ahSDCqgSiKrD3LBAXE9g@mail.gmail.com> <CAD=FV=VUZy9DaZgKafSpXXopD5k8ExGSR97BjAqC5tupPoxNfQ@mail.gmail.com>
+In-Reply-To: <CAD=FV=VUZy9DaZgKafSpXXopD5k8ExGSR97BjAqC5tupPoxNfQ@mail.gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Wed, 15 Nov 2023 13:28:12 -0600
+X-Gmail-Original-Message-ID: <CAL_Jsq+puq20EWkQg1RTs2zfmh4DGbqz1krp+19c=wPXnLT5dA@mail.gmail.com>
+Message-ID: <CAL_Jsq+puq20EWkQg1RTs2zfmh4DGbqz1krp+19c=wPXnLT5dA@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
+To: Doug Anderson <dianders@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Chen-Yu Tsai <wenst@chromium.org>, Frank Rowand <frowand.list@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, andriy.shevchenko@linux.intel.com, 
+	Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org, broonie@kernel.org, 
+	gregkh@linuxfoundation.org, hdegoede@redhat.com, james.clark@arm.com, 
+	james@equiv.tech, keescook@chromium.org, petr.tesarik.ext@huawei.com, 
+	rafael@kernel.org, tglx@linutronix.de, Jeff LaBundy <jeff@labundy.com>, 
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_112333_111750_E1A43EAF 
-X-CRM114-Status: UNSURE (   5.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231115_112829_381586_0F3DEC1D 
+X-CRM114-Status: GOOD (  30.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,10 +90,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/15/23 05:10, peter.wang@mediatek.com wrote:
-> In mcq mode, if cmd is pending in device and abort success, response
-> will not return from device. So we need clear this cmd right now,
-> else command timeout happen and next time use same tag will have
-> warning. WARN_ON(lrbp->cmd).
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+On Fri, Nov 10, 2023 at 6:12=E2=80=AFPM Doug Anderson <dianders@chromium.or=
+g> wrote:
+>
+> Hi,
+>
+> On Thu, Nov 9, 2023 at 5:52=E2=80=AFAM Rob Herring <robh+dt@kernel.org> w=
+rote:
+> >
+> > > > End of background from Doug's cover letter.
+> > >
+> > > I think that using "status" is not a good idea, I find that confusing=
+.
+> >
+> > "status" is what defines a device's state in terms of enabled,
+> > present, available. That's exactly what we're expressing here.
+> >
+> > Now, I do not think we should be mixing the device class (e.g.
+> > touchscreen) into status. I said this on v1, but apparently that was
+> > not listened to.
+>
+> Interesting. I must have missed the "don't mix device class into
+> status" part. Do you have a link to your post about that? Maybe
+> there's other stuff I missed... Having the device class stuck at the
+> end there was at least part of my last post [1] which gathered no
+> response.
+
+https://lore.kernel.org/all/CAL_JsqKK0tjeXNv=3Da8L3k0AjhCa15XOq1tPWqVod9myc=
+sKXJHg@mail.gmail.com/
+
+"I would not combine the 2 things. Knowing the class/type of the device
+may be useful independent of your problem."
+
+
+> I think one of the reasons that I felt we needed to mux the device
+> class into status was that it was going to make the code a lot less
+> fragile. Everything I've seen indicates that you don't want us to
+> create a "HW prober" node that could be used to provide relevant
+> phandles for different classes of devices, so the "HW prober" code
+> needs to either search through the whole device tree for a status of
+> "failed-needs-probe" or needs to contain per-board, hardcoded,
+> fully-qualified paths.
+>
+> I don't think we want to include hardcoded, fully-qualified paths in
+> the code. That would mean that if someone changed a node name
+> somewhere in the path to one of the devices that we're dealing with
+> then it would break.
+
+Right, nothing should depend on the full path. That's not an ABI just
+like the device path in sysfs is not (despite what Android HALs do).
+
+> So if we're searching the whole device tree for "failed-needs-probe"
+> then we need to figure out which devices are related to each other. If
+> a given board has second sources for MIPI panels, touchscreens, and
+> trackpads then we need to know which of the "failed-needs-probe"
+> devices are trackpads, which are touchscreens, and which are MIPI
+> panels. Do you have any suggestions for how we should do that? Maybe
+> it was in some other thread that I missed? I guess we could have a
+> board-specific table mapping (compatible + node name + reg) to a
+> class, but that feels awkward.
+
+Node name is supposed to correspond to device class, so why not use
+that (no path or unit-address.) and nothing else (well, besides
+"status")?
+
+Rob
 
