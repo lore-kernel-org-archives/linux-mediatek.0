@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A692EC2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 17:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA98C072A2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 17:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nXTjoyVMIW/yRQ2Q8optVuxtgEkz3DRech+NYfXUR9A=; b=NFDj++4VC4U605QuAkejb9i34i
-	rvzQyinJkjhjfzcDJ7ytMcjXh9WYdSHtrGQ19ecvlpjjcRj8sQKN6FoiIDSZrT1dBOmNLGp6tq6at
-	CMSaRrtuU2jOWpEMX6ff2eIX7EIiKK1ey55JyD93zonbdgV6CKUwI4KcqcDdnHMmczUP8ppJlnSpt
-	ZCQKXUYdyrluGcY3hqhAkf7qapllsgNEe27vhLIhf6EiiixUmQItrpC1ySRnYuSbOIb71Bb/2Wy99
-	S+6aZ0FEJ6jnv+k/YdDnsC5Z0w64SoWnJcTH6ZBa+WB0gVLd3SeRijLMRx6q/EQxFlQ+M2xISb2Lt
-	/rZZXD3A==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qrrnyZWXKRYwxEi6KzPQsaUn7ssz3ZkVcCNWua0g1gk=; b=ZkHA/AnwvVhjq5NUup4Z2UtqFU
+	yNAk1nD2rY3kzHSiyGyDSMsdm+DvzU5f2u+T687APy7ezIcW0lgWUj9gHmmKEkI9M7fjLn9D5v8Wj
+	/jDYNu22PqtYK41HUO4E5S7JGoH62Wx1H6zRRQHfvMWZ8MXpZkz+kmUkG+1OLHvacwzSB1UN3I5b7
+	9pJ7QAoOJ/alkUw/46enbsAYtWoXF+XYMacr71+nHI0IL+mCyEGWKIGX2Ec5DshMQFdEvclNgDsgI
+	B31BFnzmFDuMaU6BElXnz5Go68SHwhGhCFjBDMhIxnmzlwQqeXI9s4k/l1VNSRwbtiBH5gNOB/Z5y
+	7Za7iohA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3JNZ-001Or3-0z;
-	Wed, 15 Nov 2023 17:08:41 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1r3JNd-001Osi-21;
+	Wed, 15 Nov 2023 17:08:45 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3JNV-001Oq8-05;
-	Wed, 15 Nov 2023 17:08:38 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-32f9268bf8cso4429054f8f.0;
-        Wed, 15 Nov 2023 09:08:35 -0800 (PST)
+	id 1r3JNZ-001OqU-2y;
+	Wed, 15 Nov 2023 17:08:43 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-507a3b8b113so9890800e87.0;
+        Wed, 15 Nov 2023 09:08:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700068114; x=1700672914; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=nXTjoyVMIW/yRQ2Q8optVuxtgEkz3DRech+NYfXUR9A=;
-        b=N9/n/unRptdXGiXzG7X1SkMnsRNIKyIK2Fv8Uge2obc+W1O/igGpL6Dc8MJmJEQKsZ
-         orRpPGv8zQtXFt66xraM1zjYqS0ws6WeRj5mDboL5crcpu32vQU0IGBkuYJWwabSUI1B
-         MB+DTgSERdS6tiyXfeN3g3rWpKe3kwqSi5dkWjOjMgODnBDfqmchiPOl7aaON8TYUhSH
-         zd6LdZuDkp62MsejEgcxEinLkeblkhkuU/82tuwudO3u2nWdbrIDWsyj34IQZTPDHSIb
-         k/DXtf6sMVTesA8B9RasPIz2jP7W/zBSFMr9IkKJfD8Pv1mAjWFp8HCEhmW4CXbdFeyX
-         FDrQ==
+        d=gmail.com; s=20230601; t=1700068117; x=1700672917; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qrrnyZWXKRYwxEi6KzPQsaUn7ssz3ZkVcCNWua0g1gk=;
+        b=Livv0izGWJJt9QApSgpvpPtLeuy7VDNGD547oQEfd6V9C9ZUA18OvFXuFg9oMmGjn9
+         +fsUZ4U0BJi+3qSaTQsTojtficXQF84rtnFGuyQCidJ2Zk7tprYI2wUYNXJVbAFCy/a5
+         qHJlkqwJiba5JMwxGvy0NVLGh9is39Hc2Ow7oNOwB/Dp+BJYzptJ9RT/8NKGeRYZfWEJ
+         X47gPHNz6MNEVwL6HQ3+S//+EK0EWqPPnIukMo6fHax75BLC1ZWvoNe779UworCb2poX
+         uDUmrw68rGfbCBTrfAnj95gyoCsbcBeIx8i3ICsPIH3lzeRbqrtegi2kbk5L07Yk/7/A
+         O47Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700068114; x=1700672914;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=nXTjoyVMIW/yRQ2Q8optVuxtgEkz3DRech+NYfXUR9A=;
-        b=eDr66KCK+0faA9IvfAsL8ocGsDnC8S5caRWBYU84U5mc8c8PJYDLjpeqbToCnwLghA
-         j2ggrp58tP9lTWXY3+MdQGRIjEx1gPzEKabIV46AfXfUv+COTNu5e8PRSQGzO0/fJdoT
-         rDAa2QPZc3eet294Gkcozy5VkcdovspjKQtNdVGaXwabxMVMUXk6TWCQmyCp8g6xx6XU
-         /xJJvjn4pqkd7tT7ilulecsc+BMj6GCQMRCUaWrZDN8ccAICMuIJvIOwswg4MBSf3T6n
-         QVulbehODnD31RPG4/0i3AXc/HWO6B8cNMaXW0UPvD413uZk+7XtRqivYD/6vPjvLOJD
-         oeFA==
-X-Gm-Message-State: AOJu0Yxde5h4kttD40jLS0pOJI5dnAbOLmNLPBq9MXtaemIAVRPkfNxb
-	y2ovOUU/OrZ9kS7Dq0/Bp5c=
-X-Google-Smtp-Source: AGHT+IFljFo2x86LrUGVvlArWoH2Dzg1FID8H1eKmivUz22BVETYCNx6O9wJom4ahLITEq9gblxjmg==
-X-Received: by 2002:a5d:64ee:0:b0:32f:7fe4:45f2 with SMTP id g14-20020a5d64ee000000b0032f7fe445f2mr13012008wri.4.1700068113882;
-        Wed, 15 Nov 2023 09:08:33 -0800 (PST)
+        d=1e100.net; s=20230601; t=1700068117; x=1700672917;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qrrnyZWXKRYwxEi6KzPQsaUn7ssz3ZkVcCNWua0g1gk=;
+        b=wv/ZpMKDkvcflV0r3ATced0qjTciP17ZuuhaK/84eq+xL0zy9NGE3h8oK02SM4IDM7
+         BxoTeEaeLcwJXVZ5ce7yl19VLGrpetyOhU6JjDQTnCeZmoaORqRrqOSR9bHFprZWQqlf
+         4f+JK8KiRqkOzUbA6J/9khOuR+EXRnMSAzV8UG10KOdFClDTFlIqsLTxKAjAcopUD6PW
+         28CFEl2QUsaJLE/EYVABfSW+PgxgHRYzHo5zIAEfm87Bq+/u7NA6A+UIPEhX//j/5IyY
+         HuT4INzFk6uxsI2Zc7Jp+m82EWCn9yNNLhhR+PbaLAHeEqfBU/TYc5zMzh7QmiiT0ofy
+         84UQ==
+X-Gm-Message-State: AOJu0Yyz3vPIAI2AAAywSo8P7xs2DlsZm6vurZsU1SaOK0NikTasafIk
+	JNnoG2rtcdaUn0z6Q6pcXtQ=
+X-Google-Smtp-Source: AGHT+IHjYmYAyWSklZ6ETDi2sPgxaQ6mYTB3sSCXAji4FRfCH+gnQeBjUJaOorAg8+7gl6sydUVAhg==
+X-Received: by 2002:a05:6512:6d5:b0:507:b19e:90cc with SMTP id u21-20020a05651206d500b00507b19e90ccmr11643551lff.40.1700068116383;
+        Wed, 15 Nov 2023 09:08:36 -0800 (PST)
 Received: from ALPER-PC.. ([178.233.24.52])
-        by smtp.gmail.com with ESMTPSA id o1-20020adfeac1000000b0032dab20e773sm11077833wrn.69.2023.11.15.09.08.31
+        by smtp.gmail.com with ESMTPSA id o1-20020adfeac1000000b0032dab20e773sm11077833wrn.69.2023.11.15.09.08.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Nov 2023 09:08:32 -0800 (PST)
+        Wed, 15 Nov 2023 09:08:35 -0800 (PST)
 From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
 To: linux-kernel@vger.kernel.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -76,15 +77,18 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	linux-clk@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Subject: [PATCH v2 1/2] clk: mediatek: mt8173-infracfg: Handle unallocated infracfg when module
-Date: Wed, 15 Nov 2023 20:06:24 +0300
-Message-ID: <20231115170825.908640-1-alpernebiyasak@gmail.com>
+Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt8173: Fix timer 13 MHz clock description
+Date: Wed, 15 Nov 2023 20:06:25 +0300
+Message-ID: <20231115170825.908640-2-alpernebiyasak@gmail.com>
 X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231115170825.908640-1-alpernebiyasak@gmail.com>
+References: <20231115170825.908640-1-alpernebiyasak@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_090837_084950_E911337F 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20231115_090841_961451_48EF7D36 
+X-CRM114-Status: GOOD (  16.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,55 +103,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8173 infracfg clock driver does initialization in two steps, via a
-CLK_OF_DECLARE_DRIVER declaration. However its early init function
-doesn't get to run when it's built as a module, presumably since it's
-not loaded by the time it would have been called by of_clk_init(). This
-causes its second-step probe() to return -ENOMEM when trying to register
-clocks, as the necessary clock_data struct isn't initialized by the
-first step.
+A previous patch fixes an issue with the mt8173-infracfg clock driver
+when working as a module, but has the side effect of skipping set up of
+CLK_INFRA_CLK_13M in that case. This clock is used by the timer device.
 
-MT2701 and MT6797 clock drivers also use this mechanism, but they try to
-allocate the necessary clock_data structure if missing in the second
-step. Mimic that for the MT8173 infracfg clock as well to make it work
-as a module.
+Similar to the MT8183, MT8192, MT8195 and MT8186 cases [1], change the
+input clock of the timer block a fixed factor divide-by-2 clock that
+takes the 26 MHz oscillator as its input.
+
+Also remove the RTC clock from the timer node while we're here. According
+to commit 59311b19d7f63 ("clocksource/drivers/timer-mediatek: Add system
+timer bindings") it is no longer used.
+
+[1] https://lore.kernel.org/all/20221201084229.3464449-1-wenst@chromium.org/
 
 Signed-off-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
 ---
+Tested on a MT8173 Chromebook. But I'm not sure I understand all of
+this, so review with a pinch of salt.
+
+Do we need to remove CLK_INFRA_CLK_13M from mt8173-infracfg after this?
 
 Changes in v2:
-- Rewrite patch subject for consistency
+- Add this patch
 
-v1: https://lore.kernel.org/lkml/20231108213734.140707-1-alpernebiyasak@gmail.com/
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
- drivers/clk/mediatek/clk-mt8173-infracfg.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/clk/mediatek/clk-mt8173-infracfg.c b/drivers/clk/mediatek/clk-mt8173-infracfg.c
-index 2f2f074e231a..ecc8b0063ea5 100644
---- a/drivers/clk/mediatek/clk-mt8173-infracfg.c
-+++ b/drivers/clk/mediatek/clk-mt8173-infracfg.c
-@@ -98,7 +98,17 @@ CLK_OF_DECLARE_DRIVER(mtk_infrasys, "mediatek,mt8173-infracfg",
- static int clk_mt8173_infracfg_probe(struct platform_device *pdev)
- {
- 	struct device_node *node = pdev->dev.of_node;
--	int r;
-+	int r, i;
-+
-+	if (!infra_clk_data) {
-+		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
-+		if (!infra_clk_data)
-+			return -ENOMEM;
-+	} else {
-+		for (i = 0; i < CLK_INFRA_NR_CLK; i++)
-+			if (infra_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
-+				infra_clk_data->hws[i] = ERR_PTR(-ENOENT);
-+	}
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index c47d7d900f28..9062ca124d69 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -244,6 +244,15 @@ psci {
+ 		cpu_on	 = <0x84000003>;
+ 	};
  
- 	r = mtk_clk_register_gates(&pdev->dev, node, infra_gates,
- 				   ARRAY_SIZE(infra_gates), infra_clk_data);
-
-base-commit: bc962b35b139dd52319e6fc0f4bab00593bf38c9
++	clk13m: fixed-factor-clock-13m {
++		compatible = "fixed-factor-clock";
++		#clock-cells = <0>;
++		clocks = <&clk26m>;
++		clock-div = <2>;
++		clock-mult = <1>;
++		clock-output-names = "clk13m";
++	};
++
+ 	clk26m: oscillator0 {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+@@ -530,8 +539,7 @@ timer: timer@10008000 {
+ 				     "mediatek,mt6577-timer";
+ 			reg = <0 0x10008000 0 0x1000>;
+ 			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW>;
+-			clocks = <&infracfg CLK_INFRA_CLK_13M>,
+-				 <&topckgen CLK_TOP_RTC_SEL>;
++			clocks = <&clk13m>;
+ 		};
+ 
+ 		pwrap: pwrap@1000d000 {
 -- 
 2.42.0
 
