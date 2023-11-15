@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC31DC07548
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 07:15:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E72BC07548
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 08:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hIaTDgDzLIscHf5CKI3TUjE0bb/R8Q6i6db1afgHSuQ=; b=GUvWpCozKnMohH+J5rk18h2qjq
-	tT8T6RVu5NcbimC8V2Dw5ANNlovQ0USM8JZs5O0mg775tw7Hl1N7DQxBga3CXISveNPFrd7PcdNZd
-	8sIFxV+O5boBu3effv7t+UXiHc9BxtmZryq0Te/JdWUX9l9wjjnoDPQDGtLzebNvkWTvyP4QAgMNg
-	z1og+ebokAm3a6LmdaWn+OdS5MHuTrE0JVS3YQrQk5kWMUoRe73cOW7wqhq0MzYwogFT1uO/K5ADD
-	HtS4eLD1UzQ53aQIv5ibnpumb9PT3ZbdZ6ICZv0YLtpJciDh8kfGVDbAR56rV+mB87znwN6uoFTNL
-	HEvx6UqA==;
+	bh=P6CJA5dq3GcUI+y9bM2FRVI85W9JDgSR2fGmXl0q0cA=; b=NsAzMwvZD6GyySN/f/rKh0jlw4
+	Nv9m2HGUQL5ZXccne+xSp7cQ3PJYzP83EHYISVC204b23Bt7IkvP7ifXCBGQ4eUp08JwBd35lOpqR
+	9maX7F5ut/irwYU4Yp7da0ITBSwAW4dxxMIg+UBCRUMjBJksmDjf5jYoHu8h6et+5rcIz1BBoO2Go
+	+t8Gb9Rug6e6RIlFB4hvVjAYw9wAFchZA0QX7dwozo6u8O6SYm8Iczq4gvnRDGOMIdZMgPRmY0QVu
+	E+e4yH+Dlida3tZxmzSUhmiPGo6yVpaLbdW34iWvnlUDnkNYF45NO7rQmWI6XaxPkTfRjABJ75tyL
+	C69+pNRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3A7C-0006qw-2P;
-	Wed, 15 Nov 2023 07:15:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1r3Bei-000GXV-1D;
+	Wed, 15 Nov 2023 08:53:52 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3A7A-0006qJ-2W
+	id 1r3Bef-000GVJ-0s
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Nov 2023 07:15:10 +0000
-X-UUID: b1ffa2fc838611ee9b7791016c24628a-20231115
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hIaTDgDzLIscHf5CKI3TUjE0bb/R8Q6i6db1afgHSuQ=;
-	b=jfBaPhGkL2sQQ6PjYrDY34FjNfsWp1/5LSRsEkUtC4OxCjmwNvU+wW9bXFHJKHgGz3KZrY3jDDrkPAO4j4vu+mBdWiA+MD7+DXCSIjXORohLnwCfmpJgqyEtejCe+19kQ9O4dClOPja3gqBtg+q6rA04cElLI7Z2omdYOPEYP1Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:b73355b9-17e9-4f2a-916d-b519a757d651,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:364b77b,CLOUDID:fbd91460-c89d-4129-91cb-8ebfae4653fc,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b1ffa2fc838611ee9b7791016c24628a-20231115
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1565792526; Wed, 15 Nov 2023 00:15:03 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 15 Nov 2023 15:14:49 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 15 Nov 2023 15:14:49 +0800
-From: <peter.wang@mediatek.com>
-To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
-	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
-	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <stable@vger.kernel.org>
-Subject: [PATCH v1] ufs: core: clear cmd if abort success in mcq mode
-Date: Wed, 15 Nov 2023 15:14:46 +0800
-Message-ID: <20231115071446.23912-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Wed, 15 Nov 2023 08:53:50 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-692c02adeefso5959836b3a.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 00:53:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1700038422; x=1700643222; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=P6CJA5dq3GcUI+y9bM2FRVI85W9JDgSR2fGmXl0q0cA=;
+        b=Mrb/n7Xmt8vDJAelKZ8Bq6KvYb0laMrsOShqNRCbRXMlOJ3bRmEXW4fU485u19ClFw
+         sdAp4BTARWaK79GW2ufZuu94+nmZAXJwp00sl6++BnMV3GI32ApYQ5c8EHUZJG82XKG8
+         3Nav1HYuYnhm8DFUNPGiUjIw0tfNDc14OyvxeihJklVU0b0ZfEdNOVJMmX0lWh1J/SbY
+         EiZ4Bu+qzSqh8AX2BIZzZO9z2ufE5F6t90x72fr0CCuO9Vv31qoCmTVl+amrr+2ZIugq
+         F7Rm0qw4BqQGtGx1+41IB6PD2Uv+52OqHpWZIe5K1bbF3g0TSSaMz3eqxyYHEQ2klpg2
+         y9rA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700038422; x=1700643222;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=P6CJA5dq3GcUI+y9bM2FRVI85W9JDgSR2fGmXl0q0cA=;
+        b=JUR0vfiJvlR0LOnNPu4HFhLxMcZNFt5jL2MT8rbyB80KU5aU2v5Mhxi0jbAj+nA+r2
+         zHF/OTEzxKGANKaIaBA7F8IK4ZK5xPGPvN3HwLoAWNtoAp6wfCrDz3w1COUUTiLy5//R
+         LjEEYRuz+JPSGooL2Y9UbpF53d5xPTZ4fUOrX8D7109QsTiQyu0erPcQdCX9TLAoIvYd
+         Yobqpyaqss156YCZNcKUbkrBQ5LI/26mLObC08v2ZZudCUMKbRbFT7XoCtNNqDSpNv2Q
+         VFPMiQNswCTE7rR+5+dSJTsu2d8YPvD15dKolrpsfFKlfXPYJFCWDly0U0y6w776zL4M
+         Ew0A==
+X-Gm-Message-State: AOJu0YxWxmuIcKltAl2YpbuZk+V5pvIen+FG94Ic5ESPHtS+dMHtWct3
+	NC0jmiqJFUXImYtHqUsny2gLpmQfra+IacU2h2J7wg==
+X-Google-Smtp-Source: AGHT+IFGuoW1JYdpcX6wTM4NrX9rO6kl0rtPOGTU/tDdSdI6DvYhZ4Av+8qxxhU0XFt0V5yTwO7dFQ==
+X-Received: by 2002:a05:6a21:488b:b0:187:865f:b3d1 with SMTP id av11-20020a056a21488b00b00187865fb3d1mr52329pzc.36.1700038422362;
+        Wed, 15 Nov 2023 00:53:42 -0800 (PST)
+Received: from localhost.localdomain ([101.78.151.194])
+        by smtp.gmail.com with ESMTPSA id z2-20020a17090ad78200b002794fe14cabsm8331449pju.12.2023.11.15.00.53.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Nov 2023 00:53:42 -0800 (PST)
+From: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	perex@perex.cz,
+	allen-kh.cheng@mediatek.com,
+	kuninori.morimoto.gx@renesas.com
+Cc: linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+Subject: [PATCH v4 0/3] add es8326 dt-bindings, es8326 support and Enable dual amp for rt5682s
+Date: Wed, 15 Nov 2023 16:53:26 +0800
+Message-Id: <20231115085329.541764-1-zhourui@huaqin.corp-partner.google.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.173600-8.000000
-X-TMASE-MatchedRID: NeCdpr+F3d4MQLXc2MGSbO7KTDtx8CggCt59Uh3p/NWsafcFLFlU1OhA
-	oL09ZB7k7Oz5SO8AjrR6fWcwarN2OU2VnXMRzIBjMJoQm3jo+mk7pfSjRsD2Og2Y8xyy93kWcam
-	vz988laLcGqNrS/CXVwG2ORx9EyapQq2SOVgDzZ2eAiCmPx4NwJuJ+Pb8n/VxdMrO7yc0I/wqtq
-	5d3cxkNf1GGMILmA8BR0fN/zghq0cQZQGdbkyzRAyH5HTyOLIFidciRFVG7v7AvpLE+mvX8g==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.173600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 2F4036E4201BD7F8BC5623DF16C952CC2C84C88063EA7D5054272B455441BA7C2000:8
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231114_231508_853219_AF12B235 
-X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-CacheID: sfid-20231115_005349_515701_FEBDF748 
+X-CRM114-Status: UNSURE (   7.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,48 +99,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+Add dt-bindings for es8326 and codec es8326 support. 
+At the same time, Enable dual amp max98390 for rt5682s.
 
-In mcq mode, if cmd is pending in device and abort success, response
-will not return from device. So we need clear this cmd right now,
-else command timeout happen and next time use same tag will have
-warning. WARN_ON(lrbp->cmd).
+Changes in v4:
+- PATCH 2/3: Change the names of some apis
+- PATCH 3/3: Change commit description
+- Link to v3: https://lore.kernel.org/all/20231108063804.592982-1-zhourui@huaqin.corp-partner.google.com/
 
-Below is error log:
-<3>[ 2277.447611][T21376] ufshcd-mtk 112b0000.ufshci: ufshcd_try_to_abort_task: cmd pending in the device. tag = 7
-<3>[ 2277.476954][T21376] ufshcd-mtk 112b0000.ufshci: Aborting tag 7 / CDB 0x2a succeeded
-<6>[ 2307.551263][T30974] ufshcd-mtk 112b0000.ufshci: ufshcd_abort: Device abort task at tag 7
-<4>[ 2307.623264][  T327] WARNING: CPU: 5 PID: 327 at source/drivers/ufs/core/ufshcd.c:3021 ufshcd_queuecommand+0x66c/0xe34
+Changes in v3:
+- PATCH 3/3: Change theme description
+- Link to v2: https://lore.kernel.org/all/20231108012617.3973539-1-zhourui@huaqin.corp-partner.google.com/
 
-Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
-Cc: stable@vger.kernel.org
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Changes in v2:
+- PATCH 1/3: Change ES8326 location in bindings
+- PATCH 3/3: Change theme description
+- Link to v1: https://lore.kernel.org/all/20231107031442.2768765-1-zhourui@huaqin.corp-partner.google.com/
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 8b1031fb0a44..e559593e6979 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -6449,6 +6449,16 @@ static bool ufshcd_abort_one(struct request *rq, void *priv)
- 	dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
- 		hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
- 		*ret ? "failed" : "succeeded");
-+
-+	/* Release cmd in mcq mode if abort success */
-+	if (is_mcq_enabled(hba) && (*ret == 0)) {
-+		hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(hba->lrb[tag].cmd));
-+		spin_lock_irqsave(&hwq->cq_lock, flags);
-+		if (ufshcd_cmd_inflight(lrbp->cmd))
-+			ufshcd_release_scsi_cmd(hba, lrbp);
-+		spin_unlock_irqrestore(&hwq->cq_lock, flags);
-+	}
-+
- 	return *ret == 0;
- }
- 
+Rui Zhou (3):
+  ASoC: dt-bindings: mt8188-mt6359: add es8326 support
+  ASoC: mediatek: mt8188-mt6359: add es8326 support
+  ASoC: mediatek: mt8188-mt6359: Enable dual amp for mt8188-rt5682s
+
+ .../sound/mediatek,mt8188-mt6359.yaml         |   1 +
+ sound/soc/mediatek/Kconfig                    |   1 +
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c     | 102 +++++++++++++++++-
+ 3 files changed, 102 insertions(+), 2 deletions(-)
+
 -- 
-2.18.0
+2.25.1
 
 
