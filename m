@@ -4,87 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEE48C2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 23:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D965DC5ACB2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 23:35:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KAFs8HHoQNrVkpTk2Xb6uh3p9ALW4pkggBRLwqVuKp8=; b=gTWmC8ugGEMm7fyO3SDj35zqgi
-	VAmPWOWmFi8Xg064ao9JE6oydAvpG3ApIbuJr2VAvd8YyEKu9ihWHtArW8LDNJJ/x3FGjkHToSFvI
-	QFfAXrcSBJBaPPi6fcHes0DIHWFFNWDLSMzJUV4/xfmP07ZQJbyLKB48WtMm+PLvypL3ozYFAsssi
-	XoGtudV9RoRI4dSfCVy6BIxSVN1pqLa/GgtyuUqwKPKIq6VFzUvLLIUYlxBRXHnHEjHkn+vnQ3+cH
-	zma9Da+hkF3urvpG/+fn1J+m5XjJrl5X2h0Qm84iRAV1hMr9UUe8BSpHBSjU1KFjkF2vxN5Hhmq24
-	0dXeW7dg==;
+	bh=oek2kHOiJKwuGradh8KZUYYGEhpdoKxKkCGLT/Ex0Qs=; b=iMDqKWk6LV0xCaFiGbhzNViFSD
+	yNV9+YEDJ9WUpEViDOD0mdk20Ln24V5vwGoPlJqSIp/TEAfgdzbI+fcoa5UzcGf+SrfyQUDezh5+F
+	Q1SLzaGzc4n8hjy35HbDgYadgQftkuWORntlJTvqFdrPa2NhxJlTuzemGYlzGlUn8kVBbzcLLM8Ib
+	L2L2XErT6kk0Ytas82dlLz4DzSbn2bhuIMo5lBvoI1VfLM/sm6j0QRQesjJbSu50T6wrBx5HULDNN
+	ui1lyyHVXXxKNVDWwc6HbdJbGeg+E4YD7SwxXpDdUqVckSQAm8Kxlo+L04yQaHKgkPdv59DamuFeW
+	GTXEp2Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3PHA-001yPa-2M;
-	Wed, 15 Nov 2023 23:26:28 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1r3PPp-001zgD-1w;
+	Wed, 15 Nov 2023 23:35:25 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3PH7-001yO0-2q
+	id 1r3PPm-001zev-0O
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Nov 2023 23:26:27 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1cc209561c3so63885ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 15:26:23 -0800 (PST)
+	Wed, 15 Nov 2023 23:35:23 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-1cc30de471dso63445ad.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 15:35:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1700090783; x=1700695583; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1700091321; x=1700696121; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KAFs8HHoQNrVkpTk2Xb6uh3p9ALW4pkggBRLwqVuKp8=;
-        b=R/BOqmabYDGDCkLRazNDvi15ZUZdWAVmeQavuvhTh+4uvmfzywfX1kXahT+4Zy8XiK
-         v0QiKgJyvH3KJ1gg2PibgzHdFWCc5UGfl41P4rQfiWbPfSNdh2mrgXQ80PkuoMC4fTJ+
-         GOQDOjNWTtWeN/j41htVE8C6330o3yKpQKq8LnuUf7hJg2ZoVITgep7yO8Ql7izo8WfR
-         zuziWXUWMsuKsVOdLXhxqrBSXd4JSr6E2V73yMtsLScIUcLDqZZRTQ2VK4eAZubfticy
-         qVqlILDAcDiVO+LXB744pYIoyqC2DHqDKB1FZeuKq5pIeu7b8Vv1GpO4wlVez3O0irVB
-         yqXA==
+        bh=oek2kHOiJKwuGradh8KZUYYGEhpdoKxKkCGLT/Ex0Qs=;
+        b=cacDgvJOUlbyFgcOBUE4O1gQNqOJvn4AImokVC7QZYKmfmnvhiV9NFCiFZDb7izo6m
+         5PvZ93ybzOP1Q4Qdse5TTTCp3o+X5rUUUEFz6SMvqNPXFonDAnTXrLYj8d4mrZtcd5lk
+         RiJBjwV5UkkTj19RtG6xZieohrlvRGm7Beddl8Pso97I4XcfKg7IKqkk8h+lwpVm6CLZ
+         7qVq3K34V0j9yoxc2wsgTKs+tBHVHNN3Vdc9zVBTXlEdsnNmNUrXEspTLddFWjJC2Clw
+         C2BMBW1KeKayX76wRjDv03SsY3q9mqdZHjoLw0GLFTR9O6Y2s6/9ahVE8SEuwh7f2s4Z
+         jscg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700090783; x=1700695583;
+        d=1e100.net; s=20230601; t=1700091321; x=1700696121;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KAFs8HHoQNrVkpTk2Xb6uh3p9ALW4pkggBRLwqVuKp8=;
-        b=Lg2mO05ju/wu8WNwlk1NKkrUDXPKgEUXuLr0P9bgtcfcdNyALb0SZ8w9A+UHvvou42
-         XX5gbMOGG9oigy1/G/LORBR1R+wKQSQASEFozEyN6feX869AKhmfTGi6egp/eb958nOm
-         +ave2ttML/okHYZvRWHccmBQ5LTyGAnHAF39L03x30vwdvInB6V2m7oWn4GDzMpqjPWu
-         LNd0gxbfJbD/kVuCVyt58mQaKT4+3RtwkPtqgKUOcyj2bVTb32cz/CTs+lwC0Jrz7/YE
-         uEKO5Mq4w6C8qS2Z3wqt3NEy8IuoqpJ79BRpx7vFHdzWBHYMHs5v+IVq8TDHtKNC1z/M
-         qVdg==
-X-Gm-Message-State: AOJu0YwlShDjvsLsxKd/SxFxZNipV/lUftMUlDZQ8bCdFIr9NdcJAgub
-	Uz2Rxt//gRydgo1V0Qk0kM7Dw9i9986VnYDchw2Y
-X-Google-Smtp-Source: AGHT+IGj+hC5mU9kET+8w2o2R4u5BSQRJN1vIsWLj2aFby+giajWEP2YT1Jlfo5UOZkuWR/w/W7j5Z6KHyHw0pRmcMA=
-X-Received: by 2002:a17:902:c40d:b0:1cc:51d6:fb04 with SMTP id
- k13-20020a170902c40d00b001cc51d6fb04mr61228plk.26.1700090782696; Wed, 15 Nov
- 2023 15:26:22 -0800 (PST)
+        bh=oek2kHOiJKwuGradh8KZUYYGEhpdoKxKkCGLT/Ex0Qs=;
+        b=I3x4Od7uPhQiqbMb+nhnpM8nutrm+iSd0oGprxYxK/mVA2YZB/v8c+AcQPb1gvW59n
+         CvV9B/UI0iA3dba4qDpMC3G2OSgV0f1zTm8i9gzXgUtNfQnzqGo3ZM0M05s0g2rZaEZx
+         1ZqP3KSljPXtP97vl7XdbEV+41wkIy1yr9DUMXQfykfSQOrZSNVt10R+eMwu4ZLDogY7
+         aN8TOtra60upoghrDZQxylE+ppHF+nU5PRetEC83/ctPkHjDzDRFgjVdags/FyMww2xg
+         nIs6X8drcmb6YDbXGEoc/7syZNHuSZ1wQjGTAjwp+Ap4ZrsPA3veOF7EQGALzk4UQfcn
+         jfjA==
+X-Gm-Message-State: AOJu0Yw1VY3ni5oWUk3Zkm4A8dXM/qyCXk259HlI8K+VUhH0yPJBtfyx
+	SZyyKLGsl4PFasWTcVdVpJN1NCrjObWYhUY4yEC/
+X-Google-Smtp-Source: AGHT+IGz9f/SLu5mPtYfVW8CPrScTnMxwCAhNmSPfXNU6OOHTiFkG39zGsXsGPkZucRS05i+dhBhg89vqZQYyDxclRo=
+X-Received: by 2002:a17:902:f684:b0:1cd:fbc7:271f with SMTP id
+ l4-20020a170902f68400b001cdfbc7271fmr66903plg.20.1700091320785; Wed, 15 Nov
+ 2023 15:35:20 -0800 (PST)
 MIME-Version: 1.0
-References: <20231111111559.8218-1-yong.wu@mediatek.com> <20231111111559.8218-5-yong.wu@mediatek.com>
-In-Reply-To: <20231111111559.8218-5-yong.wu@mediatek.com>
+References: <20231111111559.8218-1-yong.wu@mediatek.com> <20231111111559.8218-7-yong.wu@mediatek.com>
+ <0ccee72f-98ac-4a08-9253-9c22dad4d95a@linaro.org> <5d7b2458b8d1896ce575f4ed2d413f4e8eeb92b4.camel@mediatek.com>
+ <3daaa2aa-61d4-40db-b36d-cd825a340d2b@arm.com>
+In-Reply-To: <3daaa2aa-61d4-40db-b36d-cd825a340d2b@arm.com>
 From: Jeffrey Kardatzke <jkardatzke@google.com>
-Date: Wed, 15 Nov 2023 15:26:11 -0800
-Message-ID: <CA+ddPcNDBSESjJSKiTwEpf_GydThrdh+KGnnXmTnYVmmnwZ83w@mail.gmail.com>
-Subject: Re: [PATCH v2 4/8] dma-buf: heaps: secure_heap: Add tee memory
- service call
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	christian.koenig@amd.com, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	John Stultz <jstultz@google.com>, tjmercier@google.com, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	jianjiao.zeng@mediatek.com, kuohong.wang@mediatek.com, 
-	Vijayanand Jitta <quic_vjitta@quicinc.com>, Joakim Bech <joakim.bech@linaro.org>, 
-	Nicolas Dufresne <nicolas@ndufresne.ca>, ckoenig.leichtzumerken@gmail.com
+Date: Wed, 15 Nov 2023 15:35:09 -0800
+Message-ID: <CA+ddPcM5CuiOs+JGGBtn7ea1vzwHvawyApa_wRcGWNLD=yrrnw@mail.gmail.com>
+Subject: Re: [PATCH v2 6/8] dt-bindings: reserved-memory: Add secure CMA
+ reserved memory range
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"christian.koenig@amd.com" <christian.koenig@amd.com>, 
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>, 
+	"sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"jstultz@google.com" <jstultz@google.com>, "nicolas@ndufresne.ca" <nicolas@ndufresne.ca>, 
+	"linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	=?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?= <Jianjiao.Zeng@mediatek.com>, 
+	=?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>, 
+	"quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>, 
+	"ckoenig.leichtzumerken@gmail.com" <ckoenig.leichtzumerken@gmail.com>, 
+	"conor+dt@kernel.org" <conor+dt@kernel.org>, "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>, 
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, 
+	"tjmercier@google.com" <tjmercier@google.com>, 
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"joakim.bech@linaro.org" <joakim.bech@linaro.org>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_152625_919847_97C0435E 
-X-CRM114-Status: GOOD (  30.36  )
+X-CRM114-CacheID: sfid-20231115_153522_184035_8C423BD7 
+X-CRM114-Status: GOOD (  19.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,198 +112,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 11, 2023 at 3:17=E2=80=AFAM Yong Wu <yong.wu@mediatek.com> wrot=
-e:
->
-> Add TEE service call. In the case of MediaTek, secure memory management i=
-s
-> located within the TEE. The kernel just needs to tell TEE what size it
-> needs and the TEE will return a "security handle" to kernel.
->
-> To be consistent with the cma heap later, we put the tee ops into the ops
-> of secure_the_memory.
->
-> It seems that secure_heap_tee_service_call could be a more general
-> interface, but it could be a new topic.
->
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->  drivers/dma-buf/heaps/secure_heap.c | 97 +++++++++++++++++++++++++++++
->  1 file changed, 97 insertions(+)
->
-> diff --git a/drivers/dma-buf/heaps/secure_heap.c b/drivers/dma-buf/heaps/=
-secure_heap.c
-> index 2a037fc54004..05062c14e7c7 100644
-> --- a/drivers/dma-buf/heaps/secure_heap.c
-> +++ b/drivers/dma-buf/heaps/secure_heap.c
-> @@ -17,6 +17,27 @@
->
->  #define TEE_PARAM_NUM                  4
->
-> +enum secure_buffer_tee_cmd { /* PARAM NUM always is 4. */
-> +       /*
-> +        * TZCMD_SECMEM_ZALLOC: Allocate the zeroed secure memory from TE=
-E.
-> +        *
-> +        * [in]  value[0].a: The buffer size.
-> +        *       value[0].b: alignment.
-> +        * [in]  value[1].a: enum secure_memory_type.
-> +        * [out] value[3].a: The secure handle.
-> +        */
-> +       TZCMD_SECMEM_ZALLOC =3D 0,
-> +
-> +       /*
-> +        * TZCMD_SECMEM_FREE: Free secure memory.
-> +        *
-> +        * [in]  value[0].a: The secure handle of this buffer, It's value=
-[3].a of
-> +        *                   TZCMD_SECMEM_ZALLOC.
-> +        * [out] value[1].a: return value, 0 means successful, otherwise =
-fail.
-> +        */
-> +       TZCMD_SECMEM_FREE =3D 1,
-> +};
-> +
+May I suggest the following for the device tree binding? (I'm not very
+familiar w/ device trees, so apologies for any oversights, but trying
+to process the feedback here and help move Mediatek along). This
+should align with my other suggestions for having an MTK specific
+portion to their secure heap implementation; which also means there
+should be an MTK specific device tree binding.
 
-This should go in the MTK specific implementation.
+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+%YAML 1.2
+---
+$id: http://devicetree.org/schemas/reserved-memory/mediatek,dynamic-secure-=
+region.yaml#
+$schema: http://devicetree.org/meta-schemas/core.yaml#
 
->  enum secure_memory_type {
->         /*
->          * MediaTek static chunk memory carved out for TrustZone. The mem=
-ory
-> @@ -28,13 +49,25 @@ enum secure_memory_type {
->  struct secure_buffer {
->         struct dma_heap                 *heap;
->         size_t                          size;
-> +       /*
-> +        * The secure handle is a reference to a buffer within the TEE, t=
-his is
-> +        * a value got from TEE.
-> +        */
-> +       u32                             sec_handle;
->  };
+title: Mediatek Dynamic Reserved Region
 
-Change this to a u64 and rename it to 'secure_address', it's up to the
-specific implementation what that would actually mean.
+description:
+  A memory region that can dynamically transition as a whole between
+secure and non-secure states. This memory will be protected by OP-TEE
+when allocations are active and unprotected otherwise.
 
+maintainers:
+  - Yong Wu <yong.wu@mediatek.com>
+
+allOf:
+  - $ref: reserved-memory.yaml
+
+properties:
+  compatible:
+    const: mediatek,dynamic-secure-region
+
+required:
+  - compatible
+  - reg
+  - reusable
+
+unevaluatedProperties: false
+
+examples:
+  - |
+
+    reserved-memory {
+        #address-cells =3D <1>;
+        #size-cells =3D <1>;
+        ranges;
+
+        reserved-memory@80000000 {
+            compatible =3D "mediatek,dynamic-secure-region";
+            reusable;
+            reg =3D <0x80000000 0x18000000>;
+        };
+    };
+
+On Tue, Nov 14, 2023 at 5:18=E2=80=AFAM Robin Murphy <robin.murphy@arm.com>=
+ wrote:
 >
-> +#define TEE_MEM_COMMAND_ID_BASE_MTK    0x10000
-> +
-Move this into the MTK specific implementation.
-
->  struct secure_heap;
+> On 13/11/2023 6:37 am, Yong Wu (=E5=90=B4=E5=8B=87) wrote:
+> [...]
+> >>> +properties:
+> >>> +  compatible:
+> >>> +    const: secure_cma_region
+> >>
+> >> Still wrong compatible. Look at other bindings - there is nowhere
+> >> underscore. Look at other reserved memory bindings especially.
+> >>
+> >> Also, CMA is a Linux thingy, so either not suitable for bindings at
+> >> all,
+> >> or you need Linux specific compatible. I don't quite get why do you
+> >> evennot
+> >> put CMA there - adding Linux specific stuff will get obvious
+> >> pushback...
+> >
+> > Thanks. I will change to: secure-region. Is this ok?
 >
->  struct secure_heap_prv_data {
->         const char                      *uuid;
->         const int                       tee_impl_id;
-> +       /*
-> +        * Different TEEs may implement different commands, and this prov=
-ides an opportunity
-> +        * for TEEs to use the same enum secure_buffer_tee_cmd.
-> +        */
-> +       const int                       tee_command_id_base;
-Remove this, it can be handled in the MTK specific implementation.
+> No, the previous discussion went off in entirely the wrong direction. To
+> reiterate, the point of the binding is not to describe the expected
+> usage of the thing nor the general concept of the thing, but to describe
+> the actual thing itself. There are any number of different ways software
+> may interact with a "secure region", so that is meaningless as a
+> compatible. It needs to describe *this* secure memory interface offered
+> by *this* TEE, so that software knows that to use it requires making
+> those particular SiP calls with that particular UUID etc.
 >
->         int     (*memory_alloc)(struct secure_heap *sec_heap, struct secu=
-re_buffer *sec_buf);
->         void    (*memory_free)(struct secure_heap *sec_heap, struct secur=
-e_buffer *sec_buf);
-> @@ -98,10 +131,74 @@ static int secure_heap_tee_session_init(struct secur=
-e_heap *sec_heap)
->         return ret;
->  }
->
-> +static int
-> +secure_heap_tee_service_call(struct tee_context *tee_ctx, u32 session,
-> +                            unsigned int command, struct tee_param *para=
-ms)
-> +{
-> +       struct tee_ioctl_invoke_arg arg =3D {0};
-> +       int ret;
-> +
-> +       arg.num_params =3D TEE_PARAM_NUM;
-> +       arg.session =3D session;
-> +       arg.func =3D command;
-> +
-> +       ret =3D tee_client_invoke_func(tee_ctx, &arg, params);
-> +       if (ret < 0 || arg.ret) {
-> +               pr_err("%s: cmd %d ret %d:%x.\n", __func__, command, ret,=
- arg.ret);
-> +               ret =3D -EOPNOTSUPP;
-> +       }
-> +       return ret;
-> +}
-> +
-> +static int secure_heap_tee_secure_memory(struct secure_heap *sec_heap,
-> +                                        struct secure_buffer *sec_buf)
-> +{
-> +       const struct secure_heap_prv_data *data =3D sec_heap->data;
-> +       struct tee_param params[TEE_PARAM_NUM] =3D {0};
-> +       int ret;
-> +
-> +       params[0].attr =3D TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
-> +       params[0].u.value.a =3D sec_buf->size;
-> +       params[0].u.value.b =3D PAGE_SIZE;
-> +       params[1].attr =3D TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
-> +       params[1].u.value.a =3D sec_heap->mem_type;
-> +       params[2].attr =3D TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
-> +
-> +       params[3].attr =3D TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_OUTPUT;
-> +       ret =3D secure_heap_tee_service_call(sec_heap->tee_ctx, sec_heap-=
->tee_session,
-> +                                          data->tee_command_id_base + TZ=
-CMD_SECMEM_ZALLOC,
-> +                                          params);
-> +       if (ret)
-> +               return -ENOMEM;
-> +
-> +       sec_buf->sec_handle =3D params[3].u.value.a;
-> +       return 0;
-> +}
-> +
-> +static void secure_heap_tee_unsecure_memory(struct secure_heap *sec_heap=
-,
-> +                                           struct secure_buffer *sec_buf=
-)
-> +{
-> +       struct tee_param params[TEE_PARAM_NUM] =3D {0};
-> +
-> +       params[0].attr =3D TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
-> +       params[0].u.value.a =3D sec_buf->sec_handle;
-> +       params[1].attr =3D TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_OUTPUT;
-> +
-> +       secure_heap_tee_service_call(sec_heap->tee_ctx, sec_heap->tee_ses=
-sion,
-> +                                    sec_heap->data->tee_command_id_base =
-+ TZCMD_SECMEM_FREE,
-> +                                    params);
-> +       if (params[1].u.value.a)
-> +               pr_err("%s, free buffer(0x%x) return fail(%lld) from TEE.=
-\n",
-> +                      sec_heap->name, sec_buf->sec_handle, params[1].u.v=
-alue.a);
-> +}
-> +
-
-These are entirely MTK specific, so move them into the MTK specific
-implementation.
-
->  /* The memory allocating is within the TEE. */
->  const struct secure_heap_prv_data mtk_sec_mem_data =3D {
->         .uuid                   =3D TZ_TA_MEM_UUID_MTK,
->         .tee_impl_id            =3D TEE_IMPL_ID_OPTEE,
-> +       .tee_command_id_base    =3D TEE_MEM_COMMAND_ID_BASE_MTK,
-> +       .secure_the_memory      =3D secure_heap_tee_secure_memory,
-> +       .unsecure_the_memory    =3D secure_heap_tee_unsecure_memory,
->  };
-
-This should also go into the MTK specific implementation, and to be
-clear, that's where module_init should be as well.
-
->
->  static int secure_heap_secure_memory_allocate(struct secure_heap *sec_he=
-ap,
-> --
-> 2.25.1
->
+> Thanks,
+> Robin.
 
