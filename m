@@ -4,76 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB59C07548
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 06:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC31DC07548
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 07:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vrRtND/YRUzURuoQwjKJk/HonLng3kvTj/8TZ3Odh2Y=; b=eJyBUQFA2YnqV0qNYiOKh4hC5x
-	MeNYICxGWr6jc5jEPMW9f7+MbUvALUhpPf6Nrd3gtE56qmwhkvzquWA4b0RU1gLodX+YPM7JV5gcW
-	T+Wjk2Ow3xDO5xgBlKJokfWnn3UOFD7hIiLcScwA183JogZIzDYmh0R9yca+LAiKXqIAHrKMnF3Dt
-	Cf/r8Lfm8jMfaM8tgQSwDV0M6IXegUTi0ly377kgkUwuleRRo0pKsqPnZdhK+KXfhosGsmK0o6UYJ
-	lCVr2YGHDZTRixvQIXXnIBFG4KZjmRmFVIeDQw7l1rhzEZ9Xz7ywEWFXHYbA2kMxLeGBq8dFx1hj0
-	G8ZKeGOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hIaTDgDzLIscHf5CKI3TUjE0bb/R8Q6i6db1afgHSuQ=; b=GUvWpCozKnMohH+J5rk18h2qjq
+	tT8T6RVu5NcbimC8V2Dw5ANNlovQ0USM8JZs5O0mg775tw7Hl1N7DQxBga3CXISveNPFrd7PcdNZd
+	8sIFxV+O5boBu3effv7t+UXiHc9BxtmZryq0Te/JdWUX9l9wjjnoDPQDGtLzebNvkWTvyP4QAgMNg
+	z1og+ebokAm3a6LmdaWn+OdS5MHuTrE0JVS3YQrQk5kWMUoRe73cOW7wqhq0MzYwogFT1uO/K5ADD
+	HtS4eLD1UzQ53aQIv5ibnpumb9PT3ZbdZ6ICZv0YLtpJciDh8kfGVDbAR56rV+mB87znwN6uoFTNL
+	HEvx6UqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3953-00Hae9-2w;
-	Wed, 15 Nov 2023 06:08:53 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1r3A7C-0006qw-2P;
+	Wed, 15 Nov 2023 07:15:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3951-00HacY-09
+	id 1r3A7A-0006qJ-2W
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Nov 2023 06:08:52 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-507adc3381cso8567154e87.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Nov 2023 22:08:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1700028526; x=1700633326; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vrRtND/YRUzURuoQwjKJk/HonLng3kvTj/8TZ3Odh2Y=;
-        b=BBnLik85pBlPA1XZAJcm+jpRU/WsVJ85jyb64OXq4foIUVadL5EcRrrbHFe23854Mk
-         gy6DKclZ2/rshUbEM2KuVaXTJI5mFqWTt+o5tX/kHfCMHF8RCxgMz1Lp2YKtnYs0kXYb
-         SHxdNwi91OFvQ31lqxHhfzXXgcQtqrQe3Yuuw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700028526; x=1700633326;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vrRtND/YRUzURuoQwjKJk/HonLng3kvTj/8TZ3Odh2Y=;
-        b=XAVzvlJLkwuHWtLl4DXIX9RKJmte9wRQaYm/dvkmFgl6Sb9tuQSaLzGbNzMUXrHI4p
-         q+YAkV6d99fii14MyZZEBxiHmV3Lb71sgQlK3NEaMqarQjBUN+aUqBzeVTU455bPWuY5
-         iK7gEOAJrxX10tfzzABXnoglkrtnh+TxppAk5UC0YKOAA8buzggvK4I/hdNkiaDgsIIe
-         y12eIRxGWZiyit8DhKI3yFc/5BgwxmKXLEaSlOq+RHi3szr/mzVUEJiuwwnEf7qzwPjk
-         CzpSMVoveqvIDF0+3ly3mGhigz2vB3WGKAJCCf9+5hYm4FF5u2pSCAQ1T8/Adp/7BPI5
-         ISeg==
-X-Gm-Message-State: AOJu0Yx62fTQvHc1N14pHX5LlQDiSfE2jjfwaSp8P7vIe3EFoZCCXKQ2
-	QUl9Dk2uDCN0EQxhJW6f1fEbkum55i6/VVYEgMZWARfVamxT5IAc
-X-Google-Smtp-Source: AGHT+IEElVyq/Wfz+fZN9g5gHhgB0rYPl8JRXgccOm8OavEsvJYgG8EGZ+VI+3AA2iv3HFdt3nFxSDC3zZjP6Wt+9vg=
-X-Received: by 2002:a05:6512:b14:b0:509:8e3d:7cb0 with SMTP id
- w20-20020a0565120b1400b005098e3d7cb0mr11292990lfu.41.1700028525615; Tue, 14
- Nov 2023 22:08:45 -0800 (PST)
+	Wed, 15 Nov 2023 07:15:10 +0000
+X-UUID: b1ffa2fc838611ee9b7791016c24628a-20231115
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hIaTDgDzLIscHf5CKI3TUjE0bb/R8Q6i6db1afgHSuQ=;
+	b=jfBaPhGkL2sQQ6PjYrDY34FjNfsWp1/5LSRsEkUtC4OxCjmwNvU+wW9bXFHJKHgGz3KZrY3jDDrkPAO4j4vu+mBdWiA+MD7+DXCSIjXORohLnwCfmpJgqyEtejCe+19kQ9O4dClOPja3gqBtg+q6rA04cElLI7Z2omdYOPEYP1Q=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:b73355b9-17e9-4f2a-916d-b519a757d651,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:364b77b,CLOUDID:fbd91460-c89d-4129-91cb-8ebfae4653fc,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: b1ffa2fc838611ee9b7791016c24628a-20231115
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1565792526; Wed, 15 Nov 2023 00:15:03 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 15 Nov 2023 15:14:49 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 15 Nov 2023 15:14:49 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <stable@vger.kernel.org>
+Subject: [PATCH v1] ufs: core: clear cmd if abort success in mcq mode
+Date: Wed, 15 Nov 2023 15:14:46 +0800
+Message-ID: <20231115071446.23912-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20231115043511.2670477-1-treapking@chromium.org>
-In-Reply-To: <20231115043511.2670477-1-treapking@chromium.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 15 Nov 2023 14:08:34 +0800
-Message-ID: <CAGXv+5FnzLgnNfvK-KEd4OUysUXqCuCp7AJ3iuzEGn=fry0B1g@mail.gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: mt8173: Add G2Touch touchscreen node
-To: Pin-yen Lin <treapking@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.173600-8.000000
+X-TMASE-MatchedRID: NeCdpr+F3d4MQLXc2MGSbO7KTDtx8CggCt59Uh3p/NWsafcFLFlU1OhA
+	oL09ZB7k7Oz5SO8AjrR6fWcwarN2OU2VnXMRzIBjMJoQm3jo+mk7pfSjRsD2Og2Y8xyy93kWcam
+	vz988laLcGqNrS/CXVwG2ORx9EyapQq2SOVgDzZ2eAiCmPx4NwJuJ+Pb8n/VxdMrO7yc0I/wqtq
+	5d3cxkNf1GGMILmA8BR0fN/zghq0cQZQGdbkyzRAyH5HTyOLIFidciRFVG7v7AvpLE+mvX8g==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.173600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 2F4036E4201BD7F8BC5623DF16C952CC2C84C88063EA7D5054272B455441BA7C2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231114_220851_136932_CEC22182 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20231114_231508_853219_AF12B235 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,52 +101,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 15, 2023 at 12:35=E2=80=AFPM Pin-yen Lin <treapking@chromium.or=
-g> wrote:
->
-> Lenovo Ideapad C330 Chromebook (MTK) uses G2Touch touchscreen as a
-> second source component.
->
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+From: Peter Wang <peter.wang@mediatek.com>
 
-I assume this patch will get merged relatively soon. I can base my DT
-probing work on top of it, instead of having roughly the same patch
-in my series.
+In mcq mode, if cmd is pending in device and abort success, response
+will not return from device. So we need clear this cmd right now,
+else command timeout happen and next time use same tag will have
+warning. WARN_ON(lrbp->cmd).
 
-> ---
->
-> Changes in v2:
-> - Remove the label for the node
->
->  arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm=
-64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-> index bdcd35cecad9..8836ac3c4233 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-> @@ -29,6 +29,14 @@ touchscreen3: touchscreen@20 {
->                 interrupt-parent =3D <&pio>;
->                 interrupts =3D <88 IRQ_TYPE_LEVEL_LOW>;
->         };
-> +
-> +       touchscreen@40 {
-> +               compatible =3D "hid-over-i2c";
-> +               reg =3D <0x40>;
-> +               hid-descr-addr =3D <0x0001>;
-> +               interrupt-parent =3D <&pio>;
-> +               interrupts =3D <88 IRQ_TYPE_LEVEL_LOW>;
+Below is error log:
+<3>[ 2277.447611][T21376] ufshcd-mtk 112b0000.ufshci: ufshcd_try_to_abort_task: cmd pending in the device. tag = 7
+<3>[ 2277.476954][T21376] ufshcd-mtk 112b0000.ufshci: Aborting tag 7 / CDB 0x2a succeeded
+<6>[ 2307.551263][T30974] ufshcd-mtk 112b0000.ufshci: ufshcd_abort: Device abort task at tag 7
+<4>[ 2307.623264][  T327] WARNING: CPU: 5 PID: 327 at source/drivers/ufs/core/ufshcd.c:3021 ufshcd_queuecommand+0x66c/0xe34
 
-I assume Angelo might ask you to use interrupts-extended instead, but
-I'd argue it's better to be consistent throughout the file.
+Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
+Cc: stable@vger.kernel.org
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-> +       };
->  };
->
->  &i2c4 {
-> --
-> 2.43.0.rc0.421.g78406f8d94-goog
->
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 8b1031fb0a44..e559593e6979 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -6449,6 +6449,16 @@ static bool ufshcd_abort_one(struct request *rq, void *priv)
+ 	dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
+ 		hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
+ 		*ret ? "failed" : "succeeded");
++
++	/* Release cmd in mcq mode if abort success */
++	if (is_mcq_enabled(hba) && (*ret == 0)) {
++		hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(hba->lrb[tag].cmd));
++		spin_lock_irqsave(&hwq->cq_lock, flags);
++		if (ufshcd_cmd_inflight(lrbp->cmd))
++			ufshcd_release_scsi_cmd(hba, lrbp);
++		spin_unlock_irqrestore(&hwq->cq_lock, flags);
++	}
++
+ 	return *ret == 0;
+ }
+ 
+-- 
+2.18.0
+
 
