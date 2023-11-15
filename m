@@ -4,90 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1141C5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 15:13:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A692EC2BB3F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 17:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nDez5tRetN1AJgLDMvel4wminLzFvgWM5mFAzZfyJXQ=; b=3OMBtcVJrcSg1tXK7C/o6LYDcz
-	3kq2WXdtqSDirXADTjlVsjlXQBDuxm9xdZ2+PZ0ipN+goYjrBEHSGDET/OJdtIJtoW8rcpIyKOWqU
-	H0dZWUl8nxiXfDGvrG5FZ4PwTFglqQD1fqUk3xfLawuiW4zAn3bjPawY8Dh63EN09UpqcFez+a4oJ
-	deXyQzbLUvB+u4pCF2+muCK2akKxUobwZcAH5KfWdZC9Uvo72IFd2kghOBhBL9PIwrjpcZ/MWpzVr
-	MS3a3m6fQHJT/PWQYLK2JgNmZpD76CsuqvXzDNrQM1lwV3r/VwC6k0h33SnDslN9pvNByL0TOWLaX
-	HfvqMVAA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nXTjoyVMIW/yRQ2Q8optVuxtgEkz3DRech+NYfXUR9A=; b=NFDj++4VC4U605QuAkejb9i34i
+	rvzQyinJkjhjfzcDJ7ytMcjXh9WYdSHtrGQ19ecvlpjjcRj8sQKN6FoiIDSZrT1dBOmNLGp6tq6at
+	CMSaRrtuU2jOWpEMX6ff2eIX7EIiKK1ey55JyD93zonbdgV6CKUwI4KcqcDdnHMmczUP8ppJlnSpt
+	ZCQKXUYdyrluGcY3hqhAkf7qapllsgNEe27vhLIhf6EiiixUmQItrpC1ySRnYuSbOIb71Bb/2Wy99
+	S+6aZ0FEJ6jnv+k/YdDnsC5Z0w64SoWnJcTH6ZBa+WB0gVLd3SeRijLMRx6q/EQxFlQ+M2xISb2Lt
+	/rZZXD3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3HZx-00190E-2v;
-	Wed, 15 Nov 2023 15:13:21 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1r3JNZ-001Or3-0z;
+	Wed, 15 Nov 2023 17:08:41 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3HZs-0018yp-1p;
-	Wed, 15 Nov 2023 15:13:17 +0000
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AFE4g2g017281;
-	Wed, 15 Nov 2023 15:13:11 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=corp-2023-03-30;
- bh=nDez5tRetN1AJgLDMvel4wminLzFvgWM5mFAzZfyJXQ=;
- b=FqWppTjVjLypjuwDl/gQIG7dXKSSfUaB3Yj+9cXNgvmvhQ0dKLSJYsgFY48eqsxWdoDV
- 78OdPqWD60C+eUWljmIBfepowHwHTclADPu4tvucW+s4nZ+0yY3DGbBEygWzDva6WobR
- jpklQ1dYf/fOdKwQpQTNUlZ47TrAKdnCk6FPzsZtw4ojckDxKRTt9lU8+tNV8kCDleb3
- v4KHuiToIcWmnCcCDkoSvsTuuwKd2Qdbuz3D5AeFkTfv2GRrG+R3jNjj47pa4n4wyngs
- 1sQn9kOV7xkT74fIyvODwCBx1dNFBFPYsPRaupH5Jc+IuqQYITe1K3AuJ7+E8TsBrne4 zw== 
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3ua2strr7b-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 15 Nov 2023 15:13:11 +0000
-Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 3AFF8rIw004087;
-	Wed, 15 Nov 2023 15:13:09 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3uaxj4087e-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 15 Nov 2023 15:13:09 +0000
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3AFFD8SP011253;
-	Wed, 15 Nov 2023 15:13:09 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 3uaxj4085x-2;
-	Wed, 15 Nov 2023 15:13:08 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        naomi.chu@mediatek.com
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        wsd_upstream@mediatek.com, peter.wang@mediatek.com,
-        casper.li@mediatek.com, powen.kao@mediatek.com,
-        alice.chao@mediatek.com, chun-hung.wu@mediatek.com,
-        cc.chou@mediatek.com, eddie.huang@mediatek.com
-Subject: Re: [PATCH v3 0/1] ufs: core: Expand MCQ queue slot to DeviceQueueDepth + 1
-Date: Wed, 15 Nov 2023 10:13:00 -0500
-Message-Id: <170006111387.506874.30054136833694357.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20231102052426.12006-1-naomi.chu@mediatek.com>
-References: <20231102052426.12006-1-naomi.chu@mediatek.com>
+	id 1r3JNV-001Oq8-05;
+	Wed, 15 Nov 2023 17:08:38 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-32f9268bf8cso4429054f8f.0;
+        Wed, 15 Nov 2023 09:08:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700068114; x=1700672914; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=nXTjoyVMIW/yRQ2Q8optVuxtgEkz3DRech+NYfXUR9A=;
+        b=N9/n/unRptdXGiXzG7X1SkMnsRNIKyIK2Fv8Uge2obc+W1O/igGpL6Dc8MJmJEQKsZ
+         orRpPGv8zQtXFt66xraM1zjYqS0ws6WeRj5mDboL5crcpu32vQU0IGBkuYJWwabSUI1B
+         MB+DTgSERdS6tiyXfeN3g3rWpKe3kwqSi5dkWjOjMgODnBDfqmchiPOl7aaON8TYUhSH
+         zd6LdZuDkp62MsejEgcxEinLkeblkhkuU/82tuwudO3u2nWdbrIDWsyj34IQZTPDHSIb
+         k/DXtf6sMVTesA8B9RasPIz2jP7W/zBSFMr9IkKJfD8Pv1mAjWFp8HCEhmW4CXbdFeyX
+         FDrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700068114; x=1700672914;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=nXTjoyVMIW/yRQ2Q8optVuxtgEkz3DRech+NYfXUR9A=;
+        b=eDr66KCK+0faA9IvfAsL8ocGsDnC8S5caRWBYU84U5mc8c8PJYDLjpeqbToCnwLghA
+         j2ggrp58tP9lTWXY3+MdQGRIjEx1gPzEKabIV46AfXfUv+COTNu5e8PRSQGzO0/fJdoT
+         rDAa2QPZc3eet294Gkcozy5VkcdovspjKQtNdVGaXwabxMVMUXk6TWCQmyCp8g6xx6XU
+         /xJJvjn4pqkd7tT7ilulecsc+BMj6GCQMRCUaWrZDN8ccAICMuIJvIOwswg4MBSf3T6n
+         QVulbehODnD31RPG4/0i3AXc/HWO6B8cNMaXW0UPvD413uZk+7XtRqivYD/6vPjvLOJD
+         oeFA==
+X-Gm-Message-State: AOJu0Yxde5h4kttD40jLS0pOJI5dnAbOLmNLPBq9MXtaemIAVRPkfNxb
+	y2ovOUU/OrZ9kS7Dq0/Bp5c=
+X-Google-Smtp-Source: AGHT+IFljFo2x86LrUGVvlArWoH2Dzg1FID8H1eKmivUz22BVETYCNx6O9wJom4ahLITEq9gblxjmg==
+X-Received: by 2002:a5d:64ee:0:b0:32f:7fe4:45f2 with SMTP id g14-20020a5d64ee000000b0032f7fe445f2mr13012008wri.4.1700068113882;
+        Wed, 15 Nov 2023 09:08:33 -0800 (PST)
+Received: from ALPER-PC.. ([178.233.24.52])
+        by smtp.gmail.com with ESMTPSA id o1-20020adfeac1000000b0032dab20e773sm11077833wrn.69.2023.11.15.09.08.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Nov 2023 09:08:32 -0800 (PST)
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+To: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	linux-clk@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Subject: [PATCH v2 1/2] clk: mediatek: mt8173-infracfg: Handle unallocated infracfg when module
+Date: Wed, 15 Nov 2023 20:06:24 +0300
+Message-ID: <20231115170825.908640-1-alpernebiyasak@gmail.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-15_13,2023-11-15_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 adultscore=0
- mlxlogscore=846 mlxscore=0 malwarescore=0 phishscore=0 suspectscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2311150115
-X-Proofpoint-GUID: 8NkSe1YHupy-NeYHRS_P7bkfejE5w5w8
-X-Proofpoint-ORIG-GUID: 8NkSe1YHupy-NeYHRS_P7bkfejE5w5w8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_071316_605516_C7AB8101 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20231115_090837_084950_E911337F 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,24 +99,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 02 Nov 2023 13:24:23 +0800, naomi.chu@mediatek.com wrote:
+The MT8173 infracfg clock driver does initialization in two steps, via a
+CLK_OF_DECLARE_DRIVER declaration. However its early init function
+doesn't get to run when it's built as a module, presumably since it's
+not loaded by the time it would have been called by of_clk_init(). This
+causes its second-step probe() to return -ENOMEM when trying to register
+clocks, as the necessary clock_data struct isn't initialized by the
+first step.
 
-> Expand the MCQ queue slots to comply with the UFSHCI 4.0 specification,
-> enabling host controllers to fully utilize the MCQ queue slots.
-> 
-> v2 -> v3
-> - Add patch description that why this patch is necessary
-> 
-> v1 -> v2
-> - Remove QUIRK_MCQ_EXPAND_QUEUE_SLOT quirk and make the change for all host controllers
-> 
-> [...]
+MT2701 and MT6797 clock drivers also use this mechanism, but they try to
+allocate the necessary clock_data structure if missing in the second
+step. Mimic that for the MT8173 infracfg clock as well to make it work
+as a module.
 
-Applied to 6.7/scsi-fixes, thanks!
+Signed-off-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+---
 
-[1/1] ufs: core: Expand MCQ queue slot to DeviceQueueDepth + 1
-      https://git.kernel.org/mkp/scsi/c/defde5a50d91
+Changes in v2:
+- Rewrite patch subject for consistency
 
+v1: https://lore.kernel.org/lkml/20231108213734.140707-1-alpernebiyasak@gmail.com/
+
+ drivers/clk/mediatek/clk-mt8173-infracfg.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/clk/mediatek/clk-mt8173-infracfg.c b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+index 2f2f074e231a..ecc8b0063ea5 100644
+--- a/drivers/clk/mediatek/clk-mt8173-infracfg.c
++++ b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+@@ -98,7 +98,17 @@ CLK_OF_DECLARE_DRIVER(mtk_infrasys, "mediatek,mt8173-infracfg",
+ static int clk_mt8173_infracfg_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+-	int r;
++	int r, i;
++
++	if (!infra_clk_data) {
++		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
++		if (!infra_clk_data)
++			return -ENOMEM;
++	} else {
++		for (i = 0; i < CLK_INFRA_NR_CLK; i++)
++			if (infra_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
++				infra_clk_data->hws[i] = ERR_PTR(-ENOENT);
++	}
+ 
+ 	r = mtk_clk_register_gates(&pdev->dev, node, infra_gates,
+ 				   ARRAY_SIZE(infra_gates), infra_clk_data);
+
+base-commit: bc962b35b139dd52319e6fc0f4bab00593bf38c9
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.42.0
+
 
