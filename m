@@ -4,80 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A3F6C5ACB2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 21:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD4AFC2BB3F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 22:02:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+ewEC6w4FNjvRn1QtThPipzsUOHfD/ElUE10YdHZBpE=; b=4plkt1qwSQoUWA7ZZQZKqg+w/m
-	7QeJqlWTs5WhNYqNPhOuMh941qPZ+uYbFa1gTt7Hqd1S4cTvcovr94wbkAjGuymjIVwOuSVDTn64E
-	DQGtEahaHmjE99xUBpyKpoXqJJlo4I4JHSvsYSEt0uJ2iogjQSs0u/Vm5B3zipQzm3OlFDFOasC9f
-	IpGMP080suAq+qXgz225ZyYXNCQTModM08Q3ZH36DDhq1q3NkIdf8oDTsM0TWWRQJB3tzH7RZblwF
-	pABzWtxe4Utm/j5zivnCdzimxsoX2ymN7Jd7hXoJ8iuZ0zlXu2+BnUAruqxenTM4N/HtETXMNnTQJ
-	6PxmpvPQ==;
+	bh=JuZvFHzKeqbg6jXEYOC+etK401rPBU1DU0zLZUwkdow=; b=LKKXrBWjHc8tlR5i5o/d3AEvbX
+	zNz10CXHOtYr4bFOszx3njk7527zZgcQaVn6APAXDoQGjgOu+nzNK0zBCitmknpisrENb35W3HkQV
+	qHuZmOHpxS7LU+TiM9FC/52t+E7eEgFfntQpc1mjXpip361VSC/a7MbUGa1uySXao1ZV5FL5Xi6qH
+	KziaWkhRZMN8AzxIDggJGrZFgmVGlISqCiTcDTIsOPLS4sFCKeqhtc+m0QUvNzPjr8UhaR0/c/+GJ
+	Gre5nYX7MAkLHRhYZ73aZhKMijVYq4nhC5lf3ambpN2aaLVipbqyYcfqtxv22StjkDNjeaACfifwS
+	Ny2fsw+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3NXU-001mer-2m;
-	Wed, 15 Nov 2023 21:35:12 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r3Nxo-001pDu-1G;
+	Wed, 15 Nov 2023 22:02:24 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3NXR-001mdN-2i;
-	Wed, 15 Nov 2023 21:35:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5B4246182C;
-	Wed, 15 Nov 2023 21:35:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 132C6C433BA;
-	Wed, 15 Nov 2023 21:35:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700084108;
-	bh=RWdpyuo51tuvIqwMGTL3/I2DqmEZBZKqCR84EaR63Ic=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ax7GU+e8NoT5NkhfbCkd6P6Edug5yH+pW3/V5VyW1TLH2HPz/nr8R2GsxsPPVVGO/
-	 lkVfE0amR6D0oREGacbWEFDSThlzJ3Pm0CER2NugqFfsP0Qye78NcoEx79ePWeiK/N
-	 4GtOmqctClRVu77IayArzEX3uErPWajp+mdTfHt+FPR4QEM7HqzyFPPRgwQLnG59yu
-	 yM1iH72Ttd3X+Ga/HmssO1USouNL74sFTlcfI0TMsslOwjnn0uMTkt/djrjl4wGANN
-	 xaaIuNoJGhaqoIcWxPaLgWUy/WQzFirCRX3c5F+wRRn+5cKfxKkY9WyIEZvt/p5TbR
-	 odUwMB52SGjpQ==
-Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-507bd19eac8so153264e87.0;
-        Wed, 15 Nov 2023 13:35:07 -0800 (PST)
-X-Gm-Message-State: AOJu0YxF3xfmcVNNLhdUYSj9NQC7polFGAIACWPutMR4tFbg77Tojf7e
-	rBLPqtP6yJ/A+N72PJQbjHtLRb9vIpzTcXBQIw==
-X-Google-Smtp-Source: AGHT+IFl6KjrcRk1mQBCW5HE5cpfkWvGnPq2lzZKYvuAbqxy2DSLTn7CJKpIC3Dea3cgv04VsyssEPWyJ1Gce9eCWAA=
-X-Received: by 2002:a05:6512:3f12:b0:507:a6a5:a87b with SMTP id
- y18-20020a0565123f1200b00507a6a5a87bmr12750059lfa.51.1700084106033; Wed, 15
- Nov 2023 13:35:06 -0800 (PST)
+	id 1r3Nxk-001pCC-0Y
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Nov 2023 22:02:21 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1cc209561c3so48235ad.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 14:02:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1700085737; x=1700690537; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JuZvFHzKeqbg6jXEYOC+etK401rPBU1DU0zLZUwkdow=;
+        b=ymC7YC1KNsPTK+fim7IiLTtw8r01mxFpX1q2l8nF+eWksgifv3+xJrMyKkW/unwC3r
+         bHOALPlQUC3ZLeB2m40Bd+adWqQr4Qr72xP3vLyogF5QVjpS4PRlLwEPWY6C7Yz3jbZk
+         PopmFJx7aYrnSZkf/Oz0mxfqglkOK2t9FJAyl3301aviZef/GyBv0KWI7gjiHmW8dbDJ
+         Zx6T4F5VdmApieAbrU/cOZ4Lba99X4LPaXC9yRVYTcob627NegtEAgyrGaxMV03GXt7p
+         BOt0yN53GwyBMuvimgaabHhkiRiOeiNMzrauk732Adn8Veol0h9w/S0ArsShPhw7ywHy
+         48zg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700085737; x=1700690537;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=JuZvFHzKeqbg6jXEYOC+etK401rPBU1DU0zLZUwkdow=;
+        b=O1tSwEMDa50TXA8roInUsCCQG/92fjMRHkb9VwB4xr0SggkoJAG9N9LmObM99NdYC8
+         uB5Ji/fbXpvEzi2gy7l5LnoEjjVK1Alj04CZ+Hu7pNlgecbDyBWkuQtIej6WQTUA+VDK
+         TrA2fxjrbicupq52nEV2Ba3ChBu0TNwP+6cD4dQxWYt13iGADTaVgzDV3burCL6kD2PW
+         hbXR+UY6Ftskj9ixAUbEQ/+R6Q5CcajvWjLiKfdTXfwyQSeLauR4FX4ZLujF6HYNv0c2
+         BL3kSmxrxFeKlW//4xBzsdsSJmh5WiS/dKG9g28itjrn3EtK/ry2a2GLMU4s8clfUcbW
+         RpXQ==
+X-Gm-Message-State: AOJu0Yw2L0yBmnpCyBHK5wFLhXF/5xvUkD1/S2bvbnClJHv1aj6VnMfA
+	XSyBIyykDdhfEwmBQ78ya6xZNqd2ZSfAhBN8C8CW
+X-Google-Smtp-Source: AGHT+IFRrz+wFMxIvQfSahyfIBqJGBGy54Oa9WJpbdDj3Indo4j6kQ+gLppqjmS9wzYszPzrga5jiO2H91ugbxFInwY=
+X-Received: by 2002:a17:902:d506:b0:1c7:25e4:a9d5 with SMTP id
+ b6-20020a170902d50600b001c725e4a9d5mr45085plg.17.1700085736744; Wed, 15 Nov
+ 2023 14:02:16 -0800 (PST)
 MIME-Version: 1.0
-References: <20231109100606.1245545-1-wenst@chromium.org> <859ac058-c50a-4eb8-99b6-3011ef4e7529@collabora.com>
- <CAL_JsqK64w3+r_LJZoh50PzAUcsvH6ahSDCqgSiKrD3LBAXE9g@mail.gmail.com>
- <CAD=FV=VUZy9DaZgKafSpXXopD5k8ExGSR97BjAqC5tupPoxNfQ@mail.gmail.com>
- <CAL_Jsq+puq20EWkQg1RTs2zfmh4DGbqz1krp+19c=wPXnLT5dA@mail.gmail.com> <CAD=FV=X-17COQ2-tycV1bSuCrGy7MJ88Un8nA-a-ODexvgi9TQ@mail.gmail.com>
-In-Reply-To: <CAD=FV=X-17COQ2-tycV1bSuCrGy7MJ88Un8nA-a-ODexvgi9TQ@mail.gmail.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Wed, 15 Nov 2023 15:34:53 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqKR_YD6hm4Lv+OuCKms8Ha61BZRKUuiLYPgSkz3_3NCFA@mail.gmail.com>
-Message-ID: <CAL_JsqKR_YD6hm4Lv+OuCKms8Ha61BZRKUuiLYPgSkz3_3NCFA@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
-To: Doug Anderson <dianders@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>, Frank Rowand <frowand.list@gmail.com>, 
+References: <20231111111559.8218-1-yong.wu@mediatek.com> <ZU/V2XX71GbaV6Q8@duo.ucw.cz>
+In-Reply-To: <ZU/V2XX71GbaV6Q8@duo.ucw.cz>
+From: Jeffrey Kardatzke <jkardatzke@google.com>
+Date: Wed, 15 Nov 2023 14:02:05 -0800
+Message-ID: <CA+ddPcNd20Bg_pYWqty90NafwC54dz0LGEmTMpia5_7e4=N-cg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/8] dma-buf: heaps: Add secure heap
+To: Pavel Machek <pavel@ucw.cz>
+Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+	Sumit Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, andriy.shevchenko@linux.intel.com, 
-	Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org, broonie@kernel.org, 
-	gregkh@linuxfoundation.org, hdegoede@redhat.com, james.clark@arm.com, 
-	james@equiv.tech, keescook@chromium.org, petr.tesarik.ext@huawei.com, 
-	rafael@kernel.org, tglx@linutronix.de, Jeff LaBundy <jeff@labundy.com>, 
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
+	John Stultz <jstultz@google.com>, tjmercier@google.com, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>
+	jianjiao.zeng@mediatek.com, kuohong.wang@mediatek.com, 
+	Vijayanand Jitta <quic_vjitta@quicinc.com>, Joakim Bech <joakim.bech@linaro.org>, 
+	Nicolas Dufresne <nicolas@ndufresne.ca>, ckoenig.leichtzumerken@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_133509_989632_03C612D6 
-X-CRM114-Status: GOOD (  31.57  )
+X-CRM114-CacheID: sfid-20231115_140220_208867_62E8E006 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,63 +99,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 15, 2023 at 2:45=E2=80=AFPM Doug Anderson <dianders@chromium.or=
-g> wrote:
->
-> Hi,
->
-> On Wed, Nov 15, 2023 at 2:28=E2=80=AFPM Rob Herring <robh+dt@kernel.org> =
-wrote:
-> >
-> > > So if we're searching the whole device tree for "failed-needs-probe"
-> > > then we need to figure out which devices are related to each other. I=
-f
-> > > a given board has second sources for MIPI panels, touchscreens, and
-> > > trackpads then we need to know which of the "failed-needs-probe"
-> > > devices are trackpads, which are touchscreens, and which are MIPI
-> > > panels. Do you have any suggestions for how we should do that? Maybe
-> > > it was in some other thread that I missed? I guess we could have a
-> > > board-specific table mapping (compatible + node name + reg) to a
-> > > class, but that feels awkward.
-> >
-> > Node name is supposed to correspond to device class, so why not use
-> > that (no path or unit-address.) and nothing else (well, besides
-> > "status")?
->
-> One problem is that I could imagine having two second source trackpads
-> that both have the same i2c address. That would give them the same
-> name, right? I guess you could maybe come up with some sort of suffix
-> rule? Like
->
-> trackpad-1@10 {
->   compatible =3D "elan,blah";
->   ret =3D <0x10>;
->   status =3D "failed-needs-probe";
->   ...
-> }
-> trackpad-2@10 {
->   compatible =3D "goodix,gt7375p";
->   ret =3D <0x10>;
->   status =3D "failed-needs-probe";
->   ...
-> }
->
-> Then I guess the class would be "trackpad"?
+The main goal is for secure video playback, and to also enable other
+potential uses of this in the future. The 'secure dma-heap' will be
+used to allocate dma_buf objects that reference memory in the secure
+world that is inaccessible/unmappable by the non-secure (i.e.
+kernel/userspace) world.  That memory will be used by the secure world
+to store secure information (i.e. decrypted media content). The
+dma_bufs allocated from the kernel will be passed to V4L2 for video
+decoding (as input and output). They will also be used by the drm
+system for rendering of the content.
 
-That issue is somewhat orthogonal because it is not following the spec.
+Hope that helps.
 
-I'm not sure mixing the 2 styles of node names is a good idea. While
-not used too much, matching by node name does ignore the unit-address,
-but I'm not sure we could ignore a '-N'.
+Cheers,
+Jeff
 
-I think our options are either add something to the unit-address or
-use i2c-mux binding. Adding to the unit-address is not unprecedented.
-I did that for some of the register bit level bindings where you have
-a node for different bits at the same address. The downside is
-unit-address is bus specific, so we'd have to add that for multiple
-buses. For the i2c-mux, it's perhaps a bit complex and I'm not sure
-what if anything you'd have to do to manage the mux that's not really
-there.
-
-Rob
+On Mon, Nov 13, 2023 at 3:38=E2=80=AFAM Pavel Machek <pavel@ucw.cz> wrote:
+>
+> Hi!
+>
+> > This patchset adds three secure heaps:
+> > 1) secure_mtk_cm: secure chunk memory for MediaTek SVP (Secure Video Pa=
+th).
+> >    The buffer is reserved for the secure world after bootup and it is u=
+sed
+> >    for vcodec's ES/working buffer;
+> > 2) secure_mtk_cma: secure CMA memory for MediaTek SVP. This buffer is
+> >    dynamically reserved for the secure world and will be got when we st=
+art
+> >    playing secure videos, Once the security video playing is complete, =
+the
+> >    CMA will be released. This heap is used for the vcodec's frame buffe=
+r.
+> > 3) secure_cma: Use the kerne CMA ops as the allocation ops.
+> >    currently it is a draft version for Vijay and Jaskaran.
+>
+> Is there high-level description of what the security goals here are,
+> somewhere?
+>
+> BR,
+>                                                                         P=
+avel
+> --
+> People of Russia, stop Putin before his war on Ukraine escalates.
 
