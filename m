@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C2B4C2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 23:18:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6225C072A2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 23:22:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+cDX2/TcLZZv47keVH9izOB2UPw4wXcT8INdh+8le7A=; b=GQtNRVuslX7xXxsLjH9BIpaKZ9
-	AyLIKIPVtt81zcGkOmo02FQBSfvDYfij8Vk/72y7bDWzdJvKRoNUHVEKXNnSt+81/EN2sOuWtFTFd
-	rYh6F6ubA675YcRitcHCob33wlF/hmIS1p853k96lEye6BALe1Zjqhzs8Lma5aoxfOHNOAniLYsAX
-	kSLNYUyAqa8UmQvsP6N3jrgb3eG8ThHGXaiLYzGuqd5DWrK21wCyFiV5ixBP96nnkIjVJ4brx5OFJ
-	gTqtmQHcm4dYqkyKZ1aCJCsepZZ8ptBUw748ab48UVw3F60x34fQxvoilabWyyk/DsVpWVw2Xp0pv
-	7kWAawnw==;
+	bh=lNrY+yv6flp09u25YudSqsktgZkCbw+hX4drbUgi3Pw=; b=s+5rkmWBUAvsTAvBbzhp87U1Yf
+	z89w2xKrRP2FX2mkmLqBMc335DxrebXBJdDfkpZh3O44Josm5OONlfqbiwkQ9YUuKo5hxmyB+2CSq
+	fgMzshHTIxtC6n5GtvL7RrZmEgjM9dsPw2D1qRZEAcl7Gx7CPxN23OpCJj8stNLProcVBJyaMJmld
+	o1q1F8RJeb7oflwjGCU+JLE1vIEwsWzPSRg8YpVaNXc3hhPKR5AM3qYPFZR05TR74OlOVNj6VP7Tk
+	Qs6SD9TxWDvZSQzGmADAaeUDFIBVK2XGrcO0VGyAvnsL+Zj7X2XphJRuQ54xSpC+DWSsNEdnARoas
+	ANymQqCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3P9n-001x6L-1X;
-	Wed, 15 Nov 2023 23:18:51 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1r3PCp-001xcW-2F;
+	Wed, 15 Nov 2023 23:21:59 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3P9i-001x4M-1V
+	id 1r3PCm-001xbY-2y
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Nov 2023 23:18:49 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-1cc30de471dso61305ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 15:18:44 -0800 (PST)
+	Wed, 15 Nov 2023 23:21:58 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1cc209561c3so63365ad.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 15:21:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1700090324; x=1700695124; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1700090516; x=1700695316; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+cDX2/TcLZZv47keVH9izOB2UPw4wXcT8INdh+8le7A=;
-        b=e2qCd9iLeV1UjcDGD3ZPOH443zVe+Vhhrx3SPpxbHO6DqJCXLHS8AZksv6+bHMO5b6
-         oCRoJWD6Dz4/2Kfoy0gD8V0TQTKpufJpQA+sa03R0j2Crdk0B97Sv8yFjD7TMGTDiFNx
-         HKwgEOcF/L2nxYdoLXvs6qswj/AqwSzaUxcospu+YoBDvCeiL5Xou55LHkJRPWpDFJz2
-         0Y4eSd2lO9H5tVjxK/LQTXnH36QetQWukXVhPrlXN99izy1/yzlLl6or252/MBayCgwL
-         kQA6SHMWEWUknjmT3XemWmXl9X1qhBHSkKl8StUTWmRtNqDbbRPYRRyLVquWTnGUB+s4
-         IY6Q==
+        bh=lNrY+yv6flp09u25YudSqsktgZkCbw+hX4drbUgi3Pw=;
+        b=lMRxBGBPHk9h/TDoaufqPgQp3gGyRvJ0YusI6r+YA93ow4CtPvLVVnXV408fP5eu3i
+         gi9OgEbaO5ZGVkcoduLzo10bytmeJH9Fjt4CGUUV3g7CU4Aee8kVfUqv0xXDdIHEeUGS
+         99ET0u2AoKkEQEIeuOemgukjR08jgQMwZwxR4uoKAlANntmN6u0Bb2vgYtK64P84CZYM
+         iVtfjDlV0oJGnwGFuOk2P3Pde5YZRyUa6WFsOfBIt9rRqWplzStRP8cOPUUrnOw05dUQ
+         DZaQz1Zgc00ZNRIM9Iif7YKz89a9bjIuKxotqs14YpkQ7rS8sjvyWe5pMU4jwl8gwqOI
+         Fk/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700090324; x=1700695124;
+        d=1e100.net; s=20230601; t=1700090516; x=1700695316;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=+cDX2/TcLZZv47keVH9izOB2UPw4wXcT8INdh+8le7A=;
-        b=B08h998xIUnkFYJRiGAZDcdQro4qKWYkV1XoWn5nuRQqRUBQU3SB7hc5mgpOtYBSg3
-         XOoXtf0NaW++cM0kwacWANZHx94xrohj5bLEvfHbTwTF7npbOZ/jv6z+sAa3e3pBscNM
-         6RcZreQ8zqUThLqcnvTsLQtalMxFxDVlV8QGA4ti9LoIYBNqOSRprV2//HrsTry+mCGN
-         itJJU9lS8yo5QlFF5SAHrNYWdCih4Eo6EiAR7S5xL+1kPRbH07r5FZESAAedpqc6g9w9
-         kCRZiWTVmScwqMHn6APhD85uynLegYw9eiohhSohLfmXW/cZGvt3zVogd0+IOIb41DP6
-         SRow==
-X-Gm-Message-State: AOJu0YyFiM0ta9oWOBG/CHzfQ7QTJOWSHUTCpU3YQKQhUqP9vNZmMwmo
-	67OwNPblRjBh5JnB1RPPHGkwVhm1iFcO9+JfE+YE
-X-Google-Smtp-Source: AGHT+IGyoRxZw5ygDqLDB76eixVmV7Sl9Rg99pJFDrY1646vTJd9/k/9IdlRgQQs8vDIsMVb3PqED09pUEuJwebdqxU=
-X-Received: by 2002:a17:902:d50f:b0:1cc:ff0:213f with SMTP id
- b15-20020a170902d50f00b001cc0ff0213fmr66975plg.2.1700090323863; Wed, 15 Nov
- 2023 15:18:43 -0800 (PST)
+        bh=lNrY+yv6flp09u25YudSqsktgZkCbw+hX4drbUgi3Pw=;
+        b=UAodZ3Cb0vhYvzN0nVcaTY1g5laAF3GGe3iIvRuqxYp0ICd9z9v01IcBOof65HaHeT
+         Hmx7bzpCRIEvLtVewZ8aY0955f9JsVu4AB7WJ8GWe5ntkcRCI4dt588tc4Na3NhsK69W
+         YnRDNizjXWGHmGxTTKmdpAD0kt8bdglQoLoLkc0oIOxqWRAfF2Izr4vZF+FxOAkntMyE
+         YwQ7UHG/n6xfBBj/zKo7LKsO9UU0/Jn/+4OfaDm5NJ6H8nKHXexEQoqo1f7/dvrLtHmV
+         /cEcgjyQ09glQh8v2sb4fi5p5RG0CMM1QeiYH/HqRHJbrXuJXkDUm6SUAMU4x039Np2W
+         9Zrg==
+X-Gm-Message-State: AOJu0Yw9/tmkZbFMQ9BntVlyrKfYTzxrjFaN7rIr91RFB1gcgyIglIEw
+	pXum3MlstkxCZRiKe3P5/DOr0vWjuRAwIvUXay+E
+X-Google-Smtp-Source: AGHT+IGm7zgQJWAfwVDpHCI+ij6qSFWymYieGz93/wfD0nW3TAyf4K67Hy1IrPWOL2RQmlTU4JpJXZoiI0CXMLDcngE=
+X-Received: by 2002:a17:902:c942:b0:1cc:2c43:9061 with SMTP id
+ i2-20020a170902c94200b001cc2c439061mr61673pla.21.1700090515344; Wed, 15 Nov
+ 2023 15:21:55 -0800 (PST)
 MIME-Version: 1.0
-References: <20231111111559.8218-1-yong.wu@mediatek.com> <20231111111559.8218-2-yong.wu@mediatek.com>
-In-Reply-To: <20231111111559.8218-2-yong.wu@mediatek.com>
+References: <20231111111559.8218-1-yong.wu@mediatek.com> <20231111111559.8218-3-yong.wu@mediatek.com>
+In-Reply-To: <20231111111559.8218-3-yong.wu@mediatek.com>
 From: Jeffrey Kardatzke <jkardatzke@google.com>
-Date: Wed, 15 Nov 2023 15:18:32 -0800
-Message-ID: <CA+ddPcMQan85Q8KDdDub=aDe0HB3vy9dBj33ofEoM2WUhFu8Zw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/8] dma-buf: heaps: Initialize a secure heap
+Date: Wed, 15 Nov 2023 15:21:44 -0800
+Message-ID: <CA+ddPcPZJzJXro1ph7tT=Zdk6wyDyncmpPZvO0i0J2zCRauMsQ@mail.gmail.com>
+Subject: Re: [PATCH v2 2/8] dma-buf: heaps: secure_heap: Add private heap ops
 To: Yong Wu <yong.wu@mediatek.com>
 Cc: Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>, 
 	christian.koenig@amd.com, Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -82,8 +82,8 @@ Cc: Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_151846_512795_BF094DA6 
-X-CRM114-Status: GOOD (  32.21  )
+X-CRM114-CacheID: sfid-20231115_152156_978629_A7DEB53A 
+X-CRM114-Status: GOOD (  23.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,189 +101,130 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Sat, Nov 11, 2023 at 3:16=E2=80=AFAM Yong Wu <yong.wu@mediatek.com> wrot=
 e:
 >
-> Initialize a secure heap. Currently just add a null heap, Prepare for
-> the later patches.
+> For the secure memory, there are two steps:
+> a) Allocate buffers in kernel side;
+> b) Secure that buffer.
+> Different heaps may have different buffer allocation methods and
+> different memory protection methods. Here abstract the memory
+> allocation and securing operations.
 >
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->  drivers/dma-buf/heaps/Kconfig       |  7 +++
->  drivers/dma-buf/heaps/Makefile      |  1 +
->  drivers/dma-buf/heaps/secure_heap.c | 98 +++++++++++++++++++++++++++++
->  3 files changed, 106 insertions(+)
->  create mode 100644 drivers/dma-buf/heaps/secure_heap.c
+>  drivers/dma-buf/heaps/secure_heap.c | 58 ++++++++++++++++++++++++++++-
+>  1 file changed, 57 insertions(+), 1 deletion(-)
 >
-> diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kconfi=
-g
-> index a5eef06c4226..e358bf711145 100644
-> --- a/drivers/dma-buf/heaps/Kconfig
-> +++ b/drivers/dma-buf/heaps/Kconfig
-> @@ -12,3 +12,10 @@ config DMABUF_HEAPS_CMA
->           Choose this option to enable dma-buf CMA heap. This heap is bac=
-ked
->           by the Contiguous Memory Allocator (CMA). If your system has th=
-ese
->           regions, you should say Y here.
-> +
-> +config DMABUF_HEAPS_SECURE
-> +       bool "DMA-BUF Secure Heap"
-> +       depends on DMABUF_HEAPS && TEE
-> +       help
-> +         Choose this option to enable dma-buf secure heap. This heap is =
-backed by
-> +         TEE client interfaces or CMA. If in doubt, say N.
-
-Remove the mention of TEE and CMA from this.
-
-You should probably add two KConfig options. One is for
-DMABUF_HEAPS_SECURE which is for the framework for secure heaps. The
-other one should be:
-
-config MTK_DMABUF_HEAPS_SECURE
-    bool "Mediatek DMA-BUF Secure Heap"
-    depends on DMABUF_HEAPS_SECURE && TEE
-    help
-        Enables secure dma-buf heaps for Mediatek platforms.
-
-
-> diff --git a/drivers/dma-buf/heaps/Makefile b/drivers/dma-buf/heaps/Makef=
-ile
-> index 974467791032..b1ad9d1f2fbe 100644
-> --- a/drivers/dma-buf/heaps/Makefile
-> +++ b/drivers/dma-buf/heaps/Makefile
-> @@ -1,3 +1,4 @@
->  # SPDX-License-Identifier: GPL-2.0
-> +obj-$(CONFIG_DMABUF_HEAPS_SECURE)      +=3D secure_heap.o
->  obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)      +=3D system_heap.o
->  obj-$(CONFIG_DMABUF_HEAPS_CMA)         +=3D cma_heap.o
 > diff --git a/drivers/dma-buf/heaps/secure_heap.c b/drivers/dma-buf/heaps/=
 secure_heap.c
-> new file mode 100644
-> index 000000000000..a634051a0a67
-> --- /dev/null
+> index a634051a0a67..87ac23072e9e 100644
+> --- a/drivers/dma-buf/heaps/secure_heap.c
 > +++ b/drivers/dma-buf/heaps/secure_heap.c
-> @@ -0,0 +1,98 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * DMABUF secure heap exporter
-> + *
-> + * Copyright (C) 2023 MediaTek Inc.
-> + */
+> @@ -24,15 +24,66 @@ struct secure_buffer {
+>         size_t                          size;
+>  };
+>
+> +struct secure_heap;
 > +
-> +#include <linux/dma-buf.h>
-> +#include <linux/dma-heap.h>
-> +#include <linux/err.h>
-> +#include <linux/module.h>
-> +#include <linux/slab.h>
+> +struct secure_heap_prv_data {
+> +       int     (*memory_alloc)(struct secure_heap *sec_heap, struct secu=
+re_buffer *sec_buf);
+> +       void    (*memory_free)(struct secure_heap *sec_heap, struct secur=
+e_buffer *sec_buf);
 > +
-> +enum secure_memory_type {
-> +       /*
-> +        * MediaTek static chunk memory carved out for TrustZone. The mem=
-ory
-> +        * management is inside the TEE.
-> +        */
-> +       SECURE_MEMORY_TYPE_MTK_CM_TZ    =3D 1,
-
-Mediatek specific code for secure dma heaps should go into a new file
-(maybe secure_heap_mtk.c which the MTK_DMABUF_HEAPS_SECURE option
-enables).
-
+> +       /* Protect/unprotect the memory */
+> +       int     (*secure_the_memory)(struct secure_heap *sec_heap, struct=
+ secure_buffer *sec_buf);
+> +       void    (*unsecure_the_memory)(struct secure_heap *sec_heap, stru=
+ct secure_buffer *sec_buf);
 > +};
-> +
-> +struct secure_buffer {
-> +       struct dma_heap                 *heap;
-> +       size_t                          size;
-> +};
-> +
-> +struct secure_heap {
-> +       const char                      *name;
-> +       const enum secure_memory_type   mem_type;
-secure_memory_type is going to be in the vendor specific
-implementation, I don't think you need it in the framework.
-
-> +};
-
-You should probably move these to a <linux/dma-heap-secure.h> file so
-they can be shared by the framework and the specific implementation
-(in this case vendor specific).
+Move these into dma-heap-secure.h per the comments on the prior patch.
 
 > +
-> +static struct dma_buf *
-> +secure_heap_allocate(struct dma_heap *heap, unsigned long size,
-> +                    unsigned long fd_flags, unsigned long heap_flags)
+>  struct secure_heap {
+>         const char                      *name;
+>         const enum secure_memory_type   mem_type;
+> +
+> +       const struct secure_heap_prv_data *data;
+>  };
+>
+> +static int secure_heap_secure_memory_allocate(struct secure_heap *sec_he=
+ap,
+> +                                             struct secure_buffer *sec_b=
+uf)
 > +{
-> +       struct secure_buffer *sec_buf;
-> +       DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
-> +       struct dma_buf *dmabuf;
+> +       const struct secure_heap_prv_data *data =3D sec_heap->data;
 > +       int ret;
 > +
-> +       sec_buf =3D kzalloc(sizeof(*sec_buf), GFP_KERNEL);
-> +       if (!sec_buf)
-> +               return ERR_PTR(-ENOMEM);
-> +
-> +       sec_buf->size =3D ALIGN(size, PAGE_SIZE);
-> +       sec_buf->heap =3D heap;
-> +
-> +       exp_info.exp_name =3D dma_heap_get_name(heap);
-> +       exp_info.size =3D sec_buf->size;
-> +       exp_info.flags =3D fd_flags;
-> +       exp_info.priv =3D sec_buf;
-> +
-> +       dmabuf =3D dma_buf_export(&exp_info);
-> +       if (IS_ERR(dmabuf)) {
-> +               ret =3D PTR_ERR(dmabuf);
-> +               goto err_free_buf;
+> +       if (data->memory_alloc) {
+> +               ret =3D data->memory_alloc(sec_heap, sec_buf);
+> +               if (ret)
+> +                       return ret;
 > +       }
+You should probably always require that memory_alloc is defined
+(secure_the_memory can be optional, as that may be part of the
+allocation).
 > +
-> +       return dmabuf;
-> +
-> +err_free_buf:
-> +       kfree(sec_buf);
-> +       return ERR_PTR(ret);
-> +}
-> +
-> +static const struct dma_heap_ops sec_heap_ops =3D {
-> +       .allocate =3D secure_heap_allocate,
-> +};
-> +
-> +static struct secure_heap secure_heaps[] =3D {
-> +       {
-> +               .name           =3D "secure_mtk_cm",
-> +               .mem_type       =3D SECURE_MEMORY_TYPE_MTK_CM_TZ,
-> +       },
-> +};
-
-Move this to the vendor specific implementation.
-
-> +
-> +static int secure_heap_init(void)
-> +{
-> +       struct secure_heap *sec_heap =3D secure_heaps;
-> +       struct dma_heap_export_info exp_info;
-> +       struct dma_heap *heap;
-> +       unsigned int i;
-> +
-> +       for (i =3D 0; i < ARRAY_SIZE(secure_heaps); i++, sec_heap++) {
-> +               exp_info.name =3D sec_heap->name;
-> +               exp_info.ops =3D &sec_heap_ops;
-> +               exp_info.priv =3D (void *)sec_heap;
-> +
-> +               heap =3D dma_heap_add(&exp_info);
-> +               if (IS_ERR(heap))
-> +                       return PTR_ERR(heap);
+> +       if (data->secure_the_memory) {
+> +               ret =3D data->secure_the_memory(sec_heap, sec_buf);
+> +               if (ret)
+> +                       goto sec_memory_free;
 > +       }
 > +       return 0;
-> +}
-
-secure_heap_init should take a 'struct secure_heap*' as an argument
-and be defined in dma-heap-secure.h.
-
 > +
-> +module_init(secure_heap_init);
-> +MODULE_DESCRIPTION("Secure Heap Driver");
-> +MODULE_LICENSE("GPL");
-
-Remove from this file, it should go in the specific implementations.
-
+> +sec_memory_free:
+> +       if (data->memory_free)
+> +               data->memory_free(sec_heap, sec_buf);
+You should probably always require that memory_free is defined.
+> +       return ret;
+> +}
+> +
+> +static void secure_heap_secure_memory_free(struct secure_heap *sec_heap,
+> +                                          struct secure_buffer *sec_buf)
+> +{
+> +       const struct secure_heap_prv_data *data =3D sec_heap->data;
+> +
+> +       if (data->unsecure_the_memory)
+> +               data->unsecure_the_memory(sec_heap, sec_buf);
+> +
+> +       if (data->memory_free)
+> +               data->memory_free(sec_heap, sec_buf);
+You should probably always require that memory_free is defined.
+> +}
+> +
+>  static struct dma_buf *
+>  secure_heap_allocate(struct dma_heap *heap, unsigned long size,
+>                      unsigned long fd_flags, unsigned long heap_flags)
+>  {
+> +       struct secure_heap *sec_heap =3D dma_heap_get_drvdata(heap);
+>         struct secure_buffer *sec_buf;
+>         DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
+>         struct dma_buf *dmabuf;
+> @@ -45,6 +96,9 @@ secure_heap_allocate(struct dma_heap *heap, unsigned lo=
+ng size,
+>         sec_buf->size =3D ALIGN(size, PAGE_SIZE);
+>         sec_buf->heap =3D heap;
+>
+> +       ret =3D secure_heap_secure_memory_allocate(sec_heap, sec_buf);
+> +       if (ret)
+> +               goto err_free_buf;
+>         exp_info.exp_name =3D dma_heap_get_name(heap);
+>         exp_info.size =3D sec_buf->size;
+>         exp_info.flags =3D fd_flags;
+> @@ -53,11 +107,13 @@ secure_heap_allocate(struct dma_heap *heap, unsigned=
+ long size,
+>         dmabuf =3D dma_buf_export(&exp_info);
+>         if (IS_ERR(dmabuf)) {
+>                 ret =3D PTR_ERR(dmabuf);
+> -               goto err_free_buf;
+> +               goto err_free_sec_mem;
+>         }
+>
+>         return dmabuf;
+>
+> +err_free_sec_mem:
+> +       secure_heap_secure_memory_free(sec_heap, sec_buf);
+>  err_free_buf:
+>         kfree(sec_buf);
+>         return ERR_PTR(ret);
 > --
 > 2.25.1
 >
