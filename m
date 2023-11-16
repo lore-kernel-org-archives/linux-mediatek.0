@@ -4,78 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2557EC47071
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 03:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ABD4C197A0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 05:07:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zVLnet6UeJJKAgG9HzM7O27P98+CfXEuM0uNw2AJ9I4=; b=IcD2zSRV3RFpvAoYQDqTyS6iiV
-	MavG89qV3TmFYqrIC0lBsKkx+5x2XZkwjUIEA8/X9dpxM5bDXbkId/AfNePO6BlTvouCDgMcY7zx0
-	GkWuKf6VxNPfMeUe9myfTWDPQ2GfpzK63yfkC+N+aVqKaR20iLgTa+4xEF7ZE0pXXty6zsSjtsUsi
-	IGBSN4+HI8lIvcJI20Yf8KQ14wGZZbZ07q0+fu6B1JUKTlw6/sjnVyHCju0SwmwhCm3OGE39NrARh
-	JjfsifMg5JF4kWnWKM2t6jgZRD3Ue5WZ3VK9gLXmF55t8UnuHcfzuydb3tnznZNthrORekLvaLAXZ
-	b6t2MApA==;
+	bh=n47o3OCFeDC4YRz6dczMMUhasbGb5AVuJwwpKHI7eFo=; b=mgyHpvW/UvD1Dlbxit2YAc1x8u
+	h6jS2g8d8ep1RNlGMFtvidhRSmQT36icRKTkZhMBBdAI0w8TpR9RpPa+Zap6Vv+BBMNvRo4aWtEBP
+	/D5li5wgUMB7avAeuJ3yYQCbrnUMsVxI7hpcg3dkng2c8KDgr2/ETC0nQybdXKBCPmgjf1YsRvGKk
+	BGtk1Uiav9E14TD2bMWQyvkmQfJfreQsFhS4RebttlStn2tlurZ+GTKYu9MuC4Tg89IPK/iHMYolF
+	8um70ttTh2VjhngUMHwoLWQBwEu/AtbV/o8RkLCBK9QqdXSnqu3r3CEcj1lv9G+UF1yDQ10N+y7Fk
+	byboVBnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3TOp-002L9W-09;
-	Thu, 16 Nov 2023 03:50:39 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1r3UbZ-002Qxd-2N;
+	Thu, 16 Nov 2023 05:07:53 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3TOl-002L8K-2P
+	id 1r3UbX-002Qvp-0s
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Nov 2023 03:50:37 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-5098e423ba2so494637e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 19:50:33 -0800 (PST)
+	Thu, 16 Nov 2023 05:07:52 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-50943ccbbaeso542728e87.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 21:07:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1700106632; x=1700711432; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1700111262; x=1700716062; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zVLnet6UeJJKAgG9HzM7O27P98+CfXEuM0uNw2AJ9I4=;
-        b=Ss1ivoVtkMaGeAuG4UE+jMq2RtEaL7LyHu5p0gHYEa/BQLlY/RSWla5xxQ36oY7Gz4
-         6j1emMjmbdv9gSPoq08PbsdeO8I/5s+RLa2j3DPmGTQtZPC2wNGTWr+RvsItS6IoZkwE
-         gjAC9CfmIOo5c8ursd1JNHd3M2J73PhsGWmVU=
+        bh=n47o3OCFeDC4YRz6dczMMUhasbGb5AVuJwwpKHI7eFo=;
+        b=LH+JbCjn4O3QNpSz1qp3X+IZDQxPNTew4QNTtRF3ARlmoC9xSThk8wZRY1L4l10ov+
+         pGCegbeUz6Rzt1ozABdq+a7AVQryuwfE9C2mHq8PdooQIk7XmCMhORca5IW6e0WBcge3
+         Jdp5wjDMv5RixSAHoDTJLTlQ6eHvPgzl43QEM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700106632; x=1700711432;
+        d=1e100.net; s=20230601; t=1700111262; x=1700716062;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=zVLnet6UeJJKAgG9HzM7O27P98+CfXEuM0uNw2AJ9I4=;
-        b=pO1OOgQ1hg4CNDNdMyaE+fxY7MNb9H6VQAezrP/9tsytityKkPtFSxfWAbk89V4MaN
-         SyHOXdPBfG+lUzl+7Gi4nE87nBtx7gN6sZb2txxQju470g191ZqJ/D+v48u4LNwhyAcW
-         +7KrVdeLNZrVGK2sCcup6LgdUwP5/xr6LpMxfY269DziVeAmCW34hbp6ABHbYBxjfHqY
-         VruUDDIAPa31t8AhjAYaz1AWxp62vZYmlsFdhI/D6ILyO2UzjpZ0hl1J1mHWAoiq07a6
-         GTwmWJYrqeF1Yo0emKvIw0x0aVDajGVsEV0qNAlpnZisX4+djhDS/uqWuUhq3pBhlPrX
-         /l1Q==
-X-Gm-Message-State: AOJu0YzIh4v42uvuFNINf688BLNyHDiBhlCIPgWwTkwbSyUKknUUTNMS
-	3qw9aQrlD1O1dEnxIsXDAozalaf5BMGwuafu29I0Tw==
-X-Google-Smtp-Source: AGHT+IG/HPn5kbZcT3Q0iuyPk7qJavc3LozqD5Z4W7c9maxr4cL7n62LD0Sl69ivAeU3gezgeKzgoerfVPGQMrrf94Y=
-X-Received: by 2002:a05:6512:684:b0:509:4439:9b57 with SMTP id
- t4-20020a056512068400b0050944399b57mr1030248lfe.38.1700106632004; Wed, 15 Nov
- 2023 19:50:32 -0800 (PST)
+        bh=n47o3OCFeDC4YRz6dczMMUhasbGb5AVuJwwpKHI7eFo=;
+        b=huOolcSG3fB+/ue+czE8NzgRgKK2wyZ1fcOsyHuDpmjCOeQX0K4X1kMFr2fv7RFMb9
+         nEsxQ3wiFeFd4x7dTnlFtkra0EyZ8HITojb7m1/nwvy/fAUpqfW00WPp97rBSqJygDRQ
+         uMbM+U0RZu1f6NHBsccBLRUlUz14lLdlbPfzYHnOkCOiIyYCXsjDfLy95rGFwz7VSIpN
+         pwQFNTc1gGUp0Qi6qEGX8jjDl3n6cDOjB79WVK/Ehthfwm5LhVJqmqxRi/Gc+WT5YJzJ
+         5ITKAinPesuddtXDe0FsTmmbXVP6i3VMGfKBweHE/mBtO4+IsYTjC54aD6idzc8V+N9v
+         oqkQ==
+X-Gm-Message-State: AOJu0YwOFD0Mv6h3T5Yt+SXJ/zGLhKZtwKD2Z0LM378odcZTp59iYMtW
+	M3+3bPZOmyleRKq8ZjEvOQf1v7L/BijbaBqZSrNtpA==
+X-Google-Smtp-Source: AGHT+IHE03gJszw8lf/xHkWqpl61E8rAlryiMxaNRq78cfueM1p5kFwPjBIZVK5w9yvg2jCkjEB/Vh2Q6LEYk1Pq+cI=
+X-Received: by 2002:a19:7616:0:b0:509:4980:7bf0 with SMTP id
+ c22-20020a197616000000b0050949807bf0mr9759057lff.38.1700111261841; Wed, 15
+ Nov 2023 21:07:41 -0800 (PST)
 MIME-Version: 1.0
-References: <CAKpemQKo2gigO44amj=eFUXgUnUeSmiOoTbS8GdXMx3O07N1vg@mail.gmail.com>
- <638afac6-0d2f-4bb1-8101-b58fdc03e303@sirena.org.uk>
-In-Reply-To: <638afac6-0d2f-4bb1-8101-b58fdc03e303@sirena.org.uk>
+References: <20231109100606.1245545-1-wenst@chromium.org> <859ac058-c50a-4eb8-99b6-3011ef4e7529@collabora.com>
+ <CAL_JsqK64w3+r_LJZoh50PzAUcsvH6ahSDCqgSiKrD3LBAXE9g@mail.gmail.com>
+ <CAD=FV=VUZy9DaZgKafSpXXopD5k8ExGSR97BjAqC5tupPoxNfQ@mail.gmail.com>
+ <CAL_Jsq+puq20EWkQg1RTs2zfmh4DGbqz1krp+19c=wPXnLT5dA@mail.gmail.com>
+ <CAD=FV=X-17COQ2-tycV1bSuCrGy7MJ88Un8nA-a-ODexvgi9TQ@mail.gmail.com> <CAL_JsqKR_YD6hm4Lv+OuCKms8Ha61BZRKUuiLYPgSkz3_3NCFA@mail.gmail.com>
+In-Reply-To: <CAL_JsqKR_YD6hm4Lv+OuCKms8Ha61BZRKUuiLYPgSkz3_3NCFA@mail.gmail.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 16 Nov 2023 11:50:20 +0800
-Message-ID: <CAGXv+5GHSK7nAagZ3iuSvcfbjFHJ1F+OYUr8KmaPbp6RyCgUhg@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] regulator: mt6358: Add output voltage fine tuning
- to variable LDOs
-To: Mark Brown <broonie@kernel.org>
-Cc: Bret Joseph <bretjoseph@gmail.com>, angelogioacchino.delregno@collabora.com, 
-	matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, 
-	zhiyong.tao@mediatek.com, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
+Date: Thu, 16 Nov 2023 13:07:30 +0800
+Message-ID: <CAGXv+5Gu4fmfriCh5wfeyqGPAX+LyLEDkCCrp4+_3XvS9-mAmw@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Doug Anderson <dianders@chromium.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Frank Rowand <frowand.list@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, andriy.shevchenko@linux.intel.com, 
+	Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org, broonie@kernel.org, 
+	gregkh@linuxfoundation.org, hdegoede@redhat.com, james.clark@arm.com, 
+	james@equiv.tech, keescook@chromium.org, petr.tesarik.ext@huawei.com, 
+	rafael@kernel.org, tglx@linutronix.de, Jeff LaBundy <jeff@labundy.com>, 
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_195035_807555_49DD7AD9 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231115_210751_312662_B5A4AB17 
+X-CRM114-Status: GOOD (  34.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,19 +100,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 16, 2023 at 4:15=E2=80=AFAM Mark Brown <broonie@kernel.org> wro=
-te:
+On Thu, Nov 16, 2023 at 5:35=E2=80=AFAM Rob Herring <robh+dt@kernel.org> wr=
+ote:
 >
-> On Wed, Nov 15, 2023 at 06:52:12PM +0200, Bret Joseph wrote:
-> > *In mt6358-regulator.c*
+> On Wed, Nov 15, 2023 at 2:45=E2=80=AFPM Doug Anderson <dianders@chromium.=
+org> wrote:
+> >
+> > Hi,
+> >
+> > On Wed, Nov 15, 2023 at 2:28=E2=80=AFPM Rob Herring <robh+dt@kernel.org=
+> wrote:
+> > >
+> > > > So if we're searching the whole device tree for "failed-needs-probe=
+"
+> > > > then we need to figure out which devices are related to each other.=
+ If
+> > > > a given board has second sources for MIPI panels, touchscreens, and
+> > > > trackpads then we need to know which of the "failed-needs-probe"
+> > > > devices are trackpads, which are touchscreens, and which are MIPI
+> > > > panels. Do you have any suggestions for how we should do that? Mayb=
+e
+> > > > it was in some other thread that I missed? I guess we could have a
+> > > > board-specific table mapping (compatible + node name + reg) to a
+> > > > class, but that feels awkward.
+> > >
+> > > Node name is supposed to correspond to device class, so why not use
+> > > that (no path or unit-address.) and nothing else (well, besides
+> > > "status")?
+> >
+> > One problem is that I could imagine having two second source trackpads
+> > that both have the same i2c address. That would give them the same
+> > name, right? I guess you could maybe come up with some sort of suffix
+> > rule? Like
+> >
+> > trackpad-1@10 {
+> >   compatible =3D "elan,blah";
+> >   ret =3D <0x10>;
+> >   status =3D "failed-needs-probe";
+> >   ...
+> > }
+> > trackpad-2@10 {
+> >   compatible =3D "goodix,gt7375p";
+> >   ret =3D <0x10>;
+> >   status =3D "failed-needs-probe";
+> >   ...
+> > }
+> >
+> > Then I guess the class would be "trackpad"?
 >
-> I only have patch 3/3 from this series, what's going on with
-> dependencies and so on?
+> That issue is somewhat orthogonal because it is not following the spec.
+>
+> I'm not sure mixing the 2 styles of node names is a good idea. While
+> not used too much, matching by node name does ignore the unit-address,
+> but I'm not sure we could ignore a '-N'.
 
-You already applied the series in September and the changes are already in
-v6.7-rc1.
+of_node_name_prefix() solves that. I assume that's the intended use case?
 
-I'll take a look at the report by Bret.
-
-ChenYu
+> I think our options are either add something to the unit-address or
+> use i2c-mux binding. Adding to the unit-address is not unprecedented.
+> I did that for some of the register bit level bindings where you have
+> a node for different bits at the same address. The downside is
+> unit-address is bus specific, so we'd have to add that for multiple
+> buses. For the i2c-mux, it's perhaps a bit complex and I'm not sure
+> what if anything you'd have to do to manage the mux that's not really
+> there.
+>
+> Rob
 
