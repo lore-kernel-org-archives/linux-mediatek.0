@@ -4,86 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB26C2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Nov 2023 23:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8D0C2BB3F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 00:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kIH2dT5rBnZFjhKTkiDOQvxWWMxsCvDK0b0vzyQ0+X8=; b=BmFbRXuLDxdEx3dt6kWG48Lb0S
-	qC9s+kSkVed++RdOp4dEiib4OLe3h3JURWdp8IjDHj8GKlUrCBhF0cVZ6/OTyLmTbXkganqweYNiC
-	1jPJToAZhC22Id2HEju9nf7EBac+HgPyRar0WntCpJbavRY7LZK5yREFuV+cSpbAINW7bcfrxkUdH
-	P5WBf6cVaENllaDim2kBCG9TOndVFeuGA6NZQ4jB9XdOpknR2JD3Cd6OKAgn4qhYPiYwX+JPs0bk5
-	wKZCbppmKtZAWlYoaVJ5vkqEE4Y7MP5wbRFOx6Lt7d6HAf8SGye8/AOnNmfhaD1qnFdbaGQBblJ05
-	/EiqsVlw==;
+	bh=uuJCmZxdi2NWI/hPQACzpKSM1WsV4ffa+vP9B8oTORY=; b=vPhtawaQSQGzLOa9yLbP0uEDnY
+	SK8QeRWdCO7Uqh2FhI2OlQWp2xWaHMIS+b/ppqU+5e5b0brMD+wNuorWZ4ObPntz8/xP5Ff6PXL19
+	uWja2N1d2Jkm+0r792LA1xky6CgxZlyJ5lg/+5q0qALk6IiE14fMFRWDV3L9Fu/EIElOyQ+p4dVWo
+	zw5hW4+sCzSjC/mWT3J7hntzlOJHcHqZ9siwOaUTuq44kIS+akCRBxRE0y3wYjXrYO1bOtrkBa0x9
+	CSiBqow+KsU53AzkYHVwmlR2QGg2563p3iUn3nG8EDkLrHmBbBj5SaloVxVjH63THIOFiSIjiQ9n3
+	gq8626fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3PZr-0021Cr-1J;
-	Wed, 15 Nov 2023 23:45:47 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1r3QPE-0025hx-1b;
+	Thu, 16 Nov 2023 00:38:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3PZo-0021Am-1x
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Nov 2023 23:45:45 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-1cc209561c3so65935ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Nov 2023 15:45:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1700091942; x=1700696742; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kIH2dT5rBnZFjhKTkiDOQvxWWMxsCvDK0b0vzyQ0+X8=;
-        b=AkRYSrGLXVT1AjbHu/ut6gEh98b7d7LiagpgQ7dIy1XZgp5hFL+zGiM1wigGv+ildo
-         L4mniSSi7N/NPl79KRbopgHWRtA09WqoXgOshvTmncredE0+SiUnpAWkXfDErcRsar/W
-         y+93iopW67+oaUM3Ju9Wn+8dwAEN7iiRV4nhPbogquSkeLAc198TaccfMHQvXXXBPxv2
-         yomq9BVRtnn6wK8XUjwjf/T1bTM6Bfc5cEUkSscb5q2gkK8rmWwg8OKyZdD+Md6HrzQX
-         a4c/7y9tiuW2IH5Ovj4vahDFYtgp5iJCcsxATGwRnHJ7SvHiLzJE7KSRHY/rCtXMZUv+
-         JbLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700091942; x=1700696742;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kIH2dT5rBnZFjhKTkiDOQvxWWMxsCvDK0b0vzyQ0+X8=;
-        b=KlTnREia3IWIcvEjvnDxguDFBGXd/Eq+w6fIB4vZ28TVvxHxS+fQOlbULJWaRnnTOV
-         IO15mB9icmx6CPL2q9bxue5HyhORDAM+EtUY9VXvr7GEIEGHDINtBkEvHJSDSk/E+RJ4
-         8BMVLxzVSDTfv8RHhxMTFqOEEUjCILYEUwnh+Erdaze1vAEcpeVDs2jr7s0Xuzwm7KWv
-         L+78arjcceziABSShuN2s7K9/BdlmVPzZtsg6iZsZ+BMn32vJZ4WI5ihCAcsho0p/pHT
-         uZrq70JVrk1RYsGWdRgQgvkv/ILbrGFRVir4ofHaJ88vF5e0Eh9Le2VXpe2pHkYoLz7R
-         ltOQ==
-X-Gm-Message-State: AOJu0Yw9poJQuuzpYNpejUKkqyggS4XOErSfuLUnx6Kt/eCnncBVPMKl
-	2dV6X0yJhb92VqDmqD5WPVfdw9Ne+7tYPHikhg7E
-X-Google-Smtp-Source: AGHT+IFvaq+a3HVgNlcWB8G0UvgbXEFSxTfLrN/9hWim6vKKnIqWcSHLeWYNY3t7rR2xLuNg/XZcLVowUmtLGfVqu6Q=
-X-Received: by 2002:a17:902:db0b:b0:1c2:446:5259 with SMTP id
- m11-20020a170902db0b00b001c204465259mr67088plx.19.1700091941779; Wed, 15 Nov
- 2023 15:45:41 -0800 (PST)
+	id 1r3QPB-0025gW-0W;
+	Thu, 16 Nov 2023 00:38:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 69D6461802;
+	Thu, 16 Nov 2023 00:38:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92D87C433CB;
+	Thu, 16 Nov 2023 00:38:45 +0000 (UTC)
+Received: by mercury (Postfix, from userid 1000)
+	id 311901062B6C; Thu, 16 Nov 2023 01:38:42 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Sebastian Reichel <sre@kernel.org>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, linux-pm@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, 
+ linux-kbuild@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+ Cristian Ciocaltea <cristian.ciocaltea@gmail.com>, 
+ linux-actions@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
+References: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 00/14] power: reset: Drop platform_driver_probe() and
+ convert to platform remove callback returning void
+Message-Id: <170009512218.785165.16271461927880645389.b4-ty@collabora.com>
+Date: Thu, 16 Nov 2023 01:38:42 +0100
 MIME-Version: 1.0
-References: <20231111111559.8218-1-yong.wu@mediatek.com> <20231111111559.8218-9-yong.wu@mediatek.com>
-In-Reply-To: <20231111111559.8218-9-yong.wu@mediatek.com>
-From: Jeffrey Kardatzke <jkardatzke@google.com>
-Date: Wed, 15 Nov 2023 15:45:30 -0800
-Message-ID: <CA+ddPcNLbyS1WRANo7fm13pYyibD_DS3uAxc6ouULWS+kBxNHQ@mail.gmail.com>
-Subject: Re: [PATCH v2 8/8] dma-buf: heaps: secure_heap: Add normal CMA heap
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	christian.koenig@amd.com, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	John Stultz <jstultz@google.com>, tjmercier@google.com, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	jianjiao.zeng@mediatek.com, kuohong.wang@mediatek.com, 
-	Vijayanand Jitta <quic_vjitta@quicinc.com>, Joakim Bech <joakim.bech@linaro.org>, 
-	Nicolas Dufresne <nicolas@ndufresne.ca>, ckoenig.leichtzumerken@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_154544_644853_62E9C847 
-X-CRM114-Status: GOOD (  27.73  )
+X-CRM114-CacheID: sfid-20231115_163849_301889_A877A2A3 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,119 +73,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-You should drop this patch completely.
 
-On Sat, Nov 11, 2023 at 3:18=E2=80=AFAM Yong Wu <yong.wu@mediatek.com> wrot=
-e:
->
-> Add a normal CMA heap which use the standard cma allocate.
->
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
-> Hi Vijay and Jaskaran,
->
-> For this heap,
-> 1) It uses sec_heap_buf_ops currently. I guess we cann't use the
-> cma_heap_buf_ops. since if it is secure buffer, some operations such
-> as mmap should not be allowed.
-> 2) I didn't add how to protect/secure the buffer.
->
-> Please feel free to change to meet your requirements.
-> Thanks.
-> ---
->  drivers/dma-buf/heaps/secure_heap.c | 38 ++++++++++++++++++++++++++++-
->  1 file changed, 37 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/dma-buf/heaps/secure_heap.c b/drivers/dma-buf/heaps/=
-secure_heap.c
-> index f8b84fd16288..8989ad5d03e9 100644
-> --- a/drivers/dma-buf/heaps/secure_heap.c
-> +++ b/drivers/dma-buf/heaps/secure_heap.c
-> @@ -43,6 +43,8 @@ enum secure_buffer_tee_cmd { /* PARAM NUM always is 4. =
-*/
->  };
->
->  enum secure_memory_type {
-> +       /* CMA for the secure memory, Use the normal cma ops to alloc/fre=
-e. */
-> +       SECURE_MEMORY_TYPE_CMA          =3D 0,
->         /*
->          * MediaTek static chunk memory carved out for TrustZone. The mem=
-ory
->          * management is inside the TEE.
-> @@ -65,6 +67,7 @@ struct secure_buffer {
->          * a value got from TEE.
->          */
->         u32                             sec_handle;
-> +       struct page                     *cma_page;
->  };
->
->  #define TEE_MEM_COMMAND_ID_BASE_MTK    0x10000
-> @@ -287,6 +290,33 @@ const struct secure_heap_prv_data mtk_sec_mem_data =
-=3D {
->         .unsecure_the_memory    =3D secure_heap_tee_unsecure_memory,
->  };
->
-> +static int cma_secure_memory_allocate(struct secure_heap *sec_heap,
-> +                                     struct secure_buffer *sec_buf)
-> +{
-> +       if (!sec_heap->cma)
-> +               return -EINVAL;
-> +
-> +       sec_buf->cma_page =3D cma_alloc(sec_heap->cma, sec_buf->size >> P=
-AGE_SHIFT,
-> +                                     get_order(PAGE_SIZE), false);
-> +       if (!sec_buf->cma_page)
-> +               return -ENOMEM;
-> +
-> +       memset(page_address(sec_buf->cma_page), 0, sec_buf->size);
-> +       return 0;
-> +}
-> +
-> +static void cma_secure_memory_free(struct secure_heap *sec_heap,
-> +                                  struct secure_buffer *sec_buf)
-> +{
-> +       cma_release(sec_heap->cma, sec_buf->cma_page, sec_buf->size >> PA=
-GE_SHIFT);
-> +}
-> +
-> +const struct secure_heap_prv_data cma_sec_mem_data =3D {
-> +       .memory_alloc   =3D cma_secure_memory_allocate,
-> +       .memory_free    =3D cma_secure_memory_free,
-> +       /* TODO : secure the buffer. */
-> +};
-> +
->  static int secure_heap_secure_memory_allocate(struct secure_heap *sec_he=
-ap,
->                                               struct secure_buffer *sec_b=
-uf)
->  {
-> @@ -496,6 +526,11 @@ static const struct dma_heap_ops sec_heap_ops =3D {
->  };
->
->  static struct secure_heap secure_heaps[] =3D {
-> +       {
-> +               .name           =3D "secure_cma",
-> +               .mem_type       =3D SECURE_MEMORY_TYPE_CMA,
-> +               .data           =3D &cma_sec_mem_data,
-> +       },
->         {
->                 .name           =3D "secure_mtk_cm",
->                 .mem_type       =3D SECURE_MEMORY_TYPE_MTK_CM_TZ,
-> @@ -522,7 +557,8 @@ static int __init secure_cma_init(struct reserved_mem=
- *rmem)
->         }
->
->         for (i =3D 0; i < ARRAY_SIZE(secure_heaps); i++, sec_heap++) {
-> -               if (sec_heap->mem_type !=3D SECURE_MEMORY_TYPE_MTK_CM_CMA=
-)
-> +               if (sec_heap->mem_type !=3D SECURE_MEMORY_TYPE_MTK_CM_CMA=
- &&
-> +                   sec_heap->mem_type !=3D SECURE_MEMORY_TYPE_CMA)
->                         continue;
->
->                 sec_heap->cma =3D sec_cma;
-> --
-> 2.25.1
->
+On Sat, 04 Nov 2023 22:15:02 +0100, Uwe Kleine-König wrote:
+> there are two different types of patches here that would justify to
+> different series. But as the patches are not independant I chose to put
+> them in a single series.
+> 
+> The first three patches drop usage of platform_driver_probe(). This is a
+> concept that isn't so relevant any more today. I didn't check, but it
+> saves typically only a few 100k and there are thoughts to deprecate it
+> to simplify the core. Getting the usage right is not trivial though the
+> at91 drivers got it nearly right. The alternative to these patches is to
+> add __ref to the driver struct ideally with a comment describing the
+> need like is e.g. done in commit 5b44abbc39ca ("platform/x86: hp-wmi::
+> Mark driver struct with __refdata to prevent section mismatch warning").
+> 
+> [...]
+
+Applied, thanks!
+
+[01/14] power: reset: at91-poweroff: Stop using module_platform_driver_probe()
+        commit: 099806de68b75a0fe114376b1ee162fdff572ecc
+[02/14] power: reset: at91-reset:: Stop using module_platform_driver_probe()
+        commit: 12389c657b623da34ba9b30306e13919d0b42f3a
+[03/14] power: reset: at91-sama5d2_shdwc: Stop using module_platform_driver_probe()
+        commit: dde74a5de817e0a011e4783cf26295d7f6fdca26
+[04/14] power: reset: as3722-poweroff: Convert to platform remove callback returning void
+        commit: 904e582f0c7282b3d7c76c73c06f3ad3b0910335
+[05/14] power: reset: at91-poweroff: Convert to platform remove callback returning void
+        commit: a31438ece3ec27057c77822b0b0bc0614798c425
+[06/14] power: reset: atc260x-poweroff: Convert to platform remove callback returning void
+        commit: 6f539f3151721f1c90fcdafa2962c19a8efc1afc
+[07/14] power: reset: ltc2952-poweroff: Convert to platform remove callback returning void
+        commit: 6642b13206b2225b0d75451f5dd763574a2c8bb0
+[08/14] power: reset: mt6323-poweroff: Convert to platform remove callback returning void
+        commit: 99f7fa6c7cc573ebe2529959723b71b4d12ec2f5
+[09/14] power: reset: qnap-poweroff: Convert to platform remove callback returning void
+        commit: 1a0457ab2ce81d92c2077a79080141d924884c5f
+[10/14] power: reset: regulator-poweroff: Convert to platform remove callback returning void
+        commit: 6f7be7b2f15a654a5f08b7d37df282c171b9380b
+[11/14] power: reset: restart-poweroff: Convert to platform remove callback returning void
+        commit: aedd4da0aa27fe9d0b03b3fbf62376aebbfc385b
+[12/14] power: reset: rmobile-reset: Convert to platform remove callback returning void
+        commit: 30d26d2be83de0d036f59f384b805dd3bf4bf5ef
+[13/14] power: reset: syscon-poweroff: Convert to platform remove callback returning void
+        commit: 2973706c4160ed8c1e695b4dfef4bdb3124c5753
+[14/14] power: reset: tps65086-restart: Convert to platform remove callback returning void
+        commit: 0bf7207e09673144df6425b2cad8bcb015e3501a
+[15/15] power: reset: at91-reset: Convert to platform remove callback returning void
+        commit: 20cea2b59abe33b80536b936b6729c88d1de2624
+[16/16] power: reset: at91-sama5d2_shdwc: Convert to platform remove callback returning void
+        commit: 054eb2377523530404fb64c24c8747feb022c5b4
+
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
 
