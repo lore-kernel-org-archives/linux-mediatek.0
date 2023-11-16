@@ -4,61 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8D0C2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 00:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1BE9C072A2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 02:03:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uuJCmZxdi2NWI/hPQACzpKSM1WsV4ffa+vP9B8oTORY=; b=vPhtawaQSQGzLOa9yLbP0uEDnY
-	SK8QeRWdCO7Uqh2FhI2OlQWp2xWaHMIS+b/ppqU+5e5b0brMD+wNuorWZ4ObPntz8/xP5Ff6PXL19
-	uWja2N1d2Jkm+0r792LA1xky6CgxZlyJ5lg/+5q0qALk6IiE14fMFRWDV3L9Fu/EIElOyQ+p4dVWo
-	zw5hW4+sCzSjC/mWT3J7hntzlOJHcHqZ9siwOaUTuq44kIS+akCRBxRE0y3wYjXrYO1bOtrkBa0x9
-	CSiBqow+KsU53AzkYHVwmlR2QGg2563p3iUn3nG8EDkLrHmBbBj5SaloVxVjH63THIOFiSIjiQ9n3
-	gq8626fg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Th9lj+aGAw0IRo2uy0RbfTDSdNUMIUbSlSIvNRSZ8To=; b=cZDjcilNClJjTneH0zXoCDtg+w
+	WN/Twu0zz3IhYkuq1/4kXnnZEUhyMFup/Q/ua4TE3qbGRn8zg+Ot0ygn9ILnAdYTZsb2C2xcNjhfF
+	7SzZ4GQJn6Ac46LZc3koRkxQxtpnOKw5F9TQc7YtR2sq6ZIHA/3/sGF6Uh30Zo3n7UV+6FmzK1e0q
+	DdzS0G9etzFhAL+I9EnAUIo/mrHoa3N0YYpgta2Ed+1qTDKwQ3LzIeNx7TSG9ASG03/sXZtTMb6Wb
+	ryi3hOSRHT/k3sHkIPpbrB0jI15o9U7yb2t5hWUVGcWA7x/3vo1Br1HAMKpvh2IfKaZXxdW3pXEnf
+	dybqsFIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3QPE-0025hx-1b;
-	Thu, 16 Nov 2023 00:38:52 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r3Riu-002CCE-0T;
+	Thu, 16 Nov 2023 02:03:16 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3QPB-0025gW-0W;
-	Thu, 16 Nov 2023 00:38:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 69D6461802;
-	Thu, 16 Nov 2023 00:38:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92D87C433CB;
-	Thu, 16 Nov 2023 00:38:45 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id 311901062B6C; Thu, 16 Nov 2023 01:38:42 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Sebastian Reichel <sre@kernel.org>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, linux-pm@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, 
- linux-kbuild@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
- Cristian Ciocaltea <cristian.ciocaltea@gmail.com>, 
- linux-actions@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
-References: <20231104211501.3676352-16-u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH 00/14] power: reset: Drop platform_driver_probe() and
- convert to platform remove callback returning void
-Message-Id: <170009512218.785165.16271461927880645389.b4-ty@collabora.com>
-Date: Thu, 16 Nov 2023 01:38:42 +0100
+	id 1r3Rir-002CBJ-1y;
+	Thu, 16 Nov 2023 02:03:14 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-6c32a20d5dbso271596b3a.1;
+        Wed, 15 Nov 2023 18:03:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700100188; x=1700704988; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Th9lj+aGAw0IRo2uy0RbfTDSdNUMIUbSlSIvNRSZ8To=;
+        b=de+KSOlMVACjPA3MvMKfB9NN8C60CCbcuWsjwR5oRzCNzNmBtbsKesvH4Q2M9sCyd3
+         Y/0PFn1cdNh1c2h+m8vdfPrvtLeOvKj1Lbgcl0MRpSoFT9KcetcvjDMegcgCw++dUasE
+         gtgOCpgnd81xQDmh0Z+jElZQb95KVbc4Fx1q7BMZKHKnUBB3OssTNu4eoedv1UTsR/f8
+         Yju1fnSqF0ElgRI+x0lfa136oMfjLdpnRew8pf1VkW9zKXRlrGxAaCAXyVGc01Q8gMFb
+         haS8Cz8QdqEBVbIc8GjwSpBUy4uLItAq4O+vL4D4QMbweZvMPI/AIvPJ/3Y45+h4QArp
+         C7Kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700100188; x=1700704988;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Th9lj+aGAw0IRo2uy0RbfTDSdNUMIUbSlSIvNRSZ8To=;
+        b=lp8JBa/fnr/m9qF/IGckKlN66n9A7XJN6T2rI5fJoo/D+wDT/Z6aVFhCDR/qUH/dwB
+         03qWgSusomwEwMyXfQZWGCapPjxqTjdTIJxAKjwl78EtM6P0Nt5xnJt55zfZRRxq8Oq2
+         fqL0LpYLpY249YEanYTntJ3MnoFS3TiaSOtkriIZVYNzKBdwVdQB0lCngWo6tyjm7Frb
+         YJPJlKnz2EuOya5Z56MtMsAd1yVeJsXvlXZo7i+i+aicRD7pTRWABeiQ5gnFhn68hzuw
+         bKo7CPf78izBPKBwzfwMvstb6yK5BNqKngicSz+cK3VUnrmu5zJ3srvNq1LvOu8PCGfT
+         qAKg==
+X-Gm-Message-State: AOJu0YzuwVrdbX7CD5ppOZCRNLv+gHE8gEz6c7tgcn4vqIchAM7FHiRj
+	mDmuysTNEpTb5dVpLr1CVg==
+X-Google-Smtp-Source: AGHT+IEBPLrFnZID1/lRKENL/IKG5994xUr1PV3o5p2zRisF/Gqa54OTbof+SlXP19NYV+iGIjUajg==
+X-Received: by 2002:a62:ab0c:0:b0:68e:3772:4e40 with SMTP id p12-20020a62ab0c000000b0068e37724e40mr11743047pff.3.1700100187996;
+        Wed, 15 Nov 2023 18:03:07 -0800 (PST)
+Received: from localhost.localdomain (111-243-26-65.dynamic-ip.hinet.net. [111.243.26.65])
+        by smtp.gmail.com with ESMTPSA id fe8-20020a056a002f0800b006c31b4d5e57sm3417037pfb.184.2023.11.15.18.03.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Nov 2023 18:03:07 -0800 (PST)
+From: Stanley Jhu <chu.stanley@gmail.com>
+To: inux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-scsi@vger.kernel.org,
+	jejb@linux.ibm.com,
+	martin.petersen@oracle.com,
+	alim.akhtar@samsung.com,
+	avri.altman@wdc.com,
+	bvanassche@acm.org,
+	peter.wang@gmail.com
+Cc: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chu.stanley@gmail.com
+Subject: [PATCH] scsi: ufs: mediatek: Fix the maintainer for MediaTek UFS hooks
+Date: Thu, 16 Nov 2023 10:02:54 +0800
+Message-Id: <20231116020254.10590-1-chu.stanley@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_163849_301889_A877A2A3 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20231115_180313_654963_2BA7A94A 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,60 +98,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Fix the maintainer for MediaTek UFS hooks since the origianl
+email address is not available anymore.
 
-On Sat, 04 Nov 2023 22:15:02 +0100, Uwe Kleine-König wrote:
-> there are two different types of patches here that would justify to
-> different series. But as the patches are not independant I chose to put
-> them in a single series.
-> 
-> The first three patches drop usage of platform_driver_probe(). This is a
-> concept that isn't so relevant any more today. I didn't check, but it
-> saves typically only a few 100k and there are thoughts to deprecate it
-> to simplify the core. Getting the usage right is not trivial though the
-> at91 drivers got it nearly right. The alternative to these patches is to
-> add __ref to the driver struct ideally with a comment describing the
-> need like is e.g. done in commit 5b44abbc39ca ("platform/x86: hp-wmi::
-> Mark driver struct with __refdata to prevent section mismatch warning").
-> 
-> [...]
+Signed-off-by: Stanley Jhu <chu.stanley@gmail.com>
+---
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Applied, thanks!
-
-[01/14] power: reset: at91-poweroff: Stop using module_platform_driver_probe()
-        commit: 099806de68b75a0fe114376b1ee162fdff572ecc
-[02/14] power: reset: at91-reset:: Stop using module_platform_driver_probe()
-        commit: 12389c657b623da34ba9b30306e13919d0b42f3a
-[03/14] power: reset: at91-sama5d2_shdwc: Stop using module_platform_driver_probe()
-        commit: dde74a5de817e0a011e4783cf26295d7f6fdca26
-[04/14] power: reset: as3722-poweroff: Convert to platform remove callback returning void
-        commit: 904e582f0c7282b3d7c76c73c06f3ad3b0910335
-[05/14] power: reset: at91-poweroff: Convert to platform remove callback returning void
-        commit: a31438ece3ec27057c77822b0b0bc0614798c425
-[06/14] power: reset: atc260x-poweroff: Convert to platform remove callback returning void
-        commit: 6f539f3151721f1c90fcdafa2962c19a8efc1afc
-[07/14] power: reset: ltc2952-poweroff: Convert to platform remove callback returning void
-        commit: 6642b13206b2225b0d75451f5dd763574a2c8bb0
-[08/14] power: reset: mt6323-poweroff: Convert to platform remove callback returning void
-        commit: 99f7fa6c7cc573ebe2529959723b71b4d12ec2f5
-[09/14] power: reset: qnap-poweroff: Convert to platform remove callback returning void
-        commit: 1a0457ab2ce81d92c2077a79080141d924884c5f
-[10/14] power: reset: regulator-poweroff: Convert to platform remove callback returning void
-        commit: 6f7be7b2f15a654a5f08b7d37df282c171b9380b
-[11/14] power: reset: restart-poweroff: Convert to platform remove callback returning void
-        commit: aedd4da0aa27fe9d0b03b3fbf62376aebbfc385b
-[12/14] power: reset: rmobile-reset: Convert to platform remove callback returning void
-        commit: 30d26d2be83de0d036f59f384b805dd3bf4bf5ef
-[13/14] power: reset: syscon-poweroff: Convert to platform remove callback returning void
-        commit: 2973706c4160ed8c1e695b4dfef4bdb3124c5753
-[14/14] power: reset: tps65086-restart: Convert to platform remove callback returning void
-        commit: 0bf7207e09673144df6425b2cad8bcb015e3501a
-[15/15] power: reset: at91-reset: Convert to platform remove callback returning void
-        commit: 20cea2b59abe33b80536b936b6729c88d1de2624
-[16/16] power: reset: at91-sama5d2_shdwc: Convert to platform remove callback returning void
-        commit: 054eb2377523530404fb64c24c8747feb022c5b4
-
-Best regards,
+diff --git a/MAINTAINERS b/MAINTAINERS
+index be1cbc6c2059..45762cab2991 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -22102,7 +22102,7 @@ S:	Maintained
+ F:	drivers/ufs/host/ufs-exynos*
+ 
+ UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER MEDIATEK HOOKS
+-M:	Stanley Chu <stanley.chu@mediatek.com>
++M:	Stanley Jhu <chu.stanley@gmail.com>
+ L:	linux-scsi@vger.kernel.org
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
 -- 
-Sebastian Reichel <sebastian.reichel@collabora.com>
+2.34.1
 
 
