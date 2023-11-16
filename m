@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39297C54FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 15:45:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EED55C5ACB3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 15:45:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+AdCj3oPS4Yuvol06kpIMzdLo24kALWO/jdcfmFxzhY=; b=T5iTecviekNddz4OI8JqYnfuAG
-	lzGU9jS5i45mha734d95QdcYxhSS45ZylvRCn48EwRRoockTAesbLeWcMYJEQXw35Qn11gPJ907zO
-	OccQORbV62nhGQi2B7t1Me/bD4iHlxjwdoqkmv80lW63E3ipYpj3PSRYQm8JIKYIaR7f1jakPuCcL
-	rVr/6d7npAAZjjOhLta26GtANBtaaRO8aom2MkhNcSJHYXC0JgEqXPlj3iCN0tGYGodieMSBED/AU
-	E1uul9bJKryNYVlV+/mEteDiLczw4kg6HQzGNkgn4uw7mUEmG7oHF3FiqG5K05fVy/ocHlalLjNF0
-	wAkAdhLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wJnJ7pIz/SOnJOhL5imqmDnEiCYIvnUGLqD8++wngD4=; b=10459BgnJCgJVLUaUPwf7mmax0
+	6aqBkKLNxVxGndLaAyLC+W9VYYEBkUwSD7McL4hAFU3BwjPmCQrapB6rnsQxTNCL5YX8UMWRTKYj1
+	Hxg4NKqnWC6w/9ZBCUrOV9oz9+fijDxvZ9NjnpMWnmqB2w3rCGcSKDGP1P7+QTkcUHLdNQaJpgYde
+	giQfx6PTuvQjr8AiWeWxCZS/pRwpS1Ce0yW9+WYUceUG8lSpXCHy7mKFYAp4BNPNMesnegvHq/hGU
+	r352WaA+aEait/Qqun3Rusx6EGr5RnwiTOzrOcSbeyL8ZFm+pbhdo4413LLg6YZD6AZMrz2bmqPNw
+	VgNDb27Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3eYT-003qRy-2o;
-	Thu, 16 Nov 2023 15:45:21 +0000
+	id 1r3eYa-003qVT-0h;
+	Thu, 16 Nov 2023 15:45:28 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3eYI-003qLC-1k;
+	id 1r3eYI-003qLc-1k;
 	Thu, 16 Nov 2023 15:45:12 +0000
-X-UUID: f9241c80849411ee9b7791016c24628a-20231116
+X-UUID: f8ad66ee849411ee9b7791016c24628a-20231116
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+AdCj3oPS4Yuvol06kpIMzdLo24kALWO/jdcfmFxzhY=;
-	b=UQQ6ylf78n7t4194M0yV0MCHil+sUeZL9kmPdK7NdI+8wOS8T1VjhupwiouzgJ/yLL50V52GiNr1/LfDU1pk1sIcYlYmF95DqaVJmWUjNR+jADAj9bJow5eOhvdmoFTp6Iz/jtZCiE17WdFDwH4odJ6ZSYRd+gCvvLqaVKn/2nc=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=wJnJ7pIz/SOnJOhL5imqmDnEiCYIvnUGLqD8++wngD4=;
+	b=dnrUQ0YwPgDsyVVY6/mKVb/Y0hdk1XgsQ98+c19fgsh+p66fy2Mt7S/7L8s+jjlSHEUkwk97g7yhknIJdUGNiwgypOyS2Tqipa5L6DgfDqL5TBtUWyJq86K+os9uFozmvcK9Fpcfp3XlOndz1Spul4ww3QhHYGDWbS0YiSSLb+g=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:3be727eb-316e-4d2f-8c33-09165dcfda27,IP:0,U
+X-CID-O-INFO: VERSION:1.1.33,REQID:518ae293-41fe-448d-8ccd-112fb7077481,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:364b77b,CLOUDID:a5bebb72-1bd3-4f48-b671-ada88705968c,B
+X-CID-META: VersionHash:364b77b,CLOUDID:aeb89cfc-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: f9241c80849411ee9b7791016c24628a-20231116
+X-UUID: f8ad66ee849411ee9b7791016c24628a-20231116
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <yi-de.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1303038848; Thu, 16 Nov 2023 08:29:46 -0700
+	with ESMTP id 1661710178; Thu, 16 Nov 2023 08:29:45 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 16 Nov 2023 23:29:11 +0800
+ 15.2.1118.26; Thu, 16 Nov 2023 23:29:10 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 16 Nov 2023 23:29:11 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 16 Nov 2023 23:29:10 +0800
 From: Yi-De Wu <yi-de.wu@mediatek.com>
 To: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
 	<ze-yu.wang@mediatek.com>, Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring
@@ -70,32 +70,35 @@ CC: Arnd Bergmann <arnd@arndb.de>, <devicetree@vger.kernel.org>,
 	PeiLun Suei <peilun.suei@mediatek.com>, Liju Chen
 	<liju-clr.chen@mediatek.com>, Willix Yeh <chi-shen.yeh@mediatek.com>,
 	"Kevenny Hsieh" <kevenny.hsieh@mediatek.com>
-Subject: [PATCH v7 15/16] virt: geniezone: Add memory pin/unpin support
-Date: Thu, 16 Nov 2023 23:27:55 +0800
-Message-ID: <20231116152756.4250-16-yi-de.wu@mediatek.com>
+Subject: [PATCH v7 10/16] virt: geniezone: Add ioeventfd support
+Date: Thu, 16 Nov 2023 23:27:50 +0800
+Message-ID: <20231116152756.4250-11-yi-de.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231116152756.4250-1-yi-de.wu@mediatek.com>
 References: <20231116152756.4250-1-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.116400-8.000000
-X-TMASE-MatchedRID: FEQi7wiS8RY/TqR73SoO885Scd0yVs+bbd6rGhWOAwQCSZrAnTS0Brps
-	GokK+C//AuwgUdYPZkXW0e5KCL9fbo0GdWKgGbBhMIiU395I8H3QeN4A2h64ncA5YKm8dwM6V78
-	paYC694DwDJaTY0Uw1tUvsMhDJV3vsEBAuoaUqK/il2r2x2PwtZyDP1rrUdvhXCmcAC8DBrOt0v
-	JcrVX4uGgMmeqXbMt1kkL+ENlH3trw/vD6Q64ggQwfhKwa9GwDcx5k3wffojMIbcbWxixcZI2n3
-	CVm0yC5585VzGMOFzA9wJeM2pSaRcK21zBg2KlfGM6W3U+Lnnf9UVTtcLrq40/ky5ZO+kjg5ClJ
-	FiBfD6zjywKvP1qavQ==
+X-TM-AS-Result: No-10--8.716600-8.000000
+X-TMASE-MatchedRID: RpvSv/4NlMlFXAohF8vNJsnUT+eskUQPsjXBCUyiRiYExRMryOBAgVe/
+	KWmAuveA8AyWk2NFMNZM8qdoCvOVvj13WcdbGR6QpvwZ9GmdwDPDHSNFHFxB8/EJBoK3pfxusLN
+	r5TqhtfjcN0v5cWnqNbwpUHaPzI/rpljg/F9ExYQQNC45RlqcSyGlZBSK0BYbv8D7QPW2jo/ejM
+	lFftvg2a4Uh1vskGhf2dxeEJzYZ0jCn+Yz1AZqrdF8NCC76P7lKVrLOZD1BXTxxaAXDrCnszQIU
+	ZM7wXvCgcVTBKDzbcwvTVpPyCy/8BnsS71Oo/Hwo65WJt1k1O/8DPC67L8SeUMQltJudvfM4VGO
+	Wl7ttKyj0p+InAKZ8YCtxlBGOOJC4opohxsLtfbd+fuf9kcapq4E49lQCn4hFLXUWU5hGiH1LVN
+	7yAVQaElyv9hMt8vR4LqUZgEiKxEfLCnwVCuCFakVfngvx/3FHznaOB9+eYghvFjBsLEZNNzuzy
+	vdSEu2tDhCWeyepvMd2tF+VyXKCH4yb5DiJrQyuXBOQEKj7Tgol9KlwBS/XZsoi2XrUn/Jn6KdM
+	rRsL14qtq5d3cxkNZd/mwLf2BVUrCHXMTgEny+4zJLdfo3yBIjr0Gv6Tbo5cE9ADjKwreZfCOKF
+	KuVYGg==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.116400-8.000000
+X-TMASE-Result: 10--8.716600-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 337D8F43338640BF381649683B53DFACF1315DF158B48C331AD8BAC2FFB6C1042000:8
+X-TM-SNTS-SMTP: B141610D249AD1F9F2D25B88F6CC938AAEF54B1387F7B1344A7FB62AC434E5EB2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_074510_590866_EC19DBC9 
-X-CRM114-Status: GOOD (  24.80  )
+X-CRM114-CacheID: sfid-20231116_074510_593127_7EB8AE74 
+X-CRM114-Status: GOOD (  31.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,208 +113,467 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jerry Wang" <ze-yu.wang@mediatek.com>
+From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 
-Protected VM's memory cannot be swapped out because the memory pages are
-protected from host access.
+Ioeventfd leverages eventfd to provide asynchronous notification
+mechanism for VMM. VMM can register a mmio address and bind with an
+eventfd. Once a mmio trap occurs on this registered region, its
+corresponding eventfd will be notified.
 
-Once host accesses to those protected pages, the hardware exception is
-triggered and may crash the host. So, we have to make those protected
-pages be ineligible for swapping or merging by the host kernel to avoid
-host access. To do so, we pin the page when it is assigned (donated) to
-VM and unpin when VM relinquish the pages or is destroyed. Besides, the
-protected VM’s memory requires hypervisor to clear the content before
-returning to host, but VMM may free those memory before clearing, it
-will result in those memory pages are reclaimed and reused before
-totally clearing. Using pin/unpin can also avoid the above problems.
-
-The implementation is described as follows.
-- Use rb_tree to store pinned memory pages.
-- Pin the page when handling page fault.
-- Unpin the pages when VM relinquish the pages or is destroyed.
-
-Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
 Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
+Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 ---
- drivers/virt/geniezone/gzvm_mmu.c | 60 ++++++++++++++++++++++++++++++-
- drivers/virt/geniezone/gzvm_vm.c  | 18 ++++++++++
- include/linux/gzvm_drv.h          | 10 ++++++
- 3 files changed, 87 insertions(+), 1 deletion(-)
+ drivers/virt/geniezone/Makefile         |   2 +-
+ drivers/virt/geniezone/gzvm_ioeventfd.c | 276 ++++++++++++++++++++++++
+ drivers/virt/geniezone/gzvm_vcpu.c      |  27 ++-
+ drivers/virt/geniezone/gzvm_vm.c        |  17 ++
+ include/linux/gzvm_drv.h                |  12 ++
+ include/uapi/linux/gzvm.h               |  25 +++
+ 6 files changed, 357 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/virt/geniezone/gzvm_ioeventfd.c
 
-diff --git a/drivers/virt/geniezone/gzvm_mmu.c b/drivers/virt/geniezone/gzvm_mmu.c
-index 77104df4afe5..0acef342e1f0 100644
---- a/drivers/virt/geniezone/gzvm_mmu.c
-+++ b/drivers/virt/geniezone/gzvm_mmu.c
-@@ -107,8 +107,59 @@ int gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64 gfn,
+diff --git a/drivers/virt/geniezone/Makefile b/drivers/virt/geniezone/Makefile
+index 05203166bf09..b56ff8fa4039 100644
+--- a/drivers/virt/geniezone/Makefile
++++ b/drivers/virt/geniezone/Makefile
+@@ -8,4 +8,4 @@ GZVM_DIR ?= ../../../drivers/virt/geniezone
+ 
+ gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_mmu.o \
+ 	  $(GZVM_DIR)/gzvm_vm.o $(GZVM_DIR)/gzvm_vcpu.o \
+-	  $(GZVM_DIR)/gzvm_irqfd.o
++	  $(GZVM_DIR)/gzvm_irqfd.o $(GZVM_DIR)/gzvm_ioeventfd.o
+diff --git a/drivers/virt/geniezone/gzvm_ioeventfd.c b/drivers/virt/geniezone/gzvm_ioeventfd.c
+new file mode 100644
+index 000000000000..04b17e0b783b
+--- /dev/null
++++ b/drivers/virt/geniezone/gzvm_ioeventfd.c
+@@ -0,0 +1,276 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ */
++
++#include <linux/eventfd.h>
++#include <linux/file.h>
++#include <linux/syscalls.h>
++#include <linux/gzvm.h>
++#include <linux/gzvm_drv.h>
++#include <linux/wait.h>
++#include <linux/poll.h>
++#include <linux/module.h>
++#include <linux/slab.h>
++
++struct gzvm_ioevent {
++	struct list_head list;
++	__u64 addr;
++	__u32 len;
++	struct eventfd_ctx  *evt_ctx;
++	__u64 datamatch;
++	bool wildcard;
++};
++
++/**
++ * ioeventfd_check_collision() - Check collison assumes gzvm->slots_lock held.
++ * @gzvm: Pointer to gzvm.
++ * @p: Pointer to gzvm_ioevent.
++ *
++ * Return:
++ * * true			- collison found
++ * * false			- no collison
++ */
++static bool ioeventfd_check_collision(struct gzvm *gzvm, struct gzvm_ioevent *p)
++{
++	struct gzvm_ioevent *_p;
++
++	list_for_each_entry(_p, &gzvm->ioevents, list) {
++		if (_p->addr == p->addr &&
++		    (!_p->len || !p->len ||
++		     (_p->len == p->len &&
++		      (_p->wildcard || p->wildcard ||
++		       _p->datamatch == p->datamatch))))
++			return true;
++		if (p->addr >= _p->addr && p->addr < _p->addr + _p->len)
++			return true;
++	}
++
++	return false;
++}
++
++static void gzvm_ioevent_release(struct gzvm_ioevent *p)
++{
++	eventfd_ctx_put(p->evt_ctx);
++	list_del(&p->list);
++	kfree(p);
++}
++
++static bool gzvm_ioevent_in_range(struct gzvm_ioevent *p, __u64 addr, int len,
++				  const void *val)
++{
++	u64 _val;
++
++	if (addr != p->addr)
++		/* address must be precise for a hit */
++		return false;
++
++	if (!p->len)
++		/* length = 0 means only look at the address, so always a hit */
++		return true;
++
++	if (len != p->len)
++		/* address-range must be precise for a hit */
++		return false;
++
++	if (p->wildcard)
++		/* all else equal, wildcard is always a hit */
++		return true;
++
++	/* otherwise, we have to actually compare the data */
++
++	WARN_ON_ONCE(!IS_ALIGNED((unsigned long)val, len));
++
++	switch (len) {
++	case 1:
++		_val = *(u8 *)val;
++		break;
++	case 2:
++		_val = *(u16 *)val;
++		break;
++	case 4:
++		_val = *(u32 *)val;
++		break;
++	case 8:
++		_val = *(u64 *)val;
++		break;
++	default:
++		return false;
++	}
++
++	return _val == p->datamatch;
++}
++
++static int gzvm_deassign_ioeventfd(struct gzvm *gzvm,
++				   struct gzvm_ioeventfd *args)
++{
++	struct gzvm_ioevent *p, *tmp;
++	struct eventfd_ctx *evt_ctx;
++	int ret = -ENOENT;
++	bool wildcard;
++
++	evt_ctx = eventfd_ctx_fdget(args->fd);
++	if (IS_ERR(evt_ctx))
++		return PTR_ERR(evt_ctx);
++
++	wildcard = !(args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH);
++
++	mutex_lock(&gzvm->lock);
++
++	list_for_each_entry_safe(p, tmp, &gzvm->ioevents, list) {
++		if (p->evt_ctx != evt_ctx  ||
++		    p->addr != args->addr  ||
++		    p->len != args->len ||
++		    p->wildcard != wildcard)
++			continue;
++
++		if (!p->wildcard && p->datamatch != args->datamatch)
++			continue;
++
++		gzvm_ioevent_release(p);
++		ret = 0;
++		break;
++	}
++
++	mutex_unlock(&gzvm->lock);
++
++	/* got in the front of this function */
++	eventfd_ctx_put(evt_ctx);
++
++	return ret;
++}
++
++static int gzvm_assign_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args)
++{
++	struct eventfd_ctx *evt_ctx;
++	struct gzvm_ioevent *evt;
++	int ret;
++
++	evt_ctx = eventfd_ctx_fdget(args->fd);
++	if (IS_ERR(evt_ctx))
++		return PTR_ERR(evt_ctx);
++
++	evt = kmalloc(sizeof(*evt), GFP_KERNEL);
++	if (!evt)
++		return -ENOMEM;
++	*evt = (struct gzvm_ioevent) {
++		.addr = args->addr,
++		.len = args->len,
++		.evt_ctx = evt_ctx,
++	};
++	if (args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH) {
++		evt->datamatch = args->datamatch;
++		evt->wildcard = false;
++	} else {
++		evt->wildcard = true;
++	}
++
++	if (ioeventfd_check_collision(gzvm, evt)) {
++		ret = -EEXIST;
++		goto err_free;
++	}
++
++	mutex_lock(&gzvm->lock);
++	list_add_tail(&evt->list, &gzvm->ioevents);
++	mutex_unlock(&gzvm->lock);
++
++	return 0;
++
++err_free:
++	kfree(evt);
++	eventfd_ctx_put(evt_ctx);
++	return ret;
++}
++
++/**
++ * gzvm_ioeventfd_check_valid() - Check user arguments is valid.
++ * @args: Pointer to gzvm_ioeventfd.
++ *
++ * Return:
++ * * true if user arguments are valid.
++ * * false if user arguments are invalid.
++ */
++static bool gzvm_ioeventfd_check_valid(struct gzvm_ioeventfd *args)
++{
++	/* must be natural-word sized, or 0 to ignore length */
++	switch (args->len) {
++	case 0:
++	case 1:
++	case 2:
++	case 4:
++	case 8:
++		break;
++	default:
++		return false;
++	}
++
++	/* check for range overflow */
++	if (args->addr + args->len < args->addr)
++		return false;
++
++	/* check for extra flags that we don't understand */
++	if (args->flags & ~GZVM_IOEVENTFD_VALID_FLAG_MASK)
++		return false;
++
++	/* ioeventfd with no length can't be combined with DATAMATCH */
++	if (!args->len && (args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH))
++		return false;
++
++	/* gzvm does not support pio bus ioeventfd */
++	if (args->flags & GZVM_IOEVENTFD_FLAG_PIO)
++		return false;
++
++	return true;
++}
++
++/**
++ * gzvm_ioeventfd() - Register ioevent to ioevent list.
++ * @gzvm: Pointer to gzvm.
++ * @args: Pointer to gzvm_ioeventfd.
++ *
++ * Return:
++ * * 0			- Success.
++ * * Negative		- Failure.
++ */
++int gzvm_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args)
++{
++	if (gzvm_ioeventfd_check_valid(args) == false)
++		return -EINVAL;
++
++	if (args->flags & GZVM_IOEVENTFD_FLAG_DEASSIGN)
++		return gzvm_deassign_ioeventfd(gzvm, args);
++	return gzvm_assign_ioeventfd(gzvm, args);
++}
++
++/**
++ * gzvm_ioevent_write() - Travers this vm's registered ioeventfd to see if
++ *			  need notifying it.
++ * @vcpu: Pointer to vcpu.
++ * @addr: mmio address.
++ * @len: mmio size.
++ * @val: Pointer to void.
++ *
++ * Return:
++ * * true if this io is already sent to ioeventfd's listener.
++ * * false if we cannot find any ioeventfd registering this mmio write.
++ */
++bool gzvm_ioevent_write(struct gzvm_vcpu *vcpu, __u64 addr, int len,
++			const void *val)
++{
++	struct gzvm_ioevent *e;
++
++	list_for_each_entry(e, &vcpu->gzvm->ioevents, list) {
++		if (gzvm_ioevent_in_range(e, addr, len, val)) {
++			eventfd_signal(e->evt_ctx, 1);
++			return true;
++		}
++	}
++	return false;
++}
++
++int gzvm_init_ioeventfd(struct gzvm *gzvm)
++{
++	INIT_LIST_HEAD(&gzvm->ioevents);
++
++	return 0;
++}
+diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
+index 598f0ed2dbb5..77138e749e9a 100644
+--- a/drivers/virt/geniezone/gzvm_vcpu.c
++++ b/drivers/virt/geniezone/gzvm_vcpu.c
+@@ -51,6 +51,30 @@ static long gzvm_vcpu_update_one_reg(struct gzvm_vcpu *vcpu,
  	return 0;
  }
  
-+static int cmp_ppages(struct rb_node *node, const struct rb_node *parent)
++/**
++ * gzvm_vcpu_handle_mmio() - Handle mmio in kernel space.
++ * @vcpu: Pointer to vcpu.
++ *
++ * Return:
++ * * true - This mmio exit has been processed.
++ * * false - This mmio exit has not been processed, require userspace.
++ */
++static bool gzvm_vcpu_handle_mmio(struct gzvm_vcpu *vcpu)
 +{
-+	struct gzvm_pinned_page *a = container_of(node,
-+						  struct gzvm_pinned_page,
-+						  node);
-+	struct gzvm_pinned_page *b = container_of(parent,
-+						  struct gzvm_pinned_page,
-+						  node);
++	__u64 addr;
++	__u32 len;
++	const void *val_ptr;
 +
-+	if (a->ipa < b->ipa)
-+		return -1;
-+	if (a->ipa > b->ipa)
-+		return 1;
-+	return 0;
++	/* So far, we don't have in-kernel mmio read handler */
++	if (!vcpu->run->mmio.is_write)
++		return false;
++	addr = vcpu->run->mmio.phys_addr;
++	len = vcpu->run->mmio.size;
++	val_ptr = &vcpu->run->mmio.data;
++
++	return gzvm_ioevent_write(vcpu, addr, len, val_ptr);
 +}
 +
-+static int gzvm_insert_ppage(struct gzvm *vm, struct gzvm_pinned_page *ppage)
-+{
-+	if (rb_find_add(&ppage->node, &vm->pinned_pages, cmp_ppages))
-+		return -EEXIST;
-+	return 0;
-+}
-+
-+static int pin_one_page(struct gzvm *vm, unsigned long hva, u64 gpa)
-+{
-+	unsigned int flags = FOLL_HWPOISON | FOLL_LONGTERM | FOLL_WRITE;
-+	struct gzvm_pinned_page *ppage = NULL;
-+	struct mm_struct *mm = current->mm;
-+	struct page *page = NULL;
-+
-+	ppage = kmalloc(sizeof(*ppage), GFP_KERNEL_ACCOUNT);
-+	if (!ppage)
-+		return -ENOMEM;
-+
-+	mmap_read_lock(mm);
-+	pin_user_pages(hva, 1, flags, &page);
-+	mmap_read_unlock(mm);
-+
-+	if (!page) {
-+		kfree(ppage);
-+		return -EFAULT;
-+	}
-+
-+	ppage->page = page;
-+	ppage->ipa = gpa;
-+	gzvm_insert_ppage(vm, ppage);
-+
-+	return 0;
-+}
-+
- static int handle_block_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
- {
-+	unsigned long hva;
- 	u64 pfn, __gfn;
- 	int ret, i;
- 
-@@ -131,6 +182,11 @@ static int handle_block_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
- 			goto err_unlock;
- 		}
- 		vm->demand_page_buffer[i] = pfn;
-+
-+		hva = gzvm_gfn_to_hva_memslot(&vm->memslot[memslot_id], __gfn);
-+		ret = pin_one_page(vm, hva, PFN_PHYS(__gfn));
-+		if (ret)
-+			goto err_unlock;
- 	}
- 
- 	ret = gzvm_arch_map_guest_block(vm->vm_id, memslot_id, start_gfn,
-@@ -148,6 +204,7 @@ static int handle_block_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
- 
- static int handle_single_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
- {
-+	unsigned long hva;
- 	int ret;
- 	u64 pfn;
- 
-@@ -159,7 +216,8 @@ static int handle_single_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
- 	if (unlikely(ret))
- 		return -EFAULT;
- 
--	return 0;
-+	hva = gzvm_gfn_to_hva_memslot(&vm->memslot[memslot_id], gfn);
-+	return pin_one_page(vm, hva, PFN_PHYS(gfn));
- }
- 
  /**
+  * gzvm_vcpu_run() - Handle vcpu run ioctl, entry point to guest and exit
+  *		     point from guest
+@@ -82,7 +106,8 @@ static long gzvm_vcpu_run(struct gzvm_vcpu *vcpu, void __user *argp)
+ 
+ 		switch (exit_reason) {
+ 		case GZVM_EXIT_MMIO:
+-			need_userspace = true;
++			if (!gzvm_vcpu_handle_mmio(vcpu))
++				need_userspace = true;
+ 			break;
+ 		/**
+ 		 * it's geniezone's responsibility to fill corresponding data
 diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
-index 485d1e2097aa..a7d43bedfad0 100644
+index 2ab4391ff16a..d67bf647b615 100644
 --- a/drivers/virt/geniezone/gzvm_vm.c
 +++ b/drivers/virt/geniezone/gzvm_vm.c
-@@ -292,6 +292,21 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
- 	return ret;
- }
- 
-+static void gzvm_destroy_ppage(struct gzvm *gzvm)
-+{
-+	struct gzvm_pinned_page *ppage;
-+	struct rb_node *node;
+@@ -223,6 +223,16 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
+ 		ret = gzvm_irqfd(gzvm, &data);
+ 		break;
+ 	}
++	case GZVM_IOEVENTFD: {
++		struct gzvm_ioeventfd data;
 +
-+	node = rb_first(&gzvm->pinned_pages);
-+	while (node) {
-+		ppage = rb_entry(node, struct gzvm_pinned_page, node);
-+		unpin_user_pages_dirty_lock(&ppage->page, 1, true);
-+		node = rb_next(node);
-+		rb_erase(&ppage->node, &gzvm->pinned_pages);
-+		kfree(ppage);
++		if (copy_from_user(&data, argp, sizeof(data))) {
++			ret = -EFAULT;
++			goto out;
++		}
++		ret = gzvm_ioeventfd(gzvm, &data);
++		break;
 +	}
-+}
+ 	case GZVM_ENABLE_CAP: {
+ 		struct gzvm_enable_cap cap;
+ 
+@@ -299,6 +309,13 @@ static struct gzvm *gzvm_create_vm(unsigned long vm_type)
+ 		return ERR_PTR(ret);
+ 	}
+ 
++	ret = gzvm_init_ioeventfd(gzvm);
++	if (ret) {
++		pr_err("Failed to initialize ioeventfd\n");
++		kfree(gzvm);
++		return ERR_PTR(ret);
++	}
 +
- static void gzvm_destroy_vm(struct gzvm *gzvm)
- {
- 	size_t allocated_size;
-@@ -315,6 +330,8 @@ static void gzvm_destroy_vm(struct gzvm *gzvm)
- 
- 	mutex_unlock(&gzvm->lock);
- 
-+	gzvm_destroy_ppage(gzvm);
-+
- 	kfree(gzvm);
- }
- 
-@@ -390,6 +407,7 @@ static struct gzvm *gzvm_create_vm(unsigned long vm_type)
- 	gzvm->vm_id = ret;
- 	gzvm->mm = current->mm;
- 	mutex_init(&gzvm->lock);
-+	gzvm->pinned_pages = RB_ROOT;
- 
- 	ret = gzvm_vm_irqfd_init(gzvm);
- 	if (ret) {
+ 	mutex_lock(&gzvm_list_lock);
+ 	list_add(&gzvm->vm_list, &gzvm_list);
+ 	mutex_unlock(&gzvm_list_lock);
 diff --git a/include/linux/gzvm_drv.h b/include/linux/gzvm_drv.h
-index 0a8b21e1ed1a..bb470a9f92e4 100644
+index 676e6b5714e8..406bc9f821b2 100644
 --- a/include/linux/gzvm_drv.h
 +++ b/include/linux/gzvm_drv.h
-@@ -12,6 +12,7 @@
+@@ -6,6 +6,7 @@
+ #ifndef __GZVM_DRV_H__
+ #define __GZVM_DRV_H__
+ 
++#include <linux/eventfd.h>
+ #include <linux/list.h>
+ #include <linux/mm.h>
  #include <linux/mutex.h>
- #include <linux/gzvm.h>
- #include <linux/srcu.h>
-+#include <linux/rbtree.h>
+@@ -95,6 +96,8 @@ struct gzvm {
+ 		struct mutex      resampler_lock;
+ 	} irqfds;
  
- /*
-  * For the normal physical address, the highest 12 bits should be zero, so we
-@@ -82,6 +83,12 @@ struct gzvm_vcpu {
- 	struct gzvm_vcpu_hwstate *hwstate;
- };
++	struct list_head ioevents;
++
+ 	struct list_head vm_list;
+ 	u16 vm_id;
  
-+struct gzvm_pinned_page {
-+	struct rb_node node;
-+	struct page *page;
-+	u64 ipa;
+@@ -149,4 +152,13 @@ void gzvm_drv_irqfd_exit(void);
+ int gzvm_vm_irqfd_init(struct gzvm *gzvm);
+ void gzvm_vm_irqfd_release(struct gzvm *gzvm);
+ 
++int gzvm_init_ioeventfd(struct gzvm *gzvm);
++int gzvm_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args);
++bool gzvm_ioevent_write(struct gzvm_vcpu *vcpu, __u64 addr, int len,
++			const void *val);
++void eventfd_ctx_do_read(struct eventfd_ctx *ctx, __u64 *cnt);
++struct vm_area_struct *vma_lookup(struct mm_struct *mm, unsigned long addr);
++void add_wait_queue_priority(struct wait_queue_head *wq_head,
++			     struct wait_queue_entry *wq_entry);
++
+ #endif /* __GZVM_DRV_H__ */
+diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
+index cb02f278972f..ef433e311fa7 100644
+--- a/include/uapi/linux/gzvm.h
++++ b/include/uapi/linux/gzvm.h
+@@ -335,4 +335,29 @@ struct gzvm_irqfd {
+ 
+ #define GZVM_IRQFD	_IOW(GZVM_IOC_MAGIC, 0x76, struct gzvm_irqfd)
+ 
++enum {
++	gzvm_ioeventfd_flag_nr_datamatch = 0,
++	gzvm_ioeventfd_flag_nr_pio = 1,
++	gzvm_ioeventfd_flag_nr_deassign = 2,
++	gzvm_ioeventfd_flag_nr_max,
 +};
 +
- struct gzvm {
- 	struct gzvm_vcpu *vcpus[GZVM_MAX_VCPUS];
- 	/* userspace tied to this vm */
-@@ -121,6 +128,9 @@ struct gzvm {
- 	 * at the same time
- 	 */
- 	struct mutex  demand_paging_lock;
++#define GZVM_IOEVENTFD_FLAG_DATAMATCH	(1 << gzvm_ioeventfd_flag_nr_datamatch)
++#define GZVM_IOEVENTFD_FLAG_PIO		(1 << gzvm_ioeventfd_flag_nr_pio)
++#define GZVM_IOEVENTFD_FLAG_DEASSIGN	(1 << gzvm_ioeventfd_flag_nr_deassign)
++#define GZVM_IOEVENTFD_VALID_FLAG_MASK	((1 << gzvm_ioeventfd_flag_nr_max) - 1)
 +
-+	/* Use rb-tree to record pin/unpin page */
-+	struct rb_root pinned_pages;
- };
- 
- long gzvm_dev_ioctl_check_extension(struct gzvm *gzvm, unsigned long args);
++struct gzvm_ioeventfd {
++	__u64 datamatch;
++	/* private: legal pio/mmio address */
++	__u64 addr;
++	/* private: 1, 2, 4, or 8 bytes; or 0 to ignore length */
++	__u32 len;
++	__s32 fd;
++	__u32 flags;
++	__u8  pad[36];
++};
++
++#define GZVM_IOEVENTFD	_IOW(GZVM_IOC_MAGIC, 0x79, struct gzvm_ioeventfd)
++
+ #endif /* __GZVM_H__ */
 -- 
 2.18.0
 
