@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C07E7C54FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 11:25:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329E2C5ACB3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 12:02:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NTKmtzreYp6eWtQ5S0t/6HBgaj9w8EWKw4RUjSZVyiY=; b=uosECcvgp9DP7Ijsen7MRX0J3L
-	uL/XWY2ae04emR4YRKE5jPyGO7X21Pzwd0F8s1oTFyjfwjv5Vk2o1jIwTelZc+p9+x7obeyYvoX9l
-	Y7++kg3rE3qnfwJlvjL5QhnfRo0wnDDdrjmdJCnIKAaa309SS6uG6apvLjV5lNt7zlNMxq5uofuhk
-	pCH5R7fHSv5T5zorWzTkehFieO/4bE6S70TrMczpr0v5QF58HUDT7aGhWlXmJrdWtZWT9Th+ehcLy
-	Hx/2PhH4upm4i5CssKvISKcUHkXS2k1/w2VLsvPLUNCXXZmCGJqW6+ovw0/7VGFbyx/wiN+l25YAi
-	YE0wNcRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vTrltGVBCvBoexMeOs/zFwHzylci7LZMUjyCRLBI0xs=; b=hpO6goJ/rVxV3xCKsKPDsRUOuz
+	mNlHp1tGSxxOqSIKyHWRyeIhb2v05QFUcV9NuQS5eAojlNVvEFpKcXZE+AYct8ApKMsUBNihwGVp7
+	oKKDvt+xzb0o3Ttp+NAktnmGmbvnVhtWmrtGmEzUYQg41pcJB+F1Xm53+/rjILizzNkgzfRnlsgI5
+	oJuRMw8MGXuYtF9di0i/2EWJChgbVSkLtQG1Q0UkUzNroF15Ub0VXkq5sI+fIjrg2rz34XDzTujpD
+	A0Jj0C3bTy6i5JNv9UWhotRb9ysmtZXhBCyQ2O8uDI9o12Ko7JkdxgpPF5zwFsfIGWtWyHo0kPO93
+	idHfzEyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3aUW-003DoO-1e;
-	Thu, 16 Nov 2023 11:25:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1r3b4z-003Qxs-09;
+	Thu, 16 Nov 2023 12:02:41 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3aUS-003Dnk-2r;
-	Thu, 16 Nov 2023 11:24:58 +0000
-X-UUID: c39d8eb0847211ee86758d4a7c00f3a0-20231116
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NTKmtzreYp6eWtQ5S0t/6HBgaj9w8EWKw4RUjSZVyiY=;
-	b=ib9QLwxxsK6R7NgJG4BDVTJcQtqQhK3R0EVNAx9laGx1raQUMBaoN9IF/05rNBm8aHijO5xbJletVTSo/ea7YvVDMPXEqnjHVjR81zgHQHw8QWUFiDALgvWSeZpF94+wletK4gDW1BF1Ar4F/cB4nsLjTH67C0m0mFpa0Mc7jDk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:843d8534-d6ec-43a1-b98e-4eb4a94c1819,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:de5aba72-1bd3-4f48-b671-ada88705968c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c39d8eb0847211ee86758d4a7c00f3a0-20231116
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chun-jen.tseng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 330643488; Thu, 16 Nov 2023 04:24:53 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 16 Nov 2023 19:04:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 16 Nov 2023 19:04:50 +0800
-From: Mark Tseng <chun-jen.tseng@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
-	<p.zabel@pengutronix.de>, Roger Lu <roger.lu@mediatek.com>, Kevin Hilman
-	<khilman@kernel.org>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<chun-jen.tseng@mediatek.com>
-Subject: [PATCH v2 2/3] soc: mediatek: svs: Add support for MT8186 SoC
-Date: Thu, 16 Nov 2023 19:04:46 +0800
-Message-ID: <20231116110447.3598-3-chun-jen.tseng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231116110447.3598-1-chun-jen.tseng@mediatek.com>
-References: <20231116110447.3598-1-chun-jen.tseng@mediatek.com>
+	id 1r3b4u-003Qwn-2f;
+	Thu, 16 Nov 2023 12:02:38 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-9dd3f4a0f5aso102453766b.1;
+        Thu, 16 Nov 2023 04:02:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700136154; x=1700740954; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=vTrltGVBCvBoexMeOs/zFwHzylci7LZMUjyCRLBI0xs=;
+        b=BbtgKGbjbuOnLyFrAOv1qww5mRVujg7E7ZU6enxM987hIp20XhCqQVLTZwYBkwUV0f
+         HzLUVWxSjTBPioaCnMpi5YVXJ0a+20W3sxr3DAagmVv6sgDjI5PHzYY1jTZzUOIfuJQN
+         j7S23tm7ZSuvIfO7tj2tBCwjMlQ9Wc3BtNdNy3z5kMufTayFNwZ47tMWcwtZieczZD/9
+         KVRhheqxdZ2YisFbh/RN241T1Nxw6MOYpM/rzSpZl0qVWnAvS6bM0iHWo/PDdGl19hXJ
+         54yQnmLNlKMUCZsuyTj8YwIP7dsexw7OodPZzwjNwAbPbLMMLRWyNgn2LhTdQ06IJkh4
+         KgGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700136154; x=1700740954;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vTrltGVBCvBoexMeOs/zFwHzylci7LZMUjyCRLBI0xs=;
+        b=AsN2fPH8KHXGGHnZqkiME26DR/Wj6bqEbQh1ild6LY20ugljwahx2zXVJ047Xjm3lK
+         1/w4fGsr+xcD84ooyZuln+90+ozTXxdYfWB/0EzYnlV5fOIRmuvnShqykBM0HJgTRKJi
+         DtCDPtimC471+gOpfCOHmmVXtwOjWewOT6Ecb1Qe43T44M5p7L3JpzRO7Wo3Dq76KIzE
+         OzzqiFX+8uc0CCuPxe68mrGVI0wiphOS28Pye21F/2bBuK0Nx5PKaQs6Q8NfU7Rg9J+y
+         IWVxx38RB5B6oHkap8MPE0waunjsnQcE1M7Xu1NsfriuovhBT5la2Emkr+b8eEzcMNsk
+         SHLA==
+X-Gm-Message-State: AOJu0YxZTq/Iqrqdacv+SNXBwJjqqaY+fxenkLossjED78UUOHpuF1MI
+	13xVg7spdBF0nc7ZR64Fu/9YYQK5xio=
+X-Google-Smtp-Source: AGHT+IE+l1WxERw88wPP4jgQbj0W+HTBU6BoowIoSnFHFejeJjqWxu2+n49WhcpSktk8OPVh8CX1uw==
+X-Received: by 2002:a17:906:fa9b:b0:9e1:e1f5:2bb9 with SMTP id lt27-20020a170906fa9b00b009e1e1f52bb9mr11833141ejb.30.1700136154241;
+        Thu, 16 Nov 2023 04:02:34 -0800 (PST)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id h5-20020a170906718500b009ddf38056f8sm8320317ejk.118.2023.11.16.04.02.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Nov 2023 04:02:33 -0800 (PST)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH] dt-bindings: thermal: convert Mediatek Thermal to the json-schema
+Date: Thu, 16 Nov 2023 13:02:25 +0100
+Message-Id: <20231116120225.29999-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_032456_935061_E775AA41 
-X-CRM114-Status: GOOD (  18.16  )
+X-CRM114-CacheID: sfid-20231116_040236_872659_4A35C314 
+X-CRM114-Status: GOOD (  20.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,339 +100,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8186 svs has a number of banks which used as optimization of opp
-voltage table for corresponding dvfs drivers.
-MT8186 svs big core uses 2-line high bank and low bank to optimize the
-voltage of opp table for higher and lower frequency respectively.
+From: Rafał Miłecki <rafal@milecki.pl>
 
-Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This helps validating DTS files.
+
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- drivers/soc/mediatek/mtk-svs.c | 282 +++++++++++++++++++++++++++++++++
- 1 file changed, 282 insertions(+)
+ .../bindings/thermal/mediatek-thermal.txt     | 52 ----------
+ .../bindings/thermal/mediatek-thermal.yaml    | 98 +++++++++++++++++++
+ 2 files changed, 98 insertions(+), 52 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+ create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 317c402e673a..0f7cfbe5630b 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -1986,6 +1986,89 @@ static bool svs_mt8188_efuse_parsing(struct svs_platform *svsp)
- 	return true;
- }
- 
-+static bool svs_mt8186_efuse_parsing(struct svs_platform *svsp)
-+{
-+	struct svs_bank *svsb;
-+	u32 idx, i, golden_temp;
-+	int ret;
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+deleted file mode 100644
+index ac39c7156fde..000000000000
+--- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
++++ /dev/null
+@@ -1,52 +0,0 @@
+-* Mediatek Thermal
+-
+-This describes the device tree binding for the Mediatek thermal controller
+-which measures the on-SoC temperatures. This device does not have its own ADC,
+-instead it directly controls the AUXADC via AHB bus accesses. For this reason
+-this device needs phandles to the AUXADC. Also it controls a mux in the
+-apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
+-is also needed.
+-
+-Required properties:
+-- compatible:
+-  - "mediatek,mt8173-thermal" : For MT8173 family of SoCs
+-  - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
+-  - "mediatek,mt2712-thermal" : For MT2712 family of SoCs
+-  - "mediatek,mt7622-thermal" : For MT7622 SoC
+-  - "mediatek,mt7981-thermal", "mediatek,mt7986-thermal" : For MT7981 SoC
+-  - "mediatek,mt7986-thermal" : For MT7986 SoC
+-  - "mediatek,mt8183-thermal" : For MT8183 family of SoCs
+-  - "mediatek,mt8365-thermal" : For MT8365 family of SoCs
+-  - "mediatek,mt8516-thermal", "mediatek,mt2701-thermal : For MT8516 family of SoCs
+-- reg: Address range of the thermal controller
+-- interrupts: IRQ for the thermal controller
+-- clocks, clock-names: Clocks needed for the thermal controller. required
+-                       clocks are:
+-		       "therm":	 Main clock needed for register access
+-		       "auxadc": The AUXADC clock
+-- mediatek,auxadc: A phandle to the AUXADC which the thermal controller uses
+-- mediatek,apmixedsys: A phandle to the APMIXEDSYS controller.
+-- #thermal-sensor-cells : Should be 0. See Documentation/devicetree/bindings/thermal/thermal-sensor.yaml for a description.
+-
+-Optional properties:
+-- resets: Reference to the reset controller controlling the thermal controller.
+-- nvmem-cells: A phandle to the calibration data provided by a nvmem device. If
+-               unspecified default values shall be used.
+-- nvmem-cell-names: Should be "calibration-data"
+-
+-Example:
+-
+-	thermal: thermal@1100b000 {
+-		#thermal-sensor-cells = <1>;
+-		compatible = "mediatek,mt8173-thermal";
+-		reg = <0 0x1100b000 0 0x1000>;
+-		interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
+-		clock-names = "therm", "auxadc";
+-		resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
+-		reset-names = "therm";
+-		mediatek,auxadc = <&auxadc>;
+-		mediatek,apmixedsys = <&apmixedsys>;
+-		nvmem-cells = <&thermal_calibration_data>;
+-		nvmem-cell-names = "calibration-data";
+-	};
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml
+new file mode 100644
+index 000000000000..0e036b22b82b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml
+@@ -0,0 +1,98 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/thermal/mediatek-thermal.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	for (i = 0; i < svsp->efuse_max; i++)
-+		if (svsp->efuse[i])
-+			dev_info(svsp->dev, "M_HW_RES%d: 0x%08x\n",
-+				 i, svsp->efuse[i]);
++title: Mediatek Thermal
 +
-+	if (!svsp->efuse[0]) {
-+		dev_notice(svsp->dev, "svs_efuse[0] = 0x0?\n");
-+		return false;
-+	}
++description: >
++  This describes the device tree binding for the Mediatek thermal controller
++  which measures the on-SoC temperatures. This device does not have its own ADC,
++  instead it directly controls the AUXADC via AHB bus accesses. For this reason
++  this device needs phandles to the AUXADC. Also it controls a mux in the
++  apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
++  is also needed.
 +
-+	/* Svs efuse parsing */
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
++allOf:
++  - $ref: thermal-sensor.yaml#
 +
-+		switch (svsb->sw_id) {
-+		case SVSB_CPU_BIG:
-+			if (svsb->type == SVSB_HIGH) {
-+				svsb->mdes = (svsp->efuse[2] >> 24) & GENMASK(7, 0);
-+				svsb->bdes = (svsp->efuse[2] >> 16) & GENMASK(7, 0);
-+				svsb->mtdes = svsp->efuse[2] & GENMASK(7, 0);
-+				svsb->dcmdet = (svsp->efuse[13] >> 8) & GENMASK(7, 0);
-+				svsb->dcbdet = svsp->efuse[13] & GENMASK(7, 0);
-+			} else if (svsb->type == SVSB_LOW) {
-+				svsb->mdes = (svsp->efuse[3] >> 24) & GENMASK(7, 0);
-+				svsb->bdes = (svsp->efuse[3] >> 16) & GENMASK(7, 0);
-+				svsb->mtdes = svsp->efuse[3] & GENMASK(7, 0);
-+				svsb->dcmdet = (svsp->efuse[14] >> 24) & GENMASK(7, 0);
-+				svsb->dcbdet = (svsp->efuse[14] >> 16) & GENMASK(7, 0);
-+			}
-+			break;
-+		case SVSB_CPU_LITTLE:
-+			svsb->mdes = (svsp->efuse[4] >> 24) & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[4] >> 16) & GENMASK(7, 0);
-+			svsb->mtdes = svsp->efuse[4] & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[14] >> 8) & GENMASK(7, 0);
-+			svsb->dcbdet = svsp->efuse[14] & GENMASK(7, 0);
-+			break;
-+		case SVSB_CCI:
-+			svsb->mdes = (svsp->efuse[5] >> 24) & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[5] >> 16) & GENMASK(7, 0);
-+			svsb->mtdes = svsp->efuse[5] & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[15] >> 24) & GENMASK(7, 0);
-+			svsb->dcbdet = (svsp->efuse[15] >> 16) & GENMASK(7, 0);
-+			break;
-+		case SVSB_GPU:
-+			svsb->mdes = (svsp->efuse[6] >> 24) & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[6] >> 16) & GENMASK(7, 0);
-+			svsb->mtdes = svsp->efuse[6] & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[15] >> 8) & GENMASK(7, 0);
-+			svsb->dcbdet = svsp->efuse[15] & GENMASK(7, 0);
-+			break;
-+		default:
-+			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
-+			return false;
-+		}
++properties:
++  compatible:
++    enum:
++      - mediatek,mt2701-thermal
++      - mediatek,mt2712-thermal
++      - mediatek,mt7622-thermal
++      - mediatek,mt7981-thermal
++      - mediatek,mt7986-thermal
++      - mediatek,mt8173-thermal
++      - mediatek,mt8183-thermal
++      - mediatek,mt8365-thermal
++      - mediatek,mt8516-thermal
 +
-+		svsb->vmax += svsb->dvt_fixed;
-+	}
++  reg:
++    maxItems: 1
 +
-+	ret = svs_get_efuse_data(svsp, "t-calibration-data",
-+				 &svsp->tefuse, &svsp->tefuse_max);
-+	if (ret)
-+		return false;
++  interrupts:
++    maxItems: 1
 +
-+	golden_temp = (svsp->tefuse[0] >> 24) & GENMASK(7, 0);
-+	if (!golden_temp)
-+		golden_temp = 50;
++  clocks:
++    items:
++      - description: Main clock needed for register access
++      - description: The AUXADC clock
 +
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
-+		svsb->mts = 409;
-+		svsb->bts = (((500 * golden_temp + 204650) / 1000) - 25) * 4;
-+	}
++  clock-names:
++    items:
++      - const: therm
++      - const: auxadc
 +
-+	return true;
-+}
++  mediatek,auxadc:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: A phandle to the AUXADC which the thermal controller uses
 +
- static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
- {
- 	struct svs_bank *svsb;
-@@ -2252,6 +2335,50 @@ static int svs_mt8192_platform_probe(struct svs_platform *svsp)
- 	return 0;
- }
- 
-+static int svs_mt8186_platform_probe(struct svs_platform *svsp)
-+{
-+	struct device *dev;
-+	struct svs_bank *svsb;
-+	u32 idx;
++  mediatek,apmixedsys:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: A phandle to the APMIXEDSYS controller
 +
-+	svsp->rst = devm_reset_control_get_optional(svsp->dev, "svs_rst");
-+	if (IS_ERR(svsp->rst))
-+		return dev_err_probe(svsp->dev, PTR_ERR(svsp->rst),
-+				     "cannot get svs reset control\n");
++  resets: Reference to the reset controller controlling the thermal controller.
 +
-+	dev = svs_add_device_link(svsp, "lvts");
-+	if (IS_ERR(dev))
-+		return dev_err_probe(svsp->dev, PTR_ERR(dev),
-+				     "failed to get lvts device\n");
++  nvmem-cells:
++    items:
++      - description: >
++          NVMEM cell with EEPROMA phandle to the calibration data provided by an
++          NVMEM device. If unspecified default values shall be used.
 +
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
++  nvmem-cell-names:
++    items:
++      - const: calibration-data
 +
-+		switch (svsb->sw_id) {
-+		case SVSB_CPU_LITTLE:
-+		case SVSB_CPU_BIG:
-+			svsb->opp_dev = get_cpu_device(svsb->cpu_id);
-+			break;
-+		case SVSB_CCI:
-+			svsb->opp_dev = svs_add_device_link(svsp, "cci");
-+			break;
-+		case SVSB_GPU:
-+			svsb->opp_dev = svs_add_device_link(svsp, "gpu");
-+			break;
-+		default:
-+			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
-+			return -EINVAL;
-+		}
++unevaluatedProperties: false
 +
-+		if (IS_ERR(svsb->opp_dev))
-+			return dev_err_probe(svsp->dev, PTR_ERR(svsb->opp_dev),
-+					     "failed to get OPP device for bank %d\n",
-+					     idx);
-+	}
++required:
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - mediatek,auxadc
++  - mediatek,apmixedsys
 +
-+	return 0;
-+}
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/reset/mt8173-resets.h>
 +
- static int svs_mt8183_platform_probe(struct svs_platform *svsp)
- {
- 	struct device *dev;
-@@ -2461,6 +2588,149 @@ static struct svs_bank svs_mt8188_banks[] = {
- 	},
- };
- 
-+static struct svs_bank svs_mt8186_banks[] = {
-+	{
-+		.sw_id			= SVSB_CPU_BIG,
-+		.type			= SVSB_LOW,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-+		.get_volts		= svs_get_bank_volts_v3,
-+		.cpu_id			= 6,
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT,
-+		.mode_support		= SVSB_MODE_INIT02,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 1670000000,
-+		.turn_freq_base		= 1670000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.volt_od		= 4,
-+		.vmax			= 0x59,
-+		.vmin			= 0x20,
-+		.age_config		= 0x1,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x3,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0100,
-+		.int_st			= BIT(0),
-+		.ctl0			= 0x00540003,
-+	},
-+	{
-+		.sw_id			= SVSB_CPU_BIG,
-+		.type			= SVSB_HIGH,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-+		.get_volts		= svs_get_bank_volts_v3,
-+		.cpu_id			= 6,
-+		.tzone_name		= "cpu_big0",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 2050000000,
-+		.turn_freq_base		= 1670000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.volt_od		= 4,
-+		.vmax			= 0x73,
-+		.vmin			= 0x20,
-+		.age_config		= 0x1,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x6,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0101,
-+		.int_st			= BIT(1),
-+		.ctl0			= 0x00540003,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 8,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 8,
-+	},
-+	{
-+		.sw_id			= SVSB_CPU_LITTLE,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-+		.get_volts		= svs_get_bank_volts_v2,
-+		.cpu_id			= 0,
-+		.tzone_name		= "cpu_zone0",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 2000000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.volt_od		= 3,
-+		.vmax			= 0x65,
-+		.vmin			= 0x20,
-+		.age_config		= 0x1,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x6,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0102,
-+		.int_st			= BIT(2),
-+		.ctl0			= 0x3210000f,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 8,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 8,
-+	},
-+	{
-+		.sw_id			= SVSB_CCI,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-+		.get_volts		= svs_get_bank_volts_v2,
-+		.tzone_name		= "cpu_zone0",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 1400000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.volt_od		= 3,
-+		.vmax			= 0x65,
-+		.vmin			= 0x20,
-+		.age_config		= 0x1,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x6,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0103,
-+		.int_st			= BIT(3),
-+		.ctl0			= 0x3210000f,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 8,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 8,
-+	},
-+	{
-+		.sw_id			= SVSB_GPU,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-+		.get_volts		= svs_get_bank_volts_v2,
-+		.tzone_name		= "mfg",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 850000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.vmax			= 0x58,
-+		.vmin			= 0x20,
-+		.age_config		= 0x555555,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x4,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0104,
-+		.int_st			= BIT(4),
-+		.ctl0			= 0x00100003,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 8,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 7,
-+	},
-+};
-+
- static struct svs_bank svs_mt8183_banks[] = {
- 	{
- 		.sw_id			= SVSB_CPU_LITTLE,
-@@ -2592,6 +2862,15 @@ static const struct svs_platform_data svs_mt8188_platform_data = {
- 	.bank_max = ARRAY_SIZE(svs_mt8188_banks),
- };
- 
-+static const struct svs_platform_data svs_mt8186_platform_data = {
-+	.name = "mt8186-svs",
-+	.banks = svs_mt8186_banks,
-+	.efuse_parsing = svs_mt8186_efuse_parsing,
-+	.probe = svs_mt8186_platform_probe,
-+	.regs = svs_regs_v2,
-+	.bank_max = ARRAY_SIZE(svs_mt8186_banks),
-+};
-+
- static const struct svs_platform_data svs_mt8183_platform_data = {
- 	.name = "mt8183-svs",
- 	.banks = svs_mt8183_banks,
-@@ -2611,6 +2890,9 @@ static const struct of_device_id svs_of_match[] = {
- 	}, {
- 		.compatible = "mediatek,mt8188-svs",
- 		.data = &svs_mt8188_platform_data,
-+	}, {
-+		.compatible = "mediatek,mt8186-svs",
-+		.data = &svs_mt8186_platform_data,
- 	}, {
- 		.compatible = "mediatek,mt8183-svs",
- 		.data = &svs_mt8183_platform_data,
++    thermal@1100b000 {
++        compatible = "mediatek,mt8173-thermal";
++        reg = <0x1100b000 0x1000>;
++        interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
++        clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
++        clock-names = "therm", "auxadc";
++        resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
++        reset-names = "therm";
++        mediatek,auxadc = <&auxadc>;
++        mediatek,apmixedsys = <&apmixedsys>;
++        nvmem-cells = <&thermal_calibration_data>;
++        nvmem-cell-names = "calibration-data";
++        #thermal-sensor-cells = <1>;
++    };
 -- 
-2.18.0
+2.35.3
 
 
