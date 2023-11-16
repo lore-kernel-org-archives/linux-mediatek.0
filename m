@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2795FC5ACB3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 14:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0D31C5AE4A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 14:39:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bm2RzTQJq4kxmpZeDLnmc54Iix97y+OC5pYL0ktassI=; b=jvr0r2yQoymhMKiqfJ+Ir5S+oV
-	dxHJIylRzsG4ZZ8/jfYaMBrk0LMzuL5Em/scMqslFkYN6ESqGzFVypkSms8kxtTHJpizj9lmsptwl
-	m67v3Tvo7D1lYSTICYNTxiBynpCXsh/olYh4Qp4u77RUBAJl4EagEbFk2jAvdSHpBpkj6T6mpRK0o
-	dcq3bWP0b3i1r7lUep7omuKArrVlNJMgL3rNFofoynitY8yS2H+WxZf1hjvG6Xof1oqudwYjvkf8o
-	tOVYdzNxAQy7XJIv6c7KKLBcL+3wNmhRkLxiD40TJNU3sOTLUEq+PB5uoCbLPX7N2y7uhFE+RImWX
-	tEM666aQ==;
+	bh=G8x9m07rVl5SKHa83K+oZHoiEsMEscf7mSS9P25vw08=; b=4dYl/4HZ8VbZC5PO2W/GDUJath
+	WkICLIWDcNa8p+2340d91TGv4Wx+lBWQCZw5SzErk4qwc8YIfnWNNRxFdDe7cILfGPPBWik7pNEUG
+	TPpd6iQWyIYDT/4Ube92OhH6/yXm8zTnlbn26F21u1go9k05mn2NhiLiMsfRs3xK1T2Ao+GYGC5sT
+	iJLpZA9y7URP2L69hL+DMBieFNptz0O9FK5qLCntJdMnidlbarVxk54cwi8gfydS3NSsbOXCcqGY5
+	tUBCiZ7emhgKzqxoXCpaaC2nnUJRCbXF0z4fb4LYEiPdNAlGmXk/BwsBEQpmFRUXOj/kZYIYa1YPB
+	MJBwFpJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3dVy-003idu-02;
-	Thu, 16 Nov 2023 14:38:42 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1r3dX3-003iqf-1s;
+	Thu, 16 Nov 2023 14:39:49 +0000
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3dVu-003id3-2V
+	id 1r3dX0-003ipl-0e
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Nov 2023 14:38:40 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-7781b176131so44397985a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Nov 2023 06:38:37 -0800 (PST)
+	Thu, 16 Nov 2023 14:39:47 +0000
+Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-77896da2118so50605885a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Nov 2023 06:39:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700145516; x=1700750316; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1700145585; x=1700750385; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Bm2RzTQJq4kxmpZeDLnmc54Iix97y+OC5pYL0ktassI=;
-        b=oNpFuGxBzv6e2WHDPuocq5Xd7Y/2RME1Nh+Cej6zAriDyrhNI9m+Ya8go59V9SsYx2
-         AL9Xl5toXzEBqqDac5jlBhMmgsdV5jHqBxbAUmRHcB3qodYw5wrqEtn1OfHEm+8oeNpS
-         l8k8PgnpdgMsQ/Io148YGtWLFykU3g1n72IytLIjtfKQyIGV3GtjmZn8bEMlrAp1vuOK
-         z8lk7iQSYgYiIVuWLLIww+vnci6yXau+GP1vSuV7KM/tfmpiuWnZDwkQL7rE596d+883
-         I7r4iFSSFeSddpIdnTRVRLDJU8C1UtdA3/emEQ8u/5xVqQccVWm/8fD8MjwCAqpNOchs
-         eMfg==
+        bh=G8x9m07rVl5SKHa83K+oZHoiEsMEscf7mSS9P25vw08=;
+        b=imRQRSUZT+JO2Glwt6ltF8uMpP/J/6yjpNbJJFhXmhbPtBcS4QP1oJpKkvDsKLpfbg
+         vYm1YButaIVsknJJK9YQXzL6EXXCAzBy0ocJW6t7xsBcEebx0xm6TZYwGfltueWO0ZtE
+         AGd2X8S7W8c/BrjsA+ujmhy0eFX7E9UvYpih+oEIcI4fvHbV6h0HdqgvGlPXFmTlmWqT
+         fFb/owjbc70V/XwFRM+Gc99tNPzz0QGaXZde/xttKlYTzFLB3vimfW3lO9acQ839vU83
+         6BkO2pUdSbLhc/7yyiEv/kQZgqKE+XjVi1y+gmhpZJTnctMzQIBRZRpFJE9t581aesNU
+         YFPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700145516; x=1700750316;
+        d=1e100.net; s=20230601; t=1700145585; x=1700750385;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Bm2RzTQJq4kxmpZeDLnmc54Iix97y+OC5pYL0ktassI=;
-        b=QfqEXwCLubOSRZkMVBNqppRMjrUrFGKFjKRUSGucxG9IeQ6KiW0in0oiW/jUACAXEr
-         W5oo/x5zjmMSK2hJBsqflqxMnwjzdRLKv+7rmEDvCOI2eENPJsCLJleC3Ced5L43zyi3
-         8QfMimW5v6GnFq/TjEL6R/lNNlgWsSoymPv00llNl7xLEFo0P07AquSORIHB96MjsVsY
-         thegvH/6SQIwhQoOyQQaaqFIF32OG61B009+rFsgCg/aljmlz4O+EP5rqJV7dq1Sd7AF
-         4qmQKc8GXKhEb4j6FwomJ78JS24kIkjMNoZFbtN59/dQVEzxuJXrI0zmRKwqMqiAW6WV
-         PA7A==
-X-Gm-Message-State: AOJu0YzWvuNL8b7U8HIIDHMeNRcehwlK2FwuWmW+EfAiBr+tSOdvNfeV
-	hKmEtmlKUb+Z4RW+XtcPRPi66w==
-X-Google-Smtp-Source: AGHT+IHkfG2EtNEBccfsPbZQdfjg2kps5NLHZmzHvHHDc5M3LjUWwk8uRM9kdxfTEIesGr2NPAVyCA==
-X-Received: by 2002:a05:620a:3721:b0:76f:17ad:3c83 with SMTP id de33-20020a05620a372100b0076f17ad3c83mr9663931qkb.47.1700145516633;
-        Thu, 16 Nov 2023 06:38:36 -0800 (PST)
+        bh=G8x9m07rVl5SKHa83K+oZHoiEsMEscf7mSS9P25vw08=;
+        b=sJcaSR/PceAAaPx6t9GLfHtYiSE01ZwI+mZ43BqCh+6EII74L/VmtEPh25Cb3wclRv
+         00UYbiClQjdFB+UDXjx6Mv8XEK0IMocMu0ELr2zpZetkn9eAIv50wece0/7GGNbTX0Ly
+         u2wJoNSf0UT1xyHdxqL0z8qVgnQVkdLkK9vdS3EdjlcORfMFhEAxBrkyZRnoQBSMsXR6
+         y27JG85jNMeLEbe1GUneTzCBhG3Mm+IjsfpBSR65c0ue7h7MEjVEpu+lGuIUZxCfbqKk
+         roZUmOCSzS6Hzm1WSGnosku4O4YOgWXL1G4KFDsIawIHfBNB0o6N2R3WZNqMvT5Zkcts
+         6XWg==
+X-Gm-Message-State: AOJu0Yytres1VmRkMo7UCdzaW3TJA+82BnLDAPYpztj4IO3BuA39jHhg
+	ujyRorejZJKp9H03TO/rD8K4qw==
+X-Google-Smtp-Source: AGHT+IFd/fNrxur5uy0bROGLYTvuKPpMTKJCcd+sXxDxk9JzDfOWbYDgDBtcAUR+Qk2qnVNRzYpndA==
+X-Received: by 2002:a05:620a:c42:b0:775:d7d7:cdbb with SMTP id u2-20020a05620a0c4200b00775d7d7cdbbmr9762689qki.38.1700145585327;
+        Thu, 16 Nov 2023 06:39:45 -0800 (PST)
 Received: from [10.50.4.74] ([50.201.115.146])
-        by smtp.gmail.com with ESMTPSA id m11-20020a05620a290b00b007743382121esm4315994qkp.84.2023.11.16.06.38.35
+        by smtp.gmail.com with ESMTPSA id m11-20020a05620a290b00b007743382121esm4315994qkp.84.2023.11.16.06.39.44
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Nov 2023 06:38:36 -0800 (PST)
-Message-ID: <b475d496-c97b-4178-9cdb-6f7d640e9877@linaro.org>
-Date: Thu, 16 Nov 2023 15:38:35 +0100
+        Thu, 16 Nov 2023 06:39:45 -0800 (PST)
+Message-ID: <b9290a88-f52a-4880-bf14-2b7f64762498@linaro.org>
+Date: Thu, 16 Nov 2023 15:39:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: thermal: convert Mediatek Thermal to the
+Subject: Re: [PATCH V2] dt-bindings: thermal: convert Mediatek Thermal to the
  json-schema
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
@@ -77,11 +77,12 @@ To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: "Rafael J . Wysocki" <rafael@kernel.org>,
  Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20231116120225.29999-1-zajec5@gmail.com>
+ Lukasz Luba <lukasz.luba@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20231116131316.5897-1-zajec5@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -127,12 +128,13 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231116120225.29999-1-zajec5@gmail.com>
+In-Reply-To: <20231116131316.5897-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_063838_823875_1B21C7A9 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20231116_063946_241446_478C40DE 
+X-CRM114-Status: UNSURE (   6.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,81 +149,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/11/2023 13:02, Rafał Miłecki wrote:
+On 16/11/2023 14:13, Rafał Miłecki wrote:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
 > This helps validating DTS files.
 > 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
 
-...
+Please implement all my comments from previous version.
 
-mal.yaml b/Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml
-> new file mode 100644
-> index 000000000000..0e036b22b82b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml
-
-mediatek,thermal.yaml
-
-> @@ -0,0 +1,98 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/thermal/mediatek-thermal.yaml#
-
-mediatek,thermal.yaml
-
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek Thermal
-
-SoC? PMIC?
-
-> +
-> +description: >
-
-Drop >
-
-> +  This describes the device tree binding for the Mediatek thermal controller
-
-Drop redundant part. Describe hardware, not the binding. There is no
-point to say that a binding describes a binding.
-
-> +  which measures the on-SoC temperatures. This device does not have its own ADC,
-> +  instead it directly controls the AUXADC via AHB bus accesses. For this reason
-> +  this device needs phandles to the AUXADC. Also it controls a mux in the
-> +  apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
-> +  is also needed.
-> +
-> +allOf:
-
-...
-
-> +  mediatek,auxadc:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: A phandle to the AUXADC which the thermal controller uses
-> +
-> +  mediatek,apmixedsys:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: A phandle to the APMIXEDSYS controller
-> +
-> +  resets: Reference to the reset controller controlling the thermal controller.
-> +
-
-Not tested. You miss constraints. Drop totally redundant description.
-
-> +
-> +unevaluatedProperties: false
-> +
-> +required:
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - mediatek,auxadc
-> +  - mediatek,apmixedsys
-
-unevaluatedProperties go here.
+Also, one patch per day, so you get testing (since you do no test) and
+also allow people to actually do review.
 
 Best regards,
 Krzysztof
