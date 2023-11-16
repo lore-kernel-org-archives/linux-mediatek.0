@@ -4,88 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329E2C5ACB3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 12:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AEF0C197A0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 12:12:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vTrltGVBCvBoexMeOs/zFwHzylci7LZMUjyCRLBI0xs=; b=hpO6goJ/rVxV3xCKsKPDsRUOuz
-	mNlHp1tGSxxOqSIKyHWRyeIhb2v05QFUcV9NuQS5eAojlNVvEFpKcXZE+AYct8ApKMsUBNihwGVp7
-	oKKDvt+xzb0o3Ttp+NAktnmGmbvnVhtWmrtGmEzUYQg41pcJB+F1Xm53+/rjILizzNkgzfRnlsgI5
-	oJuRMw8MGXuYtF9di0i/2EWJChgbVSkLtQG1Q0UkUzNroF15Ub0VXkq5sI+fIjrg2rz34XDzTujpD
-	A0Jj0C3bTy6i5JNv9UWhotRb9ysmtZXhBCyQ2O8uDI9o12Ko7JkdxgpPF5zwFsfIGWtWyHo0kPO93
-	idHfzEyg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A3SrigvTYcxISiVn0Y6GpHs9yzAcuQGISfEl1ZwMQbA=; b=IT0ETa6IxKUGqhkm5cv9owiDJu
+	vxpmPVMdXvd+iZlxM9/DlqLbDhv6ONdY6xqkjQMZHuWoltQN/uQ54IlZ+EgnKtyjOehg4AmgSugxx
+	0fBe2ptnawVOcWrO+SkIljUWPA/L1RhPOjP5kMWLF4tAUATyxDBRz10X00h/cLEnxYkQTf02Y2t6p
+	uSBTtR3n5S/Omy4QHzw0I2u+i21VmhcNYdumU4qsdLvO5BAyPR2bBYR2Pi+V3xX1e275rdOGJieAt
+	a3dlyWif4udaWsz+VHewJt8HPplJeKXy29VtASHhYUp0i4KjJaICd9fx56IaSh+Oi2Isvn0i44F05
+	4MDD7F8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3b4z-003Qxs-09;
-	Thu, 16 Nov 2023 12:02:41 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1r3bE1-003RzO-0N;
+	Thu, 16 Nov 2023 12:12:01 +0000
+Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3b4u-003Qwn-2f;
-	Thu, 16 Nov 2023 12:02:38 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-9dd3f4a0f5aso102453766b.1;
-        Thu, 16 Nov 2023 04:02:35 -0800 (PST)
+	id 1r3bDy-003RyJ-0E
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Nov 2023 12:11:59 +0000
+Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-1ef9f1640a5so332514fac.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Nov 2023 04:11:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700136154; x=1700740954; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=vTrltGVBCvBoexMeOs/zFwHzylci7LZMUjyCRLBI0xs=;
-        b=BbtgKGbjbuOnLyFrAOv1qww5mRVujg7E7ZU6enxM987hIp20XhCqQVLTZwYBkwUV0f
-         HzLUVWxSjTBPioaCnMpi5YVXJ0a+20W3sxr3DAagmVv6sgDjI5PHzYY1jTZzUOIfuJQN
-         j7S23tm7ZSuvIfO7tj2tBCwjMlQ9Wc3BtNdNy3z5kMufTayFNwZ47tMWcwtZieczZD/9
-         KVRhheqxdZ2YisFbh/RN241T1Nxw6MOYpM/rzSpZl0qVWnAvS6bM0iHWo/PDdGl19hXJ
-         54yQnmLNlKMUCZsuyTj8YwIP7dsexw7OodPZzwjNwAbPbLMMLRWyNgn2LhTdQ06IJkh4
-         KgGw==
+        d=linaro.org; s=google; t=1700136714; x=1700741514; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=A3SrigvTYcxISiVn0Y6GpHs9yzAcuQGISfEl1ZwMQbA=;
+        b=x6nw+AIY0Ad8VIHsaKvVQl5DB8tJ1y17urryxVQkBj1YdgpZkcKWAs6nepFC9YpZ+K
+         6ZbwSr5NvcY+m1tzvbBD42RtJufDZ+BQpapfEXUUqBng3lZCK+4KrEQGdIKEat062auu
+         RdvuujlVAon3mE9rqUykG7gYy8GS6aLpuexYd2GXNJeMRwxrHIUMSh/CJMyLr6nxzWXb
+         S7f7151+xTwtB4SXdYxVPVXiGEylfxgxwmdDJffWMEEsf5skWn6jZaNNa6RxYbhoM7GE
+         9bjHt7buFs/32Qley37+rc68O3QjQwFfI3zqmaw6wEy1j3snsXp3g++pusKX3td54dgK
+         kIbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700136154; x=1700740954;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vTrltGVBCvBoexMeOs/zFwHzylci7LZMUjyCRLBI0xs=;
-        b=AsN2fPH8KHXGGHnZqkiME26DR/Wj6bqEbQh1ild6LY20ugljwahx2zXVJ047Xjm3lK
-         1/w4fGsr+xcD84ooyZuln+90+ozTXxdYfWB/0EzYnlV5fOIRmuvnShqykBM0HJgTRKJi
-         DtCDPtimC471+gOpfCOHmmVXtwOjWewOT6Ecb1Qe43T44M5p7L3JpzRO7Wo3Dq76KIzE
-         OzzqiFX+8uc0CCuPxe68mrGVI0wiphOS28Pye21F/2bBuK0Nx5PKaQs6Q8NfU7Rg9J+y
-         IWVxx38RB5B6oHkap8MPE0waunjsnQcE1M7Xu1NsfriuovhBT5la2Emkr+b8eEzcMNsk
-         SHLA==
-X-Gm-Message-State: AOJu0YxZTq/Iqrqdacv+SNXBwJjqqaY+fxenkLossjED78UUOHpuF1MI
-	13xVg7spdBF0nc7ZR64Fu/9YYQK5xio=
-X-Google-Smtp-Source: AGHT+IE+l1WxERw88wPP4jgQbj0W+HTBU6BoowIoSnFHFejeJjqWxu2+n49WhcpSktk8OPVh8CX1uw==
-X-Received: by 2002:a17:906:fa9b:b0:9e1:e1f5:2bb9 with SMTP id lt27-20020a170906fa9b00b009e1e1f52bb9mr11833141ejb.30.1700136154241;
-        Thu, 16 Nov 2023 04:02:34 -0800 (PST)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id h5-20020a170906718500b009ddf38056f8sm8320317ejk.118.2023.11.16.04.02.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Nov 2023 04:02:33 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Lukasz Luba <lukasz.luba@arm.com>,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH] dt-bindings: thermal: convert Mediatek Thermal to the json-schema
-Date: Thu, 16 Nov 2023 13:02:25 +0100
-Message-Id: <20231116120225.29999-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
+        d=1e100.net; s=20230601; t=1700136714; x=1700741514;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=A3SrigvTYcxISiVn0Y6GpHs9yzAcuQGISfEl1ZwMQbA=;
+        b=ocT+UBPJtTlPePpMfm9Z9AMESJhNW3tJMhgZZcxs04vwCsjRgms0rHMK8emzKBtliL
+         URzRHIKzlirx5FrurPqr3ndD6Jj4jLkoR8Rf3yAJK0Ng3nH2Xg8IsskeajD/EMChrM+Y
+         fWyHExIonQWx8VxiAr3+BHlZlsM0aA/Pg/Rlw0XaEmMM5OgoBslFIeCP4Tgz0+lLBJfc
+         wTVRSpg2USgU6NlyWN8Hcwxvsd1OCmEuSdocyALg47HF/sgZT+QXDi4xZnlnHUUOELKx
+         ++R5PKO+hP5prWgxpy13KIasEM4tfrfW7X8gG3qipdhe5Ic9jQVwNmqULR0R4Wc2CIHM
+         +MYA==
+X-Gm-Message-State: AOJu0YzhTP0COq5EgJeEgakr2mDTQ4ecoV4ED578MPsjF42BLDlKWG3D
+	A/CNQ+foL1vPFDE6qYz7N4A7jA==
+X-Google-Smtp-Source: AGHT+IElo3j2ljrkJlF+kTIVi4yDVNCyx+ubaAYzsC7ZJsHg1T2PX3nh3vDd1fIgOenP0+VO8WbBVg==
+X-Received: by 2002:a05:6871:53ca:b0:1f0:597d:fe30 with SMTP id hz10-20020a05687153ca00b001f0597dfe30mr18389572oac.44.1700136714684;
+        Thu, 16 Nov 2023 04:11:54 -0800 (PST)
+Received: from [192.168.212.13] ([12.191.197.195])
+        by smtp.gmail.com with ESMTPSA id g4-20020ac870c4000000b004181e5a724csm4288725qtp.88.2023.11.16.04.11.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Nov 2023 04:11:54 -0800 (PST)
+Message-ID: <1869c577-1772-4571-98a8-8ec64166fea8@linaro.org>
+Date: Thu, 16 Nov 2023 13:11:49 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] dt-bindings: clock: mediatek: Remove compatible
+ for MT8188 VPPSYS
+Content-Language: en-US
+To: "yu-chang.lee" <yu-chang.lee@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Garmin Chang <garmin.chang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20231116080129.20617-1-yu-chang.lee@mediatek.com>
+ <20231116080129.20617-3-yu-chang.lee@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231116080129.20617-3-yu-chang.lee@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_040236_872659_4A35C314 
-X-CRM114-Status: GOOD (  20.04  )
+X-CRM114-CacheID: sfid-20231116_041158_202139_1742E44A 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,181 +148,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On 16/11/2023 09:01, yu-chang.lee wrote:
+> MT8188 VPPSYS 0/1 should be probed from mtk-mmsys driver to
+> populate device by platform_device_register_data then start
+> its own clock driver.
+> 
+> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
+> ---
+>  .../devicetree/bindings/clock/mediatek,mt8188-clock.yaml        | 2 --
+>  1 file changed, 2 deletions(-)
 
-This helps validating DTS files.
+This is not bisectable. Binding patches must be squashed.
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- .../bindings/thermal/mediatek-thermal.txt     | 52 ----------
- .../bindings/thermal/mediatek-thermal.yaml    | 98 +++++++++++++++++++
- 2 files changed, 98 insertions(+), 52 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
- create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml
-
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-deleted file mode 100644
-index ac39c7156fde..000000000000
---- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-+++ /dev/null
-@@ -1,52 +0,0 @@
--* Mediatek Thermal
--
--This describes the device tree binding for the Mediatek thermal controller
--which measures the on-SoC temperatures. This device does not have its own ADC,
--instead it directly controls the AUXADC via AHB bus accesses. For this reason
--this device needs phandles to the AUXADC. Also it controls a mux in the
--apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
--is also needed.
--
--Required properties:
--- compatible:
--  - "mediatek,mt8173-thermal" : For MT8173 family of SoCs
--  - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
--  - "mediatek,mt2712-thermal" : For MT2712 family of SoCs
--  - "mediatek,mt7622-thermal" : For MT7622 SoC
--  - "mediatek,mt7981-thermal", "mediatek,mt7986-thermal" : For MT7981 SoC
--  - "mediatek,mt7986-thermal" : For MT7986 SoC
--  - "mediatek,mt8183-thermal" : For MT8183 family of SoCs
--  - "mediatek,mt8365-thermal" : For MT8365 family of SoCs
--  - "mediatek,mt8516-thermal", "mediatek,mt2701-thermal : For MT8516 family of SoCs
--- reg: Address range of the thermal controller
--- interrupts: IRQ for the thermal controller
--- clocks, clock-names: Clocks needed for the thermal controller. required
--                       clocks are:
--		       "therm":	 Main clock needed for register access
--		       "auxadc": The AUXADC clock
--- mediatek,auxadc: A phandle to the AUXADC which the thermal controller uses
--- mediatek,apmixedsys: A phandle to the APMIXEDSYS controller.
--- #thermal-sensor-cells : Should be 0. See Documentation/devicetree/bindings/thermal/thermal-sensor.yaml for a description.
--
--Optional properties:
--- resets: Reference to the reset controller controlling the thermal controller.
--- nvmem-cells: A phandle to the calibration data provided by a nvmem device. If
--               unspecified default values shall be used.
--- nvmem-cell-names: Should be "calibration-data"
--
--Example:
--
--	thermal: thermal@1100b000 {
--		#thermal-sensor-cells = <1>;
--		compatible = "mediatek,mt8173-thermal";
--		reg = <0 0x1100b000 0 0x1000>;
--		interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
--		clock-names = "therm", "auxadc";
--		resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
--		reset-names = "therm";
--		mediatek,auxadc = <&auxadc>;
--		mediatek,apmixedsys = <&apmixedsys>;
--		nvmem-cells = <&thermal_calibration_data>;
--		nvmem-cell-names = "calibration-data";
--	};
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml
-new file mode 100644
-index 000000000000..0e036b22b82b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.yaml
-@@ -0,0 +1,98 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/thermal/mediatek-thermal.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Thermal
-+
-+description: >
-+  This describes the device tree binding for the Mediatek thermal controller
-+  which measures the on-SoC temperatures. This device does not have its own ADC,
-+  instead it directly controls the AUXADC via AHB bus accesses. For this reason
-+  this device needs phandles to the AUXADC. Also it controls a mux in the
-+  apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
-+  is also needed.
-+
-+allOf:
-+  - $ref: thermal-sensor.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt2701-thermal
-+      - mediatek,mt2712-thermal
-+      - mediatek,mt7622-thermal
-+      - mediatek,mt7981-thermal
-+      - mediatek,mt7986-thermal
-+      - mediatek,mt8173-thermal
-+      - mediatek,mt8183-thermal
-+      - mediatek,mt8365-thermal
-+      - mediatek,mt8516-thermal
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: Main clock needed for register access
-+      - description: The AUXADC clock
-+
-+  clock-names:
-+    items:
-+      - const: therm
-+      - const: auxadc
-+
-+  mediatek,auxadc:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: A phandle to the AUXADC which the thermal controller uses
-+
-+  mediatek,apmixedsys:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: A phandle to the APMIXEDSYS controller
-+
-+  resets: Reference to the reset controller controlling the thermal controller.
-+
-+  nvmem-cells:
-+    items:
-+      - description: >
-+          NVMEM cell with EEPROMA phandle to the calibration data provided by an
-+          NVMEM device. If unspecified default values shall be used.
-+
-+  nvmem-cell-names:
-+    items:
-+      - const: calibration-data
-+
-+unevaluatedProperties: false
-+
-+required:
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - mediatek,auxadc
-+  - mediatek,apmixedsys
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/reset/mt8173-resets.h>
-+
-+    thermal@1100b000 {
-+        compatible = "mediatek,mt8173-thermal";
-+        reg = <0x1100b000 0x1000>;
-+        interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
-+        clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
-+        clock-names = "therm", "auxadc";
-+        resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
-+        reset-names = "therm";
-+        mediatek,auxadc = <&auxadc>;
-+        mediatek,apmixedsys = <&apmixedsys>;
-+        nvmem-cells = <&thermal_calibration_data>;
-+        nvmem-cell-names = "calibration-data";
-+        #thermal-sensor-cells = <1>;
-+    };
--- 
-2.35.3
+Best regards,
+Krzysztof
 
 
