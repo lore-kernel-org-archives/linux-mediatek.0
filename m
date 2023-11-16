@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2EB4C54FB9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4266C5AD4C
 	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 15:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,47 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=donjSP1Xz/3Ayd7xl575wHqD+kXImXwNsh04tLPFMYI=; b=Luc2J28WUj15n/O45+v2xZLvao
-	RPxduBvTUg6IcKutPF1aE/SmQjetvQK/tMTImntM5+lRS/qSQ9qLHnI26GD8orvWu4yd0dD8YgpFQ
-	pvb6vwBX50zu8mLw0KyfSLgY1piOAEfcxy9S1uVPLp6MlwS/W0XOget/tnzM+W7R6Imuspb3hVfgd
-	AZg8W2BV0pIo4bhmgB80ZVConnsY3oY6gVrldFW+4oh70CYjkrZQnbheQaKv4PMe/lSyS3ivMo1Ax
-	94PLoqKQxhXQ0QvkZ9IjC5X/n/2doejWxPvcSm5EHxmP+PnlRsHtBiUl0uyTmzVzRw9WxPHD4j13Y
-	G5CVh+XQ==;
+	bh=AZBY6NeYvkoDlop+tCt5SManP9tBibooV25yc3gmdho=; b=SRj4yzMoYgvurtBeMdT6mLfyxW
+	zjxOTfVr7s0xewVx/hij4ng7jEEF8PhlrEushGu+qYlg+SemVYX8SX4cJDEytZgta0Y4SR3RtvJBU
+	yCkFlYYHqSSyFbgUg9HZxn6EUG7JJYDzm7/2YNtWjx0PXrTRuhR6JGKuXXDzLIHTy263hOpufBxRP
+	1pKo7+1yyvvCW+65cd1KQIgcXpqrl52nV10058aW36sdyM4Sq6DsPkCT5xzX5mxLE5W8MXEtrX7Mt
+	7PgoiFeMe8iOzRexizr1xKzjshvz96k7NSnn6J+KKPJaFXUBZQjWfaM3xsKn5Wr6S6n00N1wqjwZk
+	rQwhrlrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3eJj-003ot4-2n;
-	Thu, 16 Nov 2023 15:30:07 +0000
+	id 1r3eJk-003ote-1H;
+	Thu, 16 Nov 2023 15:30:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3eJW-003ofc-2F;
-	Thu, 16 Nov 2023 15:29:57 +0000
-X-UUID: f8ac8f8a849411ee86758d4a7c00f3a0-20231116
+	id 1r3eJX-003oin-1s;
+	Thu, 16 Nov 2023 15:29:59 +0000
+X-UUID: f862869c849411ee86758d4a7c00f3a0-20231116
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=donjSP1Xz/3Ayd7xl575wHqD+kXImXwNsh04tLPFMYI=;
-	b=Y+y3bljI9ttB8IJu1kqoLHYznmu0oitE5ziYvKkZFTkU7DOnexoIrdVapwFgX0adpWt17995gBnk+iNb3q6Snvt1CtqfZk6IaTTY/ZsnNxf88ps9MTobauuAAz6ntwcU1pYIezN3NfEvRJoH/nK3UyB3w7rdtANNWkOnM9xmWgY=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AZBY6NeYvkoDlop+tCt5SManP9tBibooV25yc3gmdho=;
+	b=fsmT80UdffgsDgSCnnerKvkSxhW8VJG35FlXEvCS2/ROWdveRCFdv4GAiSwRM8FcVi5ii9UC69VVQ3xA/AkplQ74h2zPd6veDu9yCT5g8H0P82JMyoxSHTaSQmkj1BSGJU+IlNQGTNS9rQh35WSkenKXrIMCibVQh+G0uIk9VUc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:069cadb8-d2f8-45f2-ba8b-5ca433acc5b7,IP:0,U
+X-CID-O-INFO: VERSION:1.1.33,REQID:4d54169a-fcc3-4905-b68c-1998dcdc7606,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:364b77b,CLOUDID:b2b89cfc-4a48-46e2-b946-12f04f20af8c,B
+X-CID-META: VersionHash:364b77b,CLOUDID:b1b89cfc-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: f8ac8f8a849411ee86758d4a7c00f3a0-20231116
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: f862869c849411ee86758d4a7c00f3a0-20231116
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <yi-de.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 142143778; Thu, 16 Nov 2023 08:29:45 -0700
+	with ESMTP id 199950956; Thu, 16 Nov 2023 08:29:45 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 16 Nov 2023 23:29:11 +0800
+ 15.2.1118.26; Thu, 16 Nov 2023 23:29:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 16 Nov 2023 23:29:11 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 16 Nov 2023 23:29:09 +0800
 From: Yi-De Wu <yi-de.wu@mediatek.com>
 To: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
 	<ze-yu.wang@mediatek.com>, Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring
@@ -65,23 +65,40 @@ CC: Arnd Bergmann <arnd@arndb.de>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-doc@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	David Bradil <dbrazdil@google.com>, Trilok Soni <quic_tsoni@quicinc.com>,
-	Jade Shih <jades.shih@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>, My
- Chuang <my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
+	Jade Shih <jades.shih@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>,
+	"My Chuang" <my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
 	PeiLun Suei <peilun.suei@mediatek.com>, Liju Chen
-	<liju-clr.chen@mediatek.com>, Willix Yeh <chi-shen.yeh@mediatek.com>, Kevenny
- Hsieh <kevenny.hsieh@mediatek.com>
-Subject: [PATCH v7 14/16] virt: geniezone: Add block-based demand paging support
-Date: Thu, 16 Nov 2023 23:27:54 +0800
-Message-ID: <20231116152756.4250-15-yi-de.wu@mediatek.com>
+	<liju-clr.chen@mediatek.com>, Willix Yeh <chi-shen.yeh@mediatek.com>,
+	"Kevenny Hsieh" <kevenny.hsieh@mediatek.com>
+Subject: [PATCH v7 05/16] virt: geniezone: Add set_user_memory_region for vm
+Date: Thu, 16 Nov 2023 23:27:45 +0800
+Message-ID: <20231116152756.4250-6-yi-de.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231116152756.4250-1-yi-de.wu@mediatek.com>
 References: <20231116152756.4250-1-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.209500-8.000000
+X-TMASE-MatchedRID: 2OwaJG98IRGzOchXTgjX0fiP3cOw0hARa+E0oS8sctQ9wWQKVyZA290X
+	7JEoSZZqFLIbNZhFHP/ybUel2aB0F8CiHTNtFGyJGfRQPgZTkipAGep3G4nlIJjk0EbtghtXEXF
+	HklABLo5EctEVwopld2Eipkx5++QxPXdZx1sZHpC628cXbnOhT4v8pidhVYOU7a71bENFnTPr2F
+	7b6RijKpw9wMcKngv65JZWpbmrOY6l71R9bv6eQiZm6wdY+F8KkKAa/khZ3iQGW3hFnC9N1drKb
+	eLV7rdX5JO3Ul2lmRTS5T3gQEi/FNpkOfaFflnASDkh6bW+bceGUftT8OCIT0dmDSBYfnJRFqL6
+	h0Wt9piiNm/LfB4fW9QQqUTuP+tHv94QsDvR6NyGuzokAQvW7rYxxljjfMnjbcPp/oilssht31n
+	TPUZUNuXd2pzF3g6iKuJbkvOKSROCPd0k2KhaIW3NvezwBrVmdWAGleXmdhiYFp2iw4hoIZsnGP
+	/L/vukxHy4fm/VTOGAMuqetGVetnyef22ep6XYymsk/wUE4hrDlPR2bvuxLlE5FZ8V4m+uKRY0x
+	gyp2fBPJ6hxF8WvCWOATUlZvXFOEylVg+fdRi8bylYsfpMmA3SGXTfL4dg7KpvOX6x8ziVg4NaI
+	qrbC9nQE0HbT5LEft/yYljnuhl10loENhqV3WYc7S1VgNXhPQwymtxuJ6y0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.209500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: C0A197E02AA61D07BB3F90ECED4D4CBDE61E8F2CAD0E48B17B1CFE1EF85D91162000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_072954_753001_B4E035D8 
-X-CRM114-Status: GOOD (  32.33  )
+X-CRM114-CacheID: sfid-20231116_072955_645544_6E59B5DE 
+X-CRM114-Status: GOOD (  31.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,302 +115,463 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 
-To balance memory usage and performance, GenieZone supports larger
-granularity demand paging, called block-based demand paging.
-Gzvm driver uses enable_cap to query the hypervisor if it supports
-block-based demand paging and the given granularity or not. Meanwhile,
-the gzvm driver allocates a shared buffer for storing the physical
-pages later.
-
-If the hypervisor supports, every time the gzvm driver handles guest
-page faults, it allocates more memory in advance (default: 2MB) for
-demand paging. And fills those physical pages into the allocated shared
-memory, then calls the hypervisor to map to guest's memory.
-
-The physical pages allocated for block-based demand paging is not
-necessary to be contiguous because in many cases, 2MB block is not
-followed. 1st, the memory is allocated because of VMM's page fault
-(VMM loads kernel image to guest memory before running). In this case,
-the page is allocated by the host kernel and using PAGE_SIZE. 2nd is
-that guest may return memory to host via ballooning and that is still
-4KB (or PAGE_SIZE) granularity. Therefore, we do not have to allocate
-physically contiguous 2MB pages.
+Direct use of physical memory from VMs is forbidden and designed to be
+dictated to the privilege models managed by GenieZone hypervisor for
+security reason. With the help of gzvm-ko, the hypervisor would be able
+to manipulate memory as objects. And the memory management is highly
+integrated with ARM 2-stage translation tables to convert VA to IPA to
+PA under proper security measures required by protected VMs.
 
 Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
 Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 ---
- arch/arm64/geniezone/gzvm_arch_common.h |  2 +
- arch/arm64/geniezone/vm.c               | 19 ++++++++--
- drivers/virt/geniezone/gzvm_mmu.c       | 44 +++++++++++++++++++++-
- drivers/virt/geniezone/gzvm_vm.c        | 49 +++++++++++++++++++++++++
- include/linux/gzvm_drv.h                | 16 ++++++++
- include/uapi/linux/gzvm.h               |  2 +
- 6 files changed, 128 insertions(+), 4 deletions(-)
+ arch/arm64/geniezone/gzvm_arch_common.h |   2 +
+ arch/arm64/geniezone/vm.c               |  34 ++++++++
+ drivers/virt/geniezone/Makefile         |   3 +-
+ drivers/virt/geniezone/gzvm_mmu.c       | 108 +++++++++++++++++++++++
+ drivers/virt/geniezone/gzvm_vm.c        | 110 ++++++++++++++++++++++++
+ include/linux/gzvm_drv.h                |  44 ++++++++++
+ include/uapi/linux/gzvm.h               |  26 ++++++
+ 7 files changed, 326 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/virt/geniezone/gzvm_mmu.c
 
 diff --git a/arch/arm64/geniezone/gzvm_arch_common.h b/arch/arm64/geniezone/gzvm_arch_common.h
-index 11e2c8c4e618..6ab941f946a1 100644
+index 68cc6388f4cc..a0268adf3d8f 100644
 --- a/arch/arm64/geniezone/gzvm_arch_common.h
 +++ b/arch/arm64/geniezone/gzvm_arch_common.h
-@@ -25,6 +25,7 @@ enum {
- 	GZVM_FUNC_MEMREGION_PURPOSE = 15,
- 	GZVM_FUNC_SET_DTB_CONFIG = 16,
- 	GZVM_FUNC_MAP_GUEST = 17,
-+	GZVM_FUNC_MAP_GUEST_BLOCK = 18,
+@@ -11,6 +11,7 @@
+ enum {
+ 	GZVM_FUNC_CREATE_VM = 0,
+ 	GZVM_FUNC_DESTROY_VM = 1,
++	GZVM_FUNC_SET_MEMREGION = 4,
+ 	GZVM_FUNC_PROBE = 12,
  	NR_GZVM_FUNC,
  };
+@@ -23,6 +24,7 @@ enum {
  
-@@ -50,6 +51,7 @@ enum {
- #define MT_HVC_GZVM_MEMREGION_PURPOSE	GZVM_HCALL_ID(GZVM_FUNC_MEMREGION_PURPOSE)
- #define MT_HVC_GZVM_SET_DTB_CONFIG	GZVM_HCALL_ID(GZVM_FUNC_SET_DTB_CONFIG)
- #define MT_HVC_GZVM_MAP_GUEST		GZVM_HCALL_ID(GZVM_FUNC_MAP_GUEST)
-+#define MT_HVC_GZVM_MAP_GUEST_BLOCK	GZVM_HCALL_ID(GZVM_FUNC_MAP_GUEST_BLOCK)
+ #define MT_HVC_GZVM_CREATE_VM		GZVM_HCALL_ID(GZVM_FUNC_CREATE_VM)
+ #define MT_HVC_GZVM_DESTROY_VM		GZVM_HCALL_ID(GZVM_FUNC_DESTROY_VM)
++#define MT_HVC_GZVM_SET_MEMREGION	GZVM_HCALL_ID(GZVM_FUNC_SET_MEMREGION)
+ #define MT_HVC_GZVM_PROBE		GZVM_HCALL_ID(GZVM_FUNC_PROBE)
  
- #define GIC_V3_NR_LRS			16
- 
+ /**
 diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
-index efb61a01a789..73c173236580 100644
+index b9789e2384f6..c051dd6e590f 100644
 --- a/arch/arm64/geniezone/vm.c
 +++ b/arch/arm64/geniezone/vm.c
-@@ -318,10 +318,11 @@ static int gzvm_vm_ioctl_cap_pvm(struct gzvm *gzvm,
- 		fallthrough;
- 	case GZVM_CAP_PVM_SET_PROTECTED_VM:
- 		/*
--		 * To improve performance for protected VM, we have to populate VM's memory
--		 * before VM booting
-+		 * If the hypervisor doesn't support block-based demand paging, we
-+		 * populate memory in advance to improve performance for protected VM.
- 		 */
--		populate_mem_region(gzvm);
-+		if (gzvm->demand_page_gran == PAGE_SIZE)
-+			populate_mem_region(gzvm);
- 		ret = gzvm_vm_arch_enable_cap(gzvm, cap, &res);
- 		return ret;
- 	case GZVM_CAP_PVM_GET_PVMFW_SIZE:
-@@ -338,12 +339,16 @@ int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm,
- 				  struct gzvm_enable_cap *cap,
- 				  void __user *argp)
- {
-+	struct arm_smccc_res res = {0};
- 	int ret;
- 
- 	switch (cap->cap) {
- 	case GZVM_CAP_PROTECTED_VM:
- 		ret = gzvm_vm_ioctl_cap_pvm(gzvm, cap, argp);
- 		return ret;
-+	case GZVM_CAP_BLOCK_BASED_DEMAND_PAGING:
-+		ret = gzvm_vm_arch_enable_cap(gzvm, cap, &res);
-+		return ret;
- 	default:
- 		break;
- 	}
-@@ -384,3 +389,11 @@ int gzvm_arch_map_guest(u16 vm_id, int memslot_id, u64 pfn, u64 gfn,
- 	return gzvm_hypcall_wrapper(MT_HVC_GZVM_MAP_GUEST, vm_id, memslot_id,
- 				    pfn, gfn, nr_pages, 0, 0, &res);
- }
-+
-+int gzvm_arch_map_guest_block(u16 vm_id, int memslot_id, u64 gfn, u64 nr_pages)
-+{
-+	struct arm_smccc_res res;
-+
-+	return gzvm_hypcall_wrapper(MT_HVC_GZVM_MAP_GUEST_BLOCK, vm_id,
-+				    memslot_id, gfn, nr_pages, 0, 0, 0, &res);
-+}
-diff --git a/drivers/virt/geniezone/gzvm_mmu.c b/drivers/virt/geniezone/gzvm_mmu.c
-index 6e2da38a80fd..77104df4afe5 100644
---- a/drivers/virt/geniezone/gzvm_mmu.c
-+++ b/drivers/virt/geniezone/gzvm_mmu.c
-@@ -107,6 +107,45 @@ int gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64 gfn,
+@@ -42,6 +42,15 @@ int gzvm_arch_probe(void)
  	return 0;
  }
  
-+static int handle_block_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
++int gzvm_arch_set_memregion(u16 vm_id, size_t buf_size,
++			    phys_addr_t region)
 +{
-+	u64 pfn, __gfn;
-+	int ret, i;
++	struct arm_smccc_res res;
 +
-+	u32 nr_entries = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE / PAGE_SIZE;
-+	struct gzvm_memslot *memslot = &vm->memslot[memslot_id];
-+	u64 start_gfn = ALIGN_DOWN(gfn, nr_entries);
-+	u32 total_pages = memslot->npages;
-+	u64 base_gfn = memslot->base_gfn;
++	return gzvm_hypcall_wrapper(MT_HVC_GZVM_SET_MEMREGION, vm_id,
++				    buf_size, region, 0, 0, 0, 0, &res);
++}
 +
-+	/* if the demand region is less than a block, adjust the nr_entries */
-+	if (start_gfn + nr_entries > base_gfn + total_pages)
-+		nr_entries = base_gfn + total_pages - start_gfn;
+ /**
+  * gzvm_arch_create_vm() - create vm
+  * @vm_type: VM type. Only supports Linux VM now.
+@@ -67,3 +76,28 @@ int gzvm_arch_destroy_vm(u16 vm_id)
+ 	return gzvm_hypcall_wrapper(MT_HVC_GZVM_DESTROY_VM, vm_id, 0, 0, 0, 0,
+ 				    0, 0, &res);
+ }
 +
-+	mutex_lock(&vm->demand_paging_lock);
-+	for (i = 0, __gfn = start_gfn; i < nr_entries; i++, __gfn++) {
-+		ret = gzvm_gfn_to_pfn_memslot(&vm->memslot[memslot_id], __gfn,
-+					      &pfn);
-+		if (unlikely(ret)) {
-+			ret = -ERR_FAULT;
-+			goto err_unlock;
++/**
++ * gzvm_hva_to_pa_arch() - converts hva to pa with arch-specific way
++ * @hva: Host virtual address.
++ *
++ * Return: GZVM_PA_ERR_BAD for translation error
++ */
++u64 gzvm_hva_to_pa_arch(u64 hva)
++{
++	unsigned long flags;
++	u64 par;
++
++	local_irq_save(flags);
++	asm volatile("at s1e1r, %0" :: "r" (hva));
++	isb();
++	par = read_sysreg_par();
++	local_irq_restore(flags);
++
++	if (par & SYS_PAR_EL1_F)
++		return GZVM_PA_ERR_BAD;
++	par = par & PAR_PA47_MASK;
++	if (!par)
++		return GZVM_PA_ERR_BAD;
++	return par;
++}
+diff --git a/drivers/virt/geniezone/Makefile b/drivers/virt/geniezone/Makefile
+index 066efddc0b9c..43eba5cbbf4e 100644
+--- a/drivers/virt/geniezone/Makefile
++++ b/drivers/virt/geniezone/Makefile
+@@ -6,5 +6,6 @@
+ 
+ GZVM_DIR ?= ../../../drivers/virt/geniezone
+ 
+-gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_vm.o
++gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_mmu.o \
++	  $(GZVM_DIR)/gzvm_vm.o
+ 
+diff --git a/drivers/virt/geniezone/gzvm_mmu.c b/drivers/virt/geniezone/gzvm_mmu.c
+new file mode 100644
+index 000000000000..17d696992d2c
+--- /dev/null
++++ b/drivers/virt/geniezone/gzvm_mmu.c
+@@ -0,0 +1,108 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ */
++
++#include <linux/gzvm_drv.h>
++
++/**
++ * hva_to_pa_fast() - converts hva to pa in generic fast way
++ * @hva: Host virtual address.
++ *
++ * Return: GZVM_PA_ERR_BAD for translation error
++ */
++u64 hva_to_pa_fast(u64 hva)
++{
++	struct page *page[1];
++	u64 pfn;
++
++	if (get_user_page_fast_only(hva, 0, page)) {
++		pfn = page_to_phys(page[0]);
++		put_page((struct page *)page);
++		return pfn;
++	}
++	return GZVM_PA_ERR_BAD;
++}
++
++/**
++ * hva_to_pa_slow() - converts hva to pa in a slow way
++ * @hva: Host virtual address
++ *
++ * This function converts HVA to PA in a slow way because the target hva is not
++ * yet allocated and mapped in the host stage1 page table, we cannot find it
++ * directly from current page table.
++ * Thus, we have to allocate it and this operation is much slower than directly
++ * find via current page table.
++ *
++ * Context: This function may sleep
++ * Return: PA or GZVM_PA_ERR_BAD for translation error
++ */
++u64 hva_to_pa_slow(u64 hva)
++{
++	struct page *page = NULL;
++	u64 pfn = 0;
++	int npages;
++
++	npages = get_user_pages_unlocked(hva, 1, &page, 0);
++	if (npages != 1)
++		return GZVM_PA_ERR_BAD;
++
++	if (page) {
++		pfn = page_to_phys(page);
++		put_page(page);
++		return pfn;
++	}
++
++	return GZVM_PA_ERR_BAD;
++}
++
++static u64 __gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64 gfn)
++{
++	u64 hva, pa;
++
++	hva = gzvm_gfn_to_hva_memslot(memslot, gfn);
++
++	pa = gzvm_hva_to_pa_arch(hva);
++	if (pa != GZVM_PA_ERR_BAD)
++		return PHYS_PFN(pa);
++
++	pa = hva_to_pa_fast(hva);
++	if (pa != GZVM_PA_ERR_BAD)
++		return PHYS_PFN(pa);
++
++	pa = hva_to_pa_slow(hva);
++	if (pa != GZVM_PA_ERR_BAD)
++		return PHYS_PFN(pa);
++
++	return GZVM_PA_ERR_BAD;
++}
++
++/**
++ * gzvm_gfn_to_pfn_memslot() - Translate gfn (guest ipa) to pfn (host pa),
++ *			       result is in @pfn
++ * @memslot: Pointer to struct gzvm_memslot.
++ * @gfn: Guest frame number.
++ * @pfn: Host page frame number.
++ *
++ * Return:
++ * * 0			- Succeed
++ * * -EFAULT		- Failed to convert
++ */
++int gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64 gfn,
++			    u64 *pfn)
++{
++	u64 __pfn;
++
++	if (!memslot)
++		return -EFAULT;
++
++	__pfn = __gzvm_gfn_to_pfn_memslot(memslot, gfn);
++	if (__pfn == GZVM_PA_ERR_BAD) {
++		*pfn = 0;
++		return -EFAULT;
++	}
++
++	*pfn = __pfn;
++
++	return 0;
++}
+diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
+index d5e850af924a..326cc9e93d92 100644
+--- a/drivers/virt/geniezone/gzvm_vm.c
++++ b/drivers/virt/geniezone/gzvm_vm.c
+@@ -15,6 +15,115 @@
+ static DEFINE_MUTEX(gzvm_list_lock);
+ static LIST_HEAD(gzvm_list);
+ 
++u64 gzvm_gfn_to_hva_memslot(struct gzvm_memslot *memslot, u64 gfn)
++{
++	u64 offset = gfn - memslot->base_gfn;
++
++	return memslot->userspace_addr + offset * PAGE_SIZE;
++}
++
++/**
++ * register_memslot_addr_range() - Register memory region to GenieZone
++ * @gzvm: Pointer to struct gzvm
++ * @memslot: Pointer to struct gzvm_memslot
++ *
++ * Return: 0 for success, negative number for error
++ */
++static int
++register_memslot_addr_range(struct gzvm *gzvm, struct gzvm_memslot *memslot)
++{
++	struct gzvm_memory_region_ranges *region;
++	u32 buf_size = PAGE_SIZE * 2;
++	u64 gfn;
++
++	region = alloc_pages_exact(buf_size, GFP_KERNEL);
++	if (!region)
++		return -ENOMEM;
++
++	region->slot = memslot->slot_id;
++	region->total_pages = memslot->npages;
++	gfn = memslot->base_gfn;
++	region->gpa = PFN_PHYS(gfn);
++
++	if (gzvm_arch_set_memregion(gzvm->vm_id, buf_size,
++				    virt_to_phys(region))) {
++		pr_err("Failed to register memregion to hypervisor\n");
++		free_pages_exact(region, buf_size);
++		return -EFAULT;
++	}
++
++	free_pages_exact(region, buf_size);
++	return 0;
++}
++
++/**
++ * gzvm_vm_ioctl_set_memory_region() - Set memory region of guest
++ * @gzvm: Pointer to struct gzvm.
++ * @mem: Input memory region from user.
++ *
++ * Return: 0 for success, negative number for error
++ *
++ * -EXIO		- The memslot is out-of-range
++ * -EFAULT		- Cannot find corresponding vma
++ * -EINVAL		- Region size and VMA size mismatch
++ */
++static int
++gzvm_vm_ioctl_set_memory_region(struct gzvm *gzvm,
++				struct gzvm_userspace_memory_region *mem)
++{
++	struct vm_area_struct *vma;
++	struct gzvm_memslot *memslot;
++	unsigned long size;
++	__u32 slot;
++
++	slot = mem->slot;
++	if (slot >= GZVM_MAX_MEM_REGION)
++		return -ENXIO;
++	memslot = &gzvm->memslot[slot];
++
++	vma = vma_lookup(gzvm->mm, mem->userspace_addr);
++	if (!vma)
++		return -EFAULT;
++
++	size = vma->vm_end - vma->vm_start;
++	if (size != mem->memory_size)
++		return -EINVAL;
++
++	memslot->base_gfn = __phys_to_pfn(mem->guest_phys_addr);
++	memslot->npages = size >> PAGE_SHIFT;
++	memslot->userspace_addr = mem->userspace_addr;
++	memslot->vma = vma;
++	memslot->flags = mem->flags;
++	memslot->slot_id = mem->slot;
++	return register_memslot_addr_range(gzvm, memslot);
++}
++
++/* gzvm_vm_ioctl() - Ioctl handler of VM FD */
++static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
++			  unsigned long arg)
++{
++	long ret;
++	void __user *argp = (void __user *)arg;
++	struct gzvm *gzvm = filp->private_data;
++
++	switch (ioctl) {
++	case GZVM_SET_USER_MEMORY_REGION: {
++		struct gzvm_userspace_memory_region userspace_mem;
++
++		if (copy_from_user(&userspace_mem, argp, sizeof(userspace_mem))) {
++			ret = -EFAULT;
++			goto out;
 +		}
-+		vm->demand_page_buffer[i] = pfn;
++		ret = gzvm_vm_ioctl_set_memory_region(gzvm, &userspace_mem);
++		break;
 +	}
-+
-+	ret = gzvm_arch_map_guest_block(vm->vm_id, memslot_id, start_gfn,
-+					nr_entries);
-+	if (unlikely(ret)) {
-+		ret = -EFAULT;
-+		goto err_unlock;
++	default:
++		ret = -ENOTTY;
 +	}
-+
-+err_unlock:
-+	mutex_unlock(&vm->demand_paging_lock);
-+
++out:
 +	return ret;
 +}
 +
- static int handle_single_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
- {
- 	int ret;
-@@ -143,5 +182,8 @@ int gzvm_handle_page_fault(struct gzvm_vcpu *vcpu)
- 	if (unlikely(memslot_id < 0))
- 		return -EFAULT;
- 
--	return handle_single_demand_page(vm, memslot_id, gfn);
-+	if (vm->demand_page_gran == PAGE_SIZE)
-+		return handle_single_demand_page(vm, memslot_id, gfn);
-+	else
-+		return handle_block_demand_page(vm, memslot_id, gfn);
- }
-diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
-index 9f7e44521de5..485d1e2097aa 100644
---- a/drivers/virt/geniezone/gzvm_vm.c
-+++ b/drivers/virt/geniezone/gzvm_vm.c
-@@ -294,6 +294,8 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
- 
  static void gzvm_destroy_vm(struct gzvm *gzvm)
  {
-+	size_t allocated_size;
-+
  	pr_debug("VM-%u is going to be destroyed\n", gzvm->vm_id);
+@@ -42,6 +151,7 @@ static int gzvm_vm_release(struct inode *inode, struct file *filp)
  
- 	mutex_lock(&gzvm->lock);
-@@ -306,6 +308,11 @@ static void gzvm_destroy_vm(struct gzvm *gzvm)
- 	list_del(&gzvm->vm_list);
- 	mutex_unlock(&gzvm_list_lock);
- 
-+	if (gzvm->demand_page_buffer) {
-+		allocated_size = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE / PAGE_SIZE * sizeof(u64);
-+		free_pages_exact(gzvm->demand_page_buffer, allocated_size);
-+	}
-+
- 	mutex_unlock(&gzvm->lock);
- 
- 	kfree(gzvm);
-@@ -325,6 +332,46 @@ static const struct file_operations gzvm_vm_fops = {
+ static const struct file_operations gzvm_vm_fops = {
+ 	.release        = gzvm_vm_release,
++	.unlocked_ioctl = gzvm_vm_ioctl,
  	.llseek		= noop_llseek,
  };
  
-+/**
-+ * setup_vm_demand_paging - Query hypervisor suitable demand page size and set
-+ * @vm: gzvm instance for setting up demand page size
-+ *
-+ * Return: void
-+ */
-+static void setup_vm_demand_paging(struct gzvm *vm)
-+{
-+	u32 buf_size = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE / PAGE_SIZE * sizeof(u64);
-+	struct gzvm_enable_cap cap = {0};
-+	void *buffer;
-+	int ret;
-+
-+	mutex_init(&vm->demand_paging_lock);
-+	buffer = alloc_pages_exact(buf_size, GFP_KERNEL);
-+	if (!buffer) {
-+		/* Fall back to use default page size for demand paging */
-+		vm->demand_page_gran = PAGE_SIZE;
-+		vm->demand_page_buffer = NULL;
-+		return;
-+	}
-+
-+	cap.cap = GZVM_CAP_BLOCK_BASED_DEMAND_PAGING;
-+	cap.args[0] = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE;
-+	cap.args[1] = (__u64)virt_to_phys(buffer);
-+	/* demand_page_buffer is freed when destroy VM */
-+	vm->demand_page_buffer = buffer;
-+
-+	ret = gzvm_vm_ioctl_enable_cap(vm, &cap, NULL);
-+	if (ret == 0) {
-+		vm->demand_page_gran = GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE;
-+		/* freed when destroy vm */
-+		vm->demand_page_buffer = buffer;
-+	} else {
-+		vm->demand_page_gran = PAGE_SIZE;
-+		vm->demand_page_buffer = NULL;
-+		free_pages_exact(buffer, buf_size);
-+	}
-+}
-+
- static struct gzvm *gzvm_create_vm(unsigned long vm_type)
- {
- 	int ret;
-@@ -358,6 +405,8 @@ static struct gzvm *gzvm_create_vm(unsigned long vm_type)
- 		return ERR_PTR(ret);
- 	}
- 
-+	setup_vm_demand_paging(gzvm);
-+
- 	mutex_lock(&gzvm_list_lock);
- 	list_add(&gzvm->vm_list, &gzvm_list);
- 	mutex_unlock(&gzvm_list_lock);
 diff --git a/include/linux/gzvm_drv.h b/include/linux/gzvm_drv.h
-index b9e60fe5dcde..0a8b21e1ed1a 100644
+index f1dce23838e4..aa1eaf4d43b4 100644
 --- a/include/linux/gzvm_drv.h
 +++ b/include/linux/gzvm_drv.h
-@@ -44,6 +44,8 @@
+@@ -7,9 +7,16 @@
+ #define __GZVM_DRV_H__
  
- #define GZVM_VCPU_RUN_MAP_SIZE		(PAGE_SIZE * 2)
+ #include <linux/list.h>
++#include <linux/mm.h>
+ #include <linux/mutex.h>
+ #include <linux/gzvm.h>
  
-+#define GZVM_BLOCK_BASED_DEMAND_PAGE_SIZE	(2 * 1024 * 1024) /* 2MB */
++/*
++ * For the normal physical address, the highest 12 bits should be zero, so we
++ * can mask bit 62 ~ bit 52 to indicate the error physical address
++ */
++#define GZVM_PA_ERR_BAD (0x7ffULL << 52)
 +
- /* struct mem_region_addr_range - Identical to ffa memory constituent */
- struct mem_region_addr_range {
- 	/* the base IPA of the constituent memory region, aligned to 4 kiB */
-@@ -106,6 +108,19 @@ struct gzvm {
- 	struct srcu_struct irq_srcu;
- 	/* lock for irq injection */
- 	struct mutex irq_lock;
-+
-+	/*
-+	 * demand page granularity: how much memory we allocate for VM in a
-+	 * single page fault
-+	 */
-+	u32 demand_page_gran;
-+	/* the mailbox for transferring large portion pages */
-+	u64 *demand_page_buffer;
-+	/*
-+	 * lock for preventing multiple cpu using the same demand page mailbox
-+	 * at the same time
-+	 */
-+	struct mutex  demand_paging_lock;
- };
+ #define INVALID_VM_ID   0xffff
  
- long gzvm_dev_ioctl_check_extension(struct gzvm *gzvm, unsigned long args);
-@@ -126,6 +141,7 @@ int gzvm_arch_create_vm(unsigned long vm_type);
+ /*
+@@ -27,10 +34,39 @@
+  * The following data structures are for data transferring between driver and
+  * hypervisor, and they're aligned with hypervisor definitions
+  */
++#define GZVM_MAX_MEM_REGION	10
++
++/* struct mem_region_addr_range - Identical to ffa memory constituent */
++struct mem_region_addr_range {
++	/* the base IPA of the constituent memory region, aligned to 4 kiB */
++	__u64 address;
++	/* the number of 4 kiB pages in the constituent memory region. */
++	__u32 pg_cnt;
++	__u32 reserved;
++};
++
++struct gzvm_memory_region_ranges {
++	__u32 slot;
++	__u32 constituent_cnt;
++	__u64 total_pages;
++	__u64 gpa;
++	struct mem_region_addr_range constituents[];
++};
++
++/* struct gzvm_memslot - VM's memory slot descriptor */
++struct gzvm_memslot {
++	u64 base_gfn;			/* begin of guest page frame */
++	unsigned long npages;		/* number of pages this slot covers */
++	unsigned long userspace_addr;	/* corresponding userspace va */
++	struct vm_area_struct *vma;	/* vma related to this userspace addr */
++	u32 flags;
++	u32 slot_id;
++};
+ 
+ struct gzvm {
+ 	/* userspace tied to this vm */
+ 	struct mm_struct *mm;
++	struct gzvm_memslot memslot[GZVM_MAX_MEM_REGION];
+ 	/* lock for list_add*/
+ 	struct mutex lock;
+ 	struct list_head vm_list;
+@@ -45,7 +81,15 @@ void gzvm_destroy_all_vms(void);
+ 
+ /* arch-dependant functions */
+ int gzvm_arch_probe(void);
++int gzvm_arch_set_memregion(u16 vm_id, size_t buf_size,
++			    phys_addr_t region);
+ int gzvm_arch_create_vm(unsigned long vm_type);
  int gzvm_arch_destroy_vm(u16 vm_id);
- int gzvm_arch_map_guest(u16 vm_id, int memslot_id, u64 pfn, u64 gfn,
- 			u64 nr_pages);
-+int gzvm_arch_map_guest_block(u16 vm_id, int memslot_id, u64 gfn, u64 nr_pages);
- int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm,
- 				  struct gzvm_enable_cap *cap,
- 				  void __user *argp);
+ 
++u64 gzvm_hva_to_pa_arch(u64 hva);
++u64 hva_to_pa_fast(u64 hva);
++u64 hva_to_pa_slow(u64 hva);
++int gzvm_gfn_to_pfn_memslot(struct gzvm_memslot *memslot, u64 gfn, u64 *pfn);
++u64 gzvm_gfn_to_hva_memslot(struct gzvm_memslot *memslot, u64 gfn);
++
+ #endif /* __GZVM_DRV_H__ */
 diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
-index 1f134c55ac2a..f858b04bf7b9 100644
+index c26c7720fab7..d2d5e6cfc2c9 100644
 --- a/include/uapi/linux/gzvm.h
 +++ b/include/uapi/linux/gzvm.h
-@@ -18,6 +18,8 @@
+@@ -22,4 +22,30 @@
+ /* ioctls for /dev/gzvm fds */
+ #define GZVM_CREATE_VM             _IO(GZVM_IOC_MAGIC,   0x01) /* Returns a Geniezone VM fd */
  
- #define GZVM_CAP_VM_GPA_SIZE	0xa5
- #define GZVM_CAP_PROTECTED_VM	0xffbadab1
-+/* query hypervisor supported block-based demand page */
-+#define GZVM_CAP_BLOCK_BASED_DEMAND_PAGING	0x9201
- 
- /* sub-commands put in args[0] for GZVM_CAP_PROTECTED_VM */
- #define GZVM_CAP_PVM_SET_PVMFW_GPA		0
++/* ioctls for VM fds */
++/* for GZVM_SET_MEMORY_REGION */
++struct gzvm_memory_region {
++	__u32 slot;
++	__u32 flags;
++	__u64 guest_phys_addr;
++	__u64 memory_size; /* bytes */
++};
++
++#define GZVM_SET_MEMORY_REGION     _IOW(GZVM_IOC_MAGIC,  0x40, \
++					struct gzvm_memory_region)
++
++/* for GZVM_SET_USER_MEMORY_REGION */
++struct gzvm_userspace_memory_region {
++	__u32 slot;
++	__u32 flags;
++	__u64 guest_phys_addr;
++	/* bytes */
++	__u64 memory_size;
++	/* start of the userspace allocated memory */
++	__u64 userspace_addr;
++};
++
++#define GZVM_SET_USER_MEMORY_REGION _IOW(GZVM_IOC_MAGIC, 0x46, \
++					 struct gzvm_userspace_memory_region)
++
+ #endif /* __GZVM_H__ */
 -- 
 2.18.0
 
