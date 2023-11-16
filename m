@@ -4,85 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70833C5ACB3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 02:47:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D93AC072A2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Nov 2023 02:52:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=svtH6nB/hE04ntCGkIVPHKITT9cDPQUxSxeC2R+EmoI=; b=wLy+pKSpRWeIAPqTevY95arhd9
-	XiKHOwGXYweObJe+seKtAdTdswjDT5lMKMegSzvn+N65RxH59qTlykcZrE3Q7D52yRvzkwXc8Daum
-	GG5pCaXXrnwomWkVJTsMzBRJd5Qd01tUG05mE4Gcstq+qSDoFURcl8wOAWC6N3uMmVSVoCUiOyhIi
-	NZxPTT+FU7v4VBT0BZ+UK5IhjPuxUwdArtT9pkqYGraHN+PKVouxiyQcW8SoUNU8t6YYo2IpLa1/1
-	8UEXaVWHOgskbIh8i2/UFV89lBKSNg3McryAW86JsLJ6coODY7mVUczJIR94vsNZGGiWSts0ownxf
-	XL2zohow==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5aRkvCfZ5/Ryh8W2QZqJoEImQ16cBLBAJ0eonaFBJv8=; b=lCQ9H+KrUY9+M1jlhN0pnWNtpV
+	mSF3xEaq4KzhS1LNgvAnUmF16251IQndOspmhGSvpybgGkOj0cZH1iyUkXfQtx4LQFOTBfHTLb4Ff
+	gcZj40YLQ9qf5sT6TrWVw4EOjN1g7kzqPrfFyOJ/dtXtqaCadAkC5ZVjaTeu7W8r3KgZoE3DSr887
+	eDfGJLM/6SJFBHp4O3sYZHBWkOOU5SZxl/12+JnCUkjBp8TfNy7DqemoZK9n0DaRBN1wyaWpSCUl2
+	VU0CrunwKtBj+15TSq2W+J+urOIrzG34rD4IbCGv//iyZ76veGbAM/+i3ks95TTjTvZn3RJJJ4ppy
+	3h+2wU0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3SQ5-002Gc2-1J;
-	Thu, 16 Nov 2023 02:47:53 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1r3SUK-002GzS-14;
+	Thu, 16 Nov 2023 02:52:16 +0000
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3SQ2-002GbU-2P;
-	Thu, 16 Nov 2023 02:47:51 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-53fa455cd94so258353a12.2;
-        Wed, 15 Nov 2023 18:47:50 -0800 (PST)
+	id 1r3SUD-002GyW-08;
+	Thu, 16 Nov 2023 02:52:11 +0000
+Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2c83d37a492so3901011fa.3;
+        Wed, 15 Nov 2023 18:52:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700102870; x=1700707670; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=svtH6nB/hE04ntCGkIVPHKITT9cDPQUxSxeC2R+EmoI=;
-        b=i85pDsw6PoC1W6hBqOfqov03AjgUCVRVLOJ0VIDvz3N7CcFfvcm2ZFybiT5PlydvI5
-         4fcuxn6XFT+1JpRtmH+eXwWvD53IMX6JUkp+Nf6nikHqKWGR4UAe4C+OFL/6TnBDjjEr
-         4W92Y3f5UI7F8Vz3gdQjqvomct0nNxZAub2XXdYSYAsAD8c1M4oAkCO3b69Y64bxVl3D
-         EDfp2o6Cw9qjPpuat1amFQpJAEjFep1bCe/lJS7Wh0nu3EtOjsB/fiawmoNooIF62EKl
-         wDJxZVpTVEpZaJZNIXV1GmaBJAGdELZKdmZwIeIferQJl3s0kbxw8gm/UpElwD8x9dr7
-         3Lfw==
+        d=gmail.com; s=20230601; t=1700103124; x=1700707924; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5aRkvCfZ5/Ryh8W2QZqJoEImQ16cBLBAJ0eonaFBJv8=;
+        b=MquQM/T4dD+j6naOzuKCJRJONrWKP9mFqdmyVlhZ2xyGKhKwfIGl4TXho5lQI5+V8p
+         RcsE3CklX9rbxGcGP5YCDb5rrCErGTNKZPvEguU4+FxjGBFQsq9Q6ciYUALQbXOZQcVN
+         tTj6aORjiETmxNMve14npibH+GvvogR8CQzdg88vhMkgBhv2VYX03MhFYQEww7bkF+nm
+         W1rcvArYJMQbYUDjJxxH7i7/V5S1Rt3y4BVd6MMh5Bkzg6M5olPXRTHcW8LvDRr7YzcM
+         tDvKS+8ZlnI9vPA7FgUFxDaD9JfBFt5uBlR3GvCymQaK/MzByEqpwPGDny8JmOaMZGZI
+         VVkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700102870; x=1700707670;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=svtH6nB/hE04ntCGkIVPHKITT9cDPQUxSxeC2R+EmoI=;
-        b=d34y9qp4x/WBtcZpulHti5+qA8z+rTCoUADwwRTpQFHo3RMzVXrq73BAuiu+ccsRDe
-         X3i71nc9yWQtNwgKRVcPKnjzqA8z9gDHcjulG/0gPOe7B38vpvjDb6XvsAkqydRzq9si
-         OCLFlOV3qNoxRxV+C/InFa++q83SFGoNVv0uFtcehYCV5bymtcjofssxSzF1TsXCRYXV
-         s4xNllyK3fcUCYfgNnFqD6Qw1idc+K0O25eaFAghMCL2uUC6EUhFX7Ykd5lpIvEHRAu+
-         t5j1oWzPLTbReeZT9H1DZBvAHt/21ADKZrnlsOzT/sbeS86ah4Hv85gZR1LHU76Iydgb
-         Zgqg==
-X-Gm-Message-State: AOJu0YwXJJglLCRTabDhatj0z5D70aQMgHqVXCjbhmFUtgokNXvXEVnP
-	Ad3pLz2TzcwqUi9yfV+rJA==
-X-Google-Smtp-Source: AGHT+IEssF56ALfrxIW+LldFPLXmzOUjVkBq6g/rv6UutDoRD7Ok3nF5TdlACFBBJkX1ZxxnUmzhUg==
-X-Received: by 2002:a05:6a20:160d:b0:15d:624c:6e43 with SMTP id l13-20020a056a20160d00b0015d624c6e43mr15017621pzj.3.1700102870009;
-        Wed, 15 Nov 2023 18:47:50 -0800 (PST)
-Received: from localhost.localdomain (111-243-26-65.dynamic-ip.hinet.net. [111.243.26.65])
-        by smtp.gmail.com with ESMTPSA id x16-20020a170902ec9000b001cc2bc10510sm7962604plg.128.2023.11.15.18.47.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Nov 2023 18:47:49 -0800 (PST)
-From: Stanley Jhu <chu.stanley@gmail.com>
-To: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-scsi@vger.kernel.org,
-	jejb@linux.ibm.com,
-	martin.petersen@oracle.com,
-	alim.akhtar@samsung.com,
-	avri.altman@wdc.com,
-	bvanassche@acm.org,
-	peter.wang@gmail.com
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chu.stanley@gmail.com
-Subject: [PATCH v2] scsi: ufs: mediatek: Change the maintainer for MediaTek UFS hooks
-Date: Thu, 16 Nov 2023 10:47:44 +0800
-Message-Id: <20231116024744.10795-1-chu.stanley@gmail.com>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1700103124; x=1700707924;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5aRkvCfZ5/Ryh8W2QZqJoEImQ16cBLBAJ0eonaFBJv8=;
+        b=ctALdR6HEwuwsawW258bNBHjIDJoFgc1o15hVtU+JfFhpwvRoANFI+j0oElyMzV1wE
+         zB0eKrSOQzXrtM+Nvo5bJfXDZXuYHD+8MkHtsF0gu9pIasP8+uiqpTqBvBGXWUowWfg1
+         MtxvP5Rvi9xfcvn3oTiOXyME9WwElru2anOwbbLnIX5rJc0U9n7U1N4xAee05XeWlqeV
+         4seJ985S/w0NFrA5PvwPD45j3wJ9AQwLEj842DPaRkcLFvcLFRo8hnQ2EK9hubg5mAVU
+         I34/0wNkkHW79Xz0A33Q82G3AKgUG4BCKk8j+pRAIZfDC38dF9PEbUyykW3a3GFeLGai
+         6wRA==
+X-Gm-Message-State: AOJu0YwKZCPYGWQyNYQDY6fN4+33gDgs0bxWGaKUawI7XrgkZZXiV8ih
+	48nQSPLdYFGVaiGif/yR5f9cMuA1bOqoJeJMFw==
+X-Google-Smtp-Source: AGHT+IHY9DZHz+C0W6+qIRg8MLNxJHg85rsBn+iyyJOHU8KW6vrjOm5xBNFzETGp3qvt5P4HThGOgST3nkp9PuO9RE0=
+X-Received: by 2002:a2e:9246:0:b0:2c5:1f5f:ed96 with SMTP id
+ v6-20020a2e9246000000b002c51f5fed96mr5283168ljg.3.1700103124063; Wed, 15 Nov
+ 2023 18:52:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20231116020254.10590-1-chu.stanley@gmail.com> <663b4db6-6c8d-4948-80d0-a7bbf75a33b4@acm.org>
+In-Reply-To: <663b4db6-6c8d-4948-80d0-a7bbf75a33b4@acm.org>
+From: Stanley Chu <chu.stanley@gmail.com>
+Date: Thu, 16 Nov 2023 10:51:52 +0800
+Message-ID: <CAGaU9a_PHq+QDSfZu=nBqH1DS4Sjj-oy5178jURjn-owW0-TiQ@mail.gmail.com>
+Subject: Re: [PATCH] scsi: ufs: mediatek: Fix the maintainer for MediaTek UFS hooks
+To: Bart Van Assche <bvanassche@acm.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-scsi@vger.kernel.org, jejb@linux.ibm.com, martin.petersen@oracle.com, 
+	alim.akhtar@samsung.com, avri.altman@wdc.com, peter.wang@gmail.com, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_184750_809852_4995EEF3 
-X-CRM114-Status: GOOD (  10.47  )
+X-CRM114-CacheID: sfid-20231115_185209_101393_837DD6B0 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,33 +89,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the maintainer of MediaTek UFS hooks to Peter Wang.
-In the meantime, Stanley has been assigned as the reviewer.
+Hi Bart,
 
-The original maintainer, Stanley Chu, who can be reached at
-stanley.chu@mediatek.com, has left MediaTek,
-so please update the email address accordingly.
+I (Stanley) have left MediaTek, so the maintainer information needs to
+be updated.
 
-Signed-off-by: Stanley Jhu <chu.stanley@gmail.com>
----
- MAINTAINERS | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Given that MediaTek hooks are better maintained by MediaTek employees,
+Peter is willing to take the maintainer role in the future, and I
+would gladly take on the role of a Reviewer.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index be1cbc6c2059..4f6fb3357947 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -22102,7 +22102,8 @@ S:	Maintained
- F:	drivers/ufs/host/ufs-exynos*
- 
- UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER MEDIATEK HOOKS
--M:	Stanley Chu <stanley.chu@mediatek.com>
-+M:	Peter Wang <peter.wang@mediatek.com>
-+R:	Stanley Jhu <chu.stanley@gmail.com>
- L:	linux-scsi@vger.kernel.org
- L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
- S:	Maintained
--- 
-2.34.1
+I will create a new patch for this change, and Peter, could you please
+review it?
 
+Thanks.
+Stanley
+
+On Thu, Nov 16, 2023 at 10:33=E2=80=AFAM Bart Van Assche <bvanassche@acm.or=
+g> wrote:
+>
+> On 11/15/23 18:02, Stanley Jhu wrote:
+> > Fix the maintainer for MediaTek UFS hooks since the origianl
+> > email address is not available anymore.
+>
+> Why is the original email address no longer valid?
+>
+> How to verify that the old and the new email address are associated
+> with the same person?
+>
+> Thanks,
+>
+> Bart.
+>
 
