@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3387C197A0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 12:08:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59583C072A2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 12:55:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=npsjKK1E4mamKGL3cTGyWHJLzKqW6Cwvf80sD82f9kc=; b=4H/fNVN5TbnWqd2/eM2cXnIP7t
-	f7uc6sAVSu4gOOuYtLGDrZR89KJyPzgrfDrYMXZMyeKaYZqo7R4n1rxw9L0zCQcq2bTjIZLPV+Qb/
-	86c/o4FbDAQOu1Ktw47v/7zmnwmmM+blJkdYXfXohjC6OODi8XbIzGYp8VCQjqtaa6jReRinpebWD
-	uxMdBkEr14CJbcEw+m8T8Xo3QSLTAHckOAsNLUoDB1CrOnZusGL3iMrw54t2MIfHuJhiGD8EjqDLN
-	GGsGU97CV2VFsdZhQsWfAzplCPxjfZ5E5PxWco7/e4oHCmZn3Odqjbi8QzcROhCI5i4PXXCcbN45I
-	0heKvQOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xRuM7+uREsWw97r0WpzmzWvcBOL+63wfOGfZeXsZipM=; b=eeUv6bVHSE8NxqbhGExlfuTx9O
+	bT1WT5utK5MjBHpDuM8ZLCEhQxUJtdjOR8TzItpYIaC/UHLaUu1yCO1QM3KddxjmBFjqT5I4t3+2R
+	+4dX2ChsdXkqYVBR/YFKMaFSF9RK+QrYjh9ErgD2vet24AHMYjTPW/pgMCxmY1idQ8idbWh7ZKhsR
+	sVTpxti9GUyaBqe1Qzoh5i2d11gCbSmNFoltX/72XuTVC1lzbOrGVUgnFf6aa+N38ViFFELfsnWeu
+	chT3gS5G+rJPI7f9iUg7Lq/db8lMx6mKRBUoX+a9Vymv+iU1cQzgPk7UfFH309f4CUoeFK7/3ddbn
+	Yji9xbGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3xeb-006Vuy-1M;
-	Fri, 17 Nov 2023 12:08:57 +0000
-Received: from mx1.tq-group.com ([93.104.207.81])
+	id 1r3yNU-006aDD-0E;
+	Fri, 17 Nov 2023 12:55:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3xeX-006Vu0-2Z;
-	Fri, 17 Nov 2023 12:08:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1700222933; x=1731758933;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=npsjKK1E4mamKGL3cTGyWHJLzKqW6Cwvf80sD82f9kc=;
-  b=OYOgfcmcKajdamTj7A2V8trf3aq6cD8bj/bKduTHfZuSpbtP23yKwURW
-   bn4D5mmCZ/b5HXwvL/qNVrvO5k6VMrhbOx9fhIvfASiBu6kymmH+FSkO0
-   cUfeXMXnl8VdZxtgztmHQ6pRH45cGSdXgZy8Sq0QsZaT1Qd8AzKK3tK3C
-   XLwVjupdnqa4GtDnNch0Xronr1ORfFT6Y5pK6d3oWBPRZCd3pWEorvgO7
-   UJfYomT4ThV2RcW8vfFeQaU7QGmmF8nK9y8ultxHh6amXXTHPHnSbg6Dq
-   pm+4zy30RfGwtShK5/fyC2MxHJ8eLsexauc0Bzl8HHK5SUXS5V2wkcl8l
-   A==;
-X-IronPort-AV: E=Sophos;i="6.04,206,1695679200"; 
-   d="scan'208";a="34042550"
-Received: from vtuxmail01.tq-net.de ([10.115.0.20])
-  by mx1.tq-group.com with ESMTP; 17 Nov 2023 13:08:49 +0100
-Received: from steina-w.localnet (steina-w.tq-net.de [10.123.53.18])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 2F5EC28007F;
-	Fri, 17 Nov 2023 13:08:49 +0100 (CET)
-From: Alexander Stein <alexander.stein@ew.tq-group.com>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, =?ISO-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-mediatek@lists.infradead.org
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, Alexander Stein <alexander.stein@ew.tq-group.com>
-Subject: Re: [PATCH v4 2/6] ARM: dts: ti/omap: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
-Date: Fri, 17 Nov 2023 13:08:53 +0100
-Message-ID: <10373360.nUPlyArG6x@steina-w>
-Organization: TQ-Systems GmbH
-In-Reply-To: <20230724103914.1779027-3-alexander.stein@ew.tq-group.com>
-References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com> <20230724103914.1779027-3-alexander.stein@ew.tq-group.com>
+	id 1r3yNR-006aBh-2H
+	for linux-mediatek@lists.infradead.org;
+	Fri, 17 Nov 2023 12:55:19 +0000
+X-UUID: 8872ab82854811ee86758d4a7c00f3a0-20231117
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xRuM7+uREsWw97r0WpzmzWvcBOL+63wfOGfZeXsZipM=;
+	b=IhgeS2rpRA3YE6HhPDKig7xeuNh63W0TVcmu/WGKuHTwAP62zHxsZ4Nufpa2HRXbXanwKledcpWKgOP2Y3pekWfBS/m6n6+NIkeQIvYvSx+3ZbWMJHtacHa28gJis5s6S/Sf+RS1hDtQwad4CCOEtJ9SZ7WI/qIdS3R1HKli4Lo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:654c3041-546d-4ac7-98e0-19251c496f29,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:712fa7fc-4a48-46e2-b946-12f04f20af8c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 8872ab82854811ee86758d4a7c00f3a0-20231117
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 899774004; Fri, 17 Nov 2023 05:55:06 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 17 Nov 2023 20:55:04 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 17 Nov 2023 20:55:04 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
+	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Quan Zhou
+	<quan.zhou@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Wang Zhao
+	<wang.zhao@mediatek.com>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7921s: fix workqueue problem causes STA association fail
+Date: Fri, 17 Nov 2023 20:54:49 +0800
+Message-ID: <d5c157113bb248ee9494c97d4ac236c299fec3ff.1700223271.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_040854_132380_B6D0C82A 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20231117_045517_762027_9953B704 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,159 +89,174 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everybody,
+From: Wang Zhao <wang.zhao@mediatek.com>
 
-any feedback on this? Patch 3,4 and 6 have already been merged.
+The ieee80211_queue_work function queues work into the mac80211
+local->workqueue, which is widely used for mac80211 internal
+work processes. In the mt76 driver, both the mt76-sido-status and
+mt76-sdio-net threads enqueue workers to the workqueue with this
+function. However, in some cases, when two workers are enqueued
+to the workqueue almost simultaneously, the second worker may not
+be scheduled immediately and may get stuck for a while.
+This can cause timing issues. To avoid these timing
+conflicts caused by worker scheduling, replace the worker
+with an independent thread.
 
-Thanks
-Alexander
+Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
+Signed-off-by: Wang Zhao <wang.zhao@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76.h      |  3 +--
+ .../net/wireless/mediatek/mt76/mt7615/sdio.c   |  2 +-
+ .../net/wireless/mediatek/mt76/mt7921/sdio.c   |  4 +++-
+ .../wireless/mediatek/mt76/mt7921/sdio_mac.c   |  3 ++-
+ drivers/net/wireless/mediatek/mt76/sdio.c      | 18 +++++++++++-------
+ 5 files changed, 18 insertions(+), 12 deletions(-)
 
-Am Montag, 24. Juli 2023, 12:39:09 CET schrieb Alexander Stein:
-> Use id-gpios and vbus-gpios instead.
->=20
-> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> ---
->  arch/arm/boot/dts/ti/omap/am571x-idk.dts          | 4 ++--
->  arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts | 2 +-
->  arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi  | 4 ++--
->  arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi    | 4 ++--
->  arch/arm/boot/dts/ti/omap/dra71-evm.dts           | 4 ++--
->  arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi   | 4 ++--
->  arch/arm/boot/dts/ti/omap/dra76-evm.dts           | 4 ++--
->  7 files changed, 13 insertions(+), 13 deletions(-)
->=20
-> diff --git a/arch/arm/boot/dts/ti/omap/am571x-idk.dts
-> b/arch/arm/boot/dts/ti/omap/am571x-idk.dts index 48425020281a..322cf79d22=
-e9
-> 100644
-> --- a/arch/arm/boot/dts/ti/omap/am571x-idk.dts
-> +++ b/arch/arm/boot/dts/ti/omap/am571x-idk.dts
-> @@ -168,8 +168,8 @@ blue3-led {
->  };
->=20
->  &extcon_usb2 {
-> -	id-gpio =3D <&gpio5 7 GPIO_ACTIVE_HIGH>;
-> -	vbus-gpio =3D <&gpio7 22 GPIO_ACTIVE_HIGH>;
-> +	id-gpios =3D <&gpio5 7 GPIO_ACTIVE_HIGH>;
-> +	vbus-gpios =3D <&gpio7 22 GPIO_ACTIVE_HIGH>;
->  };
->=20
->  &sn65hvs882 {
-> diff --git a/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
-> b/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts index
-> 149cfafb90bf..c5272302eb11 100644
-> --- a/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
-> +++ b/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
-> @@ -197,7 +197,7 @@ brcmf_pwrseq: brcmf_pwrseq {
->  	extcon_usb1: extcon_usb1 {
->  		compatible =3D "linux,extcon-usb-gpio";
->  		ti,enable-id-detection;
-> -		id-gpio =3D <&gpio3 13 GPIO_ACTIVE_HIGH>;
-> +		id-gpios =3D <&gpio3 13 GPIO_ACTIVE_HIGH>;
->  	};
->  };
->=20
-> diff --git a/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
-> b/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi index
-> 1d66278c3a72..3fca84819dc0 100644
-> --- a/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
-> +++ b/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
-> @@ -169,8 +169,8 @@ blue3-led {
->  };
->=20
->  &extcon_usb2 {
-> -	id-gpio =3D <&gpio3 16 GPIO_ACTIVE_HIGH>;
-> -	vbus-gpio =3D <&gpio3 26 GPIO_ACTIVE_HIGH>;
-> +	id-gpios =3D <&gpio3 16 GPIO_ACTIVE_HIGH>;
-> +	vbus-gpios =3D <&gpio3 26 GPIO_ACTIVE_HIGH>;
->  };
->=20
->  &sn65hvs882 {
-> diff --git a/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
-> b/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi index
-> 4cdffd6db740..ed5199d7acd8 100644
-> --- a/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
-> +++ b/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
-> @@ -15,12 +15,12 @@ chosen {
->=20
->  	extcon_usb1: extcon_usb1 {
->  		compatible =3D "linux,extcon-usb-gpio";
-> -		id-gpio =3D <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
-> +		id-gpios =3D <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
->  	};
->=20
->  	extcon_usb2: extcon_usb2 {
->  		compatible =3D "linux,extcon-usb-gpio";
-> -		id-gpio =3D <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
-> +		id-gpios =3D <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
->  	};
->=20
->  	sound0: sound0 {
-> diff --git a/arch/arm/boot/dts/ti/omap/dra71-evm.dts
-> b/arch/arm/boot/dts/ti/omap/dra71-evm.dts index a64364443031..f747ac56eb92
-> 100644
-> --- a/arch/arm/boot/dts/ti/omap/dra71-evm.dts
-> +++ b/arch/arm/boot/dts/ti/omap/dra71-evm.dts
-> @@ -293,11 +293,11 @@ &hdmi {
->  };
->=20
->  &extcon_usb1 {
-> -	vbus-gpio =3D <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
-> +	vbus-gpios =3D <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
->  };
->=20
->  &extcon_usb2 {
-> -	vbus-gpio =3D <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
-> +	vbus-gpios =3D <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
->  };
->=20
->  &ipu2 {
-> diff --git a/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
-> b/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi index
-> 31ab0c60ca75..f8151c61488e 100644
-> --- a/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
-> +++ b/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
-> @@ -96,12 +96,12 @@ evm_3v3_sd: fixedregulator-sd {
->=20
->  	extcon_usb1: extcon_usb1 {
->  		compatible =3D "linux,extcon-usb-gpio";
-> -		id-gpio =3D <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
-> +		id-gpios =3D <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
->  	};
->=20
->  	extcon_usb2: extcon_usb2 {
->  		compatible =3D "linux,extcon-usb-gpio";
-> -		id-gpio =3D <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
-> +		id-gpios =3D <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
->  	};
->=20
->  	hdmi0: connector {
-> diff --git a/arch/arm/boot/dts/ti/omap/dra76-evm.dts
-> b/arch/arm/boot/dts/ti/omap/dra76-evm.dts index 57868ac60d29..cf9c3d35b049
-> 100644
-> --- a/arch/arm/boot/dts/ti/omap/dra76-evm.dts
-> +++ b/arch/arm/boot/dts/ti/omap/dra76-evm.dts
-> @@ -533,11 +533,11 @@ &pcie1_ep {
->  };
->=20
->  &extcon_usb1 {
-> -	vbus-gpio =3D <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
-> +	vbus-gpios =3D <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
->  };
->=20
->  &extcon_usb2 {
-> -	vbus-gpio =3D <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
-> +	vbus-gpios =3D <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
->  };
->=20
->  &m_can0 {
-
-
-=2D-=20
-TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
-Amtsgericht M=FCnchen, HRB 105018
-Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
-http://www.tq-group.com/
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index ea828ba0b83a..a17b2fbd693b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -575,8 +575,7 @@ struct mt76_sdio {
+ 	struct mt76_worker txrx_worker;
+ 	struct mt76_worker status_worker;
+ 	struct mt76_worker net_worker;
+-
+-	struct work_struct stat_work;
++	struct mt76_worker stat_worker;
+ 
+ 	u8 *xmit_buf;
+ 	u32 xmit_buf_sz;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+index fc547a0031ea..67cedd2555f9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+@@ -204,8 +204,8 @@ static int mt7663s_suspend(struct device *dev)
+ 	mt76_worker_disable(&mdev->mt76.sdio.txrx_worker);
+ 	mt76_worker_disable(&mdev->mt76.sdio.status_worker);
+ 	mt76_worker_disable(&mdev->mt76.sdio.net_worker);
++	mt76_worker_disable(&mdev->mt76.sdio.stat_worker);
+ 
+-	cancel_work_sync(&mdev->mt76.sdio.stat_work);
+ 	clear_bit(MT76_READING_STATS, &mdev->mphy.state);
+ 
+ 	mt76_tx_status_check(&mdev->mt76, true);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+index dc1beb76df3e..7591e54d2897 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+@@ -228,7 +228,7 @@ static int mt7921s_suspend(struct device *__dev)
+ 	mt76_txq_schedule_all(&dev->mphy);
+ 	mt76_worker_disable(&mdev->tx_worker);
+ 	mt76_worker_disable(&mdev->sdio.status_worker);
+-	cancel_work_sync(&mdev->sdio.stat_work);
++	mt76_worker_disable(&mdev->sdio.stat_worker);
+ 	clear_bit(MT76_READING_STATS, &dev->mphy.state);
+ 	mt76_tx_status_check(mdev, true);
+ 
+@@ -260,6 +260,7 @@ static int mt7921s_suspend(struct device *__dev)
+ restore_worker:
+ 	mt76_worker_enable(&mdev->tx_worker);
+ 	mt76_worker_enable(&mdev->sdio.status_worker);
++	mt76_worker_enable(&mdev->sdio.stat_worker);
+ 
+ 	if (!pm->ds_enable)
+ 		mt76_connac_mcu_set_deep_sleep(mdev, false);
+@@ -292,6 +293,7 @@ static int mt7921s_resume(struct device *__dev)
+ 	mt76_worker_enable(&mdev->sdio.txrx_worker);
+ 	mt76_worker_enable(&mdev->sdio.status_worker);
+ 	mt76_worker_enable(&mdev->sdio.net_worker);
++	mt76_worker_enable(&mdev->sdio.stat_worker);
+ 
+ 	/* restore previous ds setting */
+ 	if (!pm->ds_enable)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+index 8edd0291c128..389eb0903807 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+@@ -107,7 +107,7 @@ int mt7921s_mac_reset(struct mt792x_dev *dev)
+ 	mt76_worker_disable(&dev->mt76.sdio.txrx_worker);
+ 	mt76_worker_disable(&dev->mt76.sdio.status_worker);
+ 	mt76_worker_disable(&dev->mt76.sdio.net_worker);
+-	cancel_work_sync(&dev->mt76.sdio.stat_work);
++	mt76_worker_disable(&dev->mt76.sdio.stat_worker);
+ 
+ 	mt7921s_disable_irq(&dev->mt76);
+ 	mt7921s_wfsys_reset(dev);
+@@ -115,6 +115,7 @@ int mt7921s_mac_reset(struct mt792x_dev *dev)
+ 	mt76_worker_enable(&dev->mt76.sdio.txrx_worker);
+ 	mt76_worker_enable(&dev->mt76.sdio.status_worker);
+ 	mt76_worker_enable(&dev->mt76.sdio.net_worker);
++	mt76_worker_enable(&dev->mt76.sdio.stat_worker);
+ 
+ 	dev->fw_assert = false;
+ 	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
+index 419723118ded..c52d550f0c32 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio.c
+@@ -481,21 +481,21 @@ static void mt76s_status_worker(struct mt76_worker *w)
+ 		if (dev->drv->tx_status_data && ndata_frames > 0 &&
+ 		    !test_and_set_bit(MT76_READING_STATS, &dev->phy.state) &&
+ 		    !test_bit(MT76_STATE_SUSPEND, &dev->phy.state))
+-			ieee80211_queue_work(dev->hw, &dev->sdio.stat_work);
++			mt76_worker_schedule(&sdio->stat_worker);
+ 	} while (nframes > 0);
+ 
+ 	if (resched)
+ 		mt76_worker_schedule(&dev->tx_worker);
+ }
+ 
+-static void mt76s_tx_status_data(struct work_struct *work)
++static void mt76s_tx_status_data(struct mt76_worker *worker)
+ {
+ 	struct mt76_sdio *sdio;
+ 	struct mt76_dev *dev;
+ 	u8 update = 1;
+ 	u16 count = 0;
+ 
+-	sdio = container_of(work, struct mt76_sdio, stat_work);
++	sdio = container_of(worker, struct mt76_sdio, stat_worker);
+ 	dev = container_of(sdio, struct mt76_dev, sdio);
+ 
+ 	while (true) {
+@@ -508,7 +508,7 @@ static void mt76s_tx_status_data(struct work_struct *work)
+ 	}
+ 
+ 	if (count && test_bit(MT76_STATE_RUNNING, &dev->phy.state))
+-		ieee80211_queue_work(dev->hw, &sdio->stat_work);
++		mt76_worker_schedule(&sdio->status_worker);
+ 	else
+ 		clear_bit(MT76_READING_STATS, &dev->phy.state);
+ }
+@@ -600,8 +600,8 @@ void mt76s_deinit(struct mt76_dev *dev)
+ 	mt76_worker_teardown(&sdio->txrx_worker);
+ 	mt76_worker_teardown(&sdio->status_worker);
+ 	mt76_worker_teardown(&sdio->net_worker);
++	mt76_worker_teardown(&sdio->stat_worker);
+ 
+-	cancel_work_sync(&sdio->stat_work);
+ 	clear_bit(MT76_READING_STATS, &dev->phy.state);
+ 
+ 	mt76_tx_status_check(dev, true);
+@@ -644,10 +644,14 @@ int mt76s_init(struct mt76_dev *dev, struct sdio_func *func,
+ 	if (err)
+ 		return err;
+ 
++	err = mt76_worker_setup(dev->hw, &sdio->stat_worker, mt76s_tx_status_data,
++				"sdio-sta");
++	if (err)
++		return err;
++
+ 	sched_set_fifo_low(sdio->status_worker.task);
+ 	sched_set_fifo_low(sdio->net_worker.task);
+-
+-	INIT_WORK(&sdio->stat_work, mt76s_tx_status_data);
++	sched_set_fifo_low(sdio->stat_worker.task);
+ 
+ 	dev->queue_ops = &sdio_queue_ops;
+ 	dev->bus = bus_ops;
+-- 
+2.18.0
 
 
