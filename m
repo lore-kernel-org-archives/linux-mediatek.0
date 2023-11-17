@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 663D4C197A0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 05:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B53C54FB9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 05:40:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DDgzt+TD+lJqTGXiX5OtoLjS5NStrm3zvY+st4jUBtc=; b=dpzPjMkB1hbkXkRTLh66b633Un
-	Ski0fbHkaDfCNi8llGa2uD7VJkQKvGc96olnvUWipsgZ3BttvyFI7CfruRsvzG+B2Si27m1VXEGUp
-	97fOMlJhurIOl+VAqnxZatZbimlou6zK7oYJ4yQxvMqzQNSuuveN95yh4c2S3sZwEFFMbUru1Riib
-	QdwcNn2addp2/6LEkWBDnj8iF8yAyzYR3q+El5PjzmFWAoaM/9URd5KciBJy12hDUi9wXM+xaZVKD
-	URFZ5hwBbBFdNDISIjLpIXNf++cM5CEL9iw3i0LfrvL28xAvAi8HmbMm7dChkWMSKCRXeaRGouaa0
-	/ARj+BEg==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SakHYGlnJTkESNc4jc3OYlJVVY65U2yDXuFC27guwwE=; b=keIHnDpF4n+wi7RWnkI+Tinl+g
+	miH6LCcOnu9/uvqGCtDgw0TkM4T98lhVtuywZdIY/CWE8eLwYAk8wfKUN2fOxiFRnIiFYig68d7j3
+	EajZYnfY/OeoAzirF6AnBpNjA6i72uUpy/H2PP1x/YzkV3JCGTIUOVb3MSYJlojuiH+K54rLwdKoA
+	q8xdu02h0uYVFc4SGmg3y2Xeg5pKyDmj52qZ9vWv+iuJcDtWe3UoG/BRsYeIu5Yp+R9yAwtNOBORp
+	vYrvoRW1Y2mJYl44lI5kJIxlr2xgF5v5FGVHSwcOsTpoQw8oKSbVRLPDrjn3VPD369Jc+0dnATm8V
+	ZGfi3S/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3rar-005h34-11;
-	Fri, 17 Nov 2023 05:40:41 +0000
+	id 1r3ras-005h3d-0X;
+	Fri, 17 Nov 2023 05:40:42 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3rao-005h26-2V;
-	Fri, 17 Nov 2023 05:40:39 +0000
-X-UUID: d3b3526e850b11ee86758d4a7c00f3a0-20231116
+	id 1r3rao-005h21-2V;
+	Fri, 17 Nov 2023 05:40:40 +0000
+X-UUID: d26a007e850b11ee86758d4a7c00f3a0-20231116
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=DDgzt+TD+lJqTGXiX5OtoLjS5NStrm3zvY+st4jUBtc=;
-	b=WRtQUuyz+BQJvRXj/jgVKOh5nEAFt3XMix/IUZXC5a0hOG2kjZAYTYt0whvwJENpa0gbzUSkzTRWi7rAltmpXI/xRo2WnrhYRTI88yiTDXkCB8jUlzA2pjc1flWyoHCNlIbyuF0izlGuwbEj7RahStpst4miEmnkTxC38UCyKe8=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SakHYGlnJTkESNc4jc3OYlJVVY65U2yDXuFC27guwwE=;
+	b=sFf5faKY5f7AlBZoZs9ccrUWkzp4ak9bbZDOz7n6e1tIYBjIMxpGCwOkj3tyEm/Po1pvlRXKhGNWMrQZdafvmI64R7v/2BEUMvuQ+rFXRqasJJtpKauqKVhXKTKQbLRmAZOZ9j4OjYskdSRgcFOHB6u/4N8QLBFuAaormWi2CPs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:d963336e-4470-4918-b1e4-0e35a706e053,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:0f5e2a60-c89d-4129-91cb-8ebfae4653fc,B
+X-CID-O-INFO: VERSION:1.1.33,REQID:42ecea56-e1c1-48e6-9b15-f294669f047d,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:364b77b,CLOUDID:987f7f95-10ce-4e4b-85c2-c9b5229ff92b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d3b3526e850b11ee86758d4a7c00f3a0-20231116
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: d26a007e850b11ee86758d4a7c00f3a0-20231116
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <yu-chang.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 229750358; Thu, 16 Nov 2023 22:40:33 -0700
+	with ESMTP id 1358667071; Thu, 16 Nov 2023 22:40:31 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 17 Nov 2023 13:39:56 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,19 +64,16 @@ CC: Garmin Chang <garmin.chang@mediatek.com>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "yu-chang . lee"
 	<yu-chang.lee@mediatek.com>
-Subject: [PATCH v3 2/2] dt-bindings: arm: mediatek: mmsys: Add VPPSYS compatible for MT8188
-Date: Fri, 17 Nov 2023 13:39:34 +0800
-Message-ID: <20231117053934.10571-3-yu-chang.lee@mediatek.com>
+Subject: [PATCH v3 0/2] Migrate MT8188 VPPSYS 0/1 to mtk-mmsys driver
+Date: Fri, 17 Nov 2023 13:39:32 +0800
+Message-ID: <20231117053934.10571-1-yu-chang.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231117053934.10571-1-yu-chang.lee@mediatek.com>
-References: <20231117053934.10571-1-yu-chang.lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_214038_819159_EEB1596E 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231116_214038_819016_302D9637 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,28 +88,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For MT8188, VPPSYS0 and VPPSYS1 are 2 display pipes with
-hardware differences in power domains, clocks and subsystem counts,
-which should be determined by compatible names.
+Changes in v3:
+- Separate binding patch from driver patch
 
-Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
----
+Changes in v2:
+- Refine commit message
+- Refine commit title
+
+Hi,
+
+The purpose of series is to separate MT8188 VPPSYS-related binding patch
+from the original mailing list mentioned below:
+https://lore.kernel.org/all/20231116080129.20617-1-yu-chang.lee@mediatek.com/
+
+These binding files reflect VPPSYS' dependency on mtk-mmsys for mediatek
+MT8188 platform.
+
+
+yu-chang.lee (2):
+  dt-bindings: clock: mediatek: Remove compatible for MT8188 VPPSYS
+  dt-bindings: arm: mediatek: mmsys: Add VPPSYS compatible for MT8188
+
  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 2 ++
- 1 file changed, 2 insertions(+)
+ .../devicetree/bindings/clock/mediatek,mt8188-clock.yaml        | 2 --
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-index 536f5a5ebd24..50324248b965 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-@@ -32,6 +32,8 @@ properties:
-               - mediatek,mt8183-mmsys
-               - mediatek,mt8186-mmsys
-               - mediatek,mt8188-vdosys0
-+              - mediatek,mt8188-vppsys0
-+              - mediatek,mt8188-vppsys1
-               - mediatek,mt8192-mmsys
-               - mediatek,mt8195-vdosys1
-               - mediatek,mt8195-vppsys0
 -- 
 2.18.0
 
