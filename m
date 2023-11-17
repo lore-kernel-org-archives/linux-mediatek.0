@@ -4,93 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 583FBC072A2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 10:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3387C197A0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 12:08:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ooyyIQaGZItx+Y3pw2HUlw3rSDVkRA/8pscwi3jOIoE=; b=2wzb3+AVWnkqQOL048mnEZVy+H
-	mj6NRO4JjA00GL26UCYnmiK+v5qi61bf+Ct74ZO1ESbcfrzL0x3VlxuAMBFZBW/7rfv8gSmjeau6M
-	DZMy9piL3xIR64/MCL7or+sPg2pRZOtlPxg8Zyt3YMJA4qkwXqgUI54F1HLJyg47uUbL08rkDFQXj
-	RCcGDR9Og0aHyIFK9sunhlCIbgAELsBku4vZFc8i0+M5l7afXXmPreflSZCjQijrM4Dr/3d1hinQA
-	PAQ4bi3YH/mAQOw6oi2hLTTj+MXRiWpO3VQ97sCy84v5MFTLVAYXnS0NTZ+nLPx/vOpNm1IytYyVv
-	M/31Imhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=npsjKK1E4mamKGL3cTGyWHJLzKqW6Cwvf80sD82f9kc=; b=4H/fNVN5TbnWqd2/eM2cXnIP7t
+	f7uc6sAVSu4gOOuYtLGDrZR89KJyPzgrfDrYMXZMyeKaYZqo7R4n1rxw9L0zCQcq2bTjIZLPV+Qb/
+	86c/o4FbDAQOu1Ktw47v/7zmnwmmM+blJkdYXfXohjC6OODi8XbIzGYp8VCQjqtaa6jReRinpebWD
+	uxMdBkEr14CJbcEw+m8T8Xo3QSLTAHckOAsNLUoDB1CrOnZusGL3iMrw54t2MIfHuJhiGD8EjqDLN
+	GGsGU97CV2VFsdZhQsWfAzplCPxjfZ5E5PxWco7/e4oHCmZn3Odqjbi8QzcROhCI5i4PXXCcbN45I
+	0heKvQOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3wK7-006FME-0X;
-	Fri, 17 Nov 2023 10:43:43 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1r3xeb-006Vuy-1M;
+	Fri, 17 Nov 2023 12:08:57 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3wK3-006FJw-1X;
-	Fri, 17 Nov 2023 10:43:40 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-991c786369cso261376266b.1;
-        Fri, 17 Nov 2023 02:43:38 -0800 (PST)
+	id 1r3xeX-006Vu0-2Z;
+	Fri, 17 Nov 2023 12:08:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700217817; x=1700822617; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ooyyIQaGZItx+Y3pw2HUlw3rSDVkRA/8pscwi3jOIoE=;
-        b=DJJ2x3raMohzz5j6flecAJP060McbH91B8Ep3zDj/Wx2NYgkhHr2q4jucQHRpnP+TY
-         T1PrKWJxrq0fVDPRFaE/NvoezGElWbotBhLxLoPEmQlrBQBm0ZbgPkBfdfQ/zhZJrLYt
-         RyNaYn1wYsxcr3/tZXL1MCaQ8x9aQKQE4zzAMwv0l6e38LpERB54dqMBlJ3AyFIgDxGH
-         6JsEUaA0KcSpu+hMxMJnsRtTPHDkZAGCtcdFqzf6cgtyw/oxFc5wMx89o2JL5P0FTjqM
-         Gn3iLzGYtvJxUK08aTkcMxz2lmzvP7ZWSpBMs5/Stf9Lz23VXGzN4xVQmseCSWCYvrqi
-         5NXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700217817; x=1700822617;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ooyyIQaGZItx+Y3pw2HUlw3rSDVkRA/8pscwi3jOIoE=;
-        b=uhPoN8mr6bm9iIDOjSuvq/Rxi6zLR0a2wWfAZVvsGjj4xlZOC9T5/o8AWWa8cjCcxN
-         EYC4ohAnm3M3AgyYflrjkUSP/5/6DfcQbtmyt6zFKdQlwwZLu2FFxjAt8JDSSCRRMzLD
-         LWJ8igW/9fByJA/C9iUorTpwtRWpLwwOM4NkAv1jfuIYcQ8Cg/Yjm0VRkmLfdP/JNLHW
-         gTQuLfQbZ1ZDKKtBKywI5GJAFlj7dUCFONZFMyPgbY6C5awq97ujWrOsMUEjUAsBTVD9
-         IlGQ8dGdkm8V2dHFC+CqnXAWHdb2Duip+Ti0OWlv6z0zXMYsfjH32LbWU1O0H/xXwHka
-         Hccg==
-X-Gm-Message-State: AOJu0YzAq/yYGAyNVLVAk7hOpg8Uyfb0t32AjgC9UAoNK4VaeFQ8iv0C
-	3V/hl2Shy8sW2k13Gb5rW6c=
-X-Google-Smtp-Source: AGHT+IFHNNABckS4KZdexH6557tc1JVgzknlX/ePyIGNS7laFQlQXPkQDUkig7L5NjgSksWUF8wzKg==
-X-Received: by 2002:a17:906:4c47:b0:9e5:ceb5:ada6 with SMTP id d7-20020a1709064c4700b009e5ceb5ada6mr4357932ejw.75.1700217816975;
-        Fri, 17 Nov 2023 02:43:36 -0800 (PST)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id q6-20020a1709066b0600b009dd701bb916sm637388ejr.213.2023.11.17.02.43.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Nov 2023 02:43:36 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 3/3] arm64: dts: mediatek: Add Acelink EW-7886CAX
-Date: Fri, 17 Nov 2023 11:43:15 +0100
-Message-Id: <20231117104315.9718-3-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20231117104315.9718-2-zajec5@gmail.com>
-References: <20231117104315.9718-2-zajec5@gmail.com>
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1700222933; x=1731758933;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=npsjKK1E4mamKGL3cTGyWHJLzKqW6Cwvf80sD82f9kc=;
+  b=OYOgfcmcKajdamTj7A2V8trf3aq6cD8bj/bKduTHfZuSpbtP23yKwURW
+   bn4D5mmCZ/b5HXwvL/qNVrvO5k6VMrhbOx9fhIvfASiBu6kymmH+FSkO0
+   cUfeXMXnl8VdZxtgztmHQ6pRH45cGSdXgZy8Sq0QsZaT1Qd8AzKK3tK3C
+   XLwVjupdnqa4GtDnNch0Xronr1ORfFT6Y5pK6d3oWBPRZCd3pWEorvgO7
+   UJfYomT4ThV2RcW8vfFeQaU7QGmmF8nK9y8ultxHh6amXXTHPHnSbg6Dq
+   pm+4zy30RfGwtShK5/fyC2MxHJ8eLsexauc0Bzl8HHK5SUXS5V2wkcl8l
+   A==;
+X-IronPort-AV: E=Sophos;i="6.04,206,1695679200"; 
+   d="scan'208";a="34042550"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+  by mx1.tq-group.com with ESMTP; 17 Nov 2023 13:08:49 +0100
+Received: from steina-w.localnet (steina-w.tq-net.de [10.123.53.18])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 2F5EC28007F;
+	Fri, 17 Nov 2023 13:08:49 +0100 (CET)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, =?ISO-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-mediatek@lists.infradead.org
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, Alexander Stein <alexander.stein@ew.tq-group.com>
+Subject: Re: [PATCH v4 2/6] ARM: dts: ti/omap: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
+Date: Fri, 17 Nov 2023 13:08:53 +0100
+Message-ID: <10373360.nUPlyArG6x@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <20230724103914.1779027-3-alexander.stein@ew.tq-group.com>
+References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com> <20230724103914.1779027-3-alexander.stein@ew.tq-group.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_024339_513483_C36DBC7F 
-X-CRM114-Status: GOOD (  15.17  )
+X-CRM114-CacheID: sfid-20231117_040854_132380_B6D0C82A 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,213 +78,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+Hi everybody,
 
-Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
-It has 512 MiB of RAM, one 2.5 Gbps PoE (802.3at) Ethernet port and
-on-SoC Wi-Fi.
+any feedback on this? Patch 3,4 and 6 have already been merged.
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- arch/arm64/boot/dts/mediatek/Makefile         |   1 +
- .../mediatek/mt7986a-acelink-ew-7886cax.dts   | 175 ++++++++++++++++++
- 2 files changed, 176 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+Thanks
+Alexander
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index e6e7592a3645..9ff2ab6c5e4d 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
-new file mode 100644
-index 000000000000..18d19281dfdb
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
-@@ -0,0 +1,175 @@
-+// SPDX-License-Identifier: GPL-2.0-only OR MIT
-+
-+/dts-v1/;
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/leds/common.h>
-+
-+#include "mt7986a.dtsi"
-+
-+/ {
-+	model = "Acelink EW-7886CAX";
-+	compatible = "acelink,ew-7886cax", "mediatek,mt7986a";
-+
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:115200n8";
-+	};
-+
-+	memory@40000000 {
-+		reg = <0 0x40000000 0 0x20000000>;
-+		device_type = "memory";
-+	};
-+
-+	keys {
-+		compatible = "gpio-keys";
-+
-+		key-restart {
-+			label = "Reset";
-+			gpios = <&pio 7 GPIO_ACTIVE_LOW>;
-+			linux,code = <KEY_RESTART>;
-+		};
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		led-0 {
-+			function = LED_FUNCTION_STATUS;
-+			color = <LED_COLOR_ID_RED>;
-+			gpios = <&pio 18 GPIO_ACTIVE_HIGH>;
-+		};
-+
-+		led-1 {
-+			function = LED_FUNCTION_STATUS;
-+			color = <LED_COLOR_ID_GREEN>;
-+			gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
-+		};
-+
-+		led-2 {
-+			function = LED_FUNCTION_STATUS;
-+			color = <LED_COLOR_ID_BLUE>;
-+			gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
-+		};
-+	};
-+};
-+
-+&watchdog {
-+	status = "okay";
-+};
-+
-+&trng {
-+	status = "okay";
-+};
-+
-+&crypto {
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-+&spi0 {
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "spi-nand";
-+		reg = <0>;
-+		spi-max-frequency = <52000000>;
-+		spi-tx-bus-width = <4>;
-+		spi-rx-bus-width = <4>;
-+
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+
-+		partitions: partitions {
-+			compatible = "fixed-partitions";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+
-+			partition@0 {
-+				label = "bootloader";
-+				reg = <0x0 0x100000>;
-+				read-only;
-+			};
-+
-+			partition@100000 {
-+				label = "u-boot-env";
-+				reg = <0x100000 0x80000>;
-+			};
-+
-+			factory: partition@180000 {
-+				label = "factory";
-+				reg = <0x180000 0x200000>;
-+				read-only;
-+				compatible = "nvmem-cells";
-+
-+				nvmem-layout {
-+					compatible = "fixed-layout";
-+					#address-cells = <1>;
-+					#size-cells = <1>;
-+
-+					eeprom: eeprom@0 {
-+						reg = <0x0 0x1000>;
-+					};
-+
-+					macaddr: macaddr@4 {
-+						reg = <0x4 0x6>;
-+					};
-+				};
-+			};
-+
-+			partition@380000 {
-+				label = "fip";
-+				reg = <0x380000 0x200000>;
-+			};
-+
-+			partition@580000 {
-+				label = "ubi";
-+				reg = <0x580000 0x4000000>;
-+			};
-+		};
-+	};
-+};
-+
-+&pcie_phy {
-+	status = "okay";
-+};
-+
-+&eth {
-+	status = "okay";
-+
-+	mac@1 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <1>;
-+		phy-mode = "2500base-x";
-+		phy-handle = <&phy6>;
-+		nvmem-cells = <&macaddr>;
-+		nvmem-cell-names = "mac-address";
-+	};
-+
-+	mdio-bus {
-+		reset-gpios = <&pio 6 GPIO_ACTIVE_LOW>;
-+		reset-delay-us = <50000>;
-+		reset-post-delay-us = <20000>;
-+
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		phy6: phy@6 {
-+			compatible = "ethernet-phy-ieee802.3-c45";
-+			reg = <6>;
-+		};
-+	};
-+};
-+
-+&wifi {
-+	status = "okay";
-+	nvmem-cells = <&eeprom>;
-+	nvmem-cell-names = "eeprom";
-+};
-+
--- 
-2.35.3
+Am Montag, 24. Juli 2023, 12:39:09 CET schrieb Alexander Stein:
+> Use id-gpios and vbus-gpios instead.
+>=20
+> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> ---
+>  arch/arm/boot/dts/ti/omap/am571x-idk.dts          | 4 ++--
+>  arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts | 2 +-
+>  arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi  | 4 ++--
+>  arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi    | 4 ++--
+>  arch/arm/boot/dts/ti/omap/dra71-evm.dts           | 4 ++--
+>  arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi   | 4 ++--
+>  arch/arm/boot/dts/ti/omap/dra76-evm.dts           | 4 ++--
+>  7 files changed, 13 insertions(+), 13 deletions(-)
+>=20
+> diff --git a/arch/arm/boot/dts/ti/omap/am571x-idk.dts
+> b/arch/arm/boot/dts/ti/omap/am571x-idk.dts index 48425020281a..322cf79d22=
+e9
+> 100644
+> --- a/arch/arm/boot/dts/ti/omap/am571x-idk.dts
+> +++ b/arch/arm/boot/dts/ti/omap/am571x-idk.dts
+> @@ -168,8 +168,8 @@ blue3-led {
+>  };
+>=20
+>  &extcon_usb2 {
+> -	id-gpio =3D <&gpio5 7 GPIO_ACTIVE_HIGH>;
+> -	vbus-gpio =3D <&gpio7 22 GPIO_ACTIVE_HIGH>;
+> +	id-gpios =3D <&gpio5 7 GPIO_ACTIVE_HIGH>;
+> +	vbus-gpios =3D <&gpio7 22 GPIO_ACTIVE_HIGH>;
+>  };
+>=20
+>  &sn65hvs882 {
+> diff --git a/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
+> b/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts index
+> 149cfafb90bf..c5272302eb11 100644
+> --- a/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
+> +++ b/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
+> @@ -197,7 +197,7 @@ brcmf_pwrseq: brcmf_pwrseq {
+>  	extcon_usb1: extcon_usb1 {
+>  		compatible =3D "linux,extcon-usb-gpio";
+>  		ti,enable-id-detection;
+> -		id-gpio =3D <&gpio3 13 GPIO_ACTIVE_HIGH>;
+> +		id-gpios =3D <&gpio3 13 GPIO_ACTIVE_HIGH>;
+>  	};
+>  };
+>=20
+> diff --git a/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
+> b/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi index
+> 1d66278c3a72..3fca84819dc0 100644
+> --- a/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
+> +++ b/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
+> @@ -169,8 +169,8 @@ blue3-led {
+>  };
+>=20
+>  &extcon_usb2 {
+> -	id-gpio =3D <&gpio3 16 GPIO_ACTIVE_HIGH>;
+> -	vbus-gpio =3D <&gpio3 26 GPIO_ACTIVE_HIGH>;
+> +	id-gpios =3D <&gpio3 16 GPIO_ACTIVE_HIGH>;
+> +	vbus-gpios =3D <&gpio3 26 GPIO_ACTIVE_HIGH>;
+>  };
+>=20
+>  &sn65hvs882 {
+> diff --git a/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
+> b/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi index
+> 4cdffd6db740..ed5199d7acd8 100644
+> --- a/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
+> +++ b/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
+> @@ -15,12 +15,12 @@ chosen {
+>=20
+>  	extcon_usb1: extcon_usb1 {
+>  		compatible =3D "linux,extcon-usb-gpio";
+> -		id-gpio =3D <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
+> +		id-gpios =3D <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
+>  	};
+>=20
+>  	extcon_usb2: extcon_usb2 {
+>  		compatible =3D "linux,extcon-usb-gpio";
+> -		id-gpio =3D <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
+> +		id-gpios =3D <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
+>  	};
+>=20
+>  	sound0: sound0 {
+> diff --git a/arch/arm/boot/dts/ti/omap/dra71-evm.dts
+> b/arch/arm/boot/dts/ti/omap/dra71-evm.dts index a64364443031..f747ac56eb92
+> 100644
+> --- a/arch/arm/boot/dts/ti/omap/dra71-evm.dts
+> +++ b/arch/arm/boot/dts/ti/omap/dra71-evm.dts
+> @@ -293,11 +293,11 @@ &hdmi {
+>  };
+>=20
+>  &extcon_usb1 {
+> -	vbus-gpio =3D <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
+> +	vbus-gpios =3D <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
+>  };
+>=20
+>  &extcon_usb2 {
+> -	vbus-gpio =3D <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
+> +	vbus-gpios =3D <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
+>  };
+>=20
+>  &ipu2 {
+> diff --git a/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
+> b/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi index
+> 31ab0c60ca75..f8151c61488e 100644
+> --- a/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
+> +++ b/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
+> @@ -96,12 +96,12 @@ evm_3v3_sd: fixedregulator-sd {
+>=20
+>  	extcon_usb1: extcon_usb1 {
+>  		compatible =3D "linux,extcon-usb-gpio";
+> -		id-gpio =3D <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
+> +		id-gpios =3D <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
+>  	};
+>=20
+>  	extcon_usb2: extcon_usb2 {
+>  		compatible =3D "linux,extcon-usb-gpio";
+> -		id-gpio =3D <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
+> +		id-gpios =3D <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
+>  	};
+>=20
+>  	hdmi0: connector {
+> diff --git a/arch/arm/boot/dts/ti/omap/dra76-evm.dts
+> b/arch/arm/boot/dts/ti/omap/dra76-evm.dts index 57868ac60d29..cf9c3d35b049
+> 100644
+> --- a/arch/arm/boot/dts/ti/omap/dra76-evm.dts
+> +++ b/arch/arm/boot/dts/ti/omap/dra76-evm.dts
+> @@ -533,11 +533,11 @@ &pcie1_ep {
+>  };
+>=20
+>  &extcon_usb1 {
+> -	vbus-gpio =3D <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
+> +	vbus-gpios =3D <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
+>  };
+>=20
+>  &extcon_usb2 {
+> -	vbus-gpio =3D <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
+> +	vbus-gpios =3D <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
+>  };
+>=20
+>  &m_can0 {
+
+
+=2D-=20
+TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+Amtsgericht M=FCnchen, HRB 105018
+Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+http://www.tq-group.com/
+
 
 
