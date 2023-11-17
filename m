@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA0FC5AE4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 09:43:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0863C197A0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 09:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sq9G32K6TtoLD+AvzTy4qXTHDqDo8A0lDQFf/DMBYSM=; b=QVN0TaeI8svkMvxNozzrfkAQO4
-	ChOLDVjv7GXu8aV+1YizYgfCNt3qcmJ8AIrQWVYtT3oHkZhdVvyVGpnrJKi/TVcsPjVmEnA+/vFc/
-	UJuZ6TuWeAdUzEmaYu62FRmd1bIuKHh5LVTjcrftBwhWANO8ETyjLWfLnTEydeJXB/0KHeR8xR3H1
-	3CIGghCx0SCQR1Zjt32KY5nGnbh6BFOXxXdT28w8Wc01TSlY5/QhQktiGjXsoFtuUJXLMnToNXUQ8
-	IEVo9roHTSHu6sDIwcHnx5/ziQT7tFIeYr+RJvGAtn1d6QRo7VaCCLtDPov9gsSu8lOg6j4xcjZql
-	DaQ6Z38A==;
+	bh=G4CiWflMa0UUyp9NbGyD/T0A000MhIAnhks0L2DnG2Q=; b=DwbC4r7vvEUTC0srQBGVoyVZm5
+	oyIi1TMTXP9EIYNjP0awlzeYsFKvXlBFLLgLDpTTiBgMFCr2tkRP+NF4U8IfyTg5092fP6awrzuH7
+	lnbWm/B9UJ5KS294iyEWH9RRX+DX0LLtJX5zFXF7Wb+3ZL5eyRkGt/6B5ff3QB3jQ2+EQFe95xWk4
+	4oHI09P+e56DcUhF5bdGc+rwV+mGYvHimdyajFA0Tqcu5AXS69raf5IqVvN/rBXm11RgJ10UA6igT
+	AFR8ndxRE+IR318Y09cqMKCYq451S0Vw8ICMnbq7odVp9ekAeIOpSvsJZPyNoHVazTMI7dGYBvs8Q
+	OBlyZEXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3vNS-0067FC-1y;
-	Fri, 17 Nov 2023 09:43:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r3vNW-0067IJ-2K;
+	Fri, 17 Nov 2023 09:43:10 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3vN3-0066re-0d;
-	Fri, 17 Nov 2023 09:42:42 +0000
+	id 1r3vN3-0066s6-36;
+	Fri, 17 Nov 2023 09:42:43 +0000
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EE1636607392;
-	Fri, 17 Nov 2023 09:42:38 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0208E6607391;
+	Fri, 17 Nov 2023 09:42:39 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700214159;
-	bh=HjqA+sAHeyELuvvhdsMlpINGaociXjYFjdm6q68a7V8=;
+	s=mail; t=1700214160;
+	bh=rbMxFG/9Z/MvXIMSXdH+Z5ELUWvpXJ2G/c2LivRCtOk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=QB2DhMohU9aUoMVpp1jgKL7000YNibLkZki0bLfFnrK44cENycT3czeG5A7IYvMCJ
-	 29wWlwwY5JpqVbbu4oUpRcYd3GF7q07/ttSK5mezW5H9RhM1FuTod/1QJD7dgn77ro
-	 n30Eehv3Kb5ok3Avp+KXvV9jwMcQMO+9+OMK/X5J7Ku/CXKQIkJRzbO8qXTCnZx5Pm
-	 QixvEOKgsOyn8J2lOoN7yKgvdrO9YLj0H5dVZ/L/weAkxQFby/tWFrih+s/7ovGhWX
-	 Mc4JHQp4YlalMqJk0yWwPBQmuzgDeuBexJITVPb0xDbrWUEwB1VVd8gYBUfsEJUIE3
-	 itu85EOByiuIw==
+	b=eVFWoUzOXZr4H+juAJEoPTf4ZGB08ZSPMBuwTFuZ+A5pSu3MCGKtR+lh2o9UbzqjG
+	 a8ydzzyYQpuwzB8i8M4s2PtpMdABFXM+ptN5nqKz2HbFeD3GbOvgHabVKcmP4+dFxF
+	 npCKp02xfgZ9uzohc9u6+sfpxjjeN1g1mKEXhAa64E23TNVsT0wHBpPxnw0AFVoSGH
+	 e2oqjfOz4Bwct8apmMbpm2VCVNj6qPE6NZg4iA4APOGVx+NTUkz/nq6Ug/sjyETVQg
+	 4oGJ8DX8FUQXU9jCXOg88lUiefu/DVibLyI9+YBtjg4wdL3OqMWa2GyAoJosSoFwWb
+	 /iFC7xYMQFSTg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -56,18 +56,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v1 05/20] soc: mediatek: mtk-svs: Reduce memory footprint of struct svs_bank
-Date: Fri, 17 Nov 2023 10:42:13 +0100
-Message-ID: <20231117094228.40013-6-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 06/20] soc: mediatek: mtk-svs: Change the thermal sensor device name
+Date: Fri, 17 Nov 2023 10:42:14 +0100
+Message-ID: <20231117094228.40013-7-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231117094228.40013-1-angelogioacchino.delregno@collabora.com>
 References: <20231117094228.40013-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_014241_379791_2BA14C6B 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231117_014242_137247_6B3C3C4A 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,113 +81,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Many 32-bit members of this struct can be size reduced to either 16-bit
-or even 8-bit, for a total saving of ~61 bytes per bank. Keeping in mind
-that one SoC declares at least two banks, this brings a minimum of ~122
-bytes saving (depending on compiler optimization).
+This driver tries to create a device link to the thermal sensor device:
+change all instances of "lvts" and "thermal" to "thermal-sensor", as
+that's what the devicetree node name must be.
+
+Note for MT8183: As specified in a previous commit, this SoC never got
+SVS probing, so this is not a breaking change and it does not require
+fallback for older device trees.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 51 +++++++++++++++++-----------------
- 1 file changed, 26 insertions(+), 25 deletions(-)
+ drivers/soc/mediatek/mtk-svs.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 1c7592fd6ae7..6c27fb523bfa 100644
+index 6c27fb523bfa..b5beb33c95ba 100644
 --- a/drivers/soc/mediatek/mtk-svs.c
 +++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -456,13 +456,13 @@ struct svs_bank {
- 	char *buck_name;
- 	char *tzone_name;
- 	enum svsb_phase phase;
--	s32 volt_od;
-+	short int volt_od;
- 	u32 reg_data[SVSB_PHASE_MAX][SVS_REG_MAX];
- 	u32 pm_runtime_enabled_count;
--	u32 mode_support;
-+	u8 mode_support;
- 	u32 freq_base;
- 	u32 turn_freq_base;
--	u32 vboot;
-+	u8 vboot;
- 	u32 opp_dfreq[MAX_OPP_ENTRIES];
- 	u32 opp_dvolt[MAX_OPP_ENTRIES];
- 	u32 freq_pct[MAX_OPP_ENTRIES];
-@@ -470,36 +470,36 @@ struct svs_bank {
- 	u32 volt_step;
- 	u32 volt_base;
- 	u32 volt_flags;
--	u32 vmax;
--	u32 vmin;
-+	u8 vmax;
-+	u8 vmin;
- 	u32 age_config;
--	u32 age_voffset_in;
-+	u16 age_voffset_in;
- 	u32 dc_config;
--	u32 dc_voffset_in;
--	u32 dvt_fixed;
--	u32 vco;
--	u32 chk_shift;
-+	u16 dc_voffset_in;
-+	u8 dvt_fixed;
-+	u8 vco;
-+	u8 chk_shift;
- 	u32 core_sel;
--	u32 opp_count;
-+	u8 opp_count;
- 	u32 int_st;
--	u32 sw_id;
--	u32 cpu_id;
-+	u8 sw_id;
-+	u8 cpu_id;
- 	u32 ctl0;
- 	u32 temp;
- 	u32 tzone_htemp;
--	u32 tzone_htemp_voffset;
-+	u16 tzone_htemp_voffset;
- 	u32 tzone_ltemp;
--	u32 tzone_ltemp_voffset;
--	u32 bts;
--	u32 mts;
--	u32 bdes;
--	u32 mdes;
--	u32 mtdes;
--	u32 dcbdet;
--	u32 dcmdet;
-+	u16 tzone_ltemp_voffset;
-+	u16 bts;
-+	u16 mts;
-+	u16 bdes;
-+	u16 mdes;
-+	u8 mtdes;
-+	u8 dcbdet;
-+	u8 dcmdet;
- 	u32 turn_pt;
- 	u32 vbin_turn_pt;
--	u32 type;
-+	u8 type;
- };
+@@ -2329,7 +2329,7 @@ static int svs_mt8192_platform_probe(struct svs_platform *svsp)
+ 		return dev_err_probe(svsp->dev, PTR_ERR(svsp->rst),
+ 				     "cannot get svs reset control\n");
  
- static u32 percent(u32 numerator, u32 denominator)
-@@ -1267,6 +1267,7 @@ static inline void svs_error_isr_handler(struct svs_platform *svsp)
- static inline void svs_init01_isr_handler(struct svs_platform *svsp)
- {
- 	struct svs_bank *svsb = svsp->pbank;
-+	u32 val;
+-	dev = svs_add_device_link(svsp, "lvts");
++	dev = svs_add_device_link(svsp, "thermal-sensor");
+ 	if (IS_ERR(dev))
+ 		return dev_err_probe(svsp->dev, PTR_ERR(dev),
+ 				     "failed to get lvts device\n");
+@@ -2362,7 +2362,7 @@ static int svs_mt8186_platform_probe(struct svs_platform *svsp)
+ 		return dev_err_probe(svsp->dev, PTR_ERR(svsp->rst),
+ 				     "cannot get svs reset control\n");
  
- 	dev_info(svsb->dev, "%s: VDN74~30:0x%08x~0x%08x, DC:0x%08x\n",
- 		 __func__, svs_readl_relaxed(svsp, VDESIGN74),
-@@ -1276,8 +1277,8 @@ static inline void svs_init01_isr_handler(struct svs_platform *svsp)
- 	svs_save_bank_register_data(svsp, SVSB_PHASE_INIT01);
+-	dev = svs_add_device_link(svsp, "lvts");
++	dev = svs_add_device_link(svsp, "thermal-sensor");
+ 	if (IS_ERR(dev))
+ 		return dev_err_probe(svsp->dev, PTR_ERR(dev),
+ 				     "failed to get lvts device\n");
+@@ -2401,7 +2401,7 @@ static int svs_mt8183_platform_probe(struct svs_platform *svsp)
+ 	struct svs_bank *svsb;
+ 	u32 idx;
  
- 	svsb->phase = SVSB_PHASE_INIT01;
--	svsb->dc_voffset_in = ~(svs_readl_relaxed(svsp, DCVALUES) &
--				GENMASK(15, 0)) + 1;
-+	val = ~(svs_readl_relaxed(svsp, DCVALUES) & GENMASK(15, 0)) + 1;
-+	svsb->dc_voffset_in = val & GENMASK(15, 0);
- 	if (svsb->volt_flags & SVSB_INIT01_VOLT_IGNORE ||
- 	    (svsb->dc_voffset_in & SVSB_DC_SIGNED_BIT &&
- 	     svsb->volt_flags & SVSB_INIT01_VOLT_INC_ONLY))
+-	dev = svs_add_device_link(svsp, "thermal");
++	dev = svs_add_device_link(svsp, "thermal-sensor");
+ 	if (IS_ERR(dev))
+ 		return dev_err_probe(svsp->dev, PTR_ERR(dev),
+ 				     "failed to get thermal device\n");
 -- 
 2.42.0
 
