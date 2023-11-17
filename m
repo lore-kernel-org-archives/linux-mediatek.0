@@ -4,62 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A82FC47071
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 16:10:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03B8CC072A2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Nov 2023 19:21:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bJEiGYREljVyOaGa88GkHhzgz4uIfrM9S8X8Hjvo1Ck=; b=pgeBotwG5ZXGz+nw36nHqRwJWC
-	4tca/J0/e0bSCECNRjRV3dO/K3dFO1HtInorWvohIHc90G6oZqxP5QBTBHIQQozYODwaGnCiRkfGz
-	BIBoFv2wx0OaTTUKexIWrOD48BFnRYwkuVbJYKjRYG/3Ug9ZTDP7z9yRmNasFWNnaGzUcrNDlxJPC
-	ajV5X5A/nG+xzhFuGEA+twFOEQ4Jh+YuoWr3fvPw2v6RBqV98EEJ4iuZWSgrTOxfjiDbWutokczPU
-	QlYHMlqGW79+5hcfehHx5Y+ahRlvdk3ft+wxiujyGYJ+oBYExZR9APD/m+IcWyVvAKMGVlDhKgasu
-	PT5LQiIA==;
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3wuFKWVFLm9P7KP8/AaH1JyhNUeZqMPJiUq2z4EDK84=; b=rMXE3bCHZ3ZMkKq38sm81Y4mJ4
+	2iYLnWdHGzmsVJM1WTP/PwexHXAHluSiyNN7UMLyhHjFyKQUjsmr5uUb/WQN0GePkGuEb3QbpMUYu
+	LuACkqzOmDsJDE1F+/fMG/sTnyoTGcqv/S9wVR7yYSDPQYdToRaRFeHjPL52NAAGi3sUVkBX2Ews1
+	JGx5CCihpGKvAALUtI7iYI0gF3gwfg5CT7Whm4SxDkplL6UcUsuSgQDA5l7cF1Rvc/dHxbtcXLc7o
+	SVuF29e8PPP97RqNPSHxHdZ9LJWL/wudkP6sqaUynTtU4O1lx+TuVrDyAaxpwJVLlc96geRMm/j91
+	8RvcQHDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r41Pq-006tb7-2x;
-	Fri, 17 Nov 2023 16:09:58 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r44PY-0079L6-1D;
+	Fri, 17 Nov 2023 19:21:52 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r41Pn-006taQ-1C;
-	Fri, 17 Nov 2023 16:09:56 +0000
-Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A8F966607391;
-	Fri, 17 Nov 2023 16:09:50 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700237391;
-	bh=Ycelbx5JSmV5iz5PlGjQ6zsV56RiWxLVmAdDb6E+JqA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=noF239htLY3Rc7NKTiCfgwk8Q2Qg/BvlDLF9eysEFV/nMDq3Y1aexudlP9w6a2xZK
-	 XUCzH0hyhixMR3AUMfDWVCMLwDKMlCTTkj3QJ52/0gasDX+ZXAr3U8WaHhNuQF1HqS
-	 e6OC9411fbUzvBRdXys7VPqcxXv9kPD76JsPDNjZbq7qT7n0Sl+/oK5ZrRROjov1oG
-	 coJrDZGHTD6tJIz4Wy26Hab73UQfyo84Rjt3BuT5wWSAfjtu9rYSlVrwrZS6Cm6FRS
-	 3Ie2UO+6cF3cuvWwEGNDj2UyyCiTGOV5E5dK/eTTqijOHHKOpt3RB1aynwAWroPsIL
-	 qmbPx989f6u6g==
-From: Eugen Hristev <eugen.hristev@collabora.com>
-To: linux-sound@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	angelogioacchino.delregno@collabora.com,
-	kernel@collabora.com,
-	Eugen Hristev <eugen.hristev@collabora.com>
-Subject: [PATCH] ASoC: mediatek: mt8186: trivial: align code
-Date: Fri, 17 Nov 2023 18:09:14 +0200
-Message-Id: <20231117160914.65341-1-eugen.hristev@collabora.com>
-X-Mailer: git-send-email 2.34.1
+	id 1r44PU-0079Jk-2i;
+	Fri, 17 Nov 2023 19:21:50 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AHIrH0V007660;
+	Fri, 17 Nov 2023 19:21:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=3wuFKWVFLm9P7KP8/AaH1JyhNUeZqMPJiUq2z4EDK84=;
+ b=L70VDsJrEQflJUmQ15z3br2XOOsww/KBcW6k1T9/NZbxWYJ96FspdmNeKzYQN2ergpah
+ 2XIKNaU119W2v4bAX+P9GXPN0ynirFp5/u8r04QISdOhXL01gaT8tH2x/xmdb78/AjxD
+ tXkuau02uP75QJKLdLYHJXAc3WWucDdZXoO00WKYQfDMgSW9PBvflqt0vuAHS6oTrDPo
+ dUeUs+fWQMn2iziih+UnvUtJAKLyWiyBLov38z5RSs4pr6ZTSLu5iduwNLvWOtEltnvq
+ om9svsPUwaaN4E2nYsSH6HCHJouojky6YlXDOo5vcAFMGO7nxpZXlWOSYDBQ9mTlxu03 RQ== 
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3udw46t7a8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 17 Nov 2023 19:21:32 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3AHJLVqx032377
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 17 Nov 2023 19:21:31 GMT
+Received: from [10.110.1.143] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Fri, 17 Nov
+ 2023 11:21:30 -0800
+Message-ID: <079728bb-546d-4b51-a226-2533485730e4@quicinc.com>
+Date: Fri, 17 Nov 2023 11:21:30 -0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH wifi-next 6/6] wifi: mt76: Convert to platform remove
+ callback returning void
+Content-Language: en-US
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+        Kalle
+ Valo <kvalo@kernel.org>
+CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+        Ryder
+ Lee <ryder.lee@mediatek.com>,
+        Shayne Chen <shayne.chen@mediatek.com>,
+        Sean
+ Wang <sean.wang@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Simon
+ Horman <horms@kernel.org>, Rob Herring <robh@kernel.org>,
+        Wang Yufen
+	<wangyufen@huawei.com>,
+        Peter Chiu <chui-hao.chiu@mediatek.com>,
+        Alexander
+ Couzens <lynxis@fe80.eu>,
+        Jinjie Ruan <ruanjinjie@huawei.com>, <linux-wireless@vger.kernel.org>,
+        <kernel@pengutronix.de>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>
+References: <20231117093056.873834-8-u.kleine-koenig@pengutronix.de>
+ <20231117093056.873834-14-u.kleine-koenig@pengutronix.de>
+From: Jeff Johnson <quic_jjohnson@quicinc.com>
+In-Reply-To: <20231117093056.873834-14-u.kleine-koenig@pengutronix.de>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: b5erGLyUgFUq73iPBw0CFjYC9OzpuazG
+X-Proofpoint-ORIG-GUID: b5erGLyUgFUq73iPBw0CFjYC9OzpuazG
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-17_18,2023-11-17_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501 mlxscore=0
+ clxscore=1011 phishscore=0 mlxlogscore=999 suspectscore=0 bulkscore=0
+ adultscore=0 spamscore=0 malwarescore=0 lowpriorityscore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2311060000
+ definitions=main-2311170146
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_080955_607772_611584C7 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20231117_112148_910568_972C068B 
+X-CRM114-Status: GOOD (  16.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,57 +116,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No functionality change, squash some lines and align parameters for
-function prototypes to 80 chars.
-
-Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
----
- sound/soc/mediatek/mt8186/mt8186-afe-control.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-control.c b/sound/soc/mediatek/mt8186/mt8186-afe-control.c
-index 55edf6374578..dda648c1e8f8 100644
---- a/sound/soc/mediatek/mt8186/mt8186-afe-control.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-control.c
-@@ -181,7 +181,8 @@ static unsigned int pcm_rate_transform(struct device *dev, unsigned int rate)
- 	return MTK_AFE_PCM_RATE_48K;
- }
- 
--unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev, unsigned int rate)
-+unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev,
-+					       unsigned int rate)
- {
- 	switch (rate) {
- 	case 8000:
-@@ -222,7 +223,8 @@ unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev, unsigned int
- 	return MTK_AFE_TDM_RELATCH_RATE_48K;
- }
- 
--unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate, int aud_blk)
-+unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate,
-+				   int aud_blk)
- {
- 	switch (aud_blk) {
- 	case MT8186_DAI_PCM:
-@@ -234,14 +236,13 @@ unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate, int au
- 	}
- }
- 
--int mt8186_dai_set_priv(struct mtk_base_afe *afe, int id, int priv_size, const void *priv_data)
-+int mt8186_dai_set_priv(struct mtk_base_afe *afe, int id, int priv_size,
-+			const void *priv_data)
- {
- 	struct mt8186_afe_private *afe_priv = afe->platform_priv;
- 	void *temp_data;
- 
--	temp_data = devm_kzalloc(afe->dev,
--				 priv_size,
--				 GFP_KERNEL);
-+	temp_data = devm_kzalloc(afe->dev, priv_size, GFP_KERNEL);
- 	if (!temp_data)
- 		return -ENOMEM;
- 
--- 
-2.34.1
+On 11/17/2023 1:31 AM, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is ignored (apart
+> from emitting a warning) and this typically results in resource leaks.
+> 
+> To improve here there is a quest to make the remove callback return
+> void. In the first step of this quest all drivers are converted to
+> .remove_new(), which already returns void. Eventually after all drivers
+> are converted, .remove_new() will be renamed to .remove().
+> 
+> Trivially convert the three mt76 drivers from always returning zero in
+> the remove callback to the void returning variant.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+not my driver but since it is trivial
+Reviewed-by: Jeff Johnson <quic_jjohnson@quicinc.com>
 
 
