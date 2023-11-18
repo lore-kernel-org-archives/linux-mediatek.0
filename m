@@ -4,65 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BEB6C2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Nov 2023 14:42:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E156AC5ACB3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Nov 2023 17:42:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BWif9T1uf7HThDO5AN5Tn13q/oRG7kK3WKpLPyN52rk=; b=jC2VjWeuD3XmvRPLND3qIy7iJv
-	6lOm03FfTRbXz8N0PHEVjM8nf9IyCvzE57wmKHKH/gcUG4HHucAetF14uvMhHAT579VA+VRhaI2Fv
-	QhnmTJ1UoJEK6CsGybyxypDvS6AILmA+PJeXa/vKZViPNKIsS52VBcAchy+N3WYjfa3ydTh7NY98k
-	scFWb+WxvS5lQrRINIFsC9MFpqzsFU3OwGlqJp+689b/JUj9Xa2apTT47Q9HwVc01ZLBmo1Y504EE
-	GllDGDqrWg6t+8sK6XsqheESzhHW5UwdxpQkDfM1BGEW/ooGgAG3ZoCta4nSWCLdWiHJbuS32xyNt
-	GWiqwqnw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=; b=cbnVxkqV49AkbFPjSDGyFDgJsY
+	sJQHoa9Qz5TiqrrPdeSXOdoQvfsTeqQ1oShbXj/D8/UBU4babxMWOMjOcJ02QFeDKa5NviP3f9etd
+	iWGQFZ+i2Qe7+TZEWGW56M3yiU7HYB6mgiSOqbL6swHWVfmVs9OxlMgfQH0yaHMw70WIfuVz6t99J
+	GPWq+0kE5S4Z+rUOuHElsgCRYVdlfKqFAPDIf7UkpQ0UjxcosIOZmxQ6SOoNtFJapnqEjrK4RqvUD
+	73RyCeGkqOgiRNX9d72Wscz4Ghs3OjQ+w81IrVmgWEHzacUxYF9+lELV0CD11JCTHfMWHZNLI5lqJ
+	4LDaGBEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4MWI-008fJz-0d;
-	Sat, 18 Nov 2023 14:42:02 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1r4PL8-008v0Q-37;
+	Sat, 18 Nov 2023 17:42:42 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4MWE-008fJ0-2l;
-	Sat, 18 Nov 2023 14:42:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=BWif9T1uf7HThDO5AN5Tn13q/oRG7kK3WKpLPyN52rk=; b=WKmuJVew0chv9ZFu5D4yDig157
-	GdzZINfc3nPhLcjC9vnRZ2Imq69zX8hLPkaumIdVh4gT/Af4Pc0+bDdUyMSolFYTnMfFtHegFpAeD
-	G8uxxxPM1KCrCmXy3DFlK9zkz28c9WXXe2N7SU8o4OseUXX18PbQTeOdOllqGTg6N6ZGfqRVrL7Ql
-	1jPL8PC3QrLg4Gfd3NFlEDIA7mpGLBKig8k792jvBI34NwbD/znoRRyIjTezPj2cpPq7Hh9ni1hyC
-	BeFmfKPK034Awbfaq8bel4uNvJjqNixec7tkiNBSvH1M/NFNSPBuvY4iLP5R6KDZroLtnsqkjPLUB
-	DN2DYQ6Q==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:52758)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1r4MVz-0003mj-2L;
-	Sat, 18 Nov 2023 14:41:43 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1r4MVz-0001Dw-Ap; Sat, 18 Nov 2023 14:41:43 +0000
-Date: Sat, 18 Nov 2023 14:41:43 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next 05/15] net: dsa: mt7530: improve code path for
- setting up port 5
-Message-ID: <ZVjNJ0nf7Mp0kHzH@shell.armlinux.org.uk>
-References: <20231118123205.266819-1-arinc.unal@arinc9.com>
- <20231118123205.266819-6-arinc.unal@arinc9.com>
+	id 1r4PL2-008uuk-1u;
+	Sat, 18 Nov 2023 17:42:37 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-408425c7c10so4783105e9.0;
+        Sat, 18 Nov 2023 09:42:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700329346; x=1700934146; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
+        b=DN5UmldqaMuG5Ee3rcNMtzxKZ3mpL7Lsl03CUThzlL83bETwixKWosR8Ez7GCCJy9j
+         uAJqxOqXwvcqHBeOk+3Qllt9h/ypUlkff3tQ8co7d31FH0Hdb+jdLFyWOPs73SivkkCq
+         6s8N1ww8CKqNZHC7PtI5aQiY6EH9Z+OEtr25wzZJOZrwv1jsxNd1ROQPietglTwXRcZd
+         3uXHCzJ69bZif0BhoQecF3ccphbFE3OpRDqSpn1c8dNsVoEJEAOXAIbYUQA/D5vb7DNI
+         gpDGFw2CwVTilBAiON68UnHfWsnJKhN9PzK38lLttnxEk3GkdjaLHbAGS1ZV7gYYeFQI
+         Y1CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700329346; x=1700934146;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
+        b=xM73FkR7p4Wnpm25c8ZNvAcLzU9LTGhdXeCtQylkXVDagNykkHPhhzfpKjBuWurGPp
+         kRMjhvnXwZPQXo5kwH4v6fOUZkJ3ZmU9ecAt0aAu7GJm9QtKJrHPrY5bcQ4KXyPwV5jJ
+         35ic5afiMdgoMNrB/OWFCUmcdJZK2wQ6QeYhjgpxy3bnI1CU400RWcte2HVejxewMWrz
+         VCSp+8UtvfexIA63z9CbfA6Vi7wHXcD0STY+jcmlESoezQxM/KDWGtcDVh0CnAphVmnD
+         QIvN+KW5rOXfLxWOmX5vV2OeLcbsPSftFR+F8GSGg08tQlbDsVVuITZyGEURsM2I+2bK
+         l2pQ==
+X-Gm-Message-State: AOJu0Yx5LPJebLwpQrvw82+FUzCz/XiejVhVvcDbxglefftMbNJsR4wV
+	wjNnd5Rg/yrG2HLLY+IfBEQ=
+X-Google-Smtp-Source: AGHT+IGJBMJGBtOSgxjPC+wTqBOjKUX0OkeFIG96ALnW2TXBuODjpDTjYiE8IirfVuZmHsPbu37kWw==
+X-Received: by 2002:a05:600c:46cd:b0:407:7ea1:e9a4 with SMTP id q13-20020a05600c46cd00b004077ea1e9a4mr2170232wmo.5.1700329345971;
+        Sat, 18 Nov 2023 09:42:25 -0800 (PST)
+Received: from zotac.lan. (dynamic-2a01-0c22-77bf-8300-2223-08ff-fe18-0310.c22.pool.telefonica.de. [2a01:c22:77bf:8300:2223:8ff:fe18:310])
+        by smtp.gmail.com with ESMTPSA id y10-20020a05600c340a00b004068de50c64sm6964211wmp.46.2023.11.18.09.42.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 18 Nov 2023 09:42:25 -0800 (PST)
+From: Heiner Kallweit <hkallweit1@gmail.com>
+To: Wolfram Sang <wsa@kernel.org>,
+	intel-gfx@lists.freedesktop.org
+Cc: linux-i2c@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	linux-fbdev@vger.kernel.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jocelyn Falempe <jfalempe@redhat.com>,
+	linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>
+Subject: [PATCH 00/20] remove I2C_CLASS_DDC support
+Date: Sat, 18 Nov 2023 18:42:00 +0100
+Message-ID: <20231118174221.851-1-hkallweit1@gmail.com>
+X-Mailer: git-send-email 2.42.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231118123205.266819-6-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231118_064158_900590_23E48E5B 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20231118_094236_628726_BDB0D01B 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,45 +107,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 18, 2023 at 03:31:55PM +0300, Arınç ÜNAL wrote:
-> There're two code paths for setting up port 5:
-> 
-> mt7530_setup()
-> -> mt7530_setup_port5()
-> 
-> mt753x_phylink_mac_config()
-> -> mt753x_mac_config()
->    -> mt7530_mac_config()
->       -> mt7530_setup_port5()
-> 
-> Currently mt7530_setup_port5() from mt7530_setup() always runs. If port 5
-> is used as a CPU, DSA, or user port, mt7530_setup_port5() from
-> mt753x_phylink_mac_config() won't run. That is because priv->p5_interface
-> set on mt7530_setup_port5() will match state->interface on
-> mt753x_phylink_mac_config() which will stop running mt7530_setup_port5()
-> again.
-> 
-> Therefore, mt7530_setup_port5() will never run from
-> mt753x_phylink_mac_config().
-> 
-> Address this by not running mt7530_setup_port5() from mt7530_setup() if
-> port 5 is used as a CPU, DSA, or user port. This driver isn't in the
-> dsa_switches_apply_workarounds[] array so phylink will always be present.
-> 
-> For the cases of PHY muxing or the port being disabled, call
-> mt7530_setup_port5() from mt7530_setup(). mt7530_setup_port5() from
-> mt753x_phylink_mac_config() won't run when port 5 is disabled or used for
-> PHY muxing as port 5 won't be defined on the devicetree.
+After removal of the legacy EEPROM driver and I2C_CLASS_DDC support in
+olpc_dcon there's no i2c client driver left supporting I2C_CLASS_DDC.
+Class-based device auto-detection is a legacy mechanism and shouldn't
+be used in new code. So we can remove this class completely now.
 
-... and this should state why this needs to happen - in other words,
-the commit message should state why is it critical that port 5 is
-always setup.
+Preferably this series should be applied via the i2c tree.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+
+---
+
+ drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c           |    1 -
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |    1 -
+ drivers/gpu/drm/ast/ast_i2c.c                     |    1 -
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c         |    1 -
+ drivers/gpu/drm/display/drm_dp_helper.c           |    1 -
+ drivers/gpu/drm/display/drm_dp_mst_topology.c     |    1 -
+ drivers/gpu/drm/gma500/cdv_intel_dp.c             |    1 -
+ drivers/gpu/drm/gma500/intel_gmbus.c              |    1 -
+ drivers/gpu/drm/gma500/oaktrail_hdmi_i2c.c        |    1 -
+ drivers/gpu/drm/gma500/psb_intel_sdvo.c           |    1 -
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_i2c.c   |    1 -
+ drivers/gpu/drm/i915/display/intel_gmbus.c        |    1 -
+ drivers/gpu/drm/i915/display/intel_sdvo.c         |    1 -
+ drivers/gpu/drm/loongson/lsdc_i2c.c               |    1 -
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c           |    1 -
+ drivers/gpu/drm/mgag200/mgag200_i2c.c             |    1 -
+ drivers/gpu/drm/msm/hdmi/hdmi_i2c.c               |    1 -
+ drivers/gpu/drm/radeon/radeon_i2c.c               |    1 -
+ drivers/gpu/drm/rockchip/inno_hdmi.c              |    1 -
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c            |    1 -
+ drivers/gpu/drm/sun4i/sun4i_hdmi_i2c.c            |    1 -
+ drivers/video/fbdev/core/fb_ddc.c                 |    1 -
+ drivers/video/fbdev/cyber2000fb.c                 |    1 -
+ drivers/video/fbdev/i740fb.c                      |    1 -
+ drivers/video/fbdev/intelfb/intelfb_i2c.c         |   15 +++++----------
+ drivers/video/fbdev/matrox/i2c-matroxfb.c         |   12 ++++--------
+ drivers/video/fbdev/s3fb.c                        |    1 -
+ drivers/video/fbdev/tdfxfb.c                      |    1 -
+ drivers/video/fbdev/tridentfb.c                   |    1 -
+ drivers/video/fbdev/via/via_i2c.c                 |    1 -
+ include/linux/i2c.h                               |    1 -
+ 31 files changed, 9 insertions(+), 47 deletions(-)
 
