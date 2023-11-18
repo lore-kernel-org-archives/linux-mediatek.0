@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54532C5AE5B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 871E5C5AE5C
 	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Nov 2023 12:33:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=N9SnKBhRbqMMe69FRrrc0XQvADn9TWKV4HfE5CZaJv8=; b=Y/tKT/TJZXHHZQ
-	ByntwC7yfWdkziI+fFmmVTh+PqJzWfDzciItUY4VmizvtZ0ZLkL1f8VskpryfLWplQoqGvKj//lbm
-	audzCQpC5YZvRFB9iZzHGOwfjQ74y/q4VJGYeRLiHyfD16ygfLSk8nwNuTX1fuFrRp8mBJ32an2zZ
-	qrB4ZVBYiGppobMIz2d51ubnMMMd/eV4bqPsxBSS+EJGDnlGobu7O0SghVpVu069xDf49t1TGsQif
-	3yIHCD6jvsf6aJ5p/JJVH2acyKNHhi8mBiBfTue6nvO5LhzawlFeelyLIyqTyLvq0m2KJg9LBYYLY
-	ivEQ7VU3Jo4B9rf1I3fg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=t0oGbCGDDoO0IuxC5hzh9krVhy5dPwQKpeDyRtL3LFM=; b=ksPE5OS3Xc7IIT
+	Aa1l6vVML2HPNa/2re2CZLHG8P43pvggk6NkRy2QzYt951Eqsk3cUcCKgAp6wnRcdStro8OoRpoOe
+	q0CkQqXHLuZ45RhZePaf4TKxIjmG1ms3q767sjFYGjn7NFjBgW9p+X3xSIuYZVkR1gvgI1HNrisES
+	GySWznBGiBRbTl+mPJunzrBDXfH7UGGuHIh6dhr0ncT8BoCW4AtRiIx12DBgLw2ZqIrJ47RshYvS3
+	Yxh85TJ4EdLNc2sSVc6ikZzUcBjCumCzr3FsnGkobCD+caKi2ZQb5SorfqtGRYt0nOpFg8WJ2Qu6m
+	eh7D8uBAi1MD8Dd77d5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4KVV-008SYp-00;
+	id 1r4KVV-008SYx-0z;
 	Sat, 18 Nov 2023 12:33:05 +0000
 Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4KVR-008SWr-0P;
+	id 1r4KVR-008SX9-16;
 	Sat, 18 Nov 2023 12:33:03 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id D73B7E0002;
-	Sat, 18 Nov 2023 12:32:49 +0000 (UTC)
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 7534EE0004;
+	Sat, 18 Nov 2023 12:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1700310775;
+	t=1700310779;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=N9SnKBhRbqMMe69FRrrc0XQvADn9TWKV4HfE5CZaJv8=;
-	b=ADIhRVuCtojr4MU4BCbgFoLcpOPsIIaqb20ar7ExCA4jhWVPamIORfy2L1zxem9FbywtlJ
-	bEqEiqre949ZvSFkK6S5/YBeky5/MiMx3Uk/caW87xYJnfhAGshXnCm5r7klJsn9BcO+7+
-	kDM3scZBplSsOfh1n8DpF93rWAvi2z3wEcNgFfi1iDBc6nrNjmOGS/FAMwlfuFJK0kF0+n
-	C3ImHe82Tt33MDwRWSBkFQsgsVv8ICY4BYj+yA4nmyNDZsVNSahlDrARFf9Uu5sGTCa0BH
-	NHeenjzyfVEdMdUByx4taLvR1MJ/2hDf7KIniDa0WqnV13DxYB8eSxuNS44QyA==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=t0oGbCGDDoO0IuxC5hzh9krVhy5dPwQKpeDyRtL3LFM=;
+	b=AtETbQCz70fJDRVZ2q+zWVB+dSJ+JHeLm1UsgRxF9HlTc7F5gvH9h1UDjRJ6uyuiSAZIUs
+	aoHcPLB0ytsh4nmUwDq3xxZeaDqkmMF2FHc6ZR6B1tCLrQ6/V8h9zbf3srYBAtJFz6eRzX
+	ylDCXCGl0yjCZdzXA7zQrdCdduYFhLXuzmh1upRn0fLh+5mTYytengW9soUlDwhsiHPSlY
+	rQnBHBrWs2RWB8MDflsRBmv1nl7GRvJkeE5vS3xmOAizMCahD5JzE3rhqVRKko6bYWlnNj
+	D2Pl27NSoKudNHpq/GB9f83h+lYdHZrBGx2sPdxfhxNdiQxWg9BthUxXWpIXGg==
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>,
@@ -55,18 +56,19 @@ To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next 00/15] MT7530 DSA subdriver improvements
-Date: Sat, 18 Nov 2023 15:31:50 +0300
-Message-Id: <20231118123205.266819-1-arinc.unal@arinc9.com>
+Subject: [PATCH net-next 01/15] net: dsa: mt7530: always trap frames to active CPU port on MT7530
+Date: Sat, 18 Nov 2023 15:31:51 +0300
+Message-Id: <20231118123205.266819-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20231118123205.266819-1-arinc.unal@arinc9.com>
+References: <20231118123205.266819-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231118_043301_483088_E1EF0FDA 
-X-CRM114-Status: UNSURE (   9.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231118_043301_661970_FDCE438E 
+X-CRM114-Status: GOOD (  20.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,62 +84,119 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.i
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello!
+On the MT7530 switch, the CPU_PORT field indicates which CPU port to trap
+frames to, regardless of the affinity of the inbound user port.
 
-This patch series simplifies the MT7530 DSA subdriver and improves the
-logic of the support for MT7530, MT7531, and the switch on the MT7988 SoC.
+When multiple CPU ports are in use, if the DSA conduit interface is down,
+trapped frames won't be passed to the conduit interface.
 
-I have done a simple ping test to confirm basic communication on all switch
-ports on the MCM and standalone MT7530 and MT7531 switch with this patch
-series applied.
+To make trapping frames work including this case, implement
+ds->ops->master_state_change() on this subdriver and set the CPU_PORT field
+to the numerically smallest CPU port which the DSA conduit interface its
+affine to is up. Introduce the active_cpu_ports field to store the
+information of the active CPU ports. Correct the macros, CPU_PORT is bits 4
+through 6 of the register.
 
-MT7621 Unielec, MCM MT7530:
+Add a comment to explain frame trapping for this switch.
 
-rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
-gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
+Currently, the driver doesn't support the use of multiple CPU ports so this
+is not necessarily a bug fix.
 
-tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+Suggested-by: Vladimir Oltean <olteanv@gmail.com>
+Suggested-by: Russell King (Oracle) <linux@armlinux.org.uk>
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ drivers/net/dsa/mt7530.c | 30 ++++++++++++++++++++++++++----
+ drivers/net/dsa/mt7530.h |  6 ++++--
+ 2 files changed, 30 insertions(+), 6 deletions(-)
 
-MT7622 Bananapi, MT7531:
-
-gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
-
-tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
-
-MT7623 Bananapi, standalone MT7530:
-
-rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
-gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
-
-tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
-
-This patch series is the continuation of the one linked below.
-
-https://lore.kernel.org/netdev/20230522121532.86610-1-arinc.unal@arinc9.com/
-
-Arınç
-
-Arınç ÜNAL (15):
-  net: dsa: mt7530: always trap frames to active CPU port on MT7530
-  net: dsa: mt7530: use p5_interface_select as data type for p5_intf_sel
-  net: dsa: mt7530: store port 5 SGMII capability of MT7531
-  net: dsa: mt7530: improve comments regarding port 5 and 6
-  net: dsa: mt7530: improve code path for setting up port 5
-  net: dsa: mt7530: do not set priv->p5_interface on mt7530_setup_port5()
-  net: dsa: mt7530: do not run mt7530_setup_port5() if port 5 is disabled
-  net: dsa: mt7530: empty default case on mt7530_setup_port5()
-  net: dsa: mt7530: call port 6 setup from mt7530_mac_config()
-  net: dsa: mt7530: remove pad_setup function pointer
-  net: dsa: mt7530: move XTAL check to mt7530_setup()
-  net: dsa: mt7530: move enabling port 6 to mt7530_setup_port6()
-  net: dsa: mt7530: simplify mt7530_setup_port6() and change to void
-  net: dsa: mt7530: correct port capabilities of MT7988
-  net: dsa: mt7530: do not clear config->supported_interfaces
-
- drivers/net/dsa/mt7530-mdio.c |   7 +-
- drivers/net/dsa/mt7530.c      | 283 ++++++++++++++++---------------------
- drivers/net/dsa/mt7530.h      |  19 +--
- 3 files changed, 137 insertions(+), 172 deletions(-)
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index d27c6b70a2f6..442492d62670 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1035,10 +1035,6 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+ 	mt7530_set(priv, MT7530_MFC, BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) |
+ 		   UNU_FFP(BIT(port)));
+ 
+-	/* Set CPU port number */
+-	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
+-		mt7530_rmw(priv, MT7530_MFC, CPU_MASK, CPU_EN | CPU_PORT(port));
+-
+ 	/* Add the CPU port to the CPU port bitmap for MT7531 and the switch on
+ 	 * the MT7988 SoC. Trapped frames will be forwarded to the CPU port that
+ 	 * is affine to the inbound user port.
+@@ -3075,6 +3071,31 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
+ 	return 0;
+ }
+ 
++static void
++mt753x_conduit_state_change(struct dsa_switch *ds,
++			    const struct net_device *conduit,
++			    bool operational)
++{
++	struct mt7530_priv *priv = ds->priv;
++	struct dsa_port *cpu_dp = conduit->dsa_ptr;
++
++	/* Set the CPU port to trap frames to for MT7530. Trapped frames will be
++	 * forwarded to the numerically smallest CPU port which the DSA conduit
++	 * interface its affine to is up.
++	 */
++	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
++		return;
++
++	if (operational)
++		priv->active_cpu_ports |= BIT(cpu_dp->index);
++	else
++		priv->active_cpu_ports &= ~BIT(cpu_dp->index);
++
++	if (priv->active_cpu_ports)
++		mt7530_rmw(priv, MT7530_MFC, CPU_EN | CPU_PORT_MASK, CPU_EN |
++			   CPU_PORT(__ffs(priv->active_cpu_ports)));
++}
++
+ static int mt7988_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
+ {
+ 	return 0;
+@@ -3130,6 +3151,7 @@ const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.phylink_mac_link_up	= mt753x_phylink_mac_link_up,
+ 	.get_mac_eee		= mt753x_get_mac_eee,
+ 	.set_mac_eee		= mt753x_set_mac_eee,
++	.conduit_state_change	= mt753x_conduit_state_change,
+ };
+ EXPORT_SYMBOL_GPL(mt7530_switch_ops);
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 17e42d30fff4..96d610f5bcf9 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -41,8 +41,8 @@ enum mt753x_id {
+ #define  UNU_FFP(x)			(((x) & 0xff) << 8)
+ #define  UNU_FFP_MASK			UNU_FFP(~0)
+ #define  CPU_EN				BIT(7)
+-#define  CPU_PORT(x)			((x) << 4)
+-#define  CPU_MASK			(0xf << 4)
++#define  CPU_PORT_MASK			GENMASK(6, 4)
++#define  CPU_PORT(x)			FIELD_PREP(CPU_PORT_MASK, x)
+ #define  MIRROR_EN			BIT(3)
+ #define  MIRROR_PORT(x)			((x) & 0x7)
+ #define  MIRROR_MASK			0x7
+@@ -760,6 +760,7 @@ struct mt753x_info {
+  * @irq_domain:		IRQ domain of the switch irq_chip
+  * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
+  * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
++ * @active_cpu_ports:	Holding the active CPU ports
+  */
+ struct mt7530_priv {
+ 	struct device		*dev;
+@@ -786,6 +787,7 @@ struct mt7530_priv {
+ 	struct irq_domain *irq_domain;
+ 	u32 irq_enable;
+ 	int (*create_sgmii)(struct mt7530_priv *priv, bool dual_sgmii);
++	unsigned long active_cpu_ports;
+ };
+ 
+ struct mt7530_hw_vlan_entry {
+-- 
+2.40.1
 
 
