@@ -4,93 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40ECBC2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Nov 2023 13:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 792A8C2BB3F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Nov 2023 14:37:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3mpiRk0hqonbJP/EF4rra61GK0dhUE8tYR3c/qT4TLE=; b=tjRZ+z2ZR4wUNBeyeoz6mY4MF6
-	s2FP2I88ufX8jLWVabrA0K8BXHiljx5dCEPLk9/jm+MqbaG16EO6KgL7hAaXXmpC0sXV4PESvUgqc
-	NJVgBYYDSsByCuDe/A4Kz+Zoj6NEaGDvGH/2/5rYqfvpl5fLcrWbKRYvS5N4ghwv6GY4Ayc0b5tBH
-	b6oJtTYwu5kztIOgwQ2YjftIlkwdWaWyDO//ZrBpHRMzqkHpmy0N4rQsQfFQG30ZuYifv1KoNAroD
-	8OsyT2a6n24iM3Lv5+1KsBFyRbzUh2TALI1g7f0cyObJp+Q/ZjAXZU5lnt0+5V1N1quZxFIfKYdYI
-	IKyqykUA==;
+	bh=WepOBgGYhP2iPHXfLSJdrtcP/KdijGX4DDw5TtExb38=; b=1q2ErUUxZnZCqOkH9SwWVZjUnF
+	HSnjtzo8hVGvDZ7lSAU2WIypUQD4fdzZ6yXVFisc/rAVFd7AF3dQiH2/GXlB7AtTjxxWN72frmyaf
+	xcOqaFZcoruG+qMs9MirxlsDQzG+IjEwrbcpMVYaGU41c7S5V6FYgdsiDZzrwwEejmVrOUfZWpg3i
+	Z8S8VSpCsadYXB859NN1xqGY4OMEW4l+r6143R6n6pFiUWnPvyOLZ8I5rgm1MVgchy9wt29HJM1tO
+	1Fpq1J5X/Ssy5wBn/V6Eq5hsfA5fmFGkzG0oFdQk6e2KXJ4Ir9yswzG+O3bv8QO/e+41k39kebyoG
+	Mht9yjww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4Lc0-008Zh6-0L;
-	Sat, 18 Nov 2023 13:43:52 +0000
-Received: from mgamail.intel.com ([192.55.52.151])
+	id 1r4MRq-008eyu-0f;
+	Sat, 18 Nov 2023 14:37:26 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4Lbv-008ZgP-2x;
-	Sat, 18 Nov 2023 13:43:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700315027; x=1731851027;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=7/M5S0nC2Rw3WJg/Loza0Avq02rrTZUsNGGN6T9wjHo=;
-  b=lxaoD4l1bgGSrb3XOkunyZva+dw/84XUOw3zbC25zrWxYbjU3KImzUfe
-   ib9z99MgOTwLKkkbCk68ATuNi2vtFZc8Qf1kjyA/ijSaa0Dxd4Y10/e4+
-   DOMmcFHTPwVXogAlNwNAqh6nzAlRvOnqYTQMJsnl/mO2qPeiPLmER+e3q
-   vBENhMB3bT5/7v5LPv+zjTCF7m5Wv+9mkvL89jola+XASYyFxwA7ATbSK
-   VJVH4/1y41A+XvfD0+6CwKhmz9fgvm4TZxGWm3Y+s8hQ0cgu5Is798AkU
-   aDqxrj4FyOCvXlaA1WR1MrZSVWi9rgZ8OfqUF521YljDWlqq0AieOLzro
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10897"; a="371604285"
-X-IronPort-AV: E=Sophos;i="6.04,209,1695711600"; 
-   d="scan'208";a="371604285"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Nov 2023 05:43:46 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10897"; a="759414040"
-X-IronPort-AV: E=Sophos;i="6.04,209,1695711600"; 
-   d="scan'208";a="759414040"
-Received: from lkp-server02.sh.intel.com (HELO b8de5498638e) ([10.239.97.151])
-  by orsmga007.jf.intel.com with ESMTP; 18 Nov 2023 05:43:39 -0800
-Received: from kbuild by b8de5498638e with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1r4Lbk-0003x2-1d;
-	Sat, 18 Nov 2023 13:43:36 +0000
-Date: Sat, 18 Nov 2023 21:43:05 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yi-De Wu <yi-de.wu@mediatek.com>,
-	Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
-	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: oe-kbuild-all@lists.linux.dev, Arnd Bergmann <arnd@arndb.de>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	David Bradil <dbrazdil@google.com>,
-	Trilok Soni <quic_tsoni@quicinc.com>,
-	Jade Shih <jades.shih@mediatek.com>,
-	Ivan Tseng <ivan.tseng@mediatek.com>,
-	My Chuang <my.chuang@mediatek.com>,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <peilun.suei@mediatek.com>,
-	Liju Chen <liju-clr.chen@mediatek.com>,
-	Willix Yeh <chi-shen.yeh@mediatek.com>,
-	Kevenny Hsieh <kevenny.hsieh@mediatek.com>
-Subject: Re: [PATCH v7 09/16] virt: geniezone: Add irqfd support
-Message-ID: <202311182112.B1KM0yj9-lkp@intel.com>
-References: <20231116152756.4250-10-yi-de.wu@mediatek.com>
+	id 1r4MRl-008epb-0e;
+	Sat, 18 Nov 2023 14:37:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=WepOBgGYhP2iPHXfLSJdrtcP/KdijGX4DDw5TtExb38=; b=ICT7ys2yuuz5dBBplm5lRh/5RH
+	8DQ/wBrdoRzImt37gHrrXGZbxFIq4nQUYdnoFZ7ub45vgsKXdsFQ3WpPYIwtzRGEaFUSWs9Jl8Cft
+	zV68Vv2CJet2uScBr/EMtq2w1ZSkE0yvexguq2PIPGaq2XB0x9Tap/3aCxuXzAYeukSpt01ru2o4w
+	7MdD2AzqMSjlu0CLptTCpQ3QDLr6gxqWc9v8RdDACx1Rd5uF0R/esxAjX0DldxAaJylPxhg6B5Zrm
+	sIoACMMyxvIad3j1tCTqoAiOBFKVS9XUS8iLiGQBCNMlSfF/nFqmtOvD+TiCYUoVZk0LZZVL0CFUB
+	y0pbCdCQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53404)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1r4MPR-0003mC-32;
+	Sat, 18 Nov 2023 14:34:58 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1r4MPP-0001Cx-B2; Sat, 18 Nov 2023 14:34:55 +0000
+Date: Sat, 18 Nov 2023 14:34:55 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH net-next 01/15] net: dsa: mt7530: always trap frames to
+ active CPU port on MT7530
+Message-ID: <ZVjLj6/iCL/muzmH@shell.armlinux.org.uk>
+References: <20231118123205.266819-1-arinc.unal@arinc9.com>
+ <20231118123205.266819-2-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20231116152756.4250-10-yi-de.wu@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231118123205.266819-2-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231118_054347_989288_CB3A5895 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20231118_063721_264620_4E107EA0 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,131 +74,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yi-De,
+On Sat, Nov 18, 2023 at 03:31:51PM +0300, Arınç ÜNAL wrote:
+> +	/* Set the CPU port to trap frames to for MT7530. Trapped frames will be
+> +	 * forwarded to the numerically smallest CPU port which the DSA conduit
+> +	 * interface its affine to is up.
+> +	 */
+> +	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
+> +		return;
+> +
+> +	if (operational)
+> +		priv->active_cpu_ports |= BIT(cpu_dp->index);
+> +	else
+> +		priv->active_cpu_ports &= ~BIT(cpu_dp->index);
+> +
+> +	if (priv->active_cpu_ports)
+> +		mt7530_rmw(priv, MT7530_MFC, CPU_EN | CPU_PORT_MASK, CPU_EN |
+> +			   CPU_PORT(__ffs(priv->active_cpu_ports)));
 
-kernel test robot noticed the following build errors:
+I would be tempted to write this as:
 
-[auto build test ERROR on linus/master]
-[also build test ERROR on v6.7-rc1 next-20231117]
-[cannot apply to arm64/for-next/core robh/for-next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+	mask = BIT(cpu_dp->index);
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yi-De-Wu/docs-geniezone-Introduce-GenieZone-hypervisor/20231116-233442
-base:   linus/master
-patch link:    https://lore.kernel.org/r/20231116152756.4250-10-yi-de.wu%40mediatek.com
-patch subject: [PATCH v7 09/16] virt: geniezone: Add irqfd support
-config: arm64-randconfig-r081-20231118 (https://download.01.org/0day-ci/archive/20231118/202311182112.B1KM0yj9-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231118/202311182112.B1KM0yj9-lkp@intel.com/reproduce)
+	if (operational)
+		priv->active_cpu_ports |= mask;
+	else
+		priv->active_cpu_ports &= ~mask;
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202311182112.B1KM0yj9-lkp@intel.com/
+Now, what happens when active_cpu_ports is zero? Doesn't that mean there
+is no active CPU port? In which case, wouldn't disabling the CPU port
+direction be appropriate, such as:
 
-All error/warnings (new ones prefixed by >>):
+	if (priv->active_cpu_ports)
+		val = CPU_EN | CPU_PORT(__ffs(priv->active_cpu_ports));
+	else
+		val = 0;
 
-   arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_irqfd.c: In function 'gzvm_irqfd_assign':
->> arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_irqfd.c:185:19: error: implicit declaration of function 'eventfd_ctx_fileget'; did you mean 'eventfd_ctx_fdget'? [-Werror=implicit-function-declaration]
-     185 |         eventfd = eventfd_ctx_fileget(f.file);
-         |                   ^~~~~~~~~~~~~~~~~~~
-         |                   eventfd_ctx_fdget
->> arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_irqfd.c:185:17: warning: assignment to 'struct eventfd_ctx *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-     185 |         eventfd = eventfd_ctx_fileget(f.file);
-         |                 ^
-   cc1: some warnings being treated as errors
+	mt7530_rmw(priv, MT7530_MFC, CPU_EN | CPU_PORT_MASK, val);	
 
+?
 
-vim +185 arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_irqfd.c
+>  struct mt7530_priv {
+>  	struct device		*dev;
+> @@ -786,6 +787,7 @@ struct mt7530_priv {
+>  	struct irq_domain *irq_domain;
+>  	u32 irq_enable;
+>  	int (*create_sgmii)(struct mt7530_priv *priv, bool dual_sgmii);
+> +	unsigned long active_cpu_ports;
 
-   160	
-   161	static int gzvm_irqfd_assign(struct gzvm *gzvm, struct gzvm_irqfd *args)
-   162	{
-   163		struct gzvm_kernel_irqfd *irqfd, *tmp;
-   164		struct fd f;
-   165		struct eventfd_ctx *eventfd = NULL;
-   166		int ret;
-   167		int idx;
-   168	
-   169		irqfd = kzalloc(sizeof(*irqfd), GFP_KERNEL_ACCOUNT);
-   170		if (!irqfd)
-   171			return -ENOMEM;
-   172	
-   173		irqfd->gzvm = gzvm;
-   174		irqfd->gsi = args->gsi;
-   175	
-   176		INIT_LIST_HEAD(&irqfd->list);
-   177		INIT_WORK(&irqfd->shutdown, irqfd_shutdown);
-   178	
-   179		f = fdget(args->fd);
-   180		if (!f.file) {
-   181			ret = -EBADF;
-   182			goto out;
-   183		}
-   184	
- > 185		eventfd = eventfd_ctx_fileget(f.file);
-   186		if (IS_ERR(eventfd)) {
-   187			ret = PTR_ERR(eventfd);
-   188			goto fail;
-   189		}
-   190	
-   191		irqfd->eventfd = eventfd;
-   192	
-   193		/*
-   194		 * Install our own custom wake-up handling so we are notified via
-   195		 * a callback whenever someone signals the underlying eventfd
-   196		 */
-   197		init_waitqueue_func_entry(&irqfd->wait, irqfd_wakeup);
-   198		init_poll_funcptr(&irqfd->pt, irqfd_ptable_queue_proc);
-   199	
-   200		spin_lock_irq(&gzvm->irqfds.lock);
-   201	
-   202		ret = 0;
-   203		list_for_each_entry(tmp, &gzvm->irqfds.items, list) {
-   204			if (irqfd->eventfd != tmp->eventfd)
-   205				continue;
-   206			/* This fd is used for another irq already. */
-   207			pr_err("already used: gsi=%d fd=%d\n", args->gsi, args->fd);
-   208			ret = -EBUSY;
-   209			spin_unlock_irq(&gzvm->irqfds.lock);
-   210			goto fail;
-   211		}
-   212	
-   213		idx = srcu_read_lock(&gzvm->irq_srcu);
-   214	
-   215		list_add_tail(&irqfd->list, &gzvm->irqfds.items);
-   216	
-   217		spin_unlock_irq(&gzvm->irqfds.lock);
-   218	
-   219		vfs_poll(f.file, &irqfd->pt);
-   220	
-   221		srcu_read_unlock(&gzvm->irq_srcu, idx);
-   222	
-   223		/*
-   224		 * do not drop the file until the irqfd is fully initialized, otherwise
-   225		 * we might race against the EPOLLHUP
-   226		 */
-   227		fdput(f);
-   228		return 0;
-   229	
-   230	fail:
-   231		if (eventfd && !IS_ERR(eventfd))
-   232			eventfd_ctx_put(eventfd);
-   233	
-   234		fdput(f);
-   235	
-   236	out:
-   237		kfree(irqfd);
-   238		return ret;
-   239	}
-   240	
+So this will be 32 or 64 bit in size. Presumably you know how many CPU
+ports there can be, which looking at this code must be less than 8 as
+CPU_PORT_MASK is only 3 bits in size. So, maybe use a u8, and check
+that cpu_dp->index <= 7 ?
+
+I would also suggest moving irq_enable after create_sgmii, to avoid
+holes in the struct.
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
