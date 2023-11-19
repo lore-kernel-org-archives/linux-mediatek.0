@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC6A9C072A2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Nov 2023 15:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8044DC072A2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Nov 2023 15:52:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kMU08ksxciypMg2cafusPvHmfZUM2THw/Wr0jFPWQkA=; b=k4y/9Xan/IKYFyOuKupkhrRk+b
-	XYrHzisyv/hSzj/MVFlr26rAUy/02N9Y7WAtQH5AazE71tOfP7yrtbkMDYe3WYEeFxq1cpdfNnOhm
-	M0jxmovN6staQpRYlq58BtBLDp6uvqbLgYkhl58Dvzb+1ugk5BobXqTwYr6Tpuk9vpsCtDpgF7t+I
-	qiAy7eLk/Vtu4OPCDVOa3BWdUq/OSvvi4PRFawgdG8VyDmHA/ay+5eWt8ZtTazHl59OIrvJnp3fbv
-	1QghZJbiK1/E11JsWIPFFro0dYZ/uigw7k2m7aUe2hw+1Wk+4dr9fSaOamjm+ng7ZNnqhBr1f9eBE
-	F2dU0Zlw==;
+	bh=MPRqtY1zpT/Q/zxPJfMhR0FIAH4WhHFxsqt84FQQa7w=; b=SqqF7r2Si/mSYJh75wsrp2sENY
+	Ql3lP8Rcgl+Vz1muqIuF64bIg8BiBGcZM0uMXYO2d7z+maQOJPwk/DVYCwVHNWCtCHFBrVsAxEvhP
+	Ghh8R5Mm1HZCxigpwho4g6Pr/TmEsV/Jgx156HpKD+AD2cXhGb7Jt+Nuj3fJrSKRbZthdyr5qI78s
+	/G87W1QrXx9gwedKWwFUxYhFpnxLln7ObE6xfl3VuBgyAvkZ0ApveE9gvMu/qam9YL3o/foiks/Vf
+	mzLvkD+SqYLHzrvjhPArrC5NyzbFPVy6Cge8U60dp06tUAk85Z3QCRO1TmiNQR+oPaeKC2HcqSsPW
+	9Y2Dp70Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4jnR-00ALTv-2C;
-	Sun, 19 Nov 2023 15:33:17 +0000
-Received: from mail-oo1-f43.google.com ([209.85.161.43])
+	id 1r4k6O-00AMGE-0n;
+	Sun, 19 Nov 2023 15:52:52 +0000
+Received: from mail-oo1-f54.google.com ([209.85.161.54])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4jnO-00ALT4-34;
-	Sun, 19 Nov 2023 15:33:16 +0000
-Received: by mail-oo1-f43.google.com with SMTP id 006d021491bc7-58786e23d38so2270400eaf.3;
-        Sun, 19 Nov 2023 07:33:06 -0800 (PST)
+	id 1r4k6K-00AMFk-2s;
+	Sun, 19 Nov 2023 15:52:50 +0000
+Received: by mail-oo1-f54.google.com with SMTP id 006d021491bc7-5844bc378feso2101009eaf.0;
+        Sun, 19 Nov 2023 07:52:47 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700407986; x=1701012786;
+        d=1e100.net; s=20230601; t=1700409167; x=1701013967;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kMU08ksxciypMg2cafusPvHmfZUM2THw/Wr0jFPWQkA=;
-        b=Qj2OE++sXeA4Osj3Db5kJCQtMC0I90vhwyx+TnzObJoIHon6gD2DhyD0W1UOVjbqg6
-         TtLXQC6L3TFK6MZJRkWMoqTXSTGpMHiWgD4a29bgA1V2NUS69eeaIDWiJiNFmgdMbDwr
-         KYnKSB2tvEgAkAaVcS6YaCqPsBpUYlHt/nahCzfel3nOsSz3rl/+T0TQ+T/Zj+jPkpHz
-         pdPMWkmby6tXWoFReYBX4UgR7EWwZMY26NEyREyGLiPyGY97l5xvlFOAFOsOrSPQJVq6
-         IiJLO+SsOpDxK5TiaAhhaLy4h+ymE2f3CevhP1HUZuJgBLO+autwioQ0PGznHphJ3VLA
-         26RA==
-X-Gm-Message-State: AOJu0Ywy1AVECs/I9NgWP4jDSE8RfnD2xpNMBu2698ks/EQAwIuq9jeM
-	OnaeF3wxK5DUGcAd9fADs7rRdbHa+g==
-X-Google-Smtp-Source: AGHT+IExABufMmUJEvUlY0EWmwdDBQyAl3khdEyyRjfwJe6bame2wZuLIdHI94aTyaZhFmNMeo+0Cg==
-X-Received: by 2002:a05:6820:1502:b0:58a:231d:750d with SMTP id ay2-20020a056820150200b0058a231d750dmr5737572oob.9.1700407986253;
-        Sun, 19 Nov 2023 07:33:06 -0800 (PST)
+        bh=MPRqtY1zpT/Q/zxPJfMhR0FIAH4WhHFxsqt84FQQa7w=;
+        b=EisGjJFyGoRy+662Xrq3sdvAemp9oDfaO58SiD7szJQpUHwNDHvRwbE3pL8a3t1iYr
+         tVoT+ZNEHFBbQs7/Rxyvju5kWIHwMYT7m47VRFv6o3XoOUZXFu6Gx0fJXWIvitZT4tkD
+         FPJ+t/dzIwk+uN7DAGeFjNV9p8qaOVg4cEcQmmSNDRt74DRC1h0uO1iMSwWe/CajlxPq
+         y51XjogIqQQ4gQuXAdHPD9AYhXGTqrLzf/xLeIDstSOLOjWq5YIuPQisGnMPlgxpNQFX
+         1an+5M4X+x3rPpVKvsiYU2TX2AUtaCexmlpE0VrKaOryeJtDR/IVGiiJKFuBBUpW2XjC
+         rFEw==
+X-Gm-Message-State: AOJu0Ywo9AVH76QopWnO6n9DLpSe4rPawBd6Q0oahrzb7m/icNfsZ3G7
+	CzNu1G5CMVCU1o/rvT6wpQ==
+X-Google-Smtp-Source: AGHT+IHkoTGEBKV6rZZg7WiLGiP6+Mb7p3oHWf3C06rFydhcw0A24vcNXVCbjQuWR8Y0z9Ns2eOgLg==
+X-Received: by 2002:a05:6820:2290:b0:587:2b3c:e11f with SMTP id ck16-20020a056820229000b005872b3ce11fmr6022465oob.0.1700409167085;
+        Sun, 19 Nov 2023 07:52:47 -0800 (PST)
 Received: from herring.priv ([2607:fb90:45e3:889f:15b4:1348:6d64:224b])
-        by smtp.gmail.com with ESMTPSA id u3-20020a4aae83000000b0057327cecdd8sm1052307oon.10.2023.11.19.07.33.01
+        by smtp.gmail.com with ESMTPSA id eg11-20020a0568200b8b00b0057b6ac3922esm1084662oob.18.2023.11.19.07.52.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Nov 2023 07:33:03 -0800 (PST)
-Received: (nullmailer pid 234287 invoked by uid 1000);
-	Sun, 19 Nov 2023 15:33:00 -0000
-Date: Sun, 19 Nov 2023 09:33:00 -0600
+        Sun, 19 Nov 2023 07:52:46 -0800 (PST)
+Received: (nullmailer pid 254995 invoked by uid 1000);
+	Sun, 19 Nov 2023 15:52:43 -0000
+Date: Sun, 19 Nov 2023 09:52:43 -0600
 From: Rob Herring <robh@kernel.org>
 To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Lukasz Luba <lukasz.luba@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, "Rafael J . Wysocki" <rafael@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH V3] dt-bindings: thermal: convert Mediatek Thermal to the
- json-schema
-Message-ID: <170040797960.234232.1151056488223755530.robh@kernel.org>
-References: <20231117052214.24554-1-zajec5@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Jianhui Zhao <zhaojh329@gmail.com>, Daniel Golle <daniel@makrotopia.org>, James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject: Re: [PATCH] dt-bindings: arm: mediatek: convert ethsys controller to
+ the json-schema
+Message-ID: <20231119155243.GA235374-robh@kernel.org>
+References: <20231117074926.10824-1-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231117052214.24554-1-zajec5@gmail.com>
+In-Reply-To: <20231117074926.10824-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231119_073314_992376_06430533 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20231119_075248_931662_B057AB70 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,35 +81,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 17 Nov 2023 06:22:14 +0100, Rafał Miłecki wrote:
+On Fri, Nov 17, 2023 at 08:49:26AM +0100, Rafał Miłecki wrote:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> This helps validating DTS files. Introduced changes:
-> 1. Improved title
-> 2. Simplified description (dropped "This describes the device tree...")
-> 3. Dropped undocumented "reset-names" from example
+> This helps validating DTS files. The only introduced change was fixing
+> "reg" value in example (1 address cell + 1 size cell).
 > 
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 > ---
-> V2: Add "maintainers"
-> V3: Introduce changes described in commit body
->     Fix schema syntax
->     Move unevaluatedProperties to the bottom
->     Rename file to match compatible more closely
+> For the record I was trying to simplify "compatible" syntax with
+> following but "oneOf" apparently can't be used as a single item.
 > 
-> I'm totally sorry for sending broken schema patch yesterday. Brainfart.
-> There is no excuse for sth that doesn't even pass dt_binding_check.
->   DTEX    Documentation/devicetree/bindings/thermal/mediatek,thermal.example.dts
->   DTC_CHK Documentation/devicetree/bindings/thermal/mediatek,thermal.example.dtb
+> items:
+>   - oneOf:
+>       - const: mediatek,mt2701-ethsys
+>       - const: mediatek,mt7622-ethsys
+>       - items:
+>           - const: mediatek,mt7623-ethsys
+>           - const: mediatek,mt2701-ethsys
+>       - const: mediatek,mt7629-ethsys
+>       - const: mediatek,mt7981-ethsys
+>       - const: mediatek,mt7986-ethsys
+>   - const: syscon
+
+The problem is you have nested 'items' which forms a matrix.
+
+You generally need a 'oneOf' for each possible length of an array unless 
+the value of each index is always the same (i.e. only the size of the 
+list varies).
+
 > 
->  .../bindings/thermal/mediatek,thermal.yaml    | 99 +++++++++++++++++++
->  .../bindings/thermal/mediatek-thermal.txt     | 52 ----------
->  2 files changed, 99 insertions(+), 52 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
->  delete mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> 
+>  .../bindings/arm/mediatek/mediatek,ethsys.txt | 29 ----------
+>  .../arm/mediatek/mediatek,ethsys.yaml         | 54 +++++++++++++++++++
+>  2 files changed, 54 insertions(+), 29 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.yaml
+
+Can you move this to bindings/clock/
+
+With that,
 
 Reviewed-by: Rob Herring <robh@kernel.org>
-
 
