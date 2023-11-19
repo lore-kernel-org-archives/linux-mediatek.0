@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA74C5ACB3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Nov 2023 11:28:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63917C072A2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Nov 2023 12:25:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ihe5CWoYwzVYQa0PIBn4FXCZubjqfqZzL14QGGmAy2E=; b=KvQav7KHe2j2cYSoU7JIKTvtML
-	PNiirDNVUmEWTBEJt3UrBwwBG0Ha8UJ+3PYj56EowHob4HoTvFqO+zmJMjlkNmxQqrRUMjhjPAJoT
-	iZqOpJ41yCMoZTgyFePSqBUyLonSPw1MsS/ikDNyGUn0Ok+KbNot+wJL4KP/csGq/AFEpPght3f6G
-	6/UMwcr6xX7ZtSUgyW/sW8hi+bF920CTOvaNHmzd094/KohMYBtyHqq/IG8xLAXjc+gclxi0y61gN
-	jJ0Qg9+KZVbCknyrnALn0EKRy+k7fu3i3y0xHQ1D5Ljy7gasFFudu59+Ibd/FMuO9JH0VRqfdQO1A
-	zspRg4cQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tjBUe+8pD5EhysloSQei8tIcX5fvkeXnqi/PHKa743o=; b=XFMB4UlopDHQQPcAwCwITMiXZb
+	ZKeTg35JNTTqDrS3aGRObCGCJZNvcVokkhlK0jfopAZHA89T7tBLrMqe4FDpw3A/1ExCfU0IxUGhP
+	LnzRXi/oDSE+sm3/00SL64brxit+gQcesedoqbh2WnvMb58+lmsIYZ6wVHWPUU8III3oQ7eTYefB2
+	CAfsRzM2RJ7W08yxM7rCkkjjpR1bhA6UbO5WxucV9jklTw6OnC9MuTFXfpLGnl5uZwyBwwewj7/gS
+	C/0iDkIhDORyNDoNUCp+gl7GbzXmAF0TPGJXese1dVZKMpNSuD1y9AMtsTa00rfPEa9DRvRaBT+fi
+	IAAlJquA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4fyr-00A4GB-2x;
-	Sun, 19 Nov 2023 11:28:49 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1r4grp-00AAFh-1B;
+	Sun, 19 Nov 2023 12:25:37 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4fyk-00A44c-1X;
-	Sun, 19 Nov 2023 11:28:43 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-54366784377so4702084a12.3;
-        Sun, 19 Nov 2023 03:28:41 -0800 (PST)
+	id 1r4grl-00AAEu-2d;
+	Sun, 19 Nov 2023 12:25:35 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-9e62ab773f1so483107566b.0;
+        Sun, 19 Nov 2023 04:25:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700393320; x=1700998120; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ihe5CWoYwzVYQa0PIBn4FXCZubjqfqZzL14QGGmAy2E=;
-        b=H1JcCdqcVW11oTyhl9UDgd0Zcca+jXQsCnBJiEg2gLJOCyiRqg5RdLTs9a6H1ZZafR
-         TtY58EcUFO1/F+KKiT+/7X7C9DAFoSayhrwNJRL/GLOs2Bp6S1crtK82K8EbC/KxAuWv
-         hlPz3t3o5XactmKfWjKM/ogUrLsaEEFHgOgVlmhyjnw0tCT1VVWXuuRUdSZv4wJeMOx5
-         MXPmQR//fjx4c3afN6OoGNZfrHcnJfRiH/gk/cq+dhHM/K3gAAG2QOeqiejEAdR9bP+x
-         +8nhUqf3PlZUTioycoKqpFcBpMkQ1IoLrPRbQLjFmcSOMpIXo4uA3VvVddB9guWX/FLX
-         0n8A==
+        d=gmail.com; s=20230601; t=1700396731; x=1701001531; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=tjBUe+8pD5EhysloSQei8tIcX5fvkeXnqi/PHKa743o=;
+        b=lPHPnG2K6QYU9sSMhNn+i5t9U67Ys9W6Sn5741LnwqnFnWpHvicLT8Y/Zjspel0p85
+         OtMm7vRjNh8/EOA4Y9P++mAhCof3mOtK0TTwNrhLIz+W0vHjc8avYh2YWe1gXp8SsS16
+         TlRsAmzzgTQuIplF7YKb6ETrpGsQ7IDww96f3T5SFC9ntefRwJKAMOO3K/927n4yWgYi
+         lx4Sy83ey5W/Q+dAmCEFvelePmj7M0EqoDO0O794l7KbC8QDil9SMGhS2hBQHrP74DcR
+         fl3pwsy4bSYOxV/0qLPac1w7sI9xr+hcgLIaMSmXlLFl6QLP9gdFXgdeWNWCeURW3MI7
+         ba1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700393320; x=1700998120;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ihe5CWoYwzVYQa0PIBn4FXCZubjqfqZzL14QGGmAy2E=;
-        b=QUNr8GoxZd/XRkLzPh+Nkn6kY1yRSkJ7fvTL/QdimcThWjC7I3zbJkwib1s9r2+M2A
-         MZPfq+7MRwUVNU4FOZ6ZdCHf1G2dosGuH/vat7FLz7EtGlzHi/mwzhF4QG7gQub9tN0R
-         j/G1TxSqk1I1Wz3LLPhZGsHe443xOyUlvxuPkX+5V/+3BF3uhhNtdz6Pm2mVBX01YoUv
-         FDhKcoUjnAG7jJu7FvlHnGMISbw81O8PGZzu0T8Oc6t1f1lzuLVZQeJIaE9mkUKcSSXk
-         v09GqpvO8Mi7U2xpFPBE8HaIa5V4TIw/cevTWczItg3r2ipZSIX9vJWeldYzzLDtg6Kw
-         3wjQ==
-X-Gm-Message-State: AOJu0Ywo9cvh/z8e5LiaqtoIHQm5Rw/Ig0UhheXpb9VH9Uv8J/PypagM
-	ljcFoQ88HrVzTmZmCPxSn6Nx5Y8QmGIfJg==
-X-Google-Smtp-Source: AGHT+IE+w9pgQvDl2Y3wxx8qGfyopeIAjzUYE/Lxfmit0zeTDVBO1PBeuPJks8PhZkZ7FJV0jaU+YQ==
-X-Received: by 2002:a17:906:7396:b0:9fd:8da1:5c9f with SMTP id f22-20020a170906739600b009fd8da15c9fmr571228ejl.15.1700393320105;
-        Sun, 19 Nov 2023 03:28:40 -0800 (PST)
-Received: from zotac.lan. (dynamic-2a01-0c23-bde4-3e00-2223-08ff-fe18-0310.c23.pool.telefonica.de. [2a01:c23:bde4:3e00:2223:8ff:fe18:310])
-        by smtp.gmail.com with ESMTPSA id k22-20020a1709063fd600b009f8af454d0dsm2420378ejj.112.2023.11.19.03.28.39
+        d=1e100.net; s=20230601; t=1700396731; x=1701001531;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tjBUe+8pD5EhysloSQei8tIcX5fvkeXnqi/PHKa743o=;
+        b=Fg+kPCVIKSyhslKaP8wILaMxziao+mDy2yf17PS9/SYNW2AA5WLCqSd7KgaWh+bNVF
+         DgpJiiLbWgzfRijKOtHXqZasU9oCrB6BRLrO/eh1f6mdEweCofccO+aqqnVZL010qm08
+         5rnSowsTeFCL+m/82TZ3rRQ0xsICfubxqE9mq5Ro3kD9SJssf3VHo131DFZToAf7uKqx
+         vge5u8j+h8swS7DmPe/JqK3sfOlaeEiz6BNQJXawzgjpMRGGmNklid4Do0Mx92P0GTz1
+         cv4/m23QgRDyvr+FTc4j9uzOr55B2P2C9XevUiCOiBXzf8X5X7d67Qg3amx9ESiL3q82
+         6N5g==
+X-Gm-Message-State: AOJu0YwDBJO6E4A6VnqnRlrrgMjuxwdA9lbPs1zdI5DcZxiYIanaH6U6
+	x8PVRpDaIo3OtKQ7jTKmE00=
+X-Google-Smtp-Source: AGHT+IHmRWTR6dkvNCQRdmHyDpQY38kA+br73Yvjtw+tD15hi2UZKyom9XBHid029R8bKNivscPAGg==
+X-Received: by 2002:a17:906:73d0:b0:9de:52b:6938 with SMTP id n16-20020a17090673d000b009de052b6938mr3045764ejl.9.1700396730896;
+        Sun, 19 Nov 2023 04:25:30 -0800 (PST)
+Received: from skbuf ([188.26.185.114])
+        by smtp.gmail.com with ESMTPSA id g25-20020a1709064e5900b009e7e7c0d1a9sm2824311ejw.185.2023.11.19.04.25.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Nov 2023 03:28:39 -0800 (PST)
-From: Heiner Kallweit <hkallweit1@gmail.com>
-To: Wolfram Sang <wsa@kernel.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: linux-i2c@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 12/20] drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c: remove I2C_CLASS_DDC support
-Date: Sun, 19 Nov 2023 12:28:17 +0100
-Message-ID: <20231119112826.5115-13-hkallweit1@gmail.com>
-X-Mailer: git-send-email 2.42.1
-In-Reply-To: <20231119112826.5115-1-hkallweit1@gmail.com>
-References: <20231119112826.5115-1-hkallweit1@gmail.com>
+        Sun, 19 Nov 2023 04:25:30 -0800 (PST)
+Date: Sun, 19 Nov 2023 14:25:27 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH net-next 01/15] net: dsa: mt7530: always trap frames to
+ active CPU port on MT7530
+Message-ID: <20231119122527.ccp56obhpofvc3vo@skbuf>
+References: <20231118123205.266819-1-arinc.unal@arinc9.com>
+ <20231118123205.266819-2-arinc.unal@arinc9.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231118123205.266819-2-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231119_032842_616091_CC6B12A6 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20231119_042533_879077_CEBBF355 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,33 +88,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Russell King <linux@armlinux.org.uk>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After removal of the legacy EEPROM driver and I2C_CLASS_DDC support in
-olpc_dcon there's no i2c client driver left supporting I2C_CLASS_DDC.
-Class-based device auto-detection is a legacy mechanism and shouldn't
-be used in new code. So we can remove this class completely now.
+On Sat, Nov 18, 2023 at 03:31:51PM +0300, Arınç ÜNAL wrote:
+> +static void
+> +mt753x_conduit_state_change(struct dsa_switch *ds,
+> +			    const struct net_device *conduit,
+> +			    bool operational)
+> +{
+> +	struct mt7530_priv *priv = ds->priv;
+> +	struct dsa_port *cpu_dp = conduit->dsa_ptr;
 
-Preferably this series should be applied via the i2c tree.
+nitpick: reverse Christmas tree variable ordering
 
-Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
-
----
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c |    1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-index d675c954b..54e46e440 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-@@ -297,7 +297,6 @@ static int mtk_hdmi_ddc_probe(struct platform_device *pdev)
- 
- 	strscpy(ddc->adap.name, "mediatek-hdmi-ddc", sizeof(ddc->adap.name));
- 	ddc->adap.owner = THIS_MODULE;
--	ddc->adap.class = I2C_CLASS_DDC;
- 	ddc->adap.algo = &mtk_hdmi_ddc_algorithm;
- 	ddc->adap.retries = 3;
- 	ddc->adap.dev.of_node = dev->of_node;
-
+> +
+> +	/* Set the CPU port to trap frames to for MT7530. Trapped frames will be
+> +	 * forwarded to the numerically smallest CPU port which the DSA conduit
+> +	 * interface its affine to is up.
+> +	 */
+> +	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
+> +		return;
+> +
+> +	if (operational)
+> +		priv->active_cpu_ports |= BIT(cpu_dp->index);
+> +	else
+> +		priv->active_cpu_ports &= ~BIT(cpu_dp->index);
+> +
+> +	if (priv->active_cpu_ports)
+> +		mt7530_rmw(priv, MT7530_MFC, CPU_EN | CPU_PORT_MASK, CPU_EN |
+> +			   CPU_PORT(__ffs(priv->active_cpu_ports)));
+> +}
 
