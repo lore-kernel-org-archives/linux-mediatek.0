@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE08FC54E76
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Nov 2023 13:44:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C242C072A2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Nov 2023 14:34:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zV0G02cMCrQRq81pK9v8nqhJQd4GJKQxO8IHL1w4VzI=; b=v+60wr54j2NxyCH22VsqTdsVXn
-	L21DYthlrbxmvLq0ciEbONjydjjTagPzJsyZSKrUm6/QA3OGNO2LA+7YojFJG2EemIb8fYSTLi5j7
-	D5OpfaN+N6pTCTB2qah5ybvStm7xWhXZGEifnVHtQ47Pkr/PABwpzDkMK9CpTmZUKJOsBSrj9z3HN
-	nEPQTBUHo3tgNp/CAJ98IMMgYciGXOmpzRteKnsgVVQjQXWfWDVUAHBNE7+ZFNR4VX5/TDvanY2D7
-	ZB0AK7KKLYifWTiPOq9DH4XLZJETqqxctKBpkjMW4+/ioIYs+YTPpacUdfxPAvEzBVgilDaJmdwsT
-	DYfFvRhw==;
+	bh=wbAOew7EQhvdTMrxu7VzSwL0APRrGG2LAuJjAHyG3Ic=; b=3QHg2C/H+1NYwo2vpPC85Clogy
+	IR+L9Oerf4BSKpCSrzo67Wg1ZiNA2mg6be19GPXj0pYiJE/StCShRVkkXs6OI56NXuLvylz/gdWDk
+	qsu32pWL8bLN7QMIApTO+rq2ZgIXZxOZh/z+W/OJDuVSgtFMBsBqt4QAsv1Yc1/pWI09hBLl+R0GL
+	kdGoPKrN+VDhfuvTelRJUGVYMwT3648PkVTbBvSwr5RBcz0z70qdzAsS0ZUrc7i9Dc3NrFrT8qLQp
+	PWOEv12D8Rc3w2tvUiaZ/n6plawRBsxxq/pQc4GDnLr2wsA9EmQ5VejODdmRNyBINuRuaE2qDP3Ug
+	/KSdw+Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4i5h-00AFLB-1w;
-	Sun, 19 Nov 2023 13:44:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r4isv-00AI7O-2o;
+	Sun, 19 Nov 2023 14:34:53 +0000
+Received: from mail-oo1-f52.google.com ([209.85.161.52])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4i5I-00AFGd-1h;
-	Sun, 19 Nov 2023 13:43:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E755960C40;
-	Sun, 19 Nov 2023 13:43:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21239C433C8;
-	Sun, 19 Nov 2023 13:43:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700401415;
-	bh=Ykhh83S0xts5mnucfZ61RXaL6imVnzM3vTSGFUWTsa4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mBgH0TYwUMqPo6tZdkH+jYPvQ2mIcW8dvziUL8qxKahJ6syPgFV+fv+Rglv6l7Lcg
-	 S8WhxfhryWuSjM7vAWlGDZIai0LdYjdYO5g6o4q9PHSRVJmTwEL7znjOA6Vv8HVIXw
-	 3Tw7/Xa9DN4R7sjcGnFM79xx9QDeJsL6W256xcQ6PNXw1wt+8aSpfzf1guZ3xj3qiL
-	 wkxT9IGAsXD99aYfaterIoN5gZQAOMMK+pFXJOslpMCqhp6keXI3VbwXOYwqHvh0eZ
-	 oU94WN/djsPa8DX+Lg+/i/BAU4vfYM2tuG4MCjbuJH9/a++T95txhRmYUyxoMWjN/O
-	 RnipX/RgBAvqA==
-Date: Sun, 19 Nov 2023 13:43:29 +0000
-From: Conor Dooley <conor@kernel.org>
-To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	=?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH 2/3] dt-bindings: arm64: dts: mediatek: Add Acelink
- EW-7886CAX access point
-Message-ID: <20231119-jazz-wobble-6ff4985b1bf0@spud>
-References: <20231117104315.9718-2-zajec5@gmail.com>
+	id 1r4isr-00AI6r-0u;
+	Sun, 19 Nov 2023 14:34:52 +0000
+Received: by mail-oo1-f52.google.com with SMTP id 006d021491bc7-5875e24c749so1995028eaf.1;
+        Sun, 19 Nov 2023 06:34:47 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700404487; x=1701009287;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wbAOew7EQhvdTMrxu7VzSwL0APRrGG2LAuJjAHyG3Ic=;
+        b=OWxWeM/Xmdh8zjBX6LafI03bUWboe/0+JN+I/XFHbXTptmjXzBBbO0iiSrO9KOUKNm
+         bf3TCwcBEYotIl2AN3eEefxTKfGOYL/PtwSJ9FLIP+qu7gBDlru1cangprqwSB5FQ6+A
+         aiOhrvkOf24aicU5phVzLKuiPa82mkyUAAe35gPwYoq9ZcsBC+5LK0LMrrCAAbPbqmml
+         jQ8vQFszWQfxjFfkw7C7Ha9gkRvmtu58F0e2IeAzplqpHtQQKeBeGCF4ZyWoS/pktlbf
+         jBuSi8ytVUFPfB/wLY4Ayr/tyDZ4EfCLPbz025IeKTHR7IA0NBpycPzCz92G0SrVKN6A
+         +Hxg==
+X-Gm-Message-State: AOJu0Yw+f7eBwf8fTFjC9WfZjjm7TWTPxfYr2XPXwvT8HjTmR3Di46p1
+	vA+Z9SVJdr0o596CzzweiA==
+X-Google-Smtp-Source: AGHT+IFb+T9RykUaRT49skiYcMHAWrA0Yrdg/vQdhUJcpftXjvADNdhiMeRf/RUyq/2tEoqOp1kpfg==
+X-Received: by 2002:a05:6820:2290:b0:57b:3b48:6f11 with SMTP id ck16-20020a056820229000b0057b3b486f11mr5163096oob.4.1700404486826;
+        Sun, 19 Nov 2023 06:34:46 -0800 (PST)
+Received: from herring.priv ([2607:fb90:45e3:889f:15b4:1348:6d64:224b])
+        by smtp.gmail.com with ESMTPSA id w18-20020a4ae4d2000000b00581fc1af0a7sm1055669oov.28.2023.11.19.06.34.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 19 Nov 2023 06:34:45 -0800 (PST)
+Received: (nullmailer pid 173773 invoked by uid 1000);
+	Sun, 19 Nov 2023 14:34:41 -0000
+Date: Sun, 19 Nov 2023 08:34:41 -0600
+From: Rob Herring <robh@kernel.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, Frank Rowand <frowand.list@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, andriy.shevchenko@linux.intel.com, Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org, broonie@kernel.org, gregkh@linuxfoundation.org, hdegoede@redhat.com, james.clark@arm.com, james@equiv.tech, keescook@chromium.org, petr.tesarik.ext@huawei.com, rafael@kernel.org, tglx@linutronix.de, Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>
+Subject: Re: [RFC PATCH v2 0/7] of: Introduce hardware prober driver
+Message-ID: <20231119143441.GA157654-robh@kernel.org>
+References: <20231109100606.1245545-1-wenst@chromium.org>
+ <859ac058-c50a-4eb8-99b6-3011ef4e7529@collabora.com>
+ <CAL_JsqK64w3+r_LJZoh50PzAUcsvH6ahSDCqgSiKrD3LBAXE9g@mail.gmail.com>
+ <CAD=FV=VUZy9DaZgKafSpXXopD5k8ExGSR97BjAqC5tupPoxNfQ@mail.gmail.com>
+ <CAL_Jsq+puq20EWkQg1RTs2zfmh4DGbqz1krp+19c=wPXnLT5dA@mail.gmail.com>
+ <CAD=FV=X-17COQ2-tycV1bSuCrGy7MJ88Un8nA-a-ODexvgi9TQ@mail.gmail.com>
+ <CAL_JsqKR_YD6hm4Lv+OuCKms8Ha61BZRKUuiLYPgSkz3_3NCFA@mail.gmail.com>
+ <CAD=FV=XO5VNuaVKwBHLQC1ukdpHQO0-XTaKnRM=rigbcdOytgQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="A6mvgtPE8mST9StS"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20231117104315.9718-2-zajec5@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAD=FV=XO5VNuaVKwBHLQC1ukdpHQO0-XTaKnRM=rigbcdOytgQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231119_054354_347352_71C9E7D2 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20231119_063449_346108_5FD33E33 
+X-CRM114-Status: GOOD (  47.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +87,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Nov 15, 2023 at 05:13:50PM -0500, Doug Anderson wrote:
+> Hi,
+> 
+> On Wed, Nov 15, 2023 at 4:35 PM Rob Herring <robh+dt@kernel.org> wrote:
+> >
+> > On Wed, Nov 15, 2023 at 2:45 PM Doug Anderson <dianders@chromium.org> wrote:
+> > >
+> > > Hi,
+> > >
+> > > On Wed, Nov 15, 2023 at 2:28 PM Rob Herring <robh+dt@kernel.org> wrote:
+> > > >
+> > > > > So if we're searching the whole device tree for "failed-needs-probe"
+> > > > > then we need to figure out which devices are related to each other. If
+> > > > > a given board has second sources for MIPI panels, touchscreens, and
+> > > > > trackpads then we need to know which of the "failed-needs-probe"
+> > > > > devices are trackpads, which are touchscreens, and which are MIPI
+> > > > > panels. Do you have any suggestions for how we should do that? Maybe
+> > > > > it was in some other thread that I missed? I guess we could have a
+> > > > > board-specific table mapping (compatible + node name + reg) to a
+> > > > > class, but that feels awkward.
+> > > >
+> > > > Node name is supposed to correspond to device class, so why not use
+> > > > that (no path or unit-address.) and nothing else (well, besides
+> > > > "status")?
+> > >
+> > > One problem is that I could imagine having two second source trackpads
+> > > that both have the same i2c address. That would give them the same
+> > > name, right? I guess you could maybe come up with some sort of suffix
+> > > rule? Like
+> > >
+> > > trackpad-1@10 {
+> > >   compatible = "elan,blah";
+> > >   ret = <0x10>;
+> > >   status = "failed-needs-probe";
+> > >   ...
+> > > }
+> > > trackpad-2@10 {
+> > >   compatible = "goodix,gt7375p";
+> > >   ret = <0x10>;
+> > >   status = "failed-needs-probe";
+> > >   ...
+> > > }
+> > >
+> > > Then I guess the class would be "trackpad"?
+> >
+> > That issue is somewhat orthogonal because it is not following the spec.
+> 
+> I'm not sure why you say it's orthogonal. The whole reason why we get
+> into the situation above is that we could have two devices, only one
+> of which is present (hence the status of "failed-needs-probe"), that
+> are the same type and have the same "reg" address.
 
---A6mvgtPE8mST9StS
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I just mean that defining a node name for 2 devices of the same class 
+and at same address is separate problem from selecting which one to 
+enable.
 
-On Fri, Nov 17, 2023 at 11:43:14AM +0100, Rafa=C5=82 Mi=C5=82ecki wrote:
-> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
->=20
-> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
->=20
-> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+> 
+> Essentially the whole "failed-needs-probe" is extending the spec,
+> right? While extending the spec, we also need to talk about what to do
+> if some of the devices that we need to probe have the same class and
+> the same "reg".
+> 
+> 
+> > I'm not sure mixing the 2 styles of node names is a good idea. While
+> > not used too much, matching by node name does ignore the unit-address,
+> > but I'm not sure we could ignore a '-N'.
+> >
+> > I think our options are either add something to the unit-address or
+> > use i2c-mux binding. Adding to the unit-address is not unprecedented.
+> > I did that for some of the register bit level bindings where you have
+> > a node for different bits at the same address. The downside is
+> > unit-address is bus specific, so we'd have to add that for multiple
+> > buses. For the i2c-mux, it's perhaps a bit complex and I'm not sure
+> > what if anything you'd have to do to manage the mux that's not really
+> > there.
+> 
+> Somehow it feels weird to use an i2c-mux because there's no real mux
+> present, right? ...so this would be a virtual (bogus) device that
+> doesn't really exist in hardware.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Yes, shrug... 
 
-Cheers,
-Conor.
 
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
-ntation/devicetree/bindings/arm/mediatek.yaml
-> index a5999b3afc35..cfdd3317edda 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -84,6 +84,7 @@ properties:
->            - const: mediatek,mt7629
->        - items:
->            - enum:
-> +              - acelink,ew-7886cax
->                - bananapi,bpi-r3
->                - mediatek,mt7986a-rfb
->            - const: mediatek,mt7986a
-> --=20
-> 2.35.3
->=20
+> ...though I guess if the "mux" type binding is OK then maybe we just
+> use that as the HW prober, at least for i2c devices...
 
---A6mvgtPE8mST9StS
-Content-Type: application/pgp-signature; name="signature.asc"
+Except for any other case where it's different addresses or different 
+buses. Maybe different addresses could still use the same thing. I 
+suppose the same class of device is unlikely to be on a different bus.
 
------BEGIN PGP SIGNATURE-----
+An extension to the unit-address would be the simpler solution, so we 
+should explore that first I think.
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZVoRAQAKCRB4tDGHoIJi
-0qibAP4nkr3gB60ji3RyS1MslpWLnKXqtCKvKSqNZX/SAsFg+gD/fl+6b2xL4ByG
-u6k6OrAceh9G/2CLup3rwZX0wSf+5g4=
-=rrzj
------END PGP SIGNATURE-----
-
---A6mvgtPE8mST9StS--
+Rob
 
