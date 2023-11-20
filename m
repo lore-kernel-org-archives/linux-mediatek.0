@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AE3EC197A0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 08:58:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 120CFC54E76
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 09:04:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z8/E/xZlfo9QLnO29b5tVQnNMcW4PlxC/KQPLbfbxIk=; b=i8lBIqCnZhqvCkYyWDijfNiu9x
-	ZRwUwMLVJHYdemNwz4tFc8c+oNxTpPcmVK7K+scAidkQJCKCDtNcoog5yIDuOSC6o2v6+w2lLCmeJ
-	dhphQmSEh4mai155svEnsCoDDYn0PSXBhTRO1s0so4LDHGdqEZI7+XEfn9RHfJimGjY6ONn6iVDDl
-	UthwmGDjAjL+Wh36ZqpPvGjraDfzx98zcQ4cJV1GxXLEmcdWyQ5/+GGSJgjuqS8nrAdVops9aQ8i0
-	IHGzV+Ide2RTpqDnmS9X1X7hZLNTOeoSMILbgvpJhOlRZFvgg1F4FQhJ+RHE+9/CMpASazqBgUt3r
-	Q2fn934w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U4o5oxyf1PRg0FdF9g6RRx/27QAYmxWt4Ic3flE1EdY=; b=cIqbnKU5AUSb6+zZgA0bW0JBZq
+	Cc07f0O8HV8LdV+4YC8xPgP1E7EFjIJ9khgkpSrP56EZcxmF2amyWcadqk+g45VxnGsCUTJwaEhgZ
+	0+43UvXRtgs2M11Nesy5Vu2/D8QVL7EOxtltj2/j+qu01FFto6AyAeTXgncwdYqN6pLqJM8lPrZpm
+	tU2ZrOFTDmU84pbxPYlOFm8p4GnnL5H8BtI9DjKAqTwb3bQlYXDry9vBs72rN+ASgaQDEuaGMFuPK
+	r1R7/75UyT1B1L2N0SB7PyPjQ71r6fxWxc/pZBiWL4+F0JvgQW1FjDzcEb4CKkzzyV0REs/LvsAnW
+	8xW5SJrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r506C-00BZcq-24;
-	Mon, 20 Nov 2023 08:57:44 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r50Ch-00BaY4-2E;
+	Mon, 20 Nov 2023 09:04:27 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5062-00BZaW-2X;
-	Mon, 20 Nov 2023 08:57:41 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D798B6603149;
-	Mon, 20 Nov 2023 08:57:30 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700470651;
-	bh=d23ZT5zVaG2k3DicMJVOBp0FoX7BK2oj+2zL9rkLlcU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jFG/4oQkTiPCuFeWdj+hKl+IkpmsojIFQH+cPvfEWyMlJLPEfzYgpC5vo3ZDDcbPj
-	 O/ygRUdSfa+jCME81v7FE0srl3G9yeaK9m1nub4CTXF70ffpom3huQQvk1bFence5W
-	 4+Gsk+5L/npS23XvSMwPXt6c8++JAVJ9JUnXoWrdeA0Zzd8LmfqtGKoDKapMfTJ2o9
-	 yN147CWiV5TaVRcAlkzg0NjsLqUEbvMH6M+Qhu5acHZkXc0Xi10CCtqJ9GbZaftzjK
-	 AxJGSyXO2Dfo9g+0ULn20qDO/J3Ax1Rt3TGn3NBeBltmuJa0u9ekcZXXxu1tOJls+4
-	 5ZAGzDZSmIvnQ==
-Message-ID: <0b95d90d-5dd3-43da-a860-6a84019d097a@collabora.com>
-Date: Mon, 20 Nov 2023 09:57:27 +0100
+	id 1r50CW-00BaVt-0m
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Nov 2023 09:04:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B5BD460FFF;
+	Mon, 20 Nov 2023 09:04:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDA5FC433C8;
+	Mon, 20 Nov 2023 09:04:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700471053;
+	bh=hot5sDVCzsRPH0e3Y2pQh0BXJobZ2r4KAF/Bw8Oaf5U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=B936dTkbFhA+GmiU/a37uc44KZTkMjCHD69bfAtxdPoZZe1iN4wFPBXotUTRZeiCe
+	 uxNi3MvmpbWLCLAR2ks/c+brwOHGXZrBFX1skxuQS+4lN9LUl46HJIIICn+9hckRad
+	 buqPBSA/yMM09WzRAVAMvlvI+nB/vzH08jiXNUpiDm+ggel4qmoonYAGKOYSOEFKhc
+	 bHNjShvd6Mk19wW9nlqLugpeucGK+B2PRtbSC7rQOaBO1aUIGMHQwMqlJbt3KAIs/U
+	 vMUf7g96lCwa8TWYHIh856s1luDdVz3BPTkbWyf9OOMwNKMuJvzlcUTuGU0xJbMnJC
+	 ZuyiGaWdD8lDg==
+Date: Mon, 20 Nov 2023 10:04:09 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: nbd@nbd.name, deren.wu@mediatek.com, Sean.Wang@mediatek.com,
+	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
+	Eric-SY.Chang@mediatek.com, km.lin@mediatek.com,
+	robin.chiu@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
+	Shayne.Chen@mediatek.com, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] wifi: mt76: mt7921: fix country count limitation for
+ CLC
+Message-ID: <ZVshCS5T2EBCn1HH@lore-desk>
+References: <20231120032750.19747-1-mingyen.hsieh@mediatek.com>
+ <20231120032750.19747-2-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: trivial: align code
-Content-Language: en-US
-To: Eugen Hristev <eugen.hristev@collabora.com>, linux-sound@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20231117160914.65341-1-eugen.hristev@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231117160914.65341-1-eugen.hristev@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="MMCwj60EzpBmdCna"
+Content-Disposition: inline
+In-Reply-To: <20231120032750.19747-2-mingyen.hsieh@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_005735_086104_D737FEAA 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20231120_010416_400807_136ED30B 
+X-CRM114-Status: GOOD (  18.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,71 +79,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/11/23 17:09, Eugen Hristev ha scritto:
-> No functionality change, squash some lines and align parameters for
-> function prototypes to 80 chars.
-> 
 
-Please use scripts/get_maintainer.pl to get the correct recipients list.
+--MMCwj60EzpBmdCna
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+>=20
+> Due to the increase in the number of power tables on CLC, the variable
+> nr_country is no longer sufficient to represent the total quantity.
+> Therefore, we have switched to calculating the length of clc buf to
+> obtain the correct power table. Additionally, the version number has
+> been incremented to 1.
+>=20
+> Fixes: 23bdc5d8cadf ("wifi: mt76: mt7921: introduce Country Location Cont=
+rol support")
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 > ---
->   sound/soc/mediatek/mt8186/mt8186-afe-control.c | 13 +++++++------
->   1 file changed, 7 insertions(+), 6 deletions(-)
-> 
-> diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-control.c b/sound/soc/mediatek/mt8186/mt8186-afe-control.c
-> index 55edf6374578..dda648c1e8f8 100644
-> --- a/sound/soc/mediatek/mt8186/mt8186-afe-control.c
-> +++ b/sound/soc/mediatek/mt8186/mt8186-afe-control.c
-> @@ -181,7 +181,8 @@ static unsigned int pcm_rate_transform(struct device *dev, unsigned int rate)
->   	return MTK_AFE_PCM_RATE_48K;
->   }
->   
-> -unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev, unsigned int rate)
-> +unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev,
-> +					       unsigned int rate)
+>  drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mcu.c
+> index 753a4fc45c70..e4edea1ab3dd 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> @@ -1264,6 +1264,7 @@ int __mt7921_mcu_set_clc(struct mt792x_dev *dev, u8=
+ *alpha2,
+>  		u8 mtcl_conf;
+>  		u8 rsvd[62];
+>  	} __packed req =3D {
+> +		.ver =3D 1,
+>  		.idx =3D idx,
+>  		.env =3D env_cap,
+>  		.env_6g =3D dev->phy.power_type,
+> @@ -1271,7 +1272,8 @@ int __mt7921_mcu_set_clc(struct mt792x_dev *dev, u8=
+ *alpha2,
+>  		.mtcl_conf =3D mt792x_acpi_get_mtcl_conf(&dev->phy, alpha2),
+>  	};
+>  	int ret, valid_cnt =3D 0;
+> -	u8 i, *pos;
+> +	__le16 buf_len =3D 0;
 
-That's not needed, 86 columns is ok.
-
->   {
->   	switch (rate) {
->   	case 8000:
-> @@ -222,7 +223,8 @@ unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev, unsigned int
->   	return MTK_AFE_TDM_RELATCH_RATE_48K;
->   }
->   
-> -unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate, int aud_blk)
-> +unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate,
-> +				   int aud_blk)
-
-Same here, not needed.
-
->   {
->   	switch (aud_blk) {
->   	case MT8186_DAI_PCM:
-> @@ -234,14 +236,13 @@ unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate, int au
->   	}
->   }
->   
-> -int mt8186_dai_set_priv(struct mtk_base_afe *afe, int id, int priv_size, const void *priv_data)
-> +int mt8186_dai_set_priv(struct mtk_base_afe *afe, int id, int priv_size,
-> +			const void *priv_data)
-
-ditto.
-
->   {
->   	struct mt8186_afe_private *afe_priv = afe->platform_priv;
->   	void *temp_data;
->   
-> -	temp_data = devm_kzalloc(afe->dev,
-> -				 priv_size,
-> -				 GFP_KERNEL);
-> +	temp_data = devm_kzalloc(afe->dev, priv_size, GFP_KERNEL);
-
-The only change I agree on is this one... but I don't know if it's even worth
-making a commit for just this...
+I think here should be:
+	u16 buf_len;
 
 Regards,
-Angelo
+Lorenzo
 
+> +	u8 *pos;
+> =20
+>  	if (!clc)
+>  		return 0;
+> @@ -1281,12 +1283,15 @@ int __mt7921_mcu_set_clc(struct mt792x_dev *dev, =
+u8 *alpha2,
+>  	if (mt76_find_power_limits_node(&dev->mt76))
+>  		req.cap |=3D CLC_CAP_DTS_EN;
+> =20
+> +	buf_len =3D le16_to_cpu(clc->len) - sizeof(*clc);
+>  	pos =3D clc->data;
+> -	for (i =3D 0; i < clc->nr_country; i++) {
+> +	while (buf_len > 16) {
+>  		struct mt7921_clc_rule *rule =3D (struct mt7921_clc_rule *)pos;
+>  		u16 len =3D le16_to_cpu(rule->len);
+> +		u16 offset =3D len + sizeof(*rule);
+> =20
+> -		pos +=3D len + sizeof(*rule);
+> +		pos +=3D offset;
+> +		buf_len -=3D offset;
+>  		if (rule->alpha2[0] !=3D alpha2[0] ||
+>  		    rule->alpha2[1] !=3D alpha2[1])
+>  			continue;
+> --=20
+> 2.18.0
+>=20
+
+--MMCwj60EzpBmdCna
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZVshCQAKCRA6cBh0uS2t
+rIREAQD5H+ObbE8ZQzZx7NucAaG9CKKtB3ffJ+HYAsh3jyy3mwD/csi/JSC80R93
+M4Cc4k16HlLewFDXfS34E8ILJNfmKQI=
+=ex5T
+-----END PGP SIGNATURE-----
+
+--MMCwj60EzpBmdCna--
 
