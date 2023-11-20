@@ -4,131 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3715FC5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 17:19:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDF9FC2BB3F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 17:27:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R82qYWgHzyabWKd11HpcZVo2+/o3FL2YzV126Cd5vsM=; b=O8JvPFKXyVAK1g9Nr/fgHi6a1a
-	sJGbALPslTwybl2cApaX4HmsjjoErGxJ+6jycSo5nGRWw4C1BaKr9sOaXHqX3QRrJv6M0SgRl/9x3
-	NlnE+hvID3QiGsWp8ZYepSQwI5qmB0xiYRUYkOxdFnuyYAOU+Ndsh78PG7xiO7cQYNe6di+DQ8pOJ
-	aRJT2UNYM2yqt46WN73lylK8YGVs3IbUNa2H2gtMOtzKKrlmjvrWMh9R+gIlzuSffzN3+FLBmiUgm
-	7bdm/iaMMLI3qPnKmpMoPJ41UEPs8eadQ/pIqPhgNPV9PMJxwxCHHkgnPLutd7ZzLeEF5+i/Z+oGO
-	37sgygSg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xM3c7PPthilM+mdtoYqBLNrP+ChRJiSMtXVAPSkDtUk=; b=oU76JdQi7N55NSR435LYBm2KvR
+	V/Eu9qjQLQQONh4CaivjFoTy73FQKgmGbt0zhqbhi55HjnFVB06iwPMezGdEe/q9jIoep/XNKCg2c
+	WdJftyo6LjaHV2krQD5ZVQytHdbPIzLQBVSI1HBq0o5a0vugoLbn0/5IM4cvEVEVDIU1m+voQWEWH
+	Q/bS0ysDPoXRL04pAj+V0LHXqBX4aEtBCjCD7gNUaBH2gbKRoI2w5IbhWRlyncZv7uOnqn9opodQC
+	5ygPIYCfeNpLtrnnUD7WgdCgfJ3SGcLfYpYeOeJ8hy0jIX2jSeZYqot/XHvMeACXmj4S/GFASWDc4
+	Gg2GG+Aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r57wB-00Dj81-2K;
-	Mon, 20 Nov 2023 17:19:55 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1r583a-00Dngg-2n;
+	Mon, 20 Nov 2023 17:27:35 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r57w6-00Dj1i-2d;
-	Mon, 20 Nov 2023 17:19:52 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1cc0e78ec92so28263945ad.3;
-        Mon, 20 Nov 2023 09:19:49 -0800 (PST)
+	id 1r583X-00Dnad-0L;
+	Mon, 20 Nov 2023 17:27:33 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5094727fa67so6433494e87.3;
+        Mon, 20 Nov 2023 09:27:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700500788; x=1701105588; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=R82qYWgHzyabWKd11HpcZVo2+/o3FL2YzV126Cd5vsM=;
-        b=lD8uKoBZX9kqjF/5T65VEHsxPqvVoEDed6ZxV52NtcRNIvN64bLdvkw/lgBG8RrYxB
-         rpiWDiPwUSeqrHcTRo2ibwbam7ZRdxg2WrSMu9Gq0Huk9zzZxC6v5RF6qOolIhdK4XWi
-         Fe65JojlA+YJgwAZDwTVgWjTvyppHMgPFORm7qEAuM0dic7wCCnxF1RdzCuwmAueXHxB
-         kdSI0zcHBDZlM3CmQWkYES1PJDZtU6YOXNOSJnYZrckzbdaaWb5PbXUk9Pn4V3XdyVgZ
-         dcNsYA7JYJe/950uBQ9+iH7DEl0hnQeO7LFP9l51VEfz1skOhzzD2WY+pN8IJFMSuQrA
-         iv6g==
+        d=gmail.com; s=20230601; t=1700501245; x=1701106045; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xM3c7PPthilM+mdtoYqBLNrP+ChRJiSMtXVAPSkDtUk=;
+        b=U63o/y3AD2nxOrnOoGJfJji7CusIiufWIchnw9kK4p3GgWrV9B9nLAPUMCwjQxIMlO
+         k6qq5xOl5czJ9Da9AfJqxmg6uYdizsOnZ7ow8ZcbX/e7jC9SQw72sSvbMZEZ1/hrKLst
+         bi1zYZGC2Hv/z426pWal32QoOKT4VhkVXdg5ZK0ME6pX+L8Mk0afVh3zRVbV+bG9LCqu
+         Gd42kaN5of3X/ZmCIHNf3mthlGWo5Y9XbaEBfBaSJ2qRESbT9+0AIb9K2nRbXLrAu1Di
+         IMrwdrW2bQ6M1bSxsojcfZAnTGz9xw1y+CVrQdFhgLmsoYs13CTCDLKF/yZmQ7jE3EJj
+         S97w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700500788; x=1701105588;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=R82qYWgHzyabWKd11HpcZVo2+/o3FL2YzV126Cd5vsM=;
-        b=c4HKNkO9NpOqRAfxMjgCYc5KTvTm8xH+TgYmUhyP/aA2G7NdmVx0WzBRZEJNaUjdzb
-         ISZ9Xeo8Y5uBEsyGdegJa7sqVUQ14+eJkXWZTu8bSllOqCtQZQVpK2x0+VdtxjScSsSZ
-         ODYBQxUKafMX5f6WLi3sSOSC/RM0/buGgWhVCK7KOgAJczHbYuO+UoKLfCqZm1nZfi2F
-         CGMW1g6i5s43I6crp+1qzL6JYQr3MYVO/DgAn71S66SqHDPSYU+p1kMBNaZ8T1X81Shq
-         mgeyBU4YnhsHVEhklYJ9Nyi7bFYBUSjEHVNOYlKZfneF6vFjFOosMIRBAkOfOwNFxHy+
-         JhcQ==
-X-Gm-Message-State: AOJu0Yz5bH8uvv0Yb1XzR1ZVTHIRmpE/SCAEOnKCOtlT8fkXc/VAcfq8
-	x4oMhSJmpDqqq2FlcJ+SE+Q=
-X-Google-Smtp-Source: AGHT+IHsC9lTDG/b/GONQkCY5W/Eh6jxxNasdKd8ye72X4RlUKsgeESMk2QD0S3Eews7i7Mx3UqP2Q==
-X-Received: by 2002:a17:902:7c8f:b0:1cc:3de0:bcc4 with SMTP id y15-20020a1709027c8f00b001cc3de0bcc4mr5706484pll.44.1700500788281;
-        Mon, 20 Nov 2023 09:19:48 -0800 (PST)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id h18-20020a170902f7d200b001cf5d425244sm2420579plw.298.2023.11.20.09.19.47
+        d=1e100.net; s=20230601; t=1700501245; x=1701106045;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xM3c7PPthilM+mdtoYqBLNrP+ChRJiSMtXVAPSkDtUk=;
+        b=W054Fq6CjGeAjHcYaZ3BYuzrfKOzLm06qQ33zYHvRTb5NA3U1gMFi0M7l8QQb9UHyX
+         hQwclbGRim/HeX34Qz/Cl8NJedc83lK3zvX/9VO0bDLqblUDey56wZc2fDYBkINyduad
+         zeNXDRBnKtBV9Y+vbsVm+0DJ/zsQHfxvNBymVcldjiNRK/zxGBI9yxb3jgqRfFexul5m
+         JwIZTnZJ4K3rc7ooSsWG4HtWM6uH1VvCMFDiilRhA1fz9NWtyAK2N5iOc5hWCizaGMpB
+         xCqV9hZJzV95ixDaSLcQKrc6y0amRR+2VY4DNUZUMf6ejuw1GvdcTN5p0qjlSffdeZE9
+         VdVA==
+X-Gm-Message-State: AOJu0YwMwLzn1l2CUVXaxdmG9NhJs6BAxPmMp7/H/c3Gq7pCmnWKbUQu
+	WCdLfcMc9T4gRrE9isr7HxA=
+X-Google-Smtp-Source: AGHT+IHhwus3LZ9hcly7AHAGwLptRKG1AiXE3sRtHL/h1JYi/AmNkY1+8Yp1GWECgh5streU2vI7lA==
+X-Received: by 2002:ac2:4552:0:b0:509:4863:137d with SMTP id j18-20020ac24552000000b005094863137dmr5968502lfm.7.1700501244454;
+        Mon, 20 Nov 2023 09:27:24 -0800 (PST)
+Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.googlemail.com with ESMTPSA id f2-20020a50ee82000000b00548c4c4b8d5sm1134828edr.13.2023.11.20.09.27.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 Nov 2023 09:19:47 -0800 (PST)
-Message-ID: <dd9c2e72-c0dd-4e94-9474-a20b4598a0d4@roeck-us.net>
-Date: Mon, 20 Nov 2023 09:19:46 -0800
+        Mon, 20 Nov 2023 09:27:24 -0800 (PST)
+Message-ID: <b13b6ad3-2ef9-482a-bec4-8f23de6c951f@gmail.com>
+Date: Mon, 20 Nov 2023 18:27:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] watchdog: mediatek: mt7988: add wdt support
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Rob Herring <robh+dt@kernel.org>,
+Subject: Re: [PATCH 3/3] arm64: dts: mediatek: Add Acelink EW-7886CAX
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <4d7db8786dce35273db516f3d41228bc27a08fe9.1699980962.git.daniel@makrotopia.org>
- <3f5ed9656ea66637d259e9771ed852511369ba9b.1699980962.git.daniel@makrotopia.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <3f5ed9656ea66637d259e9771ed852511369ba9b.1699980962.git.daniel@makrotopia.org>
+ Conor Dooley <conor+dt@kernel.org>
+Cc: =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?=
+ <nfraprado@collabora.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Chris Morgan <macromorgan@hotmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Sean Wang
+ <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+References: <20231117104315.9718-2-zajec5@gmail.com>
+ <20231117104315.9718-3-zajec5@gmail.com>
+ <0c3267e5-5371-4fd8-a0f6-360ff28c9dda@collabora.com>
+Content-Language: en-US
+From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+In-Reply-To: <0c3267e5-5371-4fd8-a0f6-360ff28c9dda@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_091950_856327_C69EC6F2 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20231120_092731_167722_CA581EB0 
+X-CRM114-Status: GOOD (  21.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,57 +104,244 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/14/23 09:04, Daniel Golle wrote:
-> Add support for watchdog and reset generator unit of the MediaTek
-> MT7988 SoC.
+On 20.11.2023 15:17, AngeloGioacchino Del Regno wrote:
+> Il 17/11/23 11:43, Rafał Miłecki ha scritto:
+>> From: Rafał Miłecki <rafal@milecki.pl>
+>>
+>> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
+>> It has 512 MiB of RAM, one 2.5 Gbps PoE (802.3at) Ethernet port and
+>> on-SoC Wi-Fi.
+>>
+>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+>>   .../mediatek/mt7986a-acelink-ew-7886cax.dts   | 175 ++++++++++++++++++
+>>   2 files changed, 176 insertions(+)
+>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+>> index e6e7592a3645..9ff2ab6c5e4d 100644
+>> --- a/arch/arm64/boot/dts/mediatek/Makefile
+>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+>> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+>> new file mode 100644
+>> index 000000000000..18d19281dfdb
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+>> @@ -0,0 +1,175 @@
+>> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
+>> +
+>> +/dts-v1/;
+>> +#include <dt-bindings/input/input.h>
+>> +#include <dt-bindings/gpio/gpio.h>
+>> +#include <dt-bindings/leds/common.h>
+>> +
+>> +#include "mt7986a.dtsi"
+>> +
+>> +/ {
+>> +    model = "Acelink EW-7886CAX";
+>> +    compatible = "acelink,ew-7886cax", "mediatek,mt7986a";
+>> +
+>> +    aliases {
+>> +        serial0 = &uart0;
+>> +    };
+>> +
+>> +    chosen {
+>> +        stdout-path = "serial0:115200n8";
+>> +    };
+>> +
+>> +    memory@40000000 {
+>> +        reg = <0 0x40000000 0 0x20000000>;
+>> +        device_type = "memory";
+>> +    };
+>> +
+>> +    keys {
+>> +        compatible = "gpio-keys";
+>> +
+>> +        key-restart {
+>> +            label = "Reset";
+>> +            gpios = <&pio 7 GPIO_ACTIVE_LOW>;
+>> +            linux,code = <KEY_RESTART>;
+>> +        };
+>> +    };
+>> +
+>> +    leds {
+>> +        compatible = "gpio-leds";
+>> +
+>> +        led-0 {
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
-> v3: fix wrong function parameter name in kernel-doc comment
-> v2: call new toprgu_reset_sw_en_unlocked from toprgu_reset_update while
->      holding lock.
+> Please, reorder by name
 > 
->   drivers/watchdog/mtk_wdt.c | 40 ++++++++++++++++++++++++++++++++++++++
->   1 file changed, 40 insertions(+)
-> 
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index b2330b16b497a..3b4ee7185feed 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -58,6 +58,8 @@
->   #define WDT_SWSYSRST		0x18U
->   #define WDT_SWSYS_RST_KEY	0x88000000
->   
-> +#define WDT_SWSYSRST_EN		0xfc
-> +
->   #define DRV_NAME		"mtk-wdt"
->   #define DRV_VERSION		"1.0"
->   
-> @@ -71,10 +73,12 @@ struct mtk_wdt_dev {
->   	struct reset_controller_dev rcdev;
->   	bool disable_wdt_extrst;
->   	bool reset_by_toprgu;
-> +	bool has_swsysrst_en;
->   };
->   
->   struct mtk_wdt_data {
->   	int toprgu_sw_rst_num;
-> +	bool has_swsysrst_en;
->   };
->   
->   static const struct mtk_wdt_data mt2712_data = {
-> @@ -89,6 +93,11 @@ static const struct mtk_wdt_data mt7986_data = {
->   	.toprgu_sw_rst_num = MT7986_TOPRGU_SW_RST_NUM,
->   };
->   
-> +static const struct mtk_wdt_data mt7988_data = {
-> +	.toprgu_sw_rst_num = 24,
+>              color =    ...
+>              function = ...
+>              gpios = ...
 
-Kind of odd to have this defined locally, while the others are in include files,
-but not worth arguing about. Please make it a define at the top of the file,
-though.
+Can you explain why and if there is a place I can find rules to follow
+regarding such aspects? I really would like to just be aware of all
+rules and don't waste anyone's time for such details.
 
-Thanks,
-Guenter
+FWIW I checked Documentation/devicetree/bindings/*.rst (after few years
+I admit) but I couldn't find anything there about properties order.
+
+If we currently don't have rules I don't really think we should enforce
+following per-maintainer preferences. I really don't object your
+suggestions but there is simply no way to remember each maintainer's
+rules. We simply have too many subsystems and architectures boards.
+
+
+>> +            function = LED_FUNCTION_STATUS;
+>> +            color = <LED_COLOR_ID_RED>;
+>> +            gpios = <&pio 18 GPIO_ACTIVE_HIGH>;
+>> +        };
+>> +
+>> +        led-1 {
+>> +            function = LED_FUNCTION_STATUS;
+>> +            color = <LED_COLOR_ID_GREEN>;
+>> +            gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
+>> +        };
+>> +
+>> +        led-2 {
+>> +            function = LED_FUNCTION_STATUS;
+>> +            color = <LED_COLOR_ID_BLUE>;
+>> +            gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
+>> +        };
+>> +    };
+>> +};
+>> +
+>> +&watchdog {
+> 
+> Ordering again, watchdog goes before wifi
+
+Actually I ordered those in what I believe to be the most natural
+numeric order. All those blocks references are ordered by the order
+they appear in the included file and those follow numeric order I
+believe.
+
+I'd go as far as to claim using alhapbetical labels order is pretty
+weak. Labels can be renamed and that would require reordering a lot of
+.dts entries. On the other hand SoC's MMIO accessible hardware blocks
+are quite unlikely to get reordered.
+
+
+>> +    status = "okay";
+>> +};
+>> +
+>> +&trng {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&crypto {
+> 
+> crypto goes first.
+> 
+> crypto, eth, pcie_phy, spi0, trng, watchdog, wifi.
+> 
+>> +    status = "okay";
+>> +};
+>> +
+>> +&uart0 {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&spi0 {
+>> +    status = "okay";
+>> +
+>> +    flash@0 {
+>> +        compatible = "spi-nand";
+>> +        reg = <0>;
+> 
+> compatible
+> reg
+> #address/size cells
+> spi-max-frequency
+> spi-rx-bus-width
+> spi-tx-bus-width
+> 
+>> +        spi-max-frequency = <52000000>;
+>> +        spi-tx-bus-width = <4>;
+>> +        spi-rx-bus-width = <4>;
+>> +
+>> +        #address-cells = <1>;
+>> +        #size-cells = <1>;
+>> +
+>> +        partitions: partitions {
+>> +            compatible = "fixed-partitions";
+>> +            #address-cells = <1>;
+>> +            #size-cells = <1>;
+>> +
+>> +            partition@0 {
+>> +                label = "bootloader";
+>> +                reg = <0x0 0x100000>;
+> 
+> label, reg, read-only
+> 
+>> +                read-only;
+>> +            };
+>> +
+>> +            partition@100000 {
+>> +                label = "u-boot-env";
+> 
+> reg first, label last
+> 
+>> +                reg = <0x100000 0x80000>;
+>> +            };
+>> +
+>> +            factory: partition@180000 {
+> 
+> Why do you have a phandle here? This has no use, please remove.
+> 
+>> +                label = "factory";
+>> +                reg = <0x180000 0x200000>;
+>> +                read-only;
+>> +                compatible = "nvmem-cells";
+> 
+> compatible
+> reg
+> label
+> read-only;
+> 
+>> +
+>> +                nvmem-layout {
+>> +                    compatible = "fixed-layout";
+>> +                    #address-cells = <1>;
+>> +                    #size-cells = <1>;
+>> +
+>> +                    eeprom: eeprom@0 {
+>> +                        reg = <0x0 0x1000>;
+>> +                    };
+>> +
+>> +                    macaddr: macaddr@4 {
+>> +                        reg = <0x4 0x6>;
+>> +                    };
+>> +                };
+>> +            };
+>> +
+>> +            partition@380000 {
+>> +                label = "fip";
+>> +                reg = <0x380000 0x200000>;
+> 
+> reg first, label last
+> 
+>> +            };
+>> +
+>> +            partition@580000 {
+>> +                label = "ubi";
+>> +                reg = <0x580000 0x4000000>;
+>> +            };
+>> +        };
+>> +    };
+>> +};
+>> +
+> 
+> Regards,
+> Angelo
 
 
