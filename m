@@ -4,88 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA24EC54E76
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 21:46:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16DF3C197A0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 23:40:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IHtXO9XtiC85W+x/HW1S1eU0VwIPJlyCXEkRfSi7Djs=; b=u1FUjmcPmxOUEP1W8KrIyKq6oD
-	N4qiFh0V9d/7BcYaOPeSSZEADx1g5WKFfgk6BBw5gpmyAgyPbHXBOKRca18qXSe3EFXN7z1J/C/Mw
-	9uFRpYlioCFdcJCl5drGJKMmFyo5rbaaB5E6mhKDenUcUeNt8sVzVS3BIiZFcxOnUaWSvMKUBl7Z2
-	N/FxEgf0DR+QmswynxN0r+QC6Bb2JAHona7kq6lNUsaPGF+sHgAmthr1n7Hlfu2heXQvtBzaOE+Cc
-	Ysc0/JfE36hjSYK0GXM4rNBbSN1gQecYHrHe0tUHYSdJmInWHVrFf958jTpCZlem6EyTl2pt+iqDR
-	Ke4wL+HA==;
+	Content-Type:MIME-Version:Message-ID:Date:Cc:To:From:Subject:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kBNKNTOrMmmpmm92m7K9B/lNmOkmW5YxSpr4SlRmJSU=; b=FLv3KD6LTBPvoyYY/EqEaLUhRN
+	+sD+iK6QoVRwQF6HqEsxcIF2x0g/M3aw70tmGdcnn3b6wys3bTdw+vSi32eXowf2BF5cvl5X+bI4a
+	+f4WokLCA5G02SqxZodBRIcn+qFKp9yyJ5n0y4xp83+u6q2L+FS2UzxRcfSUkIYLcRw38w2LB0i6H
+	KR6/9TBdSKGvooprLhjEi3QhIvxzOewuJJeI75xWYtBfSNaBnKBNQqrmb+O6pdJdjh4OUL7uB/h0t
+	UQn/GUYCE26K6Kw+IkA686ekAO7yMuKBfM0aJrDdZjFrdQknYH/Y7UOni8PI7AI+pUsc1L2SJft82
+	plE9Cjbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5C6P-00EuMH-1H;
-	Mon, 20 Nov 2023 21:46:45 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5C6L-00EuIQ-0S;
-	Mon, 20 Nov 2023 21:46:42 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-32fa7d15f4eso3781045f8f.3;
-        Mon, 20 Nov 2023 13:46:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700516799; x=1701121599; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IHtXO9XtiC85W+x/HW1S1eU0VwIPJlyCXEkRfSi7Djs=;
-        b=jQZEbR5KNLxQiYYrf0gNGVfQPvBZiAQDEyNZYX5+s4sC53F8i4+399R7ztgKvIjPgc
-         9utOVoK7a8043zyXgjw0ufjlZbeAQs7BstQwqGbbjFachnD2dB9TAYzms/cW2WOTfL+V
-         HL6JT9T9M1YlwV3vUA0Lcy+2zB+S5S2mYe5gtJtk7i2PF8SsEo3me/p3MXChREd4ZzZV
-         Gxx1q3ke90L20lzHGyv1rqgN5LFMqk14m/kwkBSu7tETSZrLtqur4y5HqA+IbHV20D4J
-         BTHaUxrRdieYpNPR43j2WfORq422T9OgcXm/gv+BB2IRIQ+58QJNsqCWwzf5w8NFeLkF
-         ekZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700516799; x=1701121599;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IHtXO9XtiC85W+x/HW1S1eU0VwIPJlyCXEkRfSi7Djs=;
-        b=MluGLpSKcVBe1i0CTSiyb2uCBtgjjrtrI2BXjDG2h28gPioMxbJKc7dZFqdEsf8Iwz
-         Vy9ivNrnQUvyEMhqa2PhXn8tbpf8+sS2bNvhkMWYLvZ4rYFRQkKlAOytxiGibDuuVRFt
-         Owk9T+J24LRglUaQax75YG2BlMCYmHOlS6jXx54WH75dkAjMCClvko82NuLxsC7G1C4Y
-         aI1Od+R6G8wGKiCL04Ct9npqqh2rztGLtaFb8Ar8HHDgXEtgVJQD52YHQCORdw0X8phX
-         LMNf+4zNWrXrpkdx5yJgQr4XRFdS/WGMI65jwAzHZir9BH5awvXT6Qp2ivh5JlwiOuin
-         ZXIQ==
-X-Gm-Message-State: AOJu0YzTB7JZEw6BlJu2AFTwO250IVKAhfn085AI9LnfaHUwwTYZVHdT
-	pZllr3o8AUA7Ky/6SjJzWmzKVKdYSe8=
-X-Google-Smtp-Source: AGHT+IEPEt13Bi9UDLuM7ucKuA1EJUrPpC7p/7AqpQmlWfFXaZtyMu7XxxZkwo1OTgJaGb+DXzLqfg==
-X-Received: by 2002:a5d:4531:0:b0:331:6df2:3603 with SMTP id j17-20020a5d4531000000b003316df23603mr4725750wra.61.1700516798842;
-        Mon, 20 Nov 2023 13:46:38 -0800 (PST)
-Received: from zotac.lan. (dynamic-2a02-3100-9030-5a00-2223-08ff-fe18-0310.310.pool.telefonica.de. [2a02:3100:9030:5a00:2223:8ff:fe18:310])
-        by smtp.gmail.com with ESMTPSA id i13-20020a5d584d000000b00332cb0937f4sm2667052wrf.33.2023.11.20.13.46.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 13:46:38 -0800 (PST)
-From: Heiner Kallweit <hkallweit1@gmail.com>
-To: Wolfram Sang <wsa@kernel.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: linux-i2c@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v4 12/20] drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c: remove I2C_CLASS_DDC support
-Date: Mon, 20 Nov 2023 22:46:15 +0100
-Message-ID: <20231120214624.9378-13-hkallweit1@gmail.com>
-X-Mailer: git-send-email 2.42.1
-In-Reply-To: <20231120214624.9378-1-hkallweit1@gmail.com>
-References: <20231120214624.9378-1-hkallweit1@gmail.com>
+	id 1r5Dsi-00F4iX-2m;
+	Mon, 20 Nov 2023 23:40:44 +0000
+Received: from linux.microsoft.com ([13.77.154.182])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1r5Dsc-00F4hV-0K;
+	Mon, 20 Nov 2023 23:40:42 +0000
+Received: from skinsburskii. (c-67-170-100-148.hsd1.wa.comcast.net [67.170.100.148])
+	by linux.microsoft.com (Postfix) with ESMTPSA id 4C5EF20B74C0;
+	Mon, 20 Nov 2023 15:40:34 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 4C5EF20B74C0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+	s=default; t=1700523634;
+	bh=kBNKNTOrMmmpmm92m7K9B/lNmOkmW5YxSpr4SlRmJSU=;
+	h=Subject:From:To:Cc:Date:From;
+	b=iRk6psZ1bwoNZfgS9az/eot+ankMIak28Fo+cDfzEmWQSHUUEzYWtV/XNvoId2DVW
+	 eEHmDnIkXfNAat1XGSmHQNdb7EuQesbEESVmDF84wT/pKSJN2yKhxjQXQD/s7Igo7+
+	 B+cAlTFhs5XLZsZRBVLvq6ueJnm3ywkbiOQ0aVAM=
+Subject: [PATCH] PCI: mediatek: Fix sparse warning caused to virt_to_phys()
+ prototype change
+From: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>
+To: ryder.lee@mediatek.com, jianjun.wang@mediatek.com, lpieralisi@kernel.org,
+ kw@linux.com, robh@kernel.org, bhelgaas@google.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Cc: skinsburskii@gmail.com
+Date: Mon, 20 Nov 2023 15:40:33 -0800
+Message-ID: <170052362584.21270.8345708191142620624.stgit@skinsburskii.>
+User-Agent: StGit/0.19
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_134641_246857_E9E172F5 
-X-CRM114-Status: GOOD (  13.10  )
+X-CRM114-CacheID: sfid-20231120_154038_270559_12853C52 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,31 +70,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After removal of the legacy EEPROM driver and I2C_CLASS_DDC support in
-olpc_dcon there's no i2c client driver left supporting I2C_CLASS_DDC.
-Class-based device auto-detection is a legacy mechanism and shouldn't
-be used in new code. So we can remove this class completely now.
+Explicitly cast __iomem pointer to const void* with __force to fix the
+following warning:
 
-Preferably this series should be applied via the i2c tree.
+  warning: incorrect type in argument 1 (different address spaces)
+     expected void const volatile *address
+     got void [noderef] __iomem *
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
-
+Signed-off-by: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c |    1 -
- 1 file changed, 1 deletion(-)
+ drivers/pci/controller/pcie-mediatek.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-index d675c954b..54e46e440 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-@@ -297,7 +297,6 @@ static int mtk_hdmi_ddc_probe(struct platform_device *pdev)
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 66a8f73296fc..27f0f79810a1 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -397,7 +397,7 @@ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+ 	phys_addr_t addr;
  
- 	strscpy(ddc->adap.name, "mediatek-hdmi-ddc", sizeof(ddc->adap.name));
- 	ddc->adap.owner = THIS_MODULE;
--	ddc->adap.class = I2C_CLASS_DDC;
- 	ddc->adap.algo = &mtk_hdmi_ddc_algorithm;
- 	ddc->adap.retries = 3;
- 	ddc->adap.dev.of_node = dev->of_node;
+ 	/* MT2712/MT7622 only support 32-bit MSI addresses */
+-	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
++	addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+ 	msg->address_hi = 0;
+ 	msg->address_lo = lower_32_bits(addr);
+ 
+@@ -520,7 +520,7 @@ static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
+ 	u32 val;
+ 	phys_addr_t msg_addr;
+ 
+-	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
++	msg_addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+ 	val = lower_32_bits(msg_addr);
+ 	writel(val, port->base + PCIE_IMSI_ADDR);
+ 
+
 
 
