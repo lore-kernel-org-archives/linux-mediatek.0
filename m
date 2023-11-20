@@ -4,118 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D347C54E76
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 08:21:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CD0DC197A0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 08:41:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gba2Tcl2eMbmK/kLsFECV0armcjkhrFttLQIW9wsuXo=; b=ltiKj7a7M7hceJJztr9aU+eny2
-	69eF+kWRVM8kTdFR9zcsxgenvopETBi/HMo04r1/lTTBn3lrKbTZekyBUHdf71Hb6hq3GAwDi2VeD
-	FaK++WEsv9GhQ8EYkQFjYLVAOt/+I8AOPtfKNFVuU+FCZRQxtbTQDtDsqYGg+cuRY8cNVvFP/840t
-	oOlZRN98yRnSegUtbN/EMisczQs5Hk9n/Y/+rrgafpoCTw89up6OCvap+fWWw283/4Pl2KHysFJpk
-	9DU7ekgNimzsKczznzOulK0WpAmxlxRWxD+eMc6HJrd6tldtSpEu6OB0kRyV2VkEfRkortuvKM/FG
-	hY1fZ1Jg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Uja6WpBlyTBG5jgby6fiOGTUsSLknCmEeqWb3eouYXA=; b=kVFQ4Az03Zys3PPlM28v90Ys0d
+	cM5TYBp8IeN1/+hOkqroi3OCEkmGaRDHs42Nn0pffXgrnG9gDqn74dTZZVBgjWIUkJ4GA7zQMO2ke
+	V5izML0btD36Fs9rkv8IFs0jxrWqIboQ9ykJEi51T7kN95gdLaloAz9U97X3BuYDBIwfpbhu7yiDX
+	msUXBnILxxJaqXuU5mztI8p4vmbtq7wY7L/3lRznQUmICqdqhkJsPLnWg40tSWQTpDzXntiMJeKhy
+	CfC4E2UZla4kmZdeW4XhAahCSbvh5acyEnpgjchmeXnnPEZA+dL2djuTIcpUrkybGGHgaHVK3ddAL
+	TGLZNEQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4zWb-00BUcD-1B;
-	Mon, 20 Nov 2023 08:20:57 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1r4zq7-00BWkr-2U;
+	Mon, 20 Nov 2023 08:41:07 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4zWW-00BUag-0J;
-	Mon, 20 Nov 2023 08:20:54 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AK7Lvn3003771;
-	Mon, 20 Nov 2023 08:20:37 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=gba2Tcl2eMbmK/kLsFECV0armcjkhrFttLQIW9wsuXo=;
- b=SEjUIH9AP531QvS27jtrUrKOEiN62KB4ujjYrcXzL+gsPHPbnUmXbp/g+4BsxBgP1VJO
- /r5pOXHdHPqxM5z4FvPh0AqPjZlsZpr7B+h9OxUJxZTMM1A6GGsu+pQSHw6hgk2bZ8ZU
- 51UZSv24m4pkbOzQRtX7cnApm42JqdqIQf9n7ZVh8Loa981roaNY8oCnxhksNUGMZomZ
- rc6UrsgjN+1jw6k6qFNVknyQnAnzPVIb4cVovjOki/vwOcmTSJxqfsGwyUk7mOiCHdJM
- xQ+E1TDFXE/IHqFUurcG/Lti3T4bqcffPHY8mnCEf6Zxgl85rnpLQz21JKBwCKy9+rDO lw== 
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ug30mg41t-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 20 Nov 2023 08:20:36 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3AK8Kasq029827
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 20 Nov 2023 08:20:36 GMT
-Received: from [10.216.59.34] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Mon, 20 Nov
- 2023 00:20:27 -0800
-Message-ID: <5ecab46b-3808-4e89-a5ac-3c13e0c0a216@quicinc.com>
-Date: Mon, 20 Nov 2023 13:50:23 +0530
+	id 1r4zpw-00BWgv-1U
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Nov 2023 08:41:03 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-507ad511315so5714081e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Nov 2023 00:40:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1700469652; x=1701074452; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Uja6WpBlyTBG5jgby6fiOGTUsSLknCmEeqWb3eouYXA=;
+        b=g7hFVpwGhSvWE6ToDtmxCP4sGuKRLqXLLkgsnTREkHTUENvYhhKhm5l00ethg8FeH9
+         VuJVRtCQbgGERaWWtp9K5A2HxaBs2l11BqcyhJqaO/dbg4ckTucI8yk/lDrEW8rCY0OO
+         zaydqa+LOTuIazXwpVU7Ppx2e/QBkB3f1vwuDQH1K1MMAam6QQKYqpKAxsa29C3nFNoD
+         DPxE6kqS1iUnkc5d33U6GQxjTt835/sTphxo4olYNzQdELVsC8dDoYQvcLPMK5TB1eZO
+         P9cv7oFwwr0yGLEr166U2usJ16dIdRUQGx0QcxmxcjT4+zGhAEl1vFyg0K+vqVrNoroV
+         RTBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700469652; x=1701074452;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Uja6WpBlyTBG5jgby6fiOGTUsSLknCmEeqWb3eouYXA=;
+        b=o0mmE393lcQil9BH0auPpwXNYgNbuz58PbeBJJi0of+Gx2egoBWxkTOYW7YIA7Z0ul
+         yCeVRewwUR14LnKspQrSjsGWBd1N4WFJQtsuwoGi1BjfksNbhAphpW9daAZwec8yb71U
+         FLPW8Pwaw5p5odrCK2YC0/V/2OPaefX7IutpRmJRd5gxZ7f3Jm/JcqNMsOGWwgvax15u
+         KmN1dHl76sCW43WgMkgScrcchkxyXf8p2nvDwaHlzZgWV/QTj+xPawXoc14+HKS9W3ea
+         oG8tVGacFe1ad0OwFykYHq4yMuPl+DdqjL9iV1C8Jp35ej7TkQDdSi087C3wGKSyZCtz
+         Elsw==
+X-Gm-Message-State: AOJu0YwNHG25Uww84QqtHUQuDZsjxYqxT5xJFztgxnPsCF7ykek4bldu
+	iHpf1bdo9mpcIVPKh+f9LDeFCQ==
+X-Google-Smtp-Source: AGHT+IF2z2UJKmxACAGYnsgCuyDmhU5DSNYyJ8jl3UYFsf5HLqN43Rt4pV8YyXHZTojYeH5cxbBtXA==
+X-Received: by 2002:a2e:bc0f:0:b0:2c6:eccb:344d with SMTP id b15-20020a2ebc0f000000b002c6eccb344dmr6049660ljf.40.1700469652204;
+        Mon, 20 Nov 2023 00:40:52 -0800 (PST)
+Received: from krzk-bin.. ([178.197.222.11])
+        by smtp.gmail.com with ESMTPSA id m7-20020a05600c4f4700b0040772138bb7sm17248340wmq.2.2023.11.20.00.40.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Nov 2023 00:40:51 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Andrew Davis <afd@ti.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Michal Simek <michal.simek@amd.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Nishanth Menon <nm@ti.com>,
+	Olof Johansson <olof@lixom.net>,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
+Date: Mon, 20 Nov 2023 09:40:44 +0100
+Message-Id: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/9] dt-bindings: reserved-memory: MediaTek: Add reserved
- memory for SVP
-Content-Language: en-US
-To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
-        "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-        "christian.koenig@amd.com"
-	<christian.koenig@amd.com>,
-        "quic_vjitta@quicinc.com"
-	<quic_vjitta@quicinc.com>,
-        "robh+dt@kernel.org" <robh+dt@kernel.org>,
-        "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-        "jstultz@google.com" <jstultz@google.com>,
-        "linaro-mm-sig@lists.linaro.org"
-	<linaro-mm-sig@lists.linaro.org>,
-        "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>,
-        "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>,
-        =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
-	<Jianjiao.Zeng@mediatek.com>,
-        =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?=
-	<kuohong.wang@mediatek.com>,
-        "conor+dt@kernel.org" <conor+dt@kernel.org>,
-        "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
-        "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
-        "tjmercier@google.com" <tjmercier@google.com>,
-        "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-        "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-        "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-        "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-References: <20230911023038.30649-1-yong.wu@mediatek.com>
- <20230911023038.30649-9-yong.wu@mediatek.com>
- <d4d471e7-64cf-42bf-a061-82934c904691@quicinc.com>
- <2c3ad77806df3ef23cb69336f2049821529e337b.camel@mediatek.com>
- <a83b00c4-a33a-4687-b024-173c6c5a66a0@quicinc.com>
- <8666e39c6b59322af6a9637121ed22f291830c46.camel@mediatek.com>
-From: Jaskaran Singh <quic_jasksing@quicinc.com>
-In-Reply-To: <8666e39c6b59322af6a9637121ed22f291830c46.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: NFg0IuWqxZGtZ8GVXpsSQaeo7n2SJGkl
-X-Proofpoint-ORIG-GUID: NFg0IuWqxZGtZ8GVXpsSQaeo7n2SJGkl
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-20_06,2023-11-17_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 malwarescore=0
- clxscore=1011 mlxlogscore=999 priorityscore=1501 lowpriorityscore=0
- spamscore=0 phishscore=0 adultscore=0 bulkscore=0 suspectscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2311200054
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_002052_617638_121F07F2 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20231120_004056_634467_938DD3AE 
+X-CRM114-Status: GOOD (  21.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,50 +109,235 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Document preferred coding style for Devicetree sources (DTS and DTSI),
+to bring consistency among all (sub)architectures and ease in reviews.
 
+Cc: Andrew Davis <afd@ti.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Arnd Bergmann <arnd@arndb.de>
+Cc: Bjorn Andersson <andersson@kernel.org>
+Cc: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Konrad Dybcio <konrad.dybcio@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Michal Simek <michal.simek@amd.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Nishanth Menon <nm@ti.com>
+Cc: Olof Johansson <olof@lixom.net>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-On 11/6/2023 11:26 AM, Yong Wu (吴勇) wrote:
-> On Wed, 2023-11-01 at 11:20 +0530, Jaskaran Singh wrote:
->>  	 
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>  On 10/20/2023 3:20 PM, Yong Wu (吴勇) wrote:
->>> On Thu, 2023-10-19 at 10:16 +0530, Vijayanand Jitta wrote:
->>>>   
->>>> Instead of having a vendor specific binding for cma area, How
->> about
->>>> retrieving
->>>>
->>>
->> https://lore.kernel.org/lkml/1594948208-4739-1-git-send-email-hayashi.kunihiko@socionext.com/
->>>>  ?
->>>> dma_heap_add_cma can just associate cma region and create a heap.
->> So,
->>>> we can reuse cma heap
->>>> code for allocation instead of replicating that code here.
->>>>
->>>
->>> Thanks for the reference. I guess we can't use it. There are two
->>> reasons:
->>>   
->>> a) The secure heap driver is a pure software driver and we have no
->>> device for it, therefore we cannot call dma_heap_add_cma.
->>>   
->>
->> Hi Yong,
->>
->> We're considering using struct cma as the function argument to
->> dma_heap_add_cma() rather than struct device. Would this help
->> resolve the problem of usage with dma_heap_add_cma()?
-> 
-> Yes. If we use "struct cma", I guess it works.
->
+---
 
-Great; I've posted a v2[1] for the API incorporating this change.
+Merging idea: Rob/DT bindings
 
-Thanks,
-Jaskaran.
+Changes in v2
+=============
+1. Hopefully incorporate entire feedback from comments:
+a. Fix \ { => / { (Rob)
+b. Name: dts-coding-style (Rob)
+c. Exceptions for ordering nodes by name for Renesas and pinctrl (Geert,
+   Konrad)
+d. Ordering properties by common/vendor (Rob)
+e. Array entries in <> (Rob)
 
-[1]
-https://lore.kernel.org/lkml/20231117100337.5215-1-quic_jasksing@quicinc.com/
+2. New chapter: Organizing DTSI and DTS
+
+3. Several grammar fixes (missing articles)
+
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-samsung-soc@vger.kernel.org
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-arm-msm@vger.kernel.org
+---
+ .../devicetree/bindings/dts-coding-style.rst  | 163 ++++++++++++++++++
+ Documentation/devicetree/bindings/index.rst   |   1 +
+ 2 files changed, 164 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/dts-coding-style.rst
+
+diff --git a/Documentation/devicetree/bindings/dts-coding-style.rst b/Documentation/devicetree/bindings/dts-coding-style.rst
+new file mode 100644
+index 000000000000..cc7e3b4d1b92
+--- /dev/null
++++ b/Documentation/devicetree/bindings/dts-coding-style.rst
+@@ -0,0 +1,163 @@
++.. SPDX-License-Identifier: GPL-2.0
++.. _dtscodingstyle:
++
++=====================================
++Devicetree Sources (DTS) Coding Style
++=====================================
++
++When writing Devicetree Sources (DTS) please observe below guidelines.  They
++should be considered complementary to any rules expressed already in Devicetree
++Specification and dtc compiler (including W=1 and W=2 builds).
++
++Individual architectures and sub-architectures can add additional rules, making
++the style stricter.
++
++Naming and Valid Characters
++---------------------------
++
++1. Node and property names are allowed to use only:
++
++   * lowercase characters: [a-z]
++   * digits: [0-9]
++   * dash: -
++
++2. Labels are allowed to use only:
++
++   * lowercase characters: [a-z]
++   * digits: [0-9]
++   * underscore: _
++
++3. Unit addresses should use lowercase hex, without leading zeros (padding).
++
++4. Hex values in properties, e.g. "reg", should use lowercase hex.  The address
++   part can be padded with leading zeros.
++
++Example::
++
++	gpi_dma2: dma-controller@800000 {
++		compatible = "qcom,sm8550-gpi-dma", "qcom,sm6350-gpi-dma";
++		reg = <0x0 0x00800000 0x0 0x60000>;
++	}
++
++Order of Nodes
++--------------
++
++1. Nodes within any bus, thus using unit addresses for children, shall be
++   ordered incrementally by unit address.
++   Alternatively for some sub-architectures, nodes of the same type can be
++   grouped together (e.g. all I2C controllers one after another even if this
++   breaks unit address ordering).
++
++2. Nodes without unit addresses should be ordered alpha-numerically by the node
++   name.  For a few types of nodes, they can be ordered by the main property
++   (e.g. pin configuration states ordered by value of "pins" property).
++
++3. When extending nodes in the board DTS via &label, the entries should be
++   ordered alpha-numerically.
++
++Example::
++
++	// SoC DTSI
++
++	/ {
++		cpus {
++			// ...
++		};
++
++		psci {
++			// ...
++		};
++
++		soc@ {
++			dma: dma-controller@10000 {
++				// ...
++			};
++
++			clk: clock-controller@80000 {
++				// ...
++			};
++		};
++	};
++
++	// Board DTS
++
++	&clk {
++		// ...
++	};
++
++	&dma {
++		// ...
++	};
++
++
++Order of Properties in Device Node
++----------------------------------
++
++Following order of properties in device nodes is preferred:
++
++1. compatible
++2. reg
++3. ranges
++4. Standard/common properties (defined by common bindings, e.g. without
++   vendor-prefixes)
++5. Vendor-specific properties
++6. status (if applicable)
++7. Child nodes, where each node is preceded with a blank line
++
++The "status" property is by default "okay", thus it can be omitted.
++
++Example::
++
++	// SoC DTSI
++
++	usb_1_hsphy: phy@88e3000 {
++		compatible = "qcom,sm8550-snps-eusb2-phy";
++		reg = <0x0 0x088e3000 0x0 0x154>;
++		#phy-cells = <0>;
++		resets = <&gcc GCC_QUSB2PHY_PRIM_BCR>;
++		status = "disabled";
++	};
++
++	// Board DTS
++
++	&usb_1_hsphy {
++		clocks = <&tcsr TCSR_USB2_CLKREF_EN>;
++		clock-names = "ref";
++		status = "okay";
++	};
++
++
++Indentation
++-----------
++
++1. Use indentation according to :ref:`codingstyle`.
++2. For arrays spanning across lines, it is preferred to align the continued
++   entries with opening < from the first line.
++3. Each entry in arrays with multiple cells (e.g. "reg" with two IO addresses)
++   should be enclosed in <>.
++
++Example::
++
++	thermal-sensor@c271000 {
++		compatible = "qcom,sm8550-tsens", "qcom,tsens-v2";
++		reg = <0x0 0x0c271000 0x0 0x1000>,
++		      <0x0 0x0c222000 0x0 0x1000>;
++	};
++
++Organizing DTSI and DTS
++-----------------------
++
++The DTSI and DTS files should be organized in a way representing the common
++(and re-usable) parts of the hardware.  Typically this means organizing DTSI
++and DTS files into several files:
++
++1. DTSI with contents of the entire SoC (without nodes for hardware not present
++   on the SoC).
++2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
++   entire System-on-Module).
++3. DTS representing the board.
++
++Hardware components which are present on the board should be placed in the
++board DTS, not in the SoC or SoM DTSI.  A partial exception is a common
++external reference SoC-input clock, which could be coded as a fixed-clock in
++the SoC DTSI with its frequency provided by each board DTS.
+diff --git a/Documentation/devicetree/bindings/index.rst b/Documentation/devicetree/bindings/index.rst
+index d9002a3a0abb..cc1fbdc05657 100644
+--- a/Documentation/devicetree/bindings/index.rst
++++ b/Documentation/devicetree/bindings/index.rst
+@@ -4,6 +4,7 @@
+    :maxdepth: 1
+ 
+    ABI
++   dts-coding-style
+    writing-bindings
+    writing-schema
+    submitting-patches
+-- 
+2.34.1
+
 
