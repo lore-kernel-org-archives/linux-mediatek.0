@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DBEC2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 15:00:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0499BC5AE5E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 15:00:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4oWbW7U8hDbK7k3dW8cQqnctME3Rpq10CqBR82g551s=; b=TzmkoQeG/qFS1UGgZlaoPYG+f6
-	BKdlT+jvmm0WtJvx6YobJYLHC9YEZYUWNW2DcF73EqPAzWtQYYUMHY5Q2mP4VDpTVZIkbXKAeLTUu
-	G/Tg5aRUYsXncCZfQLzWHp6tgBLX719ctWX+v8Ml6lhy/Zl/QV4rLXHwOVvgx0FgpHrtmfzOB9WYh
-	56ZZEbAX8ZNB5C+wAe1Ad1cPn4Elp8QiCYa2vhdurWHOvwYFZVm6hn8KUYxTyupOoF2lTseZgng1W
-	y03ygh4NXngtzwBvQGo8nITsODIKiD+vIesLXH+9jsbNFHwsoujxTI59iBXmXNFikGAQpvkDvH4wV
-	Onaa4h2Q==;
+	bh=7KlciZ6HGUzRiM58ultDgzciNJogKhU8Km072RfwAf4=; b=YerGNlF/VUWYPfDFTEdC136tkK
+	VkXoxqcuWrazV6r96D60X16SA+IfsMd07NkBms/kuJvys7rDFz8jpDbpQX+VmyBAf2Qst43TBKyQk
+	0SGZE6s3Hk44JR2WtgmtxQtQF+2kh+NW514Ft6I7tolI3iNcryZOAeQavWx/WsUCiZgFpBA+zy8zu
+	ADZZOverZ/Yw4UEzr0AMyZWguUFNOx/d7fOAbSYxysNO8hNOTcmia+V6NVtZgjE7f6++gYzVuv6Xw
+	/Q7+BouWVLHIxqPSlk10zoZdafVUsrPubHeCNm97guu6HsVsysHbd9U0+H5KfL+gLNKGpHk3Acl4J
+	GdaqunLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r55lT-00CRtU-2D;
-	Mon, 20 Nov 2023 15:00:43 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1r55lU-00CRui-2t;
+	Mon, 20 Nov 2023 15:00:44 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r54gY-00CBmm-04;
-	Mon, 20 Nov 2023 13:52:18 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4079ed65471so17419085e9.1;
-        Mon, 20 Nov 2023 05:51:32 -0800 (PST)
+	id 1r54gT-00CBlF-2g;
+	Mon, 20 Nov 2023 13:52:15 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40838915cecso16120265e9.2;
+        Mon, 20 Nov 2023 05:51:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700488291; x=1701093091; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1700488288; x=1701093088; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4oWbW7U8hDbK7k3dW8cQqnctME3Rpq10CqBR82g551s=;
-        b=ZeRZOIJ3Jt/3IXVUmdqkD5VTbGY1WpZvRDBykrFe2wLgx1I16NBRu2ATt5Volb9prS
-         iVTB7MEYtZd/DPlX/vJ2uUvJceRK7VgqVe3exmWf9WwUMb6hIZSsT8z0PU6BRSIHDqi5
-         O+iIQjVBqHJ6ksSHNx/9xNFJYDa+uNm1NeLXgtjEr/J5qt4h66XUqzvE5obfbqrqYjNB
-         JqPXLBGLmSeD7w9qcmFLjRkNb0oGs12JbuvlVfOU0AbgVjHxD8G8EW7VR3JbJ9EVJr8D
-         0GvyNB8OPUbcHcPRuCDXf3zz3/C9W5814prLOdO0+PjuUxfETa46cGxydpfF0ksmHDN6
-         iC0Q==
+        bh=7KlciZ6HGUzRiM58ultDgzciNJogKhU8Km072RfwAf4=;
+        b=A1lCF1fvgs+xb6DPgLWbvfJqVpweOs7dNbug/+1E2dPDJvtQnXcktHHEBleGSjKx+n
+         hp8WS3h8EZCQg54D7jLe+FijGlkkPje51Y5fa099vGOvuAve+F3U6DHrlxuP7Wj0wQcK
+         m4Iz+TAjdZGHQ8bn6/PudTt4HDBI7tSz56Jyby7ebBzU7lKcFxm0NfvHBDKcbHj6v4tG
+         8ET1BT+8cZ5/6TqNCHVnX3cYBy9+l05mwvnuvv9UG+P3oab3BAOjNKHoNGN/X0k0GANA
+         e91J02/yAqzuayD+E2iJ6dOhhVFYBFsVEwVJG4YP6+se9K5Bkmgp9oDbpPK1phv7doSf
+         Tgzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700488291; x=1701093091;
+        d=1e100.net; s=20230601; t=1700488288; x=1701093088;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4oWbW7U8hDbK7k3dW8cQqnctME3Rpq10CqBR82g551s=;
-        b=IHyPrGKFcmtw+APbb9FZ4dvcnSRHYh7O0f3na3mZ4X+wtlOR1cza7XPfEWxS2x4ahX
-         owiNxL+G9kde10H77Bp87qP3OMff2WTsiJnLAN+YYM0t88ztXf/vluaNkhkDnFsQYBcH
-         BXCtEg3xUml0gwjxuSxWc8GKlXgoO8ESX4vsYZO9NA33VsAUn7ZQkxtZaW2qO3fKB09D
-         f8vcu4/iUDPwYK/kY1yxasBkeiPCdvnYjnYSOZTeyfgaF+vU5VlZ1v1pJ7M9WHHU4RZV
-         VAKa9fE7Q3jUUPLJQQTZYaC+0EDptPKro++rsgZF7t9kT4oEX7PzlV80GprZnOuNTbA2
-         gClA==
-X-Gm-Message-State: AOJu0Yzbl8CuNM88wjbCiSIPTLze69XJ/vBjhK3/XohZzU6Lly7ji5xM
-	eIDu+FYgNz2C1gZiQit70K8=
-X-Google-Smtp-Source: AGHT+IGXDhVPZ/LrxiUSncChlDmbdW69CX3+FivEfcaF6fIFK68I+CV58V07sZTeNeA90QyJl9UMSg==
-X-Received: by 2002:a05:600c:4ed2:b0:405:4a78:a890 with SMTP id g18-20020a05600c4ed200b004054a78a890mr5843086wmq.8.1700488291376;
-        Mon, 20 Nov 2023 05:51:31 -0800 (PST)
+        bh=7KlciZ6HGUzRiM58ultDgzciNJogKhU8Km072RfwAf4=;
+        b=fYakkOKuYHRrdxVTSJ2lQWTIFLT6XLiO4r9Bu+vbIjgK3aikbO+qGZQ+MisQ9xOrwz
+         KhMBkKZuJ+RtTFpwIP5Jy6X48eR7shFNdw1NBckwcbSmQm9aEuTbsBx5buYkvvEMip2z
+         VUrwkka539xReibnE1f+ibVfa1BZWSMorKYW4vHy0pNzGzM02keDUKggFDppMFT0szMA
+         VyyVHSXN81oWzYRLvXBv080JZvAYJbWSxtbNmccPQycu5iGxErFIAHQPLh3TUFy5eGTb
+         IHS/MuReoU8SgGsRRqXGYngxAJu2YgeEJ75ugo/NEfhqb9aMcQ6CtGKsglPIH80/SOfn
+         Ormg==
+X-Gm-Message-State: AOJu0YwNEGvzKXpVjkuvhC0ptwQwyoljU9BrGN4igadVZgfaNIlthGFS
+	YbXZlUVjIIru4CE3LUwGRHg=
+X-Google-Smtp-Source: AGHT+IEgMWdVSmBqk/Db3v8YVKpL/4mMmUM+K0FYzCeo2AsDXwgh5SY0EbCSMcmSejPYpR8JOj4Fqg==
+X-Received: by 2002:a05:600c:3113:b0:408:e441:1697 with SMTP id g19-20020a05600c311300b00408e4411697mr5904786wmo.39.1700488288141;
+        Mon, 20 Nov 2023 05:51:28 -0800 (PST)
 Received: from localhost.localdomain (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.googlemail.com with ESMTPSA id j33-20020a05600c1c2100b0040772934b12sm18205846wms.7.2023.11.20.05.51.29
+        by smtp.googlemail.com with ESMTPSA id j33-20020a05600c1c2100b0040772934b12sm18205846wms.7.2023.11.20.05.51.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 05:51:31 -0800 (PST)
+        Mon, 20 Nov 2023 05:51:27 -0800 (PST)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -95,17 +95,17 @@ To: "David S. Miller" <davem@davemloft.net>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [net-next RFC PATCH 12/14] dt-bindings: net: Document Qcom QCA807x PHY package
-Date: Mon, 20 Nov 2023 14:50:39 +0100
-Message-Id: <20231120135041.15259-13-ansuelsmth@gmail.com>
+Subject: [net-next RFC PATCH 10/14] net: phy: add support for PHY package MMD read/write
+Date: Mon, 20 Nov 2023 14:50:37 +0100
+Message-Id: <20231120135041.15259-11-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231120135041.15259-1-ansuelsmth@gmail.com>
 References: <20231120135041.15259-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_055134_444591_A1A34A80 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20231120_055129_971538_0390F32E 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,170 +120,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document Qcom QCA807x PHY package.
+Some PHY in PHY package may require to read/write MMD regs to correctly
+configure the PHY package.
 
-Qualcomm QCA807X Ethernet PHY is PHY package of 2 or 5
-IEEE 802.3 clause 22 compliant 10BASE-Te, 100BASE-TX and
-1000BASE-T PHY-s.
-
-Document the required property to make the PHY package correctly
-configure and work.
+Add support for these additional required function in both lock and no
+lock variant.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- .../devicetree/bindings/net/qcom,qca807x.yaml | 143 ++++++++++++++++++
- 1 file changed, 143 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/qcom,qca807x.yaml
+ include/linux/phy.h | 72 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 72 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/qcom,qca807x.yaml b/Documentation/devicetree/bindings/net/qcom,qca807x.yaml
-new file mode 100644
-index 000000000000..c2d59068d015
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/qcom,qca807x.yaml
-@@ -0,0 +1,143 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/qcom,qca807x.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/include/linux/phy.h b/include/linux/phy.h
+index dd2381652dd1..90bfaa36689f 100644
+--- a/include/linux/phy.h
++++ b/include/linux/phy.h
+@@ -2110,6 +2110,78 @@ static inline int __phy_package_write(struct phy_device *phydev,
+ 	return __mdiobus_write(phydev->mdio.bus, addr, regnum, val);
+ }
+ 
++static inline int phy_package_read_mmd(struct phy_device *phydev,
++				       int global_phy_index, int devad, u32 regnum)
++{
++	struct phy_package_shared *shared = phydev->shared;
++	struct mii_bus *bus = phydev->mdio.bus;
++	int addr, val;
 +
-+title: Qualcomm QCA807X Ethernet PHY
++	if (!shared || global_phy_index > shared->addrs_num - 1)
++		return -EIO;
 +
-+maintainers:
-+  - Christian Marangi <ansuelsmth@gmail.com>
-+  - Robert Marko <robert.marko@sartura.hr>
++	addr = shared->addrs[global_phy_index];
 +
-+description: |
-+  Qualcomm QCA807X Ethernet PHY is PHY package of 2 or 5
-+  IEEE 802.3 clause 22 compliant 10BASE-Te, 100BASE-TX and
-+  1000BASE-T PHY-s.
++	phy_lock_mdio_bus(phydev);
++	mmd_phy_indirect(bus, addr, devad, regnum);
++	val = __mdiobus_read(bus, addr, MII_MMD_DATA);
++	phy_unlock_mdio_bus(phydev);
 +
-+  They feature 2 SerDes, one for PSGMII or QSGMII connection with
-+  MAC, while second one is SGMII for connection to MAC or fiber.
++	return val;
++}
 +
-+  Both models have a combo port that supports 1000BASE-X and
-+  100BASE-FX fiber.
++static inline int __phy_package_read_mmd(struct phy_device *phydev,
++					 int global_phy_index, int devad, u32 regnum)
++{
++	struct phy_package_shared *shared = phydev->shared;
++	struct mii_bus *bus = phydev->mdio.bus;
++	int addr;
 +
-+  Each PHY inside of QCA807x series has 4 digitally controlled
-+  output only pins that natively drive LED-s for up to 2 attached
-+  LEDs. Some vendor also use these 4 output for GPIO usage without
-+  attaching LEDs.
++	if (!shared || global_phy_index > shared->addrs_num - 1)
++		return -EIO;
 +
-+  Note that output pins can be set to drive LEDs OR GPIO, mixed
-+  definition are not accepted.
++	addr = shared->addrs[global_phy_index];
++	mmd_phy_indirect(bus, addr, devad, regnum);
++	return __mdiobus_read(bus, addr, MII_MMD_DATA);
++}
 +
-+allOf:
-+  - $ref: ethernet-phy-package.yaml#
++static inline int phy_package_write_mmd(struct phy_device *phydev,
++					int global_phy_index, int devad,
++					u32 regnum, u16 val)
++{
++	struct phy_package_shared *shared = phydev->shared;
++	struct mii_bus *bus = phydev->mdio.bus;
++	int addr, ret;
 +
-+select:
-+  properties:
-+    compatible:
-+      contains:
-+        const: ethernet-phy-package
-+  patternProperties:
-+    ^ethernet-phy(@[a-f0-9]+)?$:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - ethernet-phy-id004d.d0b2
-+              - ethernet-phy-id004d.d0b1
-+  required:
-+    - compatible
++	if (!shared || global_phy_index > shared->addrs_num - 1)
++		return -EIO;
 +
-+properties:
-+  global-phys:
-+    maxItems: 2
++	addr = shared->addrs[global_phy_index];
 +
-+  global-phy-names:
-+    items:
-+      - const: combo
-+      - const: pqsgmii
++	phy_lock_mdio_bus(phydev);
++	mmd_phy_indirect(bus, addr, devad, regnum);
++	ret = __mdiobus_write(bus, addr, MII_MMD_DATA, val);
++	phy_unlock_mdio_bus(phydev);
 +
-+  phy-connection-type:
-+    enum:
-+      - qsgmii
-+      - psgmii
++	return ret;
++}
 +
-+patternProperties:
-+  ^ethernet-phy(@[a-f0-9]+)?$:
-+    $ref: /schemas/net/ethernet-phy.yaml#
++static inline int __phy_package_write_mmd(struct phy_device *phydev,
++					  int global_phy_index, int devad,
++					  u32 regnum, u16 val)
++{
++	struct phy_package_shared *shared = phydev->shared;
++	struct mii_bus *bus = phydev->mdio.bus;
++	int addr;
 +
-+    properties:
-+      gpio-controller:
-+        description: set the output lines as GPIO instead of LEDs
-+        type: boolean
++	if (!shared || global_phy_index > shared->addrs_num - 1)
++		return -EIO;
 +
-+      '#gpio-cells':
-+        description: number of GPIO cells for the PHY
-+        const: 2
++	addr = shared->addrs[global_phy_index];
++	mmd_phy_indirect(bus, addr, devad, regnum);
++	return __mdiobus_write(bus, addr, MII_MMD_DATA, val);
++}
 +
-+    dependencies:
-+      gpio-controller: ['#gpio-cells']
-+
-+    unevaluatedProperties: false
-+
-+required:
-+  - compatible
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/leds/common.h>
-+
-+    mdio {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        ethernet-phy-package {
-+            compatible = "ethernet-phy-package";
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            global-phys = <&qca8075_4>, <&qca8075_psgmii>;
-+            global-phy-names = "combo", "pqsgmii";
-+
-+            qca8075_1: ethernet-phy@1 {
-+                compatible = "ethernet-phy-id004d.d0b2";
-+                reg = <1>;
-+
-+                leds {
-+                    #address-cells = <1>;
-+                    #size-cells = <0>;
-+
-+                    led@0 {
-+                        reg = <0>;
-+                        color = <LED_COLOR_ID_GREEN>;
-+                        function = LED_FUNCTION_LAN;
-+                        default-state = "keep";
-+                    };
-+                };
-+            };
-+
-+            qca8075_2: ethernet-phy@2 {
-+                compatible = "ethernet-phy-id004d.d0b2";
-+                reg = <2>;
-+
-+                gpio-controller;
-+                #gpio-cells = <2>;
-+            };
-+
-+            qca8075_3: ethernet-phy@3 {
-+                compatible = "ethernet-phy-id004d.d0b2";
-+                reg = <3>;
-+            };
-+
-+            qca8075_4: ethernet-phy@4 {
-+                compatible = "ethernet-phy-id004d.d0b2";
-+                reg = <4>;
-+            };
-+
-+            qca8075_pqsgmii: ethernet-phy@5 {
-+                reg = <5>;
-+            };
-+        };
-+    };
+ static inline bool __phy_package_set_once(struct phy_device *phydev,
+ 					  unsigned int b)
+ {
 -- 
 2.40.1
 
