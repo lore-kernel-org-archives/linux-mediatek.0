@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBC63C54E76
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 13:52:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE768C197A0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 13:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BkZZkQ+fhxkG3W91GuOjhKRxuNJAr/jVw9bM/JNE+9s=; b=0Oz8ti9WbH3BgXYZ+8cqMbw6WE
-	dZZO0h1pfEdUVJDmSXjPjN+x8AXJoiyaPP/urI+DxErvQwlk4HkJlVbDV8nvNHyETF0N0FjFCxpVH
-	Eb1y3X5dQq3V07SMRFtfUDv8TseSBvDrB6JMkoRgBvAYrr9NKD07XyPFk0Ryurs9zCN3+mEcbLzVU
-	xnP6biI97QuMuehkVqf7WLO7Vd4k6qwGziGgAnhnHcXkbkJXd8xiETsgQCY5dsEC7A9dc557kXmWc
-	Fr8vqXC8YI7ythmn0lf8EtVFOJKXt1pfBUbxB8RkAkp5653lgP3ftGBDLxo3xbARclNOOPqG1lx75
-	B9alWyFA==;
+	bh=+bK4gHzJ+y3tePc89TtX9q7l+Za/0YYi8syFPOCy8lg=; b=h+PPhoRrJ0rlZ+xaDTaLdkHmv0
+	mHxhB4a3v+FozxHwQqMGsNrVisb321xkxrJrJ34SnRcKdv8B0LLgICtlZCLiGHoKYlJ3LtGnQK126
+	QxqwZi4esYEwX+8sESJAnUvNpglx7nIx9rcGLXPaiu3nLkIDZpdOzvDKEOOxEfqR33T6aZy7zpaGg
+	Kou+0dPHBD/d7z8lRBdDDxwpuMCHMws6O8NnL6V3yvkmQj7je/mKBuVRTLNKX1xdKu3+PHoVkq3Yv
+	wcXmnje2xpAnMewhTB2m00Z6KPVBBo2wctaHTlNCeJtVOjnahFqZ+nj1DHwrl2gMuBBFgoE7WznV/
+	v53Lsn9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r54gc-00CBqE-0p;
-	Mon, 20 Nov 2023 13:51:39 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1r54i0-00CCFv-1s;
+	Mon, 20 Nov 2023 13:53:04 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r54gO-00CBi5-2e;
-	Mon, 20 Nov 2023 13:51:27 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40a4d04af5cso13387475e9.0;
-        Mon, 20 Nov 2023 05:51:24 -0800 (PST)
+	id 1r54gW-00CBmg-13;
+	Mon, 20 Nov 2023 13:52:17 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-32fb190bf9bso3271038f8f.1;
+        Mon, 20 Nov 2023 05:51:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700488283; x=1701093083; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1700488290; x=1701093090; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=BkZZkQ+fhxkG3W91GuOjhKRxuNJAr/jVw9bM/JNE+9s=;
-        b=du6m0/XTnXvs1bFJ/TLHNwV3bJXMPQXXF0fKplc+JVrzZFUHgOHrrKGYfhT+nKGFHF
-         /WIXfcXCXnC0XbilcZUOb48dIU9rsqrHXM57ZwvYQ12COrsKKqwxQBx7uIEwmF0EKrmp
-         122afTuyG+3Fg6L8ay7Wh0xrA3Quy1BwjG9RomP0bHUslFgY3HmDBH6kedgQbWZjRMys
-         zsug1cM+3M+DQeI/6hIgdi2PX3RUqKtRsMO8Feq93edPWTM5cFwGfUKqcsKVzaiYhpRP
-         UD+EiasUv8MHerTHbwnsbNmMkzhCEq6vGQ0OwBVSoqjeFjOg7s6tD8W1flcDRCqh4u3s
-         bUkQ==
+        bh=+bK4gHzJ+y3tePc89TtX9q7l+Za/0YYi8syFPOCy8lg=;
+        b=KMf+N1wiRJ/rEg26PJlZwQQexqIIB5/Kw2jsPP0R0deRuGWTjMAns+2wqp1obQ1+bh
+         GHQs8Thb0Z2hvq8YT7H0zE4G3sz5eNwONuFEfAEUMkF8cBg3wC9jc9BnQbz82Gkv0Z6e
+         T13dY3U3yRVldqGFALmH2w+dmG4nRCR1FyU5UOr/LqGj4uuGzUh/YozjOhVo6SOYnJvi
+         Ukfs+lAZ2XWOyoGrzy23f7Lofjvj4nCMg8L5Wman2/UBTQ41/QMdC+qdsMc8PNjj7H7F
+         enj9lZ6Qe2SeBYB82y1VkZWYJmO7gVzFXajMC2eCe5OmDNQapVEwmBzyWoJ5X78qpnH/
+         g6xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700488283; x=1701093083;
+        d=1e100.net; s=20230601; t=1700488290; x=1701093090;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=BkZZkQ+fhxkG3W91GuOjhKRxuNJAr/jVw9bM/JNE+9s=;
-        b=ge7MjIB8TnGe90556KCU6lOkUPhCWri5zSCiiag8OHe5JLprnqHSRzvEE1oudxyVUo
-         SQHbJMnVxLp98Pkhc+sUgnBGFh2K4e/RtDZiBwBuFkGSfCDmvq6JlnQ5F2VNl4ZUCBxB
-         quVRDOsTcVNbsrPucnJistarYU3Ca/9ugSAQdzgwP5qZjkprJyDU7H8TRUy8hXlKJiL7
-         Q2a3zImOi0MHltg3rHk+k+flayR2ISF3A5R7FlTyv5eZghVBgOPfuRgZhFI8iZXyXYrz
-         MeppkzRvWOerhske4lAeNHXhZSY5JpoBDgmkFXClNVv66+Mqe7T1ncX6fYA1SnK/F9go
-         f8aA==
-X-Gm-Message-State: AOJu0YwCc1dExv+67qhg2f6DwIttBuXpwSzJKTR4LTZmH5ZrSKKaEl/k
-	aEJXLse9/0TJKvDgI8BVjTA=
-X-Google-Smtp-Source: AGHT+IHHHmLbo0ls+ZfdjXnfQDFKRg9UMz3ucecEJfw4iq5blHC0EFBdWzjf+AlCouNSkFhaXzhm/Q==
-X-Received: by 2002:a05:600c:3b8c:b0:407:5b54:bb10 with SMTP id n12-20020a05600c3b8c00b004075b54bb10mr5935396wms.8.1700488283168;
-        Mon, 20 Nov 2023 05:51:23 -0800 (PST)
+        bh=+bK4gHzJ+y3tePc89TtX9q7l+Za/0YYi8syFPOCy8lg=;
+        b=Xwg/rc5SSrnegpF71GEa3dsbRdxlfqkAbip9Uj8d4v9yO/J047/WT3f5m7vJOfhRKU
+         uLfpmXsxKldQI769RQipSwiXIJNsYNe93OGbuJ0k7SVOuM76kR7EtOt80oYYaiQ2ZV4Q
+         3o/O/mhkvZ7TrOiirx/s7POnUJP5MmHYh+7qmvtMppnNSd7Hzm1NEt4csMfLfy6yOMes
+         KU0Xea1Iv2xHOwcY2IEqcL4veOz2kTfYhZXwALpQ46FteyCQg2a1yam39e/k/kpm/QG5
+         QOEKADv/NI1r4YvyLR/eajhcw9HYOM38RjToqm2wmoEFvgpS5mT37jsKc77oLX6Wo3vX
+         Jdiw==
+X-Gm-Message-State: AOJu0Yxw8oSTg6NwPLyw03Ed8yAnq4RqMvYDlMyo9/PIOofB8FI3Bl80
+	vSINcweycqvRldNZROnHX4k=
+X-Google-Smtp-Source: AGHT+IGQpqPZK+oPA2rWRqOtnSOKMxcGuZz5hDx228kkb7ZrMwBDn5rbRsE/t5rqE8I++LpS4paQag==
+X-Received: by 2002:a05:6000:1445:b0:332:cb0e:73b6 with SMTP id v5-20020a056000144500b00332cb0e73b6mr1341263wrx.2.1700488289753;
+        Mon, 20 Nov 2023 05:51:29 -0800 (PST)
 Received: from localhost.localdomain (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.googlemail.com with ESMTPSA id j33-20020a05600c1c2100b0040772934b12sm18205846wms.7.2023.11.20.05.51.21
+        by smtp.googlemail.com with ESMTPSA id j33-20020a05600c1c2100b0040772934b12sm18205846wms.7.2023.11.20.05.51.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 05:51:22 -0800 (PST)
+        Mon, 20 Nov 2023 05:51:29 -0800 (PST)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -95,17 +95,18 @@ To: "David S. Miller" <davem@davemloft.net>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [net-next RFC PATCH 07/14] net: phy: add support for driver specific PHY package probe/config
-Date: Mon, 20 Nov 2023 14:50:34 +0100
-Message-Id: <20231120135041.15259-8-ansuelsmth@gmail.com>
+Subject: [net-next RFC PATCH 11/14] dt-bindings: net: add QCA807x PHY defines
+Date: Mon, 20 Nov 2023 14:50:38 +0100
+Message-Id: <20231120135041.15259-12-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231120135041.15259-1-ansuelsmth@gmail.com>
 References: <20231120135041.15259-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_055124_864553_5C9A3CF7 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20231120_055132_606646_9DD07100 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,89 +121,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add PHY driver specific function to probe and configure PHY package.
-These function are run only once before the PHY probe and config_init.
+From: Robert Marko <robert.marko@sartura.hr>
 
-They are used in conjunction with DT PHY package define for basic PHY
-package implementation to setup and probe PHY package with simple
-functions directly defined in the PHY driver struct.
+Add DT bindings defined for Qualcomm QCA807x PHY series related to
+calibration and DAC settings.
 
+Signed-off-by: Robert Marko <robert.marko@sartura.hr>
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- drivers/net/phy/phy_device.c | 14 ++++++++++++++
- include/linux/phy.h          | 21 +++++++++++++++++++++
- 2 files changed, 35 insertions(+)
+ include/dt-bindings/net/qcom-qca807x.h | 45 ++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+ create mode 100644 include/dt-bindings/net/qcom-qca807x.h
 
-diff --git a/drivers/net/phy/phy_device.c b/drivers/net/phy/phy_device.c
-index 91d17129b774..0b7ba6995929 100644
---- a/drivers/net/phy/phy_device.c
-+++ b/drivers/net/phy/phy_device.c
-@@ -1246,6 +1246,13 @@ int phy_init_hw(struct phy_device *phydev)
- 	if (ret < 0)
- 		return ret;
- 
-+	if (phydev->drv->phy_package_config_init_once &&
-+	    phy_package_init_once(phydev)) {
-+		ret = phydev->drv->phy_package_config_init_once(phydev);
-+		if (ret < 0)
-+			return ret;
-+	}
+diff --git a/include/dt-bindings/net/qcom-qca807x.h b/include/dt-bindings/net/qcom-qca807x.h
+new file mode 100644
+index 000000000000..42c45c7d5210
+--- /dev/null
++++ b/include/dt-bindings/net/qcom-qca807x.h
+@@ -0,0 +1,45 @@
++/* SPDX-License-Identifier: GPL-2.0-only OR MIT */
++/*
++ * Device Tree constants for the Qualcomm QCA807X PHYs
++ */
 +
- 	if (phydev->drv->config_init) {
- 		ret = phydev->drv->config_init(phydev);
- 		if (ret < 0)
-@@ -3386,6 +3393,13 @@ static int phy_probe(struct device *dev)
- 	/* Deassert the reset signal */
- 	phy_device_reset(phydev, 0);
- 
-+	if (phydev->drv->phy_package_probe_once &&
-+	    phy_package_probe_once(phydev)) {
-+		err = phydev->drv->phy_package_probe_once(phydev);
-+		if (err)
-+			goto out;
-+	}
++#ifndef _DT_BINDINGS_QCOM_QCA807X_H
++#define _DT_BINDINGS_QCOM_QCA807X_H
 +
- 	if (phydev->drv->probe) {
- 		err = phydev->drv->probe(phydev);
- 		if (err)
-diff --git a/include/linux/phy.h b/include/linux/phy.h
-index 7c47c12cffa0..1849fc637196 100644
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
-@@ -924,12 +924,33 @@ struct phy_driver {
- 	 */
- 	int (*soft_reset)(struct phy_device *phydev);
- 
-+	/**
-+	 * @phy_package_config_init_once: Driver specific PHY package
-+	 *   config init call
-+	 * @def: PHY device to use to probe PHY package
-+	 *
-+	 * Called to initialize the PHY package, including after
-+	 * a reset.
-+	 * Called BEFORE PHY config_init.
-+	 */
-+	int (*phy_package_config_init_once)(struct phy_device *dev);
++#define PSGMII_QSGMII_TX_DRIVER_140MV	0
++#define PSGMII_QSGMII_TX_DRIVER_160MV	1
++#define PSGMII_QSGMII_TX_DRIVER_180MV	2
++#define PSGMII_QSGMII_TX_DRIVER_200MV	3
++#define PSGMII_QSGMII_TX_DRIVER_220MV	4
++#define PSGMII_QSGMII_TX_DRIVER_240MV	5
++#define PSGMII_QSGMII_TX_DRIVER_260MV	6
++#define PSGMII_QSGMII_TX_DRIVER_280MV	7
++#define PSGMII_QSGMII_TX_DRIVER_300MV	8
++#define PSGMII_QSGMII_TX_DRIVER_320MV	9
++#define PSGMII_QSGMII_TX_DRIVER_400MV	10
++#define PSGMII_QSGMII_TX_DRIVER_500MV	11
++/* Default value */
++#define PSGMII_QSGMII_TX_DRIVER_600MV	12
 +
- 	/**
- 	 * @config_init: Called to initialize the PHY,
- 	 * including after a reset
- 	 */
- 	int (*config_init)(struct phy_device *phydev);
- 
-+	/**
-+	 * @phy_package_probe_once: Driver specific PHY package probe
-+	 * @def: PHY device to use to probe PHY package
-+	 *
-+	 * Called during discovery once per PHY package. Used to set
-+	 * up device-specific PHY package structures, if any.
-+	 * Called BEFORE PHY probe.
-+	 */
-+	int (*phy_package_probe_once)(struct phy_device *dev);
++/* Full amplitude, full bias current */
++#define QCA807X_CONTROL_DAC_FULL_VOLT_BIAS		0
++/* Amplitude follow DSP (amplitude is adjusted based on cable length), half bias current */
++#define QCA807X_CONTROL_DAC_DSP_VOLT_HALF_BIAS		1
++/* Full amplitude, bias current follow DSP (bias current is adjusted based on cable length) */
++#define QCA807X_CONTROL_DAC_FULL_VOLT_DSP_BIAS		2
++/* Both amplitude and bias current follow DSP */
++#define QCA807X_CONTROL_DAC_DSP_VOLT_BIAS		3
++/* Full amplitude, half bias current */
++#define QCA807X_CONTROL_DAC_FULL_VOLT_HALF_BIAS		4
++/* Amplitude follow DSP setting; 1/4 bias current when cable<10m,
++ * otherwise half bias current
++ */
++#define QCA807X_CONTROL_DAC_DSP_VOLT_QUARTER_BIAS	5
++/* Full amplitude; same bias current setting with “010” and “011”,
++ * but half more bias is reduced when cable <10m
++ */
++#define QCA807X_CONTROL_DAC_FULL_VOLT_HALF_BIAS_SHORT	6
++/* Amplitude follow DSP; same bias current setting with “110”, default value */
++#define QCA807X_CONTROL_DAC_DSP_VOLT_HALF_BIAS_SHORT	7
 +
- 	/**
- 	 * @probe: Called during discovery.  Used to set
- 	 * up device-specific structures, if any
++#endif
 -- 
 2.40.1
 
