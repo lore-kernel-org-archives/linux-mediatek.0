@@ -4,139 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F17B2C197A0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 14:57:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D74C197A0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 15:00:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mQdmwJggkH5N5H7bleDZIaCxHcp1ZmwZnDUsdCqchNc=; b=Ig5tr8ajrLUcnHsalYAG78F4wJ
-	+m4g1dXPC5k/gEDc/QUBv+GC0ESrpx8zoj49A0SoJkvi6tEwYN8bys+ayHnDPB83l33XJgKtBi1iN
-	HybpQICH5JV2qIqjZf/cz/p+qNndX2U0dsglj35ncuY6bteFNhFKxiW6sEAvN+i+QkfKc0A41d7XO
-	iWC/XmW2LNc7eRV0qXDbFV+U59T7/hsYkJGK6J5kcUoVa2rl0x3zpBoSDI0l60IboZ/q9AfnEczT8
-	2bXTxXSN4ylJgTeJQz0/KBKEvxn9AnyzsFunijpliCOSBsszkVmjy3IfbTAi2jE4JugWlaku4kMvc
-	JYyALspw==;
+	bh=mSkXFy8s0m4FAo3hSta1RKyG8KAPqujjDp76lrQjrQM=; b=hcYzsZJbKToWgv/PT4n+ndsme4
+	gmJOZMn5SJopZIHS6KPlmfEJ5hNpZjtMCwsRPEloXGY2LUKL1s1BGGzjCfoE9HcUtSFF4w/WkyNBt
+	xHkAI+OWj7ACS4h0tvG44oRrS+O0gelgFoOINnj7jnZnEgbbF+M0pjPPteJ2zkGcc2yLxlAMmM9lh
+	ABEOLOQBf+EdFtcTdAztst+dYUv8gL8ozkaEQB6WdQOTytgAI0DZjrsiKLTkOVTgvuofZjd/cLAOM
+	YZCVfwr3JtwL+d38S+NrEP4zVzxgMHynNGh9vecY6Fzre2w4H33cfBzp5ZsXHsoFY7vX2J8TmZdPu
+	cmWVXUxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r55ia-00CQum-0x;
-	Mon, 20 Nov 2023 14:57:44 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1r55lJ-00CRlO-0w;
+	Mon, 20 Nov 2023 15:00:33 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r55iF-00CQq2-2A
-	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Nov 2023 14:57:40 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-9f26ee4a6e5so611974366b.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Nov 2023 06:57:19 -0800 (PST)
+	id 1r54gI-00CBeT-0g;
+	Mon, 20 Nov 2023 13:51:22 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2c5087d19a6so53152231fa.0;
+        Mon, 20 Nov 2023 05:51:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700492238; x=1701097038; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=mQdmwJggkH5N5H7bleDZIaCxHcp1ZmwZnDUsdCqchNc=;
-        b=Dwi5Pt+2H+G3vcwf/9YEULQWJVCWc9FFE/Y62041OyTuMyQf7j0xQLpvNsfcuknkcu
-         WXCVjtaCd4cq9Pd5ffHV9ChSxLkRvWXqCMjtpRoUq08Amkg1WV/Gyw2untoEoAdRNO6K
-         bv/xRq+A0GrLwKyOeB9DrNFqGBHGY3NfNIqZcoU9nI19yph2LYRZWn0vG0fCESbMhZKd
-         7rBbsZ1pWLbC5nX/0xyVEkl7/GkCATw02P6WQpAilCn9Mx8g/6jwf69OpJx9TysaW80d
-         HFJ1RhfhySB6XMmJ6/FUenldfr/neLHBFMJhsutQSy5FLG5o9Mq2UFI+GYaPuKM+fhJF
-         uU4g==
+        d=gmail.com; s=20230601; t=1700488276; x=1701093076; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mSkXFy8s0m4FAo3hSta1RKyG8KAPqujjDp76lrQjrQM=;
+        b=no0avn0fnVOOZ8ijIHRqjoWyd0CwEP/Atx6vzsV5z1mQE67zwIsouKF9Q35113GsZj
+         QTqKDME/0rYpxyAFjYzKk1n3JbhWuUjou0duu9OLUMCT31nwApc1SDfXl4utADVNwhCG
+         pjQt7swK0KZ1M+29Eq4rrQWoQHFS5BvAwFsjwn3yWOgmoM2RmTz5bzFjh3/CdpG1UhYR
+         KbdIC7y5/Uq/53aPdIeA5/ZYfAIBMLepSm/tzKxQKsskfaPj1n7C4szRO2ObTHrBGnFh
+         W+IkqGz3n2BFggoGYrjUnYHkSQ2zEvZ9WfHYGcZE8x6iIfNWRIUKivxerkVbvxM26bcO
+         Vm9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700492238; x=1701097038;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mQdmwJggkH5N5H7bleDZIaCxHcp1ZmwZnDUsdCqchNc=;
-        b=E7KFWq7KyBgrZAdf12qJ1wFa4fCEVjTHazpYaTBvJjYMXba3owBl92PFiBTdlMguF0
-         Yr2eO8VPIR7/2nuGJAUOPiLgJOI5vgOs42ZbkiVzMgDPNvnAQvUGm77a+5tJTvtCfR4D
-         yM/na6tpqb/fzzpsrjSQE53LhQoPSDJgtMGlEPmw0BdKo98OzOFbB3uYeRIZtRS/50Ey
-         bopXvemaStEVtfRoO9HhEJWjA6NjvYtw6Q8AFzoBXRbveN4Rm5S5nKYFGmzWRC6dK3JK
-         VyIk1mdILUZZwRp+sXnGtB5H93vnpc7RMkh4dMUcZA+O1JzLvNnGhCKovQz0hlqgs8zl
-         QB2w==
-X-Gm-Message-State: AOJu0YxnjTEObfXHcXSGCc4pFRJGcwzxLgVAzIvjl+FGyUNn6VnirAFv
-	LjUDe4nsJl0dh80b3eq9JO3LLg==
-X-Google-Smtp-Source: AGHT+IGKTCAQ89cSgrdtj41saGZa0eHlqo9fZTfHzsMIgXBpffdgBrR+YTLmJkRQLTrSUGi72DsZPA==
-X-Received: by 2002:a17:907:6d0a:b0:9a5:b878:7336 with SMTP id sa10-20020a1709076d0a00b009a5b8787336mr6347418ejc.7.1700492238455;
-        Mon, 20 Nov 2023 06:57:18 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.222.11])
-        by smtp.gmail.com with ESMTPSA id me23-20020a170906aed700b009e5c644e34dsm3899105ejb.82.2023.11.20.06.57.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 Nov 2023 06:57:17 -0800 (PST)
-Message-ID: <e8483375-cace-473c-aba7-1cd60feae242@linaro.org>
-Date: Mon, 20 Nov 2023 15:57:15 +0100
+        d=1e100.net; s=20230601; t=1700488276; x=1701093076;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mSkXFy8s0m4FAo3hSta1RKyG8KAPqujjDp76lrQjrQM=;
+        b=eAdV2jGYy4GE+CxfRcYbjJ97AWez9FiOxBc4yS47dOZC8jwWCmKY79mXMTiBmjyOFr
+         aj5WhRv12qVJraq5HEe9au+aZq10t3rjXwUjfjAOq6k4gf3pZMoQmbtwzcK4Nsi3JmxC
+         6zyeM6BxhDAwe51R1Wlpe0zQCHQrO/BmgtO9Z8zFdWRrINdgjfTotTIqz4hda5HWcV8N
+         wXp52/HNZwUE4u9oo3cPJ2V2TcuXMYR/iPdzcAHazuGTHxZ3bVUAkwqRieELrq7t0Y2H
+         i+9n6vD30VqoQW6CqaviCyzxU039bQ4HlsVsDT+Z66nLJhGWj3TV/h5rp3TG3O+z1U2q
+         RmUg==
+X-Gm-Message-State: AOJu0Yx4KM8okV5VFGLzxF77ZTr5/PBCLzdQ56SejK7YPyjW0smnNHNE
+	fIoXMxdv9e7QByTq6ucvWXo=
+X-Google-Smtp-Source: AGHT+IGRWPskxjGA2rJREXkXtdcG94gsGR4fcmJx18lPkb4K8zHD6Ut0hUV6FgYsk/XQHGBG6tApZg==
+X-Received: by 2002:a2e:9192:0:b0:2c5:2eaa:5398 with SMTP id f18-20020a2e9192000000b002c52eaa5398mr4967418ljg.25.1700488276123;
+        Mon, 20 Nov 2023 05:51:16 -0800 (PST)
+Received: from localhost.localdomain (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
+        by smtp.googlemail.com with ESMTPSA id j33-20020a05600c1c2100b0040772934b12sm18205846wms.7.2023.11.20.05.51.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Nov 2023 05:51:15 -0800 (PST)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Epping <david.epping@missinglinkelectronics.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	Harini Katakam <harini.katakam@amd.com>,
+	Simon Horman <horms@kernel.org>,
+	Robert Marko <robert.marko@sartura.hr>,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet PHY package nodes
+Date: Mon, 20 Nov 2023 14:50:30 +0100
+Message-Id: <20231120135041.15259-4-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20231120135041.15259-1-ansuelsmth@gmail.com>
+References: <20231120135041.15259-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Andrew Davis <afd@ti.com>, Arnd Bergmann <arnd@arndb.de>,
- Bjorn Andersson <andersson@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Michal Simek <michal.simek@amd.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
- Olof Johansson <olof@lixom.net>, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org
-References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
- <92cf3bcc-18e7-40ba-a082-1b8b6bea0dee@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzTRLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+wsGUBBMBCgA+FiEE
- m9B+DgxR+NWWd7dUG5NDfTtBYpsFAmI+BxMCGwMFCRRfreEFCwkIBwIGFQoJCAsCBBYCAwEC
- HgECF4AACgkQG5NDfTtBYptgbhAAjAGunRoOTduBeC7V6GGOQMYIT5n3OuDSzG1oZyM4kyvO
- XeodvvYv49/ng473E8ZFhXfrre+c1olbr1A8pnz9vKVQs9JGVa6wwr/6ddH7/yvcaCQnHRPK
- mnXyP2BViBlyDWQ71UC3N12YCoHE2cVmfrn4JeyK/gHCvcW3hUW4i5rMd5M5WZAeiJj3rvYh
- v8WMKDJOtZFXxwaYGbvFJNDdvdTHc2x2fGaWwmXMJn2xs1ZyFAeHQvrp49mS6PBQZzcx0XL5
- cU9ZjhzOZDn6Apv45/C/lUJvPc3lo/pr5cmlOvPq1AsP6/xRXsEFX/SdvdxJ8w9KtGaxdJuf
- rpzLQ8Ht+H0lY2On1duYhmro8WglOypHy+TusYrDEry2qDNlc/bApQKtd9uqyDZ+rx8bGxyY
- qBP6bvsQx5YACI4p8R0J43tSqWwJTP/R5oPRQW2O1Ye1DEcdeyzZfifrQz58aoZrVQq+innR
- aDwu8qDB5UgmMQ7cjDSeAQABdghq7pqrA4P8lkA7qTG+aw8Z21OoAyZdUNm8NWJoQy8m4nUP
- gmeeQPRc0vjp5JkYPgTqwf08cluqO6vQuYL2YmwVBIbO7cE7LNGkPDA3RYMu+zPY9UUi/ln5
- dcKuEStFZ5eqVyqVoZ9eu3RTCGIXAHe1NcfcMT9HT0DPp3+ieTxFx6RjY3kYTGLOwU0EVUNc
- NAEQAM2StBhJERQvgPcbCzjokShn0cRA4q2SvCOvOXD+0KapXMRFE+/PZeDyfv4dEKuCqeh0
- hihSHlaxTzg3TcqUu54w2xYskG8Fq5tg3gm4kh1Gvh1LijIXX99ABA8eHxOGmLPRIBkXHqJY
- oHtCvPc6sYKNM9xbp6I4yF56xVLmHGJ61KaWKf5KKWYgA9kfHufbja7qR0c6H79LIsiYqf92
- H1HNq1WlQpu/fh4/XAAaV1axHFt/dY/2kU05tLMj8GjeQDz1fHas7augL4argt4e+jum3Nwt
- yupodQBxncKAUbzwKcDrPqUFmfRbJ7ARw8491xQHZDsP82JRj4cOJX32sBg8nO2N5OsFJOcd
- 5IE9v6qfllkZDAh1Rb1h6DFYq9dcdPAHl4zOj9EHq99/CpyccOh7SrtWDNFFknCmLpowhct9
- 5ZnlavBrDbOV0W47gO33WkXMFI4il4y1+Bv89979rVYn8aBohEgET41SpyQz7fMkcaZU+ok/
- +HYjC/qfDxT7tjKXqBQEscVODaFicsUkjheOD4BfWEcVUqa+XdUEciwG/SgNyxBZepj41oVq
- FPSVE+Ni2tNrW/e16b8mgXNngHSnbsr6pAIXZH3qFW+4TKPMGZ2rZ6zITrMip+12jgw4mGjy
- 5y06JZvA02rZT2k9aa7i9dUUFggaanI09jNGbRA/ABEBAAHCwXwEGAEKACYCGwwWIQSb0H4O
- DFH41ZZ3t1Qbk0N9O0FimwUCYDzvagUJFF+UtgAKCRAbk0N9O0Fim9JzD/0auoGtUu4mgnna
- oEEpQEOjgT7l9TVuO3Qa/SeH+E0m55y5Fjpp6ZToc481za3xAcxK/BtIX5Wn1mQ6+szfrJQ6
- 59y2io437BeuWIRjQniSxHz1kgtFECiV30yHRgOoQlzUea7FgsnuWdstgfWi6LxstswEzxLZ
- Sj1EqpXYZE4uLjh6dW292sO+j4LEqPYr53hyV4I2LPmptPE9Rb9yCTAbSUlzgjiyyjuXhcwM
- qf3lzsm02y7Ooq+ERVKiJzlvLd9tSe4jRx6Z6LMXhB21fa5DGs/tHAcUF35hSJrvMJzPT/+u
- /oVmYDFZkbLlqs2XpWaVCo2jv8+iHxZZ9FL7F6AHFzqEFdqGnJQqmEApiRqH6b4jRBOgJ+cY
- qc+rJggwMQcJL9F+oDm3wX47nr6jIsEB5ZftdybIzpMZ5V9v45lUwmdnMrSzZVgC4jRGXzsU
- EViBQt2CopXtHtYfPAO5nAkIvKSNp3jmGxZw4aTc5xoAZBLo0OV+Ezo71pg3AYvq0a3/oGRG
- KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
- fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <92cf3bcc-18e7-40ba-a082-1b8b6bea0dee@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_065726_150477_4838766B 
-X-CRM114-Status: GOOD (  29.92  )
+X-CRM114-CacheID: sfid-20231120_055118_253275_713EE29F 
+X-CRM114-Status: GOOD (  16.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,303 +120,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/11/2023 12:43, AngeloGioacchino Del Regno wrote:
-> Il 20/11/23 09:40, Krzysztof Kozlowski ha scritto:
->> Document preferred coding style for Devicetree sources (DTS and DTSI),
->> to bring consistency among all (sub)architectures and ease in reviews.
->>
->> Cc: Andrew Davis <afd@ti.com>
->> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Cc: Arnd Bergmann <arnd@arndb.de>
->> Cc: Bjorn Andersson <andersson@kernel.org>
->> Cc: Geert Uytterhoeven <geert+renesas@glider.be>
->> Cc: Heiko Stuebner <heiko@sntech.de>
->> Cc: Konrad Dybcio <konrad.dybcio@linaro.org>
->> Cc: Matthias Brugger <matthias.bgg@gmail.com>
->> Cc: Michal Simek <michal.simek@amd.com>
->> Cc: Neil Armstrong <neil.armstrong@linaro.org>
->> Cc: Nishanth Menon <nm@ti.com>
->> Cc: Olof Johansson <olof@lixom.net>
->> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->>
->> ---
->>
->> Merging idea: Rob/DT bindings
->>
->> Changes in v2
->> =============
->> 1. Hopefully incorporate entire feedback from comments:
->> a. Fix \ { => / { (Rob)
->> b. Name: dts-coding-style (Rob)
->> c. Exceptions for ordering nodes by name for Renesas and pinctrl (Geert,
->>     Konrad)
->> d. Ordering properties by common/vendor (Rob)
->> e. Array entries in <> (Rob)
->>
->> 2. New chapter: Organizing DTSI and DTS
->>
->> 3. Several grammar fixes (missing articles)
->>
->> Cc: linux-rockchip@lists.infradead.org
->> Cc: linux-mediatek@lists.infradead.org
->> Cc: linux-samsung-soc@vger.kernel.org
->> Cc: linux-amlogic@lists.infradead.org
->> Cc: linux-arm-kernel@lists.infradead.org
->> Cc: linux-arm-msm@vger.kernel.org
->> ---
->>   .../devicetree/bindings/dts-coding-style.rst  | 163 ++++++++++++++++++
->>   Documentation/devicetree/bindings/index.rst   |   1 +
->>   2 files changed, 164 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/dts-coding-style.rst
->>
->> diff --git a/Documentation/devicetree/bindings/dts-coding-style.rst b/Documentation/devicetree/bindings/dts-coding-style.rst
->> new file mode 100644
->> index 000000000000..cc7e3b4d1b92
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/dts-coding-style.rst
->> @@ -0,0 +1,163 @@
->> +.. SPDX-License-Identifier: GPL-2.0
->> +.. _dtscodingstyle:
->> +
->> +=====================================
->> +Devicetree Sources (DTS) Coding Style
->> +=====================================
->> +
->> +When writing Devicetree Sources (DTS) please observe below guidelines.  They
->> +should be considered complementary to any rules expressed already in Devicetree
->> +Specification and dtc compiler (including W=1 and W=2 builds).
->> +
->> +Individual architectures and sub-architectures can add additional rules, making
->> +the style stricter.
->> +
->> +Naming and Valid Characters
->> +---------------------------
->> +
->> +1. Node and property names are allowed to use only:
->> +
->> +   * lowercase characters: [a-z]
->> +   * digits: [0-9]
->> +   * dash: -
->> +
->> +2. Labels are allowed to use only:
->> +
->> +   * lowercase characters: [a-z]
->> +   * digits: [0-9]
->> +   * underscore: _
->> +
->> +3. Unit addresses should use lowercase hex, without leading zeros (padding).
-> 
-> This is imperative, so: s/should/shall/g
+Document ethernet PHY package nodes used to describe PHY shipped in
+bundle of 4-5 PHY. These particular PHY require specific PHY in the
+package for global onfiguration of the PHY package.
 
-Sure, fine.
+Example are PHY package that have some regs only in one PHY of the
+package and will affect every other PHY in the package, for example
+related to PHY interface mode calibration or global PHY mode selection.
 
-> 
->> +
->> +4. Hex values in properties, e.g. "reg", should use lowercase hex.  The address
->> +   part can be padded with leading zeros.
->> +
-> 
-> Same here, I'd say.... :-)
-> 
->> +Example::
->> +
->> +	gpi_dma2: dma-controller@800000 {
->> +		compatible = "qcom,sm8550-gpi-dma", "qcom,sm6350-gpi-dma";
->> +		reg = <0x0 0x00800000 0x0 0x60000>;
->> +	}
->> +
->> +Order of Nodes
->> +--------------
->> +
->> +1. Nodes within any bus, thus using unit addresses for children, shall be
->> +   ordered incrementally by unit address.
->> +   Alternatively for some sub-architectures, nodes of the same type can be
->> +   grouped together (e.g. all I2C controllers one after another even if this
->> +   breaks unit address ordering).
->> +
->> +2. Nodes without unit addresses should be ordered alpha-numerically by the node
->> +   name.  For a few types of nodes, they can be ordered by the main property
->> +   (e.g. pin configuration states ordered by value of "pins" property).
->> +
->> +3. When extending nodes in the board DTS via &label, the entries should be
->> +   ordered alpha-numerically.
->> +
->> +Example::
->> +
-> 
-> Hmm, comments!
-> 
->> +	// SoC DTSI
-> 
-> ....speaking of commenting, should we at least suggest to use C-style comments?
-> 
-> 	/* SoC DTSI */
+The PHY package node should use the global-phys property and the
+global-phy-names to define PHY in the package required by the PHY driver
+for global configuration.
 
-I can switch it to C-style in the example, but we are going with Linux
-Coding Style which soon will allow // judging by Linus' statements.
+It's also possible to specify the property phy-mode to specify that the
+PHY package sets a global PHY interface mode and every PHY of the
+package requires to have the same PHY interface mode.
 
-> 
->> +
->> +	/ {
->> +		cpus {
->> +			// ...
->> +		};
->> +
->> +		psci {
->> +			// ...
->> +		};
->> +
->> +		soc@ {
->> +			dma: dma-controller@10000 {
->> +				// ...
->> +			};
->> +
->> +			clk: clock-controller@80000 {
->> +				// ...
->> +			};
->> +		};
->> +	};
->> +
->> +	// Board DTS
->> +
->> +	&clk {
->> +		// ...
->> +	};
->> +
->> +	&dma {
->> +		// ...
->> +	};
->> +
->> +
->> +Order of Properties in Device Node
->> +----------------------------------
->> +
->> +Following order of properties in device nodes is preferred:
->> +
->> +1. compatible
->> +2. reg
->> +3. ranges
->> +4. Standard/common properties (defined by common bindings, e.g. without
->> +   vendor-prefixes)
->> +5. Vendor-specific properties
->> +6. status (if applicable)
->> +7. Child nodes, where each node is preceded with a blank line
->> +
->> +The "status" property is by default "okay", thus it can be omitted.
->> +
->> +Example::
->> +
->> +	// SoC DTSI
->> +
->> +	usb_1_hsphy: phy@88e3000 {
->> +		compatible = "qcom,sm8550-snps-eusb2-phy";
->> +		reg = <0x0 0x088e3000 0x0 0x154>;
->> +		#phy-cells = <0>;
->> +		resets = <&gcc GCC_QUSB2PHY_PRIM_BCR>;
->> +		status = "disabled";
->> +	};
-> 
-> Since this describes vendor-specific properties and vendor prefixes as well
-> as standard properties, I think it would be clearer if we use something more
-> complex that actually contains those as an example.
-> 
-> There's a few. One is MediaTek:
-> 
-> 	vdo1_rdma0: dma-controller@1c104000 {
-> 		compatible = "mediatek,mt8195-vdo1-rdma";
-> 		reg = <0 0x1c104000 0 0x1000>;
-> 		#dma-cells = <1>;
-> 		clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-> 		interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
-> 		iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
-> 		power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-> 		mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000 0x1000>;
-> 	};
-> 
-> ...or other one can be nVidia:
-> 
-> 	mipi: mipi@700e3000 {
-> 		compatible = "nvidia,tegra210-mipi";
-> 		reg = <0x0 0x700e3000 0x0 0x100>;
-> 		clocks = <&tegra_car TEGRA210_CLK_MIPI_CAL>;
-> 		clock-names = "mipi-cal";
-> 		power-domains = <&pd_sor>;
-> 		#nvidia,mipi-calibrate-cells = <1>;
-> 	};
-> 
-> ...or we could make an example out of fantasy, which could work even better
-> as far as describing goes.
-> 
-> 	/* SoC DTSI */
-> 
-> 	device_node: device-class@6789abc {
-> 		compatible = "vendor,device";
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ .../bindings/net/ethernet-phy-package.yaml    | 86 +++++++++++++++++++
+ 1 file changed, 86 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
 
-Yep. I'll use this, unless checkpatch complains about undocumented
-compatible. :) This allows to show the child node.
-
-> 		reg = <0 0x06789abc 0 0xa123>;
-> 		ranges = <0 0 0x6789abc 0x1000>;
-> 		#dma-cells = <1>;
-> 		clocks = <&clock_controller SOC_CLOCK>;
-> 		clock-names = "dev-clk";
-> 		#vendor,custom-cells = <2>;
-> 		status = "disabled";
-> 
-> 		child_node: child-class@100 {
-> 			reg = <0x100 0x200>;
-> 			/* ... */
-> 		};
-> 	};
-> 
-> 	/* Board DTS */
-> 
-> 	&device_node {
-> 		device-supply = <&board_vreg1>;
-> 		status = "okay";
-> 	}
-> 
->> +
->> +	// Board DTS
->> +
->> +	&usb_1_hsphy {
->> +		clocks = <&tcsr TCSR_USB2_CLKREF_EN>;
->> +		clock-names = "ref";
->> +		status = "okay";
->> +	};
->> +
->> +
->> +Indentation
->> +-----------
->> +
->> +1. Use indentation according to :ref:`codingstyle`.
->> +2. For arrays spanning across lines, it is preferred to align the continued
->> +   entries with opening < from the first line.
->> +3. Each entry in arrays with multiple cells (e.g. "reg" with two IO addresses)
->> +   should be enclosed in <>.
->> +
->> +Example::
->> +
->> +	thermal-sensor@c271000 {
->> +		compatible = "qcom,sm8550-tsens", "qcom,tsens-v2";
->> +		reg = <0x0 0x0c271000 0x0 0x1000>,
->> +		      <0x0 0x0c222000 0x0 0x1000>;
->> +	};
->> +
->> +Organizing DTSI and DTS
->> +-----------------------
->> +
->> +The DTSI and DTS files should be organized in a way representing the common
->> +(and re-usable) parts of the hardware.  Typically this means organizing DTSI
-> 
->                                          ^^^^
-> There's a double space here, it was probably unintentional.
-
-I think I used everywhere double-spaces. At least this was my intention,
-so I will fix single-spaces :)
-
-
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+new file mode 100644
+index 000000000000..2aa109e155d9
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+@@ -0,0 +1,86 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/ethernet-phy-package.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Ethernet PHY Package Common Properties
++
++maintainers:
++  - Christian Marangi <ansuelsmth@gmail.com
++
++properties:
++  $nodename:
++    pattern: "^ethernet-phy-package(-[0-9]+)?$"
++
++  compatible:
++    const: ethernet-phy-package
++
++  '#address-cells':
++    description: number of address cells for the MDIO bus
++    const: 1
++
++  '#size-cells':
++    description: number of size cells on the MDIO bus
++    const: 0
++
++  global-phys:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    minItems: 1
++    maxItems: 31
++    description:
++      List of phandle to the PHY in the package required and
++      used to configure the PHY package.
++
++  global-phy-names:
++    $ref: /schemas/types.yaml#/definitions/string-array
++    minItems: 1
++    maxItems: 31
++    description:
++      List of names of the PHY defined in global-phys.
++
++  phy-connection-type:
++    $ref: /schemas/net/ethernet-phy-mode-types.yaml#definitions/phy-connection-type
++    description:
++      Specifies global interface type for the PHY package.
++
++  phy-mode:
++    $ref: "#/properties/phy-connection-type"
++
++patternProperties:
++  ^ethernet-phy(@[a-f0-9]+)?$:
++    $ref: /schemas/net/ethernet-phy.yaml#
++
++required:
++  - compatible
++
++dependencies:
++  global-phy-names: [global-phys]
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    ethernet {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        ethernet-phy-package {
++            compatible = "ethernet-phy-package";
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++            global-phys = <&phy4>;
++            global-phy-names = "base";
++
++            ethernet-phy@1 {
++              compatible = "ethernet-phy-ieee802.3-c22";
++              reg = <1>;
++            };
++
++            phy4: ethernet-phy@4 {
++              compatible = "ethernet-phy-ieee802.3-c22";
++              reg = <4>;
++            };
++        };
++    };
+-- 
+2.40.1
 
 
