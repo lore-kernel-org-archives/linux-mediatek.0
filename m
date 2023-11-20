@@ -4,102 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B699DC54E76
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 10:59:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3CDBC54E76
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 11:12:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hss0DScungQG3wuEN+tDn4zevM2VhdEJWx+ngv2QB2g=; b=VgzRo/98yPN4yIRkk+GiZNB08/
-	Ztuh9k6Y7rp/znMF4z5pRW1nmSeikmHpcAFU0fLOH3lJkAJ45axJ/qB/RJSq/t36OQZg2zL6ynV0/
-	PeFJIo5l0fHC+OjMt3+OZ/Wk9OZ2yZJofpOSk/oHqW1BP/35400BU3uHT50uisvGDtGUL1IUpr9Ip
-	nhNXog4MMXIj8g3M5xRFXN6aw4b1eAVtdz6oIVH6aNMSacgtJ497dyl5xF7+NGQqAAtWjX/BT/Pzu
-	K/NDt3zqk9W/KRjWVhDx/l6dTSKUgtvT1KfSJzcJ4gyHqk0QWX2r1nB3H0RV78eq0HI69SHFBWo4g
-	cLgyeaHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BsSCm70mq5AoV9r7Z1lc9GCE2m40BM4QlABLaPUH+30=; b=2cjjeWqPwHwxnOyvYjr87PWn0d
+	PQc/+nDcLFC5G1Gs+OYqB0XNfTq2Oud7JLfG4iyvsXkcpZo453p9YsJ2ScalNros1YpT+N7xI9ewH
+	OuM5z2HZ9+AMqHh6viCBCorhJaYEdoFMZPOqOeCUHAR7RmH67dfI/6MWfO9q8HCwOSnimqWAnB/ws
+	39DwZlkngDx+7842+I3rOFQt5h7l21xcUDSxlqP9TVEhBl5wsol2+z5SrA0hutxg9X8z5a6errbxc
+	SJLPXncd2UDxiZb1WQDbgPd1aOEy8GBdRgy1loZaaIGKsuK6WxCtdhx3e6BbqRhPnCULAHRq52YTv
+	EhlElqMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r51zZ-00BqRy-0y;
-	Mon, 20 Nov 2023 10:59:01 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1r52Cd-00Bs6z-1Q;
+	Mon, 20 Nov 2023 11:12:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r51zT-00BqQi-2S;
-	Mon, 20 Nov 2023 10:58:58 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-6cb55001124so999324b3a.0;
-        Mon, 20 Nov 2023 02:58:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700477934; x=1701082734; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=hss0DScungQG3wuEN+tDn4zevM2VhdEJWx+ngv2QB2g=;
-        b=Rtde8rpXa6NyD4TFsjiOyGpkdscmRLBfYhSCM+kWct45S0YbclXGaFAS8SBGyZsA3d
-         ZduILBqIRPRefGBZIpw9IG9hJ75cSFHjJqT59cBbjybgrfr3qHQY45zFf/NArocaeFR0
-         r3tGLJvIBbj1FHR4n/622IsuPVRm2/tIH0pfWk46SxxsZ7pq9wyLB4A8mfrLqWAWBn3V
-         +vIT3mAYGT1vSfzNVUVpJD3MfDPduWND9dfqWEG1EaUH1GYj3wbo5vKM9z1Kb4KhwoNP
-         nBF3QnV5ZsZEtOp8qSkV6Z/lbfY+fhZKgwKZejjjFP2kri92DJ0z7LNDAvMvhVowo7CL
-         6X6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700477934; x=1701082734;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hss0DScungQG3wuEN+tDn4zevM2VhdEJWx+ngv2QB2g=;
-        b=O0mxDBnvqjtjJCTkYf0JpGGZ75X7h+1zAqFou+p90hdFob5oHz1MmvYd1pWGabaRmK
-         dtkkIueDAw5mrXrJI7hhsztgegYk9bZS7WTXq4YNgF/yWQDnU3Ot0EjxoQIlh83AoPy+
-         WIHDvCMKW4BgNwEOq8CiuvOVJy5YkFz4CvG13MaCVv6rIrzmBVoIItyl3ZyjnwVXKW/X
-         VM90fta9OEaBlyfn6SL/4kkKHXMz9obrLkXIZp/ISd+0CXl6ACaqUGh0/SA3r6SYzgz9
-         bWkMBl5LdxDQ7VF+R/f86m8/WgDGWoqpxshnNvsSdsIbdxkS0MrkSRqt7zKt8AmhUzE0
-         bA4A==
-X-Gm-Message-State: AOJu0Ywlu/hRxUd1syoMryl6VTPv0qTKvbRjTRe0Ilmw28roZ/XLiEpw
-	OODFC+Cxa5Mc0BtvlqGRQro=
-X-Google-Smtp-Source: AGHT+IE0ir36wseZ1ERuTn6WVBZ2hZ9lSDF8lyMELvj+kI6imXtdURMceGktUBcNOEOyuiWaZcapPg==
-X-Received: by 2002:a05:6a20:3d87:b0:187:2b7b:1b87 with SMTP id s7-20020a056a203d8700b001872b7b1b87mr9778084pzi.21.1700477933855;
-        Mon, 20 Nov 2023 02:58:53 -0800 (PST)
-Received: from archie.me ([103.131.18.64])
-        by smtp.gmail.com with ESMTPSA id v10-20020aa7850a000000b006be4bb0d2dcsm6010021pfn.149.2023.11.20.02.58.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 02:58:53 -0800 (PST)
-Received: by archie.me (Postfix, from userid 1000)
-	id 667ED101D8174; Mon, 20 Nov 2023 17:58:51 +0700 (WIB)
-Date: Mon, 20 Nov 2023 17:58:51 +0700
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-To: Yi-De Wu <yi-de.wu@mediatek.com>,
-	Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
-	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	David Bradil <dbrazdil@google.com>,
-	Trilok Soni <quic_tsoni@quicinc.com>,
-	Jade Shih <jades.shih@mediatek.com>,
-	Ivan Tseng <ivan.tseng@mediatek.com>,
-	My Chuang <my.chuang@mediatek.com>,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <peilun.suei@mediatek.com>,
-	Liju Chen <liju-clr.chen@mediatek.com>,
-	Willix Yeh <chi-shen.yeh@mediatek.com>,
-	Kevenny Hsieh <kevenny.hsieh@mediatek.com>
-Subject: Re: [PATCH v7 01/16] docs: geniezone: Introduce GenieZone hypervisor
-Message-ID: <ZVs760ggqT-erCji@archie.me>
-References: <20231116152756.4250-1-yi-de.wu@mediatek.com>
- <20231116152756.4250-2-yi-de.wu@mediatek.com>
+	id 1r52CV-00Bs5M-1m
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Nov 2023 11:12:28 +0000
+X-UUID: ab4fa232879511ee86758d4a7c00f3a0-20231120
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BsSCm70mq5AoV9r7Z1lc9GCE2m40BM4QlABLaPUH+30=;
+	b=n3EhlIYTCS10n3MOdmjyLZAp1oK31SUpMiDTPTNUQ+DYpSR6TQK5lsAdffneDDQCKEdfBow3reBX9UXF3j/bGGWWV6fdYbnJm/QtW0W2gG+jdnUQos6jlYXT3zGl0uAwQo5xjeu3osWA0wWrLe9ShBgQWU8F+99s2ZuTpx3eXWo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:bb002a15-e9a4-40e4-8105-220a28557e81,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:e88cbcfc-4a48-46e2-b946-12f04f20af8c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ab4fa232879511ee86758d4a7c00f3a0-20231120
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1191532312; Mon, 20 Nov 2023 04:12:18 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 20 Nov 2023 19:12:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 20 Nov 2023 19:12:14 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<MingYen.Hsieh@mediatek.com>
+Subject: [PATCH 0/3] wifi: mt76: mt7921: series with CLC patches
+Date: Mon, 20 Nov 2023 19:12:09 +0800
+Message-ID: <20231120111212.4478-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20231116152756.4250-2-yi-de.wu@mediatek.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.977900-8.000000
+X-TMASE-MatchedRID: 4M8Lw78TDBAiTMmg/YMPl/mF8IFnUmgvvtVce6w5+K/kCKFvqJHeycGw
+	54FJXlHCglNnMw5K+QHf/Q5fuxsUmuHXfiMoZowZA9lly13c/gFflOpBqBHTt2JkJOQVCIpwXaT
+	Eoipb2i/i8zVgXoAltmHJPdY2OmlS0C1sQRfQzEHEQdG7H66TyN+E/XGDLHcMcEwR/lUrI4/IAQ
+	yo5EcbTaUygT9zhjsMFBNIqkML13AuAU3sQBBsfa8dqR+7hPzjIoYkU2kqUYAkrkfkoD8DTS/Im
+	xChdfO6jofsMjQaxVwyYjbiqIQ3CsykhtyXcigD6rVdgBjDT2oh1j2M6LiVMg==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.977900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 08E8DD8199CB859747E7CEFA4FEED6DEC11740009BDF273A8FB543E727143A562000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_025855_831538_59147324 
-X-CRM114-Status: GOOD (  26.36  )
+X-CRM114-CacheID: sfid-20231120_031223_738754_C31C5DD5 
+X-CRM114-Status: UNSURE (   5.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,213 +100,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 16, 2023 at 11:27:41PM +0800, Yi-De Wu wrote:
-> diff --git a/Documentation/virt/geniezone/introduction.rst b/Documentation/virt/geniezone/introduction.rst
-> new file mode 100644
-> index 000000000000..fb9fa41bcfb8
-> --- /dev/null
-> +++ b/Documentation/virt/geniezone/introduction.rst
-> @@ -0,0 +1,86 @@
-> +.. SPDX-License-Identifier: GPL-2.0
-> +
-> +======================
-> +GenieZone Introduction
-> +======================
-> +
-> +Overview
-> +========
-> +GenieZone hypervisor(gzvm) is a type-1 hypervisor that supports various virtual
-"... hypervisor (gzvm) ..."
-> +machine types and provides security features such as TEE-like scenarios and
-> +secure boot. It can create guest VMs for security use cases and has
-> +virtualization capabilities for both platform and interrupt. Although the
-> +hypervisor can be booted independently, it requires the assistance of GenieZone
-> +hypervisor kernel driver(gzvm-ko) to leverage the ability of Linux kernel for
-"hypervisor kernel driver (also named gzvm) ..."
-> +vCPU scheduling, memory management, inter-VM communication and virtio backend
-> +support.
-> +
-> +Supported Architecture
-> +======================
-> +GenieZone now only supports MediaTek ARM64 SoC.
-> +
-> +Features
-> +========
-> +
-> +- vCPU Management
-> +
-> +VM manager aims to provide vCPUs on the basis of time sharing on physical CPUs.
-> +It requires Linux kernel in host VM for vCPU scheduling and VM power management.
-> +
-> +- Memory Management
-> +
-> +Direct use of physical memory from VMs is forbidden and designed to be dictated
-> +to the privilege models managed by GenieZone hypervisor for security reason.
-> +With the help of gzvm-ko, the hypervisor would be able to manipulate memory as
+From: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
 
-s/gzvm-ko/gzvm module/g
+Sync internal mt7921 patches for CLC.
 
-> +objects.
-> +
-> +- Virtual Platform
-> +
-> +We manage to emulate a virtual mobile platform for guest OS running on guest
-> +VM. The platform supports various architecture-defined devices, such as
-> +virtual arch timer, GIC, MMIO, PSCI, and exception watching...etc.
-> +
-> +- Inter-VM Communication
-> +
-> +Communication among guest VMs was provided mainly on RPC. More communication
-> +mechanisms were to be provided in the future based on VirtIO-vsock.
-> +
-> +- Device Virtualization
-> +
-> +The solution is provided using the well-known VirtIO. The gzvm-ko would
-> +redirect MMIO traps back to VMM where the virtual devices are mostly emulated.
-> +Ioeventfd is implemented using eventfd for signaling host VM that some IO
-> +events in guest VMs need to be processed.
-> +
-> +- Interrupt virtualization
-> +
-> +All Interrupts during some guest VMs running would be handled by GenieZone
-> +hypervisor with the help of gzvm-ko, both virtual and physical ones. In case
-> +there's no guest VM running out there, physical interrupts would be handled by
-> +host VM directly for performance reason. Irqfd is also implemented using
-> +eventfd for accepting vIRQ requests in gzvm-ko.
-> +
-> +Platform architecture component
-> +===============================
-> +
-> +- vm
-> +
-> +The vm component is responsible for setting up the capability and memory
-> +management for the protected VMs. The capability is mainly about the lifecycle
-> +control and boot context initialization. And the memory management is highly
-> +integrated with ARM 2-stage translation tables to convert VA to IPA to PA under
-> +proper security measures required by protected VMs.
-> +
-> +- vcpu
-> +
-> +The vcpu component is the core of virtualizing aarch64 physical CPU runnable,
-> +and it controls the vCPU lifecycle including creating, running and destroying.
-> +With self-defined exit handler, the vm component would be able to act
-> +accordingly before terminated.
-> +
-> +- vgic
-> +
-> +The vgic component exposes control interfaces to Linux kernel via irqchip, and
-> +we intend to support all SPI, PPI, and SGI. When it comes to virtual
-> +interrupts, the GenieZone hypervisor would write to list registers and trigger
-> +vIRQ injection in guest VMs via GIC.
+---
 
-Descriptions for feature lists can be aligned:
+Ming Yen Hsieh (3):
+  wifi: mt76: mt7921: fix country count limitation for CLC
+  wifi: mt76: mt7921: fix CLC command timeout when suspend/resume
+  wifi: mt76: mt7921: fix wrong 6Ghz power type
 
----- >8 ----
-diff --git a/Documentation/virt/geniezone/introduction.rst b/Documentation/virt/geniezone/introduction.rst
-index fb9fa41bcfb8b3..f37ddf4e979992 100644
---- a/Documentation/virt/geniezone/introduction.rst
-+++ b/Documentation/virt/geniezone/introduction.rst
-@@ -24,63 +24,64 @@ Features
- 
- - vCPU Management
- 
--VM manager aims to provide vCPUs on the basis of time sharing on physical CPUs.
--It requires Linux kernel in host VM for vCPU scheduling and VM power management.
-+  VM manager aims to provide vCPUs on the basis of time sharing on physical
-+  CPUs. It requires Linux kernel in host VM for vCPU scheduling and VM power
-+  management.
- 
- - Memory Management
- 
--Direct use of physical memory from VMs is forbidden and designed to be dictated
--to the privilege models managed by GenieZone hypervisor for security reason.
--With the help of gzvm-ko, the hypervisor would be able to manipulate memory as
--objects.
-+  Direct use of physical memory from VMs is forbidden and designed to be
-+  dictated to the privilege models managed by GenieZone hypervisor for security
-+  reason. With the help of gzvm-ko, the hypervisor would be able to manipulate
-+  memory as objects.
- 
- - Virtual Platform
- 
--We manage to emulate a virtual mobile platform for guest OS running on guest
--VM. The platform supports various architecture-defined devices, such as
--virtual arch timer, GIC, MMIO, PSCI, and exception watching...etc.
-+  We manage to emulate a virtual mobile platform for guest OS running on guest
-+  VM. The platform supports various architecture-defined devices, such as
-+  virtual arch timer, GIC, MMIO, PSCI, and exception watching...etc.
- 
- - Inter-VM Communication
- 
--Communication among guest VMs was provided mainly on RPC. More communication
--mechanisms were to be provided in the future based on VirtIO-vsock.
-+  Communication among guest VMs was provided mainly on RPC. More communication
-+  mechanisms were to be provided in the future based on VirtIO-vsock.
- 
- - Device Virtualization
- 
--The solution is provided using the well-known VirtIO. The gzvm-ko would
--redirect MMIO traps back to VMM where the virtual devices are mostly emulated.
--Ioeventfd is implemented using eventfd for signaling host VM that some IO
--events in guest VMs need to be processed.
-+  The solution is provided using the well-known VirtIO. The gzvm-ko would
-+  redirect MMIO traps back to VMM where the virtual devices are mostly
-+  emulated. Ioeventfd is implemented using eventfd for signaling host VM that
-+  some IO events in guest VMs need to be processed.
- 
- - Interrupt virtualization
- 
--All Interrupts during some guest VMs running would be handled by GenieZone
--hypervisor with the help of gzvm-ko, both virtual and physical ones. In case
--there's no guest VM running out there, physical interrupts would be handled by
--host VM directly for performance reason. Irqfd is also implemented using
--eventfd for accepting vIRQ requests in gzvm-ko.
-+  All Interrupts during some guest VMs running would be handled by GenieZone
-+  hypervisor with the help of gzvm-ko, both virtual and physical ones. In case
-+  there's no guest VM running out there, physical interrupts would be handled
-+  by host VM directly for performance reason. Irqfd is also implemented using
-+  eventfd for accepting vIRQ requests in gzvm-ko.
- 
- Platform architecture component
- ===============================
- 
- - vm
- 
--The vm component is responsible for setting up the capability and memory
--management for the protected VMs. The capability is mainly about the lifecycle
--control and boot context initialization. And the memory management is highly
--integrated with ARM 2-stage translation tables to convert VA to IPA to PA under
--proper security measures required by protected VMs.
-+  The vm component is responsible for setting up the capability and memory
-+  management for the protected VMs. The capability is mainly about the
-+  lifecycle control and boot context initialization. And the memory management
-+  is highly integrated with ARM 2-stage translation tables to convert VA to IPA
-+  to PA under proper security measures required by protected VMs.
- 
- - vcpu
- 
--The vcpu component is the core of virtualizing aarch64 physical CPU runnable,
--and it controls the vCPU lifecycle including creating, running and destroying.
--With self-defined exit handler, the vm component would be able to act
--accordingly before terminated.
-+  The vcpu component is the core of virtualizing aarch64 physical CPU runnable,
-+  and it controls the vCPU lifecycle including creating, running and
-+  destroying. With self-defined exit handler, the vm component would be able to
-+  act accordingly before terminated.
- 
- - vgic
- 
--The vgic component exposes control interfaces to Linux kernel via irqchip, and
--we intend to support all SPI, PPI, and SGI. When it comes to virtual
--interrupts, the GenieZone hypervisor would write to list registers and trigger
--vIRQ injection in guest VMs via GIC.
-+  The vgic component exposes control interfaces to Linux kernel via irqchip,
-+  and we intend to support all SPI, PPI, and SGI. When it comes to virtual
-+  interrupts, the GenieZone hypervisor would write to list registers and
-+  trigger vIRQ injection in guest VMs via GIC.
-
-Thanks.
+ .../net/wireless/mediatek/mt76/mt7921/init.c  | 23 ++++++++---
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 38 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 11 ++++--
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   |  3 ++
+ 5 files changed, 65 insertions(+), 11 deletions(-)
 
 -- 
-An old man doll... just what I always wanted! - Clara
+2.18.0
+
 
