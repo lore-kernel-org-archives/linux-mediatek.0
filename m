@@ -4,175 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5655FC197A0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 10:26:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B699DC54E76
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 10:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hStr/RGwYg1kMBYPmfbLTP0MN+Z5G0A4Rr+EtD4JFZY=; b=tdzBti9emzXC4pkg6/85YCK9eO
-	4+o0grzjcY+EIKmomenb2fAm7pAlG6cBxpBC7pawlPirvB6NwNRTG7vOKL8tUAuBIB74YvOVT99va
-	B+sYdJTXdCoKZIX+/vR4U2DOsaQ+6GPextOZ6fgcc9pk1mMcrHXObR0GUO3J01DMtAsVSBCCmqWTL
-	ZyQM4uRrRTNnSPhc3dDzk5AcPG1GwoojGFm0p2d9EVxi/pCn4p6R4lp2bGP/ATc4wqdwbT9ZuUfRU
-	pfog+T7xqcMVoKf5X6fW/dPvpe7Cu9OP8f3cJKEay3PZtfSlRpBQrxbUuP2GprqpDcXcksoT7XKZn
-	aiA7nJUA==;
+	bh=hss0DScungQG3wuEN+tDn4zevM2VhdEJWx+ngv2QB2g=; b=VgzRo/98yPN4yIRkk+GiZNB08/
+	Ztuh9k6Y7rp/znMF4z5pRW1nmSeikmHpcAFU0fLOH3lJkAJ45axJ/qB/RJSq/t36OQZg2zL6ynV0/
+	PeFJIo5l0fHC+OjMt3+OZ/Wk9OZ2yZJofpOSk/oHqW1BP/35400BU3uHT50uisvGDtGUL1IUpr9Ip
+	nhNXog4MMXIj8g3M5xRFXN6aw4b1eAVtdz6oIVH6aNMSacgtJ497dyl5xF7+NGQqAAtWjX/BT/Pzu
+	K/NDt3zqk9W/KRjWVhDx/l6dTSKUgtvT1KfSJzcJ4gyHqk0QWX2r1nB3H0RV78eq0HI69SHFBWo4g
+	cLgyeaHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r51U9-00Blwc-2b;
-	Mon, 20 Nov 2023 10:26:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1r51zZ-00BqRy-0y;
+	Mon, 20 Nov 2023 10:59:01 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r51U2-00Blte-09;
-	Mon, 20 Nov 2023 10:26:31 +0000
-X-UUID: 3ddab3e6878f11ee86758d4a7c00f3a0-20231120
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=hStr/RGwYg1kMBYPmfbLTP0MN+Z5G0A4Rr+EtD4JFZY=;
-	b=e+78D2nrTG5oZ7GnRohk1BtctHWpN+W/KIBMqNQQqH9TCflnvAiBHrkbX60RidpfDcx4svkJgJ5LPxWTIHh0AgGkV613krZuxi932xG315ewevhQ4X6qifJtJCh44XKSRmpkOE04qIWx0VqOReX/dCCtWoZXk2kBoyYpqVi2dhE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:2a50305b-d522-48eb-99e0-3ff8dd051bc6,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:60a79895-10ce-4e4b-85c2-c9b5229ff92b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-UUID: 3ddab3e6878f11ee86758d4a7c00f3a0-20231120
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <yu-chang.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1317652004; Mon, 20 Nov 2023 03:26:18 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 20 Nov 2023 18:26:15 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 20 Nov 2023 18:26:16 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=N02cyppSi8mBcXj9IyhTh0daW5/lcqA5vwwRqG7WMD8HuPDCXFUnZiz5tkebIIFiYxN1HMAcsETfSntM0X9EAM8N3psXDgVNG89pItV1cLoBb1W4Ed+BQGRTup8W3aDEwCy8c/v9ZdL67e6yz33LhvvFtBwi2AYevpRQdgjf84JcGGDTv8cS6W3mizpmSqsnDFJ3sJu5Z+HmI2MxSr6Eod+M559LquRWR7VbBEbfQqhEit82fgM3O/qUvf5EXarsrXqCSW5QGgL2PbdQArBFnAsY0IYSRgGtySoDu7YqO1hUMaUUVesvx1y0GUVLm8fQ2LhGNpXfWgmDZWcsg5jGrA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hStr/RGwYg1kMBYPmfbLTP0MN+Z5G0A4Rr+EtD4JFZY=;
- b=bNVflybuX7UXqah+K+ZvuiR+AV5RY85tPZFdYDZrxyoH8yopkrfpn1HImp2zx1FA1cB20RMV+Wxs/BrakQK7sGdRd9HqxuyQEDErDc6W6CcPU+Ca9CQ191iJ9PXLEuGzgrhhyZ02T7CYuZvMhNhFLoZ4l2D9VncxQu3Q1rJHHgHwgOUhtAQ17Y2clmMqzH73xyAlgluZhm44CrzgoSC0YGaGUbPFSZcrLpWWImL//Qj3sw/XUNjAgAf3RlBVFn1AHVnjuvRoUYuM3C3b8wDqMixrSSq7P461P8MYXNIbVansxo7jBL2qPkqzJYXLEZR6mkts6q6GjLyNBG2XLOtkCw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1r51zT-00BqQi-2S;
+	Mon, 20 Nov 2023 10:58:58 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-6cb55001124so999324b3a.0;
+        Mon, 20 Nov 2023 02:58:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hStr/RGwYg1kMBYPmfbLTP0MN+Z5G0A4Rr+EtD4JFZY=;
- b=C1fLZXRWd/yQx7Kr18XxdTXYQm22JKzvo7kDSclFvkSVtg+F3dEpNpr4yQFIS20Izn6xymJiUI424mLRQNsaMODD9mQvtWiURdJeZSrAzNUKXcDqq7jVS/ynsXXWKOFfzssXVAuEeUxfY52I+w9ht0HIRl+wCM/jZ4zij1qNNsg=
-Received: from KL1PR03MB7366.apcprd03.prod.outlook.com (2603:1096:820:ea::9)
- by SI2PR03MB6859.apcprd03.prod.outlook.com (2603:1096:4:1f8::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7002.27; Mon, 20 Nov
- 2023 10:26:13 +0000
-Received: from KL1PR03MB7366.apcprd03.prod.outlook.com
- ([fe80::7fb4:3f3e:cd86:90b5]) by KL1PR03MB7366.apcprd03.prod.outlook.com
- ([fe80::7fb4:3f3e:cd86:90b5%4]) with mapi id 15.20.7002.027; Mon, 20 Nov 2023
- 10:26:13 +0000
-From: =?utf-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>
-To: "robh+dt@kernel.org" <robh+dt@kernel.org>, "mturquette@baylibre.com"
-	<mturquette@baylibre.com>, "sboyd@kernel.org" <sboyd@kernel.org>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	=?utf-8?B?R2FybWluIENoYW5nICjlvLXlrrbpipgp?= <Garmin.Chang@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>
-Subject: Re: [PATCH v4] dt-bindings: arm: mediatek: mmsys: Add VPPSYS
- compatible for MT8188
-Thread-Topic: [PATCH v4] dt-bindings: arm: mediatek: mmsys: Add VPPSYS
- compatible for MT8188
-Thread-Index: AQHaG5j3o6fbGXwHTkWoQaQDYJimgbCC/CcAgAAEnYA=
-Date: Mon, 20 Nov 2023 10:26:12 +0000
-Message-ID: <77302f50b5c977011ec26be7a04fa3c6c63653c6.camel@mediatek.com>
-References: <20231120100258.3428-1-yu-chang.lee@mediatek.com>
-	 <6bc4fa28-a98f-46c7-b315-7366307b5206@linaro.org>
-In-Reply-To: <6bc4fa28-a98f-46c7-b315-7366307b5206@linaro.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: KL1PR03MB7366:EE_|SI2PR03MB6859:EE_
-x-ms-office365-filtering-correlation-id: 9c530b7c-42d5-42f5-5255-08dbe9b31ee0
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 2FYbpJIPWSj4aTnJyC0GSA/tp62iXQlj58025YWdpdi1LBGG304RGbgZMr22YwgbVDJsGWzS0dPOTlCQs7/PYobiwLiZmuQG61OPOWbmhyw7OtzPAI6J2/1tM+z/ZZgrVM2pdFEFdrwYo0renKvMlVofuC1eVBR3dZeJ1E10SmKLeAY7cJG81A6BDOmEvJY8mDjcH4llDs+k80pvtnqFcoK1WuValsD4ILE1GzGZ8biodpZxK/vA/IaHfdp9miHs5kmCqCZW1PJQzyZPtDPNU9IrJL7I5WAqn4h7VZhAEZZQFzel2DsHWiZpJWxcffMTC+ow18o4wkn5oqYS731LxKYqsYmD0houj8/UXXePGmOhBfZzM1bFuiJsMeoA+CNq3pzN0hI4OJ3UvJSJf3dlSUc95sPshukKqGeCDMadK6RB+qMceB8zqA9LPF0EO7VwScSFZXJLcP3kWnoNDLzscdbblPg78pvZMmd/uYnHoWLKaVmyH2YQpmPOk+VCl3TL/yPqvJejqt5sNZexMD8YAqfL/at0b4YrMsEgeM1uWaHKR0RWwBvy4ufJTUlAGUAvdq/YnIV6a5u8RQ9bUOOnz5wMSgcds3mW7jAzKOzo7scZoBKVILfTaBUvrgG6YWbX/qmT0wylqQ3xAh/dXXg59mCpYpXcF9xhlGt7OzvlVZOu76+NoHxAdGXZODzqDUG9
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB7366.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(346002)(39860400002)(396003)(366004)(136003)(230273577357003)(230173577357003)(230922051799003)(64100799003)(451199024)(186009)(1800799012)(2906002)(7416002)(4001150100001)(5660300002)(4326008)(8936002)(8676002)(38070700009)(85182001)(86362001)(36756003)(38100700002)(41300700001)(66446008)(91956017)(122000001)(478600001)(54906003)(76116006)(66946007)(66476007)(64756008)(66556008)(316002)(26005)(2616005)(110136005)(6486002)(966005)(83380400001)(53546011)(71200400001)(6512007)(6506007);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Z01xaWVQMXh6ZFpJcXhnRTU1bEUxYVJFS2dza0d2a1VORytuM3lRdkxzVXE4?=
- =?utf-8?B?d1dBdENoeVpIenJEdTZyb2N2b05NVFVNSmNXNVF3M2VaUnk0NVlGQjJEUUQ5?=
- =?utf-8?B?QkNJM1h2VGtPWVFVM2pjZTRlMnhlNE5PVU5pc3ZrUlJudGlpU2NIMUhBR1VE?=
- =?utf-8?B?dis3UTBESWJMSDJHOVJRbDljZis1RlZZZmxKNVhQRENCOGpDcXJ2Q1V5eTI1?=
- =?utf-8?B?QkJvUFQwQnVvdUpVdU85M0REa1FLZjdpYU9HZVphMERZVkVnNXY1L3NVeEV1?=
- =?utf-8?B?RzdnSVNMSGkxRkx2MDZCU2pUMlpEMnBUU21uRzcwUDRaMDJzbjY0Y1FkVnFB?=
- =?utf-8?B?Y2pKQXRBSVNOK2JQNmo2WDFqQWtNek9HeEhCQnJqZjk5TzVWcTAxRVhsRUhD?=
- =?utf-8?B?NHd6M1BNbDZyWmJBUkNHOEhkVmhJd0h0T3p2bVpmV083TEw5NHA5bWp2VjRK?=
- =?utf-8?B?VUJvYm94cGVHcGdMa1VKak9Odzl4bjNpZldoNGdWb2w2SVVMU0ZscEp4SkJz?=
- =?utf-8?B?ZHVvVnZCWTFGUkZ6Rks1Z0VCVjlIUC9WVmdCOWh3V3I2SlZPMTF2ODJDelg3?=
- =?utf-8?B?MzdsTzBoZFMxOW9PMWgxNmRpQld4aW9yY1dyT1Vwd3QrSUd4ZHNJNmFJV1ZQ?=
- =?utf-8?B?VHNRSnc5YlhvSjNqSzZIRUVZQ1JnVUtIb2hrbHduWWJMTXVNMyttUVNQY1Qw?=
- =?utf-8?B?amh0cjdabW1MVHhhd2dLYi9pOVR6MXVMNzhRTmhGL3Y0SFhma0JENFNhN3pC?=
- =?utf-8?B?Mys5bUUwMGdvcXE4MWxEVGNKZXh1NXRSZWNmVFl1anhNakQ4Snk3M1RsUTNM?=
- =?utf-8?B?a0l5Q2lRQjZjeW9NRnc5MEpraDlOZ3Z1cnlsVk0vR2M5Q1ZrWmlBZ3FBcU9S?=
- =?utf-8?B?djJXd1k1ZXc0c1VORm9WMzc5QTFnSnZ5RlVEc3NrTWhUZW5Ud3A3RWdDd2Jz?=
- =?utf-8?B?SEFuYjFtc3B4cG91U3pTZmU5dWNVYWI2QlByVVhReDJpQ21GY3BzSjI3Y2Uy?=
- =?utf-8?B?Q0hKL2RqS3ZWLzNyTUJMTWFtV3AwMktDTnFzNVpBNi8zKzZQK3J5RmoyUU8z?=
- =?utf-8?B?WEpiYXVJYkRweVVwMGhPQUdkUXh3NzdRMFl4Zy8wbW9DM2hEcjhpVC9SRGZL?=
- =?utf-8?B?V3NjVjBJMWoxcVBnZUtNMnA0bGZFOUl6R1NjR1I1ZmM2d3g2MzA4dzQrMWFt?=
- =?utf-8?B?SFZ2OUlZSlErbTYxSXQzdkdJd01ucUZaU2JXbG9oWGRwM3djQUpuZUlXRVFq?=
- =?utf-8?B?SmViZzc0Uk1tT1dtOHh5aTdFY2srNWJHZG44Ry94bGJHNWZOUHFaSlIxUFJx?=
- =?utf-8?B?MnhQZXRQRTdLZjZNZXA2WWEvYXVJMEVjSjIzOGNaSy9QRXZRTTBYcmZvWFNF?=
- =?utf-8?B?K2grSXJ0eHZrQmVSN2szbmRnWnJNNkl0WGxxUWUvQU53SlJRbnBhSldDSWYw?=
- =?utf-8?B?c2IwdUZrSXNXVlBPbmF4RDM5U2hIdEJ5QzJ4WFNoeXB5SHNpYzM3YlhKdW5r?=
- =?utf-8?B?UGdqZzY5RDRFSDFQMjBMaXd5MWZqK1VxSGpEQW5KYW9KODlsMklUcEdVZ09n?=
- =?utf-8?B?bVU3elA5UkdGWm1xUERpaDk5WHU1dXJKUGpTMWN1ZG5wTitmM3c1RHMvZ3RT?=
- =?utf-8?B?bTNwdm1qdW1SR3R4K2pCZmpSd0NqVGt1QUZDajByY1lwenUxNnBBNmdDQXp6?=
- =?utf-8?B?L3NKak5HazFJZm54UlUwZWtEL1RSQU5RT1ExL2hVRFZYOVo1OFNCcEEwRDBV?=
- =?utf-8?B?MC9KWG9mT1NSNHJLUEZJaXk0Uko2dW9FbVpHUFJ2STY0OUxTQVhiak9oUkRM?=
- =?utf-8?B?ajlhNkpQazlxSWk3U0FoZXRCcDZkcnRIdURmRDRGVXloWlExR3lNd0FJWVlO?=
- =?utf-8?B?ZVl4a2ZaRTl1NllkUDk3WUxZVW1zdUdDL1J5RnUzdFFjclYxT1pYTXlvL1lG?=
- =?utf-8?B?ODlvWXBoZGJvMGF4M2pEemc0MEVDV2NVc2Y0UEIraXZudFNrdHpEcmxUc3Ry?=
- =?utf-8?B?UUk3d2psaUc0aVFKZzlDMEI1cDBqaVJLSndVNGNtNlE5QnlkR2thM2VFNHpI?=
- =?utf-8?B?VzFnV1lTaTUzODY1Wm9WeUdvQmFkZUJGeFJZb1p1Wk9waWczeVRtUHIzN2JX?=
- =?utf-8?B?MlVyZVpqRWtuOHYvdnhneXY3cXFFcGJ5S2JQeGlGSC9MaDhGVURZeXU3VGZu?=
- =?utf-8?B?YkE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <48F934F9F51FEF4391060BAAC3823447@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20230601; t=1700477934; x=1701082734; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=hss0DScungQG3wuEN+tDn4zevM2VhdEJWx+ngv2QB2g=;
+        b=Rtde8rpXa6NyD4TFsjiOyGpkdscmRLBfYhSCM+kWct45S0YbclXGaFAS8SBGyZsA3d
+         ZduILBqIRPRefGBZIpw9IG9hJ75cSFHjJqT59cBbjybgrfr3qHQY45zFf/NArocaeFR0
+         r3tGLJvIBbj1FHR4n/622IsuPVRm2/tIH0pfWk46SxxsZ7pq9wyLB4A8mfrLqWAWBn3V
+         +vIT3mAYGT1vSfzNVUVpJD3MfDPduWND9dfqWEG1EaUH1GYj3wbo5vKM9z1Kb4KhwoNP
+         nBF3QnV5ZsZEtOp8qSkV6Z/lbfY+fhZKgwKZejjjFP2kri92DJ0z7LNDAvMvhVowo7CL
+         6X6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700477934; x=1701082734;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hss0DScungQG3wuEN+tDn4zevM2VhdEJWx+ngv2QB2g=;
+        b=O0mxDBnvqjtjJCTkYf0JpGGZ75X7h+1zAqFou+p90hdFob5oHz1MmvYd1pWGabaRmK
+         dtkkIueDAw5mrXrJI7hhsztgegYk9bZS7WTXq4YNgF/yWQDnU3Ot0EjxoQIlh83AoPy+
+         WIHDvCMKW4BgNwEOq8CiuvOVJy5YkFz4CvG13MaCVv6rIrzmBVoIItyl3ZyjnwVXKW/X
+         VM90fta9OEaBlyfn6SL/4kkKHXMz9obrLkXIZp/ISd+0CXl6ACaqUGh0/SA3r6SYzgz9
+         bWkMBl5LdxDQ7VF+R/f86m8/WgDGWoqpxshnNvsSdsIbdxkS0MrkSRqt7zKt8AmhUzE0
+         bA4A==
+X-Gm-Message-State: AOJu0Ywlu/hRxUd1syoMryl6VTPv0qTKvbRjTRe0Ilmw28roZ/XLiEpw
+	OODFC+Cxa5Mc0BtvlqGRQro=
+X-Google-Smtp-Source: AGHT+IE0ir36wseZ1ERuTn6WVBZ2hZ9lSDF8lyMELvj+kI6imXtdURMceGktUBcNOEOyuiWaZcapPg==
+X-Received: by 2002:a05:6a20:3d87:b0:187:2b7b:1b87 with SMTP id s7-20020a056a203d8700b001872b7b1b87mr9778084pzi.21.1700477933855;
+        Mon, 20 Nov 2023 02:58:53 -0800 (PST)
+Received: from archie.me ([103.131.18.64])
+        by smtp.gmail.com with ESMTPSA id v10-20020aa7850a000000b006be4bb0d2dcsm6010021pfn.149.2023.11.20.02.58.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Nov 2023 02:58:53 -0800 (PST)
+Received: by archie.me (Postfix, from userid 1000)
+	id 667ED101D8174; Mon, 20 Nov 2023 17:58:51 +0700 (WIB)
+Date: Mon, 20 Nov 2023 17:58:51 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Yi-De Wu <yi-de.wu@mediatek.com>,
+	Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
+	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	David Bradil <dbrazdil@google.com>,
+	Trilok Soni <quic_tsoni@quicinc.com>,
+	Jade Shih <jades.shih@mediatek.com>,
+	Ivan Tseng <ivan.tseng@mediatek.com>,
+	My Chuang <my.chuang@mediatek.com>,
+	Shawn Hsiao <shawn.hsiao@mediatek.com>,
+	PeiLun Suei <peilun.suei@mediatek.com>,
+	Liju Chen <liju-clr.chen@mediatek.com>,
+	Willix Yeh <chi-shen.yeh@mediatek.com>,
+	Kevenny Hsieh <kevenny.hsieh@mediatek.com>
+Subject: Re: [PATCH v7 01/16] docs: geniezone: Introduce GenieZone hypervisor
+Message-ID: <ZVs760ggqT-erCji@archie.me>
+References: <20231116152756.4250-1-yi-de.wu@mediatek.com>
+ <20231116152756.4250-2-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB7366.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9c530b7c-42d5-42f5-5255-08dbe9b31ee0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Nov 2023 10:26:12.8939
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: A/ryCP6HqTC/hQ+QDt7LjHHrWIgM+q6XOJUqD2f4f24cggIP/K13bid7CrypskNqJ4jdjAavn4fDXZWunhuG8IzVCHFLDsqxcypNFP0J7Y0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6859
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20231116152756.4250-2-yi-de.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_022626_235347_9F4727E2 
-X-CRM114-Status: GOOD (  17.68  )
+X-CRM114-CacheID: sfid-20231120_025855_831538_59147324 
+X-CRM114-Status: GOOD (  26.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,29 +114,213 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIzLTExLTIwIGF0IDExOjA5ICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtz
-IG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRl
-ciBvciB0aGUgY29udGVudC4NCj4gIE9uIDIwLzExLzIwMjMgMTE6MDIsIHl1LWNoYW5nLmxlZSB3
-cm90ZToNCj4gPiBGb3IgTVQ4MTg4LCBWUFBTWVMwIGFuZCBWUFBTWVMxIGFyZSAyIGRpc3BsYXkg
-cGlwZXMgd2l0aA0KPiA+IGhhcmR3YXJlIGRpZmZlcmVuY2VzIGluIHBvd2VyIGRvbWFpbnMsIGNs
-b2NrcyBhbmQgc3Vic3lzdGVtIGNvdW50cywNCj4gPiB3aGljaCBzaG91bGQgYmUgcHJvYmVkIGZy
-b20gbXRrLW1tc3lzIGRyaXZlciB0byBwb3B1bGF0ZSBkZXZpY2UgYnkNCj4gPiBwbGF0Zm9ybV9k
-ZXZpY2VfcmVnaXN0ZXJfZGF0YSB0aGVuIHN0YXJ0IGl0cyBvd24gY2xvY2sgZHJpdmVyLg0KPiA+
-IA0KPiA+IFNpZ25lZC1vZmYtYnk6IHl1LWNoYW5nLmxlZSA8eXUtY2hhbmcubGVlQG1lZGlhdGVr
-LmNvbT4NCj4gPiAtLS0NCj4gPiBDaGFuZ2UgaW4gdjQ6DQo+ID4gLSBTcXVhc2hlZCBiaW5kaW5n
-IHBhdGNoZXMNCj4gPiAtIFRoaXMgcGF0Y2ggaXMgYmFzZWQgb24gWzFdDQo+ID4gWzFdIHNvYzog
-bWVkaWF0ZWs6IG1tc3lzOiBBZGQgc3VwcG9ydCBmb3IgTVQ4MTg4IFZQUFNZUw0KPiA+ICAgLSAN
-Cj4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhdGVrL3Bh
-dGNoLzIwMjMxMTE3MDU0MzQ1LjE1ODU5LTEteXUtY2hhbmcubGVlQG1lZGlhdGVrLmNvbS8NCj4g
-PiANCj4gDQo+IFRoaXMgcHJvYmFibHkgc2hvdWxkIHN0YXkgcGFydCBvZiBwcmV2aW91cyBwYXRj
-aHNldC4gV2h5IHNwbGl0dGluZw0KPiBpdD8NCj4gDQo+IA0KPiBBY2tlZC1ieTogS3J6eXN6dG9m
-IEtvemxvd3NraSA8a3J6eXN6dG9mLmtvemxvd3NraUBsaW5hcm8ub3JnPg0KPiANCj4gQmVzdCBy
-ZWdhcmRzLA0KPiBLcnp5c3p0b2YNCj4gDQpUaGFuayB5b3UgZm9yIHlvdXIgdGltZSBhbmQgZWZm
-b3J0LiBJIG1pc3VuZGVyc3Rvb2QgdGhhdCB5b3Ugd2FudCBtZSB0bw0Kc2VuZCB0aGUgYmluZGlu
-ZyBwYXRjaGVzIGFzIGEgaW5kZXBlbmRlbnQgc2VyaWUgaW4gcHJldmlvdXMgZGlzY3Vzc2lvbi4N
-Ck9ubHkgdW50aWwgbm93IEkgc3F1YXNoZWQgdGhlbSwgYnV0IHRoZSBkcml2ZXIgcGF0Y2ggaGFz
-IGFscmVhZHkgYmVlbg0Kc3VibWl0dGVkLi4uIFNob3VsZCBJIHJlc2VuZCBhbGwgb2YgdGhlc2Ug
-cGF0aGVzIGFzIGEgc2VyaWUgYWdhaW4/DQoNClRoYW5rcywNCg0KQmVzdCBSZWdhcmRzLA0KeXVj
-aGFuZw0K
+On Thu, Nov 16, 2023 at 11:27:41PM +0800, Yi-De Wu wrote:
+> diff --git a/Documentation/virt/geniezone/introduction.rst b/Documentation/virt/geniezone/introduction.rst
+> new file mode 100644
+> index 000000000000..fb9fa41bcfb8
+> --- /dev/null
+> +++ b/Documentation/virt/geniezone/introduction.rst
+> @@ -0,0 +1,86 @@
+> +.. SPDX-License-Identifier: GPL-2.0
+> +
+> +======================
+> +GenieZone Introduction
+> +======================
+> +
+> +Overview
+> +========
+> +GenieZone hypervisor(gzvm) is a type-1 hypervisor that supports various virtual
+"... hypervisor (gzvm) ..."
+> +machine types and provides security features such as TEE-like scenarios and
+> +secure boot. It can create guest VMs for security use cases and has
+> +virtualization capabilities for both platform and interrupt. Although the
+> +hypervisor can be booted independently, it requires the assistance of GenieZone
+> +hypervisor kernel driver(gzvm-ko) to leverage the ability of Linux kernel for
+"hypervisor kernel driver (also named gzvm) ..."
+> +vCPU scheduling, memory management, inter-VM communication and virtio backend
+> +support.
+> +
+> +Supported Architecture
+> +======================
+> +GenieZone now only supports MediaTek ARM64 SoC.
+> +
+> +Features
+> +========
+> +
+> +- vCPU Management
+> +
+> +VM manager aims to provide vCPUs on the basis of time sharing on physical CPUs.
+> +It requires Linux kernel in host VM for vCPU scheduling and VM power management.
+> +
+> +- Memory Management
+> +
+> +Direct use of physical memory from VMs is forbidden and designed to be dictated
+> +to the privilege models managed by GenieZone hypervisor for security reason.
+> +With the help of gzvm-ko, the hypervisor would be able to manipulate memory as
+
+s/gzvm-ko/gzvm module/g
+
+> +objects.
+> +
+> +- Virtual Platform
+> +
+> +We manage to emulate a virtual mobile platform for guest OS running on guest
+> +VM. The platform supports various architecture-defined devices, such as
+> +virtual arch timer, GIC, MMIO, PSCI, and exception watching...etc.
+> +
+> +- Inter-VM Communication
+> +
+> +Communication among guest VMs was provided mainly on RPC. More communication
+> +mechanisms were to be provided in the future based on VirtIO-vsock.
+> +
+> +- Device Virtualization
+> +
+> +The solution is provided using the well-known VirtIO. The gzvm-ko would
+> +redirect MMIO traps back to VMM where the virtual devices are mostly emulated.
+> +Ioeventfd is implemented using eventfd for signaling host VM that some IO
+> +events in guest VMs need to be processed.
+> +
+> +- Interrupt virtualization
+> +
+> +All Interrupts during some guest VMs running would be handled by GenieZone
+> +hypervisor with the help of gzvm-ko, both virtual and physical ones. In case
+> +there's no guest VM running out there, physical interrupts would be handled by
+> +host VM directly for performance reason. Irqfd is also implemented using
+> +eventfd for accepting vIRQ requests in gzvm-ko.
+> +
+> +Platform architecture component
+> +===============================
+> +
+> +- vm
+> +
+> +The vm component is responsible for setting up the capability and memory
+> +management for the protected VMs. The capability is mainly about the lifecycle
+> +control and boot context initialization. And the memory management is highly
+> +integrated with ARM 2-stage translation tables to convert VA to IPA to PA under
+> +proper security measures required by protected VMs.
+> +
+> +- vcpu
+> +
+> +The vcpu component is the core of virtualizing aarch64 physical CPU runnable,
+> +and it controls the vCPU lifecycle including creating, running and destroying.
+> +With self-defined exit handler, the vm component would be able to act
+> +accordingly before terminated.
+> +
+> +- vgic
+> +
+> +The vgic component exposes control interfaces to Linux kernel via irqchip, and
+> +we intend to support all SPI, PPI, and SGI. When it comes to virtual
+> +interrupts, the GenieZone hypervisor would write to list registers and trigger
+> +vIRQ injection in guest VMs via GIC.
+
+Descriptions for feature lists can be aligned:
+
+---- >8 ----
+diff --git a/Documentation/virt/geniezone/introduction.rst b/Documentation/virt/geniezone/introduction.rst
+index fb9fa41bcfb8b3..f37ddf4e979992 100644
+--- a/Documentation/virt/geniezone/introduction.rst
++++ b/Documentation/virt/geniezone/introduction.rst
+@@ -24,63 +24,64 @@ Features
+ 
+ - vCPU Management
+ 
+-VM manager aims to provide vCPUs on the basis of time sharing on physical CPUs.
+-It requires Linux kernel in host VM for vCPU scheduling and VM power management.
++  VM manager aims to provide vCPUs on the basis of time sharing on physical
++  CPUs. It requires Linux kernel in host VM for vCPU scheduling and VM power
++  management.
+ 
+ - Memory Management
+ 
+-Direct use of physical memory from VMs is forbidden and designed to be dictated
+-to the privilege models managed by GenieZone hypervisor for security reason.
+-With the help of gzvm-ko, the hypervisor would be able to manipulate memory as
+-objects.
++  Direct use of physical memory from VMs is forbidden and designed to be
++  dictated to the privilege models managed by GenieZone hypervisor for security
++  reason. With the help of gzvm-ko, the hypervisor would be able to manipulate
++  memory as objects.
+ 
+ - Virtual Platform
+ 
+-We manage to emulate a virtual mobile platform for guest OS running on guest
+-VM. The platform supports various architecture-defined devices, such as
+-virtual arch timer, GIC, MMIO, PSCI, and exception watching...etc.
++  We manage to emulate a virtual mobile platform for guest OS running on guest
++  VM. The platform supports various architecture-defined devices, such as
++  virtual arch timer, GIC, MMIO, PSCI, and exception watching...etc.
+ 
+ - Inter-VM Communication
+ 
+-Communication among guest VMs was provided mainly on RPC. More communication
+-mechanisms were to be provided in the future based on VirtIO-vsock.
++  Communication among guest VMs was provided mainly on RPC. More communication
++  mechanisms were to be provided in the future based on VirtIO-vsock.
+ 
+ - Device Virtualization
+ 
+-The solution is provided using the well-known VirtIO. The gzvm-ko would
+-redirect MMIO traps back to VMM where the virtual devices are mostly emulated.
+-Ioeventfd is implemented using eventfd for signaling host VM that some IO
+-events in guest VMs need to be processed.
++  The solution is provided using the well-known VirtIO. The gzvm-ko would
++  redirect MMIO traps back to VMM where the virtual devices are mostly
++  emulated. Ioeventfd is implemented using eventfd for signaling host VM that
++  some IO events in guest VMs need to be processed.
+ 
+ - Interrupt virtualization
+ 
+-All Interrupts during some guest VMs running would be handled by GenieZone
+-hypervisor with the help of gzvm-ko, both virtual and physical ones. In case
+-there's no guest VM running out there, physical interrupts would be handled by
+-host VM directly for performance reason. Irqfd is also implemented using
+-eventfd for accepting vIRQ requests in gzvm-ko.
++  All Interrupts during some guest VMs running would be handled by GenieZone
++  hypervisor with the help of gzvm-ko, both virtual and physical ones. In case
++  there's no guest VM running out there, physical interrupts would be handled
++  by host VM directly for performance reason. Irqfd is also implemented using
++  eventfd for accepting vIRQ requests in gzvm-ko.
+ 
+ Platform architecture component
+ ===============================
+ 
+ - vm
+ 
+-The vm component is responsible for setting up the capability and memory
+-management for the protected VMs. The capability is mainly about the lifecycle
+-control and boot context initialization. And the memory management is highly
+-integrated with ARM 2-stage translation tables to convert VA to IPA to PA under
+-proper security measures required by protected VMs.
++  The vm component is responsible for setting up the capability and memory
++  management for the protected VMs. The capability is mainly about the
++  lifecycle control and boot context initialization. And the memory management
++  is highly integrated with ARM 2-stage translation tables to convert VA to IPA
++  to PA under proper security measures required by protected VMs.
+ 
+ - vcpu
+ 
+-The vcpu component is the core of virtualizing aarch64 physical CPU runnable,
+-and it controls the vCPU lifecycle including creating, running and destroying.
+-With self-defined exit handler, the vm component would be able to act
+-accordingly before terminated.
++  The vcpu component is the core of virtualizing aarch64 physical CPU runnable,
++  and it controls the vCPU lifecycle including creating, running and
++  destroying. With self-defined exit handler, the vm component would be able to
++  act accordingly before terminated.
+ 
+ - vgic
+ 
+-The vgic component exposes control interfaces to Linux kernel via irqchip, and
+-we intend to support all SPI, PPI, and SGI. When it comes to virtual
+-interrupts, the GenieZone hypervisor would write to list registers and trigger
+-vIRQ injection in guest VMs via GIC.
++  The vgic component exposes control interfaces to Linux kernel via irqchip,
++  and we intend to support all SPI, PPI, and SGI. When it comes to virtual
++  interrupts, the GenieZone hypervisor would write to list registers and
++  trigger vIRQ injection in guest VMs via GIC.
+
+Thanks.
+
+-- 
+An old man doll... just what I always wanted! - Clara
 
