@@ -4,92 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDF9FC2BB3F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 17:27:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FFD1C2BB3F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 17:31:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xM3c7PPthilM+mdtoYqBLNrP+ChRJiSMtXVAPSkDtUk=; b=oU76JdQi7N55NSR435LYBm2KvR
-	V/Eu9qjQLQQONh4CaivjFoTy73FQKgmGbt0zhqbhi55HjnFVB06iwPMezGdEe/q9jIoep/XNKCg2c
-	WdJftyo6LjaHV2krQD5ZVQytHdbPIzLQBVSI1HBq0o5a0vugoLbn0/5IM4cvEVEVDIU1m+voQWEWH
-	Q/bS0ysDPoXRL04pAj+V0LHXqBX4aEtBCjCD7gNUaBH2gbKRoI2w5IbhWRlyncZv7uOnqn9opodQC
-	5ygPIYCfeNpLtrnnUD7WgdCgfJ3SGcLfYpYeOeJ8hy0jIX2jSeZYqot/XHvMeACXmj4S/GFASWDc4
-	Gg2GG+Aw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VSW3E3xtPlVB/b2ss56BvmwvXcGMmo75cWYtJjq8ld8=; b=oRcx87FjsAqdQFdKEVGJkCWniJ
+	Fw6dFClDb1THfZ3abWEtgLWYaVDoacL2uszrmeMTzagywGs9acWgzVZSLJPvOlyfJRPTcuyzLcraH
+	NHuFSQjNA/47LqkcJ879IP5FwdmGGAtmwInyoxPL9tp6+1J+CLC7TMn80C8IHpFIsfCTblNvjU/tu
+	COXkoCkn0XpDaZbdXzo/7XX0OgPhBFHOpKts6zrUELYasUKHJb5WBK+lazKTmhHiCQGhyvVKB8ypU
+	pmHySW4jT/bhHZ/c6QXO664G7+e5aBUjSnDbBI2zGSQPd1+YTXhj0s7S5+2s8sKqeeWbQbaHDl8E6
+	QQeHtceQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r583a-00Dngg-2n;
-	Mon, 20 Nov 2023 17:27:35 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1r5870-00Dpke-09;
+	Mon, 20 Nov 2023 17:31:06 +0000
+Received: from mail-io1-f47.google.com ([209.85.166.47])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r583X-00Dnad-0L;
-	Mon, 20 Nov 2023 17:27:33 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5094727fa67so6433494e87.3;
-        Mon, 20 Nov 2023 09:27:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700501245; x=1701106045; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=xM3c7PPthilM+mdtoYqBLNrP+ChRJiSMtXVAPSkDtUk=;
-        b=U63o/y3AD2nxOrnOoGJfJji7CusIiufWIchnw9kK4p3GgWrV9B9nLAPUMCwjQxIMlO
-         k6qq5xOl5czJ9Da9AfJqxmg6uYdizsOnZ7ow8ZcbX/e7jC9SQw72sSvbMZEZ1/hrKLst
-         bi1zYZGC2Hv/z426pWal32QoOKT4VhkVXdg5ZK0ME6pX+L8Mk0afVh3zRVbV+bG9LCqu
-         Gd42kaN5of3X/ZmCIHNf3mthlGWo5Y9XbaEBfBaSJ2qRESbT9+0AIb9K2nRbXLrAu1Di
-         IMrwdrW2bQ6M1bSxsojcfZAnTGz9xw1y+CVrQdFhgLmsoYs13CTCDLKF/yZmQ7jE3EJj
-         S97w==
+	id 1r586v-00Dpcx-00;
+	Mon, 20 Nov 2023 17:31:03 +0000
+Received: by mail-io1-f47.google.com with SMTP id ca18e2360f4ac-7a94c5538aeso147299939f.3;
+        Mon, 20 Nov 2023 09:30:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700501245; x=1701106045;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xM3c7PPthilM+mdtoYqBLNrP+ChRJiSMtXVAPSkDtUk=;
-        b=W054Fq6CjGeAjHcYaZ3BYuzrfKOzLm06qQ33zYHvRTb5NA3U1gMFi0M7l8QQb9UHyX
-         hQwclbGRim/HeX34Qz/Cl8NJedc83lK3zvX/9VO0bDLqblUDey56wZc2fDYBkINyduad
-         zeNXDRBnKtBV9Y+vbsVm+0DJ/zsQHfxvNBymVcldjiNRK/zxGBI9yxb3jgqRfFexul5m
-         JwIZTnZJ4K3rc7ooSsWG4HtWM6uH1VvCMFDiilRhA1fz9NWtyAK2N5iOc5hWCizaGMpB
-         xCqV9hZJzV95ixDaSLcQKrc6y0amRR+2VY4DNUZUMf6ejuw1GvdcTN5p0qjlSffdeZE9
-         VdVA==
-X-Gm-Message-State: AOJu0YwMwLzn1l2CUVXaxdmG9NhJs6BAxPmMp7/H/c3Gq7pCmnWKbUQu
-	WCdLfcMc9T4gRrE9isr7HxA=
-X-Google-Smtp-Source: AGHT+IHhwus3LZ9hcly7AHAGwLptRKG1AiXE3sRtHL/h1JYi/AmNkY1+8Yp1GWECgh5streU2vI7lA==
-X-Received: by 2002:ac2:4552:0:b0:509:4863:137d with SMTP id j18-20020ac24552000000b005094863137dmr5968502lfm.7.1700501244454;
-        Mon, 20 Nov 2023 09:27:24 -0800 (PST)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id f2-20020a50ee82000000b00548c4c4b8d5sm1134828edr.13.2023.11.20.09.27.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 Nov 2023 09:27:24 -0800 (PST)
-Message-ID: <b13b6ad3-2ef9-482a-bec4-8f23de6c951f@gmail.com>
-Date: Mon, 20 Nov 2023 18:27:21 +0100
+        d=1e100.net; s=20230601; t=1700501453; x=1701106253;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VSW3E3xtPlVB/b2ss56BvmwvXcGMmo75cWYtJjq8ld8=;
+        b=xMaWstPh7E+P4Te5C4Uln14lRMOdz27HPssyu9Qr98ziqR7l8feiXmE0hx5cS+yc4R
+         emforndDZGbnFHgPh0J6MQuEKrIN+OXeVEsKL1Bvu/sW8Ss2h3rfu4YwGa1g2AKO2dZJ
+         3iUiRpOGNTODL43rO8CUAQfN6gsQAihbdE9LG6M+35bzhjT/26mHY5mgji+JhTyjszCX
+         jfGXFn17YyhcZWRNydzqFfBOje0HxfNrh+bl+jv6k3E+WurF3g+DT/ENLK2+YWbmdrF3
+         us19fb0qccFhSEuBWgTw0ykOgU2aN18TRpwaAmDoXErC4NLKTwg5B9X7L6uDfm/lXNaf
+         LKDw==
+X-Gm-Message-State: AOJu0Yx9RS13CfAuFyr8HEV6Ydf8VgPiINb5wmq2txXKh22EfBg2F2G8
+	EQa274uylWRyrycoNLodCQ==
+X-Google-Smtp-Source: AGHT+IEqf3gdWs75Wxke7gxzZzNuRkHoVMvLJ/fF9+7hFDSkhKvpLh/DRcbrtvhjf3YBRL53EDCZ8w==
+X-Received: by 2002:a5d:8199:0:b0:798:2415:1189 with SMTP id u25-20020a5d8199000000b0079824151189mr10731727ion.12.1700501453017;
+        Mon, 20 Nov 2023 09:30:53 -0800 (PST)
+Received: from herring.priv ([64.188.179.252])
+        by smtp.gmail.com with ESMTPSA id u13-20020a056638134d00b00466593d380fsm751194jad.53.2023.11.20.09.30.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Nov 2023 09:30:52 -0800 (PST)
+Received: (nullmailer pid 2441844 invoked by uid 1000);
+	Mon, 20 Nov 2023 17:30:49 -0000
+Date: Mon, 20 Nov 2023 10:30:49 -0700
+From: Rob Herring <robh@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Andrew Lunn <andrew@lunn.ch>, 
+	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, 
+	SkyLake Huang <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	David Epping <david.epping@missinglinkelectronics.com>, 
+	Vladimir Oltean <olteanv@gmail.com>, "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>, 
+	Harini Katakam <harini.katakam@amd.com>, Simon Horman <horms@kernel.org>, 
+	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [net-next RFC PATCH 02/14] dt-bindings: net: move PHY modes to
+ common PHY mode types definition
+Message-ID: <20231120173049.GA2378814-robh@kernel.org>
+References: <20231120135041.15259-1-ansuelsmth@gmail.com>
+ <20231120135041.15259-3-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: Add Acelink EW-7886CAX
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?=
- <nfraprado@collabora.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
- Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chris Morgan <macromorgan@hotmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Sean Wang
- <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20231117104315.9718-2-zajec5@gmail.com>
- <20231117104315.9718-3-zajec5@gmail.com>
- <0c3267e5-5371-4fd8-a0f6-360ff28c9dda@collabora.com>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <0c3267e5-5371-4fd8-a0f6-360ff28c9dda@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231120135041.15259-3-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_092731_167722_CA581EB0 
-X-CRM114-Status: GOOD (  21.96  )
+X-CRM114-CacheID: sfid-20231120_093101_519096_324C0945 
+X-CRM114-Status: GOOD (  27.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,244 +98,241 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20.11.2023 15:17, AngeloGioacchino Del Regno wrote:
-> Il 17/11/23 11:43, Rafał Miłecki ha scritto:
->> From: Rafał Miłecki <rafal@milecki.pl>
->>
->> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
->> It has 512 MiB of RAM, one 2.5 Gbps PoE (802.3at) Ethernet port and
->> on-SoC Wi-Fi.
->>
->> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->> ---
->>   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->>   .../mediatek/mt7986a-acelink-ew-7886cax.dts   | 175 ++++++++++++++++++
->>   2 files changed, 176 insertions(+)
->>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
->> index e6e7592a3645..9ff2ab6c5e4d 100644
->> --- a/arch/arm64/boot/dts/mediatek/Makefile
->> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
->> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
->> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
->> new file mode 100644
->> index 000000000000..18d19281dfdb
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
->> @@ -0,0 +1,175 @@
->> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
->> +
->> +/dts-v1/;
->> +#include <dt-bindings/input/input.h>
->> +#include <dt-bindings/gpio/gpio.h>
->> +#include <dt-bindings/leds/common.h>
->> +
->> +#include "mt7986a.dtsi"
->> +
->> +/ {
->> +    model = "Acelink EW-7886CAX";
->> +    compatible = "acelink,ew-7886cax", "mediatek,mt7986a";
->> +
->> +    aliases {
->> +        serial0 = &uart0;
->> +    };
->> +
->> +    chosen {
->> +        stdout-path = "serial0:115200n8";
->> +    };
->> +
->> +    memory@40000000 {
->> +        reg = <0 0x40000000 0 0x20000000>;
->> +        device_type = "memory";
->> +    };
->> +
->> +    keys {
->> +        compatible = "gpio-keys";
->> +
->> +        key-restart {
->> +            label = "Reset";
->> +            gpios = <&pio 7 GPIO_ACTIVE_LOW>;
->> +            linux,code = <KEY_RESTART>;
->> +        };
->> +    };
->> +
->> +    leds {
->> +        compatible = "gpio-leds";
->> +
->> +        led-0 {
+On Mon, Nov 20, 2023 at 02:50:29PM +0100, Christian Marangi wrote:
+> Move PHY modes from ethernet-controller schema to dedicated common PHY
+> mode types definition. This is needed to have a centralized place to
+> define PHY interface mode and permit usage and reference of these modes
+> in other schemas.
 > 
-> Please, reorder by name
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../bindings/net/ethernet-controller.yaml     |  47 +------
+>  .../bindings/net/ethernet-phy-mode-types.yaml | 132 ++++++++++++++++++
+>  2 files changed, 133 insertions(+), 46 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/net/ethernet-phy-mode-types.yaml
 > 
->              color =    ...
->              function = ...
->              gpios = ...
+> diff --git a/Documentation/devicetree/bindings/net/ethernet-controller.yaml b/Documentation/devicetree/bindings/net/ethernet-controller.yaml
+> index 9f6a5ccbcefe..40c1daff2a48 100644
+> --- a/Documentation/devicetree/bindings/net/ethernet-controller.yaml
+> +++ b/Documentation/devicetree/bindings/net/ethernet-controller.yaml
+> @@ -55,55 +55,10 @@ properties:
+>      const: mac-address
+>  
+>    phy-connection-type:
+> +    $ref: /schemas/net/ethernet-phy-mode-types.yaml#definitions/phy-connection-type
 
-Can you explain why and if there is a place I can find rules to follow
-regarding such aspects? I really would like to just be aware of all
-rules and don't waste anyone's time for such details.
+You need a '/' after '#' or it is not a JSON pointer.
 
-FWIW I checked Documentation/devicetree/bindings/*.rst (after few years
-I admit) but I couldn't find anything there about properties order.
+>      description:
+>        Specifies interface type between the Ethernet device and a physical
+>        layer (PHY) device.
+> -    enum:
+> -      # There is not a standard bus between the MAC and the PHY,
+> -      # something proprietary is being used to embed the PHY in the
+> -      # MAC.
+> -      - internal
+> -      - mii
+> -      - gmii
+> -      - sgmii
+> -      - psgmii
+> -      - qsgmii
+> -      - qusgmii
+> -      - tbi
+> -      - rev-mii
+> -      - rmii
+> -      - rev-rmii
+> -      - moca
+> -
+> -      # RX and TX delays are added by the MAC when required
+> -      - rgmii
+> -
+> -      # RGMII with internal RX and TX delays provided by the PHY,
+> -      # the MAC should not add the RX or TX delays in this case
+> -      - rgmii-id
+> -
+> -      # RGMII with internal RX delay provided by the PHY, the MAC
+> -      # should not add an RX delay in this case
+> -      - rgmii-rxid
+> -
+> -      # RGMII with internal TX delay provided by the PHY, the MAC
+> -      # should not add an TX delay in this case
+> -      - rgmii-txid
+> -      - rtbi
+> -      - smii
+> -      - xgmii
+> -      - trgmii
+> -      - 1000base-x
+> -      - 2500base-x
+> -      - 5gbase-r
+> -      - rxaui
+> -      - xaui
+> -
+> -      # 10GBASE-KR, XFI, SFI
+> -      - 10gbase-kr
+> -      - usxgmii
+> -      - 10gbase-r
+> -      - 25gbase-r
+>  
+>    phy-mode:
+>      $ref: "#/properties/phy-connection-type"
+> diff --git a/Documentation/devicetree/bindings/net/ethernet-phy-mode-types.yaml b/Documentation/devicetree/bindings/net/ethernet-phy-mode-types.yaml
+> new file mode 100644
+> index 000000000000..6d15743b4ffa
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/ethernet-phy-mode-types.yaml
+> @@ -0,0 +1,132 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/ethernet-phy-mode-types.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Ethernet PHY Common Mode Types
+> +
+> +maintainers:
+> +  - David S. Miller <davem@davemloft.net>
+> +
+> +definitions:
 
-If we currently don't have rules I don't really think we should enforce
-following per-maintainer preferences. I really don't object your
-suggestions but there is simply no way to remember each maintainer's
-rules. We simply have too many subsystems and architectures boards.
+Use '$defs'
 
+'definitions' is special in that we don't process it at all. That's 
+probably why you ended up with this overly complicated schema below.
 
->> +            function = LED_FUNCTION_STATUS;
->> +            color = <LED_COLOR_ID_RED>;
->> +            gpios = <&pio 18 GPIO_ACTIVE_HIGH>;
->> +        };
->> +
->> +        led-1 {
->> +            function = LED_FUNCTION_STATUS;
->> +            color = <LED_COLOR_ID_GREEN>;
->> +            gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
->> +        };
->> +
->> +        led-2 {
->> +            function = LED_FUNCTION_STATUS;
->> +            color = <LED_COLOR_ID_BLUE>;
->> +            gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
->> +        };
->> +    };
->> +};
->> +
->> +&watchdog {
-> 
-> Ordering again, watchdog goes before wifi
+But really, there's no need to use $defs or definitions at all here. 
+Just put it under 'properties' And move the references up a level (i.e. 
+to the node, not a property).
 
-Actually I ordered those in what I believe to be the most natural
-numeric order. All those blocks references are ordered by the order
-they appear in the included file and those follow numeric order I
-believe.
+> +  phy-connection-type:
+> +    # const: "internal"
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/string
+> +      - oneOf:
+> +        # There is not a standard bus between the MAC and the PHY,
+> +        # something proprietary is being used to embed the PHY in the
+> +        # MAC.
+> +        - items:
 
-I'd go as far as to claim using alhapbetical labels order is pretty
-weak. Labels can be renamed and that would require reordering a lot of
-.dts entries. On the other hand SoC's MMIO accessible hardware blocks
-are quite unlikely to get reordered.
+'items' is for arrays, but you just said this is a 'string', not 
+'string-array'. 
 
+> +            - type: string
 
->> +    status = "okay";
->> +};
->> +
->> +&trng {
->> +    status = "okay";
->> +};
->> +
->> +&crypto {
-> 
-> crypto goes first.
-> 
-> crypto, eth, pcie_phy, spi0, trng, watchdog, wifi.
-> 
->> +    status = "okay";
->> +};
->> +
->> +&uart0 {
->> +    status = "okay";
->> +};
->> +
->> +&spi0 {
->> +    status = "okay";
->> +
->> +    flash@0 {
->> +        compatible = "spi-nand";
->> +        reg = <0>;
-> 
-> compatible
-> reg
-> #address/size cells
-> spi-max-frequency
-> spi-rx-bus-width
-> spi-tx-bus-width
-> 
->> +        spi-max-frequency = <52000000>;
->> +        spi-tx-bus-width = <4>;
->> +        spi-rx-bus-width = <4>;
->> +
->> +        #address-cells = <1>;
->> +        #size-cells = <1>;
->> +
->> +        partitions: partitions {
->> +            compatible = "fixed-partitions";
->> +            #address-cells = <1>;
->> +            #size-cells = <1>;
->> +
->> +            partition@0 {
->> +                label = "bootloader";
->> +                reg = <0x0 0x100000>;
-> 
-> label, reg, read-only
-> 
->> +                read-only;
->> +            };
->> +
->> +            partition@100000 {
->> +                label = "u-boot-env";
-> 
-> reg first, label last
-> 
->> +                reg = <0x100000 0x80000>;
->> +            };
->> +
->> +            factory: partition@180000 {
-> 
-> Why do you have a phandle here? This has no use, please remove.
-> 
->> +                label = "factory";
->> +                reg = <0x180000 0x200000>;
->> +                read-only;
->> +                compatible = "nvmem-cells";
-> 
-> compatible
-> reg
-> label
-> read-only;
-> 
->> +
->> +                nvmem-layout {
->> +                    compatible = "fixed-layout";
->> +                    #address-cells = <1>;
->> +                    #size-cells = <1>;
->> +
->> +                    eeprom: eeprom@0 {
->> +                        reg = <0x0 0x1000>;
->> +                    };
->> +
->> +                    macaddr: macaddr@4 {
->> +                        reg = <0x4 0x6>;
->> +                    };
->> +                };
->> +            };
->> +
->> +            partition@380000 {
->> +                label = "fip";
->> +                reg = <0x380000 0x200000>;
-> 
-> reg first, label last
-> 
->> +            };
->> +
->> +            partition@580000 {
->> +                label = "ubi";
->> +                reg = <0x580000 0x4000000>;
->> +            };
->> +        };
->> +    };
->> +};
->> +
-> 
-> Regards,
-> Angelo
+Already covered by the type $ref.
 
+This can all be expressed with just 1 'enum' as it was before.
+
+> +              const: internal
+> +        - items:
+> +            - type: string
+> +              const: mii
+> +        - items:
+> +            - type: string
+> +              const: gmii
+> +        - items:
+> +            - type: string
+> +              const: sgmii
+> +        - items:
+> +            - type: string
+> +              const: psgmii
+> +        - items:
+> +            - type: string
+> +              const: qsgmii
+> +        - items:
+> +            - type: string
+> +              const: qusgmii
+> +        - items:
+> +            - type: string
+> +              const: tbi
+> +        - items:
+> +            - type: string
+> +              const: rev-mii
+> +        - items:
+> +            - type: string
+> +              const: rmii
+> +        - items:
+> +            - type: string
+> +              const: rev-rmii
+> +        - items:
+> +            - type: string
+> +              const: moca
+> +
+> +        # RX and TX delays are added by the MAC when required
+> +        - items:
+> +            - type: string
+> +              const: rgmii
+> +
+> +        # RGMII with internal RX and TX delays provided by the PHY,
+> +        # the MAC should not add the RX or TX delays in this case
+> +        - items:
+> +            - type: string
+> +              const: rgmii-id
+> +
+> +        # RGMII with internal RX delay provided by the PHY, the MAC
+> +        # should not add an RX delay in this case
+> +        - items:
+> +            - type: string
+> +              const: rgmii-rxid
+> +
+> +        # RGMII with internal TX delay provided by the PHY, the MAC
+> +        # should not add an TX delay in this case
+> +        - items:
+> +            - type: string
+> +              const: rgmii-txid
+> +
+> +        - items:
+> +            - type: string
+> +              const: rtbi
+> +
+> +        - items:
+> +            - type: string
+> +              const: smii
+> +
+> +        - items:
+> +            - type: string
+> +              const: xgmii
+> +
+> +        - items:
+> +            - type: string
+> +              const: trgmii
+> +
+> +        - items:
+> +            - type: string
+> +              const: 1000base-x
+> +
+> +        - items:
+> +            - type: string
+> +              const: 2500base-x
+> +
+> +        - items:
+> +            - type: string
+> +              const: 5gbase-r
+> +
+> +        - items:
+> +            - type: string
+> +              const: rxaui
+> +
+> +        - items:
+> +            - type: string
+> +              const: xaui
+> +
+> +        # 10GBASE-KR, XFI, SFI
+> +        - items:
+> +            - type: string
+> +              const: 10gbase-kr
+> +
+> +        - items:
+> +            - type: string
+> +              const: usxgmii
+> +
+> +        - items:
+> +            - type: string
+> +              const: 10gbase-r
+> +
+> +        - items:
+> +            - type: string
+> +              const: 25gbase-r
+> -- 
+> 2.40.1
+> 
 
