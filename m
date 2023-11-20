@@ -4,75 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 270DBC54E76
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 12:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F867C54E76
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 12:42:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bbDkjTkZQ6jBEcglIiIF+CwoezPKtUByGH69bDW/iwA=; b=rb5S3ICcPjcxQojroybXZ+5JAx
-	ksI1SaKqf588G765wWIHJLwmeWs641Q94TjkzJtqxApKwyGYbuInD6MPKbl3kNPHZGg3hO75+4uWb
-	wfPH3uz4+lXtSBv7LWfADUtpAxEhpclKyPNPaeNwlB5zZa7CyGOboFrles5jqsEznjraWdrhVqbAp
-	cVIafqquwt4Ehy5PVr2CVAdNF9CR6YL7MFBYYM+9zmGvQsyeCk99GZfoiuuuqsv4jUgT1MlZfp6yf
-	gqM+g+IGVLJTuhsqNfdR4V2mLENUPSt8ywQgEfVpTrnFpEvwGvyKOyWnbilUDi5A9bSmnnmShXtG6
-	J/NhYSbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VrU2ZZst2HUpNT+wFQGd3mh2dkLwwY4u0IvZnBEgg+Q=; b=ZYFBdnnqy74HzYKdT6erwEVc/6
+	8gXZsh3coNku8nu2O0n0rIVpANTpyUNoEz82UxmyqqP0XFZmcbs67d0taKqXqCCQHrhOfCTuSVnnU
+	1lzFmnhdjtMzDZ1OrdmIdUEEyEiKdenxKOpg9JFcDRYI/R2mKUOcoaIX+b+97YG6Jr9AAOXwvF+Ir
+	dx9xrvsHLRa7fRn9PkBPmFl68prt4fy7v9KHIJGLg8M+3Xi7Sq4rqQgszbQJRpNXWHBQat5RMKIyt
+	z+hN8Vq9Zq8JpMVAsTDUO6NZyP6qRYNuVht9T/ByDefrYZUkOtQDL1VLiVJabxu347Plgm1bAUZMr
+	t6Lb2rrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r53a4-00C1z2-1s;
-	Mon, 20 Nov 2023 12:40:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1r53bu-00C2Y8-14;
+	Mon, 20 Nov 2023 12:42:42 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r53ZD-00C1V9-1X
-	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Nov 2023 12:40:33 +0000
-X-UUID: e477279087a111ee86758d4a7c00f3a0-20231120
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=bbDkjTkZQ6jBEcglIiIF+CwoezPKtUByGH69bDW/iwA=;
-	b=Ak2DvkBXnmzbn4XLUbV/poESsNGvaPrBxqRF6jJKWf9yULzW2V4UuNjVxe2Y//tbaYFCdKP+m3/QagUNurB0p8od5obIig3r3j14yRs0rsFIlDxl1pLk2+jrz5knVdiUS+hvIXUtdbeHY9L2oxsv1R6/w7TG7K/ejg2DIazwjkE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:f53f4c6e-7e6f-4f8e-9d9f-eb5e9206194e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:e915bdfc-4a48-46e2-b946-12f04f20af8c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e477279087a111ee86758d4a7c00f3a0-20231120
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 661980700; Mon, 20 Nov 2023 05:39:48 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 20 Nov 2023 20:39:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 20 Nov 2023 20:39:46 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<MingYen.Hsieh@mediatek.com>
-Subject: [PATCH v3 0/3] wifi: mt76: mt7921: series with CLC patches
-Date: Mon, 20 Nov 2023 20:39:37 +0800
-Message-ID: <20231120123940.5788-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1r53bk-00C2VS-2o;
+	Mon, 20 Nov 2023 12:42:39 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D31AE6602F24;
+	Mon, 20 Nov 2023 12:42:28 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1700484149;
+	bh=jjaPVx0eDtJkqek6Qcbfsk77mrZMKU5PurUc9yQS84I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JB3428zAWwfdw43PhTxaLcOxcIf4+4V6+sSKGWtBUKslsB6egKUY3S2yfCibHjIq0
+	 zPmg41BqqBnQ8fL+4iDibby3cEUrSdwRWVydMmIu4iosQRx6GkHyRvWLA21pDgGeh9
+	 NnBPdksfrnrZvfZUnMEBVdf1CRd60HX2CrAwbma/Oz7alDhrwqTPUqUVgkvheExXtq
+	 cr/z+jQJp6mQ/tUS46CHc1utH2VvkzN+xRbwjbC5UTiGYaGgXWToWaLBoyxT2ogkmM
+	 Qu9iTlrxakFEMOk0rzUoZKRL0F9qxB6PS98QPyY6Ztj3AFYOgwfWarlgFWFcYOrNXu
+	 rL1mU4/IhM/Tw==
+Message-ID: <af969e1e-7412-4f2c-815e-3d473eaf5c8f@collabora.com>
+Date: Mon, 20 Nov 2023 13:42:25 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] soc: mediatek: mmsys: Add support for MT8188 VPPSYS
+Content-Language: en-US
+To: "yu-chang.lee" <yu-chang.lee@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20231117054345.15859-1-yu-chang.lee@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231117054345.15859-1-yu-chang.lee@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_043955_652698_65734ABC 
-X-CRM114-Status: UNSURE (   6.35  )
+X-CRM114-CacheID: sfid-20231120_044233_528011_18361EE2 
+X-CRM114-Status: UNSURE (   4.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,31 +77,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
+Il 17/11/23 06:43, yu-chang.lee ha scritto:
+> Add MT8188 VPPSYS0 and VPPSYS1 driver data.
+> 
+> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
 
-Sync internal mt7921 patches for CLC.
-
----
-
-Ming Yen Hsieh (3):
-  wifi: mt76: mt7921: fix country count limitation for CLC
-  wifi: mt76: mt7921: fix CLC command timeout when suspend/resume
-  wifi: mt76: mt7921: fix wrong 6Ghz power type
-
-v2:
-  - Convert wrong variable type to correct.
-v3:
-  - Due to the lack of patch version's subject-prefix in v2, v3
-    is updated to include the patch version's subject-prefix.
-
- .../net/wireless/mediatek/mt76/mt7921/init.c  | 23 ++++++++---
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 38 +++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 11 ++++--
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  3 ++
- 5 files changed, 65 insertions(+), 11 deletions(-)
-
--- 
-2.18.0
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
