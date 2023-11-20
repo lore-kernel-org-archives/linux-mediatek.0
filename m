@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE21DC5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 15:00:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D1CEC197A0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 15:00:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RJJcNZQjoxDpL64YJUPbX5zAdxkULtiEGewpt5HLNRQ=; b=OG8sQwutM6Lkhuk2NeB7/G0mXn
-	SlW2/KZSVx3hlXhV3sxXnkqEBA/kkWXDPANul/2Ib/5xJA5imfsmFZtMiuGRKqxlIGiMW3kBu1TYT
-	802eTBcefANo+EG3/vuerE7iEgULv8cPkUqchctpCeD1lLiKMVljxM75CureXN9jjWf7y3QZ+B4q3
-	FBC1B30B2cAz+YjjaY/OJuMOzsy8W0K1ux2LF2fdv2I79cBwen8hDl6VL/vi8Qb/u2fZw8ILhvodl
-	bbDnE5RBVODdCuQboWI7U0/4d+sFpZEQ6ZZaxi5HgdNU1qe0UeBlOUdTJzgpmiz73IrYNgB7Alfug
-	MNcMOJng==;
+	bh=lwOqpq8wMuGFvFAyqjc9ntVImZ49seWbU3wj+Y9SX8M=; b=nKaIuJ8w0GH9CFDpLHKVle0pVd
+	BcoXhmV1MNHi4Zeep3ZJZRgyR6IHyvDHFLZ/ANplqLHIVYZDqEnn/TaYKS2rMMc2uLvE9lblLFiXv
+	HGfd9vZfBWzNqoGX7wunTHZgU+EhrJhYv0SYSaMQxFQZ3KuOSQHtv1YZ/nT5hmLHWq7opnDLLmC/i
+	iwM0wO6j0eMxjK+LkUPe0PZwj5iSyRSmbfxYvPVwmgyV6FVRNLk/EAciucV8A4Mecu8tyKN8q2x+i
+	JuPJ/xYIAH1KTiTVaMYIqRcmk8D66EkGhyzngv2Or5GOKnev36jC8zaTaqfZzVcDDWhJRXNK/mVPk
+	P5Gbn59A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r55lU-00CRuC-1A;
-	Mon, 20 Nov 2023 15:00:44 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1r55lX-00CRws-03;
+	Mon, 20 Nov 2023 15:00:47 +0000
+Received: from mail-wm1-f46.google.com ([209.85.128.46])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r54gT-00CBil-2f;
-	Mon, 20 Nov 2023 13:52:17 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5098e423ba2so6078832e87.2;
-        Mon, 20 Nov 2023 05:51:26 -0800 (PST)
+	id 1r54gZ-00CBnu-2G;
+	Mon, 20 Nov 2023 13:52:20 +0000
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-4083f61322fso16156455e9.1;
+        Mon, 20 Nov 2023 05:51:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700488285; x=1701093085; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1700488293; x=1701093093; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=RJJcNZQjoxDpL64YJUPbX5zAdxkULtiEGewpt5HLNRQ=;
-        b=VRz3J1O8yhWuND7sfSbWZKWbzDK/lbMlcoWb12sR/IbL+ptiev+7+S7jN9EUxrHmzR
-         5LMTlQwYv6Qnv0EFcOYPjF4ylnZv9hAM8r9uQatzysHOM9jN1YMJsCQA2CjsVbRJbLlH
-         j27CIGW6XAKDVxn0Ifyi4hQBhzanNCvWR2lzs/HhCK0jzjnQO5VcR5ubLQl3UMPIIw7F
-         8RgZXyQqfZiI+Rinp5+yUwIb0PktLCB2mBByDpq2w2z9rZRHqLLAOK07Wgo6ac+Tyh9U
-         5WJ/ZabseyNPrblEsJpcGrxCowScdtuwwvy2GAQbebsEiADUFLRjILQQ12wLGByP5Qz7
-         qDPw==
+        bh=lwOqpq8wMuGFvFAyqjc9ntVImZ49seWbU3wj+Y9SX8M=;
+        b=UOi7Ag5HQvP49DLIeHVIIWS42HvJPeXSSa/yuu3LRiYF5Js8Twfmy4nSJKTzIyHq1a
+         iXLNedoegwLh57mNT19qOBaxYF9kWY6E/ldalSsrlPbOsYCCb570qaODMWT/nXzxZraS
+         KMhn5Kn1N+c6ykzo+A2Km+TqsP5W1+3fnqu/V5LXT5G6WUyo3QV7HEWA2hpYqwnlTIO7
+         MnLLNdo7gh5HPm0F2ngM/WHD6kv3WYqERVXB6Jv49jPZ84Kqu6RbG+50YZI2iRJHVPic
+         hmhHr3wazvZdwMpr2aCD7GCVqDe1t5uV5EDHYdhHfaPo7Q63rYCzeJKeYw97yTIl3CqP
+         vEgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700488285; x=1701093085;
+        d=1e100.net; s=20230601; t=1700488293; x=1701093093;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=RJJcNZQjoxDpL64YJUPbX5zAdxkULtiEGewpt5HLNRQ=;
-        b=EQYfYrh9S1Y32v5wulzAklGK+meSRTUpZ1YDOyn5W+LwUWa/4M3kAaUlf1vixY2t/8
-         yJLoTfysGF99+xq3SA/UU3YcCvRQ3lMuFHwjIkJg1gPkoxP7mM6Ul1ww8u8X5ia3LoyJ
-         zRLKBtuAtNdXlOO8CkNui7rf9a/aTussj9XMkiRD+on4FHHlzH9erUXzF9SjjqWAoMqK
-         Q1rpoSn4jv5s+xJ3Mi5Bbc51l/RYrbjaOOAUfPkOytFV/GElJsPgzUIGS1oqu8wNzQgn
-         zj36v93QZPG9bF+Q/XtOhc2JJbuVyAZId5Fw85kcnBH3Oxzo64DWarEvGSqy4ysCU09w
-         zBkA==
-X-Gm-Message-State: AOJu0YxCliWeJ32t5QDZJ8kmbTaVAVxHjz85sRdQiOl/WSHZLm9ojN3r
-	2ufuwrRuh+h819wbW0apSrY=
-X-Google-Smtp-Source: AGHT+IHEV5yAbedHXZPHvi496M5AnmqBvoItl/mLTRfObKuQHz0eqFU2KUnKLxPwW2KQ8CFk9bb54A==
-X-Received: by 2002:a2e:7302:0:b0:2c5:ee7:b322 with SMTP id o2-20020a2e7302000000b002c50ee7b322mr6395660ljc.18.1700488284849;
-        Mon, 20 Nov 2023 05:51:24 -0800 (PST)
+        bh=lwOqpq8wMuGFvFAyqjc9ntVImZ49seWbU3wj+Y9SX8M=;
+        b=ZfbY2xE+EAxFVTneNRTmAKQg2uathGlIdJMlL4nd/lroAhJGYTd7dGl/AtrrlsUFMy
+         /4umA4zac8YB1+lK1HpzTkSJrcWZz7slYcKsw6jf6x9Qn2ocnXOhNN3CQNlhkpLoV4Be
+         zxNwON8+2HESdFyVpqWgsvdn/IdjytpwwXwmXIv3ttn/1w84DuLpSThk6CJQBrV8D9Yc
+         1yg5Hzm6ZVwGcJUZf80YWQ4nFZ/AI11il29EoqmSsZD7gBz3U/163O+eCEfP+14BdVhj
+         HAOE8CR7z541gCY36MD6jSgxAD55bkvGwcfXrgbC2ykEGbZcvl+ltq15kSjCMs/X4HKB
+         jy6Q==
+X-Gm-Message-State: AOJu0YyDHNV7vhgjD4NZv/o9GatGqwvvoPyARIsA7bYorI0QlhbfwPfx
+	zrTLdTtk8IWpcPIHbehtTgU=
+X-Google-Smtp-Source: AGHT+IFmg+IDN1S5hiDX/OCJuB0kKVd53gCz/3x1PpP8nqnLbxDFU7dX760HGV1Bk2uTz15Nrzm28w==
+X-Received: by 2002:a05:600c:4f55:b0:406:411f:742e with SMTP id m21-20020a05600c4f5500b00406411f742emr6269618wmq.34.1700488293121;
+        Mon, 20 Nov 2023 05:51:33 -0800 (PST)
 Received: from localhost.localdomain (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.googlemail.com with ESMTPSA id j33-20020a05600c1c2100b0040772934b12sm18205846wms.7.2023.11.20.05.51.23
+        by smtp.googlemail.com with ESMTPSA id j33-20020a05600c1c2100b0040772934b12sm18205846wms.7.2023.11.20.05.51.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 05:51:24 -0800 (PST)
+        Mon, 20 Nov 2023 05:51:32 -0800 (PST)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -95,17 +95,17 @@ To: "David S. Miller" <davem@davemloft.net>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [net-next RFC PATCH 08/14] net: phy: add support for PHY package interface mode
-Date: Mon, 20 Nov 2023 14:50:35 +0100
-Message-Id: <20231120135041.15259-9-ansuelsmth@gmail.com>
+Subject: [net-next RFC PATCH 13/14] net: phy: add Qualcom QCA807x driver
+Date: Mon, 20 Nov 2023 14:50:40 +0100
+Message-Id: <20231120135041.15259-14-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231120135041.15259-1-ansuelsmth@gmail.com>
 References: <20231120135041.15259-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_055129_975893_EDE0E411 
-X-CRM114-Status: GOOD (  23.85  )
+X-CRM114-CacheID: sfid-20231120_055136_754378_2202F870 
+X-CRM114-Status: GOOD (  21.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,118 +120,938 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some PHY in PHY package supports running only at a specific mode for
-each PHY in the package. Add support for enforcing this special thing a
-verify consistency with the requested mode to prevent misconfiguration.
+From: Robert Marko <robert.marko@sartura.hr>
 
-To set the PHY package mode, simply set "phy-mode" in the phy-package
-node. Each PHY on init will verify if the requested mode match the one
-set for the PHY package and will return -EINVAL if this is not true.
+This adds driver for the Qualcomm QCA8072 and QCA8075 PHY-s.
 
-If PHY package doesn't specify any mode, it's assumed that PHY in the
-package doesn't have such limitation.
+They are 2 or 5 port IEEE 802.3 clause 22 compliant 10BASE-Te,
+100BASE-TX and 1000BASE-T PHY-s.
 
+They feature 2 SerDes, one for PSGMII or QSGMII connection with
+MAC, while second one is SGMII for connection to MAC or fiber.
+
+Both models have a combo port that supports 1000BASE-X and
+100BASE-FX fiber.
+
+Each PHY inside of QCA807x series has 4 digitally controlled
+output only pins that natively drive LED-s.
+But some vendors used these to driver generic LED-s controlled
+by userspace, so lets enable registering each PHY as GPIO
+controller and add driver for it.
+
+These are commonly used in Qualcomm IPQ40xx, IPQ60xx and IPQ807x
+boards.
+
+Co-developed-by: Christian Marangi <ansuelsmth@gmail.com>
+Signed-off-by: Robert Marko <robert.marko@sartura.hr>
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- drivers/net/phy/phy_device.c | 37 ++++++++++++++++++++++++++++++++++++
- include/linux/phy.h          |  6 ++++++
- 2 files changed, 43 insertions(+)
+ drivers/net/phy/Kconfig   |   7 +
+ drivers/net/phy/Makefile  |   1 +
+ drivers/net/phy/qca807x.c | 864 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 872 insertions(+)
+ create mode 100644 drivers/net/phy/qca807x.c
 
-diff --git a/drivers/net/phy/phy_device.c b/drivers/net/phy/phy_device.c
-index 0b7ba6995929..73af4197a7af 100644
---- a/drivers/net/phy/phy_device.c
-+++ b/drivers/net/phy/phy_device.c
-@@ -25,6 +25,7 @@
- #include <linux/mm.h>
- #include <linux/module.h>
- #include <linux/of.h>
-+#include <linux/of_net.h>
- #include <linux/netdevice.h>
- #include <linux/phy.h>
- #include <linux/phylib_stubs.h>
-@@ -1225,8 +1226,17 @@ static int phy_poll_reset(struct phy_device *phydev)
+diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
+index 25cfc5ded1da..5ad85bd978a0 100644
+--- a/drivers/net/phy/Kconfig
++++ b/drivers/net/phy/Kconfig
+@@ -325,6 +325,13 @@ config AT803X_PHY
+ 	  Currently supports the AR8030, AR8031, AR8033, AR8035 and internal
+ 	  QCA8337(Internal qca8k PHY) model
  
- int phy_init_hw(struct phy_device *phydev)
- {
-+	phy_interface_t package_interface;
- 	int ret = 0;
- 
-+	/* Validate we are requesting consistent mode if we
-+	 * are in a PHY package and the PHY package requires a
-+	 * specific mode.
-+	 */
-+	ret = phy_package_get_mode(phydev, &package_interface);
-+	if (!ret && phydev->interface != package_interface)
-+		return -EINVAL;
++config QCA807X_PHY
++	tristate "Qualcomm QCA807x PHYs"
++	depends on OF_MDIO
++	help
++	  Currently supports the Qualcomm QCA8072, QCA8075 and the PSGMII
++	  control PHY.
 +
- 	/* Deassert the reset signal */
- 	phy_device_reset(phydev, 0);
- 
-@@ -1776,6 +1786,32 @@ void phy_package_leave(struct phy_device *phydev)
- }
- EXPORT_SYMBOL_GPL(phy_package_leave);
- 
-+/**
-+ * phy_package_get_mode - get PHY interface mode for PHY package
-+ * @phydev: target phy_device struct
-+ * @interface: phy_interface_t pointer where to save the PHY package mode
+ config QSEMI_PHY
+ 	tristate "Quality Semiconductor PHYs"
+ 	help
+diff --git a/drivers/net/phy/Makefile b/drivers/net/phy/Makefile
+index f65e85c91fc1..a4da4f127b23 100644
+--- a/drivers/net/phy/Makefile
++++ b/drivers/net/phy/Makefile
+@@ -82,6 +82,7 @@ obj-$(CONFIG_NCN26000_PHY)	+= ncn26000.o
+ obj-$(CONFIG_NXP_C45_TJA11XX_PHY)	+= nxp-c45-tja11xx.o
+ obj-$(CONFIG_NXP_CBTX_PHY)	+= nxp-cbtx.o
+ obj-$(CONFIG_NXP_TJA11XX_PHY)	+= nxp-tja11xx.o
++obj-$(CONFIG_QCA807X_PHY)		+= qca807x.o
+ obj-$(CONFIG_QSEMI_PHY)		+= qsemi.o
+ obj-$(CONFIG_REALTEK_PHY)	+= realtek.o
+ obj-$(CONFIG_RENESAS_PHY)	+= uPD60620.o
+diff --git a/drivers/net/phy/qca807x.c b/drivers/net/phy/qca807x.c
+new file mode 100644
+index 000000000000..5b82af52778a
+--- /dev/null
++++ b/drivers/net/phy/qca807x.c
+@@ -0,0 +1,864 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * Copyright (c) 2023 Sartura Ltd.
 + *
-+ * Gets PHY interface mode for the shared data of the PHY package.
-+ * Returns 0 and updates @interface with the PHY package value, or -ENODEV
-+ * if PHY is not in PHY package or -EINVAL if a PHY package interface mode
-+ * is not set.
++ * Author: Robert Marko <robert.marko@sartura.hr>
++ *         Christian Marangi <ansuelsmth@gmail.com>
++ *
++ * Qualcomm QCA8072 and QCA8075 PHY driver
 + */
-+int phy_package_get_mode(struct phy_device *phydev, phy_interface_t *interface)
++
++#include <linux/version.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/phy.h>
++#include <linux/bitfield.h>
++#include <linux/ethtool_netlink.h>
++#include <linux/gpio.h>
++#include <linux/sfp.h>
++
++#include <dt-bindings/net/qcom-qca807x.h>
++
++#define PHY_ID_QCA8072		0x004dd0b2
++#define PHY_ID_QCA8075		0x004dd0b1
++
++/* Downshift */
++#define QCA807X_SMARTSPEED_EN			BIT(5)
++#define QCA807X_SMARTSPEED_RETRY_LIMIT_MASK	GENMASK(4, 2)
++#define QCA807X_SMARTSPEED_RETRY_LIMIT_DEFAULT	5
++#define QCA807X_SMARTSPEED_RETRY_LIMIT_MIN	2
++#define QCA807X_SMARTSPEED_RETRY_LIMIT_MAX	9
++
++/* Cable diagnostic test (CDT) */
++#define QCA807X_CDT						0x16
++#define QCA807X_CDT_ENABLE					BIT(15)
++#define QCA807X_CDT_ENABLE_INTER_PAIR_SHORT			BIT(13)
++#define QCA807X_CDT_STATUS					BIT(11)
++#define QCA807X_CDT_MMD3_STATUS					0x8064
++#define QCA807X_CDT_MDI0_STATUS_MASK				GENMASK(15, 12)
++#define QCA807X_CDT_MDI1_STATUS_MASK				GENMASK(11, 8)
++#define QCA807X_CDT_MDI2_STATUS_MASK				GENMASK(7, 4)
++#define QCA807X_CDT_MDI3_STATUS_MASK				GENMASK(3, 0)
++#define QCA807X_CDT_RESULTS_INVALID				0x0
++#define QCA807X_CDT_RESULTS_OK					0x1
++#define QCA807X_CDT_RESULTS_OPEN				0x2
++#define QCA807X_CDT_RESULTS_SAME_SHORT				0x3
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_OK	0x4
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_OK	0x8
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_OK	0xc
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_OPEN	0x6
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_OPEN	0xa
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_OPEN	0xe
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_SHORT	0x7
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_SHORT	0xb
++#define QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_SHORT	0xf
++#define QCA807X_CDT_RESULTS_BUSY				0x9
++#define QCA807X_CDT_MMD3_MDI0_LENGTH				0x8065
++#define QCA807X_CDT_MMD3_MDI1_LENGTH				0x8066
++#define QCA807X_CDT_MMD3_MDI2_LENGTH				0x8067
++#define QCA807X_CDT_MMD3_MDI3_LENGTH				0x8068
++#define QCA807X_CDT_SAME_SHORT_LENGTH_MASK			GENMASK(15, 8)
++#define QCA807X_CDT_CROSS_SHORT_LENGTH_MASK			GENMASK(7, 0)
++
++#define QCA807X_CHIP_CONFIGURATION				0x1f
++#define QCA807X_BT_BX_REG_SEL					BIT(15)
++#define QCA807X_BT_BX_REG_SEL_FIBER				0
++#define QCA807X_BT_BX_REG_SEL_COPPER				1
++#define QCA807X_CHIP_CONFIGURATION_MODE_CFG_MASK		GENMASK(3, 0)
++#define QCA807X_CHIP_CONFIGURATION_MODE_QSGMII_SGMII		4
++#define QCA807X_CHIP_CONFIGURATION_MODE_PSGMII_FIBER		3
++#define QCA807X_CHIP_CONFIGURATION_MODE_PSGMII_ALL_COPPER	0
++
++#define QCA807X_MEDIA_SELECT_STATUS				0x1a
++#define QCA807X_MEDIA_DETECTED_COPPER				BIT(5)
++#define QCA807X_MEDIA_DETECTED_1000_BASE_X			BIT(4)
++#define QCA807X_MEDIA_DETECTED_100_BASE_FX			BIT(3)
++
++#define QCA807X_MMD7_FIBER_MODE_AUTO_DETECTION			0x807e
++#define QCA807X_MMD7_FIBER_MODE_AUTO_DETECTION_EN		BIT(0)
++
++#define QCA807X_MMD7_1000BASE_T_POWER_SAVE_PER_CABLE_LENGTH	0x801a
++#define QCA807X_CONTROL_DAC_MASK				GENMASK(2, 0)
++
++#define QCA807X_MMD7_LED_100N_1				0x8074
++#define QCA807X_MMD7_LED_100N_2				0x8075
++#define QCA807X_MMD7_LED_1000N_1			0x8076
++#define QCA807X_MMD7_LED_1000N_2			0x8077
++#define QCA807X_LED_TXACT_BLK_EN_2			BIT(10)
++#define QCA807X_LED_RXACT_BLK_EN_2			BIT(9)
++#define QCA807X_LED_GT_ON_EN_2				BIT(6)
++#define QCA807X_LED_HT_ON_EN_2				BIT(5)
++#define QCA807X_LED_BT_ON_EN_2				BIT(4)
++#define QCA807X_GPIO_FORCE_EN				BIT(15)
++#define QCA807X_GPIO_FORCE_MODE_MASK			GENMASK(14, 13)
++
++#define QCA807X_INTR_ENABLE				0x12
++#define QCA807X_INTR_STATUS				0x13
++#define QCA807X_INTR_ENABLE_AUTONEG_ERR			BIT(15)
++#define QCA807X_INTR_ENABLE_SPEED_CHANGED		BIT(14)
++#define QCA807X_INTR_ENABLE_DUPLEX_CHANGED		BIT(13)
++#define QCA807X_INTR_ENABLE_LINK_FAIL			BIT(11)
++#define QCA807X_INTR_ENABLE_LINK_SUCCESS		BIT(10)
++
++#define QCA807X_FUNCTION_CONTROL			0x10
++#define QCA807X_FC_MDI_CROSSOVER_MODE_MASK		GENMASK(6, 5)
++#define QCA807X_FC_MDI_CROSSOVER_AUTO			3
++#define QCA807X_FC_MDI_CROSSOVER_MANUAL_MDIX		1
++#define QCA807X_FC_MDI_CROSSOVER_MANUAL_MDI		0
++
++#define QCA807X_PHY_SPECIFIC_STATUS			0x11
++#define QCA807X_SS_SPEED_AND_DUPLEX_RESOLVED		BIT(11)
++#define QCA807X_SS_SPEED_MASK				GENMASK(15, 14)
++#define QCA807X_SS_SPEED_1000				2
++#define QCA807X_SS_SPEED_100				1
++#define QCA807X_SS_SPEED_10				0
++#define QCA807X_SS_DUPLEX				BIT(13)
++#define QCA807X_SS_MDIX					BIT(6)
++
++/* PQSGMII Analog PHY specific */
++#define PQSGMII_CTRL_REG				0x0
++#define PQSGMII_ANALOG_SW_RESET				BIT(6)
++#define PQSGMII_DRIVE_CONTROL_1				0xb
++#define PQSGMII_TX_DRIVER_MASK				GENMASK(7, 4)
++#define PQSGMII_MODE_CTRL				0x6d
++#define PQSGMII_MODE_CTRL_AZ_WORKAROUND_MASK		BIT(0)
++#define PQSGMII_MMD3_SERDES_CONTROL			0x805a
++
++#define SERDES_RESET_SLEEP				100
++
++enum qca807x_global_phy {
++	QCA807X_COMBO_ADDR = 0,
++	QCA807X_PQSGMII_ADDR,
++
++	__QCA807X_GLOBAL_PHY_MAX,
++};
++
++const char * const qca807x_global_phy_names[] = {
++	[QCA807X_COMBO_ADDR] = "combo",
++	[QCA807X_PQSGMII_ADDR] = "pqsgmii",
++};
++
++struct qca807x_gpio_priv {
++	struct phy_device *phy;
++};
++
++static int qca807x_get_downshift(struct phy_device *phydev, u8 *data)
 +{
-+	struct phy_package_shared *shared = phydev->shared;
++	int val, cnt, enable;
 +
-+	if (!shared)
-+		return -ENODEV;
++	val = phy_read(phydev, MII_NWAYTEST);
++	if (val < 0)
++		return val;
 +
-+	if (shared->package_interface == PHY_INTERFACE_MODE_NA)
-+		return -EINVAL;
++	enable = FIELD_GET(QCA807X_SMARTSPEED_EN, val);
++	cnt = FIELD_GET(QCA807X_SMARTSPEED_RETRY_LIMIT_MASK, val) + 2;
 +
-+	*interface = shared->package_interface;
++	*data = enable ? cnt : DOWNSHIFT_DEV_DISABLE;
 +
 +	return 0;
 +}
-+EXPORT_SYMBOL_GPL(phy_package_get_mode);
 +
- static void devm_phy_package_leave(struct device *dev, void *res)
- {
- 	phy_package_leave(*(struct phy_device **)res);
-@@ -3270,6 +3306,7 @@ static int of_phy_package(struct phy_device *phydev)
- 		goto exit;
- 
- 	phydev->shared->np = package_node;
-+	of_get_phy_mode(package_node, &phydev->shared->package_interface);
- 
- exit:
- 	kfree(global_phy_addrs);
-diff --git a/include/linux/phy.h b/include/linux/phy.h
-index 1849fc637196..8af0a8a72b88 100644
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
-@@ -341,6 +341,11 @@ struct mdio_bus_stats {
- struct phy_package_shared {
- 	/* With PHY package defined in DT this points to the PHY package node */
- 	struct device_node *np;
-+	/* PHY package interface
-+	 * If defined, each PHY of the package MUST have the interface
-+	 * set to the PHY package.
++static int qca807x_set_downshift(struct phy_device *phydev, u8 cnt)
++{
++	int ret, val;
++
++	if (cnt > QCA807X_SMARTSPEED_RETRY_LIMIT_MAX ||
++	    (cnt < QCA807X_SMARTSPEED_RETRY_LIMIT_MIN && cnt != DOWNSHIFT_DEV_DISABLE))
++		return -EINVAL;
++
++	if (!cnt) {
++		ret = phy_clear_bits(phydev, MII_NWAYTEST, QCA807X_SMARTSPEED_EN);
++	} else {
++		val = QCA807X_SMARTSPEED_EN;
++		val |= FIELD_PREP(QCA807X_SMARTSPEED_RETRY_LIMIT_MASK, cnt - 2);
++
++		phy_modify(phydev, MII_NWAYTEST,
++			   QCA807X_SMARTSPEED_EN |
++			   QCA807X_SMARTSPEED_RETRY_LIMIT_MASK,
++			   val);
++	}
++
++	ret = genphy_soft_reset(phydev);
++
++	return ret;
++}
++
++static int qca807x_get_tunable(struct phy_device *phydev,
++			       struct ethtool_tunable *tuna, void *data)
++{
++	switch (tuna->id) {
++	case ETHTOOL_PHY_DOWNSHIFT:
++		return qca807x_get_downshift(phydev, data);
++	default:
++		return -EOPNOTSUPP;
++	}
++}
++
++static int qca807x_set_tunable(struct phy_device *phydev,
++			       struct ethtool_tunable *tuna, const void *data)
++{
++	switch (tuna->id) {
++	case ETHTOOL_PHY_DOWNSHIFT:
++		return qca807x_set_downshift(phydev, *(const u8 *)data);
++	default:
++		return -EOPNOTSUPP;
++	}
++}
++
++static bool qca807x_distance_valid(int result)
++{
++	switch (result) {
++	case QCA807X_CDT_RESULTS_OPEN:
++	case QCA807X_CDT_RESULTS_SAME_SHORT:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_OK:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_OK:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_OK:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_OPEN:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_OPEN:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_OPEN:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_SHORT:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_SHORT:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_SHORT:
++		return true;
++	}
++	return false;
++}
++
++static int qca807x_report_length(struct phy_device *phydev,
++				 int pair, int result)
++{
++	int length;
++	int ret;
++
++	ret = phy_read_mmd(phydev, MDIO_MMD_PCS, QCA807X_CDT_MMD3_MDI0_LENGTH + pair);
++	if (ret < 0)
++		return ret;
++
++	switch (result) {
++	case ETHTOOL_A_CABLE_RESULT_CODE_SAME_SHORT:
++		length = (FIELD_GET(QCA807X_CDT_SAME_SHORT_LENGTH_MASK, ret) * 800) / 10;
++		break;
++	case ETHTOOL_A_CABLE_RESULT_CODE_OPEN:
++	case ETHTOOL_A_CABLE_RESULT_CODE_CROSS_SHORT:
++		length = (FIELD_GET(QCA807X_CDT_CROSS_SHORT_LENGTH_MASK, ret) * 800) / 10;
++		break;
++	}
++
++	ethnl_cable_test_fault_length(phydev, pair, length);
++
++	return 0;
++}
++
++static int qca807x_cable_test_report_trans(int result)
++{
++	switch (result) {
++	case QCA807X_CDT_RESULTS_OK:
++		return ETHTOOL_A_CABLE_RESULT_CODE_OK;
++	case QCA807X_CDT_RESULTS_OPEN:
++		return ETHTOOL_A_CABLE_RESULT_CODE_OPEN;
++	case QCA807X_CDT_RESULTS_SAME_SHORT:
++		return ETHTOOL_A_CABLE_RESULT_CODE_SAME_SHORT;
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_OK:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_OK:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_OK:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_OPEN:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_OPEN:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_OPEN:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI1_SAME_SHORT:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI2_SAME_SHORT:
++	case QCA807X_CDT_RESULTS_CROSS_SHORT_WITH_MDI3_SAME_SHORT:
++		return ETHTOOL_A_CABLE_RESULT_CODE_CROSS_SHORT;
++	default:
++		return ETHTOOL_A_CABLE_RESULT_CODE_UNSPEC;
++	}
++}
++
++static int qca807x_cable_test_report(struct phy_device *phydev)
++{
++	int pair0, pair1, pair2, pair3;
++	int ret;
++
++	ret = phy_read_mmd(phydev, MDIO_MMD_PCS, QCA807X_CDT_MMD3_STATUS);
++	if (ret < 0)
++		return ret;
++
++	pair0 = FIELD_GET(QCA807X_CDT_MDI0_STATUS_MASK, ret);
++	pair1 = FIELD_GET(QCA807X_CDT_MDI1_STATUS_MASK, ret);
++	pair2 = FIELD_GET(QCA807X_CDT_MDI2_STATUS_MASK, ret);
++	pair3 = FIELD_GET(QCA807X_CDT_MDI3_STATUS_MASK, ret);
++
++	ethnl_cable_test_result(phydev, ETHTOOL_A_CABLE_PAIR_A,
++				qca807x_cable_test_report_trans(pair0));
++	ethnl_cable_test_result(phydev, ETHTOOL_A_CABLE_PAIR_B,
++				qca807x_cable_test_report_trans(pair1));
++	ethnl_cable_test_result(phydev, ETHTOOL_A_CABLE_PAIR_C,
++				qca807x_cable_test_report_trans(pair2));
++	ethnl_cable_test_result(phydev, ETHTOOL_A_CABLE_PAIR_D,
++				qca807x_cable_test_report_trans(pair3));
++
++	if (qca807x_distance_valid(pair0))
++		qca807x_report_length(phydev, 0, qca807x_cable_test_report_trans(pair0));
++	if (qca807x_distance_valid(pair1))
++		qca807x_report_length(phydev, 1, qca807x_cable_test_report_trans(pair1));
++	if (qca807x_distance_valid(pair2))
++		qca807x_report_length(phydev, 2, qca807x_cable_test_report_trans(pair2));
++	if (qca807x_distance_valid(pair3))
++		qca807x_report_length(phydev, 3, qca807x_cable_test_report_trans(pair3));
++
++	return 0;
++}
++
++static int qca807x_cable_test_get_status(struct phy_device *phydev,
++					 bool *finished)
++{
++	int val;
++
++	*finished = false;
++
++	val = phy_read(phydev, QCA807X_CDT);
++	if (!((val & QCA807X_CDT_ENABLE) && (val & QCA807X_CDT_STATUS))) {
++		*finished = true;
++
++		return qca807x_cable_test_report(phydev);
++	}
++
++	return 0;
++}
++
++static int qca807x_cable_test_start(struct phy_device *phydev)
++{
++	int val, ret;
++
++	val = phy_read(phydev, QCA807X_CDT);
++	/* Enable inter-pair short check as well */
++	val &= ~QCA807X_CDT_ENABLE_INTER_PAIR_SHORT;
++	val |= QCA807X_CDT_ENABLE;
++	ret = phy_write(phydev, QCA807X_CDT, val);
++
++	return ret;
++}
++
++#ifdef CONFIG_GPIOLIB
++static int qca807x_gpio_get_direction(struct gpio_chip *gc, unsigned int offset)
++{
++	return GPIO_LINE_DIRECTION_OUT;
++}
++
++static int qca807x_gpio_get_reg(unsigned int offset)
++{
++	return QCA807X_MMD7_LED_100N_2 + (offset % 2) * 2;
++}
++
++static int qca807x_gpio_get(struct gpio_chip *gc, unsigned int offset)
++{
++	struct qca807x_gpio_priv *priv = gpiochip_get_data(gc);
++	int val;
++
++	val = phy_read_mmd(priv->phy, MDIO_MMD_AN, qca807x_gpio_get_reg(offset));
++
++	return FIELD_GET(QCA807X_GPIO_FORCE_MODE_MASK, val);
++}
++
++static void qca807x_gpio_set(struct gpio_chip *gc, unsigned int offset, int value)
++{
++	struct qca807x_gpio_priv *priv = gpiochip_get_data(gc);
++	int val;
++
++	val = phy_read_mmd(priv->phy, MDIO_MMD_AN, qca807x_gpio_get_reg(offset));
++	val &= ~QCA807X_GPIO_FORCE_MODE_MASK;
++	val |= QCA807X_GPIO_FORCE_EN;
++	val |= FIELD_PREP(QCA807X_GPIO_FORCE_MODE_MASK, value);
++
++	phy_write_mmd(priv->phy, MDIO_MMD_AN, qca807x_gpio_get_reg(offset), val);
++}
++
++static int qca807x_gpio_dir_out(struct gpio_chip *gc, unsigned int offset, int value)
++{
++	qca807x_gpio_set(gc, offset, value);
++
++	return 0;
++}
++
++static int qca807x_gpio(struct phy_device *phydev)
++{
++	struct device *dev = &phydev->mdio.dev;
++	struct qca807x_gpio_priv *priv;
++	struct gpio_chip *gc;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->phy = phydev;
++
++	gc = devm_kzalloc(dev, sizeof(*gc), GFP_KERNEL);
++	if (!gc)
++		return -ENOMEM;
++
++	gc->label = dev_name(dev);
++	gc->base = -1;
++	gc->ngpio = 2;
++	gc->parent = dev;
++	gc->owner = THIS_MODULE;
++	gc->can_sleep = true;
++	gc->get_direction = qca807x_gpio_get_direction;
++	gc->direction_output = qca807x_gpio_dir_out;
++	gc->get = qca807x_gpio_get;
++	gc->set = qca807x_gpio_set;
++
++	return devm_gpiochip_add_data(dev, gc, priv);
++}
++#endif
++
++static int qca807x_read_copper_status(struct phy_device *phydev)
++{
++	int ss, err, old_link = phydev->link;
++
++	/* Update the link, but return if there was an error */
++	err = genphy_update_link(phydev);
++	if (err)
++		return err;
++
++	/* why bother the PHY if nothing can have changed */
++	if (phydev->autoneg == AUTONEG_ENABLE && old_link && phydev->link)
++		return 0;
++
++	phydev->speed = SPEED_UNKNOWN;
++	phydev->duplex = DUPLEX_UNKNOWN;
++	phydev->pause = 0;
++	phydev->asym_pause = 0;
++
++	err = genphy_read_lpa(phydev);
++	if (err < 0)
++		return err;
++
++	/* Read the QCA807x PHY-Specific Status register copper page,
++	 * which indicates the speed and duplex that the PHY is actually
++	 * using, irrespective of whether we are in autoneg mode or not.
 +	 */
-+	phy_interface_t package_interface;
- 	/* addrs list pointer */
- 	/* note that this pointer is shared between different phydevs.
- 	 * It is allocated and freed automatically by phy_package_join() and
-@@ -2014,6 +2019,7 @@ int phy_ethtool_nway_reset(struct net_device *ndev);
- int phy_package_join(struct phy_device *phydev, int *addrs, size_t addrs_num,
- 		     size_t priv_size);
- void phy_package_leave(struct phy_device *phydev);
-+int phy_package_get_mode(struct phy_device *phydev, phy_interface_t *interface);
- int devm_phy_package_join(struct device *dev, struct phy_device *phydev,
- 			  int *addrs, size_t addrs_num, size_t priv_size);
- 
++	ss = phy_read(phydev, QCA807X_PHY_SPECIFIC_STATUS);
++	if (ss < 0)
++		return ss;
++
++	if (ss & QCA807X_SS_SPEED_AND_DUPLEX_RESOLVED) {
++		int sfc;
++
++		sfc = phy_read(phydev, QCA807X_FUNCTION_CONTROL);
++		if (sfc < 0)
++			return sfc;
++
++		switch (FIELD_GET(QCA807X_SS_SPEED_MASK, ss)) {
++		case QCA807X_SS_SPEED_10:
++			phydev->speed = SPEED_10;
++			break;
++		case QCA807X_SS_SPEED_100:
++			phydev->speed = SPEED_100;
++			break;
++		case QCA807X_SS_SPEED_1000:
++			phydev->speed = SPEED_1000;
++			break;
++		}
++		if (ss & QCA807X_SS_DUPLEX)
++			phydev->duplex = DUPLEX_FULL;
++		else
++			phydev->duplex = DUPLEX_HALF;
++
++		if (ss & QCA807X_SS_MDIX)
++			phydev->mdix = ETH_TP_MDI_X;
++		else
++			phydev->mdix = ETH_TP_MDI;
++
++		switch (FIELD_GET(QCA807X_FC_MDI_CROSSOVER_MODE_MASK, sfc)) {
++		case QCA807X_FC_MDI_CROSSOVER_MANUAL_MDI:
++			phydev->mdix_ctrl = ETH_TP_MDI;
++			break;
++		case QCA807X_FC_MDI_CROSSOVER_MANUAL_MDIX:
++			phydev->mdix_ctrl = ETH_TP_MDI_X;
++			break;
++		case QCA807X_FC_MDI_CROSSOVER_AUTO:
++			phydev->mdix_ctrl = ETH_TP_MDI_AUTO;
++			break;
++		}
++	}
++
++	if (phydev->autoneg == AUTONEG_ENABLE && phydev->autoneg_complete)
++		phy_resolve_aneg_pause(phydev);
++
++	return 0;
++}
++
++static int qca807x_read_fiber_status(struct phy_device *phydev)
++{
++	int ss, err, lpa, old_link = phydev->link;
++
++	/* Update the link, but return if there was an error */
++	err = genphy_update_link(phydev);
++	if (err)
++		return err;
++
++	/* why bother the PHY if nothing can have changed */
++	if (phydev->autoneg == AUTONEG_ENABLE && old_link && phydev->link)
++		return 0;
++
++	phydev->speed = SPEED_UNKNOWN;
++	phydev->duplex = DUPLEX_UNKNOWN;
++	phydev->pause = 0;
++	phydev->asym_pause = 0;
++
++	if (phydev->autoneg == AUTONEG_ENABLE && phydev->autoneg_complete) {
++		lpa = phy_read(phydev, MII_LPA);
++		if (lpa < 0)
++			return lpa;
++
++		linkmode_mod_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
++				 phydev->lp_advertising, lpa & LPA_LPACK);
++		linkmode_mod_bit(ETHTOOL_LINK_MODE_1000baseX_Full_BIT,
++				 phydev->lp_advertising, lpa & LPA_1000XFULL);
++		linkmode_mod_bit(ETHTOOL_LINK_MODE_Pause_BIT,
++				 phydev->lp_advertising, lpa & LPA_1000XPAUSE);
++		linkmode_mod_bit(ETHTOOL_LINK_MODE_Asym_Pause_BIT,
++				 phydev->lp_advertising,
++				 lpa & LPA_1000XPAUSE_ASYM);
++
++		phy_resolve_aneg_linkmode(phydev);
++	}
++
++	/* Read the QCA807x PHY-Specific Status register fiber page,
++	 * which indicates the speed and duplex that the PHY is actually
++	 * using, irrespective of whether we are in autoneg mode or not.
++	 */
++	ss = phy_read(phydev, QCA807X_PHY_SPECIFIC_STATUS);
++	if (ss < 0)
++		return ss;
++
++	if (ss & QCA807X_SS_SPEED_AND_DUPLEX_RESOLVED) {
++		switch (FIELD_GET(QCA807X_SS_SPEED_MASK, ss)) {
++		case QCA807X_SS_SPEED_100:
++			phydev->speed = SPEED_100;
++			break;
++		case QCA807X_SS_SPEED_1000:
++			phydev->speed = SPEED_1000;
++			break;
++		}
++
++		if (ss & QCA807X_SS_DUPLEX)
++			phydev->duplex = DUPLEX_FULL;
++		else
++			phydev->duplex = DUPLEX_HALF;
++	}
++
++	return 0;
++}
++
++static int qca807x_read_status(struct phy_device *phydev)
++{
++	if (linkmode_test_bit(ETHTOOL_LINK_MODE_FIBRE_BIT, phydev->supported)) {
++		switch (phydev->port) {
++		case PORT_FIBRE:
++			return qca807x_read_fiber_status(phydev);
++		case PORT_TP:
++			return qca807x_read_copper_status(phydev);
++		default:
++			return -EINVAL;
++		}
++	}
++
++	return qca807x_read_copper_status(phydev);
++}
++
++static int qca807x_config_intr(struct phy_device *phydev)
++{
++	int ret, val;
++
++	val = phy_read(phydev, QCA807X_INTR_ENABLE);
++
++	if (phydev->interrupts == PHY_INTERRUPT_ENABLED) {
++		/* Check for combo port as it has fewer interrupts */
++		if (phy_read(phydev, QCA807X_CHIP_CONFIGURATION)) {
++			val |= QCA807X_INTR_ENABLE_SPEED_CHANGED;
++			val |= QCA807X_INTR_ENABLE_LINK_FAIL;
++			val |= QCA807X_INTR_ENABLE_LINK_SUCCESS;
++		} else {
++			val |= QCA807X_INTR_ENABLE_AUTONEG_ERR;
++			val |= QCA807X_INTR_ENABLE_SPEED_CHANGED;
++			val |= QCA807X_INTR_ENABLE_DUPLEX_CHANGED;
++			val |= QCA807X_INTR_ENABLE_LINK_FAIL;
++			val |= QCA807X_INTR_ENABLE_LINK_SUCCESS;
++		}
++		ret = phy_write(phydev, QCA807X_INTR_ENABLE, val);
++	} else {
++		ret = phy_write(phydev, QCA807X_INTR_ENABLE, 0);
++	}
++
++	return ret;
++}
++
++static irqreturn_t qca807x_handle_interrupt(struct phy_device *phydev)
++{
++	int irq_status, int_enabled;
++
++	irq_status = phy_read(phydev, QCA807X_INTR_STATUS);
++	if (irq_status < 0) {
++		phy_error(phydev);
++		return IRQ_NONE;
++	}
++
++	/* Read the current enabled interrupts */
++	int_enabled = phy_read(phydev, QCA807X_INTR_ENABLE);
++	if (int_enabled < 0) {
++		phy_error(phydev);
++		return IRQ_NONE;
++	}
++
++	/* See if this was one of our enabled interrupts */
++	if (!(irq_status & int_enabled))
++		return IRQ_NONE;
++
++	phy_trigger_machine(phydev);
++
++	return IRQ_HANDLED;
++}
++
++static int qca807x_sfp_insert(void *upstream, const struct sfp_eeprom_id *id)
++{
++	struct phy_device *phydev = upstream;
++	__ETHTOOL_DECLARE_LINK_MODE_MASK(support) = { 0, };
++	phy_interface_t iface;
++	int ret;
++	DECLARE_PHY_INTERFACE_MASK(interfaces);
++
++	sfp_parse_support(phydev->sfp_bus, id, support, interfaces);
++	iface = sfp_select_interface(phydev->sfp_bus, support);
++
++	dev_info(&phydev->mdio.dev, "%s SFP module inserted\n", phy_modes(iface));
++
++	switch (iface) {
++	case PHY_INTERFACE_MODE_1000BASEX:
++	case PHY_INTERFACE_MODE_100BASEX:
++		/* Set PHY mode to PSGMII combo (1/4 copper + combo ports) mode */
++		ret = phy_modify(phydev,
++				 QCA807X_CHIP_CONFIGURATION,
++				 QCA807X_CHIP_CONFIGURATION_MODE_CFG_MASK,
++				 QCA807X_CHIP_CONFIGURATION_MODE_PSGMII_FIBER);
++		/* Enable fiber mode autodection (1000Base-X or 100Base-FX) */
++		ret = phy_set_bits_mmd(phydev,
++				       MDIO_MMD_AN,
++				       QCA807X_MMD7_FIBER_MODE_AUTO_DETECTION,
++				       QCA807X_MMD7_FIBER_MODE_AUTO_DETECTION_EN);
++		/* Select fiber page */
++		ret = phy_clear_bits(phydev,
++				     QCA807X_CHIP_CONFIGURATION,
++				     QCA807X_BT_BX_REG_SEL);
++
++		phydev->port = PORT_FIBRE;
++		break;
++	default:
++		dev_err(&phydev->mdio.dev, "Incompatible SFP module inserted\n");
++		return -EINVAL;
++	}
++
++	return ret;
++}
++
++static void qca807x_sfp_remove(void *upstream)
++{
++	struct phy_device *phydev = upstream;
++
++	/* Select copper page */
++	phy_set_bits(phydev,
++		     QCA807X_CHIP_CONFIGURATION,
++		     QCA807X_BT_BX_REG_SEL);
++
++	phydev->port = PORT_TP;
++}
++
++static const struct sfp_upstream_ops qca807x_sfp_ops = {
++	.attach = phy_sfp_attach,
++	.detach = phy_sfp_detach,
++	.module_insert = qca807x_sfp_insert,
++	.module_remove = qca807x_sfp_remove,
++};
++
++static int qca807x_config(struct phy_device *phydev)
++{
++	struct device_node *node = phydev->mdio.dev.of_node;
++	int control_dac, ret = 0;
++	u32 of_control_dac;
++
++	if (of_property_read_u32(node, "qcom,control-dac", &of_control_dac))
++		of_control_dac = QCA807X_CONTROL_DAC_DSP_VOLT_QUARTER_BIAS;
++
++	control_dac = phy_read_mmd(phydev, MDIO_MMD_AN,
++				   QCA807X_MMD7_1000BASE_T_POWER_SAVE_PER_CABLE_LENGTH);
++	control_dac &= ~QCA807X_CONTROL_DAC_MASK;
++	control_dac |= FIELD_PREP(QCA807X_CONTROL_DAC_MASK, of_control_dac);
++	ret = phy_write_mmd(phydev, MDIO_MMD_AN,
++			    QCA807X_MMD7_1000BASE_T_POWER_SAVE_PER_CABLE_LENGTH,
++			    control_dac);
++
++	return ret;
++}
++
++static int qca807x_probe(struct phy_device *phydev)
++{
++	struct device_node *node = phydev->mdio.dev.of_node;
++	int ret = 0;
++
++	if (IS_ENABLED(CONFIG_GPIOLIB)) {
++		if (of_find_property(node, "leds") &&
++		    of_find_property(node, "gpio-controller")) {
++			phydev_err("Invalid property detected. LEDs and gpio-controller are mutually exclusive.");
++			return -EINVAL;
++		}
++
++		/* Do not register a GPIO controller unless flagged for it */
++		if (of_property_read_bool(node, "gpio-controller")) {
++			ret = qca807x_gpio(phydev);
++			if (ret)
++				return ret;
++		}
++	}
++
++	/* Attach SFP bus on combo port*/
++	if (phy_read(phydev, QCA807X_CHIP_CONFIGURATION)) {
++		ret = phy_sfp_probe(phydev, &qca807x_sfp_ops);
++		linkmode_set_bit(ETHTOOL_LINK_MODE_FIBRE_BIT, phydev->supported);
++		linkmode_set_bit(ETHTOOL_LINK_MODE_FIBRE_BIT, phydev->advertising);
++	}
++
++	return ret;
++}
++
++static int qca807x_phy_package_config_init_once(struct phy_device *phydev)
++{
++	phy_interface_t package_interface = PHY_INTERFACE_MODE_NA;
++	struct phy_package_shared *shared = phydev->shared;
++	u32 tx_driver_strength;
++	int val, ret;
++
++	if (of_property_read_u32(shared->np, "qcom,tx-driver-strength",
++				 &tx_driver_strength))
++		tx_driver_strength = PSGMII_QSGMII_TX_DRIVER_600MV;
++
++	phy_lock_mdio_bus(phydev);
++
++	/* Set correct PHY package mode */
++	phy_package_get_mode(phydev, &package_interface);
++	val = __phy_package_read(phydev, QCA807X_COMBO_ADDR,
++				 QCA807X_CHIP_CONFIGURATION);
++	val &= ~QCA807X_CHIP_CONFIGURATION_MODE_CFG_MASK;
++	if (package_interface == PHY_INTERFACE_MODE_QSGMII)
++		val |= QCA807X_CHIP_CONFIGURATION_MODE_QSGMII_SGMII;
++	else if (package_interface == PHY_INTERFACE_MODE_PSGMII)
++		val |= QCA807X_CHIP_CONFIGURATION_MODE_PSGMII_ALL_COPPER;
++	ret = __phy_package_write(phydev, QCA807X_COMBO_ADDR,
++				  QCA807X_CHIP_CONFIGURATION, val);
++	if (ret)
++		goto exit;
++
++	/* After mode change Serdes reset is required */
++	val = __phy_package_read(phydev, QCA807X_PQSGMII_ADDR,
++				 PQSGMII_CTRL_REG);
++	val &= ~PQSGMII_ANALOG_SW_RESET;
++	ret = __phy_package_write(phydev, QCA807X_PQSGMII_ADDR,
++				  PQSGMII_CTRL_REG, val);
++	if (ret)
++		goto exit;
++
++	msleep(SERDES_RESET_SLEEP);
++
++	val = __phy_package_read(phydev, QCA807X_PQSGMII_ADDR,
++				 PQSGMII_CTRL_REG);
++	val |= PQSGMII_ANALOG_SW_RESET;
++	ret = __phy_package_write(phydev, QCA807X_PQSGMII_ADDR,
++				  PQSGMII_CTRL_REG, val);
++	if (ret)
++		goto exit;
++
++	/* Workaround to enable AZ transmitting ability */
++	val = __phy_package_read_mmd(phydev, QCA807X_PQSGMII_ADDR,
++				     MDIO_MMD_PMAPMD, PQSGMII_MODE_CTRL);
++	val &= ~PQSGMII_MODE_CTRL_AZ_WORKAROUND_MASK;
++	ret = __phy_package_write_mmd(phydev, QCA807X_PQSGMII_ADDR,
++				      MDIO_MMD_PMAPMD, PQSGMII_MODE_CTRL, val);
++	if (ret)
++		goto exit;
++
++	/* Set PQSGMII TX AMP strength */
++	val = __phy_package_read(phydev, QCA807X_PQSGMII_ADDR,
++				 PQSGMII_DRIVE_CONTROL_1);
++	val &= ~PQSGMII_TX_DRIVER_MASK;
++	val |= FIELD_PREP(PQSGMII_TX_DRIVER_MASK, tx_driver_strength);
++	ret = __phy_package_write(phydev, QCA807X_PQSGMII_ADDR,
++				  PQSGMII_DRIVE_CONTROL_1, val);
++	if (ret)
++		goto exit;
++
++	/* Prevent PSGMII going into hibernation via PSGMII self test */
++	val = __phy_package_read_mmd(phydev, QCA807X_COMBO_ADDR,
++				     MDIO_MMD_PCS, PQSGMII_MMD3_SERDES_CONTROL);
++	val &= ~BIT(1);
++	ret = __phy_package_write_mmd(phydev, QCA807X_COMBO_ADDR,
++				      MDIO_MMD_PCS, PQSGMII_MMD3_SERDES_CONTROL, val);
++
++exit:
++	phy_unlock_mdio_bus(phydev);
++
++	return ret;
++}
++
++static struct phy_driver qca807x_drivers[] = {
++	{
++		PHY_ID_MATCH_EXACT(PHY_ID_QCA8072),
++		.name           = "Qualcomm QCA8072",
++		.flags		= PHY_POLL_CABLE_TEST,
++		/* PHY_GBIT_FEATURES */
++		.probe		= qca807x_probe,
++		.config_init	= qca807x_config,
++		.read_status	= qca807x_read_status,
++		.config_intr	= qca807x_config_intr,
++		.handle_interrupt = qca807x_handle_interrupt,
++		.soft_reset	= genphy_soft_reset,
++		.get_tunable	= qca807x_get_tunable,
++		.set_tunable	= qca807x_set_tunable,
++		.resume		= genphy_resume,
++		.suspend	= genphy_suspend,
++		.cable_test_start	= qca807x_cable_test_start,
++		.cable_test_get_status	= qca807x_cable_test_get_status,
++	},
++	{
++		PHY_ID_MATCH_EXACT(PHY_ID_QCA8075),
++		.name           = "Qualcomm QCA8075",
++		.flags		= PHY_POLL_CABLE_TEST,
++		/* PHY_GBIT_FEATURES */
++		.probe		= qca807x_probe,
++		.config_init	= qca807x_config,
++		.read_status	= qca807x_read_status,
++		.config_intr	= qca807x_config_intr,
++		.handle_interrupt = qca807x_handle_interrupt,
++		.soft_reset	= genphy_soft_reset,
++		.get_tunable	= qca807x_get_tunable,
++		.set_tunable	= qca807x_set_tunable,
++		.resume		= genphy_resume,
++		.suspend	= genphy_suspend,
++		.cable_test_start	= qca807x_cable_test_start,
++		.cable_test_get_status	= qca807x_cable_test_get_status,
++		/* PHY package define */
++		.phy_package_global_phy_num = ARRAY_SIZE(qca807x_global_phy_names),
++		.phy_package_global_phy_names = qca807x_global_phy_names,
++		.phy_package_config_init_once = qca807x_phy_package_config_init_once,
++	},
++};
++module_phy_driver(qca807x_drivers);
++
++static struct mdio_device_id __maybe_unused qca807x_tbl[] = {
++	{ PHY_ID_MATCH_EXACT(PHY_ID_QCA8072) },
++	{ PHY_ID_MATCH_EXACT(PHY_ID_QCA8075) },
++	{ }
++};
++
++MODULE_AUTHOR("Robert Marko <robert.marko@sartura.hr>");
++MODULE_AUTHOR("Christian Marangi <ansuelsmth@gmail.com>");
++MODULE_DESCRIPTION("Qualcomm QCA807x PHY driver");
++MODULE_DEVICE_TABLE(mdio, qca807x_tbl);
++MODULE_LICENSE("GPL");
 -- 
 2.40.1
 
