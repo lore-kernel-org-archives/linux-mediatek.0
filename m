@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16F32C5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 17:18:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A59AC5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 17:19:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dvZ0fupJwpqjntCYricN82wDQP6xvz3BRQPZwyg1rBU=; b=Q/X/zr2NSzL78D70tbsAybcsBe
-	BK6//vK+9th8p8AMvuMK3XxlFMnIFICgbCUImy+ivZtyRp56wNX7190utYasJeZVVoUwJ3x6KWEcE
-	yAgiFwR18yFJ7hkypW8+LBJhoLfUEqlP1nZfH71V2cGwCOei2DWphJGgJ3t6LFzZs1eYsygMUDFG3
-	6IrfgBNGANwpi37L5CHkkpL55FtrzvheBGZLdSWW62/dhnhG1CW2Wlg1CQXi7u00ouDPSSriC9IV9
-	hPYY/Pb3AOySkK5rqV4UB22TFN5S/lQUPYkmQRcSkVWp2c6X+U72biMDgU1AW5JVYBheLF7GCTuIL
-	prDOBSkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sc+ZO3c/sgfxqSspPxQ9WSfbfXhC4oFi7NlBD/eoWfE=; b=MOPU/jdmqWE8pNIorPwJBM07dq
+	Ag+MhfWPez1jOGS2VeuV/vYONf5M0t1BOVXU7GhsIwN0i0pr/nkbBS6yfYAGqsmE2Bq58nOtCVOSs
+	2oJuUHEC8EymkqpPFFvVqifOJopHSmmRJQM8ok9I3ArW38Y2rU+4gvFuw3xIRVuiXn3VwElcr+48M
+	GCS+TRcpvj4hPa+jsQY48lCMPYAczQshRdk8XfV1CgmFgGCOfxn1U+gO8wd0YXcUuzQTnVwtiWmcH
+	blmaDidGjg0I5hmVAlkSQrk3dREVXByW78y/U/h4DJ7BU3JpGaetVtWJkD+CeqBEypG6hXGu1c+dt
+	YG/EDpQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r57uS-00Dhs6-1l;
-	Mon, 20 Nov 2023 17:18:08 +0000
-Received: from mgamail.intel.com ([192.55.52.115])
+	id 1r57va-00DiZx-2n;
+	Mon, 20 Nov 2023 17:19:18 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r57uO-00DhpR-37;
-	Mon, 20 Nov 2023 17:18:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700500684; x=1732036684;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=UC5hPVWUnGTOtRCW9QVVFZlDvGId3Mtjmo1Ght7VoyE=;
-  b=FPo5yJrUKJVfAzyGp9enSsHaWqFl6fp9inMNmxgnqcUNw+PuLEs5cUQt
-   XLNXnlW+a047pH+AEiewjTqIOQ1J43ddt3/mhwUMk36EaTL1T15n4Jr6r
-   NCDv/1O1LKmj9+aP1GAhZSpvNHJyNxvx/hL6SKGLkDFF5eJXTjNieQ1y/
-   yA0fLf76EaBMAk8u89H1Osl1Gqs26OJiLv6aSy47jpIi0WoZStyX9Yiix
-   bNsapBvTQzivo/tBJQcaquLwNTEPVFcDNNhKUwX1KeB0BfsUefZynMcNB
-   4+JWutKojxqedGmAM/GEm1pC9Gpyh2z/QkUr+DWfmaDLG6VnEUelwSZw5
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="391443957"
-X-IronPort-AV: E=Sophos;i="6.04,214,1695711600"; 
-   d="scan'208";a="391443957"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Nov 2023 09:18:04 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="836782614"
-X-IronPort-AV: E=Sophos;i="6.04,214,1695711600"; 
-   d="scan'208";a="836782614"
-Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga004.fm.intel.com with ESMTP; 20 Nov 2023 09:18:01 -0800
-Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 09F946B; Mon, 20 Nov 2023 19:17:59 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: Sean Wang <sean.wang@kernel.org>,
+	id 1r57vV-00DiTi-16;
+	Mon, 20 Nov 2023 17:19:15 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1r57vG-0008Kf-11;
+	Mon, 20 Nov 2023 17:18:59 +0000
+Date: Mon, 20 Nov 2023 17:18:55 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 1/1] pinctrl: mediatek: Switch to use no-IRQ PM helpers
-Date: Mon, 20 Nov 2023 19:15:31 +0200
-Message-ID: <20231120171754.1665539-1-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Sabrina Dubroca <sd@queasysnail.net>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Jianhui Zhao <zhaojh329@gmail.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	"Garmin.Chang" <Garmin.Chang@mediatek.com>,
+	Edward-JW Yang <edward-jw.yang@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: [PATCH v2 2/4] dt-bindings: clock: mediatek: add clock controllers
+ of MT7988
+Message-ID: <8a30ae45b55842bc04f57714c8e0a962f3288a67.1700498124.git.daniel@makrotopia.org>
+References: <b277c5f084ff35849efb8250510b2536053d1316.1700498124.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b277c5f084ff35849efb8250510b2536053d1316.1700498124.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_091805_018353_796C4F17 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20231120_091913_543803_84C5E512 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,221 +83,267 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since pm.h provides a helper for system no-IRQ PM callbacks,
-switch the driver to use it instead of open coded variant.
+Add various clock controllers found in the MT7988 SoC to existing
+bindings (if applicable) and add files for the new ethwarp, mcusys
+and xfi-pll clock controllers not previously present in any SoC.
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
+v2:
+ * dropped unused labels
+ * add 'type: object' declaration for reset-controller found in new
+   ethwarp controller and represented as ti,syscon-reset
+ * rebase on top of
+   "dt-bindings: arm: mediatek: move ethsys controller & convert to DT schema"
 
-v3:
-- used EXPORT_... helper and pm_sleep_ptr() (Paul)
-- dropped renaming (Paul, Angelo, Jonathan)
+ .../arm/mediatek/mediatek,infracfg.yaml       |  1 +
+ .../arm/mediatek/mediatek,mt7988-ethwarp.yaml | 61 +++++++++++++++++++
+ .../arm/mediatek/mediatek,mt7988-mcusys.yaml  | 46 ++++++++++++++
+ .../arm/mediatek/mediatek,mt7988-xfi-pll.yaml | 49 +++++++++++++++
+ .../bindings/clock/mediatek,apmixedsys.yaml   |  1 +
+ .../bindings/clock/mediatek,ethsys.yaml       |  1 +
+ .../bindings/clock/mediatek,topckgen.yaml     |  1 +
+ .../bindings/net/pcs/mediatek,sgmiisys.yaml   |  2 +
+ 8 files changed, 162 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-xfi-pll.yaml
 
- drivers/pinctrl/mediatek/pinctrl-mt2701.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt2712.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt6795.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8167.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8173.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8183.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8186.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8188.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8192.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8195.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8365.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8516.c     | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 5 ++---
- drivers/pinctrl/mediatek/pinctrl-paris.c      | 5 ++---
- 14 files changed, 16 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-index 5fb377c1668b..6b1c7122b0fb 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-@@ -533,7 +533,7 @@ static struct platform_driver mtk_pinctrl_driver = {
- 	.driver = {
- 		.name = "mediatek-mt2701-pinctrl",
- 		.of_match_table = mt2701_pctrl_match,
--		.pm = &mtk_eint_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
- 	},
- };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+index ea98043c6ba3d..230b5188a88db 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+@@ -30,6 +30,7 @@ properties:
+               - mediatek,mt7629-infracfg
+               - mediatek,mt7981-infracfg
+               - mediatek,mt7986-infracfg
++              - mediatek,mt7988-infracfg
+               - mediatek,mt8135-infracfg
+               - mediatek,mt8167-infracfg
+               - mediatek,mt8173-infracfg
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml
+new file mode 100644
+index 0000000000000..5b988efe0cb74
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml
+@@ -0,0 +1,61 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-ethwarp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT7988 ethwarp Controller
++
++maintainers:
++  - Daniel Golle <daniel@makrotopia.org>
++
++description:
++  The Mediatek MT7988 ethwarp controller provides clocks and resets for the
++  Ethernet related subsystems found the MT7988 SoC.
++  The reset-controller can be represented using the ti,syscon-reset bindings.
++  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
++
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt7988-ethwarp
++      - const: syscon
++      - const: simple-mfd
++
++  reg:
++    maxItems: 1
++
++  reset-controller:
++    type: object
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - '#clock-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/reset/ti-syscon.h>
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        clock-controller@15031000 {
++            compatible = "mediatek,mt7988-ethwarp", "syscon", "simple-mfd";
++            reg = <0 0x15031000 0 0x1000>;
++            #clock-cells = <1>;
++
++            reset-controller {
++                compatible = "ti,syscon-reset";
++                #reset-cells = <1>;
++                ti,reset-bits = <
++                    0x8 9 0x8 9 0 0 (ASSERT_SET | DEASSERT_CLEAR | STATUS_NONE)
++                >;
++            };
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml
+new file mode 100644
+index 0000000000000..b30bd13616875
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml
+@@ -0,0 +1,46 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-mcusys.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT7988 MCU System Clock Controller
++
++maintainers:
++  - Daniel Golle <daniel@makrotopia.org>
++
++description:
++  The Mediatek mcusys controller provides ARM and bus clocks to the system.
++  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
++
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt7988-mcusys
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - '#clock-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        clock-controller@100e0000 {
++            compatible = "mediatek,mt7988-mcusys", "syscon";
++            reg = <0 0x100e0000 0 0x1000>;
++            #clock-cells = <1>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-xfi-pll.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-xfi-pll.yaml
+new file mode 100644
+index 0000000000000..5d9e466c0b406
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-xfi-pll.yaml
+@@ -0,0 +1,49 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-xfi-pll.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT7988 XFI PLL Clock Controller
++
++maintainers:
++  - Daniel Golle <daniel@makrotopia.org>
++
++description:
++  The MediaTek XFI PLL controller provides the 156.25MHz clock for the
++  Ethernet SerDes PHY from the 40MHz top_xtal clock.
++
++properties:
++  compatible:
++    const: mediatek,mt7988-xfi-pll
++
++  reg:
++    maxItems: 1
++
++  resets:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - resets
++  - '#clock-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #define MT7988_TOPRGU_XFI_PLL_GRST              16
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++        clock-controller@11f40000 {
++            compatible = "mediatek,mt7988-xfi-pll";
++            reg = <0 0x11f40000 0 0x1000>;
++            resets = <&watchdog MT7988_TOPRGU_XFI_PLL_GRST>;
++            #clock-cells = <1>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+index 372c1d744bc27..685535846cbb7 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+@@ -22,6 +22,7 @@ properties:
+           - mediatek,mt7622-apmixedsys
+           - mediatek,mt7981-apmixedsys
+           - mediatek,mt7986-apmixedsys
++          - mediatek,mt7988-apmixedsys
+           - mediatek,mt8135-apmixedsys
+           - mediatek,mt8173-apmixedsys
+           - mediatek,mt8516-apmixedsys
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
+index 94d42c8647777..f9cddacc2eae1 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
+@@ -22,6 +22,7 @@ properties:
+               - mediatek,mt7629-ethsys
+               - mediatek,mt7981-ethsys
+               - mediatek,mt7986-ethsys
++              - mediatek,mt7988-ethsys
+           - const: syscon
+       - items:
+           - const: mediatek,mt7623-ethsys
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+index 6d087ded7437a..539830b581cc5 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+@@ -37,6 +37,7 @@ properties:
+               - mediatek,mt7629-topckgen
+               - mediatek,mt7981-topckgen
+               - mediatek,mt7986-topckgen
++              - mediatek,mt7988-topckgen
+               - mediatek,mt8167-topckgen
+               - mediatek,mt8183-topckgen
+           - const: syscon
+diff --git a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+index 66a95191bd776..7b611d7e5bb1e 100644
+--- a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
++++ b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+@@ -23,6 +23,8 @@ properties:
+           - mediatek,mt7981-sgmiisys_1
+           - mediatek,mt7986-sgmiisys_0
+           - mediatek,mt7986-sgmiisys_1
++          - mediatek,mt7988-sgmiisys_0
++          - mediatek,mt7988-sgmiisys_1
+       - const: syscon
  
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-index 8a6daa0db54b..bb7394ae252b 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-@@ -581,7 +581,7 @@ static struct platform_driver mtk_pinctrl_driver = {
- 	.driver = {
- 		.name = "mediatek-mt2712-pinctrl",
- 		.of_match_table = mt2712_pctrl_match,
--		.pm = &mtk_eint_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6795.c b/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-index 01e855ccd4dd..ee3ae3d2fa7e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-@@ -612,7 +612,7 @@ static struct platform_driver mt6795_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt6795-pinctrl",
- 		.of_match_table = mt6795_pctrl_match,
--		.pm = &mtk_paris_pinctrl_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
- 	},
- 	.probe = mtk_paris_pinctrl_probe,
- };
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8167.c b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-index ba7f30c3296f..143c26622272 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-@@ -334,7 +334,7 @@ static struct platform_driver mtk_pinctrl_driver = {
- 	.driver = {
- 		.name = "mediatek-mt8167-pinctrl",
- 		.of_match_table = mt8167_pctrl_match,
--		.pm = &mtk_eint_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-index 455eec018f93..b214deeafbf1 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-@@ -347,7 +347,7 @@ static struct platform_driver mtk_pinctrl_driver = {
- 	.driver = {
- 		.name = "mediatek-mt8173-pinctrl",
- 		.of_match_table = mt8173_pctrl_match,
--		.pm = &mtk_eint_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-index ddc48b725c22..93e482c6b5fd 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-@@ -576,7 +576,7 @@ static struct platform_driver mt8183_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt8183-pinctrl",
- 		.of_match_table = mt8183_pinctrl_of_match,
--		.pm = &mtk_paris_pinctrl_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
- 	},
- 	.probe = mtk_paris_pinctrl_probe,
- };
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8186.c b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-index a02f7c326970..7be591591cce 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-@@ -1255,7 +1255,7 @@ static struct platform_driver mt8186_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt8186-pinctrl",
- 		.of_match_table = mt8186_pinctrl_of_match,
--		.pm = &mtk_paris_pinctrl_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
- 	},
- 	.probe = mtk_paris_pinctrl_probe,
- };
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8188.c b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-index c067e043e619..3975e99d9cf4 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-@@ -1658,7 +1658,7 @@ static struct platform_driver mt8188_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt8188-pinctrl",
- 		.of_match_table = mt8188_pinctrl_of_match,
--		.pm = &mtk_paris_pinctrl_pm_ops
-+		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops)
- 	},
- 	.probe = mtk_paris_pinctrl_probe,
- };
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8192.c b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-index dee1b3aefd36..e3a76381f7f4 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-@@ -1420,7 +1420,7 @@ static struct platform_driver mt8192_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt8192-pinctrl",
- 		.of_match_table = mt8192_pinctrl_of_match,
--		.pm = &mtk_paris_pinctrl_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
- 	},
- 	.probe = mtk_paris_pinctrl_probe,
- };
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-index 09c4dcef9338..83345c52b2fa 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-@@ -968,7 +968,7 @@ static struct platform_driver mt8195_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt8195-pinctrl",
- 		.of_match_table = mt8195_pinctrl_of_match,
--		.pm = &mtk_paris_pinctrl_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
- 	},
- 	.probe = mtk_paris_pinctrl_probe,
- };
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-index 1db04bbdb423..e3e0d66cfbbf 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-@@ -484,7 +484,7 @@ static struct platform_driver mtk_pinctrl_driver = {
- 	.driver = {
- 		.name = "mediatek-mt8365-pinctrl",
- 		.of_match_table = mt8365_pctrl_match,
--		.pm = &mtk_eint_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-index 950275c47122..abda75d4354e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-@@ -334,7 +334,7 @@ static struct platform_driver mtk_pinctrl_driver = {
- 	.driver = {
- 		.name = "mediatek-mt8516-pinctrl",
- 		.of_match_table = mt8516_pctrl_match,
--		.pm = &mtk_eint_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index e79d66a04194..66381e67a5e5 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -914,9 +914,8 @@ static int mtk_eint_resume(struct device *device)
- 	return mtk_eint_do_resume(pctl->eint);
- }
- 
--const struct dev_pm_ops mtk_eint_pm_ops = {
--	.suspend_noirq = mtk_eint_suspend,
--	.resume_noirq = mtk_eint_resume,
-+EXPORT_GPL_DEV_PM_OPS(mtk_eint_pm_ops) = {
-+	NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_eint_suspend, mtk_eint_resume)
- };
- 
- static int mtk_pctrl_build_state(struct platform_device *pdev)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index 6392f1e05d02..780fdca6bc81 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -1131,9 +1131,8 @@ static int mtk_paris_pinctrl_resume(struct device *device)
- 	return mtk_eint_do_resume(pctl->eint);
- }
- 
--const struct dev_pm_ops mtk_paris_pinctrl_pm_ops = {
--	.suspend_noirq = mtk_paris_pinctrl_suspend,
--	.resume_noirq = mtk_paris_pinctrl_resume,
-+EXPORT_GPL_DEV_PM_OPS(mtk_paris_pinctrl_pm_ops) = {
-+	NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_paris_pinctrl_suspend, mtk_paris_pinctrl_resume)
- };
- 
- MODULE_LICENSE("GPL v2");
+   reg:
 -- 
-2.43.0.rc1.1.gbec44491f096
-
+2.42.1
 
