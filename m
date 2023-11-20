@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9047AC072A2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 03:29:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F9E2C072A2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 03:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WHKjHgXikLGJDyv8AI/jp6CimfDylOTQp4C8AvVDv5Y=; b=wzcuwO/3cdokZ8xVADCnb+oMB+
-	U4k+4KJ7ToGne/FyWrdsE5JRRUVrUhfDSh58MeQewqvCfhrqu5juLjen9cbwLC/qpDy5GRoLgK8tu
-	5HSrHnV5asY34d5VhfrnndXQcAA2atDSdBhW9MHYEsyBRBKmKL7NfZKRqVjkw/KLobJcg82bccAud
-	fY6XBHOb/rljpSmdRVa3txzS+3QlHkM7p+PLzWP4aMlVUvPSJQWRlsa5eToI+S7/KTJBw8zxmqJH5
-	asu+V7jJPU6jLD920b9K9YBirfAxdxzSKJ8SzRn11j+PuWG/tlPiz0P7Ea13csXZgjOwXzLJUQiKr
-	w3NFrYjw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BsSCm70mq5AoV9r7Z1lc9GCE2m40BM4QlABLaPUH+30=; b=G9kuVPgGnBYwuyPQFlzk5ff91B
+	TqrepXvBue2TLHmWik3g+c9aQMVaEiTfHMFTlE3hvpkkFDaG4tnlGu1/0aNAWN2kZqjdl29V99JZl
+	4l7KFb+WdrZN99zUrHan0ckfgfVo/btx2/K+lc8g3d/fXX6QP/X8ZLDlVkFu/E/Ntrdaxm0aO5PJ3
+	FiqOW5klVw0ikUbaZX+lHGc6W4ipIu1qr7vsC/fp+66+EzxekEBwbjsawFC+J0/X9gV8hsOjhO63E
+	CqXQJbVNAQKfWpdjES08nmdlxvPdR+xzVGGlUZgIYhaf0vCGJzRmD2i6tLeMq5NIewodrxfddQp1S
+	LOz8Bz0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4uyG-00B1xD-0i;
-	Mon, 20 Nov 2023 03:29:12 +0000
+	id 1r4uyK-00B1y8-1D;
+	Mon, 20 Nov 2023 03:29:16 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4uyC-00B1vW-1s
+	id 1r4uyE-00B1vW-0N
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Nov 2023 03:29:10 +0000
-X-UUID: f4960cba875411ee86758d4a7c00f3a0-20231119
+	Mon, 20 Nov 2023 03:29:11 +0000
+X-UUID: f525c68e875411ee86758d4a7c00f3a0-20231119
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WHKjHgXikLGJDyv8AI/jp6CimfDylOTQp4C8AvVDv5Y=;
-	b=o2uFmaFCJqx2Pfk3TTHuDe8cqPSZ357fL+je259U8ISI3KqBNYJeHyCZeMC2nlVdIBTlbC3KQl7xNpz6w3FLxWL5wPU6QREDDOXMXq0K7h7DeWBXyGWhfVMwnryzZR1gWWWTzgvduMewgG5c1Mf7yUwaXIS35VogOs0+hr4SC38=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BsSCm70mq5AoV9r7Z1lc9GCE2m40BM4QlABLaPUH+30=;
+	b=KK7XoF8M/a7yd/quMDSoIRMRklJhE/2d695bKn6eEVQomNg00lvt3vM3n4+r3wm6PBbvSweQxK+raLqARWZzu56LdCrSxKHL0U2rJyo2OEJmDNcYMhDbKR1A54vw5j+JSrjKHsG7He+sUltqvWbEj3EwbgyJjrWpw0Od6342yMk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:91044d9c-e9f9-4edb-bc06-1d9a361f488b,IP:0,U
+X-CID-O-INFO: VERSION:1.1.33,REQID:eef54064-cab8-40c6-8762-700c077c74fc,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:5678b7fc-4a48-46e2-b946-12f04f20af8c,B
+X-CID-META: VersionHash:364b77b,CLOUDID:e970d672-1bd3-4f48-b671-ada88705968c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: f4960cba875411ee86758d4a7c00f3a0-20231119
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: f525c68e875411ee86758d4a7c00f3a0-20231119
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <mingyen.hsieh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1946990260; Sun, 19 Nov 2023 20:29:04 -0700
+	with ESMTP id 251311949; Sun, 19 Nov 2023 20:29:05 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 20 Nov 2023 11:28:28 +0800
+ 15.2.1118.26; Mon, 20 Nov 2023 11:28:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.1118.26 via Frontend Transport; Mon, 20 Nov 2023 11:28:27 +0800
@@ -63,31 +63,29 @@ CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
 	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
 	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>
-Subject: [PATCH 2/3] wifi: mt76: mt7921: fix CLC command timeout when suspend/resume
-Date: Mon, 20 Nov 2023 11:27:49 +0800
-Message-ID: <20231120032750.19747-3-mingyen.hsieh@mediatek.com>
+	<MingYen.Hsieh@mediatek.com>
+Subject: [PATCH 0/3] wifi: mt76: mt7921: series with CLC patches
+Date: Mon, 20 Nov 2023 11:27:47 +0800
+Message-ID: <20231120032750.19747-1-mingyen.hsieh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231120032750.19747-1-mingyen.hsieh@mediatek.com>
-References: <20231120032750.19747-1-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.681300-8.000000
-X-TMASE-MatchedRID: 53RBOU84eqnwa4iJAsefGEKcYi5Qw/RVG/VQKT/ZNQR+YFLISofIH2Xg
-	eMJEe5Cm21PqNqqsX9ngfoEaEmt6A3wcnCGmNiJCG5mg0pzqmX6gD0t7xcmluqiDWKm0QmVU26Z
-	8tetBUMDXmdTK29etzH51/Ce39OcTzrfv4DmGmcXJ5W6OZe5hherRJDUyDHkIxKLCLOyCW5D7UH
-	KxrU+2pNivMxyivZ7HYMnhLsDOSO6Rs/CdRi4O05YsKSXWWrsHMZm0+sEE9mt+YesuCgkiXFmhl
-	TC2eRES4vM1YF6AJbbCCfuIMF6xLcK21zBg2KlfGM6W3U+Lnne4SmePTZNPfdAWDkv38FJgJo1f
-	EQQk/kYuMoaPF4sJVQ==
+X-TM-AS-Result: No-10--2.977900-8.000000
+X-TMASE-MatchedRID: 4M8Lw78TDBAiTMmg/YMPl/mF8IFnUmgvvtVce6w5+K/kCKFvqJHeycGw
+	54FJXlHCglNnMw5K+QHf/Q5fuxsUmuHXfiMoZowZA9lly13c/gFflOpBqBHTt2JkJOQVCIpwXaT
+	Eoipb2i/i8zVgXoAltmHJPdY2OmlS0C1sQRfQzEHEQdG7H66TyN+E/XGDLHcMcEwR/lUrI4/IAQ
+	yo5EcbTaUygT9zhjsMFBNIqkML13AuAU3sQBBsfa8dqR+7hPzjIoYkU2kqUYAkrkfkoD8DTS/Im
+	xChdfO6jofsMjQaxVwyYjbiqIQ3CsykhtyXcigD6rVdgBjDT2oh1j2M6LiVMg==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.681300-8.000000
+X-TMASE-Result: 10--2.977900-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: DCF3AA004D444796D5CE39C212160FEB7489C5ED63A765BD73D1D29C4DEB94FD2000:8
+X-TM-SNTS-SMTP: 99405E5CF4B5ABF5C42E3E4112769B75C71BB9D2B69B452F404FC8A5F3A31E4B2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231119_192908_620564_AAC9E871 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20231119_192910_176524_2754DF47 
+X-CRM114-Status: UNSURE (   5.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,97 +100,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+From: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
 
-When enter suspend/resume while in a connected state, the upper layer
-will trigger disconnection before entering suspend, and at the same time,
-it will trigger regd_notifier() and update CLC, causing the CLC event to
-not be received due to suspend, resulting in a command timeout.
+Sync internal mt7921 patches for CLC.
 
-Therefore, the update of CLC is postponed until resume, to ensure data
-consistency and avoid the occurrence of command timeout.
-
-Fixes: 4fc8df50fd41 ("wifi: mt76: mt7921: get regulatory information from the clc event")
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7921/init.c  | 23 +++++++++++++++----
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  3 +++
- 3 files changed, 22 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 7d6a9d746011..48433c6d5e7d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -110,24 +110,37 @@ mt7921_regd_channel_update(struct wiphy *wiphy, struct mt792x_dev *dev)
- 	}
- }
- 
-+void mt7921_regd_update(struct mt792x_dev *dev)
-+{
-+	struct mt76_dev *mdev = &dev->mt76;
-+	struct ieee80211_hw *hw = mdev->hw;
-+	struct wiphy *wiphy = hw->wiphy;
-+
-+	mt7921_mcu_set_clc(dev, mdev->alpha2, dev->country_ie_env);
-+	mt7921_regd_channel_update(wiphy, dev);
-+	mt76_connac_mcu_set_channel_domain(hw->priv);
-+	mt7921_set_tx_sar_pwr(hw, NULL);
-+}
-+EXPORT_SYMBOL_GPL(mt7921_regd_update);
-+
- static void
- mt7921_regd_notifier(struct wiphy *wiphy,
- 		     struct regulatory_request *request)
- {
- 	struct ieee80211_hw *hw = wiphy_to_ieee80211_hw(wiphy);
- 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+	struct mt76_connac_pm *pm = &dev->pm;
- 
- 	memcpy(dev->mt76.alpha2, request->alpha2, sizeof(dev->mt76.alpha2));
- 	dev->mt76.region = request->dfs_region;
- 	dev->country_ie_env = request->country_ie_env;
- 
-+	if (pm->suspended)
-+		return;
-+
- 	mt792x_mutex_acquire(dev);
--	mt7921_mcu_set_clc(dev, request->alpha2, request->country_ie_env);
--	mt76_connac_mcu_set_channel_domain(hw->priv);
--	mt7921_set_tx_sar_pwr(hw, NULL);
-+	mt7921_regd_update(dev);
- 	mt792x_mutex_release(dev);
--
--	mt7921_regd_channel_update(wiphy, dev);
- }
- 
- int mt7921_mac_init(struct mt792x_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index f28621121927..5c4cc370e6ce 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -233,6 +233,7 @@ mt7921_l1_rmw(struct mt792x_dev *dev, u32 addr, u32 mask, u32 val)
- #define mt7921_l1_set(dev, addr, val)	mt7921_l1_rmw(dev, addr, 0, val)
- #define mt7921_l1_clear(dev, addr, val)	mt7921_l1_rmw(dev, addr, val, 0)
- 
-+void mt7921_regd_update(struct mt792x_dev *dev);
- int mt7921_mac_init(struct mt792x_dev *dev);
- bool mt7921_mac_wtbl_update(struct mt792x_dev *dev, int idx, u32 mask);
- int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index f04e7095e181..42fd456eb6fa 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -507,6 +507,9 @@ static int mt7921_pci_resume(struct device *device)
- 		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
- 
- 	err = mt76_connac_mcu_set_hif_suspend(mdev, false);
-+
-+	mt7921_regd_update(dev);
-+
- failed:
- 	pm->suspended = false;
- 
+Ming Yen Hsieh (3):
+  wifi: mt76: mt7921: fix country count limitation for CLC
+  wifi: mt76: mt7921: fix CLC command timeout when suspend/resume
+  wifi: mt76: mt7921: fix wrong 6Ghz power type
+
+ .../net/wireless/mediatek/mt76/mt7921/init.c  | 23 ++++++++---
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 38 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 11 ++++--
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   |  3 ++
+ 5 files changed, 65 insertions(+), 11 deletions(-)
+
 -- 
 2.18.0
 
