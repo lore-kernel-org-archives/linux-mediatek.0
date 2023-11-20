@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14826C197A0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 14:17:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B8EC2BB3F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 14:19:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=voVt/WtU6yf7l2YDRVp+KZ957863usn3Yp9Oi/wtTPw=; b=hxScuLKp+mNtBy22J0z4n4Y+dN
-	81rj/RE/xa5KVJYQjQapE8yz5HvWsFoXm4Qpv2ytwOOTCnrGLg++EsY3aQGvNXn0tyetpV5OoX/As
-	+wPvjRtTMwAuzLLuxXw+jAEjPEDMYWgQ7e3U0xbWXg4tC3V6hAjFWXxgtgUt285U1Df4Nr9/j5r87
-	I9dW5Kw6XgGAI3YHobzSfMMGFPNrbvH5sXEIhzx4zqSTwsf76WJ6Ory7nQhNGXhadWSxNYi3chkbf
-	CEXGprYJa4vWsqggWlBCmNxKUbfuanPmUOSmQGQyv7Pv8q6/LbXh0oGA0TQkYUPe5wPfU6Nmj1+V3
-	3DF4p+VQ==;
+	bh=NIqXUcUCwVeIRv2qHSUzaHbKhpAZDcDNmXXxRqFrMz0=; b=k8PeuaxFPsMAKJwdiPbWZZDXQp
+	jqCi7327AdskkDaSAN7jYFLORCHEheej50OOtnXn2HFTDMLSIY2CmyGnz/AeHBE4bHoXH/CbLxJUf
+	NbBCVDid+6aaJwOP8HUJZHTTgXkolCiYGhcEEYO4GJMeqwcFM4sgpyruXcfu58uoqSpM9DMJbAPKB
+	8O3w4FsZy68lrMT2/tXEgW1gaepwYIgdGEaxrCn8mm+ZqXzLGLYUT1YBq0pN8g7NYEwBX7QImJDj6
+	cQFwzcS+h8eSm78fl8qAVYH+xqpe0SmPljR8ru+q8b1kqVe1XbvfpyivodQuNi8O3i/nvwob0G0YN
+	/FvByf/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r555c-00CG2W-22;
-	Mon, 20 Nov 2023 14:17:28 +0000
+	id 1r557I-00CGJC-0e;
+	Mon, 20 Nov 2023 14:19:12 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r555Q-00CFxi-2a;
-	Mon, 20 Nov 2023 14:17:23 +0000
+	id 1r557C-00CGHj-2r;
+	Mon, 20 Nov 2023 14:19:09 +0000
 Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3CAF76601A72;
-	Mon, 20 Nov 2023 14:17:14 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 91E596601A72;
+	Mon, 20 Nov 2023 14:19:04 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700489835;
-	bh=HHsp4q6mOViGXdwW5CudcqH3JZzGtrZRkSLKU0T/BwA=;
+	s=mail; t=1700489945;
+	bh=T+qrTMuHrMRvawTrd49xgKdO8TQz2pga+1olo5Ug+d0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nS+hUdzMC0FyLJ2N5IeDbBStEuV3xk4BMyDDUeJj08+0cPxewquizAWvfsfoMZIf3
-	 AVKIzS8Xny7lsSFpRABJjDEln4iJ+JaUmdQG0fTP+dy3MwrKQCZXTcvyVzx26evg0S
-	 D/eJf+w9WNjMsbXWarUcLGsl7g41Y4mvjvvzo3Aqot2HoFNUC2t+25xpGSlOowgfT7
-	 voMDEPDdApwpHEe2dtxmb6v+kKTBtCzJdefgzDp57Yb+Iq8XPyzbMrJrSvl+yfpU8R
-	 uKY06n0pgIWgzVeR8AroasTZ97ADbCD7MsL53SP1DdAyPIkWZJXRCNhGV+ZB7Yvh4L
-	 exUBJjDQeulHw==
-Message-ID: <0c3267e5-5371-4fd8-a0f6-360ff28c9dda@collabora.com>
-Date: Mon, 20 Nov 2023 15:17:10 +0100
+	b=l5SIbpnWFFpe7m4zp7bUc4ZGpQnE/gvSXdpkF2IWW3lipEq7+/BREXuAc0JwoCntI
+	 CFeo8b8oZBbJ3dSOEpxvytJkhqw8fZkqYNcz83INp+n2mde5hmy+NgzFcfJ+0XHDQD
+	 bVI+0wKt/sG06Hfjy1vYT/0WgNIpROWj0xZA+EUvD9GwIy0nBt9b36R3OnXaVVG0+y
+	 Q/rOQ9NxGKaS4cWI7TiuIfmdQJAFMjiYcW8Iu+bRC6Tolh/L+knk6hdFZVVj96+fHB
+	 fAsM55BRrtfAMZ9c+DC7tfptCmPoe3TQBGq4YnztMK2bTiUQb+8v4Wov/O/LhRBmNW
+	 4GyxmbMAiv98g==
+Message-ID: <0136f1d1-22a3-4929-81ca-a1ed35ba8546@collabora.com>
+Date: Mon, 20 Nov 2023 15:19:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: Add Acelink EW-7886CAX
+Subject: Re: [PATCH V3] dt-bindings: thermal: convert Mediatek Thermal to the
+ json-schema
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?=
- <nfraprado@collabora.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
- Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chris Morgan <macromorgan@hotmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Sean Wang
- <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20231117104315.9718-2-zajec5@gmail.com>
- <20231117104315.9718-3-zajec5@gmail.com>
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "Rafael J . Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20231117052214.24554-1-zajec5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231117104315.9718-3-zajec5@gmail.com>
+In-Reply-To: <20231117052214.24554-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_061717_099862_10F73E87 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20231120_061907_121844_BB6AF609 
+X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,218 +84,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/11/23 11:43, Rafał Miłecki ha scritto:
+Il 17/11/23 06:22, Rafał Miłecki ha scritto:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
-> It has 512 MiB of RAM, one 2.5 Gbps PoE (802.3at) Ethernet port and
-> on-SoC Wi-Fi.
+> This helps validating DTS files. Introduced changes:
+> 1. Improved title
+> 2. Simplified description (dropped "This describes the device tree...")
+> 3. Dropped undocumented "reset-names" from example
 > 
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->   .../mediatek/mt7986a-acelink-ew-7886cax.dts   | 175 ++++++++++++++++++
->   2 files changed, 176 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index e6e7592a3645..9ff2ab6c5e4d 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
-> new file mode 100644
-> index 000000000000..18d19281dfdb
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
-> @@ -0,0 +1,175 @@
-> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
-> +
-> +/dts-v1/;
-> +#include <dt-bindings/input/input.h>
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/leds/common.h>
-> +
-> +#include "mt7986a.dtsi"
-> +
-> +/ {
-> +	model = "Acelink EW-7886CAX";
-> +	compatible = "acelink,ew-7886cax", "mediatek,mt7986a";
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:115200n8";
-> +	};
-> +
-> +	memory@40000000 {
-> +		reg = <0 0x40000000 0 0x20000000>;
-> +		device_type = "memory";
-> +	};
-> +
-> +	keys {
-> +		compatible = "gpio-keys";
-> +
-> +		key-restart {
-> +			label = "Reset";
-> +			gpios = <&pio 7 GPIO_ACTIVE_LOW>;
-> +			linux,code = <KEY_RESTART>;
-> +		};
-> +	};
-> +
-> +	leds {
-> +		compatible = "gpio-leds";
-> +
-> +		led-0 {
 
-Please, reorder by name
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-			color =	...
-			function = ...
-			gpios = ...
 
-> +			function = LED_FUNCTION_STATUS;
-> +			color = <LED_COLOR_ID_RED>;
-> +			gpios = <&pio 18 GPIO_ACTIVE_HIGH>;
-> +		};
-> +
-> +		led-1 {
-> +			function = LED_FUNCTION_STATUS;
-> +			color = <LED_COLOR_ID_GREEN>;
-> +			gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
-> +		};
-> +
-> +		led-2 {
-> +			function = LED_FUNCTION_STATUS;
-> +			color = <LED_COLOR_ID_BLUE>;
-> +			gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
-> +		};
-> +	};
-> +};
-> +
-> +&watchdog {
-
-Ordering again, watchdog goes before wifi
-
-> +	status = "okay";
-> +};
-> +
-> +&trng {
-> +	status = "okay";
-> +};
-> +
-> +&crypto {
-
-crypto goes first.
-
-crypto, eth, pcie_phy, spi0, trng, watchdog, wifi.
-
-> +	status = "okay";
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> +
-> +&spi0 {
-> +	status = "okay";
-> +
-> +	flash@0 {
-> +		compatible = "spi-nand";
-> +		reg = <0>;
-
-compatible
-reg
-#address/size cells
-spi-max-frequency
-spi-rx-bus-width
-spi-tx-bus-width
-
-> +		spi-max-frequency = <52000000>;
-> +		spi-tx-bus-width = <4>;
-> +		spi-rx-bus-width = <4>;
-> +
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +
-> +		partitions: partitions {
-> +			compatible = "fixed-partitions";
-> +			#address-cells = <1>;
-> +			#size-cells = <1>;
-> +
-> +			partition@0 {
-> +				label = "bootloader";
-> +				reg = <0x0 0x100000>;
-
-label, reg, read-only
-
-> +				read-only;
-> +			};
-> +
-> +			partition@100000 {
-> +				label = "u-boot-env";
-
-reg first, label last
-
-> +				reg = <0x100000 0x80000>;
-> +			};
-> +
-> +			factory: partition@180000 {
-
-Why do you have a phandle here? This has no use, please remove.
-
-> +				label = "factory";
-> +				reg = <0x180000 0x200000>;
-> +				read-only;
-> +				compatible = "nvmem-cells";
-
-compatible
-reg
-label
-read-only;
-
-> +
-> +				nvmem-layout {
-> +					compatible = "fixed-layout";
-> +					#address-cells = <1>;
-> +					#size-cells = <1>;
-> +
-> +					eeprom: eeprom@0 {
-> +						reg = <0x0 0x1000>;
-> +					};
-> +
-> +					macaddr: macaddr@4 {
-> +						reg = <0x4 0x6>;
-> +					};
-> +				};
-> +			};
-> +
-> +			partition@380000 {
-> +				label = "fip";
-> +				reg = <0x380000 0x200000>;
-
-reg first, label last
-
-> +			};
-> +
-> +			partition@580000 {
-> +				label = "ubi";
-> +				reg = <0x580000 0x4000000>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
-
-Regards,
-Angelo
 
