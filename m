@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C0D1C197A0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 08:42:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AE3EC197A0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Nov 2023 08:58:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6OWGdmPDtLYdunCwZiQeWtejrbXgW6HPimKj8ttk0XQ=; b=RHkLB2nyrNK2XDJc2YjPCvaFuQ
-	woNhbqcJlww16u1nR7GcNMokGHGajicmnrZSPcHBsvJ1qkknohm4CT8pJSq48oHvzj/T7wkS85J8r
-	zyJYpLdaHTBK4jxTPVx3C6oRzf4PPKy9zSgbZRpiKqVZ1Kge0HOMFR2jT4kkU49UUJZJOR6asAuQW
-	UyTRo51hohfOe1VBPSZyhthkQ7GdPGAZYFzOUV7NigMYbdgBE6Ec5MmGV4Lgv9sVx3AZO46O+eNEw
-	vi0lG+hR1t64DIwQ3Raf3Odf5sl5cH11QOF3o93MzApXCF14Vo9GpD6R4dhV1k+z++y0SnHMzWv57
-	+oLW08hw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z8/E/xZlfo9QLnO29b5tVQnNMcW4PlxC/KQPLbfbxIk=; b=i8lBIqCnZhqvCkYyWDijfNiu9x
+	ZRwUwMLVJHYdemNwz4tFc8c+oNxTpPcmVK7K+scAidkQJCKCDtNcoog5yIDuOSC6o2v6+w2lLCmeJ
+	dhphQmSEh4mai155svEnsCoDDYn0PSXBhTRO1s0so4LDHGdqEZI7+XEfn9RHfJimGjY6ONn6iVDDl
+	UthwmGDjAjL+Wh36ZqpPvGjraDfzx98zcQ4cJV1GxXLEmcdWyQ5/+GGSJgjuqS8nrAdVops9aQ8i0
+	IHGzV+Ide2RTpqDnmS9X1X7hZLNTOeoSMILbgvpJhOlRZFvgg1F4FQhJ+RHE+9/CMpASazqBgUt3r
+	Q2fn934w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4zrp-00BXAz-13;
-	Mon, 20 Nov 2023 08:42:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1r506C-00BZcq-24;
+	Mon, 20 Nov 2023 08:57:44 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4zrl-00BX9I-11
-	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Nov 2023 08:42:50 +0000
-X-UUID: c7872cb4878011ee9b7791016c24628a-20231120
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6OWGdmPDtLYdunCwZiQeWtejrbXgW6HPimKj8ttk0XQ=;
-	b=dEu/G+g9duW+cCAvtcicuSMlQP9N0Ew+YQmIaj+WxguXX2/U+Mz+DhvUtKakPaLNsQjbPRq4amVENg/Iu+m6s+DrHj3tyjiva5CAWuVAB30BVsmo0a6UfMILb2Vc+fFO/Bn9L1ZsmGFbONG3XVuJ6LDEQw4n1+l7iipCeuhU5DM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:9c6bb9f5-852e-46da-a4b0-29e15c88d775,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:364b77b,CLOUDID:88634260-c89d-4129-91cb-8ebfae4653fc,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: c7872cb4878011ee9b7791016c24628a-20231120
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <jason-ch.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1265627849; Mon, 20 Nov 2023 01:42:46 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 20 Nov 2023 16:42:10 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 20 Nov 2023 16:42:10 +0800
-From: Jason-ch Chen <jason-ch.chen@mediatek.com>
-To: <linux-firmware@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>, <yunfei.dong@mediatek.com>,
-	<menghui.lin@mediatek.com>, <shawnku@google.com>
-Subject: pull-request: linux-firmware: Update MT8195 SCP firmware to
-Date: Mon, 20 Nov 2023 16:42:06 +0800
-Message-ID: <20231120084207.830-1-jason-ch.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1r5062-00BZaW-2X;
+	Mon, 20 Nov 2023 08:57:41 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D798B6603149;
+	Mon, 20 Nov 2023 08:57:30 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1700470651;
+	bh=d23ZT5zVaG2k3DicMJVOBp0FoX7BK2oj+2zL9rkLlcU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jFG/4oQkTiPCuFeWdj+hKl+IkpmsojIFQH+cPvfEWyMlJLPEfzYgpC5vo3ZDDcbPj
+	 O/ygRUdSfa+jCME81v7FE0srl3G9yeaK9m1nub4CTXF70ffpom3huQQvk1bFence5W
+	 4+Gsk+5L/npS23XvSMwPXt6c8++JAVJ9JUnXoWrdeA0Zzd8LmfqtGKoDKapMfTJ2o9
+	 yN147CWiV5TaVRcAlkzg0NjsLqUEbvMH6M+Qhu5acHZkXc0Xi10CCtqJ9GbZaftzjK
+	 AxJGSyXO2Dfo9g+0ULn20qDO/J3Ax1Rt3TGn3NBeBltmuJa0u9ekcZXXxu1tOJls+4
+	 5ZAGzDZSmIvnQ==
+Message-ID: <0b95d90d-5dd3-43da-a860-6a84019d097a@collabora.com>
+Date: Mon, 20 Nov 2023 09:57:27 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ASoC: mediatek: mt8186: trivial: align code
+Content-Language: en-US
+To: Eugen Hristev <eugen.hristev@collabora.com>, linux-sound@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+References: <20231117160914.65341-1-eugen.hristev@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231117160914.65341-1-eugen.hristev@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_004249_494170_8CBF7270 
-X-CRM114-Status: UNSURE (   6.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231120_005735_086104_D737FEAA 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,24 +74,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 7124ce30ba82266e3972e99aacebeda712131d6f:
+Il 17/11/23 17:09, Eugen Hristev ha scritto:
+> No functionality change, squash some lines and align parameters for
+> function prototypes to 80 chars.
+> 
 
-  Merge branch 'mlimonci/encoding' into 'main' (2023-11-17 16:54:55 +0000)
+Please use scripts/get_maintainer.pl to get the correct recipients list.
 
-are available in the Git repository at:
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+> ---
+>   sound/soc/mediatek/mt8186/mt8186-afe-control.c | 13 +++++++------
+>   1 file changed, 7 insertions(+), 6 deletions(-)
+> 
+> diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-control.c b/sound/soc/mediatek/mt8186/mt8186-afe-control.c
+> index 55edf6374578..dda648c1e8f8 100644
+> --- a/sound/soc/mediatek/mt8186/mt8186-afe-control.c
+> +++ b/sound/soc/mediatek/mt8186/mt8186-afe-control.c
+> @@ -181,7 +181,8 @@ static unsigned int pcm_rate_transform(struct device *dev, unsigned int rate)
+>   	return MTK_AFE_PCM_RATE_48K;
+>   }
+>   
+> -unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev, unsigned int rate)
+> +unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev,
+> +					       unsigned int rate)
 
-  https://github.com/jason-ch-chen/linux_fw_scp 8195-v2.0.23033
+That's not needed, 86 columns is ok.
 
-for you to fetch changes up to a41fa7c5008809ae360ce0808e378b37b1d6c0f4:
+>   {
+>   	switch (rate) {
+>   	case 8000:
+> @@ -222,7 +223,8 @@ unsigned int mt8186_tdm_relatch_rate_transform(struct device *dev, unsigned int
+>   	return MTK_AFE_TDM_RELATCH_RATE_48K;
+>   }
+>   
+> -unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate, int aud_blk)
+> +unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate,
+> +				   int aud_blk)
 
-  mediatek: Sync shared memory structure changes (2023-11-20 16:18:04 +0800)
+Same here, not needed.
 
-----------------------------------------------------------------
-Jason Chen (1):
-      mediatek: Sync shared memory structure changes
+>   {
+>   	switch (aud_blk) {
+>   	case MT8186_DAI_PCM:
+> @@ -234,14 +236,13 @@ unsigned int mt8186_rate_transform(struct device *dev, unsigned int rate, int au
+>   	}
+>   }
+>   
+> -int mt8186_dai_set_priv(struct mtk_base_afe *afe, int id, int priv_size, const void *priv_data)
+> +int mt8186_dai_set_priv(struct mtk_base_afe *afe, int id, int priv_size,
+> +			const void *priv_data)
 
- mediatek/mt8195/scp.img | Bin 635492 -> 635448 bytes
- 1 file changed, 0 insertions(+), 0 deletions(-)
+ditto.
 
+>   {
+>   	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+>   	void *temp_data;
+>   
+> -	temp_data = devm_kzalloc(afe->dev,
+> -				 priv_size,
+> -				 GFP_KERNEL);
+> +	temp_data = devm_kzalloc(afe->dev, priv_size, GFP_KERNEL);
+
+The only change I agree on is this one... but I don't know if it's even worth
+making a commit for just this...
+
+Regards,
+Angelo
 
 
