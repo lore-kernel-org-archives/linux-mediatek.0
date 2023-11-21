@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66344C61D94
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 12:51:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD621C61D92
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 12:52:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IQLIJg24znIa486HfA91r6jHZp1ttD5Q9cgFHZ3g7XU=; b=URSqSLZWRDCVoZ38/AXiEi6ouL
-	nPO19vtOZ9ttmJMbtDv6roQDBccgNG1fJuodQUlZckFCPAfNHCE0quD3qM+9Rg7gYWatWis45EFlj
-	F2Q2jkFjmtrzaevoSRS/r9YPW+sRYs/uE36dMqh0uBifad54ehOPrQumCtTFeksvVXoqRh6/7cgy+
-	chaQHRrC1i4OlxConJQ/eu5nQkfOTUodLXFnMExDIf97eYBb8ij4UklsDFh7QXtKKKEawdNwYeHxp
-	GkfMm5DQIygFmRT63ZS5bc46A34jhcY275JtWcwEJmxUBAZfa0mWNmg0pdXbBtTTx/nKHnGNxQPD+
-	Ysip1soQ==;
+	bh=BEImrCI/kXGGUJLIMX0kD855YKMvbpgOQwIUEihf9gQ=; b=Hv5xViwTeitvvzOQNtyMhiRy8r
+	3L2ECL2guBBsWl5h8i2E3ovDEAE82Ho8IY2hq2zktWWs9DvWO5kSoTVEoMlJ51ALYp4cnwgPALRmf
+	yrJfzf4caq3mDr5rkb82Y2n0r6OUvIHQxbuCW3RXJOmWK60L3JM0jxzsolNcQFL6iluippAlNOOaA
+	EVWskOdGvibSUjoj4aktpqPriWHWHPRXPEJ6UXfvSSWWZSW6NQAvTB7UjvzDAcflplEXh5F6WqjIe
+	DEly3/5nx2dw3jXenbCJ4P7Qs6xXjy1tp2+itegtARb9Szs9PX2Rg1KCQUyc5jokh9tSTSdsXRFdh
+	ZRJ5Rpgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5QEO-00GkeD-0v;
-	Tue, 21 Nov 2023 12:51:56 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r5QER-00Gkhh-2N;
+	Tue, 21 Nov 2023 12:51:59 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5QDY-00GjyF-36;
-	Tue, 21 Nov 2023 12:51:08 +0000
+	id 1r5QDb-00Gjzr-09;
+	Tue, 21 Nov 2023 12:51:10 +0000
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E7F0D6607325;
-	Tue, 21 Nov 2023 12:51:02 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0706D6607319;
+	Tue, 21 Nov 2023 12:51:04 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700571063;
-	bh=zNfya3IwOleE3gv7u+f222r6Eh2oBHfy4LgRig9Wjl4=;
+	s=mail; t=1700571065;
+	bh=EEiAga7/PEKFwq5/KS3naIy5UuB1z5wjPE5byYQKsG4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JME8J0fOzBllttmy6YP2f3UBamsismPO7cYy+ESjToe7kho7iYAUsR25Z+1uEKcm7
-	 KE8sn6k9kq99YUINIwIybXl4NCC8KPJHC1sMS1SgspPRyMUqjWCJ4JsCEMdxEvazGl
-	 3E0+17hF4SP9Pgo6WuYdMQj3W8NnNC7qddBmZphikoPsjgwZ6bla6gouBP3ZdMnoom
-	 4r8/B0JZYS2FIupPHmwhvf/xfvYJfuAcesxMzeMUfAavkcocd0qAzDfUNOBw0ILJx5
-	 5/SIUjAmJoP3xrsz4CW9iYKYMqcFM3j7Kg6DElPz6z1WpYHwpsTuvMlNLcTiDAxzsH
-	 P7ZPHcrhlUg+Q==
+	b=S8cSzG/X6sVcxBU+LFBQPQo4ord4Kb0pxgC80dEAGKNPFNKt7rDi9gUVx3j6Phz4B
+	 tdvXfuvXkR79/mWGKI8OyldNZh0km9cKaTiQmwZaSO4/JHR8m9eRNguFw9DPQIYe4Q
+	 metDVDPU0oOF3/3npZcWvjlnbVJT1epWsIvi96+ODzyxFEDiKQkbkTKLiWlbPPNoSg
+	 quIxJh5r/dKeQk7uBaYISnLiRqrbkDTt3wipYLOFQmtqFZKyeYlwiyqPCfDRj6tZlJ
+	 hpjfy583jyRDUwYMHMocfhmth+i9KfKn7ByZzGU3+BGUZkjh6jtzMzfBNKyScL7EL8
+	 pnVYeS28bsWLA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -56,17 +56,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v3 12/20] soc: mediatek: mtk-svs: Commonize MT8192 probe function for MT8186
-Date: Tue, 21 Nov 2023 13:50:36 +0100
-Message-ID: <20231121125044.78642-13-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 14/20] soc: mediatek: mtk-svs: Compress of_device_id entries
+Date: Tue, 21 Nov 2023 13:50:38 +0100
+Message-ID: <20231121125044.78642-15-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231121125044.78642-1-angelogioacchino.delregno@collabora.com>
 References: <20231121125044.78642-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_045105_156487_2B0E7B8E 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20231121_045107_241915_65495BF2 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,91 +81,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Include the additions of svs_mt8186_platform_probe() in the common
-svs_mt8192_platform_probe() function, remove the former, and use the
-latter as .probe() callback for MT8186.
+Compress each entry to one line, as they fit in 84 columns, which
+is acceptable.
+While at it, also change the capital 'S' to 's' in 'sentinel'.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 44 ++++++----------------------------
- 1 file changed, 7 insertions(+), 37 deletions(-)
+ drivers/soc/mediatek/mtk-svs.c | 24 ++++++------------------
+ 1 file changed, 6 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index e7df3a577b4c..cd5064683506 100644
+index 5fd9884dd20f..ac36c2efcafa 100644
 --- a/drivers/soc/mediatek/mtk-svs.c
 +++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -2119,7 +2119,6 @@ static struct device *svs_add_device_link(struct svs_platform *svsp,
- static int svs_mt8192_platform_probe(struct svs_platform *svsp)
- {
- 	struct device *dev;
--	struct svs_bank *svsb;
- 	u32 idx;
+@@ -2731,24 +2731,12 @@ static const struct svs_platform_data svs_mt8183_platform_data = {
+ };
  
- 	svsp->rst = devm_reset_control_get_optional(svsp->dev, "svs_rst");
-@@ -2133,40 +2132,7 @@ static int svs_mt8192_platform_probe(struct svs_platform *svsp)
- 				     "failed to get lvts device\n");
+ static const struct of_device_id svs_of_match[] = {
+-	{
+-		.compatible = "mediatek,mt8195-svs",
+-		.data = &svs_mt8195_platform_data,
+-	}, {
+-		.compatible = "mediatek,mt8192-svs",
+-		.data = &svs_mt8192_platform_data,
+-	}, {
+-		.compatible = "mediatek,mt8188-svs",
+-		.data = &svs_mt8188_platform_data,
+-	}, {
+-		.compatible = "mediatek,mt8186-svs",
+-		.data = &svs_mt8186_platform_data,
+-	}, {
+-		.compatible = "mediatek,mt8183-svs",
+-		.data = &svs_mt8183_platform_data,
+-	}, {
+-		/* Sentinel */
+-	},
++	{ .compatible = "mediatek,mt8195-svs", .data = &svs_mt8195_platform_data },
++	{ .compatible = "mediatek,mt8192-svs", .data = &svs_mt8192_platform_data },
++	{ .compatible = "mediatek,mt8188-svs", .data = &svs_mt8188_platform_data },
++	{ .compatible = "mediatek,mt8186-svs", .data = &svs_mt8186_platform_data },
++	{ .compatible = "mediatek,mt8183-svs", .data = &svs_mt8183_platform_data },
++	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, svs_of_match);
  
- 	for (idx = 0; idx < svsp->bank_max; idx++) {
--		svsb = &svsp->banks[idx];
--
--		if (svsb->type == SVSB_TYPE_HIGH)
--			svsb->opp_dev = svs_add_device_link(svsp, "gpu");
--		else if (svsb->type == SVSB_TYPE_LOW)
--			svsb->opp_dev = svs_get_subsys_device(svsp, "gpu");
--
--		if (IS_ERR(svsb->opp_dev))
--			return dev_err_probe(svsp->dev, PTR_ERR(svsb->opp_dev),
--					     "failed to get OPP device for bank %d\n",
--					     idx);
--	}
--
--	return 0;
--}
--
--static int svs_mt8186_platform_probe(struct svs_platform *svsp)
--{
--	struct device *dev;
--	struct svs_bank *svsb;
--	u32 idx;
--
--	svsp->rst = devm_reset_control_get_optional(svsp->dev, "svs_rst");
--	if (IS_ERR(svsp->rst))
--		return dev_err_probe(svsp->dev, PTR_ERR(svsp->rst),
--				     "cannot get svs reset control\n");
--
--	dev = svs_add_device_link(svsp, "thermal-sensor");
--	if (IS_ERR(dev))
--		return dev_err_probe(svsp->dev, PTR_ERR(dev),
--				     "failed to get lvts device\n");
--
--	for (idx = 0; idx < svsp->bank_max; idx++) {
--		svsb = &svsp->banks[idx];
-+		struct svs_bank *svsb = &svsp->banks[idx];
- 
- 		switch (svsb->sw_id) {
- 		case SVSB_SWID_CPU_LITTLE:
-@@ -2177,7 +2143,11 @@ static int svs_mt8186_platform_probe(struct svs_platform *svsp)
- 			svsb->opp_dev = svs_add_device_link(svsp, "cci");
- 			break;
- 		case SVSB_SWID_GPU:
--			svsb->opp_dev = svs_add_device_link(svsp, "gpu");
-+			if (svsb->type == SVSB_TYPE_LOW)
-+				svsb->opp_dev = svs_get_subsys_device(svsp, "gpu");
-+			else
-+				svsb->opp_dev = svs_add_device_link(svsp, "gpu");
-+			break;
- 			break;
- 		default:
- 			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
-@@ -2739,7 +2709,7 @@ static const struct svs_platform_data svs_mt8186_platform_data = {
- 	.name = "mt8186-svs",
- 	.banks = svs_mt8186_banks,
- 	.efuse_parsing = svs_common_parse_efuse,
--	.probe = svs_mt8186_platform_probe,
-+	.probe = svs_mt8192_platform_probe,
- 	.regs = svs_regs_v2,
- 	.bank_max = ARRAY_SIZE(svs_mt8186_banks),
- 	.ts_coeff = SVSB_TS_COEFF_MT8186,
 -- 
 2.42.0
 
