@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45718C61D94
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 075E0C61D92
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:48:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0v3H0tbzllESZRNibSNZr8YEeUC5bwYupFiiMADLkIA=; b=A/MK0Kl+rQM8SOCAr10ZnnmsxY
-	p9TnA1F1J7BfjQ7EwhTlllIvAUxs9N85t3O/oCn6oe9IXpqiRXBGXJvoE11l144lgs7HvT4gIyX6B
-	K9akTCYOLU/HbQw8KOtiRISDrkcrLpQYZ9iv5dxaqYprxbhznalZMkeH7zyhq3JH5kSWz9Uyz2SEq
-	J5z8z7bxCC0gmB2R7CcnP7Sc0dZueX3QefRm3/uOzCofKsICJ4UNjZlG6vEjOFMC71U9tfVFNBx6O
-	C7/CDCzvS34i1X3vapT9aJ5eK/AkUTKiw9uaF7sB5T+Mwynb6X7nHBGn5lB/SN8fxvg4FgDp5fWEb
-	T823uxSQ==;
+	bh=6WAtOnq5t69wz6MlZEAonSf4gDXURb2kTiRYoajtaxQ=; b=UNAjeQN6PKozOPaAIeq2WXxT7u
+	FVXRRlEQ8U2HgJKR6a+u4yfXvrQ9vLNdfImggQ7DHe8hS2w82DZeaGWrl7MoheAahXjdTfUf+GnBd
+	C7KCx4uF0e+SNoJTu+Oeid/7TcHoonLqpKrdCIm7gjmm4KuaToHswxzGpUGecOvzEh3ULnvDcJCoV
+	aHS/cLFuSn6kJKhL0Y7NjmVY77K7sRnhnXdzWdS73Y4ay2PoG98jpVo7RiiCp08El4QuaIYo2Gdgs
+	/tPRJxoT8eQnnxxBaRWDNR1oTmIbOT+QRorTcV0Fyvpm+taI8eWBmUNw06XtWV81z2nGv53c4QcAO
+	VASc0bBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5Ozy-00GXod-2u;
-	Tue, 21 Nov 2023 11:32:58 +0000
-Received: from mgamail.intel.com ([192.55.52.136])
+	id 1r5PEc-00Gba3-2H;
+	Tue, 21 Nov 2023 11:48:06 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5Ozv-00GXlg-2M;
-	Tue, 21 Nov 2023 11:32:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700566375; x=1732102375;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=e9FE42TLG/FvdI9S3SWrIySMHczvHW0nenWXFS9lTmM=;
-  b=nNr1G7959BrLUxBioYCp88R8X+nMtASyepJYmeuC5tcyOaRy4M4FBEXa
-   vHCSkJUF2BwBdxYCobZUG82W0FJciXbzfcYyxTx7j8d6LWiQO6buHRvur
-   nUwW+xmEfZFtredD7eLf4xcC8s7JKucoYPlyTLVvmswLoz7JMTtUDqVRa
-   M4vE6eS8KGP0ix1galCmBVH1vbvYr53WcfsLhobh0ROaHk2+pxZ3x3f+I
-   /LX1/PO8MekbDmCmFOzH4IsNt6DPW0QLPtnzobWkPzuTy1HMM5F05AQgs
-   HjD1N/i3PHxYVvqKscvgMOZlU9eoCauRqWkrCQ3Xc6fPsXjZFfhNKhhHh
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="371157260"
-X-IronPort-AV: E=Sophos;i="6.04,215,1695711600"; 
-   d="scan'208";a="371157260"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Nov 2023 03:32:54 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="743021699"
-X-IronPort-AV: E=Sophos;i="6.04,215,1695711600"; 
-   d="scan'208";a="743021699"
-Received: from lkp-server02.sh.intel.com (HELO b8de5498638e) ([10.239.97.151])
-  by orsmga006.jf.intel.com with ESMTP; 21 Nov 2023 03:32:50 -0800
-Received: from kbuild by b8de5498638e with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1r5OzP-0007ja-1I;
-	Tue, 21 Nov 2023 11:32:36 +0000
-Date: Tue, 21 Nov 2023 19:32:13 +0800
-From: kernel test robot <lkp@intel.com>
-To: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>,
-	ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
-	bhelgaas@google.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev
-Subject: Re: [PATCH v2] PCI: mediatek: Fix sparse warning caused to
- virt_to_phys() prototype change
-Message-ID: <202311211958.Z1kPUdyp-lkp@intel.com>
-References: <170052491316.21557.13173111699965824301.stgit@skinsburskii.>
+	id 1r5PEZ-00GbZW-2I
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Nov 2023 11:48:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id C91A5CE1B6C;
+	Tue, 21 Nov 2023 11:48:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9165CC433C7;
+	Tue, 21 Nov 2023 11:47:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700567280;
+	bh=jAkO0wCcoQAJh9kzzWEPvEYnyVg9GBQBsbrBcf4OCYs=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=YiBmB7g4IWPSTl6o4cY+YpPGW+h1wj1Y93vHEIqoH75K9Nw7p6dSlecIAV0uYbxHR
+	 ZtSjJ6DnREKiOSycEFmzPa7OXt/gA/i9LhY1RdoSBNoNopXeVrCxP7QVi/45IcYXC7
+	 f6HXQs8QdjX1mCASGS5IX6nYiW73o1OdTls//fLDRAOria/uw3BgaU25c/Ua8J3Bi8
+	 UGd/hWV+WaZuGLqttEBt7TaoGvH4lymxMpPH685/4UTibh3+Mxni/Zm7aeEMvf0c2t
+	 GtISl7o1Pvsq/JN+VOJUe8BNTBpISM3uM6610R2jybk7iQM8Hr/IrwBy3NvP9MIgL6
+	 dqKwYylq489cQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: <nbd@nbd.name>,  <lorenzo@kernel.org>,  <deren.wu@mediatek.com>,
+  <Sean.Wang@mediatek.com>,  <Soul.Huang@mediatek.com>,
+  <Leon.Yen@mediatek.com>,  <Eric-SY.Chang@mediatek.com>,
+  <km.lin@mediatek.com>,  <robin.chiu@mediatek.com>,
+  <ch.yeh@mediatek.com>,  <posh.sun@mediatek.com>,
+  <Quan.Zhou@mediatek.com>,  <Ryder.Lee@mediatek.com>,
+  <Shayne.Chen@mediatek.com>,  <linux-wireless@vger.kernel.org>,
+  <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 0/3] wifi: mt76: mt7921: series with CLC patches
+References: <20231120032750.19747-1-mingyen.hsieh@mediatek.com>
+Date: Tue, 21 Nov 2023 13:47:53 +0200
+In-Reply-To: <20231120032750.19747-1-mingyen.hsieh@mediatek.com> (Mingyen
+	Hsieh's message of "Mon, 20 Nov 2023 11:27:47 +0800")
+Message-ID: <87fs0z8h06.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <170052491316.21557.13173111699965824301.stgit@skinsburskii.>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_033255_818725_EA7D67E3 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20231121_034804_009978_D1B8FA2D 
+X-CRM114-Status: UNSURE (   6.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,72 +79,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Stanislav,
+Mingyen Hsieh <mingyen.hsieh@mediatek.com> writes:
 
-kernel test robot noticed the following build warnings:
+> From: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
+>
+> Sync internal mt7921 patches for CLC.
 
-[auto build test WARNING on pci/next]
-[also build test WARNING on pci/for-linus linus/master v6.7-rc2 next-20231121]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Stanislav-Kinsburskii/PCI-mediatek-Fix-sparse-warning-caused-to-virt_to_phys-prototype-change/20231121-080253
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/170052491316.21557.13173111699965824301.stgit%40skinsburskii.
-patch subject: [PATCH v2] PCI: mediatek: Fix sparse warning caused to virt_to_phys() prototype change
-config: openrisc-allmodconfig (https://download.01.org/0day-ci/archive/20231121/202311211958.Z1kPUdyp-lkp@intel.com/config)
-compiler: or1k-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231121/202311211958.Z1kPUdyp-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202311211958.Z1kPUdyp-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/pci/controller/pcie-mediatek.c: In function 'mtk_compose_msi_msg':
->> drivers/pci/controller/pcie-mediatek.c:400:62: warning: passing argument 1 of 'virt_to_phys' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-     400 |         addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
-         |                                                              ^
-   In file included from arch/openrisc/include/asm/io.h:37,
-                    from include/linux/io.h:13,
-                    from include/linux/iopoll.h:14,
-                    from drivers/pci/controller/pcie-mediatek.c:12:
-   include/asm-generic/io.h:1003:57: note: expected 'volatile void *' but argument is of type 'const void *'
-    1003 | static inline unsigned long virt_to_phys(volatile void *address)
-         |                                          ~~~~~~~~~~~~~~~^~~~~~~
-   drivers/pci/controller/pcie-mediatek.c: In function 'mtk_pcie_enable_msi':
-   drivers/pci/controller/pcie-mediatek.c:523:66: warning: passing argument 1 of 'virt_to_phys' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-     523 |         msg_addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
-         |                                                                  ^
-   include/asm-generic/io.h:1003:57: note: expected 'volatile void *' but argument is of type 'const void *'
-    1003 | static inline unsigned long virt_to_phys(volatile void *address)
-         |                                          ~~~~~~~~~~~~~~~^~~~~~~
-
-
-vim +400 drivers/pci/controller/pcie-mediatek.c
-
-   393	
-   394	static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
-   395	{
-   396		struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-   397		phys_addr_t addr;
-   398	
-   399		/* MT2712/MT7622 only support 32-bit MSI addresses */
- > 400		addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
-   401		msg->address_hi = 0;
-   402		msg->address_lo = lower_32_bits(addr);
-   403	
-   404		msg->data = data->hwirq;
-   405	
-   406		dev_dbg(port->pcie->dev, "msi#%d address_hi %#x address_lo %#x\n",
-   407			(int)data->hwirq, msg->address_hi, msg->address_lo);
-   408	}
-   409	
+What's CLC? The patch title and the cover letter are gibberish for me.
+They should have an understandable introduction in plain english.
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
