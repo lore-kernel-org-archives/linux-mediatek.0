@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24F0FC61D92
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:56:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC74C61D94
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:57:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XXs9aA28Fb/zI3HoK+Y5RpS9a5/sxHENqTOcKG51emk=; b=y9L+OGCw1mHFq7HwrjBmSaYC9b
-	BWwDDYKfY5UmZkLVnZmPoI3sIxX5zc8oyq43fZlfAzq9SWxdGSY2La0l1+pkRnL1tw0deemBQyKYG
-	01xKChqYFd9fQ8hf5Itz5HaC3OqosM4ynmWDJHRE5u0vsqAl7oBcSlUGPToXI9lpw+3x/MiyI+MNf
-	z62f+iWAjCT/s68WPPq4/SqLZUJ/CO7qY2Me5VwTCWbzi6Dzyxb1YzVn46c/KwhmUtKAZzKvgURmz
-	E0vA29OWage5d62ATz9bKNh97H8YTXq2HN+EJc/8egeskmSplhOqFYtyiIfCQS8lZhKouM8o6kEdN
-	Snx3X3qA==;
+	bh=sq9G32K6TtoLD+AvzTy4qXTHDqDo8A0lDQFf/DMBYSM=; b=n6COFuUBzuwhcxwmlwQ+Uq+kx1
+	qFojZt9FoA9nn+lHJzvsunWBU0nIE2x7TlnsaPQf1J69xSZyrSAPl4m5ah8IAUryahWwr06X8bV1F
+	8fWsVeJOUvU+O+s/ATXfItNqC1RxRtmCcNh11fKLzDIJsuKf0tiT2H7z9JAiTHv7zFSEFO5VTZSug
+	A1WHsdEORIoYG1RdIiJ4h2NPnxwGnhJdMpXAB3/1TS1ss39Kc/tUcX5OlIOIxKaenPU3Zu16dgbvg
+	wQrQ6DTzAMmRpAFCbpW8U9n+2TWxEv5Cj6Hlux6HvqYPcil1sNw+nhu0SnwEkkE0KZ76WNFdsV/XA
+	iR4Bl8xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PN3-00GdBz-1y;
-	Tue, 21 Nov 2023 11:56:49 +0000
+	id 1r5PNI-00GdOL-24;
+	Tue, 21 Nov 2023 11:57:04 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PMp-00GcyO-0J;
-	Tue, 21 Nov 2023 11:56:36 +0000
+	id 1r5PMs-00Gd13-0i;
+	Tue, 21 Nov 2023 11:56:40 +0000
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 138306607314;
-	Tue, 21 Nov 2023 11:56:33 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2D3786607326;
+	Tue, 21 Nov 2023 11:56:36 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700567793;
-	bh=N42OlgtNsTN3hPgxRyKN1KLxCwyU6QyhLsWFXT5/rjk=;
+	s=mail; t=1700567797;
+	bh=HjqA+sAHeyELuvvhdsMlpINGaociXjYFjdm6q68a7V8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=e8LkjZcji6amFEX4CYSjQGEnk08SxfXxz7XUCQIhIlA8hZqyoPKSFaVD4Cf6LFzcK
-	 rPrPK2DLPdaip59A9OvBCIrtfMZhSBTbmIuGvLvSzfmm7Qp3LZe9pfPYr9OicxR315
-	 7hUbaYl55ub/uLrhoiprpXGr4SaNSWie7mUQF8N3lQaD5xPL9KLce/9YJbcEO9VgN4
-	 rWYBKHZsk1J3U8nZnIDfmGeQL6kuzds8S5/LNUZ3sSq4jxk/AF8fESm1+QXtOGCHlX
-	 SELg1b/XRQ3iTqHiHWgWGPqzu1WmKflAVRifq8SZbgM3IKned/4ptZhIH4TzCs+6+V
-	 +RQFYv1a7Kx2A==
+	b=EXLibqZSgqMFvSVmoKDxfiKEQt35SplGXYfEg0Lcj17c8DSbVnMxGi6iEm0voHTvZ
+	 imrVUalRfN3zbP8nWm7kIs3ThcWyUfo3BfPOxmJXPfHlbycx83nbyqSQjLe/zleNtF
+	 RMylCGCl5GUUqZbV0vHkBUjZml8Ju6LjfT9WKBJML4qcW+Ri42HmoowQabxNEE+cpw
+	 rOn2wHx21vMBYPSCq7p1JBEHF5wl24uxPgKofemsTZ/RMuaml4SgMi8L8wHuwdmnSi
+	 zW4mdpWRfTJ+a8eKU6nyt83qLmTExAbnqrko6tpp6VnrZGyWwBrgkxepK1G3PwtS8Q
+	 E/N/3R5fqCZRg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -56,17 +56,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v2 02/20] soc: mediatek: mtk-svs: Subtract offset from regs_v2 to avoid conflict
-Date: Tue, 21 Nov 2023 12:56:06 +0100
-Message-ID: <20231121115624.56855-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 05/20] soc: mediatek: mtk-svs: Reduce memory footprint of struct svs_bank
+Date: Tue, 21 Nov 2023 12:56:09 +0100
+Message-ID: <20231121115624.56855-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231121115624.56855-1-angelogioacchino.delregno@collabora.com>
 References: <20231121115624.56855-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_035635_386943_40B6D974 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20231121_035638_395741_7F6BD819 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,147 +81,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The svs_regs_v2 array of registers was offsetted by 0xc00 because the
-SVS node was supposed to have the same iostart as the thermal sensors.
-That's wrong for two reasons:
- 1. Two different devices cannot have the same iostart in devicetree,
-    as those would technically be the same device otherwise; and
- 2. SVS and Thermal Sensor (be it LVTS or AUXADC thermal) are not the
-    same IP, and those two do obviously have a different iospace.
-
-Even though there already are users of this register array, the only
-one that declares a devicetree node for SVS is MT8183 - but it never
-actually worked because the "tzts1" thermal zone missed thermal trips,
-hence this driver's probe always failed on that SoC.
-
-Knowing this - it is safe to say that keeping compatibility with older
-device trees is pointless, hence simply subtract the 0xc00 offset from
-the register offset array.
+Many 32-bit members of this struct can be size reduced to either 16-bit
+or even 8-bit, for a total saving of ~61 bytes per bank. Keeping in mind
+that one SoC declares at least two banks, this brings a minimum of ~122
+bytes saving (depending on compiler optimization).
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 108 ++++++++++++++++-----------------
- 1 file changed, 54 insertions(+), 54 deletions(-)
+ drivers/soc/mediatek/mtk-svs.c | 51 +++++++++++++++++-----------------
+ 1 file changed, 26 insertions(+), 25 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 0f7cfbe5630b..416e9b313c0a 100644
+index 1c7592fd6ae7..6c27fb523bfa 100644
 --- a/drivers/soc/mediatek/mtk-svs.c
 +++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -256,60 +256,60 @@ enum svs_reg_index {
+@@ -456,13 +456,13 @@ struct svs_bank {
+ 	char *buck_name;
+ 	char *tzone_name;
+ 	enum svsb_phase phase;
+-	s32 volt_od;
++	short int volt_od;
+ 	u32 reg_data[SVSB_PHASE_MAX][SVS_REG_MAX];
+ 	u32 pm_runtime_enabled_count;
+-	u32 mode_support;
++	u8 mode_support;
+ 	u32 freq_base;
+ 	u32 turn_freq_base;
+-	u32 vboot;
++	u8 vboot;
+ 	u32 opp_dfreq[MAX_OPP_ENTRIES];
+ 	u32 opp_dvolt[MAX_OPP_ENTRIES];
+ 	u32 freq_pct[MAX_OPP_ENTRIES];
+@@ -470,36 +470,36 @@ struct svs_bank {
+ 	u32 volt_step;
+ 	u32 volt_base;
+ 	u32 volt_flags;
+-	u32 vmax;
+-	u32 vmin;
++	u8 vmax;
++	u8 vmin;
+ 	u32 age_config;
+-	u32 age_voffset_in;
++	u16 age_voffset_in;
+ 	u32 dc_config;
+-	u32 dc_voffset_in;
+-	u32 dvt_fixed;
+-	u32 vco;
+-	u32 chk_shift;
++	u16 dc_voffset_in;
++	u8 dvt_fixed;
++	u8 vco;
++	u8 chk_shift;
+ 	u32 core_sel;
+-	u32 opp_count;
++	u8 opp_count;
+ 	u32 int_st;
+-	u32 sw_id;
+-	u32 cpu_id;
++	u8 sw_id;
++	u8 cpu_id;
+ 	u32 ctl0;
+ 	u32 temp;
+ 	u32 tzone_htemp;
+-	u32 tzone_htemp_voffset;
++	u16 tzone_htemp_voffset;
+ 	u32 tzone_ltemp;
+-	u32 tzone_ltemp_voffset;
+-	u32 bts;
+-	u32 mts;
+-	u32 bdes;
+-	u32 mdes;
+-	u32 mtdes;
+-	u32 dcbdet;
+-	u32 dcmdet;
++	u16 tzone_ltemp_voffset;
++	u16 bts;
++	u16 mts;
++	u16 bdes;
++	u16 mdes;
++	u8 mtdes;
++	u8 dcbdet;
++	u8 dcmdet;
+ 	u32 turn_pt;
+ 	u32 vbin_turn_pt;
+-	u32 type;
++	u8 type;
  };
  
- static const u32 svs_regs_v2[] = {
--	[DESCHAR]		= 0xc00,
--	[TEMPCHAR]		= 0xc04,
--	[DETCHAR]		= 0xc08,
--	[AGECHAR]		= 0xc0c,
--	[DCCONFIG]		= 0xc10,
--	[AGECONFIG]		= 0xc14,
--	[FREQPCT30]		= 0xc18,
--	[FREQPCT74]		= 0xc1c,
--	[LIMITVALS]		= 0xc20,
--	[VBOOT]			= 0xc24,
--	[DETWINDOW]		= 0xc28,
--	[CONFIG]		= 0xc2c,
--	[TSCALCS]		= 0xc30,
--	[RUNCONFIG]		= 0xc34,
--	[SVSEN]			= 0xc38,
--	[INIT2VALS]		= 0xc3c,
--	[DCVALUES]		= 0xc40,
--	[AGEVALUES]		= 0xc44,
--	[VOP30]			= 0xc48,
--	[VOP74]			= 0xc4c,
--	[TEMP]			= 0xc50,
--	[INTSTS]		= 0xc54,
--	[INTSTSRAW]		= 0xc58,
--	[INTEN]			= 0xc5c,
--	[CHKINT]		= 0xc60,
--	[CHKSHIFT]		= 0xc64,
--	[STATUS]		= 0xc68,
--	[VDESIGN30]		= 0xc6c,
--	[VDESIGN74]		= 0xc70,
--	[DVT30]			= 0xc74,
--	[DVT74]			= 0xc78,
--	[AGECOUNT]		= 0xc7c,
--	[SMSTATE0]		= 0xc80,
--	[SMSTATE1]		= 0xc84,
--	[CTL0]			= 0xc88,
--	[DESDETSEC]		= 0xce0,
--	[TEMPAGESEC]		= 0xce4,
--	[CTRLSPARE0]		= 0xcf0,
--	[CTRLSPARE1]		= 0xcf4,
--	[CTRLSPARE2]		= 0xcf8,
--	[CTRLSPARE3]		= 0xcfc,
--	[CORESEL]		= 0xf00,
--	[THERMINTST]		= 0xf04,
--	[INTST]			= 0xf08,
--	[THSTAGE0ST]		= 0xf0c,
--	[THSTAGE1ST]		= 0xf10,
--	[THSTAGE2ST]		= 0xf14,
--	[THAHBST0]		= 0xf18,
--	[THAHBST1]		= 0xf1c,
--	[SPARE0]		= 0xf20,
--	[SPARE1]		= 0xf24,
--	[SPARE2]		= 0xf28,
--	[SPARE3]		= 0xf2c,
--	[THSLPEVEB]		= 0xf30,
-+	[DESCHAR]		= 0x00,
-+	[TEMPCHAR]		= 0x04,
-+	[DETCHAR]		= 0x08,
-+	[AGECHAR]		= 0x0c,
-+	[DCCONFIG]		= 0x10,
-+	[AGECONFIG]		= 0x14,
-+	[FREQPCT30]		= 0x18,
-+	[FREQPCT74]		= 0x1c,
-+	[LIMITVALS]		= 0x20,
-+	[VBOOT]			= 0x24,
-+	[DETWINDOW]		= 0x28,
-+	[CONFIG]		= 0x2c,
-+	[TSCALCS]		= 0x30,
-+	[RUNCONFIG]		= 0x34,
-+	[SVSEN]			= 0x38,
-+	[INIT2VALS]		= 0x3c,
-+	[DCVALUES]		= 0x40,
-+	[AGEVALUES]		= 0x44,
-+	[VOP30]			= 0x48,
-+	[VOP74]			= 0x4c,
-+	[TEMP]			= 0x50,
-+	[INTSTS]		= 0x54,
-+	[INTSTSRAW]		= 0x58,
-+	[INTEN]			= 0x5c,
-+	[CHKINT]		= 0x60,
-+	[CHKSHIFT]		= 0x64,
-+	[STATUS]		= 0x68,
-+	[VDESIGN30]		= 0x6c,
-+	[VDESIGN74]		= 0x70,
-+	[DVT30]			= 0x74,
-+	[DVT74]			= 0x78,
-+	[AGECOUNT]		= 0x7c,
-+	[SMSTATE0]		= 0x80,
-+	[SMSTATE1]		= 0x84,
-+	[CTL0]			= 0x88,
-+	[DESDETSEC]		= 0xe0,
-+	[TEMPAGESEC]		= 0xe4,
-+	[CTRLSPARE0]		= 0xf0,
-+	[CTRLSPARE1]		= 0xf4,
-+	[CTRLSPARE2]		= 0xf8,
-+	[CTRLSPARE3]		= 0xfc,
-+	[CORESEL]		= 0x300,
-+	[THERMINTST]		= 0x304,
-+	[INTST]			= 0x308,
-+	[THSTAGE0ST]		= 0x30c,
-+	[THSTAGE1ST]		= 0x310,
-+	[THSTAGE2ST]		= 0x314,
-+	[THAHBST0]		= 0x318,
-+	[THAHBST1]		= 0x31c,
-+	[SPARE0]		= 0x320,
-+	[SPARE1]		= 0x324,
-+	[SPARE2]		= 0x328,
-+	[SPARE3]		= 0x32c,
-+	[THSLPEVEB]		= 0x330,
- };
+ static u32 percent(u32 numerator, u32 denominator)
+@@ -1267,6 +1267,7 @@ static inline void svs_error_isr_handler(struct svs_platform *svsp)
+ static inline void svs_init01_isr_handler(struct svs_platform *svsp)
+ {
+ 	struct svs_bank *svsb = svsp->pbank;
++	u32 val;
  
- /**
+ 	dev_info(svsb->dev, "%s: VDN74~30:0x%08x~0x%08x, DC:0x%08x\n",
+ 		 __func__, svs_readl_relaxed(svsp, VDESIGN74),
+@@ -1276,8 +1277,8 @@ static inline void svs_init01_isr_handler(struct svs_platform *svsp)
+ 	svs_save_bank_register_data(svsp, SVSB_PHASE_INIT01);
+ 
+ 	svsb->phase = SVSB_PHASE_INIT01;
+-	svsb->dc_voffset_in = ~(svs_readl_relaxed(svsp, DCVALUES) &
+-				GENMASK(15, 0)) + 1;
++	val = ~(svs_readl_relaxed(svsp, DCVALUES) & GENMASK(15, 0)) + 1;
++	svsb->dc_voffset_in = val & GENMASK(15, 0);
+ 	if (svsb->volt_flags & SVSB_INIT01_VOLT_IGNORE ||
+ 	    (svsb->dc_voffset_in & SVSB_DC_SIGNED_BIT &&
+ 	     svsb->volt_flags & SVSB_INIT01_VOLT_INC_ONLY))
 -- 
 2.42.0
 
