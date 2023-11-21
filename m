@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04499C61D96
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 12:50:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7167EC61D92
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 12:51:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7MZURram4+AEa4dg4UWiA48/8EOrUGOb9rBxviQ2z8M=; b=wAOd9bl7cakqAgLMg9J1OG2PVb
-	flapogwUqb754gUL41xEfWACm3q0Zb0Is6VyF/XdFN5kNxavw7mXJ78BowKdezBGnDfTAyMmQ6yyL
-	qFCFQMM7OsoJ9mzj5YwHMbijiQ5Am6EUuDb7+CZ5jEu4psoNQS6GpUolKZX5hNTOUH22ACw9+IlHg
-	VHjvpWcL+5RIxRxjgdmC3SoU41jCAgF2KvO5ExcXZ70ICaHFQlZdZexp8/dt6Gm0mXQfp7Ap0yz29
-	/onBDqJDHQ+6KyAOPcSuV2LosrzVZmIp53vOxIpy4hscz2VWlUcaOOEVhEQR0ZyPeTGPYgT0hOpF1
-	+QYFGh6Q==;
+	bh=XXs9aA28Fb/zI3HoK+Y5RpS9a5/sxHENqTOcKG51emk=; b=eUWGxTJTJpOfKnJxT2TFye3qhX
+	zisjH2cw0ZFv9wpwqsRxa8wIWIDhX6iQ81XPtdrlSvtQMHEN+JjbwQeaselA7+xLxwuyRr9eGiTbA
+	T0xxL2sBMOD7bm5TLUWrLm0MkMf43Klnc7NLd4G8RHs2FLhqVr+n+pCTd+yjRf2N2UcVPuIeZMhqO
+	3XZM50JnnfAcdZkkBjhA5yuUWZGlt9BJtTFO8cvwNadKAGhuZJu1KzYvBEfb21cu7O8jVzIqqJpG/
+	V9gVHD8q2VOdBMki+oohq9PXxoFH3zD+h/W1tvWPsn1JwC/EPHwxFUdyqU7pRg7k4yXVKFVhCspTB
+	+eJA/flw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5QDR-00GjtU-2u;
-	Tue, 21 Nov 2023 12:50:57 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r5QDc-00Gk1l-06;
+	Tue, 21 Nov 2023 12:51:08 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5QDN-00Gjqf-2P;
-	Tue, 21 Nov 2023 12:50:55 +0000
+	id 1r5QDO-00Gjqt-1a;
+	Tue, 21 Nov 2023 12:50:56 +0000
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 71F976607319;
-	Tue, 21 Nov 2023 12:50:51 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7F86F660731B;
+	Tue, 21 Nov 2023 12:50:52 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700571052;
-	bh=sMWHddCvw/Ujx/UtO/I5fhryZnx4605LdfFnzpLxwHk=;
+	s=mail; t=1700571053;
+	bh=N42OlgtNsTN3hPgxRyKN1KLxCwyU6QyhLsWFXT5/rjk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=czu1IDXkmfGQoXXAY2Ow6FUdSqnS8A6KSLHq2XIAtyYRq99vMp8hN4BBJQwJloPGU
-	 YRFADA3lT5OI/VXHS/TqZJDuGYzC3Gc44c2JupQkz/U8NIa+7aOs6Nb3fbPWFMjTIt
-	 uIxxdNLJXuIu+tScgpWR0XLVufgCxzg4n/IrAMBnfMDUkyP8tvdF8IFZp6cbMycZgp
-	 +PrXThhHX8MzgDTNasu3VM0HZtvCBl6owq9byofRwQKU3gC5P2eNPNTNSBOTVmfMIh
-	 XNONNivfhxcRDBTU5Kqs/4dvVLDnaXcnNQLeBp23U00xLzh8eBUCLUAJyT7HdXQgN8
-	 VxpwdUmg8j37A==
+	b=h3yC6uUj28WfIhgoUfzT29/Zzy2yxGMeJyePbi04yGzRTSzNkWYwUVZM7bDwZLnmp
+	 b+kKOcIOqAUa4rqcuR+atOblgacwvANZY9VIUhZ7wFOsoO3SU3AEPU6mQFL9LzAVWy
+	 3RO3PHwW39VUgrJXFa9bRXQVemjvm/s9SZC2rqYVAF3Mxp53ZH/yFZz1fbCoI7zBe2
+	 P4kAbX8OEz6BjAPsGwYK69ByTcZryU6AUrYir7l4yTBD9v7rPsxBS6QcURNuwQ3v1A
+	 irGIVqSYKFNqycFoHlRjslL9v7Af1S8ZI0Pg6+x4DyDquM5bOB1X6DdHOY+Sj9mInn
+	 QXrFZv+ij4+6A==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -56,17 +56,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v3 01/20] arm64: dts: mediatek: mt8183: Change iospaces for thermal and svs
-Date: Tue, 21 Nov 2023 13:50:25 +0100
-Message-ID: <20231121125044.78642-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 02/20] soc: mediatek: mtk-svs: Subtract offset from regs_v2 to avoid conflict
+Date: Tue, 21 Nov 2023 13:50:26 +0100
+Message-ID: <20231121125044.78642-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231121125044.78642-1-angelogioacchino.delregno@collabora.com>
 References: <20231121125044.78642-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_045053_913242_46C187A5 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20231121_045054_777623_D9087181 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,71 +81,147 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SVS iospace starts at 0x1100bc00 and not at 0x1100b000 as the
-latter is the thermal sensor iospace instead.
+The svs_regs_v2 array of registers was offsetted by 0xc00 because the
+SVS node was supposed to have the same iostart as the thermal sensors.
+That's wrong for two reasons:
+ 1. Two different devices cannot have the same iostart in devicetree,
+    as those would technically be the same device otherwise; and
+ 2. SVS and Thermal Sensor (be it LVTS or AUXADC thermal) are not the
+    same IP, and those two do obviously have a different iospace.
 
-Change the iospaces for both as following:
- - Thermal: 0x1100b000, length 0xc00
- - SVS: 0x1100bc00, length 0x400
+Even though there already are users of this register array, the only
+one that declares a devicetree node for SVS is MT8183 - but it never
+actually worked because the "tzts1" thermal zone missed thermal trips,
+hence this driver's probe always failed on that SoC.
 
-Please note that while this would be a breaking change for SVS (but
-not for thermal sensors), it doesn't matter because the svs driver
-never worked anyway because of the missing trips in tzts2, causing
-that thermal zone to never actually register, hence the SVS driver
-to fail probing anyway.
+Knowing this - it is safe to say that keeping compatibility with older
+device trees is pointless, hence simply subtract the 0xc00 offset from
+the register offset array.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 26 ++++++++++++------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ drivers/soc/mediatek/mtk-svs.c | 108 ++++++++++++++++-----------------
+ 1 file changed, 54 insertions(+), 54 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 5169779d01df..13c3104bc67b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1183,22 +1183,10 @@ spi0: spi@1100a000 {
- 			status = "disabled";
- 		};
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 0f7cfbe5630b..416e9b313c0a 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -256,60 +256,60 @@ enum svs_reg_index {
+ };
  
--		svs: svs@1100b000 {
--			compatible = "mediatek,mt8183-svs";
--			reg = <0 0x1100b000 0 0x1000>;
--			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
--			clocks = <&infracfg CLK_INFRA_THERM>;
--			clock-names = "main";
--			nvmem-cells = <&svs_calibration>,
--				      <&thermal_calibration>;
--			nvmem-cell-names = "svs-calibration-data",
--					   "t-calibration-data";
--		};
--
- 		thermal: thermal@1100b000 {
- 			#thermal-sensor-cells = <1>;
- 			compatible = "mediatek,mt8183-thermal";
--			reg = <0 0x1100b000 0 0x1000>;
-+			reg = <0 0x1100b000 0 0xc00>;
- 			clocks = <&infracfg CLK_INFRA_THERM>,
- 				 <&infracfg CLK_INFRA_AUXADC>;
- 			clock-names = "therm", "auxadc";
-@@ -1210,6 +1198,18 @@ thermal: thermal@1100b000 {
- 			nvmem-cell-names = "calibration-data";
- 		};
+ static const u32 svs_regs_v2[] = {
+-	[DESCHAR]		= 0xc00,
+-	[TEMPCHAR]		= 0xc04,
+-	[DETCHAR]		= 0xc08,
+-	[AGECHAR]		= 0xc0c,
+-	[DCCONFIG]		= 0xc10,
+-	[AGECONFIG]		= 0xc14,
+-	[FREQPCT30]		= 0xc18,
+-	[FREQPCT74]		= 0xc1c,
+-	[LIMITVALS]		= 0xc20,
+-	[VBOOT]			= 0xc24,
+-	[DETWINDOW]		= 0xc28,
+-	[CONFIG]		= 0xc2c,
+-	[TSCALCS]		= 0xc30,
+-	[RUNCONFIG]		= 0xc34,
+-	[SVSEN]			= 0xc38,
+-	[INIT2VALS]		= 0xc3c,
+-	[DCVALUES]		= 0xc40,
+-	[AGEVALUES]		= 0xc44,
+-	[VOP30]			= 0xc48,
+-	[VOP74]			= 0xc4c,
+-	[TEMP]			= 0xc50,
+-	[INTSTS]		= 0xc54,
+-	[INTSTSRAW]		= 0xc58,
+-	[INTEN]			= 0xc5c,
+-	[CHKINT]		= 0xc60,
+-	[CHKSHIFT]		= 0xc64,
+-	[STATUS]		= 0xc68,
+-	[VDESIGN30]		= 0xc6c,
+-	[VDESIGN74]		= 0xc70,
+-	[DVT30]			= 0xc74,
+-	[DVT74]			= 0xc78,
+-	[AGECOUNT]		= 0xc7c,
+-	[SMSTATE0]		= 0xc80,
+-	[SMSTATE1]		= 0xc84,
+-	[CTL0]			= 0xc88,
+-	[DESDETSEC]		= 0xce0,
+-	[TEMPAGESEC]		= 0xce4,
+-	[CTRLSPARE0]		= 0xcf0,
+-	[CTRLSPARE1]		= 0xcf4,
+-	[CTRLSPARE2]		= 0xcf8,
+-	[CTRLSPARE3]		= 0xcfc,
+-	[CORESEL]		= 0xf00,
+-	[THERMINTST]		= 0xf04,
+-	[INTST]			= 0xf08,
+-	[THSTAGE0ST]		= 0xf0c,
+-	[THSTAGE1ST]		= 0xf10,
+-	[THSTAGE2ST]		= 0xf14,
+-	[THAHBST0]		= 0xf18,
+-	[THAHBST1]		= 0xf1c,
+-	[SPARE0]		= 0xf20,
+-	[SPARE1]		= 0xf24,
+-	[SPARE2]		= 0xf28,
+-	[SPARE3]		= 0xf2c,
+-	[THSLPEVEB]		= 0xf30,
++	[DESCHAR]		= 0x00,
++	[TEMPCHAR]		= 0x04,
++	[DETCHAR]		= 0x08,
++	[AGECHAR]		= 0x0c,
++	[DCCONFIG]		= 0x10,
++	[AGECONFIG]		= 0x14,
++	[FREQPCT30]		= 0x18,
++	[FREQPCT74]		= 0x1c,
++	[LIMITVALS]		= 0x20,
++	[VBOOT]			= 0x24,
++	[DETWINDOW]		= 0x28,
++	[CONFIG]		= 0x2c,
++	[TSCALCS]		= 0x30,
++	[RUNCONFIG]		= 0x34,
++	[SVSEN]			= 0x38,
++	[INIT2VALS]		= 0x3c,
++	[DCVALUES]		= 0x40,
++	[AGEVALUES]		= 0x44,
++	[VOP30]			= 0x48,
++	[VOP74]			= 0x4c,
++	[TEMP]			= 0x50,
++	[INTSTS]		= 0x54,
++	[INTSTSRAW]		= 0x58,
++	[INTEN]			= 0x5c,
++	[CHKINT]		= 0x60,
++	[CHKSHIFT]		= 0x64,
++	[STATUS]		= 0x68,
++	[VDESIGN30]		= 0x6c,
++	[VDESIGN74]		= 0x70,
++	[DVT30]			= 0x74,
++	[DVT74]			= 0x78,
++	[AGECOUNT]		= 0x7c,
++	[SMSTATE0]		= 0x80,
++	[SMSTATE1]		= 0x84,
++	[CTL0]			= 0x88,
++	[DESDETSEC]		= 0xe0,
++	[TEMPAGESEC]		= 0xe4,
++	[CTRLSPARE0]		= 0xf0,
++	[CTRLSPARE1]		= 0xf4,
++	[CTRLSPARE2]		= 0xf8,
++	[CTRLSPARE3]		= 0xfc,
++	[CORESEL]		= 0x300,
++	[THERMINTST]		= 0x304,
++	[INTST]			= 0x308,
++	[THSTAGE0ST]		= 0x30c,
++	[THSTAGE1ST]		= 0x310,
++	[THSTAGE2ST]		= 0x314,
++	[THAHBST0]		= 0x318,
++	[THAHBST1]		= 0x31c,
++	[SPARE0]		= 0x320,
++	[SPARE1]		= 0x324,
++	[SPARE2]		= 0x328,
++	[SPARE3]		= 0x32c,
++	[THSLPEVEB]		= 0x330,
+ };
  
-+		svs: svs@1100bc00 {
-+			compatible = "mediatek,mt8183-svs";
-+			reg = <0 0x1100bc00 0 0x400>;
-+			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&infracfg CLK_INFRA_THERM>;
-+			clock-names = "main";
-+			nvmem-cells = <&svs_calibration>,
-+				      <&thermal_calibration>;
-+			nvmem-cell-names = "svs-calibration-data",
-+					   "t-calibration-data";
-+		};
-+
- 		thermal_zones: thermal-zones {
- 			cpu_thermal: cpu-thermal {
- 				polling-delay-passive = <100>;
+ /**
 -- 
 2.42.0
 
