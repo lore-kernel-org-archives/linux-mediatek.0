@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E10AC5ACB3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 08:09:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41897C61D90
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 08:17:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oeOErr72GGCTbFniaP00vmRzQcGaVer6knTx1tHa9Zo=; b=IoZL6v01FjUEAJdJSFakI1m2Mc
-	hFyQe2YBTCaKsuYIf7pr75xFbnmr+lnTz2IqdVoZo88aiJ/wBCnxKwF3lA+fgVGQdR2RcZjnq0gVv
-	19txe8LWUFhmW2neKG3tPd14RKVOWr274Lk0IDjeOHnQucvNrPt9NI9h1qSZh2CAR0vMHTbRouioC
-	Tbn5sZR2j29fuMzY7G7AqTyOhi6S4iPg0kJ/WvGINFIHuxnW6A/wJxAWjOeXP/k2uBCMNzMmHTBgx
-	H2A/zSeL5uaMdjEd+VY5TM034VgQ+072y9UDH2FK7ePDJPNOOuIa+Zxz6Xo/Bs9czyPU5315PdXKj
-	e9re3ZNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=d3xFHwEXm15Y6Khl36WCr93o41d4aY0DOB63bZVjGEU=; b=cyXDgg9uBPggv2LFlzrPganmEX
+	eEwzuH1jmaIL99cJW9Wo9T55c65WuL4CNLzqoSQI2iP6pxBu/TmyNEUeeysSCH3ZYF8rsLkU119Jf
+	fILGPSRK/fHff6VAyH6Td4UjrmCCvs33AkaNr1TD0aiJs2zqZOAGLCBgNwW7V5cTLCrl6YXMm4CAb
+	ZIQU/PHKG1LXNX1TYI4TJx2tbLgXLuaqvNs9GqYbpWWi6gXg8mYpJmZZekCY19EmJtYhtUJbTpEGl
+	FLaZmsl2u0uaYFsDWHyLxLk9Xv1NYN4Qh5N/dsouxuC3mov6dlPaIN9UI3kZ4nuZNGC2PaIiKR6vQ
+	HLig6bLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5LoX-00FxwS-1e;
-	Tue, 21 Nov 2023 08:08:57 +0000
-Received: from mail-lf1-f54.google.com ([209.85.167.54])
+	id 1r5Lx6-00FyW9-1I;
+	Tue, 21 Nov 2023 08:17:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5LoU-00Fxve-0f;
-	Tue, 21 Nov 2023 08:08:55 +0000
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-50970c2115eso7578923e87.1;
-        Tue, 21 Nov 2023 00:08:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700554126; x=1701158926;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oeOErr72GGCTbFniaP00vmRzQcGaVer6knTx1tHa9Zo=;
-        b=psl3KwH5QXmYDdfNgyvOAW8+Es70L/L1xZUm2xgakqEJ2FDT0WohJCxHskMj5gpXWi
-         k0V1LGF0p8cwW5lXBeqDhNQAP9G0CcuPbQg5wgoD4xwIqWr+UyRpO1jmQa6iEm2ew10G
-         /A4Nps9HtNlKZ5rh0idi73rosKRlLtLKZCa1HQgDeAMVH/V0Tow9iAqH4avGo43DgaBi
-         GbSqcsMIqF0Y/tRS9E7j0yTA9c5lOJwGDQ67AIhzlIFFOgtHVLDAGfKUPX5XVWiFu7TK
-         kvvn5sSdyQw/PSQWCOUEL7mj7S8pQmRDt9HAJNpGy0JbVvLy4cPGCwLZ0WxVFY1eS//D
-         i9cQ==
-X-Gm-Message-State: AOJu0YwJHM4pDNwFPteHZQ8pmciYayR/l/X3dvbYwYLfk8pe2/UdbCRc
-	Qws2I87V0HZzSeYARDnRiNNZOcHbrosUyV+G
-X-Google-Smtp-Source: AGHT+IFjEyNcrp1kGrAz5o65S260jTebtBwfYG1Xn7WCR9ayPio95AbYvBuXNESX/qVgy/9v4+h/gg==
-X-Received: by 2002:a05:6512:2394:b0:507:9fe7:f321 with SMTP id c20-20020a056512239400b005079fe7f321mr8917732lfv.54.1700554125889;
-        Tue, 21 Nov 2023 00:08:45 -0800 (PST)
-Received: from mail-lf1-f44.google.com (mail-lf1-f44.google.com. [209.85.167.44])
-        by smtp.gmail.com with ESMTPSA id bp31-20020a056512159f00b0050aa76b984esm1017199lfb.264.2023.11.21.00.08.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Nov 2023 00:08:45 -0800 (PST)
-Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-50970c2115eso7578844e87.1;
-        Tue, 21 Nov 2023 00:08:45 -0800 (PST)
-X-Received: by 2002:ac2:599b:0:b0:507:a5e7:724 with SMTP id
- w27-20020ac2599b000000b00507a5e70724mr6535084lfn.38.1700554124979; Tue, 21
- Nov 2023 00:08:44 -0800 (PST)
+	id 1r5Lx3-00FyTq-1c
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Nov 2023 08:17:47 +0000
+X-UUID: 70f22860884611ee86758d4a7c00f3a0-20231121
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=d3xFHwEXm15Y6Khl36WCr93o41d4aY0DOB63bZVjGEU=;
+	b=g93AvjjgQckPzTiDqF3k3BVRFqI1DrlAwzzuMVddbh8NR5h10Aj7OEdtNPnks09EJJdiQVe9/y7bquFSYQG/qBbFGopbqo0uyMet/8xd83BU5x5tN07VlqEX1v+uhOYA/eSU/ZublCNu66aP7QVRvHcFJRwOvJXHqsO3MFJCgIw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:9e2916d4-be5f-43d9-8161-4a48c37c9a72,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:364b77b,CLOUDID:8032c6fc-4a48-46e2-b946-12f04f20af8c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-UUID: 70f22860884611ee86758d4a7c00f3a0-20231121
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <jason-ch.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 22312923; Tue, 21 Nov 2023 01:17:41 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 21 Nov 2023 16:17:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 21 Nov 2023 16:17:37 +0800
+From: Jason-ch Chen <jason-ch.chen@mediatek.com>
+To: <linux-firmware@kernel.org>
+CC: <linux-mediatek@lists.infradead.org>, <yunfei.dong@mediatek.com>,
+	<menghui.lin@mediatek.com>, <shawnku@google.com>
+Subject: pull-request: linux-firmware: Update MT8195 SCP to remove an unused packed library 
+Date: Tue, 21 Nov 2023 16:17:34 +0800
+Message-ID: <20231121081735.21837-1-jason-ch.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
- <19358871-009d-4498-9c13-90d5338b1e9f@amd.com> <76fa8f61-fe31-4040-a38d-cc05be3f4f17@linaro.org>
- <CAMuHMdW4WPJT0Km7w8RWrGJaztk6QDGoFAn0bdGbrEsw81R1FA@mail.gmail.com>
- <acfdce81-f117-4a1a-a9fe-e2b4b8922adb@linaro.org> <bd49f17c-7ebf-4e19-b77b-b5ec95375f7d@amd.com>
- <b48293f3-16e3-4980-b900-add0cb7d69f6@linaro.org>
-In-Reply-To: <b48293f3-16e3-4980-b900-add0cb7d69f6@linaro.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 21 Nov 2023 09:08:26 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdV_gqmf2=cXmZmYgE3aLxvPBr1DVp0cz0C+YrfBVG-8mg@mail.gmail.com>
-Message-ID: <CAMuHMdV_gqmf2=cXmZmYgE3aLxvPBr1DVp0cz0C+YrfBVG-8mg@mail.gmail.com>
-Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Michal Simek <michal.simek@amd.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, 
-	Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10-1.325100-8.000000
+X-TMASE-MatchedRID: CuNqLv8MpA1necAFxyDbb6b8GfRpncAzUXlp1FHYSPWYvYlYOb0cVDpZ
+	dqvergj0LQB4O+D+n6OZNELIyCEhgEUC1IloJffrngIgpj8eDcBpkajQR5gb3savT21DsLD/UEh
+	Wy9W70AHCttcwYNipX6mrAiastWSfbm4z9EtL/eaxYRJxsm0iVN5mguw6o1rn2axFov2Dgs3zJ1
+	GLsOuFfUDPq1xfP/eydePhRU3qGQGHZhwAAZRYA7Iji40FrQMIdmtRsRmKkASJZPT2ZDPuzPD2Q
+	fzMDLjhIh26TkmSN3fud1QdQyZe7n7cGd19dSFd
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10-1.325100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: CEE92A6A58DF3E371E738FC763D2AB593B3769FCDC0C3C3D687EB4F04517FF842000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_000854_258187_D0D73336 
-X-CRM114-Status: GOOD (  26.91  )
+X-CRM114-CacheID: sfid-20231121_001745_564159_DA6222E4 
+X-CRM114-Status: UNSURE (   6.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,84 +95,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+The following changes since commit 9552083a783e5e48b90de674d4e3bf23bb855ab0:
 
-On Tue, Nov 21, 2023 at 8:47=E2=80=AFAM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
-> On 21/11/2023 08:33, Michal Simek wrote:
-> > On 11/20/23 20:31, Krzysztof Kozlowski wrote:
-> >> On 20/11/2023 20:18, Geert Uytterhoeven wrote:
-> >>> On Mon, Nov 20, 2023 at 3:53=E2=80=AFPM Krzysztof Kozlowski
-> >>> <krzysztof.kozlowski@linaro.org> wrote:
-> >>>> On 20/11/2023 15:01, Michal Simek wrote:> >
-> >>>>> On 11/20/23 09:40, Krzysztof Kozlowski wrote:
-> >>>>>> Document preferred coding style for Devicetree sources (DTS and DT=
-SI),
-> >>>>>> to bring consistency among all (sub)architectures and ease in revi=
-ews.
-> >>>
-> >>>>>> +Organizing DTSI and DTS
-> >>>>>> +-----------------------
-> >>>>>> +
-> >>>>>> +The DTSI and DTS files should be organized in a way representing =
-the common
-> >>>>>> +(and re-usable) parts of the hardware.  Typically this means orga=
-nizing DTSI
-> >>>>>> +and DTS files into several files:
-> >>>>>> +
-> >>>>>> +1. DTSI with contents of the entire SoC (without nodes for hardwa=
-re not present
-> >>>>>> +   on the SoC).
-> >>>>>> +2. If applicable: DTSI with common or re-usable parts of the hard=
-ware (e.g.
-> >>>>>> +   entire System-on-Module).
-> >>>>>
-> >>>>> DTS/DTSI - SOMs can actually run as they are that's why it is fair =
-to say that
-> >>>>> there doesn't need to be DTS representing the board.
-> >>>>
-> >>>> I have never seen a SoM which can run without elaborate hardware-hac=
-king
-> >>>> (e.g. connecting multiple wires to the SoM pins). The definition of =
-the
-> >>>> SoM is that it is a module. Module can be re-used, just like SoC.
-> >>>
-> >>> /me looks at his board farm...
+  Merge branch 'robot/pr-0-1700470117' into 'main' (2023-11-20 13:09:23 +0000)
 
-> >>> I guess there are (many) other examples...
-> >>
-> >> OK, I never had such in my hands. Anyway, the SoM which can run
-> >> standalone  has a meaning of a board, so how exactly you want to
-> >> rephrase the paragraph?
-> >
-> > What about?
-> >
-> > 2. If applicable: DTSI with common or re-usable parts of the hardware (=
-e.g.
-> > entire System-on-Module). DTS if runs standalone.
->
-> OK, but then it's duplicating the option 3. It also suggests that SoM
-> should be a DTS, which is not what we want for such case. Such SoMs must
-> have DTSI+DTS.
+are available in the Git repository at:
 
-So you want us to have a one-line <SoM>.dts, which just includes <SoM>.dtsi=
-?
-IMHO that adds more files for no much gain.
-Users of a SoM can easily include <SoM>.dts.
-'git grep "#include .*dts\>"' tells you we have plenty of users of that sch=
-eme.
+  https://github.com/jason-ch-chen/linux_fw_scp 8195-v2.0.23042
 
-Gr{oetje,eeting}s,
+for you to fetch changes up to ebebd79cb34038b0dcc964fbb4a07525b2b790aa:
 
-                        Geert
+  mediatek: Remove an unused packed library (2023-11-21 16:14:00 +0800)
 
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
+----------------------------------------------------------------
+Jason Chen (1):
+      mediatek: Remove an unused packed library
 
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+ mediatek/mt8195/scp.img | Bin 635448 -> 635532 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+
 
