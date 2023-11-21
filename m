@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA65C61D90
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 18:54:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4520EC61D85
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 21:38:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ODiuHgN7M/3JDAnpT89vj5beY9SryfK9Bf3VZ+lCLzE=; b=UrN7MZZF8EA4+Jx6U5PU5GeVwk
-	fq87Eag0K0n+Vota8iRNAFdmckr5XGVGE8Sa5ZIXJoBf/cnektcLJDBOBjlJZ/johTJCR/2AYrtnL
-	ZvTEv/o+DQrrzpSAnxkZvpdxaT+SMOMNhh4qhabjBM89gJeV+ZyviP7eH1N9QrNVS10dAVKop1lcw
-	+g4qf2pb8HitUU66/cTV3nVxw/NydldXcXtzjxBKPpY61/Yz+Ki5e4RjNtGGm/cj4la4oz+uXaNMQ
-	+2bz6ZWFHwRpIzyk27Kd8yfIB0pNHzgHpU1fzkbXcHna4BvnXn8WpwUjIS+QtY+Mpbql6/MmOSH+X
-	5Rv68D/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=b1dbGgMil5GBaDD7DAt3xV9GnAiiWogXOZfKagyDTBs=; b=RCmGWc1pO+cmae
+	3oNlcfL+fn+UiYC0ewdiVw96GlE6i+Q3OPgIoPtTACi/WBOFttGEMzT+4WAmW+Ix7VpdHlX3wRty3
+	+fm3rY8iUg97RnHnAAcv/o2uhNPJ4z9rqYBh88U8Fop4rGhltJJALjb2Zy8S41s3u1PAG4H5MA0dI
+	ktXrM3XmqQ5HSFR076YcgQeAI+h5MqmmcNde5dX1VKd/YSOuEmchL2MVKtg3oSE2mh7ZJQiJQ3/QZ
+	fBGVLaRQlXLkINg83cxAGd3t6DM8UU86J/VJQJbNyltJ3Tu77J5oAEn4YilWi0yqjm0lrrI2/4zOD
+	U5L2ZbWUuZJa0fgJ8Evw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5Vsw-00HWRD-09;
-	Tue, 21 Nov 2023 18:54:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r5YRY-0007ws-0e;
+	Tue, 21 Nov 2023 21:38:04 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5Vss-00HWQU-2v;
-	Tue, 21 Nov 2023 18:54:08 +0000
+	id 1r5YRT-0007w4-36;
+	Tue, 21 Nov 2023 21:38:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 99EE2619E3;
-	Tue, 21 Nov 2023 18:54:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E211C433C8;
-	Tue, 21 Nov 2023 18:54:00 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 5FADFB824DF;
+	Tue, 21 Nov 2023 21:37:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78A28C433C8;
+	Tue, 21 Nov 2023 21:37:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700592845;
-	bh=co9lMUzvw3BfxT6r7XtEhDDe5hhA8tulVxZdHRcAkE8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ISW9tAm/yGrJQpNo6XTzZkUNwdPwdPqYh/2v/hvXHUByZDPwQ2x45l+FnJg8xw3kz
-	 VZbZm7KoTgiEDbrLU9AekSnhiiCC3LTKiakbme3HPHemzht88vslNhl6XeS7sbAWip
-	 jAYCp0KSMXy/MqW2S8DpkDiutWV6gqpja3FuMgNkpwMHYrPeVwCmhWWAYY+Lua7Ceq
-	 q+ykpM9z9Le4JQ2Gt1lUOgWFwH1Lq1HHJYBxyVFSNL2cqfLCMF2TywHu0OyTPKfH1F
-	 Z7n5XSZ/nTZSlAVtjV7hEDbQwlSBf2IAV/b1UKGPaHHn3BifFxyjmzH+ASLEZZxks6
-	 iIuYq8OzNfbDg==
-Date: Tue, 21 Nov 2023 18:53:58 +0000
-From: Simon Horman <horms@kernel.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
- mt7530_setup_port5() if port 5 is disabled
-Message-ID: <20231121185358.GA16629@kernel.org>
-References: <20231118123205.266819-1-arinc.unal@arinc9.com>
- <20231118123205.266819-8-arinc.unal@arinc9.com>
+	s=k20201202; t=1700602677;
+	bh=kK9LzfZt6D3Gt4ZliyPofIg9r8bVnd54yLxBigI3P8Q=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=FSNOEppCFUuR8bEdizt5WFfa63bqJeeTsuMPB9YHGyagrl3KbEjJZvcyEI2ScJk8z
+	 AFYqJxId27DI6YNscx8+h//NL70SSdRaYKpIt0rPiMlElci7dFUdprtbRno+eG3vR1
+	 nAcGM1RtL4tUEMZ53b3jP+kpzTZSoI35ZlUefGgLW7We/QkQd5whew9Awg5cfVB6uk
+	 b5YdOZiuh0jOFkHi1fmXrgANf8I2LsKjkZC9wgNk1F7vdTRh1WnNEcXpQgVM99mOcr
+	 RbCwXiXqXFxWxbiPCEKFHRdnOprSqBF8kJNlCO2kyX6TpVq3mFWI7ERlb9ahlwWyxc
+	 VgMFCX9qz92yA==
+Date: Tue, 21 Nov 2023 15:37:55 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>
+Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
+	bhelgaas@google.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, skinsburskii@gmail.com
+Subject: Re: [PATCH] PCI: mediatek: Fix sparse warning caused to
+ virt_to_phys() prototype change
+Message-ID: <20231121213755.GA258354@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231118123205.266819-8-arinc.unal@arinc9.com>
+In-Reply-To: <170052362584.21270.8345708191142620624.stgit@skinsburskii.>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_105407_053795_F5C8E19F 
-X-CRM114-Status: GOOD (  21.95  )
+X-CRM114-CacheID: sfid-20231121_133800_167290_00538008 
+X-CRM114-Status: GOOD (  19.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,72 +71,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, mithat.guner@xeront.com, Russell King <linux@armlinux.org.uk>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 18, 2023 at 03:31:57PM +0300, Arınç ÜNAL wrote:
-> There's no need to run all the code on mt7530_setup_port5() if port 5 is
-> disabled. The only case for calling mt7530_setup_port5() from
-> mt7530_setup() is when PHY muxing is enabled. That is because port 5 is not
-> defined as a port on the devicetree, therefore, it cannot be controlled by
-> phylink.
+On Mon, Nov 20, 2023 at 03:40:33PM -0800, Stanislav Kinsburskii wrote:
+> Explicitly cast __iomem pointer to const void* with __force to fix the
+> following warning:
 > 
-> Because of this, run mt7530_setup_port5() if priv->p5_intf_sel is
-> P5_INTF_SEL_PHY_P0 or P5_INTF_SEL_PHY_P4. Remove the P5_DISABLED case from
-> mt7530_setup_port5().
-> 
-> Stop initialising the interface variable as the remaining cases will always
-> call mt7530_setup_port5() with it initialised.
-> 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+>   warning: incorrect type in argument 1 (different address spaces)
+>      expected void const volatile *address
+>      got void [noderef] __iomem *
+
+I have two questions about this:
+
+  1) There's no other use of __force in drivers/pci, so I don't know
+  what's special about pcie-mediatek.c.  There should be a way to fix
+  the types so it's not needed.
+
+  2) virt_to_phys() is not quite right to begin with because what we
+  want is a *bus* address, not the CPU physical address we get from
+  virt_to_phys().  Obviously the current platforms that use this must
+  not apply any offset between bus and CPU physical addresses, but
+  it's not something we should rely on.
+
+  There are only three drivers (pci-aardvark.c, pcie-xilinx.c, and
+  this one) that use virt_to_phys(), and they're all slightly wrong
+  here.
+
+The *_compose_msi_msg() methods could use a little more consistency
+across the board.
+
+> Signed-off-by: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>
 > ---
->  drivers/net/dsa/mt7530.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
+>  drivers/pci/controller/pcie-mediatek.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index fc87ec817672..1aab4c3f28b0 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -942,9 +942,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
->  		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
->  		val &= ~MHWTRAP_P5_DIS;
->  		break;
-> -	case P5_DISABLED:
-> -		interface = PHY_INTERFACE_MODE_NA;
-> -		break;
->  	default:
->  		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
->  			priv->p5_intf_sel);
-> @@ -2313,8 +2310,6 @@ mt7530_setup(struct dsa_switch *ds)
->  		 * Set priv->p5_intf_sel to the appropriate value if PHY muxing
->  		 * is detected.
->  		 */
-> -		interface = PHY_INTERFACE_MODE_NA;
-> -
->  		for_each_child_of_node(dn, mac_np) {
->  			if (!of_device_is_compatible(mac_np,
->  						     "mediatek,eth-mac"))
-> @@ -2346,7 +2341,9 @@ mt7530_setup(struct dsa_switch *ds)
->  			break;
->  		}
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 66a8f73296fc..27f0f79810a1 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -397,7 +397,7 @@ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+>  	phys_addr_t addr;
 >  
-> -		mt7530_setup_port5(ds, interface);
-> +		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 ||
-> +		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
-> +			mt7530_setup_port5(ds, interface);
-
-Hi Arınç,
-
-It appears that interface is now uninitialised here.
-
-Flagged by Smatch.
-
->  	}
+>  	/* MT2712/MT7622 only support 32-bit MSI addresses */
+> -	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+> +	addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+>  	msg->address_hi = 0;
+>  	msg->address_lo = lower_32_bits(addr);
 >  
->  #ifdef CONFIG_GPIOLIB
-> -- 
-> 2.40.1
+> @@ -520,7 +520,7 @@ static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
+>  	u32 val;
+>  	phys_addr_t msg_addr;
+>  
+> -	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+> +	msg_addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+>  	val = lower_32_bits(msg_addr);
+>  	writel(val, port->base + PCIE_IMSI_ADDR);
+>  
+> 
+> 
 > 
 
