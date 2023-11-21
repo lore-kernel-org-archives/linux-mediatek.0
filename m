@@ -4,69 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8FF3C61D94
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 13:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3178EC61D92
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 13:25:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sP44+g1bH/qOSRtOIwRMmcTWlqOFMISlukISmRUTZhQ=; b=DKUcGxIW+WLqCKtHnsdDxfOU5O
-	OmALDz8U3krGTtXQZftA04/zs8OcelSuRAF3jimyMCGJzWLB4aCkK2gL9I1pz+Ks9EwBXYRhyN9Sb
-	axU8+raB4krcCs1rRk40CAQqlr3VVmtu61cz0XEHdgFUKVev+W7oxXZF1P2ZNIxgXtd8UTePT8rTt
-	vprKxblqke0fCpF+/drqFNdApXAfz65htDGQH5wzpbXXhEbo3D8EruI6nVD6P6jfa7K3KMHj9EGfD
-	IQYuvkNrOYstaIX49x0zYQAItgEHEluhMOHa1I0NM8OagyNPLh5/ZVhkowU8BvvJ4cplnN9shH3ow
-	J4hZYSjg==;
+	bh=m92K+MDAt/mcnsYqpnD286mgL18e1jbSNxgzizE2vc0=; b=s0ZozPi4i+P0FwbI850388srnV
+	M2D0UBRj+Prfh83nJ4Zhsls0X7iIyV3YMzKUlvhnT9ugCzoDOcGNgobjY7ezj7+K5sReWVxcU8esm
+	nALJ/6FpGOZjze7HwKqLVuBGloCQVliD61LwV6wjbFiLy6zrqrutqgqHp4jY+qFFOo1S3m0O8YxUm
+	KxKJFGrLKKgRMhwB9UQg6wqEpDQ0Mjl9Gq4xswyudxEpOKzKot/Vb5V+oQPXXp9hlqRfZoxpe/Npl
+	6TTTHy+JYxmnI5pOQDzp9dqNZY0bsixAdtPuzk061DRTzyJj88HShwKUjvaRYZ8IVRz918SjM+5bR
+	ZrqBbQqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5QNV-00GmIc-3A;
-	Tue, 21 Nov 2023 13:01:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r5Qkr-00GogS-0G;
+	Tue, 21 Nov 2023 13:25:29 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PMr-00Gczu-0b;
-	Tue, 21 Nov 2023 11:56:39 +0000
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 25571660731B;
-	Tue, 21 Nov 2023 11:56:35 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700567796;
-	bh=lCOeXkBHj3GxnYKp57VPx13B7VONqu2PAmr9JmQp0B4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=adLi8EjKU/pSSuIY0oiyYNLp8EDYc9ZOZmpiLT2preSIyZXYbdqe/f3QcenB0qnxR
-	 x904L8s4XMPEPapwPWm9sBV42g2Xg7wy0d9r3TQxMl1V4VFk4iO3qsZy9EkJmBqhy/
-	 EHdq+yy6N/ue4/g2rP0cLUrBDOKTFqAmDy94ejVs8kADInhQnleoekW7tcN4CBZWor
-	 A/ZiPikB5ughWo0rJ9olbxh4Ty4sRX7y1623z9QEABaRUJPBZt6VdFAFAv1uQTVR/D
-	 Lw6vD8rH1wOIqbDdP+YLdzsEQhurzWPalpkRsMiJ7/lW7y/jzOsw9kXk9xEykBYqBA
-	 V0Z1dotceCbAw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	robh+dt@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	p.zabel@pengutronix.de,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	wenst@chromium.org
-Subject: [PATCH v2 04/20] soc: mediatek: mtk-svs: Build bank name string dynamically
-Date: Tue, 21 Nov 2023 12:56:08 +0100
-Message-ID: <20231121115624.56855-5-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231121115624.56855-1-angelogioacchino.delregno@collabora.com>
-References: <20231121115624.56855-1-angelogioacchino.delregno@collabora.com>
+	id 1r5Qko-00Gof8-0G;
+	Tue, 21 Nov 2023 13:25:27 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-54917ef6c05so117910a12.1;
+        Tue, 21 Nov 2023 05:25:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700573120; x=1701177920; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=m92K+MDAt/mcnsYqpnD286mgL18e1jbSNxgzizE2vc0=;
+        b=WlKB4Di25U9MSggXH+1IZkuZjgPWFu4I2+tLjUe6UcFG49Oxt70fug25/xkVBbQ6Zw
+         1EgPwSw39+b3UqGTS3Mk9dvCiQ1yjMUxts0m4fHq5YnztOwN3ptAUuuByXL1hox2N8nx
+         i3Lfg3D19AQMyz4iKpntTRfN5XWuxMJ54eQQ74sgrsmo3urG01gRuzRQFtgdPk8luQRq
+         2Lq0AWKD5Gl6NBZZW6/sOjrDF3lAkBilBl9/1uz1ICYPVrxOKxpjV3dfGAYA1WfHy5LA
+         HllQeJ44sXIjqs2MrU9jv3zXlIeNA1P85DN6ICEpvESw6xGPyONYWPP4xthrw+0gILsS
+         EvnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700573120; x=1701177920;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=m92K+MDAt/mcnsYqpnD286mgL18e1jbSNxgzizE2vc0=;
+        b=pd/cGU1ds6BJby+ErnHAwcg7ygOKy4cg0/bLnA3+mflCo6jxi7EXGUHCbpW4hry19R
+         UKYUerHizpP2PFvC4x+LgMlPtxtxHtPRXe5W52RLIUXs8c07DFcv3YF4XHXLafJU8Ah9
+         RK8uyOJAkHkFwib3rp+1HDbFOHELblsQfn47OEI8MF+iJW85ugucLL4KRPGfLrgG6Fv7
+         79eYVjt4f/wKc8qh5ZWk42+zQg/3R1AzekfdJWU0bAxkcGEFH0kUe4BJB58qjMHwoNI6
+         g5FrfxVp62NJmU2KAKFbk01G5b7+SsOq8m9sajAtucoUeFHoS/CNqtbiNjvvQbbZgjJs
+         5kMQ==
+X-Gm-Message-State: AOJu0YwPJERBk6Mn7cjqb7xzaq9XVKMM/ZPTKQqMQaA7rR5ekNmAlePp
+	0eU5tAt3rjOsyCStqsQ4x1Q=
+X-Google-Smtp-Source: AGHT+IFeVg0d+ORZfLoV2hl/dUB5IqhT2S/nhE3hYYfAZSZypJJtkrq2Fw+2ndptvfPv114T0zoi/Q==
+X-Received: by 2002:aa7:d8cc:0:b0:540:97b5:3719 with SMTP id k12-20020aa7d8cc000000b0054097b53719mr1597855eds.25.1700573119970;
+        Tue, 21 Nov 2023 05:25:19 -0800 (PST)
+Received: from ?IPV6:2a01:c23:c095:ed00:bc3d:5c69:4067:a24b? (dynamic-2a01-0c23-c095-ed00-bc3d-5c69-4067-a24b.c23.pool.telefonica.de. [2a01:c23:c095:ed00:bc3d:5c69:4067:a24b])
+        by smtp.googlemail.com with ESMTPSA id j19-20020aa7ca53000000b005488ae52752sm3212156edt.18.2023.11.21.05.25.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 21 Nov 2023 05:25:19 -0800 (PST)
+Message-ID: <c636a24f-0390-49a2-9012-9abf9794abc3@gmail.com>
+Date: Tue, 21 Nov 2023 13:25:18 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [Intel-gfx] [PATCH v4 00/20] remove I2C_CLASS_DDC support
+To: Jani Nikula <jani.nikula@linux.intel.com>, Wolfram Sang <wsa@kernel.org>,
+ intel-gfx@lists.freedesktop.org
+Cc: linux-fbdev@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Yongqin Liu <yongqin.liu@linaro.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Marijn Suijten <marijn.suijten@somainline.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>, amd-gfx@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>, linux-sunxi@lists.linux.dev,
+ Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Jocelyn Falempe <jfalempe@redhat.com>, linux-kernel@vger.kernel.org,
+ linux-i2c@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ John Stultz <jstultz@google.com>, freedreno@lists.freedesktop.org,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+References: <20231120214624.9378-1-hkallweit1@gmail.com>
+ <87h6lfo53n.fsf@intel.com>
+Content-Language: en-US
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Autocrypt: addr=hkallweit1@gmail.com; keydata=
+ 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
+In-Reply-To: <87h6lfo53n.fsf@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_035637_390046_4C6331D6 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20231121_052526_121880_5A5A0F44 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,89 +150,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In svs_bank_resource_setup() there is a "big" switch assigning different
-names depending on sw_id and type and this will surely grow: for example
-MT8186 has got a two-line type (high/low) SVS bank for CPU_BIG, and this
-would require more switch nesting.
+On 21.11.2023 09:58, Jani Nikula wrote:
+> On Mon, 20 Nov 2023, Heiner Kallweit <hkallweit1@gmail.com> wrote:
+>> v4:
+>> - more ack and review tags
+> 
+> Please do not send new versions just to record the acks and
+> reviews. They should be added while applying the patches.
+> 
+Right, typically also patchwork interprets and shows A-b and R-b when
+sent as a reply to a patch of the series. I sent a new version because
+an A-b covered multiple patches and was sent as reply to the cover letter.
 
-Simplify all of this by changing that to a devm_kasprintf() call that
-will concatenate the SW_ID string (e.g. SVSB_CPU_LITTLE) with the Type
-string (e.g. _LOW), resulting in the expected full bank name (e.g.
-SVSB_CPU_LITTLE_LOW).
-
-This being a dynamic allocation can be slower, but this happens only
-once in the life of this driver and it's not a performance path, so it's
-totally acceptable.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-svs.c | 39 +++++++++++++++-------------------
- 1 file changed, 17 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index ddbb9ba3e47d..1c7592fd6ae7 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -332,6 +332,14 @@ static const u32 svs_regs_v2[] = {
- 	[THSLPEVEB]		= 0x330,
- };
- 
-+static const char * const svs_swid_names[SVSB_SWID_MAX] = {
-+	"SVSB_CPU_LITTLE", "SVSB_CPU_BIG", "SVSB_CCI", "SVSB_GPU"
-+};
-+
-+static const char * const svs_type_names[SVSB_TYPE_MAX] = {
-+	"", "_LOW", "_HIGH"
-+};
-+
- /**
-  * struct svs_platform - svs platform control
-  * @base: svs platform register base
-@@ -1696,34 +1704,21 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
- 	for (idx = 0; idx < svsp->bank_max; idx++) {
- 		svsb = &svsp->banks[idx];
- 
--		switch (svsb->sw_id) {
--		case SVSB_SWID_CPU_LITTLE:
--			svsb->name = "SVSB_CPU_LITTLE";
--			break;
--		case SVSB_SWID_CPU_BIG:
--			svsb->name = "SVSB_CPU_BIG";
--			break;
--		case SVSB_SWID_CCI:
--			svsb->name = "SVSB_CCI";
--			break;
--		case SVSB_SWID_GPU:
--			if (svsb->type == SVSB_TYPE_HIGH)
--				svsb->name = "SVSB_GPU_HIGH";
--			else if (svsb->type == SVSB_TYPE_LOW)
--				svsb->name = "SVSB_GPU_LOW";
--			else
--				svsb->name = "SVSB_GPU";
--			break;
--		default:
--			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
-+		if (svsb->sw_id >= SVSB_SWID_MAX || svsb->type >= SVSB_TYPE_MAX) {
-+			dev_err(svsb->dev, "unknown bank sw_id or type\n");
- 			return -EINVAL;
- 		}
- 
--		svsb->dev = devm_kzalloc(svsp->dev, sizeof(*svsb->dev),
--					 GFP_KERNEL);
-+		svsb->dev = devm_kzalloc(svsp->dev, sizeof(*svsb->dev), GFP_KERNEL);
- 		if (!svsb->dev)
- 			return -ENOMEM;
- 
-+		svsb->name = devm_kasprintf(svsp->dev, GFP_KERNEL, "%s%s",
-+					    svs_swid_names[svsb->sw_id],
-+					    svs_type_names[svsb->type]);
-+		if (!svsb->name)
-+			return -ENOMEM;
-+
- 		ret = dev_set_name(svsb->dev, "%s", svsb->name);
- 		if (ret)
- 			return ret;
--- 
-2.42.0
-
+> Thanks,
+> Jani.
+> 
+Heiner
 
