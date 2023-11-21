@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E0ABC61D92
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A453BC61D93
 	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:57:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kIJdT42QVXwbr3edN045kFIxJFSYVuxtTPY35Vt4efg=; b=JrRsWMNe3LTHiZZRoPiCSmlIn6
-	32cT5KPEzZQ1mHyH2GHqk5kzWJrKtS7h95iTh1t9pyLncAUQfjgrez1DAKa6wplfMTnruJ3OP/3N8
-	CFsPg/ro3xyNf1Ogw5PUfZ9boYpXwb1PHGIWKnuHKVMXMGWKDk6ko1nXPYh9k7/x5VqRdMcGnVwvL
-	msM9bLPhEzkeXC6EJEjdm/sn0Yk6DsmuAcwxTOWsIalx+QXZh3KNmQCgQOvI9EXRm0E3yfOGtZNkS
-	g69bEo9esljTjn8EBACij7rgLRa24jXfLh+p3XJNNy9ydKrYCZN21aMnDfJwCcRe0bMgDQWMnkPTM
-	AQATlgHw==;
+	bh=dloUf1foTLvmfIU52Wp1Zyxe4yiIJTvKjylKM09rNkQ=; b=ErBJz0NikSYhPrR0xbAXs+rdUV
+	TP6zlwvhoTkWMqgJyMpEeH80X09ktSD3ZIp3HQfXQm6LQUUtipmb8YfBVoEFWG4C7bKsfiFT0O0VY
+	eFLsH6rXESAdYZ6NnABvvH7a03R/qUbrKeBSO9HfuRxUxCVA4e6nOVN8WigNmOLeudOMdZwVGAgVo
+	G2V1EJXpxze6WnLWfs3C+jl0pGb24bfrdmovNL4Ynuvm/MRmePYx095hPMn9Se7pRyfGfm/nWyv9D
+	mgoBZ0hnHmA+L0Ez4L++e5dwv8ZBUS+ZHkWhfcAn2R0WF/D+97nlEGEfz82UZxrMtYdlmJBafX6+K
+	50lJ67fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PNQ-00GdVK-12;
-	Tue, 21 Nov 2023 11:57:12 +0000
+	id 1r5PNR-00GdW8-1O;
+	Tue, 21 Nov 2023 11:57:13 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PMv-00Gd3e-0v;
+	id 1r5PMu-00Gd2o-0n;
 	Tue, 21 Nov 2023 11:56:44 +0000
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3F33D6607323;
-	Tue, 21 Nov 2023 11:56:39 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 393646607286;
+	Tue, 21 Nov 2023 11:56:38 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700567800;
-	bh=n+I9YOPDM99MnwpUCp/Jyp5QiCWQ9S9IzP9LXdnM4XE=;
+	s=mail; t=1700567799;
+	bh=y4hC7rjcvzTRTeQC8pyo7KQ1ZhxtsknG+ldiwzI/d40=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AAip3lX8sainuX5kpVdTIrGCqKuS6Q4JEdymjzNCyX6p5R1ldIL5l5QjdevQ7ANDT
-	 6fH5FjFcBrylxvPMSwvi2ISCwFQu0Hiedm73yvbd0Cc3krTXSTjyaIbCAEFJvIvv5y
-	 8IAdg7aVKFvLlxlwJl+bH7qcRInxOp7Qf8XLNq3rZXLtXsK0b4Apl+m6KgVFtTObbe
-	 HICu6OcbM9msMBbTz4EsE8OCItJ1m7+6C+PqRUrsFwuG8mkBkhjIoLDfZfcvvYRIBt
-	 SqOo4+YI3/KawA7hNDwDMsp/Lgq4yXlcmoPW4xaAkphx9J3TLPlc2pN00WVX1RH/5S
-	 VgqiJAkqfc1/w==
+	b=a4lEWDUBYAYOdtl+gW2+VN8SHrWi3YN7fv79PVM5uX19xytbyS1mmkLyq/qd3sY4s
+	 wxAYfOp1mlNj5U/293LYIlWMO0RIQEC2mvzFrIHM0PJPFF7SfS0JXjPet3bgY6n8uC
+	 +Dr9sV7J2WxoMPb5BTK+xtk1lZU1CLn5oIkM74b3YDlDLzHXD2ypqrJjQExfSeFdaY
+	 /r3Jmh1MtaayI+cKLtFN60D2AKPKjIHAg5WLJgf5z6TlzWBEEM1FpvLUpF4G68f+di
+	 bDyJAPGnduKJqNfPi3+Znkxpt0wWbPodDhqVKrG2AZBjlA8PVDjCe5MWI+x+vsXBO3
+	 jkMhyJ7quSbsw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -56,17 +56,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v2 08/20] soc: mediatek: mtk-svs: Add SVS-Thermal coefficient to SoC platform data
-Date: Tue, 21 Nov 2023 12:56:12 +0100
-Message-ID: <20231121115624.56855-9-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 07/20] soc: mediatek: mtk-svs: Add a map to retrieve fused values
+Date: Tue, 21 Nov 2023 12:56:11 +0100
+Message-ID: <20231121115624.56855-8-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231121115624.56855-1-angelogioacchino.delregno@collabora.com>
 References: <20231121115624.56855-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_035641_468839_547B82F4 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20231121_035640_573267_52AEF715 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,99 +81,280 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for commonizing the efuse parsing function, add the
-SVS-Thermal coefficients for all SoCs for which said function can be
-commonized (MT8186, MT8188, MT8192, MT8195) and assign those to their
-platform data structure.
-That will be used to calculate the MTS parameter with the equation
-                     MTS = (ts_coeff * 2) / 1000
+In preparation for adding a common efuse parsing function which will
+greatly reduce code duplication, add a SoC-specific mapping that will
+be used to retrieve the right SVS calibration values from the fuses.
+The maps are two: one is a Global Map used for reading parameters that
+are SVS-global, and one is a Bank Map for reading calibrations for
+each SVS Bank.
 
-This commit brings no functional changes.
+While at it, also populate the map in the platform data for each SoC.
+
+Being this a preparation commit, there are no functional changes.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/soc/mediatek/mtk-svs.c | 87 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 87 insertions(+)
 
 diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 6c6f133c327f..ab564d48092b 100644
+index b5beb33c95ba..6c6f133c327f 100644
 --- a/drivers/soc/mediatek/mtk-svs.c
 +++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -118,6 +118,10 @@
- #define SVSB_VOPS_FLD_VOP2_6		GENMASK(23, 16)
- #define SVSB_VOPS_FLD_VOP3_7		GENMASK(31, 24)
- 
-+/* SVS Thermal Coefficients */
-+#define SVSB_TS_COEFF_MT8195		250460
-+#define SVSB_TS_COEFF_MT8186		204650
-+
- /* svs bank related setting */
- #define BITS8				8
- #define MAX_OPP_ENTRIES			16
-@@ -374,6 +378,7 @@ struct svs_fusemap {
-  * @bank_max: total number of svs banks
-  * @efuse: svs efuse data received from NVMEM framework
-  * @tefuse: thermal efuse data received from NVMEM framework
-+ * @ts_coeff: thermal sensors coefficient
-  */
- struct svs_platform {
- 	void __iomem *base;
-@@ -388,6 +393,7 @@ struct svs_platform {
- 	u32 bank_max;
- 	u32 *efuse;
- 	u32 *tefuse;
-+	u32 ts_coeff;
+@@ -340,6 +340,26 @@ static const char * const svs_type_names[SVSB_TYPE_MAX] = {
+ 	"", "_LOW", "_HIGH"
  };
  
- struct svs_platform_data {
-@@ -398,6 +404,7 @@ struct svs_platform_data {
- 	const struct svs_fusemap *glb_fuse_map;
++enum svs_fusemap_dev {
++	BDEV_BDES,
++	BDEV_MDES,
++	BDEV_MTDES,
++	BDEV_DCBDET,
++	BDEV_DCMDET,
++	BDEV_MAX
++};
++
++enum svs_fusemap_glb {
++	GLB_FT_PGM,
++	GLB_VMIN,
++	GLB_MAX
++};
++
++struct svs_fusemap {
++	s8 index;
++	u8 ofst;
++};
++
+ /**
+  * struct svs_platform - svs platform control
+  * @base: svs platform register base
+@@ -375,12 +395,14 @@ struct svs_platform_data {
+ 	struct svs_bank *banks;
+ 	bool (*efuse_parsing)(struct svs_platform *svsp);
+ 	int (*probe)(struct svs_platform *svsp);
++	const struct svs_fusemap *glb_fuse_map;
  	const u32 *regs;
  	u32 bank_max;
-+	u32 ts_coeff;
  };
  
  /**
-@@ -2926,6 +2933,7 @@ static const struct svs_platform_data svs_mt8195_platform_data = {
+  * struct svs_bank - svs bank representation
++ * @dev_fuse_map: Bank fuse map data
+  * @dev: bank device
+  * @opp_dev: device for opp table/buck control
+  * @init_completion: the timeout completion for bank init
+@@ -444,6 +466,7 @@ struct svs_platform_data {
+  * opp_volt[i] = (volt[i] * volt_step) + volt_base;
+  */
+ struct svs_bank {
++	const struct svs_fusemap *dev_fuse_map;
+ 	struct device *dev;
+ 	struct device *opp_dev;
+ 	struct completion init_completion;
+@@ -2457,6 +2480,9 @@ static struct svs_bank svs_mt8195_banks[] = {
+ 		.core_sel		= 0x0fff0100,
+ 		.int_st			= BIT(0),
+ 		.ctl0			= 0x00540003,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 10, 16 }, { 10, 24 }, { 10, 0 }, { 8, 0 }, { 8, 8 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_GPU,
+@@ -2486,6 +2512,9 @@ static struct svs_bank svs_mt8195_banks[] = {
+ 		.tzone_htemp_voffset	= 0,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 7,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 9, 16 }, { 9, 24 }, { 9, 0 }, { 8, 0 }, { 8, 8 }
++		},
+ 	},
+ };
+ 
+@@ -2517,6 +2546,9 @@ static struct svs_bank svs_mt8192_banks[] = {
+ 		.tzone_htemp_voffset	= 0,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 7,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 10, 16 }, { 10, 24 }, { 10, 0 }, { 17, 0 }, { 17, 8 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_GPU,
+@@ -2546,6 +2578,9 @@ static struct svs_bank svs_mt8192_banks[] = {
+ 		.tzone_htemp_voffset	= 0,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 7,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 9, 16 }, { 9, 24 }, { 17, 0 }, { 17, 16 }, { 17, 24 }
++		}
+ 	},
+ };
+ 
+@@ -2572,6 +2607,9 @@ static struct svs_bank svs_mt8188_banks[] = {
+ 		.core_sel		= 0x0fff0000,
+ 		.int_st			= BIT(0),
+ 		.ctl0			= 0x00100003,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 5, 16 }, { 5, 24 }, { 5, 0 }, { 15, 16 }, { 15, 24 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_GPU,
+@@ -2601,6 +2639,9 @@ static struct svs_bank svs_mt8188_banks[] = {
+ 		.tzone_htemp_voffset	= 0,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 7,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 4, 16 }, { 4, 24 }, { 4, 0 }, { 14, 0 }, { 14, 8 }
++		}
+ 	},
+ };
+ 
+@@ -2629,6 +2670,9 @@ static struct svs_bank svs_mt8186_banks[] = {
+ 		.core_sel		= 0x0fff0100,
+ 		.int_st			= BIT(0),
+ 		.ctl0			= 0x00540003,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 3, 16 }, { 3, 24 }, { 3, 0 }, { 14, 16 }, { 14, 24 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_CPU_BIG,
+@@ -2660,6 +2704,9 @@ static struct svs_bank svs_mt8186_banks[] = {
+ 		.tzone_htemp_voffset	= 8,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 8,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 2, 16 }, { 2, 24 }, { 2, 0 }, { 13, 0 }, { 13, 8 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_CPU_LITTLE,
+@@ -2689,6 +2736,9 @@ static struct svs_bank svs_mt8186_banks[] = {
+ 		.tzone_htemp_voffset	= 8,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 8,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 4, 16 }, { 4, 24 }, { 4, 0 }, { 14, 0 }, { 14, 8 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_CCI,
+@@ -2717,6 +2767,9 @@ static struct svs_bank svs_mt8186_banks[] = {
+ 		.tzone_htemp_voffset	= 8,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 8,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 5, 16 }, { 5, 24 }, { 5, 0 }, { 15, 16 }, { 15, 24 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_GPU,
+@@ -2744,6 +2797,9 @@ static struct svs_bank svs_mt8186_banks[] = {
+ 		.tzone_htemp_voffset	= 8,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 7,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 6, 16 }, { 6, 24 }, { 6, 0 }, { 15, 8 }, { 15, 0 }
++		}
+ 	},
+ };
+ 
+@@ -2771,6 +2827,9 @@ static struct svs_bank svs_mt8183_banks[] = {
+ 		.core_sel		= 0x8fff0000,
+ 		.int_st			= BIT(0),
+ 		.ctl0			= 0x00010001,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 16, 0 }, { 16, 8 }, { 17, 16 }, { 16, 16 }, { 16, 24 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_CPU_BIG,
+@@ -2795,6 +2854,9 @@ static struct svs_bank svs_mt8183_banks[] = {
+ 		.core_sel		= 0x8fff0001,
+ 		.int_st			= BIT(1),
+ 		.ctl0			= 0x00000001,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 18, 0 }, { 18, 8 }, { 17, 0 }, { 18, 16 }, { 18, 24 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_CCI,
+@@ -2818,6 +2880,9 @@ static struct svs_bank svs_mt8183_banks[] = {
+ 		.core_sel		= 0x8fff0002,
+ 		.int_st			= BIT(2),
+ 		.ctl0			= 0x00100003,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 4, 0 }, { 4, 8 }, { 5, 16 }, { 4, 16 }, { 4, 24 }
++		}
+ 	},
+ 	{
+ 		.sw_id			= SVSB_SWID_GPU,
+@@ -2848,6 +2913,9 @@ static struct svs_bank svs_mt8183_banks[] = {
+ 		.tzone_htemp_voffset	= 0,
+ 		.tzone_ltemp		= 25000,
+ 		.tzone_ltemp_voffset	= 3,
++		.dev_fuse_map		= (const struct svs_fusemap[BDEV_MAX]) {
++			{ 6, 0 }, { 6, 8 }, { 5, 0 }, { 6, 16 }, { 6, 24 }
++		}
+ 	},
+ };
+ 
+@@ -2858,6 +2926,9 @@ static const struct svs_platform_data svs_mt8195_platform_data = {
  	.probe = svs_mt8192_platform_probe,
  	.regs = svs_regs_v2,
  	.bank_max = ARRAY_SIZE(svs_mt8195_banks),
-+	.ts_coeff = SVSB_TS_COEFF_MT8195,
- 	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
- 		{ 0, 0 }, { 19, 4 }
- 	}
-@@ -2938,6 +2946,7 @@ static const struct svs_platform_data svs_mt8192_platform_data = {
++	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
++		{ 0, 0 }, { 19, 4 }
++	}
+ };
+ 
+ static const struct svs_platform_data svs_mt8192_platform_data = {
+@@ -2867,6 +2938,10 @@ static const struct svs_platform_data svs_mt8192_platform_data = {
  	.probe = svs_mt8192_platform_probe,
  	.regs = svs_regs_v2,
  	.bank_max = ARRAY_SIZE(svs_mt8192_banks),
-+	.ts_coeff = SVSB_TS_COEFF_MT8195,
- 	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
- 		/* FT_PGM not present */
- 		{ -1, 0 }, { 19, 4 }
-@@ -2951,6 +2960,7 @@ static const struct svs_platform_data svs_mt8188_platform_data = {
++	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
++		/* FT_PGM not present */
++		{ -1, 0 }, { 19, 4 }
++	}
+ };
+ 
+ static const struct svs_platform_data svs_mt8188_platform_data = {
+@@ -2876,6 +2951,10 @@ static const struct svs_platform_data svs_mt8188_platform_data = {
  	.probe = svs_mt8192_platform_probe,
  	.regs = svs_regs_v2,
  	.bank_max = ARRAY_SIZE(svs_mt8188_banks),
-+	.ts_coeff = SVSB_TS_COEFF_MT8195,
- 	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
- 		/* FT_PGM and VMIN not present */
- 		{ -1, 0 }, { -1, 0 }
-@@ -2964,6 +2974,7 @@ static const struct svs_platform_data svs_mt8186_platform_data = {
++	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
++		/* FT_PGM and VMIN not present */
++		{ -1, 0 }, { -1, 0 }
++	}
+ };
+ 
+ static const struct svs_platform_data svs_mt8186_platform_data = {
+@@ -2885,6 +2964,10 @@ static const struct svs_platform_data svs_mt8186_platform_data = {
  	.probe = svs_mt8186_platform_probe,
  	.regs = svs_regs_v2,
  	.bank_max = ARRAY_SIZE(svs_mt8186_banks),
-+	.ts_coeff = SVSB_TS_COEFF_MT8186,
- 	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
- 		/* FT_PGM and VMIN not present */
- 		{ -1, 0 }, { -1, 0 }
-@@ -3021,6 +3032,7 @@ static int svs_probe(struct platform_device *pdev)
- 	svsp->banks = svsp_data->banks;
- 	svsp->regs = svsp_data->regs;
- 	svsp->bank_max = svsp_data->bank_max;
-+	svsp->ts_coeff = svsp_data->ts_coeff;
++	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
++		/* FT_PGM and VMIN not present */
++		{ -1, 0 }, { -1, 0 }
++	}
+ };
  
- 	ret = svsp_data->probe(svsp);
- 	if (ret)
+ static const struct svs_platform_data svs_mt8183_platform_data = {
+@@ -2894,6 +2977,10 @@ static const struct svs_platform_data svs_mt8183_platform_data = {
+ 	.probe = svs_mt8183_platform_probe,
+ 	.regs = svs_regs_v2,
+ 	.bank_max = ARRAY_SIZE(svs_mt8183_banks),
++	.glb_fuse_map = (const struct svs_fusemap[GLB_MAX]) {
++		/* VMIN not present */
++		{ 0, 4 }, { -1, 0 }
++	}
+ };
+ 
+ static const struct of_device_id svs_of_match[] = {
 -- 
 2.42.0
 
