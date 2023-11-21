@@ -4,67 +4,197 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46888C61D92
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0F7CC61D92
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:54:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oW4z++c/6bYWpDs/L6wyxCfGGit49aw3hOpJcyUVze0=; b=fSNMykVceSAF2klQqEjXxkw1Rs
-	yspvfR2YDFT4TcgcU18/dd62E3WpYPxgygWCWhu/hDtZw1abbedC1EpIeu4AVfJUwrts5KREhhzcy
-	29HUeknzqeiEoiZhKD1+IALJKYVAdjX+/arOS3hJft22czBV099QyPLX810HEwNFkehO6JaCsA6sA
-	uoH2pO4xDAh4cTQnp0BFAUMCqIW8lX5q1QHAuBDl+eTn9HOn2HIoyMFRdXrh02y/i6MJpBvLRwKEL
-	MQ1HHyxKvVqog10CgX/+0qqEIZSzsOY8C21U7JwxaF3QaGGni1hFxFNgoHPF6ZFokGYkaabX8jQXQ
-	heH0OE9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5lStOlIlqfirhdnpECXOEIXymXzsntWjoyR48zuzVr4=; b=ZxVke9YkB3W4bLACA4Du4eNjeK
+	gWqH+nrlKBS9k0QbENFMKNIfM9l8wHy9gScoMS9o5QnWou5CVkW7Es1IMLL4kMc1FTn6sk8tJo9wc
+	X3x73GKnMQH+m629hKyTZnCM3C3HSkepnfkaO+wsnrBgmak0FVpNA5H+keWG9TAsEWXEHsiVhnQm7
+	gZjwwAF+F+hRoquC/LqWysWbwNRqfq3k7UYwUMqdFtDWI70IEgmyM8POx5DiN4BrP6AKc7Ryyoivf
+	ci5Duq5YuwXqntIvgfYEil/jVoQOfomYzp3W4xXzxNJuPZksQ6TfJoVnWD+98olIV056vEs7GZR/z
+	E8Mke5Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PJk-00Gc0A-2p;
-	Tue, 21 Nov 2023 11:53:24 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r5PKg-00GcCA-1z;
+	Tue, 21 Nov 2023 11:54:22 +0000
+Received: from mail-bn7nam10on20621.outbound.protection.outlook.com ([2a01:111:f400:7e8a::621] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PJe-00Gbzi-2c;
-	Tue, 21 Nov 2023 11:53:23 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 022146607319;
-	Tue, 21 Nov 2023 11:53:13 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700567594;
-	bh=r2OfKYSY0IIZze1pqymud71iXJ+7qufWv9NY6ZIlgIo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XU350LB9JQNkJwmJqc7rjOQQQFz6Yl/xDDYAjKepC4XsTKv07ctBfg2qMV+nHw+bF
-	 o5PP7kjiFIjxC9Cjcd4it++XPUNzOyArvLUyNPoEnsjTFhaQP24gA7+WpMqPFckUsH
-	 iwwuXh2pFJxAwc9bjUuSs7d3A4IWLJO1174saKzdLPu0AGpiTIPIs83iJOXMyUjqRG
-	 k51uqJ1RlvoEh8rqraDIs16Y0b16k5+CYEg4uzuv/ACG73XlkDHlfXxKS6vCukYBtq
-	 6Ovp2Vqo2ID6e/tWWyW/3Uj8IhSvjtUhZhZSzBdBrhgoi3a4pKQfheXNZtHBb5Gj1u
-	 zN486puC8z8EA==
-Message-ID: <d78efef4-196a-457a-bf97-39d471dd50fd@collabora.com>
-Date: Tue, 21 Nov 2023 12:53:11 +0100
-MIME-Version: 1.0
+	id 1r5PKa-00GcAA-34;
+	Tue, 21 Nov 2023 11:54:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DoIHV2AYx0OdxDyjxZ+R0yanDdGPtdP29RtyPbDN2NvgPp1W+rhrt35LTlfmlMrpPZPH0xFFtBlTldud8CuvblBcx4x/7PD7tma6QfTILlxgwFM5unkik/lJonhSO3xNajeZFYnnGX6KtX+QMFO+7hWrJuGUc/M1yyLfaVSgocvomX9YyAf2vFps4T60aY4lPVP0vw860+Rv1Q2ZralifHslc7hSnOPMKOj7B6huxwygIi3bFcSkDEXyo6kSqFwWTmYT+eyR2TUL+OjAxFY7Y6mnGhzZt3D1fEeTGtZ3yxXn4zBCX4KuV/Y/3BV82oqeKpJa8PAhzoJbyLJ6WJoA1g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5lStOlIlqfirhdnpECXOEIXymXzsntWjoyR48zuzVr4=;
+ b=gNO08g4D7A8IFhPl1s94Iwcl3lK8K1+lQrza7J0DeXo0KK6ACUozeX4vy2TPFH7hsiWAGmOzYdwsFBxPHev6rbhbwGAicowLoFtJKDkMWIUd64Q6BEi66WjI4nQwePmbvTzhnIG1lAPxRwvdnBE9At4UFT5uvZWlkko7kQRe/ul2L4b3u9sO3qe4rjOZXteXqlIriMYf9lNo3BVWjDaFDGSWRorjF0htpqWRwWSGXjANqYNuEzJOoP13StUNLjBgA8nsKkIeKgvKxTgT1qZe2eGquVIv+b8AQkLRFgX4hQ0hBFwx5qt7A5ENGseX2Gb++7SVI8JJ1kSXRwV7MEumWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5lStOlIlqfirhdnpECXOEIXymXzsntWjoyR48zuzVr4=;
+ b=keL8kOK3mxRhQmwWHVp358X9dy11arW0h4rQTrCrXgwdcJ0Wm+YOAc9HCAphsbvNtfloTtGnzQqFSokGLs2IjZazvSJGAbpbBSyhfj0Vzln0mFI9WiM08cJGmRPAvhxNzamWtIKFenyY8vVepLX4DlscvsvT3s7Bsj6sWgAeaRY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from BYAPR12MB4758.namprd12.prod.outlook.com (2603:10b6:a03:a5::28)
+ by MN6PR12MB8514.namprd12.prod.outlook.com (2603:10b6:208:474::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7002.27; Tue, 21 Nov
+ 2023 11:54:07 +0000
+Received: from BYAPR12MB4758.namprd12.prod.outlook.com
+ ([fe80::39a2:42da:ea20:3349]) by BYAPR12MB4758.namprd12.prod.outlook.com
+ ([fe80::39a2:42da:ea20:3349%5]) with mapi id 15.20.7002.028; Tue, 21 Nov 2023
+ 11:54:07 +0000
+Message-ID: <fb2d5246-93c3-4bb1-a2e6-1c2c653604b2@amd.com>
+Date: Tue, 21 Nov 2023 12:53:48 +0100
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 18/20] soc: mediatek: mtk-svs: Constify
- runtime-immutable members of svs_bank
+Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
 Content-Language: en-US
-To: Eugen Hristev <eugen.hristev@collabora.com>, matthias.bgg@gmail.com
-Cc: krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- robh+dt@kernel.org, p.zabel@pengutronix.de, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com, wenst@chromium.org
-References: <20231117094228.40013-1-angelogioacchino.delregno@collabora.com>
- <20231117094228.40013-19-angelogioacchino.delregno@collabora.com>
- <aea2b4fa-09e4-414d-87c0-c33bba5b2b2b@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <aea2b4fa-09e4-414d-87c0-c33bba5b2b2b@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Andrew Davis <afd@ti.com>, Arnd Bergmann <arnd@arndb.de>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
+ Olof Johansson <olof@lixom.net>, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org
+References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
+ <19358871-009d-4498-9c13-90d5338b1e9f@amd.com>
+ <76fa8f61-fe31-4040-a38d-cc05be3f4f17@linaro.org>
+ <CAMuHMdW4WPJT0Km7w8RWrGJaztk6QDGoFAn0bdGbrEsw81R1FA@mail.gmail.com>
+ <acfdce81-f117-4a1a-a9fe-e2b4b8922adb@linaro.org>
+ <bd49f17c-7ebf-4e19-b77b-b5ec95375f7d@amd.com>
+ <b48293f3-16e3-4980-b900-add0cb7d69f6@linaro.org>
+ <CAMuHMdV_gqmf2=cXmZmYgE3aLxvPBr1DVp0cz0C+YrfBVG-8mg@mail.gmail.com>
+ <CAA8EJpo6w9N_opJkfDaF-20zwZmn6JHrYYhakqzLFqVtgXaV=Q@mail.gmail.com>
+ <6513aefa-b0be-4a29-8c9c-483822217ebf@linaro.org>
+From: Michal Simek <michal.simek@amd.com>
+Autocrypt: addr=michal.simek@amd.com; keydata=
+ xsFNBFFuvDEBEAC9Amu3nk79+J+4xBOuM5XmDmljuukOc6mKB5bBYOa4SrWJZTjeGRf52VMc
+ howHe8Y9nSbG92obZMqsdt+d/hmRu3fgwRYiiU97YJjUkCN5paHXyBb+3IdrLNGt8I7C9RMy
+ svSoH4WcApYNqvB3rcMtJIna+HUhx8xOk+XCfyKJDnrSuKgx0Svj446qgM5fe7RyFOlGX/wF
+ Ae63Hs0RkFo3I/+hLLJP6kwPnOEo3lkvzm3FMMy0D9VxT9e6Y3afe1UTQuhkg8PbABxhowzj
+ SEnl0ICoqpBqqROV/w1fOlPrm4WSNlZJunYV4gTEustZf8j9FWncn3QzRhnQOSuzTPFbsbH5
+ WVxwDvgHLRTmBuMw1sqvCc7CofjsD1XM9bP3HOBwCxKaTyOxbPJh3D4AdD1u+cF/lj9Fj255
+ Es9aATHPvoDQmOzyyRNTQzupN8UtZ+/tB4mhgxWzorpbdItaSXWgdDPDtssJIC+d5+hskys8
+ B3jbv86lyM+4jh2URpnL1gqOPwnaf1zm/7sqoN3r64cml94q68jfY4lNTwjA/SnaS1DE9XXa
+ XQlkhHgjSLyRjjsMsz+2A4otRLrBbumEUtSMlPfhTi8xUsj9ZfPIUz3fji8vmxZG/Da6jx/c
+ a0UQdFFCL4Ay/EMSoGbQouzhC69OQLWNH3rMQbBvrRbiMJbEZwARAQABzSlNaWNoYWwgU2lt
+ ZWsgKEFNRCkgPG1pY2hhbC5zaW1la0BhbWQuY29tPsLBlAQTAQgAPgIbAwULCQgHAgYVCgkI
+ CwIEFgIDAQIeAQIXgBYhBGc1DJv1zO6bU2Q1ajd8fyH+PR+RBQJkK9VOBQkWf4AXAAoJEDd8
+ fyH+PR+ROzEP/1IFM7J4Y58SKuvdWDddIvc7JXcal5DpUtMdpuV+ZiHSOgBQRqvwH4CVBK7p
+ ktDCWQAoWCg0KhdGyBjfyVVpm+Gw4DkZovcvMGUlvY5p5w8XxTE5Xx+cj/iDnj83+gy+0Oyz
+ VFU9pew9rnT5YjSRFNOmL2dsorxoT1DWuasDUyitGy9iBegj7vtyAsvEObbGiFcKYSjvurkm
+ MaJ/AwuJehZouKVfWPY/i4UNsDVbQP6iwO8jgPy3pwjt4ztZrl3qs1gV1F4Zrak1k6qoDP5h
+ 19Q5XBVtq4VSS4uLKjofVxrw0J+sHHeTNa3Qgk9nXJEvH2s2JpX82an7U6ccJSdNLYbogQAS
+ BW60bxq6hWEY/afbT+tepEsXepa0y04NjFccFsbECQ4DA3cdA34sFGupUy5h5la/eEf3/8Kd
+ BYcDd+aoxWliMVmL3DudM0Fuj9Hqt7JJAaA0Kt3pwJYwzecl/noK7kFhWiKcJULXEbi3Yf/Y
+ pwCf691kBfrbbP9uDmgm4ZbWIT5WUptt3ziYOWx9SSvaZP5MExlXF4z+/KfZAeJBpZ95Gwm+
+ FD8WKYjJChMtTfd1VjC4oyFLDUMTvYq77ABkPeKB/WmiAoqMbGx+xQWxW113wZikDy+6WoCS
+ MPXfgMPWpkIUnvTIpF+m1Nyerqf71fiA1W8l0oFmtCF5oTMkzsFNBFFuvDEBEACXqiX5h4IA
+ 03fJOwh+82aQWeHVAEDpjDzK5hSSJZDE55KP8br1FZrgrjvQ9Ma7thSu1mbr+ydeIqoO1/iM
+ fZA+DDPpvo6kscjep11bNhVa0JpHhwnMfHNTSHDMq9OXL9ZZpku/+OXtapISzIH336p4ZUUB
+ 5asad8Ux70g4gmI92eLWBzFFdlyR4g1Vis511Nn481lsDO9LZhKyWelbif7FKKv4p3FRPSbB
+ vEgh71V3NDCPlJJoiHiYaS8IN3uasV/S1+cxVbwz2WcUEZCpeHcY2qsQAEqp4GM7PF2G6gtz
+ IOBUMk7fjku1mzlx4zP7uj87LGJTOAxQUJ1HHlx3Li+xu2oF9Vv101/fsCmptAAUMo7KiJgP
+ Lu8TsP1migoOoSbGUMR0jQpUcKF2L2jaNVS6updvNjbRmFojK2y6A/Bc6WAKhtdv8/e0/Zby
+ iVA7/EN5phZ1GugMJxOLHJ1eqw7DQ5CHcSQ5bOx0Yjmhg4PT6pbW3mB1w+ClAnxhAbyMsfBn
+ XxvvcjWIPnBVlB2Z0YH/gizMDdM0Sa/HIz+q7JR7XkGL4MYeAM15m6O7hkCJcoFV7LMzkNKk
+ OiCZ3E0JYDsMXvmh3S4EVWAG+buA+9beElCmXDcXPI4PinMPqpwmLNcEhPVMQfvAYRqQp2fg
+ 1vTEyK58Ms+0a9L1k5MvvbFg9QARAQABwsF8BBgBCAAmAhsMFiEEZzUMm/XM7ptTZDVqN3x/
+ If49H5EFAmQr1YsFCRZ/gFoACgkQN3x/If49H5H6BQ//TqDpfCh7Fa5v227mDISwU1VgOPFK
+ eo/+4fF/KNtAtU/VYmBrwT/N6clBxjJYY1i60ekFfAEsCb+vAr1W9geYYpuA+lgR3/BOkHlJ
+ eHf4Ez3D71GnqROIXsObFSFfZWGEgBtHBZ694hKwFmIVCg+lqeMV9nPQKlvfx2n+/lDkspGi
+ epDwFUdfJLHOYxFZMQsFtKJX4fBiY85/U4X2xSp02DxQZj/N2lc9OFrKmFJHXJi9vQCkJdIj
+ S6nuJlvWj/MZKud5QhlfZQsixT9wCeOa6Vgcd4vCzZuptx8gY9FDgb27RQxh/b1ZHalO1h3z
+ kXyouA6Kf54Tv6ab7M/fhNqznnmSvWvQ4EWeh8gddpzHKk8ixw9INBWkGXzqSPOztlJbFiQ3
+ YPi6o9Pw/IxdQJ9UZ8eCjvIMpXb4q9cZpRLT/BkD4ttpNxma1CUVljkF4DuGydxbQNvJFBK8
+ ywyA0qgv+Mu+4r/Z2iQzoOgE1SymrNSDyC7u0RzmSnyqaQnZ3uj7OzRkq0fMmMbbrIvQYDS/
+ y7RkYPOpmElF2pwWI/SXKOgMUgigedGCl1QRUio7iifBmXHkRrTgNT0PWQmeGsWTmfRit2+i
+ l2dpB2lxha72cQ6MTEmL65HaoeANhtfO1se2R9dej57g+urO9V2v/UglZG1wsyaP/vOrgs+3
+ 3i3l5DA=
+In-Reply-To: <6513aefa-b0be-4a29-8c9c-483822217ebf@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: VI1PR04CA0121.eurprd04.prod.outlook.com
+ (2603:10a6:803:f0::19) To BYAPR12MB4758.namprd12.prod.outlook.com
+ (2603:10b6:a03:a5::28)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BYAPR12MB4758:EE_|MN6PR12MB8514:EE_
+X-MS-Office365-Filtering-Correlation-Id: ec841a30-c643-45bf-1a84-08dbea8890ea
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: U7MAA1CSEj0IxFb9fm7Z/QGAgrUZeaoiT1TpDw01WNiYtEeQe3xjIiWADAimbrInqSS9Sfp/DhHgBxiS7QwJhtteim5HhUMiC5QA4sWEnuMsG0bVbIAlxJpghxl5kkyX8BXdwlmRuKtQNHzSi0y/0y1w49ySCDooDs/X4MEDyIYsLiZqTY1DzD9QOs9WYj4EVZPcviUZP3NZxpA/ClrIXs2Yzy/oZro7E67lfTBPHy8kqiXaN4gZigB9wGwxlM5Ow/fHdjlph1A0i+IzqW9aKIfQF6t3ZH5cAh3ZmxCDZeuE6Lk3xfagiOsrqfwbeZlcXAbkA2QbxOhgS61YURV0tVMX8CgD9gmmf4t2qs875SIRrQhpxLArEVrzHxH92YRHyO7pXk+IPRDgivMQG3AwjRfa2EB+cZs37McNosEK2GsIRXRMhSjwyK++KOms6xc6mt0k8JqMd44pi4i6I6gjQx24feGDGfR31jYlkI0gb2Vox8HPLg2P4e/Aup7URVfKKnpG/4HBcR2cePBm6ZF0P/z7L6p648YTNG1vc+gVGhsMemQGhi9+NlAzpKV1gkJKzdxr9TvEkVzQG1Wqs08G2Mz6/HeLUL1RDBT9bqMaL7P2TNYq9K8hXsnWX/NAxaV/EKuu14/wB7tlgEN+rUINnqwvV3ALwIiFfOnSu4TX1n9I2Hxm2Lm0YlrLzwYwJKOiBMSgz1si0F3dAbsYT5TgxfyUuA8ACctgeJNC6bSOr+M=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BYAPR12MB4758.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(396003)(136003)(366004)(376002)(39860400002)(346002)(230922051799003)(230173577357003)(230273577357003)(451199024)(64100799003)(186009)(1800799012)(83380400001)(6512007)(53546011)(26005)(41300700001)(4326008)(8676002)(8936002)(38100700002)(7416002)(2906002)(44832011)(5660300002)(478600001)(6486002)(6506007)(6666004)(966005)(110136005)(66556008)(66476007)(66946007)(54906003)(316002)(36756003)(31696002)(86362001)(31686004)(2616005)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YmdHcWxTZ2JaVEFJb2c3RGExRHpmbllMZ2MxbjFKdnhNck9mNnhEZnRqWHhP?=
+ =?utf-8?B?RU9QaXdDTzhSNitQdlZsaVlRNkVBVVJiMm5IWnJUdXBMYUc0RnlFYVA1OXJR?=
+ =?utf-8?B?YzNOV3orR1Z3YWxmQVhWMEd6L1JzaUpQaVNTL3lMdysyZ042YzdzblF3cklx?=
+ =?utf-8?B?V3dKWFh3bVRYVjhycytZN21WRFVzRWs4emxLcXN4ZXBrT3FrbXJVYWs4all1?=
+ =?utf-8?B?d2t2ai8zbkNHalZGelFDZUFWcGhIcTJ5NW5MclRYc0t2T0Q2bzhNbThXM3ZH?=
+ =?utf-8?B?V2phRi9nUE5ONHVvYjN4K1NveGsvRXpCOUt5cUorUXJTKzI2YTd0bnQ2MU1j?=
+ =?utf-8?B?and6c01tYVNSam80UjdvMEN4SnpvNFhUWURreWdEcDZkQ0h4ZEUrRjVRU1Z1?=
+ =?utf-8?B?QmNESzVkcnAzOHAzcDBOQmU0eE82ZFQ1L1p4blZhNHRubDRzb0FBZkZzTzFT?=
+ =?utf-8?B?VDY3Tmphem5TNjNhMHRxK0I2VzNPNVJyUVI0eDIrbFZqYjVsSTVNVHJ0R3Fs?=
+ =?utf-8?B?MGZaVkVNTEhCdGRFL2FkUWpMRWNLUVo0K2hJaXhNV0cxZXFLRWl1VDVUTXB5?=
+ =?utf-8?B?WFkzSXk4RnZqTUxEQ3ZWSzRkZFJGZDUvRWx1a2hnZCttdG92d3Fub3RjMlFI?=
+ =?utf-8?B?UzIyMTZpUkR1dG4xa2JsRWM2TFpmTkt2RUpTWVNseUhsWXBOdituSGsva2NN?=
+ =?utf-8?B?dm5sUm5vWm9MQ0J2bi9ySENNWGVjSWhxb1hUVWFsRi9BMWlMMjBoaktLWTZ1?=
+ =?utf-8?B?eHo1SStLT0JlZ3pKUmZ1NnhyaS8wVHQxek82WUhhL0RDU0NhSU5nQStjcHls?=
+ =?utf-8?B?aWtmZzhQOGVOakZ5cTFjV0wvdVFwRWlzZEJqN3cwKzB5Z29XQlJmMDRqK0pv?=
+ =?utf-8?B?TUErWE1zRDQ2eXlNV25leHNiNGJoeGhuVjY2bzNIQmdXTVYzZldwZTZCZkFG?=
+ =?utf-8?B?Z0dEdEMxREpua3kxcFl1OUdlQlRwYlhuVmlqNHJldW1iN3JLWUVlREFPYndT?=
+ =?utf-8?B?Q1pleXZSeUpDTjNiS2Z4amFPekpyRzFYUzlrb2M0UmRHQk5pVVA1TGY4ZDVQ?=
+ =?utf-8?B?Ymp5UGUza01ER0Y2elUwZlhINjBybFlWejhEcVVDRTdSRVRvcEpoMExyMjMx?=
+ =?utf-8?B?VEg2enZmL2V2aU5NWGhmblBDZEhMb3kvcUNiNkpMTTBlZ2ViY0kxbHNUdU14?=
+ =?utf-8?B?dE44TFJxZm0rVWU2UEdRZDVVMTEza3RPSEpSU0tjc0w0MDRYbmluQlloZTVZ?=
+ =?utf-8?B?bys3LzBKZVJwKzJ2amUrczIrM09qT21yYk5IMGluUDVVTmNrbXVTa0x5ejR3?=
+ =?utf-8?B?ZHZkczl3Vk95ZUhieHp4TkFtM2pxTmZseVpyUnlrS3hxSldrR0Q0L1RpNzdh?=
+ =?utf-8?B?YUJCZmhUcDZyUTJJcC9hUXc2YnZNekNhSU42dThVRTZKZ3FTZXM5WG9WWVI5?=
+ =?utf-8?B?QUZhVGlyYTk5a1plYUtlWGNjdFdycU5vdEdQWWt2dUVNRmtFL3NtQUlnL3Q3?=
+ =?utf-8?B?RXFkcXhPVVNHSHdEdHQyYUxFRDVBVk10cGpNTXZpbC9xdGZaTXQzeE9RUWhB?=
+ =?utf-8?B?V2M5czIrTkNKUWF4ZEJGek1EdU9SN1Q3OWxyR1VtZE9TTTZmSlM4UVZQUytu?=
+ =?utf-8?B?MHdRM3ExeHlBTEs0dnQ0S25aaEZzNG9yZkUrNWFIa0ZwUnZYSTl5U0F6WDVk?=
+ =?utf-8?B?Vyt1THZHd3B6TmovOTJFQlZuNmUrYXMyOEdyb0wxTXJoanBoVVJ0dXJEd1hT?=
+ =?utf-8?B?VnV2R3Y4ckJRRmozdi9IQjhVOTRuY2wwYWlsVnlBWW1WVGphUnVuRHBOYjBk?=
+ =?utf-8?B?WVlBQWNuaFhxbzljQnR2L2xhcndacXRlbUxYNW1uekFJME1jbUJHZTh2R2Z6?=
+ =?utf-8?B?TS9UdTV6UklBcHQ5RCtBMUZwVTZtTkl2UUdvWWFDS0ZoSUVaeUU3WVd2NStq?=
+ =?utf-8?B?OUprT0FIRmFsa3E0djR1Z2dpWjIrSUZZaVBpbTVZNkUzNGRMY3VLcTNTU0Fv?=
+ =?utf-8?B?V2dtY05obW94cERoTEptQ0MzVGdpSHBrVldXS3psaGVNVWxpTHNJcklmdGNF?=
+ =?utf-8?B?N0dKSlMvbndUMS9qNFBIV2JpUitUK2RzN1RIdlJ2T2laTkJCdzFndThHNVZn?=
+ =?utf-8?Q?krEIFDhD6DcNHme5JQf8UBW7E?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ec841a30-c643-45bf-1a84-08dbea8890ea
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR12MB4758.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Nov 2023 11:54:07.3691
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: EyYNb9Lbf1n++TJh76p/BGx1z6BKpu7MIhitec7TYEKeXpPNTePH86pMF5oMBsnH
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR12MB8514
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_035319_285129_52FD274A 
-X-CRM114-Status: GOOD (  25.49  )
+X-CRM114-CacheID: sfid-20231121_035417_101789_64CFA521 
+X-CRM114-Status: GOOD (  17.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,912 +209,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/11/23 15:32, Eugen Hristev ha scritto:
-> 
-> Hi Angelo,
-> 
-> 
-> On 11/17/23 11:42, AngeloGioacchino Del Regno wrote:
->> Some members of struct svs_bank are not changed during runtime, so those
->> are not variables but constants: move all of those to a new structure
->> called svs_bank_pdata and refactor the code to make use of that.
->> This effectively moves at least 50 bytes to the text segment.
->> While at it, also uniform the thermal zone names across the banks.
+
+
+On 11/21/23 11:28, Krzysztof Kozlowski wrote:
+> On 21/11/2023 11:13, Dmitry Baryshkov wrote:
+>> On Tue, 21 Nov 2023 at 10:09, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+>>>
+>>> Hi Krzysztof,
+>>>
+>>> On Tue, Nov 21, 2023 at 8:47 AM Krzysztof Kozlowski
+>>> <krzysztof.kozlowski@linaro.org> wrote:
+>>>> On 21/11/2023 08:33, Michal Simek wrote:
+>>>>> On 11/20/23 20:31, Krzysztof Kozlowski wrote:
+>>>>>> On 20/11/2023 20:18, Geert Uytterhoeven wrote:
+>>>>>>> On Mon, Nov 20, 2023 at 3:53 PM Krzysztof Kozlowski
+>>>>>>> <krzysztof.kozlowski@linaro.org> wrote:
+>>>>>>>> On 20/11/2023 15:01, Michal Simek wrote:> >
+>>>>>>>>> On 11/20/23 09:40, Krzysztof Kozlowski wrote:
+>>>>>>>>>> Document preferred coding style for Devicetree sources (DTS and DTSI),
+>>>>>>>>>> to bring consistency among all (sub)architectures and ease in reviews.
+>>>>>>>
+>>>>>>>>>> +Organizing DTSI and DTS
+>>>>>>>>>> +-----------------------
+>>>>>>>>>> +
+>>>>>>>>>> +The DTSI and DTS files should be organized in a way representing the common
+>>>>>>>>>> +(and re-usable) parts of the hardware.  Typically this means organizing DTSI
+>>>>>>>>>> +and DTS files into several files:
+>>>>>>>>>> +
+>>>>>>>>>> +1. DTSI with contents of the entire SoC (without nodes for hardware not present
+>>>>>>>>>> +   on the SoC).
+>>>>>>>>>> +2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
+>>>>>>>>>> +   entire System-on-Module).
+>>>>>>>>>
+>>>>>>>>> DTS/DTSI - SOMs can actually run as they are that's why it is fair to say that
+>>>>>>>>> there doesn't need to be DTS representing the board.
+>>>>>>>>
+>>>>>>>> I have never seen a SoM which can run without elaborate hardware-hacking
+>>>>>>>> (e.g. connecting multiple wires to the SoM pins). The definition of the
+>>>>>>>> SoM is that it is a module. Module can be re-used, just like SoC.
+>>>>>>>
+>>>>>>> /me looks at his board farm...
+>>>
+>>>>>>> I guess there are (many) other examples...
+>>>>>>
+>>>>>> OK, I never had such in my hands. Anyway, the SoM which can run
+>>>>>> standalone  has a meaning of a board, so how exactly you want to
+>>>>>> rephrase the paragraph?
+>>>>>
+>>>>> What about?
+>>>>>
+>>>>> 2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
+>>>>> entire System-on-Module). DTS if runs standalone.
+>>>>
+>>>> OK, but then it's duplicating the option 3. It also suggests that SoM
+>>>> should be a DTS, which is not what we want for such case. Such SoMs must
+>>>> have DTSI+DTS.
+>>>
+>>> So you want us to have a one-line <SoM>.dts, which just includes <SoM>.dtsi?
 >>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/soc/mediatek/mtk-svs.c | 1201 +++++++++++++++++---------------
->>   1 file changed, 631 insertions(+), 570 deletions(-)
->>
->> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
->> index df39e7430ba9..aa50ae0cc1d1 100644
->> --- a/drivers/soc/mediatek/mtk-svs.c
->> +++ b/drivers/soc/mediatek/mtk-svs.c
->> @@ -1,6 +1,8 @@
->>   // SPDX-License-Identifier: GPL-2.0-only
->>   /*
->>    * Copyright (C) 2022 MediaTek Inc.
->> + * Copyright (C) 2022 Collabora Ltd.
->> + *                    AngeloGioacchino Del Regno 
->> <angelogioacchino.delregno@collabora.com>
->>    */
->>   #include <linux/bitfield.h>
->> @@ -118,7 +120,7 @@
->>   #define SVSB_VOPS_FLD_VOP2_6        GENMASK(23, 16)
->>   #define SVSB_VOPS_FLD_VOP3_7        GENMASK(31, 24)
->> -/* SVS Thermal Coefficients */
->> +/* SVS Thermal */
+>> Well, I think it is impossible to run SoM directly. There is a carrier
+>> board anyway, which includes at least regulators. So, I guess, the
+>> SoM.dts will not be a oneline file.
 > 
-> 'Coefficients' made sense for me. Without the word , does the comment many any 
-> sense anymore ?
+> Geert claims he has SoM with an USB connector which can run when power
+> is supplied by that USB connector. I can imagine a CPU board (so a SoM
+> in format of a board, not small DIMM-card) which has connectors e.g. for
+> power and a slot for external motherboard for additional, optional
+> interfaces.
 > 
-
-I didn't mean to change that, thanks for pointing that out.
-
->>   #define SVSB_TS_COEFF_MT8195        250460
->>   #define SVSB_TS_COEFF_MT8186        204650
->> @@ -391,7 +393,7 @@ struct svs_platform {
->>       size_t efuse_max;
->>       size_t tefuse_max;
->>       const u32 *regs;
->> -    u32 bank_max;
->> +    u16 bank_max;
+> Look at picture on 14th page:
+> https://www.renesas.com/us/en/document/mat/rza2m-cpu-board-users-manual
 > 
-> does it make sense to order them by size ?
-> 
+> This looks like some case of SoM, although maybe not that popular
+> outside of Renesas :)
 
-Yes, it does. Reordered in v2.
+In our case we have SOMs
+https://www.xilinx.com/products/som/kria.html#portfolio
 
->>       u32 *efuse;
->>       u32 *tefuse;
->>       u32 ts_coeff;
->> @@ -404,59 +406,92 @@ struct svs_platform_data {
->>       int (*probe)(struct svs_platform *svsp);
->>       const struct svs_fusemap *glb_fuse_map;
->>       const u32 *regs;
->> -    u32 bank_max;
->> +    u16 bank_max;
-> here as well.
+and also carrier cards (CC) like this
+https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html
 
-yep.
+and we also have debug boards.
 
->>       u32 ts_coeff;
->>   };
->>   /**
->> - * struct svs_bank - svs bank representation
->> + * struct svs_bank_pdata - SVS Bank immutable config parameters
->>    * @dev_fuse_map: Bank fuse map data
->> + * @buck_name: Regulator name
->> + * @tzone_name: Thermal zone name
->> + * @age_config: Bank age configuration
->> + * @ctl0: TS-x selection
->> + * @dc_config: Bank dc configuration
->> + * @int_st: Bank interrupt identification
->> + * @turn_freq_base: Reference frequency for 2-line turn point
->> + * @tzone_htemp: Thermal zone high temperature threshold
->> + * @tzone_ltemp: Thermal zone low temperature threshold
->> + * @volt_step: Bank voltage step
->> + * @volt_base: Bank voltage base
->> + * @tzone_htemp_voffset: Thermal zone high temperature voltage offset
->> + * @tzone_ltemp_voffset: Thermal zone low temperature voltage offset
->> + * @chk_shift: Bank chicken shift
->> + * @cpu_id: CPU core ID for SVS CPU bank use only
->> + * @opp_count: Bank opp count
->> + * @vboot: Voltage request for bank init01 only
->> + * @vco: Bank VCO value
->> + * @sw_id: Bank software identification
->> + * @type: SVS Bank Type (1 or 2-line) and Role (high/low)
->> + * @set_freq_pct: function pointer to set bank frequency percent table
->> + * @get_volts: function pointer to get bank voltages
->> + */
->> +struct svs_bank_pdata {
->> +    const struct svs_fusemap *dev_fuse_map;
->> +    char *buck_name;
->> +    char *tzone_name;
->> +    u32 age_config;
->> +    u32 ctl0;
->> +    u32 dc_config;
->> +    u32 int_st;
->> +    u32 turn_freq_base;
->> +    u32 tzone_htemp;
->> +    u32 tzone_ltemp;
->> +    u32 volt_step;
->> +    u32 volt_base;
->> +    u16 tzone_htemp_voffset;
->> +    u16 tzone_ltemp_voffset;
->> +    u8 chk_shift;
->> +    u8 cpu_id;
->> +    u8 opp_count;
->> +    u8 vboot;
->> +    u8 vco;
->> +    u8 sw_id;
->> +    u8 type;
->> +
->> +    /* Callbacks */
->> +    void (*set_freq_pct)(struct svs_platform *, struct svs_bank *svsb);
->> +    void (*get_volts)(struct svs_platform *, struct svs_bank *svsb);
-> 
-> WARNING: function definition argument 'struct svs_platform *' should also have an 
-> identifier name
-> 
+There must be a carrier card in our case and there is power connector (with also 
+non sw accessible regulators), jtag, boot pins and for example ttl to usb 
+connector for UART but SOM spec describe directly which peripherals are on 
+certain pins by default.
+It means we have CC card but there is nothing on it to describe for SOM itself.
 
-Indeed. Fixed.
+Our default boot process is to boot with SOM peripherals described by spec. And 
+then do CC identification and switching to SOM+CC dtb description at U-Boot.
 
->> +};
->> +
->> +/**
->> + * struct svs_bank - svs bank representation
->> + * @pdata: SVS Bank immutable config parameters
->>    * @dev: bank device
->>    * @opp_dev: device for opp table/buck control
->>    * @init_completion: the timeout completion for bank init
->>    * @buck: regulator used by opp_dev
->>    * @tzd: thermal zone device for getting temperature
->>    * @lock: mutex lock to protect voltage update process
->> - * @set_freq_pct: function pointer to set bank frequency percent table
->> - * @get_volts: function pointer to get bank voltages
->>    * @name: bank name
->> - * @buck_name: regulator name
->> - * @tzone_name: thermal zone name
->>    * @phase: bank current phase
->>    * @volt_od: bank voltage overdrive
->>    * @reg_data: bank register data in different phase for debug purpose
->>    * @pm_runtime_enabled_count: bank pm runtime enabled count
->> - * @mode_support: bank mode support.
->> + * @mode_support: bank mode support
->>    * @freq_base: reference frequency for bank init
->> - * @turn_freq_base: refenrece frequency for 2-line turn point
->> - * @vboot: voltage request for bank init01 only
->>    * @opp_dfreq: default opp frequency table
->>    * @opp_dvolt: default opp voltage table
->>    * @freq_pct: frequency percent table for bank init
->>    * @volt: bank voltage table
->> - * @volt_step: bank voltage step
->> - * @volt_base: bank voltage base
->>    * @volt_flags: bank voltage flags
->>    * @vmax: bank voltage maximum
->>    * @vmin: bank voltage minimum
->> - * @age_config: bank age configuration
->>    * @age_voffset_in: bank age voltage offset
->> - * @dc_config: bank dc configuration
->>    * @dc_voffset_in: bank dc voltage offset
->>    * @dvt_fixed: bank dvt fixed value
->> - * @vco: bank VCO value
->> - * @chk_shift: bank chicken shift
->>    * @core_sel: bank selection
->> - * @opp_count: bank opp count
->> - * @int_st: bank interrupt identification
->> - * @sw_id: bank software identification
->> - * @cpu_id: cpu core id for SVS CPU bank use only
->> - * @ctl0: TS-x selection
->>    * @temp: bank temperature
->> - * @tzone_htemp: thermal zone high temperature threshold
->> - * @tzone_htemp_voffset: thermal zone high temperature voltage offset
->> - * @tzone_ltemp: thermal zone low temperature threshold
->> - * @tzone_ltemp_voffset: thermal zone low temperature voltage offset
->>    * @bts: svs efuse data
->>    * @mts: svs efuse data
->>    * @bdes: svs efuse data
->> @@ -466,7 +501,6 @@ struct svs_platform_data {
->>    * @dcmdet: svs efuse data
->>    * @turn_pt: 2-line turn point tells which opp_volt calculated by high/low bank
->>    * @vbin_turn_pt: voltage bin turn point helps know which svsb_volt should be 
->> overridden
->> - * @type: bank type to represent it is 2-line (high/low) bank or 1-line bank
->>    *
->>    * Svs bank will generate suitalbe voltages by below general math equation
-> 
-> can you also fix this typo 'suitalbe'
-> 
+Some combinations are described here.
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/xilinx/Makefile?h=v6.7-rc2#n21
 
-Fixed.
-
->>    * and provide these voltages to opp voltage table.
->> @@ -474,53 +508,34 @@ struct svs_platform_data {
->>    * opp_volt[i] = (volt[i] * volt_step) + volt_base;
->>    */
->>   struct svs_bank {
->> -    const struct svs_fusemap *dev_fuse_map;
->> +    const struct svs_bank_pdata pdata;
->>       struct device *dev;
->>       struct device *opp_dev;
->>       struct completion init_completion;
->>       struct regulator *buck;
->>       struct thermal_zone_device *tzd;
->> -    struct mutex lock;    /* lock to protect voltage update process */
->> -    void (*set_freq_pct)(struct svs_platform *svsp, struct svs_bank *svsb);
->> -    void (*get_volts)(struct svs_platform *svsp, struct svs_bank *svsb);
->> +    struct mutex lock;
->> +    int pm_runtime_enabled_count;
->> +    short int volt_od;
->>       char *name;
->> -    char *buck_name;
->> -    char *tzone_name;
->>       enum svsb_phase phase;
->> -    short int volt_od;
->>       u32 reg_data[SVSB_PHASE_MAX][SVS_REG_MAX];
->> -    u32 pm_runtime_enabled_count;
->>       u8 mode_support;
->> -    u32 freq_base;
->> -    u32 turn_freq_base;
->> -    u8 vboot;
->>       u32 opp_dfreq[MAX_OPP_ENTRIES];
->>       u32 opp_dvolt[MAX_OPP_ENTRIES];
->>       u32 freq_pct[MAX_OPP_ENTRIES];
->>       u32 volt[MAX_OPP_ENTRIES];
->> -    u32 volt_step;
->> -    u32 volt_base;
->>       u32 volt_flags;
->> -    u8 vmax;
->> -    u8 vmin;
->> -    u32 age_config;
->> +    u32 freq_base;
->> +    u32 turn_pt;
->> +    u32 vbin_turn_pt;
->> +    u32 core_sel;
->> +    u32 temp;
->>       u16 age_voffset_in;
->> -    u32 dc_config;
->>       u16 dc_voffset_in;
->>       u8 dvt_fixed;
->> -    u8 vco;
->> -    u8 chk_shift;
->> -    u32 core_sel;
->> -    u8 opp_count;
->> -    u32 int_st;
->> -    u8 sw_id;
->> -    u8 cpu_id;
->> -    u32 ctl0;
->> -    u32 temp;
->> -    u32 tzone_htemp;
->> -    u16 tzone_htemp_voffset;
->> -    u32 tzone_ltemp;
->> -    u16 tzone_ltemp_voffset;
->> +    u8 vmax;
->> +    u8 vmin;
->>       u16 bts;
->>       u16 mts;
->>       u16 bdes;
->> @@ -528,9 +543,6 @@ struct svs_bank {
->>       u8 mtdes;
->>       u8 dcbdet;
->>       u8 dcmdet;
->> -    u32 turn_pt;
->> -    u32 vbin_turn_pt;
->> -    u8 type;
->>   };
->>   static u32 percent(u32 numerator, u32 denominator)
->> @@ -572,10 +584,11 @@ static u32 svs_opp_volt_to_bank_volt(u32 opp_u_volt, u32 
->> svsb_volt_step,
->>   static int svs_sync_bank_volts_from_opp(struct svs_bank *svsb)
->>   {
->> +    const struct svs_bank_pdata *bdata = &svsb->pdata;
->>       struct dev_pm_opp *opp;
->>       u32 i, opp_u_volt;
->> -    for (i = 0; i < svsb->opp_count; i++) {
->> +    for (i = 0; i < bdata->opp_count; i++) {
->>           opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
->>                            svsb->opp_dfreq[i],
->>                            true);
->> @@ -587,8 +600,8 @@ static int svs_sync_bank_volts_from_opp(struct svs_bank *svsb)
->>           opp_u_volt = dev_pm_opp_get_voltage(opp);
->>           svsb->volt[i] = svs_opp_volt_to_bank_volt(opp_u_volt,
->> -                              svsb->volt_step,
->> -                              svsb->volt_base);
->> +                              bdata->volt_step,
->> +                              bdata->volt_base);
->>           dev_pm_opp_put(opp);
->>       }
->> @@ -598,6 +611,7 @@ static int svs_sync_bank_volts_from_opp(struct svs_bank *svsb)
->>   static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
->>   {
->>       int ret = -EPERM, tzone_temp = 0;
->> +    const struct svs_bank_pdata *bdata = &svsb->pdata;
->>       u32 i, svsb_volt, opp_volt, temp_voffset = 0, opp_start, opp_stop;
->>       mutex_lock(&svsb->lock);
->> @@ -606,15 +620,15 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
->>        * 2-line bank updates its corresponding opp volts.
->>        * 1-line bank updates all opp volts.
->>        */
->> -    if (svsb->type == SVSB_TYPE_HIGH) {
->> +    if (bdata->type == SVSB_TYPE_HIGH) {
->>           opp_start = 0;
->>           opp_stop = svsb->turn_pt;
->> -    } else if (svsb->type == SVSB_TYPE_LOW) {
->> +    } else if (bdata->type == SVSB_TYPE_LOW) {
->>           opp_start = svsb->turn_pt;
->> -        opp_stop = svsb->opp_count;
->> +        opp_stop = bdata->opp_count;
->>       } else {
->>           opp_start = 0;
->> -        opp_stop = svsb->opp_count;
->> +        opp_stop = bdata->opp_count;
->>       }
->>       /* Get thermal effect */
->> @@ -623,20 +637,20 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
->>           if (ret || (svsb->temp > SVSB_TEMP_UPPER_BOUND &&
->>                   svsb->temp < SVSB_TEMP_LOWER_BOUND)) {
->>               dev_err(svsb->dev, "%s: %d (0x%x), run default volts\n",
->> -                svsb->tzone_name, ret, svsb->temp);
->> +                bdata->tzone_name, ret, svsb->temp);
->>               svsb->phase = SVSB_PHASE_ERROR;
->>           }
->> -        if (tzone_temp >= svsb->tzone_htemp)
->> -            temp_voffset += svsb->tzone_htemp_voffset;
->> -        else if (tzone_temp <= svsb->tzone_ltemp)
->> -            temp_voffset += svsb->tzone_ltemp_voffset;
->> +        if (tzone_temp >= bdata->tzone_htemp)
->> +            temp_voffset += bdata->tzone_htemp_voffset;
->> +        else if (tzone_temp <= bdata->tzone_ltemp)
->> +            temp_voffset += bdata->tzone_ltemp_voffset;
->>           /* 2-line bank update all opp volts when running mon mode */
->> -        if (svsb->phase == SVSB_PHASE_MON && (svsb->type == SVSB_TYPE_HIGH ||
->> -                              svsb->type == SVSB_TYPE_LOW)) {
->> +        if (svsb->phase == SVSB_PHASE_MON && (bdata->type == SVSB_TYPE_HIGH ||
->> +                              bdata->type == SVSB_TYPE_LOW)) {
->>               opp_start = 0;
->> -            opp_stop = svsb->opp_count;
->> +            opp_stop = bdata->opp_count;
->>           }
->>       }
->> @@ -653,8 +667,8 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
->>           case SVSB_PHASE_MON:
->>               svsb_volt = max(svsb->volt[i] + temp_voffset, svsb->vmin);
->>               opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
->> -                                 svsb->volt_step,
->> -                                 svsb->volt_base);
->> +                                 bdata->volt_step,
->> +                                 bdata->volt_base);
->>               break;
->>           default:
->>               dev_err(svsb->dev, "unknown phase: %u\n", svsb->phase);
->> @@ -816,7 +830,7 @@ static int svs_status_debug_show(struct seq_file *m, void *v)
->>                  svsb->name, tzone_temp, svsb->vbin_turn_pt,
->>                  svsb->turn_pt);
->> -    for (i = 0; i < svsb->opp_count; i++) {
->> +    for (i = 0; i < svsb->pdata.opp_count; i++) {
->>           opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
->>                            svsb->opp_dfreq[i], true);
->>           if (IS_ERR(opp)) {
->> @@ -923,9 +937,10 @@ static u32 interpolate(u32 f0, u32 f1, u32 v0, u32 v1, u32 fx)
->>   static void svs_get_bank_volts_v3(struct svs_platform *svsp, struct svs_bank 
->> *svsb)
->>   {
->> +    const struct svs_bank_pdata *bdata = &svsb->pdata;
->>       u32 i, j, *vop, vop74, vop30, turn_pt = svsb->turn_pt;
->>       u32 b_sft, shift_byte = 0, opp_start = 0, opp_stop = 0;
->> -    u32 middle_index = (svsb->opp_count / 2);
->> +    u32 middle_index = (bdata->opp_count / 2);
->>       if (svsb->phase == SVSB_PHASE_MON &&
->>           svsb->volt_flags & SVSB_MON_VOLT_IGNORE)
->> @@ -936,7 +951,7 @@ static void svs_get_bank_volts_v3(struct svs_platform *svsp, 
->> struct svs_bank *sv
->>       /* Target is to set svsb->volt[] by algorithm */
->>       if (turn_pt < middle_index) {
->> -        if (svsb->type == SVSB_TYPE_HIGH) {
->> +        if (bdata->type == SVSB_TYPE_HIGH) {
->>               /* volt[0] ~ volt[turn_pt - 1] */
->>               for (i = 0; i < turn_pt; i++) {
->>                   b_sft = BITS8 * (shift_byte % REG_BYTES);
->> @@ -945,12 +960,12 @@ static void svs_get_bank_volts_v3(struct svs_platform 
->> *svsp, struct svs_bank *sv
->>                   svsb->volt[i] = (*vop >> b_sft) & GENMASK(7, 0);
->>                   shift_byte++;
->>               }
->> -        } else if (svsb->type == SVSB_TYPE_LOW) {
->> +        } else if (bdata->type == SVSB_TYPE_LOW) {
->>               /* volt[turn_pt] + volt[j] ~ volt[opp_count - 1] */
->> -            j = svsb->opp_count - 7;
->> +            j = bdata->opp_count - 7;
->>               svsb->volt[turn_pt] = FIELD_GET(SVSB_VOPS_FLD_VOP0_4, vop30);
->>               shift_byte++;
->> -            for (i = j; i < svsb->opp_count; i++) {
->> +            for (i = j; i < bdata->opp_count; i++) {
->>                   b_sft = BITS8 * (shift_byte % REG_BYTES);
->>                   vop = (shift_byte < REG_BYTES) ? &vop30 :
->>                                    &vop74;
->> @@ -967,7 +982,7 @@ static void svs_get_bank_volts_v3(struct svs_platform *svsp, 
->> struct svs_bank *sv
->>                                   svsb->freq_pct[i]);
->>           }
->>       } else {
->> -        if (svsb->type == SVSB_TYPE_HIGH) {
->> +        if (bdata->type == SVSB_TYPE_HIGH) {
->>               /* volt[0] + volt[j] ~ volt[turn_pt - 1] */
->>               j = turn_pt - 7;
->>               svsb->volt[0] = FIELD_GET(SVSB_VOPS_FLD_VOP0_4, vop30);
->> @@ -987,9 +1002,9 @@ static void svs_get_bank_volts_v3(struct svs_platform *svsp, 
->> struct svs_bank *sv
->>                                   svsb->volt[0],
->>                                   svsb->volt[j],
->>                                   svsb->freq_pct[i]);
->> -        } else if (svsb->type == SVSB_TYPE_LOW) {
->> +        } else if (bdata->type == SVSB_TYPE_LOW) {
->>               /* volt[turn_pt] ~ volt[opp_count - 1] */
->> -            for (i = turn_pt; i < svsb->opp_count; i++) {
->> +            for (i = turn_pt; i < bdata->opp_count; i++) {
->>                   b_sft = BITS8 * (shift_byte % REG_BYTES);
->>                   vop = (shift_byte < REG_BYTES) ? &vop30 :
->>                                    &vop74;
->> @@ -999,12 +1014,12 @@ static void svs_get_bank_volts_v3(struct svs_platform 
->> *svsp, struct svs_bank *sv
->>           }
->>       }
->> -    if (svsb->type == SVSB_TYPE_HIGH) {
->> +    if (bdata->type == SVSB_TYPE_HIGH) {
->>           opp_start = 0;
->>           opp_stop = svsb->turn_pt;
->> -    } else if (svsb->type == SVSB_TYPE_LOW) {
->> +    } else if (bdata->type == SVSB_TYPE_LOW) {
->>           opp_start = svsb->turn_pt;
->> -        opp_stop = svsb->opp_count;
->> +        opp_stop = bdata->opp_count;
->>       }
->>       for (i = opp_start; i < opp_stop; i++)
->> @@ -1014,11 +1029,11 @@ static void svs_get_bank_volts_v3(struct svs_platform 
->> *svsp, struct svs_bank *sv
->>       /* For voltage bin support */
->>       if (svsb->opp_dfreq[0] > svsb->freq_base) {
->>           svsb->volt[0] = svs_opp_volt_to_bank_volt(svsb->opp_dvolt[0],
->> -                              svsb->volt_step,
->> -                              svsb->volt_base);
->> +                              bdata->volt_step,
->> +                              bdata->volt_base);
->>           /* Find voltage bin turn point */
->> -        for (i = 0; i < svsb->opp_count; i++) {
->> +        for (i = 0; i < bdata->opp_count; i++) {
->>               if (svsb->opp_dfreq[i] <= svsb->freq_base) {
->>                   svsb->vbin_turn_pt = i;
->>                   break;
->> @@ -1037,12 +1052,13 @@ static void svs_get_bank_volts_v3(struct svs_platform 
->> *svsp, struct svs_bank *sv
->>   static void svs_set_bank_freq_pct_v3(struct svs_platform *svsp, struct svs_bank 
->> *svsb)
->>   {
->> +    const struct svs_bank_pdata *bdata = &svsb->pdata;
->>       u32 i, j, *freq_pct, freq_pct74 = 0, freq_pct30 = 0;
->>       u32 b_sft, shift_byte = 0, turn_pt;
->> -    u32 middle_index = (svsb->opp_count / 2);
->> +    u32 middle_index = (bdata->opp_count / 2);
->> -    for (i = 0; i < svsb->opp_count; i++) {
->> -        if (svsb->opp_dfreq[i] <= svsb->turn_freq_base) {
->> +    for (i = 0; i < bdata->opp_count; i++) {
->> +        if (svsb->opp_dfreq[i] <= bdata->turn_freq_base) {
->>               svsb->turn_pt = i;
->>               break;
->>           }
->> @@ -1052,7 +1068,7 @@ static void svs_set_bank_freq_pct_v3(struct svs_platform 
->> *svsp, struct svs_bank
->>       /* Target is to fill out freq_pct74 / freq_pct30 by algorithm */
->>       if (turn_pt < middle_index) {
->> -        if (svsb->type == SVSB_TYPE_HIGH) {
->> +        if (bdata->type == SVSB_TYPE_HIGH) {
->>               /*
->>                * If we don't handle this situation,
->>                * SVSB_TYPE_HIGH's FREQPCT74 / FREQPCT30 would keep "0"
->> @@ -1069,15 +1085,15 @@ static void svs_set_bank_freq_pct_v3(struct svs_platform 
->> *svsp, struct svs_bank
->>                   *freq_pct |= (svsb->freq_pct[i] << b_sft);
->>                   shift_byte++;
->>               }
->> -        } else if (svsb->type == SVSB_TYPE_LOW) {
->> +        } else if (bdata->type == SVSB_TYPE_LOW) {
->>               /*
->>                * freq_pct[turn_pt] +
->>                * freq_pct[opp_count - 7] ~ freq_pct[opp_count -1]
->>                */
->>               freq_pct30 = svsb->freq_pct[turn_pt];
->>               shift_byte++;
->> -            j = svsb->opp_count - 7;
->> -            for (i = j; i < svsb->opp_count; i++) {
->> +            j = bdata->opp_count - 7;
->> +            for (i = j; i < bdata->opp_count; i++) {
->>                   b_sft = BITS8 * (shift_byte % REG_BYTES);
->>                   freq_pct = (shift_byte < REG_BYTES) ?
->>                          &freq_pct30 : &freq_pct74;
->> @@ -1086,7 +1102,7 @@ static void svs_set_bank_freq_pct_v3(struct svs_platform 
->> *svsp, struct svs_bank
->>               }
->>           }
->>       } else {
->> -        if (svsb->type == SVSB_TYPE_HIGH) {
->> +        if (bdata->type == SVSB_TYPE_HIGH) {
->>               /*
->>                * freq_pct[0] +
->>                * freq_pct[turn_pt - 7] ~ freq_pct[turn_pt - 1]
->> @@ -1101,9 +1117,9 @@ static void svs_set_bank_freq_pct_v3(struct svs_platform 
->> *svsp, struct svs_bank
->>                   *freq_pct |= (svsb->freq_pct[i] << b_sft);
->>                   shift_byte++;
->>               }
->> -        } else if (svsb->type == SVSB_TYPE_LOW) {
->> +        } else if (bdata->type == SVSB_TYPE_LOW) {
->>               /* freq_pct[turn_pt] ~ freq_pct[opp_count - 1] */
->> -            for (i = turn_pt; i < svsb->opp_count; i++) {
->> +            for (i = turn_pt; i < bdata->opp_count; i++) {
->>                   b_sft = BITS8 * (shift_byte % REG_BYTES);
->>                   freq_pct = (shift_byte < REG_BYTES) ?
->>                          &freq_pct30 : &freq_pct74;
->> @@ -1119,6 +1135,7 @@ static void svs_set_bank_freq_pct_v3(struct svs_platform 
->> *svsp, struct svs_bank
->>   static void svs_get_bank_volts_v2(struct svs_platform *svsp, struct svs_bank 
->> *svsb)
->>   {
->> +    const struct svs_bank_pdata *bdata = &svsb->pdata;
->>       u32 temp, i;
->>       temp = svs_readl_relaxed(svsp, VOP74);
->> @@ -1146,17 +1163,17 @@ static void svs_get_bank_volts_v2(struct svs_platform 
->> *svsp, struct svs_bank *sv
->>                        svsb->volt[14],
->>                        svsb->freq_pct[15]);
->> -    for (i = 0; i < svsb->opp_count; i++)
->> +    for (i = 0; i < bdata->opp_count; i++)
->>           svsb->volt[i] += svsb->volt_od;
->>       /* For voltage bin support */
->>       if (svsb->opp_dfreq[0] > svsb->freq_base) {
->>           svsb->volt[0] = svs_opp_volt_to_bank_volt(svsb->opp_dvolt[0],
->> -                              svsb->volt_step,
->> -                              svsb->volt_base);
->> +                              bdata->volt_step,
->> +                              bdata->volt_base);
->>           /* Find voltage bin turn point */
->> -        for (i = 0; i < svsb->opp_count; i++) {
->> +        for (i = 0; i < bdata->opp_count; i++) {
->>               if (svsb->opp_dfreq[i] <= svsb->freq_base) {
->>                   svsb->vbin_turn_pt = i;
->>                   break;
->> @@ -1196,6 +1213,7 @@ static void svs_set_bank_phase(struct svs_platform *svsp,
->>                      enum svsb_phase target_phase)
->>   {
->>       struct svs_bank *svsb = &svsp->banks[bank_idx];
->> +    const struct svs_bank_pdata *bdata = &svsb->pdata;
->>       u32 des_char, temp_char, det_char, limit_vals, init2vals, ts_calcs;
->>       svs_switch_bank(svsp, svsb);
->> @@ -1204,7 +1222,7 @@ static void svs_set_bank_phase(struct svs_platform *svsp,
->>              FIELD_PREP(SVSB_DESCHAR_FLD_MDES, svsb->mdes);
->>       svs_writel_relaxed(svsp, des_char, DESCHAR);
->> -    temp_char = FIELD_PREP(SVSB_TEMPCHAR_FLD_VCO, svsb->vco) |
->> +    temp_char = FIELD_PREP(SVSB_TEMPCHAR_FLD_VCO, bdata->vco) |
->>               FIELD_PREP(SVSB_TEMPCHAR_FLD_MTDES, svsb->mtdes) |
->>               FIELD_PREP(SVSB_TEMPCHAR_FLD_DVT_FIXED, svsb->dvt_fixed);
->>       svs_writel_relaxed(svsp, temp_char, TEMPCHAR);
->> @@ -1213,11 +1231,11 @@ static void svs_set_bank_phase(struct svs_platform *svsp,
->>              FIELD_PREP(SVSB_DETCHAR_FLD_DCMDET, svsb->dcmdet);
->>       svs_writel_relaxed(svsp, det_char, DETCHAR);
->> -    svs_writel_relaxed(svsp, svsb->dc_config, DCCONFIG);
->> -    svs_writel_relaxed(svsp, svsb->age_config, AGECONFIG);
->> +    svs_writel_relaxed(svsp, bdata->dc_config, DCCONFIG);
->> +    svs_writel_relaxed(svsp, bdata->age_config, AGECONFIG);
->>       svs_writel_relaxed(svsp, SVSB_RUNCONFIG_DEFAULT, RUNCONFIG);
->> -    svsb->set_freq_pct(svsp, svsb);
->> +    bdata->set_freq_pct(svsp, svsb);
->>       limit_vals = FIELD_PREP(SVSB_LIMITVALS_FLD_DTLO, SVSB_VAL_DTLO) |
->>                FIELD_PREP(SVSB_LIMITVALS_FLD_DTHI, SVSB_VAL_DTHI) |
->> @@ -1227,13 +1245,13 @@ static void svs_set_bank_phase(struct svs_platform *svsp,
->>       svs_writel_relaxed(svsp, SVSB_DET_WINDOW, DETWINDOW);
->>       svs_writel_relaxed(svsp, SVSB_DET_MAX, CONFIG);
->> -    svs_writel_relaxed(svsp, svsb->chk_shift, CHKSHIFT);
->> -    svs_writel_relaxed(svsp, svsb->ctl0, CTL0);
->> +    svs_writel_relaxed(svsp, bdata->chk_shift, CHKSHIFT);
->> +    svs_writel_relaxed(svsp, bdata->ctl0, CTL0);
->>       svs_writel_relaxed(svsp, SVSB_INTSTS_VAL_CLEAN, INTSTS);
->>       switch (target_phase) {
->>       case SVSB_PHASE_INIT01:
->> -        svs_writel_relaxed(svsp, svsb->vboot, VBOOT);
->> +        svs_writel_relaxed(svsp, bdata->vboot, VBOOT);
->>           svs_writel_relaxed(svsp, SVSB_INTEN_INIT0x, INTEN);
->>           svs_writel_relaxed(svsp, SVSB_PTPEN_INIT01, SVSEN);
->>           break;
->> @@ -1305,8 +1323,10 @@ static inline void svs_init01_isr_handler(struct 
->> svs_platform *svsp,
->>       svs_save_bank_register_data(svsp, bank_idx, SVSB_PHASE_INIT01);
->>       svsb->phase = SVSB_PHASE_INIT01;
->> +
->>       val = ~(svs_readl_relaxed(svsp, DCVALUES) & GENMASK(15, 0)) + 1;
->>       svsb->dc_voffset_in = val & GENMASK(15, 0);
->> +
-> Do these new blank lines have any added value ?
-> 
-
-Removed.
-
->>       if (svsb->volt_flags & SVSB_INIT01_VOLT_IGNORE ||
->>           (svsb->dc_voffset_in & SVSB_DC_SIGNED_BIT &&
->>            svsb->volt_flags & SVSB_INIT01_VOLT_INC_ONLY))
->> @@ -1324,6 +1344,8 @@ static inline void svs_init02_isr_handler(struct 
->> svs_platform *svsp,
->>                         unsigned short bank_idx)
->>   {
->>       struct svs_bank *svsb = &svsp->banks[bank_idx];
->> +    const struct svs_bank_pdata *bdata = &svsb->pdata;
->> +
-> I guess here is a bogus new line
-> 
-
-Fixed.
-
->>       dev_info(svsb->dev, "%s: VOP74~30:0x%08x~0x%08x, DC:0x%08x\n",
->>            __func__, svs_readl_relaxed(svsp, VOP74),
->> @@ -1333,7 +1355,7 @@ static inline void svs_init02_isr_handler(struct 
->> svs_platform *svsp,
->>       svs_save_bank_register_data(svsp, bank_idx, SVSB_PHASE_INIT02);
->>       svsb->phase = SVSB_PHASE_INIT02;
->> -    svsb->get_volts(svsp, svsb);
->> +    bdata->get_volts(svsp, svsb);
->>       svs_writel_relaxed(svsp, SVSB_PTPEN_OFF, SVSEN);
->>       svs_writel_relaxed(svsp, SVSB_INTSTS_F0_COMPLETE, INTSTS);
->> @@ -1343,11 +1365,12 @@ static inline void svs_mon_mode_isr_handler(struct 
->> svs_platform *svsp,
->>                           unsigned short bank_idx)
->>   {
->>       struct svs_bank *svsb = &svsp->banks[bank_idx];
->> +    const struct svs_bank_pdata *bdata = &svsb->pdata;
->>       svs_save_bank_register_data(svsp, bank_idx, SVSB_PHASE_MON);
->>       svsb->phase = SVSB_PHASE_MON;
->> -    svsb->get_volts(svsp, svsb);
->> +    bdata->get_volts(svsp, svsb);
->>       svsb->temp = svs_readl_relaxed(svsp, TEMP) & GENMASK(7, 0);
->>       svs_writel_relaxed(svsp, SVSB_INTSTS_FLD_MONVOP, INTSTS);
->> @@ -1356,18 +1379,20 @@ static inline void svs_mon_mode_isr_handler(struct 
->> svs_platform *svsp,
->>   static irqreturn_t svs_isr(int irq, void *data)
->>   {
->>       struct svs_platform *svsp = data;
->> +    const struct svs_bank_pdata *bdata = NULL;
-> 
-> Is this init to NULL redundant ?
-> 
-
-Fixed
-
->>       struct svs_bank *svsb = NULL;
->>       unsigned long flags;
->>       u32 idx, int_sts, svs_en;
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->>           svsb = &svsp->banks[idx];
->> +        bdata = &svsb->pdata;
->>           WARN(!svsb, "%s: svsb(%s) is null", __func__, svsb->name);
->>           spin_lock_irqsave(&svs_lock, flags);
->>           /* Find out which svs bank fires interrupt */
->> -        if (svsb->int_st & svs_readl_relaxed(svsp, INTST)) {
->> +        if (bdata->int_st & svs_readl_relaxed(svsp, INTST)) {
->>               spin_unlock_irqrestore(&svs_lock, flags);
->>               continue;
->>           }
->> @@ -1412,6 +1437,7 @@ static bool svs_mode_available(struct svs_platform *svsp, 
->> u8 mode)
->>   static int svs_init01(struct svs_platform *svsp)
->>   {
->> +    const struct svs_bank_pdata *bdata;
->>       struct svs_bank *svsb;
->>       unsigned long flags, time_left;
->>       bool search_done;
->> @@ -1427,6 +1453,7 @@ static int svs_init01(struct svs_platform *svsp)
->>        /* Svs bank init01 preparation - power enable */
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->>           svsb = &svsp->banks[idx];
->> +        bdata = &svsb->pdata;
->>           if (!(svsb->mode_support & SVSB_MODE_INIT01))
->>               continue;
->> @@ -1434,7 +1461,7 @@ static int svs_init01(struct svs_platform *svsp)
->>           ret = regulator_enable(svsb->buck);
->>           if (ret) {
->>               dev_err(svsb->dev, "%s enable fail: %d\n",
->> -                svsb->buck_name, ret);
->> +                bdata->buck_name, ret);
->>               goto svs_init01_resume_cpuidle;
->>           }
->> @@ -1464,6 +1491,7 @@ static int svs_init01(struct svs_platform *svsp)
->>        */
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->>           svsb = &svsp->banks[idx];
->> +        bdata = &svsb->pdata;
->>           if (!(svsb->mode_support & SVSB_MODE_INIT01))
->>               continue;
->> @@ -1473,11 +1501,11 @@ static int svs_init01(struct svs_platform *svsp)
->>            * fix to that freq until svs_init01 is done.
->>            */
->>           search_done = false;
->> -        opp_vboot = svs_bank_volt_to_opp_volt(svsb->vboot,
->> -                              svsb->volt_step,
->> -                              svsb->volt_base);
->> +        opp_vboot = svs_bank_volt_to_opp_volt(bdata->vboot,
->> +                              bdata->volt_step,
->> +                              bdata->volt_base);
->> -        for (i = 0; i < svsb->opp_count; i++) {
->> +        for (i = 0; i < bdata->opp_count; i++) {
->>               opp_freq = svsb->opp_dfreq[i];
->>               if (!search_done && svsb->opp_dvolt[i] <= opp_vboot) {
->>                   ret = dev_pm_opp_adjust_voltage(svsb->opp_dev,
->> @@ -1509,13 +1537,14 @@ static int svs_init01(struct svs_platform *svsp)
->>       /* Svs bank init01 begins */
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->>           svsb = &svsp->banks[idx];
->> +        bdata = &svsb->pdata;
->>           if (!(svsb->mode_support & SVSB_MODE_INIT01))
->>               continue;
->> -        opp_vboot = svs_bank_volt_to_opp_volt(svsb->vboot,
->> -                              svsb->volt_step,
->> -                              svsb->volt_base);
->> +        opp_vboot = svs_bank_volt_to_opp_volt(bdata->vboot,
->> +                              bdata->volt_step,
->> +                              bdata->volt_base);
->>           buck_volt = regulator_get_voltage(svsb->buck);
->>           if (buck_volt != opp_vboot) {
->> @@ -1542,11 +1571,12 @@ static int svs_init01(struct svs_platform *svsp)
->>   svs_init01_finish:
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->>           svsb = &svsp->banks[idx];
->> +        bdata = &svsb->pdata;
->>           if (!(svsb->mode_support & SVSB_MODE_INIT01))
->>               continue;
->> -        for (i = 0; i < svsb->opp_count; i++) {
->> +        for (i = 0; i < bdata->opp_count; i++) {
->>               r = dev_pm_opp_enable(svsb->opp_dev,
->>                             svsb->opp_dfreq[i]);
->>               if (r)
->> @@ -1572,7 +1602,7 @@ static int svs_init01(struct svs_platform *svsp)
->>           r = regulator_disable(svsb->buck);
->>           if (r)
->>               dev_err(svsb->dev, "%s disable fail: %d\n",
->> -                svsb->buck_name, r);
->> +                bdata->buck_name, r);
->>       }
->>   svs_init01_resume_cpuidle:
->> @@ -1583,6 +1613,7 @@ static int svs_init01(struct svs_platform *svsp)
->>   static int svs_init02(struct svs_platform *svsp)
->>   {
->> +    const struct svs_bank_pdata *bdata;
->>       struct svs_bank *svsb;
->>       unsigned long flags, time_left;
->>       int ret;
->> @@ -1618,11 +1649,12 @@ static int svs_init02(struct svs_platform *svsp)
->>        */
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->>           svsb = &svsp->banks[idx];
->> +        bdata = &svsb->pdata;
->>           if (!(svsb->mode_support & SVSB_MODE_INIT02))
->>               continue;
->> -        if (svsb->type == SVSB_TYPE_HIGH || svsb->type == SVSB_TYPE_LOW) {
->> +        if (bdata->type == SVSB_TYPE_HIGH || bdata->type == SVSB_TYPE_LOW) {
->>               if (svs_sync_bank_volts_from_opp(svsb)) {
->>                   dev_err(svsb->dev, "sync volt fail\n");
->>                   ret = -EPERM;
->> @@ -1680,12 +1712,12 @@ static int svs_start(struct svs_platform *svsp)
->>   static int svs_suspend(struct device *dev)
->>   {
->>       struct svs_platform *svsp = dev_get_drvdata(dev);
->> -    struct svs_bank *svsb;
->>       int ret;
->>       u32 idx;
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->> -        svsb = &svsp->banks[idx];
->> +        struct svs_bank *svsb = &svsp->banks[idx];
->> +
->>           svs_bank_disable_and_restore_default_volts(svsp, svsb);
->>       }
->> @@ -1736,6 +1768,7 @@ static int svs_resume(struct device *dev)
->>   static int svs_bank_resource_setup(struct svs_platform *svsp)
->>   {
->> +    const struct svs_bank_pdata *bdata;
->>       struct svs_bank *svsb;
->>       struct dev_pm_opp *opp;
->>       unsigned long freq;
->> @@ -1746,8 +1779,9 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->>           svsb = &svsp->banks[idx];
->> +        bdata = &svsb->pdata;
->> -        if (svsb->sw_id >= SVSB_SWID_MAX || svsb->type >= SVSB_TYPE_MAX) {
->> +        if (bdata->sw_id >= SVSB_SWID_MAX || bdata->type >= SVSB_TYPE_MAX) {
->>               dev_err(svsb->dev, "unknown bank sw_id or type\n");
->>               return -EINVAL;
->>           }
->> @@ -1757,8 +1791,8 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
->>               return -ENOMEM;
->>           svsb->name = devm_kasprintf(svsp->dev, GFP_KERNEL, "%s%s",
->> -                        svs_swid_names[svsb->sw_id],
->> -                        svs_type_names[svsb->type]);
->> +                        svs_swid_names[bdata->sw_id],
->> +                        svs_type_names[bdata->type]);
->>           if (!svsb->name)
->>               return -ENOMEM;
->> @@ -1779,10 +1813,10 @@ static int svs_bank_resource_setup(struct svs_platform 
->> *svsp)
->>           if (svsb->mode_support & SVSB_MODE_INIT01) {
->>               svsb->buck = devm_regulator_get_optional(svsb->opp_dev,
->> -                                 svsb->buck_name);
->> +                                 bdata->buck_name);
->>               if (IS_ERR(svsb->buck)) {
->>                   dev_err(svsb->dev, "cannot get \"%s-supply\"\n",
->> -                    svsb->buck_name);
->> +                    bdata->buck_name);
->>                   return PTR_ERR(svsb->buck);
->>               }
->>           }
->> @@ -1793,18 +1827,17 @@ static int svs_bank_resource_setup(struct svs_platform 
->> *svsp)
->>                   dev_err(svsb->dev, "cannot get \"%s\" thermal zone\n",
->>                       svsb->tzone_name);
->>                   return PTR_ERR(svsb->tzd);
->> -            }
-> 
-> This deleted line above is strange. Have you removed an open bracket and I missed it ?
-> 
-
-I have no idea how this got deleted in this patch. Fixed.
-
->>           }
->>           count = dev_pm_opp_get_opp_count(svsb->opp_dev);
->> -        if (svsb->opp_count != count) {
->> +        if (bdata->opp_count != count) {
->>               dev_err(svsb->dev,
->>                   "opp_count not \"%u\" but get \"%d\"?\n",
->> -                svsb->opp_count, count);
->> +                bdata->opp_count, count);
->>               return count;
->>           }
->> -        for (i = 0, freq = ULONG_MAX; i < svsb->opp_count; i++, freq--) {
->> +        for (i = 0, freq = ULONG_MAX; i < bdata->opp_count; i++, freq--) {
->>               opp = dev_pm_opp_find_freq_floor(svsb->opp_dev, &freq);
->>               if (IS_ERR(opp)) {
->>                   dev_err(svsb->dev, "cannot find freq = %ld\n",
->> @@ -1901,7 +1934,8 @@ static bool svs_common_parse_efuse(struct svs_platform *svsp,
->>       for (i = 0; i < svsp->bank_max; i++) {
->>           struct svs_bank *svsb = &svsp->banks[i];
->> -        const struct svs_fusemap *dfmap = svsb->dev_fuse_map;
->> +        const struct svs_bank_pdata *bdata = &svsb->pdata;
->> +        const struct svs_fusemap *dfmap = bdata->dev_fuse_map;
->>           if (vmin == 1)
->>               svsb->vmin = 0x1e;
->> @@ -1927,11 +1961,11 @@ static bool svs_mt8183_efuse_parsing(struct svs_platform 
->> *svsp,
->>                        const struct svs_platform_data *pdata)
->>   {
->>       struct svs_bank *svsb;
->> +    const struct svs_bank_pdata *bdata;
->>       int format[6], x_roomt[6], o_vtsmcu[5], o_vtsabb, tb_roomt = 0;
->>       int adc_ge_t, adc_oe_t, ge, oe, gain, degc_cali, adc_cali_en_t;
->>       int o_slope, o_slope_sign, ts_id;
->>       u32 idx, i, ft_pgm, mts, temp0, temp1, temp2;
->> -    int ret;
->>       for (i = 0; i < svsp->efuse_max; i++)
->>           if (svsp->efuse[i])
->> @@ -1948,7 +1982,8 @@ static bool svs_mt8183_efuse_parsing(struct svs_platform 
->> *svsp,
->>       for (idx = 0; idx < svsp->bank_max; idx++) {
->>           svsb = &svsp->banks[idx];
->> -        const struct svs_fusemap *dfmap = svsb->dev_fuse_map;
->> +        bdata = &svsb->pdata;
->> +        const struct svs_fusemap *dfmap = bdata->dev_fuse_map;
->>           if (ft_pgm <= 1)
->>               svsb->volt_flags |= SVSB_INIT01_VOLT_IGNORE;
->> @@ -1959,7 +1994,7 @@ static bool svs_mt8183_efuse_parsing(struct svs_platform 
->> *svsp,
->>           svsb->dcbdet = svs_get_fuse_val(svsp->efuse, &dfmap[BDEV_DCBDET], 8);
->>           svsb->dcmdet = svs_get_fuse_val(svsp->efuse, &dfmap[BDEV_DCMDET], 8);
->> -        switch (svsb->sw_id) {
->> +        switch (bdata->sw_id) {
->>           case SVSB_SWID_CPU_LITTLE:
->>           case SVSB_SWID_CCI:
->>               if (ft_pgm <= 3)
->> @@ -1985,6 +2020,7 @@ static bool svs_mt8183_efuse_parsing(struct svs_platform 
->> *svsp,
->>           }
->>       }
->> +
-> 
-> This line appears to be bogus
-> 
-
-Fixed.
-
->>       /* Thermal efuse parsing */
->>       adc_ge_t = (svsp->tefuse[1] >> 22) & GENMASK(9, 0);
->>       adc_oe_t = (svsp->tefuse[1] >> 12) & GENMASK(9, 0);
-> 
-> 
-> [snip]
+We can create dtsi for SOM and then dts which just one line which includes SOM dtsi.
 
 Thanks,
-Angelo
+Michal
+
+
+
+
+
+
+
 
