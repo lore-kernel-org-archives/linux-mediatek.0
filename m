@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B627FC61D92
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:57:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E8DAC54FB9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:57:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BEImrCI/kXGGUJLIMX0kD855YKMvbpgOQwIUEihf9gQ=; b=SH3xekxYRQYEw4i0/rOMhIySpV
-	2EhpJR5TonHctbtztgb0bFwgi17SeDbOEW1jT75edUSCXr30y8e5Jpe+l/HZM3zE+Pi/6VinLowXx
-	rILSD02Mtex/Egjdgc1nKiZ44KdGY83hzJIAtTZejjFMKlvFqJ9MxtJdEptyANCJi3ONNU5vPn/di
-	kavYsla/29mnBFR6MaNDnt+jRQL29Ko6t3bZgjSpiY04EPZzzXSHxLtM657Ob1c06ysx237oPElBA
-	8LydmhRa4csXgkZfly5dRh5G0u3C/H+9m4tWO2q7MhhZUx2SBZkRwUkoMb7gM1xom4OlqpPRxA+h7
-	mXSdX7Pg==;
+	bh=a5feH2/jkDCbwJZEcvQP2UexdyAXhgSRCA68qIaap+0=; b=eJVH/ul5hNHMHtudeQewOFo/4j
+	f9ZalF0jrNyUFa4ipBxj0K8dSZNqLtSTZUSKpLERZZLKND0Kg+j6tqAW8yu9rJ2c+I+Zd1bM2IE4a
+	KMw+CbMK7DwhEkn7n1Ar6+xLFXD2oSEC5WP2VwgZaGfrFk6aU4fGCHddQq0Tv7ACqSUK8Dvx2hwvB
+	atek8zy9/+7qDU0WxArkm7AJxy9YAmA2xUi0pMGflzNHATgip6YlPCKkdb8lnwGQL5ethZfJKgw/s
+	Xp2lE2XngMC7GG2IkuY4uhCYgz/wKb1AoQpX3u8B2BKDBvJjPNcrS1BFUlTK6DY1uB8jfjT5feUBt
+	LUWggRYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PNa-00GdgP-1O;
-	Tue, 21 Nov 2023 11:57:22 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r5PNc-00Gdiz-0Y;
+	Tue, 21 Nov 2023 11:57:24 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5PN1-00Gd8n-1l;
-	Tue, 21 Nov 2023 11:56:52 +0000
+	id 1r5PN2-00Gd9O-1f;
+	Tue, 21 Nov 2023 11:56:54 +0000
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 73D99660731B;
-	Tue, 21 Nov 2023 11:56:45 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7AA076607323;
+	Tue, 21 Nov 2023 11:56:46 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700567806;
-	bh=EEiAga7/PEKFwq5/KS3naIy5UuB1z5wjPE5byYQKsG4=;
+	s=mail; t=1700567807;
+	bh=mvDbP9LsG0x+WjQA4KRWvixfVCE355+sCyiuJX+FpKc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OpDnSoPGdSH1UzaeAKrP95OFmvISNmdjMD2sQMrcis1DwAE0iY57IcLuXpXMKNvG1
-	 wgsn5gdgujm2irWdQuxHZk48L9cYQ5xahqFRwXRiRAiNQaobt+ahTQL8Y+XzUD2Dzo
-	 KtfZX8b2pVFWiO25m7E0s8NonOIxatF6SyRaSEXb3l/3L+nYrQogcikjHDda1rOek0
-	 x00Jc8svE91glrxLm8VmYo2le9ZC1wXKMtXbYNLWZFlOtn7FfFIhazsOBxRYPXkikS
-	 ggSj/54pHRz8N7cMVU4Xg94djhV1anjwj9wf9p6UalW+scbGHy1zsQms5hAJixltE8
-	 Vn1Smp6ABGFmw==
+	b=NQzzsLAPLWVCrdYb1WdDBdgCttHjg+D0GSUKO8RjcPy/S1k2NgVgf3dkE+E0FXCdV
+	 W7rrIfGI8UW1pl/ucspvIOj8CKAZX1Em5cBzG54xGK+yDXik/0Ej6GAyFbVzX+MEXw
+	 /N533xEVo4QceCSm+oyT2e1aL8RdKexn5Mx4Y6V9L5igobnE3IJqHjkpGGZIFhSgDe
+	 EnEGPDuOMKWivrUJi+OfHz56fSte8UE+K7sJpVvHztWxKUff84obzi2lwfggeuy/JU
+	 2Iv13hIZftMUP85+47DDkz60ar/mP5ZhAuSk64Ci6MH4NuVW32zzvGlREIl+N5+Lb9
+	 fytD6j3AUfIsw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -56,17 +56,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH v2 14/20] soc: mediatek: mtk-svs: Compress of_device_id entries
-Date: Tue, 21 Nov 2023 12:56:18 +0100
-Message-ID: <20231121115624.56855-15-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 15/20] soc: mediatek: mtk-svs: Cleanup of svs_probe() function
+Date: Tue, 21 Nov 2023 12:56:19 +0100
+Message-ID: <20231121115624.56855-16-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231121115624.56855-1-angelogioacchino.delregno@collabora.com>
 References: <20231121115624.56855-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_035647_740685_A69FD36A 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20231121_035648_699483_2CC3A8CB 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,49 +81,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compress each entry to one line, as they fit in 84 columns, which
-is acceptable.
-While at it, also change the capital 'S' to 's' in 'sentinel'.
+Cleanup the svs_probe() function: use dev_err_probe() where possible,
+change some efuse read failure gotos and then remove now impossible
+IS_ERR_OR_NULL() checks (as they will never return true) for nvmem
+(efuse read) failures.
+Also remove some unnecessary blank lines.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 24 ++++++------------------
- 1 file changed, 6 insertions(+), 18 deletions(-)
+ drivers/soc/mediatek/mtk-svs.c | 32 +++++++++++---------------------
+ 1 file changed, 11 insertions(+), 21 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 5fd9884dd20f..ac36c2efcafa 100644
+index ac36c2efcafa..ae0cc22a2941 100644
 --- a/drivers/soc/mediatek/mtk-svs.c
 +++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -2731,24 +2731,12 @@ static const struct svs_platform_data svs_mt8183_platform_data = {
- };
+@@ -2775,14 +2775,13 @@ static int svs_probe(struct platform_device *pdev)
+ 	}
  
- static const struct of_device_id svs_of_match[] = {
--	{
--		.compatible = "mediatek,mt8195-svs",
--		.data = &svs_mt8195_platform_data,
--	}, {
--		.compatible = "mediatek,mt8192-svs",
--		.data = &svs_mt8192_platform_data,
--	}, {
--		.compatible = "mediatek,mt8188-svs",
--		.data = &svs_mt8188_platform_data,
--	}, {
--		.compatible = "mediatek,mt8186-svs",
--		.data = &svs_mt8186_platform_data,
--	}, {
--		.compatible = "mediatek,mt8183-svs",
--		.data = &svs_mt8183_platform_data,
--	}, {
--		/* Sentinel */
--	},
-+	{ .compatible = "mediatek,mt8195-svs", .data = &svs_mt8195_platform_data },
-+	{ .compatible = "mediatek,mt8192-svs", .data = &svs_mt8192_platform_data },
-+	{ .compatible = "mediatek,mt8188-svs", .data = &svs_mt8188_platform_data },
-+	{ .compatible = "mediatek,mt8186-svs", .data = &svs_mt8186_platform_data },
-+	{ .compatible = "mediatek,mt8183-svs", .data = &svs_mt8183_platform_data },
-+	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, svs_of_match);
+ 	if (!svsp_data->efuse_parsing(svsp, svsp_data)) {
+-		dev_err(svsp->dev, "efuse data parsing failed\n");
+-		ret = -EPERM;
++		ret = dev_err_probe(svsp->dev, -EINVAL, "efuse data parsing failed\n");
+ 		goto svs_probe_free_tefuse;
+ 	}
+ 
+ 	ret = svs_bank_resource_setup(svsp);
+ 	if (ret) {
+-		dev_err(svsp->dev, "svs bank resource setup fail: %d\n", ret);
++		dev_err_probe(svsp->dev, ret, "svs bank resource setup fail\n");
+ 		goto svs_probe_free_tefuse;
+ 	}
+ 
+@@ -2794,43 +2793,40 @@ static int svs_probe(struct platform_device *pdev)
+ 
+ 	svsp->main_clk = devm_clk_get(svsp->dev, "main");
+ 	if (IS_ERR(svsp->main_clk)) {
+-		dev_err(svsp->dev, "failed to get clock: %ld\n",
+-			PTR_ERR(svsp->main_clk));
+-		ret = PTR_ERR(svsp->main_clk);
++		ret = dev_err_probe(svsp->dev, PTR_ERR(svsp->main_clk),
++				    "failed to get clock\n");
+ 		goto svs_probe_free_tefuse;
+ 	}
+ 
+ 	ret = clk_prepare_enable(svsp->main_clk);
+ 	if (ret) {
+-		dev_err(svsp->dev, "cannot enable main clk: %d\n", ret);
++		dev_err_probe(svsp->dev, ret, "cannot enable main clk\n");
+ 		goto svs_probe_free_tefuse;
+ 	}
+ 
+ 	svsp->base = of_iomap(svsp->dev->of_node, 0);
+ 	if (IS_ERR_OR_NULL(svsp->base)) {
+-		dev_err(svsp->dev, "cannot find svs register base\n");
+-		ret = -EINVAL;
++		ret = dev_err_probe(svsp->dev, -EINVAL, "cannot find svs register base\n");
+ 		goto svs_probe_clk_disable;
+ 	}
+ 
+ 	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
+ 					IRQF_ONESHOT, svsp_data->name, svsp);
+ 	if (ret) {
+-		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
+-			svsp_irq, ret);
++		dev_err_probe(svsp->dev, ret, "register irq(%d) failed\n", svsp_irq);
+ 		goto svs_probe_iounmap;
+ 	}
+ 
+ 	ret = svs_start(svsp);
+ 	if (ret) {
+-		dev_err(svsp->dev, "svs start fail: %d\n", ret);
++		dev_err_probe(svsp->dev, ret, "svs start fail\n");
+ 		goto svs_probe_iounmap;
+ 	}
+ 
+ #ifdef CONFIG_DEBUG_FS
+ 	ret = svs_create_debug_cmds(svsp);
+ 	if (ret) {
+-		dev_err(svsp->dev, "svs create debug cmds fail: %d\n", ret);
++		dev_err_probe(svsp->dev, ret, "svs create debug cmds fail\n");
+ 		goto svs_probe_iounmap;
+ 	}
+ #endif
+@@ -2839,18 +2835,12 @@ static int svs_probe(struct platform_device *pdev)
+ 
+ svs_probe_iounmap:
+ 	iounmap(svsp->base);
+-
+ svs_probe_clk_disable:
+ 	clk_disable_unprepare(svsp->main_clk);
+-
+ svs_probe_free_tefuse:
+-	if (!IS_ERR_OR_NULL(svsp->tefuse))
+-		kfree(svsp->tefuse);
+-
++	kfree(svsp->tefuse);
+ svs_probe_free_efuse:
+-	if (!IS_ERR_OR_NULL(svsp->efuse))
+-		kfree(svsp->efuse);
+-
++	kfree(svsp->efuse);
+ 	return ret;
+ }
  
 -- 
 2.42.0
