@@ -4,147 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EF1CC5ACB3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 10:28:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AD4DC5ACB3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 10:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aVRDDBzCiN0yGxEcaavJVtsWWKQ26OPLgFyvV4vi+f4=; b=b8QKlLrxPgxrppJO4byxcE5F1G
-	UzoMSXPn1hP5VTm2LL9bZyGomwLTp2KuCxM6TWDcyPl06GrGf/UlBA2HFBuPUOVmumRxHbdHtc/sf
-	2S5+sW1fOz7rfS+V1oCLQljHa/TIy3h9+DR5w6Q801O6D3fvWiS17Uv8/wemsxt4qCH3UEyTNhnv9
-	tRWFpL5W9pX6nx272i1izpeKipFQt+vKHwzbG7ygkhMNTKH5Cp0BcxNtC5zPYSjnIzfH7d68CYoJO
-	NXhDBJGtxqziYhi6V6dQWJ93w9tcCGFIWz8O//XpoVFZrH0QnsCU+jeltN9gUKp4kdJQ57SyhRNP4
-	shJkDRbQ==;
+	bh=78SMtTzj3Csk7guC6pNn8i/imOMFF308d7Q1ndRFViM=; b=Fk4cNx/Y7D1W+ILGF/iw5Dxb+i
+	e2IXn7WXg2HRgJ1YFR/Du0B7Pu/FZmIEKgZup/Zg4mirCSVj7o2P0IQKlJX/aBQsMtD+hdEoYF9sR
+	0WLLVwgIYR1nCjtkZq/Ed+3HVb9h/7GZB5OAJ6VkySd18dFQDNimyrxSImuOev4tj5TILcNRSGm3c
+	q2YYKcVJtKhaZ9WDbefHpq8x4gzrOIHGTr/EVmJbnC6kb5PTzCrWwFlRcYbxMN7c71rSdeSwMLsSc
+	qUCC1xoycqowDImTMW0WLnE3BDSUxc5qI011pN30+7x8u1Oth6IbiOuvuHfu8m7Ow3Sb5M3W/1BCL
+	xCnf0qlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5Nzl-00GGCX-0v;
-	Tue, 21 Nov 2023 10:28:41 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1r5O2k-00GGX6-0x;
+	Tue, 21 Nov 2023 10:31:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5Nzh-00GGAf-0f
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Nov 2023 10:28:39 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-507e85ebf50so7020848e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Nov 2023 02:28:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700562514; x=1701167314; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=aVRDDBzCiN0yGxEcaavJVtsWWKQ26OPLgFyvV4vi+f4=;
-        b=M94I/yVzrZp9zR0JzJfpcPDWpwkdzwAkyBtoKcO3QdIO4cxjVEithirwbuSU/MwVUH
-         VNaec18YDpBCrfozyN6VLkaG4i42q1q/y5xm78kokC1jOus/jHmvLysc98VdlwbQgYTs
-         9s3/QnZ6hPEM+jHARTOhC4/1FwOBHpTsdjiRXw5zpvTw+2oqRHUu3GlWDfy025UBx6sU
-         Yet217FGXQEgT717s4uXcgIEVZ9Q1+3SyVhvnYCe0k5B/Fk9e3330LfM5e7zE6RItlwn
-         Bq4ewcq1usei9t7Ul5znI21d+AgFQjBn+8Wg8ov/Sg4tHO/Vbb7SjeTp1D4Q35aWT+8Z
-         gVXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700562514; x=1701167314;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aVRDDBzCiN0yGxEcaavJVtsWWKQ26OPLgFyvV4vi+f4=;
-        b=DXRKlCeApu3BWp5kESOSFL4u3bHh/TOXHptUiwv3hZK6CzRc3hoYWWsplu7xl84hFN
-         DSBg2wBGiaQEs02NTPqhpyaG+qxlnXPM7DT4lOX5a35V1HlE+rqjRIV89usAEiXMr5B7
-         v23eUCQ1JWThU/ir4OGC2rvTVPGisQ7ZGNS5fe5ImFmKjbJcbNNzYIbpuCkwhqh1eCX7
-         qsL+vR+miWFHHeTCS5QoXTm7T7B8vkf38P5Ex4VNwmU+rDyhqIfKhpal76fS7ZYMX1wk
-         z4eO1ZnOPrIckZYIPJ+T62yFFCadyKnG4elP1e76JhJA22kboY19rTz78UO+k30sPOu+
-         ghcA==
-X-Gm-Message-State: AOJu0YxHKiCgpVA9w8RCiG5cFk+Kw6orx3XlvfpYtFhAhlsNuceplWXJ
-	GoLlQhJ/Rt+xZybXOuw55BZRLQ==
-X-Google-Smtp-Source: AGHT+IGZaa1oBQkynmiTPevxZGR7T6fEl8l2wzgn95wwSGErbTaWSpzMf7eZdzAfeYCOnmxlnDyWLQ==
-X-Received: by 2002:a19:384c:0:b0:509:8e9e:a416 with SMTP id d12-20020a19384c000000b005098e9ea416mr5987611lfj.47.1700562513839;
-        Tue, 21 Nov 2023 02:28:33 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.222.11])
-        by smtp.gmail.com with ESMTPSA id w11-20020a056402070b00b005489d3b0a58sm2752349edx.55.2023.11.21.02.28.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Nov 2023 02:28:33 -0800 (PST)
-Message-ID: <6513aefa-b0be-4a29-8c9c-483822217ebf@linaro.org>
-Date: Tue, 21 Nov 2023 11:28:29 +0100
+	id 1r5O2g-00GGWC-2e;
+	Tue, 21 Nov 2023 10:31:44 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3E6EF66072F6;
+	Tue, 21 Nov 2023 10:31:40 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1700562701;
+	bh=eAVo/wl10HB6quoWDWzqBLbaFO4CsVTt1yPV5+TaoDY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mQ20Oz031InsVrpqHi0kgA/AXyHLX5d9bTw4qTZDREQDWHB3Yj3/gLrQxy29fiGme
+	 FcFGvgwa6ZT4ufBtA6iOGsPjZa9fRPQ5+V1oM6o8mcRRm8olQ1ksZ4lph6ob9vw2aK
+	 bnK1WkUggHazaT+R0AL4i65IGNtGkoBfgsSMe2gKYLMiO8VBnOtp/TgGsaIBH+RJ1J
+	 VwNoNlJzFdR13miP1atJTG06P+ckTykG4fzMTrkdXZjoedJ70xc5opI+cyclGdFXAR
+	 ZifobcwJMY658DeSDprZOI40CY4kDSKY1j520zia4xp9WJoBHRbZpKFk9p9KUq+sez
+	 OtWhDO4UINipQ==
+Message-ID: <94165a35-4ce9-4624-938f-00545562fee4@collabora.com>
+Date: Tue, 21 Nov 2023 11:31:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
+Subject: Re: [PATCH 3/3] arm64: dts: mediatek: Add Acelink EW-7886CAX
 Content-Language: en-US
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Michal Simek <michal.simek@amd.com>, Rob Herring <robh+dt@kernel.org>,
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?=
+ <nfraprado@collabora.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Chris Morgan <macromorgan@hotmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Sean Wang
+ <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Andrew Davis <afd@ti.com>, Arnd Bergmann <arnd@arndb.de>,
- Bjorn Andersson <andersson@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
- Olof Johansson <olof@lixom.net>, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org
-References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
- <19358871-009d-4498-9c13-90d5338b1e9f@amd.com>
- <76fa8f61-fe31-4040-a38d-cc05be3f4f17@linaro.org>
- <CAMuHMdW4WPJT0Km7w8RWrGJaztk6QDGoFAn0bdGbrEsw81R1FA@mail.gmail.com>
- <acfdce81-f117-4a1a-a9fe-e2b4b8922adb@linaro.org>
- <bd49f17c-7ebf-4e19-b77b-b5ec95375f7d@amd.com>
- <b48293f3-16e3-4980-b900-add0cb7d69f6@linaro.org>
- <CAMuHMdV_gqmf2=cXmZmYgE3aLxvPBr1DVp0cz0C+YrfBVG-8mg@mail.gmail.com>
- <CAA8EJpo6w9N_opJkfDaF-20zwZmn6JHrYYhakqzLFqVtgXaV=Q@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <CAA8EJpo6w9N_opJkfDaF-20zwZmn6JHrYYhakqzLFqVtgXaV=Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+References: <20231117104315.9718-2-zajec5@gmail.com>
+ <20231117104315.9718-3-zajec5@gmail.com>
+ <0c3267e5-5371-4fd8-a0f6-360ff28c9dda@collabora.com>
+ <b13b6ad3-2ef9-482a-bec4-8f23de6c951f@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <b13b6ad3-2ef9-482a-bec4-8f23de6c951f@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_022837_246746_CE53C913 
-X-CRM114-Status: GOOD (  18.29  )
+X-CRM114-CacheID: sfid-20231121_023143_127729_228A9FCA 
+X-CRM114-Status: GOOD (  20.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,78 +87,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/11/2023 11:13, Dmitry Baryshkov wrote:
-> On Tue, 21 Nov 2023 at 10:09, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
->>
->> Hi Krzysztof,
->>
->> On Tue, Nov 21, 2023 at 8:47 AM Krzysztof Kozlowski
->> <krzysztof.kozlowski@linaro.org> wrote:
->>> On 21/11/2023 08:33, Michal Simek wrote:
->>>> On 11/20/23 20:31, Krzysztof Kozlowski wrote:
->>>>> On 20/11/2023 20:18, Geert Uytterhoeven wrote:
->>>>>> On Mon, Nov 20, 2023 at 3:53 PM Krzysztof Kozlowski
->>>>>> <krzysztof.kozlowski@linaro.org> wrote:
->>>>>>> On 20/11/2023 15:01, Michal Simek wrote:> >
->>>>>>>> On 11/20/23 09:40, Krzysztof Kozlowski wrote:
->>>>>>>>> Document preferred coding style for Devicetree sources (DTS and DTSI),
->>>>>>>>> to bring consistency among all (sub)architectures and ease in reviews.
->>>>>>
->>>>>>>>> +Organizing DTSI and DTS
->>>>>>>>> +-----------------------
->>>>>>>>> +
->>>>>>>>> +The DTSI and DTS files should be organized in a way representing the common
->>>>>>>>> +(and re-usable) parts of the hardware.  Typically this means organizing DTSI
->>>>>>>>> +and DTS files into several files:
->>>>>>>>> +
->>>>>>>>> +1. DTSI with contents of the entire SoC (without nodes for hardware not present
->>>>>>>>> +   on the SoC).
->>>>>>>>> +2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
->>>>>>>>> +   entire System-on-Module).
->>>>>>>>
->>>>>>>> DTS/DTSI - SOMs can actually run as they are that's why it is fair to say that
->>>>>>>> there doesn't need to be DTS representing the board.
->>>>>>>
->>>>>>> I have never seen a SoM which can run without elaborate hardware-hacking
->>>>>>> (e.g. connecting multiple wires to the SoM pins). The definition of the
->>>>>>> SoM is that it is a module. Module can be re-used, just like SoC.
->>>>>>
->>>>>> /me looks at his board farm...
->>
->>>>>> I guess there are (many) other examples...
->>>>>
->>>>> OK, I never had such in my hands. Anyway, the SoM which can run
->>>>> standalone  has a meaning of a board, so how exactly you want to
->>>>> rephrase the paragraph?
->>>>
->>>> What about?
->>>>
->>>> 2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
->>>> entire System-on-Module). DTS if runs standalone.
+Il 20/11/23 18:27, Rafał Miłecki ha scritto:
+> On 20.11.2023 15:17, AngeloGioacchino Del Regno wrote:
+>> Il 17/11/23 11:43, Rafał Miłecki ha scritto:
+>>> From: Rafał Miłecki <rafal@milecki.pl>
 >>>
->>> OK, but then it's duplicating the option 3. It also suggests that SoM
->>> should be a DTS, which is not what we want for such case. Such SoMs must
->>> have DTSI+DTS.
+>>> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
+>>> It has 512 MiB of RAM, one 2.5 Gbps PoE (802.3at) Ethernet port and
+>>> on-SoC Wi-Fi.
+>>>
+>>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+>>> ---
+>>>   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+>>>   .../mediatek/mt7986a-acelink-ew-7886cax.dts   | 175 ++++++++++++++++++
+>>>   2 files changed, 176 insertions(+)
+>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile 
+>>> b/arch/arm64/boot/dts/mediatek/Makefile
+>>> index e6e7592a3645..9ff2ab6c5e4d 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/Makefile
+>>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+>>> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+>>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts 
+>>> b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+>>> new file mode 100644
+>>> index 000000000000..18d19281dfdb
+>>> --- /dev/null
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
+>>> @@ -0,0 +1,175 @@
+>>> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
+>>> +
+>>> +/dts-v1/;
+>>> +#include <dt-bindings/input/input.h>
+>>> +#include <dt-bindings/gpio/gpio.h>
+>>> +#include <dt-bindings/leds/common.h>
+>>> +
+>>> +#include "mt7986a.dtsi"
+>>> +
+>>> +/ {
+>>> +    model = "Acelink EW-7886CAX";
+>>> +    compatible = "acelink,ew-7886cax", "mediatek,mt7986a";
+>>> +
+>>> +    aliases {
+>>> +        serial0 = &uart0;
+>>> +    };
+>>> +
+>>> +    chosen {
+>>> +        stdout-path = "serial0:115200n8";
+>>> +    };
+>>> +
+>>> +    memory@40000000 {
+>>> +        reg = <0 0x40000000 0 0x20000000>;
+>>> +        device_type = "memory";
+>>> +    };
+>>> +
+>>> +    keys {
+>>> +        compatible = "gpio-keys";
+>>> +
+>>> +        key-restart {
+>>> +            label = "Reset";
+>>> +            gpios = <&pio 7 GPIO_ACTIVE_LOW>;
+>>> +            linux,code = <KEY_RESTART>;
+>>> +        };
+>>> +    };
+>>> +
+>>> +    leds {
+>>> +        compatible = "gpio-leds";
+>>> +
+>>> +        led-0 {
 >>
->> So you want us to have a one-line <SoM>.dts, which just includes <SoM>.dtsi?
+>> Please, reorder by name
+>>
+>>              color =    ...
+>>              function = ...
+>>              gpios = ...
 > 
-> Well, I think it is impossible to run SoM directly. There is a carrier
-> board anyway, which includes at least regulators. So, I guess, the
-> SoM.dts will not be a oneline file.
+> Can you explain why and if there is a place I can find rules to follow
+> regarding such aspects? I really would like to just be aware of all
+> rules and don't waste anyone's time for such details.
+> 
+> FWIW I checked Documentation/devicetree/bindings/*.rst (after few years
+> I admit) but I couldn't find anything there about properties order.
+> 
+> If we currently don't have rules I don't really think we should enforce
+> following per-maintainer preferences. I really don't object your
+> suggestions but there is simply no way to remember each maintainer's
+> rules. We simply have too many subsystems and architectures boards.
+> 
+> 
 
-Geert claims he has SoM with an USB connector which can run when power
-is supplied by that USB connector. I can imagine a CPU board (so a SoM
-in format of a board, not small DIMM-card) which has connectors e.g. for
-power and a slot for external motherboard for additional, optional
-interfaces.
+What I said is not a maintainer preference but more of a general rule, which is
+in the process of being documented.
 
-Look at picture on 14th page:
-https://www.renesas.com/us/en/document/mat/rza2m-cpu-board-users-manual
+Check the patch there, at the time of writing, v2:
+https://lore.kernel.org/all/20231120084044.23838-1-krzysztof.kozlowski@linaro.org/
 
-This looks like some case of SoM, although maybe not that popular
-outside of Renesas :)
-
-Best regards,
-Krzysztof
+Regards,
+Angelo
 
 
