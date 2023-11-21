@@ -4,94 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4AD0C54FB9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45718C61D94
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 11:33:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ureO+uz+HH3VWTrrGTWXTia0TXwq9jc/nCIjnx/zm8E=; b=2cY330jfeZ57WMIHeyhvWgnRiw
-	ZXNR7zTM6Z/2WeHwrsPld8ALWl9EF6dlwnqdV7e5rFse/IgK+uNF1aXrmyv7pVGm7cCH3M3cir7Vq
-	yrqr0DYTTaJg/QREtx5p90fj9D/0GzCNmuk0XQqOCqOwhAeFtkwOrGRm6rjAlpJSQacT2v6pgEtom
-	irxKkyLJOPCToPqbDS2ttnHwM/5D+SfkymUqZg0ItmKdsATK5CKKoAY3JRQxo8sj4mo3PldeVH/69
-	m2KoysKgW0frH+PvNmEd0EXNSaDit8TPVqkOGh2EmGz+vJfQKJeuGbgGOuXTG+zOTJ92aoqstu104
-	k5opCO0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0v3H0tbzllESZRNibSNZr8YEeUC5bwYupFiiMADLkIA=; b=A/MK0Kl+rQM8SOCAr10ZnnmsxY
+	p9TnA1F1J7BfjQ7EwhTlllIvAUxs9N85t3O/oCn6oe9IXpqiRXBGXJvoE11l144lgs7HvT4gIyX6B
+	K9akTCYOLU/HbQw8KOtiRISDrkcrLpQYZ9iv5dxaqYprxbhznalZMkeH7zyhq3JH5kSWz9Uyz2SEq
+	J5z8z7bxCC0gmB2R7CcnP7Sc0dZueX3QefRm3/uOzCofKsICJ4UNjZlG6vEjOFMC71U9tfVFNBx6O
+	C7/CDCzvS34i1X3vapT9aJ5eK/AkUTKiw9uaF7sB5T+Mwynb6X7nHBGn5lB/SN8fxvg4FgDp5fWEb
+	T823uxSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5OjV-00GOfI-0I;
-	Tue, 21 Nov 2023 11:15:57 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1r5Ozy-00GXod-2u;
+	Tue, 21 Nov 2023 11:32:58 +0000
+Received: from mgamail.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5OjR-00GOdn-1T;
-	Tue, 21 Nov 2023 11:15:55 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-50930f126b1so7075849e87.3;
-        Tue, 21 Nov 2023 03:15:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700565347; x=1701170147; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ureO+uz+HH3VWTrrGTWXTia0TXwq9jc/nCIjnx/zm8E=;
-        b=IjEpCT+BI1Vrmn7r8459p6NjZLGxKeGC1d+OefHLvCk+mhsI2taowpPOhBcyE++7AT
-         gdVi1haEYt7LaGK+yAkhUmZs8Cf76lkaqfxzkqFYJHRSLcnwP/uepqivjkPQ4iE7LVat
-         /Ei/bv+pu54lHnsAd1nWnyLlBW/F3P8YQ+yqjWUAm2B4S5Yx2JuQ8gSSNv1oW82STHZb
-         m8ptl2gkhSeZ2qPNgUwtjjztoVQyIESF/BTHTsW7VbohY5POZEJGT5n7Pu97lSSHsW3T
-         WvLKoBhLEhXu3zUPq1hIlRDvfP58WJ40n2K8aIxfxSvsNOxAAwhPi5XLCDNgcRUOT5I9
-         qmCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700565347; x=1701170147;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ureO+uz+HH3VWTrrGTWXTia0TXwq9jc/nCIjnx/zm8E=;
-        b=def736YMjeqiRFDBACMYDhNKO5NWu+gmAXyA4oQTP4Q72mB2yGH7MAyIWahhL60E5M
-         nux+SCPoGK4IocJQZnTZ9oTvTse7RlQHFFXs/Lbx1banuFnngoFblBGWeL6WIiHeWfdz
-         6TxXlmCA3DQbRheKMkzdTI2760u5cOCR9Vvc5st00CT4335W7qjaYH+lMbamYRdcJFoa
-         i13qOG+piFzvd7PJqACuyd3JX6jICHJB9U8D/fEVH8W0ejtWLAFhwMIiFmhp55UnMsgb
-         aoyvCuWMilHES60xjaivEBHt71nKcFHq8QxR79DjY+iuqYuxPdzdNnly57nOHbUtZYH+
-         EWOQ==
-X-Gm-Message-State: AOJu0YyCVLFHedtVngUdguMRq56tgD/ADFvBoAEjCZ/dNLiWj53H7C1G
-	1p2DhL2zcX9Tc+mX3d3xdg8=
-X-Google-Smtp-Source: AGHT+IF+ca+iA+AgWJJxG336wPchy8U1lzUCfl4fZu0x93tY+S/cX8tc1q5hjP9nQBcoID876FPrYg==
-X-Received: by 2002:a05:6512:110d:b0:50a:a82c:a5f2 with SMTP id l13-20020a056512110d00b0050aa82ca5f2mr8673055lfg.66.1700565346890;
-        Tue, 21 Nov 2023 03:15:46 -0800 (PST)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id q25-20020a19a419000000b005056422d204sm1495561lfc.158.2023.11.21.03.15.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Nov 2023 03:15:46 -0800 (PST)
-Message-ID: <147af53c-1695-4c83-a83d-b6460b332f63@gmail.com>
-Date: Tue, 21 Nov 2023 12:15:44 +0100
+	id 1r5Ozv-00GXlg-2M;
+	Tue, 21 Nov 2023 11:32:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1700566375; x=1732102375;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=e9FE42TLG/FvdI9S3SWrIySMHczvHW0nenWXFS9lTmM=;
+  b=nNr1G7959BrLUxBioYCp88R8X+nMtASyepJYmeuC5tcyOaRy4M4FBEXa
+   vHCSkJUF2BwBdxYCobZUG82W0FJciXbzfcYyxTx7j8d6LWiQO6buHRvur
+   nUwW+xmEfZFtredD7eLf4xcC8s7JKucoYPlyTLVvmswLoz7JMTtUDqVRa
+   M4vE6eS8KGP0ix1galCmBVH1vbvYr53WcfsLhobh0ROaHk2+pxZ3x3f+I
+   /LX1/PO8MekbDmCmFOzH4IsNt6DPW0QLPtnzobWkPzuTy1HMM5F05AQgs
+   HjD1N/i3PHxYVvqKscvgMOZlU9eoCauRqWkrCQ3Xc6fPsXjZFfhNKhhHh
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="371157260"
+X-IronPort-AV: E=Sophos;i="6.04,215,1695711600"; 
+   d="scan'208";a="371157260"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Nov 2023 03:32:54 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="743021699"
+X-IronPort-AV: E=Sophos;i="6.04,215,1695711600"; 
+   d="scan'208";a="743021699"
+Received: from lkp-server02.sh.intel.com (HELO b8de5498638e) ([10.239.97.151])
+  by orsmga006.jf.intel.com with ESMTP; 21 Nov 2023 03:32:50 -0800
+Received: from kbuild by b8de5498638e with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1r5OzP-0007ja-1I;
+	Tue, 21 Nov 2023 11:32:36 +0000
+Date: Tue, 21 Nov 2023 19:32:13 +0800
+From: kernel test robot <lkp@intel.com>
+To: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>,
+	ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
+	bhelgaas@google.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev
+Subject: Re: [PATCH v2] PCI: mediatek: Fix sparse warning caused to
+ virt_to_phys() prototype change
+Message-ID: <202311211958.Z1kPUdyp-lkp@intel.com>
+References: <170052491316.21557.13173111699965824301.stgit@skinsburskii.>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: Add Acelink EW-7886CAX
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?=
- <nfraprado@collabora.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
- Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chris Morgan <macromorgan@hotmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Sean Wang
- <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20231117104315.9718-2-zajec5@gmail.com>
- <20231117104315.9718-3-zajec5@gmail.com>
- <0c3267e5-5371-4fd8-a0f6-360ff28c9dda@collabora.com>
- <b13b6ad3-2ef9-482a-bec4-8f23de6c951f@gmail.com>
- <94165a35-4ce9-4624-938f-00545562fee4@collabora.com>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <94165a35-4ce9-4624-938f-00545562fee4@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <170052491316.21557.13173111699965824301.stgit@skinsburskii.>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_031553_491970_202670C2 
-X-CRM114-Status: GOOD (  20.17  )
+X-CRM114-CacheID: sfid-20231121_033255_818725_EA7D67E3 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,108 +89,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21.11.2023 11:31, AngeloGioacchino Del Regno wrote:
-> Il 20/11/23 18:27, Rafał Miłecki ha scritto:
->> On 20.11.2023 15:17, AngeloGioacchino Del Regno wrote:
->>> Il 17/11/23 11:43, Rafał Miłecki ha scritto:
->>>> From: Rafał Miłecki <rafal@milecki.pl>
->>>>
->>>> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
->>>> It has 512 MiB of RAM, one 2.5 Gbps PoE (802.3at) Ethernet port and
->>>> on-SoC Wi-Fi.
->>>>
->>>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->>>> ---
->>>>   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->>>>   .../mediatek/mt7986a-acelink-ew-7886cax.dts   | 175 ++++++++++++++++++
->>>>   2 files changed, 176 insertions(+)
->>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
->>>>
->>>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
->>>> index e6e7592a3645..9ff2ab6c5e4d 100644
->>>> --- a/arch/arm64/boot/dts/mediatek/Makefile
->>>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->>>> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
->>>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
->>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
->>>> new file mode 100644
->>>> index 000000000000..18d19281dfdb
->>>> --- /dev/null
->>>> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
->>>> @@ -0,0 +1,175 @@
->>>> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
->>>> +
->>>> +/dts-v1/;
->>>> +#include <dt-bindings/input/input.h>
->>>> +#include <dt-bindings/gpio/gpio.h>
->>>> +#include <dt-bindings/leds/common.h>
->>>> +
->>>> +#include "mt7986a.dtsi"
->>>> +
->>>> +/ {
->>>> +    model = "Acelink EW-7886CAX";
->>>> +    compatible = "acelink,ew-7886cax", "mediatek,mt7986a";
->>>> +
->>>> +    aliases {
->>>> +        serial0 = &uart0;
->>>> +    };
->>>> +
->>>> +    chosen {
->>>> +        stdout-path = "serial0:115200n8";
->>>> +    };
->>>> +
->>>> +    memory@40000000 {
->>>> +        reg = <0 0x40000000 0 0x20000000>;
->>>> +        device_type = "memory";
->>>> +    };
->>>> +
->>>> +    keys {
->>>> +        compatible = "gpio-keys";
->>>> +
->>>> +        key-restart {
->>>> +            label = "Reset";
->>>> +            gpios = <&pio 7 GPIO_ACTIVE_LOW>;
->>>> +            linux,code = <KEY_RESTART>;
->>>> +        };
->>>> +    };
->>>> +
->>>> +    leds {
->>>> +        compatible = "gpio-leds";
->>>> +
->>>> +        led-0 {
->>>
->>> Please, reorder by name
->>>
->>>              color =    ...
->>>              function = ...
->>>              gpios = ...
->>
->> Can you explain why and if there is a place I can find rules to follow
->> regarding such aspects? I really would like to just be aware of all
->> rules and don't waste anyone's time for such details.
->>
->> FWIW I checked Documentation/devicetree/bindings/*.rst (after few years
->> I admit) but I couldn't find anything there about properties order.
->>
->> If we currently don't have rules I don't really think we should enforce
->> following per-maintainer preferences. I really don't object your
->> suggestions but there is simply no way to remember each maintainer's
->> rules. We simply have too many subsystems and architectures boards.
->>
->>
-> 
-> What I said is not a maintainer preference but more of a general rule, which is
-> in the process of being documented.
-> 
-> Check the patch there, at the time of writing, v2:
-> https://lore.kernel.org/all/20231120084044.23838-1-krzysztof.kozlowski@linaro.org/
+Hi Stanislav,
 
-That is exactly what I was looking for (except I didn't assume it may we
-WIP). Thank you!
+kernel test robot noticed the following build warnings:
+
+[auto build test WARNING on pci/next]
+[also build test WARNING on pci/for-linus linus/master v6.7-rc2 next-20231121]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Stanislav-Kinsburskii/PCI-mediatek-Fix-sparse-warning-caused-to-virt_to_phys-prototype-change/20231121-080253
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+patch link:    https://lore.kernel.org/r/170052491316.21557.13173111699965824301.stgit%40skinsburskii.
+patch subject: [PATCH v2] PCI: mediatek: Fix sparse warning caused to virt_to_phys() prototype change
+config: openrisc-allmodconfig (https://download.01.org/0day-ci/archive/20231121/202311211958.Z1kPUdyp-lkp@intel.com/config)
+compiler: or1k-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231121/202311211958.Z1kPUdyp-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202311211958.Z1kPUdyp-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/pci/controller/pcie-mediatek.c: In function 'mtk_compose_msi_msg':
+>> drivers/pci/controller/pcie-mediatek.c:400:62: warning: passing argument 1 of 'virt_to_phys' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+     400 |         addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+         |                                                              ^
+   In file included from arch/openrisc/include/asm/io.h:37,
+                    from include/linux/io.h:13,
+                    from include/linux/iopoll.h:14,
+                    from drivers/pci/controller/pcie-mediatek.c:12:
+   include/asm-generic/io.h:1003:57: note: expected 'volatile void *' but argument is of type 'const void *'
+    1003 | static inline unsigned long virt_to_phys(volatile void *address)
+         |                                          ~~~~~~~~~~~~~~~^~~~~~~
+   drivers/pci/controller/pcie-mediatek.c: In function 'mtk_pcie_enable_msi':
+   drivers/pci/controller/pcie-mediatek.c:523:66: warning: passing argument 1 of 'virt_to_phys' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+     523 |         msg_addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+         |                                                                  ^
+   include/asm-generic/io.h:1003:57: note: expected 'volatile void *' but argument is of type 'const void *'
+    1003 | static inline unsigned long virt_to_phys(volatile void *address)
+         |                                          ~~~~~~~~~~~~~~~^~~~~~~
+
+
+vim +400 drivers/pci/controller/pcie-mediatek.c
+
+   393	
+   394	static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+   395	{
+   396		struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+   397		phys_addr_t addr;
+   398	
+   399		/* MT2712/MT7622 only support 32-bit MSI addresses */
+ > 400		addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+   401		msg->address_hi = 0;
+   402		msg->address_lo = lower_32_bits(addr);
+   403	
+   404		msg->data = data->hwirq;
+   405	
+   406		dev_dbg(port->pcie->dev, "msi#%d address_hi %#x address_lo %#x\n",
+   407			(int)data->hwirq, msg->address_hi, msg->address_lo);
+   408	}
+   409	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
