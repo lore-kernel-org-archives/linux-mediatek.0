@@ -4,92 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFBF2C5ACB3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 07:40:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4785DC5ACB3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 07:47:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FdPdCCCHELZuZbE+Nx/X7BcWbDYhnSVo4Jlo0Z3ZPDU=; b=Al8ndSoEV166WJ/IwT+R0WrMkI
-	SVHsGoOYVb6Yru59z2bDFI+qQ4iot9LU/kGqo4TFjjdhBPkrz6AX7IuN4ml0Aypy9CMg1anMaefRJ
-	KEnqKrxJazO+6q6izpnzbfHlI2dPlq0ucKcPhmkH7hLYL2cDlddR3z+w8HrWSnjtFlywgIt0k/jzY
-	PCIjRcUKJ7kpld+YZuYSrfj5psn36h3Sqi4g4Fb9mZ539rVdKCIa3M4BwRR4AqOjeT5ZykUg904x7
-	Xe1cAIrkNkzKX/r+PeH8FrJNr4j6AHW6b1bbqsRGBxe15tcqX7HaVbKKYsS5gvlqjzL74cXpTpEXJ
-	tuE4lP1w==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QqorQbljtFpA0x+MxGfUnzvUIXIXOJHNHwKUm5kHLXI=; b=eoaodLFfnJVe79HDHZi16/RqGi
+	BUsgUTXqlm5uuye9QIbfVdE5sYtkLMt3FCvqAzQ152IQHOBZgg7YU2DxKbr9zS+jG3kIuLA9SuXMA
+	TjFCgJmQYEKe4DYggyakX8aKKz29nDoccL7327caMqo/cuvtx5MvFsIv/Tn0kRTzlJdIZDTAjl/Dt
+	qbcJXQ8jjHq3s8/xnaTlkO5ni2IU3n7AVDLZXx6KNZgBR0BxQdkxQtn3iull1VI+REF4oY2bS6vnV
+	apJOCb+iZBo2cVEBEZFJCuu6vVZG1dEA+t0JEd/C7S+Z16vMkf8MKwLOSsRNITZICn2lz8dYtWjim
+	JnvTxddg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5LMb-00Fuxd-1f;
-	Tue, 21 Nov 2023 07:40:05 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1r5LTk-00Fvvw-0N;
+	Tue, 21 Nov 2023 07:47:28 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5LMX-00Fuvq-2L
+	id 1r5LTg-00FvuT-1K
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Nov 2023 07:40:03 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-507b9408c61so7123060e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Nov 2023 23:39:59 -0800 (PST)
+	Tue, 21 Nov 2023 07:47:25 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-991c786369cso717240466b.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Nov 2023 23:47:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700552398; x=1701157198; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=linaro.org; s=google; t=1700552842; x=1701157642; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=FdPdCCCHELZuZbE+Nx/X7BcWbDYhnSVo4Jlo0Z3ZPDU=;
-        b=SoFU0mgQL78ulQ7s10Pvg8nJvtUu80ay+O48uWZgqmAoUd/GPEU5cEd4ZBfooOjR6z
-         lok3rhiTlchk+FEqtyA5tTxXti02GmhAHd+lJVxN+xSCFa/8JJj/6P806v868OoIMRIG
-         R3wxlPUIQhPbexRhVtQFk2kwcDN/hjc1Vj9kHxFKE+DHJ6EamZLt97l9yzWhsCQUcegF
-         Hvl2ch/jySp7BGaZ85IfG/5p9+SrGTLZ4SAwOtv7Hl7nb+JMuu4vJSlY3Wdyw95wG5pO
-         S4Sm2H4xeRFVJt+XH5I62TikXaM0WqhvRE03kND2qg+WAcO1MOTxaWoU3pXfPCvcjxln
-         o9yQ==
+        bh=QqorQbljtFpA0x+MxGfUnzvUIXIXOJHNHwKUm5kHLXI=;
+        b=GSGiWzkf/Y9N2qfaD7WLL1dmv4b2MlDcXHjC/VKUURQGK5a4NyNPGV1T+eXOf60MQY
+         Bn6SW3qkNIwG4zkPwZg4FvjD/R8gdVRZQl7jLF5r3WWcsEHyK489qsq7iPhI+Qs06dAm
+         ABaa6y7CkhZj6eH98HrRyT4v8P04ZLxJl7p0vKnHGKHEE/WmNV6SoCA9EBUXZZKFAggU
+         p4xCTe+lfWHc40mLHzOm8XVGblNg8+YNPNeUHVfPtV4UlErFH9OySE9NgeaOf0JLe3fe
+         Ud8NJvnlaW/CC+iXYGAQDZkFjH/aEHdnCmHJ6DbkmR/m0XgwUrvm2gxjCQbt9Z7KQPZk
+         qQBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700552398; x=1701157198;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1700552842; x=1701157642;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FdPdCCCHELZuZbE+Nx/X7BcWbDYhnSVo4Jlo0Z3ZPDU=;
-        b=NE/D/xaJdM1nUy+Npzr9yAjozJQveRN1sN1cOzU/MEnZ12yu8gBFKmmogVnSUCNnIY
-         2hA5VP12mhDgToY8OXWom6hKpgNhUDmtQ4hoZZ2pEfIsXTLtZP9IcDWAhnvZjJTmm7fl
-         D6nf/0UNKqYKdd//Md9DG1F75Pit7dUSGLtBtjNgz024EJlqvP1crOZIYjZZkqQ0NHcY
-         B5tAGqZX06X5qzW0QY0p/zNC5xzgDLTFasyFychm1zTqCIQP7jGmjjPhSQPk3jpgFl9K
-         xk5nc3n5KwuQqgxmez9td0xKsUelzQL0hwEWTDCZiCGIae2I848mdl8hC4979Pz+7vHu
-         UeVA==
-X-Gm-Message-State: AOJu0YzmLnCEXJB+W7DJoEU9CTySX+tx39+pmwnxux3IbJBLm44eiKpR
-	7lR8knjDMsj4xDHvi78Pz9nFEA==
-X-Google-Smtp-Source: AGHT+IEPHsZObDjx4bw5s0XBThPc/nHG46dXuW4hQgzNxNLedU3lmi9/YgNLlDQD3OCIXzKLH04FHw==
-X-Received: by 2002:a05:6512:39c5:b0:50a:a940:2d81 with SMTP id k5-20020a05651239c500b0050aa9402d81mr7755021lfu.68.1700552397619;
-        Mon, 20 Nov 2023 23:39:57 -0800 (PST)
+        bh=QqorQbljtFpA0x+MxGfUnzvUIXIXOJHNHwKUm5kHLXI=;
+        b=dgeolHYuXLNv0KGCrGfAO1f7duSCyc2hsn1ns2FLlDfacvIwFx0vIjmRJIzgH2i7I7
+         v0iRktki3TPcKvy3OQTAz6mri3R6M1bmRfxgIfxjPy00sCScgVVENVzluKJqoRESz1LH
+         wLZZ5brNheCtQUAnDVWETu4+RmMNItioJRf1kPqVifoGEdUAeNgJFE3yroP94GioM5bg
+         WtRqCC67aZiKxt4sW3yHuYNCmswIM2414pm208sdKciriDEqP2AqqvltMAVXKAhuYpt1
+         B1Zv111pgKASA7n2XTB1ay2QNqKPJdkJi+d/NHjAHpiPYqLVL8c1eBExe0zu1b9iKue/
+         Le7A==
+X-Gm-Message-State: AOJu0YwfqrQ0MatqjJ/uIvGieyAS8r2RS1/BaTyiI733CjaD5lWIYNRD
+	87a9XnBwq6ACG9c3he4NZEC8Pw==
+X-Google-Smtp-Source: AGHT+IHueEI/LYzq8OnogdMBjjkgXmWFk8XwmxU9cgWy13QqTgMpQ8th6trg2y3LXbmauXNw3li19Q==
+X-Received: by 2002:a17:906:bc53:b0:9fe:6349:d8ba with SMTP id s19-20020a170906bc5300b009fe6349d8bamr3789712ejv.27.1700552842316;
+        Mon, 20 Nov 2023 23:47:22 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.222.11])
-        by smtp.gmail.com with ESMTPSA id b15-20020a056000054f00b0031980294e9fsm13563542wrf.116.2023.11.20.23.39.54
+        by smtp.gmail.com with ESMTPSA id n21-20020a1709062bd500b00a015eac52dcsm752988ejg.108.2023.11.20.23.47.19
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 Nov 2023 23:39:57 -0800 (PST)
-Message-ID: <c6e1461a-fd75-4525-8888-0ffef626b77e@linaro.org>
-Date: Tue, 21 Nov 2023 08:39:53 +0100
+        Mon, 20 Nov 2023 23:47:21 -0800 (PST)
+Message-ID: <b48293f3-16e3-4980-b900-add0cb7d69f6@linaro.org>
+Date: Tue, 21 Nov 2023 08:47:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/4] dt-bindings: clock: mediatek: add clock
- controllers of MT7988
+Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
+To: Michal Simek <michal.simek@amd.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Sabrina Dubroca <sd@queasysnail.net>,
- Jianhui Zhao <zhaojh329@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- "Garmin.Chang" <Garmin.Chang@mediatek.com>,
- Edward-JW Yang <edward-jw.yang@mediatek.com>,
- Johnson Wang <johnson.wang@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Dan Carpenter <dan.carpenter@linaro.org>,
- James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- netdev@vger.kernel.org
-References: <b277c5f084ff35849efb8250510b2536053d1316.1700498124.git.daniel@makrotopia.org>
- <8a30ae45b55842bc04f57714c8e0a962f3288a67.1700498124.git.daniel@makrotopia.org>
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Andrew Davis <afd@ti.com>, Arnd Bergmann <arnd@arndb.de>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
+ Olof Johansson <olof@lixom.net>, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org
+References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
+ <19358871-009d-4498-9c13-90d5338b1e9f@amd.com>
+ <76fa8f61-fe31-4040-a38d-cc05be3f4f17@linaro.org>
+ <CAMuHMdW4WPJT0Km7w8RWrGJaztk6QDGoFAn0bdGbrEsw81R1FA@mail.gmail.com>
+ <acfdce81-f117-4a1a-a9fe-e2b4b8922adb@linaro.org>
+ <bd49f17c-7ebf-4e19-b77b-b5ec95375f7d@amd.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -135,12 +136,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <8a30ae45b55842bc04f57714c8e0a962f3288a67.1700498124.git.daniel@makrotopia.org>
+In-Reply-To: <bd49f17c-7ebf-4e19-b77b-b5ec95375f7d@amd.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_234001_782695_CB1DED21 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20231120_234724_475859_14A0C296 
+X-CRM114-Status: GOOD (  16.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,187 +156,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/11/2023 18:18, Daniel Golle wrote:
-> Add various clock controllers found in the MT7988 SoC to existing
-> bindings (if applicable) and add files for the new ethwarp, mcusys
-> and xfi-pll clock controllers not previously present in any SoC.
+On 21/11/2023 08:33, Michal Simek wrote:
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
-> v2:
->  * dropped unused labels
->  * add 'type: object' declaration for reset-controller found in new
->    ethwarp controller and represented as ti,syscon-reset
->  * rebase on top of
->    "dt-bindings: arm: mediatek: move ethsys controller & convert to DT schema"
 > 
->  .../arm/mediatek/mediatek,infracfg.yaml       |  1 +
->  .../arm/mediatek/mediatek,mt7988-ethwarp.yaml | 61 +++++++++++++++++++
->  .../arm/mediatek/mediatek,mt7988-mcusys.yaml  | 46 ++++++++++++++
->  .../arm/mediatek/mediatek,mt7988-xfi-pll.yaml | 49 +++++++++++++++
->  .../bindings/clock/mediatek,apmixedsys.yaml   |  1 +
->  .../bindings/clock/mediatek,ethsys.yaml       |  1 +
->  .../bindings/clock/mediatek,topckgen.yaml     |  1 +
->  .../bindings/net/pcs/mediatek,sgmiisys.yaml   |  2 +
->  8 files changed, 162 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-xfi-pll.yaml
+> On 11/20/23 20:31, Krzysztof Kozlowski wrote:
+>> On 20/11/2023 20:18, Geert Uytterhoeven wrote:
+>>> Hi Krzysztof,
+>>>
+>>> On Mon, Nov 20, 2023 at 3:53 PM Krzysztof Kozlowski
+>>> <krzysztof.kozlowski@linaro.org> wrote:
+>>>> On 20/11/2023 15:01, Michal Simek wrote:> >
+>>>>> On 11/20/23 09:40, Krzysztof Kozlowski wrote:
+>>>>>> Document preferred coding style for Devicetree sources (DTS and DTSI),
+>>>>>> to bring consistency among all (sub)architectures and ease in reviews.
+>>>
+>>>>>> +Organizing DTSI and DTS
+>>>>>> +-----------------------
+>>>>>> +
+>>>>>> +The DTSI and DTS files should be organized in a way representing the common
+>>>>>> +(and re-usable) parts of the hardware.  Typically this means organizing DTSI
+>>>>>> +and DTS files into several files:
+>>>>>> +
+>>>>>> +1. DTSI with contents of the entire SoC (without nodes for hardware not present
+>>>>>> +   on the SoC).
+>>>>>> +2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
+>>>>>> +   entire System-on-Module).
+>>>>>
+>>>>> DTS/DTSI - SOMs can actually run as they are that's why it is fair to say that
+>>>>> there doesn't need to be DTS representing the board.
+>>>>
+>>>> I have never seen a SoM which can run without elaborate hardware-hacking
+>>>> (e.g. connecting multiple wires to the SoM pins). The definition of the
+>>>> SoM is that it is a module. Module can be re-used, just like SoC.
+>>>
+>>> /me looks at his board farm...
+>>>
+>>> The Renesas White-Hawk CPU board can be used standalone, and has a
+>>> separate power input connector for this operation mode.  As it has RAM,
+>>> Ethernet, serial console, eMMC, and even mini-DP, it can serve useful
+>>> purposes on its own.
+>>> I agree it's not a super-good example, as the board is not really a
+>>> "SoM", and we currently don't have r8a779g0-white-hawk-cpu.dts, only
+>>> r8a779g0-white-hawk-cpu.dtsi.
+>>>
+>>> The RZ/A2M CPU Board is a real SoM, which can be powered over USB.
+>>> It has less standard connectors (microSD, USB, MIPI CSI-2), but still
+>>> sufficient features to be usable on its own.
+>>> Again, we're doing a bad job, as we only have a DTS for the full eval
+>>> board (r7s9210-rza2mevb.dts).
+>>>
+>>> I guess there are (many) other examples...
+>>
+>> OK, I never had such in my hands. Anyway, the SoM which can run
+>> standalone  has a meaning of a board, so how exactly you want to
+>> rephrase the paragraph?
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> index ea98043c6ba3d..230b5188a88db 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> @@ -30,6 +30,7 @@ properties:
->                - mediatek,mt7629-infracfg
->                - mediatek,mt7981-infracfg
->                - mediatek,mt7986-infracfg
-> +              - mediatek,mt7988-infracfg
->                - mediatek,mt8135-infracfg
->                - mediatek,mt8167-infracfg
->                - mediatek,mt8173-infracfg
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml
-> new file mode 100644
-> index 0000000000000..5b988efe0cb74
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-ethwarp.yaml
-> @@ -0,0 +1,61 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-ethwarp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT7988 ethwarp Controller
-> +
-> +maintainers:
-> +  - Daniel Golle <daniel@makrotopia.org>
-> +
-> +description:
-> +  The Mediatek MT7988 ethwarp controller provides clocks and resets for the
-> +  Ethernet related subsystems found the MT7988 SoC.
+> What about?
+> 
+> 2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
+> entire System-on-Module). DTS if runs standalone.
 
-Clock controller bindings should be placed in clocks. Definitely not in arm.
-
-> +  The reset-controller can be represented using the ti,syscon-reset bindings.
-
-? Why do you rely on TI properties? How is this relevant? Describe here
-hardware, not bindings.
-
-> +  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: mediatek,mt7988-ethwarp
-> +      - const: syscon
-> +      - const: simple-mfd
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  reset-controller:
-> +    type: object
-
-Need $ref.
-
-> +
-> +  '#clock-cells':
-> +    const: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - '#clock-cells'
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/reset/ti-syscon.h>
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        clock-controller@15031000 {
-> +            compatible = "mediatek,mt7988-ethwarp", "syscon", "simple-mfd";
-> +            reg = <0 0x15031000 0 0x1000>;
-> +            #clock-cells = <1>;
-> +
-> +            reset-controller {
-> +                compatible = "ti,syscon-reset";
-
-??? You do not have TI.
-
-> +                #reset-cells = <1>;
-> +                ti,reset-bits = <
-> +                    0x8 9 0x8 9 0 0 (ASSERT_SET | DEASSERT_CLEAR | STATUS_NONE)
-> +                >;
-> +            };
-> +        };
-> +    };
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml
-> new file mode 100644
-> index 0000000000000..b30bd13616875
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7988-mcusys.yaml
-> @@ -0,0 +1,46 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-mcusys.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT7988 MCU System Clock Controller
-> +
-> +maintainers:
-> +  - Daniel Golle <daniel@makrotopia.org>
-> +
-> +description:
-> +  The Mediatek mcusys controller provides ARM and bus clocks to the system.
-> +  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
-
-This binding looks like several other Mediatek bindings. Add it to some
-existing binding instead.
-
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: mediatek,mt7988-mcusys
-> +      - const: syscon
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#clock-cells':
-> +    const: 1
-> +
-
-...
-
-
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #define MT7988_TOPRGU_XFI_PLL_GRST              16
-
-If you do not have header, use number directly.
-
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +        clock-controller@11f40000 {
-> +            compatible = "mediatek,mt7988-xfi-pll";
-> +            reg = <0 0x11f40000 0 0x1000>;
-> +            resets = <&watchdog MT7988_TOPRGU_XFI_PLL_GRST>;
-> +            #clock-cells = <1>;
-> +        };
-> +    };
-
-
+OK, but then it's duplicating the option 3. It also suggests that SoM
+should be a DTS, which is not what we want for such case. Such SoMs must
+have DTSI+DTS.
 
 Best regards,
 Krzysztof
