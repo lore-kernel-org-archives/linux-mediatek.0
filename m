@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1796C61D97
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 10:41:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0D1C61D9C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 10:52:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yR95/c3w/szrDscTRCWgMPJylCJl942MhjeAefJHcnE=; b=z97zuWOQVda7ow5XdebHCdp+pF
-	EixCpUzW/kEDc2mddd/JS+46x4KG5ey21C9ZPQAu14zkISKVgAnRRX5LG1p+7DtSjQ5zKqnrzRLK5
-	jk8xMsk+x5HuWw/uwL4qXKPvSLuhdnl3yy22BIEJmDDQFMplrw2OYFerXxSx9lVsBeGg+Di9ET6qK
-	ETA7WV2g4Cp719ICB/WdqQO+Pe7pmx38g9LVPKNslC4nKwMsXGwianJcURSS3Mn5C0Buz5vj3WTni
-	7SYLHeDI2kZ4uNxPDTg98R4FWR1YfkxSpPlJpLdYOwG+OY3tbFwybtvHK/gTO97/+IpsO4gtZGRyY
-	SbJKhXQA==;
+	bh=ysDRUdNyjhSZ1cu+6OnJUJ9v5mLNhCKHViDqz25JT0w=; b=qREBZslM9FFe2NqurluUJ6Yj7e
+	3kynAN3ni+Ycm/YeFYsJxnyInyE6yHwYw3zCYfq0NCdGCXNPBcfInYv0AFxELHZqGaFzDn0snvmjD
+	xvIwaoluI8Bi2I7O265L9jp3ECHSBXho14cwzrVdd2DUAA44WZu2CRqfMqAR/cxMDhywMd57bjmg1
+	F0ZqoqH6pCa3wSTEaxQ4XEuF2CIqOLDQiaQfemZDHfHT+oce/tlPL5397JahpT28IAwMMDzQwByM2
+	IuYFAyzQEPVb+gH6h2VNWquwP8cGzGr8mBUzLvqZCjt9X+UOtoLGt3BS0Udsp25P4jlrSW6xYjX0Z
+	3P1aNPOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5kg1-001S0l-2d;
-	Wed, 22 Nov 2023 10:41:49 +0000
+	id 1r5kqo-001Tst-0u;
+	Wed, 22 Nov 2023 10:52:58 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5kfy-001RzT-04;
-	Wed, 22 Nov 2023 10:41:47 +0000
+	id 1r5kqk-001Tqv-2W;
+	Wed, 22 Nov 2023 10:52:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0D674CE1F03;
-	Wed, 22 Nov 2023 10:41:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6AC6FC433C9;
-	Wed, 22 Nov 2023 10:41:37 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id B5DC6CE1E8D;
+	Wed, 22 Nov 2023 10:52:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B3E9C433CA;
+	Wed, 22 Nov 2023 10:52:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700649703;
-	bh=s/dlsgjmV9/Gjv6PkVsXWK7wZO4UsNtqC33jkUQSkdU=;
+	s=k20201202; t=1700650372;
+	bh=vg1uuwvQT2sKrRMAHrj+xxj4ykdnjZw0VMW21gcYvUY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pllgEhGfESNKJ4y1QCO3/xtPQtzDsfLDrTZwVJb7dcjgSp04X70lfQTsdvCyTBqq2
-	 rYZsJYXe3umDXe2CtsvCRCJ6nQXEZVx99lQ7tSu0Z4+ZZblCV7uVGdQJHLNNodeS17
-	 cTS6UfNn/VytfQbekcqYu3wC+qsHYkWeWlY5Ydj8xyAT6v7hN7pIzAviS6jy7cyeWb
-	 aYCuvcW7rfhQxCcK3AR2rbLVLbDyQdftt2Km+Kr9XkC4NFheaSpUDSxtqAhIFNnMkn
-	 ZMR6kHVKaeGic5UxLn807ZRZheNfV1AJvB6cYoZbazYVtg1zEKxr4xMixJGHWurBwT
-	 dOFXA/tf/3Ddg==
-Date: Wed, 22 Nov 2023 10:41:34 +0000
+	b=geQ+d6cieEbtA6MuRMTYcrI7LhaZsSiMpF6Z0EmxIjhHp2YFr4y5kS8qQGPHIReOx
+	 Gx/DQ3C+yWG1GL0GjjGldrto/KOVhyORCImcSSnYdzUxWs+Qm7t8ThARNQJtGM+ZJg
+	 +XqEQQ4vGjiD0TCYBukcu8HqtqO/OpbFWMV3SKenBjLcc1921paWbPMp51QrYNOdTi
+	 TAkG25biHSjNdtGJPixedr+oJQM/EI46CyD1CLw+EHpwBxyiVd9S3HLkAuxnLBccfN
+	 HBUxrr4qET/KN5se9nxEXapkamp5Gas3ngegBl2oENiIc1JZ9eccBVbxE9FimJYdrO
+	 +iuhip3TAaSAA==
+Date: Wed, 22 Nov 2023 10:52:43 +0000
 From: Simon Horman <horms@kernel.org>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: "David S. Miller" <davem@davemloft.net>,
@@ -72,7 +72,7 @@ Cc: "David S. Miller" <davem@davemloft.net>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [net-next RFC PATCH 04/14] net: phy: add initial support for PHY
  package in DT
-Message-ID: <20231122104134.GA28959@kernel.org>
+Message-ID: <20231122105243.GB28959@kernel.org>
 References: <20231120135041.15259-1-ansuelsmth@gmail.com>
  <20231120135041.15259-5-ansuelsmth@gmail.com>
 MIME-Version: 1.0
@@ -80,8 +80,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20231120135041.15259-5-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_024146_456379_9214E17C 
-X-CRM114-Status: GOOD (  25.65  )
+X-CRM114-CacheID: sfid-20231122_025255_189663_936C9142 
+X-CRM114-Status: GOOD (  30.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,36 +121,106 @@ On Mon, Nov 20, 2023 at 02:50:31PM +0100, Christian Marangi wrote:
 > 
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-...
-
-> diff --git a/include/linux/phy.h b/include/linux/phy.h
-> index c2bb3f0b9dda..5bf90c49e5bd 100644
-> --- a/include/linux/phy.h
-> +++ b/include/linux/phy.h
-> @@ -339,6 +339,8 @@ struct mdio_bus_stats {
->   * phy_package_leave().
->   */
->  struct phy_package_shared {
-> +	/* With PHY package defined in DT this points to the PHY package node */
-> +	struct device_node *np;
->  	/* addrs list pointer */
->  	/* note that this pointer is shared between different phydevs.
->  	 * It is allocated and freed automatically by phy_package_join() and
-
 Hi Christian,
 
-a minor nit from my side: please add np to the kernel doc for
-struct phy_package_shared.
+I was a little hasty in hitting send on my previous message.
+Please find some more minor feedback from my side below.
 
-> @@ -888,6 +890,8 @@ struct phy_led {
->   * @flags: A bitfield defining certain other features this PHY
->   *   supports (like interrupts)
->   * @driver_data: Static driver data
-> + * @phy_package_global_phy_num: Num of the required global phy
-> + *   for PHY package global configuration.
->   *
->   * All functions are optional. If config_aneg or read_status
->   * are not implemented, the phy core uses the genphy versions.
+...
+
+> diff --git a/drivers/net/mdio/of_mdio.c b/drivers/net/mdio/of_mdio.c
+> index 64ebcb6d235c..bb910651118f 100644
+> --- a/drivers/net/mdio/of_mdio.c
+> +++ b/drivers/net/mdio/of_mdio.c
+> @@ -139,6 +139,44 @@ bool of_mdiobus_child_is_phy(struct device_node *child)
+>  }
+>  EXPORT_SYMBOL(of_mdiobus_child_is_phy);
+>  
+> +static int __of_mdiobus_parse_phys(struct mii_bus *mdio, struct device_node *np,
+> +				   bool *scanphys)
+> +{
+> +	struct device_node *child;
+> +	int addr, rc;
+> +
+> +	/* Loop over the child nodes and register a phy_device for each phy */
+> +	for_each_available_child_of_node(np, child) {
+> +		if (of_device_is_compatible(child, "ethernet-phy-package")) {
+> +			rc = __of_mdiobus_parse_phys(mdio, child, scanphys);
+> +			if (rc && rc != -ENODEV)
+> +				return rc;
+
+for_each_available_child_of_node() makes calls to of_node_get() and
+of_node_put(), so when jumping out of a loop it is necessary to call
+of_node_put(), in this case of_node_put(child).
+
+As flagged by Coccinelle.
+
+Also flagged in of_mdiobus_find_phy() both before and after this patch.
+
+> +
+> +			continue;
+> +		}
+> +
+> +		addr = of_mdio_parse_addr(&mdio->dev, child);
+> +		if (addr < 0) {
+> +			*scanphys = true;
+> +			continue;
+> +		}
+> +
+> +		if (of_mdiobus_child_is_phy(child))
+> +			rc = of_mdiobus_register_phy(mdio, child, addr);
+> +		else
+> +			rc = of_mdiobus_register_device(mdio, child, addr);
+> +
+> +		if (rc == -ENODEV)
+> +			dev_err(&mdio->dev,
+> +				"MDIO device at address %d is missing.\n",
+> +				addr);
+> +		else if (rc)
+> +			return rc;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  /**
+>   * __of_mdiobus_register - Register mii_bus and create PHYs from the device tree
+>   * @mdio: pointer to mii_bus structure
+> @@ -180,25 +218,9 @@ int __of_mdiobus_register(struct mii_bus *mdio, struct device_node *np,
+>  		return rc;
+>  
+>  	/* Loop over the child nodes and register a phy_device for each phy */
+> -	for_each_available_child_of_node(np, child) {
+> -		addr = of_mdio_parse_addr(&mdio->dev, child);
+> -		if (addr < 0) {
+> -			scanphys = true;
+> -			continue;
+> -		}
+> -
+> -		if (of_mdiobus_child_is_phy(child))
+> -			rc = of_mdiobus_register_phy(mdio, child, addr);
+> -		else
+> -			rc = of_mdiobus_register_device(mdio, child, addr);
+> -
+> -		if (rc == -ENODEV)
+> -			dev_err(&mdio->dev,
+> -				"MDIO device at address %d is missing.\n",
+> -				addr);
+> -		else if (rc)
+> -			goto unregister;
+> -	}
+> +	rc = __of_mdiobus_parse_phys(mdio, np, &scanphys);
+> +	if (rc)
+> +		goto unregister;
+
+Jumping to unregister will call of_node_put(child),
+however child appears to be uninitialised here.
+
+Flagged by clang-16 W=1 build, and Smatch.
+
+>  
+>  	if (!scanphys)
+>  		return 0;
 
 ...
 
