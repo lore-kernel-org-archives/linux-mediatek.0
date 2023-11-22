@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2923CC61D99
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 16:51:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5488FC61D99
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 16:51:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2QeLWQQ+5vPpqdrKKMXQhsyorPC2ezGt6ncBVGtH39A=; b=B7Re/i97SfauZP56iLcp49IWeH
-	qX88oRU2NyrpKA+4ObnRvyW8vCOx/AWdSI00xAzViPrkK1hnfXJgHFGJO1Yj/hYhLwn9qHQgzFrlx
-	pqKQtZBIZSmpw8MXIGtfTFxzkoX7Xkt/NmISQx2c30V3L5bLuxpEEI0sfvcpPYHnQJlv9vtyhFuS5
-	otljhYsTKYqTzzruOXtEcSscUf0DVBcZFTmj5B3L0/1ryUE1x3jRLzIz03JG1jV5UQd+XVwkTOq2f
-	nYacClm2HbcBJiaHTvyGXlmvBEOJ/4mJpe2gfg9E8eJjUy6z4hd3ImRqqgEIaKkDA/kuZeimzO9JJ
-	bp0oiidQ==;
+	bh=Cjgpy1GAzUxwLaRkjdqHOFNY/W5xSOeyu36MG+cMmGc=; b=Ljsp6sty90s3F3rl4WPL8NuLn4
+	Q5JaAoy1c4EIhDMv0cVhH1E+0L3Uh9JteEs69+F8xgvFsCgBa5WKSDQwGMRkiz/dpLaJ5swOfVl1z
+	WIwC4nnxnlLzOW41y65FipOG1t4fqlaKZD/YjxcqWmHtC1M4doyjba/oAOezy/UreUmneaPV6u5xA
+	Gr+EEQX9XNxu6GOpQPIHK0uzxAeFS1zxqLhh2L6yWniJ13jqTKXalu+dUZymUXJnpw5VgHghN1BvG
+	BMaTbWDqYop5xH2E6iO65WipfB3lrBRCym0v3op80mPhwlKP2/N3u9GHi0KDv/CaLw1sJjcHZGBIU
+	YXMgDnyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5qS4-002ZbY-0B;
-	Wed, 22 Nov 2023 16:51:48 +0000
-Received: from mgamail.intel.com ([134.134.136.65])
+	id 1r5qSD-002Zep-0V;
+	Wed, 22 Nov 2023 16:51:57 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5qS1-002ZZa-12;
-	Wed, 22 Nov 2023 16:51:47 +0000
+	id 1r5qSB-002Zct-05;
+	Wed, 22 Nov 2023 16:51:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700671905; x=1732207905;
+  t=1700671915; x=1732207915;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=OXF8QWtk6BJLVhGwMk5+UIaDLR26JucJQ+nr7p9zeKQ=;
-  b=aBLHIQDbZeO/fNwcJKCwJ+UMNA64pwTYc+6Yr/fODjvgi7f35n6hvqxt
-   nNGuCpzIqKOCFFVPEl0ZnydHgGhcqYFK3pkvW8JK6AQja9yxzzmFXv8EX
-   2rZhIMfo3b0Qujv8SMJkedGjLcLqGDE4mQi054bVdQkqQTEBC5qTqY0vU
-   AMMerEhSNSqsHgRm9254+t9/kNL5/AlOFF2G0GSw3qHChREjezlkdw8Yo
-   Iqa82+XvdGRDdOiQylAecm/gNQkSSOJyPDIsKjMGDoM3h0UWgGDMelSrx
-   wJLrxPXpripHTaqHBle7JL3WN3rc/KZ619wUlCI/8dA6v71uufVRs8ZJD
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="396016632"
+  bh=NE+17+HWJqu1tvwDbF/Yy56Y9wnjeE8kjUUulypb5zo=;
+  b=BrOHREZtFMAk+cbwHLA77qrElnusYHUNLUdcr9fKbiVAsb02+8mohiVP
+   XECd3b2Tno6PN9G0DqoKhcYNhdtcjzdWqm7PXvtd2c+MfdUpKWeokv3KW
+   7RO+LTKGqpU2p7/hMT5nMcYwOZ4rhAN680glWvEY/g7pydxWIH2ATp7CJ
+   DWIexzgo0W+KSsORI+3Kls2TfnvhkNEJkgZQe8evfjrVmVx7qlCQ6w5sV
+   XESTXCe1+C6VxM0vjP3HgQZ0YR/2QHvkQRc9Juq45aO+FxoNnlOSZ6LC5
+   PLqGxM+ku0r2NkmT4D3LTkXxXJAhbRtgO82j/Rw+qYKs/yI1LCvWUzqUJ
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="5233297"
 X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
-   d="scan'208";a="396016632"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 08:51:38 -0800
+   d="scan'208";a="5233297"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 08:51:25 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="837489025"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="910887955"
 X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
-   d="scan'208";a="837489025"
+   d="scan'208";a="910887955"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga004.fm.intel.com with ESMTP; 22 Nov 2023 08:51:16 -0800
+  by fmsmga001.fm.intel.com with ESMTP; 22 Nov 2023 08:51:16 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id D20638FE; Wed, 22 Nov 2023 18:40:45 +0200 (EET)
+	id AC5237AF; Wed, 22 Nov 2023 18:40:45 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -90,17 +90,17 @@ Cc: Ray Jui <rjui@broadcom.com>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v1 15/17] pinctrl: renesas: Convert to use grp member
-Date: Wed, 22 Nov 2023 18:35:47 +0200
-Message-ID: <20231122164040.2262742-16-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 12/17] pinctrl: ingenic: Convert to use grp member
+Date: Wed, 22 Nov 2023 18:35:44 +0200
+Message-ID: <20231122164040.2262742-13-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
 In-Reply-To: <20231122164040.2262742-1-andriy.shevchenko@linux.intel.com>
 References: <20231122164040.2262742-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_085145_400224_8377DE01 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20231122_085155_091513_1061F821 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,82 +119,53 @@ Convert drivers to use grp member embedded in struct group_desc.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/renesas/pinctrl-rza1.c  |  2 +-
- drivers/pinctrl/renesas/pinctrl-rza2.c  | 10 +++++-----
- drivers/pinctrl/renesas/pinctrl-rzg2l.c |  4 ++--
- drivers/pinctrl/renesas/pinctrl-rzv2m.c |  4 ++--
- 4 files changed, 10 insertions(+), 10 deletions(-)
+ drivers/pinctrl/pinctrl-ingenic.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/pinctrl/renesas/pinctrl-rza1.c b/drivers/pinctrl/renesas/pinctrl-rza1.c
-index ab334de89b69..b03f22c54ca8 100644
---- a/drivers/pinctrl/renesas/pinctrl-rza1.c
-+++ b/drivers/pinctrl/renesas/pinctrl-rza1.c
-@@ -1131,7 +1131,7 @@ static int rza1_set_mux(struct pinctrl_dev *pctldev, unsigned int selector,
+diff --git a/drivers/pinctrl/pinctrl-ingenic.c b/drivers/pinctrl/pinctrl-ingenic.c
+index 393873de910a..6806fede5df4 100644
+--- a/drivers/pinctrl/pinctrl-ingenic.c
++++ b/drivers/pinctrl/pinctrl-ingenic.c
+@@ -3756,17 +3756,17 @@ static int ingenic_pinmux_set_mux(struct pinctrl_dev *pctldev,
  		return -EINVAL;
  
- 	mux_confs = (struct rza1_mux_conf *)func->data;
--	for (i = 0; i < grp->num_pins; ++i) {
-+	for (i = 0; i < grp->grp.npins; ++i) {
- 		int ret;
+ 	dev_dbg(pctldev->dev, "enable function %s group %s\n",
+-		func->name, grp->name);
++		func->name, grp->grp.name);
  
- 		ret = rza1_pin_mux_single(rza1_pctl, &mux_confs[i]);
-diff --git a/drivers/pinctrl/renesas/pinctrl-rza2.c b/drivers/pinctrl/renesas/pinctrl-rza2.c
-index 990b96d45967..af689d7c117f 100644
---- a/drivers/pinctrl/renesas/pinctrl-rza2.c
-+++ b/drivers/pinctrl/renesas/pinctrl-rza2.c
-@@ -447,15 +447,15 @@ static int rza2_set_mux(struct pinctrl_dev *pctldev, unsigned int selector,
+ 	mode = (uintptr_t)grp->data;
+ 	if (mode <= 3) {
+-		for (i = 0; i < grp->num_pins; i++)
+-			ingenic_pinmux_set_pin_fn(jzpc, grp->pins[i], mode);
++		for (i = 0; i < grp->grp.npins; i++)
++			ingenic_pinmux_set_pin_fn(jzpc, grp->grp.pins[i], mode);
+ 	} else {
+ 		pin_modes = grp->data;
  
- 	psel_val = func->data;
- 
--	for (i = 0; i < grp->num_pins; ++i) {
-+	for (i = 0; i < grp->grp.npins; ++i) {
- 		dev_dbg(priv->dev, "Setting P%c_%d to PSEL=%d\n",
--			port_names[RZA2_PIN_ID_TO_PORT(grp->pins[i])],
--			RZA2_PIN_ID_TO_PIN(grp->pins[i]),
-+			port_names[RZA2_PIN_ID_TO_PORT(grp->grp.pins[i])],
-+			RZA2_PIN_ID_TO_PIN(grp->grp.pins[i]),
- 			psel_val[i]);
- 		rza2_set_pin_function(
- 			priv->base,
--			RZA2_PIN_ID_TO_PORT(grp->pins[i]),
--			RZA2_PIN_ID_TO_PIN(grp->pins[i]),
-+			RZA2_PIN_ID_TO_PORT(grp->grp.pins[i]),
-+			RZA2_PIN_ID_TO_PIN(grp->grp.pins[i]),
- 			psel_val[i]);
+-		for (i = 0; i < grp->num_pins; i++)
+-			ingenic_pinmux_set_pin_fn(jzpc, grp->pins[i], pin_modes[i]);
++		for (i = 0; i < grp->grp.npins; i++)
++			ingenic_pinmux_set_pin_fn(jzpc, grp->grp.pins[i], pin_modes[i]);
  	}
  
-diff --git a/drivers/pinctrl/renesas/pinctrl-rzg2l.c b/drivers/pinctrl/renesas/pinctrl-rzg2l.c
-index 9de350ad7e7d..511247e70371 100644
---- a/drivers/pinctrl/renesas/pinctrl-rzg2l.c
-+++ b/drivers/pinctrl/renesas/pinctrl-rzg2l.c
-@@ -283,9 +283,9 @@ static int rzg2l_pinctrl_set_mux(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
+ 	return 0;
+@@ -4293,12 +4293,12 @@ static int __init ingenic_pinctrl_probe(struct platform_device *pdev)
  
- 	psel_val = func->data;
--	pins = group->pins;
-+	pins = group->grp.pins;
+ 	for (i = 0; i < chip_info->num_groups; i++) {
+ 		const struct group_desc *group = &chip_info->groups[i];
++		const struct pingroup *grp = &group->grp;
  
--	for (i = 0; i < group->num_pins; i++) {
-+	for (i = 0; i < group->grp.npins; i++) {
- 		unsigned int *pin_data = pctrl->desc.pins[pins[i]].drv_data;
- 		u32 off = RZG2L_PIN_CFG_TO_PORT_OFFSET(*pin_data);
- 		u32 pin = RZG2L_PIN_ID_TO_PIN(pins[i]);
-diff --git a/drivers/pinctrl/renesas/pinctrl-rzv2m.c b/drivers/pinctrl/renesas/pinctrl-rzv2m.c
-index 21d7d5ac8c4a..62f3924f5bea 100644
---- a/drivers/pinctrl/renesas/pinctrl-rzv2m.c
-+++ b/drivers/pinctrl/renesas/pinctrl-rzv2m.c
-@@ -175,9 +175,9 @@ static int rzv2m_pinctrl_set_mux(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
- 
- 	psel_val = func->data;
--	pins = group->pins;
-+	pins = group->grp.pins;
- 
--	for (i = 0; i < group->num_pins; i++) {
-+	for (i = 0; i < group->grp.npins; i++) {
- 		dev_dbg(pctrl->dev, "port:%u pin: %u PSEL:%u\n",
- 			RZV2M_PIN_ID_TO_PORT(pins[i]), RZV2M_PIN_ID_TO_PIN(pins[i]),
- 			psel_val[i]);
+-		err = pinctrl_generic_add_group(jzpc->pctl, group->name,
+-				group->pins, group->num_pins, group->data);
++		err = pinctrl_generic_add_group(jzpc->pctl, grp->name, grp->pins, grp->npins,
++						group->data);
+ 		if (err < 0) {
+-			dev_err(dev, "Failed to register group %s\n",
+-					group->name);
++			dev_err(dev, "Failed to register group %s\n", grp->name);
+ 			return err;
+ 		}
+ 	}
 -- 
 2.43.0.rc1.1.gbec44491f096
 
