@@ -4,103 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98258C61D9B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 16:56:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87A45C61D9B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 18:15:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w7zRKHolBLv5gVPiB/7MCiE6HClGY+C3zfglzlEMz6o=; b=UDdc46rcd/qCy/T15LgdqobAvC
-	LNshTY7ShLAsWVahfuzM50/qvq9gVOpOn2i3JRlLoGZBbsLsACBzw40QAjWVpRQHWpckZlbaggd/U
-	9tRUti9vxw4iXUcxh9/yKQOzJBvW9mRXyBCSk1MeJBNjg0qslon52tawgRubPzero0bumdspoYanb
-	iBz/LgpfvGjPYflL8whz2jy3YqURuQ3KxlXarV1/3sDXYRdzfCOaMJ+TEUZKeaeEG17Sd/gSfN3Ls
-	MoiN7wAoNNfZXhBD1N7uP3HTixMgRAswM5iJ+XIgnK5QW4CioIqj+00o2w7sDxICetnoQ+8DxGn1x
-	oPoMZK5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NVSrNzLgRvQ4gfVAo/d/ONIYYWbL33zy5cmCQPLiW2M=; b=um1hXXfjYENbl2jv6Tasfr0C90
+	2LBwbQP3mDaov34dHoHOIXbooUs3U3TuaqlJXD0TXnVlUUVnpEueSL3/rLwOSBtlW4Do3G8o1pe0Q
+	VNd0BIU6UY44OWf2Jw00fpipQpiCDWzA9QPxi51sYiUrkBh7gpFPfY5x4tOFVZI/32sskMO333grP
+	3TAVa71Xg9SugwCuIImZPUy072SkkK9Lh1/wYpigaPcymHrTRF4taDVfFAc3ChJkij2lHaHQVOLpy
+	abTQEq22L3pAKAnkkB23qG6IutqlSI95lC2FzWHXn2izyJMwmWBIzXxqATscXDYafset5UaqzKxn+
+	/wlIPTYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5qX0-002ahW-1p;
-	Wed, 22 Nov 2023 16:56:54 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1r5rks-002n1V-1B;
+	Wed, 22 Nov 2023 18:15:18 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5qWx-002af3-0m;
-	Wed, 22 Nov 2023 16:56:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700672211; x=1732208211;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=+w70dijnIhYAk0vVK1fe5YJSScdtigXGehzr6Lwxbvg=;
-  b=Fo1bH2zaymHWc3zj+u3yeUqyze1phAb+wHZbCWJgkDkWyRlUIRUJG4dj
-   0ZEhwZPLq8u0rpC7rO+jIFV3EBsukFKPuEO1jt4y2NL3v7q0qqYI9OnyK
-   z7T9PmuEVH/1OcR71/w8hDky2yhfk3hZvxGome0sHtFx0Qnz0n+NNJyLy
-   Jq2u0kjrPiO2auIq5MmgGN30YqOlEvTLskonzGJ+K2pnXAR6VtgOHFMRd
-   s1yRZbnHR8H72uOFRxx/XWc8UXABmvhjDQkIjmReG1xAvbjveDE/HzyY2
-   jno6jahaTij+yO3BiR/jFGRgiLCZdlvmnFUGcQUYKTglmkCmrLvfl/m5O
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="5235479"
-X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
-   d="scan'208";a="5235479"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 08:56:26 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="857815517"
-X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
-   d="scan'208";a="857815517"
-Received: from black.fi.intel.com ([10.237.72.28])
-  by FMSMGA003.fm.intel.com with ESMTP; 22 Nov 2023 08:56:16 -0800
-Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id E3FE6FD; Wed, 22 Nov 2023 18:40:44 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
-	Jianlong Huang <jianlong.huang@starfivetech.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org,
-	linux-mips@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org
-Cc: Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
+	id 1r5rko-002n05-2p;
+	Wed, 22 Nov 2023 18:15:16 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-32d895584f1so4815f8f.1;
+        Wed, 22 Nov 2023 10:15:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700676910; x=1701281710; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=NVSrNzLgRvQ4gfVAo/d/ONIYYWbL33zy5cmCQPLiW2M=;
+        b=G/7ORVas894U01GThPKpjCndQ7TAjv91DM3dzOxCVgDN16GPOjYaOpaKCpytYz1g2u
+         dBgWhfegwO3N9fUdbfvHOiHRd3rtQ/A/+MWm8Y5jVYE3+I72SVim42dre5FjIZW3I9ZQ
+         QK3ZplcocOnf/Zqn+InltSNc2DXTnK+ZWw7LF/9Xflgf7GW9lSDJ7P+HIrliJK9HtF4P
+         Bwnc3617fqrNjVB1OQtHFOKmJulkoeBX+7HBoJiPYCZNAv3cGbsb6D5w3HIKRnPCzo3N
+         lPmGosW06yP5j9H1DZefQdwqs0y0agSWM0HeI6tMGEN/EOBviVx2KCyQW2Cwga/p4mvK
+         j7+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700676910; x=1701281710;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NVSrNzLgRvQ4gfVAo/d/ONIYYWbL33zy5cmCQPLiW2M=;
+        b=FNYR2dbaiVDhgN9U9mBA73ipxQQPn0YhCJffDy7asUOHXV309EQiL7qU7tdkiL/0cW
+         OSDx6k/mKbI53PwBk4p5/h/5EZomfMPVMy5FDiTG8QEdm6McEua1eFQ6BBUaQHJ/3F8Z
+         7eZJRhI5PGnE+BdXV37qcWMgDziSbNAynDMYwS1k9hRkk9wJNYed5VaBdk9zCHLCWV+K
+         7bHN+xQ38zf5X/ivaqpUzdULDo2iR8znB78FAQaDYRnYTAwlzqeceFGUPJ4orX/tGHyj
+         7obPnLOs7oZ7N/3XJjh8/2B37JZxTV/hia5WnoAMy6dWmIw3EYCF7sjarK3TDo1/wfvs
+         Bk3g==
+X-Gm-Message-State: AOJu0Yy0/45lXC5ESIKEt3K0ok5rQWifvUg8D9QvjCQ7LSHDI75RSo/L
+	lMpuNgqSkepwWLPu3RCYlMs=
+X-Google-Smtp-Source: AGHT+IE6ao4vkwq952ctFLHc3qQmln2Fu/+DhwMBUg5bDQNU//QHvdiFV9OG3a65EXYc10npzM6zbA==
+X-Received: by 2002:adf:e550:0:b0:331:3b59:3edb with SMTP id z16-20020adfe550000000b003313b593edbmr2507151wrm.42.1700676910297;
+        Wed, 22 Nov 2023 10:15:10 -0800 (PST)
+Received: from Ansuel-xps. (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
+        by smtp.gmail.com with ESMTPSA id u7-20020a5d5147000000b003316debbde4sm24378wrt.48.2023.11.22.10.15.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Nov 2023 10:15:09 -0800 (PST)
+Message-ID: <655e452d.5d0a0220.61c31.01ae@mx.google.com>
+X-Google-Original-Message-ID: <ZV5FKswuT+PAXpWB@Ansuel-xps.>
+Date: Wed, 22 Nov 2023 19:15:06 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Simon Horman <horms@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
 	Bjorn Andersson <andersson@kernel.org>,
-	Andy Gross <agross@kernel.org>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v1 01/17] pinctrl: equilibrium: Convert to use struct pingroup
-Date: Wed, 22 Nov 2023 18:35:33 +0200
-Message-ID: <20231122164040.2262742-2-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
-In-Reply-To: <20231122164040.2262742-1-andriy.shevchenko@linux.intel.com>
-References: <20231122164040.2262742-1-andriy.shevchenko@linux.intel.com>
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Epping <david.epping@missinglinkelectronics.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	Harini Katakam <harini.katakam@amd.com>,
+	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [net-next RFC PATCH 04/14] net: phy: add initial support for PHY
+ package in DT
+References: <20231120135041.15259-1-ansuelsmth@gmail.com>
+ <20231120135041.15259-5-ansuelsmth@gmail.com>
+ <20231122105243.GB28959@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231122105243.GB28959@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_085651_300557_DA772264 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20231122_101514_922295_AA4B77BC 
+X-CRM114-Status: GOOD (  40.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,98 +117,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The pin control header provides struct pingroup.
-Utilize it instead of open coded variants in the driver.
+On Wed, Nov 22, 2023 at 10:52:43AM +0000, Simon Horman wrote:
+> On Mon, Nov 20, 2023 at 02:50:31PM +0100, Christian Marangi wrote:
+> > Add initial support for PHY package in DT.
+> > 
+> > Make it easier to define PHY package and describe the global PHY
+> > directly in DT by refereincing them by phandles instead of custom
+> > functions in each PHY driver.
+> > 
+> > Each PHY in a package needs to be defined in a dedicated node in the
+> > mdio node. This dedicated node needs to have the compatible set to
+> > "ethernet-phy-package" and define "global-phys" and "#global-phy-cells"
+> > respectively to a list of phandle to the global phy to define for the
+> > PHY package and 0 for cells as the phandle won't take any args.
+> > 
+> > With this defined, the generic PHY probe will join each PHY in this
+> > dedicated node to the package.
+> > 
+> > PHY driver MUST set the required global PHY count in
+> > .phy_package_global_phy_num to correctly verify that DT define the
+> > correct number of phandle to the required global PHY.
+> > 
+> > mdio_bus.c and of_mdio.c is updated to now support and parse also
+> > PHY package subnote that have the compatible "phy-package".
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> 
+> Hi Christian,
+> 
+> I was a little hasty in hitting send on my previous message.
+> Please find some more minor feedback from my side below.
+>
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/pinctrl/pinctrl-equilibrium.c | 32 +++++++++++++--------------
- 1 file changed, 15 insertions(+), 17 deletions(-)
+Thanks a lot for the initial review and sorry for the various warning
+you had to write about it. I know this was a new concept and that I had
+to discuss a lot about the DT structure so I was a bit relaxed in
+releasing OF node. Will handle all of them in v2. Again thanks! 
 
-diff --git a/drivers/pinctrl/pinctrl-equilibrium.c b/drivers/pinctrl/pinctrl-equilibrium.c
-index 5b5ddf7e5d0e..9202a60b4ec7 100644
---- a/drivers/pinctrl/pinctrl-equilibrium.c
-+++ b/drivers/pinctrl/pinctrl-equilibrium.c
-@@ -705,7 +705,7 @@ static int eqbr_build_groups(struct eqbr_pinctrl_drv_data *drvdata)
- 	struct device *dev = drvdata->dev;
- 	struct device_node *node = dev->of_node;
- 	unsigned int *pinmux, pin_id, pinmux_id;
--	struct group_desc group;
-+	struct pingroup group, *grp = &group;
- 	struct device_node *np;
- 	struct property *prop;
- 	int j, err;
-@@ -715,55 +715,53 @@ static int eqbr_build_groups(struct eqbr_pinctrl_drv_data *drvdata)
- 		if (!prop)
- 			continue;
- 
--		group.num_pins = of_property_count_u32_elems(np, "pins");
--		if (group.num_pins < 0) {
-+		grp->npins = of_property_count_u32_elems(np, "pins");
-+		if (grp->npins < 0) {
- 			dev_err(dev, "No pins in the group: %s\n", prop->name);
- 			of_node_put(np);
- 			return -EINVAL;
- 		}
--		group.name = prop->value;
--		group.pins = devm_kcalloc(dev, group.num_pins,
--					  sizeof(*(group.pins)), GFP_KERNEL);
--		if (!group.pins) {
-+		grp->name = prop->value;
-+		grp->pins = devm_kcalloc(dev, grp->npins, sizeof(*grp->pins), GFP_KERNEL);
-+		if (!grp->pins) {
- 			of_node_put(np);
- 			return -ENOMEM;
- 		}
- 
--		pinmux = devm_kcalloc(dev, group.num_pins, sizeof(*pinmux),
--				      GFP_KERNEL);
-+		pinmux = devm_kcalloc(dev, grp->npins, sizeof(*pinmux), GFP_KERNEL);
- 		if (!pinmux) {
- 			of_node_put(np);
- 			return -ENOMEM;
- 		}
- 
--		for (j = 0; j < group.num_pins; j++) {
-+		for (j = 0; j < grp->npins; j++) {
- 			if (of_property_read_u32_index(np, "pins", j, &pin_id)) {
- 				dev_err(dev, "Group %s: Read intel pins id failed\n",
--					group.name);
-+					grp->name);
- 				of_node_put(np);
- 				return -EINVAL;
- 			}
- 			if (pin_id >= drvdata->pctl_desc.npins) {
- 				dev_err(dev, "Group %s: Invalid pin ID, idx: %d, pin %u\n",
--					group.name, j, pin_id);
-+					grp->name, j, pin_id);
- 				of_node_put(np);
- 				return -EINVAL;
- 			}
--			group.pins[j] = pin_id;
-+			grp->pins[j] = pin_id;
- 			if (of_property_read_u32_index(np, "pinmux", j, &pinmux_id)) {
- 				dev_err(dev, "Group %s: Read intel pinmux id failed\n",
--					group.name);
-+					grp->name);
- 				of_node_put(np);
- 				return -EINVAL;
- 			}
- 			pinmux[j] = pinmux_id;
- 		}
- 
--		err = pinctrl_generic_add_group(drvdata->pctl_dev, group.name,
--						group.pins, group.num_pins,
-+		err = pinctrl_generic_add_group(drvdata->pctl_dev, grp->name,
-+						grp->pins, grp->num_pins,
- 						pinmux);
- 		if (err < 0) {
--			dev_err(dev, "Failed to register group %s\n", group.name);
-+			dev_err(dev, "Failed to register group %s\n", grp->name);
- 			of_node_put(np);
- 			return err;
- 		}
+> ...
+> 
+> > diff --git a/drivers/net/mdio/of_mdio.c b/drivers/net/mdio/of_mdio.c
+> > index 64ebcb6d235c..bb910651118f 100644
+> > --- a/drivers/net/mdio/of_mdio.c
+> > +++ b/drivers/net/mdio/of_mdio.c
+> > @@ -139,6 +139,44 @@ bool of_mdiobus_child_is_phy(struct device_node *child)
+> >  }
+> >  EXPORT_SYMBOL(of_mdiobus_child_is_phy);
+> >  
+> > +static int __of_mdiobus_parse_phys(struct mii_bus *mdio, struct device_node *np,
+> > +				   bool *scanphys)
+> > +{
+> > +	struct device_node *child;
+> > +	int addr, rc;
+> > +
+> > +	/* Loop over the child nodes and register a phy_device for each phy */
+> > +	for_each_available_child_of_node(np, child) {
+> > +		if (of_device_is_compatible(child, "ethernet-phy-package")) {
+> > +			rc = __of_mdiobus_parse_phys(mdio, child, scanphys);
+> > +			if (rc && rc != -ENODEV)
+> > +				return rc;
+> 
+> for_each_available_child_of_node() makes calls to of_node_get() and
+> of_node_put(), so when jumping out of a loop it is necessary to call
+> of_node_put(), in this case of_node_put(child).
+> 
+> As flagged by Coccinelle.
+> 
+> Also flagged in of_mdiobus_find_phy() both before and after this patch.
+> 
+> > +
+> > +			continue;
+> > +		}
+> > +
+> > +		addr = of_mdio_parse_addr(&mdio->dev, child);
+> > +		if (addr < 0) {
+> > +			*scanphys = true;
+> > +			continue;
+> > +		}
+> > +
+> > +		if (of_mdiobus_child_is_phy(child))
+> > +			rc = of_mdiobus_register_phy(mdio, child, addr);
+> > +		else
+> > +			rc = of_mdiobus_register_device(mdio, child, addr);
+> > +
+> > +		if (rc == -ENODEV)
+> > +			dev_err(&mdio->dev,
+> > +				"MDIO device at address %d is missing.\n",
+> > +				addr);
+> > +		else if (rc)
+> > +			return rc;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  /**
+> >   * __of_mdiobus_register - Register mii_bus and create PHYs from the device tree
+> >   * @mdio: pointer to mii_bus structure
+> > @@ -180,25 +218,9 @@ int __of_mdiobus_register(struct mii_bus *mdio, struct device_node *np,
+> >  		return rc;
+> >  
+> >  	/* Loop over the child nodes and register a phy_device for each phy */
+> > -	for_each_available_child_of_node(np, child) {
+> > -		addr = of_mdio_parse_addr(&mdio->dev, child);
+> > -		if (addr < 0) {
+> > -			scanphys = true;
+> > -			continue;
+> > -		}
+> > -
+> > -		if (of_mdiobus_child_is_phy(child))
+> > -			rc = of_mdiobus_register_phy(mdio, child, addr);
+> > -		else
+> > -			rc = of_mdiobus_register_device(mdio, child, addr);
+> > -
+> > -		if (rc == -ENODEV)
+> > -			dev_err(&mdio->dev,
+> > -				"MDIO device at address %d is missing.\n",
+> > -				addr);
+> > -		else if (rc)
+> > -			goto unregister;
+> > -	}
+> > +	rc = __of_mdiobus_parse_phys(mdio, np, &scanphys);
+> > +	if (rc)
+> > +		goto unregister;
+> 
+> Jumping to unregister will call of_node_put(child),
+> however child appears to be uninitialised here.
+> 
+> Flagged by clang-16 W=1 build, and Smatch.
+> 
+> >  
+> >  	if (!scanphys)
+> >  		return 0;
+> 
+> ...
+
 -- 
-2.43.0.rc1.1.gbec44491f096
-
+	Ansuel
 
