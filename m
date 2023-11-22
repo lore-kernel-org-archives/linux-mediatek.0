@@ -4,60 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87D16C61D97
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Nov 2023 22:34:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 523CEC61D85
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 03:02:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mA21u0SDYN0cTZPy2oKF3AgLd7FQiOH8cg8pH+DcV9M=; b=jizqfBihVjGgTWFxvuveKWlVGR
-	k9pBbPymH22yHHJ10gtNqQOAIiTFfsRNFVrqArzua9BHyTw5zmK4sJMq2buHKiizdmNZ99/F6fQOl
-	kGAlppNfic1jkzkIakQAvxP0cK1gyt6D+gWclh/fgu50omNiKbpBZlof0NaDLaTrDiBTnJjvld11+
-	VNM0EWDMVssv7tysnY+hEIWnsbtVDRq/rdexXbBnUsWawi+m3x6ZL6E2KcLGmir7KFcgWJ14NqH2J
-	f4r5wuzdLsPyTQ3KuRgirVjso/zaFd3C5r3Sx2RtTYRQpHF6BTlHYLXeDD3LQ792RQswt6LUhNoPW
-	2+YtPS0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0Yh1gT0UDhie6zGabE2W9ULuFS2W4omY+h+RskpwRnA=; b=3t3SFTM/S17VWRV3cpeIHrWoIg
+	9bXpMI3TCzrfzyQwrFyXnBp0m/q8nlmh5BESH6RsaIPGGYOHf8v1RGUz43pKFJfVSrtmuEd3N9QFk
+	oikIK7a0qd/xP2daZvEAE25SVXgpD8xd0MM6lbTwFQvm8JzmwHMTuyioOASOUUKCFt67V4+63uwi2
+	wFpf5d1IFcEZu3oLj3hP6ZTnrQbIrMCbleYCqI57tp3dij1Ykrrn011+V6mNwi2M7Q564KTo6H9Ec
+	MO/4QCisz73S7EsoV5pV30YXQspn/r8Lm8vMRAW+euGAf7iz/UP+qgQq+y7iEWRot1B5J4ygD/B+n
+	0hr3zkvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5ZJx-000Bdb-1l;
-	Tue, 21 Nov 2023 22:34:17 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5ZJt-000Bcu-1a;
-	Tue, 21 Nov 2023 22:34:15 +0000
-Received: from skinsburskii. (unknown [131.107.159.175])
-	by linux.microsoft.com (Postfix) with ESMTPSA id 39B2120B74C0;
-	Tue, 21 Nov 2023 14:34:12 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 39B2120B74C0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
-	s=default; t=1700606052;
-	bh=mA21u0SDYN0cTZPy2oKF3AgLd7FQiOH8cg8pH+DcV9M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WMZcCrfT9hxbdGnpIQWOxTnUJny2Y0lCYMw1xX8KKHBD7kW2ILHyW/bgw4yZrsmbz
-	 ErvcL1CFacnNag0qo5GCEEspHP360qfL0dQFyCm6AlFehxpsOXN8g3vLDaiU7cXEv5
-	 wbDTTPIYBnW7zTnvQqNQVVMnbxNVnDrC/3oilEcA=
-Date: Tue, 21 Nov 2023 14:34:10 -0800
-From: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
-	bhelgaas@google.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, skinsburskii@gmail.com
-Subject: Re: [PATCH] PCI: mediatek: Fix sparse warning caused to
- virt_to_phys() prototype change
-Message-ID: <20231121223410.GA23977@skinsburskii.>
-References: <20231121220556.GA21969@skinsburskii.>
- <20231121222325.GA260057@bhelgaas>
+	id 1r5dVw-000VYg-04;
+	Wed, 22 Nov 2023 03:02:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r5dVt-000VY7-1W
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Nov 2023 03:02:54 +0000
+X-UUID: 9af10fbc88e311ee86758d4a7c00f3a0-20231121
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=0Yh1gT0UDhie6zGabE2W9ULuFS2W4omY+h+RskpwRnA=;
+	b=siVrkAwKwv9xOhA2pynUhhsT5FG4tCOZzCy1vH/u5AbF8xeTRiH59b4B4K/NUNXYnRltYdPZVXDTwVbDiSey3kzXD0PpfVDn25vE9t4z4elQeZuPRkI5uWlOzj5k2FHCMAsHeM3Mr1i2s5P3LWtRW27UPDL94bwVTXitt60Ft48=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:fa779afb-79fa-40f5-af2f-9efae469e2ce,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:9928cefc-4a48-46e2-b946-12f04f20af8c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 9af10fbc88e311ee86758d4a7c00f3a0-20231121
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <michael-cy.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1215525378; Tue, 21 Nov 2023 20:02:43 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 22 Nov 2023 11:02:40 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 22 Nov 2023 11:02:39 +0800
+From: Michael-CY Lee <michael-cy.lee@mediatek.com>
+To: linux-wireless <linux-wireless@vger.kernel.org>
+CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael-CY Lee
+	<michael-cy.lee@mediatek.com>
+Subject: [PATCH] wifi: mac80211: Fix potential he_6ghz_oper NULL pointer access
+Date: Wed, 22 Nov 2023 11:02:37 +0800
+Message-ID: <20231122030237.31276-1-michael-cy.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231121222325.GA260057@bhelgaas>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--1.360500-8.000000
+X-TMASE-MatchedRID: 1R9kVYz+2gWKlsLPb8jwawPZZctd3P4Bh+w9Wz/xXDoKogmGusPLb8bX
+	zAmc72fpJ7vDzKaAUziwZHMQdNbacR8TzIzimOwPlpYqKNmWxsHZs3HUcS/scCq2rl3dzGQ1Gpe
+	evGsoI5d9r+SrozkFf04GYupf0ODaBvkak2FvxqUkqRIqhmd6vLkAQCRlGE7iP71lVwKowA7oRJ
+	wffUpAimUQJZR/iHqQsT86m58CuFMXRoPmWO3jekxwdkPqCq7vDEyN+J8hd+jCS9WgDXVPCn7cG
+	d19dSFd
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.360500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 401B68C1F34588474A4B5349849C68AA102A9715CEDFF268D71F1A3B7B5BA5DD2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_143413_607179_38EE0970 
-X-CRM114-Status: GOOD (  38.11  )
+X-CRM114-CacheID: sfid-20231121_190253_517935_7E991CFA 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,85 +97,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 21, 2023 at 04:23:25PM -0600, Bjorn Helgaas wrote:
-> On Tue, Nov 21, 2023 at 02:05:56PM -0800, Stanislav Kinsburskii wrote:
-> > On Tue, Nov 21, 2023 at 03:37:55PM -0600, Bjorn Helgaas wrote:
-> > > On Mon, Nov 20, 2023 at 03:40:33PM -0800, Stanislav Kinsburskii wrote:
-> > > > Explicitly cast __iomem pointer to const void* with __force to fix the
-> > > > following warning:
-> > > > 
-> > > >   warning: incorrect type in argument 1 (different address spaces)
-> > > >      expected void const volatile *address
-> > > >      got void [noderef] __iomem *
-> > > 
-> > > I have two questions about this:
-> > > 
-> > >   1) There's no other use of __force in drivers/pci, so I don't know
-> > >   what's special about pcie-mediatek.c.  There should be a way to fix
-> > >   the types so it's not needed.
-> > 
-> > __force suppreses the following sparse warning:
-> > 
-> >     warning: cast removes address space '__iomem' of expression
-> 
-> I'm suggesting that the cast is a band-aid that covers up a type
-> mismatch, and there shouldn't be a mismatch in the first place.
-> 
-> > >   2) virt_to_phys() is not quite right to begin with because what we
-> > >   want is a *bus* address, not the CPU physical address we get from
-> > >   virt_to_phys().  Obviously the current platforms that use this must
-> > >   not apply any offset between bus and CPU physical addresses, but
-> > >   it's not something we should rely on.
-> > > 
-> > >   There are only three drivers (pci-aardvark.c, pcie-xilinx.c, and
-> > >   this one) that use virt_to_phys(), and they're all slightly wrong
-> > >   here.
-> > > 
-> > > The *_compose_msi_msg() methods could use a little more consistency
-> > > across the board.
-> > 
-> > Could you elaborate on what do you suggest?
-> > Should virt_to_phys() be simply removed?
-> 
-> The DMA API (Documentation/core-api/dma-api.rst) is the usual way to
-> get bus addresses, since an MSI is basically a DMA on the PCI bus.
-> 
-> https://lore.kernel.org/linux-pci/20230914203146.GA77870@bhelgaas/
-> 
-> Nobody is very motivated to fix these, I guess ;)  I sort of hate to
-> just throw in a cast to shut up the warning because it doesn't really
-> solve the problem.
-> 
+Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+---
+ include/linux/ieee80211.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-This is fair.
-However I have neither expertize to assess, no hardware to test such intrusive
-changes.
-I guess it's a no-op then, is it?
+diff --git a/include/linux/ieee80211.h b/include/linux/ieee80211.h
+index 3308e85..a23ec4c 100644
+--- a/include/linux/ieee80211.h
++++ b/include/linux/ieee80211.h
+@@ -2671,12 +2671,14 @@ ieee80211_he_oper_size(const u8 *he_oper_ie)
+ static inline const struct ieee80211_he_6ghz_oper *
+ ieee80211_he_6ghz_oper(const struct ieee80211_he_operation *he_oper)
+ {
+-	const u8 *ret = (const void *)&he_oper->optional;
++	const u8 *ret;
+ 	u32 he_oper_params;
+ 
+ 	if (!he_oper)
+ 		return NULL;
+ 
++	ret = (const void *)&he_oper->optional;
++
+ 	he_oper_params = le32_to_cpu(he_oper->he_oper_params);
+ 
+ 	if (!(he_oper_params & IEEE80211_HE_OPERATION_6GHZ_OP_INFO))
+-- 
+2.25.1
 
-> > > > Signed-off-by: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>
-> > > > ---
-> > > >  drivers/pci/controller/pcie-mediatek.c |    4 ++--
-> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> > > > index 66a8f73296fc..27f0f79810a1 100644
-> > > > --- a/drivers/pci/controller/pcie-mediatek.c
-> > > > +++ b/drivers/pci/controller/pcie-mediatek.c
-> > > > @@ -397,7 +397,7 @@ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
-> > > >  	phys_addr_t addr;
-> > > >  
-> > > >  	/* MT2712/MT7622 only support 32-bit MSI addresses */
-> > > > -	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
-> > > > +	addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
-> > > >  	msg->address_hi = 0;
-> > > >  	msg->address_lo = lower_32_bits(addr);
-> > > >  
-> > > > @@ -520,7 +520,7 @@ static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
-> > > >  	u32 val;
-> > > >  	phys_addr_t msg_addr;
-> > > >  
-> > > > -	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
-> > > > +	msg_addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
-> > > >  	val = lower_32_bits(msg_addr);
-> > > >  	writel(val, port->base + PCIE_IMSI_ADDR);
 
