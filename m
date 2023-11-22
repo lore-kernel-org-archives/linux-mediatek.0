@@ -4,81 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD16C61D9C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 14:43:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D43AC61D9C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 14:49:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n9l7CzXN6LlS38rZFFq0Nxp8PK7NYDm9aN5Wn+Z/Buw=; b=CuUkdjmkNLYGdbz9BQtoyFza6X
-	fyt50qz6Mqk4wfiKcOx19cQrnN/2Ml2WS9cjA5MrVOh42Pifaf17JgiZUpWESLOb/wPukM1nRJPPK
-	yeq4zuDcwivMrYDcZH0QU6Qwu1OEoxE+2+lS9KQKYfl1v/ik+txfQJqDdDPffdZZuT4ANwj5Ca/iZ
-	9Baqu2it/ugNZFNmYg8QlhgkmJCqs6OKlGDawZeIWun0P1R0pjmjolqU3hSXKzW39rnGGla6KsS/M
-	asCWluWne54O2Hof4UJzoRABXKEyQcEAl2KeiLGHataOip26NGiWFkMruq5CLNNSkzKQlPKZXGMiL
-	HMq1WSEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qpUo/rJ7VG/JhV4L+LwZR0vb7jlfzWVF0UII53bBpJU=; b=fcu9LRglW1LPCyKzlHXi3uyrj+
+	Mc7HsNmP4Jb5tSxZUSxHZYg9wMvQbaCfU7VcpBtYE0KiWSdU76TNO8wbJIUCKCdmd3QevNI3+kRwo
+	eVZEjq3/F3pLrjCM+OQPuAWCpjHdVqTwg8StuJg+1q4ueoJI0dMZcpRXGS3Y1L3myJBT3mtCXOxhT
+	9bpsiA249QX+Bl61+/Q/00X0+Vq/MCZ68VxrVjU5BNpRG16ltAfa+vmGqwnV22VzABoudIwQnq+pB
+	j05ah+++Efnt6VGOcM+3mH5qx8EJxcsAC6o/4Cdw5Fv4PgQp+d9H+OsNKIJEi142hnMAZYECjxG13
+	dZUN1FAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5oRa-0028HO-2a;
-	Wed, 22 Nov 2023 14:43:10 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1r5oXP-00295N-36;
+	Wed, 22 Nov 2023 14:49:11 +0000
+Received: from mgamail.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5oRH-00284b-2w;
-	Wed, 22 Nov 2023 14:42:55 +0000
+	id 1r5oXN-00293l-0h;
+	Wed, 22 Nov 2023 14:49:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1700664549; x=1732200549;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=xfM2rHlddJWb6LuHvIur/k83wR9tmmt10e5ezN6jTtk=;
+  b=XxH6ohm491oEERJzzkH9fl0P7E5R71fjZG30gtpIOXIYAHM7imoMFVE2
+   lvW8jntDkFec57rR4foLlIVefkt6x/smqQF0xZjzpgy6UtaIO4L1oKIFk
+   mG839iKXhe6NrM2Vtnj9XonU9enUCPaWwq0yK8VGx8PVWPPgu4Owr/ELT
+   QnFeiRCyLO2psyGEZ3bUT6ko+txtvmn2ynVtynOR/h8B08qEF3MV1sLO5
+   zXPi6ZG/esuht2Of5YohKql9+mJJDtjQAOGyL7IxtU/IbumdjM/bAs4K6
+   LsJa2uWOYHzaJwHBqsIFpsZ1h22A80Q5Xy1Nmwo/9bsIBrD/nQcYFv6Fd
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="478269612"
+X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
+   d="scan'208";a="478269612"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 06:49:05 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
+   d="scan'208";a="15284525"
+Received: from lkp-server01.sh.intel.com (HELO d584ee6ebdcc) ([10.239.97.150])
+  by fmviesa001.fm.intel.com with ESMTP; 22 Nov 2023 06:49:02 -0800
+Received: from kbuild by d584ee6ebdcc with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1r5oXD-0000ZL-2T;
+	Wed, 22 Nov 2023 14:48:59 +0000
+Date: Wed, 22 Nov 2023 22:48:44 +0800
+From: kernel test robot <lkp@intel.com>
+To: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>,
+	ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
+	bhelgaas@google.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev
+Subject: Re: [PATCH v2] PCI: mediatek: Fix sparse warning caused to
+ virt_to_phys() prototype change
+Message-ID: <202311221830.SR5dv3X7-lkp@intel.com>
+References: <170052491316.21557.13173111699965824301.stgit@skinsburskii.>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1700664166;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=n9l7CzXN6LlS38rZFFq0Nxp8PK7NYDm9aN5Wn+Z/Buw=;
-	b=x7SQ/I1HOiWc0cwQ6er9JxVxd2di1ktX2ld6tiwKekdklOtdP54pycvx1s1KAVhfCqW8l6
-	t/Y88WRMV20TDY6M4PWiDDHKuWXTh/o5K/9QKplNCSBk0NkOuo8ZkUqFO2cDjC4v3QNQuU
-	BwShho8epg3KI/PenQJo79YnPUu+R5FsDbEhsGaGkkCZXxko8ucAKfY1trKhy7YQjxBAL4
-	BTtM9VWeoaMsWlb7MqndqTur+5yM39vgYLrKyvgk/hsyd6RN8H5cQz82mq6Shd+ZQfQnTj
-	GkqNjDCurBsMM2KsjG+Z6g7/s3ejsd+j727Gtm81FLFE0bqKtMSaw+fL3L7cqg==
-Date: Wed, 22 Nov 2023 15:42:46 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Michal Simek <michal.simek@amd.com>, Geert Uytterhoeven
- <geert@linux-m68k.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>, wens@kernel.org, =?UTF-8?Q?Rafa?=
- =?UTF-8?Q?=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, Arnd Bergmann
- <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>, Neil Armstrong
- <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>, Olof Johansson
- <olof@lixom.net>, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
-In-Reply-To: <CAL_JsqKkOjBHrJ0WELq3JnJDqgtA=mdF+EtAxHSCGqZMQ9tuSQ@mail.gmail.com>
-References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
- <6b288a2e-d147-4bd3-b1d4-daf56295d939@gmail.com>
- <01f9ce3b-e6e5-4b05-bf7f-0b3a5f74910a@linaro.org>
- <CAGb2v64Vf5dDwq=KTrxwc=+w+0KUD2KVPMjmHg68Y_yukES5dQ@mail.gmail.com>
- <7232a48b-b9ad-44b5-ae6a-d12dad70b3c4@linaro.org>
- <58a9caacc1226c7c3a2bdfe73ef1791f@manjaro.org>
- <cc4c789c-b595-41eb-b543-9e03549c6e61@amd.com>
- <CAMuHMdWm-gRPHeHyuX3_eR+9chJEw3iiZwCNBnoiRPHzoMAs6w@mail.gmail.com>
- <808270d3-2274-4fb7-a397-38538503b67c@amd.com>
- <CAL_JsqKkOjBHrJ0WELq3JnJDqgtA=mdF+EtAxHSCGqZMQ9tuSQ@mail.gmail.com>
-Message-ID: <f9dcdd519c0bbd29838a75113fef0645@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <170052491316.21557.13173111699965824301.stgit@skinsburskii.>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_064252_558048_BB10A989 
-X-CRM114-Status: GOOD (  28.33  )
+X-CRM114-CacheID: sfid-20231122_064909_264392_E90C955A 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,96 +88,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-11-22 15:34, Rob Herring wrote:
-> On Wed, Nov 22, 2023 at 1:57 AM Michal Simek <michal.simek@amd.com> 
-> wrote:
->> On 11/22/23 09:53, Geert Uytterhoeven wrote:
->> > On Wed, Nov 22, 2023 at 9:50 AM Michal Simek <michal.simek@amd.com> wrote:
->> >> On 11/22/23 09:29, Dragan Simic wrote:
->> >>> On 2023-11-22 09:21, Krzysztof Kozlowski wrote:
->> >>>> On 22/11/2023 09:09, Chen-Yu Tsai wrote:
->> >>>>> On Wed, Nov 22, 2023 at 4:05 PM Krzysztof Kozlowski
->> >>>>> <krzysztof.kozlowski@linaro.org> wrote:
->> >>>>>>
->> >>>>>> On 21/11/2023 14:50, Rafał Miłecki wrote:
->> >>>>>>>> +Order of Properties in Device Node
->> >>>>>>>> +----------------------------------
->> >>>>>>>> +
->> >>>>>>>> +Following order of properties in device nodes is preferred:
->> >>>>>>>> +
->> >>>>>>>> +1. compatible
->> >>>>>>>> +2. reg
->> >>>>>>>> +3. ranges
->> >>>>>>>> +4. Standard/common properties (defined by common bindings, e.g. without
->> >>>>>>>> +   vendor-prefixes)
->> >>>>>>>> +5. Vendor-specific properties
->> >>>>>>>> +6. status (if applicable)
->> >>>>>>>> +7. Child nodes, where each node is preceded with a blank line
->> >>>>>>>> +
->> >>>>>>>> +The "status" property is by default "okay", thus it can be omitted.
->> >>>>>>>
->> >>>>>>> I think it would really help to include position of #address-cells and
->> >>>>>>> #size-cells here. In some files I saw them above "compatible" that seems
->> >>>>>>> unintuitive. Some prefer putting them at end which I think makes sense
->> >>>>>>> as they affect children nodes.
->> >>>>>>>
->> >>>>>>> Whatever you choose it'd be just nice to have things consistent.
->> >>>>>>
->> >>>>>> This is a standard/common property, thus it goes to (4) above.
->> >>>>>
->> >>>>> It's probably a mix, but AFAIK a lot of the device trees in tree have
->> >>>>> #*-cells after "status". In some cases they are added in the board
->> >>>>> .dts files, not the chip/module .dtsi files.
->> >>>>
->> >>>> Existing DTS is not a good example :)
->> >>>>
->> >>>>>
->> >>>>> +1 that it makes sense at the end as they affect child nodes.
->> >>>>
->> >>>> I still insist that status must be the last, because:
->> >>>> 1. Many SoC nodes have address/size cells but do not have any children
->> >>>> (I2C, SPI), so we put useless information at the end.
->> >>>> 2. Status should be the final information to say whether the node is
->> >>>> ready or is not. I read the node, check properties and then look at the end:
->> >>>> a. Lack of status means it is ready.
->> >>>> b. status=disabled means device still needs board resources/customization
->> >>>
->> >>> I agree with the "status" belonging to the very end, because it's both logical
->> >>> and much more readable.  Also, "status" is expected to be modified in the
->> >>> dependent DT files, which makes it kind of volatile and even more deserving to
->> >>> be placed last.
->> >>
->> >> I am just curious if having status property at the end won't affect
->> >> execution/boot up time. Not sure how it is done in Linux but in U-Boot at least
->> >> (we want to have DTs in sync between Linux and U-Boot) of_find_property is
->> >> pretty much big loop over all properties. And status property defined at the end
->> >> means going over all of them to find it out to if device is present.
->> >> Not sure if Linux works in the same way but at least of_get_property is done in
->> >> the same way.
->> >
->> > As the default is "okay", you have to loop over all properties anyway.
->> 
->> No doubt if you don't define status property that you need to loop 
->> over all of
->> them. We normally describe the whole SOC with pretty much all IPs 
->> status =
->> disabled and then in board file we are changing it to okay based on 
->> what it is
->> actually wired out.
->> It means on our systems all nodes have status properties. If you have 
->> it at
->> first you don't need to go over all.
-> 
-> Order in the source and order in the OS are independent. If checking
-> status needs to be optimized, then we could just put it first in the
-> property list or make the state a field in struct device_node. But
-> provide some data that it matters first.
+Hi Stanislav,
 
-That's exactly what I plan to do, i.e. to perform some benchmarks before 
-and after, to see does it actually matter to the point where introducing 
-the changes is worth it.
+kernel test robot noticed the following build errors:
 
-> I've had this idea to randomize the order nodes are processed so
-> there's no reliance on the DT order. Maybe I need the same on
-> properties...
+[auto build test ERROR on pci/next]
+[also build test ERROR on pci/for-linus linus/master v6.7-rc2 next-20231122]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Stanislav-Kinsburskii/PCI-mediatek-Fix-sparse-warning-caused-to-virt_to_phys-prototype-change/20231121-080253
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+patch link:    https://lore.kernel.org/r/170052491316.21557.13173111699965824301.stgit%40skinsburskii.
+patch subject: [PATCH v2] PCI: mediatek: Fix sparse warning caused to virt_to_phys() prototype change
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20231122/202311221830.SR5dv3X7-lkp@intel.com/config)
+compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231122/202311221830.SR5dv3X7-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202311221830.SR5dv3X7-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/pci/controller/pcie-mediatek.c:400:22: error: passing 'const void *' to parameter of type 'volatile void *' discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+           addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   arch/x86/include/asm/io.h:128:55: note: passing argument to parameter 'address' here
+   static inline phys_addr_t virt_to_phys(volatile void *address)
+                                                         ^
+   drivers/pci/controller/pcie-mediatek.c:523:26: error: passing 'const void *' to parameter of type 'volatile void *' discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+           msg_addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   arch/x86/include/asm/io.h:128:55: note: passing argument to parameter 'address' here
+   static inline phys_addr_t virt_to_phys(volatile void *address)
+                                                         ^
+   2 errors generated.
+
+
+vim +400 drivers/pci/controller/pcie-mediatek.c
+
+   393	
+   394	static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+   395	{
+   396		struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+   397		phys_addr_t addr;
+   398	
+   399		/* MT2712/MT7622 only support 32-bit MSI addresses */
+ > 400		addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
+   401		msg->address_hi = 0;
+   402		msg->address_lo = lower_32_bits(addr);
+   403	
+   404		msg->data = data->hwirq;
+   405	
+   406		dev_dbg(port->pcie->dev, "msi#%d address_hi %#x address_lo %#x\n",
+   407			(int)data->hwirq, msg->address_hi, msg->address_lo);
+   408	}
+   409	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
