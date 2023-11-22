@@ -4,92 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD79AC61D99
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 08:01:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CD1EC61D92
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 08:05:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vpRyQaYW4/vL4ShXm+d0nPFyBue7kCdABCWcnGkyFTo=; b=E5rfp+qW1zjQfPc4a1Hv8tE5K2
-	snNnOZrGYEPyneHUTgO9M+1G7pa/Mfxb81FNNdPGEd2k1L1Kkwp5UQIU6U29BWcjrDoFd3pqEflfk
-	rdc3NIVTffWhnoLjEQK/uvKcuDUwSvLT3MAwmAFDsB1vFQy2J91oQl5hFWInkdlsqqI8vqEhWPfKB
-	Wx4eyE/N1raX91tINPQ3fIozVAzlTX7nvMw2pqJCUPwhXqQ+XPBn7QB3gU43ffw5sLvWmLy/Ya3vt
-	hpY644KouiKu8wP3sUasyllGfiRkHN+m9E/1zgrRXbd5OvifF8hiUsqK4f3mo5d6tBBIcmlb3snAx
-	yNFhzR6w==;
+	bh=ghrTaSbGxLK9kxVU7nsSkXTB5ZRHrTPXh4hZLw4lW1o=; b=MOeN2XXzBAM4bk4syaolXRRTXv
+	Rr/5yTX0C50d2UhI9oF5WC/7/XFH5qv7xX1XayCCV5YXYfm2Fr+y4sOEGBxg9SoLBY63G1phq2pFo
+	/08Jvt/iOu826b2kD+NMMOP0wKCIyhUn9WP+oLzW5wTg86DQMpJcgcA0UbL+50OIz9P8XbB2Y2J9N
+	O5m/lmUD+8P7wAgr2q9VPQhmizB+6pZen/5woh4hyC+2RMH4AaqPzr3fqF6LQ8O/4luEruTSUn0P3
+	IlyT+Qd/NZVo7EAxB7Cw9qqtWj0wn2z0ROYlRNthDNs0vfefrYbrqfY2Qu16CF2Xm7FJgaoAnNqKh
+	c07byVjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5iB5-000zKQ-2Q;
-	Wed, 22 Nov 2023 08:01:43 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1r5iEX-00105I-1F;
+	Wed, 22 Nov 2023 08:05:17 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5iB2-000zHb-25
+	id 1r5iER-00101D-1e
 	for linux-mediatek@lists.infradead.org;
-	Wed, 22 Nov 2023 08:01:42 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-32deb2809daso4278342f8f.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 00:01:38 -0800 (PST)
+	Wed, 22 Nov 2023 08:05:13 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-50aab3bf71fso4741972e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 00:05:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700640097; x=1701244897; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1700640307; x=1701245107; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=vpRyQaYW4/vL4ShXm+d0nPFyBue7kCdABCWcnGkyFTo=;
-        b=cOzRW4U4fchS+DF1aqWkAuB3RuncL3aNHdpBB65vUsxta3L4dJeE6hKpCuTnYMwMJw
-         bQFIwU8UyhpPWFgtqBLr4c8ljzuiwD2G93rPcvN1R6hr0INzRQh9NRCAPJOnGB58maeL
-         cvbHONk14oL2eZFY09m1TnTxfqZmMpVyO5Yc4TP+EChEUzQITUrSi62IYCreBDiTQ/Gz
-         LEZrshE0Wtl94YH42xubQ280g1Zc8gPwk5xQycl/mUaxw7WgVc7KaKCzCwc3iG2AdmlW
-         LnbPPFviT9hsJ5dRthsD2hdhPClrc2xF0wGheSPnLSatPS0uZt8H3XzpTq3xlSVF4Xv6
-         WK5g==
+        bh=ghrTaSbGxLK9kxVU7nsSkXTB5ZRHrTPXh4hZLw4lW1o=;
+        b=rL+am1SzX4Y9TrIFi2PWS2yKXF+haxwlTuQC8Hr5knNjKcd1LW/BDitUzRW9HJs5vX
+         C75KPiEExh6tcsQE0k9KrCsfkKvAy2NBPL4ZnDapRPoZHZKW+xymxTRK97+w2r7Ff+uS
+         JwgQHcT01tYlF5scAsuQmb+ASH2r/ppZOyVUuDw5IS5JwjvmuG35x83VWv2ATnEPH4It
+         ZWiJr3Y+6NC4eSUJJk2tlMeM8/YTY3XKHC4s34k8JrveWyTM8wpFAHxKuqNPmnN2c8Ya
+         Btraq76aJ/LXL4svauutAuSiC4bFpKQCv66KnU89D8xRYoM2f4A+ImM4XOOxx0QkiezL
+         qdZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700640097; x=1701244897;
+        d=1e100.net; s=20230601; t=1700640307; x=1701245107;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vpRyQaYW4/vL4ShXm+d0nPFyBue7kCdABCWcnGkyFTo=;
-        b=HwKj+4+kpthN5Lv41bmq8HO40yHju5u0FI9vbxPGV46LbbgJDy9pEKEKIO4UdIAMmh
-         Z99/zZQc+7SDZlOjjBn9+iKqgHKLNY5tTP+BU0FkyFQRwMGkv+shYGlMpZtK4QhLzRUQ
-         A4ziOfuPhrfyTVA6i83/rUd/KiWOaR2/0/xTLwYIReDieLpuZ9kfOm9wGYN1HCiVratf
-         5+bCMmpR9aTWozOlHheXVjy/mVZS2NWVIf9JEgqVbp5gV3RvtgzzfewpmUUDJjELkXqN
-         TlObLMpsTs8MMhC54lrZMZmV/4jl1uOXkT+mtC1vnlQYWB3EJmuEEvoFuCpklTa0/rqs
-         mtlA==
-X-Gm-Message-State: AOJu0Yxc7yhePZXc8I2oEmVhKwAQgHY2GCTtx6cISBkjXSrrb1WQkA75
-	SGosCcnbpEBTqlDVAOBTYAUPgA==
-X-Google-Smtp-Source: AGHT+IHBBXBgRDaK4VuhpKuYj7C0ExJ0pHqrpwD5pPYmWDdTv56w/nwhnJbUDu1/dAKqdyvyZV4g1Q==
-X-Received: by 2002:a05:6000:b87:b0:32d:89b5:7fd9 with SMTP id dl7-20020a0560000b8700b0032d89b57fd9mr977755wrb.56.1700640096302;
-        Wed, 22 Nov 2023 00:01:36 -0800 (PST)
+        bh=ghrTaSbGxLK9kxVU7nsSkXTB5ZRHrTPXh4hZLw4lW1o=;
+        b=fAAl18Pepw3fGzQ/z7dnwt593gK7QRC+ssgFuE/By31E2z+52LLt25Jxd820udNZoj
+         NzNB4e1syEUozrCtDqcNQMlGyS71HW5aRidluP7kdwVPhWXO3wAd5QAWjOw3i/Yv6LUM
+         6EXwaAMemYCbcLAQp59Y8cNpL4uR2WgfqPypjPPLKJ6VkldNRCrdfD2iUQlxzWBs1gc0
+         0zkIUXgZ6EgFCdK+5RCLCnXxCLCEFyQr90tNMQ/nR9sUYhM13ae9w6V5opuXJi8SiZaI
+         1NTWPOGhAcDBJnMh1YQczUMCYvAjmrNNSziwBD374FFvJ/gQXboa4eJ6bd4m9W+vA0Ci
+         qTBQ==
+X-Gm-Message-State: AOJu0YwWV4jqQlJuGDejGzrAxoCrHUP2YrSUxrfxCs0zrq5MySvcIPGU
+	VTAShucbbaYXJV4G6jq2VvdGkA==
+X-Google-Smtp-Source: AGHT+IGSn7B1tdeAC18VFvtXuRhUozBEdZxjJDLizh5cvTQhRHlk6HnCDVb3HF69G+qZZGaY0pwJPA==
+X-Received: by 2002:a05:6512:1086:b0:507:bc6b:38a6 with SMTP id j6-20020a056512108600b00507bc6b38a6mr1300437lfg.33.1700640307182;
+        Wed, 22 Nov 2023 00:05:07 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.100])
-        by smtp.gmail.com with ESMTPSA id n4-20020a5d4004000000b003316b3d69b3sm15605462wrp.46.2023.11.22.00.01.33
+        by smtp.gmail.com with ESMTPSA id z16-20020adfe550000000b0032db4e660d9sm16411735wrm.56.2023.11.22.00.05.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Nov 2023 00:01:35 -0800 (PST)
-Message-ID: <26b5fd29-fcd0-4c68-8bfe-a73a660fb2c9@linaro.org>
-Date: Wed, 22 Nov 2023 09:01:32 +0100
+        Wed, 22 Nov 2023 00:05:06 -0800 (PST)
+Message-ID: <01f9ce3b-e6e5-4b05-bf7f-0b3a5f74910a@linaro.org>
+Date: Wed, 22 Nov 2023 09:05:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
 Content-Language: en-US
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Michal Simek <michal.simek@amd.com>, Rob Herring <robh+dt@kernel.org>,
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Andrew Davis <afd@ti.com>, Arnd Bergmann <arnd@arndb.de>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Andrew Davis <afd@ti.com>, Arnd Bergmann <arnd@arndb.de>,
  Bjorn Andersson <andersson@kernel.org>,
  Geert Uytterhoeven <geert+renesas@glider.be>,
  Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Michal Simek <michal.simek@amd.com>,
  Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
  Olof Johansson <olof@lixom.net>, linux-rockchip@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
  linux-arm-msm@vger.kernel.org
 References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
- <19358871-009d-4498-9c13-90d5338b1e9f@amd.com>
- <76fa8f61-fe31-4040-a38d-cc05be3f4f17@linaro.org>
- <6c80a285-27fc-4d61-9eef-af4744a9decc@amd.com>
- <cc57dcf1-3c32-426e-920c-6f0741027797@linaro.org>
- <CAMuHMdVGyXizPw9Rggj8fQeNdbx3udRcsHFhz_sqYZzjN1CnZQ@mail.gmail.com>
+ <6b288a2e-d147-4bd3-b1d4-daf56295d939@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -135,12 +132,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <CAMuHMdVGyXizPw9Rggj8fQeNdbx3udRcsHFhz_sqYZzjN1CnZQ@mail.gmail.com>
+In-Reply-To: <6b288a2e-d147-4bd3-b1d4-daf56295d939@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_000140_688112_F8633C70 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20231122_000511_584177_40932111 
+X-CRM114-Status: GOOD (  19.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,42 +152,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/11/2023 17:04, Geert Uytterhoeven wrote:
-> Hi Krzysztof,
+On 21/11/2023 14:50, Rafał Miłecki wrote:
+>> +Order of Nodes
+>> +--------------
+>> +
+>> +1. Nodes within any bus, thus using unit addresses for children, shall be
+>> +   ordered incrementally by unit address.
+>> +   Alternatively for some sub-architectures, nodes of the same type can be
+>> +   grouped together (e.g. all I2C controllers one after another even if this
+>> +   breaks unit address ordering).
+>> +
+>> +2. Nodes without unit addresses should be ordered alpha-numerically by the node
+>> +   name.  For a few types of nodes, they can be ordered by the main property
+>> +   (e.g. pin configuration states ordered by value of "pins" property).
+>> +
+>> +3. When extending nodes in the board DTS via &label, the entries should be
+>> +   ordered alpha-numerically.
 > 
-> On Tue, Nov 21, 2023 at 1:36 PM Krzysztof Kozlowski
-> <krzysztof.kozlowski@linaro.org> wrote:
->> On 21/11/2023 12:55, Michal Simek wrote:
->>>>> device-tree specification v0.4. Chapter 2.2.1/Table 2.1 is describing much more
->>>>> valid characters for node names.
->>>>> It means above description is not accurate or DT spec should be updated.
->>>>
->>>> Spec allows way to much. dtc doesn't.
->>>> One thing is the spec, second
->>>> thing is coding style.
->>>
->>>  From my point of view spec is primary source of truth. If spec is saying name
->>> can use upper case then I can use it. If upper case is not
->>> recommended/deprecated because of whatever reason spec should be updated to
->>> reflect it.
->>> I know that DTC is reporting other issues but isn't it the right way to reflect
->>> it back to the spec?
->>
->> Then why aren't you putting Linux Coding Style into C spec? I do not see
->> any relation between specification of the language and the coding style
->> chosen for given project.
->>
->> Zephyr can go with upper-case. Why it should be disallowed by the spec?
+> Just an idea. Would that make (more) sense to make &label-like entries
+> match order of nodes in included .dts(i)?
 > 
-> I thought there was only One DT to bind them all?
-> IMHO it would be better to align DT usage of Zephyr and Linux (and
-> anything else).
+> Adventages:
+> 1. We keep unit address incremental order that is unlikely to change
+> 
+> Disadventages:
+> 1. More difficult to verify
 
-I actually don't know what Zephyr decides, but used it as example that
-it might want different coding style. Just like C standard allows to
-have all variables (including local ones) upper-case, we do not have
-such coding style. And no one proposes to update C spec to match Linux
-coding style. :)
+Rob also proposed this and I believe above disadvantage here is crucial.
+If you add new SoC with board DTS you are fine. But if you add only new
+board, the order of entries look random in the diff hunk. Reviewer must
+open SoC DTSI to be able to review the patch with board DTS.
+
+If review is tricky and we do not have tool to perform it automatically,
+I am sure submissions will have disordered board DTS.
+
+> 
+> 
+>> +Example::
+>> +
+>> +	// SoC DTSI
+>> +
+>> +	/ {
+>> +		cpus {
+>> +			// ...
+>> +		};
+>> +
+>> +		psci {
+>> +			// ...
+>> +		};
+>> +
+>> +		soc@ {
+>> +			dma: dma-controller@10000 {
+>> +				// ...
+>> +			};
+>> +
+>> +			clk: clock-controller@80000 {
+>> +				// ...
+>> +			};
+>> +		};
+>> +	};
+>> +
+>> +	// Board DTS
+>> +
+>> +	&clk {
+>> +		// ...
+>> +	};
+>> +
+>> +	&dma {
+>> +		// ...
+>> +	};
+>> +
+>> +
+>> +Order of Properties in Device Node
+>> +----------------------------------
+>> +
+>> +Following order of properties in device nodes is preferred:
+>> +
+>> +1. compatible
+>> +2. reg
+>> +3. ranges
+>> +4. Standard/common properties (defined by common bindings, e.g. without
+>> +   vendor-prefixes)
+>> +5. Vendor-specific properties
+>> +6. status (if applicable)
+>> +7. Child nodes, where each node is preceded with a blank line
+>> +
+>> +The "status" property is by default "okay", thus it can be omitted.
+> 
+> I think it would really help to include position of #address-cells and
+> #size-cells here. In some files I saw them above "compatible" that seems
+> unintuitive. Some prefer putting them at end which I think makes sense
+> as they affect children nodes.
+> 
+> Whatever you choose it'd be just nice to have things consistent.
+
+This is a standard/common property, thus it goes to (4) above.
+
 
 Best regards,
 Krzysztof
