@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59DC1C61D99
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 16:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68868C61D97
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 16:41:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=anTtiC2OivjXTLiFNi+8mAML1Z7aJiqLP2gBQpQzTLw=; b=SzjK54I4kXCblYbGIRvvy+sXiJ
-	HHkwYGLa8M4CDtQBsTgxoXWACqYlk4otVefMmP6YDxPzdwl8o3zy/GmMdfBpozlc8Nj08u6FKyaIl
-	MyMMSm2dpADgOh5ut1tV5OvQZMAw8XwiEFdDJjj6pFAa83LmgCjwU6/Hgsaw8zJRt5GU1DxceaIjV
-	fwLenhm4iC9nA+EUCf8/wF3mVogMNylURgwZBqT/YwjOeYQSoUAdjl1R3dG3AB6VhLtWll0n7+e5Q
-	Ztc1JOANGC/GtP2C+tmOjaG6H8UdOqBgDNgyMYHbKviJ6+xZNX5tXLAFb/7YH/BFmrTOXvoOGExTk
-	NuCDJIMg==;
+	bh=p9Ajql8pufH94cGtDSGW4iQ8zs9ZdTOvrmQG89LhtVU=; b=UsnD8HuFyz49Qjc2QtZT24X861
+	fXX2hkpbgBMoT5f9JP6uIKUtVrnEWzS7Z4gVd3DralsK1AnrLWXZ33qNGiv3T8rxRz9dL4jyMCZKu
+	HfmOAPUkFi0AW7QVF8MldRXtL9Se8MbduOH3ZTY6wOJjf3y/fs2nrhQ0OCk+6KPFJe/TPTy/CRMHC
+	kaJe1l6qt2LGrSjK0IGrV/WkfPXe4S0GLT/vcNTr2T9TAxuL2umG9go3R7nWgd9b5eWXIeKBUzStB
+	Fp1hByXzEB0ssWQXIZfDE9XXSINaBKEZcob+UiQbw4CjLl6QD28YbKN8Z3MUylVAvqti+b2iX6OTV
+	jElezwHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5qHp-002Wdb-0e;
-	Wed, 22 Nov 2023 16:41:13 +0000
+	id 1r5qHq-002Wel-0S;
+	Wed, 22 Nov 2023 16:41:14 +0000
 Received: from mgamail.intel.com ([134.134.136.31])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5qHi-002WYo-08;
-	Wed, 22 Nov 2023 16:41:07 +0000
+	id 1r5qHj-002WYo-1d;
+	Wed, 22 Nov 2023 16:41:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700671264; x=1732207264;
+  t=1700671266; x=1732207266;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=3nCf9Nawx9DZLMwtP7gm5hKJWHmWiIVjJbmiWUav9q4=;
-  b=Mzv8ibZ7wU2K+chK3WVkXM3uXSfRbrl5TPviLDsVA8GSAHPJvZ4APCcr
-   P9KE/Dcx0nLm0WTMGpsbBw7lPyrAdZsDx681mr5y8EoVOiywD5W2tj+hP
-   UJxKTdv+hYa8AzxzJUFf+dbXYwav5Xc8Unyh4DXDQ8JaPQg0GWU78mT7f
-   045NHekltEOLJKuQgg5NHfcwTBYeW7HdL7vw54+xfHc46CHJlHjjhW85G
-   Q9Pol6mBWWvH6gaa7zuaTdB8v83H+EbjJWpn4OAsDt+x2PP6aL3fL8QYX
-   MUoOzdByVUnZbZTJjSl9+Dn2AuyEhjkxluOw9VmWqFSNh+dJlIUHaFU8n
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="456414280"
+  bh=gmx9nuWChebe/DrHmc5bZCzd5Rp0oy/jq7NHLB+ivqw=;
+  b=JCsoXkH1NQRWlgxiIXVudQEn8Na0a30IZDXP8K5hJV/CkrIQY66mKLJD
+   0MdrrY9oX9vItZ7yqTZD3T+duMjgnXRVi1e/FKuXcGOSHaUEiXhVuDFQF
+   FmFGXvYHvvK0ExZCc5McrUSSeobATefSK5vq6uHE0CXRVw7mWEPhkZyxW
+   HRr66bEdRnCoadMGtjIZHl5med/XsR7a/EfSjYEy1gQoWd0ECLk8ps3KB
+   njS/nodS5lxGgGeYugctL0JYMxjGKgTt3jJHBt0JLP/Q8ikdbtVnR98Np
+   41UKH9nsr4tYbExuLBaRnU8Kn+X5LZIzO8ajUBEQv+6Z/zLyQ6lVEyuFv
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="456414263"
 X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
-   d="scan'208";a="456414280"
+   d="scan'208";a="456414263"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
   by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 08:41:03 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="884681574"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="884681572"
 X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
-   d="scan'208";a="884681574"
+   d="scan'208";a="884681572"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga002.fm.intel.com with ESMTP; 22 Nov 2023 08:40:55 -0800
+  by fmsmga002.fm.intel.com with ESMTP; 22 Nov 2023 08:40:56 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 4D097560; Wed, 22 Nov 2023 18:40:45 +0200 (EET)
+	id 82CAB63E; Wed, 22 Nov 2023 18:40:45 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -90,17 +90,17 @@ Cc: Ray Jui <rjui@broadcom.com>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v1 07/17] pinctrl: mediatek: Make use of PINCTRL_GROUP_DESC()
-Date: Wed, 22 Nov 2023 18:35:39 +0200
-Message-ID: <20231122164040.2262742-8-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 10/17] pinctrl: equilibrium: Convert to use grp member
+Date: Wed, 22 Nov 2023 18:35:42 +0200
+Message-ID: <20231122164040.2262742-11-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
 In-Reply-To: <20231122164040.2262742-1-andriy.shevchenko@linux.intel.com>
 References: <20231122164040.2262742-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_084106_126404_D9B64468 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20231122_084107_668133_40478CA2 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,50 +115,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make use of PINCTRL_GROUP_DESC() instead of open coding it.
+Convert drivers to use grp member embedded in struct group_desc.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-moore.h | 7 +------
- drivers/pinctrl/mediatek/pinctrl-paris.h | 7 +------
- 2 files changed, 2 insertions(+), 12 deletions(-)
+ drivers/pinctrl/pinctrl-equilibrium.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.h b/drivers/pinctrl/mediatek/pinctrl-moore.h
-index e1b4b82b9d3d..22ef1ffbcdcb 100644
---- a/drivers/pinctrl/mediatek/pinctrl-moore.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-moore.h
-@@ -38,12 +38,7 @@
- 	}
+diff --git a/drivers/pinctrl/pinctrl-equilibrium.c b/drivers/pinctrl/pinctrl-equilibrium.c
+index 9202a60b4ec7..3e27b23d859c 100644
+--- a/drivers/pinctrl/pinctrl-equilibrium.c
++++ b/drivers/pinctrl/pinctrl-equilibrium.c
+@@ -331,8 +331,8 @@ static int eqbr_pinmux_set_mux(struct pinctrl_dev *pctldev,
+ 		return -EINVAL;
  
- #define PINCTRL_PIN_GROUP(name, id)			\
--	{						\
--		name,					\
--		id##_pins,				\
--		ARRAY_SIZE(id##_pins),			\
--		id##_funcs,				\
--	}
-+	PINCTRL_GROUP_DESC(name, id##_pins, ARRAY_SIZE(id##_pins), id##_funcs)
+ 	pinmux = grp->data;
+-	for (i = 0; i < grp->num_pins; i++)
+-		eqbr_set_pin_mux(pctl, pinmux[i], grp->pins[i]);
++	for (i = 0; i < grp->grp.npins; i++)
++		eqbr_set_pin_mux(pctl, pinmux[i], grp->grp.pins[i]);
  
- int mtk_moore_pinctrl_probe(struct platform_device *pdev,
- 			    const struct mtk_pin_soc *soc);
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.h b/drivers/pinctrl/mediatek/pinctrl-paris.h
-index 8762ac599329..f208a904c4a8 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.h
-@@ -50,12 +50,7 @@
- 	}
- 
- #define PINCTRL_PIN_GROUP(name, id)			\
--	{						\
--		name,					\
--		id##_pins,				\
--		ARRAY_SIZE(id##_pins),			\
--		id##_funcs,				\
--	}
-+	PINCTRL_GROUP_DESC(name, id##_pins, ARRAY_SIZE(id##_pins), id##_funcs)
- 
- int mtk_paris_pinctrl_probe(struct platform_device *pdev);
- 
+ 	return 0;
+ }
 -- 
 2.43.0.rc1.1.gbec44491f096
 
