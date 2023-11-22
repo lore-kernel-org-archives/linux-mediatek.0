@@ -4,86 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE36AC27C40
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 21:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB0BC61D97
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 23:23:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iZUIj80ten5WbMUx5i6IlNdeACrCCijzXzvQj60owfU=; b=QrM/Yg6Xn2N/h7VoncsG6uXma1
-	Z+hmCNfOPviCFs1z7lUhjNGld8QEeACJIhSePsEf9X5LQwni1qVvaUtLOkQyeBSqTLa60QChptDz5
-	q/fJOVdN2xaVeSxrciG0GjrVEyEyU3SBiApofge+U3vxOUn1lh6xduuhDj1byxTe9D+g8CSQ3PH1j
-	7SBkAfhtcaD+9/Er4MEyARLQcESsbnliSnnsqMyePB7DcCtuDvDhG2kRyTCYyWLKHWvLmNipmmMKM
-	M2oIBEuPRfhpBFIKTVt/9V6y1xSuwzlAFE/DMGllktQ1WGI7lD++GwtFLYiu+RAm1O5g0n5++PWah
-	EuZqDiDA==;
+	bh=fiXXJIlFG9uWevend3gbqY45zhhsFdplnQO/NzqnhTk=; b=uUJlG8ne1/Az3/lhVlw/cI2A5l
+	ixsEjptCFUcf76TF6PybnUM+ymB5xm+LyFcbULxJrIhtRxCHARwnoz6rVsrPIeGTj6s41fK1hRSIz
+	7Xldtoce9nRDYLBu8diXRXF2khjgxo71YUuppjmYslkn6YClKCxAspTTLCeOwiZSaa/TtzKgCg2YP
+	wUFu/AVYObGql6GkVcfNgYf0xR0YTtL9DAqcZU1pPpCkai+nd9im2HVmcNXjjMX8yP8epFyDHqEPK
+	C9EB+2MNHTm+1+dcPdJDSRu/scmp5PfzF9tuJFLydbL9iTOuG3MDhapq+i0MeHTlEWaGGGJQs2eZd
+	7aMIjhug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5uZ0-0035SS-2L;
-	Wed, 22 Nov 2023 21:15:14 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1r5wZU-003IDx-2k;
+	Wed, 22 Nov 2023 23:23:52 +0000
+Received: from mgamail.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5uYx-0035RE-1O;
-	Wed, 22 Nov 2023 21:15:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 1756AB825F1;
-	Wed, 22 Nov 2023 21:15:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 748A8C433C7;
-	Wed, 22 Nov 2023 21:15:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700687708;
-	bh=tX29cwq4HW2ZTQzwFFB4rNa+GB41wrnSmjmIQn6Gg9c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=E959KgU9SkJXN31p4CoiSoFMbt1/4mixRnb3ii4nBu8A1WjJfgKADIlw/4ob1B2OO
-	 C2YiEz9grSlGSdayOaPCOmxT2duYcfB+4pdNVCGKJW3PEmzFt9LF/OPpmBoLkZEIyZ
-	 DdSOuor0RqsN0PXu688gw3z8uc0RMaTG/hvbfr4h+jscQUVSNipFZ3C9MZlcpXlh1L
-	 utkd7IFab0TsuoYQRgymLQiq4fx4G5OuLAUah8wAUR7PpwxAv0CvvCDPngDFwfS8DL
-	 gKgUKN0gBkIcOfj2b+AuL6cYIdEKKmfUyQjOPIcdXSa8vT1rR8KS4H+4Z3zAzFGBxy
-	 9PWmU8fF6JOpw==
-Date: Wed, 22 Nov 2023 21:14:59 +0000
-From: Simon Horman <horms@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
+	id 1r5wZQ-003ID1-2B;
+	Wed, 22 Nov 2023 23:23:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1700695428; x=1732231428;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=wLu90c2ONU3nwRPuECsbNVwdI6Y/3s1bCFsGjUjQWds=;
+  b=UmMBEP+m0KlVnCz5MQbFQsmqLO6g2FL71mXqPj96ZjPleT3JTz36Zcz2
+   TLA0oYfahvnlUsHJxVirDaaTMsN1a7lzTNM3n3xznvbE+aWSyLNl+rdl4
+   S+/xAbPJ91DNTBwXIYo3B6Aw6Zl/6jp1Ha/DWJ9e4Bj0rHETxOwSLMJpy
+   K5G303bvSJ10GGkS+FUfzGa02QmktsGjhGOmFFqlxMxUNzz19eG6uEpTm
+   /u/qXv/eotz1wm2Y0boLBfp5v2RmQEbsGnax5ZynT27Ktl+jHieM2SxUe
+   iPxTjiZGQFC2ytR+BA4Jh2jM51gmhGMdO+dviFA3K8JJMzHcE6nwcvs3o
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="391935070"
+X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
+   d="scan'208";a="391935070"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 15:23:41 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="760507612"
+X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
+   d="scan'208";a="760507612"
+Received: from amongesa-mobl.ger.corp.intel.com (HELO intel.com) ([10.252.57.132])
+  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 15:23:31 -0800
+Date: Thu, 23 Nov 2023 00:23:28 +0100
+From: Andi Shyti <andi.shyti@linux.intel.com>
+To: Uwe =?iso-8859-15?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>, Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
 	Florian Fainelli <florian.fainelli@broadcom.com>,
 	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Al Cooper <alcooperx@gmail.com>,
+	Ilpo =?iso-8859-15?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Vladimir Zapolskiy <vz@mleia.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Epping <david.epping@missinglinkelectronics.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next RFC PATCH 04/14] net: phy: add initial support for PHY
- package in DT
-Message-ID: <20231122211459.GA46439@kernel.org>
-References: <20231120135041.15259-1-ansuelsmth@gmail.com>
- <20231120135041.15259-5-ansuelsmth@gmail.com>
- <20231122105243.GB28959@kernel.org>
- <655e452d.5d0a0220.61c31.01ae@mx.google.com>
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	John Ogness <john.ogness@linutronix.de>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Tony Lindgren <tony@atomide.com>, Petr Mladek <pmladek@suse.com>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Johan Hovold <johan@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
+	Andi Shyti <andi.shyti@linux.intel.com>,
+	Thomas Richard <thomas.richard@bootlin.com>,
+	Rob Herring <robh@kernel.org>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Duje =?utf-8?Q?Mihanovi=C4=87?= <duje.mihanovic@skole.hr>,
+	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	Jacob Keller <jacob.e.keller@intel.com>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	kernel@pengutronix.de, linux-serial@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH 03/52] serial: 8250: Convert to platform remove callback
+ returning void
+Message-ID: <ZV6NcAXBUcj5wYx8@ashyti-mobl2.lan>
+References: <20231110152927.70601-1-u.kleine-koenig@pengutronix.de>
+ <20231110152927.70601-4-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-15
 Content-Disposition: inline
-In-Reply-To: <655e452d.5d0a0220.61c31.01ae@mx.google.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231110152927.70601-4-u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_131511_636569_2AD7B06A 
-X-CRM114-Status: GOOD (  18.65  )
+X-CRM114-CacheID: sfid-20231122_152348_779939_368C9C02 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,25 +115,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 22, 2023 at 07:15:06PM +0100, Christian Marangi wrote:
+Hi Uwe,
 
-...
-
-> > Hi Christian,
-> > 
-> > I was a little hasty in hitting send on my previous message.
-> > Please find some more minor feedback from my side below.
-> >
+On Fri, Nov 10, 2023 at 04:29:31PM +0100, Uwe Kleine-König wrote:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is ignored (apart
+> from emitting a warning) and this typically results in resource leaks.
 > 
-> Thanks a lot for the initial review and sorry for the various warning
-> you had to write about it. I know this was a new concept and that I had
-> to discuss a lot about the DT structure so I was a bit relaxed in
-> releasing OF node. Will handle all of them in v2. Again thanks! 
+> To improve here there is a quest to make the remove callback return
+> void. In the first step of this quest all drivers are converted to
+> .remove_new(), which already returns void. Eventually after all drivers
+> are converted, .remove_new() will be renamed to .remove().
+> 
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-No problem. I'm never sure if this kind of feedback is appropriate for and
-RFC or not. And perhaps in this case it would have been better to wait for
-at least one more revision. So sorry for the noise at this stage of the
-patch-set's development.
+Reviewed-by: Andi Shyti <andi.shyti@linux.intel.com>
 
-...
+Thanks,
+Andi
 
