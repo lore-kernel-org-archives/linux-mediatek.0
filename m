@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D43AC61D9C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 14:49:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91F9EC61D9D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 14:49:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qpUo/rJ7VG/JhV4L+LwZR0vb7jlfzWVF0UII53bBpJU=; b=fcu9LRglW1LPCyKzlHXi3uyrj+
-	Mc7HsNmP4Jb5tSxZUSxHZYg9wMvQbaCfU7VcpBtYE0KiWSdU76TNO8wbJIUCKCdmd3QevNI3+kRwo
-	eVZEjq3/F3pLrjCM+OQPuAWCpjHdVqTwg8StuJg+1q4ueoJI0dMZcpRXGS3Y1L3myJBT3mtCXOxhT
-	9bpsiA249QX+Bl61+/Q/00X0+Vq/MCZ68VxrVjU5BNpRG16ltAfa+vmGqwnV22VzABoudIwQnq+pB
-	j05ah+++Efnt6VGOcM+3mH5qx8EJxcsAC6o/4Cdw5Fv4PgQp+d9H+OsNKIJEi142hnMAZYECjxG13
-	dZUN1FAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=T5JQxN9H8HRm922JMznjrgcg32EQ0eASwQTBT82Nk10=; b=33f042pIawUOacu86xB73oyUGH
+	Sa0KfV/xYJ614b/HzZHc2TWHGIB/3h3zai6gPhFNAjW+TGsvrPAc7j9SfsLIjatAxENNcCJBVdZlR
+	s0vSBTs5EMG949CihkwfhvEeAgMncxmQ5oBQJq8I9mFriepJ8ztBWUAVOlrvHZEcPBIVBkKNwbPRQ
+	b6deLiWJroV6FqrvT8BvNNEHcKWl8N++GM/yfTGpBD7eXLfPAz8QxMqKLDQGdbGty0GyJ/orWvOZc
+	nzMtOpaYwPSe++mKlXkHZyVFSFdp/B/AQXvBi8PVglDmfwrZQ3QCUguyoKzuSPCkPYicLfmvlZfAY
+	rVJrG3PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5oXP-00295N-36;
-	Wed, 22 Nov 2023 14:49:11 +0000
-Received: from mgamail.intel.com ([192.55.52.43])
+	id 1r5oXS-00296z-1d;
+	Wed, 22 Nov 2023 14:49:14 +0000
+Received: from mgamail.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5oXN-00293l-0h;
-	Wed, 22 Nov 2023 14:49:10 +0000
+	id 1r5oXN-00293p-12;
+	Wed, 22 Nov 2023 14:49:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
   t=1700664549; x=1732200549;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=xfM2rHlddJWb6LuHvIur/k83wR9tmmt10e5ezN6jTtk=;
-  b=XxH6ohm491oEERJzzkH9fl0P7E5R71fjZG30gtpIOXIYAHM7imoMFVE2
-   lvW8jntDkFec57rR4foLlIVefkt6x/smqQF0xZjzpgy6UtaIO4L1oKIFk
-   mG839iKXhe6NrM2Vtnj9XonU9enUCPaWwq0yK8VGx8PVWPPgu4Owr/ELT
-   QnFeiRCyLO2psyGEZ3bUT6ko+txtvmn2ynVtynOR/h8B08qEF3MV1sLO5
-   zXPi6ZG/esuht2Of5YohKql9+mJJDtjQAOGyL7IxtU/IbumdjM/bAs4K6
-   LsJa2uWOYHzaJwHBqsIFpsZ1h22A80Q5Xy1Nmwo/9bsIBrD/nQcYFv6Fd
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="478269612"
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=jao+8zLEkPjov/1oV+u3GvxDqE5acbRJzZZEQtZlF2o=;
+  b=hdrWbniXVZMY/TguLc3rQvzqhRd0A9+w8qXP4z1fgM2hn/zXqjBlCR5R
+   dHBNXwTNw14nLruBKKHBu7QndsDA/AdypP++zwEfVzX9ma7zP8vs6Jbyy
+   0P2ZrDRUX9njNB2vqRX5wmrHAXpFmoo882Jwc8wZ2OOR5Al8O72i/6a2k
+   H0+ECgzgmDTO9hxXrOnMoU7flAmOFF12YNZ8MoF6+YV5+a0Y/xxF+wFMy
+   7TKpM98gbujjR8L4ZcqsNq5Pij+ochkizq++v3UrK1dZ+6kT32oUTVemO
+   yapwt5dz/+TWiw2aAJR+Z5b3JuUdX6jtz83St6IRDXENy7ObrLJL4Vg8a
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="395989339"
 X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
-   d="scan'208";a="478269612"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 06:49:05 -0800
+   d="scan'208";a="395989339"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 06:47:54 -0800
 X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="833037261"
 X-IronPort-AV: E=Sophos;i="6.04,219,1695711600"; 
-   d="scan'208";a="15284525"
-Received: from lkp-server01.sh.intel.com (HELO d584ee6ebdcc) ([10.239.97.150])
-  by fmviesa001.fm.intel.com with ESMTP; 22 Nov 2023 06:49:02 -0800
-Received: from kbuild by d584ee6ebdcc with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1r5oXD-0000ZL-2T;
-	Wed, 22 Nov 2023 14:48:59 +0000
-Date: Wed, 22 Nov 2023 22:48:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: Stanislav Kinsburskii <skinsburskii@linux.microsoft.com>,
-	ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
-	bhelgaas@google.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+   d="scan'208";a="833037261"
+Received: from black.fi.intel.com ([10.237.72.28])
+  by fmsmga008.fm.intel.com with ESMTP; 22 Nov 2023 06:47:51 -0800
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+	id C11C3387; Wed, 22 Nov 2023 16:47:50 +0200 (EET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev
-Subject: Re: [PATCH v2] PCI: mediatek: Fix sparse warning caused to
- virt_to_phys() prototype change
-Message-ID: <202311221830.SR5dv3X7-lkp@intel.com>
-References: <170052491316.21557.13173111699965824301.stgit@skinsburskii.>
+Cc: Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 1/1] pinctrl: mediatek: Switch to use no-IRQ PM helpers
+Date: Wed, 22 Nov 2023 16:46:35 +0200
+Message-ID: <20231122144744.2222207-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <170052491316.21557.13173111699965824301.stgit@skinsburskii.>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_064909_264392_E90C955A 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20231122_064909_406567_ADFEF3B0 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,67 +86,224 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Stanislav,
+Since pm.h provides a helper for system no-IRQ PM callbacks,
+switch the driver to use it instead of open coded variant.
 
-kernel test robot noticed the following build errors:
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
 
-[auto build test ERROR on pci/next]
-[also build test ERROR on pci/for-linus linus/master v6.7-rc2 next-20231122]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+v4:
+- used correct macro, i.e. EXPORT_GPL_DEV_SLEEP_PM_OPS() (Raag)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Stanislav-Kinsburskii/PCI-mediatek-Fix-sparse-warning-caused-to-virt_to_phys-prototype-change/20231121-080253
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/170052491316.21557.13173111699965824301.stgit%40skinsburskii.
-patch subject: [PATCH v2] PCI: mediatek: Fix sparse warning caused to virt_to_phys() prototype change
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20231122/202311221830.SR5dv3X7-lkp@intel.com/config)
-compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231122/202311221830.SR5dv3X7-lkp@intel.com/reproduce)
+v3:
+- used EXPORT_... helper and pm_sleep_ptr() (Paul)
+- dropped renaming (Paul, Angelo, Jonathan)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202311221830.SR5dv3X7-lkp@intel.com/
+ drivers/pinctrl/mediatek/pinctrl-mt2701.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt2712.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt6795.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8167.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8173.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8183.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8186.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8188.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8192.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8195.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8365.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8516.c     | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 5 ++---
+ drivers/pinctrl/mediatek/pinctrl-paris.c      | 5 ++---
+ 14 files changed, 16 insertions(+), 18 deletions(-)
 
-All errors (new ones prefixed by >>):
-
->> drivers/pci/controller/pcie-mediatek.c:400:22: error: passing 'const void *' to parameter of type 'volatile void *' discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
-           addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
-                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/x86/include/asm/io.h:128:55: note: passing argument to parameter 'address' here
-   static inline phys_addr_t virt_to_phys(volatile void *address)
-                                                         ^
-   drivers/pci/controller/pcie-mediatek.c:523:26: error: passing 'const void *' to parameter of type 'volatile void *' discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
-           msg_addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
-                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/x86/include/asm/io.h:128:55: note: passing argument to parameter 'address' here
-   static inline phys_addr_t virt_to_phys(volatile void *address)
-                                                         ^
-   2 errors generated.
-
-
-vim +400 drivers/pci/controller/pcie-mediatek.c
-
-   393	
-   394	static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
-   395	{
-   396		struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-   397		phys_addr_t addr;
-   398	
-   399		/* MT2712/MT7622 only support 32-bit MSI addresses */
- > 400		addr = virt_to_phys((__force const void *)port->base + PCIE_MSI_VECTOR);
-   401		msg->address_hi = 0;
-   402		msg->address_lo = lower_32_bits(addr);
-   403	
-   404		msg->data = data->hwirq;
-   405	
-   406		dev_dbg(port->pcie->dev, "msi#%d address_hi %#x address_lo %#x\n",
-   407			(int)data->hwirq, msg->address_hi, msg->address_lo);
-   408	}
-   409	
-
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+index 5fb377c1668b..6b1c7122b0fb 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+@@ -533,7 +533,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mediatek-mt2701-pinctrl",
+ 		.of_match_table = mt2701_pctrl_match,
+-		.pm = &mtk_eint_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
+ 	},
+ };
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+index 8a6daa0db54b..bb7394ae252b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+@@ -581,7 +581,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mediatek-mt2712-pinctrl",
+ 		.of_match_table = mt2712_pctrl_match,
+-		.pm = &mtk_eint_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
+ 	},
+ };
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6795.c b/drivers/pinctrl/mediatek/pinctrl-mt6795.c
+index 01e855ccd4dd..ee3ae3d2fa7e 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6795.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6795.c
+@@ -612,7 +612,7 @@ static struct platform_driver mt6795_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mt6795-pinctrl",
+ 		.of_match_table = mt6795_pctrl_match,
+-		.pm = &mtk_paris_pinctrl_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
+ 	},
+ 	.probe = mtk_paris_pinctrl_probe,
+ };
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8167.c b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
+index ba7f30c3296f..143c26622272 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8167.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
+@@ -334,7 +334,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mediatek-mt8167-pinctrl",
+ 		.of_match_table = mt8167_pctrl_match,
+-		.pm = &mtk_eint_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
+ 	},
+ };
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+index 455eec018f93..b214deeafbf1 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+@@ -347,7 +347,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mediatek-mt8173-pinctrl",
+ 		.of_match_table = mt8173_pctrl_match,
+-		.pm = &mtk_eint_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
+ 	},
+ };
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
+index ddc48b725c22..93e482c6b5fd 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
+@@ -576,7 +576,7 @@ static struct platform_driver mt8183_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mt8183-pinctrl",
+ 		.of_match_table = mt8183_pinctrl_of_match,
+-		.pm = &mtk_paris_pinctrl_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
+ 	},
+ 	.probe = mtk_paris_pinctrl_probe,
+ };
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8186.c b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
+index a02f7c326970..7be591591cce 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8186.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
+@@ -1255,7 +1255,7 @@ static struct platform_driver mt8186_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mt8186-pinctrl",
+ 		.of_match_table = mt8186_pinctrl_of_match,
+-		.pm = &mtk_paris_pinctrl_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
+ 	},
+ 	.probe = mtk_paris_pinctrl_probe,
+ };
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8188.c b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
+index c067e043e619..3975e99d9cf4 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8188.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
+@@ -1658,7 +1658,7 @@ static struct platform_driver mt8188_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mt8188-pinctrl",
+ 		.of_match_table = mt8188_pinctrl_of_match,
+-		.pm = &mtk_paris_pinctrl_pm_ops
++		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops)
+ 	},
+ 	.probe = mtk_paris_pinctrl_probe,
+ };
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8192.c b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
+index dee1b3aefd36..e3a76381f7f4 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8192.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
+@@ -1420,7 +1420,7 @@ static struct platform_driver mt8192_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mt8192-pinctrl",
+ 		.of_match_table = mt8192_pinctrl_of_match,
+-		.pm = &mtk_paris_pinctrl_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
+ 	},
+ 	.probe = mtk_paris_pinctrl_probe,
+ };
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+index 09c4dcef9338..83345c52b2fa 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+@@ -968,7 +968,7 @@ static struct platform_driver mt8195_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mt8195-pinctrl",
+ 		.of_match_table = mt8195_pinctrl_of_match,
+-		.pm = &mtk_paris_pinctrl_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
+ 	},
+ 	.probe = mtk_paris_pinctrl_probe,
+ };
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
+index 1db04bbdb423..e3e0d66cfbbf 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
+@@ -484,7 +484,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mediatek-mt8365-pinctrl",
+ 		.of_match_table = mt8365_pctrl_match,
+-		.pm = &mtk_eint_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
+ 	},
+ };
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
+index 950275c47122..abda75d4354e 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
+@@ -334,7 +334,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+ 	.driver = {
+ 		.name = "mediatek-mt8516-pinctrl",
+ 		.of_match_table = mt8516_pctrl_match,
+-		.pm = &mtk_eint_pm_ops,
++		.pm = pm_sleep_ptr(&mtk_eint_pm_ops),
+ 	},
+ };
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index e79d66a04194..d39afc122516 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -914,9 +914,8 @@ static int mtk_eint_resume(struct device *device)
+ 	return mtk_eint_do_resume(pctl->eint);
+ }
+ 
+-const struct dev_pm_ops mtk_eint_pm_ops = {
+-	.suspend_noirq = mtk_eint_suspend,
+-	.resume_noirq = mtk_eint_resume,
++EXPORT_GPL_DEV_SLEEP_PM_OPS(mtk_eint_pm_ops) = {
++	NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_eint_suspend, mtk_eint_resume)
+ };
+ 
+ static int mtk_pctrl_build_state(struct platform_device *pdev)
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 6392f1e05d02..b6bc31abd2b0 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -1131,9 +1131,8 @@ static int mtk_paris_pinctrl_resume(struct device *device)
+ 	return mtk_eint_do_resume(pctl->eint);
+ }
+ 
+-const struct dev_pm_ops mtk_paris_pinctrl_pm_ops = {
+-	.suspend_noirq = mtk_paris_pinctrl_suspend,
+-	.resume_noirq = mtk_paris_pinctrl_resume,
++EXPORT_GPL_DEV_SLEEP_PM_OPS(mtk_paris_pinctrl_pm_ops) = {
++	NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_paris_pinctrl_suspend, mtk_paris_pinctrl_resume)
+ };
+ 
+ MODULE_LICENSE("GPL v2");
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.43.0.rc1.1.gbec44491f096
+
 
