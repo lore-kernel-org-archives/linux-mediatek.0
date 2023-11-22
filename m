@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E87AC61D9B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 12:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1033C61D97
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Nov 2023 14:14:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QgcoYROYigY2l15DH8h7XkDRdCd5LLNYhSuWwt41cFw=; b=F1E/nrDR86FKgHiPzX/2YykPoS
-	nmxna5bJfnreJMc/gao+DoltdKltuBnBb2TkAABF8uaSnh5THhPk8+TYn9YIHDFeSO/gxg/XOaS7z
-	sze7Cm17J94NOfpXuA2iEzgs7c1EDufs7JepPChCgZsWBXmLGBh7sKmrumrm+YP7DlenjA7zo/Pqh
-	yb6eeuchtkSW1ScHx6wA8pPfuwUDyoxXOGdgv3M9o1Owu7tUWoGeyTTDwgyjudK23DLGR6zoPxjnE
-	Y5M7bdSLii8dHyqSexfW2Fn7NkilmPc/OQ4InZJo9iF4TRwqCe/jIljPCWKjnhlYn1QGYPz7oBkRE
-	7f/XQYdQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gcmZVxrbcRc23EBBsMzMg3az+uJ3xujBmlpT02W14Kg=; b=Lyz3bWvKEs8JpYGuTh5pp7joMU
+	jeG9klJAFUQsjtZ8YCLcyG5ZLNKKWKpcMRQC6F/Hi62Y9oyD7UCM27ibWQpg7/LnB6Hw1eKrzpJC7
+	9/M+ndhQxoCx0Sm54fCGK3DCahK3wxD+SVSYaAaZJEdChYkQuc3RB5kfANKpzYVq2eSQiRXBMcSVb
+	gZsqemI19XH9NM1DeYzSKn0yyMlziYCqqU1z/pSUqrodsq+NQ1LlsRY7nWGAIU7ISAifbpbdGw3Nh
+	p+LI6VirR4SRur85hHa4Z2r/+33IA/uizxKPV/KgQNHXSHSj9zQLOhq9wf1hu+MVnqeeWULRX1J6U
+	7TLSiHbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5mhl-001rlq-0Q;
-	Wed, 22 Nov 2023 12:51:45 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r5nzP-002477-2R;
+	Wed, 22 Nov 2023 14:14:03 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5mhb-001rjq-39;
-	Wed, 22 Nov 2023 12:51:37 +0000
-Received: from [100.94.55.57] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BAAEB6607385;
-	Wed, 22 Nov 2023 12:51:33 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700657494;
-	bh=QGbpV9TSQq+YNQYZPVEUDdzV7/4Ynd1Cx/uttXmt6d8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=N0vM4lp5V+/oUaENUvHCZCbatBCZbbKkV6RDZlhvjJoz0D4bfh+4MzCKY68B4yVI0
-	 OlN/PeZsh8Pzr/X7C35fAXUwF3HElVtYvTUrOxtUgV/DteilKjHstsK77fPVUh7G/a
-	 zcz58RhhKAY0VGifGC+YbUFFZ2dtgv2B2dacUlW+BM3kKcWuKEVB1PPBbecnULNpRp
-	 7QpXuT6nm8hcOMp5n60m9/5FzjvMVISPbwW5eruP8h/M1cQTMRPqCtPhe1VUqrqRJP
-	 Ja1hJ+Sk+bo2QCpUXY6oz6s448mUejAAZXCDkg0KGPuoI20lv+ftnwr/2jUHfw+hhT
-	 Z/J0B3+7c+roQ==
-Message-ID: <deff5728-4571-492d-bfb7-2666d0fa2557@collabora.com>
-Date: Wed, 22 Nov 2023 14:51:31 +0200
+	id 1r5nzL-00246N-37;
+	Wed, 22 Nov 2023 14:14:01 +0000
+Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-1f0f160e293so4019358fac.0;
+        Wed, 22 Nov 2023 06:13:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700662438; x=1701267238; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=gcmZVxrbcRc23EBBsMzMg3az+uJ3xujBmlpT02W14Kg=;
+        b=hwU0nT68CHKAL+0g1PbV0VHsRtBjMNdosm8K3EJSgjDCYRbfH58xB+T4D+fEbIcGiA
+         x166YDydozNx14HFUuCBkbQsMnD2TDRcQA5o772rymIBbZ3cNF4urQFc3kcM0Jwak0U+
+         CnNjPaQc4Yr6kumZzQtR+kapzYY5v+NucOn50iWe0m7sS0SGEVgkMdRaN8U5Ewucjo4X
+         VMffa2QRnGApYI0ruxl4OFcPwp+Vw+NRLoOishmEzpvMJDa1uR2DiIVJd0a4heJ3SEdA
+         pCjfaKKOJfx0q4hoiMw8f7cmYWFlq6r/SSfi3tf8Ese2xKmIIg0V+7dmT5ZrHcUIUUMq
+         a/hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700662438; x=1701267238;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=gcmZVxrbcRc23EBBsMzMg3az+uJ3xujBmlpT02W14Kg=;
+        b=vXP63goMsEy1qDr+o7CWyxXpaHJQRATDCS9JtDPoeySJpFZQHI+0kU89Cv4NkmUSr0
+         QwbZ6mE3jKXcamrSL5728iw1kQt7zoydEHHm43TcSsVvFZw1TtV86cJZTZdY5OScTKqw
+         SFYx8xiEUs4NrulGX1aQJCh8H9rm0/hUDLkHSQcmS0k9roBhyGw8DZE2f7lc7np6YvRo
+         /dz8P5eAAiMcSVitRtTtUU1JgmeEJiEbQoKuUWlRb4YXjEWEfE+IDtm2patzdsSy9lp3
+         auhJT62bF3zC5OMM2WdnC/DqTH01Fh1CiaTcuoY/D3ZT8G1IN69IoVaZR5ur0lPZZ5Tp
+         OIVw==
+X-Gm-Message-State: AOJu0YxP7k1k+wftXtB2OTTvJao3wCos3q1HXIdcRD/LWSRtEynSYExg
+	+SxNc4f+aOueo+xcvgNuh4fhKdWh+WtEOe7TDH4=
+X-Google-Smtp-Source: AGHT+IExCgbzsvdEhxeHyQlWxbsCi4VitxN/f7zqcWbuVIBSGrWCrRrtv+FbOiiY0V3pxrBxX/WLwjd7HdwYr4qr9Ok=
+X-Received: by 2002:a05:6870:3c87:b0:1f5:ccc2:b21e with SMTP id
+ gl7-20020a0568703c8700b001f5ccc2b21emr3552962oab.41.1700662437775; Wed, 22
+ Nov 2023 06:13:57 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/20] soc: mediatek: mtk-svs: Move t-calibration-data
- retrieval to svs_probe()
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- matthias.bgg@gmail.com
-Cc: krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- robh+dt@kernel.org, p.zabel@pengutronix.de, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com, wenst@chromium.org
-References: <20231121125044.78642-1-angelogioacchino.delregno@collabora.com>
- <20231121125044.78642-10-angelogioacchino.delregno@collabora.com>
- <6018ec3f-d3e6-4fe0-b57f-9a7994f983a5@collabora.com>
- <43982a3c-eb10-442e-acca-fd4b944a7612@collabora.com>
-From: Eugen Hristev <eugen.hristev@collabora.com>
-In-Reply-To: <43982a3c-eb10-442e-acca-fd4b944a7612@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Bret Joseph <bretjoseph@gmail.com>
+Date: Wed, 22 Nov 2023 16:13:46 +0200
+Message-ID: <CAKpemQ+OFgSjyAERZqKWv3oMYVEvmURdBkmNZtESxQOsnYarKg@mail.gmail.com>
+Subject: mt6370 i2c error -ETIMEDOUT: Failed to check vendor info
+To: huang@richtek.com
+Cc: linux-kernel@vger.kernel.org, zhiyong.tao@mediatek.com, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_045136_311792_2338E0E4 
-X-CRM114-Status: GOOD (  32.84  )
+X-CRM114-CacheID: sfid-20231122_061400_028649_8A20AB4C 
+X-CRM114-Status: UNSURE (   4.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,167 +83,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/22/23 14:41, AngeloGioacchino Del Regno wrote:
-> Il 22/11/23 12:23, Eugen Hristev ha scritto:
->> On 11/21/23 14:50, AngeloGioacchino Del Regno wrote:
->>> The t-calibration-data (SVS-Thermal calibration data) shall exist for
->>> all SoCs or SVS won't work anyway: move it to the common svs_probe()
->>> function and remove it from all of the per-SoC efuse_parsing() probe
->>> callbacks.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno 
->>> <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   drivers/soc/mediatek/mtk-svs.c | 32 ++++++--------------------------
->>>   1 file changed, 6 insertions(+), 26 deletions(-)
->>>
->>> diff --git a/drivers/soc/mediatek/mtk-svs.c 
->>> b/drivers/soc/mediatek/mtk-svs.c
->>> index ab564d48092b..1042af2aee3f 100644
->>> --- a/drivers/soc/mediatek/mtk-svs.c
->>> +++ b/drivers/soc/mediatek/mtk-svs.c
->>> @@ -1884,11 +1884,6 @@ static bool svs_mt8195_efuse_parsing(struct 
->>> svs_platform *svsp)
->>>           svsb->vmax += svsb->dvt_fixed;
->>>       }
->>> -    ret = svs_get_efuse_data(svsp, "t-calibration-data",
->>> -                 &svsp->tefuse, &svsp->tefuse_max);
->>> -    if (ret)
->>> -        return false;
->>> -
->>
->> Hello Angelo,
->>
->> if you removed the code using `ret` in this patch, it makes sense to 
->> also remove the variable here instead of doing it in patch 18.
->> It will avoid unused variable warnings for this patch.
->>
->>
-> 
-> Yes, though the comment is not for this function, but rather for 8183. 
-> Anyway, that
-> makes sense, but if it's the only change of this v3, it's something that 
-> I can fix
-> while applying instead of sending another 20 patches round. Thanks.
-> 
->>>       for (i = 0; i < svsp->tefuse_max; i++)
->>>           if (svsp->tefuse[i] != 0)
->>>               break;
->>> @@ -1949,11 +1944,6 @@ static bool svs_mt8192_efuse_parsing(struct 
->>> svs_platform *svsp)
->>>           svsb->vmax += svsb->dvt_fixed;
->>>       }
->>> -    ret = svs_get_efuse_data(svsp, "t-calibration-data",
->>> -                 &svsp->tefuse, &svsp->tefuse_max);
->>> -    if (ret)
->>> -        return false;
->>> -
->>>       for (i = 0; i < svsp->tefuse_max; i++)
->>>           if (svsp->tefuse[i] != 0)
->>>               break;
->>> @@ -2009,11 +1999,6 @@ static bool svs_mt8188_efuse_parsing(struct 
->>> svs_platform *svsp)
->>>           svsb->vmax += svsb->dvt_fixed;
->>>       }
->>> -    ret = svs_get_efuse_data(svsp, "t-calibration-data",
->>> -                 &svsp->tefuse, &svsp->tefuse_max);
->>> -    if (ret)
->>> -        return false;
->>> -
->>>       for (i = 0; i < svsp->tefuse_max; i++)
->>>           if (svsp->tefuse[i] != 0)
->>>               break;
->>> @@ -2097,11 +2082,6 @@ static bool svs_mt8186_efuse_parsing(struct 
->>> svs_platform *svsp)
->>>           svsb->vmax += svsb->dvt_fixed;
->>>       }
->>> -    ret = svs_get_efuse_data(svsp, "t-calibration-data",
->>> -                 &svsp->tefuse, &svsp->tefuse_max);
->>> -    if (ret)
->>> -        return false;
->>> -
->>>       golden_temp = (svsp->tefuse[0] >> 24) & GENMASK(7, 0);
->>>       if (!golden_temp)
->>>           golden_temp = 50;
->>> @@ -2198,11 +2178,6 @@ static bool svs_mt8183_efuse_parsing(struct 
->>> svs_platform *svsp)
->>>           }
->>>       }
->>> -    ret = svs_get_efuse_data(svsp, "t-calibration-data",
->>> -                 &svsp->tefuse, &svsp->tefuse_max);
->>> -    if (ret)
->>> -        return false;
->>> -
->>>       /* Thermal efuse parsing */
->>>       adc_ge_t = (svsp->tefuse[1] >> 22) & GENMASK(9, 0);
->>>       adc_oe_t = (svsp->tefuse[1] >> 12) & GENMASK(9, 0);
->>> @@ -3040,8 +3015,13 @@ static int svs_probe(struct platform_device 
->>> *pdev)
->>>       ret = svs_get_efuse_data(svsp, "svs-calibration-data",
->>>                    &svsp->efuse, &svsp->efuse_max);
->>> +    if (ret)
->>> +        return dev_err_probe(&pdev->dev, ret, "Cannot read SVS 
->>> calibration\n");
->>
->> With the previous code, if svs-calibration-data could not be read, the 
->> code would go to svs_probe_free_efuse. In your case, it returns directly.
->> I believe that svs_get_efuse_data using nvmem_cell_read does not 
->> allocate the buffer for the efuse , hence no more need to free it ? 
->> The exit code is checking if it's ERR or NULL, but still, if the 
->> buffer was not allocated, it doesn't make sense to jump there indeed.
->> In that case, you are also changing the behavior here , and your 
->> commit appears to do more than a simple move.
->>
-> 
-> I'm not changing the behavior: the previous behavior was to fail and 
-> free the efuse
-> variable if previously allocated, the current behavior is to fail and 
-> free the
-> efuse variable if previously allocated, and the tefuse variable if 
-> previously
-> allocated, which is a result of the actual move of the retrieval of the 
-> thermal
-> fuse calibration data.
-> 
-> I really don't see anything implicit here.
-> 
+I can't seem to get the device registered. I have the device in an I2c
+node just like in the documentation
 
-Previous behavior was
+DTS code
 
+&i2c2 {
+        compatible = "mediatek,mt8186-i2c";
+        &pmic@34 {
+                compatible = "mediatek,mt6370";
+        }
+};
 
-ret = svs_get_efuse_data (efuse)
-
-if (ret) goto svs_probe_free_efuse
-
-
-Now, you have it as
-
-ret = svs_get_efuse_data (efuse)
-
-if (ret) return dev_err_probe...
-
-
->>> +
->>> +    ret = svs_get_efuse_data(svsp, "t-calibration-data",
->>> +                 &svsp->tefuse, &svsp->tefuse_max);
->>>       if (ret) {
->>> -        ret = -EPERM;
->>> +        dev_err_probe(&pdev->dev, ret, "Cannot read SVS-Thermal 
->>> calibration\n");
->>>           goto svs_probe_free_efuse;
->>
->> again in this case the tefuse has not been allocated I assume.
->>
->> So previous code was a bit excessive in trying to free the efuse/tefuse ?
-> 
-> The previous code was performing an useless error check on something 
-> that was not
-> supposed to be allocated *yet*. Yes, it was wrong before.
-> 
-> Cheers,
-> Angelo
-> _______________________________________________
-> Kernel mailing list -- kernel@mailman.collabora.com
-> To unsubscribe send an email to kernel-leave@mailman.collabora.com
-
+It seems to time out during probe.
+          regmap_read(rmap, MT6370_REG_DEV_INFO, &devinfo);
+returns -110
 
