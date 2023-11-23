@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E523C61D85
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFD82C624B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:34:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XXpQtv7BOexX0S028esPfQRdBrQbcE8CVm7rX3b2l5w=; b=XDRq7Dvk932ALoR+JYxs1FVB0S
-	NFPoO8pwc8q0/DNwwgcx1fA1KJLuZ16iieLLhJQFU3CuPYWe2jnp3oTr+Xbk1jAp3D4Ikym1a2/dX
-	z2kkWBU+mS+XuV6jwCFQvtDSKuG5/dXEXW5YdTXJLfQLWK4HTj+a4Tly4zcPy25HAf4Z6+m+7XgNy
-	rx6tu7JN1gF+oigm/f8wSy3A8HQ4obEcOfRquL7jUgK0Qv/DZiuPjRmJX2ibXqYHZLVVaG7OJe06m
-	4HZxMGm56kTL/MOksq9R2DX3sgLPjbNAIqSn04iTKWLKTmCMbyQ7JNMRS2odCeimIfJzOA1z9aJhI
-	KaV2TJPw==;
+	bh=L3xjyb4iAiIdZ6TSPrml4isCXpTYsj/Ts2N2sf7raSs=; b=qEceF6bXGD5ZGnUFMsZfPBpUsJ
+	Xg3kJDmoNXRel4ux8EL07mw02UpW8oNBMNicS4X9Q2z1oUQAa3/0ArEsPVsFQj9dhOT8bfLs0btR/
+	LFSkuHyR/B9AvHjWXcLG1WmOsKst6vg8J+sP1fuuZLhqjscVIRgzXB2H/P7inhIXfSh4B2G5y2y4K
+	bZ8xaivdOqaj0Txm5/4JGmJMH14dciE6kLrm5OqMlxAbYHS9JjIrnShHKGvdybkL14Rt3H8wWgDxH
+	ZB9cMqJkM0mScorb6pm+GQxFBL7Ydql37Q0vY7JwlaMYDeEV3GMB0rszSQfEhTc6VNeFAU3r1nicv
+	ZPZqWL6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FTH-005bxR-1S;
-	Thu, 23 Nov 2023 19:34:43 +0000
-Received: from mgamail.intel.com ([192.55.52.136])
+	id 1r6FTM-005c0K-2B;
+	Thu, 23 Nov 2023 19:34:48 +0000
+Received: from mgamail.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FSq-005bcN-31;
+	id 1r6FSr-005bg4-0z;
 	Thu, 23 Nov 2023 19:34:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700768056; x=1732304056;
+  t=1700768057; x=1732304057;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=k/CuwaYQabHIX2TTMtkxSjWVlEzJjCHclcddt/a9src=;
-  b=htS6UbymzFslnqVnYm4fSYTfbsF6rvKb9AmMd8OdX6ygT1RjJszU8Bm5
-   ua/4ELpko1CHff3YF9QqrQxsOfkNTdqXHpi6yXHkKamfNOfmVwZRZ38qK
-   vaspaB3tjK9oA0uiLSWnFntNtaybeFQv2T8LQXEKNKerrCJ7mJZ5mNSV3
-   sl2eQNhhGJ/8JWsmO4sroqSDurtmyX2ndE8HlVrTygMMOe6Om3LEAJBfp
-   pytDkzoB3BTQAkSwxFHkHfXHQd5u2g7uq3rB4ySm7SS+xuGsbq2b3I4Xp
-   Q7SvNVgJ7bFBpWPVJY/E7d592uebLk+uG0bH+FSsObwRl5pCbh7VUeJK0
+  bh=JWDRh374Weqf1RM/wPs/cLPeGRfYhQLZdPEPrnsQ9gU=;
+  b=L8+ftbu+EWW73Ktg/A12gu8GMmig6FzGAv7BXz6WXbQctS7hrEsLExUk
+   Z8sGGt84zesRG7W+HvsonCmeWRTG8tG3fkF5Yo04HfrfOLPmTZuFd6/ND
+   NTJgz3NoYFTqoeCKIc3lpr+NBnkYxuKeOzM7zCbKST1OsVyuuruqK4Fxn
+   FTH93YT/9OVMfkmlY4RaMDRieyw+8KQPUouwwWLrJdmZHhXrfIGeldBgd
+   Ep8LOhP3urUt7wwQ6xeHetabIOaND0f6riqca81Qwv4EFZoNZ2i1OpT0B
+   MKKSY99mHr3Fxw/nSHaxr6KWdCInKJn7B5E35PXMk/zpW5oinCQ0hrl20
    Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="371671408"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="372482144"
 X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
-   d="scan'208";a="371671408"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:16 -0800
+   d="scan'208";a="372482144"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:16 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="771062249"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="833506162"
 X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
-   d="scan'208";a="771062249"
+   d="scan'208";a="833506162"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga007.fm.intel.com with ESMTP; 23 Nov 2023 11:34:08 -0800
+  by fmsmga008.fm.intel.com with ESMTP; 23 Nov 2023 11:34:08 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 1A472623; Thu, 23 Nov 2023 21:33:59 +0200 (EET)
+	id CEEA041A; Thu, 23 Nov 2023 21:33:58 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -90,18 +90,17 @@ Cc: Ray Jui <rjui@broadcom.com>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v2 10/21] pinctrl: ingenic: Make use of PINCTRL_GROUP_DESC()
-Date: Thu, 23 Nov 2023 21:31:38 +0200
-Message-ID: <20231123193355.3400852-11-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 05/21] pinctrl: core: Make pins const in struct group_desc
+Date: Thu, 23 Nov 2023 21:31:33 +0200
+Message-ID: <20231123193355.3400852-6-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
 In-Reply-To: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 References: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_113416_995265_361A7C99 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231123_113417_354484_BD114727 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,35 +115,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make use of PINCTRL_GROUP_DESC() instead of open coding it.
+It's unclear why it's not a const from day 1. Make the pins member
+const in struct group_desc. Update necessary APIs.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/pinctrl-ingenic.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ drivers/pinctrl/core.c | 2 +-
+ drivers/pinctrl/core.h | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-ingenic.c b/drivers/pinctrl/pinctrl-ingenic.c
-index ee718f6e2556..393873de910a 100644
---- a/drivers/pinctrl/pinctrl-ingenic.c
-+++ b/drivers/pinctrl/pinctrl-ingenic.c
-@@ -83,15 +83,10 @@
- #define JZ4730_PINS_PER_PAIRED_REG	16
+diff --git a/drivers/pinctrl/core.c b/drivers/pinctrl/core.c
+index f2977eb65522..d20e3aad923e 100644
+--- a/drivers/pinctrl/core.c
++++ b/drivers/pinctrl/core.c
+@@ -642,7 +642,7 @@ static int pinctrl_generic_group_name_to_selector(struct pinctrl_dev *pctldev,
+  * Note that the caller must take care of locking.
+  */
+ int pinctrl_generic_add_group(struct pinctrl_dev *pctldev, const char *name,
+-			      int *pins, int num_pins, void *data)
++			      const int *pins, int num_pins, void *data)
+ {
+ 	struct group_desc *group;
+ 	int selector, error;
+diff --git a/drivers/pinctrl/core.h b/drivers/pinctrl/core.h
+index 530370443c19..01ea1ce99fe8 100644
+--- a/drivers/pinctrl/core.h
++++ b/drivers/pinctrl/core.h
+@@ -203,7 +203,7 @@ struct pinctrl_maps {
+  */
+ struct group_desc {
+ 	const char *name;
+-	int *pins;
++	const int *pins;
+ 	int num_pins;
+ 	void *data;
+ };
+@@ -222,7 +222,7 @@ struct group_desc *pinctrl_generic_get_group(struct pinctrl_dev *pctldev,
+ 					     unsigned int group_selector);
  
- #define INGENIC_PIN_GROUP_FUNCS(name, id, funcs)		\
--	{						\
--		name,					\
--		id##_pins,				\
--		ARRAY_SIZE(id##_pins),			\
--		funcs,					\
--	}
-+	PINCTRL_GROUP_DESC(name, id##_pins, ARRAY_SIZE(id##_pins), funcs)
+ int pinctrl_generic_add_group(struct pinctrl_dev *pctldev, const char *name,
+-			      int *gpins, int ngpins, void *data);
++			      const int *pins, int num_pins, void *data);
  
- #define INGENIC_PIN_GROUP(name, id, func)		\
--	INGENIC_PIN_GROUP_FUNCS(name, id, (void *)(func))
-+	PINCTRL_GROUP_DESC(name, id##_pins, ARRAY_SIZE(id##_pins), (void *)(func))
- 
- enum jz_version {
- 	ID_JZ4730,
+ int pinctrl_generic_remove_group(struct pinctrl_dev *pctldev,
+ 				 unsigned int group_selector);
 -- 
 2.43.0.rc1.1.gbec44491f096
 
