@@ -4,79 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE124C5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 08:45:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF0BC61D85
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 08:47:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=soV6n0kljVYOCJ0bHLE3hW7cypLULnNOYmL8nI/8jaE=; b=WwUdf1IvdeUffhD/EiNYytPjOb
-	wy8pE5TDHarHKyPH6Ckb+TuQjdh04Q8VKoLazt6AjZ6S/2jMEbj97mxN6Niuv23ybkAIn5GRXzmCS
-	TFYGf9rGVcRSAjhwv7Au7xW6/XSbIjjXmVoUik95hk5IKJWuAJpXSxlJ7TNc9fEbyhYC1oqaTmNRI
-	3RYwfbFKQCtMCOiUzigeXP+7Uv0A4cGB+SV0BuMYf6E6PkzHw8qCjsLySErQ6UCsYkgdP/tRdl8Oq
-	TjSgz2jl1+b3ZpS2gaP6L9zJZk6q05+owwTr14bRqF+orT7F+OorCBe5strNhJB+hdZvMgxMwv4gY
-	dSJhSS2w==;
+	bh=jpPNjtbFq54UX+LJMlI2ATd3HcoEWd0fPFi2EKnyjyg=; b=HGaKPoYtcVcFQDz+0EA0iKexw9
+	UdP93/9i6Og9o1yps/VFH3OvSnrRAPqVPUIO028YXGFCDDfCAexhX8Mj6s+kznW1nNSZiL0D9C2AO
+	Nc9jljvurHRlPG6dLrxHFIB4fJ1tlJCGLlMMZDJfbL4vy6UAJ5VtJuj7F3WyAn9SWdaxE9f8/RA0M
+	eodG+snmO2w+fSV+0ctPV7M70/mS6Gx6sePbdsy81X+QLR4Os709tABoKJc+dbEUMnO2MuYFZsCuv
+	CjCfq0+o5RZinxbc2BbtgkZFTnOdrDahzYAhP8WcaGcCmduB/kswdP81nBe0Lu8E/E2GiPUaJ9J96
+	1iz/TaJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r65Kt-004B2b-1r;
-	Thu, 23 Nov 2023 08:45:23 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r65MU-004BGh-05;
+	Thu, 23 Nov 2023 08:47:02 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r65Kp-004B1x-1t;
-	Thu, 23 Nov 2023 08:45:21 +0000
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A22D46607377;
-	Thu, 23 Nov 2023 08:45:15 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700729116;
-	bh=pEBjnfCzPZOMm5mjeyRN3TyyyC1b+Njse8wt4P34EZg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=dJWtsHaKQEwT234V/aE9m5DOUBXvUuPPx3/Itz3czdkuNf1aj+dbMLI3le64hfv1r
-	 ZYzMsQjRoubiuULRs4armVtyT8qOAjRFJxpPNX4NPT5CEUY7IQ0UM3S157MKCZnANM
-	 CFVfkG4Kj4VU9pVmpHhBDoSInS7UJY8Ighr53UPgkOb95NuvuUmpw5RtCSratJ3YGe
-	 WGU5qTEt+VotXm3TvyG8G8+hx/ot/DxlSb99PpuNfT327sfiOQxrwZcsmTSlbb0eqb
-	 0EIoHzytREL+6Ox2wa3r4zA7kR9/rduPTuiXuDEvursK2OHTGWBfPUPsWHjXxClTZx
-	 gOqk5khQNPpZA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: pierre-louis.bossart@linux.intel.com
-Cc: lgirdwood@gmail.com,
-	peter.ujfalusi@linux.intel.com,
-	yung-chuan.liao@linux.intel.com,
-	ranjani.sridharan@linux.intel.com,
-	daniel.baluta@nxp.com,
-	kai.vehmanen@linux.intel.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	trevor.wu@mediatek.com,
-	tinghan.shen@mediatek.com,
-	u.kleine-koenig@pengutronix.de,
-	kuninori.morimoto.gx@renesas.com,
-	sound-open-firmware@alsa-project.org,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	wenst@chromium.org,
-	kernel@collabora.com
-Subject: [PATCH] ASoC: SOF: mediatek: mt8186: Add Google Steelix topology compatible
-Date: Thu, 23 Nov 2023 09:44:54 +0100
-Message-ID: <20231123084454.20471-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.42.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+	id 1r65MR-004BFa-2F;
+	Thu, 23 Nov 2023 08:47:01 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AN5q7B9019400;
+	Thu, 23 Nov 2023 08:46:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id; s=qcppdkim1;
+ bh=jpPNjtbFq54UX+LJMlI2ATd3HcoEWd0fPFi2EKnyjyg=;
+ b=i9NofE63Sm8XJYUz14cbQN7Mjxj0EQ0bBbjXlPR8q3whXfeSqGqwzInUwQe+TIKak/rL
+ 9Eu/Q0diEVM7c7ktRv2xpl+7PZ1cfLYr/me9m1ulS4mZ1K8aKVmoHPk8CfbOubs0xb7y
+ njnYvBeOO3LTEg3xnaiYpVJTfmHP/J9HzFli3MCxvnpWG6+ll0YHzMVatBsjyVwdbYMZ
+ Japj/0Lv/8cQL2XSmA/EXfUszw+8Gsi/b4BuIZf0BMPWvlqcQQTZqMUzn6sDefC8M64k
+ woWvn1AM9mriVd2YCj1bKaPNSC2ijB5zvkEkpZJZnEVhL0EbT3PMKoQV7/KdzjRTtz9y IQ== 
+Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uhgajtndu-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 Nov 2023 08:46:49 +0000
+Received: from pps.filterd (NASANPPMTA03.qualcomm.com [127.0.0.1])
+	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTP id 3AN8WDQY024629;
+	Thu, 23 Nov 2023 08:46:48 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by NASANPPMTA03.qualcomm.com (PPS) with ESMTP id 3uhwcrkk8y-1;
+	Thu, 23 Nov 2023 08:46:48 +0000
+Received: from NASANPPMTA03.qualcomm.com (NASANPPMTA03.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3AN8anao029807;
+	Thu, 23 Nov 2023 08:46:48 GMT
+Received: from stor-dylan.qualcomm.com (stor-dylan.qualcomm.com [192.168.140.207])
+	by NASANPPMTA03.qualcomm.com (PPS) with ESMTP id 3AN8klgv011366;
+	Thu, 23 Nov 2023 08:46:48 +0000
+Received: by stor-dylan.qualcomm.com (Postfix, from userid 359480)
+	id A6EE020A68; Thu, 23 Nov 2023 00:46:47 -0800 (PST)
+From: Can Guo <quic_cang@quicinc.com>
+To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
+        adrian.hunter@intel.com, beanhuo@micron.com, avri.altman@wdc.com,
+        junwoo80.lee@samsung.com, martin.petersen@oracle.com
+Cc: linux-scsi@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v5 00/10] Enable HS-G5 support on SM8550
+Date: Thu, 23 Nov 2023 00:46:20 -0800
+Message-Id: <1700729190-17268-1-git-send-email-quic_cang@quicinc.com>
+X-Mailer: git-send-email 2.7.4
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: Wdr-4dnwV2WVW0s-DacmwJWP3QaRkEYT
+X-Proofpoint-ORIG-GUID: Wdr-4dnwV2WVW0s-DacmwJWP3QaRkEYT
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-23_06,2023-11-22_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxlogscore=999
+ priorityscore=1501 lowpriorityscore=0 spamscore=0 bulkscore=0
+ clxscore=1015 impostorscore=0 malwarescore=0 mlxscore=0 adultscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2311230062
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_004519_828437_01DCCC25 
-X-CRM114-Status: UNSURE (   8.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231123_004659_743128_2B99C5F6 
+X-CRM114-Status: GOOD (  19.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +100,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the machine compatible and topology filename for the Google Steelix
-MT8186 Chromebook to load the correct SOF topology file.
+This series enables HS-G5 support on SM8550.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- sound/soc/sof/mediatek/mt8186/mt8186.c | 3 +++
- 1 file changed, 3 insertions(+)
+This series is rebased on below changes from Mani -
+https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-1-manivannan.sadhasivam@linaro.org/
+https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-2-manivannan.sadhasivam@linaro.org/
 
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index b69fa788b16f..e0d88e7aa8ca 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -597,6 +597,9 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
- 
- static struct snd_sof_of_mach sof_mt8186_machs[] = {
- 	{
-+		.compatible = "google,steelix",
-+		.sof_tplg_filename = "sof-mt8186-google-steelix.tplg"
-+	}, {
- 		.compatible = "mediatek,mt8186",
- 		.sof_tplg_filename = "sof-mt8186.tplg",
- 	},
+This series is tested on below HW combinations -
+SM8550 MTP + UFS4.0
+SM8550 QRD + UFS3.1
+SM8450 MTP + UFS3.1 (for regression test)
+SM8350 MTP + UFS3.1 (for regression test)
+
+Note that during reboot test on above platforms, I occasinally hit PA (PHY)
+error during the 2nd init, this is not related with this series. A fix for
+this is mentioned in below patchwork -
+
+https://patchwork.kernel.org/project/linux-scsi/patch/1698145815-17396-1-git-send-email-quic_ziqichen@quicinc.com/
+
+Also note that on platforms, which have two sets of UFS PHY settings are
+provided (say G4 and no-G4, G5 and no-G5). The two sets of PHY settings are
+basically programming different values to different registers, mixing the
+two sets and/or overwriting one set with another set is definitely not
+blessed by UFS PHY designers. For SM8550, this series will make sure we
+honor the rule. However, for old targets Mani and I will fix them in
+another series in future.
+
+v4 -> v5:
+Removed two useless debug prints in patch #9
+
+v3 -> v4:
+1. Used .tbls_hs_overlay array instead of adding more tables with different names like .tbls_hs_g5
+
+v2 -> v3:
+1. Addressed comments from Andrew, Mani and Bart in patch #1
+2. Added patch #2 as per request from Andrew and Mani
+3. Added patch #4 to fix a common issue on old targets, it is not necessary
+   for this series, but put in this series only because it would be easier
+   to maintain and no need to rebase
+4. Addressed comments from Dmitry and Mani in patches to phy-qcom-qmp-ufs.c
+
+v1 -> v2:
+1. Removed 2 changes which were exposing power info in sysfs
+2. Removed 1 change which was moving data structs to phy-qcom-qmp-ufs.h
+3. Added one new change (the 1st one) to clean up usage of ufs_dev_params based on comments from Mani
+4. Adjusted the logic of UFS device version detection according to comments from Mani:
+	4.1 For HW version < 0x5, go through dual init
+ 	4.2 For HW version >= 0x5
+		a. If UFS device version is populated, one init is required
+		b. If UFS device version is not populated, go through dual init
+
+Bao D. Nguyen (1):
+  scsi: ufs: ufs-qcom: Add support for UFS device version detection
+
+Can Guo (9):
+  scsi: ufs: host: Rename structure ufs_dev_params to ufs_host_params
+  scsi: ufs: ufs-qcom: No need to set hs_rate after
+    ufshcd_init_host_param()
+  scsi: ufs: ufs-qcom: Setup host power mode during init
+  scsi: ufs: ufs-qcom: Limit negotiated gear to selected PHY gear
+  scsi: ufs: ufs-qcom: Allow the first init start with the maximum
+    supported gear
+  scsi: ufs: ufs-qcom: Limit HS-G5 Rate-A to hosts with HW version 5
+  scsi: ufs: ufs-qcom: Set initial PHY gear to max HS gear for HW ver 5
+    and newer
+  phy: qualcomm: phy-qcom-qmp-ufs: Rectify SM8550 UFS HS-G4 PHY Settings
+  phy: qualcomm: phy-qcom-qmp-ufs: Add High Speed Gear 5 support for
+    SM8550
+
+ drivers/phy/qualcomm/phy-qcom-qmp-pcs-ufs-v6.h     |   2 +
+ drivers/phy/qualcomm/phy-qcom-qmp-qserdes-com-v6.h |   2 +
+ .../qualcomm/phy-qcom-qmp-qserdes-txrx-ufs-v6.h    |  12 ++
+ drivers/phy/qualcomm/phy-qcom-qmp-ufs.c            | 196 ++++++++++++++++++---
+ drivers/ufs/host/ufs-exynos.c                      |   7 +-
+ drivers/ufs/host/ufs-hisi.c                        |  11 +-
+ drivers/ufs/host/ufs-mediatek.c                    |  12 +-
+ drivers/ufs/host/ufs-qcom.c                        |  92 +++++++---
+ drivers/ufs/host/ufs-qcom.h                        |   5 +-
+ drivers/ufs/host/ufshcd-pltfrm.c                   |  69 ++++----
+ drivers/ufs/host/ufshcd-pltfrm.h                   |  10 +-
+ 11 files changed, 311 insertions(+), 107 deletions(-)
+
 -- 
-2.42.0
+2.7.4
 
 
