@@ -4,75 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 199FCC5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 17:31:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C55EEC5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:33:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NPfrzEVZEEkAHa6VO/vXqtVnK2WBMU7/MnWLMDsyYik=; b=O0iU0MrPq5L1RxQoATpYWWZdfY
-	uNVc4hqR9N7dSDlAiUcFi5eNrHF4CJNKcXcWa6tJ8yom5+HI6zgUpCHFgU/8YQO4RtJYiRjXJxBQG
-	Zc5Qn2Nbt0cXSydhNzMDeE76rsIJZAZ1F50k37kGWuv4460xqSKqGlfYf1ctatwe4/M/5w6fExpfj
-	GfjzGcoVY6pLZcUTsRQ7m6beLa9uTTshrD3E7/a8VjCiaUQcGlJ4hp1WsI3lK9UYgOzCR4Oe6Oza/
-	bOjvGkxb7WHGJS1ueRWOwF5+S8TmUcxkxAlKQcjXX0KIfhDjN/KbI628Hb8XP+18B/y2z1/Zg1nxi
-	bRIIhAtQ==;
+	bh=/hq7LNXGTuldiV4ecttMMHQLmxEW4ioDA8UB5OvVq6I=; b=T7HwD8Ip9K7UBqp59/+VkIpHW9
+	uAuXBkQDwNziTHAQfer8aWdM3M/ZKxqv4xSm77UcbEk7sfEe8Nccr1AI6OUXoYkFooeg5g1NfxxGM
+	1kVR4wehyEORrHrP0CzTMLMzkFUHrLMZ2E5hwaGQ9wk+7VeILOGW22RNDYGVmMpTzfMJeFLZ6qujD
+	uejG9XWIorqcTBeuu2kv6veg7rt2ggD03oTXoxZ0mcqueFULRMm9rvJN8dpDZS9U8S03AuZaJe/fF
+	zSRM2U5MJF/T3oXYhmaFAbq1AtC0afFDGApgY2Dp9quW3AdWGSFYbODB4x87ltJUCmLto/AokxhH1
+	t7mOGVaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6DYP-005Qcf-2l;
-	Thu, 23 Nov 2023 17:31:53 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1r6FS7-005bUB-34;
+	Thu, 23 Nov 2023 19:33:31 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6DYI-005QaH-1r;
-	Thu, 23 Nov 2023 17:31:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 77001CE2BDE;
-	Thu, 23 Nov 2023 17:31:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04AFBC433CA;
-	Thu, 23 Nov 2023 17:31:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700760703;
-	bh=x6t0DakrfOazLqCXf+qyEeqOmEgp+z5KyR3L1q47Slg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=H5nnDdwLpT1dfd91tmCi8xRhIdHcFHo13nexVEoEyTjk551Kz8iUnYi0a7kz/v+5C
-	 pan8dcUSFxZy567tDaTjAMsbSs1Db0sNUvMgQjlajS7xRVrC7wBNH57/Pq7nmP/xju
-	 um2I5AbY5d+hs9OuO1I7fpaK7AyRp0tzxh3YZuYgd3by58qEzXbEuwmnJHIZzCLEp1
-	 b80S7PwMqKOmKn2l6oabIfvQtJp64+tWn6gnGnbA6TV3EDHHiN1DsZEpb6MpBHS+jO
-	 iklcSTwvSUNyEjbfp+Z+JKnQsT29XOXLf7xAkaTud6/9+CW57Op8R9UVvlDHpoOslt
-	 +UJKj+Owx/s2A==
-Date: Thu, 23 Nov 2023 17:31:35 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Zhi Mao <zhi.mao@mediatek.com>
-Cc: mchehab@kernel.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, shengnan.wang@mediatek.com,
-	yaya.chang@mediatek.com, 10572168@qq.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	jacopo.mondi@ideasonboard.com, sakari.ailus@linux.intel.com,
-	hverkuil-cisco@xs4all.nl, heiko@sntech.de, jernej.skrabec@gmail.com,
-	macromorgan@hotmail.com, linus.walleij@linaro.org,
-	laurent.pinchart@ideasonboard.com, hdegoede@redhat.com,
-	tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
-	andy.shevchenko@gmail.com, bingbu.cao@intel.com,
-	dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
+	id 1r6FS4-005bTG-2W;
+	Thu, 23 Nov 2023 19:33:30 +0000
+Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-2c876e44157so14710371fa.2;
+        Thu, 23 Nov 2023 11:33:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700768006; x=1701372806; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=/hq7LNXGTuldiV4ecttMMHQLmxEW4ioDA8UB5OvVq6I=;
+        b=f+U41HdXXoGS+8YGLeR4YrsO5hd5a6jGJskUar+v/+D0ETzm6B4qi0oQ7C788+mEsp
+         n7SAf0NwWHv4pnL8umnHPQNTVCh99qZptMEWa3i8BPFRCcv46+XZCgGuzJgU4uWygbwU
+         +8Tebjh/pl4M5GTIfV0wfi5ZcpsIGnEtlLSzo9sY1K8IOQIWzSKHAngmC9mX7fVhAbtY
+         d3p4FG8eWk8QyXBfC9CBNL4a8NHrRbqJb8k3obyumwmtC96JRLxmfW5NoORgVXcBvlb9
+         dP/KQW6QcsxagckdkFyuGd1HbJ9Ox1dnR3M5TJgYchdd4K4utVWLkg1tpJoSrj5/fYlT
+         ZNdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700768006; x=1701372806;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/hq7LNXGTuldiV4ecttMMHQLmxEW4ioDA8UB5OvVq6I=;
+        b=XRWmtY9CY8XZYay4st9Uk8p89tVjgqHP2dNnoVWx3wiCWg/gHdoasCtH9uQCJPXCt/
+         V2qY0SIBUKmulTZQxZvPAupdAJfbIalq/np6DANVDQjO/0pPCp8UnWn0BDLc9+YU2f4j
+         wq6MokYVsfhGezgcMjL7ZhodGkSgI+6s207D6b/5RFzXVny/gN6QP07QF7xJrECXNJUc
+         beeHNJrPN/BFsJm8KC/vXtc5o9L1G2sX5LpROueZfSAPUfeaD45FgtOMWdSqCgUOfJRT
+         1XjzrHQwKsgYpMbmoO8iSuf76W22MJNRjZj6VUwYoIAqknR0X6QNyHeg+S0Y8iaoruBX
+         JYyQ==
+X-Gm-Message-State: AOJu0YxpUFgVXZBXJPI0FBnYXXlB6IrJxKjxEPb9iNaa5hBWQe958en6
+	BPq5ni1W3Zb7FXErGj/hyCw=
+X-Google-Smtp-Source: AGHT+IEpZV8AAS3AX/kSyCq/TvjTy4lvHHyqL6QV8NqZ0ODQESSmWB93J1AVOkRbP2EeuZ27xtYNUg==
+X-Received: by 2002:a2e:3a0f:0:b0:2c8:7962:cdc2 with SMTP id h15-20020a2e3a0f000000b002c87962cdc2mr223068lja.3.1700768005622;
+        Thu, 23 Nov 2023 11:33:25 -0800 (PST)
+Received: from Ansuel-xps. (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
+        by smtp.gmail.com with ESMTPSA id a4-20020adfeec4000000b0033130644c87sm2442265wrp.54.2023.11.23.11.33.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 23 Nov 2023 11:33:25 -0800 (PST)
+Message-ID: <655fa905.df0a0220.49d9b.7afd@mx.google.com>
+X-Google-Original-Message-ID: <ZV+pAo5jt0N9/AE2@Ansuel-xps.>
+Date: Thu, 23 Nov 2023 20:33:22 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+	Jie Luo <quic_luoj@quicinc.com>, Rob Herring <robh@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Epping <david.epping@missinglinkelectronics.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Harini Katakam <harini.katakam@amd.com>,
+	Simon Horman <horms@kernel.org>,
+	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] media: dt-bindings: media: i2c: Document GC08A3
- bindings
-Message-ID: <20231123-magical-rupture-83251807e995@spud>
-References: <20231123115104.32094-1-zhi.mao@mediatek.com>
- <20231123115104.32094-2-zhi.mao@mediatek.com>
+Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
+ PHY package nodes
+References: <20231120135041.15259-4-ansuelsmth@gmail.com>
+ <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
+ <20231121144244.GA1682395-robh@kernel.org>
+ <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
+ <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
+ <6a030399-b8ed-4e2c-899f-d82eb437aafa@lunn.ch>
+ <655f2ba9.5d0a0220.294f3.38d8@mx.google.com>
+ <c697488a-d34c-4c98-b4c7-64aef2fe583f@lunn.ch>
+ <ZV9jM7ve3Kl6ZxSl@shell.armlinux.org.uk>
+ <e32d5c84-7a88-4d9f-868f-98514deae6e9@lunn.ch>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="01MH2fFNhMpUwwbA"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231123115104.32094-2-zhi.mao@mediatek.com>
+In-Reply-To: <e32d5c84-7a88-4d9f-868f-98514deae6e9@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_093146_973629_052EB971 
-X-CRM114-Status: GOOD (  21.12  )
+X-CRM114-CacheID: sfid-20231123_113328_823233_B7299794 
+X-CRM114-Status: GOOD (  26.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,211 +123,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Nov 23, 2023 at 03:57:58PM +0100, Andrew Lunn wrote:
+> On Thu, Nov 23, 2023 at 02:35:31PM +0000, Russell King (Oracle) wrote:
+> > On Thu, Nov 23, 2023 at 03:27:05PM +0100, Andrew Lunn wrote:
+> > > > Just to be more precise qca807x can operate in 3 different mode:
+> > > > (this is controlled by the MODE_CFG bits)
+> > > 
+> > > > - QSGMII: 5 copper port
+> > > 
+> > > 4 slots over QSGMII, plus the second SERDES is connected to the MAC
+> > > using SGMII/1000BaseX?
+> > > 
+> > > > - PSGMII: 5 copper port
+> > > 
+> > > 5 slots over QSGMII, the second SERDES is idle?
+> > > 
+> > > > - PSGMII: 4 copper port + 1 combo (that can be both fiber or copper)
+> > > 
+> > > 5 slots over QSGMII, with the second SERDES connected to an SFP cage.
+> > > 
+> > > Are ports 1-4 always connected to the P/Q SGMII. Its only port 5 which
+> > > can use the second SERDES?
+> > 
+> > I think what would really help here is if there was an ascii table to
+> > describe the configurations, rather than trying to put it into words.
+> 
+> Yes.
+> 
+> And also for ipq4019. We need to merge these two threads of
+> conversation, since in the end they are probably the same driver, same
+> device tree etc.
+>
 
---01MH2fFNhMpUwwbA
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+For everyone that missed Robert response in patch 12 let me quote him
+also here.
 
-On Thu, Nov 23, 2023 at 07:51:03PM +0800, Zhi Mao wrote:
-> Add YAML device tree binding for GC08A3 CMOS image sensor,=20
-> and the relevant MAINTAINERS entries.
->=20
-> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+"
+Hi Andrew,
+I think that the description is confusing.
+QCA807x supports 3 different modes:
+1. PSGMII (5 copper ports)
+2. PSGMII (4 copper ports + 1 combo port)
+3. QSGMII+SGMII
 
-Please test your bindings.
+So, in case option 2 is selected then the combo port can also be used for
+1000Base-X and 100Base-FX modules or copper and it will autodetect the
+exact media.
+This is supported via the SFP op-s and I have been using it without issues
+for a while.
 
-> ---
->  .../bindings/media/i2c/galaxycore,gc08a3.yaml | 128 ++++++++++++++++++
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  2 files changed, 130 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycor=
-e,gc08a3.yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a=
-3.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
-> new file mode 100644
-> index 000000000000..089ea321da91
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
-> @@ -0,0 +1,128 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc08a3.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: GalaxyCore gc08a3 1/4" 8M Pixel MIPI CSI-2 sensor
-> +
-> +maintainers:
-> +  - Zhi Mao <zhi.mao@mediatek.com>
-> +
-> +description: |-
+I have not tested option 3 in combination with SFP to the copper
+module so I cant
+say whether that works.
+From what I can gather from the typical usage examples in the
+datasheet, this QSMII+SGMII
+mode is basically intended as a backward compatibility thing as only
+QCA SoC-s have PSGMII
+support so that you could still use SoC-s with QSGMII and SGMII support only.
 
-The |- is not needed, you have no formatting to preserve.
+So there is no way to control the SerDes-es individually, only the
+global mode can be changed via
+the Chip configuration register in the Combo port.
 
-> +  The gc08a3 is a raw image sensor with an MIPI CSI-2 image data
-> +  interface and CCI (I2C compatible) control bus. The output format
-> +  is raw Bayer.
-> +
-> +properties:
-> +  compatible:
-> +    const: GalaxyCore,gc08a3
+You can see the block diagram of this PHY in this public PDF on page 2[1].
 
-Please remove the capitals.
+[1] https://content.codico.com/fileadmin/media/download/datasheets/qualcomm/qualcomm_qca8075.pdf
+"
 
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: Reference to the mclk clock.
-
-Pointless, just use maxItems: 1.
-
-> +
-> +  assigned-clocks:
-> +    maxItems: 1
-> +
-> +  assigned-clock-rates:
-> +    maxItems: 1
-> +
-> +  enable-gpios:
-> +    description: Reference to the GPIO connected to the RESETB pin. Acti=
-ve low.
-> +    maxItems: 1
-> +
-
-> +  vddio-supply:
-> +    description: Definition of the regulator used for the VDDIO power su=
-pply.
-> +
-> +  vdda-supply:
-> +    description: Definition of the regulator used for the VDDA power sup=
-ply.
-> +
-> +  vddd-supply:
-> +    description: Definition of the regulator used for the VDDD power sup=
-ply.
-
-These descriptions can all be replaced with "foo-supply: true" IMO.
-
-> +  port:
-> +    $ref: /schemas/graph.yaml#/$defs/port-base
-> +    unevaluatedProperties: false
-> +
-> +    properties:
-> +      endpoint:
-> +        $ref: /schemas/media/video-interfaces.yaml#
-> +        unevaluatedProperties: false
-> +
-> +        properties:
-> +          data-lanes:
-> +            oneOf:
-> +              - items:
-> +                  - const: 1
-> +                  - const: 2
-> +                  - const: 3
-> +                  - const: 4
-> +              - items:
-> +                  - const: 1
-> +                  - const: 2
-> +
-> +          link-frequencies: true
-> +
-> +        required:
-> +          - data-lanes
-> +          - link-frequencies
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-
-> +  - assigned-clocks
-> +  - assigned-clock-rates
-
-Why are these required?
-
-> +  - vddio-supply
-> +  - vdda-supply
-> +  - vddd-supply
-> +  - port
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/gpio/gpio.h>
-> +
-> +    i2c {
-> +        #address-cells =3D <1>;
-> +        #size-cells =3D <0>;
-> +
-> +        sensor0@2 {
-> +            status =3D "okay";
-> +            compatible =3D "GalaxyCore,gc08a3";
-> +            reg =3D <0x31>;
-> +
-> +            clocks =3D <&topckgen CLK_TOP_CAMTG>,
-> +                <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
-> +            clock-names =3D "xvclk", "freq_mux";
-> +            clock-frequency =3D <24000000>;
-> +
-> +            assigned-clocks =3D <&topckgen CLK_TOP_CAMTG>,
-> +                    <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
-> +            assigned-clock-parents =3D <&topckgen CLK_TOP_UNIVPLL_192M_D=
-8>;
-> +            assigned-clock-rates =3D <0>, <24000000>;
-> +
-> +            enable-gpios =3D <&pio 19 GPIO_ACTIVE_HIGH>;
-> +
-> +            pinctrl-names =3D "default";
-> +            pinctrl-0 =3D <&camera_pins_cam0>;
-> +
-> +            avdd-supply =3D <&mt6359_vfe28_ldo_reg>;
-> +
-> +            port {
-> +                sensor0_out_2: endpoint {
-> +                    data-lanes =3D <1 2 3 4>;
-> +                    link-frequencies =3D /bits/ 64 <336000000 207000000>;
-> +                    remote-endpoint =3D <&seninf_csi_port_0_in_2>;
-> +                };
-> +            };
-> +        };
-> +
-> +    };
-> +
-> +...
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Doc=
-umentation/devicetree/bindings/vendor-prefixes.yaml
-> index 309b94c328c8..a0bbec0bfee2 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> @@ -502,6 +502,8 @@ patternProperties:
->      description: Fujitsu Ltd.
->    "^fxtec,.*":
->      description: FX Technology Ltd.
-> +  "^GalaxyCore,.*":
-> +    description: GalaxyCore Inc.
->    "^gardena,.*":
->      description: GARDENA GmbH
->    "^gateway,.*":
-> --=20
-> 2.25.1
->=20
-
---01MH2fFNhMpUwwbA
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZV+MdwAKCRB4tDGHoIJi
-0nBfAQC7ikdh/7CYWD8MVt9f89SRYiuaWItKq/AI5yLxntzi+wD+JZEaDfqSeBAQ
-bZZuGrDAOKC/vGwQGO7ePPmXs4tOsw0=
-=zkKC
------END PGP SIGNATURE-----
-
---01MH2fFNhMpUwwbA--
+-- 
+	Ansuel
 
