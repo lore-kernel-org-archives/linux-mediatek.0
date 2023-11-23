@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3901CC624B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 11:51:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D107C624B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 11:52:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=m+PsuocUr3D0nftupsQKJwog5YmODHhCk5w3pvQ5IUU=; b=vBCkVqQORLWNwm4zRkFGKE9E0a
-	8vU+lnFiU9P3yelHmNi0U2FgtlOnclVNymNM98r6xlGkmCythq4GWy6xt3dgrrW3fWs08vtGJY2rz
-	AjeSkfhNunQqwgf2jKwqzzJ/XTHuecoJYbFzx4kwMVctm3jdgCBPLTpGrRNGBkPfwemSRh2YF1QTR
-	LKzd6VPIgWWlvpRW1tno5kWusocyvwZ25ys4RU/WOIWyGNOnF/j/sU2UxB+P62E7n3K1x59E/FU4T
-	VyCG9XcIxcSsPjvUm2yFWBFI2x0T28vJQX48ZWBMZ/vuiqy593kaFDdAFyeyAIlhal3OUguz+4KVm
-	qHKmnLyA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=npo17YZ27fotVhhzuQeyCvo86ZlC56RHG3gTlq+INPQ=; b=CfAt81eusa5ySszHJFY8zAVANH
+	HsKeDvftIxpPCGOf0DaPawMtHS/tLrZ1vSJOQcDATwD+vA1MK8SJcQvCzKDa1avIJdjyfUrXfpLlk
+	+1LRUDJYhXNu1GiuGrq8sFIeJZuSTC5LPIop4K8UDZoYl1GcEAhJYTcPoxMs7uAoUZ4YmgAWaodZi
+	/ghxcuDIWooe/U3VW6LbM90lI1Y0gSrk5CZyL6isdN1x4rI5GB5izEtgYyetOUvfwcBDZ/h4bEuYv
+	wvD1gwzTjRDBC1cOPWmdSZ0DlF4h42CQ1mt64hUYxKEJE6xJgalFxDCdhhB01/i4xiF/qtDU9EDJy
+	OeNfpgWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r68FJ-004dSn-26;
-	Thu, 23 Nov 2023 11:51:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1r68GC-004e2S-07;
+	Thu, 23 Nov 2023 11:52:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r68FG-004dOn-1u;
-	Thu, 23 Nov 2023 11:51:47 +0000
-X-UUID: a79bb2bc89f611ee86758d4a7c00f3a0-20231123
+	id 1r68G9-004dxO-2t;
+	Thu, 23 Nov 2023 11:52:43 +0000
+X-UUID: c8c8e5fe89f611ee9b7791016c24628a-20231123
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=m+PsuocUr3D0nftupsQKJwog5YmODHhCk5w3pvQ5IUU=;
-	b=PtsqmX1cVZQxZT/4Ad7q/xyy270AxWzu0s0V4uokRA5+/94dF10N5b72t8qS6KDwLFDj3c6nNb9Y7ffNwn489CbOu7S6apBvb6FxyBu+eYe4KU5SQc0J1Z9fWGdYWcx6xo3kz42cbirYSORUncsaGxMtfC+8UC3movOJf0uZKTY=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=npo17YZ27fotVhhzuQeyCvo86ZlC56RHG3gTlq+INPQ=;
+	b=RdNpGN3cVjL19hw91ecR3MEo7Lv99kDeLl4fIKLsU/3UL+CetE2fSTLrMJ3uqPRmWHxjBoCz2+hZj3riAqRztt9pVBqeLrBD3ri+Gh5kdXNx03MsvHUZ/Didk1etFTE3fe7wqiW+Kwrg41Wr6XerWnLYYKVo5porJAhT197qCiY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:2f46c5f9-9bca-40e4-8be1-25f786d4a5c3,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:364b77b,CLOUDID:1c01dffc-4a48-46e2-b946-12f04f20af8c,B
+X-CID-O-INFO: VERSION:1.1.33,REQID:51098fc4-868b-490e-989f-6e72f1a233b6,IP:0,U
+	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:c089bb95-10ce-4e4b-85c2-c9b5229ff92b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a79bb2bc89f611ee86758d4a7c00f3a0-20231123
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: c8c8e5fe89f611ee9b7791016c24628a-20231123
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <zhi.mao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1172550943; Thu, 23 Nov 2023 04:51:36 -0700
+	with ESMTP id 661053857; Thu, 23 Nov 2023 04:52:31 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 23 Nov 2023 19:51:32 +0800
+ 15.2.1118.26; Thu, 23 Nov 2023 19:52:28 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 23 Nov 2023 19:51:31 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 23 Nov 2023 19:52:27 +0800
 From: Zhi Mao <zhi.mao@mediatek.com>
 To: <mchehab@kernel.org>, <robh+dt@kernel.org>,
 	<krzysztof.kozlowski+dt@linaro.org>
@@ -69,18 +69,19 @@ CC: <shengnan.wang@mediatek.com>, <yaya.chang@mediatek.com>,
 	<dan.scally@ideasonboard.com>, <linux-media@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 0/2] media: i2c: Add support for GC08A3 sensor
-Date: Thu, 23 Nov 2023 19:51:02 +0800
-Message-ID: <20231123115104.32094-1-zhi.mao@mediatek.com>
+Subject: [PATCH 1/2] media: dt-bindings: media: i2c: Document GC08A3 bindings
+Date: Thu, 23 Nov 2023 19:51:03 +0800
+Message-ID: <20231123115104.32094-2-zhi.mao@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231123115104.32094-1-zhi.mao@mediatek.com>
+References: <20231123115104.32094-1-zhi.mao@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_035146_637935_A9A6CEF5 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231123_035241_949726_85ACE99F 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,41 +96,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds YAML DT binding and V4L2 sub-device driver for Galaxycore's
-GC08A3 8-megapixel 10-bit RAW CMOS 1/4" sensor, with an MIPI CSI-2 image data
-interface and the I2C control bus.
+Add YAML device tree binding for GC08A3 CMOS image sensor, 
+and the relevant MAINTAINERS entries.
 
-The driver is implemented with V4L2 framework.
- - Async registered as a V4L2 sub-device.
- - As the first component of camera system including Seninf, ISP pipeline.
- - A media entity that provides one source pad in common.
- - Used in camera features on ChromeOS application.
-
-Also this driver supports following features:
- - manual exposure and analog gain control support
- - vertical blanking control support
- - test pattern support
- - media controller support
- - runtime PM support
- - support resolution: 3264x2448@30fps, 1920x1080@60fps
-
-Thanks
-
-Zhi Mao (2):
-  media: dt-bindings: media: i2c: Document GC08A3 bindings
-  media: i2c: Add GC08A3 image sensor driver
-
- .../bindings/media/i2c/galaxycore,gc08a3.yaml |  128 ++
- .../devicetree/bindings/vendor-prefixes.yaml  |    2 +
- drivers/media/i2c/Kconfig                     |   14 +
- drivers/media/i2c/Makefile                    |    1 +
- drivers/media/i2c/gc08a3.c                    | 2046 +++++++++++++++++
- 5 files changed, 2191 insertions(+)
+Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+---
+ .../bindings/media/i2c/galaxycore,gc08a3.yaml | 128 ++++++++++++++++++
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ 2 files changed, 130 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
- create mode 100644 drivers/media/i2c/gc08a3.c
 
+diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+new file mode 100644
+index 000000000000..089ea321da91
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+@@ -0,0 +1,128 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc08a3.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: GalaxyCore gc08a3 1/4" 8M Pixel MIPI CSI-2 sensor
++
++maintainers:
++  - Zhi Mao <zhi.mao@mediatek.com>
++
++description: |-
++  The gc08a3 is a raw image sensor with an MIPI CSI-2 image data
++  interface and CCI (I2C compatible) control bus. The output format
++  is raw Bayer.
++
++properties:
++  compatible:
++    const: GalaxyCore,gc08a3
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Reference to the mclk clock.
++
++  assigned-clocks:
++    maxItems: 1
++
++  assigned-clock-rates:
++    maxItems: 1
++
++  enable-gpios:
++    description: Reference to the GPIO connected to the RESETB pin. Active low.
++    maxItems: 1
++
++  vddio-supply:
++    description: Definition of the regulator used for the VDDIO power supply.
++
++  vdda-supply:
++    description: Definition of the regulator used for the VDDA power supply.
++
++  vddd-supply:
++    description: Definition of the regulator used for the VDDD power supply.
++
++  port:
++    $ref: /schemas/graph.yaml#/$defs/port-base
++    unevaluatedProperties: false
++
++    properties:
++      endpoint:
++        $ref: /schemas/media/video-interfaces.yaml#
++        unevaluatedProperties: false
++
++        properties:
++          data-lanes:
++            oneOf:
++              - items:
++                  - const: 1
++                  - const: 2
++                  - const: 3
++                  - const: 4
++              - items:
++                  - const: 1
++                  - const: 2
++
++          link-frequencies: true
++
++        required:
++          - data-lanes
++          - link-frequencies
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - assigned-clocks
++  - assigned-clock-rates
++  - vddio-supply
++  - vdda-supply
++  - vddd-supply
++  - port
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++
++    i2c {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        sensor0@2 {
++            status = "okay";
++            compatible = "GalaxyCore,gc08a3";
++            reg = <0x31>;
++
++            clocks = <&topckgen CLK_TOP_CAMTG>,
++                <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
++            clock-names = "xvclk", "freq_mux";
++            clock-frequency = <24000000>;
++
++            assigned-clocks = <&topckgen CLK_TOP_CAMTG>,
++                    <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
++            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
++            assigned-clock-rates = <0>, <24000000>;
++
++            enable-gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
++
++            pinctrl-names = "default";
++            pinctrl-0 = <&camera_pins_cam0>;
++
++            avdd-supply = <&mt6359_vfe28_ldo_reg>;
++
++            port {
++                sensor0_out_2: endpoint {
++                    data-lanes = <1 2 3 4>;
++                    link-frequencies = /bits/ 64 <336000000 207000000>;
++                    remote-endpoint = <&seninf_csi_port_0_in_2>;
++                };
++            };
++        };
++
++    };
++
++...
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 309b94c328c8..a0bbec0bfee2 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -502,6 +502,8 @@ patternProperties:
+     description: Fujitsu Ltd.
+   "^fxtec,.*":
+     description: FX Technology Ltd.
++  "^GalaxyCore,.*":
++    description: GalaxyCore Inc.
+   "^gardena,.*":
+     description: GARDENA GmbH
+   "^gateway,.*":
 -- 
 2.25.1
-
 
 
