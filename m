@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D54BC27C40
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 00:02:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0938C27C40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 00:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WQV9zlpt55Nr7v5RktMnP+Iz77X5WnMy/klGhX/OcHU=; b=UidM3zEDC3PFdDKiI55I7oV+wx
-	WTz1vgTaQ+/I5Q8HAr8pFyr04RT8FtbpTBZ82Pe5EdyDfcxq5fOGS/YzhBL9neQLDN/kdDX52NQZp
-	SPBlE8zjH7oSsEVriMxci4qzRDQLNrJLVaskwgnuaql4TQUPtizwvAuys8fW06Vi5M3CQ8AnDZbwi
-	wpA3ijIR3tx6xGDnE0xqvcnoWFpDoTh6VhK7FfOpepaK+gohF6TzTqz42hPrw5P8uI1IbeLZWJzPW
-	vUJgx8auOMmRS0I4j1YjCgbuJRbyCZtqinPUdwcQSpNS390be9hiM7uG/6iv/FG7TZeHRnkMWlSny
-	hZDnrIJw==;
+	bh=s/Lm5xLMwGGeLnlSnqBVwnceEP3UbmvEzBcXJuPoZCk=; b=yIYT2t8xpYE+wUmJ/17m27yM9o
+	RUmpRVhRWC/YyGr2upLYT9xdgKNay0Gz0BbK4r8A9WTNKdUAAANkGa1eXw+Odm0pHS+TCiaVEuWPC
+	NJgEnO4rypBu6mOcG8X06aRUP7ANSjTPh0A3lVOfY6NubWNj3b9uMhGrPxsNQKazbiyz9ANEi7OK1
+	MSKd5+ZyCOe4vqcprxQHqPOb5O7rEAFUkP7OS+zkYP7tRPHtss1bCzaCI5THQakZgA6Dvnm8lFKDe
+	BO8MRSWG67ATI6PePdzGO47eKg6H1bdhlH8Z5C+J25Pw5gBnx/clE98qEbcBT0FrGfaQRQHUWg5uP
+	KPbBjcgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5xAb-003NGl-2g;
-	Thu, 23 Nov 2023 00:02:13 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1r5xDh-003NVJ-1o;
+	Thu, 23 Nov 2023 00:05:25 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5xAY-003NG5-35
+	id 1r5xDe-003NUe-34
 	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Nov 2023 00:02:12 +0000
+	Thu, 23 Nov 2023 00:05:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 75372CE2612
-	for <linux-mediatek@lists.infradead.org>; Thu, 23 Nov 2023 00:02:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B43AAC433C8
-	for <linux-mediatek@lists.infradead.org>; Thu, 23 Nov 2023 00:02:07 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 6AA34B82A03
+	for <linux-mediatek@lists.infradead.org>; Thu, 23 Nov 2023 00:05:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C21EEC433C9
+	for <linux-mediatek@lists.infradead.org>; Thu, 23 Nov 2023 00:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700697727;
-	bh=o5GbEVHUU0U0QXOTArHF5+Dn6iBIxvrKU1BajDKL3zg=;
+	s=k20201202; t=1700697920;
+	bh=L1OswcVO61MjalP/YFjT4Z7TxVkgrbjWTBYba3T59WA=;
 	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
-	b=MCnodGUICDX8Xf6O+YdtdENlt8wDkOwD6VC3fR85h3/LO/ayZJOCojIucZHadmbJt
-	 IoywE3s1UW74Oj46cywgs/tr118wfzSgtEDzwu9DDziHZ0qzllmmer7sQLfLMNOU2L
-	 Oq96gfExGHKh+G/llIpsqsDOZKj8SUt4oaiTccqcNE9p53Pf7kV54zV+SXR75wGgk6
-	 qs0dik8TLlQuhMCNqcvuyHHoAZ6WVbtFJBnhqaoCBgYvB3jtEkHmWlJ7Jduvr6/Fc5
-	 zxRKvWLRyZ27qtI9dEpR6XKUgYkDACfb0eb/OPM+Af8kVs5NDu+Ip17HYwQK+g4ipu
-	 zyzGqai9sIbFw==
-Received: by mail-yw1-f176.google.com with SMTP id 00721157ae682-5cc5988f85eso3471557b3.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 16:02:07 -0800 (PST)
-X-Gm-Message-State: AOJu0Yy0Kqmwty+0rjJ9wuHvRa1GS8NHRy/Vawl1zG7o7vViO7DqJatJ
-	0L4kCvxqXO1YkEtKF6Yxx5h7UEKK0x3i3e057R0=
-X-Google-Smtp-Source: AGHT+IGtfgN4C3PEPbflKLspfGtWB6WIZt/3pLq8b/u9uV0c3RHe6z1thJ+tvEyWgSOY+3jvD2EO5eJFhCw8d9QxT/Q=
-X-Received: by 2002:a0d:f182:0:b0:5a7:b53f:c304 with SMTP id
- a124-20020a0df182000000b005a7b53fc304mr3884782ywf.37.1700697726885; Wed, 22
- Nov 2023 16:02:06 -0800 (PST)
+	b=ID4CWe6BnTo+UmXx3eIz8eIcmX2c5RyCMeYrwMzknBFqYfLYQWIlKfaRR0hF4LPt4
+	 1HMDoRVZDwBhbM9SrOl2WgY/jGSryO9ZYq3A1olkg7LuG64UTbymh4gSKvzrvdGj4e
+	 uqD4s4/XnFq69VZusm2YLggq61gCptJ3N/mSR4NhGp4o8QxyBkqXryV001CIeKkIdN
+	 KwzSpPkcsOk9h+l4OvwmTr+S3e4KYc40oddRIDd+d3ioWqFWLnzmiFuG+gduf3eyPs
+	 AffFyM5xWzQi0FmqCdRWTPlMsSNTUOLHgGx0ZK2YNvgqvg752x88L3RW2BTybPAl0q
+	 bPIWe7UdKQ1mg==
+Received: by mail-yw1-f177.google.com with SMTP id 00721157ae682-5cca712b715so3058447b3.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 16:05:20 -0800 (PST)
+X-Gm-Message-State: AOJu0YwAOFmvCYUFiQmDiOvcTGHRmZv2NSm2M0BhcmPPscAhVsw9I0p7
+	ix31oyw+C9eUAGGmHLhbj7ROXhfFfSeO/ihCZoM=
+X-Google-Smtp-Source: AGHT+IEZJaaXAVUDl8vtj2YFKAhdUbCYlrHXCWIbVx3fqTcvmXyxAHnY4DYXzN1yTNAjbPWSr3nS11AiwqzKeiq9jUs=
+X-Received: by 2002:a0d:ef45:0:b0:5c9:12ec:5203 with SMTP id
+ y66-20020a0def45000000b005c912ec5203mr3970793ywe.32.1700697919955; Wed, 22
+ Nov 2023 16:05:19 -0800 (PST)
 MIME-Version: 1.0
-References: <20231120084207.830-1-jason-ch.chen@mediatek.com>
-In-Reply-To: <20231120084207.830-1-jason-ch.chen@mediatek.com>
+References: <20231121081735.21837-1-jason-ch.chen@mediatek.com>
+In-Reply-To: <20231121081735.21837-1-jason-ch.chen@mediatek.com>
 From: Josh Boyer <jwboyer@kernel.org>
-Date: Wed, 22 Nov 2023 19:01:55 -0500
-X-Gmail-Original-Message-ID: <CA+5PVA5mvb3g8FOP+ULWTBYu5-cxpk4UMZ0=PF+tbTqJjcCurQ@mail.gmail.com>
-Message-ID: <CA+5PVA5mvb3g8FOP+ULWTBYu5-cxpk4UMZ0=PF+tbTqJjcCurQ@mail.gmail.com>
-Subject: Re: pull-request: linux-firmware: Update MT8195 SCP firmware to
+Date: Wed, 22 Nov 2023 19:05:09 -0500
+X-Gmail-Original-Message-ID: <CA+5PVA6AdWpwKD1+e4y01fVQG9hq7XFo8bYvpz4BJ9DtvLh1ng@mail.gmail.com>
+Message-ID: <CA+5PVA6AdWpwKD1+e4y01fVQG9hq7XFo8bYvpz4BJ9DtvLh1ng@mail.gmail.com>
+Subject: Re: pull-request: linux-firmware: Update MT8195 SCP to remove an
+ unused packed library
 To: Jason-ch Chen <jason-ch.chen@mediatek.com>
 Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, 
 	yunfei.dong@mediatek.com, menghui.lin@mediatek.com, shawnku@google.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_160211_241238_AAE8D03C 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20231122_160523_152549_FE388AB2 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,34 +81,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 20, 2023 at 3:42=E2=80=AFAM Jason-ch Chen
+On Tue, Nov 21, 2023 at 3:17=E2=80=AFAM Jason-ch Chen
 <jason-ch.chen@mediatek.com> wrote:
 >
-> The following changes since commit 7124ce30ba82266e3972e99aacebeda712131d=
-6f:
+> The following changes since commit 9552083a783e5e48b90de674d4e3bf23bb855a=
+b0:
 >
->   Merge branch 'mlimonci/encoding' into 'main' (2023-11-17 16:54:55 +0000=
-)
+>   Merge branch 'robot/pr-0-1700470117' into 'main' (2023-11-20 13:09:23 +=
+0000)
 >
 > are available in the Git repository at:
 >
->   https://github.com/jason-ch-chen/linux_fw_scp 8195-v2.0.23033
+>   https://github.com/jason-ch-chen/linux_fw_scp 8195-v2.0.23042
 >
-> for you to fetch changes up to a41fa7c5008809ae360ce0808e378b37b1d6c0f4:
+> for you to fetch changes up to ebebd79cb34038b0dcc964fbb4a07525b2b790aa:
 >
->   mediatek: Sync shared memory structure changes (2023-11-20 16:18:04 +08=
-00)
+>   mediatek: Remove an unused packed library (2023-11-21 16:14:00 +0800)
 >
 > ----------------------------------------------------------------
 > Jason Chen (1):
->       mediatek: Sync shared memory structure changes
->
->  mediatek/mt8195/scp.img | Bin 635492 -> 635448 bytes
->  1 file changed, 0 insertions(+), 0 deletions(-)
+>       mediatek: Remove an unused packed library
 
 Pulled and pushed out.
 
-https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/68
+https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/73
 
 josh
+
+>
+>  mediatek/mt8195/scp.img | Bin 635448 -> 635532 bytes
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+>
+>
 
