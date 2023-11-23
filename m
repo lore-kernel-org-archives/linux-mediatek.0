@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB13C624B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 13:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50981C5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 13:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/VqdI9YeVyOYP3rilkcTMwdMToZ1TyIAO1ngW+BCWds=; b=n7cyJVOpQI5kVVVOyZ7x73bUEj
-	/btWEI+IDSLi1dQHxwZQuAnD0tyxpyJHDkEa5wij21Ds63g1zoelMC5lgRAR1LUNIi9SaVGN1E6SM
-	CckHWaKcKr85a96lULm9XQPI2y39wPhmOiO55kb3jmm2jgV44gBgIUK5dwVYqCVjxnqIEmrfGbf4G
-	YZIP/KCidQG07YAY0bZ7BrH8d3DK0NdJEwEvDfsC1R1Cysac+6Yk7B+VuOVjIEpWs+qj9i5ARX9TV
-	x/Abo+EMtEleFD3U5+W2pOvyvuRTD2Ie5djCmQDumQip8cH7DdLRvLJvL2oij2aFfzxTDDuSd4NAg
-	SrVq9rIQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6M1+5t6EN+uTXuWzSJk0TjasZTcd1MKf8/mCib9ah+A=; b=KoTMidwMVFUVgecXuQAOf4U0oy
+	SK74ow+ig6ysphVI7j9lXh1RXuedDlaTZsAANURsTiAHVXBwcC39HM120VPAIUHFm4Fa+dVzGn3lL
+	UvAdvHz9IUBiO/Ds825oeIXOUDzYe+Udn0LCI8BQEIdlmS8RfYylDOelZL1XJ7uMjZvQ6kiEdm49v
+	jQKCW/gHu16wDtQao7WUnS+D3jAzSwZYQs0iD1myD9T5MFXPx0HZ1dQ1OcrJhMxc6V7tGwgmJPPlC
+	7KBu0Qp7OZWDzUcnGtYFvsArUaAoyj4h/CdSTJpDKG7QHi5oKLQ+MEGr9gIbv1E58wU7CoCT7Z9k6
+	iSCq2/Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r69uC-004uEb-19;
-	Thu, 23 Nov 2023 13:38:08 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1r69uI-004uHf-0w;
+	Thu, 23 Nov 2023 13:38:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r69u9-004uCZ-0J;
-	Thu, 23 Nov 2023 13:38:06 +0000
+	id 1r69uB-004uE2-1u;
+	Thu, 23 Nov 2023 13:38:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id A84E3B82C7E;
+	by dfw.source.kernel.org (Postfix) with ESMTP id E9B3D6213B;
+	Thu, 23 Nov 2023 13:38:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A6FEC433C7;
 	Thu, 23 Nov 2023 13:38:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39466C433C8;
-	Thu, 23 Nov 2023 13:37:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700746681;
-	bh=Kbejb0pedrawxY+pi+DDjvZjKDSamA1YE5y/xYy428I=;
-	h=From:To:Cc:Subject:Date:From;
-	b=UMAztWdfrWZb+e0C/ri4ppoNy2OFRDYeBO2/klDT6OSA68JTnvdYMOGPwHiOlbKII
-	 jfRew+TsZO9d1yfQcIA8PzXJbCrv2wn/kqG1GrZKDmQP2QhN+Lb9VO50CqIiIrD3Lg
-	 eqQWxCEOkX1FrL/OTu8q+YB9Oqwd72zg7VVuGRz2Nv/05vSY343Sh/FtJJf+6Z4Q1N
-	 3R9Q72CXgM6+HzPcywTBMtlFPVG8PC6MyjKHwRcubfAcX4v/XoMd4K57ExZU9NkYyV
-	 T7cexV+whxMegO8gqovedEzEPEi0kt+P9/n7f3dcbkiEgi5yh/185+/2Mgq+3hZd+G
-	 J2gf0uf60LdrA==
+	s=k20201202; t=1700746685;
+	bh=MT6oWZWBbySd/bCRRRjnP/MchEhM4olMaAyFtTUdpCs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=uTOK77TuCBkGedL2lsDha1qAEjPwTsuWBvtYcX+YZtvynUSxRyVL1nE9soPgqo9jG
+	 4BBD3BS7STDI2SKGDeLvUKNQCnVVoiXQVXazOoobwIMleUPV9Buplj6TCgGO4YAVAQ
+	 M89CYNGdX5gPZbDgYuaTR45BZlfTPrOtLJx1JojXZ9k/wTcZnLWlD5+HRyhV5+BwSF
+	 qCuW6kFlo6qLwbkM0lM+ciie+/YYwBZQQeroIRqv2m1S1gzA3lRTf1WC4h4X9gNt4q
+	 SvamQg6ODrOFiKDgfhwz209pL/8h6SOHvfMD+hEf1XCRUHyRofFYhyun0TOLH6muYp
+	 qxFW/Fpesct4g==
 From: Michael Walle <mwalle@kernel.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
@@ -66,15 +66,18 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-phy@lists.infradead.org,
 	Michael Walle <mwalle@kernel.org>
-Subject: [PATCH 0/4] drm/mediatek: support DSI output on MT8195
-Date: Thu, 23 Nov 2023 14:37:45 +0100
-Message-Id: <20231123133749.2030661-1-mwalle@kernel.org>
+Subject: [PATCH 1/4] dt-bindings: display: mediatek: dsi: add compatible for MediaTek MT8195
+Date: Thu, 23 Nov 2023 14:37:46 +0100
+Message-Id: <20231123133749.2030661-2-mwalle@kernel.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231123133749.2030661-1-mwalle@kernel.org>
+References: <20231123133749.2030661-1-mwalle@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_053805_278113_EE65226D 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20231123_053807_673472_40DA5795 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +92,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for a DSI output on VDOSYS0. Luckily, there is a new
-feature to support dynamic selections of the output (connector).
-Use it to add support for a DSI output.
+Add the compatible string for MediaTek MT8195 SoC, using the same DSI
+block as the MT8183.
 
-Apart from that, this is pretty straghtforward by just adding new
-compatibles and add the correct DSI nodes to the SoC dtsi.
+Signed-off-by: Michael Walle <mwalle@kernel.org>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml    | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-This was tested with a Toshiba TC358775 DSI-to-LVDS bridge and
-three different panels. Please note, that the driver for this
-bridge doesn't work well and needs a more or less complete rework,
-which will be posted on a separate series.
-
-Michael Walle (4):
-  dt-bindings: display: mediatek: dsi: add compatible for MediaTek
-    MT8195
-  dt-bindings: phy: add compatible for Mediatek MT8195
-  arm64: dts: mediatek: mt8195: add DSI and MIPI DPHY nodes
-  drm/mediatek: support the DSI0 output on the MT8195 VDOSYS0
-
- .../display/mediatek/mediatek,dsi.yaml        |  4 ++
- .../bindings/phy/mediatek,dsi-phy.yaml        |  1 +
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 48 +++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  8 +++-
- 4 files changed, 60 insertions(+), 1 deletion(-)
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+index 537e5304b730..4a7a9ff21996 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+@@ -35,6 +35,10 @@ properties:
+           - enum:
+               - mediatek,mt6795-dsi
+           - const: mediatek,mt8173-dsi
++      - items:
++          - enum:
++              - mediatek,mt8195-dsi
++          - const: mediatek,mt8183-dsi
+ 
+   reg:
+     maxItems: 1
 -- 
 2.39.2
 
