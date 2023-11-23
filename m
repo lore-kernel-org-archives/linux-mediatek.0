@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD90FC5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:34:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C9DC624B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:35:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aYptDPmUHUBPIL2BGdHO5tQXLiJSx/pk4xrhZuhmw7M=; b=Cdnihs1xmFpj/D0LzMBGZ5nZvj
-	ztZW48VlWpNydT+62Y7ciUMRD0YUGosBi7fOfM2/DUgMphpmSzqhIE1Hv8Vds5N0sCWHWsFgkq2Y/
-	aa/v4bcqAPqSnWEr34Z1cKXLWpkGUvZ+zsBE5cFCKvhwU626qnh7YETEjTMS2AgAgAip6OeZW9TwA
-	122bl06dwB2iXRv9T6FfAJziyI5/apTga1iZQYAnkF6OERsiEy8UdoTMh2nGsOALYkWp3JMRrwbTQ
-	N1pcOO6JcLuUx687X1Oc/COj/oQ33k2ScL0yvcAth7zukv4cpjYKh3zfcI7WA8PTbP6BtixH+qeor
-	rLPiUSHg==;
+	bh=QPuhUdOjAWJEaCRyfNF1IlapG251gNSYm96EGdpOvEA=; b=qpKgDfllOz6aE24AgqxfiV9FPi
+	IvlKi1MSFIZ3zbIwSLvv1svfx2JDe4jIbtbjNdABbkfjS0MsNWrhqMRmGwaPiJr++v6kiEE+KTiLT
+	l4LdUP7+aMwLOPNJ6wu6fBs9HPRwQRr3SKr+WOJ3INT6Vin/0P3iCBSpwJ1JH06Vj/uUb+JTbvPo+
+	7xvmaSgsTueLkUCsleTa0IJSG2VfL4gqaB+bmsHqDJOIOa/6bx0/rtvXALNCK96X+x9HUTXRJ36HJ
+	8we4j5xUUhYP2V6arC0DJhz4UnDo5zqbXO+YY8GzB9YWCd2hq9CbaXEDdnPLma6szD71uClytu2Ue
+	fjNSrdvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FTS-005c4L-2A;
-	Thu, 23 Nov 2023 19:34:54 +0000
-Received: from mgamail.intel.com ([192.55.52.136])
+	id 1r6FTa-005cA7-2g;
+	Thu, 23 Nov 2023 19:35:02 +0000
+Received: from mgamail.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FSr-005bg9-1a;
-	Thu, 23 Nov 2023 19:34:19 +0000
+	id 1r6FSs-005bh7-1k;
+	Thu, 23 Nov 2023 19:34:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700768057; x=1732304057;
+  t=1700768058; x=1732304058;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=oWROro8zaz/FXYo/HWfHQvzRYrdVT7osWgNgoAMuX7s=;
-  b=Mu1xLNsTC8F+Lu0qBuq3xpn68jtrHF+8t+G/LieVfHEpD6kIYG7SunMg
-   Vjvf1266B0UxYaf+QYRJvy6a7AqL2RsvLLLawnhCMFTnkb/qb8PZY5Se1
-   DbDfhFeiGYMBaUQOaOaW59RydCACDlbaKZQtI11DWtE8HlOmrRxWpCedI
-   sqHWapKlyO7knhYBX2v0osKrVE8AqkRKsOP94pHDAm2+gQjWYsN7LS01k
-   xkbJkY6ADQbj5uAfHkcmYpKprWlmIaHRQVCcM1y0t6H2npfrN1LR5vFuc
-   q6o0FMBz6/iyIVvEuAkWlrx/S1A3xL4c6YEUvF8I4QqDuD1E/iWf3G5tD
+  bh=mX8nkFa+pUFM3JtjtNpLHJ2j2h/kDkAZjOuxZ+/LWq0=;
+  b=cjR2yWN/n2NgGCbaHabWbTrQsBKMZfF3fswGMwx3Nyz3JfEEOMiJqukR
+   /bKZVZEJyAHQzRUiDqwDZC+s1L6ljw02tR1kevjyigpdph3c7UyzJatxu
+   YqN8JhvGMV7d4ce5XQIITUb4O23su61hgqBhMBbWkI6HbLcEfTUQYVqTU
+   qTi9ybck+f9cHwHBPhopbsJJtGA6vc0r/2jjIhIyhov8OFHbYR+k8/o45
+   9s4EoMMyU2A0qAboeGyn3lnsRqY+7q7q6eWwE5JNuPfTLhayobeQA7wvY
+   t0/L5ycg+TGrG3ZUDnpNqqNmYCjVBib7r81Ibas+0tXrqppylXU6iiLHF
    g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="371671424"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="372482164"
 X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
-   d="scan'208";a="371671424"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:16 -0800
+   d="scan'208";a="372482164"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:16 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="771062252"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="833506164"
 X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
-   d="scan'208";a="771062252"
+   d="scan'208";a="833506164"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga007.fm.intel.com with ESMTP; 23 Nov 2023 11:34:09 -0800
+  by fmsmga008.fm.intel.com with ESMTP; 23 Nov 2023 11:34:08 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 3141F6E3; Thu, 23 Nov 2023 21:33:59 +0200 (EET)
+	id EA13C555; Thu, 23 Nov 2023 21:33:58 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -90,17 +90,17 @@ Cc: Ray Jui <rjui@broadcom.com>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v2 12/21] pinctrl: core: Embed struct pingroup into struct group_desc
-Date: Thu, 23 Nov 2023 21:31:40 +0200
-Message-ID: <20231123193355.3400852-13-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 07/21] pinctrl: keembay: Convert to use struct pingroup
+Date: Thu, 23 Nov 2023 21:31:35 +0200
+Message-ID: <20231123193355.3400852-8-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
 In-Reply-To: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 References: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_113417_560185_32361951 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20231123_113418_602979_1FDDED4D 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,80 +115,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-struct group_desc is a particular version of the struct pingroup
-with associated opaque data. Start switching pin control core and
-drivers to use it explicitly.
+The pin control header provides struct pingroup.
+Utilize it instead of open coded variants in the driver.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/core.c | 15 ++++++++++++---
- drivers/pinctrl/core.h |  5 +++++
- 2 files changed, 17 insertions(+), 3 deletions(-)
+ drivers/pinctrl/pinctrl-keembay.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pinctrl/core.c b/drivers/pinctrl/core.c
-index 3f1fd50fbb10..e08d4b3b0a56 100644
---- a/drivers/pinctrl/core.c
-+++ b/drivers/pinctrl/core.c
-@@ -559,7 +559,10 @@ const char *pinctrl_generic_get_group_name(struct pinctrl_dev *pctldev,
- 	if (!group)
- 		return NULL;
+diff --git a/drivers/pinctrl/pinctrl-keembay.c b/drivers/pinctrl/pinctrl-keembay.c
+index 152c35bce8ec..87d328853ae4 100644
+--- a/drivers/pinctrl/pinctrl-keembay.c
++++ b/drivers/pinctrl/pinctrl-keembay.c
+@@ -1517,7 +1517,7 @@ static int keembay_gpiochip_probe(struct keembay_pinctrl *kpc,
  
--	return group->name;
-+	if (group->name)
-+		return group->name;
-+
-+	return group->grp.name;
- }
- EXPORT_SYMBOL_GPL(pinctrl_generic_get_group_name);
+ static int keembay_build_groups(struct keembay_pinctrl *kpc)
+ {
+-	struct group_desc *grp;
++	struct pingroup *grp;
+ 	unsigned int i;
  
-@@ -585,8 +588,14 @@ int pinctrl_generic_get_group_pins(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
- 	}
+ 	kpc->ngroups = kpc->npins;
+@@ -1528,7 +1528,7 @@ static int keembay_build_groups(struct keembay_pinctrl *kpc)
+ 	/* Each pin is categorised as one group */
+ 	for (i = 0; i < kpc->ngroups; i++) {
+ 		const struct pinctrl_pin_desc *pdesc = keembay_pins + i;
+-		struct group_desc *kmb_grp = grp + i;
++		struct pingroup *kmb_grp = grp + i;
  
--	*pins = group->pins;
--	*num_pins = group->num_pins;
-+	if (group->pins) {
-+		*pins = group->pins;
-+		*num_pins = group->num_pins;
-+		return 0;
-+	}
-+
-+	*pins = group->grp.pins;
-+	*num_pins = group->grp.npins;
- 
- 	return 0;
- }
-diff --git a/drivers/pinctrl/core.h b/drivers/pinctrl/core.h
-index 276a631fd49c..863b4956a41e 100644
---- a/drivers/pinctrl/core.h
-+++ b/drivers/pinctrl/core.h
-@@ -194,14 +194,18 @@ struct pinctrl_maps {
- 
- #ifdef CONFIG_GENERIC_PINCTRL_GROUPS
- 
-+#include <linux/pinctrl/pinctrl.h>
-+
- /**
-  * struct group_desc - generic pin group descriptor
-+ * @grp: generic data of the pin group (name and pins)
-  * @name: name of the pin group
-  * @pins: array of pins that belong to the group
-  * @num_pins: number of pins in the group
-  * @data: pin controller driver specific data
-  */
- struct group_desc {
-+	struct pingroup grp;
- 	const char *name;
- 	const int *pins;
- 	int num_pins;
-@@ -211,6 +215,7 @@ struct group_desc {
- /* Convenience macro to define a generic pin group descriptor */
- #define PINCTRL_GROUP_DESC(_name, _pins, _num_pins, _data)	\
- (struct group_desc) {						\
-+	.grp = PINCTRL_PINGROUP(_name, _pins, _num_pins),	\
- 	.name = _name,						\
- 	.pins = _pins,						\
- 	.num_pins = _num_pins,					\
+ 		kmb_grp->name = pdesc->name;
+ 		kmb_grp->pins = (int *)&pdesc->number;
 -- 
 2.43.0.rc1.1.gbec44491f096
 
