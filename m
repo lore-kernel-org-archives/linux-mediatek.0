@@ -4,94 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4753DC61D9D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 03:12:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 403EAC61D85
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 03:31:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zewZXeDkxcNLO6a1eIz0IJPffneL3KdmkFGTtDLcfc4=; b=1afWwvbSmBllNt0lCdz3ccMBk+
-	r1A052WIiZfvXKmE5kdRAVj6d9dgbuoCdMU4nekubAnzBFxvvJZmSef3E857Jg7HFa5fhGlGs1d6o
-	NO0LIElR71mACy6ukNIop2GIYW8QeM1BDDJRHRY48IlxIvFZNPPW1QYe5hSoindzK1ZqQouFwF6qO
-	RglrsTmp950q/RKpX9vOsJNZNNttG9Aq4f4xnWQfa6P/L7AChA9JnvT2wh9AALXsHBZcLhctBS3rQ
-	YQuuk2BuhruQ31cVR2Fb8PA+QxXVtT2AsCrGT5dJHlCij8aHFiktH2okjpoErxbv1EQxiUWqlGfoh
-	ylrCRZ1w==;
+	bh=R2W1eIGoN44WfeZqoSJKCknBFLhg1MSvdghZBej8Tto=; b=wc6SwKJgGZG3bD7Rts4tOXCE3c
+	dpgV6UGruHi+JQm72lW3s9DjYbqsnreFKKTZ8uTaJsxNspR+fkL6kEbBHujhfZjc0MNefB/l5K33v
+	dmjJlWJRr4u44yMMkaGJeUxNUs4uZklNzUhabCKXjX2a3/Gxa5ThQLcdfuxoffmmbtgvfMP8Nv2xJ
+	cme/vJ74amEsd9bbMQepsoxSowzNxUiKvzQE3IDfARQj6twCMQyM8jGWLPEQCUsF0LM9IoZjFWbBt
+	AUgKtbVDS0WiN4ld4TeCk5w2l14f03ZETeyV235nFubdthf4k9DQlJBbKiUtPEDDZ1kh/84n4FZMP
+	tVppwb7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r608u-003e2o-0o;
-	Thu, 23 Nov 2023 03:12:40 +0000
-Received: from mgamail.intel.com ([134.134.136.100])
+	id 1r60Qu-003fQ7-0a;
+	Thu, 23 Nov 2023 03:31:16 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r608h-003dxW-1X;
-	Thu, 23 Nov 2023 03:12:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700709147; x=1732245147;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=UnGQBf6lO2CjcsVhvS6vUPaT2j1YbZBexAjYz4DyprU=;
-  b=dzCTK+gJHVjP8W/Tumm95/J489l5EKftzGRmGBCV94q32TrakF7POlZi
-   uhf6FdvjKMzJHiTk+5SYY3Q8QZpYReOtogdUjsBU+WgjwUgLQoRtUzuEh
-   J6i5mW6qIkLlK9V+v654kW5J192/nwCfWRTcNbcsGTp/BBSF1Q5IgeVhg
-   GlsHfTHriuSzNDKE/gaYj5v65sp3g9BfjVc/gWIigXyUtItZdd5K5w36v
-   hZbW9SzsrxH7jA/94xvTKg6zYbRwqPpoP6mdAFHa1rVvWrW2pSmgGNnhD
-   IT1TULKmwTQpLMRA2OLOA/vsVTBincfqp9X0P4RFDrB+C3NF29hkUvXlS
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="458685604"
-X-IronPort-AV: E=Sophos;i="6.04,220,1695711600"; 
-   d="scan'208";a="458685604"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2023 19:12:20 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="716933921"
-X-IronPort-AV: E=Sophos;i="6.04,220,1695711600"; 
-   d="scan'208";a="716933921"
-Received: from lkp-server01.sh.intel.com (HELO d584ee6ebdcc) ([10.239.97.150])
-  by orsmga003.jf.intel.com with ESMTP; 22 Nov 2023 19:12:12 -0800
-Received: from kbuild by d584ee6ebdcc with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1r608Q-0001AC-0r;
-	Thu, 23 Nov 2023 03:12:10 +0000
-Date: Thu, 23 Nov 2023 11:11:21 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
-	Jianlong Huang <jianlong.huang@starfivetech.com>,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org, linux-mips@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	id 1r60Qr-003fPU-0r;
+	Thu, 23 Nov 2023 03:31:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=R2W1eIGoN44WfeZqoSJKCknBFLhg1MSvdghZBej8Tto=; b=41r6vZ8a0N5C3aFfaYIGG3Nt0+
+	w3Wk45OWIBchNx7QWgxcgGk46uyazknOwo6LSarraXU0NkFLrQhUmbSFQejl4OYdVtn+LZGZlV1Zk
+	r/YlMNC4pQdIepOfwnD2IWi1WitSCbjq3+02JW0KXua8igRoE0YY8hYTujInIJaLRFC8=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1r60QS-000wAv-CM; Thu, 23 Nov 2023 04:30:48 +0100
+Date: Thu, 23 Nov 2023 04:30:48 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
 	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>
-Subject: Re: [PATCH v1 01/17] pinctrl: equilibrium: Convert to use struct
- pingroup
-Message-ID: <202311230820.oBQop844-lkp@intel.com>
-References: <20231122164040.2262742-2-andriy.shevchenko@linux.intel.com>
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Epping <david.epping@missinglinkelectronics.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	Harini Katakam <harini.katakam@amd.com>,
+	Simon Horman <horms@kernel.org>,
+	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
+ PHY package nodes
+Message-ID: <6a030399-b8ed-4e2c-899f-d82eb437aafa@lunn.ch>
+References: <20231120135041.15259-1-ansuelsmth@gmail.com>
+ <20231120135041.15259-4-ansuelsmth@gmail.com>
+ <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
+ <20231121144244.GA1682395-robh@kernel.org>
+ <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
+ <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231122164040.2262742-2-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_191227_575293_F861A7D7 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20231122_193113_311299_B3DBA671 
+X-CRM114-Status: GOOD (  43.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,117 +95,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+On Wed, Nov 22, 2023 at 07:32:22PM +0100, Christian Marangi wrote:
+> On Tue, Nov 21, 2023 at 03:45:42PM +0100, Andrew Lunn wrote:
+> > > > I do think we need somewhere to put package properties. But i don't
+> > > > think phy-mode is such a property. At the moment, i don't have a good
+> > > > example of a package property.
+> > > 
+> > > What about power supplies and reset/enable lines?
+> > 
+> > Yes, good point. I can imagine some packages sharing regulators. Reset
+> > might also be shared, but it makes things messy to handle.
+> >
+> 
+> Sooooo.... Sorry if I insist but I would really love to have something
+> ""stable"" to move this further. (the changes are easy enough so it's
+> really a matter of finding a good DT structure)
+> 
+> Maybe a good idea would be summarize the concern and see what solution
+> was proposed:
+> 
+> Concern list:
+> 1. ethernet-phy-package MUST be placed in mdio node (not in ethernet,
+>    the example was wrong anyway) and MUST have an addr
+> 
+>    Current example doesn't have an addr. I would prefer this way but
+>    no problem in changing this.
+> 
+>    Solution:
+>      - Add reg to the ethernet-phy-package node with the base address of
+>        the PHY package (base address = the first PHY address of the
+>        package)
 
-kernel test robot noticed the following build errors:
+Yes.
 
-[auto build test ERROR on linusw-pinctrl/devel]
-[also build test ERROR on linusw-pinctrl/for-next geert-renesas-drivers/renesas-pinctrl pinctrl-samsung/for-next linus/master v6.7-rc2 next-20231122]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+>        We will have a PHY node with the same address of the PHY package
+>        node. Each PHY node in the PHY package node will have reg set to
+>        the REAL address in the mdio bus.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Andy-Shevchenko/pinctrl-equilibrium-Convert-to-use-struct-pingroup/20231123-005932
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
-patch link:    https://lore.kernel.org/r/20231122164040.2262742-2-andriy.shevchenko%40linux.intel.com
-patch subject: [PATCH v1 01/17] pinctrl: equilibrium: Convert to use struct pingroup
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20231123/202311230820.oBQop844-lkp@intel.com/config)
-compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231123/202311230820.oBQop844-lkp@intel.com/reproduce)
+Basically Yes. I actually think the first sentence is not 100%
+correct. It could be all the package configuration registers are in
+the base address, without an actual PHY. The PHYs then follow at
+addresses above it. I can also imagine a case where the first PHY in
+the package is not used, so its not listed at all. So i think it
+should be "We often have a PHY node with the same address of the PHY
+package node."
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202311230820.oBQop844-lkp@intel.com/
+> 3. phy-mode is problematic.
+> 
+>    It's an optional value to enforce a specific mode for each PHY in the
+>    package. For complex configuration the mode won't be defined.
+> 
+>    Solution:
+>     - Rename it to package-phy-mode to make it less confusing.
+> 
+>     - Add an additional function that PHY package can use to make custom
+>       validation on the mode for every PHY attached (in the PHY package).
+> 
+>       Would make it less clear but more flexible for complex
+>       configuration. Maybe both solution can be implemented and the
+>       special function is used if the mode is not defined?
 
-All errors (new ones prefixed by >>):
+The description you give is that there are two SERDES, and both could
+be connected to a MAC. What does package-phy-mode represent then? 
 
->> drivers/pinctrl/pinctrl-equilibrium.c:750:17: error: read-only variable is not assignable
-                           grp->pins[j] = pin_id;
-                           ~~~~~~~~~~~~ ^
->> drivers/pinctrl/pinctrl-equilibrium.c:761:23: error: no member named 'num_pins' in 'struct pingroup'
-                                                   grp->pins, grp->num_pins,
-                                                              ~~~  ^
-   2 errors generated.
+Luo Jie patch for the qca8084 seems to have the same issue. It has two
+SERDES/PMA, and both could be connected to the MACs. So it seems like
+QCA devices don't actually fit this model. If we want to describe the
+package link mode, we probably need to list each PMA, and have a
+property in the PMA node indicating what link mode the PMA is
+operating at.
 
+At least for the moment, its not clear we actually need this at
+all. It seems like the phy-mode is all we need. The PHY driver should
+know what values are valid per port, and so can validate the value.
 
-vim +750 drivers/pinctrl/pinctrl-equilibrium.c
+> 4. Not finding a correct place to put PHY package info.
+> 
+>    I'm still convinced the mdio node is the correct place.
+>    - PHY package are PHY in bundle so they are actual PHY
+>    - We already have in the mdio node special handling (every DSA switch
+>      use custom compatible and PHY ID is not used to probe them
+>      normally)
+>    - Node this way won't be treated as PHY as they won't match the PHY
+>      node name pattern and also won't have the compatible pattern for
+>      PHY.
 
-   702	
-   703	static int eqbr_build_groups(struct eqbr_pinctrl_drv_data *drvdata)
-   704	{
-   705		struct device *dev = drvdata->dev;
-   706		struct device_node *node = dev->of_node;
-   707		unsigned int *pinmux, pin_id, pinmux_id;
-   708		struct pingroup group, *grp = &group;
-   709		struct device_node *np;
-   710		struct property *prop;
-   711		int j, err;
-   712	
-   713		for_each_child_of_node(node, np) {
-   714			prop = of_find_property(np, "groups", NULL);
-   715			if (!prop)
-   716				continue;
-   717	
-   718			grp->npins = of_property_count_u32_elems(np, "pins");
-   719			if (grp->npins < 0) {
-   720				dev_err(dev, "No pins in the group: %s\n", prop->name);
-   721				of_node_put(np);
-   722				return -EINVAL;
-   723			}
-   724			grp->name = prop->value;
-   725			grp->pins = devm_kcalloc(dev, grp->npins, sizeof(*grp->pins), GFP_KERNEL);
-   726			if (!grp->pins) {
-   727				of_node_put(np);
-   728				return -ENOMEM;
-   729			}
-   730	
-   731			pinmux = devm_kcalloc(dev, grp->npins, sizeof(*pinmux), GFP_KERNEL);
-   732			if (!pinmux) {
-   733				of_node_put(np);
-   734				return -ENOMEM;
-   735			}
-   736	
-   737			for (j = 0; j < grp->npins; j++) {
-   738				if (of_property_read_u32_index(np, "pins", j, &pin_id)) {
-   739					dev_err(dev, "Group %s: Read intel pins id failed\n",
-   740						grp->name);
-   741					of_node_put(np);
-   742					return -EINVAL;
-   743				}
-   744				if (pin_id >= drvdata->pctl_desc.npins) {
-   745					dev_err(dev, "Group %s: Invalid pin ID, idx: %d, pin %u\n",
-   746						grp->name, j, pin_id);
-   747					of_node_put(np);
-   748					return -EINVAL;
-   749				}
- > 750				grp->pins[j] = pin_id;
-   751				if (of_property_read_u32_index(np, "pinmux", j, &pinmux_id)) {
-   752					dev_err(dev, "Group %s: Read intel pinmux id failed\n",
-   753						grp->name);
-   754					of_node_put(np);
-   755					return -EINVAL;
-   756				}
-   757				pinmux[j] = pinmux_id;
-   758			}
-   759	
-   760			err = pinctrl_generic_add_group(drvdata->pctl_dev, grp->name,
- > 761							grp->pins, grp->num_pins,
-   762							pinmux);
-   763			if (err < 0) {
-   764				dev_err(dev, "Failed to register group %s\n", grp->name);
-   765				of_node_put(np);
-   766				return err;
-   767			}
-   768			memset(&group, 0, sizeof(group));
-   769			pinmux = NULL;
-   770		}
-   771	
-   772		return 0;
-   773	}
-   774	
+We do need a compatible for the package. The kernel is unlikely to use
+it, but the validation tools will. Each package can have its own DT
+properties, so we need a .yaml to describe those properties. So i
+would expect to have a "qca807x-package" compatible, which then lists
+the tx driver strength etc. The PHYs within the package don't need
+compatible, they are just linux PHYs, probed using the same code as
+PHYs outside of a package.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+    Andrew
 
