@@ -4,68 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29AB5C5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 11:17:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6E09C5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 11:20:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HtDaa+21S0GNWjcSPbLhIAnwsk/dsZPPk0S+d6zVyrQ=; b=LDc79sIotbJNNQfAJvUpkKjmcp
-	8/KcoT8+PxM5KBbyt1c+4dOcOZmgbcZzysGSgAKT+rCdUDUE5AGxzG59Gs61hx1WIrpRgwb4PivDe
-	DljWt5ENNE/Lmh3v3204aLAlfiQiS6fn0dAxODrkPWFSTw3d+5mdNek1NWhoS0D7oIL5UBicKJ62i
-	GLGDr5PjFqhD4dZvC/AVmcCM2AXnFV3Q6O67+lA11qvvU2AXGUow+uC6Ti6PEJenKHRfdKsedqbvQ
-	GfOuBH5tjLGNj0iMZ/r4u+1DGAznxJtELRYGauerQB03RV02nUGB/7f+ZHYVWMYHTc1Wk2xtUbMqt
-	dORw5OxA==;
+	bh=cna4B9OkGYaAGZnmz7auaJoanPikLRaFUkJT1PNzdCg=; b=NCnHrfpBKeY29unkmeNInn1qEu
+	Thhp1n+ip+juU4I/W4+qb8a/TogLfTTQ+GfX35XwWhhgo6JGew/Cv4BgmU1YJ31BlKlsEOh89Euj1
+	Qz1QtS7j9f7FB5a3gJZXLw91++fyOCHaubJTPukD2pJ0hfMGkPO+jLzXa479LR86DqBVCjAQzHFEE
+	phXOeZriJvmnM+vYr3yc2Gz3sKbyHJy8tkutgKa9O0k6jbqH/tRURRnT9J7DfO0mobTOibz+tD47N
+	jqNo7pj6X0N7D9y46b9Bg9Q+L/Yy+zbPLe8es/azbeI4SbTZemhvab+0LgsMv7sM0Caf6UQfa3D4C
+	/PfoFkWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r67i2-004UE6-0g;
-	Thu, 23 Nov 2023 11:17:26 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r67lC-004Upl-0b;
+	Thu, 23 Nov 2023 11:20:42 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r67hz-004UDN-1i;
-	Thu, 23 Nov 2023 11:17:24 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DD3586607399;
-	Thu, 23 Nov 2023 11:17:18 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700738239;
-	bh=2iodxh4WFdUN0YUDs8e2jORssg12+fCUm/I386AK+n0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UtE+qT0blWGNvMpufqC2Ubyc9FWynPNxujH3YsMq8FjcF6hy5CTCxElfzz6oeV0sp
-	 Lqou3s23pBgY8+WDrGh0n6JuLA8ZDWiT/1L6U6leovnk38fnvULQOWtUhPqBaD9yKs
-	 7avw2udD0LiKgmSs5U0X67ave7Bh1MhfmGf53Xy9MC5ts/o6zUt6YibDSA0sWtWUOg
-	 WV2WUUXnXgpW3kp71HqVO9nqMu/QevDthr/cMpznrMBEuuExabn2LR7bMAPSzzh0ba
-	 XVqgdI+yUjWZNEDgEkEFmGHIDCSjwjSZJ15g+NK7GhK7VkHiSz0nonfDluE85sljnG
-	 gORtC3C2h7j/w==
-Message-ID: <0311dcdd-1c70-41ff-b170-dc2782f7ea49@collabora.com>
-Date: Thu, 23 Nov 2023 12:17:16 +0100
+	id 1r67l9-004UoG-1o
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Nov 2023 11:20:41 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-285625e1851so419683a91.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Nov 2023 03:20:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=sartura.hr; s=sartura; t=1700738436; x=1701343236; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cna4B9OkGYaAGZnmz7auaJoanPikLRaFUkJT1PNzdCg=;
+        b=ddt3gslhsn/g57m1+PiqYiTmj1RJ8YrdMpcmkGRXEFldPOsfzxdcH9BVZ/I85q3HMU
+         qckiGIykh3WET6kQ1mkyPraZb5IBwYps4PTQ9YDv49CmaupPQ1zNsJAdgqmRRA5VrDZv
+         g5ugVEpP8HsJOlhBkFgh9WCRZ0aTyEaqZUiFHU5XeIu+YLFl4RZb3cIi454sTkvXEEos
+         t4vFjHb5bpXHME/kgjd1d0wxirq2pIhqFWIU6JCSlQQNsUkDF5ifEVjRrQGryyUnxAhI
+         c8R5EbOcwWZ53FXvWwzxvCHJdSM2OhfJZkchZu0CBEPmV9VkD2DdlWkapAW1800FhxUE
+         f6IQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700738436; x=1701343236;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cna4B9OkGYaAGZnmz7auaJoanPikLRaFUkJT1PNzdCg=;
+        b=i7E7mBcTc39DthwJFHl8AEg60SZ+M/tSymYFa1uZcVOFo6YcFprsDsOIFgguINUCfR
+         lIOkeI1e0gryfTTgEM/3/af4E51yhvp/wOuqUCGMEhnOgQceH5eeEb13prqqw8gnBlPY
+         9GETaCsuZAwVBMPcmoCzoRxsvjpvlToN5cOkc8alGwK74bFDKFsssI8culs1DLj//ifF
+         /OouLq0bXExeLK98Tk9+ZjCS80b2pgcA5K5qyYpvUg2pBomwVZvea93ixvup59t40yQE
+         m2BIw7wpY5RpRqo2aT3QlSbS7m17YjT/AfTrr7KrLL7qCrKerB+pjWs9BxdZl2oWqv0D
+         qtlA==
+X-Gm-Message-State: AOJu0YzATBIlY2M4/kMFOY6BPBgu4ElretVyGd35HUPTozRlm4MYiQvc
+	yM2CE82kLCv6kthmLvAYQ7RE5OelVatetmEWK8dyKg==
+X-Google-Smtp-Source: AGHT+IHpAi31AQJzfI++IcN15h2i2fjElwAR2+A2cq4nCMgOSMsdXf8at6TXQhpec1XOEn9ZPz1TGslnfGloZZAtd7g=
+X-Received: by 2002:a17:90b:3014:b0:27d:dc9:c67d with SMTP id
+ hg20-20020a17090b301400b0027d0dc9c67dmr4905828pjb.36.1700738436187; Thu, 23
+ Nov 2023 03:20:36 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7] dt-bindings: arm: mediatek: convert audsys and
- mt2701-afe-pcm to yaml
-Content-Language: en-US
-To: Eugen Hristev <eugen.hristev@collabora.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: conor+dt@kernel.org, lgirdwood@gmail.com, broonie@kernel.org,
- matthias.bgg@gmail.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, Rob Herring <robh@kernel.org>
-References: <20231016203915.9793-1-eugen.hristev@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231016203915.9793-1-eugen.hristev@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20231120135041.15259-1-ansuelsmth@gmail.com> <20231120135041.15259-13-ansuelsmth@gmail.com>
+ <6593e6ae-3ae7-49e2-a6e9-c37f5a887fe3@lunn.ch>
+In-Reply-To: <6593e6ae-3ae7-49e2-a6e9-c37f5a887fe3@lunn.ch>
+From: Robert Marko <robert.marko@sartura.hr>
+Date: Thu, 23 Nov 2023 12:20:24 +0100
+Message-ID: <CA+HBbNFjmwtfJAON_BX9c9hqcBTsReMPm9ajPjFF_2z+LbARnw@mail.gmail.com>
+Subject: Re: [net-next RFC PATCH 12/14] dt-bindings: net: Document Qcom
+ QCA807x PHY package
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, 
+	Russell King <linux@armlinux.org.uk>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, 
+	SkyLake Huang <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	David Epping <david.epping@missinglinkelectronics.com>, 
+	Vladimir Oltean <olteanv@gmail.com>, "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>, 
+	Harini Katakam <harini.katakam@amd.com>, Simon Horman <horms@kernel.org>, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_031723_708278_A65F5BAA 
-X-CRM114-Status: UNSURE (   4.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231123_032039_598521_A822DD6B 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,14 +105,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/10/23 22:39, Eugen Hristev ha scritto:
-> Convert the mediatek,audsys binding to YAML, together with the associated
-> binding bindings/sound/mt2701-afe-pcm.yaml .
-> 
-> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
+On Thu, Nov 23, 2023 at 3:15=E2=80=AFAM Andrew Lunn <andrew@lunn.ch> wrote:
+>
+> > +  They feature 2 SerDes, one for PSGMII or QSGMII connection with
+> > +  MAC, while second one is SGMII for connection to MAC or fiber.
+>
+> Can you connect 1/5 of the PSGMII SERDES to the SGMII SERDES? So
+> making use of the PHY as a media converter to connect to an SFP cage?
+> I assume the SGMII serdes can also do 1000BaseX?
+>
+> How do you describe what the SGMII SERDES is connected to?
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi Andrew,
+I think that the description is confusing.
+QCA807x supports 3 different modes:
+1. PSGMII (5 copper ports)
+2. PSGMII (4 copper ports + 1 combo port)
+3. QSGMII+SGMII
+
+So, in case option 2 is selected then the combo port can also be used for
+1000Base-X and 100Base-FX modules or copper and it will autodetect the
+exact media.
+This is supported via the SFP op-s and I have been using it without issues
+for a while.
+
+I have not tested option 3 in combination with SFP to the copper
+module so I cant
+say whether that works.
+From what I can gather from the typical usage examples in the
+datasheet, this QSMII+SGMII
+mode is basically intended as a backward compatibility thing as only
+QCA SoC-s have PSGMII
+support so that you could still use SoC-s with QSGMII and SGMII support onl=
+y.
+
+So there is no way to control the SerDes-es individually, only the
+global mode can be changed via
+the Chip configuration register in the Combo port.
+
+You can see the block diagram of this PHY in this public PDF on page 2[1].
+
+[1] https://content.codico.com/fileadmin/media/download/datasheets/qualcomm=
+/qualcomm_qca8075.pdf
+
+>
+>   Andrew
+>
 
 
+--=20
+Robert Marko
+Staff Embedded Linux Engineer
+Sartura Ltd.
+Lendavska ulica 16a
+10000 Zagreb, Croatia
+Email: robert.marko@sartura.hr
+Web: www.sartura.hr
 
