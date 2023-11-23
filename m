@@ -4,83 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 403EAC61D85
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 03:31:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80CBC5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 04:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R2W1eIGoN44WfeZqoSJKCknBFLhg1MSvdghZBej8Tto=; b=wc6SwKJgGZG3bD7Rts4tOXCE3c
-	dpgV6UGruHi+JQm72lW3s9DjYbqsnreFKKTZ8uTaJsxNspR+fkL6kEbBHujhfZjc0MNefB/l5K33v
-	dmjJlWJRr4u44yMMkaGJeUxNUs4uZklNzUhabCKXjX2a3/Gxa5ThQLcdfuxoffmmbtgvfMP8Nv2xJ
-	cme/vJ74amEsd9bbMQepsoxSowzNxUiKvzQE3IDfARQj6twCMQyM8jGWLPEQCUsF0LM9IoZjFWbBt
-	AUgKtbVDS0WiN4ld4TeCk5w2l14f03ZETeyV235nFubdthf4k9DQlJBbKiUtPEDDZ1kh/84n4FZMP
-	tVppwb7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cDuyynkQJjhNuDv7Y3RcwbZVUcM2IlduXLPOC7/Q8To=; b=VynSpodHuzZWJjyroYuKODxvNb
+	NQthmshMSyDGpAgOasbGqqUExy1KHoUTGL1Qp/hUbvHa/bvFQwxYVeRzoOaX8kNGO+uvZeBfNUTFd
+	FkmpM3pbxajH5UHo9P3Jqy57d3s/rjpVHkRoKEUYpsH03mYRXsPIrwbDZRC3+AaJ/HstXP83x5HzK
+	WQW4FJAmKgNAJDmwvg6N1QR1fPWJkaGdW2QBVEJ7voBB6WOCznabDuKXRlw+k7x1UObqLs1nMU+mp
+	AYsRxkeS5sjJWG1LwSbHtp75GtvEpRNtMgosCROGKWTNRHa50uABkskNU674EpUkbXawWERyLtFFd
+	CsCZ+Zuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r60Qu-003fQ7-0a;
-	Thu, 23 Nov 2023 03:31:16 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1r60xs-003hGR-1T;
+	Thu, 23 Nov 2023 04:05:20 +0000
+Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r60Qr-003fPU-0r;
-	Thu, 23 Nov 2023 03:31:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=R2W1eIGoN44WfeZqoSJKCknBFLhg1MSvdghZBej8Tto=; b=41r6vZ8a0N5C3aFfaYIGG3Nt0+
-	w3Wk45OWIBchNx7QWgxcgGk46uyazknOwo6LSarraXU0NkFLrQhUmbSFQejl4OYdVtn+LZGZlV1Zk
-	r/YlMNC4pQdIepOfwnD2IWi1WitSCbjq3+02JW0KXua8igRoE0YY8hYTujInIJaLRFC8=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1r60QS-000wAv-CM; Thu, 23 Nov 2023 04:30:48 +0100
-Date: Thu, 23 Nov 2023 04:30:48 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Epping <david.epping@missinglinkelectronics.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Simon Horman <horms@kernel.org>,
-	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
- PHY package nodes
-Message-ID: <6a030399-b8ed-4e2c-899f-d82eb437aafa@lunn.ch>
-References: <20231120135041.15259-1-ansuelsmth@gmail.com>
- <20231120135041.15259-4-ansuelsmth@gmail.com>
- <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
- <20231121144244.GA1682395-robh@kernel.org>
- <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
- <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
+	id 1r60xq-003hFR-00
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Nov 2023 04:05:19 +0000
+Received: by mail-vk1-xa2d.google.com with SMTP id 71dfb90a1353d-4ac10aacd27so169150e0c.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 20:05:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1700712316; x=1701317116; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cDuyynkQJjhNuDv7Y3RcwbZVUcM2IlduXLPOC7/Q8To=;
+        b=Yv2uN0hVbsWpcBgj06wLUs2e4++xyvXycJOWpffb5oG2nklMWNktaqjhmiVM+2e2i2
+         LhIev04yRxJ9Ir8Gh4MeQhllc3lGzYdWF7v82CeaOUnqoCbiGEx5M+Gz6uuUc2YOMrD0
+         iVmhIY/qSTdEj908P1Has0q/bYZMIZkS1e4eQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700712316; x=1701317116;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cDuyynkQJjhNuDv7Y3RcwbZVUcM2IlduXLPOC7/Q8To=;
+        b=mRI5wBmmDXHuDzdYSc5uFy8mK2qu4hVWH86l/iv0TMoj4LwqXXvO2adLFkipoE9aB0
+         V8ive3hxsMQCmJmkqotD6N7BmWCcsSUTLpdkYqna13uK0WpiTojt0Piw8nSbe4ld40TD
+         Twa4hTwmz0oacVmZZ8+lCeVzP/0wLjhlftWjbvhl9U4gHEiL6yhyXmXrp1ziEMMosPus
+         RnjXuSWOpy4/XFgKoz5ZD0NQBCCpu7y5GuB5mvQoXnnyLfABhaB/qz6IRpn1Jcqlqs/o
+         PzmVO82pUs+rZnd6JRL1oVDFLsH9hwc9hrd9wBtZl6PKNoGLdLsibo/Pzj2h8lQq6GgP
+         cDrw==
+X-Gm-Message-State: AOJu0YyQQKGa+9Tlhonn9EthbjeTaAU7jVWsCUPTcicj/78qx/vbGns2
+	30zzLfo5BCp3UVV7nufdGoKwYi2F7X/oW5I6QKt3OQ==
+X-Google-Smtp-Source: AGHT+IFEbSE9sZZPF1ibR2weV10ESQm5ttMzB4FY7LU9iqGQ02zbc8/IhndvMe0MsZIsH2Z6LWYRvQ==
+X-Received: by 2002:a1f:d747:0:b0:49a:466c:199e with SMTP id o68-20020a1fd747000000b0049a466c199emr5504226vkg.2.1700712316360;
+        Wed, 22 Nov 2023 20:05:16 -0800 (PST)
+Received: from mail-vk1-f174.google.com (mail-vk1-f174.google.com. [209.85.221.174])
+        by smtp.gmail.com with ESMTPSA id h10-20020a9f3f0a000000b007c442a209d0sm76120uaj.35.2023.11.22.20.05.15
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 22 Nov 2023 20:05:15 -0800 (PST)
+Received: by mail-vk1-f174.google.com with SMTP id 71dfb90a1353d-4ac89e8e964so164675e0c.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 20:05:15 -0800 (PST)
+X-Received: by 2002:a1f:dac4:0:b0:496:2282:5c2f with SMTP id
+ r187-20020a1fdac4000000b0049622825c2fmr4788680vkg.6.1700712315456; Wed, 22
+ Nov 2023 20:05:15 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
+References: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com> <20231103102533.69280-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231103102533.69280-3-angelogioacchino.delregno@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 23 Nov 2023 12:04:39 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nimsor1k+sRXw67OrM8U_kANgLdnn6E++gR_O6S_tisLQ@mail.gmail.com>
+Message-ID: <CAC=S1nimsor1k+sRXw67OrM8U_kANgLdnn6E++gR_O6S_tisLQ@mail.gmail.com>
+Subject: Re: [PATCH v3 2/3] clk: mediatek: mt8195-topckgen: Refactor parents
+ for top_dp/edp muxes
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com, 
+	wenst@chromium.org, msp@baylibre.com, amergnat@baylibre.com, 
+	yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de, 
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_193113_311299_B3DBA671 
-X-CRM114-Status: GOOD (  43.05  )
+X-CRM114-CacheID: sfid-20231122_200518_040434_06267187 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,98 +100,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 22, 2023 at 07:32:22PM +0100, Christian Marangi wrote:
-> On Tue, Nov 21, 2023 at 03:45:42PM +0100, Andrew Lunn wrote:
-> > > > I do think we need somewhere to put package properties. But i don't
-> > > > think phy-mode is such a property. At the moment, i don't have a good
-> > > > example of a package property.
-> > > 
-> > > What about power supplies and reset/enable lines?
-> > 
-> > Yes, good point. I can imagine some packages sharing regulators. Reset
-> > might also be shared, but it makes things messy to handle.
-> >
-> 
-> Sooooo.... Sorry if I insist but I would really love to have something
-> ""stable"" to move this further. (the changes are easy enough so it's
-> really a matter of finding a good DT structure)
-> 
-> Maybe a good idea would be summarize the concern and see what solution
-> was proposed:
-> 
-> Concern list:
-> 1. ethernet-phy-package MUST be placed in mdio node (not in ethernet,
->    the example was wrong anyway) and MUST have an addr
-> 
->    Current example doesn't have an addr. I would prefer this way but
->    no problem in changing this.
-> 
->    Solution:
->      - Add reg to the ethernet-phy-package node with the base address of
->        the PHY package (base address = the first PHY address of the
->        package)
+On Fri, Nov 3, 2023 at 6:25=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> The top_dp and top_edp muxes can be both parented to either TVDPLL1
+> or TVDPLL2, two identically specced PLLs for the specific purpose of
+> giving out pixel clock: this becomes a problem when the MediaTek
+> DisplayPort Interface (DPI) driver tries to set the pixel clock rate.
+>
+> In the usecase of two simultaneous outputs (using two controllers),
+> it was seen that one of the displays would sometimes display garbled
+> output (if any at all) and this was because:
+>  - top_edp was set to TVDPLL1, outputting X GHz
+>  - top_dp was set to TVDPLL2, outputting Y GHz
+>    - mtk_dpi calls clk_set_rate(top_edp, Z GHz)
+>      - top_dp is switched to TVDPLL1
+>      - TVDPLL1 changes its rate, top_edp outputs the wrong rate.
+>      - eDP display is garbled
+>
+> To solve this issue, remove all TVDPLL1 parents from `top_dp` and
+> all TVDPLL2 parents from `top_edp`, plus, necessarily switch both
+> clocks to use the new MUX_GATE_CLR_SET_UPD_INDEXED() macro to be
+> able to use the right bit index for the new parents list.
+>
+> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-Yes.
-
->        We will have a PHY node with the same address of the PHY package
->        node. Each PHY node in the PHY package node will have reg set to
->        the REAL address in the mdio bus.
-
-Basically Yes. I actually think the first sentence is not 100%
-correct. It could be all the package configuration registers are in
-the base address, without an actual PHY. The PHYs then follow at
-addresses above it. I can also imagine a case where the first PHY in
-the package is not used, so its not listed at all. So i think it
-should be "We often have a PHY node with the same address of the PHY
-package node."
-
-> 3. phy-mode is problematic.
-> 
->    It's an optional value to enforce a specific mode for each PHY in the
->    package. For complex configuration the mode won't be defined.
-> 
->    Solution:
->     - Rename it to package-phy-mode to make it less confusing.
-> 
->     - Add an additional function that PHY package can use to make custom
->       validation on the mode for every PHY attached (in the PHY package).
-> 
->       Would make it less clear but more flexible for complex
->       configuration. Maybe both solution can be implemented and the
->       special function is used if the mode is not defined?
-
-The description you give is that there are two SERDES, and both could
-be connected to a MAC. What does package-phy-mode represent then? 
-
-Luo Jie patch for the qca8084 seems to have the same issue. It has two
-SERDES/PMA, and both could be connected to the MACs. So it seems like
-QCA devices don't actually fit this model. If we want to describe the
-package link mode, we probably need to list each PMA, and have a
-property in the PMA node indicating what link mode the PMA is
-operating at.
-
-At least for the moment, its not clear we actually need this at
-all. It seems like the phy-mode is all we need. The PHY driver should
-know what values are valid per port, and so can validate the value.
-
-> 4. Not finding a correct place to put PHY package info.
-> 
->    I'm still convinced the mdio node is the correct place.
->    - PHY package are PHY in bundle so they are actual PHY
->    - We already have in the mdio node special handling (every DSA switch
->      use custom compatible and PHY ID is not used to probe them
->      normally)
->    - Node this way won't be treated as PHY as they won't match the PHY
->      node name pattern and also won't have the compatible pattern for
->      PHY.
-
-We do need a compatible for the package. The kernel is unlikely to use
-it, but the validation tools will. Each package can have its own DT
-properties, so we need a .yaml to describe those properties. So i
-would expect to have a "qca807x-package" compatible, which then lists
-the tx driver strength etc. The PHYs within the package don't need
-compatible, they are just linux PHYs, probed using the same code as
-PHYs outside of a package.
-
-    Andrew
+Reviewed-by: Fei Shao <fshao@chromium.org>
 
