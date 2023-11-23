@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A49C1C5AD4C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAACFC636BD
 	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:35:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VE9opesJUmgF+Wgq7BUw9TUGxejRvrEmPcfnashtRIg=; b=gv2rgoiShYGXrox0VbQSasSc1R
-	cAYFOEBrg3RVyyr9QD1lnzeA5KUbphMi84Gpd7oLx9nIco7agYcJ7TWA8gsbn99FZXeRTzMBVw8Hb
-	GPL/kt3ghRu4pPaDUHiMbRuv0PA3W87um/lpZYgfECPP5ikWGGsr0hx42aUNDB037lQ29GJ0n5jcH
-	mTLoDx4Chx6pIJVKf87WioMQ8DbgzHtYrvtY0GPgGxgdxhIRG+yzBidepMsCTXz4hSb8h2j4BdUIE
-	xLvnM1nyzYa2VKaC9Z3l3X9blvHCAQB52Jh7MI/jSXHBu1eE+KSg+62VvK6w8e+N8+FXmfFlR0CYZ
-	66YV0Hfg==;
+	bh=IqG6J6XqPpchxnH8IS2SFhddOTqONhAmvJxDK+P0xXI=; b=0jeQq2+rgVYH5JGj+xw3WlzhPh
+	37UHS6vvB7JmAHOPwads7Nb7ZQKwYnl5YmikVebqjnr61O1GDeUz7MN/f3PbKns5aqb74Qap9gi/U
+	ip8yfaEjWYhGrAgiLurmYWU3NKlwQKz8l7o6kx/yqJXPbV6S5VU/a3kTeBiFHBA1aogl23a30wnO8
+	HR2aYvVOmNtgsrx15il0wg/0qutkipbw2CcVwltvZQnmMEE6Yp3h9i+Lle954RddtqVzl8WAVgbc4
+	CyQKBtSWRPSiqabIszY4Gu90yJTrVI9j9c9339BisNVi0mEfDl43qWod21FVJ9MH4P3dM76WQ8P2s
+	zuv0OgwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FTp-005cJt-1q;
+	id 1r6FTp-005cKG-2s;
 	Thu, 23 Nov 2023 19:35:17 +0000
-Received: from mgamail.intel.com ([192.55.52.151])
+Received: from mgamail.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FSs-005bg4-2K;
-	Thu, 23 Nov 2023 19:34:20 +0000
+	id 1r6FSt-005bg9-1w;
+	Thu, 23 Nov 2023 19:34:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700768058; x=1732304058;
+  t=1700768059; x=1732304059;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=OGaV4Nng+tVWpn/DwOtpTiBweDWyWECYisEO55IPOZ0=;
-  b=Xf+aS+Ga1teXAm1ab87nLV7qYCgfHWjt+FUinm/+cnQO8q6wI5FE2rJj
-   mzvN0ZZit2ZuhoeQd+E/C9iKTnC6Jt645u27+T8k4QY5BaF5hJuUSP2j8
-   JPpvTyoh03xWKUdi3SBl3wb1EP10JsN93Cgm3qHsff2ExnnQEsdrzJTQU
-   Am72DbJA9A/s8GLypIKBWL+kmuxgFrwuzlU+sCARqfeGlCVw0vxvCsQuw
-   rhCy524QslYU3a5GEKQ+Ad0K6Av41Nf2wXXUMJyfrVgrp2xoH5FB2BXco
-   focsOSr9SvCQaz5oHP37Ah3qPRdqhfSOYOfaEq90riX4vADsoSFejT8Ck
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="372482177"
+  bh=++HiA1P7q8U4dvicF+TdLxBnT5ZexqI5cBAKhMQPai0=;
+  b=EHYs5uITRU+tBBZ2WhtL18z2432WpxbhbIHT1GLTf6EqB7gSQbgkgK+L
+   77buk0jyrQV/OcPyZfXf2pPDofhPr7Ign9dZRC2Fz9xtsFJ+vlxXSmOeP
+   IhW6JTta3N6FGO00whTWczwCm7SkbKPiP9Be59aX3rWe8YO1dyfNYROxL
+   DdF6pzGpi1n3oRsmiufW6PjRCeEPQOfnRKcJgJaHggcDpd6q7MbSpFhXm
+   U2ZkDOilavCQbstp6Wra+z1f43lPcAUpHY+CRFE4br+GfAJDq6MqCy69D
+   Lzuq9G9NQ35T73FuY0adLsWELss90ot/zqAJo9nFC0dZ7gUbXfYP9oJEQ
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="371671475"
 X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
-   d="scan'208";a="372482177"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:17 -0800
+   d="scan'208";a="371671475"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="833506166"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="771062260"
 X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
-   d="scan'208";a="833506166"
+   d="scan'208";a="771062260"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga008.fm.intel.com with ESMTP; 23 Nov 2023 11:34:08 -0800
+  by fmsmga007.fm.intel.com with ESMTP; 23 Nov 2023 11:34:09 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id DB5574F4; Thu, 23 Nov 2023 21:33:58 +0200 (EET)
+	id 4CCB87E4; Thu, 23 Nov 2023 21:33:59 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -90,17 +90,17 @@ Cc: Ray Jui <rjui@broadcom.com>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v2 06/21] pinctrl: equilibrium: Convert to use struct pingroup
-Date: Thu, 23 Nov 2023 21:31:34 +0200
-Message-ID: <20231123193355.3400852-7-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 14/21] pinctrl: equilibrium: Convert to use grp member
+Date: Thu, 23 Nov 2023 21:31:42 +0200
+Message-ID: <20231123193355.3400852-15-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
 In-Reply-To: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 References: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_113418_795195_93D0F839 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20231123_113419_655323_F90F95C0 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,95 +115,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The pin control header provides struct pingroup.
-Utilize it instead of open coded variants in the driver.
+Convert drivers to use grp member embedded in struct group_desc.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/pinctrl-equilibrium.c | 28 +++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ drivers/pinctrl/pinctrl-equilibrium.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/pinctrl/pinctrl-equilibrium.c b/drivers/pinctrl/pinctrl-equilibrium.c
-index 91157a2b949c..2165fe6833c9 100644
+index 2165fe6833c9..eb9921569e45 100644
 --- a/drivers/pinctrl/pinctrl-equilibrium.c
 +++ b/drivers/pinctrl/pinctrl-equilibrium.c
-@@ -705,7 +705,7 @@ static int eqbr_build_groups(struct eqbr_pinctrl_drv_data *drvdata)
- 	struct device *dev = drvdata->dev;
- 	struct device_node *node = dev->of_node;
- 	unsigned int *pins, *pinmux, pin_id, pinmux_id;
--	struct group_desc group;
-+	struct pingroup group, *grp = &group;
- 	struct device_node *np;
- 	struct property *prop;
- 	int j, err;
-@@ -715,54 +715,54 @@ static int eqbr_build_groups(struct eqbr_pinctrl_drv_data *drvdata)
- 		if (!prop)
- 			continue;
+@@ -331,8 +331,8 @@ static int eqbr_pinmux_set_mux(struct pinctrl_dev *pctldev,
+ 		return -EINVAL;
  
--		group.num_pins = of_property_count_u32_elems(np, "pins");
--		if (group.num_pins < 0) {
-+		grp->npins = of_property_count_u32_elems(np, "pins");
-+		if (grp->npins < 0) {
- 			dev_err(dev, "No pins in the group: %s\n", prop->name);
- 			of_node_put(np);
- 			return -EINVAL;
- 		}
--		group.name = prop->value;
--		pins = devm_kcalloc(dev, group.num_pins, sizeof(*pins), GFP_KERNEL);
-+		grp->name = prop->value;
-+		pins = devm_kcalloc(dev, grp->npins, sizeof(*pins), GFP_KERNEL);
- 		if (!pins) {
- 			of_node_put(np);
- 			return -ENOMEM;
- 		}
--		group.pins = pins;
-+		grp->pins = pins;
+ 	pinmux = grp->data;
+-	for (i = 0; i < grp->num_pins; i++)
+-		eqbr_set_pin_mux(pctl, pinmux[i], grp->pins[i]);
++	for (i = 0; i < grp->grp.npins; i++)
++		eqbr_set_pin_mux(pctl, pinmux[i], grp->grp.pins[i]);
  
--		pinmux = devm_kcalloc(dev, group.num_pins, sizeof(*pinmux), GFP_KERNEL);
-+		pinmux = devm_kcalloc(dev, grp->npins, sizeof(*pinmux), GFP_KERNEL);
- 		if (!pinmux) {
- 			of_node_put(np);
- 			return -ENOMEM;
- 		}
- 
--		for (j = 0; j < group.num_pins; j++) {
-+		for (j = 0; j < grp->npins; j++) {
- 			if (of_property_read_u32_index(np, "pins", j, &pin_id)) {
- 				dev_err(dev, "Group %s: Read intel pins id failed\n",
--					group.name);
-+					grp->name);
- 				of_node_put(np);
- 				return -EINVAL;
- 			}
- 			if (pin_id >= drvdata->pctl_desc.npins) {
- 				dev_err(dev, "Group %s: Invalid pin ID, idx: %d, pin %u\n",
--					group.name, j, pin_id);
-+					grp->name, j, pin_id);
- 				of_node_put(np);
- 				return -EINVAL;
- 			}
- 			pins[j] = pin_id;
- 			if (of_property_read_u32_index(np, "pinmux", j, &pinmux_id)) {
- 				dev_err(dev, "Group %s: Read intel pinmux id failed\n",
--					group.name);
-+					grp->name);
- 				of_node_put(np);
- 				return -EINVAL;
- 			}
- 			pinmux[j] = pinmux_id;
- 		}
- 
--		err = pinctrl_generic_add_group(drvdata->pctl_dev, group.name,
--						group.pins, group.num_pins,
-+		err = pinctrl_generic_add_group(drvdata->pctl_dev,
-+						grp->name, grp->pins, grp->npins,
- 						pinmux);
- 		if (err < 0) {
--			dev_err(dev, "Failed to register group %s\n", group.name);
-+			dev_err(dev, "Failed to register group %s\n", grp->name);
- 			of_node_put(np);
- 			return err;
- 		}
+ 	return 0;
+ }
 -- 
 2.43.0.rc1.1.gbec44491f096
 
