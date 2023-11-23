@@ -4,77 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CC91C5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 17:13:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E5E0C61D97
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 17:17:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bKNwCpnkd4HHouKuRGDnXl3uAXRtD1+lzSL7fC1Un1Y=; b=TjXpa0p1zySTMiluQYoNk34YXU
-	la3BMO9TQuqdxrtHYR0QagKKbPPWP9pL8tVqys53hOOkVk5FMbC+MhZxgJjmkv007yr7+epfKBz12
-	sXckG0vDqng7OhAPipGoMgf1woYwbiicGGBx4ZfdZ/A/XyYdHYQPkAzBSkv5cKh5e6cJ48vkhQ5ht
-	SrzgW8G5FkGFLvoXVj1yPh2llGoQD/jrvgcT5JMZKgxLngJISbqu+f/wizxN9Rc/p7nKHkpqN/mCP
-	y3GALCj701q33yEQ7EZ14MXv7sa3zViVrCDdJv7g/XOL2cdLsYKT97FY3W6iJjF7nn5lpsKy5s67z
-	aKfeQmhA==;
+	bh=dxE0HQKJWm9W3nB/FzE1YjbtmLcXthLRX09JrBoAQXU=; b=IhGpQPrDgGJtM/oWrkBZGQeM+C
+	gi2fRiNNRJ7SEWEYyqElQ+4qGwkkpusIrrnuwBHoQLxqOT8juRYC11Vkw9wcb9SuD1qa9uxithikG
+	UDQm7syOYXY46b3nQ2UIqI4OPYwQXhhnIMIwO529uEqk8cHdJRutrV4av0LawLB9x2tJoccB+qfo3
+	WD+Q+wYNVBqsBvYtJ2yHY2gUPR/rHIYMrpS/f8T/NV2Y9A+4Yr0xNeXvZ9LQ+NDLeYgJuNySYBTwB
+	/Dg8Ld3dBTUao6O/wD1X/TNQbeCbNYz3ZPy32XK9Ww7vlk9XeaQfVAo4FgbH2/sQszzgIKsds2pRH
+	+jKylvUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6DGw-005NwO-1g;
-	Thu, 23 Nov 2023 17:13:50 +0000
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+	id 1r6DKR-005OF4-07;
+	Thu, 23 Nov 2023 17:17:27 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6DGt-005Nvi-07
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Nov 2023 17:13:48 +0000
-Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-daf4f0e3a0fso1053396276.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Nov 2023 09:13:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700759625; x=1701364425; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=bKNwCpnkd4HHouKuRGDnXl3uAXRtD1+lzSL7fC1Un1Y=;
-        b=r++wz9DDV1Y4BpgRbP0nDkRw2bntujLIn/kaTf0IJHHg8rS6l4EbAXm0As6hrgFZqH
-         6gdvwX+j5dH03ZkqqKlxVE+euGaRhQ3Pv+O5yUKnHzjEdEEQA8fIqxoXC4c2/8HbwjDi
-         FGkmOw2YQX2u+qvb3qdXgxSGOTYTc7aKWJJJkMVyUWi2DefPO09iRJekLVf//74wdSN4
-         BRSf6sw2/jys3QmppJjERAqQ+Qx/2itlDzx21QBAlr3qpAJQ79fPybxv7Uc5hR1PMDMw
-         +dzjobnuWuLwx+Xxv9A7uDmYV5lXHvDDyDE4HtU+RMIE7iY+MEO7CHntVdSYn7lnshGp
-         YJxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700759625; x=1701364425;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bKNwCpnkd4HHouKuRGDnXl3uAXRtD1+lzSL7fC1Un1Y=;
-        b=AScpbUivnGPbixAJv8OIW2lp4xarF0vWsAPo0mslCLa5iStuvreFVF/GGpEK4ROToF
-         4ebHbxLOtSRj/+L7HU8ArDKqbJEy03YwcqLKmL7kDZCuEiHFWf6+Kp1OzbigbXhUOJhc
-         sQZxe/bw0Zy32ZSgY/fV4W7BQGXmCwzu6nC56WboMfCCOhy+BjkRi8KOcjdfv96fL0UQ
-         jJNclsKfBQKC072s43k9TCYMKXlUq0nE0fzIIhA+rwg5xPUau0flJUxiRvbhhQ+twkKz
-         PXILxwfDYL6AfKTnY1mVuhpaOnSTkPSbr+zIHLawgrCS2mMhvPtGDuZerPtc8989504F
-         gMWQ==
-X-Gm-Message-State: AOJu0YwVVbz52ocKktNqSNeqDobjQgOSj+CX2xT6xRgj6FslmYDhaVHN
-	ctyv56KT/nqCur+7kmRGTE3JtVFfiy29IlGEF8f+tg==
-X-Google-Smtp-Source: AGHT+IGFr6g8jlQ3HN+XUNNaKBgc8oVfUM5jYKRK0VWTl7TjhJHxHFo9KjRuS+1jJjO2xdJg2ndmcfoZW2K0mOMBkR4=
-X-Received: by 2002:a25:6b06:0:b0:daf:76da:fe2b with SMTP id
- g6-20020a256b06000000b00daf76dafe2bmr6007585ybc.10.1700759624759; Thu, 23 Nov
- 2023 09:13:44 -0800 (PST)
+	id 1r6DKN-005OEL-2T;
+	Thu, 23 Nov 2023 17:17:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 1A1B8CE2B93;
+	Thu, 23 Nov 2023 17:17:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B184FC433CC;
+	Thu, 23 Nov 2023 17:17:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700759840;
+	bh=eW+CaP4BT2sNRyEoRgqQyByj/UxBL0nOsR4Sy6KWAB8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=b4+pi29bIwN67/0/212NMFo+i0rNMY2++XhQ3BSe0x7cAv7zqJlXtL4V3ReslEQW1
+	 XaJxbGtNBNmPyY5wGbWd9MSXUrCUN9q2c51w2+nQU2jwTmj5db8sJbgxyz4OlFbYQm
+	 Mf4kM1iB5+MKa/xpJUf9Sgc6waDiauIIuibWUXcwAyVO0RQc0St1TMbH7V7sOeF2eI
+	 hj/nu7RC4ckUBO0tgiVH+csJMCV9WN/OsoRMVF4AvKSG6LcZVetRPzE9zjBNBmgvVb
+	 nfJ8fdqaexbkuL0CIv/PXR5KjfjMohP6mPtkBP+pnqqOUI4vgTw5yDvwdoI4vkQO0W
+	 1cqkQ52sCsXFw==
+Date: Thu, 23 Nov 2023 17:17:14 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Michael Walle <mwalle@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jitao Shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: display: mediatek: dsi: remove Xinlei's mail
+Message-ID: <20231123-reply-runny-87d16e39f9f5@spud>
+References: <20231123134927.2034024-1-mwalle@kernel.org>
 MIME-Version: 1.0
-References: <20231117095531.1693753-1-treapking@chromium.org>
-In-Reply-To: <20231117095531.1693753-1-treapking@chromium.org>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Thu, 23 Nov 2023 18:13:09 +0100
-Message-ID: <CAPDyKFqjcP2pAH8uo61Yc7wU76NM1aCMN6P1TaAoafCFfZSeWw@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mtk-sd: Increase the verbosity of msdc_track_cmd_data
-To: Pin-yen Lin <treapking@chromium.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, 
-	ot_shunxi.zhang@mediatek.corp-partner.google.com, 
-	linux-arm-kernel@lists.infradead.org, linux-mmc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="BrmG9mhQOAkPRD4C"
+Content-Disposition: inline
+In-Reply-To: <20231123134927.2034024-1-mwalle@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_091347_679050_F9E9BEF1 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20231123_091724_009645_D4B2DA32 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,35 +84,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 17 Nov 2023 at 10:55, Pin-yen Lin <treapking@chromium.org> wrote:
->
-> This log message is necessary for debugging, so enable it by default to
-> debug issues that are hard to reproduce locally.
->
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
->
-> ---
->
->  drivers/mmc/host/mtk-sd.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 97f7c3d4be6e..4469003f571e 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1150,7 +1150,7 @@ static void msdc_recheck_sdio_irq(struct msdc_host *host)
->  static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_command *cmd)
->  {
->         if (host->error)
-> -               dev_dbg(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
-> +               dev_err(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
->                         __func__, cmd->opcode, cmd->arg, host->error);
 
-How critical is this? Should we perhaps use a dev_warn instead?
+--BrmG9mhQOAkPRD4C
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
->  }
->
+On Thu, Nov 23, 2023 at 02:49:27PM +0100, Michael Walle wrote:
+> Xinlei Lee's mail is bouncing:
+>=20
+> <xinlei.lee@mediatek.com>: host mailgw02.mediatek.com[216.200.240.185] sa=
+id:
+>     550 Relaying mail to xinlei.lee@mediatek.com is not allowed (in reply=
+ to
+>     RCPT TO command)
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Kind regards
-Uffe
+Cheers,
+Conor.
+
+--BrmG9mhQOAkPRD4C
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZV+JGgAKCRB4tDGHoIJi
+0pFxAQCyKVuk2eJSY49HrTBq2484vkMJ8MFxC/6EHrUG8IP+jQEAvJ6e6guZQQ5H
+M4/Y0irGropjfjLwrA8b4j9bXOhM8AI=
+=9maz
+-----END PGP SIGNATURE-----
+
+--BrmG9mhQOAkPRD4C--
 
