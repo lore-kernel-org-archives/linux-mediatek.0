@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E647CC61D97
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 17:28:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 199FCC5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 17:31:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hPO56mWehRo3MO9NO3sn7s7gQSe2d8rAnSfxiFZU3bc=; b=UFqD7+7x3KKlY58FZrFuoTS7vI
-	uaqUGaTuH/cgdxveTpxC/Nd6G0PRsfr+Ym+iBTpApNhJCLY1GqQaYPjCUzQ8FZZ64ZH+ytFPq4jkD
-	TweuN5UWWYYoH9jOzmifkJb1oJCKLxpcHw5ebJjBDAWDBLNJOP23WJfPGFOcpjS2y7tBrBxY2HiC/
-	stU0mkg21824CDjPlvzUEK3q38x1f9KKts0gXqG/Dv8jlQF9PtqFqX5wqqys60cNmrm8olMCXk1r6
-	4jH1h8E0Ln+RbYvRBww+J+aEtyNUQXASdgYHxg7DbVdQUjiBlN2l1elT0B972rVGNb/sY5aEwqai2
-	VC1NITXA==;
+	bh=NPfrzEVZEEkAHa6VO/vXqtVnK2WBMU7/MnWLMDsyYik=; b=O0iU0MrPq5L1RxQoATpYWWZdfY
+	uNVc4hqR9N7dSDlAiUcFi5eNrHF4CJNKcXcWa6tJ8yom5+HI6zgUpCHFgU/8YQO4RtJYiRjXJxBQG
+	Zc5Qn2Nbt0cXSydhNzMDeE76rsIJZAZ1F50k37kGWuv4460xqSKqGlfYf1ctatwe4/M/5w6fExpfj
+	GfjzGcoVY6pLZcUTsRQ7m6beLa9uTTshrD3E7/a8VjCiaUQcGlJ4hp1WsI3lK9UYgOzCR4Oe6Oza/
+	bOjvGkxb7WHGJS1ueRWOwF5+S8TmUcxkxAlKQcjXX0KIfhDjN/KbI628Hb8XP+18B/y2z1/Zg1nxi
+	bRIIhAtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6DVI-005QFo-2I;
-	Thu, 23 Nov 2023 17:28:40 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1r6DYP-005Qcf-2l;
+	Thu, 23 Nov 2023 17:31:53 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6DVF-005QEq-2s
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Nov 2023 17:28:39 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1r6DV3-0006fo-MD; Thu, 23 Nov 2023 18:28:25 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1r6DV1-00B5Zc-Nb; Thu, 23 Nov 2023 18:28:23 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1r6DV1-006qI9-E4; Thu, 23 Nov 2023 18:28:23 +0100
-Date: Thu, 23 Nov 2023 18:28:23 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Michael Walle <mwalle@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Xinlei Lee <xinlei.lee@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: pwm: remove Xinlei's mail
-Message-ID: <20231123172823.4offrr7w4tsrhl4y@pengutronix.de>
-References: <20231123134716.2033769-1-mwalle@kernel.org>
+	id 1r6DYI-005QaH-1r;
+	Thu, 23 Nov 2023 17:31:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 77001CE2BDE;
+	Thu, 23 Nov 2023 17:31:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04AFBC433CA;
+	Thu, 23 Nov 2023 17:31:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700760703;
+	bh=x6t0DakrfOazLqCXf+qyEeqOmEgp+z5KyR3L1q47Slg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=H5nnDdwLpT1dfd91tmCi8xRhIdHcFHo13nexVEoEyTjk551Kz8iUnYi0a7kz/v+5C
+	 pan8dcUSFxZy567tDaTjAMsbSs1Db0sNUvMgQjlajS7xRVrC7wBNH57/Pq7nmP/xju
+	 um2I5AbY5d+hs9OuO1I7fpaK7AyRp0tzxh3YZuYgd3by58qEzXbEuwmnJHIZzCLEp1
+	 b80S7PwMqKOmKn2l6oabIfvQtJp64+tWn6gnGnbA6TV3EDHHiN1DsZEpb6MpBHS+jO
+	 iklcSTwvSUNyEjbfp+Z+JKnQsT29XOXLf7xAkaTud6/9+CW57Op8R9UVvlDHpoOslt
+	 +UJKj+Owx/s2A==
+Date: Thu, 23 Nov 2023 17:31:35 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Zhi Mao <zhi.mao@mediatek.com>
+Cc: mchehab@kernel.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, shengnan.wang@mediatek.com,
+	yaya.chang@mediatek.com, 10572168@qq.com,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jacopo.mondi@ideasonboard.com, sakari.ailus@linux.intel.com,
+	hverkuil-cisco@xs4all.nl, heiko@sntech.de, jernej.skrabec@gmail.com,
+	macromorgan@hotmail.com, linus.walleij@linaro.org,
+	laurent.pinchart@ideasonboard.com, hdegoede@redhat.com,
+	tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
+	andy.shevchenko@gmail.com, bingbu.cao@intel.com,
+	dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] media: dt-bindings: media: i2c: Document GC08A3
+ bindings
+Message-ID: <20231123-magical-rupture-83251807e995@spud>
+References: <20231123115104.32094-1-zhi.mao@mediatek.com>
+ <20231123115104.32094-2-zhi.mao@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="f2xwjnd6lnhuiwuu"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="01MH2fFNhMpUwwbA"
 Content-Disposition: inline
-In-Reply-To: <20231123134716.2033769-1-mwalle@kernel.org>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+In-Reply-To: <20231123115104.32094-2-zhi.mao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_092837_927628_ED0A8745 
-X-CRM114-Status: GOOD (  17.98  )
+X-CRM114-CacheID: sfid-20231123_093146_973629_052EB971 
+X-CRM114-Status: GOOD (  21.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,70 +88,210 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---f2xwjnd6lnhuiwuu
-Content-Type: text/plain; charset=iso-8859-1
+--01MH2fFNhMpUwwbA
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Nov 23, 2023 at 02:47:16PM +0100, Michael Walle wrote:
-> Xinlei Lee's mail is bouncing:
+On Thu, Nov 23, 2023 at 07:51:03PM +0800, Zhi Mao wrote:
+> Add YAML device tree binding for GC08A3 CMOS image sensor,=20
+> and the relevant MAINTAINERS entries.
 >=20
-> <xinlei.lee@mediatek.com>: host mailgw02.mediatek.com[216.200.240.185] sa=
-id:
->     550 Relaying mail to xinlei.lee@mediatek.com is not allowed (in reply=
- to
->     RCPT TO command)
->=20
-> Remove it.
->=20
-> Signed-off-by: Michael Walle <mwalle@kernel.org>
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+
+Please test your bindings.
+
 > ---
->  Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 1 -
->  1 file changed, 1 deletion(-)
+>  .../bindings/media/i2c/galaxycore,gc08a3.yaml | 128 ++++++++++++++++++
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+>  2 files changed, 130 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycor=
+e,gc08a3.yaml
 >=20
-> diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml=
- b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> index 153e146df7d4..afcdeed4e88a 100644
-> --- a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> +++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> @@ -8,7 +8,6 @@ title: MediaTek DISP_PWM Controller
-> =20
->  maintainers:
->    - Jitao Shi <jitao.shi@mediatek.com>
-> -  - Xinlei Lee <xinlei.lee@mediatek.com>
+> diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a=
+3.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+> new file mode 100644
+> index 000000000000..089ea321da91
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+> @@ -0,0 +1,128 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc08a3.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: GalaxyCore gc08a3 1/4" 8M Pixel MIPI CSI-2 sensor
+> +
+> +maintainers:
+> +  - Zhi Mao <zhi.mao@mediatek.com>
+> +
+> +description: |-
 
-Xinlei is also listed as maintainer in
-Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml.
+The |- is not needed, you have no formatting to preserve.
 
-Other than that:
+> +  The gc08a3 is a raw image sensor with an MIPI CSI-2 image data
+> +  interface and CCI (I2C compatible) control bus. The output format
+> +  is raw Bayer.
+> +
+> +properties:
+> +  compatible:
+> +    const: GalaxyCore,gc08a3
 
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+Please remove the capitals.
 
-because the address failed for me before, too.
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: Reference to the mclk clock.
 
-A confirmation by Jitao Shi would be nice ...
+Pointless, just use maxItems: 1.
 
-Best regards
-Uwe
+> +
+> +  assigned-clocks:
+> +    maxItems: 1
+> +
+> +  assigned-clock-rates:
+> +    maxItems: 1
+> +
+> +  enable-gpios:
+> +    description: Reference to the GPIO connected to the RESETB pin. Acti=
+ve low.
+> +    maxItems: 1
+> +
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+> +  vddio-supply:
+> +    description: Definition of the regulator used for the VDDIO power su=
+pply.
+> +
+> +  vdda-supply:
+> +    description: Definition of the regulator used for the VDDA power sup=
+ply.
+> +
+> +  vddd-supply:
+> +    description: Definition of the regulator used for the VDDD power sup=
+ply.
 
---f2xwjnd6lnhuiwuu
+These descriptions can all be replaced with "foo-supply: true" IMO.
+
+> +  port:
+> +    $ref: /schemas/graph.yaml#/$defs/port-base
+> +    unevaluatedProperties: false
+> +
+> +    properties:
+> +      endpoint:
+> +        $ref: /schemas/media/video-interfaces.yaml#
+> +        unevaluatedProperties: false
+> +
+> +        properties:
+> +          data-lanes:
+> +            oneOf:
+> +              - items:
+> +                  - const: 1
+> +                  - const: 2
+> +                  - const: 3
+> +                  - const: 4
+> +              - items:
+> +                  - const: 1
+> +                  - const: 2
+> +
+> +          link-frequencies: true
+> +
+> +        required:
+> +          - data-lanes
+> +          - link-frequencies
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+
+> +  - assigned-clocks
+> +  - assigned-clock-rates
+
+Why are these required?
+
+> +  - vddio-supply
+> +  - vdda-supply
+> +  - vddd-supply
+> +  - port
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +
+> +    i2c {
+> +        #address-cells =3D <1>;
+> +        #size-cells =3D <0>;
+> +
+> +        sensor0@2 {
+> +            status =3D "okay";
+> +            compatible =3D "GalaxyCore,gc08a3";
+> +            reg =3D <0x31>;
+> +
+> +            clocks =3D <&topckgen CLK_TOP_CAMTG>,
+> +                <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
+> +            clock-names =3D "xvclk", "freq_mux";
+> +            clock-frequency =3D <24000000>;
+> +
+> +            assigned-clocks =3D <&topckgen CLK_TOP_CAMTG>,
+> +                    <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
+> +            assigned-clock-parents =3D <&topckgen CLK_TOP_UNIVPLL_192M_D=
+8>;
+> +            assigned-clock-rates =3D <0>, <24000000>;
+> +
+> +            enable-gpios =3D <&pio 19 GPIO_ACTIVE_HIGH>;
+> +
+> +            pinctrl-names =3D "default";
+> +            pinctrl-0 =3D <&camera_pins_cam0>;
+> +
+> +            avdd-supply =3D <&mt6359_vfe28_ldo_reg>;
+> +
+> +            port {
+> +                sensor0_out_2: endpoint {
+> +                    data-lanes =3D <1 2 3 4>;
+> +                    link-frequencies =3D /bits/ 64 <336000000 207000000>;
+> +                    remote-endpoint =3D <&seninf_csi_port_0_in_2>;
+> +                };
+> +            };
+> +        };
+> +
+> +    };
+> +
+> +...
+> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Doc=
+umentation/devicetree/bindings/vendor-prefixes.yaml
+> index 309b94c328c8..a0bbec0bfee2 100644
+> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> @@ -502,6 +502,8 @@ patternProperties:
+>      description: Fujitsu Ltd.
+>    "^fxtec,.*":
+>      description: FX Technology Ltd.
+> +  "^GalaxyCore,.*":
+> +    description: GalaxyCore Inc.
+>    "^gardena,.*":
+>      description: GARDENA GmbH
+>    "^gateway,.*":
+> --=20
+> 2.25.1
+>=20
+
+--01MH2fFNhMpUwwbA
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmVfi7YACgkQj4D7WH0S
-/k5yMwf+IRIOP4q0ZLwdNez1e51AqVrao/6E0dqPhU7Cq9ka5Y8zr4Xx9wW3jz2d
-QPab0hcPzDgVd64whCgXEbclBDZOKPaURAWxWxprmyt2g4cAtuT4BfSlJ6bgG0Fd
-GJu9xpHiwJDPFaheBWM25hBmwYTie/j+ARN0OY+O9feJDUl3df06YJ1+s1M7euB2
-IGpslcBOi1TRE83Ll9y6nyUMTHYEyq5ZnIgm7zT2SoAjvmsI5qcE3SmiNJJsig07
-nl5nLTnjWfDYGfqKDixCOOokSSqW50Y42b5uX+iCxEMKmHtjKRhLrYbKkAvJVoYo
-/Wl2zfP2UdZo4ZP6rHVTRel63p12lg==
-=d7mx
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZV+MdwAKCRB4tDGHoIJi
+0nBfAQC7ikdh/7CYWD8MVt9f89SRYiuaWItKq/AI5yLxntzi+wD+JZEaDfqSeBAQ
+bZZuGrDAOKC/vGwQGO7ePPmXs4tOsw0=
+=zkKC
 -----END PGP SIGNATURE-----
 
---f2xwjnd6lnhuiwuu--
+--01MH2fFNhMpUwwbA--
 
