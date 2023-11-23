@@ -4,111 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C55EEC5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:33:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62246C624B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:34:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/hq7LNXGTuldiV4ecttMMHQLmxEW4ioDA8UB5OvVq6I=; b=T7HwD8Ip9K7UBqp59/+VkIpHW9
-	uAuXBkQDwNziTHAQfer8aWdM3M/ZKxqv4xSm77UcbEk7sfEe8Nccr1AI6OUXoYkFooeg5g1NfxxGM
-	1kVR4wehyEORrHrP0CzTMLMzkFUHrLMZ2E5hwaGQ9wk+7VeILOGW22RNDYGVmMpTzfMJeFLZ6qujD
-	uejG9XWIorqcTBeuu2kv6veg7rt2ggD03oTXoxZ0mcqueFULRMm9rvJN8dpDZS9U8S03AuZaJe/fF
-	zSRM2U5MJF/T3oXYhmaFAbq1AtC0afFDGApgY2Dp9quW3AdWGSFYbODB4x87ltJUCmLto/AokxhH1
-	t7mOGVaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DQLqhWdcmCuYocJAB6MhLGmTkQ/W4BV3c/F3CsAFf8M=; b=jjmkmUFef3rYsVsEnsIhO6fk5Z
+	4QGk18kv77tvkO+gXI4077Qq8+CRYVwKwmA22jR1u6zPprpW5ku30kIKN4hNolOT0vO4LYlQ7J0q3
+	desRyzT+OmIBzysaYPQFJy99Uyj2ziZhl/2AA83oxct9fUeigvZl3639BL6rgo/6rwCtqQE/hCBKP
+	MamgHgPd1beaMimbWuSodvcBXOxKpbMIhlJLSLbtPdTULfA3x1qH7wIY7Er/3Ek5ir845pzpP+y4G
+	L/qzupXdKDzfywZEsZ07rowfplY71HZ1sOvk24NUGBXNmNWrxC3H2k3efO2YaqKkCetF0ci5Wqdby
+	x6HEeuUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FS7-005bUB-34;
-	Thu, 23 Nov 2023 19:33:31 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1r6FSo-005beS-1D;
+	Thu, 23 Nov 2023 19:34:14 +0000
+Received: from mgamail.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FS4-005bTG-2W;
-	Thu, 23 Nov 2023 19:33:30 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-2c876e44157so14710371fa.2;
-        Thu, 23 Nov 2023 11:33:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700768006; x=1701372806; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=/hq7LNXGTuldiV4ecttMMHQLmxEW4ioDA8UB5OvVq6I=;
-        b=f+U41HdXXoGS+8YGLeR4YrsO5hd5a6jGJskUar+v/+D0ETzm6B4qi0oQ7C788+mEsp
-         n7SAf0NwWHv4pnL8umnHPQNTVCh99qZptMEWa3i8BPFRCcv46+XZCgGuzJgU4uWygbwU
-         +8Tebjh/pl4M5GTIfV0wfi5ZcpsIGnEtlLSzo9sY1K8IOQIWzSKHAngmC9mX7fVhAbtY
-         d3p4FG8eWk8QyXBfC9CBNL4a8NHrRbqJb8k3obyumwmtC96JRLxmfW5NoORgVXcBvlb9
-         dP/KQW6QcsxagckdkFyuGd1HbJ9Ox1dnR3M5TJgYchdd4K4utVWLkg1tpJoSrj5/fYlT
-         ZNdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700768006; x=1701372806;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/hq7LNXGTuldiV4ecttMMHQLmxEW4ioDA8UB5OvVq6I=;
-        b=XRWmtY9CY8XZYay4st9Uk8p89tVjgqHP2dNnoVWx3wiCWg/gHdoasCtH9uQCJPXCt/
-         V2qY0SIBUKmulTZQxZvPAupdAJfbIalq/np6DANVDQjO/0pPCp8UnWn0BDLc9+YU2f4j
-         wq6MokYVsfhGezgcMjL7ZhodGkSgI+6s207D6b/5RFzXVny/gN6QP07QF7xJrECXNJUc
-         beeHNJrPN/BFsJm8KC/vXtc5o9L1G2sX5LpROueZfSAPUfeaD45FgtOMWdSqCgUOfJRT
-         1XjzrHQwKsgYpMbmoO8iSuf76W22MJNRjZj6VUwYoIAqknR0X6QNyHeg+S0Y8iaoruBX
-         JYyQ==
-X-Gm-Message-State: AOJu0YxpUFgVXZBXJPI0FBnYXXlB6IrJxKjxEPb9iNaa5hBWQe958en6
-	BPq5ni1W3Zb7FXErGj/hyCw=
-X-Google-Smtp-Source: AGHT+IEpZV8AAS3AX/kSyCq/TvjTy4lvHHyqL6QV8NqZ0ODQESSmWB93J1AVOkRbP2EeuZ27xtYNUg==
-X-Received: by 2002:a2e:3a0f:0:b0:2c8:7962:cdc2 with SMTP id h15-20020a2e3a0f000000b002c87962cdc2mr223068lja.3.1700768005622;
-        Thu, 23 Nov 2023 11:33:25 -0800 (PST)
-Received: from Ansuel-xps. (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.gmail.com with ESMTPSA id a4-20020adfeec4000000b0033130644c87sm2442265wrp.54.2023.11.23.11.33.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Nov 2023 11:33:25 -0800 (PST)
-Message-ID: <655fa905.df0a0220.49d9b.7afd@mx.google.com>
-X-Google-Original-Message-ID: <ZV+pAo5jt0N9/AE2@Ansuel-xps.>
-Date: Thu, 23 Nov 2023 20:33:22 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
-	Jie Luo <quic_luoj@quicinc.com>, Rob Herring <robh@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+	id 1r6FSl-005bcI-2R;
+	Thu, 23 Nov 2023 19:34:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1700768051; x=1732304051;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=Cro7IHIecIo02j6c7iYOhKh81yiulS+fo6g+HwOWxo8=;
+  b=PPd7Tf/ziBro3eBkUIMME4uPP7IdQfpTsvfCcRgKkMjVJFGp9rItsVZz
+   2EdsXox++S5FmzkQrrL0yujSUG0Y4pkjClobcxlz0L2gPHpQitcCc7eLX
+   nzSAM03idgLmdY18cnSXrbM7u+kkPWz/yjKfbj2MggbdxR4BrhYfX8W39
+   WSIx60o5g/Of3gP/eovovUU1a6ruBsqtJU+h5FCdIFuxzGnNE9zRnrW6C
+   huQb0SFr6uCwcHtLSAC2to6exKdo3kTL50XGYG2EYM0ID7+/En2V9w64h
+   l5IALU111pctYpi2jyiGa5prT/hICr5mxNqY9xh6fU+Rsj+N4cuYWme1w
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="372482079"
+X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
+   d="scan'208";a="372482079"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:07 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="833506147"
+X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
+   d="scan'208";a="833506147"
+Received: from black.fi.intel.com ([10.237.72.28])
+  by fmsmga008.fm.intel.com with ESMTP; 23 Nov 2023 11:33:59 -0800
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+	id B843A38C; Thu, 23 Nov 2023 21:33:58 +0200 (EET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+	Jianlong Huang <jianlong.huang@starfivetech.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org,
+	linux-mips@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org
+Cc: Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
+	Andy Gross <agross@kernel.org>,
 	Bjorn Andersson <andersson@kernel.org>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Epping <david.epping@missinglinkelectronics.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Simon Horman <horms@kernel.org>,
-	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
- PHY package nodes
-References: <20231120135041.15259-4-ansuelsmth@gmail.com>
- <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
- <20231121144244.GA1682395-robh@kernel.org>
- <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
- <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
- <6a030399-b8ed-4e2c-899f-d82eb437aafa@lunn.ch>
- <655f2ba9.5d0a0220.294f3.38d8@mx.google.com>
- <c697488a-d34c-4c98-b4c7-64aef2fe583f@lunn.ch>
- <ZV9jM7ve3Kl6ZxSl@shell.armlinux.org.uk>
- <e32d5c84-7a88-4d9f-868f-98514deae6e9@lunn.ch>
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Hal Feng <hal.feng@starfivetech.com>
+Subject: [PATCH v2 04/21] pinctrl: imx: Use temporary variable to hold pins
+Date: Thu, 23 Nov 2023 21:31:32 +0200
+Message-ID: <20231123193355.3400852-5-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
+In-Reply-To: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
+References: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e32d5c84-7a88-4d9f-868f-98514deae6e9@lunn.ch>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_113328_823233_B7299794 
-X-CRM114-Status: GOOD (  26.12  )
+X-CRM114-CacheID: sfid-20231123_113411_805390_C5A3E9D4 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,73 +115,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 23, 2023 at 03:57:58PM +0100, Andrew Lunn wrote:
-> On Thu, Nov 23, 2023 at 02:35:31PM +0000, Russell King (Oracle) wrote:
-> > On Thu, Nov 23, 2023 at 03:27:05PM +0100, Andrew Lunn wrote:
-> > > > Just to be more precise qca807x can operate in 3 different mode:
-> > > > (this is controlled by the MODE_CFG bits)
-> > > 
-> > > > - QSGMII: 5 copper port
-> > > 
-> > > 4 slots over QSGMII, plus the second SERDES is connected to the MAC
-> > > using SGMII/1000BaseX?
-> > > 
-> > > > - PSGMII: 5 copper port
-> > > 
-> > > 5 slots over QSGMII, the second SERDES is idle?
-> > > 
-> > > > - PSGMII: 4 copper port + 1 combo (that can be both fiber or copper)
-> > > 
-> > > 5 slots over QSGMII, with the second SERDES connected to an SFP cage.
-> > > 
-> > > Are ports 1-4 always connected to the P/Q SGMII. Its only port 5 which
-> > > can use the second SERDES?
-> > 
-> > I think what would really help here is if there was an ascii table to
-> > describe the configurations, rather than trying to put it into words.
-> 
-> Yes.
-> 
-> And also for ipq4019. We need to merge these two threads of
-> conversation, since in the end they are probably the same driver, same
-> device tree etc.
->
+The pins are allocated from the heap, but in order to pass
+them as constant object, we need to use non-constant pointer.
+Achieve this by using a temporary variable.
 
-For everyone that missed Robert response in patch 12 let me quote him
-also here.
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/pinctrl/freescale/pinctrl-imx.c | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
-"
-Hi Andrew,
-I think that the description is confusing.
-QCA807x supports 3 different modes:
-1. PSGMII (5 copper ports)
-2. PSGMII (4 copper ports + 1 combo port)
-3. QSGMII+SGMII
-
-So, in case option 2 is selected then the combo port can also be used for
-1000Base-X and 100Base-FX modules or copper and it will autodetect the
-exact media.
-This is supported via the SFP op-s and I have been using it without issues
-for a while.
-
-I have not tested option 3 in combination with SFP to the copper
-module so I cant
-say whether that works.
-From what I can gather from the typical usage examples in the
-datasheet, this QSMII+SGMII
-mode is basically intended as a backward compatibility thing as only
-QCA SoC-s have PSGMII
-support so that you could still use SoC-s with QSGMII and SGMII support only.
-
-So there is no way to control the SerDes-es individually, only the
-global mode can be changed via
-the Chip configuration register in the Combo port.
-
-You can see the block diagram of this PHY in this public PDF on page 2[1].
-
-[1] https://content.codico.com/fileadmin/media/download/datasheets/qualcomm/qualcomm_qca8075.pdf
-"
-
+diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
+index 9bc16943014f..9099a7c81d4a 100644
+--- a/drivers/pinctrl/freescale/pinctrl-imx.c
++++ b/drivers/pinctrl/freescale/pinctrl-imx.c
+@@ -513,6 +513,7 @@ static int imx_pinctrl_parse_groups(struct device_node *np,
+ 	struct imx_pin *pin;
+ 	int size, pin_size;
+ 	const __be32 *list;
++	int *pins;
+ 	int i;
+ 
+ 	dev_dbg(ipctl->dev, "group(%d): %pOFn\n", index, np);
+@@ -557,20 +558,20 @@ static int imx_pinctrl_parse_groups(struct device_node *np,
+ 	grp->data = devm_kcalloc(ipctl->dev,
+ 				 grp->num_pins, sizeof(struct imx_pin),
+ 				 GFP_KERNEL);
+-	grp->pins = devm_kcalloc(ipctl->dev,
+-				 grp->num_pins, sizeof(unsigned int),
+-				 GFP_KERNEL);
+-	if (!grp->pins || !grp->data)
++	if (!grp->data)
+ 		return -ENOMEM;
+ 
++	pins = devm_kcalloc(ipctl->dev, grp->num_pins, sizeof(*pins), GFP_KERNEL);
++	if (!pins)
++		return -ENOMEM;
++	grp->pins = pins;
++
+ 	for (i = 0; i < grp->num_pins; i++) {
+ 		pin = &((struct imx_pin *)(grp->data))[i];
+ 		if (info->flags & IMX_USE_SCU)
+-			info->imx_pinctrl_parse_pin(ipctl, &grp->pins[i],
+-						  pin, &list);
++			info->imx_pinctrl_parse_pin(ipctl, &pins[i], pin, &list);
+ 		else
+-			imx_pinctrl_parse_pin_mmio(ipctl, &grp->pins[i],
+-						   pin, &list, np);
++			imx_pinctrl_parse_pin_mmio(ipctl, &pins[i], pin, &list, np);
+ 	}
+ 
+ 	return 0;
 -- 
-	Ansuel
+2.43.0.rc1.1.gbec44491f096
+
 
