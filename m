@@ -4,68 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3CC3C624B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 11:02:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29025C61D85
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 11:11:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=d/75rQw01jjbDpZNJ0f+uoVY1030Ef0PzAkLFMaOg9I=; b=ye6xfniW/L3i8Ehq/fJqG6x1Yc
-	m0QlJXfPTd5u2pLj1T5Qo1leBYFQvVrykRqXGxmZRlhh0aT04IEg8nSM05KQk8BysOpcickGaKVob
-	NlIXnCLy8zTT4pilBdjjkhr4IyKJXczzgmh1kw7bnuk4Ik9E0jfiJl5/22vfvC1hwPB04py8A6AjL
-	69AvKhZx4n0juvfhrU63QwEUEO5j/WqMx5TVfI53VHlQ4QrtnD2AVYqKI2phk15xfKWJIQg6z2tJV
-	DsxekqIvZhuQvFCWqxyy5w5SRfT4ng00iKDuqBE96hWM5pMQ0ZUX8lj9aT1t88uoUTpNXifvLih4+
-	/2dTLc+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LkE5Nuq5cpUfZVO4p3a9aPdP5nVFWe7nwzvBcr5GDNk=; b=arTXPY8Tk9SYtdLDoeYknBRsqe
+	+A6tuGAyPl/jg7rCvF63SFWYO6z60gxxCoV/WJLs5tW9qXWjUbbF7axmcn6sffS48i9IxpKjhzO2D
+	t8cBmkBWRJsrK9E1lFZ9w2WU/fyK725yBopQqv01aECXtBPjJtfK9UBm66vB9RUbc4LYBYU4wFzdk
+	DIhavrbY4L6/eR3ge0ZAgP1QvFamRYbyqDfKxHnRFWyOikS9jjt71vaElyaaiKZy4LEIJ8VaoXA6W
+	0whjH7MoX7I9iZXEdlvaD2EjXckrb4Lilb/GmA++tRMRWf2JPc5vuXnHtg+gBnxz9lGoH9PQWJOx5
+	SqbQd14w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r67TP-004SCg-25;
-	Thu, 23 Nov 2023 11:02:19 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r67cQ-004TiA-2N;
+	Thu, 23 Nov 2023 11:11:38 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r67TM-004SBo-2Y;
-	Thu, 23 Nov 2023 11:02:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 98D8061F2F;
-	Thu, 23 Nov 2023 11:02:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62CFBC433C7;
-	Thu, 23 Nov 2023 11:02:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700737335;
-	bh=wGEC7NeVuil562coNYSljHzRxwtVUGQAUh7l2e2swGA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Dn6wlwSYfiG7Sidrra0kIMHkZaNULLwwBRrTsZLHXaDjU9uyw3MIYxtdhe4Mmm4lZ
-	 htgWBW2kjBpWattsDiGm95gY0c6oZ/qfw0fEj/lsgfIuDvt0bnqlUzQDVpsuhfhrSW
-	 jqLWo2DOAJilMah1rmmFYa/vwFnL3Sl9Q66WNnHPpDpS0MZl8bwTO3dnR6AT1ciLHo
-	 ob5udTeYtRofrHZp286+dX5hK1+s6vYy4knsFoGuQtWomA+nMFvq/mdNV9rInSq0xr
-	 7CGC0fo5B/x//hrPPmYPpshnnz+fVHSeAPgPQ7UE++s6pUIuhEE/YpJt1RVstdt8Jt
-	 b083dvF0JJf9A==
-From: Michael Walle <mwalle@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	Jitao Shi <jitao.shi@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Michael Walle <mwalle@kernel.org>
-Subject: [PATCH] phy: mediatek: mipi: mt8183: fix minimal supported frequency
-Date: Thu, 23 Nov 2023 12:02:02 +0100
-Message-Id: <20231123110202.2025585-1-mwalle@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	id 1r67cN-004Th9-0Y;
+	Thu, 23 Nov 2023 11:11:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=s31663417; t=1700737862; x=1701342662; i=j.neuschaefer@gmx.net;
+	bh=LkE5Nuq5cpUfZVO4p3a9aPdP5nVFWe7nwzvBcr5GDNk=;
+	h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:
+	 In-Reply-To;
+	b=S7iVe7/0DFJ2Glol27Dhh4tQ2/MSVm6hQfrQTYHOjexz+b3exqTH6gjYP/ugO0dJ
+	 ywmNfO1UhMb720kxrgKEDi4jGPUGAHuManuT3bEKyfHmBWeFlQVGHaNeLDP5mBjx4
+	 md8PO1K0ouI3ETbJYh6QpvvLPPDKB/P0UmcmTwKl+wpGJtmcbm/CnMiBgIzDDg10P
+	 D+a+KXRbeDbEQKkjPmZqHFjfgXJiH4hpwyrgjc0aPj7T/oa9SrIH0X15+132g4w4l
+	 0TB4B9/IyFZck9/7XBEjAFQ0OwnZrirjoJJBNWFx3A9/ZAvdYycYiks+0KnKlcm6n
+	 0YCmGndubOBkrZkI4A==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from probook ([89.0.47.44]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MfHEP-1rY1Ne2r3T-00gsCP; Thu, 23
+ Nov 2023 12:11:01 +0100
+Date: Thu, 23 Nov 2023 12:10:57 +0100
+From: =?utf-8?Q?J=2E_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+	Jianlong Huang <jianlong.huang@starfivetech.com>,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org, linux-mips@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Andy Gross <agross@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Hal Feng <hal.feng@starfivetech.com>,
+	Basavaraj Natikar <Basavaraj.Natikar@amd.com>
+Subject: Re: [PATCH v1 00/17] pinctrl: Convert struct group_desc to use
+ struct pingroup
+Message-ID: <ZV8zQZyT4Kwom-m_@probook>
+References: <20231122164040.2262742-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ITcYWtdfuDR2w/Y2"
+Content-Disposition: inline
+In-Reply-To: <20231122164040.2262742-1-andriy.shevchenko@linux.intel.com>
+X-Provags-ID: V03:K1:wGI5Xyg60PX5Zi8dLHVTABR+Ax9JUsCqbiZjKL4ncgCtAcMMEAg
+ dvO2Gv8Fy9M1TFaBXJaUQ52G9VUbCo0zhirW5WpIJmiSbL4Ad71TGzG5CInLYjx4k0znTxp
+ MsYKpvrDvhRcT8VzpTAal6yl9EyYSd4HX/pNnbueeTP18AtDFXhKZ/baUvLS1o0FqHAC39e
+ kaH9t9h50tBeo/979hVUw==
+UI-OutboundReport: notjunk:1;M01:P0:mCrqrZi3U7U=;hjgkNsvydEYHgYUAxEqXVR1jW+v
+ WAXa6jsttiV3Ln4DZ0S5+IfJl56rm95DOKlTbmcQr9WKDtczoY7w0WO7tCbq2TdsLZY4M/XNV
+ gjlNSBVDMGmX6Dx+i1B4+IqZD7nYXCg8bpeUVskTtGD2ehd+tuYqiLrKaUZYt5YX5Bi6SxaZk
+ SiafR5fV2qFEZqSfzgTb3+oyzR8LUbyJT3Ch8FXlvqXpYkz1y4rpe9td7RUV0RTzb303uZ84G
+ dHbPwbngHJ4KbtY3l92y2SoCUiA2cDtF1if6HCE9uEysOZnYbxtOBQ8jhcc9HERdxHZk10q+o
+ 0IcYykIaku/u4b3Y2qHwPM/lYiaeuJGZ3FjBMt/89ZPPId97BUvM34EE6lkv6iatlizmdH6k1
+ 9Iz2dRT9uzWLof1mSy5aZwc6Q0Nhtn1sjOHwJevNOgn+uZdhoe58sxHP3tO2eWNs9ntxLuftr
+ dxttOpDHjf699kxi7zl5jdx3jOINoildv+AVS25xKHTs3VQBkXk8mikzFSRWrqccciuqI8+bc
+ pcD5A8NygGPERdmPNO5o56xYOLncor6g9sVhjh6s9Tj8vkqN94iLpNjo25E4CUH/5kHIOQBD1
+ rLIvJ8xE/MPsbZH5F8VJmuNMyMv159TRsi+r9tp7MBinkypKzTlxsh6bj+DuYsf0dK6FzGKvA
+ J3lvXIqSfDD9+1BRjI5XZBww/49z0+lFBMkd+5NTSlbugIVD5/qS9adHgeiZPmIABBK0RYTeM
+ Oz74R7Jyp+sKVRS0zp7ME8ExUBQJxin4+XkDnqd3mC4MmD5c7AiV6QKuKHcY48LWKfkT0YDvv
+ pludqeafs1x5RDFyz3R7XvuaGFjXVyq64BT0Fe0GeeCnq3HuianeceIzs+dH6lSkmV58QdfiH
+ 1GPyNtEGK1v7vZz6hJoMkbkR36G+EnJNBQWGEWq1ExKq+NCHsm89f9ytrRtXmkg43No+v6wVP
+ sgRCrNM1X0IPjxzWfH5ew/bkMSM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_030216_893434_55D5877A 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20231123_031135_681288_67D8D52B 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +120,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The lowest supported clock frequency of the PHY is 125MHz (see also
-mtk_mipi_tx_pll_enable()), but the clamping in .round_rate() has the
-wrong minimal value, which will make the .enable() op return -EINVAL on
-low frequencies. Fix the minimal clamping value.
 
-Fixes: efda51a58b4a ("drm/mediatek: add mipi_tx driver for mt8183")
-Signed-off-by: Michael Walle <mwalle@kernel.org>
----
- drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--ITcYWtdfuDR2w/Y2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-index f021ec5a70e5..553725e1269c 100644
---- a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-+++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-@@ -100,7 +100,7 @@ static void mtk_mipi_tx_pll_disable(struct clk_hw *hw)
- static long mtk_mipi_tx_pll_round_rate(struct clk_hw *hw, unsigned long rate,
- 				       unsigned long *prate)
- {
--	return clamp_val(rate, 50000000, 1600000000);
-+	return clamp_val(rate, 125000000, 1600000000);
- }
- 
- static const struct clk_ops mtk_mipi_tx_pll_ops = {
--- 
-2.39.2
+On Wed, Nov 22, 2023 at 06:35:32PM +0200, Andy Shevchenko wrote:
+> The struct group_desc has a lot of duplication with struct pingroup.=20
+> Deduplicate that by embeddind the latter in the former and convert
+> users.
 
+It is strange to me that struct pingroup was introduced without any
+reference to the pre-existing struct group_desc, but it's good to see
+them unified at last.
+
+Even better might be to move the definitions next to each other in the
+same file, so that anyone who finds one, also finds the other.
+
+
+Thanks,
+Jonathan
+
+>=20
+> Linus, assuming everything is fine, I can push this to my tree.
+> Or you can apply it (assumming all CIs and people are happy with
+> the series).
+>=20
+> NB. This series contains previously sent patches for Qualcomm and
+> Nuovoton. Here the updated version for Qualcomm that splits previous
+> patch to two and fixes compilation warnings.
+>=20
+> NB. The function_desc is in plan to follow the similar deduplication.
+
+--ITcYWtdfuDR2w/Y2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEvHAHGBBjQPVy+qvDCDBEmo7zX9sFAmVfMyAACgkQCDBEmo7z
+X9tfixAAghfTTH5Cq8CFefsef3u1AwmB5dL8brGS/xkDMXHN/RwR0sn/Zr/kxANZ
+Ko9qr9vnCVoSmNi8MwdIRBGOugPq+ZnD40EXBsBtW0BzwkqH9U3tRMhbpucS7F+7
+k+BDoiMeVa7vBNvRQK6XltOa9KRlbppR6wmesPZkzsTJyk/iLCCNTcNBekW8KbQp
+HNCfDoQS0m4cpYW66VdUP7hgBleB/Fjn6ttt0udhrEuFFL5hlKLn87dEo43224nm
+o/DNGFVXXt9Mn+FxxWhhAx01nvc3TaGlCuLqbPXb8v/cyffRFY9SmRa1aJY21zJN
+vr/a+eW7RB5Pi3MAKu8hYEv6nG7Hu/GCN9/hRGpfCv6hat+qyQU0TGRuAmJTKLre
+PxlacpHbRhsGZByRg/sT1cfYA17+EMDuWHDIO7Yj06TNSJdZKO4ucPwdC4Q6zjJc
+pf+gQDIGOU+A/rLwh0HD4ZH30vavQ5uEj0xJhmsUmL+rb+EY78Xj90sGSXvrpCNE
+J/A/1gRjF670OFsRq8+4eMxZ3e5DUx/oNobi5IbAHNnfHh88kjlcYJ1TSBPkvIfR
+czTkc3e6E+n1whHAD9XzIdI+QuftgWXoHr2FFozxoH36a01YAM9t1WJX7BvLCS/9
+YL9i3b/NVhvojwn71TmOgomDm0aKznw/Q2QtJ9PYINrXbh1pyCU=
+=qPNB
+-----END PGP SIGNATURE-----
+
+--ITcYWtdfuDR2w/Y2--
 
