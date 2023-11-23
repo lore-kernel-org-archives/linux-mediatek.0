@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA04C636BD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:35:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 634F4C5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 19:35:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3pCoAXUVTPJNXyWVwpcufyPb4MHPdzEPSkECtmUPXWY=; b=WDNszI2p6HA+Ucgd4JVdFCVJzt
-	wL1Pny3V7lGUWiM5EMQuHrz8S0O1o2LhehrXCv6DEKxtsmBO6K8cj3hG+zA1v6jWPiL7QG/J1T00G
-	5AuGLOpA0Hqrj92ni68qbG24z8pcWtn82/JrAdwpdiGgRaRrEuY/aYU1+YrX7/gERDTssQfuN1HB2
-	iTQv2MoaEAcBuetUrcXp4t3WYvaxyg50lrifEgQ+Jn+rh7BzwqOxfQYtB9kmXkaSFrr9VTurH5H2o
-	J/ACC9PgJtD/OsIPLj1qMkkvP0LjpgmxAjThXlrfAy9//7kHmUE6wv8tFoL31AGm5y2gL8WSSvcss
-	wPH+QxIQ==;
+	bh=Ex0DQSNg7EFszQtX5RoiVJcmeDxP3a9mRzX0fzbvuKE=; b=yz/iHCGAkS2NTM0JEv5eJevNsx
+	E8CiHjm6PKiz33F2+1NBR6TiMwJFql2bA1RZbU7ezvqfUoRQJR8srQm88IJ/SFRwrySLmLlbG/A8f
+	ZjGHhCEB0HUMsAybw9SVfqFWGcFqAONf0DSQD9XNXBNqaoY+k56YE7glkezgy5rp6D4M5+6fxOq2d
+	1Bsc/R5wiqt4UEzmyOcfmkJpyOS4tc46fqRlY7ZbCt9gPgk+z6xaP+/JfxC/iN5CliOhEXor+igMs
+	sJBre5NCBkRL2nX4uhrwfpBqWBJWCK9dpT9Cq0gQ1aZNB5sBVeIpOO68meiClNrQtNK/hh4eaJ8Ui
+	J2ZU21fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FTs-005cMr-13;
-	Thu, 23 Nov 2023 19:35:20 +0000
-Received: from mgamail.intel.com ([192.55.52.136])
+	id 1r6FTv-005cPc-0w;
+	Thu, 23 Nov 2023 19:35:23 +0000
+Received: from mgamail.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FSu-005bcN-11;
-	Thu, 23 Nov 2023 19:34:21 +0000
+	id 1r6FT0-005bmX-0u;
+	Thu, 23 Nov 2023 19:34:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1700768060; x=1732304060;
+  t=1700768066; x=1732304066;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=B/Nvafeg+or7X3fBtSVgPAx87y495D+9YW1QS9ZZz18=;
-  b=UpQv1L4Eo6gmj6CkIPePiZ0rhdvPNsw+Y1Rfwg4zU62j3uCnydHasaUS
-   XmEE1ZYj0dhHcyWI/ufJZGlku5LdDJz3JVU0brCWvIKzqsdIiUJh0wQIe
-   uZ+mFZs1wRidBUAW1KuDXk0AXMQOAf66G7SgTiFtyfzDlDR69PuZJmi0Z
-   m2C0ZGdAsub9/1GOQ/0ROkbhLBHFYj9DwfdQnqhFXDirZlIbBJ+ttMESp
-   GB1VK3+TTC6weoq2Inxoox0vIGTIOoSbo2ELl2Ea27HWq2J3z1CJGLpFa
-   3Z0ozk7kvaI8fRlnEoj6s8mxzXdcwdYWBw+1k22PTWXn6j+TL9gB2LW67
+  bh=sVrQMG6+2GAUAidaCzSxGKkLGLuxJJfZImVu6UcJOZo=;
+  b=BM4xiSE0LW4wI5j8/vsMuH22EFGRr4y0Nxx4HVPRloxCxA3MUfuwIEzZ
+   u+Qcf+oQY6+GydC9x3aM2wfZXEpDleAMjbow6JFCH7IMqIcmMNC5yZ4xI
+   JffgpvdmLh6bb4fl0yKelKZpgSw5MXOiyoff8YZSl942tbDBDxWewAr48
+   EAxKCzBygUXkbAYcBPVxg3RZ3evdOx0ECUA2EbJCMhe/Yz34+8J8XTGMd
+   zylbPsHOqCvRz0+DCf+q1+D954w/XRgMYXCbyt8KL98B2YF4ovM1nB6fR
+   havTZss4RNE55FqdannyeMeLBUJfLhYuixOwPTrU/1wwhP5HE+A5dgIcP
    g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="371671491"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="372482228"
 X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
-   d="scan'208";a="371671491"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:17 -0800
+   d="scan'208";a="372482228"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2023 11:34:25 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="771062262"
+X-IronPort-AV: E=McAfee;i="6600,9927,10902"; a="833506174"
 X-IronPort-AV: E=Sophos;i="6.04,222,1695711600"; 
-   d="scan'208";a="771062262"
+   d="scan'208";a="833506174"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga007.fm.intel.com with ESMTP; 23 Nov 2023 11:34:09 -0800
+  by fmsmga008.fm.intel.com with ESMTP; 23 Nov 2023 11:34:17 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 412997AF; Thu, 23 Nov 2023 21:33:59 +0200 (EET)
+	id 736D09EF; Thu, 23 Nov 2023 21:33:59 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -90,17 +90,17 @@ Cc: Ray Jui <rjui@broadcom.com>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v2 13/21] pinctrl: bcm: Convert to use grp member
-Date: Thu, 23 Nov 2023 21:31:41 +0200
-Message-ID: <20231123193355.3400852-14-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 17/21] pinctrl: keembay: Convert to use grp member
+Date: Thu, 23 Nov 2023 21:31:45 +0200
+Message-ID: <20231123193355.3400852-18-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
 In-Reply-To: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 References: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_113420_379845_F4C4CEF6 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20231123_113426_330082_37FCCFE0 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,24 +119,22 @@ Convert drivers to use grp member embedded in struct group_desc.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/bcm/pinctrl-ns.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/pinctrl/pinctrl-keembay.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pinctrl/bcm/pinctrl-ns.c b/drivers/pinctrl/bcm/pinctrl-ns.c
-index d099a7f25f64..6bb2b461950b 100644
---- a/drivers/pinctrl/bcm/pinctrl-ns.c
-+++ b/drivers/pinctrl/bcm/pinctrl-ns.c
-@@ -171,8 +171,8 @@ static int ns_pinctrl_set_mux(struct pinctrl_dev *pctrl_dev,
- 	if (!group)
+diff --git a/drivers/pinctrl/pinctrl-keembay.c b/drivers/pinctrl/pinctrl-keembay.c
+index 87d328853ae4..b1349ee22799 100644
+--- a/drivers/pinctrl/pinctrl-keembay.c
++++ b/drivers/pinctrl/pinctrl-keembay.c
+@@ -945,7 +945,7 @@ static int keembay_set_mux(struct pinctrl_dev *pctldev, unsigned int fun_sel,
  		return -EINVAL;
  
--	for (i = 0; i < group->num_pins; i++)
--		unset |= BIT(group->pins[i]);
-+	for (i = 0; i < group->grp.npins; i++)
-+		unset |= BIT(group->grp.pins[i]);
+ 	/* Change modes for pins in the selected group */
+-	pin = *grp->pins;
++	pin = *grp->grp.pins;
+ 	pin_mode = *(u8 *)(func->data);
  
- 	tmp = readl(ns_pinctrl->base);
- 	tmp &= ~unset;
+ 	val = keembay_read_reg(kpc->base1 + KEEMBAY_GPIO_MODE, pin);
 -- 
 2.43.0.rc1.1.gbec44491f096
 
