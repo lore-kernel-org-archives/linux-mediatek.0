@@ -4,69 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 430C4C61D97
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 17:00:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CC91C5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 17:13:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=shNwRSJAh0/ETlL0NEUSQCQi7Y0q43GbKvBc1vtEiE0=; b=VWtUv/qCyIlp6S1O6LRr2O6BOA
-	vKVi8kb0yxkixvzJ0Vd0O2AYht1Jg7BGGgyjzqmRcL6y31DARAICgs+NvCJlPis7lDYqElw1THZbS
-	KjY0jbinHF1nfsVR85HfieDF+m3NsAsNv3wBywaKfjlULoMY2dlcZlgBLt+6qZPK0YCSORNvDEMQg
-	gqjuKL57midNUgrm+WnXmWu7M1eIHzPg6wmXC/ZIvo+SU/jtCadxZhRPOoR0Q3asREIbSxZqChDYZ
-	ShEr+USBG8EJE+L4gpMslouKXMPpGJIwnYlK9v1kiVEaBBjrFfXP8g9gRANVKshj5Gxe33ZpTCAF9
-	Cp2kI2YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bKNwCpnkd4HHouKuRGDnXl3uAXRtD1+lzSL7fC1Un1Y=; b=TjXpa0p1zySTMiluQYoNk34YXU
+	la3BMO9TQuqdxrtHYR0QagKKbPPWP9pL8tVqys53hOOkVk5FMbC+MhZxgJjmkv007yr7+epfKBz12
+	sXckG0vDqng7OhAPipGoMgf1woYwbiicGGBx4ZfdZ/A/XyYdHYQPkAzBSkv5cKh5e6cJ48vkhQ5ht
+	SrzgW8G5FkGFLvoXVj1yPh2llGoQD/jrvgcT5JMZKgxLngJISbqu+f/wizxN9Rc/p7nKHkpqN/mCP
+	y3GALCj701q33yEQ7EZ14MXv7sa3zViVrCDdJv7g/XOL2cdLsYKT97FY3W6iJjF7nn5lpsKy5s67z
+	aKfeQmhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6D3m-005Mcw-2f;
-	Thu, 23 Nov 2023 17:00:14 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1r6DGw-005NwO-1g;
+	Thu, 23 Nov 2023 17:13:50 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6D3j-005Mc4-1A;
-	Thu, 23 Nov 2023 17:00:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 30C5FCE2B49;
-	Thu, 23 Nov 2023 17:00:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 712E7C433CA;
-	Thu, 23 Nov 2023 17:00:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700758808;
-	bh=zGd8DxX1wjCChLzUne6ijJYjDDvfRf0xhdz0NGOau8E=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=YuFMepwnkk1Ibv/ZBmbqWCCs12vo6vaJDeqmnjEUC+86kx0cM3RNA7ub58tJbDhbn
-	 Dy5FDpgrzCZxQU2wrFwjxPvHsOwNp+u1LSlBGJ1nuYPcS8k6CqZHYXPrCtPoBGW9Ql
-	 2FqtrnIYIAWr9J8GjDh+R5wLbY5UlFAC9exhti2D2qXdC9ampGxp/oTSBPqxK2GGSw
-	 jrP7UR7A9Et4XcPvvbeb93IkXA6vVKcshp3UyvG/G3QNLuIOzQNlVzkR4BiXROuAG5
-	 1shAK1QFDS8rtSFNVFOdISztpU5b0+504LUZuIGeOX4uuGu2JgbxHhyE07FsxlAgle
-	 MlvqzVtg7vzoQ==
-From: Mark Brown <broonie@kernel.org>
-To: pierre-louis.bossart@linux.intel.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: lgirdwood@gmail.com, peter.ujfalusi@linux.intel.com, 
- yung-chuan.liao@linux.intel.com, ranjani.sridharan@linux.intel.com, 
- daniel.baluta@nxp.com, kai.vehmanen@linux.intel.com, perex@perex.cz, 
- tiwai@suse.com, matthias.bgg@gmail.com, trevor.wu@mediatek.com, 
- tinghan.shen@mediatek.com, u.kleine-koenig@pengutronix.de, 
- kuninori.morimoto.gx@renesas.com, sound-open-firmware@alsa-project.org, 
- linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- wenst@chromium.org, kernel@collabora.com
-In-Reply-To: <20231123084454.20471-1-angelogioacchino.delregno@collabora.com>
-References: <20231123084454.20471-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] ASoC: SOF: mediatek: mt8186: Add Google Steelix
- topology compatible
-Message-Id: <170075880330.2448402.15081642632125216155.b4-ty@kernel.org>
-Date: Thu, 23 Nov 2023 17:00:03 +0000
+	id 1r6DGt-005Nvi-07
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Nov 2023 17:13:48 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-daf4f0e3a0fso1053396276.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Nov 2023 09:13:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1700759625; x=1701364425; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=bKNwCpnkd4HHouKuRGDnXl3uAXRtD1+lzSL7fC1Un1Y=;
+        b=r++wz9DDV1Y4BpgRbP0nDkRw2bntujLIn/kaTf0IJHHg8rS6l4EbAXm0As6hrgFZqH
+         6gdvwX+j5dH03ZkqqKlxVE+euGaRhQ3Pv+O5yUKnHzjEdEEQA8fIqxoXC4c2/8HbwjDi
+         FGkmOw2YQX2u+qvb3qdXgxSGOTYTc7aKWJJJkMVyUWi2DefPO09iRJekLVf//74wdSN4
+         BRSf6sw2/jys3QmppJjERAqQ+Qx/2itlDzx21QBAlr3qpAJQ79fPybxv7Uc5hR1PMDMw
+         +dzjobnuWuLwx+Xxv9A7uDmYV5lXHvDDyDE4HtU+RMIE7iY+MEO7CHntVdSYn7lnshGp
+         YJxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700759625; x=1701364425;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bKNwCpnkd4HHouKuRGDnXl3uAXRtD1+lzSL7fC1Un1Y=;
+        b=AScpbUivnGPbixAJv8OIW2lp4xarF0vWsAPo0mslCLa5iStuvreFVF/GGpEK4ROToF
+         4ebHbxLOtSRj/+L7HU8ArDKqbJEy03YwcqLKmL7kDZCuEiHFWf6+Kp1OzbigbXhUOJhc
+         sQZxe/bw0Zy32ZSgY/fV4W7BQGXmCwzu6nC56WboMfCCOhy+BjkRi8KOcjdfv96fL0UQ
+         jJNclsKfBQKC072s43k9TCYMKXlUq0nE0fzIIhA+rwg5xPUau0flJUxiRvbhhQ+twkKz
+         PXILxwfDYL6AfKTnY1mVuhpaOnSTkPSbr+zIHLawgrCS2mMhvPtGDuZerPtc8989504F
+         gMWQ==
+X-Gm-Message-State: AOJu0YwVVbz52ocKktNqSNeqDobjQgOSj+CX2xT6xRgj6FslmYDhaVHN
+	ctyv56KT/nqCur+7kmRGTE3JtVFfiy29IlGEF8f+tg==
+X-Google-Smtp-Source: AGHT+IGFr6g8jlQ3HN+XUNNaKBgc8oVfUM5jYKRK0VWTl7TjhJHxHFo9KjRuS+1jJjO2xdJg2ndmcfoZW2K0mOMBkR4=
+X-Received: by 2002:a25:6b06:0:b0:daf:76da:fe2b with SMTP id
+ g6-20020a256b06000000b00daf76dafe2bmr6007585ybc.10.1700759624759; Thu, 23 Nov
+ 2023 09:13:44 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-0438c
+References: <20231117095531.1693753-1-treapking@chromium.org>
+In-Reply-To: <20231117095531.1693753-1-treapking@chromium.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 23 Nov 2023 18:13:09 +0100
+Message-ID: <CAPDyKFqjcP2pAH8uo61Yc7wU76NM1aCMN6P1TaAoafCFfZSeWw@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mtk-sd: Increase the verbosity of msdc_track_cmd_data
+To: Pin-yen Lin <treapking@chromium.org>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, 
+	ot_shunxi.zhang@mediatek.corp-partner.google.com, 
+	linux-arm-kernel@lists.infradead.org, linux-mmc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_090011_585624_E3FCB03A 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231123_091347_679050_F9E9BEF1 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,38 +89,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 23 Nov 2023 09:44:54 +0100, AngeloGioacchino Del Regno wrote:
-> Add the machine compatible and topology filename for the Google Steelix
-> MT8186 Chromebook to load the correct SOF topology file.
-> 
-> 
+On Fri, 17 Nov 2023 at 10:55, Pin-yen Lin <treapking@chromium.org> wrote:
+>
+> This log message is necessary for debugging, so enable it by default to
+> debug issues that are hard to reproduce locally.
+>
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+>
+> ---
+>
+>  drivers/mmc/host/mtk-sd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 97f7c3d4be6e..4469003f571e 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1150,7 +1150,7 @@ static void msdc_recheck_sdio_irq(struct msdc_host *host)
+>  static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_command *cmd)
+>  {
+>         if (host->error)
+> -               dev_dbg(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
+> +               dev_err(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
+>                         __func__, cmd->opcode, cmd->arg, host->error);
 
-Applied to
+How critical is this? Should we perhaps use a dev_warn instead?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+>  }
+>
 
-Thanks!
-
-[1/1] ASoC: SOF: mediatek: mt8186: Add Google Steelix topology compatible
-      commit: 505c83212da5bfca95109421b8f5d9f8c6cdfef2
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Kind regards
+Uffe
 
