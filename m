@@ -4,93 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B93FC61DF7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 21:33:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1712BC61DF7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 22:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nmgRXoCC/6bVdvvn+DsQpOtnPLlwkOcJBQD/gcvPILU=; b=Qa60q1dMyEIXHe74gNFmiBwdXF
-	xs6dnzjKNLGok0Z6FQAmCY/mQfYtF7r83eI4etc26KoRYvArdmYYA6QlhIierUgzNW3AvWvc9WZ7g
-	U7e+4yqQ/M5HpdieFljw5nQqfJh5pHMr16bvkp/+WSaBGws9bMBC485fuWbGC6aL/rWK8uh2ik5oX
-	7F3M0XOy3sTY4XVBL9Tt5Bo135aJIfGeoVV0YU77FJFCFASLpFzSgYmITwbN91yroOJC20JamP+Mn
-	7CxiqXRRjB1KnxoBOkeE55SVrSdsuhdOvn3M/KY/XisNDZdfx/+hKw8+o9Finv78juvbgKssOcg9d
-	BXb1FYZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DEPY+zvj45hJxXKCKWnfcA9+K1JW4ORg7/+vSHPcGPI=; b=g7tXHGqEcyK2A3i3E7Xrnchj3y
+	ulW+svMt3SMB/27hJOE9/LsilbMaznrxCriIfHg9IgVF56VXId39b0dZMbRyEVmX3POm1Znu2HxTI
+	Myk2QGG+cltXmzqGQ2gb6Fh6wPpESnOeIaZFJ/v09Yd2OhUavWXL+IbZ4UMWrNQv52nu3gMZQjfk4
+	0397nT8k3ur9dCWZYQaOPDVZ7VfQiydtsn7XznBXakPzWs99qaiIeQiCWwm01oPGnjq3+7dpPlpSw
+	zBP2DvlVga4izSkPf14eV1rve7blfRCVSUx1wBjNP5jvYMd42yKbeL78jyWu0XkrtSTLhfOvgqNo0
+	DMVplnAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6HKX-005juD-2g;
-	Thu, 23 Nov 2023 21:33:49 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1r6ITN-005nfX-10;
+	Thu, 23 Nov 2023 22:47:01 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6HKT-005jtf-2f;
-	Thu, 23 Nov 2023 21:33:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A2BB36172F;
-	Thu, 23 Nov 2023 21:33:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BADBCC433C7;
-	Thu, 23 Nov 2023 21:33:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700775224;
-	bh=nmgRXoCC/6bVdvvn+DsQpOtnPLlwkOcJBQD/gcvPILU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QX5gnL6JXj8vwBd2hjrgTWmiQNvpaIU3ub8DZJit9Gh0ljsPaGJPx49AWqTyKl4EA
-	 MxLsTmaI0J08GfBbNmZjOMk5kO/qqeDp4cbPt3UIxlPrCxNX9Ybbo8D/5zN6YIT/c5
-	 Hnj6bfqt1z0klQSfKgjf1u2TKv2FBCx5URjphkB83BntI5fFoPmHmoZCLyARPTWK6O
-	 tphuxc8VElCdY2DqFnyhtojL941RLPd+x7YqE3ObFsb0vpG92ljXG0z8CMOuNRgrow
-	 rasw3VtSw505b5SaknZkPzLjb2F1Etfd4VuPA9L3fLwdIadEeib6E5YIE9YSMXlWfX
-	 3WbVK/7XEz8bA==
-Date: Thu, 23 Nov 2023 22:33:41 +0100
-From: Wolfram Sang <wsa@kernel.org>
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Cc: intel-gfx@lists.freedesktop.org, linux-i2c@vger.kernel.org,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	linux-fbdev@vger.kernel.org, amd-gfx@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Jocelyn Falempe <jfalempe@redhat.com>, linux-sunxi@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Yongqin Liu <yongqin.liu@linaro.org>,
-	John Stultz <jstultz@google.com>
-Subject: Re: [PATCH v5 00/20] remove I2C_CLASS_DDC support
-Message-ID: <ZV/FNWfw0jdXSglr@ninjato>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	intel-gfx@lists.freedesktop.org, linux-i2c@vger.kernel.org,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	linux-fbdev@vger.kernel.org, amd-gfx@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Jocelyn Falempe <jfalempe@redhat.com>, linux-sunxi@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Yongqin Liu <yongqin.liu@linaro.org>,
-	John Stultz <jstultz@google.com>
-References: <20231123094040.592-1-hkallweit1@gmail.com>
+	id 1r6ITJ-005neO-3A
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Nov 2023 22:46:59 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BBECE16B7;
+	Thu, 23 Nov 2023 23:46:23 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1700779583;
+	bh=DtezYFYVuIggL25DmUzU0IRSFPpaPCPb8n88LVr5IUQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=otxsSyVYUkRTsjBsHyTwwENVrXV8azevi+il07yZGhIbCMB0C8yI84nu4s/JA4FXh
+	 peUM2vzbwn43KAHTQj3CCqFkfg48s7oByQWhNRpTBpqYEPwJ2qYehV0k+O4ytbFMIC
+	 r/2WN9iuJbPCsaqqDVVwToev++i2NAXn1vk2G/Xg=
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: linux-media@vger.kernel.org
+Cc: Paul Elder <paul.elder@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Julien Stephan <jstephan@baylibre.com>,
+	Sakari Ailus <sakari.ailus@iki.fi>,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v7 2/3] media: uapi: Add controls for the THP7312 ISP
+Date: Fri, 24 Nov 2023 00:46:57 +0200
+Message-ID: <20231123224658.6959-3-laurent.pinchart@ideasonboard.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231123224658.6959-1-laurent.pinchart@ideasonboard.com>
+References: <20231123224658.6959-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xLjxEuZaeN8xgDN1"
-Content-Disposition: inline
-In-Reply-To: <20231123094040.592-1-hkallweit1@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_133345_958978_169C2D62 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20231123_144658_164587_DADBE4B6 
+X-CRM114-Status: GOOD (  21.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,56 +71,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The THP7312 is an external ISP from THine. As such, it implements a
+large number of parameters to control all aspects of the image
+processing. Many of those controls are already standard in V4L2, but
+some are fairly device-specific.
 
---xLjxEuZaeN8xgDN1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reserve a range of 32 controls for the device. The driver will implement
+4 device-specific controls to start with, define and document them. 28
+additional device-specific controls should be enough for future
+development.
 
-On Thu, Nov 23, 2023 at 10:40:20AM +0100, Heiner Kallweit wrote:
-> After removal of the legacy EEPROM driver and I2C_CLASS_DDC support in
-> olpc_dcon there's no i2c client driver left supporting I2C_CLASS_DDC.
-> Class-based device auto-detection is a legacy mechanism and shouldn't
-> be used in new code. So we can remove this class completely now.
->=20
-> Preferably this series should be applied via the i2c tree.
->=20
-> v2:
-> - change tag in commit subject of patch 03
-> - add ack tags
-> v3:
-> - fix a compile error in patch 5
-> v4:
-> - more ack and review tags
-> v5:
-> - more acks
->=20
-> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+Co-developed-by: Paul Elder <paul.elder@ideasonboard.com>
+Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+Changes since v5:
 
-I created an immutable branch for this which the buildbots will
-hopefully check over night. I will reply with comments tomorrow when I
-got the buildbot results.
+- Don't expose AF controls if not supported by the sensor
+---
+ .../userspace-api/media/drivers/index.rst     |  1 +
+ .../userspace-api/media/drivers/thp7312.rst   | 39 +++++++++++++++++++
+ MAINTAINERS                                   |  2 +
+ include/uapi/linux/thp7312.h                  | 19 +++++++++
+ include/uapi/linux/v4l2-controls.h            |  6 +++
+ 5 files changed, 67 insertions(+)
+ create mode 100644 Documentation/userspace-api/media/drivers/thp7312.rst
+ create mode 100644 include/uapi/linux/thp7312.h
 
+diff --git a/Documentation/userspace-api/media/drivers/index.rst b/Documentation/userspace-api/media/drivers/index.rst
+index 1726f8ec86fa..6b62c818899f 100644
+--- a/Documentation/userspace-api/media/drivers/index.rst
++++ b/Documentation/userspace-api/media/drivers/index.rst
+@@ -41,4 +41,5 @@ For more details see the file COPYING in the source distribution of Linux.
+ 	npcm-video
+ 	omap3isp-uapi
+ 	st-vgxy61
++	thp7312
+ 	uvcvideo
+diff --git a/Documentation/userspace-api/media/drivers/thp7312.rst b/Documentation/userspace-api/media/drivers/thp7312.rst
+new file mode 100644
+index 000000000000..7c777e6fb7d2
+--- /dev/null
++++ b/Documentation/userspace-api/media/drivers/thp7312.rst
+@@ -0,0 +1,39 @@
++.. SPDX-License-Identifier: GPL-2.0-only
++
++THine THP7312 ISP driver
++========================
++
++The THP7312 driver implements the following driver-specific controls:
++
++``V4L2_CID_THP7312_LOW_LIGHT_COMPENSATION``
++    Enable/Disable auto-adjustment, based on lighting conditions, of the frame
++    rate when auto-exposure is enabled.
++
++``V4L2_CID_THP7312_AUTO_FOCUS_METHOD``
++    Set method of auto-focus. Only takes effect when auto-focus is enabled.
++
++    .. flat-table::
++        :header-rows:  0
++        :stub-columns: 0
++        :widths:       1 4
++
++        * - ``0``
++          - Contrast-based auto-focus
++        * - ``1``
++          - PDAF
++        * - ``2``
++          - Hybrid of contrast-based and PDAF
++
++    Supported values for the control depend on the camera sensor module
++    connected to the THP7312. If the module doesn't have a focus lens actuator,
++    this control will not be exposed by the THP7312 driver. If the module has a
++    controllable focus lens but the sensor doesn't support PDAF, only the
++    contrast-based auto-focus value will be valid. Otherwise all values for the
++    controls will be supported.
++
++``V4L2_CID_THP7312_NOISE_REDUCTION_AUTO``
++    Enable/Disable auto noise reduction.
++
++``V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE``
++    Set the noise reduction strength, where 0 is the weakest and 10 is the
++    strongest.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 2d2da939d12f..ec901fe33692 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21661,6 +21661,8 @@ L:	linux-media@vger.kernel.org
+ S:	Maintained
+ T:	git git://linuxtv.org/media_tree.git
+ F:	Documentation/devicetree/bindings/media/i2c/thine,thp7312.yaml
++F:	Documentation/userspace-api/media/drivers/thp7312.rst
++F:	include/uapi/linux/thp7312.h
+ 
+ THUNDERBOLT DMA TRAFFIC TEST DRIVER
+ M:	Isaac Hazan <isaac.hazan@intel.com>
+diff --git a/include/uapi/linux/thp7312.h b/include/uapi/linux/thp7312.h
+new file mode 100644
+index 000000000000..2b629e05daf9
+--- /dev/null
++++ b/include/uapi/linux/thp7312.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
++/*
++ * THine THP7312 user space header file.
++ *
++ * Copyright (C) 2021 THine Electronics, Inc.
++ * Copyright (C) 2023 Ideas on Board Oy
++ */
++
++#ifndef __UAPI_THP7312_H_
++#define __UAPI_THP7312_H_
++
++#include <linux/v4l2-controls.h>
++
++#define V4L2_CID_THP7312_LOW_LIGHT_COMPENSATION		(V4L2_CID_USER_THP7312_BASE + 0x01)
++#define V4L2_CID_THP7312_AUTO_FOCUS_METHOD		(V4L2_CID_USER_THP7312_BASE + 0x02)
++#define V4L2_CID_THP7312_NOISE_REDUCTION_AUTO		(V4L2_CID_USER_THP7312_BASE + 0x03)
++#define V4L2_CID_THP7312_NOISE_REDUCTION_ABSOLUTE	(V4L2_CID_USER_THP7312_BASE + 0x04)
++
++#endif /* __UAPI_THP7312_H_ */
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index 68db66d4aae8..99c3f5e99da7 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -209,6 +209,12 @@ enum v4l2_colorfx {
+  */
+ #define V4L2_CID_USER_NPCM_BASE			(V4L2_CID_USER_BASE + 0x11b0)
+ 
++/*
++ * The base for THine THP7312 driver controls.
++ * We reserve 32 controls for this driver.
++ */
++#define V4L2_CID_USER_THP7312_BASE		(V4L2_CID_USER_BASE + 0x11c0)
++
+ /* MPEG-class control IDs */
+ /* The MPEG controls are applicable to all codec controls
+  * and the 'MPEG' part of the define is historical */
+-- 
+Regards,
 
---xLjxEuZaeN8xgDN1
-Content-Type: application/pgp-signature; name="signature.asc"
+Laurent Pinchart
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmVfxTEACgkQFA3kzBSg
-KbarPBAAkN43LMGC9b1vpMsl5y6W1jnEMTjSF+7tzpFga/xsqL+jL9B/h0bO4NQ4
-ATDYno+0o6BwCEUeBSgYEs7/gNJHlWCq2SisLmhVXXOTzWZ09VRSPaXU49gXviog
-LZbTffK3ABbQSCBbzAhx6/Aog9BH2md1QBdbrCmkf/+i8OOhDUzPiyz6txmIimC2
-6YRBRpLdY1cnme1uvNPJv8GI8UYUgdrYeFQQd4qbPsz5WIzl5/MbMeev4jtUzXC0
-exE4jjPds5scEDyf7QdoeOsHRxZ5pGEu6/luiIhN+SFolyYWzX3Yun37Ac1WWmnR
-Wo97HN7iUlhAQVQ6phTbiVCp8HISNGiWkh/Z0/NoMPO21Vr4WV1/p4TX+5shPicc
-OhBT1NydXft0pPSmT0adOalbsEv4x4P3Oa0I6A+HQCea7Acsz5Ya1+AxY2LehDKz
-lyYnz7L0pcF+k3II/wqSeiK8CidamPnVPamCG+Df3F/NDBXEih9jaI23Hkjyp8xM
-7AO5GH/0ihgont0oYMIl6bAeK9BGrKOt0AM+fF0dC+byFDGxffRvFwYnPIqJfxCr
-6NKvDBM37nY4pHxbDu1b9iamk8WN3tpdrC/XZ8BxqKaciOF+w52ac/v4+znNeo2X
-J9U48VknVCyH0l1Fpph+/ukvqwpdWMVtk4GI2wgR7mdFp8c44Z8=
-=oQZk
------END PGP SIGNATURE-----
-
---xLjxEuZaeN8xgDN1--
 
