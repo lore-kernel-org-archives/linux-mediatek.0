@@ -4,69 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E45DAC5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 12:16:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB13C624B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 13:38:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6ABYdNkFKBFRNWab8mxw4kb18qdWZBOQPLFeqpwcNJk=; b=T013TCgJoCj3ejeOpMPIfJ3RNd
-	a4nDNwIRGailt/1jXsQ+0rDM5wR5qYS+aQjSFQ39a9FysQtDLVPiwGnYymLQEc0qfSxCoCaTNBJQR
-	11n26ElJFQ9glZLlZB/7KSsC+HkrF/0To3jP0q2Q7jmQ/8kIZhURZ3Wb7HzvdRF8MqKhgm20X49zE
-	UQeLWTiQmvmrBeBrBK8gpmOe66E85DKjEdj/J8eRh7qc0PcBAlgz2TQD36LMljFfUQEY/tasJdY0V
-	Swd0rmFBHWllD2u2bE/dMJxD+GxobVZ2DsB8GwZDtsZpJVFJ4gRaLJl7RgAlTSrtyW+2Fi7BTRaBL
-	SK7NzqEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/VqdI9YeVyOYP3rilkcTMwdMToZ1TyIAO1ngW+BCWds=; b=n7cyJVOpQI5kVVVOyZ7x73bUEj
+	/btWEI+IDSLi1dQHxwZQuAnD0tyxpyJHDkEa5wij21Ds63g1zoelMC5lgRAR1LUNIi9SaVGN1E6SM
+	CckHWaKcKr85a96lULm9XQPI2y39wPhmOiO55kb3jmm2jgV44gBgIUK5dwVYqCVjxnqIEmrfGbf4G
+	YZIP/KCidQG07YAY0bZ7BrH8d3DK0NdJEwEvDfsC1R1Cysac+6Yk7B+VuOVjIEpWs+qj9i5ARX9TV
+	x/Abo+EMtEleFD3U5+W2pOvyvuRTD2Ie5djCmQDumQip8cH7DdLRvLJvL2oij2aFfzxTDDuSd4NAg
+	SrVq9rIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r68dS-004lHA-2v;
-	Thu, 23 Nov 2023 12:16:46 +0000
-Received: from mail-il1-f181.google.com ([209.85.166.181])
+	id 1r69uC-004uEb-19;
+	Thu, 23 Nov 2023 13:38:08 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r68dQ-004lG1-0I;
-	Thu, 23 Nov 2023 12:16:45 +0000
-Received: by mail-il1-f181.google.com with SMTP id e9e14a558f8ab-35b1d57d7dbso2375795ab.3;
-        Thu, 23 Nov 2023 04:16:43 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700741803; x=1701346603;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=6ABYdNkFKBFRNWab8mxw4kb18qdWZBOQPLFeqpwcNJk=;
-        b=vgZfA3qrRlG/hJk1C3Z4nsn2tRAiWW7JG/N+2QqQUr4bthC+XPFhnbNNv0aetEZS0L
-         A3lzUBBYZA63dDGOS1I2Swn8C5XQ19LufYHZSHOmD0O+P5Aaxvxc84v796h9lXNv1Fhz
-         pUvUHLh9d4IOxGMTGlR8RvIXYETdWJOS90++aM9890EqUjqNh9aWweBnkuoPTigCm3IB
-         fzsu4dxle0D784j15XZG3zt02fegUp83dys/6F35xKBaS3hlQRylCmEzoPpY2MxQurhn
-         m+i5mYHs7ufRjRxdwfnv2qV1Iol2ntqn1lGbHab+ch+XRN5/v3nGEpOoeexIdIohHh8K
-         Tw0w==
-X-Gm-Message-State: AOJu0YxjTfQ6Cbzw+elrme99vfjFARazLX6ZOXK9ft6XrDnZmqoF3thv
-	/tYNBzh3YTsPByNlDOJpgA==
-X-Google-Smtp-Source: AGHT+IGnJ5zLxO0Amw6q36pyoOYqwFkUrfD9vSmlUmkYLqpXg8cbkLjhN79VbrEGip0Himn8/AUBxQ==
-X-Received: by 2002:a05:6e02:1145:b0:35b:41e:6357 with SMTP id o5-20020a056e02114500b0035b041e6357mr5236207ill.14.1700741802689;
-        Thu, 23 Nov 2023 04:16:42 -0800 (PST)
-Received: from herring.priv ([64.188.179.252])
-        by smtp.gmail.com with ESMTPSA id a17-20020a92ce51000000b003576e122389sm321280ilr.24.2023.11.23.04.16.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Nov 2023 04:16:41 -0800 (PST)
-Received: (nullmailer pid 826780 invoked by uid 1000);
-	Thu, 23 Nov 2023 12:16:39 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1r69u9-004uCZ-0J;
+	Thu, 23 Nov 2023 13:38:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id A84E3B82C7E;
+	Thu, 23 Nov 2023 13:38:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39466C433C8;
+	Thu, 23 Nov 2023 13:37:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700746681;
+	bh=Kbejb0pedrawxY+pi+DDjvZjKDSamA1YE5y/xYy428I=;
+	h=From:To:Cc:Subject:Date:From;
+	b=UMAztWdfrWZb+e0C/ri4ppoNy2OFRDYeBO2/klDT6OSA68JTnvdYMOGPwHiOlbKII
+	 jfRew+TsZO9d1yfQcIA8PzXJbCrv2wn/kqG1GrZKDmQP2QhN+Lb9VO50CqIiIrD3Lg
+	 eqQWxCEOkX1FrL/OTu8q+YB9Oqwd72zg7VVuGRz2Nv/05vSY343Sh/FtJJf+6Z4Q1N
+	 3R9Q72CXgM6+HzPcywTBMtlFPVG8PC6MyjKHwRcubfAcX4v/XoMd4K57ExZU9NkYyV
+	 T7cexV+whxMegO8gqovedEzEPEi0kt+P9/n7f3dcbkiEgi5yh/185+/2Mgq+3hZd+G
+	 J2gf0uf60LdrA==
+From: Michael Walle <mwalle@kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jitao Shi <jitao.shi@mediatek.com>,
+	Xinlei Lee <xinlei.lee@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	Michael Walle <mwalle@kernel.org>
+Subject: [PATCH 0/4] drm/mediatek: support DSI output on MT8195
+Date: Thu, 23 Nov 2023 14:37:45 +0100
+Message-Id: <20231123133749.2030661-1-mwalle@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Zhi Mao <zhi.mao@mediatek.com>
-Cc: sakari.ailus@linux.intel.com, 10572168@qq.com, linux-arm-kernel@lists.infradead.org, laurent.pinchart@ideasonboard.com, mchehab@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, macromorgan@hotmail.com, linus.walleij@linaro.org, linux-kernel@vger.kernel.org, bingbu.cao@intel.com, jernej.skrabec@gmail.com, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, hdegoede@redhat.com, heiko@sntech.de, hverkuil-cisco@xs4all.nl, yaya.chang@mediatek.com, tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net, jacopo.mondi@ideasonboard.com, andy.shevchenko@gmail.com, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, yunkec@chromium.org, shengnan.wang@mediatek.com, dan.scally@ideasonboard.com, linux-media@vger.kernel.org, conor+dt@kernel.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20231123115104.32094-2-zhi.mao@mediatek.com>
-References: <20231123115104.32094-1-zhi.mao@mediatek.com>
- <20231123115104.32094-2-zhi.mao@mediatek.com>
-Message-Id: <170074179924.826739.5309761699074670232.robh@kernel.org>
-Subject: Re: [PATCH 1/2] media: dt-bindings: media: i2c: Document GC08A3
- bindings
-Date: Thu, 23 Nov 2023 05:16:39 -0700
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_041644_125035_BE083BF8 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20231123_053805_278113_EE65226D 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,47 +89,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add support for a DSI output on VDOSYS0. Luckily, there is a new
+feature to support dynamic selections of the output (connector).
+Use it to add support for a DSI output.
 
-On Thu, 23 Nov 2023 19:51:03 +0800, Zhi Mao wrote:
-> Add YAML device tree binding for GC08A3 CMOS image sensor,
-> and the relevant MAINTAINERS entries.
-> 
-> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> ---
->  .../bindings/media/i2c/galaxycore,gc08a3.yaml | 128 ++++++++++++++++++
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  2 files changed, 130 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
-> 
+Apart from that, this is pretty straghtforward by just adding new
+compatibles and add the correct DSI nodes to the SoC dtsi.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+This was tested with a Toshiba TC358775 DSI-to-LVDS bridge and
+three different panels. Please note, that the driver for this
+bridge doesn't work well and needs a more or less complete rework,
+which will be posted on a separate series.
 
-yamllint warnings/errors:
+Michael Walle (4):
+  dt-bindings: display: mediatek: dsi: add compatible for MediaTek
+    MT8195
+  dt-bindings: phy: add compatible for Mediatek MT8195
+  arm64: dts: mediatek: mt8195: add DSI and MIPI DPHY nodes
+  drm/mediatek: support the DSI0 output on the MT8195 VDOSYS0
 
-dtschema/dtc warnings/errors:
-Error: Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.example.dts:29.37-38 syntax error
-FATAL ERROR: Unable to parse input tree
-make[2]: *** [scripts/Makefile.lib:419: Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1424: dt_binding_check] Error 2
-make: *** [Makefile:234: __sub-make] Error 2
+ .../display/mediatek/mediatek,dsi.yaml        |  4 ++
+ .../bindings/phy/mediatek,dsi-phy.yaml        |  1 +
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 48 +++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  8 +++-
+ 4 files changed, 60 insertions(+), 1 deletion(-)
 
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20231123115104.32094-2-zhi.mao@mediatek.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+-- 
+2.39.2
 
 
