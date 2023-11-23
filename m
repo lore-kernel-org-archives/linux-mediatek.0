@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80CBC5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 04:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 527C5C5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 04:05:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cDuyynkQJjhNuDv7Y3RcwbZVUcM2IlduXLPOC7/Q8To=; b=VynSpodHuzZWJjyroYuKODxvNb
-	NQthmshMSyDGpAgOasbGqqUExy1KHoUTGL1Qp/hUbvHa/bvFQwxYVeRzoOaX8kNGO+uvZeBfNUTFd
-	FkmpM3pbxajH5UHo9P3Jqy57d3s/rjpVHkRoKEUYpsH03mYRXsPIrwbDZRC3+AaJ/HstXP83x5HzK
-	WQW4FJAmKgNAJDmwvg6N1QR1fPWJkaGdW2QBVEJ7voBB6WOCznabDuKXRlw+k7x1UObqLs1nMU+mp
-	AYsRxkeS5sjJWG1LwSbHtp75GtvEpRNtMgosCROGKWTNRHa50uABkskNU674EpUkbXawWERyLtFFd
-	CsCZ+Zuw==;
+	bh=uB5imdoPod8S9hEhNPZ14DUI1/eZZtU6LRuwv6Kh2nc=; b=pTKBzmkwv1Z/3Vurmxn/ts5Tbd
+	xlBuntlndFrZlwEM3SihNCUUowrnsCaaXztJEqWdLJIwnCIFbQ0uYouRT96Z3/9HTCYNBseMJRTRv
+	R5yNjf3aheXncnk4RHP/0KpJ89XgY0DzvhNzKaIPvMX88+GE/fNxUQYzrFDJY6tDG0k6QqEA0DE9m
+	ltNLda+pk99REw5oCis6rOU1DAIllyh8YUvJkAeeKerUCnhz2AYYpDLLzjEBkWXZcI765SACRRyd4
+	ZEQlpRcKNl3WOth5a0wVd8EYsk6rOova734EeCgyXxe/DAMXizZHos30RfAeqilFFVukf0/LJXo45
+	4vvLOi0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r60xs-003hGR-1T;
-	Thu, 23 Nov 2023 04:05:20 +0000
-Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d])
+	id 1r60yR-003hNB-0q;
+	Thu, 23 Nov 2023 04:05:55 +0000
+Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r60xq-003hFR-00
+	id 1r60yO-003hM4-1g
 	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Nov 2023 04:05:19 +0000
-Received: by mail-vk1-xa2d.google.com with SMTP id 71dfb90a1353d-4ac10aacd27so169150e0c.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 20:05:17 -0800 (PST)
+	Thu, 23 Nov 2023 04:05:53 +0000
+Received: by mail-ua1-x92e.google.com with SMTP id a1e0cc1a2514c-7ba7b361b22so159496241.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 20:05:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1700712316; x=1701317116; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1700712351; x=1701317151; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cDuyynkQJjhNuDv7Y3RcwbZVUcM2IlduXLPOC7/Q8To=;
-        b=Yv2uN0hVbsWpcBgj06wLUs2e4++xyvXycJOWpffb5oG2nklMWNktaqjhmiVM+2e2i2
-         LhIev04yRxJ9Ir8Gh4MeQhllc3lGzYdWF7v82CeaOUnqoCbiGEx5M+Gz6uuUc2YOMrD0
-         iVmhIY/qSTdEj908P1Has0q/bYZMIZkS1e4eQ=
+        bh=uB5imdoPod8S9hEhNPZ14DUI1/eZZtU6LRuwv6Kh2nc=;
+        b=iDTtskHulOY++8Ry0fScA8vnWjjtSKESuofVSTc/rUdNkPFzl8a0lG3pQ3NgJgPnnQ
+         HDPD+iVnXhOziB7+Husc/DnNrL2pgpu5lQe1gbdRiOOejFPB7lya2u15Wy7TTtCX+zp2
+         vQuj0wTmJAEB6og8trrlgUZw/TUZJ0sESNAKU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700712316; x=1701317116;
+        d=1e100.net; s=20230601; t=1700712351; x=1701317151;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=cDuyynkQJjhNuDv7Y3RcwbZVUcM2IlduXLPOC7/Q8To=;
-        b=mRI5wBmmDXHuDzdYSc5uFy8mK2qu4hVWH86l/iv0TMoj4LwqXXvO2adLFkipoE9aB0
-         V8ive3hxsMQCmJmkqotD6N7BmWCcsSUTLpdkYqna13uK0WpiTojt0Piw8nSbe4ld40TD
-         Twa4hTwmz0oacVmZZ8+lCeVzP/0wLjhlftWjbvhl9U4gHEiL6yhyXmXrp1ziEMMosPus
-         RnjXuSWOpy4/XFgKoz5ZD0NQBCCpu7y5GuB5mvQoXnnyLfABhaB/qz6IRpn1Jcqlqs/o
-         PzmVO82pUs+rZnd6JRL1oVDFLsH9hwc9hrd9wBtZl6PKNoGLdLsibo/Pzj2h8lQq6GgP
-         cDrw==
-X-Gm-Message-State: AOJu0YyQQKGa+9Tlhonn9EthbjeTaAU7jVWsCUPTcicj/78qx/vbGns2
-	30zzLfo5BCp3UVV7nufdGoKwYi2F7X/oW5I6QKt3OQ==
-X-Google-Smtp-Source: AGHT+IFEbSE9sZZPF1ibR2weV10ESQm5ttMzB4FY7LU9iqGQ02zbc8/IhndvMe0MsZIsH2Z6LWYRvQ==
-X-Received: by 2002:a1f:d747:0:b0:49a:466c:199e with SMTP id o68-20020a1fd747000000b0049a466c199emr5504226vkg.2.1700712316360;
-        Wed, 22 Nov 2023 20:05:16 -0800 (PST)
-Received: from mail-vk1-f174.google.com (mail-vk1-f174.google.com. [209.85.221.174])
-        by smtp.gmail.com with ESMTPSA id h10-20020a9f3f0a000000b007c442a209d0sm76120uaj.35.2023.11.22.20.05.15
+        bh=uB5imdoPod8S9hEhNPZ14DUI1/eZZtU6LRuwv6Kh2nc=;
+        b=lfk9PENS+9BU9AomoFY3vKjkMrL+LFi2ioGJCKaW/Arh05IjUmkNeJ0mRMXHK2MZZL
+         +WBtzsas00BQ2cB7wLnZorkQ0BqFSGJycS3u4H5Dmer+ElxPfuQHrLJcXZln5r8fHuT3
+         Q9Y1CjnGH7DD7norG7wRE3esotYk3xkf97BDDjQC+YV3AeeMHFlXoR2BeSxOx5U1u8LX
+         WXowxFoZ6u7skUhubgBz/0yHkkf43uelUMU1372PdleB5w56JAXT0xGBt/qbXlG5SE9j
+         2LnOgxQIMymRoizBmvDrh3rD2em6M4/g7TewQxZTjbPIXalC3JWstLx95UFANjaQ8Oj0
+         achQ==
+X-Gm-Message-State: AOJu0Yz4swTXdl5xYndVp8gR+0CXNRwFXb7hNYskXxdf1smVrgww1JSi
+	0mDOCxrA+kTWlLXYiSV65SmSxX4DKvWaiJ78rqC1hg==
+X-Google-Smtp-Source: AGHT+IExA7wm5lBPSqpZ1t6baxJvPlwIEgD5Gcd+6yoGkDus4GvoY4r5pDmF12eAh4zKqzIbpEtXLg==
+X-Received: by 2002:a1f:6601:0:b0:4ab:eb72:967f with SMTP id a1-20020a1f6601000000b004abeb72967fmr4824288vkc.4.1700712351139;
+        Wed, 22 Nov 2023 20:05:51 -0800 (PST)
+Received: from mail-vs1-f49.google.com (mail-vs1-f49.google.com. [209.85.217.49])
+        by smtp.gmail.com with ESMTPSA id m125-20020a1f2683000000b004b008fb62c3sm130976vkm.41.2023.11.22.20.05.49
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Nov 2023 20:05:15 -0800 (PST)
-Received: by mail-vk1-f174.google.com with SMTP id 71dfb90a1353d-4ac89e8e964so164675e0c.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 20:05:15 -0800 (PST)
-X-Received: by 2002:a1f:dac4:0:b0:496:2282:5c2f with SMTP id
- r187-20020a1fdac4000000b0049622825c2fmr4788680vkg.6.1700712315456; Wed, 22
- Nov 2023 20:05:15 -0800 (PST)
+        Wed, 22 Nov 2023 20:05:49 -0800 (PST)
+Received: by mail-vs1-f49.google.com with SMTP id ada2fe7eead31-46263d50b29so144235137.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Nov 2023 20:05:49 -0800 (PST)
+X-Received: by 2002:a05:6102:1285:b0:462:a479:79fd with SMTP id
+ jc5-20020a056102128500b00462a47979fdmr4441694vsb.23.1700712349221; Wed, 22
+ Nov 2023 20:05:49 -0800 (PST)
 MIME-Version: 1.0
-References: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com> <20231103102533.69280-3-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231103102533.69280-3-angelogioacchino.delregno@collabora.com>
+References: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com> <20231103102533.69280-4-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231103102533.69280-4-angelogioacchino.delregno@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Thu, 23 Nov 2023 12:04:39 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nimsor1k+sRXw67OrM8U_kANgLdnn6E++gR_O6S_tisLQ@mail.gmail.com>
-Message-ID: <CAC=S1nimsor1k+sRXw67OrM8U_kANgLdnn6E++gR_O6S_tisLQ@mail.gmail.com>
-Subject: Re: [PATCH v3 2/3] clk: mediatek: mt8195-topckgen: Refactor parents
+Date: Thu, 23 Nov 2023 12:05:13 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhL-i7GhP=qRwf+Z_=K2Ee42ZceiPHAuQznsmP2ENXp9g@mail.gmail.com>
+Message-ID: <CAC=S1nhL-i7GhP=qRwf+Z_=K2Ee42ZceiPHAuQznsmP2ENXp9g@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] clk: mediatek: mt8188-topckgen: Refactor parents
  for top_dp/edp muxes
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com, 
@@ -84,8 +84,8 @@ Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_200518_040434_06267187 
-X-CRM114-Status: GOOD (  13.50  )
+X-CRM114-CacheID: sfid-20231122_200552_557909_99FB6BFA 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,19 +114,23 @@ On Fri, Nov 3, 2023 at 6:25=E2=80=AFPM AngeloGioacchino Del Regno
 >  - top_edp was set to TVDPLL1, outputting X GHz
 >  - top_dp was set to TVDPLL2, outputting Y GHz
 >    - mtk_dpi calls clk_set_rate(top_edp, Z GHz)
->      - top_dp is switched to TVDPLL1
->      - TVDPLL1 changes its rate, top_edp outputs the wrong rate.
->      - eDP display is garbled
+>  - top_dp is switched to TVDPLL1
+>  - TVDPLL1 changes its rate, top_edp outputs the wrong rate.
+>  - eDP display is garbled
 >
 > To solve this issue, remove all TVDPLL1 parents from `top_dp` and
 > all TVDPLL2 parents from `top_edp`, plus, necessarily switch both
 > clocks to use the new MUX_GATE_CLR_SET_UPD_INDEXED() macro to be
 > able to use the right bit index for the new parents list.
 >
-> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 
+Tested on MT8188 with a Type-C -> DP adapter to an extended display
+Gigabyte M32U.
+The DP output reacts smoothly to resolution switch and refresh rate
+change, and the internal eDP output also never freezes.
+
 Reviewed-by: Fei Shao <fshao@chromium.org>
+Tested-by: Fei Shao <fshao@chromium.org>
 
