@@ -4,79 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39BACC61DF7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 13:38:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26D5CC5AD4C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 13:41:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hgmlQ364KKc/pZW7uYiiB09fl1iPX7or0WCqavMvypw=; b=rzJ6T0iyfrvnBrmJuYED4NVIV/
-	TQBhPaRjU8N5EfFM6C1jTVY1NqosAWChJhMOk/Ydokqsqq4P+m0HV2f0tPG45sPT/sG4UCaIL2pCF
-	/+OIj/9z1Mvr1z5hE43Tg1Iyqp8bTWjgsklcUZLIAtay1Z5su1/5jzXJANEQ/xjboU5YITEN59Foh
-	SkQ9Mr/90Gq/3ZFNIC3hoUpPt+QBfXRvXRi+mOs/1ixjcOoPgCxgL+omukvKJ8KjoZhr7/qfwyDcU
-	YRXpUEsI0bihX4e6CkESWSUv67Orl1cFWcIW/SM31AWVKUn1skhTKtfLBvTujYUPvIk0YIo9wPZEa
-	88hiKW6A==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hHv074/rOqt+tKSTiM6OlihI2sr43OeFvmvVD3qCXJ0=; b=NteuamrT+5c0pWMq7Z6W5DaN7N
+	Enxf/5UauyDJ0wwais07u1htY5SjVCVRVl1BMCerubO5DwCC6JM4ns6iMjuj30qU/K38xiLjPG/DW
+	SAtqnUplEtrAcecqq6w8uVHUgJ0h70hpP5GbgBxo0lPW6PpdcIOo44Rzs9vCojUlhBPu8jXSR9XHb
+	ah0F8Nid3lqPPT/BNlxkmXft9G2y3QBl+UOfwzNdrcjVbT92oLonAiUx1CnOKs+WPbj1LXmc9/rgv
+	k/JKl5T1QW3FDSKDK9dZDl4pACkVOz5MDFYD79VDQbzSndUYr8Wn6ueICG4cmx3tbP0cPAXxWQi1I
+	O9GT651Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r69ub-004uU6-3B;
-	Thu, 23 Nov 2023 13:38:33 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r69uP-004uMT-20;
-	Thu, 23 Nov 2023 13:38:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EF9D462121;
-	Thu, 23 Nov 2023 13:38:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33F67C433C9;
-	Thu, 23 Nov 2023 13:38:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1700746700;
-	bh=yp3tKEvY3IVCFEhD0Bxg/Hw6hTrEBgQxqiXCTK5PONg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iI/CzRx+LbYWI9WFQv0WzBDR0lAxkkzVvtOC7DAQgaylWVB0Kb9xobuPy+A/9V4ys
-	 6EslE2vM1ydHw9XSW/FFipkTg5V7FHnrQ8hXY0FQmsfiw/DCnn+sxbq4jQDfh3NGQZ
-	 FfZIzYVSg6nfy8/MYy4wpZT/XpLDcGftkMMaI7NtZDw7O6uqShHYJi8m+B1H7QbZ/g
-	 4EN6pgFy2ZjJ50Hb89pELrKVU9RH+xLr7c4AyeilrWYswiHLSHySDwRMk/b6RTClXO
-	 GF5KDC6eMbJ29r+vPueyY2a0DTT8oR3aKBDczeLj7/BRLSQCqj5w8upiJRaVbsIxN6
-	 4M9pqlxxp0tLA==
-From: Michael Walle <mwalle@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jitao Shi <jitao.shi@mediatek.com>,
-	Xinlei Lee <xinlei.lee@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org,
+	id 1r69xN-004v2k-0Y;
+	Thu, 23 Nov 2023 13:41:25 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1r69xJ-004v0t-1m;
+	Thu, 23 Nov 2023 13:41:23 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E6D641063;
+	Thu, 23 Nov 2023 05:42:04 -0800 (PST)
+Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com [10.1.196.40])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 350B93F6C4;
+	Thu, 23 Nov 2023 05:41:17 -0800 (PST)
+From: Robin Murphy <robin.murphy@arm.com>
+To: chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de
+Cc: yong.wu@mediatek.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	Michael Walle <mwalle@kernel.org>
-Subject: [PATCH 4/4] drm/mediatek: support the DSI0 output on the MT8195 VDOSYS0
-Date: Thu, 23 Nov 2023 14:37:49 +0100
-Message-Id: <20231123133749.2030661-5-mwalle@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231123133749.2030661-1-mwalle@kernel.org>
-References: <20231123133749.2030661-1-mwalle@kernel.org>
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v3] drm/mediatek: Stop using iommu_present()
+Date: Thu, 23 Nov 2023 13:41:12 +0000
+Message-Id: <fd1b62aa006556f29f37535814abfe41be63f7ae.1700746094.git.robin.murphy@arm.com>
+X-Mailer: git-send-email 2.39.2.101.g768bb238c484.dirty
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_053821_699020_4A9104A9 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20231123_054121_630832_C954B151 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,42 +67,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With the latest dynamic selection of the output component, we can now
-support different outputs. Move current output component into the
-dynamic routes array and add the new DSI0 output.
+Remove the pointless check. If an IOMMU is providing transparent DMA API
+ops for any device(s) we care about, the DT code will have enforced the
+appropriate probe ordering already. And if the IOMMU *is* entirely
+absent, then attempting to go ahead with CMA and either suceeding or
+failing decisively seems more useful than deferring forever.
 
-Signed-off-by: Michael Walle <mwalle@kernel.org>
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+
+I realised that last time I sent this I probably should have CCed a
+wider audience of reviewers, so here's one with an updated commit
+message as well to make the resend more worthwhile.
+
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 2b0c35cacbc6..6fa88976376e 100644
+index 2dfaa613276a..48581da51857 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -222,7 +222,11 @@ static const unsigned int mt8195_mtk_ddp_main[] = {
- 	DDP_COMPONENT_DITHER0,
- 	DDP_COMPONENT_DSC0,
- 	DDP_COMPONENT_MERGE0,
--	DDP_COMPONENT_DP_INTF0,
-+};
-+
-+static const struct mtk_drm_route mt8195_mtk_ddp_main_routes[] = {
-+	{ 0, DDP_COMPONENT_DP_INTF0 },
-+	{ 0, DDP_COMPONENT_DSI0 },
- };
+@@ -5,7 +5,6 @@
+  */
  
- static const unsigned int mt8195_mtk_ddp_ext[] = {
-@@ -308,6 +312,8 @@ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
- static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
- 	.main_path = mt8195_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
-+	.conn_routes = mt8195_mtk_ddp_main_routes,
-+	.num_conn_routes = ARRAY_SIZE(mt8195_mtk_ddp_main_routes),
- 	.mmsys_dev_num = 2,
- };
+ #include <linux/component.h>
+-#include <linux/iommu.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_platform.h>
+@@ -608,9 +607,6 @@ static int mtk_drm_bind(struct device *dev)
+ 	struct drm_device *drm;
+ 	int ret, i;
  
+-	if (!iommu_present(&platform_bus_type))
+-		return -EPROBE_DEFER;
+-
+ 	pdev = of_find_device_by_node(private->mutex_node);
+ 	if (!pdev) {
+ 		dev_err(dev, "Waiting for disp-mutex device %pOF\n",
 -- 
-2.39.2
+2.39.2.101.g768bb238c484.dirty
 
 
