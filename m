@@ -4,93 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6E09C5AD4C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 11:20:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 612FDC61D85
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Nov 2023 11:22:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cna4B9OkGYaAGZnmz7auaJoanPikLRaFUkJT1PNzdCg=; b=NCnHrfpBKeY29unkmeNInn1qEu
-	Thhp1n+ip+juU4I/W4+qb8a/TogLfTTQ+GfX35XwWhhgo6JGew/Cv4BgmU1YJ31BlKlsEOh89Euj1
-	Qz1QtS7j9f7FB5a3gJZXLw91++fyOCHaubJTPukD2pJ0hfMGkPO+jLzXa479LR86DqBVCjAQzHFEE
-	phXOeZriJvmnM+vYr3yc2Gz3sKbyHJy8tkutgKa9O0k6jbqH/tRURRnT9J7DfO0mobTOibz+tD47N
-	jqNo7pj6X0N7D9y46b9Bg9Q+L/Yy+zbPLe8es/azbeI4SbTZemhvab+0LgsMv7sM0Caf6UQfa3D4C
-	/PfoFkWg==;
+	bh=+ELdqRoTSMAUd+24yaf2NGAffesSeiPknd49OSHfrO4=; b=bBk97Pd8Rjp2gyOduv62E3QhlN
+	2Ek7hiiuw8k2ALeijCBfb8oxmvDt1mLlz7UzDwWnmr0H8i4me1QjlKXxk2GWbE/v1STwXSOQlGzSS
+	kuD42+x6hP3/ZGGFOtN9h7TLm8iTtIgODLPhsimgMPVN3YqAILxFtpzVvvQRx+46zrlA4qysTbVnJ
+	PUMZsiZ8cMSfAGpIT9A2G6gwETC9dKfyIDdQSTRol+jvQ4aqk13rThO6A0+c/vz/hgNxhPzkKMZn2
+	LfuPttDwtmihNzT3eEhMnqVAMkm1/VLaf+Rlf9Hc6fDlGOwn8sV+06YxBClfwtO7WtdyscP/44mD/
+	6MO1dG+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r67lC-004Upl-0b;
-	Thu, 23 Nov 2023 11:20:42 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1r67nJ-004VER-1H;
+	Thu, 23 Nov 2023 11:22:53 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r67l9-004UoG-1o
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Nov 2023 11:20:41 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-285625e1851so419683a91.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Nov 2023 03:20:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=sartura.hr; s=sartura; t=1700738436; x=1701343236; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cna4B9OkGYaAGZnmz7auaJoanPikLRaFUkJT1PNzdCg=;
-        b=ddt3gslhsn/g57m1+PiqYiTmj1RJ8YrdMpcmkGRXEFldPOsfzxdcH9BVZ/I85q3HMU
-         qckiGIykh3WET6kQ1mkyPraZb5IBwYps4PTQ9YDv49CmaupPQ1zNsJAdgqmRRA5VrDZv
-         g5ugVEpP8HsJOlhBkFgh9WCRZ0aTyEaqZUiFHU5XeIu+YLFl4RZb3cIi454sTkvXEEos
-         t4vFjHb5bpXHME/kgjd1d0wxirq2pIhqFWIU6JCSlQQNsUkDF5ifEVjRrQGryyUnxAhI
-         c8R5EbOcwWZ53FXvWwzxvCHJdSM2OhfJZkchZu0CBEPmV9VkD2DdlWkapAW1800FhxUE
-         f6IQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700738436; x=1701343236;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=cna4B9OkGYaAGZnmz7auaJoanPikLRaFUkJT1PNzdCg=;
-        b=i7E7mBcTc39DthwJFHl8AEg60SZ+M/tSymYFa1uZcVOFo6YcFprsDsOIFgguINUCfR
-         lIOkeI1e0gryfTTgEM/3/af4E51yhvp/wOuqUCGMEhnOgQceH5eeEb13prqqw8gnBlPY
-         9GETaCsuZAwVBMPcmoCzoRxsvjpvlToN5cOkc8alGwK74bFDKFsssI8culs1DLj//ifF
-         /OouLq0bXExeLK98Tk9+ZjCS80b2pgcA5K5qyYpvUg2pBomwVZvea93ixvup59t40yQE
-         m2BIw7wpY5RpRqo2aT3QlSbS7m17YjT/AfTrr7KrLL7qCrKerB+pjWs9BxdZl2oWqv0D
-         qtlA==
-X-Gm-Message-State: AOJu0YzATBIlY2M4/kMFOY6BPBgu4ElretVyGd35HUPTozRlm4MYiQvc
-	yM2CE82kLCv6kthmLvAYQ7RE5OelVatetmEWK8dyKg==
-X-Google-Smtp-Source: AGHT+IHpAi31AQJzfI++IcN15h2i2fjElwAR2+A2cq4nCMgOSMsdXf8at6TXQhpec1XOEn9ZPz1TGslnfGloZZAtd7g=
-X-Received: by 2002:a17:90b:3014:b0:27d:dc9:c67d with SMTP id
- hg20-20020a17090b301400b0027d0dc9c67dmr4905828pjb.36.1700738436187; Thu, 23
- Nov 2023 03:20:36 -0800 (PST)
+	id 1r67nF-004VDb-35;
+	Thu, 23 Nov 2023 11:22:51 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C56506607399;
+	Thu, 23 Nov 2023 11:22:47 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1700738568;
+	bh=OkyzQvoiFclRgAoTM1AiGV82e8sHB39X1+ZjadvECzo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=R0khKwsWt3lwNKJWrAnDwzSZMGlJ2CZr1mfieF457KHg8M2u10AApdi7aCTdhWxia
+	 sR+b01+dEi4m335oJSFDxBu7pErCuPFIQJnd30nz2nQLH54PAv0TWSKcn5johqRKH/
+	 rjk7bFHkjlOoCKtDqj4ELeJFfXsXz0T72AO/VWIN4wboepHbx1yKLnOQGOWXhGrt7U
+	 0DbUgn9wZq4z0v8pDNFfkXJJjyOg638V6EogkEm5OlkB6X4qRgqxtJ+7E1DWh7hjR3
+	 2gr73sRiTiUMtH+aFOR0zobUbh64FMV1u4HljPYypautYh3aC/cHoW8Esh9mDbc19L
+	 og3Pr5e8WEf4w==
+Message-ID: <e3262533-b181-4b3c-9ac7-71fc0438f6db@collabora.com>
+Date: Thu, 23 Nov 2023 12:22:45 +0100
 MIME-Version: 1.0
-References: <20231120135041.15259-1-ansuelsmth@gmail.com> <20231120135041.15259-13-ansuelsmth@gmail.com>
- <6593e6ae-3ae7-49e2-a6e9-c37f5a887fe3@lunn.ch>
-In-Reply-To: <6593e6ae-3ae7-49e2-a6e9-c37f5a887fe3@lunn.ch>
-From: Robert Marko <robert.marko@sartura.hr>
-Date: Thu, 23 Nov 2023 12:20:24 +0100
-Message-ID: <CA+HBbNFjmwtfJAON_BX9c9hqcBTsReMPm9ajPjFF_2z+LbARnw@mail.gmail.com>
-Subject: Re: [net-next RFC PATCH 12/14] dt-bindings: net: Document Qcom
- QCA807x PHY package
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Russell King <linux@armlinux.org.uk>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, 
-	SkyLake Huang <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	David Epping <david.epping@missinglinkelectronics.com>, 
-	Vladimir Oltean <olteanv@gmail.com>, "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>, 
-	Harini Katakam <harini.katakam@amd.com>, Simon Horman <horms@kernel.org>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] phy: mediatek: mipi: mt8183: fix minimal supported
+ frequency
+Content-Language: en-US
+To: Michael Walle <mwalle@kernel.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Jitao Shi <jitao.shi@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20231123110202.2025585-1-mwalle@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231123110202.2025585-1-mwalle@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_032039_598521_A822DD6B 
-X-CRM114-Status: GOOD (  16.45  )
+X-CRM114-CacheID: sfid-20231123_032250_126811_DBBF93FA 
+X-CRM114-Status: UNSURE (   5.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,60 +82,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 23, 2023 at 3:15=E2=80=AFAM Andrew Lunn <andrew@lunn.ch> wrote:
->
-> > +  They feature 2 SerDes, one for PSGMII or QSGMII connection with
-> > +  MAC, while second one is SGMII for connection to MAC or fiber.
->
-> Can you connect 1/5 of the PSGMII SERDES to the SGMII SERDES? So
-> making use of the PHY as a media converter to connect to an SFP cage?
-> I assume the SGMII serdes can also do 1000BaseX?
->
-> How do you describe what the SGMII SERDES is connected to?
+Il 23/11/23 12:02, Michael Walle ha scritto:
+> The lowest supported clock frequency of the PHY is 125MHz (see also
+> mtk_mipi_tx_pll_enable()), but the clamping in .round_rate() has the
+> wrong minimal value, which will make the .enable() op return -EINVAL on
+> low frequencies. Fix the minimal clamping value.
+> 
+> Fixes: efda51a58b4a ("drm/mediatek: add mipi_tx driver for mt8183")
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
 
-Hi Andrew,
-I think that the description is confusing.
-QCA807x supports 3 different modes:
-1. PSGMII (5 copper ports)
-2. PSGMII (4 copper ports + 1 combo port)
-3. QSGMII+SGMII
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-So, in case option 2 is selected then the combo port can also be used for
-1000Base-X and 100Base-FX modules or copper and it will autodetect the
-exact media.
-This is supported via the SFP op-s and I have been using it without issues
-for a while.
-
-I have not tested option 3 in combination with SFP to the copper
-module so I cant
-say whether that works.
-From what I can gather from the typical usage examples in the
-datasheet, this QSMII+SGMII
-mode is basically intended as a backward compatibility thing as only
-QCA SoC-s have PSGMII
-support so that you could still use SoC-s with QSGMII and SGMII support onl=
-y.
-
-So there is no way to control the SerDes-es individually, only the
-global mode can be changed via
-the Chip configuration register in the Combo port.
-
-You can see the block diagram of this PHY in this public PDF on page 2[1].
-
-[1] https://content.codico.com/fileadmin/media/download/datasheets/qualcomm=
-/qualcomm_qca8075.pdf
-
->
->   Andrew
->
-
-
---=20
-Robert Marko
-Staff Embedded Linux Engineer
-Sartura Ltd.
-Lendavska ulica 16a
-10000 Zagreb, Croatia
-Email: robert.marko@sartura.hr
-Web: www.sartura.hr
 
