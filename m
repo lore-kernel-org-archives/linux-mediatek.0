@@ -4,70 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95A02C636BD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 07:46:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7578C636BD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 08:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BiNjQ0m7825XeNPkOmddaxodtKmn5DLhLlrxzBZ4rzk=; b=aGVjNOYa94qX7TzP4bl/rupb8r
-	FrmUClvC1+6NJkBfKC+H5Qry7VmBMNVzZPXXlK0kSvWiTTPwnP6FZzacNCCTJ0gJ2yZaZzNQwGleq
-	PyhU3BziVuH9xJelBYivRdyEH6JlBTZT9Ko3ok0U0UrKwzGMFYEmNDVbEKYtMsZ1DD+OKoMdB0B5E
-	rC5W7U+3LZHuVa8tsDGs3FBM0e+ktoXCeBR2bydXHjR1/AWKZmWKludPtnfxfGQrvo4uGnZpiZR+1
-	CRi6R6NxETAvWV6lJRUH470C9A4At/nfYg5dMPTWvOhoJ9jkigdiLXqE4OEhFD2S7r3GhmiPiGSa3
-	Df1Ud1NA==;
+	bh=TdMUhpyI2+dQyC5Jb7ZVd4mPkClI52AZ3LWo5a/osyo=; b=GPsN4aEzIARugpRh9jLpZ83+u5
+	9JkyhUnLWG4QNfKx8yDGpbLQFvy4RFknd5K/oje5/FDxYrvezXUee5hAn4ZXTg6fWukilwFQ2JtX0
+	ca9NsVEuCcf+hGquqDslCHPRJ96G52BqGoVF+OkVVgb5z4sVmvJ99nMXuwRFL48XLhKe+76USxSRA
+	U/WqW+gIAu1bucKRjvbUC8aLTK8648XjXQ2wBJUEscaQiHKpTcUAulK2Hn6UPD4VW4oo0+TZBufVz
+	05gE0eHJttbv3drVSShKjOzFKK4cfPkfh/9521EK8tDJDq4uJUQU/NcnAtMoLM2siKOBOJuBgouBE
+	Ck9bMLtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6Qte-006Ptg-18;
-	Fri, 24 Nov 2023 07:46:42 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r6RGF-006T8g-26;
+	Fri, 24 Nov 2023 08:10:03 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6Qtc-006Psl-0g
+	id 1r6RGB-006T7R-0w
 	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Nov 2023 07:46:41 +0000
-Received: from [100.124.219.30] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CE18466022D8;
-	Fri, 24 Nov 2023 07:46:30 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700811993;
-	bh=8LvJc8DaAgHeIHvOQk6AYJxeRlrV3q4wIVakxhIdGb8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z9ihSIAdqUhMuQz9cCS/bwAmg2YL6c12FYaZKZOE5E7g8/LQH3vK7Z5qQiqUpBp7C
-	 H/E0LW/5bWnBo0sXZAYEL6+5JpXKxm0emC+OR/R2hQTJBn/6lU7fl4ile4YO3aSwT2
-	 BuR3+9KMeMjwQL09nvKxfl/kjb1Kc9He7tUmzKnVqZxBWehMdO1nmbNcTBxWAMkU+D
-	 /5UN0N8+uUwJf1DC8gzc/BSCwMTmK01P379ZRX77WH8aFX3f4Qt4NQm9DFRPAIVrFg
-	 yF0tNZWvbSZ0b+JbadNjsRbBorMOmlwMqYiO7pqx99IHuoyyl7xhdPkJkUO0GOw4e1
-	 vVXd1rSFeLQxw==
-Message-ID: <92467afc-cd50-41aa-a3a5-481c9da30a4c@collabora.com>
-Date: Fri, 24 Nov 2023 13:16:26 +0530
+	Fri, 24 Nov 2023 08:10:01 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-7c143044625so555767241.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Nov 2023 00:09:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1700813396; x=1701418196; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TdMUhpyI2+dQyC5Jb7ZVd4mPkClI52AZ3LWo5a/osyo=;
+        b=HVnaC44oDVLyeK5tPNAC6iVU7y3i4z6SlPymzdp30sQ9b6z+0eEpXs/j/QGXruH5N6
+         CWT5XGy0OFwVI45QjDTVpnxXT7r29LxTRYsCPxM8FceihRCmfKleqaCsoKssk1lsdclo
+         NekrdbbVABG2DDVu7o0PrdrULkGOwaN+ic19UDXGVnD3GVhNKn8l//XMF0uKZ4DHzTE9
+         aAvo40SpBHm+GwYCuVUgIZJlI2LY74zyS9bX4n8XNtHeQtIsCuxqYa2vhE37tjGBlH0Q
+         9VA+d8TXY5oKZ/tnsEmWoIG7POFzzhAkrNt/mUAuvPwLTPZI2yAdoPIvKCBQosvA6yPd
+         BegA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700813396; x=1701418196;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TdMUhpyI2+dQyC5Jb7ZVd4mPkClI52AZ3LWo5a/osyo=;
+        b=hPM9FdZ6+IpmOeXpsaUjAazSzr7/GdIAj37FdeUNW2ZPK1jTfXDiLlaLza1htob4m9
+         +c9TQ5M0sKjHT2L1YXa7jE8j0SN9bzVnCZSJXf992Db9mnstvlNZN9tZrHlRx9KcparT
+         nNRwrrZ145cuisViNpQuU9HZ/eWg1Aq6zUYZveVus4rKnUZXfDiFlhDKwfFTyM48aGvl
+         PcnVaUqi2Un+rRuhC5jLev1p67FJqMm2Z6bvDuZ1izO5glTxks9f7P8udrbFNYLQ1DLx
+         ynOrwM7XCvXNd2b1Pelh01s/bjY5Jr6cKAQ5eX9DcGlrNgf2kSzAb6NgmOlm33RgeNR2
+         3dMA==
+X-Gm-Message-State: AOJu0Yw0dc4hPmj9eNku99EAnn8SZDHL67hmqGzOV39kCk8gpnKaBHz8
+	ZBFJOhNtZsAH4UhkvpcTSQ44wA==
+X-Google-Smtp-Source: AGHT+IHKESaqwzFkAII+v/Gc3bBjqRwWiSLQkt08GJSOgnaFma7ZBn0Qe9nodZJupkTfCYrNnqZ27A==
+X-Received: by 2002:a05:6122:2015:b0:49e:2145:1651 with SMTP id l21-20020a056122201500b0049e21451651mr2101831vkd.6.1700813396304;
+        Fri, 24 Nov 2023 00:09:56 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.218.100])
+        by smtp.gmail.com with ESMTPSA id 38-20020a9f2029000000b007a01cbe8f28sm520429uam.4.2023.11.24.00.09.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 24 Nov 2023 00:09:55 -0800 (PST)
+Message-ID: <4a4a3313-2fb5-4b20-a24f-4422aeedbc41@linaro.org>
+Date: Fri, 24 Nov 2023 09:09:48 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v5 9/9] drm: ci: Update xfails
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] media: i2c: Add GC08A3 image sensor driver
 Content-Language: en-US
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- daniels@collabora.com, emma@anholt.net, gustavo.padovan@collabora.com,
- linux-arm-msm@vger.kernel.org, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- david.heidelberg@collabora.com, linux-mediatek@lists.infradead.org
-References: <20231019070650.61159-1-vignesh.raman@collabora.com>
- <20231019070650.61159-10-vignesh.raman@collabora.com>
- <CAPj87rP=22Fw0h42U-p9fHd=6OHOu9Lj9kbpVMQVqL9U6BRE1A@mail.gmail.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAPj87rP=22Fw0h42U-p9fHd=6OHOu9Lj9kbpVMQVqL9U6BRE1A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org
+Cc: shengnan.wang@mediatek.com, yaya.chang@mediatek.com, 10572168@qq.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, yunkec@chromium.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, jacopo.mondi@ideasonboard.com,
+ sakari.ailus@linux.intel.com, hverkuil-cisco@xs4all.nl, heiko@sntech.de,
+ jernej.skrabec@gmail.com, macromorgan@hotmail.com, linus.walleij@linaro.org,
+ laurent.pinchart@ideasonboard.com, hdegoede@redhat.com,
+ tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
+ andy.shevchenko@gmail.com, bingbu.cao@intel.com,
+ dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231123115104.32094-1-zhi.mao@mediatek.com>
+ <20231123115104.32094-3-zhi.mao@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231123115104.32094-3-zhi.mao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_234640_432427_4D7305CC 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20231124_000959_341704_0714B197 
+X-CRM114-Status: GOOD (  16.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,28 +149,277 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
-
-On 19/10/23 13:55, Daniel Stone wrote:
+On 23/11/2023 12:51, Zhi Mao wrote:
+> Add a V4L2 sub-device driver for Galaxycore GC08A3 image sensor.
 > 
-> By the time we get this error, it indicates that there was previously
-> memory corruption, but it is only being noticed at a later point. The
-> skip lists here are way too big - stuff like drm_read is common
-> testing not affected by virtio at all - so we really need to isolate
-> the test which is actually breaking things.
-> 
-> The way to do this would be to use valgrind to detect where the memory
-> corruption is. VirtIO can be run locally so this is something you can
-> do on your machine.
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> ---
+>  drivers/media/i2c/Kconfig  |   14 +
+>  drivers/media/i2c/Makefile |    1 +
+>  drivers/media/i2c/gc08a3.c | 2046 ++++++++++++++++++++++++++++++++++++
+>  3 files changed, 2061 insertions(+)
+>  create mode 100644 drivers/media/i2c/gc08a3.c
 
-Thank you for the hints and suggestions. This is now fixed in 
-igt-gpu-tools, and the patches are merged. I will uprev igt in drm-ci 
-and rerun the tests.
 
-Also will drop the tests from virtio_gpu-none-skips.txt and send an 
-updated version.
+> +static int gc08a3_start_streaming(struct gc08a3 *gc08a3)
+> +{
+> +	const struct gc08a3_mode *mode;
+> +	const struct gc08a3_reg_list *reg_list;
+> +	int link_freq_index;
+> +	int ret;
+> +
+> +	dev_info(gc08a3->dev, "%s ++\n", __func__);
 
-Regards,
-Vignesh
+Drop
+
+> +
+> +	mutex_lock(&gc08a3->mutex);
+> +
+> +	link_freq_index = gc08a3->cur_mode->link_freq_index;
+> +	dev_info(gc08a3->dev, "----link_freq_index = %d ", link_freq_index);
+> +
+> +	reg_list = &link_freq_configs[link_freq_index].reg_list;
+> +	ret = gc08a3_write_reg_list(gc08a3, reg_list);
+> +	if (ret) {
+> +		dev_err(gc08a3->dev, "could not sent common table %d\n", ret);
+> +		goto error;
+> +	}
+> +
+> +	mode = gc08a3->cur_mode;
+> +	dev_info(gc08a3->dev, "----write regtbl: mode(id:%d, WxH:%dx%d)",
+> +		 mode->mode_id, mode->width, mode->height);
+> +	reg_list = &mode->reg_list;
+> +
+> +	ret = gc08a3_write_reg_list(gc08a3, reg_list);
+> +	if (ret < 0) {
+> +		dev_err(gc08a3->dev, "could not sent mode table %d\n", ret);
+> +		goto error;
+> +	}
+> +	ret = __v4l2_ctrl_handler_setup(&gc08a3->ctrls);
+> +	if (ret < 0) {
+> +		dev_err(gc08a3->dev, "could not sync v4l2 controls\n");
+> +		goto error;
+> +	}
+> +
+> +	ret = gc08a3_write_reg(gc08a3, GC08A3_STRAEMING_REG,
+> +			       GC08A3_REG_VALUE_08BIT, 1);
+> +	if (ret < 0) {
+> +		dev_err(gc08a3->dev, "write STRAEMING_REG failed: %d\n", ret);
+> +		goto error;
+> +	}
+> +
+> +	mutex_unlock(&gc08a3->mutex);
+> +
+> +	dev_info(gc08a3->dev, "%s --\n", __func__);
+
+Drop
+
+
+> +
+> +	return 0;
+> +
+> +error:
+> +	mutex_unlock(&gc08a3->mutex);
+> +	return ret;
+> +}
+> +
+> +static int gc08a3_stop_streaming(struct gc08a3 *gc08a3)
+> +{
+> +	int ret;
+> +
+> +	dev_info(gc08a3->dev, "%s ++\n", __func__);
+
+Drop
+
+> +
+> +	ret = gc08a3_write_reg(gc08a3, GC08A3_STRAEMING_REG,
+> +			       GC08A3_REG_VALUE_08BIT, 0);
+> +	if (ret < 0)
+> +		dev_err(gc08a3->dev, "could not sent stop streaming %d\n", ret);
+> +
+> +	dev_info(gc08a3->dev, "%s --\n", __func__);
+> +
+
+Drop
+
+...
+
+> +
+> +static int gc08a3_probe(struct i2c_client *client)
+> +{
+> +	struct device *dev = &client->dev;
+> +	struct gc08a3 *gc08a3;
+> +	int ret;
+> +
+> +	dev_info(dev, "--- %s +", __func__);
+
+
+No, drop such silly debug messages. Everywhere. Really everywhere.
+
+> +
+> +	ret = gc08a3_parse_fwnode(dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	gc08a3 = devm_kzalloc(dev, sizeof(*gc08a3), GFP_KERNEL);
+> +	if (!gc08a3)
+> +		return -ENOMEM;
+> +
+> +	gc08a3->dev = dev;
+> +
+> +	gc08a3->xclk = devm_clk_get(dev, NULL);
+> +	if (IS_ERR(gc08a3->xclk)) {
+> +		dev_err(dev, "could not get xclk\n");
+
+Syntax is:
+return dev_err_probe()
+
+> +		return PTR_ERR(gc08a3->xclk);
+> +	}
+> +
+> +	ret = clk_set_rate(gc08a3->xclk, GC08A3_DEFAULT_CLK_FREQ);
+> +	if (ret) {
+> +		dev_err(dev, "could not set xclk frequency\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = gc08a3_get_regulators(dev, gc08a3);
+> +	if (ret < 0) {
+> +		dev_err(dev, "cannot get regulators\n");
+
+return dev_err_probe()
+
+> +		return ret;
+> +	}
+> +
+> +	gc08a3->enable_gpio = devm_gpiod_get(dev, "enable", GPIOD_OUT_LOW);
+> +	if (IS_ERR(gc08a3->enable_gpio)) {
+> +		dev_err(dev, "cannot get enable gpio\n");
+
+return dev_err_probe()
+
+> +		return PTR_ERR(gc08a3->enable_gpio);
+> +	}
+> +
+> +	gc08a3->regmap = devm_regmap_init_i2c(client, &sensor_regmap_config);
+> +	if (IS_ERR(gc08a3->regmap)) {
+> +		dev_err(dev, "regmap init failed\n");
+
+return dev_err_probe()
+
+> +		return PTR_ERR(gc08a3->regmap);
+> +	}
+> +
+> +	v4l2_i2c_subdev_init(&gc08a3->sd, client, &gc08a3_subdev_ops);
+> +
+> +	gc08a3_power_on(gc08a3->dev);
+> +
+> +	ret = gc08a3_identify_module(gc08a3);
+> +	if (ret) {
+> +		dev_err(&client->dev, "failed to find sensor: %d\n", ret);
+> +		gc08a3_power_off(gc08a3->dev);
+> +		return ret;
+> +	}
+> +
+> +	mutex_init(&gc08a3->mutex);
+> +	gc08a3->cur_mode = &gc08a3_modes[0];
+> +
+> +	ret = gc08a3_init_controls(gc08a3);
+> +	if (ret) {
+> +		dev_err(&client->dev, "failed to init controls: %d", ret);
+
+No power off?
+
+> +		goto free_ctrl;
+> +	}
+> +
+> +	gc08a3->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> +	gc08a3->pad.flags = MEDIA_PAD_FL_SOURCE;
+> +	gc08a3->sd.dev = &client->dev;
+> +	gc08a3->sd.entity.function = MEDIA_ENT_F_CAM_SENSOR;
+> +
+> +	dev_dbg(&client->dev, "gc08a3->sd.name: %s, dev->of_node->name: %s\n",
+> +		gc08a3->sd.name, dev->of_node->name);
+> +	if (V4L2_SUBDEV_NAME_SIZE - strlen(gc08a3->sd.name) - 2 <
+> +	    strlen(dev->of_node->name)) {
+> +		dev_err(&client->dev,
+> +			"the string length of (sd.name + of_node->name) is too long.\n");
+
+This looks like random error handling. You had goto in previous cases.
+
+> +		return -EINVAL;
+> +	}
+> +	strncat(gc08a3->sd.name, " ", 1);
+> +	strncat(gc08a3->sd.name, dev->of_node->name,
+> +		V4L2_SUBDEV_NAME_SIZE - strlen(gc08a3->sd.name) - 2);
+> +	dev_dbg(&client->dev, "after: gc08a3->sd.name: %s\n", gc08a3->sd.name);
+> +
+> +	ret = media_entity_pads_init(&gc08a3->sd.entity, 1, &gc08a3->pad);
+> +	if (ret < 0) {
+> +		dev_err(dev, "could not register media entity\n");
+> +		goto free_ctrl;
+> +	}
+> +
+> +	ret = v4l2_async_register_subdev_sensor(&gc08a3->sd);
+> +	if (ret < 0) {
+> +		dev_err(dev, "could not register v4l2 device\n");
+> +		goto free_entity;
+> +	}
+> +
+> +	pm_runtime_set_active(gc08a3->dev);
+> +	pm_runtime_enable(gc08a3->dev);
+> +	pm_runtime_idle(gc08a3->dev);
+> +
+> +	dev_info(dev, "--- %s -", __func__);
+
+No, drop such silly debug messages.
+
+> +
+> +	return 0;
+> +
+> +free_entity:
+> +	media_entity_cleanup(&gc08a3->sd.entity);
+> +free_ctrl:
+> +	mutex_destroy(&gc08a3->mutex);
+> +	v4l2_ctrl_handler_free(&gc08a3->ctrls);
+> +	pm_runtime_disable(gc08a3->dev);
+> +
+> +	return ret;
+> +}
+> +
+> +static void gc08a3_remove(struct i2c_client *client)
+> +{
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct gc08a3 *gc08a3 = to_gc08a3(sd);
+> +
+> +	v4l2_async_unregister_subdev(&gc08a3->sd);
+> +	media_entity_cleanup(&gc08a3->sd.entity);
+> +	v4l2_ctrl_handler_free(&gc08a3->ctrls);
+> +
+> +	pm_runtime_disable(&client->dev);
+> +	pm_runtime_set_suspended(&client->dev);
+> +
+> +	mutex_destroy(&gc08a3->mutex);
+> +}
+> +
+> +static const struct of_device_id gc08a3_of_match[] = {
+> +	{ .compatible = "GalaxyCore,gc08a3" },
+> +	{}
+> +};
+> +MODULE_DEVICE_TABLE(of, gc08a3_of_match);
+> +
+> +static const struct dev_pm_ops gc08a3_pm_ops = {
+> +	SET_SYSTEM_SLEEP_PM_OPS(gc08a3_suspend, gc08a3_resume)
+> +		SET_RUNTIME_PM_OPS(gc08a3_power_off, gc08a3_power_on, NULL)
+
+Fix indentation.
+
+This code has very pooro quality. I suggest you to do first internal
+review to avoid commenting on trivial errors and using community
+resources for this.
+
+
+Best regards,
+Krzysztof
 
 
