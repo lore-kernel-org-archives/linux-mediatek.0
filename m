@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBF3FC61D97
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 18:43:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C83B9C61DF4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 18:59:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VmxvId8CIwm9VePcbeBWQFLOXrNsXvFnBETzOETUSRo=; b=Bh1sgKGGiSc+uNVaXtqPGhBHI9
-	BEkbZ2XrD0L5Ap1i1w7KvC3NX64NsuiyAmCSl4cuOp/kkPFDcH8m9Oq3gjHaqnvdJ5pDlVBfucLqy
-	RBbvjt3XS2rrwO92vymV3WHh+voFKp7z27CtmblFg8+5nL6wahio601L7/dqxPHGA2lVbUYp9GxJI
-	maiRRk/IHy5JwvinlVUdC60/sbPC6l5SEP/GChPhB/sWSPCEUktBxhXS8dwDxOcG1VAUovKOXXt99
-	ZrswnJ4SuKprSIW7r8v9RPRD4xn4BD10NWdpIzKCcxKJEWX8DMgoO2DcBnbactPsbHfDWzkkv5jRo
-	MCYprOZw==;
+	bh=HzhYK8lHpIDWKJworswybUPN7IM2r64lQYnsK378x8M=; b=mtPwbu/WaJA8TEwk/8j7dB/70Q
+	kYR0pv95bItVTuG9yx26IknN8K2DPLSfxVfPxpttlty/C30vy4+Wh85tuWgvkwzzmMeFICKiQyPXE
+	iAmw6s1I5iX84yhw+7U5ospb3pAjwlE7JDl7YiaVz7bjeoQf7+YGnl4KJLNNA2QLBNjnXONIzVMjc
+	YV88d0P9TLVXf/kDkYsVjzh2S6mONUCBl7kLrP0mHvsSFOUxNnpd/qZ4LJV3oU7Y7tnU7VWxnAFbw
+	/TkvYcec8A5DCnRjQBD/HU76lve+CqVY+S3J3wyBliVfXCdUAiM7ES6bdIumharebwAWo6F36iL8N
+	J9FnPF2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6b94-007tZX-2n;
-	Fri, 24 Nov 2023 18:43:18 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1r6bP3-007uxK-2a;
+	Fri, 24 Nov 2023 18:59:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6b8x-007tVp-2W;
-	Fri, 24 Nov 2023 18:43:13 +0000
+	id 1r6bP0-007uvG-0Q;
+	Fri, 24 Nov 2023 18:59:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id B067BCE2AA4;
-	Fri, 24 Nov 2023 18:43:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8182CC433C9;
-	Fri, 24 Nov 2023 18:43:08 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 03053623D3;
+	Fri, 24 Nov 2023 18:59:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57376C433C8;
+	Fri, 24 Nov 2023 18:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1700851389;
-	bh=gxY2Pwb6/mPD8/2pdVP8iwXCg8MWZ05qEXp2ZThQVhc=;
+	s=korg; t=1700852379;
+	bh=weAAYLO37DhTk8Y6IZDu25vVE/7zMyHaotCMK8Frhn8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=spe+evTfniBtlgwyfkKOrvvrVtaCDf6Y//8zAX6LMlMGegidR03n8E63EnIU2RzFm
-	 LQnM8jVZMLXlpdeIoASTOB1Mq7j47JJWNvNrcZUrnPsV7XXvF1TnIK4muFi4gVxzEl
-	 ngijxFahD16F1RU6XL9Af6EzjvwlOVCUCzoQ2S8w=
+	b=HUq4OypyDASVzIy/XOspnS8xvKUAfT+5E2sqMkKFIzuLsqxdU75dRXsI7PXYG3uYU
+	 0SjloS4t8vDJFA6qnQ3kT4Hwjg1iSrwzENJTHh14hCSJwQN9z8uF1oAvQ1EaQtXxkE
+	 PNUwlx6Eyd7ZqhS93Fn50TwIaptPLfx2k31lV4Yg=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: stable@vger.kernel.org
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -56,19 +56,19 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	Jani Nikula <jani.nikula@intel.com>
-Subject: [PATCH 6.5 428/491] drm/mediatek/dp: fix memory leak on ->get_edid callback error path
-Date: Fri, 24 Nov 2023 17:51:04 +0000
-Message-ID: <20231124172037.474108014@linuxfoundation.org>
+Subject: [PATCH 6.1 325/372] drm/mediatek/dp: fix memory leak on ->get_edid callback error path
+Date: Fri, 24 Nov 2023 17:51:52 +0000
+Message-ID: <20231124172021.215392068@linuxfoundation.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20231124172024.664207345@linuxfoundation.org>
-References: <20231124172024.664207345@linuxfoundation.org>
+In-Reply-To: <20231124172010.413667921@linuxfoundation.org>
+References: <20231124172010.413667921@linuxfoundation.org>
 User-Agent: quilt/0.67
 X-stable: review
 X-Patchwork-Hint: ignore
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_104312_009947_1F3EB6DE 
+X-CRM114-CacheID: sfid-20231124_105946_212418_E519EE5F 
 X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -85,7 +85,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-6.5-stable review patch.  If anyone has any objections, please let me know.
+6.1-stable review patch.  If anyone has any objections, please let me know.
 
 ------------------
 
