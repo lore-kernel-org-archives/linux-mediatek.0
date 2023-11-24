@@ -4,89 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3431C61D97
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 14:44:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87E3CC61DF4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 14:47:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=17Pp2N2Up3k+QE70L37qHUzPWH5WYqD3Q42//rZDh9U=; b=EX0968pZV60oiLYAfFJwRGhV80
-	5umhw6vNcqkeFcnf+mp94ZKCHmPT5CLKApZ77hF5EbrQ7iuZsC9lhC0tc+eVA62RefVsG+P9Imyv7
-	46pT2P6sL+Da5c70v6BT33ZgjUWAEnxnvrUyak2wMjjZ28xgdsbo21tbm/XpjLXnKPkmsGU7E4Bq2
-	6ba7HI+1NvHFYZobGI0Mm6JlDwSR7I1txGBwzAst7nfIi/y8zRu55ad6nHwLEKtsOlV8O27H7DOPX
-	rgy8l7QwGawrsJyoEoOWyxCQU5KxDPLINalfbYlLqCrBN9uEwAuj+SgLzn/Bj6b8+o2SwWhd6JNOT
-	YOnynNVg==;
+	bh=mhOcViojT8+HFgx6FSmpZBi4UIVJpE+xyo5WsXpVSso=; b=016ZazzKAFizTOUhJczbnQFnv9
+	5A4ksaLszhK1DhzNCUxZzDYJZ7q4vlDyhNH2+H2F4Bk//c4vGeWN+Izi0yLUiEw8lBtQXeo2iVjLa
+	ZIYl18csqero8Oclk/E53PhuWjtIppbkxS6GHjQjjXOoJ3zhR7hSbIHzP4qYOyqGrg9/zQdfspMPL
+	xF7Ubr9C/rTbD5rCb+ZhFLujQ7XhcC4pNX56wWO5N4FVdx6Rtf4srCkxR/cb+RRxVV0yuXGw6WUSt
+	mPZem4iPrt4rv5jD0Nfa0GHZKv+faWbcDFyl7AsDMS4EjlaecbAh7WjghryCXC5lI6EFN9EtpUuyk
+	WWfTto/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6XQK-007Rod-2H;
-	Fri, 24 Nov 2023 14:44:52 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1r6XT3-007SEf-1m;
+	Fri, 24 Nov 2023 14:47:41 +0000
+Received: from mgamail.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6XQH-007RnO-1v;
-	Fri, 24 Nov 2023 14:44:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=17Pp2N2Up3k+QE70L37qHUzPWH5WYqD3Q42//rZDh9U=; b=qYad0eqSn0G/bC3dntMLicuVFB
-	vGi9j2aVKb5NCY59SLtxyrgxVYuLQUfoq3apeOZrJH9blV05Rcvgao/CpTScaHzEPMAulyBZl5qc1
-	aAuY03oNkK6gfz34+0GeSGJHI/tY8ro0Dy9Xq2P/R+pJmXF44pZMZ62fm9HemnnLU/lk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1r6XPo-0016Vl-Cc; Fri, 24 Nov 2023 15:44:20 +0100
-Date: Fri, 24 Nov 2023 15:44:20 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Jie Luo <quic_luoj@quicinc.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+	id 1r6XT0-007SDl-1l;
+	Fri, 24 Nov 2023 14:47:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1700837258; x=1732373258;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=kuw3+1Pm03Ibm+MVDWAtmPGqCx+P0c0EstmoCAQl4jQ=;
+  b=Bc1l7/aU2+h1Kuv8FZKwIzUp1Jyk00Cy2zDnKK0MdMO3DJLh35kREdm5
+   BPPAoecUEdL225f+bBdP5/527tmm9+X5h6orPduncmSeXIZob99MntglT
+   6CzQCbIDt5Ng2HXTjELm0RIhYI4IxkLqRsw1l1UPhks5QIY9e1UCMT2KC
+   yP76zEY1SkwPk7yD9hpTxQcMnCoo2TeDe4J/zou0yatdQ3AiVrMfvB0uh
+   Hagw5FhOkD7BaqXMDeWi1Sp+shnw2Fa1updnl5RU2RcDtvWtMb9gCXOjN
+   keu++EURDmhK3kA6hp1G1fbQZ0Rq1S+AH1i2v7VQBM7dX75t3QFIcNAgG
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10904"; a="395249775"
+X-IronPort-AV: E=Sophos;i="6.04,224,1695711600"; 
+   d="scan'208";a="395249775"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Nov 2023 06:47:37 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10904"; a="767501852"
+X-IronPort-AV: E=Sophos;i="6.04,224,1695711600"; 
+   d="scan'208";a="767501852"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Nov 2023 06:47:28 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.97)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1r6XSm-0000000Gk4Z-1lzv;
+	Fri, 24 Nov 2023 16:47:24 +0200
+Date: Fri, 24 Nov 2023 16:47:24 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+	Jianlong Huang <jianlong.huang@starfivetech.com>,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org, linux-mips@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
+	Andy Gross <agross@kernel.org>,
 	Bjorn Andersson <andersson@kernel.org>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Epping <david.epping@missinglinkelectronics.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Simon Horman <horms@kernel.org>,
-	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
- PHY package nodes
-Message-ID: <4d159a99-f602-424e-a3c1-259c52e4d543@lunn.ch>
-References: <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
- <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
- <6a030399-b8ed-4e2c-899f-d82eb437aafa@lunn.ch>
- <655f2ba9.5d0a0220.294f3.38d8@mx.google.com>
- <c697488a-d34c-4c98-b4c7-64aef2fe583f@lunn.ch>
- <ZV9jM7ve3Kl6ZxSl@shell.armlinux.org.uk>
- <e32d5c84-7a88-4d9f-868f-98514deae6e9@lunn.ch>
- <655fa905.df0a0220.49d9b.7afd@mx.google.com>
- <367c0aea-b110-4e3f-a161-59d27db11188@quicinc.com>
- <ZWCQv9oaACowJck0@shell.armlinux.org.uk>
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Hal Feng <hal.feng@starfivetech.com>
+Subject: Re: [PATCH v2 00/21] pinctrl: Convert struct group_desc to use
+ struct pingroup
+Message-ID: <ZWC3fNnYM9qDKT-5@smile.fi.intel.com>
+References: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
+ <CACRpkdbEoAvTs4c5e910bsBZej2Gs6H+SPLAXUnKM2qRk+5MTw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <ZWCQv9oaACowJck0@shell.armlinux.org.uk>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CACRpkdbEoAvTs4c5e910bsBZej2Gs6H+SPLAXUnKM2qRk+5MTw@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_064449_633410_839C626F 
-X-CRM114-Status: UNSURE (   6.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231124_064738_624512_F1DAFCB8 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,16 +114,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> 		First Serdes mode	Second Serdes mode
-> Option 1	PSGMII for copper	Disabled
-> 		ports 0-4
-> Option 2	PSGMII for copper	1000BASE-X / 100BASE-FX
-> 		ports 0-4
-> Option 3	QSGMII for copper	SGMII for
-> 		ports 0-3		copper port 4
+On Fri, Nov 24, 2023 at 11:17:53AM +0100, Linus Walleij wrote:
+> On Thu, Nov 23, 2023 at 8:34 PM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
 
-With option 2, can the second SERDES also do SGMII? You are likely to
-need that when a Copper SFP module is inserted into the cage.
+...
 
-     Andrew
+> > Linus, assuming everything is fine, I can push this to my tree.
+> > Or you can apply it (assumming all CIs and people are happy with
+> > the series).
+> 
+> I would give people some time to test the changes and ACK it,
+> but admittedly it's a very tasty patch set and I am eager to merge
+> it ASAP.
+> 
+> Shall we give people a week and then we merge it?
+
+Yes, and since it's again some small issues, I want to send a v3
+next week (presumably on Monday).
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
