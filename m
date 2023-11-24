@@ -4,85 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92238C61D97
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 09:49:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6565C61D97
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 10:01:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y622WiMwHYSWvpg2GlDOi18NUNokJQ6nlm4sUNqp440=; b=uScTuuLQdM25fzXE3aBWJLq0bB
-	75pYQ7PVEktn0fZUr1svO0XnnKKDb0wT+6pzprukJT8Pqc8zyIFoIQFqHFP7o8wBP1raFJ/8tqdFp
-	LZZKoSsqpBL2LQfOC/MLNZ3+mgkmYfAOoCE0g4s76uUPPUbJ2cYMdnAfto+Om5ixm3xq5bcLaUjJw
-	+mIaaJXJYjjQt5lUbU6lA06uAyVb2uEsgiOb5PBKtVXj5JHycOkXw515eveOwzLw5KMwqn7xeFYZt
-	+FrJjfip9xhuo6nrEArtzHGll7Ui1HDx+PBhdW7LQ+38Lrva+EEkvxHNMbYpS5NpwR3j2JP2chay9
-	oWsGYS9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YdRXmOt9Y5eMiagSvm9fvGMfzv8pEl9C4bUpAbreCaE=; b=tVxmIpY5JcISgzV2NJmqpXo2IP
+	WkZDwIgWcgOqsuJUY5IxrIb9xRSj5q/ciRoj73BR+CSFcTlZiTzERBjlwo+z46meV3WXo+gbHKgWi
+	KrcDI/y5Cc6Zn+oRyQQv92l7HPrDBC7iXVsytTeoYC2mVX5iPp23spbsBwkT3XusHCzev/2m7TNtt
+	bf/5y8FAO1ZID50djj6dqkraRPmSn7PC6OMkq0ajip1saccDQVvC6ewQGKDouNPozbWSCxkSM9Yyi
+	uNkSQH25bV1HfsihmcpRb+8uaoGYRPHKhlFjv5UjYG37e/z/slz53kFK8gqRdapTNuVuXfTBuHYxu
+	+TfZB+pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6SoT-006jGX-1y;
-	Fri, 24 Nov 2023 09:49:29 +0000
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+	id 1r6T0E-006lfJ-2b;
+	Fri, 24 Nov 2023 10:01:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6SoQ-006jEp-18
-	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Nov 2023 09:49:28 +0000
-Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-5cbcfdeaff3so17394637b3.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Nov 2023 01:49:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700819365; x=1701424165; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=y622WiMwHYSWvpg2GlDOi18NUNokJQ6nlm4sUNqp440=;
-        b=j0Xk8ZYpnsktnsgSV3hwZnK0aaL0GWxDp1C7H4m4dRRhH39fUX0dwRDF7I5dg2YHoF
-         0AcbClIT6E1eOwF61aM7Fyu+cQxB1oXDvrglizYM8jGbzWiCApX4SlOU8x12dm8yMvj0
-         UepzCXbZf6UhZlj2s4eBjztRReJ5SfiQN24DNSyZ0yYmAId3AbutP6VOvWjrRECshRHM
-         wT4pV53W942i9ppnnoT+7H94+yanq/8BAkAvY0LFdPsvuaNqkxMRm6txrDDMENzxrURR
-         oOFW194GV2ogPIeKo92luOPEyjdbj86OmvKb8iB3KyoCXMKi9REOyBVqldTJxcE2bLzp
-         J1hA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700819365; x=1701424165;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=y622WiMwHYSWvpg2GlDOi18NUNokJQ6nlm4sUNqp440=;
-        b=X4SMPc+38gLXMD4O0KIshS/RbNcr4IBmSySnxDwZtagL7cADyJgf8VQlR2JcjjP+an
-         OvT6CAEKpD5W9Jv49FJz6kriLLwpflUGyLb/cbijgNnFDZthFbyo/0m9BYYOu5Fxo+L6
-         aZny6cOXnXRF5DbACmyCNSViD6eJfEk9+9bJRAnKFHXWaGWYsBBUbgpJ6BbWsjnuVGeu
-         6uNPW8VYt/5qvH+t2EaDSE1IA4bnWXuc52aYX5uNU6Z35ei3gXcvH0Wjqq6tE245bJRG
-         6bqQEFdR5LLTYlFhigktR35eUjPuWbLp00brbkROJxvMJbbQOur4cxUDyLGi6DEDSGWW
-         aOXg==
-X-Gm-Message-State: AOJu0YzsfN+j+xVQivDx2CzvmcaA39I8M+vgWBXC1pko/839uVzzxgGn
-	dtXHu51RzRJ8CLWOpJgW1ZEBm8HS8TLc92JNbaIsng==
-X-Google-Smtp-Source: AGHT+IGjpukiK1tECzhi8Ll3VSeycM6tp7xdGxGsh0QUN11xzJy3u9DzHTy5UqDem9tLcL+crrEE8x0xvXGeMvgE294=
-X-Received: by 2002:a0d:d4c6:0:b0:5cb:89dc:ccea with SMTP id
- w189-20020a0dd4c6000000b005cb89dccceamr1961171ywd.10.1700819365616; Fri, 24
- Nov 2023 01:49:25 -0800 (PST)
+	id 1r6T0B-006ldv-06;
+	Fri, 24 Nov 2023 10:01:36 +0000
+X-UUID: 703a5d728ab011ee86758d4a7c00f3a0-20231124
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=YdRXmOt9Y5eMiagSvm9fvGMfzv8pEl9C4bUpAbreCaE=;
+	b=WzO/y1u9OqScBIk46Bhab9OSByKbdOQBgvth8Eie6vZhwP041fD6mYUSUNvnarC/kOH73ELNc579eXmJmqlJ9FkKff2Fp0bUnyLOcPQPGPooR03XfFvjnaTk2ocEB13OndW2yDaXPnYGyVyF52RpaCvvMZqDg+Fx5c1ZtnUfilo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:48630cb9-82e6-49be-8b1d-7c7102549acb,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:94c00773-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 703a5d728ab011ee86758d4a7c00f3a0-20231124
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1273417957; Fri, 24 Nov 2023 03:01:29 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 24 Nov 2023 18:00:53 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 24 Nov 2023 18:00:53 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Paul <seanpaul@chromium.org>, CK Hu <ck.hu@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Hsiao
+ Chien Sung <shawn.sung@mediatek.com>
+Subject: [PATCH v4 0/1] Fix errors when reporting rotation capability
+Date: Fri, 24 Nov 2023 18:00:51 +0800
+Message-ID: <20231124100052.18599-1-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20231117104315.9718-2-zajec5@gmail.com>
-In-Reply-To: <20231117104315.9718-2-zajec5@gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 24 Nov 2023 10:49:14 +0100
-Message-ID: <CACRpkdbwqy+LNGi-7rZjPLWESbKJSFVzry6pAGd6aTnq0ifoDA@mail.gmail.com>
-Subject: Re: [PATCH 2/3] dt-bindings: arm64: dts: mediatek: Add Acelink
- EW-7886CAX access point
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Chris Morgan <macromorgan@hotmail.com>, Sean Wang <sean.wang@mediatek.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_014926_390374_C01BCBAF 
-X-CRM114-Status: UNSURE (   7.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231124_020135_077295_505454F8 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,17 +86,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 17, 2023 at 11:43=E2=80=AFAM Rafa=C5=82 Mi=C5=82ecki <zajec5@gm=
-ail.com> wrote:
+This commit is based on 20231024130048.14749-1-shawn.sung@mediatek.com.
 
-> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
->
-> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
->
-> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+This bug was found when running IGT tests.
+For CRTCs that doesn't support rotation should still return
+DRM_MODE_ROTATE_0, otherwise the test will fail to restart.
+Returns the hardware capabilities accordingly.
 
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Changes in v4:
+- Remove rotation property from the driver data since
+  OVL rotation property for all chips are the same
 
-Yours,
-Linus Walleij
+Changes in v3:
+- Return 0 (not support) if rotation capabilities is not defined
+  in the driver data.
+
+Changes in v2:
+- Restore DRM_MODE_ROTATE_180 (reflect x + reflect y = rotate 180)
+- Define supported rotations in the driver data
+
+Hsiao Chien Sung (1):
+  drm/mediatek: Fix errors when reporting rotation capability
+
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h        |  1 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c        | 18 ++++++------------
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    |  9 +++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c    |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c       |  2 +-
+ 5 files changed, 18 insertions(+), 13 deletions(-)
+
+--
+2.39.2
+
 
