@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD75FC61DF4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 18:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68C14C61DF4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 18:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gwmyJG9vbp3QOEoifoxISsT4fXojTNtLKYVLH+21FeI=; b=AmilBD5VAOqNF83NPTszHF0Qqk
-	YtRDqV7eOkUFBoW2BkJUXN66Hx0Eg6AKm2BQsSaA5sdl0N10nt3qpeFM4LHUF06sHTSnS8WfbuPGZ
-	unE6c6EXQc6Ne8VrljFF2vKzpF/1QNAKnYhvA8+cGiS9lcHI+u5AiyLRQwal8IzxFdkvUOORysNKE
-	QjA283DhB7A97G/HZvMdrLawQlgHd1tJZmN3iVbHb8gdcJCAoFM1+re1sOLcZrIdNDSvtACp63kTM
-	HyPi9vguYB476gkkw+PFAj5BpKso06487Q3mkFAOdI7xBbclAn7qisNHAldo0B+KWr17DV95uMWEv
-	SVr/jp+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KsZLt1asyqlfxq1Dshy+z9953bQ6egoALwIPwHSnEjY=; b=aZXsfS9ffP2EPSWUbBoRwDcNjd
+	WvXBn0wO5GbN5Zv907tr6yQY3t671a/mSVuytxWDN3Iub0OrfhUcyHEaB/lLhMpNNtGV27uLENDnX
+	6Kw1UKHGCEXS+xG1ZpIsFwUxf6SSQbnK6+cBSUx/BrUk91xMtgpVaOJqvOKVPtEDATeLnlbiM7+Fs
+	syjf1zxX5im/54pJxwp9VBv43qD0mSnS+yHqemCYY8X8OuQyR8TkWuNZniFfQSysdvE1wdCH5dwrC
+	LJQf2rXSWuuGCXhBfpuVTuy8uRcGz0Whyl5Vf7MTUWFq7c6vzoPl3vYgWboXsl9U9Cq+CAAL9qZae
+	+uqRLuJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6b29-007t4h-18;
-	Fri, 24 Nov 2023 18:36:09 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1r6b8w-007tVk-19;
+	Fri, 24 Nov 2023 18:43:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6b26-007t3a-0a;
-	Fri, 24 Nov 2023 18:36:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=gwmyJG9vbp3QOEoifoxISsT4fXojTNtLKYVLH+21FeI=; b=hQEe5os3F07048ijAtiZMvGGWh
-	ZZmKad7TP8b2Xydt3N25pbnMjju/0738kGnsfpBCSSuZKnEnY5eSG8fzNl6FXigNaf5UzWr+EIasK
-	8pLW/BaSuzKc/VrixnHCEr8hzWFrDhJE6USIRDu5odK2ahnDzPXwMEnM6Zo7NSK1vFxU=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1r6b1b-0017zc-6B; Fri, 24 Nov 2023 19:35:35 +0100
-Date: Fri, 24 Nov 2023 19:35:35 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, Rob Herring <robh@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1r6b8t-007tV2-1U;
+	Fri, 24 Nov 2023 18:43:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id CFDEF623C0;
+	Fri, 24 Nov 2023 18:43:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12139C433C7;
+	Fri, 24 Nov 2023 18:43:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1700851386;
+	bh=XfGLfOIgKNcjrNSjNEBK5FWdw0y2NMMK6HCt/LP+kug=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=z7Gj9TEwZ+cnKCu2EW8FlsAo4J7eQZFc9y8RkjrRzajVFHTXXqtn/PPgSX7AR66hm
+	 pW7Pu/Qda5ONmcBBG37qZm4xVYD3gNZsR87fp9ZwN90Ka9E5cYTBQ7x6Q7zKlnXAzM
+	 +WVVPem9Pn+1dHhcPOkp6Un3f71/5k0XcesPJx8k=
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: stable@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	patches@lists.linux.dev,
+	Guillaume Ranquet <granquet@baylibre.com>,
+	Bo-Chen Chen <rex-bc.chen@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Epping <david.epping@missinglinkelectronics.com>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Simon Horman <horms@kernel.org>,
-	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
- PHY package nodes
-Message-ID: <b8981dc4-5db0-4418-b47d-3e763e20beac@lunn.ch>
-References: <20231120135041.15259-1-ansuelsmth@gmail.com>
- <20231120135041.15259-4-ansuelsmth@gmail.com>
- <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
- <20231121144244.GA1682395-robh@kernel.org>
- <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
- <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
- <20231124165923.p2iozsrnwlogjzua@skbuf>
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Jani Nikula <jani.nikula@intel.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: [PATCH 6.5 427/491] drm/mediatek/dp: fix memory leak on ->get_edid callback audio detection
+Date: Fri, 24 Nov 2023 17:51:03 +0000
+Message-ID: <20231124172037.441688419@linuxfoundation.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20231124172024.664207345@linuxfoundation.org>
+References: <20231124172024.664207345@linuxfoundation.org>
+User-Agent: quilt/0.67
+X-stable: review
+X-Patchwork-Hint: ignore
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231124165923.p2iozsrnwlogjzua@skbuf>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_103606_219472_65324664 
-X-CRM114-Status: GOOD (  16.17  )
+X-CRM114-CacheID: sfid-20231124_104307_544575_65E4D8ED 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,35 +83,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> I think you are hitting some of the same points I have hit with DSA.
-> The PHY package could be considered an SoC with lots of peripherals on
-> it, for which you'd want separate drivers.
+6.5-stable review patch.  If anyone has any objections, please let me know.
 
-At least at the moment, this is not true. The package does just
-contain PHYs. But it also has some properties which are shared across
-those PHYs, e.g. reset. 
+------------------
 
-What you describe might become true in the future. e.g. The LED/GPIO
-controller is currently part of the PHY, and each PHY has its own. I
-could however imagine that becomes a block of its own, outside of the
-PHY address space, and maybe it might want its own class LED
-driver. Some PHYs have temperature sensors, which could be a package
-sensor, so could in theory be an individual hwmon driver. However,
-i've not yet seen such a package.
+From: Jani Nikula <jani.nikula@intel.com>
 
-Do we consider this now? At the moment i don't see an MFD style system
-is required. We could crystal ball gaze and come up with some
-requirements, but i would prefer to have some real devices and
-datasheets. Without them, we will get the requirements wrong.
+commit dab12fa8d2bd3868cf2de485ed15a3feef28a13d upstream.
 
-I also think we are not that far away from it, in terms of DT, if you
-consider the later comments. I suggested we need a phy package
-specific compatible. At the moment, it will be ignored by the kernel,
-the kernel does not need it, it probes the PHYs in the current way,
-using the ID registers. But it could in future be used to probe a real
-driver, which could be an MFD style driver. We need to see updated DT
-binding examples, but i don't see why we cannot slot it in at a later
-date.
+The sads returned by drm_edid_to_sad() needs to be freed.
 
-	Andrew
+Fixes: e71a8ebbe086 ("drm/mediatek: dp: Audio support for MT8195")
+Cc: Guillaume Ranquet <granquet@baylibre.com>
+Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: <stable@vger.kernel.org> # v6.1+
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Link: https://patchwork.kernel.org/project/dri-devel/patch/20230914155317.2511876-1-jani.nikula@intel.com/
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1983,7 +1983,6 @@ static struct edid *mtk_dp_get_edid(stru
+ 	bool enabled = mtk_dp->enabled;
+ 	struct edid *new_edid = NULL;
+ 	struct mtk_dp_audio_cfg *audio_caps = &mtk_dp->info.audio_cur_cfg;
+-	struct cea_sad *sads;
+ 
+ 	if (!enabled) {
+ 		drm_atomic_bridge_chain_pre_enable(bridge, connector->state->state);
+@@ -2010,7 +2009,11 @@ static struct edid *mtk_dp_get_edid(stru
+ 	}
+ 
+ 	if (new_edid) {
++		struct cea_sad *sads;
++
+ 		audio_caps->sad_count = drm_edid_to_sad(new_edid, &sads);
++		kfree(sads);
++
+ 		audio_caps->detect_monitor = drm_detect_monitor_audio(new_edid);
+ 	}
+ 
+
+
 
