@@ -4,79 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E6AEC61D97
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 11:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB8DC61D97
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 11:49:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L6GnRM6NidZUi3jRK7RqXEpkhU/vKlU/QT05ifHMFJk=; b=DmJZ/ISJ9DDkyp2d39u4qU0q9g
-	bTNVdQht89xWdXACaL5Iq/OZA0V4IZlWurBkPopyqrMCFfUaP6Duqip9P0q9LyxI+Aq2MYcq/2m/U
-	HBx3mMif2F5CDFdEebY6iq25GvNa/dSUAcLfW3gTTyZvXavTTmM4AewBM4GBJpN6sWLl7JR+NbGsA
-	zTTrjyL5amsyAZKeJNDKkqhJUqUWbhvgeP2aq/UabSKQw0MI+LzKqNDZ7ZCGdqgTV91P+o5F9jpFc
-	9KsY0op/oUVN+VqIalMFfEZK9GgP8koUFcLntKxQK4q+6D985X71MDinDQaUFGpD3Ht5pydpvCmWs
-	ssPrYhvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WioykjLZIEzmqvcqqpGNeyMQihVdBnwLtxAN4aQW36M=; b=47XC+wBFzipMkDOOikfzr0qp1b
+	6YxRSUWKAiU6aivNb9cYno/4HlqTbvSbnoiOcYU9GYTy+w+0a2c1fXz+8Y7O+iwrmMqCizQds7XQk
+	CEnl9UJeFu4y+65+wV4akwilUhRKaUz4TxY61gpyC2YPhRlu5mQwkYjFMV2ftTLD8+kygeS5m5Dmc
+	eGI8SAHcmWVVxuA2P3gfiTnjDGEMUorpEvkAfzon35ancxYcxBO5JgMukxYmHbZLv/a+GEENDYiA+
+	9b5+dvkOhakfLv//wqsOVzokDym0DZl79m2ZyOpLbi6g7yHO61yCYky7K/3GMxZyUzyRxfiGymyTw
+	NClPQe3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6U5Q-006wzH-14;
-	Fri, 24 Nov 2023 11:11:04 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1r6Uh4-0072D7-2Y;
+	Fri, 24 Nov 2023 11:49:58 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6U5N-006wxb-0G;
-	Fri, 24 Nov 2023 11:11:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1700824250;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=L6GnRM6NidZUi3jRK7RqXEpkhU/vKlU/QT05ifHMFJk=;
-	b=LBrchC0qhmWyX0lJ6ONu1O4uhPxAqVOOC6X9B227EFK9Ztd2h8AwOKaiNll6vofsqLpbJX
-	RKvhK/2zU21J2TYqpAtyku5yL3gDWwivNfPNwDMZ4GaNpu6v8qUX56B/GixPh2f4IfqRtI
-	J+B1QI7g2t51b4ero5nx4JOTTKgNC/8=
-Message-ID: <4b5cf6f837037bcc4cefb3b36a2773a2707ef292.camel@crapouillou.net>
-Subject: Re: [PATCH v2 16/21] pinctrl: ingenic: Convert to use grp member
-From: Paul Cercueil <paul@crapouillou.net>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Linus Walleij
- <linus.walleij@linaro.org>, Bartosz Golaszewski
- <bartosz.golaszewski@linaro.org>,  Rasmus Villemoes
- <linux@rasmusvillemoes.dk>, Jonathan =?ISO-8859-1?Q?Neusch=E4fer?=
- <j.neuschaefer@gmx.net>,  Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>, Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?=
- <u.kleine-koenig@pengutronix.de>,  Geert Uytterhoeven
- <geert+renesas@glider.be>, Biju Das <biju.das.jz@bp.renesas.com>, Claudiu
- Beznea <claudiu.beznea.uj@bp.renesas.com>, Jianlong Huang
- <jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org, 
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
- linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org
-Cc: Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng
- <aisheng.dong@nxp.com>,  Fabio Estevam <festevam@gmail.com>, Shawn Guo
- <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,  Pengutronix Kernel
- Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, NXP
- Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, Lakshmi
- Sowjanya D <lakshmi.sowjanya.d@intel.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio
- <konrad.dybcio@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, Hal
- Feng <hal.feng@starfivetech.com>
-Date: Fri, 24 Nov 2023 12:10:47 +0100
-In-Reply-To: <20231123193355.3400852-17-andriy.shevchenko@linux.intel.com>
-References: <20231123193355.3400852-1-andriy.shevchenko@linux.intel.com>
-	 <20231123193355.3400852-17-andriy.shevchenko@linux.intel.com>
-Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
- keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZMLQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5UzFZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtNz8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe+rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIPdlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7Urf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KFlBwgAhlGy6nqP7O3u7q23hRW5AQ0EXQqFwQEIAMo+MgvYHsyjX3Ja4Oolg1Txzm8woj30ch2nACFCqaO0R/1kLj2VVeLrDyQUOlXx9PD6IQI4M8wy8m0sR4wV2p/g/paw7k65cjzYYLh+FdLNyO7IW
-	YXndJO+wDPi3aK/YKUYepqlP+QsmaHNYNdXEQDRKqNfJg8t0f5rfzp9ryxd1tCnbV+tG8VHQWiZXNqN7062DygSNXFUfQ0vZ3J2D4oAcIAEXTymRQ2+hr3Hf7I61KMHWeSkCvCG2decTYsHlw5Erix/jYWqVOtX0roOOLqWkqpQQJWtU+biWrAksmFmCp5fXIg1Nlg39v21xCXBGxJkxyTYuhdWyu1yDQ+LSIUAEQEAAYkBNgQYAQoAIBYhBNdHYd8OeCBwpMuVxnPua9InSr1BBQJdCoXBAhsMAAoJEHPua9InSr1B4wsH/Az767YCT0FSsMNt1jkkdLCBi7nY0GTW+PLP1a4zvVqFMo/vD6uz1ZflVTUAEvcTi3VHYZrlgjcxmcGu239oruqUS8Qy/xgZBp9KF0NTWQSl1iBfVbIU5VV1vHS6r77W5x0qXgfvAUWOH4gmN3MnF01SH2zMcLiaUGF+mcwl15rHbjnT3Nu2399aSE6cep86igfCAyFUOXjYEGlJy+c6UyT+DUylpjQg0nl8MlZ/7Whg2fAU9+FALIbQYQzGlT4c71SibR9T741jnegHhlmV4WXXUD6roFt54t0MSAFSVxzG8mLcSjR2cLUJ3NIPXixYUSEn3tQhfZj07xIIjWxAYZo=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1r6Uh1-00728f-1I;
+	Fri, 24 Nov 2023 11:49:57 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AO8GaX3024034;
+	Fri, 24 Nov 2023 11:49:38 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=WioykjLZIEzmqvcqqpGNeyMQihVdBnwLtxAN4aQW36M=;
+ b=ZJmvVtq0dWWzfz/PiZ/98+LmAueLy5p1oC/PJ58O5BDGCtJlW4h8P7VAwJD6M69cIy4q
+ OJ15ypy40/seKHpxe2cMhMd+dM4yycLpLbhlPxicz3Z82A2n3xi2DpofUDMJP7zaJ80x
+ mrYmuUU6op/22ygowItD3HD88a9cubzfFhvDExzcaQtWdZzN5m7ZUL1KRPuAJM0rvXdk
+ oo49gtqZqnDgoTlcnbBWDAke/Tznl7xsc27p1rMY6ub18tV+wLbSNLTyY1VjeHLnp4t/
+ bJ7y3ZhK38rjztJtYKEELWJEJVxyky23I5w/trtSWZx+F7I4ZJLXfyryfiEqPJgDyD/6 9A== 
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ujp8x0wrb-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 24 Nov 2023 11:49:38 +0000
+Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com [10.47.97.35])
+	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3AOBnb6B004975
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 24 Nov 2023 11:49:37 GMT
+Received: from [10.253.33.181] (10.80.80.8) by nalasex01c.na.qualcomm.com
+ (10.47.97.35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Fri, 24 Nov
+ 2023 03:49:30 -0800
+Message-ID: <367c0aea-b110-4e3f-a161-59d27db11188@quicinc.com>
+Date: Fri, 24 Nov 2023 19:49:27 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
+ PHY package nodes
+Content-Language: en-US
+To: Christian Marangi <ansuelsmth@gmail.com>, Andrew Lunn <andrew@lunn.ch>
+CC: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+        Rob Herring
+	<robh@kernel.org>,
+        "David S. Miller" <davem@davemloft.net>,
+        Eric Dumazet
+	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+        Paolo Abeni
+	<pabeni@redhat.com>,
+        Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+        Bjorn
+ Andersson <andersson@kernel.org>,
+        Konrad Dybcio <konrad.dybcio@linaro.org>,
+        Heiner Kallweit <hkallweit1@gmail.com>,
+        Florian Fainelli
+	<florian.fainelli@broadcom.com>,
+        Broadcom internal kernel review list
+	<bcm-kernel-feedback-list@broadcom.com>,
+        Daniel Golle
+	<daniel@makrotopia.org>,
+        Qingfang Deng <dqfext@gmail.com>,
+        SkyLake Huang
+	<SkyLake.Huang@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        David
+ Epping <david.epping@missinglinkelectronics.com>,
+        Vladimir Oltean
+	<olteanv@gmail.com>,
+        Harini Katakam <harini.katakam@amd.com>,
+        Simon Horman
+	<horms@kernel.org>,
+        Robert Marko <robert.marko@sartura.hr>, <netdev@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>
+References: <20231120135041.15259-4-ansuelsmth@gmail.com>
+ <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
+ <20231121144244.GA1682395-robh@kernel.org>
+ <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
+ <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
+ <6a030399-b8ed-4e2c-899f-d82eb437aafa@lunn.ch>
+ <655f2ba9.5d0a0220.294f3.38d8@mx.google.com>
+ <c697488a-d34c-4c98-b4c7-64aef2fe583f@lunn.ch>
+ <ZV9jM7ve3Kl6ZxSl@shell.armlinux.org.uk>
+ <e32d5c84-7a88-4d9f-868f-98514deae6e9@lunn.ch>
+ <655fa905.df0a0220.49d9b.7afd@mx.google.com>
+From: Jie Luo <quic_luoj@quicinc.com>
+In-Reply-To: <655fa905.df0a0220.49d9b.7afd@mx.google.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nalasex01c.na.qualcomm.com (10.47.97.35)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: jLknTLU7yaNEfTc2et0lNIX_kyygQYkY
+X-Proofpoint-ORIG-GUID: jLknTLU7yaNEfTc2et0lNIX_kyygQYkY
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-23_15,2023-11-22_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ adultscore=0 mlxlogscore=999 clxscore=1011 spamscore=0 lowpriorityscore=0
+ impostorscore=0 malwarescore=0 bulkscore=0 mlxscore=0 phishscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2311240092
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_031101_289853_07F988A0 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20231124_034955_444215_A5DA1BB6 
+X-CRM114-Status: GOOD (  30.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,79 +142,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
 
-Le jeudi 23 novembre 2023 =C3=A0 21:31 +0200, Andy Shevchenko a =C3=A9crit=
-=C2=A0:
-> Convert drivers to use grp member embedded in struct group_desc.
->=20
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Acked-by: Paul Cercueil <paul@crapouillou.net>
+On 11/24/2023 3:33 AM, Christian Marangi wrote:
+> On Thu, Nov 23, 2023 at 03:57:58PM +0100, Andrew Lunn wrote:
+>> On Thu, Nov 23, 2023 at 02:35:31PM +0000, Russell King (Oracle) wrote:
+>>> On Thu, Nov 23, 2023 at 03:27:05PM +0100, Andrew Lunn wrote:
+>>>>> Just to be more precise qca807x can operate in 3 different mode:
+>>>>> (this is controlled by the MODE_CFG bits)
+>>>>
+>>>>> - QSGMII: 5 copper port
+>>>>
+>>>> 4 slots over QSGMII, plus the second SERDES is connected to the MAC
+>>>> using SGMII/1000BaseX?
+>>>>
+>>>>> - PSGMII: 5 copper port
+>>>>
+>>>> 5 slots over QSGMII, the second SERDES is idle?
+>>>>
+>>>>> - PSGMII: 4 copper port + 1 combo (that can be both fiber or copper)
+>>>>
+>>>> 5 slots over QSGMII, with the second SERDES connected to an SFP cage.
+>>>>
+>>>> Are ports 1-4 always connected to the P/Q SGMII. Its only port 5 which
+>>>> can use the second SERDES?
+>>>
+>>> I think what would really help here is if there was an ascii table to
+>>> describe the configurations, rather than trying to put it into words.
+>>
+>> Yes.
+>>
+>> And also for ipq4019. We need to merge these two threads of
+>> conversation, since in the end they are probably the same driver, same
+>> device tree etc.
+>>
+> 
+> For everyone that missed Robert response in patch 12 let me quote him
+> also here.
+> 
+> "
+> Hi Andrew,
+> I think that the description is confusing.
+> QCA807x supports 3 different modes:
+> 1. PSGMII (5 copper ports)
+> 2. PSGMII (4 copper ports + 1 combo port)
+> 3. QSGMII+SGMII
+> 
+> So, in case option 2 is selected then the combo port can also be used for
+> 1000Base-X and 100Base-FX modules or copper and it will autodetect the
+> exact media.
+> This is supported via the SFP op-s and I have been using it without issues
+> for a while.
+> 
+> I have not tested option 3 in combination with SFP to the copper
+> module so I cant
+> say whether that works.
 
-Cheers,
--Paul
+For the option3, the last PHY works on SGMII mode, then it can't be
+used with SFP, only copper is supported in this mode.
 
-> ---
-> =C2=A0drivers/pinctrl/pinctrl-ingenic.c | 18 +++++++++---------
-> =C2=A01 file changed, 9 insertions(+), 9 deletions(-)
->=20
-> diff --git a/drivers/pinctrl/pinctrl-ingenic.c
-> b/drivers/pinctrl/pinctrl-ingenic.c
-> index 393873de910a..6806fede5df4 100644
-> --- a/drivers/pinctrl/pinctrl-ingenic.c
-> +++ b/drivers/pinctrl/pinctrl-ingenic.c
-> @@ -3756,17 +3756,17 @@ static int ingenic_pinmux_set_mux(struct
-> pinctrl_dev *pctldev,
-> =C2=A0		return -EINVAL;
-> =C2=A0
-> =C2=A0	dev_dbg(pctldev->dev, "enable function %s group %s\n",
-> -		func->name, grp->name);
-> +		func->name, grp->grp.name);
-> =C2=A0
-> =C2=A0	mode =3D (uintptr_t)grp->data;
-> =C2=A0	if (mode <=3D 3) {
-> -		for (i =3D 0; i < grp->num_pins; i++)
-> -			ingenic_pinmux_set_pin_fn(jzpc, grp-
-> >pins[i], mode);
-> +		for (i =3D 0; i < grp->grp.npins; i++)
-> +			ingenic_pinmux_set_pin_fn(jzpc, grp-
-> >grp.pins[i], mode);
-> =C2=A0	} else {
-> =C2=A0		pin_modes =3D grp->data;
-> =C2=A0
-> -		for (i =3D 0; i < grp->num_pins; i++)
-> -			ingenic_pinmux_set_pin_fn(jzpc, grp-
-> >pins[i], pin_modes[i]);
-> +		for (i =3D 0; i < grp->grp.npins; i++)
-> +			ingenic_pinmux_set_pin_fn(jzpc, grp-
-> >grp.pins[i], pin_modes[i]);
-> =C2=A0	}
-> =C2=A0
-> =C2=A0	return 0;
-> @@ -4293,12 +4293,12 @@ static int __init
-> ingenic_pinctrl_probe(struct platform_device *pdev)
-> =C2=A0
-> =C2=A0	for (i =3D 0; i < chip_info->num_groups; i++) {
-> =C2=A0		const struct group_desc *group =3D &chip_info-
-> >groups[i];
-> +		const struct pingroup *grp =3D &group->grp;
-> =C2=A0
-> -		err =3D pinctrl_generic_add_group(jzpc->pctl, group-
-> >name,
-> -				group->pins, group->num_pins, group-
-> >data);
-> +		err =3D pinctrl_generic_add_group(jzpc->pctl, grp-
-> >name, grp->pins, grp->npins,
-> +						group->data);
-> =C2=A0		if (err < 0) {
-> -			dev_err(dev, "Failed to register group
-> %s\n",
-> -					group->name);
-> +			dev_err(dev, "Failed to register group
-> %s\n", grp->name);
-> =C2=A0			return err;
-> =C2=A0		}
-> =C2=A0	}
-
+>  From what I can gather from the typical usage examples in the
+> datasheet, this QSMII+SGMII
+> mode is basically intended as a backward compatibility thing as only
+> QCA SoC-s have PSGMII
+> support so that you could still use SoC-s with QSGMII and SGMII support only.
+> 
+> So there is no way to control the SerDes-es individually, only the
+> global mode can be changed via
+> the Chip configuration register in the Combo port.
+> 
+> You can see the block diagram of this PHY in this public PDF on page 2[1].
+> 
+> [1] https://content.codico.com/fileadmin/media/download/datasheets/qualcomm/qualcomm_qca8075.pdf
+> "
+> 
 
