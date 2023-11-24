@@ -4,73 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC0CBC61DF4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 18:23:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C82E4C61DF4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 18:27:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jwLsUZ2VXB6KES1Xvkr0Tgaw7gJ6oM004jLkX2RHh20=; b=X9bd7qcIfkqrHhNyg6CgklIf4J
-	fxdFOkOBBxyHWwPQrNQzZAaWk2MsefE2bi3W063B+0zPFpTaPPKHrkXh4yyR876gnSdxRROALqgQV
-	fGXeuIXk6ZK9RgA9q+8Mri/q66BVTRiU0OjCKu3dKQV7Yv6T+qPw3Zzd95f3CBbX75z9VUa0ZDsx/
-	5Kk3GSgzfVJVHjsqn9FZSVhhlo+c8YqRS3EVp8AgTA0y0oIYkVWTvUxtpYuA2bgBXDut+5+UZN8/T
-	AZGaooO81iQmfT2JbrTAuagBjHzZ3+m1oV91HMTipw58XnRUMopS7nCyz49hA4Xb7B9bPU8m9VDzP
-	TFCQZi+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nZE0Duv0jXkYD1Uf9wlPJY0p/L8iUSaCA0xiviM7UDY=; b=iRAJcdtd58ADmGyJPXmqExw0Ym
+	2N8Kd2SpoAALpQjkFfm8CUE0SqptDhzUUHbYv9IlUjZcZG5j9o5we4C6MAFsifpsv9riexH8izvnu
+	5ACT4Q9UsD3Mn/QpQC0UnLd9SC0qomCpJeW0zC9rSCse0fNUtt1HM7VJGIgsQlph0ukTplA5xhe4N
+	twJpzbvEHsyR6un28l8vOgXtrSCBftnH7gAdny4CBJj9RYrCJYL/kleiaP5MqOfHDq7yvN1maHiGz
+	M+7Kw/4ySjtsTw9TR9mkhyZ2btpOgvs+6Fdowqa0OaisgOYJO5JBWRY4cHu3QexzX2Eb0UbraxRpn
+	34uUO3Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6apv-007rum-2E;
-	Fri, 24 Nov 2023 18:23:31 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1r6ath-007sKM-2Z;
+	Fri, 24 Nov 2023 18:27:25 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6apl-007rqK-20;
-	Fri, 24 Nov 2023 18:23:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 513C3B831C3;
-	Fri, 24 Nov 2023 18:23:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C45EC433C7;
-	Fri, 24 Nov 2023 18:23:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1700850199;
-	bh=TQigOJeeiIsuFOQ5y89JEmF1tl/wtTbF5FuX0ji1AEA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OUCmicEQdnyHZRxzyNPpvcQ4XwvAu4naPDWYXhLld93S0zfjNzvaUhfVGTigqnqB6
-	 MfkwTsknpHhDmbIdn6Z+kpS3JuVnjfTuk9fQ/IKOzu5cQ4Vl4xOturZw9tbcN47JT9
-	 R8UACDYQydJdyTQcbFRdIvq/IBNVLrCnt9v503B4=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: stable@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	patches@lists.linux.dev,
-	Markus Schneider-Pargmann <msp@baylibre.com>,
-	Guillaume Ranquet <granquet@baylibre.com>,
-	Bo-Chen Chen <rex-bc.chen@mediatek.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
+	id 1r6atd-007sJi-2l;
+	Fri, 24 Nov 2023 18:27:23 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a00a9c6f1e9so324598866b.3;
+        Fri, 24 Nov 2023 10:27:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700850439; x=1701455239; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=nZE0Duv0jXkYD1Uf9wlPJY0p/L8iUSaCA0xiviM7UDY=;
+        b=TJ3IElbP4M8lFkX3OCJcC1CKuvwD4LnhhjAJje5hMQOOIou4AQMsC6soaQ05YQwf90
+         u3Pw4JoeH0bFKnvh65NPWiPHDnNc9DEfo5AQqud0nwCotV55C/gxhdYOvKjiTehfYrtI
+         q5j8FZHwAXrJ99cBRn6/zej+WcuMmMDHHGqjlvRYDU8jvExd6z6mA1bml6MX1NfSTn/0
+         WnBUd9JgxO4YnRWCf5tG1s2QTVVsAQX312SyP2YSu8069ffNM5y5nE4JQa1lZgk7zkQZ
+         5ZqtQ3xoHUOctYlf0+ArZWHDFKB3fKPAwtxi4xO29l0Yf8nV1IbprmF+GsXqUwhAaWr6
+         5qWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700850439; x=1701455239;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nZE0Duv0jXkYD1Uf9wlPJY0p/L8iUSaCA0xiviM7UDY=;
+        b=k5Ux/Gxv+ZQEvoZY0vOoOyuLJCqw4NeD4eu45HA/B7dK2fDg2diCQ6OFhfWPfXvSDz
+         jinR+tnfoYE6WmtpnS1XkIkJFro601iChl5ueYzFbS8r+8PzSIMhA7x+IJRviIME5dB6
+         an899EYxZND+fm6U95Pwb00kN1L61PZzDVoreJre/5sHwAFGOmq13WvKcDBXFgMvLNIT
+         nM+PDO9eTR0XNLNKiurqEbjQEYbHESeC+VmVdHNfGG7xDKI7rsSlxhpHoslHFF7fGmZN
+         tq92J1YeLGd8JSS3MvIjBaqo0q0YOlNGVh59y+tZz6vJ/CDQfvxgVAspbBwFBjpAHzMm
+         mvhA==
+X-Gm-Message-State: AOJu0YzM65wLpu2vhOZzhHVA8njrraQ7oCU85Ca8Yq3e2DeG/2YXQ4N1
+	mAwxkzR7+nyhBAbpdz6xv2o=
+X-Google-Smtp-Source: AGHT+IFuywZgZqeVIukwbFqD8q5mrgqH2bkh0mMo/lbicvHhoDUxK4WwGP+s8nvCyvyHtUVJhgXK6g==
+X-Received: by 2002:a17:906:3fd0:b0:9b2:c583:cd71 with SMTP id k16-20020a1709063fd000b009b2c583cd71mr2509480ejj.50.1700850439417;
+        Fri, 24 Nov 2023 10:27:19 -0800 (PST)
+Received: from skbuf ([188.26.185.12])
+        by smtp.gmail.com with ESMTPSA id k18-20020a170906579200b009ffe3e82bbasm2356276ejq.136.2023.11.24.10.27.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Nov 2023 10:27:19 -0800 (PST)
+Date: Fri, 24 Nov 2023 20:27:15 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Jani Nikula <jani.nikula@intel.com>
-Subject: [PATCH 6.6 461/530] drm/mediatek/dp: fix memory leak on ->get_edid callback error path
-Date: Fri, 24 Nov 2023 17:50:27 +0000
-Message-ID: <20231124172042.114754442@linuxfoundation.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20231124172028.107505484@linuxfoundation.org>
-References: <20231124172028.107505484@linuxfoundation.org>
-User-Agent: quilt/0.67
-X-stable: review
-X-Patchwork-Hint: ignore
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Epping <david.epping@missinglinkelectronics.com>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	Harini Katakam <harini.katakam@amd.com>,
+	Simon Horman <horms@kernel.org>,
+	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
+ PHY package nodes
+Message-ID: <20231124182715.azmi3fwrdg3gfdkj@skbuf>
+References: <20231120135041.15259-1-ansuelsmth@gmail.com>
+ <20231120135041.15259-4-ansuelsmth@gmail.com>
+ <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
+ <20231121144244.GA1682395-robh@kernel.org>
+ <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
+ <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
+ <20231124165923.p2iozsrnwlogjzua@skbuf>
+ <6560dc65.050a0220.182b5.650c@mx.google.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6560dc65.050a0220.182b5.650c@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_102321_792378_9AC11BD2 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231124_102721_913055_DDC4BA44 
+X-CRM114-Status: GOOD (  27.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,50 +120,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-6.6-stable review patch.  If anyone has any objections, please let me know.
+On Fri, Nov 24, 2023 at 05:25:16PM +0100, Christian Marangi wrote:
+> The main reason is the fact that PHY package are already a thing and API
+> are already there (phy_package_join/leave...) so we just lack any way to
+> support this in DT without using specialized code in the PHY driver.
+> 
+> This is really completing the feature.
 
-------------------
+Hmm, I see struct phy_package_shared as a mechanism to tell phylib that
+multiple device structures are actually related with each other, because
+the device core, and their parent bus, has no idea. If you're under
+control of the parent bus code and you can probe PHY devices in any
+order you want and do whatever you want before probing them, I don't see
+why you would need struct phy_package_shared any longer? I don't see why
+this feature needs to be completed, if that involves changes to the
+device tree structure. PHY packages assumed no changes to the device
+tree (they rely on a hacky interpretation of the MDIO address AFAIU).
+If we change that basic premise, all implementation options are on the
+table, I think.
 
-From: Jani Nikula <jani.nikula@intel.com>
+> The only reason for the generic "ethernet-phy-package" compatible is to
+> have a solid detection of the node in PHY core. (I assume parsing the
+> node name might be problematic? Or maybe not now that we require adding
+> a reg to it)
 
-commit fcaf9761fd5884a64eaac48536f8c27ecfd2e6bc upstream.
+Our opinions seem to differ, but I don't think that the package needs a
+solid detection of the node in the PHY core :) I think phy_devices and
+mdio_devices already cover everything that's necessary to build a
+solution.
 
-Setting new_edid to NULL leaks the buffer.
+> Also I don't expect tons of special properties for PHY package, with the
+> current probe/config implementation, a PHY driver have lots of
+> flexibility in all kind of validation.
+> 
+> Consider that the additional global-phys and global-phy-names are
+> already expected to be dropped.
+> (we know the PHY package base address and we can calculate the offset of
+> the global phy from there in the PHY package probe)
+> 
+> And even the phy-mode has been scrapped for more specific solution...
+> (some assumption can be done on probe by checking the PHY mode and set
+> stuff accordingly or even do parsing in the PHY package node as we pass
+> the OF node of the phy package)
+> 
+> The PHY package node would be reduced to a simple compatible (and even
+> this can be dropped) and a reg.
 
-Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>
-Cc: Guillaume Ranquet <granquet@baylibre.com>
-Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Cc: CK Hu <ck.hu@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: <stable@vger.kernel.org> # v6.1+
-Signed-off-by: Jani Nikula <jani.nikula@intel.com>
-Reviewed-by: Guillaume Ranquet <granquet@baylibre.com>
-Link: https://patchwork.kernel.org/project/dri-devel/patch/20230914131058.2472260-1-jani.nikula@intel.com/
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- drivers/gpu/drm/mediatek/mtk_dp.c |    1 +
- 1 file changed, 1 insertion(+)
+So why does it need to be described in DT, at this stage? :)
 
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -2048,6 +2048,7 @@ static struct edid *mtk_dp_get_edid(stru
- 	 */
- 	if (mtk_dp_parse_capabilities(mtk_dp)) {
- 		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
-+		kfree(new_edid);
- 		new_edid = NULL;
- 	}
- 
-
-
+> I feel there is a big chance here to generalize it and prevent any kind
+> of mess with all kind of similar/equal code that just do the same thing.
+> (and we already have an example with the PHY package API usage with
+> every PHY having the same exact pattern for probe/config and nothing
+> describing that the PHY are actually a package in DT)
+> 
+> Hope it all makes sense to you.
 
