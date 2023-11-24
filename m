@@ -4,106 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5398C636BD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 16:59:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A02C61D97
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 17:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iy9DkvTUULFctuQ4J2jQdgB4mi9Zm+S/Is3pyIli3pE=; b=yvoQ64gmGh9fBTmwYhn5F+ZFbq
-	xFpjZUoBOgCHkToIAMIN1uX2aV6TnXzGFNsT/nK4s+Fhl1Aw0qDEqaGkl2mbBb1gOdNq/OS+2ldbW
-	NuOkDiJpVsihxA/D1HGO3W4rJDmJUmzX44riDl50vmKVMh8WJ7EIjo7/PAvJhI7iqceakm2r0je+/
-	GTozEURvaribja+eVt2g85aERYG2jusWEQgzTzD7ldyvWrBg/TVyrrY1zxOicZMaAEXJYOZWdrj9z
-	I9BSDJoUvFB1cJYebsr78zhVDl+6PTSdyGQZGWbPwLsVzDzFDrCYwJSQN++VJZirbenwK+7jRzo3J
-	QWfob09A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/bovJP/iWKJSxxh9mZ5u7q0451OJRb6TPweQz1zhTTs=; b=rNejZOrVvMdzCVZaP4rdPH1Tro
+	EcfU+XqU1qpBP2UpZVVIpZWmNO2+gJO08xoyi5UoWu/XXXmXcgRmBe59OUTm3FRe0L1eXo3gKWSjL
+	6Lrk4XOjrbeoYBFUFkTCjgnvQyBJrQE+6CYBTEakEmn956PG4u1uQzG60m8jxGIlmoTUC+mu+5k5A
+	cqu6fohlA2aQBJX0hHNBWWy30JHrSwKDXVFWoRMxsZ1h59Wp6dfTBN22H5r0c7ePzodiRCZeAlQhJ
+	bTunsRJ4dkn1rwk/kXU1tA8cyp+m0lN/GmtxmEXhYriX/uSIiC4uecjKdb3GOsiCz3AOvR/13gKrP
+	15hDNJ5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6ZWf-007jk4-21;
-	Fri, 24 Nov 2023 16:59:33 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1r6Zmw-007mQM-1u;
+	Fri, 24 Nov 2023 17:16:22 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6ZWc-007jgd-0x;
-	Fri, 24 Nov 2023 16:59:31 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-50970c2115eso2812221e87.1;
-        Fri, 24 Nov 2023 08:59:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700845167; x=1701449967; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=iy9DkvTUULFctuQ4J2jQdgB4mi9Zm+S/Is3pyIli3pE=;
-        b=TU8kdzw8RD07QUyjXdgIBKlDaMOuuDttLMnkPvwi3hCYw+89Jbj85ZHSZ2t3oxChGj
-         SE0AMqnRnzQFOxVnXKPi9j1Br0xT+M9fn1l4xjarmYdcz/6qw6j91tliiXftvASHzlGG
-         ptNnz6NmrOQInzQ6YYcoardPVop4goyPVy8Jze/IeoVcCck9yRQFSzjCRfTXV43t0qf/
-         N9/oRyQjGm08NGXf1HU5eqikDm12FCH8JKnaI/P3lqT0NGiG4w0w62PU4DpyJWcsNlpo
-         eu8Ukpor6e/jJDCfhR/TiVPL2cw/vBYFzP4D/7XOXeeG9QOGTbUfdirWf52JauxOkTaL
-         TqVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700845167; x=1701449967;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=iy9DkvTUULFctuQ4J2jQdgB4mi9Zm+S/Is3pyIli3pE=;
-        b=bWfTmZlSBz34OvLCm3cozG1rMYBblwtjr+xJch3fvJp62r9ANVgO0awnLoCE9Q6ERc
-         58CatuWTg66CByIt5J7oV84oYulBLpXZ74PqpHqwbrs4kuPgvZQyRYt0wE12w1NI4Ali
-         vXjrjFRgQnKnl0WpXNwd24rDZxuKI0hEGZj34FsJvrGSCL52EYekMRuqKHxFB3XkAuqU
-         BPrIeGefmuOqFSJUu1g/MLg6Kp+XdKP6sFNpLDJpZA9Tw/FBM3yBmIDyYVOKb26Nh1Yo
-         uF6ixhA4URiPIwLGq3J2Zy4/p88r1eT0eAgYgiTcMimWxZMTesligp0mgP7iXGGWpKlN
-         9HYA==
-X-Gm-Message-State: AOJu0Yy6kqhMc4tsPDe97FFvDdSEYlmjIY8Hjin5BHUwuGnBTLePbfua
-	1+f5fwtDYnNMAwMiLUIl0Y9OdcwLr5NGNA==
-X-Google-Smtp-Source: AGHT+IFTZsO8j04BNlT9aZP8j1EV20GYlvavfH+NA2vrjMwE44V/a5r9I8YYhnUfcmph4nIUYbEn1g==
-X-Received: by 2002:a05:6512:ba1:b0:503:221:6b1a with SMTP id b33-20020a0565120ba100b0050302216b1amr3522725lfv.0.1700845167083;
-        Fri, 24 Nov 2023 08:59:27 -0800 (PST)
-Received: from skbuf ([188.26.185.12])
-        by smtp.gmail.com with ESMTPSA id gx26-20020a170906f1da00b009ad89697c86sm2296113ejb.144.2023.11.24.08.59.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Nov 2023 08:59:26 -0800 (PST)
-Date: Fri, 24 Nov 2023 18:59:23 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Epping <david.epping@missinglinkelectronics.com>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Simon Horman <horms@kernel.org>,
-	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
- PHY package nodes
-Message-ID: <20231124165923.p2iozsrnwlogjzua@skbuf>
-References: <20231120135041.15259-1-ansuelsmth@gmail.com>
- <20231120135041.15259-4-ansuelsmth@gmail.com>
- <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
- <20231121144244.GA1682395-robh@kernel.org>
- <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
- <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
+	id 1r6Zmt-007mOr-2t
+	for linux-mediatek@lists.infradead.org;
+	Fri, 24 Nov 2023 17:16:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 4141CB83193;
+	Fri, 24 Nov 2023 17:16:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0E2DC433C7;
+	Fri, 24 Nov 2023 17:16:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700846177;
+	bh=FpixPewWG35oK3wfl0wtWxDeJTU/JwUsn84WfpcOnrA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=o/3hGRCePMs2ul3cLTxGmGQAV6FSBKEaJ8Uqu0SPsgHuK4Lg5/nJGIh/Bg2znKcgJ
+	 cf3Cxd6J3qkBcUitS+HsOr1tQrdPPgiwC92tHJA8bnWM34iP4W9wqx2oY1eYEg6eKX
+	 QkOgJ1a5iJQGPS6g8KyIySsRhuhN19lScvHH32bmhf+IpJUahnc/iG1Iif+pYg7vhX
+	 kmCQyxL5nSVB4CGnC38Y0VJEI8LSEl9mB7Yo2FJJopBmuIm9dZihtGcWliRjiA7azv
+	 CFI6VaSLbgzSFsjCKfmb2H3lGUvi4CN2b0s39sKm79t4j4IjMAQo6wh9smAbtpeGv5
+	 j2QG40aAn+8QQ==
+Message-ID: <933c5fca-8eb7-43c5-9fac-5c6036b588dd@kernel.org>
+Date: Fri, 24 Nov 2023 18:16:10 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 1/3] dt-bindings: media: Add bindings for THine THP7312
+ ISP
+Content-Language: en-US
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Julien Stephan <jstephan@baylibre.com>, Sakari Ailus <sakari.ailus@iki.fi>,
+ linux-mediatek@lists.infradead.org
+References: <20231123224658.6959-1-laurent.pinchart@ideasonboard.com>
+ <20231123224658.6959-2-laurent.pinchart@ideasonboard.com>
+ <3886bc9f-62ff-4f70-a654-34ecf0f5fea4@kernel.org>
+ <20231124141835.GA25272@pendragon.ideasonboard.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20231124141835.GA25272@pendragon.ideasonboard.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_085930_336605_006FE45E 
-X-CRM114-Status: GOOD (  31.28  )
+X-CRM114-CacheID: sfid-20231124_091620_239549_3AE41F24 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,93 +124,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 22, 2023 at 07:32:22PM +0100, Christian Marangi wrote:
-> Sooooo.... Sorry if I insist but I would really love to have something
-> ""stable"" to move this further. (the changes are easy enough so it's
-> really a matter of finding a good DT structure)
+On 24/11/2023 15:18, Laurent Pinchart wrote:
+> Hi Krzysztof,
 > 
-> Maybe a good idea would be summarize the concern and see what solution
-> was proposed:
-
-Sorry, I didn't follow the entire discussion. I hope I'm not too far off
-with my understanding of your problems.
-
-I think you are hitting some of the same points I have hit with DSA.
-The PHY package could be considered an SoC with lots of peripherals on
-it, for which you'd want separate drivers. Just like a DSA switch would.
-I don't think it's exactly phylib's place to deal with that, just like
-it's not DSA's place to deal with complex SoCs, just with the switching
-IP (like the Ethernet PHY IP for phylib).
-https://lore.kernel.org/lkml/20221222134844.lbzyx5hz7z5n763n@skbuf/
-
-Why does the ethernet-phy-package DT binding attempt to be so grand and
-generic? I would expect the 180 degree opposite. Make it have a _single_
-compatible of "qcom,qca807x" (but don't use an "x" wildcard, do specify
-the full package name).
-
-Make it have a "reg" property which is the base MDIO address of the package.
-
-Write an mdio_device driver that probes on that. The PHY core already
-knows that if a child on the MDIO bus has a compatible string of the
-normal form (not like "ethernet-phy-id004d.d0b2"), then it's looking at
-an mdio_device.
-
-Make the OF node of the package have an "mdio" child with its own
-compatible string, which represents the place where PHYs are. The driver
-for the "mdio" child has a very simple implementation of the mii_bus
-ops, which just calls into the device parent (it can assume a certain
-parent implementation and private data structures).
-
-Lateral to the "mdio" child node of the "qcom,qca807x" package node, you
-could put any other device tree properties that you want.
-
-Make the mdio_device driver for "qcom,qca807x" use shared code if you
-want - but keep the device tree structure hardware-specific. Look at the
-compatible strings that e.g. the drivers/mfd/simple-mfd-i2c.c driver
-probes on. You could always change the driver implementation for a
-certain compatible string, but you'll be stuck with the ultra-generic
-compatible = "ethernet-phy-package", which has the problems that you
-mention.
-
+> On Fri, Nov 24, 2023 at 09:20:58AM +0100, Krzysztof Kozlowski wrote:
+>> On 23/11/2023 23:46, Laurent Pinchart wrote:
+>>> From: Paul Elder <paul.elder@ideasonboard.com>
+>>>
+>>> The THP7312 is an external ISP from THine. Add DT bindings for it.
+>>
+>> Please use scripts/get_maintainers.pl to get a list of necessary people
+>> and lists to CC. It might happen, that command when run on an older
+>> kernel, gives you outdated entries. Therefore please be sure you base
+>> your patches on recent Linux kernel.
+>>
+>> You missed at least devicetree list (maybe more), so this won't be
+>> tested by automated tooling. Performing review on untested code might be
+>> a waste of time, thus I will skip this patch entirely till you follow
+>> the process allowing the patch to be tested.
+>>
+>> Please kindly resend and include all necessary To/Cc entries.
 > 
-> Concern list:
-> 1. ethernet-phy-package MUST be placed in mdio node (not in ethernet,
->    the example was wrong anyway) and MUST have an addr
-> 
->    Current example doesn't have an addr. I would prefer this way but
->    no problem in changing this.
-> 
->    Solution:
->      - Add reg to the ethernet-phy-package node with the base address of
->        the PHY package (base address = the first PHY address of the
->        package)
+> The DT bindings have been fully reviewed and acked in the previous
+> versions, and haven't changed in v7. Do you still want to be CC'ed in
+> such cases ?
 
-Correct, what I'm saying is compatible with this.
+I don't have to (that's just a template message), but DT list must be.
+People introduce some changes and some bugs after they got review, thus
+every posting should be checked by the automation.
 
-> 
->        We will have a PHY node with the same address of the PHY package
->        node. Each PHY node in the PHY package node will have reg set to
->        the REAL address in the mdio bus.
+Best regards,
+Krzysztof
 
-If the real PHY IPs are children of the package rather than on the same
-level with it, I don't think this will be a problem. I wonder if some
-address translation could be done with the "ranges" device tree property.
-I've never seen this with MDIO though.
-
-> 4. Not finding a correct place to put PHY package info.
-> 
->    I'm still convinced the mdio node is the correct place.
->    - PHY package are PHY in bundle so they are actual PHY
->    - We already have in the mdio node special handling (every DSA switch
->      use custom compatible and PHY ID is not used to probe them
->      normally)
->    - Node this way won't be treated as PHY as they won't match the PHY
->      node name pattern and also won't have the compatible pattern for
->      PHY.
-> 
->    Solution:
->     - ethernet-phy-package node is OK given a reg is defined.
-
-I agree that it should sit under the MDIO node. I disagree with the idea
-of a standardized binding for PHY packages.
 
