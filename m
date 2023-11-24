@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE936C61D97
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 09:48:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92238C61D97
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 09:49:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=brGSpE/I4bwiL2QodCss+SZ4iDIK+Jo8cWnug9QmyxE=; b=Qh2+yV6GoamvBJjWtCht1V8sFH
-	dXof+NQzn7WKnowhdwPVK0w5w+dP2hET1FhoQNTLBZvGT/0rNl6zMWgeM6cTx5YIn4J6XHHMikz6B
-	kvPbG9RDnKCCgKRJtBWpbb4ixTQHqwHh/Tlq7v4kh9KDxhN3taaKvB18tNCpaQI4d+LL5zvvzbPxW
-	crBfc7WtRNM9E+B+WXPORXm/h5zlYAl9yr0uxtu8LwNk1GF9UZjg+L0gw/mbrkczwPbPCwkyqvJGp
-	+2CGItLAv8D4jYULBOycQVFN5IBYMKS9CkI/T6jCXhRx3OxJNRDsLBa2eMqeEGkk7bB0gZ/xdYDWV
-	VI7YDgdg==;
+	bh=y622WiMwHYSWvpg2GlDOi18NUNokJQ6nlm4sUNqp440=; b=uScTuuLQdM25fzXE3aBWJLq0bB
+	75pYQ7PVEktn0fZUr1svO0XnnKKDb0wT+6pzprukJT8Pqc8zyIFoIQFqHFP7o8wBP1raFJ/8tqdFp
+	LZZKoSsqpBL2LQfOC/MLNZ3+mgkmYfAOoCE0g4s76uUPPUbJ2cYMdnAfto+Om5ixm3xq5bcLaUjJw
+	+mIaaJXJYjjQt5lUbU6lA06uAyVb2uEsgiOb5PBKtVXj5JHycOkXw515eveOwzLw5KMwqn7xeFYZt
+	+FrJjfip9xhuo6nrEArtzHGll7Ui1HDx+PBhdW7LQ+38Lrva+EEkvxHNMbYpS5NpwR3j2JP2chay9
+	oWsGYS9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6Snh-006iy4-2T;
-	Fri, 24 Nov 2023 09:48:41 +0000
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+	id 1r6SoT-006jGX-1y;
+	Fri, 24 Nov 2023 09:49:29 +0000
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6Snf-006iwi-1q
+	id 1r6SoQ-006jEp-18
 	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Nov 2023 09:48:40 +0000
-Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-5cd2f1a198cso14674447b3.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Nov 2023 01:48:38 -0800 (PST)
+	Fri, 24 Nov 2023 09:49:28 +0000
+Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-5cbcfdeaff3so17394637b3.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Nov 2023 01:49:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700819318; x=1701424118; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1700819365; x=1701424165; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=brGSpE/I4bwiL2QodCss+SZ4iDIK+Jo8cWnug9QmyxE=;
-        b=qrHtWP8ILuo0Ja0hIQCFEc7SKB0aM0cJ0JGACZ3JgFgWVn/wOVJYbfEZAGTZzYQZFN
-         zvEtkujzIQsIp3XvpdyAYHw8XY7/tx+h/G6f3VVFLCDc6wMTXiFMmT2ZlZg2j0cBUX8z
-         GCdmuIlovD1KS/tutEs7/3/B4JcjNCaFvgV/K8wA50dNJO7d4Il6tido6K48yOawFo7A
-         PdOXt26PTv8P3RjR0lkcMiLPmNBKMqg76oVwLQfsihxAYmsRElO5HtaWBFowRDerJhD1
-         UXcBHN+QdAzYq8Bb97Toz2D7KGQAObvShG41GbyBVikKBBKjDQlUgvW/88eKcrxQ/FZA
-         miqQ==
+        bh=y622WiMwHYSWvpg2GlDOi18NUNokJQ6nlm4sUNqp440=;
+        b=j0Xk8ZYpnsktnsgSV3hwZnK0aaL0GWxDp1C7H4m4dRRhH39fUX0dwRDF7I5dg2YHoF
+         0AcbClIT6E1eOwF61aM7Fyu+cQxB1oXDvrglizYM8jGbzWiCApX4SlOU8x12dm8yMvj0
+         UepzCXbZf6UhZlj2s4eBjztRReJ5SfiQN24DNSyZ0yYmAId3AbutP6VOvWjrRECshRHM
+         wT4pV53W942i9ppnnoT+7H94+yanq/8BAkAvY0LFdPsvuaNqkxMRm6txrDDMENzxrURR
+         oOFW194GV2ogPIeKo92luOPEyjdbj86OmvKb8iB3KyoCXMKi9REOyBVqldTJxcE2bLzp
+         J1hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700819318; x=1701424118;
+        d=1e100.net; s=20230601; t=1700819365; x=1701424165;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=brGSpE/I4bwiL2QodCss+SZ4iDIK+Jo8cWnug9QmyxE=;
-        b=YlvlWZyJrKZqBhG51cqn9jh4pFWXUFfA69GrAoURW1hsjHtAJIvOl/yH9GN07RhZO1
-         /2GVj5gggMnkElqUBRkaW7ORwzbi3m7hYwVOgUWVqQ7+3i1SMN6vw8zbeUdEk1ACpu2Z
-         P7tqs1h638ybllrZcxVO7ba8YEJCfCcNcnamoi5Y4lGsyTM4TjGSVnzlX2+q9YawV/QH
-         m0ijWZZZfnRPMpkT0IuGAkbF/LPX7ArmcBLQuxsP4XBU14kLNt9X13lFBY62+Spx8LpV
-         NqCCFynI1IssXP50zq82TZ1xhKUVcysGBWZp94PV4Yo2YsjF82Xt+bjMPy/UrktxkYHj
-         iYhw==
-X-Gm-Message-State: AOJu0YzhR8ofXUC9ERMIf236lfHNGWysnCUZVl2DDO73JSYRJNg3jp4O
-	e/8PcF1ZoY69h64X0NLz1nvZrxwFA9/rBVbUr/2Ivw==
-X-Google-Smtp-Source: AGHT+IFFWjuFRxzqwnPVQOCyRHtCV15dWbgBvVaHUW8qbp1IhYnDim/OX7zwXKi8JWkHbIg5en8YBsTX9yaPJxXFD0g=
-X-Received: by 2002:a81:830a:0:b0:5cb:23:d28f with SMTP id t10-20020a81830a000000b005cb0023d28fmr2220520ywf.14.1700819317941;
- Fri, 24 Nov 2023 01:48:37 -0800 (PST)
+        bh=y622WiMwHYSWvpg2GlDOi18NUNokJQ6nlm4sUNqp440=;
+        b=X4SMPc+38gLXMD4O0KIshS/RbNcr4IBmSySnxDwZtagL7cADyJgf8VQlR2JcjjP+an
+         OvT6CAEKpD5W9Jv49FJz6kriLLwpflUGyLb/cbijgNnFDZthFbyo/0m9BYYOu5Fxo+L6
+         aZny6cOXnXRF5DbACmyCNSViD6eJfEk9+9bJRAnKFHXWaGWYsBBUbgpJ6BbWsjnuVGeu
+         6uNPW8VYt/5qvH+t2EaDSE1IA4bnWXuc52aYX5uNU6Z35ei3gXcvH0Wjqq6tE245bJRG
+         6bqQEFdR5LLTYlFhigktR35eUjPuWbLp00brbkROJxvMJbbQOur4cxUDyLGi6DEDSGWW
+         aOXg==
+X-Gm-Message-State: AOJu0YzsfN+j+xVQivDx2CzvmcaA39I8M+vgWBXC1pko/839uVzzxgGn
+	dtXHu51RzRJ8CLWOpJgW1ZEBm8HS8TLc92JNbaIsng==
+X-Google-Smtp-Source: AGHT+IGjpukiK1tECzhi8Ll3VSeycM6tp7xdGxGsh0QUN11xzJy3u9DzHTy5UqDem9tLcL+crrEE8x0xvXGeMvgE294=
+X-Received: by 2002:a0d:d4c6:0:b0:5cb:89dc:ccea with SMTP id
+ w189-20020a0dd4c6000000b005cb89dccceamr1961171ywd.10.1700819365616; Fri, 24
+ Nov 2023 01:49:25 -0800 (PST)
 MIME-Version: 1.0
-References: <20231117104101.9374-1-zajec5@gmail.com>
-In-Reply-To: <20231117104101.9374-1-zajec5@gmail.com>
+References: <20231117104315.9718-2-zajec5@gmail.com>
+In-Reply-To: <20231117104315.9718-2-zajec5@gmail.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 24 Nov 2023 10:48:26 +0100
-Message-ID: <CACRpkdbra2Mv2qcfeDbQdPnUOvJcXf4FrMmVduz1EUN-2ONvTA@mail.gmail.com>
-Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: add acelink
+Date: Fri, 24 Nov 2023 10:49:14 +0100
+Message-ID: <CACRpkdbwqy+LNGi-7rZjPLWESbKJSFVzry6pAGd6aTnq0ifoDA@mail.gmail.com>
+Subject: Re: [PATCH 2/3] dt-bindings: arm64: dts: mediatek: Add Acelink
+ EW-7886CAX access point
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
@@ -78,8 +80,8 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_014839_608296_C1042EEF 
-X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-CacheID: sfid-20231124_014926_390374_C01BCBAF 
+X-CRM114-Status: UNSURE (   7.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,13 +97,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 17, 2023 at 11:41=E2=80=AFAM Rafa=C5=82 Mi=C5=82ecki <zajec5@gm=
+On Fri, Nov 17, 2023 at 11:43=E2=80=AFAM Rafa=C5=82 Mi=C5=82ecki <zajec5@gm=
 ail.com> wrote:
 
 > From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
 >
-> Acelink is a Taiwan company providing network products (routers, access
-> points, switches, cameras and more).
+> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
 >
 > Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
 
