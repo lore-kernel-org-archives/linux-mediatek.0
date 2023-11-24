@@ -4,81 +4,187 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AB51C61DF4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 04:58:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32AC9C61DF4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 06:05:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zfhK67FyusLvStSApD7vetzf+oT4pnAcc7rPRlAFEMY=; b=qf7ZuGFj9fihqe9iUghmdSId79
-	VZ66VHEJv/KmnpdlgFYOb8Z/gsYUx5pBGM+JeUWCHzJeSBgHNRngNuFz/dgoVok34PafCjdbYw7zd
-	TQIF0ojq91pNUuz8Zl0UC8h3jsU0H+I3Zhrd5Lf6e9CvlsRXd/n2av/YXjsHk8V0DEez5IllkYhUg
-	X+XHI97bgBjwkYYl9EmUWG6dYpggyva/aRwxKNa1s1tjL0rXmGiJGTg9q85iU7h+nVXtgu2w2YoDd
-	a5yWdF6U+A3x6fKlxG/ZfJFMVs4/3KtWpkHAl17UnBYHD/w9wnJK/gchCWOGZMC3cpFM9JpGYO4CB
-	hPyzc/RQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RXipcTi+zUJ9Sm6nxztPEybWNQ9n9L57iacSItOBfDQ=; b=s00cirKwA97RlPIA3vT8cT3MpT
+	GQ6XW9Q/mi5s2dKPVPfbfwLA3kOY8IYsuv7t9em7+Qa4wYq+oHWk0DZiEAlFo4/UVJC2HorXnjlEM
+	yZc5T76xvHRAUyugHr6UyWs+DAxRJDhusbwiPWfP0dZ53i8p6h16nDKEzYdldGKGHTa8Zzu9mQQz8
+	61nBq91auk5ohTDX91XEx3FrHwgBYgm9k0fFghSogs3EWMp0y3Ys+gY3IV1Mk3XUsCWo8tX0wLPKI
+	ADHU5gGZMmOH5xh0Rtca2ZNmqVv0prowjPwTjvVZ1WfxDvy+b9f6RqwoSnSDRuV5EgpOYuK/leplD
+	lFgbce2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6OHB-0069qT-22;
-	Fri, 24 Nov 2023 04:58:49 +0000
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	id 1r6PJJ-006Eyp-31;
+	Fri, 24 Nov 2023 06:05:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6OH7-0069p7-2w;
-	Fri, 24 Nov 2023 04:58:47 +0000
-Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-1e9bb3a0bfeso989744fac.3;
-        Thu, 23 Nov 2023 20:58:44 -0800 (PST)
+	id 1r6PJG-006Esf-0x;
+	Fri, 24 Nov 2023 06:05:04 +0000
+X-UUID: 6069de0c8a8f11ee9b7791016c24628a-20231123
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=RXipcTi+zUJ9Sm6nxztPEybWNQ9n9L57iacSItOBfDQ=;
+	b=VJKas09roin4cTJknfYDbxMYGONbNKaqjCtpf5g5jwA5y1rpLReoxSqIWPPlryutTMSovmfevaQLd3mM8hHtTmaxiFYTadeAxlV9PSF5M0GChZfEKp+1SmYbhStFdhFCviygc5mh0PGgSVdlqs0GOoVwMQzQrKFUhDGkATLeBtk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:1f4d1fd7-624d-4b6e-80a4-b17faf6f512a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:312de6fc-4a48-46e2-b946-12f04f20af8c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 6069de0c8a8f11ee9b7791016c24628a-20231123
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 568997570; Thu, 23 Nov 2023 23:04:49 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 24 Nov 2023 14:04:11 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 24 Nov 2023 14:04:11 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mfPI4NjdcRDf8xY3kc89WRkll/5NW8Tlh7yKQunFpbNBZWHcUIwuef27+5bRQ+NlGSTs427ymEwlX400Bg1KbSr0V1ohPR7oFmU+cHf6HZh0D9ApnDOw0VEfyJwi2Iz71s5WvqkT8EXsJjFKaAX63ytFSL/f8Lwqa7uZRDyS2LLfcThzvnjK2Fgrf6o3eDQTLnj/Pi7GKP0IEc3uhLJogVY7DaERce1ap5RmjpmU70pux60Lbk8kCBEVVtPhHbMXa4635t+dGSeTmsv2kW8dECMOsvuwas5ahox0RYtniDMZUc9ripllSWwAG1sasQOaI+/KIAK5AJnlLACVK0Au3Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RXipcTi+zUJ9Sm6nxztPEybWNQ9n9L57iacSItOBfDQ=;
+ b=UwGbKCS8kWnqXfh8j2JOMfrDcrLYNfy0NbpIr1ZfnYQa2CQ3iw2mHhPqhUH8s5MDx0N7MjDtzBa9nj0nuowvQ8YIeZQ8KJnpGuvJXtCz/xLu33WhK11M8RY+EwVVjLIRilXbgebCzm2vsmwWWi5DFRHx4ShEh054af7GL7H9BS/23x1AWaEMWby3M7oxwjNdHvchfkQyYjfqmNSLMAFH9//ryGyemOTk8Qm0gGbeiGWMwKwCFHtVF6qXI/86LTnpghWoOG+C7maMuuZV3ZaDhHvL9kLuf27+adxA/xnO9L1JajDUbESPzZM88B4J/exejyrEjVvV5MM28xw1T+E+mg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700801924; x=1701406724; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zfhK67FyusLvStSApD7vetzf+oT4pnAcc7rPRlAFEMY=;
-        b=CcJEu9+y5KyAsdR7x+qZ81GOwTwxr24P2R5kpgTAXgn75zh1DXAuGqOs8Y7B+AWEyp
-         LOuA4psJgo+X5EFMtoZoe4u0cP4t6d9wDUDM9mttg4X2zTSRT12RcbJeSQXoGnBa2pma
-         7qM+ivthpuwoM3lgoqOSuS/6XoIkx5n047Qfb2b2eeGnInsj9t2v+EIL1POvg7mI0FSP
-         VJWUDhVeTrw8qNrxJRo3Kvhu8cMykzuiydnagaJDyjcVN5mLR4bA+7UtBtOnGzlKluV8
-         XotylD/L6gAeJiqlsRBUp7TiFfKvr+vRi6wiMLsmXhCVbZOGev43FNFc+KhBaUJ8EMGs
-         /NkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700801924; x=1701406724;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zfhK67FyusLvStSApD7vetzf+oT4pnAcc7rPRlAFEMY=;
-        b=SGcAF8iH0/nR9td2T3jrxV+PNYpr5iCttqNx1l2ZUiT+CelqgbkYOozNinTntC46MX
-         qGoAD3a6g91xM19d5tsUIZcgYcsliITtpMBvjeB7z/m2c0N4AC7PkTC2Mie5uVJ5gS+w
-         /SE4KtgBDqhxndESqtGTJ2+I/6JAeZmOBHsFkphw1pLDllTmVz0rihVs+lylGESsZxt9
-         TpFTF71AqzaI0IB52JNSAOvf223Y6nFalkGnzVWOu7IevjNUdpgDFcWQOy6aJM4WTFnt
-         LYRsmy3TP53NAQ0CV6cpSwhKE82Qm58kRGwSF61URycdcsg/zkYxxdWRf7Y4DOpWmp+g
-         xZ1g==
-X-Gm-Message-State: AOJu0Yzan148eRuKf3I8PRVWuxywTO72mWJnNbyVVWO35kLX3NCpPKQ5
-	3k1AoaQCYEb0pWbX+zPXGRltsu+wq52xt8qoyGg=
-X-Google-Smtp-Source: AGHT+IGAUvkpnx5D1rNimxZgo21GO3TZARewQ4I61N8MNb+4nwptwinuVw+ahLqzVFBlJGjG2DY0mf/cL5ijYHdzXao=
-X-Received: by 2002:a05:6870:8894:b0:1f9:496b:e261 with SMTP id
- m20-20020a056870889400b001f9496be261mr1731527oam.15.1700801924026; Thu, 23
- Nov 2023 20:58:44 -0800 (PST)
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RXipcTi+zUJ9Sm6nxztPEybWNQ9n9L57iacSItOBfDQ=;
+ b=lOaDIVMnAUIIu9Mvn/Y+6yXncejFJgyOP22jmcK7XHIQffbtW9aFj94I8BKcWqLvqR/PMzT1qJN7Q0e+jkY23bmsxBPYe3VlKW9L4qQOzm3QWk/vnXCZCgqinilpYWWQZ8p1pIBJX+fM2mTdBKachFekmWdZbHns2aD70OTXHhI=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by KL1PR03MB7717.apcprd03.prod.outlook.com (2603:1096:820:e2::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.21; Fri, 24 Nov
+ 2023 06:04:08 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::a4e1:1557:a3fe:c252]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::a4e1:1557:a3fe:c252%4]) with mapi id 15.20.7025.021; Fri, 24 Nov 2023
+ 06:04:08 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "chunkuang.hu@kernel.org"
+	<chunkuang.hu@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"wenst@chromium.org" <wenst@chromium.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?=
+	<Jason-JH.Lin@mediatek.com>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
+	<Nancy.Lin@mediatek.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
+	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"airlied@gmail.com" <airlied@gmail.com>, "sean@poorly.run" <sean@poorly.run>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v3 08/11] drm/mediatek: Support alpha blending in VDOSYS1
+Thread-Topic: [PATCH v3 08/11] drm/mediatek: Support alpha blending in VDOSYS1
+Thread-Index: AQHaAMXsghWTpDfVY0O89qkQs8RmCrCJNoWA
+Date: Fri, 24 Nov 2023 06:04:08 +0000
+Message-ID: <175fbe990a7334a74f870107866c77755f5d9f12.camel@mediatek.com>
+References: <20231017064717.21616-1-shawn.sung@mediatek.com>
+	 <20231017064717.21616-9-shawn.sung@mediatek.com>
+In-Reply-To: <20231017064717.21616-9-shawn.sung@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|KL1PR03MB7717:EE_
+x-ms-office365-filtering-correlation-id: 7803b7a5-a6a3-443b-7c6c-08dbecb32bea
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 9pwYJZNLGoKs7KE882L8NMJzwI0/oaUORawBn1kx3KoptHg63QlQm30V8+DSoY2Fj/WKLhhGrCbh88Fn9Lk9zlVp1YqzoHo1wHYakOSISN8erlDkI/djEwgw1FC+6VO/Qy/ZLD2FgmSutePKqg9Vh+VXzmfxbrX7gv0bO7r5rKX9tkZt3fa6TtlhAsZ3ABgQV6XDYcBLw4VH3v41YGTn0CEQ37aFN2gVtaDXJfe6ZkZ8m7egJbHaPKTDNWBvsKRpqq75VLpmgLspmzSityh8oFRB+i17c83Bwr/9Dqevu7dORYKRCPfTErwK8YjqOwdnlM/oUy2agISoPv7g8Byvu3YmNf0QnsR378ommGIhadYARsuGK3A3Olnx8HQyweZfu3KyJ9lgvxiZIhhQYBpredg3Xffdp1aSK6wYzHnwOOlqvofhj15zs4XnSzK3+37CAkIf9Xz4TfkYmkIQ6wQHTyjaOs8dgokHmvVL4EsKazZ4duge4qCJtXYZ+0UjMoN7UDyMaYdHKiwGL1/W38vrTQMoU/B2SAF2/BdzyMYTV5vXXD4iv/KF8BjFe7GpLApt/OmtvE0GqHAv2AYeXkZPOEtkkNvzTCn9qvMGR8ag6ienfpl80stk94Ry1DQOl8mbH6x8TGMuo2Yd1gxDT0yccu/zuJtVMnzM7bOJEssKa84=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(396003)(346002)(39860400002)(136003)(376002)(230922051799003)(1800799012)(451199024)(186009)(64100799003)(38100700002)(66946007)(316002)(110136005)(66446008)(66556008)(6512007)(76116006)(2616005)(6506007)(71200400001)(54906003)(64756008)(478600001)(38070700009)(6486002)(66476007)(4326008)(8676002)(8936002)(4001150100001)(7416002)(5660300002)(26005)(86362001)(2906002)(41300700001)(83380400001)(85182001)(36756003)(122000001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?emFkSWo0Ny9mR0FKWlh4d3dDa1FCOVY2dDMvc2g5OGpLY3Y3SmxYaEplUEpa?=
+ =?utf-8?B?MjN6QmdGeWpPVnEwSCt3aXExVTJ0YU9TWUlTaUE4Qnc1SXBVRjhlUkIyUkhB?=
+ =?utf-8?B?aWY3TEFhVVZvMWVsN0lqTDhEbmFuN2UyK25SREd5VnZHeXhGYkF6NUdkTUJT?=
+ =?utf-8?B?Vk5ZVUUrdUJ0NXVFUDU5YXQ3S3BUajFoUWtiUEhBdDdOUEpNdUxXOGZTZk9k?=
+ =?utf-8?B?NE9wLzQvakRvSUprVHFUMlAwTm5VYXdiRkxQZ09xbXNMRUx4NWRIak9Hdkwr?=
+ =?utf-8?B?aE5qdC9WNGVoeERFb0pSZ3h6dHNXejRpeERkRHN2L3dTQkxpVUl3bXFHT1Iw?=
+ =?utf-8?B?b1FleWRiTzJBSk5pRXp4Njd0NGkyV2NVekFzUVlJZ3NTVXphOHFPTE5lVVNy?=
+ =?utf-8?B?NmhlazN6OUY2djBFWG03alAxaTBLWTFZdkppc2dqUEdPUzVhZFdteUxQM3Vn?=
+ =?utf-8?B?akMyaGpmVDQrNStSblhVdnhGYTZCclBDQmM5MzloTGJ6VmVhSGdpYmZvbmdQ?=
+ =?utf-8?B?d1ZlbU8zelUvcVlFTHZKWWRBOGJHSHJPU3ZoanB4bHFoZHorZzJEZTQ4cFRt?=
+ =?utf-8?B?elQxMloxRU9keXlWMkNveVZFdS9Sd2lpMVkwVk9XTjZTWmxaQ3NsU2NWZXNa?=
+ =?utf-8?B?VGtvZE1sR0lNOWR2bjZWNm80UG50QWFIeUkrUHVMbXVLZ1RSVDRvaFNmcmlF?=
+ =?utf-8?B?K0ZXdVdIVkFLSnBXTzA0ZTF4V0pTU0JTY2hoWWhHbFFLTGNHOTRpRnF0a3Bl?=
+ =?utf-8?B?aFV6b1VhdytHenpGcjIzTUJlWGhhNGorOHNBeXVMRFhHNmtNTDg3NHAyT2dx?=
+ =?utf-8?B?TDNIdzJ5cjZXRng0U1JnNXcrMG4reWsxZFVRMzVmb3g0UE5tczZkR3F0MEVL?=
+ =?utf-8?B?SXJJc3VaenBJa2RBeDBQa2Jzdlc5NlZtUkFqeVU2T0NuMisrQTdDaHNlQ0RF?=
+ =?utf-8?B?SVhjZWdFalM5Z2ErOTNIT29ieXpIMnYrTDFPWmp3dE5peTNHeDJ4N2xiSElw?=
+ =?utf-8?B?QjNTTTYwNVdMcFBvd1YyNm9WY1hGdkVjczdBNHNRbmFPWXkzOFBUNFdQMmdT?=
+ =?utf-8?B?M29weXRJQk9lQUwzVUVYc2loUXpESTN2VjRDMzhxcTJod0pVNzlHUmFaK1Bh?=
+ =?utf-8?B?NXUxTEFZOVJnQmI5S05aYml1Vmt4RStFTGRPVFhoM0hnWWtEOWw1VnNXNEZC?=
+ =?utf-8?B?SC9vbnJ5TFBHcjg0NTZzd3g3NEhyZ3MwQ1hyaUNVWXVZcitNZFNuSGdoUXJz?=
+ =?utf-8?B?NDE3WlhNUE1ySVR3OTNwYzd1WTMyWVVqMmU2cnZBTkdEMHhxU3pSTkFzd1Vw?=
+ =?utf-8?B?ZFhIVkhhdXBSL0tLTUxsUzZPVmNGVXRUOVV0eno2QS9PWVh5RHdxYTdER05G?=
+ =?utf-8?B?VG1ZeE0vN1R3UndDeFlrNkhmRE40dFRNZmh2cUYxSUMyaGZjSDFXQ3FJSkR1?=
+ =?utf-8?B?U205cFVCdWJ4by82dlNtN0xUV0c5Ni9SMFhjc0RVOTNjVU9ZMXhtNnQ5R1o4?=
+ =?utf-8?B?UWZWZW40eTVPeHAvZ1QwMEg0d1lzS29rQm1qMHdML2xYcm1BZ1UweEFpdGoy?=
+ =?utf-8?B?cUVyUlRCYmYwQ2RMYWdsRFY5TThPbEQ4bkVIVWQ3bFlyWDJDZzdwa3ZveEpr?=
+ =?utf-8?B?ZjhFL1hNN1ZoMTEwUE0xbWd3MUJPNEZxWTNBNTlCVzhzRGtsUGVUS01ZRERX?=
+ =?utf-8?B?QjdQZERzQmR2aWJKbmloT0VXeUhKcWVpTk9ZU2JmREtCSU5BRUpTV2pNOHI1?=
+ =?utf-8?B?K24xRVhhajkzSXlueG5URVYzb3hGWGtteThwbmw5ai83RjNMYVIzekFZZzVQ?=
+ =?utf-8?B?VkcwR0g3UVJoeEdLV21Dbm0vdFJCbE5heXRMUUpHbzliUVZadk5DM2dpNnlM?=
+ =?utf-8?B?RGpqajZCbW1NVTR3KzlFbkhuK0k1YUVCY3pmT0VCakF5YmxHeWxlUGY1Nktp?=
+ =?utf-8?B?MUdxeGtVTmtUMUIrUm50STJYSEhnUzR6U2pZeDBsN1M0ZW9DQXJCQ0RFa2I3?=
+ =?utf-8?B?TDNtMnVPcmVkZVNpRHkyWnBLcEE0K3hwMHo3TXgzOHNQWm9vLzVTNVRseEpp?=
+ =?utf-8?B?YlArK2VqNkVDTjZCYmMwVHFpcWZ1ZWMvRk05RGJsYVBWVWE1TG5MV0VHRzB6?=
+ =?utf-8?Q?WIZDk4em8+pbRZYqiLZZuMztU?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <467F3EE280D43A4687B03569CEC5958C@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <CAKpemQKo2gigO44amj=eFUXgUnUeSmiOoTbS8GdXMx3O07N1vg@mail.gmail.com>
- <CAGXv+5E4TXrPmhb++r3vMGA4WoPc=covi7_=zgLLcOhGt9UBgg@mail.gmail.com>
- <CAKpemQJDf9RqeOStB4Rm5hzuQdzYF6JEbuz00Cr-a80cWZKR6w@mail.gmail.com> <CAGXv+5HuxOtFfdWdocspTcDRytCK+0Ny+c_aFLJyHCUbYTboJQ@mail.gmail.com>
-In-Reply-To: <CAGXv+5HuxOtFfdWdocspTcDRytCK+0Ny+c_aFLJyHCUbYTboJQ@mail.gmail.com>
-From: Bret Joseph <bretjoseph@gmail.com>
-Date: Fri, 24 Nov 2023 06:58:31 +0200
-Message-ID: <CAKpemQLyieDP1r11v1WJ+-SXeseUiPKsCK6SBf-FSCOxGkEWHw@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] regulator: mt6358: Add output voltage fine tuning
- to variable LDOs
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	LKML <linux-kernel@vger.kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
-	"moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7803b7a5-a6a3-443b-7c6c-08dbecb32bea
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Nov 2023 06:04:08.3101
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: gy7bB9+f5u5UUON5+xWLrynOkSLXhNCf2ej6S6XUxVievroz3jnk/LLutfPeR4CgocxJU7WB/gtVJ/2aR9IXhQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB7717
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--13.220600-8.000000
+X-TMASE-MatchedRID: u7Yf2n7Ca/0/XHdICuW5r8AmcZEx8XHJMZpQS7dE0daxUZq4R85n78kU
+	hKWc+gwPzjqJngvc26gd5e75RGwObSQVVteP90CtFYJUGv4DL3yZ2scyRQcer2I4wQ1Yq/d0Jxp
+	QBrN5TwcyZsaIS6SCOcoEqppSYyJ3ZnD+ReIWrW0MH4SsGvRsA0opYlyHMD9xv8D7QPW2jo9who
+	Ol0hGGnWsRPSp/FWsqKcCLQaAlV2N1ty+qQThQe935+5/2RxqmLAnNohUyMa34JyR+b5tvoHQ+I
+	gV9Gazougm9TX6RNFpTCNJKBtcVsybhJjVR0U35ngIgpj8eDcDBa6VG2+9jFNQdB5NUNSsi1GcR
+	AJRT6POOhzOa6g8KrRH54I16oehra0aYYoYl00qGSURVbbTgOUfZeQbZEQgIJNGRObeF7SU=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--13.220600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 4FF3D5C38808E5BA3C8E11EF63EB998195488C943A6E39AD3D9688509C4DB7152000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_205845_956570_D323E591 
-X-CRM114-Status: GOOD (  22.85  )
+X-CRM114-CacheID: sfid-20231123_220502_370124_A5C1FBEB 
+X-CRM114-Status: GOOD (  17.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,315 +199,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ok if thats the case it means I will have to customize things on my end.
-
-
-On Fri, 24 Nov 2023 at 06:29, Chen-Yu Tsai <wenst@chromium.org> wrote:
->
-> Please keep the whole CC list. Please don't top post.
->
-> On Thu, Nov 23, 2023 at 7:27=E2=80=AFPM Bret Joseph <bretjoseph@gmail.com=
-> wrote:
-> >
-> > /sys/kernel/debug/regmap/1000d000.pwrap/registers
-> > 1e00: 2808
-> > 1e02: 2808
-> > 1e04: 2000
-> > 1e06: 2000
-> > 1e08: 2808
->
-> According to the datasheet I have, x8xx is not a valid voltage setting.
-> It wasn't valid before my patch either.
->
-> This is vcama1.
->
-> > 1e0a: 2808
-> > 1e0c: 2000
-> > 1e0e: 2000
-> > 1e10: 0000 # I have deleted everything with 0000
-> > 1e20: 2808
-> > 1e22: 2808
-> > 1e24: 2000
-> > 1e26: 2000
-> > 1e28: 2808
->
-> x8xx is not valid here either. This is vcn33.
->
-> > 1e2a: 2808
-> > 1e2c: 2000
->
-> x0xx is not valid here either. This is vsim1.
->
-> > 1e2e: 2000
->
-> x0xx for register 0x1e30 is not valid. This is vsim2.
-> x0xx for register 0x1e38 is not valid. This is vemc.
-> x0xx for register 0x1e3c is not valid. This is vldo28.
-> x0xx for register 0x1e48 is not valid. This is vmch.
-> x0xx for register 0x1e4c is not valid. This is vmc.
->
-> > 1e80: 2808
-> > 1e82: 2808
-> > 1e84: 2000
-> > 1e86: 2000
-> > 1e88: 2808
-> > 1e8a: 2808
-> > 1e8c: 2000
-> > 1e8e: 2000
->
-> x0xx for register 0x1e98 is not valid. This is vefuse.
->
-> > 1ea0: 2808
-> > 1ea2: 2808
-> > 1ea4: 2000
-> > 1ea6: 2000
-> > 1ea8: 2808
-> > 1eaa: 2808
-> > 1eac: 2000
-> > 1eae: 2000
->
-> x0xx for register 0x1eae is not valid. This is vcamd.
->
-> So basically all the failures you see are due to (as far as the datasheet
-> says) invalid values. The driver prior to my patch would error out as wel=
-l.
->
-> Either the register readback is faulty on your platform, or your bootload=
-er
-> has configured the system into a weird state.
->
->
-> ChenYu
->
-> > /sys/kernel/debug/regulator/regulator_summary
-> >  regulator                      use open bypass  opmode voltage
-> > current     min     max
-> > -----------------------------------------------------------------------=
-----------------
-> >  regulator-dummy         3   35      0 unknown     0mV     0mA     0mV =
-    0mV
-> >    vdram1                      0    0      0  normal   500mV     0mA
-> > 500mV  2087mV
-> >    vcore                         0    0      0  normal   500mV     0mA
-> >   500mV  1293mV
-> >    vpa                            0    0      0  normal   500mV
-> > 0mA   500mV  3650mV
-> >    vproc11                     0    0      0  normal   500mV     0mA
-> > 500mV  1293mV
-> >    vproc12                     0    0      0  normal   500mV     0mA
-> > 500mV  1293mV
-> >    vgpu                          0    0      0  normal   500mV     0mA
-> >   500mV  1293mV
-> >    vs2                            0    0      0  normal   500mV
-> > 0mA   500mV  2087mV
-> >    vmodem                    0    0      0  normal   500mV     0mA
-> > 500mV  1293mV
-> >    vs1                            2    5      0  normal  1000mV
-> > 0mA  1000mV  2587mV
-> >       vio18                      1    0      0 unknown  1800mV     0mA
-> >  1800mV  1800mV
-> >       vcamio                   0    0      0 unknown  1800mV     0mA
-> > 1800mV  1800mV
-> >       vcn18                     0    0      0 unknown  1800mV     0mA
-> > 1800mV  1800mV
-> >       vefuse                    0    0      0 unknown  1700mV     0mA
-> > 1700mV  1900mV
-> >       vrf18                       0    0      0 unknown  1800mV
-> > 0mA  1800mV  1800mV
-> >    vdram2                      0    0      0 unknown   600mV     0mA
-> > 600mV  1800mV
-> >    vsim1                         0    0      0 unknown  1700mV     0mA
-> >  1700mV  3100mV
-> >    vibr                            0    0      0 unknown  1200mV
-> > 0mA  1200mV  3300mV
-> >    vrf12                          0    0      0 unknown  1200mV
-> > 0mA  1200mV  1200mV
-> >    vusb                           0    0      0 unknown  3000mV
-> > 0mA  3000mV  3100mV
-> >    vcamd                        0    0      0 unknown   900mV     0mA
-> >  900mV  1800mV
-> >    vfe28                          0    0      0 unknown  2800mV
-> > 0mA  2800mV  2800mV
-> >    vsram_proc11            0    0      0 unknown   500mV     0mA   500m=
-V  1293mV
-> >    vcn28                         0    0      0 unknown  2800mV     0mA
-> >  2800mV  2800mV
-> >    vsram_others             0    0      0 unknown   500mV     0mA
-> > 500mV  1293mV
-> >    vsram_gpu                 0    0      0 unknown   500mV     0mA
-> > 500mV  1293mV
-> >    vxo22                         0    0      0 unknown  2200mV     0mA
-> >  2200mV  2200mV
-> >    vaux18                       0    0      0 unknown  1800mV     0mA
-> > 1800mV  1800mV
-> >    vmch                          0    0      0 unknown  2900mV     0mA
-> >  2900mV  3300mV
-> >    vbif28                         0    0      0 unknown  2800mV
-> > 0mA  2800mV  2800mV
-> >    vsram_proc12            0    0      0 unknown   550mV     0mA   500m=
-V  1293mV
-> >    vcama1                      0    0      0 unknown  1800mV     0mA
-> > 1800mV  3000mV
-> >    vemc                          0    0      0 unknown  2900mV     0mA
-> >  2900mV  3300mV
-> >    vio28                          1    0      0 unknown  2800mV
-> > 0mA  2800mV  2800mV
-> >    va12                           0    0      0 unknown  1200mV
-> > 0mA  1200mV  1200mV
-> >    VCN33                       0    0      0 unknown  3300mV     0mA
-> >   0mV     0mV
-> >    vcama2                      0    0      0 unknown  1800mV     0mA
-> > 1800mV  3000mV
-> >    vmc                            0    0      0 unknown  1800mV
-> > 0mA  1800mV  3300mV
-> >    vldo28                        0    0      0 unknown  2800mV     0mA
-> >  2800mV  3000mV
-> >    vaud28                       0    0      0 unknown  2800mV     0mA
-> > 2800mV  2800mV
-> >    vsim2                         0    0      0 unknown  1700mV     0mA
-> >  1700mV  3100mV
-> >
-> > I have also seen errors when consumers use regulators which I think
-> > could be related to setting values on regulators
-> > Here is an example using mtk-ccifreq driver
-> > [ 0.668869] mtk-ccifreq cci: no pinctrl handle
-> > [ 0.669128] device: 'regulator:regulator.5--platform:cci': device_add
-> > [ 0.669278] devices_kset: Moving cci to end of list
-> > [ 0.669311] PM: Moving platform:cci to end of list
-> > [ 0.669340] mtk-ccifreq cci: Linked as a consumer to regulator.5
-> > [ 0.669713] of: _opp_add_static_v2: turbo:0 rate:500000000 uv:600000
-> > uvmin:600000 uvmax:600000 latency:0 level:0
-> > [ 0.669969] of: _opp_add_static_v2: turbo:0 rate:560000000 uv:675000
-> > uvmin:675000 uvmax:675000 latency:0 level:0
-> > [ 0.670245] of: _opp_add_static_v2: turbo:0 rate:612000000 uv:693750
-> > uvmin:693750 uvmax:693750 latency:0 level:0
-> > [ 0.670512] of: _opp_add_static_v2: turbo:0 rate:682000000 uv:718750
-> > uvmin:718750 uvmax:718750 latency:0 level:0
-> > [ 0.670763] of: _opp_add_static_v2: turbo:0 rate:752000000 uv:743750
-> > uvmin:743750 uvmax:743750 latency:0 level:0
-> > [ 0.671031] of: _opp_add_static_v2: turbo:0 rate:822000000 uv:768750
-> > uvmin:768750 uvmax:768750 latency:0 level:0
-> > [ 0.671598] of: _opp_add_static_v2: turbo:0 rate:875000000 uv:781250
-> > uvmin:781250 uvmax:781250 latency:0 level:0
-> > [ 0.671921] of: _opp_add_static_v2: turbo:0 rate:927000000 uv:800000
-> > uvmin:800000 uvmax:800000 latency:0 level:0
-> > [ 0.672178] of: _opp_add_static_v2: turbo:0 rate:980000000 uv:818750
-> > uvmin:818750 uvmax:818750 latency:0 level:0
-> > [ 0.672434] of: _opp_add_static_v2: turbo:0 rate:1050000000 uv:843750
-> > uvmin:843750 uvmax:843750 latency:0 level:0
-> > [ 0.672681] of: _opp_add_static_v2: turbo:0 rate:1120000000 uv:862500
-> > uvmin:862500 uvmax:862500 latency:0 level:0
-> > [ 0.672945] of: _opp_add_static_v2: turbo:0 rate:1155000000 uv:887500
-> > uvmin:887500 uvmax:887500 latency:0 level:0
-> > [ 0.673200] of: _opp_add_static_v2: turbo:0 rate:1190000000 uv:906250
-> > uvmin:906250 uvmax:906250 latency:0 level:0
-> > [ 0.673465] of: _opp_add_static_v2: turbo:0 rate:1260000000 uv:950000
-> > uvmin:950000 uvmax:950000 latency:0 level:0
-> > [ 0.673720] of: _opp_add_static_v2: turbo:0 rate:1330000000 uv:993750
-> > uvmin:993750 uvmax:993750 latency:0 level:0
-> > [ 0.673988] of: _opp_add_static_v2: turbo:0 rate:1400000000 uv:1031250
-> > uvmin:1031250 uvmax:1031250 latency:0 level:0
-> > [ 0.674327] device: 'cci': device_add
-> > [ 0.674499] PM: Adding info for No Bus:cci
-> > [ 0.674643] mtk-ccifreq cci: error -EPROBE_DEFER: devfreq_add_device:
-> > Unable to start governor for the device
-> > [ 0.675571] device: 'cci': device_unregister
-> > [ 0.675730] PM: Removing info for No Bus:cci
-> > [ 0.675862] mtk-ccifreq cci: failed to add devfreq device: -517
-> > [ 0.680084] mtk-ccifreq cci: Driver mtk-ccifreq requests probe deferral
-> > [ 0.680148] ------------[ cut here ]------------
-> > [ 0.680163] WARNING: CPU: 6 PID: 56 at _regulator_put+0x340/0x354
-> > [ 0.680190] Modules linked in:
-> > [ 0.680208] CPU: 6 PID: 56 Comm: kworker/u16:1 Tainted: G W
-> > 6.7.0-rc1-next-20231115-g2b600507077d-dirty #34
-> > [ 0.680232] Hardware name: MT6769H (DT)
-> > [ 0.680246] Workqueue: events_unbound deferred_probe_work_func
-> > [ 0.680268] pstate: 80400005 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=
-=3D--)
-> > [ 0.680285] pc : _regulator_put+0x340/0x354
-> > [ 0.680302] lr : regulator_put+0x58/0x8c
-> > [ 0.680317] sp : ffffffc080483950
-> > [ 0.680328] x29: ffffffc080483950 x28: ffffff80c0030000 x27: ffffffdd00=
-2037f0
-> > [ 0.680353] x26: ffffffdd01747650 x25: ffffff80c0f5d0c0 x24: ffffffdd00=
-180d80
-> > [ 0.680376] x23: ffffffc080483a98 x22: ffffffdd01f46d50 x21: ffffff80c0=
-f5d780
-> > [ 0.680400] x20: ffffffdd01ee2bc0 x19: ffffff80c0f5d780 x18: ffffff80c1=
-f8c660
-> > [ 0.680423] x17: 000000040044ffff x16: 005000f4b5593519 x15: ffffffdd02=
-21fdb0
-> > [ 0.680446] x14: 0000000000000891 x13: 0000000000000891 x12: 0000000000=
-000001
-> > [ 0.680468] x11: 0000000000000891 x10: 000000000001cde2 x9 : 0000000000=
-001464
-> > [ 0.680491] x8 : 000000008020001f x7 : ffffff80c249e600 x6 : 0000000000=
-00018d
-> > [ 0.680513] x5 : 00000000000091ec x4 : 00000000000091d3 x3 : ffffffdd01=
-a5e070
-> > [ 0.680535] x2 : 0000000000000001 x1 : ffffffdd01ee2b60 x0 : 0000000000=
-000002
-> > [ 0.680558] Call trace:
-> > [ 0.680568] _regulator_put+0x340/0x354
-> > [ 0.680583] regulator_put+0x58/0x8c
-> > [ 0.680597] devm_regulator_release+0x30/0x4c
-> > [ 0.680613] release_nodes+0x8c/0xdc
-> > [ 0.680629] devres_release_all+0xc0/0x164
-> > [ 0.680646] device_unbind_cleanup+0x34/0xe4
-> > [ 0.680660] really_probe+0x200/0x75c
-> > [ 0.680674] __driver_probe_device+0x100/0x2e4
-> > [ 0.680688] driver_probe_device+0x6c/0x1d4
-> > [ 0.680703] __device_attach_driver+0x170/0x238
-> > [ 0.680717] bus_for_each_drv+0xbc/0x18c
-> > [ 0.680734] __device_attach+0x124/0x2ec
-> > [ 0.680748] device_initial_probe+0x30/0x4c
-> > [ 0.680762] bus_probe_device+0x138/0x168
-> > [ 0.680775] deferred_probe_work_func+0x134/0x1fc
-> > [ 0.680790] process_scheduled_works+0x26c/0x73c
-> > [ 0.680808] worker_thread+0x294/0x690
-> > [ 0.680823] kthread+0x1fc/0x22c
-> > [ 0.680837] ret_from_fork+0x10/0x20
-> > [ 0.680853] ---[ end trace 0000000000000000 ]---
-> > [ 0.680923] mtk-ccifreq cci: Dropping the link to regulator.5
-> > [ 0.680941] device: 'regulator:regulator.5--platform:cci': device_unreg=
-ister
-> > [ 0.681041] platform cci: Added to deferred list
-> >
-> > On Thu, 23 Nov 2023 at 08:25, Chen-Yu Tsai <wenst@chromium.org> wrote:
-> > >
-> > > Hi Bret,
-> > >
-> > > On Thu, Nov 16, 2023 at 12:52=E2=80=AFAM Bret Joseph <bretjoseph@gmai=
-l.com> wrote:
-> > > >
-> > > > In mt6358-regulator.c
-> > > >
-> > > > static const struct regulator_ops mt6358_volt_table_ops =3D {
-> > > >     .list_voltage =3D regulator_list_voltage_pickable_linear_range,
-> > > >     .map_voltage =3D regulator_map_voltage_pickable_linear_range,
-> > > >     .set_voltage_sel =3D regulator_set_voltage_sel_pickable_regmap,
-> > > >     .get_voltage_sel =3D mt6358_get_buck_voltage_sel /*regulator_ge=
-t_voltage_sel_pickable_regmap*/,
-> > > >     .set_voltage_time_sel =3D regulator_set_voltage_time_sel,
-> > > >     .enable =3D regulator_enable_regmap,
-> > > >     .disable =3D regulator_disable_regmap,
-> > > >     .is_enabled =3D regulator_is_enabled_regmap,
-> > > >     .get_status =3D mt6358_get_status,
-> > > > };
-> > > >
-> > > > the function [regulator_get_voltage_sel_pickable_regmap] causes a -=
-EINVAL=E2=80=AC when registering
-> > > >
-> > > > vsim1 vusb vcamd vefuse vmch vcama1 vemc vmc vldo28 vsim2
-> > > >
-> > > > using [mt6358_get_buck_voltage_sel] results in a successful probe
-> > >
-> > > Sure it will probe, but any values you read back will be bogus.
-> > >
-> > > Can you provide a dump of /sys/kernel/debug/regulator/regulator_summa=
-ry
-> > > and `grep ^1e..: /sys/kernel/debug/regmap/1000d000.pwrap/registers`,
-> > > and also any relevant logs?
-> > >
-> > > ChenYu
+SGksIEhzaWFvLWNoaWVuOg0KDQpDaGFuZ2UgdGhlIHRpdGxlIHRvIFN1cHBvcnQgYWxwaGEgYmxl
+bmRpbmcgaW4gZXRoZHIuDQoNCk9uIFR1ZSwgMjAyMy0xMC0xNyBhdCAxNDo0NyArMDgwMCwgSHNp
+YW8gQ2hpZW4gU3VuZyB3cm90ZToNCj4gU3VwcG9ydCBwcmVtdWx0aXBseSBhbmQgY292ZXJhZ2Ug
+YWxwaGEgYmxlbmRpbmcgbW9kZXMuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBIc2lhbyBDaGllbiBT
+dW5nIDxzaGF3bi5zdW5nQG1lZGlhdGVrLmNvbT4NCj4gLS0tDQo+ICAuLi4vZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZGlzcF9vdmxfYWRhcHRvci5jICAgfCAgMiArLQ0KPiAgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19ldGhkci5jICAgICAgICAgIHwgNDggKysrKysrKysrKysrKysrDQo+IC0t
+LS0NCj4gIDIgZmlsZXMgY2hhbmdlZCwgMzkgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0p
+DQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292
+bF9hZGFwdG9yLmMNCj4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsX2Fk
+YXB0b3IuYw0KPiBpbmRleCA4ZGU1N2E1ZjU1MTguLmI2OWFjOTBiMmU2NSAxMDA2NDQNCj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bF9hZGFwdG9yLmMNCj4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bF9hZGFwdG9yLmMNCj4gQEAg
+LTE1Niw3ICsxNTYsNyBAQCB2b2lkIG10a19vdmxfYWRhcHRvcl9sYXllcl9jb25maWcoc3RydWN0
+IGRldmljZQ0KPiAqZGV2LCB1bnNpZ25lZCBpbnQgaWR4LA0KPiAgCW1lcmdlID0gb3ZsX2FkYXB0
+b3ItPm92bF9hZGFwdG9yX2NvbXBbT1ZMX0FEQVBUT1JfTUVSR0UwICsNCj4gaWR4XTsNCj4gIAll
+dGhkciA9IG92bF9hZGFwdG9yLT5vdmxfYWRhcHRvcl9jb21wW09WTF9BREFQVE9SX0VUSERSMF07
+DQo+ICANCj4gLQlpZiAoIXBlbmRpbmctPmVuYWJsZSkgew0KPiArCWlmICghcGVuZGluZy0+ZW5h
+YmxlIHx8ICFwZW5kaW5nLT53aWR0aCB8fCAhcGVuZGluZy0+aGVpZ2h0KSB7DQoNClRoaXMgaXMg
+bm90IHJlbGF0ZWQgdG8gYWxwaGEgYmxlbmRpbmcsIHNvIG1vdmUgdG8gYW5vdGhlciBwYXRjaC4N
+Cg0KPiAgCQltdGtfbWVyZ2Vfc3RvcF9jbWRxKG1lcmdlLCBjbWRxX3BrdCk7DQo+ICAJCW10a19t
+ZHBfcmRtYV9zdG9wKHJkbWFfbCwgY21kcV9wa3QpOw0KPiAgCQltdGtfbWRwX3JkbWFfc3RvcChy
+ZG1hX3IsIGNtZHFfcGt0KTsNCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZXRoZHIuYw0KPiBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZXRoZHIuYw0K
+PiBpbmRleCA3M2RjNGRhM2JhM2IuLjY0OGUxNGU4NWJkMCAxMDA2NDQNCj4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19ldGhkci5jDQo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZXRoZHIuYw0KPiBAQCAtNSw2ICs1LDcgQEANCj4gIA0KPiAgI2luY2x1ZGUg
+PGRybS9kcm1fZm91cmNjLmg+DQo+ICAjaW5jbHVkZSA8ZHJtL2RybV9mcmFtZWJ1ZmZlci5oPg0K
+PiArI2luY2x1ZGUgPGRybS9kcm1fYmxlbmQuaD4NCj4gICNpbmNsdWRlIDxsaW51eC9jbGsuaD4N
+Cj4gICNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4NCj4gICNpbmNsdWRlIDxsaW51eC9vZl9k
+ZXZpY2UuaD4NCj4gQEAgLTM1LDYgKzM2LDcgQEANCj4gICNkZWZpbmUgTUlYX1NSQ19MMF9FTgkJ
+CQlCSVQoMCkNCj4gICNkZWZpbmUgTUlYX0xfU1JDX0NPTihuKQkJKDB4MjggKyAweDE4ICogKG4p
+KQ0KPiAgI2RlZmluZSBOT05fUFJFTVVMVElfU09VUkNFCQkJKDIgPDwgMTIpDQo+ICsjZGVmaW5l
+IFBSRU1VTFRJX1NPVVJDRQkJCQkoMyA8PCAxMikNCj4gICNkZWZpbmUgTUlYX0xfU1JDX1NJWkUo
+bikJCSgweDMwICsgMHgxOCAqIChuKSkNCj4gICNkZWZpbmUgTUlYX0xfU1JDX09GRlNFVChuKQkJ
+KDB4MzQgKyAweDE4ICogKG4pKQ0KPiAgI2RlZmluZSBNSVhfRlVOQ19EQ00wCQkJMHgxMjANCj4g
+QEAgLTE1MywzMyArMTU1LDU5IEBAIHZvaWQgbXRrX2V0aGRyX2xheWVyX2NvbmZpZyhzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsDQo+IHVuc2lnbmVkIGludCBpZHgsDQo+ICAJc3RydWN0IG10a19wbGFuZV9w
+ZW5kaW5nX3N0YXRlICpwZW5kaW5nID0gJnN0YXRlLT5wZW5kaW5nOw0KPiAgCXVuc2lnbmVkIGlu
+dCBvZmZzZXQgPSAocGVuZGluZy0+eCAmIDEpIDw8IDMxIHwgcGVuZGluZy0+eSA8PCAxNg0KPiB8
+IHBlbmRpbmctPng7DQo+ICAJdW5zaWduZWQgaW50IGFsaWduX3dpZHRoID0gQUxJR05fRE9XTihw
+ZW5kaW5nLT53aWR0aCwgMik7DQo+IC0JdW5zaWduZWQgaW50IGFscGhhX2NvbiA9IDA7DQo+ICsJ
+dW5zaWduZWQgaW50IG1peF9jb24gPSBOT05fUFJFTVVMVElfU09VUkNFOw0KPiArCWJvb2wgcmVw
+bGFjZV9zcmNfYSA9IGZhbHNlOw0KPiArDQo+ICsJdW5pb24gZm9ybWF0IHsNCj4gKwkJdTMyIHJh
+dzsNCj4gKwkJdTggc3RyWzVdOw0KPiArCX0gZm9ybWF0Ow0KDQpZb3UgZGVmaW5lIHRoaXMganVz
+dCB0byBwcmludCByYXcsIEkgdGhpbmsgeW91IGNvdWxkIGRpcmVjdGx5IHByaW50IHJhdw0KYW5k
+IGRyb3AgdGhpcy4NCg0KPiAgDQo+ICAJZGV2X2RiZyhkZXYsICIlcysgaWR4OiVkIiwgX19mdW5j
+X18sIGlkeCk7DQo+ICANCj4gIAlpZiAoaWR4ID49IDQpDQo+ICAJCXJldHVybjsNCj4gIA0KPiAt
+CWlmICghcGVuZGluZy0+ZW5hYmxlKSB7DQo+ICsJaWYgKCFwZW5kaW5nLT5lbmFibGUgfHwgIXBl
+bmRpbmctPndpZHRoIHx8ICFwZW5kaW5nLT5oZWlnaHQpIHsNCj4gKwkJLyoNCj4gKwkJICogaW5z
+dGVhZCBvZiBkaXNhYmxpbmcgbGF5ZXIgd2l0aCBNSVhfU1JDX0NPTiBkaXJlY3RseQ0KPiArCQkg
+KiBzZXQgdGhlIHNpemUgdG8gMCB0byBhdm9pZCBzY3JlZW4gc2hpZnQgZHVlIHRvIG1vZGUNCj4g
+c3dpdGNoDQo+ICsJCSAqLw0KDQpJcyB0aGlzIHJlbGF0ZWQgdG8gYWxwaGE/IElmIG5vLCBtb3Zl
+IHRoaXMgdG8gYW5vdGhlciBwYXRjaC4gSWYgc28sDQpkZXNjcmliZSBtb3JlIGRldGFpbCB3aHkg
+YWxwaGEgbmVlZCB0aGlzIGNoYW5nZT8NCg0KPiAgCQltdGtfZGRwX3dyaXRlKGNtZHFfcGt0LCAw
+LCAmbWl4ZXItPmNtZHFfYmFzZSwgbWl4ZXItDQo+ID5yZWdzLCBNSVhfTF9TUkNfU0laRShpZHgp
+KTsNCj4gIAkJcmV0dXJuOw0KPiAgCX0NCj4gIA0KPiAtCWlmIChzdGF0ZS0+YmFzZS5mYiAmJiBz
+dGF0ZS0+YmFzZS5mYi0+Zm9ybWF0LT5oYXNfYWxwaGEpDQo+IC0JCWFscGhhX2NvbiA9IE1JWEVS
+X0FMUEhBX0FFTiB8IE1JWEVSX0FMUEhBOw0KPiArCW1peF9jb24gfD0gTUlYRVJfQUxQSEFfQUVO
+IHwgKHN0YXRlLT5iYXNlLmFscGhhICYgTUlYRVJfQUxQSEEpOw0KPiArDQo+ICsJaWYgKHN0YXRl
+LT5iYXNlLnBpeGVsX2JsZW5kX21vZGUgIT0gRFJNX01PREVfQkxFTkRfQ09WRVJBR0UpDQo+ICsJ
+CW1peF9jb24gfD0gUFJFTVVMVElfU09VUkNFOw0KPiArDQo+ICsJaWYgKHN0YXRlLT5iYXNlLnBp
+eGVsX2JsZW5kX21vZGUgPT0gRFJNX01PREVfQkxFTkRfUElYRUxfTk9ORQ0KPiB8fA0KPiArCSAg
+ICAoc3RhdGUtPmJhc2UuZmIgJiYgIXN0YXRlLT5iYXNlLmZiLT5mb3JtYXQtPmhhc19hbHBoYSkp
+IHsNCj4gKwkJLyoNCj4gKwkJICogTWl4ZXIgZG9lc24ndCBzdXBwb3J0IENPTlNUX0JMRCBtb2Rl
+LA0KPiArCQkgKiB1c2UgYSB0cmljayB0byBtYWtlIHRoZSBvdXRwdXQgZXF1aXZhbGVudA0KPiAr
+CQkgKi8NCj4gKwkJcmVwbGFjZV9zcmNfYSA9IHRydWU7DQo+ICsJfQ0KPiArDQo+ICsJZm9ybWF0
+LnJhdyA9IHBlbmRpbmctPmZvcm1hdDsNCj4gKw0KPiArCWRldl9kYmcoZGV2LCAiTCVkOiAldXgl
+dSgldSwldSklczogU0NBPTB4JXgoJXUpLCBNSVg9MHgleFxuIiwNCj4gaWR4LA0KPiArCQlwZW5k
+aW5nLT53aWR0aCwgcGVuZGluZy0+aGVpZ2h0LCBwZW5kaW5nLT54LCBwZW5kaW5nLQ0KPiA+eSwN
+Cj4gKwkJZm9ybWF0LnN0ciwgKHN0YXRlLT5iYXNlLmFscGhhICYgTUlYRVJfQUxQSEEpLA0KPiAr
+CQlzdGF0ZS0+YmFzZS5waXhlbF9ibGVuZF9tb2RlLCBtaXhfY29uKTsNCg0KSSBkbyBub3QgbGlr
+ZSBwZXIgZnJhbWUgbG9nIG1lc3NhZ2UuIEV2ZW4gaXQgd291bGQgbm90IHByaW50IGJ5IGxvZw0K
+bGV2ZWwsIGl0IHdvdWxkIGJlIHJlY29yZCB0byBsb2cgYnVmZmVyIGFuZCBkbWVzZyB3b3VsZCBz
+aG93IGl0LiBTbw0KZHJvcCB0aGlzLg0KDQo+ICANCj4gLQltdGtfbW1zeXNfbWl4ZXJfaW5fY29u
+ZmlnKHByaXYtPm1tc3lzX2RldiwgaWR4ICsgMSwgYWxwaGFfY29uID8NCj4gZmFsc2UgOiB0cnVl
+LA0KPiAtCQkJCSAgREVGQVVMVF85QklUX0FMUEhBLA0KPiArCW10a19tbXN5c19taXhlcl9pbl9j
+b25maWcocHJpdi0+bW1zeXNfZGV2LCBpZHggKyAxLA0KPiByZXBsYWNlX3NyY19hLCBNSVhFUl9B
+TFBIQSwNCj4gIAkJCQkgIHBlbmRpbmctPnggJiAxID8NCj4gTUlYRVJfSU5YX01PREVfRVZFTl9F
+WFRFTkQgOg0KPiAgCQkJCSAgTUlYRVJfSU5YX01PREVfQllQQVNTLCBhbGlnbl93aWR0aCAvDQo+
+IDIgLSAxLCBjbWRxX3BrdCk7DQo+ICANCj4gIAltdGtfZGRwX3dyaXRlKGNtZHFfcGt0LCBwZW5k
+aW5nLT5oZWlnaHQgPDwgMTYgfCBhbGlnbl93aWR0aCwNCj4gJm1peGVyLT5jbWRxX2Jhc2UsDQo+
+ICAJCSAgICAgIG1peGVyLT5yZWdzLCBNSVhfTF9TUkNfU0laRShpZHgpKTsNCj4gIAltdGtfZGRw
+X3dyaXRlKGNtZHFfcGt0LCBvZmZzZXQsICZtaXhlci0+Y21kcV9iYXNlLCBtaXhlci0+cmVncywg
+DQo+IE1JWF9MX1NSQ19PRkZTRVQoaWR4KSk7DQo+IC0JbXRrX2RkcF93cml0ZV9tYXNrKGNtZHFf
+cGt0LCBhbHBoYV9jb24sICZtaXhlci0+Y21kcV9iYXNlLA0KPiBtaXhlci0+cmVncywgTUlYX0xf
+U1JDX0NPTihpZHgpLA0KPiAtCQkJICAgMHgxZmYpOw0KPiAtCW10a19kZHBfd3JpdGVfbWFzayhj
+bWRxX3BrdCwgQklUKGlkeCksICZtaXhlci0+Y21kcV9iYXNlLA0KPiBtaXhlci0+cmVncywgTUlY
+X1NSQ19DT04sDQo+IC0JCQkgICBCSVQoaWR4KSk7DQo+ICsJbXRrX2RkcF93cml0ZShjbWRxX3Br
+dCwgbWl4X2NvbiwgJm1peGVyLT5jbWRxX2Jhc2UsIG1peGVyLQ0KPiA+cmVncywgTUlYX0xfU1JD
+X0NPTihpZHgpKTsNCj4gKwltdGtfZGRwX3dyaXRlX21hc2soY21kcV9wa3QsIEJJVChpZHgpLCAm
+bWl4ZXItPmNtZHFfYmFzZSwNCj4gbWl4ZXItPnJlZ3MsDQo+ICsJCQkgICBNSVhfU1JDX0NPTiwg
+QklUKGlkeCkpOw0KDQpUaGlzIGlzIG5vdCByZWxhdGVkIHRvIGFscGhhLCBzbyBkbyBub3QgbW9k
+aWZ5IHRoaXMuDQoNClJlZ2FyZHMsDQpDSw0KDQo+ICB9DQo+ICANCj4gIHZvaWQgbXRrX2V0aGRy
+X2NvbmZpZyhzdHJ1Y3QgZGV2aWNlICpkZXYsIHVuc2lnbmVkIGludCB3LA0K
 
