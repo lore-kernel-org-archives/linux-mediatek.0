@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B3AC61D97
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 13:18:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3703C61D97
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 13:18:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Message-ID:Date:From:Cc:To:Subject:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ME19yR9ktyykMIsnC8THoPZMSGymC7EFaqjZdDAsCTg=; b=Lr9qdkIEr+3FEMRIF1+kmQyCPD
-	GuNTGTKdGf823r8MDLcMTp/xn7WWd6Z6jdrsC9dnJqOHLQr63xkuQ8OakNwDpxYObj3TQmxLYHrCm
-	eFXDegbW1UWyeR3x4eFWVEFRkRYEb/s/oUGt47FlvKuYVxqnlEFD3HoauK3G18FS8TtkiVdY6JevR
-	m8AMPYz1UcV6d0rYUGdSQo8dTuXAaGFgObClUiy2dBmKAyc3J0MvAlhp54Z0d0j7ezluGmwb+U7wm
-	AsZaen4CGCKi5nPp4U1LPXXxATS5auWQA7HFUwmtt922hwU8IIj8c+Df3cQDx7sNoOoSAtGvuGioH
-	/1f3LjjA==;
+	bh=w2plbNr9kksyRPYHhyd68CrQUK6zp+eFMDNd9lWh7z0=; b=LYpJIH6nmNbZKsAlHA4//TnBz4
+	OyLFD6AiEMWRLGY1dEgq+mUF8mxHGxMIjLj774sGf0sIMRyj31n9/AvaRm8xAI/R9u83A+EN3zMJG
+	P/ueO1ZI7FxbG8/A5HwugFdfe2FCCHRPIymx7IlvuTCvUsNCJ5RPv5cmgXOm2GRwK8ztCnV3OxGz0
+	8cQDBHXBdvWJx1WV9HC1sUxdAszTGR6yGK1Y36LHZ2DfNVJn9dbY75KRldybQDAv+82VClwTgK4qr
+	F1H7xLtLoJV5GYE/I/a9nw0UebNyEDniLMMCemV2gFw4+54PhI8TH+Sl2wvL8ozbIGzEhW7/gQpgq
+	08m8Z/0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6W4h-007Hjz-1j;
-	Fri, 24 Nov 2023 13:18:27 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r6W4w-007HpA-1I;
+	Fri, 24 Nov 2023 13:18:42 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6W4e-007HjE-2Z;
-	Fri, 24 Nov 2023 13:18:26 +0000
+	id 1r6W4m-007Hki-0e;
+	Fri, 24 Nov 2023 13:18:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3E9C362232;
-	Fri, 24 Nov 2023 13:18:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96703C43395;
-	Fri, 24 Nov 2023 13:18:23 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E78AECE2972;
+	Fri, 24 Nov 2023 13:18:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 194D8C433CC;
+	Fri, 24 Nov 2023 13:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1700831903;
-	bh=YhaSt4ZUxtT2RicGgxtWm94CumcGwYZCOKY/NPbxr+M=;
+	s=korg; t=1700831901;
+	bh=FsqC1+N9pNk/CIOoZ9ZlJcr/3hrKVSZd84GGIEtvN2M=;
 	h=Subject:To:Cc:From:Date:From;
-	b=Oy75uLUTVzHIZVzOeNv1l6cK0mjZqRbblQqoMU9S49TBCRFZ65HBRpuUr2enN+i36
-	 He+V2Osyq5R32z6KCQp/zvbO9HoVDgzSsTJmSlpyRMHhBtBBBp2QEXJ9a8mQL8MlKm
-	 Ipu/C1Hz0X1Ph9wOSnjQWJhJhjDl/JvMYs4WomW8=
-Subject: Patch "drm/mediatek/dp: fix memory leak on ->get_edid callback error path" has been added to the 6.1-stable tree
-To: angelogioacchino.delregno@collabora.com,chunkuang.hu@kernel.org,ck.hu@mediatek.com,dmitry.osipenko@collabora.com,dri-devel@lists.freedesktop.org,granquet@baylibre.com,gregkh@linuxfoundation.org,jani.nikula@intel.com,linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,matthias.bgg@gmail.com,msp@baylibre.com,p.zabel@pengutronix.de,rex-bc.chen@mediatek.com
+	b=Jeq5kibYhybtGc+V19svkIv0z8hZsh8l1yHG7zXavGUagA+cvhUvAtsaSbinwY8y2
+	 8KfLxfyNS8IBgCeixbOZUf6maowXxxp8rG6bXtCq86xRKMnj4jiorgUqYtHbrdvdSx
+	 cJwr8RiqF0yURzYUkk/ji3KIXpgaV9zhY346RwCA=
+Subject: Patch "drm/mediatek/dp: fix memory leak on ->get_edid callback audio detection" has been added to the 6.1-stable tree
+To: angelogioacchino.delregno@collabora.com,chunkuang.hu@kernel.org,dmitry.osipenko@collabora.com,dri-devel@lists.freedesktop.org,granquet@baylibre.com,gregkh@linuxfoundation.org,jani.nikula@intel.com,linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,matthias.bgg@gmail.com,p.zabel@pengutronix.de,rex-bc.chen@mediatek.com,wenst@chromium.org
 Cc: <stable-commits@vger.kernel.org>
 From: <gregkh@linuxfoundation.org>
-Date: Fri, 24 Nov 2023 13:17:55 +0000
-Message-ID: <2023112454-defile-acetone-ff7e@gregkh>
+Date: Fri, 24 Nov 2023 13:17:53 +0000
+Message-ID: <2023112452-reseller-thieving-a14c@gregkh>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=ANSI_X3.4-1968
 Content-Transfer-Encoding: 8bit
 X-stable: commit
 X-Patchwork-Hint: ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_051824_922585_008CD4B6 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20231124_051832_709846_BAFF417C 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,35 +69,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 This is a note to let you know that I've just added the patch titled
 
-    drm/mediatek/dp: fix memory leak on ->get_edid callback error path
+    drm/mediatek/dp: fix memory leak on ->get_edid callback audio detection
 
 to the 6.1-stable tree which can be found at:
     http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
 The filename of the patch is:
-     drm-mediatek-dp-fix-memory-leak-on-get_edid-callback-error-path.patch
+     drm-mediatek-dp-fix-memory-leak-on-get_edid-callback-audio-detection.patch
 and it can be found in the queue-6.1 subdirectory.
 
 If you, or anyone else, feels it should not be added to the stable tree,
 please let <stable@vger.kernel.org> know about it.
 
 
-From fcaf9761fd5884a64eaac48536f8c27ecfd2e6bc Mon Sep 17 00:00:00 2001
+From dab12fa8d2bd3868cf2de485ed15a3feef28a13d Mon Sep 17 00:00:00 2001
 From: Jani Nikula <jani.nikula@intel.com>
-Date: Thu, 14 Sep 2023 16:10:58 +0300
-Subject: drm/mediatek/dp: fix memory leak on ->get_edid callback error path
+Date: Thu, 14 Sep 2023 18:53:17 +0300
+Subject: drm/mediatek/dp: fix memory leak on ->get_edid callback audio detection
 
 From: Jani Nikula <jani.nikula@intel.com>
 
-commit fcaf9761fd5884a64eaac48536f8c27ecfd2e6bc upstream.
+commit dab12fa8d2bd3868cf2de485ed15a3feef28a13d upstream.
 
-Setting new_edid to NULL leaks the buffer.
+The sads returned by drm_edid_to_sad() needs to be freed.
 
-Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>
+Fixes: e71a8ebbe086 ("drm/mediatek: dp: Audio support for MT8195")
 Cc: Guillaume Ranquet <granquet@baylibre.com>
 Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Cc: CK Hu <ck.hu@mediatek.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
@@ -109,22 +107,34 @@ Cc: linux-kernel@vger.kernel.org
 Cc: linux-arm-kernel@lists.infradead.org
 Cc: <stable@vger.kernel.org> # v6.1+
 Signed-off-by: Jani Nikula <jani.nikula@intel.com>
-Reviewed-by: Guillaume Ranquet <granquet@baylibre.com>
-Link: https://patchwork.kernel.org/project/dri-devel/patch/20230914131058.2472260-1-jani.nikula@intel.com/
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Link: https://patchwork.kernel.org/project/dri-devel/patch/20230914155317.2511876-1-jani.nikula@intel.com/
 Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c |    1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_dp.c |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -2005,6 +2005,7 @@ static struct edid *mtk_dp_get_edid(stru
- 	 */
- 	if (mtk_dp_parse_capabilities(mtk_dp)) {
- 		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
-+		kfree(new_edid);
- 		new_edid = NULL;
+@@ -1983,7 +1983,6 @@ static struct edid *mtk_dp_get_edid(stru
+ 	bool enabled = mtk_dp->enabled;
+ 	struct edid *new_edid = NULL;
+ 	struct mtk_dp_audio_cfg *audio_caps = &mtk_dp->info.audio_cur_cfg;
+-	struct cea_sad *sads;
+ 
+ 	if (!enabled) {
+ 		drm_bridge_chain_pre_enable(bridge);
+@@ -2010,7 +2009,11 @@ static struct edid *mtk_dp_get_edid(stru
+ 	}
+ 
+ 	if (new_edid) {
++		struct cea_sad *sads;
++
+ 		audio_caps->sad_count = drm_edid_to_sad(new_edid, &sads);
++		kfree(sads);
++
+ 		audio_caps->detect_monitor = drm_detect_monitor_audio(new_edid);
  	}
  
 
