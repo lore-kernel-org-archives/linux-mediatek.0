@@ -4,66 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C82E4C61DF4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 18:27:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD75FC61DF4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Nov 2023 18:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nZE0Duv0jXkYD1Uf9wlPJY0p/L8iUSaCA0xiviM7UDY=; b=iRAJcdtd58ADmGyJPXmqExw0Ym
-	2N8Kd2SpoAALpQjkFfm8CUE0SqptDhzUUHbYv9IlUjZcZG5j9o5we4C6MAFsifpsv9riexH8izvnu
-	5ACT4Q9UsD3Mn/QpQC0UnLd9SC0qomCpJeW0zC9rSCse0fNUtt1HM7VJGIgsQlph0ukTplA5xhe4N
-	twJpzbvEHsyR6un28l8vOgXtrSCBftnH7gAdny4CBJj9RYrCJYL/kleiaP5MqOfHDq7yvN1maHiGz
-	M+7Kw/4ySjtsTw9TR9mkhyZ2btpOgvs+6Fdowqa0OaisgOYJO5JBWRY4cHu3QexzX2Eb0UbraxRpn
-	34uUO3Jg==;
+	bh=gwmyJG9vbp3QOEoifoxISsT4fXojTNtLKYVLH+21FeI=; b=AmilBD5VAOqNF83NPTszHF0Qqk
+	YtRDqV7eOkUFBoW2BkJUXN66Hx0Eg6AKm2BQsSaA5sdl0N10nt3qpeFM4LHUF06sHTSnS8WfbuPGZ
+	unE6c6EXQc6Ne8VrljFF2vKzpF/1QNAKnYhvA8+cGiS9lcHI+u5AiyLRQwal8IzxFdkvUOORysNKE
+	QjA283DhB7A97G/HZvMdrLawQlgHd1tJZmN3iVbHb8gdcJCAoFM1+re1sOLcZrIdNDSvtACp63kTM
+	HyPi9vguYB476gkkw+PFAj5BpKso06487Q3mkFAOdI7xBbclAn7qisNHAldo0B+KWr17DV95uMWEv
+	SVr/jp+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6ath-007sKM-2Z;
-	Fri, 24 Nov 2023 18:27:25 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1r6b29-007t4h-18;
+	Fri, 24 Nov 2023 18:36:09 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6atd-007sJi-2l;
-	Fri, 24 Nov 2023 18:27:23 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a00a9c6f1e9so324598866b.3;
-        Fri, 24 Nov 2023 10:27:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700850439; x=1701455239; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=nZE0Duv0jXkYD1Uf9wlPJY0p/L8iUSaCA0xiviM7UDY=;
-        b=TJ3IElbP4M8lFkX3OCJcC1CKuvwD4LnhhjAJje5hMQOOIou4AQMsC6soaQ05YQwf90
-         u3Pw4JoeH0bFKnvh65NPWiPHDnNc9DEfo5AQqud0nwCotV55C/gxhdYOvKjiTehfYrtI
-         q5j8FZHwAXrJ99cBRn6/zej+WcuMmMDHHGqjlvRYDU8jvExd6z6mA1bml6MX1NfSTn/0
-         WnBUd9JgxO4YnRWCf5tG1s2QTVVsAQX312SyP2YSu8069ffNM5y5nE4JQa1lZgk7zkQZ
-         5ZqtQ3xoHUOctYlf0+ArZWHDFKB3fKPAwtxi4xO29l0Yf8nV1IbprmF+GsXqUwhAaWr6
-         5qWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700850439; x=1701455239;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nZE0Duv0jXkYD1Uf9wlPJY0p/L8iUSaCA0xiviM7UDY=;
-        b=k5Ux/Gxv+ZQEvoZY0vOoOyuLJCqw4NeD4eu45HA/B7dK2fDg2diCQ6OFhfWPfXvSDz
-         jinR+tnfoYE6WmtpnS1XkIkJFro601iChl5ueYzFbS8r+8PzSIMhA7x+IJRviIME5dB6
-         an899EYxZND+fm6U95Pwb00kN1L61PZzDVoreJre/5sHwAFGOmq13WvKcDBXFgMvLNIT
-         nM+PDO9eTR0XNLNKiurqEbjQEYbHESeC+VmVdHNfGG7xDKI7rsSlxhpHoslHFF7fGmZN
-         tq92J1YeLGd8JSS3MvIjBaqo0q0YOlNGVh59y+tZz6vJ/CDQfvxgVAspbBwFBjpAHzMm
-         mvhA==
-X-Gm-Message-State: AOJu0YzM65wLpu2vhOZzhHVA8njrraQ7oCU85Ca8Yq3e2DeG/2YXQ4N1
-	mAwxkzR7+nyhBAbpdz6xv2o=
-X-Google-Smtp-Source: AGHT+IFuywZgZqeVIukwbFqD8q5mrgqH2bkh0mMo/lbicvHhoDUxK4WwGP+s8nvCyvyHtUVJhgXK6g==
-X-Received: by 2002:a17:906:3fd0:b0:9b2:c583:cd71 with SMTP id k16-20020a1709063fd000b009b2c583cd71mr2509480ejj.50.1700850439417;
-        Fri, 24 Nov 2023 10:27:19 -0800 (PST)
-Received: from skbuf ([188.26.185.12])
-        by smtp.gmail.com with ESMTPSA id k18-20020a170906579200b009ffe3e82bbasm2356276ejq.136.2023.11.24.10.27.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Nov 2023 10:27:19 -0800 (PST)
-Date: Fri, 24 Nov 2023 20:27:15 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh@kernel.org>,
+	id 1r6b26-007t3a-0a;
+	Fri, 24 Nov 2023 18:36:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=gwmyJG9vbp3QOEoifoxISsT4fXojTNtLKYVLH+21FeI=; b=hQEe5os3F07048ijAtiZMvGGWh
+	ZZmKad7TP8b2Xydt3N25pbnMjju/0738kGnsfpBCSSuZKnEnY5eSG8fzNl6FXigNaf5UzWr+EIasK
+	8pLW/BaSuzKc/VrixnHCEr8hzWFrDhJE6USIRDu5odK2ahnDzPXwMEnM6Zo7NSK1vFxU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1r6b1b-0017zc-6B; Fri, 24 Nov 2023 19:35:35 +0100
+Date: Fri, 24 Nov 2023 19:35:35 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, Rob Herring <robh@kernel.org>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -90,7 +67,7 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh@kernel.org>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [net-next RFC PATCH 03/14] dt-bindings: net: document ethernet
  PHY package nodes
-Message-ID: <20231124182715.azmi3fwrdg3gfdkj@skbuf>
+Message-ID: <b8981dc4-5db0-4418-b47d-3e763e20beac@lunn.ch>
 References: <20231120135041.15259-1-ansuelsmth@gmail.com>
  <20231120135041.15259-4-ansuelsmth@gmail.com>
  <c21ff90d-6e05-4afc-b39c-2c71d8976826@lunn.ch>
@@ -98,14 +75,13 @@ References: <20231120135041.15259-1-ansuelsmth@gmail.com>
  <a85d6d0a-1fc9-4c8e-9f91-5054ca902cd1@lunn.ch>
  <655e4939.5d0a0220.d9a9e.0491@mx.google.com>
  <20231124165923.p2iozsrnwlogjzua@skbuf>
- <6560dc65.050a0220.182b5.650c@mx.google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <6560dc65.050a0220.182b5.650c@mx.google.com>
+In-Reply-To: <20231124165923.p2iozsrnwlogjzua@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_102721_913055_DDC4BA44 
-X-CRM114-Status: GOOD (  27.57  )
+X-CRM114-CacheID: sfid-20231124_103606_219472_65324664 
+X-CRM114-Status: GOOD (  16.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,59 +96,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 24, 2023 at 05:25:16PM +0100, Christian Marangi wrote:
-> The main reason is the fact that PHY package are already a thing and API
-> are already there (phy_package_join/leave...) so we just lack any way to
-> support this in DT without using specialized code in the PHY driver.
-> 
-> This is really completing the feature.
+> I think you are hitting some of the same points I have hit with DSA.
+> The PHY package could be considered an SoC with lots of peripherals on
+> it, for which you'd want separate drivers.
 
-Hmm, I see struct phy_package_shared as a mechanism to tell phylib that
-multiple device structures are actually related with each other, because
-the device core, and their parent bus, has no idea. If you're under
-control of the parent bus code and you can probe PHY devices in any
-order you want and do whatever you want before probing them, I don't see
-why you would need struct phy_package_shared any longer? I don't see why
-this feature needs to be completed, if that involves changes to the
-device tree structure. PHY packages assumed no changes to the device
-tree (they rely on a hacky interpretation of the MDIO address AFAIU).
-If we change that basic premise, all implementation options are on the
-table, I think.
+At least at the moment, this is not true. The package does just
+contain PHYs. But it also has some properties which are shared across
+those PHYs, e.g. reset. 
 
-> The only reason for the generic "ethernet-phy-package" compatible is to
-> have a solid detection of the node in PHY core. (I assume parsing the
-> node name might be problematic? Or maybe not now that we require adding
-> a reg to it)
+What you describe might become true in the future. e.g. The LED/GPIO
+controller is currently part of the PHY, and each PHY has its own. I
+could however imagine that becomes a block of its own, outside of the
+PHY address space, and maybe it might want its own class LED
+driver. Some PHYs have temperature sensors, which could be a package
+sensor, so could in theory be an individual hwmon driver. However,
+i've not yet seen such a package.
 
-Our opinions seem to differ, but I don't think that the package needs a
-solid detection of the node in the PHY core :) I think phy_devices and
-mdio_devices already cover everything that's necessary to build a
-solution.
+Do we consider this now? At the moment i don't see an MFD style system
+is required. We could crystal ball gaze and come up with some
+requirements, but i would prefer to have some real devices and
+datasheets. Without them, we will get the requirements wrong.
 
-> Also I don't expect tons of special properties for PHY package, with the
-> current probe/config implementation, a PHY driver have lots of
-> flexibility in all kind of validation.
-> 
-> Consider that the additional global-phys and global-phy-names are
-> already expected to be dropped.
-> (we know the PHY package base address and we can calculate the offset of
-> the global phy from there in the PHY package probe)
-> 
-> And even the phy-mode has been scrapped for more specific solution...
-> (some assumption can be done on probe by checking the PHY mode and set
-> stuff accordingly or even do parsing in the PHY package node as we pass
-> the OF node of the phy package)
-> 
-> The PHY package node would be reduced to a simple compatible (and even
-> this can be dropped) and a reg.
+I also think we are not that far away from it, in terms of DT, if you
+consider the later comments. I suggested we need a phy package
+specific compatible. At the moment, it will be ignored by the kernel,
+the kernel does not need it, it probes the PHYs in the current way,
+using the ID registers. But it could in future be used to probe a real
+driver, which could be an MFD style driver. We need to see updated DT
+binding examples, but i don't see why we cannot slot it in at a later
+date.
 
-So why does it need to be described in DT, at this stage? :)
-
-> I feel there is a big chance here to generalize it and prevent any kind
-> of mess with all kind of similar/equal code that just do the same thing.
-> (and we already have an example with the PHY package API usage with
-> every PHY having the same exact pattern for probe/config and nothing
-> describing that the PHY are actually a package in DT)
-> 
-> Hope it all makes sense to you.
+	Andrew
 
