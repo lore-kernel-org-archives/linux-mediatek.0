@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2EEAC4167B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Nov 2023 19:02:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD6AC4167B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Nov 2023 19:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DeTdWd/XTowsawKJk8PI2rdL8uwaJxvxyQFH1coInMc=; b=3ipgoTuIunu8G6ZQPM/Ru3BQ1N
-	AEog8IuU2n/CSeMYVHTg5mL0J85UMV5qsBAxv8FF/iUIdo6YoeR3n5MvPaOeRODNTj0JOHi3u3Ted
-	85G6MwOtRf+uqzjMRTOG5uE0mMAE466+CXPq4RRnTRYRX5VpGCoSXiGLePnQqVWpyGU5dDqQSG4St
-	ImarS9aDyZEhAEqeHzCVlRUGZukRKgP9GNnbruh7tVXeYD5zpGf8s+2zXKi9LC/EWcvDh/3S7jhPr
-	mfPRSRyJfN3wx49fz/+VvZdx5tsJT7bGUjRb8fa/KQF+Jr5nT3Epc1pfL/1KOI/7hjpKR9H31RVmY
-	90+goRUg==;
+	bh=t6CfNN2Z8X5QY5A5KOdO3deQpJm61wgO3/ulw3bk6T8=; b=fBNzv8AbFaJ6dqYRrJvGCINUBn
+	14braNCEEM+VC+odCosS8oVfREJ5zkuXCbDX4Quju5oRWNIGk19WfxrlKAU8JkdazaS4oJjGXvaVY
+	lS8qPp/q8ydTTiZhNyzew4DEEfckelwpZb5txUUV7PS7xAYMEQ4nYsXfVfrFeb5AGRO7Lh12ej+ji
+	f3Q43dSg6F5Iz8/g2RAVw2ePTSJtOtLM9fp467SeeLRah7OdVlF2YyOl70bXUnIOyL1ASBwB5d/rc
+	tktxDHSBZAIN6yng0WJe+pwiYy9BSE54VzfiGhRTk7mm2h+/IutzJt5ySnAWTXo7dwpb+GVuKKg5h
+	GyA43bew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6xve-009f91-1M;
-	Sat, 25 Nov 2023 19:02:58 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1r6yPc-009iJ1-2q;
+	Sat, 25 Nov 2023 19:33:56 +0000
+Received: from ms.lwn.net ([45.79.88.28])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6xvZ-009f82-0L;
-	Sat, 25 Nov 2023 19:02:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=DeTdWd/XTowsawKJk8PI2rdL8uwaJxvxyQFH1coInMc=; b=l+5B9Iw4rMpfs+oIP9Jkgxl4WR
-	4mFgWkNXmHfu5hKf+wYzSsMbyleEyb6lfeOvE/SH8TLbiULgFAGFxH1hBuASoyZZsjqzOSh2X+p1D
-	5kNU0hbflmCL1krPgt3tmcdq3gl8vDoiTIa+zzMWQLAVvZsALbLDkVePXv3689RjN+7A=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1r6xv7-001Cp0-HX; Sat, 25 Nov 2023 20:02:25 +0100
-Date: Sat, 25 Nov 2023 20:02:25 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	David Epping <david.epping@missinglinkelectronics.com>,
-	Harini Katakam <harini.katakam@amd.com>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next RFC PATCH v2 01/11] net: phy: extend PHY package API
- to support multiple global address
-Message-ID: <d349163f-dea9-49d5-9018-7c7a8ddbe311@lunn.ch>
-References: <20231125001127.5674-1-ansuelsmth@gmail.com>
- <20231125001127.5674-2-ansuelsmth@gmail.com>
- <a8ce4503-c24d-4d6e-91ec-d03624b31fe0@lunn.ch>
- <656237d6.5d0a0220.2c3da.d832@mx.google.com>
+	id 1r6yPZ-009iH7-0K;
+	Sat, 25 Nov 2023 19:33:54 +0000
+Received: from localhost (unknown [IPv6:2601:280:5e00:7e19::646])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ms.lwn.net (Postfix) with ESMTPSA id 5E2C32EF;
+	Sat, 25 Nov 2023 19:33:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 5E2C32EF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
+	t=1700940828; bh=t6CfNN2Z8X5QY5A5KOdO3deQpJm61wgO3/ulw3bk6T8=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=HI8sPjWpWXJ+tKUEs/C/KfnLll4zPcwZBo+FLGeMzciNTwTO7K8O3z9GziJib49Tl
+	 uYW3mXodk1C/2mS87I4QRWMZTXrzAhES8XZD9CLFG6rXQ4YESejjd0Oe7BYLFACboA
+	 /ZSyhKd0VaY5Pnq7CaonASA88352gX5481Ldl4Lco9NiBBBpJxwzPcTzEn7zbny8Px
+	 +fKOvn1NKV3myLst7a0q6xQBH2wbF2N1Bz2m/DjkMpyJtRTBDLRRVlWmjQVd2mgqbr
+	 FiwwKTk5kLrpO6ROhVX50aTLOc5vNmA/1XnKWcb/8kBJmTZvzScP0VF5yBPfJgDQZ3
+	 7F9SUI41fxu4Q==
+From: Jonathan Corbet <corbet@lwn.net>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Andrew Davis
+ <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>,
+ Bjorn Andersson <andersson@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio
+ <konrad.dybcio@linaro.org>, Michal Simek <michal.simek@amd.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>, Olof
+ Johansson <olof@lixom.net>, =?utf-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
+ <zajec5@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ workflows@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+In-Reply-To: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+Date: Sat, 25 Nov 2023 12:33:47 -0700
+Message-ID: <87v89p1vc4.fsf@meer.lwn.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <656237d6.5d0a0220.2c3da.d832@mx.google.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231125_110253_168754_A9A13319 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20231125_113353_144944_EB0DDF4D 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,15 +85,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Yes can be detached. Making addr to base_addr would change the thing but
-> can confirm, any user of the API always used the base addr as cookie, so
-> it won't change a thing.
-> 
-> Will have to make the separate commit a dependency to this series but i
-> expect this change to be merged before this RFC is completed. Good idea.
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> writes:
 
-A change like this can be merged quickly. You can keep the DT package
-as an RFC, we don't yet seem to have a clear concept what it is.
+> Document preferred coding style for Devicetree sources (DTS and DTSI),
+> to bring consistency among all (sub)architectures and ease in reviews.
 
-	Andrew
+One little nit:
+
+> diff --git a/Documentation/devicetree/bindings/dts-coding-style.rst b/Documentation/devicetree/bindings/dts-coding-style.rst
+> new file mode 100644
+> index 000000000000..e374bec0f555
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/dts-coding-style.rst
+> @@ -0,0 +1,194 @@
+> +.. SPDX-License-Identifier: GPL-2.0
+> +.. _dtscodingstyle:
+
+There is no need to put a label at the top of a document like that, I'd
+just take it out.
+
+Thanks,
+
+jon
 
