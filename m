@@ -4,92 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99404C4167B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Nov 2023 10:28:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 524CDC07D59
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Nov 2023 10:32:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=49k7+kJobmrIfqIAdNepyVBVcWl/U7alKaqBrd/hZk4=; b=n7PY8xqFHsRRkM2fH28sirAKLb
-	JT7hybSCyAT9FJYqw155OHwwkIgp2DLCwtx/ZxgGf1GlULUZdZCQpvRANJFZAAAkodnqiRcCSrD4f
-	64JlTnwIaL22rsASn8XQ/dNniKV5g+MFoBVkixmPv7OI4/5bk6lBsPBfRX+OCLq4D0nUV05Lpk8i6
-	kZdLuH9x2ERipw/jjo8DHEVSKZo/2JPICRjrLzVUJMdzoxhH43X2uShu/L3OB+B7KqIRZlvVX/ajX
-	DiEuT7hvrZbSdZWyLwqVkATFW7RaZbSNTlPbfoQNiwRvwr/J66P5XlL1JRODuUIQm2JDABJQNaSSk
-	N2MlK7FA==;
+	bh=VYuuZJEK9h+1QpUeSaJ0pWshYzP5nx3LJhHVIw7CjL8=; b=xvvhte4WghlivBD6OzOzrHMwKI
+	3bea74qH4X65dLX14PVgzswOpN1NFibqkhAxeOKLLLfBoQCK+wm8DbSO/0xcObt7hZaNxAQPjmi3v
+	bHLtMTAlN9b/+NE4XocimBLAzEa/6EAjZ3Ghg99eIR7tupiMhQhGxZcq9XGIICLzjuBX4HcHKPoCr
+	vqXh2CS7W2qM9+mAKSMUaswANVlXka4vCa3IndvoRPNNrWmznJujAz3FfZMP/oVxQbCo4KIac3R01
+	baS9hwLBxYEJ5msadhEG5mbF2VUDpySpB4FOZa4ICLyRkhITw4E39ZcWjHc7fqOyGL4QZBKDlL4x5
+	DF/NYoOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7CNQ-00AfTg-18;
-	Sun, 26 Nov 2023 10:28:36 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1r7CRC-00Afz6-0k;
+	Sun, 26 Nov 2023 10:32:30 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7CNL-00AfOT-32
+	id 1r7CR5-00Afwc-2J
 	for linux-mediatek@lists.infradead.org;
-	Sun, 26 Nov 2023 10:28:33 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a08e4352992so261727566b.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 26 Nov 2023 02:28:24 -0800 (PST)
+	Sun, 26 Nov 2023 10:32:27 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a0b7f793b8aso119713166b.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 26 Nov 2023 02:32:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700994503; x=1701599303; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1700994741; x=1701599541; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=49k7+kJobmrIfqIAdNepyVBVcWl/U7alKaqBrd/hZk4=;
-        b=e9rc7OAgDLxX2GtzIrElcP2rm8d1F+pvb9raAJ6lY4yIvZLEjC0iNHPYcYwUAUoLaF
-         JPorACXtV9ac5LNkW0J/3lkrp0q9wbHHDqsGVP4O0r5YjwW/lVjv2WPSE5X1DBxBXGMo
-         c43NjNBfZI2w4zrBPBvQhnvjNuzSRmRHKJ/a0I2K4JsGn/KFbuAcFH7XXwFRs7vmyZGE
-         AhO3qxfu0Nbi890rC2yZPh+F0QgD5LQ2mYbP3a+npKp+vysfu0HvLUln9PW4ZeOV4mAt
-         3XxCUxWQ1pahaBQYnfe7GFql5PNXKxBu+23qKoLTRr7AiynwfshxXxACQVtUBHcydpCE
-         LYqA==
+        bh=VYuuZJEK9h+1QpUeSaJ0pWshYzP5nx3LJhHVIw7CjL8=;
+        b=RtJXqwNYe+ypyLzNlrwyGgpxFgLgJhc6RIkM4WQzTJJctKURhUL72Ddo+GFIcprLwo
+         m69XkAwob4WIdsuncUK/DNIHzLk57WdqZcuyKafCAd9LT1AsPM1VF6br/Dl0BxnCSXWx
+         RYX9eoOb397hKp4ew4FftikeBDthp13i8L440bnChWOcYg6j29DWBi/ACNaczgtJFvMQ
+         PQ07IhmGlK5WB+s4DosbdJ79R9BD4UkwzjDT0bAUhZqk/tEmqgK/cprBXXNrpQWLY6CG
+         go0pNkI8XulxgbRbp4Pqve/ChY5TG3gr0VX8gey+9Llv/gGqephsEigA7awqlSYrhwB1
+         jPnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700994503; x=1701599303;
+        d=1e100.net; s=20230601; t=1700994741; x=1701599541;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=49k7+kJobmrIfqIAdNepyVBVcWl/U7alKaqBrd/hZk4=;
-        b=GlgAr5+2WfNvOYCroQbAXk7Sw9G2qvBEQxnFlLddScNo+1YBc/cybILWsyWkmAdxZ6
-         ahhdGjE3Yo6YGweRX86XqGNotURjpgNQ28QdWDJtoRbqgf8/I+gJG720skKsqJZql8pp
-         F9lrW0LGREJ+V+lf1TB/4ZSdnxV0I3Ku+iqusfj23sODKW2dMmLKkW7Vj9l0ctXPlRlC
-         okiEE2/dtotaLPufA0HPhy/DnbOxH4rhdD0iaHmucmYdJyyE87Jx+Yw2V9ecXqbA5K8M
-         GG+XOwisrKw/6/62yyf0DfcmGWGG+QygPvtPrEoyIhIYWb9W+8+NJs42cNLP1HvFjKzZ
-         9pbA==
-X-Gm-Message-State: AOJu0Yzqjuud+Uo7eczvebR721vSXHfKFryKrrQhXa6eX1MAZZkslCyz
-	QCKwlftpYumRmceKc/L3cck8bg==
-X-Google-Smtp-Source: AGHT+IEtQHKaVDEOTEWG0ZZSwfUFEL6Cj+Fz1Rdjfx5mEGuPJe49CLE7099H72vuMsr336iC+7QCFg==
-X-Received: by 2002:a17:906:2409:b0:9fd:4bed:72af with SMTP id z9-20020a170906240900b009fd4bed72afmr5875918eja.72.1700994502983;
-        Sun, 26 Nov 2023 02:28:22 -0800 (PST)
+        bh=VYuuZJEK9h+1QpUeSaJ0pWshYzP5nx3LJhHVIw7CjL8=;
+        b=JNbtBV85rw2cIXVXNThNqNqSvW/57JQOxrr5WkzAPy7AEdMzvEYagfST/r/tg5cwSw
+         IWHb7QrBEucfvN3/AsVYidIn2By/9ZvN2KIHvJfqpDHLQlxSOF8LtI1o117300WMVvdO
+         94BS/jY7kEvnQoTtAaUDpNnDfxq1Ui+X+c+5lRUQ2f4gdI5aQla4U9hkGg9wrw98oaFs
+         rLQruieBYlALv/zTX0ZN4tz0HLvLtxNZXPBr8ocIOf4osrGdclZlZ1hdcyVfO88ucYyF
+         57wFHZ4ZlmEfuSgcrxoqepOCNNP2Egm2uoA13Ac1kvJRqcxBvcu5emYIIcHhWtJ3tz1b
+         OXAg==
+X-Gm-Message-State: AOJu0YxI/RIqGyDY5QuNT5m41aJidFNTy9K4FItsFfTxMp5KVazK61CD
+	dC2/sdbQUwv3AlLFXHzAh1e2FQ==
+X-Google-Smtp-Source: AGHT+IFjGvEFzEll2yE7Qvfb3v0cQsEhtYSDvUL8zzh0hM12lFqj5HVQktvVboONFOsyaeOqWdsKpQ==
+X-Received: by 2002:a17:906:297:b0:9ba:2fe3:c97e with SMTP id 23-20020a170906029700b009ba2fe3c97emr6326078ejf.11.1700994741387;
+        Sun, 26 Nov 2023 02:32:21 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.109])
-        by smtp.gmail.com with ESMTPSA id hz19-20020a1709072cf300b009a168ab6ee2sm4381068ejc.164.2023.11.26.02.28.19
+        by smtp.gmail.com with ESMTPSA id s21-20020a170906285500b00a0179ebc25esm4426449ejc.85.2023.11.26.02.32.18
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Nov 2023 02:28:22 -0800 (PST)
-Message-ID: <a442af6f-09b1-42b6-994e-3ac763853456@linaro.org>
-Date: Sun, 26 Nov 2023 11:28:18 +0100
+        Sun, 26 Nov 2023 02:32:20 -0800 (PST)
+Message-ID: <26f095ab-c47d-4bcb-9830-4493b1c0cc75@linaro.org>
+Date: Sun, 26 Nov 2023 11:32:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
 Content-Language: en-US
-To: Jonathan Corbet <corbet@lwn.net>, Rob Herring <robh+dt@kernel.org>,
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Andrew Davis <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Andrew Davis <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>,
  Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>,
  Chen-Yu Tsai <wens@kernel.org>,
  Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
  Geert Uytterhoeven <geert+renesas@glider.be>,
- Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Michal Simek <michal.simek@amd.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
- Olof Johansson <olof@lixom.net>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <zajec5@gmail.com>, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, workflows@vger.kernel.org,
- linux-doc@vger.kernel.org
+ Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Michal Simek
+ <michal.simek@amd.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ workflows@vger.kernel.org, linux-doc@vger.kernel.org
 References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
- <87v89p1vc4.fsf@meer.lwn.net>
+ <20231125193737.GD7486@pendragon.ideasonboard.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -135,12 +136,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <87v89p1vc4.fsf@meer.lwn.net>
+In-Reply-To: <20231125193737.GD7486@pendragon.ideasonboard.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231126_022831_993116_3069CF3B 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20231126_023223_808830_8AA93B2E 
+X-CRM114-Status: GOOD (  30.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,14 +156,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/11/2023 20:33, Jonathan Corbet wrote:
-> Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> writes:
+On 25/11/2023 20:37, Laurent Pinchart wrote:
+> Hi Krzysztof,
 > 
+> Thank you for the patch.
+> 
+> On Sat, Nov 25, 2023 at 07:44:22PM +0100, Krzysztof Kozlowski wrote:
 >> Document preferred coding style for Devicetree sources (DTS and DTSI),
 >> to bring consistency among all (sub)architectures and ease in reviews.
-> 
-> One little nit:
-> 
+>>
+>> Cc: Andrew Davis <afd@ti.com>
+>> cc: Andrew Lunn <andrew@lunn.ch>
+>> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Cc: Arnd Bergmann <arnd@arndb.de>
+>> Cc: Bjorn Andersson <andersson@kernel.org>
+>> Cc: Chen-Yu Tsai <wens@kernel.org>
+>> Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+>> Cc: Geert Uytterhoeven <geert+renesas@glider.be>
+>> Cc: Heiko Stuebner <heiko@sntech.de>
+>> Cc: Jonathan Corbet <corbet@lwn.net>
+>> Cc: Konrad Dybcio <konrad.dybcio@linaro.org>
+>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>> Cc: Michal Simek <michal.simek@amd.com>
+>> Cc: Neil Armstrong <neil.armstrong@linaro.org>
+>> Cc: Nishanth Menon <nm@ti.com>
+>> Cc: Olof Johansson <olof@lixom.net>
+>> Cc: Rafał Miłecki <zajec5@gmail.com>
+>> Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
+>> Acked-by: Heiko Stuebner <heiko@sntech.de>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>>
+>> ---
+>>
+>> Merging idea: Rob/DT bindings
+>>
+>> Changes in v3
+>> =============
+>> 1. should->shall (Angelo)
+>> 2. Comments // -> /* (Angelo, Michal)
+>> 3. Use imaginary example in "Order of Properties in Device Node"
+>>    (Angelo)
+>> 4. Added paragraphs for three sections with justifications of chosen
+>>    style.
+>> 5. Allow two style of ordering overrides in board DTS: alphabetically or
+>>    by order of DTSI (Rob).
+>> 6. I did not incorporate feedback about, due to lack of consensus and my
+>>    disagreement:
+>>    a. SoM being DTS without DTSI in "Organizing DTSI and DTS"
+>>
+>> Changes in v2
+>> =============
+>> 1. Hopefully incorporate entire feedback from comments:
+>> a. Fix \ { => / { (Rob)
+>> b. Name: dts-coding-style (Rob)
+>> c. Exceptions for ordering nodes by name for Renesas and pinctrl (Geert,
+>>    Konrad)
+>> d. Ordering properties by common/vendor (Rob)
+>> e. Array entries in <> (Rob)
+>>
+>> 2. New chapter: Organizing DTSI and DTS
+>>
+>> 3. Several grammar fixes (missing articles)
+>>
+>> Cc: linux-rockchip@lists.infradead.org
+>> Cc: linux-mediatek@lists.infradead.org
+>> Cc: linux-samsung-soc@vger.kernel.org
+>> Cc: linux-amlogic@lists.infradead.org
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Cc: linux-arm-msm@vger.kernel.org
+>> Cc: workflows@vger.kernel.org
+>> Cc: linux-doc@vger.kernel.org
+>> ---
+>>  .../devicetree/bindings/dts-coding-style.rst  | 194 ++++++++++++++++++
+>>  Documentation/devicetree/bindings/index.rst   |   1 +
+>>  2 files changed, 195 insertions(+)
+>>  create mode 100644 Documentation/devicetree/bindings/dts-coding-style.rst
+>>
 >> diff --git a/Documentation/devicetree/bindings/dts-coding-style.rst b/Documentation/devicetree/bindings/dts-coding-style.rst
 >> new file mode 100644
 >> index 000000000000..e374bec0f555
@@ -171,11 +240,226 @@ On 25/11/2023 20:33, Jonathan Corbet wrote:
 >> @@ -0,0 +1,194 @@
 >> +.. SPDX-License-Identifier: GPL-2.0
 >> +.. _dtscodingstyle:
+>> +
+>> +=====================================
+>> +Devicetree Sources (DTS) Coding Style
+>> +=====================================
+>> +
+>> +When writing Devicetree Sources (DTS) please observe below guidelines.  They
+>> +should be considered complementary to any rules expressed already in Devicetree
+>> +Specification and dtc compiler (including W=1 and W=2 builds).
+>> +
+>> +Individual architectures and sub-architectures can add additional rules, making
+>> +the style stricter.
+>> +
+>> +Naming and Valid Characters
+>> +---------------------------
+>> +
+>> +Devicetree specification allows broader range of characters in node and
 > 
-> There is no need to put a label at the top of a document like that, I'd
-> just take it out.
+> s/Devicetree specification/The Devicetree specification/
+> s/broader range/a broad range/
 
-OK
+Ack, but I really expect people finish with grammar and style fixes at
+v3. Please point the language things now or just let it go.
+
+> 
+>> +property names, but for code readability the choice shall be narrowed.
+>> +
+>> +1. Node and property names are allowed to use only:
+>> +
+>> +   * lowercase characters: [a-z]
+>> +   * digits: [0-9]
+>> +   * dash: -
+>> +
+>> +2. Labels are allowed to use only:
+>> +
+>> +   * lowercase characters: [a-z]
+>> +   * digits: [0-9]
+>> +   * underscore: _
+>> +
+>> +3. Unit addresses shall use lowercase hex, without leading zeros (padding).
+> 
+> I'm curious, what's the reason for this ? I think it makes the sources
+> less readable. If the rule is "just" because that's how DT sources are
+> written today and it would be too complicated to change that, that's
+> fine with me.
+
+Warning (unit_address_format): /cpus/cpu@0100: unit name should not have
+leading 0s
+
+And we fixed all or most of DTS some time ago.
+
+> 
+>> +
+>> +4. Hex values in properties, e.g. "reg", shall use lowercase hex.  The address
+>> +   part can be padded with leading zeros.
+>> +
+>> +Example::
+>> +
+>> +	gpi_dma2: dma-controller@800000 {
+>> +		compatible = "qcom,sm8550-gpi-dma", "qcom,sm6350-gpi-dma";
+>> +		reg = <0x0 0x00800000 0x0 0x60000>;
+>> +	}
+>> +
+>> +Order of Nodes
+>> +--------------
+>> +
+>> +1. Nodes within any bus, thus using unit addresses for children, shall be
+>> +   ordered incrementally by unit address.
+>> +   Alternatively for some sub-architectures, nodes of the same type can be
+>> +   grouped together (e.g. all I2C controllers one after another even if this
+>> +   breaks unit address ordering).
+>> +
+>> +2. Nodes without unit addresses shall be ordered alpha-numerically by the node
+>> +   name.  For a few types of nodes, they can be ordered by the main property
+>> +   (e.g. pin configuration states ordered by value of "pins" property).
+>> +
+>> +3. When extending nodes in the board DTS via &label, the entries shall be
+>> +   ordered either alpha-numerically or by keeping the order from DTSI (choice
+>> +   depending on sub-architecture).
+>> +
+>> +Above ordering rules are easy to enforce during review, reduce chances of
+>> +conflicts for simultaneous additions (new nodes) to a file and help in
+>> +navigating through the DTS source.
+>> +
+>> +Example::
+>> +
+>> +	/* SoC DTSI */
+>> +
+>> +	/ {
+>> +		cpus {
+>> +			/* ... */
+>> +		};
+>> +
+>> +		psci {
+>> +			/* ... */
+>> +		};
+>> +
+>> +		soc@ {
+>> +			dma: dma-controller@10000 {
+>> +				/* ... */
+>> +			};
+>> +
+>> +			clk: clock-controller@80000 {
+>> +				/* ... */
+>> +			};
+>> +		};
+>> +	};
+>> +
+>> +	/* Board DTS - alphabetical order */
+>> +
+>> +	&clk {
+>> +		/* ... */
+>> +	};
+>> +
+>> +	&dma {
+>> +		/* ... */
+>> +	};
+>> +
+>> +	/* Board DTS - alternative order, keep as DTSI */
+>> +
+>> +	&dma {
+>> +		/* ... */
+>> +	};
+>> +
+>> +	&clk {
+>> +		/* ... */
+>> +	};
+>> +
+>> +Order of Properties in Device Node
+>> +----------------------------------
+>> +
+>> +Following order of properties in device nodes is preferred:
+>> +
+>> +1. compatible
+>> +2. reg
+>> +3. ranges
+>> +4. Standard/common properties (defined by common bindings, e.g. without
+>> +   vendor-prefixes)
+>> +5. Vendor-specific properties
+>> +6. status (if applicable)
+>> +7. Child nodes, where each node is preceded with a blank line
+>> +
+>> +The "status" property is by default "okay", thus it can be omitted.
+>> +
+>> +Above order follows approach:
+>> +
+>> +1. Most important properties start the node: compatible then bus addressing to
+>> +   match unit address.
+>> +2. Each node will have common properties in similar place.
+>> +3. Status is the last information to annotate that device node is or is not
+>> +   finished (board resources are needed).
+>> +
+>> +Example::
+>> +
+>> +	/* SoC DTSI */
+>> +
+>> +	device_node: device-class@6789abc {
+>> +		compatible = "vendor,device";
+>> +		reg = <0x0 0x06789abc 0x0 0xa123>;
+>> +		ranges = <0x0 0x0 0x06789abc 0x1000>;
+>> +		#dma-cells = <1>;
+>> +		clocks = <&clock_controller 0>, <&clock_controller 1>;
+>> +		clock-names = "bus", "host";
+>> +		vendor,custom-property = <2>;
+>> +		status = "disabled";
+>> +
+>> +		child_node: child-class@100 {
+>> +			reg = <0x100 0x200>;
+>> +			/* ... */
+>> +		};
+>> +	};
+>> +
+>> +	/* Board DTS */
+>> +
+>> +	&device_node {
+>> +		vdd-supply = <&board_vreg1>;
+>> +		status = "okay";
+>> +	}
+>> +
+>> +Indentation
+>> +-----------
+>> +
+>> +1. Use indentation according to :ref:`codingstyle`.
+>> +2. For arrays spanning across lines, it is preferred to align the continued
+>> +   entries with opening < from the first line.
+>> +3. Each entry in arrays with multiple cells (e.g. "reg" with two IO addresses)
+>> +   shall be enclosed in <>.
+>> +
+>> +Example::
+>> +
+>> +	thermal-sensor@c271000 {
+>> +		compatible = "qcom,sm8550-tsens", "qcom,tsens-v2";
+>> +		reg = <0x0 0x0c271000 0x0 0x1000>,
+>> +		      <0x0 0x0c222000 0x0 0x1000>;
+>> +	};
+>> +
+>> +Organizing DTSI and DTS
+>> +-----------------------
+>> +
+>> +The DTSI and DTS files shall be organized in a way representing the common
+>> +(and re-usable) parts of the hardware.  Typically this means organizing DTSI
+>> +and DTS files into several files:
+>> +
+>> +1. DTSI with contents of the entire SoC (without nodes for hardware not present
+>> +   on the SoC).
+>> +2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
+>> +   entire System-on-Module).
+>> +3. DTS representing the board.
+>> +
+>> +Hardware components which are present on the board shall be placed in the
+>> +board DTS, not in the SoC or SoM DTSI.  A partial exception is a common
+>> +external reference SoC-input clock, which could be coded as a fixed-clock in
+>> +the SoC DTSI with its frequency provided by each board DTS.
+> 
+> I'm looking forward to discussing how to organize overlays. That
+> discussion should be separate though, or this patch will never get
+> merged :-)
+> 
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+Thanks
 
 Best regards,
 Krzysztof
