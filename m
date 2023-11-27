@@ -4,84 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE1DC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 21:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80CCC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 22:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q+Cbf4Z4xMq9dOhY2lkOSlIg0Yv9C+GaGVRwFcKdaa4=; b=GnJYoe7ld2QZ6NaaGpRUp4GrA9
-	JSsSrCb9ShcbMlYp3vlnwpJ3QjKuasMFFaE6kJkpAFEaF0h1qjKRX57gkcUiYj1ue7WfMeQ3DpHPK
-	PaMhruhp5jNpuRabKUKQyyVw5GrVmbpNonSa25u199xzqIETbEcdfqUAcnehSnlE/z54XwzxUursS
-	x75LHaApADfyD0WT342TS4EzMS8mJmR0W+WPSw2p9QcjIe+ZVf0z5VG9ssW+QKyUQQvM7NuhZPzfl
-	VjKjilDbpjUEO2nHTLgqBLxvnvhdSz5Dfb0qk0pPDmKUnjrW5i3y1aoMsYalVB3OlUi9Eu+Y12Hcx
-	MfDPtr5g==;
+	bh=ni+QM1NQCcgkAj/8RAaEXHLHTHpEmfsdhBRgD9S0obg=; b=g53vF5sAoXPzfu8P0R2sZ5779n
+	TEORd0ULoJzgok9U7acJ/9qw9Uuc/lpbDOSivlVnF2VXMlo1yt26QQ7Nuz79ODlo5L3so9J4L7hOu
+	oXT/NeFAhViyNCRaXbdrBNlXw5GGmBmpQZl7P39yDBCLnt/vJO5ChK9czLsqGvJn5qPEX1H7ArBV9
+	JmNceIRVDs0XD8KfXCYfcLFIsn+wusOkI4XEi2bl32UJxzMYRwVlFTJjq8jTpgfgke39W3VrurF0g
+	HA1TA7kbuztMzLdX9a7446mVwRyVkjlZHek3+gii7r/oqabI9xQ6FkWlkODwyqxKVGREtHZhz+FWK
+	idBNpsSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7jZt-003XjG-27;
-	Mon, 27 Nov 2023 21:55:42 +0000
-Received: from mail-oa1-f43.google.com ([209.85.160.43])
+	id 1r7jtt-003ZtX-2f;
+	Mon, 27 Nov 2023 22:16:21 +0000
+Received: from mail-ot1-f42.google.com ([209.85.210.42])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7jZn-003Xgu-1s;
-	Mon, 27 Nov 2023 21:55:37 +0000
-Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-1fa26074783so1456131fac.1;
-        Mon, 27 Nov 2023 13:55:35 -0800 (PST)
+	id 1r7jtn-003Zs7-0X;
+	Mon, 27 Nov 2023 22:16:16 +0000
+Received: by mail-ot1-f42.google.com with SMTP id 46e09a7af769-6d812988394so1601478a34.3;
+        Mon, 27 Nov 2023 14:16:14 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701122134; x=1701726934;
+        d=1e100.net; s=20230601; t=1701123374; x=1701728174;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Q+Cbf4Z4xMq9dOhY2lkOSlIg0Yv9C+GaGVRwFcKdaa4=;
-        b=AvwE9QUrDyICmOD1GgDVU/lJDWUkgyGTjec/qmjPpSBPQlaOVq4sLOyHXyFW3CmHv8
-         aiVywIuzuLaLVH9iTXL2mg8knEqBvhSqIJQ1yc/A8uSrOxWEiw33X4U8k45RSKnUQAS4
-         JJq9ZMPXx7p8FfEOQGxyN2/u2kYV58nvhs+3OxH5d1+dn4CCPxmY7XPE0NrUdsz7BodS
-         Rrz9HbS19Vpa6pTUb02HZaCilVAVyD/Bdp48ZoX1X89LNs07pJ5bqWbBozoXWOh0WrVQ
-         PUleNXdcNoIo4aOsjzlEy/SOR9ju7ljG2h2kCw7w9FutGt9NanLROdcVfsRA8cdMMJoj
-         V3kQ==
-X-Gm-Message-State: AOJu0Yx7wEK8KuhNxc6Sitf567qFszFeHBimZ1Z5wmJn/eWTLQH/giwK
-	pIq+v1JMChdCP3u2E1mAfw==
-X-Google-Smtp-Source: AGHT+IHE/25NEUwlRx2TOFVPP+SptbOdKM4BzwgEQJDXuam12+MKf64pu6FFsol8jZ2RdnKGcptx6g==
-X-Received: by 2002:a05:6870:5d93:b0:1f0:656b:5b99 with SMTP id fu19-20020a0568705d9300b001f0656b5b99mr19942781oab.11.1701122134393;
-        Mon, 27 Nov 2023 13:55:34 -0800 (PST)
+        bh=ni+QM1NQCcgkAj/8RAaEXHLHTHpEmfsdhBRgD9S0obg=;
+        b=ZU/tWGszzfKSBHKuo7Pv5R0QjRgxt8hfOgX7PWYugDNR1MPUDIBWzHez9F/r44b+/6
+         DhLotX87EpdD3A4W+CBX3sOExFEipy/ZRaglYEjf3PCfPjkAw8S/9QRZA0FCrJZ/3sUO
+         UV+6RYGa5+R1JTFHBppD84yFlZhSjG96lX078R4Acmjp4CPim5GVCr/e4NH8hNzspVWG
+         dSDfTAJZjxaM6PiS0gF12r/6rqh22Zfp+4CCuStbHx1Zy0fV4reSEZI0QHegMntKdnW/
+         PBuD78jU7hGSWEP6gL3Ldi7LepTcD22BKdb25+h1cPyCan1WGm1mE58Tm46Qa6eEc760
+         dqNw==
+X-Gm-Message-State: AOJu0YyYgNX+mBuLa2a3buTMj8Y8TGd0OIiRWbh3Kc2FHoJZIwClzWGL
+	4FX4k+55FoNY2413jhM/ig==
+X-Google-Smtp-Source: AGHT+IGUTejt/8I/FkmEAVJmTD9AFB5fYEWb//1MrwvjzlCkYslMTEoW/bdzPOLIYsPc065LFT0e5A==
+X-Received: by 2002:a05:6830:1e39:b0:6d3:a8b:b34 with SMTP id t25-20020a0568301e3900b006d30a8b0b34mr15059347otr.5.1701123373505;
+        Mon, 27 Nov 2023 14:16:13 -0800 (PST)
 Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id lu4-20020a056871314400b001fa54ae35e0sm681401oac.12.2023.11.27.13.55.32
+        by smtp.gmail.com with ESMTPSA id s12-20020a056830438c00b006ce2f0818d3sm1497262otv.22.2023.11.27.14.16.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Nov 2023 13:55:33 -0800 (PST)
-Received: (nullmailer pid 3942464 invoked by uid 1000);
-	Mon, 27 Nov 2023 21:55:32 -0000
-Date: Mon, 27 Nov 2023 15:55:32 -0600
+        Mon, 27 Nov 2023 14:16:12 -0800 (PST)
+Received: (nullmailer pid 4135204 invoked by uid 1000);
+	Mon, 27 Nov 2023 22:16:11 -0000
+Date: Mon, 27 Nov 2023 16:16:11 -0600
 From: Rob Herring <robh@kernel.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, 
-	Andrew Lunn <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>, 
-	Chen-Yu Tsai <wens@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
-	Jonathan Corbet <corbet@lwn.net>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Michal Simek <michal.simek@amd.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	workflows@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
-Message-ID: <20231127215532.GA3822595-robh@kernel.org>
-References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
- <20231125193737.GD7486@pendragon.ideasonboard.com>
- <26f095ab-c47d-4bcb-9830-4493b1c0cc75@linaro.org>
- <20231126145340.GA19999@pendragon.ideasonboard.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
+ PHY package nodes
+Message-ID: <20231127221611.GA4023452-robh@kernel.org>
+References: <20231126015346.25208-1-ansuelsmth@gmail.com>
+ <20231126015346.25208-2-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231126145340.GA19999@pendragon.ideasonboard.com>
+In-Reply-To: <20231126015346.25208-2-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_135535_888904_3C0989C4 
-X-CRM114-Status: GOOD (  27.74  )
+X-CRM114-CacheID: sfid-20231127_141615_317313_D43AA395 
+X-CRM114-Status: GOOD (  28.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,69 +81,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Nov 26, 2023 at 04:53:40PM +0200, Laurent Pinchart wrote:
-> Hi Krzysztof,
+On Sun, Nov 26, 2023 at 02:53:39AM +0100, Christian Marangi wrote:
+> Document ethernet PHY package nodes used to describe PHY shipped in
+> bundle of 4-5 PHY. The special node describe a container of PHY that
+> share common properties. This is a generic schema and PHY package
+> should create specialized version with the required additional shared
+> properties.
 > 
-> On Sun, Nov 26, 2023 at 11:32:17AM +0100, Krzysztof Kozlowski wrote:
-> > On 25/11/2023 20:37, Laurent Pinchart wrote:
-> > > On Sat, Nov 25, 2023 at 07:44:22PM +0100, Krzysztof Kozlowski wrote:
-> > >> Document preferred coding style for Devicetree sources (DTS and DTSI),
-> > >> to bring consistency among all (sub)architectures and ease in reviews.
-
-
-> > >> +
-> > >> +Naming and Valid Characters
-> > >> +---------------------------
-> > >> +
-> > >> +Devicetree specification allows broader range of characters in node and
-> > > 
-> > > s/Devicetree specification/The Devicetree specification/
-> > > s/broader range/a broad range/
-> > 
-> > Ack, but I really expect people finish with grammar and style fixes at
-> > v3. Please point the language things now or just let it go.
+> Example are PHY package that have some regs only in one PHY of the
+> package and will affect every other PHY in the package, for example
+> related to PHY interface mode calibration or global PHY mode selection.
 > 
-> v3 is the first version that ended up in my inbox. I haven't noticed any
-> other spelling or grammar error in this patch, but I can't guarantee I
-> won't see any in new text that gets introduced in a future version :-)
+> The PHY package node MUST declare the base address used by the PHY driver
+> for global configuration by calculating the offsets of the global PHY
+> based on the base address of the PHY package and declare the
+> "ethrnet-phy-package" compatible.
 > 
-> > >> +property names, but for code readability the choice shall be narrowed.
-> > >> +
-> > >> +1. Node and property names are allowed to use only:
-> > >> +
-> > >> +   * lowercase characters: [a-z]
-> > >> +   * digits: [0-9]
-> > >> +   * dash: -
-> > >> +
-> > >> +2. Labels are allowed to use only:
-> > >> +
-> > >> +   * lowercase characters: [a-z]
-> > >> +   * digits: [0-9]
-> > >> +   * underscore: _
-> > >> +
-> > >> +3. Unit addresses shall use lowercase hex, without leading zeros (padding).
-
-Unless a bus defines differently, unit addresses shall ...
-
-> > > 
-> > > I'm curious, what's the reason for this ? I think it makes the sources
-> > > less readable. If the rule is "just" because that's how DT sources are
-> > > written today and it would be too complicated to change that, that's
-> > > fine with me.
-> > 
-> > Warning (unit_address_format): /cpus/cpu@0100: unit name should not have
-> > leading 0s
-> > 
-> > And we fixed all or most of DTS some time ago.
+> Each reg of the PHY defined in the PHY package node is absolute and will
+> reference the real address of the PHY on the bus.
 > 
-> It's the current practice in DT sources and I understand it won't get
-> changed, but I was more curious about the rationale behind that.
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../bindings/net/ethernet-phy-package.yaml    | 75 +++++++++++++++++++
+>  1 file changed, 75 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+> new file mode 100644
+> index 000000000000..244d4bc29164
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+> @@ -0,0 +1,75 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/ethernet-phy-package.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Ethernet PHY Package Common Properties
+> +
+> +maintainers:
+> +  - Christian Marangi <ansuelsmth@gmail.com>
+> +
+> +description:
+> +  This schema describe PHY package as simple container for
+> +  a bundle of PHYs that share the same properties and
+> +  contains the PHYs of the package themself.
+> +
+> +  Each reg of the PHYs defined in the PHY package node is
+> +  absolute and describe the real address of the PHY on the bus.
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: "^ethernet-phy-package(@[a-f0-9]+)?$"
+> +
+> +  compatible:
+> +    const: ethernet-phy-package
 
-I put the dtc check in, but the rational predates me. The OF PCI bus 
-supplement from the 1990s defines that. My only rationale to check it 
-was to be consistent. We don't check "the unit-address is lowercase hex"
-because technically the bus defines the format. Leading 0s was as much 
-as I could get David G to agree to check without regard to bus type.
+In case I wasn't clear, but that compatible is a NAK.
 
-Rob
+> +
+> +  reg:
+> +    minimum: 0
+> +    maximum: 31
+
+Pretty sure the bus binding already provides these constraints.
+
+> +    description:
+> +      The base ID number for the PHY package.
+> +      Commonly the ID of the first PHY in the PHY package.
+> +
+> +      Some PHY in the PHY package might be not defined but
+> +      still exist on the device (just not attached to anything).
+> +      The reg defined in the PHY package node might differ and
+> +      the related PHY might be not defined.
+> +
+> +  '#address-cells':
+> +    const: 1
+> +
+> +  '#size-cells':
+> +    const: 0
+
+You are implementing a secondary MDIO bus within this node. It needs a 
+$ref to mdio.yaml instead of defining the bus again implicitly.
+
+> +
+> +patternProperties:
+> +  ^ethernet-phy(@[a-f0-9]+)?$:
+> +    $ref: ethernet-phy.yaml#
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +additionalProperties: true
+> +
+> +examples:
+> +  - |
+> +    mdio {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        ethernet-phy-package@16 {
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+> +            compatible = "ethernet-phy-package";
+> +            reg = <0x16>;
+> +
+> +            ethernet-phy@16 {
+> +              reg = <0x16>;
+> +            };
+> +
+> +            phy4: ethernet-phy@1a {
+> +              reg = <0x1a>;
+> +            };
+
+This example on its own doesn't make sense. It can't be fully validated 
+because you allow any additional properties. Drop it.
+
+> +        };
+> +    };
+> -- 
+> 2.40.1
+> 
 
