@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80CCC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 22:16:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C335AC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 22:35:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ni+QM1NQCcgkAj/8RAaEXHLHTHpEmfsdhBRgD9S0obg=; b=g53vF5sAoXPzfu8P0R2sZ5779n
-	TEORd0ULoJzgok9U7acJ/9qw9Uuc/lpbDOSivlVnF2VXMlo1yt26QQ7Nuz79ODlo5L3so9J4L7hOu
-	oXT/NeFAhViyNCRaXbdrBNlXw5GGmBmpQZl7P39yDBCLnt/vJO5ChK9czLsqGvJn5qPEX1H7ArBV9
-	JmNceIRVDs0XD8KfXCYfcLFIsn+wusOkI4XEi2bl32UJxzMYRwVlFTJjq8jTpgfgke39W3VrurF0g
-	HA1TA7kbuztMzLdX9a7446mVwRyVkjlZHek3+gii7r/oqabI9xQ6FkWlkODwyqxKVGREtHZhz+FWK
-	idBNpsSQ==;
+	bh=g86YtSS//IjTCJBYsf1NPWyqXQksoEkdn33XBneuwxE=; b=XGIXWA6S8I5DrEVM7F8NmVbmzS
+	zjxS/1v22Tjf3WU0/r8iBL3qauJkhIrnfQVC8MvGsxln57O/VgiIP+BGxcqsMsyCzc75ZzLDB67b2
+	SvE5Ol1vi6At8jM7pXdy/8QHO+1ekehe7OLinC9W9EqqQmIJhxu+fEF6NUzYsOHlcNOZ4JneVVItN
+	jui067OeSuRyFKDSBmAY2W4EuhpoEAz0JzvXF0ZHzIO3ARCfzc1zfgDTaVNZE0bYjhGkZ7bNh8M2L
+	5e8EBlrPHWPTA6WcGwlQp+eJGMptMfoJMtOobo4Oh4egHG4B00W4FEaL8YUaJiQDwvzgM+GJCelP2
+	KC1JlGZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7jtt-003ZtX-2f;
-	Mon, 27 Nov 2023 22:16:21 +0000
-Received: from mail-ot1-f42.google.com ([209.85.210.42])
+	id 1r7kCQ-003bK5-1i;
+	Mon, 27 Nov 2023 22:35:30 +0000
+Received: from mail-oi1-f178.google.com ([209.85.167.178])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7jtn-003Zs7-0X;
-	Mon, 27 Nov 2023 22:16:16 +0000
-Received: by mail-ot1-f42.google.com with SMTP id 46e09a7af769-6d812988394so1601478a34.3;
-        Mon, 27 Nov 2023 14:16:14 -0800 (PST)
+	id 1r7kCM-003bJM-0t;
+	Mon, 27 Nov 2023 22:35:28 +0000
+Received: by mail-oi1-f178.google.com with SMTP id 5614622812f47-3b833b54f14so2172318b6e.1;
+        Mon, 27 Nov 2023 14:35:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701123374; x=1701728174;
+        d=1e100.net; s=20230601; t=1701124525; x=1701729325;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ni+QM1NQCcgkAj/8RAaEXHLHTHpEmfsdhBRgD9S0obg=;
-        b=ZU/tWGszzfKSBHKuo7Pv5R0QjRgxt8hfOgX7PWYugDNR1MPUDIBWzHez9F/r44b+/6
-         DhLotX87EpdD3A4W+CBX3sOExFEipy/ZRaglYEjf3PCfPjkAw8S/9QRZA0FCrJZ/3sUO
-         UV+6RYGa5+R1JTFHBppD84yFlZhSjG96lX078R4Acmjp4CPim5GVCr/e4NH8hNzspVWG
-         dSDfTAJZjxaM6PiS0gF12r/6rqh22Zfp+4CCuStbHx1Zy0fV4reSEZI0QHegMntKdnW/
-         PBuD78jU7hGSWEP6gL3Ldi7LepTcD22BKdb25+h1cPyCan1WGm1mE58Tm46Qa6eEc760
-         dqNw==
-X-Gm-Message-State: AOJu0YyYgNX+mBuLa2a3buTMj8Y8TGd0OIiRWbh3Kc2FHoJZIwClzWGL
-	4FX4k+55FoNY2413jhM/ig==
-X-Google-Smtp-Source: AGHT+IGUTejt/8I/FkmEAVJmTD9AFB5fYEWb//1MrwvjzlCkYslMTEoW/bdzPOLIYsPc065LFT0e5A==
-X-Received: by 2002:a05:6830:1e39:b0:6d3:a8b:b34 with SMTP id t25-20020a0568301e3900b006d30a8b0b34mr15059347otr.5.1701123373505;
-        Mon, 27 Nov 2023 14:16:13 -0800 (PST)
+        bh=g86YtSS//IjTCJBYsf1NPWyqXQksoEkdn33XBneuwxE=;
+        b=qW9m/QpKCx0zUIuvF5ltlWwwUnpFN2nc/Y8six1Kr9ZMgnlXBZtAZtUPAU+8S8bEmB
+         U/qSqAOtZ6dttEPRqF8ex01V5G+8rsBb1+NQdnbE5z17O99R02HPprOpatfhAT7H10HM
+         R9EYW1npwjIf25Y8jyUsgYwi33MnxZWIoLicF79Yyn8jmgxepG38cshNj+MD/RG4amv1
+         PzE7Wzx8rL74YVwGFNHEd14//GU8SAghKJ9D7n1dSG3IRXLDCftMO4YM9PiyXO7rfPao
+         IXrRzXhImAOJLVb43I4KnbhB7HjXArvAF4zjH3SKmlyvvoABjeBEbYNE2r+iNWL62Syq
+         DiNw==
+X-Gm-Message-State: AOJu0Yz9QG4MElmR0exf9huBpcilYhpwCTjblKNvl4xpIPL3uKzeMIHw
+	OMpH45zsXHHG26Aylbs4eQ==
+X-Google-Smtp-Source: AGHT+IG3Ehv5n5h/9/ZyzIfSBG1aHBg8h1q7IcFURoniaHTNxt9dc4pnOUUpAeplCccO1Zl8PRxQUw==
+X-Received: by 2002:a05:6808:bd0:b0:3af:7c6a:6043 with SMTP id o16-20020a0568080bd000b003af7c6a6043mr6023680oik.23.1701124524930;
+        Mon, 27 Nov 2023 14:35:24 -0800 (PST)
 Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id s12-20020a056830438c00b006ce2f0818d3sm1497262otv.22.2023.11.27.14.16.11
+        by smtp.gmail.com with ESMTPSA id bf4-20020a056808190400b003af56ef1510sm1630793oib.20.2023.11.27.14.35.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Nov 2023 14:16:12 -0800 (PST)
-Received: (nullmailer pid 4135204 invoked by uid 1000);
-	Mon, 27 Nov 2023 22:16:11 -0000
-Date: Mon, 27 Nov 2023 16:16:11 -0600
+        Mon, 27 Nov 2023 14:35:24 -0800 (PST)
+Received: (nullmailer pid 151319 invoked by uid 1000);
+	Mon, 27 Nov 2023 22:35:23 -0000
+Date: Mon, 27 Nov 2023 16:35:23 -0600
 From: Rob Herring <robh@kernel.org>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
- PHY package nodes
-Message-ID: <20231127221611.GA4023452-robh@kernel.org>
+Subject: Re: [net-next PATCH RFC v3 6/8] dt-bindings: net: Document Qcom
+ QCA807x PHY package
+Message-ID: <20231127223523.GB4023452-robh@kernel.org>
 References: <20231126015346.25208-1-ansuelsmth@gmail.com>
- <20231126015346.25208-2-ansuelsmth@gmail.com>
+ <20231126015346.25208-7-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231126015346.25208-2-ansuelsmth@gmail.com>
+In-Reply-To: <20231126015346.25208-7-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_141615_317313_D43AA395 
-X-CRM114-Status: GOOD (  28.17  )
+X-CRM114-CacheID: sfid-20231127_143526_432746_08FBEB10 
+X-CRM114-Status: GOOD (  28.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,124 +81,205 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Nov 26, 2023 at 02:53:39AM +0100, Christian Marangi wrote:
-> Document ethernet PHY package nodes used to describe PHY shipped in
-> bundle of 4-5 PHY. The special node describe a container of PHY that
-> share common properties. This is a generic schema and PHY package
-> should create specialized version with the required additional shared
-> properties.
+On Sun, Nov 26, 2023 at 02:53:44AM +0100, Christian Marangi wrote:
+> Document Qcom QCA807x PHY package.
 > 
-> Example are PHY package that have some regs only in one PHY of the
-> package and will affect every other PHY in the package, for example
-> related to PHY interface mode calibration or global PHY mode selection.
+> Qualcomm QCA807X Ethernet PHY is PHY package of 2 or 5
+> IEEE 802.3 clause 22 compliant 10BASE-Te, 100BASE-TX and
+> 1000BASE-T PHY-s.
 > 
-> The PHY package node MUST declare the base address used by the PHY driver
-> for global configuration by calculating the offsets of the global PHY
-> based on the base address of the PHY package and declare the
-> "ethrnet-phy-package" compatible.
-> 
-> Each reg of the PHY defined in the PHY package node is absolute and will
-> reference the real address of the PHY on the bus.
+> Document the required property to make the PHY package correctly
+> configure and work.
 > 
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->  .../bindings/net/ethernet-phy-package.yaml    | 75 +++++++++++++++++++
->  1 file changed, 75 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+>  .../devicetree/bindings/net/qcom,qca807x.yaml | 136 ++++++++++++++++++
+>  1 file changed, 136 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/qcom,qca807x.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+> diff --git a/Documentation/devicetree/bindings/net/qcom,qca807x.yaml b/Documentation/devicetree/bindings/net/qcom,qca807x.yaml
 > new file mode 100644
-> index 000000000000..244d4bc29164
+> index 000000000000..136ba2128b73
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
-> @@ -0,0 +1,75 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +++ b/Documentation/devicetree/bindings/net/qcom,qca807x.yaml
+> @@ -0,0 +1,136 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/net/ethernet-phy-package.yaml#
+> +$id: http://devicetree.org/schemas/net/qcom,qca807x.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: Ethernet PHY Package Common Properties
+> +title: Qualcomm QCA807X Ethernet PHY
 > +
 > +maintainers:
 > +  - Christian Marangi <ansuelsmth@gmail.com>
+> +  - Robert Marko <robert.marko@sartura.hr>
 > +
-> +description:
-> +  This schema describe PHY package as simple container for
-> +  a bundle of PHYs that share the same properties and
-> +  contains the PHYs of the package themself.
+> +description: |
+> +  Qualcomm QCA807X Ethernet PHY is PHY package of 2 or 5
+> +  IEEE 802.3 clause 22 compliant 10BASE-Te, 100BASE-TX and
+> +  1000BASE-T PHY-s.
 > +
-> +  Each reg of the PHYs defined in the PHY package node is
-> +  absolute and describe the real address of the PHY on the bus.
+> +  They feature 2 SerDes, one for PSGMII or QSGMII connection with
+> +  MAC, while second one is SGMII for connection to MAC or fiber.
 > +
+> +  Both models have a combo port that supports 1000BASE-X and
+> +  100BASE-FX fiber.
+> +
+> +  Each PHY inside of QCA807x series has 4 digitally controlled
+> +  output only pins that natively drive LED-s for up to 2 attached
+> +  LEDs. Some vendor also use these 4 output for GPIO usage without
+> +  attaching LEDs.
+> +
+> +  Note that output pins can be set to drive LEDs OR GPIO, mixed
+> +  definition are not accepted.
+
+This so far is about the only thing that convinces me of having child 
+nodes.
+
+> +
+> +  PHY package can be configured in 3 mode following this table:
+> +
+> +                First Serdes mode       Second Serdes mode
+> +  Option 1      PSGMII for copper       Disabled
+> +                ports 0-4
+> +  Option 2      PSGMII for copper       1000BASE-X / 100BASE-FX
+> +                ports 0-4
+> +  Option 3      QSGMII for copper       SGMII for
+> +                ports 0-3               copper port 4
+> +
+> +$ref: ethernet-phy-package.yaml#
+> +
+
+Did you test this binding? No, because there is nothing to select it. 
+Just put a wrong value for qcom,package-mode and see.
+
+ethernet-phy-package.yaml will be applied, but since it allows any extra 
+properties not much is tested.
+
 > +properties:
-> +  $nodename:
-> +    pattern: "^ethernet-phy-package(@[a-f0-9]+)?$"
+> +  qcom,package-mode:
+> +    enum:
+> +      - qsgmii
+> +      - psgmii
+
+description needed.
+
+I don't understand how the 3 modes works with only 2 modes defined here.
+
 > +
-> +  compatible:
-> +    const: ethernet-phy-package
+> +  qcom,tx-driver-strength:
+> +    description: set the TX Amplifier value in mv.
 
-In case I wasn't clear, but that compatible is a NAK.
+millivolts or...
 
-> +
-> +  reg:
-> +    minimum: 0
-> +    maximum: 31
+> +      If not defined, 600mw is set by default.
 
-Pretty sure the bus binding already provides these constraints.
+milliwatts?
 
-> +    description:
-> +      The base ID number for the PHY package.
-> +      Commonly the ID of the first PHY in the PHY package.
-> +
-> +      Some PHY in the PHY package might be not defined but
-> +      still exist on the device (just not attached to anything).
-> +      The reg defined in the PHY package node might differ and
-> +      the related PHY might be not defined.
-> +
-> +  '#address-cells':
-> +    const: 1
-> +
-> +  '#size-cells':
-> +    const: 0
+Whatever it is, use standard unit suffix.
 
-You are implementing a secondary MDIO bus within this node. It needs a 
-$ref to mdio.yaml instead of defining the bus again implicitly.
-
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    enum: [140, 160, 180, 200, 220,
+> +           240, 260, 280, 300, 320,
+> +           400, 500, 600]
 > +
 > +patternProperties:
 > +  ^ethernet-phy(@[a-f0-9]+)?$:
+
+I'm confused. The addresses are MDIO, but you have just 0-4. Might be 
+correct or might not?
+
+In any case, the unit-address should be restricted to '@1?[0-9a-f]$'. 
+Though that belongs in mdio.yaml and here '^ethernet-phy@' is sufficient 
+(once there's a reference to mdio.yaml).
+
 > +    $ref: ethernet-phy.yaml#
+
 > +
-> +required:
-> +  - compatible
-> +  - reg
+> +    properties:
+> +      gpio-controller:
+> +        description: set the output lines as GPIO instead of LEDs
+> +        type: boolean
 > +
-> +additionalProperties: true
+> +      '#gpio-cells':
+> +        description: number of GPIO cells for the PHY
+> +        const: 2
+> +
+> +    dependencies:
+> +      gpio-controller: ['#gpio-cells']
+
+No need for this, the common gpio schema does this.
+
+> +
+> +    if:
+> +      required:
+> +        - gpio-controller
+> +    then:
+> +      properties:
+> +        leds: false
+> +
+> +    unevaluatedProperties: false
+
+Move under $ref.
+
+> +
+> +unevaluatedProperties: false
 > +
 > +examples:
 > +  - |
+> +    #include <dt-bindings/leds/common.h>
+> +
 > +    mdio {
 > +        #address-cells = <1>;
 > +        #size-cells = <0>;
 > +
-> +        ethernet-phy-package@16 {
+> +        ethernet-phy-package@0 {
 > +            #address-cells = <1>;
 > +            #size-cells = <0>;
 > +            compatible = "ethernet-phy-package";
-> +            reg = <0x16>;
+> +            reg = <0>;
 > +
-> +            ethernet-phy@16 {
-> +              reg = <0x16>;
+> +            qcom,package-mode = "qsgmii";
+
+Nothing in here tells me this is a QCA807X other than this property 
+(sort of). You need a specific compatible.
+
+> +
+> +            ethernet-phy@0 {
+> +                reg = <0>;
+> +
+> +                leds {
+> +                    #address-cells = <1>;
+> +                    #size-cells = <0>;
+> +
+> +                    led@0 {
+> +                        reg = <0>;
+> +                        color = <LED_COLOR_ID_GREEN>;
+> +                        function = LED_FUNCTION_LAN;
+> +                        default-state = "keep";
+> +                    };
+> +                };
 > +            };
 > +
-> +            phy4: ethernet-phy@1a {
-> +              reg = <0x1a>;
+> +            ethernet-phy@1 {
+> +                reg = <1>;
 > +            };
-
-This example on its own doesn't make sense. It can't be fully validated 
-because you allow any additional properties. Drop it.
-
+> +
+> +            ethernet-phy@2 {
+> +                reg = <2>;
+> +
+> +                gpio-controller;
+> +                #gpio-cells = <2>;
+> +            };
+> +
+> +            ethernet-phy@3 {
+> +                reg = <3>;
+> +            };
+> +
+> +            ethernet-phy@4 {
+> +                reg = <4>;
+> +            };
 > +        };
 > +    };
 > -- 
