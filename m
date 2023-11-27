@@ -4,74 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C8D5C07CB1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 13:38:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D682C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 14:20:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gdJZT2pnGM7WjHBPmNijisd5rSz18hyLGGQm8RchWfY=; b=Ur1N9oNAuM4lNotReyKBkI+zoi
-	TCUY2MQbyg0kb+dMhfbZKKdyqthjuvA9FkZCWFUUDm8BPS9vLd5WghtgCVQHhNnOI5EcSR1wU2tM2
-	ZP3NInf4xFqMr/Ct76XclF7pxLUkSmZkyCFscA0SJ/G7YCBWpi342YP+krl1IdGYrmeNjE5J2/Gfn
-	9YSsREBLdL+HLX5xNsACyaJYvTkWx/hxBa82ihoDhjNMnfkv6ZTH0rX2LMK1xC3i3G1LYq5/7u0jC
-	R3fg/RqF8N/Pit00DXMxrLay/ZNezCnZ9Lsf3Rhmcor3zZSv7gcm0o32M16Jvu9ZsLhkWE6202V8T
-	+SzNnqWA==;
+	bh=p8asMA5McnjUqiDsQhrdKj0am/206nD+kU8Fb3R8j7Q=; b=plz3WPCaxeaLqqIU7Iw0x6P3Hl
+	r4qz6kAhurQ3Ea5jXmu390KUdFZJtCisdxErPRJpOurdHbs6wBmkNVNxODzR1susFZqpep9pDLVAt
+	cNOYukTShJ/egrLI0rNQY653RE/6fR3HAvKtB9wian6qX/dtiYBe/FE5jbMDi3obQVkHntTucjWdG
+	beDG+p3SNPIRWyeUnIX3RpbA4KKeonyQuHG2StvIXAfD9y7y4m0jRjDlSRe1zvt3oTFcaoh8iMDIJ
+	l5Fv5/YDQJVfRGc8gsguve7mcyQCVpH0TFPnMT7wbVAEQCDDzSZpThoXUnxi8P7FiWuAlVHsTSXLw
+	KdRZppFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7boG-002aoL-1q;
-	Mon, 27 Nov 2023 13:38:00 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r7cT4-002gdS-0o;
+	Mon, 27 Nov 2023 14:20:10 +0000
+Received: from mail-yw1-f195.google.com ([209.85.128.195])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7boC-002amz-1b;
-	Mon, 27 Nov 2023 13:37:57 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0144D660716E;
-	Mon, 27 Nov 2023 13:37:53 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701092275;
-	bh=HWTWeZczkKPebiHhuo5BZO805K/Z7hkRFhrXyPuPjTA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=O4vVdIowbsdyovhSATp87/gj9HKXh6j9UJSHTbH31aSq12FPYr/dn7P0zBiDFOyjv
-	 V3iwiYBZjbpOt26uzfHwybMZkW6ursKUy4tVVUVa8fBhcHMnNAenrMuqbOqjK1Iq9W
-	 A+EOJVsocw7IPAvQ/Ofs+htd4g20OknlOv0kj1WMTRXH/GL39DM2hHCMjwF7IXj2IZ
-	 zJ9XOr0Q2w99UPgbon9Rk5R74FA9Bhowpr0vOmEgjZr1o1sN9bjxrM7HQqpUtP30pi
-	 f9eNbiezuDiF/RxrT3MhUwYXKoBLDU7RJfOdlgJlMfqdtsnS5VUgvVjnSPMhr5GyQ5
-	 V2UQTO83VeVug==
-Message-ID: <efc64b77-e454-4b9e-9508-311f00d2db83@collabora.com>
-Date: Mon, 27 Nov 2023 14:37:50 +0100
+	id 1r7cT0-002gcK-1c;
+	Mon, 27 Nov 2023 14:20:08 +0000
+Received: by mail-yw1-f195.google.com with SMTP id 00721157ae682-5cbcfdeaff3so42805467b3.0;
+        Mon, 27 Nov 2023 06:20:05 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701094805; x=1701699605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=p8asMA5McnjUqiDsQhrdKj0am/206nD+kU8Fb3R8j7Q=;
+        b=D36gDpEFsbyf0LQs95PnnADCOLwG/fwqPPmEXqB5lKp1WA7h0gmhsrQQpkMIcLVZD8
+         R8r1xOKiDwTEiTNWAVdfOY7WbSq+A7BhbcGz5z83lJZPOEiThtC7JIe17bfI36ceM9L7
+         NzT/c+3OTQDA16ujk0875fIONy3p93jy4DeD0G4rFnklBTe3E7JS9GR3DAy6Ar+rejZ4
+         InZzTga6huLqweN723pfBoPIt/NSX7Y/gj1uh+b8wcKPDAQfvN/p1vkPHpBfDLrlpwIA
+         UmE48W9jb1GHWqyNOYRuLP3LWFoDzybH9tqjrgB0Is7YeCF+47kPrPhFxgnjk2AvCttu
+         Abiw==
+X-Gm-Message-State: AOJu0YwMI8E8fQr5P5IoKgWiTsyXBMyGuSnYkqFaHtLvK3mfAyEk5CAL
+	4STibeHVru4cwC7VUjkqJIB6JobVM7meCFOc
+X-Google-Smtp-Source: AGHT+IHOrcDoV8LHmGn1Fu4pA56O7GTe0BttqKAknUyWlC2jZ9tGtevZtsS4Ssthq7dPn+Q5lggzIg==
+X-Received: by 2002:a81:6008:0:b0:5cd:f157:fd05 with SMTP id u8-20020a816008000000b005cdf157fd05mr11595985ywb.25.1701094804776;
+        Mon, 27 Nov 2023 06:20:04 -0800 (PST)
+Received: from mail-yw1-f171.google.com (mail-yw1-f171.google.com. [209.85.128.171])
+        by smtp.gmail.com with ESMTPSA id a124-20020a0df182000000b005af6df31bb0sm3255806ywf.105.2023.11.27.06.20.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 27 Nov 2023 06:20:04 -0800 (PST)
+Received: by mail-yw1-f171.google.com with SMTP id 00721157ae682-5cbcfdeaff3so42805237b3.0;
+        Mon, 27 Nov 2023 06:20:03 -0800 (PST)
+X-Received: by 2002:a0d:e207:0:b0:5a8:207b:48d with SMTP id
+ l7-20020a0de207000000b005a8207b048dmr10958508ywe.11.1701094803713; Mon, 27
+ Nov 2023 06:20:03 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: phy: mediatek: tphy: add a property for
- force-mode switch
-Content-Language: en-US
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- "Bear.Wang" <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>
-References: <20231125012303.760-1-chunfeng.yun@mediatek.com>
- <e34c2746-8e93-48b8-9c96-690242fbf6e9@linaro.org>
- <239def9b-437b-9211-7844-af4332651df0@mediatek.com>
- <0dc24d82-e09d-45bc-98ae-1dfb6318cb96@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <0dc24d82-e09d-45bc-98ae-1dfb6318cb96@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 27 Nov 2023 15:19:52 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdUYEwMuxJ2Xx=KRVKneRT-e+uHz8LE1JVY5zLDkWksqKw@mail.gmail.com>
+Message-ID: <CAMuHMdUYEwMuxJ2Xx=KRVKneRT-e+uHz8LE1JVY5zLDkWksqKw@mail.gmail.com>
+Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, 
+	Andrew Lunn <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>, 
+	Chen-Yu Tsai <wens@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Jonathan Corbet <corbet@lwn.net>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Michal Simek <michal.simek@amd.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	workflows@vger.kernel.org, linux-doc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_053756_663975_C36C2CB2 
-X-CRM114-Status: UNSURE (   8.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231127_062006_536329_4B557DA4 
+X-CRM114-Status: GOOD (  24.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,46 +97,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/11/23 08:21, Krzysztof Kozlowski ha scritto:
-> On 27/11/2023 08:09, Macpaul Lin wrote:
->> On 11/25/23 18:37, Krzysztof Kozlowski and Chunfeng Yun wrote:
->>> 	
->>>
->>> External email : Please do not click links or open attachments until you
->>> have verified the sender or the content.
->>>
->>> On 25/11/2023 02:23, Chunfeng Yun wrote:
->>>> Due to some old SoCs with shared t-phy only support force-mode switch, and
->>>> can't use compatible to distinguish between shared and non-shared t-phy,
->>>> add a property to supported it.
->>>> But now prefer to use "mediatek,syscon-type" on new SoC as far as possible.
+Hi Krzysztof,
 
-Two questions:
-1. Why is it *not* possible to use the compatible string to distinguish between
-    shared and non-shared T-PHYs?
-2. If we really can't use compatibles, what's the reason why we can't use the
-    "mediatek,syscon-type" property?
+On Sat, Nov 25, 2023 at 7:44=E2=80=AFPM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+> Document preferred coding style for Devicetree sources (DTS and DTSI),
+> to bring consistency among all (sub)architectures and ease in reviews.
+>
+> Cc: Andrew Davis <afd@ti.com>
+> cc: Andrew Lunn <andrew@lunn.ch>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: Arnd Bergmann <arnd@arndb.de>
+> Cc: Bjorn Andersson <andersson@kernel.org>
+> Cc: Chen-Yu Tsai <wens@kernel.org>
+> Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> Cc: Geert Uytterhoeven <geert+renesas@glider.be>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Jonathan Corbet <corbet@lwn.net>
+> Cc: Konrad Dybcio <konrad.dybcio@linaro.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Michal Simek <michal.simek@amd.com>
+> Cc: Neil Armstrong <neil.armstrong@linaro.org>
+> Cc: Nishanth Menon <nm@ti.com>
+> Cc: Olof Johansson <olof@lixom.net>
+> Cc: Rafa=C5=82 Mi=C5=82ecki <zajec5@gmail.com>
+> Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>
+> ---
+>
+> Merging idea: Rob/DT bindings
+>
+> Changes in v3
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> 1. should->shall (Angelo)
+> 2. Comments // -> /* (Angelo, Michal)
+> 3. Use imaginary example in "Order of Properties in Device Node"
+>    (Angelo)
+> 4. Added paragraphs for three sections with justifications of chosen
+>    style.
+> 5. Allow two style of ordering overrides in board DTS: alphabetically or
+>    by order of DTSI (Rob).
+> 6. I did not incorporate feedback about, due to lack of consensus and my
+>    disagreement:
+>    a. SoM being DTS without DTSI in "Organizing DTSI and DTS"
 
-Regards,
-Angelo
+Thanks for the update!
 
->>>>
->>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>>> ---
->>>>   Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 6 ++++++
->>>>   1 file changed, 6 insertions(+)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
->>>> index 2bb91542e984..eedba5b7025e 100644
->>>> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
->>>> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
->>>> @@ -235,6 +235,12 @@ patternProperties:
->>>>             Specify the flag to enable BC1.2 if support it
->>>>           type: boolean
->>>>   
->>>> +      mediatek,force-mode:
->>>> +        description:
->>>> +          Use force mode to switch shared phy mode, perfer to use the bellow
->>>
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/dts-coding-style.rst
 
+> +       /* SoC DTSI */
+> +
+> +       / {
+> +               cpus {
+> +                       /* ... */
+> +               };
+> +
+> +               psci {
+> +                       /* ... */
+> +               };
+> +
+> +               soc@ {
+
+"soc@" is invalid, that should be "soc".
+
+As the "soc" node is special, you may want to elaborate:
+
+                compatible =3D "simple-bus";
+                #address-cells =3D <1>;
+                #size-cells =3D <1>;
+                ranges;
+
+> +                       dma: dma-controller@10000 {
+> +                               /* ... */
+> +                       };
+> +
+> +                       clk: clock-controller@80000 {
+> +                               /* ... */
+> +                       };
+> +               };
+> +       };
+> +
+> +       /* Board DTS - alphabetical order */
+> +
+> +       &clk {
+> +               /* ... */
+> +       };
+> +
+> +       &dma {
+> +               /* ... */
+> +       };
+> +
+> +       /* Board DTS - alternative order, keep as DTSI */
+> +
+> +       &dma {
+> +               /* ... */
+> +       };
+> +
+> +       &clk {
+> +               /* ... */
+> +       };
+
+IMO that alternative order is hard to review: you need to have multiple
+files open.  It will also make validation hard, as you can only validate
+the end result, not individual files.
+
+Anyway, this is already quite usable so
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
