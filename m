@@ -4,57 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 358A2C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 14:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06B6EC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 14:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D/QuZySFquClyUZrQJgv8cSRnLgGNnUBKw6R0N8ml+U=; b=aFKBQbi/CO5SWJCJh1lmC2n73F
-	VVtmxUI/ST9NbOiG4Cy8kVXFd3z5s7jJdpQJmQ+4KZKxtwkhDaurVOi6Ph6AIwI+fS62+04JgagnT
-	lmB6SzZeg0Mix0bl+KNJ1BuQgAZBB7VCGo20YTKfZwLqoQyrSsy9tJXEDN+ocbbzeqBmoieLQRwT4
-	GJ0aPbmuArZ2cGqglf83tVuZhRCpHQGcPXoaU6xHZXHzMW9HeBXoqPYwRGMnplM7dPnM6JXa/3pE6
-	UbfwUFZdw/YcwmYlgAwMJDtMAremV2iuALPCmjmodtUjOVlWLxtrHhq1vCGAx4zGd6akpMkoBWvwh
-	NqncExnw==;
+	bh=E3FLX3YynhvX8mGBDXZEVUPH4OcHBZ2EUZ4Lk2rEt1c=; b=w6irb0x8nkysf0yg+i3lFoM014
+	40Lc0/VAhKcCv/2s/iC10QsfN6knHnHpuUD0n/kZT/LbGIutvNQClYtktM9g6bsLucuMmOBe95Sdn
+	Gt/X1fgQsHkS0XUob49LfA/Ob+ozoyi1Exm3Mxe6lNZa0/sUQ9NRnDFQwshNzARFJxDhfgBTw2UWO
+	oJh+lWhqauW6xqeG9YZYmJfiNxRTGsfuUFrIrh1S9GuBIx/Igc7rtTTtR+yU9w7R8cKrHLI35jtpC
+	6HcHvzrmTul6doCG228iBj5vcM4pLu1aGZvD6rwo6TznXOMkAXB6C0w/97DmF8MyNDyxMn27q7Ilu
+	6TsUGjJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7cua-002jYx-2Y;
-	Mon, 27 Nov 2023 14:48:36 +0000
-Received: from mail-40140.protonmail.ch ([185.70.40.140])
+	id 1r7cus-002jde-2L;
+	Mon, 27 Nov 2023 14:48:54 +0000
+Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7cuW-002jX5-0p
+	id 1r7cuq-002jcY-15
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Nov 2023 14:48:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1701096506; x=1701355706;
-	bh=D/QuZySFquClyUZrQJgv8cSRnLgGNnUBKw6R0N8ml+U=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=mHotoFtdZMlM86rf05GjVS1hIQHVGY+QJJ+vZsRtNxlQMSVF6bRHUQs78ePz/GSpj
-	 MYvHi9oLhJY/cpGRXenwuB8oFtKcgId3R94o7KuiShWIZSoWa3soKNwyWMu0GEpx7o
-	 V8KRmAFJTBk6ZmRYIAfEtRFgnCh7VvB9IKBC6P9cSSpk/QR75H+snlm7ZzDmjHDzfy
-	 RoJwaOBBFIyB8J2ukHKpKQRo9OANqZpgHm3Fipl9/HKbYVyI9cuKjPCv2z5OdP8Ffy
-	 fq7qu4peIO7trxACKzIOROwltpmnM7X8kGGa/RZY2Yq0VGh2Jpxom0XxnVScrDFFIC
-	 k1UxmCaEo7dig==
-Date: Mon, 27 Nov 2023 14:48:08 +0000
-To: Jakub Kicinski <kuba@kernel.org>
-From: cristian_ci <cristian_ci@protonmail.com>
-Cc: "kvalo@kernel.org" <kvalo@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [BUG] wireless: mt7601u: probe failed with error -110
-Message-ID: <TW5Bad4rqn0eV1xH7glJEAQsf333rfPxAYZJ9hMIkaGJrAbMihh-AefdxZx0LtYiK5UUavBSBgOt9x75YgCyPR0cflycw5mNjGqsb7qPebk=@protonmail.com>
-In-Reply-To: <20231126142634.3a100e2c@kernel.org>
-References: <Bnwq2et4CBU1_MS8X3rFeejMDmKf2dr_BNq60IzBcGKbjTxHG1CjJ0zB_wZjn8_iLJsi7fCx6_Eh01ozYBqPA-cEZXMZE_X98E0b7yotXCg=@protonmail.com> <20231126142634.3a100e2c@kernel.org>
-Feedback-ID: 27475468:user:proton
+	Mon, 27 Nov 2023 14:48:53 +0000
+Received: by mail-il1-x12a.google.com with SMTP id e9e14a558f8ab-35cc92a26faso3870775ab.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Nov 2023 06:48:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1701096530; x=1701701330; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=E3FLX3YynhvX8mGBDXZEVUPH4OcHBZ2EUZ4Lk2rEt1c=;
+        b=f8kEKikiQWJu9BGjgriK6BypOFvhj02gaYwr6DGVXOkbGZJu7q5IiNVFNQTYRaDPWY
+         Rw6dNlzWJt8T1AsOY0DNahHFqTLwT8ZNeXBAvJKNwMam3Hmrh6ZgKNUi6Q7Cye49lN/n
+         CtDLP63SDZXggtbSxd+D1rxhuYJM9WhKYrKxU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701096530; x=1701701330;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=E3FLX3YynhvX8mGBDXZEVUPH4OcHBZ2EUZ4Lk2rEt1c=;
+        b=ZBo3oHzbKmhgh5YCSQXdMUtuPL8Gp48HVXWJWwHuCv62B8pp8S87xLzDt+m50fs7K9
+         KH48MN9bVjuRZKh8WzTsCu41j3ifhI5qfLxaTv0ElPJm+0y3inmuXGtVZ8bd/kmLZAnX
+         Pg1w+KPitoDn+HhI0F+sKgC1N74UB8/knzuB6ujFXzpYYQrYhocSZW2TwHnmrLQRuBWu
+         rkYCVhOyb8t8xPApdSydlK9M/o0HJQFY6EGehjRXtmyEUxC7CbQUGnFJ+e8YMY9X2+DS
+         mRyu3GqdTNcoWvnWw+OzrI4sgfBUx2WMZuw6WdD6nzA6PXE1ACajfYkF+kDIoqzW8v+E
+         etdg==
+X-Gm-Message-State: AOJu0YwlAti6MjhZWr6e0JsGrHM9yHtKFEMqmEF35P3K8oUetEYo5kby
+	1af3xSsYNuq4yeHbc4lFHXRJjITZC6/EWI+o45eh0w==
+X-Google-Smtp-Source: AGHT+IGcnqezwlGNDh2RQ7YHJ0GhpoAmyujmyGpF9m9aXpMS1mAWqIijhV4vdV0EDPLxT8+wxU+ENK4jUdVRZpXfG9I=
+X-Received: by 2002:a05:6e02:20eb:b0:35c:7b32:2425 with SMTP id
+ q11-20020a056e0220eb00b0035c7b322425mr11231186ilv.8.1701096530125; Mon, 27
+ Nov 2023 06:48:50 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20231117095531.1693753-1-treapking@chromium.org> <CAPDyKFqjcP2pAH8uo61Yc7wU76NM1aCMN6P1TaAoafCFfZSeWw@mail.gmail.com>
+In-Reply-To: <CAPDyKFqjcP2pAH8uo61Yc7wU76NM1aCMN6P1TaAoafCFfZSeWw@mail.gmail.com>
+From: Pin-yen Lin <treapking@chromium.org>
+Date: Mon, 27 Nov 2023 22:48:39 +0800
+Message-ID: <CAEXTbpd7qD4qzY0p3rDD92eTMVCeu+ZsOWBMwJA8cOYe8=JvgA@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mtk-sd: Increase the verbosity of msdc_track_cmd_data
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, 
+	ot_shunxi.zhang@mediatek.corp-partner.google.com, 
+	linux-arm-kernel@lists.infradead.org, linux-mmc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_064832_469971_22EE85D1 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231127_064852_408217_F68895B2 
+X-CRM114-Status: GOOD (  19.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,30 +88,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Ulf,
 
-On Sunday, November 26th, 2023 at 23:26, Jakub Kicinski <kuba@kernel.org> w=
-rote:
+On Fri, Nov 24, 2023 at 1:13=E2=80=AFAM Ulf Hansson <ulf.hansson@linaro.org=
+> wrote:
+>
+> On Fri, 17 Nov 2023 at 10:55, Pin-yen Lin <treapking@chromium.org> wrote:
+> >
+> > This log message is necessary for debugging, so enable it by default to
+> > debug issues that are hard to reproduce locally.
+> >
+> > Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+> >
+> > ---
+> >
+> >  drivers/mmc/host/mtk-sd.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> > index 97f7c3d4be6e..4469003f571e 100644
+> > --- a/drivers/mmc/host/mtk-sd.c
+> > +++ b/drivers/mmc/host/mtk-sd.c
+> > @@ -1150,7 +1150,7 @@ static void msdc_recheck_sdio_irq(struct msdc_hos=
+t *host)
+> >  static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_com=
+mand *cmd)
+> >  {
+> >         if (host->error)
+> > -               dev_dbg(host->dev, "%s: cmd=3D%d arg=3D%08X; host->erro=
+r=3D0x%08X\n",
+> > +               dev_err(host->dev, "%s: cmd=3D%d arg=3D%08X; host->erro=
+r=3D0x%08X\n",
+> >                         __func__, cmd->opcode, cmd->arg, host->error);
+>
+> How critical is this? Should we perhaps use a dev_warn instead?
 
-> Does it work with the vendor driver? The upstream driver is just
-> a rewrite of the vendor driver, I don't know much about the device
-> internals.
->=20
+After rechecking the driver, I agree that dev_warn() is probably
+enough as the driver tries to reset the hardware to recover from the
+bad state when this error happens.
 
-I remember I tried the device with the vendor driver [1] (which is not comp=
-atible with mainline) and it should work in that case. I noticed there is a=
- datasheet somewhere out around, BTW I've also found information here [2] a=
-nd here [3] about the driver and devices shipping this chip under several b=
-rands.
+I'll wait a few days before sending out v2 to see if Mediatek people
+can confirm this.
 
-> Maybe Lorenzo or Felix have some ideas.
-Indeed, I dared to fw and cc them in order to join this discussion.
-
-Regards,
-
-Cristian.
-
-[1] https://www.mediatek.com/products/broadband-wifi/mt7601u
-[2] http://en.techinfodepot.shoutwiki.com/wiki/Mt7601u
-[3] http://en.techinfodepot.shoutwiki.com/wiki/MediaTek_MT7601U
+Thanks and regards,
+Pin-yen
+>
+> >  }
+> >
+>
+> Kind regards
+> Uffe
 
