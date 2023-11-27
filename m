@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04323C07CB1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 03:56:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA6A9C07CB1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 04:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OdQ/Y6CJ/tXJPIZwoVwtxZbsYvh8pLzEZAF/c5I9cSM=; b=Ejl7LqP7GFz79ySvalpIUXuCPl
-	kvrCBQWyq7LTPlNXGtK60CG+hrLZQtoT4jjoWZywBPxSFS1DFiVnORembINn98z+suNNtcUQn4tfX
-	pyTLV59zCnH8csT83AJhmL9KER5vCOOisEjhe//GHsuwPKREW+cepqh/TXCNFnPLYATtbG5MP2Am3
-	JOVNthUpjjO1eOFYp+I4HpqWn24J7GAwvRrLSCJeWjxukRiExHJ03MwIALk6P/r+6Xi8wLbbCJZRu
-	IWDrPnDA+zN5clJrxc60mTQCRp+rxfBfb5gY0QI38d/ujivMC5V4k/l+GOJuJW3F8z+iaT3XV4vkr
-	QC35zGuA==;
+	bh=2hyXUgZR2V8CGJro2dBZPICRFG2CL4zf1FqusNumER4=; b=mqdL2BuGWnrvM1NWm6KwBIbfPc
+	FNT6IBojxAx7hhLHiqlIS5ecAqKHSRw82l/azVjIOSbPQ5GIj+BZXjfUEz9MMsZXkydYmGC4XxdtS
+	Cnl9VWNPKjWwF4ShWtnshlpI0MV8yEg33KUMZUD+Cqg+GrGPmlGpH+Crv0cF6zwV05HxJPQvSd5Re
+	x/0LhsUvrucERTFc3kp0uv10CrXuzNnaiTHzmz6wnNIS0xpSB5oJJf1YUPeknpGBmVeAbdjxk54BC
+	cAAlVBUnL15tNJkR11HhlRR2gHLMIYZcumQhrYjTvnyYYd9fgXlkBV+p9wDJ/NtrBsBDtK9VmDlm0
+	MackMLoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Sjj-001G0a-0z;
-	Mon, 27 Nov 2023 03:56:43 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1r7SnN-001GIx-11;
+	Mon, 27 Nov 2023 04:00:29 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Sjg-001Fzp-0f
+	id 1r7SnI-001GGr-31
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Nov 2023 03:56:41 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-507962561adso5781484e87.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 26 Nov 2023 19:56:39 -0800 (PST)
+	Mon, 27 Nov 2023 04:00:27 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-50aaaf6e58fso5773143e87.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 26 Nov 2023 20:00:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701057397; x=1701662197; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1701057621; x=1701662421; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OdQ/Y6CJ/tXJPIZwoVwtxZbsYvh8pLzEZAF/c5I9cSM=;
-        b=hJu5DsaX+OWkjzVT9RAX9U2vStiAx5XsTzAJ8j0eivJXWv3HreMXzLjkOp9ficZBtG
-         HjcUr2finr9Ikb4cAClcuOr0wknMw8YcYUhbGuWiT8alpz7FiH3C9kb0G/rDwg34/GwJ
-         5IKSktKdExDeC9YyfcjCUFzrgNbX/O9XYcDkE=
+        bh=2hyXUgZR2V8CGJro2dBZPICRFG2CL4zf1FqusNumER4=;
+        b=DsMRxkbkBgncSbg2IEXeY8Kw8icPnVM6udtw9cKZhOY7ubg0p9kt4tZe3FRtqhnHYV
+         D6VaEWbfbpTmmFAHhXl1pTjwR2aDrgNlHfvgfrOiy5GuQ414u0l41foOUrPn5iGsG48M
+         TcszxlSc87wkDi1Ne14Kq9pgxwHd0nh0f0gKw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701057397; x=1701662197;
+        d=1e100.net; s=20230601; t=1701057621; x=1701662421;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=OdQ/Y6CJ/tXJPIZwoVwtxZbsYvh8pLzEZAF/c5I9cSM=;
-        b=Psfl7JDfXWffJ84iCBhN6IQU1uBW0Xo/fWYKJ2NZvNB/yNnqqGS8/iKmQLUo0mmvkv
-         rqvQ+wsj/Mu3zFjP7+Xa0EBChLNBpwBSDQItv6tC1ez0aO38cqhnBNhrL9WFPDuRnUsZ
-         cixIBsXIc0xNU5tPKCk9+uNwdIgch9/HQQK8zHnF153JQXQq2djjeLGFOHrdDsDCU+qY
-         inwsFQNy5kXt86YoGj1xidkBi80OS5UObrU0l/ii/7NAHBH0rx97DmwIFEcnqlOmhyex
-         a2L7W2CX/3how3LSMwiGr3jVzpb3G+r02/HYCDRIOyLPtreiqV95oPDkTT+o6KuNEAWJ
-         YbIQ==
-X-Gm-Message-State: AOJu0Yx4cQGwphjQMMkn/G4+aT0YPLs0N23YAYKtjOoHSgClQiyisD8j
-	n/Bhim0x9qut04rFTjuKcuSPOfm5zGYHwresyVQZapnugdRDW+AU
-X-Google-Smtp-Source: AGHT+IH2iG08bIzEYYLAosPnZIOh4c7YPh9mfzAUPfhoifHONl5nCDKLKbiU6DKmkAdHGe0GNyiN+vKEshOsCkQVOrw=
-X-Received: by 2002:a05:6512:3d94:b0:507:9a66:3577 with SMTP id
- k20-20020a0565123d9400b005079a663577mr4725984lfv.5.1701057397494; Sun, 26 Nov
- 2023 19:56:37 -0800 (PST)
+        bh=2hyXUgZR2V8CGJro2dBZPICRFG2CL4zf1FqusNumER4=;
+        b=LjdhwEHy+vt1YdNSCsA7i3j5MEMxCRKkAq8yZWsPJtuTh3ry2P9FFElRHnEZBSlZ0M
+         yLQDKqnr9tY4aLpbKy2HPEGkTqdmUuhMbL7icpSm7tmWD044mEkJKDPP1qrpOVUzC4HX
+         18iiF5bnPMv+yZ7wLb9SM2pHIwkUL3A286+DM6zPFJDgAJkqdSs0USFIz7Wd6P/uG7u9
+         iImYIepisGq/Tmt3Z3sBSLXg8AGBZoK22kS13YwRz80g8WdVTB4O+2JsiXrqSg6J5G5z
+         lBeu7KmUGTMhPs/Z9q3x7j7E7cVGtiCDqVx1Ka6wAd+0odIBLo+31+QJQ57pWC8JTvOb
+         cfHQ==
+X-Gm-Message-State: AOJu0Yz1yFuPX5xteUNDwqovROIOAMWYIQZxz/JpuxjWTl6pT3x8crkk
+	ACHVS77Yn7enbgCxgBakK7JHkkJggl8yqWpt16M+Lg==
+X-Google-Smtp-Source: AGHT+IGWNLzkTfKJ9/s46JZ8EFnCkfTriGkCE5/WH1eK+5G+zIursvHQuaGd5Lbk44N+a4VuvKKNSbjCULPbRF3Hxbg=
+X-Received: by 2002:a19:ac48:0:b0:50a:6fc5:e95c with SMTP id
+ r8-20020a19ac48000000b0050a6fc5e95cmr6666053lfc.60.1701057621033; Sun, 26 Nov
+ 2023 20:00:21 -0800 (PST)
 MIME-Version: 1.0
-References: <20231012230237.2676469-1-wenst@chromium.org> <20231012230237.2676469-8-wenst@chromium.org>
- <bbc99c85-750e-4736-9320-cf9471fe4c92@collabora.com>
-In-Reply-To: <bbc99c85-750e-4736-9320-cf9471fe4c92@collabora.com>
+References: <20231012230237.2676469-1-wenst@chromium.org> <20231012230237.2676469-7-wenst@chromium.org>
+ <60beb523-292b-4c77-9030-1bfdfd73c140@collabora.com>
+In-Reply-To: <60beb523-292b-4c77-9030-1bfdfd73c140@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 27 Nov 2023 11:56:26 +0800
-Message-ID: <CAGXv+5EiopM2wdccvh5_p9+67DAZnCpEhLeXUfm=3ih2hFZU3g@mail.gmail.com>
-Subject: Re: [PATCH 7/9] arm64: dts: mediatek: Introduce MT8186 Steelix
+Date: Mon, 27 Nov 2023 12:00:10 +0800
+Message-ID: <CAGXv+5GmjZbzLbxADoNXDiF8dTAwnxva29vuM0FG8vY-6wTJcQ@mail.gmail.com>
+Subject: Re: [PATCH 6/9] arm64: dts: mediatek: Add MT8186 Krabby platform
+ based Tentacruel / Tentacool
 To: Eugen Hristev <eugen.hristev@collabora.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, 
@@ -73,8 +74,8 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231126_195640_289041_58580B25 
-X-CRM114-Status: GOOD (  23.45  )
+X-CRM114-CacheID: sfid-20231126_200025_126931_548763BB 
+X-CRM114-Status: GOOD (  23.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,77 +90,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 16, 2023 at 4:36=E2=80=AFPM Eugen Hristev
+On Mon, Oct 23, 2023 at 5:05=E2=80=AFPM Eugen Hristev
 <eugen.hristev@collabora.com> wrote:
 >
 > On 10/13/23 02:02, Chen-Yu Tsai wrote:
-> > The MT8186 Steelix, also known as the Lenovo 300e Yoga Chromebook Gen 4=
-,
-> > is a convertible device based on a common design of the same name. The
-> > device comes in different variants. Of them, whether a world facing
-> > camera is integrated is the only differentiating factor between the
-> > two device trees added. The different SKU IDs describe this alone.
+> > Tentacruel and Tentacool are MT8186 based Chromebooks based on the
+> > Krabby design.
 > >
-> > The other device difference is the touchpad component used. This is
-> > simply handled by having both possible components described in the
-> > device tree, and letting the implementation figure out which one is
-> > actually available. The system bootloader / firmware does not
-> > differentiate this in that they share the same SKU IDs.
+> > Tentacruel, also known as the ASUS Chromebook CM14 Flip CM1402F, is a
+> > convertible device with touchscreen and stylus.
+> >
+> > Tentacool, also known as the ASUS Chromebook CM14 CM1402C, is a laptop
+> > device. It does not have a touchscreen or stylus.
+> >
+> > The two devices both have two variants. The difference is a second
+> > source touchpad controller that shares the same address as the original=
+,
+> > but is incompatible.
+> >
+> > The extra SKU IDs for the Tentacruel devices map to different sensor
+> > components attached to the Embedded Controller. These are not visible
+> > to the main processor.
 > >
 > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
-> >   .../mt8186-corsola-steelix-sku131072.dts      |  18 ++
-> >   .../mt8186-corsola-steelix-sku131073.dts      |  18 ++
-> >   .../dts/mediatek/mt8186-corsola-steelix.dtsi  | 197 +++++++++++++++++=
+> >   arch/arm64/boot/dts/mediatek/Makefile         |    4 +
+> >   .../dts/mediatek/mt8186-corsola-krabby.dtsi   |  130 ++
+> >   .../mt8186-corsola-tentacool-sku327681.dts    |   49 +
+> >   .../mt8186-corsola-tentacool-sku327683.dts    |   26 +
+> >   .../mt8186-corsola-tentacruel-sku262144.dts   |   44 +
+> >   .../mt8186-corsola-tentacruel-sku262148.dts   |   28 +
+> >   .../boot/dts/mediatek/mt8186-corsola.dtsi     | 1704 ++++++++++++++++=
 +
-> >   4 files changed, 235 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steeli=
-x-sku131072.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steeli=
-x-sku131073.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steeli=
-x.dtsi
+> >   7 files changed, 1985 insertions(+)
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby=
+.dtsi
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentac=
+ool-sku327681.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentac=
+ool-sku327683.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentac=
+ruel-sku262144.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentac=
+ruel-sku262148.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
 > >
 
 [...]
 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi b=
-/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/ar=
+m64/boot/dts/mediatek/mt8186-corsola.dtsi
 > > new file mode 100644
-> > index 000000000000..8488f2f9dc4d
+> > index 000000000000..42ebab1bafeb
 > > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
-> > @@ -0,0 +1,197 @@
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+> > @@ -0,0 +1,1704 @@
 
 [...]
 
-> > +&i2c2 {
-> > +     i2c-scl-internal-delay-ns =3D <22000>;
-> > +
-> > +     /* second source component */
-> > +     touchpad@2c {
-> > +             compatible =3D "hid-over-i2c";
-> > +             reg =3D <0x2c>;
-> > +             hid-descr-addr =3D <0x20>;
-> > +             interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> > +             pinctrl-names =3D "default";
-> > +             pinctrl-0 =3D <&trackpad_pin>;
-> > +             vdd-supply =3D <&pp3300_s3>;
-> > +             wakeup-source;
-> > +     };
 >
 > Hi Chen-Yu,
 >
-> This is not okay, the `trackpad_pin` is shared with touchpad@15 , and if
-> drivers are probed in parallel , this can lead to a conflict on this pin
-> (GPIO11)
+> These two aud_gpio_tdm empty entries cause this message to be printed:
+>
+> [   12.949519] mt8186_mt6366_rt1019_rt5682s sound: there is not valid
+> maps for state aud_gpio_tdm_off
+> [   12.959025] mt8186_mt6366_rt1019_rt5682s sound: there is not valid
+> maps for state aud_gpio_tdm_on
 
-You're right. I've moved it under i2c2 for now, as we do for other platform=
-s
-with second source components.
-
-This should hopefully be cleaned up once we have a hardware prober.
+I guess we need to teach the sound driver to ignore empty pinmux states?
 
 ChenYu
 
