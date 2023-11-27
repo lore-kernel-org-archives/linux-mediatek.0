@@ -4,89 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F2B8C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 07:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 002A1C07D5A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 07:20:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FfM/LFHjkcBsRth/jK9IUe/5rqKeTocfopTS7wMKfnY=; b=x60mQsjmbrHlX9tlG6+a89Ty2m
-	UDIB6qPSXTovBUlqUD3n7EkA12HjtN5rUNKv7DDkNS8AyLmfIsk7MswownhTkZ7RYKZxJqDRBkcl6
-	BMeuTDxEOTC8qUUy1EfiI8scukBmdzCWhOi/RLSM8FfM6fwkv476sqwS/SJDM1kKwzJBtYKsHuTTT
-	906rg9v4waE6f0AFMJcnQdzWWemO1UHXggfmnsCDaR1bIBn88+DtOuz8cKL4EnrB17g/BpdNB+py+
-	w3cECz+9aYzHUX+MoEAIwJlFbzpUmO6Y5rcAMBxevH0O7COaT4sGPDgH+0qU6lesUCMPr1OEjRgqx
-	OuvzDrCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K2PJi3jwZOEV4t9opwJNWlHsedlGUWYs96i+olFWgks=; b=Db3k8MaIbeotJ5aok1kF06EcBM
+	PwadVRlh+YK0HkBo3sp1k1Ji/IjFkTNoJHgLpH0yGQmsTQzs/G4Qj8clEQ+8mTD+hX/sZReVuyIz0
+	fz0jgRSmS2lfnrlUudkFbxed5NXQ6d8KOfmOj5UPkJHZLzp1QjuATrI9sSEI5oc1P9ziAHa1u+dpB
+	lcK/ijgpBU0Dz9f9ttrXBxlkKNu2JioDLxPkbOUWaMKsw0Uu95c9C1R6uVpK3nn2IS4jicYuSTiNh
+	pK+yJTxy2B5Fahmw+lc0klyvYK5N6N7n3y5EnyINCzSS5e+5ysrriqHDw8Zuxhr3RiMytnVQEtDAL
+	zjktegIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7VhV-001efg-17;
-	Mon, 27 Nov 2023 07:06:37 +0000
+	id 1r7Vua-001hzq-2S;
+	Mon, 27 Nov 2023 07:20:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7VhN-001edd-2Z;
-	Mon, 27 Nov 2023 07:06:32 +0000
-X-UUID: 786c5c768cf311ee86758d4a7c00f3a0-20231127
+	id 1r7VuW-001hy0-0h;
+	Mon, 27 Nov 2023 07:20:05 +0000
+X-UUID: 5f5d793e8cf511ee86758d4a7c00f3a0-20231127
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FfM/LFHjkcBsRth/jK9IUe/5rqKeTocfopTS7wMKfnY=;
-	b=ng3Bo+YQnERGOnT7ztC4R8StCtj6WolnTE4LvIKZ7dQT1JRUJWO2rFGHgENgExbBCUxQjeahPu+IECoaC/rWwRT5tf/rFt8mTxlerbQsluTRymZdmQRtIAiqb7+02OPzctgqTUc5B3PIcv9hVCxU+mZs7nUXIQ0S+1/xQ6f9llI=;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=K2PJi3jwZOEV4t9opwJNWlHsedlGUWYs96i+olFWgks=;
+	b=oTVS80KkpX1TIVZwCQ5i0YY3rM9Rdn8C9STXLV2OEtabIlVQvfs6bvaLeykkoK6dK5zikcdLdTr3S1RMgYknPHDZXMAICX+yglJHf1qxigEyRPi4a2nmWngEfWeYg5mfDGDUDHHRPxj1zHr3UqSkIBTB7psWEiBeO/XbKw58YhQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:5033c5c9-5aab-445a-b1f8-051a7e271e15,IP:0,U
-	RL:0,TC:0,Content:42,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:42
-X-CID-META: VersionHash:364b77b,CLOUDID:44c41b73-1bd3-4f48-b671-ada88705968c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+X-CID-O-INFO: VERSION:1.1.34,REQID:63888229-8560-4bb5-b421-b5b56ee712b2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:abefa75,CLOUDID:6d6d8460-c89d-4129-91cb-8ebfae4653fc,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 786c5c768cf311ee86758d4a7c00f3a0-20231127
+X-UUID: 5f5d793e8cf511ee86758d4a7c00f3a0-20231127
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <kuan-ying.lee@mediatek.com>)
+	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2028640867; Mon, 27 Nov 2023 00:06:22 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 322574641; Mon, 27 Nov 2023 00:19:58 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 27 Nov 2023 15:05:19 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 27 Nov 2023 15:05:19 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <casper.li@mediatek.com>, <chinwen.chang@mediatek.com>,
-	<qun-wei.lin@mediatek.com>, <linux-mm@kvack.org>,
-	<akpm@linux-foundation.org>, Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 3/3] scripts/gdb: Remove exception handling and refine print format
-Date: Mon, 27 Nov 2023 15:04:03 +0800
-Message-ID: <20231127070404.4192-4-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231127070404.4192-1-Kuan-Ying.Lee@mediatek.com>
-References: <20231127070404.4192-1-Kuan-Ying.Lee@mediatek.com>
+ 15.2.1118.26; Mon, 27 Nov 2023 15:09:20 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Mon, 27 Nov 2023 15:09:16 +0800
+Message-ID: <239def9b-437b-9211-7844-af4332651df0@mediatek.com>
+Date: Mon, 27 Nov 2023 15:09:16 +0800
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 1/2] dt-bindings: phy: mediatek: tphy: add a property for
+ force-mode switch
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Chunfeng Yun
+	<chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, Bear.Wang <bear.wang@mediatek.com>, Pablo Sun
+	<pablo.sun@mediatek.com>
+References: <20231125012303.760-1-chunfeng.yun@mediatek.com>
+ <e34c2746-8e93-48b8-9c96-690242fbf6e9@linaro.org>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <e34c2746-8e93-48b8-9c96-690242fbf6e9@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--0.929400-8.000000
-X-TMASE-MatchedRID: Av/pE9tNfKGWHmpvkeKJB0hwlOfYeSqx3xlpFMX5MCCQ2TbICkFOdk69
-	FgKoS/097PSkEF73uYd7VWtw6SMI5Kawq2pdPD7UA9lly13c/gGb/LTS0T1K1k4K0IMk2m3GwVB
-	JSJ8GjJw3fJWouRpjSXrw5BSR88yeSoBVPxvX5SSQOktEo73GFOTWKSbLQnNI0w5IABkoK4ejxY
-	yRBa/qJcFwgTvxipFa9xS3mVzWUuAojN1lLei7RYYOtKqE9TMltcW9OiWFpt72ZzE2SrN70Z+eC
-	VfOOV58l0THHo7ATW+guLN8VZYRFDky1wRoSxJfiCCOl1JcKQZai0D30EU35nmVKZusLp922v9O
-	jYWA2uMMswg45VMfPXY3pGDmoik6
+X-TM-AS-Result: No-10--23.998500-8.000000
+X-TMASE-MatchedRID: oHOSwQSJZWjOA/Z0gqCQkia1MaKuob8PCJpCCsn6HCHBnyal/eRn3gzR
+	CsGHURLuwpcJm2NYlPAF6GY0Fb6yCkcld4HSm4ijJhFEQZiq2ZRaNaxZBRbNWi8zQZ2rR/OpHAC
+	UcDvcWyAWCFKYHMKZzrku/UHvXeV0lKHFFpLwOfV0BEBFOTiHn0yQ5fRSh265DpCUEeEFm7BCcg
+	190NG0Lm7WtzS49SDh7gJfo9qwL5MLd3u89FoqUYx50lzSVLoGuLwbhNl9B5Vb6PBUqmq+Uqmw5
+	s23nMRbldeVwPvfm98WDRm21M319O7xD4C0m34gSDkh6bW+bce+1Vx7rDn4r9E7QwDOCDQvumwa
+	iQr4L/9esXg8Yfd+c0h3fkYy4ItjjeaAXTNKmaPJ1E/nrJFED22yXuVfuC5Sv+26ZYWzwkIjoQf
+	+PfmfKG7NLVzg+DHpBpRFZxWdQvVWPFA/2aU/QZ4CIKY/Hg3AtOt1ofVlaoLUHQeTVDUrItRnEQ
+	CUU+jzjoczmuoPCq2UTGVAhB5EbQ==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--0.929400-8.000000
+X-TMASE-Result: 10--23.998500-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 847D7A48C3336C1D5104C7B296990B2AD0769F6D258E074659F3A149850583532000:8
-X-MTK: N
+X-TM-SNTS-SMTP: 06540C401410A2EDC9AFE6778E2BD70B19C59F2E68A1AB5AEC12EA9AC240FB322000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231126_230629_842558_6A7D31BD 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20231126_232004_271033_A316C720 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,109 +109,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. When we crash on a page, we want to check what
-happened on this page instead of skipping this page by
-try-except block. Thus, removing the try-except block.
+On 11/25/23 18:37, Krzysztof Kozlowski and Chunfeng Yun wrote:
+> 	
+> 
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
+> 
+> On 25/11/2023 02:23, Chunfeng Yun wrote:
+>> Due to some old SoCs with shared t-phy only support force-mode switch, and
+>> can't use compatible to distinguish between shared and non-shared t-phy,
+>> add a property to supported it.
+>> But now prefer to use "mediatek,syscon-type" on new SoC as far as possible.
+>> 
+>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>> ---
+>>  Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 6 ++++++
+>>  1 file changed, 6 insertions(+)
+>> 
+>> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+>> index 2bb91542e984..eedba5b7025e 100644
+>> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+>> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+>> @@ -235,6 +235,12 @@ patternProperties:
+>>            Specify the flag to enable BC1.2 if support it
+>>          type: boolean
+>>  
+>> +      mediatek,force-mode:
+>> +        description:
+>> +          Use force mode to switch shared phy mode, perfer to use the bellow
+> 
+> I still do not understand what is the "force mode" you want to use. What
+> modes do you have? What are the characteristics of force mode?
+> 
+> Also, please run spellcheck.
+> 
+> Best regards,
+> Krzysztof
+> 
 
-2. Remove redundant comma and print the task name properly.
+Thanks!
 
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
----
- scripts/gdb/linux/page_owner.py | 58 ++++++++++++++-------------------
- scripts/gdb/linux/slab.py       |  3 +-
- 2 files changed, 26 insertions(+), 35 deletions(-)
+1. I've tested this patch and it could solve the clock unstable for
+XHCI1 on mt8195 or mt8395 during system boot up or during
+unload/reload the phy driver.
 
-diff --git a/scripts/gdb/linux/page_owner.py b/scripts/gdb/linux/page_owner.py
-index 844fd5d0c912..8e713a09cfe7 100644
---- a/scripts/gdb/linux/page_owner.py
-+++ b/scripts/gdb/linux/page_owner.py
-@@ -122,27 +122,24 @@ class DumpPageOwner(gdb.Command):
-         if not (page_ext['flags'] & (1 << PAGE_EXT_OWNER_ALLOCATED)):
-             gdb.write("page_owner is not allocated\n")
- 
--        try:
--            page_owner = self.get_page_owner(page_ext)
--            gdb.write("Page last allocated via order %d, gfp_mask: 0x%x, pid: %d, tgid: %d (%s), ts %u ns, free_ts %u ns\n" %\
--                    (page_owner["order"], page_owner["gfp_mask"],\
--                    page_owner["pid"], page_owner["tgid"], page_owner["comm"],\
--                    page_owner["ts_nsec"], page_owner["free_ts_nsec"]))
--            gdb.write("PFN: %d, Flags: 0x%x\n" % (pfn, page['flags']))
--            if page_owner["handle"] == 0:
--                gdb.write('page_owner allocation stack trace missing\n')
--            else:
--                stackdepot.stack_depot_print(page_owner["handle"])
-+        page_owner = self.get_page_owner(page_ext)
-+        gdb.write("Page last allocated via order %d, gfp_mask: 0x%x, pid: %d, tgid: %d (%s), ts %u ns, free_ts %u ns\n" %\
-+                (page_owner["order"], page_owner["gfp_mask"],\
-+                page_owner["pid"], page_owner["tgid"], page_owner["comm"].string(),\
-+                page_owner["ts_nsec"], page_owner["free_ts_nsec"]))
-+        gdb.write("PFN: %d, Flags: 0x%x\n" % (pfn, page['flags']))
-+        if page_owner["handle"] == 0:
-+            gdb.write('page_owner allocation stack trace missing\n')
-+        else:
-+            stackdepot.stack_depot_print(page_owner["handle"])
- 
--            if page_owner["free_handle"] == 0:
--                gdb.write('page_owner free stack trace missing\n')
--            else:
--                gdb.write('page last free stack trace:\n')
--                stackdepot.stack_depot_print(page_owner["free_handle"])
--            if page_owner['last_migrate_reason'] != -1:
--                gdb.write('page has been migrated, last migrate reason: %s\n' % self.migrate_reason_names[page_owner['last_migrate_reason']])
--        except:
--            gdb.write("\n")
-+        if page_owner["free_handle"] == 0:
-+            gdb.write('page_owner free stack trace missing\n')
-+        else:
-+            gdb.write('page last free stack trace:\n')
-+            stackdepot.stack_depot_print(page_owner["free_handle"])
-+        if page_owner['last_migrate_reason'] != -1:
-+            gdb.write('page has been migrated, last migrate reason: %s\n' % self.migrate_reason_names[page_owner['last_migrate_reason']])
- 
-     def read_page_owner(self):
-         pfn = self.min_pfn
-@@ -173,18 +170,13 @@ class DumpPageOwner(gdb.Command):
-                 pfn += 1
-                 continue
- 
--            try:
--                page_owner = self.get_page_owner(page_ext)
--                gdb.write("Page allocated via order %d, gfp_mask: 0x%x, pid: %d, tgid: %d (%s), ts %u ns, free_ts %u ns\n" %\
--                        (page_owner["order"], page_owner["gfp_mask"],\
--                        page_owner["pid"], page_owner["tgid"], page_owner["comm"],\
--                        page_owner["ts_nsec"], page_owner["free_ts_nsec"]))
--                gdb.write("PFN: %d, Flags: 0x%x\n" % (pfn, page['flags']))
--                stackdepot.stack_depot_print(page_owner["handle"])
--                pfn += (1 << page_owner["order"])
--                continue
--            except:
--                gdb.write("\n")
--            pfn += 1
-+            page_owner = self.get_page_owner(page_ext)
-+            gdb.write("Page allocated via order %d, gfp_mask: 0x%x, pid: %d, tgid: %d (%s), ts %u ns, free_ts %u ns\n" %\
-+                    (page_owner["order"], page_owner["gfp_mask"],\
-+                    page_owner["pid"], page_owner["tgid"], page_owner["comm"].string(),\
-+                    page_owner["ts_nsec"], page_owner["free_ts_nsec"]))
-+            gdb.write("PFN: %d, Flags: 0x%x\n" % (pfn, page['flags']))
-+            stackdepot.stack_depot_print(page_owner["handle"])
-+            pfn += (1 << page_owner["order"])
- 
- DumpPageOwner()
-diff --git a/scripts/gdb/linux/slab.py b/scripts/gdb/linux/slab.py
-index f012ba38c7d9..0e2d93867fe2 100644
---- a/scripts/gdb/linux/slab.py
-+++ b/scripts/gdb/linux/slab.py
-@@ -228,8 +228,7 @@ def slabtrace(alloc, cache_name):
-             nr_cpu = gdb.parse_and_eval('__num_online_cpus')['counter']
-             if nr_cpu > 1:
-                 gdb.write(" cpus=")
--                for i in loc['cpus']:
--                    gdb.write("%d," % i)
-+                gdb.write(','.join(str(cpu) for cpu in loc['cpus']))
-         gdb.write("\n")
-         if constants.LX_CONFIG_STACKDEPOT:
-             if loc['handle']:
--- 
-2.18.0
+The error message has been listed as follows.
 
+[   13.849936][   T72] xhci-mtk 11290000.usb: supply vbus not found, 
+using dummy regulator
+[   13.851300][   T72] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
+[   13.852624][   T72] xhci-mtk 11290000.usb: xHCI Host Controller
+[   13.853393][   T72] xhci-mtk 11290000.usb: new USB bus registered, 
+assigned bus number 3
+[   13.874490][   T72] xhci-mtk 11290000.usb: clocks are not stable (0x3d0f)
+[   13.875369][   T72] xhci-mtk 11290000.usb: can't setup: -110
+[   13.876091][   T72] xhci-mtk 11290000.usb: USB bus 3 deregistered
+[   13.877081][   T72] xhci-mtk: probe of 11290000.usb failed with error 
+-110
+
+2. This is a fix patch to XHCI1 since MT8195 has been upstream.
+Please add "Fixes:" tags and "Cc: stable@kernel.org" to back ward
+porting to previous stable trees.
+
+For example, add
+Fixes: 6b5ef194611e5 ("phy: mediatek: tphy: remove macros to prepare 
+bitfield")
+is suggested since the force-mode was missing in the previous
+implementation which causes hardware function was abnormal.
+However, add
+Fixes: 33d18746fa514 ("phy: phy-mtk-tphy: use new io helpers to access 
+register")
+will be better since the USB support for mt8195 is already enabled in 
+late 2021.
+
+3. How about we revise the description as follows for more precisely?
+
+mediatek,force-mode:
+   description:
+     The force mode is used to manually switch the shared PHY mode
+     between USB and PCIe. When force-mode is set, the USB 3.0 mode
+     will be selected. This is typically required for older SoCs
+     that do not automatically manage PHY mode switching.
+     For newer SoCs that support it, it is preferable to use the
+     "mediatek,syscon-type" property instead.
+   type: boolean
+
+Thanks,
+Macpaul Lin
 
