@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35BCEC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 05:39:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A7FBC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 07:05:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NX4xnb+Y6UTiviuMBl/tewe6sCua/bVxOuCKRZ4I0bo=; b=0eHjyJcZ0ctbIlLGbINwwQMVbg
-	+PSprDGJL8MwZSVuyUcfZBbfiD33iV5IKW0MYZBET3RpBT8WHX5W2Hm0W87gsYUqT6rn7TMftDOY6
-	OS5n6o6j817sep5x9PlTT27LcrkV+fgVFUW1VpdlSTYLh9dWuLN1TIY5QBWzFj3ZtGzqU4kCEQFnG
-	hBApiAx/a0LflTTt5fJQq+JICfVsFRjZkiqV3rccbyF6CvnmKAWcLa03Bs65jOzGI0VAoXgPrx1hz
-	+ZOl1RdjLownDGxwoW7c17HQvLb/iuBGGnlBhSDCVS7xfvjiCzSkuRd+RtqdHL0lfPaEr5+vtH3ML
-	tBlLUC9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NYKZdfMEZ8N9fLthqw1urmuNwplT4YFs5p5D6iB4J6Q=; b=tF2kFYOUDAXdYMLLDTpWjwHLxX
+	l+HSPT40IuZODYPNG1EhISA8tt8y5nDOjCqbISn4TC6itIGrYmLd7LghEA+cpOna39KCqvYB2m9+D
+	DRBImePbH6mXTszAS8ERns12L3c2RrBYb7n4xkrKbnP3B5YSSKndG1LZEj2092S04/UOrgoXKc4Oe
+	UsKqaupmGDUp5tyiX1xJwCdOGG66P8ZyTKbE7L3LTk1LlyxX/kABd1mQD4/TecxSesNNplswl06Dl
+	/Ct94Jf7GQuYbDAVggbZN1QOKRlVSgFD/IjPlZxiK0wrGGRaOhswYQ+MHCEIvgeHNS2KzestklHrx
+	ByOVpQvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7UKw-001QGm-3C;
-	Mon, 27 Nov 2023 05:39:15 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1r7VgM-001eTE-0a;
+	Mon, 27 Nov 2023 07:05:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7UKs-001QFl-1I;
-	Mon, 27 Nov 2023 05:39:12 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-6cb9dd2ab56so3175921b3a.3;
-        Sun, 26 Nov 2023 21:39:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701063545; x=1701668345; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=NX4xnb+Y6UTiviuMBl/tewe6sCua/bVxOuCKRZ4I0bo=;
-        b=cybEbm26oTbm6ChMQjQn8ViwEFjjZowq6z5zWXi8YFiFjkiSQEgiZPCogSZxy7bQ6O
-         8fWGRighDwMrQeL+8dN96SiEFOEUQUhcQ4oWPvf/vGA8Mtlay27XRWDqHIFePrfxU0kk
-         K8IhLRn7b8/Ye9ryFdGoL/QEvTkakvexxDIwq+gf/lQTtkzE6NmPviNTJHqis1gaqeRV
-         RMtTK0iEaO6woZ0Yj7d2QEeJH8lvfhlEp9iaDdQvYpbVHIq7QJ8PRW4nWF3g5CWP93nt
-         eWUpAzgVx38i7mz58Quv9R4PeV2KB5vYwzVkUh/G3qEYZRwYHjRgE3ACYSuVblBU5QYO
-         Ym4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701063545; x=1701668345;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NX4xnb+Y6UTiviuMBl/tewe6sCua/bVxOuCKRZ4I0bo=;
-        b=Tc8boSqrosqZuEgPRPpxy0kAdGC2dVaGRToAXK8yzC/WecskQVIU1XQ/epOtO6tLGU
-         ix2+PqV2R4Qg5t4ExYcEVd2JSZPLz3UO5sWHcE+jyb3pIjhoLV8K5dq3OGjjyvN+iJCa
-         JHV/1Iwt3PViQ/vcilHS92aYb3JWpFZPdfR2pCSI8FaWjQKdkqAUA6fOXKb+aZVS44oQ
-         6t0sQVNhPHonAB1UW+gCvAuMQssOXVDeiw9Tk0GtivqjFa0vyhXlfDdRcQ4Lc46xtqlt
-         VFymIBKcI9jI0tAor2rNoHbrlyA0pQpwic1GuShp3pmDNmEdRxmjVR4I0wAKxyjKN/1H
-         jvrg==
-X-Gm-Message-State: AOJu0Yw9x0N7vVmY2+B5x1tJ9QXTJ1lgVOhW43XMGzFy5Hp/Rj6Bk/mS
-	q9aSHYKYAMQgrDAgSIFZu0s=
-X-Google-Smtp-Source: AGHT+IEXfuisJUFusS+Gaj5RNsLQEjGTROBbYT0tKXPV6334Nlqt2LUywy6CWVwD0CXcxJLfxejR3Q==
-X-Received: by 2002:a05:6a00:2d07:b0:6be:2991:d878 with SMTP id fa7-20020a056a002d0700b006be2991d878mr11641552pfb.15.1701063544569;
-        Sun, 26 Nov 2023 21:39:04 -0800 (PST)
-Received: from archie.me ([103.131.18.64])
-        by smtp.gmail.com with ESMTPSA id gu23-20020a056a004e5700b006cb6fa32590sm6532374pfb.148.2023.11.26.21.39.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Nov 2023 21:39:03 -0800 (PST)
-Received: by archie.me (Postfix, from userid 1000)
-	id 70C781033A242; Mon, 27 Nov 2023 12:38:59 +0700 (WIB)
-Date: Mon, 27 Nov 2023 12:38:59 +0700
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-To: Mukesh Ojha <quic_mojha@quicinc.com>, corbet@lwn.net, agross@kernel.org,
-	andersson@kernel.org, konrad.dybcio@linaro.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	keescook@chromium.org, tony.luck@intel.com, gpiccoli@igalia.com,
-	mathieu.poirier@linaro.org, vigneshr@ti.com, nm@ti.com,
-	matthias.bgg@gmail.com, kgene@kernel.org, alim.akhtar@samsung.com,
-	bmasney@redhat.com
-Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-hardening@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
-Subject: Re: [Patch v6 03/12] docs: qcom: Add qualcomm minidump guide
-Message-ID: <ZWQrc7w2AD2WvwkK@archie.me>
-References: <1700864395-1479-1-git-send-email-quic_mojha@quicinc.com>
- <1700864395-1479-4-git-send-email-quic_mojha@quicinc.com>
+	id 1r7VgJ-001eSG-0S;
+	Mon, 27 Nov 2023 07:05:24 +0000
+X-UUID: 501fe1de8cf311ee9b7791016c24628a-20231127
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NYKZdfMEZ8N9fLthqw1urmuNwplT4YFs5p5D6iB4J6Q=;
+	b=EC7Qa0Ki5KIbmkklpYBf8JCkTVw7GbNx4ZYahGqkPDp5WY5B3JUG88YpwRFImEn8EoTNmoYWrszVWCNEtP5SGtqL/LULVNX6dRO49g6T/mdZUYL9fppM/7sFahcpNXnpoqHDF/CzDuVZYm7CMJWErNeRzy7yOrCH5TYfmmhZNWg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:c37d389b-83c7-4a04-98d0-d7352a115487,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:364b77b,CLOUDID:3dd7fcfc-4a48-46e2-b946-12f04f20af8c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 501fe1de8cf311ee9b7791016c24628a-20231127
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <kuan-ying.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1242210859; Mon, 27 Nov 2023 00:05:14 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 27 Nov 2023 15:05:10 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 27 Nov 2023 15:05:10 +0800
+From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <casper.li@mediatek.com>, <chinwen.chang@mediatek.com>,
+	<qun-wei.lin@mediatek.com>, <linux-mm@kvack.org>,
+	<akpm@linux-foundation.org>, Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH 0/3] Fix GDB commands error
+Date: Mon, 27 Nov 2023 15:04:00 +0800
+Message-ID: <20231127070404.4192-1-Kuan-Ying.Lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="BuCQw3fkz+a4hLx6"
-Content-Disposition: inline
-In-Reply-To: <1700864395-1479-4-git-send-email-quic_mojha@quicinc.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--1.823900-8.000000
+X-TMASE-MatchedRID: 6efVvalF+GhBEeXXYJxA3huZoNKc6pl+MVx/3ZYby7/jud2x7TPVt/vO
+	+ii1kEU9/pKwAK6MbUroNOYPho+2K3kXYHF7PdsXtxwPIeWtDDlKPIx+MJF9o5soi2XrUn/J8m+
+	hzBStansUGm4zriL0oQtuKBGekqUpOlxBO2IcOBZcKP1ilp4RwRIWchrxYUogoPAkwJJUDVxm9A
+	2MjQXQP/PURVwGjI4MF7+B6EXI4pUSA+HPw22nHoCBf9PLMTwKuFgIMLB2+FfBkGBTIlURuXoXD
+	z8+lMxFpW+aIDJ4DaRzkxJ+SIkUjmncuUSUEdOX
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.823900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 3BFE860726066AA1B74EC332893E7866F20F00E093DBA136B8A9977664D1C52E2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231126_213910_446305_99E739E2 
-X-CRM114-Status: GOOD (  47.00  )
+X-CRM114-CacheID: sfid-20231126_230523_225915_ABC87029 
+X-CRM114-Status: UNSURE (   6.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,331 +98,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This patchset fix some issues of gdb command.
 
---BuCQw3fkz+a4hLx6
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Patch 1:
+ - Fix lx-ps command error
+Patch 2:
+ - Fix stackdepot usage error
+Patch 3:
+ - Remove exception handling
+ - Refine the printing format
 
-On Sat, Nov 25, 2023 at 03:49:46AM +0530, Mukesh Ojha wrote:
-> diff --git a/Documentation/admin-guide/index.rst b/Documentation/admin-gu=
-ide/index.rst
-> index 43ea35613dfc..251d070486c2 100644
-> --- a/Documentation/admin-guide/index.rst
-> +++ b/Documentation/admin-guide/index.rst
-> @@ -120,6 +120,7 @@ configure specific aspects of kernel behavior to your=
- liking.
->     perf-security
->     pm/index
->     pnp
-> +   qcom_minidump
->     rapidio
->     ras
->     rtc
-> diff --git a/Documentation/admin-guide/qcom_minidump.rst b/Documentation/=
-admin-guide/qcom_minidump.rst
-> new file mode 100644
-> index 000000000000..b492f2b79639
-> --- /dev/null
-> +++ b/Documentation/admin-guide/qcom_minidump.rst
-> @@ -0,0 +1,272 @@
-> +Qualcomm minidump feature
-> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D
-> +
-> +Introduction
-> +------------
-> +
-> +Minidump is a best effort mechanism to collect useful and predefined
-> +data for first level of debugging on end user devices running on
-> +Qualcomm SoCs. It is built on the premise that System on Chip (SoC)
-> +or subsystem part of SoC crashes, due to a range of hardware and
-> +software bugs. Hence, the ability to collect accurate data is only
-> +a best-effort. The data collected could be invalid or corrupted, data
-> +collection itself could fail, and so on.
-> +
-> +Qualcomm devices in engineering mode provides a mechanism for generating
-> +full system RAM dumps for post-mortem debugging. But in some cases it's
-> +however not feasible to capture the entire content of RAM. The minidump
-> +mechanism provides the means for selected region should be included in
-> +the ramdump.
-> +
-> +
-> +::
-> +
-> +   +-----------------------------------------------+
-> +   |   DDR                       +-------------+   |
-> +   |                             |      SS0-ToC|   |
-> +   | +----------------+     +----------------+ |   |
-> +   | |Shared memory   |     |         SS1-ToC| |   |
-> +   | |(SMEM)          |     |                | |   |
-> +   | |                | +-->|--------+       | |   |
-> +   | |G-ToC           | |   | SS-ToC  \      | |   |
-> +   | |+-------------+ | |   | +-----------+  | |   |
-> +   | ||-------------| | |   | |-----------|  | |   |
-> +   | || SS0-ToC     | | | +-|<|SS1 region1|  | |   |
-> +   | ||-------------| | | | | |-----------|  | |   |
-> +   | || SS1-ToC     |-|>+ | | |SS1 region2|  | |   |
-> +   | ||-------------| |   | | |-----------|  | |   |
-> +   | || SS2-ToC     | |   | | |  ...      |  | |   |
-> +   | ||-------------| |   | | |-----------|  | |   |
-> +   | ||  ...        | |   |-|<|SS1 regionN|  | |   |
-> +   | ||-------------| |   | | |-----------|  | |   |
-> +   | || SSn-ToC     | |   | | +-----------+  | |   |
-> +   | |+-------------+ |   | |                | |   |
-> +   | |                |   | |----------------| |   |
-> +   | |                |   +>|  regionN       | |   |
-> +   | |                |   | |----------------| |   |
-> +   | +----------------+   | |                | |   |
-> +   |                      | |----------------| |   |
-> +   |                      +>|  region1       | |   |
-> +   |                        |----------------| |   |
-> +   |                        |                | |   |
-> +   |                        |----------------|-+   |
-> +   |                        |  region5       |     |
-> +   |                        |----------------|     |
-> +   |                        |                |     |
-> +   |  Region information    +----------------+     |
-> +   | +---------------+                             |
-> +   | |region name    |                             |
-> +   | |---------------|                             |
-> +   | |region address |                             |
-> +   | |---------------|                             |
-> +   | |region size    |                             |
-> +   | +---------------+                             |
-> +   +-----------------------------------------------+
-> +       G-ToC: Global table of contents
-> +       SS-ToC: Subsystem table of contents
-> +       SS0-SSn: Subsystem numbered from 0 to n
-> +
-> +It depends on SoC where the underlying firmware is keeping the
-> +minidump global table taking care of subsystem ToC part for
-> +minidump like for above diagram, it is for shared memory sitting
-> +in DDR and it is shared among various master however it is possible
-> +that this could be implemented via memory mapped regions but the
-> +general idea should remain same. Here, various subsystem could be
-> +DSP's like ADSP/CDSP/MODEM etc, along with Application processor
-> +(APSS) where Linux runs. DSP minidump gets collected when DSP's goes
-> +for recovery followed by a crash. The minidump part of code for
-> +that resides in ``qcom_rproc_minidump.c``.
-> +
-> +
-> +SMEM as backend
-> +----------------
-> +
-> +In this document, SMEM will be used as the backend implementation
-> +of minidump.
-> +
-> +The core of minidump feature is part of Qualcomm's boot firmware code.
-> +It initializes shared memory (SMEM), which is a part of DDR and
-> +allocates a small section of it to minidump table, i.e. also called
-> +global table of contents (G-ToC). Each subsystem (APSS, ADSP, ...) has
-> +its own table of segments to be included in the minidump, all
-> +references from a descriptor in SMEM (G-ToC). Each segment/region has
-> +some details like name, physical address and its size etc. and it
-> +could be anywhere scattered in the DDR.
-> +
-> +Qualcomm APSS Minidump kernel driver concept
-> +--------------------------------------------
-> +
-> +Qualcomm APSS minidump kernel driver adds the capability to add Linux
-> +region to be dumped as part of RAM dump collection. At the moment,
-> +shared memory driver creates platform device for minidump driver and
-> +give a means to APSS minidump to initialize itself on probe.
-> +
-> +This driver provides ``qcom_minidump_region_register`` and
-> +``qcom_minidump_region_unregister`` API's to register and unregister
-> +APSS minidump region. It also supports registration for the clients
-> +who came before minidump driver was initialized. It maintains pending
-> +list of clients who came before minidump and once minidump is initialized
-> +it registers them in one go.
-> +
-> +To simplify post-mortem debugging, driver creates and maintain an ELF
-> +header as first region that gets updated each time a new region gets
-> +registered.
-> +
-> +The solution supports extracting the RAM dump/minidump produced either
-> +over USB or stored to an attached storage device.
-> +
-> +Dependency of minidump kernel driver
-> +------------------------------------
-> +
-> +It is to note that whole of minidump depends on Qualcomm boot firmware
-> +whether it supports minidump or not. So, if the minidump SMEM ID is
-> +present in shared memory, it indicates that minidump is supported from
-> +boot firmware and it is possible to dump Linux (APSS) region as part
-> +of minidump collection.
-> +
-> +How a kernel client driver can register region with minidump
-> +------------------------------------------------------------
-> +
-> +Client driver can use ``qcom_minidump_region_register`` API's to register
-> +and ``qcom_minidump_region_unregister`` to unregister their region from
-> +minidump driver.
-> +
-> +Client needs to fill their region by filling ``qcom_minidump_region``
-> +structure object which consists of the region name, region's virtual
-> +and physical address and its size.
-> +
-> +Below, is one sample client driver snippet which tries to allocate a
-> +region from kernel heap of certain size and it writes a certain known
-> +pattern (that can help in verification after collection that we got
-> +the exact pattern, what we wrote) and registers it with minidump.
-> +
-> + .. code-block:: c
-> +
-> +  #include <soc/qcom/qcom_minidump.h>
-> +  [...]
-> +
-> +
-> +  [... inside a function ...]
-> +  struct qcom_minidump_region region;
-> +
-> +  [...]
-> +
-> +  client_mem_region =3D kzalloc(region_size, GFP_KERNEL);
-> +  if (!client_mem_region)
-> +	return -ENOMEM;
-> +
-> +  [... Just write a pattern ...]
-> +  memset(client_mem_region, 0xAB, region_size);
-> +
-> +  [... Fill up the region object ...]
-> +  strlcpy(region.name, "REGION_A", sizeof(region.name));
-> +  region.virt_addr =3D client_mem_region;
-> +  region.phys_addr =3D virt_to_phys(client_mem_region);
-> +  region.size =3D region_size;
-> +
-> +  ret =3D qcom_minidump_region_register(&region);
-> +  if (ret < 0) {
-> +	pr_err("failed to add region in minidump: err: %d\n", ret);
-> +	return ret;
-> +  }
-> +
-> +  [...]
-> +
-> +
-> +Test
-> +----
-> +
-> +Existing Qualcomm devices already supports entire RAM dump (also called
-> +full dump) by writing appropriate value to Qualcomm's top control and
-> +status register (tcsr) in ``driver/firmware/qcom_scm.c`` .
-> +
-> +SCM device Tree bindings required to support download mode
-> +For example (sm8450) ::
-> +
-> +	/ {
-> +
-> +	[...]
-> +
-> +		firmware {
-> +			scm: scm {
-> +				compatible =3D "qcom,scm-sm8450", "qcom,scm";
-> +				[... tcsr register ... ]
-> +				qcom,dload-mode =3D <&tcsr 0x13000>;
-> +
-> +				[...]
-> +			};
-> +		};
-> +
-> +	[...]
-> +
-> +		soc: soc@0 {
-> +
-> +			[...]
-> +
-> +			tcsr: syscon@1fc0000 {
-> +				compatible =3D "qcom,sm8450-tcsr", "syscon";
-> +				reg =3D <0x0 0x1fc0000 0x0 0x30000>;
-> +			};
-> +
-> +			[...]
-> +		};
-> +	[...]
-> +
-> +	};
-> +
-> +User of minidump can pass ``qcom_scm.download_mode=3D"mini"`` to kernel
-> +commandline to set the current download mode to minidump.
-> +Similarly, ``"full"`` is passed to set the download mode to full dump
-> +where entire RAM dump will be collected while setting it ``"full,mini"``
-> +will collect minidump along with fulldump.
-> +
-> +Writing to sysfs node can also be used to set the mode to minidump::
-> +
-> +	echo "mini" > /sys/module/qcom_scm/parameter/download_mode
-> +
-> +Once the download mode is set, any kind of crash will make the device co=
-llect
-> +respective dump as per set download mode.
-> +
-> +Dump collection
-> +---------------
-> +::
-> +
-> +	+-----------+
-> +	|           |
-> +	|           |         +------+
-> +	|           |         |      |
-> +	|           |         +--+---+ Product(Qualcomm SoC)
-> +	+-----------+             |
-> +	|+++++++++++|<------------+
-> +	|+++++++++++|    usb cable
-> +	+-----------+
-> +            x86_64 PC
-> +
-> +The solution supports a product running with Qualcomm SoC (where minidum=
-p)
-> +is supported from the firmware) connected to x86_64 host PC running PCAT
-> +tool. It supports downloading the minidump produced from product to the
-> +host PC over USB or to save the minidump to the product attached storage
-> +device(UFS/eMMC/SD Card) into minidump dedicated partition.
-> +
-> +By default, dumps are downloaded via USB to the attached x86_64 PC runni=
-ng
-> +PCAT (Qualcomm tool) software. Upon download, we will see a set of binary
-> +blobs starting with name ``md_*`` in PCAT configured directory in x86_64
-> +machine, so for above example from the client it will be ``md_REGION_A.B=
-IN``.
-> +This binary blob depends on region content to determine whether it needs
-> +external parser support to get the content of the region, so for simple
-> +plain ASCII text we don't need any parsing and the content can be seen
-> +just opening the binary file.
-> +
-> +To collect the dump to attached storage type, one needs to write appropr=
-iate
-> +value to IMEM register, in that case dumps are collected in rawdump
-> +partition on the product device itself.
-> +
-> +One needs to read the entire rawdump partition and pull out content to
-> +save it onto the attached x86_64 machine over USB. Later, this rawdump
-> +can be passed to another tool (``dexter.exe`` [Qualcomm tool]) which
-> +converts this into the similar binary blobs which we have got it when
-> +download type was set to USB, i.e. a set of registered regions as blobs
-> +and their name starts with ``md_*``.
-> +
-> +Replacing the ``dexter.exe`` with some open source tool can be added as =
-future
-> +scope of this document.
+---
+This patchset is based on linux-next-20231127.
 
-LGTM, thanks!
+Kuan-Ying Lee (3):
+  scripts/gdb/tasks: Fix lx-ps command error
+  scripts/gdb/stackdepot: Rename pool_index_cached to pools_num
+  scripts/gdb: Remove exception handling and refine print format
 
-Reviewed-by: Bagas Sanjaya <bagasdotme@gmail.com>
+ scripts/gdb/linux/page_owner.py | 58 ++++++++++++++-------------------
+ scripts/gdb/linux/slab.py       |  3 +-
+ scripts/gdb/linux/stackdepot.py |  6 ++--
+ scripts/gdb/linux/tasks.py      | 12 +++----
+ 4 files changed, 33 insertions(+), 46 deletions(-)
 
---=20
-An old man doll... just what I always wanted! - Clara
+-- 
+2.18.0
 
---BuCQw3fkz+a4hLx6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZWQrbQAKCRD2uYlJVVFO
-o16CAQC7qBNMo3GAelqbYCC7X0VFYpjeiiqcRiy6GrizoTGcCgD8D5mzVjQfqBvY
-bh6PeiYqzBUUfBhACG4CtQpxBGryGwk=
-=BPu8
------END PGP SIGNATURE-----
-
---BuCQw3fkz+a4hLx6--
 
