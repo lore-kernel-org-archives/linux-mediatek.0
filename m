@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59036C07D59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 13:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D00FC07D59
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 13:23:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fB6ke4pyt4vBeN9OdE79H9FF7sHZLATeI2LkrvvBG0M=; b=dJlkUlbWRGMKZ6RSAlVpxPaCCu
-	qA1Qjx1J4mU0WzSgZtRtLsMZYKAu3j/2v0D6YPOfVyzF39Qf2Vpue/tpHKd4tqQSsKg67UYzgYBoA
-	DdrmbbTQwGP2CnQfKZERXXmkUlOuIX6VgtSF9ujlAT0WqmxcL7dC+xtu9cdLF3OftIAa7zB72nreF
-	6LdJo7dqddrsb8jLw64CkHlrqxdtdCaOl6b8qzXHguF8cymjIQIuaSH7i8rSOB82KssCGxTa7FZkF
-	0YV/mqzcSlM14OcS3ajzVRKtmXDglaK9wvuM7bR7qjWac5UFUptcK6W+bsGUfe0xd39+e/ckuLd9W
-	dqbPVZaA==;
+	bh=oIBS/PG9aoGaFxIGzNKEBntCJzHi0WIbi3RERMHnwrY=; b=YtxfeT8ZLPT+Vexm8hsrjBdxvy
+	9HY0y/GZAnAfU1CsMzAD8AWP8yNtD/2kLPVvuKUKmjnWJTQSlJ1xPVhsUSnk2VSI2lXXLLT9we7s4
+	KGQVGaCIE7Gk1QFu+c7yG5fwXpoFqIhVECJn3dsZbgyP2mgsL7FE3gLheXlPGJrnZjTq/QRW++yd6
+	jraVY40bj8PgfPk+N2CiCHwv+bKyml0xPaFCld6sna50BB8J+Ll6MzvlMMJ5V3PCCG2wNRNQ9tp4/
+	f6PSmn6jn32dC37hMjfKq3m7J9DCz+xQCCtU/ht6nODTWIwEf1cwKbhnvSVYQWbVDmp2JnlmLfM1q
+	TiyVV7LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7bYx-002YJ7-2y;
-	Mon, 27 Nov 2023 13:22:12 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1r7ba1-002Yp2-0R;
+	Mon, 27 Nov 2023 13:23:17 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7bYt-002YHJ-2a;
-	Mon, 27 Nov 2023 13:22:09 +0000
+	id 1r7bZs-002Ykr-0o;
+	Mon, 27 Nov 2023 13:23:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 424E160FC5;
-	Mon, 27 Nov 2023 13:22:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E204C433C8;
-	Mon, 27 Nov 2023 13:22:02 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id D1FE6CE11E7;
+	Mon, 27 Nov 2023 13:22:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21A3AC433CA;
+	Mon, 27 Nov 2023 13:22:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701091326;
-	bh=Vwhxnt4f22Jqm2f+no8vVvfxwUzvv6b9URiNaYVC1Z4=;
+	s=k20201202; t=1701091372;
+	bh=GAarMoewnkwJp9XLJQmcej2YbN3Q4NV+hfVw+jdVqdE=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=RpTMTTF6H5EZOoQo5s387IJVl+0oeBUdDVeSUuFoNbGG2A0Cc6+NH6nOaBJSfZZYt
-	 GAZE9fh3lBe8TC1kOSdIcInp7kY6VNXTbxXscaP+EJdlTc0TUMSs5rLQTqYz4cT2hf
-	 JisWVOaGzuDff8PWoXHjRbFkmanTQAihWGKe22Sre8Uxa4T8luPRRD4lGv1n0mSsAo
-	 0gkhDeg4QQHDagB+mCkZBjTycS+ya9qCNKa80SS4GeWTEZ2ZzRYKACdS6wdWmwnsVq
-	 oWOvW/utbVfXf1yBQqIJcB86J4CahpI5/+YXDutlZv92VQRvE1jyL8xuvWnS4UudsS
-	 gzu/ujqknBwbA==
+	b=po8G/Jd1b5AVxwfM7ACP6l3yi12wgDzzx5ru7waF6zgVpdZN39rWzCrIOAWLsSdGm
+	 N9rZ1yj6R1P8kCHvJxyS5qGtRQb6iJ2l0GWZZJX1NrpZ5vIIlaCiRyPOf2N7MPcGbD
+	 JU9imQ+VOMoYL2lj8HVUDSL3qTSApsBVQo45xWuJuaHk9+GyNhQiXfC2+RzX1ZNe5v
+	 AwlPtiHDdiwSonfwUeMkwxVLD9Wkvylt21nBNInPfQXgLORhP09ns4ptcDk7zF9wCV
+	 2DTCdcNfSFdjw0xMEDAkbNPZpDgSo0NLtK7v+0PkxrbhKZ/uZdNyNOu3a2ij+Eq9yA
+	 LWjaZ/qRhA8OQ==
 From: Vinod Koul <vkoul@kernel.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
  Chunfeng Yun <chunfeng.yun@mediatek.com>, 
  Kishon Vijay Abraham I <kishon@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- CK Hu <ck.hu@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, 
+ Jitao Shi <jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>, 
  Michael Walle <mwalle@kernel.org>
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20231123110202.2025585-1-mwalle@kernel.org>
-References: <20231123110202.2025585-1-mwalle@kernel.org>
-Subject: Re: [PATCH] phy: mediatek: mipi: mt8183: fix minimal supported
- frequency
-Message-Id: <170109132204.42536.9999917712237405775.b4-ty@kernel.org>
-Date: Mon, 27 Nov 2023 18:52:02 +0530
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org
+In-Reply-To: <20231123133749.2030661-1-mwalle@kernel.org>
+References: <20231123133749.2030661-1-mwalle@kernel.org>
+Subject: Re: (subset) [PATCH 0/4] drm/mediatek: support DSI output on
+ MT8195
+Message-Id: <170109136570.42627.4378174652499590897.b4-ty@kernel.org>
+Date: Mon, 27 Nov 2023 18:52:45 +0530
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_052207_944443_36A9803E 
-X-CRM114-Status: UNSURE (   4.86  )
+X-CRM114-CacheID: sfid-20231127_052308_646021_FEF0F29F 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,18 +88,20 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 23 Nov 2023 12:02:02 +0100, Michael Walle wrote:
-> The lowest supported clock frequency of the PHY is 125MHz (see also
-> mtk_mipi_tx_pll_enable()), but the clamping in .round_rate() has the
-> wrong minimal value, which will make the .enable() op return -EINVAL on
-> low frequencies. Fix the minimal clamping value.
+On Thu, 23 Nov 2023 14:37:45 +0100, Michael Walle wrote:
+> Add support for a DSI output on VDOSYS0. Luckily, there is a new
+> feature to support dynamic selections of the output (connector).
+> Use it to add support for a DSI output.
 > 
+> Apart from that, this is pretty straghtforward by just adding new
+> compatibles and add the correct DSI nodes to the SoC dtsi.
 > 
+> [...]
 
 Applied, thanks!
 
-[1/1] phy: mediatek: mipi: mt8183: fix minimal supported frequency
-      commit: 06f76e464ac81c6915430b7155769ea4ef16efe4
+[2/4] dt-bindings: phy: add compatible for Mediatek MT8195
+      commit: fa50920b4f82993941e0aac349eb8081ce11e38f
 
 Best regards,
 -- 
