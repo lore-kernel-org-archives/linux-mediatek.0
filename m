@@ -4,93 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A02DDC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 10:11:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 771E1C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 11:30:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EY/c6/Ci98EonGSNUz6fVfm6jLBxiwZHNUrcbJIhhUc=; b=MFQIWjhgneyxSHPWgcqPe1xxPD
-	RuCQBQUlw4GxwKDz7fNG7v7esJ6HntiCASYRKa4qtYDRa8pFSmrcE5wkwwseGf8i+H+vHD0zLSJaf
-	PTRmyxTm7IHJ4ZN8P0p+qePMfFpJq9IbURDGf1ZghPcVof6iPt66kQrIQxv2uM9ouoIt5vVH8Nj6p
-	z+8jfc6Hry//ML1Ny+Qi+JaaqKaIws1U6Za1FMQ1gL2irgBzMIEQYnNy68Nh/COehTzYiZAL402TB
-	S2B92KrVwBy7oiWUZG4pB822koN6n/nIX/IxjlKCtXlByCbxwzFEeP2f0cinXNSONxU83S89f9Q/q
-	P7Uhbf7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NhGJjrTTtgimxfRNbfSScr4mzO4GO8LCiZ6yeATg9+M=; b=llsy4M1REaAwc01B7v8aryK4GJ
+	KqJR1fp6nWahErWbybFrTASi6B++6Ten/0tgyZ8JmNddfKUBxLr1iHFLkJad2T2r1sYAIGHmRRkt8
+	obOIdr8Kcm0xC3/Ih4FAeV2QjmGiOyLC1uJ5C9iUBqGIUc/NaL2JVPfo41oanM+x9PKU8vETvlnFm
+	RxP0ii/DWI+M04bSDZycCqROHD1zhIeNUL/QMm6REVA+IWvvv1vzKIY4+moJHA0ijp6sDRu5WMnUV
+	P85pAqG0/Di7eseQjOMjTvuaPr3T08QCNTuE9GdbP6TH+IAK1443WxNi7ZTCig8gXXhERWd81eIQV
+	mS3I7/Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7YaS-0022Yf-0p;
-	Mon, 27 Nov 2023 10:11:32 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1r7Zoi-002Dmj-0h;
+	Mon, 27 Nov 2023 11:30:20 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7YaO-0022XR-1t;
-	Mon, 27 Nov 2023 10:11:30 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AR7vNnT021251;
-	Mon, 27 Nov 2023 10:11:12 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=qcppdkim1; bh=EY/c6/Ci98EonGSNUz6fVfm6jLBxiwZHNUrcbJIhhUc=;
- b=dgyZ8AzrEPdMj/muYfIY6vmUUgXJ221mbT63cmMQh6IWmaPLdMtfQkcM8HkdYM1Y91Vm
- e+Eaa7XDLPLUlXzCFdJf8g/Xp6+ILKhodQb38KqIGqseMEabwkqPFmtUbQ0fEfxZa6/X
- rGhH4S8ArhNtC4HGmEDp7qtcSp8nrEC5478A8GQwRJfvnq6MOJnMYsaqLa7BcAe2q23W
- f0LplwPmfHnQrstICNVYEIMiYOr6+u639WhfKJZIQet/fOSSJcwixOH9ssYBcjYGi5+7
- qzeZBGVubFQlS3Z1D0MF7jfJzZCAxgg2e7O0Smxzvdq7wgQCVeNxvKUCckM3QKdp5wzI WA== 
-Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uk69uc435-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 27 Nov 2023 10:11:11 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3ARABACA005140
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 27 Nov 2023 10:11:10 GMT
-Received: from hu-pkondeti-hyd.qualcomm.com (10.80.80.8) by
- nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.40; Mon, 27 Nov 2023 02:11:00 -0800
-Date: Mon, 27 Nov 2023 15:40:57 +0530
-From: Pavan Kondeti <quic_pkondeti@quicinc.com>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-CC: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
-        <mathieu.poirier@linaro.org>, <vigneshr@ti.com>, <nm@ti.com>,
-        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
-        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
-        <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
-Subject: Re: [Patch v6 11/12] pstore/ram: Add ramoops ready notifier support
-Message-ID: <3636dc3a-b62b-4ff9-bdc3-fec496a804b7@quicinc.com>
-References: <1700864395-1479-1-git-send-email-quic_mojha@quicinc.com>
- <1700864395-1479-12-git-send-email-quic_mojha@quicinc.com>
+	id 1r7Zoe-002Dl7-0S;
+	Mon, 27 Nov 2023 11:30:17 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 64C3160015;
+	Mon, 27 Nov 2023 11:30:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1701084611;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NhGJjrTTtgimxfRNbfSScr4mzO4GO8LCiZ6yeATg9+M=;
+	b=npQAcUWNK817PNnMtIdROlqCU68u6J61oYaZWTMkiXUcjId2TZsw9+CYlsWf1Twe1A7QsX
+	PPvsguZ8kGHxSACCttFXMA6c2ei3G64kYeMy+O4ks2hYu6y7mO1bjtaBqADr6WclX07srH
+	155/YPZ39tOrpqzZESeecLaJ0vM0tOdKlwJmCioV8VOiHnuGB2t0K6hin8yJ4p+UipZkS9
+	t5j2c/ATP0vtoe0KQ5MEYPyYsg6f2MBpD8LbOYBm9JGdhTJriRAjtlFHetKxHJBG4Y/nSi
+	eGI5gzotSHzqYhUoB84bkoQOt+uUn+iPOWfQusWJrH5LtOwNCxqAp99XSnibiA==
+Date: Mon, 27 Nov 2023 13:30:00 +0200
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+To: Daniel Golle <daniel@makrotopia.org>
+CC: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RESEND_net-next_2/2=5D_dt-bindings=3A?= =?US-ASCII?Q?_net=3A_dsa=3A_mediatek=2Cmt7530=3A_document_MDIO-bus?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <ZWPIQW1JA3rsvAzm@makrotopia.org>
+References: <6eb1b7b8dbc3a4b14becad15f0707d4f624ee18b.1691246461.git.daniel@makrotopia.org> <9aec0fe0cb676b76132c388bb3ead46f596a6e6e.1691246461.git.daniel@makrotopia.org> <dcb981b9-b435-c0e5-8e47-d66add207fdc@arinc9.com> <20230808121707.chona7hakapp6whe@skbuf> <44fde617-1159-4961-84c4-372fe265fbd8@arinc9.com> <20230809220102.t3dqw7iojez5xsq3@skbuf> <3f262579-eec1-4b21-9b18-1d1d612e715b@arinc9.com> <ZWPIQW1JA3rsvAzm@makrotopia.org>
+Message-ID: <D03B73C8-0DD4-459E-8BA3-C1A0B16809A3@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <1700864395-1479-12-git-send-email-quic_mojha@quicinc.com>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 1IOVxm-ZeU_nBthYVKeJDrGdxnOedH7K
-X-Proofpoint-GUID: 1IOVxm-ZeU_nBthYVKeJDrGdxnOedH7K
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-27_08,2023-11-22_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 bulkscore=0
- adultscore=0 spamscore=0 mlxlogscore=999 mlxscore=0 phishscore=0
- priorityscore=1501 suspectscore=0 lowpriorityscore=0 impostorscore=0
- clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2311270070
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_021128_772381_35EC5727 
-X-CRM114-Status: GOOD (  32.01  )
+X-CRM114-CacheID: sfid-20231127_033016_477318_13E3DA5F 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,135 +83,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 25, 2023 at 03:49:54AM +0530, Mukesh Ojha wrote:
-> Client like minidump, is only interested in ramoops
-> region addresses/size so that it could register them
-> with its table and also it is only deals with ram
-> backend and does not use pstorefs to read the records.
-> Let's introduce a client notifier in ramoops which
-> gets called when ramoops driver probes successfully
-> and it passes the ramoops region information to the
-> passed callback by the client and If the call for
-> ramoops ready register comes after ramoops probe
-> than call the callback directly.
-> 
-> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
-> ---
->  fs/pstore/ram.c            | 77 ++++++++++++++++++++++++++++++++++++++++++++++
->  include/linux/pstore_ram.h |  6 ++++
->  2 files changed, 83 insertions(+)
-> 
-> diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
-> index a6c0da8cfdd4..72341fd21aec 100644
-> --- a/fs/pstore/ram.c
-> +++ b/fs/pstore/ram.c
-> @@ -22,6 +22,7 @@
->  #include <linux/of_address.h>
->  #include <linux/memblock.h>
->  #include <linux/mm.h>
-> +#include <linux/mutex.h>
->  
->  #include "internal.h"
->  #include "ram_internal.h"
-> @@ -101,6 +102,14 @@ struct ramoops_context {
->  	unsigned int ftrace_read_cnt;
->  	unsigned int pmsg_read_cnt;
->  	struct pstore_info pstore;
-> +	/*
-> +	 * Lock to serialize calls to register_ramoops_ready_notifier,
-> +	 * ramoops_ready_notifier and read/modification of 'ramoops_ready'.
-> +	 */
-> +	struct mutex lock;
-> +	bool ramoops_ready;
-> +	int (*callback)(const char *name, int id, void *vaddr,
-> +			phys_addr_t paddr, size_t size);
->  };
->  
->  static struct platform_device *dummy;
-> @@ -488,6 +497,7 @@ static int ramoops_pstore_erase(struct pstore_record *record)
->  }
->  
->  static struct ramoops_context oops_cxt = {
-> +	.lock   = __MUTEX_INITIALIZER(oops_cxt.lock),
->  	.pstore = {
->  		.owner	= THIS_MODULE,
->  		.name	= "ramoops",
-> @@ -662,6 +672,68 @@ static int ramoops_init_prz(const char *name,
->  	return 0;
->  }
->  
-> +void ramoops_ready_notifier(struct ramoops_context *cxt)
-> +{
-> +	struct persistent_ram_zone *prz;
-> +	int i;
-> +
-> +	if (!cxt->callback)
-> +		return;
-> +
-> +	for (i = 0; i < cxt->max_dump_cnt; i++) {
-> +		prz = cxt->dprzs[i];
-> +		cxt->callback("dmesg", i, prz->vaddr, prz->paddr, prz->size);
-> +	}
-> +
-> +	if (cxt->console_size) {
-> +		prz = cxt->cprz;
-> +		cxt->callback("console", 0, prz->vaddr, prz->paddr, prz->size);
-> +	}
-> +
-> +	for (i = 0; i < cxt->max_ftrace_cnt; i++) {
-> +		prz = cxt->fprzs[i];
-> +		cxt->callback("ftrace", i, prz->vaddr, prz->paddr, prz->size);
-> +	}
-> +
-> +	if (cxt->pmsg_size) {
-> +		prz = cxt->mprz;
-> +		cxt->callback("pmsg", 0, prz->vaddr, prz->paddr, prz->size);
-> +	}
-> +}
-> +
-> +int register_ramoops_ready_notifier(int (*fn)(const char *, int,
-> +				   void *, phys_addr_t, size_t))
-> +{
-> +	struct ramoops_context *cxt = &oops_cxt;
-> +
-> +	mutex_lock(&cxt->lock);
-> +	if (cxt->callback) {
-> +		mutex_unlock(&cxt->lock);
-> +		return -EEXIST;
-> +	}
-> +
-> +	cxt->callback = fn;
-> +	if (cxt->ramoops_ready)
-> +		ramoops_ready_notifier(cxt);
-> +
-> +	mutex_unlock(&cxt->lock);
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_GPL(register_ramoops_ready_notifier);
-> +
+On 27 November 2023 00:35:45 EET, Daniel Golle <daniel@makrotopia=2Eorg> wr=
+ote:
+>On Sat, Aug 12, 2023 at 01:45:29AM +0300, Ar=C4=B1n=C3=A7 =C3=9CNAL wrote=
+:
+>> On 10=2E08=2E2023 01:01, Vladimir Oltean wrote:
+>> > [=2E=2E=2E]
+>> > Since commit fe7324b93222 ("net: dsa: OF-ware slave_mii_bus"), DSA as=
+ a
+>> > framework also supports auto-creating an internal MDIO bus based on t=
+he
+>> > presence of the "mdio" node name, so I guess it makes sense for the
+>> > "mdio" to appear in the generic dsa=2Eyaml if there's nothing else th=
+at's
+>> > special about it=2E
+>>=20
+>> I agree with this=2E I've done this which works=2E It's even found a po=
+rt
+>> node with the ethernet property missing, as it should've=2E
+>
+>Are you planning to complete/submit your work below?
+>I'm asking because being able to reference the PHYs on the internal
+>MDIO bus is mandatory on MT7988 which requires calibration data from
+>NVMEM for each PHY, so supporting MT7988 depends on the associated
+>driver change[1]=2E
+>
+>[1]: https://patchwork=2Ekernel=2Eorg/project/netdevbpf/patch/6eb1b7b8dbc=
+3a4b14becad15f0707d4f624ee18b=2E1691246461=2Egit=2Edaniel@makrotopia=2Eorg/
 
-Can you please elaborate on why do we need this custom notifier logic? 
+This patch triggered conversation on a deeper level regarding the
+devicetree bindings aspect of it=2E I will continue discussing that with t=
+he
+maintainers here and achieve a mutual agreement=2E
 
-why would not a standard notifier (include/linux/notifier.h) work here? 
-The notifier_call callback can recieve custom data from the 
-notifier chain implementer. All we need is to define a custom struct like
+To get things going on the driver side, I think it's fine to submit that
+as a single patch=2E I'll do that in a week, if nobody else does it first=
+=2E
 
-struct pstore_ramoops_zone_data {
-	const char *name;
-	int id;
-	void *vaddr;
-	phys_addr_t paddr;
-	size_t size;
-};
-
-and pass the pointer to array of this struct. 
-
-
-btw, the current logic only supports just one client and this limitation
-is not highlighted any where.
-
-Thanks,
-Pavan
-
+Ar=C4=B1n=C3=A7
 
