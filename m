@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24EEDC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 13:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D94F7C07CB1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Nov 2023 13:27:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KHyfns2O9Gn6GobXDg4dpXa4V++fdwC+YM3e+aa/xjU=; b=ZyDqAKExJZs3Q39wkko3fDnPsN
-	U1Vrpl0Q1Pjfkp9XuPQ5qvgaVjh8v5DpsqcFOOnO7S7P917XxQjQaThFONsvIU5Z6RKajbDuFrQem
-	IlVnTeC53aWBh1s/51vrFNSe+5V9aLVCseTtX5y0y7bZwvs7cMECHztroao5sbiDI5D3jOSaH8Ani
-	go+Dxfqe6+A0s6EenblVzja8NsCQ4kuq2NrLmHBwEFdh2pkuygwYBuTsuKFlDTs7yyrV0995kXDMU
-	ECOpWURcotv9o5Aj9StY19fGk6E6SJmsg0jH1Icf2ZSJuDWgJKWyNSdqvt1KboYaOXX5b8mgCU9mg
-	JsSeGS6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yAq4dPEchi5TPJO00Z9IQ/xMrpvp7tQ1sS/kQItu6VE=; b=A3GKVlSfJRjbo1xUbGz60ZMQ/t
+	Ig7DeNdHX7mNFxpcw51RZxis1cS5KgqO1Dtq1oNncetbwzFuCLRY6R06d/6WgHi71Uds1j7Q9AcD4
+	zdP/1P8uWfBuT1jebmjcksyi4jEedubITT8lFlxwclw7LlMAN8kUEOYjbDBEvsHhkNn8YNiThcHWV
+	do7r7KzZhCpvMnrD5A70vza5Yti5IRjvMN1DvaMtz60En7nL6LC/fq8yPEVWfVfeZrkfU90gtSrcs
+	WvuokTthJqDbzrPTy6rgSIJeyM9keYF1ov29FkVMnsgoNGlqpgIgBI0oY2Du1UmxSuqjtWBP1iVZ/
+	AorwLy8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7bcW-002ZEy-0F;
-	Mon, 27 Nov 2023 13:25:52 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1r7be5-002ZYW-2v;
+	Mon, 27 Nov 2023 13:27:29 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7bcT-002ZDO-33
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Nov 2023 13:25:51 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1r7bbw-0001DE-Lv; Mon, 27 Nov 2023 14:25:16 +0100
-Received: from [2a0a:edc0:0:900:1d::4e] (helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1r7bbt-00BxGz-0Y; Mon, 27 Nov 2023 14:25:13 +0100
-Received: from pza by lupine with local (Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1r7bbs-000D9T-2y;
-	Mon, 27 Nov 2023 14:25:12 +0100
-Message-ID: <117dc1503ecd07448cc2e0b036b34a49f5e8c38e.camel@pengutronix.de>
-Subject: Re: [RFC PATCH 6/8] net: pcs: add driver for MediaTek USXGMII PCS
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Daniel Golle <daniel@makrotopia.org>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,  Conor Dooley <conor+dt@kernel.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- John Crispin <john@phrozen.org>,  Sean Wang <sean.wang@mediatek.com>, Mark
- Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>,  Russell King
- <linux@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>,
- netdev@vger.kernel.org,  devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,  linux-phy@lists.infradead.org
-Date: Mon, 27 Nov 2023 14:25:12 +0100
-In-Reply-To: <b9f787f3e4aa36e148d7595495af60db53f74417.1699565880.git.daniel@makrotopia.org>
-References: <cover.1699565880.git.daniel@makrotopia.org>
-	 <b9f787f3e4aa36e148d7595495af60db53f74417.1699565880.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+	id 1r7be2-002ZXB-20;
+	Mon, 27 Nov 2023 13:27:27 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6D4BD6605835;
+	Mon, 27 Nov 2023 13:27:23 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701091645;
+	bh=DvdTt/2joGjmSG0un+grPJz1gQ9C99woeiwQLvx7PIk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ace0jcUMaaLGzfJzHjPcsPWpVDpK61lQJqlhON6SE7GegzdsUn9vpO+Z9u1MI5rId
+	 1vtulJdlAyIsPGpiW5q+PnkJmR3phB4bqhdb8wLz5wO8XRfckZFk76iONud5D2ea2c
+	 JCRrx87PpeqCgmT+bMDxeKGUb5XwZIRnf7/z8otHa8CuxabDO+HxOWIPdpbKCqazo1
+	 1pOmwdm9ZayP4qnNV1RDPygEGag9iiiYiqXbOVwFna0+KNmlE1odL4/4gVKrH2vdvP
+	 zNZv5Try393NNMHGSByfDITJbKle6eCPibneDaIPvIn3HMTCsvJIeTdPE+9VHcIbIF
+	 wCZ1f0J5ctnuA==
+Message-ID: <18516d3d-f866-41de-9045-ed9b4da94697@collabora.com>
+Date: Mon, 27 Nov 2023 14:27:20 +0100
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] arm64: dts: mediatek: mt8195: add DSI and MIPI DPHY
+ nodes
+Content-Language: en-US
+To: Michael Walle <mwalle@kernel.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jitao Shi
+ <jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org
+References: <20231123133749.2030661-1-mwalle@kernel.org>
+ <20231123133749.2030661-4-mwalle@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231123133749.2030661-4-mwalle@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_052549_978991_E10FF974 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20231127_052726_798848_55F1F498 
+X-CRM114-Status: UNSURE (   5.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,49 +89,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Do, 2023-11-09 at 21:51 +0000, Daniel Golle wrote:
-> Add driver for USXGMII PCS found in the MediaTek MT7988 SoC and supportin=
-g
-> USXGMII, 10GBase-R and 5GBase-R interface modes. In order to support
-> Cisco SGMII, 1000Base-X and 2500Base-X via the also present LynxI PCS
-> create a wrapped PCS taking care of the components shared between the
-> new USXGMII PCS and the legacy LynxI PCS.
->=20
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
-[...]
-> diff --git a/drivers/net/pcs/pcs-mtk-usxgmii.c b/drivers/net/pcs/pcs-mtk-=
-usxgmii.c
-> new file mode 100644
-> index 0000000000000..b3ca66c9df2a9
-> --- /dev/null
-> +++ b/drivers/net/pcs/pcs-mtk-usxgmii.c
-> @@ -0,0 +1,688 @@
-[...]
-> +static int mtk_sgmii_wrapper_init(struct mtk_usxgmii_pcs *mpcs)
-> +{
-> +	struct device_node *r =3D mpcs->dev->of_node, *np;
-[...]
-> +	rstc =3D of_reset_control_get_shared(r, "sgmii");
-> +
+Il 23/11/23 14:37, Michael Walle ha scritto:
+> Add the two DSI controller node and the associated DPHY nodes.
+> Individual boards have to enable them in the board device tree.
+> 
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
 
-Superfluous whitespace.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +	if (IS_ERR(rstc))
-> +		return PTR_ERR(rstc);
-
-Here you correctly check rstc for errors ...
-
-[...]
-> +	wp->reset =3D rstc;
-[...]
-> +
-> +	if (IS_ERR(wp->reset))
-> +		return PTR_ERR(wp->reset);
-
-And here you check it again. The second check can be dropped.
-
-
-regards
-Philipp
 
