@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4360AC4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 17:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B3F5C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 18:46:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cCwKOOcvZG227KNZBJVAw0tdRH4yoYqx+lNqD4UHuvE=; b=vyewosmSSGL+V7Ia5+B5No16EP
-	/d6edlH0BbHyDkBGG3HtbF8zQn7lGAfJ9PxiwkZQQvP+daYkLZ+/cAqKNvtWHEIuOMxXCa8sa03jp
-	qe1PjnxZUJ5Wj+u5XVSAVUHvqBY3YiVihgIZNHfabap+/JWAA3MA2ZwZYBU7Jp8KiRYVKVZFvReaU
-	eW7dw56uN3MIunalIVhhvxlOxjZAhl1rMbP8x7ZIXBT/X/kXWTOAMlmrGt+3bBdk2NRtDFJr0gU3L
-	3HYFesMqzK/mxDivDNc5X9CUr/h4CTtrjynlSQ9c1ocsIuCHIbVxJmCkFCq4Ms1xk1t8S3vRF6/I6
-	HLJmOJCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=euvcKpX30ZVsmfkaXJTTyAJfHCgabkUtlIpVB4OOtdk=; b=ewcbAq8Cn5eLnOnl6yp2X4cfxp
+	shd17Ivdz61zzbZOf5hMAVKh3bJoYq/kgIi53BfKR2JuSGZ41yrL6fBPlTZSe5uMCcE/xcGyKZfRV
+	ciJXEBPJqBIZNBu6MHwMjCrcmD0XVKE5BVX1BmsQS739SXJHblPpunSkLY3FLzOUy/zQNdMRHn+xn
+	3gNRgyI0y4ZVoWWy164Qe6Xtn0CR/7J2xwN7zHAKPcyP9AbQelQOQ/43aHF+aUme5dDqxNPCuDjCn
+	GDKrmll+BLIglTssPIJXT+j0MYVTCiwbbRGevksSRvPwdZf+i66zHJmqFC4qy1Y/BNZX+MFo45ySs
+	XgcALAhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r82DZ-0060Uf-3C;
-	Tue, 28 Nov 2023 17:49:53 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1r835s-0066wR-0i;
+	Tue, 28 Nov 2023 18:46:00 +0000
+Received: from mail-ot1-f42.google.com ([209.85.210.42])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r82DI-0060N3-0J;
-	Tue, 28 Nov 2023 17:49:37 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-548f0b7ab11so7807056a12.1;
-        Tue, 28 Nov 2023 09:49:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701193774; x=1701798574; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cCwKOOcvZG227KNZBJVAw0tdRH4yoYqx+lNqD4UHuvE=;
-        b=E62Gs2jzH2NqBXRn2CNd0BBaiMNP5fLCylvvMWSZJT+8ssrjEnhTNf0GZppwfvz01m
-         fm2cUP79xqSnPNd9GuMt3A5KRy37XX73jM7RN1VwhdcGSyyNoKdFSyF+jJsi9E+TI+S0
-         i/6y8E0EmQ+FXbijBKrdUjpIR9edEq0HbkjVCI/5TZJM/3S8DXSeKCRaLhT3nMA0zH0U
-         BtgEVNEjcu4JcnSVkboEpMyD9w34yi3qT9JMGV2gLni2jS/8ZYZEYTGEgZVzpnl+X4zj
-         SrrLEnTSH64dx7EEmb1GEYC1HvID8c6oxZuCee/WjH81cvdFvrttWQb27RShB8Q2uH+t
-         7w2Q==
+	id 1r821n-005y8i-14
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Nov 2023 17:37:44 +0000
+Received: by mail-ot1-f42.google.com with SMTP id 46e09a7af769-6d8147d3072so2087535a34.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Nov 2023 09:37:38 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701193774; x=1701798574;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=cCwKOOcvZG227KNZBJVAw0tdRH4yoYqx+lNqD4UHuvE=;
-        b=XYQEbApL3zQDfWZZz9Dz8KskiAdi5woDnvsDmrUKJn0rcMH5U9z6x4YhGCG1Px7xc6
-         V/RaMRGNg+SBNQ8rsXee2zqzrWyEQQnxwV38GR9lUpI6vCYZd1mALTm0+TeOk4dqmhly
-         +/eUxgcmB+eji6l9a4/xBcMcHm+1UGh1qXBAzlWqwxBC8wQoo6LbnLfzNDhN2IkS0DDU
-         szzOlVwFDIcGVpzay1BbD1UenDNx2dOSGj1FuoKI4aRi+vjpNPulNCBM6eM0lFw1ZXQz
-         Va4XU9wTi8rdCpITuafiDKYBFgQ0+dxbYji0Y3lTvJN+PoyFIQo8xO1Q0g3iKGNnbgGR
-         Df9Q==
-X-Gm-Message-State: AOJu0YzmvluDfnbfohGF7zFkoT4vDnBetJHSyR4dnOibfHhKsnZXRrrD
-	sr/WFXhLAhn4aOu+zMF1Go0=
-X-Google-Smtp-Source: AGHT+IFv+IODDHV2aUyGCP25pWGTd1fOh8jm9JfU859xNG4T5EWQ0fud734+4RsoprcqhFPRy7x98g==
-X-Received: by 2002:a17:906:3a45:b0:a04:edd6:dea7 with SMTP id a5-20020a1709063a4500b00a04edd6dea7mr9353671ejf.7.1701193774209;
-        Tue, 28 Nov 2023 09:49:34 -0800 (PST)
-Received: from localhost (p200300e41f0fa600f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f0f:a600:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id kh4-20020a170906f80400b00a0ad10b3f68sm4836490ejb.205.2023.11.28.09.49.32
+        d=1e100.net; s=20230601; t=1701193057; x=1701797857;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=euvcKpX30ZVsmfkaXJTTyAJfHCgabkUtlIpVB4OOtdk=;
+        b=v1824S4uixhl84KTbEq2aytsx6f+s5uOyoLNWjNaDroyg3SSpEnbckni56830wBmQN
+         lM7wQoxq2VaO0Itix6T86tTN6zcCkEkxBgHpvFRcKHU8gHTJpXfyrSO2w48h9X0MuMWt
+         i9kGbj8I3SnnR6AZmTayuaxaDqIlDTn1TZTeAoXzaRFHdom6uzf/N6h0DbhMl6XNsD49
+         UAaJ8lhQZFRZ8KLQBLSKwTf3u7udOxT+XUxt3mxlzaH18j7H14r1cdfnSbOICYCAjE4J
+         tUkJQjeaVNeg3fC8Bhh+Svy0RX55JACOFsnImJb5ON5qtidaXcz45GXN8hiqKP4M82dj
+         0GRw==
+X-Gm-Message-State: AOJu0YxwXNfkaveLPonfPHNj5l8FxaD3v61WKAv2DQTMZak5Wwoy+xiN
+	AeaeWbsYcyM0DvUax4WQVG9P68xXSA==
+X-Google-Smtp-Source: AGHT+IFqYYn9X2TZT97zZ6qFLfge2tyuoZxVF9rjnkiko+nm/6218G7n1xYaCVZdrESr/DQLfEbS8w==
+X-Received: by 2002:a05:6870:d3cb:b0:1b0:2f63:4ff6 with SMTP id l11-20020a056870d3cb00b001b02f634ff6mr22471768oag.1.1701193057389;
+        Tue, 28 Nov 2023 09:37:37 -0800 (PST)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id wx20-20020a0568707e1400b001fa38903b92sm1518933oab.15.2023.11.28.09.37.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 09:49:33 -0800 (PST)
-From: Thierry Reding <thierry.reding@gmail.com>
-To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jitao Shi <jitao.shi@mediatek.com>,
-	Michael Walle <mwalle@kernel.org>
-Cc: linux-pwm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: pwm: remove Xinlei's mail
-Date: Tue, 28 Nov 2023 18:49:24 +0100
-Message-ID: <170119374438.445690.8441934091500162620.b4-ty@gmail.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231123134716.2033769-1-mwalle@kernel.org>
-References: <20231123134716.2033769-1-mwalle@kernel.org>
+        Tue, 28 Nov 2023 09:37:36 -0800 (PST)
+Received: (nullmailer pid 3544147 invoked by uid 1000);
+	Tue, 28 Nov 2023 17:37:35 -0000
+Date: Tue, 28 Nov 2023 11:37:35 -0600
+From: Rob Herring <robh@kernel.org>
+To: Peter Chiu <chui-hao.chiu@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.Lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: net: wireless: mt76: add interrupts
+ description for MT7986
+Message-ID: <20231128173735.GA3537931-robh@kernel.org>
+References: <20231128035723.5217-1-chui-hao.chiu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231128035723.5217-1-chui-hao.chiu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_094936_137995_BD362B1B 
-X-CRM114-Status: UNSURE (   8.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231128_093743_368343_87AF4F94 
+X-CRM114-Status: GOOD (  16.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,24 +81,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 23 Nov 2023 14:47:16 +0100, Michael Walle wrote:
-> Xinlei Lee's mail is bouncing:
+On Tue, Nov 28, 2023 at 11:57:23AM +0800, Peter Chiu wrote:
+> The mt7986 can support four interrupts to distribute the interrupts
+> to different CPUs.
 > 
-> <xinlei.lee@mediatek.com>: host mailgw02.mediatek.com[216.200.240.185] said:
->     550 Relaying mail to xinlei.lee@mediatek.com is not allowed (in reply to
->     RCPT TO command)
+> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> ---
+>  .../bindings/net/wireless/mediatek,mt76.yaml  | 24 +++++++++++++++----
+>  1 file changed, 20 insertions(+), 4 deletions(-)
 > 
-> Remove it.
-> 
-> [...]
+> diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> index 252207adbc54..20f5f2ead265 100644
+> --- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> +++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> @@ -19,9 +19,6 @@ description: |
+>    Alternatively, it can specify the wireless part of the MT7628/MT7688
+>    or MT7622/MT7986 SoC.
+>  
+> -allOf:
+> -  - $ref: ieee80211.yaml#
+> -
+>  properties:
+>    compatible:
+>      enum:
+> @@ -38,7 +35,8 @@ properties:
+>        MT7986 should contain 3 regions consys, dcm, and sku, in this order.
+>  
+>    interrupts:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 4
+>  
+>    power-domains:
+>      maxItems: 1
+> @@ -219,6 +217,24 @@ required:
+>  
+>  unevaluatedProperties: false
+>  
+> +allOf:
+> +  - $ref: ieee80211.yaml#
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt7986-wmac
+> +    then:
+> +      properties:
+> +        interrupts:
+> +          minItems: 1
+> +          items:
+> +            - description: major interrupt for rings
+> +            - description: addditional interrupt for ring 19
+> +            - description: addditional interrupt for ring 4
+> +            - description: addditional interrupt for ring 5
 
-Applied, thanks!
+This list belongs in the top level. The if/then schema needs to set 
+'maxItems: 1' for the cases with only 1 interrupt and 'minItems: 4' for 
+the cases with 4 interrupts.
 
-[1/1] dt-bindings: pwm: remove Xinlei's mail
-      commit: c7861b3ffaba39021968505bd6807bf4fa7148c9
-
-Best regards,
--- 
-Thierry Reding <thierry.reding@gmail.com>
+Rob
 
