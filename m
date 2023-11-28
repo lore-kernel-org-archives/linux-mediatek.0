@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13993C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 20:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0400EC4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 20:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GowjPTZqE0Smv4YJ/cKzcAfCEv2JanCnDlRvdPyHm+A=; b=Wx692asJaGl6FkWbQxwk6DMSf+
-	+pK0keBgTDTktklICZfvJVZwsQVp5Ewvd/hWX/igoAYzXKfGsmjlf9yzsTNlMrC/mRuvpZZY7yNFL
-	XOi0ZCUkLeiakz1DIaWbinWDagR5OKMVma1d13VdTz4wWtKgl0t0PavTXKRM3Cn8db85d45/VYdJu
-	cjCnZaOxy5eKgsrUjvMFWTmRlLg/neHPMZnTnSPmmg63+htWZTGDJ0MwBSvwZsM5pMlGt4SGJywi9
-	tDHGAxeTtBiOMDwZoEnh3nW+hZtPFg0EDYESlTx+R72zxo2Nbt1ta/C8EAdxBwwkmboqdaSDKyVVh
-	qRWx1skg==;
+	bh=9TzWvOIsd72cmqfqE1B58EzmtMdPGePhdwGf/0CIcbY=; b=nvMSx4EWS7xc8PgMQsQajd+eFF
+	6dGoRcRNWHxV7mzYaNxHPniO+nyzDEFhz1hjImBXdJSxx9EVeR5RdzlHfARrUTFn94528lFtnv9gN
+	io8GhtOR6EhrCbPLkhv7nSIXYaQcUh4bDcWAg/BRtzzb1BXq6IOoyCDuoLV3o3VbxqgVB9ONT3hNU
+	njQPenqim/oXYgKUPK1XFqRNtmdOGM3ykCS23RuhllqY0YF6Zfzt19LH7H22fTQiixmVtaUpNGIzP
+	cAkX5Qq2K8PlSQXdEtWc2qWcnJ4BawsmeFeqWCyfSx9019fyM7yTz30rGD+HA/LjL1lAKd8lvj0/a
+	4S6/fOHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r84Lh-006Dht-3A;
-	Tue, 28 Nov 2023 20:06:25 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1r84NH-006Dvq-2v;
+	Tue, 28 Nov 2023 20:08:03 +0000
+Received: from mgamail.intel.com ([134.134.136.31])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r84Le-006Dgk-1o;
-	Tue, 28 Nov 2023 20:06:23 +0000
+	id 1r84NF-006DvE-0v;
+	Tue, 28 Nov 2023 20:08:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701201982; x=1732737982;
+  t=1701202081; x=1732738081;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=zSzJJSBORuSF8Rt+BZ5mH8g+0I9DsPIRgct4EsYRglY=;
-  b=mScvoEpbsDTKICS0lSgdY77ciMy4oXg2iWYH265K+0t1lIT4J6/OK6VS
-   o6hIsGnZ+jyPllDJ2g22oUpiDCTo5iuT1lqWsFIhgSDrGeQpwZjuT0JQo
-   A8adchNyZXLFCndG6BpGIBZyH24RmN4YxrGn1wigteJetmn+VdrsFAcnQ
-   xsjvMgIDo6wq+7Rk5BlckxmO/3VJhcY/jRRhp30BRm28cpKS6LtounRw1
-   ay90qJ8XS+ykKSOUiXW4L2Z1NMla4I7ml92cZi1fu/fZcD+1qdE9HG9gS
-   Sju1GDxz5IYv50yS4YVDfQp0B3AfjI1yDmY9oJodC5/f2142syB629zFs
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10908"; a="6218546"
+  bh=CyMweha2ZvuLisSoPmNJvwBvM8UVF+24ES7V+e13w7A=;
+  b=HGcnp9tV83iHVtaN4q3xBFp0xWEVUhCfIt65jQiQKYMnqYLsLBsWoHnP
+   +utQEqDPyVspjj5ttLpu5gQW7WdHIAL4x8SurKAMCA97rnfGJbMa4rSLm
+   B74VPX/fV4fBEgskWaVvAxn9qumO7tJad1A5GcTe25Z4OyRQc/BEVU0hQ
+   z1NM464wnJSNVU9ChrJB+Ke71cvKOipy3ezNJFylUCgOhkdGETRg8rNvE
+   rX89URAPImuobIdRzJ5zHbgCmx/GJBv0sLaj1+gy940VFseo7VTA3WOpU
+   Mr2ZNO752ImjTBdnNyWD31xTzSbNEKqC5Sn4cjJMhXRnT+U/KsUT4jko+
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10908"; a="457346990"
 X-IronPort-AV: E=Sophos;i="6.04,234,1695711600"; 
-   d="scan'208";a="6218546"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Nov 2023 12:02:47 -0800
+   d="scan'208";a="457346990"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Nov 2023 12:06:38 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10908"; a="797688000"
+X-IronPort-AV: E=McAfee;i="6600,9927,10908"; a="1100254115"
 X-IronPort-AV: E=Sophos;i="6.04,234,1695711600"; 
-   d="scan'208";a="797688000"
+   d="scan'208";a="1100254115"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga008.jf.intel.com with ESMTP; 28 Nov 2023 12:02:37 -0800
+  by fmsmga005.fm.intel.com with ESMTP; 28 Nov 2023 12:02:18 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 07AA8C4F; Tue, 28 Nov 2023 22:01:59 +0200 (EET)
+	id 4F6ADA96; Tue, 28 Nov 2023 22:01:58 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -89,19 +89,19 @@ Cc: Ray Jui <rjui@broadcom.com>,
 	Bjorn Andersson <andersson@kernel.org>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Emil Renner Berthing <kernel@esmil.dk>,
-	Hal Feng <hal.feng@starfivetech.com>,
-	Emil Renner Berthing <emil.renner.berthing@canonical.com>
-Subject: [PATCH v3 21/22] pinctrl: starfive: Convert to use grp member
-Date: Tue, 28 Nov 2023 21:57:10 +0200
-Message-ID: <20231128200155.438722-22-andriy.shevchenko@linux.intel.com>
+	Hal Feng <hal.feng@starfivetech.com>
+Subject: [PATCH v3 09/22] pinctrl: nuvoton: Convert to use struct pingroup and PINCTRL_PINGROUP()
+Date: Tue, 28 Nov 2023 21:56:58 +0200
+Message-ID: <20231128200155.438722-10-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
 In-Reply-To: <20231128200155.438722-1-andriy.shevchenko@linux.intel.com>
 References: <20231128200155.438722-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_120622_663977_30A071BB 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20231128_120801_421616_CE8A7413 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,78 +116,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert drivers to use grp member embedded in struct group_desc.
+The pin control header provides struct pingroup and PINCTRL_PINGROUP() macro.
+Utilize them instead of open coded variants in the driver.
 
-Reviewed-by: Emil Renner Berthing <emil.renner.berthing@canonical.com>
+Reviewed-by: Jonathan Neuschäfer <j.neuschaefer@gmx.net>
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c | 8 ++++----
- drivers/pinctrl/starfive/pinctrl-starfive-jh7110.c | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ drivers/pinctrl/nuvoton/pinctrl-wpcm450.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c b/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c
-index ea70b8c61679..21bfbbaede72 100644
---- a/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c
-+++ b/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c
-@@ -654,7 +654,7 @@ static int starfive_set_mux(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
+diff --git a/drivers/pinctrl/nuvoton/pinctrl-wpcm450.c b/drivers/pinctrl/nuvoton/pinctrl-wpcm450.c
+index 0cff44b07b29..4589900244c7 100644
+--- a/drivers/pinctrl/nuvoton/pinctrl-wpcm450.c
++++ b/drivers/pinctrl/nuvoton/pinctrl-wpcm450.c
+@@ -474,9 +474,8 @@ enum {
+ #undef WPCM450_GRP
+ };
  
- 	pinmux = group->data;
--	for (i = 0; i < group->num_pins; i++) {
-+	for (i = 0; i < group->grp.npins; i++) {
- 		u32 v = pinmux[i];
- 		unsigned int gpio = starfive_pinmux_to_gpio(v);
- 		u32 dout = starfive_pinmux_to_dout(v);
-@@ -797,7 +797,7 @@ static int starfive_pinconf_group_get(struct pinctrl_dev *pctldev,
- 	if (!group)
- 		return -EINVAL;
- 
--	return starfive_pinconf_get(pctldev, group->pins[0], config);
-+	return starfive_pinconf_get(pctldev, group->grp.pins[0], config);
- }
- 
- static int starfive_pinconf_group_set(struct pinctrl_dev *pctldev,
-@@ -876,8 +876,8 @@ static int starfive_pinconf_group_set(struct pinctrl_dev *pctldev,
- 		}
- 	}
- 
--	for (i = 0; i < group->num_pins; i++)
--		starfive_padctl_rmw(sfp, group->pins[i], mask, value);
-+	for (i = 0; i < group->grp.npins; i++)
-+		starfive_padctl_rmw(sfp, group->grp.pins[i], mask, value);
+-static struct group_desc wpcm450_groups[] = {
+-#define WPCM450_GRP(x) { .name = #x, .pins = x ## _pins, \
+-			.num_pins = ARRAY_SIZE(x ## _pins) }
++static struct pingroup wpcm450_groups[] = {
++#define WPCM450_GRP(x) PINCTRL_PINGROUP(#x, x ## _pins, ARRAY_SIZE(x ## _pins))
+ 	WPCM450_GRPS
+ #undef WPCM450_GRP
+ };
+@@ -852,7 +851,7 @@ static int wpcm450_get_group_pins(struct pinctrl_dev *pctldev,
+ 				  const unsigned int **pins,
+ 				  unsigned int *npins)
+ {
+-	*npins = wpcm450_groups[selector].num_pins;
++	*npins = wpcm450_groups[selector].npins;
+ 	*pins  = wpcm450_groups[selector].pins;
  
  	return 0;
- }
-diff --git a/drivers/pinctrl/starfive/pinctrl-starfive-jh7110.c b/drivers/pinctrl/starfive/pinctrl-starfive-jh7110.c
-index 9d71e8c13310..60160965cd29 100644
---- a/drivers/pinctrl/starfive/pinctrl-starfive-jh7110.c
-+++ b/drivers/pinctrl/starfive/pinctrl-starfive-jh7110.c
-@@ -307,7 +307,7 @@ static int jh7110_set_mux(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
+@@ -901,7 +900,7 @@ static int wpcm450_pinmux_set_mux(struct pinctrl_dev *pctldev,
+ 	struct wpcm450_pinctrl *pctrl = pinctrl_dev_get_drvdata(pctldev);
  
- 	pinmux = group->data;
--	for (i = 0; i < group->num_pins; i++) {
-+	for (i = 0; i < group->grp.npins; i++) {
- 		u32 v = pinmux[i];
- 
- 		if (info->jh7110_set_one_pin_mux)
-@@ -437,7 +437,7 @@ static int jh7110_pinconf_group_get(struct pinctrl_dev *pctldev,
- 	if (!group)
- 		return -EINVAL;
- 
--	return jh7110_pinconf_get(pctldev, group->pins[0], config);
-+	return jh7110_pinconf_get(pctldev, group->grp.pins[0], config);
- }
- 
- static int jh7110_pinconf_group_set(struct pinctrl_dev *pctldev,
-@@ -508,8 +508,8 @@ static int jh7110_pinconf_group_set(struct pinctrl_dev *pctldev,
- 		}
- 	}
- 
--	for (i = 0; i < group->num_pins; i++)
--		jh7110_padcfg_rmw(sfp, group->pins[i], mask, value);
-+	for (i = 0; i < group->grp.npins; i++)
-+		jh7110_padcfg_rmw(sfp, group->grp.pins[i], mask, value);
+ 	wpcm450_setfunc(pctrl->gcr_regmap, wpcm450_groups[group].pins,
+-			wpcm450_groups[group].num_pins, function);
++			wpcm450_groups[group].npins, function);
  
  	return 0;
  }
