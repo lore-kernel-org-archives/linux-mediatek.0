@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80164C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 08:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0CD9C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 08:45:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RQ8OywwOJb3LFaBwr6mMhYpmBsDcdIoX+4ygc5IgZ6U=; b=htSnbGve1AzXQoPdAU6U8mLczB
-	JjHNuuoHkbsaVeY+Y15+WpAX9/6MHqQalURxQkA1EyCztcgdDdtRlSa7MQR8/w2ha6YiLVeCBt+B/
-	XypCEgRhG6twnzhoXn9yPNgHlL7GLwZocN/qNL+5vueNmNhE0F6SgLlHoPP/pvOa3gjhyzvXMuCy7
-	wMyLyULkebM2WOoxICvqDecBdy824Xajm0HJbn1e0xKc6QbfVnVarOKWto5QBCT1IWbOZ9CWpsOH0
-	TEAIezC1wx/Qs6LxzdSaFKBLduSAbeWtxgm9kouLW7uYubMw0BZAi7jnrj+DO5as9pLdteA4kKStr
-	dr51kJDQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kHxxwveZDRAPnfOWumxXktb5k7NbUjKgtDpJO55ZaA8=; b=sVRjjlqD1r6WQQGr7X5vngS20K
+	cdqyoDOj5kRsI/23zVWDeZibKLAG34a+3P65h/L2iwSiRyX3isPSO2d3KFpXC39RD84u/xT5ZpYVK
+	Ez01EFzOkDryBGIUpeHcspfvYKxOmKU7GAhAItq0eTRwpAxK/5pEm1ZA9nR1IhbHnOZzt2iPDhxEc
+	nufiIfips/A2S7B79e5IK8qFrVDyuM5regWFpM5Vv2cG8Y8MUIG8mkO75bOGovMSu/A6YlIL/QJ71
+	MXkvH8+AgflDd/rGv7rrMQU+xelabQcGPGuge/tgTPr2Rr5IBzUyCesg9x7jAAGl3d8t3WH9U2dDO
+	8zdDjv3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7tiM-004ZUw-2A;
-	Tue, 28 Nov 2023 08:45:06 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1r7tiW-004ZZX-1f;
+	Tue, 28 Nov 2023 08:45:16 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7tiJ-004ZTZ-1V
+	id 1r7tiP-004ZUt-0Q
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Nov 2023 08:45:05 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1cfd04a6e49so14702765ad.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Nov 2023 00:45:01 -0800 (PST)
+	Tue, 28 Nov 2023 08:45:11 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-1d00689f5c8so324665ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Nov 2023 00:45:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701161101; x=1701765901; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=RQ8OywwOJb3LFaBwr6mMhYpmBsDcdIoX+4ygc5IgZ6U=;
-        b=Kw2dMw1pbsuthN1aX0prydvrQTD9y7eiyYLE2rzIXsIDcbl1lEDQQ2I95CfmoyAZaO
-         Zw1pzjaHg6sB8Em2+WDETA4Ck9hieis4543pbOE+/tXbOJWWPyWE2UgOBff8GjY8/tJc
-         +Y4CprM3etCuRSzpHUGP37hTab3fqVW0HeqV0=
+        d=chromium.org; s=google; t=1701161106; x=1701765906; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kHxxwveZDRAPnfOWumxXktb5k7NbUjKgtDpJO55ZaA8=;
+        b=PXKFi2QOzJsz2CgHi/LoqnR8Ie/p6DdEqgVmloYUxG9zOtoz/nyn1dQu9az0kfCNWq
+         ttQoc9TvlBpTuUBa4v+UtfouISdBKhEeytgk9aOXj27XPLXgNhRmkC+idAd78j9316Zx
+         StNhR8Nac7UpQhrRutd3vPeCkDMfvNplS0dh4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701161101; x=1701765901;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=RQ8OywwOJb3LFaBwr6mMhYpmBsDcdIoX+4ygc5IgZ6U=;
-        b=GAeRnkGI+WM7xXCx+Eja1XFfCE7KfZZ2alsTbECi5zF+qlcNnJAFFdSxMeJeDOC+Dx
-         CMXaJUjCmL0+ZcEHuba4i6wp/yBYBxVMWyKUwoRReFDtBbjDYBNlfZljuGw5zYcE+RfV
-         r8vYVR8/odAmLNdS8BLhAakAEnnKT3SEBHACIB8ovrqnUE8nCRGWjfFC849efvF4ps07
-         pjTXCpy/ie911frjirNTgv/X02PZKL/yx18yA5PLWP6vDp9zLBQbET0OYnsbv8MZtdxd
-         hXVE8YqYxi1hCEeq5z7GIpIcLO2h2eooiXm88/3TvEhQtQltV1bpR458+uhoZQnRhm4G
-         eIXg==
-X-Gm-Message-State: AOJu0Yy32b+ALGJP077/5nDmaTw6jM8Rqmjy0dWcIhbxV0f2MQFbLL/T
-	vYfhziwMMbIl3zNr5SyxLvCYQw==
-X-Google-Smtp-Source: AGHT+IE+ifoo8mgSxSw5S/xxmI2DMsomMPuTsaot5+xQeJxVwLn/vJiYkhRhgcbDX2yhQ4p2oAgnhg==
-X-Received: by 2002:a17:903:22c9:b0:1cf:7bf7:e648 with SMTP id y9-20020a17090322c900b001cf7bf7e648mr25962620plg.33.1701161100925;
-        Tue, 28 Nov 2023 00:45:00 -0800 (PST)
+        d=1e100.net; s=20230601; t=1701161106; x=1701765906;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kHxxwveZDRAPnfOWumxXktb5k7NbUjKgtDpJO55ZaA8=;
+        b=Npypn7bprBP9wowMgv9DvI/8WF+GyTM//171aOQhYWYz+T0RVtSa82rANOoKsA0KG9
+         gLb+0z07k3TQNn6tijaaIrbmxavos0VpCOnYgvQgB73pPcKO3rxMFRGaTDiIlwFwrfQH
+         pmoSjmEZFa6g4IMDrXgmYUmi1elf5SUNgfOS3F1CvAjKt4r4O66+r1KizSCFf3h0sOBs
+         brVVwojV61iMpKmSb+ZvyjkkbNvBw0QRzm6M3P9LiHU8cRe2HF/UD0ax3aLzgaXrzATO
+         B6LIAxaddFkMY1DXMuHJVi9Jp5tksf/KS4zBmsxuPSu852uZfA1nbxnT1Hcnqljt8dgP
+         NbZQ==
+X-Gm-Message-State: AOJu0YyKPmggfG+yGNZCzSkcr0uGfrcla+cW1vcykzWuPs7viHnQ4aET
+	Yg/zPR+Y44V06+a4CJ2fBigOAg==
+X-Google-Smtp-Source: AGHT+IFwNRanqg6iNjPiAn8C7xAInJUbYOtL1AJjn6XOh76hm70XQlF/qqZTYAqMlV2R/DvAZERpiQ==
+X-Received: by 2002:a17:902:d2c1:b0:1cf:ccc3:c9d7 with SMTP id n1-20020a170902d2c100b001cfccc3c9d7mr7924520plc.3.1701161106024;
+        Tue, 28 Nov 2023 00:45:06 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:a990:1e95:a915:9c70])
-        by smtp.gmail.com with ESMTPSA id j1-20020a170902c08100b001ab39cd875csm8358074pld.133.2023.11.28.00.44.56
+        by smtp.gmail.com with ESMTPSA id j1-20020a170902c08100b001ab39cd875csm8358074pld.133.2023.11.28.00.45.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 00:45:00 -0800 (PST)
+        Tue, 28 Nov 2023 00:45:05 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh+dt@kernel.org>,
 	Frank Rowand <frowand.list@gmail.com>,
@@ -92,15 +93,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Jeff LaBundy <jeff@labundy.com>,
 	linux-input@vger.kernel.org,
 	linux-i2c@vger.kernel.org
-Subject: [RFC PATCH v3 0/5] platform/chrome: Introduce DT hardware prober
-Date: Tue, 28 Nov 2023 16:42:29 +0800
-Message-ID: <20231128084236.157152-1-wenst@chromium.org>
+Subject: [RFC PATCH v3 1/5] of: dynamic: Add of_changeset_update_prop_string
+Date: Tue, 28 Nov 2023 16:42:30 +0800
+Message-ID: <20231128084236.157152-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.43.0.rc1.413.gea7ed67945-goog
+In-Reply-To: <20231128084236.157152-1-wenst@chromium.org>
+References: <20231128084236.157152-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_004503_536838_252E04E0 
-X-CRM114-Status: GOOD (  36.13  )
+X-CRM114-CacheID: sfid-20231128_004509_173720_0E28C34E 
+X-CRM114-Status: GOOD (  16.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,168 +118,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+Add a helper function to add string property updates to an OF changeset.
+This is similar to of_changeset_add_prop_string(), but instead of adding
+the property (and failing if it exists), it will update the property.
 
-This is v3 of my "of: Introduce hardware prober driver" [1] series.
-v2 continued Doug's "of: device: Support 2nd sources of probeable but
-undiscoverable devices" [2] series, but follows the scheme suggested by Rob, marking all second
-source component device nodes as "fail-needs-probe", and having a
-hardware prober driver enable the one of them. I tried to include
-everyone from the original Cc: list. Please let me know if you would
-like to be dropped from future submissions.
+This shall be used later in the DT hardware prober.
 
-Changes since v2:
-- Added of_changeset_update_prop_string()
-- Moved generic I2C code to the I2C core
-- Moved remaining platform specific code to platform/chrome/
-- Switched to of_node_is_available() to check if node is enabled.
-- Switched to OF changeset API to update status property
-- I2C probe helper function now accepts "struct device *dev" instead to
-  reduce line length and dereferences
-- Moved "ret = 0" to just before for_each_child_of_node(i2c_node, node)
-- Depend on rather than select CONFIG_I2C
-- Copied machine check to driver init function
-- Explicitly mentioned "device tree" or OF in driver name, description
-  and Kconfig symbol
-- Dropped filename from inside the file
-- Made loop variable size_t (instead of unsigned int as Andy asked)
-- Switched to PLATFORM_DEVID_NONE instead of raw -1
-- Switched to standard goto error path pattern in hw_prober_driver_init()
-- Dropped device class from status property
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Patches removed from v3 and saved for later:
-- of: base: Add of_device_is_fail
-- of: hw_prober: Support Chromebook SKU ID based component selection
-- dt-bindings: arm: mediatek: Remove SKU specific compatibles for Google Krane
-- arm64: dts: mediatek: mt8183-kukui: Merge Krane device trees
+---
+New patch added in v3.
+---
+ drivers/of/dynamic.c | 47 ++++++++++++++++++++++++++++++++++++++++++++
+ include/linux/of.h   |  3 +++
+ 2 files changed, 50 insertions(+)
 
-For the I2C component (touchscreens and trackpads) case from the
-original series, the hardware prober driver finds the particular
-class of device in the device tree, gets its parent I2C adapter,
-and tries to initiate a simple I2C read for each device under that
-I2C bus. When it finds one that responds, it considers that one
-present, marks it as "okay", and returns, letting the driver core
-actually probe the device.
-
-This works fine in most cases since these components are connected
-via ribbon cable and always have the same resources. The driver as
-implemented currently doesn't deal with regulators or GPIO pins,
-since in the existing device trees they are either always on for
-regulators, or have GPIO hogs or pinmux and pinconfig directly
-tied to the pin controller.
-
-The other case, selecting a display panel to use based on the SKU ID
-from the firmware, hit a bit of an issue with fixing the OF graph.
-I've left it out of v3 for now.
-
-Patch 1 adds of_changeset_update_prop_string(), as requested by Rob.
-
-Patch 2 implements probing the I2C bus for presence of components as
-a helper function in the I2C core.
-
-Patch 3 adds a ChromeOS specific DT hardware prober. This initial
-version targets the Hana Chromebooks, probing its I2C trackpads and
-touchscreens.
-
-Patch 4 modifies the Hana device tree and marks the touchscreens
-and trackpads as "fail-needs-probe", ready for the driver to probe.
-
-Patch 5 adds a missing touchscreen variant to Hana. This patch
-conflicts with another one in flight [3] that is almost the same.
-
-
-Assuming this is acceptable to folks, because there are compile
-time dependencies, I think it would be easier for the code bits
-(patches 1 through 4) to go through either the OF tree or I2C
-tree. Patches 5 and 6 can go through the soc tree via the mediatek
-tree.
-
-
-Thanks
-ChenYu
-
-
-Background as given in Doug's cover letter:
-
-Support for multiple "equivalent" sources for components (also known
-as second sourcing components) is a standard practice that helps keep
-cost down and also makes sure that if one component is unavailable due
-to a shortage that we don't need to stop production for the whole
-product.
-
-Some components are very easy to second source. eMMC, for instance, is
-fully discoverable and probable so you can stuff a wide variety of
-similar eMMC chips on your board and things will work without a hitch.
-
-Some components are more difficult to second source, specifically
-because it's difficult for software to probe what component is present
-on any given board. In cases like this software is provided
-supplementary information to help it, like a GPIO strap or a SKU ID
-programmed into an EEPROM. This helpful information can allow the
-bootloader to select a different device tree. The various different
-"SKUs" of different Chromebooks are examples of this.
-
-Some components are somewhere in between. These in-between components
-are the subject of this patch. Specifically, these components are
-easily "probeable" but not easily "discoverable".
-
-A good example of a probeable but undiscoverable device is an
-i2c-connected touchscreen or trackpad. Two separate components may be
-electrically compatible with each other and may have compatible power
-sequencing requirements but may require different software. If
-software is told about the different possible components (because it
-can't discover them), it can safely probe them to figure out which
-ones are present.
-
-On systems using device tree, if we want to tell the OS about all of
-the different components we need to list them all in the device
-tree. This leads to a problem. The multiple sources for components
-likely use the same resources (GPIOs, interrupts, regulators). If the
-OS tries to probe all of these components at the same time then it
-will detect a resource conflict and that's a fatal error.
-
-The fact that Linux can't handle these probeable but undiscoverable
-devices well has had a few consequences:
-1. In some cases, we've abandoned the idea of second sourcing
-   components for a given board, which increases cost / generates
-   manufacturing headaches.
-2. In some cases, we've been forced to add some sort of strapping /
-   EEPROM to indicate which component is present. This adds difficulty
-   to manufacturing / refurb processes.
-3. In some cases, we've managed to make things work by the skin of our
-   teeth through slightly hacky solutions. Specifically, if we remove
-   the "pinctrl" entry from the various options then it won't
-   conflict. Regulators inherently can have more than one consumer, so
-   as long as there are no GPIOs involved in power sequencing and
-   probing devices then things can work. This is how
-   "sc8280xp-lenovo-thinkpad-x13s" works and also how
-   "mt8173-elm-hana" works.
-
-End of background from Doug's cover letter.
-
-[1] https://lore.kernel.org/linux-arm-kernel/20231109100606.1245545-1-wenst@chromium.org/
-[2] https://lore.kernel.org/all/20230921102420.RFC.1.I9dddd99ccdca175e3ceb1b9fa1827df0928c5101@changeid/
-[3] https://lore.kernel.org/linux-mediatek/20231115043511.2670477-1-treapking@chromium.org/
-
-Chen-Yu Tsai (5):
-  of: dynamic: Add of_changeset_update_prop_string
-  i2c: of: Introduce component probe function
-  platform/chrome: Introduce device tree hardware prober
-  arm64: dts: mediatek: mt8173-elm-hana: Mark touchscreens and trackpads
-    as fail
-  arm64: dts: mediatek: mt8173-elm-hana: Add G2touch G7500 touchscreen
-
- .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |  20 ++++
- drivers/i2c/i2c-core-of.c                     | 110 ++++++++++++++++++
- drivers/of/dynamic.c                          |  47 ++++++++
- drivers/platform/chrome/Kconfig               |  11 ++
- drivers/platform/chrome/Makefile              |   1 +
- .../platform/chrome/chromeos_of_hw_prober.c   |  89 ++++++++++++++
- include/linux/i2c.h                           |   4 +
- include/linux/of.h                            |   3 +
- 8 files changed, 285 insertions(+)
- create mode 100644 drivers/platform/chrome/chromeos_of_hw_prober.c
-
+diff --git a/drivers/of/dynamic.c b/drivers/of/dynamic.c
+index f63250c650ca..d22aad938667 100644
+--- a/drivers/of/dynamic.c
++++ b/drivers/of/dynamic.c
+@@ -1039,3 +1039,50 @@ int of_changeset_add_prop_u32_array(struct of_changeset *ocs,
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(of_changeset_add_prop_u32_array);
++
++static int of_changeset_update_prop_helper(struct of_changeset *ocs,
++					   struct device_node *np,
++					   const struct property *pp)
++{
++	struct property *new_pp;
++	int ret;
++
++	new_pp = __of_prop_dup(pp, GFP_KERNEL);
++	if (!new_pp)
++		return -ENOMEM;
++
++	ret = of_changeset_update_property(ocs, np, new_pp);
++	if (ret) {
++		kfree(new_pp->name);
++		kfree(new_pp->value);
++		kfree(new_pp);
++	}
++
++	return ret;
++}
++
++/**
++ * of_changeset_update_prop_string - Add a string property update to a changeset
++ *
++ * @ocs:	changeset pointer
++ * @np:		device node pointer
++ * @prop_name:	name of the property to be updated
++ * @str:	pointer to null terminated string
++ *
++ * Create a string property to be updated and add it to a changeset.
++ *
++ * Return: 0 on success, a negative error value in case of an error.
++ */
++int of_changeset_update_prop_string(struct of_changeset *ocs,
++				    struct device_node *np,
++				    const char *prop_name, const char *str)
++{
++	struct property prop;
++
++	prop.name = (char *)prop_name;
++	prop.length = strlen(str) + 1;
++	prop.value = (void *)str;
++
++	return of_changeset_update_prop_helper(ocs, np, &prop);
++}
++EXPORT_SYMBOL_GPL(of_changeset_update_prop_string);
+diff --git a/include/linux/of.h b/include/linux/of.h
+index 6a9ddf20e79a..c69bc7da380e 100644
+--- a/include/linux/of.h
++++ b/include/linux/of.h
+@@ -1601,6 +1601,9 @@ static inline int of_changeset_add_prop_u32(struct of_changeset *ocs,
+ {
+ 	return of_changeset_add_prop_u32_array(ocs, np, prop_name, &val, 1);
+ }
++int of_changeset_update_prop_string(struct of_changeset *ocs,
++				    struct device_node *np,
++				    const char *prop_name, const char *str);
+ 
+ #else /* CONFIG_OF_DYNAMIC */
+ static inline int of_reconfig_notifier_register(struct notifier_block *nb)
 -- 
 2.43.0.rc1.413.gea7ed67945-goog
 
