@@ -4,94 +4,179 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 656FAC4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 07:02:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83FBCC4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 07:07:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZmGAR8TWPIm7nXuqVye3ZkcWqozTMkHTYDN4GPq2kdQ=; b=1GdpWwcsrgBDyozwpWEj/qwK+3
-	i5+OmuCUhA2vU4al/+YPcUFBHxoCwhQzBlToUPSwa7x7x73Lq1z/JEvish9BBnGhxzGNP3mVhpb52
-	XNblmSrfQ5OA6LEWpjK+FjnVRj5hv8ROkgXJn5cVb8UzumwuR2LhG/3Y3DAL8NjexBKkn4A861TL7
-	NlsVNNCAeIdfSEUb56vg/Y0XXj9T+NNlZ3tTPWKXB1KcW46ebZGYvqGdkcedB9UfNog7t8ON7hg9A
-	9QFCaQ5SIPFqndIi+V+GGBYRcmwy4WjSA6LoCtG5OvViEW+dwwcg982/JHc+rTwNIzOfsG3f4SSHc
-	7TCSjmiA==;
+	bh=nlSafwqJchuusKe64SBrx8di2wqkLfd1sGW67ZZMiUE=; b=s9NP20i/w5TKCtWRfg9ts4r/Cs
+	84BzFVSqEA33C+4uxY+wF1gQFuMDfCwPOYdZNjCt+j/Y4QZjvR0ux4+wIyM4yiL+eI0bBzlY7C8hu
+	RhfMO9sFMzQbwRvjHs7NLJH0QSz0/NhaYe0PRO5jFywqnSpeLYPCqjl1Aw9tH1Jn/80bLih+wwIUr
+	jHQs/wKfoiVoUk0W5dipWxWdeSUVoykoHob1e9S/L12Lj5sRCy/04SgdP7iLd6Ul6fUXAt/cO7jNN
+	RPQ859TjxKWXgUNKnq4m2Oi1e+Ory5PVw5y+jArQk9fJdv3RNhjjvAeiFV8oVoHWCiOGU/sVvzQ/d
+	3GDiHpEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7s6v-004JhA-0T;
-	Tue, 28 Nov 2023 07:02:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1r7sBt-004KXO-0W;
+	Tue, 28 Nov 2023 07:07:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7s6r-004Jg0-2r;
-	Tue, 28 Nov 2023 07:02:20 +0000
-X-UUID: 0e5323dc8dbc11ee86758d4a7c00f3a0-20231128
+	id 1r7sBq-004KWt-16;
+	Tue, 28 Nov 2023 07:07:28 +0000
+X-UUID: c73486708dbc11ee9b7791016c24628a-20231128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ZmGAR8TWPIm7nXuqVye3ZkcWqozTMkHTYDN4GPq2kdQ=;
-	b=mqY4EeOJDSjrpnsiFOYEWiJCefdlY3lwwTEThau90v+Ezta5yRiiJE1jPCt+wBmf3ZNtLGAEZH451ktXu2ibPy3wPS+VWMZoPemtmfWlWAo5HxfsaWZyOzTTqz9RZaPLbiNkfnHBfp9CHg69fuDvHXS//yunMKi5obJQOXJ1W+0=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=nlSafwqJchuusKe64SBrx8di2wqkLfd1sGW67ZZMiUE=;
+	b=j9ESMc4SIZTlTY0Msm8W9Q2EWwbtKX/kMZ1y2v3y0bLz/GvkmfJWSx9IhFJ96HWlgPFA6zb46l51rIWD9lHgucXQxdzli5iq/bWMCZ9nocIpfgrKUU4Ugzc1b8vHyKQ7APL+xA2IPD2DeTCXVeE93Lx6cnkMjALQCCZ8viZR6Tc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.34,REQID:17a606f6-9af1-43ca-ba90-99675533690e,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:abefa75,CLOUDID:c3712773-1bd3-4f48-b671-ada88705968c,B
+X-CID-O-INFO: VERSION:1.1.34,REQID:fb690aa9-4fec-4b80-8e45-9923d2da9a64,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:abefa75,CLOUDID:90842773-1bd3-4f48-b671-ada88705968c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 0e5323dc8dbc11ee86758d4a7c00f3a0-20231128
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+X-UUID: c73486708dbc11ee9b7791016c24628a-20231128
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <axe.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1756502571; Tue, 28 Nov 2023 00:02:12 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1407793500; Tue, 28 Nov 2023 00:07:23 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 28 Nov 2023 15:01:43 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 28 Nov 2023 15:01:42 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
-	<ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
-	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Wenbin
- Mei" <wenbin.mei@mediatek.com>
-CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Axe Yang
-	<axe.yang@mediatek.com>
-Subject: [PATCH v2 2/2] mmc: mediatek: extend number of tuning steps
-Date: Tue, 28 Nov 2023 15:01:27 +0800
-Message-ID: <20231128070127.27442-3-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231128070127.27442-1-axe.yang@mediatek.com>
-References: <20231128070127.27442-1-axe.yang@mediatek.com>
+ 15.2.1118.26; Tue, 28 Nov 2023 15:07:21 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 28 Nov 2023 15:07:21 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Go1v55qAYXWHGQUBoTLP1D+YsnBwoNVFlyAwonjyusDb9uoc3+lp6KfNhzKCIEJm95OmzHUxRf7x2Up6awjBD7+a24qQfME0koa5mgjqloMUPEMAzj7di0xf4BZOqC339iqye0O+Qd4p/qyfPcFeePb/FQhXfxSwx1C69zRoNvW+sL+Q44X3v29dzPZhLmOZ56YWUEOcKOgmrrjdR8PabInggWlXCBctWRhbp91zGgl/vQxZtWC5ecGyV53oSyZZ6nWd6Xunt0J1Y8Kmu+1W5mJQQEt5BmERu3hgrYDMxLTt7CouyLPlYZMuJT5XkJdbfvsVA9CEfXIT6KCEBhAj0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nlSafwqJchuusKe64SBrx8di2wqkLfd1sGW67ZZMiUE=;
+ b=Hnpxl+5dg74wwMDcIg2u8FszyXwvfp4B4l8cnqG+zWpNkfA8IDJhbwQ/Dg97LuLk6y8v1dlt1E9EZ7CIIi7Frknu2CPq3zZPn39gxIgRJXhcilcN58b+AOmiI9DTviJP+z49pJJBEcaRbHsj2BLQlsH5pGXEAzIop2Zlxf4ck45KTDh2S2WReIVpgPln7LIiRjRBwzFzpxnUEoG5yzxwy2F9FtYS9HKazWLZsbrO2IQEdCKE2Q0ZFPAiwW0ey8pT0T01Ad1THpVCeizBnUdK+tr02zDfZ2JgesZLSYc5ru1GBL6O5ifwCSoAK8dY0VL7IRyaFJK9zEf5XwzOlCKSFg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nlSafwqJchuusKe64SBrx8di2wqkLfd1sGW67ZZMiUE=;
+ b=Xe0A0Q5TnMzM0Y8om0doUHBf80Bx6UxGO2oMRptlTXV/r0K+qb9a9RJpsaANSlhwNMQAsjL4iJcogUHdTLGpo3STWrP6RojBtwicEm3D+yO64AhHeSJkOHSAkS0ItlPgWsq1DIByTCjXAjP8SHFQJdnC6xkYiCtuODTrLHM4v04=
+Received: from SL2PR03MB4537.apcprd03.prod.outlook.com (2603:1096:100:59::17)
+ by KL1PR03MB7550.apcprd03.prod.outlook.com (2603:1096:820:e6::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.27; Tue, 28 Nov
+ 2023 07:07:16 +0000
+Received: from SL2PR03MB4537.apcprd03.prod.outlook.com
+ ([fe80::b25:3f66:cd6f:39d]) by SL2PR03MB4537.apcprd03.prod.outlook.com
+ ([fe80::b25:3f66:cd6f:39d%7]) with mapi id 15.20.7025.022; Tue, 28 Nov 2023
+ 07:07:16 +0000
+From: =?utf-8?B?QXhlIFlhbmcgKOadqOejiik=?= <Axe.Yang@mediatek.com>
+To: "robh+dt@kernel.org" <robh+dt@kernel.org>,
+	=?utf-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	=?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+	<Chaotian.Jing@mediatek.com>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+CC: "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mmc@vger.kernel.org"
+	<linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [PATCH v1 2/2] dt-bindings: mmc: mtk-sd: add 64-steps tuning
+ related property
+Thread-Topic: [PATCH v1 2/2] dt-bindings: mmc: mtk-sd: add 64-steps tuning
+ related property
+Thread-Index: AQHaHqUvYnG+2b4j+0iirW6YMZAI5rCJIe8AgAYzzoA=
+Date: Tue, 28 Nov 2023 07:07:16 +0000
+Message-ID: <736a6dc342ff0c5452687b7588cc194e22bb209c.camel@mediatek.com>
+References: <20231124070839.12484-1-axe.yang@mediatek.com>
+	 <20231124070839.12484-3-axe.yang@mediatek.com>
+	 <8dd46bcd-c1fa-4876-b4d9-e4bb91ce5de9@linaro.org>
+In-Reply-To: <8dd46bcd-c1fa-4876-b4d9-e4bb91ce5de9@linaro.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SL2PR03MB4537:EE_|KL1PR03MB7550:EE_
+x-ms-office365-filtering-correlation-id: c3821424-9207-46b7-ddba-08dbefe0a755
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: guolkOdKjoRvET79JWVujxa3wiQy6X4V65VegInfGjqmjB6LDWQPhosOw7KWCAL56FtubDuFPD5Kh2dYu4f5VWJpjMDc9nhP3AIHuTGp6L4se+JYuk1LenbUPPQXJWqZkB38BYm8rCBU98SMoTikUBJjAfiayJPgYgKQ7XmIq7QuYdgIiMUiXMju3lA9pvTibnVTX13k2x1K3//6gN2FznfWhr188H7A0KLelxkj8C8HNGA7gUb40FeUJfDGJSQiL3a/SqVKj18plU7nMmtqsFUuxtPogSdEJViFQPBAqIPJq1n0vdkPezZstcOSMlZilPv8xiEX7lixNtuTvB9drDuQTgn12EcSIssp9SpdVHb3+FIKE2X8pqkYLiwEAKsDklw0Nmt3BIoDnRN7JLQuYn+GyVX2XYV4XGq0sGnMSnr/wZox4UDQPMDr1fvlZXIdq2a1ywkYgsgT3moXMxRTm+eiiUjVy5/R+anDXEOaT97N53vQijoyL2mj4bCWAccztcCvqHgmTGbD1FQ3M6VNmtWNPS0T5rIkfxqYvkt2lsRY8l1weOn26r3Z0e9EDx49BQSk+e91F1E3LCVouoMZZBslIHjWrcpUpLok6Z05dVfTIWyLi7oOD/4PA9E9UbflvqSDUAjVfZRk8BXecV0g8terq7XR/2WuX+uZRnWUizjHRlI43zM24OP/3K4UEXP2Pu/fX6DTXbu+/ok/nxpbjlY168k1Cb8EvKmrV+JRlNg=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB4537.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(366004)(396003)(346002)(39860400002)(136003)(230273577357003)(230173577357003)(230922051799003)(186009)(64100799003)(451199024)(1800799012)(2616005)(107886003)(8936002)(6506007)(6512007)(66946007)(4326008)(86362001)(8676002)(478600001)(5660300002)(7416002)(6486002)(110136005)(66556008)(76116006)(316002)(91956017)(66446008)(64756008)(66476007)(54906003)(53546011)(38100700002)(26005)(83380400001)(122000001)(71200400001)(38070700009)(41300700001)(2906002)(85182001)(4001150100001)(36756003)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cEZjSE1nUk8zMCt6QXFIR1hEclVXTWRZdUM4OEdVSHpocmgxWG9odVgySXl4?=
+ =?utf-8?B?cHN4WFdGR0lTb0FEQTdaN0RIVTc1RnNocE5PVWFTWmdQMFJhZi94NWFJUWND?=
+ =?utf-8?B?QTN4ejBUb0F0YnpJOHFmOXU2cFJNc1FVQkV2eGFjYVlibzkydWlvWWdwc3Ns?=
+ =?utf-8?B?OFFzOUNxbDB5d0RkQXpIcGlkRlo3cHY1Vm0rYjFFenlLMkp0eXNETW45WkZ1?=
+ =?utf-8?B?eWwvM091bnFlUTlLVVBiaUc2dWs3NlJvMzBGTVFmc0ViREVyVXJmdVJsWlVa?=
+ =?utf-8?B?MXp4Z0g1aXdJWE1td1BoTXRXN2pTWjJjUnNmOXM4L21aa3B1dERYc2JHOHRm?=
+ =?utf-8?B?RWZPamlBS1lXb0ZlQUkxOXhsaVQ3TU9LZE9FWkZxMERyTzFFSC84b2p6Qy9y?=
+ =?utf-8?B?OFk5NjRJY2hyWWNGemZYVURLMXJGUzBrZDQ3Mk1zYW0zZmdXbHlhZlcyZ21Y?=
+ =?utf-8?B?UlpyYWgyNTQ0SDk1QWJMWWtHZGt3RHFiZUZ6cXcxdG4vdkVMSVFHTUZaVnda?=
+ =?utf-8?B?OUs4Q01FeWhkNGI1bEJyaWFxWldsWmFIVUNzL2RPcUVUVGFZZXQ4QkZEY201?=
+ =?utf-8?B?UHVtZ2tNNElQT0h0TmxMejl6MVBTbys1NUdmQWRHWHZsK2RwcU9aSVNxd0pa?=
+ =?utf-8?B?bG5ZTHhHdUxtMnFyY1RNazV1ckRCR0NOVHVab2l2aHEvL05uWlNuaDI0YTZU?=
+ =?utf-8?B?VXpRSkpING1KNUp4V2lVZy9nd2xwSHlHang2ZkMzMnFNc2tYUTZBWFZ5Wm50?=
+ =?utf-8?B?NHVVYU9CMnFwc2luLzZ0cW1iemN0RSs3bm9QbnhTQVhRdzgrRWVxYjdVU1hk?=
+ =?utf-8?B?NE5rSlhNNlpsWDhpRjVwdWU5UDNFblp2NUlDejRUSFpoRlQ4TEdzeFIzK21E?=
+ =?utf-8?B?MzhGNHhkalNBNUcrcmY1MUtRdHJlcHBHbFJvS3dWcG1KWFJuNnFYdm43bDJj?=
+ =?utf-8?B?RVgrYTNKT2hCdVh1cVB5NGp6bDc5TjZOVGZTOERCNWdSL0s2QVR4aUp5aGpx?=
+ =?utf-8?B?alFCSFBqa0Y1RnlYUGVDNzU0Wkg3ZmordWd0SGVibzBYNHhpakhwczR5d2N6?=
+ =?utf-8?B?cXNlaDhmbFVjeTUrUGJ5S0c1V2Q4Rnl2bXdCSTlrSnNGQW9kSHJHQlpocy84?=
+ =?utf-8?B?ZlZ0ZTRZb0YvUVpJU1ZRZ0cyWXQxUDkwcUlmQkFFUmJVMnFkOTNReVliTk1Z?=
+ =?utf-8?B?T0F5WFV5eVAyeDVIRmV0bmFQY0VDOCtjOUJpYlA1VG5Tdk84MVd2MTJVMTE1?=
+ =?utf-8?B?ZEVyU3k3byszYk9ERGJJMXlIWWtlVXBNQ1pwMytKMUdqQjBOMkdIUThreDJ6?=
+ =?utf-8?B?WTRlcHFhdDhZakY3Sk8rVlh3NDdTY2RxZ3dVK2pESlgyQ0VzOFJFU1FjQ0Rn?=
+ =?utf-8?B?QnlTTjVKcmJ4YXFIRjFyQmVFT2lsb2xlNnVyMzE5VmFOTWwzeDNRbndZZVZW?=
+ =?utf-8?B?Nnd4NTRRYWc0RkNpM0FXQ1VhQk1xaVRtRHhQT1ViL016a2M1blUvREtqN0hC?=
+ =?utf-8?B?SFo2OXVEWXgySCtEcWRwVVJMdXVqbzArclJmSEloQUN5U0VjMHRPQzZsNFhh?=
+ =?utf-8?B?MGw2ZW9UVEtwSHVLU3BoVEZrNmJKMy9nRjdnM3hlUVUwSEpTUml5V2hXUGtB?=
+ =?utf-8?B?S0hyS1VUNzRZKzBpOSt2ZEx2QzJQMVljT29saGt2MEdsRDBURm5uejNkUUQ1?=
+ =?utf-8?B?SkJZNW1qMWdmczlxZDZqSU5wNEN6dGRTU0VFazdPVlY5eXF2ZWs2RGd0SlZR?=
+ =?utf-8?B?WUhZWFgxQWUvUnlVVXBZQ3dhTE81QmdqaGVXZWZVa3FoWnBOVEJsMmMyM0hw?=
+ =?utf-8?B?TitvRHIrRXVBV2VQVmt4ejVSWDFNVXhKaWlPUHJzWWJoeUNqMkJwZU1hQ2sr?=
+ =?utf-8?B?alJSaDU2MG4xclBjVTFucGcrRU9adVNzRmRQMjhTMS9EVG4wR0xUMEVCanBm?=
+ =?utf-8?B?M1lNMWVldGppZGV0SXlEVFFlVG1weGc1RkZIZjBjNEhnOGcyejZnN0t3VVFO?=
+ =?utf-8?B?WjI3MVR4dTAwZmtwZUJWRksyckRLcllFenl5N3lhT2xmdkJlWW53L1hYWXhi?=
+ =?utf-8?B?TGRYVlkveGlCSzBvcWtTMG5xVzBiMTBuNkdQL2xwaGlkUXZ6Wkg1ZG9MZEZF?=
+ =?utf-8?B?dWlsTm83d1dMUzdiRmNTUC8wZWZRaWtyRXp4eDVoS1hpTUtuWWtaRDNnamQw?=
+ =?utf-8?B?V1E9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <84D4B35622F4E44EA170DD65183A1C84@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.501500-8.000000
-X-TMASE-MatchedRID: Lpa2bBMdmKl80yFIYo0rRuGonqgs5zxBRjqOkKPmpa4UlWIKEoGBmc+/
-	a0S0vHt4WZy+62a7b19rOAp0kI1DP9H/WqWljGhSSDkh6bW+bcckMBkEieOjZi8ggN9+4AxXDk6
-	/c+jKAHFIl95haju6JaPNT9pmq5xZMZPj25j8CtwD2WXLXdz+ASlayzmQ9QV0LXc81qaZoAZ6BY
-	sNJ37NLlzcgkMGmqXJbaWmopg96Z1F/TNFimjSuL50lYduDghOEVhvB8sXyyN39JELjK+oYGpHK
-	tkQBynKW3gtfnNC/JHwlIRl/0urFbGynpy6kEvAM71h0SMVl8InKdHifmIw3NEsTITobgNE18S5
-	+8epYHgkM2V3jz3nR7pjAjMHHtZlHxPMjOKY7A9t1O49r1VEa8RB0bsfrpPIfiAqrjYtFiQ7Hj1
-	M+pDE3dXNK0okWWLu6t+lcicgpvPc893dwVa7uH7cGd19dSFd
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.501500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 4E1B14A33FA5DCBAE9A2726AA107200C63EC945DC32EEAFFCBCF92323B5650A42000:8
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB4537.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c3821424-9207-46b7-ddba-08dbefe0a755
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Nov 2023 07:07:16.1807
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: eUQXSfvoWRdi9Nir+i6aKha912ALN8UZwMrfQPTfGlJJWW+CYpjnx42dDiaTxUI/WjtBh5pZAbYV5YH8NgIjqQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB7550
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_230217_954104_E8AD52AD 
-X-CRM114-Status: GOOD (  27.30  )
+X-CRM114-CacheID: sfid-20231127_230726_462032_EBD49AF4 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,369 +191,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Previously, during the MSDC calibration process, a full clock cycle
-actually not be covered, which in some cases didn't yield the best
-results and could cause CRC errors. This problem is particularly
-evident when MSDC is used as an SDIO host. In fact, MSDC support
-tuning up to a maximum of 64 steps, but by default, the step number
-is 32. By increase the tuning step, we are more likely to cover more
-parts of a clock cycle, and get better calibration result.
-
-To illustrate, when tuning 32 steps, if the obtained window has a hole
-near the middle, like this: 0xffc07ff (hex), then the selected delay
-will be the 6 (counting from right to left).
-
-(32 <- 1)
-1111 1111 1100 0000 0000 0111 11(1)1 1111
-
-However, if we tune 64 steps, the window obtained may look like this:
-0xfffffffffffc07ff. The final selected delay will be 44, which is
-safer as it is further away from the hole:
-
-(64 <- 1)
-1111 ... (1)111 1111 1111 1111 1111 1100 0000 0000 0111 1111 1111
-
-In this case, delay 6 selected through 32 steps tuning is obviously
-not optimal, and this delay is closer to the hole, using it would
-easily cause CRC problems.
-
-You will need to configure property "mediatek,tuning-step" in MSDC
-dts node to 64 to extend the steps.
-
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 135 +++++++++++++++++++++++++++-----------
- 1 file changed, 97 insertions(+), 38 deletions(-)
-
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 97f7c3d4be6e..c8297f501a1e 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -252,12 +252,16 @@
- 
- #define MSDC_PAD_TUNE_DATWRDLY	  GENMASK(4, 0)		/* RW */
- #define MSDC_PAD_TUNE_DATRRDLY	  GENMASK(12, 8)	/* RW */
-+#define MSDC_PAD_TUNE_DATRRDLY2	  GENMASK(12, 8)	/* RW */
- #define MSDC_PAD_TUNE_CMDRDLY	  GENMASK(20, 16)	/* RW */
-+#define MSDC_PAD_TUNE_CMDRDLY2	  GENMASK(20, 16)	/* RW */
- #define MSDC_PAD_TUNE_CMDRRDLY	  GENMASK(26, 22)	/* RW */
- #define MSDC_PAD_TUNE_CLKTDLY	  GENMASK(31, 27)	/* RW */
- #define MSDC_PAD_TUNE_RXDLYSEL	  BIT(15)   /* RW */
- #define MSDC_PAD_TUNE_RD_SEL	  BIT(13)   /* RW */
- #define MSDC_PAD_TUNE_CMD_SEL	  BIT(21)   /* RW */
-+#define MSDC_PAD_TUNE_RD2_SEL	  BIT(13)   /* RW */
-+#define MSDC_PAD_TUNE_CMD2_SEL	  BIT(21)   /* RW */
- 
- #define PAD_DS_TUNE_DLY_SEL       BIT(0)	  /* RW */
- #define PAD_DS_TUNE_DLY1	  GENMASK(6, 2)   /* RW */
-@@ -325,7 +329,8 @@
- 
- #define DEFAULT_DEBOUNCE	(8)	/* 8 cycles CD debounce */
- 
--#define PAD_DELAY_MAX	32 /* PAD delay cells */
-+#define PAD_DELAY_HALF	32 /* PAD delay cells */
-+#define PAD_DELAY_FULL	64
- /*--------------------------------------------------------------------------*/
- /* Descriptor Structure                                                     */
- /*--------------------------------------------------------------------------*/
-@@ -461,6 +466,7 @@ struct msdc_host {
- 	u32 hs400_ds_dly3;
- 	u32 hs200_cmd_int_delay; /* cmd internal delay for HS200/SDR104 */
- 	u32 hs400_cmd_int_delay; /* cmd internal delay for HS400 */
-+	u32 tuning_step;
- 	bool hs400_cmd_resp_sel_rising;
- 				 /* cmd response sample selection for HS400 */
- 	bool hs400_mode;	/* current eMMC will run at hs400 mode */
-@@ -1615,7 +1621,7 @@ static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
- 	}
- 
- 	if (cmd_err || dat_err) {
--		dev_err(host->dev, "cmd_err = %d, dat_err =%d, intsts = 0x%x",
-+		dev_err(host->dev, "cmd_err = %d, dat_err = %d, intsts = 0x%x",
- 			cmd_err, dat_err, intsts);
- 	}
- 
-@@ -1780,10 +1786,20 @@ static void msdc_init_hw(struct msdc_host *host)
- 				     DATA_K_VALUE_SEL);
- 			sdr_set_bits(host->top_base + EMMC_TOP_CMD,
- 				     PAD_CMD_RD_RXDLY_SEL);
-+			if (host->tuning_step > PAD_DELAY_HALF) {
-+				sdr_set_bits(host->top_base + EMMC_TOP_CONTROL,
-+					     PAD_DAT_RD_RXDLY2_SEL);
-+				sdr_set_bits(host->top_base + EMMC_TOP_CMD,
-+					     PAD_CMD_RD_RXDLY2_SEL);
-+			}
- 		} else {
- 			sdr_set_bits(host->base + tune_reg,
- 				     MSDC_PAD_TUNE_RD_SEL |
- 				     MSDC_PAD_TUNE_CMD_SEL);
-+			if (host->tuning_step > PAD_DELAY_HALF)
-+				sdr_set_bits(host->base + tune_reg + 4,
-+					     MSDC_PAD_TUNE_RD2_SEL |
-+					     MSDC_PAD_TUNE_CMD2_SEL);
- 		}
- 	} else {
- 		/* choose clock tune */
-@@ -1925,24 +1941,24 @@ static void msdc_ops_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
- 		msdc_set_mclk(host, ios->timing, ios->clock);
- }
- 
--static u32 test_delay_bit(u32 delay, u32 bit)
-+static u64 test_delay_bit(u64 delay, u32 bit)
- {
--	bit %= PAD_DELAY_MAX;
-+	bit %= PAD_DELAY_FULL;
- 	return delay & BIT(bit);
- }
- 
--static int get_delay_len(u32 delay, u32 start_bit)
-+static int get_delay_len(u64 delay, u32 start_bit)
- {
- 	int i;
- 
--	for (i = 0; i < (PAD_DELAY_MAX - start_bit); i++) {
-+	for (i = 0; i < (PAD_DELAY_FULL - start_bit); i++) {
- 		if (test_delay_bit(delay, start_bit + i) == 0)
- 			return i;
- 	}
--	return PAD_DELAY_MAX - start_bit;
-+	return PAD_DELAY_FULL - start_bit;
- }
- 
--static struct msdc_delay_phase get_best_delay(struct msdc_host *host, u32 delay)
-+static struct msdc_delay_phase get_best_delay(struct msdc_host *host, u64 delay)
- {
- 	int start = 0, len = 0;
- 	int start_final = 0, len_final = 0;
-@@ -1950,28 +1966,28 @@ static struct msdc_delay_phase get_best_delay(struct msdc_host *host, u32 delay)
- 	struct msdc_delay_phase delay_phase = { 0, };
- 
- 	if (delay == 0) {
--		dev_err(host->dev, "phase error: [map:%x]\n", delay);
-+		dev_err(host->dev, "phase error: [map:%llx]\n", delay);
- 		delay_phase.final_phase = final_phase;
- 		return delay_phase;
- 	}
- 
--	while (start < PAD_DELAY_MAX) {
-+	while (start < PAD_DELAY_FULL) {
- 		len = get_delay_len(delay, start);
- 		if (len_final < len) {
- 			start_final = start;
- 			len_final = len;
- 		}
- 		start += len ? len : 1;
--		if (len >= 12 && start_final < 4)
-+		if (!upper_32_bits(delay) && len >= 12 && start_final < 4)
- 			break;
- 	}
- 
- 	/* The rule is that to find the smallest delay cell */
- 	if (start_final == 0)
--		final_phase = (start_final + len_final / 3) % PAD_DELAY_MAX;
-+		final_phase = (start_final + len_final / 3) % PAD_DELAY_FULL;
- 	else
--		final_phase = (start_final + len_final / 2) % PAD_DELAY_MAX;
--	dev_dbg(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
-+		final_phase = (start_final + len_final / 2) % PAD_DELAY_FULL;
-+	dev_dbg(host->dev, "phase: [map:%llx] [maxlen:%d] [final:%d]\n",
- 		delay, len_final, final_phase);
- 
- 	delay_phase.maxlen = len_final;
-@@ -1984,30 +2000,68 @@ static inline void msdc_set_cmd_delay(struct msdc_host *host, u32 value)
- {
- 	u32 tune_reg = host->dev_comp->pad_tune_reg;
- 
--	if (host->top_base)
--		sdr_set_field(host->top_base + EMMC_TOP_CMD, PAD_CMD_RXDLY,
--			      value);
--	else
--		sdr_set_field(host->base + tune_reg, MSDC_PAD_TUNE_CMDRDLY,
--			      value);
-+	if (host->top_base) {
-+		if (value < PAD_DELAY_HALF) {
-+			sdr_set_field(host->top_base + EMMC_TOP_CMD, PAD_CMD_RXDLY,
-+				      value);
-+			sdr_set_field(host->top_base + EMMC_TOP_CMD, PAD_CMD_RXDLY2,
-+				      0);
-+		} else {
-+			sdr_set_field(host->top_base + EMMC_TOP_CMD, PAD_CMD_RXDLY,
-+				      PAD_DELAY_HALF - 1);
-+			sdr_set_field(host->top_base + EMMC_TOP_CMD, PAD_CMD_RXDLY2,
-+				      value - PAD_DELAY_HALF);
-+		}
-+	} else {
-+		if (value < PAD_DELAY_HALF) {
-+			sdr_set_field(host->base + tune_reg, MSDC_PAD_TUNE_CMDRDLY,
-+				      value);
-+			sdr_set_field(host->base + tune_reg + 4, MSDC_PAD_TUNE_CMDRDLY2,
-+				      0);
-+		} else {
-+			sdr_set_field(host->base + tune_reg, MSDC_PAD_TUNE_CMDRDLY,
-+				      PAD_DELAY_HALF - 1);
-+			sdr_set_field(host->base + tune_reg + 4, MSDC_PAD_TUNE_CMDRDLY2,
-+				      value - PAD_DELAY_HALF);
-+		}
-+	}
- }
- 
- static inline void msdc_set_data_delay(struct msdc_host *host, u32 value)
- {
- 	u32 tune_reg = host->dev_comp->pad_tune_reg;
- 
--	if (host->top_base)
--		sdr_set_field(host->top_base + EMMC_TOP_CONTROL,
--			      PAD_DAT_RD_RXDLY, value);
--	else
--		sdr_set_field(host->base + tune_reg, MSDC_PAD_TUNE_DATRRDLY,
--			      value);
-+	if (host->top_base) {
-+		if (value < PAD_DELAY_HALF) {
-+			sdr_set_field(host->top_base + EMMC_TOP_CONTROL,
-+				      PAD_DAT_RD_RXDLY, value);
-+			sdr_set_field(host->top_base + EMMC_TOP_CONTROL,
-+				      PAD_DAT_RD_RXDLY2, 0);
-+		} else {
-+			sdr_set_field(host->top_base + EMMC_TOP_CONTROL,
-+				      PAD_DAT_RD_RXDLY, PAD_DELAY_HALF - 1);
-+			sdr_set_field(host->top_base + EMMC_TOP_CONTROL,
-+				      PAD_DAT_RD_RXDLY2, value - PAD_DELAY_HALF);
-+		}
-+	} else {
-+		if (value < PAD_DELAY_HALF) {
-+			sdr_set_field(host->base + tune_reg, MSDC_PAD_TUNE_DATRRDLY,
-+				      value);
-+			sdr_set_field(host->base + tune_reg + 4, MSDC_PAD_TUNE_DATRRDLY2,
-+				      0);
-+		} else {
-+			sdr_set_field(host->base + tune_reg, MSDC_PAD_TUNE_DATRRDLY,
-+				      PAD_DELAY_HALF - 1);
-+			sdr_set_field(host->base + tune_reg + 4, MSDC_PAD_TUNE_DATRRDLY2,
-+				      value - PAD_DELAY_HALF);
-+		}
-+	}
- }
- 
- static int msdc_tune_response(struct mmc_host *mmc, u32 opcode)
- {
- 	struct msdc_host *host = mmc_priv(mmc);
--	u32 rise_delay = 0, fall_delay = 0;
-+	u64 rise_delay = 0, fall_delay = 0;
- 	struct msdc_delay_phase final_rise_delay, final_fall_delay = { 0,};
- 	struct msdc_delay_phase internal_delay_phase;
- 	u8 final_delay, final_maxlen;
-@@ -2023,7 +2077,7 @@ static int msdc_tune_response(struct mmc_host *mmc, u32 opcode)
- 			      host->hs200_cmd_int_delay);
- 
- 	sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
--	for (i = 0 ; i < PAD_DELAY_MAX; i++) {
-+	for (i = 0; i < host->tuning_step; i++) {
- 		msdc_set_cmd_delay(host, i);
- 		/*
- 		 * Using the same parameters, it may sometimes pass the test,
-@@ -2047,7 +2101,7 @@ static int msdc_tune_response(struct mmc_host *mmc, u32 opcode)
- 		goto skip_fall;
- 
- 	sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
--	for (i = 0; i < PAD_DELAY_MAX; i++) {
-+	for (i = 0; i < host->tuning_step; i++) {
- 		msdc_set_cmd_delay(host, i);
- 		/*
- 		 * Using the same parameters, it may sometimes pass the test,
-@@ -2082,7 +2136,7 @@ static int msdc_tune_response(struct mmc_host *mmc, u32 opcode)
- 	if (host->dev_comp->async_fifo || host->hs200_cmd_int_delay)
- 		goto skip_internal;
- 
--	for (i = 0; i < PAD_DELAY_MAX; i++) {
-+	for (i = 0; i < host->tuning_step; i++) {
- 		sdr_set_field(host->base + tune_reg,
- 			      MSDC_PAD_TUNE_CMDRRDLY, i);
- 		mmc_send_tuning(mmc, opcode, &cmd_err);
-@@ -2121,7 +2175,8 @@ static int hs400_tune_response(struct mmc_host *mmc, u32 opcode)
- 		sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
- 	else
- 		sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
--	for (i = 0 ; i < PAD_DELAY_MAX; i++) {
-+
-+	for (i = 0; i < PAD_DELAY_HALF; i++) {
- 		sdr_set_field(host->base + PAD_CMD_TUNE,
- 			      PAD_CMD_TUNE_RX_DLY3, i);
- 		/*
-@@ -2151,7 +2206,7 @@ static int hs400_tune_response(struct mmc_host *mmc, u32 opcode)
- static int msdc_tune_data(struct mmc_host *mmc, u32 opcode)
- {
- 	struct msdc_host *host = mmc_priv(mmc);
--	u32 rise_delay = 0, fall_delay = 0;
-+	u64 rise_delay = 0, fall_delay = 0;
- 	struct msdc_delay_phase final_rise_delay, final_fall_delay = { 0,};
- 	u8 final_delay, final_maxlen;
- 	int i, ret;
-@@ -2160,7 +2215,7 @@ static int msdc_tune_data(struct mmc_host *mmc, u32 opcode)
- 		      host->latch_ck);
- 	sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_DSPL);
- 	sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_W_DSPL);
--	for (i = 0 ; i < PAD_DELAY_MAX; i++) {
-+	for (i = 0; i < host->tuning_step; i++) {
- 		msdc_set_data_delay(host, i);
- 		ret = mmc_send_tuning(mmc, opcode, NULL);
- 		if (!ret)
-@@ -2174,7 +2229,7 @@ static int msdc_tune_data(struct mmc_host *mmc, u32 opcode)
- 
- 	sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_DSPL);
- 	sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_W_DSPL);
--	for (i = 0; i < PAD_DELAY_MAX; i++) {
-+	for (i = 0; i < host->tuning_step; i++) {
- 		msdc_set_data_delay(host, i);
- 		ret = mmc_send_tuning(mmc, opcode, NULL);
- 		if (!ret)
-@@ -2206,7 +2261,7 @@ static int msdc_tune_data(struct mmc_host *mmc, u32 opcode)
- static int msdc_tune_together(struct mmc_host *mmc, u32 opcode)
- {
- 	struct msdc_host *host = mmc_priv(mmc);
--	u32 rise_delay = 0, fall_delay = 0;
-+	u64 rise_delay = 0, fall_delay = 0;
- 	struct msdc_delay_phase final_rise_delay, final_fall_delay = { 0,};
- 	u8 final_delay, final_maxlen;
- 	int i, ret;
-@@ -2217,7 +2272,7 @@ static int msdc_tune_together(struct mmc_host *mmc, u32 opcode)
- 	sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
- 	sdr_clr_bits(host->base + MSDC_IOCON,
- 		     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
--	for (i = 0 ; i < PAD_DELAY_MAX; i++) {
-+	for (i = 0; i < host->tuning_step; i++) {
- 		msdc_set_cmd_delay(host, i);
- 		msdc_set_data_delay(host, i);
- 		ret = mmc_send_tuning(mmc, opcode, NULL);
-@@ -2233,7 +2288,7 @@ static int msdc_tune_together(struct mmc_host *mmc, u32 opcode)
- 	sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
- 	sdr_set_bits(host->base + MSDC_IOCON,
- 		     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
--	for (i = 0; i < PAD_DELAY_MAX; i++) {
-+	for (i = 0; i < host->tuning_step; i++) {
- 		msdc_set_cmd_delay(host, i);
- 		msdc_set_data_delay(host, i);
- 		ret = mmc_send_tuning(mmc, opcode, NULL);
-@@ -2346,7 +2401,7 @@ static int msdc_execute_hs400_tuning(struct mmc_host *mmc, struct mmc_card *card
- 	}
- 
- 	host->hs400_tuning = true;
--	for (i = 0; i < PAD_DELAY_MAX; i++) {
-+	for (i = 0; i < PAD_DELAY_HALF; i++) {
- 		if (host->top_base)
- 			sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
- 				      PAD_DS_DLY1, i);
-@@ -2601,6 +2656,10 @@ static void msdc_of_property_parse(struct platform_device *pdev,
- 	else
- 		host->hs400_cmd_resp_sel_rising = false;
- 
-+	if (of_property_read_u32(pdev->dev.of_node, "mediatek,tuning-step",
-+				 &host->tuning_step))
-+		host->tuning_step = PAD_DELAY_HALF;
-+
- 	if (of_property_read_bool(pdev->dev.of_node,
- 				  "supports-cqe"))
- 		host->cqhci = true;
--- 
-2.25.1
-
+SGkgS3J6eXN6dG9mLA0KDQpUaGFuayB5b3UgZm9yIHRoZSBjb21tZW50cy4gSSB1cGxvYWRlZCBw
+YXRjaHNldCB2MiBqdXN0IG5vdywgcGxlYXNlDQpoYXZlIGEgbG9vay4NCg0KUmVnYXJkcywNCkF4
+ZQ0KDQpPbiBGcmksIDIwMjMtMTEtMjQgYXQgMDk6MjQgKzAxMDAsIEtyenlzenRvZiBLb3psb3dz
+a2kgd3JvdGU6DQo+ICAJIA0KPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sg
+bGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cyB1bnRpbA0KPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUg
+c2VuZGVyIG9yIHRoZSBjb250ZW50Lg0KPiAgT24gMjQvMTEvMjAyMyAwODowOCwgQXhlIFlhbmcg
+d3JvdGU6DQo+ID4gQWRkICdtZWRpYXRlayx0dW5lLTY0LXN0ZXBzJyBvcHRpb24uIFRoaXMgcHJv
+cGVydHkgd2lsbCBnaXZlIE1TREMNCj4gPiBhIGNoYW5jZSB0byBhY2hpZXZlIGEgbW9yZSBvcHRp
+bWFsIGNhbGlicmF0aW9uIHJlc3VsdCwgdGh1cw0KPiBhdm9pZGluZw0KPiA+IHBvdGVudGlhbCBD
+UkMgaXNzdWVzLg0KPiANCj4gRG9jdW1lbnRhdGlvbiBnb2VzIGJlZm9yZSB1c2Vycy4NCg0KRml4
+ZWQgaW4gdjIuDQoNCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBBeGUgWWFuZyA8YXhlLnlhbmdA
+bWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvbW1jL210ay1zZC55YW1sIHwgOCArKysrKysrKw0KPiA+ICAxIGZpbGUgY2hhbmdlZCwg
+OCBpbnNlcnRpb25zKCspDQo+ID4gDQo+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9tbWMvbXRrLXNkLnlhbWwNCj4gYi9Eb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvbW1jL210ay1zZC55YW1sDQo+ID4gaW5kZXggM2ZmZmE0NjdlNGUxLi5j
+MzMzMDFlMmVhMzMgMTAwNjQ0DQo+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL21tYy9tdGstc2QueWFtbA0KPiA+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9tbWMvbXRrLXNkLnlhbWwNCj4gPiBAQCAtMTQ1LDYgKzE0NSwxNCBAQCBwcm9w
+ZXJ0aWVzOg0KPiA+ICAgICAgbWluaW11bTogMA0KPiA+ICAgICAgbWF4aW11bTogNw0KPiA+ICAN
+Cj4gPiArICBtZWRpYXRlayx0dW5lLTY0LXN0ZXBzOg0KPiA+ICsgICAgJHJlZjogL3NjaGVtYXMv
+dHlwZXMueWFtbCMvZGVmaW5pdGlvbnMvZmxhZw0KPiA+ICsgICAgZGVzY3JpcHRpb246DQo+ID4g
+KyAgICAgIFNvbWUgU29jIG5lZWQgZW5hYmxlIDY0LXN0ZXBzIHR1bmluZyBmb3IgYmV0dGVyIGRl
+bGF5IHZhbHVlDQo+IHRvIGF2b2lkIENSQyBpc3N1ZS4NCj4gDQo+IFRoaXMgc2NhbGVzIHBvb3Js
+eS4gSW5zdGVhZCBzaG91bGQgYmUgZW51bSB3aXRoIG51bWJlciBvZiB0dW5pbmcNCj4gc3RlcHMu
+DQoNCkZpeGVkIGluIHYyLg0KDQo+IA0KPiA+ICsgICAgICBJZiBwcmVzZW50LCB0dW5lIDY0IHN0
+ZXBzIHRvIGNvdmVyIGEgY29tcGxldGUgY2xvY2sgY3ljbGUuDQo+ID4gKyAgICAgIElmIG5vdCBw
+cmVzZW50LCB0dW5lIG9ubHkgMzIgc3RlcHMuIEZvciBlTU1DIGFuZCBTRCwgdGhpcw0KPiBjYW4g
+YWxzbyB5aWVsZA0KPiA+ICsgICAgICBzYXRpc2ZhY3RvcnkgY2FsaWJyYXRpb24gcmVzdWx0cyBp
+biBtb3N0IGNhc2VzLg0KPiANCj4gQmVzdCByZWdhcmRzLA0KPiBLcnp5c3p0b2YNCj4gDQo=
 
