@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A36BEC4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 16:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4360AC4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 17:49:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W1ywWWTIjPTvPOiE3I/U/Ertmn0SdcywoKEnpfUiiAw=; b=xCJt4wv0yDMmaYzYLY+A6m3NGV
-	mKmpqfee7r9e/vld3otOl0R7wELKbe0p+UAfgFq3Hh1IONzOBdQHIspFPiJQfy/tf805aacT5Z5/N
-	hTVieli2ogvoA1mchh1OmX27qvk/tlGJBotg2ly/DiiOZDboX1+abj5Oh10BaDgIhdoSwGji3mkXZ
-	GYBb/lajRbpxYpznlB+crr1HVw0sd2B5ISIwTDmX665UayH7k4HrpSAMFx6HtEAizmiGBzOq9yqfo
-	US4LEpTzz5g8GKG+nb5eFK4dMrC4LJNodJqGi7kHJKDT56WWv+ShYq+Rhj4T19qUCUkquIEG9mhMa
-	jXKNFDRA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cCwKOOcvZG227KNZBJVAw0tdRH4yoYqx+lNqD4UHuvE=; b=vyewosmSSGL+V7Ia5+B5No16EP
+	/d6edlH0BbHyDkBGG3HtbF8zQn7lGAfJ9PxiwkZQQvP+daYkLZ+/cAqKNvtWHEIuOMxXCa8sa03jp
+	qe1PjnxZUJ5Wj+u5XVSAVUHvqBY3YiVihgIZNHfabap+/JWAA3MA2ZwZYBU7Jp8KiRYVKVZFvReaU
+	eW7dw56uN3MIunalIVhhvxlOxjZAhl1rMbP8x7ZIXBT/X/kXWTOAMlmrGt+3bBdk2NRtDFJr0gU3L
+	3HYFesMqzK/mxDivDNc5X9CUr/h4CTtrjynlSQ9c1ocsIuCHIbVxJmCkFCq4Ms1xk1t8S3vRF6/I6
+	HLJmOJCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r80uT-005oAd-2M;
-	Tue, 28 Nov 2023 16:26:05 +0000
-Received: from mgamail.intel.com ([192.55.52.88])
+	id 1r82DZ-0060Uf-3C;
+	Tue, 28 Nov 2023 17:49:53 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r80uQ-005o9x-1y;
-	Tue, 28 Nov 2023 16:26:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701188762; x=1732724762;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=WQHZ+PbGGa3aDyciuChblMvLCm0dgXzHSZ5ktHj28m0=;
-  b=QBeUqHGd9IIm5NGwE7LzRpVQnaqwgzfeBTh2Lis/piSqZfwXafvM96ts
-   vWJ9LAUIhE0dKA1EDX1hUw9GoYTeIjM8nXOiWqFJofMdr1UqKHQNm2fiw
-   4KGkNfY/hXCJs0aJcPzOzvARDYHBCVmhdrJd9fnHHdvbpeuKMk5ISkKLZ
-   dNJyRW60ZO6iJGznRykjg26BvH5K7Gu67LECnEkkrvShXhtfwYh4FHuCD
-   9ZdpC6z34V/vZksvbV2H+Daehr2m9wnroRyWLJWvoLqu7J3dasfxDI/BM
-   O+ftsHY9C5dg3ozzhi1qx0C3fesLxZPRvz0j3FZIJOK08oZj7BSTcIQ25
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10908"; a="424106454"
-X-IronPort-AV: E=Sophos;i="6.04,234,1695711600"; 
-   d="scan'208";a="424106454"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Nov 2023 08:26:00 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10908"; a="768577278"
-X-IronPort-AV: E=Sophos;i="6.04,234,1695711600"; 
-   d="scan'208";a="768577278"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Nov 2023 08:25:51 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.97)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1r80uB-00000000CyG-1z99;
-	Tue, 28 Nov 2023 18:25:47 +0200
-Date: Tue, 28 Nov 2023 18:25:47 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>,
+	id 1r82DI-0060N3-0J;
+	Tue, 28 Nov 2023 17:49:37 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-548f0b7ab11so7807056a12.1;
+        Tue, 28 Nov 2023 09:49:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701193774; x=1701798574; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cCwKOOcvZG227KNZBJVAw0tdRH4yoYqx+lNqD4UHuvE=;
+        b=E62Gs2jzH2NqBXRn2CNd0BBaiMNP5fLCylvvMWSZJT+8ssrjEnhTNf0GZppwfvz01m
+         fm2cUP79xqSnPNd9GuMt3A5KRy37XX73jM7RN1VwhdcGSyyNoKdFSyF+jJsi9E+TI+S0
+         i/6y8E0EmQ+FXbijBKrdUjpIR9edEq0HbkjVCI/5TZJM/3S8DXSeKCRaLhT3nMA0zH0U
+         BtgEVNEjcu4JcnSVkboEpMyD9w34yi3qT9JMGV2gLni2jS/8ZYZEYTGEgZVzpnl+X4zj
+         SrrLEnTSH64dx7EEmb1GEYC1HvID8c6oxZuCee/WjH81cvdFvrttWQb27RShB8Q2uH+t
+         7w2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701193774; x=1701798574;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cCwKOOcvZG227KNZBJVAw0tdRH4yoYqx+lNqD4UHuvE=;
+        b=XYQEbApL3zQDfWZZz9Dz8KskiAdi5woDnvsDmrUKJn0rcMH5U9z6x4YhGCG1Px7xc6
+         V/RaMRGNg+SBNQ8rsXee2zqzrWyEQQnxwV38GR9lUpI6vCYZd1mALTm0+TeOk4dqmhly
+         +/eUxgcmB+eji6l9a4/xBcMcHm+1UGh1qXBAzlWqwxBC8wQoo6LbnLfzNDhN2IkS0DDU
+         szzOlVwFDIcGVpzay1BbD1UenDNx2dOSGj1FuoKI4aRi+vjpNPulNCBM6eM0lFw1ZXQz
+         Va4XU9wTi8rdCpITuafiDKYBFgQ0+dxbYji0Y3lTvJN+PoyFIQo8xO1Q0g3iKGNnbgGR
+         Df9Q==
+X-Gm-Message-State: AOJu0YzmvluDfnbfohGF7zFkoT4vDnBetJHSyR4dnOibfHhKsnZXRrrD
+	sr/WFXhLAhn4aOu+zMF1Go0=
+X-Google-Smtp-Source: AGHT+IFv+IODDHV2aUyGCP25pWGTd1fOh8jm9JfU859xNG4T5EWQ0fud734+4RsoprcqhFPRy7x98g==
+X-Received: by 2002:a17:906:3a45:b0:a04:edd6:dea7 with SMTP id a5-20020a1709063a4500b00a04edd6dea7mr9353671ejf.7.1701193774209;
+        Tue, 28 Nov 2023 09:49:34 -0800 (PST)
+Received: from localhost (p200300e41f0fa600f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f0f:a600:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id kh4-20020a170906f80400b00a0ad10b3f68sm4836490ejb.205.2023.11.28.09.49.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Nov 2023 09:49:33 -0800 (PST)
+From: Thierry Reding <thierry.reding@gmail.com>
+To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org,
-	broonie@kernel.org, gregkh@linuxfoundation.org, hdegoede@redhat.com,
-	james.clark@arm.com, james@equiv.tech, keescook@chromium.org,
-	rafael@kernel.org, tglx@linutronix.de,
-	Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org,
-	linux-i2c@vger.kernel.org
-Subject: Re: [RFC PATCH v3 3/5] platform/chrome: Introduce device tree
- hardware prober
-Message-ID: <ZWYUi3Q5ptQXR0uQ@smile.fi.intel.com>
-References: <20231128084236.157152-1-wenst@chromium.org>
- <20231128084236.157152-4-wenst@chromium.org>
+	Jitao Shi <jitao.shi@mediatek.com>,
+	Michael Walle <mwalle@kernel.org>
+Cc: linux-pwm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: pwm: remove Xinlei's mail
+Date: Tue, 28 Nov 2023 18:49:24 +0100
+Message-ID: <170119374438.445690.8441934091500162620.b4-ty@gmail.com>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231123134716.2033769-1-mwalle@kernel.org>
+References: <20231123134716.2033769-1-mwalle@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231128084236.157152-4-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_082602_681473_E11EC900 
-X-CRM114-Status: GOOD (  33.29  )
+X-CRM114-CacheID: sfid-20231128_094936_137995_BD362B1B 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,77 +102,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 28, 2023 at 04:42:32PM +0800, Chen-Yu Tsai wrote:
-> Some devices are designed and manufactured with some components having
-> multiple drop-in replacement options. These components are often
-> connected to the mainboard via ribbon cables, having the same signals
-> and pin assignments across all options. These may include the display
-> panel and touchscreen on laptops and tablets, and the trackpad on
-> laptops. Sometimes which component option is used in a particular device
-> can be detected by some firmware provided identifier, other times that
-> information is not available, and the kernel has to try to probe each
-> device.
+
+On Thu, 23 Nov 2023 14:47:16 +0100, Michael Walle wrote:
+> Xinlei Lee's mail is bouncing:
 > 
-> This change attempts to make the "probe each device" case cleaner. The
-> current approach is to have all options added and enabled in the device
-> tree. The kernel would then bind each device and run each driver's probe
-> function. This works, but has been broken before due to the introduction
-> of asynchronous probing, causing multiple instances requesting "shared"
-> resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
-> time, with only one instance succeeding. Work arounds for these include
-> moving the pinmux to the parent I2C controller, using GPIO hogs or
-> pinmux settings to keep the GPIO pins in some fixed configuration, and
-> requesting the interrupt line very late. Such configurations can be seen
-> on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
-> Lenovo Thinkpad 13S.
+> <xinlei.lee@mediatek.com>: host mailgw02.mediatek.com[216.200.240.185] said:
+>     550 Relaying mail to xinlei.lee@mediatek.com is not allowed (in reply to
+>     RCPT TO command)
 > 
-> Instead of this delicate dance between drivers and device tree quirks,
-> this change introduces a simple I2C component prober. For any given
-> class of devices on the same I2C bus, it will go through all of them,
-> doing a simple I2C read transfer and see which one of them responds.
-> It will then enable the device that responds.
+> Remove it.
 > 
-> This requires some minor modifications in the existing device tree.
-> The status for all the device nodes for the component options must be
-> set to "failed-needs-probe". This makes it clear that some mechanism is
-> needed to enable one of them, and also prevents the prober and device
-> drivers running at the same time.
+> [...]
 
-...
+Applied, thanks!
 
-> +#include <linux/array_size.h>
-> +#include <linux/i2c.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
+[1/1] dt-bindings: pwm: remove Xinlei's mail
+      commit: c7861b3ffaba39021968505bd6807bf4fa7148c9
 
-init.h for init calls.
-
-
-> +static int chromeos_of_hw_prober_probe(struct platform_device *pdev)
-> +{
-> +	for (size_t i = 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
-> +		if (of_machine_is_compatible(hw_prober_platforms[i].compatible)) {
-> +			int ret;
-
-Perhaps
-
-		if (!of_machine_is_compatible(hw_prober_platforms[i].compatible))
-			continue;
-
-?
-
-> +			ret = hw_prober_platforms[i].prober(&pdev->dev,
-> +							    hw_prober_platforms[i].data);
-> +			if (ret)
-> +				return ret;
-> +		}
-> +
-> +	return 0;
-> +}
-
+Best regards,
 -- 
-With Best Regards,
-Andy Shevchenko
-
-
+Thierry Reding <thierry.reding@gmail.com>
 
