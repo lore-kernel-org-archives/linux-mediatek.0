@@ -4,95 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C539C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 12:09:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 368A5C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 13:15:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oGZ/AOFCUofp/Ip1CkJeKXSMao5eFIWJrE7N8FH5Dk4=; b=kw+vQ5K4y2n4MzvtKX3f7frNEe
-	KfZpW5K2HhusRz7HX4QePWiY+duZHfwoD0pBbQaRBX54g06CfPeMKoFEkm0vJWnfizosU6rx+NV2T
-	QzAh/eZXYxYtq9ykhfSjePNQVY4xvJvuSCBuE5zgMkzK8bqGMMyloCsjf1UPkcfXnuYVdxXZmVamB
-	ysCoVQbwjJjIYaGUe1P5iZwwLRA8UjrBItxJd93IifnCdhR19NyUxWBOCBYXc0Y6AjZJeJVUmImXS
-	5mZHgDGlznM+932IreKFqLhvzI9omO/8JecmIAmQLllXlzjVdBF7BmBkJ8w8oOJwfGfO990Tipsn0
-	ZXfd7L+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=doVpP2O/1xocMcJTzHru/uuvZ/2y27/PHQwnXguSD2k=; b=qP0arvy4ZXR3s/c5NGXu3YgBVH
+	nTH3yXjvgaHVqVCMrt8tS82dLWTACDvZM56W0KcgXQDeNLu35IlBZYKr7KtwY5mJHWJsU1h6jYaab
+	PCN1dqFEOaryXjwKA+c+dGgyH5RzBj7HPi6K+R1sVX5WaqgXqmd26uaELPPnFneRpzcJKxv0nK3VQ
+	RYJVFwTfRdLCJRyQf4Q2LJtHzZZxzUJhtwL1vi4iG+HAm7yQqxoxQe2Doj7cNid3wCLBVWTBBd0BN
+	qGPVxWOfaLr4Ag5hPKgQ5mWxTHpXZM4T9EMAVBV6Y1GG5R/Iu+Q7LTdQ3nD0yHi7XN2pEj7JfoJIj
+	KAwGoRJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7wuD-005GxP-2U;
-	Tue, 28 Nov 2023 12:09:33 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1r7xwQ-005Mg3-2A;
+	Tue, 28 Nov 2023 13:15:54 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7wuA-005GwP-2Y;
-	Tue, 28 Nov 2023 12:09:32 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-40b399a6529so23459315e9.1;
-        Tue, 28 Nov 2023 04:09:27 -0800 (PST)
+	id 1r7xwL-005Mf1-2G
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Nov 2023 13:15:52 +0000
+Received: by mail-wr1-x442.google.com with SMTP id ffacd0b85a97d-32fd7fc9f19so3432397f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Nov 2023 05:15:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701173366; x=1701778166; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=oGZ/AOFCUofp/Ip1CkJeKXSMao5eFIWJrE7N8FH5Dk4=;
-        b=P27vRNu9KPgK4F6RPV4+gZxBPxVjneEJ0GtD/DJ85/2ZW5/879dtZQUGbJQkE4WxV4
-         WhPei4/9bQr9hLK28OyetcfEckEbdM88zQEBIodlbiq9N9Htr+sPbSNAreUDg07k8r0v
-         u6/aHSipjMTzS/Nx8vv1unLEvEmPRmP38FaATp8+jpwE9XKy1jXh63I3hdkfu9sEY2rn
-         gQNH4IrnfTqWt+NlhJ3381gKzmyO+TZKoX2v0F/WLRKl1e0pJdvRew5Ta0dr6xCijKCr
-         CvNhUoDFl4hApgQL5BL5YNdVP9tYjLJ0NJbqwgqDWnpB5yazDSs+v5t+LBiYTYFk6EWi
-         zN9g==
+        d=linaro.org; s=google; t=1701177346; x=1701782146; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=doVpP2O/1xocMcJTzHru/uuvZ/2y27/PHQwnXguSD2k=;
+        b=UqvoSKEjbQWLWzWF/nq6tnWue3QJkQbRICnGF4XWUoc3ygMrF61l991Jm/OalvnePI
+         PKaQ7C7HdbYtXUrLpuhExiaM1UoNcL9UZNwaItzPaDOTcvbfOQa/mYAAT6AElwdPkMej
+         18+Aque+4FIdaAC0Ziz+U2q1r0Vwj5XF59G2R2fLgvIxy6TH4VfrSyrDuuHwlO6PGgZI
+         v/7gCvSLuMLD0YDl+UhQw2Y1S5bZE896B4jP2DRIP/LzR4xyiUttORrvV6lYb9z7ifNo
+         or1jM4KvA0Oiu72Z0P2WPzDdNmVXz7AjxTZ264SJGxP7uknSOLfRS8jObq5BcnE1ND7b
+         WDrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701173366; x=1701778166;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=oGZ/AOFCUofp/Ip1CkJeKXSMao5eFIWJrE7N8FH5Dk4=;
-        b=ZYhbmzlZTeS1w4sIMTmOV3M92tcS/TdyoZnidM9VWQZl1uQRuhuwlbgMDv1nT75wx5
-         9t9j1v6GoLFNxru6xNjfa2qtfd/TstDV4qBkyw+NLujBM/+7VbiTjoe23DRpJnGZSgeI
-         XIg5NZePug0KCVqnV6gX976Rp6jl2yTzMM00AVvKaAyx5IysnIBimcD0XBjZs0BlbncI
-         m5JX5UgKT4yFJTl/ZOpFlGv1PawjylpUOHjHUjhFGXZFIz8jTC0SjqVKNX7AlYP0hAsU
-         GJhB0Utam7T+HVCDQsRzq1l1NFbvFUzNQowqtBGvE5MjWXgQXoJm2zTB3UTATI17OdLp
-         ruUQ==
-X-Gm-Message-State: AOJu0YxJvLUuqRG2s9USxUl6gXfYNVmePdMK6J7qzlX2u8s7OF0GTQuw
-	w81inMbqqEOLXiR81HbhW0w=
-X-Google-Smtp-Source: AGHT+IGbBBv6SLNWzhb+OGjrpkkr9ufbL/wiM7k+E/3ue7yfq8P984X8hsnAh2R7HaBI8aT4sqQLDQ==
-X-Received: by 2002:a05:600c:5124:b0:40b:2ad8:579f with SMTP id o36-20020a05600c512400b0040b2ad8579fmr15342645wms.3.1701173366197;
-        Tue, 28 Nov 2023 04:09:26 -0800 (PST)
-Received: from Ansuel-xps. (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.gmail.com with ESMTPSA id n19-20020a05600c501300b0040b4c26d2dasm2231768wmr.32.2023.11.28.04.09.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 04:09:25 -0800 (PST)
-Message-ID: <6565d875.050a0220.d709d.658b@mx.google.com>
-X-Google-Original-Message-ID: <ZWXYcwbGdFX0vGMD@Ansuel-xps.>
-Date: Tue, 28 Nov 2023 13:09:23 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Robert Marko <robert.marko@sartura.hr>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next PATCH RFC v3 2/8] net: phy: add initial support for
- PHY package in DT
-References: <20231126015346.25208-1-ansuelsmth@gmail.com>
- <20231126015346.25208-3-ansuelsmth@gmail.com>
- <b28b5d10-08cd-4e30-9909-f37834d80c81@lunn.ch>
+        d=1e100.net; s=20230601; t=1701177346; x=1701782146;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=doVpP2O/1xocMcJTzHru/uuvZ/2y27/PHQwnXguSD2k=;
+        b=nSyTmnGkclCqMCyVNxqUcKtZRLGiTBFgAGjXgVY+f9gmxUkj8gEAll/KRiDGWfcvwL
+         tjRTXehtEIbDlJV3zaVDP7ZLwt069oqm52vFjgxEOm9ASFFssWTOtgKiMY+ABywOJrZJ
+         zsK/yg+wJh4TOn94SnBxFW7yCdLoSdmd7E2xKPWbYu20bzwjSGaqnCG4J+C5PnYjhtRg
+         HlCO0eUaDVRKrtPutwbG322hPUugsGfepL0yQstp2XkZgmRhgmc5QrqP2lDJLvgpxiOD
+         51ht+tqiiXYhZAJasLTh3uieUOYPsZxC+oMnG9djbl6t7ZW3WuMZidKHaQqStgNefqMO
+         DrJA==
+X-Gm-Message-State: AOJu0YwQnZsFr4zkIpRyp2Wo25NV6cutq72K19e4QBFMqPmYSDjbwo/T
+	sqyAVzaF+3GujETFEP0zDxdVcw==
+X-Google-Smtp-Source: AGHT+IF5Cafplop9m5creSapYYaNFhZ+IQY3Uo1h1xUyT62KVMgXgiy6c2emry2WYHv4fix4hOk5Xg==
+X-Received: by 2002:a5d:448f:0:b0:332:c593:16c with SMTP id j15-20020a5d448f000000b00332c593016cmr10407808wrq.45.1701177345716;
+        Tue, 28 Nov 2023 05:15:45 -0800 (PST)
+Received: from [192.168.100.102] ([37.228.218.3])
+        by smtp.gmail.com with ESMTPSA id j12-20020adff00c000000b00332eadd7ea4sm11957790wro.78.2023.11.28.05.15.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Nov 2023 05:15:44 -0800 (PST)
+Message-ID: <b50fd14e-7798-4b1e-aff3-9409e67300b3@linaro.org>
+Date: Tue, 28 Nov 2023 13:15:43 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b28b5d10-08cd-4e30-9909-f37834d80c81@lunn.ch>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [Patch v6 03/12] docs: qcom: Add qualcomm minidump guide
+Content-Language: en-US
+To: Mukesh Ojha <quic_mojha@quicinc.com>, corbet@lwn.net, agross@kernel.org,
+ andersson@kernel.org, konrad.dybcio@linaro.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ keescook@chromium.org, tony.luck@intel.com, gpiccoli@igalia.com,
+ mathieu.poirier@linaro.org, vigneshr@ti.com, nm@ti.com,
+ matthias.bgg@gmail.com, kgene@kernel.org, alim.akhtar@samsung.com,
+ bmasney@redhat.com
+Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-hardening@vger.kernel.org,
+ linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ kernel@quicinc.com
+References: <1700864395-1479-1-git-send-email-quic_mojha@quicinc.com>
+ <1700864395-1479-4-git-send-email-quic_mojha@quicinc.com>
+From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+In-Reply-To: <1700864395-1479-4-git-send-email-quic_mojha@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_040930_828441_BA7500E4 
-X-CRM114-Status: GOOD (  29.90  )
+X-CRM114-CacheID: sfid-20231128_051549_778321_CBBAC84B 
+X-CRM114-Status: GOOD (  46.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,98 +103,596 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 28, 2023 at 01:39:02AM +0100, Andrew Lunn wrote:
-> > +static int of_phy_package(struct phy_device *phydev)
-> > +{
-> > +	struct device_node *node = phydev->mdio.dev.of_node;
-> > +	struct device_node *package_node;
-> > +	u32 base_addr;
-> > +	int ret;
-> > +
-> > +	if (!node)
-> > +		return 0;
-> > +
-> > +	package_node = of_get_parent(node);
-> > +	if (!package_node)
-> > +		return 0;
-> > +
-> > +	if (!of_device_is_compatible(package_node, "ethernet-phy-package"))
-> > +		return 0;
-> > +
-> > +	if (of_property_read_u32(package_node, "reg", &base_addr))
-> > +		return -EINVAL;
-> > +
-> > +	ret = devm_phy_package_join(&phydev->mdio.dev, phydev,
-> > +				    base_addr, 0);
+On 24/11/2023 22:19, Mukesh Ojha wrote:
+> Add the qualcomm minidump guide for the users which tries to cover
+> the dependency, API use and the way to test and collect minidump
+> on Qualcomm supported SoCs.
 > 
-> No don't do this. It is just going to lead to errors. The PHY driver
-> knows how many PHYs are in the package. So it can figure out what the
-> base address is and create the package. It can add each PHY as they
-> probe. That cannot go wrong.
->
+> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> ---
+>   Documentation/admin-guide/index.rst         |   1 +
+>   Documentation/admin-guide/qcom_minidump.rst | 272 ++++++++++++++++++++++++++++
+>   2 files changed, 273 insertions(+)
+>   create mode 100644 Documentation/admin-guide/qcom_minidump.rst
 
-No it can't and we experiment this with a funny implementation on the
-QSDK. Maybe I'm confused?
+General nit-pick on sequencing of your patches. Its good practice (tm) 
+to put your documentation first in your series.
 
-Example on QSDK they were all based on a value first_phy_addr. This was
-filled with the first phy addr found (for the package).
+> diff --git a/Documentation/admin-guide/index.rst b/Documentation/admin-guide/index.rst
+> index 43ea35613dfc..251d070486c2 100644
+> --- a/Documentation/admin-guide/index.rst
+> +++ b/Documentation/admin-guide/index.rst
+> @@ -120,6 +120,7 @@ configure specific aspects of kernel behavior to your liking.
+>      perf-security
+>      pm/index
+>      pnp
+> +   qcom_minidump
+>      rapidio
+>      ras
+>      rtc
+> diff --git a/Documentation/admin-guide/qcom_minidump.rst b/Documentation/admin-guide/qcom_minidump.rst
+> new file mode 100644
+> index 000000000000..b492f2b79639
+> --- /dev/null
+> +++ b/Documentation/admin-guide/qcom_minidump.rst
+> @@ -0,0 +1,272 @@
+> +Qualcomm minidump feature
+> +=========================
+> +
+> +Introduction
+> +------------
+> +
+> +Minidump is a best effort mechanism to collect useful and predefined
+> +data for first level of debugging on end user devices running on
+> +Qualcomm SoCs. 
 
-All OEM followed a template with declaring all sort of bloat and they
-probably have no idea what they are actually putting in DT. We reverse
-all the properties and we gave a meaning to all the values...
+What does "first-level debugging" mean here ? You use the term 
+"post-mortem" later, stick with one term for consistency throughout your 
+document.
 
-We quikly notice that the parsing was very fragile and on some strange
-device (an example a Xiaomi 36000) the first PHY for the package was
-actually not attached to anything. Resulting in all this logic of
-"first_phy_addr" failing as by removing the first PHY, the value was set
-to a wrong addr resulting in all sort of problems.
+Suggest:
 
-This changed a lot (the original series used a more robust way with
-phandle, but it was asked to use base_addr and use offset in the PHY
-addr, less robust still OK)
+"Minidump is a best-effort mechanism to collect useful predefined data 
+for post-mortem debugging on a Qualcomm System on Chips (SoCs)."
 
-If we revert to PHY driver making the PHY package then we lose all kind
-of ""automation"" of having a correct base addr. In PHY driver we would
-have to manually parse with parent (as we do here) and check the value?
+Generally better to stick with "Qualcomm SoC" and "Minidump" once you 
+establish the terms upfront and early in your text - instead of 
+reverting to "device" and "it".
 
-Why not do the thing directly on PHY core?
+It is built on the premise that System on Chip (SoC)
+> +or subsystem part of SoC crashes, due to a range of hardware and
+> +software bugs.
+Instead of saying "It" say "Minidump"
 
-By making the PHY driver creating the package, we are back on all kind
-of bloat in the PHY driver doing the same thing (parsing package nodes,
-probe_once check, config_once check) instead of handling them directly
-in PHY core.
+Hence, the ability to collect accurate data is only
+> +a best-effort. The data collected could be invalid or corrupted, data
+> +collection itself could fail, and so on.
 
-Also just to point out, the way the current PHY driver derive the base
-addr is problematic. All of them use special regs to find the base one
-but I can totally see a PHY driver in the future assuming the first PHY
-being the first in the package to be probed, set the base addr on the
-first PHY and also assuming that it's always define in DT.
+"and so on" is a redundancy, drop.
 
-If we really don't want the OF parsing in PHY core and autojoin them,
-is at least OK to introduce an helper to get the base addr from a PHY
-package node structure? (to at least try to minimaze the bloat that PHY
-driver will have?)
 
-Also with the OF support dropped, I guess also the added API in this
-series has to be dropped. (as they would be called after the first PHY
-probe and that is problematic if for some reason only one PHY of the
-package is declared in DT) (an alternative might be moving the
-probe_once after the PHY is probed as we expect the phy_package_join
-call done in the PHY probe call)
+Suggest:
+Minidump is built on the premise that a hardware or software component 
+on the SoC has encountered an unexpected fault. This means that the data 
+collected by minidump cannot be assumed to be correct or even present.
 
-> If you create the package based on DT you have to validate that the DT
-> is correct. You need the same information, the base address, how many
-> packages are in the PHY, etc. So DT gains your nothing except more
-> potential to get it wrong.
-> 
+> +
+> +Qualcomm devices in engineering mode provides a mechanism for generating
+> +full system RAM dumps for post-mortem debugging. 
 
-For the sake of package join, only the reg has to be validated and the
-validation is just if addrs makes sense. Everything else can be done by
-PHY package probe once.
+Stick with the established naming convention
 
-> Please use DT just for properties for the package, nothing else.
-> 
+"Qualcomm SoCs in engineering mode provide a mechanism for generating 
+full system RAM dumps for this post-mortem debugging"
 
--- 
-	Ansuel
+But in some cases it's
+> +however not feasible to capture the entire content of RAM. The minidump
+> +mechanism provides the means for selected region should be included in
+> +the ramdump.
+
+Dont' start a sentence with "But"
+
+You're also not being clear what you mean by "the entire content of RAM" 
+since you obviously can't capture a full snap-shot of DRAM and store in 
+DRAM.
+
+Better to say IMO
+
+"Minidump captures specific pre-defined regions of RAM and stores those 
+regions in a reserved Minidump specific buffer."
+
+"The region of RAM used to store Minidump data shall be referred to as 
+SMEM throughout this document." [1]
+
+> +::
+> +
+> +   +-----------------------------------------------+
+> +   |   DDR                       +-------------+   |
+
+Instead of saying "DDR" just mark this as RAM or Memory.
+Its a terrible nit-pick from me but DDR = "Double Data Rate Synchronous 
+Dynamic Random-Access Memory" but that's irrelevant to this 
+specification. We could be living in a gigantic SRAM for argument sake.
+
+> +   |                             |      SS0-ToC|   |
+> +   | +----------------+     +----------------+ |   |
+> +   | |Shared memory   |     |         SS1-ToC| |   |
+> +   | |(SMEM)          |     |                | |   |
+> +   | |                | +-->|--------+       | |   |
+> +   | |G-ToC           | |   | SS-ToC  \      | |   |
+> +   | |+-------------+ | |   | +-----------+  | |   |
+> +   | ||-------------| | |   | |-----------|  | |   |
+> +   | || SS0-ToC     | | | +-|<|SS1 region1|  | |   |
+> +   | ||-------------| | | | | |-----------|  | |   |
+> +   | || SS1-ToC     |-|>+ | | |SS1 region2|  | |   |
+> +   | ||-------------| |   | | |-----------|  | |   |
+> +   | || SS2-ToC     | |   | | |  ...      |  | |   |
+> +   | ||-------------| |   | | |-----------|  | |   |
+> +   | ||  ...        | |   |-|<|SS1 regionN|  | |   |
+> +   | ||-------------| |   | | |-----------|  | |   |
+> +   | || SSn-ToC     | |   | | +-----------+  | |   |
+> +   | |+-------------+ |   | |                | |   |
+> +   | |                |   | |----------------| |   |
+> +   | |                |   +>|  regionN       | |   |
+> +   | |                |   | |----------------| |   |
+> +   | +----------------+   | |                | |   |
+> +   |                      | |----------------| |   |
+> +   |                      +>|  region1       | |   |
+> +   |                        |----------------| |   |
+> +   |                        |                | |   |
+> +   |                        |----------------|-+   |
+> +   |                        |  region5       |     |
+> +   |                        |----------------|     |
+> +   |                        |                |     |
+> +   |  Region information    +----------------+     |
+> +   | +---------------+                             |
+> +   | |region name    |                             |
+> +   | |---------------|                             |
+> +   | |region address |                             |
+> +   | |---------------|                             |
+> +   | |region size    |                             |
+> +   | +---------------+                             |
+> +   +-----------------------------------------------+
+> +       G-ToC: Global table of contents
+> +       SS-ToC: Subsystem table of contents
+> +       SS0-SSn: Subsystem numbered from 0 to n
+
+You need to be more consistent here
+
+SSX-ToC -> SSX-SSn
+
+Where X is an integer from 0 upwards and similarly n is a integer from 0 
+upwards.
+
+This name SSX-SSn is not especially descriptive, I'm not sure if this is 
+a name you are choosing here ? If so then let me suggest a new name like 
+"Subsystem Memory Segment" SSX-MSn
+
+->
+
+        G-ToC: Global table of contents
+        SSX-ToC: Subsystem X table of contents.
+                 X is an integer in the range of 0 to ?
+                 Is there an upper limit ?
+                 Presumably this is an 8, 16, 32 or 64 bit integer
+                 Please define either the size of the integer or the
+                 valid range of values 0..128, 0..256
+        SSX-MSn: Subsystem numbered from 0 to n
+                 Same comment for the 'n' here.
+
+> +
+> +It depends on SoC where the underlying firmware is keeping the
+> +minidump global table taking care of subsystem ToC part for
+> +minidump like for above diagram, it is for shared memory sitting
+> +in DDR and it is shared among various master however it is possible
+
+> +that this could be implemented via memory mapped regions but the
+> +general idea should remain same. Here, various subsystem could be
+> +DSP's like ADSP/CDSP/MODEM etc, along with Application processor
+> +(APSS) where Linux runs. 
+
+
+DSP minidump gets collected when DSP's goes
+> +for recovery followed by a crash. The minidump part of code for
+> +that resides in ``qcom_rproc_minidump.c``.
+
+This paragraph is difficult to parse.
+
+What you are describing here is a linked list, I think you should have a 
+paragraph describing how the memory structure works
+
+->
+
+"Minidump determines which areas of DRAM to capture via a Minidump 
+defined linked-list structure.
+
+At the top level a Global Table of Contents (GTOC) enumerates a variable 
+number of SubSystem Table Of Contents (SSTOC) structures.
+
+Each SSTOC contains a list of SubSystem Memory Segements which are named 
+according to the containing SSTOC hence (SSX-MSn) where "X" denotes the 
+SystemSystem index of the containing SSX-ToC and "n" denotes an 
+individual Memory Segment within the SystemSystem. Hence SS0-MS0 belongs 
+to SS0-ToC whereas SS1-MS0 belongs to SS1-ToC."
+
+Then I think you can describe how the crash dump colleciton works and 
+which agents of the system - DSP ? is responsible for collecting the 
+crashdump
+
+->
+
+"The Application Processor SubSystem (APSS) runs the Linux kernel and is 
+therefore not responsible for assembling Minidump data. One of the other 
+system agents in the SoC will be responsible for capturing the Minidump 
+data during system reset.
+
+Typically one of the SoC Digital Signal Processors (DSP) will be used 
+for this purpose.
+
+During reset the DSP will walk the GTOC, SSX-ToCs and SSX-MSns 
+populating the Minidump RAM area with the indicated memory"
+
+> +
+> +
+> +SMEM as backend
+
+
+> +----------------
+> +
+> +In this document, SMEM will be used as the backend implementation
+> +of minidump.
+
+[1] As per the above link, you need to introduce the term SMEM earlier.
+
+It's fine to expand on its meaning later but, do please define it once 
+upfront before you use it in your awesome ASCII art.
+
+> +The core of minidump feature is part of Qualcomm's boot firmware code.
+> +It initializes shared memory (SMEM), which is a part of DDR and
+> +allocates a small section of it to minidump table, i.e. also called
+> +global table of contents (G-ToC). Each subsystem (APSS, ADSP, ...) has
+> +its own table of segments to be included in the minidump, all
+> +references from a descriptor in SMEM (G-ToC). Each segment/region has
+> +some details like name, physical address and its size etc. and it
+> +could be anywhere scattered in the DDR.
+
+->
+
+"The SoC's bootloader must reserve an area of RAM as SMEM prior to 
+handing over control to the run-time operating system. The bootloader is 
+responsible to place the GTOC at the starting address of SMEM."
+
+If you want to give more technical details of size, physical address - 
+then explicitly define those in the section above which talks about the 
+linked-list structure.
+
+Please try to avoid use of "etc" or "and so on" since it assumes the 
+reader already knows how the system works and can fill in the blanks 
+but, what you are doing here is educating a Minidump novice in how 
+things work.
+
+> +
+> +Qualcomm APSS Minidump kernel driver concept
+> +--------------------------------------------
+> +
+> +Qualcomm APSS minidump kernel driver adds the capability to add Linux
+
+So why "Minidump" and then "minidump" choose one.
+
+> +region to be dumped as part of RAM dump collection.
+
+
+OK so this really is the "meat" of the system. The bootloader/firmware 
+populates the GTOC.
+
+The Q this document should probably answer is how the kernel driver 
+knows how/where to place its data.
+
+Assumed to be parsing the DTB.
+
+  At the moment,
+> +shared memory driver creates platform device for minidump driver and
+> +give a means to APSS minidump to initialize itself on probe.
+
+"At the moment" is another drop.
+
+Just make a clear statement
+
+"The minidump platform driver populates the APSS porition of the GTOC"
+
+more interesting to me is - are there defined numbers, identifiers for 
+the APSS ? or do we just add new entries to the GTOC ?
+
+ie. is there a reserved index or "type" in the GTOC that identifies 
+where the APSS needs to insert itself ?
+
+> +This driver provides ``qcom_minidump_region_register`` and
+> +``qcom_minidump_region_unregister`` API's to register and unregister
+> +APSS minidump region. 
+
+Why does it do that ? Is it not the case that the driver knows where the 
+APSS data goes ?
+
+It also supports registration for the clients
+> +who came before minidump driver was initialized. It maintains pending
+> +list of clients who came before minidump and once minidump is initialized
+> +it registers them in one go.
+
+Don't start sentences with "It" -> "The driver" or "Minidump"
+
+As I read this though, the Minidump driver in Linux isn't just 
+registering / managing the APSS side of things but also "doing stuff" 
+for other clients ?
+
+How does the Linux driver know what to register ?
+
+> +
+> +To simplify post-mortem debugging, driver creates and maintain an ELF
+
+the driver creates and maintains
+
+> +header as first region that gets updated each time a new region gets
+> +registered.
+
+as the first region
+
+So - who is registering these regions ? Linux kernel drivers ? aDSP / cDSP ?
+
+If I write a new driver for Venus or GPU can I define my own region(s) 
+to be captured ?
+
+Presumably. Please give more detail on this.
+
+> +
+> +The solution supports extracting the RAM dump/minidump produced either
+> +over USB or stored to an attached storage device.
+
+What provides that functionality ? The bootloader ?
+
+How do you trigger / capture that dump from the bootloader ?
+
+No need to go into super-detail but give some idea.
+
+> +
+> +Dependency of minidump kernel driver
+> +------------------------------------
+> +
+> +It is to note that whole of minidump depends on Qualcomm boot firmware
+> +whether it supports minidump or not. 
+
+You can drop this - you've already stated the bootloader/firmware must 
+setup the initial table so, you're not providing additional information 
+with this statement.
+
+> So, if the minidump SMEM ID is
+
+Try not to start sentences with "So"
+
+SMEM ID ? This is your first time using this term - please relate it 
+back to your ASCII diagram and the description you give with that text.
+
+> +present in shared memory, it indicates that minidump is supported from
+> +boot firmware and it is possible to dump Linux (APSS) region as part
+> +of minidump collection.
+
+If _which_ SMEM ID ?
+
+It seems to me as if we are missing some important information here - 
+what are the list of SMEM IDs ?
+
+Are these IDs serial and incrementing across SoC versions or SoC specific ?
+
+You need to define that data.
+
+> +How a kernel client driver can register region with minidump
+> +------------------------------------------------------------
+
+Answering yes to my earlier question. A driver I write can make use of 
+the API you are providing here.
+
+Great. Please give some indication of that earlier, even if its a 
+reference to this description you give here "See X.Y later in this document"
+
+> +
+> +Client driver can use ``qcom_minidump_region_register`` API's to register
+> +and ``qcom_minidump_region_unregister`` to unregister their region from
+> +minidump driver.
+> +
+> +Client needs to fill their region by filling ``qcom_minidump_region``
+> +structure object which consists of the region name, region's virtual
+> +and physical address and its size.
+
+Nit pick. You need a definite article here "A client driver" etc.
+
+> +
+> +Below, is one sample client driver snippet which tries to allocate a
+> +region from kernel heap of certain size and it writes a certain known
+> +pattern.
+
+Good
+
+  (that can help in verification after collection that we got
+> +the exact pattern, what we wrote) and registers it with minidump.
+
+Not necessary to define this. We are all smart here and by now the 
+intent of the mechanism is defined..
+
+> +
+> + .. code-block:: c
+> +
+> +  #include <soc/qcom/qcom_minidump.h>
+> +  [...]
+> +
+> +
+> +  [... inside a function ...]
+> +  struct qcom_minidump_region region;
+> +
+> +  [...]
+> +
+> +  client_mem_region = kzalloc(region_size, GFP_KERNEL);
+> +  if (!client_mem_region)
+> +	return -ENOMEM;
+> +
+> +  [... Just write a pattern ...]
+> +  memset(client_mem_region, 0xAB, region_size);
+> +
+> +  [... Fill up the region object ...]
+> +  strlcpy(region.name, "REGION_A", sizeof(region.name));
+> +  region.virt_addr = client_mem_region;
+> +  region.phys_addr = virt_to_phys(client_mem_region);
+> +  region.size = region_size;
+> +
+> +  ret = qcom_minidump_region_register(&region);
+> +  if (ret < 0) {
+> +	pr_err("failed to add region in minidump: err: %d\n", ret);
+> +	return ret;
+> +  }
+> +
+> +  [...]
+> +
+> +
+> +Test
+> +----
+
+Testing
+
+> +
+> +Existing Qualcomm devices already supports entire RAM dump (also called
+> +full dump) by writing appropriate value to Qualcomm's top control and
+> +status register (tcsr) in ``driver/firmware/qcom_scm.c`` .
+
+"Existing Qualcomm SoCs already support dumping the entire RAM to the 
+SMEM area/segment/whatever"
+
+This is 100% counter-intuitive since SMEM lives in RAM, correct ?
+
+Full dump means what, a full dump of the APSS RAM ? What happens if SMEM 
+cannot accommodate the full APSS RAM dump ?
+
+> +
+> +SCM device Tree bindings required to support download mode
+> +For example (sm8450) ::
+> +
+> +	/ {
+> +
+> +	[...]
+> +
+> +		firmware {
+> +			scm: scm {
+> +				compatible = "qcom,scm-sm8450", "qcom,scm";
+> +				[... tcsr register ... ]
+> +				qcom,dload-mode = <&tcsr 0x13000>;
+> +
+> +				[...]
+> +			};
+> +		};
+> +
+> +	[...]
+> +
+> +		soc: soc@0 {
+> +
+> +			[...]
+> +
+> +			tcsr: syscon@1fc0000 {
+> +				compatible = "qcom,sm8450-tcsr", "syscon";
+> +				reg = <0x0 0x1fc0000 0x0 0x30000>;
+> +			};
+> +
+> +			[...]
+> +		};
+> +	[...]
+> +
+> +	};
+> +
+> +User of minidump can pass ``qcom_scm.download_mode="mini"`` to kernel
+> +commandline to set the current download mode to minidump.
+
+"A kernel command line parameter is provided 
+``qcom_scm.download_mode="mini"`` to facilitate ... but you aren't 
+telling us what "minidump" captures "the current download" ? do you mean 
+the current state ?
+
+Does the system continue to boot up if you pass 
+qcom_scm.download_mode="mini ? will additional registrations to 
+SMEM/Minidump work ?
+
+What happens to the minidump data if there is a _subsequent_ real 
+crashdump ?
+
+Overwritten ?
+
+Also what happens if SMEM runs out of space ? Say I boot with 
+``qcom_scm.download_mode="mini"`` and then the system crashes - SMEM has 
+a limit right ?
+
+So the minidump gets overwritten ?
+
+> +Similarly, ``"full"`` is passed to set the download mode to full dump
+> +where entire RAM dump will be collected while setting it ``"full,mini"``
+> +will collect minidump along with fulldump.
+
+Still not super-clear what the difference between mini and full is here.
+
+> +
+> +Writing to sysfs node can also be used to set the mode to minidump::
+> +
+> +	echo "mini" > /sys/module/qcom_scm/parameter/download_mode
+> +
+> +Once the download mode is set, any kind of crash will make the device collect
+> +respective dump as per set download mode.
+
+Nice.
+
+> +
+> +Dump collection
+> +---------------
+> +::
+> +
+> +	+-----------+
+> +	|           |
+> +	|           |         +------+
+> +	|           |         |      |
+> +	|           |         +--+---+ Product(Qualcomm SoC)
+> +	+-----------+             |
+> +	|+++++++++++|<------------+
+> +	|+++++++++++|    usb cable
+> +	+-----------+
+> +            x86_64 PC
+> +
+> +The solution supports a product running with Qualcomm SoC (where minidump)
+> +is supported from the firmware) connected to x86_64 host PC running PCAT
+> +tool.
+
+It supports downloading the minidump produced from product to the
+> +host PC over USB or to save the minidump to the product attached storage
+> +device(UFS/eMMC/SD Card) into minidump dedicated partition.
+
+It would be a good idea to reference this section earlier.
+
+> +
+> +By default, dumps are downloaded via USB to the attached x86_64 PC running
+> +PCAT (Qualcomm tool) software. Upon download, we will see a set of binary
+> +blobs starting with name ``md_*`` in PCAT configured directory in x86_64
+> +machine, so for above example from the client it will be ``md_REGION_A.BIN``.
+> +This binary blob depends on region content to determine whether it needs
+> +external parser support to get the content of the region, so for simple
+> +plain ASCII text we don't need any parsing and the content can be seen
+> +just opening the binary file.
+> +
+> +To collect the dump to attached storage type, one needs to write appropriate
+> +value to IMEM register, in that case dumps are collected in rawdump
+> +partition on the product device itself.
+> +
+> +One needs to read the entire rawdump partition and pull out content to
+> +save it onto the attached x86_64 machine over USB. Later, this rawdump
+> +can be passed to another tool (``dexter.exe`` [Qualcomm tool]) which
+> +converts this into the similar binary blobs which we have got it when
+> +download type was set to USB, i.e. a set of registered regions as blobs
+> +and their name starts with ``md_*``.
+> +
+> +Replacing the ``dexter.exe`` with some open source tool can be added as future
+> +scope of this document.
+
+---
+bod
 
