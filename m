@@ -4,79 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E76D6C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 10:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B240CC4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Nov 2023 10:33:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WHT6MbAB16I8cUr3C51OtkBFFI3tsc0vSS6xJVk6WMs=; b=pJxyBe+wjqJYWdDrsbXwj7ytZZ
-	Q3Lfn8CcX0xAcdUXViJ0eD34j/tt3TxosvUGZDSF8jrTCtxA2RAcdT4a44QwuAMB/aZiyek2ngz34
-	GCENqtaiBdzWmZwUaM1bofxyZZRlRALFE/Hu7tIl8CSejZ1hilrJN4gOWTXW96BFR6tBCiTXJPYEh
-	wKfP2nxcpEx21E/a5YHWhNuTX+KM8nVavMHSol7v1DCTATFcU27X3WS3yz0Inrs5TPJIAwWJlq+Kb
-	PTnw5asamlypkeMlVzGdc5d7/eUVM3vud1MGbzWfECwIcDlXouF1kCbSLHlikDMn2bDfQets3cueI
-	+e85NR7w==;
+	bh=6WJrDs6aXBvRV/cHzyTFtHB3cjvoU5uFPQPLuXGwXh4=; b=oLzjFpAKH0qBqFxxxjAI95zwWQ
+	zow5axiPrX6AkBGgRA4U1aOlG5JmdgDkgglouAWaBGeu2nc0HdSw7lECJYec8hZp+1DbVZN6/aDkD
+	SgvH3P+mXbqmOZ9s+rkyk91Ap08f6ayZE+ACF4nUltTThln4z2Xo+OvR0PLc3E8/IgNqebMCuEhLM
+	Dh01fNLTlXPAkwNej70tQBjx5yLmvRVmb8sothtxFGRjua+hD8+pT2anH4x7CtuE37/nkld3mHq32
+	iKvF9AOe2ZjrRaxguv05FBgKiaWN7tOuM4Iheo7Yvj6dFFvvm7Jx35t0gNzhmXXb/p7H6Lyhk42eC
+	PkPanojg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vDL-004qkC-2O;
-	Tue, 28 Nov 2023 10:21:11 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r7vOx-004w4o-1R;
+	Tue, 28 Nov 2023 10:33:11 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vDF-004qjB-1b;
-	Tue, 28 Nov 2023 10:21:10 +0000
-Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EEAD16606F5E;
-	Tue, 28 Nov 2023 10:20:58 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701166860;
-	bh=54tD+0Tstg5j+b+ww3zATak7yvK6MgBTy7TZLjR9EQg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XLQhRroj4lwvhoB01HFE3noEy6wTtCG2wzTzBgATFEhAa8glnFAa0MpdeHrMwRPFF
-	 lsP6riICCUjv53diP5ZWmieIMlunMG1zaBInMPuqcuTm2Se3LRwmwigjUDMrF4EQgE
-	 VjxfBXeg4x0fwAxT0C7k3YpOcq9OMhhFRkio/6augFXbbBWepukZrsVrLZHPm4b1WB
-	 oy9mJGlMoAsp2uY9mXkh0pMAh0QFx8wH9y2EI+hb/jL5TS1dTwHMZNlN49nuzYbtoq
-	 GyJbMXaztuL99MOZ6yQV4AlMvwtF0hcDszY7KR0t4IHrZRJp/aVapZtAtO6Ayy8Rxn
-	 XiHbs4I8xTUGg==
-Message-ID: <36ba3f89-2bd0-45f0-8b61-59f5c6691427@collabora.com>
-Date: Tue, 28 Nov 2023 11:20:55 +0100
+	id 1r7vOu-004w44-1U;
+	Tue, 28 Nov 2023 10:33:10 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AS9IOKA030987;
+	Tue, 28 Nov 2023 10:32:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=6WJrDs6aXBvRV/cHzyTFtHB3cjvoU5uFPQPLuXGwXh4=;
+ b=oyKSQb4yUVsiTvtgVlnCchbcwTqCsKms8gp+pNTQQ+dka3v/ZaReHN4opnVCpE7nP3CF
+ 6SBKSdBj+Z/xQLOAXFoOc2mGRme+GYGCYO85PVD0YqaATHIg0s/FQgOnHTOCS1HB5wrZ
+ rixDvAMBLXBapiEx++tWW218UIBUqSqhhD93s/wysZmrj/eEYS7hYzIYYc5tzKtpePz8
+ QV6hPgrZdkJLYqTlAmO/RunKvHwgEzREDOe8rMLxFltU3wbQYO6biEANVX4PyzpYwdTl
+ gdCg4Q3EX3OlrCha7+9PSsLlHa5TNLcxkvpTbKGl06czSfrt7bUl8pfuIkG/OhuUYlTR Hw== 
+Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3un02h1xbj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 Nov 2023 10:32:53 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3ASAWp99022084
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 Nov 2023 10:32:51 GMT
+Received: from [10.214.66.81] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Tue, 28 Nov
+ 2023 02:32:40 -0800
+Message-ID: <d5fa95e7-ad2a-0dc7-5c79-6a9a789dad5f@quicinc.com>
+Date: Tue, 28 Nov 2023 16:02:33 +0530
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] mmc: mediatek: extend number of tuning steps
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [Patch v6 10/12] pstore/ram: Add dynamic ramoops region support
+ through commandline
+To: Pavan Kondeti <quic_pkondeti@quicinc.com>
+CC: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
+        <mathieu.poirier@linaro.org>, <vigneshr@ti.com>, <nm@ti.com>,
+        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
+        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+        <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+References: <1700864395-1479-1-git-send-email-quic_mojha@quicinc.com>
+ <1700864395-1479-11-git-send-email-quic_mojha@quicinc.com>
+ <ad38fb23-e2a2-448e-bdea-fa0985f82b50@quicinc.com>
 Content-Language: en-US
-To: =?UTF-8?B?QXhlIFlhbmcgKOadqOejiik=?= <Axe.Yang@mediatek.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20231128070127.27442-1-axe.yang@mediatek.com>
- <20231128070127.27442-3-axe.yang@mediatek.com>
- <207c2f89-b1e7-448d-966f-0c403a9f9e8b@collabora.com>
- <ea1a82b07e98fa682140c460048901a9f962be2b.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <ea1a82b07e98fa682140c460048901a9f962be2b.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+In-Reply-To: <ad38fb23-e2a2-448e-bdea-fa0985f82b50@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: 51E3dRmfj17vx50XeFUlt--L527HdirG
+X-Proofpoint-ORIG-GUID: 51E3dRmfj17vx50XeFUlt--L527HdirG
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-28_08,2023-11-27_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015
+ priorityscore=1501 malwarescore=0 adultscore=0 lowpriorityscore=0
+ impostorscore=0 spamscore=0 mlxscore=0 phishscore=0 bulkscore=0
+ mlxlogscore=999 suspectscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2311060000 definitions=main-2311280083
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_022105_877460_784BC605 
-X-CRM114-Status: GOOD (  24.20  )
+X-CRM114-CacheID: sfid-20231128_023308_637342_88A109EF 
+X-CRM114-Status: GOOD (  44.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,87 +111,208 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/11/23 10:38, Axe Yang (杨磊) ha scritto:
->> On Tue, 2023-11-28 at 09:53 +0100, AngeloGioacchino Del Regno wrote:
->> Il 28/11/23 08:01, Axe Yang ha scritto:
->>> Previously, during the MSDC calibration process, a full clock cycle
->>> actually not be covered, which in some cases didn't yield the best
->>> results and could cause CRC errors. This problem is particularly
->>> evident when MSDC is used as an SDIO host. In fact, MSDC support
->>> tuning up to a maximum of 64 steps, but by default, the step number
->>> is 32. By increase the tuning step, we are more likely to cover
->>> more
->>> parts of a clock cycle, and get better calibration result.
->>>
->>> To illustrate, when tuning 32 steps, if the obtained window has a
->>> hole
->>> near the middle, like this: 0xffc07ff (hex), then the selected
->>> delay
->>> will be the 6 (counting from right to left).
->>>
->>> (32 <- 1)
->>> 1111 1111 1100 0000 0000 0111 11(1)1 1111
->>>
->>> However, if we tune 64 steps, the window obtained may look like
->>> this:
->>> 0xfffffffffffc07ff. The final selected delay will be 44, which is
->>> safer as it is further away from the hole:
->>>
->>> (64 <- 1)
->>> 1111 ... (1)111 1111 1111 1111 1111 1100 0000 0000 0111 1111 1111
->>>
->>> In this case, delay 6 selected through 32 steps tuning is obviously
->>> not optimal, and this delay is closer to the hole, using it would
->>> easily cause CRC problems.
->>>
->>> You will need to configure property "mediatek,tuning-step" in MSDC
->>> dts node to 64 to extend the steps.
->>>
+
+
+On 11/27/2023 5:04 PM, Pavan Kondeti wrote:
+> On Sat, Nov 25, 2023 at 03:49:53AM +0530, Mukesh Ojha wrote:
+>> The reserved memory region for ramoops is assumed to be at a fixed
+>> and known location when read from the devicetree. This may not be
+>> required for something like Qualcomm's minidump which is interested
+>> in knowing addresses of ramoops region but it does not put hard
+>> requirement of address being fixed as most of it's SoC does not
+>> support warm reset and does not use pstorefs at all instead it has
+>> firmware way of collecting ramoops region if it gets to know the
+>> address and register it with apss minidump table which is sitting
+>> in shared memory region in DDR and firmware will have access to
+>> these table during reset and collects it on crash of SoC.
 >>
->> If we can run 64 tuning steps, why should we run 32?
+>> So, add the support of reserving ramoops region to be dynamically
+>> allocated early during boot if it is request through command line
+>> via 'dyn_ramoops_size=<size>' and fill up reserved resource structure
+>> and export the structure, so that it can be read by ramoops driver.
 >>
->> Why isn't it just better to *always* run 64 tuning steps, on SoCs
->> supporting that?
+>> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+>> ---
+>>   Documentation/admin-guide/ramoops.rst |  7 ++++
+>>   fs/pstore/Kconfig                     | 15 +++++++++
+>>   fs/pstore/ram.c                       | 62 ++++++++++++++++++++++++++++++++---
+>>   include/linux/pstore_ram.h            |  5 +++
+>>   init/main.c                           |  2 ++
+>>   5 files changed, 87 insertions(+), 4 deletions(-)
 >>
->> Thanks,
->> Angelo
+>> diff --git a/Documentation/admin-guide/ramoops.rst b/Documentation/admin-guide/ramoops.rst
+>> index e9f85142182d..af737adbf079 100644
+>> --- a/Documentation/admin-guide/ramoops.rst
+>> +++ b/Documentation/admin-guide/ramoops.rst
+>> @@ -33,6 +33,13 @@ memory are implementation defined, and won't work on many ARMs such as omaps.
+>>   Setting ``mem_type=2`` attempts to treat the memory region as normal memory,
+>>   which enables full cache on it. This can improve the performance.
+>>   
+>> +Ramoops memory region can also be allocated dynamically for a special case where
+>> +there is no requirement to access the logs from pstorefs on next boot instead there
+>> +is separate backend mechanism like minidump present which has awareness about the
+>> +dynamic ramoops region and can recover the logs. This is enabled via command line
+>> +parameter ``dyn_ramoops_size=<size>`` and should not be used in absence of
+>> +separate backend which knows how to recover this dynamic region.
+>> +
+>>   The memory area is divided into ``record_size`` chunks (also rounded down to
+>>   power of two) and each kmesg dump writes a ``record_size`` chunk of
+>>   information.
+>> diff --git a/fs/pstore/Kconfig b/fs/pstore/Kconfig
+>> index 3acc38600cd1..e13e53d7a225 100644
+>> --- a/fs/pstore/Kconfig
+>> +++ b/fs/pstore/Kconfig
+>> @@ -81,6 +81,21 @@ config PSTORE_RAM
+>>   
+>>   	  For more information, see Documentation/admin-guide/ramoops.rst.
+>>   
+>> +config PSTORE_DYNAMIC_RAMOOPS_REGION_RESERVATION
+>> +	bool "Reserve ramoops region dynamically"
+>> +	select PSTORE_RAM
+>> +	help
+>> +	  This enables the dynamic reservation of ramoops region for a special case
+>> +	  where there is no requirement to access the logs from pstorefs on next boot
+>> +	  instead there is separate backend mechanism like minidump present which has
+>> +	  awareness about the dynamic ramoops region and can recover the logs. This is
+>> +	  enabled via command line parameter dyn_ramoops_size=<size> and should not be
+>> +	  used in absence of separate backend which knows how to recover this dynamic
+>> +	  region.
+>> +
+>> +	  Note whenever this config is selected ramoops driver will be build statically
+>> +	  into kernel.
+>> +
 > 
-> Hi Angelo,
+> Is there any advantage if we decouple this memory reservation from
+> pstore ram so that pstore ram can still be compiled as module? Asking
+> because you explicitly mentioned this limitation.
+
+This is doable and it will be needing export(may be _NS) of
+ramoops resource if ramoops needs to be build as modules.
+
+Thanks for suggestion.
+But Let's hear it from other people as well if they have something
+to add otherwise, will do it next series.
+
 > 
-> That is a good question. The benefit of preserving 32 steps tuning is
-> that it can save time in certain scenarios.
+>>   config PSTORE_ZONE
+>>   	tristate
+>>   	depends on PSTORE
+>> diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
+>> index 88b34fdbf759..a6c0da8cfdd4 100644
+>> --- a/fs/pstore/ram.c
+>> +++ b/fs/pstore/ram.c
+>> @@ -20,6 +20,7 @@
+>>   #include <linux/compiler.h>
+>>   #include <linux/of.h>
+>>   #include <linux/of_address.h>
+>> +#include <linux/memblock.h>
+>>   #include <linux/mm.h>
+>>   
+>>   #include "internal.h"
+>> @@ -103,6 +104,55 @@ struct ramoops_context {
+>>   };
+>>   
+>>   static struct platform_device *dummy;
+>> +static int dyn_ramoops_size;
+>> +/* Location of the reserved area for the dynamic ramoops */
+>> +static struct resource dyn_ramoops_res = {
+>> +	.name  = "ramoops",
+>> +	.start = 0,
+>> +	.end   = 0,
+>> +	.flags = IORESOURCE_BUSY | IORESOURCE_SYSTEM_RAM,
+>> +	.desc  = IORES_DESC_NONE,
+>> +};
+>> +
+>> +static int __init parse_dyn_ramoops_size(char *p)
+>> +{
+>> +	char *tmp;
+>> +
+>> +	dyn_ramoops_size = memparse(p, &tmp);
+>> +	if (p == tmp) {
+>> +		pr_err("ramoops: memory size expected\n");
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +early_param("dyn_ramoops_size", parse_dyn_ramoops_size);
 > 
-> On some platforms, when the delay selected through 64 steps tuning is
-> very close to that chosen through 32 steps, we can reduce the tuning
-> step from 64 to 32. This can save time sending the tuning block
-> commands.
+> should not this code be under
+> CONFIG_PSTORE_DYNAMIC_RAMOOPS_REGION_RESERVATION?
+
+Yeah, looks to be miss., thanks again..
+
 > 
-> Thus using 32 steps tuning can save kernel boot up time.
+>> +
+>> +#ifdef CONFIG_PSTORE_DYNAMIC_RAMOOPS_REGION_RESERVATION
+>> +/*
+>> + * setup_dynamic_ramoops() - reserves memory for dynamic ramoops
+>> + *
+>> + * This enable dynamic reserve memory support for ramoops through
+>> + * command line.
+>> + */
+>> +void __init setup_dynamic_ramoops(void)
+>> +{
+>> +	unsigned long long ramoops_base;
+>> +	unsigned long long ramoops_size;
+>> +
+>> +	ramoops_base = memblock_phys_alloc_range(dyn_ramoops_size, SMP_CACHE_BYTES,
+>> +						 0, MEMBLOCK_ALLOC_NOLEAKTRACE);
+>> +	if (!ramoops_base) {
+>> +		pr_err("cannot allocate ramoops dynamic memory (size:0x%llx).\n",
+>> +			ramoops_size);
+>> +		return;
+>> +	}
 > 
-> Another case where time can be saved is when accessing the RPMB
-> partition of eMMC. Each time switch to RPMB partition, there is a
-> retune action, causing a certain drop in performance. If we are certain
-> that the results of 32 steps tuning are usable and we use it, this can
-> in a sense also guarantee performance when accessing the RPMB
-> partition.
+> This error needs to be propagated to ramoops_register_dummy() since it
+> rely on !dyn_ramoops_size . one way is to set dyn_ramoops_size to 0.
+
+Good point, will do that..
+
 > 
+>> +
+>> +	dyn_ramoops_res.start = ramoops_base;
+>> +	dyn_ramoops_res.end = ramoops_base + dyn_ramoops_size - 1;
+>> +	insert_resource(&iomem_resource, &dyn_ramoops_res);
+>> +}
+>> +#endif
+>>   
+>>   static int ramoops_pstore_open(struct pstore_info *psi)
+>>   {
+>> @@ -915,14 +965,18 @@ static void __init ramoops_register_dummy(void)
+>>   
+>>   	/*
+>>   	 * Prepare a dummy platform data structure to carry the module
+>> -	 * parameters. If mem_size isn't set, then there are no module
+>> -	 * parameters, and we can skip this.
+>> +	 * parameters. If mem_size isn't set, check for dynamic ramoops
+>> +	 * size and use if it is set.
+>>   	 */
+>> -	if (!mem_size)
+>> +	if (!mem_size && !dyn_ramoops_size)
+>>   		return;
+>>   
+> 
+> If mem_size and dyn_ramoops_size are set, you are taking
+> dyn_ramoops_size precedence here. The comment is a bit confusing, pls
+> review it once.
 
-Thanks for this explanation! Though, I have some more questions...
+Ideally, both should not be set and there will always be
+confusion.
 
-...regarding boot up time, how much time are we talking about?
+Do you think, if we use mem_size a single variable both for earlier
+and dynamic ramoops where based on dyn_ramoops_size=true/on a boolean
+it will take dynamic ramoops path and if not mentioned it will take 
+older path.
 
-I'm asking because while now I see - and agree - on using 32-steps tuning
-on eMMC to guarantee performance during RPMB access, as far as I know,
-there is no RPMB partition on SD/MicroSD cards (and, of course, SDIO devices).
-
-If the boot performance impact isn't big, as in, up to ~100 milliseconds is
-not big at all (especially with async probe!), we can definitely avoid the
-addition of a devicetree property for 32-steps tuning, hence use a dynamic
-selection strategy such that:
-  - On eMMC devices, always perform 32-steps tuning (hence no boot delay)
-  - On SD cards and SDIO, always perform 64-steps tuning
-
-Cheers,
-Angelo
-
+-Mukesh
+> 
+>> -	pr_info("using module parameters\n");
+>> +	if (dyn_ramoops_size) {
+>> +		mem_size = dyn_ramoops_size;
+>> +		mem_address = dyn_ramoops_res.start;
+>> +	}
+>>   
+> 
+> Overall it Looks good to me. Thanks.
 
