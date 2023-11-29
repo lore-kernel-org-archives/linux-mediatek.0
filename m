@@ -4,90 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 551A9C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 18:11:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C32F4C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 21:20:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4gLDX8cWt3JEEqgRokj5ykqsN5muXxo/Ge+Xctz4FUg=; b=U4hDiLSux302ImATH8FtypKrpi
-	G/TYbmX/ivYLAh8sR2hc8TVsTaWzVmSHstHwcbZfWITnVl+vNTYcKI26KMxWlC+sRTFhDC85qF4Gj
-	E7HIy0ooNBGj+Uxc/KuE7aGKfiAl0I17zWK34NRA2xuPEP35wqAnnAQq4MhSrJFCx/skFwopE0e5s
-	VkIwhcU5/DKmPXr4Xpb4ujLDcP3CaeLRY6KRI8POyNgP1ATl+GW//3GyY4dAwh3l7pZH2fBQoYxzm
-	XX8VSe/yPx6RoEOGYLmHw/bKCujXCU18vTQVTqDawHwMJz64x0gJ7V9qO7sPQANfwC89TTIOvimy3
-	mwdm9KfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oRzm+EBY8lURs31kY2MOOY72V50zWEq0T4zxegoq0uI=; b=1aftJ1jxDP9kD4x7zrPYkAzcUI
+	ujpfH4ZsAynnOsLXl2QaUwTVQYofj85/ZD4oXuR4o2yX0Hq0Q3qvw9ud49JcWGGOGX+qAmiIY1/zY
+	3qua3lJ0RJdF7Z3OvM3JxM/mdOZSM5x9tThd2pnHZ9/aklOMIzQp7W96fL2bqzBG4EanR6zrfnEEx
+	BUDOti80eokYeojq/3Xtm13mgNizPlzG1h6RDtXy2o/VDsBTL3uYj1VWncafBr7ajiBdgqAYvLufJ
+	gFzwaIyRebVxCVo31x9R1ccW/Mlx0mQa5ygsVSZ2fZUluRYeBNAPrRNbi+FeU3nAFxl/44Agzwx2a
+	SwOg/GRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8P2K-0094pO-0L;
-	Wed, 29 Nov 2023 18:11:48 +0000
-Received: from mail-pf1-f178.google.com ([209.85.210.178])
+	id 1r8Ryd-009J7X-1Q;
+	Wed, 29 Nov 2023 21:20:11 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8P2H-0094ob-07;
-	Wed, 29 Nov 2023 18:11:46 +0000
-Received: by mail-pf1-f178.google.com with SMTP id d2e1a72fcca58-6cdd9c53270so24240b3a.1;
-        Wed, 29 Nov 2023 10:11:42 -0800 (PST)
+	id 1r8Rya-009J6T-2W;
+	Wed, 29 Nov 2023 21:20:10 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1cfc3f50504so2337585ad.3;
+        Wed, 29 Nov 2023 13:20:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701292805; x=1701897605; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=oRzm+EBY8lURs31kY2MOOY72V50zWEq0T4zxegoq0uI=;
+        b=e2DQpc5mxlSJWNAW7oZlWvJA674QbUWrKFjgt8UmIwevJBmg+ChZlUAV6i9GlFZ3Wm
+         TX5hZyMxUz0it25R5tp1MfeM650tlJIjVGYroMwdCu5Sy1Tw7UxzCvq5pOZ6hbazmczR
+         RqdWeRBYfSto+kvmU8uN/MyZf0Fbhs8Uw00PArW44dHDBFbOJyqGEJ4QgQjF8W5IsU/v
+         dlg/NwAHkRMbpQ2nctDSahFSBhk4q8jpt9rTPg2hSx5+RbecrkDzvZ8NlkkMEHyoM0FH
+         0JK5h8/CPYUFGh4iKMWGNnn2aw0L8olhhXjEBnz0fuPIUkXDEqpnjvkwFxnSmUf8V6Za
+         3F6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701281501; x=1701886301;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4gLDX8cWt3JEEqgRokj5ykqsN5muXxo/Ge+Xctz4FUg=;
-        b=ON3Gw9w4eCtMizfGO6GkJSb3b08BGwHgJljoovRKi84WR926PXIvXPvPB5efXAqiZ4
-         +Q0SkTSBF3jTQteEPHGfmOmJWtv3dB1CPWrqzNaPLuXfK0ZsCCuZgoivBtyxdfNRDYcx
-         1VUsqa0ZzSKAVUYlJKT34u9FWwA9viVBapdNlPjff38ilT7BQryWvPh59J3nwvtsHY07
-         jq8OTtaG52wdq+6FlnCkeSSzR9YelZFtQzh1aJdRQ9/7mgfwfDpWCQxt3+6tI7VOhFyj
-         71aEJoFsL8s4vaLXtApUoepzbIbMLAMPe4Z2rLpXpV+dCZ6+bhoG9zo/PwGt0CI7g4Bu
-         XILQ==
-X-Gm-Message-State: AOJu0Yy/e7MuNZUxw3zZWFCRvw4gja7MthVG6ZJzDrCTwthc9HLv6LLH
-	HSDdtj8XTgHrr794nwR8yA9MstHll2M=
-X-Google-Smtp-Source: AGHT+IGy+4WYJhTiQIOswP/E41L9YL8AuNEuZh5o79tqLq/ynbibB9mZf/1DyU/qOz7NtDQNLElZ2g==
-X-Received: by 2002:a05:6a20:e68c:b0:18b:d344:6acd with SMTP id mz12-20020a056a20e68c00b0018bd3446acdmr19899607pzb.10.1701281501391;
-        Wed, 29 Nov 2023 10:11:41 -0800 (PST)
-Received: from ?IPV6:2620:0:1000:8411:af8d:714d:9855:3f9d? ([2620:0:1000:8411:af8d:714d:9855:3f9d])
-        by smtp.gmail.com with ESMTPSA id a9-20020a170902ee8900b001b7f40a8959sm12648546pld.76.2023.11.29.10.11.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Nov 2023 10:11:40 -0800 (PST)
-Message-ID: <0cc74796-2369-4c02-a78f-4f1d5e8337dc@acm.org>
-Date: Wed, 29 Nov 2023 10:11:38 -0800
+        d=1e100.net; s=20230601; t=1701292805; x=1701897605;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oRzm+EBY8lURs31kY2MOOY72V50zWEq0T4zxegoq0uI=;
+        b=Kvpk422FKwvvlaDiXLkfEprZ/0dkejfw2k1OdfCQDZJwYZ240EKd0QMIgzTgdQwgPA
+         a1zw4+aVjqC7dVyS+2BC8w12ZIjtrp0r3CzgYEudJKD3pAqmQpXevJT81Wr7UpXfcl+A
+         d6VbzOQGM2SXhQFUhojmYIgSaxI0RU4ouA6J/qsyFufYqPljqyfIYHij0Pi4p7vlgzI6
+         4hcth+D/1MDGRVZ6eI8jIp6M6H4kZ6QH3/xTpesX1cUtNMnQ04/d4OzuMkpiJPKYLebm
+         Xj0c04YEH0gAJBJCTtMHLDFYk4j7rnn9kHTmMRWe0xyKsteUbuBTScQZ4X/Wy2XQBaAN
+         r3DQ==
+X-Gm-Message-State: AOJu0YzWyc+8cDltyPPWWDXZ9VFRyT3Hl8HZddMahnIrQiy9gRBLfSW3
+	a8hgmD4HSmd8UtZp1EZYaWU=
+X-Google-Smtp-Source: AGHT+IGIE4ijk3eHmnRzx35ZgI1veKT53AndkVUbNYATlXqAIeUX8alKZiZFLlbEiokkL4jkg+JZLw==
+X-Received: by 2002:a17:90b:4a8c:b0:285:b8d2:cad4 with SMTP id lp12-20020a17090b4a8c00b00285b8d2cad4mr13229826pjb.17.1701292805224;
+        Wed, 29 Nov 2023 13:20:05 -0800 (PST)
+Received: from google.com ([2620:15c:9d:2:64f2:7004:43e0:6095])
+        by smtp.gmail.com with ESMTPSA id bk8-20020a17090b080800b00285a17f9da1sm1839436pjb.43.2023.11.29.13.20.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Nov 2023 13:20:04 -0800 (PST)
+Date: Wed, 29 Nov 2023 13:20:02 -0800
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: input: mediatek,pmic-keys: Drop incomplete
+ example
+Message-ID: <ZWerAi4CDFUz4Lk2@google.com>
+References: <20231128214816.3975893-1-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 01/10] scsi: ufs: host: Rename structure ufs_dev_params
- to ufs_host_params
-Content-Language: en-US
-To: Can Guo <quic_cang@quicinc.com>, mani@kernel.org,
- adrian.hunter@intel.com, cmd4@qualcomm.com, beanhuo@micron.com,
- avri.altman@wdc.com, junwoo80.lee@samsung.com, martin.petersen@oracle.com
-Cc: linux-scsi@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- Alim Akhtar <alim.akhtar@samsung.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Stanley Chu <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Nitin Rawat <quic_nitirawa@quicinc.com>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Brian Masney <bmasney@redhat.com>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>, open list
- <linux-kernel@vger.kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>
-References: <1701246516-11626-1-git-send-email-quic_cang@quicinc.com>
- <1701246516-11626-2-git-send-email-quic_cang@quicinc.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <1701246516-11626-2-git-send-email-quic_cang@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231128214816.3975893-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_101145_076052_15ECCFD3 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231129_132008_821789_17F5B107 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,19 +96,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/29/23 00:28, Can Guo wrote:
-> Structure ufs_dev_params is actually used in UFS host vendor drivers to
-> declare host specific power mode parameters, like ufs_<vendor>_params or
-> host_cap, which makes the code not very straightforward to read. Rename the
-> structure ufs_dev_params to ufs_host_params and unify the declarations in
-> all vendor drivers to host_params.
+On Tue, Nov 28, 2023 at 03:48:16PM -0600, Rob Herring wrote:
+> The example for the Mediatek PMIC keys is incomplete as the binding is
+> the full PMIC, not just the sub-functions. It is preferred for MFD
+> examples to be complete in the top-level MFD device binding rather than
+> piecemeal in each sub-function binding.
 > 
-> In addition, rename the two functions ufshcd_init_pwr_dev_param() and
-> ufshcd_get_pwr_dev_param() which work based on the ufs_host_params to
-> ufshcd_init_host_params() and ufshcd_negotiate_pwr_params() respectively to
-> avoid confusions.
+> This also fixes an undocumented (by schema) compatible warning for
+> "mediatek,mt6397".
 > 
-> This change does not change any functionalities or logic.
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Applied, thank you.
+
+-- 
+Dmitry
 
