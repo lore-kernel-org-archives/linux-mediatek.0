@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32A48C07E97
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 10:19:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E26DDC10DC1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 10:43:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZgUs8TNBWSvX+Jw36S2+v7tW/A1ICX2uch1ZvXrvqmc=; b=sTlqWWxzcSS4/ojEIsZCoYLgoF
-	hjbqKoqEIM6YIt2qXYoFX3WzyD5zow/fDLLzy3qU6Iw/HScwI0l1zcVoh536nskI18GgQTs232k3V
-	nXJQpYYzhYZWYD3FXW8XD2hzndwApB/eRmUKmlvqSOL58BNwe6sO7SqH/e6PE56aS89MXQd1I7+LW
-	BXgOfTNDweq6w6hM5gBDILJDKymZkQxpnHxza0hNCdXklp4OO8HZNgNJ/1gzEAgTalQ1CtjlW6+mJ
-	D/6zIK1E5+1SPMAdJul/Yic1Kv7J1UQgEJZip134GmJSFNRz/27cbU4vbLcHORiG3tjtmjDhmo3/W
-	gPNsA2HQ==;
+	bh=xVLky8Z20SSO+CvYldXW9t2l0cWtn7iQRH4AeA4Nat4=; b=hwM66pqRM8Q0jAW98xyf611gMg
+	UHJn6dwlVxgidXxtMeYlaCO5+DRpMVHtW4OsqEcvL7UAtowuG40mVq5ARqDTixWaDg+MfMkCkdsyf
+	fNm9ZXMfH7ficmmOd1BpGEyXLVnn6tVtObfoPzsicRIJnQngsUY2/xwfZaksVpfJUII6nNSbckFhf
+	0A77c2qOMWBQk4eydsK+0Q8WeZrR0ePjnF04mAs7X6PLLqkqJXDyUm6awKEDjT2RqeP4LHbgPfxqU
+	+eyWlJQoGKpHB/gFnoy3NTz772jPSQAXOk5BOnU034UMfe8Hausz8R/Q7PUxZsGcM36dAoE50N61G
+	hzqU75rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8HfB-007nU8-0j;
-	Wed, 29 Nov 2023 10:19:25 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1r8I2Z-007qxD-1S;
+	Wed, 29 Nov 2023 10:43:35 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Hf8-007nS3-0t
+	id 1r8I2T-007qta-2v
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Nov 2023 10:19:23 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-54af0eca12dso7193265a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 02:19:19 -0800 (PST)
+	Wed, 29 Nov 2023 10:43:33 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-5488bf9e193so8886507a12.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 02:43:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701253158; x=1701857958; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1701254607; x=1701859407; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZgUs8TNBWSvX+Jw36S2+v7tW/A1ICX2uch1ZvXrvqmc=;
-        b=vOVP+SYba/P3Mphrx6D4tIpiOuv1UnP2TuPW9/2Iw1msVUBMbFG6HPjmvTYse7kErT
-         g56JgSHJOF6KmRW2O/CHxFLzWbMaan1iZbX+y6WjL7fSfgacRsfmyYw50rS4yLPdPFiL
-         ESKsZEsTHxd/5IA50Sp9gO3ST90sdbeYX4kHV+TfN0eL+6trjKJRVR9XCnB0Hbc+CKY7
-         GBD39EIY3MbwLuJenMkeJjPwen0aZ2eV8wRt8BHEPa/9+iGyw0dp4D6m0aGfRuMuxmCS
-         4zdJ1Sv9niHZSB6FS8Fczwqlg35C/Q4uVbb5d0qBphswjwIgY+MMWaB+lszIn1vjAetS
-         l2WQ==
+        bh=xVLky8Z20SSO+CvYldXW9t2l0cWtn7iQRH4AeA4Nat4=;
+        b=CFF2vHghZWljEUgM2Dy/bloXNsMup8Mx7ghrMyebCHLRXYw8uonnMHjgsT1Q4V/UDS
+         Rvnx22oZTdeq4N5HJXRO/yfPswnBuRgCPvad73QsituZygabIAzLGldBYdCTVHuX7/sH
+         cQgslnemOkhzE4fe6iq6VE2phZ4NCu4tPAIHee8np9Iyb5jjT0JoknpfGRMJgjpifHcG
+         +Upcz8L3jbNFiUq88IsxQtASdhftmPCW+FdpnZjPjomiRvzqjDSbXtl/xq1l7vlYm2gB
+         1OV8u8Uw9cfz0dHIu4myg4l6PwuxPi2ICdP8DXFXEcZkyzDEPYDjFEetAVqJIm84o+4v
+         FpkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701253158; x=1701857958;
+        d=1e100.net; s=20230601; t=1701254607; x=1701859407;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZgUs8TNBWSvX+Jw36S2+v7tW/A1ICX2uch1ZvXrvqmc=;
-        b=Z38ctKVIzbKtUpTFUGfvJdjp3Ank6VArA6WtvbATEevEG6+R+sAvk//g7TrgSbhQpe
-         h3gRk3pTGmkRqY8+zr/A0VTO/EIsxHRFwlInHfoOkx65oNlTlaI2Dpyq8Kv9GrtTi1P1
-         ykYCGeIAur0aVXrnkKtz1odgVRmnbNOD5cPeCLZ839CTNnUswkgor2LxL2KUGWTqJ5yU
-         l/UkXW7xum7BRvJh2Ag90dysWo8MrSBZ8CPvZSKVrxveLICQDE/z0/E8hnA1D4WeqniV
-         n4cZt348cL59/4F+mPROY9Xnl/P2sJtipP8VMKi8X6X6EFtTjv6rNuuEJVXVXalB5Qnt
-         i6nQ==
-X-Gm-Message-State: AOJu0Yyslle2si4wVhvgKE7K6XsyijCZhcXsXZgYtEuClI/QRjPFiWOG
-	HaTfdEM92Zuuv+p/NIMp5KCXTQ==
-X-Google-Smtp-Source: AGHT+IGGNLDD1SmsCmB/BOBGu2q2gM5rjZKR//wWsqBvJ2rQtIypG4PZ6unz3UPYelxpx5vp9P483g==
-X-Received: by 2002:a50:cdda:0:b0:54b:1ca8:8520 with SMTP id h26-20020a50cdda000000b0054b1ca88520mr12005347edj.1.1701253158492;
-        Wed, 29 Nov 2023 02:19:18 -0800 (PST)
+        bh=xVLky8Z20SSO+CvYldXW9t2l0cWtn7iQRH4AeA4Nat4=;
+        b=Pd9iGCqDYsd3hrnD50Oi1FclrDmWDj2Acl+uPgbK17i0COpkEg8OXnb1AvraobAWh0
+         R9ONN9DciCc35CvBCgqHafG2Sde9F4T0WwJLlyVPbYGN4KaEf0Ww6Ow5rJPbFlNhSe35
+         vYhNVmTb9agQCwxd8bAmBHQ/BYYNpMx2vggXkOzIeSsVCqe1ZWA+3Fyy5CvMWlNyZXZU
+         RLDpCN2ruMLzw4Jdv/DAdVOJuaaDRF4zI7JNAP3tH8AzI2mpc3UfUj2nz4nSskq+vfN3
+         LEtq1iBTVdrXwZv7mzO7SkN3f5MbXieukiW/bqIbsfTB3yesRnC+M7lECylsvf9CBKz5
+         WXMA==
+X-Gm-Message-State: AOJu0YxXeFS/x9NeOvYfkJ9HHVSc0jvsYT8PSBw842CopGGPrA6BeNvW
+	QaknE4H25XBMUixvU2sVTEiEgQ==
+X-Google-Smtp-Source: AGHT+IE8QHGn91DGeLLSv5/Szy3YvAtLEG1epfKY3EEMbOEyvG5igTHKUH33mvcN+IPmY4o0Tr2rmw==
+X-Received: by 2002:a17:906:c307:b0:9d4:2080:61dc with SMTP id s7-20020a170906c30700b009d4208061dcmr14414319ejz.22.1701254607098;
+        Wed, 29 Nov 2023 02:43:27 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.109])
-        by smtp.gmail.com with ESMTPSA id j18-20020a508a92000000b0054bbfe0c5fcsm1064282edj.94.2023.11.29.02.19.15
+        by smtp.gmail.com with ESMTPSA id g1-20020a170906348100b009de3641d538sm7741813ejb.134.2023.11.29.02.43.24
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Nov 2023 02:19:17 -0800 (PST)
-Message-ID: <46f30852-4824-45b3-bf01-4a4a5ff2cff7@linaro.org>
-Date: Wed, 29 Nov 2023 11:19:15 +0100
+        Wed, 29 Nov 2023 02:43:26 -0800 (PST)
+Message-ID: <0bcc0679-b883-4435-8843-cc830122c0e1@linaro.org>
+Date: Wed, 29 Nov 2023 11:43:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
 Content-Language: en-US
-To: Francesco Dolcini <francesco@dolcini.it>
+To: Dragan Simic <dsimic@manjaro.org>
 Cc: Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
@@ -90,7 +90,7 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
  workflows@vger.kernel.org, linux-doc@vger.kernel.org
 References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
- <ZWboWqELHbIrblnz@francesco-nb.int.toradex.com>
+ <63ec18b2758a9e385f446fb00b60ee69@manjaro.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -136,12 +136,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <ZWboWqELHbIrblnz@francesco-nb.int.toradex.com>
+In-Reply-To: <63ec18b2758a9e385f446fb00b60ee69@manjaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_021922_320548_F9E12A16 
-X-CRM114-Status: GOOD (  20.81  )
+X-CRM114-CacheID: sfid-20231129_024329_951011_FB1D9F8D 
+X-CRM114-Status: GOOD (  34.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,62 +156,464 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/11/2023 08:29, Francesco Dolcini wrote:
-> On Sat, Nov 25, 2023 at 07:44:22PM +0100, Krzysztof Kozlowski wrote:
->> Document preferred coding style for Devicetree sources (DTS and DTSI),
->> to bring consistency among all (sub)architectures and ease in reviews.
+On 28/11/2023 21:00, Dragan Simic wrote:
+>> 5. Allow two style of ordering overrides in board DTS: alphabetically 
+>> or
+>>    by order of DTSI (Rob).
+>> 6. I did not incorporate feedback about, due to lack of consensus and 
+>> my
+>>    disagreement:
+>>    a. SoM being DTS without DTSI in "Organizing DTSI and DTS"
 > 
-> Thank Krzysztof, we had most of this collected as BKM in some internal
-> documents and it's great to see the effort to consolidate this and add
-> it to the kernel documentation.
+> I went through the language of the entire patch, after the notice that 
+> the v4 would no longer accept language improvements.  My wording- and 
+> grammar-related suggestions are available inline below.
+
+Thanks. I want to finish this at some point and it might not happen if
+grammar fixes will be coming every patch revision. Then after we finish
+review, new feedback will appear about using British or American
+spelling (which reminds me old quote/email about which variant of
+English is most popular in Linux kernel: the incorrect one).
+
 > 
+>> Changes in v2
+>> =============
+>> 1. Hopefully incorporate entire feedback from comments:
+>> a. Fix \ { => / { (Rob)
+>> b. Name: dts-coding-style (Rob)
+>> c. Exceptions for ordering nodes by name for Renesas and pinctrl 
+>> (Geert,
+>>    Konrad)
+>> d. Ordering properties by common/vendor (Rob)
+>> e. Array entries in <> (Rob)
+>>
+>> 2. New chapter: Organizing DTSI and DTS
+>>
+>> 3. Several grammar fixes (missing articles)
+>>
+>> Cc: linux-rockchip@lists.infradead.org
+>> Cc: linux-mediatek@lists.infradead.org
+>> Cc: linux-samsung-soc@vger.kernel.org
+>> Cc: linux-amlogic@lists.infradead.org
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Cc: linux-arm-msm@vger.kernel.org
+>> Cc: workflows@vger.kernel.org
+>> Cc: linux-doc@vger.kernel.org
 >> ---
+>>  .../devicetree/bindings/dts-coding-style.rst  | 194 ++++++++++++++++++
+>>  Documentation/devicetree/bindings/index.rst   |   1 +
+>>  2 files changed, 195 insertions(+)
+>>  create mode 100644 
+>> Documentation/devicetree/bindings/dts-coding-style.rst
+>>
+>> diff --git a/Documentation/devicetree/bindings/dts-coding-style.rst
+>> b/Documentation/devicetree/bindings/dts-coding-style.rst
+>> new file mode 100644
+>> index 000000000000..e374bec0f555
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/dts-coding-style.rst
+>> @@ -0,0 +1,194 @@
+>> +.. SPDX-License-Identifier: GPL-2.0
+>> +.. _dtscodingstyle:
+>> +
+>> +=====================================
+>> +Devicetree Sources (DTS) Coding Style
+>> +=====================================
+>> +
+>> +When writing Devicetree Sources (DTS) please observe below guidelines. 
+>>  They
+> 
+> The sentence above should be replaced with: "The following guidelines 
+> are to be followed when writing Devicetree Source (DTS) files."
+
+Are you sure? It's passive and I was taught it is discouraged for
+writing. See for example:
+https://www.hamilton.edu/academics/centers/writing/seven-sins-of-writing/1
+
+> 
+>> +should be considered complementary to any rules expressed already in 
+>> Devicetree
+>> +Specification and dtc compiler (including W=1 and W=2 builds).
+> 
+> A definite article ("the") should be added before "Devicetree 
+
+ack
+
+> Specification" and "dtc".  Also, "Specification" in "Devicetree 
+> Specification" should be capitalized.
+
+It was.
+
+
+> 
+>> +
+>> +Individual architectures and sub-architectures can add additional 
+>> rules, making
+>> +the style stricter.
+> 
+> "Sub-architectures" should be replaced with "subarchitectures".  "Can 
+
+A hint, you can write such review feedback as:
+s/sub-architectures/subarchitectures/
+
+BTW, my language spelling points "subarchitectures" as mistake, but
+sure, ack.
+
+> add" should be replaced with "can define".   "Style" should be replaced 
+> with "coding style".
+
+ack
+
+> 
+>> +
+>> +Naming and Valid Characters
+>> +---------------------------
+>> +
+>> +Devicetree specification allows broader range of characters in node 
+>> and
+>> +property names, but for code readability the choice shall be narrowed.
+> 
+> The definite article ("the") should be added before "Devicetree 
+> Specification", and "specification" should be capitalised.  As already 
+> suggested, "broader range" should be replaced with "a broad range".  
+> "But for code readability the choice shall be narrowed" should be 
+> replaced with "but this coding style narrows the range down to achieve 
+> better code readability".
+
+Ack
+
+> 
+>> +
+>> +1. Node and property names are allowed to use only:
+> 
+> "Are allowed to" should be replaced with "can".  After "only", "the 
+> following characters" should be added.
+
+ack
+
+> 
+>> +
+>> +   * lowercase characters: [a-z]
+>> +   * digits: [0-9]
+>> +   * dash: -
+> 
+> List items should be capitalized, i.e. "Lowercase characters" should be 
+> used instead of "lowercase characters", etc.
+
+ack
+
+> 
+>> +
+>> +2. Labels are allowed to use only:
+> 
+> "Are allowed to" should be replaced with "can".  After "only", "the 
+> following characters" should be added.
+> 
+ack
+
+>> +
+>> +   * lowercase characters: [a-z]
+>> +   * digits: [0-9]
+>> +   * underscore: _
+> 
+> List items should be capitalized, i.e. "Lowercase characters" should be 
+> used instead of "lowercase characters", etc.
+> 
+
+ack
+
+>> +
+>> +3. Unit addresses shall use lowercase hex, without leading zeros 
+>> (padding).
+> 
+> "Lowercase hex" should be replaced with "lowercase hexadecimal digits".
+> 
+>> +
+>> +4. Hex values in properties, e.g. "reg", shall use lowercase hex.  The 
+>> address
+>> +   part can be padded with leading zeros.
+> 
+> "Hex values" should be replaced with "Hexadecimal values".  "Lowercase 
+> hex" should be replaced with "lowercase hexadecimal digits".
+
+ack, but that's quite picky. We are (software) engineers so we are
+supposed to know the slang.
+
+> 
+>> +
+>> +Example::
+>> +
+>> +	gpi_dma2: dma-controller@800000 {
+>> +		compatible = "qcom,sm8550-gpi-dma", "qcom,sm6350-gpi-dma";
+>> +		reg = <0x0 0x00800000 0x0 0x60000>;
+>> +	}
+>> +
+>> +Order of Nodes
+>> +--------------
+>> +
+>> +1. Nodes within any bus, thus using unit addresses for children, shall 
+>> be
+> 
+> "Within" should be replaced "on".
+
+ack
+
+> 
+>> +   ordered incrementally by unit address.
+> 
+> Should be replaced with "ordered by unit address in ascending order".
+
+ack
+
+> 
+>> +   Alternatively for some sub-architectures, nodes of the same type 
+>> can be
+>> +   grouped together (e.g. all I2C controllers one after another even 
+>> if this
+>> +   breaks unit address ordering).
+> 
+> "Sub-architectures" should be replaced with "subarchitectures".  The 
+> "(e.g. ...)" form should be replaced with ", e.g. ...".
+
+ack
+
+> 
+>> +
+>> +2. Nodes without unit addresses shall be ordered alpha-numerically by 
+>> the node
+>> +   name.  For a few types of nodes, they can be ordered by the main 
+>> property
+>> +   (e.g. pin configuration states ordered by value of "pins" 
+>> property).
+> 
+> "Alpha-numerically" should be replaced with "alphabetically".  
+
+Are you sure? Does alphabetical order include numbers?
+
+> "Types of 
+> nodes" should be replaced with "node types".  The "(e.g. ...)" form 
+> should be replaced with ", e.g. ...".
+
+ack
+
+> 
+>> +
+>> +3. When extending nodes in the board DTS via &label, the entries shall 
+>> be
+>> +   ordered either alpha-numerically or by keeping the order from DTSI 
+>> (choice
+>> +   depending on sub-architecture).
+> 
+> "Alpha-numerically" should be replaced with "alphabetically".  
+
+Similar concern
+
+> "Sub-architecture" should be replaced with "subarchitecture".  "(Choice 
+> depending on sub-architecture)" should be replaced with ", where the 
+> choice depends on the subarchitecture".
+
+ack
+
+> 
+>> +
+>> +Above ordering rules are easy to enforce during review, reduce chances 
+>> of
+>> +conflicts for simultaneous additions (new nodes) to a file and help in
+>> +navigating through the DTS source.
+> 
+> "Above" should be replaced with "The above-described".  "(New nodes)" 
+> should be replaced with "of new nodes".
+
+
+ack
+
+> 
+>> +
+>> +Example::
+>> +
+>> +	/* SoC DTSI */
+>> +
+>> +	/ {
+>> +		cpus {
+>> +			/* ... */
+>> +		};
+>> +
+>> +		psci {
+>> +			/* ... */
+>> +		};
+>> +
+>> +		soc@ {
+>> +			dma: dma-controller@10000 {
+>> +				/* ... */
+>> +			};
+>> +
+>> +			clk: clock-controller@80000 {
+>> +				/* ... */
+>> +			};
+>> +		};
+>> +	};
+>> +
+>> +	/* Board DTS - alphabetical order */
+>> +
+>> +	&clk {
+>> +		/* ... */
+>> +	};
+>> +
+>> +	&dma {
+>> +		/* ... */
+>> +	};
+>> +
+>> +	/* Board DTS - alternative order, keep as DTSI */
+>> +
+>> +	&dma {
+>> +		/* ... */
+>> +	};
+>> +
+>> +	&clk {
+>> +		/* ... */
+>> +	};
+>> +
+>> +Order of Properties in Device Node
+>> +----------------------------------
+>> +
 >> +Following order of properties in device nodes is preferred:
+> 
+> "Following" should be replaced with "The following".
+
+ack
+
+> 
 >> +
 >> +1. compatible
 >> +2. reg
 >> +3. ranges
->> +4. Standard/common properties (defined by common bindings, e.g. without
+>> +4. Standard/common properties (defined by common bindings, e.g. 
+>> without
 >> +   vendor-prefixes)
 >> +5. Vendor-specific properties
 >> +6. status (if applicable)
 >> +7. Child nodes, where each node is preceded with a blank line
+>> +
+>> +The "status" property is by default "okay", thus it can be omitted.
+>> +
+>> +Above order follows approach:
 > 
-> On point 4, do you have a more explicit way to define what is an actual
-> standard/common property? You mention the vendor-prefixes as an example,
-> is this just an example or this is the whole definition?
+> The last sentence should be replaced with "The above-described ordering 
+> follows this approach:".
 
-The actual definition is: defined by common bindings, which are:
-meta-schemas and schemas in dtschema, and common bindings per subsystem
-(e.g. leds/common.yaml).
-
-Lack of vendor-prefix is I think 99% accurate in this matter, but there
-are some "linux," ones.
+ack
 
 > 
-> What would be the order for this for example (from an existing DTS file)?
+>> +
+>> +1. Most important properties start the node: compatible then bus 
+>> addressing to
+>> +   match unit address.
+>> +2. Each node will have common properties in similar place.
+>> +3. Status is the last information to annotate that device node is or 
+>> is not
+>> +   finished (board resources are needed).
+>> +
+>> +Example::
+>> +
+>> +	/* SoC DTSI */
+>> +
+>> +	device_node: device-class@6789abc {
+>> +		compatible = "vendor,device";
+>> +		reg = <0x0 0x06789abc 0x0 0xa123>;
+>> +		ranges = <0x0 0x0 0x06789abc 0x1000>;
+>> +		#dma-cells = <1>;
+>> +		clocks = <&clock_controller 0>, <&clock_controller 1>;
+>> +		clock-names = "bus", "host";
+>> +		vendor,custom-property = <2>;
+>> +		status = "disabled";
+>> +
+>> +		child_node: child-class@100 {
+>> +			reg = <0x100 0x200>;
+>> +			/* ... */
+>> +		};
+>> +	};
+>> +
+>> +	/* Board DTS */
+>> +
+>> +	&device_node {
+>> +		vdd-supply = <&board_vreg1>;
+>> +		status = "okay";
+>> +	}
+>> +
+>> +Indentation
+>> +-----------
+>> +
+>> +1. Use indentation according to :ref:`codingstyle`.
+>> +2. For arrays spanning across lines, it is preferred to align the 
+>> continued
+>> +   entries with opening < from the first line.
+>> +3. Each entry in arrays with multiple cells (e.g. "reg" with two IO 
+>> addresses)
+>> +   shall be enclosed in <>.
 > 
-> 	reg_sdhc1_vmmc: regulator-sdhci1 {
-> 		compatible = "regulator-fixed";
-> 		pinctrl-names = "default";
-> 		pinctrl-0 = <&pinctrl_sd1_pwr_en>;
-> 		enable-active-high;
-> 		gpio = <&main_gpio0 29 GPIO_ACTIVE_HIGH>;
-> 		off-on-delay-us = <100000>;
-> 		regulator-max-microvolt = <3300000>;
-> 		regulator-min-microvolt = <3300000>;
-> 		regulator-name = "+V3.3_SD";
-> 		startup-delay-us = <2000>;
-> 	};
+> The "(e.g. ...)" form should be replaced with ", e.g. ...,".
+
+ack
+
 > 
-> I guess the point that is not obvious to me here is where do we want
-> pinctrl. I like it at position between 3 and 4, the rationale is that is
-> a very frequent property and this way it will be in a similar place for
-> every node.
+>> +
+>> +Example::
+>> +
+>> +	thermal-sensor@c271000 {
+>> +		compatible = "qcom,sm8550-tsens", "qcom,tsens-v2";
+>> +		reg = <0x0 0x0c271000 0x0 0x1000>,
+>> +		      <0x0 0x0c222000 0x0 0x1000>;
+>> +	};
+>> +
+>> +Organizing DTSI and DTS
+>> +-----------------------
+>> +
+>> +The DTSI and DTS files shall be organized in a way representing the 
+>> common
+>> +(and re-usable) parts of the hardware.  Typically this means 
+>> organizing DTSI
+> 
+> The "(and re-usable)" form should be replaced with ", reusable".  "The 
+> hardware" should be replaced with "hardware".  A comma should be added 
+> after "Typically".
 
+ack
 
-Order here is correct but all of them are generic properties, thus this
-coding style does not define ordering within.
+> 
+>> +and DTS files into several files:
+>> +
+>> +1. DTSI with contents of the entire SoC (without nodes for hardware 
+>> not present
+>> +   on the SoC).
+>> +2. If applicable: DTSI with common or re-usable parts of the hardware 
+>> (e.g.
+>> +   entire System-on-Module).
+>> +3. DTS representing the board.
+> 
+> The "(...)" forms should be replaced with ", ...".  Periods at the ends 
+> of list items should be deleted, because those aren't real, complete 
+> sentences.
+
+ack
+
+> 
+>> +
+>> +Hardware components which are present on the board shall be placed in 
+>> the
+> 
+> "Which" should be replaced with "that".
+
+ack
+
+> 
+>> +board DTS, not in the SoC or SoM DTSI.  A partial exception is a 
+>> common
+>> +external reference SoC-input clock, which could be coded as a 
+>> fixed-clock in
+> 
+> "SoC-input" should be replaced with "SoC input".
+
+ack, thanks!
 
 Best regards,
 Krzysztof
