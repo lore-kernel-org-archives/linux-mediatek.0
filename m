@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90A5FC4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 11:33:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28312C07E97
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 11:37:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FMAtC5RlO7Jbgcz7ACyP3z2tGyaNf1QQubxTNs/VVCs=; b=Jas4GgHRl0QJNvnVjMjJY6N5IN
-	WjDMFK6Tyg9froCXW2UcMAhbHQ+05yE5povXgM4+94vSZK6KcZLuDYADKm/NmN6XH/I0DGR9resqh
-	jCLbzxO2X+rx0W54LIEWTD2OkncGGO2ycoPbJ94K7QBsHaeNNhCpC6zY/L+kKkH+sfikwDaMbBsDQ
-	bYVbuxDKlOijXlVlLpEgsT313Z2Wd+G8gQJtmZ72JBv+WBY4Dcd+Hf0aus1eoYQwjEEgjwEj5oFPK
-	rKAjTdOdtxv6v6A1vgTVkM5noYNERWiHyLXyFn7kA45V5U8jrtiSm7/BRb2veFgruBVm3Pr/Ddxpp
-	LeEzVCLQ==;
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zFMkyI45VT7UXczSOfK7lHaQtQAsm/dZT4KJu3kbR6M=; b=Q9xdcesWAqM3OPTHBcKZACTfks
+	qKfzNA8A9fvyyLO9xTOwHTeoqquOVtkzm3aO9JJNOcGvAA+I0V322QjqlK3AB1JVLAZL2KwXqFTqM
+	G+5zAtVcWLBhIl2NED/rnxK561P798UhGXIIoee4aQUuYozKs9yM6I362cUiTCAIU8y0iwA2u92ve
+	BoBENoHRLITihOjjxyNLT5TrI8elSQ3mS/6Zl4sen0fDDEI8UHK+nALTNzkfV99UW1Tw/thXIcXTP
+	g0Fcb+ePbdM04XXasOyy5LXwe/sifOMNt9iYKJPGKsjTLwwiJTmwPOO3U4K5i6YulQ8LrLMNfK/H1
+	LXDt72Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Ioi-0088Od-1j;
-	Wed, 29 Nov 2023 11:33:20 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r8Ist-0089OC-0C;
+	Wed, 29 Nov 2023 11:37:39 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Iof-0088MM-0p;
-	Wed, 29 Nov 2023 11:33:18 +0000
-Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E0A006601F02;
-	Wed, 29 Nov 2023 11:33:10 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701257591;
-	bh=x16Rnq7CZEpFbM9s04wUl+znCtY6zt8f98/hPwnLU3c=;
-	h=From:To:Cc:Subject:Date:From;
-	b=NWrmaJ+GCcglxq208tXL5bSQmTfPx7i69hCbPXnCUxeWxkjyUeJC0uO/ZZ49Oig5q
-	 D1vd0wXcKPpaG8YHmzygzS8viumQuoOrtLZ4HlGhj26Ng4Bjtzt5A4ntoeAsxblAt6
-	 Xw/z1zN5Gh98+BaWWdPt6vF+esqBVJSw0vZVx2QXrBg86+oFsdfHtP7iGog8zbtT6x
-	 HV63cXFbi8Pu58QlB9wIvpHYHXZZPf8i2S4Uf+fdWCm9zI8nSSx+IzPa7/fsy07Qh3
-	 yfJ7ZCHeukygDPOEOD/k0+KOurbGnlyT4I8QGBSCnHUemBpwN0tLRjNt/3IOMyFKnG
-	 Mqjzf0Nhp/m2A==
-From: Eugen Hristev <eugen.hristev@collabora.com>
-To: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pm@vger.kernel.org
-Cc: eballetbo@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	ulf.hansson@linaro.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Eugen Hristev <eugen.hristev@collabora.com>
-Subject: [PATCH] pmdomain: mediatek: fix race condition in power on/power off sequences
-Date: Wed, 29 Nov 2023 13:31:20 +0200
-Message-Id: <20231129113120.4907-1-eugen.hristev@collabora.com>
-X-Mailer: git-send-email 2.34.1
+	id 1r8Iso-0089Mz-1m;
+	Wed, 29 Nov 2023 11:37:37 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1701257848;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zFMkyI45VT7UXczSOfK7lHaQtQAsm/dZT4KJu3kbR6M=;
+	b=YUTwYCygZsU6Xp6EA/BNba80tC0tNo4Lj5ACDCNmLzJogjTYp7Lee8wOoW6F3wmz8j1e4B
+	gT9p9h9p6IL5YpXbFPyDy7tW1GV4ySnd9idxr+Yl07Az/bD3Bww+PyC5u01Rglv6Z4h86b
+	Jx7it0g9Ar9kd/DHDNiyE8BTFXzRFwL65dzkfiW1wzMnxIzoPAvsIHmeyrl86t2UxsKmZq
+	wBTDB+AMPpuHw3zcwlPDg+I+5bFDJc01y0Bpn+L2WpdxEKUcz7dMrNIWvzMbVPnOAHJ2/h
+	vq7XGBYrnKNgVWA315hLJ8qlYrXmCUQzi+0uMWP9aeQwh15V7XVeiUxo0j5fTw==
+Date: Wed, 29 Nov 2023 12:37:26 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, Andrew Lunn
+ <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson
+ <andersson@kernel.org>, Chen-Yu Tsai <wens@kernel.org>, Dmitry Baryshkov
+ <dmitry.baryshkov@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>, Konrad
+ Dybcio <konrad.dybcio@linaro.org>, Michal Simek <michal.simek@amd.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>, Olof
+ Johansson <olof@lixom.net>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
+ <zajec5@gmail.com>, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, workflows@vger.kernel.org,
+ linux-doc@vger.kernel.org
+Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+In-Reply-To: <0bcc0679-b883-4435-8843-cc830122c0e1@linaro.org>
+References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+ <63ec18b2758a9e385f446fb00b60ee69@manjaro.org>
+ <0bcc0679-b883-4435-8843-cc830122c0e1@linaro.org>
+Message-ID: <83b413441a953e8f2bc56adf09511a80@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_033317_562346_8910B56B 
-X-CRM114-Status: GOOD (  18.63  )
+X-CRM114-CacheID: sfid-20231129_033735_206358_53BCEF82 
+X-CRM114-Status: GOOD (  25.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,137 +88,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It can happen that during the power off sequence for a power domain
-another power on sequence is started, and it can lead to powering on and
-off in the same time for the similar power domain.
-This can happen if parallel probing occurs: one device starts probing, and
-one power domain is probe deferred, this leads to all power domains being
-rolled back and powered off, while in the same time another device starts
-probing and requests powering on the same power domains or similar.
+On 2023-11-29 11:43, Krzysztof Kozlowski wrote:
+> On 28/11/2023 21:00, Dragan Simic wrote:
+>> 
+>> I went through the language of the entire patch, after the notice that
+>> the v4 would no longer accept language improvements.  My wording- and
+>> grammar-related suggestions are available inline below.
+> 
+> Thanks. I want to finish this at some point and it might not happen if
+> grammar fixes will be coming every patch revision. Then after we finish
+> review, new feedback will appear about using British or American
+> spelling (which reminds me old quote/email about which variant of
+> English is most popular in Linux kernel: the incorrect one).
 
-This was encountered on MT8186, when the sequence is :
-Power on SSUSB
-Power on SSUSB_P1
-Power on DIS
-	-> probe deferred
-Power off DIS
-Power off SSUSB_P1
-Power off SSUSB
+Ah, that's a good one. :)  Basically, both English variants should be 
+fine, but a single document should obviously use only one variant.
 
-During the sequence of powering off SSUSB, some new similar sequence starts,
-and during the power on of SSUSB, clocks are enabled.
-In this case, powering off SSUSB fails from the first sequence, because
-power off ACK bit check times out (as clocks are powered back on by the second
-sequence). In consequence, powering it on also times out, and it leads to
-the whole power domain in a bad state.
+>>> +=====================================
+>>> +Devicetree Sources (DTS) Coding Style
+>>> +=====================================
+>>> +
+>>> +When writing Devicetree Sources (DTS) please observe below 
+>>> guidelines.
+>>>  They
+>> 
+>> The sentence above should be replaced with: "The following guidelines
+>> are to be followed when writing Devicetree Source (DTS) files."
+> 
+> Are you sure? It's passive and I was taught it is discouraged for
+> writing. See for example:
+> https://www.hamilton.edu/academics/centers/writing/seven-sins-of-writing/1
 
-To solve this issue, added a mutex that locks the whole power off/power on
-sequence such that it would never happen that multiple sequences try to
-enable or disable the same power domain in parallel.
+Hmm, you're right, passive voice is usually not the best choice.  Here's 
+my take two for the suggested replacement sentence, which is actually a 
+simplified version:
 
-Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
-Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
----
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 24 +++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
+"This document contains the guidelines for writing Devicetree Source 
+(DTS) files."
 
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index d5f0ee05c794..4f136b47e539 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -9,6 +9,7 @@
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_clk.h>
- #include <linux/platform_device.h>
-@@ -56,6 +57,7 @@ struct scpsys {
- 	struct device *dev;
- 	struct regmap *base;
- 	const struct scpsys_soc_data *soc_data;
-+	struct mutex mutex;
- 	struct genpd_onecell_data pd_data;
- 	struct generic_pm_domain *domains[];
- };
-@@ -238,9 +240,13 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	bool tmp;
- 	int ret;
- 
-+	mutex_lock(&scpsys->mutex);
-+
- 	ret = scpsys_regulator_enable(pd->supply);
--	if (ret)
-+	if (ret) {
-+		mutex_unlock(&scpsys->mutex);
- 		return ret;
-+	}
- 
- 	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
- 	if (ret)
-@@ -291,6 +297,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 			goto err_enable_bus_protect;
- 	}
- 
-+	mutex_unlock(&scpsys->mutex);
- 	return 0;
- 
- err_enable_bus_protect:
-@@ -305,6 +312,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
- err_reg:
- 	scpsys_regulator_disable(pd->supply);
-+	mutex_unlock(&scpsys->mutex);
- 	return ret;
- }
- 
-@@ -315,13 +323,15 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	bool tmp;
- 	int ret;
- 
-+	mutex_lock(&scpsys->mutex);
-+
- 	ret = scpsys_bus_protect_enable(pd);
- 	if (ret < 0)
--		return ret;
-+		goto err_mutex_unlock;
- 
- 	ret = scpsys_sram_disable(pd);
- 	if (ret < 0)
--		return ret;
-+		goto err_mutex_unlock;
- 
- 	if (pd->data->ext_buck_iso_offs && MTK_SCPD_CAPS(pd, MTK_SCPD_EXT_BUCK_ISO))
- 		regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
-@@ -340,13 +350,15 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, MTK_POLL_DELAY_US,
- 				 MTK_POLL_TIMEOUT);
- 	if (ret < 0)
--		return ret;
-+		goto err_mutex_unlock;
- 
- 	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
- 
- 	scpsys_regulator_disable(pd->supply);
- 
--	return 0;
-+err_mutex_unlock:
-+	mutex_unlock(&scpsys->mutex);
-+	return ret;
- }
- 
- static struct
-@@ -700,6 +712,8 @@ static int scpsys_probe(struct platform_device *pdev)
- 		return PTR_ERR(scpsys->base);
- 	}
- 
-+	mutex_init(&scpsys->mutex);
-+
- 	ret = -ENODEV;
- 	for_each_available_child_of_node(np, node) {
- 		struct generic_pm_domain *domain;
--- 
-2.34.1
+>>> +should be considered complementary to any rules expressed already in
+>>> Devicetree
+>>> +Specification and dtc compiler (including W=1 and W=2 builds).
+>> 
+>> A definite article ("the") should be added before "Devicetree
+> 
+> ack
+> 
+>> Specification" and "dtc".  Also, "Specification" in "Devicetree
+>> Specification" should be capitalized.
+> 
+> It was.
 
+Oh, sorry, I see now.  IIRC, it wasn't capitalized in some places, so I 
+made a mistake here.
+
+>>> +
+>>> +Individual architectures and sub-architectures can add additional
+>>> rules, making
+>>> +the style stricter.
+>> 
+>> "Sub-architectures" should be replaced with "subarchitectures".  "Can
+> 
+> A hint, you can write such review feedback as:
+> s/sub-architectures/subarchitectures/
+
+Sure, but I specifically wanted to be less terse, as a way to be 
+respectful.
+
+> BTW, my language spelling points "subarchitectures" as mistake, but
+> sure, ack.
+
+Using hyphens or not is almost always debatable, but modern English in 
+general leans toward not using them.
+
+>>> +3. Unit addresses shall use lowercase hex, without leading zeros
+>>> (padding).
+>> 
+>> "Lowercase hex" should be replaced with "lowercase hexadecimal 
+>> digits".
+>> 
+>>> +
+>>> +4. Hex values in properties, e.g. "reg", shall use lowercase hex.  
+>>> The
+>>> address
+>>> +   part can be padded with leading zeros.
+>> 
+>> "Hex values" should be replaced with "Hexadecimal values".  "Lowercase
+>> hex" should be replaced with "lowercase hexadecimal digits".
+> 
+> ack, but that's quite picky. We are (software) engineers so we are
+> supposed to know the slang.
+
+Sure, but this document is of a bit formal nature, so using slightly 
+more formal language can only be helpful.
+
+>>> +2. Nodes without unit addresses shall be ordered alpha-numerically 
+>>> by
+>>> the node
+>>> +   name.  For a few types of nodes, they can be ordered by the main
+>>> property
+>>> +   (e.g. pin configuration states ordered by value of "pins"
+>>> property).
+>> 
+>> "Alpha-numerically" should be replaced with "alphabetically".
+> 
+> Are you sure? Does alphabetical order include numbers?
+
+That's a good question, which also crossed my mind while writing the 
+suggestions down.  A more correct word would be "lexicographically", 
+with something like ", with the already defined valid characters making 
+the symbol set and the ACSII character set defining the ordering, " 
+serving as an additional explanation.
+
+This would be a rather formal, but also very precise definition of the 
+applied ordering.
+
+>>> +3. When extending nodes in the board DTS via &label, the entries 
+>>> shall
+>>> be
+>>> +   ordered either alpha-numerically or by keeping the order from 
+>>> DTSI
+>>> (choice
+>>> +   depending on sub-architecture).
+>> 
+>> "Alpha-numerically" should be replaced with "alphabetically".
+> 
+> Similar concern
+
+I agree.  We could use "lexicographically" instead, with the precise 
+definition already established earlier in the document.
+
+>>> +board DTS, not in the SoC or SoM DTSI.  A partial exception is a
+>>> common
+>>> +external reference SoC-input clock, which could be coded as a
+>>> fixed-clock in
+>> 
+>> "SoC-input" should be replaced with "SoC input".
+> 
+> ack, thanks!
+
+Thank you once again for working on this document!
 
