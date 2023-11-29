@@ -4,68 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72BBCC10DAA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 13:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073BCC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 14:23:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6zoTRQ8nbiFhDWtNOD+e1j9gA3n9juVPfFS/4ttl4SA=; b=aKI1kLxFDbUp/WSo2X2VOgLXt+
-	aHoJpH/Qzfj6GGx4aZS7gaMJgA+aKMgbAp2grzzRFd0BNS2ge3gjKJGXio1sA+MyNHJnpIPDmhmqu
-	05vR04V2FfOoFAkjRtFuHlWpNumUeS0oj3nmA0bZHA4XjIB1K8BxDz9l1RKvStFImOAvDMRyqb5+i
-	VbGSNM90Z+3w8gPmX/VNABJRb+/X5Lbgr8iAPpmMNdg7c/lWFAxUtJC3ka926Dwm6qKtaWuVBUcC1
-	Is86ai9wS7cWw/mBNN14Ua6IcqlweN9ZdCmffYAPob4fH20YjdyKE4owTR1IdNrVJtsYRkasgErjp
-	k7mTs7gQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SVp6pkMGTcWDJYA6WG0Zd2pBi09UmOcSQNSboQ77doI=; b=wB3wA5yLXKVmFtLjHPdWmdpWbn
+	k71FAZc/Ig/g5nkZ9lTl+/KDNLUKRx6K737ygVlgPb7/IKG98YPZbNN+d5l4JfwrO4HrjFsrnPMwg
+	x2bfl7tsNn8XrkgOoH/FhdVqHAlKLJTLIeGjtV24QFH+d144eLTxdLxGI34f4r3AbteiJ0iVVMUrQ
+	3CVOvi6FyPlcfGpGOOun4qFZ4RMbbx3J82ihUOKr+Mul3KQ+c5Jd/9eOzv5xkS6+Jm5ZmgtSw2dtg
+	ZTYCqNMmzL4U34kGpwcAdCA9OvpcT2TBu+TSIOTOMt5vwp0c9YEcowDmFjb7TPvJC/NPIWnBMjbxf
+	pFRBiaCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Kw6-008WEP-1U;
-	Wed, 29 Nov 2023 13:49:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r8LTR-008bwg-2K;
+	Wed, 29 Nov 2023 14:23:33 +0000
+Received: from mgamail.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Kw1-008WDL-2i;
-	Wed, 29 Nov 2023 13:49:03 +0000
-Received: from [100.94.55.57] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C7C7E66022D0;
-	Wed, 29 Nov 2023 13:48:59 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701265740;
-	bh=AEFqTHESreWvFes3Oi8QGFPQK85/cEPFr4HnYjAQlX0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cUuv2QQ7a2t3pcM4o2QQlDbKfrWfCwYm7nUR6jz3cF88uylnnw8GbUA/OSwuIzv7P
-	 Q/WqL5irFEtjcocTjOmltbeEGj3YJH5HNc7hzR7qEij38r0FLKRl0ofX1VZKenwiQA
-	 fQy1uK0OcrVH+mbbRAyW7LSt6pMdUlDwjalGdQ1DQi8WFSUHGlkfL36Eb/6nJgAGgq
-	 Q0AxsCZxWHFscegDIkGcKl5GkZnnxO5ZbmIraRv7GUozx3ZSRGfhTmga32toYK9n/7
-	 s+4oM3ehp67VmO0FvahgClob6HxbLh4x6nlUlsBwBQzr8Sp0Drtx/TeV15P1YGVZ8d
-	 QBr/9+2HzAMyg==
-Message-ID: <7b759141-ff2d-4cac-803e-120f31d2d556@collabora.com>
-Date: Wed, 29 Nov 2023 15:48:57 +0200
+	id 1r8LTO-008bvm-0W;
+	Wed, 29 Nov 2023 14:23:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1701267810; x=1732803810;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=i+nKxtVOoA7/2O3dUI5Zs5QSN68782gToG5E1Dn3b/0=;
+  b=NKlgBG7NNbbMi8E1a/sRRnUKC/tebus2Fw3U0r6atMM95B151GKHMHeY
+   HxTRf4Utk9WRx4wHjltBoesvNBAfrqnUjb7P9oYqzetSTtDAU9hqBHnCk
+   6qjicNBL9sxNYEsoqfTSgvjzeHNplPkhhn8lA6Xc6wSmP5RSy+0ufAAVW
+   aWg8yJsVjg+Td9YFXmKRpAB0/e39ikedktkTMhiHZLE/gsVrNvt7GcOYi
+   L7lZU2nXyTVQGAs2Dt1M6EPxt7D5GtUzOYJNGgfwUhKqR8m7maqghR3bW
+   dpnnBKmV121W8b8J1qjjyqg2YQKceYYn4JvMX0cKeq7oLaoLslNBbYP6y
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10909"; a="424313719"
+X-IronPort-AV: E=Sophos;i="6.04,235,1695711600"; 
+   d="scan'208";a="424313719"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Nov 2023 06:23:25 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10909"; a="1100543308"
+X-IronPort-AV: E=Sophos;i="6.04,235,1695711600"; 
+   d="scan'208";a="1100543308"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmsmga005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Nov 2023 06:23:17 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.97)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1r8LT7-00000000SaA-0d82;
+	Wed, 29 Nov 2023 16:23:13 +0200
+Date: Wed, 29 Nov 2023 16:23:12 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+	Jianlong Huang <jianlong.huang@starfivetech.com>,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org, linux-mips@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Hal Feng <hal.feng@starfivetech.com>
+Subject: Re: [PATCH v3 06/22] pinctrl: core: Make pins const in struct
+ group_desc
+Message-ID: <ZWdJUBNMYj9qvCf2@smile.fi.intel.com>
+References: <20231128200155.438722-1-andriy.shevchenko@linux.intel.com>
+ <20231128200155.438722-7-andriy.shevchenko@linux.intel.com>
+ <CAMuHMdWt0qq-Umd8udb7fxpNVZ=X9O9eZGMVGFSGRO_d9UkgNw@mail.gmail.com>
+ <ZWc_o4Dcsb0v5TGB@smile.fi.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pmdomain: mediatek: fix race condition in power on/power
- off sequences
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org
-Cc: eballetbo@kernel.org, ulf.hansson@linaro.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20231129113120.4907-1-eugen.hristev@collabora.com>
- <fd645c33-1b16-4825-b9ea-eecb578dd2a0@collabora.com>
- <bf7ac271-1bda-4114-b080-4b20f857dbc2@collabora.com>
- <80cbe288-2960-4937-be47-56610946695d@collabora.com>
-From: Eugen Hristev <eugen.hristev@collabora.com>
-In-Reply-To: <80cbe288-2960-4937-be47-56610946695d@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZWc_o4Dcsb0v5TGB@smile.fi.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_054902_148039_ABCA0B6E 
-X-CRM114-Status: GOOD (  30.76  )
+X-CRM114-CacheID: sfid-20231129_062330_264787_0F7688DB 
+X-CRM114-Status: GOOD (  21.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,241 +116,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/29/23 15:37, AngeloGioacchino Del Regno wrote:
-> Il 29/11/23 14:28, Eugen Hristev ha scritto:
->> On 11/29/23 14:52, AngeloGioacchino Del Regno wrote:
->>> Il 29/11/23 12:31, Eugen Hristev ha scritto:
->>>> It can happen that during the power off sequence for a power domain
->>>> another power on sequence is started, and it can lead to powering on 
->>>> and
->>>> off in the same time for the similar power domain.
->>>> This can happen if parallel probing occurs: one device starts 
->>>> probing, and
->>>> one power domain is probe deferred, this leads to all power domains 
->>>> being
->>>> rolled back and powered off, while in the same time another device 
->>>> starts
->>>> probing and requests powering on the same power domains or similar.
->>>>
->>>> This was encountered on MT8186, when the sequence is :
->>>> Power on SSUSB
->>>> Power on SSUSB_P1
->>>> Power on DIS
->>>>     -> probe deferred
->>>> Power off DIS
->>>> Power off SSUSB_P1
->>>> Power off SSUSB
->>>>
->>>> During the sequence of powering off SSUSB, some new similar sequence 
->>>> starts,
->>>> and during the power on of SSUSB, clocks are enabled.
->>>> In this case, powering off SSUSB fails from the first sequence, because
->>>> power off ACK bit check times out (as clocks are powered back on by 
->>>> the second
->>>> sequence). In consequence, powering it on also times out, and it 
->>>> leads to
->>>> the whole power domain in a bad state.
->>>>
->>>> To solve this issue, added a mutex that locks the whole power 
->>>> off/power on
->>>> sequence such that it would never happen that multiple sequences try to
->>>> enable or disable the same power domain in parallel.
->>>>
->>>> Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power 
->>>> domains")
->>>> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
->>>
->>> I don't think that it's a race between genpd_power_on() and 
->>> genpd_power_off() calls
->>> at all, because genpd *does* have locking after all... at least for 
->>> probe and for
->>> parents of a power domain (and more anyway).
->>>
->>> As far as I remember, what happens when you start .probe()'ing a 
->>> device is:
->>> platform_probe() -> dev_pm_domain_attach() -> genpd_dev_pm_attach()
->>>
->>> There, you end up with
->>>
->>>      if (power_on) {
->>>          genpd_lock(pd);
->>>          ret = genpd_power_on(pd, 0);
->>>          genpd_unlock(pd);
->>>      }
->>>
->>> ...but when you fail probing, you go with genpd_dev_pm_detach(), 
->>> which then calls
->>>
->>>      /* Check if PM domain can be powered off after removing this 
->>> device. */
->>>      genpd_queue_power_off_work(pd);
->>>
->>> but even then, you end up being in a worker doing
->>>
->>>      genpd_lock(genpd);
->>>      genpd_power_off(genpd, false, 0);
->>>      genpd_unlock(genpd);
->>>
->>> ...so I don't understand why this mutex can resolve the situation 
->>> here (also: are
->>> you really sure that the race is solved like that?)
->>>
->>> I'd say that this probably needs more justification and a trace of 
->>> the actual
->>> situation here.
->>>
->>> Besides, if this really resolves the issue, I would prefer seeing 
->>> variants of
->>> scpsys_power_{on,off}() functions, because we anyway don't need to 
->>> lock mutexes
->>> during this driver's probe (add_subdomain calls scpsys_power_on()).
->>> In that case, `scpsys_power_on_unlocked()` would be an idea... but 
->>> still, please
->>> analyze why your solution works, if it does, because I'm not convinced.
->>
->> What I see in my tests, is that a power on call for SSUSB domain 
->> happens while the previous power off sequence did not yet complete, 
->> most likely while it's waiting in readx_poll_timeout . This leads to 
->> inconsistency of the power domain, not getting the ACKs next time a 
->> power on attempt occurs.
->>
->> I understand what you say about locks, but in this case the powering 
->> off is not called by the genpd itself, but rather it's called by the 
->> rollback probe failed mechanism : when the probing fails, 
->> scpsys_domain_cleanup() is called during the same probing session.
->> Then it happens that probing begins again and previous cleanup is not 
->> yet completed. I am not sure whether the lock is still held from the 
->> previous run, but it's clearly not waiting for a lock to be released 
->> to be called again.
->>
+On Wed, Nov 29, 2023 at 03:41:55PM +0200, Andy Shevchenko wrote:
+> On Wed, Nov 29, 2023 at 12:21:45PM +0100, Geert Uytterhoeven wrote:
+> > On Tue, Nov 28, 2023 at 9:04 PM Andy Shevchenko
+> > <andriy.shevchenko@linux.intel.com> wrote:
+> > > It's unclear why it's not a const from day 1. Make the pins member
+> > > const in struct group_desc. Update necessary APIs.
+
+...
+
+> > >  int pinctrl_generic_add_group(struct pinctrl_dev *pctldev, const char *name,
+> > > -                             int *gpins, int ngpins, void *data);
+> > > +                             const int *pins, int num_pins, void *data);
+> > >
+> > >  int pinctrl_generic_remove_group(struct pinctrl_dev *pctldev,
+> > >                                  unsigned int group_selector);
+> > 
+> > Probably this is also the right moment to change all of these to arrays
+> > of unsigned ints?  Else you will have mixed int/unsigned int after
+> > "[PATCH v3 13/22] pinctrl: core: Embed struct pingroup into struct
+> > group_desc", and purely unsigned int after "[PATCH v3 22/22] pinctrl:
+> > core: Remove unused members from struct group_desc".
 > 
-> Sorry but I'm a bit lost now: is the problem about probe deferrals of 
-> the USB
-> driver, or about probe deferrals of the mtk-pm-domains driver?
+> Hmm... Can it be done later?
 > 
-> scpsys_domain_cleanup() is only called upon scpsys_probe() failure.
-
-You are right, my explanation was bad.
-
-It happens during the mtk-pm-domains driver probe.
-
-Not all domains can power up, then everything is rolled back. and this 
-happens multiple times
-On rare occasions, it happens that another probing sequence starts while 
-the previous one was not finished .
-I mentioned devices because I had in mind the fact that each device 
-requires a power domain, and parallel probing of these devices causes a 
-call to mtk-pm-domains driver probe to be called from two different places.
-
-e.g. device 1 probes -> call mtk-pm-domains probe because it requires X 
-power domain
-
-device 2 probes -> call mtk-pm-domains probe because it requires Y power 
-domain.
-
-First attempt fails but not completed while second attempt starts.
-
-Maybe this is a better explanation of the situation ?
+> I can, of course try to change the parameter here to be unsigned, but it most
+> likely fail the build for those drivers means need more patches, more delay to
+> this series.
 > 
->>>
->>>> ---
->>>>   drivers/pmdomain/mediatek/mtk-pm-domains.c | 24 
->>>> +++++++++++++++++-----
->>>>   1 file changed, 19 insertions(+), 5 deletions(-)
->>>>
->>>> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c 
->>>> b/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>> index d5f0ee05c794..4f136b47e539 100644
->>>> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>> @@ -9,6 +9,7 @@
->>>>   #include <linux/io.h>
->>>>   #include <linux/iopoll.h>
->>>>   #include <linux/mfd/syscon.h>
->>>> +#include <linux/mutex.h>
->>>>   #include <linux/of.h>
->>>>   #include <linux/of_clk.h>
->>>>   #include <linux/platform_device.h>
->>>> @@ -56,6 +57,7 @@ struct scpsys {
->>>>       struct device *dev;
->>>>       struct regmap *base;
->>>>       const struct scpsys_soc_data *soc_data;
->>>> +    struct mutex mutex;
->>>>       struct genpd_onecell_data pd_data;
->>>>       struct generic_pm_domain *domains[];
->>>>   };
->>>> @@ -238,9 +240,13 @@ static int scpsys_power_on(struct 
->>>> generic_pm_domain *genpd)
->>>>       bool tmp;
->>>>       int ret;
->>>> +    mutex_lock(&scpsys->mutex);
->>>> +
->>>>       ret = scpsys_regulator_enable(pd->supply);
->>>> -    if (ret)
->>>> +    if (ret) {
->>>> +        mutex_unlock(&scpsys->mutex);
->>>>           return ret;
->>>> +    }
->>>>       ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
->>>>       if (ret)
->>>> @@ -291,6 +297,7 @@ static int scpsys_power_on(struct 
->>>> generic_pm_domain *genpd)
->>>>               goto err_enable_bus_protect;
->>>>       }
->>>> +    mutex_unlock(&scpsys->mutex);
->>>>       return 0;
->>>>   err_enable_bus_protect:
->>>> @@ -305,6 +312,7 @@ static int scpsys_power_on(struct 
->>>> generic_pm_domain *genpd)
->>>>       clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
->>>>   err_reg:
->>>>       scpsys_regulator_disable(pd->supply);
->>>> +    mutex_unlock(&scpsys->mutex);
->>>>       return ret;
->>>>   }
->>>> @@ -315,13 +323,15 @@ static int scpsys_power_off(struct 
->>>> generic_pm_domain *genpd)
->>>>       bool tmp;
->>>>       int ret;
->>>> +    mutex_lock(&scpsys->mutex);
->>>> +
->>>>       ret = scpsys_bus_protect_enable(pd);
->>>>       if (ret < 0)
->>>> -        return ret;
->>>> +        goto err_mutex_unlock;
->>>>       ret = scpsys_sram_disable(pd);
->>>>       if (ret < 0)
->>>> -        return ret;
->>>> +        goto err_mutex_unlock;
->>>>       if (pd->data->ext_buck_iso_offs && MTK_SCPD_CAPS(pd, 
->>>> MTK_SCPD_EXT_BUCK_ISO))
->>>>           regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
->>>> @@ -340,13 +350,15 @@ static int scpsys_power_off(struct 
->>>> generic_pm_domain *genpd)
->>>>       ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, 
->>>> MTK_POLL_DELAY_US,
->>>>                    MTK_POLL_TIMEOUT);
->>>>       if (ret < 0)
->>>> -        return ret;
->>>> +        goto err_mutex_unlock;
->>>>       clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
->>>>       scpsys_regulator_disable(pd->supply);
->>>> -    return 0;
->>>> +err_mutex_unlock:
->>>> +    mutex_unlock(&scpsys->mutex);
->>>> +    return ret;
->>>>   }
->>>>   static struct
->>>> @@ -700,6 +712,8 @@ static int scpsys_probe(struct platform_device 
->>>> *pdev)
->>>>           return PTR_ERR(scpsys->base);
->>>>       }
->>>> +    mutex_init(&scpsys->mutex);
->>>> +
->>>>       ret = -ENODEV;
->>>>       for_each_available_child_of_node(np, node) {
->>>>           struct generic_pm_domain *domain;
->>>
-> 
+> Linus?
+
+On the first glance updating API here does not fail the build.
+Lemme incorporate this into v4.
+
+Meanwhile the drivers I left untouched, it might be separate changes
+to convert from int to const unsigned int.
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
