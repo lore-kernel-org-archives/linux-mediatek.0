@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28312C07E97
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 11:37:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A12CEC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 11:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zFMkyI45VT7UXczSOfK7lHaQtQAsm/dZT4KJu3kbR6M=; b=Q9xdcesWAqM3OPTHBcKZACTfks
-	qKfzNA8A9fvyyLO9xTOwHTeoqquOVtkzm3aO9JJNOcGvAA+I0V322QjqlK3AB1JVLAZL2KwXqFTqM
-	G+5zAtVcWLBhIl2NED/rnxK561P798UhGXIIoee4aQUuYozKs9yM6I362cUiTCAIU8y0iwA2u92ve
-	BoBENoHRLITihOjjxyNLT5TrI8elSQ3mS/6Zl4sen0fDDEI8UHK+nALTNzkfV99UW1Tw/thXIcXTP
-	g0Fcb+ePbdM04XXasOyy5LXwe/sifOMNt9iYKJPGKsjTLwwiJTmwPOO3U4K5i6YulQ8LrLMNfK/H1
-	LXDt72Hw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tr1BGfvOdCFJAiclb6uFKnVAgjiCUpeqYneiTpw8bsE=; b=MvVQFnZeSko0XVPHejaMAfb0i1
+	1lBA/v98AszZR77GwWUGf7gl5BNFWt1tG+3w7GdxxzrbZmwkx8xqPlLpHNxR4KdKA7oyMR0t+xDGy
+	0Yris5aiTJ726mZye/uyl9Gb+Qpqr+U3fXXLxBQKewxWOnvxEPf932nYmoNVK4kUtM1xW+76zL309
+	UnRPeCwc1Z7C2VZPZfy3Cr4RsK901/3/AvVdBc3AJwiAUDzPLButbEHeWKa6KT1+FgCAcQtVJXsj4
+	gTTXcb/xcHvX5ImO/Yj6FudVc50kNj9Pp5aZu2yimDvjXphqmJW7FgOpEQ6hak5YF65ZlFH4XGAep
+	hgbVxbQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Ist-0089OC-0C;
-	Wed, 29 Nov 2023 11:37:39 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1r8Iv8-0089jX-1i;
+	Wed, 29 Nov 2023 11:39:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Iso-0089Mz-1m;
-	Wed, 29 Nov 2023 11:37:37 +0000
+	id 1r8Iv5-0089i5-0m;
+	Wed, 29 Nov 2023 11:39:56 +0000
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7AF7B6601F02;
+	Wed, 29 Nov 2023 11:39:50 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701257990;
+	bh=pH7RUt8IOckoGEbgFhlgxvz/PFthiMUJhJu0F2NKeDc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=LwBrUqrTal0pEiuZjGMjnfife8jV2A1ujAWw4c9i5/FoPZKvHIgdqZwUlM0TigTyi
+	 2BPTvpZMEowzUf41yz9vWTKBkcO5HwfrbrJJ5EmLd33RXtG7Gx3GbPp8ipL7nnVqco
+	 L8VUtzsi2mMSOwZ7hNMfsk97wcE/qPMG+FIGfGLF8yvdjlW91iqhXtDrM/aSLCVNO9
+	 1oVftWZyEczGVbDaWSoRrI6UGE2eWJ7NShcV2NPaMu6P1ZR309n2LJtmGT69ckC6af
+	 fsT0mKxIalFZpNHanWQuD4xxZMNp4dpxnFSwa5UY7/K0IE03CCCsm5uNMizR+oJtTf
+	 AoNW+VnVmtc/g==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: arm-soc <arm@kernel.org>,
+	soc <soc@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [GIT PULL] MediaTek ARM64 Device Tree fixes for v6.7
+Date: Wed, 29 Nov 2023 12:39:05 +0100
+Message-ID: <20231129113905.134732-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1701257848;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zFMkyI45VT7UXczSOfK7lHaQtQAsm/dZT4KJu3kbR6M=;
-	b=YUTwYCygZsU6Xp6EA/BNba80tC0tNo4Lj5ACDCNmLzJogjTYp7Lee8wOoW6F3wmz8j1e4B
-	gT9p9h9p6IL5YpXbFPyDy7tW1GV4ySnd9idxr+Yl07Az/bD3Bww+PyC5u01Rglv6Z4h86b
-	Jx7it0g9Ar9kd/DHDNiyE8BTFXzRFwL65dzkfiW1wzMnxIzoPAvsIHmeyrl86t2UxsKmZq
-	wBTDB+AMPpuHw3zcwlPDg+I+5bFDJc01y0Bpn+L2WpdxEKUcz7dMrNIWvzMbVPnOAHJ2/h
-	vq7XGBYrnKNgVWA315hLJ8qlYrXmCUQzi+0uMWP9aeQwh15V7XVeiUxo0j5fTw==
-Date: Wed, 29 Nov 2023 12:37:26 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, Andrew Lunn
- <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson
- <andersson@kernel.org>, Chen-Yu Tsai <wens@kernel.org>, Dmitry Baryshkov
- <dmitry.baryshkov@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>, Konrad
- Dybcio <konrad.dybcio@linaro.org>, Michal Simek <michal.simek@amd.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>, Olof
- Johansson <olof@lixom.net>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
- <zajec5@gmail.com>, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, workflows@vger.kernel.org,
- linux-doc@vger.kernel.org
-Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
-In-Reply-To: <0bcc0679-b883-4435-8843-cc830122c0e1@linaro.org>
-References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
- <63ec18b2758a9e385f446fb00b60ee69@manjaro.org>
- <0bcc0679-b883-4435-8843-cc830122c0e1@linaro.org>
-Message-ID: <83b413441a953e8f2bc56adf09511a80@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_033735_206358_53BCEF82 
-X-CRM114-Status: GOOD (  25.08  )
+X-CRM114-CacheID: sfid-20231129_033955_433321_922F9ACB 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,144 +72,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-11-29 11:43, Krzysztof Kozlowski wrote:
-> On 28/11/2023 21:00, Dragan Simic wrote:
->> 
->> I went through the language of the entire patch, after the notice that
->> the v4 would no longer accept language improvements.  My wording- and
->> grammar-related suggestions are available inline below.
-> 
-> Thanks. I want to finish this at some point and it might not happen if
-> grammar fixes will be coming every patch revision. Then after we finish
-> review, new feedback will appear about using British or American
-> spelling (which reminds me old quote/email about which variant of
-> English is most popular in Linux kernel: the incorrect one).
+The following changes since commit b85ea95d086471afb4ad062012a4d73cd328fa86:
 
-Ah, that's a good one. :)  Basically, both English variants should be 
-fine, but a single document should obviously use only one variant.
+  Linux 6.7-rc1 (2023-11-12 16:19:07 -0800)
 
->>> +=====================================
->>> +Devicetree Sources (DTS) Coding Style
->>> +=====================================
->>> +
->>> +When writing Devicetree Sources (DTS) please observe below 
->>> guidelines.
->>>  They
->> 
->> The sentence above should be replaced with: "The following guidelines
->> are to be followed when writing Devicetree Source (DTS) files."
-> 
-> Are you sure? It's passive and I was taught it is discouraged for
-> writing. See for example:
-> https://www.hamilton.edu/academics/centers/writing/seven-sins-of-writing/1
+are available in the Git repository at:
 
-Hmm, you're right, passive voice is usually not the best choice.  Here's 
-my take two for the suggested replacement sentence, which is actually a 
-simplified version:
+  git://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts64-fixes-for-6.7
 
-"This document contains the guidelines for writing Devicetree Source 
-(DTS) files."
+for you to fetch changes up to 5943b8f7449df9881b273db07bdde1e7120dccf0:
 
->>> +should be considered complementary to any rules expressed already in
->>> Devicetree
->>> +Specification and dtc compiler (including W=1 and W=2 builds).
->> 
->> A definite article ("the") should be added before "Devicetree
-> 
-> ack
-> 
->> Specification" and "dtc".  Also, "Specification" in "Devicetree
->> Specification" should be capitalized.
-> 
-> It was.
+  arm64: dts: mediatek: cherry: Fix interrupt cells for MT6360 on I2C7 (2023-11-29 10:37:53 +0100)
 
-Oh, sorry, I see now.  IIRC, it wasn't capitalized in some places, so I 
-made a mistake here.
+----------------------------------------------------------------
+MediaTek ARM64 DeviceTree fixes for v6.7
 
->>> +
->>> +Individual architectures and sub-architectures can add additional
->>> rules, making
->>> +the style stricter.
->> 
->> "Sub-architectures" should be replaced with "subarchitectures".  "Can
-> 
-> A hint, you can write such review feedback as:
-> s/sub-architectures/subarchitectures/
+Fixes for various MediaTek SoCs, including
 
-Sure, but I specifically wanted to be less terse, as a way to be 
-respectful.
+MT7986: - eMMC HS400 mode failures
+        - Cooling trips for emergency system shutdown
+        - BPI-R3 machine SFP power limit and active cooling
 
-> BTW, my language spelling points "subarchitectures" as mistake, but
-> sure, ack.
+MT8173: - EVB device tree unit_address_vs_reg warning
 
-Using hyphens or not is almost always debatable, but modern English in 
-general leans toward not using them.
+MT8183: - unit_address_vs_reg and simple_bus_reg warnings
+        - Kukui device tree nodes naming consistency and
+          adhering to bindings
+        - Jacuzzi device tree unnecessary cells removed as
+          those were producing avoid_unnecessary_addr_size
 
->>> +3. Unit addresses shall use lowercase hex, without leading zeros
->>> (padding).
->> 
->> "Lowercase hex" should be replaced with "lowercase hexadecimal 
->> digits".
->> 
->>> +
->>> +4. Hex values in properties, e.g. "reg", shall use lowercase hex.  
->>> The
->>> address
->>> +   part can be padded with leading zeros.
->> 
->> "Hex values" should be replaced with "Hexadecimal values".  "Lowercase
->> hex" should be replaced with "lowercase hexadecimal digits".
-> 
-> ack, but that's quite picky. We are (software) engineers so we are
-> supposed to know the slang.
+MT8186: - Power domains faults due to incorrect clocks
+        - GPU speed bin nvmem cell name was wrong, producing
+          issues with interpreting the speedbin with GPU OPPs
 
-Sure, but this document is of a bit formal nature, so using slightly 
-more formal language can only be helpful.
+MT8195: - Local Arbiter (and whole system) ability to suspend
+        - Cherry device tree interrupts_property warning
 
->>> +2. Nodes without unit addresses shall be ordered alpha-numerically 
->>> by
->>> the node
->>> +   name.  For a few types of nodes, they can be ordered by the main
->>> property
->>> +   (e.g. pin configuration states ordered by value of "pins"
->>> property).
->> 
->> "Alpha-numerically" should be replaced with "alphabetically".
-> 
-> Are you sure? Does alphabetical order include numbers?
+...and another unit_address_vs_reg warning on MT7622.
 
-That's a good question, which also crossed my mind while writing the 
-suggestions down.  A more correct word would be "lexicographically", 
-with something like ", with the already defined valid characters making 
-the symbol set and the ACSII character set defining the ordering, " 
-serving as an additional explanation.
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (7):
+      arm64: dts: mediatek: mt8195: Fix PM suspend/resume with venc clocks
+      arm64: dts: mediatek: mt8183: Fix unit address for scp reserved memory
+      arm64: dts: mediatek: mt8183-evb: Fix unit_address_vs_reg warning on ntc
+      arm64: dts: mediatek: mt8173-evb: Fix regulator-fixed node names
+      arm64: dts: mediatek: mt8183: Move thermal-zones to the root node
+      arm64: dts: mediatek: mt8186: Change gpu speedbin nvmem cell name
+      arm64: dts: mediatek: cherry: Fix interrupt cells for MT6360 on I2C7
 
-This would be a rather formal, but also very precise definition of the 
-applied ordering.
+Eric Woudstra (1):
+      arm64: dts: mt7986: fix emmc hs400 mode without uboot initialization
 
->>> +3. When extending nodes in the board DTS via &label, the entries 
->>> shall
->>> be
->>> +   ordered either alpha-numerically or by keeping the order from 
->>> DTSI
->>> (choice
->>> +   depending on sub-architecture).
->> 
->> "Alpha-numerically" should be replaced with "alphabetically".
-> 
-> Similar concern
+Eugen Hristev (3):
+      arm64: dts: mediatek: mt8186: fix clock names for power domains
+      arm64: dts: mediatek: mt7622: fix memory node warning check
+      arm64: dts: mediatek: mt8183-kukui-jacuzzi: fix dsi unnecessary cells properties
 
-I agree.  We could use "lexicographically" instead, with the precise 
-definition already established earlier in the document.
+Frank Wunderlich (2):
+      arm64: dts: mt7986: define 3W max power to both SFP on BPI-R3
+      arm64: dts: mt7986: change cooling trips
 
->>> +board DTS, not in the SoC or SoM DTSI.  A partial exception is a
->>> common
->>> +external reference SoC-input clock, which could be coded as a
->>> fixed-clock in
->> 
->> "SoC-input" should be replaced with "SoC input".
-> 
-> ack, thanks!
+Hsin-Yi Wang (1):
+      arm64: dts: mt8183: kukui: Fix underscores in node names
 
-Thank you once again for working on this document!
+ arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts |   2 +-
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             |   2 +-
+ arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts |  12 ++--
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi                |  24 ++++++--
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts              |   4 +-
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts              |   4 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi   |   8 ++-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi           |  96 +++++++++++++++----------------
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi                 | 242 +++++++++++++++++++++++++++++++++++++++----------------------------------------
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi                 |  44 +++++++++------
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi          |   2 +-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi                 |   6 +-
+ 12 files changed, 241 insertions(+), 205 deletions(-)
+
 
