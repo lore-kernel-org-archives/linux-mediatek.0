@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFF49C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 03:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3CBFC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 03:02:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=k9Ui2NwwGrhvccOt4uEhvW+bd99ZDt3pI3ujTBGkCJ0=; b=wXB8AG1ob+5CoK2ph/5/mGty2G
-	UhSAxmYnWfyEg3v4ng5H3nrEFNoclSt/V/7R20pCW3w2etol2cj5dAVzo9cXd3X+7W2ioF6/giOId
-	ZvMCB0jbC+24/9GKzbmkuiGznaYUQMqBEn/RYTWG6FnNy1csVhb0d7wI3WUslck+zbiIx/Gc7Mdd9
-	r+d05HkFtAmjQPZbKglNS28GyB40SKLe1zPvr7w0J7g5Ftuqpkyo5zHu5RBcN61toBtz7/swutF4o
-	XqyCgnmLDpz0PUdUjPQPT2ekRAoU9Wey/DAik6ia8nRDqfPQ83oRWrdst2gL+qpVjDP+8ZZTA5fOo
-	WX9hxOpA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YmmZdnMG5cx1ucOkJTYJz9C0ueulBI91QAmZKkzSQnk=; b=aIzfYc566jYrNvtGKhJYTtv3Qd
+	STZ/J4+Q7Xdn5cujCwa4R7XvX0zx5Ezpn882TtwBdL4VykwnJ1MI7t7xC7DJulFFhuj0ISI82Vq6/
+	WBh7pTR/vRN/sZNPAR1zFwno9kv0UloHq0WiAzdfT98CTV0mvgqGx4tFRh2cykpbdYIw1WMzvMBDV
+	Mx4fHmo/rZYI2SBGvQa3xxghM1PI0gb+6ZgQZALbvtm7Z0qT7Dkmyr5RL23x5TFS9Q3v9+epxDKpA
+	ObBYRzpIoGlW5lHn1+7io95JmjG8xpxu6z/az4WD2+FyaSNT4NFSwtjSUSd8Gba8+06rlmSSZ94xA
+	G0iuchFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Any-006sVI-2v;
-	Wed, 29 Nov 2023 03:00:02 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1r8Apw-006srq-1f;
+	Wed, 29 Nov 2023 03:02:04 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Anv-006sTl-1y
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Nov 2023 03:00:00 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1cfbda041f3so30254185ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Nov 2023 18:59:58 -0800 (PST)
+	id 1r8Aps-006spz-1s;
+	Wed, 29 Nov 2023 03:02:02 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-5c2b7ec93bbso2755469a12.2;
+        Tue, 28 Nov 2023 19:01:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701226798; x=1701831598; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=k9Ui2NwwGrhvccOt4uEhvW+bd99ZDt3pI3ujTBGkCJ0=;
-        b=IlAUtK4/B4sIN42VWRr3DFkJITkeY2YiPigJuqTkaJPyeejbHrF9f0RIloGmDQjMIF
-         221CeL5Sd8OIb38z1VjmlPfniDH+OqK0vok/u5qfIAreYGMU2Cz2TlueYNYJE6A6L6aM
-         +OSJnLgjt2UrBwa+QYIedUllS6F1GCkhOMKxs=
+        d=gmail.com; s=20230601; t=1701226919; x=1701831719; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YmmZdnMG5cx1ucOkJTYJz9C0ueulBI91QAmZKkzSQnk=;
+        b=ZoNZT7KgISHKmc9x+Qi3d1G0848j37eJbcKJURk39rT3nAYu7zbmX9MloNhD+qnavQ
+         ro167INiQ3pvEVlZL4ozkfttMfGrp2K3uK+9HQVl2DEVco/G7MWTQephy7GwkiB3mNVd
+         AlAMYM9lvSKxBEOsdXN42BMgqJji4W2kxRsdO7IKCwCfMrF4tnZoZ8bzIFDI3xer7ENj
+         Xj1ObN6MJ/JQEFVEAqlXTZBpwZ7Y7scOorRw2YmlypcviYIP9zalNkNLJ1jtkQGS2EEA
+         igShAvyKI1KrSN0VZ4du9uLWXpsKzvkesEZgubaFTZ9UIT3o6A+sVatLZr1Zy/FqFOFw
+         QFxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701226798; x=1701831598;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=k9Ui2NwwGrhvccOt4uEhvW+bd99ZDt3pI3ujTBGkCJ0=;
-        b=VLNq+OOI954vVSpRN01XM4Rb3vbEhkBr/QmjCi9KawfvmGJd3IdCvSsSjWhzf61abi
-         Xkfr2B6xmtbLDfvgZEUFHxXJpjxKV+M0OXzVho+UmG2cDuAhbmh6QEU5iszoOE3YVoQE
-         kgLJ9Jy75cBYTBP9u9DLCOPdq+3QfQUeU12kpvQFQjI5XWo/PDo7bK0gvwyEeIsnqPA5
-         u3b70r4/WbBTLQL5SbuEGygJTKSBQGqBQFMbuqOYLXgtZVHo0dd5U5R7N8Qxutw7fXL4
-         AChvFuNFNKmPKIJmwVfozjz/C6MnOTwNKn4C7eyWbKrdd6rUaY3pbU0btARuqXcp2k9s
-         W52g==
-X-Gm-Message-State: AOJu0Yz6KCQrAeTkToBAyiThWxOsDRhlE17q9FMTg0BwBqlGv/Zy9Y4+
-	MDWH1eAea9cW1C6lLhfYnOiPPA==
-X-Google-Smtp-Source: AGHT+IG6dFGqtk4fZYge5QsDOksX0ByB2i5897VnFENUeZrCkriv/jmF9N0rsBrUdnOw+cS3d0Ze4A==
-X-Received: by 2002:a17:903:41d1:b0:1d0:5be:7816 with SMTP id u17-20020a17090341d100b001d005be7816mr3133476ple.10.1701226797568;
-        Tue, 28 Nov 2023 18:59:57 -0800 (PST)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:db5a:6bdb:74af:e72a])
-        by smtp.gmail.com with ESMTPSA id jh15-20020a170903328f00b001cfcd3a764esm4866623plb.77.2023.11.28.18.59.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 18:59:57 -0800 (PST)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Chaotian Jing <chaotian.jing@mediatek.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	ot_shunxi.zhang@mediatek.corp-partner.google.com,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mmc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Pin-yen Lin <treapking@chromium.org>
-Subject: [PATCH v2] mmc: mtk-sd: Increase the verbosity of msdc_track_cmd_data
-Date: Wed, 29 Nov 2023 10:59:18 +0800
-Message-ID: <20231129025950.1579981-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.43.0.rc1.413.gea7ed67945-goog
+        d=1e100.net; s=20230601; t=1701226919; x=1701831719;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=YmmZdnMG5cx1ucOkJTYJz9C0ueulBI91QAmZKkzSQnk=;
+        b=r25CvAS9RbQA4dZYkVdnqcAJTxqmwneeogiQJORCZ4xOJyII4feSmx40l0JJxniqo8
+         fL5rG7RB8DmvlHm0dWr7swiNCxdBrJdG1ALalwY2sTShxYMGM53z9z9LXMTrVtBpsPCb
+         lx3UzmU0eSpHNxnXsa5IJEwNRRx4M1ZdiheXB9XQ0bF8kZVl6oG/pEQUloERG/jqTgim
+         WDFCVSFssXgBHBY9Vyp5iPHw16bTC84JiJsLz1wa+GMRRbBdOsH7Z6HyOzxRwKt5T5Xg
+         If7mBbPpwa7h6arqvxwUX2dfX+vis55IbyklNIkfg4zAhhTYSs8f+7Zkax6ws/QUXrIJ
+         1fnw==
+X-Gm-Message-State: AOJu0YyNC2RGi0Iec62+LXc9jaC/KocpU3E/uzUy/J+QGmT8bAkGX/MT
+	C5FKcI66B0jg/lApkCxy7A2O3y/JK1IHZqSXA2k=
+X-Google-Smtp-Source: AGHT+IGnzMPnHxO60vC1ojrSQZx1ZUStF+SQpvY4lfHFS3JYWC+jAHzm4FZ5/2GQ51SFSCY35ZknJWpTMhCgJeAVM+k=
+X-Received: by 2002:a17:90b:4c02:b0:285:dbbe:1178 with SMTP id
+ na2-20020a17090b4c0200b00285dbbe1178mr7726571pjb.39.1701226918871; Tue, 28
+ Nov 2023 19:01:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20231128075532.110251-1-haibo.li@mediatek.com> <20231128172238.f80ed8dd74ab2a13eba33091@linux-foundation.org>
+In-Reply-To: <20231128172238.f80ed8dd74ab2a13eba33091@linux-foundation.org>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Wed, 29 Nov 2023 04:01:47 +0100
+Message-ID: <CA+fCnZcLwXn6crGF1E1cY3TknMaUN=H8-_hp0-cC+s8-wj95PQ@mail.gmail.com>
+Subject: Re: [PATCH] fix comparison of unsigned expression < 0
+To: Andrew Morton <akpm@linux-foundation.org>, kernel test robot <lkp@intel.com>, 
+	Haibo Li <haibo.li@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Andrey Ryabinin <ryabinin.a.a@gmail.com>, 
+	Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+	Vincenzo Frascino <vincenzo.frascino@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kasan-dev@googlegroups.com, 
+	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, xiaoming.yu@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_185959_656659_616B1A8B 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20231128_190200_662515_356CF9CA 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,35 +92,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This log message is necessary for debugging, so enable it by default to
-debug issues that are hard to reproduce locally.
+On Wed, Nov 29, 2023 at 2:22=E2=80=AFAM Andrew Morton <akpm@linux-foundatio=
+n.org> wrote:
+>
+> On Tue, 28 Nov 2023 15:55:32 +0800 Haibo Li <haibo.li@mediatek.com> wrote=
+:
+>
+> > Kernel test robot reported:
+> >
+> > '''
+> > mm/kasan/report.c:637 kasan_non_canonical_hook() warn:
+> > unsigned 'addr' is never less than zero.
+> > '''
+> > The KASAN_SHADOW_OFFSET is 0 on loongarch64.
+> >
+> > To fix it,check the KASAN_SHADOW_OFFSET before do comparison.
+> >
+> > --- a/mm/kasan/report.c
+> > +++ b/mm/kasan/report.c
+> > @@ -634,10 +634,10 @@ void kasan_non_canonical_hook(unsigned long addr)
+> >  {
+> >       unsigned long orig_addr;
+> >       const char *bug_type;
+> > -
+> > +#if KASAN_SHADOW_OFFSET > 0
+> >       if (addr < KASAN_SHADOW_OFFSET)
+> >               return;
+> > -
+> > +#endif
+>
+> We'd rather not add ugly ifdefs for a simple test like this.  If we
+> replace "<" with "<=3D", does it fix?  I suspect that's wrong.
 
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+Changing the comparison into "<=3D" would be wrong.
 
----
+But I actually don't think we need to fix anything here.
 
-Changes in v2:
-- Use dev_warn() instead of dev_err()
+This issue looks quite close to a similar comparison with 0 issue
+Linus shared his opinion on here:
 
- drivers/mmc/host/mtk-sd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+https://lore.kernel.org/all/Pine.LNX.4.58.0411230958260.20993@ppc970.osdl.o=
+rg/
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 97f7c3d4be6e..907c13d746c1 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1150,8 +1150,8 @@ static void msdc_recheck_sdio_irq(struct msdc_host *host)
- static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_command *cmd)
- {
- 	if (host->error)
--		dev_dbg(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
--			__func__, cmd->opcode, cmd->arg, host->error);
-+		dev_warn(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
-+			 __func__, cmd->opcode, cmd->arg, host->error);
- }
- 
- static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
--- 
-2.43.0.rc1.413.gea7ed67945-goog
+I don't know if the common consensus with the regard to issues like
+that changed since then. But if not, perhaps we can treat this kernel
+test robot report as a false positive.
 
+Thanks!
 
