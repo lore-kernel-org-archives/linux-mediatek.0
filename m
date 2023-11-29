@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C747C07E97
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 06:52:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77B94C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 07:16:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=08vSeE6OW9EXx9SVxCK+5GtLZk0M4OycbZa7bfVQrkA=; b=DOetVs0EsD8tLoQzQjdD8kjrCG
-	CPq04WMBup+aEum1Z/NcM/wsH5Qqbi8eWF5XCTCNGSGA1+Z9jyGt3oGlh9iYwD3uThQmvmnLNFk2r
-	v3Bex3tt8m3KenttNxpN7WRs4O98tFgJGWGk1+lKmpHsL5HaEnh9VmVfMGAc/MJZVY6q9MapRohyJ
-	z1AXaC6lyAUMhNUSxnNUDD6YiJ9a+k6QIxJeKR7HgGUb1qqoNrMOL0Um6do9tkkGbhE04ydUvBhVE
-	K2X/JMLwWOxU1m/BNtrrAOy459tVe6Q+TnlX++hP1Z0KSK6yUGlc18DPCkIUVA8JEdqj0cDvHzG+C
-	q5HGrZnw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=g1e1GiCglxw0G5nYW7W1hnHGQdgv+R0rMWtNcKzW+jo=; b=STZ7rEdEDBj6TkmVt2QZ6ugxhk
+	AWFvO9u1wWrLNxM7GOl3MhBYJf0aXFlpZN4U5B4iOmTywYLc69X05B4nEJ8dpXw2yjGKnNXjsqOyS
+	9NoatDmJme1cazAi2XUURPKeb0RdBj/w3jbWUvdKH85Bp45LQMlTKG06kydkcq+J0t+sFnIGPNRXt
+	X8sGkGamUekcM2bro64vz11lB66Q4efP84KSRgGECe6HHNTCF1OKKHCdkcKltVjUKaPVcRfARBb8y
+	NTj2Gt118f2PrafiRv4GcIyQww3sHhWabHntVTocDt7Fv2Nwus/Q102lKJ3Z/Crr+1nINpK+XUT9h
+	tfVYbqcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8ER5-007H7Z-1s;
-	Wed, 29 Nov 2023 06:52:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1r8Enm-007JvR-13;
+	Wed, 29 Nov 2023 07:16:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8EQv-007H2I-2j;
-	Wed, 29 Nov 2023 06:52:31 +0000
-X-UUID: d81f9f528e8311ee9b7791016c24628a-20231128
+	id 1r8Dg9-007AQh-2C
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 Nov 2023 06:04:25 +0000
+X-UUID: 1b7f1a728e7d11ee86758d4a7c00f3a0-20231128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=08vSeE6OW9EXx9SVxCK+5GtLZk0M4OycbZa7bfVQrkA=;
-	b=uUnShdgDLaoKix/086WA47nYc/91Xx9IKD49aLMmCKJnesFJqSBZGRR6QH5p6E3ypkiZiBAOIlLjywAdz//UFkq5nt7Ss82RivuByIfc9xjUCbzcdjbs4Zn65HxudOxL+HZf2GTw3WPcWPSY71n3D7eSgB4NUo2UItCTnUkIPAM=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=g1e1GiCglxw0G5nYW7W1hnHGQdgv+R0rMWtNcKzW+jo=;
+	b=k2RBnBmhorIxcm6+AFtQdGRcVYI1Wy3AXCjM1qDpOdMAGFLkGLjNuvk8VRmPEDQWWlGhRHkRzHDm1O1OLRtyuOCNXbEioCZeP50MLQtXxkr3WLasJbmnpsw/PKfIS2kwF8XYMPAE2UetSo6XZ7UINhpbVOm1q4f9hGDightarQE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.34,REQID:9aef4303-3cc5-4e1c-8dc1-cea72f03f761,IP:0,U
-	RL:0,TC:0,Content:42,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:42
-X-CID-META: VersionHash:abefa75,CLOUDID:70e73273-1bd3-4f48-b671-ada88705968c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.34,REQID:aed9318f-fd68-4417-a56a-c0d64187697a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:abefa75,CLOUDID:655a3273-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:N
+	O,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: d81f9f528e8311ee9b7791016c24628a-20231128
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <kuan-ying.lee@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 1b7f1a728e7d11ee86758d4a7c00f3a0-20231128
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <michael-cy.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 152090873; Tue, 28 Nov 2023 23:52:21 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 2040171538; Tue, 28 Nov 2023 23:04:07 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 29 Nov 2023 14:51:48 +0800
+ 15.2.1118.26; Wed, 29 Nov 2023 13:43:32 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 29 Nov 2023 14:51:47 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <casper.li@mediatek.com>, <chinwen.chang@mediatek.com>,
-	<qun-wei.lin@mediatek.com>, <linux-mm@kvack.org>,
-	<akpm@linux-foundation.org>, Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 3/3] scripts/gdb: Remove exception handling and refine print format
-Date: Wed, 29 Nov 2023 14:51:40 +0800
-Message-ID: <20231129065142.13375-4-Kuan-Ying.Lee@mediatek.com>
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 29 Nov 2023 13:43:32 +0800
+From: Michael-CY Lee <michael-cy.lee@mediatek.com>
+To: linux-wireless <linux-wireless@vger.kernel.org>
+CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael-CY Lee
+	<michael-cy.lee@mediatek.com>
+Subject: [PATCH v3,1/2] wifi: mac80211: add utility for converting op_class into chandef
+Date: Wed, 29 Nov 2023 13:43:20 +0800
+Message-ID: <20231129054321.10199-1-michael-cy.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231129065142.13375-1-Kuan-Ying.Lee@mediatek.com>
-References: <20231129065142.13375-1-Kuan-Ying.Lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--0.929400-8.000000
-X-TMASE-MatchedRID: jdTirKra2+aWHmpvkeKJB0hwlOfYeSqx3xlpFMX5MCCQ2TbICkFOdk69
-	FgKoS/097PSkEF73uYd7VWtw6SMI5Kawq2pdPD7UA9lly13c/gGb/LTS0T1K1k4K0IMk2m3GwVB
-	JSJ8GjJw3fJWouRpjSXrw5BSR88yeSoBVPxvX5SSQOktEo73GFOTWKSbLQnNI0w5IABkoK4ejxY
-	yRBa/qJcFwgTvxipFajoczmuoPCq19P2b/9z7kWHSNJjw0OCy9gb7Td4d4rgQuZNN5SUKmZTcKk
-	lC0AO+P7Q3LxoZAUkRSnlLzDnqOReV52TIVUC4lGG2UoSCAHI/BkGBTIlURuXoXDz8+lMxFpW+a
-	IDJ4DaRzkxJ+SIkUjmncuUSUEdOX
+X-TM-AS-Result: No-10--5.327500-8.000000
+X-TMASE-MatchedRID: +2zAcmHD8Q7LmQtq4MlK+Y+emiGnyeDRUK80YYUAl4sXdhT0BAdFzjC0
+	pJIQUiJOsRIB98XGTDmkeU7arquyzm94Ipa1otxo0Xw0ILvo/uUK3n1SHen81Wd6vNuG6Cqy56y
+	iAZYPrXdKlBq8feLAYQ1Ica/LQEH+98hoZRVgb5WNzYJBKgDdEbyfV74eQpk+myiLZetSf8mfop
+	0ytGwvXiq2rl3dzGQ1l3+bAt/YFVQDy43aFjnGUlGC9ibFzrTKGL9TwHJQaVYXM+5GWf5LWWgGZ
+	NLBHGNe
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--0.929400-8.000000
+X-TMASE-Result: 10--5.327500-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 1709499E65CB7E7AF41F04E97E4A617AD0E61BE14F55DA8E7D4C9D52B5C7303A2000:8
-X-MTK: N
+X-TM-SNTS-SMTP: 19297579BCC92BAE0016C51A172C30A1E11B4BE1367D236699A885C686B08E212000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_225229_897083_85F04061 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20231128_220409_750911_77ADB5E2 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,109 +96,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. When we crash on a page, we want to check what
-happened on this page instead of skipping this page by
-try-catch block. Thus, removing the try-catch block.
+This utility is used in STA CSA handling. The op_class in the ECSA
+Element can be converted into chandef.
 
-2. Remove redundant comma and print the task name properly.
-
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+Signed-off-by: Money Wang <money.wang@mediatek.com>
 ---
- scripts/gdb/linux/page_owner.py | 58 ++++++++++++++-------------------
- scripts/gdb/linux/slab.py       |  3 +-
- 2 files changed, 26 insertions(+), 35 deletions(-)
+v3:
+  There were two utilities for op_class conversion in version 2.
+  This version combines them into one.
+---
+ include/net/cfg80211.h | 13 ++++++++
+ net/wireless/util.c    | 76 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 89 insertions(+)
 
-diff --git a/scripts/gdb/linux/page_owner.py b/scripts/gdb/linux/page_owner.py
-index 844fd5d0c912..8e713a09cfe7 100644
---- a/scripts/gdb/linux/page_owner.py
-+++ b/scripts/gdb/linux/page_owner.py
-@@ -122,27 +122,24 @@ class DumpPageOwner(gdb.Command):
-         if not (page_ext['flags'] & (1 << PAGE_EXT_OWNER_ALLOCATED)):
-             gdb.write("page_owner is not allocated\n")
+diff --git a/include/net/cfg80211.h b/include/net/cfg80211.h
+index b137a33a1b68..0ea1f1a53324 100644
+--- a/include/net/cfg80211.h
++++ b/include/net/cfg80211.h
+@@ -8669,6 +8669,19 @@ void cfg80211_ch_switch_started_notify(struct net_device *dev,
+ bool ieee80211_operating_class_to_band(u8 operating_class,
+ 				       enum nl80211_band *band);
  
--        try:
--            page_owner = self.get_page_owner(page_ext)
--            gdb.write("Page last allocated via order %d, gfp_mask: 0x%x, pid: %d, tgid: %d (%s), ts %u ns, free_ts %u ns\n" %\
--                    (page_owner["order"], page_owner["gfp_mask"],\
--                    page_owner["pid"], page_owner["tgid"], page_owner["comm"],\
--                    page_owner["ts_nsec"], page_owner["free_ts_nsec"]))
--            gdb.write("PFN: %d, Flags: 0x%x\n" % (pfn, page['flags']))
--            if page_owner["handle"] == 0:
--                gdb.write('page_owner allocation stack trace missing\n')
--            else:
--                stackdepot.stack_depot_print(page_owner["handle"])
-+        page_owner = self.get_page_owner(page_ext)
-+        gdb.write("Page last allocated via order %d, gfp_mask: 0x%x, pid: %d, tgid: %d (%s), ts %u ns, free_ts %u ns\n" %\
-+                (page_owner["order"], page_owner["gfp_mask"],\
-+                page_owner["pid"], page_owner["tgid"], page_owner["comm"].string(),\
-+                page_owner["ts_nsec"], page_owner["free_ts_nsec"]))
-+        gdb.write("PFN: %d, Flags: 0x%x\n" % (pfn, page['flags']))
-+        if page_owner["handle"] == 0:
-+            gdb.write('page_owner allocation stack trace missing\n')
-+        else:
-+            stackdepot.stack_depot_print(page_owner["handle"])
++/**
++ * ieee80211_operating_class_to_chandef - convert operating class to chandef
++ *
++ * @operating_class: the operating class to convert
++ * @chan: the ieee80211_channel to convert
++ * @chandef: a pointer to the resulting chandef
++ *
++ * Returns %true if the conversion was successful, %false otherwise.
++ */
++bool ieee80211_operating_class_to_chandef(u8 operating_class,
++					  struct ieee80211_channel *chan,
++					  struct cfg80211_chan_def *chandef);
++
+ /**
+  * ieee80211_chandef_to_operating_class - convert chandef to operation class
+  *
+diff --git a/net/wireless/util.c b/net/wireless/util.c
+index 626b858b4b35..edcc6f202c19 100644
+--- a/net/wireless/util.c
++++ b/net/wireless/util.c
+@@ -2017,6 +2017,82 @@ bool ieee80211_operating_class_to_band(u8 operating_class,
+ }
+ EXPORT_SYMBOL(ieee80211_operating_class_to_band);
  
--            if page_owner["free_handle"] == 0:
--                gdb.write('page_owner free stack trace missing\n')
--            else:
--                gdb.write('page last free stack trace:\n')
--                stackdepot.stack_depot_print(page_owner["free_handle"])
--            if page_owner['last_migrate_reason'] != -1:
--                gdb.write('page has been migrated, last migrate reason: %s\n' % self.migrate_reason_names[page_owner['last_migrate_reason']])
--        except:
--            gdb.write("\n")
-+        if page_owner["free_handle"] == 0:
-+            gdb.write('page_owner free stack trace missing\n')
-+        else:
-+            gdb.write('page last free stack trace:\n')
-+            stackdepot.stack_depot_print(page_owner["free_handle"])
-+        if page_owner['last_migrate_reason'] != -1:
-+            gdb.write('page has been migrated, last migrate reason: %s\n' % self.migrate_reason_names[page_owner['last_migrate_reason']])
- 
-     def read_page_owner(self):
-         pfn = self.min_pfn
-@@ -173,18 +170,13 @@ class DumpPageOwner(gdb.Command):
-                 pfn += 1
-                 continue
- 
--            try:
--                page_owner = self.get_page_owner(page_ext)
--                gdb.write("Page allocated via order %d, gfp_mask: 0x%x, pid: %d, tgid: %d (%s), ts %u ns, free_ts %u ns\n" %\
--                        (page_owner["order"], page_owner["gfp_mask"],\
--                        page_owner["pid"], page_owner["tgid"], page_owner["comm"],\
--                        page_owner["ts_nsec"], page_owner["free_ts_nsec"]))
--                gdb.write("PFN: %d, Flags: 0x%x\n" % (pfn, page['flags']))
--                stackdepot.stack_depot_print(page_owner["handle"])
--                pfn += (1 << page_owner["order"])
--                continue
--            except:
--                gdb.write("\n")
--            pfn += 1
-+            page_owner = self.get_page_owner(page_ext)
-+            gdb.write("Page allocated via order %d, gfp_mask: 0x%x, pid: %d, tgid: %d (%s), ts %u ns, free_ts %u ns\n" %\
-+                    (page_owner["order"], page_owner["gfp_mask"],\
-+                    page_owner["pid"], page_owner["tgid"], page_owner["comm"].string(),\
-+                    page_owner["ts_nsec"], page_owner["free_ts_nsec"]))
-+            gdb.write("PFN: %d, Flags: 0x%x\n" % (pfn, page['flags']))
-+            stackdepot.stack_depot_print(page_owner["handle"])
-+            pfn += (1 << page_owner["order"])
- 
- DumpPageOwner()
-diff --git a/scripts/gdb/linux/slab.py b/scripts/gdb/linux/slab.py
-index f012ba38c7d9..0e2d93867fe2 100644
---- a/scripts/gdb/linux/slab.py
-+++ b/scripts/gdb/linux/slab.py
-@@ -228,8 +228,7 @@ def slabtrace(alloc, cache_name):
-             nr_cpu = gdb.parse_and_eval('__num_online_cpus')['counter']
-             if nr_cpu > 1:
-                 gdb.write(" cpus=")
--                for i in loc['cpus']:
--                    gdb.write("%d," % i)
-+                gdb.write(','.join(str(cpu) for cpu in loc['cpus']))
-         gdb.write("\n")
-         if constants.LX_CONFIG_STACKDEPOT:
-             if loc['handle']:
++bool ieee80211_operating_class_to_chandef(u8 operating_class,
++					  struct ieee80211_channel *chan,
++					  struct cfg80211_chan_def *chandef)
++{
++	u32 control_freq, offset = 0;
++	enum nl80211_band band;
++
++	if (!ieee80211_operating_class_to_band(operating_class, &band) ||
++	    !chan || band != chan->band)
++		return false;
++
++	control_freq = chan->center_freq;
++	chandef->chan = chan;
++
++	if (control_freq >= 5955)
++		offset = control_freq - 5955;
++	else if (control_freq >= 5745)
++		offset = control_freq - 5745;
++	else if (control_freq >= 5180)
++		offset = control_freq - 5180;
++	offset /= 20;
++
++	switch (operating_class) {
++	case 81:  /* 2 GHz band; 20 MHz; channels 1..13 */
++	case 82:  /* 2 GHz band; 20 MHz; channel 14 */
++	case 115: /* 5 GHz band; 20 MHz; channels 36,40,44,48 */
++	case 118: /* 5 GHz band; 20 MHz; channels 52,56,60,64 */
++	case 121: /* 5 GHz band; 20 MHz; channels 100..144 */
++	case 124: /* 5 GHz band; 20 MHz; channels 149,153,157,161 */
++	case 125: /* 5 GHz band; 20 MHz; channels 149..177 */
++	case 131: /* 6 GHz band; 20 MHz; channels 1..233*/
++	case 136: /* 6 GHz band; 20 MHz; channel 2 */
++		chandef->center_freq1 = control_freq;
++		chandef->width = NL80211_CHAN_WIDTH_20;
++		return true;
++	case 83:  /* 2 GHz band; 40 MHz; channels 1..9 */
++	case 116: /* 5 GHz band; 40 MHz; channels 36,44 */
++	case 119: /* 5 GHz band; 40 MHz; channels 52,60 */
++	case 122: /* 5 GHz band; 40 MHz; channels 100,108,116,124,132,140 */
++	case 126: /* 5 GHz band; 40 MHz; channels 149,157,165,173 */
++		chandef->center_freq1 = control_freq + 10;
++		chandef->width = NL80211_CHAN_WIDTH_40;
++		return true;
++	case 84:  /* 2 GHz band; 40 MHz; channels 5..13 */
++	case 117: /* 5 GHz band; 40 MHz; channels 40,48 */
++	case 120: /* 5 GHz band; 40 MHz; channels 56,64 */
++	case 123: /* 5 GHz band; 40 MHz; channels 104,112,120,128,136,144 */
++	case 127: /* 5 GHz band; 40 MHz; channels 153,161,169,177 */
++		chandef->center_freq1 = control_freq - 10;
++		chandef->width = NL80211_CHAN_WIDTH_40;
++		return true;
++	case 132: /* 6 GHz band; 40 MHz; channels 1,5,..,229*/
++		chandef->center_freq1 = control_freq + 10 - (offset & 1) * 20;
++		chandef->width = NL80211_CHAN_WIDTH_40;
++		return true;
++	case 128: /* 5 GHz band; 80 MHz; channels 36..64,100..144,149..177 */
++	case 133: /* 6 GHz band; 80 MHz; channels 1,5,..,229 */
++		chandef->center_freq1 = control_freq + 30 - (offset & 3) * 20;
++		chandef->width = NL80211_CHAN_WIDTH_80;
++		return true;
++	case 129: /* 5 GHz band; 160 MHz; channels 36..64,100..144,149..177 */
++	case 134: /* 6 GHz band; 160 MHz; channels 1,5,..,229 */
++		chandef->center_freq1 = control_freq + 70 - (offset & 7) * 20;
++		chandef->width = NL80211_CHAN_WIDTH_160;
++		return true;
++	case 130: /* 5 GHz band; 80+80 MHz; channels 36..64,100..144,149..177 */
++	case 135: /* 6 GHz band; 80+80 MHz; channels 1,5,..,229 */
++		  /* The center_freq2 of 80+80 MHz is unknown */
++	case 137: /* 6 GHz band; 320 MHz; channels 1,5,..,229 */
++		  /* 320-1 or 320-2 channelization is unknown */
++	default:
++		return false;
++	}
++}
++EXPORT_SYMBOL(ieee80211_operating_class_to_chandef);
++
+ bool ieee80211_chandef_to_operating_class(struct cfg80211_chan_def *chandef,
+ 					  u8 *op_class)
+ {
 -- 
-2.18.0
+2.25.1
 
 
