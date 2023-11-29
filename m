@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E77A0C10DC1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E2B9C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ID1zdoJK08jI0+ney0GGZgpZp/Ze4ASBpaugIzPl/M=; b=Gk27V4AHsZMESA3L0fM9ZxA7iG
-	7P//4OsmCd0XorG1UT65XYU/MAZib1GN6F01zM8RLKESve+yizcoWoBN5gwR6D4qgog7QKWpePRU8
-	hRrBUyuykghUxy5PFlRiIHLFYRXQEgR4jB3K8EexAehYeJjx9sIh246L/bpp1ev4OYQEoWQmRtGbU
-	/Ks/3BAMTSSJ+nhn5q+zJzN7W54144clMBJ7Q6wZ4ZB7UPnfUamexyO2VqHa9NhENlS5uuJ63iiB5
-	ufiuovhxAjDg+DDiYvRBBq3z3Y1hjituNd0cYs3Ei+Wl+VVtyUXJS3r9q2KHQ0/xsn+2+PxVVyoee
-	VptF/Dcw==;
+	bh=sdJsEaXcN3Wzp/swFLFMOPKCn/jFzgNqYzhQHvJMiUo=; b=2dd/qrteIrea4z9Y1sW+j/Kwp6
+	HI9FW/UosMqkUF1gAPYGuNqjmHdACwceaXyHcvIK6/6swOeLttpPe6JDXyrSuXeJxIIxmLpNqKQrr
+	uhWVpYgiqAeOXLT1FBBaQGE0IJIUrNF9wcRxIOMkpfUFNN6BQNkqMjTbpbhHNWBPQcPBwlGB4EdyX
+	11jNKJEyo+zalHaL9tqWSp6Jdu1LOCnICLEc+BMfYYCIRtti4TfgH6JLWzrcqvg220W0J6/QIfK+b
+	l0JZ9QzHqX+EV6btbN33cdV0p0/2kxn344dYUenMcWiP3kLJi7BrsCiJZu9qFmfCxYpLdnIqVh7/4
+	9wz30TRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JXd-008HqO-2i;
-	Wed, 29 Nov 2023 12:19:45 +0000
+	id 1r8JXg-008HsE-2I;
+	Wed, 29 Nov 2023 12:19:48 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JXd-008Hox-0v;
-	Wed, 29 Nov 2023 12:19:45 +0000
+	id 1r8JXe-008Hpz-0n;
+	Wed, 29 Nov 2023 12:19:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=4ID1zdoJK08jI0+ney0GGZgpZp/Ze4ASBpaugIzPl/M=; b=ACx1O47qmYjOZq1QBrkSrE9h4G
-	KV4jdzULAF3/7qAbqSuo7FVr79LawFN5jHPbrZ3BuNV0y78lKn3I7fUTkRC1wZTmfTVqTOb6mxlWS
-	qZWEc6n438FKVIL7RrCeSOI+OZWAvY5kDG2YzEDBVhFUUr0/hCzGO+TwuEV+mSU19KfcD8+i7BT8M
-	nSHCx6EJhS6Oidxb5xDTuXMfj124HlOR+mq/x9N6oQuQUHLFx+M8kfIYQ+jzWHggstvk6uRvvDvjo
-	DfgufX/6TOgZqQnG1cGl8SQeViKqWuOkB2kVRqDIb9Srz9VWw8jbuBpMM++dKThNii5+2SuQ3mrkC
-	2H59OMFQ==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=sdJsEaXcN3Wzp/swFLFMOPKCn/jFzgNqYzhQHvJMiUo=; b=St/orDDanWBYHFx5H1WrHU824u
+	wpTAahSasJzj48TCvSUiojHTswPd0s/UZeKs7+1AKgk+dAm01qYdTDS6dtH+BW/O74t7GehRSnFuC
+	QX3jWZsNlokCUIgAF6zGHq9SdXVb/4mbl194SfBseImA09p5l4ixrZD8pBe3fYe5uNMXt7X6q8pME
+	Sd6UszyN/+x4zB4UXVQA0g4rnS4TFyC3AwI3SgQ14su6uI2ljA256xm1TiwLzld90flMEmnnIX/qB
+	7jsB0UIoLug863cGhc2alA4kLFwVPH4EW56mNoyujuamDWg5bee1FA9dY0/ZdVyQ6ElsR6tUAG68S
+	h5KvTmhw==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JXP-000LS6-2P;
-	Wed, 29 Nov 2023 12:19:39 +0000
+	id 1r8JXM-000LRy-27;
+	Wed, 29 Nov 2023 12:19:40 +0000
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D7655660732A;
-	Wed, 29 Nov 2023 12:19:22 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 344CA6607325;
+	Wed, 29 Nov 2023 12:19:19 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701260366;
-	bh=drt9Nf1tdYoCGDZuOe/qO8JK0dZNg1Oz/Fl7Gto/UZI=;
+	s=mail; t=1701260362;
+	bh=O5ckehyI20/PoLmFk+FV3fLp1KbSS4iwwIAE9XfLTh4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ri4WVuOtDg/bxRqtZJK8ogTvFXmvqnAP/JkoBlpF7lpuxfbIcwi9JLLzT7/HsFcPi
-	 vSiObrgMAuKWp18v1JfnlkIRp1SFiIeH0RfeR3Oqn6A7XPLfMYcgCancb59Sl48mO7
-	 3iUWHc2aTCo6SkG7TLpoZA+HeK3Sdeycrbahud1QkfmNVJCOf+hStJjI3JCOW5O5vB
-	 L/AmHhz7RjKzXRXHLwd1TExZG7Wsv28bU6a6AJgLxWjgLfz00z1evdPtI+zcUl/RER
-	 SmbMTcWhhWSo1Ju8VFc7PDloT3RjUltMAr7NuO9ws4UzWbahB/37Udy7UVh+A0EEAn
-	 2ycI9vcIHP+3g==
+	b=R+WiHN3gCDt6vq+jDhSG7b8yQDkYWemthE6ABt1fa9Hazyp8zqJeM9wW/w/uz0cQz
+	 Eg0iMzsj7MsUCs1wGKkd96wLK/MK8PGYXoH6h6DDbJlUFg5fGLhwbiEjKGT+KCblyo
+	 jSTXJKUt4qpVLqzzHFCQvxQnKuYOQv+4Jux+uFCjOGlJx+aP1fQD3bJaq15aG6bpAU
+	 tVJtDMOzdUyMqCRp0Z9K1e2KzqOEbWlgzwSJlI/kXrgDLibdWeZS6KYc6JhyGxqXkm
+	 daUeCsjPUoRUMXm8KmxDRzzxTORlSZrjoAKfBiSHZKE/OCrninnhKiVE/9FEwCrwrZ
+	 D+UWU24o7lXgg==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -74,18 +74,18 @@ Cc: david.heidelberg@collabora.com,
 	virtualization@lists.linux-foundation.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org
-Subject: [PATCH v6 08/10] drm: ci: uprev IGT
-Date: Wed, 29 Nov 2023 17:48:39 +0530
-Message-Id: <20231129121841.253223-9-vignesh.raman@collabora.com>
+Subject: [PATCH v6 07/10] drm: ci: virtio: Make artifacts available
+Date: Wed, 29 Nov 2023 17:48:38 +0530
+Message-Id: <20231129121841.253223-8-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231129121841.253223-1-vignesh.raman@collabora.com>
 References: <20231129121841.253223-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_121933_560587_CA42AA60 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20231129_121935_410054_B353DD0E 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,58 +100,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-virtio-gpu kernel driver reports 16 for count_crtcs
-which exceeds IGT_MAX_PIPES set to 8 in igt-gpu-tools.
-This results in below memory corruption,
-
- malloc(): corrupted top size
- Received signal SIGABRT.
- Stack trace:
-  #0 [fatal_sig_handler+0x17b]
-  #1 [__sigaction+0x40]
-  #2 [pthread_key_delete+0x14c]
-  #3 [gsignal+0x12]
-  #4 [abort+0xd3]
-  #5 [__fsetlocking+0x290]
-  #6 [timer_settime+0x37a]
-  #7 [__default_morecore+0x1f1b]
-  #8 [__libc_calloc+0x161]
-  #9 [drmModeGetPlaneResources+0x44]
-  #10 [igt_display_require+0x194]
-  #11 [__igt_unique____real_main1356+0x93c]
-  #12 [main+0x3f]
-  #13 [__libc_init_first+0x8a]
-  #14 [__libc_start_main+0x85]
-  #15 [_start+0x21]
- 
-This is fixed in igt-gpu-tools by increasing IGT_MAX_PIPES to 16.  
-https://patchwork.freedesktop.org/series/126327/
- 
-Uprev IGT to include the patches which fixes this issue.
+There were no artifacts available for virtio job.
+So make the artifacts available in the pipeline job.
 
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
 
+v5:
+  - Added a new patch in the series to make artifacts available for virtio jobs
+
 v6:
-  - Added a new patch in the series to uprev IGT to fix memory corruption
+  - No changes
 
 ---
- drivers/gpu/drm/ci/gitlab-ci.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/ci/test.yml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
-index aeb9bab1b069..dac92cc2777c 100644
---- a/drivers/gpu/drm/ci/gitlab-ci.yml
-+++ b/drivers/gpu/drm/ci/gitlab-ci.yml
-@@ -5,7 +5,7 @@ variables:
-   UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
-   TARGET_BRANCH: drm-next
- 
--  IGT_VERSION: d1db7333d9c5fbbb05e50b0804123950d9dc1c46
-+  IGT_VERSION: d2af13d9f5be5ce23d996e4afd3e45990f5ab977
- 
-   DEQP_RUNNER_GIT_URL: https://gitlab.freedesktop.org/anholt/deqp-runner.git
-   DEQP_RUNNER_GIT_TAG: v0.15.0
+diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+index e0fdc55c9b69..2c9a1838e728 100644
+--- a/drivers/gpu/drm/ci/test.yml
++++ b/drivers/gpu/drm/ci/test.yml
+@@ -329,6 +329,8 @@ virtio_gpu:none:
+   script:
+     - ln -sf $CI_PROJECT_DIR/install /install
+     - mv install/bzImage /lava-files/bzImage
++    - mkdir -p $CI_PROJECT_DIR/results
++    - ln -sf $CI_PROJECT_DIR/results /results
+     - install/crosvm-runner.sh install/igt_runner.sh
+   needs:
+     - debian/x86_64_test-gl
 -- 
 2.40.1
 
