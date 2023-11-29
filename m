@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 582E8C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 11:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EDC4C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 11:14:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UfvOZ/r/9xhV2IOVZmWGdwaESTpDCIgP8OCrBiOEH34=; b=2w6Iu4q9b/iSyg1ZNvFHz0HU6w
-	rNqvCp0lSNIXnsfDikSlYrEeOCwV98aXg0AhDwX+TdctJUj0FLgzfEfNP9sq6+POwJvPdXqDHqDBy
-	kXWfbwngpzJyHotasG3tY+iWnd/XAXIgS0f7QkAlQNQC3qsswYgh5fwvPBwZ5k00qUO1KqazZgjME
-	3bC9Ewjd+JvjwGpDrNUe5BbiG3fetFtW/ZxT0uadgngt7ZEJkGia8ek4+SsjvCqOJoyXp+UfW+pk2
-	qGgwHqlQjjv/qdmSPHvZqRZnzZjJBRNz9vbsoglCsD9yXPzdHH7kVKq3jht6L+TDWrimVapd/OCYJ
-	6QbbmClg==;
+	bh=uisL/RS3uo1evP9py88SsS4qsxKCbh35nvAGjS1i0wE=; b=EHsqLCDg1K46u6iG7IFGLhzSAT
+	Qq0/YoINr+2+0Kq758kTsiHxboR13C/4AOFW/4j77KQZVnv/OGbTH3gv0hHQkGrKCzl25wcSv61OH
+	I1ZJqt2+VriCcMF0UZwI9vZbeDaH38zOKEnzzsdriO1wNleRhLbm1K6opCnNxxBr5Fma+mwSLvY2I
+	PJ5EXNQaLSsRiSrETBABlEyXmRxab60sqDXq4TYqXs8qlghFkeuQviBsCOyl9GjmJFdMOqrBhjxzk
+	BZ8ZXSxXR6Wmmr3Uqcmjvbctkg8iTs96OqDAGFWfd15RTIBtqTPY5NsoWPZaBacWlVe+bBE3RR5/n
+	ur7Vvsqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8IWk-007xAt-0j;
-	Wed, 29 Nov 2023 11:14:46 +0000
-Received: from mail-yb1-f173.google.com ([209.85.219.173])
+	id 1r8IWv-007xJG-1n;
+	Wed, 29 Nov 2023 11:14:57 +0000
+Received: from mail-yw1-f180.google.com ([209.85.128.180])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8IWh-007x80-1r;
-	Wed, 29 Nov 2023 11:14:44 +0000
-Received: by mail-yb1-f173.google.com with SMTP id 3f1490d57ef6-d9caf5cc948so5999336276.0;
-        Wed, 29 Nov 2023 03:14:42 -0800 (PST)
+	id 1r8IWs-007xE8-0I;
+	Wed, 29 Nov 2023 11:14:55 +0000
+Received: by mail-yw1-f180.google.com with SMTP id 00721157ae682-5d1f8bc279aso6073677b3.1;
+        Wed, 29 Nov 2023 03:14:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701256481; x=1701861281;
+        d=1e100.net; s=20230601; t=1701256490; x=1701861290;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UfvOZ/r/9xhV2IOVZmWGdwaESTpDCIgP8OCrBiOEH34=;
-        b=GH6datshPEelTZi/85QdarbPbRVWLbbMoQob33fIEzkm2p/yt1mOeywiwD2VmWQCS0
-         ngC7g44TsADJbkjNz9ECDvQvX1i8siM7GN7wJOd/xC4fGTd81mrgcOI+7xYp0KodzQwi
-         eE+7jUV5x4cff2/yH0TSD+TgC7vVvLWFmjeIZYZOBrwJP+asy8TcReQTmQx3H6FTpU+l
-         Ees0XKVsprndEPKrW9Sz5vzhqejg2dgcEVsQ8YBjmLk+CIAH0rZpPvFgMgzV+C0hORJX
-         AWz3HU2K58n+kSqbrqog+k8lB8t37qCxDOBC9k5JJtdvcz6iVA3nrLzs6faZS35P563k
-         srnA==
-X-Gm-Message-State: AOJu0YyEjwQV4iozTFEazDlDHgcq+HSJ4W85MZOuqPv/5pCawW0CG+Bs
-	ChCLwV6K7prXSnmEVu5Lm6049wq6it2uwA==
-X-Google-Smtp-Source: AGHT+IHScqOV8jde3ass3hclE50n+WMnGRUYQtg2hAhilbqjA+OK+4r/alsp/mbDqLuKFIjDPk0Ucw==
-X-Received: by 2002:a25:fb12:0:b0:db0:2fcd:6b91 with SMTP id j18-20020a25fb12000000b00db02fcd6b91mr16822651ybe.15.1701256481301;
-        Wed, 29 Nov 2023 03:14:41 -0800 (PST)
-Received: from mail-yw1-f173.google.com (mail-yw1-f173.google.com. [209.85.128.173])
-        by smtp.gmail.com with ESMTPSA id o67-20020a257346000000b00d7497467d36sm4173606ybc.45.2023.11.29.03.14.40
+        bh=uisL/RS3uo1evP9py88SsS4qsxKCbh35nvAGjS1i0wE=;
+        b=DTYffHrq8pwpbQrdjkIvYat4RuOAv80gjDlEMmhuRwcrTQ4UTK4Sr8u7y72A9XOvhr
+         LonpluuDFxzQwnT5rqtKgeNKy1RzbhkV0lkO/kqJZLMXxEUmsQbatCO3A6bBOYY7zJG1
+         9zJjRPOAAO4c99fEtcvhadNF/s2WT+1umxQDmI5YDd6Zot4KiRYibKETevEmPVf36i2p
+         UpKuk8WZV9GR7L0sTtZqv4haOflnShFwLxSVxcjv6VC4OR/T39s05U38/wfxYtiVjon5
+         ki27pbMgJQ2hP0bdq885ZTCqcm4/rtsZsAx0Fo7ekBjbd4TyG0Mvlvxgka4VosJGOZSm
+         lu2w==
+X-Gm-Message-State: AOJu0Yz7utwfxKN8F6luR8r28w9lN7+yURXu3dA3gp6Tjffe34VepbwM
+	d7p9bhSg9TovB5vWN6fL5+S7+T+o+3nG8Q==
+X-Google-Smtp-Source: AGHT+IG2zJWZ6gzJAjNbBnXmVm2C900w5qSqUFGVulDNvlzHcAmUoqvtVlpTQ6Jl/xVKCznjcBY6Ow==
+X-Received: by 2002:a81:910b:0:b0:5cd:1ef8:456b with SMTP id i11-20020a81910b000000b005cd1ef8456bmr13623228ywg.25.1701256490618;
+        Wed, 29 Nov 2023 03:14:50 -0800 (PST)
+Received: from mail-yw1-f169.google.com (mail-yw1-f169.google.com. [209.85.128.169])
+        by smtp.gmail.com with ESMTPSA id w189-20020a0dd4c6000000b005a7daa09f43sm243571ywd.125.2023.11.29.03.14.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Nov 2023 03:14:40 -0800 (PST)
-Received: by mail-yw1-f173.google.com with SMTP id 00721157ae682-5cc5988f85eso67729337b3.2;
-        Wed, 29 Nov 2023 03:14:40 -0800 (PST)
-X-Received: by 2002:a05:690c:4041:b0:5ce:39b:84c6 with SMTP id
- ga1-20020a05690c404100b005ce039b84c6mr14916699ywb.17.1701256480754; Wed, 29
- Nov 2023 03:14:40 -0800 (PST)
+        Wed, 29 Nov 2023 03:14:50 -0800 (PST)
+Received: by mail-yw1-f169.google.com with SMTP id 00721157ae682-5d1f8bc279aso6073627b3.1;
+        Wed, 29 Nov 2023 03:14:50 -0800 (PST)
+X-Received: by 2002:a05:690c:338d:b0:5d2:813d:d6a5 with SMTP id
+ fl13-20020a05690c338d00b005d2813dd6a5mr562225ywb.23.1701256490377; Wed, 29
+ Nov 2023 03:14:50 -0800 (PST)
 MIME-Version: 1.0
-References: <20231128200155.438722-1-andriy.shevchenko@linux.intel.com> <20231128200155.438722-23-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20231128200155.438722-23-andriy.shevchenko@linux.intel.com>
+References: <20231128200155.438722-1-andriy.shevchenko@linux.intel.com> <20231128200155.438722-14-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20231128200155.438722-14-andriy.shevchenko@linux.intel.com>
 From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 29 Nov 2023 12:14:29 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdVhhU9ew0KXw1nYygBxTc5ucYq_rBC06=U1b6iRoxdqGw@mail.gmail.com>
-Message-ID: <CAMuHMdVhhU9ew0KXw1nYygBxTc5ucYq_rBC06=U1b6iRoxdqGw@mail.gmail.com>
-Subject: Re: [PATCH v3 22/22] pinctrl: core: Remove unused members from struct group_desc
+Date: Wed, 29 Nov 2023 12:14:39 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdXbAgr0X5_BNdoQjuzhsOjLa2A0vttr7Pkj=ROrC82Vww@mail.gmail.com>
+Message-ID: <CAMuHMdXbAgr0X5_BNdoQjuzhsOjLa2A0vttr7Pkj=ROrC82Vww@mail.gmail.com>
+Subject: Re: [PATCH v3 13/22] pinctrl: core: Embed struct pingroup into struct group_desc
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Linus Walleij <linus.walleij@linaro.org>, 
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
@@ -87,8 +87,8 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_031443_617070_130CDCA3 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20231129_031454_135282_00560D60 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,10 +103,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 28, 2023 at 9:04=E2=80=AFPM Andy Shevchenko
+On Tue, Nov 28, 2023 at 9:05=E2=80=AFPM Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
-> All drivers are converted to use embedded struct pingroup.
-> Remove unused members from struct group_desc.
+> struct group_desc is a particular version of the struct pingroup
+> with associated opaque data. Start switching pin control core and
+> drivers to use it explicitly.
 >
 > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
@@ -116,7 +117,8 @@ Gr{oetje,eeting}s,
 
                         Geert
 
---=20
+
+--
 Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
 .org
 
