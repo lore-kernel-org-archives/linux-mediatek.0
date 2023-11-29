@@ -4,84 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C32F4C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 21:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C0DDC07E98
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 21:41:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oRzm+EBY8lURs31kY2MOOY72V50zWEq0T4zxegoq0uI=; b=1aftJ1jxDP9kD4x7zrPYkAzcUI
-	ujpfH4ZsAynnOsLXl2QaUwTVQYofj85/ZD4oXuR4o2yX0Hq0Q3qvw9ud49JcWGGOGX+qAmiIY1/zY
-	3qua3lJ0RJdF7Z3OvM3JxM/mdOZSM5x9tThd2pnHZ9/aklOMIzQp7W96fL2bqzBG4EanR6zrfnEEx
-	BUDOti80eokYeojq/3Xtm13mgNizPlzG1h6RDtXy2o/VDsBTL3uYj1VWncafBr7ajiBdgqAYvLufJ
-	gFzwaIyRebVxCVo31x9R1ccW/Mlx0mQa5ygsVSZ2fZUluRYeBNAPrRNbi+FeU3nAFxl/44Agzwx2a
-	SwOg/GRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=D1ZO88hxLxdvNhHhYibiygRoAvqr8qAWNq84h8JNdaQ=; b=U6bX5GgeCFTIC+qkxZcHbwKxs1
+	DyEdPL5z0TnJjSdyfhXw/hbov+fFhizPA9zgWoA1v6LJgVfUD3hkpPXQf47FfUdf+YZsok/lr3ahZ
+	NVVJy8OrSW8p+PJWfuTa7prAF8Cj7ew2raZu30eRIPWvJs3jEFPvQA8x57XlohXUtyqEiPdXjWwwo
+	nidgU+6ciwhbjLYjocncXyInps4qnL7Phk6C5SFFPeUT6RXTgzWahMIzuWMk6jgp8idPMHBMhf0Bz
+	fE0OZ0GhSqG8J8TRkDXwP0S3BDFRA8/x2uG3fkJ07iEjrTJUuVCMHqlVmJRd4uGRFxoozn7ajH+IT
+	uCFLYeKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Ryd-009J7X-1Q;
-	Wed, 29 Nov 2023 21:20:11 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1r8SJF-009MSb-15;
+	Wed, 29 Nov 2023 21:41:29 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Rya-009J6T-2W;
-	Wed, 29 Nov 2023 21:20:10 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1cfc3f50504so2337585ad.3;
-        Wed, 29 Nov 2023 13:20:05 -0800 (PST)
+	id 1r8SJD-009MRu-07
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 Nov 2023 21:41:28 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-5ce8eff71e1so2549517b3.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 13:41:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701292805; x=1701897605; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=oRzm+EBY8lURs31kY2MOOY72V50zWEq0T4zxegoq0uI=;
-        b=e2DQpc5mxlSJWNAW7oZlWvJA674QbUWrKFjgt8UmIwevJBmg+ChZlUAV6i9GlFZ3Wm
-         TX5hZyMxUz0it25R5tp1MfeM650tlJIjVGYroMwdCu5Sy1Tw7UxzCvq5pOZ6hbazmczR
-         RqdWeRBYfSto+kvmU8uN/MyZf0Fbhs8Uw00PArW44dHDBFbOJyqGEJ4QgQjF8W5IsU/v
-         dlg/NwAHkRMbpQ2nctDSahFSBhk4q8jpt9rTPg2hSx5+RbecrkDzvZ8NlkkMEHyoM0FH
-         0JK5h8/CPYUFGh4iKMWGNnn2aw0L8olhhXjEBnz0fuPIUkXDEqpnjvkwFxnSmUf8V6Za
-         3F6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701292805; x=1701897605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1701294085; x=1701898885; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oRzm+EBY8lURs31kY2MOOY72V50zWEq0T4zxegoq0uI=;
-        b=Kvpk422FKwvvlaDiXLkfEprZ/0dkejfw2k1OdfCQDZJwYZ240EKd0QMIgzTgdQwgPA
-         a1zw4+aVjqC7dVyS+2BC8w12ZIjtrp0r3CzgYEudJKD3pAqmQpXevJT81Wr7UpXfcl+A
-         d6VbzOQGM2SXhQFUhojmYIgSaxI0RU4ouA6J/qsyFufYqPljqyfIYHij0Pi4p7vlgzI6
-         4hcth+D/1MDGRVZ6eI8jIp6M6H4kZ6QH3/xTpesX1cUtNMnQ04/d4OzuMkpiJPKYLebm
-         Xj0c04YEH0gAJBJCTtMHLDFYk4j7rnn9kHTmMRWe0xyKsteUbuBTScQZ4X/Wy2XQBaAN
-         r3DQ==
-X-Gm-Message-State: AOJu0YzWyc+8cDltyPPWWDXZ9VFRyT3Hl8HZddMahnIrQiy9gRBLfSW3
-	a8hgmD4HSmd8UtZp1EZYaWU=
-X-Google-Smtp-Source: AGHT+IGIE4ijk3eHmnRzx35ZgI1veKT53AndkVUbNYATlXqAIeUX8alKZiZFLlbEiokkL4jkg+JZLw==
-X-Received: by 2002:a17:90b:4a8c:b0:285:b8d2:cad4 with SMTP id lp12-20020a17090b4a8c00b00285b8d2cad4mr13229826pjb.17.1701292805224;
-        Wed, 29 Nov 2023 13:20:05 -0800 (PST)
-Received: from google.com ([2620:15c:9d:2:64f2:7004:43e0:6095])
-        by smtp.gmail.com with ESMTPSA id bk8-20020a17090b080800b00285a17f9da1sm1839436pjb.43.2023.11.29.13.20.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Nov 2023 13:20:04 -0800 (PST)
-Date: Wed, 29 Nov 2023 13:20:02 -0800
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: input: mediatek,pmic-keys: Drop incomplete
- example
-Message-ID: <ZWerAi4CDFUz4Lk2@google.com>
-References: <20231128214816.3975893-1-robh@kernel.org>
+        bh=D1ZO88hxLxdvNhHhYibiygRoAvqr8qAWNq84h8JNdaQ=;
+        b=rhi+4udZ0mdumcQcI7KhBlO35oz34fVk6X3lLKKqRn7S7/D/6Yyps96l7xNzuZfloh
+         4eTntfvYTbXzBGt6lpd68SMitbYbzCSfGaHeLw5GCzLB4M97kOliK/Y+qqqUryqAyQlj
+         X4mwrrWDWBgMc3k4IOuy8gil6RuXhFN/xnnR8xK//Qk+MEnM2kmilrSqAh0aEa2Hzbx/
+         irKWGiGs8ZzL1GGqNLNa+6fYR8USGeIqU2JLcyHvr9xlXKalNS2Nv248pzQ1CtRJU8zr
+         vT+Nllig+3VYh9n7oxMX3HdzTt6me8Hj7C+P+VJoXfA4vkIFIcbdTi1/MoGMDxSnQ2Fq
+         nhCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701294085; x=1701898885;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=D1ZO88hxLxdvNhHhYibiygRoAvqr8qAWNq84h8JNdaQ=;
+        b=kiYVh0fbLpz8yAil8bcUv/WmFnV79e16LHPs4oRFE0SA7z1r6tIOGzn8R8Oakt5xsO
+         DoAZV4bkpMPrsyUf8pJAhmVMha3caxgnfbgcK2lCyfcI2g75X33hIwiVeOq2jAYwJUbc
+         fibHhBtzk2xrN6PckrHYaOfnBOQVV0RJkSxmIU7U2pUBz8jzA5QiAGdcB17utsOEme04
+         JH6xb5r4IQOwVUhtk926b+bRbswohfjipQY78kYRu59rpkbxMl0fiJfHRVpmwyV4bPuc
+         EP/LB4eD17m9OGm+lcsqVdxd/kjL5eXmr4aMLojeureUTJHUtKLU9UZdGVkcEbJL7aVs
+         Cahg==
+X-Gm-Message-State: AOJu0YxrZV7lffV/FYKqoZAVMBMPi/Ar3gEebUI3PsgQoL1Uj1+lV5cO
+	0iMUFmGgs11UrJlmVdtdR/oQHog9liIY+J+Ssmfegg==
+X-Google-Smtp-Source: AGHT+IG1Uagfb05AQRCkYJ/sVdTN0npVgY7BidrNhD15Xi7KOYZSxtp9xnbO86r7NF5QEuNER2q641/tZFxOQM6la+4=
+X-Received: by 2002:a81:cf08:0:b0:5cd:c65c:8173 with SMTP id
+ u8-20020a81cf08000000b005cdc65c8173mr18687170ywi.10.1701294085422; Wed, 29
+ Nov 2023 13:41:25 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231128214816.3975893-1-robh@kernel.org>
+References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
+ <20231129161459.1002323-17-andriy.shevchenko@linux.intel.com>
+ <CAOMZO5CZpQjWKimNReUkwHOc-mF8vWoq2HDhjGKSu6E3g5-aVw@mail.gmail.com>
+ <ZWduPKmBWkaIdLhi@smile.fi.intel.com> <CAOMZO5C_dhvx70nk1HOSZdw8hMMmED69tdsXgydXdpnxHTJ58Q@mail.gmail.com>
+ <ZWdyOc3pCoNihDtD@smile.fi.intel.com>
+In-Reply-To: <ZWdyOc3pCoNihDtD@smile.fi.intel.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Wed, 29 Nov 2023 22:41:14 +0100
+Message-ID: <CACRpkdap2fe-L0v7ttQULGq7d_zVCb2MmD4w=hHxKacKZH8jng@mail.gmail.com>
+Subject: Re: [PATCH v4 16/23] pinctrl: imx: Convert to use grp member
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Fabio Estevam <festevam@gmail.com>, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Biju Das <biju.das.jz@bp.renesas.com>, 
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
+	linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Paul Cercueil <paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Hal Feng <hal.feng@starfivetech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_132008_821789_17F5B107 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20231129_134127_075498_726EBCB7 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,19 +111,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 28, 2023 at 03:48:16PM -0600, Rob Herring wrote:
-> The example for the Mediatek PMIC keys is incomplete as the binding is
-> the full PMIC, not just the sub-functions. It is preferred for MFD
-> examples to be complete in the top-level MFD device binding rather than
-> piecemeal in each sub-function binding.
-> 
-> This also fixes an undocumented (by schema) compatible warning for
-> "mediatek,mt6397".
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+On Wed, Nov 29, 2023 at 6:18=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+> On Wed, Nov 29, 2023 at 02:08:38PM -0300, Fabio Estevam wrote:
+> > On Wed, Nov 29, 2023 at 2:01=E2=80=AFPM Andy Shevchenko
+> > <andriy.shevchenko@linux.intel.com> wrote:
+> > >
+> > > It's explained in the first paragraph in the cover letter. Do you
+> > > want to copy this into each commit message?
+> >
+> > Yes, much better to have the information into each commit message.
+>
+> Here it would be like
+> "Because other members will be removed to avoid duplication and
+> desynchronisation of the generic pin group description."
+>
+> Linus, what do you think about this?
 
-Applied, thank you.
+I can just add that to each commit while applying if it makes everyone happ=
+y.
+No need to resend for that.
 
--- 
-Dmitry
+Yours,
+Linus Walleij
 
