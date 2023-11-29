@@ -4,80 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 236B6C07CB1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 12:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 034D9C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 12:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cr7SDYHYCVtmS9GCsJZvy0ptpnGDSw4tSZ96I2SXICU=; b=1n0B30vLjNL+T3kH1XARlgQUGb
-	NmSbUl3Jgwh7m9lumsthUM5dWGiq1cM4fMOBEQSTJJGzdJFKACbtuxOwdFYGMRCAGGo6cT4k5lEXo
-	p/KL/+rsFrpyfCnQmhVyPX7ua30kMvQnd6Qge/waNjxPUi4vZxQXWdjB4oOY2WoVCad76m+MHBlQM
-	EobC8eVoVUPJ0ZmQIhaK7WtGTE5O+ZksUDsSqlfz7vRBe8EPKFJThUs59EsfileifuHggcJd+eg8F
-	vx4HhkJ8lgQ/NorsKZ9i7j3LsOuHjwPhE4pawynwFXRVzMZUsRTHPe5B5aWi/bblAaeDQegoP2DlP
-	brOfB4pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K+054dWzVTiKa5KBaB8sOQ8cG/0Wu3AhzWmpYOvBfyc=; b=T6BUrVokdMF/pEnbDfEGR66vJ1
+	cSTunG/lTRL3Di9hEDUvHIWb5jCo/db9zJwrubJBqizNlC0+uVI+gkGSJxSVUlMpNMLwozFIiCQkJ
+	RoiTej0Yb3h+LEgeNT4hvxNlvJIhha6cbbXshgnljpEsUgs5QLeFU7jbLvz7Pm6VC9yhH4hIw35Ae
+	zWbableZ/GI5x++tSMbl9g/VyAeoQzBteXGZoKTXNiDAYt6F397IKBRetCpTn1seC7x4vohqgPT4n
+	SiJMD0Le3BrRW2PX6ikwqSSXuteYLk/IbJJ0pu1IJRDCExEUnBOV6ENoPoLphnxXgXSOKQVnLH/2U
+	pL6AsjNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Jrs-008MxU-08;
-	Wed, 29 Nov 2023 12:40:40 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1r8K3f-008OJp-30;
+	Wed, 29 Nov 2023 12:52:51 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Jrn-008Mw4-2F;
-	Wed, 29 Nov 2023 12:40:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1701261623;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=cr7SDYHYCVtmS9GCsJZvy0ptpnGDSw4tSZ96I2SXICU=;
-	b=zRrR8Ur3NcRUURsDYlT0r/pa2WDsbyyBoASlGrp3V15HpHxfka0vhFg3ap+bv8aIcsrtKO
-	dG1ym6Q5AqpHV6KuvauxKRCpQV9e6+SEiFJNK4FhLx0cuTVTCKigOkXVGqrDCmT4ZsgWpn
-	G9cBDwI0ZHj3vddH5Zu3ftV2vDKOn3A=
-Message-ID: <84dd44ca9a07f319a391e72769cc7b9488303d2d.camel@crapouillou.net>
-Subject: Re: [PATCH v3 11/22] pinctrl: ingenic: Make use of
- PINCTRL_GROUP_DESC()
-From: Paul Cercueil <paul@crapouillou.net>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Linus Walleij
- <linus.walleij@linaro.org>, Bartosz Golaszewski
- <bartosz.golaszewski@linaro.org>,  Rasmus Villemoes
- <linux@rasmusvillemoes.dk>, Jonathan =?ISO-8859-1?Q?Neusch=E4fer?=
- <j.neuschaefer@gmx.net>,  Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>, Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?=
- <u.kleine-koenig@pengutronix.de>,  Geert Uytterhoeven
- <geert+renesas@glider.be>, Biju Das <biju.das.jz@bp.renesas.com>, Claudiu
- Beznea <claudiu.beznea.uj@bp.renesas.com>, Jianlong Huang
- <jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org, 
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
- linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org
-Cc: Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng
- <aisheng.dong@nxp.com>,  Fabio Estevam <festevam@gmail.com>, Shawn Guo
- <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,  Pengutronix Kernel
- Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, NXP
- Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, Lakshmi
- Sowjanya D <lakshmi.sowjanya.d@intel.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio
- <konrad.dybcio@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, Hal
- Feng <hal.feng@starfivetech.com>
-Date: Wed, 29 Nov 2023 13:40:19 +0100
-In-Reply-To: <20231128200155.438722-12-andriy.shevchenko@linux.intel.com>
-References: <20231128200155.438722-1-andriy.shevchenko@linux.intel.com>
-	 <20231128200155.438722-12-andriy.shevchenko@linux.intel.com>
-Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
- keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZMLQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5UzFZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtNz8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe+rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIPdlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7Urf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KFlBwgAhlGy6nqP7O3u7q23hRW5AQ0EXQqFwQEIAMo+MgvYHsyjX3Ja4Oolg1Txzm8woj30ch2nACFCqaO0R/1kLj2VVeLrDyQUOlXx9PD6IQI4M8wy8m0sR4wV2p/g/paw7k65cjzYYLh+FdLNyO7IW
-	YXndJO+wDPi3aK/YKUYepqlP+QsmaHNYNdXEQDRKqNfJg8t0f5rfzp9ryxd1tCnbV+tG8VHQWiZXNqN7062DygSNXFUfQ0vZ3J2D4oAcIAEXTymRQ2+hr3Hf7I61KMHWeSkCvCG2decTYsHlw5Erix/jYWqVOtX0roOOLqWkqpQQJWtU+biWrAksmFmCp5fXIg1Nlg39v21xCXBGxJkxyTYuhdWyu1yDQ+LSIUAEQEAAYkBNgQYAQoAIBYhBNdHYd8OeCBwpMuVxnPua9InSr1BBQJdCoXBAhsMAAoJEHPua9InSr1B4wsH/Az767YCT0FSsMNt1jkkdLCBi7nY0GTW+PLP1a4zvVqFMo/vD6uz1ZflVTUAEvcTi3VHYZrlgjcxmcGu239oruqUS8Qy/xgZBp9KF0NTWQSl1iBfVbIU5VV1vHS6r77W5x0qXgfvAUWOH4gmN3MnF01SH2zMcLiaUGF+mcwl15rHbjnT3Nu2399aSE6cep86igfCAyFUOXjYEGlJy+c6UyT+DUylpjQg0nl8MlZ/7Whg2fAU9+FALIbQYQzGlT4c71SibR9T741jnegHhlmV4WXXUD6roFt54t0MSAFSVxzG8mLcSjR2cLUJ3NIPXixYUSEn3tQhfZj07xIIjWxAYZo=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1r8K3c-008OJ5-0a;
+	Wed, 29 Nov 2023 12:52:50 +0000
+Received: from [100.107.97.3] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4A7136606F5E;
+	Wed, 29 Nov 2023 12:52:43 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701262363;
+	bh=GLJxqZFecjsx3758/CBoDDz8MENJNNKHfPIeFyZAwxE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SUQpyNhyfJkloRn5ImAsWnurFL9KiM6q1N54IG3+bcijklAodqRNhsOwHw4sCDnta
+	 lk7Matn5B50lHTYSiwUMYml3qhwQELBgKor8tkNv8QJEeAh9yiTmLNSk8412o+691X
+	 jWo3zoPd+fGzi86jfQc33uP8tDA+ymeXfv3ynNTAoHG7thoolkhCCmkZvT+b9ZJdew
+	 6xYsWuh2sUkqSjdEqIOwQVMolFelTr7+etw0lJpZ3t9EWQ5/+UD6wbHI2PPt4DVO4h
+	 YYfiqEhoHWQvm//VtENf4tVUFqqj+5Z58GXDyxgrH/gT3+ey5fu0/j1FKX4+M4tE7o
+	 dGDuDSNizDhxg==
+Message-ID: <fd645c33-1b16-4825-b9ea-eecb578dd2a0@collabora.com>
+Date: Wed, 29 Nov 2023 13:52:40 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] pmdomain: mediatek: fix race condition in power on/power
+ off sequences
+Content-Language: en-US
+To: Eugen Hristev <eugen.hristev@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
+Cc: eballetbo@kernel.org, ulf.hansson@linaro.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20231129113120.4907-1-eugen.hristev@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231129113120.4907-1-eugen.hristev@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_044035_914762_B02BF56C 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20231129_045248_497779_118673A4 
+X-CRM114-Status: GOOD (  31.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,48 +77,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mardi 28 novembre 2023 =C3=A0 21:57 +0200, Andy Shevchenko a =C3=A9crit=
-=C2=A0:
-> Make use of PINCTRL_GROUP_DESC() instead of open coding it.
->=20
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Il 29/11/23 12:31, Eugen Hristev ha scritto:
+> It can happen that during the power off sequence for a power domain
+> another power on sequence is started, and it can lead to powering on and
+> off in the same time for the similar power domain.
+> This can happen if parallel probing occurs: one device starts probing, and
+> one power domain is probe deferred, this leads to all power domains being
+> rolled back and powered off, while in the same time another device starts
+> probing and requests powering on the same power domains or similar.
+> 
+> This was encountered on MT8186, when the sequence is :
+> Power on SSUSB
+> Power on SSUSB_P1
+> Power on DIS
+> 	-> probe deferred
+> Power off DIS
+> Power off SSUSB_P1
+> Power off SSUSB
+> 
+> During the sequence of powering off SSUSB, some new similar sequence starts,
+> and during the power on of SSUSB, clocks are enabled.
+> In this case, powering off SSUSB fails from the first sequence, because
+> power off ACK bit check times out (as clocks are powered back on by the second
+> sequence). In consequence, powering it on also times out, and it leads to
+> the whole power domain in a bad state.
+> 
+> To solve this issue, added a mutex that locks the whole power off/power on
+> sequence such that it would never happen that multiple sequences try to
+> enable or disable the same power domain in parallel.
+> 
+> Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
 
-I missed this one in your V2 (didn't notice that there were 2 patches
-touching pinctrl-ingenic).
+I don't think that it's a race between genpd_power_on() and genpd_power_off() calls
+at all, because genpd *does* have locking after all... at least for probe and for
+parents of a power domain (and more anyway).
 
-Acked-by: Paul Cercueil <paul@crapouillou.net>
+As far as I remember, what happens when you start .probe()'ing a device is:
+platform_probe() -> dev_pm_domain_attach() -> genpd_dev_pm_attach()
+
+There, you end up with
+
+	if (power_on) {
+		genpd_lock(pd);
+		ret = genpd_power_on(pd, 0);
+		genpd_unlock(pd);
+	}
+
+...but when you fail probing, you go with genpd_dev_pm_detach(), which then calls
+
+	/* Check if PM domain can be powered off after removing this device. */
+	genpd_queue_power_off_work(pd);
+
+but even then, you end up being in a worker doing
+
+	genpd_lock(genpd);
+	genpd_power_off(genpd, false, 0);
+	genpd_unlock(genpd);
+
+...so I don't understand why this mutex can resolve the situation here (also: are
+you really sure that the race is solved like that?)
+
+I'd say that this probably needs more justification and a trace of the actual
+situation here.
+
+Besides, if this really resolves the issue, I would prefer seeing variants of
+scpsys_power_{on,off}() functions, because we anyway don't need to lock mutexes
+during this driver's probe (add_subdomain calls scpsys_power_on()).
+In that case, `scpsys_power_on_unlocked()` would be an idea... but still, please
+analyze why your solution works, if it does, because I'm not convinced.
 
 Cheers,
--Paul
+Angelo
 
 > ---
-> =C2=A0drivers/pinctrl/pinctrl-ingenic.c | 9 ++-------
-> =C2=A01 file changed, 2 insertions(+), 7 deletions(-)
->=20
-> diff --git a/drivers/pinctrl/pinctrl-ingenic.c
-> b/drivers/pinctrl/pinctrl-ingenic.c
-> index ee718f6e2556..393873de910a 100644
-> --- a/drivers/pinctrl/pinctrl-ingenic.c
-> +++ b/drivers/pinctrl/pinctrl-ingenic.c
-> @@ -83,15 +83,10 @@
-> =C2=A0#define JZ4730_PINS_PER_PAIRED_REG	16
-> =C2=A0
-> =C2=A0#define INGENIC_PIN_GROUP_FUNCS(name, id, funcs)		\
-> -	{						\
-> -		name,					\
-> -		id##_pins,				\
-> -		ARRAY_SIZE(id##_pins),			\
-> -		funcs,					\
-> -	}
-> +	PINCTRL_GROUP_DESC(name, id##_pins, ARRAY_SIZE(id##_pins),
-> funcs)
-> =C2=A0
-> =C2=A0#define INGENIC_PIN_GROUP(name, id, func)		\
-> -	INGENIC_PIN_GROUP_FUNCS(name, id, (void *)(func))
-> +	PINCTRL_GROUP_DESC(name, id##_pins, ARRAY_SIZE(id##_pins),
-> (void *)(func))
-> =C2=A0
-> =C2=A0enum jz_version {
-> =C2=A0	ID_JZ4730,
+>   drivers/pmdomain/mediatek/mtk-pm-domains.c | 24 +++++++++++++++++-----
+>   1 file changed, 19 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> index d5f0ee05c794..4f136b47e539 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> @@ -9,6 +9,7 @@
+>   #include <linux/io.h>
+>   #include <linux/iopoll.h>
+>   #include <linux/mfd/syscon.h>
+> +#include <linux/mutex.h>
+>   #include <linux/of.h>
+>   #include <linux/of_clk.h>
+>   #include <linux/platform_device.h>
+> @@ -56,6 +57,7 @@ struct scpsys {
+>   	struct device *dev;
+>   	struct regmap *base;
+>   	const struct scpsys_soc_data *soc_data;
+> +	struct mutex mutex;
+>   	struct genpd_onecell_data pd_data;
+>   	struct generic_pm_domain *domains[];
+>   };
+> @@ -238,9 +240,13 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>   	bool tmp;
+>   	int ret;
+>   
+> +	mutex_lock(&scpsys->mutex);
+> +
+>   	ret = scpsys_regulator_enable(pd->supply);
+> -	if (ret)
+> +	if (ret) {
+> +		mutex_unlock(&scpsys->mutex);
+>   		return ret;
+> +	}
+>   
+>   	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
+>   	if (ret)
+> @@ -291,6 +297,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>   			goto err_enable_bus_protect;
+>   	}
+>   
+> +	mutex_unlock(&scpsys->mutex);
+>   	return 0;
+>   
+>   err_enable_bus_protect:
+> @@ -305,6 +312,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>   	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
+>   err_reg:
+>   	scpsys_regulator_disable(pd->supply);
+> +	mutex_unlock(&scpsys->mutex);
+>   	return ret;
+>   }
+>   
+> @@ -315,13 +323,15 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>   	bool tmp;
+>   	int ret;
+>   
+> +	mutex_lock(&scpsys->mutex);
+> +
+>   	ret = scpsys_bus_protect_enable(pd);
+>   	if (ret < 0)
+> -		return ret;
+> +		goto err_mutex_unlock;
+>   
+>   	ret = scpsys_sram_disable(pd);
+>   	if (ret < 0)
+> -		return ret;
+> +		goto err_mutex_unlock;
+>   
+>   	if (pd->data->ext_buck_iso_offs && MTK_SCPD_CAPS(pd, MTK_SCPD_EXT_BUCK_ISO))
+>   		regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
+> @@ -340,13 +350,15 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>   	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, MTK_POLL_DELAY_US,
+>   				 MTK_POLL_TIMEOUT);
+>   	if (ret < 0)
+> -		return ret;
+> +		goto err_mutex_unlock;
+>   
+>   	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
+>   
+>   	scpsys_regulator_disable(pd->supply);
+>   
+> -	return 0;
+> +err_mutex_unlock:
+> +	mutex_unlock(&scpsys->mutex);
+> +	return ret;
+>   }
+>   
+>   static struct
+> @@ -700,6 +712,8 @@ static int scpsys_probe(struct platform_device *pdev)
+>   		return PTR_ERR(scpsys->base);
+>   	}
+>   
+> +	mutex_init(&scpsys->mutex);
+> +
+>   	ret = -ENODEV;
+>   	for_each_available_child_of_node(np, node) {
+>   		struct generic_pm_domain *domain;
+
 
 
