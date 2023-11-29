@@ -4,70 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB663C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 14:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3A44C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 15:34:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gXDRMcu2P6qNomKaM4Jdk7LTrN3xNma//PdpI1FNdEI=; b=X8Hz6feuYNMFyCYBoalgwnUxEc
-	SVCk7aqj30eeNlD+AbZ79qCpRcOEwll5IGvoz5boYCPIxm3JP5gPBo7OMFCR1YDN5WRA2WpdHoDGc
-	gQTDfzSo8Wl8KtiYaADOZjVNY80m2DZ9ccDKGU8VuMt3AO49GH9ZW+WA7O08N5ZMRqbfTvsCY5yRm
-	cdMkLuOoUHbOvGu/f14Xz0Kue4iM0eXtshZ4iMiMiNHLCST4GBzAS6LD8j2aKnWDrqzz0NuYV+ue+
-	Rjk6fznjXbqHOWGAVMVl1iMRmGrB+gPTrhpWG4V6oqjI3HZd2J3pJq4UtRukVnzVo5JBev9ooR+eI
-	VpBsdyzw==;
+	bh=PopFwY+hhIZfxVE9aZTSkJkF/ON9bFHv/e84VhxRzic=; b=yZiIzqnILZM2rXSvRHd01plzPu
+	HB0gK3hyQ3lN667TjVd32SDW8jiJmL5tjGM3eom8ClQJTopvlu0Mi+lxrFGFQPaEV+Be8+Fl8Hx9E
+	KoBiWjTcm9AHG8+DRtsyDKHLwCaRmN33Sd+KRSTYrqY3FpegiuF/q1tK/xmq6UiueLyP4cJonoRXU
+	FcqfDydS6mem1jYJkt375t/UqlWuAUZJHNw869Thtoj8Dwy2b4+hR6MjNTQLeHe+njVu7PJNC2rC2
+	bM17oBckQKJQK7MSM5l65WmFs8CBRiS6meDvheNxBhZax4q4ArS2z3Ys3WJ4xLFvq4S1ekQ17abt3
+	F/YvNT8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Lrh-008gTD-1r;
-	Wed, 29 Nov 2023 14:48:37 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r8MaD-008lPV-2L;
+	Wed, 29 Nov 2023 15:34:37 +0000
+Received: from mail-yw1-f178.google.com ([209.85.128.178])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Lrd-008gRH-0W;
-	Wed, 29 Nov 2023 14:48:35 +0000
-Received: from [100.94.55.57] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EEDCD66020EE;
-	Wed, 29 Nov 2023 14:48:29 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701269311;
-	bh=IXjLlBd1ZE3GQenT/mh/vJxrF6M99egCVYdJbQvA/IQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jG/b5J8wS3ZQ0rusM4H525SpCqmgUnzfMUAjypnvfZmCNDI0c5crJLzRkx4XX4gkr
-	 bd6MzFEy4sPBZxdw6IcClqf+W3ooAlGXKZwkNx/HmFA5mwCSZsB30RaCVJc2tt8eCm
-	 jN8GAjdJ5buM6i3mHwHiwYoBjyUjIRcafxtZBqES5ooQ20KRH2nyrcRjemr4f4uruB
-	 KH2g9UmZ2CJMByuE5NtL8DMhZExQ4aNt9hPxU0IgiKsy+au+pTbQUeFa7KWe+ygkdQ
-	 uBhLGzmOWf73/P1Z4SicmPMzhrcrub4gf+q5ZjrDJj1yYDXdqRKX2p6eP7c3fVrs68
-	 JJx+j5UUD0vuw==
-Message-ID: <ade69c64-db32-4d5a-8ca8-3ae2d6ce1d2b@collabora.com>
-Date: Wed, 29 Nov 2023 16:48:26 +0200
+	id 1r8Ma9-008lOJ-1j;
+	Wed, 29 Nov 2023 15:34:34 +0000
+Received: by mail-yw1-f178.google.com with SMTP id 00721157ae682-5ce8eff71e1so51041067b3.0;
+        Wed, 29 Nov 2023 07:34:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701272070; x=1701876870;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PopFwY+hhIZfxVE9aZTSkJkF/ON9bFHv/e84VhxRzic=;
+        b=WZ3xlasz8AJdSaGDmRHmSN8h41mQWSCveo6T94f2sCZO5DY5s4ZBzAQ4pzoDVB3X34
+         N8u9Fqk/oyBwNA1YWL0DI/PgtdllJgK2S1MEtxVRhZep48CWDWvIge56fgg9Bzut6JGS
+         JeaL+Zi2bVVRIq0u1e5iP+DmH/6rln/babjipPqWqdHFiLXK1K3N9mKi2K/EmqCwRyl0
+         LDbA8lZNn609/CwKjD6Nr56Aawu1nprvn2bY5SU2Zyksyf9UdW3T2j65DvpDj2f6ZKEL
+         tBbSK+rfv0QHP0K0xAbJFRyAEEqXG+FXk3TclNQJVbp59NsaiisqOj0aBBorXm47HKKp
+         Y7sQ==
+X-Gm-Message-State: AOJu0YwwDI+AS2mEPpMJkFNCH+dZYMdvvllIe4aXtCKu2GCZL4QmDysC
+	UxZaOI2eXw9C0iG6LQAF18SdmBzRUD+NjA==
+X-Google-Smtp-Source: AGHT+IECZ+eJVb7vA9fFc1GpFkQoM4v+DT3Aron27YVfyUyLLnKRTIf/akysYGdQHhX6AgS6vOkv6w==
+X-Received: by 2002:a81:8546:0:b0:5a7:aece:7e59 with SMTP id v67-20020a818546000000b005a7aece7e59mr17704103ywf.50.1701272070367;
+        Wed, 29 Nov 2023 07:34:30 -0800 (PST)
+Received: from mail-yw1-f171.google.com (mail-yw1-f171.google.com. [209.85.128.171])
+        by smtp.gmail.com with ESMTPSA id w204-20020a817bd5000000b0059f7ca6beb4sm4591245ywc.55.2023.11.29.07.34.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 29 Nov 2023 07:34:30 -0800 (PST)
+Received: by mail-yw1-f171.google.com with SMTP id 00721157ae682-5ce8eff71e1so51040947b3.0;
+        Wed, 29 Nov 2023 07:34:30 -0800 (PST)
+X-Received: by 2002:a05:690c:fcb:b0:5cf:b2cc:cf5d with SMTP id
+ dg11-20020a05690c0fcb00b005cfb2cccf5dmr12967096ywb.5.1701272070101; Wed, 29
+ Nov 2023 07:34:30 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pmdomain: mediatek: fix race condition in power on/power
- off sequences
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org
-Cc: eballetbo@kernel.org, ulf.hansson@linaro.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20231129113120.4907-1-eugen.hristev@collabora.com>
- <fd645c33-1b16-4825-b9ea-eecb578dd2a0@collabora.com>
- <bf7ac271-1bda-4114-b080-4b20f857dbc2@collabora.com>
- <80cbe288-2960-4937-be47-56610946695d@collabora.com>
- <7b759141-ff2d-4cac-803e-120f31d2d556@collabora.com>
- <0bb40af7-6b20-48cb-a05f-4eed1176f5f0@collabora.com>
-From: Eugen Hristev <eugen.hristev@collabora.com>
-In-Reply-To: <0bb40af7-6b20-48cb-a05f-4eed1176f5f0@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20231128200155.438722-1-andriy.shevchenko@linux.intel.com>
+ <20231128200155.438722-7-andriy.shevchenko@linux.intel.com>
+ <CAMuHMdWt0qq-Umd8udb7fxpNVZ=X9O9eZGMVGFSGRO_d9UkgNw@mail.gmail.com>
+ <ZWc_o4Dcsb0v5TGB@smile.fi.intel.com> <ZWdJUBNMYj9qvCf2@smile.fi.intel.com>
+In-Reply-To: <ZWdJUBNMYj9qvCf2@smile.fi.intel.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 29 Nov 2023 16:34:19 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdVfMq=nuJhDSq6QFr-hev8af1UpHRAD4g5heVTgQ+7qWA@mail.gmail.com>
+Message-ID: <CAMuHMdVfMq=nuJhDSq6QFr-hev8af1UpHRAD4g5heVTgQ+7qWA@mail.gmail.com>
+Subject: Re: [PATCH v3 06/22] pinctrl: core: Make pins const in struct group_desc
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Biju Das <biju.das.jz@bp.renesas.com>, 
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
+	linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Paul Cercueil <paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, 
+	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Hal Feng <hal.feng@starfivetech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_064833_459124_CC6E2384 
-X-CRM114-Status: GOOD (  38.05  )
+X-CRM114-CacheID: sfid-20231129_073433_571087_E0438652 
+X-CRM114-Status: GOOD (  27.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,276 +106,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/29/23 16:41, AngeloGioacchino Del Regno wrote:
-> Il 29/11/23 14:48, Eugen Hristev ha scritto:
->> On 11/29/23 15:37, AngeloGioacchino Del Regno wrote:
->>> Il 29/11/23 14:28, Eugen Hristev ha scritto:
->>>> On 11/29/23 14:52, AngeloGioacchino Del Regno wrote:
->>>>> Il 29/11/23 12:31, Eugen Hristev ha scritto:
->>>>>> It can happen that during the power off sequence for a power domain
->>>>>> another power on sequence is started, and it can lead to powering on and
->>>>>> off in the same time for the similar power domain.
->>>>>> This can happen if parallel probing occurs: one device starts probing, and
->>>>>> one power domain is probe deferred, this leads to all power domains being
->>>>>> rolled back and powered off, while in the same time another device starts
->>>>>> probing and requests powering on the same power domains or similar.
->>>>>>
->>>>>> This was encountered on MT8186, when the sequence is :
->>>>>> Power on SSUSB
->>>>>> Power on SSUSB_P1
->>>>>> Power on DIS
->>>>>>     -> probe deferred
->>>>>> Power off DIS
->>>>>> Power off SSUSB_P1
->>>>>> Power off SSUSB
->>>>>>
->>>>>> During the sequence of powering off SSUSB, some new similar sequence starts,
->>>>>> and during the power on of SSUSB, clocks are enabled.
->>>>>> In this case, powering off SSUSB fails from the first sequence, because
->>>>>> power off ACK bit check times out (as clocks are powered back on by the second
->>>>>> sequence). In consequence, powering it on also times out, and it leads to
->>>>>> the whole power domain in a bad state.
->>>>>>
->>>>>> To solve this issue, added a mutex that locks the whole power off/power on
->>>>>> sequence such that it would never happen that multiple sequences try to
->>>>>> enable or disable the same power domain in parallel.
->>>>>>
->>>>>> Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
->>>>>> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
->>>>>
->>>>> I don't think that it's a race between genpd_power_on() and genpd_power_off() 
->>>>> calls
->>>>> at all, because genpd *does* have locking after all... at least for probe and for
->>>>> parents of a power domain (and more anyway).
->>>>>
->>>>> As far as I remember, what happens when you start .probe()'ing a device is:
->>>>> platform_probe() -> dev_pm_domain_attach() -> genpd_dev_pm_attach()
->>>>>
->>>>> There, you end up with
->>>>>
->>>>>      if (power_on) {
->>>>>          genpd_lock(pd);
->>>>>          ret = genpd_power_on(pd, 0);
->>>>>          genpd_unlock(pd);
->>>>>      }
->>>>>
->>>>> ...but when you fail probing, you go with genpd_dev_pm_detach(), which then calls
->>>>>
->>>>>      /* Check if PM domain can be powered off after removing this device. */
->>>>>      genpd_queue_power_off_work(pd);
->>>>>
->>>>> but even then, you end up being in a worker doing
->>>>>
->>>>>      genpd_lock(genpd);
->>>>>      genpd_power_off(genpd, false, 0);
->>>>>      genpd_unlock(genpd);
->>>>>
->>>>> ...so I don't understand why this mutex can resolve the situation here (also: are
->>>>> you really sure that the race is solved like that?)
->>>>>
->>>>> I'd say that this probably needs more justification and a trace of the actual
->>>>> situation here.
->>>>>
->>>>> Besides, if this really resolves the issue, I would prefer seeing variants of
->>>>> scpsys_power_{on,off}() functions, because we anyway don't need to lock mutexes
->>>>> during this driver's probe (add_subdomain calls scpsys_power_on()).
->>>>> In that case, `scpsys_power_on_unlocked()` would be an idea... but still, please
->>>>> analyze why your solution works, if it does, because I'm not convinced.
->>>>
->>>> What I see in my tests, is that a power on call for SSUSB domain happens while 
->>>> the previous power off sequence did not yet complete, most likely while it's 
->>>> waiting in readx_poll_timeout . This leads to inconsistency of the power domain, 
->>>> not getting the ACKs next time a power on attempt occurs.
->>>>
->>>> I understand what you say about locks, but in this case the powering off is not 
->>>> called by the genpd itself, but rather it's called by the rollback probe failed 
->>>> mechanism : when the probing fails, scpsys_domain_cleanup() is called during the 
->>>> same probing session.
->>>> Then it happens that probing begins again and previous cleanup is not yet 
->>>> completed. I am not sure whether the lock is still held from the previous run, 
->>>> but it's clearly not waiting for a lock to be released to be called again.
->>>>
->>>
->>> Sorry but I'm a bit lost now: is the problem about probe deferrals of the USB
->>> driver, or about probe deferrals of the mtk-pm-domains driver?
->>>
->>> scpsys_domain_cleanup() is only called upon scpsys_probe() failure.
->>
->> You are right, my explanation was bad.
->>
->> It happens during the mtk-pm-domains driver probe.
->>
->> Not all domains can power up, then everything is rolled back. and this happens 
->> multiple times
->> On rare occasions, it happens that another probing sequence starts while the 
->> previous one was not finished .
->> I mentioned devices because I had in mind the fact that each device requires a 
->> power domain, and parallel probing of these devices causes a call to mtk-pm-domains 
->> driver probe to be called from two different places.
->>
->> e.g. device 1 probes -> call mtk-pm-domains probe because it requires X power domain
->>
->> device 2 probes -> call mtk-pm-domains probe because it requires Y power domain.
->>
->> First attempt fails but not completed while second attempt starts.
->>
->> Maybe this is a better explanation of the situation ?
-> 
-> Yeah, now it's a bit clearer!
-> 
-> At this point, I think that you can get away with locking just one path (or two):
-> 
-> /* This is the one giving me lots of suspects */
-> static void scpsys_remove_one_domain(struct scpsys_domain *pd)
-> {
-> 	int ret;
-> 
-> ***lock***
-> 	if (scpsys_domain_is_on(pd))
-> 		scpsys_power_off(&pd->genpd);
-> ***unlock***
-> 
-> 	.....
-> }
-> 
-> /* This one as well eventually */
-> static struct
-> generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node 
-> *node)
-> {
-> 	...............
-> 
-> 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF)) {
-> 
-> 		if (scpsys_domain_is_on(pd)) /* Maybe LOCK this one too? */
-> 
-> 			dev_warn(scpsys->dev,
-> 				 "%pOF: A default off power domain has been ON\n", node);
-> 	} else {
-> **		*** lock ***
-> 		ret = scpsys_power_on(&pd->genpd);
-> **		*** unlock ***
-> 		if (ret < 0) {
-> 			dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
-> 			goto err_put_subsys_clocks;
-> 		}
-> 
-> 		if (MTK_SCPD_CAPS(pd, MTK_SCPD_ALWAYS_ON))
-> 			pd->genpd.flags |= GENPD_FLAG_ALWAYS_ON;
-> 	}
-> 
-> 	..........
-> }
-> 
-> Can you please try locking only the remove_one_domain() poweroff call before
-> trying both?
-> 
-> Reason is that in the add_one_domain() case, we haven't registered the power
-> domain yet, so locking may not be required there to make things ticking right.
+Hi Andy,
 
-We need to have 'critical section' all the access to clocks/registers, so both
-paths (power on and power off) must be serialized. So a mutex must be taken before
-entering either of those, otherwise it makes no sense. There must be no path left
-that leads to power on/ power off that is taken without the mutex.
-> 
-> Cheers!
-> 
->>>
->>>>>
->>>>>> ---
->>>>>>   drivers/pmdomain/mediatek/mtk-pm-domains.c | 24 +++++++++++++++++-----
->>>>>>   1 file changed, 19 insertions(+), 5 deletions(-)
->>>>>>
->>>>>> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c 
->>>>>> b/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>>>> index d5f0ee05c794..4f136b47e539 100644
->>>>>> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>>>> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>>>> @@ -9,6 +9,7 @@
->>>>>>   #include <linux/io.h>
->>>>>>   #include <linux/iopoll.h>
->>>>>>   #include <linux/mfd/syscon.h>
->>>>>> +#include <linux/mutex.h>
->>>>>>   #include <linux/of.h>
->>>>>>   #include <linux/of_clk.h>
->>>>>>   #include <linux/platform_device.h>
->>>>>> @@ -56,6 +57,7 @@ struct scpsys {
->>>>>>       struct device *dev;
->>>>>>       struct regmap *base;
->>>>>>       const struct scpsys_soc_data *soc_data;
->>>>>> +    struct mutex mutex;
->>>>>>       struct genpd_onecell_data pd_data;
->>>>>>       struct generic_pm_domain *domains[];
->>>>>>   };
->>>>>> @@ -238,9 +240,13 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->>>>>>       bool tmp;
->>>>>>       int ret;
->>>>>> +    mutex_lock(&scpsys->mutex);
->>>>>> +
->>>>>>       ret = scpsys_regulator_enable(pd->supply);
->>>>>> -    if (ret)
->>>>>> +    if (ret) {
->>>>>> +        mutex_unlock(&scpsys->mutex);
->>>>>>           return ret;
->>>>>> +    }
->>>>>>       ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
->>>>>>       if (ret)
->>>>>> @@ -291,6 +297,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->>>>>>               goto err_enable_bus_protect;
->>>>>>       }
->>>>>> +    mutex_unlock(&scpsys->mutex);
->>>>>>       return 0;
->>>>>>   err_enable_bus_protect:
->>>>>> @@ -305,6 +312,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->>>>>>       clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
->>>>>>   err_reg:
->>>>>>       scpsys_regulator_disable(pd->supply);
->>>>>> +    mutex_unlock(&scpsys->mutex);
->>>>>>       return ret;
->>>>>>   }
->>>>>> @@ -315,13 +323,15 @@ static int scpsys_power_off(struct generic_pm_domain 
->>>>>> *genpd)
->>>>>>       bool tmp;
->>>>>>       int ret;
->>>>>> +    mutex_lock(&scpsys->mutex);
->>>>>> +
->>>>>>       ret = scpsys_bus_protect_enable(pd);
->>>>>>       if (ret < 0)
->>>>>> -        return ret;
->>>>>> +        goto err_mutex_unlock;
->>>>>>       ret = scpsys_sram_disable(pd);
->>>>>>       if (ret < 0)
->>>>>> -        return ret;
->>>>>> +        goto err_mutex_unlock;
->>>>>>       if (pd->data->ext_buck_iso_offs && MTK_SCPD_CAPS(pd, 
->>>>>> MTK_SCPD_EXT_BUCK_ISO))
->>>>>>           regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
->>>>>> @@ -340,13 +350,15 @@ static int scpsys_power_off(struct generic_pm_domain 
->>>>>> *genpd)
->>>>>>       ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, 
->>>>>> MTK_POLL_DELAY_US,
->>>>>>                    MTK_POLL_TIMEOUT);
->>>>>>       if (ret < 0)
->>>>>> -        return ret;
->>>>>> +        goto err_mutex_unlock;
->>>>>>       clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
->>>>>>       scpsys_regulator_disable(pd->supply);
->>>>>> -    return 0;
->>>>>> +err_mutex_unlock:
->>>>>> +    mutex_unlock(&scpsys->mutex);
->>>>>> +    return ret;
->>>>>>   }
->>>>>>   static struct
->>>>>> @@ -700,6 +712,8 @@ static int scpsys_probe(struct platform_device *pdev)
->>>>>>           return PTR_ERR(scpsys->base);
->>>>>>       }
->>>>>> +    mutex_init(&scpsys->mutex);
->>>>>> +
->>>>>>       ret = -ENODEV;
->>>>>>       for_each_available_child_of_node(np, node) {
->>>>>>           struct generic_pm_domain *domain;
->>>>>
->>>
-> 
+On Wed, Nov 29, 2023 at 3:23=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+> On Wed, Nov 29, 2023 at 03:41:55PM +0200, Andy Shevchenko wrote:
+> > On Wed, Nov 29, 2023 at 12:21:45PM +0100, Geert Uytterhoeven wrote:
+> > > On Tue, Nov 28, 2023 at 9:04=E2=80=AFPM Andy Shevchenko
+> > > <andriy.shevchenko@linux.intel.com> wrote:
+> > > > It's unclear why it's not a const from day 1. Make the pins member
+> > > > const in struct group_desc. Update necessary APIs.
+>
+> ...
+>
+> > > >  int pinctrl_generic_add_group(struct pinctrl_dev *pctldev, const c=
+har *name,
+> > > > -                             int *gpins, int ngpins, void *data);
+> > > > +                             const int *pins, int num_pins, void *=
+data);
+> > > >
+> > > >  int pinctrl_generic_remove_group(struct pinctrl_dev *pctldev,
+> > > >                                  unsigned int group_selector);
+> > >
+> > > Probably this is also the right moment to change all of these to arra=
+ys
+> > > of unsigned ints?  Else you will have mixed int/unsigned int after
+> > > "[PATCH v3 13/22] pinctrl: core: Embed struct pingroup into struct
+> > > group_desc", and purely unsigned int after "[PATCH v3 22/22] pinctrl:
+> > > core: Remove unused members from struct group_desc".
+> >
+> > Hmm... Can it be done later?
+> >
+> > I can, of course try to change the parameter here to be unsigned, but i=
+t most
+> > likely fail the build for those drivers means need more patches, more d=
+elay to
+> > this series.
+> >
+> > Linus?
+>
+> On the first glance updating API here does not fail the build.
 
+That's what I had expected, as drivers already pass int or unsigned int
+arrays anyway.
+
+> Lemme incorporate this into v4.
+
+Thanks!
+
+> Meanwhile the drivers I left untouched, it might be separate changes
+> to convert from int to const unsigned int.
+
+Sounds fine to me.
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
