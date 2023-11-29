@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4236C10DC3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DD15C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Edy349FNAljpj2WbedkltWmMgsESaCDNN1TmpXeQWFo=; b=uaJuadSbW2gnbRMflrowhWb6zV
-	5Xw5bKqBdBBg2PJmKO/yVY/0i7c74mABX4X2tAZF49RTg0DagTwiuK7YoK65GpinDdIXgTJ3oeJMY
-	2nbyGFmPSlVpMYEGtO7GMN/lxpJb74qkqn10Q5aQ0kALeW20lii7TgMJ5h8gLhSepkA433Ax32ZZR
-	k4zrjT5Q5FHMvWZA1wmKHf/ILKOnGyChsTSP9T1HOz7ldcnzAmcIy2BrYp1wT/lCU3SslPY9HOoAd
-	EruQ7gspOV4ELl7nEuS2V5s57brUBZ7NYB37EVa3PzI/o3u3aXzTsUz806NdSK0HKr2r/cSpBTphD
-	9zYsSc4Q==;
+	bh=3Jpu0in54hH9J2gqj2EBcwuHjspsCuq7JMy1EzDMCAo=; b=MEyrVUo9BcI9ungRODiaC6Cgpd
+	k78pyDUxPBvWtQr/tcHvgfhUhBu+oqQmiV9V/ng2aXGr+nT6INC8OwpwuQeEVQhK6He5zuPTw/en5
+	f3Diu5MFdEvyks7FTN0ZaR26tCeAGou4d8rG/YCZKdQ2qqMteLjN/bjwDDqQn6jNDd4HpriWKlXNr
+	ICLPstRatPWdxQpHpBE6jWrOBpJFPL+ztH3+Hv/GYKtV39siucn5L6KkH0aRtVeHPw84Hw7gMGEBw
+	Tz1ihkTcSuLds5gILrCZhRbmdiYKXvvNXLnHBBL3bP1MY8oHpdPHa59ESol9F0feUSyPu2hBQJR1l
+	pq3K5fJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JXC-008HXN-2H;
-	Wed, 29 Nov 2023 12:19:18 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r8JXS-008Hix-1q;
+	Wed, 29 Nov 2023 12:19:34 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JXA-008HUn-08;
-	Wed, 29 Nov 2023 12:19:17 +0000
+	id 1r8JXP-008HgM-1I;
+	Wed, 29 Nov 2023 12:19:32 +0000
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 51A836607323;
-	Wed, 29 Nov 2023 12:19:11 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BE0426607326;
+	Wed, 29 Nov 2023 12:19:26 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701260354;
-	bh=LAiI9Zj6sblQ9PE3ddYSUkjK2felt6gCjLGE+jeFyco=;
+	s=mail; t=1701260370;
+	bh=XPqb5JshYNquGPkJGWY0HezlshvZancOV1Y08nA8CYE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JBI4zughUA/jDHu5gvDlkhlQ5iGsI0NYo5djTinqxMvhvHuDL9bSt1DDeaRw3TBAT
-	 ZiribR2NUqhV0adE8O1YoMaTEFRKv0yVj3zAmRa2W9wlPxBNBssuJACW/srDajZ1O4
-	 iG9tvVfFGLM+nz4d0IfGEM8z+WXFDNn5wOvScmCRaVzjfzH5oUjg7AdsyK4PhFoBdA
-	 FTWe8m5UzZNrL1u7FY3c1Y5tXX97pTHJSl8PQEPYT+mZ6gIUR3dT45aiEPBLbXsKn7
-	 UWvTMSQiBFwEkd2znzd6OkgY89FvIvgUxk8ik8lU5tMiQwK1Yc1wywyq3u5haVFEEh
-	 /waf/05mDmOwA==
+	b=CvOBtgyaHioy9cuADbv5R52hqXzjAP6cvOJry63R7jsCOKHTBGchyto83ojeFKwwc
+	 CSN/82xQ6AtamhXf5OZFA1EAQHnxOP8FcDeWA4kZBH9khBgZ159iLfJ/XfQJ4hxDJN
+	 vtNHkmeKWkukAUFB9tJyIHES7LevAq0IIjfjABewYpCGeCvAWRqY2Cs6L2f7BCyjRV
+	 zBHtJkuY8t78GXfQMKVQZgUC1Fi2l0skQZlm2HgxPjhtBFJ5FBJp/f8MO5N2ZEg1Qa
+	 oXV/vJtFK1Y5V5XSFzPVR3RHCpQ2EeLiTa18AXJiiAIwvNics+lU6X+jb9EPXYDfYZ
+	 3aGfOJeGQNMyw==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -60,18 +60,17 @@ Cc: david.heidelberg@collabora.com,
 	virtualization@lists.linux-foundation.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org
-Subject: [PATCH v6 05/10] drm: ci: Use scripts/config to enable/disable configs
-Date: Wed, 29 Nov 2023 17:48:36 +0530
-Message-Id: <20231129121841.253223-6-vignesh.raman@collabora.com>
+Subject: [PATCH v6 09/10] drm/doc: ci: Add IGT version details for flaky tests
+Date: Wed, 29 Nov 2023 17:48:40 +0530
+Message-Id: <20231129121841.253223-10-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231129121841.253223-1-vignesh.raman@collabora.com>
 References: <20231129121841.253223-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_041916_213103_30FB84D1 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231129_041931_567857_C2008272 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,65 +85,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instead of modifying files in git to enable/disable
-configs, use scripts/config on the .config file which
-will be used for building the kernel.
+Document the IGT version in the flaky tests reporting template.
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
-Suggested-by: Jani Nikula <jani.nikula@intel.com>
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
 
-v2:
-  - Added a new patch in the series to use scripts/config to enable/disable configs
-
-v3:
-  - No changes
-
-v4:
-  - No changes
-
-v5:
-  - No changes
-
 v6:
-  - No changes
+  - Added a new patch in the series to update drm ci documentation
 
 ---
- drivers/gpu/drm/ci/build.sh | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ Documentation/gpu/automated_testing.rst | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-index e2260b4a1c67..97ff43759b91 100644
---- a/drivers/gpu/drm/ci/build.sh
-+++ b/drivers/gpu/drm/ci/build.sh
-@@ -75,19 +75,19 @@ else
-     fi
- fi
+diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
+index 240e29d5ba68..2d5a28866afe 100644
+--- a/Documentation/gpu/automated_testing.rst
++++ b/Documentation/gpu/automated_testing.rst
+@@ -69,14 +69,15 @@ the result. They will still be run.
  
--for opt in $ENABLE_KCONFIGS; do
--  echo CONFIG_$opt=y >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
--done
--for opt in $DISABLE_KCONFIGS; do
--  echo CONFIG_$opt=n >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
--done
--
- if [[ -n "${MERGE_FRAGMENT}" ]]; then
-     ./scripts/kconfig/merge_config.sh ${DEFCONFIG} drivers/gpu/drm/ci/${MERGE_FRAGMENT}
- else
-     make `basename ${DEFCONFIG}`
- fi
+ Each new flake entry must be associated with a link to the email reporting the
+ bug to the author of the affected driver, the board name or Device Tree name of
+-the board, the first kernel version affected, and an approximation of the
+-failure rate.
++the board, the first kernel version affected, the IGT version used for tests,
++and an approximation of the failure rate.
  
-+for opt in $ENABLE_KCONFIGS; do
-+    ./scripts/config --enable CONFIG_$opt
-+done
-+for opt in $DISABLE_KCONFIGS; do
-+    ./scripts/config --disable CONFIG_$opt
-+done
-+
- make ${KERNEL_IMAGE_NAME}
+ They should be provided under the following format::
  
- mkdir -p /lava-files/
+   # Bug Report: $LORE_OR_PATCHWORK_URL
+   # Board Name: broken-board.dtb
+-  # Version: 6.6-rc1
++  # Linux Version: 6.6-rc1
++  # IGT Version: 1.28-gd2af13d9f
+   # Failure Rate: 100
+   flaky-test
+ 
 -- 
 2.40.1
 
