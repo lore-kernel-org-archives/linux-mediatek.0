@@ -4,87 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0B4BC4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 08:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C66DCC07E97
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 08:29:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k7+haveSoq7m2f2Pj8HBweyY+n64mswSOvsdXSe1aV8=; b=3B1ZL3/yDlwzid4QOxdsxonfE4
-	2DB1UJcmW1dCsc4iqHzOShk+L7mSCCRl2tSVtMGhcVyIUrALsHMN+ScMSM1+V/gcHyVY9zZS2pltG
-	GQQBHVUMrj3xYJAApxsHv/+MAniBMY3dV5wv4pcdsPMoI0Jk25GoRn/Y/9CA2jwXCui976qgOdzTp
-	vHzQXO/GnIH9Ymtml27G4/ytd7WaqexHACcXA328LEOoQdA9pO7gipPUAyOGbtVvQY0O9PKvmofNx
-	cpNShPxrprhVC1b1FrVq94WfkmDlnpWK5xjK3EchSmrh19t1I+2QbxdoeKHhjUolBWIwNTXcsRP2n
-	0EuF3QAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=L6s3QOTaM38nTl1M4VAl4zhUZxsgmV1Lz/iG3E95P9E=; b=a3tajv+UfRZzlrA+KzpGc1H/rU
+	eDOPjVkUIGnopF28NhaFxAsXsY11KkDkB1z1r361eOvG1RQLuD/rRzp9542gsxj4A1FeI5I1IjDqm
+	Boe0FjKsB5UOHmCS0icfj70k8ehWbd7A9LhhPy3qrHTwYmIeUkKRYwgogp/KBVccveuCU+a9bqOw5
+	vP/AudmNlz+abrhJVOULAaq6u8AIWetkXPkQxwjhQ+s5VHznwxvc6gvmOxOqnSDBGdLVrgIDi4yV7
+	QkC7UGrxCouXuKMS73CiEj7H3c4pzPjK+Py/x5fJuT5/rUMqO4O/Oy0eGfXrgjsr6/c6L9TLIzOoS
+	d/7IuWgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8FrR-007SQC-1Q;
-	Wed, 29 Nov 2023 08:23:57 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1r8FwV-007T8X-2M;
+	Wed, 29 Nov 2023 08:29:11 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8FrO-007SO8-0f
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Nov 2023 08:23:55 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5094cb3a036so8944421e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 00:23:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701246232; x=1701851032; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k7+haveSoq7m2f2Pj8HBweyY+n64mswSOvsdXSe1aV8=;
-        b=ac38AGBQ0Qn2rn2QpedP+bUcZhuh+PLupro0c5IhtMnf2Eshh6zdOYdEpBgWrrPNIF
-         be3zd0+fh+h3PHz+wNa5TOoIhcbLoiGA6P172COzm+bOUarO2iwNXBGpn06ljo/LSrhZ
-         dN+nzQ2cJiUFPbD7kSd9maifsbgwcFvm/jDHA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701246232; x=1701851032;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=k7+haveSoq7m2f2Pj8HBweyY+n64mswSOvsdXSe1aV8=;
-        b=lKKqdX8mRCQruK1/DA/Cin6mo/52Bemkf2hl9aL7ZaX0yrySSCIQvEmhW0JqPkI1+K
-         C5AD6eyoPEXsuLG24lkA87eNL588X0STalgK1v84dgGManJPRrT9DGQuLiFxCtIhWXpx
-         VJdF/6im7IgXh2diowHU38/puHvkQoo37NkSfW80DSVM9J3Xxz6onLQZT9JEO2pvJWzG
-         EEKJey2baKv436qtMRviIPeSLWyaR+/CrcIUyllAurwjIWlDon1wOKCcrnrtRxeeVZAi
-         JBMVawdvP+6/Nbhizo8IyOq3ifHC0VZAqYNUSCH4/n7Bg52FY4Icw/fw4R65JhyWmqnB
-         QMkg==
-X-Gm-Message-State: AOJu0Yxt6Kj4kv4KGZ2XjfyExfX09xSfWQU6ekvaHPElthTzwprH+0IE
-	R6o2Mn/H39WNxB95pCA2kq+FGrN43/FIm342+6OqLA==
-X-Google-Smtp-Source: AGHT+IEtWhB/1EU4Pgqrnwxww3bANfSl0NJ1NAjrSVHkHzZ34kpFTEDs7eij5sHcmcrKNah8R2KVsBjvlDihDkrrAjY=
-X-Received: by 2002:a05:6512:3081:b0:507:a1dd:5a86 with SMTP id
- z1-20020a056512308100b00507a1dd5a86mr12720343lfd.13.1701246232561; Wed, 29
- Nov 2023 00:23:52 -0800 (PST)
-MIME-Version: 1.0
-References: <20231128084236.157152-1-wenst@chromium.org> <20231128084236.157152-4-wenst@chromium.org>
- <ZWYUi3Q5ptQXR0uQ@smile.fi.intel.com>
-In-Reply-To: <ZWYUi3Q5ptQXR0uQ@smile.fi.intel.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 29 Nov 2023 16:23:41 +0800
-Message-ID: <CAGXv+5EG4wO2sD0f_j1VDTkOcyN46oyfTYs3nf7cP7xFPg1fYQ@mail.gmail.com>
-Subject: Re: [RFC PATCH v3 3/5] platform/chrome: Introduce device tree
- hardware prober
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
-	Johan Hovold <johan@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jiri Kosina <jikos@kernel.org>, linus.walleij@linaro.org, 
-	broonie@kernel.org, gregkh@linuxfoundation.org, hdegoede@redhat.com, 
-	james.clark@arm.com, james@equiv.tech, keescook@chromium.org, 
-	rafael@kernel.org, tglx@linutronix.de, Jeff LaBundy <jeff@labundy.com>, 
-	linux-input@vger.kernel.org, linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1r8FwT-007T6N-0A;
+	Wed, 29 Nov 2023 08:29:10 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AT6TKc1029736;
+	Wed, 29 Nov 2023 08:28:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id; s=qcppdkim1;
+ bh=L6s3QOTaM38nTl1M4VAl4zhUZxsgmV1Lz/iG3E95P9E=;
+ b=fIcNVeTF2xK6rwaR2dI6weLU36G35+Sb1l+ZUT1BEzKf6jW5V9E0CN9WqlpHBzglRuga
+ 6MdHEh42vs1qJyWTm9EtdSVZUo4oczGuuEfzvz9+szl7xNga4iRKDIQhhSmYAKNOqnWf
+ Ihb5hDtlN7y9wWX0mOAizcPFqfzP0LfxAneiVsRZiI1ITPfSWDQ7dG6OvbPT6ZVsxg7h
+ ZrptNc1f9qvCpue9LrCB4kA7sk1JUelNZaAU7nnqp36m+R/oETzZHxJ/1cKinV5Rqyxd
+ McR/OGnAex4n+5nmlx0E0vWA4mOGAAKCpwnqF5r6sLTtE+lryMmmjrUy3dn36Onh3QXw GA== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3up02xra1h-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 29 Nov 2023 08:28:39 +0000
+Received: from pps.filterd (NASANPPMTA05.qualcomm.com [127.0.0.1])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTP id 3AT8Lss1017637;
+	Wed, 29 Nov 2023 08:28:38 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by NASANPPMTA05.qualcomm.com (PPS) with ESMTP id 3unmeuy4yt-1;
+	Wed, 29 Nov 2023 08:28:38 +0000
+Received: from NASANPPMTA05.qualcomm.com (NASANPPMTA05.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3AT8ScXQ028464;
+	Wed, 29 Nov 2023 08:28:38 GMT
+Received: from stor-dylan.qualcomm.com (stor-dylan.qualcomm.com [192.168.140.207])
+	by NASANPPMTA05.qualcomm.com (PPS) with ESMTP id 3AT8Sb63028463;
+	Wed, 29 Nov 2023 08:28:38 +0000
+Received: by stor-dylan.qualcomm.com (Postfix, from userid 359480)
+	id 93E5D20A5D; Wed, 29 Nov 2023 00:28:37 -0800 (PST)
+From: Can Guo <quic_cang@quicinc.com>
+To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
+        adrian.hunter@intel.com, cmd4@qualcomm.com, beanhuo@micron.com,
+        avri.altman@wdc.com, junwoo80.lee@samsung.com,
+        martin.petersen@oracle.com
+Cc: linux-scsi@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Subject: [PATCH v6 00/10] Enable HS-G5 support on SM8550
+Date: Wed, 29 Nov 2023 00:28:25 -0800
+Message-Id: <1701246516-11626-1-git-send-email-quic_cang@quicinc.com>
+X-Mailer: git-send-email 2.7.4
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: tntk3zMtNUV5VFJbzZSpIf7njExSWXXB
+X-Proofpoint-GUID: tntk3zMtNUV5VFJbzZSpIf7njExSWXXB
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-29_06,2023-11-27_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 bulkscore=0
+ suspectscore=0 phishscore=0 adultscore=0 lowpriorityscore=0 spamscore=0
+ priorityscore=1501 impostorscore=0 mlxlogscore=999 clxscore=1015
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2311290062
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_002354_248041_63F0B436 
-X-CRM114-Status: GOOD (  36.15  )
+X-CRM114-CacheID: sfid-20231129_002909_242158_B3B80CF6 
+X-CRM114-Status: GOOD (  19.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,93 +101,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 29, 2023 at 12:26=E2=80=AFAM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Tue, Nov 28, 2023 at 04:42:32PM +0800, Chen-Yu Tsai wrote:
-> > Some devices are designed and manufactured with some components having
-> > multiple drop-in replacement options. These components are often
-> > connected to the mainboard via ribbon cables, having the same signals
-> > and pin assignments across all options. These may include the display
-> > panel and touchscreen on laptops and tablets, and the trackpad on
-> > laptops. Sometimes which component option is used in a particular devic=
-e
-> > can be detected by some firmware provided identifier, other times that
-> > information is not available, and the kernel has to try to probe each
-> > device.
-> >
-> > This change attempts to make the "probe each device" case cleaner. The
-> > current approach is to have all options added and enabled in the device
-> > tree. The kernel would then bind each device and run each driver's prob=
-e
-> > function. This works, but has been broken before due to the introductio=
-n
-> > of asynchronous probing, causing multiple instances requesting "shared"
-> > resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
-> > time, with only one instance succeeding. Work arounds for these include
-> > moving the pinmux to the parent I2C controller, using GPIO hogs or
-> > pinmux settings to keep the GPIO pins in some fixed configuration, and
-> > requesting the interrupt line very late. Such configurations can be see=
-n
-> > on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
-> > Lenovo Thinkpad 13S.
-> >
-> > Instead of this delicate dance between drivers and device tree quirks,
-> > this change introduces a simple I2C component prober. For any given
-> > class of devices on the same I2C bus, it will go through all of them,
-> > doing a simple I2C read transfer and see which one of them responds.
-> > It will then enable the device that responds.
-> >
-> > This requires some minor modifications in the existing device tree.
-> > The status for all the device nodes for the component options must be
-> > set to "failed-needs-probe". This makes it clear that some mechanism is
-> > needed to enable one of them, and also prevents the prober and device
-> > drivers running at the same time.
->
-> ...
->
-> > +#include <linux/array_size.h>
-> > +#include <linux/i2c.h>
-> > +#include <linux/of.h>
-> > +#include <linux/platform_device.h>
->
-> init.h for init calls.
+This series enables HS-G5 support on SM8550.
 
-Added to next version.
+This series is rebased on below changes from Mani -
+https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-1-manivannan.sadhasivam@linaro.org/
+https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-2-manivannan.sadhasivam@linaro.org/
 
-> > +static int chromeos_of_hw_prober_probe(struct platform_device *pdev)
-> > +{
-> > +     for (size_t i =3D 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
-> > +             if (of_machine_is_compatible(hw_prober_platforms[i].compa=
-tible)) {
-> > +                     int ret;
->
-> Perhaps
->
->                 if (!of_machine_is_compatible(hw_prober_platforms[i].comp=
-atible))
->                         continue;
->
-> ?
+This series is tested on below HW combinations -
+SM8550 MTP + UFS4.0
+SM8550 QRD + UFS3.1
+SM8450 MTP + UFS3.1 (for regression test)
+SM8350 MTP + UFS3.1 (for regression test)
 
-Works for me. One less level of indentation.
+Note that during reboot test on above platforms, I occasinally hit PA (PHY)
+error during the 2nd init, this is not related with this series. A fix for
+this is mentioned in below patchwork -
 
-Thanks
-ChenYu
+https://patchwork.kernel.org/project/linux-scsi/patch/1698145815-17396-1-git-send-email-quic_ziqichen@quicinc.com/
 
-> > +                     ret =3D hw_prober_platforms[i].prober(&pdev->dev,
-> > +                                                         hw_prober_pla=
-tforms[i].data);
-> > +                     if (ret)
-> > +                             return ret;
-> > +             }
-> > +
-> > +     return 0;
-> > +}
->
-> --
-> With Best Regards,
-> Andy Shevchenko
->
->
+Also note that on platforms, which have two sets of UFS PHY settings are
+provided (say G4 and no-G4, G5 and no-G5). The two sets of PHY settings are
+basically programming different values to different registers, mixing the
+two sets and/or overwriting one set with another set is definitely not
+blessed by UFS PHY designers. For SM8550, this series will make sure we
+honor the rule. However, for old targets Mani and I will fix them in
+another series in future.
+
+v5 -> v6:
+1. Rebased on scsi-queue-6.8
+2. Addressed comments from Dmitry and Mani in patches to phy-qcom-qmp-ufs.c
+
+v4 -> v5:
+Removed two useless debug prints in patch #9
+
+v3 -> v4:
+Used .tbls_hs_overlay array instead of adding more tables with different names like .tbls_hs_g5
+
+v2 -> v3:
+1. Addressed comments from Andrew, Mani and Bart in patch #1
+2. Added patch #2 as per request from Andrew and Mani
+3. Added patch #4 to fix a common issue on old targets, it is not necessary
+   for this series, but put in this series only because it would be easier
+   to maintain and no need to rebase
+4. Addressed comments from Dmitry and Mani in patches to phy-qcom-qmp-ufs.c
+
+v1 -> v2:
+1. Removed 2 changes which were exposing power info in sysfs
+2. Removed 1 change which was moving data structs to phy-qcom-qmp-ufs.h
+3. Added one new change (the 1st one) to clean up usage of ufs_dev_params based on comments from Mani
+4. Adjusted the logic of UFS device version detection according to comments from Mani:
+	4.1 For HW version < 0x5, go through dual init
+ 	4.2 For HW version >= 0x5
+		a. If UFS device version is populated, one init is required
+		b. If UFS device version is not populated, go through dual init
+
+
+Bao D. Nguyen (1):
+  scsi: ufs: ufs-qcom: Add support for UFS device version detection
+
+Can Guo (9):
+  scsi: ufs: host: Rename structure ufs_dev_params to ufs_host_params
+  scsi: ufs: ufs-qcom: No need to set hs_rate after
+    ufshcd_init_host_param()
+  scsi: ufs: ufs-qcom: Setup host power mode during init
+  scsi: ufs: ufs-qcom: Allow the first init start with the maximum
+    supported gear
+  scsi: ufs: ufs-qcom: Limit HS-G5 Rate-A to hosts with HW version 5
+  scsi: ufs: ufs-qcom: Set initial PHY gear to max HS gear for HW ver 4
+    and newer
+  phy: qualcomm: phy-qcom-qmp-ufs: Rectify SM8550 UFS HS-G4 PHY Settings
+  phy: qualcomm: phy-qcom-qmp-ufs: Add High Speed Gear 5 support for
+    SM8550
+  scsi: ufs: ufs-qcom: Check return value of phy_set_mode_ext()
+
+ drivers/phy/qualcomm/phy-qcom-qmp-pcs-ufs-v6.h     |   2 +
+ drivers/phy/qualcomm/phy-qcom-qmp-qserdes-com-v6.h |   2 +
+ .../qualcomm/phy-qcom-qmp-qserdes-txrx-ufs-v6.h    |  12 ++
+ drivers/phy/qualcomm/phy-qcom-qmp-ufs.c            | 192 ++++++++++++++++++---
+ drivers/ufs/host/ufs-exynos.c                      |   7 +-
+ drivers/ufs/host/ufs-hisi.c                        |  11 +-
+ drivers/ufs/host/ufs-mediatek.c                    |  12 +-
+ drivers/ufs/host/ufs-qcom.c                        |  90 +++++++---
+ drivers/ufs/host/ufs-qcom.h                        |   5 +-
+ drivers/ufs/host/ufshcd-pltfrm.c                   |  69 ++++----
+ drivers/ufs/host/ufshcd-pltfrm.h                   |  10 +-
+ 11 files changed, 306 insertions(+), 106 deletions(-)
+
+-- 
+2.7.4
+
 
