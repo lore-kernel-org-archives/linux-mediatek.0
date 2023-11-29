@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BA2AC10DAA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 16:15:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F5FAC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 16:15:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TSdgwu4Um0fPrArS43eyiDKxgk95EXRlAl/9yrQGGrA=; b=E9yIxOnhyG/fXH29MC+TGg0G2m
-	A8pPztVOGo1JkpCTy365vyeVgV/7401a9QleAZgTdbXCA7kSxqv07xTm9XZT0lwjikrhQEveUOklP
-	A+spcOAQyeaJpbqjaofe4zTBIINjlExnIqGdwkK+FW4pOlIni5RiPi0QyADUt+IIBWRw+DuF6JeXI
-	GbolGW5AZa02litF//K8FvB1xDU65Y9SbD4SPvuqEtAQlmYSv6MPK0su59aZxk1NS0cX8OqygGK6v
-	UAv6iy6KZfOFwjp8lpiBncHyUq79bVpjeUk+fm7JfN+EXVV92PuZUvPI5r84SKgMpi8Pb1pkH0P+1
-	OAdRRPLQ==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WrgYKo9ovA3Ms6uyhnWjl7Yg+ofNO5aTAG+eIS3CBX8=; b=ky3hF+QsBCw3Z8257tkqkQBk+d
+	RY3mDGOjOaanq0pdsfkiLSB4OqipipUujgbLFVT9bjxYiNNzgVmFwZ4vpVV12zXAc/4jBfUYbYk99
+	PVPCnTsrCaUJn4VEuogPlzgDVsuqC2KebwLm1+QoINqNiySl5puoCf6ySkoyue+GQLAs8RujbR28e
+	i4cb8wG/8mwnx7Q7rVvi38bmNV6kFjWl2EQ61l5UBtnUCqxlB/4G6VzFgL5sqL44+42LZBiY3aaYY
+	wqwKiwjU008i1jMFqcfpP/SgleHmzhO7vDcrC7ua+D17OuzpcG+/LPnhP8yqaBQaXIDLMTQIMzNNa
+	+qUA2cxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8NDt-008qCd-2d;
-	Wed, 29 Nov 2023 16:15:37 +0000
+	id 1r8NE3-008qHI-0E;
+	Wed, 29 Nov 2023 16:15:47 +0000
 Received: from mgamail.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8NDZ-008pzo-37;
+	id 1r8NDZ-008q0T-1A;
 	Wed, 29 Nov 2023 16:15:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
   t=1701274517; x=1732810517;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=3uSEXFAfigJrZCoXVJ4ZtMtwaJ+4f5OEieqGUBtBbV0=;
-  b=Kn/0tjPMaGOurG7NkFkUGZXxh7lf+1vZmpM/qsBOGyjTMlm1l4u7ADUt
-   ECejRiyroHRI2+Me4Ay1OmP5euLRB3ml8rOF4499i05A9bPTUdf/aPgBP
-   EHSl9Tkbm/UmiXGj/MEsveLNTOrlUAMaqtzHEh167jCZeNLblGuA0FTaL
-   DCANVds9XVVgj2EAodzW+owyl4asZO0u39+GyFogFBUZ10lYd2Kdrjjr8
-   V6ayr8U3otz1lxM672gOOh6vR2hY81cF4NUCmScNgzmp6nvngyB18Cj/F
-   3Modt/VMfQb16Z7qeUnQlW9fGUeHV13RQMP7kXqqif8pLlvlzz70uMhgL
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10909"; a="373372545"
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=4rJwzaKl6Nti620s0yITOjM1A5IvNX/6uM1qfPh4kAQ=;
+  b=NVoG4sFK4r3rCcirlh8mryrDIhUmnMYl+R7gl/6VZfhH1GxbESPP6tnS
+   aj/DWk4GkhzoFzBX6V2FwfKyb5t3xTahMWkXkKxrW1W140hNZfEz8LXCv
+   yiOPVsWc6ugDAIgj0vsr89I9qr3DS95z3zzPNAeEzq7KvBoSvITnJOKpm
+   R0rDKZXlCbpV5E946eEA22h1UuELEKnocOJmogE560N0gkrnkYVm7ILka
+   4qGF3AZ5pXUPNbZ5Aw7Jz8pQeFFwKruR++EzmwWRqcnZXckQ9GE07xhRu
+   EuxXFbrDR5ndH12BO1p48olT88JWnOUr+atO9SHHHB0CHfoMwHRwA+NbV
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10909"; a="373372531"
 X-IronPort-AV: E=Sophos;i="6.04,235,1695711600"; 
-   d="scan'208";a="373372545"
+   d="scan'208";a="373372531"
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
   by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Nov 2023 08:15:12 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10909"; a="892498853"
+X-IronPort-AV: E=McAfee;i="6600,9927,10909"; a="892498851"
 X-IronPort-AV: E=Sophos;i="6.04,235,1695711600"; 
-   d="scan'208";a="892498853"
+   d="scan'208";a="892498851"
 Received: from black.fi.intel.com ([10.237.72.28])
   by orsmga004.jf.intel.com with ESMTP; 29 Nov 2023 08:15:02 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 4E6C2968; Wed, 29 Nov 2023 18:15:01 +0200 (EET)
+	id 1F65D4D4; Wed, 29 Nov 2023 18:15:00 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -90,17 +90,16 @@ Cc: Ray Jui <rjui@broadcom.com>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v4 03/23] pinctrl: equilibrium: Unshadow error code of of_property_count_u32_elems()
-Date: Wed, 29 Nov 2023 18:06:26 +0200
-Message-ID: <20231129161459.1002323-4-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v4 00/23] pinctrl: Convert struct group_desc to use struct pingroup
+Date: Wed, 29 Nov 2023 18:06:23 +0200
+Message-ID: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
-In-Reply-To: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
-References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_081518_035302_2E8F2E82 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20231129_081517_417654_497B8CA9 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,38 +114,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-of_property_count_u32_elems() might return an error code in some cases.
-It's naturally better to assign what it's returned to the err variable
-and supply the real code to the upper layer(s). Besides that, it's a
-common practice to avoid assignments for the data in cases when we know
-that the error condition happened. Refactor the code accordingly.
+The struct group_desc has a lot of duplication with struct pingroup.
+Deduplicate that by embeddind the latter in the former and convert
+users.
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/pinctrl/pinctrl-equilibrium.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+Linus, assuming everything is fine, I can push this to my tree.
+Or you can apply it (assumming all CIs and people are happy with
+the series).
 
-diff --git a/drivers/pinctrl/pinctrl-equilibrium.c b/drivers/pinctrl/pinctrl-equilibrium.c
-index 5b5ddf7e5d0e..54755b583d3f 100644
---- a/drivers/pinctrl/pinctrl-equilibrium.c
-+++ b/drivers/pinctrl/pinctrl-equilibrium.c
-@@ -715,12 +715,13 @@ static int eqbr_build_groups(struct eqbr_pinctrl_drv_data *drvdata)
- 		if (!prop)
- 			continue;
- 
--		group.num_pins = of_property_count_u32_elems(np, "pins");
--		if (group.num_pins < 0) {
-+		err = of_property_count_u32_elems(np, "pins");
-+		if (err < 0) {
- 			dev_err(dev, "No pins in the group: %s\n", prop->name);
- 			of_node_put(np);
--			return -EINVAL;
-+			return err;
- 		}
-+		group.num_pins = err;
- 		group.name = prop->value;
- 		group.pins = devm_kcalloc(dev, group.num_pins,
- 					  sizeof(*(group.pins)), GFP_KERNEL);
+NB. It seems to me that GCC 7.x has an issue when compound literal
+is being assigned to a constant object. I believe it's a false positive
+(at least I can't reproduce this with recent GCC and LLVM and hence
+I haven't touched the code in order to address this.
+
+NB. This series contains previously sent patches for Qualcomm and
+Nuvoton. Here the updated version for Qualcomm that splits previous
+patch to two and fixes compilation warnings.
+
+NB. The function_desc is in plan to follow the similar deduplication.
+
+In v4:
+- made pins also unsigned in struct group_desc (Geert)
+- made local pins variable unsigned in renesas drivers (Geert)
+- collected more tags (Paul, Geert)
+
+v3: https://lore.kernel.org/r/20231128200155.438722-1-andriy.shevchenko@linux.intel.com
+
+In v3:
+- fixed reported bug in equilibrium code (LKP)
+- collected tags (Emil, Florian, Paul)
+
+v2: https://lore.kernel.org/r/20231123193355.3400852-1-andriy.shevchenko@linux.intel.com
+
+In v2:
+- added a few patches to fix multiple compile-time errors (LKP)
+- added tag (Jonathan)
+
+v1: https://lore.kernel.org/r/20231122164040.2262742-1-andriy.shevchenko@linux.intel.com
+
+Andy Shevchenko (23):
+  pinctrl: qcom: lpass-lpi: Replace kernel.h with what is being used
+  pinctrl: qcom: lpass-lpi: Remove unused member in struct lpi_pingroup
+  pinctrl: equilibrium: Unshadow error code of
+    of_property_count_u32_elems()
+  pinctrl: equilibrium: Use temporary variable to hold pins
+  pinctrl: imx: Use temporary variable to hold pins
+  pinctrl: core: Make pins const unsigned int pointer in struct
+    group_desc
+  pinctrl: equilibrium: Convert to use struct pingroup
+  pinctrl: keembay: Convert to use struct pingroup
+  pinctrl: nuvoton: Convert to use struct pingroup and
+    PINCTRL_PINGROUP()
+  pinctrl: core: Add a convenient define PINCTRL_GROUP_DESC()
+  pinctrl: ingenic: Make use of PINCTRL_GROUP_DESC()
+  pinctrl: mediatek: Make use of PINCTRL_GROUP_DESC()
+  pinctrl: core: Embed struct pingroup into struct group_desc
+  pinctrl: bcm: Convert to use grp member
+  pinctrl: equilibrium: Convert to use grp member
+  pinctrl: imx: Convert to use grp member
+  pinctrl: ingenic: Convert to use grp member
+  pinctrl: keembay: Convert to use grp member
+  pinctrl: mediatek: Convert to use grp member
+  pinctrl: renesas: Convert to use grp member
+  pinctrl: starfive: Convert to use grp member
+  pinctrl: core: Remove unused members from struct group_desc
+  pinctrl: Convert unsigned to unsigned int
+
+ drivers/pinctrl/bcm/pinctrl-ns.c              |  4 +-
+ drivers/pinctrl/core.c                        | 41 ++++++++---------
+ drivers/pinctrl/core.h                        | 33 ++++++++------
+ drivers/pinctrl/devicetree.c                  |  8 ++--
+ drivers/pinctrl/freescale/pinctrl-imx.c       | 44 +++++++++----------
+ drivers/pinctrl/mediatek/pinctrl-moore.c      | 13 +++---
+ drivers/pinctrl/mediatek/pinctrl-moore.h      |  7 +--
+ drivers/pinctrl/mediatek/pinctrl-paris.h      |  7 +--
+ drivers/pinctrl/nuvoton/pinctrl-wpcm450.c     |  9 ++--
+ drivers/pinctrl/pinconf-generic.c             | 16 +++----
+ drivers/pinctrl/pinconf.c                     | 14 +++---
+ drivers/pinctrl/pinconf.h                     | 10 ++---
+ drivers/pinctrl/pinctrl-equilibrium.c         | 42 +++++++++---------
+ drivers/pinctrl/pinctrl-ingenic.c             | 27 +++++-------
+ drivers/pinctrl/pinctrl-keembay.c             |  6 +--
+ drivers/pinctrl/pinctrl-utils.c               | 26 +++++------
+ drivers/pinctrl/pinctrl-utils.h               | 18 ++++----
+ drivers/pinctrl/pinmux.c                      | 36 +++++++--------
+ drivers/pinctrl/pinmux.h                      | 20 ++++-----
+ drivers/pinctrl/qcom/pinctrl-lpass-lpi.h      |  6 +--
+ .../pinctrl/qcom/pinctrl-sc7280-lpass-lpi.c   | 16 -------
+ .../pinctrl/qcom/pinctrl-sc8280xp-lpass-lpi.c | 20 ---------
+ .../pinctrl/qcom/pinctrl-sm6115-lpass-lpi.c   | 20 ---------
+ .../pinctrl/qcom/pinctrl-sm8250-lpass-lpi.c   | 15 -------
+ .../pinctrl/qcom/pinctrl-sm8350-lpass-lpi.c   | 16 -------
+ .../pinctrl/qcom/pinctrl-sm8450-lpass-lpi.c   | 24 ----------
+ .../pinctrl/qcom/pinctrl-sm8550-lpass-lpi.c   | 24 ----------
+ .../pinctrl/qcom/pinctrl-sm8650-lpass-lpi.c   | 24 ----------
+ drivers/pinctrl/renesas/pinctrl-rza1.c        |  2 +-
+ drivers/pinctrl/renesas/pinctrl-rza2.c        | 10 ++---
+ drivers/pinctrl/renesas/pinctrl-rzg2l.c       |  6 +--
+ drivers/pinctrl/renesas/pinctrl-rzv2m.c       |  6 +--
+ .../starfive/pinctrl-starfive-jh7100.c        |  8 ++--
+ .../starfive/pinctrl-starfive-jh7110.c        |  8 ++--
+ include/linux/pinctrl/machine.h               |  6 +--
+ include/linux/pinctrl/pinconf-generic.h       | 10 ++---
+ include/linux/pinctrl/pinconf.h               | 16 +++----
+ include/linux/pinctrl/pinctrl.h               | 24 +++++-----
+ include/linux/pinctrl/pinmux.h                | 22 +++++-----
+ 39 files changed, 242 insertions(+), 422 deletions(-)
+
 -- 
 2.43.0.rc1.1.gbec44491f096
 
