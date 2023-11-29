@@ -4,92 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75620C07CB1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 12:14:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEC13C46CA3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AsQvimBOnTjXGdKhEAnGYzR8KiGWDUYPadmCZZ7TXho=; b=nLSuo41aYJHybnFBKBYQdj6SvY
-	SkWtuVPwHfgr6Gox2qzgA0/7a4QHt5b39NEG/gsPHH4Mmy+eQeS+l7nGnorbti8q8PjsHWiDqkTdt
-	MyjPoAAM3VJh70pt/ZKet5QSJMkFaYHeLT5G0141TQ5t4GKNUg8cROR4bHOP3PrVEJDdIHRghDPQg
-	a2jpN06/LI5GkM8244zm49FUmm97a3l19HJg0VyZTeuVvv8l/q3QUFRf5qK3B0RXGixpnN0Q3JX7y
-	zp9Q+72Jbwq9TngxQtpud5h6wL4B8ZXj6jjtvEAf0fIOabk5UABqMmoVO3DApbwBirO3vTsobZBfk
-	VQUg86Rw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rrfiJqDB36OYwpcza26izND9IakYxaqihLn/XR7XBlQ=; b=A+dcqQtHFBgfpdAZjV34v1+R+z
+	XGAGN0BAckoQHR3djsAQMqbx4wJoVHhCXEVZOJREszqR7s+ivUEiyand01K/CHei+syFlQ3yhg6fD
+	P3UymzPpMLAu7IGMTZAZ9PwEi1oLM465owzUdHxoD9EVU2NS8/ksfk/866SzOXH5GV8IPZNd0p97w
+	e1WQ+hBP58hVOs+iWv60L0I4Su7LzQQXC8HoA3eESShKOofXD3xCEXRKOxku3maNPuIW0SlSM27EP
+	flf7n66ycbpkI3HxNTF6+60tCJ61JoZXbRpoh+Al47KAl8hyn2hja7NfXkieWKWy0pC3nlFbCWVyz
+	h6fUYROw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JSW-008GRU-0l;
-	Wed, 29 Nov 2023 12:14:28 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1r8JWv-008HKj-29;
+	Wed, 29 Nov 2023 12:19:01 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JSS-008GP7-19
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Nov 2023 12:14:25 +0000
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-332ed02ccd9so3323183f8f.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 04:14:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701260060; x=1701864860; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=AsQvimBOnTjXGdKhEAnGYzR8KiGWDUYPadmCZZ7TXho=;
-        b=GmrRUXTBh0iKdn6Cm5mT66h9fwedMHf/2Zwi8PjSwkky1FF55yKqbr1WDhq6FJT95B
-         FLS9iHsqvDMWb9WjKLjUZdMAF/RBRXSPQef29crQju2oCGfc2il5nptUwmWtD95+uBgY
-         Q7cMlLIRnaTaKs85bPREZDOX0KqjEPa2WeCNazF3NxuQyriW+mtMwvcNIOVLtAos86dO
-         qUypnsdpGctQwZLeaBM1VF3dWMOHX2v4tqH225Oni4ZjRmGd+hJOvW9IWWb4UIrX60FG
-         K31qS6yNQZ9orYtoNp1j8SUxG9oisg+RXEZWhhvGgwgnB9Bo83IGA66aMwJfkd8UD2cc
-         uZmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701260060; x=1701864860;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AsQvimBOnTjXGdKhEAnGYzR8KiGWDUYPadmCZZ7TXho=;
-        b=mvjZi+raZpAbrambQv/vkccRdcEzBjaNuvvE/hMBtOWq2R45pWxjKFj//OAWDTcM0M
-         e6DAxw/g7f3CBaa28oEO1KmHkvxPd6AUwqrSiFtNRIY9lN6kpNTOHrD6OmqaAi7mYbub
-         Q4hdMP22wzeXDgk0PequcIFYnGJL+KWOcvUW5/+AN6Fhol9w0sQq+sdfkNOD8WdRbMcs
-         loVgTwWp1PdoeI7muLhKVDzbrFrGVsH80TP2RruGHrgylVpe5F8FBbGbJZDDsrL+Zt2b
-         5M1JGGeASgKTeKp1tz0m5eyFTpSy6WeI0CGOoZZy2i1Hr0Y/DjUkV1uWNuv5EF5OWFIT
-         en9A==
-X-Gm-Message-State: AOJu0YxyKOovn4UfoV4vHRWezXJhWm1lMFiulSIrV70dBYHxE1IkjLw5
-	C28thdRhNebwAxoqqiIceQqOoA==
-X-Google-Smtp-Source: AGHT+IH4VTkrd6SDnt/sTDh9R9XPApG7O61ItmfuFh5MunMzdqfZlrOGpBMpkKqBpf907RBXyT1V9A==
-X-Received: by 2002:adf:eb41:0:b0:333:727:2ff5 with SMTP id u1-20020adfeb41000000b0033307272ff5mr5299207wrn.9.1701260059703;
-        Wed, 29 Nov 2023 04:14:19 -0800 (PST)
-Received: from ?IPV6:2a05:6e02:1041:c10:38f1:13b7:9b7a:2d6b? ([2a05:6e02:1041:c10:38f1:13b7:9b7a:2d6b])
-        by smtp.googlemail.com with ESMTPSA id f5-20020adffcc5000000b003313a1e0ba1sm14998254wrs.89.2023.11.29.04.14.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Nov 2023 04:14:19 -0800 (PST)
-Message-ID: <673c06e7-61a8-450f-96c9-35bb0e1fe111@linaro.org>
-Date: Wed, 29 Nov 2023 13:14:18 +0100
+	id 1r8JWs-008HJB-1I;
+	Wed, 29 Nov 2023 12:19:00 +0000
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8B67B6602F24;
+	Wed, 29 Nov 2023 12:18:51 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701260334;
+	bh=jN8jbwm4p0ea0gdVEuR2iDqyeJO1xHgDJGTepzsjTSU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=fYD0Z6dNAHANwPb/vAW20k/u/sxwT+lr5qqi1I7OCIAEHCfvC0onI8IsTbwVbP3rn
+	 KeAn1beCfmdG7PoLwuOe6kLtpqr04PW9pvbSI5croCn3mIwtwyRcN+wDc+Wo9IOGNI
+	 pPTZ2JyfQb/eKsfAqQ3Bbkzixw7aa4y7KLrpz6ZsOqVG9NwD+KiE88Yz2WfKU55imk
+	 FXYyh2uYgGf0W0t99/obtp6S3oRJSDjf8ehSNN3AL6bIuTyt6jIGS+13ePPMeSdawR
+	 yepNe7pf+zt6Uoc+JwcwygkPEggh4MoCoGtJfG1w5YM7ojfwvRsZ95Nz6L2t4Ld8oD
+	 /Miwby12MfOLA==
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch
+Cc: david.heidelberg@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	guilherme.gallo@collabora.com,
+	daniels@collabora.com,
+	gustavo.padovan@collabora.com,
+	emma@anholt.net,
+	robdclark@gmail.com,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	virtualization@lists.linux-foundation.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH v6 00/10] drm: ci: fixes
+Date: Wed, 29 Nov 2023 17:48:31 +0530
+Message-Id: <20231129121841.253223-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V3] dt-bindings: thermal: convert Mediatek Thermal to the
- json-schema
-Content-Language: en-US
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>, Zhang Rui
- <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20231117052214.24554-1-zajec5@gmail.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20231117052214.24554-1-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_041424_396374_A573A97B 
-X-CRM114-Status: UNSURE (   7.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231129_041858_610855_F425561C 
+X-CRM114-Status: GOOD (  16.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,26 +83,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/11/2023 06:22, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
-> 
-> This helps validating DTS files. Introduced changes:
-> 1. Improved title
-> 2. Simplified description (dropped "This describes the device tree...")
-> 3. Dropped undocumented "reset-names" from example
-> 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-> ---
+The patch series contains improvements, enabling new ci jobs which
+enables testing for Mediatek MT8173, Qualcomm APQ 8016 and VirtIO GPU,
+fixing issues with the ci jobs and updating the expectation files.
 
-Applied, thanks
+v2:
+  - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
+  - Reworded the commit message for enabling jobs
+  - Added a new patch in the series to use scripts/config to enable/disable configs
 
+v3:
+  - New patch in the series to add device tree overlay in arch/arm64/boot/dts/qcom
+  - drm-ci scripts to use device tree overlay from arch/arm64/boot/dts/qcom and compile base device tree with overlay support
+  - New patch in the series to enable CONFIG_REGULATOR_DA9211 in defconfig
+  - Remove CONFIG_RTC_DRV_MT6397=y as it is already enabled in defconfig
 
+v4:
+  - Drop 'enable CONFIG_REGULATOR_DA9211 in defconfig' patch as it is sent upstream as a seperate patch
+  - Use apq8016-sbc-usb-host.dtb which allows the USB controllers to work in host mode.
+    This patch depends on https://lore.kernel.org/lkml/20230911161518.650726-1-vignesh.raman@collabora.com/
+
+v5:
+  - Added a new patch in the series to set IGT_FORCE_DRIVER to 'mediatek' for mt8173
+  - Added a new patch in the series to make artifacts available for virtio jobs
+  - Added a new patch in the series to add pipeline url to fails and flakes files
+  - Generate fails and flakes file with the updated xfails script - https://www.spinics.net/lists/kernel/msg4959630.html
+  - Drop 'virtio: Update ci variables' patch as the tests which causes the malloc issue are skipped
+
+v6:
+  - Updated commit message for enable DA9211 regulator fix 
+  - Use GPU_VERSION instead of CI_JOB_NAME to check if it is mt8173 while setting IGT_FORCE_DRIVER
+  - Added a new patch in the series to uprev IGT to fix memory corruption
+  - Added a new patch in the series to update drm ci documentation
+  - Generate fails file with drm-misc-next
+
+Vignesh Raman (10):
+  drm: ci: igt_runner: Remove todo
+  drm: ci: Force db410c to host mode
+  drm: ci: arm64.config: Enable DA9211 regulator
+  drm: ci: Enable new jobs
+  drm: ci: Use scripts/config to enable/disable configs
+  drm: ci: mediatek: Set IGT_FORCE_DRIVER for mt8173
+  drm: ci: virtio: Make artifacts available
+  drm: ci: uprev IGT
+  drm/doc: ci: Add IGT version details for flaky tests
+  drm: ci: Update xfails
+
+ Documentation/gpu/automated_testing.rst       |  7 +--
+ drivers/gpu/drm/ci/arm64.config               |  1 +
+ drivers/gpu/drm/ci/build.sh                   | 16 +++----
+ drivers/gpu/drm/ci/gitlab-ci.yml              |  2 +-
+ drivers/gpu/drm/ci/igt_runner.sh              |  5 +-
+ drivers/gpu/drm/ci/test.yml                   | 13 ++----
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   | 13 ++++--
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |  5 ++
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   | 46 +++++++++++++++++++
+ 9 files changed, 82 insertions(+), 26 deletions(-)
 
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+2.40.1
 
 
