@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F387C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 08:20:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0B4BC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Nov 2023 08:23:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kGQdzNcCy7JJPTMsdtSjV4HF9Py88/78L/fuExW3uc0=; b=ySXZBkaReWXwXAlVszwLGz6C6h
-	uIdyjcIKBLHkTCGX8opon6ZbgG6OX7NN1VnbpPTCOtPChtgw3RQXpM9KbWZNo3lkQav0E8mpYsaDB
-	Um/PizvqMoMSQpmW2oXyD3XbGs5M/qBFLBJhe4wNXGc26Y6lxE7n688eF0x377OXm+fhprGMMjVfG
-	cyIsUJy6gDqhxgVf5jOFBOS+wB4SWoBp0xPOC8HMU2Yk3jrpIos+m1/WqsaSE3kFM6G9+QKxHOVvi
-	EAYppgdyty02MgzPDJyQVIYzawy9IFkbt5lLls0HRm9lwlAUeQulXq+3zUyovRzlc77E9Pslkj5Sb
-	pmCjmlHw==;
+	bh=k7+haveSoq7m2f2Pj8HBweyY+n64mswSOvsdXSe1aV8=; b=3B1ZL3/yDlwzid4QOxdsxonfE4
+	2DB1UJcmW1dCsc4iqHzOShk+L7mSCCRl2tSVtMGhcVyIUrALsHMN+ScMSM1+V/gcHyVY9zZS2pltG
+	GQQBHVUMrj3xYJAApxsHv/+MAniBMY3dV5wv4pcdsPMoI0Jk25GoRn/Y/9CA2jwXCui976qgOdzTp
+	vHzQXO/GnIH9Ymtml27G4/ytd7WaqexHACcXA328LEOoQdA9pO7gipPUAyOGbtVvQY0O9PKvmofNx
+	cpNShPxrprhVC1b1FrVq94WfkmDlnpWK5xjK3EchSmrh19t1I+2QbxdoeKHhjUolBWIwNTXcsRP2n
+	0EuF3QAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Fo2-007RoN-1w;
-	Wed, 29 Nov 2023 08:20:26 +0000
+	id 1r8FrR-007SQC-1Q;
+	Wed, 29 Nov 2023 08:23:57 +0000
 Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Fnz-007RnO-2q
+	id 1r8FrO-007SO8-0f
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Nov 2023 08:20:25 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-50bbef0e5d5so1879882e87.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 00:20:21 -0800 (PST)
+	Wed, 29 Nov 2023 08:23:55 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5094cb3a036so8944421e87.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 00:23:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701246020; x=1701850820; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1701246232; x=1701851032; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=kGQdzNcCy7JJPTMsdtSjV4HF9Py88/78L/fuExW3uc0=;
-        b=Xv1Bf7/ibKuPSRDJqhLZJVyWFuHTQiyQYcqyzpeso4bn+chToPt21GM6OxGAb0iWyl
-         TkUqwly9iNV2d67YVS/ZD7UQCkDq1ZMi3Jo4MoNRsbswDZMCGOj89ICB9DG9qvFnAPbg
-         ukKyNuGvEmomfq9GikRFowJ1DhifsoQu1QIrk=
+        bh=k7+haveSoq7m2f2Pj8HBweyY+n64mswSOvsdXSe1aV8=;
+        b=ac38AGBQ0Qn2rn2QpedP+bUcZhuh+PLupro0c5IhtMnf2Eshh6zdOYdEpBgWrrPNIF
+         be3zd0+fh+h3PHz+wNa5TOoIhcbLoiGA6P172COzm+bOUarO2iwNXBGpn06ljo/LSrhZ
+         dN+nzQ2cJiUFPbD7kSd9maifsbgwcFvm/jDHA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701246020; x=1701850820;
+        d=1e100.net; s=20230601; t=1701246232; x=1701851032;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=kGQdzNcCy7JJPTMsdtSjV4HF9Py88/78L/fuExW3uc0=;
-        b=rTCzBbyjy+MqI4zRiaaotuG+xZ7oCtHhgltO1oOU4MfCfPDeyKXt2bm0YYpxtCjbi5
-         BYjMQ5/rWys0YcjCx41gs/m5fOHKKk2eVf+BVAKmRQ7/AAfh1R167HO1WUJv1N0cEDyj
-         3piOl67r3F8ylMKag1PvXpbdVxtSrsW9iuUz1qnUhbyVpC3EZ5J6LgmNoiPqSy2ppmVs
-         0ZoazA/2kY3pYOKW6QEnDntxSPtMfMIhs7vgV95eE4Yi3uGZyFa3xQudwRItAQocgNqp
-         gF5IxmOWHyLV+S6wW+QNkPUNQlIHA+1GdG3z0IfBHP07E/E7RJCWuqGl2TdlbiK887rX
-         172Q==
-X-Gm-Message-State: AOJu0Yx0QCGbkvXfF8o3EBMdUvkQmsKDfW4rltPZWwbNEjmzoInajrPk
-	mL4a41Vm8cSJ9rYRzaJ5yPmuU7bHRxZ200WXVmgmWQ==
-X-Google-Smtp-Source: AGHT+IEh1TZm31uTy9yl8JaoDy75uNislLbWP0HEQgS4BWTnpP4KSfrLHeULqt0bxB2I0d2oNC/cmwQl0Wsw43+9ohk=
-X-Received: by 2002:a05:6512:10d6:b0:50b:c501:72d with SMTP id
- k22-20020a05651210d600b0050bc501072dmr923175lfg.61.1701246019908; Wed, 29 Nov
- 2023 00:20:19 -0800 (PST)
+        bh=k7+haveSoq7m2f2Pj8HBweyY+n64mswSOvsdXSe1aV8=;
+        b=lKKqdX8mRCQruK1/DA/Cin6mo/52Bemkf2hl9aL7ZaX0yrySSCIQvEmhW0JqPkI1+K
+         C5AD6eyoPEXsuLG24lkA87eNL588X0STalgK1v84dgGManJPRrT9DGQuLiFxCtIhWXpx
+         VJdF/6im7IgXh2diowHU38/puHvkQoo37NkSfW80DSVM9J3Xxz6onLQZT9JEO2pvJWzG
+         EEKJey2baKv436qtMRviIPeSLWyaR+/CrcIUyllAurwjIWlDon1wOKCcrnrtRxeeVZAi
+         JBMVawdvP+6/Nbhizo8IyOq3ifHC0VZAqYNUSCH4/n7Bg52FY4Icw/fw4R65JhyWmqnB
+         QMkg==
+X-Gm-Message-State: AOJu0Yxt6Kj4kv4KGZ2XjfyExfX09xSfWQU6ekvaHPElthTzwprH+0IE
+	R6o2Mn/H39WNxB95pCA2kq+FGrN43/FIm342+6OqLA==
+X-Google-Smtp-Source: AGHT+IEtWhB/1EU4Pgqrnwxww3bANfSl0NJ1NAjrSVHkHzZ34kpFTEDs7eij5sHcmcrKNah8R2KVsBjvlDihDkrrAjY=
+X-Received: by 2002:a05:6512:3081:b0:507:a1dd:5a86 with SMTP id
+ z1-20020a056512308100b00507a1dd5a86mr12720343lfd.13.1701246232561; Wed, 29
+ Nov 2023 00:23:52 -0800 (PST)
 MIME-Version: 1.0
-References: <20231128084236.157152-1-wenst@chromium.org> <20231128084236.157152-3-wenst@chromium.org>
- <ZWYTzGGToEmSu-Yh@smile.fi.intel.com>
-In-Reply-To: <ZWYTzGGToEmSu-Yh@smile.fi.intel.com>
+References: <20231128084236.157152-1-wenst@chromium.org> <20231128084236.157152-4-wenst@chromium.org>
+ <ZWYUi3Q5ptQXR0uQ@smile.fi.intel.com>
+In-Reply-To: <ZWYUi3Q5ptQXR0uQ@smile.fi.intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 29 Nov 2023 16:20:08 +0800
-Message-ID: <CAGXv+5EBBtbpDA8scVBFysYrk6s8JUd_-JcqbX3oubO60Uc_ZA@mail.gmail.com>
-Subject: Re: [RFC PATCH v3 2/5] i2c: of: Introduce component probe function
+Date: Wed, 29 Nov 2023 16:23:41 +0800
+Message-ID: <CAGXv+5EG4wO2sD0f_j1VDTkOcyN46oyfTYs3nf7cP7xFPg1fYQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v3 3/5] platform/chrome: Introduce device tree
+ hardware prober
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
@@ -82,8 +83,8 @@ Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_002023_955769_2B5FD7E5 
-X-CRM114-Status: GOOD (  40.72  )
+X-CRM114-CacheID: sfid-20231129_002354_248041_63F0B436 
+X-CRM114-Status: GOOD (  36.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,10 +99,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 29, 2023 at 12:22=E2=80=AFAM Andy Shevchenko
+On Wed, Nov 29, 2023 at 12:26=E2=80=AFAM Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Tue, Nov 28, 2023 at 04:42:31PM +0800, Chen-Yu Tsai wrote:
+> On Tue, Nov 28, 2023 at 04:42:32PM +0800, Chen-Yu Tsai wrote:
 > > Some devices are designed and manufactured with some components having
 > > multiple drop-in replacement options. These components are often
 > > connected to the mainboard via ribbon cables, having the same signals
@@ -130,62 +131,61 @@ n
 > > Lenovo Thinkpad 13S.
 > >
 > > Instead of this delicate dance between drivers and device tree quirks,
-> > this change introduces a simple I2C component probe. function For a
-> > given class of devices on the same I2C bus, it will go through all of
-> > them, doing a simple I2C read transfer and see which one of them respon=
-ds.
+> > this change introduces a simple I2C component prober. For any given
+> > class of devices on the same I2C bus, it will go through all of them,
+> > doing a simple I2C read transfer and see which one of them responds.
 > > It will then enable the device that responds.
 > >
-> > This requires some minor modifications in the existing device tree. The
-> > status for all the device nodes for the component options must be set
-> > to "failed-needs-probe". This makes it clear that some mechanism is
+> > This requires some minor modifications in the existing device tree.
+> > The status for all the device nodes for the component options must be
+> > set to "failed-needs-probe". This makes it clear that some mechanism is
 > > needed to enable one of them, and also prevents the prober and device
 > > drivers running at the same time.
 >
 > ...
 >
-> > +/**
-> > + * i2c_of_probe_component() - probe for devices of "type" on the same =
-i2c bus
-> > + * @dev: &struct device of the caller, only used for dev_* printk mess=
-ages
-> > + * @type: a string to match the device node name prefix to probe for
-> > + *
-> > + * Probe for possible I2C components of the same "type" on the same I2=
-C bus
-> > + * that have their status marked as "fail".
+> > +#include <linux/array_size.h>
+> > +#include <linux/i2c.h>
+> > +#include <linux/of.h>
+> > +#include <linux/platform_device.h>
 >
-> Definitely you haven't run kernel-doc validation.
+> init.h for init calls.
 
-Right. Will add missing parts.
+Added to next version.
 
-> > + */
+> > +static int chromeos_of_hw_prober_probe(struct platform_device *pdev)
+> > +{
+> > +     for (size_t i =3D 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
+> > +             if (of_machine_is_compatible(hw_prober_platforms[i].compa=
+tible)) {
+> > +                     int ret;
 >
-> ...
+> Perhaps
 >
-> > +             return dev_err_probe(dev, -ENODEV, "Could not find %s dev=
-ice node\n", type);
+>                 if (!of_machine_is_compatible(hw_prober_platforms[i].comp=
+atible))
+>                         continue;
 >
-> I haven't noticed clear statement in the description that this API is onl=
-y for
-> the ->probe() stages.
+> ?
 
-Will add that to the Context part of the kernel-doc.
+Works for me. One less level of indentation.
 
-> ...
->
-> > +             if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C_S=
-MBUS_BYTE, &data) < 0)
-> > +                     continue;
->
-> This will require the device to be powered on. Are you sure it will be al=
-ways
-> the case?
-
-This is left as TODO. The devices I have tie the component power supplies
-to an always on power rail. I guess I could get a trace of the function
-calls to see if things are running as they should. Not sure if that is
-enough?
-
+Thanks
 ChenYu
+
+> > +                     ret =3D hw_prober_platforms[i].prober(&pdev->dev,
+> > +                                                         hw_prober_pla=
+tforms[i].data);
+> > +                     if (ret)
+> > +                             return ret;
+> > +             }
+> > +
+> > +     return 0;
+> > +}
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 
