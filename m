@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EA1BC10DC1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Nov 2023 01:12:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1119C10DC1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Nov 2023 01:12:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DWZ926ZLNg56KWjCc5bGDycCVGjrN5wZd1+rheKLVFg=; b=FkEZd6Hg00tIgE/gxqQYS9t4pH
-	DyrAtrFUHZwZdpIKNcXQtOJmvPdPH856XLCtbH0mq113g0KiK264/HjrwX6G1aLC6GWGUdH3B9D9P
-	q9fT6y6Jtz1ZMNkST1Y5xL+znKsCFlk3NmwmtJmW7arCYtlHw6Dnxcmy/jWAgJv9T2n08tGY9dAju
-	jPIzdco3dHFzR2W0E8BH/IyK0FqZ1Q25iI2mtaeb0PRDMbGqX4qbnxHrt+mrGSjn/iuB72d1T+Dl8
-	0ZLEs79vboj2Kq8Ls0Zq+WPlN0aR/PefLK+9g1n6ZSKFvLo42jse8iSi5lvQtf4e8FA34gNZZPl6i
-	QheJtY5g==;
+	bh=GqEzauI1AR2owm9HEl6HCb3Z9hfFMw5b5rv0EaUHXus=; b=qTPI1WQ4F4JdGCcYKB0DvPJMVx
+	TaR/dWYLdmkzyfi/B31SWGwg7I2+S/yQU4lIyql7QpNFZYAsS7k/LOx7NfQaBqjo/N4xL4QGkWAFF
+	Zp0v6eeyo/iuPrpKjk+CSIX7jdaxG5U+O9mL34L1IOW02M0OfyNOHoHNBHcEV/2Gcp3F2VddnkDqM
+	GQ9BEvF4eSeX5c4bTAJDWG7r/rmXZtKhAuhCkhVYwrkVFCwGgKHa1KF8/9zj/l3WkPRyHSS/zyU3s
+	7wl+AQBBzSHg4TQ/qdxUoVGdhyFkRf4K+Rf+NRpKoMQMWxNhmlF5IkIGd41WWXFrq2i4KTAzbh2/M
+	gqjoYxhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8VbT-009dfB-1t;
-	Thu, 30 Nov 2023 01:12:31 +0000
-Received: from mail-dm6nam12on2062e.outbound.protection.outlook.com ([2a01:111:f400:fe59::62e] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1r8Vbd-009dns-1B;
+	Thu, 30 Nov 2023 01:12:41 +0000
+Received: from mail-dm6nam12on2060b.outbound.protection.outlook.com ([2a01:111:f400:fe59::60b] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Va9-009cO5-2L;
-	Thu, 30 Nov 2023 01:11:11 +0000
+	id 1r8VaB-009cQc-1G;
+	Thu, 30 Nov 2023 01:11:14 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ka5+Tn0dtGD82doSLCdRzFAdZU+soCknlkmhpYprPjL/OEtXbLG43HRLzmLKkr86KdFd4lZ16IQm3mc908D2W7OUdSfCIWrg2xjtXemm56kaGKyct8QoRV6MNBE+Lkn//JGELyOgxoMcLTyZHXd8Jj6AV2Jm01O2opSey2ZeZ0+1McByqH8JPhpe3Auv1ufuu7X20oBZKsrz+sANhDt553M+BkaMB9wguQBxHF07TI1GxJfIZ2seqCWPfa+OXOQqD5gM9nOYuPodYuDiBNV2WZWMC+2ztS42sEKCWqCuEKGEcn7SLYuhabPGHG0Unl0c2Tx0hx8Q+SSIimQdjnsevg==
+ b=Nktyx9JA0I562JHDUrqi82NUMQtWGrgvwLSQzncwN6YV5QgOtmkWjH32V5fbqYVzaqXUNxXlnjD/iOyVU5O1z27fMUqjbyo+uGrRpIwLHlvxcawZiD9SoAvUIhfJyyMzUy9EepVe5o4m/6NE91SjaKeDMWSLhpgzYE4k1nJKNqyjOVjIKja52WP2Uf4Bq4fU1kvXqXvHGVXwxtGGo4VzHQ0qOI0EWGTOLRBOSBHJhGEqEcgihIz/kI8D1MCl+pkTKCZkuJxDoO+JZ9VFO323V45ZLd7mNUaPGXf1HYKT1WzVU7FUMBa/KTf/t5nXauqQ4TgS2uWtKO8WSaTDwJmPlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DWZ926ZLNg56KWjCc5bGDycCVGjrN5wZd1+rheKLVFg=;
- b=OC/gfjy7SmizxL5B+/qJlDZkBscnLWQJM8R1l85aeCrEQsEzkOSg3/CrHa4UbLSsvnDQlrAEKLaEWDkWZEToSD7VbLxsskvdvVWZ+IRZc8e6ZRg7e57mmXNShuGbo5ofD7JvEkkYU2sPru4Bgdh+c1298GWmJ+tk3KpSxyJy2e8jMGB7H6QQlnQaN5Zo5rGIFQVZETzEKBwy6avzhzPec9culajVcwnnvmUtLLfheF3Ebqu+PNm/IChmwu5E8bPWdsj6oECRe1YS1ChmYMHL6nHDlUfEz9Xe22sZdYXxN1JhZbSidmEAqtXx2vrqop6E99pOjUSClW3UGjnHrZraew==
+ bh=GqEzauI1AR2owm9HEl6HCb3Z9hfFMw5b5rv0EaUHXus=;
+ b=JCHEKOTANhMjHvs+0ng51OS4jbdBPM/IEbXBYMqDrukIeNSmK9r9qK4u0KHzi6hOJiBCD4xGjtytSWoj6r5ocpQzOINiSHrXH44HGnTDuFxewcBdXqSdgrgn9Ab/kLD/hQbVoBhiEhRyjZA2NZfKwCjYJ6vNnlf3eQqgS4rt8IaABw2YtuCoYua8pbN8/BwFXP4GkcO+EPeTWA5Ek4uP53VWF7F9gEOIrvXRNPvyIh4mOfRrJq8lHAkDAZXV5yCqmS/hlq/7v7v22x0QVK2i/4S4+3EfzatzfgKFGr/Q0uRM4mIy4+XhqbfxEzkC4db7DNYIT6Sb6PKH1/HTDrXceQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DWZ926ZLNg56KWjCc5bGDycCVGjrN5wZd1+rheKLVFg=;
- b=BjmT8lbXwnW6JZmFNYNAVEUqwi/eLtYmxKMIapa0cwURuUJa6Z70jxreC7lR9XxwdoljYcubePkyb3R0rhMfX/b9vGzcCNN7Vcav6tuQYd8x/UBEvuE2DohQCvsSI/iydQXQb9TLClZqlaLJJGsjRQuRv60Lm/in1VUWlv59XdyrePUxNn7ymqhnLjUzr2tiiAgZU7e745OS2irqIeyxTLfhPAhjjhyWmXs3oP+xQPOyGVWq37tglWPlKZp8Hwm5gLpCe3p6LR7oBx7lhkR5JTo5MOKATnsHwl1nRGlJxCb76EiQKJUCJnxiQUafxx8EvXtI9V0MjyKmgvzspPyV8Q==
+ bh=GqEzauI1AR2owm9HEl6HCb3Z9hfFMw5b5rv0EaUHXus=;
+ b=Oa1cpIGpuG5KCyGfODKBcoVPfpSKDiQNs/TEM8nYLpi4p1XDMZCa8Lt60WtmTtaCwHhIVy5916fYZhmG+tCi664qOSfDc0mSySoCo2RQDZL+Hr97ZrwOvrJnGi0Qt/KU5dLUosuMreIY9+9oI+pS6aACy6IbcFXrvzPqixZ3fP1q8TjDxgvmLPwaOm5rxwXKeUO2HLd8cGlr1jWxSy/b1TKQfucIHuqsm5qc+Ju5k9W/fyUO1dUkqosnVzjUNc3WM41YX1IbB1ZbUItoSyfNGE8KZeIA03j4IBKeustVWXlU281J/T121S8Vq0sVmJ+TCs+FVE+fRLveQj7RMFGSDA==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
  by PH0PR12MB5484.namprd12.prod.outlook.com (2603:10b6:510:eb::14) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7046.24; Thu, 30 Nov
- 2023 01:10:52 +0000
+ 2023 01:10:53 +0000
 Received: from LV2PR12MB5869.namprd12.prod.outlook.com
  ([fe80::60d4:c1e3:e1aa:8f93]) by LV2PR12MB5869.namprd12.prod.outlook.com
  ([fe80::60d4:c1e3:e1aa:8f93%4]) with mapi id 15.20.7046.015; Thu, 30 Nov 2023
- 01:10:52 +0000
+ 01:10:53 +0000
 From: Jason Gunthorpe <jgg@nvidia.com>
 To: acpica-devel@lists.linux.dev,
 	Andy Gross <agross@kernel.org>,
@@ -106,67 +106,67 @@ To: acpica-devel@lists.linux.dev,
 	Chunyan Zhang <zhang.lyra@gmail.com>
 Cc: =?utf-8?q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>,
 	patches@lists.linux.dev
-Subject: [PATCH 13/30] iommu/dart: Move to iommu_of_xlate()
-Date: Wed, 29 Nov 2023 21:10:20 -0400
-Message-ID: <13-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
+Subject: [PATCH 11/30] iommu/sun50i: Move to iommu_of_get_single_iommu()
+Date: Wed, 29 Nov 2023 21:10:18 -0400
+Message-ID: <11-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
 In-Reply-To: <0-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
 References: 
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: SA1P222CA0145.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:3c2::29) To LV2PR12MB5869.namprd12.prod.outlook.com
+X-ClientProxiedBy: SN6PR08CA0012.namprd08.prod.outlook.com
+ (2603:10b6:805:66::25) To LV2PR12MB5869.namprd12.prod.outlook.com
  (2603:10b6:408:176::16)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH0PR12MB5484:EE_
-X-MS-Office365-Filtering-Correlation-Id: 675f93e3-a2ba-4189-b362-08dbf1412c35
+X-MS-Office365-Filtering-Correlation-Id: 202f467c-ccd0-4067-7ecf-08dbf1412c4e
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: PUAlnaI1V8lrqpJYdE+Z5UsVLxDGEt2eWMKw+SPfsu4wisFzlUhqybEK/ow+wJEhdQIneYbkL+7dH9e3M8SZEp5lb/G2Vw6HlIme/Yjow8R6tJRFi0IjHgy1vveoFIycYwkBVZwC3cLHS+lq47XNr/J/p8oZCNvQdK/CA8ZROqFj+KWhzkxeRVfpy93W6zfBtPckOvInRr5L8JnAaalosUGGyxf2V/ptxZkqQR9rDhS7xl5QPa8L/NTiNa4e5kY0+mVIRWhPqNENune8K6f2wUMmFRMtsVOnmrVmKOlsw4x+ILRZ2KGl+RbkEBlKi6M0i0RqCCCXVvsmGElptVU2J5UDFORw0uFD67dbQKsSbm3uATaqAxeo4lD1xzQTvifDD3veT10lHTUKclaojUG6nLOmrb/uo3Gt+BESHpsxzDadonEjgAGtETRQ8/yaU+sNxYgrZKIM3SkuFaCz6h6tqD3Vvu6fOrCMcV6KFQOCdKC5dUQ8DVL0UjH3kepHGLlRYeV7mwnrxNWhe7iz0+doMmm7kcvi39Xs7ZmnN9FxR41OIT1c/kNG46PhH8zktTgxZZpdxvnOs1GuRSz5tnnT8eT5Rz8tL8iupGSV7nPHxt7j1SCffFfg1DFEfeoBP6NjEOdRAJZc90qSgeHw5h7QOg==
+X-Microsoft-Antispam-Message-Info: wDaTT+ItBQkwfzcOkVg2Mm6eY2SM6MzCUmBpSQHf6eTxjKudDQ3FJrLtC7843i5IRrcwn8Wp3kyfu6/Yh11FUDQgsLe09RbqFC9c2+iHarhPjCgkaI2RwUCtNnHyx1f2GX4soqsXrPW3tZjeHuhABq1xMhcgDnPvrLZmLnuXL2YUzE6qEmHYTRhSCwDecEzEQqk3k0mZwtI9954N7vcDEfs3+s9793mSLR4FCD88WcYY3N9tSP7mTocrA7xWY9eF6jrtozd+HQst/hJospZz6+END6XGVPatK4VBOXB+imY7adaFenJ0MD1QGaumMJitErYRDwzrgCZmy418ZXqH30+cb/9zNzH/WcPrjxVK6W3kB0g6I70noY3NnRRyoT+NB7EWk3sYMVTq8fa6KlOPD9Pdxw/aOkJBCKwhLrM7al2n1j/5h3LbnyhJv+auY8lm0VOMlHMs97bHEXNDGBCVdGQcdHjui/H76ko5oarfbYDoF1fWy3AMooL7COYFS0X0YRtuzPAU+5RhjGp++wmJmXcNTrW38ZWCR1NwdSydhfmm8OyAUTknpAzEaWoLPV75JG8gvtcRUxLH8XQmiu9vkE7ux9a9ykBt+G4RepwDKzVS2XNyaYMOAz4Zl7eop97FzmS+T70+iRR9y9s9Oo4HCw==
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(346002)(136003)(396003)(39860400002)(376002)(230922051799003)(451199024)(1800799012)(186009)(64100799003)(1191002)(8936002)(110136005)(8676002)(316002)(66556008)(4326008)(86362001)(66476007)(6486002)(478600001)(66946007)(41300700001)(36756003)(921008)(7416002)(7366002)(2906002)(7406005)(5660300002)(38100700002)(2616005)(6512007)(6506007)(6666004)(83380400001)(26005)(202311291699003);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wYKUGMVw4jTZK9TpVBIlYxZXJsO5zzGTUYhbPmpelFOwHr8icXkROHVlpj5n?=
- =?us-ascii?Q?8xxnJuZHz0o9Y4McQ3bEwIl2fGTleFmlreiZ/vf7pqUYhSj/8zt6k2pgvcAp?=
- =?us-ascii?Q?A6iF88hiWjbrWwd+ESPRo+SrtahSogrBWxyVSbHm42G1eCH8dWRjkdG9wrMz?=
- =?us-ascii?Q?bFE5T2QpvWwBoTEgdnQaC6fASJaxHTNydtWVcZ+FowjAwY4tWvzan27Sd9/l?=
- =?us-ascii?Q?fc7KmDImc+bKm3wRaetPHrleO0CJQhLrM73SHp024RI8AJxFZ92amlKTktHJ?=
- =?us-ascii?Q?TYwZ88LSALxaUJJC3eDWwdwx6cDzH6AqJtg8/OgulO3T3MBq/fHb1ajeHft1?=
- =?us-ascii?Q?+2YihVnWM47fZ+WyQD+TtAkIOIf6fz334fYF9Im4vCGt6fjwp2v2QXLGBbgg?=
- =?us-ascii?Q?TO4PCb/cojUakfec9VQLOo4QG03fbZ4vg3/ugFbj5qgZDTJrz4HiApfaE5oG?=
- =?us-ascii?Q?DQ8BZ9xY88D1DBRPAMOasCoRSXXYNz0k8l81jgBUTkefS0r4DIBqQQ0FRtDo?=
- =?us-ascii?Q?O+jF8AUgcQBLpgiFweNmJr94qXFmKl5SySWi1XBF6WhSNa2ZIOG6aKuG7KUq?=
- =?us-ascii?Q?APM8fV8SUfLHihTj6xkCUGT/YGrz1f+M/27E4senglfWKBIizYdvm6tY4a1w?=
- =?us-ascii?Q?OUTK+fYeix6+11tIXp2DvY5qjCXrKSfTvsA3+qKDr1GFXsHa92nnwabqoQpO?=
- =?us-ascii?Q?Y7TmuMqUD8z5+XmM325AR4QpGwriOiB2Q62kK3o/L/VG19o4amhDQQzd/jzc?=
- =?us-ascii?Q?lbJxJQdZkOvtujpkraGRfwCLgb1NFlLhyGl2LMs6foNv3ZFDvBXgGZ0aYS7u?=
- =?us-ascii?Q?wXZvwLa4PDM8NMlkOO3jh8EPohP0wZdQVgPCDu7xQBgtSsPWrup86XOSEK2x?=
- =?us-ascii?Q?HOgdxm8m+zJGFh/40sCvlow76JtLygZflyH1qb4G7KldqGD7D0g1u/JR9+cz?=
- =?us-ascii?Q?6WHqVrQzEZxWmk5KMAOJ5WzfxOfSXqfjzQ17OLymF1Xg4SeW7w7YOXqfFY7X?=
- =?us-ascii?Q?v/Pi1MLB2NNZroriYSEHx+HgZyYr2oixB01n2eLeffMHuWF0afQz4ok5l2gx?=
- =?us-ascii?Q?kqNVCHXSxHS7mu/7b7jLuMq41Rf2ie7nOYqr+P5j6mQELuSo2pWf0YhiyHnF?=
- =?us-ascii?Q?vHliBDRKs2H91VexVw7h2UMAHxHRl/N0twxk07EqCT1j7objPVMAHglvwUpv?=
- =?us-ascii?Q?78UV36QGHRcC/lE+1iVllZOD7xNKxQsCwQ+MI9Gxl5yaGRrhTyzUswzihWaA?=
- =?us-ascii?Q?DdM15/i98pB5B+BsDxYVC7UZFfDseebYDztILvt7aBCIcO3WhRkqsDS1TcBa?=
- =?us-ascii?Q?jNZaU1mZWnKHdcmtN0IX3FuF2AibZbWkVDJ4Ly9vFTF4tYmc8djT1TyoeaDx?=
- =?us-ascii?Q?YplG9XVQHpTXMvsNop/iMxsbSRHanm/nSaEALTphAqitiqxNASbRpOOtcvgx?=
- =?us-ascii?Q?3+/7fp7BIouXZhUr7N/ZO4E8KuhH0jMh2+E4jipLMu3o5iylv8XolkznNXcJ?=
- =?us-ascii?Q?4Cid2fTynpl+VdUVecnAfJkYmh4an9rOUAPsgADwhSpy0JtuKEgsDh4PMtqZ?=
- =?us-ascii?Q?P1w/vWCYt1t4duwuE7LxA9WzdDo4waGLWcxs6wG6?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wWcuxQ+bqZ5gr7soEwznyBgBycyNZqXKcFDlwc7STj6auYzuzroGafPTSpiv?=
+ =?us-ascii?Q?IwLxcXuyAoaQVLZ6IfPMCSvSqVvc+2/M0h6wJLXdgA9MQBYFSH+z/3Evzra7?=
+ =?us-ascii?Q?w2Aqf3rzO82n4GtdJo5pb0Eq1lCLtr/+m0yPelra2eVek7ZBOxGFOrDvAsLk?=
+ =?us-ascii?Q?89czFKtigbQw3ogWsAgRjTlhJsLudryGaq97tLfKg+GvnVP3aqsxJvMJGR1T?=
+ =?us-ascii?Q?i7Ky2fr+8RoRNWeDguYNt7XHSrsnCzy4oGVUHJFPsaa4rmt51GZ6/BLrhv5o?=
+ =?us-ascii?Q?+0/B37CBhFKeLNT6Y72w8hkl7sMZ1Qf+lpZOW0dSNxXnS/Fd7nLg0wfFe6Bg?=
+ =?us-ascii?Q?FjUfo8grRg2Vik/WiqLn6mQnvMvWvkFac0l9Vww722EeE/Nm1W4+q/OEurTF?=
+ =?us-ascii?Q?fwrw2qldfQL5up6pTVSGf1tH+6Ppx1DFeXBd93LkHUb6bCddqBslvFnev1Dh?=
+ =?us-ascii?Q?Ic+t6rSPBiiM0wo8cXd+4mVrV582BsXOfvXucezKbMBNAc6qMH+SmEioDZSP?=
+ =?us-ascii?Q?JbCRJTkiA1lb3hfhH6Lq/Zivt2j8DugFo7YyFOXu8/JZDd2sgUonx0LqVPmI?=
+ =?us-ascii?Q?hxq6sC43aMFfoDNB4sB0VYfHE6ZcuEWDEszyrahpHYVlcSAPvL5VNHi1In/X?=
+ =?us-ascii?Q?9EiFfaDGEGgVSo7++9gG0iuPro3R566N3C8ftrSJtrOmpbzTmRxeNfzAB5rn?=
+ =?us-ascii?Q?hxyfwxaYxvAkFL1ST4d1+4FjfYWJEDiDNGRQ/AkgiRb5e93aPtRQ6eWAtFsl?=
+ =?us-ascii?Q?9mTmtbcvc0WR2WJ95frA0979Zjmch18U7McnZ+4CthhaHY8uHBWuwq2/q2T/?=
+ =?us-ascii?Q?CtdfxFtbjx/7zD6eAMoUQ0E+1klw9aFI4pTv8bsev37W24cWlQAD5ntr9Ixl?=
+ =?us-ascii?Q?fEGWWe3Es1c1zpCWeMjmAKi/3Yz2dEk9DGKyjfuzzYdO/bIY8RcmvzfylpnH?=
+ =?us-ascii?Q?KVsIqdSm863AKsFlR7UC93lbZsHYDepY3BZFmFVhYwdxDGp28dfW9luiELXO?=
+ =?us-ascii?Q?a+j0ZyaMK3J/9/14i3VaH6sULWA1dZoqy0YJBAMgOpcKD9GZ63TzlLG1Z9s3?=
+ =?us-ascii?Q?6cUvswWBuYOrUEtfaN69cnXinClrdVVr1nK13HJSIgpP1OkiIpGPr7PZo+Fa?=
+ =?us-ascii?Q?xwU0wDIVJtl9slL8E1pDe3fnelSGlGSfuA8fvLNbnl5trv+hgofCTicScRgu?=
+ =?us-ascii?Q?IIQvEV0XS/gCsnKj944zUANMLSugalmGuGAuLHTE5kCWQPI4BHaiShXbAemH?=
+ =?us-ascii?Q?+QBVCNNWaFI+5YotCOVM3721IVlPIQWd25ANil9kSiX7IyXalWLP6O88+YoT?=
+ =?us-ascii?Q?gbG6+mrUS0oQFffU+R9YXI62lfgmd9Uk1HzljQm4tn6nCCc/FmROrOo/Ueqz?=
+ =?us-ascii?Q?6Im6pDAO7mPOQKT4ToaPakFOfgJEUVTe0n1CBZSHwzug5Qjmkc5dTRG+W5Tr?=
+ =?us-ascii?Q?WQA/oa7bn6YYSV/Wr9iJSWVmGVVPAng+YHBcOpQJ4MYNTHNeBh6vumTi0y6m?=
+ =?us-ascii?Q?dUtAD9KPgo3I0eBCtQpAwBP8EdehOjkdPFIOMX39FvxKwZjRaIKs9+alpM5i?=
+ =?us-ascii?Q?W5h9pqHqgw2wb2g7IPGhxJ5hW1GLk/3ZOdArN+Vp?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 675f93e3-a2ba-4189-b362-08dbf1412c35
+X-MS-Exchange-CrossTenant-Network-Message-Id: 202f467c-ccd0-4067-7ecf-08dbf1412c4e
 X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2023 01:10:42.0795
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2023 01:10:42.2642
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: N4Y176JW/ot07qm4b/KpOoXLIROVYY8OkNl8DDPa1VZAbJe+cFFsKswX/8e6EebI
+X-MS-Exchange-CrossTenant-UserPrincipalName: iBIHLWUjNcLd7jknHW9Ss0txa1WTmqIItJzPMglQflJMXkc9yvM+62hk/Nml2vr3
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB5484
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_171109_798788_EBE404AE 
-X-CRM114-Status: GOOD (  23.52  )
+X-CRM114-CacheID: sfid-20231129_171111_488161_25AC8558 
+X-CRM114-Status: GOOD (  19.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -181,145 +181,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-dart supports multiple instances with multiple IDs per instance. It loads
-the FW data into a pre-allocated 2d array inside it's per-device data.
+sun50i uses a simple binding where a the OF iommus's can describe a single
+iommu instrance with a single ID, reflecting the master, on it.
 
-Switch over by allocating the per-device data at the top of
-probe then calling iommu_of_xlate() to fill in the 2d array. The iommu
-instance is located by the core code and container_of() gets to the dart
-version.
+The driver ignores the ID from the OF, it looks like the instance can only
+do a single translation as the entire thing is managed with
+generic_single_device_group(). Since there is a single translation the ID
+presumably doesn't matter.
 
-Solve a few issues:
-
- - A bus probe was failing by accident because the of_xlate not being
-   called left a NULL cfg in the priv, and other code tended to free the
-   dev->iommu. iommu_of_xlate() will fail bus probe directly
-
- - Missing validation that the node in the iommus instance is actually
-   pointing at this driver
-
- - Don't leak the cfg. It is allocated during probe, freed on probe
-   failure, and freed in release_device() on probe success. Previously it
-   would allocate it in of_xlate and leak it in some possible error flows.
+Allocate a sun50i_iommu_device struct during probe to be like all the
+other drivers.
 
 Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 ---
- drivers/iommu/apple-dart.c | 58 +++++++++++++++++++++-----------------
- 1 file changed, 32 insertions(+), 26 deletions(-)
+ drivers/iommu/sun50i-iommu.c | 60 +++++++++++++++++++++---------------
+ 1 file changed, 36 insertions(+), 24 deletions(-)
 
-diff --git a/drivers/iommu/apple-dart.c b/drivers/iommu/apple-dart.c
-index bb0e5a4577fc03..b796c68ae45ad8 100644
---- a/drivers/iommu/apple-dart.c
-+++ b/drivers/iommu/apple-dart.c
-@@ -268,10 +268,10 @@ struct apple_dart_domain {
- };
+diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
+index 41484a5a399bb1..84038705cf657d 100644
+--- a/drivers/iommu/sun50i-iommu.c
++++ b/drivers/iommu/sun50i-iommu.c
+@@ -12,6 +12,7 @@
+ #include <linux/errno.h>
+ #include <linux/interrupt.h>
+ #include <linux/iommu.h>
++#include <linux/iommu-driver.h>
+ #include <linux/iopoll.h>
+ #include <linux/ioport.h>
+ #include <linux/log2.h>
+@@ -95,6 +96,8 @@
  
- /*
-- * This structure is attached to devices with dev_iommu_priv_set() on of_xlate
-- * and contains a list of streams bound to this device.
-- * So far the worst case seen is a single device with two streams
-- * from different darts, such that this simple static array is enough.
-+ * This structure is attached to devices with dev_iommu_priv_set() on
-+ * probe_device and contains a list of streams bound to this device. So far the
-+ * worst case seen is a single device with two streams from different darts,
-+ * such that this simple static array is enough.
-  *
-  * @streams: streams for this device
-  */
-@@ -295,6 +295,9 @@ struct apple_dart_master_cfg {
- static struct platform_driver apple_dart_driver;
- static const struct iommu_ops apple_dart_iommu_ops;
+ #define SPAGE_SIZE			4096
  
-+static int apple_dart_of_xlate(struct iommu_device *iommu,
-+			       struct of_phandle_args *args, void *priv);
++static const struct iommu_ops sun50i_iommu_ops;
 +
- static struct apple_dart_domain *to_dart_domain(struct iommu_domain *dom)
- {
- 	return container_of(dom, struct apple_dart_domain, domain);
-@@ -721,21 +724,34 @@ static struct iommu_domain apple_dart_blocked_domain = {
- 	.ops = &apple_dart_blocked_ops,
+ struct sun50i_iommu {
+ 	struct iommu_device iommu;
+ 
+@@ -110,6 +113,10 @@ struct sun50i_iommu {
+ 	struct kmem_cache *pt_pool;
  };
  
--static struct iommu_device *apple_dart_probe_device(struct device *dev)
++struct sun50i_iommu_device {
++	struct sun50i_iommu *iommu;
++};
++
+ struct sun50i_iommu_domain {
+ 	struct iommu_domain domain;
+ 
+@@ -128,11 +135,6 @@ static struct sun50i_iommu_domain *to_sun50i_domain(struct iommu_domain *domain)
+ 	return container_of(domain, struct sun50i_iommu_domain, domain);
+ }
+ 
+-static struct sun50i_iommu *sun50i_iommu_from_dev(struct device *dev)
+-{
+-	return dev_iommu_priv_get(dev);
+-}
+-
+ static u32 iommu_read(struct sun50i_iommu *iommu, u32 offset)
+ {
+ 	return readl(iommu->base + offset);
+@@ -760,7 +762,8 @@ static void sun50i_iommu_detach_domain(struct sun50i_iommu *iommu,
+ static int sun50i_iommu_identity_attach(struct iommu_domain *identity_domain,
+ 					struct device *dev)
+ {
+-	struct sun50i_iommu *iommu = dev_iommu_priv_get(dev);
++	struct sun50i_iommu_device *sdev = dev_iommu_priv_get(dev);
++	struct sun50i_iommu *iommu = sdev->iommu;
+ 	struct sun50i_iommu_domain *sun50i_domain;
+ 
+ 	dev_dbg(dev, "Detaching from IOMMU domain\n");
+@@ -786,12 +789,9 @@ static struct iommu_domain sun50i_iommu_identity_domain = {
+ static int sun50i_iommu_attach_device(struct iommu_domain *domain,
+ 				      struct device *dev)
+ {
++	struct sun50i_iommu_device *sdev = dev_iommu_priv_get(dev);
+ 	struct sun50i_iommu_domain *sun50i_domain = to_sun50i_domain(domain);
+-	struct sun50i_iommu *iommu;
+-
+-	iommu = sun50i_iommu_from_dev(dev);
+-	if (!iommu)
+-		return -ENODEV;
++	struct sun50i_iommu *iommu = sdev->iommu;
+ 
+ 	dev_dbg(dev, "Attaching to IOMMU domain\n");
+ 
+@@ -807,26 +807,37 @@ static int sun50i_iommu_attach_device(struct iommu_domain *domain,
+ 	return 0;
+ }
+ 
+-static struct iommu_device *sun50i_iommu_probe_device(struct device *dev)
 +static struct iommu_device *
-+apple_dart_probe_device(struct iommu_probe_info *pinf)
++sun50i_iommu_probe_device(struct iommu_probe_info *pinf)
  {
--	struct apple_dart_master_cfg *cfg = dev_iommu_priv_get(dev);
-+	struct device *dev = pinf->dev;
-+	struct apple_dart_master_cfg *cfg;
- 	struct apple_dart_stream_map *stream_map;
-+	int ret;
- 	int i;
++	struct sun50i_iommu_device *sdev;
+ 	struct sun50i_iommu *iommu;
  
-+	cfg = kzalloc(sizeof(*cfg), GFP_KERNEL);
- 	if (!cfg)
+-	iommu = sun50i_iommu_from_dev(dev);
+-	if (!iommu)
 -		return ERR_PTR(-ENODEV);
-+		return ERR_PTR(-ENOMEM);
-+	ret = iommu_of_xlate(pinf, &apple_dart_iommu_ops, 1,
-+			     &apple_dart_of_xlate, cfg);
-+	if (ret)
-+		goto err_free;
++	iommu = iommu_of_get_single_iommu(pinf, &sun50i_iommu_ops, 1,
++					 struct sun50i_iommu, iommu);
++	if (IS_ERR(iommu))
++		return ERR_CAST(iommu);
  
- 	for_each_stream_map(i, cfg, stream_map)
- 		device_link_add(
- 			dev, stream_map->dart->dev,
- 			DL_FLAG_PM_RUNTIME | DL_FLAG_AUTOREMOVE_SUPPLIER);
- 
-+	dev_iommu_priv_set(dev, cfg);
- 	return &cfg->stream_maps[0].dart->iommu;
++	/*
++	 * The ids are ignored because the all the devices are placed in a
++	 * single group and the core code will enforce the same translation for
++	 * all ids.
++	 */
 +
-+err_free:
-+	kfree(cfg);
-+	return ERR_PTR(ret);
++	sdev = kzalloc(sizeof(*sdev), GFP_KERNEL);
++	if (!sdev)
++		return ERR_PTR(-ENOMEM);
++	sdev->iommu = iommu;
++
++	dev_iommu_priv_set(pinf->dev, sdev);
+ 	return &iommu->iommu;
  }
  
- static void apple_dart_release_device(struct device *dev)
-@@ -778,25 +794,15 @@ static void apple_dart_domain_free(struct iommu_domain *domain)
- 	kfree(dart_domain);
- }
- 
--static int apple_dart_of_xlate(struct device *dev, struct of_phandle_args *args)
-+static int apple_dart_of_xlate(struct iommu_device *iommu,
-+			       struct of_phandle_args *args, void *priv)
+-static int sun50i_iommu_of_xlate(struct device *dev,
+-				 struct of_phandle_args *args)
++static void sun50i_iommu_release_device(struct device *dev)
  {
--	struct apple_dart_master_cfg *cfg = dev_iommu_priv_get(dev);
 -	struct platform_device *iommu_pdev = of_find_device_by_node(args->np);
--	struct apple_dart *dart = platform_get_drvdata(iommu_pdev);
--	struct apple_dart *cfg_dart;
--	int i, sid;
-+	struct apple_dart *dart = container_of(iommu, struct apple_dart, iommu);
-+	struct apple_dart_master_cfg *cfg = priv;
-+	struct apple_dart *cfg_dart = cfg->stream_maps[0].dart;
-+	int sid = args->args[0];
-+	int i;
+-	unsigned id = args->args[0];
++	struct sun50i_iommu_device *sdev = dev_iommu_priv_get(dev);
  
--	if (args->args_count != 1)
--		return -EINVAL;
--	sid = args->args[0];
+-	dev_iommu_priv_set(dev, platform_get_drvdata(iommu_pdev));
 -
--	if (!cfg)
--		cfg = kzalloc(sizeof(*cfg), GFP_KERNEL);
--	if (!cfg)
--		return -ENOMEM;
--	dev_iommu_priv_set(dev, cfg);
--
--	cfg_dart = cfg->stream_maps[0].dart;
- 	if (cfg_dart) {
- 		if (cfg_dart->supports_bypass != dart->supports_bypass)
- 			return -EINVAL;
-@@ -978,10 +984,10 @@ static const struct iommu_ops apple_dart_iommu_ops = {
- 	.identity_domain = &apple_dart_identity_domain,
- 	.blocked_domain = &apple_dart_blocked_domain,
- 	.domain_alloc_paging = apple_dart_domain_alloc_paging,
--	.probe_device = apple_dart_probe_device,
-+	.probe_device_pinf = apple_dart_probe_device,
- 	.release_device = apple_dart_release_device,
- 	.device_group = apple_dart_device_group,
--	.of_xlate = apple_dart_of_xlate,
+-	return iommu_fwspec_add_ids(dev, &id, 1);
++	kfree(sdev);
+ }
+ 
+ static const struct iommu_ops sun50i_iommu_ops = {
+@@ -834,8 +845,9 @@ static const struct iommu_ops sun50i_iommu_ops = {
+ 	.pgsize_bitmap	= SZ_4K,
+ 	.device_group	= generic_single_device_group,
+ 	.domain_alloc_paging = sun50i_iommu_domain_alloc_paging,
+-	.of_xlate	= sun50i_iommu_of_xlate,
+-	.probe_device	= sun50i_iommu_probe_device,
 +	.of_xlate = iommu_dummy_of_xlate,
- 	.def_domain_type = apple_dart_def_domain_type,
- 	.get_resv_regions = apple_dart_get_resv_regions,
- 	.pgsize_bitmap = -1UL, /* Restricted during dart probe */
++	.probe_device_pinf	= sun50i_iommu_probe_device,
++	.release_device = sun50i_iommu_release_device,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
+ 		.attach_dev	= sun50i_iommu_attach_device,
+ 		.flush_iotlb_all = sun50i_iommu_flush_iotlb_all,
 -- 
 2.42.0
 
