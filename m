@@ -4,73 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64BD3C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Nov 2023 12:47:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C667C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Nov 2023 13:22:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/54fOqfx5bdcK6H7SBTfxWqnRzEz6mZ33LcOXEZDWog=; b=R4cgG+QOy51ULhASsgh8cNAuvz
-	gMbubP3jGuyHEmHtP/fNU3nM6ZeoNsn0rEYQnMRFIZeWK+d7CfPsSRcqf1ryC8sJHkPi6KAOMewt8
-	IKxq9VhLi09vL/Zp2VZjlszYBuFNRHmLmJZVlBbnqK/4pV0NbVMKreA6PTgNLTg5SF6j95ROAnL6t
-	Q41Jil0u7suam4+2IHlzLjAqxPiMdQijvgvvIf9quSDoGceB4F0y4t8d6GbCMuTqczO1dMqLZ658N
-	+9eoK6k88CzXvqhrnBcx70YgebjVNPif2ppEU5EJdPlzbN3CF4FBzWhGLWT6HfIj1vaKOq5w2RcRf
-	X+nGs6mA==;
+	bh=ZvNfFwEaJe35P7DHOxBfctgrV0f0ocDgk3MHXYzHo/M=; b=OFvtII72Y+o6/gaCN+thJrsBMR
+	BpSWxZFoUNNRLj+vbS7SfHcXJ6SvEp1mhsklpyc2W0tFt254d4R1Bt3Y1ISr1qa2cbnF456mfQnlm
+	C5tWaT4bIVYTcAMadWgnn6idDUNSbXeT5tB46LpSKt8zEi3Esac+nIF3OMDEucTSza0bsyTSv2QLN
+	BjkTtxEU+VmN+NoHFJbXL1XJiygCA4MlQz6SNaNPtbk2T5UDeB1USXpWL+fWIjUXT8FvwBJsmfTJW
+	5T7BesMXXRorM0cbfD8MAXmCIn7cZU6iVKDg/tKFm9Lq6bHunYpQ+d+/hNauutSULXF4BypB8jmBl
+	E4RsXxnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8gS1-00AuDR-0T;
-	Thu, 30 Nov 2023 12:47:29 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1r8gzP-00Ax2P-01;
+	Thu, 30 Nov 2023 13:21:59 +0000
+Received: from mail-oo1-f41.google.com ([209.85.161.41])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8gRy-00AuCX-1O;
-	Thu, 30 Nov 2023 12:47:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 481A6B84482;
-	Thu, 30 Nov 2023 12:47:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 523C8C433C8;
-	Thu, 30 Nov 2023 12:47:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701348443;
-	bh=ltZg2E6aTzAR6MTRF7EIVGqc75LpYNO0JU7AzaW5iyE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=dabbuH3m0BMxxTaY01Bvmd8CjoKVWDsdJ3trvLLtZHMvWxtO98UkSGBXSaRG41gJr
-	 m/BQjiCuLYcL1m2FkM6QXjAOwrGUoYKN9NC36nO4WRBNrGUkZlSs12In95Lkx+xvoR
-	 dAjsNh2zPrxJeoQM/do0EwSMrtTvQLyUKT41KeUkFA3PPaVLnPQY7q7fbW3uCSQVln
-	 HgubtUFlcaheOCk9cI1Rm1VgNdi4pYYc4A9OWevdZw0N1HNpsL5QTtpNE6Baa9WrgN
-	 dS+TwakXM2RGDuD4HQ4exJ3lEKkfygHH/9o5/TotjzYfn0E8ynR9jTjx8V+FuXh0n7
-	 cH9vn1bphEkIw==
+	id 1r8gzL-00Ax1c-0Y;
+	Thu, 30 Nov 2023 13:21:56 +0000
+Received: by mail-oo1-f41.google.com with SMTP id 006d021491bc7-58db15c68f3so30332eaf.0;
+        Thu, 30 Nov 2023 05:21:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701350513; x=1701955313;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ZvNfFwEaJe35P7DHOxBfctgrV0f0ocDgk3MHXYzHo/M=;
+        b=kD62HU94fJOgZ9JUF0/MSUrKPHrZdtfcIp71CARFdNku7vmAjhuU1pOfCFPDnCdfoD
+         mrr20BDciCLXty/llUH0UmCY9MW5bu8r5BHv311QwTSOlT/AfUI+UDXsj8J/3+qzwPqQ
+         qH+BwiInqKEIikqeXMoucDynCLU0jvIMu/4yXHXZJn2eK2uq4tm2VyI+B3HZldKdguSy
+         PsYhf4wRpf9SB4VgCRV1dYofm1YjNwW94e5wmUuCWkMkbSvMHf8NmYhZKrcPSIqqjRza
+         xe2vSntEXlqDJYhVlIG8ztiNstOCzliIUz4J7PURbsl1mlBMCoEL7YuAFW9QLpJW7GAX
+         6qNg==
+X-Gm-Message-State: AOJu0YzARRaccj/kmLl4O/Z5Nkof/oMkhz9A4U+Gxtf//CRSnGdVZmKQ
+	oomJs3UuHNA9IJDjUAi8LmIkKws0bStLWN2Bkog=
+X-Google-Smtp-Source: AGHT+IHVXAHNIVex42KnwULFjGZK2tI3TPh5OlhmRjJZ4u6dNoVNOqThLGV/PQYjRCTwh4xYmS9IrHBLkf2HUiQDDjI=
+X-Received: by 2002:a4a:a2c8:0:b0:58d:ddcb:db1a with SMTP id
+ r8-20020a4aa2c8000000b0058dddcbdb1amr1875278ool.1.1701350513014; Thu, 30 Nov
+ 2023 05:21:53 -0800 (PST)
 MIME-Version: 1.0
-Date: Thu, 30 Nov 2023 13:47:17 +0100
-From: Michael Walle <mwalle@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul
- <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Jitao Shi
- <jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH 4/4] drm/mediatek: support the DSI0 output on the MT8195
- VDOSYS0
-In-Reply-To: <20231123133749.2030661-5-mwalle@kernel.org>
-References: <20231123133749.2030661-1-mwalle@kernel.org>
- <20231123133749.2030661-5-mwalle@kernel.org>
-Message-ID: <2d1bae2239626cb51977bf0803cec602@kernel.org>
-X-Sender: mwalle@kernel.org
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+References: <0-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com> <3-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
+In-Reply-To: <3-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Thu, 30 Nov 2023 14:21:41 +0100
+Message-ID: <CAJZ5v0h2=qHgG8qV0Yjm_mZSKBZcYZMfQYiFZF18RcmHM-+oMA@mail.gmail.com>
+Subject: Re: [PATCH 03/30] ACPI: IORT: Make a iort_iommu_for_each_id()
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: acpica-devel@lists.linux.dev, Andy Gross <agross@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+	Bjorn Andersson <andersson@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, asahi@lists.linux.dev, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, devicetree@vger.kernel.org, 
+	Frank Rowand <frowand.list@gmail.com>, Hanjun Guo <guohanjun@huawei.com>, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, 
+	Jean-Philippe Brucker <jean-philippe@linaro.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, 
+	Kees Cook <keescook@chromium.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Len Brown <lenb@kernel.org>, 
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-hardening@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, Hector Martin <marcan@marcan.st>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Rob Clark <robdclark@gmail.com>, 
+	Robert Moore <robert.moore@intel.com>, Rob Herring <robh+dt@kernel.org>, 
+	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, 
+	Sudeep Holla <sudeep.holla@arm.com>, Sven Peter <sven@svenpeter.dev>, 
+	Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, 
+	virtualization@lists.linux.dev, Chen-Yu Tsai <wens@csie.org>, 
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, =?UTF-8?Q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>, 
+	patches@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231130_044726_618483_C58933F6 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20231130_052155_211555_169D888D 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,50 +100,250 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> With the latest dynamic selection of the output component, we can now
-> support different outputs. Move current output component into the
-> dynamic routes array and add the new DSI0 output.
-> 
-> Signed-off-by: Michael Walle <mwalle@kernel.org>
+On Thu, Nov 30, 2023 at 2:11=E2=80=AFAM Jason Gunthorpe <jgg@nvidia.com> wr=
+ote:
+>
+> Similar to of_iommu_for_each_id() this parses the IORT ACPI description
+> and invokes a function over each entry in the table.
+>
+> Have iort_iommu_configure_id() use the new function to call
+> iort_iommu_xlate().
+>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+
+Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+
 > ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c 
-> b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 2b0c35cacbc6..6fa88976376e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -222,7 +222,11 @@ static const unsigned int mt8195_mtk_ddp_main[] = 
-> {
->  	DDP_COMPONENT_DITHER0,
->  	DDP_COMPONENT_DSC0,
->  	DDP_COMPONENT_MERGE0,
-> -	DDP_COMPONENT_DP_INTF0,
-
-Please disregard this patch (the others are ok). There must gone 
-something
-wrong during my testing. DDP_COMPONENT_MERGE0 won't work with
-DDP_COMPONENT_DSI0. If anyone has more insights, I'm all ears.
-
--michael
-
+>  drivers/acpi/arm64/iort.c | 118 ++++++++++++++++++++++++--------------
+>  include/linux/acpi_iort.h |  12 ++++
+>  2 files changed, 86 insertions(+), 44 deletions(-)
+>
+> diff --git a/drivers/acpi/arm64/iort.c b/drivers/acpi/arm64/iort.c
+> index bdaf9256870d92..5c9b4c23f96a87 100644
+> --- a/drivers/acpi/arm64/iort.c
+> +++ b/drivers/acpi/arm64/iort.c
+> @@ -1218,9 +1218,10 @@ static bool iort_pci_rc_supports_ats(struct acpi_i=
+ort_node *node)
+>         return pci_rc->ats_attribute & ACPI_IORT_ATS_SUPPORTED;
+>  }
+>
+> -static int iort_iommu_xlate(struct device *dev, struct acpi_iort_node *n=
+ode,
+> -                           u32 streamid)
+> +static int iort_iommu_xlate(struct acpi_iort_node *node, u32 streamid,
+> +                           void *info)
+>  {
+> +       struct device *dev =3D info;
+>         const struct iommu_ops *ops;
+>         struct fwnode_handle *iort_fwnode;
+>
+> @@ -1250,9 +1251,11 @@ static int iort_iommu_xlate(struct device *dev, st=
+ruct acpi_iort_node *node,
+>  struct iort_pci_alias_info {
+>         struct device *dev;
+>         struct acpi_iort_node *node;
+> +       iort_for_each_fn fn;
+> +       void *info;
+>  };
+>
+> -static int iort_pci_iommu_init(struct pci_dev *pdev, u16 alias, void *da=
+ta)
+> +static int __for_each_pci_alias(struct pci_dev *pdev, u16 alias, void *d=
+ata)
+>  {
+>         struct iort_pci_alias_info *info =3D data;
+>         struct acpi_iort_node *parent;
+> @@ -1260,7 +1263,7 @@ static int iort_pci_iommu_init(struct pci_dev *pdev=
+, u16 alias, void *data)
+>
+>         parent =3D iort_node_map_id(info->node, alias, &streamid,
+>                                   IORT_IOMMU_TYPE);
+> -       return iort_iommu_xlate(info->dev, parent, streamid);
+> +       return info->fn(parent, streamid, info->info);
+>  }
+>
+>  static void iort_named_component_init(struct device *dev,
+> @@ -1280,7 +1283,8 @@ static void iort_named_component_init(struct device=
+ *dev,
+>                 dev_warn(dev, "Could not add device properties\n");
+>  }
+>
+> -static int iort_nc_iommu_map(struct device *dev, struct acpi_iort_node *=
+node)
+> +static int __for_each_platform(struct acpi_iort_node *node, iort_for_eac=
+h_fn fn,
+> +                              void *info)
+>  {
+>         struct acpi_iort_node *parent;
+>         int err =3D -ENODEV, i =3D 0;
+> @@ -1293,27 +1297,71 @@ static int iort_nc_iommu_map(struct device *dev, =
+struct acpi_iort_node *node)
+>                                                    i++);
+>
+>                 if (parent)
+> -                       err =3D iort_iommu_xlate(dev, parent, streamid);
+> +                       err =3D fn(parent, streamid, info);
+>         } while (parent && !err);
+>
+>         return err;
+>  }
+>
+> -static int iort_nc_iommu_map_id(struct device *dev,
+> -                               struct acpi_iort_node *node,
+> -                               const u32 *in_id)
+> +int iort_iommu_for_each_id(struct device *dev, const u32 *id_in,
+> +                          struct iort_params *params, iort_for_each_fn f=
+n,
+> +                          void *info)
+>  {
+> -       struct acpi_iort_node *parent;
+> -       u32 streamid;
+> +       struct acpi_iort_named_component *nc;
+> +       struct acpi_iort_node *node;
+> +       int err =3D -ENODEV;
+>
+> -       parent =3D iort_node_map_id(node, *in_id, &streamid, IORT_IOMMU_T=
+YPE);
+> -       if (parent)
+> -               return iort_iommu_xlate(dev, parent, streamid);
+> +       memset(params, 0, sizeof(*params));
+> +       if (dev_is_pci(dev)) {
+> +               struct pci_bus *bus =3D to_pci_dev(dev)->bus;
+> +               struct iort_pci_alias_info pci_info =3D { .dev =3D dev,
+> +                                                       .fn =3D fn,
+> +                                                       .info =3D info };
+>
+> -       return -ENODEV;
+> +               node =3D iort_scan_node(ACPI_IORT_NODE_PCI_ROOT_COMPLEX,
+> +                                     iort_match_node_callback, &bus->dev=
+);
+> +               if (!node)
+> +                       return -ENODEV;
+> +
+> +               pci_info.node =3D node;
+> +               err =3D pci_for_each_dma_alias(to_pci_dev(dev),
+> +                                            __for_each_pci_alias, &pci_i=
+nfo);
+> +
+> +               if (iort_pci_rc_supports_ats(node))
+> +                       params->pci_rc_ats =3D true;
+> +               return 0;
+> +       }
+> +
+> +       node =3D iort_scan_node(ACPI_IORT_NODE_NAMED_COMPONENT,
+> +                             iort_match_node_callback, dev);
+> +       if (!node)
+> +               return -ENODEV;
+> +
+> +       if (id_in) {
+> +               struct acpi_iort_node *parent;
+> +               u32 streamid;
+> +
+> +               parent =3D iort_node_map_id(node, *id_in, &streamid,
+> +                                         IORT_IOMMU_TYPE);
+> +               if (!parent)
+> +                       return -ENODEV;
+> +               err =3D fn(parent, streamid, info);
+> +       } else {
+> +               err =3D __for_each_platform(node, fn, info);
+> +       }
+> +       if (err)
+> +               return err;
+> +
+> +       nc =3D (struct acpi_iort_named_component *)node->node_data;
+> +       params->pasid_num_bits =3D FIELD_GET(ACPI_IORT_NC_PASID_BITS,
+> +                                               nc->node_flags);
+> +       if (nc->node_flags & ACPI_IORT_NC_STALL_SUPPORTED)
+> +               params->dma_can_stall =3D true;
+> +
+> +       iort_named_component_init(dev, node);
+> +       return 0;
+>  }
+>
+> -
+>  /**
+>   * iort_iommu_configure_id - Set-up IOMMU configuration for a device.
+>   *
+> @@ -1324,40 +1372,22 @@ static int iort_nc_iommu_map_id(struct device *de=
+v,
+>   */
+>  int iort_iommu_configure_id(struct device *dev, const u32 *id_in)
+>  {
+> -       struct acpi_iort_node *node;
+> -       int err =3D -ENODEV;
+> +       struct iort_params params;
+> +       int err;
+>
+> -       if (dev_is_pci(dev)) {
+> +       err =3D iort_iommu_for_each_id(dev, id_in, &params, &iort_iommu_x=
+late,
+> +                                    dev);
+> +       if (err)
+> +               return err;
+> +
+> +       if (params.pci_rc_ats) {
+>                 struct iommu_fwspec *fwspec;
+> -               struct pci_bus *bus =3D to_pci_dev(dev)->bus;
+> -               struct iort_pci_alias_info info =3D { .dev =3D dev };
+> -
+> -               node =3D iort_scan_node(ACPI_IORT_NODE_PCI_ROOT_COMPLEX,
+> -                                     iort_match_node_callback, &bus->dev=
+);
+> -               if (!node)
+> -                       return -ENODEV;
+> -
+> -               info.node =3D node;
+> -               err =3D pci_for_each_dma_alias(to_pci_dev(dev),
+> -                                            iort_pci_iommu_init, &info);
+>
+>                 fwspec =3D dev_iommu_fwspec_get(dev);
+> -               if (fwspec && iort_pci_rc_supports_ats(node))
+> +               if (fwspec)
+>                         fwspec->flags |=3D IOMMU_FWSPEC_PCI_RC_ATS;
+> -       } else {
+> -               node =3D iort_scan_node(ACPI_IORT_NODE_NAMED_COMPONENT,
+> -                                     iort_match_node_callback, dev);
+> -               if (!node)
+> -                       return -ENODEV;
+> -
+> -               err =3D id_in ? iort_nc_iommu_map_id(dev, node, id_in) :
+> -                             iort_nc_iommu_map(dev, node);
+> -
+> -               if (!err)
+> -                       iort_named_component_init(dev, node);
+>         }
+> -
+> -       return err;
+> +       return 0;
+>  }
+>
+>  #else
+> diff --git a/include/linux/acpi_iort.h b/include/linux/acpi_iort.h
+> index 1cb65592c95dd3..5423abff9b6b09 100644
+> --- a/include/linux/acpi_iort.h
+> +++ b/include/linux/acpi_iort.h
+> @@ -29,6 +29,18 @@ void iort_deregister_domain_token(int trans_id);
+>  struct fwnode_handle *iort_find_domain_token(int trans_id);
+>  int iort_pmsi_get_dev_id(struct device *dev, u32 *dev_id);
+>
+> +struct iort_params {
+> +       unsigned int pasid_num_bits;
+> +       bool dma_can_stall : 1;
+> +       bool pci_rc_ats : 1;
 > +};
 > +
-> +static const struct mtk_drm_route mt8195_mtk_ddp_main_routes[] = {
-> +	{ 0, DDP_COMPONENT_DP_INTF0 },
-> +	{ 0, DDP_COMPONENT_DSI0 },
->  };
-> 
->  static const unsigned int mt8195_mtk_ddp_ext[] = {
-> @@ -308,6 +312,8 @@ static const struct mtk_mmsys_driver_data 
-> mt8192_mmsys_driver_data = {
->  static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = 
-> {
->  	.main_path = mt8195_mtk_ddp_main,
->  	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
-> +	.conn_routes = mt8195_mtk_ddp_main_routes,
-> +	.num_conn_routes = ARRAY_SIZE(mt8195_mtk_ddp_main_routes),
->  	.mmsys_dev_num = 2,
->  };
+> +typedef int (*iort_for_each_fn)(struct acpi_iort_node *iommu, u32 stream=
+id,
+> +                               void *info);
+> +int iort_iommu_for_each_id(struct device *dev, const u32 *id_in,
+> +                          struct iort_params *params, iort_for_each_fn f=
+n,
+> +                          void *info);
+> +
+>  #ifdef CONFIG_ACPI_IORT
+>  u32 iort_msi_map_id(struct device *dev, u32 id);
+>  struct irq_domain *iort_get_device_domain(struct device *dev, u32 id,
+> --
+> 2.42.0
+>
 
