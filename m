@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2133FC10DC3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Nov 2023 07:41:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BFB9C07CA9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Nov 2023 07:41:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zy3bexk/UdkiFEYq/BgshHxcfzBMkkII0D9hrrzOht8=; b=lbyXPIAYXrdriJAV/92ooEQ5D1
-	N+/29bpLk0v+DmOo0JP29m2yVZkv3Lu0i0l1AMe8gqTUNyssoHRpI+524UejRiJvJBC0qTLAmrQx3
-	jtFYb5OMcZgDyqb0eqjuty2WTEHWre/JA3dDU00kOhJgaqckBQh9agsWRK/qv8B64yKVNx2cWbGBP
-	taonVzoZX2vQ1Ks7eUIBW8mrNRR+zuNOEAkbVgtW1l0M7G8g2m9BCR3s8v1TdDmtG8gam+ZVzuYrJ
-	nyMSDg1KcGbhBDdUyFFBgF86WRaj5t2et0o30arpVYsCr9rXJ50VE8KmDzBDmV5SnZzuSPjLRX/G/
-	426ZCufQ==;
+	bh=IkpXrLW2063q1m94Ct7XMex/vBu1O/g0kp41KKzoVbE=; b=aCBFEUx+RvIEidCQUVCeePUzvm
+	HkRyybkrQNMYdPdHjfmABLWBHnluDMb0Vk3PQsYsL3vtqbVLAaV4dkTdRVXADczA+bwVSpH304fDC
+	da6un8c12J89N22d5mJrnwy7aTXSeoZ6+LY7tV2H5097SCvuuBUKhcph8aaKqgvPvGvYoV9uRKpe4
+	Fb/bbLqh4DqnCGXmpHdE01yMvB+Fvb8veK4BMseSklJ2iBW8sFLtI6lXjR+WuxHhX10ZB255yqLk/
+	B2nJB5KIk1nzUJ6Z2x5M+hnU+E5K9rV997ltQBQVjcW9GiwVaIukGY0rl00cOcrd1icl21+7Xr82J
+	T6I02J8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8bfQ-00A7Ne-0F;
-	Thu, 30 Nov 2023 07:41:00 +0000
-Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
+	id 1r8bfP-00A7Mv-0U;
+	Thu, 30 Nov 2023 07:40:59 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8bfJ-00A7Jy-1N
+	id 1r8bfG-00A7Ia-0c
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Nov 2023 07:40:54 +0000
-Received: by mail-oa1-x33.google.com with SMTP id 586e51a60fabf-1fa20395185so287076fac.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 23:40:51 -0800 (PST)
+	Thu, 30 Nov 2023 07:40:51 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-6cdd9c53282so606023b3a.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Nov 2023 23:40:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701330050; x=1701934850; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1701330048; x=1701934848; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zy3bexk/UdkiFEYq/BgshHxcfzBMkkII0D9hrrzOht8=;
-        b=BDtghXMbGY+BAnQXbZENx5JaU8FQJUujyATsIFREOxiQ6wvGJBjwjfgobIqcwRgvQ4
-         NOYKyanT0y4X+3VDeJdkLiRw2h4Zkp5qFMkBY1jl3cW88xFZpP/Gy+h2Duc267UZHdbw
-         6qWitmFditksFnRA6rxSRCRivyvE/h8GlRkA4=
+        bh=IkpXrLW2063q1m94Ct7XMex/vBu1O/g0kp41KKzoVbE=;
+        b=XdkalK0fFpRI/4evsTAR9aCLzFQW6OH4d9iteJtUx69YzdrJX3B1RxsH7zUKZtc3qz
+         hvmbxV/sxxQgf5MbNdK9ta+KR7CsDeezlkUxChxnicv2wfgyTqRJTvIGxpiIEgidv1+o
+         xpkJK9wYSSJoSRs7AFdQXmKU+B9oX5cFGbJsg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701330050; x=1701934850;
+        d=1e100.net; s=20230601; t=1701330048; x=1701934848;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=zy3bexk/UdkiFEYq/BgshHxcfzBMkkII0D9hrrzOht8=;
-        b=E6bjww6uEw2+QKLp8LgmJztzcsHui55znnttLebzYd8kn1s9CDMdDjnyErwCN1F5bq
-         DqMNgpzugs6cmV/7mhn3bSNP31bLIqQQLO3PndQ1qCUei2RUA16lbbwsM8c5JkZfFTum
-         Pt0pmWMXJLkwvnsh97SC9OszQjHK4WUt8jNRbBaWAJC0bzA4xSYJyUVFedIuheFjj5Kv
-         5eOvfHiiOdqVmm4wqLjQtJHGJ+4nK1QmIlabC6nHEz/qYfTmoY+1H2J2qHR3FAbBUK7Q
-         DtWN1ife5GJJaJHcuo9/lZPtLdpk6KgMcynKwk2/0jjehEXV+gpv2RZwO+BUQAeWlalq
-         7YiA==
-X-Gm-Message-State: AOJu0YxF/PEObdj5M7//iuVzdKKj33ZU7AFdIsnPG6K5Adb7pPZO2kDI
-	gPPWu5TWP7y35Mpfh70HznxLLQ==
-X-Google-Smtp-Source: AGHT+IHwi9RcnosuzpIAvSOXNm0G5GIasdXoLS/n1bNO323T/kQvMYm8EOB8Q6YuOyc1t9+FjbG4JQ==
-X-Received: by 2002:a05:6871:7588:b0:1fa:25e2:efa8 with SMTP id nz8-20020a056871758800b001fa25e2efa8mr18245153oac.15.1701330050507;
-        Wed, 29 Nov 2023 23:40:50 -0800 (PST)
+        bh=IkpXrLW2063q1m94Ct7XMex/vBu1O/g0kp41KKzoVbE=;
+        b=dVZC2O0IAJr6idRtMu+XS9RzVWrd+aPL9olR0FmQW9iifW6GvsrprgzRTxrCf7tcG6
+         svLcjVmgz7VIOzXDXn8CWCVS7B1Kz2vh25wGAybEg2iZ5pfsf7J3aizy6YQ7P8Idz4OS
+         vjokkHdQlEHPD1JY9kM6u43Rg224Y1rtM0WIHsUkBl5IaCizxK5YDUL5EnxtJr+Wh1kS
+         x2sf2MOBg8BjieOP5Tki7JhokezP7gY2HRj6/nnaLXTcExsKbIzqYyOT4g5ol9ksCKF8
+         dMlkXxMZ2oVtsaNxPGT65+Oxx0S4IirOAZ9qcaX24l6arlUje6D/hbE3FalAxy9vK3X9
+         oiug==
+X-Gm-Message-State: AOJu0Yy2Gp4G43JgLMbfs9DvpgCVSQt5z1VLDZrTDO1KEQnTLPvbXItK
+	tzoLZsJPpXu3Tl7CAvbrAQZ2dQ==
+X-Google-Smtp-Source: AGHT+IHBrA2Ajkr3pUowl6+raRAc06e8yaFp0DgaWh6/FLZNLmhoUFHQvZ6F8XtSp7ig/5Si9AoLdw==
+X-Received: by 2002:a05:6a00:6c85:b0:6cd:edef:4b02 with SMTP id jc5-20020a056a006c8500b006cdedef4b02mr313263pfb.26.1701330048161;
+        Wed, 29 Nov 2023 23:40:48 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:7c8f:dafd:65c3:2bcf])
-        by smtp.gmail.com with ESMTPSA id p35-20020a634f63000000b005bd3f34b10dsm612870pgl.24.2023.11.29.23.40.48
+        by smtp.gmail.com with ESMTPSA id p35-20020a634f63000000b005bd3f34b10dsm612870pgl.24.2023.11.29.23.40.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Nov 2023 23:40:50 -0800 (PST)
+        Wed, 29 Nov 2023 23:40:47 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -70,17 +70,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 3/3] arm64: dts: mediatek: mt8186: Fix alias prefix for ovl_2l0
-Date: Thu, 30 Nov 2023 15:40:31 +0800
-Message-ID: <20231130074032.913511-4-wenst@chromium.org>
+Subject: [PATCH 2/3] arm64: dts: mt6358: Drop bogus "regulator-fixed" compatible properties
+Date: Thu, 30 Nov 2023 15:40:30 +0800
+Message-ID: <20231130074032.913511-3-wenst@chromium.org>
 X-Mailer: git-send-email 2.43.0.rc2.451.g8631bc7472-goog
 In-Reply-To: <20231130074032.913511-1-wenst@chromium.org>
 References: <20231130074032.913511-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_234053_461464_FC4CE95D 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20231129_234050_234778_E16E9FCE 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,29 +95,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The alias prefix for ovl_2l (2 layer overlay) is "ovl-2l", not "ovl_2l".
+Whether a regulator under the MT6358 PMIC is a fixed regulator or not is
+derived from the node name. Compatible string properties are not used.
+This causes validation errors after the regulator binding is converted
+to DT schema.
 
-Fix this.
+Drop the bogus "regulator-fixed" compatible properties from the PMIC's
+regulator sub-nodes.
 
-Fixes: 7e07d3322de2 ("arm64: dts: mediatek: mt8186: Add display nodes")
+Fixes: 9f8872221674 ("arm64: dts: mt6358: add PMIC MT6358 related nodes")
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt6358.dtsi | 13 -------------
+ 1 file changed, 13 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index df0c04f2ba1d..021397671099 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -22,7 +22,7 @@ / {
+diff --git a/arch/arm64/boot/dts/mediatek/mt6358.dtsi b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
+index 186898f9384b..ad5e4022e06d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6358.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
+@@ -128,7 +128,6 @@ mt6358_vibr_reg: ldo_vibr {
+ 			};
  
- 	aliases {
- 		ovl0 = &ovl0;
--		ovl_2l0 = &ovl_2l0;
-+		ovl-2l0 = &ovl_2l0;
- 		rdma0 = &rdma0;
- 		rdma1 = &rdma1;
- 	};
+ 			mt6358_vrf12_reg: ldo_vrf12 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vrf12";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <1200000>;
+@@ -136,7 +135,6 @@ mt6358_vrf12_reg: ldo_vrf12 {
+ 			};
+ 
+ 			mt6358_vio18_reg: ldo_vio18 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vio18";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -153,7 +151,6 @@ mt6358_vusb_reg: ldo_vusb {
+ 			};
+ 
+ 			mt6358_vcamio_reg: ldo_vcamio {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vcamio";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -168,7 +165,6 @@ mt6358_vcamd_reg: ldo_vcamd {
+ 			};
+ 
+ 			mt6358_vcn18_reg: ldo_vcn18 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vcn18";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -176,7 +172,6 @@ mt6358_vcn18_reg: ldo_vcn18 {
+ 			};
+ 
+ 			mt6358_vfe28_reg: ldo_vfe28 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vfe28";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+@@ -193,7 +188,6 @@ mt6358_vsram_proc11_reg: ldo_vsram_proc11 {
+ 			};
+ 
+ 			mt6358_vcn28_reg: ldo_vcn28 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vcn28";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+@@ -218,7 +212,6 @@ mt6358_vsram_gpu_reg: ldo_vsram_gpu {
+ 			};
+ 
+ 			mt6358_vxo22_reg: ldo_vxo22 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vxo22";
+ 				regulator-min-microvolt = <2200000>;
+ 				regulator-max-microvolt = <2200000>;
+@@ -234,7 +227,6 @@ mt6358_vefuse_reg: ldo_vefuse {
+ 			};
+ 
+ 			mt6358_vaux18_reg: ldo_vaux18 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vaux18";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -249,7 +241,6 @@ mt6358_vmch_reg: ldo_vmch {
+ 			};
+ 
+ 			mt6358_vbif28_reg: ldo_vbif28 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vbif28";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+@@ -280,7 +271,6 @@ mt6358_vemc_reg: ldo_vemc {
+ 			};
+ 
+ 			mt6358_vio28_reg: ldo_vio28 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vio28";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+@@ -288,7 +278,6 @@ mt6358_vio28_reg: ldo_vio28 {
+ 			};
+ 
+ 			mt6358_va12_reg: ldo_va12 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "va12";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <1200000>;
+@@ -297,7 +286,6 @@ mt6358_va12_reg: ldo_va12 {
+ 			};
+ 
+ 			mt6358_vrf18_reg: ldo_vrf18 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vrf18";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -333,7 +321,6 @@ mt6358_vldo28_reg: ldo_vldo28 {
+ 			};
+ 
+ 			mt6358_vaud28_reg: ldo_vaud28 {
+-				compatible = "regulator-fixed";
+ 				regulator-name = "vaud28";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
 -- 
 2.43.0.rc2.451.g8631bc7472-goog
 
