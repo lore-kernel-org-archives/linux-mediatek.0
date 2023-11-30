@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A531C10DC1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Nov 2023 01:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E911C10F04
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Nov 2023 01:12:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fVSr9+bQP69hK+Giq+u9FoxDlVZiQRDX7oYqcWOEYLw=; b=ZI5DxlaSjvxvsIdJu57FhXBehQ
-	I6u1+Sv1XDXpK5XOZ/Milaejp/qsmVbimVTJQLmk041xvEPlA6jmeEl6TQNWK2LmamJjBf5X2Moqi
-	jQJcQLcZUNh7IJEpZ/U9yMAzi7vEzwUeFpuBU5k3dJ0A2laIGZBK3Mg0jePn4dd9o6LAMBpSscG/j
-	9hx7N3qdStPfVE+yxL4r05ZB3ulYaTEh20nHcIObGqrGcqMiXUYLwd1LEMAd6uQBQ0Mx+MGlBQE93
-	PT9cgMKQ/ep+hR8kyXHV9ihTUdk5bZpzcVJgg1UXxz7syKJ7w3gtqWzL+NTbAsaJlPvQfDPkJ+WI4
-	gB+laZAw==;
+	bh=1otHA+LIL3W1WZMWhBTV+rqHH68xzfh1OFbgeJsyAew=; b=bkB+2VDX5wxzrH3uztn64/JbJ3
+	SeoHm954pxN6xFhZ8T/HjJYNL5v6Q8y0K+u7dxXxyreRYTJ9TH4d+x1Yf9GM6C9+pY0FN5JDFy66o
+	YFDs14lv8xtqeOIhooIbDDf0NfGXEzycn1a3qNWpSs6wDesy01cXphTTGmtqjVHUMxnA+SW2gHJGK
+	zwtjWIQakl6yB4Nmo7GJVNLXxhSntR2ZG2wTCPV+FfVfowaeD0cYPUMJFIaQhc587XCqGrwos+u1M
+	jhoGeTjyrNkZfX6O5hA1/hEqszeDzkZaQwYEVY+SdVJbjz1nQWhEzHJTgLqpXHaI9UTZ5RmPKaR8S
+	6zudscaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8VbP-009dak-0A;
-	Thu, 30 Nov 2023 01:12:27 +0000
-Received: from mail-dm6nam12on2060d.outbound.protection.outlook.com ([2a01:111:f400:fe59::60d] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1r8VbS-009de4-2U;
+	Thu, 30 Nov 2023 01:12:30 +0000
+Received: from mail-dm6nam12on2060b.outbound.protection.outlook.com ([2a01:111:f400:fe59::60b] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Va6-009cL4-2k;
-	Thu, 30 Nov 2023 01:11:10 +0000
+	id 1r8Va8-009cQc-0u;
+	Thu, 30 Nov 2023 01:11:11 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=USTuXHmK9Yve50+rPdo4WGbIIiOmphE+Th3lmWyNB9fKIhzYZWaqYFffCAKvhey4k0suO1/Idem4tgdD7VLTDmwdvj/K/Zc/4tLUigtwcd/y43+e9yjqdo4+gq6kkdvTUzeeeezN1gGv8RjeKrBuEajHJ58NmDHQ5SL4aE+nBNvbCzPQ17fSjXCFnA9jzpsDcTPoo13NOS2IfBwp0YuRIP3kCbLBonQzJHStxg+EvYwANjuCpQ19Fj1Lve/qr2B5rha4EpMGMsQW0UTNdqt+21oD/uYL0UeZTV1ELRu/SqA04J+s//h8oAWCF6zlsJ32yWB5YdDyvvuuFULnpv+jVA==
+ b=HORhBOqFrxfTFHe3FuDPVTyBPEWQkdsesYUlMZPPB/PV1+nha7Sx3tZqUEDwqK/RyTn/VvDUfNXbMh4O2Y3MS4q3HAb+CLMQhrGuHubL3GLcAreTh1+iE/3CIrje6cyH65XJ3zvhfE2rKmstu179fGH5CmPzXEhE3Z/3/slbLpTpaz1SyCuD3RThDLXOV8Uwg8i1QYl2jztVJIpSfHMb8Q93HpPF5y0x6FrXqypHabLyDWRPTgWsV6MdDqMuLJolcN9j/nHHZCnMBQ99LNLxvm3RJthe36g9B3XrnJiVBGEfyTveNU2GI3Abx2gqZrhLfk9pcxuPZlOMSU0d3lRlWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fVSr9+bQP69hK+Giq+u9FoxDlVZiQRDX7oYqcWOEYLw=;
- b=RfuNUbceIX+fMVB/97Y19iu5ygkF5v5OMMyjLkYVPv5zAbbswGJRtbcXLJy0plggwoR1ofaMwXZZBbMi92MIFIwnqDSwVZeEuAdmcpxYkEM09pf2RrpySoQuJhU4gEcpvzLb/P8X6Lcqy9Oz3/rKO3Y6JyvxApgwD8sMxvBBDDTeZhEgEkpBtmu81IKCeh37YcvfEeJiZAnPchRuMpcMqFIZjVvQNotpwQ4ZCIfo1Fe9Wmr+tT+Qpg95EQR+cqu95s5lZnYmqSUAfvOXS357aNJ6byWmJx9pDWVE9LjaEUdauRPkyJxRO1APrSqErSYWGkG3PeDCWQt2dmqwfTuF6Q==
+ bh=1otHA+LIL3W1WZMWhBTV+rqHH68xzfh1OFbgeJsyAew=;
+ b=dIzx2Ow2yuwP8iT0OWYVSHQEpkPqxbjqRm2Cn0wg3J13QvBEAJjFA2iaXJK15n612Gm+EMQRd3TY13xWecpUctJHJUm+M+H8o1WjVa1twVae21ulKjyqsm7L8Mf78R0r5+DYnVyypPYpxoEXXRdeEREiHSUnPSt6wapzXeeAcfTrdp77z0m04b1tR5B6kMNrExIYgrHlzz/8ifB892SmyyakxdlK+3IbrnmqoCvmBsB7uSgxZL/4VXV5Rvz5ktR4bcq/ynEMl2LT83B9yRRJ3uzd5B0QCXKs0h4397I4mFfdRk+W8aTXizj+Q9NTqHIhANvbifhfuR0U696EDoMtEw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fVSr9+bQP69hK+Giq+u9FoxDlVZiQRDX7oYqcWOEYLw=;
- b=qUzNgBO+o7gXJ1qy8tdR1rnxs4iyg4ZBn7GmWgXmnhP2WMGfJYK2NhgvSm0AqDPuPGbX0Sz5PaeGEPeRutml62wF92HXfVT5nHA5PR+PyULp44S6ER4d+8rPBwch4KPdxum5ITHjapFNaGS1B37+PTulaGnE55N0Gqe5d3GaMn7x6kk9YlrWzo8K4djwWMdoAnLrwOhaP+JXIvAA7kOPv7BBpcZaugR0CbkUbnPdRrocg8Ve5qmkw+ZiVrtd6aFprMs4hkf5zryIBTpp9+FLmSMxxa6cA016W9FY5KlhE+N38icGnuda3TAsLuG29RtNRjmGcAYHiizAiHlJ3JjU5A==
+ bh=1otHA+LIL3W1WZMWhBTV+rqHH68xzfh1OFbgeJsyAew=;
+ b=doEttS/lS7F+WQ093rXr+f1jzMGxAYZ/ZFHsN0NuBff5/S67oZASEaVROX1bTDHL2faxMu9E/W7Fcl7wXUzFw7b0vR8RPM1NimFG94/Qcyo/5TT6PBsvKylYx3MaypZOrZGa0BPQ/MAa9VBM/UErjL4SQtc5fOQ6CpqWlIyjtEbSsQC84neUevIH1P5AaG6wDmplLuAjGbSM363ruUoNCanwqpxK7M67qrfp48EhTwmSrFWklUMvxNJUvG3wgD9UMz9zsxA8f/W4vVQcpbvENRDHvYKW8bY0y7HIqhbF/k1N6290ZmqjZWf+3BsFhWuBv8kmrBp23yNggPQbsA6EkQ==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
  by PH0PR12MB5484.namprd12.prod.outlook.com (2603:10b6:510:eb::14) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7046.24; Thu, 30 Nov
- 2023 01:10:50 +0000
+ 2023 01:10:52 +0000
 Received: from LV2PR12MB5869.namprd12.prod.outlook.com
  ([fe80::60d4:c1e3:e1aa:8f93]) by LV2PR12MB5869.namprd12.prod.outlook.com
  ([fe80::60d4:c1e3:e1aa:8f93%4]) with mapi id 15.20.7046.015; Thu, 30 Nov 2023
- 01:10:50 +0000
+ 01:10:52 +0000
 From: Jason Gunthorpe <jgg@nvidia.com>
 To: acpica-devel@lists.linux.dev,
 	Andy Gross <agross@kernel.org>,
@@ -106,67 +106,67 @@ To: acpica-devel@lists.linux.dev,
 	Chunyan Zhang <zhang.lyra@gmail.com>
 Cc: =?utf-8?q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>,
 	patches@lists.linux.dev
-Subject: [PATCH 22/30] iommu/qcom: Move to iommu_fw_alloc_per_device_ids()
-Date: Wed, 29 Nov 2023 21:10:29 -0400
-Message-ID: <22-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
+Subject: [PATCH 02/30] ACPI: VIOT: Make a viot_iommu_for_each_id()
+Date: Wed, 29 Nov 2023 21:10:09 -0400
+Message-ID: <2-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
 In-Reply-To: <0-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
 References: 
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: SN1PR12CA0110.namprd12.prod.outlook.com
- (2603:10b6:802:21::45) To LV2PR12MB5869.namprd12.prod.outlook.com
+X-ClientProxiedBy: SN6PR08CA0011.namprd08.prod.outlook.com
+ (2603:10b6:805:66::24) To LV2PR12MB5869.namprd12.prod.outlook.com
  (2603:10b6:408:176::16)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH0PR12MB5484:EE_
-X-MS-Office365-Filtering-Correlation-Id: 724c4ab5-7a07-4e75-5bae-08dbf1412b96
+X-MS-Office365-Filtering-Correlation-Id: 3b7c2a46-bde1-43ba-de9f-08dbf1412c2b
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: O+TTURoAd06a5nhc1hEqPMI3UF8xNQp/QEVs/OUUBk0iMdto60WmWpf0sfwLRxPgM1BswcDjOFzMZx/5EE0DCvqWUNUGIP7cP+8bGBieThqSlPuA7qKb3DdTBxPgZzWsZ2ad4o0usd2s0iGKLXdw6Duqld/uNibwRtS10IRhkVxe8pgTKJ6pThePbAAEHB0fEYNbAWAlFKa9O1+jrjKeYWMvt4cxZeW0Z8fuoV3BmuRIYGYy+YNxYJs3vp2iJsmrKj5gm5hVv8/yMhSH/6OteNodtVk5QWub0hg2h5ZAZv+h+jh0GrLCYG5ZKTs6g2rB/1Lxc/+enNHqRU7Q8EOiF9+Gz7Q9LJ4MzLcH+7lI6NuuK8pK0V0pytzM1220Y0lkDfjhkEfVl9KVlKDTJVozKo2kF6vsiKI1Ge9F2dNdGYQULwTsrwWExe4do2X2vmy96DkOrRTU88xIqPrYguEMepRXMes+ZNJFZxi6uvTl14mdPgjlnA20EWX4kSQ4Ju8Z+JCotFAx7NmaYU48A3HT4bImxGGSX3ucqu1HrY7cLGw2POV7xR26GUCGvUy+AbU0+LGp+FdyU432yfHwR+G2oWxy5QQqEPD1HvuDmcdEKqEdH8TSnDlyUCBdWo1xi40I6gAo8qPCbXlrfA7NClCCsw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(346002)(136003)(396003)(39860400002)(376002)(230922051799003)(451199024)(1800799012)(186009)(64100799003)(1191002)(8936002)(110136005)(8676002)(316002)(66556008)(4326008)(86362001)(66476007)(6486002)(478600001)(66946007)(41300700001)(36756003)(921008)(30864003)(7416002)(7366002)(2906002)(7406005)(5660300002)(38100700002)(2616005)(6512007)(6506007)(6666004)(83380400001)(26005)(202311291699003);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam-Message-Info: 2i71bxGKun33R1DeXVHUpr3CXstj44PRyf0JQC09JOqxra+4rpqi5V/a+/WNw06/dj83EGkjEtD9uRBPznXeSDDkNdiSHgywYfHFohfJfP5b4rz7XPeQjq9TcVX9mDGt1dEHDjb0iasrFInbtiy7uLqrvF3BfAh/nQqbR5aEWR/lmLQoDZEiu3TUE8unhP/ke6+ROgtIBc/402OUrVaT5sn4QOgTnOAOctotEwEkLjyyh3IjWXYFRh+aBAV/94KDX6IUP8AGOGvnVOvMSmj8UWwnH6bZFKZcCddZBBxbb11988ipr7g7OlpVTCplEPjQj2GAyLjdL26mzDwDi7+FqE1dYFb7uZmb0cgcf0Nmd9dcI9FZOjs/qlRwk+m0CQ0XlMVu2WvTh9o4YVkntL2HGmFrNPEK01LJc0rtP/hUGEgdVJuqdhLr6akwU3miEWqKf5QGHKUhvRYdLUBNhVbblfanJ0na3Z/TL4VY9SLfFNvfR6z0I29DRgxucRw+JF1oP8gv1fBVfNUFRWM8qHkySEglkzkqh8mV/m0sg929hf/Rux4IUzNyRAuu4q+WRIzPGBGmIYbFwvAm6le49EmunEZVWerPmJYb+CGZZBkheEqksA/whO/VlZDCoH+wheChpCp9NkzpFNPFDAIG8aJgQaKelX7TxfkNz45ZEVkrcGo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(346002)(136003)(396003)(39860400002)(376002)(230922051799003)(451199024)(1800799012)(186009)(64100799003)(1191002)(8936002)(110136005)(8676002)(316002)(66556008)(4326008)(86362001)(66476007)(6486002)(478600001)(66946007)(41300700001)(36756003)(921008)(7416002)(7366002)(2906002)(7406005)(5660300002)(38100700002)(2616005)(6512007)(6506007)(6666004)(83380400001)(26005)(202311291699003)(4216001);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vEIPybqBLOiEuo3wsynDBlSBXaFbdYbgJaHD2oWwfj+LAKucVu0ZJpP3YhRq?=
- =?us-ascii?Q?X0PGwcQOcTzO5ihXrB46zlTwSqguYit90dUKLwjVdoOuNPzhYAipOMOb+4Lm?=
- =?us-ascii?Q?bE0pnGXxEQ7sSmcBHtNYr/wSFjYvmXSSpY/CPvf+pIaJqcWB0MRWc8Ma+og2?=
- =?us-ascii?Q?CipW+bze01eNmWb2JZOqUCMNh9CPFRwj1xsIHzSzGcZ84ssKj4GRrUaKkTAW?=
- =?us-ascii?Q?/mdOvwdX8PmdvTffsjNZqJJe5bJA5vjCSupEE6aHODwB5JLf9A1v4t7Xo17o?=
- =?us-ascii?Q?M2GFVMZQw3Bpvrcj+0CNIeukF+KDsWsCTTNb+iFBg2UbKoOl1gDNqjkt+VJu?=
- =?us-ascii?Q?jaOWwaD5xtiA2Ud56vA1e7aXFU/+NDM/DvCmhRweJ2FV3B6UQVoPPqBG5Fhp?=
- =?us-ascii?Q?2sUygZqUVZ1HWIW3/UE/JhYvhRB943UGO3GrfWleyY/qmCBLKc5tI08eukC3?=
- =?us-ascii?Q?hPpxiWKs3umDUHQeIM4VZvSOzOXVDEm/gNGFBtCGRoGOcF29Ozfx3dqFL80z?=
- =?us-ascii?Q?w/Qic4xYFBR0qUdA+uS/RL62GwEO0wU5WwJRfyj9d5kY5+o3wIPp0c0+xTJg?=
- =?us-ascii?Q?pbJ9L7HMdoruiBRaQos9Bmi0pE9TQbANrJ8i0sEZ0smGeiKKKLNOrzPT5mQk?=
- =?us-ascii?Q?tpEXGyacpSS+uqiCr0sAITBBn9oWYVZgdejrnDodhliZ6qWn0cyBKp0huiJs?=
- =?us-ascii?Q?wQclonOJV9Gr7Swx8QvXH1TC9WCO8KWOC6R+Qe52ZBq+LI47S92ccuchTKTq?=
- =?us-ascii?Q?ORKcf+l8GkZRDKUv9sSs1NsTtvOU4k/M48X2txz3i5Ertm2YS/GOi99/Rzzu?=
- =?us-ascii?Q?6FFjMNHV2R5amjd+AaRYTM7VEdwpqrU6aD5xRbsJMHKJZj/CKHf6yYKeCMRL?=
- =?us-ascii?Q?SfSb/X5cLern8NsVvR8eLxy/WZx5vbo3SfjUFqah8S2sjf7D0qRBcUwnKf0i?=
- =?us-ascii?Q?Ih+dwPV+pUhtcqjIflfYC9NhKKBqBl1g2Y2AGIqXnWdYzQVvkor7o5kj/h9h?=
- =?us-ascii?Q?czJC1QlS7xSm2F9GUIaCy4AxLlqtc9Pz3nE9EiULD/Ppe+bXceBRf6GHnvuT?=
- =?us-ascii?Q?d+bxm23VJ8UYRwouOsQyzhEN3CRgHc1ipRERxmhyUn77WAI+HtusSeofn3ki?=
- =?us-ascii?Q?RcKiEnKqMSWiwdLl7f5xbhi7n1CudL5CiuvGhn5DQMGlgZ+8kBqw/bzF2Ggt?=
- =?us-ascii?Q?V3uCe9V7V2U1HjZvgNblTMReqd/QlWVc+AfPaONwwXLSKdKR8Y8Iwxk/Ag8G?=
- =?us-ascii?Q?kYOODVGlRFrITOj4h7G56UM8K6oqkpuxIso+bQO6CuIowpCLZnnSgUb6H5O/?=
- =?us-ascii?Q?uXaBlpPQb/9QKo8qw/C3FB/Q6oQ4BDa6DQTOQ8oFWfvLVTDHoCxeIFWqDVIQ?=
- =?us-ascii?Q?BNBGymISE3KF2l4w3lfMWhfyzIiH8A6oB3Ml4V5SE4OeEJyWFvETCMvJQZmg?=
- =?us-ascii?Q?GSfp90tVOPQvuMLPIk5XA6scj++xIh2Y3wj9TY7cqgEmSfWlM6B9MaOkItm/?=
- =?us-ascii?Q?PIbls66OU8DWYA1+WVwMevvxeDZ/fwpURfbyjeqfadUKrdMV+E+9i5l8M7SL?=
- =?us-ascii?Q?rznQxtKTDoqjeyh2iEKdjK5Q2Csv0oqrHtMYzXp5?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?o93vOzgPifG1P4VbkFhWTGFFahkhlARUTrm73NWNXsXUnTuxLZ6yq8GJaBMt?=
+ =?us-ascii?Q?RGwqFGsGLuWRFp2q4YQM+9D6gQ2MePrzhiz3/gU5Tz7/NS2z6BpVbDiAE96w?=
+ =?us-ascii?Q?35u0Or/eXUXm7Xzcm66fLtslM1UNp/ABFr1THw/JegH0NWolq9xqMS/B9eKU?=
+ =?us-ascii?Q?vF42pJnrTnWuXpMPEh/0ho4iEbriw+9e97QbTc7u9ChjUxcuyWqjOsaNUWM7?=
+ =?us-ascii?Q?QkDTq6renXotM9hzoq8AYz079eSg/zH3WlZxVmGM9Q8pTWPOoU7JmBQUMBgb?=
+ =?us-ascii?Q?9ScqzzwZEDu8Jb+sOTGlw5v0/SGatkYAof4EaHSJRcLg10NyzoGR5/BxOtZD?=
+ =?us-ascii?Q?t5AhVtdK29nbvqsA9/b1YaVDJB+crL7vk9KHdCW5MsJ9BxDv8DBnX7phfHXt?=
+ =?us-ascii?Q?U/CP+v8bwACV1XYaqxLdnvrhqHGZeoQjFdTnRZQ9T1AUVFybd0E7i6ZOyPyT?=
+ =?us-ascii?Q?Z/lEh9Eww4cvKsifl0XR9CITk+a2HNLdoQoCZXiyddBKcgzN5Fk3TAN1uAnC?=
+ =?us-ascii?Q?ZLr/+imCvCuj+GYyja5AMJODWY23umKFYSXk1+k9P2S3E4vWYZ94ORdethA5?=
+ =?us-ascii?Q?gzpFfcwui0/4PH8ZV065Ab7oxpqMLEoEMEnM9fVFiwEKLXiBnMZKCBGatPCF?=
+ =?us-ascii?Q?iHo5DwA+/dZzYuC79TNgGZV2sdYy8DM9L2HYn8qbFGtwkGfrXOr+6yeMyVrd?=
+ =?us-ascii?Q?4RP2ZcgQn1Xos4hD09ifvRxnlNFlfLVTHfcARbXWOKB+58PNw67IoAfRCyJi?=
+ =?us-ascii?Q?paIjfyYlP89rG7CAzERtn3z/Zawhmxz+rzvGQ74acndrk5d8IKMcQWk2xBiX?=
+ =?us-ascii?Q?RMNQLsfTvGfYfswXq5Eu3m85TH75mJpP6g4me/zdldZWhhnNg0zyBY+PgSd5?=
+ =?us-ascii?Q?sMErvND4/es1Mfs5LcrawXiZgf+eGoDU8/e9tekzm9nOLsGPIMnNi3ToMJm8?=
+ =?us-ascii?Q?qO1f/LvCu3NM0jAYkwQngplTWjNLO9M+ntuwb3gIGIok4S5qFVjuyorrRSls?=
+ =?us-ascii?Q?VeXH++qLaQH1K9ECUvEWvl5wInCKkuVlknqJSXTzpi+BMmQRb0jPIX7Kh4u8?=
+ =?us-ascii?Q?6A1cBehBlgFKUSYguRzYsIdXOnl8ZoYgm3YEzhxikhb+z5Q2L5ym33IWUAN7?=
+ =?us-ascii?Q?8djx5V7kye2dMNgxdEQ2fDn1ilL0+hzS6iCS4h4wCHOkAogroJvChs/vYvEF?=
+ =?us-ascii?Q?osBnG4/9YwZ0D6NcdyPBGV3OgKjxGSG0F8ka1V7wNuImt6rDWS+6o7BOz74Q?=
+ =?us-ascii?Q?7kpmKCjTUANR+WtMC8pgtquDAa2sA72tJoDK3u4QNN/4wWok5W4iwD4KbFUP?=
+ =?us-ascii?Q?olUV0qqSQAB8+v2fZBNRwpwohOJO/CKMXug58RFtgNjr78jkLMLFFf2k34bc?=
+ =?us-ascii?Q?zjUkiG637PQFFk0Di7IA7p8VWD2Yoadii1L+fg/yoDNZKQftOFxt8d+6yMGO?=
+ =?us-ascii?Q?FeVLUoXg7W7pfWz8UghOhbZw+BwvmmNayRhwoKZx9VvkzeifYv5vOL7UxN7y?=
+ =?us-ascii?Q?kuTl/OFazFw4QI4R9nCU5aDUSB2IjT2XfOsHZEPfShSoSsAv4nhyziF9zCGB?=
+ =?us-ascii?Q?M7GJztsQySxonQWwzySNF2zDj+GDqo1w+/1oVIOb?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 724c4ab5-7a07-4e75-5bae-08dbf1412b96
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3b7c2a46-bde1-43ba-de9f-08dbf1412c2b
 X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2023 01:10:41.1568
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2023 01:10:42.0115
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: iHNY0/XFKudzaiQDGPMOffWaW/5YTl7Yg2HEy+dh2h1S10ihP0NQa7LaOTuM9PsT
+X-MS-Exchange-CrossTenant-UserPrincipalName: rKRdU3xUv0YfjqjwVjOiGYZpIlTC16NPNlmHBn1LiMBDSU/VmIXb/gDGNS0ISUvI
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB5484
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_171106_947189_029D0193 
-X-CRM114-Status: GOOD (  21.72  )
+X-CRM114-CacheID: sfid-20231129_171108_355302_ADDCFB8C 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -181,378 +181,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-qcom supports a single iommu instance with multiple ids.
+Similar to of_iommu_for_each_id() this parses the VIOT ACPI description
+and invokes a function over each entry in the table.
 
-Introduce a per-device data to store the iommu and ids list. Allocate and
-initialize it with iommu_fw_alloc_per_device_ids(). Remove
-qcom_iommu_of_xlate().
-
-This already was checking that all instances are the same, it is now done
-in common code.
-
-Convert the rest of the funcs from calling dev_iommu_fwspec_get() to using
-the per-device data and remove all use of fwspec. Store the per-dev data
-in the qcom_iommu_domain instead of the iommu and fwspec pointers.
-
-Convert the places using dev_iommu_priv_get() to use the per-device data
-not the iommu.
-
-Remove to_iommu().
+Have viot_iommu_configure() use the new function to call
+viot_dev_iommu_init().
 
 Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 ---
- drivers/iommu/arm/arm-smmu/qcom_iommu.c | 161 ++++++++++++------------
- 1 file changed, 81 insertions(+), 80 deletions(-)
+ drivers/acpi/viot.c       | 54 +++++++++++++++++++++++----------------
+ include/linux/acpi_viot.h | 11 ++++++++
+ 2 files changed, 43 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/iommu/arm/arm-smmu/qcom_iommu.c b/drivers/iommu/arm/arm-smmu/qcom_iommu.c
-index 33f3c870086cea..4baca45df99971 100644
---- a/drivers/iommu/arm/arm-smmu/qcom_iommu.c
-+++ b/drivers/iommu/arm/arm-smmu/qcom_iommu.c
-@@ -17,6 +17,7 @@
- #include <linux/io-64-nonatomic-hi-lo.h>
- #include <linux/io-pgtable.h>
- #include <linux/iommu.h>
-+#include <linux/iommu-driver.h>
- #include <linux/iopoll.h>
- #include <linux/kconfig.h>
- #include <linux/init.h>
-@@ -54,6 +55,12 @@ struct qcom_iommu_dev {
- 	struct qcom_iommu_ctx	*ctxs[];   /* indexed by asid */
- };
+diff --git a/drivers/acpi/viot.c b/drivers/acpi/viot.c
+index c8025921c129b2..7ab35ef05c84e0 100644
+--- a/drivers/acpi/viot.c
++++ b/drivers/acpi/viot.c
+@@ -25,13 +25,6 @@
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
  
-+struct qcom_iommu_master {
-+	struct qcom_iommu_dev *iommu;
-+	unsigned int num_ids;
-+	u32 ids[] __counted_by(num_ids);
+-struct viot_iommu {
+-	/* Node offset within the table */
+-	unsigned int			offset;
+-	struct fwnode_handle		*fwnode;
+-	struct list_head		list;
+-};
+-
+ struct viot_endpoint {
+ 	union {
+ 		/* PCI range */
+@@ -304,10 +297,10 @@ void __init acpi_viot_init(void)
+ 	acpi_put_table(hdr);
+ }
+ 
+-static int viot_dev_iommu_init(struct device *dev, struct viot_iommu *viommu,
+-			       u32 epid)
++static int viot_dev_iommu_init(struct viot_iommu *viommu, u32 epid, void *info)
+ {
+ 	const struct iommu_ops *ops;
++	struct device *dev = info;
+ 
+ 	if (!viommu)
+ 		return -ENODEV;
+@@ -324,11 +317,17 @@ static int viot_dev_iommu_init(struct device *dev, struct viot_iommu *viommu,
+ 	return acpi_iommu_fwspec_init(dev, epid, viommu->fwnode, ops);
+ }
+ 
+-static int viot_pci_dev_iommu_init(struct pci_dev *pdev, u16 dev_id, void *data)
++struct viot_pci_iommu_alias_info {
++	struct device *dev;
++	viot_for_each_fn fn;
++	void *info;
 +};
 +
- struct qcom_iommu_ctx {
- 	struct device		*dev;
- 	void __iomem		*base;
-@@ -68,8 +75,7 @@ struct qcom_iommu_domain {
- 	spinlock_t		 pgtbl_lock;
- 	struct mutex		 init_mutex; /* Protects iommu pointer */
- 	struct iommu_domain	 domain;
--	struct qcom_iommu_dev	*iommu;
--	struct iommu_fwspec	*fwspec;
-+	struct qcom_iommu_master *master;
- };
- 
- static struct qcom_iommu_domain *to_qcom_iommu_domain(struct iommu_domain *dom)
-@@ -81,7 +87,7 @@ static const struct iommu_ops qcom_iommu_ops;
- 
- static struct qcom_iommu_ctx * to_ctx(struct qcom_iommu_domain *d, unsigned asid)
++static int __for_each_pci_alias(struct pci_dev *pdev, u16 dev_id, void *data)
  {
--	struct qcom_iommu_dev *qcom_iommu = d->iommu;
-+	struct qcom_iommu_dev *qcom_iommu = d->master->iommu;
- 	if (!qcom_iommu)
- 		return NULL;
- 	return qcom_iommu->ctxs[asid];
-@@ -114,11 +120,11 @@ iommu_readq(struct qcom_iommu_ctx *ctx, unsigned reg)
- static void qcom_iommu_tlb_sync(void *cookie)
- {
- 	struct qcom_iommu_domain *qcom_domain = cookie;
--	struct iommu_fwspec *fwspec = qcom_domain->fwspec;
-+	struct qcom_iommu_master *master = qcom_domain->master;
- 	unsigned i;
+ 	u32 epid;
+ 	struct viot_endpoint *ep;
+-	struct device *aliased_dev = data;
++	struct viot_pci_iommu_alias_info *info = data;
+ 	u32 domain_nr = pci_domain_nr(pdev->bus);
  
--	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, fwspec->ids[i]);
-+	for (i = 0; i < master->num_ids; i++) {
-+		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, master->ids[i]);
- 		unsigned int val, ret;
+ 	list_for_each_entry(ep, &viot_pci_ranges, list) {
+@@ -339,14 +338,14 @@ static int viot_pci_dev_iommu_init(struct pci_dev *pdev, u16 dev_id, void *data)
+ 			epid = ((domain_nr - ep->segment_start) << 16) +
+ 				dev_id - ep->bdf_start + ep->endpoint_id;
  
- 		iommu_writel(ctx, ARM_SMMU_CB_TLBSYNC, 0);
-@@ -133,11 +139,11 @@ static void qcom_iommu_tlb_sync(void *cookie)
- static void qcom_iommu_tlb_inv_context(void *cookie)
- {
- 	struct qcom_iommu_domain *qcom_domain = cookie;
--	struct iommu_fwspec *fwspec = qcom_domain->fwspec;
-+	struct qcom_iommu_master *master = qcom_domain->master;
- 	unsigned i;
- 
--	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, fwspec->ids[i]);
-+	for (i = 0; i < master->num_ids; i++) {
-+		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, master->ids[i]);
- 		iommu_writel(ctx, ARM_SMMU_CB_S1_TLBIASID, ctx->asid);
+-			return viot_dev_iommu_init(aliased_dev, ep->viommu,
+-						   epid);
++			return info->fn(ep->viommu, epid, info->info);
+ 		}
  	}
- 
-@@ -148,13 +154,13 @@ static void qcom_iommu_tlb_inv_range_nosync(unsigned long iova, size_t size,
- 					    size_t granule, bool leaf, void *cookie)
- {
- 	struct qcom_iommu_domain *qcom_domain = cookie;
--	struct iommu_fwspec *fwspec = qcom_domain->fwspec;
-+	struct qcom_iommu_master *master = qcom_domain->master;
- 	unsigned i, reg;
- 
- 	reg = leaf ? ARM_SMMU_CB_S1_TLBIVAL : ARM_SMMU_CB_S1_TLBIVA;
- 
--	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, fwspec->ids[i]);
-+	for (i = 0; i < master->num_ids; i++) {
-+		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, master->ids[i]);
- 		size_t s = size;
- 
- 		iova = (iova >> 12) << 12;
-@@ -218,14 +224,14 @@ static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 				  struct device *dev)
- {
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	struct qcom_iommu_master *master = dev_iommu_priv_get(dev);
- 	struct io_pgtable_ops *pgtbl_ops;
- 	struct io_pgtable_cfg pgtbl_cfg;
- 	int i, ret = 0;
- 	u32 reg;
- 
- 	mutex_lock(&qcom_domain->init_mutex);
--	if (qcom_domain->iommu)
-+	if (qcom_domain->master)
- 		goto out_unlock;
- 
- 	pgtbl_cfg = (struct io_pgtable_cfg) {
-@@ -236,8 +242,7 @@ static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 		.iommu_dev	= qcom_iommu->dev,
- 	};
- 
--	qcom_domain->iommu = qcom_iommu;
--	qcom_domain->fwspec = fwspec;
-+	qcom_domain->master = master;
- 
- 	pgtbl_ops = alloc_io_pgtable_ops(ARM_32_LPAE_S1, &pgtbl_cfg, qcom_domain);
- 	if (!pgtbl_ops) {
-@@ -251,8 +256,8 @@ static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 	domain->geometry.aperture_end = (1ULL << pgtbl_cfg.ias) - 1;
- 	domain->geometry.force_aperture = true;
- 
--	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, fwspec->ids[i]);
-+	for (i = 0; i < master->num_ids; i++) {
-+		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, master->ids[i]);
- 
- 		if (!ctx->secure_init) {
- 			ret = qcom_scm_restore_sec_cfg(qcom_iommu->sec_id, ctx->asid);
-@@ -316,7 +321,7 @@ static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 	return 0;
- 
- out_clear_iommu:
--	qcom_domain->iommu = NULL;
-+	qcom_domain->master = NULL;
- out_unlock:
- 	mutex_unlock(&qcom_domain->init_mutex);
- 	return ret;
-@@ -345,16 +350,16 @@ static void qcom_iommu_domain_free(struct iommu_domain *domain)
- {
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
- 
--	if (qcom_domain->iommu) {
-+	if (qcom_domain->master) {
- 		/*
- 		 * NOTE: unmap can be called after client device is powered
- 		 * off, for example, with GPUs or anything involving dma-buf.
- 		 * So we cannot rely on the device_link.  Make sure the IOMMU
- 		 * is on to avoid unclocked accesses in the TLB inv path:
- 		 */
--		pm_runtime_get_sync(qcom_domain->iommu->dev);
-+		pm_runtime_get_sync(qcom_domain->master->iommu->dev);
- 		free_io_pgtable_ops(qcom_domain->pgtbl_ops);
--		pm_runtime_put_sync(qcom_domain->iommu->dev);
-+		pm_runtime_put_sync(qcom_domain->master->iommu->dev);
- 	}
- 
- 	kfree(qcom_domain);
-@@ -362,7 +367,8 @@ static void qcom_iommu_domain_free(struct iommu_domain *domain)
- 
- static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev)
- {
--	struct qcom_iommu_dev *qcom_iommu = dev_iommu_priv_get(dev);
-+	struct qcom_iommu_master *master = dev_iommu_priv_get(dev);
-+	struct qcom_iommu_dev *qcom_iommu = master->iommu;
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
- 	int ret;
- 
-@@ -382,7 +388,7 @@ static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev
- 	 * Sanity check the domain. We don't support domains across
- 	 * different IOMMUs.
- 	 */
--	if (qcom_domain->iommu != qcom_iommu)
-+	if (qcom_domain->master->iommu != qcom_iommu)
- 		return -EINVAL;
- 
- 	return 0;
-@@ -393,20 +399,20 @@ static int qcom_iommu_identity_attach(struct iommu_domain *identity_domain,
- {
- 	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
- 	struct qcom_iommu_domain *qcom_domain;
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct qcom_iommu_dev *qcom_iommu = dev_iommu_priv_get(dev);
-+	struct qcom_iommu_master *master = dev_iommu_priv_get(dev);
-+	struct qcom_iommu_dev *qcom_iommu = master->iommu;
- 	unsigned int i;
- 
- 	if (domain == identity_domain || !domain)
- 		return 0;
- 
- 	qcom_domain = to_qcom_iommu_domain(domain);
--	if (WARN_ON(!qcom_domain->iommu))
-+	if (WARN_ON(!qcom_domain->master))
- 		return -EINVAL;
- 
- 	pm_runtime_get_sync(qcom_iommu->dev);
--	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, fwspec->ids[i]);
-+	for (i = 0; i < master->num_ids; i++) {
-+		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, master->ids[i]);
- 
- 		/* Disable the context bank: */
- 		iommu_writel(ctx, ARM_SMMU_CB_SCTLR, 0);
-@@ -461,11 +467,11 @@ static size_t qcom_iommu_unmap(struct iommu_domain *domain, unsigned long iova,
- 	 * cannot rely on the device_link.  Make sure the IOMMU is on to
- 	 * avoid unclocked accesses in the TLB inv path:
- 	 */
--	pm_runtime_get_sync(qcom_domain->iommu->dev);
-+	pm_runtime_get_sync(qcom_domain->master->iommu->dev);
- 	spin_lock_irqsave(&qcom_domain->pgtbl_lock, flags);
- 	ret = ops->unmap_pages(ops, iova, pgsize, pgcount, gather);
- 	spin_unlock_irqrestore(&qcom_domain->pgtbl_lock, flags);
--	pm_runtime_put_sync(qcom_domain->iommu->dev);
-+	pm_runtime_put_sync(qcom_domain->master->iommu->dev);
- 
- 	return ret;
- }
-@@ -478,9 +484,9 @@ static void qcom_iommu_flush_iotlb_all(struct iommu_domain *domain)
- 	if (!qcom_domain->pgtbl_ops)
- 		return;
- 
--	pm_runtime_get_sync(qcom_domain->iommu->dev);
-+	pm_runtime_get_sync(qcom_domain->master->iommu->dev);
- 	qcom_iommu_tlb_sync(pgtable->cookie);
--	pm_runtime_put_sync(qcom_domain->iommu->dev);
-+	pm_runtime_put_sync(qcom_domain->master->iommu->dev);
+ 	return -ENODEV;
  }
  
- static void qcom_iommu_iotlb_sync(struct iommu_domain *domain,
-@@ -523,13 +529,38 @@ static bool qcom_iommu_capable(struct device *dev, enum iommu_cap cap)
+-static int viot_mmio_dev_iommu_init(struct platform_device *pdev)
++static int __for_each_platform(struct platform_device *pdev,
++			       viot_for_each_fn fn, void *info)
+ {
+ 	struct resource *mem;
+ 	struct viot_endpoint *ep;
+@@ -357,12 +356,28 @@ static int viot_mmio_dev_iommu_init(struct platform_device *pdev)
+ 
+ 	list_for_each_entry(ep, &viot_mmio_endpoints, list) {
+ 		if (ep->address == mem->start)
+-			return viot_dev_iommu_init(&pdev->dev, ep->viommu,
+-						   ep->endpoint_id);
++			return fn(ep->viommu, ep->endpoint_id, info);
  	}
+ 	return -ENODEV;
  }
  
--static struct iommu_device *qcom_iommu_probe_device(struct device *dev)
-+static struct iommu_device *
-+qcom_iommu_probe_device(struct iommu_probe_info *pinf)
- {
--	struct qcom_iommu_dev *qcom_iommu = dev_iommu_priv_get(dev);
-+	struct qcom_iommu_dev *qcom_iommu;
-+	struct qcom_iommu_master *master;
-+	struct device *dev = pinf->dev;
- 	struct device_link *link;
-+	int ret;
-+	int i;
- 
--	if (!qcom_iommu)
--		return ERR_PTR(-ENODEV);
-+	qcom_iommu = iommu_of_get_single_iommu(pinf, &qcom_iommu_ops, 1,
-+					       struct qcom_iommu_dev, iommu);
-+	if (IS_ERR(qcom_iommu))
-+		return ERR_CAST(qcom_iommu);
-+
-+	master = iommu_fw_alloc_per_device_ids(pinf, master);
-+	if (IS_ERR(master))
-+		return ERR_CAST(master);
-+
-+	for (i = 0; i != master->num_ids; i++) {
-+		u32 asid = master->ids[i];
-+
-+		/*
-+		 * Make sure the asid specified in dt is valid, so we don't have
-+		 * to sanity check this elsewhere:
-+		 */
-+		if (WARN_ON(asid > qcom_iommu->max_asid) ||
-+		    WARN_ON(qcom_iommu->ctxs[asid] == NULL)) {
-+			ret = -EINVAL;
-+			goto err_free;
-+		}
++int viot_iommu_for_each_id(struct device *dev, viot_for_each_fn fn, void *info)
++{
++	if (dev_is_pci(dev)) {
++		struct viot_pci_iommu_alias_info pci_info = {
++			.dev = dev,
++			.fn = fn,
++			.info = info,
++		};
++		return pci_for_each_dma_alias(to_pci_dev(dev),
++					      __for_each_pci_alias, &pci_info);
 +	}
- 
- 	/*
- 	 * Establish the link between iommu and master, so that the
-@@ -540,63 +571,33 @@ static struct iommu_device *qcom_iommu_probe_device(struct device *dev)
- 	if (!link) {
- 		dev_err(qcom_iommu->dev, "Unable to create device link between %s and %s\n",
- 			dev_name(qcom_iommu->dev), dev_name(dev));
--		return ERR_PTR(-ENODEV);
-+		ret = -ENODEV;
-+		goto err_free;
- 	}
- 
-+	dev_iommu_priv_set(dev, master);
- 	return &qcom_iommu->iommu;
 +
-+err_free:
-+	kfree(master);
-+	return ERR_PTR(ret);
- }
- 
--static int qcom_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
-+static void qcom_iommu_release_device(struct device *dev)
++	if (dev_is_platform(dev))
++		return __for_each_platform(to_platform_device(dev), fn, info);
++	return -ENODEV;
++}
++
+ /**
+  * viot_iommu_configure - Setup IOMMU ops for an endpoint described by VIOT
+  * @dev: the endpoint
+@@ -371,10 +386,5 @@ static int viot_mmio_dev_iommu_init(struct platform_device *pdev)
+  */
+ int viot_iommu_configure(struct device *dev)
  {
--	struct qcom_iommu_dev *qcom_iommu;
--	struct platform_device *iommu_pdev;
--	unsigned asid = args->args[0];
-+	struct qcom_iommu_master *master = dev_iommu_priv_get(dev);
- 
--	if (args->args_count != 1) {
--		dev_err(dev, "incorrect number of iommu params found for %s "
--			"(found %d, expected 1)\n",
--			args->np->full_name, args->args_count);
--		return -EINVAL;
--	}
--
--	iommu_pdev = of_find_device_by_node(args->np);
--	if (WARN_ON(!iommu_pdev))
--		return -EINVAL;
--
--	qcom_iommu = platform_get_drvdata(iommu_pdev);
--
--	/* make sure the asid specified in dt is valid, so we don't have
--	 * to sanity check this elsewhere:
--	 */
--	if (WARN_ON(asid > qcom_iommu->max_asid) ||
--	    WARN_ON(qcom_iommu->ctxs[asid] == NULL)) {
--		put_device(&iommu_pdev->dev);
--		return -EINVAL;
--	}
--
--	if (!dev_iommu_priv_get(dev)) {
--		dev_iommu_priv_set(dev, qcom_iommu);
--	} else {
--		/* make sure devices iommus dt node isn't referring to
--		 * multiple different iommu devices.  Multiple context
--		 * banks are ok, but multiple devices are not:
--		 */
--		if (WARN_ON(qcom_iommu != dev_iommu_priv_get(dev))) {
--			put_device(&iommu_pdev->dev);
--			return -EINVAL;
--		}
--	}
--
--	return iommu_fwspec_add_ids(dev, &asid, 1);
-+	kfree(master);
+-	if (dev_is_pci(dev))
+-		return pci_for_each_dma_alias(to_pci_dev(dev),
+-					      viot_pci_dev_iommu_init, dev);
+-	else if (dev_is_platform(dev))
+-		return viot_mmio_dev_iommu_init(to_platform_device(dev));
+-	return -ENODEV;
++	return viot_iommu_for_each_id(dev, viot_dev_iommu_init, dev);
  }
+diff --git a/include/linux/acpi_viot.h b/include/linux/acpi_viot.h
+index a5a12243156377..fce4eefcae4aad 100644
+--- a/include/linux/acpi_viot.h
++++ b/include/linux/acpi_viot.h
+@@ -5,6 +5,17 @@
  
- static const struct iommu_ops qcom_iommu_ops = {
- 	.identity_domain = &qcom_iommu_identity_domain,
- 	.capable	= qcom_iommu_capable,
- 	.domain_alloc_paging = qcom_iommu_domain_alloc_paging,
--	.probe_device	= qcom_iommu_probe_device,
-+	.probe_device_pinf = qcom_iommu_probe_device,
-+	.release_device = qcom_iommu_release_device,
- 	.device_group	= generic_device_group,
--	.of_xlate	= qcom_iommu_of_xlate,
-+	.of_xlate	= iommu_dummy_of_xlate,
- 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
- 	.default_domain_ops = &(const struct iommu_domain_ops) {
- 		.attach_dev	= qcom_iommu_attach_dev,
+ #include <linux/acpi.h>
+ 
++struct viot_iommu {
++	/* Node offset within the table */
++	unsigned int			offset;
++	struct fwnode_handle		*fwnode;
++	struct list_head		list;
++};
++
++typedef int (*viot_for_each_fn)(struct viot_iommu *viommu, u32 epid,
++				void *info);
++int viot_iommu_for_each_id(struct device *dev, viot_for_each_fn fn, void *info);
++
+ #ifdef CONFIG_ACPI_VIOT
+ void __init acpi_viot_early_init(void);
+ void __init acpi_viot_init(void);
 -- 
 2.42.0
 
