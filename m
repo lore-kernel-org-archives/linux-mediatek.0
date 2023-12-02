@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1FDCC10DC1
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Dec 2023 00:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C67EC4167B
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Dec 2023 01:04:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2AjpI9QlzX4/sI/azrgjTOEsQmOURin+5qeGoAR1AD0=; b=b7J46vRz0h/l7MugqvtPDhG2sE
-	SenlddgtWt2sQpmccOKQXc3pt/DKmTmtlHtl8VqgRVVwTDK+0hp1VDmWRsC4C6wPhTUdON8Bf9Tfc
-	q1UW4xN7gR9SlOanrTc7qL9x1uX/6VHr/oTfDPH11oMzoXBSrr3bulBgNHgP4cCZITomobv6VwmbP
-	kjlbhe1a1tNYZpsI+G/7OgFhfw8UHUueG6EhOerTG3G2BoOzZPSzb/h99kS1MFpWEFpHz59Y5qhzY
-	TKmFbUazH1XPahzTfOqbOVbspAiul9T5PzUsvV6aDMTlNQT/SLTbH7BgrT9LVKO1BDX4VA70ZOJTx
-	ye1j1pnA==;
+	bh=on0eUmIVBGIZNw/lnf6eJdI5XZ4MfrBWX3aiU7eK2L8=; b=hotONxV3byjmrAYOOzOeN3t+0S
+	z8Wa1/HWb5nEONnNYaL4u7e4wKpljR8MFNhE9lk9ym5YEyEBrBJZOICqdRatpbNtjyW6Xp3eXJnTq
+	pIoX0Xt7Fz5gTGDcHZFGem30HwAZKvftxwOVNCNO7Ft9s3gpHy4HxpN/JNJTUkSAu5veDsWp2cGI4
+	h+JUj7IYXud/275XnViASovVy0nMWV5ICe+45JoThNCCs83ZLWfyVtIaVZHm9scWevGD82t8H4lI0
+	3GESaU9mlzw+ZFcDf5qeSy7y57lwQ41dDloKtD0o+HBTPi62hMOPCtrO0m9UToalPlePoEqTmznjY
+	NVKioH5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9ELQ-00ExLU-2I;
-	Sat, 02 Dec 2023 00:58:56 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1r9EQb-00ExeP-2V;
+	Sat, 02 Dec 2023 01:04:17 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9ELO-00ExKZ-0t
+	id 1r9EQZ-00ExdG-02
 	for linux-mediatek@lists.infradead.org;
-	Sat, 02 Dec 2023 00:58:55 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a196f84d217so232760766b.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 01 Dec 2023 16:58:54 -0800 (PST)
+	Sat, 02 Dec 2023 01:04:16 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-50bc59115c2so3898627e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Dec 2023 17:04:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701478731; x=1702083531; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1701479049; x=1702083849; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2AjpI9QlzX4/sI/azrgjTOEsQmOURin+5qeGoAR1AD0=;
-        b=Fko32cillz6WxqS5nyLB2mEX2eKPUACHa3GdqJAAscEwg10+lB2uJM9AWtboAKp/Xd
-         PBG97GP58Kieob8i3dqfePc4wGL+WqVpRPS2AZ6NbuOnTLiwdAkCQw5ojHVen74xgxZk
-         aO5YNqf8PWP101Uz5s6m2AL3S4D+nWn9v5POc=
+        bh=on0eUmIVBGIZNw/lnf6eJdI5XZ4MfrBWX3aiU7eK2L8=;
+        b=Bfhj8dPSJsD+pInxCnpu2KJ6RwmmP+ElvH8QosxBwl1CwR7cE3vgbqxTkcfgMhsMEX
+         Zcr0Cxz8MnznyeyGDE1dU2i5zo/pQwoywyWc1iA/ZsEuBrJ5ldqJ7edXE1GFHmxCCQl3
+         K1BW29BCz1aiPWxKulH22sa0VLb5imivyqMqY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701478731; x=1702083531;
+        d=1e100.net; s=20230601; t=1701479049; x=1702083849;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=2AjpI9QlzX4/sI/azrgjTOEsQmOURin+5qeGoAR1AD0=;
-        b=m8SZbkFjp+yfMLkO48SRdvKGCHaiT/dkd8ZxQ5tiRTJGM/h+EUtgYXMzr1hgnIWQzH
-         V1r8EEwFdtsNS/S9fj0/LgfaG5B9fEuhz/eBBOORLFmJmRCYrnMOBDCCKJirVG0JrcAM
-         YxltVkHveriNYqUJW8OaCkOojibzUFFaMxqAD8vaCl7NTd5pFD76rD3GGMkaXH4xL2E4
-         RhqqZpXkUFGAKieePoaD/zvxN9f/1qic40SYrb7AU5zhx3dhZmW0C93tXSTxCSg3n0I8
-         eB90uB8msIpMV4GvB32168B9X3P6Q0K7dkI2e0ZmHgFkCzqtnbPb9pijtAjfuDgo2xkN
-         bFuw==
-X-Gm-Message-State: AOJu0YzCLPJ8Moq80n6c/0e9849KQa6vELEBgLQAx6AMKv/nEy7e8W1C
-	fO6sbSsE8WRIyQYQINYDNgpKKU2mVQ1ccNnhQHLdLYAJ
-X-Google-Smtp-Source: AGHT+IH9vjQQJmtWOjdBgK4/rS2mBtU8YecPYlHbsdJ1RjcwDxSC/xvUc1h/Rh8+SeDhNoSXvdurZQ==
-X-Received: by 2002:a17:907:3555:b0:a16:4929:1484 with SMTP id aa21-20020a170907355500b00a1649291484mr1257208ejc.47.1701478731257;
-        Fri, 01 Dec 2023 16:58:51 -0800 (PST)
-Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com. [209.85.128.54])
-        by smtp.gmail.com with ESMTPSA id i9-20020a170906250900b00a0a25541153sm2512303ejb.93.2023.12.01.16.58.50
+        bh=on0eUmIVBGIZNw/lnf6eJdI5XZ4MfrBWX3aiU7eK2L8=;
+        b=mKs5C5boJoaRaLULapZEwjYywbElDiFcaFzSbASSA4hmXmmduT9TtQfWHz6TuzaBvW
+         rrSWKqElNgHj9wEp4mQWxunhr9FFJRpix8q8pDSMFxplnaYrbgk6bqnK1N1Akde3tFGg
+         W3c1dCUHFI3YgWByksy0cOKooH9jrkQzR6mgn+aRJfne+kpasO2WTdZn2cEjY+xWIE0k
+         IDaheEZri4rn3czcFVgfIb+xJRqIODTFz/lBb0bXix4cF0xMrZYsDvLurIa7XILny28b
+         aT70NI7IZkUrTpi16MtfzSvpuN8+BtNZPZ1NRb6Nbuhrcfl2dCFOBPE4wvrTk5y4aGY/
+         iN9g==
+X-Gm-Message-State: AOJu0YxlZpC1GAKANRJWABswf9HEhxyiODj/x9rwEIxotbC3XtcRD7pk
+	C9vdkzyg7dGl/BkaAMrldNrP4GM/YChTb1k6fEW4r2yq
+X-Google-Smtp-Source: AGHT+IGa10iXW02MvlKq6kxuQOg0pYJl0wHpKK1kYhEM0y7SLz8qSGEFsU9GmGWHVPRiFM6TCP2j/Q==
+X-Received: by 2002:ac2:4204:0:b0:50b:c0f1:bab with SMTP id y4-20020ac24204000000b0050bc0f10babmr1335927lfh.28.1701479049490;
+        Fri, 01 Dec 2023 17:04:09 -0800 (PST)
+Received: from mail-lf1-f42.google.com (mail-lf1-f42.google.com. [209.85.167.42])
+        by smtp.gmail.com with ESMTPSA id g6-20020ac25386000000b0050be64f4259sm38291lfh.250.2023.12.01.17.04.08
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Dec 2023 16:58:50 -0800 (PST)
-Received: by mail-wm1-f54.google.com with SMTP id 5b1f17b1804b1-40b35199f94so27515e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 01 Dec 2023 16:58:50 -0800 (PST)
-X-Received: by 2002:a7b:c4c6:0:b0:40b:3d89:ba70 with SMTP id
- g6-20020a7bc4c6000000b0040b3d89ba70mr237236wmk.7.1701478730440; Fri, 01 Dec
- 2023 16:58:50 -0800 (PST)
+        Fri, 01 Dec 2023 17:04:08 -0800 (PST)
+Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-50ba8177c9fso620e87.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Dec 2023 17:04:08 -0800 (PST)
+X-Received: by 2002:a1c:6a0c:0:b0:408:3727:92c5 with SMTP id
+ f12-20020a1c6a0c000000b00408372792c5mr311701wmc.2.1701478584358; Fri, 01 Dec
+ 2023 16:56:24 -0800 (PST)
 MIME-Version: 1.0
-References: <20231128084236.157152-1-wenst@chromium.org> <20231128084236.157152-5-wenst@chromium.org>
-In-Reply-To: <20231128084236.157152-5-wenst@chromium.org>
+References: <20231128084236.157152-1-wenst@chromium.org> <20231128084236.157152-2-wenst@chromium.org>
+In-Reply-To: <20231128084236.157152-2-wenst@chromium.org>
 From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 1 Dec 2023 16:58:34 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=W01gfxV6RN2o6CVS7jjf8qgKP-jUy9Bp94d2hWzVC48A@mail.gmail.com>
-Message-ID: <CAD=FV=W01gfxV6RN2o6CVS7jjf8qgKP-jUy9Bp94d2hWzVC48A@mail.gmail.com>
-Subject: Re: [RFC PATCH v3 4/5] arm64: dts: mediatek: mt8173-elm-hana: Mark
- touchscreens and trackpads as fail
+Date: Fri, 1 Dec 2023 16:56:08 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=V_v11eZ6+3gUwOvdWGNM9owG7zCK5EiezTY7RJ3eaEMw@mail.gmail.com>
+Message-ID: <CAD=FV=V_v11eZ6+3gUwOvdWGNM9owG7zCK5EiezTY7RJ3eaEMw@mail.gmail.com>
+Subject: Re: [RFC PATCH v3 1/5] of: dynamic: Add of_changeset_update_prop_string
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
@@ -92,9 +91,8 @@ Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_165854_333883_E45EB99F 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231201_170415_071498_742FE21B 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,12 +112,30 @@ Hi,
 On Tue, Nov 28, 2023 at 12:45=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
 wrote:
 >
-> @@ -44,6 +46,7 @@ trackpad2: trackpad@2c {
->                 reg =3D <0x2c>;
->                 hid-descr-addr =3D <0x0020>;
->                 wakeup-source;
-> +               status =3D "fail-needs-probe";
+> @@ -1039,3 +1039,50 @@ int of_changeset_add_prop_u32_array(struct of_chan=
+geset *ocs,
+>         return ret;
+>  }
+>  EXPORT_SYMBOL_GPL(of_changeset_add_prop_u32_array);
+> +
+> +static int of_changeset_update_prop_helper(struct of_changeset *ocs,
+> +                                          struct device_node *np,
+> +                                          const struct property *pp)
+> +{
+> +       struct property *new_pp;
+> +       int ret;
+> +
+> +       new_pp =3D __of_prop_dup(pp, GFP_KERNEL);
+> +       if (!new_pp)
+> +               return -ENOMEM;
+> +
+> +       ret =3D of_changeset_update_property(ocs, np, new_pp);
+> +       if (ret) {
+> +               kfree(new_pp->name);
+> +               kfree(new_pp->value);
+> +               kfree(new_pp);
 
-While doing this, you could also remove the hack where the trackpad
-IRQ pinctrl is listed under i2c4.
+Given that this is the 3rd copy of the freeing logic, does it make
+sense to make __of_prop_free() that's documented to free what was
+returned by __of_prop_dupe()?
 
