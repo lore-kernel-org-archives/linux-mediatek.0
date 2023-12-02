@@ -4,72 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48D56C4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Dec 2023 23:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 301B7C10DC1
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Dec 2023 00:58:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w3V2iV0YUVFdgQ/Z5SIUhXcved1U7CYUjaYX8OvBKJQ=; b=aqkEgYbd06bXzWVFN6mTlWWX+w
-	yIwb143LSkMi5kYTcJpu5hsBoSGXGod3Pihm1gsX+t+r1ENU9EV9f/xUiUSzF8admkIJ/V4ovfCdp
-	fBRXbmntC3Ue3z37W0wjNYcQdyWZLbMser4OmcqAfEThSSnpfeBjOzleNvHcOx80nrVZKhiECqFyL
-	3HEp9R09xQ3WBTYLNO4fPSQjwpEOtyYAhRoK9ZoWX901GojOzl9GErHAzrZ5trUY3ObSYyyheN2y2
-	DC0YLTe5lsJ0fA8CEsUccftHYQCc6Z4+BoqMP9cNifPQvDbHPwRGD4SDQk9GlChVeT3xPsQveXsvJ
-	Bh5SmNiA==;
+	bh=vKk2QY55EMuNywXUGLdjHFZJLlzFp5Dzqbm5yWnIGpQ=; b=vPaoVSLia4iE7b5K8G8wlhQ8DD
+	QMsr5I7HVxaaEjlW58g38Wsx5mtnvYNTkn6I0RvmnT8aDj5+r4i1i+xCdFVD/5JK5FJSbDHc6i2IN
+	+yyf1kz22AdrDEeritddgIW7322JNXI228F1uX9zATaqARK/r6rBQ7Nb25xWsVVzzOMHrDCYGaimx
+	k9Q+pSzz9PtD7Yh32HaM0oTLTLF36VWrmCQCrLqJxzRLRnGYUatEuidIpwtsaqJKsLg8OBotQfU6l
+	DhqNce5jyJLsQdurV3fi9d4xm5dMZwts+JaK5rGtf9xDfSPaUVQGFP/XB6rt0nangSEImHMVmkgfO
+	jYuuPBTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9D7f-00Er2f-1L;
-	Fri, 01 Dec 2023 23:40:39 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.184])
+	id 1r9EKf-00ExDx-0j;
+	Sat, 02 Dec 2023 00:58:09 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9D7a-00Er1N-0s
+	id 1r9EKc-00ExDN-0y
 	for linux-mediatek@lists.infradead.org;
-	Fri, 01 Dec 2023 23:40:38 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 650BD240071;
-	Fri,  1 Dec 2023 23:40:30 +0000 (UTC)
-Received: from [192.168.100.159] (50-251-239-81-static.hfc.comcastbusiness.net [50.251.239.81])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id 9B74F13C2B0;
-	Fri,  1 Dec 2023 15:40:29 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 9B74F13C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1701474029;
-	bh=6xmydaKfNOwZDzoXAvf6X0X1JmBWLT0SK2Yn4Bw27bc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=l8YwvBuh1cN0oexTmp/hq143OwyZrUAplw04BL+k32OLT3VgxIcKZwMF81hUo6AyI
-	 fWzA8PM+Jaib3+o2x+OqifTrinJZDkWwZ4ovZka30X4HgVLl3+zy4dWi9B4GQ8HIyb
-	 59IG2sFZ00NycXiBgDvjz9iqr3L8WmbmS8aHKrPc=
-Message-ID: <bbf8fe7e-1098-5b33-8ed6-dee38329edf6@candelatech.com>
-Date: Fri, 1 Dec 2023 15:40:29 -0800
+	Sat, 02 Dec 2023 00:58:08 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-54bf9a54fe3so3539553a12.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Dec 2023 16:58:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1701478682; x=1702083482; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vKk2QY55EMuNywXUGLdjHFZJLlzFp5Dzqbm5yWnIGpQ=;
+        b=kObIo1xTpfdzZRNte+/wrxF+S+6xcYihUapYBfkexf6C7I+QFo2YlRpk/oJr/7sesP
+         XUirIhZRpAdC1qOPlLVsYKv7jgUeLDhsLu0T3Yi5JPXAKomNcUf8PbBorFj9F75lGf2Q
+         v/undBISwzHX4l1kMiwZe9DZK69gaFG4BD90Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701478682; x=1702083482;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=vKk2QY55EMuNywXUGLdjHFZJLlzFp5Dzqbm5yWnIGpQ=;
+        b=aaqL+/EnoGUlW1EDWUMDPcj+iOa649yhzhXXRhQLgMcSSC6HuYWM6eDy8DuzG6/peB
+         2bukpb0EuCwzcs3MfYxbabrGxs5xu8t/jGYjEwLepZNnzn5XIvej2STrRsR48M9J5sU7
+         KrMy2FTEaH4dGYsb0Enelt5CezdGzeMzkjbfYSw2jUdDSDI4gdrCUCaDNePWFOR8jPga
+         UkFM0MODJwkP1/fuzUY3+Pd8esyZA58Qtu5XW08D6lOcTs/31f3fFdBLiYqJplMCa2k4
+         wVRNKFK9wHq/XCzFPi6h6U6+MJa8oBA7wjICB0d6k3gC3b4qLKuUTp5XDMNkuyv944qR
+         eLTQ==
+X-Gm-Message-State: AOJu0Yx/cH25WOBL0+UNon9UnxAW+v2NfdHZhvBicU+GTWSZlrDo3N89
+	mydUAZnlmT1XCL8BG0X74IvDsw9rHFuiONywkEgZBsAX
+X-Google-Smtp-Source: AGHT+IFg6d4mT2cpIfRWDemBihJ5UyrkGRaZMPStxwW0kSCQULrCpojRC3Kr6KqvDBoM4rsLygSOBw==
+X-Received: by 2002:a17:906:b0c:b0:a18:b240:915f with SMTP id u12-20020a1709060b0c00b00a18b240915fmr1344667ejg.69.1701478682508;
+        Fri, 01 Dec 2023 16:58:02 -0800 (PST)
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com. [209.85.128.53])
+        by smtp.gmail.com with ESMTPSA id 9-20020a170906100900b009ddaf5ebb6fsm2492238ejm.177.2023.12.01.16.58.02
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 01 Dec 2023 16:58:02 -0800 (PST)
+Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-40b51e26a7aso12055e9.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Dec 2023 16:58:02 -0800 (PST)
+X-Received: by 2002:a7b:c4c6:0:b0:40b:3d89:ba70 with SMTP id
+ g6-20020a7bc4c6000000b0040b3d89ba70mr237078wmk.7.1701478681940; Fri, 01 Dec
+ 2023 16:58:01 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH 2/8] wifi: mt76: mt7996: add txpower setting support
-Content-Language: en-US
-To: Shayne Chen <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: linux-wireless <linux-wireless@vger.kernel.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Allen Ye <allen.ye@mediatek.com>,
- StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-References: <20231102100302.22160-1-shayne.chen@mediatek.com>
- <20231102100302.22160-2-shayne.chen@mediatek.com>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-In-Reply-To: <20231102100302.22160-2-shayne.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-MDID: 1701474031-mC5k0b4r3GGJ
-X-MDID-O: us5;at1;1701474031;mC5k0b4r3GGJ;<greearb@candelatech.com>;0a87ce8853dfc5be48bfe846d29ed5d9
+References: <20231128084236.157152-1-wenst@chromium.org> <20231128084236.157152-3-wenst@chromium.org>
+In-Reply-To: <20231128084236.157152-3-wenst@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Date: Fri, 1 Dec 2023 16:57:46 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=U_+iQJtV0Wii89DQT1V_fJCeS9wcqA8EJAs-hmmmLLLg@mail.gmail.com>
+Message-ID: <CAD=FV=U_+iQJtV0Wii89DQT1V_fJCeS9wcqA8EJAs-hmmmLLLg@mail.gmail.com>
+Subject: Re: [RFC PATCH v3 2/5] i2c: of: Introduce component probe function
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	andriy.shevchenko@linux.intel.com, Jiri Kosina <jikos@kernel.org>, 
+	linus.walleij@linaro.org, broonie@kernel.org, gregkh@linuxfoundation.org, 
+	hdegoede@redhat.com, james.clark@arm.com, james@equiv.tech, 
+	keescook@chromium.org, rafael@kernel.org, tglx@linutronix.de, 
+	Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org, linux-i2c@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_154034_397278_AC1B2815 
-X-CRM114-Status: GOOD (  23.43  )
+X-CRM114-CacheID: sfid-20231201_165806_358633_3E0448A3 
+X-CRM114-Status: GOOD (  43.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,186 +107,207 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/2/23 03:02, Shayne Chen wrote:
-> Add support for setting txpower from upper layer and configuring per-rate
-> txpower limit table.
+Hi,
 
-Hello Shayne,
-
- From what I can tell, this patch causes STA vdevs to no longer send probe
-requests when trying to associate.  I bisected to this in Felix's tree that holds
-this patch.
-
-Tested on x86-64, mtk7996 radio.  Specifically
-debugged on 2.4Ghz radio, but I think it affects 5Ghz too.
-
-Thanks,
-Ben
-
-> 
-> Co-developed-by: Allen Ye <allen.ye@mediatek.com>
-> Signed-off-by: Allen Ye <allen.ye@mediatek.com>
-> Co-developed-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-> Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-> ---
->   .../net/wireless/mediatek/mt76/mt7996/main.c  |  8 +++
->   .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 58 +++++++++++++++++++
->   .../net/wireless/mediatek/mt76/mt7996/mcu.h   | 16 +++++
->   .../wireless/mediatek/mt76/mt7996/mt7996.h    |  3 +
->   4 files changed, 85 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> index 9f12b47eb2bf..7336eaa7b9ae 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> @@ -396,6 +396,13 @@ static int mt7996_config(struct ieee80211_hw *hw, u32 changed)
->   		ieee80211_wake_queues(hw);
->   	}
->   
-> +	if (changed & (IEEE80211_CONF_CHANGE_POWER |
-> +		       IEEE80211_CONF_CHANGE_CHANNEL)) {
-> +		ret = mt7996_mcu_set_txpower_sku(phy);
-> +		if (ret)
-> +			return ret;
-> +	}
+On Tue, Nov 28, 2023 at 12:45=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
+wrote:
+>
+> @@ -217,4 +217,114 @@ static int of_i2c_notify(struct notifier_block *nb,=
+ unsigned long action,
+>  struct notifier_block i2c_of_notifier =3D {
+>         .notifier_call =3D of_i2c_notify,
+>  };
 > +
->   	mutex_lock(&dev->mt76.mutex);
->   
->   	if (changed & IEEE80211_CONF_CHANGE_MONITOR) {
-> @@ -965,6 +972,7 @@ mt7996_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
->   	mt76_set_stream_caps(phy->mt76, true);
->   	mt7996_set_stream_vht_txbf_caps(phy);
->   	mt7996_set_stream_he_eht_caps(phy);
-> +	mt7996_mcu_set_txpower_sku(phy);
->   
->   	mutex_unlock(&dev->mt76.mutex);
->   
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> index 8097924d460b..8141c24ade50 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> @@ -4353,3 +4353,61 @@ int mt7996_mcu_wed_rro_reset_sessions(struct mt7996_dev *dev, u16 id)
->   	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(RRO), &req,
->   				 sizeof(req), true);
->   }
+> +/*
+> + * Some devices, such as Google Hana Chromebooks, are produced by multip=
+le
+> + * vendors each using their preferred components. Such components are al=
+l
+> + * in the device tree. Instead of having all of them enabled and having =
+each
+> + * driver separately try and probe its device while fighting over shared
+> + * resources, they can be marked as "fail-needs-probe" and have a prober
+> + * figure out which one is actually used beforehand.
+> + *
+> + * This prober assumes such drop-in parts are on the same I2C bus, have
+> + * non-conflicting addresses, and can be directly probed by seeing which
+> + * address responds.
+> + *
+> + * TODO:
+> + * - Support handling common regulators and GPIOs.
+
+IMO you should prototype how you're going to handle regulators and
+GPIOs before finalizing the design. I was going to write that you
+should just document that it was up to the caller to power things up
+before calling this function, but then I realized that the caller
+would have to duplicate much of this function in order to do so. In
+the very least they'd have to find the nodes of the relevant devices
+so that they could grab regulators and/or GPIOs. In order to avoid
+this duplication, would the design need to change? Perhaps this would
+be as simple as adding a callback function here that's called with all
+of the nodes before probing? If that's right, it would be nice to have
+that callback from the beginning so we don't need two variants of the
+function...
+
+> + * - Support I2C muxes
+> + */
 > +
-> +int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy)
+> +/**
+> + * i2c_of_probe_component() - probe for devices of "type" on the same i2=
+c bus
+> + * @dev: &struct device of the caller, only used for dev_* printk messag=
+es
+> + * @type: a string to match the device node name prefix to probe for
+> + *
+> + * Probe for possible I2C components of the same "type" on the same I2C =
+bus
+> + * that have their status marked as "fail".
+
+Should document these current limitations with the code:
+
+* Assumes that across the entire device tree the only instances of
+nodes named "type" are ones we're trying to handle second sourcing
+for. In other words if we're searching for "touchscreen" then all
+nodes named "touchscreen" are ones that need to be probed.
+
+* Assumes that there is exactly one group of each "type". In other
+words, if we're searching for "touchscreen" then exactly one
+touchscreen will be enabled across the whole tree.
+
+Obviously those could be relaxed with more code, but that's the
+current limitation and it makes the code easier to understand with
+that context.
+
+
+> + */
+> +int i2c_of_probe_component(struct device *dev, const char *type)
 > +{
-> +#define TX_POWER_LIMIT_TABLE_RATE	0
-> +	struct mt7996_dev *dev = phy->dev;
-> +	struct mt76_phy *mphy = phy->mt76;
-> +	struct ieee80211_hw *hw = mphy->hw;
-> +	struct tx_power_limit_table_ctrl {
-> +		u8 __rsv1[4];
+> +       struct device_node *node, *i2c_node;
+> +       struct i2c_adapter *i2c;
+> +       struct of_changeset *ocs =3D NULL;
+> +       int ret;
 > +
-> +		__le16 tag;
-> +		__le16 len;
-> +		u8 power_ctrl_id;
-> +		u8 power_limit_type;
-> +		u8 band_idx;
-> +	} __packed req = {
-> +		.tag = cpu_to_le16(UNI_TXPOWER_POWER_LIMIT_TABLE_CTRL),
-> +		.len = cpu_to_le16(sizeof(req) + MT7996_SKU_RATE_NUM - 4),
-> +		.power_ctrl_id = UNI_TXPOWER_POWER_LIMIT_TABLE_CTRL,
-> +		.power_limit_type = TX_POWER_LIMIT_TABLE_RATE,
-> +		.band_idx = phy->mt76->band_idx,
-> +	};
-> +	struct mt76_power_limits la = {};
-> +	struct sk_buff *skb;
-> +	int i, tx_power;
+> +       node =3D of_find_node_by_name(NULL, type);
+> +       if (!node)
+> +               return dev_err_probe(dev, -ENODEV, "Could not find %s dev=
+ice node\n", type);
 > +
-> +	tx_power = mt7996_get_power_bound(phy, hw->conf.power_level);
-> +	tx_power = mt76_get_rate_power_limits(mphy, mphy->chandef.chan,
-> +					      &la, tx_power);
-> +	mphy->txpower_cur = tx_power;
-> +
-> +	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL,
-> +				 sizeof(req) + MT7996_SKU_RATE_NUM);
-> +	if (!skb)
-> +		return -ENOMEM;
-> +
-> +	skb_put_data(skb, &req, sizeof(req));
-> +	/* cck and ofdm */
-> +	skb_put_data(skb, &la.cck, sizeof(la.cck) + sizeof(la.ofdm));
-> +	/* ht20 */
-> +	skb_put_data(skb, &la.mcs[0], 8);
-> +	/* ht40 */
-> +	skb_put_data(skb, &la.mcs[1], 9);
-> +
-> +	/* vht */
-> +	for (i = 0; i < 4; i++) {
-> +		skb_put_data(skb, &la.mcs[i], sizeof(la.mcs[i]));
-> +		skb_put_zero(skb, 2);  /* padding */
-> +	}
-> +
-> +	/* he */
-> +	skb_put_data(skb, &la.ru[0], sizeof(la.ru));
-> +	/* eht */
-> +	skb_put_data(skb, &la.eht[0], sizeof(la.eht));
-> +
-> +	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
-> +				     MCU_WM_UNI_CMD(TXPOWER), true);
-> +}
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-> index a3eae32c8f10..1562c8a6a821 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-> @@ -762,6 +762,18 @@ enum {
->   #define MT7996_MAX_BSS_OFFLOAD_SIZE	(MT7996_MAX_BEACON_SIZE +		\
->   					 MT7996_BEACON_UPDATE_SIZE)
->   
-> +static inline s8
-> +mt7996_get_power_bound(struct mt7996_phy *phy, s8 txpower)
-> +{
-> +	struct mt76_phy *mphy = phy->mt76;
-> +	int n_chains = hweight16(mphy->chainmask);
-> +
-> +	txpower = mt76_get_sar_power(mphy, mphy->chandef.chan, txpower * 2);
-> +	txpower -= mt76_tx_power_nss_delta(n_chains);
-> +
-> +	return txpower;
-> +}
-> +
->   enum {
->   	UNI_BAND_CONFIG_RADIO_ENABLE,
->   	UNI_BAND_CONFIG_RTS_THRESHOLD = 0x08,
-> @@ -830,6 +842,10 @@ enum {
->   	UNI_CMD_THERMAL_PROTECT_DUTY_CONFIG,
->   };
->   
-> +enum {
-> +	UNI_TXPOWER_POWER_LIMIT_TABLE_CTRL = 4,
-> +};
-> +
->   enum {
->   	UNI_CMD_ACCESS_REG_BASIC = 0x0,
->   	UNI_CMD_ACCESS_RF_REG_BASIC,
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-> index d3eb564623ae..c62a42512bd6 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-> @@ -42,6 +42,8 @@
->   #define MT7996_CFEND_RATE_DEFAULT	0x49	/* OFDM 24M */
->   #define MT7996_CFEND_RATE_11B		0x03	/* 11B LP, 11M */
->   
-> +#define MT7996_SKU_RATE_NUM		417
-> +
->   #define MT7996_MAX_TWT_AGRT		16
->   #define MT7996_MAX_STA_TWT_AGRT		8
->   #define MT7996_MAX_QUEUE		(__MT_RXQ_MAX +	__MT_MCUQ_MAX + 3)
-> @@ -471,6 +473,7 @@ int mt7996_mcu_get_chan_mib_info(struct mt7996_phy *phy, bool chan_switch);
->   int mt7996_mcu_get_temperature(struct mt7996_phy *phy);
->   int mt7996_mcu_set_thermal_throttling(struct mt7996_phy *phy, u8 state);
->   int mt7996_mcu_set_thermal_protect(struct mt7996_phy *phy, bool enable);
-> +int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy);
->   int mt7996_mcu_rdd_cmd(struct mt7996_dev *dev, int cmd, u8 index,
->   		       u8 rx_sel, u8 val);
->   int mt7996_mcu_rdd_background_enable(struct mt7996_phy *phy,
+> +       i2c_node =3D of_get_next_parent(node);
+> +       if (!of_node_name_eq(i2c_node, "i2c")) {
+> +               of_node_put(i2c_node);
+> +               return dev_err_probe(dev, -EINVAL, "%s device isn't on I2=
+C bus\n", type);
+> +       }
 
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+Personally I'd skip checking for the "i2c" node name. Just rely on
+of_get_i2c_adapter_by_node() returning an error.
+
+Oh, I guess you have this because you need to tell the difference
+between -EINVAL and -EPROBE_DEFER? It feels like instead you could use
+the firmware node to lookup a device more generically. If a device
+isn't associated with the node at all then you return -EPROBE_DEFER.
+Otherwise if it's associated but not an i2c device then you return
+-EINVAL. I guess maybe it doesn't make a huge difference, but it
+somehow feels less fragile than relying on the node name being "i2c".
+Maybe I just haven't had enough DT Kool-Aid.
+
+One thing this made me wonder is if of_get_i2c_adapter_by_node() is
+race free anyway. Can't that return you a device that hasn't finished
+probing yet? I see:
+
+- i2c_register_adapter()
+-- device_register()
+--- device_add()
+---- bus_add_device()
+---- bus_probe_device()
+
+As soon as bus_add_device() is called then it will be in
+"klist_devices" and I believe i2c_find_device_by_fwnode() will be able
+to find it. However, it hasn't necessarily been probed yet. I think
+that means calling i2c_smbus_xfer() on it might not work yet...
 
 
+One last thing is that you should check to make sure that the i2c
+adapter is not marked "disabled". ...otherwise I think you'd end up
+constantly trying again and again...
+
+
+> +       for_each_child_of_node(i2c_node, node) {
+> +               if (!of_node_name_prefix(node, type))
+> +                       continue;
+> +               if (of_device_is_available(node)) {
+> +                       /*
+> +                        * Device tree has component already enabled. Eit=
+her the
+> +                        * device tree isn't supported or we already prob=
+ed once.
+
+I guess the "already probed once" is somewhat expected if more than
+one type of second source component is defined and we end up deferring
+the second one? We don't undo the resolution of the first one and
+probably don't keep track of the fact that it succeeded?
+
+Probably should be added to the function comments that this is an
+expected/normal case?
+
+
+> +                        */
+> +                       of_node_put(node);
+> +                       of_node_put(i2c_node);
+> +                       return 0;
+> +               }
+> +       }
+> +
+> +       i2c =3D of_get_i2c_adapter_by_node(i2c_node);
+> +       if (!i2c) {
+> +               of_node_put(i2c_node);
+> +               return dev_err_probe(dev, -EPROBE_DEFER, "Couldn't get I2=
+C adapter\n");
+> +       }
+> +
+> +       ret =3D 0;
+
+Why init ret to 0?
+
+
+> +       for_each_child_of_node(i2c_node, node) {
+> +               union i2c_smbus_data data;
+> +               u32 addr;
+> +
+> +               if (!of_node_name_prefix(node, type))
+> +                       continue;
+> +               if (of_property_read_u32(node, "reg", &addr))
+> +                       continue;
+> +               if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C_S=
+MBUS_BYTE, &data) < 0)
+
+I'd be tempted to say that the caller should be able to pass in a
+function pointer here so they could use an alternative method to probe
+instead of i2c_smbus_xfer(), though you'd want to make it easy to
+default to i2c_smbus_xfer(). I could imagine someone might need a
+different way to probe. For instance if you had two touchscreens both
+at the same "reg" but that had different "hid-descr-addr" then this
+could be important.
+
+
+> +                       continue;
+> +
+
+Put the "break" right here. You've found the device and that was the
+point of the loop.
+
+Once you do that then the error handling makes a little more sense. It
+was weird that the error handling was jumped through from inside the
+loop...
+
+
+> +               dev_info(dev, "Enabling %pOF\n", node);
+> +
+> +               ocs =3D kzalloc(sizeof(*ocs), GFP_KERNEL);
+> +               if (!ocs) {
+> +                       ret =3D -ENOMEM;
+> +                       goto err_put_node;
+
+I think this error path (and some others) miss "i2c_put_adapter()" and
+"of_node_put(i2c_node)"
 
