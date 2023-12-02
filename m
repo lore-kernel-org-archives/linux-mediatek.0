@@ -4,67 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45501C4167B
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Dec 2023 09:30:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E433C4167B
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Dec 2023 12:36:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cJLjF77y4SxHEjhOXmOD85mb2tXiT1lNxpnlYkZDglQ=; b=tGdPat7JGnChuPR9OOlEmUVoRR
-	jYxJcB/+Ew0gUDLRQ+q44lvs0sPNHmqfoRh+p18AmDOcofHy7/WJNp5wF6tKof0JF0nuHzH0L601U
-	u7HlZfb8e03V+vGo+ZmK4/MWV0uX39p1mDg1g8GEvTKBdVwDJaBaASg8/U3ijoKbI7U1iwXy0HggE
-	zXJuOmx4qg7Tot/JER2Bki2P0PSc+upg/FPa1Kj6N/+hrSvCef2Y9E07eQEuJgNROSj7woppMklL9
-	9x7X1lAhMtyFQ2jSLceTifyt2Ph7FRCFtTx4V097S/jrsQaNXGZPQ73NmjzykqpGuAOoYHawL0P1G
-	Mwq15puA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0d8GT1krzGWEmQeOYCg3SnfZ/KiNqON3mMDPBBU1Wco=; b=YQNCZSaHieQ1YfM+mvJ0D/4gFt
+	VvNdrpuyo85Pi/+jjH5cT/xYoxInjjx7WsvL+3ihoVpab9eePcl+PboE/huXpvfJ0KCPE59Rpvjen
+	n91Uu7AzSW/3fDdOxkpyetQnQ+pzyZRpiWrLun9hLQ6WzMoVneOrei7HKengRfTsQc4AatUy1ab6t
+	iKVKP1jZ5i7jqNMxitQ8x6JZD/NseFcz+F7RYHvZeOjBBrIQAk27JpXWLIjHieBHDF96oGN03CYNo
+	OfaHLnYiY/CsG0qVbX9A1XjM45+8zZbud+0lqFi9EJ9p9FW87RzeuKNmdfnXGW8TWE9D2LjmroKbG
+	/Szy7s9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9MKo-00FNMK-2j;
-	Sat, 02 Dec 2023 09:30:50 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1r9PEs-00FgX5-1E;
+	Sat, 02 Dec 2023 12:36:54 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9MKk-00FNLX-1g;
-	Sat, 02 Dec 2023 09:30:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=cJLjF77y4SxHEjhOXmOD85mb2tXiT1lNxpnlYkZDglQ=; b=PV3qkCYHbGLiIITrG9RmdVBpGt
-	dZM+/IuzIBJsIhispOgoPrWvFxw0DTPbZGEm5CtaF0Qs2Ep3N+gsw0lOiKrWZH0CC6cHPENHUcycP
-	LYjXjV8dJHRM6XIxLqVrf0aunHcAC/o4Lz7CGJrMtTTRABiQwnN35QNhl6dWTt2nl5OwohIh+/GB7
-	5MotVL2W4IVGe+suBjtekgHICGTClzxiF2pQJeLSVBybGgTLt/2enbborcxowEaaKq1NYVLomTMeX
-	ftnt37kMGJlxW5Zmn7K7bnzLPdvcZc6QTEbYMoWyKUuts2+L8sNMF0fjJzvi07+2tQ0+ta/EhMcnc
-	W5a8JLhQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53892)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1r9MKT-0003yv-03;
-	Sat, 02 Dec 2023 09:30:29 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1r9MKQ-0006xW-U6; Sat, 02 Dec 2023 09:30:26 +0000
-Date: Sat, 2 Dec 2023 09:30:26 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
- mt7530_setup_port5() if port 5 is disabled
-Message-ID: <ZWr5MiiR1OQujoGG@shell.armlinux.org.uk>
-References: <20231118123205.266819-1-arinc.unal@arinc9.com>
- <20231118123205.266819-8-arinc.unal@arinc9.com>
- <20231121185358.GA16629@kernel.org>
- <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
+	id 1r9PEp-00FgVx-1f;
+	Sat, 02 Dec 2023 12:36:53 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B2CLKWv007845;
+	Sat, 2 Dec 2023 12:36:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id; s=qcppdkim1;
+ bh=0d8GT1krzGWEmQeOYCg3SnfZ/KiNqON3mMDPBBU1Wco=;
+ b=O+e2gk1gax+2WGUWqXthX/1qRlIe18uiw3OBiqOQjuXAUscWqNIEAW5Pv8HJJGQwuhdK
+ VtwFWh5U6jVvXJpIg9raYNxDLk5Cxj41OyzM6ie/6SMBbKhHeYYhgjmEwGa8TZnTGljC
+ 91x5BAuVX3EsEH5Le+WPkiRP9TuYIs0qnTRjB5zqvfbEEN8y06Q4DCnZkQ8n7PaxG+MY
+ +rE1dA2VpRXUi888EmBGBbOclGnx1mhQb/W09LU4j6kS4oFH3jWVe+6w3GQJnK/QuwyS
+ A35kiBfQoTLNPsFnnWXU2fIxHEE5IsOCkWIktSZ+mok47UTbCj7NlmaOSqfounRjrL9p sA== 
+Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uqwrvrfdy-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Sat, 02 Dec 2023 12:36:25 +0000
+Received: from pps.filterd (NASANPPMTA03.qualcomm.com [127.0.0.1])
+	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTP id 3B2CaO9V017898;
+	Sat, 2 Dec 2023 12:36:24 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by NASANPPMTA03.qualcomm.com (PPS) with ESMTP id 3uqwnkb9pj-1;
+	Sat, 02 Dec 2023 12:36:24 +0000
+Received: from NASANPPMTA03.qualcomm.com (NASANPPMTA03.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3B2CaOWp017893;
+	Sat, 2 Dec 2023 12:36:24 GMT
+Received: from stor-dylan.qualcomm.com (stor-dylan.qualcomm.com [192.168.140.207])
+	by NASANPPMTA03.qualcomm.com (PPS) with ESMTP id 3B2CaOWZ017890;
+	Sat, 02 Dec 2023 12:36:24 +0000
+Received: by stor-dylan.qualcomm.com (Postfix, from userid 359480)
+	id 6E05F20A90; Sat,  2 Dec 2023 04:36:23 -0800 (PST)
+From: Can Guo <quic_cang@quicinc.com>
+To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
+        adrian.hunter@intel.com, vkoul@kernel.org, beanhuo@micron.com,
+        avri.altman@wdc.com, junwoo80.lee@samsung.com,
+        martin.petersen@oracle.com
+Cc: linux-scsi@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Subject: [PATCH v8 00/10] Enable HS-G5 support on SM8550
+Date: Sat,  2 Dec 2023 04:36:06 -0800
+Message-Id: <1701520577-31163-1-git-send-email-quic_cang@quicinc.com>
+X-Mailer: git-send-email 2.7.4
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: VZ2JlW_ytOKh79TtgO7QyL5d1hjcDDRy
+X-Proofpoint-GUID: VZ2JlW_ytOKh79TtgO7QyL5d1hjcDDRy
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-02_10,2023-11-30_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
+ malwarescore=0 bulkscore=0 lowpriorityscore=0 phishscore=0 mlxlogscore=999
+ suspectscore=0 priorityscore=1501 mlxscore=0 spamscore=0 clxscore=1015
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2312020094
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231202_013046_559495_95DEECA7 
-X-CRM114-Status: GOOD (  28.91  )
+X-CRM114-CacheID: sfid-20231202_043651_581034_5F219C37 
+X-CRM114-Status: GOOD (  20.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,80 +98,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, mithat.guner@xeront.com, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 02, 2023 at 11:45:42AM +0300, Arınç ÜNAL wrote:
-> Hi Simon.
-> 
-> On 21.11.2023 21:53, Simon Horman wrote:
-> > On Sat, Nov 18, 2023 at 03:31:57PM +0300, Arınç ÜNAL wrote:
-> > > There's no need to run all the code on mt7530_setup_port5() if port 5 is
-> > > disabled. The only case for calling mt7530_setup_port5() from
-> > > mt7530_setup() is when PHY muxing is enabled. That is because port 5 is not
-> > > defined as a port on the devicetree, therefore, it cannot be controlled by
-> > > phylink.
-> > > 
-> > > Because of this, run mt7530_setup_port5() if priv->p5_intf_sel is
-> > > P5_INTF_SEL_PHY_P0 or P5_INTF_SEL_PHY_P4. Remove the P5_DISABLED case from
-> > > mt7530_setup_port5().
-> > > 
-> > > Stop initialising the interface variable as the remaining cases will always
-> > > call mt7530_setup_port5() with it initialised.
-> > > 
-> > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
-> > > ---
-> > >   drivers/net/dsa/mt7530.c | 9 +++------
-> > >   1 file changed, 3 insertions(+), 6 deletions(-)
-> > > 
-> > > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> > > index fc87ec817672..1aab4c3f28b0 100644
-> > > --- a/drivers/net/dsa/mt7530.c
-> > > +++ b/drivers/net/dsa/mt7530.c
-> > > @@ -942,9 +942,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
-> > >   		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
-> > >   		val &= ~MHWTRAP_P5_DIS;
-> > >   		break;
-> > > -	case P5_DISABLED:
-> > > -		interface = PHY_INTERFACE_MODE_NA;
-> > > -		break;
-> > >   	default:
-> > >   		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
-> > >   			priv->p5_intf_sel);
-> > > @@ -2313,8 +2310,6 @@ mt7530_setup(struct dsa_switch *ds)
-> > >   		 * Set priv->p5_intf_sel to the appropriate value if PHY muxing
-> > >   		 * is detected.
-> > >   		 */
-> > > -		interface = PHY_INTERFACE_MODE_NA;
-> > > -
-> > >   		for_each_child_of_node(dn, mac_np) {
-> > >   			if (!of_device_is_compatible(mac_np,
-> > >   						     "mediatek,eth-mac"))
-> > > @@ -2346,7 +2341,9 @@ mt7530_setup(struct dsa_switch *ds)
-> > >   			break;
-> > >   		}
-> > > -		mt7530_setup_port5(ds, interface);
-> > > +		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 ||
-> > > +		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
-> > > +			mt7530_setup_port5(ds, interface);
-> > 
-> > Hi Arınç,
-> > 
-> > It appears that interface is now uninitialised here.
-> > 
-> > Flagged by Smatch.
-> 
-> I'm not sure why it doesn't catch that for mt7530_setup_port5() to run
-> here, priv->p5_intf_sel must be either P5_INTF_SEL_PHY_P0 or
-> P5_INTF_SEL_PHY_P4. And for that to happen, the interface variable will be
-> initialised.
+This series enables HS-G5 support on SM8550.
 
-It's probably due to the complexities involved in analysing the values
-of variables, especially when they're in structures that are passed in.
+This series is rebased on below changes from Mani -
+https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-1-manivannan.sadhasivam@linaro.org/
+https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-2-manivannan.sadhasivam@linaro.org/
+
+This series is tested on below HW combinations -
+SM8550 MTP + UFS4.0
+SM8550 QRD + UFS3.1
+SM8450 MTP + UFS3.1 (for regression test)
+SM8350 MTP + UFS3.1 (for regression test)
+
+Note that during reboot test on above platforms, I occasinally hit PA (PHY)
+error during the 2nd init, this is not related with this series. A fix for
+this is mentioned in below patchwork -
+
+https://patchwork.kernel.org/project/linux-scsi/patch/1698145815-17396-1-git-send-email-quic_ziqichen@quicinc.com/
+
+Also note that on platforms, which have two sets of UFS PHY settings are
+provided (say G4 and no-G4, G5 and no-G5). The two sets of PHY settings are
+basically programming different values to different registers, mixing the
+two sets and/or overwriting one set with another set is definitely not
+blessed by UFS PHY designers. For SM8550, this series will make sure we
+honor the rule. However, for old targets Mani and I will fix them in
+another series in future.
+
+v7 -> v8:
+In "scsi: ufs: ufs-qcom: Add support for UFS device version detection", fixed a BUG introduced from v6 -> v7. The spare register is added since HW ver 5, although reading the spare register on HW ver 4 is just getting 0x0, to be on the safe side, we are exluding HW ver 4.
+
+v6 -> v7:
+1. Rebased on linux-next, based SM8650 PHY settings are merged there, no changes to patches for UFS driver
+2. Addressed comments from Mani
+
+v5 -> v6:
+1. Rebased on scsi-queue-6.8
+2. Addressed comments from Dmitry and Mani in patches to phy-qcom-qmp-ufs.c
+
+v4 -> v5:
+Removed two useless debug prints in patch #9
+
+v3 -> v4:
+Used .tbls_hs_overlay array instead of adding more tables with different names like .tbls_hs_g5
+
+v2 -> v3:
+1. Addressed comments from Andrew, Mani and Bart in patch #1
+2. Added patch #2 as per request from Andrew and Mani
+3. Added patch #4 to fix a common issue on old targets, it is not necessary
+   for this series, but put in this series only because it would be easier
+   to maintain and no need to rebase
+4. Addressed comments from Dmitry and Mani in patches to phy-qcom-qmp-ufs.c
+
+v1 -> v2:
+1. Removed 2 changes which were exposing power info in sysfs
+2. Removed 1 change which was moving data structs to phy-qcom-qmp-ufs.h
+3. Added one new change (the 1st one) to clean up usage of ufs_dev_params based on comments from Mani
+4. Adjusted the logic of UFS device version detection according to comments from Mani:
+	4.1 For HW version < 0x5, go through dual init
+ 	4.2 For HW version >= 0x5
+		a. If UFS device version is populated, one init is required
+		b. If UFS device version is not populated, go through dual init
+
+Bao D. Nguyen (1):
+  scsi: ufs: ufs-qcom: Add support for UFS device version detection
+
+Can Guo (9):
+  scsi: ufs: host: Rename structure ufs_dev_params to ufs_host_params
+  scsi: ufs: ufs-qcom: No need to set hs_rate after
+    ufshcd_init_host_param()
+  scsi: ufs: ufs-qcom: Setup host power mode during init
+  scsi: ufs: ufs-qcom: Allow the first init start with the maximum
+    supported gear
+  scsi: ufs: ufs-qcom: Limit HS-G5 Rate-A to hosts with HW version 5
+  scsi: ufs: ufs-qcom: Set initial PHY gear to max HS gear for HW ver 4
+    and newer
+  scsi: ufs: ufs-qcom: Check return value of phy_set_mode_ext()
+  phy: qualcomm: phy-qcom-qmp-ufs: Rectify SM8550 UFS HS-G4 PHY Settings
+  phy: qualcomm: phy-qcom-qmp-ufs: Add High Speed Gear 5 support for
+    SM8550
+
+ drivers/phy/qualcomm/phy-qcom-qmp-pcs-ufs-v6.h     |   2 +
+ drivers/phy/qualcomm/phy-qcom-qmp-qserdes-com-v6.h |   2 +
+ .../qualcomm/phy-qcom-qmp-qserdes-txrx-ufs-v6.h    |   9 +
+ drivers/phy/qualcomm/phy-qcom-qmp-ufs.c            | 191 ++++++++++++++++++---
+ drivers/ufs/host/ufs-exynos.c                      |   7 +-
+ drivers/ufs/host/ufs-hisi.c                        |  11 +-
+ drivers/ufs/host/ufs-mediatek.c                    |  12 +-
+ drivers/ufs/host/ufs-qcom.c                        |  97 ++++++++---
+ drivers/ufs/host/ufs-qcom.h                        |   7 +-
+ drivers/ufs/host/ufshcd-pltfrm.c                   |  69 ++++----
+ drivers/ufs/host/ufshcd-pltfrm.h                   |  10 +-
+ 11 files changed, 309 insertions(+), 108 deletions(-)
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.7.4
+
 
