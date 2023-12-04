@@ -4,81 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 787CBC10DC1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 15:20:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E76C7C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 16:02:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=stA+FMH5CBJo+8X/c9AmmtIaulIDzgpBtKqOxrxQHfs=; b=km69vPXeai5Z1gn5Xqc7QW5Jtp
-	IdgMiXrkrSMjo3duQb6bNEQbOmXsfwVA/31VsxCxGOOpFrFHs/mDUbqVErS9ZgguqBMcKVO6zNw/A
-	hZzu5sa4wPm1J0tTQSJElPbfyntECTHj2gVL1uf1jj6FfNQRoS2xuSWK082Q8tIOaX5IApy60pgoY
-	ePYmgXQ3EKJ/2fpx+9mDVm5UuNWy3Vlrh9xanxtn7lhnWT5h/tR4+G876/bztUt4MAbhHlORLw4/d
-	fcpMkVQtU+O8WdbW5b22C9fbcLcEVg++nYrpn1nvOUuqdOeLXIeXRM0lN01u8LxWXR2OhenqO1gmR
-	frcDP02g==;
+	bh=OsU/uFt7WDOHMzzAMlb/J/ZcVXpHjZ9dfvzsw5GYCsM=; b=VWRN1ZcsD20foZfMLf2dMDoeUZ
+	LSW3iAT3YFdT9aBOnkz9oZ1KkaH/7LFZ8XzYxIpPt4wrqzVViS3OIKpd6Ll0gVzVZtAGqZZuphz+/
+	RXVTqorR8995Ed0Gsn310Un99upwchPzkJ7hQwxtp4ib5pPqHRPE0V70WCzp+S9Wb9lahUfoPxfRW
+	qzjEMIn8rg3hDf9iWjVrgMOgJMVFIbz3tQbtC0gVOGd4sc3jMEdmBuBgR1R3asUwn+H5oRHux56+h
+	L1k8FeGPFvRzLR6zTjtryNzslBxhTUZEsenMuK07t2Vt4J4Js3RFDVg4A2Qs4yR8LWrqa64Mwo90V
+	YOLfR3Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAAkY-004w5u-0x;
-	Mon, 04 Dec 2023 15:20:46 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1rABP5-0052Tg-2i;
+	Mon, 04 Dec 2023 16:02:39 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAAkU-004w5H-32;
-	Mon, 04 Dec 2023 15:20:44 +0000
+	id 1rABP2-0052SY-0A;
+	Mon, 04 Dec 2023 16:02:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701703243; x=1733239243;
+  t=1701705756; x=1733241756;
   h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=qEhcxASuizJtM7lcwqFFlnnisGnpfIA8jp4KVzQJVnU=;
-  b=UdbzLsD6y4RmtRc66lTrx8ZxfgozSrnsf1S/7VfdBDnLRnjMyZnhPbM9
-   ix/EkRf33DM/wTe6nT2lWzWb2TD9Ij+zb6d1RBead9qx/ck4XZtNhUO7e
-   FtoGmObgGxx8D3jOTR7oVNH3lidobj2fl14aYKoswcDOsBPvig6rs/Bhq
-   ViaYlNa57e+0rZnbrUcQr6EowgCGWFH4+WyVLjTaWAknSxsFDE6GHp1FP
-   v8aVrr4OPKVEr7nZDc11qmqvkxH8YPP4HdSl/FX2bQCTn9RrBfklxYtT5
-   xqWq3gubB84gPM/7yUG77Qus+19PfPsS9qK1ti60yiwRRGiRJYIxNmKjb
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=XNcK+nowG13Y865Fjff3FDTvFJmZG2WRC888K2sx/o0=;
+  b=ltQ4D38h8jwNXqAMVcMr9BQcYUc8fA4XMXzYKoYYWE9eb119decIE1rZ
+   t0a2E2Q2jH88VaysGN6nLBwqIyJiMNoJo15mDXTzNmE2MQssJTNdDnZb3
+   tIQnwH81EzqGm9tlLwWxZWUleGdd2Ke2cmpLh0L31e2HSLuvQJ9Zf2Cu+
+   fucOYB3mmcQdorcboCOZeEmfdieSV1GLz4KJL0BKe9y/oHngMQFvb4pxY
+   0vvqqfsb+g9ORTczq06BCZqxgQQ2QmxZ1OfBQz9mbzbaLvt/0S2n6cNBn
+   7KPmRwwce3zVxZgazeTD4gIS9Rdq5lRcGtHX0Yot0gxsHHg3bUCva4oiA
    A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10914"; a="15293973"
-X-IronPort-AV: E=Sophos;i="6.04,249,1695711600"; 
-   d="scan'208";a="15293973"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Dec 2023 07:20:38 -0800
+X-IronPort-AV: E=McAfee;i="6600,9927,10914"; a="631788"
+X-IronPort-AV: E=Sophos;i="6.04,250,1695711600"; 
+   d="scan'208";a="631788"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Dec 2023 08:02:33 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10914"; a="841086629"
-X-IronPort-AV: E=Sophos;i="6.04,249,1695711600"; 
-   d="scan'208";a="841086629"
+X-IronPort-AV: E=McAfee;i="6600,9927,10914"; a="861419788"
+X-IronPort-AV: E=Sophos;i="6.04,250,1695711600"; 
+   d="scan'208";a="861419788"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmsmga004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Dec 2023 07:20:35 -0800
+  by FMSMGA003.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Dec 2023 08:02:24 -0800
 Received: from andy by smile.fi.intel.com with local (Exim 4.97)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1rAAkK-00000001muJ-2OQO;
-	Mon, 04 Dec 2023 17:20:32 +0200
-Date: Mon, 4 Dec 2023 17:20:32 +0200
+	id 1rABOl-00000001nOJ-2TZj;
+	Mon, 04 Dec 2023 18:02:19 +0200
+Date: Mon, 4 Dec 2023 18:02:19 +0200
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Naresh Kamboju <naresh.kamboju@linaro.org>,
-	Linux ARM <linux-arm-kernel@lists.infradead.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	lkft-triage@lists.linaro.org,
-	Linux Regressions <regressions@lists.linux.dev>,
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
-	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>, sean.wang@kernel.org,
-	Russell King <linux@armlinux.org.uk>
-Subject: Re: arm: gcc-8: drivers/pinctrl/mediatek/../core.h:211:21: error:
- initializer element is not constant (struct group_desc)
-Message-ID: <ZW3uQFWeogUhwuA9@smile.fi.intel.com>
-References: <CA+G9fYs1g2Pt=DQeaJC+3ZJTeMwKAs9GuGJ9k6BcwKwEXcn5kQ@mail.gmail.com>
- <ad6afb94-e221-4adb-a942-af59f5d7b92f@app.fastmail.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Marek Szyprowski <m.szyprowski@samsung.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+	Jianlong Huang <jianlong.huang@starfivetech.com>,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org, linux-mips@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Andy Gross <agross@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Hal Feng <hal.feng@starfivetech.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v4 12/23] pinctrl: mediatek: Make use of
+ PINCTRL_GROUP_DESC()
+Message-ID: <ZW34C47rt80Ng8SA@smile.fi.intel.com>
+References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
+ <20231129161459.1002323-13-andriy.shevchenko@linux.intel.com>
+ <CGME20231204114039eucas1p29c6f8a162191e58ff658d3a1c44429bf@eucas1p2.samsung.com>
+ <9e4e65de-7234-4234-8091-796277a1f1c5@samsung.com>
+ <ZW3PrSQWyZvvhN66@smile.fi.intel.com>
+ <CAMuHMdU-E7jemjAS0EunWFPq1LfF9vcNE+50ah4WH9oD1TXYew@mail.gmail.com>
+ <ZW3U5-LBqWiyxB6-@smile.fi.intel.com>
+ <CAMuHMdVz=dLaBt-Td0UdOOs79ju7UfX_2vUcy8Kdeo9aSP+edw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <ad6afb94-e221-4adb-a942-af59f5d7b92f@app.fastmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAMuHMdVz=dLaBt-Td0UdOOs79ju7UfX_2vUcy8Kdeo9aSP+edw@mail.gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_072042_993126_382F0A01 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20231204_080236_611177_A0DC3808 
+X-CRM114-Status: GOOD (  23.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,37 +122,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 04, 2023 at 04:11:11PM +0100, Arnd Bergmann wrote:
-> On Mon, Dec 4, 2023, at 13:08, Naresh Kamboju wrote:
-> > Following build errors noticed on Linux next-20231204 tag with gcc-8 toolchain
-> > for arm and arm64.
+On Mon, Dec 04, 2023 at 02:39:37PM +0100, Geert Uytterhoeven wrote:
+> On Mon, Dec 4, 2023 at 2:32 PM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> > On Mon, Dec 04, 2023 at 02:19:10PM +0100, Geert Uytterhoeven wrote:
+> > > On Mon, Dec 4, 2023 at 2:10 PM Andy Shevchenko
+> > > <andriy.shevchenko@linux.intel.com> wrote:
+> > > > On Mon, Dec 04, 2023 at 12:40:38PM +0100, Marek Szyprowski wrote:
+> > > > > On 29.11.2023 17:06, Andy Shevchenko wrote:
+> > > > > > Make use of PINCTRL_GROUP_DESC() instead of open coding it.
+> > > >
+> > > > > PINCTRL_GROUP_DESC() macro from drivers/pinctrl/core.h contains a cast
+> > > > > to (struct group_desc), what breaks users of the above macros.
+> > > >
+> > > > There is no cast (*).
+> > > > Thanks for report, I will check.
+> > > >
+> > > > But this was v4 of the series and LKP actually sent a positive feedback.
+> > > > Besides that I have tested this locally with modules enabled.
+> > > >
+> > > > *) It's a compound literal, _not_ a cast.
+> > > >    Taking above into consideration I'm wondering what compilers
+> > > >    are in use?
+> > >
+> > > kisskb reported the following m68k failures to me:
+> > >     linux-next/m68k-allmodconfig/m68k-gcc8
+> > >     linux-next/m68k-allmodconfig/m68k-gcc11
+> > >     linux-next/m68k-allmodconfig/m68k-gcc12
+> > >
+> > > However, according to [1], linux-next/m68k-allmodconfig/m68k-gcc13
+> > > did succeed, so I guess you are using gcc13?
 > >
-> > ## Test Regressions (compared to next-20231201)
-> > * arm, build
-> >   - gcc-8-defconfig
+> > Yes, I compiled with these:
 > >
-> > * arm64, build
-> >   - gcc-8-defconfig
-> >
-> > Reported-by: Linux Kernel Functional Testing <lkft@linaro.org>
-> >
-> > Build log arm and arm64:
-> > ------------
-> > In file included from drivers/pinctrl/mediatek/pinctrl-moore.h:21,
-> >                  from drivers/pinctrl/mediatek/pinctrl-mt7623.c:11:
-> > drivers/pinctrl/mediatek/../core.h:211:21: error: initializer element
-> > is not constant
-> >  (struct group_desc) {      \
+> > $ gcc --version
+> > gcc (Debian 13.2.0-5) 13.2.0
 > 
-> This apparently comes from c0c8dd0a7773 ("pinctrl: core: Add a
-> convenient define PINCTRL_GROUP_DESC()") and following patches
-> from Andy Shevchenko (added to Cc).
-> 
-> I also checked different compiler versions and found that the
-> new code works fine with gcc-13.2.0, but not with gcc-12 or
-> older.
+> Time to install and try an older version ;-)
 
-Thank you, Linus already dropped problematic changes.
+Yeah, compound literals seems the often-to-break topic (as per GCC bugzilla).
+Tried with GCC 8 for ARM64 and indeed it doesn't build it well.
 
 -- 
 With Best Regards,
