@@ -4,97 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85368C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 14:32:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17830C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 14:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BuX72mINRLX+U+1tCHG2KsGGq+2uR8TnPjOzCEdxAmM=; b=SGoBNro38qL+stPpMmQ+5hbn5J
-	RFksi+27rXq3PGyepGz1JHKL18ETyaSahpe7e9WcqFCsmt7ZfPBws7zYFvcQ8zyKZQTkMwQZ5WMMX
-	1nXyH1/S/WPBRT/EdeqjIeofYs1b/0oZ6sgyqGipWJ0C1TN2gRhdlD8b5qMXSvU5LfX9QjKn4KqRm
-	W8jCJZR2atQk0hXRMp1gEFQ0Ay/GSbe3b7J9Cb6A1k77vrB0flKvsU/GdZBFmmQajA+RP13vcQJSi
-	ymrFyTycDvUaoA+kIct1ktghHd6xqDPLq2pJJRDKe7qeTyW0NUdrF/jpVc2ZGsOziiBUsryiGMuML
-	iE1E6x+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xp0IjsfcwvSP4xwYPboGJw1FyStABvBFv/P2infLWSw=; b=ZcuFh5oPHImoGed9r5awzs0fGL
+	mY0ZbNpJ/nYrMJ70aY9zOB9n99fI7ou0utd/P2QNnNF9FH5x1bdc9LZNKHDns0mCX12OLTPLXNOwq
+	IXjgis6l9SbJHqWBC9MtbppaaUVPFGvzn6zQIPC8G/k/TVpp0BIiccfM5gAjnW21F4gmsFcQ1j1XY
+	W5rMfuGJRMNSoxkU+pm4xzfWQS23EiL3Hs/aRjxtNZx0O+Fd6IUCAmmJGhcDzufgW7SMYwAMw6siG
+	iOv50i/9l57fgynQZbCiwKeF496TP5Z8DJHSOluw4HMm6degIcO2/VIeHKMoUOhQTnmE5gvv83qPQ
+	nPSAV1EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA9zL-004mYo-1J;
-	Mon, 04 Dec 2023 14:31:59 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1rAA38-004nA4-00;
+	Mon, 04 Dec 2023 14:35:54 +0000
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA9zI-004mXq-1k;
-	Mon, 04 Dec 2023 14:31:57 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B4AwRRb023069;
-	Mon, 4 Dec 2023 14:31:49 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding : content-type; s=qcppdkim1;
- bh=BuX72mINRLX+U+1tCHG2KsGGq+2uR8TnPjOzCEdxAmM=;
- b=LXqC6Vkq1HFJG4bBYj3EG/90xaCgr49MVzhV2KvizB5R8RzqRPNy0zIJtEcrtsKLu38/
- IBNxCCrOQdDlsk/ZdXh66EPB0hhPMSacg2LdElxold4K888ZnqkY1ZWhJGIbvoTs2SVL
- Qid3fwlgOlI83FaUSciI73WsSyIU6lXcwm8eL/pxNjAfMc2ay9OQ8Gy7zyA3pHX0tcFK
- GuhzUPj2hOUfMlR3ta/6ghpEle4GRXOPladG6H115iyQvQLGfk7ZKw26ns3I9HkbGNeB
- OuGucKRzeQ+LbZmUYw7Z4iNi9Ys/x3m8IiyZnMjo9Z5qLakyT8erk6o+jHQcWPiahMHc pA== 
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3usdfwgjqr-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 04 Dec 2023 14:31:49 +0000
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B4EVmZ5011300
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 4 Dec 2023 14:31:48 GMT
-Received: from hu-mnaresh-hyd.qualcomm.com (10.80.80.8) by
- nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.40; Mon, 4 Dec 2023 06:31:42 -0800
-From: Maramaina Naresh <quic_mnaresh@quicinc.com>
-To: "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        "Martin K. Petersen"
-	<martin.petersen@oracle.com>,
-        Peter Wang <peter.wang@mediatek.com>,
-        Manivannan Sadhasivam <mani@kernel.org>,
-        Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio
-	<konrad.dybcio@linaro.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        <chu.stanley@gmail.com>
-CC: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
-        Bart Van Assche <bvanassche@acm.org>, <linux-scsi@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-        <linux-arm-msm@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <quic_cang@quicinc.com>,
-        <quic_nguyenb@quicinc.com>
-Subject: [PATCH V2 3/3] ufs: ufs-qcom: Enable CPU latency QoS support for QCOM SoC
-Date: Mon, 4 Dec 2023 20:01:01 +0530
-Message-ID: <20231204143101.64163-4-quic_mnaresh@quicinc.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
-References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
+	id 1rAA34-004n8y-0q
+	for linux-mediatek@lists.infradead.org;
+	Mon, 04 Dec 2023 14:35:53 +0000
+Received: by mail-yb1-xb31.google.com with SMTP id 3f1490d57ef6-db979bbae81so442078276.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 04 Dec 2023 06:35:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1701700547; x=1702305347; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Xp0IjsfcwvSP4xwYPboGJw1FyStABvBFv/P2infLWSw=;
+        b=yMnlGWGJ5X8mK4GvbGkGkdCO0ho/hcJHWpRmsDS9nePAXk46K/LfyWkgSdDA516Stv
+         VwUFp1MRp0nb95rLvTuUb9pusYHuwXXnuxtNMVU+vUgV9N7HGJjXRoDQjbxmO/d64JtI
+         sGQRNLe20nk8FqVBLdRKMNSDNCoWNUAr3X6x0fyyPIWzpGGqN2b9IOhBOjD6bP4t50QN
+         C+6CbVXB+qOpGeq0HvUIulDuJ1g8lhL/5va5L/VqmobaH4a2yH1wxUNI/ZYMnc8P+seN
+         51Qz46dD1L036ECoFsqHsnm3uiYM65KkR9impJhtFOjfc43fLEe/ooqpXL9Tu8wmIP8z
+         ESpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701700547; x=1702305347;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Xp0IjsfcwvSP4xwYPboGJw1FyStABvBFv/P2infLWSw=;
+        b=Qh0pcJBa4ldLiPM5gR0huRn1B1nlqk+AuprSVWd/jt6SCoVGqh3A13Jh5QxUMYj2v6
+         Jktq89p28f8fbAXgtxUTKdtN4v7/AootDfHokm7VcYtk/AsR09ZOoceMLY3ahwUSUf6M
+         n92rBmjBkzBSvAHqttxPys3XCRs5BwtbGlunOZAjs9yt8XI0Nut7/2c33JlfagJwStSA
+         Kgt1U1/S+Nyu4bRBYGEp3rd3bpxVfGa0vSQzp/MOx9YTWKcQAogUofEHgOPTlOMgWJaR
+         axJ24dQow+LMR5Ys1b0jfy8WXXdSexrwG3u7AcgHrdo/AjJ+QfzrOb1FqYtVDk/oIgmg
+         E19Q==
+X-Gm-Message-State: AOJu0YwD5L7pA3SV7fPfiSJpSHoYkwNr9cg2geQcjakCTbRcab6ikQVJ
+	McmVrpmLZDUVCBwX5YljrGFzNcDjGIdMZjUYLFvUWA==
+X-Google-Smtp-Source: AGHT+IGlzR6jMdp+UQm1IidwrnLTDQIh/k3Qz3N9UjI37v6TipIB4xIDPl1uX1mVMB9Ef/A4gLOOuoKxBOrzTG+rKVg=
+X-Received: by 2002:a25:ad4a:0:b0:db7:dacf:4d49 with SMTP id
+ l10-20020a25ad4a000000b00db7dacf4d49mr1286460ybe.69.1701700546895; Mon, 04
+ Dec 2023 06:35:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: VrCej0ordQzxqeDL_AlUdl39HA1uG0ug
-X-Proofpoint-ORIG-GUID: VrCej0ordQzxqeDL_AlUdl39HA1uG0ug
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-04_13,2023-12-04_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
- mlxlogscore=999 mlxscore=0 suspectscore=0 lowpriorityscore=0 adultscore=0
- priorityscore=1501 phishscore=0 spamscore=0 malwarescore=0 clxscore=1015
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2312040108
+References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
+ <CACRpkdZAriTP3iOgmwvoAH-3-aO_ugoEkBHE7mHH5YLxhMXSXg@mail.gmail.com> <b2175abe-b989-4b77-891e-67e8240ba0be@linaro.org>
+In-Reply-To: <b2175abe-b989-4b77-891e-67e8240ba0be@linaro.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 4 Dec 2023 15:35:35 +0100
+Message-ID: <CACRpkdaTKAwCN_dbcAn_qKLi2R15=BzJjpg85XtL=Ap6ORSgUQ@mail.gmail.com>
+Subject: Re: [PATCH v4 00/23] pinctrl: Convert struct group_desc to use struct pingroup
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Biju Das <biju.das.jz@bp.renesas.com>, 
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
+	linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Paul Cercueil <paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Hal Feng <hal.feng@starfivetech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_063156_699964_9D1EC7A8 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20231204_063550_306469_CE238B54 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,26 +107,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable CPU latency PM QoS capability support for QCOM SoC.
+On Mon, Dec 4, 2023 at 8:49=E2=80=AFAM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+> On 01/12/2023 15:05, Linus Walleij wrote:
+> > On Wed, Nov 29, 2023 at 5:15=E2=80=AFPM Andy Shevchenko
+> > <andriy.shevchenko@linux.intel.com> wrote:
+> >
+> >> The struct group_desc has a lot of duplication with struct pingroup.
+> >> Deduplicate that by embeddind the latter in the former and convert
+> >> users.
+> >>
+> >> Linus, assuming everything is fine, I can push this to my tree.
+> >> Or you can apply it (assumming all CIs and people are happy with
+> >> the series).
+> >
+> > I applied the series to devel so we get some rotation in linux-next,
+> > augmenting the relevant commit messages as discussed!
+> >
+>
+> ... and this next fails to build on standard defconfig:
+> https://krzk.eu/#/builders/76/builds/420/steps/9/logs/stdio
+>
+> I did not bisect yet, so I am just guessing that error looks like
+> something introduced here.
 
-Signed-off-by: Maramaina Naresh <quic_mnaresh@quicinc.com>
----
- drivers/ufs/host/ufs-qcom.c | 1 +
- 1 file changed, 1 insertion(+)
+Ooops how unfortunate.
 
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index 96cb8b5b4e66..3211cccce933 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -1061,6 +1061,7 @@ static void ufs_qcom_set_caps(struct ufs_hba *hba)
- 	hba->caps |= UFSHCD_CAP_WB_EN;
- 	hba->caps |= UFSHCD_CAP_AGGR_POWER_COLLAPSE;
- 	hba->caps |= UFSHCD_CAP_RPM_AUTOSUSPEND;
-+	hba->caps |= UFSHCD_CAP_PM_QOS;
- 
- 	if (host->hw_ver.major >= 0x2) {
- 		host->caps = UFS_QCOM_CAP_QUNIPRO |
--- 
-2.34.1
+I actually thought the autobuilders grabbing patches from the mail lists
+would have warned.
 
+I dropped the majority of the patches (not the preparatory patches)
+from my tree again, rinse and repeat.
+
+Yours,
+Linus Walleij
 
