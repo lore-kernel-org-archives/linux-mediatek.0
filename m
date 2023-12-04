@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F2CC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 07:50:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2017BC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 07:51:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qy9EsjQw1g9VRkevvbX9uBsJyMuEslts0ijpZTiewwo=; b=wEYSeW4gW1afFeK5mRJVGDDYGX
-	71VsN40YyR+iBLRs3+lfflrk7dDKvkU4R6AMvRBU6anoTS+wDWQ68YY8n1BHB8M+0Fy8f0KzgVEY+
-	Pr1JvFDwvffOxcv0qhklne6jcBAC4viVCDQGsw/n9h0UMznh0XSJtp9p2yr/5n3zGrFY+rPVKOeap
-	VuV4XTYxAHuu0a3mK9D/+sJvXUd/aCjEtL0tSk/dfjYS/X2Lvqrav1a54et7aAsfviq1Te6n49efp
-	jiogjZrP6wvCj73wSJHw6a+CLbLCrbLnTpdoEnP1BW+HuRLoUR4yN+EaZLUKUWrwhlo4LP8qN08oB
-	nPpObIbA==;
+	bh=arTRaSO7qb6afExZuPum4dyf3xlHerUlvm4TwoAJ7bo=; b=NKWwwC41Qm98NG/3VcoHx4aNoA
+	O4H/ImnvhOYlCwQs9fkQMb3P3QxO0JPyobzGZLLiGyv7cuoQG3LmfU62Ff9GT72g1yMiEKIz2/HmW
+	6fZR3ttzkI+2aoJjBMHl4ZOr3MhyfimYH2+xtiBKq+12mIvWYkxfg19YTLruIBwkQhSykEWQpCNOS
+	oc/XkchOGZRZtp6rbzEghxKNLD2uJJ7g5x5lHAc9JX+6Q1MH+9+7lAQ08/4aou7MwpxZ176g/jxlZ
+	/0l6Sz+Vy9g9F6MXcJvoqvVvdryJK0+7klQqedFzwi6iHdj30S7a2DWr6F6haRHZqQ1mOst6p8MSt
+	0guC6oQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA3iK-003BZq-0L;
-	Mon, 04 Dec 2023 07:50:00 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1rA3jf-003BiR-2i;
+	Mon, 04 Dec 2023 07:51:23 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA3iF-003BYo-1h
+	id 1rA3jc-003BhY-1j
 	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Dec 2023 07:49:57 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a196f84d217so397724666b.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 03 Dec 2023 23:49:54 -0800 (PST)
+	Mon, 04 Dec 2023 07:51:22 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-5482df11e73so5301245a12.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 03 Dec 2023 23:51:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701676194; x=1702280994; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=Qy9EsjQw1g9VRkevvbX9uBsJyMuEslts0ijpZTiewwo=;
-        b=cLNuopdtAnIRA7eyTCIyvEuj2cq0NhOj/LhAw4qsp8E4STEHFf5yMl4UJ1zIVOpeU7
-         zFAmTnw9CuwIgD/YAsfoTlLyTDQ7w8WQqWqsjrtbfttlDzn8aJHa7mcRrdyjnIER77Nv
-         nIS5nUpfjeGwNYd3f1KY/I/orPDn+73hGdlS5JxSSpRfxOtC0rXhn6l+WyVEfMeOyCPo
-         +/FBOq9G9gGabQV5GF4X7cqcDYFQ4FV4VDJVAPEowDeVEKM09jujtB68E9iKPu8a/Udp
-         3mR9EKdGpu9pT6okRo13U3Gw/zK7AxHgikvhkLntuBOAUofxmivu/oYuI6tF1tRhOheV
-         9svg==
+        d=linaro.org; s=google; t=1701676278; x=1702281078; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
+         :from:content-language:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=arTRaSO7qb6afExZuPum4dyf3xlHerUlvm4TwoAJ7bo=;
+        b=CEfNfXN3o0auK6FWmzvhgk3JVVAgA3Z/3pGJ4ZowJcY+0towT6X/LpglI9mtgimxMY
+         OswjsF1LP2bIzzFf1EkpLSOutiDbQ6NuT5AObAYoyYpoj5Hp99jUNwu92G/WCtG4Cp2J
+         jLYq/AurcbfsNBGPrxmyMs7DvN15CU8pdLqJOCJOMAAXzR6iGxlmS8wwYZWU7MwzkPta
+         +E+JPl5P1ZjPztYOiHmuTi5qqxqbrqYmgwzbCauZ1f2riaj6jW8hz2uDhUiIaJ+LAjiZ
+         Emy3Dy9mN7ReUTrarwpp9//PdPATKWjgr/ZMLg3iNfALjT39S9RcKpuammon7kM/sf+X
+         gf7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701676194; x=1702280994;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Qy9EsjQw1g9VRkevvbX9uBsJyMuEslts0ijpZTiewwo=;
-        b=KsjYV4ua704+3attvXjZ4iXzJvQ/NwPz2YSURVhJls2IAIJfUOBSYe0xnp4EIWSDPx
-         Mp5cEnn4uItiouhDnnjT+f8Dc715nAB6v+ZsRuJWKooS9DjrtliOUzM3Q1ZYktxt2v5q
-         18OVDuj4Jam3lPyfGOWXf9U3wOMBurATlbtOtAH5ppENPSHxT0SoLKbpzzZfueyXBY3i
-         LaHDgx53LwY69pSof7i8Hmt0b/qDWoEok1GrnJU4Z8xPkuhZCqp/eSfIyYml37OJn69T
-         kxsCx6GH6kUVoxO/CyuzKUON1iKbtH43az2QdbK+vOLXLP30rQg5Wrsh+jUCF5hDnK+S
-         9moA==
-X-Gm-Message-State: AOJu0YwWsAiNOo6lzOp/cJiRtqstT49lBIgIjqDofNuyKVZF+PPBGtri
-	xSL4A+kObpb6m4XoWg7ASuv08g==
-X-Google-Smtp-Source: AGHT+IG9rrGGxYQIgHWFzYhePOT1pthDDaSKERkAynT23Tb0rNgnTFO/UdYvGzvsoc9iFhDeh0jLMg==
-X-Received: by 2002:a17:906:7395:b0:a19:a1ba:8cd9 with SMTP id f21-20020a170906739500b00a19a1ba8cd9mr2840437ejl.119.1701676193738;
-        Sun, 03 Dec 2023 23:49:53 -0800 (PST)
+        d=1e100.net; s=20230601; t=1701676278; x=1702281078;
+        h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
+         :from:content-language:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=arTRaSO7qb6afExZuPum4dyf3xlHerUlvm4TwoAJ7bo=;
+        b=fje9RjeWWv535UHamsLL0S3FlFPDX0MYq0Py2G9zL47lZP7ffYOu713ob3OO0YrmGY
+         UTMqXin5pVkU2ngSmmT++KOw7k8akZNRgkPpWb5FW1FD82h8rimPMSSjv8898wu+jcoz
+         P6QK358mewF4IJRSsYP6Dq0/WPQ7GIMPgH0ppsAvzB7spnCUrsJKkEp3Sm23j16gsse3
+         metIb8FeEkxiAoYGPkwUWlHcBrnveQZHpx11IZDo5/ErU4wxaoSGRvWu7bNHdBvrCq2n
+         l7wwvtVsVEGoixoqVAg0pdjdNeCLXz3mCmfUzVMjW4cqBwCo2blqTH1BjRW2nBhG9kMV
+         Gl/w==
+X-Gm-Message-State: AOJu0YyjPNooDVt8TuDqlO9RllayIQWfOHUdm23s877TQrqEEPs01dhC
+	TGpOCt4lnwBWfpN3UWExyuybii/Dw6JA/zBDJCA=
+X-Google-Smtp-Source: AGHT+IGU4wYxHD6TOqoPdgUQdxysOxQy4nBbwxzlUrixFStp0EoRpziwnF1+QzV7A/z4bBcuk/mp6A==
+X-Received: by 2002:a17:907:3ad1:b0:a19:a1ba:8ccb with SMTP id fi17-20020a1709073ad100b00a19a1ba8ccbmr2367531ejc.105.1701676278547;
+        Sun, 03 Dec 2023 23:51:18 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.109])
-        by smtp.gmail.com with ESMTPSA id p20-20020a170906229400b00a18db59797dsm4694966eja.127.2023.12.03.23.49.51
+        by smtp.gmail.com with ESMTPSA id p20-20020a170906229400b00a18db59797dsm4694966eja.127.2023.12.03.23.51.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 03 Dec 2023 23:49:52 -0800 (PST)
-Message-ID: <b2175abe-b989-4b77-891e-67e8240ba0be@linaro.org>
-Date: Mon, 4 Dec 2023 08:49:50 +0100
+        Sun, 03 Dec 2023 23:51:17 -0800 (PST)
+Message-ID: <ed981149-5d96-43a9-9534-c1e52443a983@linaro.org>
+Date: Mon, 4 Dec 2023 08:51:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 00/23] pinctrl: Convert struct group_desc to use struct
  pingroup
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
@@ -97,8 +99,7 @@ Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
  Emil Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>
 References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
  <CACRpkdZAriTP3iOgmwvoAH-3-aO_ugoEkBHE7mHH5YLxhMXSXg@mail.gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ <b2175abe-b989-4b77-891e-67e8240ba0be@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -143,12 +144,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <CACRpkdZAriTP3iOgmwvoAH-3-aO_ugoEkBHE7mHH5YLxhMXSXg@mail.gmail.com>
+In-Reply-To: <b2175abe-b989-4b77-891e-67e8240ba0be@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231203_234955_572126_D0B293D5 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20231203_235120_581220_557745A8 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,27 +164,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/12/2023 15:05, Linus Walleij wrote:
-> On Wed, Nov 29, 2023 at 5:15 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> 
->> The struct group_desc has a lot of duplication with struct pingroup.
->> Deduplicate that by embeddind the latter in the former and convert
->> users.
+On 04/12/2023 08:49, Krzysztof Kozlowski wrote:
+> On 01/12/2023 15:05, Linus Walleij wrote:
+>> On Wed, Nov 29, 2023 at 5:15 PM Andy Shevchenko
+>> <andriy.shevchenko@linux.intel.com> wrote:
 >>
->> Linus, assuming everything is fine, I can push this to my tree.
->> Or you can apply it (assumming all CIs and people are happy with
->> the series).
+>>> The struct group_desc has a lot of duplication with struct pingroup.
+>>> Deduplicate that by embeddind the latter in the former and convert
+>>> users.
+>>>
+>>> Linus, assuming everything is fine, I can push this to my tree.
+>>> Or you can apply it (assumming all CIs and people are happy with
+>>> the series).
+>>
+>> I applied the series to devel so we get some rotation in linux-next,
+>> augmenting the relevant commit messages as discussed!
+>>
 > 
-> I applied the series to devel so we get some rotation in linux-next,
-> augmenting the relevant commit messages as discussed!
+> ... and this next fails to build on standard defconfig:
+> https://krzk.eu/#/builders/76/builds/420/steps/9/logs/stdio
 > 
+> I did not bisect yet, so I am just guessing that error looks like
+> something introduced here.
 
-... and this next fails to build on standard defconfig:
-https://krzk.eu/#/builders/76/builds/420/steps/9/logs/stdio
-
-I did not bisect yet, so I am just guessing that error looks like
-something introduced here.
+One more for arm32 defconfig:
+https://krzk.eu/#/builders/5/builds/2532/steps/9/logs/stdio
 
 Best regards,
 Krzysztof
