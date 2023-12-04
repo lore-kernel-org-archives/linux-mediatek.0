@@ -4,95 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17830C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 14:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298F3C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 14:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xp0IjsfcwvSP4xwYPboGJw1FyStABvBFv/P2infLWSw=; b=ZcuFh5oPHImoGed9r5awzs0fGL
-	mY0ZbNpJ/nYrMJ70aY9zOB9n99fI7ou0utd/P2QNnNF9FH5x1bdc9LZNKHDns0mCX12OLTPLXNOwq
-	IXjgis6l9SbJHqWBC9MtbppaaUVPFGvzn6zQIPC8G/k/TVpp0BIiccfM5gAjnW21F4gmsFcQ1j1XY
-	W5rMfuGJRMNSoxkU+pm4xzfWQS23EiL3Hs/aRjxtNZx0O+Fd6IUCAmmJGhcDzufgW7SMYwAMw6siG
-	iOv50i/9l57fgynQZbCiwKeF496TP5Z8DJHSOluw4HMm6degIcO2/VIeHKMoUOhQTnmE5gvv83qPQ
-	nPSAV1EQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Cjni/hlpt/X+AaOx2fHWVROji8DsyjSHHQQ+GVNzNUg=; b=44ZHZF3RGA1bVkByuJmOvr30cn
+	PGHSKY6dPSxq6iR82WYgIpv3uI4H6J6fFKmvxo+/6Y4k/DDYJiXN8gnZBEcniCEmk5FpV/oZKhe4o
+	cfcwk+qnRG4WT+w7C9j7m609zNEcugMsOjOkKViMffO6cF+h0gaUJTAGIc4Sckz6vHzFOQ1G2x201
+	IVAIHAcKQCqzym1HP7VqFWVhS8K1OAB/MQDcvva40/EA7vWl/TvkiOZB0uByw4U+O1PkrFvmiHRDx
+	e8smzoTZSriq3DV3FgsxfFzRB87DxYxeNYtJdUVA2BvR3OJbhQ/9J/UqarlQClwP/zgtGcvPVf0NK
+	l8xdGa4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAA38-004nA4-00;
-	Mon, 04 Dec 2023 14:35:54 +0000
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+	id 1rAA3F-004nC6-2z;
+	Mon, 04 Dec 2023 14:36:01 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAA34-004n8y-0q
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Dec 2023 14:35:53 +0000
-Received: by mail-yb1-xb31.google.com with SMTP id 3f1490d57ef6-db979bbae81so442078276.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 04 Dec 2023 06:35:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701700547; x=1702305347; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Xp0IjsfcwvSP4xwYPboGJw1FyStABvBFv/P2infLWSw=;
-        b=yMnlGWGJ5X8mK4GvbGkGkdCO0ho/hcJHWpRmsDS9nePAXk46K/LfyWkgSdDA516Stv
-         VwUFp1MRp0nb95rLvTuUb9pusYHuwXXnuxtNMVU+vUgV9N7HGJjXRoDQjbxmO/d64JtI
-         sGQRNLe20nk8FqVBLdRKMNSDNCoWNUAr3X6x0fyyPIWzpGGqN2b9IOhBOjD6bP4t50QN
-         C+6CbVXB+qOpGeq0HvUIulDuJ1g8lhL/5va5L/VqmobaH4a2yH1wxUNI/ZYMnc8P+seN
-         51Qz46dD1L036ECoFsqHsnm3uiYM65KkR9impJhtFOjfc43fLEe/ooqpXL9Tu8wmIP8z
-         ESpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701700547; x=1702305347;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Xp0IjsfcwvSP4xwYPboGJw1FyStABvBFv/P2infLWSw=;
-        b=Qh0pcJBa4ldLiPM5gR0huRn1B1nlqk+AuprSVWd/jt6SCoVGqh3A13Jh5QxUMYj2v6
-         Jktq89p28f8fbAXgtxUTKdtN4v7/AootDfHokm7VcYtk/AsR09ZOoceMLY3ahwUSUf6M
-         n92rBmjBkzBSvAHqttxPys3XCRs5BwtbGlunOZAjs9yt8XI0Nut7/2c33JlfagJwStSA
-         Kgt1U1/S+Nyu4bRBYGEp3rd3bpxVfGa0vSQzp/MOx9YTWKcQAogUofEHgOPTlOMgWJaR
-         axJ24dQow+LMR5Ys1b0jfy8WXXdSexrwG3u7AcgHrdo/AjJ+QfzrOb1FqYtVDk/oIgmg
-         E19Q==
-X-Gm-Message-State: AOJu0YwD5L7pA3SV7fPfiSJpSHoYkwNr9cg2geQcjakCTbRcab6ikQVJ
-	McmVrpmLZDUVCBwX5YljrGFzNcDjGIdMZjUYLFvUWA==
-X-Google-Smtp-Source: AGHT+IGlzR6jMdp+UQm1IidwrnLTDQIh/k3Qz3N9UjI37v6TipIB4xIDPl1uX1mVMB9Ef/A4gLOOuoKxBOrzTG+rKVg=
-X-Received: by 2002:a25:ad4a:0:b0:db7:dacf:4d49 with SMTP id
- l10-20020a25ad4a000000b00db7dacf4d49mr1286460ybe.69.1701700546895; Mon, 04
- Dec 2023 06:35:46 -0800 (PST)
+	id 1rAA3C-004nAm-0J;
+	Mon, 04 Dec 2023 14:35:59 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B4AnLQp030548;
+	Mon, 4 Dec 2023 14:31:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding : content-type; s=qcppdkim1;
+ bh=Cjni/hlpt/X+AaOx2fHWVROji8DsyjSHHQQ+GVNzNUg=;
+ b=LWP6pyjYUsT4/MFb4+r5u/WMrk/e+YoMOspl5Knu1uifXtlJzri3CeufIuVeaW0vKt3w
+ YWif8nqfTjaLSbFpm+Kp5VXpayZwSJarHWqoqUDY3nGE3DO/wNsLnB35kXTTE6fKr2Qc
+ ireka6/OCU3gBIh5PWeBzh+w/aFNY0l1HIccUchsT6738cHsWJheCd9HxvLON2CfbVGl
+ s4jt//NRZvDnYXDp/BWtUTv4Qe101UP3+WPtPBBGssMkB/fSM/VK+WweBW/O95+uLK8X
+ niADSbBVo9Dop2veTP1JPzJXWuA5FQ/V9Nm2kV1c2IT6/8I4vNG7AttdP8LNkGfeJ5HX hA== 
+Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3usdbn8m82-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 04 Dec 2023 14:31:43 +0000
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B4EVfPl019600
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 4 Dec 2023 14:31:41 GMT
+Received: from hu-mnaresh-hyd.qualcomm.com (10.80.80.8) by
+ nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.40; Mon, 4 Dec 2023 06:31:35 -0800
+From: Maramaina Naresh <quic_mnaresh@quicinc.com>
+To: "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen"
+	<martin.petersen@oracle.com>,
+        Peter Wang <peter.wang@mediatek.com>,
+        Manivannan Sadhasivam <mani@kernel.org>,
+        Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio
+	<konrad.dybcio@linaro.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        <chu.stanley@gmail.com>
+CC: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+        Bart Van Assche <bvanassche@acm.org>, <linux-scsi@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+        <linux-arm-msm@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <quic_cang@quicinc.com>,
+        <quic_nguyenb@quicinc.com>
+Subject: [PATCH V2 2/3] ufs: ufs-mediatek: Enable CPU latency PM QoS support for MEDIATEK SoC
+Date: Mon, 4 Dec 2023 20:01:00 +0530
+Message-ID: <20231204143101.64163-3-quic_mnaresh@quicinc.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
+References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
 MIME-Version: 1.0
-References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
- <CACRpkdZAriTP3iOgmwvoAH-3-aO_ugoEkBHE7mHH5YLxhMXSXg@mail.gmail.com> <b2175abe-b989-4b77-891e-67e8240ba0be@linaro.org>
-In-Reply-To: <b2175abe-b989-4b77-891e-67e8240ba0be@linaro.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 4 Dec 2023 15:35:35 +0100
-Message-ID: <CACRpkdaTKAwCN_dbcAn_qKLi2R15=BzJjpg85XtL=Ap6ORSgUQ@mail.gmail.com>
-Subject: Re: [PATCH v4 00/23] pinctrl: Convert struct group_desc to use struct pingroup
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Biju Das <biju.das.jz@bp.renesas.com>, 
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, 
-	Jianlong Huang <jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
-	linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
-	Paul Cercueil <paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Hal Feng <hal.feng@starfivetech.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: ygjjDnGUt9ZU1vBNg46PmO1f0ZZXD18j
+X-Proofpoint-GUID: ygjjDnGUt9ZU1vBNg46PmO1f0ZZXD18j
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-04_13,2023-12-04_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
+ priorityscore=1501 bulkscore=0 mlxlogscore=999 phishscore=0
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 clxscore=1015 spamscore=0
+ malwarescore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2311060000 definitions=main-2312040106
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_063550_306469_CE238B54 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20231204_063558_298987_8C77155E 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,38 +109,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 4, 2023 at 8:49=E2=80=AFAM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
-> On 01/12/2023 15:05, Linus Walleij wrote:
-> > On Wed, Nov 29, 2023 at 5:15=E2=80=AFPM Andy Shevchenko
-> > <andriy.shevchenko@linux.intel.com> wrote:
-> >
-> >> The struct group_desc has a lot of duplication with struct pingroup.
-> >> Deduplicate that by embeddind the latter in the former and convert
-> >> users.
-> >>
-> >> Linus, assuming everything is fine, I can push this to my tree.
-> >> Or you can apply it (assumming all CIs and people are happy with
-> >> the series).
-> >
-> > I applied the series to devel so we get some rotation in linux-next,
-> > augmenting the relevant commit messages as discussed!
-> >
->
-> ... and this next fails to build on standard defconfig:
-> https://krzk.eu/#/builders/76/builds/420/steps/9/logs/stdio
->
-> I did not bisect yet, so I am just guessing that error looks like
-> something introduced here.
+Revert the existing PM QoS feature from MEDIATEK UFS driver as similar
+PM QoS feature implementation is moved to core ufshcd and also enable
+CPU latency PM QoS capability for MEDIATEK SoC.
 
-Ooops how unfortunate.
+Signed-off-by: Maramaina Naresh <quic_mnaresh@quicinc.com>
+---
+ drivers/ufs/host/ufs-mediatek.c | 20 +++-----------------
+ drivers/ufs/host/ufs-mediatek.h |  3 ---
+ 2 files changed, 3 insertions(+), 20 deletions(-)
 
-I actually thought the autobuilders grabbing patches from the mail lists
-would have warned.
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index fc61790d289b..d8ece88103b9 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -17,7 +17,6 @@
+ #include <linux/of_platform.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+-#include <linux/pm_qos.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/reset.h>
+ #include <linux/soc/mediatek/mtk_sip_svc.h>
+@@ -626,21 +625,9 @@ static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
+ 	dev_info(hba->dev, "caps: 0x%x", host->caps);
+ }
+ 
+-static void ufs_mtk_boost_pm_qos(struct ufs_hba *hba, bool boost)
+-{
+-	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+-
+-	if (!host || !host->pm_qos_init)
+-		return;
+-
+-	cpu_latency_qos_update_request(&host->pm_qos_req,
+-				       boost ? 0 : PM_QOS_DEFAULT_VALUE);
+-}
+-
+ static void ufs_mtk_scale_perf(struct ufs_hba *hba, bool scale_up)
+ {
+ 	ufs_mtk_boost_crypt(hba, scale_up);
+-	ufs_mtk_boost_pm_qos(hba, scale_up);
+ }
+ 
+ static void ufs_mtk_pwr_ctrl(struct ufs_hba *hba, bool on)
+@@ -937,6 +924,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 	/* Enable clk scaling*/
+ 	hba->caps |= UFSHCD_CAP_CLK_SCALING;
+ 
++	/* Enable PM QoS */
++	hba->caps |= UFSHCD_CAP_PM_QOS;
++
+ 	hba->quirks |= UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL;
+ 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_INTR;
+ 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_RTC;
+@@ -959,10 +949,6 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 
+ 	host->ip_ver = ufshcd_readl(hba, REG_UFS_MTK_IP_VER);
+ 
+-	/* Initialize pm-qos request */
+-	cpu_latency_qos_add_request(&host->pm_qos_req, PM_QOS_DEFAULT_VALUE);
+-	host->pm_qos_init = true;
+-
+ 	goto out;
+ 
+ out_variant_clear:
+diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
+index f76e80d91729..38eab95b0f79 100644
+--- a/drivers/ufs/host/ufs-mediatek.h
++++ b/drivers/ufs/host/ufs-mediatek.h
+@@ -7,7 +7,6 @@
+ #define _UFS_MEDIATEK_H
+ 
+ #include <linux/bitops.h>
+-#include <linux/pm_qos.h>
+ #include <linux/soc/mediatek/mtk_sip_svc.h>
+ 
+ /*
+@@ -167,7 +166,6 @@ struct ufs_mtk_mcq_intr_info {
+ 
+ struct ufs_mtk_host {
+ 	struct phy *mphy;
+-	struct pm_qos_request pm_qos_req;
+ 	struct regulator *reg_va09;
+ 	struct reset_control *hci_reset;
+ 	struct reset_control *unipro_reset;
+@@ -178,7 +176,6 @@ struct ufs_mtk_host {
+ 	struct ufs_mtk_hw_ver hw_ver;
+ 	enum ufs_mtk_host_caps caps;
+ 	bool mphy_powered_on;
+-	bool pm_qos_init;
+ 	bool unipro_lpm;
+ 	bool ref_clk_enabled;
+ 	u16 ref_clk_ungating_wait_us;
+-- 
+2.34.1
 
-I dropped the majority of the patches (not the preparatory patches)
-from my tree again, rinse and repeat.
-
-Yours,
-Linus Walleij
 
