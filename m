@@ -4,95 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F8CAC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 13:39:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8E7CC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 13:55:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YdujGorCpR4eYA2UA1cuFkywZ2De5u0jlPuiHfhxLz4=; b=J97cA1kgOhVETr3Ev0kbtz+JqT
-	rxW5T5r6a+S/7fdBEhvQ87stpG4c6UXNUgl4bKTWjQwTc8jeYu6b697yykqtQAB2oY5MS2XRK6/8/
-	+enNeanDpA/1NiJm7eZBWauRkjvYQ6pAQ0E04IIIiuuZlGT564/apR/9cGnpI1dsrDngqRBkm4sZ7
-	8KA2ssXXQRj8Lq2odZfYR3BdXpRGH1sppcWkdyk6YqeczNqWveyIcbWHNrbtE04X5cTFLsj2oVPNm
-	A8FEqGLCBFBerNl+KVkq/Hzw9DtLFypv2X5pZwZeqmtbZTybJUIcPEKHlMc1P/DSWthAdqgyxDc+u
-	Z8Uyl7/g==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JhveuIYK06wfqt8kGf/aLwyUhsineVPuaNNzi8Qc7lo=; b=bIWx7KeKTd2AGOYTYxzQTq2jME
+	OfbUCZhzrNjDZp4G2hc3+u8I+pMZGhRtNcb5HAhj1m++GAiyHnmUMbj7Ha06evRMKlujDFAYzck6H
+	cTf4gDmPwjH3XjBV9QvuoJ8ggGAZ5mkYAhCmVQtvagDpFhtobo2d9SLIl+hF4RdHpfvAjKK+lgqEq
+	roYY8QbvanPFLFJjQOhHLE/imdZTzy7I06cIqlRTkqwTqE98vsRLhlEN9AA3AZGhwpkgPVViH4mSH
+	x6W9ivaIwlD65ru9k1+yu4S8U++v4i1PL3hojCdNYcFj2eseOj3DxQSDQMv/IwkXEi3hIKj3PFV7e
+	6HCLp98A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA9Ax-004fqz-2r;
-	Mon, 04 Dec 2023 13:39:55 +0000
-Received: from mail-yw1-f173.google.com ([209.85.128.173])
+	id 1rA9QL-004hkm-0N;
+	Mon, 04 Dec 2023 13:55:49 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA9Av-004fq3-0A;
-	Mon, 04 Dec 2023 13:39:54 +0000
-Received: by mail-yw1-f173.google.com with SMTP id 00721157ae682-5d8d2b5d1b5so5390337b3.0;
-        Mon, 04 Dec 2023 05:39:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701697191; x=1702301991;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YdujGorCpR4eYA2UA1cuFkywZ2De5u0jlPuiHfhxLz4=;
-        b=Mh2ac0IAUtoUpxvbahyxQGfw294Hf8LYkTXAFSO3FZZ8A6cVdAAD+HUk7Q8ozBP8aR
-         rd6DFUBqnP+3dzzCsCLsbk2Zrrhsas3l+9WAX1P0RTSaI5SMtIhU2M9sspOb4m+q5IA3
-         1m/V4kAJI6s4WVikpkTR+9eXb71tRiky9osHdIexmkYES9XpRAD5gLl6hVScLaVANCy7
-         TlEPh3UBARHs/YKq8HzjwwdSRPZuDwfjpwTciV70HFHsFey1vwfJO1MwO79jSjkFQM0C
-         3flVZ61BFFuiQxueMbOGHSB1kihcITK9nTmjQ6eDdjCD/X7BDL+UnpzhH2v6Rog1DhSF
-         l/Vg==
-X-Gm-Message-State: AOJu0Yy4XtXfknmPGcAKmlNCMmYIEvnjJwMAIs9wD9BP8Utf3zFIPzTE
-	aqNMvdIqgHlLg1hgHSdLhgkRlsF7ZQ4EYw==
-X-Google-Smtp-Source: AGHT+IE6YvNdBQ1dml5VDEdBeJGYfRiGHI2XC67I8UjoJxVzIyKhhQYiBo9OrDc8F/rdJ94Vf0BIcw==
-X-Received: by 2002:a81:9953:0:b0:5d3:de61:353f with SMTP id q80-20020a819953000000b005d3de61353fmr1324305ywg.38.1701697191646;
-        Mon, 04 Dec 2023 05:39:51 -0800 (PST)
-Received: from mail-yw1-f169.google.com (mail-yw1-f169.google.com. [209.85.128.169])
-        by smtp.gmail.com with ESMTPSA id x72-20020a81a04b000000b005a7f676f305sm2859384ywg.106.2023.12.04.05.39.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Dec 2023 05:39:49 -0800 (PST)
-Received: by mail-yw1-f169.google.com with SMTP id 00721157ae682-5d8ddcc433fso5383507b3.1;
-        Mon, 04 Dec 2023 05:39:49 -0800 (PST)
-X-Received: by 2002:a05:690c:997:b0:5d6:8d41:669c with SMTP id
- ce23-20020a05690c099700b005d68d41669cmr1337270ywb.6.1701697189014; Mon, 04
- Dec 2023 05:39:49 -0800 (PST)
+	id 1rA9QG-004hje-35;
+	Mon, 04 Dec 2023 13:55:46 +0000
+Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: ehristev)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 404936607090;
+	Mon,  4 Dec 2023 13:55:41 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701698141;
+	bh=rc5z0F8Kx/z+8iRI8N73XFwXfGPlHr+ZADWzQGOaWT4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=TqzVjrnSas5WSvUk/WyXzci3l+kuks+ivbA8tf2ngWGM3LnZOW9E0g3MelxVFEvHG
+	 6DTBe67rrHQlL0/ux/IPu8+V2gTfW0ukIAxod1BI9BB9iKxYRjHADM+aJN33wSp8pu
+	 Qc2IKgX1oIS98mxVi+7joP9GKOOd6X6HrXAeDvnIVsG8jRzb6w6/QxT3KfOEOqwx7T
+	 0Kqa/QvUYnFYZTURWcT6VwsUGaa3yfm5IW60TXryko6XduEUhJjoXchY2N43iNKLxH
+	 ZSj5b1MSAMxP0creAgNmS2Kgqn6tpQY2sGD2YMFhFo686JhAu0q0WrEBw6W0T6JCr+
+	 46SjkloX+h4hw==
+From: Eugen Hristev <eugen.hristev@collabora.com>
+To: linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	matthias.bgg@gmail.com,
+	Eugen Hristev <eugen.hristev@collabora.com>
+Subject: [PATCH] arm64: dts: mediatek: mt8186: fix address warning for ADSP mailboxes
+Date: Mon,  4 Dec 2023 15:55:33 +0200
+Message-Id: <20231204135533.21327-1-eugen.hristev@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
- <20231129161459.1002323-13-andriy.shevchenko@linux.intel.com>
- <CGME20231204114039eucas1p29c6f8a162191e58ff658d3a1c44429bf@eucas1p2.samsung.com>
- <9e4e65de-7234-4234-8091-796277a1f1c5@samsung.com> <ZW3PrSQWyZvvhN66@smile.fi.intel.com>
- <CAMuHMdU-E7jemjAS0EunWFPq1LfF9vcNE+50ah4WH9oD1TXYew@mail.gmail.com> <ZW3U5-LBqWiyxB6-@smile.fi.intel.com>
-In-Reply-To: <ZW3U5-LBqWiyxB6-@smile.fi.intel.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 4 Dec 2023 14:39:37 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdVz=dLaBt-Td0UdOOs79ju7UfX_2vUcy8Kdeo9aSP+edw@mail.gmail.com>
-Message-ID: <CAMuHMdVz=dLaBt-Td0UdOOs79ju7UfX_2vUcy8Kdeo9aSP+edw@mail.gmail.com>
-Subject: Re: [PATCH v4 12/23] pinctrl: mediatek: Make use of PINCTRL_GROUP_DESC()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
-	Biju Das <biju.das.jz@bp.renesas.com>, 
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, 
-	Jianlong Huang <jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
-	linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
-	Paul Cercueil <paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Hal Feng <hal.feng@starfivetech.com>, Krzysztof Kozlowski <krzk@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_053953_094755_014B7ECC 
-X-CRM114-Status: GOOD (  27.78  )
+X-CRM114-CacheID: sfid-20231204_055545_330698_BEE7DF4A 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,58 +75,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Fix warnings reported by dtbs_check :
 
-On Mon, Dec 4, 2023 at 2:32=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
-> On Mon, Dec 04, 2023 at 02:19:10PM +0100, Geert Uytterhoeven wrote:
-> > On Mon, Dec 4, 2023 at 2:10=E2=80=AFPM Andy Shevchenko
-> > <andriy.shevchenko@linux.intel.com> wrote:
-> > > On Mon, Dec 04, 2023 at 12:40:38PM +0100, Marek Szyprowski wrote:
-> > > > On 29.11.2023 17:06, Andy Shevchenko wrote:
-> > > > > Make use of PINCTRL_GROUP_DESC() instead of open coding it.
-> > >
-> > > > PINCTRL_GROUP_DESC() macro from drivers/pinctrl/core.h contains a c=
-ast
-> > > > to (struct group_desc), what breaks users of the above macros.
-> > >
-> > > There is no cast (*).
-> > > Thanks for report, I will check.
-> > >
-> > > But this was v4 of the series and LKP actually sent a positive feedba=
-ck.
-> > > Besides that I have tested this locally with modules enabled.
-> > >
-> > > *) It's a compound literal, _not_ a cast.
-> > >    Taking above into consideration I'm wondering what compilers
-> > >    are in use?
-> >
-> > kisskb reported the following m68k failures to me:
-> >     linux-next/m68k-allmodconfig/m68k-gcc8
-> >     linux-next/m68k-allmodconfig/m68k-gcc11
-> >     linux-next/m68k-allmodconfig/m68k-gcc12
-> >
-> > However, according to [1], linux-next/m68k-allmodconfig/m68k-gcc13
-> > did succeed, so I guess you are using gcc13?
->
-> Yes, I compiled with these:
->
-> $ gcc --version
-> gcc (Debian 13.2.0-5) 13.2.0
+arch/arm64/boot/dts/mediatek/mt8186.dtsi:1163.35-1168.5: Warning (simple_bus_reg):
+ /soc/mailbox@10686000: simple-bus unit address format error, expected "10686100"
+arch/arm64/boot/dts/mediatek/mt8186.dtsi:1170.35-1175.5: Warning (simple_bus_reg):
+ /soc/mailbox@10687000: simple-bus unit address format error, expected "10687100"
 
-Time to install and try an older version ;-)
+by having the right bus address as node name.
 
-Gr{oetje,eeting}s,
+Fixes: 379cf0e639ae ("arm64: dts: mediatek: mt8186: Add ADSP mailbox nodes")
+Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-                        Geert
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index d57d8ed487b8..ae06f987ac3b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -1160,14 +1160,14 @@ adsp: adsp@10680000 {
+ 			status = "disabled";
+ 		};
+ 
+-		adsp_mailbox0: mailbox@10686000 {
++		adsp_mailbox0: mailbox@10686100 {
+ 			compatible = "mediatek,mt8186-adsp-mbox";
+ 			#mbox-cells = <0>;
+ 			reg = <0 0x10686100 0 0x1000>;
+ 			interrupts = <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		};
+ 
+-		adsp_mailbox1: mailbox@10687000 {
++		adsp_mailbox1: mailbox@10687100 {
+ 			compatible = "mediatek,mt8186-adsp-mbox";
+ 			#mbox-cells = <0>;
+ 			reg = <0 0x10687100 0 0x1000>;
+-- 
+2.34.1
 
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
-
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
 
