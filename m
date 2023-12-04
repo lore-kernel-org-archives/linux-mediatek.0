@@ -4,78 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06906C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 03:51:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90FB4C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 04:12:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0syhQ4FzCWigP5oJO4Kq1BAVvU372cUxnkG2YAyqM58=; b=kg3Gw/OvAUCn+pbrOzxriohG7C
-	nGb2NlSumRCns81oRyixO1BIe31l3/SVp0KPCKZN1khYOZspV7m6WlCLte/hwbj+zFX9gPQZzD8ap
-	pi4XTQYgQjJGh3ouL8N4IT56I56uMGQ4HD45Sb1C9/j6R0HYFHygevyA61nrGq/IiDnzfCsGxZwVY
-	VpoHSH6eukzjKjxHjWsZoFBOs5JQ/dk8DMBMqbSMjP4MsRrFAiEXyw5pkR7KiFC7Rwfs79wyaJGtC
-	mo6Lax5+emkXOuxFSCqkWcciRaArCjFZy1dSzm6G/Qdx3vG+AhZNqoEYHleSh0uT9F3e2qv2M1ZTG
-	N54+CzBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uSIjHQyxvuiMYpm126xyxG1Zci+DFvN4cs1bYgkFaNU=; b=Zq6gk9BlpIqLGUG5XR0omjo5c8
+	KCnIueyQTX+uQVmI2xK5z4NBAqPPwRrNpc/6hDW/w2KDofwpqELfzRSG/MdwXC1N3OlUP5ct0D+sT
+	ZhFobqNgHC3mZFaQSpeDJVV9jekrHnY8PqAvxYxOD75yrOphrBAJJi/+COkOQuuLlMe8iZfbME6wg
+	ucp/XTKKE2rG0NhZ05jKIHXzs+bp+3SZw7eME4le+H90DJ0gmqBDDSXFo6PXWpwLBtEZaHcDsFdH0
+	ddueamT9YCD8cNp/a1P3DCadZ0wxNauAAD7SC+10GydnFr3RJPiB+PDG3bht9NnfjqV6X9DDXvxGh
+	C7HQq1/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9zzL-002vkY-0o;
-	Mon, 04 Dec 2023 03:51:19 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1rA0K7-002x5s-3C;
+	Mon, 04 Dec 2023 04:12:47 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9zzG-002vi5-2l
+	id 1rA0K3-002x3Z-1Q
 	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Dec 2023 03:51:16 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-50bf898c43cso328762e87.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 03 Dec 2023 19:51:05 -0800 (PST)
+	Mon, 04 Dec 2023 04:12:45 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40bda47c489so19339755e9.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 03 Dec 2023 20:12:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701661864; x=1702266664; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0syhQ4FzCWigP5oJO4Kq1BAVvU372cUxnkG2YAyqM58=;
-        b=GB9vrnRyzPfyzl+cYnMoIrSxaONfUlmI+Quc90s3MZ9VsrjkYLMAOqmT+J68ga/YEi
-         uDRX9ypJW5g75D7y0OzzooXoVpiknUutyw0sjgQMDg3g1K5TjoVSH8XMtuYkMwXJh8O8
-         fHjJe6ItHuGsYlr5CyqXiewZQF9bKJIKn7wUM=
+        d=linaro.org; s=google; t=1701663159; x=1702267959; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=uSIjHQyxvuiMYpm126xyxG1Zci+DFvN4cs1bYgkFaNU=;
+        b=lF23c3iQV6C+lswMFGEVfFZtzUYqzp+tB0k3x3iUn49IFW/3Dn/ic1MkcLzVn1Cr4y
+         n1JC18fGvx7weD6FAbP2bzUbs9SN0YhY11d5cjZ3d4gVrI2zt04DdTqIRnpyX1zAdCk3
+         /fwUprdnT0Z6PP51qs1Y99yaeKZ5GZXBOz0hoY5ClEOQHKXqmP028c9VCeqC1utJIeU3
+         pf2pjXinzZhSrgWxv+539Ya6RX3zk7AEXShLcOh7rKzy/06rQMq0UaE7nX9iY/lgFXM2
+         I7QwXOmoiyMeDEIY3nXZEdfWEgS8uM5ptGWdaRwdyG1y2NkHM0HrLRk7PfO9+c3rZeWQ
+         noiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701661864; x=1702266664;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0syhQ4FzCWigP5oJO4Kq1BAVvU372cUxnkG2YAyqM58=;
-        b=rzeL65Mwq2QPrV5QtCw0/dTf+EHct7fpAJFVhRmOm6d0u+B9sXuut9rSJ0yjcwi5h0
-         YXrZjp5e0xuY0bjHdZVRrlTw3BldxSH4tRCF6cQd+3xiZUsAF8Gnx8kLaCGlwtI7T3pg
-         FI3gpFxtcP4nA7D26r8DiB8gylLTt/zRSYMDku75Z4yXqfb/V8WPa4Sj2HFLYi/agGb3
-         hSelyxqF6psEhAIV1aew/BAc30FWcCnIO76sZZqT+8D6xK1q2o7SmXhgo9OiFYDrvDBd
-         qMiKGDReS6XilysgElmT9mCA+LyHz88uHHxWP9RgvaYEZCO2YM7xzycmRyP1G6albkPA
-         q4FQ==
-X-Gm-Message-State: AOJu0YzkYuh7kaO8PCYw7xlvJ+kbJ8TOwnGUa4sNMZBiTdXnpMKwP7oS
-	HdBK+PsDFZbLBqEmy7dVBGqtTUUE9RgmHWtTgOdoHw==
-X-Google-Smtp-Source: AGHT+IFKsYDE6bCvMKPPAMA2dIf+GqREU669Z4KrunuaczAMtywnMiPr/oN9gXqxZlapAE/ft8JzDvA8aoYuNQ0xm+Y=
-X-Received: by 2002:ac2:48ae:0:b0:50b:f8e6:3786 with SMTP id
- u14-20020ac248ae000000b0050bf8e63786mr174325lfg.103.1701661864266; Sun, 03
- Dec 2023 19:51:04 -0800 (PST)
+        d=1e100.net; s=20230601; t=1701663159; x=1702267959;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uSIjHQyxvuiMYpm126xyxG1Zci+DFvN4cs1bYgkFaNU=;
+        b=C1hwLvb4EjmARtxUwzkHJY+zq84TiDYEXhBpjoWz0Zgni4pF7oFmRrVmqeJPjZu0Ht
+         km2v0WTBmM8oTUivdxG7ocxBAbEA41fmvABEvxglGoIEMvOzUBucmiScEQ5QBO5fUCnr
+         k2G+SHJve4locDPTqbuoTLpPc3n7WbIiVvSj3tAR/rbxmID5KZJop1RcnDLlumrHbGUT
+         N2IRJofSJckGhzjCtxJ9buzcYjJBnIsddtbTnhAXG+wCEDZ39S41jRGk9RUxcepy5k7U
+         PiK4GAQ6oZbSmEskDk1bM9LPX/QyLE/Svz+AVXNLT3+cMXO+OEmLjBA1z5r7tiISUQlV
+         0XWQ==
+X-Gm-Message-State: AOJu0YzvvfrzJX+/ltifRURdjfR58wOrMB6aEPposX4Q0UBtoEXs4nwx
+	eaxtwieXRcJirPINSoOZTQ94Fw==
+X-Google-Smtp-Source: AGHT+IFZ3Amq/8upC2zDw7bfGR8OHocro9buNNWJ73bfkCMwsGdKd3TsSUm4vWCIpdfHvwBaPhtIBA==
+X-Received: by 2002:a05:600c:3b1d:b0:40b:5e1e:cf9 with SMTP id m29-20020a05600c3b1d00b0040b5e1e0cf9mr1855181wms.52.1701663159222;
+        Sun, 03 Dec 2023 20:12:39 -0800 (PST)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id b19-20020a05600c4e1300b0040648217f4fsm17107376wmq.39.2023.12.03.20.12.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 03 Dec 2023 20:12:38 -0800 (PST)
+Date: Mon, 4 Dec 2023 07:12:35 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Andrey Konovalov <andreyknvl@gmail.com>,
+	"Liu, Yujie" <yujie.liu@intel.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>,
+	kernel test robot <lkp@intel.com>, Haibo Li <haibo.li@mediatek.com>,
+	linux-kernel@vger.kernel.org,
+	Andrey Ryabinin <ryabinin.a.a@gmail.com>,
+	Alexander Potapenko <glider@google.com>,
+	Dmitry Vyukov <dvyukov@google.com>,
+	Vincenzo Frascino <vincenzo.frascino@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kasan-dev@googlegroups.com, linux-mm@kvack.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, xiaoming.yu@mediatek.com
+Subject: Re: [PATCH] fix comparison of unsigned expression < 0
+Message-ID: <ecf38b22-ee64-41e5-b9b5-c32fc1cb57bc@moroto.mountain>
+References: <20231128075532.110251-1-haibo.li@mediatek.com>
+ <20231128172238.f80ed8dd74ab2a13eba33091@linux-foundation.org>
+ <CA+fCnZcLwXn6crGF1E1cY3TknMaUN=H8-_hp0-cC+s8-wj95PQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20231201070719.1229447-1-wenst@chromium.org> <20231201070719.1229447-7-wenst@chromium.org>
- <CAJMQK-iPT6p1izqQCHmJD2+E_RmnDKQfxsgMetnKtwNgLUmx1A@mail.gmail.com>
-In-Reply-To: <CAJMQK-iPT6p1izqQCHmJD2+E_RmnDKQfxsgMetnKtwNgLUmx1A@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 4 Dec 2023 11:50:53 +0800
-Message-ID: <CAGXv+5EpgGhBGWupsQ9oFSyMr-QTma1O38XOPYj2fZ5mpOYYhg@mail.gmail.com>
-Subject: Re: [PATCH v2 6/9] arm64: dts: mediatek: Add MT8186 Krabby platform
- based Tentacruel / Tentacool
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CA+fCnZcLwXn6crGF1E1cY3TknMaUN=H8-_hp0-cC+s8-wj95PQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231203_195114_892691_81710A3D 
-X-CRM114-Status: GOOD (  30.53  )
+X-CRM114-CacheID: sfid-20231203_201243_481489_32E6E20F 
+X-CRM114-Status: GOOD (  25.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,206 +105,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 2, 2023 at 9:45=E2=80=AFAM Hsin-Yi Wang <hsinyi@chromium.org> w=
-rote:
->
-> On Fri, Dec 1, 2023 at 5:39=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> =
-wrote:
+On Wed, Nov 29, 2023 at 04:01:47AM +0100, Andrey Konovalov wrote:
+> On Wed, Nov 29, 2023 at 2:22 AM Andrew Morton <akpm@linux-foundation.org> wrote:
 > >
-> > Tentacruel and Tentacool are MT8186 based Chromebooks based on the
-> > Krabby design.
+> > On Tue, 28 Nov 2023 15:55:32 +0800 Haibo Li <haibo.li@mediatek.com> wrote:
 > >
-> > Tentacruel, also known as the ASUS Chromebook CM14 Flip CM1402F, is a
-> > convertible device with touchscreen and stylus.
+> > > Kernel test robot reported:
+> > >
+> > > '''
+> > > mm/kasan/report.c:637 kasan_non_canonical_hook() warn:
+> > > unsigned 'addr' is never less than zero.
+> > > '''
+> > > The KASAN_SHADOW_OFFSET is 0 on loongarch64.
+> > >
+> > > To fix it,check the KASAN_SHADOW_OFFSET before do comparison.
+> > >
+> > > --- a/mm/kasan/report.c
+> > > +++ b/mm/kasan/report.c
+> > > @@ -634,10 +634,10 @@ void kasan_non_canonical_hook(unsigned long addr)
+> > >  {
+> > >       unsigned long orig_addr;
+> > >       const char *bug_type;
+> > > -
+> > > +#if KASAN_SHADOW_OFFSET > 0
+> > >       if (addr < KASAN_SHADOW_OFFSET)
+> > >               return;
+> > > -
+> > > +#endif
 > >
-> > Tentacool, also known as the ASUS Chromebook CM14 CM1402C, is a laptop
-> > device. It does not have a touchscreen or stylus.
-> >
-> > The two devices both have two variants. The difference is a second
-> > source touchpad controller that shares the same address as the original=
-,
-> > but is incompatible.
-> >
-> > The extra SKU IDs for the Tentacruel devices map to different sensor
-> > components attached to the Embedded Controller. These are not visible
-> > to the main processor.
-> >
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> > Changes since v1:
-> > - Reorder SKU numbers in descending order.
-> > - Fixed pinconfig node names
-> > - Moved pinctrl-* properties after interrupts-*
-> > - Switched to interrupts-extended for external components
-> > - Marked ADSP as explicitly disabled, with a comment explaining that it
-> >   stalls the system
-> > - Renamed "touchpad" to "trackpad"
-> > - Dropped bogus "no-laneswap" property from it6505 node
-> > - Moved "realtek,jd-src" property to after all the regulator supplies
-> > - Switched to macros for MT6366 regulator "regulator-allowed-modes"
-> > - Renamed "vgpu" regulator name to allow coupling, with a comment
-> >   containing the name used in the design
-> > - Renamed "cr50" node name to "tpm"
-> > - Moved trackpad_pins reference up to i2c2; workaround for second sourc=
-e
-> >   component resource sharing.
-> > - Fix copyright year
-> > - Fixed touchscreen supply name
-> >
-> >  arch/arm64/boot/dts/mediatek/Makefile         |    4 +
-> >  .../dts/mediatek/mt8186-corsola-krabby.dtsi   |  129 ++
-> >  .../mt8186-corsola-tentacool-sku327681.dts    |   57 +
-> >  .../mt8186-corsola-tentacool-sku327683.dts    |   26 +
-> >  .../mt8186-corsola-tentacruel-sku262144.dts   |   44 +
-> >  .../mt8186-corsola-tentacruel-sku262148.dts   |   28 +
-> >  .../boot/dts/mediatek/mt8186-corsola.dtsi     | 1719 +++++++++++++++++
-> >  7 files changed, 2007 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.=
-dtsi
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentaco=
-ol-sku327681.dts
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentaco=
-ol-sku327683.dts
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacr=
-uel-sku262144.dts
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacr=
-uel-sku262148.dts
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dt=
-s/mediatek/Makefile
-> > index e6e7592a3645..442af61b1305 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
->
-> <snip>
->
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku3=
-27683.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683=
-.dts
-> > new file mode 100644
-> > index 000000000000..2e4d8df978c1
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.d=
-ts
-> > @@ -0,0 +1,26 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright 2023 Google LLC
-> > + */
-> > +
-> > +#include "mt8186-corsola-tentacool-sku327681.dts"
-> > +
-> > +/ {
-> > +       compatible =3D "google,tentacruel-sku327683", "google,tentacrue=
-l", "mediatek,mt8186";
-> > +};
-> > +
-> > +/* This variant replaces only the touchpad controller. */
-> > +&i2c2 {
-> > +       /delete-node/ touchpad@15;
->
-> corsola.dtsi has this node named trackpad@15.
+> > We'd rather not add ugly ifdefs for a simple test like this.  If we
+> > replace "<" with "<=", does it fix?  I suspect that's wrong.
+> 
+> Changing the comparison into "<=" would be wrong.
+> 
 
-Thanks for spotting the error. Fixed in the next version.
+I would say that changing it to <= is seldom the correct thing.  I've
+wanted to make that trigger a warning as well.
 
-> > +
-> > +       touchpad@15 {
-> > +               pinctrl-names =3D "default";
-> > +               pinctrl-0 =3D <&trackpad_pin>;
+> But I actually don't think we need to fix anything here.
+> 
+> This issue looks quite close to a similar comparison with 0 issue
+> Linus shared his opinion on here:
+> 
+> https://lore.kernel.org/all/Pine.LNX.4.58.0411230958260.20993@ppc970.osdl.org/
+> 
+> I don't know if the common consensus with the regard to issues like
+> that changed since then. But if not, perhaps we can treat this kernel
+> test robot report as a false positive.
 
-Pinctrl also dropped in the next version.
+I would say that the consensus has changed somewhere around 2015 or
+so.  Unsigned comparisons to zero used to be one of the most common
+types of bugs in new code but now almost all subsystems have turned on
+the GCC warning for this.
 
-Same for mt8186-corsola-tentacruel-sku262148.dts.
+However, this is a Smatch warning and I agree with Linus on this.  For
+example, Smatch doesn't complain about the example code the Linus
+mentioned.
 
+	if (a < 0 || a > X)
 
-Thanks
-ChenYu
+And in this case, it's a one liner fix for me to add KASAN_SHADOW_OFFSET
+as an allowed macro and silence the warning.
 
-> > +               compatible =3D "hid-over-i2c";
-> > +               reg =3D <0x15>;
-> > +               interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> > +               hid-descr-addr =3D <0x0001>;
-> > +               vdd-supply =3D <&pp3300_s3>;
-> > +               wakeup-source;
-> > +       };
-> > +};
->
-> <snip>
->
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku=
-262148.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku2621=
-48.dts
-> > new file mode 100644
-> > index 000000000000..7841046084dc
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.=
-dts
-> > @@ -0,0 +1,28 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright 2023 Google LLC
-> > + */
-> > +
-> > +#include "mt8186-corsola-tentacruel-sku262144.dts"
-> > +
-> > +/ {
-> > +       compatible =3D "google,tentacruel-sku262151", "google,tentacrue=
-l-sku262150",
-> > +                    "google,tentacruel-sku262149", "google,tentacruel-=
-sku262148",
-> > +                    "google,tentacruel", "mediatek,mt8186";
-> > +};
-> > +
-> > +/* This variant replaces only the touchpad controller. */
-> > +&i2c2 {
-> > +       /delete-node/ touchpad@15;
-> > +
->
-> ditto.
->
-> > +       touchpad@15 {
-> > +               pinctrl-names =3D "default";
-> > +               pinctrl-0 =3D <&trackpad_pin>;
-> > +               compatible =3D "hid-over-i2c";
-> > +               reg =3D <0x15>;
-> > +               interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> > +               hid-descr-addr =3D <0x0001>;
-> > +               vdd-supply =3D <&pp3300_s3>;
-> > +               wakeup-source;
-> > +       };
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/ar=
-m64/boot/dts/mediatek/mt8186-corsola.dtsi
-> > new file mode 100644
-> > index 000000000000..c5446b18783d
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> > @@ -0,0 +1,1719 @@
->
-> <snip>
->
-> > +
-> > +&i2c2 {
-> > +       pinctrl-names =3D "default";
-> > +       /*
-> > +        * Trackpad pin put here to work around second source component=
-s
-> > +        * sharing the pinmux
-> > +        */
-> > +       pinctrl-0 =3D <&i2c2_pins>, <&trackpad_pin>;
-> > +       clock-frequency =3D <400000>;
-> > +       i2c-scl-internal-delay-ns =3D <10000>;
-> > +       status =3D "okay";
-> > +
-> > +       trackpad@15 {
-> > +               compatible =3D "elan,ekth3000";
-> > +               reg =3D <0x15>;
-> > +               interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> > +               vcc-supply =3D <&pp3300_s3>;
-> > +               wakeup-source;
-> > +       };
-> > +};
-> > +
->
-> <snip>
+regards,
+dan carpenter
 
