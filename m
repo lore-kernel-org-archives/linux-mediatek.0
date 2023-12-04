@@ -4,76 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB48C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 12:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22A06C10DC1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 12:13:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IAe9GaCJ0H5vY1B6g7SXdKDaasEFIEo0v3Vb6EsU02M=; b=Yn5VmN81/7YhPuahIgW9GlEtcj
-	iIJyQThSykgjnpFL6qGBOJ5tJa27tpTQZ9jP+Okl1SZLMyu/i0ln71hfOBaAZJ0/hOIp7bH0OLH1T
-	gHetbF9yk3JBTxLJurhB6aiHTN4XOgVdcZU7HPS7oe7IWKIaQ4491GV45ESVlyYX1Dp7Id9p0DclR
-	RwyrLMk/9npmFKMjHLcFsbw5pRWyZkjcQvmFPgwDm3X2eMC66FjHyK23FhveIqFzUGxKXnd1HgWOn
-	0Kr44Ebinni2iAtkU/f1jlEGY80viV7oCUAQrv3E3oA4LD3zi1HxqaQtMjzimpf/ioKlTHA7ioAxv
-	ODEWugbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x7zXb/wI8sXrzXXn7Rr9Mf4rhXO+J4kT8usSQBGUn0w=; b=r4KtQFuXvCZzAPg+2sw779mFMa
+	72/zEiPosvPamHHltuBwR8PQUqE2muYidX+IrND9QIhVzmGGgNETyLHqbJqEwa01PGvNkBJu1q80U
+	1zrOiYE11V+PVp0daapaubg04h4wDtkRnmsFE5mNfjL6PHZrxPPNBxqORi7uAIBsg7MAvyPFfQhE3
+	RlmrnhCBQ2DfgrJ896RT+SpBb4BcyG7NEVBqwTgO9gsrl0WLAg5uPvav7B9UvbXrqYlu1QA5XKwW5
+	kX6DOiea+Qtin9K0Urcrb4l87ZQesZTblFn96ZLjaF07VEzbS5BfebDo2XBh7F2bOSnpc7QQEzeAM
+	NDaGPhHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA7kr-003oM4-19;
-	Mon, 04 Dec 2023 12:08:53 +0000
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+	id 1rA7p5-003qtW-04;
+	Mon, 04 Dec 2023 12:13:15 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA7ko-003oIH-12
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Dec 2023 12:08:51 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id 46e09a7af769-6d81faeefc4so2372877a34.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 04 Dec 2023 04:08:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701691727; x=1702296527; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=IAe9GaCJ0H5vY1B6g7SXdKDaasEFIEo0v3Vb6EsU02M=;
-        b=Enz3rD5N/3nY7N+cECcLFJ1K+ac8v0j6ELFAlCuJiSAniBlqbXQIhJ2314Zl288XrM
-         9lYAlor6WgQXVBMwXo6wSP8DnWG15J5pnpBR8V5AFKcMhnoxJjFJc3U2JPmPF5AI8llu
-         09lG7pF/VnnM4T+rYLw3cUONuzXi82hWu7GBL1faDy01djJsTRYEEf1biWUU4I0q7Xcm
-         IEOFO8uHA7LcO02UeSifY9g3kLu//PKvc9urafDbRe2KzCb2L9sukBw/TbodDgtS+CIg
-         Arsk/zimVTzkuZy8An3PXvZrNgadzpNV/6oY7s+NoJ/vRMbhpgVxgYic+3FmregTi27k
-         vypA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701691727; x=1702296527;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IAe9GaCJ0H5vY1B6g7SXdKDaasEFIEo0v3Vb6EsU02M=;
-        b=nXKPiMF2AXqybnrAqyzQBoR/LdhAbadzkSVfkH/nJxnU1dAGTUEGvtBbehrK8Sicsr
-         IfeWtOuppvFou47INBWt0lFavgslZKGfm6IeJaXV8PwPJgy3FI5saGqgSivzJs5qGRNO
-         B6dCMNeQU9+IsiJBQqScHmdjRZ4HFWUbj1j8wpWJCidHcSTfGCtEcc4frTbqrzM2pQme
-         nSYJDUVD54LFVdmrGFh399M2+pPhlStfpB5IRPqDbZQo1NdqOzjxmrM1u7X/eDc0sN6l
-         j7nMtce0WzZHqLWbDRalJk7T0IkXsJ7dxEAsyFh92qeWitDRKLt2AIpFBe6MhMxChQjK
-         wTbg==
-X-Gm-Message-State: AOJu0YyioaNT35DK3iaKGGXVYi2jSRaTj6ot+n+c9qgjPXahkp8Vgw+9
-	5AspRSShjjW3G+HQ5haNan5fMydTDPcjuAsvjNyt/g==
-X-Google-Smtp-Source: AGHT+IGpxhG9ncEHtpz4tZmgtmPIk7IOrxR6wBSf/VSlVIlLP3HqVCGl9n1/Gfb0hG0y3KjTRRQ8IEEqRzi+yhZ9cYg=
-X-Received: by 2002:a9d:75cc:0:b0:6d9:9e2f:e743 with SMTP id
- c12-20020a9d75cc000000b006d99e2fe743mr1360919otl.16.1701691727048; Mon, 04
- Dec 2023 04:08:47 -0800 (PST)
+	id 1rA7p0-003qpF-1w;
+	Mon, 04 Dec 2023 12:13:12 +0000
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C0E1766022D1;
+	Mon,  4 Dec 2023 12:13:06 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701691988;
+	bh=tYd+006RlkhE3PTruMujBJkOUxyMROXE4vAkt2e6WD4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=An6NqerwwhgGfO8PGeiYcMYDkkuGon45hnJi/L5mKU/QUdg8fXvHweDyu5ouS377l
+	 MKZ6u1N7V2WC5ff3OfmXddClu7wle9xb4uwQ0yBIGJ/TuJs2rZBRt5Vs3yvhbwLVll
+	 K6x+zpiw3JjZkGiFIt82WgE3fbPpLsR2oN+Wzna4S+YOr805gK0P8Ky6C8jdfl3x9n
+	 r+oyS8WKSetKFh7uLlkoA2V/I8OEmpjA1T7RDXZiNd+khnQDR43UO15PtIPpI4f9hy
+	 7d2YQy5e/pSWd35k0m8RC2l2iw2xccJQkAGzfcDK9oNhacXJFDNCfkDdvvd3ZiSj8D
+	 RDMhW/jizj9EA==
+Message-ID: <d03bf5b8-d4d7-4080-9af4-17b31ef6c72b@collabora.com>
+Date: Mon, 4 Dec 2023 13:13:04 +0100
 MIME-Version: 1.0
-From: Naresh Kamboju <naresh.kamboju@linaro.org>
-Date: Mon, 4 Dec 2023 17:38:36 +0530
-Message-ID: <CA+G9fYs1g2Pt=DQeaJC+3ZJTeMwKAs9GuGJ9k6BcwKwEXcn5kQ@mail.gmail.com>
-Subject: arm: gcc-8: drivers/pinctrl/mediatek/../core.h:211:21: error:
- initializer element is not constant (struct group_desc)
-To: Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	open list <linux-kernel@vger.kernel.org>, lkft-triage@lists.linaro.org, 
-	Linux Regressions <regressions@lists.linux.dev>, 
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
-	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, sean.wang@kernel.org, 
-	Arnd Bergmann <arnd@arndb.de>, Russell King - ARM Linux <linux@armlinux.org.uk>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] docs: dt-bindings: add DTS Coding Style document
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Andrew Davis <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>,
+ Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>,
+ Chen-Yu Tsai <wens@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Jonathan Corbet <corbet@lwn.net>, Michal Simek <michal.simek@amd.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
+ Olof Johansson <olof@lixom.net>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <zajec5@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ workflows@vger.kernel.org, linux-doc@vger.kernel.org
+References: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_040850_357233_D56408C6 
-X-CRM114-Status: UNSURE (   5.32  )
+X-CRM114-CacheID: sfid-20231204_041310_844130_41ED4346 
+X-CRM114-Status: UNSURE (   7.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,41 +93,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Following build errors noticed on Linux next-20231204 tag with gcc-8 toolchain
-for arm and arm64.
+Il 03/12/23 18:46, Krzysztof Kozlowski ha scritto:
+> Document preferred coding style for Devicetree sources (DTS and DTSI),
+> to bring consistency among all (sub)architectures and ease in reviews.
+> 
+> Cc: Andrew Davis <afd@ti.com>
+> cc: Andrew Lunn <andrew@lunn.ch>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: Arnd Bergmann <arnd@arndb.de>
+> Cc: Bjorn Andersson <andersson@kernel.org>
+> Cc: Chen-Yu Tsai <wens@kernel.org>
+> Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> Cc: Jonathan Corbet <corbet@lwn.net>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Michal Simek <michal.simek@amd.com>
+> Cc: Neil Armstrong <neil.armstrong@linaro.org>
+> Cc: Nishanth Menon <nm@ti.com>
+> Cc: Olof Johansson <olof@lixom.net>
+> Cc: Rafał Miłecki <zajec5@gmail.com>
+> Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Acked-by: Konrad Dybcio <konradybcio@kernel.org>
+> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
 
-## Test Regressions (compared to next-20231201)
-* arm, build
-  - gcc-8-defconfig
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-* arm64, build
-  - gcc-8-defconfig
-
-Reported-by: Linux Kernel Functional Testing <lkft@linaro.org>
-
-Build log arm and arm64:
-------------
-In file included from drivers/pinctrl/mediatek/pinctrl-moore.h:21,
-                 from drivers/pinctrl/mediatek/pinctrl-mt7623.c:11:
-drivers/pinctrl/mediatek/../core.h:211:21: error: initializer element
-is not constant
- (struct group_desc) {      \
-                     ^
-
-Links:
-- https://storage.tuxsuite.com/public/linaro/lkft/builds/2Z43zPIMN6vxVKd9rKJFdOKXpox/
- - https://qa-reports.linaro.org/lkft/linux-next-master/build/next-20231204/testrun/21472198/suite/build/test/gcc-8-defconfig/details/
- - https://qa-reports.linaro.org/lkft/linux-next-master/build/next-20231204/testrun/21472585/suite/build/test/gcc-8-defconfig/details/
- - https://qa-reports.linaro.org/lkft/linux-next-master/build/next-20231204/testrun/21472800/suite/build/test/gcc-8-defconfig/history/
-
-Steps to reproduce:
----------------
-# tuxmake --runtime podman --target-arch arm64 --toolchain gcc-8
---kconfig defconfig
-
-
-
---
-Linaro LKFT
-https://lkft.linaro.org
+Thumbs up!
 
