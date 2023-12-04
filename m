@@ -4,86 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CDC0C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 09:53:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E89DC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Dec 2023 11:40:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:In-Reply-To:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Sw2wDAzOyTaV2v/SIIuLpKBDgRQLTXxAh503/koeao=; b=18p2ad+NHLek6TxqH3lTMk5A+c
-	G8rmYEZgUk/bypNmPFvy/fbsKdgtX0xqa30knx8exKW0FSgpsBAOexxuoej/bDEHVcvmqWRSIBg6z
-	H92xZyCmTs8qhERWek2AjxYWjxyoljUxfL5Wh9wH7LpWw3+6zMDnL2qRTQzKc/ZB2qxw5WC+4536M
-	4DTt3mXvJG4tJTsleseix5r5YWa2jFIsgwmR5TuCNY625CE6UpbFdk/cyoT+vRjST3VXXOqx7KFCT
-	AnF3ZUrXAAXFyOB5ZdkJlrf5+PSsRnTR9QyIU3frBXWY3JpVyhxm8xj9zh012GO5U5Baogb3YdyAA
-	o7OXnosQ==;
+	bh=qoSlDlAlmyMO1fD/zESFlbZVGoR0yDyo5RovorKXLGU=; b=viKFUTz3t8wbiWDRGm4JRLE2KE
+	F8hYIV1IMXcMGPI5O75AV1ezWh5jnFmSzAfsi1MOgm4RxYA2d6CUTh4w2GPw5k+/hCj4g6Yd2wbrp
+	3wJzJ3N29oCJ/ZNw1xpoRy5XQD5jZ6pVEDj/tdvihdplLp3YJOY4Lv4s0DiDqPi6gPsbEEsMZqPQt
+	wipJ1a4Hu19CYTFwuAg9Vfce3vA9pNjf7In/BXWbdrKsEroS0fJmkHU1vKBd/+9S4P0pVbtTJAcKC
+	9wLGz8wsZ0ESq3QaUBEq7Sz8AeJZ0+eAw3RzeAj+o5AR7DU1WnQgA3jlfbn5WlbRf8lhWyuZHY+GS
+	zpyv0NwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA5dc-003T17-1B;
-	Mon, 04 Dec 2023 09:53:16 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1rA7Ji-003fHR-2d;
+	Mon, 04 Dec 2023 11:40:50 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA5dV-003Sze-2w
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Dec 2023 09:53:14 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-50bf2d9b3fdso1225940e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 04 Dec 2023 01:53:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701683588; x=1702288388; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7Sw2wDAzOyTaV2v/SIIuLpKBDgRQLTXxAh503/koeao=;
-        b=bx6PhElUTBF4guxr/WksvXlvPNqKdwhlCTdwumA+JGaEIrnEJR8Fxp9XpUM8ECD/d8
-         pyrTP76XGlUTecAKSB8t7d8EwDy+hhfO3o/uYXpFG8g8hxmJ54qlpi2eod28aVgQnNAw
-         Pff4OW5wwaFrebAlgcQMxclfpsbdVIFQ6NFW4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701683588; x=1702288388;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7Sw2wDAzOyTaV2v/SIIuLpKBDgRQLTXxAh503/koeao=;
-        b=hv5WHQLNa54o4f/CfF+QNcfOtJrtZdNF/zic96zPwVrHnwngs5Kl7/HK5EE2PFBnz4
-         X+VDxZ5zFeBOe4gs1i06IH/v1N0kdSRI7Fx/XglIcvvNr2qzvqrJ8Gw7b9mwG4g1fbU9
-         1xKt4kfYEOwld+nfZBdsoj6C0yayLUqry/IFsm/PRMHJ1N9Y3TLFn2dhRJ9j+Cm4S0TI
-         eCec84vk6v+rPOJtpfMD4avWPhEn2vfzgNs9KwLynsU4NCuOuK5L6Gorb8gzgexgmkDJ
-         HJiasy/KzI5cZSExM0RZkyM3CwkKQvKVUt3eqY9UU1dyMUCcRpl/6YOrj5DhYOUrZh4b
-         PUhg==
-X-Gm-Message-State: AOJu0YzonOqTMF1O+2e/7JZnUOtsQ7u71Nz4Piu5iTbmyJ+o/nLUGEJW
-	Zwg/NXz27Mjf1rz1qEEJTPpLhnt0l4tBLTKnUZZepQ==
-X-Google-Smtp-Source: AGHT+IEvL8RaTWa1ZFgUIvfsRdBV2cbFeK4sFsWu03VMIj2v3E7mis/tTb/dszn6AyZzTF3YGJB7TmnmaHtaiyGOTzA=
-X-Received: by 2002:a19:5f1c:0:b0:50b:f012:fd18 with SMTP id
- t28-20020a195f1c000000b0050bf012fd18mr1102680lfb.12.1701683587802; Mon, 04
- Dec 2023 01:53:07 -0800 (PST)
+	id 1rA7Ja-003fGN-0m;
+	Mon, 04 Dec 2023 11:40:47 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20231204114040euoutp02292a0127f27ad873afe25d97659f31a9~dnhNdbYt51544815448euoutp02O;
+	Mon,  4 Dec 2023 11:40:40 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20231204114040euoutp02292a0127f27ad873afe25d97659f31a9~dnhNdbYt51544815448euoutp02O
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1701690040;
+	bh=qoSlDlAlmyMO1fD/zESFlbZVGoR0yDyo5RovorKXLGU=;
+	h=Date:From:Subject:To:Cc:In-Reply-To:References:From;
+	b=ZiElWQBWoN/gMkxnTbl4EIJxJaE/qWzC15BE8zltHkDgiAkzy4jcRQQtE89lZJRFE
+	 y0CAFQMH/8r3YrWb6vhMFfNnjlRU4OQG3F1D5CcUm6baAXYgCF3nBRHZq0UuUfINyM
+	 b9rZMUmPEL+y10xZs8D85HkEGozViYSZ4VZGZ/5w=
+Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTP id
+	20231204114040eucas1p22e4e9d56a0f68b1e4d48c13f2cc13892~dnhNR4TKl1052710527eucas1p2C;
+	Mon,  4 Dec 2023 11:40:40 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+	eusmges2new.samsung.com (EUCPMTA) with SMTP id 47.26.09814.7BABD656; Mon,  4
+	Dec 2023 11:40:39 +0000 (GMT)
+Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20231204114039eucas1p29c6f8a162191e58ff658d3a1c44429bf~dnhM11-r21052710527eucas1p2B;
+	Mon,  4 Dec 2023 11:40:39 +0000 (GMT)
+Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
+	eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
+	20231204114039eusmtrp2aa892cf8db8bcd9cc62f775c443bc043~dnhMyrE4x3101831018eusmtrp2K;
+	Mon,  4 Dec 2023 11:40:39 +0000 (GMT)
+X-AuditID: cbfec7f4-711ff70000002656-67-656dbab7ff2e
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+	eusmgms1.samsung.com (EUCPMTA) with SMTP id 1A.00.09146.7BABD656; Mon,  4
+	Dec 2023 11:40:39 +0000 (GMT)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20231204114037eusmtip1af7cdf53ae21703af228f6e129f28260~dnhLNXjH_2303523035eusmtip1g;
+	Mon,  4 Dec 2023 11:40:37 +0000 (GMT)
+Message-ID: <9e4e65de-7234-4234-8091-796277a1f1c5@samsung.com>
+Date: Mon, 4 Dec 2023 12:40:38 +0100
 MIME-Version: 1.0
-References: <20231128084236.157152-1-wenst@chromium.org> <20231128084236.157152-3-wenst@chromium.org>
- <CAD=FV=U_+iQJtV0Wii89DQT1V_fJCeS9wcqA8EJAs-hmmmLLLg@mail.gmail.com>
-In-Reply-To: <CAD=FV=U_+iQJtV0Wii89DQT1V_fJCeS9wcqA8EJAs-hmmmLLLg@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 4 Dec 2023 17:52:36 +0800
-Message-ID: <CAGXv+5EpA531O1tW=h1RvK34+LMvtdve3=cNmfN=2+9t1jL_bA@mail.gmail.com>
-Subject: Re: [RFC PATCH v3 2/5] i2c: of: Introduce component probe function
-To: Doug Anderson <dianders@chromium.org>, Wolfram Sang <wsa@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	andriy.shevchenko@linux.intel.com, Jiri Kosina <jikos@kernel.org>, 
-	linus.walleij@linaro.org, broonie@kernel.org, gregkh@linuxfoundation.org, 
-	hdegoede@redhat.com, james.clark@arm.com, james@equiv.tech, 
-	keescook@chromium.org, rafael@kernel.org, tglx@linutronix.de, 
-	Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org, linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: Re: [PATCH v4 12/23] pinctrl: mediatek: Make use of
+ PINCTRL_GROUP_DESC()
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Linus Walleij
+	<linus.walleij@linaro.org>, Bartosz Golaszewski
+	<bartosz.golaszewski@linaro.org>, Rasmus Villemoes
+	<linux@rasmusvillemoes.dk>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?=
+	<j.neuschaefer@gmx.net>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+	<u.kleine-koenig@pengutronix.de>, Geert Uytterhoeven
+	<geert+renesas@glider.be>, Biju Das <biju.das.jz@bp.renesas.com>, Claudiu
+	Beznea <claudiu.beznea.uj@bp.renesas.com>, Jianlong Huang
+	<jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+	linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org
+Cc: Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list
+	<bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng
+	<aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, Shawn Guo
+	<shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, Pengutronix Kernel Team
+	<kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, NXP Linux
+	Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, Paul Cercueil
+	<paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
+	Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Emil Renner Berthing
+	<kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>, Krzysztof Kozlowski
+	<krzk@kernel.org>
+Content-Language: en-US
+In-Reply-To: <20231129161459.1002323-13-andriy.shevchenko@linux.intel.com>
+Content-Transfer-Encoding: 7bit
+X-Brightmail-Tracker: H4sIAAAAAAAAA01Ta0xTZxjed87hnAOueKxsfEEJCQGjC3JZAL8NgmOT5EzdJpOxuBs2coZC
+	uaSF1REWG0GETgTacStQNBCuCqzcK6bKBg0wLlZhpEMZ4yJggHUSN0B0tgc3/j3v+z7P97zP
+	m3w0LlwgnegzcYmcJE4kdiXtiNae1cH9bbpYznvDfAANTq0TaCVPh6PWjECUdb4AQ9VPrmHo
+	elY3gTTtTzD0fXedDZoc+QiVFisBMl7owlDJ+TYKZa72AzR9rQig2rwOAmWo2gg0NNRIoZuP
+	Wii0rBmj0A9PqzCknRq1Qbn6AQo1lT0FSLFWg6O7uhIS3U29A1CmtgWglvklDE2pNSTqS5sj
+	UHa5kUB1g7dJNFPURKKNNi2BluqmAVLVv4/mmh3Rb7kq8M4etmaumGLVEwMkW2e8SLIZl58R
+	bO7AfrZDfZ9iy7V6ki3vnMdYbW0myY6PdpKspjeUbao4xw4VXgXsj0vtGJu94c0OK2KOCT+z
+	C4zkxGe+4SReQSftTqfNPiQTftp+tnW9gZKDvlcVwJaGjC+c1KzaKIAdLWSqAbxU30jwxQqA
+	Ff/c35w8BnAmdYN4KZFf7yD5QRWAFxYqMb4wAzhSc+sFi6YFTBB8oAIWAcG4wZnVAdKCBcwO
+	2Fs0bX3oNcYFTpgKKQsmGR+oWFRYOTuZ4/Dn8QdWAwfmFxLeK222GuBMDgkbeu5Z1TjjCE3T
+	ZZgF2zKH4aRy1obvu8C2xRLcIoCMfBvMX36+ufchqDT0kzzeCRcMzRSPd8PnHWUYL7gI4JX1
+	ic0iB0D5QxPgWQFwfHCNtGTDmX2wQefFt4PhLd2yNTJk7OHY4g5+CXuobC3A+bYAZqQLefYe
+	qDbU/2d7e9iI5wBX9ZbDqLdEU2+Jo/7f9wogaoEjlySNjeKkb8ZxMk+pKFaaFBfleSo+Vgte
+	fIf+Z4aVdlC1YPbsAhgNugCkcVcHgcYUwwkFkaJvkzlJfIQkScxJu8AumnB1FLhHunBCJkqU
+	yMVwXAIneTnFaFsnOVZj2q7sVh4Z85jpOfFK/Agnya/3EZszsuTy90aDvgpwp+cpMjPiQOhs
+	aVjKTffdic75Rx8Fiw4ZZB59Rv1JcU9kchf3eW/649+VMb5npz/9YFdIxK8uDmF3ZI3V7wZM
+	pWDLxUkHjc4H3ZzsQ4ZLR+3OReQ3OPVFJ4evb4CpTwL9C3NEl96O2isPNZRXJvy1z+DjvLJU
+	o0+LNoccSdSd8vvicGXn8VWpSe3fd/RPuUtHoD7ULXjc71gWIwv/o7TZIUUm/rgiKvDyiWy3
+	70K8C0zFVV+m9/ukKh23JYf7/e3lm2f8Gn3YemNNp/IQ+5r1BWGvJ/vfoIvfqotURbP1NriT
+	2ZWQnhb5vIFLpKJ/Ac8KBzB9BAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Sf1CTdRzH+T579mxQq6eJ7HtcRO66PPGY29zoixHVJfVQaSZedmhHU5/A
+	Y2PcNrDsrIVU41GkbZJj4KjwFwxkbcCALHKhHHiAwsURTBAYAwowI7yQyQWs7vjvdZ/P+/35
+	fO5zby6L/4AdyT2cpaM1WQqlkAjDbyy13Y51N6to8bwXoq6xRRz9XdzMQg2GBFSYdwZDl+5X
+	Y6im8BqObI33MXTimp2NRn59C50tNQHU87kHQ2V5bg4qWLgBkK+6BKCq4iYcGcxuHHV3Ozjo
+	xz/qOeiurZ+DTgcuYsg51sdGxpZODnKVBwBiHlSyUG9zGYF6j98CqMBZD1D91CyGxqw2AnXk
+	T+KoqKIHR/auqwQaL3ER6KHbiaNZuw8g8+VkNFknQINGM3jpWapyspRDWYc7Ccre8yVBGU4t
+	4ZSxM5Zqst7mUBXOFoKquDKFUc6qAoLy9l0hKFv725Tr3KdUt+VbQH0/24hRRQ/F1E0mcxc/
+	VZSgUefo6Kcz1FrdC8J9EiQVSeKRSCqLF0m2PvfeNqlcuCUx4RCtPJxLa7Ykvi/KyPdPENm/
+	PP5hw2ItRw86HmVAKBeSMqivaSIYEMblk+cBHG0rx4ONJ2H713p2kNfBQB/zn+gugIsDo4AB
+	XC6PTIRDZrCiwcln4PhCJ7HCPPIJ2F7iW52znoyGwwMWzgoTpAQyM8yqZh2ZAlu9Q6scTnYR
+	0GhJW2EWaSLg8Jg0uMsA4NVbJ7FgQwAHfOWrHEq+DkdMfnawHgeZegYEORq6Z8pYXwG+dc0d
+	1jV26xqLdY3lG4BXgXA6R6tKV2klIq1Cpc3JShcdVKucYDmEDdcXXI3A9vs9kQdgXOABkMsS
+	hvNsA5k0n3dI8dFRWqNO0+Qoaa0HyJefYWRFrj+oXk5xli5NEieWS2Rx8WJ5fNxWoYCXnG1Q
+	8Ml0hY7OpOlsWvO/D+OGRuox9lL3u7uVNdKW0rCZs+7vilJvxso29qeM7KhLntjwmqPK8lf2
+	xiOj4qN5S09FDbp/cM+fsCd9cuQNSWrl5tqXDR6f75jjz4shJrKxS2baMdi2Vxohn5tXO1oP
+	6PIddz6uLX5Tb88P+BsDnL3nXIK6uk61xJ9k3u5Mn1OcDszlbst1CKriJl717vlg/2M7LYk7
+	W8v4l6XdPp/hWLUs5foj4v3eL2Yu9LuizpMXPBFNuy8l9b4yrRrMihiPjqmImRhNn/+tY1fI
+	0ELE9uMgtbmwuta/iR7+h+39Wft81FTIHlgUual8X8p02b2ozfq66QMbfjqDFU++46NPmV50
+	f9anvENUCnFthkISw9JoFf8CmRY9FQ0EAAA=
+X-CMS-MailID: 20231204114039eucas1p29c6f8a162191e58ff658d3a1c44429bf
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20231204114039eucas1p29c6f8a162191e58ff658d3a1c44429bf
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20231204114039eucas1p29c6f8a162191e58ff658d3a1c44429bf
+References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
+	<20231129161459.1002323-13-andriy.shevchenko@linux.intel.com>
+	<CGME20231204114039eucas1p29c6f8a162191e58ff658d3a1c44429bf@eucas1p2.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_015310_140398_8BE82ADB 
-X-CRM114-Status: GOOD (  66.60  )
+X-CRM114-CacheID: sfid-20231204_034042_926935_CE9BA3BC 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,252 +162,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 2, 2023 at 8:58=E2=80=AFAM Doug Anderson <dianders@chromium.org=
-> wrote:
+On 29.11.2023 17:06, Andy Shevchenko wrote:
+> Make use of PINCTRL_GROUP_DESC() instead of open coding it.
 >
-> Hi,
+> Signed-off-by: Andy Shevchenko<andriy.shevchenko@linux.intel.com>
+
+This patch landed in linux-next as commit 1949e4630c3b ("pinctrl: 
+mediatek: Make use of PINCTRL_GROUP_DESC()"). Unfortunately it causes a 
+build break of ARM64 arch with standard defconfig.
+
+> ---
+>   drivers/pinctrl/mediatek/pinctrl-moore.h | 7 +------
+>   drivers/pinctrl/mediatek/pinctrl-paris.h | 7 +------
+>   2 files changed, 2 insertions(+), 12 deletions(-)
 >
-> On Tue, Nov 28, 2023 at 12:45=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org=
-> wrote:
-> >
-> > @@ -217,4 +217,114 @@ static int of_i2c_notify(struct notifier_block *n=
-b, unsigned long action,
-> >  struct notifier_block i2c_of_notifier =3D {
-> >         .notifier_call =3D of_i2c_notify,
-> >  };
-> > +
-> > +/*
-> > + * Some devices, such as Google Hana Chromebooks, are produced by mult=
-iple
-> > + * vendors each using their preferred components. Such components are =
-all
-> > + * in the device tree. Instead of having all of them enabled and havin=
-g each
-> > + * driver separately try and probe its device while fighting over shar=
-ed
-> > + * resources, they can be marked as "fail-needs-probe" and have a prob=
-er
-> > + * figure out which one is actually used beforehand.
-> > + *
-> > + * This prober assumes such drop-in parts are on the same I2C bus, hav=
-e
-> > + * non-conflicting addresses, and can be directly probed by seeing whi=
-ch
-> > + * address responds.
-> > + *
-> > + * TODO:
-> > + * - Support handling common regulators and GPIOs.
->
-> IMO you should prototype how you're going to handle regulators and
-> GPIOs before finalizing the design. I was going to write that you
-> should just document that it was up to the caller to power things up
-> before calling this function, but then I realized that the caller
-> would have to duplicate much of this function in order to do so. In
-> the very least they'd have to find the nodes of the relevant devices
-> so that they could grab regulators and/or GPIOs. In order to avoid
-> this duplication, would the design need to change? Perhaps this would
-> be as simple as adding a callback function here that's called with all
-> of the nodes before probing? If that's right, it would be nice to have
-> that callback from the beginning so we don't need two variants of the
-> function...
-
-So I think I can prototype designs with one GPIO and multiple regulators,
-assuming each node has the same number of both? At least they should if
-they're on the same connector.
-
-More than one GPIO probably means there are some ordering and timing
-constraints, and won't be as generic.
-
-> > + * - Support I2C muxes
-> > + */
-> > +
-> > +/**
-> > + * i2c_of_probe_component() - probe for devices of "type" on the same =
-i2c bus
-> > + * @dev: &struct device of the caller, only used for dev_* printk mess=
-ages
-> > + * @type: a string to match the device node name prefix to probe for
-> > + *
-> > + * Probe for possible I2C components of the same "type" on the same I2=
-C bus
-> > + * that have their status marked as "fail".
->
-> Should document these current limitations with the code:
->
-> * Assumes that across the entire device tree the only instances of
-> nodes named "type" are ones we're trying to handle second sourcing
-> for. In other words if we're searching for "touchscreen" then all
-> nodes named "touchscreen" are ones that need to be probed.
->
-> * Assumes that there is exactly one group of each "type". In other
-> words, if we're searching for "touchscreen" then exactly one
-> touchscreen will be enabled across the whole tree.
->
-> Obviously those could be relaxed with more code, but that's the
-> current limitation and it makes the code easier to understand with
-> that context.
-
-Done.
-
-> > + */
-> > +int i2c_of_probe_component(struct device *dev, const char *type)
-> > +{
-> > +       struct device_node *node, *i2c_node;
-> > +       struct i2c_adapter *i2c;
-> > +       struct of_changeset *ocs =3D NULL;
-> > +       int ret;
-> > +
-> > +       node =3D of_find_node_by_name(NULL, type);
-> > +       if (!node)
-> > +               return dev_err_probe(dev, -ENODEV, "Could not find %s d=
-evice node\n", type);
-> > +
-> > +       i2c_node =3D of_get_next_parent(node);
-> > +       if (!of_node_name_eq(i2c_node, "i2c")) {
-> > +               of_node_put(i2c_node);
-> > +               return dev_err_probe(dev, -EINVAL, "%s device isn't on =
-I2C bus\n", type);
-> > +       }
->
-> Personally I'd skip checking for the "i2c" node name. Just rely on
-> of_get_i2c_adapter_by_node() returning an error.
->
-> Oh, I guess you have this because you need to tell the difference
-> between -EINVAL and -EPROBE_DEFER? It feels like instead you could use
-> the firmware node to lookup a device more generically. If a device
-> isn't associated with the node at all then you return -EPROBE_DEFER.
-> Otherwise if it's associated but not an i2c device then you return
-> -EINVAL. I guess maybe it doesn't make a huge difference, but it
-> somehow feels less fragile than relying on the node name being "i2c".
-> Maybe I just haven't had enough DT Kool-Aid.
-
-The current way it's written is to do the device tree structure checks
-first before doing any driver model access. Also it needs to tell
-(as you mentioned later) if the i2c adapter is "disabled" or just not
-probed yet.
-
-> One thing this made me wonder is if of_get_i2c_adapter_by_node() is
-> race free anyway. Can't that return you a device that hasn't finished
-> probing yet? I see:
->
-> - i2c_register_adapter()
-> -- device_register()
-> --- device_add()
-> ---- bus_add_device()
-> ---- bus_probe_device()
->
-> As soon as bus_add_device() is called then it will be in
-> "klist_devices" and I believe i2c_find_device_by_fwnode() will be able
-> to find it. However, it hasn't necessarily been probed yet. I think
-> that means calling i2c_smbus_xfer() on it might not work yet...
-
-It does look like there's a small window between the device_register()
-and when the i2c adapter is ready, i.e. can't bail out on an error.
-
-I guess it needs either a flag or some reordering of the code.
-
-It looks like Wolfram will be at OSS JP. I'll try and have a chat about
-the whole thing.
-
-> One last thing is that you should check to make sure that the i2c
-> adapter is not marked "disabled". ...otherwise I think you'd end up
-> constantly trying again and again...
-
-Yeah. I added a check for that as well.
-
-> > +       for_each_child_of_node(i2c_node, node) {
-> > +               if (!of_node_name_prefix(node, type))
-> > +                       continue;
-> > +               if (of_device_is_available(node)) {
-> > +                       /*
-> > +                        * Device tree has component already enabled. E=
-ither the
-> > +                        * device tree isn't supported or we already pr=
-obed once.
->
-> I guess the "already probed once" is somewhat expected if more than
-> one type of second source component is defined and we end up deferring
-> the second one? We don't undo the resolution of the first one and
-> probably don't keep track of the fact that it succeeded?
-
-That's right.
-
-> Probably should be added to the function comments that this is an
-> expected/normal case?
-
-Added to the Return: section of the kernel-doc.
-
-> > +                        */
-> > +                       of_node_put(node);
-> > +                       of_node_put(i2c_node);
-> > +                       return 0;
-> > +               }
-> > +       }
-> > +
-> > +       i2c =3D of_get_i2c_adapter_by_node(i2c_node);
-> > +       if (!i2c) {
-> > +               of_node_put(i2c_node);
-> > +               return dev_err_probe(dev, -EPROBE_DEFER, "Couldn't get =
-I2C adapter\n");
-> > +       }
-> > +
-> > +       ret =3D 0;
->
-> Why init ret to 0?
-
-It was requested by Andy. I believe the reason was having the initial
-value used for bailout closer was better.
-
-> > +       for_each_child_of_node(i2c_node, node) {
-> > +               union i2c_smbus_data data;
-> > +               u32 addr;
-> > +
-> > +               if (!of_node_name_prefix(node, type))
-> > +                       continue;
-> > +               if (of_property_read_u32(node, "reg", &addr))
-> > +                       continue;
-> > +               if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C=
-_SMBUS_BYTE, &data) < 0)
->
-> I'd be tempted to say that the caller should be able to pass in a
-> function pointer here so they could use an alternative method to probe
-> instead of i2c_smbus_xfer(), though you'd want to make it easy to
-> default to i2c_smbus_xfer(). I could imagine someone might need a
-> different way to probe. For instance if you had two touchscreens both
-> at the same "reg" but that had different "hid-descr-addr" then this
-> could be important.
-
-I'd say the only specific probable type is hid-i2c. And that could be
-generic enough that we could incorporate it here if we wanted. However
-I think we want to keep the initial version a bit simpler.
-
-> > +                       continue;
-> > +
->
-> Put the "break" right here. You've found the device and that was the
-> point of the loop.
-
-In its place we'd have an if (node) { <enable node> } block. I guess it
-makes it easier to read still?
-
-> Once you do that then the error handling makes a little more sense. It
-> was weird that the error handling was jumped through from inside the
-> loop...
->
->
-> > +               dev_info(dev, "Enabling %pOF\n", node);
-> > +
-> > +               ocs =3D kzalloc(sizeof(*ocs), GFP_KERNEL);
-> > +               if (!ocs) {
-> > +                       ret =3D -ENOMEM;
-> > +                       goto err_put_node;
->
-> I think this error path (and some others) miss "i2c_put_adapter()" and
-> "of_node_put(i2c_node)"
-
-Right. I'll check.
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.h b/drivers/pinctrl/mediatek/pinctrl-moore.h
+> index e1b4b82b9d3d..22ef1ffbcdcb 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-moore.h
+> +++ b/drivers/pinctrl/mediatek/pinctrl-moore.h
+> @@ -38,12 +38,7 @@
+>   	}
+>   
+>   #define PINCTRL_PIN_GROUP(name, id)			\
+> -	{						\
+> -		name,					\
+> -		id##_pins,				\
+> -		ARRAY_SIZE(id##_pins),			\
+> -		id##_funcs,				\
+> -	}
+> +	PINCTRL_GROUP_DESC(name, id##_pins, ARRAY_SIZE(id##_pins), id##_funcs)
+>   int mtk_moore_pinctrl_probe(struct platform_device *pdev,
+>   			    const struct mtk_pin_soc *soc);
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.h b/drivers/pinctrl/mediatek/pinctrl-paris.h
+> index 8762ac599329..f208a904c4a8 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.h
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.h
+> @@ -50,12 +50,7 @@
+>   	}
+>   
+>   #define PINCTRL_PIN_GROUP(name, id)			\
+> -	{						\
+> -		name,					\
+> -		id##_pins,				\
+> -		ARRAY_SIZE(id##_pins),			\
+> -		id##_funcs,				\
+> -	}
+> +	PINCTRL_GROUP_DESC(name, id##_pins, ARRAY_SIZE(id##_pins), id##_funcs)
+>   
+>   int mtk_paris_pinctrl_probe(struct platform_device *pdev);
 
 
-Thanks
-ChenYu
+PINCTRL_GROUP_DESC() macro from drivers/pinctrl/core.h contains a cast 
+to (struct group_desc), what breaks users of the above macros.
+
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
+
 
