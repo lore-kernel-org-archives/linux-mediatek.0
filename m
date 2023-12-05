@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F9DCC4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Dec 2023 17:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6838C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Dec 2023 17:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PV12AWwIoi+kXLnhKnmNSQ3kcvauJF2gzyvxXmPuFGg=; b=QDbYxGnyquzgIMJgMrwYm16NDB
-	UZ5UdDuyVlBQZFqX3l/YiQWVqYdoLo3cDoQXnnOLgm3x4J6CeOIZYz2sRp3h7IjmegDWHsE1abqAQ
-	kAXAgYi5xRkXVE/TBF+G8yvphvUnNYbiriqcOKqULamv2qMUG+nBczo2rxgckxadCK5YYZ1d9rIbp
-	gVjoDoC4OlEOLYqtlbH9gFqbs4TudSlxqbMIqdLArnmkjBjgvI1ClP2HdAuCj+J92d5MKHo+lNIEB
-	Y3I/6vDmaRbRKZYP07BU8Zjsv+dYr71QlXANKzx2R3dB8R4t3vAfMNiiNPQ/N2PfDbEUEJhum8Y30
-	0LFkDZPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0kgVN6nJ5Ncn9mQ1aGfgPgSNjK6UwJy0NnWl05SM/J4=; b=HTGHso4bOS+8ZGzeRCy8/BrFRZ
+	ynbSdkTRdamnFbAHuo870Lx2mFLt8DPfWQMf1dgAGV3DERwQRw+LKbWSKxmLsS9ClQ4PWlP+QF0vA
+	PtOCbw5E2g0Ww6v7WVgASRWwgBtngmTygmw4N+84+yThYAeY0neecpBRtLN8emrHP1BIhfRsKuGnT
+	hd4m8a51JKzpCPlCJ9Q5JIdCjPI+LUSumeDNLLU8RduqVaX6Q8EpH+e9xbw1trVka8xJC07E3AqPh
+	0O/JCjql2+GIfgExs7NQGAC75iY/DDrQyvZlwh3tSJWtWK6Sbhzi92ti6V0fXChMfKcQ5bFmMEfPP
+	E/sQisAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAZE2-0082Jv-10;
-	Tue, 05 Dec 2023 17:28:50 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rAZh6-0085Ok-1b;
+	Tue, 05 Dec 2023 17:58:52 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAZDz-0082JL-17
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Dec 2023 17:28:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D34EE617C3;
-	Tue,  5 Dec 2023 17:28:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EDB3C433C8;
-	Tue,  5 Dec 2023 17:28:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701797326;
-	bh=VjMuyjx48RMDpAEidQsQ9e57dddsq66HW9llT158txg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p04zXYeNYvuIHmsqAHhwMDGM+Tn/MyUQnRnu8e2GtEEc/YL6VMpVqazbalAwZWyrv
-	 92UD//Qo1Fld8TrKGkACwg68GYlJKxZyxgrSS28/DC6oK6BQ5M1vaLgJSUodSnFMIq
-	 5m+YcY2/5NHhcKlEOaUyRzSDphOitSFLRZdwCMdc/0Tzjx/oUrEkOExEw5Mi4VKEfD
-	 Iw/Ku5KvGOw5+JK/a5WPw/nbaeYtSy63uaL/eTs9ucTE2w9uIDqTfZYKbHqMFqPonU
-	 ndcWONL3epyrr4j8Yo0p/A7SbZyRI6k2p9iLVYHWu2PKu/bGhcKxHk0mwaGoomMysq
-	 tMLvagUYB5NEA==
-Date: Tue, 5 Dec 2023 17:28:41 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Cc: lgirdwood@gmail.com, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	angelogioacchino.delregno@collabora.com, perex@perex.cz,
-	allen-kh.cheng@mediatek.com, kuninori.morimoto.gx@renesas.com,
-	linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v7 3/4] ASoC: mediatek: mt8188-mt6359: add es8326 support
-Message-ID: <91546240-a2d1-4d65-b976-626cb1ef67e0@sirena.org.uk>
-References: <20231116093512.4180240-1-zhourui@huaqin.corp-partner.google.com>
- <20231116093512.4180240-4-zhourui@huaqin.corp-partner.google.com>
+	id 1rAZh2-0085O5-25;
+	Tue, 05 Dec 2023 17:58:50 +0000
+Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: koike)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2DFF5660715D;
+	Tue,  5 Dec 2023 17:58:38 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701799123;
+	bh=4K1nG0XcLJCaqmXjT00pOtA2M+BKj18KQH6LnXZWdi4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kNeoQvdoOS3DwcND2QZyfuEIZsgZyU5iZ15cm4yY/NVzUTn+Vl3WFhBEyfMrRP+ll
+	 E/TlLTyM7BcYLGTRiNX/sN/0nh1S3MT0Ph/7eVCl96LVANv9h4wDH4qNcellEzTLsd
+	 LL2OTdZcCh3Lmz90qR8qOZBYlOJ2pdSwmi7czM69qCblgHSzrA6IHwcrHdGXi4buYM
+	 RD2ICfN+PGZbpeL0LnkmTMuwyZnS4ZA+a7ZLAQVroahHgUDxPecy7cLs8r5C/5PmcC
+	 RmwHlTNtC+b8kBViwPC25X9IstWWgGdHQceVBM5FBqn1K6c+SeMI6G7Gc0qcyE+NQw
+	 2fcz4jmWaOTHA==
+Message-ID: <136041c8-bbc8-49b6-a3ff-7236e79afa5c@collabora.com>
+Date: Tue, 5 Dec 2023 14:58:34 -0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="wqFgQ+hFNzlp8dii"
-Content-Disposition: inline
-In-Reply-To: <20231116093512.4180240-4-zhourui@huaqin.corp-partner.google.com>
-X-Cookie: I've Been Moved!
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 06/10] drm: ci: mediatek: Set IGT_FORCE_DRIVER for
+ mt8173
+Content-Language: en-US
+To: Vignesh Raman <vignesh.raman@collabora.com>, airlied@gmail.com,
+ daniel@ffwll.ch
+Cc: david.heidelberg@collabora.com, sergi.blanch.torne@collabora.com,
+ guilherme.gallo@collabora.com, daniels@collabora.com,
+ gustavo.padovan@collabora.com, emma@anholt.net, robdclark@gmail.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ virtualization@lists.linux-foundation.org,
+ linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+References: <20231129121841.253223-1-vignesh.raman@collabora.com>
+ <20231129121841.253223-7-vignesh.raman@collabora.com>
+From: Helen Koike <helen.koike@collabora.com>
+In-Reply-To: <20231129121841.253223-7-vignesh.raman@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_092847_437963_5B3E3FD3 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20231205_095848_833238_CD61A2FE 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +82,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---wqFgQ+hFNzlp8dii
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks for your patch.
 
-On Thu, Nov 16, 2023 at 05:35:11PM +0800, Rui Zhou wrote:
-> To use ES8326 as the codec, add a new sound card
-> named mt8186_es8326.
->=20
-> Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+On 29/11/2023 09:18, Vignesh Raman wrote:
+> Expected driver for mt8173 is "mediatek" and for mt8183
+> it is "panfrost". Set IGT_FORCE_DRIVER to 'mediatek' as
+> the expected driver for mt8173.
+> 
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 > ---
->  sound/soc/mediatek/Kconfig                |  1 +
->  sound/soc/mediatek/mt8188/mt8188-mt6359.c | 49 ++++++++++++++++++++++-
->  2 files changed, 49 insertions(+), 1 deletion(-)
+> 
+> v5:
+>    - Added a new patch in the series to set IGT_FORCE_DRIVER to 'mediatek' for mt8173
+> 
+> v6:
+>    - Use GPU_VERSION instead of CI_JOB_NAME to check if it is mt8173
+> 
+> ---
+>   drivers/gpu/drm/ci/igt_runner.sh | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
+> index c6cf963592c5..70a0f84021a1 100755
+> --- a/drivers/gpu/drm/ci/igt_runner.sh
+> +++ b/drivers/gpu/drm/ci/igt_runner.sh
+> @@ -30,6 +30,10 @@ case "$DRIVER_NAME" in
+>           ;;
+>   esac
+>   
+> +if [ "$GPU_VERSION" = "mt8173" ]; then
+> +    export IGT_FORCE_DRIVER=${DRIVER_NAME}
+> +fi
 
-AngeloGioacchino, does this look OK to you?
+Just a nit, could you add this in the first case statement? Just to 
+avoid confusing about double assignment? -> but feel free to ignore this 
+comment.
 
---wqFgQ+hFNzlp8dii
-Content-Type: application/pgp-signature; name="signature.asc"
+With or without this:
 
------BEGIN PGP SIGNATURE-----
+Acked-by: Helen Koike <helen.koike@collabora.com>
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmVvXcgACgkQJNaLcl1U
-h9AG/Qf9Eigu2fTuVLZjSCY//wCqSIv9O+6Y6pGIYz8FacNMWdn5a+HspXIQiqnc
-r+3i9lF2dfD5emd6a2rq5xFdCmmbPmyKB8bFgvfgIdlr2Ri3YJkRy9MH7UwEhHO7
-L0MjNGGozqbYPHQd4cBZ9TwLAJVzebrCjvUfERc5vfnGV27mpcKa0hLWEqNLnptY
-xVcyjQaVYtcvkU8F52tUYHJNVkeeBa5YERfOR45XqJhy8uCKmb11Tfe9PveZZ+1+
-f1P2KbQ7UbDPi++1mCoE+aNIsLlWKGyvrHeWLUjfJnx0Peic6NlOU39Hw/r0J99c
-RqgPtlsE0/jhT4cUqj67hW4MNqd32A==
-=IQvM
------END PGP SIGNATURE-----
+Thanks
+Helen
 
---wqFgQ+hFNzlp8dii--
+> +
+>   if [ -e "/install/xfails/$DRIVER_NAME-$GPU_VERSION-skips.txt" ]; then
+>       IGT_SKIPS="--skips /install/xfails/$DRIVER_NAME-$GPU_VERSION-skips.txt"
+>   fi
 
