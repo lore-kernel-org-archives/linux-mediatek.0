@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D87F6C10F07
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Dec 2023 11:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99DA6C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Dec 2023 13:15:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XEiWuC5sh0azayVc1A+xmmLJgJg/MsGs9Nd/taIUf78=; b=S30fe72cuMu22ARXsGkOLzxAtd
-	OawZBukuehSFIaavMXtlNL0tDtEilA+zwRlOwEAyTn7IJojFdy66QLbFjZ8iSpWI30WO4778M88Rf
-	XRFgWrYhg1dV3L7vEnL5DAuu+gknV5B8g2on3rdjQRFPATiU5qGXqvVokX5wG9iXe+f9IbeOsvB4z
-	9LtGaoefOz+U7Pe1wUuWLAKouN7RTHbXOy68RJ3uZRirPfRiQ+P1ZJHo8k0kKwmCPdPCbrdmko5Ft
-	jNJuvp2J1npjVb3hDCJpSdyzfUCcqvhXQSO/JDEUNe6XI3ymqdsxEwPHqKxWmxmWYvs9/Zk73yqbE
-	DST3UCPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WnUMUXM6tuA7Al1QfLAeLEpXFd5nn7I7VzHVP+bPxNw=; b=MVgOAIfNVWlDHTX0PX0xvhmLO/
+	fSFqCuFolLxcS2fONSXv1AKtbDEseer2wKGa2hk351yi11WXz8FY0oBGIS9f4bdERt9zcfGFc3pJm
+	jKiWbdvR4FJZtr3Htx0Aj8bRq/h+Vx+6iEvNShR08Ew5CRpOS8WM/JqQ5JiQrXrNZOs1vgNqaI6bj
+	W2M+b50D1Vdu0mjOxhQnjmo722+atbe1MGh5aFNc9YxHNL3Dp885UInZCaPus1BrM+GJSGgLIbpzC
+	KaufSGyFXz30EnBLiIi1ukDWNmIJPZknePYfJ5lkEjc0f9XOeqCqyBLMO79t96O3EePCI+aLwUaES
+	depIeXcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAThj-0078qL-2a;
-	Tue, 05 Dec 2023 11:35:07 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1rAVGu-007TxW-0W;
+	Tue, 05 Dec 2023 13:15:32 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAThd-0078lK-0V;
-	Tue, 05 Dec 2023 11:35:03 +0000
-Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.54])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Skyz163TSz1Q65P;
-	Tue,  5 Dec 2023 19:31:09 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 5 Dec 2023 19:34:55 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>, John
- Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
-	<Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>,
-	Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg
-	<sagi@grimberg.me>, Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin"
-	<mst@redhat.com>, Jason Wang <jasowang@redhat.com>, Andrew Morton
-	<akpm@linux-foundation.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
-	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>, <linux-mm@kvack.org>
-Subject: [PATCH net-next 5/6] net: introduce page_frag_cache_drain()
-Date: Tue, 5 Dec 2023 19:34:43 +0800
-Message-ID: <20231205113444.63015-6-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20231205113444.63015-1-linyunsheng@huawei.com>
-References: <20231205113444.63015-1-linyunsheng@huawei.com>
+	id 1rAVGq-007TvZ-0t;
+	Tue, 05 Dec 2023 13:15:29 +0000
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C16576607295;
+	Tue,  5 Dec 2023 13:15:21 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701782123;
+	bh=6DkmrpDnGeZXGofKoixLDnz2zWUHekUv7+HrZandZ4I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=gDPrHdHlHgN/zybDJ8CqUj7Pva762vdm9BSs7iK0NbnXWbaOqt3AV7UFiRaMf9rJ0
+	 1p7SB/Af+rveT/26/3p5yiSa/pXp0i6DWKXYh0XRoSvBmhvG96qdwHzd0A2TqSZlwN
+	 kJEU7hux803bOWXQtP4ftNKtPlyXfwXKuQYUVAItFJCKKmcq7xTJ+DJLDu4k5g6UhE
+	 oEch2JlmUbkIAxGnX4aZ1Ke7/la77REqOHwPnY2YlaXfYuufOh3lU/OG/2WaIO6inI
+	 uLhFObnoa91S+JQ7Y3Od/wPbxzuwOp6V3cYIluopevUv1aKtLCZcIFSaU46K3EDJJl
+	 cPvOcu4roebpA==
+Message-ID: <6e6cd1d0-c46e-496a-9a31-c1ecd75bf34f@collabora.com>
+Date: Tue, 5 Dec 2023 14:15:19 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V2 2/3] dt-bindings: arm64: dts: mediatek: Add Acelink
+ EW-7886CAX access point
+Content-Language: en-US
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?=
+ <nfraprado@collabora.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Chris Morgan <macromorgan@hotmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Sean Wang
+ <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+ Conor Dooley <conor.dooley@microchip.com>
+References: <20231204200907.5687-1-zajec5@gmail.com>
+ <20231204200907.5687-2-zajec5@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231204200907.5687-2-zajec5@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggpemm500005.china.huawei.com (7.185.36.74)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_033501_565299_C0EAEB98 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20231205_051528_492204_E4C82EA3 
+X-CRM114-Status: UNSURE (   6.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,189 +88,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When draining a page_frag_cache, most user are doing
-the similar steps, so introduce an API to avoid code
-duplication.
+Il 04/12/23 21:09, Rafał Miłecki ha scritto:
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> Acelink EW-7886CAX is an MT7986A (AKA Filogic 830) based access point.
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
----
- drivers/net/ethernet/google/gve/gve_main.c | 11 ++---------
- drivers/net/ethernet/mediatek/mtk_wed_wo.c | 17 ++---------------
- drivers/nvme/host/tcp.c                    |  7 +------
- drivers/nvme/target/tcp.c                  |  4 +---
- drivers/vhost/net.c                        |  4 +---
- include/linux/gfp.h                        |  2 ++
- mm/page_alloc.c                            | 10 ++++++++++
- 7 files changed, 19 insertions(+), 36 deletions(-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/net/ethernet/google/gve/gve_main.c b/drivers/net/ethernet/google/gve/gve_main.c
-index 619bf63ec935..d976190b0f4d 100644
---- a/drivers/net/ethernet/google/gve/gve_main.c
-+++ b/drivers/net/ethernet/google/gve/gve_main.c
-@@ -1278,17 +1278,10 @@ static void gve_unreg_xdp_info(struct gve_priv *priv)
- 
- static void gve_drain_page_cache(struct gve_priv *priv)
- {
--	struct page_frag_cache *nc;
- 	int i;
- 
--	for (i = 0; i < priv->rx_cfg.num_queues; i++) {
--		nc = &priv->rx[i].page_cache;
--		if (nc->va) {
--			__page_frag_cache_drain(virt_to_page(nc->va),
--						nc->pagecnt_bias);
--			nc->va = NULL;
--		}
--	}
-+	for (i = 0; i < priv->rx_cfg.num_queues; i++)
-+		page_frag_cache_drain(&priv->rx[i].page_cache);
- }
- 
- static int gve_open(struct net_device *dev)
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 7ffbd4fca881..df0a3ceaf59b 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -286,7 +286,6 @@ mtk_wed_wo_queue_free(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- static void
- mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
- 	int i;
- 
- 	for (i = 0; i < q->n_desc; i++) {
-@@ -298,19 +297,12 @@ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		entry->buf = NULL;
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_drain(&q->cache);
- }
- 
- static void
- mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
--
- 	for (;;) {
- 		void *buf = mtk_wed_wo_dequeue(wo, q, NULL, true);
- 
-@@ -320,12 +312,7 @@ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		skb_free_frag(buf);
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_drain(&q->cache);
- }
- 
- static void
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index d79811cfa0ce..1c85e1398e4e 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -1344,7 +1344,6 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 
- static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- {
--	struct page *page;
- 	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
- 	struct nvme_tcp_queue *queue = &ctrl->queues[qid];
- 	unsigned int noreclaim_flag;
-@@ -1355,11 +1354,7 @@ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvme_tcp_free_crypto(queue);
- 
--	if (queue->pf_cache.va) {
--		page = virt_to_head_page(queue->pf_cache.va);
--		__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
--		queue->pf_cache.va = NULL;
--	}
-+	page_frag_cache_drain(&queue->pf_cache);
- 
- 	noreclaim_flag = memalloc_noreclaim_save();
- 	/* ->sock will be released by fput() */
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index 4cc27856aa8f..11237557cfc5 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -1576,7 +1576,6 @@ static void nvmet_tcp_free_cmd_data_in_buffers(struct nvmet_tcp_queue *queue)
- 
- static void nvmet_tcp_release_queue_work(struct work_struct *w)
- {
--	struct page *page;
- 	struct nvmet_tcp_queue *queue =
- 		container_of(w, struct nvmet_tcp_queue, release_work);
- 
-@@ -1600,8 +1599,7 @@ static void nvmet_tcp_release_queue_work(struct work_struct *w)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvmet_tcp_free_crypto(queue);
- 	ida_free(&nvmet_tcp_queue_ida, queue->idx);
--	page = virt_to_head_page(queue->pf_cache.va);
--	__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
-+	page_frag_cache_drain(&queue->pf_cache);
- 	kfree(queue);
- }
- 
-diff --git a/drivers/vhost/net.c b/drivers/vhost/net.c
-index 805e11d598e4..4b2fcb228a0a 100644
---- a/drivers/vhost/net.c
-+++ b/drivers/vhost/net.c
-@@ -1386,9 +1386,7 @@ static int vhost_net_release(struct inode *inode, struct file *f)
- 	kfree(n->vqs[VHOST_NET_VQ_RX].rxq.queue);
- 	kfree(n->vqs[VHOST_NET_VQ_TX].xdp);
- 	kfree(n->dev.vqs);
--	if (n->pf_cache.va)
--		__page_frag_cache_drain(virt_to_head_page(n->pf_cache.va),
--					n->pf_cache.pagecnt_bias);
-+	page_frag_cache_drain(&n->pf_cache);
- 	kvfree(n);
- 	return 0;
- }
-diff --git a/include/linux/gfp.h b/include/linux/gfp.h
-index bbd75976541e..03ba079655d3 100644
---- a/include/linux/gfp.h
-+++ b/include/linux/gfp.h
-@@ -316,6 +316,8 @@ extern void *page_frag_alloc_align(struct page_frag_cache *nc,
- 				   unsigned int fragsz, gfp_t gfp_mask,
- 				   unsigned int align);
- 
-+void page_frag_cache_drain(struct page_frag_cache *nc);
-+
- static inline void *page_frag_alloc(struct page_frag_cache *nc,
- 			     unsigned int fragsz, gfp_t gfp_mask)
- {
-diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 083e0c38fb62..5a0e68edcb05 100644
---- a/mm/page_alloc.c
-+++ b/mm/page_alloc.c
-@@ -4716,6 +4716,16 @@ void __page_frag_cache_drain(struct page *page, unsigned int count)
- }
- EXPORT_SYMBOL(__page_frag_cache_drain);
- 
-+void page_frag_cache_drain(struct page_frag_cache *nc)
-+{
-+	if (!nc->va)
-+		return;
-+
-+	__page_frag_cache_drain(virt_to_head_page(nc->va), nc->pagecnt_bias);
-+	nc->va = NULL;
-+}
-+EXPORT_SYMBOL(page_frag_cache_drain);
-+
- void *page_frag_alloc_align(struct page_frag_cache *nc,
- 		      unsigned int fragsz, gfp_t gfp_mask,
- 		      unsigned int align)
--- 
-2.33.0
 
 
