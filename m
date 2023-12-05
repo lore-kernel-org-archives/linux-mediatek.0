@@ -4,81 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4DFBC07E97
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Dec 2023 10:23:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27FA7C07E97
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Dec 2023 11:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=da36mjW5YT6Ieb3MwKt/K+oam78C9iNfiDsf6q1sAB8=; b=acV32ZTxGfJHTfO9vAQFcYyzfl
-	8Jr22uIVoyXe71u63XmwHJ4asFsH0HyrRcgNRV0OOoO16Kfjoak5JouvRpo7iesUc+7bc5ixRkGDi
-	ofd7tuwTDtdGO9hnHg0DZdU/FNPhvL+2n+NVcJEt/OkTY/qtNlqlR0Zqby/HOO5L+zWnEZoEitiN/
-	WhYxWeUbn4WUqWrJ+/wn+EYMdZr9TCHQF0EkKrB5BNY/TpUKVlWmVTkjRAjDhKjtpn12Pl0yOv8+K
-	G2UGU0+t6s6IquLC+tDj3qG5yUIHTazPLducm98V3slNZuuAobOPKpQUMFA+zosI4WpfKf1ZJsk75
-	igfXxevw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8YRYQjFl8o0qHDHD8Afy1flAy6OFi7CCLNfb2kgBGBQ=; b=DXe21T+JXfpfNIrVIaug5KkCnY
+	Qf+cqsrh7NCcj3ZQcrILtCHIHA/7jozIibb2NvFJ7Ffru6XAjdM1OYHjO+shkYFS2lz/12JjsP+LY
+	XRKnpIMUOo55qkQaeDePAg2GXAKG4LM7CpkTQL7G2x132vYJxcq3OlP8xHNEedI93eafZZf07n51s
+	QhNemtU4CtlYa5EU212m31hs0vESqfFHTavXBB138c1FgJKrnOzG2r84qfn5RqzEcnGWpknDLlSsQ
+	mZ7zea9vgVmpicN0Mbw2pmsZIGsN7BncPgW15LVPgjQTBgu8a1Len7wp6wxirPKDtk8fvhweB2N7R
+	1lVPtJDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rASZv-006xQU-17;
-	Tue, 05 Dec 2023 10:22:59 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1rAThg-0078o8-31;
+	Tue, 05 Dec 2023 11:35:04 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rASZr-006xNO-2F;
-	Tue, 05 Dec 2023 10:22:57 +0000
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C34556602F1E;
-	Tue,  5 Dec 2023 10:22:49 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701771771;
-	bh=3U+2S6yFT5IinHlDHOnGowPBFs7ClJzaLOhopmK8tJk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OYuCQ8kwdLnWkv1MfHToaXZ587QswHOutjKlfKfVYjCnU/s92pr8c3o9SnFkhf9BG
-	 Ji4lDYcYURVmRno7WIM+Ij42lFOpJD6ckjLuX6BZkwXXXUZ7cM5ErLHx/gOOJ3zwRR
-	 lLAdVr5MwcRSd96WdScV8w+5+I8XbztbTAMbi9Qlgou0pRMfrT50bHtA66RFzozoSI
-	 1TwY5RvAbJBq78cU+3pbZR+kXl2hc3VhM6d9tly282icyqWUOqGDNRUKOPZhQzer3u
-	 gftavexdPt6RBGhr1ej4AKrch5TdmIjafkGQ2o6HvEUgPjXiD2JNSK5Ydr5172HmNn
-	 7unW/WF969rzw==
-Message-ID: <3700f05f-2411-4422-972f-f3df690efb84@collabora.com>
-Date: Tue, 5 Dec 2023 11:22:46 +0100
+	id 1rAThb-0078kr-3C;
+	Tue, 05 Dec 2023 11:35:02 +0000
+Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.57])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Skyyv1856zrVD8;
+	Tue,  5 Dec 2023 19:31:03 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 5 Dec 2023 19:34:49 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH net-next 0/6] remove page frag implementation in vhost_net
+Date: Tue, 5 Dec 2023 19:34:38 +0800
+Message-ID: <20231205113444.63015-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 4/5] arm64: dts: mediatek: mt8173-elm-hana: Mark
- touchscreens and trackpads as fail
-To: Doug Anderson <dianders@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Wolfram Sang <wsa@kernel.org>,
- Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
- chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- andriy.shevchenko@linux.intel.com, Jiri Kosina <jikos@kernel.org>,
- linus.walleij@linaro.org, broonie@kernel.org, gregkh@linuxfoundation.org,
- hdegoede@redhat.com, james.clark@arm.com, james@equiv.tech,
- keescook@chromium.org, rafael@kernel.org, tglx@linutronix.de,
- Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org,
- linux-i2c@vger.kernel.org
-References: <20231128084236.157152-1-wenst@chromium.org>
- <20231128084236.157152-5-wenst@chromium.org>
- <CAD=FV=W01gfxV6RN2o6CVS7jjf8qgKP-jUy9Bp94d2hWzVC48A@mail.gmail.com>
- <CAGXv+5E+R292XsOFSL-j0KJMmVJjWtxMRgCK8besP7mo6NDOWA@mail.gmail.com>
- <CAD=FV=UQkAjgMuR85cPikNtCxsODWPWs7cibOcOoNGdjSSvF8Q@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAD=FV=UQkAjgMuR85cPikNtCxsODWPWs7cibOcOoNGdjSSvF8Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_022255_897805_76972D69 
-X-CRM114-Status: GOOD (  17.87  )
+X-CRM114-CacheID: sfid-20231205_033500_369502_F9E34AB8 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +70,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/12/23 17:50, Doug Anderson ha scritto:
-> Hi,
-> 
-> On Sun, Dec 3, 2023 at 10:59 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
->>
->> On Sat, Dec 2, 2023 at 8:58 AM Doug Anderson <dianders@chromium.org> wrote:
->>>
->>> Hi,
->>>
->>> On Tue, Nov 28, 2023 at 12:45 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
->>>>
->>>> @@ -44,6 +46,7 @@ trackpad2: trackpad@2c {
->>>>                  reg = <0x2c>;
->>>>                  hid-descr-addr = <0x0020>;
->>>>                  wakeup-source;
->>>> +               status = "fail-needs-probe";
->>>
->>> While doing this, you could also remove the hack where the trackpad
->>> IRQ pinctrl is listed under i2c4.
->>
->> Sure. I do think we can do away with it though. According to at least one
->> schematic, the interrupt line has pull-ups on both sides of the voltage
->> shifter.
->>
->> BTW, The touchscreen doesn't have pinctrl entries. This has pull-ups on
->> both sides of the voltage shifter as well.
-> 
-> I dunno if the convention is different on Mediatek boards, but at
-> least on boards I've been involved with in the past we've always put
-> pinctrl entries just to make things explicit. This meant that we
-> didn't rely on the firmware/bootrom/defaults to leave pulls in any
-> particular state. ...otherwise those external pull-ups could be
-> fighting with internal pull-downs, right?
-> 
+Currently there are three implementations for page frag:
 
-MediaTek boards aren't special and there's no good reason for those to rely on
-firmware/bootrom/defaults - so there is no good reason to avoid declaring any
-relevant pinctrl entry.
+1. mm/page_alloc.c: net stack seems to be using it in the
+   rx part with 'struct page_frag_cache' and the main API
+   being page_frag_alloc_align().
+2. net/core/sock.c: net stack seems to be using it in the
+   tx part with 'struct page_frag' and the main API being
+   skb_page_frag_refill().
+3. drivers/vhost/net.c: vhost seems to be using it to build
+   xdp frame, and it's implementation seems to be a mix of
+   the above two.
 
-Cheers,
-Angelo
+This patch tries to unfiy the page frag implementation a
+little bit by unifying gfp bit for order 3 page allocation
+and replacing page frag implementation in vhost.c with the
+one in page_alloc.c.
+
+After this patchset, we are not only able to unify the page
+frag implementation a little, but also able to have about
+0.5% performance boost testing by using the vhost_net_test
+introduced in the last patch.
+
+Before this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+     305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
+       1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
+            11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
+            33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
+  244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
+   64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
+   30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
+  201749748680      instructions                     #    0.82  insn per cycle
+                                              #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
+   65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
+    4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
+
+       175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
+
+
+After this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+     303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
+       1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
+            14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
+            33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
+  251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
+   67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
+   27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
+  195543234672      instructions                     #    0.78  insn per cycle
+                                              #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
+   62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
+    4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
+
+       174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
+
+Changelog:
+V1: Fix some typo, drop RFC tag and rebase on latest net-next.
+
+Yunsheng Lin (6):
+  mm/page_alloc: modify page_frag_alloc_align() to accept align as an
+    argument
+  page_frag: unify gfp bit for order 3 page allocation
+  mm/page_alloc: use initial zero offset for page_frag_alloc_align()
+  vhost/net: remove vhost_net_page_frag_refill()
+  net: introduce page_frag_cache_drain()
+  tools: virtio: introduce vhost_net_test
+
+ drivers/net/ethernet/google/gve/gve_main.c |  11 +-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
+ drivers/nvme/host/tcp.c                    |   7 +-
+ drivers/nvme/target/tcp.c                  |   4 +-
+ drivers/vhost/net.c                        |  91 ++---
+ include/linux/gfp.h                        |   6 +-
+ include/linux/skbuff.h                     |  22 +-
+ mm/page_alloc.c                            |  48 ++-
+ net/core/skbuff.c                          |  14 +-
+ net/core/sock.c                            |   2 +-
+ tools/virtio/Makefile                      |   8 +-
+ tools/virtio/vhost_net_test.c              | 441 +++++++++++++++++++++
+ 12 files changed, 524 insertions(+), 147 deletions(-)
+ create mode 100644 tools/virtio/vhost_net_test.c
+
+-- 
+2.33.0
 
 
