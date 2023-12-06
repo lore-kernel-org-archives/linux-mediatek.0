@@ -4,83 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0444C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 03:40:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2B0AC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 05:41:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hLT1BoNdZOsa14xuLGA+JXdO1aXqfEnpbPJsybdwp2I=; b=iAijnrEytp8lTebCHyJOs39t0Z
-	lBJB1bNuBUKBrvm5zG4czq2RqxB9D3D+YherhHfxmNsLQzwTNFaX/y72daHWfAlXxphgZ+Bvxv6YP
-	PKtH1BCdI1VBwNmlDI8Ib0F/9O858PHFjDwAibYQz5a8TSMUIpIGHhl344qw0gH78JK3FqEi3BeW8
-	n3ipOpTG3xRFsgAG3PqMTkQaYQNb7kvOWPwfML5h9/oQWaTR9TMQCEV0FXwBVKkOHjuP3oMkZftv6
-	wBhLUBTyD8wRR75covmmBX46/Wr28blNcL2IvYLbftwMR78Fss5qqPYqHnVQ1i82FrnaLYjlf6lqU
-	zH5mxBTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DSEsi6ha8d2Dap2LNtqekCrbHlg2RMsuNLxo/jOQbS4=; b=pNX/DeXMe3SWEju8ZrYZMAg9YR
+	7o4IdVXHo+bdSLcGE3YYp0y0wnfyP9hKxkneQvWc/m+Nd7/9SEdtUYZMeT8YVj5Pka20EPXmKIkm9
+	F977PYYt/2GKfGROtIB0bW/P/SXTPiGhjjA/MPNABthOzZw2GUwNV0AsHFoYHSISuF09XhNHYiFGO
+	srEMeMcsfpTZg91fock2Ms7xBf50a2/EV/7vcNF4AztdbOHXlDq9RZFsEdmrH045mDIaQEXoJprHA
+	GTgNv2ryqtF66f0gmByea4TiIV9MEFjSgxEIuzHw61Ck9BvtkUtzRqR1cqE3JIpDZvq+Hj8LDkWfZ
+	2p3YblXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAilX-008yj6-1R;
-	Wed, 06 Dec 2023 03:40:03 +0000
-Received: from mail-oa1-f51.google.com ([209.85.160.51])
+	id 1rAkee-0097P8-1b;
+	Wed, 06 Dec 2023 05:41:04 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAilR-008ycP-1B;
-	Wed, 06 Dec 2023 03:39:58 +0000
-Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-1fa26074783so3460075fac.1;
-        Tue, 05 Dec 2023 19:39:56 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701833996; x=1702438796;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=hLT1BoNdZOsa14xuLGA+JXdO1aXqfEnpbPJsybdwp2I=;
-        b=xOdmBLhYqZOSNAC2slxfEKAww7B0Gc47HHDQwdpYAbaNy1zhkyeLtw1MzCRft6cvB6
-         5E90uFYepsypcHhX2hre/YZ7x5OVspUSXgmzZ8GQVmHHbyLpT1gLsPkCycpZC8yCtgQW
-         NtRcg2O4oScE5ww8Re+o+oVYb+ocyzUFaZQO0D+vzirhe3F0ajE+GW4H0aa1aVeP2V6r
-         6VLqloBWNv0w0HlrhiR/HBgLl7+OYilnWYqO0XWsKKRjipZNeSjOfrG4toCUMXIzj4AS
-         y4mrHCsA/j7jTNCHt9RJR7iuCKFdj1OOYw4PqombgV5LDnoA6OU8r1izDJeMijnvHJse
-         hqRg==
-X-Gm-Message-State: AOJu0YzXcQHJeIYJlcHGcUGW1k9EUcwEHLAc92W8Xkd6IcqLMIxNhr3J
-	JEFzU0GxI3r1Ch5XX7k3iA==
-X-Google-Smtp-Source: AGHT+IGTmq+FN6dwgEMD4lsPZ+v8n15aufTQBAy0f7TbjXAqsv/BoIE1ZkwoUbLlWPs6l+CoQNYQTg==
-X-Received: by 2002:a05:6870:9690:b0:1fb:75a:de65 with SMTP id o16-20020a056870969000b001fb075ade65mr268467oaq.83.1701833996268;
-        Tue, 05 Dec 2023 19:39:56 -0800 (PST)
-Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id pk28-20020a0568704c1c00b001fafc32e808sm2929937oab.0.2023.12.05.19.39.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Dec 2023 19:39:55 -0800 (PST)
-Received: (nullmailer pid 463141 invoked by uid 1000);
-	Wed, 06 Dec 2023 03:39:36 -0000
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: linux-kernel@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, SkyLake Huang <SkyLake.Huang@mediatek.com>, 
-	devicetree@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, John Crispin <john@phrozen.org>, 
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-phy@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
-	Felix Fietkau <nbd@nbd.name>, "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>, 
-	linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, 
-	Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Alexander Couzens <lynxis@fe80.eu>, Qingfang Deng <dqfext@gmail.com>
-In-Reply-To: <e2214e904cde9a9d64ec1e87ac38560f7ac35a1f.1701826319.git.daniel@makrotopia.org>
-References: <cover.1701826319.git.daniel@makrotopia.org>
- <e2214e904cde9a9d64ec1e87ac38560f7ac35a1f.1701826319.git.daniel@makrotopia.org>
-Message-Id: <170183397527.463082.3332126649962865060.robh@kernel.org>
-Subject: Re: [RFC PATCH v2 6/8] dt-bindings: net: mediatek: remove wrongly
- added clocks and SerDes
-Date: Tue, 05 Dec 2023 21:39:36 -0600
+	id 1rAkeb-0097Ni-0Y;
+	Wed, 06 Dec 2023 05:41:02 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B64lO5A014334;
+	Wed, 6 Dec 2023 05:36:41 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id; s=qcppdkim1;
+ bh=DSEsi6ha8d2Dap2LNtqekCrbHlg2RMsuNLxo/jOQbS4=;
+ b=HUTmrx+ngT2R2pX+clnkwa8QshV9gvXuYR3aNBQeXdQF8XbjgpbyMIVpXZSYciofkhu/
+ tbjpvN8TycYCUtxIMRF8sw+ZFz/JroVzsHq+dVRecwhknQez72X50IU3o+xDOic7eU8K
+ e1eeKnf9Awujf1tH1C8q3RNlB3ZmqSGkX/+14qhWue7N2T/ST7zCD5DAH6xSJ/uHykEp
+ acyik2seAgNu/w74BVxkeDDWqnSr7GTBgbPQDSeCNz+iPSkF7hE34DD1KmrLRn/70v1Y
+ ec+XmyLWb6GVfHDnWJhz2eJwPDkr4hZBRyIWT6A8UtynTmXds2A6ujn7sBUi8yesNfz/ Ng== 
+Received: from apblrppmta02.qualcomm.com (blr-bdr-fw-01_GlobalNAT_AllZones-Outside.qualcomm.com [103.229.18.19])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3utd1n0p7h-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 06 Dec 2023 05:36:40 +0000
+Received: from pps.filterd (APBLRPPMTA02.qualcomm.com [127.0.0.1])
+	by APBLRPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTP id 3B65ablv009558;
+	Wed, 6 Dec 2023 05:36:37 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by APBLRPPMTA02.qualcomm.com (PPS) with ESMTP id 3uqwnkryxu-1;
+	Wed, 06 Dec 2023 05:36:37 +0000
+Received: from APBLRPPMTA02.qualcomm.com (APBLRPPMTA02.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3B65abDk009553;
+	Wed, 6 Dec 2023 05:36:37 GMT
+Received: from hu-maiyas-hyd.qualcomm.com (hu-nitirawa-hyd.qualcomm.com [10.213.109.152])
+	by APBLRPPMTA02.qualcomm.com (PPS) with ESMTP id 3B65aaCt009552;
+	Wed, 06 Dec 2023 05:36:37 +0000
+Received: by hu-maiyas-hyd.qualcomm.com (Postfix, from userid 2342877)
+	id C868D5000B1; Wed,  6 Dec 2023 11:06:35 +0530 (+0530)
+From: Nitin Rawat <quic_nitirawa@quicinc.com>
+To: "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen" <martin.petersen@oracle.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+        Manivannan Sadhasivam <mani@kernel.org>
+Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, quic_cang@quicinc.com,
+        Nitin Rawat <quic_nitirawa@quicinc.com>,
+        Manish Pandey <quic_mapa@quicinc.com>
+Subject: [PATCH V1] scsi: ufs: core: store min and max clk freq from OPP table
+Date: Wed,  6 Dec 2023 11:06:28 +0530
+Message-Id: <20231206053628.32169-1-quic_nitirawa@quicinc.com>
+X-Mailer: git-send-email 2.17.1
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: JcWSzxgYC0qjNSj5G2k8Q-T0vKclwx2B
+X-Proofpoint-GUID: JcWSzxgYC0qjNSj5G2k8Q-T0vKclwx2B
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-06_04,2023-12-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
+ lowpriorityscore=0 suspectscore=0 clxscore=1015 impostorscore=0
+ priorityscore=1501 adultscore=0 bulkscore=0 mlxscore=0 mlxlogscore=999
+ phishscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2311290000 definitions=main-2312060045
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_193957_416639_E693C5C2 
-X-CRM114-Status: GOOD (  18.12  )
+X-CRM114-CacheID: sfid-20231205_214101_354895_021830AB 
+X-CRM114-Status: GOOD (  21.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,52 +102,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+OPP support will make use of OPP table in device tree and removes
+freq-table-hz property from device tree.
 
-On Wed, 06 Dec 2023 01:44:51 +0000, Daniel Golle wrote:
-> Several clocks as well as both sgmiisys phandles were added by mistake
-> to the Ethernet bindings for MT7988.
-> 
-> This happened because the vendor driver which served as a reference
-> uses a high number of syscon phandles to access various parts of the
-> SoC which wasn't acceptable upstream. Hence several parts which have
-> never previously been supported (such SerDes PHY and USXGMII PCS) have
-> been moved to separate drivers which also result in a much more sane
-> device tree.
-> 
-> Quickly align the bindings with the upcoming reality of the drivers
-> actually adding full support for this SoC.
-> 
-> Fixes: c94a9aabec36 ("dt-bindings: net: mediatek,net: add mt7988-eth binding")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  .../devicetree/bindings/net/mediatek,net.yaml | 32 ++++---------------
->  1 file changed, 7 insertions(+), 25 deletions(-)
-> 
+With OPP enabled in devicetree, clki->min_freq and clki->maxfreq
+currently is not getting updated and the value is set to 0.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Soc vendors like qcom, mediatek uses clki->minfreq and clki->maxfreq
+in vendor specific file. These frequencies values are used to update
+vendor specific configurations. Since the value is 0, it is causing
+functional issue.
 
-yamllint warnings/errors:
+Add code to store the min and max ufs clk frequency from OPP table.
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/net/pcs/mediatek,usxgmii.example.dts:18:18: fatal error: dt-bindings/clock/mediatek,mt7988-clk.h: No such file or directory
-make[2]: *** [scripts/Makefile.lib:419: Documentation/devicetree/bindings/net/pcs/mediatek,usxgmii.example.dtb] Error 1
+Fixes: 72208ebe181e ("scsi: ufs: core: Add support for parsing OPP")
+Co-developed-by: Manish Pandey <quic_mapa@quicinc.com>
+Signed-off-by: Manish Pandey <quic_mapa@quicinc.com>
+Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
+---
+ drivers/ufs/host/ufshcd-pltfrm.c | 56 ++++++++++++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
-doc reference errors (make refcheckdocs):
+diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
+index da2558e274b4..12fa6f7d6a97 100644
+--- a/drivers/ufs/host/ufshcd-pltfrm.c
++++ b/drivers/ufs/host/ufshcd-pltfrm.c
+@@ -13,6 +13,7 @@
+ #include <linux/pm_opp.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/of.h>
++#include <linux/clk.h>
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/e2214e904cde9a9d64ec1e87ac38560f7ac35a1f.1701826319.git.daniel@makrotopia.org
+ #include <ufs/ufshcd.h>
+ #include "ufshcd-pltfrm.h"
+@@ -213,6 +214,55 @@ static void ufshcd_init_lanes_per_dir(struct ufs_hba *hba)
+ 	}
+ }
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
++/**
++ * ufshcd_config_min_max_clk_freq - update min and max freq
++ * @hba: per adapter instance
++ *
++ * This function store min and max freq for all the clocks.
++ *
++ * Returns 0 for success and non-zero for failure
++ */
++static int ufshcd_config_min_max_clk_freq(struct ufs_hba *hba)
++{
++	struct list_head *head = &hba->clk_list_head;
++	struct dev_pm_opp *opp;
++	struct ufs_clk_info *clki;
++	unsigned long freq;
++	u8 idx = 0;
++	int ret;
++
++	list_for_each_entry(clki, head, list) {
++		if (!clki->name)
++			continue;
++
++		clki->clk = devm_clk_get(hba->dev, clki->name);
++		if (!IS_ERR_OR_NULL(clki->clk)) {
++			/* Find Max Freq */
++			freq = ULONG_MAX;
++			opp = dev_pm_opp_find_freq_floor_indexed(hba->dev, &freq, idx);
++			if (IS_ERR(opp)) {
++				dev_err(hba->dev, "failed to find dev_pm_opp\n");
++				ret = PTR_ERR(opp);
++				return ret;
++			}
++			clki->max_freq = dev_pm_opp_get_freq_indexed(opp, idx);
++
++			/* Find Min Freq */
++			freq = 0;
++			opp = dev_pm_opp_find_freq_ceil_indexed(hba->dev, &freq, idx);
++			if (IS_ERR(opp)) {
++				dev_err(hba->dev, "failed to find dev_pm_opp\n");
++				ret = PTR_ERR(opp);
++				return ret;
++			}
++			clki->min_freq = dev_pm_opp_get_freq_indexed(opp, idx);
++			idx++;
++		}
++	}
++
++	return 0;
++}
++
+ static int ufshcd_parse_operating_points(struct ufs_hba *hba)
+ {
+ 	struct device *dev = hba->dev;
+@@ -279,6 +329,12 @@ static int ufshcd_parse_operating_points(struct ufs_hba *hba)
+ 		return ret;
+ 	}
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
++	ret = ufshcd_config_min_max_clk_freq(hba);
++	if (ret) {
++		dev_err(dev, "Failed to get min max freq: %d\n", ret);
++		return ret;
++	}
++
+ 	hba->use_pm_opp = true;
 
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+ 	return 0;
+--
+2.17.1
 
 
