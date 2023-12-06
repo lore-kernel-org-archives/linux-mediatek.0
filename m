@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87A4BC10DC1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:16:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A305EC46CA0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:16:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WUvnAbLVucWrVWTYlMwApw5nIIzVBjs1iLq+uUd3UhQ=; b=3ZR7hneC2+K9mYx3rvGb4wQAIH
-	X5CT4jaig5FQL4fVYZ5pfZRj93viXwmhC1yRLAXk6MIBe/Jd//VVthbCgezyoSg/tbfUEwMq6LzFe
-	9jLpXIkWM0CWoBfnYRWJBq6RVB/jYy4MrkDYYc0XMVkTdRRKnqOZGG3m50wep+/dLAcDS8N/9f5vz
-	MgL4whUHEa33MSl+Go+O3qtQXizrghcD//8RR7dkcTN057gK8xRCc8RLAdMqc+7BvrBB2qsfFWp3Q
-	TKXzTwl2SPRaREuFrpEfOCBoPkXyEsDSbHSOnp83Cx7huSxA+6qCjL3Cj1JU/CNe8AMThUcDt7VTr
-	iIrE/K8A==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xbClLI66nLXR6+DrvXNRdDsoO2AywNyP9UvNF0j25Es=; b=W+mQ5xuu/keSuiVYUbE4HOpOvB
+	H3Cy0mq9ElArqsgGTjGLQ5njrqTnnLbgzIlDX1TAMWUxFMax5uDm7ayKVjP7qyCzzfYtThbKaYYXq
+	Nghyjj+KVbB6EUAIvh87jVqCI3cO9PkPzJ6qi7wEfd1TvdBoVurPsmEyjsSTuEl1VvvNIUnsmQu/9
+	bgyEJ6whF3uUIt/56MAhzcuGwwEHmpG/fJG/Whn6oXTHN6AQl/2k5JJghN6+NxC50D1EPl8YnPsLZ
+	c52Bza0x+2q4WhXCVI/5NSrA5OFESEtAalxuR/YlIzNJnUBN8K3PEdc9KUJ2x1gxResqQt4XJV3zv
+	u2QYZYFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAn57-009O4I-2y;
-	Wed, 06 Dec 2023 08:16:33 +0000
+	id 1rAn5A-009O6s-2V;
+	Wed, 06 Dec 2023 08:16:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAn4u-009NpY-2o;
-	Wed, 06 Dec 2023 08:16:26 +0000
-X-UUID: ba77f634940f11ee958cff29c719f35b-20231206
+	id 1rAn4x-009Nt5-2k;
+	Wed, 06 Dec 2023 08:16:28 +0000
+X-UUID: bc79b508940f11ee958cff29c719f35b-20231206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=WUvnAbLVucWrVWTYlMwApw5nIIzVBjs1iLq+uUd3UhQ=;
-	b=B5Dm2yurhtaSv/jCmNXeEOPrnvy56R8syrjL8AvDEIyF23WsZ3BkOsI7qUTT9nejrUSNB6GgUmKGYmYtytmdBgxVuBweILpQuPRDUwUbQiKB241w5bFtDEYO49U94CnfIymt7lErIbrMkB73vR+dhSoSZVPp8R8OzfVJZk/Z9G0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xbClLI66nLXR6+DrvXNRdDsoO2AywNyP9UvNF0j25Es=;
+	b=cRW6mP1pz65/Eq+nfYOerOJHYeI/9JkAmywuPWYpfUabXpatevW8XDcBcQgNqsBjATJ+O4ZuMBSCID4LkVllPe92zWIwhucgPeFKsAvOoVcAt1UI0hABGHBZDSRq85feMiBYlF8D0dh+6CZQEEOGgJaxKDr6h7/0GaUIr7JUMMA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.34,REQID:d9fc54a3-3227-4ed5-b592-3fb0fe3c6c27,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:abefa75,CLOUDID:41873596-10ce-4e4b-85c2-c9b5229ff92b,B
+X-CID-O-INFO: VERSION:1.1.34,REQID:aa828f0c-b811-4f95-8391-d18ecadc5e88,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:abefa75,CLOUDID:1d2e59fd-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-UUID: ba77f634940f11ee958cff29c719f35b-20231206
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: bc79b508940f11ee958cff29c719f35b-20231206
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1409861198; Wed, 06 Dec 2023 01:16:16 -0700
+	with ESMTP id 688168905; Wed, 06 Dec 2023 01:16:20 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 6 Dec 2023 16:15:40 +0800
+ 15.2.1118.26; Wed, 6 Dec 2023 16:15:44 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:15:39 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:15:42 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -71,17 +71,19 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,00/21] add driver to support secure video decoder
-Date: Wed, 6 Dec 2023 16:15:17 +0800
-Message-ID: <20231206081538.17056-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v3,03/21] v4l2: verify secure dmabufs are used in secure queue
+Date: Wed, 6 Dec 2023 16:15:20 +0800
+Message-ID: <20231206081538.17056-4-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231206081538.17056-1-yunfei.dong@mediatek.com>
+References: <20231206081538.17056-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_001620_948472_1D8BCF72 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20231206_001623_954961_37BA39B1 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,130 +98,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patch series used to enable secure video playback (SVP) on MediaTek
-hardware in the Linux kernel.
+From: Jeffrey Kardatzke <jkardatzke@google.com>
 
-Memory Definitions:
-secure memory - Memory allocated in the TEE (Trusted Execution
-Environment) which is inaccessible in the REE (Rich Execution
-Environment, i.e. linux kernel/userspace).
-secure handle - Integer value which acts as reference to 'secure
-memory'. Used in communication between TEE and REE to reference
-'secure memory'.
-secure buffer - 'secure memory' that is used to store decrypted,
-compressed video or for other general purposes in the TEE.
-secure surface - 'secure memory' that is used to store graphic buffers.
+Verfies in the dmabuf implementations that if the secure memory flag is
+set for a queue that the dmabuf submitted to the queue is unmappable.
 
-Memory Usage in SVP:
-The overall flow of SVP starts with encrypted video coming in from an
-outside source into the REE. The REE will then allocate a 'secure
-buffer' and send the corresponding 'secure handle' along with the
-encrypted, compressed video data to the TEE. The TEE will then decrypt
-the video and store the result in the 'secure buffer'. The REE will
-then allocate a 'secure surface'. The REE will pass the 'secure
-handles' for both the 'secure buffer' and 'secure surface' into the
-TEE for video decoding. The video decoder HW will then decode the
-contents of the 'secure buffer' and place the result in the 'secure
-surface'. The REE will then attach the 'secure surface' to the overlay
-plane for rendering of the video.
-
-Everything relating to ensuring security of the actual contents of the
-'secure buffer' and 'secure surface' is out of scope for the REE and
-is the responsibility of the TEE.
-
-This patch series is consists of four parts. The first is from Jeffrey,
-adding secure memory flag in v4l2 framework to support request secure
-buffer.
-
-The second and third parts are from John and T.J, adding some heap
-interfaces, then our kernel users could allocate buffer from special
-heap. The patch v1 is inside below dmabuf link.
-https://lore.kernel.org/linux-mediatek/20230911023038.30649-1-yong.wu@mediatek.com/
-To avoid confusing, move them into vcodec patchset since we use the
-new interfaces directly.
-
-The fourth part is mediatek decoder driver, adding tee interface to
-support secure video decoder.
-
+Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
-Changed in v3:
-- rewrite the cover-letter of this patch series
-- disable irq for svp mode
-- rebase the driver based on the latest media stage
+ drivers/media/common/videobuf2/videobuf2-dma-contig.c | 6 ++++++
+ drivers/media/common/videobuf2/videobuf2-dma-sg.c     | 6 ++++++
+ 2 files changed, 12 insertions(+)
 
-Changed in v2:
-- remove setting decoder mode and getting secure handle from decode
-- add Jeffrey's patch
-- add John and T.J's patch
-- getting secure flag with request buffer
-- fix some comments from patch v1
----
-Jeffrey Kardatzke (4):
-  v4l2: add secure memory flags
-  v4l2: handle secure memory flags in queue setup
-  v4l2: verify secure dmabufs are used in secure queue
-  v4l: add documentation for secure memory flag
-
-John Stultz (2):
-  dma-heap: Add proper kref handling on dma-buf heaps
-  dma-heap: Provide accessors so that in-kernel drivers can allocate
-    dmabufs from specific heaps
-
-T.J. Mercier (1):
-  dma-buf: heaps: Deduplicate docs and adopt common format
-
-Yunfei Dong (14):
-  media: mediatek: vcodec: add tee client interface to communiate with
-    optee-os
-  media: mediatek: vcodec: allocate tee share memory
-  media: mediatek: vcodec: send share memory data to optee
-  media: mediatek: vcodec: initialize msg and vsi information
-  media: mediatek: vcodec: add interface to allocate/free secure memory
-  media: mediatek: vcodec: using shared memory as vsi address
-  media: mediatek: vcodec: Add capture format to support one plane
-    memory
-  media: mediatek: vcodec: Add one plane format
-  media: medkatek: vcodec: support one plane capture buffer
-  media: medkatek: vcodec: re-construct h264 driver to support svp mode
-  media: medkatek: vcodec: remove parse nal_info in kernel
-  media: medkatek: vcodec: disable wait interrupt for svp mode
-  media: medkatek: vcodec: support tee decoder
-  media: mediatek: vcodec: move vdec init interface to setup callback
-
- .../userspace-api/media/v4l/buffer.rst        |   8 +-
- .../media/v4l/pixfmt-reserved.rst             |   8 +
- drivers/dma-buf/dma-heap.c                    | 139 +++++--
- .../media/common/videobuf2/videobuf2-core.c   |  23 ++
- .../common/videobuf2/videobuf2-dma-contig.c   |   6 +
- .../media/common/videobuf2/videobuf2-dma-sg.c |   6 +
- .../media/common/videobuf2/videobuf2-v4l2.c   |  34 +-
- .../media/platform/mediatek/vcodec/Kconfig    |   1 +
- .../mediatek/vcodec/common/mtk_vcodec_util.c  | 122 +++++-
- .../mediatek/vcodec/common/mtk_vcodec_util.h  |   3 +
- .../platform/mediatek/vcodec/decoder/Makefile |   1 +
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 155 ++++---
- .../vcodec/decoder/mtk_vcodec_dec_drv.c       |   8 +
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   7 +
- .../vcodec/decoder/mtk_vcodec_dec_hw.c        |  34 +-
- .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 383 ++++++++++++++++++
- .../vcodec/decoder/mtk_vcodec_dec_optee.h     | 156 +++++++
- .../vcodec/decoder/mtk_vcodec_dec_pm.c        |   6 +-
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c |  35 +-
- .../decoder/vdec/vdec_h264_req_common.c       |  11 +-
- .../decoder/vdec/vdec_h264_req_multi_if.c     | 334 +++++++++------
- .../mediatek/vcodec/decoder/vdec_drv_if.c     |   4 +-
- .../mediatek/vcodec/decoder/vdec_msg_queue.c  |   9 +-
- .../mediatek/vcodec/decoder/vdec_vpu_if.c     |  57 ++-
- .../mediatek/vcodec/decoder/vdec_vpu_if.h     |   4 +
- drivers/media/v4l2-core/v4l2-common.c         |   2 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
- include/linux/dma-heap.h                      |  29 +-
- include/media/videobuf2-core.h                |   8 +-
- include/uapi/linux/videodev2.h                |   3 +
- 30 files changed, 1296 insertions(+), 301 deletions(-)
- create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
- create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-
+diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
+index 3d4fd4ef5310..ad58ef8dc231 100644
+--- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
++++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
+@@ -710,6 +710,12 @@ static int vb2_dc_map_dmabuf(void *mem_priv)
+ 		return -EINVAL;
+ 	}
+ 
++	/* verify the dmabuf is secure if we are in secure mode */
++	if (buf->vb->vb2_queue->secure_mem && sg_page(sgt->sgl)) {
++		pr_err("secure queue requires secure dma_buf");
++		return -EINVAL;
++	}
++
+ 	/* checking if dmabuf is big enough to store contiguous chunk */
+ 	contig_size = vb2_dc_get_contiguous_size(sgt);
+ 	if (contig_size < buf->size) {
+diff --git a/drivers/media/common/videobuf2/videobuf2-dma-sg.c b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
+index 28f3fdfe23a2..55428c73c380 100644
+--- a/drivers/media/common/videobuf2/videobuf2-dma-sg.c
++++ b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
+@@ -564,6 +564,12 @@ static int vb2_dma_sg_map_dmabuf(void *mem_priv)
+ 		return -EINVAL;
+ 	}
+ 
++	/* verify the dmabuf is secure if we are in secure mode */
++	if (buf->vb->vb2_queue->secure_mem && !sg_dma_secure(sgt->sgl)) {
++		pr_err("secure queue requires secure dma_buf");
++		return -EINVAL;
++	}
++
+ 	buf->dma_sgt = sgt;
+ 	buf->vaddr = NULL;
+ 
 -- 
 2.18.0
 
