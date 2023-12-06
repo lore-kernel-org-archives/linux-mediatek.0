@@ -4,50 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D67FC4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 12:46:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5D3C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 13:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2HzggLs09lPUuy4v/Jz2bzC1BOm/VvGG+/yB1SORusA=; b=ywMuRe8OnmHnST7u9n0mHGL262
-	do0cAbB1WBjMQP1cG8Gn1QEFoZuqUCBtqTiQWnmrioaMKVoE++GzKK2NMThaIyr8YCIV+XKFz/+kT
-	OcxIQZGfYsxuHgZVgZymngWSi50BJZMZ/KrH9c1xqG7UBn9RfI+inHOJqal57NufjqOjFrnT/hII7
-	hR7cRIJEfXHti2sHgNEjINbwpnhW+dH9ylCTCaykDR3SEzqKq6a5Yg4x37ksC/7UWKkiHKaZgC27L
-	027xQoqy16zL+30y60bqcdR7K2u5eHfrONn2MVcG3WY3MI6349Qo7Wsi+TzLnX3xMTzhTVhyfpuae
-	D6IMB7Kw==;
+	bh=GKUyAGPVNJ2iCz/byc+vad2U0HtCXFR/OKxsFSUjBSo=; b=drH784DsNnBFAGHJeI5XY5iWGt
+	MqPEhfPBUWYAP0OIJcXG5/2/ij1WHQFcwOKGrtOWVS2YEgD5fg9KNbVDlD1UshK9Qs2NMB16glHaj
+	aJJClo8Soz4azcDdD8JX3vesneFzXDkKRFjLjW3Y3S52GhprRPrI5Oj0eKhP18PmdgspCZLBo1Tqk
+	Kep1SAi0fbVurWAJRaCj2HeOXxj/4P7x88CvUH3d9qg9IWEwgAYdJrdQ+0cm1BO9imzi8J0ahTPMO
+	qhqRQub9HQkn7d30l+GN819YGF0xwsu+uSjYCD7mqT91bToY8HhBCOQ+M22TnHxbY1cgwpPZWeTBn
+	W/KwCGwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rArI8-00AIyD-0j;
-	Wed, 06 Dec 2023 12:46:16 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1rAs2V-00AOcw-0t;
+	Wed, 06 Dec 2023 13:34:11 +0000
+Received: from mail-ot1-f42.google.com ([209.85.210.42])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rArI4-00AIv8-0C;
-	Wed, 06 Dec 2023 12:46:13 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rArHf-0005kg-2z;
-	Wed, 06 Dec 2023 12:45:49 +0000
-Date: Wed, 6 Dec 2023 12:45:40 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v3 2/4] dt-bindings: clock: mediatek: add clock
- controllers of MT7988
-Message-ID: <ZXBs9GOOOlZrMuSW@makrotopia.org>
-References: <23bc89d407e7797e97b703fa939b43bfe79296ce.1701823757.git.daniel@makrotopia.org>
- <def05aac79ddff872d3e56698b736cb445f14116.1701823757.git.daniel@makrotopia.org>
- <3e72bff6-9f4d-4cd4-845e-b065f1233ec6@collabora.com>
+	id 1rAs2S-00AOc9-0G;
+	Wed, 06 Dec 2023 13:34:09 +0000
+Received: by mail-ot1-f42.google.com with SMTP id 46e09a7af769-6d9d29a2332so46602a34.0;
+        Wed, 06 Dec 2023 05:34:06 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701869646; x=1702474446;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GKUyAGPVNJ2iCz/byc+vad2U0HtCXFR/OKxsFSUjBSo=;
+        b=kUmqBE2ATAWmxYNy3PzxspgcqsZg1hHUoEsef52DRuB2LRZMmZlFyXyVs3pDfXoLde
+         HHxq3ir0Wy1+7IXU/Dntmd0f9is2gQiLnZ3788HILiCoXE2EO9Yi0gPBV9Jv963wN9/T
+         5lxVQBIiHZSa67Na9Bh4ei1rvm83CCEDbPNS1YdYiYEcksNH9XFMLO2UFOUUI/bZdQaS
+         WgJ/EuXFxCqlXe3HMdfYlQyR3mYQNX4VzsdMQfmlarWd3cX90Kjo6zZbikq07br2X7OO
+         qNYEQC/wzJXSlurWMWTYw44iIm8bebqDxlFynN1voVl5lwysUpHeTOHITyZpV2/6c3TG
+         oiwQ==
+X-Gm-Message-State: AOJu0Yx/cBNHlRlidpIpSRXu4L9+kYAwsb9UDhCmOvmLEVj1H86C5hA2
+	44r7sJHCV7iXwu53Exg+Qw==
+X-Google-Smtp-Source: AGHT+IHWs8BDYeEsQ9p7nU50NuMdIrEA5NhSUWcTgZm0IYA+OhimehJYkLAie1qpwHIrrcHjciYBFA==
+X-Received: by 2002:a05:6830:2aaa:b0:6d8:74e2:552a with SMTP id s42-20020a0568302aaa00b006d874e2552amr431988otu.22.1701869645696;
+        Wed, 06 Dec 2023 05:34:05 -0800 (PST)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id z17-20020a9d62d1000000b006b9848f8aa7sm2665206otk.45.2023.12.06.05.34.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Dec 2023 05:34:05 -0800 (PST)
+Received: (nullmailer pid 1911334 invoked by uid 1000);
+	Wed, 06 Dec 2023 13:34:03 -0000
+Date: Wed, 6 Dec 2023 07:34:03 -0600
+From: Rob Herring <robh@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, 
+	Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
+	Alexander Couzens <lynxis@fe80.eu>, Qingfang Deng <dqfext@gmail.com>, 
+	SkyLake Huang <SkyLake.Huang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [RFC PATCH v2 5/8] net: pcs: add driver for MediaTek USXGMII PCS
+Message-ID: <20231206133403.GA1894508-robh@kernel.org>
+References: <cover.1701826319.git.daniel@makrotopia.org>
+ <3cd8af5e44554c2db2d7898494ee813967206bd9.1701826319.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <3e72bff6-9f4d-4cd4-845e-b065f1233ec6@collabora.com>
+In-Reply-To: <3cd8af5e44554c2db2d7898494ee813967206bd9.1701826319.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_044612_103220_B0F17F06 
-X-CRM114-Status: GOOD (  23.56  )
+X-CRM114-CacheID: sfid-20231206_053408_122693_37F8904D 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,149 +90,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Eric Dumazet <edumazet@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-clk@vger.kernel.org, Dan Carpenter <dan.carpenter@linaro.org>, Sabrina Dubroca <sd@queasysnail.net>, Chen-Yu Tsai <wenst@chromium.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Garmin.Chang" <Garmin.Chang@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Jianhui Zhao <zhaojh329@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 06, 2023 at 11:59:54AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 06/12/23 01:57, Daniel Golle ha scritto:
-> > Add various clock controllers found in the MT7988 SoC to existing
-> > bindings (if applicable) and add files for the new ethwarp, mcusys
-> > and xfi-pll clock controllers not previously present in any SoC.
-> > 
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> > v3:
-> >   * move clock bindings to clock folder
-> >   * drop ti,syscon-reset from bindings and example
-> >   * merge mcusys with topckgen bindings
-> > 
-> > v2:
-> >   * dropped unused labels
-> >   * add 'type: object' declaration for reset-controller found in new
-> >     ethwarp controller and represented as ti,syscon-reset
-> >   * rebase on top of
-> >     "dt-bindings: arm: mediatek: move ethsys controller & convert to DT schema"
-> > 
-> >   .../arm/mediatek/mediatek,infracfg.yaml       |  1 +
-> >   .../bindings/clock/mediatek,apmixedsys.yaml   |  1 +
-> >   .../bindings/clock/mediatek,ethsys.yaml       |  1 +
-> >   .../clock/mediatek,mt7988-ethwarp.yaml        | 49 +++++++++++++++++++
-> >   .../clock/mediatek,mt7988-xfi-pll.yaml        | 48 ++++++++++++++++++
-> >   .../bindings/clock/mediatek,topckgen.yaml     |  2 +
-> >   .../bindings/net/pcs/mediatek,sgmiisys.yaml   | 13 +++--
-> >   7 files changed, 112 insertions(+), 3 deletions(-)
-> >   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
-> >   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> > index ea98043c6ba3d..230b5188a88db 100644
-> > --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> > @@ -30,6 +30,7 @@ properties:
-> >                 - mediatek,mt7629-infracfg
-> >                 - mediatek,mt7981-infracfg
-> >                 - mediatek,mt7986-infracfg
-> > +              - mediatek,mt7988-infracfg
-> >                 - mediatek,mt8135-infracfg
-> >                 - mediatek,mt8167-infracfg
-> >                 - mediatek,mt8173-infracfg
-> > diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-> > index 372c1d744bc27..685535846cbb7 100644
-> > --- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-> > +++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-> > @@ -22,6 +22,7 @@ properties:
-> >             - mediatek,mt7622-apmixedsys
-> >             - mediatek,mt7981-apmixedsys
-> >             - mediatek,mt7986-apmixedsys
-> > +          - mediatek,mt7988-apmixedsys
-> >             - mediatek,mt8135-apmixedsys
-> >             - mediatek,mt8173-apmixedsys
-> >             - mediatek,mt8516-apmixedsys
-> > diff --git a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
-> > index 94d42c8647777..f9cddacc2eae1 100644
-> > --- a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
-> > +++ b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
-> > @@ -22,6 +22,7 @@ properties:
-> >                 - mediatek,mt7629-ethsys
-> >                 - mediatek,mt7981-ethsys
-> >                 - mediatek,mt7986-ethsys
-> > +              - mediatek,mt7988-ethsys
-> >             - const: syscon
-> >         - items:
-> >             - const: mediatek,mt7623-ethsys
-> > diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
-> > new file mode 100644
-> > index 0000000000000..9b919a155eb13
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
-> > @@ -0,0 +1,49 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-ethwarp.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek MT7988 ethwarp Controller
-> > +
-> > +maintainers:
-> > +  - Daniel Golle <daniel@makrotopia.org>
-> > +
-> > +description:
-> > +  The Mediatek MT7988 ethwarp controller provides clocks and resets for the
-> > +  Ethernet related subsystems found the MT7988 SoC.
-> > +  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - const: mediatek,mt7988-ethwarp
-> > +      - const: syscon
-> > +      - const: simple-mfd
+On Wed, Dec 06, 2023 at 01:44:38AM +0000, Daniel Golle wrote:
+> Add driver for USXGMII PCS found in the MediaTek MT7988 SoC and supporting
+> USXGMII, 10GBase-R and 5GBase-R interface modes. In order to support
+> Cisco SGMII, 1000Base-X and 2500Base-X via the also present LynxI PCS
+> create a wrapped PCS taking care of the components shared between the
+> new USXGMII PCS and the legacy LynxI PCS.
 > 
-> No, this is not a mfd, I say.
-> 
-> Prove me wrong! :-)
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  .../bindings/net/pcs/mediatek,usxgmii.yaml    |  46 +-
 
-https://github.com/dangowrt/linux/blob/mt7988-for-next/arch/arm64/boot/dts/mediatek/mt7988a.dtsi#L564
+Why are you changing the binding you just added?
 
-The 'simple-mfd' compatible is required to have the Linux
-kernel probe drivers for sub-nodes -- several drivers will act on
-the different aspects of the circuit exposed at this memory range.
-From what I understand, this is the definition of a MFD.
+In any case, bindings are separate patches.
 
-> 
-> ..snip..
-> 
-> > diff --git a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
-> > index 66a95191bd776..68632cda334bd 100644
-> > --- a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
-> > +++ b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
-> > @@ -15,15 +15,22 @@ description:
-> >   properties:
-> >     compatible:
-> > -    items:
-> > -      - enum:
-> > +    oneOf:
-> > +      - items:
-> > +        - enum:
-> >             - mediatek,mt7622-sgmiisys
-> >             - mediatek,mt7629-sgmiisys
-> >             - mediatek,mt7981-sgmiisys_0
-> >             - mediatek,mt7981-sgmiisys_1
-> >             - mediatek,mt7986-sgmiisys_0
-> >             - mediatek,mt7986-sgmiisys_1
-> > -      - const: syscon
-> > +        - const: syscon
-> > +      - items:
-> > +        - enum:
-> > +          - mediatek,mt7988-sgmiisys_0
-> > +          - mediatek,mt7988-sgmiisys_1
-> > +        - const: syscon
-> > +        - const: simple-mfd
-> 
-> Same.
-> 
-> Cheers,
-> Angelo
+>  MAINTAINERS                                   |   2 +
+>  drivers/net/pcs/Kconfig                       |  11 +
+>  drivers/net/pcs/Makefile                      |   1 +
+>  drivers/net/pcs/pcs-mtk-usxgmii.c             | 413 ++++++++++++++++++
+>  include/linux/pcs/pcs-mtk-usxgmii.h           |  26 ++
+>  6 files changed, 456 insertions(+), 43 deletions(-)
+>  create mode 100644 drivers/net/pcs/pcs-mtk-usxgmii.c
+>  create mode 100644 include/linux/pcs/pcs-mtk-usxgmii.h
 
