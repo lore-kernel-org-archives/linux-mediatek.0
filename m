@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A6E2C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:17:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ABA0C10F07
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:17:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DMqBb8ywjQ0rZOsEH87m6D0Csn8bNMMs2dmXkp7WJNQ=; b=qLV46tB6bnfuIQCOiqfmv19VX3
-	i1HamRuigAIpCBtaaUEdPOdUPWRA1EHAgjPhJ1GGBPFHWILeVHZCooVjcW//At7N6Kiv8fBAvTLdL
-	FdE8c1TiCwCGqJLBDrCCA4VnWM0nA7FdKodOJgZMFmOHH0AyjdK72cKTJnczqRoRUZHuHgiXQJ8ey
-	o1nwah/KvKgrIfUzeLEVH3aQE+ZeCjt+aAd+rX2bWY8svPrAlsfnURaoV5JjuLtLHIY3QPk3JG6OT
-	vrVL+vx6OpEUjiUPqy+/9prcWUpGKwIjySNLwjveDEjdCxarKIjEcEe5gcCRP8/sIbe0XssWgAFgk
-	V5J8H0jg==;
+	bh=JWJt5f3OFXku7W6faTUM0+bKsbswJle1HktQEF2gUcM=; b=fMdX7TnfNBr0WCMLrXbANaZekf
+	JCVGmYqErpHj3AXN9pdQGMJIdyXRAmhhJ+dlKkfAy1SaODdxPYYEhcjNV/K25QRki3WRhXQtu5mJ/
+	cYb60UaT37E9B3oTGIwzimXUuOvCmObs/um3g2xZfjtQvOJ1geteIyxB4xHS7PKWyIWlEKXD+0SHM
+	efSQ9BSgM9Z+7uozcTQYZjlY5v0pgaq+E0NVZYC9Iwu1vSHPQRPPWz48M1JWpcCudWOwixhenkC8r
+	PEcXVtHpcs/a7dSL4cXUN8NEb09Ytx0rYqtuHcDlOiO8SvzgwzrGET125BI7pspyOTtZ5ImOypGd4
+	68CM5Aqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAn5a-009OUU-1g;
-	Wed, 06 Dec 2023 08:17:02 +0000
+	id 1rAn5b-009OV7-1W;
+	Wed, 06 Dec 2023 08:17:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAn5D-009O5l-33;
-	Wed, 06 Dec 2023 08:16:44 +0000
-X-UUID: c6547018940f11ee958cff29c719f35b-20231206
+	id 1rAn5E-009O9w-0l;
+	Wed, 06 Dec 2023 08:16:45 +0000
+X-UUID: c5cd1ca8940f11ee958cff29c719f35b-20231206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=DMqBb8ywjQ0rZOsEH87m6D0Csn8bNMMs2dmXkp7WJNQ=;
-	b=suUdqM844XPz+3d51w7mqblLxLtywKOgUZYKmkvxOXiKzpC4tU9p08y0jNq4O/rdLk8uWbaq6EYduY3yIvTs55IBgESqyDyvZ37cRFkUPCpuyTFOeAMQSiDWrVbGpQCJSKoXr0Z+NVArgmn7qLd2pSr+k6wk/eLSE6oafP6wiQs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JWJt5f3OFXku7W6faTUM0+bKsbswJle1HktQEF2gUcM=;
+	b=qmsJEcf1gcxXVZKE52TZontudTa1ALajZiU+nHrEtGomaYMQcxMtnDdtXlxsc5IFBEeYO/6JmfzHZNmDRYBo3JuSOHnbYgKwHC7wTdqQLWtnoYWIkk2/ExzPtTeQHPJULOI5kWODWrNLiJCZ94EUUtfEAHzm4cSFAxNZaRiTV+w=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.34,REQID:08ab3990-0989-4f93-807c-b210682dcbf7,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:abefa75,CLOUDID:d32e59fd-4a48-46e2-b946-12f04f20af8c,B
+X-CID-O-INFO: VERSION:1.1.34,REQID:30cc7bd7-43a3-4aba-bd0a-84ef5d217904,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:abefa75,CLOUDID:d12e59fd-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c6547018940f11ee958cff29c719f35b-20231206
+X-UUID: c5cd1ca8940f11ee958cff29c719f35b-20231206
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1891716606; Wed, 06 Dec 2023 01:16:36 -0700
+	with ESMTP id 1077947766; Wed, 06 Dec 2023 01:16:35 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 6 Dec 2023 16:15:51 +0800
+ 15.2.1118.26; Wed, 6 Dec 2023 16:15:49 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:15:50 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:15:48 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -71,9 +71,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,09/21] media: mediatek: vcodec: allocate tee share memory
-Date: Wed, 6 Dec 2023 16:15:26 +0800
-Message-ID: <20231206081538.17056-10-yunfei.dong@mediatek.com>
+Subject: [PATCH v3,07/21] dma-heap: Provide accessors so that in-kernel drivers can allocate dmabufs from specific heaps
+Date: Wed, 6 Dec 2023 16:15:24 +0800
+Message-ID: <20231206081538.17056-8-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231206081538.17056-1-yunfei.dong@mediatek.com>
 References: <20231206081538.17056-1-yunfei.dong@mediatek.com>
@@ -81,21 +81,22 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.400800-8.000000
-X-TMASE-MatchedRID: +Xe+hmBfvL5A5/DRRISQHAPZZctd3P4BK2i9pofGVSuYBF1C0J2QPotf
-	Mtu9FfbrPcGjGTU7TndXUz+XcOBhEYYCBZzro74fDB+ErBr0bAO2McZY43zJ423D6f6IpbLIyo3
-	1HV/erwydBDUJwKypkLvrVFvaS3pv9A9EfhuU0xx1e7Xbb6Im2pRy1HDTPOXaW+jwVKpqvlI9yB
-	u1TZGrQeLzNWBegCW2wgn7iDBesS3CttcwYNipX9TGCNBptnYun5DLLJVJV30sBvUgh06xuAKG4
-	aT8V85fCMu1t+UdIjdWXGvUUmKP2w==
+X-TM-AS-Result: No-10--7.817000-8.000000
+X-TMASE-MatchedRID: qPZlTxuLTeftt0HEL3BUV4lD2T5imTkJ2qBSQHAh8pg0QmmUihPzrFJS
+	0b8z/9TB8AyWk2NFMNbijpjet3oGSJCoy9iDotiwNNHZMWDTEbe4UO5+xwKkcStjI02a+7m1J7o
+	vlkPXpS3VaZR68ynk9lCRaYaDm6fHBCaQyxlaPkG3D7EeeyZCMzGZtPrBBPZrEvoxTu3fj1tEe5
+	BdjBKTALjfysYMcGyRGce8edCRlYkmcsJib2IjaaOuVibdZNTv7yWPaQc4INQOkJQR4QWbsG+3c
+	txX3zZNo2jEjZ+uot1HVle6mAl0da+/EguYor8cFEUknJ/kEl7dB/CxWTRRu9bFCwAgdKkSZVhc
+	Zw1+0o4U24haPFkSUhqL6AAGbHEsKH3Be5ENxfV32uEPMy/F85RMZUCEHkRt
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.400800-8.000000
+X-TMASE-Result: 10--7.817000-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: CE10DDF852BA61A8626F5852BC8342D41FA6139D30802DEEE943852D838DAF8B2000:8
+X-TM-SNTS-SMTP: EB500FF3E1D7DEEA103A36D1DC445ABF71A2717DCC195B612B7AC5653DC6DC132000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_001640_084994_714FFDD3 
-X-CRM114-Status: GOOD (  17.33  )
+X-CRM114-CacheID: sfid-20231206_001640_558951_7453F330 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,187 +111,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Allocate two share memory for each lat and core hardware used to share
-information with optee-os. Msg buffer used to send ipi command and get ack
-command with optee-os, data buffer used to store vsi information which
-used for hardware decode.
+From: John Stultz <jstultz@google.com>
 
+This allows drivers who don't want to create their own
+DMA-BUF exporter to be able to allocate DMA-BUFs directly
+from existing DMA-BUF Heaps.
+
+There is some concern that the premise of DMA-BUF heaps is
+that userland knows better about what type of heap memory
+is needed for a pipeline, so it would likely be best for
+drivers to import and fill DMA-BUFs allocated by userland
+instead of allocating one themselves, but this is still
+up for debate.
+
+Signed-off-by: John Stultz <jstultz@google.com>
+Signed-off-by: T.J. Mercier <tjmercier@google.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+[Yong: Fix the checkpatch alignment warning]
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 80 ++++++++++++++++++-
- .../vcodec/decoder/mtk_vcodec_dec_optee.h     | 32 ++++++++
- 2 files changed, 111 insertions(+), 1 deletion(-)
+ drivers/dma-buf/dma-heap.c | 83 ++++++++++++++++++++++++++++++--------
+ include/linux/dma-heap.h   |  6 +++
+ 2 files changed, 73 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-index 38d9c1c1785a..611fb0e56480 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-@@ -47,13 +47,69 @@ int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev)
- }
- EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_private_init);
+diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
+index 97025ee8500f..6efe833a4b10 100644
+--- a/drivers/dma-buf/dma-heap.c
++++ b/drivers/dma-buf/dma-heap.c
+@@ -51,12 +51,24 @@ static dev_t dma_heap_devt;
+ static struct class *dma_heap_class;
+ static DEFINE_XARRAY_ALLOC(dma_heap_minors);
  
-+static void mtk_vcodec_dec_optee_deinit_memref(struct mtk_vdec_optee_ca_info *ca_info,
-+					       enum mtk_vdec_optee_data_index data_index)
-+{
-+	tee_shm_free(ca_info->shm_memref[data_index].msg_shm);
-+}
-+
-+static int mtk_vcodec_dec_optee_init_memref(struct tee_context *tee_vdec_ctx,
-+					    struct mtk_vdec_optee_ca_info *ca_info,
-+					    enum mtk_vdec_optee_data_index data_index)
-+{
-+	struct mtk_vdec_optee_shm_memref *shm_memref;
-+	int alloc_size = 0, err = 0;
-+	u64 shm_param_type = 0;
-+	bool copy_buffer;
-+
-+	switch (data_index) {
-+	case OPTEE_MSG_INDEX:
-+		shm_param_type = TEE_IOCTL_PARAM_ATTR_TYPE_MEMREF_INOUT;
-+		alloc_size = MTK_VDEC_OPTEE_MSG_SIZE;
-+		copy_buffer = true;
-+		break;
-+	case OPTEE_DATA_INDEX:
-+		shm_param_type = TEE_IOCTL_PARAM_ATTR_TYPE_MEMREF_INOUT;
-+		alloc_size = MTK_VDEC_OPTEE_HW_SIZE;
-+		copy_buffer = false;
-+		break;
-+	default:
-+		pr_err(MTK_DBG_VCODEC_STR "tee invalid data_index: %d.\n", data_index);
-+		return -EINVAL;
-+	}
-+
-+	shm_memref = &ca_info->shm_memref[data_index];
-+
-+	/* Allocate dynamic shared memory with decoder TA */
-+	shm_memref->msg_shm_size = alloc_size;
-+	shm_memref->param_type = shm_param_type;
-+	shm_memref->copy_to_ta = copy_buffer;
-+	shm_memref->msg_shm = tee_shm_alloc_kernel_buf(tee_vdec_ctx, shm_memref->msg_shm_size);
-+	if (IS_ERR(shm_memref->msg_shm)) {
-+		pr_err(MTK_DBG_VCODEC_STR "tee alloc buf fail: data_index:%d.\n", data_index);
-+		return -ENOMEM;
-+	}
-+
-+	shm_memref->msg_shm_ca_buf = tee_shm_get_va(shm_memref->msg_shm, 0);
-+	if (IS_ERR(shm_memref->msg_shm_ca_buf)) {
-+		pr_err(MTK_DBG_VCODEC_STR "tee get shm va fail: data_index:%d.\n", data_index);
-+		err = PTR_ERR(shm_memref->msg_shm_ca_buf);
-+		goto err_get_msg_va;
-+	}
-+
-+	return err;
-+err_get_msg_va:
-+	tee_shm_free(shm_memref->msg_shm);
-+	return err;
-+}
-+
- static int mtk_vcodec_dec_optee_init_hw_info(struct mtk_vdec_optee_private *optee_private,
- 					     enum mtk_vdec_hw_id hardware_index)
+-static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+-				 unsigned int fd_flags,
+-				 unsigned int heap_flags)
++/**
++ * dma_heap_buffer_alloc - Allocate dma-buf from a dma_heap
++ * @heap:	DMA-Heap to allocate from
++ * @len:	size to allocate in bytes
++ * @fd_flags:	flags to set on returned dma-buf fd
++ * @heap_flags: flags to pass to the dma heap
++ *
++ * This is for internal dma-buf allocations only. Free returned buffers with dma_buf_put().
++ */
++struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
++				      unsigned int fd_flags,
++				      unsigned int heap_flags)
  {
- 	struct device *dev = &optee_private->vcodec_dev->plat_dev->dev;
- 	struct tee_ioctl_open_session_arg session_arg;
- 	struct mtk_vdec_optee_ca_info *ca_info;
--	int err = 0, session_func;
-+	int err, i, j, session_func;
- 
- 	/* Open lat and core session with vdec TA. */
- 	switch (hardware_index) {
-@@ -87,6 +143,24 @@ static int mtk_vcodec_dec_optee_init_hw_info(struct mtk_vdec_optee_private *opte
- 	dev_dbg(dev, MTK_DBG_VCODEC_STR "open vdec tee session hw_id:%d session_id=%x.\n",
- 		hardware_index, ca_info->vdec_session_id);
- 
-+	/* Allocate dynamic shared memory with decoder TA */
-+	for (i = 0; i < OPTEE_MAX_INDEX; i++) {
-+		err = mtk_vcodec_dec_optee_init_memref(optee_private->tee_vdec_ctx, ca_info, i);
-+		if (err) {
-+			dev_err(dev, MTK_DBG_VCODEC_STR "init vdec memref failed: %d.\n", i);
-+			goto err_init_memref;
-+		}
-+	}
+-	struct dma_buf *dmabuf;
+-	int fd;
++	if (fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
++		return ERR_PTR(-EINVAL);
 +
-+	return err;
-+err_init_memref:
-+	if (i != 0) {
-+		for (j = 0; j < i; j++)
-+			mtk_vcodec_dec_optee_deinit_memref(ca_info, j);
-+	}
-+
-+	tee_client_close_session(optee_private->tee_vdec_ctx, ca_info->vdec_session_id);
-+
- 	return err;
- }
++	if (heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
++		return ERR_PTR(-EINVAL);
  
-@@ -94,12 +168,16 @@ static void mtk_vcodec_dec_optee_deinit_hw_info(struct mtk_vdec_optee_private *o
- 						enum mtk_vdec_hw_id hw_id)
+ 	/*
+ 	 * Allocations from all heaps have to begin
+@@ -64,9 +76,20 @@ static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+ 	 */
+ 	len = PAGE_ALIGN(len);
+ 	if (!len)
+-		return -EINVAL;
++		return ERR_PTR(-EINVAL);
++
++	return heap->ops->allocate(heap, len, fd_flags, heap_flags);
++}
++EXPORT_SYMBOL_GPL(dma_heap_buffer_alloc);
+ 
+-	dmabuf = heap->ops->allocate(heap, len, fd_flags, heap_flags);
++static int dma_heap_bufferfd_alloc(struct dma_heap *heap, size_t len,
++				   unsigned int fd_flags,
++				   unsigned int heap_flags)
++{
++	struct dma_buf *dmabuf;
++	int fd;
++
++	dmabuf = dma_heap_buffer_alloc(heap, len, fd_flags, heap_flags);
+ 	if (IS_ERR(dmabuf))
+ 		return PTR_ERR(dmabuf);
+ 
+@@ -104,15 +127,9 @@ static long dma_heap_ioctl_allocate(struct file *file, void *data)
+ 	if (heap_allocation->fd)
+ 		return -EINVAL;
+ 
+-	if (heap_allocation->fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
+-		return -EINVAL;
+-
+-	if (heap_allocation->heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
+-		return -EINVAL;
+-
+-	fd = dma_heap_buffer_alloc(heap, heap_allocation->len,
+-				   heap_allocation->fd_flags,
+-				   heap_allocation->heap_flags);
++	fd = dma_heap_bufferfd_alloc(heap, heap_allocation->len,
++				     heap_allocation->fd_flags,
++				     heap_allocation->heap_flags);
+ 	if (fd < 0)
+ 		return fd;
+ 
+@@ -205,6 +222,7 @@ void *dma_heap_get_drvdata(struct dma_heap *heap)
  {
- 	struct mtk_vdec_optee_ca_info *ca_info;
-+	int i;
- 
- 	if (hw_id == MTK_VDEC_LAT0)
- 		ca_info = &optee_private->lat_ca;
- 	else
- 		ca_info = &optee_private->core_ca;
- 
-+	for (i = 0; i < OPTEE_MAX_INDEX; i++)
-+		mtk_vcodec_dec_optee_deinit_memref(ca_info, i);
-+
- 	tee_client_close_session(optee_private->tee_vdec_ctx, ca_info->vdec_session_id);
+ 	return heap->priv;
  }
++EXPORT_SYMBOL_GPL(dma_heap_get_drvdata);
  
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-index 8b1dca49331e..24aa63af9887 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-@@ -18,16 +18,48 @@
+ /**
+  * dma_heap_get_name - get heap name
+@@ -217,6 +235,7 @@ const char *dma_heap_get_name(struct dma_heap *heap)
+ {
+ 	return heap->name;
+ }
++EXPORT_SYMBOL_GPL(dma_heap_get_name);
  
- #define MTK_OPTEE_MAX_TEE_PARAMS 4
- 
-+#define MTK_VDEC_OPTEE_MSG_SIZE     128
-+#define MTK_VDEC_OPTEE_HW_SIZE      (8 * SZ_1K)
+ /**
+  * dma_heap_add - adds a heap to dmabuf heaps
+@@ -307,6 +326,37 @@ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
+ 	kfree(heap);
+ 	return err_ret;
+ }
++EXPORT_SYMBOL_GPL(dma_heap_add);
 +
 +/**
-+ * struct mtk_vdec_optee_shm_memref - share memory reference params
-+ * @msg_shm:        message shared with TA in TEE.
-+ * @msg_shm_ca_buf: ca buffer.
++ * dma_heap_find - get the heap registered with the specified name
++ * @name: Name of the DMA-Heap to find
 + *
-+ * @msg_shm_size:   share message size.
-+ * @param_type:     each tee param types.
-+ * @copy_to_ta:     need to copy data from ca to share memory.
++ * Returns:
++ * The DMA-Heap with the provided name.
++ *
++ * NOTE: DMA-Heaps returned from this function MUST be released using
++ * dma_heap_put() when the user is done to enable the heap to be unloaded.
 + */
-+struct mtk_vdec_optee_shm_memref {
-+	struct tee_shm *msg_shm;
-+	u8 *msg_shm_ca_buf;
++struct dma_heap *dma_heap_find(const char *name)
++{
++	struct dma_heap *h;
 +
-+	u32 msg_shm_size;
-+	u64 param_type;
-+	bool copy_to_ta;
-+};
++	mutex_lock(&heap_list_lock);
++	list_for_each_entry(h, &heap_list, list) {
++		if (!kref_get_unless_zero(&h->refcount))
++			continue;
 +
- /**
-  * struct mtk_vdec_optee_ca_info - ca related param
-  * @vdec_session_id:   optee TA session identifier.
-  * @hw_id:             hardware index.
-  * @vdec_session_func: trusted application function id used specific to the TA.
-+ * @shm_memref:        share memory reference params.
-  */
- struct mtk_vdec_optee_ca_info {
- 	u32 vdec_session_id;
- 	enum mtk_vdec_hw_id hw_id;
- 	u32 vdec_session_func;
-+	struct mtk_vdec_optee_shm_memref shm_memref[MTK_OPTEE_MAX_TEE_PARAMS];
-+};
-+
-+/*
-+ * enum mtk_vdec_optee_data_index - used to indentify each share memory information
-+ */
-+enum mtk_vdec_optee_data_index {
-+	OPTEE_MSG_INDEX = 0,
-+	OPTEE_DATA_INDEX,
-+	OPTEE_MAX_INDEX,
- };
++		if (!strcmp(h->name, name)) {
++			mutex_unlock(&heap_list_lock);
++			return h;
++		}
++		dma_heap_put(h);
++	}
++	mutex_unlock(&heap_list_lock);
++	return NULL;
++}
++EXPORT_SYMBOL_GPL(dma_heap_find);
  
- /**
+ static void dma_heap_release(struct kref *ref)
+ {
+@@ -332,6 +382,7 @@ void dma_heap_put(struct dma_heap *heap)
+ {
+ 	kref_put(&heap->refcount, dma_heap_release);
+ }
++EXPORT_SYMBOL_GPL(dma_heap_put);
+ 
+ static char *dma_heap_devnode(const struct device *dev, umode_t *mode)
+ {
+diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
+index d57593f8a1bc..3cbf9bff2346 100644
+--- a/include/linux/dma-heap.h
++++ b/include/linux/dma-heap.h
+@@ -46,6 +46,12 @@ const char *dma_heap_get_name(struct dma_heap *heap);
+ 
+ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info);
+ 
++struct dma_heap *dma_heap_find(const char *name);
++
+ void dma_heap_put(struct dma_heap *heap);
+ 
++struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
++				      unsigned int fd_flags,
++				      unsigned int heap_flags);
++
+ #endif /* _DMA_HEAPS_H */
 -- 
 2.18.0
 
