@@ -4,37 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77D1AC10DCE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 19:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C19C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 20:23:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qmfYsC4VkfU8W04M7skBNxbqvp+vndqxS7lpBsH3A3A=; b=ODiCjOPKGzXu0+9FvBgcfXPUAq
-	25zBkOypr+0lNy1Z+KCh2Lfc/PYTFrmzn263vzStWHf6iwpxPSb/8Nz7xlOX7XZJTvJ45kAyDfEdV
-	U2iuwyqvGZt0fuDt0bHWVOdrc5I7Vp3KeZDYXr1Mdw8VQxXkT6SH4pBwmQ45SJaA9a4fE4OsoSGzj
-	XNADbeNH04cFFZXN5mHfNIXWZ7OzFevauET8Du4Vk/oTLiOf27IlvKwwgbIXf2WLQSe5PVTvdJdry
-	UoUb6Z1a68LnGzFuh6l2r2YZSCKWO4t5F8noP2epFR8ZaNf8njoPA0WaFdrpQ6VUrXoKhfaQImqiA
-	sjQm7fMQ==;
+	bh=84Czrtcy2ZdOY4+h79KmMJFEB0OGPN7K+ECAl/hY/XY=; b=kja5A86Le6KAIxFQyzDXNcBMb5
+	Aah5rcqjYeFAiI8Yw62C8Z6GnudrwThLzG6HF1nrPbnEnw+2qKvsx7wlCo4bkDwDP5b4G5SO5xiCU
+	Ati3BNNu7Betd00n8MlZd2BC0tHrlGY+P4deyxgDtuknUirAu8poCUTVC6/uwvJDQBHv2k1KYGfiE
+	BR6K5DUuQfiNeBxtol2q+/WescJ7Jlm3+635Y3FuDjGUG0siYbPisGXj6XcJAk0xECSFjDZspoAVy
+	RYuhobLOozKJovx2viy3C1i/IuGCSUZmiVRWFtRq3rvibnsjNl55dEBiCKjHw7PyEvozM8uUgtZHe
+	paQbjCrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAxx3-00B9wZ-0x;
-	Wed, 06 Dec 2023 19:52:57 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1rAyQn-00BDGC-0x;
+	Wed, 06 Dec 2023 20:23:41 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAxx0-00B9u4-0i;
-	Wed, 06 Dec 2023 19:52:55 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rAxwa-0007c0-2h;
-	Wed, 06 Dec 2023 19:52:30 +0000
-Date: Wed, 6 Dec 2023 19:52:23 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	id 1rAyQj-00BDEn-2p;
+	Wed, 06 Dec 2023 20:23:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=84Czrtcy2ZdOY4+h79KmMJFEB0OGPN7K+ECAl/hY/XY=; b=C9nleJc1D1bnud5B+/8Tbghh79
+	whvs/4LG4gjAT74s1zNKdFPzP2rpGW1WNOONIwcQFF6R8nwUnXfqJJxJEqYSjCujDFjyUD0fdmZ1R
+	7xciKN5L3S4tBmCXvvz/19t8huMZX2axs7ZnS/rRI1ZdJMyB+yo+lNKt1KaRdVcKmKz6Z0koWdkMV
+	N8HioUfsQQZg/qqAtdQWlnhYgL1WdktiFzm3vgjDSopFhfnbnZNY7FS+X1bPHdKeel6hJvf91js9A
+	g0LpCzOtUsgdNvTbTYynMD+f4JUvSsnUv4ilS0tvcKB8gdbDUQBQwZ5mHzz6DWr732tlzlkoA6M7b
+	ptUrlNvw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:35882)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1rAyQG-0000MN-09;
+	Wed, 06 Dec 2023 20:23:08 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1rAyQD-00030c-I2; Wed, 06 Dec 2023 20:23:05 +0000
+Date: Wed, 6 Dec 2023 20:23:05 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
 Cc: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -61,17 +76,18 @@ Cc: "David S. Miller" <davem@davemloft.net>,
 	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
 Subject: Re: [RFC PATCH v2 8/8] net: ethernet: mtk_eth_soc: add paths and
  SerDes modes for MT7988
-Message-ID: <ZXDQ94Xh3gzL3IR9@makrotopia.org>
+Message-ID: <ZXDYKeXsMuJZlzWB@shell.armlinux.org.uk>
 References: <cover.1701826319.git.daniel@makrotopia.org>
  <3ccc33fa14310ab47e90ff8e6ce46f1562bb838e.1701826319.git.daniel@makrotopia.org>
  <ZXDDtmRklS6o994V@shell.armlinux.org.uk>
+ <ZXDQ94Xh3gzL3IR9@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZXDDtmRklS6o994V@shell.armlinux.org.uk>
+In-Reply-To: <ZXDQ94Xh3gzL3IR9@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_115254_259219_5B50F973 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20231206_122337_912186_3E4D7478 
+X-CRM114-Status: GOOD (  29.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,33 +102,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 06, 2023 at 06:55:50PM +0000, Russell King (Oracle) wrote:
-> On Wed, Dec 06, 2023 at 01:45:17AM +0000, Daniel Golle wrote:
-> > @@ -516,6 +538,21 @@ static struct phylink_pcs *mtk_mac_select_pcs(struct phylink_config *config,
-> >  	struct mtk_eth *eth = mac->hw;
-> >  	unsigned int sid;
-> >  
-> > +	if (mtk_is_netsys_v3_or_greater(eth)) {
-> > +		switch (interface) {
-> > +		case PHY_INTERFACE_MODE_1000BASEX:
-> > +		case PHY_INTERFACE_MODE_2500BASEX:
-> > +		case PHY_INTERFACE_MODE_SGMII:
-> > +			return mtk_pcs_lynxi_select_pcs(mac->sgmii_pcs_of_node, interface);
-> > +		case PHY_INTERFACE_MODE_5GBASER:
-> > +		case PHY_INTERFACE_MODE_10GBASER:
-> > +		case PHY_INTERFACE_MODE_USXGMII:
-> > +			return mtk_usxgmii_select_pcs(mac->usxgmii_pcs_of_node, interface);
+On Wed, Dec 06, 2023 at 07:52:23PM +0000, Daniel Golle wrote:
+> On Wed, Dec 06, 2023 at 06:55:50PM +0000, Russell King (Oracle) wrote:
+> > On Wed, Dec 06, 2023 at 01:45:17AM +0000, Daniel Golle wrote:
+> > > @@ -516,6 +538,21 @@ static struct phylink_pcs *mtk_mac_select_pcs(struct phylink_config *config,
+> > >  	struct mtk_eth *eth = mac->hw;
+> > >  	unsigned int sid;
+> > >  
+> > > +	if (mtk_is_netsys_v3_or_greater(eth)) {
+> > > +		switch (interface) {
+> > > +		case PHY_INTERFACE_MODE_1000BASEX:
+> > > +		case PHY_INTERFACE_MODE_2500BASEX:
+> > > +		case PHY_INTERFACE_MODE_SGMII:
+> > > +			return mtk_pcs_lynxi_select_pcs(mac->sgmii_pcs_of_node, interface);
+> > > +		case PHY_INTERFACE_MODE_5GBASER:
+> > > +		case PHY_INTERFACE_MODE_10GBASER:
+> > > +		case PHY_INTERFACE_MODE_USXGMII:
+> > > +			return mtk_usxgmii_select_pcs(mac->usxgmii_pcs_of_node, interface);
+> > 
+> > From what I can see, neither of these two "select_pcs" methods that
+> > you're calling makes any use of the "interface" you pass to them.
+> > I'm not sure what they _could_ do with it either, given that what
+> > you're effectively doing here is getting the phylink_pcs structure from
+> > the driver, and each one only has a single phylink_pcs.
 > 
-> From what I can see, neither of these two "select_pcs" methods that
-> you're calling makes any use of the "interface" you pass to them.
-> I'm not sure what they _could_ do with it either, given that what
-> you're effectively doing here is getting the phylink_pcs structure from
-> the driver, and each one only has a single phylink_pcs.
+> Yes, you are right, the interface parameter isn't used, I will drop
+> it from both mtk_*_select_pcs() prototypes.
+> 
+> In the long run we may want something like
+> struct phylink_pcs *of_pcs_get(struct device_node *np, phy_interface_t interface)
+> provided by a to-be-built drivers/net/pcs/core.c...
 
-Yes, you are right, the interface parameter isn't used, I will drop
-it from both mtk_*_select_pcs() prototypes.
+Again... it's not as simple as that. As soon as we get into the
+situation that some _other_ driver becomes responsible for providing
+the struct phylink_pcs pointer, we _then_ need to have some way of
+dealing with that device going away.
 
-In the long run we may want something like
-struct phylink_pcs *of_pcs_get(struct device_node *np, phy_interface_t interface)
-provided by a to-be-built drivers/net/pcs/core.c...
+By that I mean that the memory pointed to returned from such a function
+that you are proposing above could be freed - or worse could be unmapped
+from the kernel address space, and the same goes for the operations
+structure as well - even more so if the "ops" are part of module data
+and the module is unloaded.
+
+As I know how these discussions go (it's not my first time bringing up
+these kinds of multi-driver interations), no, locking the module into
+memory doesn't work, and shows a lack of a full understanding of the
+problem.
+
+We need to have a way that when a PCS device is removed, that is
+propagated up the management levels and causes the PCS to be gracefully
+removed from the network driver (in other words, from phylink).
+
+I won't accept a hack that sticky-plasters around the problem - not for
+code that I am involved in actively maintaining - and sticky-plastering
+around this class of problem seems to happen all too often in the
+kernel.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
