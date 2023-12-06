@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12EFAC10DC1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 09:45:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CB96C10F04
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 09:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1wOVKCT46yFHYzsZfptn/YLuf58amecso91N0y4R11c=; b=iQLdk8YzgwUsdKUH+jdd3tGf3x
-	lEUPOQiaYM0dHq0lB8rDPVhCGTqfRdMalhYgNh3oVaQuPK5MKXFGh1BhCijdTjLa11VkMV1YDZBsp
-	mxaDJfwTJYpktSbVloiOQ/avENAXTuvwf9YhhY8xUBnt/hsse0U2SSf/ZFZMpNok/rsfnOnFrMxkX
-	C+40MnXOpkbxS66+9lQ9fGqMY3CmjkRk6J3E7aPf274B6HTThCNiCHg3DWkqayu8LIU7R9qN82Veg
-	i6Pd8gEdpvKbw0sHu7K+7O4T7l8QzJwVXaRQO9Jm34yx6dIX5AkUiEMgNyOmiZ5DeVqp5NqXrY1Lv
-	DRo4Di7w==;
+	bh=dasdfMtvb5/6F6Xl6tXdAQvmSib+B8MTu7AZcbGRRpI=; b=nE82CXf/hisue1T4S0TLCLLk6p
+	CQ81OeBlS74tUHsY2gwi/3n02l+xT6vRaREWVNBX7reXwBdRaDYoXWJQ7xam0RcsQOhHyOGZJezDf
+	BP6U53jwSw8zl68y0f9bDwxTJt9UPmW4Qv2Q9Oi0UkjHesI6rKwb7j/VBN8JJtLYCcIYYEJgUlyab
+	H3vwnSiaXZzhGY9QNZxUdMcJxorDTeoEzRWM/FkcOrDsxlyGQN+Sp1vsUPo7jea6LGM3YppJeuZs5
+	IzD0cRx49KcPjmN7J096WLivFbRqoVZaNhXAagT7NWfq5eFJI6e7b0AOA8NiXExKMAOmluI2PznaL
+	7mXSEKNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAoSn-009b0H-0C;
-	Wed, 06 Dec 2023 09:45:05 +0000
-Received: from relay7-d.mail.gandi.net ([217.70.183.200])
+	id 1rAogC-009cMM-0x;
+	Wed, 06 Dec 2023 09:58:56 +0000
+Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAoSj-009ayl-0d;
-	Wed, 06 Dec 2023 09:45:03 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 3672B20005;
-	Wed,  6 Dec 2023 09:44:49 +0000 (UTC)
+	id 1rAog6-009cKY-0o;
+	Wed, 06 Dec 2023 09:58:52 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3BB97240008;
+	Wed,  6 Dec 2023 09:58:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1701855897;
+	t=1701856724;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=1wOVKCT46yFHYzsZfptn/YLuf58amecso91N0y4R11c=;
-	b=J6Viro+mz0owT7xGlK236zyL/HHYYcaom8AJXxIhCJMxSlaCJIaCrVXTji8O0Y2B+FB3yI
-	Ki01S0DKSB/GoyzwVdzLKhDlNObkSufX0srTobqBjEeIx8Mrk8IR5FNoOGCGiFfDUwgnvf
-	19+Uf8Rp0ztIC+ysfcHt9FZXj6whr9foZTg/GS1oFm0uxrMeZ9QT/431AC2O1k+erb3MKg
-	eePPpZRAN1tp/2qZTHcU4e6sPPlFPUEj3+etcmOKCKOULfBZJqVNa1b52PePUBkcj67nft
-	mRFIcgRG5xrRP0G44UqazKz5cxGUgTYE8mw0WOpSfevOFsWtdzXGhB4f1081og==
-Date: Wed, 6 Dec 2023 10:44:48 +0100
+	bh=dasdfMtvb5/6F6Xl6tXdAQvmSib+B8MTu7AZcbGRRpI=;
+	b=E4sSHAHNbk/P25tK9GlNW898yfNEPsTTCpuSOrvNg3FDLAQa5H2MB8BRBjjdZkmc8iyIaA
+	b6odeZBloX3O6K431Gft6l8bCm/hcnvr2+z/XM6Lahwsh4AtTFk85mbSpf7X6rzHKvMVt6
+	3umP9OEFpwaUVhEVEAcTVj0ieLjeJiNgKnvgJ0VctBblzzer+uzeuVxsOuDH5U9LF9cI2Q
+	zzti/EjMfrFKZsIUnuinTx9zodpPb9o4h+HfB7PROhWn5RHP3LpKUYtFXinRhxwNKJWX1+
+	/fEfRmLP4XlanmKXIT1XLFJfuEOYBwF14EvjJt38ClTdAVVQVxjpVi8R93acjg==
+Date: Wed, 6 Dec 2023 10:58:38 +0100
 From: Maxime Chevallier <maxime.chevallier@bootlin.com>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
@@ -60,12 +60,12 @@ Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-phy@lists.infradead.org
-Subject: Re: [RFC PATCH v2 2/8] phy: add driver for MediaTek pextp 10GE
- SerDes PHY
-Message-ID: <20231206104448.0774da58@device.home>
-In-Reply-To: <63636378a52dd1ea7370dbf0ca3037a7d24004b9.1701826319.git.daniel@makrotopia.org>
+Subject: Re: [RFC PATCH v2 5/8] net: pcs: add driver for MediaTek USXGMII
+ PCS
+Message-ID: <20231206105838.069ae288@device.home>
+In-Reply-To: <3cd8af5e44554c2db2d7898494ee813967206bd9.1701826319.git.daniel@makrotopia.org>
 References: <cover.1701826319.git.daniel@makrotopia.org>
-	<63636378a52dd1ea7370dbf0ca3037a7d24004b9.1701826319.git.daniel@makrotopia.org>
+	<3cd8af5e44554c2db2d7898494ee813967206bd9.1701826319.git.daniel@makrotopia.org>
 Organization: Bootlin
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
@@ -73,8 +73,8 @@ Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-GND-Sasl: maxime.chevallier@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_014501_506533_0F07E6FE 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20231206_015850_555549_D65CEC46 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,102 +91,146 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello Daniel,
 
-On Wed, 6 Dec 2023 01:44:08 +0000
+On Wed, 6 Dec 2023 01:44:38 +0000
 Daniel Golle <daniel@makrotopia.org> wrote:
 
-> Add driver for MediaTek's pextp 10 Gigabit/s Ethernet SerDes PHY which
-> can be found in the MT7988 SoC.
-> 
-> The PHY can operates only in PHY_MODE_ETHERNET, the submode is one of
-> PHY_INTERFACE_MODE_* corresponding to the supported modes:
-> 
->  * USXGMII
->  * 10GBase-R
->  * 5GBase-R
->  * 2500Base-X
->  * 1000Base-X
->  * Cisco SGMII (MAC side)
-> 
-> In order to work-around a performance issue present on the first of
-> two PEXTP present in MT7988 special tuning is applied which can be
-> selected by adding the mediatek,usxgmii-performance-errata property to
-> the device tree node.
-> 
-> There is no documentation what-so-ever for the pextp registers and
-> this driver is based on a GPL licensed implementation found in
-> MediaTek's SDK.
+> Add driver for USXGMII PCS found in the MediaTek MT7988 SoC and supporting
+> USXGMII, 10GBase-R and 5GBase-R interface modes. In order to support
+> Cisco SGMII, 1000Base-X and 2500Base-X via the also present LynxI PCS
+> create a wrapped PCS taking care of the components shared between the
+> new USXGMII PCS and the legacy LynxI PCS.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
 
- [...]
+[...]
 
 > +
-> +static int mtk_pextp_power_on(struct phy *phy)
+> +static int mtk_usxgmii_pcs_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+> +				  phy_interface_t interface,
+> +				  const unsigned long *advertising,
+> +				  bool permit_pause_to_mac)
 > +{
-> +	struct mtk_pextp_phy *pextp = phy_get_drvdata(phy);
-> +	int ret;
+> +	struct mtk_usxgmii_pcs *mpcs = pcs_to_mtk_usxgmii_pcs(pcs);
+> +	unsigned int an_ctrl = 0, link_timer = 0, xfi_mode = 0, adapt_mode = 0;
+> +	bool mode_changed = false;
+
+Reverse christmas tree ordering can be used here (longest lines first)
+
 > +
-> +	ret = clk_prepare_enable(pextp->clk[0]);
-> +	if (ret)
-> +		return ret;
+> +	if (interface == PHY_INTERFACE_MODE_USXGMII) {
+> +		an_ctrl = FIELD_PREP(USXGMII_AN_SYNC_CNT, 0x1FF) | USXGMII_AN_ENABLE;
+> +		link_timer = FIELD_PREP(USXGMII_LINK_TIMER_IDLE_DETECT, 0x7B) |
+> +			     FIELD_PREP(USXGMII_LINK_TIMER_COMP_ACK_DETECT, 0x7B) |
+> +			     FIELD_PREP(USXGMII_LINK_TIMER_AN_RESTART, 0x7B);
+> +		xfi_mode = FIELD_PREP(USXGMII_XFI_RX_MODE, USXGMII_XFI_MODE_10G) |
+> +			   FIELD_PREP(USXGMII_XFI_TX_MODE, USXGMII_XFI_MODE_10G);
+> +	} else if (interface == PHY_INTERFACE_MODE_10GBASER) {
+> +		an_ctrl = FIELD_PREP(USXGMII_AN_SYNC_CNT, 0x1FF);
+> +		link_timer = FIELD_PREP(USXGMII_LINK_TIMER_IDLE_DETECT, 0x7B) |
+> +			     FIELD_PREP(USXGMII_LINK_TIMER_COMP_ACK_DETECT, 0x7B) |
+> +			     FIELD_PREP(USXGMII_LINK_TIMER_AN_RESTART, 0x7B);
+> +		xfi_mode = FIELD_PREP(USXGMII_XFI_RX_MODE, USXGMII_XFI_MODE_10G) |
+> +			   FIELD_PREP(USXGMII_XFI_TX_MODE, USXGMII_XFI_MODE_10G);
+> +		adapt_mode = USXGMII_RATE_UPDATE_MODE;
+> +	} else if (interface == PHY_INTERFACE_MODE_5GBASER) {
+> +		an_ctrl = FIELD_PREP(USXGMII_AN_SYNC_CNT, 0xFF);
+> +		link_timer = FIELD_PREP(USXGMII_LINK_TIMER_IDLE_DETECT, 0x3D) |
+> +			     FIELD_PREP(USXGMII_LINK_TIMER_COMP_ACK_DETECT, 0x3D) |
+> +			     FIELD_PREP(USXGMII_LINK_TIMER_AN_RESTART, 0x3D);
+> +		xfi_mode = FIELD_PREP(USXGMII_XFI_RX_MODE, USXGMII_XFI_MODE_5G) |
+> +			   FIELD_PREP(USXGMII_XFI_TX_MODE, USXGMII_XFI_MODE_5G);
+> +		adapt_mode = USXGMII_RATE_UPDATE_MODE;
+> +	} else {
+> +		return -EINVAL;
+> +	}
 > +
-> +	return clk_prepare_enable(pextp->clk[1]);
+> +	adapt_mode |= FIELD_PREP(USXGMII_RATE_ADAPT_MODE, USXGMII_RATE_ADAPT_MODE_X1);
+> +
+> +	if (mpcs->interface != interface) {
+> +		mpcs->interface = interface;
+> +		mode_changed = true;
+> +	}
+> +
+> +	mtk_usxgmii_reset(mpcs);
+> +
+> +	/* Setup USXGMII AN ctrl */
+> +	mtk_m32(mpcs, RG_PCS_AN_CTRL0,
+> +		USXGMII_AN_SYNC_CNT | USXGMII_AN_ENABLE,
+> +		an_ctrl);
+> +
+> +	mtk_m32(mpcs, RG_PCS_AN_CTRL2,
+> +		USXGMII_LINK_TIMER_IDLE_DETECT |
+> +		USXGMII_LINK_TIMER_COMP_ACK_DETECT |
+> +		USXGMII_LINK_TIMER_AN_RESTART,
+> +		link_timer);
+> +
+> +	mpcs->neg_mode = neg_mode;
+> +
+> +	/* Gated MAC CK */
+> +	mtk_m32(mpcs, RG_PHY_TOP_SPEED_CTRL1,
+> +		USXGMII_MAC_CK_GATED, USXGMII_MAC_CK_GATED);
+> +
+> +	/* Enable interface force mode */
+> +	mtk_m32(mpcs, RG_PHY_TOP_SPEED_CTRL1,
+> +		USXGMII_IF_FORCE_EN, USXGMII_IF_FORCE_EN);
+> +
+> +	/* Setup USXGMII adapt mode */
+> +	mtk_m32(mpcs, RG_PHY_TOP_SPEED_CTRL1,
+> +		USXGMII_RATE_UPDATE_MODE | USXGMII_RATE_ADAPT_MODE,
+> +		adapt_mode);
+> +
+> +	/* Setup USXGMII speed */
+> +	mtk_m32(mpcs, RG_PHY_TOP_SPEED_CTRL1,
+> +		USXGMII_XFI_RX_MODE | USXGMII_XFI_TX_MODE,
+> +		xfi_mode);
+> +
+> +	usleep_range(1, 10);
+> +
+> +	/* Un-gated MAC CK */
+> +	mtk_m32(mpcs, RG_PHY_TOP_SPEED_CTRL1, USXGMII_MAC_CK_GATED, 0);
+> +
+> +	usleep_range(1, 10);
+> +
+> +	/* Disable interface force mode for the AN mode */
+> +	if (an_ctrl & USXGMII_AN_ENABLE)
+> +		mtk_m32(mpcs, RG_PHY_TOP_SPEED_CTRL1, USXGMII_IF_FORCE_EN, 0);
+> +
+> +	return mode_changed;
 > +}
+> +
 
-clk_bulk operations could be used here
+[...]
 
-> +static int mtk_pextp_power_off(struct phy *phy)
+> +static void mtk_usxgmii_pcs_get_state(struct phylink_pcs *pcs,
+> +				      struct phylink_link_state *state)
 > +{
-> +	struct mtk_pextp_phy *pextp = phy_get_drvdata(phy);
+> +	struct mtk_usxgmii_pcs *mpcs = pcs_to_mtk_usxgmii_pcs(pcs);
 > +
-> +	clk_disable_unprepare(pextp->clk[1]);
-> +	clk_disable_unprepare(pextp->clk[0]);
+> +	/* Refresh USXGMII link status by toggling RG_PCS_AN_STATUS_UPDATE */
+> +	mtk_m32(mpcs, RG_PCS_RX_STATUS0, RG_PCS_RX_STATUS_UPDATE,
+> +		RG_PCS_RX_STATUS_UPDATE);
+> +	ndelay(1020);
+> +	mtk_m32(mpcs, RG_PCS_RX_STATUS0, RG_PCS_RX_STATUS_UPDATE, 0);
+> +	ndelay(1020);
 > +
-> +	return 0;
-> +}
+> +	/* Read USXGMII link status */
+> +	state->link = FIELD_GET(RG_PCS_RX_LINK_STATUS,
+> +				mtk_r32(mpcs, RG_PCS_RX_STATUS0));
+> +
+> +	/* Continuously repeat re-configuration sequence until link comes up */
+> +	if (!state->link) {
+> +		mtk_usxgmii_pcs_config(pcs, mpcs->neg_mode,
+> +				       state->interface, NULL, false);
+> +		return;
 
-Here
+.pcs_get_state() isn't called only for link state polling,but also when querying
+the link state from ethtool, from phylink_ethtool_ksettings_get().
 
-> +static const struct phy_ops mtk_pextp_ops = {
-> +	.power_on	= mtk_pextp_power_on,
-> +	.power_off	= mtk_pextp_power_off,
-> +	.set_mode	= mtk_pextp_set_mode,
-> +	.reset		= mtk_pextp_reset,
-> +	.owner		= THIS_MODULE,
-> +};
-> +
-> +static int mtk_pextp_probe(struct platform_device *pdev)
-> +{
-> +	struct device_node *np = pdev->dev.of_node;
-> +	struct phy_provider *phy_provider;
-> +	struct mtk_pextp_phy *pextp;
-> +	struct phy *phy;
-> +
-> +	if (!np)
-> +		return -ENODEV;
-> +
-> +	pextp = devm_kzalloc(&pdev->dev, sizeof(*pextp), GFP_KERNEL);
-> +	if (!pextp)
-> +		return -ENOMEM;
-> +
-> +	pextp->base = devm_of_iomap(&pdev->dev, np, 0, NULL);
-> +	if (!pextp->base)
-> +		return -EIO;
-> +
-> +	pextp->dev = &pdev->dev;
-> +	pextp->clk[0] = devm_clk_get(&pdev->dev, "topxtal");
-> +	if (IS_ERR(pextp->clk[0]))
-> +		return PTR_ERR(pextp->clk[0]);
-> +
-> +	pextp->clk[1] = devm_clk_get(&pdev->dev, "xfipll");
-> +	if (IS_ERR(pextp->clk[1]))
-> +		return PTR_ERR(pextp->clk[1]);
-
-And here as well.
+As mtk_usxgmii_pcs_config triggers a pcs reset and reconfiguration, won't this disrupt
+the link ? 
 
 Thanks,
 
 Maxime
-
 
