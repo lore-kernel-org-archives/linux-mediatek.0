@@ -4,67 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D357C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 07:55:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52010C10F04
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:16:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P2Qwl9NKzya6qz6fWxNXnyy+ZTdnl615fvfuvq8hUII=; b=CY/z1veAJYyGPanBfNyEYlGo9Z
-	h/asXT9m+Soju1jDh/E/7OydRJzSEOzeFj5P0j/cNsQtn3u5N7RzYsyymu6yLSafXHb7+s2/2jHd8
-	sv5WyUKlNfBhSNmcR47lpO0NJOpP8pESFwcb/awEBBHbuAgQVQVCSG9zE2g0KUnVSE9ChJd202Ltb
-	bHUVAbgJnbGlO2Zp+9fVpVUx4UW7qk1PtaTfJ1pdKaWoGFkuXpKZAejeboYH0QFqxXYJyG0E6dEqG
-	hwn3DhkCBJ9X3xqeo5HTccTeKNXjEF+PnncOkF5KVmlJep9zrC3Cf3FCunF6ylmgWr7gjxY386LGY
-	XOb3+D2A==;
+	bh=urgImsiByBgrXegm6WMvOjpTwwvXom0xQlrJXyilo6s=; b=tJdxL7+r8On4l53NpW88xK5PZd
+	i2bdB24xItiYMoCtb4b6fMwYRpbQskmGMV6V30eK4bklK2ImNt4Px3lN9/0V0tY1zcW8eDITMt6bA
+	Iq94Yz5N2HPh9v+LTvBZMBdyO6/03R90lMpAjxrbUZ1aXNCq+U+pOORjdMgQnrkGc354/bd0TOvVq
+	BFwrGd5B4eNiEN3u+4en64pgfAyak1j/1EYEbqImDzZ3nFlhu3kVIoNVz1yGELMlIXQTrwnUr5hjx
+	76Pc2SvXACe5vh47kJNHqZ5CB+L4Dz3I8bAz3N1uuFzvVIwfeiI64D26RAJqShFwzEwG9LCIfM2GE
+	gZVdzMLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAmkI-009LM1-08;
-	Wed, 06 Dec 2023 07:55:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rAn4o-009Nin-2r;
+	Wed, 06 Dec 2023 08:16:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAmkE-009LL3-07;
-	Wed, 06 Dec 2023 07:54:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CBA1A61A0A;
-	Wed,  6 Dec 2023 07:54:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2B30C433C8;
-	Wed,  6 Dec 2023 07:54:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701849296;
-	bh=oypg8H92xfnc19tAPThmY81NoTSyU3vjeSxmhkrunYI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=n9365YMCtQ4i08AM5A8FU6ypnRi/Hv8bTvXegw3gf0f5PeYEtUNfLUbi0PiaaR0Ch
-	 itRumrtGztqFge/s6pc3DQgK8LPlntURUaS/UHiCam7qR4Z1znpqnPRhS7bqeOzCwJ
-	 P3FlUAvWOHF12D+d3a+yP53LS3wH7rluw4TMoDEXmpQoYActcXHQQ1ihdCTQCc+Otu
-	 NLVktWCpZNjjwI02XrzHDBoqFEkRbfmil2AtfA0aW/3ZNbx7eHfnnKljsKwBKTkehw
-	 q1aKKFsUvuWnWLvgkRx51EzBe50SNekCt8b8CTIGaZwzRcaR66hDeRM/qP7NvaYhaw
-	 avHxLR5jFOssA==
-Date: Wed, 6 Dec 2023 13:24:47 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Nitin Rawat <quic_nitirawa@quicinc.com>
-Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>, linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, quic_cang@quicinc.com,
-	Manish Pandey <quic_mapa@quicinc.com>
-Subject: Re: [PATCH V1] scsi: ufs: core: store min and max clk freq from OPP
- table
-Message-ID: <20231206075447.GA4954@thinkpad>
-References: <20231206053628.32169-1-quic_nitirawa@quicinc.com>
+	id 1rAn4l-009Nd0-1a;
+	Wed, 06 Dec 2023 08:16:13 +0000
+X-UUID: b4c132f0940f11ee958cff29c719f35b-20231206
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=urgImsiByBgrXegm6WMvOjpTwwvXom0xQlrJXyilo6s=;
+	b=p0UGmzxWkJfc7l7bOHoFTAU121adV3QzyXtZn/Yb4Wd/cx55kB51+4E9h14rEvgllseFcLAHKcBn/BWxQpi7t9Ul4Iwezc6GTRgDhMsiY4p+VBM9pfogxse15nCtZRcjsQu3CfuyXJS0bVNFZcqnzg28KjJ/Y5mQeiIuoOyTkgw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.34,REQID:2602cb5f-40be-4fe0-aad8-98b25113f9fb,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:abefa75,CLOUDID:48e97773-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: b4c132f0940f11ee958cff29c719f35b-20231206
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1847524322; Wed, 06 Dec 2023 01:16:07 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 6 Dec 2023 16:15:45 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:15:44 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Jeffrey Kardatzke <jkardatzke@google.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+	"Hsin-Yi Wang" <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+	"Daniel Vetter" <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
+ Dong <yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+	"Brian Starkey" <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T
+ . J . Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3,04/21] v4l: add documentation for secure memory flag
+Date: Wed, 6 Dec 2023 16:15:21 +0800
+Message-ID: <20231206081538.17056-5-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231206081538.17056-1-yunfei.dong@mediatek.com>
+References: <20231206081538.17056-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231206053628.32169-1-quic_nitirawa@quicinc.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--1.856300-8.000000
+X-TMASE-MatchedRID: +AidzxpkJ38len1U/pCyeimjEOrcO6AyTJDl9FKHbrkGxREerP+37XVX
+	4shSYpPIU5vypzAbVDHw2zJ6wUH6fAzyMxeMEX6wFEUknJ/kEl7dB/CxWTRRu3aDLLDbFMGFulx
+	dtyQZLh53HVPe88KdTDg/PKEqtQb3gHAX9tDTTwxXYbvoEL9Fh5eGzU7OKNA+t2s1xSAfRMhnhe
+	wZo9ULByfMiHC5NEpshJVRlkc0uv5GBXoeyrLHXVBo425nomviD2TeXwRpghwOIqZ2uUSDWA==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.856300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 6F2C690914310194B509D2CC4027E85D4837A1E2709D2F4C44AF927E89CD2DFB2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_235458_183615_6548A3D5 
-X-CRM114-Status: GOOD (  30.55  )
+X-CRM114-CacheID: sfid-20231206_001611_537322_111FE214 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,175 +109,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 06, 2023 at 11:06:28AM +0530, Nitin Rawat wrote:
-> OPP support will make use of OPP table in device tree and removes
-> freq-table-hz property from device tree.
-> 
-> With OPP enabled in devicetree, clki->min_freq and clki->maxfreq
-> currently is not getting updated and the value is set to 0.
-> 
-> Soc vendors like qcom, mediatek uses clki->minfreq and clki->maxfreq
-> in vendor specific file. These frequencies values are used to update
-> vendor specific configurations. Since the value is 0, it is causing
-> functional issue.
+From: Jeffrey Kardatzke <jkardatzke@google.com>
 
-How about,
+Adds documentation for V4L2_MEMORY_FLAG_SECURE.
 
-"OPP support added by commit 72208ebe181e ("scsi: ufs: core: Add support
-for parsing OPP") doesn't update the min_freq and max_freq of each clocks
-in 'struct ufs_clk_info'.
+Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ Documentation/userspace-api/media/v4l/buffer.rst | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-But these values are used by the vendor host drivers internally for controller
-configuration. When the OPP support is enabled in devicetree, these values will
-be 0, causing boot issues on the respective platforms.
-
-So let's parse the min_freq and max_freq of all clocks while parsing the OPP
-table."
-
-> 
-> Add code to store the min and max ufs clk frequency from OPP table.
-> 
-> Fixes: 72208ebe181e ("scsi: ufs: core: Add support for parsing OPP")
-> Co-developed-by: Manish Pandey <quic_mapa@quicinc.com>
-> Signed-off-by: Manish Pandey <quic_mapa@quicinc.com>
-> Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
-> ---
->  drivers/ufs/host/ufshcd-pltfrm.c | 56 ++++++++++++++++++++++++++++++++
->  1 file changed, 56 insertions(+)
-> 
-> diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
-> index da2558e274b4..12fa6f7d6a97 100644
-> --- a/drivers/ufs/host/ufshcd-pltfrm.c
-> +++ b/drivers/ufs/host/ufshcd-pltfrm.c
-> @@ -13,6 +13,7 @@
->  #include <linux/pm_opp.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/of.h>
-> +#include <linux/clk.h>
-
-Sort includes alphabetically.
-
-> 
->  #include <ufs/ufshcd.h>
->  #include "ufshcd-pltfrm.h"
-> @@ -213,6 +214,55 @@ static void ufshcd_init_lanes_per_dir(struct ufs_hba *hba)
->  	}
->  }
-> 
-> +/**
-> + * ufshcd_config_min_max_clk_freq - update min and max freq
-
-"ufshcd_parse_clock_min_max_freq - Parse MIN and MAX frequencies of clocks"
-
-> + * @hba: per adapter instance
-> + *
-> + * This function store min and max freq for all the clocks.
-> + *
-
-"This function parses MIN and MAX frequencies of all clocks required by the
-vendor host drivers."
-
-> + * Returns 0 for success and non-zero for failure
-> + */
-> +static int ufshcd_config_min_max_clk_freq(struct ufs_hba *hba)
-> +{
-> +	struct list_head *head = &hba->clk_list_head;
-> +	struct dev_pm_opp *opp;
-> +	struct ufs_clk_info *clki;
-
-Please maintain reverse Xmas tree order. It's not a rule for this driver, but my
-own preference.
-
-> +	unsigned long freq;
-> +	u8 idx = 0;
-> +	int ret;
-
-This won't be needed if all the return values are directly returned as I shared
-below.
-
-> +
-> +	list_for_each_entry(clki, head, list) {
-> +		if (!clki->name)
-> +			continue;
-> +
-> +		clki->clk = devm_clk_get(hba->dev, clki->name);
-> +		if (!IS_ERR_OR_NULL(clki->clk)) {
-
-This function won't return NULL, so IS_ERR() is sufficient.
-
-> +			/* Find Max Freq */
-> +			freq = ULONG_MAX;
-> +			opp = dev_pm_opp_find_freq_floor_indexed(hba->dev, &freq, idx);
-
-Use idx++ and get rid of the increment at the end of the 'if' condition.
-
-> +			if (IS_ERR(opp)) {
-> +				dev_err(hba->dev, "failed to find dev_pm_opp\n");
-
-"Failed to find OPP for MAX frequency"
-
-> +				ret = PTR_ERR(opp);
-
-return PTR_ERR(opp);
-
-> +				return ret;
-> +			}
-> +			clki->max_freq = dev_pm_opp_get_freq_indexed(opp, idx);
-> +
-
-Missing dev_pm_opp_put()
-
-> +			/* Find Min Freq */
-> +			freq = 0;
-> +			opp = dev_pm_opp_find_freq_ceil_indexed(hba->dev, &freq, idx);
-> +			if (IS_ERR(opp)) {
-> +				dev_err(hba->dev, "failed to find dev_pm_opp\n");
-
-"Failed to find OPP for MIN frequency"
-
-> +				ret = PTR_ERR(opp);
-
-return PTR_ERR(opp);
-
-> +				return ret;
-> +			}
-> +			clki->min_freq = dev_pm_opp_get_freq_indexed(opp, idx);
-
-Missing dev_pm_opp_put()
-
-> +			idx++;
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  static int ufshcd_parse_operating_points(struct ufs_hba *hba)
->  {
->  	struct device *dev = hba->dev;
-> @@ -279,6 +329,12 @@ static int ufshcd_parse_operating_points(struct ufs_hba *hba)
->  		return ret;
->  	}
-> 
-> +	ret = ufshcd_config_min_max_clk_freq(hba);
-> +	if (ret) {
-> +		dev_err(dev, "Failed to get min max freq: %d\n", ret);
-
-Since we already print error message inside the function, no need to do the same
-here.
-
-- Mani
-
-> +		return ret;
-> +	}
-> +
->  	hba->use_pm_opp = true;
-> 
->  	return 0;
-> --
-> 2.17.1
-> 
-
+diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
+index 52bbee81c080..a5a7d1c72d53 100644
+--- a/Documentation/userspace-api/media/v4l/buffer.rst
++++ b/Documentation/userspace-api/media/v4l/buffer.rst
+@@ -696,7 +696,7 @@ enum v4l2_memory
+ 
+ .. _memory-flags:
+ 
+-Memory Consistency Flags
++Memory Flags
+ ------------------------
+ 
+ .. raw:: latex
+@@ -728,6 +728,12 @@ Memory Consistency Flags
+ 	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+ 	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+ 	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
++    * .. _`V4L2-MEMORY-FLAG-SECURE`:
++
++      - ``V4L2_MEMORY_FLAG_SECURE``
++      - 0x00000002
++      - DMA bufs passed into the queue will be validated to ensure they were
++	allocated from a secure dma-heap.
+ 
+ .. raw:: latex
+ 
 -- 
-மணிவண்ணன் சதாசிவம்
+2.18.0
+
 
