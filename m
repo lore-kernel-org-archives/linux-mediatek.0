@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03625C46CA0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 01:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D03E6C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 01:44:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UJpZNZ8ZbTL/bjhXPu3ciobGpQGDmeQH4Mywv+BbzOo=; b=MtUqxyD9jhy6GcFpcUdvEOb2e4
-	/C//ZtKlMZTPC5T3TzYboqeE+zRkpPZTlE73HGGIa+kUhsmHFgwRpii1Q7tNqmFLMDiXPyYKfjHVZ
-	a1lsTBcVC6Ky6mlX3zx25y7OR1noK+hrpV1wsy70MMhS/2FI18iHbjQPrL1YPWoELf0joExxjj9Ul
-	hMtpWYzdNZti/rSlUzxbp1iWKcnDnMNx/M0RoCyoO5KNM2j3zq5/oKen42JhjnIMc0TAl3pGmo5OI
-	LYYmT4FcCmRt3mT2P8XafII6slrgpYeq/KdT8NlLjhzxRz9m6g4nzqXCC2vADRCT0UU5T7U7HswoB
-	zjN9qQyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N5TZ6sD70a1PEBnisp2pE5Km0DfZPnUAszHGKMNv+G0=; b=w3EijUYZZGTGSZlhTYf1xKcCSx
+	rWDLI0hf0kOjuOuSsNSSpi8dfHOkbwQR47rEG2RhsHbpY1UXinWBTpqhrlmNy07MejrMt5BSBY1w8
+	6yx+IdhDR7C5qOkLEd0K+Y4O06TjgYVuL4cgoqC77xcELGeni15B7A+t/t6RlT+bYsMsZAfAmnmE3
+	CDb0NSxn1ylmWbVAialiKeBponmzC2c7I+hqdZu7SC9kibwJblVJK+MdPnPRXAmv1SFVwvjBQHOvr
+	Q6W9xV0zXjKqjCxVfKHIXXFfV8z7gtmwuO9ISlJ/nQZE98l1oN5EyvoAlhWRUvOve2mPzKpThrakx
+	h8kCNJfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAgxV-008p4A-3D;
-	Wed, 06 Dec 2023 01:44:17 +0000
+	id 1rAgxh-008p9v-2I;
+	Wed, 06 Dec 2023 01:44:29 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAgxS-008p3H-2j;
-	Wed, 06 Dec 2023 01:44:16 +0000
+	id 1rAgxd-008p77-18;
+	Wed, 06 Dec 2023 01:44:27 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1rAgx1-0002eo-1a;
-	Wed, 06 Dec 2023 01:43:48 +0000
-Date: Wed, 6 Dec 2023 01:43:44 +0000
+	id 1rAgxP-0002fY-0B;
+	Wed, 06 Dec 2023 01:44:12 +0000
+Date: Wed, 6 Dec 2023 01:44:08 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -60,14 +60,16 @@ To: "David S. Miller" <davem@davemloft.net>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: [RFC PATCH v2 0/8] Add support for 10G Ethernet SerDes on MT7988
-Message-ID: <cover.1701826319.git.daniel@makrotopia.org>
+Subject: [RFC PATCH v2 2/8] phy: add driver for MediaTek pextp 10GE SerDes PHY
+Message-ID: <63636378a52dd1ea7370dbf0ca3037a7d24004b9.1701826319.git.daniel@makrotopia.org>
+References: <cover.1701826319.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1701826319.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_174415_070281_9583B57A 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20231205_174425_535904_2FC9A64F 
+X-CRM114-Status: GOOD (  25.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,65 +84,454 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series aims to add support for GMAC2 and GMAC3 of the MediaTek MT7988 SoC.
-While the vendor SDK stuffs all this into their Ethernet driver, I've tried to
-seperate things into a PHY driver, a PCS driver as well as changes to the
-existing Ethernet and LynxI PCS driver.
+Add driver for MediaTek's pextp 10 Gigabit/s Ethernet SerDes PHY which
+can be found in the MT7988 SoC.
 
- +--------------+   +----------------+   +------------------+
- |              +---|  USXGMII PCS   |---+                  |
- | Ethernet MAC |   +----------------+   | PEXTP SerDes PHY |
- |              +---|   SGMII PCS    |---+                  |
- +--------------+   +----------------+   +------------------+
+The PHY can operates only in PHY_MODE_ETHERNET, the submode is one of
+PHY_INTERFACE_MODE_* corresponding to the supported modes:
 
-Alltogether this allows using GMAC2 and GMAC3 with all possible interface modes,
-including in-band-status if needed.
+ * USXGMII
+ * 10GBase-R
+ * 5GBase-R
+ * 2500Base-X
+ * 1000Base-X
+ * Cisco SGMII (MAC side)
 
-Note that this series depends on patch
-"dt-bindings: clock: mediatek: add MT7988 clock IDs"
-being merged before.
+In order to work-around a performance issue present on the first of
+two PEXTP present in MT7988 special tuning is applied which can be
+selected by adding the mediatek,usxgmii-performance-errata property to
+the device tree node.
 
-https://patchwork.kernel.org/project/linux-arm-kernel/list/?series=807227
+There is no documentation what-so-ever for the pextp registers and
+this driver is based on a GPL licensed implementation found in
+MediaTek's SDK.
 
-Changes since RFC v1:
- - drop patch inhibiting SGMII AN in 2500Base-X mode
- - make pcs-mtk-lynxi a proper platform driver
- - ... hence allowing to remove all the wrappers from the usxgmii driver
- - attach PEXTP to MAC instead of to USXGMII PCS
-
-Daniel Golle (8):
-  dt-bindings: phy: mediatek,xfi-pextp: add new bindings
-  phy: add driver for MediaTek pextp 10GE SerDes PHY
-  net: pcs: pcs-mtk-lynxi: add platform driver for MT7988
-  dt-bindings: net: pcs: add bindings for MediaTek USXGMII PCS
-  net: pcs: add driver for MediaTek USXGMII PCS
-  dt-bindings: net: mediatek: remove wrongly added clocks and SerDes
-  dt-bindings: net: mediatek,net: fix and complete mt7988-eth binding
-  net: ethernet: mtk_eth_soc: add paths and SerDes modes for MT7988
-
- .../devicetree/bindings/net/mediatek,net.yaml | 180 ++++++--
- .../bindings/net/pcs/mediatek,usxgmii.yaml    |  60 +++
- .../bindings/phy/mediatek,xfi-pextp.yaml      |  80 ++++
- MAINTAINERS                                   |   3 +
- drivers/net/ethernet/mediatek/mtk_eth_path.c  | 122 +++++-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 284 ++++++++++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 107 ++++-
- drivers/net/pcs/Kconfig                       |  11 +
- drivers/net/pcs/Makefile                      |   1 +
- drivers/net/pcs/pcs-mtk-lynxi.c               | 170 ++++++-
- drivers/net/pcs/pcs-mtk-usxgmii.c             | 413 ++++++++++++++++++
- drivers/phy/mediatek/Kconfig                  |  11 +
- drivers/phy/mediatek/Makefile                 |   1 +
- drivers/phy/mediatek/phy-mtk-pextp.c          | 365 ++++++++++++++++
- include/linux/pcs/pcs-mtk-lynxi.h             |   1 +
- include/linux/pcs/pcs-mtk-usxgmii.h           |  26 ++
- 16 files changed, 1746 insertions(+), 89 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/net/pcs/mediatek,usxgmii.yaml
- create mode 100644 Documentation/devicetree/bindings/phy/mediatek,xfi-pextp.yaml
- create mode 100644 drivers/net/pcs/pcs-mtk-usxgmii.c
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ MAINTAINERS                          |   1 +
+ drivers/phy/mediatek/Kconfig         |  11 +
+ drivers/phy/mediatek/Makefile        |   1 +
+ drivers/phy/mediatek/phy-mtk-pextp.c | 365 +++++++++++++++++++++++++++
+ 4 files changed, 378 insertions(+)
  create mode 100644 drivers/phy/mediatek/phy-mtk-pextp.c
- create mode 100644 include/linux/pcs/pcs-mtk-usxgmii.h
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1ef2a16370619..1ea4555013a4d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -13497,6 +13497,7 @@ L:	netdev@vger.kernel.org
+ S:	Maintained
+ F:	drivers/net/phy/mediatek-ge-soc.c
+ F:	drivers/net/phy/mediatek-ge.c
++F:	drivers/phy/mediatek/phy-mtk-pextp.c
+ 
+ MEDIATEK I2C CONTROLLER DRIVER
+ M:	Qii Wang <qii.wang@mediatek.com>
+diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+index 3125ecb5d119f..a7749a6d96541 100644
+--- a/drivers/phy/mediatek/Kconfig
++++ b/drivers/phy/mediatek/Kconfig
+@@ -13,6 +13,17 @@ config PHY_MTK_PCIE
+ 	  callback for PCIe GEN3 port, it supports software efuse
+ 	  initialization.
+ 
++config PHY_MTK_PEXTP
++	tristate "MediaTek PEXTP Driver"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on OF && OF_ADDRESS
++	depends on HAS_IOMEM
++	select GENERIC_PHY
++	help
++	  Say 'Y' here to add support for MediaTek pextp PHY driver.
++	  The driver provides access to the Ethernet SerDes PHY supporting
++	  various 1GE, 2.5GE, 5GE and 10GE modes.
++
+ config PHY_MTK_TPHY
+ 	tristate "MediaTek T-PHY Driver"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+index c9a50395533eb..ca60c7b9b02ac 100644
+--- a/drivers/phy/mediatek/Makefile
++++ b/drivers/phy/mediatek/Makefile
+@@ -8,6 +8,7 @@ obj-$(CONFIG_PHY_MTK_PCIE)		+= phy-mtk-pcie.o
+ obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+ obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
+ obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
++obj-$(CONFIG_PHY_MTK_PEXTP)		+= phy-mtk-pextp.o
+ 
+ phy-mtk-hdmi-drv-y			:= phy-mtk-hdmi.o
+ phy-mtk-hdmi-drv-y			+= phy-mtk-hdmi-mt2701.o
+diff --git a/drivers/phy/mediatek/phy-mtk-pextp.c b/drivers/phy/mediatek/phy-mtk-pextp.c
+new file mode 100644
+index 0000000000000..e5bfab86f95a5
+--- /dev/null
++++ b/drivers/phy/mediatek/phy-mtk-pextp.c
+@@ -0,0 +1,365 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/* MediaTek 10GE SerDes PHY driver
++ *
++ * Copyright (c) 2023 Daniel Golle <daniel@makrotopia.org>
++ * based on mtk_usxgmii.c found in MediaTek's SDK released under GPL-2.0
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Henry Yen <henry.yen@mediatek.com>
++ */
++
++#include <linux/module.h>
++#include <linux/device.h>
++#include <linux/netdevice.h>
++#include <linux/platform_device.h>
++#include <linux/of.h>
++#include <linux/io.h>
++#include <linux/clk.h>
++#include <linux/reset.h>
++#include <linux/phy.h>
++#include <linux/phy/phy.h>
++
++struct mtk_pextp_phy {
++	void __iomem		*base;
++	struct device		*dev;
++	struct reset_control	*reset;
++	struct clk		*clk[2];
++	bool			da_war;
++};
++
++static bool mtk_interface_mode_is_xgmii(phy_interface_t interface)
++{
++	switch (interface) {
++	case PHY_INTERFACE_MODE_INTERNAL:
++	case PHY_INTERFACE_MODE_USXGMII:
++	case PHY_INTERFACE_MODE_10GBASER:
++	case PHY_INTERFACE_MODE_5GBASER:
++		return true;
++	default:
++		return false;
++	}
++}
++
++static void mtk_pextp_setup(struct mtk_pextp_phy *pextp, phy_interface_t interface)
++{
++	bool is_10g = (interface == PHY_INTERFACE_MODE_10GBASER ||
++		       interface == PHY_INTERFACE_MODE_USXGMII);
++	bool is_2p5g = (interface == PHY_INTERFACE_MODE_2500BASEX);
++	bool is_5g = (interface == PHY_INTERFACE_MODE_5GBASER);
++
++	dev_dbg(pextp->dev, "setting up for mode %s\n", phy_modes(interface));
++
++	/* Setup operation mode */
++	if (is_10g)
++		iowrite32(0x00C9071C, pextp->base + 0x9024);
++	else
++		iowrite32(0x00D9071C, pextp->base + 0x9024);
++
++	if (is_5g)
++		iowrite32(0xAAA5A5AA, pextp->base + 0x2020);
++	else
++		iowrite32(0xAA8585AA, pextp->base + 0x2020);
++
++	if (is_2p5g || is_5g || is_10g) {
++		iowrite32(0x0C020707, pextp->base + 0x2030);
++		iowrite32(0x0E050F0F, pextp->base + 0x2034);
++		iowrite32(0x00140032, pextp->base + 0x2040);
++	} else {
++		iowrite32(0x0C020207, pextp->base + 0x2030);
++		iowrite32(0x0E05050F, pextp->base + 0x2034);
++		iowrite32(0x00200032, pextp->base + 0x2040);
++	}
++
++	if (is_2p5g || is_10g)
++		iowrite32(0x00C014AA, pextp->base + 0x50F0);
++	else if (is_5g)
++		iowrite32(0x00C018AA, pextp->base + 0x50F0);
++	else
++		iowrite32(0x00C014BA, pextp->base + 0x50F0);
++
++	if (is_5g) {
++		iowrite32(0x3777812B, pextp->base + 0x50E0);
++		iowrite32(0x005C9CFF, pextp->base + 0x506C);
++		iowrite32(0x9DFAFAFA, pextp->base + 0x5070);
++		iowrite32(0x273F3F3F, pextp->base + 0x5074);
++		iowrite32(0xA8883868, pextp->base + 0x5078);
++		iowrite32(0x14661466, pextp->base + 0x507C);
++	} else {
++		iowrite32(0x3777C12B, pextp->base + 0x50E0);
++		iowrite32(0x005F9CFF, pextp->base + 0x506C);
++		iowrite32(0x9D9DFAFA, pextp->base + 0x5070);
++		iowrite32(0x27273F3F, pextp->base + 0x5074);
++		iowrite32(0xA7883C68, pextp->base + 0x5078);
++		iowrite32(0x11661166, pextp->base + 0x507C);
++	}
++
++	if (is_2p5g || is_10g) {
++		iowrite32(0x0E000AAF, pextp->base + 0x5080);
++		iowrite32(0x08080D0D, pextp->base + 0x5084);
++		iowrite32(0x02030909, pextp->base + 0x5088);
++	} else if (is_5g) {
++		iowrite32(0x0E001ABF, pextp->base + 0x5080);
++		iowrite32(0x080B0D0D, pextp->base + 0x5084);
++		iowrite32(0x02050909, pextp->base + 0x5088);
++	} else {
++		iowrite32(0x0E000EAF, pextp->base + 0x5080);
++		iowrite32(0x08080E0D, pextp->base + 0x5084);
++		iowrite32(0x02030B09, pextp->base + 0x5088);
++	}
++
++	if (is_5g) {
++		iowrite32(0x0C000000, pextp->base + 0x50E4);
++		iowrite32(0x04000000, pextp->base + 0x50E8);
++	} else {
++		iowrite32(0x0C0C0000, pextp->base + 0x50E4);
++		iowrite32(0x04040000, pextp->base + 0x50E8);
++	}
++
++	if (is_2p5g || mtk_interface_mode_is_xgmii(interface))
++		iowrite32(0x0F0F0C06, pextp->base + 0x50EC);
++	else
++		iowrite32(0x0F0F0606, pextp->base + 0x50EC);
++
++	if (is_5g) {
++		iowrite32(0x50808C8C, pextp->base + 0x50A8);
++		iowrite32(0x18000000, pextp->base + 0x6004);
++	} else {
++		iowrite32(0x506E8C8C, pextp->base + 0x50A8);
++		iowrite32(0x18190000, pextp->base + 0x6004);
++	}
++
++	if (is_10g)
++		iowrite32(0x01423342, pextp->base + 0x00F8);
++	else if (is_5g)
++		iowrite32(0x00A132A1, pextp->base + 0x00F8);
++	else if (is_2p5g)
++		iowrite32(0x009C329C, pextp->base + 0x00F8);
++	else
++		iowrite32(0x00FA32FA, pextp->base + 0x00F8);
++
++	/* Force SGDT_OUT off and select PCS */
++	if (mtk_interface_mode_is_xgmii(interface))
++		iowrite32(0x80201F20, pextp->base + 0x00F4);
++	else
++		iowrite32(0x80201F21, pextp->base + 0x00F4);
++
++	/* Force GLB_CKDET_OUT */
++	iowrite32(0x00050C00, pextp->base + 0x0030);
++
++	/* Force AEQ on */
++	iowrite32(0x02002800, pextp->base + 0x0070);
++	ndelay(1020);
++
++	/* Setup DA default value */
++	iowrite32(0x00000020, pextp->base + 0x30B0);
++	iowrite32(0x00008A01, pextp->base + 0x3028);
++	iowrite32(0x0000A884, pextp->base + 0x302C);
++	iowrite32(0x00083002, pextp->base + 0x3024);
++	if (mtk_interface_mode_is_xgmii(interface)) {
++		iowrite32(0x00022220, pextp->base + 0x3010);
++		iowrite32(0x0F020A01, pextp->base + 0x5064);
++		iowrite32(0x06100600, pextp->base + 0x50B4);
++		if (interface == PHY_INTERFACE_MODE_USXGMII)
++			iowrite32(0x40704000, pextp->base + 0x3048);
++		else
++			iowrite32(0x47684100, pextp->base + 0x3048);
++	} else {
++		iowrite32(0x00011110, pextp->base + 0x3010);
++		iowrite32(0x40704000, pextp->base + 0x3048);
++	}
++
++	if (!mtk_interface_mode_is_xgmii(interface) && !is_2p5g)
++		iowrite32(0x0000C000, pextp->base + 0x3064);
++
++	if (interface == PHY_INTERFACE_MODE_USXGMII) {
++		iowrite32(0xA8000000, pextp->base + 0x3050);
++		iowrite32(0x000000AA, pextp->base + 0x3054);
++	} else if (mtk_interface_mode_is_xgmii(interface)) {
++		iowrite32(0x00000000, pextp->base + 0x3050);
++		iowrite32(0x00000000, pextp->base + 0x3054);
++	} else {
++		iowrite32(0xA8000000, pextp->base + 0x3050);
++		iowrite32(0x000000AA, pextp->base + 0x3054);
++	}
++
++	if (mtk_interface_mode_is_xgmii(interface))
++		iowrite32(0x00000F00, pextp->base + 0x306C);
++	else if (is_2p5g)
++		iowrite32(0x22000F00, pextp->base + 0x306C);
++	else
++		iowrite32(0x20200F00, pextp->base + 0x306C);
++
++	if (interface == PHY_INTERFACE_MODE_10GBASER && pextp->da_war)
++		iowrite32(0x0007B400, pextp->base + 0xA008);
++
++	if (mtk_interface_mode_is_xgmii(interface))
++		iowrite32(0x00040000, pextp->base + 0xA060);
++	else
++		iowrite32(0x00050000, pextp->base + 0xA060);
++
++	if (is_10g)
++		iowrite32(0x00000001, pextp->base + 0x90D0);
++	else if (is_5g)
++		iowrite32(0x00000003, pextp->base + 0x90D0);
++	else if (is_2p5g)
++		iowrite32(0x00000005, pextp->base + 0x90D0);
++	else
++		iowrite32(0x00000007, pextp->base + 0x90D0);
++
++	/* Release reset */
++	iowrite32(0x0200E800, pextp->base + 0x0070);
++	usleep_range(150, 500);
++
++	/* Switch to P0 */
++	iowrite32(0x0200C111, pextp->base + 0x0070);
++	ndelay(1020);
++	iowrite32(0x0200C101, pextp->base + 0x0070);
++	usleep_range(15, 50);
++
++	if (mtk_interface_mode_is_xgmii(interface)) {
++		/* Switch to Gen3 */
++		iowrite32(0x0202C111, pextp->base + 0x0070);
++	} else {
++		/* Switch to Gen2 */
++		iowrite32(0x0201C111, pextp->base + 0x0070);
++	}
++	ndelay(1020);
++	if (mtk_interface_mode_is_xgmii(interface))
++		iowrite32(0x0202C101, pextp->base + 0x0070);
++	else
++		iowrite32(0x0201C101, pextp->base + 0x0070);
++	usleep_range(100, 500);
++	iowrite32(0x00000030, pextp->base + 0x30B0);
++	if (mtk_interface_mode_is_xgmii(interface))
++		iowrite32(0x80201F00, pextp->base + 0x00F4);
++	else
++		iowrite32(0x80201F01, pextp->base + 0x00F4);
++
++	iowrite32(0x30000000, pextp->base + 0x3040);
++	usleep_range(400, 1000);
++}
++
++static int mtk_pextp_set_mode(struct phy *phy, enum phy_mode mode, int submode)
++{
++	struct mtk_pextp_phy *pextp = phy_get_drvdata(phy);
++
++	if (mode != PHY_MODE_ETHERNET)
++		return -EINVAL;
++
++	switch (submode) {
++	case PHY_INTERFACE_MODE_1000BASEX:
++	case PHY_INTERFACE_MODE_2500BASEX:
++	case PHY_INTERFACE_MODE_SGMII:
++	case PHY_INTERFACE_MODE_5GBASER:
++	case PHY_INTERFACE_MODE_10GBASER:
++	case PHY_INTERFACE_MODE_USXGMII:
++		mtk_pextp_setup(pextp, submode);
++		return 0;
++	default:
++		return -EINVAL;
++	}
++}
++
++static int mtk_pextp_reset(struct phy *phy)
++{
++	struct mtk_pextp_phy *pextp = phy_get_drvdata(phy);
++
++	reset_control_assert(pextp->reset);
++	usleep_range(100, 500);
++	reset_control_deassert(pextp->reset);
++	usleep_range(1, 10);
++
++	return 0;
++}
++
++static int mtk_pextp_power_on(struct phy *phy)
++{
++	struct mtk_pextp_phy *pextp = phy_get_drvdata(phy);
++	int ret;
++
++	ret = clk_prepare_enable(pextp->clk[0]);
++	if (ret)
++		return ret;
++
++	return clk_prepare_enable(pextp->clk[1]);
++}
++
++static int mtk_pextp_power_off(struct phy *phy)
++{
++	struct mtk_pextp_phy *pextp = phy_get_drvdata(phy);
++
++	clk_disable_unprepare(pextp->clk[1]);
++	clk_disable_unprepare(pextp->clk[0]);
++
++	return 0;
++}
++
++static const struct phy_ops mtk_pextp_ops = {
++	.power_on	= mtk_pextp_power_on,
++	.power_off	= mtk_pextp_power_off,
++	.set_mode	= mtk_pextp_set_mode,
++	.reset		= mtk_pextp_reset,
++	.owner		= THIS_MODULE,
++};
++
++static int mtk_pextp_probe(struct platform_device *pdev)
++{
++	struct device_node *np = pdev->dev.of_node;
++	struct phy_provider *phy_provider;
++	struct mtk_pextp_phy *pextp;
++	struct phy *phy;
++
++	if (!np)
++		return -ENODEV;
++
++	pextp = devm_kzalloc(&pdev->dev, sizeof(*pextp), GFP_KERNEL);
++	if (!pextp)
++		return -ENOMEM;
++
++	pextp->base = devm_of_iomap(&pdev->dev, np, 0, NULL);
++	if (!pextp->base)
++		return -EIO;
++
++	pextp->dev = &pdev->dev;
++	pextp->clk[0] = devm_clk_get(&pdev->dev, "topxtal");
++	if (IS_ERR(pextp->clk[0]))
++		return PTR_ERR(pextp->clk[0]);
++
++	pextp->clk[1] = devm_clk_get(&pdev->dev, "xfipll");
++	if (IS_ERR(pextp->clk[1]))
++		return PTR_ERR(pextp->clk[1]);
++
++	pextp->reset = devm_reset_control_get_exclusive(&pdev->dev, NULL);
++	if (IS_ERR(pextp->reset))
++		return PTR_ERR(pextp->reset);
++
++	pextp->da_war = of_property_read_bool(np, "mediatek,usxgmii-performance-errata");
++
++	phy = devm_phy_create(&pdev->dev, NULL, &mtk_pextp_ops);
++	if (IS_ERR(phy))
++		return PTR_ERR(phy);
++
++	phy_set_drvdata(phy, pextp);
++
++	phy_provider = devm_of_phy_provider_register(&pdev->dev, of_phy_simple_xlate);
++
++	return PTR_ERR_OR_ZERO(phy_provider);
++}
++
++static const struct of_device_id mtk_pextp_match[] = {
++	{ .compatible = "mediatek,mt7988-xfi-pextp", },
++	{ }
++};
++MODULE_DEVICE_TABLE(of, mtk_pextp_match);
++
++static struct platform_driver mtk_pextp_driver = {
++	.probe = mtk_pextp_probe,
++	.driver = {
++		.name = "mtk-pextp",
++		.of_match_table = mtk_pextp_match,
++	},
++};
++module_platform_driver(mtk_pextp_driver);
++
++MODULE_DESCRIPTION("MediaTek pextp SerDes PHY driver");
++MODULE_AUTHOR("Daniel Golle <daniel@makrotopia.org>");
++MODULE_LICENSE("GPL");
 -- 
 2.43.0
 
