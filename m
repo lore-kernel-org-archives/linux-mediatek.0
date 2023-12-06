@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D1F4C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 11:17:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F16C6C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 11:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jk1WE08Az5QUEFuf1ClLG8JAb2TrYGGbDizjnxf6P1E=; b=Ine8t0IRcGDeNU/kSaqwmKsyKJ
-	JKPzc0pOQc0ao5t/OS6+wyfKsIsB8RfZeP1guJ1BDRprdyuXnth2KjnI7d3r+BNE+c1UnCdJ6alIP
-	2Cfq/33V4HImQ4flDd35Hq18Z6bJW16YwUftHM7+3kblHX3d/D4Ty4o6GWjNpWHFPDEtzBRyVYtXA
-	dJY9KlntdUmUVYprHrSGp3DpTczcS1+pY05TfuFpdZ9BAaygmUpY6vDtPOVW8VC4v4YO8bJez/zoL
-	xakR8GABlWFPgt1GSscz1XMs+zbHJy833aI0WC1D4ciTPybaWm1mRzXR+z9ZyBoerhS5nGVRfRrO9
-	kGgzFt6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U/vkQZi0To4Ix6nIKB8jbPlrhs5cPn8HcDiMcgUQ5P4=; b=MbsH/DDw5ocENK6Rx7DgI3AdnF
+	osAQgIUJRAr/632Jfz8tUob4iByTYTCXoKdyT5CPsfGdAX5Hxe0K/q2liRhx5ZNgXjwnhv/Cw0RlZ
+	E7QQEeABs75rmj44LkkzFTKAtaKY6t3MezBZtUA4jACNpVkdl23oCCmcQoToJasGOeqAf98sj2OYj
+	NqjhHxF3CpxPmyfrNDBJSuhgAKBWCctuqJt/TTLdiArbO+PPqzMqFoEE3eR+2UtJVc1mVSX1Hkjcx
+	9BXspM/KeMVxRwdEI7ZEzpUlH+InTOEprmh20Ix88wd/zbu25901qqmg300LMkOPvEGZN6RrYxgVq
+	w2DnTviA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rApu9-009uEb-0h;
-	Wed, 06 Dec 2023 11:17:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rAqOQ-00A6L8-2L;
+	Wed, 06 Dec 2023 11:48:42 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rApu1-009uBl-0H;
-	Wed, 06 Dec 2023 11:17:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 80EF061BF0;
-	Wed,  6 Dec 2023 11:17:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD8CEC433C8;
-	Wed,  6 Dec 2023 11:17:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701861436;
-	bh=gvY0LwkFuS7ixR5SlQYIdlUtxHf1OCuXpDZAqJh4fmc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p5en7/pPxTpa/muofj345pgVWwgX/blV0jTQ7LyS59u2rTgS5SK6CswVed1Wn+duv
-	 6hm3rncGMzMbizSPkIaI//TRd5HubPGg7rtAYIBADEMhilreLVe9U4I6YxJKn4tirr
-	 am4FGYvaTTVF5MDJ6hwK3D5Mq+DAetRpxbD6tH8xihU5Hil0O3pBXcNSR/ejwsfUuA
-	 5zAx4TecjPKotwFVm/WqR+GQ01ERjRNnY5UwClyr8kufctDG29GCHcN9GG3jsA3SRz
-	 TuVL3zZesz7o1oEnstPzxBZYn7BxHX4BnNRvZDKepp2huXVUOUEEnQyrx4fKkVga7O
-	 XlkVFDaaZvAlQ==
-Date: Wed, 6 Dec 2023 16:47:07 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Nitin Rawat <quic_nitirawa@quicinc.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	id 1rAqOD-00A64X-0z
+	for linux-mediatek@lists.infradead.org;
+	Wed, 06 Dec 2023 11:48:34 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rAqO8-0006Ep-TL; Wed, 06 Dec 2023 12:48:24 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rAqO8-00Dwsh-9C; Wed, 06 Dec 2023 12:48:24 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rAqO8-00FQxr-0A; Wed, 06 Dec 2023 12:48:24 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: kernel@pengutronix.de,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pwm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, quic_cang@quicinc.com,
-	Manish Pandey <quic_mapa@quicinc.com>
-Subject: Re: [PATCH V1] scsi: ufs: core: store min and max clk freq from OPP
- table
-Message-ID: <20231206111707.GA12802@thinkpad>
-References: <20231206053628.32169-1-quic_nitirawa@quicinc.com>
- <20231206075447.GA4954@thinkpad>
- <f30d3c21-f355-d535-480b-2fd36167bcfd@quicinc.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v4 022/115] pwm: mediatek: Make use of pwmchip_parent() macro
+Date: Wed,  6 Dec 2023 12:43:36 +0100
+Message-ID: <028a566d671a9ef14ed8e79818bfd05b19a234cf.1701860672.git.u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <cover.1701860672.git.u.kleine-koenig@pengutronix.de>
+References: <cover.1701860672.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=879; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=rTrJ+ySN/1myKTD4cdzDIS35z0aynWVLqSK1aIKD+6g=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlcF51kfFJCnd66iQB3eAzapZvNuVGMkc8+JQFu 1+46KlAhPqJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZXBedQAKCRCPgPtYfRL+ TgByB/wLeINwa1gPhUVtrcZ8wpIk0rHsuQflG6dGClx0sIlx/gtpew1ubrDrpboLyXc7Tsct5BE E7hKMr8bn9r4+Sje5ONHcUoAq+FFOJpg7LB+37XtB3997I7NcceobiUlbINRllTCZ3Wf6b9gX5K AzuRsS4fatLICal2o3YT5n1ZXUTBs7yiwFskmL4WqP3qIfQ0Q6UnpLUQ6HRgmgnH8Mwk4bFELgP W9BaZ2AIj6o2CZEPIS5cvPk+ID7WSd47MNX39tk4pCx0ohZNqH34TWuV/mmfT4cnl9U7TVhK27G uCk8myQ9S1Qs4mPQooqa93qFxkK5wsXM/UmlmKe3ENV59zKW
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <f30d3c21-f355-d535-480b-2fd36167bcfd@quicinc.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_031717_208421_10CE8EA1 
-X-CRM114-Status: GOOD (  36.17  )
+X-CRM114-CacheID: sfid-20231206_034829_339341_9E441ACB 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,129 +80,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 06, 2023 at 04:35:24PM +0530, Nitin Rawat wrote:
-> 
-> 
-> On 12/6/2023 1:24 PM, Manivannan Sadhasivam wrote:
-> > On Wed, Dec 06, 2023 at 11:06:28AM +0530, Nitin Rawat wrote:
-> > > OPP support will make use of OPP table in device tree and removes
-> > > freq-table-hz property from device tree.
-> > > 
-> > > With OPP enabled in devicetree, clki->min_freq and clki->maxfreq
-> > > currently is not getting updated and the value is set to 0.
-> > > 
-> > > Soc vendors like qcom, mediatek uses clki->minfreq and clki->maxfreq
-> > > in vendor specific file. These frequencies values are used to update
-> > > vendor specific configurations. Since the value is 0, it is causing
-> > > functional issue.
-> > 
-> > How about,
-> > 
-> > "OPP support added by commit 72208ebe181e ("scsi: ufs: core: Add support
-> > for parsing OPP") doesn't update the min_freq and max_freq of each clocks
-> > in 'struct ufs_clk_info'.
-> > 
-> > But these values are used by the vendor host drivers internally for controller
-> > configuration. When the OPP support is enabled in devicetree, these values will
-> > be 0, causing boot issues on the respective platforms.
-> > 
-> > So let's parse the min_freq and max_freq of all clocks while parsing the OPP
-> > table."
-> > 
-> > > 
-> > > Add code to store the min and max ufs clk frequency from OPP table.
-> 
-> Sure. Will update in next patchset.
-> 
-> > > 
-> > > Fixes: 72208ebe181e ("scsi: ufs: core: Add support for parsing OPP")
-> > > Co-developed-by: Manish Pandey <quic_mapa@quicinc.com>
-> > > Signed-off-by: Manish Pandey <quic_mapa@quicinc.com>
-> > > Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
-> > > ---
-> > >   drivers/ufs/host/ufshcd-pltfrm.c | 56 ++++++++++++++++++++++++++++++++
-> > >   1 file changed, 56 insertions(+)
-> > > 
-> > > diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
-> > > index da2558e274b4..12fa6f7d6a97 100644
-> > > --- a/drivers/ufs/host/ufshcd-pltfrm.c
-> > > +++ b/drivers/ufs/host/ufshcd-pltfrm.c
-> > > @@ -13,6 +13,7 @@
-> > >   #include <linux/pm_opp.h>
-> > >   #include <linux/pm_runtime.h>
-> > >   #include <linux/of.h>
-> > > +#include <linux/clk.h>
-> > 
-> > Sort includes alphabetically.
-> 
-> Sure. Will update in next patchset
-> 
-> > 
-> > > 
-> > >   #include <ufs/ufshcd.h>
-> > >   #include "ufshcd-pltfrm.h"
-> > > @@ -213,6 +214,55 @@ static void ufshcd_init_lanes_per_dir(struct ufs_hba *hba)
-> > >   	}
-> > >   }
-> > > 
-> > > +/**
-> > > + * ufshcd_config_min_max_clk_freq - update min and max freq
-> > 
-> > "ufshcd_parse_clock_min_max_freq - Parse MIN and MAX frequencies of clocks"
-> > 
-> > > + * @hba: per adapter instance
-> > > + *
-> > > + * This function store min and max freq for all the clocks.
-> > > + *
-> > 
-> > "This function parses MIN and MAX frequencies of all clocks required by the
-> > vendor host drivers."
-> > 
-> > > + * Returns 0 for success and non-zero for failure
-> > > + */
-> > > +static int ufshcd_config_min_max_clk_freq(struct ufs_hba *hba)
-> > > +{
-> > > +	struct list_head *head = &hba->clk_list_head;
-> > > +	struct dev_pm_opp *opp;
-> > > +	struct ufs_clk_info *clki;
-> > 
-> > Please maintain reverse Xmas tree order. It's not a rule for this driver, but my
-> > own preference.
-> > 
-> > > +	unsigned long freq;
-> > > +	u8 idx = 0;
-> > > +	int ret;
-> > 
-> > This won't be needed if all the return values are directly returned as I shared
-> > below.
-> 
-> 
-> Will Addressed all ret comments in next patchset.
-> > 
-> > > +
-> > > +	list_for_each_entry(clki, head, list) {
-> > > +		if (!clki->name)
-> > > +			continue;
-> > > +
-> > > +		clki->clk = devm_clk_get(hba->dev, clki->name);
-> > > +		if (!IS_ERR_OR_NULL(clki->clk)) {
-> > 
-> > This function won't return NULL, so IS_ERR() is sufficient.
-> > 
-> > > +			/* Find Max Freq */
-> > > +			freq = ULONG_MAX;
-> > > +			opp = dev_pm_opp_find_freq_floor_indexed(hba->dev, &freq, idx);
-> > 
-> > Use idx++ and get rid of the increment at the end of the 'if' condition.
-> 
-> If we increment idx++ here, dev_pm_opp_find_freq_ceil_indexed will use
-> incremented idx which is not correct. Hence i added at end after both the
-> call.
+struct pwm_chip::dev is about to change. To not have to touch this
+driver in the same commit as struct pwm_chip::dev, use the macro
+provided for exactly this purpose.
 
-Ah, right. Please increment it in dev_pm_opp_find_freq_ceil_indexed() instead.
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+---
+ drivers/pwm/pwm-mediatek.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-- Mani
-
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index 17d290f847af..d7d1c326e8cf 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -150,7 +150,7 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 
+ 	if (clkdiv > PWM_CLK_DIV_MAX) {
+ 		pwm_mediatek_clk_disable(chip, pwm);
+-		dev_err(chip->dev, "period of %d ns not supported\n", period_ns);
++		dev_err(pwmchip_parent(chip), "period of %d ns not supported\n", period_ns);
+ 		return -EINVAL;
+ 	}
+ 
 -- 
-மணிவண்ணன் சதாசிவம்
+2.42.0
+
 
