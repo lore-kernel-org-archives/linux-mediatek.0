@@ -4,47 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 921A5C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 15:27:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8EC1C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 15:33:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=drKp7vOQaf8U+QRh1FeY/LcVyu+UuwP3HJxpMXJxUIA=; b=EIipLNo3Aku2waeD3NEjKLAWIh
-	AUStMc7rUsoqfWMgVaGGSAKhnaL0TnY1Y0zMTbVQILlTqTLfjyGgsucuoYesbttg79JSvs/EZmfef
-	5/dkRtiFpReORwQFrF0l5LIIMfHsQhB7y4NhEuJxJuNAepvFh1pqfZfFdIe4nPeG6rnlVIEi2Obxl
-	KGZ6XtmOjIT8Uu8C4grZXoaxJyUBdB4fLI4wqK/DCuF3rFQ/gmuuyTnbXcWDVDUjzqz5R9QxyHDxC
-	GY5HC1dlyhioEGg776JFkxSs/rMSoepERTzmUIeGCQ7Vymhn1IybMTVeNwmoHjtjPSJK0lTHsx9XR
-	l2ADD29g==;
+	bh=vPpu55CWctU5kwFhjf/7SlTo/I53ViTakRJXmAVb0e0=; b=Ct2A+TpniYq4uJGmrikG5RBcD4
+	dPtDXqTyWWeNiN6JuRqyk1GkxgACuXq655kjBYU+CPTrCNt/3zM44qyzM3cWsW+Zu9/1oLwdCy8ar
+	MLO/v+Z+2eOWZCx4Sx6iYLg7b621WAo7SxcHRnm86C3b0dSXtl9u9GEjHp/mI26W6MuCoKLlzM6Qj
+	Pt2Me5lPHuIYRAjRAc7QiORPGitlPD1cGjJEUrOVWqyVDntoexk+528r2RDCAaoSC1Og241eEKOTc
+	ViBGV1mrPfpziz4BQVXsQ/p4LKmoWuHEwC6pQmjGv0aVyOXdmxwAsHENlD/Pk6Phf9QZo2ZhQy1xv
+	xAI6ZqwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAtni-00Acey-1O;
-	Wed, 06 Dec 2023 15:27:02 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rAttS-00AdJm-39;
+	Wed, 06 Dec 2023 15:32:58 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAtnf-00Ace0-0C;
-	Wed, 06 Dec 2023 15:27:00 +0000
+	id 1rAttP-00AdIT-0i;
+	Wed, 06 Dec 2023 15:32:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E780861D50;
-	Wed,  6 Dec 2023 15:26:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C7BFC433C8;
-	Wed,  6 Dec 2023 15:26:50 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 7C3C5B8218F;
+	Wed,  6 Dec 2023 15:32:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B75DC433C7;
+	Wed,  6 Dec 2023 15:32:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701876417;
-	bh=ErOUL0OR4b4hUkNAU5v24U4RXrnfJw3pOrdPFiz7eOk=;
+	s=k20201202; t=1701876772;
+	bh=w1otnxj6ZQubR19XyLc2pJyxuUrOYv5s6Wn1rb3d1zM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sQ9Iv/tGorGk7fvwR9E+4Z8h5RM1dV3/5S7kwpiBtNtvuNiTNNg36Df+XdZZavqwI
-	 mdvSKnon4grfYi5DaWWIyRZ8y61twyzALmuuMxZ9aQodeMBizWht8+vVH8SN1SbyfV
-	 4l8QqzRBrdIw7snA1S/c6e6qr00V4vUxruBRTnV+gbNzeb/PAj3Ej2CfYm/aKwK45n
-	 5vtBcYj5Q+ySjP2GkAVBz264JqHGfUbW4ZALgj+Sl85bten71VVVPeRtHFf8WdGjPY
-	 oq2mFIRf9xRm3WdijVp2xkwnJnCjZYcE8G2x7YLzgAFj7Xs7poDQfEfON0Zc9buXnQ
-	 0nR7p0iSSPNJg==
-Date: Wed, 6 Dec 2023 20:56:46 +0530
+	b=rGASEMZu2w8Un5785u0aGDVqoWrEGsXz1MReexBAxddidRe4ZZe5zAr1Sm0k93D+u
+	 Ui2+j1KIQLPLlEMwubHnwKWoqH9i2LMROw+PNo+os8rAPeQ4hST37N62nDpHBIkPO4
+	 uHH8Emz7IPGW/hZ6oLAl6gSzocpcZnFhp6YtRXrD5oszVH52J7j9aOgXwG0nWmcR3T
+	 k6K524JwL7SyQMLDxr20AN1PKLPXkVriRV40ck2DScbYe+1PPJuMSCQUvXO70HkFBw
+	 uGJnKtfwIFtCkPIEyrUnhg4Hi3AGxm9XoGnIVmFItvXFPxt/PpS5LdtUW6oEHHL6xL
+	 hEgUg9hmtXlZg==
+Date: Wed, 6 Dec 2023 21:02:42 +0530
 From: Manivannan Sadhasivam <mani@kernel.org>
-To: Maramaina Naresh <quic_mnaresh@quicinc.com>
-Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>,
+To: Naresh Maramaina <quic_mnaresh@quicinc.com>
+Cc: Bart Van Assche <bvanassche@acm.org>,
+	"James E.J. Bottomley" <jejb@linux.ibm.com>,
 	"Martin K. Petersen" <martin.petersen@oracle.com>,
 	Peter Wang <peter.wang@mediatek.com>,
 	Andy Gross <agross@kernel.org>,
@@ -53,25 +54,28 @@ Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	chu.stanley@gmail.com, Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, linux-scsi@vger.kernel.org,
+	Avri Altman <avri.altman@wdc.com>, linux-scsi@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	quic_cang@quicinc.com, quic_nguyenb@quicinc.com,
 	Nitin Rawat <quic_nitirawa@quicinc.com>
 Subject: Re: [PATCH V2 1/3] ufs: core: Add CPU latency QoS support for ufs
  driver
-Message-ID: <20231206152646.GH12802@thinkpad>
+Message-ID: <20231206153242.GI12802@thinkpad>
 References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
  <20231204143101.64163-2-quic_mnaresh@quicinc.com>
+ <590ade27-b4da-49be-933b-e9959aa0cd4c@acm.org>
+ <692cd503-5b14-4be6-831d-d8e9c282a95e@quicinc.com>
+ <5e7c5c75-cb5f-4afe-9d57-b0cab01a6f26@acm.org>
+ <b9373252-710c-4a54-95cc-046314796960@quicinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231204143101.64163-2-quic_mnaresh@quicinc.com>
+In-Reply-To: <b9373252-710c-4a54-95cc-046314796960@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_072659_190129_87B244FD 
-X-CRM114-Status: GOOD (  26.65  )
+X-CRM114-CacheID: sfid-20231206_073255_552101_1AA1E731 
+X-CRM114-Status: GOOD (  24.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,195 +90,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 04, 2023 at 08:00:59PM +0530, Maramaina Naresh wrote:
-> Register ufs driver to CPU latency PM QoS framework can improves
-> ufs device random io performance.
+On Wed, Dec 06, 2023 at 07:32:54PM +0530, Naresh Maramaina wrote:
 > 
-> PM QoS initialization will insert new QoS request into the CPU
-> latency QoS list with the maximum latency PM_QOS_DEFAULT_VALUE
-> value.
 > 
-> UFS driver will vote for performance mode on scale up and power
-> save mode for scale down.
+> On 12/5/2023 10:41 PM, Bart Van Assche wrote:
+> > On 12/4/23 21:58, Naresh Maramaina wrote:
+> > > On 12/5/2023 12:30 AM, Bart Van Assche wrote:
+> > > > On 12/4/23 06:30, Maramaina Naresh wrote:
+> > > > > +    /* This capability allows the host controller driver to
+> > > > > use the PM QoS
+> > > > > +     * feature.
+> > > > > +     */
+> > > > > +    UFSHCD_CAP_PM_QOS                = 1 << 13,
+> > > > >   };
+> > > > 
+> > > > Why does it depend on the host driver whether or not PM QoS is
+> > > > enabled? Why isn't it enabled unconditionally?
+> > > 
+> > > For some platform vendors power KPI might be more important than
+> > > random io KPI. Hence this flag is disabled by default and can be
+> > > enabled based on platform requirement.
+> > 
+> > How about leaving this flag out unless if a host vendor asks explicitly
+> > for this flag?
 > 
-> If clock scaling feature is not enabled then voting will be based
-> on clock on or off condition.
+> IMHO, instead of completely removing this flag, how about having
+> flag like "UFSHCD_CAP_DISABLE_PM_QOS" which will make PMQOS enable
+> by default and if some host vendor wants to disable it explicitly,
+> they can enable that flag.
+> Please let me know your opinion.
 > 
-> tiotest benchmark tool io performance results on sm8550 platform:
-> 
-> 1. Without PM QoS support
-> 	Type (Speed in)    | Average of 18 iterations
-> 	Random Write(IPOS) | 41065.13
-> 	Random Read(IPOS)  | 37101.3
-> 
-> 2. With PM QoS support
-> 	Type (Speed in)    | Average of 18 iterations
-> 	Random Write(IPOS) | 46784.9
-> 	Random Read(IPOS)  | 42943.4
-> (Improvement % with PM QoS = ~15%).
-> 
-> Co-developed-by: Nitin Rawat <quic_nitirawa@quicinc.com>
-> Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
-> Signed-off-by: Naveen Kumar Goud Arepalli <quic_narepall@quicinc.com>
-> Signed-off-by: Maramaina Naresh <quic_mnaresh@quicinc.com>
-> ---
->  drivers/ufs/core/ufshcd-priv.h |  8 +++++
->  drivers/ufs/core/ufshcd.c      | 62 ++++++++++++++++++++++++++++++++++
->  include/ufs/ufshcd.h           | 16 +++++++++
->  3 files changed, 86 insertions(+)
-> 
-> diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-> index f42d99ce5bf1..536805f6c4e1 100644
-> --- a/drivers/ufs/core/ufshcd-priv.h
-> +++ b/drivers/ufs/core/ufshcd-priv.h
-> @@ -241,6 +241,14 @@ static inline void ufshcd_vops_config_scaling_param(struct ufs_hba *hba,
->  		hba->vops->config_scaling_param(hba, p, data);
->  }
->  
-> +static inline u32 ufshcd_vops_config_qos_vote(struct ufs_hba *hba)
-> +{
-> +	if (hba->vops && hba->vops->config_qos_vote)
-> +		return hba->vops->config_qos_vote(hba);
 
-Please remove this callback as Bart noted.
-
-> +
-> +	return UFSHCD_QOS_DEFAULT_VOTE;
-> +}
-> +
->  static inline void ufshcd_vops_reinit_notify(struct ufs_hba *hba)
->  {
->  	if (hba->vops && hba->vops->reinit_notify)
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index ae9936fc6ffb..13370febd2b5 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -1001,6 +1001,20 @@ static bool ufshcd_is_unipro_pa_params_tuning_req(struct ufs_hba *hba)
->  	return ufshcd_get_local_unipro_ver(hba) < UFS_UNIPRO_VER_1_6;
->  }
->  
-> +/**
-> + * ufshcd_pm_qos_perf - vote for PM QoS performance or power save mode
-
-ufshcd_pm_qos_update() - Update PM QoS request
-
-> + * @hba: per adapter instance
-> + * @on: If True, vote for perf PM QoS mode otherwise power save mode
-> + */
-> +static void ufshcd_pm_qos_perf(struct ufs_hba *hba, bool on)
-> +{
-> +	if (!hba->pm_qos_init)
-> +		return;
-> +
-> +	cpu_latency_qos_update_request(&hba->pm_qos_req, on ? hba->qos_vote
-> +							: PM_QOS_DEFAULT_VALUE);
-> +}
-> +
->  /**
->   * ufshcd_set_clk_freq - set UFS controller clock frequencies
->   * @hba: per adapter instance
-> @@ -1153,6 +1167,10 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
->  	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
->  			(scale_up ? "up" : "down"),
->  			ktime_to_us(ktime_sub(ktime_get(), start)), ret);
-> +
-> +	if (!ret)
-> +		ufshcd_pm_qos_perf(hba, scale_up);
-
-Can't you just move this before trace_ufshcd_profile_clk_scaling()? This also
-avoids checking for !ret.
-
-> +
->  	return ret;
->  }
->  
-> @@ -9204,6 +9222,8 @@ static int ufshcd_setup_clocks(struct ufs_hba *hba, bool on)
->  	if (ret)
->  		return ret;
->  
-> +	if (!ufshcd_is_clkscaling_supported(hba))
-> +		ufshcd_pm_qos_perf(hba, on);
->  out:
->  	if (ret) {
->  		list_for_each_entry(clki, head, list) {
-> @@ -9296,6 +9316,45 @@ static int ufshcd_init_clocks(struct ufs_hba *hba)
->  	return ret;
->  }
->  
-> +/**
-> + * ufshcd_pm_qos_init - initialize PM QoS instance
-
-"Initialize PM QoS request"
-
-> + * @hba: per adapter instance
-> + */
-> +static void ufshcd_pm_qos_init(struct ufs_hba *hba)
-> +{
-> +	if (!(hba->caps & UFSHCD_CAP_PM_QOS))
-> +		return;
-> +
-> +	/*
-> +	 * called to configure PM QoS vote value for UFS host,
-> +	 * expecting qos vote return value from caller else
-> +	 * default vote value will be return.
-> +	 */
-> +	hba->qos_vote = ufshcd_vops_config_qos_vote(hba);
-
-No need of this variable too if you get rid of the callback.
-
-> +	cpu_latency_qos_add_request(&hba->pm_qos_req,
-> +					PM_QOS_DEFAULT_VALUE);
-> +
-> +	if (cpu_latency_qos_request_active(&hba->pm_qos_req))
-> +		hba->pm_qos_init = true;
-
-Why do you need this flag?
-
-> +
-> +	dev_dbg(hba->dev, "%s: QoS %s, qos_vote: %u\n", __func__,
-> +		hba->pm_qos_init ? "initialized" : "uninitialized",
-> +		hba->qos_vote);
-> +}
-> +
-> +/**
-> + * ufshcd_pm_qos_exit - remove instance from PM QoS
-> + * @hba: per adapter instance
-> + */
-> +static void ufshcd_pm_qos_exit(struct ufs_hba *hba)
-> +{
-> +	if (!hba->pm_qos_init)
-> +		return;
-> +
-> +	cpu_latency_qos_remove_request(&hba->pm_qos_req);
-> +	hba->pm_qos_init = false;
-> +}
-> +
-
-[...]
-
->  /**
->   * struct ufs_hba - per adapter private structure
->   * @mmio_base: UFSHCI base register address
-> @@ -912,6 +923,8 @@ enum ufshcd_mcq_opr {
->   * @mcq_base: Multi circular queue registers base address
->   * @uhq: array of supported hardware queues
->   * @dev_cmd_queue: Queue for issuing device management commands
-> + * @pm_qos_req: PM QoS request handle
-> + * @pm_qos_init: flag to check if pm qos init completed
->   */
->  struct ufs_hba {
->  	void __iomem *mmio_base;
-> @@ -1076,6 +1089,9 @@ struct ufs_hba {
->  	struct ufs_hw_queue *uhq;
->  	struct ufs_hw_queue *dev_cmd_queue;
->  	struct ufshcd_mcq_opr_info_t mcq_opr[OPR_MAX];
-> +	struct pm_qos_request pm_qos_req;
-> +	bool pm_qos_init;
-> +	u32 qos_vote;
-
-Order doesn't match Kdoc.
+If a vendor wants to disable this feature, then the driver has to be modified.
+That won't be very convenient. So either this has to be configured through sysfs
+or Kconfig if flexibility matters.
 
 - Mani
+
+> > > > 
+> > > > > + * @pm_qos_req: PM QoS request handle
+> > > > > + * @pm_qos_init: flag to check if pm qos init completed
+> > > > >    */
+> > > > 
+> > > > Documentation for pm_qos_init is missing.
+> > > > 
+> > > Sorry, i didn't get your comment, i have already added documentation
+> > > for @pm_qos_init, @pm_qos_req variable as above. Do you want me to
+> > > add this information some where else as well?
+> > 
+> > Oops, I meant 'qos_vote'.
+> 
+> Sure. I'll take of this in next patchset.
+> 
+> > 
+> > Thanks,
+> > 
+> > Bart.
+> > 
+> 
+> Thanks,
+> Naresh
+> 
 
 -- 
 மணிவண்ணன் சதாசிவம்
