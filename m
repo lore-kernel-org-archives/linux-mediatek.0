@@ -4,86 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1345C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8953EC10DC1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5hNl/ebhPBItzu4pN+YmmtZTsVFNCochFPrIS+vXnfY=; b=qFi4F4TTaSTRF+J5MbYhAI3uuA
-	GZleWunQU3/29bTHbXf9vHlCY2IqjD1sj5qbZnNkHomBR6tuDQSBFBjmkGyxBCpSnHcK+vdrOwLKQ
-	Lnzg8wwSRD4GXyVG0gZNdQKdM225dLHssR92zlLSAFNkIZl7i/5COJLRmJmNjfOlD8V4mVydE1+Gi
-	416yE7sF/JOMdHKkHpwQLuMO72q7/fqzuPXJHopNu+jfJNEGa/1Wbtq7Mnfnzg0Uagm1eHAYmHmZ1
-	0iy9gOdITd/9WAYoW7eeAbYJbWtO3G3LidQBoYNqwLXGEEp2vbWQQbc8y0CrxUk+GkANxJ8ZqPKfd
-	CpRGGu8w==;
+	bh=73koCofZDqmsIg3RWsQNbfp+mHALtOtkTxc6gTpLsjU=; b=I7LtzcLIKfFflJ8N5/yi1kjzAU
+	zwdJ5qgMB1waFWzCY6pa0DDzlugUYEb1bPho1ZHV0ntGf0AS+57JBKus9jPkNTzyLT4tRXm/H9jMH
+	Pm5X3i6skFTdtkAVXIYVAzzbP41ranYeTpm/a4eDnkIwkfflUcLnjN0iPfqxiUZW7CLysHP8OhQWH
+	UEjWDgwUXyXKsdSVQQ9mBA4EOC6oA9Txf3F8gGdZNDCUeRkKdfTgrrAyb0n/5o/+oOEwueu0bN/ru
+	izKsUCrNVB5slehVUadE2O0RoZeFQm1dqfShCE+BzRizVJbB8q+PsJUvwRgZbjjJF9KcuJHcS9vPv
+	GDQT9jLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAnOL-009RGX-2o;
-	Wed, 06 Dec 2023 08:36:25 +0000
+	id 1rAnQG-009RXy-0u;
+	Wed, 06 Dec 2023 08:38:24 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAnOJ-009RG9-1V;
-	Wed, 06 Dec 2023 08:36:25 +0000
-X-UUID: 871719d4941211ee9b09ad09c76753c8-20231206
+	id 1rAnQE-009RWl-14;
+	Wed, 06 Dec 2023 08:38:23 +0000
+X-UUID: cd1c4044941211ee9b09ad09c76753c8-20231206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5hNl/ebhPBItzu4pN+YmmtZTsVFNCochFPrIS+vXnfY=;
-	b=gYtRdNvBnXmhjW2UzxGr6PEiYAfzK9e3J98h0WKmO/dZL+TiRaH+Wzx06KnriWqPpFZcOEZ92KUwFb3uzExjoGXOxCOh1ZnQDVM4off6EfXe2Q4EsK1q6OqLRwbLruflO+RmjgDcErhfkGErhS64cjR4BDgn8cOT0dCaBOuz2lg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=73koCofZDqmsIg3RWsQNbfp+mHALtOtkTxc6gTpLsjU=;
+	b=u3hpMb9B6QxC5UjskNllsQoUz1eEy4Ss+/uIrXwarZ3h26wQNZl/YJWJg0KlCW41Fb0HsDI4LgPNc6rN/ZwLTWDwRDy9vd6f5A0EUSW4kVNyHlV+3x6zFFGDeet+oZLR9FhOmn9+NoBa9Q5QgG7fTYxgfSfysl7cGBjtANhCHak=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.34,REQID:fb80270b-1572-4743-9026-a12f7f0a4c60,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:abefa75,CLOUDID:646e59fd-4a48-46e2-b946-12f04f20af8c,B
+X-CID-O-INFO: VERSION:1.1.34,REQID:229d5ce3-0b2e-4a1e-b481-29d99f7b5571,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:abefa75,CLOUDID:3dc1e060-c89d-4129-91cb-8ebfae4653fc,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 871719d4941211ee9b09ad09c76753c8-20231206
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: cd1c4044941211ee9b09ad09c76753c8-20231206
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
+	(envelope-from <jianjun.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2034344614; Wed, 06 Dec 2023 01:36:19 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 152221310; Wed, 06 Dec 2023 01:38:16 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 6 Dec 2023 16:15:42 +0800
+ 15.2.1118.26; Wed, 6 Dec 2023 16:38:13 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:15:41 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Jeffrey Kardatzke <jkardatzke@google.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
- Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
- Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
-	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
- Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
- Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,02/21] v4l2: handle secure memory flags in queue setup
-Date: Wed, 6 Dec 2023 16:15:19 +0800
-Message-ID: <20231206081538.17056-3-yunfei.dong@mediatek.com>
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:38:13 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring
+	<robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+	<jianjun.wang@mediatek.com>, <linux-pci@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <jieyy.yang@mediatek.com>,
+	<chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
+	<jian.yang@mediatek.com>, <jianguo.zhang@mediatek.com>
+Subject: [PATCH 1/2] PCI: mediatek: Allocate MSI address with dmam_alloc_coherent
+Date: Wed, 6 Dec 2023 16:37:52 +0800
+Message-ID: <20231206083753.18186-2-jianjun.wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231206081538.17056-1-yunfei.dong@mediatek.com>
-References: <20231206081538.17056-1-yunfei.dong@mediatek.com>
+In-Reply-To: <20231206083753.18186-1-jianjun.wang@mediatek.com>
+References: <20231206083753.18186-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_003623_534475_CE543C07 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20231206_003822_376123_AF94B81D 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,183 +92,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jeffrey Kardatzke <jkardatzke@google.com>
+Use 'dmam_alloc_coherent' to allocate the MSI address, instead of using
+'virt_to_phys'.
 
-Validates the secure memory flags when setting up a queue and ensures
-the queue has the proper capability.
-
-Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 23 +++++++++++++
- .../media/common/videobuf2/videobuf2-v4l2.c   | 34 +++++++++++++------
- 2 files changed, 46 insertions(+), 11 deletions(-)
+ drivers/pci/controller/pcie-mediatek.c | 29 ++++++++++++++++++--------
+ 1 file changed, 20 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 8c1df829745b..09dc030484be 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -813,6 +813,15 @@ static bool verify_coherency_flags(struct vb2_queue *q, bool non_coherent_mem)
- 	return true;
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 66a8f73296fc..b080f7ca6da0 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -178,6 +178,7 @@ struct mtk_pcie_soc {
+  * @phy: pointer to PHY control block
+  * @slot: port slot
+  * @irq: GIC irq
++ * @msg_addr: MSI message address
+  * @irq_domain: legacy INTx IRQ domain
+  * @inner_domain: inner IRQ domain
+  * @msi_domain: MSI IRQ domain
+@@ -198,6 +199,7 @@ struct mtk_pcie_port {
+ 	struct phy *phy;
+ 	u32 slot;
+ 	int irq;
++	dma_addr_t msg_addr;
+ 	struct irq_domain *irq_domain;
+ 	struct irq_domain *inner_domain;
+ 	struct irq_domain *msi_domain;
+@@ -394,12 +396,10 @@ static struct pci_ops mtk_pcie_ops_v2 = {
+ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+ {
+ 	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+-	phys_addr_t addr;
+ 
+ 	/* MT2712/MT7622 only support 32-bit MSI addresses */
+-	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+ 	msg->address_hi = 0;
+-	msg->address_lo = lower_32_bits(addr);
++	msg->address_lo = lower_32_bits(port->msg_addr);
+ 
+ 	msg->data = data->hwirq;
+ 
+@@ -515,18 +515,26 @@ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+ 	return 0;
  }
  
-+static bool verify_secure_mem_flags(struct vb2_queue *q, bool secure_mem)
-+{
-+	if (secure_mem != q->secure_mem) {
-+		dprintk(q, 1, "secure memory model mismatch\n");
-+		return false;
-+	}
-+	return true;
-+}
-+
- int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		     unsigned int flags, unsigned int *count)
+-static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
++static int mtk_pcie_enable_msi(struct mtk_pcie_port *port)
  {
-@@ -820,6 +829,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
- 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
-+	bool secure_mem = flags & V4L2_MEMORY_FLAG_SECURE;
- 	unsigned int i;
- 	int ret = 0;
+ 	u32 val;
+-	phys_addr_t msg_addr;
++	void *msi_vaddr;
  
-@@ -836,6 +846,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	if (*count == 0 || q_num_bufs != 0 ||
- 	    (q->memory != VB2_MEMORY_UNKNOWN && q->memory != memory) ||
- 	    !verify_coherency_flags(q, non_coherent_mem)) {
-+		bool no_previous_buffers = !q->num_buffers;
-+
- 		/*
- 		 * We already have buffers allocated, so first check if they
- 		 * are not in use and can be freed.
-@@ -854,6 +866,12 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		__vb2_queue_free(q, q_num_bufs);
- 		mutex_unlock(&q->mmap_lock);
- 
-+		/*
-+		 * Do not allow switching secure buffer mode.
-+		 */
-+		if (!no_previous_buffers && !verify_secure_mem_flags(q, secure_mem))
-+			return -EINVAL;
-+
- 		/*
- 		 * In case of REQBUFS(0) return immediately without calling
- 		 * driver's queue_setup() callback and allocating resources.
-@@ -882,6 +900,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	if (ret)
- 		return ret;
- 	set_queue_coherency(q, non_coherent_mem);
-+	q->secure_mem = secure_mem;
- 
- 	/*
- 	 * Ask the driver how many buffers and planes per buffer it requires.
-@@ -986,6 +1005,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
- 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
- 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
-+	bool secure_mem = flags & V4L2_MEMORY_FLAG_SECURE;
- 	bool no_previous_buffers = !q_num_bufs;
- 	int ret = 0;
- 
-@@ -1015,6 +1035,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			return ret;
- 		q->waiting_for_buffers = !q->is_output;
- 		set_queue_coherency(q, non_coherent_mem);
-+		q->secure_mem = secure_mem;
- 	} else {
- 		if (q->memory != memory) {
- 			dprintk(q, 1, "memory model mismatch\n");
-@@ -1022,6 +1043,8 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		}
- 		if (!verify_coherency_flags(q, non_coherent_mem))
- 			return -EINVAL;
-+		if (!verify_secure_mem_flags(q, secure_mem))
-+			return -EINVAL;
- 	}
- 
- 	num_buffers = min(*count, q->max_num_buffers - q_num_bufs);
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index 54d572c3b515..0a530830276c 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -686,22 +686,30 @@ static void fill_buf_caps(struct vb2_queue *q, u32 *caps)
- 		*caps |= V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS;
- 	if (q->supports_requests)
- 		*caps |= V4L2_BUF_CAP_SUPPORTS_REQUESTS;
-+	if (q->allow_secure_mem && q->io_modes & VB2_DMABUF)
-+		*caps |= V4L2_BUF_CAP_SUPPORTS_SECURE_MEM;
- }
- 
--static void validate_memory_flags(struct vb2_queue *q,
-+static bool validate_memory_flags(struct vb2_queue *q,
- 				  int memory,
- 				  u32 *flags)
- {
-+	if (*flags & V4L2_MEMORY_FLAG_SECURE &&
-+	    (!q->allow_secure_mem || memory != V4L2_MEMORY_DMABUF)) {
-+		return false;
+-	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+-	val = lower_32_bits(msg_addr);
++	msi_vaddr = dmam_alloc_coherent(port->pcie->dev, sizeof(dma_addr_t), &port->msg_addr,
++					GFP_KERNEL);
++	if (!msi_vaddr) {
++		dev_err(port->pcie->dev, "failed to alloc and map MSI data\n");
++		return -ENOMEM;
 +	}
 +
- 	if (!q->allow_cache_hints || memory != V4L2_MEMORY_MMAP) {
- 		/*
--		 * This needs to clear V4L2_MEMORY_FLAG_NON_COHERENT only,
--		 * but in order to avoid bugs we zero out all bits.
-+		 * This needs to clear V4L2_MEMORY_FLAG_NON_COHERENT only.
- 		 */
--		*flags = 0;
--	} else {
--		/* Clear all unknown flags. */
--		*flags &= V4L2_MEMORY_FLAG_NON_COHERENT;
-+		*flags &= ~V4L2_MEMORY_FLAG_NON_COHERENT;
- 	}
++	val = lower_32_bits(port->msg_addr);
+ 	writel(val, port->base + PCIE_IMSI_ADDR);
+ 
+ 	val = readl(port->base + PCIE_INT_MASK);
+ 	val &= ~MSI_MASK;
+ 	writel(val, port->base + PCIE_INT_MASK);
 +
-+	/* Clear all unknown flags. */
-+	*flags &= V4L2_MEMORY_FLAG_NON_COHERENT | V4L2_MEMORY_FLAG_SECURE;
-+
-+	return true;
++	return 0;
  }
  
- int vb2_reqbufs(struct vb2_queue *q, struct v4l2_requestbuffers *req)
-@@ -710,7 +718,8 @@ int vb2_reqbufs(struct vb2_queue *q, struct v4l2_requestbuffers *req)
- 	u32 flags = req->flags;
+ static void mtk_pcie_irq_teardown(struct mtk_pcie *pcie)
+@@ -732,8 +740,11 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 	val &= ~INTX_MASK;
+ 	writel(val, port->base + PCIE_INT_MASK);
  
- 	fill_buf_caps(q, &req->capabilities);
--	validate_memory_flags(q, req->memory, &flags);
-+	if (!validate_memory_flags(q, req->memory, &flags))
-+		return -EINVAL;
- 	req->flags = flags;
- 	return ret ? ret : vb2_core_reqbufs(q, req->memory,
- 					    req->flags, &req->count);
-@@ -752,7 +761,8 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
- 	unsigned i;
+-	if (IS_ENABLED(CONFIG_PCI_MSI))
+-		mtk_pcie_enable_msi(port);
++	if (IS_ENABLED(CONFIG_PCI_MSI)) {
++		err = mtk_pcie_enable_msi(port);
++		if (err)
++			return err;
++	}
  
- 	fill_buf_caps(q, &create->capabilities);
--	validate_memory_flags(q, create->memory, &create->flags);
-+	if (!validate_memory_flags(q, create->memory, &create->flags))
-+		return -EINVAL;
- 	create->index = vb2_get_num_buffers(q);
- 	create->max_num_buffers = q->max_num_buffers;
- 	create->capabilities |= V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS;
-@@ -1007,7 +1017,8 @@ int vb2_ioctl_reqbufs(struct file *file, void *priv,
- 	u32 flags = p->flags;
- 
- 	fill_buf_caps(vdev->queue, &p->capabilities);
--	validate_memory_flags(vdev->queue, p->memory, &flags);
-+	if (!validate_memory_flags(vdev->queue, p->memory, &flags))
-+		return -EINVAL;
- 	p->flags = flags;
- 	if (res)
- 		return res;
-@@ -1031,7 +1042,8 @@ int vb2_ioctl_create_bufs(struct file *file, void *priv,
- 
- 	p->index = vdev->queue->num_buffers;
- 	fill_buf_caps(vdev->queue, &p->capabilities);
--	validate_memory_flags(vdev->queue, p->memory, &p->flags);
-+	if (!validate_memory_flags(vdev->queue, p->memory, &p->flags))
-+		return -EINVAL;
- 	/*
- 	 * If count == 0, then just check if memory and type are valid.
- 	 * Any -EBUSY result from vb2_verify_memory_type can be mapped to 0.
+ 	/* Set AHB to PCIe translation windows */
+ 	val = lower_32_bits(mem->start) |
 -- 
 2.18.0
 
