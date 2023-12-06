@@ -4,92 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AEC2C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Dec 2023 21:44:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B32DC10DCE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 00:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NtPODTHNMByw4rsHzSlvkWk3wVQbetWpeccUPj/d6as=; b=WihjEBc99Nj5ISkikpbQGjHL/q
-	vAPEpv1Qof2tiW+NZdA4RUrRr3CA+tJnHuOKY51I8rXqW6tnvuDx8Btziwcppxb7/IlvKLqVl1xpH
-	1pxqLLsVbyduXIEK5T7uo537RHTCofuQwN6sQXO2l4JoHmJ4CCk0GyIncj+nh5ecG49lG6J/Sw9/2
-	hQT1b5bJUcUZ6u7u84hwIQhTk+vcshywM/6WZnyr4LFcqlMT7U5bZuBZGNqhBcxuQRD0GgW0O2z7I
-	FFnlmK5KZGkoOwRFT2LzeGZNtQITTv8Kg/bzaZk23cHRlGioIPRvTMH9bdn7A/90+tP+x7ZZIpWw8
-	f7NLCQuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4YtwwZcbzLTKwnP/28t1uPkPJ8TZeYyXPQ27S+jxYE8=; b=pl2r9ItcFRUp9PL1SEkNk4zE+t
+	zQriM6kplEKOvxFToIE6Vb39YBvJGjTuhs/o120Ks05Z7XoeH6t9BD9o1PLJsbU9smjmDpsddd9TV
+	FovrZ2XjwmvhRYEMqocQUtDoGl4c0e086Cy3ZYh3KkPml5Kx3329GcB7fN3mzKjidxiLe/kRIDhXC
+	Rca9g6onO+6y/eYyy8xxfhb/PbXGYUUsh7kGCBnHaDt++R7IproSRPtlB3tiV95JbY43NrXJSnQsM
+	+BA+y5ZgExY8ZEoSEzU9oz+9+25RgwgmfrfF85tRhbik2+nOz6jZR80xEmauA3TFknQqdlRSkYUYs
+	ZNmhXlEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAdD8-008Sp4-18;
-	Tue, 05 Dec 2023 21:44:10 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1rAgD6-008kD9-0m;
+	Wed, 06 Dec 2023 00:56:20 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAdD4-008SoC-2T;
-	Tue, 05 Dec 2023 21:44:08 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-54cfb03f1a8so2198954a12.2;
-        Tue, 05 Dec 2023 13:44:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701812644; x=1702417444; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=NtPODTHNMByw4rsHzSlvkWk3wVQbetWpeccUPj/d6as=;
-        b=RifcjM3ei0rJ+pt0rtRcJ+V0piBJ4MsrJ2+jCaMzZBT4jKj+OIuzt+mzpFThqOP0Wc
-         r6qm2iIkAnMHxPVWbscA3A/x29Cik17vne1SJo0qKgF51q2tKBzAVneaCbyu4wnidkoE
-         vRd1T7JYU2Bv+cJrNSR8+otMLH0IfgFV30mpGYaklpj3kRYMyQA8ICzLj1hJjzBj7oRR
-         t9qT1Jz0+oBvzc/nIzbg+AfrKHaG/ZWdwkViSMEMcVt40zAxu4+qa+RLEogYZpY2Z8eR
-         e35ro5tPNT9T8qVq242qEM3wrj2oezImHFwaEiAB+6deIRV0dkGJfjaLlce4uwf0V5ph
-         CfaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701812644; x=1702417444;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NtPODTHNMByw4rsHzSlvkWk3wVQbetWpeccUPj/d6as=;
-        b=DQtWmk+NMkY8IHN4vLhvkgQl5yVtSLHVuxfG61vAMVDF/9s5+VIdIvv5iz+aVu0HX0
-         9DWKXMJrTDkKJ2lrwMRoh1ggUwd2ejIHck+4YmDVm/XvBqgKM4nqKrsTEJfh7YLjmwBl
-         TLI6IPiuD+8YC+wrngxKVlJ/ubW2GlcpuNvZ7Z9RZS0Z26ANT3WqrdwgZfkxhpDRS/z0
-         b67NoUDq3mfm6vNtXICQjB+ZDVKa42+f0kflUOGYqDTpaUpgVsXVadzCJA1qXZasxudA
-         Qnp6wPDVk0iDrxz310KwGS2ck/phg+JTUNSgTyXd8r0UW01BNrqSftFyTEmVXlDNM7hX
-         eZGA==
-X-Gm-Message-State: AOJu0YxEzzr6W2v0o0b7BdXO1022j1Q6j8IawPw0NZtmZs6sqBaaRXb8
-	YKyogqK+TtQxUh3U3boBwLU=
-X-Google-Smtp-Source: AGHT+IF1vMo5ATjjFj0hYEASG1eV3bg6VLC9crTxdALyAIVt0wYlW+9/bW/mvqNlF1Ks3sbIjz8R2g==
-X-Received: by 2002:a17:906:5992:b0:a19:a19a:eac7 with SMTP id m18-20020a170906599200b00a19a19aeac7mr818787ejs.128.1701812643685;
-        Tue, 05 Dec 2023 13:44:03 -0800 (PST)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id g5-20020a170906198500b009c5c5c2c5a4sm7267888ejd.219.2023.12.05.13.44.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Dec 2023 13:44:03 -0800 (PST)
-Message-ID: <708e46fb-5aaf-4c47-a8f5-4cd5171a8d76@gmail.com>
-Date: Tue, 5 Dec 2023 22:44:01 +0100
+	id 1rAgD1-008kBf-2q;
+	Wed, 06 Dec 2023 00:56:17 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rAgCd-0002SE-20;
+	Wed, 06 Dec 2023 00:55:52 +0000
+Date: Wed, 6 Dec 2023 00:55:44 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Sabrina Dubroca <sd@queasysnail.net>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Jianhui Zhao <zhaojh329@gmail.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	"Garmin.Chang" <Garmin.Chang@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: [PATCH v3 1/4] dt-bindings: clock: mediatek: add MT7988 clock IDs
+Message-ID: <23bc89d407e7797e97b703fa939b43bfe79296ce.1701823757.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2 3/3] arm64: dts: mediatek: Add Acelink EW-7886CAX
-To: kernel test robot <lkp@intel.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
- Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chris Morgan <macromorgan@hotmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Sean Wang
- <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20231204200907.5687-3-zajec5@gmail.com>
- <202312060400.SeDMAMe7-lkp@intel.com>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <202312060400.SeDMAMe7-lkp@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_134406_807352_21DABABC 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20231205_165616_085694_11863AE9 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,35 +78,307 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5.12.2023 22:04, kernel test robot wrote:
-> Hi Rafał,
-> 
-> kernel test robot noticed the following build errors:
-> 
-> [auto build test ERROR on robh/for-next]
-> [also build test ERROR on linus/master v6.7-rc4 next-20231205]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch#_base_tree_information]
-> 
-> url:    https://github.com/intel-lab-lkp/linux/commits/Rafa-Mi-ecki/dt-bindings-arm64-dts-mediatek-Add-Acelink-EW-7886CAX-access-point/20231205-041120
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-> patch link:    https://lore.kernel.org/r/20231204200907.5687-3-zajec5%40gmail.com
-> patch subject: [PATCH V2 3/3] arm64: dts: mediatek: Add Acelink EW-7886CAX
-> config: arm64-defconfig (https://download.01.org/0day-ci/archive/20231206/202312060400.SeDMAMe7-lkp@intel.com/config)
-> compiler: aarch64-linux-gcc (GCC) 13.2.0
-> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231206/202312060400.SeDMAMe7-lkp@intel.com/reproduce)
-> 
-> If you fix the issue in a separate patch/commit (i.e. not just a new version of
-> the same patch/commit), kindly add following tags
-> | Reported-by: kernel test robot <lkp@intel.com>
-> | Closes: https://lore.kernel.org/oe-kbuild-all/202312060400.SeDMAMe7-lkp@intel.com/
-> 
-> All errors (new ones prefixed by >>):
-> 
->>> Error: arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts:103.3-4 syntax error
->     FATAL ERROR: Unable to parse input tree
+From: Sam Shih <sam.shih@mediatek.com>
 
-Ahh, required change stayed right there in my "git diff". I noticed it,
-fixed, but forgot to amend. Sorry, I'll send V3 shortly.
+Add MT7988 clock dt-bindings for topckgen, apmixedsys, infracfg,
+ethernet and xfipll subsystem clocks.
+
+Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+v3: no changes
+v2: fix indentation
+
+ .../dt-bindings/clock/mediatek,mt7988-clk.h   | 280 ++++++++++++++++++
+ 1 file changed, 280 insertions(+)
+ create mode 100644 include/dt-bindings/clock/mediatek,mt7988-clk.h
+
+diff --git a/include/dt-bindings/clock/mediatek,mt7988-clk.h b/include/dt-bindings/clock/mediatek,mt7988-clk.h
+new file mode 100644
+index 0000000000000..63376e40f14d2
+--- /dev/null
++++ b/include/dt-bindings/clock/mediatek,mt7988-clk.h
+@@ -0,0 +1,280 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ * Author: Sam Shih <sam.shih@mediatek.com>
++ * Author: Xiufeng Li <Xiufeng.Li@mediatek.com>
++ */
++
++#ifndef _DT_BINDINGS_CLK_MT7988_H
++#define _DT_BINDINGS_CLK_MT7988_H
++
++/* APMIXEDSYS */
++
++#define CLK_APMIXED_NETSYSPLL			0
++#define CLK_APMIXED_MPLL			1
++#define CLK_APMIXED_MMPLL			2
++#define CLK_APMIXED_APLL2			3
++#define CLK_APMIXED_NET1PLL			4
++#define CLK_APMIXED_NET2PLL			5
++#define CLK_APMIXED_WEDMCUPLL			6
++#define CLK_APMIXED_SGMPLL			7
++#define CLK_APMIXED_ARM_B			8
++#define CLK_APMIXED_CCIPLL2_B			9
++#define CLK_APMIXED_USXGMIIPLL			10
++#define CLK_APMIXED_MSDCPLL			11
++
++/* TOPCKGEN */
++
++#define CLK_TOP_XTAL				0
++#define CLK_TOP_XTAL_D2				1
++#define CLK_TOP_RTC_32K				2
++#define CLK_TOP_RTC_32P7K			3
++#define CLK_TOP_MPLL_D2				4
++#define CLK_TOP_MPLL_D3_D2			5
++#define CLK_TOP_MPLL_D4				6
++#define CLK_TOP_MPLL_D8				7
++#define CLK_TOP_MPLL_D8_D2			8
++#define CLK_TOP_MMPLL_D2			9
++#define CLK_TOP_MMPLL_D3_D5			10
++#define CLK_TOP_MMPLL_D4			11
++#define CLK_TOP_MMPLL_D6_D2			12
++#define CLK_TOP_MMPLL_D8			13
++#define CLK_TOP_APLL2_D4			14
++#define CLK_TOP_NET1PLL_D4			15
++#define CLK_TOP_NET1PLL_D5			16
++#define CLK_TOP_NET1PLL_D5_D2			17
++#define CLK_TOP_NET1PLL_D5_D4			18
++#define CLK_TOP_NET1PLL_D8			19
++#define CLK_TOP_NET1PLL_D8_D2			20
++#define CLK_TOP_NET1PLL_D8_D4			21
++#define CLK_TOP_NET1PLL_D8_D8			22
++#define CLK_TOP_NET1PLL_D8_D16			23
++#define CLK_TOP_NET2PLL_D2			24
++#define CLK_TOP_NET2PLL_D4			25
++#define CLK_TOP_NET2PLL_D4_D4			26
++#define CLK_TOP_NET2PLL_D4_D8			27
++#define CLK_TOP_NET2PLL_D6			28
++#define CLK_TOP_NET2PLL_D8			29
++#define CLK_TOP_NETSYS_SEL			30
++#define CLK_TOP_NETSYS_500M_SEL			31
++#define CLK_TOP_NETSYS_2X_SEL			32
++#define CLK_TOP_NETSYS_GSW_SEL			33
++#define CLK_TOP_ETH_GMII_SEL			34
++#define CLK_TOP_NETSYS_MCU_SEL			35
++#define CLK_TOP_NETSYS_PAO_2X_SEL		36
++#define CLK_TOP_EIP197_SEL			37
++#define CLK_TOP_AXI_INFRA_SEL			38
++#define CLK_TOP_UART_SEL			39
++#define CLK_TOP_EMMC_250M_SEL			40
++#define CLK_TOP_EMMC_400M_SEL			41
++#define CLK_TOP_SPI_SEL				42
++#define CLK_TOP_SPIM_MST_SEL			43
++#define CLK_TOP_NFI1X_SEL			44
++#define CLK_TOP_SPINFI_SEL			45
++#define CLK_TOP_PWM_SEL				46
++#define CLK_TOP_I2C_SEL				47
++#define CLK_TOP_PCIE_MBIST_250M_SEL		48
++#define CLK_TOP_PEXTP_TL_SEL			49
++#define CLK_TOP_PEXTP_TL_P1_SEL			50
++#define CLK_TOP_PEXTP_TL_P2_SEL			51
++#define CLK_TOP_PEXTP_TL_P3_SEL			52
++#define CLK_TOP_USB_SYS_SEL			53
++#define CLK_TOP_USB_SYS_P1_SEL			54
++#define CLK_TOP_USB_XHCI_SEL			55
++#define CLK_TOP_USB_XHCI_P1_SEL			56
++#define CLK_TOP_USB_FRMCNT_SEL			57
++#define CLK_TOP_USB_FRMCNT_P1_SEL		58
++#define CLK_TOP_AUD_SEL				59
++#define CLK_TOP_A1SYS_SEL			60
++#define CLK_TOP_AUD_L_SEL			61
++#define CLK_TOP_A_TUNER_SEL			62
++#define CLK_TOP_SSPXTP_SEL			63
++#define CLK_TOP_USB_PHY_SEL			64
++#define CLK_TOP_USXGMII_SBUS_0_SEL		65
++#define CLK_TOP_USXGMII_SBUS_1_SEL		66
++#define CLK_TOP_SGM_0_SEL			67
++#define CLK_TOP_SGM_SBUS_0_SEL			68
++#define CLK_TOP_SGM_1_SEL			69
++#define CLK_TOP_SGM_SBUS_1_SEL			70
++#define CLK_TOP_XFI_PHY_0_XTAL_SEL		71
++#define CLK_TOP_XFI_PHY_1_XTAL_SEL		72
++#define CLK_TOP_SYSAXI_SEL			73
++#define CLK_TOP_SYSAPB_SEL			74
++#define CLK_TOP_ETH_REFCK_50M_SEL		75
++#define CLK_TOP_ETH_SYS_200M_SEL		76
++#define CLK_TOP_ETH_SYS_SEL			77
++#define CLK_TOP_ETH_XGMII_SEL			78
++#define CLK_TOP_BUS_TOPS_SEL			79
++#define CLK_TOP_NPU_TOPS_SEL			80
++#define CLK_TOP_DRAMC_SEL			81
++#define CLK_TOP_DRAMC_MD32_SEL			82
++#define CLK_TOP_INFRA_F26M_SEL			83
++#define CLK_TOP_PEXTP_P0_SEL			84
++#define CLK_TOP_PEXTP_P1_SEL			85
++#define CLK_TOP_PEXTP_P2_SEL			86
++#define CLK_TOP_PEXTP_P3_SEL			87
++#define CLK_TOP_DA_XTP_GLB_P0_SEL		88
++#define CLK_TOP_DA_XTP_GLB_P1_SEL		89
++#define CLK_TOP_DA_XTP_GLB_P2_SEL		90
++#define CLK_TOP_DA_XTP_GLB_P3_SEL		91
++#define CLK_TOP_CKM_SEL				92
++#define CLK_TOP_DA_SEL				93
++#define CLK_TOP_PEXTP_SEL			94
++#define CLK_TOP_TOPS_P2_26M_SEL			95
++#define CLK_TOP_MCUSYS_BACKUP_625M_SEL		96
++#define CLK_TOP_NETSYS_SYNC_250M_SEL		97
++#define CLK_TOP_MACSEC_SEL			98
++#define CLK_TOP_NETSYS_TOPS_400M_SEL		99
++#define CLK_TOP_NETSYS_PPEFB_250M_SEL		100
++#define CLK_TOP_NETSYS_WARP_SEL			101
++#define CLK_TOP_ETH_MII_SEL			102
++#define CLK_TOP_NPU_SEL				103
++#define CLK_TOP_AUD_I2S_M			104
++
++/* MCUSYS */
++
++#define CLK_MCU_BUS_DIV_SEL			0
++#define CLK_MCU_ARM_DIV_SEL			1
++
++/* INFRACFG_AO */
++
++#define CLK_INFRA_MUX_UART0_SEL			0
++#define CLK_INFRA_MUX_UART1_SEL			1
++#define CLK_INFRA_MUX_UART2_SEL			2
++#define CLK_INFRA_MUX_SPI0_SEL			3
++#define CLK_INFRA_MUX_SPI1_SEL			4
++#define CLK_INFRA_MUX_SPI2_SEL			5
++#define CLK_INFRA_PWM_SEL			6
++#define CLK_INFRA_PWM_CK1_SEL			7
++#define CLK_INFRA_PWM_CK2_SEL			8
++#define CLK_INFRA_PWM_CK3_SEL			9
++#define CLK_INFRA_PWM_CK4_SEL			10
++#define CLK_INFRA_PWM_CK5_SEL			11
++#define CLK_INFRA_PWM_CK6_SEL			12
++#define CLK_INFRA_PWM_CK7_SEL			13
++#define CLK_INFRA_PWM_CK8_SEL			14
++#define CLK_INFRA_PCIE_GFMUX_TL_O_P0_SEL	15
++#define CLK_INFRA_PCIE_GFMUX_TL_O_P1_SEL	16
++#define CLK_INFRA_PCIE_GFMUX_TL_O_P2_SEL	17
++#define CLK_INFRA_PCIE_GFMUX_TL_O_P3_SEL	18
++
++/* INFRACFG */
++
++#define CLK_INFRA_PCIE_PERI_26M_CK_P0		19
++#define CLK_INFRA_PCIE_PERI_26M_CK_P1		20
++#define CLK_INFRA_PCIE_PERI_26M_CK_P2		21
++#define CLK_INFRA_PCIE_PERI_26M_CK_P3		22
++#define CLK_INFRA_66M_GPT_BCK			23
++#define CLK_INFRA_66M_PWM_HCK			24
++#define CLK_INFRA_66M_PWM_BCK			25
++#define CLK_INFRA_66M_PWM_CK1			26
++#define CLK_INFRA_66M_PWM_CK2			27
++#define CLK_INFRA_66M_PWM_CK3			28
++#define CLK_INFRA_66M_PWM_CK4			29
++#define CLK_INFRA_66M_PWM_CK5			30
++#define CLK_INFRA_66M_PWM_CK6			31
++#define CLK_INFRA_66M_PWM_CK7			32
++#define CLK_INFRA_66M_PWM_CK8			33
++#define CLK_INFRA_133M_CQDMA_BCK		34
++#define CLK_INFRA_66M_AUD_SLV_BCK		35
++#define CLK_INFRA_AUD_26M			36
++#define CLK_INFRA_AUD_L				37
++#define CLK_INFRA_AUD_AUD			38
++#define CLK_INFRA_AUD_EG2			39
++#define CLK_INFRA_DRAMC_F26M			40
++#define CLK_INFRA_133M_DBG_ACKM			41
++#define CLK_INFRA_66M_AP_DMA_BCK		42
++#define CLK_INFRA_66M_SEJ_BCK			43
++#define CLK_INFRA_PRE_CK_SEJ_F13M		44
++#define CLK_INFRA_26M_THERM_SYSTEM		45
++#define CLK_INFRA_I2C_BCK			46
++#define CLK_INFRA_52M_UART0_CK			47
++#define CLK_INFRA_52M_UART1_CK			48
++#define CLK_INFRA_52M_UART2_CK			49
++#define CLK_INFRA_NFI				50
++#define CLK_INFRA_SPINFI			51
++#define CLK_INFRA_66M_NFI_HCK			52
++#define CLK_INFRA_104M_SPI0			53
++#define CLK_INFRA_104M_SPI1			54
++#define CLK_INFRA_104M_SPI2_BCK			55
++#define CLK_INFRA_66M_SPI0_HCK			56
++#define CLK_INFRA_66M_SPI1_HCK			57
++#define CLK_INFRA_66M_SPI2_HCK			58
++#define CLK_INFRA_66M_FLASHIF_AXI		59
++#define CLK_INFRA_RTC				60
++#define CLK_INFRA_26M_ADC_BCK			61
++#define CLK_INFRA_RC_ADC			62
++#define CLK_INFRA_MSDC400			63
++#define CLK_INFRA_MSDC2_HCK			64
++#define CLK_INFRA_133M_MSDC_0_HCK		65
++#define CLK_INFRA_66M_MSDC_0_HCK		66
++#define CLK_INFRA_133M_CPUM_BCK			67
++#define CLK_INFRA_BIST2FPC			68
++#define CLK_INFRA_I2C_X16W_MCK_CK_P1		69
++#define CLK_INFRA_I2C_X16W_PCK_CK_P1		70
++#define CLK_INFRA_133M_USB_HCK			71
++#define CLK_INFRA_133M_USB_HCK_CK_P1		72
++#define CLK_INFRA_66M_USB_HCK			73
++#define CLK_INFRA_66M_USB_HCK_CK_P1		74
++#define CLK_INFRA_USB_SYS			75
++#define CLK_INFRA_USB_SYS_CK_P1			76
++#define CLK_INFRA_USB_REF			77
++#define CLK_INFRA_USB_CK_P1			78
++#define CLK_INFRA_USB_FRMCNT			79
++#define CLK_INFRA_USB_FRMCNT_CK_P1		80
++#define CLK_INFRA_USB_PIPE			81
++#define CLK_INFRA_USB_PIPE_CK_P1		82
++#define CLK_INFRA_USB_UTMI			83
++#define CLK_INFRA_USB_UTMI_CK_P1		84
++#define CLK_INFRA_USB_XHCI			85
++#define CLK_INFRA_USB_XHCI_CK_P1		86
++#define CLK_INFRA_PCIE_GFMUX_TL_P0		87
++#define CLK_INFRA_PCIE_GFMUX_TL_P1		88
++#define CLK_INFRA_PCIE_GFMUX_TL_P2		89
++#define CLK_INFRA_PCIE_GFMUX_TL_P3		90
++#define CLK_INFRA_PCIE_PIPE_P0			91
++#define CLK_INFRA_PCIE_PIPE_P1			92
++#define CLK_INFRA_PCIE_PIPE_P2			93
++#define CLK_INFRA_PCIE_PIPE_P3			94
++#define CLK_INFRA_133M_PCIE_CK_P0		95
++#define CLK_INFRA_133M_PCIE_CK_P1		96
++#define CLK_INFRA_133M_PCIE_CK_P2		97
++#define CLK_INFRA_133M_PCIE_CK_P3		98
++
++/* ETHDMA */
++
++#define CLK_ETHDMA_XGP1_EN			0
++#define CLK_ETHDMA_XGP2_EN			1
++#define CLK_ETHDMA_XGP3_EN			2
++#define CLK_ETHDMA_FE_EN			3
++#define CLK_ETHDMA_GP2_EN			4
++#define CLK_ETHDMA_GP1_EN			5
++#define CLK_ETHDMA_GP3_EN			6
++#define CLK_ETHDMA_ESW_EN			7
++#define CLK_ETHDMA_CRYPT0_EN			8
++#define CLK_ETHDMA_NR_CLK			9
++
++/* SGMIISYS_0 */
++
++#define CLK_SGM0_TX_EN				0
++#define CLK_SGM0_RX_EN				1
++#define CLK_SGMII0_NR_CLK			2
++
++/* SGMIISYS_1 */
++
++#define CLK_SGM1_TX_EN				0
++#define CLK_SGM1_RX_EN				1
++#define CLK_SGMII1_NR_CLK			2
++
++/* ETHWARP */
++
++#define CLK_ETHWARP_WOCPU2_EN			0
++#define CLK_ETHWARP_WOCPU1_EN			1
++#define CLK_ETHWARP_WOCPU0_EN			2
++#define CLK_ETHWARP_NR_CLK			3
++
++/* XFIPLL */
++#define CLK_XFIPLL_PLL				0
++#define CLK_XFIPLL_PLL_EN			1
++
++#endif /* _DT_BINDINGS_CLK_MT7988_H */
+-- 
+2.43.0
 
