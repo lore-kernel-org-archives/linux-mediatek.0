@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8EC1C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 15:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5610CC10F05
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 16:09:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vPpu55CWctU5kwFhjf/7SlTo/I53ViTakRJXmAVb0e0=; b=Ct2A+TpniYq4uJGmrikG5RBcD4
-	dPtDXqTyWWeNiN6JuRqyk1GkxgACuXq655kjBYU+CPTrCNt/3zM44qyzM3cWsW+Zu9/1oLwdCy8ar
-	MLO/v+Z+2eOWZCx4Sx6iYLg7b621WAo7SxcHRnm86C3b0dSXtl9u9GEjHp/mI26W6MuCoKLlzM6Qj
-	Pt2Me5lPHuIYRAjRAc7QiORPGitlPD1cGjJEUrOVWqyVDntoexk+528r2RDCAaoSC1Og241eEKOTc
-	ViBGV1mrPfpziz4BQVXsQ/p4LKmoWuHEwC6pQmjGv0aVyOXdmxwAsHENlD/Pk6Phf9QZo2ZhQy1xv
-	xAI6ZqwQ==;
+	bh=Ax587KA7DicYgW31ubaM+vm5uHX+lSzP5fdhsrpqymA=; b=kBEoF5Q9I/neImJrj1US2RheBv
+	SnsmgtPkmTeVZIII0F0UeRzKe4Ak4/To1xflmjoiEJNqdrCDvku8YoTFZ+jVBswgB6FL6awvieR0H
+	1iVDjg1J/1ACnWRoPspCf0Z38vo/wN5wJ6XUZX5uMD/BkB31zXCIDLJ8WYVgOrqq9r+4AyjlRkoZs
+	3oQA+VDGDxXyRg78zXgYUJ3tcpL9UKcsIdyIptG3ZTyptQ35EZ6MEv4fjRn0NTGlo23M9wH2qTFLB
+	YJPnb9yr/3rqXvQbyAkwzKXscsIyYwXMi9ChA1wOYN86fR8Jy2MYc4dsc8o+aEvAaNzaLjbt7KIFK
+	jcjceFwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAttS-00AdJm-39;
-	Wed, 06 Dec 2023 15:32:58 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rAuSc-00AijU-3D;
+	Wed, 06 Dec 2023 16:09:19 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAttP-00AdIT-0i;
-	Wed, 06 Dec 2023 15:32:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 7C3C5B8218F;
-	Wed,  6 Dec 2023 15:32:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B75DC433C7;
-	Wed,  6 Dec 2023 15:32:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701876772;
-	bh=w1otnxj6ZQubR19XyLc2pJyxuUrOYv5s6Wn1rb3d1zM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rGASEMZu2w8Un5785u0aGDVqoWrEGsXz1MReexBAxddidRe4ZZe5zAr1Sm0k93D+u
-	 Ui2+j1KIQLPLlEMwubHnwKWoqH9i2LMROw+PNo+os8rAPeQ4hST37N62nDpHBIkPO4
-	 uHH8Emz7IPGW/hZ6oLAl6gSzocpcZnFhp6YtRXrD5oszVH52J7j9aOgXwG0nWmcR3T
-	 k6K524JwL7SyQMLDxr20AN1PKLPXkVriRV40ck2DScbYe+1PPJuMSCQUvXO70HkFBw
-	 uGJnKtfwIFtCkPIEyrUnhg4Hi3AGxm9XoGnIVmFItvXFPxt/PpS5LdtUW6oEHHL6xL
-	 hEgUg9hmtXlZg==
-Date: Wed, 6 Dec 2023 21:02:42 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Naresh Maramaina <quic_mnaresh@quicinc.com>
-Cc: Bart Van Assche <bvanassche@acm.org>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	id 1rAuSZ-00AiiH-0J;
+	Wed, 06 Dec 2023 16:09:17 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rAuS2-0006hS-10;
+	Wed, 06 Dec 2023 16:08:43 +0000
+Date: Wed, 6 Dec 2023 16:08:39 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	chu.stanley@gmail.com, Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>, linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	quic_cang@quicinc.com, quic_nguyenb@quicinc.com,
-	Nitin Rawat <quic_nitirawa@quicinc.com>
-Subject: Re: [PATCH V2 1/3] ufs: core: Add CPU latency QoS support for ufs
- driver
-Message-ID: <20231206153242.GI12802@thinkpad>
-References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
- <20231204143101.64163-2-quic_mnaresh@quicinc.com>
- <590ade27-b4da-49be-933b-e9959aa0cd4c@acm.org>
- <692cd503-5b14-4be6-831d-d8e9c282a95e@quicinc.com>
- <5e7c5c75-cb5f-4afe-9d57-b0cab01a6f26@acm.org>
- <b9373252-710c-4a54-95cc-046314796960@quicinc.com>
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [RFC PATCH v2 7/8] dt-bindings: net: mediatek,net: fix and
+ complete mt7988-eth binding
+Message-ID: <ZXCch6o2Wfp3fQQw@makrotopia.org>
+References: <cover.1701826319.git.daniel@makrotopia.org>
+ <567c6aaa64ecb4872056bc0105c70153fd9d9b50.1701826319.git.daniel@makrotopia.org>
+ <20231206133816.GA1914715-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <b9373252-710c-4a54-95cc-046314796960@quicinc.com>
+In-Reply-To: <20231206133816.GA1914715-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_073255_552101_1AA1E731 
-X-CRM114-Status: GOOD (  24.95  )
+X-CRM114-CacheID: sfid-20231206_080915_284236_7E350BEF 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,68 +86,269 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 06, 2023 at 07:32:54PM +0530, Naresh Maramaina wrote:
-> 
-> 
-> On 12/5/2023 10:41 PM, Bart Van Assche wrote:
-> > On 12/4/23 21:58, Naresh Maramaina wrote:
-> > > On 12/5/2023 12:30 AM, Bart Van Assche wrote:
-> > > > On 12/4/23 06:30, Maramaina Naresh wrote:
-> > > > > +    /* This capability allows the host controller driver to
-> > > > > use the PM QoS
-> > > > > +     * feature.
-> > > > > +     */
-> > > > > +    UFSHCD_CAP_PM_QOS                = 1 << 13,
-> > > > >   };
-> > > > 
-> > > > Why does it depend on the host driver whether or not PM QoS is
-> > > > enabled? Why isn't it enabled unconditionally?
-> > > 
-> > > For some platform vendors power KPI might be more important than
-> > > random io KPI. Hence this flag is disabled by default and can be
-> > > enabled based on platform requirement.
+On Wed, Dec 06, 2023 at 07:38:16AM -0600, Rob Herring wrote:
+> On Wed, Dec 06, 2023 at 01:45:02AM +0000, Daniel Golle wrote:
+> > Complete support for MT7988 which comes with 3 MACs, SRAM for DMA
+> > descriptors and uses a dedicated PCS for the SerDes units.
 > > 
-> > How about leaving this flag out unless if a host vendor asks explicitly
-> > for this flag?
+> > Fixes: c94a9aabec36 ("dt-bindings: net: mediatek,net: add mt7988-eth binding")
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >  .../devicetree/bindings/net/mediatek,net.yaml | 148 +++++++++++++++++-
+> >  1 file changed, 146 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > index 030d106bc7d3f..ca0667c51c1c2 100644
+> > --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > @@ -28,7 +28,10 @@ properties:
+> >        - ralink,rt5350-eth
+> >  
+> >    reg:
+> > -    maxItems: 1
+> > +    minItems: 1
+> > +    items:
+> > +      - description: Base of registers used to program the ethernet controller
+> > +      - description: SRAM region used for DMA descriptors
 > 
-> IMHO, instead of completely removing this flag, how about having
-> flag like "UFSHCD_CAP_DISABLE_PM_QOS" which will make PMQOS enable
-> by default and if some host vendor wants to disable it explicitly,
-> they can enable that flag.
-> Please let me know your opinion.
-> 
+> Is this a dedicated SRAM for this purpose, or a common one partitioned 
+> up. mmio-sram and a phandle is how to do the latter.
 
-If a vendor wants to disable this feature, then the driver has to be modified.
-That won't be very convenient. So either this has to be configured through sysfs
-or Kconfig if flexibility matters.
+The SRAM memory sits just next to the Ethernet and dedicated for this
+purpose, at least in theory. I'm not aware of the internal details here.
 
-- Mani
+> 
+> >  
+> >    clocks: true
+> >    clock-names: true
+> > @@ -115,6 +118,9 @@ allOf:
+> >                - mediatek,mt7623-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            maxItems: 3
+> >  
+> > @@ -149,6 +155,9 @@ allOf:
+> >                - mediatek,mt7621-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            maxItems: 1
+> >  
+> > @@ -174,6 +183,9 @@ allOf:
+> >              const: mediatek,mt7622-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            maxItems: 3
+> >  
+> > @@ -215,6 +227,9 @@ allOf:
+> >              const: mediatek,mt7629-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            maxItems: 3
+> >  
+> > @@ -257,6 +272,9 @@ allOf:
+> >              const: mediatek,mt7981-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            minItems: 4
+> >  
+> > @@ -295,6 +313,9 @@ allOf:
+> >              const: mediatek,mt7986-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 1
+> > +
+> >          interrupts:
+> >            minItems: 4
+> >  
+> > @@ -333,8 +354,13 @@ allOf:
+> >              const: mediatek,mt7988-eth
+> >      then:
+> >        properties:
+> > +        reg:
+> > +          maxItems: 2
+> 
+> Don't need maxItems here. That's already the max.
 
-> > > > 
-> > > > > + * @pm_qos_req: PM QoS request handle
-> > > > > + * @pm_qos_init: flag to check if pm qos init completed
-> > > > >    */
-> > > > 
-> > > > Documentation for pm_qos_init is missing.
-> > > > 
-> > > Sorry, i didn't get your comment, i have already added documentation
-> > > for @pm_qos_init, @pm_qos_req variable as above. Do you want me to
-> > > add this information some where else as well?
-> > 
-> > Oops, I meant 'qos_vote'.
-> 
-> Sure. I'll take of this in next patchset.
-> 
-> > 
-> > Thanks,
-> > 
-> > Bart.
-> > 
-> 
-> Thanks,
-> Naresh
-> 
+Ack.
 
--- 
-மணிவண்ணன் சதாசிவம்
+> 
+> > +          minItems: 2
+> > +
+> >          interrupts:
+> >            minItems: 4
+> > +          maxItems: 4
+> >  
+> >          clocks:
+> >            minItems: 24
+> > @@ -368,7 +394,7 @@ allOf:
+> >              - const: top_netsys_warp_sel
+> >  
+> >  patternProperties:
+> > -  "^mac@[0-1]$":
+> > +  "^mac@[0-2]$":
+> >      type: object
+> >      unevaluatedProperties: false
+> >      allOf:
+> > @@ -382,6 +408,9 @@ patternProperties:
+> >        reg:
+> >          maxItems: 1
+> >  
+> > +      phys:
+> > +        maxItems: 1
+> > +
+> >      required:
+> >        - reg
+> >        - compatible
+> > @@ -559,3 +588,118 @@ examples:
+> >          };
+> >        };
+> >      };
+> > +
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
+> 
+> 
+> Why is fixing the binding needing a new example? Is this example really 
+> different enough to justify a whole other example?
+
+Starting from MT7988 the PCS needs to be referenced as pcs-handle in the
+MAC node, so that is a bit different. If you don't think that justifies
+including the additional example I will drop that.
+
+> 
+> > +
+> > +    soc {
+> > +      #address-cells = <2>;
+> > +      #size-cells = <2>;
+> > +
+> > +      ethernet@15100000 {
+> > +        compatible = "mediatek,mt7988-eth";
+> > +        reg = <0 0x15100000 0 0x80000>, <0 0x15400000 0 0x380000>;
+> > +        interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH>,
+> > +                     <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH>,
+> > +                     <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH>,
+> > +                     <GIC_SPI 199 IRQ_TYPE_LEVEL_HIGH>;
+> > +
+> > +        clocks = <&ethsys CLK_ETHDMA_XGP1_EN>,
+> > +                 <&ethsys CLK_ETHDMA_XGP2_EN>,
+> > +                 <&ethsys CLK_ETHDMA_XGP3_EN>,
+> > +                 <&ethsys CLK_ETHDMA_FE_EN>,
+> > +                 <&ethsys CLK_ETHDMA_GP2_EN>,
+> > +                 <&ethsys CLK_ETHDMA_GP1_EN>,
+> > +                 <&ethsys CLK_ETHDMA_GP3_EN>,
+> > +                 <&ethsys CLK_ETHDMA_ESW_EN>,
+> > +                 <&ethsys CLK_ETHDMA_CRYPT0_EN>,
+> > +                 <&ethwarp CLK_ETHWARP_WOCPU2_EN>,
+> > +                 <&ethwarp CLK_ETHWARP_WOCPU1_EN>,
+> > +                 <&ethwarp CLK_ETHWARP_WOCPU0_EN>,
+> > +                 <&topckgen CLK_TOP_ETH_GMII_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_REFCK_50M_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_SYS_200M_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_SYS_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_XGMII_SEL>,
+> > +                 <&topckgen CLK_TOP_ETH_MII_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_500M_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_PAO_2X_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_SYNC_250M_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_PPEFB_250M_SEL>,
+> > +                 <&topckgen CLK_TOP_NETSYS_WARP_SEL>;
+> > +
+> > +        clock-names = "xgp1", "xgp2", "xgp3", "fe", "gp2", "gp1",
+> > +                      "gp3", "esw", "crypto",
+> > +                      "ethwarp_wocpu2", "ethwarp_wocpu1",
+> > +                      "ethwarp_wocpu0", "top_eth_gmii_sel",
+> > +                      "top_eth_refck_50m_sel", "top_eth_sys_200m_sel",
+> > +                      "top_eth_sys_sel", "top_eth_xgmii_sel",
+> > +                      "top_eth_mii_sel", "top_netsys_sel",
+> > +                      "top_netsys_500m_sel", "top_netsys_pao_2x_sel",
+> > +                      "top_netsys_sync_250m_sel",
+> > +                      "top_netsys_ppefb_250m_sel",
+> > +                      "top_netsys_warp_sel";
+> > +        assigned-clocks = <&topckgen CLK_TOP_NETSYS_2X_SEL>,
+> > +                          <&topckgen CLK_TOP_NETSYS_GSW_SEL>,
+> > +                          <&topckgen CLK_TOP_USXGMII_SBUS_0_SEL>,
+> > +                          <&topckgen CLK_TOP_USXGMII_SBUS_1_SEL>,
+> > +                          <&topckgen CLK_TOP_SGM_0_SEL>,
+> > +                          <&topckgen CLK_TOP_SGM_1_SEL>;
+> > +        assigned-clock-parents = <&apmixedsys CLK_APMIXED_NET2PLL>,
+> > +                                 <&topckgen CLK_TOP_NET1PLL_D4>,
+> > +                                 <&topckgen CLK_TOP_NET1PLL_D8_D4>,
+> > +                                 <&topckgen CLK_TOP_NET1PLL_D8_D4>,
+> > +                                 <&apmixedsys CLK_APMIXED_SGMPLL>,
+> > +                                 <&apmixedsys CLK_APMIXED_SGMPLL>;
+> > +        mediatek,ethsys = <&ethsys>;
+> > +        mediatek,infracfg = <&topmisc>;
+> > +        #address-cells = <1>;
+> > +        #size-cells = <0>;
+> > +
+> > +        mac@0 {
+> > +          compatible = "mediatek,eth-mac";
+> > +          reg = <0>;
+> > +          phy-mode = "internal"; /* CPU port of built-in 1GE switch */
+> > +
+> > +          fixed-link {
+> > +            speed = <10000>;
+> > +            full-duplex;
+> > +            pause;
+> > +          };
+> > +        };
+> > +
+> > +        mac@1 {
+> > +          compatible = "mediatek,eth-mac";
+> > +          reg = <1>;
+> > +          phy-handle = <&int_2p5g_phy>;
+> > +        };
+> > +
+> > +        mac@2 {
+> > +          compatible = "mediatek,eth-mac";
+> > +          reg = <2>;
+> > +          pcs-handle = <&usxgmiisys0>;
+> > +          phy-handle = <&phy0>;
+> > +        };
+> > +
+> > +        mdio_bus: mdio-bus {
+> > +          #address-cells = <1>;
+> > +          #size-cells = <0>;
+> > +
+> > +          /* external PHY */
+> > +          phy0: ethernet-phy@0 {
+> > +            reg = <0>;
+> > +            compatible = "ethernet-phy-ieee802.3-c45";
+> > +          };
+> > +
+> > +          /* internal 2.5G PHY */
+> > +          int_2p5g_phy: ethernet-phy@15 {
+> > +            reg = <15>;
+> > +            compatible = "ethernet-phy-ieee802.3-c45";
+> > +            phy-mode = "internal";
+> > +          };
+> > +        };
+> > +      };
+> > +    };
+> > -- 
+> > 2.43.0
 
