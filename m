@@ -4,84 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D3B9C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 02:50:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88402C10DC3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 02:56:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LoDR6yW5PhaOI9nXfn4sNBMu5ukjVwmKI+VJR2t82HE=; b=aH5ua1YYjcfwA74487L2y43xKu
-	pQ427k7Zs3xUQdZA73MMaNYf9gmZPRQlZYBMHTOTRcFORfIzFtCLHWa3wEDUIUKoMKc1uB7L97qMe
-	MUqyOrW0u+S/6n1Dfnb1ku52142nQZZRmaQfAzxeNLjN+87ST8zcEMVHve/f1ksnsVg0CYgGdw0KP
-	zUyNlYECJeUcAey+ShSZy25zkqWE2dDrS0RcKE/UWur3ZVzvTbt4kZAgnm4XgTsS57YS3e4EFNyOO
-	9YGMHQHYweTIHzj66sJylnk1AuYnpUJPPxKxxw//B+R+VZfowzN5kE5YEkIxtIUtitAoMN0gbYitL
-	3mTv+dIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kAjB+OSC2G0sATXrxYuI8k53/GEiZUhN5YxDKMU/l7c=; b=1Ni6ElDqMCV7LHbP1OwpsYyBa6
+	AhxmlrIucJys3gNUMSxE8uFRWdHgjrg77AtX+QwoLA/mU0xiX15Kw0ei5XoksXxoI4HqB/nxZgbJ8
+	8RieuhdXXcDaOocNB6ICSirw1oP41hIhenSyRrjFfsLVOejZqDCgCXTMFjAQH0Kh1nM/yCHdCNRRh
+	sYvjrhuPcmc1emzzCQkNn6GCYpIMEPjPb7+GYi0pmvU0nZ9DqkXD/C1LplsSvQ+uS++5IQmiKv8ph
+	PN837/R3nNtqxNeqmHDKkQorkAMp+p/XdtMh+jgLZ7hLax8bZsmfcde647ObICyY4jddrTd9ejSu6
+	fh5cvt7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAhzS-008ur1-0y;
-	Wed, 06 Dec 2023 02:50:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rAi4y-008v6B-0F;
+	Wed, 06 Dec 2023 02:56:04 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAhzO-008upZ-2r
+	id 1rAi4u-008v4o-0h
 	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Dec 2023 02:50:20 +0000
-X-UUID: 2e18546893e211ee9b7791016c24628a-20231205
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LoDR6yW5PhaOI9nXfn4sNBMu5ukjVwmKI+VJR2t82HE=;
-	b=hXGY7TC+sxlmrtHGpr5yMl4ASXuMFXHMLrgQe8fK3E8Bn41W9p5ZRa2U3KmNl9s+I7oONg2xzYx7irNl6hgXzBfH1NbVCIEWZxaDuQ8pdKDAjHoXauvNHaJZJ4BqZekNl9u04sjxtR4X06+zKWj/tfQhouZ1+nj9qF7KYf+/TSQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.34,REQID:9c9d1a90-bcb5-4cea-b869-5cf98d32b637,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:abefa75,CLOUDID:16e6dc60-c89d-4129-91cb-8ebfae4653fc,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 2e18546893e211ee9b7791016c24628a-20231205
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <allen.ye@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1992625269; Tue, 05 Dec 2023 19:50:14 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 6 Dec 2023 10:49:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 10:49:38 +0800
-From: Allen Ye <allen.ye@mediatek.com>
-To: <linux-wireless@vger.kernel.org>
-CC: Johannes Berg <johannes.berg@intel.com>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, "Money . Wang" <money.wang@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Allen.Ye <allen.ye@mediatek.com>
-Subject: [PATCH] wifi: mac80211: Update bssid indicator with real BSS numbers
-Date: Wed, 6 Dec 2023 10:49:11 +0800
-Message-ID: <20231206024911.7668-1-allen.ye@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Wed, 06 Dec 2023 02:56:01 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-50bf26b677dso3280166e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 Dec 2023 18:55:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1701831356; x=1702436156; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kAjB+OSC2G0sATXrxYuI8k53/GEiZUhN5YxDKMU/l7c=;
+        b=WVTAhq+Odik9U/KA87QhenNXjt7vUPiThXgIM6PSOluYjBp3WknAuwHzGnZ6HrMhZd
+         xxuOfHA6Qr2jrbeiYifzZ/hc0ndc69mOpMxbbMjCatjCdqENRVSh+tZPDtFK05s2PT6h
+         +LTbtHn4YADDladht5cOwoD4KWMoBjSLhSglI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701831356; x=1702436156;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kAjB+OSC2G0sATXrxYuI8k53/GEiZUhN5YxDKMU/l7c=;
+        b=F5Gd1grROklkSrbJW8hJ1GMdwVB9k/y2J95ohwYLW59yts5IEHp4eCvnO/IbtzR/3j
+         +r6UTELruvjFs4zGko8mf2zCBAY19tN6NtC1QUR6mmxJ8uG+v9hUDMYVC4b7HOXFBUnu
+         3gC8Thrr8m937bu22xGvEEpDk+avMbVxgwUlhQKKN7YjqqQUpyt1gExrkhZdIWcR0x8E
+         oDKuUKg8LZneuFy+Irnueb8/OzBBUGX+ppQEeXwvr0HZKDK2K9yJnBUzATd96GPj0qMf
+         z9Di4bP1sWxz3JV8xzF4jXb/s/feZMLloECmaNtC4uZBKtYb52v8wR0YoNm8mFXTDsgo
+         U8yA==
+X-Gm-Message-State: AOJu0YyseGgzLAqrsrZZfNgs6zB7u19ch5+bAPGa1IALZyiuV4fwJltI
+	h7//YYDyEXYKzECpDVp02h520tLbiUbDMbTZNYwVDg==
+X-Google-Smtp-Source: AGHT+IHnNZLv+A8rBD2iJfouOzY8bodAfVe2SPHWkYOI3dEcOPciD4ew3LweH+XusZAZCM5WonigRoCXzwrqYp9fpWQ=
+X-Received: by 2002:a05:6512:1107:b0:50b:f88d:f83b with SMTP id
+ l7-20020a056512110700b0050bf88df83bmr112272lfg.78.1701831355848; Tue, 05 Dec
+ 2023 18:55:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.102400-8.000000
-X-TMASE-MatchedRID: kgKXJcFYqZi2jsN8aguKvC97pb4g5HCtvtVce6w5+K9bLUcJ8BGOxWD/
-	jkY+Hb4O08QE6X8k+fyUTQ2JYQzY2yE6c9JYhNJ6k3ewifG2MNPm1SQ5tAvJo9qtffjsN+cnq3c
-	ttlDobAypYSDa5JlKKGijwWv+7EDclwV2iaAfSWcURSScn+QSXt0H8LFZNFG73Yq8RVaZivWmra
-	jv7qH7k7zHx35ro84oE/svZgTKKT+OAG8otMPC8qehxTSuqyLn
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.102400-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: F1F1717A581B2F9DE085D79198B1B8E48C4B0560DDCDE47B740B2AA210E968702000:8
-X-MTK: N
+References: <20231128084236.157152-1-wenst@chromium.org> <20231128084236.157152-5-wenst@chromium.org>
+ <CAD=FV=W01gfxV6RN2o6CVS7jjf8qgKP-jUy9Bp94d2hWzVC48A@mail.gmail.com>
+ <CAGXv+5E+R292XsOFSL-j0KJMmVJjWtxMRgCK8besP7mo6NDOWA@mail.gmail.com>
+ <CAD=FV=UQkAjgMuR85cPikNtCxsODWPWs7cibOcOoNGdjSSvF8Q@mail.gmail.com> <3700f05f-2411-4422-972f-f3df690efb84@collabora.com>
+In-Reply-To: <3700f05f-2411-4422-972f-f3df690efb84@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 6 Dec 2023 10:55:44 +0800
+Message-ID: <CAGXv+5G5fFTv8zn=YamSdccjuYemE5oKBqjb8CSyGzu9aMJ0eg@mail.gmail.com>
+Subject: Re: [RFC PATCH v3 4/5] arm64: dts: mediatek: mt8173-elm-hana: Mark
+ touchscreens and trackpads as fail
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Doug Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+	Frank Rowand <frowand.list@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	andriy.shevchenko@linux.intel.com, Jiri Kosina <jikos@kernel.org>, 
+	linus.walleij@linaro.org, broonie@kernel.org, gregkh@linuxfoundation.org, 
+	hdegoede@redhat.com, james.clark@arm.com, james@equiv.tech, 
+	keescook@chromium.org, rafael@kernel.org, tglx@linutronix.de, 
+	Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org, linux-i2c@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_185018_922216_9D211463 
-X-CRM114-Status: UNSURE (   8.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231205_185600_260085_250F916F 
+X-CRM114-Status: GOOD (  22.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,46 +101,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Allen.Ye" <allen.ye@mediatek.com>
+On Tue, Dec 5, 2023 at 6:22=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 04/12/23 17:50, Doug Anderson ha scritto:
+> > Hi,
+> >
+> > On Sun, Dec 3, 2023 at 10:59=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.or=
+g> wrote:
+> >>
+> >> On Sat, Dec 2, 2023 at 8:58=E2=80=AFAM Doug Anderson <dianders@chromiu=
+m.org> wrote:
+> >>>
+> >>> Hi,
+> >>>
+> >>> On Tue, Nov 28, 2023 at 12:45=E2=80=AFAM Chen-Yu Tsai <wenst@chromium=
+.org> wrote:
+> >>>>
+> >>>> @@ -44,6 +46,7 @@ trackpad2: trackpad@2c {
+> >>>>                  reg =3D <0x2c>;
+> >>>>                  hid-descr-addr =3D <0x0020>;
+> >>>>                  wakeup-source;
+> >>>> +               status =3D "fail-needs-probe";
+> >>>
+> >>> While doing this, you could also remove the hack where the trackpad
+> >>> IRQ pinctrl is listed under i2c4.
+> >>
+> >> Sure. I do think we can do away with it though. According to at least =
+one
+> >> schematic, the interrupt line has pull-ups on both sides of the voltag=
+e
+> >> shifter.
+> >>
+> >> BTW, The touchscreen doesn't have pinctrl entries. This has pull-ups o=
+n
+> >> both sides of the voltage shifter as well.
+> >
+> > I dunno if the convention is different on Mediatek boards, but at
+> > least on boards I've been involved with in the past we've always put
+> > pinctrl entries just to make things explicit. This meant that we
+> > didn't rely on the firmware/bootrom/defaults to leave pulls in any
+> > particular state. ...otherwise those external pull-ups could be
+> > fighting with internal pull-downs, right?
+> >
+>
+> MediaTek boards aren't special and there's no good reason for those to re=
+ly on
+> firmware/bootrom/defaults - so there is no good reason to avoid declaring=
+ any
+> relevant pinctrl entry.
 
-The cnt member in mbssid is the count of total number of MBSSID elements
-instead of BSSID. Therefore, we fix this by reading the MaxBSSID Indicator
-field directly.
+I think this should be migrated to use the proper GPIO bindings: the
+GPIO_PULL_UP / GPIO_PULL_DOWN / GPIO_BIAS_DISABLE flags.
 
-Signed-off-by: Evelyn.Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: Money.Wang <money.wang@mediatek.com>
-Signed-off-by: Allen.Ye <allen.ye@mediatek.com>
----
- net/mac80211/cfg.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+But that's a different discussion.
 
-diff --git a/net/mac80211/cfg.c b/net/mac80211/cfg.c
-index 606b1b2e4123..f90bcd59f85a 100644
---- a/net/mac80211/cfg.c
-+++ b/net/mac80211/cfg.c
-@@ -1164,9 +1164,11 @@ ieee80211_assign_beacon(struct ieee80211_sub_if_data *sdata,
- 	/* copy in optional mbssid_ies */
- 	if (mbssid) {
- 		u8 *pos = new->tail + new->tail_len;
-+		const struct element *mbssid_elem;
- 
- 		new->mbssid_ies = (void *)pos;
- 		pos += struct_size(new->mbssid_ies, elem, mbssid->cnt);
-+		mbssid_elem = (const struct element *)pos;
- 		pos += ieee80211_copy_mbssid_beacon(pos, new->mbssid_ies,
- 						    mbssid);
- 		if (rnr) {
-@@ -1175,8 +1177,7 @@ ieee80211_assign_beacon(struct ieee80211_sub_if_data *sdata,
- 			ieee80211_copy_rnr_beacon(pos, new->rnr_ies, rnr);
- 		}
- 		/* update bssid_indicator */
--		link_conf->bssid_indicator =
--			ilog2(__roundup_pow_of_two(mbssid->cnt + 1));
-+		link_conf->bssid_indicator = mbssid_elem->data[0];
- 	}
- 
- 	if (csa) {
--- 
-2.18.0
-
+ChenYu
 
