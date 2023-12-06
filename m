@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2540C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 10:20:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 854DCC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 10:21:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TcagDNq61xICjIxo/4l6ClZPIhnyzcVjcPtwymEXLJ0=; b=fCz7VJ/7Zqo2FheY+U5SMBSMm4
-	H8IAXdwuQeoBJ1GK0zVc/kDb1bZp8w3uMGQKgqvF9fb7SX8AnaBs6sBh9yfFywxZqDbfbtBaeAnwp
-	hmU2jIR1T1noGaiI0cSDfOONXLNyBcukhjVSLQUKDSQUhBAkYpZ0+T0Kf+flqmYew1aCvbh2B645A
-	M1GCGKrtevlVMzVUO3cheMD1CrbmISDVC5M7Y7HPZ7yqFm5sVpOVPbpZgHcW5e5rA0hnTQsfEuC5s
-	w0afVqxY3/pj/3wqpXXHNExdrF1rykDs6KIHnnYCDhotQ09trbMivlTsvJSAB9x5PSc3uHS1g14c/
-	jpTkp4wA==;
+	bh=TGSnZm0VuOKrEONTomsoi2Y6B05gYl3IoTvA9v5tU9g=; b=ufMPnMtA30KvQxhh04/gKIDaFe
+	an5yW9DN3d7yXxjE9DMMOnCbHhAC1f+8XdualJwmLWFZBuXduQ0+Hq4K3aA6C+U5tjPHfBZKiBRef
+	bBUAWHgVrABW8pJM5MNSKgvwxfyOMBTRYStsT4eLav9tQJ7GB+JWYjacvPICq376fo4HUAU4aF6F6
+	GVJBLgGzrcjZMw5Rxzwx255zzxeqMZmOqN3WvTAwh1uUyGenJHtWMwCrvCkR2+P5pIL2EeSzDyPAh
+	syM92Avjd77uI6IeDTicq/oDC+SSzoDof31f2xk5cGp7dxdF9IOGBhMqYMVR0+a+qIwMap3Luyd3P
+	zp6Wutug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAp11-009iQl-2I;
-	Wed, 06 Dec 2023 10:20:27 +0000
+	id 1rAp2R-009iqn-1P;
+	Wed, 06 Dec 2023 10:21:55 +0000
 Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAp0z-009iPP-0O
+	id 1rAp2O-009ipM-01
 	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Dec 2023 10:20:26 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-33338c47134so517259f8f.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Dec 2023 02:20:24 -0800 (PST)
+	Wed, 06 Dec 2023 10:21:54 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-33338c47134so518407f8f.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 06 Dec 2023 02:21:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701858023; x=1702462823; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1701858110; x=1702462910; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=TcagDNq61xICjIxo/4l6ClZPIhnyzcVjcPtwymEXLJ0=;
-        b=lCyhNFcgtpMZNo9E8N3J1iFn3vE4MHzCLaXKYYc1b4ap4tX8L7ki1O6IGg+O4fWREe
-         V2TKFImLKR9FvzHGzDCiACvCvHW3RhxKOyvdLIdFzDcPjgLXjHVCVIy1APzTIn0lUK69
-         Dc9cc1rV73waJeL030sVHyUvVtouhatxwUW8NGtF58Fk+oaPJjGXR9FG0/+U7STgshUa
-         FBt+yVntd8lSdTCDm01cPUKrjDSR5eD/vS3tOOYvhmG1lKKWkXj3VnETo6cjRX1owiAI
-         5lgr1rh4E0ciJtMCEcC8KtLDBHeoLUl/vhLdhHx/5vSwqA+G4PInsU2ebaPsTOghK+Dz
-         Pz2g==
+        bh=TGSnZm0VuOKrEONTomsoi2Y6B05gYl3IoTvA9v5tU9g=;
+        b=o1vA8R69ByW16HrQk6bdQibF1wRAVwXBnoSrE7THcDkKSn2BIncvJG3bdX/1ymT5Mn
+         N12nV6MmNXB6dI6OGePfashcT2sKmnJXi/iIQCsXAPfD8WyZtortqnDeKpZyzKk8ZdD4
+         DAGdJKvR8kfSkgC+5q23/hrrXh3HBz5WsZdHx0G9ln3ZG9iPVIgXcSoE7eQftzudOgrJ
+         TTQZ7d0orf5qURiT1vUBli7fGASQKBoAnYrcMnPq4g/5cCyp0L9ueiqktvv0smoozFE0
+         oual7G62ALfka85yvUVQTcr2sIkLy84Oj17a4TKOeBtyujwYsk/Gjz2khn420Gb6XdTT
+         tGRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701858023; x=1702462823;
+        d=1e100.net; s=20230601; t=1701858110; x=1702462910;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TcagDNq61xICjIxo/4l6ClZPIhnyzcVjcPtwymEXLJ0=;
-        b=Wzj3f63r8ZfzWeuMlQpC0SrxkfdZoEA9icxcYy5gWnQQRLU/RK0e0KTSScroGzEbJy
-         a6OuQaBkr/4TboSbyaZxfTULml+eRdUqHTsh0P9TLNyDbddbM/+kuE0gdWYdaRCloALw
-         QL2bOm/YsqFJkj8hyUfIOy1HY2/e2WXSApme5yq+LlFZfaqTxXXZErLw8c9hgyxsp4G8
-         4BPU/1ibFnCMaSZdZh2k5OXt4r7hKJSP2UdZMw4BUps5AXBwK1HGNczKMzF7MK8cOvrv
-         ewZ3tnKStayccb3DboHBEipaUAlp/reDTLMOCKi1K7GAU2eceVeTxkxauwTL8X6eWo4G
-         a6Gw==
-X-Gm-Message-State: AOJu0YzBQkKuZMS172uH0A7rwPs43tViB5fqaTdAO5tb+896f5Ou//XV
-	lpRMd7JsRx9MEXSM3b3lkaCWpQ==
-X-Google-Smtp-Source: AGHT+IHt5zwuXEpqq+KYBDmqWSOHIF97FnlLFsH67km27PsxnfyXBPHfb6hQ5SmmltVDFQVTYg/f9Q==
-X-Received: by 2002:a05:6000:882:b0:333:2fd2:6f4b with SMTP id cs2-20020a056000088200b003332fd26f4bmr355363wrb.85.1701858022803;
-        Wed, 06 Dec 2023 02:20:22 -0800 (PST)
+        bh=TGSnZm0VuOKrEONTomsoi2Y6B05gYl3IoTvA9v5tU9g=;
+        b=VkB6s95s9C+M5pbreaeOBuubMn9a683cwLT/1f1vZJYjJYBjwApTa039upEmDxYdRf
+         bRU3bfGp56Hg8W+RxyU5Gmut0rV/ynzJfdBuUtEIU96g9mljWgZLX/EsBg7BRgbJ8zmO
+         ttvHz9MAXFxHYFPSNYM14DXM9DIldmWAhIvKzg3eNGWtMuZqQ1NFGtQzAsOHDsSw6ujk
+         vm55DcwHBIuHszVKjMMjN67N6966hFZclykUtSfjNtostE7lYIIggy65ETXSIhizpSpd
+         FSR6xDQxx2IXUCT3Q7BPA+vdarhpVua2/oQP4SRvhvULVLHL/hztkaUsA1v6KmKofeIf
+         C4ZA==
+X-Gm-Message-State: AOJu0Yxjcswh3imIIDiob8Vt26v04wFfE/NJuFQfKHFopdNo6IZMoOgX
+	eaGzGZqWcBRiWH+JD1pAANSGHg==
+X-Google-Smtp-Source: AGHT+IGzoXE3rpphUtOBnh/oIY8xteut/PqQ2jIxfq/sklKsNF9weobqCp6uu5qey33cTeJI8p0wlA==
+X-Received: by 2002:a5d:4a11:0:b0:333:2fd2:6f75 with SMTP id m17-20020a5d4a11000000b003332fd26f75mr340639wrq.127.1701858110600;
+        Wed, 06 Dec 2023 02:21:50 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id b5-20020adfe645000000b00333404e9935sm9831476wrn.54.2023.12.06.02.20.20
+        by smtp.gmail.com with ESMTPSA id b5-20020adfe645000000b00333404e9935sm9831476wrn.54.2023.12.06.02.21.48
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 Dec 2023 02:20:22 -0800 (PST)
-Message-ID: <dfd4af72-c621-42ae-bb13-cb204aaa8ffd@linaro.org>
-Date: Wed, 6 Dec 2023 11:20:20 +0100
+        Wed, 06 Dec 2023 02:21:50 -0800 (PST)
+Message-ID: <d80d493f-bc77-4e27-9432-36512e445ba0@linaro.org>
+Date: Wed, 6 Dec 2023 11:21:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/4] dt-bindings: clock: mediatek: add MT7988 clock IDs
+Subject: Re: [PATCH v3 2/4] dt-bindings: clock: mediatek: add clock
+ controllers of MT7988
 Content-Language: en-US
 To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -86,6 +87,7 @@ To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  netdev@vger.kernel.org
 References: <23bc89d407e7797e97b703fa939b43bfe79296ce.1701823757.git.daniel@makrotopia.org>
+ <def05aac79ddff872d3e56698b736cb445f14116.1701823757.git.daniel@makrotopia.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -131,13 +133,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <23bc89d407e7797e97b703fa939b43bfe79296ce.1701823757.git.daniel@makrotopia.org>
+In-Reply-To: <def05aac79ddff872d3e56698b736cb445f14116.1701823757.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_022025_163345_79C3397A 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231206_022152_108175_CF1EBD72 
+X-CRM114-Status: GOOD (  22.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,28 +153,216 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/12/2023 01:55, Daniel Golle wrote:
-> From: Sam Shih <sam.shih@mediatek.com>
+On 06/12/2023 01:57, Daniel Golle wrote:
+> Add various clock controllers found in the MT7988 SoC to existing
+> bindings (if applicable) and add files for the new ethwarp, mcusys
+> and xfi-pll clock controllers not previously present in any SoC.
 > 
-> Add MT7988 clock dt-bindings for topckgen, apmixedsys, infracfg,
-> ethernet and xfipll subsystem clocks.
-> 
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
-> v3: no changes
-
-Really? It was entirely different author at v2.
-
-> v2: fix indentation
+> v3:
+>  * move clock bindings to clock folder
+>  * drop ti,syscon-reset from bindings and example
+>  * merge mcusys with topckgen bindings
 > 
->  .../dt-bindings/clock/mediatek,mt7988-clk.h   | 280 ++++++++++++++++++
->  1 file changed, 280 insertions(+)
->  create mode 100644 include/dt-bindings/clock/mediatek,mt7988-clk.h
+> v2:
+>  * dropped unused labels
+>  * add 'type: object' declaration for reset-controller found in new
+>    ethwarp controller and represented as ti,syscon-reset
+>  * rebase on top of
+>    "dt-bindings: arm: mediatek: move ethsys controller & convert to DT schema"
 > 
+>  .../arm/mediatek/mediatek,infracfg.yaml       |  1 +
+>  .../bindings/clock/mediatek,apmixedsys.yaml   |  1 +
+>  .../bindings/clock/mediatek,ethsys.yaml       |  1 +
+>  .../clock/mediatek,mt7988-ethwarp.yaml        | 49 +++++++++++++++++++
+>  .../clock/mediatek,mt7988-xfi-pll.yaml        | 48 ++++++++++++++++++
+>  .../bindings/clock/mediatek,topckgen.yaml     |  2 +
+>  .../bindings/net/pcs/mediatek,sgmiisys.yaml   | 13 +++--
+>  7 files changed, 112 insertions(+), 3 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+> index ea98043c6ba3d..230b5188a88db 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+> @@ -30,6 +30,7 @@ properties:
+>                - mediatek,mt7629-infracfg
+>                - mediatek,mt7981-infracfg
+>                - mediatek,mt7986-infracfg
+> +              - mediatek,mt7988-infracfg
+>                - mediatek,mt8135-infracfg
+>                - mediatek,mt8167-infracfg
+>                - mediatek,mt8173-infracfg
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+> index 372c1d744bc27..685535846cbb7 100644
+> --- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+> @@ -22,6 +22,7 @@ properties:
+>            - mediatek,mt7622-apmixedsys
+>            - mediatek,mt7981-apmixedsys
+>            - mediatek,mt7986-apmixedsys
+> +          - mediatek,mt7988-apmixedsys
+>            - mediatek,mt8135-apmixedsys
+>            - mediatek,mt8173-apmixedsys
+>            - mediatek,mt8516-apmixedsys
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
+> index 94d42c8647777..f9cddacc2eae1 100644
+> --- a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
+> @@ -22,6 +22,7 @@ properties:
+>                - mediatek,mt7629-ethsys
+>                - mediatek,mt7981-ethsys
+>                - mediatek,mt7986-ethsys
+> +              - mediatek,mt7988-ethsys
+>            - const: syscon
+>        - items:
+>            - const: mediatek,mt7623-ethsys
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
+> new file mode 100644
+> index 0000000000000..9b919a155eb13
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
+> @@ -0,0 +1,49 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-ethwarp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT7988 ethwarp Controller
+> +
+> +maintainers:
+> +  - Daniel Golle <daniel@makrotopia.org>
+> +
+> +description:
+> +  The Mediatek MT7988 ethwarp controller provides clocks and resets for the
+> +  Ethernet related subsystems found the MT7988 SoC.
+> +  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt7988-ethwarp
+> +      - const: syscon
+> +      - const: simple-mfd
 
+Why this is a simple MFD without children? Something is not right here.
+Either this is not simple-mfd or this is not complete binding.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  '#clock-cells':
+> +    const: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - '#clock-cells'
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/reset/ti-syscon.h>
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        clock-controller@15031000 {
+> +            compatible = "mediatek,mt7988-ethwarp", "syscon", "simple-mfd";
+> +            reg = <0 0x15031000 0 0x1000>;
+> +            #clock-cells = <1>;
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+> new file mode 100644
+> index 0000000000000..fe5e3a70299fd
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+> @@ -0,0 +1,48 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-xfi-pll.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT7988 XFI PLL Clock Controller
+> +
+> +maintainers:
+> +  - Daniel Golle <daniel@makrotopia.org>
+> +
+> +description:
+> +  The MediaTek XFI PLL controller provides the 156.25MHz clock for the
+> +  Ethernet SerDes PHY from the 40MHz top_xtal clock.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt7988-xfi-pll
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  '#clock-cells':
+> +    const: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - resets
+> +  - '#clock-cells'
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +        clock-controller@11f40000 {
+> +            compatible = "mediatek,mt7988-xfi-pll";
+> +            reg = <0 0x11f40000 0 0x1000>;
+> +            resets = <&watchdog 16>;
+> +            #clock-cells = <1>;
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+> index 6d087ded7437a..bdf3b55bd56fd 100644
+> --- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+> @@ -37,6 +37,8 @@ properties:
+>                - mediatek,mt7629-topckgen
+>                - mediatek,mt7981-topckgen
+>                - mediatek,mt7986-topckgen
+> +              - mediatek,mt7988-mcusys
+> +              - mediatek,mt7988-topckgen
+>                - mediatek,mt8167-topckgen
+>                - mediatek,mt8183-topckgen
+>            - const: syscon
+> diff --git a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+> index 66a95191bd776..68632cda334bd 100644
+> --- a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+> +++ b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+> @@ -15,15 +15,22 @@ description:
+>  
+>  properties:
+>    compatible:
+> -    items:
+> -      - enum:
+> +    oneOf:
+> +      - items:
+> +        - enum:
+
+It does not look like you tested the bindings, at least after quick
+look. Please run `make dt_binding_check` (see
+Documentation/devicetree/bindings/writing-schema.rst for instructions).
+Maybe you need to update your dtschema and yamllint.
 
 Best regards,
 Krzysztof
