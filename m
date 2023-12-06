@@ -4,112 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D696C10DCE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 23:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 384B1C46CA0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 23:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:Message-ID:References:Mime-Version:In-Reply-To:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FVka6SFD0txo+FDSY9W25V6pLOZXiB86yP6d1Pt82Es=; b=Bu/9gfnJUlOlL0CShwXCioLIe4
-	lZ+6vrKHhWAFShtJ6ikO2faKHDCZpg4UKuJ9jvpskoZrvp/VDhqh4ge+m9tGgZJo3thA3OGdkd7Rd
-	3bIhrjhTmgbHQZXUVluLLzA1rOmWSdutWXYcdYzJJLAKZYyDF5xWuN8u3YqO9Hybd/k/yJH7OHMOI
-	hIZjCTQB3A2vBqWFhSop1B/55c8BJg6q/0J+E6BnJ9PkrDA36VJTkl3u4KzNudc9ufAJP4/Dvz5JZ
-	0I/4Pa9pmz22fsK6iQyoE0JUnM4Z23jsJQ2ShATUVcGME18qIYUaJ5/sBIJVHGvd5Ly8Sqikec9kt
-	0YHd+csw==;
+	bh=tW1bvLd+vJe1mXhHUIhKVil8UCCD7pBSKxm7Q+Dxmp0=; b=yjsqbJP60TFXFNGfjruvI2jenV
+	545z2M3JcujrUEgMrBZAcMYCEoTDN+wJs+T3xOObL/lsM7WrXgat7znsUQf4kUhl5bVcjLAKqcdIt
+	UDKqtCUF7+fBXBP9Zwnv8n9hX4TA6jpmCdpYWpHRHoaPLTO+79bTNq+oIqHHiaMFW1Cs/YxN2ch2G
+	epLfxzYbFnD/u/YIRq0v0c7plLIcIMeZAvR0uxp8RvwJNCsMZdVa53PbT38VjSXiWCQA3jKH+K10/
+	8J4v19eQHNShdjwinpLMBycQ2ncUJc9wA3gJAzszn1kAX4iY0V8t76SGdPHmQITJRBVBbQJh5a3mz
+	vjD+ye4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB17z-00BSq0-0L;
-	Wed, 06 Dec 2023 23:16:27 +0000
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
+	id 1rB1Yy-00BVJ2-3A;
+	Wed, 06 Dec 2023 23:44:20 +0000
+Received: from mgamail.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB17r-00BSlr-2x
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Dec 2023 23:16:23 +0000
-Received: by mail-yb1-xb4a.google.com with SMTP id 3f1490d57ef6-db7dd9a8bd6so414026276.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Dec 2023 15:16:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1701904578; x=1702509378; darn=lists.infradead.org;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=FVka6SFD0txo+FDSY9W25V6pLOZXiB86yP6d1Pt82Es=;
-        b=zVw6XgB0EBRx8i5BRtnxIRuxsApVgpjBhQ5rMwYR7paLRFWXDf/xV3IcyMSkX9vWyu
-         j4kcYT2E2yK+hCfeZV8yY4IpcHx3sIPK7GY2INMZOxHMZZo4ZXrMPGDNWTfFs4Bg8k/d
-         5DiwZzqlupDJI6gUHZI6iwit8Z8osxF3L77jxF7r2YPckX5nXZMp5ILy43I515R/S/W9
-         JHV1uMOLiAJn95s3+I1JexaEanr2yPgzcfoEaOLIJ0d3+846cYAoJCzppyjYrMrzkziF
-         57n6k/WOHS2/i2ORgkzlPDUzLDh5M24jR2pDjdrl1b08JFT3Z44qh6skjVEZcAJdAL5T
-         wFVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701904578; x=1702509378;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FVka6SFD0txo+FDSY9W25V6pLOZXiB86yP6d1Pt82Es=;
-        b=r+B8sJA0wvXFypx5GPie+6HJEBOlGJOPqiZTmTWNfFKYuNZzAdIvNEAenH+onYjxNB
-         LDDhIMbRKUCm++pwkOU2rWM49TL7uis3JlUvWDyhE+QnOrbtpfPwxeketU4f7Okpx71x
-         A15os96bDnqToTBocE/6tlv/Ze6I3DeUsSJfn2RQvYNADZ82nrD3607ji8OeAQoJljEQ
-         E7/rIfbVlEY21MELcFaM5b3LXOiy7MiiS3fPqhBeim30zPt4DibWHb18A2F1rwAtb3ln
-         Mg/4GPDVWfnmCK9MwZ7XdV1hKnNoV4zN5uCAZVNTs5y2BQjbrYZhmu/QVEUYnjpF3vxW
-         fqGA==
-X-Gm-Message-State: AOJu0YwqzGz6wFIliW6Cab6cDOR36TXsR6lB6/PYARrcLzeP5W61gMQv
-	mREY0r5COm+XouqRkcUyxI/STIe6gVAIJXfP4A==
-X-Google-Smtp-Source: AGHT+IEkasdYj28UlvP/bZ8lDFKBlATQVTdOXql+z16vI5P6TdcHOUWZ+FbJPeVYBf+q7zOLG+ilQ3dBc+SoFAnTYg==
-X-Received: from jstitt-linux1.c.googlers.com ([fda3:e722:ac3:cc00:2b:ff92:c0a8:23b5])
- (user=justinstitt job=sendgmr) by 2002:a25:e68a:0:b0:dbc:3003:a135 with SMTP
- id d132-20020a25e68a000000b00dbc3003a135mr7609ybh.13.1701904578358; Wed, 06
- Dec 2023 15:16:18 -0800 (PST)
-Date: Wed, 06 Dec 2023 23:16:12 +0000
-In-Reply-To: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
-Mime-Version: 1.0
-References: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
-X-Developer-Key: i=justinstitt@google.com; a=ed25519; pk=tC3hNkJQTpNX/gLKxTNQKDmiQl6QjBNCGKJINqAdJsE=
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1701904573; l=28898;
- i=justinstitt@google.com; s=20230717; h=from:subject:message-id;
- bh=N2eHALMRUvWN/+VgQ5GCQKcdQDk3Z4Su4gN4VRGeXBs=; b=i4UVlEK187DFRiFJEl6Nppsc+Rg+Aj37zkVCS7q8ODqKfAKLpx4gHuAApxrvA8zLnrsc/Pf8J
- qXvCF4mjYFwDouk3P6KAirU/nq+xtrVc6C6E3NzbxSjqiNbYUXQJ/1u
-X-Mailer: b4 0.12.3
-Message-ID: <20231206-ethtool_puts_impl-v5-3-5a2528e17bf8@google.com>
-Subject: [PATCH net-next v5 3/3] net: Convert some ethtool_sprintf() to ethtool_puts()
-From: justinstitt@google.com
-To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Shay Agroskin <shayagr@amazon.com>, 
-	Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>, Noam Dagan <ndagan@amazon.com>, 
-	Saeed Bishara <saeedb@amazon.com>, Rasesh Mody <rmody@marvell.com>, 
-	Sudarsana Kalluru <skalluru@marvell.com>, GR-Linux-NIC-Dev@marvell.com, 
-	Dimitris Michailidis <dmichail@fungible.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Jesse Brandeburg <jesse.brandeburg@intel.com>, 
-	Tony Nguyen <anthony.l.nguyen@intel.com>, Louis Peens <louis.peens@corigine.com>, 
-	Shannon Nelson <shannon.nelson@amd.com>, Brett Creeley <brett.creeley@amd.com>, drivers@pensando.io, 
-	"K. Y. Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
-	Dexuan Cui <decui@microsoft.com>, Ronak Doshi <doshir@vmware.com>, 
-	VMware PV-Drivers Reviewers <pv-drivers@vmware.com>, Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, 
-	Dwaipayan Ray <dwaipayanray1@gmail.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>, 
-	Hauke Mehrtens <hauke@hauke-m.de>, Andrew Lunn <andrew@lunn.ch>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, 
-	"=?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?=" <arinc.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>, 
-	Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, 
-	"=?utf-8?q?Alvin_=C5=A0ipraga?=" <alsi@bang-olufsen.dk>, Wei Fang <wei.fang@nxp.com>, 
-	Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Lars Povlsen <lars.povlsen@microchip.com>, 
-	Steen Hegelund <Steen.Hegelund@microchip.com>, Daniel Machon <daniel.machon@microchip.com>, 
-	UNGLinuxDriver@microchip.com, Jiawen Wu <jiawenwu@trustnetic.com>, 
-	Mengyuan Lou <mengyuanlou@net-swift.com>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Russell King <linux@armlinux.org.uk>, Alexei Starovoitov <ast@kernel.org>, 
-	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
-	John Fastabend <john.fastabend@gmail.com>
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
-	Nick Desaulniers <ndesaulniers@google.com>, Nathan Chancellor <nathan@kernel.org>, 
-	Kees Cook <keescook@chromium.org>, intel-wired-lan@lists.osuosl.org, 
-	oss-drivers@corigine.com, linux-hyperv@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	bpf@vger.kernel.org, Justin Stitt <justinstitt@google.com>
-Content-Type: text/plain; charset="utf-8"
+	id 1rB1Yu-00BVGO-2u;
+	Wed, 06 Dec 2023 23:44:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1701906256; x=1733442256;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=eriwFjI3LNv4Js6dYZ339bbItfpw+p66ws9NjKsufBg=;
+  b=LUWNCZTnmaclG4IToZI3BoNHkyxXu5+dIp51X/bKp8f5oIZ1cuvNfMhC
+   1rKXopiglWLmSbTNyNUt3q547qqIdaMm3ISM7lzKWeAxzKKT8RuAqfEv8
+   wU6j8VJgfzK3NAsXuaMYsAGtDpp/Ez9n13jijyrAAC6W8EdlR4DEs3WPv
+   AZj3XzId1riyHglHCFjztlHM2iVTbOh3/G5dcTFd8taHQbT5PnQhx/NtP
+   dVWBnJhVVnhKem3AvnI4L9IAjWBR16WofoMKuyGhYvgVrUmyvmyuI1O2N
+   2XSeKve6P208y3NX6E45dNd/zvDDAGWNN6F+3enarmmANvQYb5VGNk02D
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="373634463"
+X-IronPort-AV: E=Sophos;i="6.04,256,1695711600"; 
+   d="scan'208";a="373634463"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Dec 2023 15:44:16 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="1018737712"
+X-IronPort-AV: E=Sophos;i="6.04,256,1695711600"; 
+   d="scan'208";a="1018737712"
+Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
+  by fmsmga006.fm.intel.com with ESMTP; 06 Dec 2023 15:44:09 -0800
+Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rB1Yk-000Bb4-30;
+	Wed, 06 Dec 2023 23:44:06 +0000
+Date: Thu, 7 Dec 2023 07:43:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+	Jeffrey Kardatzke <jkardatzke@google.com>,
+	=?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Nathan Hebert <nhebert@chromium.org>
+Cc: oe-kbuild-all@lists.linux.dev, Chen-Yu Tsai <wenst@chromium.org>,
+	Yong Wu <yong.wu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Brian Starkey <Brian.Starkey@arm.com>,
+	John Stultz <jstultz@google.com>,
+	"T . J . Mercier" <tjmercier@google.com>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH] media: medkatek: vcodec: support tee decoder
+Message-ID: <202312070717.a86rODYn-lkp@intel.com>
+References: <20231206081538.17056-21-yunfei.dong@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231206081538.17056-21-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_151620_009146_7994BA77 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20231206_154416_970940_5FE5DF03 
+X-CRM114-Status: GOOD (  17.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,663 +104,303 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch converts some basic cases of ethtool_sprintf() to
-ethtool_puts().
+Hi Yunfei,
 
-The conversions are used in cases where ethtool_sprintf() was being used
-with just two arguments:
-|       ethtool_sprintf(&data, buffer[i].name);
-or when it's used with format string: "%s"
-|       ethtool_sprintf(&data, "%s", buffer[i].name);
-which both now become:
-|       ethtool_puts(&data, buffer[i].name);
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Justin Stitt <justinstitt@google.com>
----
- drivers/net/dsa/lantiq_gswip.c                     |  2 +-
- drivers/net/dsa/mt7530.c                           |  2 +-
- drivers/net/dsa/qca/qca8k-common.c                 |  2 +-
- drivers/net/dsa/realtek/rtl8365mb.c                |  2 +-
- drivers/net/dsa/realtek/rtl8366-core.c             |  2 +-
- drivers/net/dsa/vitesse-vsc73xx-core.c             |  8 +--
- drivers/net/ethernet/amazon/ena/ena_ethtool.c      |  4 +-
- drivers/net/ethernet/brocade/bna/bnad_ethtool.c    |  2 +-
- drivers/net/ethernet/freescale/fec_main.c          |  4 +-
- .../net/ethernet/fungible/funeth/funeth_ethtool.c  |  8 +--
- drivers/net/ethernet/hisilicon/hns/hns_dsaf_gmac.c |  2 +-
- .../net/ethernet/hisilicon/hns/hns_dsaf_xgmac.c    |  2 +-
- drivers/net/ethernet/hisilicon/hns/hns_ethtool.c   | 65 +++++++++++-----------
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c     |  6 +-
- drivers/net/ethernet/intel/iavf/iavf_ethtool.c     |  3 +-
- drivers/net/ethernet/intel/ice/ice_ethtool.c       |  9 +--
- drivers/net/ethernet/intel/idpf/idpf_ethtool.c     |  2 +-
- drivers/net/ethernet/intel/igb/igb_ethtool.c       |  6 +-
- drivers/net/ethernet/intel/igc/igc_ethtool.c       |  6 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c   |  5 +-
- .../net/ethernet/microchip/sparx5/sparx5_ethtool.c |  2 +-
- .../net/ethernet/netronome/nfp/nfp_net_ethtool.c   | 44 +++++++--------
- drivers/net/ethernet/pensando/ionic/ionic_stats.c  |  4 +-
- drivers/net/ethernet/wangxun/libwx/wx_ethtool.c    |  2 +-
- drivers/net/hyperv/netvsc_drv.c                    |  4 +-
- drivers/net/phy/nxp-tja11xx.c                      |  2 +-
- drivers/net/phy/smsc.c                             |  2 +-
- drivers/net/vmxnet3/vmxnet3_ethtool.c              | 10 ++--
- 28 files changed, 100 insertions(+), 112 deletions(-)
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on linus/master v6.7-rc4 next-20231206]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/net/dsa/lantiq_gswip.c b/drivers/net/dsa/lantiq_gswip.c
-index 9c185c9f0963..05a017c9ef3d 100644
---- a/drivers/net/dsa/lantiq_gswip.c
-+++ b/drivers/net/dsa/lantiq_gswip.c
-@@ -1759,7 +1759,7 @@ static void gswip_get_strings(struct dsa_switch *ds, int port, u32 stringset,
- 		return;
- 
- 	for (i = 0; i < ARRAY_SIZE(gswip_rmon_cnt); i++)
--		ethtool_sprintf(&data, "%s", gswip_rmon_cnt[i].name);
-+		ethtool_puts(&data, gswip_rmon_cnt[i].name);
- }
- 
- static u32 gswip_bcm_ram_entry_read(struct gswip_priv *priv, u32 table,
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index d27c6b70a2f6..391c4dbdff42 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -836,7 +836,7 @@ mt7530_get_strings(struct dsa_switch *ds, int port, u32 stringset,
- 		return;
- 
- 	for (i = 0; i < ARRAY_SIZE(mt7530_mib); i++)
--		ethtool_sprintf(&data, "%s", mt7530_mib[i].name);
-+		ethtool_puts(&data, mt7530_mib[i].name);
- }
- 
- static void
-diff --git a/drivers/net/dsa/qca/qca8k-common.c b/drivers/net/dsa/qca/qca8k-common.c
-index 9243eff8918d..2358cd399c7e 100644
---- a/drivers/net/dsa/qca/qca8k-common.c
-+++ b/drivers/net/dsa/qca/qca8k-common.c
-@@ -487,7 +487,7 @@ void qca8k_get_strings(struct dsa_switch *ds, int port, u32 stringset,
- 		return;
- 
- 	for (i = 0; i < priv->info->mib_count; i++)
--		ethtool_sprintf(&data, "%s", ar8327_mib[i].name);
-+		ethtool_puts(&data, ar8327_mib[i].name);
- }
- 
- void qca8k_get_ethtool_stats(struct dsa_switch *ds, int port,
-diff --git a/drivers/net/dsa/realtek/rtl8365mb.c b/drivers/net/dsa/realtek/rtl8365mb.c
-index 0875e4fc9f57..b072045eb154 100644
---- a/drivers/net/dsa/realtek/rtl8365mb.c
-+++ b/drivers/net/dsa/realtek/rtl8365mb.c
-@@ -1303,7 +1303,7 @@ static void rtl8365mb_get_strings(struct dsa_switch *ds, int port, u32 stringset
- 
- 	for (i = 0; i < RTL8365MB_MIB_END; i++) {
- 		struct rtl8365mb_mib_counter *mib = &rtl8365mb_mib_counters[i];
--		ethtool_sprintf(&data, "%s", mib->name);
-+		ethtool_puts(&data, mib->name);
- 	}
- }
- 
-diff --git a/drivers/net/dsa/realtek/rtl8366-core.c b/drivers/net/dsa/realtek/rtl8366-core.c
-index 82e267b8fddb..59f98d2c8769 100644
---- a/drivers/net/dsa/realtek/rtl8366-core.c
-+++ b/drivers/net/dsa/realtek/rtl8366-core.c
-@@ -401,7 +401,7 @@ void rtl8366_get_strings(struct dsa_switch *ds, int port, u32 stringset,
- 		return;
- 
- 	for (i = 0; i < priv->num_mib_counters; i++)
--		ethtool_sprintf(&data, "%s", priv->mib_counters[i].name);
-+		ethtool_puts(&data, priv->mib_counters[i].name);
- }
- EXPORT_SYMBOL_GPL(rtl8366_get_strings);
- 
-diff --git a/drivers/net/dsa/vitesse-vsc73xx-core.c b/drivers/net/dsa/vitesse-vsc73xx-core.c
-index e6f29e4e508c..dd50502e2122 100644
---- a/drivers/net/dsa/vitesse-vsc73xx-core.c
-+++ b/drivers/net/dsa/vitesse-vsc73xx-core.c
-@@ -949,7 +949,7 @@ static void vsc73xx_get_strings(struct dsa_switch *ds, int port, u32 stringset,
- 	indices[5] = ((val >> 26) & 0x1f); /* TX counter 2 */
- 
- 	/* The first counters is the RX octets */
--	ethtool_sprintf(&buf, "RxEtherStatsOctets");
-+	ethtool_puts(&buf, "RxEtherStatsOctets");
- 
- 	/* Each port supports recording 3 RX counters and 3 TX counters,
- 	 * figure out what counters we use in this set-up and return the
-@@ -959,15 +959,15 @@ static void vsc73xx_get_strings(struct dsa_switch *ds, int port, u32 stringset,
- 	 */
- 	for (i = 0; i < 3; i++) {
- 		cnt = vsc73xx_find_counter(vsc, indices[i], false);
--		ethtool_sprintf(&buf, "%s", cnt ? cnt->name : "");
-+		ethtool_puts(&buf, cnt ? cnt->name : "");
- 	}
- 
- 	/* TX stats begins with the number of TX octets */
--	ethtool_sprintf(&buf, "TxEtherStatsOctets");
-+	ethtool_puts(&buf, "TxEtherStatsOctets");
- 
- 	for (i = 3; i < 6; i++) {
- 		cnt = vsc73xx_find_counter(vsc, indices[i], true);
--		ethtool_sprintf(&buf, "%s", cnt ? cnt->name : "");
-+		ethtool_puts(&buf, cnt ? cnt->name : "");
- 
- 	}
- }
-diff --git a/drivers/net/ethernet/amazon/ena/ena_ethtool.c b/drivers/net/ethernet/amazon/ena/ena_ethtool.c
-index d671df4b76bc..e3ef081aa42b 100644
---- a/drivers/net/ethernet/amazon/ena/ena_ethtool.c
-+++ b/drivers/net/ethernet/amazon/ena/ena_ethtool.c
-@@ -299,13 +299,13 @@ static void ena_get_strings(struct ena_adapter *adapter,
- 
- 	for (i = 0; i < ENA_STATS_ARRAY_GLOBAL; i++) {
- 		ena_stats = &ena_stats_global_strings[i];
--		ethtool_sprintf(&data, ena_stats->name);
-+		ethtool_puts(&data, ena_stats->name);
- 	}
- 
- 	if (eni_stats_needed) {
- 		for (i = 0; i < ENA_STATS_ARRAY_ENI(adapter); i++) {
- 			ena_stats = &ena_stats_eni_strings[i];
--			ethtool_sprintf(&data, ena_stats->name);
-+			ethtool_puts(&data, ena_stats->name);
- 		}
- 	}
- 
-diff --git a/drivers/net/ethernet/brocade/bna/bnad_ethtool.c b/drivers/net/ethernet/brocade/bna/bnad_ethtool.c
-index df10edff5603..d1ad6c9f8140 100644
---- a/drivers/net/ethernet/brocade/bna/bnad_ethtool.c
-+++ b/drivers/net/ethernet/brocade/bna/bnad_ethtool.c
-@@ -608,7 +608,7 @@ bnad_get_strings(struct net_device *netdev, u32 stringset, u8 *string)
- 
- 	for (i = 0; i < BNAD_ETHTOOL_STATS_NUM; i++) {
- 		BUG_ON(!(strlen(bnad_net_stats_strings[i]) < ETH_GSTRING_LEN));
--		ethtool_sprintf(&string, bnad_net_stats_strings[i]);
-+		ethtool_puts(&string, bnad_net_stats_strings[i]);
- 	}
- 
- 	bmap = bna_tx_rid_mask(&bnad->bna);
-diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-index c3b7694a7485..bae9536de767 100644
---- a/drivers/net/ethernet/freescale/fec_main.c
-+++ b/drivers/net/ethernet/freescale/fec_main.c
-@@ -2932,10 +2932,10 @@ static void fec_enet_get_strings(struct net_device *netdev,
- 	switch (stringset) {
- 	case ETH_SS_STATS:
- 		for (i = 0; i < ARRAY_SIZE(fec_stats); i++) {
--			ethtool_sprintf(&data, "%s", fec_stats[i].name);
-+			ethtool_puts(&data, fec_stats[i].name);
- 		}
- 		for (i = 0; i < ARRAY_SIZE(fec_xdp_stat_strs); i++) {
--			ethtool_sprintf(&data, "%s", fec_xdp_stat_strs[i]);
-+			ethtool_puts(&data, fec_xdp_stat_strs[i]);
- 		}
- 		page_pool_ethtool_stats_get_strings(data);
- 
-diff --git a/drivers/net/ethernet/fungible/funeth/funeth_ethtool.c b/drivers/net/ethernet/fungible/funeth/funeth_ethtool.c
-index 31aa185f4d17..091c93bd7587 100644
---- a/drivers/net/ethernet/fungible/funeth/funeth_ethtool.c
-+++ b/drivers/net/ethernet/fungible/funeth/funeth_ethtool.c
-@@ -655,7 +655,7 @@ static void fun_get_strings(struct net_device *netdev, u32 sset, u8 *data)
- 						i);
- 		}
- 		for (j = 0; j < ARRAY_SIZE(txq_stat_names); j++)
--			ethtool_sprintf(&p, txq_stat_names[j]);
-+			ethtool_puts(&p, txq_stat_names[j]);
- 
- 		for (i = 0; i < fp->num_xdpqs; i++) {
- 			for (j = 0; j < ARRAY_SIZE(xdpq_stat_names); j++)
-@@ -663,7 +663,7 @@ static void fun_get_strings(struct net_device *netdev, u32 sset, u8 *data)
- 						xdpq_stat_names[j], i);
- 		}
- 		for (j = 0; j < ARRAY_SIZE(xdpq_stat_names); j++)
--			ethtool_sprintf(&p, xdpq_stat_names[j]);
-+			ethtool_puts(&p, xdpq_stat_names[j]);
- 
- 		for (i = 0; i < netdev->real_num_rx_queues; i++) {
- 			for (j = 0; j < ARRAY_SIZE(rxq_stat_names); j++)
-@@ -671,10 +671,10 @@ static void fun_get_strings(struct net_device *netdev, u32 sset, u8 *data)
- 						i);
- 		}
- 		for (j = 0; j < ARRAY_SIZE(rxq_stat_names); j++)
--			ethtool_sprintf(&p, rxq_stat_names[j]);
-+			ethtool_puts(&p, rxq_stat_names[j]);
- 
- 		for (j = 0; j < ARRAY_SIZE(tls_stat_names); j++)
--			ethtool_sprintf(&p, tls_stat_names[j]);
-+			ethtool_puts(&p, tls_stat_names[j]);
- 		break;
- 	default:
- 		break;
-diff --git a/drivers/net/ethernet/hisilicon/hns/hns_dsaf_gmac.c b/drivers/net/ethernet/hisilicon/hns/hns_dsaf_gmac.c
-index 8f391e2adcc0..bdb7afaabdd0 100644
---- a/drivers/net/ethernet/hisilicon/hns/hns_dsaf_gmac.c
-+++ b/drivers/net/ethernet/hisilicon/hns/hns_dsaf_gmac.c
-@@ -678,7 +678,7 @@ static void hns_gmac_get_strings(u32 stringset, u8 *data)
- 		return;
- 
- 	for (i = 0; i < ARRAY_SIZE(g_gmac_stats_string); i++)
--		ethtool_sprintf(&buff, g_gmac_stats_string[i].desc);
-+		ethtool_puts(&buff, g_gmac_stats_string[i].desc);
- }
- 
- static int hns_gmac_get_sset_count(int stringset)
-diff --git a/drivers/net/ethernet/hisilicon/hns/hns_dsaf_xgmac.c b/drivers/net/ethernet/hisilicon/hns/hns_dsaf_xgmac.c
-index fc26ffaae620..c58833eb4830 100644
---- a/drivers/net/ethernet/hisilicon/hns/hns_dsaf_xgmac.c
-+++ b/drivers/net/ethernet/hisilicon/hns/hns_dsaf_xgmac.c
-@@ -752,7 +752,7 @@ static void hns_xgmac_get_strings(u32 stringset, u8 *data)
- 		return;
- 
- 	for (i = 0; i < ARRAY_SIZE(g_xgmac_stats_string); i++)
--		ethtool_sprintf(&buff, g_xgmac_stats_string[i].desc);
-+		ethtool_puts(&buff, g_xgmac_stats_string[i].desc);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/hisilicon/hns/hns_ethtool.c b/drivers/net/ethernet/hisilicon/hns/hns_ethtool.c
-index b54f3706fb97..fe40cceb0f79 100644
---- a/drivers/net/ethernet/hisilicon/hns/hns_ethtool.c
-+++ b/drivers/net/ethernet/hisilicon/hns/hns_ethtool.c
-@@ -912,42 +912,41 @@ static void hns_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
- 
- 	if (stringset == ETH_SS_TEST) {
- 		if (priv->ae_handle->phy_if != PHY_INTERFACE_MODE_XGMII)
--			ethtool_sprintf(&buff,
--					hns_nic_test_strs[MAC_INTERNALLOOP_MAC]);
--		ethtool_sprintf(&buff,
--				hns_nic_test_strs[MAC_INTERNALLOOP_SERDES]);
-+			ethtool_puts(&buff,
-+				     hns_nic_test_strs[MAC_INTERNALLOOP_MAC]);
-+		ethtool_puts(&buff, hns_nic_test_strs[MAC_INTERNALLOOP_SERDES]);
- 		if ((netdev->phydev) && (!netdev->phydev->is_c45))
--			ethtool_sprintf(&buff,
--					hns_nic_test_strs[MAC_INTERNALLOOP_PHY]);
-+			ethtool_puts(&buff,
-+				     hns_nic_test_strs[MAC_INTERNALLOOP_PHY]);
- 
- 	} else {
--		ethtool_sprintf(&buff, "rx_packets");
--		ethtool_sprintf(&buff, "tx_packets");
--		ethtool_sprintf(&buff, "rx_bytes");
--		ethtool_sprintf(&buff, "tx_bytes");
--		ethtool_sprintf(&buff, "rx_errors");
--		ethtool_sprintf(&buff, "tx_errors");
--		ethtool_sprintf(&buff, "rx_dropped");
--		ethtool_sprintf(&buff, "tx_dropped");
--		ethtool_sprintf(&buff, "multicast");
--		ethtool_sprintf(&buff, "collisions");
--		ethtool_sprintf(&buff, "rx_over_errors");
--		ethtool_sprintf(&buff, "rx_crc_errors");
--		ethtool_sprintf(&buff, "rx_frame_errors");
--		ethtool_sprintf(&buff, "rx_fifo_errors");
--		ethtool_sprintf(&buff, "rx_missed_errors");
--		ethtool_sprintf(&buff, "tx_aborted_errors");
--		ethtool_sprintf(&buff, "tx_carrier_errors");
--		ethtool_sprintf(&buff, "tx_fifo_errors");
--		ethtool_sprintf(&buff, "tx_heartbeat_errors");
--		ethtool_sprintf(&buff, "rx_length_errors");
--		ethtool_sprintf(&buff, "tx_window_errors");
--		ethtool_sprintf(&buff, "rx_compressed");
--		ethtool_sprintf(&buff, "tx_compressed");
--		ethtool_sprintf(&buff, "netdev_rx_dropped");
--		ethtool_sprintf(&buff, "netdev_tx_dropped");
--
--		ethtool_sprintf(&buff, "netdev_tx_timeout");
-+		ethtool_puts(&buff, "rx_packets");
-+		ethtool_puts(&buff, "tx_packets");
-+		ethtool_puts(&buff, "rx_bytes");
-+		ethtool_puts(&buff, "tx_bytes");
-+		ethtool_puts(&buff, "rx_errors");
-+		ethtool_puts(&buff, "tx_errors");
-+		ethtool_puts(&buff, "rx_dropped");
-+		ethtool_puts(&buff, "tx_dropped");
-+		ethtool_puts(&buff, "multicast");
-+		ethtool_puts(&buff, "collisions");
-+		ethtool_puts(&buff, "rx_over_errors");
-+		ethtool_puts(&buff, "rx_crc_errors");
-+		ethtool_puts(&buff, "rx_frame_errors");
-+		ethtool_puts(&buff, "rx_fifo_errors");
-+		ethtool_puts(&buff, "rx_missed_errors");
-+		ethtool_puts(&buff, "tx_aborted_errors");
-+		ethtool_puts(&buff, "tx_carrier_errors");
-+		ethtool_puts(&buff, "tx_fifo_errors");
-+		ethtool_puts(&buff, "tx_heartbeat_errors");
-+		ethtool_puts(&buff, "rx_length_errors");
-+		ethtool_puts(&buff, "tx_window_errors");
-+		ethtool_puts(&buff, "rx_compressed");
-+		ethtool_puts(&buff, "tx_compressed");
-+		ethtool_puts(&buff, "netdev_rx_dropped");
-+		ethtool_puts(&buff, "netdev_tx_dropped");
-+
-+		ethtool_puts(&buff, "netdev_tx_timeout");
- 
- 		h->dev->ops->get_strings(h, stringset, buff);
- 	}
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index fd7163128c4d..79c3e7968a85 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -2514,13 +2514,11 @@ static void i40e_get_priv_flag_strings(struct net_device *netdev, u8 *data)
- 	u8 *p = data;
- 
- 	for (i = 0; i < I40E_PRIV_FLAGS_STR_LEN; i++)
--		ethtool_sprintf(&p, "%s",
--				i40e_gstrings_priv_flags[i].flag_string);
-+		ethtool_puts(&p, i40e_gstrings_priv_flags[i].flag_string);
- 	if (pf->hw.pf_id != 0)
- 		return;
- 	for (i = 0; i < I40E_GL_PRIV_FLAGS_STR_LEN; i++)
--		ethtool_sprintf(&p, "%s",
--				i40e_gl_gstrings_priv_flags[i].flag_string);
-+		ethtool_puts(&p, i40e_gl_gstrings_priv_flags[i].flag_string);
- }
- 
- static void i40e_get_strings(struct net_device *netdev, u32 stringset,
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 6f236d1a6444..75d433dc1974 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -396,8 +396,7 @@ static void iavf_get_priv_flag_strings(struct net_device *netdev, u8 *data)
- 	unsigned int i;
- 
- 	for (i = 0; i < IAVF_PRIV_FLAGS_STR_LEN; i++)
--		ethtool_sprintf(&data, "%s",
--				iavf_gstrings_priv_flags[i].flag_string);
-+		ethtool_puts(&data, iavf_gstrings_priv_flags[i].flag_string);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index a34083567e6f..98c9317581e0 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -1142,8 +1142,7 @@ __ice_get_strings(struct net_device *netdev, u32 stringset, u8 *data,
- 	switch (stringset) {
- 	case ETH_SS_STATS:
- 		for (i = 0; i < ICE_VSI_STATS_LEN; i++)
--			ethtool_sprintf(&p, "%s",
--					ice_gstrings_vsi_stats[i].stat_string);
-+			ethtool_puts(&p, ice_gstrings_vsi_stats[i].stat_string);
- 
- 		if (ice_is_port_repr_netdev(netdev))
- 			return;
-@@ -1162,8 +1161,7 @@ __ice_get_strings(struct net_device *netdev, u32 stringset, u8 *data,
- 			return;
- 
- 		for (i = 0; i < ICE_PF_STATS_LEN; i++)
--			ethtool_sprintf(&p, "%s",
--					ice_gstrings_pf_stats[i].stat_string);
-+			ethtool_puts(&p, ice_gstrings_pf_stats[i].stat_string);
- 
- 		for (i = 0; i < ICE_MAX_USER_PRIORITY; i++) {
- 			ethtool_sprintf(&p, "tx_priority_%u_xon.nic", i);
-@@ -1179,8 +1177,7 @@ __ice_get_strings(struct net_device *netdev, u32 stringset, u8 *data,
- 		break;
- 	case ETH_SS_PRIV_FLAGS:
- 		for (i = 0; i < ICE_PRIV_FLAG_ARRAY_SIZE; i++)
--			ethtool_sprintf(&p, "%s",
--					ice_gstrings_priv_flags[i].name);
-+			ethtool_puts(&p, ice_gstrings_priv_flags[i].name);
- 		break;
- 	default:
- 		break;
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-index 52ea38669f85..bf58989a573e 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-@@ -532,7 +532,7 @@ static void idpf_add_stat_strings(u8 **p, const struct idpf_stats *stats,
- 	unsigned int i;
- 
- 	for (i = 0; i < size; i++)
--		ethtool_sprintf(p, "%s", stats[i].stat_string);
-+		ethtool_puts(p, stats[i].stat_string);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 16d2a55d5e17..89dac7b215e5 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -2356,11 +2356,9 @@ static void igb_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
- 		break;
- 	case ETH_SS_STATS:
- 		for (i = 0; i < IGB_GLOBAL_STATS_LEN; i++)
--			ethtool_sprintf(&p, "%s",
--					igb_gstrings_stats[i].stat_string);
-+			ethtool_puts(&p, igb_gstrings_stats[i].stat_string);
- 		for (i = 0; i < IGB_NETDEV_STATS_LEN; i++)
--			ethtool_sprintf(&p, "%s",
--					igb_gstrings_net_stats[i].stat_string);
-+			ethtool_puts(&p, igb_gstrings_net_stats[i].stat_string);
- 		for (i = 0; i < adapter->num_tx_queues; i++) {
- 			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
- 			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 785eaa8e0ba8..2ed92bf34059 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -773,11 +773,9 @@ static void igc_ethtool_get_strings(struct net_device *netdev, u32 stringset,
- 		break;
- 	case ETH_SS_STATS:
- 		for (i = 0; i < IGC_GLOBAL_STATS_LEN; i++)
--			ethtool_sprintf(&p, "%s",
--					igc_gstrings_stats[i].stat_string);
-+			ethtool_puts(&p, igc_gstrings_stats[i].stat_string);
- 		for (i = 0; i < IGC_NETDEV_STATS_LEN; i++)
--			ethtool_sprintf(&p, "%s",
--					igc_gstrings_net_stats[i].stat_string);
-+			ethtool_puts(&p, igc_gstrings_net_stats[i].stat_string);
- 		for (i = 0; i < adapter->num_tx_queues; i++) {
- 			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
- 			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index 4dd897806fa5..dd722b0381e0 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -1413,12 +1413,11 @@ static void ixgbe_get_strings(struct net_device *netdev, u32 stringset,
- 	switch (stringset) {
- 	case ETH_SS_TEST:
- 		for (i = 0; i < IXGBE_TEST_LEN; i++)
--			ethtool_sprintf(&p, "%s", ixgbe_gstrings_test[i]);
-+			ethtool_puts(&p, ixgbe_gstrings_test[i]);
- 		break;
- 	case ETH_SS_STATS:
- 		for (i = 0; i < IXGBE_GLOBAL_STATS_LEN; i++)
--			ethtool_sprintf(&p, "%s",
--					ixgbe_gstrings_stats[i].stat_string);
-+			ethtool_puts(&p, ixgbe_gstrings_stats[i].stat_string);
- 		for (i = 0; i < netdev->num_tx_queues; i++) {
- 			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
- 			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
-diff --git a/drivers/net/ethernet/microchip/sparx5/sparx5_ethtool.c b/drivers/net/ethernet/microchip/sparx5/sparx5_ethtool.c
-index 37d2584b48a7..a06dc5a9b355 100644
---- a/drivers/net/ethernet/microchip/sparx5/sparx5_ethtool.c
-+++ b/drivers/net/ethernet/microchip/sparx5/sparx5_ethtool.c
-@@ -1012,7 +1012,7 @@ static void sparx5_get_sset_strings(struct net_device *ndev, u32 sset, u8 *data)
- 		return;
- 
- 	for (idx = 0; idx < sparx5->num_ethtool_stats; idx++)
--		ethtool_sprintf(&data, "%s", sparx5->stats_layout[idx]);
-+		ethtool_puts(&data, sparx5->stats_layout[idx]);
- }
- 
- static void sparx5_get_sset_data(struct net_device *ndev,
-diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_ethtool.c b/drivers/net/ethernet/netronome/nfp/nfp_net_ethtool.c
-index e75cbb287625..1636ce61a3c0 100644
---- a/drivers/net/ethernet/netronome/nfp/nfp_net_ethtool.c
-+++ b/drivers/net/ethernet/netronome/nfp/nfp_net_ethtool.c
-@@ -800,7 +800,7 @@ static void nfp_get_self_test_strings(struct net_device *netdev, u8 *data)
- 
- 	for (i = 0; i < NFP_TEST_TOTAL_NUM; i++)
- 		if (nfp_self_test[i].is_supported(netdev))
--			ethtool_sprintf(&data, nfp_self_test[i].name);
-+			ethtool_puts(&data, nfp_self_test[i].name);
- }
- 
- static int nfp_get_self_test_count(struct net_device *netdev)
-@@ -852,24 +852,24 @@ static u8 *nfp_vnic_get_sw_stats_strings(struct net_device *netdev, u8 *data)
- 		ethtool_sprintf(&data, "rvec_%u_tx_busy", i);
- 	}
- 
--	ethtool_sprintf(&data, "hw_rx_csum_ok");
--	ethtool_sprintf(&data, "hw_rx_csum_inner_ok");
--	ethtool_sprintf(&data, "hw_rx_csum_complete");
--	ethtool_sprintf(&data, "hw_rx_csum_err");
--	ethtool_sprintf(&data, "rx_replace_buf_alloc_fail");
--	ethtool_sprintf(&data, "rx_tls_decrypted_packets");
--	ethtool_sprintf(&data, "hw_tx_csum");
--	ethtool_sprintf(&data, "hw_tx_inner_csum");
--	ethtool_sprintf(&data, "tx_gather");
--	ethtool_sprintf(&data, "tx_lso");
--	ethtool_sprintf(&data, "tx_tls_encrypted_packets");
--	ethtool_sprintf(&data, "tx_tls_ooo");
--	ethtool_sprintf(&data, "tx_tls_drop_no_sync_data");
--
--	ethtool_sprintf(&data, "hw_tls_no_space");
--	ethtool_sprintf(&data, "rx_tls_resync_req_ok");
--	ethtool_sprintf(&data, "rx_tls_resync_req_ign");
--	ethtool_sprintf(&data, "rx_tls_resync_sent");
-+	ethtool_puts(&data, "hw_rx_csum_ok");
-+	ethtool_puts(&data, "hw_rx_csum_inner_ok");
-+	ethtool_puts(&data, "hw_rx_csum_complete");
-+	ethtool_puts(&data, "hw_rx_csum_err");
-+	ethtool_puts(&data, "rx_replace_buf_alloc_fail");
-+	ethtool_puts(&data, "rx_tls_decrypted_packets");
-+	ethtool_puts(&data, "hw_tx_csum");
-+	ethtool_puts(&data, "hw_tx_inner_csum");
-+	ethtool_puts(&data, "tx_gather");
-+	ethtool_puts(&data, "tx_lso");
-+	ethtool_puts(&data, "tx_tls_encrypted_packets");
-+	ethtool_puts(&data, "tx_tls_ooo");
-+	ethtool_puts(&data, "tx_tls_drop_no_sync_data");
-+
-+	ethtool_puts(&data, "hw_tls_no_space");
-+	ethtool_puts(&data, "rx_tls_resync_req_ok");
-+	ethtool_puts(&data, "rx_tls_resync_req_ign");
-+	ethtool_puts(&data, "rx_tls_resync_sent");
- 
- 	return data;
- }
-@@ -943,13 +943,13 @@ nfp_vnic_get_hw_stats_strings(u8 *data, unsigned int num_vecs, bool repr)
- 	swap_off = repr * NN_ET_SWITCH_STATS_LEN;
- 
- 	for (i = 0; i < NN_ET_SWITCH_STATS_LEN; i++)
--		ethtool_sprintf(&data, nfp_net_et_stats[i + swap_off].name);
-+		ethtool_puts(&data, nfp_net_et_stats[i + swap_off].name);
- 
- 	for (i = NN_ET_SWITCH_STATS_LEN; i < NN_ET_SWITCH_STATS_LEN * 2; i++)
--		ethtool_sprintf(&data, nfp_net_et_stats[i - swap_off].name);
-+		ethtool_puts(&data, nfp_net_et_stats[i - swap_off].name);
- 
- 	for (i = NN_ET_SWITCH_STATS_LEN * 2; i < NN_ET_GLOBAL_STATS_LEN; i++)
--		ethtool_sprintf(&data, nfp_net_et_stats[i].name);
-+		ethtool_puts(&data, nfp_net_et_stats[i].name);
- 
- 	for (i = 0; i < num_vecs; i++) {
- 		ethtool_sprintf(&data, "rxq_%u_pkts", i);
-diff --git a/drivers/net/ethernet/pensando/ionic/ionic_stats.c b/drivers/net/ethernet/pensando/ionic/ionic_stats.c
-index 9859a4432985..1f6022fb7679 100644
---- a/drivers/net/ethernet/pensando/ionic/ionic_stats.c
-+++ b/drivers/net/ethernet/pensando/ionic/ionic_stats.c
-@@ -258,10 +258,10 @@ static void ionic_sw_stats_get_strings(struct ionic_lif *lif, u8 **buf)
- 	int i, q_num;
- 
- 	for (i = 0; i < IONIC_NUM_LIF_STATS; i++)
--		ethtool_sprintf(buf, ionic_lif_stats_desc[i].name);
-+		ethtool_puts(buf, ionic_lif_stats_desc[i].name);
- 
- 	for (i = 0; i < IONIC_NUM_PORT_STATS; i++)
--		ethtool_sprintf(buf, ionic_port_stats_desc[i].name);
-+		ethtool_puts(buf, ionic_port_stats_desc[i].name);
- 
- 	for (q_num = 0; q_num < MAX_Q(lif); q_num++)
- 		ionic_sw_stats_get_tx_strings(lif, buf, q_num);
-diff --git a/drivers/net/ethernet/wangxun/libwx/wx_ethtool.c b/drivers/net/ethernet/wangxun/libwx/wx_ethtool.c
-index ddc5f6d20b9c..6e9e5f01c152 100644
---- a/drivers/net/ethernet/wangxun/libwx/wx_ethtool.c
-+++ b/drivers/net/ethernet/wangxun/libwx/wx_ethtool.c
-@@ -75,7 +75,7 @@ void wx_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
- 	switch (stringset) {
- 	case ETH_SS_STATS:
- 		for (i = 0; i < WX_GLOBAL_STATS_LEN; i++)
--			ethtool_sprintf(&p, wx_gstrings_stats[i].stat_string);
-+			ethtool_puts(&p, wx_gstrings_stats[i].stat_string);
- 		for (i = 0; i < netdev->num_tx_queues; i++) {
- 			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
- 			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
-diff --git a/drivers/net/hyperv/netvsc_drv.c b/drivers/net/hyperv/netvsc_drv.c
-index 706ea5263e87..1e2fa0ec2327 100644
---- a/drivers/net/hyperv/netvsc_drv.c
-+++ b/drivers/net/hyperv/netvsc_drv.c
-@@ -1582,10 +1582,10 @@ static void netvsc_get_strings(struct net_device *dev, u32 stringset, u8 *data)
- 	switch (stringset) {
- 	case ETH_SS_STATS:
- 		for (i = 0; i < ARRAY_SIZE(netvsc_stats); i++)
--			ethtool_sprintf(&p, netvsc_stats[i].name);
-+			ethtool_puts(&p, netvsc_stats[i].name);
- 
- 		for (i = 0; i < ARRAY_SIZE(vf_stats); i++)
--			ethtool_sprintf(&p, vf_stats[i].name);
-+			ethtool_puts(&p, vf_stats[i].name);
- 
- 		for (i = 0; i < nvdev->num_chn; i++) {
- 			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
-diff --git a/drivers/net/phy/nxp-tja11xx.c b/drivers/net/phy/nxp-tja11xx.c
-index a71399965142..2c263ae44b4f 100644
---- a/drivers/net/phy/nxp-tja11xx.c
-+++ b/drivers/net/phy/nxp-tja11xx.c
-@@ -415,7 +415,7 @@ static void tja11xx_get_strings(struct phy_device *phydev, u8 *data)
- 	int i;
- 
- 	for (i = 0; i < ARRAY_SIZE(tja11xx_hw_stats); i++)
--		ethtool_sprintf(&data, "%s", tja11xx_hw_stats[i].string);
-+		ethtool_puts(&data, tja11xx_hw_stats[i].string);
- }
- 
- static void tja11xx_get_stats(struct phy_device *phydev,
-diff --git a/drivers/net/phy/smsc.c b/drivers/net/phy/smsc.c
-index 1c7306a1af13..150aea7c9c36 100644
---- a/drivers/net/phy/smsc.c
-+++ b/drivers/net/phy/smsc.c
-@@ -508,7 +508,7 @@ static void smsc_get_strings(struct phy_device *phydev, u8 *data)
- 	int i;
- 
- 	for (i = 0; i < ARRAY_SIZE(smsc_hw_stats); i++)
--		ethtool_sprintf(&data, "%s", smsc_hw_stats[i].string);
-+		ethtool_puts(&data, smsc_hw_stats[i].string);
- }
- 
- static u64 smsc_get_stat(struct phy_device *phydev, int i)
-diff --git a/drivers/net/vmxnet3/vmxnet3_ethtool.c b/drivers/net/vmxnet3/vmxnet3_ethtool.c
-index 98c22d7d87a2..8f5f202cde39 100644
---- a/drivers/net/vmxnet3/vmxnet3_ethtool.c
-+++ b/drivers/net/vmxnet3/vmxnet3_ethtool.c
-@@ -245,20 +245,20 @@ vmxnet3_get_strings(struct net_device *netdev, u32 stringset, u8 *buf)
- 
- 	for (j = 0; j < adapter->num_tx_queues; j++) {
- 		for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_dev_stats); i++)
--			ethtool_sprintf(&buf, vmxnet3_tq_dev_stats[i].desc);
-+			ethtool_puts(&buf, vmxnet3_tq_dev_stats[i].desc);
- 		for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_driver_stats); i++)
--			ethtool_sprintf(&buf, vmxnet3_tq_driver_stats[i].desc);
-+			ethtool_puts(&buf, vmxnet3_tq_driver_stats[i].desc);
- 	}
- 
- 	for (j = 0; j < adapter->num_rx_queues; j++) {
- 		for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_dev_stats); i++)
--			ethtool_sprintf(&buf, vmxnet3_rq_dev_stats[i].desc);
-+			ethtool_puts(&buf, vmxnet3_rq_dev_stats[i].desc);
- 		for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_driver_stats); i++)
--			ethtool_sprintf(&buf, vmxnet3_rq_driver_stats[i].desc);
-+			ethtool_puts(&buf, vmxnet3_rq_driver_stats[i].desc);
- 	}
- 
- 	for (i = 0; i < ARRAY_SIZE(vmxnet3_global_stats); i++)
--		ethtool_sprintf(&buf, vmxnet3_global_stats[i].desc);
-+		ethtool_puts(&buf, vmxnet3_global_stats[i].desc);
- }
- 
- netdev_features_t vmxnet3_fix_features(struct net_device *netdev,
+url:    https://github.com/intel-lab-lkp/linux/commits/Yunfei-Dong/media-medkatek-vcodec-support-tee-decoder/20231206-201843
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20231206081538.17056-21-yunfei.dong%40mediatek.com
+patch subject: [PATCH] media: medkatek: vcodec: support tee decoder
+config: arm64-defconfig (https://download.01.org/0day-ci/archive/20231207/202312070717.a86rODYn-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231207/202312070717.a86rODYn-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202312070717.a86rODYn-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c: In function 'fops_vcodec_release':
+>> drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:313:16: error: 'struct mtk_vcodec_dec_ctx' has no member named 'is_secure_playback'
+     313 |         if (ctx->is_secure_playback)
+         |                ^~
+>> drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:314:17: error: implicit declaration of function 'mtk_vcodec_dec_optee_release'; did you mean 'mtk_vcodec_dec_release'? [-Werror=implicit-function-declaration]
+     314 |                 mtk_vcodec_dec_optee_release(dev->optee_private);
+         |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         |                 mtk_vcodec_dec_release
+>> drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:314:49: error: 'struct mtk_vcodec_dec_dev' has no member named 'optee_private'
+     314 |                 mtk_vcodec_dec_optee_release(dev->optee_private);
+         |                                                 ^~
+   drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c: In function 'mtk_vcodec_probe':
+>> drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:472:15: error: implicit declaration of function 'mtk_vcodec_dec_optee_private_init'; did you mean 'mtk_vcodec_dec_queue_init'? [-Werror=implicit-function-declaration]
+     472 |         ret = mtk_vcodec_dec_optee_private_init(dev);
+         |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         |               mtk_vcodec_dec_queue_init
+   cc1: some warnings being treated as errors
+
+
+vim +313 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+
+   291	
+   292	static int fops_vcodec_release(struct file *file)
+   293	{
+   294		struct mtk_vcodec_dec_dev *dev = video_drvdata(file);
+   295		struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(file->private_data);
+   296	
+   297		mtk_v4l2_vdec_dbg(0, ctx, "[%d] decoder", ctx->id);
+   298		mutex_lock(&dev->dev_mutex);
+   299	
+   300		/*
+   301		 * Call v4l2_m2m_ctx_release before mtk_vcodec_dec_release. First, it
+   302		 * makes sure the worker thread is not running after vdec_if_deinit.
+   303		 * Second, the decoder will be flushed and all the buffers will be
+   304		 * returned in stop_streaming.
+   305		 */
+   306		v4l2_m2m_ctx_release(ctx->m2m_ctx);
+   307		mtk_vcodec_dec_release(ctx);
+   308	
+   309		v4l2_fh_del(&ctx->fh);
+   310		v4l2_fh_exit(&ctx->fh);
+   311		v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+   312	
+ > 313		if (ctx->is_secure_playback)
+ > 314			mtk_vcodec_dec_optee_release(dev->optee_private);
+   315	
+   316		mtk_vcodec_dbgfs_remove(dev, ctx->id);
+   317		list_del_init(&ctx->list);
+   318		kfree(ctx);
+   319		mutex_unlock(&dev->dev_mutex);
+   320		return 0;
+   321	}
+   322	
+   323	static const struct v4l2_file_operations mtk_vcodec_fops = {
+   324		.owner		= THIS_MODULE,
+   325		.open		= fops_vcodec_open,
+   326		.release	= fops_vcodec_release,
+   327		.poll		= v4l2_m2m_fop_poll,
+   328		.unlocked_ioctl	= video_ioctl2,
+   329		.mmap		= v4l2_m2m_fop_mmap,
+   330	};
+   331	
+   332	static void mtk_vcodec_dec_get_chip_name(struct mtk_vcodec_dec_dev *vdec_dev)
+   333	{
+   334		struct device *dev = &vdec_dev->plat_dev->dev;
+   335	
+   336		if (of_device_is_compatible(dev->of_node, "mediatek,mt8173-vcodec-dec"))
+   337			vdec_dev->chip_name = MTK_VDEC_MT8173;
+   338		else if (of_device_is_compatible(dev->of_node, "mediatek,mt8183-vcodec-dec"))
+   339			vdec_dev->chip_name = MTK_VDEC_MT8183;
+   340		else if (of_device_is_compatible(dev->of_node, "mediatek,mt8192-vcodec-dec"))
+   341			vdec_dev->chip_name = MTK_VDEC_MT8192;
+   342		else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-dec"))
+   343			vdec_dev->chip_name = MTK_VDEC_MT8195;
+   344		else if (of_device_is_compatible(dev->of_node, "mediatek,mt8186-vcodec-dec"))
+   345			vdec_dev->chip_name = MTK_VDEC_MT8186;
+   346		else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-vcodec-dec"))
+   347			vdec_dev->chip_name = MTK_VDEC_MT8188;
+   348		else
+   349			vdec_dev->chip_name = MTK_VDEC_INVAL;
+   350	}
+   351	
+   352	static int mtk_vcodec_probe(struct platform_device *pdev)
+   353	{
+   354		struct mtk_vcodec_dec_dev *dev;
+   355		struct video_device *vfd_dec;
+   356		phandle rproc_phandle;
+   357		enum mtk_vcodec_fw_type fw_type;
+   358		int i, ret;
+   359	
+   360		dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+   361		if (!dev)
+   362			return -ENOMEM;
+   363	
+   364		INIT_LIST_HEAD(&dev->ctx_list);
+   365		dev->plat_dev = pdev;
+   366	
+   367		mtk_vcodec_dec_get_chip_name(dev);
+   368		if (dev->chip_name == MTK_VDEC_INVAL) {
+   369			dev_err(&pdev->dev, "Failed to get decoder chip name");
+   370			return -EINVAL;
+   371		}
+   372	
+   373		dev->vdec_pdata = of_device_get_match_data(&pdev->dev);
+   374		if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+   375					  &rproc_phandle)) {
+   376			fw_type = VPU;
+   377		} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+   378						 &rproc_phandle)) {
+   379			fw_type = SCP;
+   380		} else {
+   381			dev_dbg(&pdev->dev, "Could not get vdec IPI device");
+   382			return -ENODEV;
+   383		}
+   384		dma_set_max_seg_size(&pdev->dev, UINT_MAX);
+   385	
+   386		dev->fw_handler = mtk_vcodec_fw_select(dev, fw_type, DECODER);
+   387		if (IS_ERR(dev->fw_handler))
+   388			return PTR_ERR(dev->fw_handler);
+   389	
+   390		ret = mtk_vcodec_init_dec_resources(dev);
+   391		if (ret) {
+   392			dev_err(&pdev->dev, "Failed to init dec resources");
+   393			goto err_dec_pm;
+   394		}
+   395	
+   396		if (IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch)) {
+   397			dev->core_workqueue =
+   398				alloc_ordered_workqueue("core-decoder",
+   399							WQ_MEM_RECLAIM | WQ_FREEZABLE);
+   400			if (!dev->core_workqueue) {
+   401				dev_dbg(&pdev->dev, "Failed to create core workqueue");
+   402				ret = -EINVAL;
+   403				goto err_res;
+   404			}
+   405		}
+   406	
+   407		for (i = 0; i < MTK_VDEC_HW_MAX; i++)
+   408			mutex_init(&dev->dec_mutex[i]);
+   409		mutex_init(&dev->dev_mutex);
+   410		spin_lock_init(&dev->irqlock);
+   411	
+   412		snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
+   413			"[/MTK_V4L2_VDEC]");
+   414	
+   415		ret = v4l2_device_register(&pdev->dev, &dev->v4l2_dev);
+   416		if (ret) {
+   417			dev_err(&pdev->dev, "v4l2_device_register err=%d", ret);
+   418			goto err_core_workq;
+   419		}
+   420	
+   421		vfd_dec = video_device_alloc();
+   422		if (!vfd_dec) {
+   423			dev_err(&pdev->dev, "Failed to allocate video device");
+   424			ret = -ENOMEM;
+   425			goto err_dec_alloc;
+   426		}
+   427		vfd_dec->fops		= &mtk_vcodec_fops;
+   428		vfd_dec->ioctl_ops	= &mtk_vdec_ioctl_ops;
+   429		vfd_dec->release	= video_device_release;
+   430		vfd_dec->lock		= &dev->dev_mutex;
+   431		vfd_dec->v4l2_dev	= &dev->v4l2_dev;
+   432		vfd_dec->vfl_dir	= VFL_DIR_M2M;
+   433		vfd_dec->device_caps	= V4L2_CAP_VIDEO_M2M_MPLANE |
+   434				V4L2_CAP_STREAMING;
+   435	
+   436		snprintf(vfd_dec->name, sizeof(vfd_dec->name), "%s",
+   437			MTK_VCODEC_DEC_NAME);
+   438		video_set_drvdata(vfd_dec, dev);
+   439		dev->vfd_dec = vfd_dec;
+   440		platform_set_drvdata(pdev, dev);
+   441	
+   442		dev->m2m_dev_dec = v4l2_m2m_init(&mtk_vdec_m2m_ops);
+   443		if (IS_ERR((__force void *)dev->m2m_dev_dec)) {
+   444			dev_err(&pdev->dev, "Failed to init mem2mem dec device");
+   445			ret = PTR_ERR((__force void *)dev->m2m_dev_dec);
+   446			goto err_dec_alloc;
+   447		}
+   448	
+   449		dev->decode_workqueue =
+   450			alloc_ordered_workqueue(MTK_VCODEC_DEC_NAME,
+   451				WQ_MEM_RECLAIM | WQ_FREEZABLE);
+   452		if (!dev->decode_workqueue) {
+   453			dev_err(&pdev->dev, "Failed to create decode workqueue");
+   454			ret = -EINVAL;
+   455			goto err_event_workq;
+   456		}
+   457	
+   458		if (dev->vdec_pdata->is_subdev_supported) {
+   459			ret = of_platform_populate(pdev->dev.of_node, NULL, NULL,
+   460						   &pdev->dev);
+   461			if (ret) {
+   462				dev_err(&pdev->dev, "Main device of_platform_populate failed.");
+   463				goto err_reg_cont;
+   464			}
+   465		} else {
+   466			set_bit(MTK_VDEC_CORE, dev->subdev_bitmap);
+   467		}
+   468	
+   469		atomic_set(&dev->dec_active_cnt, 0);
+   470		memset(dev->vdec_racing_info, 0, sizeof(dev->vdec_racing_info));
+   471		mutex_init(&dev->dec_racing_info_mutex);
+ > 472		ret = mtk_vcodec_dec_optee_private_init(dev);
+   473		if (ret) {
+   474			dev_err(&pdev->dev, "Failed to init svp private.");
+   475			goto err_reg_cont;
+   476		}
+   477	
+   478		ret = video_register_device(vfd_dec, VFL_TYPE_VIDEO, -1);
+   479		if (ret) {
+   480			dev_err(&pdev->dev, "Failed to register video device");
+   481			goto err_reg_cont;
+   482		}
+   483	
+   484		if (dev->vdec_pdata->uses_stateless_api) {
+   485			v4l2_disable_ioctl(vfd_dec, VIDIOC_DECODER_CMD);
+   486			v4l2_disable_ioctl(vfd_dec, VIDIOC_TRY_DECODER_CMD);
+   487	
+   488			dev->mdev_dec.dev = &pdev->dev;
+   489			strscpy(dev->mdev_dec.model, MTK_VCODEC_DEC_NAME,
+   490				sizeof(dev->mdev_dec.model));
+   491	
+   492			media_device_init(&dev->mdev_dec);
+   493			dev->mdev_dec.ops = &mtk_vcodec_media_ops;
+   494			dev->v4l2_dev.mdev = &dev->mdev_dec;
+   495	
+   496			ret = v4l2_m2m_register_media_controller(dev->m2m_dev_dec, dev->vfd_dec,
+   497								 MEDIA_ENT_F_PROC_VIDEO_DECODER);
+   498			if (ret) {
+   499				dev_err(&pdev->dev, "Failed to register media controller");
+   500				goto err_dec_mem_init;
+   501			}
+   502	
+   503			ret = media_device_register(&dev->mdev_dec);
+   504			if (ret) {
+   505				dev_err(&pdev->dev, "Failed to register media device");
+   506				goto err_media_reg;
+   507			}
+   508	
+   509			dev_dbg(&pdev->dev, "media registered as /dev/media%d", vfd_dec->minor);
+   510		}
+   511	
+   512		mtk_vcodec_dbgfs_init(dev, false);
+   513		dev_dbg(&pdev->dev, "decoder registered as /dev/video%d", vfd_dec->minor);
+   514	
+   515		return 0;
+   516	
+   517	err_media_reg:
+   518		v4l2_m2m_unregister_media_controller(dev->m2m_dev_dec);
+   519	err_dec_mem_init:
+   520		video_unregister_device(vfd_dec);
+   521	err_reg_cont:
+   522		if (dev->vdec_pdata->uses_stateless_api)
+   523			media_device_cleanup(&dev->mdev_dec);
+   524		destroy_workqueue(dev->decode_workqueue);
+   525	err_event_workq:
+   526		v4l2_m2m_release(dev->m2m_dev_dec);
+   527	err_dec_alloc:
+   528		v4l2_device_unregister(&dev->v4l2_dev);
+   529	err_core_workq:
+   530		if (IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch))
+   531			destroy_workqueue(dev->core_workqueue);
+   532	err_res:
+   533		if (!dev->vdec_pdata->is_subdev_supported)
+   534			pm_runtime_disable(dev->pm.dev);
+   535	err_dec_pm:
+   536		mtk_vcodec_fw_release(dev->fw_handler);
+   537		return ret;
+   538	}
+   539	
 
 -- 
-2.43.0.rc2.451.g8631bc7472-goog
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
