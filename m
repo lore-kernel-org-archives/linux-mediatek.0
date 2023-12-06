@@ -4,77 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A536C10DC1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 11:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA05C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 11:08:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HR2XhM5/8iO9MUrGymYZGTO+1AgjJ7UwECX0/SOjtRw=; b=vkSFP3oXC93V1suY2NcDsWOTqd
-	UGCQCiTIzjJYf4UgjIPojiWAFm/g3z7dp5LQTfYaX9DaJA+GoVBU7X+zKLU2b0Drz2D7Rxz19U+BE
-	Nvv0WUhsqU4XuGtuGtjEGyZ3Dn9myVGrM7UYES2oDQ+0urALro/UIzbxR6rb1TK3SAL6iFF/f2UIy
-	4x4Tt9IwiTZFt6xxPfgtUHrinvpPA+r5BrukbL9TC07eRdQR6Sj0w/lv2h7nqmhs2ND+OhANuGVQ+
-	eB+yH1rSHgRgH0ehJr6FWvwVESTM7lG4YBA300VnfIJKZIQRxZ/lt8ykR5+fbDSif23PoXPHkc5lY
-	CFdxfBNg==;
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KO41K6KCZ2q9y86UP2tuixxqWTDsGs9XPyef5FhT5kQ=; b=OM0+KmzeI1wFvuPCEmP3n/oQIm
+	AK5POsihCj6pLy54L0XSnJUEd+fG0Zt+AoelkEBFtRc0drgOtV7V83sCdtCZ+gah0aPcOie8rRz9c
+	qr3qpRuMY4fBL66Kq9OLp7lM75JjD5y6M4Zw46OGXImDkFUCMlMc0SKvFk0lehv3RSNt2Uy53IhV4
+	qp0ep2Jn+Xmb8Q0aOeM49B5MIrE43KYbi3blWwGekIjcnwV8ZdPqm9q/Xpuyg2meOFy5Mh1KZjdCl
+	SJyyV4896w7UzbnQc2dP5o5lHr5jgDBhRgE5Wh3yWXC59BuA5ddk5aRNpaAuuHNbRS48B2bey2KuV
+	REIBLEWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rApdL-009puC-21;
-	Wed, 06 Dec 2023 11:00:03 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1rAplh-009sNS-09;
+	Wed, 06 Dec 2023 11:08:41 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rApdF-009pmu-2K;
-	Wed, 06 Dec 2023 11:00:00 +0000
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D896C660576A;
-	Wed,  6 Dec 2023 10:59:54 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701860396;
-	bh=HoPHOhlV5xjupYlTbEAUED1Io4kwS+bA2h3iDVkbUWc=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=Aud7xUpjM8bRjM7zomse72JYlZAIPri/6RIp9o0ijL/8LGxHF+BIayERr9Sakoevn
-	 b4uXHgp5w5WVDSltP2n2DpVpy83vXk46pKB3JVTAYXIApp+W9sAYmM8wUWdmrpPvUd
-	 nXRN7BdRwYPFnjWK3Ug4RlUI8biuHmBbHPrW67zo4RRGKjfDzcDCY1bEBLxkyTk15V
-	 7E2USSxoKh6efRjxybRqYk0NfNF1U0zLXhvglR6loxxeFi4wEHMrsrl0xqoQkyylHG
-	 TwxA3q/FkZQs3xeBGESjLQEfJdpiHjHiEqa9G+m7jtYK2DIYINdVMeIP3nfJ8F5AuB
-	 /kd33Us9uCKfQ==
-Message-ID: <3e72bff6-9f4d-4cd4-845e-b065f1233ec6@collabora.com>
-Date: Wed, 6 Dec 2023 11:59:54 +0100
+	id 1rAplc-009sKG-2n;
+	Wed, 06 Dec 2023 11:08:38 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B63w8AZ019177;
+	Wed, 6 Dec 2023 11:05:34 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=KO41K6KCZ2q9y86UP2tuixxqWTDsGs9XPyef5FhT5kQ=;
+ b=o7JIM2i9jzM9HEP4gJBaXC5QEIOK40K01kcNv+p8fWTWTG096aL/+Qm/0ulZ00KzBilZ
+ hcH4Y9wf7JmDljD7Pt1kw8/8LKvtlugmJ4ebAdAz7wK1fRUdea3nnHdSHXgzeWNtSGyl
+ p8Qk52XITgEXx4vBYWtcAluNAViXU9kubDo8b2qucBN0xOQ/VgXzqx41gZiGQdmzJTlv
+ /tCqIjXSwqqcULtfvDj983E/LoAVGKGZcnsMeAR+glb3vqrZ/QjkTehciBEBvCt+ukZT
+ S6ZRqO3i8iyynYGGU7XTrn8kMpGwafRR6xlnGi37cLYOZ+B7lEKQCzWFXW+Jca1nYZsX Tw== 
+Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3utdmd1922-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 06 Dec 2023 11:05:33 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B6B5WdS011560
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 6 Dec 2023 11:05:32 GMT
+Received: from [10.50.48.217] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Wed, 6 Dec
+ 2023 03:05:28 -0800
+Message-ID: <f30d3c21-f355-d535-480b-2fd36167bcfd@quicinc.com>
+Date: Wed, 6 Dec 2023 16:35:24 +0530
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/4] dt-bindings: clock: mediatek: add clock
- controllers of MT7988
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.2
+Subject: Re: [PATCH V1] scsi: ufs: core: store min and max clk freq from OPP
+ table
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Sabrina Dubroca <sd@queasysnail.net>, Jianhui Zhao <zhaojh329@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, "Garmin.Chang"
- <Garmin.Chang@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Dan Carpenter <dan.carpenter@linaro.org>,
- James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <23bc89d407e7797e97b703fa939b43bfe79296ce.1701823757.git.daniel@makrotopia.org>
- <def05aac79ddff872d3e56698b736cb445f14116.1701823757.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <def05aac79ddff872d3e56698b736cb445f14116.1701823757.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Manivannan Sadhasivam <mani@kernel.org>
+CC: "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen"
+	<martin.petersen@oracle.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+        <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, <quic_cang@quicinc.com>,
+        Manish Pandey <quic_mapa@quicinc.com>
+References: <20231206053628.32169-1-quic_nitirawa@quicinc.com>
+ <20231206075447.GA4954@thinkpad>
+From: Nitin Rawat <quic_nitirawa@quicinc.com>
+In-Reply-To: <20231206075447.GA4954@thinkpad>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: qSbYtsBwejFTsUUazuBVvGHNKH21h9YI
+X-Proofpoint-ORIG-GUID: qSbYtsBwejFTsUUazuBVvGHNKH21h9YI
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-06_06,2023-12-06_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999 spamscore=0
+ clxscore=1015 impostorscore=0 adultscore=0 lowpriorityscore=0
+ malwarescore=0 phishscore=0 bulkscore=0 suspectscore=0 priorityscore=1501
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2312060091
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_025958_124439_93A2DA47 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20231206_030837_029218_49312C3C 
+X-CRM114-Status: GOOD (  35.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,137 +107,199 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/12/23 01:57, Daniel Golle ha scritto:
-> Add various clock controllers found in the MT7988 SoC to existing
-> bindings (if applicable) and add files for the new ethwarp, mcusys
-> and xfi-pll clock controllers not previously present in any SoC.
+
+
+On 12/6/2023 1:24 PM, Manivannan Sadhasivam wrote:
+> On Wed, Dec 06, 2023 at 11:06:28AM +0530, Nitin Rawat wrote:
+>> OPP support will make use of OPP table in device tree and removes
+>> freq-table-hz property from device tree.
+>>
+>> With OPP enabled in devicetree, clki->min_freq and clki->maxfreq
+>> currently is not getting updated and the value is set to 0.
+>>
+>> Soc vendors like qcom, mediatek uses clki->minfreq and clki->maxfreq
+>> in vendor specific file. These frequencies values are used to update
+>> vendor specific configurations. Since the value is 0, it is causing
+>> functional issue.
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
-> v3:
->   * move clock bindings to clock folder
->   * drop ti,syscon-reset from bindings and example
->   * merge mcusys with topckgen bindings
+> How about,
 > 
-> v2:
->   * dropped unused labels
->   * add 'type: object' declaration for reset-controller found in new
->     ethwarp controller and represented as ti,syscon-reset
->   * rebase on top of
->     "dt-bindings: arm: mediatek: move ethsys controller & convert to DT schema"
+> "OPP support added by commit 72208ebe181e ("scsi: ufs: core: Add support
+> for parsing OPP") doesn't update the min_freq and max_freq of each clocks
+> in 'struct ufs_clk_info'.
 > 
->   .../arm/mediatek/mediatek,infracfg.yaml       |  1 +
->   .../bindings/clock/mediatek,apmixedsys.yaml   |  1 +
->   .../bindings/clock/mediatek,ethsys.yaml       |  1 +
->   .../clock/mediatek,mt7988-ethwarp.yaml        | 49 +++++++++++++++++++
->   .../clock/mediatek,mt7988-xfi-pll.yaml        | 48 ++++++++++++++++++
->   .../bindings/clock/mediatek,topckgen.yaml     |  2 +
->   .../bindings/net/pcs/mediatek,sgmiisys.yaml   | 13 +++--
->   7 files changed, 112 insertions(+), 3 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
->   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+> But these values are used by the vendor host drivers internally for controller
+> configuration. When the OPP support is enabled in devicetree, these values will
+> be 0, causing boot issues on the respective platforms.
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> index ea98043c6ba3d..230b5188a88db 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> @@ -30,6 +30,7 @@ properties:
->                 - mediatek,mt7629-infracfg
->                 - mediatek,mt7981-infracfg
->                 - mediatek,mt7986-infracfg
-> +              - mediatek,mt7988-infracfg
->                 - mediatek,mt8135-infracfg
->                 - mediatek,mt8167-infracfg
->                 - mediatek,mt8173-infracfg
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-> index 372c1d744bc27..685535846cbb7 100644
-> --- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-> @@ -22,6 +22,7 @@ properties:
->             - mediatek,mt7622-apmixedsys
->             - mediatek,mt7981-apmixedsys
->             - mediatek,mt7986-apmixedsys
-> +          - mediatek,mt7988-apmixedsys
->             - mediatek,mt8135-apmixedsys
->             - mediatek,mt8173-apmixedsys
->             - mediatek,mt8516-apmixedsys
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
-> index 94d42c8647777..f9cddacc2eae1 100644
-> --- a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
-> @@ -22,6 +22,7 @@ properties:
->                 - mediatek,mt7629-ethsys
->                 - mediatek,mt7981-ethsys
->                 - mediatek,mt7986-ethsys
-> +              - mediatek,mt7988-ethsys
->             - const: syscon
->         - items:
->             - const: mediatek,mt7623-ethsys
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
-> new file mode 100644
-> index 0000000000000..9b919a155eb13
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
-> @@ -0,0 +1,49 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7988-ethwarp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT7988 ethwarp Controller
-> +
-> +maintainers:
-> +  - Daniel Golle <daniel@makrotopia.org>
-> +
-> +description:
-> +  The Mediatek MT7988 ethwarp controller provides clocks and resets for the
-> +  Ethernet related subsystems found the MT7988 SoC.
-> +  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: mediatek,mt7988-ethwarp
-> +      - const: syscon
-> +      - const: simple-mfd
+> So let's parse the min_freq and max_freq of all clocks while parsing the OPP
+> table."
+> 
+>>
+>> Add code to store the min and max ufs clk frequency from OPP table.
 
-No, this is not a mfd, I say.
+Sure. Will update in next patchset.
 
-Prove me wrong! :-)
+>>
+>> Fixes: 72208ebe181e ("scsi: ufs: core: Add support for parsing OPP")
+>> Co-developed-by: Manish Pandey <quic_mapa@quicinc.com>
+>> Signed-off-by: Manish Pandey <quic_mapa@quicinc.com>
+>> Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
+>> ---
+>>   drivers/ufs/host/ufshcd-pltfrm.c | 56 ++++++++++++++++++++++++++++++++
+>>   1 file changed, 56 insertions(+)
+>>
+>> diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
+>> index da2558e274b4..12fa6f7d6a97 100644
+>> --- a/drivers/ufs/host/ufshcd-pltfrm.c
+>> +++ b/drivers/ufs/host/ufshcd-pltfrm.c
+>> @@ -13,6 +13,7 @@
+>>   #include <linux/pm_opp.h>
+>>   #include <linux/pm_runtime.h>
+>>   #include <linux/of.h>
+>> +#include <linux/clk.h>
+> 
+> Sort includes alphabetically.
 
-..snip..
+Sure. Will update in next patchset
 
-> diff --git a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
-> index 66a95191bd776..68632cda334bd 100644
-> --- a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
-> +++ b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
-> @@ -15,15 +15,22 @@ description:
->   
->   properties:
->     compatible:
-> -    items:
-> -      - enum:
-> +    oneOf:
-> +      - items:
-> +        - enum:
->             - mediatek,mt7622-sgmiisys
->             - mediatek,mt7629-sgmiisys
->             - mediatek,mt7981-sgmiisys_0
->             - mediatek,mt7981-sgmiisys_1
->             - mediatek,mt7986-sgmiisys_0
->             - mediatek,mt7986-sgmiisys_1
-> -      - const: syscon
-> +        - const: syscon
-> +      - items:
-> +        - enum:
-> +          - mediatek,mt7988-sgmiisys_0
-> +          - mediatek,mt7988-sgmiisys_1
-> +        - const: syscon
-> +        - const: simple-mfd
+> 
+>>
+>>   #include <ufs/ufshcd.h>
+>>   #include "ufshcd-pltfrm.h"
+>> @@ -213,6 +214,55 @@ static void ufshcd_init_lanes_per_dir(struct ufs_hba *hba)
+>>   	}
+>>   }
+>>
+>> +/**
+>> + * ufshcd_config_min_max_clk_freq - update min and max freq
+> 
+> "ufshcd_parse_clock_min_max_freq - Parse MIN and MAX frequencies of clocks"
+> 
+>> + * @hba: per adapter instance
+>> + *
+>> + * This function store min and max freq for all the clocks.
+>> + *
+> 
+> "This function parses MIN and MAX frequencies of all clocks required by the
+> vendor host drivers."
+> 
+>> + * Returns 0 for success and non-zero for failure
+>> + */
+>> +static int ufshcd_config_min_max_clk_freq(struct ufs_hba *hba)
+>> +{
+>> +	struct list_head *head = &hba->clk_list_head;
+>> +	struct dev_pm_opp *opp;
+>> +	struct ufs_clk_info *clki;
+> 
+> Please maintain reverse Xmas tree order. It's not a rule for this driver, but my
+> own preference.
+> 
+>> +	unsigned long freq;
+>> +	u8 idx = 0;
+>> +	int ret;
+> 
+> This won't be needed if all the return values are directly returned as I shared
+> below.
 
-Same.
 
-Cheers,
-Angelo
+Will Addressed all ret comments in next patchset.
+> 
+>> +
+>> +	list_for_each_entry(clki, head, list) {
+>> +		if (!clki->name)
+>> +			continue;
+>> +
+>> +		clki->clk = devm_clk_get(hba->dev, clki->name);
+>> +		if (!IS_ERR_OR_NULL(clki->clk)) {
+> 
+> This function won't return NULL, so IS_ERR() is sufficient.
+> 
+>> +			/* Find Max Freq */
+>> +			freq = ULONG_MAX;
+>> +			opp = dev_pm_opp_find_freq_floor_indexed(hba->dev, &freq, idx);
+> 
+> Use idx++ and get rid of the increment at the end of the 'if' condition.
+
+If we increment idx++ here, dev_pm_opp_find_freq_ceil_indexed will use 
+incremented idx which is not correct. Hence i added at end after both 
+the call.
+
+> 
+>> +			if (IS_ERR(opp)) {
+>> +				dev_err(hba->dev, "failed to find dev_pm_opp\n");
+> 
+> "Failed to find OPP for MAX frequency"
+> 
+>> +				ret = PTR_ERR(opp);
+> 
+> return PTR_ERR(opp);
+> 
+>> +				return ret;
+>> +			}
+>> +			clki->max_freq = dev_pm_opp_get_freq_indexed(opp, idx);
+>> +
+> 
+> Missing dev_pm_opp_put()
+
+Thanks. Will update in next patchset.
+
+> 
+>> +			/* Find Min Freq */
+>> +			freq = 0;
+>> +			opp = dev_pm_opp_find_freq_ceil_indexed(hba->dev, &freq, idx);
+>> +			if (IS_ERR(opp)) {
+>> +				dev_err(hba->dev, "failed to find dev_pm_opp\n");
+> 
+> "Failed to find OPP for MIN frequency"
+> 
+>> +				ret = PTR_ERR(opp);
+> 
+> return PTR_ERR(opp);
+> 
+>> +				return ret;
+>> +			}
+>> +			clki->min_freq = dev_pm_opp_get_freq_indexed(opp, idx);
+> 
+> Missing dev_pm_opp_put()
+> 
+>> +			idx++;
+>> +		}
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>>   static int ufshcd_parse_operating_points(struct ufs_hba *hba)
+>>   {
+>>   	struct device *dev = hba->dev;
+>> @@ -279,6 +329,12 @@ static int ufshcd_parse_operating_points(struct ufs_hba *hba)
+>>   		return ret;
+>>   	}
+>>
+>> +	ret = ufshcd_config_min_max_clk_freq(hba);
+>> +	if (ret) {
+>> +		dev_err(dev, "Failed to get min max freq: %d\n", ret);
+> 
+> Since we already print error message inside the function, no need to do the same
+> here.
+
+Sure. Will update in next patchset
+
+> 
+> - Mani
+> 
+>> +		return ret;
+>> +	}
+>> +
+>>   	hba->use_pm_opp = true;
+>>
+>>   	return 0;
+>> --
+>> 2.17.1
+>>
+> 
+
+Thanks,
+Nitin
 
