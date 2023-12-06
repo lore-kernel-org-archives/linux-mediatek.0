@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7340BC10F04
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:31:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1345C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Dec 2023 08:36:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qsu2a6pWuI9r9UzNG4biPlS5wzwndp0NR6vZ8LjQ+Ww=; b=Py6+AgjlHKsJxVbAv+tyS0AmNS
-	RgcQ5IGBCtQFRXJGFicu+O6WzltSbVImoikdPcdFlT1hBsRVf0Rf1CD/mwVfrp/9vWJANjiazI1Zm
-	WMnz7ZNHFF1qRH6gFeMMr7sw+EpDa4icvNdIX5I6oaChPPlx8mottSLAUwyR7HJXO0/niqviW2k1A
-	+PtxL0I0/em5u/hlY5oAH59VMlxEvqMsf8nH+19Z78ee469d/RRR4JzEyooORIU6sl8qZFKtptCAX
-	qe/ziRNdzK2H5TsZYK5hJkdsdc1IJwRgjm8AgpESbUPgspBGIgmAhqZhTMVlOQmDe266Dhr1t8+0S
-	ymILZiAQ==;
+	bh=5hNl/ebhPBItzu4pN+YmmtZTsVFNCochFPrIS+vXnfY=; b=qFi4F4TTaSTRF+J5MbYhAI3uuA
+	GZleWunQU3/29bTHbXf9vHlCY2IqjD1sj5qbZnNkHomBR6tuDQSBFBjmkGyxBCpSnHcK+vdrOwLKQ
+	Lnzg8wwSRD4GXyVG0gZNdQKdM225dLHssR92zlLSAFNkIZl7i/5COJLRmJmNjfOlD8V4mVydE1+Gi
+	416yE7sF/JOMdHKkHpwQLuMO72q7/fqzuPXJHopNu+jfJNEGa/1Wbtq7Mnfnzg0Uagm1eHAYmHmZ1
+	0iy9gOdITd/9WAYoW7eeAbYJbWtO3G3LidQBoYNqwLXGEEp2vbWQQbc8y0CrxUk+GkANxJ8ZqPKfd
+	CpRGGu8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAnJw-009QmG-1V;
-	Wed, 06 Dec 2023 08:31:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rAnOL-009RGX-2o;
+	Wed, 06 Dec 2023 08:36:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAnJu-009Qkz-0A;
-	Wed, 06 Dec 2023 08:31:51 +0000
-X-UUID: c0697a18940f11ee958cff29c719f35b-20231206
+	id 1rAnOJ-009RG9-1V;
+	Wed, 06 Dec 2023 08:36:25 +0000
+X-UUID: 871719d4941211ee9b09ad09c76753c8-20231206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Qsu2a6pWuI9r9UzNG4biPlS5wzwndp0NR6vZ8LjQ+Ww=;
-	b=aNkzMuFt+xyj75croYNm+uUFJ9lKo86WpCLal75hPs5Q0EOQ6PLaG57a7unZ1KWahYLRGiJWyIu5by/4zwbhMLuFLbVucFMlehBC6flgNp0fwVygXLlYrFCpM52gtFZYmqS/ll0OqE6dQUeq/xHhIN1RkACpmbjgQhtKCxcy6lg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5hNl/ebhPBItzu4pN+YmmtZTsVFNCochFPrIS+vXnfY=;
+	b=gYtRdNvBnXmhjW2UzxGr6PEiYAfzK9e3J98h0WKmO/dZL+TiRaH+Wzx06KnriWqPpFZcOEZ92KUwFb3uzExjoGXOxCOh1ZnQDVM4off6EfXe2Q4EsK1q6OqLRwbLruflO+RmjgDcErhfkGErhS64cjR4BDgn8cOT0dCaBOuz2lg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.34,REQID:4fe82c92-dc74-4e2f-a860-9129352fa64d,IP:0,U
+X-CID-O-INFO: VERSION:1.1.34,REQID:fb80270b-1572-4743-9026-a12f7f0a4c60,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:abefa75,CLOUDID:bd873596-10ce-4e4b-85c2-c9b5229ff92b,B
+X-CID-META: VersionHash:abefa75,CLOUDID:646e59fd-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c0697a18940f11ee958cff29c719f35b-20231206
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: 871719d4941211ee9b09ad09c76753c8-20231206
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1917640568; Wed, 06 Dec 2023 01:16:26 -0700
+	with ESMTP id 2034344614; Wed, 06 Dec 2023 01:36:19 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 6 Dec 2023 16:15:53 +0800
+ 15.2.1118.26; Wed, 6 Dec 2023 16:15:42 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:15:52 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Dec 2023 16:15:41 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -71,9 +71,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,10/21] media: mediatek: vcodec: send share memory data to optee
-Date: Wed, 6 Dec 2023 16:15:27 +0800
-Message-ID: <20231206081538.17056-11-yunfei.dong@mediatek.com>
+Subject: [PATCH v3,02/21] v4l2: handle secure memory flags in queue setup
+Date: Wed, 6 Dec 2023 16:15:19 +0800
+Message-ID: <20231206081538.17056-3-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231206081538.17056-1-yunfei.dong@mediatek.com>
 References: <20231206081538.17056-1-yunfei.dong@mediatek.com>
@@ -82,8 +82,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_003150_096542_4E539012 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20231206_003623_534475_CE543C07 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,230 +98,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Setting msg and vsi information to shared buffer, then call tee invoke
-function to send it to optee-os.
+From: Jeffrey Kardatzke <jkardatzke@google.com>
 
+Validates the secure memory flags when setting up a queue and ensures
+the queue has the proper capability.
+
+Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 140 ++++++++++++++++++
- .../vcodec/decoder/mtk_vcodec_dec_optee.h     |  51 +++++++
- 2 files changed, 191 insertions(+)
+ .../media/common/videobuf2/videobuf2-core.c   | 23 +++++++++++++
+ .../media/common/videobuf2/videobuf2-v4l2.c   | 34 +++++++++++++------
+ 2 files changed, 46 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-index 611fb0e56480..f29a8d143fee 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-@@ -241,3 +241,143 @@ void mtk_vcodec_dec_optee_release(struct mtk_vdec_optee_private *optee_private)
- 	mutex_unlock(&optee_private->tee_mutex);
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 8c1df829745b..09dc030484be 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -813,6 +813,15 @@ static bool verify_coherency_flags(struct vb2_queue *q, bool non_coherent_mem)
+ 	return true;
  }
- EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_release);
-+
-+static int mtk_vcodec_dec_optee_fill_shm(struct tee_param *command_params,
-+					 struct mtk_vdec_optee_shm_memref *shm_memref,
-+					 struct mtk_vdec_optee_data_to_shm *data,
-+					 int index, struct device *dev)
+ 
++static bool verify_secure_mem_flags(struct vb2_queue *q, bool secure_mem)
 +{
-+	if (!data->msg_buf_size[index] || !data->msg_buf[index]) {
-+		pr_err(MTK_DBG_VCODEC_STR "tee invalid buf param: %d.\n", index);
-+		return -EINVAL;
++	if (secure_mem != q->secure_mem) {
++		dprintk(q, 1, "secure memory model mismatch\n");
++		return false;
 +	}
-+
-+	*command_params = (struct tee_param) {
-+		.attr = shm_memref->param_type,
-+		.u.memref = {
-+			.shm = shm_memref->msg_shm,
-+			.size = data->msg_buf_size[index],
-+			.shm_offs = 0,
-+		},
-+	};
-+
-+	if (!shm_memref->copy_to_ta) {
-+		dev_dbg(dev, MTK_DBG_VCODEC_STR "share memref data: 0x%x param_type:%llu.\n",
-+			*((unsigned int *)shm_memref->msg_shm_ca_buf), shm_memref->param_type);
-+		return 0;
-+	}
-+
-+	memset(shm_memref->msg_shm_ca_buf, 0, shm_memref->msg_shm_size);
-+	memcpy(shm_memref->msg_shm_ca_buf, data->msg_buf[index], data->msg_buf_size[index]);
-+
-+	dev_dbg(dev, MTK_DBG_VCODEC_STR "share memref data => msg id:0x%x 0x%x param_type:%llu.\n",
-+		*((unsigned int *)data->msg_buf[index]),
-+		*((unsigned int *)shm_memref->msg_shm_ca_buf),
-+		shm_memref->param_type);
-+
-+	return 0;
++	return true;
 +}
 +
-+void mtk_vcodec_dec_optee_set_data(struct mtk_vdec_optee_data_to_shm *data,
-+				   void *buf, int buf_size,
-+				   enum mtk_vdec_optee_data_index index)
-+{
-+	data->msg_buf[index] = buf;
-+	data->msg_buf_size[index] = buf_size;
-+}
-+EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_set_data);
+ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		     unsigned int flags, unsigned int *count)
+ {
+@@ -820,6 +829,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+ 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+ 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
++	bool secure_mem = flags & V4L2_MEMORY_FLAG_SECURE;
+ 	unsigned int i;
+ 	int ret = 0;
+ 
+@@ -836,6 +846,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	if (*count == 0 || q_num_bufs != 0 ||
+ 	    (q->memory != VB2_MEMORY_UNKNOWN && q->memory != memory) ||
+ 	    !verify_coherency_flags(q, non_coherent_mem)) {
++		bool no_previous_buffers = !q->num_buffers;
 +
-+int mtk_vcodec_dec_optee_invokd_cmd(struct mtk_vdec_optee_private *optee_private,
-+				    enum mtk_vdec_hw_id hw_id,
-+				    struct mtk_vdec_optee_data_to_shm *data)
-+{
-+	struct device *dev = &optee_private->vcodec_dev->plat_dev->dev;
-+	struct tee_ioctl_invoke_arg trans_args;
-+	struct tee_param command_params[MTK_OPTEE_MAX_TEE_PARAMS];
-+	struct mtk_vdec_optee_ca_info *ca_info;
-+	struct mtk_vdec_optee_shm_memref *shm_memref;
-+	int ret, index;
-+
-+	if (hw_id == MTK_VDEC_LAT0)
-+		ca_info = &optee_private->lat_ca;
-+	else
-+		ca_info = &optee_private->core_ca;
-+
-+	memset(&trans_args, 0, sizeof(trans_args));
-+	memset(command_params, 0, sizeof(command_params));
-+
-+	trans_args = (struct tee_ioctl_invoke_arg) {
-+		.func = ca_info->vdec_session_func,
-+		.session = ca_info->vdec_session_id,
-+		.num_params = MTK_OPTEE_MAX_TEE_PARAMS,
-+	};
-+
-+	/* Fill msg command parameters */
-+	for (index = 0; index < MTK_OPTEE_MAX_TEE_PARAMS; index++) {
-+		shm_memref = &ca_info->shm_memref[index];
-+
-+		if (shm_memref->param_type == TEE_IOCTL_PARAM_ATTR_TYPE_NONE ||
-+		    data->msg_buf_size[index] == 0)
-+			continue;
-+
-+		dev_dbg(dev, MTK_DBG_VCODEC_STR "tee share memory data size: %d -> %d.\n",
-+			data->msg_buf_size[index], shm_memref->msg_shm_size);
-+
-+		if (data->msg_buf_size[index] > shm_memref->msg_shm_size) {
-+			dev_err(dev, MTK_DBG_VCODEC_STR "tee buf size big than shm (%d -> %d).\n",
-+				data->msg_buf_size[index], shm_memref->msg_shm_size);
+ 		/*
+ 		 * We already have buffers allocated, so first check if they
+ 		 * are not in use and can be freed.
+@@ -854,6 +866,12 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		__vb2_queue_free(q, q_num_bufs);
+ 		mutex_unlock(&q->mmap_lock);
+ 
++		/*
++		 * Do not allow switching secure buffer mode.
++		 */
++		if (!no_previous_buffers && !verify_secure_mem_flags(q, secure_mem))
 +			return -EINVAL;
-+		}
 +
-+		ret = mtk_vcodec_dec_optee_fill_shm(&command_params[index], shm_memref,
-+						    data, index, dev);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	ret = tee_client_invoke_func(optee_private->tee_vdec_ctx, &trans_args, command_params);
-+	if (ret < 0 || trans_args.ret != 0) {
-+		dev_err(dev, MTK_DBG_VCODEC_STR "tee submit command fail: 0x%x 0x%x.\n",
-+			trans_args.ret, ret);
-+		return (ret < 0) ? ret : trans_args.ret;
-+	}
-+
-+	/* clear all attrs, set all command param to unused */
-+	for (index = 0; index < MTK_OPTEE_MAX_TEE_PARAMS; index++) {
-+		data->msg_buf[index] = NULL;
-+		data->msg_buf_size[index] = 0;
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_invokd_cmd);
-+
-+void *mtk_vcodec_dec_get_shm_buffer_va(struct mtk_vdec_optee_private *optee_private,
-+				       enum mtk_vdec_hw_id hw_id,
-+				       enum mtk_vdec_optee_data_index data_index)
-+{
-+	struct mtk_vdec_optee_ca_info *ca_info;
-+
-+	if (hw_id == MTK_VDEC_LAT0)
-+		ca_info = &optee_private->lat_ca;
-+	else
-+		ca_info = &optee_private->core_ca;
-+
-+	return ca_info->shm_memref[data_index].msg_shm_ca_buf;
-+}
-+EXPORT_SYMBOL_GPL(mtk_vcodec_dec_get_shm_buffer_va);
-+
-+int mtk_vcodec_dec_get_shm_buffer_size(struct mtk_vdec_optee_private *optee_private,
-+				       enum mtk_vdec_hw_id hw_id,
-+				       enum mtk_vdec_optee_data_index data_index)
-+{
-+	struct mtk_vdec_optee_ca_info *ca_info;
-+
-+	if (hw_id == MTK_VDEC_LAT0)
-+		ca_info = &optee_private->lat_ca;
-+	else
-+		ca_info = &optee_private->core_ca;
-+
-+	return ca_info->shm_memref[data_index].msg_shm_size;
-+}
-+EXPORT_SYMBOL_GPL(mtk_vcodec_dec_get_shm_buffer_size);
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-index 24aa63af9887..c24a567ec877 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-@@ -62,6 +62,16 @@ enum mtk_vdec_optee_data_index {
- 	OPTEE_MAX_INDEX,
- };
+ 		/*
+ 		 * In case of REQBUFS(0) return immediately without calling
+ 		 * driver's queue_setup() callback and allocating resources.
+@@ -882,6 +900,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	if (ret)
+ 		return ret;
+ 	set_queue_coherency(q, non_coherent_mem);
++	q->secure_mem = secure_mem;
  
-+/**
-+ * struct mtk_vdec_optee_data_to_shm - shm data used for TA
-+ * @msg_buf:     msg information to TA.
-+ * @msg_buf_len: length of msg information.
-+ */
-+struct mtk_vdec_optee_data_to_shm {
-+	void *msg_buf[MTK_OPTEE_MAX_TEE_PARAMS];
-+	int msg_buf_size[MTK_OPTEE_MAX_TEE_PARAMS];
-+};
-+
- /**
-  * struct mtk_vdec_optee_private - optee private data
-  * @vcodec_dev:     pointer to the mtk_vcodec_dev of the device
-@@ -102,4 +112,45 @@ int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev);
-  */
- void mtk_vcodec_dec_optee_release(struct mtk_vdec_optee_private *optee_private);
+ 	/*
+ 	 * Ask the driver how many buffers and planes per buffer it requires.
+@@ -986,6 +1005,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+ 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+ 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
++	bool secure_mem = flags & V4L2_MEMORY_FLAG_SECURE;
+ 	bool no_previous_buffers = !q_num_bufs;
+ 	int ret = 0;
  
-+/**
-+ * mtk_vcodec_dec_optee_set_data - set buffer to share memref.
-+ * @vcodec_dev: normal world data used to init optee share memory
-+ * @buf: normal world buffer address
-+ * @buf_size: buf size
-+ * @data_index: indentify each share memory informaiton
-+ */
-+void mtk_vcodec_dec_optee_set_data(struct mtk_vdec_optee_data_to_shm *data,
-+				   void *buf, int buf_size,
-+				   enum mtk_vdec_optee_data_index data_index);
+@@ -1015,6 +1035,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 			return ret;
+ 		q->waiting_for_buffers = !q->is_output;
+ 		set_queue_coherency(q, non_coherent_mem);
++		q->secure_mem = secure_mem;
+ 	} else {
+ 		if (q->memory != memory) {
+ 			dprintk(q, 1, "memory model mismatch\n");
+@@ -1022,6 +1043,8 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		}
+ 		if (!verify_coherency_flags(q, non_coherent_mem))
+ 			return -EINVAL;
++		if (!verify_secure_mem_flags(q, secure_mem))
++			return -EINVAL;
+ 	}
+ 
+ 	num_buffers = min(*count, q->max_num_buffers - q_num_bufs);
+diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+index 54d572c3b515..0a530830276c 100644
+--- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
++++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+@@ -686,22 +686,30 @@ static void fill_buf_caps(struct vb2_queue *q, u32 *caps)
+ 		*caps |= V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS;
+ 	if (q->supports_requests)
+ 		*caps |= V4L2_BUF_CAP_SUPPORTS_REQUESTS;
++	if (q->allow_secure_mem && q->io_modes & VB2_DMABUF)
++		*caps |= V4L2_BUF_CAP_SUPPORTS_SECURE_MEM;
+ }
+ 
+-static void validate_memory_flags(struct vb2_queue *q,
++static bool validate_memory_flags(struct vb2_queue *q,
+ 				  int memory,
+ 				  u32 *flags)
+ {
++	if (*flags & V4L2_MEMORY_FLAG_SECURE &&
++	    (!q->allow_secure_mem || memory != V4L2_MEMORY_DMABUF)) {
++		return false;
++	}
 +
-+/**
-+ * mtk_vcodec_dec_optee_invokd_cmd - send share memory data to optee .
-+ * @optee_private: optee private context
-+ * @hw_id: hardware index
-+ * @data: normal world data used to init optee share memory
-+ */
-+int mtk_vcodec_dec_optee_invokd_cmd(struct mtk_vdec_optee_private *optee_private,
-+				    enum mtk_vdec_hw_id hw_id,
-+				    struct mtk_vdec_optee_data_to_shm *data);
+ 	if (!q->allow_cache_hints || memory != V4L2_MEMORY_MMAP) {
+ 		/*
+-		 * This needs to clear V4L2_MEMORY_FLAG_NON_COHERENT only,
+-		 * but in order to avoid bugs we zero out all bits.
++		 * This needs to clear V4L2_MEMORY_FLAG_NON_COHERENT only.
+ 		 */
+-		*flags = 0;
+-	} else {
+-		/* Clear all unknown flags. */
+-		*flags &= V4L2_MEMORY_FLAG_NON_COHERENT;
++		*flags &= ~V4L2_MEMORY_FLAG_NON_COHERENT;
+ 	}
 +
-+/**
-+ * mtk_vcodec_dec_get_shm_buffer_va - close the communication channels with TA.
-+ * @optee_private: optee private context
-+ * @hw_id:         hardware index
-+ * @@data_index: indentify each share memory informaiton
-+ */
-+void *mtk_vcodec_dec_get_shm_buffer_va(struct mtk_vdec_optee_private *optee_private,
-+				       enum mtk_vdec_hw_id hw_id,
-+				       enum mtk_vdec_optee_data_index data_index);
++	/* Clear all unknown flags. */
++	*flags &= V4L2_MEMORY_FLAG_NON_COHERENT | V4L2_MEMORY_FLAG_SECURE;
 +
-+/**
-+ * mtk_vcodec_dec_get_shm_buffer_size - close the communication channels with TA.
-+ * @optee_private: optee private context
-+ * @hw_id:         hardware index
-+ * @@data_index: indentify each share memory informaiton
-+ */
-+int mtk_vcodec_dec_get_shm_buffer_size(struct mtk_vdec_optee_private *optee_private,
-+				       enum mtk_vdec_hw_id hw_id,
-+				       enum mtk_vdec_optee_data_index data_index);
-+
- #endif /* _MTK_VCODEC_FW_OPTEE_H_ */
++	return true;
+ }
+ 
+ int vb2_reqbufs(struct vb2_queue *q, struct v4l2_requestbuffers *req)
+@@ -710,7 +718,8 @@ int vb2_reqbufs(struct vb2_queue *q, struct v4l2_requestbuffers *req)
+ 	u32 flags = req->flags;
+ 
+ 	fill_buf_caps(q, &req->capabilities);
+-	validate_memory_flags(q, req->memory, &flags);
++	if (!validate_memory_flags(q, req->memory, &flags))
++		return -EINVAL;
+ 	req->flags = flags;
+ 	return ret ? ret : vb2_core_reqbufs(q, req->memory,
+ 					    req->flags, &req->count);
+@@ -752,7 +761,8 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+ 	unsigned i;
+ 
+ 	fill_buf_caps(q, &create->capabilities);
+-	validate_memory_flags(q, create->memory, &create->flags);
++	if (!validate_memory_flags(q, create->memory, &create->flags))
++		return -EINVAL;
+ 	create->index = vb2_get_num_buffers(q);
+ 	create->max_num_buffers = q->max_num_buffers;
+ 	create->capabilities |= V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS;
+@@ -1007,7 +1017,8 @@ int vb2_ioctl_reqbufs(struct file *file, void *priv,
+ 	u32 flags = p->flags;
+ 
+ 	fill_buf_caps(vdev->queue, &p->capabilities);
+-	validate_memory_flags(vdev->queue, p->memory, &flags);
++	if (!validate_memory_flags(vdev->queue, p->memory, &flags))
++		return -EINVAL;
+ 	p->flags = flags;
+ 	if (res)
+ 		return res;
+@@ -1031,7 +1042,8 @@ int vb2_ioctl_create_bufs(struct file *file, void *priv,
+ 
+ 	p->index = vdev->queue->num_buffers;
+ 	fill_buf_caps(vdev->queue, &p->capabilities);
+-	validate_memory_flags(vdev->queue, p->memory, &p->flags);
++	if (!validate_memory_flags(vdev->queue, p->memory, &p->flags))
++		return -EINVAL;
+ 	/*
+ 	 * If count == 0, then just check if memory and type are valid.
+ 	 * Any -EBUSY result from vb2_verify_memory_type can be mapped to 0.
 -- 
 2.18.0
 
