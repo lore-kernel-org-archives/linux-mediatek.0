@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD3F0C10DC3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 09:19:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04843C10DC3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 09:19:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DcGps3dXgbPUkAcIQmlMxphFgEzt0FudxPWLUqxl4Jw=; b=oL5orpxQBq3OaNRu8nhLNyigcD
-	RUluKySmivQd9tp1XtZRailkgoQ42LNzCeEm761YajDJULVoz9M/GzMjh+wt1nrxKShPuusrX67mI
-	n7O9QqxI3cANEFrMFhMHIt/arZAs2pTxuHp1JmISJgyTBOGxQ1W8nzIknnXoUVfonRO7rl5ewNkBB
-	Db2mL9GIspmMPdRTnB1p/wV1J/HWWP+9rn38GoMXJ18xjjFExQKhaS8lsIjH8h2X57rqv5z6kFdYC
-	YjEH9BV5gqU4hip2EvtdD+gKU3244IPLbxK5BKjmnqfylpW2jU2T+05wfmyhSLEA5F67YXdqcmwwN
-	ZEWU6gdw==;
+	bh=sm/lzpAvhuHS3gU6Neby55nIAMb+5+9K2s31MjKibKc=; b=sdu7Wamab6WcgA2WUx5UW+XTOZ
+	txWqwJwtru913w64r7T+e5ytRXfnPVHUjHpJoby1gtP3ICUel2uX7rJsLLBI59A3Gkg+dt7lWUvyR
+	TpHHdA1zEHjnpTz932pR5IqfrYXzBN3YMIBGaH7eB6dWbp9b+qoTRm45YWS1tdFjhh1PYcMRQwUtp
+	ZZOR9NWe5NguxVPyLraICLPOV2PsSVVkOvQY1w97mRGgDwq+IrBRLkinV7aD6FYFVhvwPMuAyGOw9
+	j185twCA1/ClNCebbBLzXdWNVQd85XiPU5m4swiZLxxY2sMqjSuX09P6zv+m1a69YnJYxI4RfEgF3
+	UOqNxNcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBAX8-00CKQ1-1z;
-	Thu, 07 Dec 2023 09:19:02 +0000
+	id 1rBAXD-00CKSl-0E;
+	Thu, 07 Dec 2023 09:19:07 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBAX6-00CKN4-07
+	id 1rBAX9-00CKQ6-1j
 	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 09:19:01 +0000
+	Thu, 07 Dec 2023 09:19:04 +0000
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 923BB6607390;
-	Thu,  7 Dec 2023 09:18:55 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4514C6607391;
+	Thu,  7 Dec 2023 09:18:59 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701940738;
-	bh=ZBoHoYMq5tj8/E//F1IEVjOTUa6tqdPIN71pGD/UNCE=;
+	s=mail; t=1701940742;
+	bh=Mr77Mnfxx47EKwKczlFzG/RZhOtpwmigpFeB8yxRJNU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=W3KW/mVYdzo3RXmjZaJdEWG5tGBIgdYndNkmLqRLriikHmnCHJ4YX4zaYi+Q9THLh
-	 vJZPNChgEGemXE2Z5lE8wSvcWWruxIHLeR46CmXxQONlphVgjwrjwwe4nGsrAgCinq
-	 uBnVcr9rK64YIElf/dfzuF3b6JuWY7j3ScqHMtdqmGUSmqYsM89x0HvcuULZfMmzhR
-	 hqVke6MRSj98p7yOFKhjYrXKI8xjHe80uS+LkYzgi3EjGvwAzq0vO5oz1tBkG3Ssi3
-	 A4bBaJwCoCjfMlsLNCj/u/Yvfv6EnXTLg+08itjjPpAAD4fRTSWSBIkIS6Do/vwUD5
-	 kKPMPqRoXw9XQ==
+	b=bTUvobInVnqFWIb2QNHJRRJNPkSZc+hRREr6bY2gUx0L2dWCjW2capjl7Y2G9Wh/k
+	 wyIBPyZzm3wDAgZWkJnWj6pzW2CUuhncd7Rv7P92k8JM4FQ0J7/gl/5rMYqJ9GWwCY
+	 gGjXt0mkqmCFZo7UPHKSxD83DsBrJNl1jm6jIyR3IU6aqcbV52TWf6IxERHAAUU+YZ
+	 63erHer9VGzMYnmAKaVpWsOOwa3DavdvXpiJ4KNKN7byEwIgIM1YUZcMFQRimn3xKo
+	 yXNvnZNPzmE4so92v652EUABTXHRlrlDFY6nPBK6E6zQGFjFa9XUdrHyYnVzphj8Hr
+	 cNS+9f4iCs/Pg==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -60,17 +60,17 @@ Cc: david.heidelberg@collabora.com,
 	linux-mediatek@lists.infradead.org,
 	virtualization@lists.linux-foundation.org,
 	linux-arm-msm@vger.kernel.org
-Subject: [PATCH v7 04/10] drm: ci: Enable new jobs
-Date: Thu,  7 Dec 2023 14:48:25 +0530
-Message-Id: <20231207091831.660054-5-vignesh.raman@collabora.com>
+Subject: [PATCH v7 05/10] drm: ci: Use scripts/config to enable/disable configs
+Date: Thu,  7 Dec 2023 14:48:26 +0530
+Message-Id: <20231207091831.660054-6-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231207091831.660054-1-vignesh.raman@collabora.com>
 References: <20231207091831.660054-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_011900_203598_30C1F65A 
-X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-CacheID: sfid-20231207_011903_702381_E5D663EB 
+X-CRM114-Status: UNSURE (   8.68  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,25 +86,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable the following jobs, as the issues noted in the
-TODO comments have been resolved. This will ensure that these jobs
-are now included and executed as part of the CI/CD pipeline.
-
-msm:apq8016:
-TODO: current issue: it is not fiding the NFS root.
-
-mediatek:mt8173:
-TODO: current issue: device is hanging.
-
-virtio_gpu:none:
-TODO: current issue: malloc(): corrupted top size.
+Instead of modifying files in git to enable/disable
+configs, use scripts/config on the .config file which
+will be used for building the kernel.
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
+Suggested-by: Jani Nikula <jani.nikula@intel.com>
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
 
 v2:
-  - Reworded the commit message
+  - Added a new patch in the series to use scripts/config to enable/disable configs
 
 v3:
   - No changes
@@ -119,44 +111,43 @@ v6:
   - No changes
 
 v7:
-  - Fix checkpatch style problems in commit message
+  - No changes
 
 ---
- drivers/gpu/drm/ci/test.yml | 9 ---------
- 1 file changed, 9 deletions(-)
+ drivers/gpu/drm/ci/build.sh | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 4af10f0ff82d..e0fdc55c9b69 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -108,9 +108,6 @@ msm:apq8016:
-     RUNNER_TAG: google-freedreno-db410c
-   script:
-     - ./install/bare-metal/fastboot.sh
--  rules:
--    # TODO: current issue: it is not fiding the NFS root. Fix and remove this rule.
--    - when: never
+diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
+index e2260b4a1c67..97ff43759b91 100644
+--- a/drivers/gpu/drm/ci/build.sh
++++ b/drivers/gpu/drm/ci/build.sh
+@@ -75,19 +75,19 @@ else
+     fi
+ fi
  
- msm:apq8096:
-   extends:
-@@ -280,9 +277,6 @@ mediatek:mt8173:
-     DEVICE_TYPE: mt8173-elm-hana
-     GPU_VERSION: mt8173
-     RUNNER_TAG: mesa-ci-x86-64-lava-mt8173-elm-hana
--  rules:
--    # TODO: current issue: device is hanging. Fix and remove this rule.
--    - when: never
+-for opt in $ENABLE_KCONFIGS; do
+-  echo CONFIG_$opt=y >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
+-done
+-for opt in $DISABLE_KCONFIGS; do
+-  echo CONFIG_$opt=n >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
+-done
+-
+ if [[ -n "${MERGE_FRAGMENT}" ]]; then
+     ./scripts/kconfig/merge_config.sh ${DEFCONFIG} drivers/gpu/drm/ci/${MERGE_FRAGMENT}
+ else
+     make `basename ${DEFCONFIG}`
+ fi
  
- mediatek:mt8183:
-   extends:
-@@ -340,6 +334,3 @@ virtio_gpu:none:
-     - debian/x86_64_test-gl
-     - testing:x86_64
-     - igt:x86_64
--  rules:
--    # TODO: current issue: malloc(): corrupted top size. Fix and remove this rule.
--    - when: never
-\ No newline at end of file
++for opt in $ENABLE_KCONFIGS; do
++    ./scripts/config --enable CONFIG_$opt
++done
++for opt in $DISABLE_KCONFIGS; do
++    ./scripts/config --disable CONFIG_$opt
++done
++
+ make ${KERNEL_IMAGE_NAME}
+ 
+ mkdir -p /lava-files/
 -- 
 2.40.1
 
