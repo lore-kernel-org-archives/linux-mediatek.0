@@ -4,80 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D703C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 09:44:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5023AC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 09:50:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LKnlzsLk22z+xA+KBqnjQMAsSCxDFvqbk4+6V052rKM=; b=qi+5hXmhEkafD80ZnLv5RHK+3T
-	Oj1VlP9K6ijT7Fm4Ur9f2ERRvnBcsO+QSj4O/i98fLcB8SJcNqk2evtAA6WH6vZNL4cltoCjnQMKV
-	zhQ4Eg8RzF4voJSGSypi9ojY2kFqtrFo3Iv4kc9GWkfM2Nr3ETAJEeiPzc9pmLZhOYcNnxVqCwLDL
-	M3gVURAk85dChvZNEZ41VXOLwAs+rokTIH0x37MZuIvMg3xSbnh/M2HjcHI1qoJQv+DZwaZ8PqgYM
-	ERErgohXpqlsnKfSE91LYNBIt4dzRbg+xGUCSPi3Gzky6xwbT37MkBgOoJad3pLGjYTjvsllmgluN
-	t6dYpKoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rIX1RNQkc6dFT3GzufGFqm5IkObG6UPnE4BiG2zpzws=; b=NYUy7XeCSs8AxnDYP16JSV1gmb
+	U7Wjwd90jpvPJZ4Zc2OwwUjqRIugtHPTJUbXrDJBPliKN0WQw0CGWznYbyD0PqiOPnVPx1mUesX3H
+	g+IRjX+crUN9o0ZypjZUSqXKHVixetmvE+Uo0gmmD0Psd8Skd1byYpXY4qipOMeabgxkOY5evqVTW
+	MkDaIy+MGdrjtQg5o/BNIYRN08zllzbvcuPtYP+B+AtfYJHPNN09I5iQ+zIP4iN5Cmr/hPTJ5Wtz3
+	QCR/Kr1+3tnhYGqitX/wfUTn41hvE51ytRc3/gvacv7HlOcsJREBCwXuDMVPiyHvrZ/50Nc/Sfu02
+	Mae6Zm4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBAvb-00COjJ-2c;
-	Thu, 07 Dec 2023 09:44:19 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rBB1W-00CPBL-16;
+	Thu, 07 Dec 2023 09:50:26 +0000
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBAvX-00COdc-0B;
-	Thu, 07 Dec 2023 09:44:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 47B64CE21FD;
-	Thu,  7 Dec 2023 09:44:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78B62C433C7;
-	Thu,  7 Dec 2023 09:44:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701942251;
-	bh=z9LEnc9SGPP1cSw8n0MwiUc7iERA9aZU0X4XLc/JCus=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qZ0oyfP6rihYVRM820jd+i9VgQtmywGaPXq7igsGv32dxX/J3EeENhsGVzajAtiDQ
-	 S2yY1ariJG0saxlG3+i+48dvm5AOYb6yFJPZEDHFY+gGdd/jjbLrO98YUoU8qaRdvv
-	 3Be5rbRpPbKY+ucecdTPuNpO3eyvZIN8n/4Ip3ldpNjb3LJzdLdimrec2HA2++wehz
-	 z7IJBBG5+sWZX8HD0vjIgKfa1eyr3ZBzvDIGVWe9spjwxI0QOXs90zGv6n/Vm4czGu
-	 1wE9XA+hc1u2c4/7b0BWBth0NB76ZJFrIWRRSjdMemgW5OqUFurE6Y6fDJCy8B+Xar
-	 JOYxApp7CccNw==
-Date: Thu, 7 Dec 2023 15:13:57 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Bart Van Assche <bvanassche@acm.org>
-Cc: Naresh Maramaina <quic_mnaresh@quicinc.com>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	chu.stanley@gmail.com, Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>, linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	quic_cang@quicinc.com, quic_nguyenb@quicinc.com,
-	Nitin Rawat <quic_nitirawa@quicinc.com>
-Subject: Re: [PATCH V2 1/3] ufs: core: Add CPU latency QoS support for ufs
- driver
-Message-ID: <20231207094357.GI2932@thinkpad>
-References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
- <20231204143101.64163-2-quic_mnaresh@quicinc.com>
- <590ade27-b4da-49be-933b-e9959aa0cd4c@acm.org>
- <692cd503-5b14-4be6-831d-d8e9c282a95e@quicinc.com>
- <5e7c5c75-cb5f-4afe-9d57-b0cab01a6f26@acm.org>
- <b9373252-710c-4a54-95cc-046314796960@quicinc.com>
- <20231206153242.GI12802@thinkpad>
- <effb603e-ca7a-4f24-9783-4d62790165ae@acm.org>
+	id 1rBB1T-00CPA6-2v
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 Dec 2023 09:50:25 +0000
+Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-5d3efc071e2so4823937b3.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 01:50:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1701942619; x=1702547419; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rIX1RNQkc6dFT3GzufGFqm5IkObG6UPnE4BiG2zpzws=;
+        b=hz9gp0I/smpCeN0D9Sgt6Ax23AJYicPdrzHcwXnphHiQtQn3fAeHuUtqbRu06MkI/e
+         +gy6GffRsshh+nBYOcrX1hGgo16C9KtQxbCQNo2ajLO6Eh6J3oWU3QA4DgWgYTfckNb4
+         r5XZb0TNYv5+oUv92BFW+SEsYJZcF6QVk7v8303E7hoSIVlmycOMqjtGIPs5aPkHe+Sp
+         8O7bIM59g1K/f4666/hg+niy9auwYSgfnNyGy31SzL/eKrFRxJBPmulMexmYz4xvxSVN
+         +FCOmw71Y25xsRG0p7cZwDpWuqHc+Sp3q5Db0TuWSkWM7eO1O9T4vYpL3AA67ZthyquF
+         OPgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701942619; x=1702547419;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rIX1RNQkc6dFT3GzufGFqm5IkObG6UPnE4BiG2zpzws=;
+        b=jXS+ZQQKASA5GNOR7023wfWYIq+XPrMdxkEO+CboZvT2hMoiQQoZHm1lQDNz8LxSfe
+         3JJ/qbExxtt+Fyf36KkSo/b1umyF69BUFDr1m/AlrAxAnRMrIG88WF93OkS4Roez49IL
+         MEgqJPrLYn7T2yeEcaIRVYaUCCPLg63SGRsidzp/z4x+gWUmCacDoWFUiebo4An1LLqv
+         EWbRhaxP75JGF+CQ5pPk8IgIr8rCO6cWysyR8ABAM9OqOskNC9EZAExtAcFtqQD9aPbV
+         t76vSlVAEHSDqmm3zaLqi4jynUKWiOmtkCUdB+3K0+9YcpqzLeH/1j7m/Dynha0VN3gY
+         h6SA==
+X-Gm-Message-State: AOJu0Yy2tyv81/RNF+Je2el3jdpzyzpF2+dMgc9hH6lLEWJvT9mZ2tcj
+	FWQjmytrLLjLpjHQwZPM+OBIpiBm2ycr62YoQvp76w==
+X-Google-Smtp-Source: AGHT+IEEJzWHmSbZphkfBLVNWSrStTPwZmWuytH0kY6FxBii24pm/m34J3igBSJ8TViq0A9/s3USCc7X5N9RAXK7HsM=
+X-Received: by 2002:a81:bd42:0:b0:5d3:761e:d835 with SMTP id
+ n2-20020a81bd42000000b005d3761ed835mr1947189ywk.28.1701942619477; Thu, 07 Dec
+ 2023 01:50:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <effb603e-ca7a-4f24-9783-4d62790165ae@acm.org>
+References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
+ <CACRpkdZhpXcx2FZYKM69j3x4dP5Nu-=3sXW+BQAw3k6c5aRrWw@mail.gmail.com> <ZW3m-KDhs39i0E5n@smile.fi.intel.com>
+In-Reply-To: <ZW3m-KDhs39i0E5n@smile.fi.intel.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 7 Dec 2023 10:50:29 +0100
+Message-ID: <CACRpkdaDDJfDznGZE1OGNt0Rc6Wbh0-0suu6PgL+veJea9rBRQ@mail.gmail.com>
+Subject: Re: [PATCH v4 00/23] pinctrl: Convert struct group_desc to use struct pingroup
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Biju Das <biju.das.jz@bp.renesas.com>, 
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
+	linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Paul Cercueil <paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Hal Feng <hal.feng@starfivetech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_014415_585391_288FA964 
-X-CRM114-Status: GOOD (  29.91  )
+X-CRM114-CacheID: sfid-20231207_015024_017936_46D50FC6 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,58 +107,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 06, 2023 at 03:02:04PM -1000, Bart Van Assche wrote:
-> On 12/6/23 05:32, Manivannan Sadhasivam wrote:
-> > On Wed, Dec 06, 2023 at 07:32:54PM +0530, Naresh Maramaina wrote:
-> > > On 12/5/2023 10:41 PM, Bart Van Assche wrote:
-> > > > On 12/4/23 21:58, Naresh Maramaina wrote:
-> > > > > On 12/5/2023 12:30 AM, Bart Van Assche wrote:
-> > > > > > On 12/4/23 06:30, Maramaina Naresh wrote:
-> > > > > > > +    /* This capability allows the host controller driver to
-> > > > > > > use the PM QoS
-> > > > > > > +     * feature.
-> > > > > > > +     */
-> > > > > > > +    UFSHCD_CAP_PM_QOS                = 1 << 13,
-> > > > > > >    };
-> > > > > > 
-> > > > > > Why does it depend on the host driver whether or not PM QoS is
-> > > > > > enabled? Why isn't it enabled unconditionally?
-> > > > > 
-> > > > > For some platform vendors power KPI might be more important than
-> > > > > random io KPI. Hence this flag is disabled by default and can be
-> > > > > enabled based on platform requirement.
-> > > > 
-> > > > How about leaving this flag out unless if a host vendor asks explicitly
-> > > > for this flag?
-> > > 
-> > > IMHO, instead of completely removing this flag, how about having
-> > > flag like "UFSHCD_CAP_DISABLE_PM_QOS" which will make PMQOS enable
-> > > by default and if some host vendor wants to disable it explicitly,
-> > > they can enable that flag.
-> > > Please let me know your opinion.
-> 
-> That would result in a flag that is tested but that is never set by
-> upstream code. I'm not sure that's acceptable.
-> 
+On Mon, Dec 4, 2023 at 3:49=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+> On Mon, Dec 04, 2023 at 03:38:43PM +0100, Linus Walleij wrote:
+> > Hi Andy,
+> >
+> > due to compile errors on arm32 and arm64 I had to drop most of the
+> > patches again but I kept the preparatory patches so your
+> > patch stack don't need to be so deep.
+>
+> Thank you!
+>
+> ...
+>
+> > >   pinctrl: core: Make pins const unsigned int pointer in struct
+> > >     group_desc
+> > >   pinctrl: equilibrium: Convert to use struct pingroup
+> > >   pinctrl: keembay: Convert to use struct pingroup
+> > >   pinctrl: nuvoton: Convert to use struct pingroup and
+> > >     PINCTRL_PINGROUP()
+>
+> Hmm... Why these to be dropped?
 
-Agree. The flag shouldn't be introduced if there are no users.
+I couldn't tell apart which ones could cross depend on the others,
+simple as that...
 
-> > If a vendor wants to disable this feature, then the driver has to be modified.
-> > That won't be very convenient. So either this has to be configured through sysfs
-> > or Kconfig if flexibility matters.
-> 
-> Kconfig sounds worse to me because changing any Kconfig flag requires a
-> modification of the Android GKI kernel.
-> 
-
-Hmm, ok. Then I think we can have a sysfs hook to toggle the enable switch.
-
-- Mani
-
-> Thanks,
-> 
-> Bart.
-
--- 
-மணிவண்ணன் சதாசிவம்
+Yours,
+Linus Walleij
 
