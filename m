@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE6BAC4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 23:32:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92204C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 23:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0HU2ROMB1RwgpNN/1oH4E+VcxpemIY8yS+CXoJjHUUU=; b=Etod+vwfUUxZfxoNncauxszxsj
-	oMvDb/HjAFTi4n9th6RiRNngCbZZmkNsfGitSfEeQneoR6m58PTeahP4CH8hjwA5Mg8LWhjsQActH
-	bp1DhnKKqPnj87gSSfkMNsxLNfAxwJiczgUEtRNaCT7sNIOCqNylE41sZuyPeiOaej1w2bybQrq9o
-	oPvIKMWWb+Wsz8io2RiOs6+hI4CONvNdG9KYdLBycEmMh1141Fg2sm7ive+rDRCczbnl24Sj8dmvt
-	5niNDlZnQUxApQNfr/twgyMalUGFNtruWkWTMLR+qb2fGoqvi53m+oIpi+a3khDdVvp02oef/KiGf
-	p1gy6AHw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vcHSEXT85lSArYArJxJaMebEv/60P46HdNj3pu54ZCw=; b=i0X/HeWBpWbuB5
+	31Fy9LCA0PJQNz5lCaV9z/zhnLYN9zDIBAuvrlbbnVmymtzaiCg8BMZ8sSt7lqjKpZTuGVWiLi0/N
+	KVlOYoT3/euiHIXcHyh/Qs/vZbpOxCZ8Fa0vN/mVl20wkUd1msnvnDYmXzNCr4VBswcAY65cc2BBs
+	8Ne3EYS0Fcr/UsOUH6V4hMaV9oYmjCRYubhPW2Atj9Jd7aSvWzbwMCzwdlXgk9VCAMvinzoc4HzwH
+	yZ261S9LAc06xMYy7sw5Ln3+Y42QuUuWROfXPjg217WPJMnpmeHy/0hLI1pPSyEpFRfxpMbGENYPf
+	uqV4GvevKlkszs2WjjmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBNqr-00EDWB-1N;
-	Thu, 07 Dec 2023 23:32:17 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rBOCE-00EG6p-1b;
+	Thu, 07 Dec 2023 23:54:22 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBNqn-00EDV8-2l;
-	Thu, 07 Dec 2023 23:32:15 +0000
+	id 1rBOC9-00EG5T-2e;
+	Thu, 07 Dec 2023 23:54:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 263EBB82AC1;
-	Thu,  7 Dec 2023 23:32:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4BADC43391;
-	Thu,  7 Dec 2023 23:32:10 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 8D793CE25BA;
+	Thu,  7 Dec 2023 23:54:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CADC9C433C9;
+	Thu,  7 Dec 2023 23:54:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701991930;
-	bh=C/W5Zqmm3kI2CHjWroHcjD9PIpXCfj28AU66trdDTUM=;
+	s=k20201202; t=1701993253;
+	bh=126f2FINqt2NzWMdkeMGSXx7WFzHGP22zRHVVvtlMF8=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=d+yTdQC4dTkX9Gr/sFWB02o7o7wyinsoIGO7q3AGOPK3ieUcmiwO/zr9nNcX095N4
-	 wLWTs14qPYf1jwm/rVHBI6V77ZbFaEVADKJdgr5Uwsk+U753ad+M9BqYSjUCxpTE4X
-	 1VesagEAATWfxPLUe31lVDzFaX+Y9Hs9LCDmyu/+LNRo69p3gE6ol+ANKZnsBsPd87
-	 lwDmZfusP93IVMch4/L0N7H/3WlppJgjXXGVUm0JyJ3yL50TI82Thj4guZbw//ftGt
-	 U3prV3km6go6hodv9yErhFeLDLEp24Tkz7Zj2HEyKNJ+vATvX6MFSe5V9C1EWOxo57
-	 edwKNNuVh/4iw==
-Received: by mail-lj1-f178.google.com with SMTP id 38308e7fff4ca-2ca0715f0faso19838821fa.0;
-        Thu, 07 Dec 2023 15:32:10 -0800 (PST)
-X-Gm-Message-State: AOJu0Yw6toyiB4gmTb1kiT1ZiSymxOigPPmkRCrjdvQUTONXfhbZQdZB
-	3syDjF8QU39uJXYOZ91EAyZtp3Plp9wD65DsGQ==
-X-Google-Smtp-Source: AGHT+IEXkXUCSw2a+d4ytwMlKqOGSXhd9HUHp4O6aHLJqy1GBZczWauiJZgZq9F9PdRnsM1RFPLW0gm/6S/wwTE4IGA=
-X-Received: by 2002:a2e:804a:0:b0:2cb:20f0:b869 with SMTP id
- p10-20020a2e804a000000b002cb20f0b869mr95776ljg.12.1701991928954; Thu, 07 Dec
- 2023 15:32:08 -0800 (PST)
+	b=XnIp6TPoRpB+tTuSRCkWDYVjXYYCb2ToRcsX08HDu4Y9thS+rx4r2QBAhlCTZnoam
+	 jQckTNwxUoBLM0rNUVAz1q6J8/dwpMIZp1bw2Aga/fudIHn64PqlJuHLgeJAkauAk4
+	 XqkPfddSNM202KFCBCNg0qY1dNzFll5sliKwGBRLApuMN32bcVdYlRvokQrEI2R8DP
+	 QG1L7CcdTaTxYXkjfTkAC3xeZ1M6/jRHfTst78FWyzzC+ZVRp3GtM+T9hDG8Icr8Dw
+	 IzgxvG0L4bH69FW2V/CepoXeEhNYg4TWnwfC5GslkgUZxsv7F3FTotLWL+koujZhB5
+	 OiQLDb5rp4J1g==
+Received: by mail-lj1-f176.google.com with SMTP id 38308e7fff4ca-2c9f166581dso18817551fa.2;
+        Thu, 07 Dec 2023 15:54:13 -0800 (PST)
+X-Gm-Message-State: AOJu0YyZo0IuNrDgiz8o+JA79MRSoO3an7tvLDyvVzCjIlukyEOYcBWx
+	TrobXicuVEPBetLTvPwyvkJOxaHSm3S0wLovaQ==
+X-Google-Smtp-Source: AGHT+IFG1YJnNx0pOc8S7TKFLRo4jr/uqeafdNxD4kyWaFE3oQZnuq4vicxphBN5NfQQmfMRMfbvWf4LsTLiiniVQFg=
+X-Received: by 2002:a2e:8ec6:0:b0:2ca:12f5:c5d3 with SMTP id
+ e6-20020a2e8ec6000000b002ca12f5c5d3mr2081298ljl.33.1701993251999; Thu, 07 Dec
+ 2023 15:54:11 -0800 (PST)
 MIME-Version: 1.0
-References: <fd1b62aa006556f29f37535814abfe41be63f7ae.1700746094.git.robin.murphy@arm.com>
-In-Reply-To: <fd1b62aa006556f29f37535814abfe41be63f7ae.1700746094.git.robin.murphy@arm.com>
+References: <20230905084922.3908121-1-mwalle@kernel.org>
+In-Reply-To: <20230905084922.3908121-1-mwalle@kernel.org>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 8 Dec 2023 07:31:56 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9HG_Y+vJ4g_V+5DXEFsPP=2vudyxbhcrTXYKn0E=9sLQ@mail.gmail.com>
-Message-ID: <CAAOTY_9HG_Y+vJ4g_V+5DXEFsPP=2vudyxbhcrTXYKn0E=9sLQ@mail.gmail.com>
-Subject: Re: [PATCH v3] drm/mediatek: Stop using iommu_present()
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, yong.wu@mediatek.com, 
-	airlied@gmail.com, daniel@ffwll.ch, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Date: Fri, 8 Dec 2023 07:54:00 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9xrt_ku-fZotJAnPa2ns-2PCGken4TepMrQYG9KEJcFA@mail.gmail.com>
+Message-ID: <CAAOTY_9xrt_ku-fZotJAnPa2ns-2PCGken4TepMrQYG9KEJcFA@mail.gmail.com>
+Subject: Re: [PATCH v4 1/2] drm/mediatek: fix kernel oops if no crtc is found
+To: Michael Walle <mwalle@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_153214_198099_E2E67AC8 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20231207_155418_356920_B9686ACF 
+X-CRM114-Status: GOOD (  19.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,63 +74,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, =?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, Stu Hsieh <stu.hsieh@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Robin:
+Hi, Michael:
 
-Robin Murphy <robin.murphy@arm.com> =E6=96=BC 2023=E5=B9=B411=E6=9C=8823=E6=
-=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=889:41=E5=AF=AB=E9=81=93=EF=BC=9A
+Michael Walle <mwalle@kernel.org> =E6=96=BC 2023=E5=B9=B49=E6=9C=885=E6=97=
+=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=884:49=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> Remove the pointless check. If an IOMMU is providing transparent DMA API
-> ops for any device(s) we care about, the DT code will have enforced the
-> appropriate probe ordering already. And if the IOMMU *is* entirely
-> absent, then attempting to go ahead with CMA and either suceeding or
-> failing decisively seems more useful than deferring forever.
+> drm_crtc_from_index(0) might return NULL if there are no CRTCs
+> registered at all which will lead to a kernel oops in
+> mtk_drm_crtc_dma_dev_get(). Add the missing return value check.
 
-Applied to mediatek-drm-next [1], thanks.
+Applied to mediatek-drm-fixes [1], thanks.
 
 [1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-next
+log/?h=3Dmediatek-drm-fixes
 
 Regards,
 Chun-Kuang.
 
 >
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> Fixes: 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub driver for MT=
+8195")
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
+> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> Tested-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 > ---
->
-> I realised that last time I sent this I probably should have CCed a
-> wider audience of reviewers, so here's one with an updated commit
-> message as well to make the resend more worthwhile.
->
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 4 ----
->  1 file changed, 4 deletions(-)
+> v4:
+>  - collected tags
+> v3:
+>  - none
+> v2:
+>  - collected tags
+>  - fixed typos
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 >
 > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
 iatek/mtk_drm_drv.c
-> index 2dfaa613276a..48581da51857 100644
+> index 93552d76b6e7..2c582498817e 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -5,7 +5,6 @@
->   */
+> @@ -420,6 +420,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+>         struct mtk_drm_private *private =3D drm->dev_private;
+>         struct mtk_drm_private *priv_n;
+>         struct device *dma_dev =3D NULL;
+> +       struct drm_crtc *crtc;
+>         int ret, i, j;
 >
->  #include <linux/component.h>
-> -#include <linux/iommu.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
->  #include <linux/of_platform.h>
-> @@ -608,9 +607,6 @@ static int mtk_drm_bind(struct device *dev)
->         struct drm_device *drm;
->         int ret, i;
+>         if (drm_firmware_drivers_only())
+> @@ -494,7 +495,9 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+>         }
 >
-> -       if (!iommu_present(&platform_bus_type))
-> -               return -EPROBE_DEFER;
-> -
->         pdev =3D of_find_device_by_node(private->mutex_node);
->         if (!pdev) {
->                 dev_err(dev, "Waiting for disp-mutex device %pOF\n",
+>         /* Use OVL device for all DMA memory allocations */
+> -       dma_dev =3D mtk_drm_crtc_dma_dev_get(drm_crtc_from_index(drm, 0))=
+;
+> +       crtc =3D drm_crtc_from_index(drm, 0);
+> +       if (crtc)
+> +               dma_dev =3D mtk_drm_crtc_dma_dev_get(crtc);
+>         if (!dma_dev) {
+>                 ret =3D -ENODEV;
+>                 dev_err(drm->dev, "Need at least one OVL device\n");
 > --
-> 2.39.2.101.g768bb238c484.dirty
+> 2.39.2
 >
 
