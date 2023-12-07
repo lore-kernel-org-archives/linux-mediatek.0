@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E115C46CA0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 09:19:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4C9DC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 09:19:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=evV+Bo/OX5cjE82Zo3pmOLZTfXPBE8ZqQhdSZLnAFbM=; b=ZZqOayVOODT23ddjXq2i+93zqm
-	Q4ZXgmbc+TwejBnTlymWGxPSJ8mfYyhoYdVRvQi4sUXEHz9XDl7BBIsIcpQghWujaCF/ytJ96Z/sz
-	3Vw+MB5neaLONXXSnQ+AunAtvEJeg+xoGR0KUQzuyGM543F7UCGodexIy3fDjCuCUQEtxj6upU/xx
-	2vusQkMNU7ELnXmB0skzvPviUVeKNBg2/PWd8EkdG09xzp3AJzf6pQhu4t5sFHUTjiWFgSMWistWo
-	ZeQUJo7Va5NKUHjvNs57KNxfMVHKYnTfHeM5zhINudGe3K3L2IauPLirB54ibHlb68n0qxrjFsvK7
-	wBNwX3nQ==;
+	bh=fpON02KQ6Ytkdksr+czGswuk3TWzug3nbLYvNgL4PKE=; b=M+fUgv7zDl/5WxB5lzBByc3oka
+	ngkR3QLMqNUkz0DCvzJiU05Nwa4QowIZ7iRzxzVRPzbkWQ+QsGs7/FFZYgJeVcPuX/u3UVbTVArWc
+	CPacN+oCfFbXmjhizDmaVvXElhmvY4yYVXeAdAcdl/IDRIQsg0g3P0z1tHRBsp3Ef7mi3ogjSdo+n
+	wbTpwb6gkh3U3YcyQ8+CHPBUmRuVsSox5KOyzbgGtQvkky9Hnm/cKfLxRECmWABCVKkIilJQlYWXG
+	KmxnAN2KUCs+5mxqXsY5kyNzoDwNtjmwy8wcM37oH9/0NCL29nwb6qyViERfFk788RD4cVPZY17ws
+	kR7gr40g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBAXQ-00CKd2-0R;
-	Thu, 07 Dec 2023 09:19:20 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1rBAXV-00CKgc-28;
+	Thu, 07 Dec 2023 09:19:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBAXN-00CKaQ-1D
+	id 1rBAXR-00CKd8-0O
 	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 09:19:18 +0000
+	Thu, 07 Dec 2023 09:19:24 +0000
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1241C6607393;
-	Thu,  7 Dec 2023 09:19:12 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9BEA36607390;
+	Thu,  7 Dec 2023 09:19:16 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701940756;
-	bh=qmAKEwMzQObcjLEImfox96rI8rjtke8mQ615PmXpD6I=;
+	s=mail; t=1701940759;
+	bh=INyCn6Vuwem17/GlgP/15kN4dX/+WaIIZzg0L0SOwa0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lGVnA638sMEQ9HaGHUDUvuHtJ5Xh/906YK6hhJu/GIKx7xqGz7Fojo1t+eMsIo5cq
-	 rMm+GieXrh/Zht8XyARJl/XABeOOMRifvopgH/WD0JmvyJQjvWoCbstPi3IE3q6R0D
-	 mtTI1ZXW4A+5IuYkMxm8A45j9/BXIyp2rKV5UsbUw24i/os8twuWB91V6u2nfnZiqJ
-	 bCV0ox19vmwdGqlYDSkhoCtEG3ZaJ9wi1gCz5uOfEYQBigzgpy6uKGVdRfUKZy665k
-	 W1A97teFWuaU3HCzcXXtkaM4EqRU7R+1TCT3LFNHZrwI9fLPxuk89Vg9OIGh1cUcZ1
-	 /GNyhEhXCKx2A==
+	b=ApftZSL9Rl03obAwPHD9W4/AXYzvvnsArh0MEm2euHAN3MQ6WlCC+rzGtN7JQRx3r
+	 t4q69ZLLJrfEUIZnRGd5zYT1GGC2jl1TH068kVChPA6WLzTzcBm8QQ8SWqPMx0YzSc
+	 /iN81gnh5dLf/RPcCySP+vuMaAmoAZFNnRGIv38w9TkpWcs+Ge2LMyFdCjjMfHezXq
+	 SsciHLC1uvMlJPtq+GRpqAjBs84CsCUJJZ1nLLSXID/xqK584QLZ3KLvZ01OGlnN4/
+	 h9HZEDCOEtGtVU6Ndg5lEUUe88aAeQgc0Zo/h+N1iHPfJKleu+FR+wmanzHkRq4fPo
+	 JBgxP9H0SPSyA==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -60,17 +60,18 @@ Cc: david.heidelberg@collabora.com,
 	linux-mediatek@lists.infradead.org,
 	virtualization@lists.linux-foundation.org,
 	linux-arm-msm@vger.kernel.org
-Subject: [PATCH v7 09/10] drm/doc: ci: Add IGT version details for flaky tests
-Date: Thu,  7 Dec 2023 14:48:30 +0530
-Message-Id: <20231207091831.660054-10-vignesh.raman@collabora.com>
+Subject: [PATCH v7 10/10] drm: ci: Update xfails
+Date: Thu,  7 Dec 2023 14:48:31 +0530
+Message-Id: <20231207091831.660054-11-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231207091831.660054-1-vignesh.raman@collabora.com>
 References: <20231207091831.660054-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_011917_543727_84BF3B66 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20231207_011921_416016_DBB7A9E8 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,45 +86,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the IGT version in the flaky tests reporting template.
+Update msm-apq8016-fails, mediatek-mt8173-fails and
+virtio_gpu-none-fails to include the tests which fail.
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
 
+v2:
+  - No changes
+
+v3:
+  - No changes
+
+v4:
+  - No changes
+
+v5:
+  - Generate fails and flakes file with the updated xfails script - https://www.spinics.net/lists/kernel/msg4959630.html
+
 v6:
-  - Added a new patch in the series to update drm ci documentation
+  - Generate fails file with drm-misc-next
 
 v7:
   - No changes
 
 ---
- Documentation/gpu/automated_testing.rst | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   | 13 ++++--
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |  5 ++
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   | 46 +++++++++++++++++++
+ 3 files changed, 61 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
-index 240e29d5ba68..2d5a28866afe 100644
---- a/Documentation/gpu/automated_testing.rst
-+++ b/Documentation/gpu/automated_testing.rst
-@@ -69,14 +69,15 @@ the result. They will still be run.
- 
- Each new flake entry must be associated with a link to the email reporting the
- bug to the author of the affected driver, the board name or Device Tree name of
--the board, the first kernel version affected, and an approximation of the
--failure rate.
-+the board, the first kernel version affected, the IGT version used for tests,
-+and an approximation of the failure rate.
- 
- They should be provided under the following format::
- 
-   # Bug Report: $LORE_OR_PATCHWORK_URL
-   # Board Name: broken-board.dtb
--  # Version: 6.6-rc1
-+  # Linux Version: 6.6-rc1
-+  # IGT Version: 1.28-gd2af13d9f
-   # Failure Rate: 100
-   flaky-test
- 
+diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+index 671916067dba..ef0cb7c3698c 100644
+--- a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+@@ -1,5 +1,4 @@
+ kms_3d,Fail
+-kms_addfb_basic@addfb25-bad-modifier,Fail
+ kms_bw@linear-tiling-1-displays-1920x1080p,Fail
+ kms_bw@linear-tiling-1-displays-2560x1440p,Fail
+ kms_bw@linear-tiling-1-displays-3840x2160p,Fail
+@@ -9,13 +8,19 @@ kms_bw@linear-tiling-2-displays-3840x2160p,Fail
+ kms_bw@linear-tiling-3-displays-1920x1080p,Fail
+ kms_bw@linear-tiling-3-displays-2560x1440p,Fail
+ kms_bw@linear-tiling-3-displays-3840x2160p,Fail
++kms_color@invalid-gamma-lut-sizes,Fail
+ kms_color@pipe-A-invalid-gamma-lut-sizes,Fail
+ kms_color@pipe-B-invalid-gamma-lut-sizes,Fail
+-kms_force_connector_basic@force-connector-state,Fail
++kms_cursor_legacy@cursor-vs-flip-atomic,Fail
++kms_cursor_legacy@cursor-vs-flip-legacy,Fail
++kms_flip@flip-vs-modeset-vs-hang,Fail
++kms_flip@flip-vs-panning-vs-hang,Fail
++kms_flip@flip-vs-suspend,Fail
++kms_flip@flip-vs-suspend-interruptible,Fail
+ kms_force_connector_basic@force-edid,Fail
+ kms_force_connector_basic@force-load-detect,Fail
+ kms_force_connector_basic@prune-stale-modes,Fail
+-kms_invalid_mode@int-max-clock,Fail
++kms_hdmi_inject@inject-4k,Fail
+ kms_plane_scaling@planes-upscale-20x20,Fail
+ kms_plane_scaling@planes-upscale-20x20-downscale-factor-0-25,Fail
+ kms_plane_scaling@planes-upscale-20x20-downscale-factor-0-5,Fail
+@@ -27,3 +32,5 @@ kms_properties@get_properties-sanity-atomic,Fail
+ kms_properties@plane-properties-atomic,Fail
+ kms_properties@plane-properties-legacy,Fail
+ kms_rmfb@close-fd,Fail
++kms_selftest@drm_format,Timeout
++kms_selftest@drm_format_helper,Timeout
+diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
+index 9981682feab2..d39d254c935e 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
+@@ -6,10 +6,15 @@ kms_cursor_legacy@all-pipes-single-bo,Fail
+ kms_cursor_legacy@all-pipes-single-move,Fail
+ kms_cursor_legacy@all-pipes-torture-bo,Fail
+ kms_cursor_legacy@all-pipes-torture-move,Fail
++kms_cursor_legacy@forked-bo,Fail
++kms_cursor_legacy@forked-move,Fail
+ kms_cursor_legacy@pipe-A-forked-bo,Fail
+ kms_cursor_legacy@pipe-A-forked-move,Fail
+ kms_cursor_legacy@pipe-A-single-bo,Fail
+ kms_cursor_legacy@pipe-A-single-move,Fail
+ kms_cursor_legacy@pipe-A-torture-bo,Fail
+ kms_cursor_legacy@pipe-A-torture-move,Fail
++kms_force_connector_basic@force-edid,Fail
+ kms_hdmi_inject@inject-4k,Fail
++kms_selftest@drm_format,Timeout
++kms_selftest@drm_format_helper,Timeout
+diff --git a/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt b/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
+index 9586b2339f6f..007f21e56d89 100644
+--- a/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
+@@ -10,6 +10,49 @@ kms_bw@linear-tiling-1-displays-3840x2160p,Fail
+ kms_bw@linear-tiling-2-displays-1920x1080p,Fail
+ kms_bw@linear-tiling-2-displays-2560x1440p,Fail
+ kms_bw@linear-tiling-2-displays-3840x2160p,Fail
++kms_bw@linear-tiling-3-displays-1920x1080p,Fail
++kms_bw@linear-tiling-3-displays-2560x1440p,Fail
++kms_bw@linear-tiling-3-displays-3840x2160p,Fail
++kms_bw@linear-tiling-4-displays-1920x1080p,Fail
++kms_bw@linear-tiling-4-displays-2560x1440p,Fail
++kms_bw@linear-tiling-4-displays-3840x2160p,Fail
++kms_bw@linear-tiling-5-displays-1920x1080p,Fail
++kms_bw@linear-tiling-5-displays-2560x1440p,Fail
++kms_bw@linear-tiling-5-displays-3840x2160p,Fail
++kms_bw@linear-tiling-6-displays-1920x1080p,Fail
++kms_bw@linear-tiling-6-displays-2560x1440p,Fail
++kms_bw@linear-tiling-6-displays-3840x2160p,Fail
++kms_bw@linear-tiling-7-displays-1920x1080p,Fail
++kms_bw@linear-tiling-7-displays-2560x1440p,Fail
++kms_bw@linear-tiling-7-displays-3840x2160p,Fail
++kms_bw@linear-tiling-8-displays-1920x1080p,Fail
++kms_bw@linear-tiling-8-displays-2560x1440p,Fail
++kms_bw@linear-tiling-8-displays-3840x2160p,Fail
++kms_flip@absolute-wf_vblank,Fail
++kms_flip@absolute-wf_vblank-interruptible,Fail
++kms_flip@basic-flip-vs-wf_vblank,Fail
++kms_flip@blocking-absolute-wf_vblank,Fail
++kms_flip@blocking-absolute-wf_vblank-interruptible,Fail
++kms_flip@blocking-wf_vblank,Fail
++kms_flip@busy-flip,Fail
++kms_flip@dpms-vs-vblank-race,Fail
++kms_flip@dpms-vs-vblank-race-interruptible,Fail
++kms_flip@flip-vs-absolute-wf_vblank,Fail
++kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
++kms_flip@flip-vs-blocking-wf-vblank,Fail
++kms_flip@flip-vs-expired-vblank,Fail
++kms_flip@flip-vs-expired-vblank-interruptible,Fail
++kms_flip@flip-vs-modeset-vs-hang,Fail
++kms_flip@flip-vs-panning-vs-hang,Fail
++kms_flip@flip-vs-wf_vblank-interruptible,Fail
++kms_flip@modeset-vs-vblank-race,Fail
++kms_flip@modeset-vs-vblank-race-interruptible,Fail
++kms_flip@plain-flip-fb-recreate,Fail
++kms_flip@plain-flip-fb-recreate-interruptible,Fail
++kms_flip@plain-flip-ts-check,Fail
++kms_flip@plain-flip-ts-check-interruptible,Fail
++kms_flip@wf_vblank-ts-check,Fail
++kms_flip@wf_vblank-ts-check-interruptible,Fail
+ kms_invalid_mode@int-max-clock,Fail
+ kms_plane_scaling@downscale-with-modifier-factor-0-25,Fail
+ kms_plane_scaling@downscale-with-rotation-factor-0-25,Fail
+@@ -22,6 +65,9 @@ kms_plane_scaling@upscale-with-modifier-factor-0-25,Fail
+ kms_plane_scaling@upscale-with-pixel-format-20x20,Fail
+ kms_plane_scaling@upscale-with-pixel-format-factor-0-25,Fail
+ kms_plane_scaling@upscale-with-rotation-20x20,Fail
++kms_selftest@drm_format,Timeout
++kms_selftest@drm_format_helper,Timeout
++kms_setmode@basic,Fail
+ kms_vblank@crtc-id,Fail
+ kms_vblank@invalid,Fail
+ kms_vblank@pipe-A-accuracy-idle,Fail
 -- 
 2.40.1
 
