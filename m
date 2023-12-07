@@ -4,65 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63C47C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 13:39:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4989CC169C2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 14:02:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eNdLN+nlANvsNdrnLFJnVlG43QaUuXoTuqo8IUjpiZ4=; b=MRAPoMC4aksu7gSgCyfNu0TX3m
-	o/aC+oSpiAa1x1hvt3JuD7F5Ag9V5epvR6hxHk4QGgVsm5r6QTm/pjdjYeEVAld+KX+arwGi6x6kf
-	G/f0lML3WIWSIJUQvnllvkYRBLio9COopaecmFwY3OFpBtOSyFtg1tNZZdNPji+oLdI96UClsDYWp
-	IDnxJ9Px8lFQTV/iABGAzI8EVhUcmXYGzRgWBYKOw1kG2WueJMII0JwPPbBVig+u016G7I8Y8SkKy
-	IAF81Jbe7CtUIoPFfK6Usj1SuGIUirQwXdTHMmMCVFH1TYuGmi+e+4hMNJOGF4ruXyn1GA8NafrgZ
-	xynERyFQ==;
+	bh=xqSN2wz/zGfROIqFiurJMPD+/BJpUqBprXGsU0gwv9Q=; b=A+HI9heE87f79Hn9+xdEUSUWzt
+	8IhW+PQzE8v1bafnhP1O1CDy9OKuH9xPqXiVxATzmVt2YkvKEe+siwSwtUD3TbSyS6HbLP55lhTpy
+	BqSaOE78Oq3zU+UnpjNBwhHzsddPB9Ucx7dFaTa/42icuRHzJa9MsAj+hnOFZOUYiGtbz+rc09x6e
+	CrfjckNbW9/N69gtOb6HgcIukwKWnlfmjlY76j+are/JvzSAlC6TRWj8d38MyQP5vLvNSagkuLf/w
+	NQjXNtF0l2TWzTKNzXb4Q0z7LD108n9lGGezP0dudlUsnZnaMKhGzxpRtKTVyKbxoPh+ZKyqIb4jZ
+	kcaqJD6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBEbU-00CvUw-06;
-	Thu, 07 Dec 2023 13:39:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rBEx4-00Cy8z-33;
+	Thu, 07 Dec 2023 14:02:06 +0000
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBEbO-00CvTP-2P
+	id 1rBEx1-00Cy7K-0T
 	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 13:39:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E7178620D0;
-	Thu,  7 Dec 2023 13:39:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12C2CC433C8;
-	Thu,  7 Dec 2023 13:39:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701956381;
-	bh=s7jYxlzNX2yYW5vVt8RohmUajx++qo4dRr8Rg4mal/g=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=GgGQ8NZ4PcR3ka5ZOwKjavJqVLskdjudvyceGDwnmWAU+dd400scPzPGHvhUk+23Y
-	 qh9mYm7SeaRJR+h/DKJzqO33mpZqo8hOdUPUmK0go56vz9LeALrMswd3LHj6blYGMt
-	 WgfRHhbfFCjQ2QeaJn/ek15m0H7MZamVExqiFA6QbHR4/Y2VUertAbB9ayggAuLZXE
-	 gOSUQl21+z8EMyxbHbeJgg6LSUKAvl/TSvHPDkMYjGMdeDyOWrYhkjb3TNEWHzpAbI
-	 l35u7hZ8CwBbk19Gb10VMG4G5BBZm+kvBHwqjbaAHQRDJbkwooJNqIwkTFLzELI2k4
-	 nwR88E5ncWFCA==
-From: Kalle Valo <kvalo@kernel.org>
-To: Allen Ye <allen.ye@mediatek.com>
-Cc: <linux-wireless@vger.kernel.org>,  Johannes Berg
- <johannes.berg@intel.com>,  Felix Fietkau <nbd@nbd.name>,  Lorenzo
- Bianconi <lorenzo.bianconi@redhat.com>,  Evelyn Tsai
- <evelyn.tsai@mediatek.com>,  "Money . Wang" <money.wang@mediatek.com>,
-  <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] wifi: mac80211: Update bssid indicator with real BSS
- numbers
-References: <20231206024911.7668-1-allen.ye@mediatek.com>
-Date: Thu, 07 Dec 2023 15:39:38 +0200
-In-Reply-To: <20231206024911.7668-1-allen.ye@mediatek.com> (Allen Ye's message
-	of "Wed, 6 Dec 2023 10:49:11 +0800")
-Message-ID: <87cyvi5dyd.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	Thu, 07 Dec 2023 14:02:05 +0000
+Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-5d7346442d4so7588907b3.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 06:02:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1701957721; x=1702562521; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=xqSN2wz/zGfROIqFiurJMPD+/BJpUqBprXGsU0gwv9Q=;
+        b=qvIe2KlqgVCm9fUYh1hrE7f1gtjAnq3KYz2EnFuaZRJPe2ePT8HRzsDFDgK5VwTNLs
+         sTBvGZVxZUD8ezYl7TvcUUNsSF0A6qD7p3+Ad1zM/jzSmOW6+7OssgE1hJi49lIIHZnv
+         /+I++IgbTieYJo0ooytDwcqzCuZF5W2kKaDRk4wp1f/6uK3SgafegiyUeG32VXvgNYXG
+         x0x34C4wHdThFI7YlBCDrbivdmjmhh6Sff9nSC48kPhXXxj73lU4sfxGvLnC3dD/S1NT
+         jrzM4K3nfTWkgFHW7v+r341yT8zWpUC2cvJtHkdiABBwUbGiIExVOyqppTZee5FbWBoe
+         hM2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701957721; x=1702562521;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xqSN2wz/zGfROIqFiurJMPD+/BJpUqBprXGsU0gwv9Q=;
+        b=ABHXlKCWi7Hl1RqpXN2WQiIn7GR6RwkJQRS3BzhZ4poLexen+OUorGTeJOO5fnGq5T
+         xsYvPH4GikWHOByjCY7LWeqMBLKHjmbhagirUeSYA7eoJFqnXHbq/dxZayehTpZEgA7k
+         PQcz/AFmhAcvyFpm67DhUvYVEKlXJ9iyYWz9Hixd/o2Egy2kC0OEdQXxZbC7rb6KmXgx
+         srUO1f67YKvBgdKP2FUPJfHDA1dhXpAL1WQvCLKE3TPf33mHKm1YNeMIsBlOwiFi38as
+         nSaw+T8vg3qXCR/zll7NUJX5FfJKCxNIb9GwTmyP1QwtZFb/S/QIPJhrtXRe+JFSHiuo
+         cwSQ==
+X-Gm-Message-State: AOJu0YxhcsgMWFOB110InOCV7lsuWw9KQ6qd4GuZLYMFpQmOjxyX85zB
+	j85Tx375DtlyL3xeAQq2sRE/Ow2JiePLVNutKH3obA==
+X-Google-Smtp-Source: AGHT+IH3A+kfMVFWXCHHzW1EoiuSi/T1nkVcCCM0Y1P3XBgusQEyXxhBLp9MTbatm83rnaE5ppyGAiBDsLZJiNAzu+I=
+X-Received: by 2002:a0d:d88b:0:b0:5d7:1941:3556 with SMTP id
+ a133-20020a0dd88b000000b005d719413556mr2618248ywe.61.1701957721714; Thu, 07
+ Dec 2023 06:02:01 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <20231201102747.3854573-1-treapking@chromium.org>
+In-Reply-To: <20231201102747.3854573-1-treapking@chromium.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 7 Dec 2023 15:01:25 +0100
+Message-ID: <CAPDyKFrAvkzgHUttY_mVAHK3HXCV_eE6=KhQkdQyLq22zstX8A@mail.gmail.com>
+Subject: Re: [PATCH v3] mmc: mtk-sd: Increase the verbosity of msdc_track_cmd_data
+To: Pin-yen Lin <treapking@chromium.org>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	ot_shunxi.zhang@mediatek.corp-partner.google.com, 
+	linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, 
+	linux-mmc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_053942_827635_2B76CED6 
-X-CRM114-Status: UNSURE (   7.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231207_060203_187242_4FD7A738 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,22 +90,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Allen Ye <allen.ye@mediatek.com> writes:
-
-> From: "Allen.Ye" <allen.ye@mediatek.com>
+On Fri, 1 Dec 2023 at 11:27, Pin-yen Lin <treapking@chromium.org> wrote:
 >
-> The cnt member in mbssid is the count of total number of MBSSID elements
-> instead of BSSID. Therefore, we fix this by reading the MaxBSSID Indicator
-> field directly.
+> This log message is necessary for debugging, so enable it by default to
+> debug issues that are hard to reproduce locally.
 >
-> Signed-off-by: Evelyn.Tsai <evelyn.tsai@mediatek.com>
-> Signed-off-by: Money.Wang <money.wang@mediatek.com>
-> Signed-off-by: Allen.Ye <allen.ye@mediatek.com>
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 
-All the names, both in From and s-o-b, use '.' instead of space in names.
+Applied for next, thanks!
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+Kind regards
+Uffe
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
+>
+> ---
+>
+> Changes in v3:
+> - Only print the warning when -ETIMEDOUT or not in tuning process
+>
+> Changes in v2:
+> - Use dev_warn() instead of dev_err()
+>
+>  drivers/mmc/host/mtk-sd.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 97f7c3d4be6e..6ae5e0a9fca9 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1149,9 +1149,11 @@ static void msdc_recheck_sdio_irq(struct msdc_host *host)
+>
+>  static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_command *cmd)
+>  {
+> -       if (host->error)
+> -               dev_dbg(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
+> -                       __func__, cmd->opcode, cmd->arg, host->error);
+> +       if (host->error &&
+> +           ((!mmc_op_tuning(cmd->opcode) && !host->hs400_tuning) ||
+> +            cmd->error == -ETIMEDOUT))
+> +               dev_warn(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
+> +                        __func__, cmd->opcode, cmd->arg, host->error);
+>  }
+>
+>  static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+> --
+> 2.43.0.rc2.451.g8631bc7472-goog
+>
 
