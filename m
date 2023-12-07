@@ -4,98 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C07A5C10DC3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 08:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9365C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 09:18:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xaj0x4k+ld+u2kOVUKdwjXgYdYvrFQwDvRLXmQnItnw=; b=ZI6S+epvCZ6FcPv/gv3ZBDghT/
-	pcUb/31G5eLYstjWjIsGBSq9tTXAAYfnxuLs7PYcdPTgdWP7yJ1ebNlPTfP4YC6CQJRlY05xjf4xy
-	PPqn8CpaRKil2mif19FXnjUruFUKvIqXgO8+HZfPrC5Jj3b6KfneK0+9SmJLw3UgXY2JiIiS7OROD
-	J5Wz8dLFZbXUFb4jmaqarjEekTgcsg/aJOyVCphsqyPaO7uiBgm1gy6AXXNsNx3nLG3deaDb/wIuR
-	oZYYj6tmh9/FySEEx0wLi01dRsghtQGtP0B/zuQoFqUIet5O6LqUPoEakcnbfw7Qb2STEnD/wokUQ
-	ICRdoZRA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5MVosJOVbMoq6FA/U9hAehuHSg6MzB53EfUzHeoVAqs=; b=kuo879h5uweOUdCyhBDNYsiLNv
+	gc2szbRcqLfUQ6fXSj9AGTzZmUkJMflD1okSibK7ulc6d5txdYKYq5ADdVbh6cMg1OrMrL5M696Lt
+	/9+GZ6DwApO72D2oIkSxpSZvurchK/XRbW3TE/q47rMfh2zqPFwaYf6x9sVWuAhKuL9+g7cdX19z2
+	TZnIMkZ6t8h3WkqGWC19LzJclv6ILt5X3rP/XYYqGFmIUtUXpy7SOLkinZIbBInJcPE+yHNq3Zz7b
+	J6JctKYNV8jmgIZWevMu0PnFzKt/s6UEQ6San0vBtxobiLju9FHZcpQw+VB3wFWLLPNi3o9Oq/6zr
+	SbwVAhVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9ib-00CCzY-27;
-	Thu, 07 Dec 2023 08:26:49 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1rBAWx-00CKHw-1b;
+	Thu, 07 Dec 2023 09:18:51 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9iX-00CCwo-36;
-	Thu, 07 Dec 2023 08:26:48 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B76inA2010319;
-	Thu, 7 Dec 2023 08:26:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=Xaj0x4k+ld+u2kOVUKdwjXgYdYvrFQwDvRLXmQnItnw=;
- b=msSUWIQWDHZ6naQJYFmyMCk/QPX8jnPE6KKa6j4xnPcDZY+YvHnae0YwLL2yYPnzALv5
- R+smGzzh3j7NraelEKYPk7kvsyGaqIUQMMHh+EMlzapyHweMs7a9lgE6D7LaDmxgjrmV
- B9jQpMkwQ40fn2LvPGe54WSeFq2gKyFZDWg+OrXr91vDxotFAdnfQTtIpYyscN+DVIb0
- H9An11g1iIMSPjkG8fF6cU1MzoIYsgUPlmOP6U2GysUew7wrdKsKzb1qBLBvRDNYoc50
- sr+lSO4bXO/yDL6UFGlGfM2XN21BZnDY4zzejCZDwrti7Z/jEI5qoUFayiMqu3UtSQ/i 2Q== 
-Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uu2trguxy-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 07 Dec 2023 08:26:19 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B78QIEC027546
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 7 Dec 2023 08:26:18 GMT
-Received: from [10.253.37.252] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Thu, 7 Dec
- 2023 00:26:14 -0800
-Message-ID: <cfd282bf-4e19-471f-9de2-18e286bce8bc@quicinc.com>
-Date: Thu, 7 Dec 2023 16:26:12 +0800
+	id 1rBAWv-00CKGu-02
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 Dec 2023 09:18:50 +0000
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 39B07660738E;
+	Thu,  7 Dec 2023 09:18:41 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701940724;
+	bh=FCRCNovtJ9PtQwtKLRu/evUUkfAvUVXGZUmkbsxA9Cg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=NAdK9PrteQ631PcNJB48XuZXbHRETXzxv1TmcD/HUvePpB9GjvOuwtbwZ5EHFw3QV
+	 GD2L6X5Z+vUx/7jXjlib5a3066CcUYUZBGW4xzSWtx+/1r7cPuiqMC4e4vjPpPdISj
+	 njh/krIKbgqLpIFUIIQK5ZXZwfv7e4yFZKTHVJHx8nAN6LjfkPXTbw93ce8hANr3EB
+	 d8axi5ubMVeWKmTTssMVPbNsT8qQatOlBRVa4S3oqfCfbO2E2yHTw8mPYm0LQ6L5pM
+	 aa3SdK3e4dtq4nBIplVe/GtwCG2a47uLq3Hguc4bvpDBWcS036VtHKzLJHOnfiRpH7
+	 bH4GpvZozQ8yQ==
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch
+Cc: david.heidelberg@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	guilherme.gallo@collabora.com,
+	daniels@collabora.com,
+	gustavo.padovan@collabora.com,
+	emma@anholt.net,
+	robdclark@gmail.com,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	virtualization@lists.linux-foundation.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH v7 00/10] drm: ci: fixes
+Date: Thu,  7 Dec 2023 14:48:21 +0530
+Message-Id: <20231207091831.660054-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 00/10] Enable HS-G5 support on SM8550
-To: <neil.armstrong@linaro.org>, <bvanassche@acm.org>, <mani@kernel.org>,
-        <adrian.hunter@intel.com>, <vkoul@kernel.org>, <beanhuo@micron.com>,
-        <avri.altman@wdc.com>, <junwoo80.lee@samsung.com>,
-        <martin.petersen@oracle.com>
-CC: <linux-scsi@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        Matthias
- Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        "open list:ARM/Mediatek SoC
- support:Keyword:mediatek" <linux-kernel@vger.kernel.org>,
-        "moderated
- list:ARM/Mediatek SoC support:Keyword:mediatek"
-	<linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC
- support:Keyword:mediatek" <linux-mediatek@lists.infradead.org>
-References: <1701520577-31163-1-git-send-email-quic_cang@quicinc.com>
- <e851f59a-a8fe-42fa-a3e3-65fc5b8f3269@linaro.org>
-Content-Language: en-US
-From: Can Guo <quic_cang@quicinc.com>
-In-Reply-To: <e851f59a-a8fe-42fa-a3e3-65fc5b8f3269@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: 20h9VHmRNRiOcuKPsvRWwmYo31i8tXaW
-X-Proofpoint-ORIG-GUID: 20h9VHmRNRiOcuKPsvRWwmYo31i8tXaW
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-07_06,2023-12-06_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 suspectscore=0
- malwarescore=0 impostorscore=0 lowpriorityscore=0 bulkscore=0
- clxscore=1011 mlxscore=0 adultscore=0 priorityscore=1501 mlxlogscore=999
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2312070067
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_002646_149298_0BEE0A78 
-X-CRM114-Status: GOOD (  27.84  )
+X-CRM114-CacheID: sfid-20231207_011849_199028_75740A92 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,137 +83,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Neil,
+The patch series contains improvements, enabling new ci jobs which
+enables testing for Mediatek MT8173, Qualcomm APQ 8016 and VirtIO GPU,
+fixing issues with the ci jobs and updating the expectation files.
 
-On 12/7/2023 4:22 PM, neil.armstrong@linaro.org wrote:
-> Hi Can,
-> 
-> On 02/12/2023 13:36, Can Guo wrote:
->> This series enables HS-G5 support on SM8550.
->>
->> This series is rebased on below changes from Mani -
->> https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-1-manivannan.sadhasivam@linaro.org/
->> https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-2-manivannan.sadhasivam@linaro.org/
->>
->> This series is tested on below HW combinations -
->> SM8550 MTP + UFS4.0
->> SM8550 QRD + UFS3.1
->> SM8450 MTP + UFS3.1 (for regression test)
->> SM8350 MTP + UFS3.1 (for regression test)
->>
->> Note that during reboot test on above platforms, I occasinally hit PA 
->> (PHY)
->> error during the 2nd init, this is not related with this series. A fix 
->> for
->> this is mentioned in below patchwork -
->>
->> https://patchwork.kernel.org/project/linux-scsi/patch/1698145815-17396-1-git-send-email-quic_ziqichen@quicinc.com/
->>
->> Also note that on platforms, which have two sets of UFS PHY settings are
->> provided (say G4 and no-G4, G5 and no-G5). The two sets of PHY 
->> settings are
->> basically programming different values to different registers, mixing the
->> two sets and/or overwriting one set with another set is definitely not
->> blessed by UFS PHY designers. For SM8550, this series will make sure we
->> honor the rule. However, for old targets Mani and I will fix them in
->> another series in future.
-> 
-> You dropped my tested-by tags, but I did a new test with v8 and:
-> 
-> Tested-by: Neil Armstrong <neil.armstrong@linaro.org> # on SM8550-QRD
-> Tested-by: Neil Armstrong <neil.armstrong@linaro.org> # on SM8650-QRD
-> 
+v2:
+  - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
+  - Reworded the commit message for enabling jobs
+  - Added a new patch in the series to use scripts/config to enable/disable configs
 
-Thank you so much for testing this series.
+v3:
+  - New patch in the series to add device tree overlay in arch/arm64/boot/dts/qcom
+  - drm-ci scripts to use device tree overlay from arch/arm64/boot/dts/qcom and compile base device tree with overlay support
+  - New patch in the series to enable CONFIG_REGULATOR_DA9211 in defconfig
+  - Remove CONFIG_RTC_DRV_MT6397=y as it is already enabled in defconfig
 
-I am sorry that I dropped the tested-by tags, since I slightly updated 
-the last patch in this series, so I thought I should not apply the 
-Tested-by tags from you.
+v4:
+  - Drop 'enable CONFIG_REGULATOR_DA9211 in defconfig' patch as it is sent upstream as a seperate patch
+  - Use apq8016-sbc-usb-host.dtb which allows the USB controllers to work in host mode.
+    This patch depends on https://lore.kernel.org/lkml/20230911161518.650726-1-vignesh.raman@collabora.com/
 
-Thanks,
-Can Guo.
+v5:
+  - Added a new patch in the series to set IGT_FORCE_DRIVER to 'mediatek' for mt8173
+  - Added a new patch in the series to make artifacts available for virtio jobs
+  - Added a new patch in the series to add pipeline url to fails and flakes files
+  - Generate fails and flakes file with the updated xfails script - https://www.spinics.net/lists/kernel/msg4959630.html
+  - Drop 'virtio: Update ci variables' patch as the tests which causes the malloc issue are skipped
 
-> Thanks,
-> Neil
-> 
->>
->> v7 -> v8:
->> In "scsi: ufs: ufs-qcom: Add support for UFS device version 
->> detection", fixed a BUG introduced from v6 -> v7. The spare register 
->> is added since HW ver 5, although reading the spare register on HW ver 
->> 4 is just getting 0x0, to be on the safe side, we are exluding HW ver 4.
->>
->> v6 -> v7:
->> 1. Rebased on linux-next, based SM8650 PHY settings are merged there, 
->> no changes to patches for UFS driver
->> 2. Addressed comments from Mani
->>
->> v5 -> v6:
->> 1. Rebased on scsi-queue-6.8
->> 2. Addressed comments from Dmitry and Mani in patches to 
->> phy-qcom-qmp-ufs.c
->>
->> v4 -> v5:
->> Removed two useless debug prints in patch #9
->>
->> v3 -> v4:
->> Used .tbls_hs_overlay array instead of adding more tables with 
->> different names like .tbls_hs_g5
->>
->> v2 -> v3:
->> 1. Addressed comments from Andrew, Mani and Bart in patch #1
->> 2. Added patch #2 as per request from Andrew and Mani
->> 3. Added patch #4 to fix a common issue on old targets, it is not 
->> necessary
->>     for this series, but put in this series only because it would be 
->> easier
->>     to maintain and no need to rebase
->> 4. Addressed comments from Dmitry and Mani in patches to 
->> phy-qcom-qmp-ufs.c
->>
->> v1 -> v2:
->> 1. Removed 2 changes which were exposing power info in sysfs
->> 2. Removed 1 change which was moving data structs to phy-qcom-qmp-ufs.h
->> 3. Added one new change (the 1st one) to clean up usage of 
->> ufs_dev_params based on comments from Mani
->> 4. Adjusted the logic of UFS device version detection according to 
->> comments from Mani:
->>     4.1 For HW version < 0x5, go through dual init
->>       4.2 For HW version >= 0x5
->>         a. If UFS device version is populated, one init is required
->>         b. If UFS device version is not populated, go through dual init
->>
->> Bao D. Nguyen (1):
->>    scsi: ufs: ufs-qcom: Add support for UFS device version detection
->>
->> Can Guo (9):
->>    scsi: ufs: host: Rename structure ufs_dev_params to ufs_host_params
->>    scsi: ufs: ufs-qcom: No need to set hs_rate after
->>      ufshcd_init_host_param()
->>    scsi: ufs: ufs-qcom: Setup host power mode during init
->>    scsi: ufs: ufs-qcom: Allow the first init start with the maximum
->>      supported gear
->>    scsi: ufs: ufs-qcom: Limit HS-G5 Rate-A to hosts with HW version 5
->>    scsi: ufs: ufs-qcom: Set initial PHY gear to max HS gear for HW ver 4
->>      and newer
->>    scsi: ufs: ufs-qcom: Check return value of phy_set_mode_ext()
->>    phy: qualcomm: phy-qcom-qmp-ufs: Rectify SM8550 UFS HS-G4 PHY Settings
->>    phy: qualcomm: phy-qcom-qmp-ufs: Add High Speed Gear 5 support for
->>      SM8550
->>
->>   drivers/phy/qualcomm/phy-qcom-qmp-pcs-ufs-v6.h     |   2 +
->>   drivers/phy/qualcomm/phy-qcom-qmp-qserdes-com-v6.h |   2 +
->>   .../qualcomm/phy-qcom-qmp-qserdes-txrx-ufs-v6.h    |   9 +
->>   drivers/phy/qualcomm/phy-qcom-qmp-ufs.c            | 191 
->> ++++++++++++++++++---
->>   drivers/ufs/host/ufs-exynos.c                      |   7 +-
->>   drivers/ufs/host/ufs-hisi.c                        |  11 +-
->>   drivers/ufs/host/ufs-mediatek.c                    |  12 +-
->>   drivers/ufs/host/ufs-qcom.c                        |  97 ++++++++---
->>   drivers/ufs/host/ufs-qcom.h                        |   7 +-
->>   drivers/ufs/host/ufshcd-pltfrm.c                   |  69 ++++----
->>   drivers/ufs/host/ufshcd-pltfrm.h                   |  10 +-
->>   11 files changed, 309 insertions(+), 108 deletions(-)
->>
-> 
+v6:
+  - Updated commit message for enable DA9211 regulator fix 
+  - Use GPU_VERSION instead of CI_JOB_NAME to check if it is mt8173 while setting IGT_FORCE_DRIVER
+  - Added a new patch in the series to uprev IGT to fix memory corruption
+  - Added a new patch in the series to update drm ci documentation
+  - Generate fails file with drm-misc-next
+
+v7:
+  - Fix checkpatch style problems in commit message
+  - Rework mt8173 IGT_FORCE_DRIVER fix and reword the commit message
+
+Vignesh Raman (10):
+  drm: ci: igt_runner: Remove todo
+  drm: ci: Force db410c to host mode
+  drm: ci: arm64.config: Enable DA9211 regulator
+  drm: ci: Enable new jobs
+  drm: ci: Use scripts/config to enable/disable configs
+  drm: ci: mt8173: Do not set IGT_FORCE_DRIVER to panfrost
+  drm: ci: virtio: Make artifacts available
+  drm: ci: uprev IGT
+  drm/doc: ci: Add IGT version details for flaky tests
+  drm: ci: Update xfails
+
+ Documentation/gpu/automated_testing.rst       |  7 +--
+ drivers/gpu/drm/ci/arm64.config               |  1 +
+ drivers/gpu/drm/ci/build.sh                   | 16 +++----
+ drivers/gpu/drm/ci/gitlab-ci.yml              |  2 +-
+ drivers/gpu/drm/ci/igt_runner.sh              | 10 +++-
+ drivers/gpu/drm/ci/test.yml                   | 13 ++----
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   | 13 ++++--
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |  5 ++
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   | 46 +++++++++++++++++++
+ 9 files changed, 86 insertions(+), 27 deletions(-)
+
+-- 
+2.40.1
+
 
