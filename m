@@ -4,69 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E8D4C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 10:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58F24C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 10:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e7tQsUkK4WgX4bMqhTdm5W6W1tTkRHFcg1f9sZVkqvs=; b=bVM5WnYQ6CPCvhCmCe7HX5NYBz
-	bNpbBE6IrdV8U3Z1pnV6lJ6fnNtzrwaOQADVHJfC/6xI2sLaiMBYlm7ROrLG3Eg6ZHo0zZS/HXMHC
-	osjxItlLCeb4MJuEZ2KcJ2IKPo8JxTrv5qbcwS/JXB8Rgrz0BnLwSdRHSRuKMSCVWDSKeM2gotY+G
-	6auSFhV/3znFUFJXkML3ZFvsuSI36SyZlmja13UC+q5qLnm6hwuBv0Tk0FO9T2YjMVJto7yUU0DOB
-	t7Fnm7RcDMULbla3Ylx0l6nXDKEUaGUhM3ok2Vs7lZdW6zDcXZ/gT75p5UhtaFopVB5r5zM03AI+X
-	sPLJn50g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RuICPUQra4CeTJPKT9XkYJ/b9ZFT1AHX1daHHwFg8KY=; b=Bz8zDz+3U7p6UX47b1O3aQWBaF
+	0XJsFRIuF1z6YQutm/0YzQ2ccNC4/ktaMG9krHWirm97tSwQO6EBCyU4bA7fZjtDqjObr2eFg6EOb
+	DYnXQIJ1GAn0w65GRGMGInvR+KXGgRI8U6XM/bNluygu/L+kjcVTCYR2k9arGK2SfxjlG6bvZKJrn
+	I7U0fzI5zI3mhya4Z0JO3CHIHpbzBWr1Vnr6LPuaPD0xZTpatqTZSuZ/Cc8p8sasIWbCySxuvX745
+	M0HX4WYWEseLrfNuNUzcsToHATfA/V9Ato3itsmqyrpjDfbSWhDBvicAg6gVAL0RoBkAO6arobY40
+	vXf58L9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBBZ2-00CTFB-3D;
-	Thu, 07 Dec 2023 10:25:05 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rBBb4-00CTTH-10;
+	Thu, 07 Dec 2023 10:27:10 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBBYy-00CTE6-34;
-	Thu, 07 Dec 2023 10:25:02 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E6DC2669;
-	Thu,  7 Dec 2023 11:24:17 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701944658;
-	bh=oGMWlxxRV6p3mFDaJ3TGXPEn3FbTBvg3/evgd3+y/Ko=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vWpXT8UsiteCEzkEtzoX10adYyeEX6urlEu+KOlHBcjaDk5VGq8rGJ8BqOCE/3GBR
-	 A8ORGLRJ/bnMcvNEsZdXBOoYvMgtiooFJn7bMpCObyZkhv/ebpeCSvmxaifFjDBH3O
-	 ksV/e2TPK5L34V/sT/OPysbbUrbkgsDWyMhAGZVk=
-Date: Thu, 7 Dec 2023 12:25:05 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Conor Dooley <conor@kernel.org>
-Cc: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, shengnan.wang@mediatek.com,
-	yaya.chang@mediatek.com, 10572168@qq.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	jacopo.mondi@ideasonboard.com, sakari.ailus@linux.intel.com,
-	hverkuil-cisco@xs4all.nl, heiko@sntech.de, jernej.skrabec@gmail.com,
-	macromorgan@hotmail.com, linus.walleij@linaro.org,
-	hdegoede@redhat.com, tomi.valkeinen@ideasonboard.com,
-	gerald.loacker@wolfvision.net, andy.shevchenko@gmail.com,
-	bingbu.cao@intel.com, dan.scally@ideasonboard.com,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] media: dt-bindings: media: i2c: Document GC08A3
- bindings
-Message-ID: <20231207102505.GI29417@pendragon.ideasonboard.com>
-References: <20231123115104.32094-1-zhi.mao@mediatek.com>
- <20231123115104.32094-2-zhi.mao@mediatek.com>
- <20231123-magical-rupture-83251807e995@spud>
+	id 1rBBb1-00CTSG-0n;
+	Thu, 07 Dec 2023 10:27:08 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B79XKj2011699;
+	Thu, 7 Dec 2023 10:26:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=RuICPUQra4CeTJPKT9XkYJ/b9ZFT1AHX1daHHwFg8KY=;
+ b=me+C4CHyioh3xO7xx7c9nqXvkzL+5bEER0WA0y7rPCG+yEunUh1LVCeEp1xBYpwRgbz8
+ ooeApKYNdo50OET8cjorU2xc+OY1fwBWydHQ0a1ZrYxwO+nPxGgXJl5Y7dKhuB+faejB
+ dbtcjmJxjoBLOSlsBNBUUcID1qO8LiqWSbGBgjJZEeLoBbM6e5GgEHTt7awQQOR80/GW
+ 1KxjbvHfaiVTg9iRCMtHeryEeedVSeuqGFk90n5CwxHXzpnXXjBs+lTbEOnvublRJgnk
+ 7uMObRwT2HW32Lui89pkuBqWwQPo+l5kByVNcdQklurGjOF3jU9NlkMI7WLCU5bZyfRG Rw== 
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uu928geh0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 07 Dec 2023 10:26:57 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B7AQton012717
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 7 Dec 2023 10:26:55 GMT
+Received: from [10.218.45.181] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Thu, 7 Dec
+ 2023 02:26:48 -0800
+Message-ID: <286b6f8a-c634-19ed-cf53-276cfe05d03f@quicinc.com>
+Date: Thu, 7 Dec 2023 15:56:43 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20231123-magical-rupture-83251807e995@spud>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.2
+Subject: Re: [PATCH V2 1/3] ufs: core: Add CPU latency QoS support for ufs
+ driver
+To: Manivannan Sadhasivam <mani@kernel.org>,
+        Bart Van Assche
+	<bvanassche@acm.org>
+CC: Naresh Maramaina <quic_mnaresh@quicinc.com>,
+        "James E.J. Bottomley"
+	<jejb@linux.ibm.com>,
+        "Martin K. Petersen" <martin.petersen@oracle.com>,
+        Peter Wang <peter.wang@mediatek.com>, Andy Gross <agross@kernel.org>,
+        "Bjorn
+ Andersson" <andersson@kernel.org>,
+        Konrad Dybcio <konrad.dybcio@linaro.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        <chu.stanley@gmail.com>, "Alim
+ Akhtar" <alim.akhtar@samsung.com>,
+        Avri Altman <avri.altman@wdc.com>, <linux-scsi@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+        <linux-arm-msm@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <quic_cang@quicinc.com>,
+        <quic_nguyenb@quicinc.com>
+References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
+ <20231204143101.64163-2-quic_mnaresh@quicinc.com>
+ <590ade27-b4da-49be-933b-e9959aa0cd4c@acm.org>
+ <692cd503-5b14-4be6-831d-d8e9c282a95e@quicinc.com>
+ <5e7c5c75-cb5f-4afe-9d57-b0cab01a6f26@acm.org>
+ <b9373252-710c-4a54-95cc-046314796960@quicinc.com>
+ <20231206153242.GI12802@thinkpad>
+ <effb603e-ca7a-4f24-9783-4d62790165ae@acm.org>
+ <20231207094357.GI2932@thinkpad>
+Content-Language: en-US
+From: Nitin Rawat <quic_nitirawa@quicinc.com>
+In-Reply-To: <20231207094357.GI2932@thinkpad>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: xV9ZucUUu1VnH6KXAtu8Z4m5o650ce8x
+X-Proofpoint-GUID: xV9ZucUUu1VnH6KXAtu8Z4m5o650ce8x
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-07_08,2023-12-06_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999 mlxscore=0
+ priorityscore=1501 suspectscore=0 malwarescore=0 lowpriorityscore=0
+ phishscore=0 impostorscore=0 clxscore=1011 bulkscore=0 spamscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2312070084
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_022501_126269_7B3B95A1 
-X-CRM114-Status: GOOD (  25.36  )
+X-CRM114-CacheID: sfid-20231207_022707_410384_1152F0F9 
+X-CRM114-Status: GOOD (  20.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,189 +124,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 23, 2023 at 05:31:35PM +0000, Conor Dooley wrote:
-> On Thu, Nov 23, 2023 at 07:51:03PM +0800, Zhi Mao wrote:
-> > Add YAML device tree binding for GC08A3 CMOS image sensor, 
-> > and the relevant MAINTAINERS entries.
-> > 
-> > Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> 
-> Please test your bindings.
-> 
-> > ---
-> >  .../bindings/media/i2c/galaxycore,gc08a3.yaml | 128 ++++++++++++++++++
-> >  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
-> >  2 files changed, 130 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
-> > new file mode 100644
-> > index 000000000000..089ea321da91
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
-> > @@ -0,0 +1,128 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc08a3.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: GalaxyCore gc08a3 1/4" 8M Pixel MIPI CSI-2 sensor
-> > +
-> > +maintainers:
-> > +  - Zhi Mao <zhi.mao@mediatek.com>
-> > +
-> > +description: |-
-> 
-> The |- is not needed, you have no formatting to preserve.
-> 
-> > +  The gc08a3 is a raw image sensor with an MIPI CSI-2 image data
-> > +  interface and CCI (I2C compatible) control bus. The output format
-> > +  is raw Bayer.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: GalaxyCore,gc08a3
-> 
-> Please remove the capitals.
-> 
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: Reference to the mclk clock.
-> 
-> Pointless, just use maxItems: 1.
-> 
-> > +
-> > +  assigned-clocks:
-> > +    maxItems: 1
-> > +
-> > +  assigned-clock-rates:
-> > +    maxItems: 1
-> > +
-> > +  enable-gpios:
-> > +    description: Reference to the GPIO connected to the RESETB pin. Active low.
-> > +    maxItems: 1
-> > +
 
-If that's the RESETB pin, it should be reset-gpios.
 
-> > +  vddio-supply:
-> > +    description: Definition of the regulator used for the VDDIO power supply.
-> > +
-> > +  vdda-supply:
-> > +    description: Definition of the regulator used for the VDDA power supply.
-> > +
-> > +  vddd-supply:
-> > +    description: Definition of the regulator used for the VDDD power supply.
+On 12/7/2023 3:13 PM, Manivannan Sadhasivam wrote:
+> On Wed, Dec 06, 2023 at 03:02:04PM -1000, Bart Van Assche wrote:
+>> On 12/6/23 05:32, Manivannan Sadhasivam wrote:
+>>> On Wed, Dec 06, 2023 at 07:32:54PM +0530, Naresh Maramaina wrote:
+>>>> On 12/5/2023 10:41 PM, Bart Van Assche wrote:
+>>>>> On 12/4/23 21:58, Naresh Maramaina wrote:
+>>>>>> On 12/5/2023 12:30 AM, Bart Van Assche wrote:
+>>>>>>> On 12/4/23 06:30, Maramaina Naresh wrote:
+>>>>>>>> +    /* This capability allows the host controller driver to
+>>>>>>>> use the PM QoS
+>>>>>>>> +     * feature.
+>>>>>>>> +     */
+>>>>>>>> +    UFSHCD_CAP_PM_QOS                = 1 << 13,
+>>>>>>>>     };
+>>>>>>>
+>>>>>>> Why does it depend on the host driver whether or not PM QoS is
+>>>>>>> enabled? Why isn't it enabled unconditionally?
+>>>>>>
+>>>>>> For some platform vendors power KPI might be more important than
+>>>>>> random io KPI. Hence this flag is disabled by default and can be
+>>>>>> enabled based on platform requirement.
+>>>>>
+>>>>> How about leaving this flag out unless if a host vendor asks explicitly
+>>>>> for this flag?
+>>>>
+>>>> IMHO, instead of completely removing this flag, how about having
+>>>> flag like "UFSHCD_CAP_DISABLE_PM_QOS" which will make PMQOS enable
+>>>> by default and if some host vendor wants to disable it explicitly,
+>>>> they can enable that flag.
+>>>> Please let me know your opinion.
+>>
+>> That would result in a flag that is tested but that is never set by
+>> upstream code. I'm not sure that's acceptable.
+>>
 > 
-> These descriptions can all be replaced with "foo-supply: true" IMO.
+> Agree. The flag shouldn't be introduced if there are no users.
 > 
-> > +  port:
-> > +    $ref: /schemas/graph.yaml#/$defs/port-base
-> > +    unevaluatedProperties: false
-> > +
-> > +    properties:
-> > +      endpoint:
-> > +        $ref: /schemas/media/video-interfaces.yaml#
-> > +        unevaluatedProperties: false
-> > +
-> > +        properties:
-> > +          data-lanes:
-> > +            oneOf:
-> > +              - items:
-> > +                  - const: 1
-> > +                  - const: 2
-> > +                  - const: 3
-> > +                  - const: 4
-> > +              - items:
-> > +                  - const: 1
-> > +                  - const: 2
-> > +
-> > +          link-frequencies: true
-> > +
-> > +        required:
-> > +          - data-lanes
-> > +          - link-frequencies
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - clocks
+>>> If a vendor wants to disable this feature, then the driver has to be modified.
+>>> That won't be very convenient. So either this has to be configured through sysfs
+>>> or Kconfig if flexibility matters.
+>>
+>> Kconfig sounds worse to me because changing any Kconfig flag requires a
+>> modification of the Android GKI kernel.
+>>
 > 
-> > +  - assigned-clocks
-> > +  - assigned-clock-rates
-> 
-> Why are these required?
-> 
-> > +  - vddio-supply
-> > +  - vdda-supply
-> > +  - vddd-supply
-> > +  - port
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +
-> > +    i2c {
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +
-> > +        sensor0@2 {
-> > +            status = "okay";
-> > +            compatible = "GalaxyCore,gc08a3";
-> > +            reg = <0x31>;
-> > +
-> > +            clocks = <&topckgen CLK_TOP_CAMTG>,
-> > +                <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
-> > +            clock-names = "xvclk", "freq_mux";
-> > +            clock-frequency = <24000000>;
-> > +
-> > +            assigned-clocks = <&topckgen CLK_TOP_CAMTG>,
-> > +                    <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
-> > +            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_192M_D8>;
-> > +            assigned-clock-rates = <0>, <24000000>;
-> > +
-> > +            enable-gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
-> > +
-> > +            pinctrl-names = "default";
-> > +            pinctrl-0 = <&camera_pins_cam0>;
-> > +
-> > +            avdd-supply = <&mt6359_vfe28_ldo_reg>;
-> > +
-> > +            port {
-> > +                sensor0_out_2: endpoint {
-> > +                    data-lanes = <1 2 3 4>;
-> > +                    link-frequencies = /bits/ 64 <336000000 207000000>;
-> > +                    remote-endpoint = <&seninf_csi_port_0_in_2>;
-> > +                };
-> > +            };
-> > +        };
-> > +
-> > +    };
-> > +
-> > +...
-> > diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> > index 309b94c328c8..a0bbec0bfee2 100644
-> > --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> > +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> > @@ -502,6 +502,8 @@ patternProperties:
-> >      description: Fujitsu Ltd.
-> >    "^fxtec,.*":
-> >      description: FX Technology Ltd.
-> > +  "^GalaxyCore,.*":
-> > +    description: GalaxyCore Inc.
-> >    "^gardena,.*":
-> >      description: GARDENA GmbH
-> >    "^gateway,.*":
+> Hmm, ok. Then I think we can have a sysfs hook to toggle the enable switch.
 
--- 
+Hi Bart, Mani
+
+How about keeping this feature enabled by default and having a module 
+parameter to disable pmqos feature if required ?
+
 Regards,
+Nitin
 
-Laurent Pinchart
+> 
+> - Mani
+> 
+>> Thanks,
+>>
+>> Bart.
+> 
+
 
