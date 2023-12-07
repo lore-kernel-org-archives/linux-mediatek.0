@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46477C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 17:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C996DC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 17:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lr/wB7ZVRI5pkXtWV92KYpDKNp8igIo8qtNEUDKBh8Q=; b=tnJLwOzRXJaqcfoSBkkeEe29uq
-	I6e/lyEgxbfSuq3EdfhWi12HPdfg5h4AY0fgvPXAgJeOZhVD53LKamkhNKVRARwArvDReU2DkB4Zl
-	jR7sneOeb/RQede3pCAzAV+yM0OIKHPo/xc+sNuER2u30F5b2GrrRg7PSUnH1MQKeT2JdS31O3cIH
-	R4SFoYLshl/tMueYw2xUAxquWNzF4FL3+WxQKqE2zrmMkIBtvH3bn0kIuQ1qlBjN/GJs9cjD7Ul1X
-	ghAd51Urhp9t6e3yKmuiYyKWRSCSSIpPjFoPZ16KLoRF1k1vluGkO2sA777Qu26DQv7/SrFCQuC6/
-	crROH7lA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oBARwm2UVWshHFhYk6phvrYSaerDzXrx78/aoytpsi4=; b=mg134QaoznWqKGP2BQgxA5ojev
+	EMz0WMV8Rx3HGGDjZbL1gvaDVL9dhgSiRVcmfCHgBX0urAfojMKtWTQA/kXBRuj/swBtuZnqvFvzN
+	AKP7s6R7sc6Nad4t+rQGancC0optWbsM+VvL6qG1HVoJ3TAvkBwL8A5VwpBkFFpyLyxNtBZ/vg+78
+	LU3q2LOqXbZZ+JYU0DRS5tnpkh6rdYfN0XNyoRIlxTxKM6459fO+JYr+8OOrad9CkwUjffsWGdj5y
+	Q+xJ2JZpv6P7/O01A+taqvxbchj3XCrBWW2C4Rx1ZA/39rYX7ffn3mM3cUtpX3MwhF14jt6ZcZxze
+	My8AYkrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBIQa-00DZ1z-2d;
-	Thu, 07 Dec 2023 17:44:48 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1rBIS6-00DZDg-1o;
+	Thu, 07 Dec 2023 17:46:22 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.183])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBIQW-00DYzd-2W;
-	Thu, 07 Dec 2023 17:44:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id B8BB7B82986;
-	Thu,  7 Dec 2023 17:44:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33A48C433C7;
-	Thu,  7 Dec 2023 17:44:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701971081;
-	bh=kE0n2gr2CaIRus73ES8kcVH1cf0yVteSBzOYtQB63UE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Wx2uHuTI6SpzzO+4J24LEQXHwI8kMMjn/qOqux/fXdUtdAWG2QCL8sILWDpJv+ZRF
-	 KHg3m32XXp9M0JHczC1pJ5mbyuf2v+IBiI4TxCk3wJuJ8gF3M9cRUR/+1F7JeGjaIn
-	 sGFKQ4y5dzNIUi712KgDXAfT8xTWq/lrdNamvAiVIjOxeBxsCzjK3vwAts6s3KZll+
-	 lAHTujKHv4mzVF64GL9BrxMY0ixS8kqGzoqDwQphiKSb7NTU8hSLtNWWvAHjjsYKSn
-	 eEpZKEROovsfYnyVFHO8rc0FM5HySlfHMJ+nD6KqHaBHXSEB2auLMHiVxI+C6WhlWq
-	 rLdKHrenbru5g==
-Date: Thu, 7 Dec 2023 17:44:32 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	shengnan.wang@mediatek.com, yaya.chang@mediatek.com,
-	10572168@qq.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
-	yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	jacopo.mondi@ideasonboard.com, hverkuil-cisco@xs4all.nl,
-	heiko@sntech.de, jernej.skrabec@gmail.com, macromorgan@hotmail.com,
-	linus.walleij@linaro.org, laurent.pinchart@ideasonboard.com,
-	hdegoede@redhat.com, tomi.valkeinen@ideasonboard.com,
-	gerald.loacker@wolfvision.net, andy.shevchenko@gmail.com,
-	bingbu.cao@intel.com, dan.scally@ideasonboard.com,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
-Message-ID: <20231207-outcome-acclaim-d179c8c07fff@spud>
-References: <20231207052016.25954-1-zhi.mao@mediatek.com>
- <20231207052016.25954-2-zhi.mao@mediatek.com>
- <ZXGtqwjYruBQVaUr@kekkonen.localdomain>
- <129e3a8b-5e91-424a-8ff8-b015d5175f1a@linaro.org>
+	id 1rBIS3-00DZDA-1C
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 Dec 2023 17:46:21 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id CF906340070;
+	Thu,  7 Dec 2023 17:46:13 +0000 (UTC)
+Received: from [192.168.100.159] (50-251-239-81-static.hfc.comcastbusiness.net [50.251.239.81])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail3.candelatech.com (Postfix) with ESMTPSA id B012D13C2B0;
+	Thu,  7 Dec 2023 09:46:11 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com B012D13C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1701971171;
+	bh=/KY1Y1hllUosW6B9lNhb7NwYiH0r/valIDYaF8TvxHM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jWoni6TcRDhEdJoaoJAWUVI0b0lFZdjvFhwX3S6x2gw9lgadwk4YVrhQnDG88dJB+
+	 GLY1NHtQqJu7IMZWrI0XkfIRR9yw+sTei1NF2g/ncdry+98RjmOnmI0kQMMV3+pevf
+	 lJCqNDeTQOX4ZG1LFZQIkwNcIedHN5YB7QALUruQ=
+Message-ID: <ccc118d5-297b-e999-10c7-edff4e24fef4@candelatech.com>
+Date: Thu, 7 Dec 2023 09:46:11 -0800
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="N40z4CafL7X1rYMV"
-Content-Disposition: inline
-In-Reply-To: <129e3a8b-5e91-424a-8ff8-b015d5175f1a@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH 4/8] wifi: mt76: mt7996: switch to mcu command for TX GI
+ report
+Content-Language: en-US
+To: shayne.chen@mediatek.com, "nbd@nbd.name" <nbd@nbd.name>
+Cc: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+ =?UTF-8?B?QmVuamFtaW4tancgTGluICjmnpfmtKXnt68p?=
+ <Benjamin-jw.Lin@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
+ "lorenzo@kernel.org" <lorenzo@kernel.org>, Ryder Lee <Ryder.Lee@mediatek.com>
+References: <20231102100302.22160-1-shayne.chen@mediatek.com>
+ <20231102100302.22160-4-shayne.chen@mediatek.com>
+ <ae3f3bdb-0de3-e15c-f447-6d1d33478051@candelatech.com>
+ <38bc4fd457247edeea18e4eacfed89d74264be58.camel@mediatek.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+In-Reply-To: <38bc4fd457247edeea18e4eacfed89d74264be58.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-MDID: 1701971176-HxCbBbJyakbL
+X-MDID-O: us5;at1;1701971176;HxCbBbJyakbL;<greearb@candelatech.com>;dbba72c6a891d3e8767bcea3b0305f22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_094444_947018_B750FCF4 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20231207_094619_505576_AB4BC876 
+X-CRM114-Status: GOOD (  21.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,56 +87,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 12/7/23 09:07, shayne.chen@mediatek.com wrote:
+> On Mon, 2023-12-04 at 13:57 -0800, Ben Greear wrote:
+>>   	
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>   On 11/2/23 03:02, Shayne Chen wrote:
+>>> From: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+>>>
+>>> During runtime, the GI value in the WTBL is not updated in real-
+>> time. To
+>>> obtain the latest results for the TX GI, switch to use an MCU
+>> command.
+>>
+>> Hello,
+> 
+> Hi Ben,
+>>
+>> I do not see this callback happening on my system.  What firmware
+>> version
+>> is needed for this to work?
+>>
+>> And where to find it...
+>>
+> 
+> Please get testing firmware files from the following link to see if it
+> works on your environment:
+> https://github.com/csyuanc/linux-firmware
 
---N40z4CafL7X1rYMV
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I do see the callback happening with that latest firmware, thanks for the link to that.
 
-On Thu, Dec 07, 2023 at 01:30:35PM +0100, Krzysztof Kozlowski wrote:
-> On 07/12/2023 12:34, Sakari Ailus wrote:
-> >> +	ret =3D gc08a3_parse_fwnode(dev);
-> >> +	if (ret)
-> >> +		return ret;
-> >> +
-> >> +	gc08a3 =3D devm_kzalloc(dev, sizeof(*gc08a3), GFP_KERNEL);
-> >> +	if (!gc08a3)
-> >> +		return -ENOMEM;
-> >> +
-> >> +	gc08a3->dev =3D dev;
-> >> +
-> >> +	gc08a3->xclk =3D devm_clk_get(dev, NULL);
-> >> +	if (IS_ERR(gc08a3->xclk))
-> >> +		return dev_err_probe(dev, PTR_ERR(gc08a3->xclk),
-> >> +					 "failed to get xclk\n");
-> >> +
-> >> +	ret =3D clk_set_rate(gc08a3->xclk, GC08A3_DEFAULT_CLK_FREQ);
-> >=20
-> > Please see:
-> > <URL:https://hverkuil.home.xs4all.nl/spec/driver-api/camera-sensor.html=
-#devicetree>.
->=20
->=20
-> Oh, that's cool it was documented!
->=20
-> The canonical link would be:
-> https://www.kernel.org/doc/html/latest/driver-api/media/camera-sensor.htm=
-l#devicetree
+tx_gi is always reported at zero though, which seems unlikely to be correct.
 
-I believe this is that answer to the "why are these needed" that I asked
-on the previous version and never got a response to. Instead, they were
-just removed from the binding etc.
+[  625.875443] mt7996e 0000:0d:00.0: ERROR: MCU:  Sequence mismatch in response, seq: 13  rxd->seq: 12 cmd: 130022
+[  625.988751] update-tx-gi, mode: 8  tx_gi: 0
+[  625.988755] update-tx-gi, mode: 0  tx_gi: 0
+[  626.091378] mt7996e 0000:0d:00.0: ERROR: MCU:  Sequence mismatch in response, seq: 1  rxd->seq: 15 cmd: 130022
+[  626.204917] update-tx-gi, mode: 8  tx_gi: 0
+[  626.204920] update-tx-gi, mode: 0  tx_gi: 0
+[  626.307376] mt7996e 0000:0d:00.0: ERROR: MCU:  Sequence mismatch in response, seq: 4  rxd->seq: 3 cmd: 130022
+[  626.421332] update-tx-gi, mode: 8  tx_gi: 0
+[  626.421335] update-tx-gi, mode: 0  tx_gi: 0
+[  626.523436] mt7996e 0000:0d:00.0: ERROR: MCU:  Sequence mismatch in response, seq: 7  rxd->seq: 6 cmd: 130022
+[  626.636900] update-tx-gi, mode: 8  tx_gi: 0
+[  626.636904] update-tx-gi, mode: 0  tx_gi: 0
+[  626.739408] mt7996e 0000:0d:00.0: ERROR: MCU:  Sequence mismatch in response, seq: 10  rxd->seq: 9 cmd: 130022
+[  626.852727] update-tx-gi, mode: 8  tx_gi: 0
+[  626.852731] update-tx-gi, mode: 0  tx_gi: 0
+[  626.955475] mt7996e 0000:0d:00.0: ERROR: MCU:  Sequence mismatch in response, seq: 13  rxd->seq: 12 cmd: 130022
 
---N40z4CafL7X1rYMV
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 407894c13d91..8aad38a21cd4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -534,6 +534,9 @@ mt7996_mcu_ie_countdown(struct mt7996_dev *dev, struct sk_buff *skb)
+  static int
+  mt7996_mcu_update_tx_gi(struct rate_info *rate, struct all_sta_trx_rate *mcu_rate)
+  {
++       pr_info("update-tx-gi, mode: %d  tx_gi: %d\n",
++               mcu_rate->tx_mode, mcu_rate->tx_gi);
++
+         switch (mcu_rate->tx_mode) {
+         case MT_PHY_TYPE_CCK:
+         case MT_PHY_TYPE_OFDM:
+[greearb@ben-dt5 mediatek]$
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZXIEgAAKCRB4tDGHoIJi
-0ouqAQDUTa6OU1g0zJUvJGN1UaS5mtsII2EiSZDKd4calhNwgAD8D7luYf3WpePJ
-KUxA5v4yxt6pUlaZ/sKzTzU/x1c2/QQ=
-=YQab
------END PGP SIGNATURE-----
 
---N40z4CafL7X1rYMV--
+And lots of seq mismatch warnings in this firmware...could that be because of the new guard-interval
+callback perhaps?  Do the messages sent from FW increment the seq number?  The parse-response code appears
+to assume that it's responses are the only thing that would increment the seq number...
+
+Here's my code to debug the seq mismatch:
+
+static int
+mt7996_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+			  struct sk_buff *skb, int seq)
+{
+	struct mt7996_mcu_rxd *rxd;
+	struct mt7996_mcu_uni_event *event;
+	int mcu_cmd = FIELD_GET(__MCU_CMD_FIELD_ID, cmd);
+	int ret = 0;
+
+	if (!skb) {
+		const char* first = "Secondary";
+
+		mdev->mcu_timeouts++;
+		if (!mdev->first_failed_mcu_cmd)
+			first = "Initial";
+
+		dev_err(mdev->dev, "MCU: %s Failure: Message %08x (cid %lx ext_cid: %lx seq %d) timeout (%d/%d).  Last successful cmd: 0x%x\n",
+			first,
+			cmd, FIELD_GET(__MCU_CMD_FIELD_ID, cmd),
+			FIELD_GET(__MCU_CMD_FIELD_EXT_ID, cmd), seq,
+			mdev->mcu_timeouts, MAX_MCU_TIMEOUTS,
+			mdev->last_successful_mcu_cmd);
+
+		if (!mdev->first_failed_mcu_cmd)
+			mdev->first_failed_mcu_cmd = cmd;
+		return -ETIMEDOUT;
+	}
+
+	mdev->mcu_timeouts = 0;
+	mdev->last_successful_mcu_cmd = cmd;
+
+	if (mdev->first_failed_mcu_cmd) {
+		dev_err(mdev->dev, "MCU: First success after failure: Message %08x (cid %lx ext_cid: %lx seq %d)\n",
+			cmd, FIELD_GET(__MCU_CMD_FIELD_ID, cmd),
+			FIELD_GET(__MCU_CMD_FIELD_EXT_ID, cmd), seq);
+		mdev->first_failed_mcu_cmd = 0;
+	} else {
+		/* verbose debugging
+		   dev_err(mdev->dev, "MCU: OK response to message %08x (cid %lx ext_cid: %lx seq %d)\n",
+		           cmd, FIELD_GET(__MCU_CMD_FIELD_ID, cmd),
+		           FIELD_GET(__MCU_CMD_FIELD_EXT_ID, cmd), seq);
+		*/
+	}
+
+	rxd = (struct mt7996_mcu_rxd *)skb->data;
+	if (seq != rxd->seq) {
+		dev_err(mdev->dev, "ERROR: MCU:  Sequence mismatch in response, seq: %d  rxd->seq: %d cmd: %0x\n",
+			seq, rxd->seq, cmd);
+		return -EAGAIN;
+	}
+
+	if (cmd == MCU_CMD(PATCH_SEM_CONTROL)) {
+		skb_pull(skb, sizeof(*rxd) - 4);
+		ret = *skb->data;
+	} else if ((rxd->option & MCU_UNI_CMD_EVENT) &&
+		    rxd->eid == MCU_UNI_EVENT_RESULT) {
+		skb_pull(skb, sizeof(*rxd));
+		event = (struct mt7996_mcu_uni_event *)skb->data;
+		ret = le32_to_cpu(event->status);
+		/* skip invalid event */
+		if (mcu_cmd != event->cid)
+			ret = -EAGAIN;
+	} else {
+		skb_pull(skb, sizeof(struct mt7996_mcu_rxd));
+	}
+
+	return ret;
+}
+
+Thanks,
+Ben
+
+
+-- 
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
+
+
 
