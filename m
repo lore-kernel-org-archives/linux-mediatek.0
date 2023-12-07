@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDF7C10DCE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 08:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9279DC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 08:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QOiHdnlRFMkFDlB5kWfckw6pOd4LrZY+T64mekZ8KZ8=; b=V965JUlSdSgo1XPql0LnBnDzL1
-	AlsNydh/JRIEme4niMZOJi5ACMT3FDzPhxOiYgACpFOkH4cn+1up6Y3M46Ab6m/neTHvUj2GViwQ/
-	Mz0vWpZHOLKPdX6vzaqy7qGADXNPtSaB5NMnlGfeXtKsOw8OVT58/etdg20pddxkkpk3pVfUrXYAb
-	hnE/IEaxS1UMVp+lyQiiQcJMzl/BE4Yz0JVI9TWOkCQ1ktuqL8eLN4mOFUpYvq5n45RaNQMUQYYB8
-	hlzwyr+9Qbxadc8BN4Li2FQNVhzhb7qVi8d/DMRXp6QWWly2fUKIE6UFmtnbT+eESRKhcwRokYRCe
-	nkYTIPTg==;
+	bh=lxIIeFXm3HLs/BlQvnqjwBqZ1r9Iv7H+PUcijZaIuwA=; b=o+yInwx88e2yeEasvsd+uy0Rug
+	UrXFDLz1fATtoBXPKoDggKX1mMDlsEJ0efWMhDIXGmJnMyscbSTMAmkXt6gdnmLWSEl9ISGJ9HYKU
+	ZGeXN9GYv/Xn+ykQfNaTp1MkxvDtxwSNvP9uLmEBrdAC1m+B6LuumZTYYloJxo7n4G6cvH9ozxrR4
+	/jqYd94oMFAw7Lkr4jcbB8DawhNUZ+TmnkUzTNXlVyvI6b/V6PiR408dNDDmbbMAeDnro6CKqbQEJ
+	3kyX200ravva+uJ6zEYI9GHQAbH8aLQG5+yeDGEfhyvNrTWuZnWM1uRWlIAFvGn97GlRmmoI2yz8G
+	hnhkrHsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9ac-00CBNZ-2i;
-	Thu, 07 Dec 2023 08:18:34 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1rB9bC-00CBSy-1Y;
+	Thu, 07 Dec 2023 08:19:10 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9aY-00CBLE-1T
+	id 1rB9b9-00CBRY-2Z
 	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 08:18:32 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-40bda47c489so7109315e9.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 00:18:27 -0800 (PST)
+	Thu, 07 Dec 2023 08:19:09 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-32f8441dfb5so614140f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 00:19:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701937106; x=1702541906; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1701937144; x=1702541944; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=QOiHdnlRFMkFDlB5kWfckw6pOd4LrZY+T64mekZ8KZ8=;
-        b=DNCWbrjvxHoAx2k++KgU9PNVDxtnIEKgPMp/SZ3aPzRAyTp6BvfVqPjvEjwlheHsjL
-         qztVhJHARa1NlhZLxP0QVbJUT7piRQbeVsqX6/87yYQfw4r+GoBdMDVh+EK1kHZhcuCf
-         j7WHL8uwXBfAb5WyVNUpQcw8v/LnRc4ztOg9YWQF7/yo/DgcghLizjxkfKKR7m3He+zR
-         Sp65vRxY6RBBkYQlg+fNT0dmtZuCVGSUkwGoREXMVNAivmXRF+CXisgBBZ6r9Oic8ihV
-         A+jaIekPpqo/3vAHysC5uTY7GApIGe2JtxAAyQhmxL9BfFlG/eVBvo+cpRcdir1u1fzf
-         3QjA==
+        bh=lxIIeFXm3HLs/BlQvnqjwBqZ1r9Iv7H+PUcijZaIuwA=;
+        b=sf8J2kbX+mP75eogEKcJYWN9rzokqim9je15zRYnLZWDsihLkHzklTZDrrXmrzlDFR
+         qYgCcT39SpSqLl0xooSCPkdViKY3HphXeWz99/bRkvRofMy7ZGc3bN+Bz9LirWeeDcRr
+         /7oTFQfFi8FKqNJAPGzZBEfIrLWWdZ/sbyvxWR4sCo8p4YHDzH+aiJEz32bYUDN+FQU2
+         TiOhfVGGNESFXoh44cDieB5IQ07Dbb598kFjrYw1Mxb+OR/tTpa3siDcqXgm2TvuwdqX
+         vMQnPCMRLCOCELl4fCwwI96UfERK6YyTObxrkVJaIpeXfgc4AaikP91lMAx6KCzcto7H
+         D1Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701937106; x=1702541906;
+        d=1e100.net; s=20230601; t=1701937144; x=1702541944;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QOiHdnlRFMkFDlB5kWfckw6pOd4LrZY+T64mekZ8KZ8=;
-        b=F0NkUeyJ+i+hUwqrPVcGiDX59VVFWtcPi6R9igZWifw9/wDiNQnP7cU2pK2YCId5EZ
-         Y1/ReypCKOIQCQWq0htaSg+rLLDDTnwEVt0yzqf2qY71j8aTPzzt6skV9TVKNlUwmQjO
-         eyDdthpBKwPDUmG5X/U3N20fpPeR0OmDbwG8fcVjNkXnNbF9dfXzmvfVOfiD9SuH8FKh
-         BRO0pxyM/ycWOQKjepCuZwj6oLkNy5OjSK65vG/L90h+yLpHZD2RCPDNEgdcg4P5wVh8
-         CdLfl/xxf6/OmY3qACsBJIwsVzwv7ciyoycs08SRRp3aXkNClAOQhQaJ/KTob+Jx4Cya
-         gHHw==
-X-Gm-Message-State: AOJu0YzTcAjtEyO8sZZ/Cmt3hpaLZUv9VcfcP7TBJUzj4805Yt33XsPp
-	KXJPqDKtb1Y1vnCqs6KwR5AniA==
-X-Google-Smtp-Source: AGHT+IG0Hqjq4jL95ujUQNv0S8dq6POI/VWfXbt1AkrXJOS/hFOqrD20mf12V0yHjuu6XI2Gf3wfZQ==
-X-Received: by 2002:a05:600c:6985:b0:40c:ddd:5758 with SMTP id fp5-20020a05600c698500b0040c0ddd5758mr1451711wmb.12.1701937105870;
-        Thu, 07 Dec 2023 00:18:25 -0800 (PST)
+        bh=lxIIeFXm3HLs/BlQvnqjwBqZ1r9Iv7H+PUcijZaIuwA=;
+        b=UK0PDmvJxSIrVYFZObM/MGjyvJJHKC7az14voj2YKQEH/k8AYMLWGxD8Ru0BkansJh
+         7kR6fVGE0487CQ5Z1LvsOgjQHnGL6zMxcXjTTpbG/q4WJ27VZdjIdOUgMANLH7tzm09s
+         TMy+k18nK2OFeQMwqPw8ENyT1AMNR+TpPTEFv4/NqA2sBbtt/nBCZOIlc20Gms2czqEd
+         UzC1lnEZr4GNrnKb3jZ6ugsf33SVAOUUukxTKyjkjUtGkSAg07l+pyiMCOIlj5Tac4x3
+         uPbcMzPAtdDgTzKwftLLKcqzDUSDUNw6rSGS9YpVjeeH9xUsc5pu8cQDUGzILmEVBrSa
+         2Vxw==
+X-Gm-Message-State: AOJu0YzlQWXrzLmXnGMIZQZhuIbjECT19BPzNRqL3q+YI7dwm9DVlL2n
+	KTqpc01uToQKLcDXAhxyifPa1Q==
+X-Google-Smtp-Source: AGHT+IFQaRoO6sIgPcoZzJLqeoaQrgc/wUBzmml+tKRLY/qUhZXV47yh3BKlJ55aMJODV69Yl1HVAg==
+X-Received: by 2002:adf:e443:0:b0:333:2dde:2e6f with SMTP id t3-20020adfe443000000b003332dde2e6fmr1247477wrm.54.1701937144267;
+        Thu, 07 Dec 2023 00:19:04 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id o13-20020adfe80d000000b003333d46a9e8sm765592wrm.56.2023.12.07.00.18.22
+        by smtp.gmail.com with ESMTPSA id o13-20020adfe80d000000b003333d46a9e8sm765592wrm.56.2023.12.07.00.19.01
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 Dec 2023 00:18:25 -0800 (PST)
-Message-ID: <1d58c2b9-4206-409c-b312-87f4fb649512@linaro.org>
-Date: Thu, 7 Dec 2023 09:18:20 +0100
+        Thu, 07 Dec 2023 00:19:03 -0800 (PST)
+Message-ID: <c8e0ff23-9464-441d-bcaa-485a3eca0fcd@linaro.org>
+Date: Thu, 7 Dec 2023 09:19:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
+Subject: Re: [PATCH v2 0/2] media: i2c: Add support for GC08A3 sensor
 Content-Language: en-US
 To: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org
@@ -83,7 +83,6 @@ Cc: shengnan.wang@mediatek.com, yaya.chang@mediatek.com, 10572168@qq.com,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20231207052016.25954-1-zhi.mao@mediatek.com>
- <20231207052016.25954-2-zhi.mao@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -129,12 +128,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231207052016.25954-2-zhi.mao@mediatek.com>
+In-Reply-To: <20231207052016.25954-1-zhi.mao@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_001830_490552_8C8D9069 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20231207_001907_837603_FB1B8301 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,132 +149,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 07/12/2023 06:20, Zhi Mao wrote:
-> Add a V4L2 sub-device driver for Galaxycore GC08A3 image sensor.
+> This series adds YAML DT binding and V4L2 sub-device driver for Galaxycore's
+> GC08A3 8-megapixel 10-bit RAW CMOS 1/4" sensor, with an MIPI CSI-2 image data
+> interface and the I2C control bus.
 > 
-> Reviewed-By: yunkec@chromium.org
-
-I don't see review given here:
-
-https://lore.kernel.org/linux-media/20231123115104.32094-1-zhi.mao@mediatek.com/
-
-This does not look like real review. Where was it performed? How
-thorough was it? How many review iterations did it include?  Why there
-is no name but anonymous review?
-
-
-
-> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> ---
->  drivers/media/i2c/Kconfig  |   14 +
->  drivers/media/i2c/Makefile |    1 +
->  drivers/media/i2c/gc08a3.c | 1888 ++++++++++++++++++++++++++++++++++++
->  3 files changed, 1903 insertions(+)
->  create mode 100644 drivers/media/i2c/gc08a3.c
+> The driver is implemented with V4L2 framework.
+>  - Async registered as a V4L2 sub-device.
+>  - As the first component of camera system including Seninf, ISP pipeline.
+>  - A media entity that provides one source pad in common.
+>  - Used in camera features on ChromeOS application.
 > 
+> Also this driver supports following features:
+>  - manual exposure and analog gain control support
+>  - vertical blanking control support
+>  - test pattern support
+>  - media controller support
+>  - runtime PM support
+>  - support resolution: 3264x2448@30fps, 1920x1080@60fps
+> 
+> Previous versions of this patch-set can be found here:
+>  v1: https://lore.kernel.org/linux-media/20231123115104.32094-1-zhi.mao@mediatek.com/
+> 
+> Changes of v2 mainly address comments from Krzysztof/Rob Herring&Conor Dooley.
+> Compared to v1:
+>   - Fix some review comments  
 
-...
+What exactly fixed? This cannot be that vague!
 
-> +static inline struct gc08a3 *to_gc08a3(struct v4l2_subdev *sd)
-> +{
-> +	return container_of(sd, struct gc08a3, sd);
-> +}
-> +
-> +static int gc08a3_power_on(struct device *dev)
-> +{
-> +	struct i2c_client *client = to_i2c_client(dev);
-> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> +	struct gc08a3 *gc08a3 = to_gc08a3(sd);
-> +	int ret;
-> +
-> +	gpiod_set_value_cansleep(gc08a3->enable_gpio, 0);
-
-Why do you put make enable GPIO low? That's not how enable GPIO is
-supposed to work...
-
-> +	usleep_range(GC08A3_MIN_SLEEP_US, GC08A3_MAX_SLEEP_US);
-> +
-> +	ret = regulator_bulk_enable(GC08A3_NUM_SUPPLIES, gc08a3->supplies);
-> +	if (ret < 0) {
-> +		dev_err(gc08a3->dev, "failed to enable regulators: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = clk_prepare_enable(gc08a3->xclk);
-> +	if (ret < 0) {
-> +		regulator_bulk_disable(GC08A3_NUM_SUPPLIES, gc08a3->supplies);
-> +		dev_err(gc08a3->dev, "clk prepare enable failed\n");
-> +		return ret;
-> +	}
-> +
-> +	usleep_range(GC08A3_MIN_SLEEP_US, GC08A3_MAX_SLEEP_US);
-> +
-> +	gpiod_set_value_cansleep(gc08a3->enable_gpio, 1);
-> +	usleep_range(GC08A3_MIN_SLEEP_US, GC08A3_MAX_SLEEP_US);
-> +
-> +	return 0;
-> +}
-> +
-> +static int gc08a3_power_off(struct device *dev)
-> +{
-> +	struct i2c_client *client = to_i2c_client(dev);
-> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> +	struct gc08a3 *gc08a3 = to_gc08a3(sd);
-> +
-> +	gpiod_set_value_cansleep(gc08a3->enable_gpio, 0);
-
-How making enable GPIO low is related to power off? Enable means you
-turn on some feature, not shutdown. Look at common GPIO consumer
-bindings in the kernel.
-
-
-...
-
-> +static int gc08a3_probe(struct i2c_client *client)
-> +{
-> +	struct device *dev = &client->dev;
-> +	struct gc08a3 *gc08a3;
-> +	int ret;
-> +
-> +	ret = gc08a3_parse_fwnode(dev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	gc08a3 = devm_kzalloc(dev, sizeof(*gc08a3), GFP_KERNEL);
-> +	if (!gc08a3)
-> +		return -ENOMEM;
-> +
-> +	gc08a3->dev = dev;
-> +
-> +	gc08a3->xclk = devm_clk_get(dev, NULL);
-> +	if (IS_ERR(gc08a3->xclk))
-> +		return dev_err_probe(dev, PTR_ERR(gc08a3->xclk),
-> +					 "failed to get xclk\n");
-
-Misaligned indentation
-
-> +
-> +	ret = clk_set_rate(gc08a3->xclk, GC08A3_DEFAULT_CLK_FREQ);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret,
-> +					 "failed to set xclk frequency\n");
-
-Misaligned indentation
-
-> +
-> +	ret = gc08a3_get_regulators(dev, gc08a3);
-> +	if (ret < 0)
-> +		return dev_err_probe(dev, ret,
-> +					 "failed to get regulators\n");
-
-Misaligned indentation
-
-> +
-> +	gc08a3->enable_gpio = devm_gpiod_get(dev, "enable", GPIOD_OUT_LOW);
-> +	if (IS_ERR(gc08a3->enable_gpio))
-> +		return dev_err_probe(dev, PTR_ERR(gc08a3->enable_gpio),
-> +					 "failed to get gpio\n");
-
-Misaligned indentation... probably entire code is misaligned.
 
 
 Best regards,
