@@ -4,104 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9D8BC10F05
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 13:24:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 263F9C10F05
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 13:38:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9GbuRlMdUrRxTfMVAlv79ZBvLjCPFkPNUDZDL3ReDP4=; b=ArDh0ndT4QOWa+V+Z93FR0w3yP
-	foC1DLCm6NA+Gp2FnROlNtRUqDAn8iHkmOltlJAqjeIsmZog6BdVyzSGs0QPJBpT36144DY7gw24r
-	NqkD/y3DKbPjWWj/PCkYAd4ihMQnwoi2fSYSaufb7M0eD0Cnem2CH3dA1J2AYXZDYikren2/nn61G
-	7PMuiMOnQKnaEnwHC1enbgoHOg6vKoyiMfKfyFQUWWdePHAHTShufqR137366bCvtxH04KEurnfv9
-	NFFWvlVPwfsZkR0eQgxhjyCu6Z7bnN7KZWHuV3QdyUasvWKdm3JWGROuyfRQOiovw4Q0+NSVrLAM8
-	fs+YweDg==;
+	bh=lAVV2qiEK5RCktShx/Q1QMv0e5n63Am5gtpRCSYF1Yc=; b=HOoVJvxWbDjsaYmbZmjwEX+8b6
+	+rLXYthC7Q3vcfQFUaUZqf5JaZjXdV1M4aT8hAqvlW7rEsLklQ/bZoezVkixd3cGwXXptAk5ln8fs
+	gZyZfnlRDcOc9aor370WTPD8WKCz/ztqMLYyM5j2CBU6Iu0vLoBV+DRaRoUWm4G+zj4QOiVJdGjvD
+	Bw0dQ7APcGACMjYcsVip3no0y4kyk1PKc33wBinjSSZ53V8WC4J3iIv+tm/SzHhKGtQKdAlgEqeco
+	dxF9UEHKrCkulEBNVkLGhr3eNtcuq+nsDPAdg/VsdiUYHLsIzG9CV76lr2KGB6kD2j6fn1U3qYkV2
+	PqDBhnPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBEMG-00CtOU-1f;
-	Thu, 07 Dec 2023 13:24:04 +0000
-Received: from mgamail.intel.com ([192.55.52.43])
+	id 1rBEaP-00CvFS-2Q;
+	Thu, 07 Dec 2023 13:38:41 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBEMC-00CtNC-1v;
-	Thu, 07 Dec 2023 13:24:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701955440; x=1733491440;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=NyaA+nnXoQWzMmCkDluoshiTF/uj4vBECGOztPiEMCQ=;
-  b=BkX+5ZMlvtt4w5iDW9qDRKG995jUElR3xAn8U77VRx8NO9zPVOGQMtU5
-   bJxY03E4m8jqIHdA8Cha/ZHCUXXy+cbuKu5Z3AEUt7j/zegOwwbvCfWbh
-   fgQxMlY0iBZO2878mWnx9Kz/jN+QrimfnoyuVUA90x7AIIgNZHHObXZG4
-   Foz4n7PMh9+xGv9Zl0z+9JIwqHL7vb7pRusWXnzEkLcOKbKtDVkoSbV2r
-   EsogKuV4bG3hScIF6T2Qv8JxALaTPAL6IcxTmRhC0hMZg/iPd8rMiYGKK
-   uWpjnSWVIcot1ppaQ4MOyxHADEmhY0tCL9NFJdsJocEdjJaN38ECjOzBz
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="480418407"
-X-IronPort-AV: E=Sophos;i="6.04,256,1695711600"; 
-   d="scan'208";a="480418407"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Dec 2023 05:14:29 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="895143152"
-X-IronPort-AV: E=Sophos;i="6.04,256,1695711600"; 
-   d="scan'208";a="895143152"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Dec 2023 05:14:19 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.97)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1rBECk-00000002bf1-3JAj;
-	Thu, 07 Dec 2023 15:14:14 +0200
-Date: Thu, 7 Dec 2023 15:14:14 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
-	Jianlong Huang <jianlong.huang@starfivetech.com>,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org, linux-mips@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Hal Feng <hal.feng@starfivetech.com>
-Subject: Re: [PATCH v4 00/23] pinctrl: Convert struct group_desc to use
- struct pingroup
-Message-ID: <ZXHFJgs5y4RxhtBf@smile.fi.intel.com>
-References: <20231129161459.1002323-1-andriy.shevchenko@linux.intel.com>
- <CACRpkdZhpXcx2FZYKM69j3x4dP5Nu-=3sXW+BQAw3k6c5aRrWw@mail.gmail.com>
- <ZW3m-KDhs39i0E5n@smile.fi.intel.com>
- <CACRpkdaDDJfDznGZE1OGNt0Rc6Wbh0-0suu6PgL+veJea9rBRQ@mail.gmail.com>
+	id 1rBEaK-00CvB5-2O
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 Dec 2023 13:38:39 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id 3f1490d57ef6-db539ab8e02so1095126276.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 05:38:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1701956314; x=1702561114; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=lAVV2qiEK5RCktShx/Q1QMv0e5n63Am5gtpRCSYF1Yc=;
+        b=L0fHXLLmvyztdxtX+4d5qJFn1qDdY+I6Oyi4NFMNyBIO3uDA/VHIGhpzyvmTIQFTHR
+         zbqhJja3Tc2cNzu9a6sxIS2LUIWA+K6EcWZgKscbQ60uqFsoXoNBqMLoEAdq6zDva7Vp
+         iRMRmjlECj+1W7Glf3334T9r3O7tsc3vft7UrJk5MFzqvacZ6dW9QA74mog4KYX2kmDS
+         HmvRL6UCLE8pgUsrF+besV6pppMlHHg/tQCtavvugZbC39IUoHNCm+Ad2iDRdxwoXHp7
+         c+iMXGdT7COLq03Ay1JDKRzEu334ho37DtRbDeaKwj89zoePATnOcyk0u5Cpdr6EgQ4F
+         l04g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701956314; x=1702561114;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lAVV2qiEK5RCktShx/Q1QMv0e5n63Am5gtpRCSYF1Yc=;
+        b=ocAb0uxE21iI3ZCsNAAgT8vEtQdEgTheLYhiN+MsHVgkozOyAX3Asdw23nuSbqOANn
+         MUDxcmUY4tpg2piW4a9mtJ+KnUIS7ORTuy+ahcsw6iR/WQI8kgkqpIQ6x8NgEbQy+g2f
+         duwCSOKFivbCmwk7elhhKWIhGm0UsJubNGqxG1lEUqoIOSw7NOLd8pFt4fRcxEgIQoig
+         zsuMM/dIR8KQE9ENOXDvqFhqJ5LpFz+TlvxDFS54wbtz64wABmzYtkrkbswZbO/f6x4M
+         fhf/4c66GTUzSamShErruD/xjShUpjutE4ZMVVJOcWdU9avrEXkOzI+bI/BhVdbsuuvh
+         rHGw==
+X-Gm-Message-State: AOJu0YzY/NXjlZZgw38Lj5KF7r72xz+NVB/kQdaToxro1uNAbHwH+ftr
+	p1fovBFYSN6t25KNam4QgmZdqMb/uXbgkj+rBpGTCQ==
+X-Google-Smtp-Source: AGHT+IEJUzzF+mqKM2cMqlMkgSJjy8gNx2I3xz0+xRFeMN9n4FIMMoQJYpoutX6EOtTJPaW4EAm6phj5PJecY/TvrDE=
+X-Received: by 2002:a25:bc84:0:b0:db5:43e7:47b7 with SMTP id
+ e4-20020a25bc84000000b00db543e747b7mr2249653ybk.48.1701956314164; Thu, 07 Dec
+ 2023 05:38:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CACRpkdaDDJfDznGZE1OGNt0Rc6Wbh0-0suu6PgL+veJea9rBRQ@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20231201030547.11553-1-mengqi.zhang@mediatek.com>
+In-Reply-To: <20231201030547.11553-1-mengqi.zhang@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 7 Dec 2023 14:37:57 +0100
+Message-ID: <CAPDyKFqhGULWp3P2EpxUMLvdiijqu7qxPrY40GU2m3FM7XVCVQ@mail.gmail.com>
+Subject: Re: [v1,1/1] mmc: core: Add HS400es support in retune and
+ initialization flow
+To: Mengqi Zhang <mengqi.zhang@mediatek.com>
+Cc: chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
+	wenbin.mei@mediatek.com, yangyingliang@huawei.com, adrian.hunter@intel.com, 
+	avri.altman@wdc.com, vincent.whitchurch@axis.com, linux-mmc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_052400_978549_F621CD06 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20231207_053836_778940_D77B8377 
+X-CRM114-Status: GOOD (  20.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,31 +90,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 07, 2023 at 10:50:29AM +0100, Linus Walleij wrote:
-> On Mon, Dec 4, 2023 at 3:49 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> > On Mon, Dec 04, 2023 at 03:38:43PM +0100, Linus Walleij wrote:
+On Fri, 1 Dec 2023 at 04:06, Mengqi Zhang <mengqi.zhang@mediatek.com> wrote:
+>
+> In HS400es mode, when we enter mmc_retune(), we will be forced to
+> the HS400 mode instead of HS400es mode. So we decided to add support
+> for HS400es in the mmc_retune() process.
 
-...
+Hmm, I was under the impression that we really don't need to do
+re-tuning at all, when using HS400es mode.
 
-> > > >   pinctrl: core: Make pins const unsigned int pointer in struct
-> > > >     group_desc
-> > > >   pinctrl: equilibrium: Convert to use struct pingroup
-> > > >   pinctrl: keembay: Convert to use struct pingroup
-> > > >   pinctrl: nuvoton: Convert to use struct pingroup and
-> > > >     PINCTRL_PINGROUP()
-> >
-> > Hmm... Why these to be dropped?
-> 
-> I couldn't tell apart which ones could cross depend on the others,
-> simple as that...
+Are we calling mmc_retune_enable() from a place that we shouldn't?
 
-No problem as I have noticed a warning which had been fixed in a separate
-series I sent earlier and which you already applied today. Thanks!
+>
+> Additionally, during the initialization to the HS400es stage, add
+> hs400 tuning as an optional process.
+>
+> Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
 
--- 
-With Best Regards,
-Andy Shevchenko
+Kind regards
+Uffe
 
-
+> ---
+>  drivers/mmc/core/host.c | 11 ++++++++++-
+>  drivers/mmc/core/mmc.c  | 10 +++++++++-
+>  2 files changed, 19 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
+> index 096093f7be00..4bddbbb3d539 100644
+> --- a/drivers/mmc/core/host.c
+> +++ b/drivers/mmc/core/host.c
+> @@ -179,7 +179,7 @@ EXPORT_SYMBOL(mmc_retune_release);
+>  int mmc_retune(struct mmc_host *host)
+>  {
+>         bool return_to_hs400 = false;
+> -       int err;
+> +       int err = 0;
+>
+>         if (host->retune_now)
+>                 host->retune_now = 0;
+> @@ -194,6 +194,15 @@ int mmc_retune(struct mmc_host *host)
+>         host->doing_retune = 1;
+>
+>         if (host->ios.timing == MMC_TIMING_MMC_HS400) {
+> +               if (host->ios.enhanced_strobe) {
+> +                       if (host->ops->execute_hs400_tuning) {
+> +                               mmc_retune_disable(host);
+> +                               err = host->ops->execute_hs400_tuning(host, host->card);
+> +                               mmc_retune_enable(host);
+> +                       }
+> +                       goto out;
+> +               }
+> +
+>                 err = mmc_hs400_to_hs200(host->card);
+>                 if (err)
+>                         goto out;
+> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> index 705942edacc6..9760eea2c104 100644
+> --- a/drivers/mmc/core/mmc.c
+> +++ b/drivers/mmc/core/mmc.c
+> @@ -1823,7 +1823,15 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
+>                 if (err)
+>                         goto free_card;
+>
+> -       } else if (!mmc_card_hs400es(card)) {
+> +       } else if (mmc_card_hs400es(card)) {
+> +               if (host->ops->execute_hs400_tuning) {
+> +                       mmc_retune_disable(host);
+> +                       err = host->ops->execute_hs400_tuning(host, card);
+> +                       mmc_retune_enable(host);
+> +                       if (err)
+> +                               goto free_card;
+> +               }
+> +       } else {
+>                 /* Select the desired bus width optionally */
+>                 err = mmc_select_bus_width(card);
+>                 if (err > 0 && mmc_card_hs(card)) {
+> --
+> 2.25.1
+>
 
