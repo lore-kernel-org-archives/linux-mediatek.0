@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27CE1C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 15:28:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 725D9C10F05
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 15:29:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oSO91Zjek++1IKXEdE5RYlis15XBD+gc14pgxk+BMSU=; b=2mMzrkM8CKtw+u1fABWFGCZ4iL
-	Y6eTdJiQVUNiM85r3r53oYKC8Bf6PIX8FskekObizz0Td4tSSspS9Ws7tVmYIIHU0wUUcuS804WNr
-	GmsdaHH7ePvDnwX+26YDlW9MYYPPYU3KM9H+YwafuvsvuOmUtl+AQw/FRx+zmG9QK8NqnpZssLgrI
-	fpuWAGJhTYgFjoq29gI9+7XEnL4gJi/yGoqos7oxL085EWivkFb2I51B6Xa2KSYIrDb3XEq9wsHxq
-	TfwSFFMPjNiPh0t57RkQGNJFQMkrF7+qesGp7pmCcZbUt1TNfH1ddiFi3ZwUawMkzv6omXF/4dEZN
-	ewzjdS5w==;
+	bh=n+I5o5uNs0ujmnJFMTa99RBBYyMjrKgdxQALljW8hDk=; b=mLzNbvOmGHrcpa8K+u37YghSWP
+	Wv9RiLfbJZC9mFjkFNdc4TMhvf0Y1An54hsgdmMBkVuxC9ft3uKzOrnfycv9ghHcHLTe4KrbKOoaD
+	fms27k9uaxI3xrmJFdxr8WXZankA4e8VgTVmOKTVbp3wQT5O444xyOkv8d/04cutkAzbcJQWR29a+
+	yG2CgQmNdOkT5auJY15X7G0pjwrsGsowyOWddhwhzoZwB6ckSux8RNqT/SOWirT9dv/bCkvSFH32f
+	hxDG2ll+sKjQv3QYTP/x7NKPW67DTI+PtW2iAeOWbyvvJhPD35i+Uo+MMpH/C1vK5DMudLoo33fto
+	DPWFLo2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBGIr-00DBwD-28;
-	Thu, 07 Dec 2023 15:28:41 +0000
+	id 1rBGK6-00DCGq-1B;
+	Thu, 07 Dec 2023 15:29:58 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBGIn-00DBuK-2g;
-	Thu, 07 Dec 2023 15:28:38 +0000
+	id 1rBGK1-00DCEu-2U;
+	Thu, 07 Dec 2023 15:29:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=oSO91Zjek++1IKXEdE5RYlis15XBD+gc14pgxk+BMSU=; b=snOb9ecvdpUafV+1Kv8SNC57GJ
-	x7/AZCiAkpE/XzFrf7+piCHYMPszK6iqkhe3XvlRx2yU5gcjm088FMML13QyMxSmUZgSzqvUmcNsI
-	KZITbZYDmXgsQqEqy+L60UfhISdR1Cn92aavH1IjrN8ZR7hRCibS76yLWVKjjZLLvurs=;
+	bh=n+I5o5uNs0ujmnJFMTa99RBBYyMjrKgdxQALljW8hDk=; b=oxOzptF/B2tvkGKr5hOfx+sAp+
+	DtwJIPV2JMNZPaTf2fo/lACU/XGm6oxPZuecFhhAEjNINbbw8pnrHLrQ21uIFiJud38o+uozFe0NE
+	An8zs0GvRftOjjR1SDmTn9W8+bD8o9yCGe/jmpTBcEsLBJefvDLa9fu639enHNxBnA8g=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1rBGHc-002KGh-Uo; Thu, 07 Dec 2023 16:27:24 +0100
-Date: Thu, 7 Dec 2023 16:27:24 +0100
+	id 1rBGJ5-002KI3-R5; Thu, 07 Dec 2023 16:28:55 +0100
+Date: Thu, 7 Dec 2023 16:28:55 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: justinstitt@google.com
 Cc: "David S. Miller" <davem@davemloft.net>,
@@ -98,18 +98,18 @@ Cc: "David S. Miller" <davem@davemloft.net>,
 	oss-drivers@corigine.com, linux-hyperv@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
-Subject: Re: [PATCH net-next v5 1/3] ethtool: Implement ethtool_puts()
-Message-ID: <6a0340d5-20e0-40ab-822e-d9fc1ce360d9@lunn.ch>
+Subject: Re: [PATCH net-next v5 3/3] net: Convert some ethtool_sprintf() to
+ ethtool_puts()
+Message-ID: <43063267-191c-47b2-a824-ba93feb89834@lunn.ch>
 References: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
- <20231206-ethtool_puts_impl-v5-1-5a2528e17bf8@google.com>
+ <20231206-ethtool_puts_impl-v5-3-5a2528e17bf8@google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231206-ethtool_puts_impl-v5-1-5a2528e17bf8@google.com>
+In-Reply-To: <20231206-ethtool_puts_impl-v5-3-5a2528e17bf8@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_072837_873694_30901397 
-X-CRM114-Status: UNSURE (   8.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231207_072953_811678_C9778B1C 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,11 +124,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 06, 2023 at 11:16:10PM +0000, justinstitt@google.com wrote:
-> Use strscpy() to implement ethtool_puts().
+On Wed, Dec 06, 2023 at 11:16:12PM +0000, justinstitt@google.com wrote:
+> This patch converts some basic cases of ethtool_sprintf() to
+> ethtool_puts().
 > 
-> Functionally the same as ethtool_sprintf() when it's used with two
-> arguments or with just "%s" format specifier.
+> The conversions are used in cases where ethtool_sprintf() was being used
+> with just two arguments:
+> |       ethtool_sprintf(&data, buffer[i].name);
+> or when it's used with format string: "%s"
+> |       ethtool_sprintf(&data, "%s", buffer[i].name);
+> which both now become:
+> |       ethtool_puts(&data, buffer[i].name);
 > 
 > Signed-off-by: Justin Stitt <justinstitt@google.com>
 
