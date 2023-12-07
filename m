@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5BDDC4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 00:07:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E022C10DC1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 00:07:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m8EY+hxPqYDNDst8AkzCtvWV0zDIKM4EMIlqkhupICE=; b=wIlyiFhRXo3nD1dNo0Ev8rbqkc
-	vJOP9NDWev5/nRu0o31b+wWzkPYKcDJEfup7BIdEyJyYGWx6EvKwazy+eoGsjiA49p0W5N6++EVw2
-	Qur+jgrDBYMeB21EZs95wi/lemdJ8V26DSs6gRJSOu/KI7RdV0j810OqJovFWgJM+PwmynzjMinpp
-	NBKpr646JCUREzTq4eEUDy+vfgIb/PqrsNp0jUPw+8OgQSv2pqE0DFvH+Z6pVnKiKagyb5AI5RPzX
-	qn2X2o2rDOKFNt4fiB8J+E6dg8pXAMswIo8hoYejEMv5HWKQ7yFtuqpL+LJvnGzJuX3GHvOsrZ0qn
-	yeTEDMsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+a7WGq/Q1VmA74C6RCoEzcxtkMSaMJKT84Yz/Ifv3Ko=; b=lnhR/f0+BFtiq3l1SI6rGYjJSx
+	NmsM8la7kci0e6WSGqKAQBUfc3J6RAexFgSwK2S9CZ77w6wuPzNm6o3cMP8+5fxSgInRVbcJnFLDX
+	Zc4YicqBAkAkqAbQY2qpfUP0wXQDao9AYeZ7U53ttbSfxg71jLgK8OlOUVTXjQRy1+71InUbtfIJI
+	y7S7sHiOa07Q0zMmzxC2/OVY4ukHLMCC9v1oDF/lf7Ic7SeafCvpnBtXtUZNME+Ea1esJYLROCdrr
+	DISuxRwZ2nasYgv0dT6JQQYdB4IFam6YUetjsFZyVQP8APSNsFDHGWQYNK/FqB3jvkhH1gv4NAiq1
+	k9/J714w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB1vE-00BX9U-1O;
-	Thu, 07 Dec 2023 00:07:20 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1rB1vj-00BXCT-06;
+	Thu, 07 Dec 2023 00:07:51 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB1vA-00BX82-1N
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 00:07:18 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B6MTlOL004790;
-	Thu, 7 Dec 2023 00:07:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=m8EY+hxPqYDNDst8AkzCtvWV0zDIKM4EMIlqkhupICE=;
- b=h73upDiylFawEdjAnLWNULa1txWewGBOyFfXOXf1U1xK7ThK2RuyA2YjlQh7yzOaaV1F
- CGxKHE/MPuzPL+GhplMfw30CuGrzEVdAAubRSz4upjqmJI8cFysI8P2XeOSKUiE6y5Rb
- dz4piUN8n4PL8gzVi3qydAaIshLasgMfI5cgIQiEC2BygMJ9d97g6o0U68DBk6jgPf6Q
- gYDrd6kjnBC/u15CsdScg1rVFibPWcti26Ws/zSxXqY/Z+bKAr3314yYDwn9lUdFfFmj
- ey3rgfwAEIkrN5NT0feIcLyZXk9/GEybrkWBiQBQFquS1N6d82BOspm7PfIzJjg/gGjS Tg== 
-Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3utdebbceh-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 07 Dec 2023 00:07:06 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B70751w010530
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 7 Dec 2023 00:07:05 GMT
-Received: from [10.110.111.75] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Wed, 6 Dec
- 2023 16:07:04 -0800
-Message-ID: <50a6f31a-ef28-496c-acf4-0521034e43a1@quicinc.com>
-Date: Wed, 6 Dec 2023 16:07:03 -0800
+	id 1rB1ve-00BXBH-0H;
+	Thu, 07 Dec 2023 00:07:48 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rB1vB-0000Eb-3C;
+	Thu, 07 Dec 2023 00:07:19 +0000
+Date: Thu, 7 Dec 2023 00:07:14 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [RFC PATCH v2 3/8] net: pcs: pcs-mtk-lynxi: add platform driver
+ for MT7988
+Message-ID: <ZXEMsugMy6_gPRRi@makrotopia.org>
+References: <cover.1701826319.git.daniel@makrotopia.org>
+ <68bb81ac6bf99393c8de256f42e5715626590af8.1701826319.git.daniel@makrotopia.org>
+ <ZXC0pq2C6iRmeF4B@shell.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: mac80211: Fix SMPS action frame ht cap check
-Content-Language: en-US
-To: Allen Ye <allen.ye@mediatek.com>, <linux-wireless@vger.kernel.org>
-CC: Johannes Berg <johannes.berg@intel.com>, Felix Fietkau <nbd@nbd.name>,
-        Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
-        Evelyn Tsai
-	<evelyn.tsai@mediatek.com>,
-        "Money . Wang" <money.wang@mediatek.com>,
-        <linux-mediatek@lists.infradead.org>,
-        Thomas Wu <quic_wthomas@quicinc.com>
-References: <20231206024708.24831-1-allen.ye@mediatek.com>
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-In-Reply-To: <20231206024708.24831-1-allen.ye@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: DqS6-M-qghFIKBsIm7_1WVBiDv5qIWx1
-X-Proofpoint-GUID: DqS6-M-qghFIKBsIm7_1WVBiDv5qIWx1
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-06_21,2023-12-06_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- priorityscore=1501 malwarescore=0 mlxscore=0 clxscore=1011 spamscore=0
- mlxlogscore=999 impostorscore=0 bulkscore=0 adultscore=0 suspectscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2312060178
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZXC0pq2C6iRmeF4B@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_160716_505316_EE7F3DC8 
-X-CRM114-Status: GOOD (  22.43  )
+X-CRM114-CacheID: sfid-20231206_160746_119800_EB0650F6 
+X-CRM114-Status: GOOD (  27.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,54 +86,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/5/2023 6:47 PM, Allen Ye wrote:
-> From: "Allen.Ye" <allen.ye@mediatek.com>
+On Wed, Dec 06, 2023 at 05:51:34PM +0000, Russell King (Oracle) wrote:
+> On Wed, Dec 06, 2023 at 01:44:17AM +0000, Daniel Golle wrote:
+> > +struct phylink_pcs *mtk_pcs_lynxi_select_pcs(struct device_node *np, phy_interface_t mode)
+> > +{
+> > +	struct platform_device *pdev;
+> > +	struct mtk_pcs_lynxi *mpcs;
+> > +
+> > +	if (!np)
+> > +		return NULL;
+> > +
+> > +	if (!of_device_is_available(np))
+> > +		return ERR_PTR(-ENODEV);
+> > +
+> > +	if (!of_match_node(mtk_pcs_lynxi_of_match, np))
+> > +		return ERR_PTR(-EINVAL);
+> > +
+> > +	pdev = of_find_device_by_node(np);
+> > +	if (!pdev || !platform_get_drvdata(pdev)) {
+> > +		if (pdev)
+> > +			put_device(&pdev->dev);
+> > +		return ERR_PTR(-EPROBE_DEFER);
+> > +	}
+> > +
+> > +	mpcs = platform_get_drvdata(pdev);
+> > +	put_device(&pdev->dev);
+> > +
+> > +	return &mpcs->pcs;
+> > +}
+> > +EXPORT_SYMBOL(mtk_pcs_lynxi_select_pcs);
 > 
-> Since there is no HT BSS in 6GHz, the HT Cap check would stop 6G HE/EHT
-> BSS from processing the HT action frame for SM Power Save which can be
-> also used in an HE BSS. Therefore, we remove the HT Cap check in 6GHz and
-> add the HE check accordingly.
-> 
-> Signed-off-by: Money.Wang <money.wang@mediatek.com>
-> Signed-off-by: Allen.Ye <allen.ye@mediatek.com>
-> ---
->  net/mac80211/rx.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
-> index 64352e4e6d00..f8cd14dc58ec 100644
-> --- a/net/mac80211/rx.c
-> +++ b/net/mac80211/rx.c
-> @@ -3482,7 +3482,8 @@ ieee80211_rx_h_action(struct ieee80211_rx_data *rx)
->  	switch (mgmt->u.action.category) {
->  	case WLAN_CATEGORY_HT:
->  		/* reject HT action frames from stations not supporting HT */
-> -		if (!rx->link_sta->pub->ht_cap.ht_supported)
-> +		if (status->band != NL80211_BAND_6GHZ &&
-> +		    !rx->link_sta->pub->ht_cap.ht_supported)
+> If you're going to play games like this, then you must mark the driver
+> with .suppress_bind_attrs = true to remove the bind/unbind attributes
+> in userspace that could wreak havoc with the above - because there is
+> _nothing_ that guarantees that the memory you're returning from this
+> function will remain intact. Basically, it's racy.
 
-we had found the same issue and were preparing a patch that changed this to:
-+		if (!rx->link_sta->pub->ht_cap.ht_supported &&
-+		    !rx->link_sta->pub->he_cap.has_he)
+Ack, I've set .suppress_bind_attrs = true in the usxgmii driver but
+forgot to add it here.
 
-I see you added the has_he check below, but curious if it is better to
-do it here to short circuit the tests that follow
+> Also, I'm not sure I approve of using the "select_pcs" suffix (I
+> haven't spotted _where_ you use this, but returning EPROBE_DEFER to
+> phylink's mac_select_pcs() method doesn't do anything to defer any
+> probe, so that's an entirely misleading error code.
 
->  			goto invalid;
->  
->  		if (sdata->vif.type != NL80211_IFTYPE_STATION &&
-> @@ -3502,6 +3503,12 @@ ieee80211_rx_h_action(struct ieee80211_rx_data *rx)
->  			enum ieee80211_smps_mode smps_mode;
->  			struct sta_opmode_info sta_opmode = {};
->  
-> +			if (status->band == NL80211_BAND_6GHZ &&
-> +			    rx->link_sta->pub->he_cap.has_he &&
-> +			    !(rx->link_sta->pub->he_cap.he_cap_elem.mac_cap_info[5] &
-> +			    IEEE80211_HE_MAC_CAP5_HE_DYNAMIC_SM_PS))
-> +				goto invalid;
-> +
->  			if (sdata->vif.type != NL80211_IFTYPE_AP &&
->  			    sdata->vif.type != NL80211_IFTYPE_AP_VLAN)
->  				goto handled;
+EPROBE_DEFER is handled when the function is called by mtk_add_mac()
+during probe of the Ethernet driver -- which we do want to postpone
+in case the PCS hasn't been probed yet as at this point that's the
+best we can do without adding lots of intrastructure to dynamically
+attach the PCS later on...
 
+But true, later the function is being called by mac_select_pcs() and
+what ever it returns is returned to the caller of mac_select_pcs().
+If you think it's better to return ENODEV (or EAGAIN?) I can change
+that -- from what I could tell, the only error which receives special
+handling by phylink is -EOPNOTSUPP, everything else just gets passed-
+through to the callers.
+
+> If we are going to have device drivers for PCS, then we need to
+> seriously think about how we look up PCS and return the phylink_pcs
+> pointer - and also how we handle the PCS device going away. None of
+> that should be coded into _any_ PCS driver.
+
+I agree -- just wasn't up to design and implement all that at once.
 
