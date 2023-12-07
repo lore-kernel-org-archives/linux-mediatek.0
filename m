@@ -4,112 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 725D9C10F05
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 15:29:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED968C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 16:04:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n+I5o5uNs0ujmnJFMTa99RBBYyMjrKgdxQALljW8hDk=; b=mLzNbvOmGHrcpa8K+u37YghSWP
-	Wv9RiLfbJZC9mFjkFNdc4TMhvf0Y1An54hsgdmMBkVuxC9ft3uKzOrnfycv9ghHcHLTe4KrbKOoaD
-	fms27k9uaxI3xrmJFdxr8WXZankA4e8VgTVmOKTVbp3wQT5O444xyOkv8d/04cutkAzbcJQWR29a+
-	yG2CgQmNdOkT5auJY15X7G0pjwrsGsowyOWddhwhzoZwB6ckSux8RNqT/SOWirT9dv/bCkvSFH32f
-	hxDG2ll+sKjQv3QYTP/x7NKPW67DTI+PtW2iAeOWbyvvJhPD35i+Uo+MMpH/C1vK5DMudLoo33fto
-	DPWFLo2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2FpbQI5Mt0gSqQq/XXJLLf+1SovVdA+maQYMnRTJ0m4=; b=i5Y3lEcSSJFYznAPWgEidMaSl8
+	gwnZ0QDE2zLHf6kqnG1o0rFsQDrbqcytSt7KY8yXB0YHv38SZQK3+IXk9PwIILGFTIzutdN333nH+
+	yBNXkrf6Etj80U6p7kf1GupVHGA8hFD5XLSxbpiILu0s7fvzhnViPhxghvEHplbEqCY6CHL8tn61g
+	18rAOOxdrUVT5Gj6qUlEo5kDBogenlk8BmP1MbXeGfrjBkTjGmOOpDExmsJUJ/d9JC30KMbTvJF00
+	B5qB5xgxJTpSB8jaDIk0ySA9iEk3ISlCbNVh+7kPJJjEXdfsqM4Kc7BwoGKoPDkZAmbRYq8lu1U4M
+	2KDd1x8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBGK6-00DCGq-1B;
-	Thu, 07 Dec 2023 15:29:58 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1rBGrC-00DM3V-1q;
+	Thu, 07 Dec 2023 16:04:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBGK1-00DCEu-2U;
-	Thu, 07 Dec 2023 15:29:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=n+I5o5uNs0ujmnJFMTa99RBBYyMjrKgdxQALljW8hDk=; b=oxOzptF/B2tvkGKr5hOfx+sAp+
-	DtwJIPV2JMNZPaTf2fo/lACU/XGm6oxPZuecFhhAEjNINbbw8pnrHLrQ21uIFiJud38o+uozFe0NE
-	An8zs0GvRftOjjR1SDmTn9W8+bD8o9yCGe/jmpTBcEsLBJefvDLa9fu639enHNxBnA8g=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1rBGJ5-002KI3-R5; Thu, 07 Dec 2023 16:28:55 +0100
-Date: Thu, 7 Dec 2023 16:28:55 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: justinstitt@google.com
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Shay Agroskin <shayagr@amazon.com>,
-	Arthur Kiyanovski <akiyano@amazon.com>,
-	David Arinzon <darinzon@amazon.com>, Noam Dagan <ndagan@amazon.com>,
-	Saeed Bishara <saeedb@amazon.com>, Rasesh Mody <rmody@marvell.com>,
-	Sudarsana Kalluru <skalluru@marvell.com>,
-	GR-Linux-NIC-Dev@marvell.com,
-	Dimitris Michailidis <dmichail@fungible.com>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Salil Mehta <salil.mehta@huawei.com>,
-	Jesse Brandeburg <jesse.brandeburg@intel.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Louis Peens <louis.peens@corigine.com>,
-	Shannon Nelson <shannon.nelson@amd.com>,
-	Brett Creeley <brett.creeley@amd.com>, drivers@pensando.io,
-	"K. Y. Srinivasan" <kys@microsoft.com>,
-	Haiyang Zhang <haiyangz@microsoft.com>,
-	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
-	Ronak Doshi <doshir@vmware.com>,
-	VMware PV-Drivers Reviewers <pv-drivers@vmware.com>,
-	Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>,
-	Dwaipayan Ray <dwaipayanray1@gmail.com>,
-	Lukas Bulwahn <lukas.bulwahn@gmail.com>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com, Jiawen Wu <jiawenwu@trustnetic.com>,
-	Mengyuan Lou <mengyuanlou@net-swift.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Alexei Starovoitov <ast@kernel.org>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Kees Cook <keescook@chromium.org>, intel-wired-lan@lists.osuosl.org,
-	oss-drivers@corigine.com, linux-hyperv@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
-Subject: Re: [PATCH net-next v5 3/3] net: Convert some ethtool_sprintf() to
- ethtool_puts()
-Message-ID: <43063267-191c-47b2-a824-ba93feb89834@lunn.ch>
-References: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
- <20231206-ethtool_puts_impl-v5-3-5a2528e17bf8@google.com>
+	id 1rBGr9-00DM2N-1I;
+	Thu, 07 Dec 2023 16:04:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B47CE61EA2;
+	Thu,  7 Dec 2023 16:04:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CA54C433CB;
+	Thu,  7 Dec 2023 16:04:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1701965045;
+	bh=2FpbQI5Mt0gSqQq/XXJLLf+1SovVdA+maQYMnRTJ0m4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=K1poRaLOvXp7vPNZy1zTsvpIEeSRBjZnrNr1knbGToNVPOkTEZeVMv3dLcA9/wUAt
+	 f/GaW2gY4cuyGpYx/hvja35r+6rddX/MDh2l8j5PS8IiniikINpA6Uw4qcpFwC0NO+
+	 Qd+MguwDTW8PLznyqXlZKjUO3wTXFaZjWXqHThLNOC+1h2kg7KyKA76KWfgHpa1vZa
+	 AAHyWxy1mLsVob6lMPjInBaIarOditi64w63T0yENhrTRmxjW0qZgvj/YHcGBexZ0n
+	 IabUplIYdGOZPkUY7RM0j4klzy91ov/RSobm2wRqcvq5cDqzfETvf+XlknuhT60rp6
+	 I74mVI0oK+IWw==
+Received: by mail-lj1-f174.google.com with SMTP id 38308e7fff4ca-2c9eca5bbaeso11564851fa.3;
+        Thu, 07 Dec 2023 08:04:05 -0800 (PST)
+X-Gm-Message-State: AOJu0YzmIqkHd9QHuFHsQfoj2HTDWCoSMBmzfbxMS9hDEwe09pSswAbG
+	wZ3rlKK83yvPgFaV+ICAeF6oAZsDxHbb1RQKWw==
+X-Google-Smtp-Source: AGHT+IF1cG0pFemXauUHVxHSNj9qWubes+vp4DakrHk/R1risj9jDhlo+9GulMhEdM2kdfcyW16MHWWxKi/zTK9166I=
+X-Received: by 2002:a05:651c:1030:b0:2ca:bcb:e798 with SMTP id
+ w16-20020a05651c103000b002ca0bcbe798mr849220ljm.157.1701965043173; Thu, 07
+ Dec 2023 08:04:03 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231206-ethtool_puts_impl-v5-3-5a2528e17bf8@google.com>
+References: <20230412064635.41315-1-yang.lee@linux.alibaba.com>
+ <20230412064635.41315-3-yang.lee@linux.alibaba.com> <de13cb5f-abf2-86b3-d2e0-2b1131cd8dfa@baylibre.com>
+In-Reply-To: <de13cb5f-abf2-86b3-d2e0-2b1131cd8dfa@baylibre.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 8 Dec 2023 00:03:51 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-cO3P2GnMPK68GSRJKe8jguCK-cWENiu-3mXaRaHwmMA@mail.gmail.com>
+Message-ID: <CAAOTY_-cO3P2GnMPK68GSRJKe8jguCK-cWENiu-3mXaRaHwmMA@mail.gmail.com>
+Subject: Re: [PATCH -next 3/3] drm/mediatek: Use devm_platform_ioremap_resource()
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Yang Li <yang.lee@linux.alibaba.com>, airlied@gmail.com, daniel@ffwll.ch, 
+	matthias.bgg@gmail.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
+	angelogioacchino.delregno@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_072953_811678_C9778B1C 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20231207_080407_508421_C107CD1C 
+X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,21 +84,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 06, 2023 at 11:16:12PM +0000, justinstitt@google.com wrote:
-> This patch converts some basic cases of ethtool_sprintf() to
-> ethtool_puts().
-> 
-> The conversions are used in cases where ethtool_sprintf() was being used
-> with just two arguments:
-> |       ethtool_sprintf(&data, buffer[i].name);
-> or when it's used with format string: "%s"
-> |       ethtool_sprintf(&data, "%s", buffer[i].name);
-> which both now become:
-> |       ethtool_puts(&data, buffer[i].name);
-> 
-> Signed-off-by: Justin Stitt <justinstitt@google.com>
+Hi, Yang:
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Alexandre Mergnat <amergnat@baylibre.com> =E6=96=BC 2023=E5=B9=B44=E6=9C=88=
+12=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=889:49=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+>
+> On 12/04/2023 08:46, Yang Li wrote:
+> > Remove variable 'res' and convert platform_get_resource(),
+> > devm_ioremap_resource() to a single call to
+> > devm_platform_ioremap_resource(), as this is exactly what this function
+> > does.
+> >
+> > Signed-off-by: Yang Li<yang.lee@linux.alibaba.com>
+>
+> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+>
 
-    Andrew
+Applied to mediatek-drm-next [1], thanks.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
+
+Regards,
+Chun-Kuang.
+
+> --
+> Regards,
+> Alexandre
+>
 
