@@ -4,139 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B388AC4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 08:21:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE74C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 08:22:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fPwpR6cjf4gl+iJ2edVyQ5QVngSHrLLuTQ/c3n689y0=; b=ldY8BwLhKQM+Q0ODpFKZpi0hIW
-	kJez8XQ9/YOv5mBlxDDm/zPjfsAETXOGDHE/Fk/QjrwUAuVwM7MSm9pwE+NELT49exH2ix678q73C
-	tGga2NZqHn5S4sS5TcPEJJkJ9uNsRFpmD6BDJ8DRfU/Pz9mGA0vDSbucdSKCcQn4xcisVQRhtUgkn
-	iXfrvTbzQWHIoobFPRObBXUqXd+//TeRHhOVOxn5JvjAwO5CKCO/pLs0Ae5jlyjS8Igtw1kUEaUbd
-	wql1kGl0XmNEvjF83Yfmw4dOI96wS6xOvYsgMQgLqF6SZEKRmqDWqOWIV77fzL1as93xEt3EqZiTS
-	z8uE3HWA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rDf7SvWLZ5+cswjG2lbWFH7UEQugglQ6D+KquB8Vuos=; b=pk41oBDkL5L9qQA/ToLLrRl/99
+	LWlvoCUijo1Fs3q0qKdgwpLQwLixKH2BqigAxtvz1mx3lzFjNMDrEyoGRC844zhCqd0BhWZFp4AwE
+	YgsK/b4mKH7MhuqvmxTTu2SxPkBpWTzuNSn5pYVm5Xj8sW8I2PfpnKL+sPgD1FSQKskJohoVTI3tU
+	+KPTihyevlhgLS71WYcl/yY4vkxO/MHk7PW1T6xDkTCGDdWISLhaPkmZPSPBJKxZa0Qh/RDEOF/Aa
+	wmP2KcXWGbhuHrCEZyORvd1+8bHrDAmgEWvxskF/H0tFkOFZR8Bz5qy1nQn/1jjse3b1/Fw0zVPdV
+	W3snT7Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9dm-00CC9V-27;
-	Thu, 07 Dec 2023 08:21:50 +0000
+	id 1rB9ea-00CCK8-0W;
+	Thu, 07 Dec 2023 08:22:40 +0000
 Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9dj-00CC7V-04
+	id 1rB9eX-00CCJF-2j
 	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 08:21:48 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40c26a45b2dso3609125e9.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 00:21:44 -0800 (PST)
+	Thu, 07 Dec 2023 08:22:39 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40c05ce04a8so8152085e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 00:22:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701937303; x=1702542103; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=fPwpR6cjf4gl+iJ2edVyQ5QVngSHrLLuTQ/c3n689y0=;
-        b=E7Eew73mRlg1IU4MXtTHgwVxUo0airf2imIY/+HwHUarbfUACs1hECdof8l4d530E7
-         eXbSQhmh9xxuowow1eYdoygTT/VhpNTkcSvPOHqNk6vF6gKWVhbxSCoBJ9xIBlW/oQMk
-         wwjWus/gBVkVcH8swGeAvdtE1xNgf38yBViSSKJX5IEkATS1asSZxf9dUA/Eub1sBRjI
-         fZM61ail6izmUrTIav0PEQ7B+GpLu3oXJtbr9U6fVlL6m3rK8pvZAIRHTTcetx7ymhSB
-         hpFt1l51fndlBMgMcWK94HEYoJyGcQkT8Q8J7GwAy31uXBTLeVq3M9McUB1oPtGuCIo1
-         q61Q==
+        d=linaro.org; s=google; t=1701937356; x=1702542156; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :references:cc:to:content-language:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rDf7SvWLZ5+cswjG2lbWFH7UEQugglQ6D+KquB8Vuos=;
+        b=eKP5xUVlYzdrqjz8hf/7ePyoAX2jp7ltoh2HRMV50iEMwOwMiQkkJMkSDC5dO9fKbX
+         IP6TElcI9DF6KqjW0L/0+iWQfbSH5PDehaCuxEEBfe8EgIge3OCrIGQgM5pHAH8k1k3x
+         tDzirSuNBSsiy1xdwAW2zmLqAqsxHX6FNO3XlT4ybhp/CNps+K2eTOAgO2sr+XKoP8iX
+         g0oLlZNZyHINhikUVHJiwNEKqZfoosHn45TatEmymoP+9kPyBEJO0f6w50mCs+QMMljQ
+         Ta3l3KmQ1WzQafzXX/99earjkune+GRQUAUaAGh7TybaMqJkZA2c4ZqPp2KQJuCLU9Uh
+         UDIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701937303; x=1702542103;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fPwpR6cjf4gl+iJ2edVyQ5QVngSHrLLuTQ/c3n689y0=;
-        b=BRO82W0rOnepTyxjYRcE75tH9PQepKPqSBfWHa71bcC707sqXBTliPWlCYQzYDXXrz
-         Wzd5JKSs7w8Jq+VDXsWrYkiclmm+/Wy6f4cFOqPrbDi+VFgTnYwFn+nWWkjWxULpQeDB
-         BfPcLGATCZ7bOGqsnm6BTphP/l6naQ6NnK4KSOhzCNi/LeSG2FxV5ig1FLtx0a6uMpm0
-         J6Yur7Mpk6kFP+H0R8RIUHgbrCOvrHl+n58PhUHfOnoLKkqCxEnQrKHGfUhVCG5uicVz
-         sq0g9CGZ1bLy40iL8TsWMkSD6Coa6AmqriFkK/9g/mglrbz2CjjXMqqAW/mSZiIuisJt
-         I2aQ==
-X-Gm-Message-State: AOJu0YwzUm1sohSZGrE+p3omnxj6aLtrp97OlFOLlWR+aqddwGWZM8eD
-	aSl48WDditl87PCEXzUmKyIOqw==
-X-Google-Smtp-Source: AGHT+IGG7QLYaH+Oo1cYq79KdJYAiV++XaIXXAxgTVSDkn3fzotgBZNT5mlR7KvgyOGB6p+b8hzpww==
-X-Received: by 2002:a05:600c:d4:b0:40c:2698:db59 with SMTP id u20-20020a05600c00d400b0040c2698db59mr535004wmm.11.1701937303017;
-        Thu, 07 Dec 2023 00:21:43 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id m12-20020a5d4a0c000000b003333a0da243sm777924wrq.81.2023.12.07.00.21.40
+        d=1e100.net; s=20230601; t=1701937356; x=1702542156;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :references:cc:to:content-language:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=rDf7SvWLZ5+cswjG2lbWFH7UEQugglQ6D+KquB8Vuos=;
+        b=ucTvpOCFfZzi5+0CXQYRdw7DqoekYAlW+ZopQfHEOTvsp0k+W500/iomTSitHjoN2f
+         5NjqOxxfENP/huXXNwt165tVFhubbDt42mJ7LqZRRK85+s0bdPcDZOIy82rLswcSmhhX
+         LWUUp8YDB6/rmxUMT4MIZNIEle31vjDO7bUQwv9I292ep2AxMV51PoNboZSLTSCWG6Q7
+         OHFTZJ5VxrZe9JmiFhB2FpmX1jU3FSTcvT1WL9SEiFYniPZkQIZ2eygUZHBEqAj1ySqC
+         7M+hDPjyFY21n9COv2LmQeUiysEbGxMehq88G6cjcpFnkIN20Ra2oNo+ooQWBFB9mBQG
+         d2nw==
+X-Gm-Message-State: AOJu0YwJwuiNaSg+BKnF3DkFIC1ArJIclNerjU9DZ9IznnGbNEoji7s5
+	ldsA0Q0IY3UVfjYiAMv8UoatgQ==
+X-Google-Smtp-Source: AGHT+IGF9OuAWjGtYphdzWDjQPyZgfERgCXt+mOZieRcXvjvu/X9KRP0irbnabGkLGrQ7SPCxAP6iw==
+X-Received: by 2002:a05:600c:3516:b0:40c:903:5a36 with SMTP id h22-20020a05600c351600b0040c09035a36mr608634wmq.49.1701937356016;
+        Thu, 07 Dec 2023 00:22:36 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:982:cbb0:5978:2b23:4be8:d698? ([2a01:e0a:982:cbb0:5978:2b23:4be8:d698])
+        by smtp.gmail.com with ESMTPSA id w8-20020a5d6808000000b003333b0d603bsm779643wru.42.2023.12.07.00.22.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 Dec 2023 00:21:42 -0800 (PST)
-Message-ID: <a7a9a204-cfd2-4510-890d-ce3f72d5fcda@linaro.org>
-Date: Thu, 7 Dec 2023 09:21:39 +0100
+        Thu, 07 Dec 2023 00:22:35 -0800 (PST)
+Message-ID: <e851f59a-a8fe-42fa-a3e3-65fc5b8f3269@linaro.org>
+Date: Thu, 7 Dec 2023 09:22:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] media: dt-bindings: media: i2c: Document GC08A3
- bindings
-To: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: shengnan.wang@mediatek.com, yaya.chang@mediatek.com, 10572168@qq.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, yunkec@chromium.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, jacopo.mondi@ideasonboard.com,
- sakari.ailus@linux.intel.com, hverkuil-cisco@xs4all.nl, heiko@sntech.de,
- jernej.skrabec@gmail.com, macromorgan@hotmail.com, linus.walleij@linaro.org,
- laurent.pinchart@ideasonboard.com, hdegoede@redhat.com,
- tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
- andy.shevchenko@gmail.com, bingbu.cao@intel.com,
- dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20231207052016.25954-1-zhi.mao@mediatek.com>
- <20231207052016.25954-3-zhi.mao@mediatek.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231207052016.25954-3-zhi.mao@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+From: neil.armstrong@linaro.org
+Subject: Re: [PATCH v8 00/10] Enable HS-G5 support on SM8550
+Content-Language: en-US, fr
+To: Can Guo <quic_cang@quicinc.com>, bvanassche@acm.org, mani@kernel.org,
+ adrian.hunter@intel.com, vkoul@kernel.org, beanhuo@micron.com,
+ avri.altman@wdc.com, junwoo80.lee@samsung.com, martin.petersen@oracle.com
+Cc: linux-scsi@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "open list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-mediatek@lists.infradead.org>
+References: <1701520577-31163-1-git-send-email-quic_cang@quicinc.com>
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro Developer Services
+In-Reply-To: <1701520577-31163-1-git-send-email-quic_cang@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_002147_062889_36137AC8 
-X-CRM114-Status: GOOD (  18.81  )
+X-CRM114-CacheID: sfid-20231207_002237_886410_D4BAC330 
+X-CRM114-Status: GOOD (  23.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,197 +126,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/12/2023 06:20, Zhi Mao wrote:
-> Add YAML device tree binding for GC08A3 CMOS image sensor,
-> and the relevant MAINTAINERS entries.
+Hi Can,
+
+On 02/12/2023 13:36, Can Guo wrote:
+> This series enables HS-G5 support on SM8550.
 > 
-> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> ---
->  .../bindings/media/i2c/galaxycore,gc08a3.yaml | 127 ++++++++++++++++++
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  2 files changed, 129 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+> This series is rebased on below changes from Mani -
+> https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-1-manivannan.sadhasivam@linaro.org/
+> https://patchwork.kernel.org/project/linux-scsi/patch/20230908145329.154024-2-manivannan.sadhasivam@linaro.org/
 > 
-> diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
-> new file mode 100644
-> index 000000000000..1802ff1c8a12
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
-> @@ -0,0 +1,127 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +# Copyright (c) 2020 MediaTek Inc.
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc08a3.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: GalaxyCore gc08a3 1/4" 8M Pixel MIPI CSI-2 sensor
-> +
-> +maintainers:
-> +  - Zhi Mao <zhi.mao@mediatek.com>
-> +
-> +description:
-> +  The gc08a3 is a raw image sensor with an MIPI CSI-2 image data
-> +  interface and CCI (I2C compatible) control bus. The output format
-> +  is raw Bayer.
-> +
-> +properties:
-> +  compatible:
-> +    const: galaxycore,gc08a3
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    description:
-> +      External clock for the sensor.
-> +    maxItems: 1
+> This series is tested on below HW combinations -
+> SM8550 MTP + UFS4.0
+> SM8550 QRD + UFS3.1
+> SM8450 MTP + UFS3.1 (for regression test)
+> SM8350 MTP + UFS3.1 (for regression test)
+> 
+> Note that during reboot test on above platforms, I occasinally hit PA (PHY)
+> error during the 2nd init, this is not related with this series. A fix for
+> this is mentioned in below patchwork -
+> 
+> https://patchwork.kernel.org/project/linux-scsi/patch/1698145815-17396-1-git-send-email-quic_ziqichen@quicinc.com/
+> 
+> Also note that on platforms, which have two sets of UFS PHY settings are
+> provided (say G4 and no-G4, G5 and no-G5). The two sets of PHY settings are
+> basically programming different values to different registers, mixing the
+> two sets and/or overwriting one set with another set is definitely not
+> blessed by UFS PHY designers. For SM8550, this series will make sure we
+> honor the rule. However, for old targets Mani and I will fix them in
+> another series in future.
 
-Items must be defined or just drop the property. How did it even appear?
-Who asked for this? Your changelog is so vague that anything can happen
-with this code and you will claim "it was review fix". No, you must
-explain the changes.
+You dropped my tested-by tags, but I did a new test with v8 and:
 
-Go back to previous review and implement all the changes requested.
+Tested-by: Neil Armstrong <neil.armstrong@linaro.org> # on SM8550-QRD
+Tested-by: Neil Armstrong <neil.armstrong@linaro.org> # on SM8650-QRD
 
-> +
-> +  clock-frequency:
-> +    description:
-> +      Frequency of the clock in Hz.
+Thanks,
+Neil
 
-Drop property
-
-
-> +
-> +  dovdd-supply: true
-> +
-> +  avdd-supply: true
-> +
-> +  dvdd-supply: true
-> +
-> +  enable-gpios:
-> +    description: Reference to the GPIO connected to the RESETB pin. Active low.
-
-That's not enable, but reset-gpios.
-
-> +    maxItems: 1
-> +
-> +  port:
-> +    $ref: /schemas/graph.yaml#/$defs/port-base
-> +    additionalProperties: false
-> +    description:
-> +      Output port node, single endpoint describing the CSI-2 transmitter.
-> +
-> +    properties:
-> +      endpoint:
-> +        $ref: /schemas/media/video-interfaces.yaml#
-> +        unevaluatedProperties: false
-> +
-> +        properties:
-> +          data-lanes:
-> +            oneOf:
-> +              - items:
-> +                  - const: 1
-> +                  - const: 2
-> +                  - const: 3
-> +                  - const: 4
-> +              - items:
-> +                  - const: 1
-> +                  - const: 2
-> +
-> +          link-frequencies: true
-> +
-> +        required:
-> +          - data-lanes
-> +          - link-frequencies
-> +
-> +    required:
-> +      - endpoint
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
-> +  - clock-frequency
-> +  - dovdd-supply
-> +  - avdd-supply
-> +  - dvdd-supply
-> +  - enable-gpios
-> +  - port
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/gpio/gpio.h>
-> +
-> +    i2c {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        sensor0@31 {
-> +            status = "okay";
-
-Drop. Do you see it anywhere in the bindings examples?
-
-> +            compatible = "galaxycore,gc08a3";
-> +            reg = <0x31>;
-> +
-> +            clocks = <&gc08a3_clk>;
-> +            clock-names = "xvclk";
-
-Drop
-
-> +            clock-frequency = <24000000>;
-
-Drop
-
-> +
-> +            enable-gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
-> +
-> +            avdd-supply = <&gc08a3_avdd>;
-> +            dovdd-supply = <&ogc08a3_dovdd>;
-> +            dvdd-supply = <&gc08a3_dvdd>;
-> +
-> +            port {
-> +                sensor0_out_2: endpoint {
-> +                    data-lanes = <1 2 3 4>;
-> +                    link-frequencies = /bits/ 64 <336000000 207000000>;
-> +                    remote-endpoint = <&seninf_csi_port_0_in_2>;
-> +                };
-> +            };
-> +        };
-> +
-
-Drop stray blank line.
-
-> +    };
-> +
-> +...
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> index b752f8902367..1a16a94fb202 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> @@ -502,6 +502,8 @@ patternProperties:
->      description: Fujitsu Ltd.
->    "^fxtec,.*":
->      description: FX Technology Ltd.
-> +  "^galaxycore,.*":
-> +    description: GalaxyCore Inc.
-
-That's a duplicated patch... how many of this people are going to send?
-
-Drop and rebase on top of previous work of people.
-
-
-Best regards,
-Krzysztof
+> 
+> v7 -> v8:
+> In "scsi: ufs: ufs-qcom: Add support for UFS device version detection", fixed a BUG introduced from v6 -> v7. The spare register is added since HW ver 5, although reading the spare register on HW ver 4 is just getting 0x0, to be on the safe side, we are exluding HW ver 4.
+> 
+> v6 -> v7:
+> 1. Rebased on linux-next, based SM8650 PHY settings are merged there, no changes to patches for UFS driver
+> 2. Addressed comments from Mani
+> 
+> v5 -> v6:
+> 1. Rebased on scsi-queue-6.8
+> 2. Addressed comments from Dmitry and Mani in patches to phy-qcom-qmp-ufs.c
+> 
+> v4 -> v5:
+> Removed two useless debug prints in patch #9
+> 
+> v3 -> v4:
+> Used .tbls_hs_overlay array instead of adding more tables with different names like .tbls_hs_g5
+> 
+> v2 -> v3:
+> 1. Addressed comments from Andrew, Mani and Bart in patch #1
+> 2. Added patch #2 as per request from Andrew and Mani
+> 3. Added patch #4 to fix a common issue on old targets, it is not necessary
+>     for this series, but put in this series only because it would be easier
+>     to maintain and no need to rebase
+> 4. Addressed comments from Dmitry and Mani in patches to phy-qcom-qmp-ufs.c
+> 
+> v1 -> v2:
+> 1. Removed 2 changes which were exposing power info in sysfs
+> 2. Removed 1 change which was moving data structs to phy-qcom-qmp-ufs.h
+> 3. Added one new change (the 1st one) to clean up usage of ufs_dev_params based on comments from Mani
+> 4. Adjusted the logic of UFS device version detection according to comments from Mani:
+> 	4.1 For HW version < 0x5, go through dual init
+>   	4.2 For HW version >= 0x5
+> 		a. If UFS device version is populated, one init is required
+> 		b. If UFS device version is not populated, go through dual init
+> 
+> Bao D. Nguyen (1):
+>    scsi: ufs: ufs-qcom: Add support for UFS device version detection
+> 
+> Can Guo (9):
+>    scsi: ufs: host: Rename structure ufs_dev_params to ufs_host_params
+>    scsi: ufs: ufs-qcom: No need to set hs_rate after
+>      ufshcd_init_host_param()
+>    scsi: ufs: ufs-qcom: Setup host power mode during init
+>    scsi: ufs: ufs-qcom: Allow the first init start with the maximum
+>      supported gear
+>    scsi: ufs: ufs-qcom: Limit HS-G5 Rate-A to hosts with HW version 5
+>    scsi: ufs: ufs-qcom: Set initial PHY gear to max HS gear for HW ver 4
+>      and newer
+>    scsi: ufs: ufs-qcom: Check return value of phy_set_mode_ext()
+>    phy: qualcomm: phy-qcom-qmp-ufs: Rectify SM8550 UFS HS-G4 PHY Settings
+>    phy: qualcomm: phy-qcom-qmp-ufs: Add High Speed Gear 5 support for
+>      SM8550
+> 
+>   drivers/phy/qualcomm/phy-qcom-qmp-pcs-ufs-v6.h     |   2 +
+>   drivers/phy/qualcomm/phy-qcom-qmp-qserdes-com-v6.h |   2 +
+>   .../qualcomm/phy-qcom-qmp-qserdes-txrx-ufs-v6.h    |   9 +
+>   drivers/phy/qualcomm/phy-qcom-qmp-ufs.c            | 191 ++++++++++++++++++---
+>   drivers/ufs/host/ufs-exynos.c                      |   7 +-
+>   drivers/ufs/host/ufs-hisi.c                        |  11 +-
+>   drivers/ufs/host/ufs-mediatek.c                    |  12 +-
+>   drivers/ufs/host/ufs-qcom.c                        |  97 ++++++++---
+>   drivers/ufs/host/ufs-qcom.h                        |   7 +-
+>   drivers/ufs/host/ufshcd-pltfrm.c                   |  69 ++++----
+>   drivers/ufs/host/ufshcd-pltfrm.h                   |  10 +-
+>   11 files changed, 309 insertions(+), 108 deletions(-)
+> 
 
 
