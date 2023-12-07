@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51B2EC4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 21:01:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE6BAC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 23:32:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MdPKTQvikcFzBI2RTYZyy4gFDnq6u21N7N8J2zOn8H8=; b=XNWVjHbXRpwQUS3cZxiHK+bgsZ
-	CcrGqzjAWkkOFE70be/yKtv4+tpa4+izrGkKqqkup9H5M5i2i0okHz5L8WVj0L/uycTNk7xNNit/F
-	xFFTOUeJ0ajNqGzYejXhTbUs55ro3PrRzN4nKbqX7UTjTwnMxb0H+D4fAFZrcsba1OrXNKCr/NbLN
-	MsXu08gVnhY8Jw9q/0JckTAWIiRuSDpg7+NNvcV/35H0LjQCS/JZIRywlcOLz96ags3AXIWr50afu
-	gbO972mhBF89hHaio1La+X/8+ijtPfiZCJF75bgay6cSVkQb64U4yzkaF529BbsRSW2BKYYi3kPtS
-	QOMQNwuw==;
+	bh=0HU2ROMB1RwgpNN/1oH4E+VcxpemIY8yS+CXoJjHUUU=; b=Etod+vwfUUxZfxoNncauxszxsj
+	oMvDb/HjAFTi4n9th6RiRNngCbZZmkNsfGitSfEeQneoR6m58PTeahP4CH8hjwA5Mg8LWhjsQActH
+	bp1DhnKKqPnj87gSSfkMNsxLNfAxwJiczgUEtRNaCT7sNIOCqNylE41sZuyPeiOaej1w2bybQrq9o
+	oPvIKMWWb+Wsz8io2RiOs6+hI4CONvNdG9KYdLBycEmMh1141Fg2sm7ive+rDRCczbnl24Sj8dmvt
+	5niNDlZnQUxApQNfr/twgyMalUGFNtruWkWTMLR+qb2fGoqvi53m+oIpi+a3khDdVvp02oef/KiGf
+	p1gy6AHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBLV3-00DuIw-0a;
-	Thu, 07 Dec 2023 21:01:37 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.184])
+	id 1rBNqr-00EDWB-1N;
+	Thu, 07 Dec 2023 23:32:17 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBLV0-00DuHp-1r
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 21:01:36 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 95FB118005D;
-	Thu,  7 Dec 2023 21:01:30 +0000 (UTC)
-Received: from [192.168.100.159] (50-251-239-81-static.hfc.comcastbusiness.net [50.251.239.81])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id 7760A13C2B0;
-	Thu,  7 Dec 2023 13:01:29 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 7760A13C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1701982889;
-	bh=u6waVsnKLrpkLbU4WWVvRu6hgYQIyJF8c8oD5cWGx+w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YdsnpsvZBSw16q2zOp34pgYg/thcdtZmjZ8sPK5i3te2yZM8+rcw/SdLl4EYR5Ppt
-	 Fdh2l6nkyCPkm08u6wOb00rRKAla88a/fABx1+VgekzTJnsUHV8QT9mW1GX3GxfC5+
-	 o0mwb0xQpYDOd2/JMfsfj1IqYmnx+XKWeS+BTsKk=
-Message-ID: <487ef0bb-5930-e998-7daa-6f57d09d682c@candelatech.com>
-Date: Thu, 7 Dec 2023 13:01:29 -0800
+	id 1rBNqn-00EDV8-2l;
+	Thu, 07 Dec 2023 23:32:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 263EBB82AC1;
+	Thu,  7 Dec 2023 23:32:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4BADC43391;
+	Thu,  7 Dec 2023 23:32:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1701991930;
+	bh=C/W5Zqmm3kI2CHjWroHcjD9PIpXCfj28AU66trdDTUM=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=d+yTdQC4dTkX9Gr/sFWB02o7o7wyinsoIGO7q3AGOPK3ieUcmiwO/zr9nNcX095N4
+	 wLWTs14qPYf1jwm/rVHBI6V77ZbFaEVADKJdgr5Uwsk+U753ad+M9BqYSjUCxpTE4X
+	 1VesagEAATWfxPLUe31lVDzFaX+Y9Hs9LCDmyu/+LNRo69p3gE6ol+ANKZnsBsPd87
+	 lwDmZfusP93IVMch4/L0N7H/3WlppJgjXXGVUm0JyJ3yL50TI82Thj4guZbw//ftGt
+	 U3prV3km6go6hodv9yErhFeLDLEp24Tkz7Zj2HEyKNJ+vATvX6MFSe5V9C1EWOxo57
+	 edwKNNuVh/4iw==
+Received: by mail-lj1-f178.google.com with SMTP id 38308e7fff4ca-2ca0715f0faso19838821fa.0;
+        Thu, 07 Dec 2023 15:32:10 -0800 (PST)
+X-Gm-Message-State: AOJu0Yw6toyiB4gmTb1kiT1ZiSymxOigPPmkRCrjdvQUTONXfhbZQdZB
+	3syDjF8QU39uJXYOZ91EAyZtp3Plp9wD65DsGQ==
+X-Google-Smtp-Source: AGHT+IEXkXUCSw2a+d4ytwMlKqOGSXhd9HUHp4O6aHLJqy1GBZczWauiJZgZq9F9PdRnsM1RFPLW0gm/6S/wwTE4IGA=
+X-Received: by 2002:a2e:804a:0:b0:2cb:20f0:b869 with SMTP id
+ p10-20020a2e804a000000b002cb20f0b869mr95776ljg.12.1701991928954; Thu, 07 Dec
+ 2023 15:32:08 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH 2/8] wifi: mt76: mt7996: add txpower setting support
-Content-Language: en-US
-To: shayne.chen@mediatek.com, "nbd@nbd.name" <nbd@nbd.name>
-Cc: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- =?UTF-8?B?QWxsZW4gWWUgKOiRieiKt+WLsyk=?= <Allen.Ye@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
- "lorenzo@kernel.org" <lorenzo@kernel.org>, Ryder Lee
- <Ryder.Lee@mediatek.com>, =?UTF-8?B?U3RhbmxleVlQIFdhbmcgKOeOi+S+kemCpik=?=
- <StanleyYP.Wang@mediatek.com>
-References: <20231102100302.22160-1-shayne.chen@mediatek.com>
- <20231102100302.22160-2-shayne.chen@mediatek.com>
- <bbf8fe7e-1098-5b33-8ed6-dee38329edf6@candelatech.com>
- <8c5fbe88bcc5b55e6d80247144e4f890fd68ef27.camel@mediatek.com>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-In-Reply-To: <8c5fbe88bcc5b55e6d80247144e4f890fd68ef27.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-MDID: 1701982892-SRca-0hEqb86
-X-MDID-O: us5;at1;1701982892;SRca-0hEqb86;<greearb@candelatech.com>;0a87ce8853dfc5be48bfe846d29ed5d9
+References: <fd1b62aa006556f29f37535814abfe41be63f7ae.1700746094.git.robin.murphy@arm.com>
+In-Reply-To: <fd1b62aa006556f29f37535814abfe41be63f7ae.1700746094.git.robin.murphy@arm.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 8 Dec 2023 07:31:56 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9HG_Y+vJ4g_V+5DXEFsPP=2vudyxbhcrTXYKn0E=9sLQ@mail.gmail.com>
+Message-ID: <CAAOTY_9HG_Y+vJ4g_V+5DXEFsPP=2vudyxbhcrTXYKn0E=9sLQ@mail.gmail.com>
+Subject: Re: [PATCH v3] drm/mediatek: Stop using iommu_present()
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, yong.wu@mediatek.com, 
+	airlied@gmail.com, daniel@ffwll.ch, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_130134_672554_882BEDC0 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20231207_153214_198099_E2E67AC8 
+X-CRM114-Status: GOOD (  17.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,56 +81,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/7/23 09:15, shayne.chen@mediatek.com wrote:
-> On Fri, 2023-12-01 at 15:40 -0800, Ben Greear wrote:
->>   	
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>   On 11/2/23 03:02, Shayne Chen wrote:
->>> Add support for setting txpower from upper layer and configuring
->> per-rate
->>> txpower limit table.
->>
->> Hello Shayne,
-> 
-> Hi Ben,
->>
->>   From what I can tell, this patch causes STA vdevs to no longer send
->> probe
->> requests when trying to associate.  I bisected to this in Felix's
->> tree that holds
->> this patch.
->>
->> Tested on x86-64, mtk7996 radio.  Specifically
->> debugged on 2.4Ghz radio, but I think it affects 5Ghz too.
->>
-> I have done some tests but didn't face this issue. Could you also use
-> the newer firmware to test if it still happens?
+Hi, Robin:
 
-The problem remains with this firmware:
+Robin Murphy <robin.murphy@arm.com> =E6=96=BC 2023=E5=B9=B411=E6=9C=8823=E6=
+=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=889:41=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Remove the pointless check. If an IOMMU is providing transparent DMA API
+> ops for any device(s) we care about, the DT code will have enforced the
+> appropriate probe ordering already. And if the IOMMU *is* entirely
+> absent, then attempting to go ahead with CMA and either suceeding or
+> failing decisively seems more useful than deferring forever.
 
-[root@ct523c-a0af ~]# ethtool -i wlan2
-driver: mt7996e
-version: 6.7.0-rc3+
-firmware-version: ____000000-20231012001354
-expansion-rom-version:
-bus-info: 0000:0d:00.0
-supports-statistics: yes
-supports-test: no
-supports-eeprom-access: no
-supports-register-dump: no
-supports-priv-flags: no
+Applied to mediatek-drm-next [1], thanks.
 
-Do you have a kernel tree that you are using successfully (not an owrt feed of patches)
-that you can share?
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
-Thanks,
-Ben
+Regards,
+Chun-Kuang.
 
-
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
-
-
+>
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+>
+> I realised that last time I sent this I probably should have CCed a
+> wider audience of reviewers, so here's one with an updated commit
+> message as well to make the resend more worthwhile.
+>
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 4 ----
+>  1 file changed, 4 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
+iatek/mtk_drm_drv.c
+> index 2dfaa613276a..48581da51857 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -5,7 +5,6 @@
+>   */
+>
+>  #include <linux/component.h>
+> -#include <linux/iommu.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/of_platform.h>
+> @@ -608,9 +607,6 @@ static int mtk_drm_bind(struct device *dev)
+>         struct drm_device *drm;
+>         int ret, i;
+>
+> -       if (!iommu_present(&platform_bus_type))
+> -               return -EPROBE_DEFER;
+> -
+>         pdev =3D of_find_device_by_node(private->mutex_node);
+>         if (!pdev) {
+>                 dev_err(dev, "Waiting for disp-mutex device %pOF\n",
+> --
+> 2.39.2.101.g768bb238c484.dirty
+>
 
