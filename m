@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E711C46CA0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 06:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B9FCC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 06:56:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P021h3HtosWIlf7YJKZvwxMCdUSfZ2ZSmafpEm4qnvY=; b=RtWjLM6mswgoW2pJdzklINxPH+
-	PSKtuHeRhLCVJCOME++GcfZB8jEUagiWTKoA28p1knITqgbJK4dAng8K9F+X9KDzCgP0j3bBggP4i
-	hJU53scdoa82oCCLw3REPKyctqJWizdOqrCiymymY+2s/Ej6erKwsJEDtZc9DqFFgpSscLimq6Jr1
-	qG0oMuVEr0C855rr9lQp+n4WeEcHeGty0VENBc64Qq5QMN9K8s0+EJDGlYswXYrEFk1hKCWKR60i2
-	swF8SUqVqTioVfcm3dADjnWfDa4MPZCMturZA3GvmUinjUG/ts72cUYS/qSNjtxdw2vpE+HXQ7Shq
-	lR3huWwQ==;
+	bh=RCJcyyZ8EMNjvJVmY4Ygro4ZBJTkkM+cPjU66561fik=; b=OYxEvspz3Z7cQIGJW4DX1z5ywU
+	wawTTnbt7eqmV34nv36UBmWYHcyn93I9iMaxlQfx6h/9LC8r7LIPNCUzYpKE//mbx2X1EUB7Mwq/o
+	a8vvxZB6ZeUpz2Q37mFU2f92KAByayMg9+ipZHRtn8CyP47x9WLllCeOF1RAxP51hKYiAsjs+NhPU
+	KKUEF9bLszTdJmnM0P24SZw/Az0/0sq9J6I96AAxXkXNw186rR8wgAvfXHjp0KxaeSP7esXo+9LzX
+	eLvrLFRhZGZpsOPJrhB/gKOx/Jcb0m+qlLTM1VlYZL9pYROTtbAf0aC+beW+qFLJhVg8vOlgiFTTK
+	vqsCCx3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB8EB-00C1rE-39;
-	Thu, 07 Dec 2023 06:51:20 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1rB8JA-00C2J3-0x;
+	Thu, 07 Dec 2023 06:56:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB8E9-00C1pb-17
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 06:51:18 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40c2bb872e2so956835e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Dec 2023 22:51:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701931873; x=1702536673; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=P021h3HtosWIlf7YJKZvwxMCdUSfZ2ZSmafpEm4qnvY=;
-        b=aoM3V2h+e78xP/Bqj3+84cnCvUQOtRp2LMw8uuZ2w0c7fwL7269xFTQWIdYjgh7Rmk
-         UDIFee8T+dBR5fGxUfKrhAYOxn135F/asoLNgO0VVC+WEfYd2ZvENLDeKeLN2RLgarDg
-         1muck3hcz5WwcvMHuDwf5OcCFi2JNFms65ZyYe1Pw8Ypmo2dKGLC4X3GYNJHguvWt49F
-         GKAeOt7aHU/lRKEpgtevLUJHBugYTXkaBw6yKdifHqXl3BsprArfsD/V9iwEp0sDNUbs
-         jBEAr8bAdvBsWFEj545ZK4Av6lbI9l4eCNtg77NPXwG1LSayT1LoPEF6seMgm9B3GN9u
-         qOTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701931873; x=1702536673;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=P021h3HtosWIlf7YJKZvwxMCdUSfZ2ZSmafpEm4qnvY=;
-        b=QVlPS/DGtsDq0LhK/oM83yBZM3lJsavioRejK0K5VoO/JzpafcJSs0VgfOZ5rAwC36
-         1hz5NJTI9p1lSqwaugY0/N7jmwngvoOPFrEx8RG8ya3TlZbTN1HF3FsbZ71u4z40gQiB
-         IB6945szMGygVBI/TeajxzeWmcxVqVI/OfHHINXCwNQIMsZHsyxGgxZJJVacaLO5+Os/
-         /AUo4EEVglXRr1gTxUEg54GmlWwyTn5cqVT+05Z2Npqwk6XuLAmpQVf3UDqzjUu5xvwT
-         6EHVZTu1KKz0I5b4slQcVEDsnKQMkvfMj5Z6QabGla1QBsXXwJhjR6U7xvgS18znUA4u
-         2u9A==
-X-Gm-Message-State: AOJu0YwaMV3/05OmG2xLzynpg07cY0loowNfTBo2ccn8x5Gp0ZbmbN2o
-	K6Tti1xQyCpsq3d2tpsrHv8l1g==
-X-Google-Smtp-Source: AGHT+IFhsEzLwvQ1xEOGNTKHZpCXxRYgK+1SXpQhMJn2ZA471m64pWH+rUiU1rMJx9WFhAf1qzAyhw==
-X-Received: by 2002:a05:600c:3381:b0:40b:5f03:b3f6 with SMTP id o1-20020a05600c338100b0040b5f03b3f6mr670880wmp.280.1701931873077;
-        Wed, 06 Dec 2023 22:51:13 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id l7-20020a1c7907000000b0040b4562ee20sm450698wme.0.2023.12.06.22.51.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Dec 2023 22:51:12 -0800 (PST)
-Date: Thu, 7 Dec 2023 09:51:07 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
- mt7530_setup_port5() if port 5 is disabled
-Message-ID: <90fde560-054e-4188-b15c-df2e082d3e33@moroto.mountain>
-References: <20231118123205.266819-1-arinc.unal@arinc9.com>
- <20231118123205.266819-8-arinc.unal@arinc9.com>
- <20231121185358.GA16629@kernel.org>
- <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
+	id 1rB8J7-00C2Id-0o;
+	Thu, 07 Dec 2023 06:56:26 +0000
+X-UUID: b90d14dc94cd11ee9b09ad09c76753c8-20231206
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RCJcyyZ8EMNjvJVmY4Ygro4ZBJTkkM+cPjU66561fik=;
+	b=UTxcd1kGvh7vpHDIFyBSoCNlyxzPxfKVeJABcH6/JMM/jSqvAACF6uWEv+CPcCB5ELDqzcXrHuZ4DBtBL73H3eRBEiANJzHcjetxCgSQ71SXEgAXSD7PevKgJPz9vyiBjUkKV35yPUHvxfWAcyrjOmYc9x5rwoKJhYjQboSTPx0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:1b0fc96a-ecfa-4f7c-8f6f-3a1187e134b7,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5d391d7,CLOUDID:fae8ea60-c89d-4129-91cb-8ebfae4653fc,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: b90d14dc94cd11ee9b09ad09c76753c8-20231206
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <axe.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 531175737; Wed, 06 Dec 2023 23:56:18 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 7 Dec 2023 14:35:40 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 7 Dec 2023 14:35:39 +0800
+From: Axe Yang <axe.yang@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wenbin
+ Mei <wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Axe Yang
+	<axe.yang@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v4 1/2] dt-bindings: mmc: mtk-sd: add tuning steps related property
+Date: Thu, 7 Dec 2023 14:35:34 +0800
+Message-ID: <20231207063535.29546-2-axe.yang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231207063535.29546-1-axe.yang@mediatek.com>
+References: <20231207063535.29546-1-axe.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_225117_408587_EFEA77EC 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20231206_225625_301417_05737393 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,67 +90,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 02, 2023 at 11:45:42AM +0300, Arınç ÜNAL wrote:
-> 
-> I'm not sure why it doesn't catch that for mt7530_setup_port5() to run
-> here, priv->p5_intf_sel must be either P5_INTF_SEL_PHY_P0 or
-> P5_INTF_SEL_PHY_P4. And for that to happen, the interface variable will be
-> initialised.
-> 
-> for_each_child_of_node(dn, mac_np) {
-> 	if (!of_device_is_compatible(mac_np,
-> 				     "mediatek,eth-mac"))
-> 		continue;
-> 
-> 	ret = of_property_read_u32(mac_np, "reg", &id);
-> 	if (ret < 0 || id != 1)
-> 		continue;
-> 
-> 	phy_node = of_parse_phandle(mac_np, "phy-handle", 0);
-> 	if (!phy_node)
-> 		continue;
-> 
-> 	if (phy_node->parent == priv->dev->of_node->parent) {
-> 		ret = of_get_phy_mode(mac_np, &interface);
-> 		if (ret && ret != -ENODEV) {
-> 			of_node_put(mac_np);
-> 			of_node_put(phy_node);
-> 			return ret;
-> 		}
-> 		id = of_mdio_parse_addr(ds->dev, phy_node);
-> 		if (id == 0)
-> 			priv->p5_intf_sel = P5_INTF_SEL_PHY_P0;
-> 		if (id == 4)
-> 			priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
-> 	}
-> 	of_node_put(mac_np);
-> 	of_node_put(phy_node);
-> 	break;
-> }
-> 
-> if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 ||
->     priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
-> 	mt7530_setup_port5(ds, interface);
+Add 'mediatek,tuning-steps' setting. This property will give MSDC
+a chance to extend tuning steps up to 64. With more tuning steps,
+MSDC may achieve a more optimal calibration result, thus avoiding
+potential CRC issues.
 
-Smatch doesn't know:
-1) What the value of priv->p5_intf_sel is going into this function
-2) We enter the for_each_child_of_node() loop
-3) That if (phy_node->parent == priv->dev->of_node->parent) { is
-   definitely true for one element on the list.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+---
+ Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-Looking at how Smatch parses this code, I could probably improve problem
-#1 a bit.  Right now Smatch sees "struct mt7530_priv *priv = ds->priv;"
-and "priv->p5_intf_sel" is unknown, but I could probably improve it to
-where it says that it's in the 1-3 range.  But that doesn't help here
-and it doesn't address problems 2 and 3.
-
-It's a hard problem.
-
-regards,
-dan carpenter
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index 3fffa467e4e1..c532ec92d2d9 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -145,6 +145,15 @@ properties:
+     minimum: 0
+     maximum: 7
+ 
++  mediatek,tuning-step:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      Some SoCs need extend tuning step for better delay value to avoid CRC issue.
++      If not present, default tuning step is 32. For eMMC and SD, this can yield
++      satisfactory calibration results in most cases.
++    enum: [32, 64]
++    default: 32
++
+   resets:
+     maxItems: 1
+ 
+-- 
+2.18.0
 
 
