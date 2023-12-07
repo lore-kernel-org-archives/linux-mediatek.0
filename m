@@ -4,92 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1853DC4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 08:05:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDF7C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 08:18:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2MNjE3SeFK0nJKBmYRJMHyr7VIIHtok8kfFl8JThkGU=; b=IXyNzRTUXlT0RwmidV6yNqu6vw
-	1cK7f5VMZhTgpGoIupbx0/lwYx/l9/7prpWY8l0cPNvMf0jtnbsAPRxj9dWtYav0Sy9yc6SXgf7kf
-	W6Irn8onvatAHXPraNYOr4RcIt2TQEXkQ+9QKk+7uhkm/1qaEYPaKOqc6wC9AvS8jAWmiBRzjo7ho
-	qXScgRWBGwZZu2XtHu3JcSeheW7x6FwIlEIuGTORPsTpCJDCSBuG0M9VmjBS+9E2FBZoNIG/h8Ws6
-	Iqd7JCV5RQI9ZMdxCuLfHzNZ2O1DoJkn+WyQDvAXauzjb9V07VvA7jZAZAiAj5al1N4XJdZpjybWQ
-	Dle1xgFg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QOiHdnlRFMkFDlB5kWfckw6pOd4LrZY+T64mekZ8KZ8=; b=V965JUlSdSgo1XPql0LnBnDzL1
+	AlsNydh/JRIEme4niMZOJi5ACMT3FDzPhxOiYgACpFOkH4cn+1up6Y3M46Ab6m/neTHvUj2GViwQ/
+	Mz0vWpZHOLKPdX6vzaqy7qGADXNPtSaB5NMnlGfeXtKsOw8OVT58/etdg20pddxkkpk3pVfUrXYAb
+	hnE/IEaxS1UMVp+lyQiiQcJMzl/BE4Yz0JVI9TWOkCQ1ktuqL8eLN4mOFUpYvq5n45RaNQMUQYYB8
+	hlzwyr+9Qbxadc8BN4Li2FQNVhzhb7qVi8d/DMRXp6QWWly2fUKIE6UFmtnbT+eESRKhcwRokYRCe
+	nkYTIPTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9OE-00CA6f-0M;
-	Thu, 07 Dec 2023 08:05:46 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1rB9ac-00CBNZ-2i;
+	Thu, 07 Dec 2023 08:18:34 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9O5-00CA1L-1J;
-	Thu, 07 Dec 2023 08:05:39 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-54c7744a93fso837658a12.2;
-        Thu, 07 Dec 2023 00:05:29 -0800 (PST)
+	id 1rB9aY-00CBLE-1T
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 Dec 2023 08:18:32 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-40bda47c489so7109315e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 00:18:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701936328; x=1702541128; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=2MNjE3SeFK0nJKBmYRJMHyr7VIIHtok8kfFl8JThkGU=;
-        b=is6Ns+mPKa7nvZADe87DYxIOPLojUr1hFQy6O/hL81sUQaPN54IrxG5gU/d1gc52nv
-         gSVf6M0sBTNhtKPPtYOtEjomYc7tbLFNj40M8gLyPKEzVhdwa/1qxp/j9zdYcaXTdRsx
-         S3fdqpPcrPcxVlNWqjpdqBuCj9kRQ9R3wlee3A7UYtxeLOQSvHGcEnXvR47XSUhqOsGZ
-         d+o+DDDgkupqFuGF2E81+PK4Muny/DF1RLo64EgHdudHiVYfXqJJZ1PxqpLhf58+7Rfo
-         6EsRbgvXFz7SzGmRkQf8ZEW5zYV9h7KEAL/hoCP/+b6XbUrStOFBU5SNKMM8/sFAVx8N
-         AfOA==
+        d=linaro.org; s=google; t=1701937106; x=1702541906; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QOiHdnlRFMkFDlB5kWfckw6pOd4LrZY+T64mekZ8KZ8=;
+        b=DNCWbrjvxHoAx2k++KgU9PNVDxtnIEKgPMp/SZ3aPzRAyTp6BvfVqPjvEjwlheHsjL
+         qztVhJHARa1NlhZLxP0QVbJUT7piRQbeVsqX6/87yYQfw4r+GoBdMDVh+EK1kHZhcuCf
+         j7WHL8uwXBfAb5WyVNUpQcw8v/LnRc4ztOg9YWQF7/yo/DgcghLizjxkfKKR7m3He+zR
+         Sp65vRxY6RBBkYQlg+fNT0dmtZuCVGSUkwGoREXMVNAivmXRF+CXisgBBZ6r9Oic8ihV
+         A+jaIekPpqo/3vAHysC5uTY7GApIGe2JtxAAyQhmxL9BfFlG/eVBvo+cpRcdir1u1fzf
+         3QjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701936328; x=1702541128;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2MNjE3SeFK0nJKBmYRJMHyr7VIIHtok8kfFl8JThkGU=;
-        b=tuKAJT0NxYuJn4l5f2CuHp/z6jvLBo7y7Tnu0HRV21E12ckIKEbM5EeFTU7wbmAyl3
-         EmpVVNmva4Kjm9H3JfXFNuqP/MCyrHBuc7GSwrZSzo2WvUGWRcMqEzRvr5Fq1dqX0+7q
-         fsw8lAfauX5rt0oan06fjEvg7B4ckuljsJlhpT7AMrU8Dm+c30t9A/OqlJ3zB/PiOCrs
-         G+qKLM8IgB+O3stP5ksl2Q4UU8n6V/zT/qILUxA1SmqA/LviOuzEpqR4jM54yo1API+R
-         XxAS3smDzwkKHkfFGWpTePFM/M+GSNl0wtRKFhe6ao8NaNseThSYuuy8VBtQD7euCRFg
-         HCqQ==
-X-Gm-Message-State: AOJu0YxXnhcZXacrtIxvL2U9kA70gWoruv8Lr2Qu4V3qP3g33Ab+5ygm
-	CZa8t6yfL9FA1L0otdpYk0Y=
-X-Google-Smtp-Source: AGHT+IHGExzVJI0JNZnzMpnT/zA2jwAajmSzwuoeAVX2qr0OGkYdXz3xEXI4GuL+DpEEhlHCu53vFA==
-X-Received: by 2002:a50:baed:0:b0:54b:5f8:2df with SMTP id x100-20020a50baed000000b0054b05f802dfmr1333854ede.9.1701936328261;
-        Thu, 07 Dec 2023 00:05:28 -0800 (PST)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id a28-20020a509b5c000000b0054db2b5cd30sm480133edj.38.2023.12.07.00.05.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Dec 2023 00:05:27 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH V3 1/3] dt-bindings: vendor-prefixes: add acelink
-Date: Thu,  7 Dec 2023 09:05:10 +0100
-Message-Id: <20231207080512.3688-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
+        d=1e100.net; s=20230601; t=1701937106; x=1702541906;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QOiHdnlRFMkFDlB5kWfckw6pOd4LrZY+T64mekZ8KZ8=;
+        b=F0NkUeyJ+i+hUwqrPVcGiDX59VVFWtcPi6R9igZWifw9/wDiNQnP7cU2pK2YCId5EZ
+         Y1/ReypCKOIQCQWq0htaSg+rLLDDTnwEVt0yzqf2qY71j8aTPzzt6skV9TVKNlUwmQjO
+         eyDdthpBKwPDUmG5X/U3N20fpPeR0OmDbwG8fcVjNkXnNbF9dfXzmvfVOfiD9SuH8FKh
+         BRO0pxyM/ycWOQKjepCuZwj6oLkNy5OjSK65vG/L90h+yLpHZD2RCPDNEgdcg4P5wVh8
+         CdLfl/xxf6/OmY3qACsBJIwsVzwv7ciyoycs08SRRp3aXkNClAOQhQaJ/KTob+Jx4Cya
+         gHHw==
+X-Gm-Message-State: AOJu0YzTcAjtEyO8sZZ/Cmt3hpaLZUv9VcfcP7TBJUzj4805Yt33XsPp
+	KXJPqDKtb1Y1vnCqs6KwR5AniA==
+X-Google-Smtp-Source: AGHT+IG0Hqjq4jL95ujUQNv0S8dq6POI/VWfXbt1AkrXJOS/hFOqrD20mf12V0yHjuu6XI2Gf3wfZQ==
+X-Received: by 2002:a05:600c:6985:b0:40c:ddd:5758 with SMTP id fp5-20020a05600c698500b0040c0ddd5758mr1451711wmb.12.1701937105870;
+        Thu, 07 Dec 2023 00:18:25 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.218.27])
+        by smtp.gmail.com with ESMTPSA id o13-20020adfe80d000000b003333d46a9e8sm765592wrm.56.2023.12.07.00.18.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 Dec 2023 00:18:25 -0800 (PST)
+Message-ID: <1d58c2b9-4206-409c-b312-87f4fb649512@linaro.org>
+Date: Thu, 7 Dec 2023 09:18:20 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
+Content-Language: en-US
+To: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org
+Cc: shengnan.wang@mediatek.com, yaya.chang@mediatek.com, 10572168@qq.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, yunkec@chromium.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, jacopo.mondi@ideasonboard.com,
+ sakari.ailus@linux.intel.com, hverkuil-cisco@xs4all.nl, heiko@sntech.de,
+ jernej.skrabec@gmail.com, macromorgan@hotmail.com, linus.walleij@linaro.org,
+ laurent.pinchart@ideasonboard.com, hdegoede@redhat.com,
+ tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
+ andy.shevchenko@gmail.com, bingbu.cao@intel.com,
+ dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231207052016.25954-1-zhi.mao@mediatek.com>
+ <20231207052016.25954-2-zhi.mao@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzTRLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+wsGUBBMBCgA+FiEE
+ m9B+DgxR+NWWd7dUG5NDfTtBYpsFAmI+BxMCGwMFCRRfreEFCwkIBwIGFQoJCAsCBBYCAwEC
+ HgECF4AACgkQG5NDfTtBYptgbhAAjAGunRoOTduBeC7V6GGOQMYIT5n3OuDSzG1oZyM4kyvO
+ XeodvvYv49/ng473E8ZFhXfrre+c1olbr1A8pnz9vKVQs9JGVa6wwr/6ddH7/yvcaCQnHRPK
+ mnXyP2BViBlyDWQ71UC3N12YCoHE2cVmfrn4JeyK/gHCvcW3hUW4i5rMd5M5WZAeiJj3rvYh
+ v8WMKDJOtZFXxwaYGbvFJNDdvdTHc2x2fGaWwmXMJn2xs1ZyFAeHQvrp49mS6PBQZzcx0XL5
+ cU9ZjhzOZDn6Apv45/C/lUJvPc3lo/pr5cmlOvPq1AsP6/xRXsEFX/SdvdxJ8w9KtGaxdJuf
+ rpzLQ8Ht+H0lY2On1duYhmro8WglOypHy+TusYrDEry2qDNlc/bApQKtd9uqyDZ+rx8bGxyY
+ qBP6bvsQx5YACI4p8R0J43tSqWwJTP/R5oPRQW2O1Ye1DEcdeyzZfifrQz58aoZrVQq+innR
+ aDwu8qDB5UgmMQ7cjDSeAQABdghq7pqrA4P8lkA7qTG+aw8Z21OoAyZdUNm8NWJoQy8m4nUP
+ gmeeQPRc0vjp5JkYPgTqwf08cluqO6vQuYL2YmwVBIbO7cE7LNGkPDA3RYMu+zPY9UUi/ln5
+ dcKuEStFZ5eqVyqVoZ9eu3RTCGIXAHe1NcfcMT9HT0DPp3+ieTxFx6RjY3kYTGLOwU0EVUNc
+ NAEQAM2StBhJERQvgPcbCzjokShn0cRA4q2SvCOvOXD+0KapXMRFE+/PZeDyfv4dEKuCqeh0
+ hihSHlaxTzg3TcqUu54w2xYskG8Fq5tg3gm4kh1Gvh1LijIXX99ABA8eHxOGmLPRIBkXHqJY
+ oHtCvPc6sYKNM9xbp6I4yF56xVLmHGJ61KaWKf5KKWYgA9kfHufbja7qR0c6H79LIsiYqf92
+ H1HNq1WlQpu/fh4/XAAaV1axHFt/dY/2kU05tLMj8GjeQDz1fHas7augL4argt4e+jum3Nwt
+ yupodQBxncKAUbzwKcDrPqUFmfRbJ7ARw8491xQHZDsP82JRj4cOJX32sBg8nO2N5OsFJOcd
+ 5IE9v6qfllkZDAh1Rb1h6DFYq9dcdPAHl4zOj9EHq99/CpyccOh7SrtWDNFFknCmLpowhct9
+ 5ZnlavBrDbOV0W47gO33WkXMFI4il4y1+Bv89979rVYn8aBohEgET41SpyQz7fMkcaZU+ok/
+ +HYjC/qfDxT7tjKXqBQEscVODaFicsUkjheOD4BfWEcVUqa+XdUEciwG/SgNyxBZepj41oVq
+ FPSVE+Ni2tNrW/e16b8mgXNngHSnbsr6pAIXZH3qFW+4TKPMGZ2rZ6zITrMip+12jgw4mGjy
+ 5y06JZvA02rZT2k9aa7i9dUUFggaanI09jNGbRA/ABEBAAHCwXwEGAEKACYCGwwWIQSb0H4O
+ DFH41ZZ3t1Qbk0N9O0FimwUCYDzvagUJFF+UtgAKCRAbk0N9O0Fim9JzD/0auoGtUu4mgnna
+ oEEpQEOjgT7l9TVuO3Qa/SeH+E0m55y5Fjpp6ZToc481za3xAcxK/BtIX5Wn1mQ6+szfrJQ6
+ 59y2io437BeuWIRjQniSxHz1kgtFECiV30yHRgOoQlzUea7FgsnuWdstgfWi6LxstswEzxLZ
+ Sj1EqpXYZE4uLjh6dW292sO+j4LEqPYr53hyV4I2LPmptPE9Rb9yCTAbSUlzgjiyyjuXhcwM
+ qf3lzsm02y7Ooq+ERVKiJzlvLd9tSe4jRx6Z6LMXhB21fa5DGs/tHAcUF35hSJrvMJzPT/+u
+ /oVmYDFZkbLlqs2XpWaVCo2jv8+iHxZZ9FL7F6AHFzqEFdqGnJQqmEApiRqH6b4jRBOgJ+cY
+ qc+rJggwMQcJL9F+oDm3wX47nr6jIsEB5ZftdybIzpMZ5V9v45lUwmdnMrSzZVgC4jRGXzsU
+ EViBQt2CopXtHtYfPAO5nAkIvKSNp3jmGxZw4aTc5xoAZBLo0OV+Ezo71pg3AYvq0a3/oGRG
+ KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
+ fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231207052016.25954-2-zhi.mao@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_000537_452025_9F46174C 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231207_001830_490552_8C8D9069 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,32 +149,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On 07/12/2023 06:20, Zhi Mao wrote:
+> Add a V4L2 sub-device driver for Galaxycore GC08A3 image sensor.
+> 
+> Reviewed-By: yunkec@chromium.org
 
-Acelink is a Taiwan company providing network products (routers, access
-points, switches, cameras and more).
+I don't see review given here:
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
----
- Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+https://lore.kernel.org/linux-media/20231123115104.32094-1-zhi.mao@mediatek.com/
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-index 309b94c328c8..503a3caf6fc9 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-@@ -39,6 +39,8 @@ patternProperties:
-     description: ShenZhen Asia Better Technology Ltd.
-   "^acbel,.*":
-     description: Acbel Polytech Inc.
-+  "^acelink,.*":
-+    description: Acelink Technology Co., Ltd.
-   "^acer,.*":
-     description: Acer Inc.
-   "^acme,.*":
--- 
-2.35.3
+This does not look like real review. Where was it performed? How
+thorough was it? How many review iterations did it include?  Why there
+is no name but anonymous review?
+
+
+
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> ---
+>  drivers/media/i2c/Kconfig  |   14 +
+>  drivers/media/i2c/Makefile |    1 +
+>  drivers/media/i2c/gc08a3.c | 1888 ++++++++++++++++++++++++++++++++++++
+>  3 files changed, 1903 insertions(+)
+>  create mode 100644 drivers/media/i2c/gc08a3.c
+> 
+
+...
+
+> +static inline struct gc08a3 *to_gc08a3(struct v4l2_subdev *sd)
+> +{
+> +	return container_of(sd, struct gc08a3, sd);
+> +}
+> +
+> +static int gc08a3_power_on(struct device *dev)
+> +{
+> +	struct i2c_client *client = to_i2c_client(dev);
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct gc08a3 *gc08a3 = to_gc08a3(sd);
+> +	int ret;
+> +
+> +	gpiod_set_value_cansleep(gc08a3->enable_gpio, 0);
+
+Why do you put make enable GPIO low? That's not how enable GPIO is
+supposed to work...
+
+> +	usleep_range(GC08A3_MIN_SLEEP_US, GC08A3_MAX_SLEEP_US);
+> +
+> +	ret = regulator_bulk_enable(GC08A3_NUM_SUPPLIES, gc08a3->supplies);
+> +	if (ret < 0) {
+> +		dev_err(gc08a3->dev, "failed to enable regulators: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = clk_prepare_enable(gc08a3->xclk);
+> +	if (ret < 0) {
+> +		regulator_bulk_disable(GC08A3_NUM_SUPPLIES, gc08a3->supplies);
+> +		dev_err(gc08a3->dev, "clk prepare enable failed\n");
+> +		return ret;
+> +	}
+> +
+> +	usleep_range(GC08A3_MIN_SLEEP_US, GC08A3_MAX_SLEEP_US);
+> +
+> +	gpiod_set_value_cansleep(gc08a3->enable_gpio, 1);
+> +	usleep_range(GC08A3_MIN_SLEEP_US, GC08A3_MAX_SLEEP_US);
+> +
+> +	return 0;
+> +}
+> +
+> +static int gc08a3_power_off(struct device *dev)
+> +{
+> +	struct i2c_client *client = to_i2c_client(dev);
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct gc08a3 *gc08a3 = to_gc08a3(sd);
+> +
+> +	gpiod_set_value_cansleep(gc08a3->enable_gpio, 0);
+
+How making enable GPIO low is related to power off? Enable means you
+turn on some feature, not shutdown. Look at common GPIO consumer
+bindings in the kernel.
+
+
+...
+
+> +static int gc08a3_probe(struct i2c_client *client)
+> +{
+> +	struct device *dev = &client->dev;
+> +	struct gc08a3 *gc08a3;
+> +	int ret;
+> +
+> +	ret = gc08a3_parse_fwnode(dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	gc08a3 = devm_kzalloc(dev, sizeof(*gc08a3), GFP_KERNEL);
+> +	if (!gc08a3)
+> +		return -ENOMEM;
+> +
+> +	gc08a3->dev = dev;
+> +
+> +	gc08a3->xclk = devm_clk_get(dev, NULL);
+> +	if (IS_ERR(gc08a3->xclk))
+> +		return dev_err_probe(dev, PTR_ERR(gc08a3->xclk),
+> +					 "failed to get xclk\n");
+
+Misaligned indentation
+
+> +
+> +	ret = clk_set_rate(gc08a3->xclk, GC08A3_DEFAULT_CLK_FREQ);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret,
+> +					 "failed to set xclk frequency\n");
+
+Misaligned indentation
+
+> +
+> +	ret = gc08a3_get_regulators(dev, gc08a3);
+> +	if (ret < 0)
+> +		return dev_err_probe(dev, ret,
+> +					 "failed to get regulators\n");
+
+Misaligned indentation
+
+> +
+> +	gc08a3->enable_gpio = devm_gpiod_get(dev, "enable", GPIOD_OUT_LOW);
+> +	if (IS_ERR(gc08a3->enable_gpio))
+> +		return dev_err_probe(dev, PTR_ERR(gc08a3->enable_gpio),
+> +					 "failed to get gpio\n");
+
+Misaligned indentation... probably entire code is misaligned.
+
+
+Best regards,
+Krzysztof
 
 
