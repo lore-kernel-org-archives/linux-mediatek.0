@@ -4,78 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07334C10DC3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 11:24:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB254C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 11:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ph5kj+CB4Z19pC87CegKA1+VbaBTTld+37TSG/MkZUc=; b=e6MayN8TOYoAyhDyHI9wCrUBTz
-	cnb87nMyw5/pzZWzQq4kBJot0/ohg3iUS5n84wtGfhJJNrTrsQE9YaLTm/l2U/Z40ZrRC/U1vkBEg
-	W+Kyhrx544wPfclbpN8WQkt8uoB1WRS50KKQE0IZo6HgAlgnRCyI01dL+CM4kxBRfXefqqPNyfZGc
-	QoB2HqSFkj6km7MrHnUv1WbXZu7xEOuZLBJJPEQklHti/unsDyNVDvvE7T+chkWWCpA9S7Q1Jr/1t
-	r4F6pngF/ehGTG6PwfCHk5Vp8jMAteH3l1ixzTRWSAUXonwjf4PB9wxaYm9LFQe6e0JrU0Pl+IbMi
-	PqqIyNBQ==;
+	bh=n2YTQb/UjP+pwK7iKBnIiq6r4mjJpw9TcnxON9yKqZI=; b=YC3+ZOC9olRhgHfvUDf4UbcVlu
+	2fbKa211kNDutBk13PBpVt96yf8HQfusAb3QjvofcDj+DRurGZghQhNjeiSKX8aJ4t/khOXfIcG6w
+	aKZwdYK4mIfxpY88p+Un8u+Nin8pob/LbEDOAvWRiv0n2B9FNWOoP8Ht+hDC6Wtg0731xbCGMBflG
+	rH4VSyps9075+KigNveHHdABfXB4X5GYc0K6W5ZopOAHYVVNEH1x257ebqfhP6bnFJeQjOpmTC5bN
+	T0IJCoH+8DvparLrBk/vbeSwymjg/9SpGctZT3QWvGG0nqMf26mLmiNfpB0VEOt6IMECHl2z/Uyws
+	VeUfCjbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBCU4-00CdTf-1x;
-	Thu, 07 Dec 2023 11:24:00 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1rBCXZ-00Cflp-15;
+	Thu, 07 Dec 2023 11:27:37 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBCTz-00CdNU-1v
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 11:23:58 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-50c02628291so555185e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 03:23:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701948231; x=1702553031; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ph5kj+CB4Z19pC87CegKA1+VbaBTTld+37TSG/MkZUc=;
-        b=Wz/XWxhLWH+lGr776N+JDv5BzRpQRHTlZfvumGoqsb+PPbtvlbJ2KKsy8wy7yxmH7s
-         jsVMgKsZnvX5xmSdhcsv3ciaSSTcXRWgh71G2pmd5TKfwdCCnpupxVLXfWlXnielzNoo
-         q/VuPEPbZbimyFly8zC6S19Ye1TGbrVM3+W48=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701948231; x=1702553031;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ph5kj+CB4Z19pC87CegKA1+VbaBTTld+37TSG/MkZUc=;
-        b=Eyt3tbrZB2eM8beVLZjcY0N7UY/EXTGR4JkxiegY2WNgRomjLGmUtOU1IwmGaDRdln
-         /aiZcvUZYwu7yvJF0CR1nqeLhJDa5iBrmU4MgqhIFe7rDr6Xf/9LMCzf7/y4EEib0vhD
-         2wpfoDUSfujzvDRC8N+CZj1nApaDfjq8h5LVdbUOPns9qS4RzHdbQYnusaAfn89YcD9V
-         kLA73NOfmEewdwd90UXQiojaAGoOl98/0lCH3M+XDG7WAKc6/ONInkgu1kccPmMnURh6
-         t43oYOfn481kkcn27JaVhdUstitgjNhPxkPYwhxqJbRkhBm1oCsOWnjtTf4OJjscY+kl
-         KCWw==
-X-Gm-Message-State: AOJu0YxB5ysaB7/dlLHqA/u9ji/Y9j4j/rfg1pNn+uSJcm6gZtd4i/lY
-	Y2dy0iIQRq91QOQXHAJ26nersLiJCE26rISKuqJ6VQ==
-X-Google-Smtp-Source: AGHT+IHclxuTPTJWnavxmvpXLOkyqPEuff5nsJJ87iLlDKdpMh0vrT4jehgeEHVRghL54AwZI3RH4RhOGKteKLxNTww=
-X-Received: by 2002:a05:6512:b9a:b0:50b:fafd:300d with SMTP id
- b26-20020a0565120b9a00b0050bfafd300dmr1561293lfv.125.1701948231217; Thu, 07
- Dec 2023 03:23:51 -0800 (PST)
+	id 1rBCXV-00CfiZ-1y;
+	Thu, 07 Dec 2023 11:27:35 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B76pfEm032475;
+	Thu, 7 Dec 2023 11:27:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=n2YTQb/UjP+pwK7iKBnIiq6r4mjJpw9TcnxON9yKqZI=;
+ b=CBNA1wsfQFXYzkKI5EzKfFqx/vU+HFKGOXAGhbWrl6GvoZHU+Ghl2nG4viv2LB+BUTm+
+ amu2K5bIcsZeKLZdO/qdYIIwSNLfU4inc0UgRSVuVAus8UlI2beFy7epEe8xen0kCduL
+ 9L60wdGZ/8jENO7khGD+4PqQJANO6y1dRrNXUzcurzDrspBJV91sBnlaCCsmgr1wBDFv
+ JCr1Qysc7N6hkzgg79Vv9OToS3pL/TfqDiAixsNra94v4znHoNpm6UD+YI1e1fZbtW4e
+ otUIiJiaeZzrTvsGHtjTK6JlcyWPJsKcamqmDw0TFmOwaCX9HzdJlMYVxwDTt+G29o80 AQ== 
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3utuhfaerd-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 07 Dec 2023 11:27:23 +0000
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B7BRNoc002597
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 7 Dec 2023 11:27:23 GMT
+Received: from [10.218.37.200] (10.80.80.8) by nalasex01b.na.qualcomm.com
+ (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Thu, 7 Dec
+ 2023 03:26:47 -0800
+Message-ID: <090f3c8c-bbd8-4036-aaa1-d18c7a854ee9@quicinc.com>
+Date: Thu, 7 Dec 2023 16:56:44 +0530
 MIME-Version: 1.0
-References: <20231204084012.2281292-1-wenst@chromium.org> <20231204084012.2281292-7-wenst@chromium.org>
- <ab7988af-e7f9-433d-b35e-138f79ce82c0@collabora.com> <CAGXv+5EyHXWgbvtxx-skzi6FNEnZD8QEHQ2Wq224anY+QKUrew@mail.gmail.com>
-In-Reply-To: <CAGXv+5EyHXWgbvtxx-skzi6FNEnZD8QEHQ2Wq224anY+QKUrew@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 7 Dec 2023 20:23:40 +0900
-Message-ID: <CAGXv+5H9dkYOUEDEYtDOzH9ma3wxuGMLfWy+9pE2swTFdNxOnQ@mail.gmail.com>
-Subject: Re: [PATCH v3 6/9] arm64: dts: mediatek: Add MT8186 Krabby platform
- based Tentacruel / Tentacool
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Conor Dooley <conor.dooley@microchip.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V2 1/3] ufs: core: Add CPU latency QoS support for ufs
+ driver
+Content-Language: en-US
+To: Manivannan Sadhasivam <mani@kernel.org>
+CC: "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen"
+	<martin.petersen@oracle.com>,
+        Peter Wang <peter.wang@mediatek.com>,
+        "Andy
+ Gross" <agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        "Konrad
+ Dybcio" <konrad.dybcio@linaro.org>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        <chu.stanley@gmail.com>, Alim
+ Akhtar <alim.akhtar@samsung.com>,
+        Avri Altman <avri.altman@wdc.com>,
+        Bart Van
+ Assche <bvanassche@acm.org>, <linux-scsi@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+        <linux-arm-msm@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <quic_cang@quicinc.com>,
+        <quic_nguyenb@quicinc.com>, Nitin Rawat
+	<quic_nitirawa@quicinc.com>
+References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
+ <20231204143101.64163-2-quic_mnaresh@quicinc.com>
+ <20231206152646.GH12802@thinkpad>
+From: Naresh Maramaina <quic_mnaresh@quicinc.com>
+In-Reply-To: <20231206152646.GH12802@thinkpad>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: 3wlcbkcRaHNdlTi71SETI-ottmSdZcja
+X-Proofpoint-GUID: 3wlcbkcRaHNdlTi71SETI-ottmSdZcja
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-07_09,2023-12-07_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 clxscore=1015
+ priorityscore=1501 bulkscore=0 impostorscore=0 adultscore=0
+ lowpriorityscore=0 mlxscore=0 mlxlogscore=999 phishscore=0 suspectscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2312070093
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_032355_666260_0202CFBD 
-X-CRM114-Status: GOOD (  33.11  )
+X-CRM114-CacheID: sfid-20231207_032733_670575_8D2D628E 
+X-CRM114-Status: GOOD (  29.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,675 +120,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 7, 2023 at 2:28=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> wr=
-ote:
->
-> On Mon, Dec 4, 2023 at 11:27=E2=80=AFPM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> >
-> > Il 04/12/23 09:40, Chen-Yu Tsai ha scritto:
-> > > Tentacruel and Tentacool are MT8186 based Chromebooks based on the
-> > > Krabby design.
-> > >
-> > > Tentacruel, also known as the ASUS Chromebook CM14 Flip CM1402F, is a
-> > > convertible device with touchscreen and stylus.
-> > >
-> > > Tentacool, also known as the ASUS Chromebook CM14 CM1402C, is a lapto=
-p
-> > > device. It does not have a touchscreen or stylus.
-> > >
-> > > The two devices both have two variants. The difference is a second
-> > > source touchpad controller that shares the same address as the origin=
-al,
-> > > but is incompatible.
-> > >
-> > > The extra SKU IDs for the Tentacruel devices map to different sensor
-> > > components attached to the Embedded Controller. These are not visible
-> > > to the main processor.
-> > >
-> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> > > ---
-> > > Changes since v2:
-> > > - Picked up Conor's ack
-> > > - Rename touchpad to trackpad
-> > > - Drop pinctrl properties from trackpad in tentacruel/tentacool secon=
-d
-> > >    source trackpad
-> > >
-> > > Changes since v1:
-> > > - Reorder SKU numbers in descending order.
-> > > - Fixed pinconfig node names
-> > > - Moved pinctrl-* properties after interrupts-*
-> > > - Switched to interrupts-extended for external components
-> > > - Marked ADSP as explicitly disabled, with a comment explaining that =
-it
-> > >    stalls the system
-> > > - Renamed "touchpad" to "trackpad"
-> > > - Dropped bogus "no-laneswap" property from it6505 node
-> > > - Moved "realtek,jd-src" property to after all the regulator supplies
-> > > - Switched to macros for MT6366 regulator "regulator-allowed-modes"
-> > > - Renamed "vgpu" regulator name to allow coupling, with a comment
-> > >    containing the name used in the design
-> > > - Renamed "cr50" node name to "tpm"
-> > > - Moved trackpad_pins reference up to i2c2; workaround for second sou=
-rce
-> > >    component resource sharing.
-> > > - Fix copyright year
-> > > - Fixed touchscreen supply name
-> > >
-> > >   arch/arm64/boot/dts/mediatek/Makefile         |    4 +
-> > >   .../dts/mediatek/mt8186-corsola-krabby.dtsi   |  129 ++
-> > >   .../mt8186-corsola-tentacool-sku327681.dts    |   57 +
-> > >   .../mt8186-corsola-tentacool-sku327683.dts    |   24 +
-> > >   .../mt8186-corsola-tentacruel-sku262144.dts   |   44 +
-> > >   .../mt8186-corsola-tentacruel-sku262148.dts   |   26 +
-> > >   .../boot/dts/mediatek/mt8186-corsola.dtsi     | 1719 ++++++++++++++=
-+++
-> > >   7 files changed, 2003 insertions(+)
-> > >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-krab=
-by.dtsi
-> > >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tent=
-acool-sku327681.dts
-> > >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tent=
-acool-sku327683.dts
-> > >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tent=
-acruel-sku262144.dts
-> > >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tent=
-acruel-sku262148.dts
-> > >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> > >
-> > > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/=
-dts/mediatek/Makefile
-> > > index e6e7592a3645..442af61b1305 100644
-> > > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > > @@ -43,6 +43,10 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-koda=
-ma-sku32.dtb
-> > >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku0.dtb
-> > >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku176.dtb
-> > >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-pumpkin.dtb
-> > > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-tentacool-sku327681.=
-dtb
-> > > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-tentacool-sku327683.=
-dtb
-> > > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-tentacruel-sku262144=
-.dtb
-> > > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-tentacruel-sku262148=
-.dtb
-> > >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-evb.dtb
-> > >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8192-asurada-hayato-r1.dtb
-> > >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8192-asurada-hayato-r5-sku2.dtb
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.dtsi =
-b/arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.dtsi
-> > > new file mode 100644
-> > > index 000000000000..9b2b64525961
-> > > --- /dev/null
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.dtsi
-> > > @@ -0,0 +1,129 @@
-> > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > > +/*
-> > > + * Copyright 2022 Google LLC
-> > > + */
-> > > +
-> > > +/dts-v1/;
-> > > +#include "mt8186-corsola.dtsi"
-> > > +#include <dt-bindings/gpio/gpio.h>
-> > > +
-> > > +/ {
-> > > +     aliases {
-> > > +             i2c4 =3D &i2c4;
-> > > +     };
-> > > +};
-> > > +
-> > > +&dsi_out {
-> > > +     remote-endpoint =3D <&ps8640_in>;
-> > > +};
-> > > +
-> > > +&i2c0 {
-> > > +     clock-frequency =3D <400000>;
-> > > +
-> > > +     ps8640: edp-bridge@8 {
-> > > +             compatible =3D "parade,ps8640";
-> > > +             reg =3D <0x8>;
-> > > +             powerdown-gpios =3D <&pio 96 GPIO_ACTIVE_LOW>;
-> > > +             reset-gpios =3D <&pio 98 GPIO_ACTIVE_LOW>;
-> > > +             pinctrl-names =3D "default";
-> > > +             pinctrl-0 =3D <&ps8640_pins>;
-> > > +             vdd12-supply =3D <&mt6366_vrf12_reg>;
-> > > +             vdd33-supply =3D <&mt6366_vcn33_reg>;
-> > > +
-> > > +             ports {
-> > > +                     #address-cells =3D <1>;
-> > > +                     #size-cells =3D <0>;
-> > > +
-> > > +                     port@0 {
-> > > +                             reg =3D <0>;
-> > > +
-> > > +                             ps8640_in: endpoint {
-> > > +                                     remote-endpoint =3D <&dsi_out>;
-> > > +                             };
-> > > +                     };
-> > > +
-> > > +                     port@1 {
-> > > +                             reg =3D <1>;
-> > > +
-> > > +                             ps8640_out: endpoint {
-> > > +                                     remote-endpoint =3D <&panel_in>=
-;
-> > > +                             };
-> > > +                     };
-> > > +             };
-> > > +
-> > > +             aux-bus {
-> > > +                     panel {
-> > > +                             compatible =3D "edp-panel";
-> > > +                             power-supply =3D <&pp3300_disp_x>;
-> > > +                             backlight =3D <&backlight_lcd0>;
-> > > +
-> > > +                             port {
-> > > +                                     panel_in: endpoint {
-> > > +                                             remote-endpoint =3D <&p=
-s8640_out>;
-> > > +                                     };
-> > > +                             };
-> > > +                     };
-> > > +             };
-> > > +     };
-> > > +};
-> > > +
-> > > +&i2c1 {
-> > > +     i2c-scl-internal-delay-ns =3D <10000>;
-> > > +
-> > > +     touchscreen: touchscreen@10 {
-> > > +             compatible =3D "hid-over-i2c";
-> > > +             reg =3D <0x10>;
-> > > +             interrupts-extended =3D <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-> > > +             pinctrl-names =3D "default";
-> > > +             pinctrl-0 =3D <&touchscreen_pins>;
-> > > +             post-power-on-delay-ms =3D <10>;
-> > > +             hid-descr-addr =3D <0x0001>;
-> > > +             vdd-supply =3D <&pp3300_s3>;
-> > > +     };
-> > > +};
-> > > +
-> > > +&i2c4 {
-> > > +     pinctrl-names =3D "default";
-> > > +     pinctrl-0 =3D <&i2c4_pins>;
-> > > +     clock-frequency =3D <400000>;
-> > > +     status =3D "okay";
-> > > +
-> > > +     proximity@28 {
-> > > +             compatible =3D "semtech,sx9324";
-> > > +             reg =3D <0x28>;
-> > > +             interrupts-extended =3D <&pio 5 IRQ_TYPE_LEVEL_LOW>;
-> > > +             pinctrl-names =3D "default";
-> > > +             pinctrl-0 =3D <&sar_sensor_pins>;
-> > > +             vdd-supply =3D <&mt6366_vio18_reg>;
-> > > +             svdd-supply =3D <&mt6366_vio18_reg>;
-> > > +             #io-channel-cells =3D <1>;
-> >
-> >  From the newest DTS coding style document:
-> >
-> > The following order of properties in device nodes is preferred:
-> >
-> > 1. compatible
-> > 2. reg
-> > 3. ranges
-> > 4. Standard/common properties (defined by common bindings, e.g. without
-> >     vendor-prefixes)
-> > 5. Vendor-specific properties
-> > 6. status (if applicable)
-> > 7. Child nodes, where each node is preceded with a blank line
-> >
-> > The "status" property is by default "okay", thus it can be omitted.
-> >
-> > The above-described ordering follows this approach:
-> >
-> > 1. Most important properties start the node: compatible then bus addres=
-sing to
-> >     match unit address.
-> > 2. Each node will have common properties in similar place.
-> > 3. Status is the last information to annotate that device node is or is=
- not
-> >     finished (board resources are needed).
->
-> Wishing for a checking tool now. :p
->
-> > #io-channel-cells goes after `reg` (same for the other instances) :-)
->
-> Ack (though it looks weird).
->
-> > > +     };
-> > > +};
-> > > +
-> > > +&pio {
-> > > +     i2c4_pins: i2c4-pins {
-> > > +             pins-bus {
-> > > +                     pinmux =3D <PINMUX_GPIO136__FUNC_SDA4>,
-> > > +                              <PINMUX_GPIO135__FUNC_SCL4>;
-> > > +                     bias-disable;
-> > > +                     drive-strength =3D <4>;
-> > > +                     input-enable;
-> > > +             };
-> > > +     };
-> > > +
-> > > +     ps8640_pins: ps8640-pins {
-> > > +             pins-pwrdn-rst {
-> > > +                     pinmux =3D <PINMUX_GPIO96__FUNC_GPIO96>,
-> > > +                              <PINMUX_GPIO98__FUNC_GPIO98>;
-> > > +                     output-low;
-> > > +             };
-> > > +     };
-> > > +
-> > > +     sar_sensor_pins: sar-sensor-pins {
-> > > +             pins-irq {
-> > > +                     pinmux =3D <PINMUX_GPIO5__FUNC_GPIO5>;
-> > > +                     input-enable;
-> > > +                     bias-pull-up;
-> > > +             };
-> > > +     };
-> > > +};
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sk=
-u327681.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku3276=
-81.dts
-> > > new file mode 100644
-> > > index 000000000000..9bb64353ca65
-> > > --- /dev/null
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327681=
-.dts
-> > > @@ -0,0 +1,57 @@
-> > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > > +/*
-> > > + * Copyright 2022 Google LLC
-> > > + */
-> > > +
-> > > +/dts-v1/;
-> > > +#include "mt8186-corsola-krabby.dtsi"
-> > > +
-> > > +/ {
-> > > +     model =3D "Google Tentacool board";
-> > > +     compatible =3D "google,tentacruel-sku327681", "google,tentacrue=
-l", "mediatek,mt8186";
-> > > +     chassis-type =3D "laptop";
-> > > +};
-> > > +
-> > > +/* Tentacool omits the pen. */
-> > > +&gpio_keys {
-> > > +     status =3D "disabled";
-> > > +};
-> > > +
-> > > +/* Tentacool omits the touchscreen; nothing else is on i2c1. */
-> > > +&i2c1 {
-> > > +     status =3D "disabled";
-> > > +};
-> > > +
-> > > +&keyboard_controller {
-> > > +     function-row-physmap =3D <
-> > > +             MATRIX_KEY(0x00, 0x02, 0)       /* T1 */
-> > > +             MATRIX_KEY(0x03, 0x02, 0)       /* T2 */
-> > > +             MATRIX_KEY(0x02, 0x02, 0)       /* T3 */
-> > > +             MATRIX_KEY(0x01, 0x02, 0)       /* T4 */
-> > > +             MATRIX_KEY(0x03, 0x04, 0)       /* T5 */
-> > > +             MATRIX_KEY(0x02, 0x04, 0)       /* T6 */
-> > > +             MATRIX_KEY(0x01, 0x04, 0)       /* T7 */
-> > > +             MATRIX_KEY(0x02, 0x09, 0)       /* T8 */
-> > > +             MATRIX_KEY(0x01, 0x09, 0)       /* T9 */
-> > > +             MATRIX_KEY(0x00, 0x04, 0)       /* T10 */
-> > > +     >;
-> > > +
-> > > +     linux,keymap =3D <
-> > > +             MATRIX_KEY(0x00, 0x02, KEY_BACK)
-> > > +             MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
-> > > +             MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
-> > > +             MATRIX_KEY(0x01, 0x02, KEY_SCALE)
-> > > +             MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
-> > > +             MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
-> > > +             MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
-> > > +             MATRIX_KEY(0x02, 0x09, KEY_MUTE)
-> > > +             MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
-> > > +             MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
-> > > +             CROS_STD_MAIN_KEYMAP
-> > > +     >;
-> > > +};
-> > > +
-> > > +/* Tentacool omits the touchscreen. */
-> > > +&touchscreen {
-> > > +     status =3D "disabled";
-> > > +};
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sk=
-u327683.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku3276=
-83.dts
-> > > new file mode 100644
-> > > index 000000000000..c3ae6f9616c8
-> > > --- /dev/null
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683=
-.dts
-> > > @@ -0,0 +1,24 @@
-> > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > > +/*
-> > > + * Copyright 2023 Google LLC
-> > > + */
-> > > +
-> > > +#include "mt8186-corsola-tentacool-sku327681.dts"
-> > > +
-> > > +/ {
-> > > +     compatible =3D "google,tentacruel-sku327683", "google,tentacrue=
-l", "mediatek,mt8186";
-> > > +};
-> > > +
-> > > +/* This variant replaces only the trackpad controller. */
-> > > +&i2c2 {
-> > > +     /delete-node/ trackpad@15;
-> >
-> > Why are you deleting the trackpad@15 node?
-> >
-> > You can simply override the compatible, or actually omit the compatible=
- string
-> > in the *.dtsi file, and set just that in each board *.dts.
-> >
-> > dtsi:
-> >         trackpad_a: trackpad@15 {
-> >                 /* Compatible is set in each board dts */
-> >                 reg, interrupts, others
-> >         }
-> >
-> > dts:
-> >
-> > &trackpad_a {
-> >         compatible =3D "elan,ekth3000";
-> > };
->
-> The original trackpad@15 comes from the base design and is used for all
-> models other than the ones with the conflicting component. Hence I believ=
-e
-> it should live in the base .dtsi.
->
-> The delete-node makes it much less likely to have any lingering propertie=
-s.
-> These are not nodes that just differ in compatible strings like DSI panel=
-s.
-> They have incompatible bindings. For example, elan,ekth3000 uses "vcc-sup=
-ply",
-> while "hid-over-i2c" uses "vdd-supply".
->
-> And going back to my previous argument, the base design used one specific
-> model which is carried over to all the other models.
->
-> Suppose I add a phandle to the original trackpad, and do
->
->     /delete-node/ &trackpad;
->
-> Would that be better?
->
-> > other dts:
-> >
-> > &trackpad_a {
-> >         compatible =3D "hid-over-i2c";
-> > };
-> >
-> > > +
-> > > +     trackpad@15 {
-> > > +             compatible =3D "hid-over-i2c";
-> > > +             reg =3D <0x15>;
-> > > +             interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> > > +             hid-descr-addr =3D <0x0001>;
-> > > +             vdd-supply =3D <&pp3300_s3>;
-> > > +             wakeup-source;
-> > > +     };
-> > > +};
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-s=
-ku262144.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku26=
-2144.dts
-> > > new file mode 100644
-> > > index 000000000000..26d3451a5e47
-> > > --- /dev/null
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku26214=
-4.dts
-> > > @@ -0,0 +1,44 @@
-> > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > > +/*
-> > > + * Copyright 2022 Google LLC
-> > > + */
-> > > +
-> > > +/dts-v1/;
-> > > +#include "mt8186-corsola-krabby.dtsi"
-> > > +
-> > > +/ {
-> > > +     model =3D "Google Tentacruel board";
-> > > +     compatible =3D "google,tentacruel-sku262147", "google,tentacrue=
-l-sku262146",
-> > > +                  "google,tentacruel-sku262145", "google,tentacruel-=
-sku262144",
-> > > +                  "google,tentacruel", "mediatek,mt8186";
-> > > +     chassis-type =3D "convertible";
-> > > +};
-> > > +
-> > > +&keyboard_controller {
-> > > +     function-row-physmap =3D <
-> > > +             MATRIX_KEY(0x00, 0x02, 0)       /* T1 */
-> > > +             MATRIX_KEY(0x03, 0x02, 0)       /* T2 */
-> > > +             MATRIX_KEY(0x02, 0x02, 0)       /* T3 */
-> > > +             MATRIX_KEY(0x01, 0x02, 0)       /* T4 */
-> > > +             MATRIX_KEY(0x03, 0x04, 0)       /* T5 */
-> > > +             MATRIX_KEY(0x02, 0x04, 0)       /* T6 */
-> > > +             MATRIX_KEY(0x01, 0x04, 0)       /* T7 */
-> > > +             MATRIX_KEY(0x02, 0x09, 0)       /* T8 */
-> > > +             MATRIX_KEY(0x01, 0x09, 0)       /* T9 */
-> > > +             MATRIX_KEY(0x00, 0x04, 0)       /* T10 */
-> > > +     >;
-> > > +
-> > > +     linux,keymap =3D <
-> > > +             MATRIX_KEY(0x00, 0x02, KEY_BACK)
-> > > +             MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
-> > > +             MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
-> > > +             MATRIX_KEY(0x01, 0x02, KEY_SCALE)
-> > > +             MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
-> > > +             MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
-> > > +             MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
-> > > +             MATRIX_KEY(0x02, 0x09, KEY_MUTE)
-> > > +             MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
-> > > +             MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
-> > > +             CROS_STD_MAIN_KEYMAP
-> > > +     >;
-> > > +};
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-s=
-ku262148.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku26=
-2148.dts
-> > > new file mode 100644
-> > > index 000000000000..447b57b12b41
-> > > --- /dev/null
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku26214=
-8.dts
-> > > @@ -0,0 +1,26 @@
-> > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > > +/*
-> > > + * Copyright 2023 Google LLC
-> > > + */
-> > > +
-> > > +#include "mt8186-corsola-tentacruel-sku262144.dts"
-> > > +
-> > > +/ {
-> > > +     compatible =3D "google,tentacruel-sku262151", "google,tentacrue=
-l-sku262150",
-> > > +                  "google,tentacruel-sku262149", "google,tentacruel-=
-sku262148",
-> > > +                  "google,tentacruel", "mediatek,mt8186";
-> > > +};
-> > > +
-> > > +/* This variant replaces only the trackpad controller. */
-> > > +&i2c2 {
-> > > +     /delete-node/ trackpad@15;
-> > > +
-> > > +     trackpad@15 {
-> > > +             compatible =3D "hid-over-i2c";
-> > > +             reg =3D <0x15>;
-> > > +             interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> > > +             hid-descr-addr =3D <0x0001>;
-> > > +             vdd-supply =3D <&pp3300_s3>;
-> > > +             wakeup-source;
-> > > +     };
-> > > +};
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/=
-arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> > > new file mode 100644
-> > > index 000000000000..8726b2916ef1
-> > > --- /dev/null
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> > > @@ -0,0 +1,1719 @@
-> > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > > +/*
-> > > + * Copyright (C) 2022 MediaTek Inc.
-> > > + */
-> > > +/dts-v1/;
-> > > +#include "mt8186.dtsi"
-> > > +#include <dt-bindings/pinctrl/mt8186-pinfunc.h>
-> > > +#include <dt-bindings/gpio/gpio.h>
-> > > +#include <dt-bindings/input/input.h>
-> > > +#include <dt-bindings/input/gpio-keys.h>
-> > > +#include <dt-bindings/regulator/mediatek,mt6397-regulator.h>
-> > > +
-> > > +/ {
-> > > +     aliases {
-> > > +             i2c0 =3D &i2c0;
-> > > +             i2c1 =3D &i2c1;
-> > > +             i2c2 =3D &i2c2;
-> > > +             i2c3 =3D &i2c3;
-> > > +             i2c5 =3D &i2c5;
-> > > +             mmc0 =3D &mmc0;
-> > > +             mmc1 =3D &mmc1;
-> > > +             serial0 =3D &uart0;
-> > > +     };
-> > > +
-> > > +     chosen {
-> > > +             stdout-path =3D "serial0:115200n8";
-> > > +     };
-> > > +
-> > > +     memory@40000000 {
-> > > +             device_type =3D "memory";
-> > > +             /* The size should be filled in by the bootloader. */
-> > > +             reg =3D <0 0x40000000 0 0>;
-> > > +     };
-> > > +
-> > > +     backlight_lcd0: backlight-lcd0 {
-> > > +             compatible =3D "pwm-backlight";
-> > > +             pwms =3D <&pwm0 0 500000>;
-> > > +             power-supply =3D <&ppvar_sys>;
-> > > +             enable-gpios =3D <&pio 152 0>;
-> > > +             brightness-levels =3D <0 1023>;
-> > > +             num-interpolated-steps =3D <1023>;
-> > > +             default-brightness-level =3D <576>;
-> > > +     };
-> > > +
-> > > +     btsco: bt-sco {
-> >
-> > Do you really need the phandle to bt-sco?
->
-> No. But the sound node probably should be referencing it and the dmic
-> node via DT instead of hardcoding the DAI and codec names in the machine
-> driver.
->
-> Anyway, will remove the label for now.
->
-> > Also, this node describes a codec, so: "bt-sco-codec" please!
->
-> Ack.
->
-> > > +             compatible =3D "linux,bt-sco";
-> > > +             #sound-dai-cells =3D <0>;
-> > > +     };
-> > > +
-> > > +     dmic_codec: dmic-codec {
-> >
-> > This phandle is unused...
->
-> Removed.
->
-> > ..snip..
-> >
-> > > +
-> > > +&adsp {
-> > > +     memory-region =3D <&adsp_dma_mem>, <&adsp_mem>;
-> > > +     status =3D "disabled"; /* causes stall */
-> >
-> > This is a firmware issue: once the correct firmware is uploaded to linu=
-x-firmware
-> > the dsp node can get enabled... so it we make sure that this happens be=
-fore this
-> > devicetree gets picked, we can avoid a second commit enabling audio.
-> >
-> > After all, since we *want to* use the Xtensa DSP for audio, without it =
-booted
-> > sound won't work *anyway*.... so having the firmware in place can also =
-be seen
-> > as a direct dependency of the entire audio functionality.
-> >
-> > P.S.: The FW that is distributed with ChromeOS works just fine!
->
-> I'll give that a try.
-
-I have:
-
-sof-audio-of-mt8186 10680000.adsp: Firmware info: version 2:0:0-5494c
-sof-audio-of-mt8186 10680000.adsp: Firmware: ABI 3:22:1 Kernel ABI 3:23:0
-sof-audio-of-mt8186 10680000.adsp: unknown sof_ext_man header type 3 size 0=
-x30
-sof-audio-of-mt8186 10680000.adsp: Firmware info: version 2:0:0-5494c
-
-and it's still hanging.
-
-And FTR, I think sound is also blocked on the it6505 audio support series.
-
-ChenYu
 
 
+On 12/6/2023 8:56 PM, Manivannan Sadhasivam wrote:
+> On Mon, Dec 04, 2023 at 08:00:59PM +0530, Maramaina Naresh wrote:
+>> Register ufs driver to CPU latency PM QoS framework can improves
+>> ufs device random io performance.
+>>
+>> PM QoS initialization will insert new QoS request into the CPU
+>> latency QoS list with the maximum latency PM_QOS_DEFAULT_VALUE
+>> value.
+>>
+>> UFS driver will vote for performance mode on scale up and power
+>> save mode for scale down.
+>>
+>> If clock scaling feature is not enabled then voting will be based
+>> on clock on or off condition.
+>>
+>> tiotest benchmark tool io performance results on sm8550 platform:
+>>
+>> 1. Without PM QoS support
+>> 	Type (Speed in)    | Average of 18 iterations
+>> 	Random Write(IPOS) | 41065.13
+>> 	Random Read(IPOS)  | 37101.3
+>>
+>> 2. With PM QoS support
+>> 	Type (Speed in)    | Average of 18 iterations
+>> 	Random Write(IPOS) | 46784.9
+>> 	Random Read(IPOS)  | 42943.4
+>> (Improvement % with PM QoS = ~15%).
+>>
+>> Co-developed-by: Nitin Rawat <quic_nitirawa@quicinc.com>
+>> Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
+>> Signed-off-by: Naveen Kumar Goud Arepalli <quic_narepall@quicinc.com>
+>> Signed-off-by: Maramaina Naresh <quic_mnaresh@quicinc.com>
+>> ---
+>>   drivers/ufs/core/ufshcd-priv.h |  8 +++++
+>>   drivers/ufs/core/ufshcd.c      | 62 ++++++++++++++++++++++++++++++++++
+>>   include/ufs/ufshcd.h           | 16 +++++++++
+>>   3 files changed, 86 insertions(+)
+>>
+>> diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+>> index f42d99ce5bf1..536805f6c4e1 100644
+>> --- a/drivers/ufs/core/ufshcd-priv.h
+>> +++ b/drivers/ufs/core/ufshcd-priv.h
+>> @@ -241,6 +241,14 @@ static inline void ufshcd_vops_config_scaling_param(struct ufs_hba *hba,
+>>   		hba->vops->config_scaling_param(hba, p, data);
+>>   }
+>>   
+>> +static inline u32 ufshcd_vops_config_qos_vote(struct ufs_hba *hba)
+>> +{
+>> +	if (hba->vops && hba->vops->config_qos_vote)
+>> +		return hba->vops->config_qos_vote(hba);
+> 
+> Please remove this callback as Bart noted.
+> 
 
-> > > +};
-> > > +
-> > > +&afe {
-> > > +     i2s0-share =3D "I2S1";
-> > > +     i2s3-share =3D "I2S2";
-> > > +     status =3D "okay";
-> > > +};
-> > > +
-> >
-> > ..snip..
-> >
-> > > +&i2c2 {
-> > > +     pinctrl-names =3D "default";
-> > > +     /*
-> > > +      * Trackpad pin put here to work around second source component=
-s
-> > > +      * sharing the pinmux in steelix designs.
-> > > +      */
-> > > +     pinctrl-0 =3D <&i2c2_pins>, <&trackpad_pin>;
-> >
-> > There's no choice for now... even if this is not beautiful to see... bu=
-t it's still
-> > ok for me because we can revisit this later when the HW Prober mechanis=
-m will be
-> > upstreamed.
+Sure Mani, will takecare of this comment.
+
+>> +
+>> +	return UFSHCD_QOS_DEFAULT_VOTE;
+>> +}
+>> +
+>>   static inline void ufshcd_vops_reinit_notify(struct ufs_hba *hba)
+>>   {
+>>   	if (hba->vops && hba->vops->reinit_notify)
+>> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+>> index ae9936fc6ffb..13370febd2b5 100644
+>> --- a/drivers/ufs/core/ufshcd.c
+>> +++ b/drivers/ufs/core/ufshcd.c
+>> @@ -1001,6 +1001,20 @@ static bool ufshcd_is_unipro_pa_params_tuning_req(struct ufs_hba *hba)
+>>   	return ufshcd_get_local_unipro_ver(hba) < UFS_UNIPRO_VER_1_6;
+>>   }
+>>   
+>> +/**
+>> + * ufshcd_pm_qos_perf - vote for PM QoS performance or power save mode
+> 
+> ufshcd_pm_qos_update() - Update PM QoS request
+> 
+
+Sure Mani, will takecare of this comment.
+
+>> + * @hba: per adapter instance
+>> + * @on: If True, vote for perf PM QoS mode otherwise power save mode
+>> + */
+>> +static void ufshcd_pm_qos_perf(struct ufs_hba *hba, bool on)
+>> +{
+>> +	if (!hba->pm_qos_init)
+>> +		return;
+>> +
+>> +	cpu_latency_qos_update_request(&hba->pm_qos_req, on ? hba->qos_vote
+>> +							: PM_QOS_DEFAULT_VALUE);
+>> +}
+>> +
+>>   /**
+>>    * ufshcd_set_clk_freq - set UFS controller clock frequencies
+>>    * @hba: per adapter instance
+>> @@ -1153,6 +1167,10 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
+>>   	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
+>>   			(scale_up ? "up" : "down"),
+>>   			ktime_to_us(ktime_sub(ktime_get(), start)), ret);
+>> +
+>> +	if (!ret)
+>> +		ufshcd_pm_qos_perf(hba, scale_up);
+> 
+> Can't you just move this before trace_ufshcd_profile_clk_scaling()? This also
+> avoids checking for !ret.
+> 
+
+In this case, we need to use goto out; inside if(ret) of 
+ufshcd_vops_clk_scale_notify.
+will do the above change, to enable ufshcd_pm_qos_perf before the out flag.
+
+>> +
+>>   	return ret;
+>>   }
+>>   
+>> @@ -9204,6 +9222,8 @@ static int ufshcd_setup_clocks(struct ufs_hba *hba, bool on)
+>>   	if (ret)
+>>   		return ret;
+>>   
+>> +	if (!ufshcd_is_clkscaling_supported(hba))
+>> +		ufshcd_pm_qos_perf(hba, on);
+>>   out:
+>>   	if (ret) {
+>>   		list_for_each_entry(clki, head, list) {
+>> @@ -9296,6 +9316,45 @@ static int ufshcd_init_clocks(struct ufs_hba *hba)
+>>   	return ret;
+>>   }
+>>   
+>> +/**
+>> + * ufshcd_pm_qos_init - initialize PM QoS instance
+> 
+> "Initialize PM QoS request"
+> 
+
+Sure Mani, will takecare of this comment.
+
+>> + * @hba: per adapter instance
+>> + */
+>> +static void ufshcd_pm_qos_init(struct ufs_hba *hba)
+>> +{
+>> +	if (!(hba->caps & UFSHCD_CAP_PM_QOS))
+>> +		return;
+>> +
+>> +	/*
+>> +	 * called to configure PM QoS vote value for UFS host,
+>> +	 * expecting qos vote return value from caller else
+>> +	 * default vote value will be return.
+>> +	 */
+>> +	hba->qos_vote = ufshcd_vops_config_qos_vote(hba);
+> 
+> No need of this variable too if you get rid of the callback.
+> 
+>> +	cpu_latency_qos_add_request(&hba->pm_qos_req,
+>> +					PM_QOS_DEFAULT_VALUE);
+>> +
+>> +	if (cpu_latency_qos_request_active(&hba->pm_qos_req))
+>> +		hba->pm_qos_init = true;
+> 
+> Why do you need this flag?
+
+this flag ensure UFS qos request got added into the Global PM QoS list.
+
+> 
+>> +
+>> +	dev_dbg(hba->dev, "%s: QoS %s, qos_vote: %u\n", __func__,
+>> +		hba->pm_qos_init ? "initialized" : "uninitialized",
+>> +		hba->qos_vote);
+>> +}
+>> +
+>> +/**
+>> + * ufshcd_pm_qos_exit - remove instance from PM QoS
+>> + * @hba: per adapter instance
+>> + */
+>> +static void ufshcd_pm_qos_exit(struct ufs_hba *hba)
+>> +{
+>> +	if (!hba->pm_qos_init)
+>> +		return;
+>> +
+>> +	cpu_latency_qos_remove_request(&hba->pm_qos_req);
+>> +	hba->pm_qos_init = false;
+>> +}
+>> +
+> 
+> [...]
+> 
+>>   /**
+>>    * struct ufs_hba - per adapter private structure
+>>    * @mmio_base: UFSHCI base register address
+>> @@ -912,6 +923,8 @@ enum ufshcd_mcq_opr {
+>>    * @mcq_base: Multi circular queue registers base address
+>>    * @uhq: array of supported hardware queues
+>>    * @dev_cmd_queue: Queue for issuing device management commands
+>> + * @pm_qos_req: PM QoS request handle
+>> + * @pm_qos_init: flag to check if pm qos init completed
+>>    */
+>>   struct ufs_hba {
+>>   	void __iomem *mmio_base;
+>> @@ -1076,6 +1089,9 @@ struct ufs_hba {
+>>   	struct ufs_hw_queue *uhq;
+>>   	struct ufs_hw_queue *dev_cmd_queue;
+>>   	struct ufshcd_mcq_opr_info_t mcq_opr[OPR_MAX];
+>> +	struct pm_qos_request pm_qos_req;
+>> +	bool pm_qos_init;
+>> +	u32 qos_vote;
+> 
+> Order doesn't match Kdoc.
 >
-> Yup. Working on that.
->
-> > > +     clock-frequency =3D <400000>;
-> > > +     i2c-scl-internal-delay-ns =3D <10000>;
-> > > +     status =3D "okay";
-> > > +
-> > > +     trackpad@15 {
-> > > +             compatible =3D "elan,ekth3000";
-> > > +             reg =3D <0x15>;
-> > > +             interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> > > +             vcc-supply =3D <&pp3300_s3>;
-> > > +             wakeup-source;
-> > > +     };
-> > > +};
-> > > +
-> >
-> > Thanks,
-> > Angelo
->
-> Thanks for the review again.
->
-> ChenYu
+
+we are removing qos_vote variable in next patch series.
+
+> - Mani
+> 
+
+Thanks,
+Naresh.
 
