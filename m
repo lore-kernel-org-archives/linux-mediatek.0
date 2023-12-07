@@ -4,90 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 837A7C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 11:18:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73642C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 11:21:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JtRAp/Zuzq7fGbpcbPcumzgHdraAjC7L39RpTXDHPvw=; b=OrSJseSE1Tfz3Fot+LSGlhr0H2
-	QK3o4c9i1YCx/Ai0Sn7gN+DCzCAq87/nEr+FF9cHiJXZvTnHablSTAKpZn3JpN9dlgpoK1JqBT7yd
-	MdSqLq5S2ywUbCoOXL+m+MvsMe6xfb4ZY1PfB/sIhq1eUMqAHbOrB/QJoWkVppduTTrYI5id2Cotq
-	30WXaLtBNpkgHHLrpE4vLNn1PbSgyZMuIDBO9pRIyE/FYdvARwujHOHtN8r2igjQl7WSP0VeliQZE
-	rPAC1lAFnW5E8AhwTWoQd2fpwypeVky2u1vAXD6ZjJ4MIiAzqN3DqIou0S5MKoInG5tHxIFvVuB/o
-	o1CZw3fA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ueR1j+/c76LaVzWDsvGffIHw/5cW+im1b+zlUe6l46M=; b=o4SPE/BBIvjyVQYm4NFhS1YsDR
+	EPTqX6LAEv6qatePi1cwgGzrExbp5NCKFbNQbjzWQ5peUp6nRWVyDUnZUtD0PEDFWbrdiOrIQD9/G
+	ID8NSS9XWmSDck4uMXU+VXFPZdE7gus+pZmyugrK0B1iIN6W3phrkxt3l4IK0EQsIcLUmYQErgpIM
+	zlMlnLaX45lkB7IIBQKYuwMhZAq86HVrYbj7ZFHOYUptR8kdgy93zCtZCt8EV51RNB1X083nnPyLr
+	nADydKJuX5v1RLJZR9riOmcXCFA8IsV6MD30Jh4785ByIXRyhbpGav1ELl4dzbqR3K41I7FiEzTSn
+	DPFeGF0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBCOy-00Ca3h-1A;
-	Thu, 07 Dec 2023 11:18:44 +0000
-Received: from mail-vk1-xa2e.google.com ([2607:f8b0:4864:20::a2e])
+	id 1rBCRU-00Cba0-0v;
+	Thu, 07 Dec 2023 11:21:20 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBCOv-00CZzF-0r
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Dec 2023 11:18:42 +0000
-Received: by mail-vk1-xa2e.google.com with SMTP id 71dfb90a1353d-4b2d64a368aso325765e0c.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 03:18:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1701947917; x=1702552717; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JtRAp/Zuzq7fGbpcbPcumzgHdraAjC7L39RpTXDHPvw=;
-        b=h+YNijauItZ2slHNRd45xWbwP0s/dADAkxYrQY19WfSDKKj3j/HSNS/vdz5KBpUbcj
-         mebq4AFnPR+vQNMb+kS/TQHtnP8sHvlz0lGXzHWgtnvzDTlsXGkeD7X2w96K09HaSxU2
-         y9DbBTwd7+JcwesNzBZ9Z3ux58uP740jeVZMw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701947917; x=1702552717;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JtRAp/Zuzq7fGbpcbPcumzgHdraAjC7L39RpTXDHPvw=;
-        b=Z/O94ivVmbxOKHjXP/g3XNWm+FZUOdjSkxCFEpn1kleD0CNB8QWjp+29QIvb7jY2jG
-         VC9ryBHIX6uJQPYt95tnGnTLuwEpFAjPbr40DZuz2Ky+m5p9s4rZ55RymGmeuOEw1jZd
-         szQZVJEcyRmutR7fqd+KPrWJRsxC4CqzLJbin6cSW9z1St3/LeguUvdQS4MRz2mKIoTL
-         2uXAJ+C1pFP2hsavU6YxcYO9YObyF7gP6EjyZk1chv7xnMaZ7ISQwqYhWBx5drXJ91uU
-         aFawdHHBoaAjJ4l9JoSrUusgyjU4fNA/OSloUZGTLxrE3kHFCVjBvFBEoDbNftKS4jW7
-         ZP/A==
-X-Gm-Message-State: AOJu0YzGYowjFjSTwNiDZun8KOB2v6updoVQFr4Wltv/fHEHqI1ogI51
-	8dr7G3EQfMPs3FOOZ57t+lkfNxYAkR931ltEns0=
-X-Google-Smtp-Source: AGHT+IFeJzexnEKMB7DWjzmSZcOoFnxPrJBfkiiYFZtVNUzMndrprJUCfTD3OzkBHzTblil89EIsXA==
-X-Received: by 2002:a1f:6681:0:b0:4ab:ebf3:e518 with SMTP id a123-20020a1f6681000000b004abebf3e518mr1811768vkc.1.1701947916833;
-        Thu, 07 Dec 2023 03:18:36 -0800 (PST)
-Received: from mail-vk1-f176.google.com (mail-vk1-f176.google.com. [209.85.221.176])
-        by smtp.gmail.com with ESMTPSA id r15-20020ac5cb0f000000b004b2f352e740sm46383vkl.43.2023.12.07.03.18.35
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 Dec 2023 03:18:35 -0800 (PST)
-Received: by mail-vk1-f176.google.com with SMTP id 71dfb90a1353d-4b2ceee07e5so329185e0c.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 03:18:35 -0800 (PST)
-X-Received: by 2002:a1f:c401:0:b0:4b2:c554:ccfd with SMTP id
- u1-20020a1fc401000000b004b2c554ccfdmr1880286vkf.9.1701947914936; Thu, 07 Dec
- 2023 03:18:34 -0800 (PST)
+	id 1rBCRR-00CbWf-0a;
+	Thu, 07 Dec 2023 11:21:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 6E990CE22FB;
+	Thu,  7 Dec 2023 11:21:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F956C433C7;
+	Thu,  7 Dec 2023 11:21:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1701948074;
+	bh=Y+kCs8J8Xte1h+4V1sfgYUbvivj8bv1hTvD8IuIDh+U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=d+gqu0HgAAr0TvC+OmZqlvMV+esi/bBl1U5DBLY5pEgyEhigN3qu5ic0LOFs8xGEW
+	 GjubXsS26m3+ZXhanUEOi2q0MuSBCYCOSbgTxODrwr8cEHPIh7Dl7EJGsXDiMj0U+W
+	 iKGzC2sbvJPXnJaWKM0Mw05vxO1S25jFERAWaJLB9M4IxPdzoOmgJgzGv6eeQS7RCx
+	 frIuj2vmZ3/ydvd3y0ZvUX3oq6V6IBi0iMlKlfSAFKt+btXI6e+4hZCySzkCAV8nqS
+	 mkiMIwUtlNdxgDalgPhnuXbOQgYZJFIEsTmWOHm/vHDlF5Er9OWLaoIZ1klFBqoeAg
+	 PM+kvTyiDB6HA==
+Date: Thu, 7 Dec 2023 16:51:01 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Nitin Rawat <quic_nitirawa@quicinc.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Bart Van Assche <bvanassche@acm.org>,
+	Naresh Maramaina <quic_mnaresh@quicinc.com>,
+	"James E.J. Bottomley" <jejb@linux.ibm.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	Peter Wang <peter.wang@mediatek.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	chu.stanley@gmail.com, Alim Akhtar <alim.akhtar@samsung.com>,
+	Avri Altman <avri.altman@wdc.com>, linux-scsi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	quic_cang@quicinc.com, quic_nguyenb@quicinc.com
+Subject: Re: [PATCH V2 1/3] ufs: core: Add CPU latency QoS support for ufs
+ driver
+Message-ID: <20231207112101.GK2932@thinkpad>
+References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
+ <20231204143101.64163-2-quic_mnaresh@quicinc.com>
+ <590ade27-b4da-49be-933b-e9959aa0cd4c@acm.org>
+ <692cd503-5b14-4be6-831d-d8e9c282a95e@quicinc.com>
+ <5e7c5c75-cb5f-4afe-9d57-b0cab01a6f26@acm.org>
+ <b9373252-710c-4a54-95cc-046314796960@quicinc.com>
+ <20231206153242.GI12802@thinkpad>
+ <effb603e-ca7a-4f24-9783-4d62790165ae@acm.org>
+ <20231207094357.GI2932@thinkpad>
+ <286b6f8a-c634-19ed-cf53-276cfe05d03f@quicinc.com>
 MIME-Version: 1.0
-References: <20231113123049.4117280-1-fshao@chromium.org> <20231113123049.4117280-4-fshao@chromium.org>
- <6c693161-0e89-4f9d-9a92-18f3783eefd2@collabora.com>
-In-Reply-To: <6c693161-0e89-4f9d-9a92-18f3783eefd2@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 7 Dec 2023 19:17:58 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nhp3HoKGQr1UgKtZJ9SLMqvm-G_YZi9dEWWF3tj2d=OFQ@mail.gmail.com>
-Message-ID: <CAC=S1nhp3HoKGQr1UgKtZJ9SLMqvm-G_YZi9dEWWF3tj2d=OFQ@mail.gmail.com>
-Subject: Re: [PATCH 3/4] media: mediatek: vcodec: Fix mtk_vcodec_mem_free()
- error log criteria
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <286b6f8a-c634-19ed-cf53-276cfe05d03f@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_031841_305221_A96F12A6 
-X-CRM114-Status: GOOD (  29.14  )
+X-CRM114-CacheID: sfid-20231207_032117_571672_CFB478B0 
+X-CRM114-Status: GOOD (  33.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,79 +95,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+On Thu, Dec 07, 2023 at 03:56:43PM +0530, Nitin Rawat wrote:
+> 
+> 
+> On 12/7/2023 3:13 PM, Manivannan Sadhasivam wrote:
+> > On Wed, Dec 06, 2023 at 03:02:04PM -1000, Bart Van Assche wrote:
+> > > On 12/6/23 05:32, Manivannan Sadhasivam wrote:
+> > > > On Wed, Dec 06, 2023 at 07:32:54PM +0530, Naresh Maramaina wrote:
+> > > > > On 12/5/2023 10:41 PM, Bart Van Assche wrote:
+> > > > > > On 12/4/23 21:58, Naresh Maramaina wrote:
+> > > > > > > On 12/5/2023 12:30 AM, Bart Van Assche wrote:
+> > > > > > > > On 12/4/23 06:30, Maramaina Naresh wrote:
+> > > > > > > > > +    /* This capability allows the host controller driver to
+> > > > > > > > > use the PM QoS
+> > > > > > > > > +     * feature.
+> > > > > > > > > +     */
+> > > > > > > > > +    UFSHCD_CAP_PM_QOS                = 1 << 13,
+> > > > > > > > >     };
+> > > > > > > > 
+> > > > > > > > Why does it depend on the host driver whether or not PM QoS is
+> > > > > > > > enabled? Why isn't it enabled unconditionally?
+> > > > > > > 
+> > > > > > > For some platform vendors power KPI might be more important than
+> > > > > > > random io KPI. Hence this flag is disabled by default and can be
+> > > > > > > enabled based on platform requirement.
+> > > > > > 
+> > > > > > How about leaving this flag out unless if a host vendor asks explicitly
+> > > > > > for this flag?
+> > > > > 
+> > > > > IMHO, instead of completely removing this flag, how about having
+> > > > > flag like "UFSHCD_CAP_DISABLE_PM_QOS" which will make PMQOS enable
+> > > > > by default and if some host vendor wants to disable it explicitly,
+> > > > > they can enable that flag.
+> > > > > Please let me know your opinion.
+> > > 
+> > > That would result in a flag that is tested but that is never set by
+> > > upstream code. I'm not sure that's acceptable.
+> > > 
+> > 
+> > Agree. The flag shouldn't be introduced if there are no users.
+> > 
+> > > > If a vendor wants to disable this feature, then the driver has to be modified.
+> > > > That won't be very convenient. So either this has to be configured through sysfs
+> > > > or Kconfig if flexibility matters.
+> > > 
+> > > Kconfig sounds worse to me because changing any Kconfig flag requires a
+> > > modification of the Android GKI kernel.
+> > > 
+> > 
+> > Hmm, ok. Then I think we can have a sysfs hook to toggle the enable switch.
+> 
+> Hi Bart, Mani
+> 
+> How about keeping this feature enabled by default and having a module
+> parameter to disable pmqos feature if required ?
+> 
 
-On Wed, Dec 6, 2023 at 6:19=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 13/11/23 13:26, Fei Shao ha scritto:
-> > mtk_vcodec_mem_free() shouldn't print error if the target DMA buffer ha=
-s
-> > never been allocated or was freed properly in the previous call. That
-> > makes log confusing.
-> >
-> > Update the error path to print log only when the caller attempts to fre=
-e
-> > nonzero-size buffer with VA being NULL, which indicates something indee=
-d
-> > went wrong.
-> >
-> > This brings another benefit that the callers no more need to check
-> > mem->va explicitly to avoid the error, which can make the code more
-> > compact and neat.
-> >
-> > Signed-off-by: Fei Shao <fshao@chromium.org>
->
-> I think that this error is supposed to catch two issues in one:
->   - We're called to free no memory (something that does make no sense),
->     this may happen for example when calling xxx_free() twice, and it
->     is a mistake that *must* be fixed;
-When I made the change, I was thinking of kfree() that doesn't warn
-against a NULL pointer.
-I imagine mtk_vcodec_mem_free() calls with NULL VA and mem size 0
-probably have the similar nuance (if the buffer exists, free it; never
-mind otherwise), but I could have missed some important differences
-specific to the MTK vcodec driver.
+Module params not encouraged these days unless there are no other feasible
+options available.
 
-Looking at the mtk_vcodec_mem_free() usages, almost every one of those
-checks VA beforehand, but nothing else - they don't warn or do
-anything special when they encounter a NULL VA, and they should if
-that's a concern.
-Some even don't check at all (and I think that's why I ended up seeing
-the errors mentioned in the cover letter). As for that, I think
-there's nothing else we can fix except prepending "if (mem->va)".
-So from all this, I feel perhaps we don't need to worry much about
-those NULL VA, and we can further remove the checks (or at least move
-it into mtk_vcodec_mem_free()) to trim the lines in the driver. That's
-the reason for patch [4/4].
+- Mani
 
-Not sure if that makes sense to you.
+> Regards,
+> Nitin
+> 
+> > 
+> > - Mani
+> > 
+> > > Thanks,
+> > > 
+> > > Bart.
+> > 
+> 
 
->   - We're failing to free memory for real (which you covered)
->
-> ....that said, I think that if you want to clarify the error messages
-> in this function, it should look something like this:
->
-> if (!mem->va) {
->         mtk_v4l2_err(plat_dev, "%s: Tried to free a NULL VA", __func__);
->         if (mem->size)
->                 mtk_v4l2_err(plat_dev, "Failed to free %lu bytes", mem->s=
-ize);
->         return;
-> }
-Sure, I can revise the patch with this, but I also want to make sure
-if the NULL VA print needs to be an error.
-If you still think it should, I guess I'll drop the current patch
-[4/4] and instead add the check before every mtk_vcodec_mem_free()
-calls. This should also work for the issue I want to address in the
-first place.
-
-And thanks for the review.  :)
-
-Regards,
-Fei
-
-> Cheers,
-> Angelo
->
+-- 
+மணிவண்ணன் சதாசிவம்
 
