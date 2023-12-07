@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EDB0C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 17:58:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7986AC10DC3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Dec 2023 18:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XlGlC1SkIL9mmE58AXO5RRQ634yhMDTeXthN1KRiRhM=; b=QdTpXgc47fOROUWrGXF7lvRN9b
-	h5nSYLS9NqbwvOzrT9ZRcl85esBUrTpzSckVZ5ucLz1qI+9peWXWAPCuEB18yONQEuIcYK5N8vGQ9
-	S3TmsWNsMHJ7Q3DhOlMsb1o1c62Ouq2BRMmtM2z9yONLJaCgh/iZ1rga5pDxDWEqVHpIRqAx+PYEW
-	otLGhBc1xWl/ekkb1TP2K0yFhzWDQNHr5tlfy0VhHN/NOpv//IT52JbUOaCMv1lZ2AlVJL4lBVKAj
-	3ESmsEM5yqcYz8P7yYdgl5JB6M7dUnGrcceaUd4OmdzIoEkFM5PssQ4W1F/j1FGyTcuTTi+LWJubp
-	6vabOb+w==;
+	bh=Cyd5phiUGtF3gGm1M6y6XMNxNpiGb0naeJEFalYfR2w=; b=THC8BF3Sn4XoodqUJgcOEg9UTY
+	eVrB85dYEdr2SwPGlWCDP0Vw1DlBKK/Lxlf7y33tia0RNjKjxRPVBCF8Qu7JE4oDRsG9fqVWyjK7i
+	pvDcL/qNk1/zvJUN0MOnwxyzxg1r2K6r+qdkzo5HQ94G+G5ZKXg8QIzIgKI+z8eb/CBRPP688I6aD
+	xyLC69EEo216QtQ0uWkljAeHvQVJNyLnuiSLzkwt/CDv9uzIAuSQ9gEImefvtp7B1kb7CwPWtrGWI
+	DQlbjCgP6YQVuHuLwhvh5DgDe0UZtzNtOT/WUqHOS5Bv3HyygIqUVIXa6NUJlt96H2QEzNS7rMSQm
+	utQT2dxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBIdn-00DaOp-2m;
-	Thu, 07 Dec 2023 17:58:27 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1rBIj6-00DbUR-2u;
+	Thu, 07 Dec 2023 18:03:56 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBIdk-00DaNj-2U;
-	Thu, 07 Dec 2023 17:58:26 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-1efb9571b13so783290fac.2;
-        Thu, 07 Dec 2023 09:58:23 -0800 (PST)
+	id 1rBIio-00Db9Q-1f;
+	Thu, 07 Dec 2023 18:03:44 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a1e2f34467aso120574066b.2;
+        Thu, 07 Dec 2023 10:03:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701972216; x=1702577016; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=Cyd5phiUGtF3gGm1M6y6XMNxNpiGb0naeJEFalYfR2w=;
+        b=W53gA5I0uOrVK8fQjGzVwpmwmNfe+1/78Rblm9coFMsfVtKGWal5ofAUhCHKLHZqXt
+         sIXUyMFU4lUg5M79XZlL51cWt5zdjXHWDxelefvUmuA8G/k3Bh3kkOoXKmOTWzRqYQrH
+         KBQ4iTM3FzZjMxViqQrypuGUffz8bTbXyJiKo7JyVkTb7bj8zF36L6XTbtWtQKkDEJSW
+         fbAIX5pRmRUpbgWYqAGvOwAjmmMrLqxF49Y5aMkOudE1A4lbTYYzxtQzZYseS3bDO6JX
+         gNYjJb78J585zyXYOvWl3PM9xpJvX6fUfQRW+oMrkeK3jD1zqg7OexdYVeYWZPz7LSly
+         acuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701971902; x=1702576702;
+        d=1e100.net; s=20230601; t=1701972216; x=1702577016;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XlGlC1SkIL9mmE58AXO5RRQ634yhMDTeXthN1KRiRhM=;
-        b=jLMY+E0s/SC0EWYiSVQO7PUM6iMllgl2S/3fS/TeYbzk2SyzJwaWX753C4jyiMMrAI
-         cOayXAM1AotbLuOfhR1/On35m5nONlr2aAk0AXix/SMkNwIAI09t6Q+/3RZm9kHkK7J5
-         DFkFj0C4s+4w/R7vqugnQsDt2MqdCuQZbH8BXeWAqF/mwnWHTFnovmN89F4oPvpDCExX
-         jAC0PJu304yJpp8nNcdpUvMJF+01Q6QW4UgffeaurxuJk4nx+Us5Jm58MN+mz1trLTvx
-         4uQjoU9mN2zP9escYEcL/QDPUky5AUxV19ZYvVHCASGBxEHS00xPdq3hR15RNt4scRsa
-         2Glw==
-X-Gm-Message-State: AOJu0YworvhEI3UziHwrI2cqxsYNPScnR6YFsAOHAspe1jBKeQoEUy22
-	WnA9WiZWWj57o6+EwSUZTA==
-X-Google-Smtp-Source: AGHT+IHxq2Dw8sFsLLI+z4S9TgWxaf6l0cocAGF+yc2TisyC49euiJvcC1n+Yr/0HeIX18RO0y1CyA==
-X-Received: by 2002:a05:6870:390c:b0:1fa:fee1:6f1e with SMTP id b12-20020a056870390c00b001fafee16f1emr3075427oap.10.1701971902619;
-        Thu, 07 Dec 2023 09:58:22 -0800 (PST)
-Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id k29-20020a05687022dd00b001fb0edac63csm58231oaf.6.2023.12.07.09.58.21
+        bh=Cyd5phiUGtF3gGm1M6y6XMNxNpiGb0naeJEFalYfR2w=;
+        b=lXVXreWqdLTc7ks2Ky4b8bmDQakRWuiBvbUBs7UgFLfIxSsaPvTMVRJaPtuW023Y5E
+         6UJjmOAu3nke2ty4eQEQxeYMmmynHZ8B5TD6cHNu29UWZyazHbauvlNAnv+PRWie/ecN
+         lKsreKsI1CvCU72z1eqg5pes47/+tNOdB+a0Rfi69hcc5fKVso+IJ9TwvtXIY547znKy
+         Nc/Ye0tUZs9mwBQ0Sm8GLPS1FxqWPOMLiEwyTxnvCwz26wptjFZrhEkSWaaiIX3UPh7X
+         j0NeHl42dVrAVnFsOsWnns0hPYZhsfztqSHDq/Xq+9Q9esmk9bQOQHVHVyhQZfNfDEsn
+         WLlQ==
+X-Gm-Message-State: AOJu0YzHl4qs7dH4VUqZG7HaZBzH70OZovzfAg/LJYrcibWIKcMPBNiR
+	Dhzu4Khogyyao3Bm+XbuDuM=
+X-Google-Smtp-Source: AGHT+IEb+8/GgdfwY783D66zPQhIszkM1fWsRJgqvO0vREeyx1Z2tXbyEmShioG3fZn9KBdhMDEBMQ==
+X-Received: by 2002:a17:906:fa92:b0:a19:641:66da with SMTP id lt18-20020a170906fa9200b00a19064166damr2080980ejb.7.1701972215689;
+        Thu, 07 Dec 2023 10:03:35 -0800 (PST)
+Received: from skbuf ([188.27.185.68])
+        by smtp.gmail.com with ESMTPSA id vi8-20020a170907d40800b00a1c7b20e9e6sm40275ejc.32.2023.12.07.10.03.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Dec 2023 09:58:22 -0800 (PST)
-Received: (nullmailer pid 2977746 invoked by uid 1000);
-	Thu, 07 Dec 2023 17:58:20 -0000
-Date: Thu, 7 Dec 2023 11:58:20 -0600
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Nishanth Menon <nm@ti.com>, linux-mediatek@lists.infradead.org, 
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Arnd Bergmann <arnd@arndb.de>, 
-	Olof Johansson <olof@lixom.net>, linux-arm-msm@vger.kernel.org, linux-doc@vger.kernel.org, 
-	Andrew Davis <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>, linux-rockchip@lists.infradead.org, 
-	Michal Simek <michal.simek@amd.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Jonathan Corbet <corbet@lwn.net>, Konrad Dybcio <konradybcio@kernel.org>, Chen-Yu Tsai <wens@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-amlogic@lists.infradead.org, 
-	Bjorn Andersson <andersson@kernel.org>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, 
-	linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	workflows@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
-	Heiko Stuebner <heiko@sntech.de>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org
-Subject: Re: [PATCH v4] docs: dt-bindings: add DTS Coding Style document
-Message-ID: <170197172648.2974247.13097453111547800548.robh@kernel.org>
-References: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+        Thu, 07 Dec 2023 10:03:35 -0800 (PST)
+Date: Thu, 7 Dec 2023 20:03:32 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH net-next 05/15] net: dsa: mt7530: improve code path for
+ setting up port 5
+Message-ID: <20231207180332.ugfp33xcdkw3elrw@skbuf>
+References: <20231118123205.266819-1-arinc.unal@arinc9.com>
+ <20231118123205.266819-6-arinc.unal@arinc9.com>
+ <ZVjNJ0nf7Mp0kHzH@shell.armlinux.org.uk>
+ <5e95a436-189f-412e-b409-89a003003292@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <5e95a436-189f-412e-b409-89a003003292@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_095824_816798_7285FFB0 
-X-CRM114-Status: GOOD (  17.34  )
+X-CRM114-CacheID: sfid-20231207_100338_621463_9AF5A44A 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,93 +90,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, "Russell King \(Oracle\)" <linux@armlinux.org.uk>, Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Sat, Dec 02, 2023 at 11:36:03AM +0300, Arınç ÜNAL wrote:
+> On 18.11.2023 17:41, Russell King (Oracle) wrote:
+> > > For the cases of PHY muxing or the port being disabled, call
+> > > mt7530_setup_port5() from mt7530_setup(). mt7530_setup_port5() from
+> > > mt753x_phylink_mac_config() won't run when port 5 is disabled or used for
+> > > PHY muxing as port 5 won't be defined on the devicetree.
+> > 
+> > ... and this should state why this needs to happen - in other words,
+> > the commit message should state why is it critical that port 5 is
+> > always setup.
+> 
+> Actually, port 5 must not always be setup. With patch 7, I explain this
+> while preventing mt7530_setup_port5() from running if port 5 is disabled.
+> 
+> Arınç
 
-On Sun, 03 Dec 2023 18:46:22 +0100, Krzysztof Kozlowski wrote:
-> Document preferred coding style for Devicetree sources (DTS and DTSI),
-> to bring consistency among all (sub)architectures and ease in reviews.
-> 
-> Cc: Andrew Davis <afd@ti.com>
-> cc: Andrew Lunn <andrew@lunn.ch>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: Arnd Bergmann <arnd@arndb.de>
-> Cc: Bjorn Andersson <andersson@kernel.org>
-> Cc: Chen-Yu Tsai <wens@kernel.org>
-> Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> Cc: Jonathan Corbet <corbet@lwn.net>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Michal Simek <michal.simek@amd.com>
-> Cc: Neil Armstrong <neil.armstrong@linaro.org>
-> Cc: Nishanth Menon <nm@ti.com>
-> Cc: Olof Johansson <olof@lixom.net>
-> Cc: Rafał Miłecki <zajec5@gmail.com>
-> Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
-> Acked-by: Heiko Stuebner <heiko@sntech.de>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Acked-by: Konrad Dybcio <konradybcio@kernel.org>
-> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> ---
-> 
-> Merging idea: Rob/DT bindings
-> 
-> Changes in v4
-> =============
-> 1. Drop label at the top (Jon)
-> 2. Grammar fixes (Laurent, Dragan)
-> 3. "Unless a bus defines differently, unit addresses shall ..." (Rob)
-> 4. Use hex in example of dma-controller (Andrew)
-> 5. Example: soc@ -> soc@0
-> 6. Reverse points 2 and 3 in "Indentation" (Andrew)
-> 7. Use full path to coding style doc (Conor)
-> 
-> Changes in v3
-> =============
-> 1. should->shall (Angelo)
-> 2. Comments // -> /* (Angelo, Michal)
-> 3. Use imaginary example in "Order of Properties in Device Node"
->    (Angelo)
-> 4. Added paragraphs for three sections with justifications of chosen
->    style.
-> 5. Allow two style of ordering overrides in board DTS: alphabetically or
->    by order of DTSI (Rob).
-> 6. I did not incorporate feedback about, due to lack of consensus and my
->    disagreement:
->    a. SoM being DTS without DTSI in "Organizing DTSI and DTS"
-> 
-> Changes in v2
-> =============
-> 1. Hopefully incorporate entire feedback from comments:
-> a. Fix \ { => / { (Rob)
-> b. Name: dts-coding-style (Rob)
-> c. Exceptions for ordering nodes by name for Renesas and pinctrl (Geert,
->    Konrad)
-> d. Ordering properties by common/vendor (Rob)
-> e. Array entries in <> (Rob)
-> 
-> 2. New chapter: Organizing DTSI and DTS
-> 
-> 3. Several grammar fixes (missing articles)
-> 
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-samsung-soc@vger.kernel.org
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-arm-msm@vger.kernel.org
-> Cc: workflows@vger.kernel.org
-> Cc: linux-doc@vger.kernel.org
-> ---
->  .../devicetree/bindings/dts-coding-style.rst  | 196 ++++++++++++++++++
->  Documentation/devicetree/bindings/index.rst   |   1 +
->  2 files changed, 197 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dts-coding-style.rst
-> 
+Then change that last paragraph. You could say something like this:
 
-I added the quotes as discussed and applied, thanks!
+To keep the cases where port 5 isn't controlled by phylink working as
+before, we need to preserve the mt7530_setup_port5() call from mt7530_setup().
 
-Rob
+I think it's a case of saying too much, which sparks too many unresolved
+questions in the reader's mind, which are irrelevant for the purpose of
+this specific change: eliminating the overlap between DSA's setup() time
+and phylink.
 
