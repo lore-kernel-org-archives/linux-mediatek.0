@@ -4,189 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81D3FC4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 11:03:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95ED6C4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 14:00:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oywCcxpvcq774ikp9Zv+0+tlrr44eyqIRY/PiJvY1H4=; b=sd/3gD79FyGLVTrmI0v81Uz8+F
-	sSF22OvfM4R4ZhaB5khbX1aXPfLcXDcQWOPWPOkIL1dYu8uaqM2YQXajnjNyJYAJbnFXErB8zlSNW
-	y8IYLiYnfiq/n5Xbl8BBwIIm5X1iXXOMmiY07IoxunIbR+VYTyrY2on1jqojrSfJBaRMhkM5TJ5OJ
-	TNqQoZVeOaLcfPpZBgKtYP34/nc/BXgkATBfdYaZbyc1GvMP/GLmBxwtJbgOohznrpiVKILJBrBuZ
-	/uOn+4Q697dcLrBecEjbgTJ9c6N/7R1uaoJ32gUlggnq8XibGY0WrRpMzIDm22p7TSOJy2XThBCyL
-	ae59o0WA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
+	From:Date:Message-Id:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=I5hSfWoT/zaxbWvskG0G8aAPc/U4gJg60vnp4mri/nE=; b=ec4Z726kJpYFAil6iWIfPMltUB
+	BSu59bFZmF8oCyAwd2z3E8OU1yh6CQrgmb3O16Fz5ber5tAAWvTTmKHE4Cg7gXaFVCh04CHys5wrP
+	I9BAMWeiE3EDGK8BQbEokTxC3gqavYJg1L2INSZSoixFlpDqgvnI9eCy3txWOotv83uLnDM/G3HbO
+	gcvraIf9kP0L6obPAuOz2s01EO5QZit2KOe0Id01kVhwWQTpTehS3r4MQSkT+wq6Xq3ZiGjmeT5GE
+	Rn9+cSqytbr2lBoBFeSH69e+3WZOAo3oZhefOZ5iO+udoXhOviplVUC9Lxa6v6xyFN00DttKu6oe5
+	eFA9KduQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBYe5-00FKM4-1B;
-	Fri, 08 Dec 2023 11:03:49 +0000
-Received: from esa.microchip.iphmx.com ([68.232.153.233])
+	id 1rBbPN-00FivI-33;
+	Fri, 08 Dec 2023 14:00:49 +0000
+Received: from out4-smtp.messagingengine.com ([66.111.4.28])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBYe2-00FKLZ-0Y;
-	Fri, 08 Dec 2023 11:03:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1702033426; x=1733569426;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=oywCcxpvcq774ikp9Zv+0+tlrr44eyqIRY/PiJvY1H4=;
-  b=cejp7PQwwVCd7xLFy81DMFPV07B8c4wPb1fNSIADERT5aMaxYcygdmVR
-   /lJG0T2QIPlXBufEwE/6CBrcBqyKQt2Qw4AWHgGFg3AMhSZz6gIUYot7W
-   +ES2KSpVyx9/6jTf8r99moe35jmwbT7Ew03WIfSL3Fg0rt30yVDnFSAlD
-   aeE1xklJBItwcBlZqk5+3Ru2k/6jxuD32YuMsoAw+MXeDlBVmLWlQz2m/
-   HzOW7NZ0BobZ1WUr14I3LlbhPuOOdRUBtZtiSRrGoSwm4zr+1h9D7y//H
-   ftQjql+NOvIvUtJpwmxzskTOTAfI2fypVtR3WGMAnmixWcUeO4ZrjfsS3
-   w==;
-X-CSE-ConnectionGUID: fPFZte+/TH+GVMr8YTp5jQ==
-X-CSE-MsgGUID: In9ovAXCTY+sELLKRsvDew==
-X-ThreatScanner-Verdict: Negative
-X-IronPort-AV: E=Sophos;i="6.04,260,1695711600"; 
-   d="scan'208";a="12989660"
-X-Amp-Result: SKIPPED(no attachment in message)
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa3.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 08 Dec 2023 04:03:43 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Fri, 8 Dec 2023 04:03:18 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (10.10.215.250)
- by email.microchip.com (10.10.87.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Fri, 8 Dec 2023 04:03:18 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=D6gsgXGCHUVqSUYGis3Ub2Q3eC14LxkbKMRfPt42XFLGjhvXwR6mDojXIyFibppCD915CuAZF2KVAN6XqlTmwbKfxomqaO5gk9vb2r3m/RjfbTn2waZHNeTA6OToZ2KaVXqkV7WE41WoxbtVbAjaBV6voiKX0GLa+s3MoW1OyRUt65OlvM8gd2xlULAk5fnJbU5Pdq1NNDy7MTuFf1xjUXRvvq17bGZ8JQ4ph3Rd5UtZWqQPyJcrwCYIYdi0F5yJodcOqYv/7BxAx9yzIUbohO553ynKEYkwz1VxJm1UoPgp+nzZ3iQgdwwfiBOg8L+zlNXbm/qxZl/NuSlJqr1dCw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=oywCcxpvcq774ikp9Zv+0+tlrr44eyqIRY/PiJvY1H4=;
- b=MULQUuWicyhwO8tH2hSYh/B8CqznGdh0S3loNQgv81xDI2UYEhL3Void+cRAovWRHrPkKGtirx0KqEeEAKjJdE04pPp2G2poqMI4NihJvn55G3aN6rdMmBL5Wq5BHPW4aEaEzdBDA4BQECPBAgdTLL4F7R0amQBPWrgBtcMLBEx7MEPIKgwQodi0kH8jDE1Cvx8bYdGck8l/4K0r4LwN6PGfGUskPqfClZByGOBge+e7/nvBdwMi70B6+EF2RQM9ESe+RK+erptlOM5/kzdNlVFJpBSBaBfd0aURAHiu3jv0ZFyrIrwS45mgAJZTzH6bY69LZAnhFHr0lEz8dxMs8Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microchip.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oywCcxpvcq774ikp9Zv+0+tlrr44eyqIRY/PiJvY1H4=;
- b=ML7DyH0iq7yAVdiWko824DhgTLQo4TYysRuR7UDDrvgZojmwgZ/KhK73eDpx0Xs3v32/3j/u+m6Jfs2SDDauvJTjJ3isLg33J3fCg5ItkWsyRUKa4l38HZIo+RTxRVgUOsW2FWPlQHROahbzNj7rbTXgOxxsYKo81iPBb7cgtLWwRUXy0Qm0OhEEpGnqAGo4STbCAiVDlmmHXbfxuSjhu0yHRoPQDgRxltbt9XsTHERtvDoIo2Br1cgEwrPAjTY2tRtcdAeaGYCbCnVF75fCqolF/ARxL+06wXupaW8VLYPWg4vHHeRZoQnaK4aQnM/EuceKM9EMtcV13BGrbzJWnQ==
-Received: from CO1PR11MB4771.namprd11.prod.outlook.com (2603:10b6:303:9f::9)
- by SA1PR11MB8543.namprd11.prod.outlook.com (2603:10b6:806:3ac::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7068.27; Fri, 8 Dec
- 2023 11:03:16 +0000
-Received: from CO1PR11MB4771.namprd11.prod.outlook.com
- ([fe80::be2d:30b4:c304:3c2e]) by CO1PR11MB4771.namprd11.prod.outlook.com
- ([fe80::be2d:30b4:c304:3c2e%5]) with mapi id 15.20.7068.028; Fri, 8 Dec 2023
- 11:03:16 +0000
-From: <Divya.Koppera@microchip.com>
-To: <justinstitt@google.com>, <davem@davemloft.net>, <edumazet@google.com>,
-	<kuba@kernel.org>, <pabeni@redhat.com>, <shayagr@amazon.com>,
-	<akiyano@amazon.com>, <darinzon@amazon.com>, <ndagan@amazon.com>,
-	<saeedb@amazon.com>, <rmody@marvell.com>, <skalluru@marvell.com>,
-	<GR-Linux-NIC-Dev@marvell.com>, <dmichail@fungible.com>,
-	<yisen.zhuang@huawei.com>, <salil.mehta@huawei.com>,
-	<jesse.brandeburg@intel.com>, <anthony.l.nguyen@intel.com>,
-	<louis.peens@corigine.com>, <shannon.nelson@amd.com>,
-	<brett.creeley@amd.com>, <drivers@pensando.io>, <kys@microsoft.com>,
-	<haiyangz@microsoft.com>, <wei.liu@kernel.org>, <decui@microsoft.com>,
-	<doshir@vmware.com>, <pv-drivers@vmware.com>, <apw@canonical.com>,
-	<joe@perches.com>, <dwaipayanray1@gmail.com>, <lukas.bulwahn@gmail.com>,
-	<hauke@hauke-m.de>, <andrew@lunn.ch>, <f.fainelli@gmail.com>,
-	<olteanv@gmail.com>, <arinc.unal@arinc9.com>, <daniel@makrotopia.org>,
-	<Landen.Chao@mediatek.com>, <dqfext@gmail.com>, <sean.wang@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<linus.walleij@linaro.org>, <alsi@bang-olufsen.dk>, <wei.fang@nxp.com>,
-	<shenwei.wang@nxp.com>, <xiaoning.wang@nxp.com>, <linux-imx@nxp.com>,
-	<Lars.Povlsen@microchip.com>, <Steen.Hegelund@microchip.com>,
-	<Daniel.Machon@microchip.com>, <UNGLinuxDriver@microchip.com>,
-	<jiawenwu@trustnetic.com>, <mengyuanlou@net-swift.com>,
-	<hkallweit1@gmail.com>, <linux@armlinux.org.uk>, <ast@kernel.org>,
-	<daniel@iogearbox.net>, <hawk@kernel.org>, <john.fastabend@gmail.com>
-CC: <linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<ndesaulniers@google.com>, <nathan@kernel.org>, <keescook@chromium.org>,
-	<intel-wired-lan@lists.osuosl.org>, <oss-drivers@corigine.com>,
-	<linux-hyperv@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <bpf@vger.kernel.org>
-Subject: RE: [PATCH net-next v5 3/3] net: Convert some ethtool_sprintf() to
- ethtool_puts()
-Thread-Topic: [PATCH net-next v5 3/3] net: Convert some ethtool_sprintf() to
- ethtool_puts()
-Thread-Index: AQHaKJpxqmNUvj9Mfk+NlKo4i1f/T7CfOGdQ
-Date: Fri, 8 Dec 2023 11:03:16 +0000
-Message-ID: <CO1PR11MB4771F4677509E46589039C75E28AA@CO1PR11MB4771.namprd11.prod.outlook.com>
-References: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
- <20231206-ethtool_puts_impl-v5-3-5a2528e17bf8@google.com>
-In-Reply-To: <20231206-ethtool_puts_impl-v5-3-5a2528e17bf8@google.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=microchip.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CO1PR11MB4771:EE_|SA1PR11MB8543:EE_
-x-ms-office365-filtering-correlation-id: 30bca623-1435-4a6f-20c2-08dbf7dd47da
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MCgF64TdUI6Arpa+VKjJwa9bfr27PxvBUl9A+Pq/4QRVb5o0fGn7xiHfe1qKOA5w0RRgXMmWWq2fLeYo06gw5PtXW9VPMLsBGqVkTD0bdquch6FZcewhocdYiCJoYxTyEL0fkDUSQgshF1gUBB+fSXwMlOLLf2LRRNmhG0dMlg6x0JN5pC1woPo+Wp0pZazE+rjqicGaoXiqMm1qy5kXqjqB5VlXoBk7eeBTPSsHaeA8VD5o0XGsqAfcmVC0dCZy9XI61VfxJ2OsactDx7cogQ5edIeaUVBWWNtvlTdBuDxLb8FPf2s6XVLouEkC6QPy9Pil9zu30LkR1OdNVzM8ycIkykOdYGNTCNanxxkJeys/a0OXZzkYRcu6IJfkpI2wcIoJGpJjJTLYP43NM0EtHZFIEVX9fPi4HwL13ymee3p0y62j8HrXIL53wB6hYc2XNk9lBdLvOjcaybhHAD19OMaX6ZrmOSDerXcSpTwwonnY6+YMi3+nXF+zlXi+O0ZlqrAe4eMb1vAhBrupy/6LxLol98HJVkqBrO4MLxzM3LiBkfMq7svbmr3lKk6JuFk0HGgEJOaMsZdTABEGw3ClT61ZwKWXhOT0N+qa8pHuLNVJiGnz3jRk+TfchuqGH76p
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB4771.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(396003)(136003)(39860400002)(366004)(346002)(230922051799003)(1800799012)(186009)(451199024)(64100799003)(26005)(9686003)(6506007)(71200400001)(7696005)(54906003)(5660300002)(122000001)(4326008)(41300700001)(7406005)(8936002)(64756008)(4744005)(8676002)(52536014)(7416002)(110136005)(66556008)(478600001)(2906002)(7366002)(1191002)(66476007)(76116006)(316002)(66946007)(38100700002)(86362001)(33656002)(38070700009)(66446008)(921008)(55016003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NnV4ZXpLL0d3TU0xRjdwS1RxNkc0aE53NXRtTzRLV3NSUEsyU2lVSFBLNith?=
- =?utf-8?B?T0xqWHpDQ3d6STFGUUlwTm9IRm96SXkrcDYvYVorTmU3WmNwUURyWUxkVVIx?=
- =?utf-8?B?NmVmOHZLUzNucm5iM2NqQmRIN3ErN25IS0JoNkowODNMNzF4c0V4QzlnZU02?=
- =?utf-8?B?VXVVZ3RNcEE3bnZZZHJnbTl4bTZaMDBXOTFFSUloQUVQNUN2Vi85b2lvMnVu?=
- =?utf-8?B?dVBKWWNINDNKc0ZJNWJXNFdiN2dvZUhQQjhDQkJRWUVoaHNLVVlXN05RaUtk?=
- =?utf-8?B?WGY2N1BsRmNQcEU0clB6ekhqd1kxbGZpcGVGdVpidHFVNzZyaFhRbDlhZWt1?=
- =?utf-8?B?RUVWM1Y1UGVwZmNSVC9hSkRzQ0NpMEZJUm1XZ0Z2MzJFamJkN1o1eEdzZC9v?=
- =?utf-8?B?TUhvNFVWcjdpUlZWLzRzZnhEeG1xOWo2R1EvNDJQeTNjdHVjVy9wMW1iaGhB?=
- =?utf-8?B?VWo0MlRaU3FwYm15YitnSTZITXFtUnNva3RXbERCV3pEY3NkSCttWFFlNW00?=
- =?utf-8?B?MFoyMW5pL05OaGo1NGRDZnkrYjUzeDJqMTJvS2dncm41VDlmTjBkeEMwSWFW?=
- =?utf-8?B?eUdjMkE4UURjNldacE1sZ0Fia3F2NWFmL0tRNnN3WGhkazljZDJSbW5BKzNi?=
- =?utf-8?B?N3ZtYkpRRDFGN0c3a3lqUFg1OVZPaEJ5YU03RlkwNFcrWjNPRFZoL1RXT3Yy?=
- =?utf-8?B?RmlvVS9IY2lXbEtQTkxHd2VnTE0yQnZCWVJDMHFMQWF6SjZsanhJZHRoQlVJ?=
- =?utf-8?B?STk2ZHNxTzZ3K3ZFdkZnT0pKWUlBQ0c3aFpTNkpGUzZSa1I4eXBZTWJzajlZ?=
- =?utf-8?B?YkVYU0dsZk5mOWZzZG4yRlVFbUZ6b3JCbEdTcXZnVmVYUW9FTVFwcTJiV0Nj?=
- =?utf-8?B?LzNPbGJkWFcxVDhERHlmbitodjU2cm4zc09zY0VIU0FhRExUcUVBc1NBRDU2?=
- =?utf-8?B?eXpGalNvc05IL1BrUzBkVkZWZGpJM1BHczhidVM3eTU3bFhaaUEzb2hiRUNM?=
- =?utf-8?B?cGIvRnAxbWhLRFhFalhVbXQzRnhLT1VrWHR1Zk1IWGUwU2w1c3pYSTVkVlcv?=
- =?utf-8?B?OGFqVkV2YXkwdU1vcDBRWUw3bi9pL0VYRW0zMzlneDlPRktFWjRhdGw3Q3JO?=
- =?utf-8?B?WlRBK1dwRWtVK1ZxUFh1UjUvZUZvRGJSMERpTkg3L2pMd3d3ek5CMHJjN2ZC?=
- =?utf-8?B?bDVkaGVnRng4TC9FUVQ5YUNaSG1kRFZCVE85ODZFdG5TNjN1eTFDVmNDK1ZE?=
- =?utf-8?B?OTBHUjUxTkt1MXd1d2Uwck9laGk5VmNVd3lPbnJBaDRFeENSVTRYZVU2RWJv?=
- =?utf-8?B?V0V5Z1M0REJ2aU5CcHlzMnhpT25LWnBUYXMvc0s1NE8zbE9VYWhnSjh5K3g5?=
- =?utf-8?B?SXROSGJJSkJUaUQ0NkV6VFdZZkJqMlU3aDc2NStOMDNlUjlhWU54bmd2OWFY?=
- =?utf-8?B?RkRJZUNuZDhockV6Q1JSMXlFNDRLQ2N6dmlJQXFRc2ZmSjhJbnlqMVkvbW1r?=
- =?utf-8?B?R1JISC9XazZJM1NCRUdDMGhQdXFrbUVReHZLMFZGQzR3WDhjNy9KQURMdHUy?=
- =?utf-8?B?K3ZNNXA0L3NaaG56YTZRdldQTzZhV2J0TU1rb0RWRWNQVEtjS1RLWlhITEUx?=
- =?utf-8?B?K005QTNnM3JmSGttNXFHZ3g0R1Y5U0NuRHdPMDU1dWc3TFdxcTA5UU05VitI?=
- =?utf-8?B?WjVtVTdMNGhiSHhlVnJYZC9mWnFmRjNkS3dpYVlqMGtlY3VmUE5UN1EvVzN4?=
- =?utf-8?B?QldKMlhrV1dTZHlBSUNQZTF0MnlrZ1BITFloU0tOV01QdEUyV0FPRElibFFT?=
- =?utf-8?B?TkYwcmFSaVVrZC9nalkxNEJvTS9aWWZJb0hYcGxxL2RQZXBNWTZJUWlQWGdx?=
- =?utf-8?B?NUlyR2ZKRTMxMHhWMWZGT2QwWXBGQ1VNcTFQZUUwdTlsTFhLelJJMUFaWVFS?=
- =?utf-8?B?U08xMTNQQ2x1QUJ0emxVY29Za1JTRlA0NXBpWUh1WVB6a3ExdGZWYVBUMjRt?=
- =?utf-8?B?cUhGSmpmSkpHRUlzWmhYcXc4YWNhaWEwZ3pHNTZncllOVFUvN1h1NmhIYW13?=
- =?utf-8?B?RGQvdWVUVWh5RG1Md2c3V215dktBVGVRL0NHOCtPZENmbThMcnZ0ZFZaRmRt?=
- =?utf-8?B?QkxJb0tsaEpSd0tqRUhzeGJIa0xCVnJRYnJkZ3B3YlQxdmpFZGh3WmJpMEIx?=
- =?utf-8?B?ZkE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	id 1rBbPG-00FisI-0m;
+	Fri, 08 Dec 2023 14:00:44 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.nyi.internal (Postfix) with ESMTP id 1FA8E5C016A;
+	Fri,  8 Dec 2023 09:00:37 -0500 (EST)
+Received: from imap51 ([10.202.2.101])
+  by compute5.internal (MEProxy); Fri, 08 Dec 2023 09:00:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:message-id:mime-version:reply-to:sender:subject:subject:to:to;
+	 s=fm1; t=1702044037; x=1702130437; bh=I5hSfWoT/zaxbWvskG0G8aAPc
+	/U4gJg60vnp4mri/nE=; b=KUc4SUJ9icXpk+IlCuT/vSRBaKPPkA0TzzMUW2h2Z
+	782gmfl9UyWRskGM/OXhK9pE3bNh6kx/9jusvwwsIFZk+LgxV6er3aoMtzF76/Fi
+	t2q55yFmSHRWyVnmoiRGvCrg2Azrd3GTzkhJjIgMGsnr5/nYjRrizmyo/m9EDVPC
+	mYrFbLRkk5hLoh5/kS7cJx+lH6iQSOza1g6WsrKaeJyR4FxmozB6aw0rNa8p6mCr
+	Z0DwDEy4pH/xmLCPr6nMIUAE4b+Bs5tTxxy1hzAmDDPR98Qq3IzpLvFAggeLlDNa
+	VpcAPsdJaQENSlRHBEUydUGaSTndh5bRjSIWG3Pm5yR2A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+	1702044037; x=1702130437; bh=I5hSfWoT/zaxbWvskG0G8aAPc/U4gJg60vn
+	p4mri/nE=; b=28pTMl+8m6bhj8Qile4f1RfTnE0j8XrMz/m3yeTh9aIkQ7tAmgN
+	LIz193w37P520oAufG74yb0yL22Cdfypdd0SDoBwxvwc1oIcGE+uL4cl88t0e3vc
+	QNp69Nt2Ejjh5BD1qUEz58gjUZtd0XD2+2g/yvW9VoJm28AbwNnM+uDN3EZGQn3W
+	DDf1To3Ev4/JFjGqvjQ524FiQknq+adclK9xBaDlyVqmmWcgXViSJXTjqWh/UETC
+	nY0+Z34AjqPzGJBwrIMuLNVzpf28XcNQMVsNW+1A6fIwgoZ5jtPxbrydNMZZZfeY
+	hzFxHKXpDPB2EGGtGducGkRnZ/minQjQtQg==
+X-ME-Sender: <xms:hCFzZRguWSPoVVuXRHDE0aO3o_EDGXM2sXlomj_cC8Uz7WES1XlWJg>
+    <xme:hCFzZWBMeMIRlJ18_YU0lAgB6aOI1rAv1PZ03QHo5PBGD38LndYtZZIs6rxy_8iGK
+    BLWq9OerifTYGbXl38>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudekiedgiedtucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepofgfggfkfffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehrnhgu
+    uceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrthhtvg
+    hrnhepleetleeghfdvjeeugfeiteekheetvefgvdekieffudejgfehudegfeejuedtgfeg
+    necuffhomhgrihhnpehkvghrnhgvlhdrohhrghdplhhinhgrrhhordhorhhgpdhgihhthh
+    husgdrtghomhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhr
+    ohhmpegrrhhnugesrghrnhgusgdruggv
+X-ME-Proxy: <xmx:hCFzZREdt4EG8M5-nY6eLjKdFdUwsZ75qzueUOl1HS4TBPWwPI6Qzg>
+    <xmx:hCFzZWQSpI14_4YBpQgBsLJfrKax_wq1rwwcHfA-L0Cn5U01hM5uxw>
+    <xmx:hCFzZexw1Z-ChCIjTqO2xkiPaBjnMxuVvYV6wxkUFxgZobAC1WEUsQ>
+    <xmx:hSFzZYvPZIfWwtKV5rrSbar4yLzvQ-okd4ty-EfHVJcKn9a_cYosyQ>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 7AB3FB6008D; Fri,  8 Dec 2023 09:00:36 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-1178-geeaf0069a7-fm-20231114.001-geeaf0069
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4771.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 30bca623-1435-4a6f-20c2-08dbf7dd47da
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2023 11:03:16.7912
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 8pcL4sM3lbdx+R7o1dmt2OOoXmUyzVL9O1ZVhN3mIg++n6W0JJGwuwfuCqdc8uVB1AwNzHifgnFUfr0HJzigrgybn5n08gIiV5PCzZLvBYU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB8543
+Message-Id: <90aa3b5f-a0d4-4609-85c2-e3d4cc944102@app.fastmail.com>
+Date: Fri, 08 Dec 2023 14:59:56 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Linus Torvalds" <torvalds@linux-foundation.org>
+Cc: soc@kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ imx@lists.linux.dev, linux-rockchip@lists.infradead.org
+Subject: [GIT PULL] ARM: SoC fixes for v6.7
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231208_030346_216776_4C3DA27E 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231208_060042_724496_192A4615 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -201,14 +101,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PiBUaGlzIHBhdGNoIGNvbnZlcnRzIHNvbWUgYmFzaWMgY2FzZXMgb2YgZXRodG9vbF9zcHJpbnRm
-KCkgdG8gZXRodG9vbF9wdXRzKCkuDQo+IA0KPiBUaGUgY29udmVyc2lvbnMgYXJlIHVzZWQgaW4g
-Y2FzZXMgd2hlcmUgZXRodG9vbF9zcHJpbnRmKCkgd2FzIGJlaW5nIHVzZWQgd2l0aA0KPiBqdXN0
-IHR3byBhcmd1bWVudHM6DQo+IHwgICAgICAgZXRodG9vbF9zcHJpbnRmKCZkYXRhLCBidWZmZXJb
-aV0ubmFtZSk7DQo+IG9yIHdoZW4gaXQncyB1c2VkIHdpdGggZm9ybWF0IHN0cmluZzogIiVzIg0K
-PiB8ICAgICAgIGV0aHRvb2xfc3ByaW50ZigmZGF0YSwgIiVzIiwgYnVmZmVyW2ldLm5hbWUpOw0K
-PiB3aGljaCBib3RoIG5vdyBiZWNvbWU6DQo+IHwgICAgICAgZXRodG9vbF9wdXRzKCZkYXRhLCBi
-dWZmZXJbaV0ubmFtZSk7DQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBKdXN0aW4gU3RpdHQgPGp1c3Rp
-bnN0aXR0QGdvb2dsZS5jb20+DQoNClJldmlld2VkLWJ5OiBEaXZ5YSBLb3BwZXJhIDxkaXZ5YS5r
-b3BwZXJhQG1pY3JvY2hpcC5jb20+DQo=
+The following changes since commit 2cc14f52aeb78ce3f29677c2de1f06c0e91471ab:
+
+  Linux 6.7-rc3 (2023-11-26 19:59:33 -0800)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git tags/soc-fixes-6.7-1
+
+for you to fetch changes up to fd1e5745f87a9e06974d2f42d22b3e1682c99105:
+
+  Merge tag 'v6.7-rockchip-dtsfixes1' of git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip into arm/fixes (2023-12-08 08:36:25 +0100)
+
+----------------------------------------------------------------
+ARM: SoC fixes for v6.7
+
+Most of the changes are devicetree fixes for NXP, Mediatek, Rockchips
+Arm machines as well as Microchip RISC-V, and most of these address
+build-time warnings for spec violations and other minor issues. One of
+the Mediatek warnings was enabled by default and prevented a clean build.
+The ones that address serious runtime issues are all on the i.MX platform:
+
+ - a boot time panic on imx8qm
+ - USB hanging under load on imx8
+ - regressions on the imx93 ethernet phy
+
+Code fixes include a minor error handling for the i.MX PMU driver, and
+a number of firmware driver fixes:
+
+ - OP-TEE fix for supplicant based device enumeration, and a new
+   sysfs attribute to needed to fix a race against userspace
+
+ - Arm SCMI fix for possible truncation/overflow in the frequency
+   computations
+
+ - Multiple FF-A fixes for the newly added notification support.
+
+----------------------------------------------------------------
+Ahmad Fatoum (1):
+      MAINTAINERS: reinstate freescale ARM64 DT directory in i.MX entry
+
+Alex Bee (2):
+      arm64: dts: rockchip: Expand reg size of vdec node for RK3399
+      ARM: dts: rockchip: Fix sdmmc_pwren's pinmux setting for RK3128
+
+Alexander Stein (4):
+      arm64: dt: imx93: tqma9352-mba93xxla: Fix LPUART2 pad config
+      dt-bindings: pwm: imx-pwm: Unify #pwm-cells for all compatibles
+      arm64: dts: freescale: imx8-ss-lsio: Fix #pwm-cells
+      arm64: dts: freescale: imx8-ss-dma: Fix #pwm-cells
+
+AngeloGioacchino Del Regno (7):
+      arm64: dts: mediatek: mt8195: Fix PM suspend/resume with venc clocks
+      arm64: dts: mediatek: mt8183: Fix unit address for scp reserved memory
+      arm64: dts: mediatek: mt8183-evb: Fix unit_address_vs_reg warning on ntc
+      arm64: dts: mediatek: mt8173-evb: Fix regulator-fixed node names
+      arm64: dts: mediatek: mt8183: Move thermal-zones to the root node
+      arm64: dts: mediatek: mt8186: Change gpu speedbin nvmem cell name
+      arm64: dts: mediatek: cherry: Fix interrupt cells for MT6360 on I2C7
+
+Arnd Bergmann (8):
+      Merge tag 'optee-supplicant-fix-for-v6.7' of git://git.linaro.org:/people/jens.wiklander/linux-tee into arm/fixes
+      Merge tag 'mtk-dts64-fixes-for-6.7' of git://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux into arm/fixes
+      Merge tag 'riscv-dt-fixes-for-v6.7-rc4' of https://git.kernel.org/pub/scm/linux/kernel/git/conor/linux into arm/fixes
+      Merge tag 'scmi-fixes-6.7' of git://git.kernel.org/pub/scm/linux/kernel/git/sudeep.holla/linux into arm/fixes
+      Merge tag 'arm-soc/for-6.7/devicetree-fixes' of https://github.com/Broadcom/stblinux into arm/fixes
+      Merge tag 'ffa-fixes-6.7' of git://git.kernel.org/pub/scm/linux/kernel/git/sudeep.holla/linux into arm/fixes
+      Merge tag 'imx-fixes-6.7' of git://git.kernel.org/pub/scm/linux/kernel/git/shawnguo/linux into arm/fixes
+      Merge tag 'v6.7-rockchip-dtsfixes1' of git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip into arm/fixes
+
+Chester Lin (1):
+      MAINTAINERS: change the S32G2 maintainer's email address.
+
+Conor Dooley (2):
+      riscv: dts: sophgo: remove address-cells from intc node
+      riscv: dts: microchip: move timebase-frequency to mpfs.dtsi
+
+Eric Woudstra (1):
+      arm64: dts: mt7986: fix emmc hs400 mode without uboot initialization
+
+Eugen Hristev (3):
+      arm64: dts: mediatek: mt8186: fix clock names for power domains
+      arm64: dts: mediatek: mt7622: fix memory node warning check
+      arm64: dts: mediatek: mt8183-kukui-jacuzzi: fix dsi unnecessary cells properties
+
+Fabio Estevam (2):
+      ARM: dts: imx6ul-pico: Describe the Ethernet PHY clock
+      ARM: dts: imx28-xea: Pass the 'model' property
+
+Frank Wunderlich (2):
+      arm64: dts: mt7986: define 3W max power to both SFP on BPI-R3
+      arm64: dts: mt7986: change cooling trips
+
+Haibo Chen (2):
+      arm64: dts: imx93: update gpio node name to align with register address
+      arm64: dts: imx8ulp: update gpio node name to align with register address
+
+Heiko Stuebner (2):
+      arm64: dts: rockchip: fix rk356x pcie msg interrupt name
+      arm64: dts: rockchip: drop interrupt-names property from rk3588s dfi
+
+Hsin-Yi Wang (1):
+      arm64: dts: mt8183: kukui: Fix underscores in node names
+
+Jonas Karlman (1):
+      arm64: dts: rockchip: Expand reg size of vdec node for RK3328
+
+Krzysztof Kozlowski (2):
+      ARM: dts: rockchip: minor whitespace cleanup around '='
+      arm64: dts: rockchip: minor whitespace cleanup around '='
+
+Kunwu Chan (1):
+      ARM: imx: Check return value of devm_kasprintf in imx_mmdc_perf_init
+
+Lorenzo Pieralisi (1):
+      firmware: arm_ffa: Fix ffa_notification_info_get() IDs handling
+
+Nathan Rossi (1):
+      arm64: dts: imx8mp: imx8mq: Add parkmode-disable-ss-quirk on DWC3
+
+Peng Fan (1):
+      arm64: dts: imx93: correct mediamix power
+
+Philipp Zabel (1):
+      ARM: dts: imx7: Declare timers compatible with fsl,imx6dl-gpt
+
+Rob Herring (1):
+      arm64: dts: rockchip: Fix PCI node addresses on rk3399-gru
+
+Sam Edwards (2):
+      arm64: dts: rockchip: Fix Turing RK1 interrupt pinctrls
+      arm64: dts: rockchip: Fix eMMC Data Strobe PD on rk3588
+
+Sascha Hauer (1):
+      dt-bindings: soc: rockchip: grf: add rockchip,rk3588-pmugrf
+
+Stefan Eichenberger (1):
+      arm64: dts: imx8-apalis: set wifi regulator to always-on
+
+Stefan Kerkmann (1):
+      ARM: dts: imx6q: skov: fix ethernet clock regression
+
+Stefan Wahren (1):
+      ARM: dts: bcm2711-rpi-400: Fix delete-node of led_act
+
+Sudeep Holla (8):
+      firmware: arm_ffa: Declare ffa_bus_type structure in the header
+      firmware: arm_ffa: Allow FF-A initialisation even when notification fails
+      firmware: arm_ffa: Setup the partitions after the notification initialisation
+      firmware: arm_ffa: Add checks for the notification enabled state
+      firmware: arm_ffa: Fix FFA notifications cleanup path
+      firmware: arm_ffa: Fix the size of the allocation in ffa_partitions_cleanup()
+      firmware: arm_scmi: Fix frequency truncation by promoting multiplier type
+      firmware: arm_scmi: Fix possible frequency truncation when using level indexing mode
+
+Sumit Garg (1):
+      tee: optee: Fix supplicant based device enumeration
+
+Xiaolei Wang (1):
+      arm64: dts: imx8qm: Add imx8qm's own pm to avoid panic during startup
+
+ Documentation/ABI/testing/sysfs-bus-optee-devices  |   9 +
+ Documentation/devicetree/bindings/pwm/imx-pwm.yaml |  10 +-
+ .../devicetree/bindings/soc/rockchip/grf.yaml      |   1 +
+ MAINTAINERS                                        |   3 +-
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-400.dts     |   4 +-
+ .../dts/nxp/imx/imx6q-skov-reve-mi1010ait-1cp1.dts |   4 +-
+ arch/arm/boot/dts/nxp/imx/imx6ul-pico.dtsi         |   2 +
+ arch/arm/boot/dts/nxp/imx/imx7s.dtsi               |   8 +-
+ arch/arm/boot/dts/nxp/mxs/imx28-xea.dts            |   1 +
+ arch/arm/boot/dts/rockchip/rk3128.dtsi             |   2 +-
+ arch/arm/boot/dts/rockchip/rk322x.dtsi             |   6 +-
+ arch/arm/mach-imx/mmdc.c                           |   7 +-
+ .../arm64/boot/dts/freescale/imx8-apalis-v1.1.dtsi |   5 +-
+ arch/arm64/boot/dts/freescale/imx8-ss-dma.dtsi     |   2 +-
+ arch/arm64/boot/dts/freescale/imx8-ss-lsio.dtsi    |   8 +-
+ arch/arm64/boot/dts/freescale/imx8mp.dtsi          |   2 +
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi          |   2 +
+ arch/arm64/boot/dts/freescale/imx8qm-ss-dma.dtsi   |  11 +
+ arch/arm64/boot/dts/freescale/imx8ulp.dtsi         |   6 +-
+ .../dts/freescale/imx93-tqma9352-mba93xxla.dts     |   2 +-
+ arch/arm64/boot/dts/freescale/imx93.dtsi           |  10 +-
+ .../boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts  |   2 +-
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       |   2 +-
+ .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts  |  12 +-
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi          |  24 +-
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |   4 +-
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |   4 +-
+ .../boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi    |   8 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |  96 ++++----
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           | 242 ++++++++++-----------
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi           |  44 ++--
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi    |   2 +-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi           |   6 +-
+ .../boot/dts/rockchip/px30-ringneck-haikou.dts     |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |   2 +-
+ .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |   3 +-
+ .../boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts  |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   6 +-
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi           |   2 +-
+ .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi |   4 +-
+ .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi  |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi          |   1 -
+ arch/riscv/boot/dts/microchip/mpfs-icicle-kit.dts  |   7 -
+ arch/riscv/boot/dts/microchip/mpfs-m100pfsevp.dts  |   7 -
+ arch/riscv/boot/dts/microchip/mpfs-polarberry.dts  |   7 -
+ arch/riscv/boot/dts/microchip/mpfs-sev-kit.dts     |   7 -
+ arch/riscv/boot/dts/microchip/mpfs-tysom-m.dts     |   7 -
+ arch/riscv/boot/dts/microchip/mpfs.dtsi            |   1 +
+ arch/riscv/boot/dts/sophgo/cv1800b.dtsi            |   1 -
+ drivers/firmware/arm_ffa/driver.c                  |  70 ++++--
+ drivers/firmware/arm_scmi/perf.c                   |  18 +-
+ drivers/tee/optee/device.c                         |  17 +-
+ include/linux/arm_ffa.h                            |   2 +
+ 55 files changed, 396 insertions(+), 328 deletions(-)
 
