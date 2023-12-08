@@ -4,105 +4,187 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB44AC4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 09:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D65B7C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 10:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sAXFEmqW4pBUH3PI1L3+ObRRWuur1lLznQWkwAVPU2E=; b=FJtDnc4sw8CEM5TiB2Se3GcoBq
-	ZCQAPiVMbBbrXdal+DudDVc2Bft85Ok4DpfXzpQhpHnGNS03V6pBo6IebJ990wSLTWP2VCffNJID/
-	Fe1TaDDRcPcYbWGlXT2w92jupQlnHYxrCSGjyAKNXUCH+cO+19dp178wqEUFS09GT967hYBWNtCzj
-	Q4imepnnq3PNvUaTMQt/PpEmFtxRibPAWSH0D33W98h/MZ4GiOQK3DL9nVt1FR4ZYILF9Veuk0fV0
-	16Zr0FPItaadqwfKYsYgiZq1hBziPuDJoXsLGjMxXsLbPYyk0P7RX1+3STfw6XMfB8MgVyGcLAzt2
-	7i/y8tVA==;
+	bh=TFzEVkrtdkDnecnm4Wpk02bP9YsYLIVSeyZ6cPyg7OU=; b=GAtwjhdOa5HQ0YBgT6Y8lfyFWn
+	FVuGgLKpnzGFN6kndeiquy61Hd8o5ENEpo1zQTKD0xn7B6vrBJnfvR898eUXBojW07jTYNShqNW65
+	Gc/XoFNJzWUYzRxT474qYpQd38m0aLuMQfe5WRdpKRpkd6Wf3d0iOAOZSnt7nHNX87VFGKRGqaRDx
+	QVfh8ZDhP4cmvjw/ngsSTiYtTaeu9F+nMwEPyOb1zKgF0nez6HyKiGVGZekYyXc5+wl0HqoX1Tlk1
+	H7itnihDxtJ40jeX+WgA8Kdwi6hZmasrOG758n0zJwM6NpP4h2cx1SYe/Hv7SnoPHf0/B/R6leNWV
+	X2KtdlQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBXZ0-00FAmT-1l;
-	Fri, 08 Dec 2023 09:54:30 +0000
-Received: from mgamail.intel.com ([192.55.52.120])
+	id 1rBYNU-00FI0H-1p;
+	Fri, 08 Dec 2023 10:46:40 +0000
+Received: from esa.microchip.iphmx.com ([68.232.154.123])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBXYx-00FAlU-2k;
-	Fri, 08 Dec 2023 09:54:29 +0000
+	id 1rBYNP-00FHz4-1f;
+	Fri, 08 Dec 2023 10:46:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1702029267; x=1733565267;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=FEzV6DVjh/Ga3HaHooYTXKaezfC0C7UbGiGx01741DE=;
-  b=Z2xEPEKRuYDqNdvAjTsCDOFChlCu7j33GAbJwIUsKNb7PkG18QM7Qb1N
-   JrX4aGhk9se/OEXD0ZKac0VQCIjFPl9eg2zdozIm7Zd9C4Y78TJK4Hhsm
-   JNP+V71X3F2JmLW4XMWCgFKcDbCrddLAiOtb89N06XoPrpLhEQRXHYYCS
-   Lc8fpBhCf7YgtEUsLWFi8B1JVaSO8hKKYgfwJx5aXxlXWR/tnqQaUQ5KK
-   u9jZ0AsrUYw9ZNZGxFei2VvSaZK9qhhACIbzRq+gjFs6gqhk6D7SUiSrr
-   uyOce0L08kegDsESKY34OGMfENWf1MJVhzi3Cy5fv5hMd2owuMtvuW+i6
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1702032395; x=1733568395;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=TFzEVkrtdkDnecnm4Wpk02bP9YsYLIVSeyZ6cPyg7OU=;
+  b=hhV2iCnjrJztxGgBiIsQicg+GhXHvG9H075HwXkUinhjamwtp3FIjUOU
+   pgh8wB/VFdtYJMkpggJIIvoGY6PXsDpG3LDG5vH1aE5sdl3QSiAaa69jt
+   qUgmbD6Y31imzIWnAXbldQDqxIDedZS3N/K9CDNnb5YmycO4cwnZqWAr8
+   HuNVdUyX6OMEerkiI2H8cIWT033S51AjdbDHjGFY9m1AVASN5t67AhIBX
+   jajPY6wr3bPx3qypxec5cD25uHmCQjvXRWQSx9zEgCU8pdJphiF6G5I6k
+   BRqvILrh7T+dpYBq8IjieM6BGn1tY+XNrXmTynFskvamCtwMB6ySyXPan
    g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10917"; a="393252578"
+X-CSE-ConnectionGUID: 3e0NrtFURd+b5G5ahGbLkA==
+X-CSE-MsgGUID: ByjXocyMTD2zBApuqawf4w==
+X-ThreatScanner-Verdict: Negative
 X-IronPort-AV: E=Sophos;i="6.04,260,1695711600"; 
-   d="scan'208";a="393252578"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Dec 2023 01:54:22 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10917"; a="806353117"
-X-IronPort-AV: E=Sophos;i="6.04,260,1695711600"; 
-   d="scan'208";a="806353117"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Dec 2023 01:54:14 -0800
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with ESMTP id C7C0011F995;
-	Fri,  8 Dec 2023 11:54:11 +0200 (EET)
-Date: Fri, 8 Dec 2023 09:54:11 +0000
-From: "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
-To: Zhi Mao =?utf-8?B?KOavm+aZuik=?= <zhi.mao@mediatek.com>
-Cc: "conor@kernel.org" <conor@kernel.org>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"heiko@sntech.de" <heiko@sntech.de>,
-	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"yunkec@chromium.org" <yunkec@chromium.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"dan.scally@ideasonboard.com" <dan.scally@ideasonboard.com>,
-	"gerald.loacker@wolfvision.net" <gerald.loacker@wolfvision.net>,
-	Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
-	"hdegoede@redhat.com" <hdegoede@redhat.com>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
-	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
-	Yaya Chang =?utf-8?B?KOW8tembhea4hSk=?= <Yaya.Chang@mediatek.com>,
-	"mchehab@kernel.org" <mchehab@kernel.org>,
-	"jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>,
-	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"bingbu.cao@intel.com" <bingbu.cao@intel.com>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"10572168@qq.com" <10572168@qq.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"macromorgan@hotmail.com" <macromorgan@hotmail.com>
-Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
-Message-ID: <ZXLnwzeD_DSuIyil@kekkonen.localdomain>
-References: <20231207052016.25954-1-zhi.mao@mediatek.com>
- <20231207052016.25954-2-zhi.mao@mediatek.com>
- <ZXGtqwjYruBQVaUr@kekkonen.localdomain>
- <129e3a8b-5e91-424a-8ff8-b015d5175f1a@linaro.org>
- <20231207-outcome-acclaim-d179c8c07fff@spud>
- <0580bc5be77c5e293770f42b661a41c80e1986dd.camel@mediatek.com>
+   d="scan'208";a="180148518"
+X-Amp-Result: SKIPPED(no attachment in message)
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa6.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 08 Dec 2023 03:46:32 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Fri, 8 Dec 2023 03:45:58 -0700
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (10.10.215.250)
+ by email.microchip.com (10.10.87.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Fri, 8 Dec 2023 03:45:58 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hAgIk/6QprF53h2o12pUFOBi49+RtBzI6MDv3h1HrxN+UHO94bdr2jApmg4YhxUb2ftmor9BzHtr5L+91LtgNPz/I2OOkYSKOqw//H9CTGCvPr/M1xld4rXFEsJNPYp48DLlcezIvnwLczrfa6b5e74YzD1Rv2v3BZ6kDQwhfwdymQ/+5/FypJT022n6+KDpzE7OE8yychhqDyWmQ+weZjpNv8+m5KqcJ8qnXQAHvICzfS1uTt9i0XRa2BFkTbCPmnKYlSTEV+32cKQRR6HHnOUxoqgMzZI8oiTBrNqSHA/jRV56tjRkTPMKPuFA8UbLrZCyDXb3TDI7rPl9NlllWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TFzEVkrtdkDnecnm4Wpk02bP9YsYLIVSeyZ6cPyg7OU=;
+ b=iGowH8kB77pa6VxsozIleBNNKSftdyZgMy9crRuivqPsXzg4g1IHQnQ1Hfuxuoslr4gEzZxSQmKe8OhIoM6qPjxWmEaswtENXPRmeo9HLz3P6GAGZWdqzGz7blaZZs8l2QDFfUmqnURuFiUDuvhJdqbh5Uza3LpsM18ne1C/0lIMeVXuEYcX29niC4SgYSFAGi/+sP/5TwLc9CAOascWpyAy831gfTAsH/CcdM6CwZbf2VGrttxogRJysF65Wo0Hk12YWo/2NAOEhfur0the43+ozuUKME5Ww9iTRg2IoDd2x6+DZEhIYCzU/Kw3TLy8QCHqVKUnp59CvxIZazJBuw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microchip.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=TFzEVkrtdkDnecnm4Wpk02bP9YsYLIVSeyZ6cPyg7OU=;
+ b=RyxHwG6VRm5i+ZgFUEU+j3FjkWSCQw3uuWn7H3SM1el3XyNr3yhjTQj71KhPgwMTTNST7VMFm3+fqtVyp8KzDN24gZo0isG1ANS5jnnFYaIeKLNdLKJaZxJAU0F+QdhMgxs/tr+xsQlsKd7Na9vrmyKGrJRJMb0GBHknXXc1NEEvFr72BrDE7iLMerShol2d2eWFkjI1SK6S30G+/7UAdPDRjkeYVSWacP6UxYQu6xAPT5lsy9jnuDM/wI8ckx5WHDsAzg2JEshIsgGEmfpoTh1dAc+BO6yF/tByl5iHmnMeeeRfKovwu4+L34NBxQq7fB8Hkni7QprNW1R37HvwJQ==
+Received: from DM6PR11MB4124.namprd11.prod.outlook.com (2603:10b6:5:4::13) by
+ MW4PR11MB8291.namprd11.prod.outlook.com (2603:10b6:303:20d::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7068.28; Fri, 8 Dec
+ 2023 10:45:56 +0000
+Received: from DM6PR11MB4124.namprd11.prod.outlook.com
+ ([fe80::af51:1aed:6d1c:6d64]) by DM6PR11MB4124.namprd11.prod.outlook.com
+ ([fe80::af51:1aed:6d1c:6d64%7]) with mapi id 15.20.7068.028; Fri, 8 Dec 2023
+ 10:45:55 +0000
+From: <Madhuri.Sripada@microchip.com>
+To: <justinstitt@google.com>, <davem@davemloft.net>, <edumazet@google.com>,
+	<kuba@kernel.org>, <pabeni@redhat.com>, <shayagr@amazon.com>,
+	<akiyano@amazon.com>, <darinzon@amazon.com>, <ndagan@amazon.com>,
+	<saeedb@amazon.com>, <rmody@marvell.com>, <skalluru@marvell.com>,
+	<GR-Linux-NIC-Dev@marvell.com>, <dmichail@fungible.com>,
+	<yisen.zhuang@huawei.com>, <salil.mehta@huawei.com>,
+	<jesse.brandeburg@intel.com>, <anthony.l.nguyen@intel.com>,
+	<louis.peens@corigine.com>, <shannon.nelson@amd.com>,
+	<brett.creeley@amd.com>, <drivers@pensando.io>, <kys@microsoft.com>,
+	<haiyangz@microsoft.com>, <wei.liu@kernel.org>, <decui@microsoft.com>,
+	<doshir@vmware.com>, <pv-drivers@vmware.com>, <apw@canonical.com>,
+	<joe@perches.com>, <dwaipayanray1@gmail.com>, <lukas.bulwahn@gmail.com>,
+	<hauke@hauke-m.de>, <andrew@lunn.ch>, <f.fainelli@gmail.com>,
+	<olteanv@gmail.com>, <arinc.unal@arinc9.com>, <daniel@makrotopia.org>,
+	<Landen.Chao@mediatek.com>, <dqfext@gmail.com>, <sean.wang@mediatek.com>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<linus.walleij@linaro.org>, <alsi@bang-olufsen.dk>, <wei.fang@nxp.com>,
+	<shenwei.wang@nxp.com>, <xiaoning.wang@nxp.com>, <linux-imx@nxp.com>,
+	<Lars.Povlsen@microchip.com>, <Steen.Hegelund@microchip.com>,
+	<Daniel.Machon@microchip.com>, <UNGLinuxDriver@microchip.com>,
+	<jiawenwu@trustnetic.com>, <mengyuanlou@net-swift.com>,
+	<hkallweit1@gmail.com>, <linux@armlinux.org.uk>, <ast@kernel.org>,
+	<daniel@iogearbox.net>, <hawk@kernel.org>, <john.fastabend@gmail.com>
+CC: <linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<ndesaulniers@google.com>, <nathan@kernel.org>, <keescook@chromium.org>,
+	<intel-wired-lan@lists.osuosl.org>, <oss-drivers@corigine.com>,
+	<linux-hyperv@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <bpf@vger.kernel.org>
+Subject: RE: [PATCH net-next v5 1/3] ethtool: Implement ethtool_puts()
+Thread-Topic: [PATCH net-next v5 1/3] ethtool: Implement ethtool_puts()
+Thread-Index: AQHaKJpSOq0mHraPM0S77nPVwW1Wl7CfNdhg
+Date: Fri, 8 Dec 2023 10:45:55 +0000
+Message-ID: <DM6PR11MB4124F675444E8BA0523264F8E18AA@DM6PR11MB4124.namprd11.prod.outlook.com>
+References: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
+ <20231206-ethtool_puts_impl-v5-1-5a2528e17bf8@google.com>
+In-Reply-To: <20231206-ethtool_puts_impl-v5-1-5a2528e17bf8@google.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=microchip.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DM6PR11MB4124:EE_|MW4PR11MB8291:EE_
+x-ms-office365-filtering-correlation-id: 795540da-659c-4df8-0aa2-08dbf7dadb35
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: h/+/FTei1hfSE5QUMpHFvgmqMd6ersNN1yNf/rcvXbzkM/PaCOWaHWASxhzd64P+RUAXEDasAJfsfkTHSq4H9o9O4pQnmnHIa0eeeiC7d4Y93tWz1faFw5+eMg6BwN8b6e6gwQewNfwDkOLRbpZ4DL7N3MwsyI+SRyNVd9XGCjiUVVhK4G9D3f6CxENCWl4x6/rkcHhRqW0sCMuoJdTOezN3pk8/4KSHopbAWDwnQUc16dckqNWZEE57SILnJH35oA5nzUfTMi1uu3rhEgBKmgIYQQuhulVshcQRSV6N1u4z1wal6F7TRPYh5zbE6yWXrtqg+McXFl9N/+pbzNCFamtoUy4c/UQU0qHbiEtrwuBrfxEvC+2uWjcjYW8nUBiEdkcVNBXtRkR5bnycRwGRPReqL8tKQwG4os64L9k4SVCvhMbOWVvncVaE4SyjWj6qzruLCkeFYKuROJ11EPq4NpqHFeo8qVRfmv0dauTIiu8kc4H2YucdRlROsOEym/Ct72NbsvcKStZ4ZkurI2Kypc1HzRmIbzwOXmWkdgqVXoqwm0jxsBv98j/dFLdmJJXyEVREslvtPceypUIovDCJv0V+3hh/qnXXjgtIgToAOIZkGtkUmcqvAghKbLbNSY/UL4/Lm8g+ZbiU9ffEainEAg==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR11MB4124.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(39860400002)(346002)(396003)(136003)(376002)(230922051799003)(1800799012)(451199024)(186009)(64100799003)(5660300002)(1191002)(7406005)(7366002)(2906002)(7416002)(52536014)(4326008)(8936002)(8676002)(86362001)(38070700009)(921008)(41300700001)(55016003)(9686003)(558084003)(26005)(66446008)(64756008)(66946007)(76116006)(66476007)(54906003)(66556008)(110136005)(316002)(38100700002)(71200400001)(6506007)(33656002)(7696005)(122000001)(478600001);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VjMwQ0U5WTJDcXhPT1lud044ekFxVGpycU15UU5YZjdrUnU1UWdUTUZ1RTd1?=
+ =?utf-8?B?WU9yMFVMU0k0QVU5MVlVVlE2Q1Z3N0RmdU1HVG8zRnNWQ1ZydG1Xc2ZUQU1u?=
+ =?utf-8?B?RXFFWlJPWGhOUUx6Q3Jwa05wN0tGQkVkSWMyNVB2QzhVSExJTDhCZXl0Mjh0?=
+ =?utf-8?B?ZkRiVitKaFJTdWs3UDZaOGFCOUtObnN3RkJGVkpqTXFINC9WTWpDdXY3RG14?=
+ =?utf-8?B?eU02RjY0Nlo0Tk9kTE8xU0NtQ0x3aktLK0pkUzN0RDB0S095Z1AyN2l2RVZn?=
+ =?utf-8?B?QlRDeitrQ2lVeFVkOVJPeWJQZEJWak9JSHpjZU1QdHpQZXlwakd6REd0Zmxk?=
+ =?utf-8?B?eFBzVUJMaUFwYlpEbElVWUZaMFRNWmhyOFR5Qk9tK1FEM3A5VHpXMk91M0NX?=
+ =?utf-8?B?UDNkcnBveDhtTVhUaGVvcVl5eVBVaUFrK2wxNTQ4b1pVZ3E0VHVPQ1hDZmhy?=
+ =?utf-8?B?dHR6VlRybk9VV0RBVjJmRys1aGJNRXNtbHRhZWkyT1UxZ0pMZEs3Nk9WdzBa?=
+ =?utf-8?B?SXpkVUdqbzZCVHRVVStlUDFBaUxrRHdqcDhSTFRUV2pkaWo5TnNGQjh2SWJJ?=
+ =?utf-8?B?cWNGNTZWVlZIUlRmaDhtNXZ3TWhxbUVKZnJJVkM2RmFmM0VTdjg3b3VIQlMy?=
+ =?utf-8?B?UjdkYWs1WkVqMm9NUWRPODJENGhIMUMrZzFXV0RLYmhTWDVXd3hud05jRDlP?=
+ =?utf-8?B?Z2FyRjRCNVl6Y1RPNkRRN3IyTGVjNXA5Zk1CMEV1TjFQQ2EzVkoya2lKekpK?=
+ =?utf-8?B?RHBNdlVwdW9HbHkwL1B6R3FBR0NnRzBHOGx0eCtQL3JKN1RYbkdudHNDMWw3?=
+ =?utf-8?B?MDMyZWtvNFdxS2x6OW5hOFg2VEJ0T21PNktRRFpCdS9oTXd5NmJtR09aaWMy?=
+ =?utf-8?B?bFhDeDZ2UUt5WWJidzEzSU1Gd2tSWlJrWG1VanlUb0RMay9MTXIwTXhxRWM4?=
+ =?utf-8?B?UzJ1RUc2TFM0Y3dTTkVyYW9sWFpoeWJOa2xqcWFnNjJTb3UzMTh4ZytMdTIy?=
+ =?utf-8?B?dS9NQ0p1TWtUVFJWbWk3RUhVZTJVN0FjOFJhdUlwNkVrOGhZNU94MkZtRE0w?=
+ =?utf-8?B?SFA4ZmJZSk9FWmhON3ZKN1p1YjVxVWdhWlVxTU05M1BGdlJuZDdFdVMyQkc2?=
+ =?utf-8?B?Q2pWeFFCZDd3NlFqT3FHY3p0VDRRUi85Y3NJT0xpU2F4YW9GWTlhYjRGdGo0?=
+ =?utf-8?B?aXh3SFJseVZDRHkya1haejlQMVVTb1p4NEw3L1B0eXY5NVZyd3dKZ0NGaGcw?=
+ =?utf-8?B?NklFYmxPV1g2cW1tdDJGNmdrVVY0WUVRdklLNVYzeTNTcGZhVnNDY3ZpRnVK?=
+ =?utf-8?B?NXBhZVNYSXY1aU5IWVJLYWthL0RXdTNFdWtqMHBrKzMyUXp4RVJ6QTdZZWpy?=
+ =?utf-8?B?TXZFblNLRFVYakQ1Z0E2eUhIM25mcDZGNkZTZmNXR0lwNmdINHF4aGpaSXk4?=
+ =?utf-8?B?NzREb2tpZHFsVlRseE5KazN5Vis0VzZycUN0SHdNTWhaTmh5elFMWGtudlN4?=
+ =?utf-8?B?dTlPUktpdTN6V2s3RVkxOWJjSEV2OGpLWW93cm51cVNrd1QzTHdhYjh2MUZN?=
+ =?utf-8?B?ZEZFVHQyVlNkbnVtR3dMRk1sc1BXdGZxY2haeFh6dmhhaFE1cnlqcUlQaXI0?=
+ =?utf-8?B?RjhlNkkxUFJTdElrM2Znb3EwTjBNTmRNMytzSWhCVllyeHhOVnRsSTFMeFVE?=
+ =?utf-8?B?SGhCd1UweFZaZituQTRkb0hIQkkvVEtialdXNmRVeVNTcStWL2RpakFORDRP?=
+ =?utf-8?B?Y3g4WFVTcWhYK0J1eTFqeUJkZ2krKzg2dDRzT3BWSzRZcnNyU2paTGY0RWxm?=
+ =?utf-8?B?VnJuTURGL1diWTVERG1MZHgyTlk2Nk0zb25RNS9DZmN4Nzd6dGVXZnE3NHZF?=
+ =?utf-8?B?cEtUSmkvOW9SQjBUcVMrUFZpUEZvVVl4M3VGTFJpNTB0cWNzWmFkeCtPbEtu?=
+ =?utf-8?B?aVRlNldub1BETU1KMGdWQVF4ZVRkQjNBMVozZzU2VlhJdER6RmRHQmNQU3Vi?=
+ =?utf-8?B?alFmSWErSkVPN0NGZHpxQkZzdDZjSjlEY2p6eGZHcC81SnFqSjVuaTNNZjYz?=
+ =?utf-8?B?V2xhTmkyMkhtWTE1eDNtRDE0UkU5MXRRV0ZCcVNXa3Z1eDFvQXFmc1duMmhv?=
+ =?utf-8?B?Y2dDcjdHMlo3dzVBQjJleW1mT3djTzFKWlBsUnIwUXJQZ0xrUEZyemUyZyt1?=
+ =?utf-8?B?cUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <0580bc5be77c5e293770f42b661a41c80e1986dd.camel@mediatek.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4124.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 795540da-659c-4df8-0aa2-08dbf7dadb35
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2023 10:45:55.5444
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: KZwULr+JuDj2/keqFQbk036G7+tYZ/Dgb93suShdlzQYZwEUQp8TE5MsiZSkOYdTORdQQmvTdzTy4RkFvXJN6w7a7lahGm1TuwMiQk++YhA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB8291
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231208_015427_900853_B3695F66 
-X-CRM114-Status: GOOD (  20.39  )
+X-CRM114-CacheID: sfid-20231208_024635_775183_2A78FA92 
+X-CRM114-Status: UNSURE (   5.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,60 +199,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Zhi,
-
-On Fri, Dec 08, 2023 at 02:07:36AM +0000, Zhi Mao (毛智) wrote:
-> On Thu, 2023-12-07 at 17:44 +0000, Conor Dooley wrote:
-> > On Thu, Dec 07, 2023 at 01:30:35PM +0100, Krzysztof Kozlowski wrote:
-> > > On 07/12/2023 12:34, Sakari Ailus wrote:
-> > > > > +	ret = gc08a3_parse_fwnode(dev);
-> > > > > +	if (ret)
-> > > > > +		return ret;
-> > > > > +
-> > > > > +	gc08a3 = devm_kzalloc(dev, sizeof(*gc08a3),
-> > > > > GFP_KERNEL);
-> > > > > +	if (!gc08a3)
-> > > > > +		return -ENOMEM;
-> > > > > +
-> > > > > +	gc08a3->dev = dev;
-> > > > > +
-> > > > > +	gc08a3->xclk = devm_clk_get(dev, NULL);
-> > > > > +	if (IS_ERR(gc08a3->xclk))
-> > > > > +		return dev_err_probe(dev, PTR_ERR(gc08a3-
-> > > > > >xclk),
-> > > > > +					 "failed to get
-> > > > > xclk\n");
-> > > > > +
-> > > > > +	ret = clk_set_rate(gc08a3->xclk,
-> > > > > GC08A3_DEFAULT_CLK_FREQ);
-> > > > 
-> > > > Please see:
-> > > > <URL:
-> > > > https://hverkuil.home.xs4all.nl/spec/driver-api/camera-sensor.html#devicetree>
-> > > > ;.
-> > > 
-> > > 
-> > > Oh, that's cool it was documented!
-> > > 
-> > > The canonical link would be:
-> > > 
-> https://www.kernel.org/doc/html/latest/driver-api/media/camera-sensor.html#devicetree
-> > 
-> > I believe this is that answer to the "why are these needed" that I
-> > asked
-> > on the previous version and never got a response to. Instead, they
-> > were
-> > just removed from the binding etc.
-> 
-> About "assigned-clocks" & "assigned-clock-rates" in v1 patch, as they
-> are not used in sensor driver, I have removed them in sensor dts-
-> bindind file. And "clock-names" & "clock-frequency" are also the same,
-> they will be removed in next version.
-
-Ack. You should only need "clocks" there, indeed.
-
--- 
-Regards,
-
-Sakari Ailus
+PiBVc2Ugc3Ryc2NweSgpIHRvIGltcGxlbWVudCBldGh0b29sX3B1dHMoKS4NCj4gDQo+IEZ1bmN0
+aW9uYWxseSB0aGUgc2FtZSBhcyBldGh0b29sX3NwcmludGYoKSB3aGVuIGl0J3MgdXNlZCB3aXRo
+IHR3byBhcmd1bWVudHMNCj4gb3Igd2l0aCBqdXN0ICIlcyIgZm9ybWF0IHNwZWNpZmllci4NCj4g
+DQo+IFNpZ25lZC1vZmYtYnk6IEp1c3RpbiBTdGl0dCA8anVzdGluc3RpdHRAZ29vZ2xlLmNvbT4N
+Cg0KUmV2aWV3ZWQtYnk6IE1hZGh1cmkgU3JpcGFkYSA8bWFkaHVyaS5zcmlwYWRhQG1pY3JvY2hp
+cC5jb20+DQo=
 
