@@ -4,89 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95ED6C4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 14:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E01E4C4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 15:10:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
-	From:Date:Message-Id:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=I5hSfWoT/zaxbWvskG0G8aAPc/U4gJg60vnp4mri/nE=; b=ec4Z726kJpYFAil6iWIfPMltUB
-	BSu59bFZmF8oCyAwd2z3E8OU1yh6CQrgmb3O16Fz5ber5tAAWvTTmKHE4Cg7gXaFVCh04CHys5wrP
-	I9BAMWeiE3EDGK8BQbEokTxC3gqavYJg1L2INSZSoixFlpDqgvnI9eCy3txWOotv83uLnDM/G3HbO
-	gcvraIf9kP0L6obPAuOz2s01EO5QZit2KOe0Id01kVhwWQTpTehS3r4MQSkT+wq6Xq3ZiGjmeT5GE
-	Rn9+cSqytbr2lBoBFeSH69e+3WZOAo3oZhefOZ5iO+udoXhOviplVUC9Lxa6v6xyFN00DttKu6oe5
-	eFA9KduQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xNnSwjzfk0DFwMUnASYe+Mep7H717D8Hg3L4xcCwxL4=; b=wr6pql2Ilz4RTwgSVlPKVEuP0Y
+	hvZMGigTVkSsqll8IcRJO5vkTGZO6c86gEzZ6DmJ/lwHOSqB5lU6FiuGwUnjYluV+PvmtBP2yQmnd
+	XRJVs3B7X4UG7RDGgCAquvC7Z9kUZmdwrE/Zr2bmshikLDfODuTOfTIm1B++hBfp8Z6HUTPZiLqMm
+	NoCirAKDTr2/olIhY3r4tvRX5abwgxw1EjnQerFcExcz7UHrUsKdNtqs/GXAmXBwaNJNynPMpj3WI
+	YOYiiHRW418q0ZkC5B7eO3xp5KX7W3cHs+/ASzWrYhWy8PFCEKfW4U/Rt9g3x5GzP1SR5vEQZEkP2
+	DZKzdjcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBbPN-00FivI-33;
-	Fri, 08 Dec 2023 14:00:49 +0000
-Received: from out4-smtp.messagingengine.com ([66.111.4.28])
+	id 1rBcUf-00Fqj5-2i;
+	Fri, 08 Dec 2023 15:10:21 +0000
+Received: from mail-oi1-f176.google.com ([209.85.167.176])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBbPG-00FisI-0m;
-	Fri, 08 Dec 2023 14:00:44 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.nyi.internal (Postfix) with ESMTP id 1FA8E5C016A;
-	Fri,  8 Dec 2023 09:00:37 -0500 (EST)
-Received: from imap51 ([10.202.2.101])
-  by compute5.internal (MEProxy); Fri, 08 Dec 2023 09:00:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:message-id:mime-version:reply-to:sender:subject:subject:to:to;
-	 s=fm1; t=1702044037; x=1702130437; bh=I5hSfWoT/zaxbWvskG0G8aAPc
-	/U4gJg60vnp4mri/nE=; b=KUc4SUJ9icXpk+IlCuT/vSRBaKPPkA0TzzMUW2h2Z
-	782gmfl9UyWRskGM/OXhK9pE3bNh6kx/9jusvwwsIFZk+LgxV6er3aoMtzF76/Fi
-	t2q55yFmSHRWyVnmoiRGvCrg2Azrd3GTzkhJjIgMGsnr5/nYjRrizmyo/m9EDVPC
-	mYrFbLRkk5hLoh5/kS7cJx+lH6iQSOza1g6WsrKaeJyR4FxmozB6aw0rNa8p6mCr
-	Z0DwDEy4pH/xmLCPr6nMIUAE4b+Bs5tTxxy1hzAmDDPR98Qq3IzpLvFAggeLlDNa
-	VpcAPsdJaQENSlRHBEUydUGaSTndh5bRjSIWG3Pm5yR2A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:message-id
-	:mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
-	1702044037; x=1702130437; bh=I5hSfWoT/zaxbWvskG0G8aAPc/U4gJg60vn
-	p4mri/nE=; b=28pTMl+8m6bhj8Qile4f1RfTnE0j8XrMz/m3yeTh9aIkQ7tAmgN
-	LIz193w37P520oAufG74yb0yL22Cdfypdd0SDoBwxvwc1oIcGE+uL4cl88t0e3vc
-	QNp69Nt2Ejjh5BD1qUEz58gjUZtd0XD2+2g/yvW9VoJm28AbwNnM+uDN3EZGQn3W
-	DDf1To3Ev4/JFjGqvjQ524FiQknq+adclK9xBaDlyVqmmWcgXViSJXTjqWh/UETC
-	nY0+Z34AjqPzGJBwrIMuLNVzpf28XcNQMVsNW+1A6fIwgoZ5jtPxbrydNMZZZfeY
-	hzFxHKXpDPB2EGGtGducGkRnZ/minQjQtQg==
-X-ME-Sender: <xms:hCFzZRguWSPoVVuXRHDE0aO3o_EDGXM2sXlomj_cC8Uz7WES1XlWJg>
-    <xme:hCFzZWBMeMIRlJ18_YU0lAgB6aOI1rAv1PZ03QHo5PBGD38LndYtZZIs6rxy_8iGK
-    BLWq9OerifTYGbXl38>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudekiedgiedtucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepofgfggfkfffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehrnhgu
-    uceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrthhtvg
-    hrnhepleetleeghfdvjeeugfeiteekheetvefgvdekieffudejgfehudegfeejuedtgfeg
-    necuffhomhgrihhnpehkvghrnhgvlhdrohhrghdplhhinhgrrhhordhorhhgpdhgihhthh
-    husgdrtghomhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhr
-    ohhmpegrrhhnugesrghrnhgusgdruggv
-X-ME-Proxy: <xmx:hCFzZREdt4EG8M5-nY6eLjKdFdUwsZ75qzueUOl1HS4TBPWwPI6Qzg>
-    <xmx:hCFzZWQSpI14_4YBpQgBsLJfrKax_wq1rwwcHfA-L0Cn5U01hM5uxw>
-    <xmx:hCFzZexw1Z-ChCIjTqO2xkiPaBjnMxuVvYV6wxkUFxgZobAC1WEUsQ>
-    <xmx:hSFzZYvPZIfWwtKV5rrSbar4yLzvQ-okd4ty-EfHVJcKn9a_cYosyQ>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 7AB3FB6008D; Fri,  8 Dec 2023 09:00:36 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-1178-geeaf0069a7-fm-20231114.001-geeaf0069
+	id 1rBcUc-00Fqi4-0t;
+	Fri, 08 Dec 2023 15:10:19 +0000
+Received: by mail-oi1-f176.google.com with SMTP id 5614622812f47-3b83fc26e4cso1386046b6e.2;
+        Fri, 08 Dec 2023 07:10:17 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702048217; x=1702653017;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xNnSwjzfk0DFwMUnASYe+Mep7H717D8Hg3L4xcCwxL4=;
+        b=FIrCMmB7+sIBtrbPzEBZb9lH36QJkORy+/thbtVg4g+fd2anUIRWzXnnw+bDnS0Uon
+         5S2kCYPj73tNJNAbkOJ/kKSVWpYfJWaJ5hxBwCssW4gnBQ/X3A68+zJtm4af79xKz9Tv
+         3uGqs/xuw2icpcKkN9kr/w2E0sl12loWrRe0em3LMH8VfkgVzr9Xv8Q9lHHanLBXAzeU
+         06xIq3bMSDFcbuy3xLgv3JyriJlSFfYoKsXoc7M8bOPWSxNpa5O0IJKcmBiIxKLav3he
+         rjsjnWRv7kSK2CdHOU4Vcm99UnIluX0Ecbs1dzzxodDLhPSswnm1Kn0ROeSipIhFoec7
+         CCzg==
+X-Gm-Message-State: AOJu0YwaP67uzlDAlwZc0TeczXGw0+xi5EXLdjWgNWj1ZiledLijMzO6
+	51bu3wcwVcjWO0QI3n8adA==
+X-Google-Smtp-Source: AGHT+IEvVmbu2+Qv9wFJy8R9H8r5dTeownvX+CKH+WYzlbAzevvw6b0vu0w5WzVXyWLw9sofpqWUuA==
+X-Received: by 2002:a05:6808:d4d:b0:3b8:b063:8258 with SMTP id w13-20020a0568080d4d00b003b8b0638258mr172675oik.90.1702048217115;
+        Fri, 08 Dec 2023 07:10:17 -0800 (PST)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id 14-20020aca280e000000b003b8b3bdeb6bsm348309oix.30.2023.12.08.07.10.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Dec 2023 07:10:16 -0800 (PST)
+Received: (nullmailer pid 1354509 invoked by uid 1000);
+	Fri, 08 Dec 2023 15:10:11 -0000
+Date: Fri, 8 Dec 2023 09:10:11 -0600
+From: Rob Herring <robh@kernel.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Frank Rowand <frowand.list@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	andriy.shevchenko@linux.intel.com, Jiri Kosina <jikos@kernel.org>, 
+	linus.walleij@linaro.org, broonie@kernel.org, gregkh@linuxfoundation.org, 
+	hdegoede@redhat.com, james.clark@arm.com, james@equiv.tech, 
+	keescook@chromium.org, rafael@kernel.org, tglx@linutronix.de, 
+	Jeff LaBundy <jeff@labundy.com>, linux-input@vger.kernel.org, linux-i2c@vger.kernel.org
+Subject: Re: [RFC PATCH v3 2/5] i2c: of: Introduce component probe function
+Message-ID: <20231208151011.GA1289359-robh@kernel.org>
+References: <20231128084236.157152-1-wenst@chromium.org>
+ <20231128084236.157152-3-wenst@chromium.org>
+ <CAD=FV=U_+iQJtV0Wii89DQT1V_fJCeS9wcqA8EJAs-hmmmLLLg@mail.gmail.com>
 MIME-Version: 1.0
-Message-Id: <90aa3b5f-a0d4-4609-85c2-e3d4cc944102@app.fastmail.com>
-Date: Fri, 08 Dec 2023 14:59:56 +0100
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Linus Torvalds" <torvalds@linux-foundation.org>
-Cc: soc@kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] ARM: SoC fixes for v6.7
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAD=FV=U_+iQJtV0Wii89DQT1V_fJCeS9wcqA8EJAs-hmmmLLLg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231208_060042_724496_192A4615 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20231208_071018_314865_B5451BD7 
+X-CRM114-Status: GOOD (  33.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,220 +95,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 2cc14f52aeb78ce3f29677c2de1f06c0e91471ab:
+On Fri, Dec 01, 2023 at 04:57:46PM -0800, Doug Anderson wrote:
+> Hi,
+> 
+> On Tue, Nov 28, 2023 at 12:45 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
+> >
+> > @@ -217,4 +217,114 @@ static int of_i2c_notify(struct notifier_block *nb, unsigned long action,
+> >  struct notifier_block i2c_of_notifier = {
+> >         .notifier_call = of_i2c_notify,
+> >  };
+> > +
+> > +/*
+> > + * Some devices, such as Google Hana Chromebooks, are produced by multiple
+> > + * vendors each using their preferred components. Such components are all
+> > + * in the device tree. Instead of having all of them enabled and having each
+> > + * driver separately try and probe its device while fighting over shared
+> > + * resources, they can be marked as "fail-needs-probe" and have a prober
+> > + * figure out which one is actually used beforehand.
+> > + *
+> > + * This prober assumes such drop-in parts are on the same I2C bus, have
+> > + * non-conflicting addresses, and can be directly probed by seeing which
+> > + * address responds.
+> > + *
+> > + * TODO:
+> > + * - Support handling common regulators and GPIOs.
+> 
+> IMO you should prototype how you're going to handle regulators and
+> GPIOs before finalizing the design. I was going to write that you
+> should just document that it was up to the caller to power things up
+> before calling this function, but then I realized that the caller
+> would have to duplicate much of this function in order to do so. In
+> the very least they'd have to find the nodes of the relevant devices
+> so that they could grab regulators and/or GPIOs. In order to avoid
+> this duplication, would the design need to change? Perhaps this would
+> be as simple as adding a callback function here that's called with all
+> of the nodes before probing? If that's right, it would be nice to have
+> that callback from the beginning so we don't need two variants of the
+> function...
+> 
+> > + * - Support I2C muxes
+> > + */
+> > +
+> > +/**
+> > + * i2c_of_probe_component() - probe for devices of "type" on the same i2c bus
+> > + * @dev: &struct device of the caller, only used for dev_* printk messages
+> > + * @type: a string to match the device node name prefix to probe for
+> > + *
+> > + * Probe for possible I2C components of the same "type" on the same I2C bus
+> > + * that have their status marked as "fail".
+> 
+> Should document these current limitations with the code:
+> 
+> * Assumes that across the entire device tree the only instances of
+> nodes named "type" are ones we're trying to handle second sourcing
+> for. In other words if we're searching for "touchscreen" then all
+> nodes named "touchscreen" are ones that need to be probed.
 
-  Linux 6.7-rc3 (2023-11-26 19:59:33 -0800)
+named "type" and marked as needs probe.
 
-are available in the Git repository at:
+> 
+> * Assumes that there is exactly one group of each "type". In other
+> words, if we're searching for "touchscreen" then exactly one
+> touchscreen will be enabled across the whole tree.
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git tags/soc-fixes-6.7-1
+Does that need to be a limitation? If you just keep going thru all 
+devices, wouldn't that just work?
 
-for you to fetch changes up to fd1e5745f87a9e06974d2f42d22b3e1682c99105:
-
-  Merge tag 'v6.7-rockchip-dtsfixes1' of git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip into arm/fixes (2023-12-08 08:36:25 +0100)
-
-----------------------------------------------------------------
-ARM: SoC fixes for v6.7
-
-Most of the changes are devicetree fixes for NXP, Mediatek, Rockchips
-Arm machines as well as Microchip RISC-V, and most of these address
-build-time warnings for spec violations and other minor issues. One of
-the Mediatek warnings was enabled by default and prevented a clean build.
-The ones that address serious runtime issues are all on the i.MX platform:
-
- - a boot time panic on imx8qm
- - USB hanging under load on imx8
- - regressions on the imx93 ethernet phy
-
-Code fixes include a minor error handling for the i.MX PMU driver, and
-a number of firmware driver fixes:
-
- - OP-TEE fix for supplicant based device enumeration, and a new
-   sysfs attribute to needed to fix a race against userspace
-
- - Arm SCMI fix for possible truncation/overflow in the frequency
-   computations
-
- - Multiple FF-A fixes for the newly added notification support.
-
-----------------------------------------------------------------
-Ahmad Fatoum (1):
-      MAINTAINERS: reinstate freescale ARM64 DT directory in i.MX entry
-
-Alex Bee (2):
-      arm64: dts: rockchip: Expand reg size of vdec node for RK3399
-      ARM: dts: rockchip: Fix sdmmc_pwren's pinmux setting for RK3128
-
-Alexander Stein (4):
-      arm64: dt: imx93: tqma9352-mba93xxla: Fix LPUART2 pad config
-      dt-bindings: pwm: imx-pwm: Unify #pwm-cells for all compatibles
-      arm64: dts: freescale: imx8-ss-lsio: Fix #pwm-cells
-      arm64: dts: freescale: imx8-ss-dma: Fix #pwm-cells
-
-AngeloGioacchino Del Regno (7):
-      arm64: dts: mediatek: mt8195: Fix PM suspend/resume with venc clocks
-      arm64: dts: mediatek: mt8183: Fix unit address for scp reserved memory
-      arm64: dts: mediatek: mt8183-evb: Fix unit_address_vs_reg warning on ntc
-      arm64: dts: mediatek: mt8173-evb: Fix regulator-fixed node names
-      arm64: dts: mediatek: mt8183: Move thermal-zones to the root node
-      arm64: dts: mediatek: mt8186: Change gpu speedbin nvmem cell name
-      arm64: dts: mediatek: cherry: Fix interrupt cells for MT6360 on I2C7
-
-Arnd Bergmann (8):
-      Merge tag 'optee-supplicant-fix-for-v6.7' of git://git.linaro.org:/people/jens.wiklander/linux-tee into arm/fixes
-      Merge tag 'mtk-dts64-fixes-for-6.7' of git://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux into arm/fixes
-      Merge tag 'riscv-dt-fixes-for-v6.7-rc4' of https://git.kernel.org/pub/scm/linux/kernel/git/conor/linux into arm/fixes
-      Merge tag 'scmi-fixes-6.7' of git://git.kernel.org/pub/scm/linux/kernel/git/sudeep.holla/linux into arm/fixes
-      Merge tag 'arm-soc/for-6.7/devicetree-fixes' of https://github.com/Broadcom/stblinux into arm/fixes
-      Merge tag 'ffa-fixes-6.7' of git://git.kernel.org/pub/scm/linux/kernel/git/sudeep.holla/linux into arm/fixes
-      Merge tag 'imx-fixes-6.7' of git://git.kernel.org/pub/scm/linux/kernel/git/shawnguo/linux into arm/fixes
-      Merge tag 'v6.7-rockchip-dtsfixes1' of git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip into arm/fixes
-
-Chester Lin (1):
-      MAINTAINERS: change the S32G2 maintainer's email address.
-
-Conor Dooley (2):
-      riscv: dts: sophgo: remove address-cells from intc node
-      riscv: dts: microchip: move timebase-frequency to mpfs.dtsi
-
-Eric Woudstra (1):
-      arm64: dts: mt7986: fix emmc hs400 mode without uboot initialization
-
-Eugen Hristev (3):
-      arm64: dts: mediatek: mt8186: fix clock names for power domains
-      arm64: dts: mediatek: mt7622: fix memory node warning check
-      arm64: dts: mediatek: mt8183-kukui-jacuzzi: fix dsi unnecessary cells properties
-
-Fabio Estevam (2):
-      ARM: dts: imx6ul-pico: Describe the Ethernet PHY clock
-      ARM: dts: imx28-xea: Pass the 'model' property
-
-Frank Wunderlich (2):
-      arm64: dts: mt7986: define 3W max power to both SFP on BPI-R3
-      arm64: dts: mt7986: change cooling trips
-
-Haibo Chen (2):
-      arm64: dts: imx93: update gpio node name to align with register address
-      arm64: dts: imx8ulp: update gpio node name to align with register address
-
-Heiko Stuebner (2):
-      arm64: dts: rockchip: fix rk356x pcie msg interrupt name
-      arm64: dts: rockchip: drop interrupt-names property from rk3588s dfi
-
-Hsin-Yi Wang (1):
-      arm64: dts: mt8183: kukui: Fix underscores in node names
-
-Jonas Karlman (1):
-      arm64: dts: rockchip: Expand reg size of vdec node for RK3328
-
-Krzysztof Kozlowski (2):
-      ARM: dts: rockchip: minor whitespace cleanup around '='
-      arm64: dts: rockchip: minor whitespace cleanup around '='
-
-Kunwu Chan (1):
-      ARM: imx: Check return value of devm_kasprintf in imx_mmdc_perf_init
-
-Lorenzo Pieralisi (1):
-      firmware: arm_ffa: Fix ffa_notification_info_get() IDs handling
-
-Nathan Rossi (1):
-      arm64: dts: imx8mp: imx8mq: Add parkmode-disable-ss-quirk on DWC3
-
-Peng Fan (1):
-      arm64: dts: imx93: correct mediamix power
-
-Philipp Zabel (1):
-      ARM: dts: imx7: Declare timers compatible with fsl,imx6dl-gpt
-
-Rob Herring (1):
-      arm64: dts: rockchip: Fix PCI node addresses on rk3399-gru
-
-Sam Edwards (2):
-      arm64: dts: rockchip: Fix Turing RK1 interrupt pinctrls
-      arm64: dts: rockchip: Fix eMMC Data Strobe PD on rk3588
-
-Sascha Hauer (1):
-      dt-bindings: soc: rockchip: grf: add rockchip,rk3588-pmugrf
-
-Stefan Eichenberger (1):
-      arm64: dts: imx8-apalis: set wifi regulator to always-on
-
-Stefan Kerkmann (1):
-      ARM: dts: imx6q: skov: fix ethernet clock regression
-
-Stefan Wahren (1):
-      ARM: dts: bcm2711-rpi-400: Fix delete-node of led_act
-
-Sudeep Holla (8):
-      firmware: arm_ffa: Declare ffa_bus_type structure in the header
-      firmware: arm_ffa: Allow FF-A initialisation even when notification fails
-      firmware: arm_ffa: Setup the partitions after the notification initialisation
-      firmware: arm_ffa: Add checks for the notification enabled state
-      firmware: arm_ffa: Fix FFA notifications cleanup path
-      firmware: arm_ffa: Fix the size of the allocation in ffa_partitions_cleanup()
-      firmware: arm_scmi: Fix frequency truncation by promoting multiplier type
-      firmware: arm_scmi: Fix possible frequency truncation when using level indexing mode
-
-Sumit Garg (1):
-      tee: optee: Fix supplicant based device enumeration
-
-Xiaolei Wang (1):
-      arm64: dts: imx8qm: Add imx8qm's own pm to avoid panic during startup
-
- Documentation/ABI/testing/sysfs-bus-optee-devices  |   9 +
- Documentation/devicetree/bindings/pwm/imx-pwm.yaml |  10 +-
- .../devicetree/bindings/soc/rockchip/grf.yaml      |   1 +
- MAINTAINERS                                        |   3 +-
- arch/arm/boot/dts/broadcom/bcm2711-rpi-400.dts     |   4 +-
- .../dts/nxp/imx/imx6q-skov-reve-mi1010ait-1cp1.dts |   4 +-
- arch/arm/boot/dts/nxp/imx/imx6ul-pico.dtsi         |   2 +
- arch/arm/boot/dts/nxp/imx/imx7s.dtsi               |   8 +-
- arch/arm/boot/dts/nxp/mxs/imx28-xea.dts            |   1 +
- arch/arm/boot/dts/rockchip/rk3128.dtsi             |   2 +-
- arch/arm/boot/dts/rockchip/rk322x.dtsi             |   6 +-
- arch/arm/mach-imx/mmdc.c                           |   7 +-
- .../arm64/boot/dts/freescale/imx8-apalis-v1.1.dtsi |   5 +-
- arch/arm64/boot/dts/freescale/imx8-ss-dma.dtsi     |   2 +-
- arch/arm64/boot/dts/freescale/imx8-ss-lsio.dtsi    |   8 +-
- arch/arm64/boot/dts/freescale/imx8mp.dtsi          |   2 +
- arch/arm64/boot/dts/freescale/imx8mq.dtsi          |   2 +
- arch/arm64/boot/dts/freescale/imx8qm-ss-dma.dtsi   |  11 +
- arch/arm64/boot/dts/freescale/imx8ulp.dtsi         |   6 +-
- .../dts/freescale/imx93-tqma9352-mba93xxla.dts     |   2 +-
- arch/arm64/boot/dts/freescale/imx93.dtsi           |  10 +-
- .../boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts  |   2 +-
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       |   2 +-
- .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts  |  12 +-
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi          |  24 +-
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |   4 +-
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |   4 +-
- .../boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi    |   8 +-
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |  96 ++++----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi           | 242 ++++++++++-----------
- arch/arm64/boot/dts/mediatek/mt8186.dtsi           |  44 ++--
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi    |   2 +-
- arch/arm64/boot/dts/mediatek/mt8195.dtsi           |   6 +-
- .../boot/dts/rockchip/px30-ringneck-haikou.dts     |   2 +-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           |   2 +-
- .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |   3 +-
- .../boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts  |   4 +-
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |   1 +
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   6 +-
- arch/arm64/boot/dts/rockchip/rk356x.dtsi           |   2 +-
- .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi |   4 +-
- .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |   2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi  |   2 +-
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi          |   1 -
- arch/riscv/boot/dts/microchip/mpfs-icicle-kit.dts  |   7 -
- arch/riscv/boot/dts/microchip/mpfs-m100pfsevp.dts  |   7 -
- arch/riscv/boot/dts/microchip/mpfs-polarberry.dts  |   7 -
- arch/riscv/boot/dts/microchip/mpfs-sev-kit.dts     |   7 -
- arch/riscv/boot/dts/microchip/mpfs-tysom-m.dts     |   7 -
- arch/riscv/boot/dts/microchip/mpfs.dtsi            |   1 +
- arch/riscv/boot/dts/sophgo/cv1800b.dtsi            |   1 -
- drivers/firmware/arm_ffa/driver.c                  |  70 ++++--
- drivers/firmware/arm_scmi/perf.c                   |  18 +-
- drivers/tee/optee/device.c                         |  17 +-
- include/linux/arm_ffa.h                            |   2 +
- 55 files changed, 396 insertions(+), 328 deletions(-)
+Rob
 
