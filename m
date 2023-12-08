@@ -4,91 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49950C4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 04:23:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E650CC4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 04:23:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CDZS0haLyzX2rMNjByhL90PK2pxpUuZrfSW8MqJOxn0=; b=qjfUIFs2pFNbjHAo4xYrrAlLo8
-	PL/R7lnxW60IU+R9O/EBQI+SHfAHrG9fuavMncbdftYcjR56BCkTfW9Jm/SLqW9MRaI1EUlHFjfp9
-	XUOq3nt+K7pcW54VJUUhXVMXAey/AXCK2jtbS8gH4uc8izbERi1I321/HOkEH/QT1TL2difI9BBCd
-	2YYPqkYvY1PJhrsBcpNlsnVESUg1iflMzO3KV0BzV3iRP4OUtuSrNv9UYPtcYAtbQGEX8gNovcqBM
-	JqpQApQv7lMsjUccKyEXuk1iFZiQtqlUVTm+TJBAcnDMWJ39JZckzKrfGMvajvW31UFn2ynPdJEwj
-	tH1BZT+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SPl6U0GokDKYjf8mFtBabOMqth1qqIW6W4U8DQpUoFQ=; b=tgu9CKrwrw+jjH6BgJatPKVcb/
+	GwZxuo/xdPS44GWD9xtRaHC0G39cbkam2S1zU2kftegdjh9kgF8QzWuJQzb8OhtaO5d40+BAgU1P9
+	gOhs9X1DafiBtrDev2Uank0jfhdRo//4L5YGs8s6QkhmC89qvPN1jOnmTAjAOJyOFXqMDuf5N4dgT
+	45U4tGchjsoZB1lodMaLHR7y3TtSQmsbFO24b9SxEaxVRLVw0Nagp/HrCL1qmVbVUmi+hLTa/YuAk
+	5KQ7gYXYAnmwKgzt1l0l8M8lfxXhsL2gSi4p2U2lsYHLR7tTfMfklKWzRQ2nLcmdfUwqfY4oX2sEr
+	G8Vx4RlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBSOK-00Efmb-36;
-	Fri, 08 Dec 2023 04:23:08 +0000
-Received: from mail-vk1-xa33.google.com ([2607:f8b0:4864:20::a33])
+	id 1rBSP2-00EftR-01;
+	Fri, 08 Dec 2023 04:23:52 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBSOH-00Efla-0f
+	id 1rBSOy-00EfrC-12
 	for linux-mediatek@lists.infradead.org;
-	Fri, 08 Dec 2023 04:23:07 +0000
-Received: by mail-vk1-xa33.google.com with SMTP id 71dfb90a1353d-4b2e0492fffso451597e0c.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 20:23:03 -0800 (PST)
+	Fri, 08 Dec 2023 04:23:49 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40c339d2b88so1895895e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 20:23:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1702009383; x=1702614183; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CDZS0haLyzX2rMNjByhL90PK2pxpUuZrfSW8MqJOxn0=;
-        b=GcweE+Z7xe2h2tTSbANGZ3WtlYiHb9enfFmYvmLyviTWEJLo91KKi05CdtzusZao5L
-         qkPHR3ORtXbqkGHAj/2HnzvnClTspCeRM/heaHoklI6KaiEVM8P/CV+HmJk5ht2HCW5a
-         dsf3Vojcaa29cLlHj6PAYtlhsU05j0bLrrHgg=
+        d=linaro.org; s=google; t=1702009424; x=1702614224; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=SPl6U0GokDKYjf8mFtBabOMqth1qqIW6W4U8DQpUoFQ=;
+        b=nS2COlaq1hasfkPdBx0Qo7skhKddz7oEIzNmvke04B3PeGvZS5PPcviwttfXIjeNpR
+         Ig0SbS9UsHhGzngC0mhRO0v84JB0VivW7i2iLRm/YbF9+rcd5rfpaUjTvi597rtztw3m
+         ni7Uq6AWx8jNSgDPlqNBNmwq68xCzH1ncKceviYJ96WE7YGGFBNmpVWMUkJLWaVaUDXX
+         xtHIcXudreBmIs5s+8Hc/efZDoPOqRqLXn/Ljiim9WBpApn70zyDZVwsDUI1zRuX0Ccv
+         0UmlWg0MSd/QA3v5WXZNOES2y3gJQj3Rh5h5dCmU4amG/5it9Pjnhjsu2vjfoNkusQyb
+         3ZGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702009383; x=1702614183;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CDZS0haLyzX2rMNjByhL90PK2pxpUuZrfSW8MqJOxn0=;
-        b=kpqF7gg1pNyrCR306A3aGiSYF0IjRNItgXaTJ6I/YIwdJvpbqC/6BEhl904W6J1vCH
-         /1IXGFg7PUg/BV5VV46KwfH44Ot7A/HHk1l9swmkPhwwNcZgM8YgXWNkgF0aGOSX3LKc
-         Y5R/tr64SqC6/hhWNuKdn2oMHLaCOvNVm0l6hS/5/hFuhSoKZl66a1DWCjpAObqKocnt
-         ihyvlV9SM3AChp3wAMjnquj+3rZYZ7XB0Pv6eFouGG3oZCQdiewuSQxHJxr8E4rHC7Lq
-         Rll4hB5DbOtSXGJJ98V1rpXGEBddb8+lWqY+dKM4I2hjoDs09qbblQGbuleGoj4yLBSp
-         e2mw==
-X-Gm-Message-State: AOJu0YxBwIPW6WZwNqgNM0XkeJrPYbN1xLNfwcPbBmb4i1dKpoXhj8CO
-	xVMwd4Pb/KpCKPJYJXrkKuYeY4dXI2FFev37+hY=
-X-Google-Smtp-Source: AGHT+IHkeJAzkTbAuBWftijwuK4K7aDdTkRh3TJznhuJuAk+eyVtmekjpYWAdFsRqZIO3B+0ljyLKQ==
-X-Received: by 2002:a05:6122:4595:b0:4b2:ce5c:2060 with SMTP id de21-20020a056122459500b004b2ce5c2060mr4177300vkb.3.1702009382700;
-        Thu, 07 Dec 2023 20:23:02 -0800 (PST)
-Received: from mail-ua1-f41.google.com (mail-ua1-f41.google.com. [209.85.222.41])
-        by smtp.gmail.com with ESMTPSA id cm26-20020a056122421a00b004b2e71661c4sm102988vkb.24.2023.12.07.20.23.01
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 Dec 2023 20:23:01 -0800 (PST)
-Received: by mail-ua1-f41.google.com with SMTP id a1e0cc1a2514c-7bb3e55c120so403074241.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 20:23:01 -0800 (PST)
-X-Received: by 2002:a67:e893:0:b0:464:7c8c:e17d with SMTP id
- x19-20020a67e893000000b004647c8ce17dmr3179679vsn.9.1702009381069; Thu, 07 Dec
- 2023 20:23:01 -0800 (PST)
+        d=1e100.net; s=20230601; t=1702009424; x=1702614224;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=SPl6U0GokDKYjf8mFtBabOMqth1qqIW6W4U8DQpUoFQ=;
+        b=demx6I1nNIkpxeDI931P11EolEHnN9mB5xYt59Mkge/9JWszt0TfeKkcqjVMbYgXsE
+         EobKa27MYj8s93reX5Er3aq9DR5OmniShZ5VPBlf3NwVF2eFxR8aEaj8eC5S7wKuZVVO
+         y7aonvHhPV7rTfcYgmhIx3f/1JioaxXVRz4xJYKPxoWKCWz+I4yJvrfX1SpkRfAxG9w7
+         Hza1xIimnlXUWJBNtJz3H1fS7zY/uT6MeJFYFNM7+jTsYYiq97TobAC7XioHlP0YIoCg
+         WS5peZ9/XMFcItWBKkraQU6QIlLRPT9kkyLmrkUYFTfelQKm2gn0p2RG7GC+GJQSlvJ6
+         i2Ow==
+X-Gm-Message-State: AOJu0Yx8aUjXYPEK1aO/pBmQlyStklXtpsb9X+z6aHyxhTF9sEW8PDCG
+	xb8+3bQHh0Iuml5WOt0u0fUJZg==
+X-Google-Smtp-Source: AGHT+IGb8HNYcf4CwqR2mNQtwvE2sIxWS6ha8l/UWovNTRhq1viL+9jJuZvP6Uejra7pVJ3NHVKIxA==
+X-Received: by 2002:a05:600c:4651:b0:40c:2518:687c with SMTP id n17-20020a05600c465100b0040c2518687cmr1507452wmo.61.1702009423621;
+        Thu, 07 Dec 2023 20:23:43 -0800 (PST)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id gw18-20020a05600c851200b004063c9f68f2sm1470710wmb.26.2023.12.07.20.23.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Dec 2023 20:23:43 -0800 (PST)
+Date: Fri, 8 Dec 2023 07:23:38 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Vladimir Oltean <olteanv@gmail.com>
+Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
+ mt7530_setup_port5() if port 5 is disabled
+Message-ID: <9b729dab-aebc-4c0c-a5e1-164845cd0948@suswa.mountain>
+References: <20231118123205.266819-1-arinc.unal@arinc9.com>
+ <20231118123205.266819-8-arinc.unal@arinc9.com>
+ <20231121185358.GA16629@kernel.org>
+ <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
+ <90fde560-054e-4188-b15c-df2e082d3e33@moroto.mountain>
+ <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
 MIME-Version: 1.0
-References: <20231113123049.4117280-1-fshao@chromium.org> <20231113123049.4117280-4-fshao@chromium.org>
- <6c693161-0e89-4f9d-9a92-18f3783eefd2@collabora.com> <CAC=S1nhp3HoKGQr1UgKtZJ9SLMqvm-G_YZi9dEWWF3tj2d=OFQ@mail.gmail.com>
- <6046a40b-800c-4bf8-ab45-d7f1015b2d9c@collabora.com>
-In-Reply-To: <6046a40b-800c-4bf8-ab45-d7f1015b2d9c@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Fri, 8 Dec 2023 12:22:24 +0800
-X-Gmail-Original-Message-ID: <CAC=S1niMVxoryzg6X+vFcDpMRuO6YCzUFj4A+2yex+mfOBALRg@mail.gmail.com>
-Message-ID: <CAC=S1niMVxoryzg6X+vFcDpMRuO6YCzUFj4A+2yex+mfOBALRg@mail.gmail.com>
-Subject: Re: [PATCH 3/4] media: mediatek: vcodec: Fix mtk_vcodec_mem_free()
- error log criteria
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Tiffany Lin <tiffany.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_202305_604901_D0D6C2CC 
-X-CRM114-Status: GOOD (  47.82  )
+X-CRM114-CacheID: sfid-20231207_202348_433546_F7F361D5 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,132 +91,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Simon Horman <horms@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 7, 2023 at 8:55=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 07/12/23 12:17, Fei Shao ha scritto:
-> > Hi Angelo,
-> >
-> > On Wed, Dec 6, 2023 at 6:19=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 13/11/23 13:26, Fei Shao ha scritto:
-> >>> mtk_vcodec_mem_free() shouldn't print error if the target DMA buffer =
-has
-> >>> never been allocated or was freed properly in the previous call. That
-> >>> makes log confusing.
-> >>>
-> >>> Update the error path to print log only when the caller attempts to f=
-ree
-> >>> nonzero-size buffer with VA being NULL, which indicates something ind=
-eed
-> >>> went wrong.
-> >>>
-> >>> This brings another benefit that the callers no more need to check
-> >>> mem->va explicitly to avoid the error, which can make the code more
-> >>> compact and neat.
-> >>>
-> >>> Signed-off-by: Fei Shao <fshao@chromium.org>
-> >>
-> >> I think that this error is supposed to catch two issues in one:
-> >>    - We're called to free no memory (something that does make no sense=
-),
-> >>      this may happen for example when calling xxx_free() twice, and it
-> >>      is a mistake that *must* be fixed;
-> > When I made the change, I was thinking of kfree() that doesn't warn
-> > against a NULL pointer.
-> > I imagine mtk_vcodec_mem_free() calls with NULL VA and mem size 0
-> > probably have the similar nuance (if the buffer exists, free it; never
-> > mind otherwise), but I could have missed some important differences
-> > specific to the MTK vcodec driver.
-> >
-> > Looking at the mtk_vcodec_mem_free() usages, almost every one of those
-> > checks VA beforehand, but nothing else - they don't warn or do
-> > anything special when they encounter a NULL VA, and they should if
-> > that's a concern.
-> > Some even don't check at all (and I think that's why I ended up seeing
-> > the errors mentioned in the cover letter). As for that, I think
-> > there's nothing else we can fix except prepending "if (mem->va)".
-> > So from all this, I feel perhaps we don't need to worry much about
-> > those NULL VA, and we can further remove the checks (or at least move
-> > it into mtk_vcodec_mem_free()) to trim the lines in the driver. That's
-> > the reason for patch [4/4].
-> >
-> > Not sure if that makes sense to you.
->
-> What you say does make sense - and a lot - but still, I think that freein=
-g
-> a NULL VA (=3D freeing nothing) is something that shouldn't happen...
->
-> >
-> >>    - We're failing to free memory for real (which you covered)
-> >>
-> >> ....that said, I think that if you want to clarify the error messages
-> >> in this function, it should look something like this:
-> >>
-> >> if (!mem->va) {
-> >>          mtk_v4l2_err(plat_dev, "%s: Tried to free a NULL VA", __func_=
-_);
-> >>          if (mem->size)
-> >>                  mtk_v4l2_err(plat_dev, "Failed to free %lu bytes", me=
-m->size);
-> >>          return;
-> >> }
-> > Sure, I can revise the patch with this, but I also want to make sure
-> > if the NULL VA print needs to be an error.
-> > If you still think it should, I guess I'll drop the current patch
-> > [4/4] and instead add the check before every mtk_vcodec_mem_free()
-> > calls. This should also work for the issue I want to address in the
-> > first place.
-> >
->
-> ... because if you notice, some of the calls to mtk_vcodec_mem_free() are=
- not
-> checked with `if (something->va)` beforehand, so I think that those are c=
-ases
-> in which freeing with a NULL VA would actually be an indication of someth=
-ing
-> going wrong and/or not as expected anyway (checking beforehand =3D error =
-won't
-> get printed from mtk_vcodec_mem_free(), not checking =3D print error if v=
-a=3D=3DNULL)
->
-> It's an easy check:
-> cd drivers/media/platform/mediatek/vcodec
-> grep -rb1 mtk_vcodec_mem_free
->
-> P.S.: h264_if, av1_req_lat :-)
-Yes, these are exactly what I wanted to imply in ">> Some even don't
-check at all", and I should have pointed them out to avoid
-ambiguity...
-And I understand your concern. Presuming the NULL VA case is and will
-always be safe to ignore can be too assertive, and getting explicit
-error logs is always better than lurking bugs.
+On Thu, Dec 07, 2023 at 08:40:15PM +0200, Vladimir Oltean wrote:
+> 
+> We could be more pragmatic about this whole sparse false positive warning,
+> and just move the "if" block which calls mt7530_setup_port5() right
+> after the priv->p5_intf_sel assignments, instead of waiting to "break;"
+> from the for_each_child_of_node() loop.
+> 
+> for_each_child_of_node(dn, mac_np) {
+> 	if (!of_device_is_compatible(mac_np,
+> 				     "mediatek,eth-mac"))
+> 		continue;
+> 
+> 	ret = of_property_read_u32(mac_np, "reg", &id);
+> 	if (ret < 0 || id != 1)
+> 		continue;
+> 
+> 	phy_node = of_parse_phandle(mac_np, "phy-handle", 0);
+> 	if (!phy_node)
+> 		continue;
+> 
+> 	if (phy_node->parent == priv->dev->of_node->parent) {
+> 		ret = of_get_phy_mode(mac_np, &interface);
+> 		if (ret && ret != -ENODEV) {
+> 			of_node_put(mac_np);
+> 			of_node_put(phy_node);
+> 			return ret;
+> 		}
+> 		id = of_mdio_parse_addr(ds->dev, phy_node);
+> 		if (id == 0)
+> 			priv->p5_intf_sel = P5_INTF_SEL_PHY_P0;
+> 		if (id == 4)
+> 			priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
+> 
+> 		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 || <---- here
+> 		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
+> 			mt7530_setup_port5(ds, interface);
 
->
-> That's why I think that you should drop your [4/4] - unless MediaTek come=
-s in
-> stating that the missed checks are something unintended, and that every i=
-nstance
-> of VA=3D=3DNULL should print an error.
->
-> I honestly wouldn't be surprised if they did so, because anyway this occu=
-rs only
-> in two decoders...
-Agree, it would be nice if Yunfei can share some thoughts here, or I
-can reach out to him through other channels for alignment first, and
-adjust this series based on the response.
-The h264_if part was written a while ago (2016) and the av1_req_lat
-part is relatively new (mid 2023), I hope it won't be too hard to
-reach a conclusion for those.
+This doesn't solve the problem that Smatch doesn't know what the
+original value of priv->p5_intf_sel.  And also I don't like this code
+because now we call mt7530_setup_port5() on every iteration after
+we find the first P5_INTF_SEL_PHY_P0.
 
-Regards,
-Fei
+> 	}
+> 	of_node_put(mac_np);
+> 	of_node_put(phy_node);
+> 	break;
+> }
 
->
-> Regards,
-> Angelo
+Let's not worry too much about false positives.  We can just ignore
+them.  There is always a trade off between false positives and false
+negatives.  With GCC we try to get a clean run with no warnings, but
+with Smatch I'm targetting the false positive ratio at "this is worth
+reviewing one time."
+
+regards,
+dan carpenter
+
 
