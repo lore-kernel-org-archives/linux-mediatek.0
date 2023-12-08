@@ -4,88 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FDCAC4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 07:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB44AC4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 09:54:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nt4anNac6QQuI8NitQFKu/GxPNAvA4YY8I74D5v5vBE=; b=ZBz0CLpkIy4eRMdZuV7n3CORG7
-	gp53ncSdQ9E42+v63KyYmsSVmMsFFLjWKweJArmMSOH8Vw40UEyzBH9Rf0TQNDJQ4PJ4fw6isHZYT
-	3JPEiaQKpCdu/3woz9+TI/eULNriiD/hlJM98HEEDzIXVnevOGMNRKI7YaKlCGRFGGMwKd+K/HuGS
-	GTsenK96+abqdcS7licbjly2vhDoSX0F3o+xGWAkiF2s0FmSj0FrCMrIkw/w80VgnP612SPI7gD66
-	payd3tfg/8Bq6S4LtG0Q+lEo3F4MKInZclwy4rwmmVnC4/EEp7KbKZTeGubG1CWxBZuBZTwQDfcex
-	hHhuBUrQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sAXFEmqW4pBUH3PI1L3+ObRRWuur1lLznQWkwAVPU2E=; b=FJtDnc4sw8CEM5TiB2Se3GcoBq
+	ZCQAPiVMbBbrXdal+DudDVc2Bft85Ok4DpfXzpQhpHnGNS03V6pBo6IebJ990wSLTWP2VCffNJID/
+	Fe1TaDDRcPcYbWGlXT2w92jupQlnHYxrCSGjyAKNXUCH+cO+19dp178wqEUFS09GT967hYBWNtCzj
+	Q4imepnnq3PNvUaTMQt/PpEmFtxRibPAWSH0D33W98h/MZ4GiOQK3DL9nVt1FR4ZYILF9Veuk0fV0
+	16Zr0FPItaadqwfKYsYgiZq1hBziPuDJoXsLGjMxXsLbPYyk0P7RX1+3STfw6XMfB8MgVyGcLAzt2
+	7i/y8tVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBUzm-00Evi8-1C;
-	Fri, 08 Dec 2023 07:09:58 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1rBXZ0-00FAmT-1l;
+	Fri, 08 Dec 2023 09:54:30 +0000
+Received: from mgamail.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBUzk-00Evg9-1x
-	for linux-mediatek@lists.infradead.org;
-	Fri, 08 Dec 2023 07:09:57 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-6ce7c1b07e1so1304035b3a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 23:09:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1702019393; x=1702624193; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nt4anNac6QQuI8NitQFKu/GxPNAvA4YY8I74D5v5vBE=;
-        b=nIXwH/dtSTJ6ttd4X7p+rOeczKi36Uk4883/HDZcyihbqMAlnHgVe1n+opJGDQfS6V
-         rsZXKnjqf0gQHriCGQJSTn+1dj+TZHC3JX0dr8ZC0K9mVus+neYPqW5C7vCoTxIPWQlO
-         F2173PZJpUUz3iCWmKm7+Q83YwavUC/q5BuxtnCvzhUfGI46l9CdBZlgtc8/wUt5Q5jW
-         lGJ5sMhikBM4CGs0UxQhzQKefaDgMO5R59lkGQxPByIn7k4hnKb7SeFoRpmmHnHkYQMb
-         6sJvC4vSktLHP/xXFkagUM21tB2ivxj/wmJwm5jRHhUbBdJmT7x6u/T1TTdHpi93R0R3
-         p7vQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702019393; x=1702624193;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nt4anNac6QQuI8NitQFKu/GxPNAvA4YY8I74D5v5vBE=;
-        b=Fu49Ddul99vo71d/BO5pReIlSgWqHmTqUMTfLQLEiIqYYJxtZhAz4YDxVZwVaZrMvl
-         gKyeLNGVtJidh9FtnOsF0tVV8XW/GCrn42Gf80BzyF6rw55MUujBlBl3Qnr6WUEobCmo
-         q19/Nqs5KUCxVpA3njcWhBnI9M1+YVOlEfBd5stOvPLVgnZ+3BXWRY0xDAofC2EKD4C0
-         8e8QpgDNMfpbW2ORZTzfb+rQLM2eBYG300onqzaHBFfFq/LeS7+u3NbG5nnD7nowLKib
-         gOnW+f8uzFyZ/PQ3WCrS6OKwCSHSwX7UFulHN/kS+q7uzRWX0/0jT92E71jc8wt/yJd8
-         VjrA==
-X-Gm-Message-State: AOJu0YzG1wWzaL9UsETgjF5bCUJHH3dNFbUh00Qyrl/SPTrOGTwFxTuT
-	3HUhKUV+hF7Tt0Dx+J0nnyNrBQ==
-X-Google-Smtp-Source: AGHT+IHQjk5QlDFs0sFDS7yFpnRvxG3uEvorIsqqjx/R1zte7tBdywucB9vgYb8DBKT2N5sZNCaa/Q==
-X-Received: by 2002:a05:6a00:368a:b0:6ce:46dc:e4ab with SMTP id dw10-20020a056a00368a00b006ce46dce4abmr4756816pfb.2.1702019393702;
-        Thu, 07 Dec 2023 23:09:53 -0800 (PST)
-Received: from localhost.localdomain ([101.78.151.194])
-        by smtp.gmail.com with ESMTPSA id b17-20020a056a000cd100b006ce4b40e7desm918061pfv.90.2023.12.07.23.09.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Dec 2023 23:09:53 -0800 (PST)
-From: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	perex@perex.cz,
-	trevor.wu@mediatek.com,
-	allen-kh.cheng@mediatek.com,
-	kuninori.morimoto.gx@renesas.com
-Cc: linux-mediatek@lists.infradead.org,
-	Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Subject: [v8 4/4] ASoC: mediatek: mt8188-mt6359: Enable dual amp for mt8188-rt5682s
-Date: Fri,  8 Dec 2023 15:09:33 +0800
-Message-Id: <20231208070933.720324-5-zhourui@huaqin.corp-partner.google.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231208070933.720324-1-zhourui@huaqin.corp-partner.google.com>
-References: <20231208070933.720324-1-zhourui@huaqin.corp-partner.google.com>
+	id 1rBXYx-00FAlU-2k;
+	Fri, 08 Dec 2023 09:54:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1702029267; x=1733565267;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=FEzV6DVjh/Ga3HaHooYTXKaezfC0C7UbGiGx01741DE=;
+  b=Z2xEPEKRuYDqNdvAjTsCDOFChlCu7j33GAbJwIUsKNb7PkG18QM7Qb1N
+   JrX4aGhk9se/OEXD0ZKac0VQCIjFPl9eg2zdozIm7Zd9C4Y78TJK4Hhsm
+   JNP+V71X3F2JmLW4XMWCgFKcDbCrddLAiOtb89N06XoPrpLhEQRXHYYCS
+   Lc8fpBhCf7YgtEUsLWFi8B1JVaSO8hKKYgfwJx5aXxlXWR/tnqQaUQ5KK
+   u9jZ0AsrUYw9ZNZGxFei2VvSaZK9qhhACIbzRq+gjFs6gqhk6D7SUiSrr
+   uyOce0L08kegDsESKY34OGMfENWf1MJVhzi3Cy5fv5hMd2owuMtvuW+i6
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10917"; a="393252578"
+X-IronPort-AV: E=Sophos;i="6.04,260,1695711600"; 
+   d="scan'208";a="393252578"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Dec 2023 01:54:22 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10917"; a="806353117"
+X-IronPort-AV: E=Sophos;i="6.04,260,1695711600"; 
+   d="scan'208";a="806353117"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Dec 2023 01:54:14 -0800
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with ESMTP id C7C0011F995;
+	Fri,  8 Dec 2023 11:54:11 +0200 (EET)
+Date: Fri, 8 Dec 2023 09:54:11 +0000
+From: "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
+To: Zhi Mao =?utf-8?B?KOavm+aZuik=?= <zhi.mao@mediatek.com>
+Cc: "conor@kernel.org" <conor@kernel.org>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"heiko@sntech.de" <heiko@sntech.de>,
+	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"yunkec@chromium.org" <yunkec@chromium.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"dan.scally@ideasonboard.com" <dan.scally@ideasonboard.com>,
+	"gerald.loacker@wolfvision.net" <gerald.loacker@wolfvision.net>,
+	Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
+	"hdegoede@redhat.com" <hdegoede@redhat.com>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
+	Yaya Chang =?utf-8?B?KOW8tembhea4hSk=?= <Yaya.Chang@mediatek.com>,
+	"mchehab@kernel.org" <mchehab@kernel.org>,
+	"jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>,
+	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"bingbu.cao@intel.com" <bingbu.cao@intel.com>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"10572168@qq.com" <10572168@qq.com>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"macromorgan@hotmail.com" <macromorgan@hotmail.com>
+Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
+Message-ID: <ZXLnwzeD_DSuIyil@kekkonen.localdomain>
+References: <20231207052016.25954-1-zhi.mao@mediatek.com>
+ <20231207052016.25954-2-zhi.mao@mediatek.com>
+ <ZXGtqwjYruBQVaUr@kekkonen.localdomain>
+ <129e3a8b-5e91-424a-8ff8-b015d5175f1a@linaro.org>
+ <20231207-outcome-acclaim-d179c8c07fff@spud>
+ <0580bc5be77c5e293770f42b661a41c80e1986dd.camel@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <0580bc5be77c5e293770f42b661a41c80e1986dd.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_230956_668878_4F5105C5 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20231208_015427_900853_B3695F66 
+X-CRM114-Status: GOOD (  20.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,29 +117,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable support for dual MAX98390 amplifiers on the mt8188-rt5682s board.
+Hi Zhi,
 
-Reviewed-by: Trevor Wu <trevor.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
----
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, Dec 08, 2023 at 02:07:36AM +0000, Zhi Mao (毛智) wrote:
+> On Thu, 2023-12-07 at 17:44 +0000, Conor Dooley wrote:
+> > On Thu, Dec 07, 2023 at 01:30:35PM +0100, Krzysztof Kozlowski wrote:
+> > > On 07/12/2023 12:34, Sakari Ailus wrote:
+> > > > > +	ret = gc08a3_parse_fwnode(dev);
+> > > > > +	if (ret)
+> > > > > +		return ret;
+> > > > > +
+> > > > > +	gc08a3 = devm_kzalloc(dev, sizeof(*gc08a3),
+> > > > > GFP_KERNEL);
+> > > > > +	if (!gc08a3)
+> > > > > +		return -ENOMEM;
+> > > > > +
+> > > > > +	gc08a3->dev = dev;
+> > > > > +
+> > > > > +	gc08a3->xclk = devm_clk_get(dev, NULL);
+> > > > > +	if (IS_ERR(gc08a3->xclk))
+> > > > > +		return dev_err_probe(dev, PTR_ERR(gc08a3-
+> > > > > >xclk),
+> > > > > +					 "failed to get
+> > > > > xclk\n");
+> > > > > +
+> > > > > +	ret = clk_set_rate(gc08a3->xclk,
+> > > > > GC08A3_DEFAULT_CLK_FREQ);
+> > > > 
+> > > > Please see:
+> > > > <URL:
+> > > > https://hverkuil.home.xs4all.nl/spec/driver-api/camera-sensor.html#devicetree>
+> > > > ;.
+> > > 
+> > > 
+> > > Oh, that's cool it was documented!
+> > > 
+> > > The canonical link would be:
+> > > 
+> https://www.kernel.org/doc/html/latest/driver-api/media/camera-sensor.html#devicetree
+> > 
+> > I believe this is that answer to the "why are these needed" that I
+> > asked
+> > on the previous version and never got a response to. Instead, they
+> > were
+> > just removed from the binding etc.
+> 
+> About "assigned-clocks" & "assigned-clock-rates" in v1 patch, as they
+> are not used in sensor driver, I have removed them in sensor dts-
+> bindind file. And "clock-names" & "clock-frequency" are also the same,
+> they will be removed in next version.
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index ddbdf9265640..54ddf13d3f34 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -1443,7 +1443,7 @@ static struct mt8188_card_data mt8188_nau8825_card = {
- 
- static struct mt8188_card_data mt8188_rt5682s_card = {
- 	.name = "mt8188_rt5682s",
--	.quirk = RT5682S_HS_PRESENT,
-+	.quirk = RT5682S_HS_PRESENT | MAX98390_TWO_AMP,
- };
- 
- static struct mt8188_card_data mt8188_es8326_card = {
+Ack. You should only need "clocks" there, indeed.
+
 -- 
-2.25.1
+Regards,
 
+Sakari Ailus
 
