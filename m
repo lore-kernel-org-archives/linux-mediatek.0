@@ -4,65 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108EAC4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 17:08:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A18ECC4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 18:47:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Date:Message-Id:
-	References:In-Reply-To:From:Subject:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fvw4trRlmFgD9OWBM4KAg0Vm8Q0E9AfpDMG8EfcTqG4=; b=Z9bm8bQIqbqYEP5iZDlHhAbsDR
-	a4ZMeZOjPr94jipVh1Scb1ZdbHRNq1hFSBGolVN0++t+bFipxUISwEKT9+vPUlLf6oLl83ZDeGRdy
-	44jyIBiqcRe1x+p99MeWLy4HXwHovL/G0OCbMQ7PPWV4drw2W1KL/uhBEMpVvZ0CsvQw9BoYc1DOU
-	WOEFk/fOyyeSSi8qeO2o3mh4/5NOlytsQnQ4jSj8FSebmqU4JDdr2O9D9pi8X9wcjGSGIL7JMUS1N
-	OeV8dwFcW7aXkQQ8bpjFx2BaIn/2LwDfltQx9rO5c2gCk8EMnnBC0UeME64a5sNbC0zHjFkDSC3qm
-	W4lRh9Bg==;
+	bh=+dr8lBkPk/gRBWTFsMFs5wXdj0/vhpvGhmgseUu0tAY=; b=Rmh/ZPDzSF9WSVvtMZ/cYl7dZq
+	Bm3nUdVEXMH1Ao2R27qc4GeymhgtSQIgagUnvwTZy5giz7omf8I8k2xp22hSeCmcM83/Sazw6cUet
+	tInIwZmZ+CE9q+44NkUDast0fuWWtB64JPIDdG1GJw02+plD1K1upnHzF5DmbFK6unB92xEhcMVYE
+	irG6FXQDak5hs/bTb+F2pmBoXxEf/CcGdgq+N3aciYEwnCC5AKJDmRjcyMeomrb1X1LochC1rebVK
+	iAqY4i5yUXReJNoODaYXVSZdxtt154wW6XBMcXFc7d+XNya3jUIJLjKsqwdDcSBHELqfkQ4GS+gwM
+	YCB6Ytbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBeLB-00G7ij-0E;
-	Fri, 08 Dec 2023 17:08:41 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rBfsM-00GKQx-0O;
+	Fri, 08 Dec 2023 18:47:02 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBeL7-00G7hQ-1S;
-	Fri, 08 Dec 2023 17:08:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id B2058B82BC0;
-	Fri,  8 Dec 2023 17:08:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 0966AC433C8;
-	Fri,  8 Dec 2023 17:08:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702055315;
-	bh=HUSkycKQqdvCwDWPRR3SQZhNrNjKB7XwUDzkxrLiRAQ=;
-	h=Subject:From:In-Reply-To:References:Date:To:List-Id:Cc:From;
-	b=IQeoKGdO2IjGdLDLwstlNRatIRxtFVG/GFlPRnq0oOVTi6NG+rOKE3Qymo2xPBxnb
-	 P9deDtyZTu3WmO4vbaEFxCIB2E9wcVtvtHqKC7Omdm9NvXtWVcwpx2s4s3TkPwSO4w
-	 iG0gazrUWQQwu/Q+B5sF4dFnRHkvuE13njfGh8H4xV43AG4Vw/7CbWVMppaXpaEjRF
-	 +CYiSPUTDCq6JMNVi65Y5I1n1JyhZDu00lWTwPpYZo4rZASNojZ4bFL9z/bGkjNuzo
-	 yBzT1OYLrrfnmyPz9Q0lHh3mB/3yPBpW997M7oAzcf4xwDNrDIh+xsYEVYFjZ5fX9E
-	 LCGTrHneastaw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id EB725DD4F1E;
-	Fri,  8 Dec 2023 17:08:34 +0000 (UTC)
-Subject: Re: [GIT PULL] ARM: SoC fixes for v6.7
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <90aa3b5f-a0d4-4609-85c2-e3d4cc944102@app.fastmail.com>
-References: <90aa3b5f-a0d4-4609-85c2-e3d4cc944102@app.fastmail.com>
-X-PR-Tracked-List-Id: Upstream kernel work for Rockchip platforms <linux-rockchip.lists.infradead.org>
-X-PR-Tracked-Message-Id: <90aa3b5f-a0d4-4609-85c2-e3d4cc944102@app.fastmail.com>
-X-PR-Tracked-Remote: https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git tags/soc-fixes-6.7-1
-X-PR-Tracked-Commit-Id: fd1e5745f87a9e06974d2f42d22b3e1682c99105
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: a6adef898741eb07526aaf9d8b982d3dff4a9e67
-Message-Id: <170205531495.9242.2736142793084399675.pr-tracker-bot@kernel.org>
-Date: Fri, 08 Dec 2023 17:08:34 +0000
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>, soc@kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, imx@lists.linux.dev, linux-rockchip@lists.infradead.org
+	id 1rBfsJ-00GKQR-0x;
+	Fri, 08 Dec 2023 18:47:00 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a1c8512349dso318919866b.2;
+        Fri, 08 Dec 2023 10:46:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1702061216; x=1702666016; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=+dr8lBkPk/gRBWTFsMFs5wXdj0/vhpvGhmgseUu0tAY=;
+        b=b8DY8RbraOoSQXKGH4ji9GG0sCz0PeFHh4wHmmfE5TANDudk4OQLKwiUZjSwgMCRq8
+         59sfZXNJaO9uiHPNey0vRNZB0aVKISnoLsumiLXeMTX7cyx20aqdayb+/eGuIeaD11bN
+         wHpx6GLB83sk36KbN0I0mqCYVD4tvu5EgxiQ416w8/eMQKTwxZcYcs4thAoe4llADUWe
+         2UrzHpwqOs9yuU9KkFBHEWHv2VJXAUqUk8rJszpNsyW/GUSJxdRmyV74dKMboYXWVHAz
+         eYqFqrX+ngc0tkoahee1WsigVJiWSOxoBpVsLQG/BZBJWal3o+RfS3INnX84tW9pURA0
+         lOfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702061216; x=1702666016;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+dr8lBkPk/gRBWTFsMFs5wXdj0/vhpvGhmgseUu0tAY=;
+        b=fXQzUf5x5a+49su+f42VzfVwu9KZ7ddFtgHQwH6Sb4gyTkwQDQobxnDINFLV2FcQzt
+         RiFRkyw3yC45Zx/VJFP3NuZR7+zNypBAO7dWgxW88+iVfoUIQCUbFX2FG+FnarkkC8jp
+         49VobQpiBAHDjMPeg5iKfWZXx53OBKT3X3BlH79HXXI/IfiVmOA0332fCpcSURAsIs7w
+         HQ7/9IwlhZ/A7MtXyHuhmPvnjUTegshUrnWDLpBanyh0Uox2NEPlT7+R46ho2AArdySM
+         hFwx2KuKCEtTJgC5s2gVSZxgtsD7KUFHIPqtjFO2YTxGzvhb9Y3WDdXOtDObWZqMrfrs
+         kexA==
+X-Gm-Message-State: AOJu0Ywi5Xsk8aqdaK9y4CEirUlC4BfYG7MiwfRtLRFww2nSo2/xMa7R
+	IiiVnOThGc3AoT0wl3xxQ10=
+X-Google-Smtp-Source: AGHT+IFqVjj8BiPjTfdPUSjvMIkmUsDvvm2h6RNnCjnqfatSpcv/EcTXmwiu33Eu6zdyUdHxlBmCSA==
+X-Received: by 2002:a17:907:94d5:b0:9b8:b683:5837 with SMTP id dn21-20020a17090794d500b009b8b6835837mr301541ejc.46.1702061215767;
+        Fri, 08 Dec 2023 10:46:55 -0800 (PST)
+Received: from skbuf ([188.27.185.68])
+        by smtp.gmail.com with ESMTPSA id d11-20020a170907272b00b00a1e2aa3d094sm1317479ejl.173.2023.12.08.10.46.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Dec 2023 10:46:55 -0800 (PST)
+Date: Fri, 8 Dec 2023 20:46:52 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
+ mt7530_setup_port5() if port 5 is disabled
+Message-ID: <20231208184652.k2max4kf7r3fgksg@skbuf>
+References: <20231118123205.266819-1-arinc.unal@arinc9.com>
+ <20231118123205.266819-8-arinc.unal@arinc9.com>
+ <20231121185358.GA16629@kernel.org>
+ <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
+ <90fde560-054e-4188-b15c-df2e082d3e33@moroto.mountain>
+ <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
+ <9b729dab-aebc-4c0c-a5e1-164845cd0948@suswa.mountain>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <9b729dab-aebc-4c0c-a5e1-164845cd0948@suswa.mountain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231208_090837_656731_EAA746B1 
-X-CRM114-Status: UNSURE (   3.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231208_104659_360562_7B39F62F 
+X-CRM114-Status: GOOD (  20.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,19 +91,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Simon Horman <horms@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The pull request you sent on Fri, 08 Dec 2023 14:59:56 +0100:
+On Fri, Dec 08, 2023 at 07:23:38AM +0300, Dan Carpenter wrote:
+> On Thu, Dec 07, 2023 at 08:40:15PM +0200, Vladimir Oltean wrote:
+> > 
+> > We could be more pragmatic about this whole sparse false positive warning,
+> > and just move the "if" block which calls mt7530_setup_port5() right
+> > after the priv->p5_intf_sel assignments, instead of waiting to "break;"
+> > from the for_each_child_of_node() loop.
+> > 
+> > for_each_child_of_node(dn, mac_np) {
+> > 	if (!of_device_is_compatible(mac_np,
+> > 				     "mediatek,eth-mac"))
+> > 		continue;
+> > 
+> > 	ret = of_property_read_u32(mac_np, "reg", &id);
+> > 	if (ret < 0 || id != 1)
+> > 		continue;
+> > 
+> > 	phy_node = of_parse_phandle(mac_np, "phy-handle", 0);
+> > 	if (!phy_node)
+> > 		continue;
+> > 
+> > 	if (phy_node->parent == priv->dev->of_node->parent) {
+> > 		ret = of_get_phy_mode(mac_np, &interface);
+> > 		if (ret && ret != -ENODEV) {
+> > 			of_node_put(mac_np);
+> > 			of_node_put(phy_node);
+> > 			return ret;
+> > 		}
+> > 		id = of_mdio_parse_addr(ds->dev, phy_node);
+> > 		if (id == 0)
+> > 			priv->p5_intf_sel = P5_INTF_SEL_PHY_P0;
+> > 		if (id == 4)
+> > 			priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
+> > 
+> > 		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 || <---- here
+> > 		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
+> > 			mt7530_setup_port5(ds, interface);
+> 
+> This doesn't solve the problem that Smatch doesn't know what the
+> original value of priv->p5_intf_sel.  And also I don't like this code
+> because now we call mt7530_setup_port5() on every iteration after
+> we find the first P5_INTF_SEL_PHY_P0.
 
-> https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git tags/soc-fixes-6.7-1
+You seem to have not parsed the "break" from 4 lines below. There is at
+most one iteration through for_each_child_of_node().
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/a6adef898741eb07526aaf9d8b982d3dff4a9e67
+And why would the "original" value of priv->p5_intf_sel matter? Original
+or modified by the "if (id == 0)" and "if (id == 4)" blocks, the code
+has already executed the of_get_phy_mode(&interface) call, by the time
+we reach the "if" that calls mt7530_setup_port5().
 
-Thank you!
+Hmm, maybe the problem, all along, was that we let the -ENODEV return
+code from of_get_phy_mode() pass through? "interface" will really be
+uninitialized in that case. It's not a false positive.
 
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
+Instead of:
+
+	ret = of_get_phy_mode(mac_np, &interface);
+	if (ret && ret != -ENODEV) {
+		...
+		return ret;
+	}
+
+it should have been like this, to not complain:
+
+	ret = of_get_phy_mode(mac_np, &interface);
+	if (ret) {
+		...
+		return ret;
+	}
+
+> > 	}
+> > 	of_node_put(mac_np);
+> > 	of_node_put(phy_node);
+> > 	break;
+> > }
 
