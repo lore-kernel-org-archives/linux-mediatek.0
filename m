@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 246AFC4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 16:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108EAC4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 17:08:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Date:Message-Id:
+	References:In-Reply-To:From:Subject:Reply-To:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o9ER5qIprpwLYgCbIQAvqPacoHFK4xi4mCA2pH+f0WM=; b=BZTetYVUQketdLuvxazPFxcEFT
-	mex0KXurVPfdNuiiIMwh22d9NRkhMg1fvaYFRMo3xW9FaGp004g7UunmgvfvSXosV66NufaQu2HNf
-	hj+YnlYH/qmweDUxxAHPxJoQEwnbm8ApdjxhiykAaln8wcCsgfCFcCxu7K76n7/hbiTjZ7zC9qeO4
-	O3F1axbKt+I6ZV0pXuqljZ+JlNauLui6BcvygFW/ilKJJOpykXIJKOapqz74fnuYNTlpWj7Ew7nJ2
-	4Ga5NrDOjFXdeXWtzAcPUFdWI7FdafEq7H7TYxrehgu+7MAaCqzhTousJMQ7bDkxBxDDZJwqdbMXX
-	wT3/sGaw==;
+	bh=Fvw4trRlmFgD9OWBM4KAg0Vm8Q0E9AfpDMG8EfcTqG4=; b=Z9bm8bQIqbqYEP5iZDlHhAbsDR
+	a4ZMeZOjPr94jipVh1Scb1ZdbHRNq1hFSBGolVN0++t+bFipxUISwEKT9+vPUlLf6oLl83ZDeGRdy
+	44jyIBiqcRe1x+p99MeWLy4HXwHovL/G0OCbMQ7PPWV4drw2W1KL/uhBEMpVvZ0CsvQw9BoYc1DOU
+	WOEFk/fOyyeSSi8qeO2o3mh4/5NOlytsQnQ4jSj8FSebmqU4JDdr2O9D9pi8X9wcjGSGIL7JMUS1N
+	OeV8dwFcW7aXkQQ8bpjFx2BaIn/2LwDfltQx9rO5c2gCk8EMnnBC0UeME64a5sNbC0zHjFkDSC3qm
+	W4lRh9Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBdhP-00G1Mj-2f;
-	Fri, 08 Dec 2023 16:27:35 +0000
-Received: from mail-ot1-f44.google.com ([209.85.210.44])
+	id 1rBeLB-00G7ij-0E;
+	Fri, 08 Dec 2023 17:08:41 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBdhM-00G1Ld-2Z
-	for linux-mediatek@lists.infradead.org;
-	Fri, 08 Dec 2023 16:27:33 +0000
-Received: by mail-ot1-f44.google.com with SMTP id 46e09a7af769-6d9dbe224bbso1254753a34.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 08 Dec 2023 08:27:31 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702052850; x=1702657650;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=o9ER5qIprpwLYgCbIQAvqPacoHFK4xi4mCA2pH+f0WM=;
-        b=Fn7yEXGOV3xtxxhkT3SVYEpNzqV2R01AtPXbwyeL90BBp3gRt1bvPSme50OdDwycty
-         2X5VAxPDgm9BmYKb0z5MU6aGHo/H+eG6FDUWBdUwv7bJVmOxUfvGRoSQv2QX3cLhfzbC
-         wgM3hkqsE53ntR63tNnp70nVJeVO5ME5R0F65k3bF54F8+KUtKaE87mYoyYX/MTMs4Dn
-         RNgoGymSplL73YX2QAtgnj0CNfYS4ltT27tv08daSbHSBzuFI9mvqzsydHzrFF/QQILl
-         ZrjTfHBIq5Ld7vBo16Uwek+o8G34IviJj/QPG4qSPjxcda3mNGu+/RHhuj2VP+SFRr1u
-         TBCg==
-X-Gm-Message-State: AOJu0Yw0tuwKmBLjL/7B67n7WUQKzkyKq35dwRXMD7F7tSQKBGZlTtPb
-	T4X5WbKZPLw9aYMAppy8OA==
-X-Google-Smtp-Source: AGHT+IGoCBIdUoYHkFT9QQgUxa2omYYXOQwXX4AzFygvyqUJIp41c4SIZsAORINlyDflchYMlvWtxg==
-X-Received: by 2002:a9d:7758:0:b0:6d9:dd14:3a75 with SMTP id t24-20020a9d7758000000b006d9dd143a75mr304450otl.70.1702052850656;
-        Fri, 08 Dec 2023 08:27:30 -0800 (PST)
-Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id e7-20020a0568301e4700b006d87df1c53dsm339278otj.65.2023.12.08.08.27.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Dec 2023 08:27:30 -0800 (PST)
-Received: (nullmailer pid 1634379 invoked by uid 1000);
-	Fri, 08 Dec 2023 16:27:29 -0000
-Date: Fri, 8 Dec 2023 10:27:29 -0600
-From: Rob Herring <robh@kernel.org>
-To: Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.Lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2] dt-bindings: net: wireless: mt76: add interrupts
- description for MT7986
-Message-ID: <20231208162729.GA1575094-robh@kernel.org>
-References: <20231204091156.6535-1-chui-hao.chiu@mediatek.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231204091156.6535-1-chui-hao.chiu@mediatek.com>
+	id 1rBeL7-00G7hQ-1S;
+	Fri, 08 Dec 2023 17:08:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id B2058B82BC0;
+	Fri,  8 Dec 2023 17:08:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0966AC433C8;
+	Fri,  8 Dec 2023 17:08:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702055315;
+	bh=HUSkycKQqdvCwDWPRR3SQZhNrNjKB7XwUDzkxrLiRAQ=;
+	h=Subject:From:In-Reply-To:References:Date:To:List-Id:Cc:From;
+	b=IQeoKGdO2IjGdLDLwstlNRatIRxtFVG/GFlPRnq0oOVTi6NG+rOKE3Qymo2xPBxnb
+	 P9deDtyZTu3WmO4vbaEFxCIB2E9wcVtvtHqKC7Omdm9NvXtWVcwpx2s4s3TkPwSO4w
+	 iG0gazrUWQQwu/Q+B5sF4dFnRHkvuE13njfGh8H4xV43AG4Vw/7CbWVMppaXpaEjRF
+	 +CYiSPUTDCq6JMNVi65Y5I1n1JyhZDu00lWTwPpYZo4rZASNojZ4bFL9z/bGkjNuzo
+	 yBzT1OYLrrfnmyPz9Q0lHh3mB/3yPBpW997M7oAzcf4xwDNrDIh+xsYEVYFjZ5fX9E
+	 LCGTrHneastaw==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id EB725DD4F1E;
+	Fri,  8 Dec 2023 17:08:34 +0000 (UTC)
+Subject: Re: [GIT PULL] ARM: SoC fixes for v6.7
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <90aa3b5f-a0d4-4609-85c2-e3d4cc944102@app.fastmail.com>
+References: <90aa3b5f-a0d4-4609-85c2-e3d4cc944102@app.fastmail.com>
+X-PR-Tracked-List-Id: Upstream kernel work for Rockchip platforms <linux-rockchip.lists.infradead.org>
+X-PR-Tracked-Message-Id: <90aa3b5f-a0d4-4609-85c2-e3d4cc944102@app.fastmail.com>
+X-PR-Tracked-Remote: https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git tags/soc-fixes-6.7-1
+X-PR-Tracked-Commit-Id: fd1e5745f87a9e06974d2f42d22b3e1682c99105
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: a6adef898741eb07526aaf9d8b982d3dff4a9e67
+Message-Id: <170205531495.9242.2736142793084399675.pr-tracker-bot@kernel.org>
+Date: Fri, 08 Dec 2023 17:08:34 +0000
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Linus Torvalds <torvalds@linux-foundation.org>, soc@kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, imx@lists.linux.dev, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231208_082732_830796_C24ABEED 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20231208_090837_656731_EAA746B1 
+X-CRM114-Status: UNSURE (   3.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,46 +77,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 04, 2023 at 05:11:56PM +0800, Peter Chiu wrote:
-> The mt7986 can support four interrupts to distribute the interrupts
-> to different CPUs.
-> 
-> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-> ---
-> v2: Change to use description instead of using items.
+The pull request you sent on Fri, 08 Dec 2023 14:59:56 +0100:
 
-Not what I said to do...
+> https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git tags/soc-fixes-6.7-1
 
-Let me spell it out:
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/a6adef898741eb07526aaf9d8b982d3dff4a9e67
 
-  interrupts:
-    minItems: 1
-      items:
-        - description: major interrupt for rings
-        - description: addditional interrupt for ring 19
-        - description: addditional interrupt for ring 4
-        - description: addditional interrupt for ring 5
+Thank you!
 
-if:
-  properties:
-    compatible:
-      contains:
-        enum:
-          - mediatek,mt7986-wmac
-then:
-  properties:
-    interrupts:
-      minItems: 4
-else:
-  properties:
-    interrupts:
-      maxItems: 1
-
-
-If there are 4 interrupts then you should always have all 4. It's not 
-some OS config. However, as an ABI, you might want to allow 1. If so, 
-then the if/then should just have the 'maxItems: 1' restriction for the 
-compatibles which only have 1 interrupt in the h/w.
-
-Rob
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/prtracker.html
 
