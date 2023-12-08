@@ -4,191 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2DB2C4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 02:20:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49950C4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 04:23:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PXSCtpKl1ZTM4Ovy3wSv44onk/HQRdRMK/MBdjljVvM=; b=vhF1tLKkjgNaAjisUUOreYUHJR
-	TSxq3Ntx10ZVwizRgByfTC4Nmi7oRw7SzrHqWVQnKUZr/fkRYKyv7am8PLZFf+UnxcFeOJpHkfSMv
-	ZCgIxLA1cQrHjBbcWRPg78W54D3vIYPCyq87BYq3KGsNzaGJx+fFqrB+seBRN1ukxrtFEhueDUaNc
-	Ntog/5syfl+Ee5jKFPW4OyBD7p3yYFH2ekF0YXjwFKjLM+Ndn6n+pP/YibIznT/p2G5wpGQPeLhMZ
-	CQyQ2sgK2DEhLrDBgHjZXZmpH3tKVbZpYfggpk6/yBns/WK2VDK8mf9LrOtGGcM6Puob1q3A1C/hX
-	+nwelisw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CDZS0haLyzX2rMNjByhL90PK2pxpUuZrfSW8MqJOxn0=; b=qjfUIFs2pFNbjHAo4xYrrAlLo8
+	PL/R7lnxW60IU+R9O/EBQI+SHfAHrG9fuavMncbdftYcjR56BCkTfW9Jm/SLqW9MRaI1EUlHFjfp9
+	XUOq3nt+K7pcW54VJUUhXVMXAey/AXCK2jtbS8gH4uc8izbERi1I321/HOkEH/QT1TL2difI9BBCd
+	2YYPqkYvY1PJhrsBcpNlsnVESUg1iflMzO3KV0BzV3iRP4OUtuSrNv9UYPtcYAtbQGEX8gNovcqBM
+	JqpQApQv7lMsjUccKyEXuk1iFZiQtqlUVTm+TJBAcnDMWJ39JZckzKrfGMvajvW31UFn2ynPdJEwj
+	tH1BZT+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBQTf-00EXGk-0t;
-	Fri, 08 Dec 2023 02:20:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rBSOK-00Efmb-36;
+	Fri, 08 Dec 2023 04:23:08 +0000
+Received: from mail-vk1-xa33.google.com ([2607:f8b0:4864:20::a33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBQTc-00EXFo-0G;
-	Fri, 08 Dec 2023 02:20:29 +0000
-X-UUID: 55edadaa957011ee958cff29c719f35b-20231207
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=PXSCtpKl1ZTM4Ovy3wSv44onk/HQRdRMK/MBdjljVvM=;
-	b=p33n2z+97ow6CT05lJd3/H2z+nVxZ1iTmT6NRFgjJW8ctyQa6ZfLiJqR6VIxBC+MfepZLBiyy34uRva2QXE0pwiFsw0D+pjDhq6XWTlZ1JwxZqNWq+iANEi8cLpOaLtJYB3+VM4Nj/tsWP8+dKtG/EMncbHvJb0Ewm/Y/9qBZfU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:9322e959-06f7-4104-b69b-a83084134240,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:c01d6cfd-4a48-46e2-b946-12f04f20af8c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 55edadaa957011ee958cff29c719f35b-20231207
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <zhi.mao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1376826335; Thu, 07 Dec 2023 19:20:20 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 8 Dec 2023 10:10:17 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 8 Dec 2023 10:10:17 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QeOOq9RfTQh+vsvnUIC5DcB2uhb12KyPE6g7bc8ng1rV8oR3NnQgh7Tya/3q88pjQvLlGOk+mHTJR31BcZyVCrgSM3sF8Zq8iEadnrdicEkWeFuVQHhJM1ZH918O2D0GTwtlG5cmKXZzQPYK8RtqtQ6UsMONiBKivkRWkyfLQ2C+onlccwnTgoffGMHSxUe70IowDvvSqlQ+Dm3tLOEMPDWJWz5tiSgpMrN99m9r/zLP8cVZdSH08HvKNXd1wTZH5L4+/xswgZrwLrpGUdhBwiKS6hCmEMU6sxDwqiBrMPt/uAim9eQ7PVj9ynMb3PROyvjz0eyL5976+MGOZV7F+g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PXSCtpKl1ZTM4Ovy3wSv44onk/HQRdRMK/MBdjljVvM=;
- b=dEyuxEiafCaTCzu5FvlB4huGA3zomDlwB2jj+34T76bPXNna6fMsVqdRmQjBOMrn+gfRsshOteosEGyixWxQ2afQhF/qZK5/2eFgcORccU2O8zlXP91AQ0P+esPjVWvvZi0xAfQmgNDfIJkM0iBRuNUUD365BYXqcotGucwCeW+7i/4NesVGMFKGP4ZRh1b3vOUgJV7G1jRY6hqW4q/q7TUILMKGZSoj7mt+XKB9qE77l8Z2v+27Glk14V+PNGryDiEjSlVpU2pdjcB0LAauBl11pz84KhQkTBHAX77nJQAkejPDaWsJ+dHTswXbecrd0rjqtPTQhSl+2g7BC8ogEw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1rBSOH-00Efla-0f
+	for linux-mediatek@lists.infradead.org;
+	Fri, 08 Dec 2023 04:23:07 +0000
+Received: by mail-vk1-xa33.google.com with SMTP id 71dfb90a1353d-4b2e0492fffso451597e0c.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 20:23:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PXSCtpKl1ZTM4Ovy3wSv44onk/HQRdRMK/MBdjljVvM=;
- b=sWLJvIDY3ygg2YgWvYhyLybLKTl7Rh/KyCxfnXm7u3Hs9/CK4Yd5eYXgao8l5oKYhQvzdbWo1D86GR8GR+JQOswmq0re5Gtn1Jk/Mz28W+17IRD/ky1mo5PAZlMRgMmTpN9Dpv4ancpdiqA9pL0a3H6X/+enJFqrVOyVG0ODMyY=
-Received: from TYZPR03MB5566.apcprd03.prod.outlook.com (2603:1096:400:53::7)
- by SI2PR03MB6639.apcprd03.prod.outlook.com (2603:1096:4:1e7::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7068.26; Fri, 8 Dec
- 2023 02:07:37 +0000
-Received: from TYZPR03MB5566.apcprd03.prod.outlook.com
- ([fe80::ccc5:b092:efbe:6134]) by TYZPR03MB5566.apcprd03.prod.outlook.com
- ([fe80::ccc5:b092:efbe:6134%7]) with mapi id 15.20.7068.027; Fri, 8 Dec 2023
- 02:07:36 +0000
-From: =?utf-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>
-To: "conor@kernel.org" <conor@kernel.org>, "krzysztof.kozlowski@linaro.org"
-	<krzysztof.kozlowski@linaro.org>
-CC: "heiko@sntech.de" <heiko@sntech.de>, "tomi.valkeinen@ideasonboard.com"
-	<tomi.valkeinen@ideasonboard.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"yunkec@chromium.org" <yunkec@chromium.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "dan.scally@ideasonboard.com"
-	<dan.scally@ideasonboard.com>, "gerald.loacker@wolfvision.net"
-	<gerald.loacker@wolfvision.net>,
-	=?utf-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?=
-	<shengnan.wang@mediatek.com>, "hdegoede@redhat.com" <hdegoede@redhat.com>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
-	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
-	=?utf-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?= <Yaya.Chang@mediatek.com>,
-	"mchehab@kernel.org" <mchehab@kernel.org>, "jacopo.mondi@ideasonboard.com"
-	<jacopo.mondi@ideasonboard.com>, "jernej.skrabec@gmail.com"
-	<jernej.skrabec@gmail.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "bingbu.cao@intel.com"
-	<bingbu.cao@intel.com>, "sakari.ailus@linux.intel.com"
-	<sakari.ailus@linux.intel.com>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "10572168@qq.com"
-	<10572168@qq.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "laurent.pinchart@ideasonboard.com"
-	<laurent.pinchart@ideasonboard.com>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "macromorgan@hotmail.com"
-	<macromorgan@hotmail.com>
-Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
-Thread-Topic: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
-Thread-Index: AQHaKM07MRhkqnzY9kyFxe9G5PmOILCdsPSAgAAPy4CAAFe4AIAAjIwA
-Date: Fri, 8 Dec 2023 02:07:36 +0000
-Message-ID: <0580bc5be77c5e293770f42b661a41c80e1986dd.camel@mediatek.com>
-References: <20231207052016.25954-1-zhi.mao@mediatek.com>
-	 <20231207052016.25954-2-zhi.mao@mediatek.com>
-	 <ZXGtqwjYruBQVaUr@kekkonen.localdomain>
-	 <129e3a8b-5e91-424a-8ff8-b015d5175f1a@linaro.org>
-	 <20231207-outcome-acclaim-d179c8c07fff@spud>
-In-Reply-To: <20231207-outcome-acclaim-d179c8c07fff@spud>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB5566:EE_|SI2PR03MB6639:EE_
-x-ms-office365-filtering-correlation-id: 61a0fa76-5f55-41c0-dae4-08dbf79272f2
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: nDYT5dvl++t4mEmzcPfO1a6XtO9jITXCRjJlm1lPnAeh6d5F2SbrUqsNq3/y16v20FPBtjnhWNyy17skNp7LmeZuTbQXkj58BPqN1qS8vLbvItUw3GtmX2LQN9IZDvzJLp5jXs4Jzj+e5w1lKbrklSW32B0lW3EO41r8jdy4d6D6W918UbuokYachjltAkBY++qIxJMlcLJpiRqfYvXSpcvGFr5rRRX2gMExXWW2a/jn8r/58q0hh2w+0L28fUvy7xuNzsOxATHemuWq8qUwtab3IsoYtS0nTGjDzKuYZOX76o2071S7Tv4sKBIW7qBBseVQIrdDuZvaiiV94l1PzdyF4ifq/g6sPeBjLqGu2rLHM+8ksKbczzA7tWU/1fAvbDBpe7cV5aLvTEjDT/oRIZYNbt1ZkRQ9d1vlIdv0KOLVJ+fBVkB/vy0FkmtcK6wMofjLpoNSqG2BXdcE0kIG/K8oQxJBr23b+okrNzPsi+zvCWCBenMlkGUFzBdhOoIhqS0VNIERUol48QIgeQ8eaUx/w7vsSwjM3F/W8gI27lHuHDUH9r3PJa44A+mh0kBfGI+0yfUagj+AHx5UilUCmHnYVsXl08iFKSi8tbwsOzKgrhv4phLwuBDuFFxA3S1jAXS32vB//yCj80C//Q9qNw==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB5566.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(366004)(396003)(346002)(39860400002)(136003)(230922051799003)(451199024)(64100799003)(186009)(1800799012)(83380400001)(122000001)(38100700002)(36756003)(86362001)(38070700009)(85182001)(66446008)(8936002)(66556008)(66476007)(110136005)(76116006)(64756008)(316002)(54906003)(91956017)(4326008)(5660300002)(7416002)(2906002)(966005)(66946007)(2616005)(6506007)(6512007)(26005)(53546011)(8676002)(71200400001)(41300700001)(478600001)(6486002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cGtkankweHA4SUdtZFF6dEI4RE1vSEJYUFVsVFdHZjVEQXR1ZndObmpCbSth?=
- =?utf-8?B?aE9haEs2L09NVXN1dnpRdjN1WDJZMTdFTmlCejRrTnc5b1d2MmV4NTUyRVMr?=
- =?utf-8?B?M2VqdDdOM1BaY1dLZVZUTlNLV1RXSndlTHphSUwrbFNkL051akh5S2x2Ujc5?=
- =?utf-8?B?UUp5ZHkvK0RyTkZUekI5ZnRJWmppbVhIZnRWeVpZSkNmRHhiZ3hzNS9BQUJ2?=
- =?utf-8?B?RzI1cFBLZmZpREJSaDk4R2xVQmhZMEhYS1pLbmY4NWZCVXpMMGxtR3B2Mitl?=
- =?utf-8?B?VGJWRGU2TVlQQnJ4V3BCZkt3OVFtNlIyYkxJTXhIcjVrSGpDekE5d2V4M1Zo?=
- =?utf-8?B?THFXTEo2RWRhTXpQdG1KYmVRdndpUC9lRVpaNUJhYlRHNTUxWWMvbGxoMDZH?=
- =?utf-8?B?bC9pS2tweCtad213QUhMQjgxVTBBM01SNnIxcEF2SVhGZkE2TzlTcjNUSjhv?=
- =?utf-8?B?dVptdloxM1BxWk5rSnNnK3RVTlBCRENSeHFnZnY1SGZPSC85VzZrM0VWRmR4?=
- =?utf-8?B?Q2tCNTBUYWpKRVBiMXN1eVpQeFF4Mlp5S0FCQTRjUlF3MXk3bXlVQlNFWndQ?=
- =?utf-8?B?a2hmdDVGUXJLNld4Yy81L0o3MFRRZHVrOXZ2WXo0NEVXV3RPY2dGVURSaGdm?=
- =?utf-8?B?WG4yY2NGaG5RalorQzZ2K0lMZDR3UnIvRUQrQVJXdzQ3YWZSRHpoTDZ1eDlS?=
- =?utf-8?B?bkJwa2FUd1Y2SUl5QVpBcG53Y1VKTmh0VXVTdzA4WG9Pb243Y1daZzJwUko5?=
- =?utf-8?B?Ull2RjhCS2RhalNibklKMFVVaXEwR2lZK2NjSFFYUE1ZNVdjTUhZWjVHWFhI?=
- =?utf-8?B?VGhsOThhVXZ3WTUxTW9rclFmUG03NGJ5aGEvUi9Ca2NwYjNCWWEwYUd4eVh6?=
- =?utf-8?B?eXBxc0ozMkhrMnpnYnowV1phQmp3aDlDRjg0Z0lhL2MxZHJPMDk4alk2WVJK?=
- =?utf-8?B?aFJ5dC9TZ3U4b2dPVTgrc3FqVXR1MEtCdll3V3Y4L011QzVSZ3lRSUhWSmhZ?=
- =?utf-8?B?dDVXcXRjQnhhSlJLb3l3bjRTd04ydkNQWVFzQW05TVJUL3pXR3JxTHNFcXNT?=
- =?utf-8?B?aithenEyS0NXenM3NG4yc2QwTlFmSnF5TmZMS1FHNkVkM2srMVU0WlRHelk4?=
- =?utf-8?B?TG9HQk1haC9QZUh1YWIrWGxNWW90Qmlrb3E2ZlgzdTNVYUVoOEhTc2NzNklV?=
- =?utf-8?B?Nzl3aEpuTzZmYXhGSm54WHoxYlY5c0k0enhpT0Z0Y2pZNUhzb2h1Q3NSNDAw?=
- =?utf-8?B?VnR1aTVVMEVnMk9CUit0MVI0cFZQS3h2WnVISmxONVg3SVFKK3Z1c00zQ2tV?=
- =?utf-8?B?VjZZc3NaQkc1OXNPUGV6VWdPUkJxL0k0bGF6TUhBV1k0NWtLdXp3dnVBUGhO?=
- =?utf-8?B?T05IY1RWa3BVRXlkcEJLT3k2THFFc1NQUURTVTBDaHZScGxvS3JoR2NodnFG?=
- =?utf-8?B?eU96eFZRSk5FSm5tU0tmY1oxTWVyTmN2T2RiOTQrajRIRCtvQVlhNDMxeUtF?=
- =?utf-8?B?d3dwT001MjZzSzBvSnVnSEcvUVdvN2l3UFNnWXVPR1hsM2crWXRtZStlTHJx?=
- =?utf-8?B?VGh5TEZ5NElZc3hiRVlSVFo1Z1FVeHNCQmF6UElKMzRsSW5JaEdsTHA4c0x6?=
- =?utf-8?B?TDgyWkhJZUI1MUh3TFJIaE95aldVdzJOc2NGN1RMa2JEOGZqV2VsN01FU2Rs?=
- =?utf-8?B?UGJaQWRtaFFPL3hkd1I4b1I0MC9CNHJicUI4UHE4bE9aSFhHSEJpcnVhSmZo?=
- =?utf-8?B?NHB1VEpCbTFISFAzTy9teStuajU3MC82MEVpTFdzTXJDWEN6bEsxc0w4YXI4?=
- =?utf-8?B?TkZyV2RNM3h0SUs3d1N2bGoySDRCdUhaY0dMRUp2dnJ1cFNGQno1Y3RJNXZX?=
- =?utf-8?B?bnpBV0xCUk9pN0RVaWJRVDlYQjVLeExXd0QrTVV5WTVOUElzQm81YUNYT2R3?=
- =?utf-8?B?K2U0djREK3lMU2V2YWE2azJhVkR0ZTkzUzYrUUJWZFFMSTlUVzdxK0lGWmJB?=
- =?utf-8?B?RzZUTzhERSt6amRNSXBOM3FKdXVyZHVFNWJHOUI0NHNYTlozT2FCR0FTc1Vz?=
- =?utf-8?B?SERMa0RwNitZL2NVcnNtTzhQVFRreDRSMWUyRCt5RkJWbE0ySWc3b2JrSjFi?=
- =?utf-8?B?MkIxU3pxTE1CaDhZWUlnSEg0VGdxenNVMWtJRXFuZVNwZ1VCTDU1dzYxWW4y?=
- =?utf-8?B?cXc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <58E9CCA80E09694095081CE335F8091D@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1702009383; x=1702614183; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CDZS0haLyzX2rMNjByhL90PK2pxpUuZrfSW8MqJOxn0=;
+        b=GcweE+Z7xe2h2tTSbANGZ3WtlYiHb9enfFmYvmLyviTWEJLo91KKi05CdtzusZao5L
+         qkPHR3ORtXbqkGHAj/2HnzvnClTspCeRM/heaHoklI6KaiEVM8P/CV+HmJk5ht2HCW5a
+         dsf3Vojcaa29cLlHj6PAYtlhsU05j0bLrrHgg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702009383; x=1702614183;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=CDZS0haLyzX2rMNjByhL90PK2pxpUuZrfSW8MqJOxn0=;
+        b=kpqF7gg1pNyrCR306A3aGiSYF0IjRNItgXaTJ6I/YIwdJvpbqC/6BEhl904W6J1vCH
+         /1IXGFg7PUg/BV5VV46KwfH44Ot7A/HHk1l9swmkPhwwNcZgM8YgXWNkgF0aGOSX3LKc
+         Y5R/tr64SqC6/hhWNuKdn2oMHLaCOvNVm0l6hS/5/hFuhSoKZl66a1DWCjpAObqKocnt
+         ihyvlV9SM3AChp3wAMjnquj+3rZYZ7XB0Pv6eFouGG3oZCQdiewuSQxHJxr8E4rHC7Lq
+         Rll4hB5DbOtSXGJJ98V1rpXGEBddb8+lWqY+dKM4I2hjoDs09qbblQGbuleGoj4yLBSp
+         e2mw==
+X-Gm-Message-State: AOJu0YxBwIPW6WZwNqgNM0XkeJrPYbN1xLNfwcPbBmb4i1dKpoXhj8CO
+	xVMwd4Pb/KpCKPJYJXrkKuYeY4dXI2FFev37+hY=
+X-Google-Smtp-Source: AGHT+IHkeJAzkTbAuBWftijwuK4K7aDdTkRh3TJznhuJuAk+eyVtmekjpYWAdFsRqZIO3B+0ljyLKQ==
+X-Received: by 2002:a05:6122:4595:b0:4b2:ce5c:2060 with SMTP id de21-20020a056122459500b004b2ce5c2060mr4177300vkb.3.1702009382700;
+        Thu, 07 Dec 2023 20:23:02 -0800 (PST)
+Received: from mail-ua1-f41.google.com (mail-ua1-f41.google.com. [209.85.222.41])
+        by smtp.gmail.com with ESMTPSA id cm26-20020a056122421a00b004b2e71661c4sm102988vkb.24.2023.12.07.20.23.01
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 Dec 2023 20:23:01 -0800 (PST)
+Received: by mail-ua1-f41.google.com with SMTP id a1e0cc1a2514c-7bb3e55c120so403074241.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 20:23:01 -0800 (PST)
+X-Received: by 2002:a67:e893:0:b0:464:7c8c:e17d with SMTP id
+ x19-20020a67e893000000b004647c8ce17dmr3179679vsn.9.1702009381069; Thu, 07 Dec
+ 2023 20:23:01 -0800 (PST)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB5566.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 61a0fa76-5f55-41c0-dae4-08dbf79272f2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2023 02:07:36.8298
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: yoZx0MqIRrYEplQbCvgP0rw4fMZxo2jBYzd4LAhf12g9hzMLSTlcGvymhCUMUwnxNuFLb7S+fS/6D9blgmYmuw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6639
+References: <20231113123049.4117280-1-fshao@chromium.org> <20231113123049.4117280-4-fshao@chromium.org>
+ <6c693161-0e89-4f9d-9a92-18f3783eefd2@collabora.com> <CAC=S1nhp3HoKGQr1UgKtZJ9SLMqvm-G_YZi9dEWWF3tj2d=OFQ@mail.gmail.com>
+ <6046a40b-800c-4bf8-ab45-d7f1015b2d9c@collabora.com>
+In-Reply-To: <6046a40b-800c-4bf8-ab45-d7f1015b2d9c@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Fri, 8 Dec 2023 12:22:24 +0800
+X-Gmail-Original-Message-ID: <CAC=S1niMVxoryzg6X+vFcDpMRuO6YCzUFj4A+2yex+mfOBALRg@mail.gmail.com>
+Message-ID: <CAC=S1niMVxoryzg6X+vFcDpMRuO6YCzUFj4A+2yex+mfOBALRg@mail.gmail.com>
+Subject: Re: [PATCH 3/4] media: mediatek: vcodec: Fix mtk_vcodec_mem_free()
+ error log criteria
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Tiffany Lin <tiffany.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_182028_161338_AED2979A 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20231207_202305_604901_D0D6C2CC 
+X-CRM114-Status: GOOD (  47.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -203,31 +103,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIzLTEyLTA3IGF0IDE3OjQ0ICswMDAwLCBDb25vciBEb29sZXkgd3JvdGU6DQo+
-IE9uIFRodSwgRGVjIDA3LCAyMDIzIGF0IDAxOjMwOjM1UE0gKzAxMDAsIEtyenlzenRvZiBLb3ps
-b3dza2kgd3JvdGU6DQo+ID4gT24gMDcvMTIvMjAyMyAxMjozNCwgU2FrYXJpIEFpbHVzIHdyb3Rl
-Og0KPiA+ID4gPiArCXJldCA9IGdjMDhhM19wYXJzZV9md25vZGUoZGV2KTsNCj4gPiA+ID4gKwlp
-ZiAocmV0KQ0KPiA+ID4gPiArCQlyZXR1cm4gcmV0Ow0KPiA+ID4gPiArDQo+ID4gPiA+ICsJZ2Mw
-OGEzID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpnYzA4YTMpLA0KPiA+ID4gPiBHRlBfS0VS
-TkVMKTsNCj4gPiA+ID4gKwlpZiAoIWdjMDhhMykNCj4gPiA+ID4gKwkJcmV0dXJuIC1FTk9NRU07
-DQo+ID4gPiA+ICsNCj4gPiA+ID4gKwlnYzA4YTMtPmRldiA9IGRldjsNCj4gPiA+ID4gKw0KPiA+
-ID4gPiArCWdjMDhhMy0+eGNsayA9IGRldm1fY2xrX2dldChkZXYsIE5VTEwpOw0KPiA+ID4gPiAr
-CWlmIChJU19FUlIoZ2MwOGEzLT54Y2xrKSkNCj4gPiA+ID4gKwkJcmV0dXJuIGRldl9lcnJfcHJv
-YmUoZGV2LCBQVFJfRVJSKGdjMDhhMy0NCj4gPiA+ID4gPnhjbGspLA0KPiA+ID4gPiArCQkJCQkg
-ImZhaWxlZCB0byBnZXQNCj4gPiA+ID4geGNsa1xuIik7DQo+ID4gPiA+ICsNCj4gPiA+ID4gKwly
-ZXQgPSBjbGtfc2V0X3JhdGUoZ2MwOGEzLT54Y2xrLA0KPiA+ID4gPiBHQzA4QTNfREVGQVVMVF9D
-TEtfRlJFUSk7DQo+ID4gPiANCj4gPiA+IFBsZWFzZSBzZWU6DQo+ID4gPiA8VVJMOg0KPiA+ID4g
-aHR0cHM6Ly9odmVya3VpbC5ob21lLnhzNGFsbC5ubC9zcGVjL2RyaXZlci1hcGkvY2FtZXJhLXNl
-bnNvci5odG1sI2RldmljZXRyZWU+DQo+ID4gPiA7Lg0KPiA+IA0KPiA+IA0KPiA+IE9oLCB0aGF0
-J3MgY29vbCBpdCB3YXMgZG9jdW1lbnRlZCENCj4gPiANCj4gPiBUaGUgY2Fub25pY2FsIGxpbmsg
-d291bGQgYmU6DQo+ID4gDQpodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9odG1sL2xhdGVzdC9k
-cml2ZXItYXBpL21lZGlhL2NhbWVyYS1zZW5zb3IuaHRtbCNkZXZpY2V0cmVlDQo+IA0KPiBJIGJl
-bGlldmUgdGhpcyBpcyB0aGF0IGFuc3dlciB0byB0aGUgIndoeSBhcmUgdGhlc2UgbmVlZGVkIiB0
-aGF0IEkNCj4gYXNrZWQNCj4gb24gdGhlIHByZXZpb3VzIHZlcnNpb24gYW5kIG5ldmVyIGdvdCBh
-IHJlc3BvbnNlIHRvLiBJbnN0ZWFkLCB0aGV5DQo+IHdlcmUNCj4ganVzdCByZW1vdmVkIGZyb20g
-dGhlIGJpbmRpbmcgZXRjLg0KDQpBYm91dCAiYXNzaWduZWQtY2xvY2tzIiAmICJhc3NpZ25lZC1j
-bG9jay1yYXRlcyIgaW4gdjEgcGF0Y2gsIGFzIHRoZXkNCmFyZSBub3QgdXNlZCBpbiBzZW5zb3Ig
-ZHJpdmVyLCBJIGhhdmUgcmVtb3ZlZCB0aGVtIGluIHNlbnNvciBkdHMtDQpiaW5kaW5kIGZpbGUu
-IEFuZCAiY2xvY2stbmFtZXMiICYgImNsb2NrLWZyZXF1ZW5jeSIgYXJlIGFsc28gdGhlIHNhbWUs
-DQp0aGV5IHdpbGwgYmUgcmVtb3ZlZCBpbiBuZXh0IHZlcnNpb24uDQoNCg==
+On Thu, Dec 7, 2023 at 8:55=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 07/12/23 12:17, Fei Shao ha scritto:
+> > Hi Angelo,
+> >
+> > On Wed, Dec 6, 2023 at 6:19=E2=80=AFPM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Il 13/11/23 13:26, Fei Shao ha scritto:
+> >>> mtk_vcodec_mem_free() shouldn't print error if the target DMA buffer =
+has
+> >>> never been allocated or was freed properly in the previous call. That
+> >>> makes log confusing.
+> >>>
+> >>> Update the error path to print log only when the caller attempts to f=
+ree
+> >>> nonzero-size buffer with VA being NULL, which indicates something ind=
+eed
+> >>> went wrong.
+> >>>
+> >>> This brings another benefit that the callers no more need to check
+> >>> mem->va explicitly to avoid the error, which can make the code more
+> >>> compact and neat.
+> >>>
+> >>> Signed-off-by: Fei Shao <fshao@chromium.org>
+> >>
+> >> I think that this error is supposed to catch two issues in one:
+> >>    - We're called to free no memory (something that does make no sense=
+),
+> >>      this may happen for example when calling xxx_free() twice, and it
+> >>      is a mistake that *must* be fixed;
+> > When I made the change, I was thinking of kfree() that doesn't warn
+> > against a NULL pointer.
+> > I imagine mtk_vcodec_mem_free() calls with NULL VA and mem size 0
+> > probably have the similar nuance (if the buffer exists, free it; never
+> > mind otherwise), but I could have missed some important differences
+> > specific to the MTK vcodec driver.
+> >
+> > Looking at the mtk_vcodec_mem_free() usages, almost every one of those
+> > checks VA beforehand, but nothing else - they don't warn or do
+> > anything special when they encounter a NULL VA, and they should if
+> > that's a concern.
+> > Some even don't check at all (and I think that's why I ended up seeing
+> > the errors mentioned in the cover letter). As for that, I think
+> > there's nothing else we can fix except prepending "if (mem->va)".
+> > So from all this, I feel perhaps we don't need to worry much about
+> > those NULL VA, and we can further remove the checks (or at least move
+> > it into mtk_vcodec_mem_free()) to trim the lines in the driver. That's
+> > the reason for patch [4/4].
+> >
+> > Not sure if that makes sense to you.
+>
+> What you say does make sense - and a lot - but still, I think that freein=
+g
+> a NULL VA (=3D freeing nothing) is something that shouldn't happen...
+>
+> >
+> >>    - We're failing to free memory for real (which you covered)
+> >>
+> >> ....that said, I think that if you want to clarify the error messages
+> >> in this function, it should look something like this:
+> >>
+> >> if (!mem->va) {
+> >>          mtk_v4l2_err(plat_dev, "%s: Tried to free a NULL VA", __func_=
+_);
+> >>          if (mem->size)
+> >>                  mtk_v4l2_err(plat_dev, "Failed to free %lu bytes", me=
+m->size);
+> >>          return;
+> >> }
+> > Sure, I can revise the patch with this, but I also want to make sure
+> > if the NULL VA print needs to be an error.
+> > If you still think it should, I guess I'll drop the current patch
+> > [4/4] and instead add the check before every mtk_vcodec_mem_free()
+> > calls. This should also work for the issue I want to address in the
+> > first place.
+> >
+>
+> ... because if you notice, some of the calls to mtk_vcodec_mem_free() are=
+ not
+> checked with `if (something->va)` beforehand, so I think that those are c=
+ases
+> in which freeing with a NULL VA would actually be an indication of someth=
+ing
+> going wrong and/or not as expected anyway (checking beforehand =3D error =
+won't
+> get printed from mtk_vcodec_mem_free(), not checking =3D print error if v=
+a=3D=3DNULL)
+>
+> It's an easy check:
+> cd drivers/media/platform/mediatek/vcodec
+> grep -rb1 mtk_vcodec_mem_free
+>
+> P.S.: h264_if, av1_req_lat :-)
+Yes, these are exactly what I wanted to imply in ">> Some even don't
+check at all", and I should have pointed them out to avoid
+ambiguity...
+And I understand your concern. Presuming the NULL VA case is and will
+always be safe to ignore can be too assertive, and getting explicit
+error logs is always better than lurking bugs.
+
+>
+> That's why I think that you should drop your [4/4] - unless MediaTek come=
+s in
+> stating that the missed checks are something unintended, and that every i=
+nstance
+> of VA=3D=3DNULL should print an error.
+>
+> I honestly wouldn't be surprised if they did so, because anyway this occu=
+rs only
+> in two decoders...
+Agree, it would be nice if Yunfei can share some thoughts here, or I
+can reach out to him through other channels for alignment first, and
+adjust this series based on the response.
+The h264_if part was written a while ago (2016) and the av1_req_lat
+part is relatively new (mid 2023), I hope it won't be too hard to
+reach a conclusion for those.
+
+Regards,
+Fei
+
+>
+> Regards,
+> Angelo
 
