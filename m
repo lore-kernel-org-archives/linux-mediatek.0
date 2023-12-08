@@ -4,82 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E650CC4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 04:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FD0AC4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Dec 2023 04:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SPl6U0GokDKYjf8mFtBabOMqth1qqIW6W4U8DQpUoFQ=; b=tgu9CKrwrw+jjH6BgJatPKVcb/
-	GwZxuo/xdPS44GWD9xtRaHC0G39cbkam2S1zU2kftegdjh9kgF8QzWuJQzb8OhtaO5d40+BAgU1P9
-	gOhs9X1DafiBtrDev2Uank0jfhdRo//4L5YGs8s6QkhmC89qvPN1jOnmTAjAOJyOFXqMDuf5N4dgT
-	45U4tGchjsoZB1lodMaLHR7y3TtSQmsbFO24b9SxEaxVRLVw0Nagp/HrCL1qmVbVUmi+hLTa/YuAk
-	5KQ7gYXYAnmwKgzt1l0l8M8lfxXhsL2gSi4p2U2lsYHLR7tTfMfklKWzRQ2nLcmdfUwqfY4oX2sEr
-	G8Vx4RlA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=apbHXdcSkWFBXKUAUvZ/rPX7atQuNqUO/5Wd48wSoY8=; b=tH7VEJP1gZMCNCMIahc1+3c7IQ
+	dIm3OM3bzPBka1vsPdnjhebhRRQuPe2x+AHSgWnMmtF+nRpGdVBUZ28fxUMJN/P6/QNtZJgPpis4K
+	Q4A2CYY64gfnZVlM7B7bY3aLTpi6xVfyy733HLU9caAN6YrkB8bf66qqqEnjqR/jaTNZ/k3l17Ibi
+	gVR51iJcheCTilaCL8bQYK+C1ogdCVA67Ic5jpxa+BVuTyKHeDeej1sQW2vojo3Ydkba9pnW8h/i5
+	DHVzg9U1yQLICuyfWpY71UrI+wOp0bz+g3JlfYd59lnQ6HcuNWiCxixyc1gk8yMCVvck/K1YeCW1+
+	eFoQLUPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBSP2-00EftR-01;
-	Fri, 08 Dec 2023 04:23:52 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1rBSny-00Ei5K-0t;
+	Fri, 08 Dec 2023 04:49:38 +0000
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBSOy-00EfrC-12
-	for linux-mediatek@lists.infradead.org;
-	Fri, 08 Dec 2023 04:23:49 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40c339d2b88so1895895e9.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Dec 2023 20:23:45 -0800 (PST)
+	id 1rBSnu-00Ei4f-2x;
+	Fri, 08 Dec 2023 04:49:36 +0000
+Received: by mail-qk1-x735.google.com with SMTP id af79cd13be357-77f4b8bbe0eso25599485a.1;
+        Thu, 07 Dec 2023 20:49:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702009424; x=1702614224; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=SPl6U0GokDKYjf8mFtBabOMqth1qqIW6W4U8DQpUoFQ=;
-        b=nS2COlaq1hasfkPdBx0Qo7skhKddz7oEIzNmvke04B3PeGvZS5PPcviwttfXIjeNpR
-         Ig0SbS9UsHhGzngC0mhRO0v84JB0VivW7i2iLRm/YbF9+rcd5rfpaUjTvi597rtztw3m
-         ni7Uq6AWx8jNSgDPlqNBNmwq68xCzH1ncKceviYJ96WE7YGGFBNmpVWMUkJLWaVaUDXX
-         xtHIcXudreBmIs5s+8Hc/efZDoPOqRqLXn/Ljiim9WBpApn70zyDZVwsDUI1zRuX0Ccv
-         0UmlWg0MSd/QA3v5WXZNOES2y3gJQj3Rh5h5dCmU4amG/5it9Pjnhjsu2vjfoNkusQyb
-         3ZGg==
+        d=gmail.com; s=20230601; t=1702010971; x=1702615771; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=apbHXdcSkWFBXKUAUvZ/rPX7atQuNqUO/5Wd48wSoY8=;
+        b=kptsZC0x12gTxUt7n5YPV1lDwZTzY2YBApoEkv459TQrpTZjgqti6fmmpjkGQ/1iQ+
+         9Q74+5yeKVkxqqaEkheA2rVhpwgMSAzXrcug1+VmPdQ6/WBlc3UHReWJhfdKYVS5iThV
+         R6Hl8etuowin9pdVBGh1w13TS4tYWGf2nCVX6pi/4clhdp8n8k2vGHiXckda9ffKEqC4
+         QQP0MxdvEUDuC50ZyI+eBNDLU16oSDa7p3G+i9Ed2C+VweUvsHMDtHIR7CQ84kUURBe3
+         KAKCKQz/BsimUr+LuwhM1m3bNeL3o3QPib3fCOYpyvOdJxfko4kpec0Rs7XMq10LJPy0
+         1NRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702009424; x=1702614224;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SPl6U0GokDKYjf8mFtBabOMqth1qqIW6W4U8DQpUoFQ=;
-        b=demx6I1nNIkpxeDI931P11EolEHnN9mB5xYt59Mkge/9JWszt0TfeKkcqjVMbYgXsE
-         EobKa27MYj8s93reX5Er3aq9DR5OmniShZ5VPBlf3NwVF2eFxR8aEaj8eC5S7wKuZVVO
-         y7aonvHhPV7rTfcYgmhIx3f/1JioaxXVRz4xJYKPxoWKCWz+I4yJvrfX1SpkRfAxG9w7
-         Hza1xIimnlXUWJBNtJz3H1fS7zY/uT6MeJFYFNM7+jTsYYiq97TobAC7XioHlP0YIoCg
-         WS5peZ9/XMFcItWBKkraQU6QIlLRPT9kkyLmrkUYFTfelQKm2gn0p2RG7GC+GJQSlvJ6
-         i2Ow==
-X-Gm-Message-State: AOJu0Yx8aUjXYPEK1aO/pBmQlyStklXtpsb9X+z6aHyxhTF9sEW8PDCG
-	xb8+3bQHh0Iuml5WOt0u0fUJZg==
-X-Google-Smtp-Source: AGHT+IGb8HNYcf4CwqR2mNQtwvE2sIxWS6ha8l/UWovNTRhq1viL+9jJuZvP6Uejra7pVJ3NHVKIxA==
-X-Received: by 2002:a05:600c:4651:b0:40c:2518:687c with SMTP id n17-20020a05600c465100b0040c2518687cmr1507452wmo.61.1702009423621;
-        Thu, 07 Dec 2023 20:23:43 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id gw18-20020a05600c851200b004063c9f68f2sm1470710wmb.26.2023.12.07.20.23.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Dec 2023 20:23:43 -0800 (PST)
-Date: Fri, 8 Dec 2023 07:23:38 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Vladimir Oltean <olteanv@gmail.com>
-Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
- mt7530_setup_port5() if port 5 is disabled
-Message-ID: <9b729dab-aebc-4c0c-a5e1-164845cd0948@suswa.mountain>
-References: <20231118123205.266819-1-arinc.unal@arinc9.com>
- <20231118123205.266819-8-arinc.unal@arinc9.com>
- <20231121185358.GA16629@kernel.org>
- <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
- <90fde560-054e-4188-b15c-df2e082d3e33@moroto.mountain>
- <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
+        d=1e100.net; s=20230601; t=1702010971; x=1702615771;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=apbHXdcSkWFBXKUAUvZ/rPX7atQuNqUO/5Wd48wSoY8=;
+        b=K5rPl6vYTX5EloysLSRAW4Yi7M/3BFUtIzYoH/9n+Yt6D1+pSkjpdjtGYbbL1aNA/p
+         hxvDqJv1jc4XaaY2WspKu/LNHVG1mrwsb9fZ7OIMVWm27bfJ4sZ0aHxnP5Nn0rwGM9sF
+         KDzLHYC9/NNW79swIAwKTRhar4+vKLzTLlP9ffMe/ven4hzjW7KC3qZUSSdq2L2D6uFt
+         4nhvNFzCJtZsNDlj2Dlh541UnG/KXAY0kVzdMRh23gMX1P7pFVYw2AbXtCm35bU5VLid
+         x8mrri9rrm1iK5N6zAqJVOnQ/Jq0Qp0+NpT/+BYd2CyFpwJ0gAExnSWseMmtwusc6esh
+         3I5g==
+X-Gm-Message-State: AOJu0YxCBK2P18USWZ0+IcXs65RQD7ztrNTIK6VkvclqHR2AwFiC+Nf0
+	ZWfl2ZS7Oo3oPALi/vts9rg=
+X-Google-Smtp-Source: AGHT+IHq72s0wgGAvlMpxJLJd+XXO/O95qju15WYNJhjJW585DNkO2Ri0Krk3Gye/yGNGCVuvcwysQ==
+X-Received: by 2002:ad4:56e3:0:b0:67a:a721:82ff with SMTP id cr3-20020ad456e3000000b0067aa72182ffmr3641641qvb.89.1702010970841;
+        Thu, 07 Dec 2023 20:49:30 -0800 (PST)
+Received: from [192.168.1.3] (ip72-194-116-95.oc.oc.cox.net. [72.194.116.95])
+        by smtp.gmail.com with ESMTPSA id h10-20020a0cedaa000000b0067a22a8564fsm479353qvr.140.2023.12.07.20.49.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 Dec 2023 20:49:29 -0800 (PST)
+Message-ID: <a3f24fdf-946c-4253-956d-4d345decdeb6@gmail.com>
+Date: Thu, 7 Dec 2023 20:49:25 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] docs: dt-bindings: add DTS Coding Style document
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Andrew Davis <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>,
+ Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>,
+ Chen-Yu Tsai <wens@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Jonathan Corbet <corbet@lwn.net>, Michal Simek <michal.simek@amd.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
+ Olof Johansson <olof@lixom.net>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <zajec5@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ workflows@vger.kernel.org, linux-doc@vger.kernel.org
+References: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Autocrypt: addr=f.fainelli@gmail.com; keydata=
+ xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
+ xGlkaOSDuu09rxuW+69Y2f1TzjFuGpBk4ysWOR85O2Nx8AJ6fYGCoeTbovrNlGT1M9obSFGQ
+ X3IzRnWoqlfudjTO5TKoqkbOgpYqIo5n1QbEjCCwCwCg3DOH/4ug2AUUlcIT9/l3pGvoRJ0E
+ AICDzi3l7pmC5IWn2n1mvP5247urtHFs/uusE827DDj3K8Upn2vYiOFMBhGsxAk6YKV6IP0d
+ ZdWX6fqkJJlu9cSDvWtO1hXeHIfQIE/xcqvlRH783KrihLcsmnBqOiS6rJDO2x1eAgC8meAX
+ SAgsrBhcgGl2Rl5gh/jkeA5ykwbxA/9u1eEuL70Qzt5APJmqVXR+kWvrqdBVPoUNy/tQ8mYc
+ nzJJ63ng3tHhnwHXZOu8hL4nqwlYHRa9eeglXYhBqja4ZvIvCEqSmEukfivk+DlIgVoOAJbh
+ qIWgvr3SIEuR6ayY3f5j0f2ejUMYlYYnKdiHXFlF9uXm1ELrb0YX4GMHz80nRmxvcmlhbiBG
+ YWluZWxsaSA8Zi5mYWluZWxsaUBnbWFpbC5jb20+wmYEExECACYCGyMGCwkIBwMCBBUCCAME
+ FgIDAQIeAQIXgAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2DvCVAJ4u4/bPF4P3jxb4qEY8I2gS
+ 6hG0gACffNWlqJ2T4wSSn+3o7CCZNd7SLSDOw00ESM+4EhAQAL/o09boR9D3Vk1Tt7+gpYr3
+ WQ6hgYVON905q2ndEoA2J0dQxJNRw3snabHDDzQBAcqOvdi7YidfBVdKi0wxHhSuRBfuOppu
+ pdXkb7zxuPQuSveCLqqZWRQ+Cc2QgF7SBqgznbe6Ngout5qXY5Dcagk9LqFNGhJQzUGHAsIs
+ hap1f0B1PoUyUNeEInV98D8Xd/edM3mhO9nRpUXRK9Bvt4iEZUXGuVtZLT52nK6Wv2EZ1TiT
+ OiqZlf1P+vxYLBx9eKmabPdm3yjalhY8yr1S1vL0gSA/C6W1o/TowdieF1rWN/MYHlkpyj9c
+ Rpc281gAO0AP3V1G00YzBEdYyi0gaJbCEQnq8Vz1vDXFxHzyhgGz7umBsVKmYwZgA8DrrB0M
+ oaP35wuGR3RJcaG30AnJpEDkBYHznI2apxdcuTPOHZyEilIRrBGzDwGtAhldzlBoBwE3Z3MY
+ 31TOpACu1ZpNOMysZ6xiE35pWkwc0KYm4hJA5GFfmWSN6DniimW3pmdDIiw4Ifcx8b3mFrRO
+ BbDIW13E51j9RjbO/nAaK9ndZ5LRO1B/8Fwat7bLzmsCiEXOJY7NNpIEpkoNoEUfCcZwmLrU
+ +eOTPzaF6drw6ayewEi5yzPg3TAT6FV3oBsNg3xlwU0gPK3v6gYPX5w9+ovPZ1/qqNfOrbsE
+ FRuiSVsZQ5s3AAMFD/9XjlnnVDh9GX/r/6hjmr4U9tEsM+VQXaVXqZuHKaSmojOLUCP/YVQo
+ 7IiYaNssCS4FCPe4yrL4FJJfJAsbeyDykMN7wAnBcOkbZ9BPJPNCbqU6dowLOiy8AuTYQ48m
+ vIyQ4Ijnb6GTrtxIUDQeOBNuQC/gyyx3nbL/lVlHbxr4tb6YkhkO6shjXhQh7nQb33FjGO4P
+ WU11Nr9i/qoV8QCo12MQEo244RRA6VMud06y/E449rWZFSTwGqb0FS0seTcYNvxt8PB2izX+
+ HZA8SL54j479ubxhfuoTu5nXdtFYFj5Lj5x34LKPx7MpgAmj0H7SDhpFWF2FzcC1bjiW9mjW
+ HaKaX23Awt97AqQZXegbfkJwX2Y53ufq8Np3e1542lh3/mpiGSilCsaTahEGrHK+lIusl6mz
+ Joil+u3k01ofvJMK0ZdzGUZ/aPMZ16LofjFA+MNxWrZFrkYmiGdv+LG45zSlZyIvzSiG2lKy
+ kuVag+IijCIom78P9jRtB1q1Q5lwZp2TLAJlz92DmFwBg1hyFzwDADjZ2nrDxKUiybXIgZp9
+ aU2d++ptEGCVJOfEW4qpWCCLPbOT7XBr+g/4H3qWbs3j/cDDq7LuVYIe+wchy/iXEJaQVeTC
+ y5arMQorqTFWlEOgRA8OP47L9knl9i4xuR0euV6DChDrguup2aJVU8JPBBgRAgAPAhsMBQJU
+ X9LxBQkeXB3fAAoJEGFXmRW1Y3YOj4UAn3nrFLPZekMeqX5aD/aq/dsbXSfyAKC45Go0YyxV
+ HGuUuzv+GKZ6nsysJw==
+In-Reply-To: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_202348_433546_F7F361D5 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20231207_204934_961975_E3B5589A 
+X-CRM114-Status: UNSURE (   7.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,65 +142,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Simon Horman <horms@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 07, 2023 at 08:40:15PM +0200, Vladimir Oltean wrote:
-> 
-> We could be more pragmatic about this whole sparse false positive warning,
-> and just move the "if" block which calls mt7530_setup_port5() right
-> after the priv->p5_intf_sel assignments, instead of waiting to "break;"
-> from the for_each_child_of_node() loop.
-> 
-> for_each_child_of_node(dn, mac_np) {
-> 	if (!of_device_is_compatible(mac_np,
-> 				     "mediatek,eth-mac"))
-> 		continue;
-> 
-> 	ret = of_property_read_u32(mac_np, "reg", &id);
-> 	if (ret < 0 || id != 1)
-> 		continue;
-> 
-> 	phy_node = of_parse_phandle(mac_np, "phy-handle", 0);
-> 	if (!phy_node)
-> 		continue;
-> 
-> 	if (phy_node->parent == priv->dev->of_node->parent) {
-> 		ret = of_get_phy_mode(mac_np, &interface);
-> 		if (ret && ret != -ENODEV) {
-> 			of_node_put(mac_np);
-> 			of_node_put(phy_node);
-> 			return ret;
-> 		}
-> 		id = of_mdio_parse_addr(ds->dev, phy_node);
-> 		if (id == 0)
-> 			priv->p5_intf_sel = P5_INTF_SEL_PHY_P0;
-> 		if (id == 4)
-> 			priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
-> 
-> 		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 || <---- here
-> 		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
-> 			mt7530_setup_port5(ds, interface);
 
-This doesn't solve the problem that Smatch doesn't know what the
-original value of priv->p5_intf_sel.  And also I don't like this code
-because now we call mt7530_setup_port5() on every iteration after
-we find the first P5_INTF_SEL_PHY_P0.
 
-> 	}
-> 	of_node_put(mac_np);
-> 	of_node_put(phy_node);
-> 	break;
-> }
+On 12/3/2023 9:46 AM, Krzysztof Kozlowski wrote:
+> Document preferred coding style for Devicetree sources (DTS and DTSI),
+> to bring consistency among all (sub)architectures and ease in reviews.
+> 
+> Cc: Andrew Davis <afd@ti.com>
+> cc: Andrew Lunn <andrew@lunn.ch>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: Arnd Bergmann <arnd@arndb.de>
+> Cc: Bjorn Andersson <andersson@kernel.org>
+> Cc: Chen-Yu Tsai <wens@kernel.org>
+> Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> Cc: Jonathan Corbet <corbet@lwn.net>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Michal Simek <michal.simek@amd.com>
+> Cc: Neil Armstrong <neil.armstrong@linaro.org>
+> Cc: Nishanth Menon <nm@ti.com>
+> Cc: Olof Johansson <olof@lixom.net>
+> Cc: Rafał Miłecki <zajec5@gmail.com>
+> Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Acked-by: Konrad Dybcio <konradybcio@kernel.org>
+> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Let's not worry too much about false positives.  We can just ignore
-them.  There is always a trade off between false positives and false
-negatives.  With GCC we try to get a clean run with no warnings, but
-with Smatch I'm targetting the false positive ratio at "this is worth
-reviewing one time."
-
-regards,
-dan carpenter
-
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
+-- 
+Florian
 
