@@ -4,95 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F41C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 19:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 699F4C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 20:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f1OZZcXaUJrEug5ykRsYsdCHq/5OCKuul8E2dpi8fgs=; b=SDEP0nOEKrCGuls07BNATNwTxP
-	YlI+o8zHnnAFOfHOKhARAkVvAl+CTkoXupk/uq2ChoqTEhF53AJgzWFWljhM4tfD2OyujfXaFtbrC
-	oovsqkBp2YFVmNeLF/+kx/ZEK1dbDfJd9WznzACd58I6lWzFAMV4NvG9pe3NMGzZDK3WmLS5iUxXy
-	bKAkjYlAx6PSLvflCuLYjZ+cNzjiHg/zo2wt+K0DfdhcBfNE3Jb86OUt30h5y53tNNuyRd/HbABIv
-	MfFo611qILp0HXVQ+Ow3ysK8XDBKyHSiysjas6nKuXBkDGRMksR5SYXUJ6LqE9jRWBIVozcjzqE0s
-	/Ez4cZKw==;
+	bh=CykTHh1hqBcv3lKDskZucqp2rC4spPVBJz+bCkyVI0Y=; b=zI1IL0lSQjmPx7v6l62tImC3un
+	IZ+vDSdBOlv5WOBgTuTUNnBdqTclg8Zh/WMFVBAPsJB3AhPwmHUlh4dxrJ5S/QmqM7Y+PnKIOkzSW
+	7NaiPR33NZM4P67mJti6SpDYebgbXJYwQNqGhj65mzmdI1672LXqW5CZwq9S45ILGArq5W1yUSONw
+	k/PW5KCnS4xChgVGRY8XKBjR+YQ7NZeXRVIYFwZU2jZDCLq6no76ZwZNgJ7NVfidf/L6Pozvf35XJ
+	2ULfpMD4TrocYPkRjLGKcAkkoh3L3hvEfCWAqqK4zlKPCaJGg8cLA5yx+vIIdw6EzlQtVcFTA1d/z
+	CRNIwcYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rClZf-007Hh4-1R;
-	Mon, 11 Dec 2023 19:04:15 +0000
-Received: from mgamail.intel.com ([134.134.136.126])
+	id 1rCnGi-008IMo-05;
+	Mon, 11 Dec 2023 20:52:48 +0000
+Received: from mail-oa1-f47.google.com ([209.85.160.47])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rClZ8-007H6Y-2X;
-	Mon, 11 Dec 2023 19:03:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1702321422; x=1733857422;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=dl5meZK/9OQqeSluMo8zI6v5kxMv/grswCooUcDxnbw=;
-  b=NXRgSpkyx2F0cPn+2BmHh8F+I5NIHOZVRODrKsOFrU2Xo7xkmiqMybTU
-   FfawCYknDybzSVPXR1P15WLo86AqiuwZ5w8TS1khFsnMuc8FShhLdaaL/
-   +TJz6vN05jL7KkbQCGD/dMa7Fz1LXtmoQ5WP/nZY/HOCV59y2oEpLnhQd
-   MsP8acjkuWUQXoPj9CFkrgnIxxu48p/qQlROqMLodo09icEdPtH69lc0U
-   NV0oY1flHiOAPY626Xe8xMFko2QXFmXacnDe4LG8WSjx1JkP9otvCNFvR
-   7n1XiGZFr1ETxQBdRbTZBzKXUdeB8pKiprvq64zArZIU2u1R0AC+GmSCA
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10921"; a="379692582"
-X-IronPort-AV: E=Sophos;i="6.04,268,1695711600"; 
-   d="scan'208";a="379692582"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2023 11:03:40 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10921"; a="946445109"
-X-IronPort-AV: E=Sophos;i="6.04,268,1695711600"; 
-   d="scan'208";a="946445109"
-Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga005.jf.intel.com with ESMTP; 11 Dec 2023 11:03:33 -0800
-Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id DF69A30D; Mon, 11 Dec 2023 21:03:23 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
-	Jianlong Huang <jianlong.huang@starfivetech.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org
-Cc: Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Hal Feng <hal.feng@starfivetech.com>
-Subject: [PATCH v5 11/13] pinctrl: renesas: Convert to use grp member
-Date: Mon, 11 Dec 2023 20:58:04 +0200
-Message-ID: <20231211190321.307330-12-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.43.0.rc1.1.gbec44491f096
-In-Reply-To: <20231211190321.307330-1-andriy.shevchenko@linux.intel.com>
-References: <20231211190321.307330-1-andriy.shevchenko@linux.intel.com>
+	id 1rCnGe-008IJx-13;
+	Mon, 11 Dec 2023 20:52:45 +0000
+Received: by mail-oa1-f47.google.com with SMTP id 586e51a60fabf-1fae54afb66so641231fac.1;
+        Mon, 11 Dec 2023 12:52:43 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702327963; x=1702932763;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=CykTHh1hqBcv3lKDskZucqp2rC4spPVBJz+bCkyVI0Y=;
+        b=UoOVWBs6RU3ag7IvwGygUWTf6cMRQOKAr5xgkPOYXi4OpGn63crr/YzFyLwWivm0ut
+         MdKkyC4qXdHR4b3Y2i3zwSypGtsK9qVPR91KlDiVo7C5chTyPIQOpwdapjdePpRKpf+r
+         RZT6gODszmb5zdNHEdgzJ0ql3t7xhLgf7mttRtvojNiQbVQiOleCHxCpbe4O8v1DRZTO
+         Td3/jFaddZm3cCT4rlPOGheTxwgjYNIdCzPHeG6Mowg8JIpTtf7uRuZGMrG/Ha84mfqP
+         Zjz5yi+rAU2oS3ohsSXoMP/Cbwxm/JfiwrsUoAlR01qA0h3qibUn/bJ1pk2GEjzoqk4y
+         Rpuw==
+X-Gm-Message-State: AOJu0YwNTyshlB7q8y1A0Pz47euf54KEuYOEck688x4RMNyjHqVwS50y
+	gAkmBSc+fO0SYhYnHf76vB6YDz5VFyZ2mT6ci3g=
+X-Google-Smtp-Source: AGHT+IFiPTo3RDtP82ZwRSC8e4XK+Lt0aEs8qo9f/K5fbtrpNzhp0pRvpS807F8FJY7idqMywszjXwC+xT4Tilxbgr4=
+X-Received: by 2002:a05:6871:208c:b0:1fb:19d6:8715 with SMTP id
+ ry12-20020a056871208c00b001fb19d68715mr9409171oab.4.1702327963105; Mon, 11
+ Dec 2023 12:52:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20231116132619.69500-1-bo.ye@mediatek.com>
+In-Reply-To: <20231116132619.69500-1-bo.ye@mediatek.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Mon, 11 Dec 2023 21:52:31 +0100
+Message-ID: <CAJZ5v0hP6VRKmBy9gSPkg82w+g7wwQBVGs6gHDW9BJnr-qrBnw@mail.gmail.com>
+Subject: Re: [PATCH] cpuidle: idle exit_latency overflow
+To: Bo Ye <bo.ye@mediatek.com>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, yongdong.zhang@mediatek.com, 
+	mtk24676 <C.Cheng@mediatek.com>, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_110343_149500_D5069F9A 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20231211_125244_370696_16B5B01F 
+X-CRM114-Status: GOOD (  20.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,91 +79,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert drivers to use grp member embedded in struct group_desc,
-because other members will be removed to avoid duplication and
-desynchronisation of the generic pin group description.
+On Thu, Nov 16, 2023 at 2:26=E2=80=AFPM Bo Ye <bo.ye@mediatek.com> wrote:
+>
+> From: mtk24676 <C.Cheng@mediatek.com>
+>
+> In detail:
+> In kernel-6.1, in the __cpuidle_driver_init function in
+> driver/cpuidle/driver.c, there is a line of code that causes
+> an overflow. The line is s->exit_latency_ns =3D s->exit_latency
+> * NSEC_PER_USEC. The overflow occurs because the product of an
+> int type and a constant exceeds the range of the int type.
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/pinctrl/renesas/pinctrl-rza1.c  |  2 +-
- drivers/pinctrl/renesas/pinctrl-rza2.c  | 10 +++++-----
- drivers/pinctrl/renesas/pinctrl-rzg2l.c |  4 ++--
- drivers/pinctrl/renesas/pinctrl-rzv2m.c |  4 ++--
- 4 files changed, 10 insertions(+), 10 deletions(-)
+In general, but does it actually occur in that code?  IOW, is there
+any system for which the exit latency of an idle state is so large
+that it will trigger the overflow, for example?
 
-diff --git a/drivers/pinctrl/renesas/pinctrl-rza1.c b/drivers/pinctrl/renesas/pinctrl-rza1.c
-index ab334de89b69..b03f22c54ca8 100644
---- a/drivers/pinctrl/renesas/pinctrl-rza1.c
-+++ b/drivers/pinctrl/renesas/pinctrl-rza1.c
-@@ -1131,7 +1131,7 @@ static int rza1_set_mux(struct pinctrl_dev *pctldev, unsigned int selector,
- 		return -EINVAL;
- 
- 	mux_confs = (struct rza1_mux_conf *)func->data;
--	for (i = 0; i < grp->num_pins; ++i) {
-+	for (i = 0; i < grp->grp.npins; ++i) {
- 		int ret;
- 
- 		ret = rza1_pin_mux_single(rza1_pctl, &mux_confs[i]);
-diff --git a/drivers/pinctrl/renesas/pinctrl-rza2.c b/drivers/pinctrl/renesas/pinctrl-rza2.c
-index 990b96d45967..af689d7c117f 100644
---- a/drivers/pinctrl/renesas/pinctrl-rza2.c
-+++ b/drivers/pinctrl/renesas/pinctrl-rza2.c
-@@ -447,15 +447,15 @@ static int rza2_set_mux(struct pinctrl_dev *pctldev, unsigned int selector,
- 
- 	psel_val = func->data;
- 
--	for (i = 0; i < grp->num_pins; ++i) {
-+	for (i = 0; i < grp->grp.npins; ++i) {
- 		dev_dbg(priv->dev, "Setting P%c_%d to PSEL=%d\n",
--			port_names[RZA2_PIN_ID_TO_PORT(grp->pins[i])],
--			RZA2_PIN_ID_TO_PIN(grp->pins[i]),
-+			port_names[RZA2_PIN_ID_TO_PORT(grp->grp.pins[i])],
-+			RZA2_PIN_ID_TO_PIN(grp->grp.pins[i]),
- 			psel_val[i]);
- 		rza2_set_pin_function(
- 			priv->base,
--			RZA2_PIN_ID_TO_PORT(grp->pins[i]),
--			RZA2_PIN_ID_TO_PIN(grp->pins[i]),
-+			RZA2_PIN_ID_TO_PORT(grp->grp.pins[i]),
-+			RZA2_PIN_ID_TO_PIN(grp->grp.pins[i]),
- 			psel_val[i]);
- 	}
- 
-diff --git a/drivers/pinctrl/renesas/pinctrl-rzg2l.c b/drivers/pinctrl/renesas/pinctrl-rzg2l.c
-index 68fcc2a4efbc..f01aa51b00c4 100644
---- a/drivers/pinctrl/renesas/pinctrl-rzg2l.c
-+++ b/drivers/pinctrl/renesas/pinctrl-rzg2l.c
-@@ -283,9 +283,9 @@ static int rzg2l_pinctrl_set_mux(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
- 
- 	psel_val = func->data;
--	pins = group->pins;
-+	pins = group->grp.pins;
- 
--	for (i = 0; i < group->num_pins; i++) {
-+	for (i = 0; i < group->grp.npins; i++) {
- 		unsigned int *pin_data = pctrl->desc.pins[pins[i]].drv_data;
- 		u32 off = RZG2L_PIN_CFG_TO_PORT_OFFSET(*pin_data);
- 		u32 pin = RZG2L_PIN_ID_TO_PIN(pins[i]);
-diff --git a/drivers/pinctrl/renesas/pinctrl-rzv2m.c b/drivers/pinctrl/renesas/pinctrl-rzv2m.c
-index eb304fab1796..0767a5ac23e0 100644
---- a/drivers/pinctrl/renesas/pinctrl-rzv2m.c
-+++ b/drivers/pinctrl/renesas/pinctrl-rzv2m.c
-@@ -175,9 +175,9 @@ static int rzv2m_pinctrl_set_mux(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
- 
- 	psel_val = func->data;
--	pins = group->pins;
-+	pins = group->grp.pins;
- 
--	for (i = 0; i < group->num_pins; i++) {
-+	for (i = 0; i < group->grp.npins; i++) {
- 		dev_dbg(pctrl->dev, "port:%u pin: %u PSEL:%u\n",
- 			RZV2M_PIN_ID_TO_PORT(pins[i]), RZV2M_PIN_ID_TO_PIN(pins[i]),
- 			psel_val[i]);
--- 
-2.43.0.rc1.1.gbec44491f096
+> In C language, when you perform a multiplication operation, if
+> both operands are of int type, the multiplication operation is
+> performed on the int type, and then the result is converted to
+> the target type.
 
+Right, that's how C works.
+
+> This means that if the product of int type
+> multiplication exceeds the range that int type can represent,
+> an overflow will occur even if you store the result in a
+> variable of int64_t type.
+
+True.  However, does this really happen in the particular case at hand?
+
+If not, it would be better to say something like "For a multiplication
+of two int values, it is better to use mul_u32_u32() that prevents
+overflows from occurring."
+
+> Signed-off-by: mtk24676 <C.Cheng@mediatek.com>
+> Signed-off-by: bo.ye <bo.ye@mediatek.com>
+> ---
+>
+> diff --git a/drivers/cpuidle/driver.c b/drivers/cpuidle/driver.c
+> index d9cda7f..631ca16 100644
+> --- a/drivers/cpuidle/driver.c
+> +++ b/drivers/cpuidle/driver.c
+> @@ -187,7 +187,7 @@
+>                         s->target_residency =3D div_u64(s->target_residen=
+cy_ns, NSEC_PER_USEC);
+>
+>                 if (s->exit_latency > 0)
+> -                       s->exit_latency_ns =3D s->exit_latency * NSEC_PER=
+_USEC;
+> +                       s->exit_latency_ns =3D (u64)s->exit_latency * NSE=
+C_PER_USEC;
+
+mul_u32_u32()/?
+
+>                 else if (s->exit_latency_ns < 0)
+>                         s->exit_latency_ns =3D  0;
+>                 else
 
