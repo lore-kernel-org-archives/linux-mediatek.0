@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0D64C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 14:40:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 504EFC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 14:44:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K7noqJIIFLhFjkA8/afhqV2bph4J7a8XBP28TLJNC/g=; b=QQvYvQ3BXnUI0pS2uK56k9BVSc
-	vtj/4J/k5hOE0E4V9Q+6hL8eB+keIriULX6HClf97eQrxF+TJsXv8mhIzvc7CoZlQl3zv3TY24r0q
-	YX3AZ5sav5vuG4GQNAW0gKYFUz8CNv4f4oXqOPDoqASntjNXgVbKQh/Qp9Z/52PehOnBxhO5JkxNu
-	O1SjYq0lPCW+17FRE3GKpwp4jbTxROOGYb0G01fTbbjgQKY9qgCoZpa+lzNtOHkMG6dfEb79yJEK4
-	p0Hm7yFS53lpDX9xSixx0xbRijDkKZsv7Ho7LPPFvjg1T8KSJymvu2VzrYBrAbYo+ckJGsJzbJceb
-	WxGyhzaQ==;
+	bh=wIc1HDjYzefg/CVbe2Xb6gm/Ty5rNUeIrztAt83SE00=; b=rLt7E18U85yghb1xUPoLocdykb
+	4Nj+jG4VBDZIG8Qa178FPEO2fm83wbf8dwWkCZ1oswtSKDuJYAEGA8+H1HTUkUyPwswwwCPRKgR69
+	MpaLG24+zMrFqysqRgwTc2pa9f/IlWsIzkW5RNKJS5KVjerTIlShSVHTKU60DClvUMO1Z30OF7IOs
+	fQdf+pv7hVTS504pbzkhP7K1oruhz4XETf5miONN82dgM5a1t6Pd/MUWWdJe4VsVzxxazytu5i+Lr
+	40gH8LWswSetmP1jev8sZpcYNWXSlaOBbp9+lTTY+j/sglvgXpKbJvOp5CT6fh/rrtvi6jsAAyMS3
+	J25GNzng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rChSC-005CtR-21;
-	Mon, 11 Dec 2023 14:40:17 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rChWQ-005DZS-26;
+	Mon, 11 Dec 2023 14:44:39 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rChS2-005CsI-0a
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Dec 2023 14:40:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702305604;
-	bh=mHqy3MLA/9M7nW96ItcsknqxLKHqo776t076HdgMBAk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cTbkhIzCFdoEV0uYQTVUa6/pb9AXzjTzF6cLn47gY7+4LU9L21xaasczt2/YfGeHd
-	 wRXGelT8P6bZSD5eeKxrMyWAXTfaxBNQ1Ki/J58+AKbfn33cGxzrBtiedrrwtqZSGc
-	 DM7er+YsapqrVSR3YG9vkouR7mP4ezoJPdMvsHzrUiOvZZaDxgZvugG3TCY5F3gDl5
-	 UHNee14BOZkryVP5CfTDPXpVDYhlig6bJU8ihObIC5XO9OP0lQEd0h4VMWZFAdessk
-	 mseWsgcV+A0VHUj13S36WRk5s3rdnEKQytFkjSZVOKYVRxSGzKm6OKyPXkFZIoqBke
-	 QXU6QUrwgbdsg==
-Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 481CB37813FD;
-	Mon, 11 Dec 2023 14:40:03 +0000 (UTC)
-Message-ID: <db3429e0-0173-4f13-bccb-78ac56ad4ed9@collabora.com>
-Date: Mon, 11 Dec 2023 15:40:02 +0100
+	id 1rChWE-005DVV-0r;
+	Mon, 11 Dec 2023 14:44:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id DEDC1B80CA2;
+	Mon, 11 Dec 2023 14:44:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14348C433CD;
+	Mon, 11 Dec 2023 14:44:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702305861;
+	bh=IExdtmWmPMyY8Pay6KZb0S6W8wKmO6J3E3GfBIV1Cio=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=LeXVj4Bu+T7n50b8HfpbHRiQwZNCwPXA3r/XqcRRjZbXn45jFPYhiFzfyIrn7RDyv
+	 yBQAEgO8Z005TEuQnXqrs/oWoSAhSfX3otjLedh0fatrxHkPWPZpH1X2tyfOr7w56f
+	 fBZ0QjFfZgUGSx5kYqpACVfKdtXLQ6H3Ssci02dxVpLJVr6fZjXMNfhkOW5qJSkpdR
+	 /Iz8ZCH7P+yMD+RNonu2mXg/WDDc8xLlYFtgWrcPBZ1zA+XVUzIyL2G8ARXG1vZwDU
+	 aZWaqO5PSB9MooT0ex4Pj7BGne+26lm+9OjjsQCi8AxiOzgDjmwb4L/ZvnCeKAA5Wo
+	 KlRwDjdToXXJg==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-50bf4f97752so5767629e87.1;
+        Mon, 11 Dec 2023 06:44:21 -0800 (PST)
+X-Gm-Message-State: AOJu0Yy9N9A6DzDxeB4RPkmKtK72NCyvRfwIjwrK4lDNOjk8uRQwaMLk
+	FlZ7o0ViFcqU7HDbHOH5hjxu5Wg0p7XG2diQhw==
+X-Google-Smtp-Source: AGHT+IHbV4puB5U8GlwIN/BZWBEsAsegaKynxZaOnbkAQ6wtk5UHRy14LSHQMn757papUqYJTbpaelmS3QylqrwmPx0=
+X-Received: by 2002:a05:651c:807:b0:2cc:2120:81b3 with SMTP id
+ r7-20020a05651c080700b002cc212081b3mr758630ljb.3.1702305859144; Mon, 11 Dec
+ 2023 06:44:19 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [v8 3/4] ASoC: mediatek: mt8188-mt6359: add es8326 support
-Content-Language: en-US
-To: Rui Zhou <zhourui@huaqin.corp-partner.google.com>, lgirdwood@gmail.com,
- broonie@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, perex@perex.cz, trevor.wu@mediatek.com,
- allen-kh.cheng@mediatek.com, kuninori.morimoto.gx@renesas.com
-Cc: linux-mediatek@lists.infradead.org
-References: <20231208070933.720324-1-zhourui@huaqin.corp-partner.google.com>
- <20231208070933.720324-4-zhourui@huaqin.corp-partner.google.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231208070933.720324-4-zhourui@huaqin.corp-partner.google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20231110012914.14884-1-stuart.lee@mediatek.com> <20231110012914.14884-2-stuart.lee@mediatek.com>
+In-Reply-To: <20231110012914.14884-2-stuart.lee@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 11 Dec 2023 22:44:05 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__NgTPDedbuRQLZSS-0AC2rTW7Jfbm-e42sTU+-czzvew@mail.gmail.com>
+Message-ID: <CAAOTY__NgTPDedbuRQLZSS-0AC2rTW7Jfbm-e42sTU+-czzvew@mail.gmail.com>
+Subject: Re: [PATCH 1/1] drm/mediatek: Fix access violation in mtk_drm_crtc_dma_dev_get
+To: Stuart Lee <stuart.lee@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	"Nancy . Lin" <nancy.lin@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, Lancelot Wu <lancelot.wu@mediatek.com>, 
+	Shawn Sung <shawn.sung@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>, 
+	Macpaul Lin <macpaul.lin@mediatek.com>, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_064007_355118_1B1AD03C 
-X-CRM114-Status: GOOD (  23.52  )
+X-CRM114-CacheID: sfid-20231211_064427_427367_0EEF3CBE 
+X-CRM114-Status: GOOD (  18.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,117 +86,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/12/23 08:09, Rui Zhou ha scritto:
-> To use ES8326 as the codec, add a new sound card
-> named mt8186_es8326.
-> 
-> Reviewed-by: Trevor Wu <trevor.wu@mediatek.com>
-> Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+Hi, Stuart:
+
+Stuart Lee <stuart.lee@mediatek.com> =E6=96=BC 2023=E5=B9=B411=E6=9C=8810=
+=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8A=E5=8D=889:29=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> Add error handling to check NULL input in
+> mtk_drm_crtc_dma_dev_get function.
+>
+> While display path is not configured correctly, none of crtc is
+> established. So the caller of mtk_drm_crtc_dma_dev_get may pass
+> input parameter *crtc as NULL, Which may cause coredump when
+> we try to get the container of NULL pointer.
+
+Applied to mediatek-drm-fixes [1], thanks.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-fixes
+
+Regards,
+Chun-Kuang.
+
+>
+> Fixes: cb1d6bcca542 ("drm/mediatek: Add dma dev get function")
+> Signed-off-by: Stuart Lee <stuart.lee@mediatek.com>
+> Cc: stable@vger.kernel.org
 > ---
->   sound/soc/mediatek/Kconfig                |  1 +
->   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 51 ++++++++++++++++++++++-
->   2 files changed, 50 insertions(+), 2 deletions(-)
-> 
-> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-> index b93d455744ab..296b434caf81 100644
-> --- a/sound/soc/mediatek/Kconfig
-> +++ b/sound/soc/mediatek/Kconfig
-> @@ -252,6 +252,7 @@ config SND_SOC_MT8188_MT6359
->   	select SND_SOC_NAU8315
->   	select SND_SOC_NAU8825
->   	select SND_SOC_RT5682S
-> +	select SND_SOC_ES8326
->   	help
->   	  This adds support for ASoC machine driver for MediaTek MT8188
->   	  boards with the MT6359 and other I2S audio codecs.
-> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-> index b4606a28794c..ddbdf9265640 100644
-> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-> @@ -34,6 +34,8 @@
->   
->   #define NAU8825_HS_PRESENT	BIT(0)
->   #define RT5682S_HS_PRESENT	BIT(1)
-> +#define ES8326_HS_PRESENT	BIT(2)
-> +#define MAX98390_TWO_AMP	BIT(3)
->   /*
->    * Maxim MAX98390
->    */
-> @@ -48,6 +50,11 @@
->    */
->   #define NAU8825_CODEC_DAI  "nau8825-hifi"
->   
-> +/*
-> + * ES8326
-> + */
-> +#define ES8326_CODEC_DAI  "ES8326 HiFi"
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/me=
+diatek/mtk_drm_crtc.c
+> index c277b9fae950..047c9a31d306 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -921,7 +921,14 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_=
+device *drm_dev,
+>
+>  struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
+>  {
+> -       struct mtk_drm_crtc *mtk_crtc =3D to_mtk_crtc(crtc);
+> +       struct mtk_drm_crtc *mtk_crtc =3D NULL;
 > +
->   #define SOF_DMA_DL2 "SOF_DMA_DL2"
->   #define SOF_DMA_DL3 "SOF_DMA_DL3"
->   #define SOF_DMA_UL4 "SOF_DMA_UL4"
-> @@ -888,6 +895,30 @@ static const struct snd_soc_ops mt8188_sof_be_ops = {
->   	.hw_params = mt8188_sof_be_hw_params,
->   };
->   
-> +static int mt8188_es8326_hw_params(struct snd_pcm_substream *substream,
-> +				 struct snd_pcm_hw_params *params)
-> +{
-> +	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
-> +	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
-> +	struct snd_soc_dai *codec_dai = snd_soc_rtd_to_codec(rtd, 0);
-> +	unsigned int rate = params_rate(params);
-> +	int ret;
+> +       if (!crtc)
+> +               return NULL;
 > +
-> +	/* Configure MCLK for codec */
-> +	ret = snd_soc_dai_set_sysclk(codec_dai, 0, rate * 256, SND_SOC_CLOCK_IN);
-> +	if (ret < 0) {
-> +		dev_err(codec_dai->dev, "can't set MCLK %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	/* Configure MCLK for cpu */
-> +	return snd_soc_dai_set_sysclk(cpu_dai, 0, rate * 256, SND_SOC_CLOCK_OUT);
-> +}
-> +
-> +static const struct snd_soc_ops mt8188_es8326_ops = {
-> +	.hw_params = mt8188_es8326_hw_params,
-> +};
-> +
->   static struct snd_soc_dai_link mt8188_mt6359_dai_links[] = {
->   	/* FE */
->   	[DAI_LINK_DL2_FE] = {
-> @@ -1197,7 +1228,7 @@ static void mt8188_fixup_controls(struct snd_soc_card *card)
->   	struct mt8188_card_data *card_data = (struct mt8188_card_data *)priv->private_data;
->   	struct snd_kcontrol *kctl;
->   
-> -	if (card_data->quirk & (NAU8825_HS_PRESENT | RT5682S_HS_PRESENT)) {
-> +	if (card_data->quirk & (NAU8825_HS_PRESENT | RT5682S_HS_PRESENT | ES8326_HS_PRESENT)) {
->   		struct snd_soc_dapm_widget *w, *next_w;
->   
->   		for_each_card_widgets_safe(card, w, next_w) {
-> @@ -1238,6 +1269,7 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
->   	struct mt8188_card_data *card_data;
->   	struct snd_soc_dai_link *dai_link;
->   	bool init_mt6359 = false;
-> +	bool init_es8326 = false;
->   	bool init_nau8825 = false;
->   	bool init_rt5682s = false;
->   	bool init_max98390 = false;
-> @@ -1344,7 +1376,9 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
->   			   strcmp(dai_link->name, "ETDM1_IN_BE") == 0 ||
->   			   strcmp(dai_link->name, "ETDM2_IN_BE") == 0) {
->   			if (!strcmp(dai_link->codecs->dai_name, MAX98390_CODEC_DAI)) {
-> -				dai_link->ops = &mt8188_max98390_ops;
-> +				if (!(card_data->quirk & MAX98390_TWO_AMP)) {
-> +					dai_link->ops = &mt8188_max98390_ops;
-> +				}
-
-Can you please explain why is it *not* necessary to setup the TDM with
-mt8188_max98390_ops in the TWO_AMP case?
-
-Please also add that as a comment in the code, as this looks strange.
-
-Thanks,
-Angelo
-
+> +       mtk_crtc =3D to_mtk_crtc(crtc);
+> +       if (!mtk_crtc)
+> +               return NULL;
+>
+>         return mtk_crtc->dma_dev;
+>  }
+> --
+> 2.18.0
+>
 
