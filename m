@@ -4,92 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 861F2C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 08:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20910C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 09:49:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N8a2skbn3ldUXfGVBRWQ1u0Qf2+Xz3OWdG8kf2ohLgc=; b=dyyrqEx5rR1Bpv6eq1Pxh47xqh
-	zusQccUVSK/+xfj+mXeSl0Tak+HDypp1yT1WSmz0T1xhsenxUK0VZJolhCpqxQ9AzvSl2ZxVVs0IT
-	rbX3RSgIUIr+cdL+NjjrmO5e9sxdbwJMmfUkpS68jJwP8hbjn6X8Kvozi1VEMcfG5lIvW3RTCJFVA
-	Rd+g7jC79UVK6ccLQBwvaCH7bzJ7tGWAnxtxYN1r6VH3yjmtsf/rb1KTlDVavN8cv6r7Q5zH4GkPF
-	SBqiQNuiz4jesNbW7LMoL81m/QkGBiXE6xxb6+5hBWaZ0E2exb4YSGXh26BjwitfKmqcuIruy67JT
-	IVI06Byw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tQKgWZ9+y1OiXx3XNF4AFI3F1LrNHYG6kzcLKtrVoKI=; b=TrOcfcDJNPYgo7dUti7ZGTYj8+
+	bWHQEeoesnLSfJJXe//DbWaczVSU6CK9vuaLiYHHcGKH1Fq61v2M+FHWfjhzVYnWfRBmDkAo16Q6J
+	tG6x6jGYu7aC59zD74udvPH0eXmAE6HbaZKm97ZtV4SCPAbSvMo74H6s6JiSkbPTfocSlFW0I2Ol2
+	RPnW6180vryaqCO3m2cw9xeqey5kFNvBt8bnx1L/OtdrgRFM5r+aHPJKv3fPS19p4cDAvDIWAL9uQ
+	zTJ2MbFwOyVOGHgiV/wMYb096Wp4EQy7qdP3+MEV5Jih61KMUuYtt15q4uQ4fchxB4ADs6QBK9p/X
+	c4a7/QFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCc30-004OG5-1J;
-	Mon, 11 Dec 2023 08:53:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rCcuU-004W0w-20;
+	Mon, 11 Dec 2023 09:49:10 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCc2u-004ODB-29;
-	Mon, 11 Dec 2023 08:53:50 +0000
-X-UUID: c95dbfac980211ee958cff29c719f35b-20231211
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=N8a2skbn3ldUXfGVBRWQ1u0Qf2+Xz3OWdG8kf2ohLgc=;
-	b=RNXKMyg3ZOCfIqHfxthJKg++dBfxLIQNc8+iXnJs8p+p4Ooxpm+ALD6eYJ5R0ViYlc2Jp6GRN07Hp2LaDpO8FXqRbnLaDJhibwxByqhhbHphIZLoVKI3OHFtJjvS8cOPdg0TBphLWh7YRwMYP4bqoptAKjk7+0ZlgXvS/kAlKsU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:ac1309f9-9f96-4a62-bd42-ca5b6e88bfc1,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:5d391d7,CLOUDID:2cb108bd-2ac7-4da2-9f94-677a477649d9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: c95dbfac980211ee958cff29c719f35b-20231211
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <jianjun.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 562101657; Mon, 11 Dec 2023 01:53:43 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Dec 2023 16:53:07 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Dec 2023 16:53:06 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring
-	<robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Marc Zyngier <maz@kernel.org>
-CC: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
-	<jianjun.wang@mediatek.com>, <linux-pci@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <jieyy.yang@mediatek.com>,
-	<chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
-	<jian.yang@mediatek.com>, <jianguo.zhang@mediatek.com>
-Subject: [PATCH v2 1/3] PCI: mediatek: Allocate MSI address with dmam_alloc_coherent()
-Date: Mon, 11 Dec 2023 16:52:54 +0800
-Message-ID: <20231211085256.31292-2-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231211085256.31292-1-jianjun.wang@mediatek.com>
-References: <20231211085256.31292-1-jianjun.wang@mediatek.com>
+	id 1rCcuL-004VzY-1R;
+	Mon, 11 Dec 2023 09:49:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1702288136;
+	bh=6mxzECBrYAAv88Or/VmuYFmoaCjMKUWyx5lJyKf47Rg=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=ZOyfTjeWI75SumpYHrJJp3tpnNbregMBpz6DYPBko3jqkrqUVZIIKilCA2wvPCDmF
+	 ko75vYXWrMKcmLVqcRtnuP7fwh6mFje5roaPrHqyRZy/yEvdee3SRlJ895KZOPuvTz
+	 ch3rLBmYcqzM22MP/xXNoCohbQCB+dkubsUls2EjCj8sF7/TbUh4nEUiaTMgnx0Ina
+	 VA+s4nyZeZu9o17UPBsUnNjBZrBE1jOeb8RaVZdNcMEFOY1YFJsDMcPlW/gN9DxU2D
+	 cdtpMKJ1GKl0vjxrH70xRVPZ83Uqp0vmZXCTcZs50uUu9S67Pu8DX2he1OekWYv3jC
+	 lwcL/q7eCSHng==
+Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4827F378140E;
+	Mon, 11 Dec 2023 09:48:55 +0000 (UTC)
+Message-ID: <1db19550-99c2-4094-95d9-9db1c384519f@collabora.com>
+Date: Mon, 11 Dec 2023 10:48:54 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.452000-8.000000
-X-TMASE-MatchedRID: YlUeb+P3LGlBHBd/Q+ztBwPZZctd3P4BIaVkFIrQFhtb6PBUqmq+UlYu
-	mEk/UtlHxvP5MvmYpyBTc0C6OSQvz8pFJHzzp4rS58dk5sbwmyjGYnoF/CTeZVSOymiJfTYXlwW
-	f7/4SyDtrg8FCypqvfGmevJVqJe6AHxPMjOKY7A8LbigRnpKlKZvjAepGmdoOjSE7r38ccucfAi
-	JtYJYn7WCx0B/Tk9JmY616mIENddzqpQj72dAQYgHduAz87L4zdUVIHoasg2idNYuO1rAFqL0we
-	Uq5YYes8jae4OD13tAV7Mc+rowcVKtX/F0pBwVJjSV5hDFby7ZnIxZyJs78kg==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.452000-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 3399B1CCA37B4999E57B22197D5592ECC7DE562E04091DEA609953BF1EF284B22000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ASoC: mediatek: mt7986: silence error in case of
+ -EPROBE_DEFER
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Maso Huang <maso.huang@mediatek.com>, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <98491ec78ab671f5a14fce42d10f9745ebddb112.1702258360.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <98491ec78ab671f5a14fce42d10f9745ebddb112.1702258360.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_005348_714371_64919E1E 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20231211_014901_833070_F8B514CA 
+X-CRM114-Status: GOOD (  15.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,110 +79,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use dmam_alloc_coherent() to allocate the MSI address, instead of using
-virt_to_phys().
+Il 11/12/23 02:33, Daniel Golle ha scritto:
+> If probe is defered no error should be printed. Mute it.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>   sound/soc/mediatek/mt7986/mt7986-wm8960.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/mediatek/mt7986/mt7986-wm8960.c b/sound/soc/mediatek/mt7986/mt7986-wm8960.c
+> index c1390b3734101..24a4b943030d7 100644
+> --- a/sound/soc/mediatek/mt7986/mt7986-wm8960.c
+> +++ b/sound/soc/mediatek/mt7986/mt7986-wm8960.c
+> @@ -144,7 +144,9 @@ static int mt7986_wm8960_machine_probe(struct platform_device *pdev)
+>   
+>   	ret = devm_snd_soc_register_card(&pdev->dev, card);
+>   	if (ret) {
+> -		dev_err(&pdev->dev, "%s snd_soc_register_card fail: %d\n", __func__, ret);
+> +		if (ret != -EPROBE_DEFER)
+> +			dev_err(&pdev->dev, "%s snd_soc_register_card fail: %d\n", __func__, ret);
 
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+This is *exactly* what dev_err_probe() does! :-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 66a8f73296fc..2fb9e44369f8 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -178,6 +178,7 @@ struct mtk_pcie_soc {
-  * @phy: pointer to PHY control block
-  * @slot: port slot
-  * @irq: GIC irq
-+ * @msg_addr: MSI message address
-  * @irq_domain: legacy INTx IRQ domain
-  * @inner_domain: inner IRQ domain
-  * @msi_domain: MSI IRQ domain
-@@ -198,6 +199,7 @@ struct mtk_pcie_port {
- 	struct phy *phy;
- 	u32 slot;
- 	int irq;
-+	dma_addr_t msg_addr;
- 	struct irq_domain *irq_domain;
- 	struct irq_domain *inner_domain;
- 	struct irq_domain *msi_domain;
-@@ -394,12 +396,10 @@ static struct pci_ops mtk_pcie_ops_v2 = {
- static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
- {
- 	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
--	phys_addr_t addr;
- 
- 	/* MT2712/MT7622 only support 32-bit MSI addresses */
--	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
- 	msg->address_hi = 0;
--	msg->address_lo = lower_32_bits(addr);
-+	msg->address_lo = lower_32_bits(port->msg_addr);
- 
- 	msg->data = data->hwirq;
- 
-@@ -494,6 +494,14 @@ static struct msi_domain_info mtk_msi_domain_info = {
- static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
- {
- 	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
-+	void *msi_vaddr;
-+
-+	msi_vaddr = dmam_alloc_coherent(port->pcie->dev, sizeof(dma_addr_t), &port->msg_addr,
-+					GFP_KERNEL);
-+	if (!msi_vaddr) {
-+		dev_err(port->pcie->dev, "failed to alloc and map MSI address\n");
-+		return -ENOMEM;
-+	}
- 
- 	mutex_init(&port->lock);
- 
-@@ -501,6 +509,7 @@ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
- 						      &msi_domain_ops, port);
- 	if (!port->inner_domain) {
- 		dev_err(port->pcie->dev, "failed to create IRQ domain\n");
-+		dmam_free_coherent(port->pcie->dev, sizeof(dma_addr_t), msi_vaddr, port->msg_addr);
- 		return -ENOMEM;
- 	}
- 
-@@ -508,6 +517,7 @@ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
- 						     port->inner_domain);
- 	if (!port->msi_domain) {
- 		dev_err(port->pcie->dev, "failed to create MSI domain\n");
-+		dmam_free_coherent(port->pcie->dev, sizeof(dma_addr_t), msi_vaddr, port->msg_addr);
- 		irq_domain_remove(port->inner_domain);
- 		return -ENOMEM;
- 	}
-@@ -518,10 +528,8 @@ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
- static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
- {
- 	u32 val;
--	phys_addr_t msg_addr;
- 
--	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
--	val = lower_32_bits(msg_addr);
-+	val = lower_32_bits(port->msg_addr);
- 	writel(val, port->base + PCIE_IMSI_ADDR);
- 
- 	val = readl(port->base + PCIE_INT_MASK);
-@@ -588,7 +596,7 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
- 	if (IS_ENABLED(CONFIG_PCI_MSI)) {
- 		ret = mtk_pcie_allocate_msi_domains(port);
- 		if (ret)
--			return ret;
-+			dev_warn(dev, "no MSI supported, only INTx available\n");
- 	}
- 
- 	return 0;
-@@ -732,7 +740,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 	val &= ~INTX_MASK;
- 	writel(val, port->base + PCIE_INT_MASK);
- 
--	if (IS_ENABLED(CONFIG_PCI_MSI))
-+	if (IS_ENABLED(CONFIG_PCI_MSI) && port->msi_domain)
- 		mtk_pcie_enable_msi(port);
- 
- 	/* Set AHB to PCIe translation windows */
--- 
-2.18.0
+dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card fail: %d\n", __func__);
+
+Regards,
+Angelo
+
 
 
