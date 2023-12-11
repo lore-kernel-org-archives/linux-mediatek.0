@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E416EC10DC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 13:52:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E5D6C10DC3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 13:56:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MpHEMdMLcJl55mf07a5Oc/U1tbe+D88ZIAZwbMy9vjI=; b=LV7mfyXydB7DGKQHT86/DtDH6T
-	IPjj28+SSlL8Br7aRN8wXmwtnfeZPbfqZcudK58Rx171bTgm5yPJJKgHeiBBupiLi3u4J3/vp0LJt
-	yWIPUJKFHAcP174TTb6oe45f05/t2wvINZ0au0IBPfCklq4ERZEFU6IdZCm9Wr0lQFsTCqcfzZLXE
-	o3Isn+1jbNXU9mTBOJ8GocrfZ0K+erTbff+bkJI/ZGlY2Rd3DLZtD6chR7ynlIhM3fQ6nVs6IkPLq
-	ciVvgLHONeoDKlAGstksF6pm7AoYZ2ps7x14zw7quAOt2+nz5GNxxH3PICE4Gn/khMII98lz9Z9qC
-	RT6pou2A==;
+	bh=P0wlTcCEJMlvsh4aukW3oCT8yp77e/pYvHoaxlV+oo4=; b=2+oBe/mc7gPJMwOHZL+QxDh/De
+	ALCzbc+F5+hiGxkGdfSlRa/VuCnG9wTL4xgD+Ss+qA2dIlXjPzb2fW4GNsgSpm9kNMlCVnpwMLaB1
+	TpCXPrdpeCNMoCNtxBMM6Cih7z5nyZQjXQHkgmhYtFV09Z3GeszCtP9QhUBuzhAOI7qenchwqezX3
+	vnW/WRvnagYzy+MZPoSQnhFZ1KdSLUUOnKikYtbHPuBHrORFVRwviMJsiyyYYmmFQ6wav32lGd/7H
+	0A42+1disMTiNkXfn4HbQb61p8DWpn/SKcQYbnEJCd6Hr6VWKJeYcd/oMBsbSsfveMVVeXjH2X9bU
+	GVsqGD3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCgiH-0051JO-1P;
-	Mon, 11 Dec 2023 13:52:49 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1rCglT-0052Yb-09;
+	Mon, 11 Dec 2023 13:56:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCgi0-0051Fm-2R;
-	Mon, 11 Dec 2023 13:52:47 +0000
+	id 1rCgku-0052N4-2Z;
+	Mon, 11 Dec 2023 13:56:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 461A0B80E5E;
-	Mon, 11 Dec 2023 13:52:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86A74C433C9;
-	Mon, 11 Dec 2023 13:52:28 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 21187612AF;
+	Mon, 11 Dec 2023 13:55:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E087AC433CB;
+	Mon, 11 Dec 2023 13:55:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702302750;
-	bh=ZqDHnId5/TbfAm+FTvYjpxxf2wubBNQ9vZpZbZSbxtA=;
+	s=k20201202; t=1702302931;
+	bh=uDlu4Y967RJ4SxiO9YzlT7AG+ZRio0a6mNsr/SQmFbE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eXG/B9bCjRNf6cvlbaoz17MKFGDfYgFlzMEFpZEitLxS3BA6QsDPypy3fMrvJhp4b
-	 H4ZkSdE9V9QUvs6UoDn3AqOc/bpPNdXJrVQngoXvcuju7yLgEr1klfgLbIH+Wc7UHx
-	 Mlcy+BF/rEkUXv+UUtEKw5/sDY5GLEOuJBqGocZ2Yu5XqH+4WBkRVEC0jYH71Cedu9
-	 nqhoutwcXYTOzdp3ItxzAb4mor8N1oJ4o/+uwdSYL5752g5HwTdmHR08UfR3gi0QZ2
-	 dpUqlJOt+LC4LLA7KVIYn54FA9XdePHFTaGWFnwAgPvBXQd6CAFysbgBEfFesjc6wU
-	 t2kEO9qtU7aaQ==
+	b=qZL4nbKUVzWns2EId+asMBx/XS+gzzr+KhBunQNhTHc4/c8R2eeoMrAFUgVfBK5EW
+	 Q5t0uAoAVykJtlwB85OZYnzrp4542yzpCOkLsZmOEAcnlAxgoQnUxU9z0r9Ic1c4Ht
+	 FsVrGRaHcl9pcUC1uYPuA2ZpbpQ570EdBgSQixgBbEs8rbEMHqoKKrAyWBtQznYcJ5
+	 XgII0ZHT3i2nAkP3ZPGJaQoqz8RdwulgtqICfrFCcq3hvslYFZGIFvmGL/Hx2XEr5m
+	 nPTK0mMPvWAGdYWp49RHLAan2+4tDyj/gwaZJTi6jRYGHCiJiupBZ87OsXfnEe6BHJ
+	 SlmN0Za17OY/w==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -58,25 +58,24 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	matthias.bgg@gmail.com,
 	trevor.wu@mediatek.com,
 	tinghan.shen@mediatek.com,
-	kuninori.morimoto.gx@renesas.com,
 	sound-open-firmware@alsa-project.org,
 	linux-sound@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 14/47] ASoC: SOF: mediatek: mt8186: Add Google Steelix topology compatible
-Date: Mon, 11 Dec 2023 08:50:15 -0500
-Message-ID: <20231211135147.380223-14-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 11/29] ASoC: SOF: mediatek: mt8186: Add Google Steelix topology compatible
+Date: Mon, 11 Dec 2023 08:53:55 -0500
+Message-ID: <20231211135457.381397-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231211135147.380223-1-sashal@kernel.org>
-References: <20231211135147.380223-1-sashal@kernel.org>
+In-Reply-To: <20231211135457.381397-1-sashal@kernel.org>
+References: <20231211135457.381397-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.5
+X-stable-base: Linux 6.1.66
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_055233_546912_66030E7D 
-X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-CacheID: sfid-20231211_055555_787649_5FD6EEF7 
+X-CRM114-Status: UNSURE (   9.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,10 +107,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+)
 
 diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index f587edf9e0a70..35f5c2cfb6e45 100644
+index 181189e00e020..76ce90e1f1030 100644
 --- a/sound/soc/sof/mediatek/mt8186/mt8186.c
 +++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -599,6 +599,9 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
+@@ -596,6 +596,9 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
  
  static struct snd_sof_of_mach sof_mt8186_machs[] = {
  	{
