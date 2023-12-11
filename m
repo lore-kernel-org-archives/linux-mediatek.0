@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E5D6C10DC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 13:56:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B42AC4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 14:00:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P0wlTcCEJMlvsh4aukW3oCT8yp77e/pYvHoaxlV+oo4=; b=2+oBe/mc7gPJMwOHZL+QxDh/De
-	ALCzbc+F5+hiGxkGdfSlRa/VuCnG9wTL4xgD+Ss+qA2dIlXjPzb2fW4GNsgSpm9kNMlCVnpwMLaB1
-	TpCXPrdpeCNMoCNtxBMM6Cih7z5nyZQjXQHkgmhYtFV09Z3GeszCtP9QhUBuzhAOI7qenchwqezX3
-	vnW/WRvnagYzy+MZPoSQnhFZ1KdSLUUOnKikYtbHPuBHrORFVRwviMJsiyyYYmmFQ6wav32lGd/7H
-	0A42+1disMTiNkXfn4HbQb61p8DWpn/SKcQYbnEJCd6Hr6VWKJeYcd/oMBsbSsfveMVVeXjH2X9bU
-	GVsqGD3w==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U9doELxP9cLOgydCOYwPNcVIG6CbDSGQn+rIb4+AEIY=; b=v1cnkGs0UaLgBwgcVqqD3MT+Ps
+	J2T9OaA0d1e1k/xJjtsC+fCQkVDVUT6OUKnozyrJ5n3nTINvSnEJa4rovdUqCoaphKQe7jRPs3Sqo
+	Jsj6tmiS5ykFxwMvQ7laLv1Lx6rujK3xGdxYJag8uxejfPOoQF5DgeTb6EsGaoez9d42QxBOI9GAV
+	DOuVvNwLteoxY/97afOO0EwNpVlv6MGNBelW5DbZgEldzTvL/V4W6OSMpDZKu09zajuHUoxTQ+pQ8
+	PU0snpilhRZj5YLC+a1piCJW4hWT9vZrBj7WHpJDqDzAVF0pj1dg2HusW6gf8fgguw/sQmoI5IFVL
+	D1IpbS0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCglT-0052Yb-09;
-	Mon, 11 Dec 2023 13:56:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rCgpd-00547W-0L;
+	Mon, 11 Dec 2023 14:00:25 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCgku-0052N4-2Z;
-	Mon, 11 Dec 2023 13:56:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 21187612AF;
-	Mon, 11 Dec 2023 13:55:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E087AC433CB;
-	Mon, 11 Dec 2023 13:55:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702302931;
-	bh=uDlu4Y967RJ4SxiO9YzlT7AG+ZRio0a6mNsr/SQmFbE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qZL4nbKUVzWns2EId+asMBx/XS+gzzr+KhBunQNhTHc4/c8R2eeoMrAFUgVfBK5EW
-	 Q5t0uAoAVykJtlwB85OZYnzrp4542yzpCOkLsZmOEAcnlAxgoQnUxU9z0r9Ic1c4Ht
-	 FsVrGRaHcl9pcUC1uYPuA2ZpbpQ570EdBgSQixgBbEs8rbEMHqoKKrAyWBtQznYcJ5
-	 XgII0ZHT3i2nAkP3ZPGJaQoqz8RdwulgtqICfrFCcq3hvslYFZGIFvmGL/Hx2XEr5m
-	 nPTK0mMPvWAGdYWp49RHLAan2+4tDyj/gwaZJTi6jRYGHCiJiupBZ87OsXfnEe6BHJ
-	 SlmN0Za17OY/w==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	pierre-louis.bossart@linux.intel.com,
-	lgirdwood@gmail.com,
-	peter.ujfalusi@linux.intel.com,
-	yung-chuan.liao@linux.intel.com,
-	ranjani.sridharan@linux.intel.com,
-	daniel.baluta@nxp.com,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	trevor.wu@mediatek.com,
-	tinghan.shen@mediatek.com,
-	sound-open-firmware@alsa-project.org,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 11/29] ASoC: SOF: mediatek: mt8186: Add Google Steelix topology compatible
-Date: Mon, 11 Dec 2023 08:53:55 -0500
-Message-ID: <20231211135457.381397-11-sashal@kernel.org>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231211135457.381397-1-sashal@kernel.org>
-References: <20231211135457.381397-1-sashal@kernel.org>
+	id 1rCgp5-0053xu-2B;
+	Mon, 11 Dec 2023 14:00:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1702303189;
+	bh=dKIWPsl1+iB2/HkzpJsN57Kk1dREJYExJbg+W32xu7M=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=YGEmrRc1jEJzfPPF6dLbd4heZq9uLnyF4pej2TSkPXZLgrVyhmu7OqHPZ/0jcl64t
+	 t+KUNzhJXuzEGlo/xfv9iZqv4eSRp/turrbYd63mibACbd3cUlMGxGwNloE6Hu6C0T
+	 bEHMjdbzd03fJ5iUlhHrIoXhghvM0fKdWDYwx8ZP/a6rGL9ZfdMcTrRlIcWA/nhyXO
+	 KuGhiV+v2xBkPfkLNsGyMnHP5sCnO7G83SFrUJVcRsAl6oF65vdFTBs1JJ0VRyNK+c
+	 /xZ83+DtdN9XTwo39xLwW84zGhdZjBM9iu5shi+/fKdNSZE1Ifpwfp9XkRAc67AnJ6
+	 dt9L3hQiw+9oQ==
+Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 70134378110F;
+	Mon, 11 Dec 2023 13:59:47 +0000 (UTC)
+Message-ID: <4fce268c-4ef1-4361-b524-4c9bf9b60370@collabora.com>
+Date: Mon, 11 Dec 2023 14:59:46 +0100
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.66
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 3/4] clk: mediatek: Add pcw_chg_shift control
+To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Sabrina Dubroca <sd@queasysnail.net>, Jianhui Zhao <zhaojh329@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, "Garmin.Chang"
+ <Garmin.Chang@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>,
+ Jiasheng Jiang <jiasheng@iscas.ac.cn>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>,
+ James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+References: <097e82b0d66570763d64be1715517d8b032fcf95.1702158423.git.daniel@makrotopia.org>
+ <28c8ccd234ba311591b6db0de131fde36d3ec409.1702158423.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <28c8ccd234ba311591b6db0de131fde36d3ec409.1702158423.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_055555_787649_5FD6EEF7 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231211_055951_953105_BEAA63ED 
+X-CRM114-Status: GOOD (  21.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,36 +94,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Il 09/12/23 22:56, Daniel Golle ha scritto:
+> From: Sam Shih <sam.shih@mediatek.com>
+> 
+> Introduce pcw_chg_shfit control to replace hardcoded PCW_CHG_MASK macro.
+> This will needed for clocks on the MT7988 SoC.
+> 
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+> v4: always set .pcw_chg_shift if .pcw_chg_reg is used instead of
+>      having an if-expression in mtk_pll_set_rate_regs().
+> v3: use git --from ...
+> v2: no changes
+> 
+>   drivers/clk/mediatek/clk-mt6779.c            | 1 +
+>   drivers/clk/mediatek/clk-mt8183-apmixedsys.c | 1 +
+>   drivers/clk/mediatek/clk-mt8188-apmixedsys.c | 1 +
+>   drivers/clk/mediatek/clk-mt8192-apmixedsys.c | 1 +
+>   drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 1 +
+>   drivers/clk/mediatek/clk-mt8365-apmixedsys.c | 1 +
+>   drivers/clk/mediatek/clk-pll.c               | 3 +--
+>   drivers/clk/mediatek/clk-pll.h               | 2 ++
+>   8 files changed, 9 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt6779.c b/drivers/clk/mediatek/clk-mt6779.c
+> index ffedb1fe3c672..e66461f341dd3 100644
+> --- a/drivers/clk/mediatek/clk-mt6779.c
+> +++ b/drivers/clk/mediatek/clk-mt6779.c
+> @@ -1166,6 +1166,7 @@ static const struct mtk_gate apmixed_clks[] = {
+>   		.pcw_reg = _pcw_reg,					\
+>   		.pcw_shift = _pcw_shift,				\
+>   		.pcw_chg_reg = _pcw_chg_reg,				\
+> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
+>   		.div_table = _div_table,				\
+>   	}
+>   
+> diff --git a/drivers/clk/mediatek/clk-mt8183-apmixedsys.c b/drivers/clk/mediatek/clk-mt8183-apmixedsys.c
+> index 2b261c0e2b61d..184e0cd1dde29 100644
+> --- a/drivers/clk/mediatek/clk-mt8183-apmixedsys.c
+> +++ b/drivers/clk/mediatek/clk-mt8183-apmixedsys.c
+> @@ -75,6 +75,7 @@ static const struct mtk_gate apmixed_clks[] = {
+>   		.pcw_reg = _pcw_reg,					\
+>   		.pcw_shift = _pcw_shift,				\
+>   		.pcw_chg_reg = _pcw_chg_reg,				\
+> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
+>   		.div_table = _div_table,				\
+>   	}
+>   
+> diff --git a/drivers/clk/mediatek/clk-mt8188-apmixedsys.c b/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
+> index 41ab4d6896a49..87c5dfa3d1ac4 100644
+> --- a/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
+> +++ b/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
+> @@ -53,6 +53,7 @@ static const struct mtk_gate apmixed_clks[] = {
+>   		.pcw_reg = _pcw_reg,					\
+>   		.pcw_shift = _pcw_shift,				\
+>   		.pcw_chg_reg = _pcw_chg_reg,				\
+> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
+>   		.en_reg = _en_reg,					\
+>   		.pll_en_bit = _pll_en_bit,				\
+>   	}
+> diff --git a/drivers/clk/mediatek/clk-mt8192-apmixedsys.c b/drivers/clk/mediatek/clk-mt8192-apmixedsys.c
+> index 3590932acc63a..67bf5ef3f0033 100644
+> --- a/drivers/clk/mediatek/clk-mt8192-apmixedsys.c
+> +++ b/drivers/clk/mediatek/clk-mt8192-apmixedsys.c
+> @@ -56,6 +56,7 @@ static const struct mtk_gate apmixed_clks[] = {
+>   		.pcw_reg = _pcw_reg,					\
+>   		.pcw_shift = _pcw_shift,				\
+>   		.pcw_chg_reg = _pcw_chg_reg,				\
+> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
+>   		.en_reg = _en_reg,					\
+>   		.pll_en_bit = _pll_en_bit,				\
+>   	}
+> diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+> index 44a4c85a67ef5..ccd6bac7cb1fc 100644
+> --- a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+> +++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+> @@ -54,6 +54,7 @@ static const struct mtk_gate apmixed_clks[] = {
+>   		.pcw_reg = _pcw_reg,					\
+>   		.pcw_shift = _pcw_shift,				\
+>   		.pcw_chg_reg = _pcw_chg_reg,				\
+> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
+>   		.en_reg = _en_reg,					\
+>   		.pll_en_bit = _pll_en_bit,				\
+>   	}
+> diff --git a/drivers/clk/mediatek/clk-mt8365-apmixedsys.c b/drivers/clk/mediatek/clk-mt8365-apmixedsys.c
+> index 9b0bc5daeac06..daddca6db44e7 100644
+> --- a/drivers/clk/mediatek/clk-mt8365-apmixedsys.c
+> +++ b/drivers/clk/mediatek/clk-mt8365-apmixedsys.c
+> @@ -39,6 +39,7 @@
+>   		.pcw_reg = _pcw_reg,					\
+>   		.pcw_shift = _pcw_shift,				\
+>   		.pcw_chg_reg = _pcw_chg_reg,				\
+> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
+>   		.div_table = _div_table,				\
+>   	}
+>   
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index 513ab6b1b3229..139b01ab8d140 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -23,7 +23,6 @@
+>   #define CON0_BASE_EN		BIT(0)
+>   #define CON0_PWR_ON		BIT(0)
+>   #define CON0_ISO_EN		BIT(1)
+> -#define PCW_CHG_MASK		BIT(31)
+>   
+>   #define AUDPLL_TUNER_EN		BIT(31)
+>   
+> @@ -114,7 +113,7 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+>   			pll->data->pcw_shift);
+>   	val |= pcw << pll->data->pcw_shift;
+>   	writel(val, pll->pcw_addr);
+> -	chg = readl(pll->pcw_chg_addr) | PCW_CHG_MASK;
+> +	chg = readl(pll->pcw_chg_addr) | BIT(pll->data->pcw_chg_shift);
+>   	writel(chg, pll->pcw_chg_addr);
+>   	if (pll->tuner_addr)
+>   		writel(val + 1, pll->tuner_addr);
+> diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
+> index f17278ff15d78..84bd8df13e2e5 100644
+> --- a/drivers/clk/mediatek/clk-pll.h
+> +++ b/drivers/clk/mediatek/clk-pll.h
+> @@ -22,6 +22,7 @@ struct mtk_pll_div_table {
+>   #define HAVE_RST_BAR	BIT(0)
+>   #define PLL_AO		BIT(1)
+>   #define POSTDIV_MASK	GENMASK(2, 0)
+> +#define PCW_CHG_SHIFT	31
+>   
+>   struct mtk_pll_data {
+>   	int id;
+> @@ -48,6 +49,7 @@ struct mtk_pll_data {
+>   	const char *parent_name;
+>   	u32 en_reg;
+>   	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
+> +	u8 pcw_chg_shift;
 
-[ Upstream commit 505c83212da5bfca95109421b8f5d9f8c6cdfef2 ]
+Ok this is better - please call this "pcw_chg_bit" (same for the definition).
 
-Add the machine compatible and topology filename for the Google Steelix
-MT8186 Chromebook to load the correct SOF topology file.
+Also, since it is impossible for PCW_CHG to be 0, please add a sanity check at
+the beginning of function mtk_clk_register_pll_ops(), like so:
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Link: https://lore.kernel.org/r/20231123084454.20471-1-angelogioacchino.delregno@collabora.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- sound/soc/sof/mediatek/mt8186/mt8186.c | 3 +++
- 1 file changed, 3 insertions(+)
+if (!data->pcw_chg_bit) {
+	pr_warn("Invalid PCW_CHG bit for pll %s", data->name);
+	return ERR_PTR(-EINVAL);
+}
 
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index 181189e00e020..76ce90e1f1030 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -596,6 +596,9 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
- 
- static struct snd_sof_of_mach sof_mt8186_machs[] = {
- 	{
-+		.compatible = "google,steelix",
-+		.sof_tplg_filename = "sof-mt8186-google-steelix.tplg"
-+	}, {
- 		.compatible = "mediatek,mt8186",
- 		.sof_tplg_filename = "sof-mt8186.tplg",
- 	},
--- 
-2.42.0
+...like that, we're fully covered for eventual mistakes during porting (etc).
 
+Cheers,
+Angelo
 
