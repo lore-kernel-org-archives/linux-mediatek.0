@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E0A6C10F04
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 03:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73071C10F05
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 04:08:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cV6riP0Ow3bKYWIQlnMOTDlEkCQ8oQ7sgKAuWFgdgY4=; b=PvdQwywRaR5Th1sN1vA5U4Ufkh
-	/bi7vPpE1qOqBW0BOidUjBeYacR1jBieb54LyvVv8o02GkDjlt5BwiVw5ppQIWlyuUeAHEmKvUcA6
-	WiCgMlDpoXdsFTteZxVFRqcb0Voi9dtA2BFvJKHdVFy79U/H1YGFH8Ik4bvS8hcIMa/F1YP32vnVR
-	hz/mdj9IeK1Xsx6iYesXwUdIlM/B+L5161N+ewnQ9CxagDuKxdsZQscZjcBbZbibCqU9wVh9pEWgu
-	afqMIcuRq6zHP8BpiGVyh/ZbsZpdrh4L9F7GD1Hn5ymbLjNQTrCNVX7EpAlibAYFsl4sibGHVq50k
-	QeJ4xjdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jTd+fEPmXY/+K0C4daC2dwAWjvpJ1oG4S1yMkL+8DtM=; b=V6z1XkaJngcllprMvPVPqxBDFR
+	a22XBiZOFSjjkWNjPXKHx7O2taVodu+byTjneRL3+puTg10xnyNN3GXAWzyFiXsWNi4zR8GCqNtxg
+	2wnw50fH9E9oot2O5kNktFC8ylWSSErrU1HM0hE771Q8hIHWQX9iTi0TzwvW1cbDvaqLWO3WswMiw
+	ACrHGp0vngS3onTO1IRVeeqbga3G0uRdr+/XkpkZvOKjQzP3kH8S3ejsf6GBt9jy8jKezovGL9p1+
+	RERr8FwhNEu0Oz2Hmez9JOJU2+fVc68AqPSOmmFl+zeeLi1szN/4tvD04WL6L5/KDkFzR4afgh0aI
+	HHM8Qvuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCWcz-003r1F-07;
-	Mon, 11 Dec 2023 03:06:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rCXaY-003wuI-0p;
+	Mon, 11 Dec 2023 04:08:14 +0000
+Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCWcv-003r07-1h;
-	Mon, 11 Dec 2023 03:06:38 +0000
-X-UUID: 48603acc97d211ee958cff29c719f35b-20231210
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cV6riP0Ow3bKYWIQlnMOTDlEkCQ8oQ7sgKAuWFgdgY4=;
-	b=X1clbtpVx7GagyIQVEFgpQjRHJvp5ECvLto8GaNbHHoWbkpLCnWOr0btlwetlO29Dinn1YDOeY2WGNgQV7Z7gHB0ix3am/vz2X12kTbVcgqdkuwQzilnx6auEQ5BvaaUmgv0/YNoXY9LXsghA6N0lH8wIfJM9WNeACHnt5HmHHU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:d598369c-990c-4496-af2f-a496b72c845f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:6cb704bd-2ac7-4da2-9f94-677a477649d9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 48603acc97d211ee958cff29c719f35b-20231210
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 661870958; Sun, 10 Dec 2023 20:06:30 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Dec 2023 10:56:26 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Dec 2023 10:56:26 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: [PATCH v2 1/2] dt-bindings: phy: mediatek: tphy: add a property for force-mode switch
-Date: Mon, 11 Dec 2023 10:56:23 +0800
-Message-ID: <20231211025624.28991-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1rCXaU-003wt9-2p
+	for linux-mediatek@lists.infradead.org;
+	Mon, 11 Dec 2023 04:08:12 +0000
+Received: by mail-vs1-xe2a.google.com with SMTP id ada2fe7eead31-464a3b84ef7so2294670137.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 10 Dec 2023 20:08:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1702267687; x=1702872487; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jTd+fEPmXY/+K0C4daC2dwAWjvpJ1oG4S1yMkL+8DtM=;
+        b=oLicBBjTVNxJxBRUF5Tqzh7kJZj/U0M0nQTt+xPdxS9L+2ib/nQIid6FgO0XtNK1ES
+         37MdJmq2uc3aGvLdHHDrqYMmdNdr9+mxQj9s5wfwFT6aNzK2eFFWq3GXY47y5g+6gje3
+         mdCVv6eQEXXpagH7VNNbx6+qAQHNa8ZAmz7mw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702267687; x=1702872487;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jTd+fEPmXY/+K0C4daC2dwAWjvpJ1oG4S1yMkL+8DtM=;
+        b=O/UH6q8U3A4OwJ17qEEtrUPm11q4nnR9qvjQ8kB95tqLHr/eYxr3yZNr+EKdnIkAoM
+         aHRzVr7eUC5zuH78GSLku4r8cVD/GVTLQ3E7wXYrZU9OxT7wcssFKNbS8BRDNkfdZVa4
+         aXMXFKiavGubujg/uLKg601sLRftnB+1XIT1ElyQld7ZyeBcZpwiRbjm3UElb61M8kDN
+         hUc588a+4gBQz4Lwgv2S/K9wkF4MsMdQBDzrA+sFEuuNUfaTFg9DL/ZOijbke5ZEOKA2
+         uFRaXA56l05HtBoem2+lNEoXyJOwNrL8pQr5ASXVkSkULTaxlenoyKD1Go9xv2T8f++c
+         n5xA==
+X-Gm-Message-State: AOJu0Yy5vNzBYBEiyIy3el6D4WgDiimV5emoQNXro8EGn16FAC2nsITJ
+	b2kuvsIRjpsFwLNPSRvaW6eKMtHb+5oTg24uXhM=
+X-Google-Smtp-Source: AGHT+IGvCcYyOaJSkDerI25iipU4jk/0OJ9SUdzljQajmo7lF1Z0c3PgpCX+r69mFduYGMDdzV5M5Q==
+X-Received: by 2002:a05:6102:66d:b0:466:23a5:7ed0 with SMTP id z13-20020a056102066d00b0046623a57ed0mr763569vsf.10.1702267686833;
+        Sun, 10 Dec 2023 20:08:06 -0800 (PST)
+Received: from mail-vs1-f41.google.com (mail-vs1-f41.google.com. [209.85.217.41])
+        by smtp.gmail.com with ESMTPSA id bm17-20020a056102511100b004662865945asm161557vsb.7.2023.12.10.20.08.05
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 10 Dec 2023 20:08:05 -0800 (PST)
+Received: by mail-vs1-f41.google.com with SMTP id ada2fe7eead31-464a0fb3fb9so2303011137.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 10 Dec 2023 20:08:05 -0800 (PST)
+X-Received: by 2002:a05:6102:5114:b0:464:3f78:3cbe with SMTP id
+ bm20-20020a056102511400b004643f783cbemr2701028vsb.4.1702267684761; Sun, 10
+ Dec 2023 20:08:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--11.360500-8.000000
-X-TMASE-MatchedRID: RRfbWjdhZrr4Q348LKfXOO7KTDtx8CggtjHGWON8yeP9Ez/5IpHqp/pZ
-	jWQiqBlh8/nBmhGQ+G7kiLqWsGi3RpShxRaS8Dn10FfSApnujPiAfODDLypXmtzOQo7mTgA+FVk
-	w4X07kmjaFM5TPGLdCHBSByhCpcr+QdZuZ42vrpFu4W5gEinK6fMfibAjlaopIZUd3wirJi2jxY
-	yRBa/qJcFwgTvxipFajoczmuoPCq0+xoUgd8obQZ05FFJdMwGG0mrAuei0ALC9AvG/HBY0xoHcO
-	amUia0t
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--11.360500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 10541A3B766F5DABAF750EE74B7A1B24E217417B7A2FC9C7B112FDA6E978F3FF2000:8
-X-MTK: N
+References: <98491ec78ab671f5a14fce42d10f9745ebddb112.1702258360.git.daniel@makrotopia.org>
+In-Reply-To: <98491ec78ab671f5a14fce42d10f9745ebddb112.1702258360.git.daniel@makrotopia.org>
+From: Fei Shao <fshao@chromium.org>
+Date: Mon, 11 Dec 2023 12:07:27 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nh6twyqoSgeEXDsW=+FZRUxMN=Pkrw45KFq-z5XaGpFtw@mail.gmail.com>
+Message-ID: <CAC=S1nh6twyqoSgeEXDsW=+FZRUxMN=Pkrw45KFq-z5XaGpFtw@mail.gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt7986: silence error in case of -EPROBE_DEFER
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Maso Huang <maso.huang@mediatek.com>, linux-sound@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231210_190637_585872_E098D665 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20231210_200810_934461_959CA352 
+X-CRM114-Status: GOOD (  16.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,41 +100,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Due to some old SoCs with shared t-phy between usb3 and pcie only support
-force-mode switch, and shared and non-shared t-phy may exist at the same
-time on a SoC, can't use compatible to distinguish between shared and
-non-shared t-phy, add a property to supported it.
-Currently, only support switch from default pcie mode to usb3 mode.
-But now prefer to use "mediatek,syscon-type" on new SoC as far as possible.
+Hi Daniel,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: modify commit message, and property description 
----
- Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 9 +++++++++
- 1 file changed, 9 insertions(+)
+On Mon, Dec 11, 2023 at 9:33=E2=80=AFAM Daniel Golle <daniel@makrotopia.org=
+> wrote:
+>
+> If probe is defered no error should be printed. Mute it.
+>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  sound/soc/mediatek/mt7986/mt7986-wm8960.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/sound/soc/mediatek/mt7986/mt7986-wm8960.c b/sound/soc/mediat=
+ek/mt7986/mt7986-wm8960.c
+> index c1390b3734101..24a4b943030d7 100644
+> --- a/sound/soc/mediatek/mt7986/mt7986-wm8960.c
+> +++ b/sound/soc/mediatek/mt7986/mt7986-wm8960.c
+> @@ -144,7 +144,9 @@ static int mt7986_wm8960_machine_probe(struct platfor=
+m_device *pdev)
+>
+>         ret =3D devm_snd_soc_register_card(&pdev->dev, card);
+>         if (ret) {
+> -               dev_err(&pdev->dev, "%s snd_soc_register_card fail: %d\n"=
+, __func__, ret);
+> +               if (ret !=3D -EPROBE_DEFER)
+> +                       dev_err(&pdev->dev, "%s snd_soc_register_card fai=
+l: %d\n", __func__, ret);
+> +
+Please consider using dev_err_probe() instead.
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-index 2bb91542e984..acba0720125d 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-@@ -235,6 +235,15 @@ patternProperties:
-           Specify the flag to enable BC1.2 if support it
-         type: boolean
- 
-+      mediatek,force-mode:
-+        description:
-+          The force mode is used to manually switch the shared phy mode between
-+          USB3 and PCIe, when USB3 phy type is selected by the consumer, and
-+          force-mode is set, will cause phy's power and pipe toggled and force
-+          phy as USB3 mode which switched from default PCIe mode. But perfer to
-+          use the property "mediatek,syscon-type" for newer SoCs that support it.
-+        type: boolean
-+
-       mediatek,syscon-type:
-         $ref: /schemas/types.yaml#/definitions/phandle-array
-         maxItems: 1
--- 
-2.18.0
+Regards,
+Fei
 
+>                 goto err_of_node_put;
+>         }
+
+>
+> --
+> 2.43.0
+>
+>
 
