@@ -4,82 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B42AC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 14:00:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0D64C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 14:40:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U9doELxP9cLOgydCOYwPNcVIG6CbDSGQn+rIb4+AEIY=; b=v1cnkGs0UaLgBwgcVqqD3MT+Ps
-	J2T9OaA0d1e1k/xJjtsC+fCQkVDVUT6OUKnozyrJ5n3nTINvSnEJa4rovdUqCoaphKQe7jRPs3Sqo
-	Jsj6tmiS5ykFxwMvQ7laLv1Lx6rujK3xGdxYJag8uxejfPOoQF5DgeTb6EsGaoez9d42QxBOI9GAV
-	DOuVvNwLteoxY/97afOO0EwNpVlv6MGNBelW5DbZgEldzTvL/V4W6OSMpDZKu09zajuHUoxTQ+pQ8
-	PU0snpilhRZj5YLC+a1piCJW4hWT9vZrBj7WHpJDqDzAVF0pj1dg2HusW6gf8fgguw/sQmoI5IFVL
-	D1IpbS0w==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K7noqJIIFLhFjkA8/afhqV2bph4J7a8XBP28TLJNC/g=; b=QQvYvQ3BXnUI0pS2uK56k9BVSc
+	vtj/4J/k5hOE0E4V9Q+6hL8eB+keIriULX6HClf97eQrxF+TJsXv8mhIzvc7CoZlQl3zv3TY24r0q
+	YX3AZ5sav5vuG4GQNAW0gKYFUz8CNv4f4oXqOPDoqASntjNXgVbKQh/Qp9Z/52PehOnBxhO5JkxNu
+	O1SjYq0lPCW+17FRE3GKpwp4jbTxROOGYb0G01fTbbjgQKY9qgCoZpa+lzNtOHkMG6dfEb79yJEK4
+	p0Hm7yFS53lpDX9xSixx0xbRijDkKZsv7Ho7LPPFvjg1T8KSJymvu2VzrYBrAbYo+ckJGsJzbJceb
+	WxGyhzaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCgpd-00547W-0L;
-	Mon, 11 Dec 2023 14:00:25 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rChSC-005CtR-21;
+	Mon, 11 Dec 2023 14:40:17 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCgp5-0053xu-2B;
-	Mon, 11 Dec 2023 14:00:22 +0000
+	id 1rChS2-005CsI-0a
+	for linux-mediatek@lists.infradead.org;
+	Mon, 11 Dec 2023 14:40:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702303189;
-	bh=dKIWPsl1+iB2/HkzpJsN57Kk1dREJYExJbg+W32xu7M=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=YGEmrRc1jEJzfPPF6dLbd4heZq9uLnyF4pej2TSkPXZLgrVyhmu7OqHPZ/0jcl64t
-	 t+KUNzhJXuzEGlo/xfv9iZqv4eSRp/turrbYd63mibACbd3cUlMGxGwNloE6Hu6C0T
-	 bEHMjdbzd03fJ5iUlhHrIoXhghvM0fKdWDYwx8ZP/a6rGL9ZfdMcTrRlIcWA/nhyXO
-	 KuGhiV+v2xBkPfkLNsGyMnHP5sCnO7G83SFrUJVcRsAl6oF65vdFTBs1JJ0VRyNK+c
-	 /xZ83+DtdN9XTwo39xLwW84zGhdZjBM9iu5shi+/fKdNSZE1Ifpwfp9XkRAc67AnJ6
-	 dt9L3hQiw+9oQ==
+	s=mail; t=1702305604;
+	bh=mHqy3MLA/9M7nW96ItcsknqxLKHqo776t076HdgMBAk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cTbkhIzCFdoEV0uYQTVUa6/pb9AXzjTzF6cLn47gY7+4LU9L21xaasczt2/YfGeHd
+	 wRXGelT8P6bZSD5eeKxrMyWAXTfaxBNQ1Ki/J58+AKbfn33cGxzrBtiedrrwtqZSGc
+	 DM7er+YsapqrVSR3YG9vkouR7mP4ezoJPdMvsHzrUiOvZZaDxgZvugG3TCY5F3gDl5
+	 UHNee14BOZkryVP5CfTDPXpVDYhlig6bJU8ihObIC5XO9OP0lQEd0h4VMWZFAdessk
+	 mseWsgcV+A0VHUj13S36WRk5s3rdnEKQytFkjSZVOKYVRxSGzKm6OKyPXkFZIoqBke
+	 QXU6QUrwgbdsg==
 Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 70134378110F;
-	Mon, 11 Dec 2023 13:59:47 +0000 (UTC)
-Message-ID: <4fce268c-4ef1-4361-b524-4c9bf9b60370@collabora.com>
-Date: Mon, 11 Dec 2023 14:59:46 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 481CB37813FD;
+	Mon, 11 Dec 2023 14:40:03 +0000 (UTC)
+Message-ID: <db3429e0-0173-4f13-bccb-78ac56ad4ed9@collabora.com>
+Date: Mon, 11 Dec 2023 15:40:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/4] clk: mediatek: Add pcw_chg_shift control
-To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Sabrina Dubroca <sd@queasysnail.net>, Jianhui Zhao <zhaojh329@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, "Garmin.Chang"
- <Garmin.Chang@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- Alexandre Mergnat <amergnat@baylibre.com>,
- Jiasheng Jiang <jiasheng@iscas.ac.cn>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Frank Wunderlich <frank-w@public-files.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Dan Carpenter <dan.carpenter@linaro.org>,
- James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <097e82b0d66570763d64be1715517d8b032fcf95.1702158423.git.daniel@makrotopia.org>
- <28c8ccd234ba311591b6db0de131fde36d3ec409.1702158423.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [v8 3/4] ASoC: mediatek: mt8188-mt6359: add es8326 support
 Content-Language: en-US
-In-Reply-To: <28c8ccd234ba311591b6db0de131fde36d3ec409.1702158423.git.daniel@makrotopia.org>
+To: Rui Zhou <zhourui@huaqin.corp-partner.google.com>, lgirdwood@gmail.com,
+ broonie@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, perex@perex.cz, trevor.wu@mediatek.com,
+ allen-kh.cheng@mediatek.com, kuninori.morimoto.gx@renesas.com
+Cc: linux-mediatek@lists.infradead.org
+References: <20231208070933.720324-1-zhourui@huaqin.corp-partner.google.com>
+ <20231208070933.720324-4-zhourui@huaqin.corp-partner.google.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231208070933.720324-4-zhourui@huaqin.corp-partner.google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_055951_953105_BEAA63ED 
-X-CRM114-Status: GOOD (  21.99  )
+X-CRM114-CacheID: sfid-20231211_064007_355118_1B1AD03C 
+X-CRM114-Status: GOOD (  23.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,153 +78,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/12/23 22:56, Daniel Golle ha scritto:
-> From: Sam Shih <sam.shih@mediatek.com>
+Il 08/12/23 08:09, Rui Zhou ha scritto:
+> To use ES8326 as the codec, add a new sound card
+> named mt8186_es8326.
 > 
-> Introduce pcw_chg_shfit control to replace hardcoded PCW_CHG_MASK macro.
-> This will needed for clocks on the MT7988 SoC.
-> 
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Reviewed-by: Trevor Wu <trevor.wu@mediatek.com>
+> Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
 > ---
-> v4: always set .pcw_chg_shift if .pcw_chg_reg is used instead of
->      having an if-expression in mtk_pll_set_rate_regs().
-> v3: use git --from ...
-> v2: no changes
+>   sound/soc/mediatek/Kconfig                |  1 +
+>   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 51 ++++++++++++++++++++++-
+>   2 files changed, 50 insertions(+), 2 deletions(-)
 > 
->   drivers/clk/mediatek/clk-mt6779.c            | 1 +
->   drivers/clk/mediatek/clk-mt8183-apmixedsys.c | 1 +
->   drivers/clk/mediatek/clk-mt8188-apmixedsys.c | 1 +
->   drivers/clk/mediatek/clk-mt8192-apmixedsys.c | 1 +
->   drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 1 +
->   drivers/clk/mediatek/clk-mt8365-apmixedsys.c | 1 +
->   drivers/clk/mediatek/clk-pll.c               | 3 +--
->   drivers/clk/mediatek/clk-pll.h               | 2 ++
->   8 files changed, 9 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt6779.c b/drivers/clk/mediatek/clk-mt6779.c
-> index ffedb1fe3c672..e66461f341dd3 100644
-> --- a/drivers/clk/mediatek/clk-mt6779.c
-> +++ b/drivers/clk/mediatek/clk-mt6779.c
-> @@ -1166,6 +1166,7 @@ static const struct mtk_gate apmixed_clks[] = {
->   		.pcw_reg = _pcw_reg,					\
->   		.pcw_shift = _pcw_shift,				\
->   		.pcw_chg_reg = _pcw_chg_reg,				\
-> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
->   		.div_table = _div_table,				\
->   	}
+> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+> index b93d455744ab..296b434caf81 100644
+> --- a/sound/soc/mediatek/Kconfig
+> +++ b/sound/soc/mediatek/Kconfig
+> @@ -252,6 +252,7 @@ config SND_SOC_MT8188_MT6359
+>   	select SND_SOC_NAU8315
+>   	select SND_SOC_NAU8825
+>   	select SND_SOC_RT5682S
+> +	select SND_SOC_ES8326
+>   	help
+>   	  This adds support for ASoC machine driver for MediaTek MT8188
+>   	  boards with the MT6359 and other I2S audio codecs.
+> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> index b4606a28794c..ddbdf9265640 100644
+> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> @@ -34,6 +34,8 @@
 >   
-> diff --git a/drivers/clk/mediatek/clk-mt8183-apmixedsys.c b/drivers/clk/mediatek/clk-mt8183-apmixedsys.c
-> index 2b261c0e2b61d..184e0cd1dde29 100644
-> --- a/drivers/clk/mediatek/clk-mt8183-apmixedsys.c
-> +++ b/drivers/clk/mediatek/clk-mt8183-apmixedsys.c
-> @@ -75,6 +75,7 @@ static const struct mtk_gate apmixed_clks[] = {
->   		.pcw_reg = _pcw_reg,					\
->   		.pcw_shift = _pcw_shift,				\
->   		.pcw_chg_reg = _pcw_chg_reg,				\
-> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
->   		.div_table = _div_table,				\
->   	}
+>   #define NAU8825_HS_PRESENT	BIT(0)
+>   #define RT5682S_HS_PRESENT	BIT(1)
+> +#define ES8326_HS_PRESENT	BIT(2)
+> +#define MAX98390_TWO_AMP	BIT(3)
+>   /*
+>    * Maxim MAX98390
+>    */
+> @@ -48,6 +50,11 @@
+>    */
+>   #define NAU8825_CODEC_DAI  "nau8825-hifi"
 >   
-> diff --git a/drivers/clk/mediatek/clk-mt8188-apmixedsys.c b/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
-> index 41ab4d6896a49..87c5dfa3d1ac4 100644
-> --- a/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
-> +++ b/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
-> @@ -53,6 +53,7 @@ static const struct mtk_gate apmixed_clks[] = {
->   		.pcw_reg = _pcw_reg,					\
->   		.pcw_shift = _pcw_shift,				\
->   		.pcw_chg_reg = _pcw_chg_reg,				\
-> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
->   		.en_reg = _en_reg,					\
->   		.pll_en_bit = _pll_en_bit,				\
->   	}
-> diff --git a/drivers/clk/mediatek/clk-mt8192-apmixedsys.c b/drivers/clk/mediatek/clk-mt8192-apmixedsys.c
-> index 3590932acc63a..67bf5ef3f0033 100644
-> --- a/drivers/clk/mediatek/clk-mt8192-apmixedsys.c
-> +++ b/drivers/clk/mediatek/clk-mt8192-apmixedsys.c
-> @@ -56,6 +56,7 @@ static const struct mtk_gate apmixed_clks[] = {
->   		.pcw_reg = _pcw_reg,					\
->   		.pcw_shift = _pcw_shift,				\
->   		.pcw_chg_reg = _pcw_chg_reg,				\
-> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
->   		.en_reg = _en_reg,					\
->   		.pll_en_bit = _pll_en_bit,				\
->   	}
-> diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-> index 44a4c85a67ef5..ccd6bac7cb1fc 100644
-> --- a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-> +++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-> @@ -54,6 +54,7 @@ static const struct mtk_gate apmixed_clks[] = {
->   		.pcw_reg = _pcw_reg,					\
->   		.pcw_shift = _pcw_shift,				\
->   		.pcw_chg_reg = _pcw_chg_reg,				\
-> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
->   		.en_reg = _en_reg,					\
->   		.pll_en_bit = _pll_en_bit,				\
->   	}
-> diff --git a/drivers/clk/mediatek/clk-mt8365-apmixedsys.c b/drivers/clk/mediatek/clk-mt8365-apmixedsys.c
-> index 9b0bc5daeac06..daddca6db44e7 100644
-> --- a/drivers/clk/mediatek/clk-mt8365-apmixedsys.c
-> +++ b/drivers/clk/mediatek/clk-mt8365-apmixedsys.c
-> @@ -39,6 +39,7 @@
->   		.pcw_reg = _pcw_reg,					\
->   		.pcw_shift = _pcw_shift,				\
->   		.pcw_chg_reg = _pcw_chg_reg,				\
-> +		.pcw_chg_shift = PCW_CHG_SHIFT,				\
->   		.div_table = _div_table,				\
->   	}
+> +/*
+> + * ES8326
+> + */
+> +#define ES8326_CODEC_DAI  "ES8326 HiFi"
+> +
+>   #define SOF_DMA_DL2 "SOF_DMA_DL2"
+>   #define SOF_DMA_DL3 "SOF_DMA_DL3"
+>   #define SOF_DMA_UL4 "SOF_DMA_UL4"
+> @@ -888,6 +895,30 @@ static const struct snd_soc_ops mt8188_sof_be_ops = {
+>   	.hw_params = mt8188_sof_be_hw_params,
+>   };
 >   
-> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> index 513ab6b1b3229..139b01ab8d140 100644
-> --- a/drivers/clk/mediatek/clk-pll.c
-> +++ b/drivers/clk/mediatek/clk-pll.c
-> @@ -23,7 +23,6 @@
->   #define CON0_BASE_EN		BIT(0)
->   #define CON0_PWR_ON		BIT(0)
->   #define CON0_ISO_EN		BIT(1)
-> -#define PCW_CHG_MASK		BIT(31)
+> +static int mt8188_es8326_hw_params(struct snd_pcm_substream *substream,
+> +				 struct snd_pcm_hw_params *params)
+> +{
+> +	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
+> +	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
+> +	struct snd_soc_dai *codec_dai = snd_soc_rtd_to_codec(rtd, 0);
+> +	unsigned int rate = params_rate(params);
+> +	int ret;
+> +
+> +	/* Configure MCLK for codec */
+> +	ret = snd_soc_dai_set_sysclk(codec_dai, 0, rate * 256, SND_SOC_CLOCK_IN);
+> +	if (ret < 0) {
+> +		dev_err(codec_dai->dev, "can't set MCLK %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	/* Configure MCLK for cpu */
+> +	return snd_soc_dai_set_sysclk(cpu_dai, 0, rate * 256, SND_SOC_CLOCK_OUT);
+> +}
+> +
+> +static const struct snd_soc_ops mt8188_es8326_ops = {
+> +	.hw_params = mt8188_es8326_hw_params,
+> +};
+> +
+>   static struct snd_soc_dai_link mt8188_mt6359_dai_links[] = {
+>   	/* FE */
+>   	[DAI_LINK_DL2_FE] = {
+> @@ -1197,7 +1228,7 @@ static void mt8188_fixup_controls(struct snd_soc_card *card)
+>   	struct mt8188_card_data *card_data = (struct mt8188_card_data *)priv->private_data;
+>   	struct snd_kcontrol *kctl;
 >   
->   #define AUDPLL_TUNER_EN		BIT(31)
+> -	if (card_data->quirk & (NAU8825_HS_PRESENT | RT5682S_HS_PRESENT)) {
+> +	if (card_data->quirk & (NAU8825_HS_PRESENT | RT5682S_HS_PRESENT | ES8326_HS_PRESENT)) {
+>   		struct snd_soc_dapm_widget *w, *next_w;
 >   
-> @@ -114,7 +113,7 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
->   			pll->data->pcw_shift);
->   	val |= pcw << pll->data->pcw_shift;
->   	writel(val, pll->pcw_addr);
-> -	chg = readl(pll->pcw_chg_addr) | PCW_CHG_MASK;
-> +	chg = readl(pll->pcw_chg_addr) | BIT(pll->data->pcw_chg_shift);
->   	writel(chg, pll->pcw_chg_addr);
->   	if (pll->tuner_addr)
->   		writel(val + 1, pll->tuner_addr);
-> diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
-> index f17278ff15d78..84bd8df13e2e5 100644
-> --- a/drivers/clk/mediatek/clk-pll.h
-> +++ b/drivers/clk/mediatek/clk-pll.h
-> @@ -22,6 +22,7 @@ struct mtk_pll_div_table {
->   #define HAVE_RST_BAR	BIT(0)
->   #define PLL_AO		BIT(1)
->   #define POSTDIV_MASK	GENMASK(2, 0)
-> +#define PCW_CHG_SHIFT	31
->   
->   struct mtk_pll_data {
->   	int id;
-> @@ -48,6 +49,7 @@ struct mtk_pll_data {
->   	const char *parent_name;
->   	u32 en_reg;
->   	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
-> +	u8 pcw_chg_shift;
+>   		for_each_card_widgets_safe(card, w, next_w) {
+> @@ -1238,6 +1269,7 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
+>   	struct mt8188_card_data *card_data;
+>   	struct snd_soc_dai_link *dai_link;
+>   	bool init_mt6359 = false;
+> +	bool init_es8326 = false;
+>   	bool init_nau8825 = false;
+>   	bool init_rt5682s = false;
+>   	bool init_max98390 = false;
+> @@ -1344,7 +1376,9 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
+>   			   strcmp(dai_link->name, "ETDM1_IN_BE") == 0 ||
+>   			   strcmp(dai_link->name, "ETDM2_IN_BE") == 0) {
+>   			if (!strcmp(dai_link->codecs->dai_name, MAX98390_CODEC_DAI)) {
+> -				dai_link->ops = &mt8188_max98390_ops;
+> +				if (!(card_data->quirk & MAX98390_TWO_AMP)) {
+> +					dai_link->ops = &mt8188_max98390_ops;
+> +				}
 
-Ok this is better - please call this "pcw_chg_bit" (same for the definition).
+Can you please explain why is it *not* necessary to setup the TDM with
+mt8188_max98390_ops in the TWO_AMP case?
 
-Also, since it is impossible for PCW_CHG to be 0, please add a sanity check at
-the beginning of function mtk_clk_register_pll_ops(), like so:
+Please also add that as a comment in the code, as this looks strange.
 
-if (!data->pcw_chg_bit) {
-	pr_warn("Invalid PCW_CHG bit for pll %s", data->name);
-	return ERR_PTR(-EINVAL);
-}
-
-...like that, we're fully covered for eventual mistakes during porting (etc).
-
-Cheers,
+Thanks,
 Angelo
+
 
