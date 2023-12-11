@@ -4,109 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3899C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 09:57:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9D8C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 09:57:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:CC:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eZz2NH0MpC5WvnNslfBa0k9lf1A6RK8ts/s7dSoDI9g=; b=2UeRISs7/pFNDOmk3DJAgTZzkt
-	gw/0TLT7EAHwbcQW8QWsWozxBfpGWYnszTs2GNevKLazMr6ailGXpAy6okXbJmIYVi088gOEgO9jN
-	bUd9MKLDZi+RVSdvNbatvqMhWwvKZWOr2fTZZFnJJf3A6PzkFic5/QxcOog82nip2NY52h3hMElT3
-	dnbxYr0zdTEKB8h++GJru8OzZ1cdDkcWXRXdzCHK9/zTSA/GdscY51uwPVSbj+0ZDRVMlYe0eHF7A
-	nm8Iszlk1ZHS6fL5gsd8mSTFIlMiKMTHYCJnwyigwV4Fa+Y89yL2YfHP5jOpIyPyG8B0hKZn4K5y6
-	GIcbZgaQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iQQVWI3B2v38JC+cRavbriqseWFlb7dhS5tBJ9udQC0=; b=tXj2Myt6LyKAGQXWnPfs1m9Lmb
+	VymUFW1RSHBW9Upt9DFcLIfKOxh9ELPUPfLm+HwTZ2qYRbNFenxntUc03qs+xg54R9fwmKebFWv3W
+	kJ114THmKl+WyYZfkaaDGqYUWL/3weMqn1Z+tLhoYv+oMurZv1lh23i8/ywrehkSVBILvY7fAihm6
+	GSP/cVQm1OOrt/50wqoEIfwyyTEg5IsDZgMbDJBWaXc66FfQP2NOQKPO2TigaLlxD3MqTMjanAsaa
+	4tFYzSUiZH7HPEpnrTM0MBLgshlUtueS71xJOUPZCBzyX3BQDWDN3FbOXBHJx5WgLxAfMrmKketWg
+	b1Dsy9tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCd24-004Wwn-0R;
-	Mon, 11 Dec 2023 09:57:00 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1rCd2O-004X0h-2s;
+	Mon, 11 Dec 2023 09:57:21 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCd1z-004Wum-1G;
-	Mon, 11 Dec 2023 09:56:58 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 3BB8vQIw002804;
-	Mon, 11 Dec 2023 09:56:29 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	message-id:date:mime-version:from:subject:to:cc:references
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	qcppdkim1; bh=eZz2NH0MpC5WvnNslfBa0k9lf1A6RK8ts/s7dSoDI9g=; b=Mc
-	PXVTDPGbgxwLNKw1SoIs/vIYK4F/8cFrAAWt9E7Fd5qIWWGKNNerJ1/FffgWm0O5
-	rHTKhE102XCx7No1pegnrk3GvEKK3ax+x0CM68qBmfS2tYQRfGaVGnRytMgNA44c
-	iiP0sJIUxy9MahCRHFVoIcA7nmSzNdlCqX305tuLbk988r0JvNcKS6dID3/OEqJw
-	T3pKTwxCczsLarvtZPkwzg09bq9VcOnR1wHP5RO8Rg4NM0bT7vAkGtJ0yKEbzANu
-	CEHEKnGVwt19eohz9xgEnFWaPIc6fwRzAICdQLeFtOO5dVz8KF1avUDHwNhaldPg
-	SEWV+MT+bdQYw/iLN7Zg==
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uvnnstv8g-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Dec 2023 09:56:28 +0000 (GMT)
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3BB9uPdX017166
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Dec 2023 09:56:26 GMT
-Received: from [10.217.219.220] (10.80.80.8) by nalasex01b.na.qualcomm.com
- (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Mon, 11 Dec
- 2023 01:56:19 -0800
-Message-ID: <9330ff38-5285-43d8-bf90-3441762fdb9c@quicinc.com>
-Date: Mon, 11 Dec 2023 15:26:16 +0530
+	id 1rCd28-004Wxc-39;
+	Mon, 11 Dec 2023 09:57:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1702288623;
+	bh=6CjA6ctA+aoJ56ri2JQzkYVkT8sdbfqFhgd6RJqEU/E=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=3oYITDvQJx1zk9TEUDxJKSR7CtnfJS8tOHjRIqY+CVN5nPLVi3axYYancoJclYNg6
+	 af1PASxwqNDLIXKoe8aaTmNcSgjxGm2gsT88etR5bn9HeRhezw7hNBYYN7kkiY7Xxe
+	 KK5VCCNJCtLV/9P0LOxNP6wnWD1yEAhsgJQfE+L1H5F2JvlgdmEcmXIAQv1EtfYUgB
+	 N50An+R4NgSH/EocAuTVa3Rm/ooQRqZnHOIkeM3w8d09bxkbgnjeaDzaA2JhiLT0XF
+	 zWsKtS8jmd3caZJ96JPdAE29+X5yA6hjayookgBLZjU6vEi+nGOlFxWupvdExVzb9h
+	 e4mwvDLSh3L/A==
+Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5C303378140F;
+	Mon, 11 Dec 2023 09:57:01 +0000 (UTC)
+Message-ID: <060c8068-0f9b-40b4-89ed-3b968e4b0071@collabora.com>
+Date: Mon, 11 Dec 2023 10:57:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Naresh Maramaina <quic_mnaresh@quicinc.com>
-Subject: Re: [PATCH V2 1/3] ufs: core: Add CPU latency QoS support for ufs
- driver
-To: Manivannan Sadhasivam <mani@kernel.org>
-CC: "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        "Martin K. Petersen"
-	<martin.petersen@oracle.com>,
-        Peter Wang <peter.wang@mediatek.com>,
-        "Andy
- Gross" <agross@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        "Konrad
- Dybcio" <konrad.dybcio@linaro.org>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        <chu.stanley@gmail.com>, Alim
- Akhtar <alim.akhtar@samsung.com>,
-        Avri Altman <avri.altman@wdc.com>,
-        Bart Van
- Assche <bvanassche@acm.org>, <linux-scsi@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-        <linux-arm-msm@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <quic_cang@quicinc.com>,
-        <quic_nguyenb@quicinc.com>, Nitin Rawat
-	<quic_nitirawa@quicinc.com>
-References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
- <20231204143101.64163-2-quic_mnaresh@quicinc.com>
- <20231206152646.GH12802@thinkpad>
+Subject: Re: [PATCH v4 4/4] clk: mediatek: add drivers for MT7988 SoC
 Content-Language: en-US
-In-Reply-To: <20231206152646.GH12802@thinkpad>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Sabrina Dubroca <sd@queasysnail.net>, Jianhui Zhao <zhaojh329@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, "Garmin.Chang"
+ <Garmin.Chang@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>,
+ Jiasheng Jiang <jiasheng@iscas.ac.cn>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>,
+ James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+References: <097e82b0d66570763d64be1715517d8b032fcf95.1702158423.git.daniel@makrotopia.org>
+ <879b5bbcb165aa3f059a41218142b27e5f64597f.1702158423.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <879b5bbcb165aa3f059a41218142b27e5f64597f.1702158423.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 8EL01U5GejapoCFeM0qsMjrDVxFEs5iU
-X-Proofpoint-GUID: 8EL01U5GejapoCFeM0qsMjrDVxFEs5iU
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-09_02,2023-12-07_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 phishscore=0
- spamscore=0 priorityscore=1501 adultscore=0 malwarescore=0 mlxlogscore=999
- clxscore=1015 mlxscore=0 bulkscore=0 lowpriorityscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2311290000
- definitions=main-2312110080
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_015655_567842_F029D40B 
-X-CRM114-Status: GOOD (  26.45  )
+X-CRM114-CacheID: sfid-20231211_015705_183163_E1587126 
+X-CRM114-Status: GOOD (  26.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,224 +94,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On 12/6/2023 8:56 PM, Manivannan Sadhasivam wrote:
-> On Mon, Dec 04, 2023 at 08:00:59PM +0530, Maramaina Naresh wrote:
->> Register ufs driver to CPU latency PM QoS framework can improves
->> ufs device random io performance.
->>
->> PM QoS initialization will insert new QoS request into the CPU
->> latency QoS list with the maximum latency PM_QOS_DEFAULT_VALUE
->> value.
->>
->> UFS driver will vote for performance mode on scale up and power
->> save mode for scale down.
->>
->> If clock scaling feature is not enabled then voting will be based
->> on clock on or off condition.
->>
->> tiotest benchmark tool io performance results on sm8550 platform:
->>
->> 1. Without PM QoS support
->> 	Type (Speed in)    | Average of 18 iterations
->> 	Random Write(IPOS) | 41065.13
->> 	Random Read(IPOS)  | 37101.3
->>
->> 2. With PM QoS support
->> 	Type (Speed in)    | Average of 18 iterations
->> 	Random Write(IPOS) | 46784.9
->> 	Random Read(IPOS)  | 42943.4
->> (Improvement % with PM QoS = ~15%).
->>
->> Co-developed-by: Nitin Rawat <quic_nitirawa@quicinc.com>
->> Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
->> Signed-off-by: Naveen Kumar Goud Arepalli <quic_narepall@quicinc.com>
->> Signed-off-by: Maramaina Naresh <quic_mnaresh@quicinc.com>
->> ---
->>   drivers/ufs/core/ufshcd-priv.h |  8 +++++
->>   drivers/ufs/core/ufshcd.c      | 62 ++++++++++++++++++++++++++++++++++
->>   include/ufs/ufshcd.h           | 16 +++++++++
->>   3 files changed, 86 insertions(+)
->>
->> diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
->> index f42d99ce5bf1..536805f6c4e1 100644
->> --- a/drivers/ufs/core/ufshcd-priv.h
->> +++ b/drivers/ufs/core/ufshcd-priv.h
->> @@ -241,6 +241,14 @@ static inline void ufshcd_vops_config_scaling_param(struct ufs_hba *hba,
->>   		hba->vops->config_scaling_param(hba, p, data);
->>   }
->>   
->> +static inline u32 ufshcd_vops_config_qos_vote(struct ufs_hba *hba)
->> +{
->> +	if (hba->vops && hba->vops->config_qos_vote)
->> +		return hba->vops->config_qos_vote(hba);
+Il 09/12/23 22:56, Daniel Golle ha scritto:
+> From: Sam Shih <sam.shih@mediatek.com>
 > 
-> Please remove this callback as Bart noted.
+> Add APMIXED, ETH, INFRACFG and TOPCKGEN clock drivers which are
+> typical MediaTek designs.
 > 
-
-Sure Mani, will takecare of this comment.
-
->> +
->> +	return UFSHCD_QOS_DEFAULT_VOTE;
->> +}
->> +
->>   static inline void ufshcd_vops_reinit_notify(struct ufs_hba *hba)
->>   {
->>   	if (hba->vops && hba->vops->reinit_notify)
->> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
->> index ae9936fc6ffb..13370febd2b5 100644
->> --- a/drivers/ufs/core/ufshcd.c
->> +++ b/drivers/ufs/core/ufshcd.c
->> @@ -1001,6 +1001,20 @@ static bool ufshcd_is_unipro_pa_params_tuning_req(struct ufs_hba *hba)
->>   	return ufshcd_get_local_unipro_ver(hba) < UFS_UNIPRO_VER_1_6;
->>   }
->>   
->> +/**
->> + * ufshcd_pm_qos_perf - vote for PM QoS performance or power save mode
+> Also add driver for XFIPLL clock generating the 156.25MHz clock for
+> the XFI SerDes. It needs an undocumented software workaround and has
+> an unknown internal design.
 > 
-> ufshcd_pm_qos_update() - Update PM QoS request
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+> v4:
+>   * make use of existing GATE_MTK_FLAGS macro
+>   * reformat to max. 100 columns
+>   * cosmetics
 > 
-
-Sure Mani, will takecare of this comment.
-
->> + * @hba: per adapter instance
->> + * @on: If True, vote for perf PM QoS mode otherwise power save mode
->> + */
->> +static void ufshcd_pm_qos_perf(struct ufs_hba *hba, bool on)
->> +{
->> +	if (!hba->pm_qos_init)
->> +		return;
->> +
->> +	cpu_latency_qos_update_request(&hba->pm_qos_req, on ? hba->qos_vote
->> +							: PM_QOS_DEFAULT_VALUE);
->> +}
->> +
->>   /**
->>    * ufshcd_set_clk_freq - set UFS controller clock frequencies
->>    * @hba: per adapter instance
->> @@ -1153,6 +1167,10 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
->>   	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
->>   			(scale_up ? "up" : "down"),
->>   			ktime_to_us(ktime_sub(ktime_get(), start)), ret);
->> +
->> +	if (!ret)
->> +		ufshcd_pm_qos_perf(hba, scale_up);
+> v3: use git --from ...
+> v2: no changes
 > 
-> Can't you just move this before trace_ufshcd_profile_clk_scaling()? This also
-> avoids checking for !ret.
 > 
-
-In this case, we need to use goto out; inside if condition of 
-ufshcd_vops_clk_scale_notify.
-
-we can enable ufshcd_pm_qos_perf only when ufshcd_vops_clk_scale_notify 
-is successful.
-
-Will add goto out; in next patch set.
-
-
->> +
->>   	return ret;
->>   }
->>   
->> @@ -9204,6 +9222,8 @@ static int ufshcd_setup_clocks(struct ufs_hba *hba, bool on)
->>   	if (ret)
->>   		return ret;
->>   
->> +	if (!ufshcd_is_clkscaling_supported(hba))
->> +		ufshcd_pm_qos_perf(hba, on);
->>   out:
->>   	if (ret) {
->>   		list_for_each_entry(clki, head, list) {
->> @@ -9296,6 +9316,45 @@ static int ufshcd_init_clocks(struct ufs_hba *hba)
->>   	return ret;
->>   }
->>   
->> +/**
->> + * ufshcd_pm_qos_init - initialize PM QoS instance
+>   drivers/clk/mediatek/Kconfig               |   9 +
+>   drivers/clk/mediatek/Makefile              |   5 +
+>   drivers/clk/mediatek/clk-mt7988-apmixed.c  | 102 +++++++
+>   drivers/clk/mediatek/clk-mt7988-eth.c      | 133 +++++++++
+>   drivers/clk/mediatek/clk-mt7988-infracfg.c | 274 +++++++++++++++++
+>   drivers/clk/mediatek/clk-mt7988-topckgen.c | 325 +++++++++++++++++++++
+>   drivers/clk/mediatek/clk-mt7988-xfipll.c   |  78 +++++
+>   7 files changed, 926 insertions(+)
+>   create mode 100644 drivers/clk/mediatek/clk-mt7988-apmixed.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt7988-eth.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt7988-infracfg.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt7988-topckgen.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt7988-xfipll.c
 > 
-> "Initialize PM QoS request"
-> 
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index 48b42d11111cd..70a005e7e1b18 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -423,6 +423,15 @@ config COMMON_CLK_MT7986_ETHSYS
+>   	  This driver adds support for clocks for Ethernet and SGMII
+>   	  required on MediaTek MT7986 SoC.
+>   
+> +config COMMON_CLK_MT7988
+> +	tristate "Clock driver for MediaTek MT7988"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	select COMMON_CLK_MEDIATEK
+> +	default ARCH_MEDIATEK
+> +	help
+> +	  This driver supports MediaTek MT7988 basic clocks and clocks
+> +	  required for various periperals found on this SoC.
+> +
+>   config COMMON_CLK_MT8135
+>   	tristate "Clock driver for MediaTek MT8135"
+>   	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index dbeaa5b41177d..eeccfa039896f 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -62,6 +62,11 @@ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-apmixed.o
+>   obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-topckgen.o
+>   obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-infracfg.o
+>   obj-$(CONFIG_COMMON_CLK_MT7986_ETHSYS) += clk-mt7986-eth.o
+> +obj-$(CONFIG_COMMON_CLK_MT7988) += clk-mt7988-apmixed.o
+> +obj-$(CONFIG_COMMON_CLK_MT7988) += clk-mt7988-topckgen.o
+> +obj-$(CONFIG_COMMON_CLK_MT7988) += clk-mt7988-infracfg.o
+> +obj-$(CONFIG_COMMON_CLK_MT7988) += clk-mt7988-eth.o
+> +obj-$(CONFIG_COMMON_CLK_MT7988) += clk-mt7988-xfipll.o
+>   obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135-apmixedsys.o clk-mt8135.o
+>   obj-$(CONFIG_COMMON_CLK_MT8167) += clk-mt8167-apmixedsys.o clk-mt8167.o
+>   obj-$(CONFIG_COMMON_CLK_MT8167_AUDSYS) += clk-mt8167-aud.o
+> diff --git a/drivers/clk/mediatek/clk-mt7988-apmixed.c b/drivers/clk/mediatek/clk-mt7988-apmixed.c
+> new file mode 100644
+> index 0000000000000..02eb6354b01a8
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt7988-apmixed.c
+> @@ -0,0 +1,102 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + * Author: Sam Shih <sam.shih@mediatek.com>
+> + * Author: Xiufeng Li <Xiufeng.Li@mediatek.com>
+> + */
+> +
+> +#include <linux/clk-provider.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +#include "clk-mtk.h"
+> +#include "clk-gate.h"
+> +#include "clk-mux.h"
+> +#include "clk-pll.h"
+> +#include <dt-bindings/clock/mediatek,mt7988-clk.h>
+> +
+> +#define MT7988_PLL_FMAX (2500UL * MHZ)
+> +#define MT7988_PCW_CHG_SHIFT 2
+> +
+> +#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _rst_bar_mask, _pcwbits, _pd_reg,      \
+> +	    _pd_shift, _tuner_reg, _tuner_en_reg, _tuner_en_bit, _pcw_reg, _pcw_shift,           \
+> +	    _pcw_chg_reg)                                                                        \
+> +	{                                                                                        \
+> +		.id = _id, .name = _name, .reg = _reg, .pwr_reg = _pwr_reg, .en_mask = _en_mask, \
+> +		.flags = _flags, .rst_bar_mask = BIT(_rst_bar_mask), .fmax = MT7988_PLL_FMAX,    \
+> +		.pcwbits = _pcwbits, .pd_reg = _pd_reg, .pd_shift = _pd_shift,                   \
+> +		.tuner_reg = _tuner_reg, .tuner_en_reg = _tuner_en_reg,                          \
+> +		.tuner_en_bit = _tuner_en_bit, .pcw_reg = _pcw_reg, .pcw_shift = _pcw_shift,     \
+> +		.pcw_chg_reg = _pcw_chg_reg, .pcw_chg_shift = MT7988_PCW_CHG_SHIFT,              \
+> +		.parent_name = "clkxtal",                                                        \
+> +	}
 
-Sure Mani, will takecare of this comment.
+I think that there was a bit of misunderstanding here: I said 100cols, and that's
+fine, but I wanted you to do that with everything but the macros, following what
+was done in all the other MediaTek clock drivers.
 
->> + * @hba: per adapter instance
->> + */
->> +static void ufshcd_pm_qos_init(struct ufs_hba *hba)
->> +{
->> +	if (!(hba->caps & UFSHCD_CAP_PM_QOS))
->> +		return;
->> +
->> +	/*
->> +	 * called to configure PM QoS vote value for UFS host,
->> +	 * expecting qos vote return value from caller else
->> +	 * default vote value will be return.
->> +	 */
->> +	hba->qos_vote = ufshcd_vops_config_qos_vote(hba);
-> 
-> No need of this variable too if you get rid of the callback.
-> 
->> +	cpu_latency_qos_add_request(&hba->pm_qos_req,
->> +					PM_QOS_DEFAULT_VALUE);
->> +
->> +	if (cpu_latency_qos_request_active(&hba->pm_qos_req))
->> +		hba->pm_qos_init = true;
-> 
-> Why do you need this flag?
+Can you please change the macros again?
 
-this flag ensure UFS qos request got added into the list.
+Also, there's some discrepancy in the usage of tabulations vs spaces, please fix.
 
-> 
->> +
->> +	dev_dbg(hba->dev, "%s: QoS %s, qos_vote: %u\n", __func__,
->> +		hba->pm_qos_init ? "initialized" : "uninitialized",
->> +		hba->qos_vote);
->> +}
->> +
->> +/**
->> + * ufshcd_pm_qos_exit - remove instance from PM QoS
->> + * @hba: per adapter instance
->> + */
->> +static void ufshcd_pm_qos_exit(struct ufs_hba *hba)
->> +{
->> +	if (!hba->pm_qos_init)
->> +		return;
->> +
->> +	cpu_latency_qos_remove_request(&hba->pm_qos_req);
->> +	hba->pm_qos_init = false;
->> +}
->> +
-> 
-> [...]
-> 
->>   /**
->>    * struct ufs_hba - per adapter private structure
->>    * @mmio_base: UFSHCI base register address
->> @@ -912,6 +923,8 @@ enum ufshcd_mcq_opr {
->>    * @mcq_base: Multi circular queue registers base address
->>    * @uhq: array of supported hardware queues
->>    * @dev_cmd_queue: Queue for issuing device management commands
->> + * @pm_qos_req: PM QoS request handle
->> + * @pm_qos_init: flag to check if pm qos init completed
->>    */
->>   struct ufs_hba {
->>   	void __iomem *mmio_base;
->> @@ -1076,6 +1089,9 @@ struct ufs_hba {
->>   	struct ufs_hw_queue *uhq;
->>   	struct ufs_hw_queue *dev_cmd_queue;
->>   	struct ufshcd_mcq_opr_info_t mcq_opr[OPR_MAX];
->> +	struct pm_qos_request pm_qos_req;
->> +	bool pm_qos_init;
->> +	u32 qos_vote;
-> 
-> Order doesn't match Kdoc.
->
+#define PLL(....)*TAB*\
 
-qos_vote variable will be remove as per latest comment.
+....
 
-> - Mani
-> 
+	{										\
+		.id = _id,							\
+		.name = _name,							\
+		.reg = _reg,							\
+		.pwr_reg = _pwr_reg,						\
+		.en_mask = _en_mask,						\
+		...etc etc etc...						\
+}
 
 Thanks,
-Naresh.
+Angelo
 
