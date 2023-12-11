@@ -4,67 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20910C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 09:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3899C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Dec 2023 09:57:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tQKgWZ9+y1OiXx3XNF4AFI3F1LrNHYG6kzcLKtrVoKI=; b=TrOcfcDJNPYgo7dUti7ZGTYj8+
-	bWHQEeoesnLSfJJXe//DbWaczVSU6CK9vuaLiYHHcGKH1Fq61v2M+FHWfjhzVYnWfRBmDkAo16Q6J
-	tG6x6jGYu7aC59zD74udvPH0eXmAE6HbaZKm97ZtV4SCPAbSvMo74H6s6JiSkbPTfocSlFW0I2Ol2
-	RPnW6180vryaqCO3m2cw9xeqey5kFNvBt8bnx1L/OtdrgRFM5r+aHPJKv3fPS19p4cDAvDIWAL9uQ
-	zTJ2MbFwOyVOGHgiV/wMYb096Wp4EQy7qdP3+MEV5Jih61KMUuYtt15q4uQ4fchxB4ADs6QBK9p/X
-	c4a7/QFQ==;
+	Content-Type:In-Reply-To:References:CC:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eZz2NH0MpC5WvnNslfBa0k9lf1A6RK8ts/s7dSoDI9g=; b=2UeRISs7/pFNDOmk3DJAgTZzkt
+	gw/0TLT7EAHwbcQW8QWsWozxBfpGWYnszTs2GNevKLazMr6ailGXpAy6okXbJmIYVi088gOEgO9jN
+	bUd9MKLDZi+RVSdvNbatvqMhWwvKZWOr2fTZZFnJJf3A6PzkFic5/QxcOog82nip2NY52h3hMElT3
+	dnbxYr0zdTEKB8h++GJru8OzZ1cdDkcWXRXdzCHK9/zTSA/GdscY51uwPVSbj+0ZDRVMlYe0eHF7A
+	nm8Iszlk1ZHS6fL5gsd8mSTFIlMiKMTHYCJnwyigwV4Fa+Y89yL2YfHP5jOpIyPyG8B0hKZn4K5y6
+	GIcbZgaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCcuU-004W0w-20;
-	Mon, 11 Dec 2023 09:49:10 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rCd24-004Wwn-0R;
+	Mon, 11 Dec 2023 09:57:00 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCcuL-004VzY-1R;
-	Mon, 11 Dec 2023 09:49:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702288136;
-	bh=6mxzECBrYAAv88Or/VmuYFmoaCjMKUWyx5lJyKf47Rg=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=ZOyfTjeWI75SumpYHrJJp3tpnNbregMBpz6DYPBko3jqkrqUVZIIKilCA2wvPCDmF
-	 ko75vYXWrMKcmLVqcRtnuP7fwh6mFje5roaPrHqyRZy/yEvdee3SRlJ895KZOPuvTz
-	 ch3rLBmYcqzM22MP/xXNoCohbQCB+dkubsUls2EjCj8sF7/TbUh4nEUiaTMgnx0Ina
-	 VA+s4nyZeZu9o17UPBsUnNjBZrBE1jOeb8RaVZdNcMEFOY1YFJsDMcPlW/gN9DxU2D
-	 cdtpMKJ1GKl0vjxrH70xRVPZ83Uqp0vmZXCTcZs50uUu9S67Pu8DX2he1OekWYv3jC
-	 lwcL/q7eCSHng==
-Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4827F378140E;
-	Mon, 11 Dec 2023 09:48:55 +0000 (UTC)
-Message-ID: <1db19550-99c2-4094-95d9-9db1c384519f@collabora.com>
-Date: Mon, 11 Dec 2023 10:48:54 +0100
+	id 1rCd1z-004Wum-1G;
+	Mon, 11 Dec 2023 09:56:58 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 3BB8vQIw002804;
+	Mon, 11 Dec 2023 09:56:29 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	message-id:date:mime-version:from:subject:to:cc:references
+	:in-reply-to:content-type:content-transfer-encoding; s=
+	qcppdkim1; bh=eZz2NH0MpC5WvnNslfBa0k9lf1A6RK8ts/s7dSoDI9g=; b=Mc
+	PXVTDPGbgxwLNKw1SoIs/vIYK4F/8cFrAAWt9E7Fd5qIWWGKNNerJ1/FffgWm0O5
+	rHTKhE102XCx7No1pegnrk3GvEKK3ax+x0CM68qBmfS2tYQRfGaVGnRytMgNA44c
+	iiP0sJIUxy9MahCRHFVoIcA7nmSzNdlCqX305tuLbk988r0JvNcKS6dID3/OEqJw
+	T3pKTwxCczsLarvtZPkwzg09bq9VcOnR1wHP5RO8Rg4NM0bT7vAkGtJ0yKEbzANu
+	CEHEKnGVwt19eohz9xgEnFWaPIc6fwRzAICdQLeFtOO5dVz8KF1avUDHwNhaldPg
+	SEWV+MT+bdQYw/iLN7Zg==
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uvnnstv8g-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Dec 2023 09:56:28 +0000 (GMT)
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3BB9uPdX017166
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Dec 2023 09:56:26 GMT
+Received: from [10.217.219.220] (10.80.80.8) by nalasex01b.na.qualcomm.com
+ (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Mon, 11 Dec
+ 2023 01:56:19 -0800
+Message-ID: <9330ff38-5285-43d8-bf90-3441762fdb9c@quicinc.com>
+Date: Mon, 11 Dec 2023 15:26:16 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: mt7986: silence error in case of
- -EPROBE_DEFER
+From: Naresh Maramaina <quic_mnaresh@quicinc.com>
+Subject: Re: [PATCH V2 1/3] ufs: core: Add CPU latency QoS support for ufs
+ driver
+To: Manivannan Sadhasivam <mani@kernel.org>
+CC: "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen"
+	<martin.petersen@oracle.com>,
+        Peter Wang <peter.wang@mediatek.com>,
+        "Andy
+ Gross" <agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        "Konrad
+ Dybcio" <konrad.dybcio@linaro.org>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        <chu.stanley@gmail.com>, Alim
+ Akhtar <alim.akhtar@samsung.com>,
+        Avri Altman <avri.altman@wdc.com>,
+        Bart Van
+ Assche <bvanassche@acm.org>, <linux-scsi@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+        <linux-arm-msm@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <quic_cang@quicinc.com>,
+        <quic_nguyenb@quicinc.com>, Nitin Rawat
+	<quic_nitirawa@quicinc.com>
+References: <20231204143101.64163-1-quic_mnaresh@quicinc.com>
+ <20231204143101.64163-2-quic_mnaresh@quicinc.com>
+ <20231206152646.GH12802@thinkpad>
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maso Huang <maso.huang@mediatek.com>, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <98491ec78ab671f5a14fce42d10f9745ebddb112.1702258360.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <98491ec78ab671f5a14fce42d10f9745ebddb112.1702258360.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <20231206152646.GH12802@thinkpad>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: 8EL01U5GejapoCFeM0qsMjrDVxFEs5iU
+X-Proofpoint-GUID: 8EL01U5GejapoCFeM0qsMjrDVxFEs5iU
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-09_02,2023-12-07_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 phishscore=0
+ spamscore=0 priorityscore=1501 adultscore=0 malwarescore=0 mlxlogscore=999
+ clxscore=1015 mlxscore=0 bulkscore=0 lowpriorityscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2311290000
+ definitions=main-2312110080
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_014901_833070_F8B514CA 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20231211_015655_567842_F029D40B 
+X-CRM114-Status: GOOD (  26.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,32 +121,224 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/12/23 02:33, Daniel Golle ha scritto:
-> If probe is defered no error should be printed. Mute it.
+
+On 12/6/2023 8:56 PM, Manivannan Sadhasivam wrote:
+> On Mon, Dec 04, 2023 at 08:00:59PM +0530, Maramaina Naresh wrote:
+>> Register ufs driver to CPU latency PM QoS framework can improves
+>> ufs device random io performance.
+>>
+>> PM QoS initialization will insert new QoS request into the CPU
+>> latency QoS list with the maximum latency PM_QOS_DEFAULT_VALUE
+>> value.
+>>
+>> UFS driver will vote for performance mode on scale up and power
+>> save mode for scale down.
+>>
+>> If clock scaling feature is not enabled then voting will be based
+>> on clock on or off condition.
+>>
+>> tiotest benchmark tool io performance results on sm8550 platform:
+>>
+>> 1. Without PM QoS support
+>> 	Type (Speed in)    | Average of 18 iterations
+>> 	Random Write(IPOS) | 41065.13
+>> 	Random Read(IPOS)  | 37101.3
+>>
+>> 2. With PM QoS support
+>> 	Type (Speed in)    | Average of 18 iterations
+>> 	Random Write(IPOS) | 46784.9
+>> 	Random Read(IPOS)  | 42943.4
+>> (Improvement % with PM QoS = ~15%).
+>>
+>> Co-developed-by: Nitin Rawat <quic_nitirawa@quicinc.com>
+>> Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
+>> Signed-off-by: Naveen Kumar Goud Arepalli <quic_narepall@quicinc.com>
+>> Signed-off-by: Maramaina Naresh <quic_mnaresh@quicinc.com>
+>> ---
+>>   drivers/ufs/core/ufshcd-priv.h |  8 +++++
+>>   drivers/ufs/core/ufshcd.c      | 62 ++++++++++++++++++++++++++++++++++
+>>   include/ufs/ufshcd.h           | 16 +++++++++
+>>   3 files changed, 86 insertions(+)
+>>
+>> diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+>> index f42d99ce5bf1..536805f6c4e1 100644
+>> --- a/drivers/ufs/core/ufshcd-priv.h
+>> +++ b/drivers/ufs/core/ufshcd-priv.h
+>> @@ -241,6 +241,14 @@ static inline void ufshcd_vops_config_scaling_param(struct ufs_hba *hba,
+>>   		hba->vops->config_scaling_param(hba, p, data);
+>>   }
+>>   
+>> +static inline u32 ufshcd_vops_config_qos_vote(struct ufs_hba *hba)
+>> +{
+>> +	if (hba->vops && hba->vops->config_qos_vote)
+>> +		return hba->vops->config_qos_vote(hba);
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->   sound/soc/mediatek/mt7986/mt7986-wm8960.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
+> Please remove this callback as Bart noted.
 > 
-> diff --git a/sound/soc/mediatek/mt7986/mt7986-wm8960.c b/sound/soc/mediatek/mt7986/mt7986-wm8960.c
-> index c1390b3734101..24a4b943030d7 100644
-> --- a/sound/soc/mediatek/mt7986/mt7986-wm8960.c
-> +++ b/sound/soc/mediatek/mt7986/mt7986-wm8960.c
-> @@ -144,7 +144,9 @@ static int mt7986_wm8960_machine_probe(struct platform_device *pdev)
->   
->   	ret = devm_snd_soc_register_card(&pdev->dev, card);
->   	if (ret) {
-> -		dev_err(&pdev->dev, "%s snd_soc_register_card fail: %d\n", __func__, ret);
-> +		if (ret != -EPROBE_DEFER)
-> +			dev_err(&pdev->dev, "%s snd_soc_register_card fail: %d\n", __func__, ret);
 
-This is *exactly* what dev_err_probe() does! :-)
+Sure Mani, will takecare of this comment.
 
-dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card fail: %d\n", __func__);
+>> +
+>> +	return UFSHCD_QOS_DEFAULT_VOTE;
+>> +}
+>> +
+>>   static inline void ufshcd_vops_reinit_notify(struct ufs_hba *hba)
+>>   {
+>>   	if (hba->vops && hba->vops->reinit_notify)
+>> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+>> index ae9936fc6ffb..13370febd2b5 100644
+>> --- a/drivers/ufs/core/ufshcd.c
+>> +++ b/drivers/ufs/core/ufshcd.c
+>> @@ -1001,6 +1001,20 @@ static bool ufshcd_is_unipro_pa_params_tuning_req(struct ufs_hba *hba)
+>>   	return ufshcd_get_local_unipro_ver(hba) < UFS_UNIPRO_VER_1_6;
+>>   }
+>>   
+>> +/**
+>> + * ufshcd_pm_qos_perf - vote for PM QoS performance or power save mode
+> 
+> ufshcd_pm_qos_update() - Update PM QoS request
+> 
 
-Regards,
-Angelo
+Sure Mani, will takecare of this comment.
+
+>> + * @hba: per adapter instance
+>> + * @on: If True, vote for perf PM QoS mode otherwise power save mode
+>> + */
+>> +static void ufshcd_pm_qos_perf(struct ufs_hba *hba, bool on)
+>> +{
+>> +	if (!hba->pm_qos_init)
+>> +		return;
+>> +
+>> +	cpu_latency_qos_update_request(&hba->pm_qos_req, on ? hba->qos_vote
+>> +							: PM_QOS_DEFAULT_VALUE);
+>> +}
+>> +
+>>   /**
+>>    * ufshcd_set_clk_freq - set UFS controller clock frequencies
+>>    * @hba: per adapter instance
+>> @@ -1153,6 +1167,10 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
+>>   	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
+>>   			(scale_up ? "up" : "down"),
+>>   			ktime_to_us(ktime_sub(ktime_get(), start)), ret);
+>> +
+>> +	if (!ret)
+>> +		ufshcd_pm_qos_perf(hba, scale_up);
+> 
+> Can't you just move this before trace_ufshcd_profile_clk_scaling()? This also
+> avoids checking for !ret.
+> 
+
+In this case, we need to use goto out; inside if condition of 
+ufshcd_vops_clk_scale_notify.
+
+we can enable ufshcd_pm_qos_perf only when ufshcd_vops_clk_scale_notify 
+is successful.
+
+Will add goto out; in next patch set.
 
 
+>> +
+>>   	return ret;
+>>   }
+>>   
+>> @@ -9204,6 +9222,8 @@ static int ufshcd_setup_clocks(struct ufs_hba *hba, bool on)
+>>   	if (ret)
+>>   		return ret;
+>>   
+>> +	if (!ufshcd_is_clkscaling_supported(hba))
+>> +		ufshcd_pm_qos_perf(hba, on);
+>>   out:
+>>   	if (ret) {
+>>   		list_for_each_entry(clki, head, list) {
+>> @@ -9296,6 +9316,45 @@ static int ufshcd_init_clocks(struct ufs_hba *hba)
+>>   	return ret;
+>>   }
+>>   
+>> +/**
+>> + * ufshcd_pm_qos_init - initialize PM QoS instance
+> 
+> "Initialize PM QoS request"
+> 
+
+Sure Mani, will takecare of this comment.
+
+>> + * @hba: per adapter instance
+>> + */
+>> +static void ufshcd_pm_qos_init(struct ufs_hba *hba)
+>> +{
+>> +	if (!(hba->caps & UFSHCD_CAP_PM_QOS))
+>> +		return;
+>> +
+>> +	/*
+>> +	 * called to configure PM QoS vote value for UFS host,
+>> +	 * expecting qos vote return value from caller else
+>> +	 * default vote value will be return.
+>> +	 */
+>> +	hba->qos_vote = ufshcd_vops_config_qos_vote(hba);
+> 
+> No need of this variable too if you get rid of the callback.
+> 
+>> +	cpu_latency_qos_add_request(&hba->pm_qos_req,
+>> +					PM_QOS_DEFAULT_VALUE);
+>> +
+>> +	if (cpu_latency_qos_request_active(&hba->pm_qos_req))
+>> +		hba->pm_qos_init = true;
+> 
+> Why do you need this flag?
+
+this flag ensure UFS qos request got added into the list.
+
+> 
+>> +
+>> +	dev_dbg(hba->dev, "%s: QoS %s, qos_vote: %u\n", __func__,
+>> +		hba->pm_qos_init ? "initialized" : "uninitialized",
+>> +		hba->qos_vote);
+>> +}
+>> +
+>> +/**
+>> + * ufshcd_pm_qos_exit - remove instance from PM QoS
+>> + * @hba: per adapter instance
+>> + */
+>> +static void ufshcd_pm_qos_exit(struct ufs_hba *hba)
+>> +{
+>> +	if (!hba->pm_qos_init)
+>> +		return;
+>> +
+>> +	cpu_latency_qos_remove_request(&hba->pm_qos_req);
+>> +	hba->pm_qos_init = false;
+>> +}
+>> +
+> 
+> [...]
+> 
+>>   /**
+>>    * struct ufs_hba - per adapter private structure
+>>    * @mmio_base: UFSHCI base register address
+>> @@ -912,6 +923,8 @@ enum ufshcd_mcq_opr {
+>>    * @mcq_base: Multi circular queue registers base address
+>>    * @uhq: array of supported hardware queues
+>>    * @dev_cmd_queue: Queue for issuing device management commands
+>> + * @pm_qos_req: PM QoS request handle
+>> + * @pm_qos_init: flag to check if pm qos init completed
+>>    */
+>>   struct ufs_hba {
+>>   	void __iomem *mmio_base;
+>> @@ -1076,6 +1089,9 @@ struct ufs_hba {
+>>   	struct ufs_hw_queue *uhq;
+>>   	struct ufs_hw_queue *dev_cmd_queue;
+>>   	struct ufshcd_mcq_opr_info_t mcq_opr[OPR_MAX];
+>> +	struct pm_qos_request pm_qos_req;
+>> +	bool pm_qos_init;
+>> +	u32 qos_vote;
+> 
+> Order doesn't match Kdoc.
+>
+
+qos_vote variable will be remove as per latest comment.
+
+> - Mani
+> 
+
+Thanks,
+Naresh.
 
