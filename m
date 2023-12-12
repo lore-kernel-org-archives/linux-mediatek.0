@@ -4,59 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 383D8C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 11:45:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D1DFC4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 11:46:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LznIPv+artTQrJcpJ3JO+c3yzW30qzm+L268Ns/clFw=; b=A80CYwAcJK7I2jcEkVNb+S/TiT
-	s2gZsli6juIrcVrl8Iy5nHUalYhKwnCY/M5ssE6HiuQrRNr0zgcitV5yGTlryo1QjCNUBoUO5DrjX
-	T5K/z6rSfm3Pku1XIzJN3Ld6ylJ7Ohv4qhBR0U34BSUc4U/NhetwOHw6bBNW0B3jp9AYytmWav8Tn
-	GyEaDzE1FQqF+NFhujQAUjp7egnxhauyPi/MWTUXuog2MfVcnh0PhFs+cgYQm7PnjHiUSvK/AyY3t
-	t+XHBPyyAmmtnSKs2orOAKoat3hpquL8rk2bg61f8UuLy+Cb//mWOOxuORtjssBPbgufrqH63yjHZ
-	3JZVuOPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EG1pvniL7aSi+rGDpIwDbxqC50mamRjZN6IHwqrzrnE=; b=W2Su7yaqLJyt1YmLeoSM66fCkm
+	DSJyXnfxMlT4HfWLIZtAsjfsA5O1PQKCuuR1XN0E7ubs6U3Vtg3rMmAGOw8eIOdt9tZNCW8AFsx3f
+	ir0ZXoiAnqUorGM2O/0M3XMZ2EXUB3O8dIOujGj/+Gul1ifU8okPiKQBWM7PGb/jRtbCU56XxRvY2
+	AU/A1RwAdcaIyEmOGqrJOviy1HhY0Ng00XDCEgUJjXi7lUdq/1GhrvZPAncQlnOHfaOjK+Cd2+i+X
+	q0eB12zNgdXNWpcuFo8QPM0IbHhNALf00rS+2n708oVJfqifmQCHIIu6wqu0nip30GQL9d8FxrFoG
+	9rGzgSOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD1Ca-00BZU7-0s;
-	Tue, 12 Dec 2023 11:45:28 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rD1DG-00BZYP-04;
+	Tue, 12 Dec 2023 11:46:10 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD1CX-00BZTO-1E
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Dec 2023 11:45:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 693A7CE131D;
-	Tue, 12 Dec 2023 11:45:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BF18C433C8;
-	Tue, 12 Dec 2023 11:45:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1702381522;
-	bh=W+wu89yS6ISCTJNOIGobljSOiLONbTsNZcOU+gHhOC0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Y3aY10B2veYLe39QbwiYhKctBqWU8+cZIFtuv8UrnHy7ioljgw+VVW/xAlNjlKfN2
-	 B2WnPBwXc/oNFPrFR2vlf6kGBIrDUmXXWXG+4P3vtUSvEp5aa4zPgdvg2FvtTcrLJH
-	 5ncaF+llV88ZZGQLVK7doz79ajaV9ARwFxKCa/o0=
-Date: Tue, 12 Dec 2023 12:45:20 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: shitao <shitao@kylinos.cn>
-Cc: alcooperx@gmail.com, chunfeng.yun@mediatek.com,
-	justin.chen@broadcom.com, kernel-bot@kylinos.cn,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-usb@vger.kernel.org
-Subject: Re: [PATCH] usb: mtu3: fix comment typo
-Message-ID: <2023121208-tattoo-grief-a78b@gregkh>
-References: <2023121216-shabby-hastily-f094@gregkh>
- <20231212110959.3115422-1-shitao@kylinos.cn>
+	id 1rD1DA-00BZWL-2q;
+	Tue, 12 Dec 2023 11:46:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1702381561;
+	bh=mk0Ql/32iCQN6Zu9d7ds86iUmRmNQGYWE06oEVTqv3g=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=JbBffc3kCZpXpDx69DvcidNpBgGjp1a1lFqlq6HAp3c7P37YrciwWlP5aHJK8zgLB
+	 N1FYICfIIgfk7wwkm1rMercEQJy1hv6hOaa9F6SDoTd0aTN5gse7ij6LLWctE0i55u
+	 m4VezcqJUsqiW6mG82TLsyDc8DCYyVNUGdsIt6fcOwt+Mr9bp6GiO+KGBhCZrbDsyK
+	 Q3vgTBYIJfzQZvVLxR0rksOvdynEJARx3AVmrZtzXlLpPvjFqI4yUcEJXES8bZbRwx
+	 5QVD48y1pW7sRPKDVZFbezXVo2FCmSaG/Nuz+UvaOIqJZz6JK46abNbbJCOzY0C3jm
+	 3kJBWkiYE0q/A==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 122FF378145C;
+	Tue, 12 Dec 2023 11:46:01 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: arm-soc <arm@kernel.org>,
+	soc <soc@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [GIT,PULL,3/3] MediaTek ARM64 defconfig updates for v6.8
+Date: Tue, 12 Dec 2023 12:44:29 +0100
+Message-ID: <20231212114515.121695-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20231212114515.121695-1-angelogioacchino.delregno@collabora.com>
+References: <20231212114515.121695-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231212110959.3115422-1-shitao@kylinos.cn>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_034525_601555_323D3F7D 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20231212_034605_121305_567F1B3A 
+X-CRM114-Status: UNSURE (   6.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,44 +75,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 12, 2023 at 07:09:59PM +0800, shitao wrote:
-> Reported-by: k2ci <kernel-bot@kylinos.cn>
-> Signed-off-by: shitao <shitao@kylinos.cn>
-> ---
-> Hi,
-> according to your suggestion, I have split it into two patches and added some simple instructions.
-> This is about fixing the misspelling of "empty" in the mtu3_qmu.c file. 
-> thanks.
->  drivers/usb/mtu3/mtu3_qmu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
-> index 3d77408e3133..03f26589b056 100644
-> --- a/drivers/usb/mtu3/mtu3_qmu.c
-> +++ b/drivers/usb/mtu3/mtu3_qmu.c
-> @@ -221,7 +221,7 @@ static struct qmu_gpd *advance_deq_gpd(struct mtu3_gpd_ring *ring)
->  	return ring->dequeue;
->  }
->  
-> -/* check if a ring is emtpy */
-> +/* check if a ring is empty */
->  static bool gpd_ring_empty(struct mtu3_gpd_ring *ring)
->  {
->  	struct qmu_gpd *enq = ring->enqueue;
-> -- 
-> 2.34.1
-> 
+The following changes since commit b85ea95d086471afb4ad062012a4d73cd328fa86:
 
-I would strongly suggest that you practice kernel patches in the
-drivers/staging/ portion of the kernel, as that is where people learn
-how to do this properly, and not bother other subsystems or developers.
+  Linux 6.7-rc1 (2023-11-12 16:19:07 -0800)
 
-Please start there and learn the basics, and then you can move to other
-portions of the kernel as you will not be making simple mistakes like
-you are here (hint, you forgot to version your patch, AND you forgot a
-changelog...)
+are available in the Git repository at:
 
-thanks,
+  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-defconfig-for-v6.8
 
-greg k-h
+for you to fetch changes up to ebb78614ce2ff73be14ed7339b832e24e381d3fc:
+
+  arm64: defconfig: Enable configs for MT8195-Cherry-Tomato Chromebook (2023-12-12 11:52:15 +0100)
+
+----------------------------------------------------------------
+MediaTek ARM64 defconfig updates for v6.8
+
+Those defconfig changes enable booting the MT8173 Chromebooks with the
+enablement of the DA9211 regulator driver and adds modules for sound,
+AudioDSP, DisplayPort and LVTS Thermal for MT8192/MT8195, and module
+for the ChromeOS Keyboard LED backlight which is present on various
+Google Chromebooks.
+
+----------------------------------------------------------------
+Nícolas F. R. A. Prado (1):
+      arm64: defconfig: Enable configs for MT8195-Cherry-Tomato Chromebook
+
+Vignesh Raman (1):
+      arm64: defconfig: Enable DA9211 regulator
+
+ arch/arm64/configs/defconfig | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
 
