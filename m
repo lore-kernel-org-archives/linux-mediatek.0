@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16260C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 10:00:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 711F2C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 10:07:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YdFVtthspv6JhHFoPzyADVI/yoEGDdTuhRjleKHBeu4=; b=o5G7HCwCA07TDUTVbce72zdbTM
-	2Em5Gn5PeOfqRxKmWS4LbYyh7KxD3BGbN+fAJF2xsCeJXhPActLLcHxm2ToP3G6qKu5kW3P+rKG4R
-	zfRhojCPzybrk5G1A0rHWSlq0M4xt9LTFBphhd/c8cg569yhL1NAg5//WshKpCLWe3SbC5OXVdAsh
-	NusqVtjKXRw7CTI6l55x+58Y8d9i4f4nKow+WKSLRGZCU6v4XIw94SzxPMCmaRtaXewDEQwwH3Ssb
-	6Wz9Z1q7iG+YcT2dWg+DK+EWbbl6JacindKsVjgtx97hPYUY4uCzzoUWv0vy+VWgzW5vVlu2xLBsW
-	Ssy+6JvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h2i8iQSXY9yb6m4UH98CW/gK05iO3m9ZO9MQdkFeNwA=; b=22a8egLFk8b/Z9pWMOARbYO9MR
+	SHZNv/670VatejE7RKRbOjSgar1ldRKlKU2hodRvL/fPD26dLnHrBxFCZe47zvGafC65UzTDz6oWy
+	L9np+EEjdJTg4Ii5qiDJlXLANmw5dAUdSwXNoIgqgubwucmNcRbXVMOuaSmnHFoQpB/nx6bo6W5td
+	q+59KmTcMYVn9nN59Ppr9BVgr7jI/Bgo81TYt241zkPyZi/JO/wduRecEqMy845a6lNX1PgtqnjTA
+	6dKUem/BDfRLEYLPhD3WfT8gDU9bUHgXEAFoIzFC3OPgdtjhDLZm0qxG5erN0/uN0QgHgNYOYbSyd
+	erMni6QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCzYX-00BFl9-2P;
-	Tue, 12 Dec 2023 10:00:01 +0000
-Received: from esa.microchip.iphmx.com ([68.232.154.123])
+	id 1rCzfc-00BGqS-20;
+	Tue, 12 Dec 2023 10:07:20 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCzYV-00BFjM-1w
+	id 1rCzfa-00BGoJ-0o
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Dec 2023 10:00:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1702375199; x=1733911199;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/XHCHQ1cOABSnQ5Y23hkMwYc4oBP1AIUXdxlgJZl4j4=;
-  b=eaDH8Mu7m9dPBXyz6vSuF65QwhoMsSKKwVL+ydReT11J6g+aWo3NULVq
-   XCSqLZMTApvr+jeces58TC93yVOjvugpR6KMCsu1fVx4k3+ZLZNqj/Om4
-   loJVqjoHA4kHXc9Y8FHMPYCg2PygYPLAy0xnhjbKKg2bYsp57razbDr2+
-   D8+tYZwFf5OjsRgAHXT3VWS1OmcxDEgPZpUe3IVzsGZQT1GeD1CQjAqc4
-   WLGd26V9PERT5EslvlDWn7aWpprDhDmR9dhdZVbDIbwX7RW/aRTXPVQhk
-   O3ZLSsYjItkjzLzuKsXFMROjcbDL6XN1wR3WSrFqAMBgDW0AQ9gTDnxo2
-   w==;
-X-CSE-ConnectionGUID: h4hFsnD2SqepXzWWMykC7w==
-X-CSE-MsgGUID: gn2WEGVeQ0m59fDN4TIUyg==
-X-ThreatScanner-Verdict: Negative
-X-IronPort-AV: E=Sophos;i="6.04,269,1695711600"; 
-   d="asc'?scan'208";a="180349572"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa6.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 12 Dec 2023 02:59:56 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 12 Dec 2023 02:59:54 -0700
-Received: from wendy (10.10.85.11) by chn-vm-ex01.mchp-main.com (10.10.85.143)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35 via Frontend
- Transport; Tue, 12 Dec 2023 02:59:52 -0700
-Date: Tue, 12 Dec 2023 09:59:21 +0000
-From: Conor Dooley <conor.dooley@microchip.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Rui Zhou <zhourui@huaqin.corp-partner.google.com>, <lgirdwood@gmail.com>,
-	<broonie@kernel.org>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>, <perex@perex.cz>,
-	<trevor.wu@mediatek.com>, <allen-kh.cheng@mediatek.com>,
-	<kuninori.morimoto.gx@renesas.com>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [v8 3/4] ASoC: mediatek: mt8188-mt6359: add es8326 support
-Message-ID: <20231212-hazard-womankind-c723b94fa236@wendy>
-References: <20231208070933.720324-1-zhourui@huaqin.corp-partner.google.com>
- <20231208070933.720324-4-zhourui@huaqin.corp-partner.google.com>
- <db3429e0-0173-4f13-bccb-78ac56ad4ed9@collabora.com>
- <CABRjgzvUz6BTSFHCMAGL6e3LWMyGfnJsJJ0j1M_CvBr9wMb49A@mail.gmail.com>
- <254e8913-7f42-4af0-af9b-ee32b4fccdc2@collabora.com>
+	Tue, 12 Dec 2023 10:07:19 +0000
+X-UUID: 56733953bd2a433c93b33f470ecc7e86-20231212
+X-CID-O-RULE: Release_Ham
+X-CID-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33,REQID:12e74b13-1974-4dc9-9b24-65e3eccc3b47,IP:5,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-10
+X-CID-INFO: VERSION:1.1.33,REQID:12e74b13-1974-4dc9-9b24-65e3eccc3b47,IP:5,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-10
+X-CID-META: VersionHash:364b77b,CLOUDID:d891b273-1bd3-4f48-b671-ada88705968c,B
+	ulkID:231212180702V8U29WZV,BulkQuantity:0,Recheck:0,SF:17|19|44|66|24|102,
+	TC:nil,Content:0,EDM:-3,IP:-2,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_FSI,TF_CID_SPAM_SNR,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD
+X-UUID: 56733953bd2a433c93b33f470ecc7e86-20231212
+X-User: shitao@kylinos.cn
+Received: from kylin-pc.. [(112.64.161.44)] by mailgw
+	(envelope-from <shitao@kylinos.cn>)
+	(Generic MTA)
+	with ESMTP id 148750459; Tue, 12 Dec 2023 18:07:00 +0800
+From: shitao <shitao@kylinos.cn>
+To: gregkh@linuxfoundation.org
+Cc: alcooperx@gmail.com,
+	chunfeng.yun@mediatek.com,
+	justin.chen@broadcom.com,
+	kernel-bot@kylinos.cn,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-usb@vger.kernel.org,
+	shitao@kylinos.cn
+Subject: [PATCH] usb: mtu3: fix comment typo
+Date: Tue, 12 Dec 2023 18:06:57 +0800
+Message-Id: <20231212100657.3115089-1-shitao@kylinos.cn>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <2023121236-earful-email-ea09@gregkh>
+References: <2023121236-earful-email-ea09@gregkh>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="1Z3sOnFI1NiMbD/k"
-Content-Disposition: inline
-In-Reply-To: <254e8913-7f42-4af0-af9b-ee32b4fccdc2@collabora.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_015959_699482_A76AC4D2 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20231212_020718_592718_1BBE011B 
+X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,46 +85,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---1Z3sOnFI1NiMbD/k
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Fix comment typo in mtu3_qmu.c file.
+"empty" is misspelled as "emtpy".
 
-On Tue, Dec 12, 2023 at 10:38:20AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 12/12/23 05:04, Rui Zhou ha scritto:
-> > Hi Angelo,
-> > Because the TDM interface defined by mt8188_max98390_ops sets a fixed 4
-> > slots, so if the current sound card only supports two amps, we need to =
-skip
-> > this setting.
-> > By the way, do you think this comment is okay?
-> > /*
-> >   * The TDM protocol settings with fixed 4 slots are defined in
-> >   * mt8188_max98390_ops. Two amps is I2S mode,
-> >   * SOC and codec don't require TDM settings.
-> > */
-> > if (!(card_data->quirk & MAX98390_TWO_AMP)) {
-> > dai_link->ops =3D &mt8188_max98390_ops;
-> > }
->=20
-> That's perfect. Waiting for v9.
+Reported-by: k2ci <kernel-bot@kylinos.cn>
+Signed-off-by: shitao <shitao@kylinos.cn>
+---
+ drivers/usb/mtu3/mtu3_qmu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-And please make sure that that v9 goes to the devicetree mailing list
-and whatever other lists have been omitted in this submission.
+diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
+index 3d77408e3133..03f26589b056 100644
+--- a/drivers/usb/mtu3/mtu3_qmu.c
++++ b/drivers/usb/mtu3/mtu3_qmu.c
+@@ -221,7 +221,7 @@ static struct qmu_gpd *advance_deq_gpd(struct mtu3_gpd_ring *ring)
+ 	return ring->dequeue;
+ }
+ 
+-/* check if a ring is emtpy */
++/* check if a ring is empty */
+ static bool gpd_ring_empty(struct mtu3_gpd_ring *ring)
+ {
+ 	struct qmu_gpd *enq = ring->enqueue;
+-- 
+2.34.1
 
-Cheers,
-Conor.
-
---1Z3sOnFI1NiMbD/k
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZXgu7AAKCRB4tDGHoIJi
-0gSYAQCwXq94eSpKDFfExYNIB8mFSRWm2FsMWKKEq0xW+KP8TQEA1JwIem+4GoIG
-OVHBbud9YKrZ8+HVGs2x6D7ONvtQowE=
-=i01n
------END PGP SIGNATURE-----
-
---1Z3sOnFI1NiMbD/k--
 
