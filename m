@@ -4,57 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFFCC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 16:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FF8C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 16:43:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xQM8Ci95br6UpZv6S/P/yPue9VcluKR7oR4GJe65I2k=; b=QepIIUpGB7Y6Ia7cjt4sam2TYW
-	eAgqOpibE2ZXrVeIz3+wxHCFQ9rR26bkOVmeDweJLZD94GXapRCOwjm3CBrjxc/a32jtgwAm4pI4a
-	vUpw+chCElkJLe+wRbeDuS6ldxwd4LXuH0pryh99cfl/Q+MZaOJ5RdCW5L5alkvOeMYannk9Xz1Lw
-	847C24YE3YYHsW640N9sMBlFLC+Yzj1SpZ1AfU9NminVWyDq+SjNaRZIMGsKtYSB8YJ2nNW6RsGI/
-	iL2na7vp4O2D0vzCxGaq3m42r8oixQamJUE7fkP+SEiXULxit/S5V/A5SSQ9aQrJzH7/1cp4po44g
-	RGqYmXNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JUjxYNID2Vp9pNVqTeRuKulUH1w6zALGiddUOQd3VnI=; b=dZpc70yoeO5JnlgYEVS0sWFYIs
+	B4MygdiQ7WEUYMt1V4w+hOEF5/QlEA2HAnJl7+Y04rkwR/0ntKo2tIRGjKjTwuyAafPg19LZVvk9r
+	7ukeG3Q4asvZ4S7IHZNtRDtkDzOhJZXa2GDCSIXWiKTaYu5LVKBgGtiY5SoIuSQ1fm/8QW3zC9R7o
+	XBFAi+psyClVXUDgroAQVmvAbuyami4Hw4qLH1CNYaGeWNbVpRD3KIn5aC8IHdifeaBBK4hLyXqOU
+	8dd0nA7Nr573lrfTTNi1vyVScrijHGKmF+egiHHR7z/9WsSGPgzgG7bYQIUUd49TSXelo0krqWECx
+	Frzt85lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD5kb-00CFEm-1r;
-	Tue, 12 Dec 2023 16:36:53 +0000
-Received: from mail-4323.proton.ch ([185.70.43.23])
+	id 1rD5qq-00CH0G-1V;
+	Tue, 12 Dec 2023 16:43:20 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD5kX-00CFC7-37
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Dec 2023 16:36:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=emersion.fr;
-	s=protonmail2; t=1702399004; x=1702658204;
-	bh=xQM8Ci95br6UpZv6S/P/yPue9VcluKR7oR4GJe65I2k=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=WsFtlMCDeErknnMmjq7MhuKXRdxIawCITzMkIK57U3gE2v39FzMn8u71o5f5OkEfP
-	 BamfL6xfBjZHQM93MI4ViqRfDLuiA3YOk6oWMkYJ9/3GWX8RrRXH1Rs52gQuitseqZ
-	 iT6q2AeS2MWMcfIOlQ6Pc0u5q47GRX4FUQeavG3+6C3E5sfi0sJF90EVA579039vhG
-	 mg0LHb3jsUhwyqMrpkX9nxJq2xpviqfQ6wgxVell+MNGEN01K7UhrGwlB85L4DjzmY
-	 FVpFmmfVSrSkQNYiYHSTTmGBYQT5PMmfYeKneXZkivzzxkQ8AHg2kJoVHSj4oLv4tQ
-	 Rlj2PK7xD4Gzw==
-Date: Tue, 12 Dec 2023 16:36:35 +0000
-To: Yong Wu <yong.wu@mediatek.com>
-From: Simon Ser <contact@emersion.fr>
-Cc: Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jeffrey Kardatzke <jkardatzke@google.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Vijayanand Jitta <quic_vjitta@quicinc.com>, Nicolas Dufresne <nicolas@ndufresne.ca>, jianjiao.zeng@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, ckoenig.leichtzumerken@gmail.com, linaro-mm-sig@lists.linaro.org, linux-mediatek@lists.infradead.org, Joakim Bech <joakim.bech@linaro.org>, tjmercier@google.com, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/7] dma-buf: heaps: Add secure heap
-Message-ID: <DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
-In-Reply-To: <20231212024607.3681-1-yong.wu@mediatek.com>
-References: <20231212024607.3681-1-yong.wu@mediatek.com>
-Feedback-ID: 1358184:user:proton
+	id 1rD5qn-00CGzA-2d;
+	Tue, 12 Dec 2023 16:43:19 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rD5qP-0006en-2c;
+	Tue, 12 Dec 2023 16:42:55 +0000
+Date: Tue, 12 Dec 2023 16:42:45 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Conor Dooley <conor@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [RFC PATCH net-next v3 1/8] dt-bindings: phy:
+ mediatek,xfi-pextp: add new bindings
+Message-ID: <ZXiNhSYDbowUiNvy@makrotopia.org>
+References: <cover.1702352117.git.daniel@makrotopia.org>
+ <b875f693f6d4367a610a12ef324584f3bf3a1c1c.1702352117.git.daniel@makrotopia.org>
+ <20231212-renderer-strobe-2b46652cd6e7@spud>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20231212-renderer-strobe-2b46652cd6e7@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_083651_343995_4B514E45 
-X-CRM114-Status: UNSURE (   4.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231212_084317_856121_8FA55AA3 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,8 +88,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Is there a chance to pick a better name than "secure" here?
+On Tue, Dec 12, 2023 at 04:21:38PM +0000, Conor Dooley wrote:
+> On Tue, Dec 12, 2023 at 03:46:26AM +0000, Daniel Golle wrote:
+>=20
+> > +  mediatek,usxgmii-performance-errata:
+> > +    $ref: /schemas/types.yaml#/definitions/flag
+> > +    description:
+> > +      USXGMII0 on MT7988 suffers from a performance problem in 10GBase=
+-R
+> > +      mode which needs a work-around in the driver. The work-around is
+> > +      enabled using this flag.
+>=20
+> Why do you need a property for this if you know that it is present on
+> the MT7988?
 
-"Secure" is super overloaded, it's not clear at all what it means from
-just the name. Something like "restricted" would be an improvement.
+Because it is only present in one of the two SerDes channels.
+Channel 0 needs the work-around, Channel 1 doesn't.
+
+See also this commit in the vendor driver for reference[1].
+
+We previously discussed that[2] and it was decided that a property
+would be the prefered way to represent this as there aren't any other
+per-instance differences which would justify another compatible.
+
+
+[1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-f=
+eeds/+/a500d94cd47e279015ce22947e1ce396a7516598%5E%21/#F0
+
+[2]: https://patchwork.kernel.org/comment/25592845/
 
