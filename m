@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B3ECC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 12:31:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F1BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 12:31:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oUJk9866S4PAQXmA6qnwohjo1oiLjXwOVCALe6AI8vQ=; b=TGkyJ079fA12O1zfTBhmuMSdg0
-	xHm9q92eE8K1KILbPa8aQsnxm5yGgx1vlt2I1GRXuQmzYDv0yagbuLswDUqsltKEOLYxgE8eciQmd
-	VIcjN+rfE8uFtCfIh+a4jdeaKLQHqje0gzYoEx54TERs+rrzrrjyjnNQH96CycAEZSADUoYUZjOk0
-	ZkeR7NaWy2bhFCrIHN0jhA9GtwUEC+ajH7jIeaYRIzpclQtjw0YgS4wcXb8LsIjRK71Y5S0fK9tqE
-	Iu2voH437Y20FrzaxdRx6SX171/FM1e4YC4dm5760RpqGzbcxB9f2YojwOQVFChAstJwEln7bjPV0
-	2NCTm7zg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pkeEHXB3/T/jnmWhl5vUXIuVy5c3DWow9x1MikiYeZc=; b=JQEFFug/znyd48uwpM7FSwd/qt
+	Q3wQ3a8aOINP1xACa4AAuvpkpImYgNEVSk/gvYrUFP8H+jUCxiNMKGUwLxnaI7LN+1ovFoZfxBy/A
+	uqr/Ch6GjgpdIXAmB7vOw069PnSfNAI8CabbZKT8LE8Tb3onBsEM5sH14OaBad74n8rFp3xv1IjgS
+	sk5/jXU1R+URUSS5pQuSd0LvImrrijw31f+5vi/6rLk7z42P3AZKOXkcMpVC4BQZ5Bbqlbi+OZa66
+	LOcX2DEy3T13Di017FJPj7p3EDJXIkdlrp6Bko9v0Bv5SZVyACkEFVPsDRTr6mzHBKf22fPrkmVbG
+	NhQPPcjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD1v0-00Bfcx-0Z;
-	Tue, 12 Dec 2023 12:31:22 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1rD1vE-00Bfjt-10;
+	Tue, 12 Dec 2023 12:31:36 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD1uw-00BfZY-25
+	id 1rD1v7-00Bfbl-0c
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Dec 2023 12:31:20 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1d0b2752dc6so48917275ad.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Dec 2023 04:30:59 -0800 (PST)
+	Tue, 12 Dec 2023 12:31:30 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-2888c80994bso3304871a91.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Dec 2023 04:31:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1702384259; x=1702989059; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=oUJk9866S4PAQXmA6qnwohjo1oiLjXwOVCALe6AI8vQ=;
-        b=LAW93pesw58qYaRkeg+zyYx7sXlll5INpR15Qa9DWTMB7RT1ZwfCibsm2K+G2hmssG
-         E5SvgoUe9z02XfU50Gi329X3QjgCMTu0cveDyDnIHRSzWUgDcsRAfp5fiGcHd0QNEoKB
-         mBJkHPgkRc+gDF2Q5xmNqRdetsgjYn956zOeA8H/JCjmvzoglfs36XpQizEHhLIyARPn
-         JZs8h3QHgCdI2v5joCchDt7E+HMuFJwDrFjnkqwS310+LZ0dx8BRKBDisolL7r1BUo2O
-         NDhdaZ/VE3frQl/o9HTlEs0lVbpuo4sdmjG6QYIN6Byf1ayZaPXN0PQzCgD7BQ3xD05l
-         BWeQ==
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1702384275; x=1702989075; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pkeEHXB3/T/jnmWhl5vUXIuVy5c3DWow9x1MikiYeZc=;
+        b=fokYesYWEsyh/JJrZ4xJh4nOUI7CeVuWqJRBwU8EoIM0vMwYFICyobdid684PmeTGi
+         QeOJAy8aehtWDagLEQU/S4Ggkb3oy+9QfMP3LWGE25zCsmjXbvDSncuOT248y3R8Ciu7
+         sv4R0FB7SxcBw8IsleIWyki+2MXOVag+sQidwEXAOn963AP6iRBrBpKXk3Qlqc1ggcHq
+         wbAHZuZmKjpGOSaJgGc6Zk7rl3R+r2q3fmq87b5f1sI9/ZPpNTJ2PtDo7Xs3jW1p0kxF
+         3YSxvgE+Axy9WZFROQl6Rh+edbB9leUXt1jHVPrwXuWNW6SNRr7A6+qB58+CCK6Q1U2g
+         I2Ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702384259; x=1702989059;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=oUJk9866S4PAQXmA6qnwohjo1oiLjXwOVCALe6AI8vQ=;
-        b=jUR20qLzk3kWwfYkbbrtAygcevlQnExKl7rTN1OhvroUTgK6F00OXfLOZDZQyxStJq
-         LwQ/OQx4F1N2MrgYRFG2zMU5U2QJhbI2GB+ePvjaCab+mfkJGmEHbIVmTwAWfBH2eoOS
-         iDOq6vrXnExHvQTTK/BDce/rIDxMI4LZeGXpsMCEFMN7CvSLK+fI94nGmIYfDQU/7vls
-         M3ppq/cK0IOds7Kjv4y/QLfnidKaTohoa1DIwwpFjDjcDDQYJHraqrJHObBaeCybjBJi
-         5b7SLsd0AyhFEIzrEvVpQQBWGb5FR5I5fitb+7i7B2jrdoKnw8fdK9iLmC71nIuRRf2+
-         kOAw==
-X-Gm-Message-State: AOJu0YwaX7VXTrMtwzYv3zkps7Rso8nWoWgG1uqnohS6+YCQPwKD2qoL
-	W36fKUd6AhiqWErXZjMF/9SNDA==
-X-Google-Smtp-Source: AGHT+IFU9pkU+zSIJxSZTuCh+xEhEUbw/pYIMBMqlqIDsVlUDvgUNuGnVZcwWbSidghtupmjgmjpPw==
-X-Received: by 2002:a17:902:6806:b0:1d3:3eb8:3691 with SMTP id h6-20020a170902680600b001d33eb83691mr480195plk.6.1702384259076;
-        Tue, 12 Dec 2023 04:30:59 -0800 (PST)
+        d=1e100.net; s=20230601; t=1702384275; x=1702989075;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pkeEHXB3/T/jnmWhl5vUXIuVy5c3DWow9x1MikiYeZc=;
+        b=leQZI2r3lLUpfZoyS4mmrkLBye6zAI0UqM70MONK5HvGqDjvEwN/I1kM9wEz2iQioA
+         XjwOmXQE24xXBfaeaT1Mj4KOpw29Qz1OUHO2ovC7skxSivjT4bXiIq0Qf47InRM4p/KN
+         bqLLskfwyz9VTBIGbFZhC0JgIzr0ZSDkEgrTqui9tbSi1f8q2EDcsnKnHdyMbUl4Kk0C
+         kreAMKijWh4QYW6IueXQk1wcp441h/TRWjgdW4/G4bvYpqgAESFEqlbMTM24A7deSM31
+         2L5+jHq/g89zF7uoN6+PfXJH70FmOiy3p6xp4BEdJZ8RQ/15xfXlaI0Rxn0EeEt8nTbu
+         DKmg==
+X-Gm-Message-State: AOJu0YzDHS1OI1TJFPOWwzgxMlQHk1FPovw5BKLEe2VpHI3U2cgfs7wm
+	dh9NxhjTgAVmsGNFRGkOhq+9Bg==
+X-Google-Smtp-Source: AGHT+IE5sCF4shEEIJbHK+h3p3TmCKRBlnwVW/n53llShsrKb4WCrNbGIGBKDw0YVDdNQclsPnMbOA==
+X-Received: by 2002:a17:90a:898d:b0:28a:d0c1:3015 with SMTP id v13-20020a17090a898d00b0028ad0c13015mr89056pjn.75.1702384275122;
+        Tue, 12 Dec 2023 04:31:15 -0800 (PST)
 Received: from localhost.localdomain ([101.78.151.194])
-        by smtp.gmail.com with ESMTPSA id z5-20020a170903018500b001cf65844874sm8517471plg.45.2023.12.12.04.30.55
+        by smtp.gmail.com with ESMTPSA id z5-20020a170903018500b001cf65844874sm8517471plg.45.2023.12.12.04.31.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Dec 2023 04:30:58 -0800 (PST)
+        Tue, 12 Dec 2023 04:31:14 -0800 (PST)
 From: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
 To: lgirdwood@gmail.com,
 	broonie@kernel.org,
@@ -79,16 +80,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Subject: [v9 0/4] add es8326 dt-bindings, commonize headset codec API, es8326 support and Enable dual amp for rt5682s
-Date: Tue, 12 Dec 2023 20:30:46 +0800
-Message-Id: <20231212123050.4080083-1-zhourui@huaqin.corp-partner.google.com>
+Subject: [v9 4/4] ASoC: mediatek: mt8188-mt6359: Enable dual amp for mt8188-rt5682s
+Date: Tue, 12 Dec 2023 20:30:50 +0800
+Message-Id: <20231212123050.4080083-5-zhourui@huaqin.corp-partner.google.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231212123050.4080083-1-zhourui@huaqin.corp-partner.google.com>
+References: <20231212123050.4080083-1-zhourui@huaqin.corp-partner.google.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_043118_688741_2E39C7A3 
-X-CRM114-Status: UNSURE (   7.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231212_043129_250089_4F5C3539 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,56 +105,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dt-bindings for es8326 and codec es8326 support. 
-Remove duplicate code, commonize headset codec init/exit API.
-At the same time, Enable dual amp max98390 for rt5682s.
+Enable support for dual MAX98390 amplifiers on the mt8188-rt5682s board.
 
-Changes in v9:
-- PATCH 3/4: Add comment for MAX98390_TWO_AMP.
-- Link to v8: https://lore.kernel.org/all/20231208070933.720324-1-zhourui@huaqin.corp-partner.google.com/
+Reviewed-by: Trevor Wu <trevor.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+---
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Changes in v8:
-- PATCH 3/4: Change the #define ES8326_CODEC_DAI macro definition and filter the es8326 widget
-- Link to v7: https://lore.kernel.org/all/20231116093512.4180240-1-zhourui@huaqin.corp-partner.google.com/
-
-Changes in v7:
-- PATCH 3/4: Completion "}"
-- Link to v6: https://lore.kernel.org/all/20231116073106.3757618-1-zhourui@huaqin.corp-partner.google.com/
-
-Changes in v6:
-- PATCH 2/4: add a patch, commonize headset codec init/exit API
-- PATCH 3/4: Remove generalized code
-- Link to v5: https://lore.kernel.org/all/20231115090903.578438-1-zhourui@huaqin.corp-partner.google.com/
-
-Changes in v5:
-- PATCH 2/3: Change the names of some apis
-- Link to v4: https://lore.kernel.org/all/20231115085329.541764-1-zhourui@huaqin.corp-partner.google.com/
-
-Changes in v4:
-- PATCH 2/3: Change the names of some apis
-- PATCH 3/3: Change commit description
-- Link to v3: https://lore.kernel.org/all/20231108063804.592982-1-zhourui@huaqin.corp-partner.google.com/
-
-Changes in v3:
-- PATCH 3/3: Change theme description
-- Link to v2: https://lore.kernel.org/all/20231108012617.3973539-1-zhourui@huaqin.corp-partner.google.com/
-
-Changes in v2:
-- PATCH 1/3: Change ES8326 location in bindings
-- PATCH 3/3: Change theme description
-- Link to v1: https://lore.kernel.org/all/20231107031442.2768765-1-zhourui@huaqin.corp-partner.google.com/
-
-Rui Zhou (4):
-  ASoC: dt-bindings: mt8188-mt6359: add es8326 support
-  ASoC: mediatek: mt8188-mt6359: commonize headset codec init/exit api
-  ASoC: mediatek: mt8188-mt6359: add es8326 support
-  ASoC: mediatek: mt8188-mt6359: Enable dual amp for mt8188-rt5682s
-
- .../sound/mediatek,mt8188-mt6359.yaml         |   1 +
- sound/soc/mediatek/Kconfig                    |   1 +
- sound/soc/mediatek/mt8188/mt8188-mt6359.c     | 125 +++++++++---------
- 3 files changed, 63 insertions(+), 64 deletions(-)
-
+diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+index d1884f23a1a7..a391066ab204 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
++++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+@@ -1448,7 +1448,7 @@ static struct mt8188_card_data mt8188_nau8825_card = {
+ 
+ static struct mt8188_card_data mt8188_rt5682s_card = {
+ 	.name = "mt8188_rt5682s",
+-	.quirk = RT5682S_HS_PRESENT,
++	.quirk = RT5682S_HS_PRESENT | MAX98390_TWO_AMP,
+ };
+ 
+ static struct mt8188_card_data mt8188_es8326_card = {
 -- 
 2.25.1
 
