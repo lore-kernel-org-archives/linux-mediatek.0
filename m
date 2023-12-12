@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C336C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 09:32:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE80C4167D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 09:33:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zD4C3Ub/1zdZLMKHBGjv+fG++RkHAM/NPOBwkxlFFgw=; b=DcOUUqVkKF4207ASXHAzbdxX/g
-	GYr6WmrFHGbQReBNrI0OA2F5szXWORYu30ExHGh2wWMBY3tw0qKTRqrnkAyG5KLU42GuDg9mRvOX5
-	emLXiPkHtoVXDiPZ/tVw7ePX5wH9BEojuwCCJz9hccq+40kDooktC5T2rXRX+o6dzDd+kwYphoptF
-	QIpj9c3IBXt/JbUgf0XlQkbaukK4yiGn3QwEBKSL2FcUxTWRHhO8RHrAnDT6GMKdpdIdZOE7PkwEj
-	L2zIrz1+gnRpOhS7DpbtV7GHfsaU1zYte19kk4fw6uT7g5vKGdkKpaD1Upw+YX/Q0+jDQZS2EzC9a
-	jlc131gA==;
+	bh=Wk9d9JFLoNMPV2pdwxxEBrRxeL3z+lqsSGSg3Y1lCSA=; b=3z1vWVML1Zy94xnisGbSWr5Wg8
+	yxpoCqUiDP3xwT/aOrrrx/xcuQi31STZDKVrCkphyMDykrLuf2QppayndimYDm4pj9VVRLmQwenYl
+	ByoA3kfuwdTL10RFDjE16/10gua+sLybfsNOYtYiRN7WFj0InkXuf8ReMClWAOgS9SqCY2aNt7ILn
+	r2K4vnlY7l0tLroG0FoDiBPMheiQJyz04lXkSgILTrpZ3f+16LE8utRIbY2snogR2exqY8HxbMm4S
+	G0IR0ii62WJlPivOS4Vx34m/hUVw9ZdW7l2EjAXLxdoTQJlC/1yLgh4+HcDf13bcgeJTjwPEmR7Wp
+	XRYcXr2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCz8M-00BDDK-1G;
-	Tue, 12 Dec 2023 09:32:58 +0000
+	id 1rCz8k-00BDKx-2z;
+	Tue, 12 Dec 2023 09:33:22 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCz8J-00BDC2-1n;
-	Tue, 12 Dec 2023 09:32:56 +0000
+	id 1rCz8h-00BDJ5-0j;
+	Tue, 12 Dec 2023 09:33:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702373574;
-	bh=MBQO5oF6xCPSn7HgAU1t+2l9sLLdykkBin/8woDzJ9g=;
+	s=mail; t=1702373598;
+	bh=DngQeOO2YELX/6w8IEVqEz75HCOEMeCfiy2nH1Lvr9A=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=EDEkk/Bnyi8puXgMo1g521hdsSapVIKyggdM1wYlr97I3/+aw9hKO5u/EQwjMs4NI
-	 fBO+A2DQRs4wdBdfsgw5Xw5FJjEcatWuoUkSxcTcg6cNdeOevbVcKdNhMU/fzMDkGC
-	 UFBR31xHa4B7V1H4sXzRMypG5kmC4bU84HhKqN0+hz+JNbYjBNHJ2qDu7XoXz2Eh8S
-	 4WS++GSApUzlYzWjHC6pl9pCrA0Mj3+TSYTT8Z7JxP9fdbiBm+ryibJ3O7hGiK18yl
-	 bOo9mVWfoM8t6YO5bhlojzqrX0Q3svrRzPKWi8DDJDa0J8VRrRzYUJ6Bz8ZqV9DF81
-	 NDfz2uNornPeg==
+	b=VD8+7GsmaUgBrt67C533y61acmy2sX48b+8+Cw16eKK/vujiDNKieaTiIjnpWUMj/
+	 0/qcOYaznzHmUnSvAiH7kAhjD/52/nTZHP6OiJF9livV+wGcpmDo3SdNb2UK7ziYWw
+	 xp92JreRroH7Ta5xchcWgJG2i+SKMJ4G8236IKX6BkWOXqGg779n803dd5fL4delAk
+	 EqOPEelcZFkDhl5Tm4a9yF9EEDyJfa7VMOpucu7hV4jLqSXtlcTDvNsNcuaeq6FkpA
+	 41gW223RmcuNeDTOZXd8zIttUNoDrSUeUGr8/cOp3FbN0O78R31lSDZ7PTNITNuWMb
+	 hMZi1CMbMw4nQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1B8EE3781423;
-	Tue, 12 Dec 2023 09:32:53 +0000 (UTC)
-Message-ID: <4215d31d-99f0-4a47-a8c9-7324e5b51c02@collabora.com>
-Date: Tue, 12 Dec 2023 10:32:53 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B4DEA3781423;
+	Tue, 12 Dec 2023 09:33:16 +0000 (UTC)
+Message-ID: <8585cdce-648e-4c27-a769-6441dac77707@collabora.com>
+Date: Tue, 12 Dec 2023 10:33:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/5] dt-bindings: reset: mediatek: add MT7988 ethwarp
- reset IDs
+Subject: Re: [PATCH v5 1/5] dt-bindings: clock: mediatek: add MT7988 clock IDs
 Content-Language: en-US
 To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -67,14 +66,13 @@ To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  netdev@vger.kernel.org
 References: <152b256d253508cdc7514c0f1c5a9324bde83d46.1702350213.git.daniel@makrotopia.org>
- <a60f5b5ed58626f3dbac1eab8a5845c3ce9bd17c.1702350213.git.daniel@makrotopia.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <a60f5b5ed58626f3dbac1eab8a5845c3ce9bd17c.1702350213.git.daniel@makrotopia.org>
+In-Reply-To: <152b256d253508cdc7514c0f1c5a9324bde83d46.1702350213.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_013255_722226_CA0450D9 
-X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-CacheID: sfid-20231212_013319_390353_8E91CE78 
+X-CRM114-Status: UNSURE (   6.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,10 +89,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 12/12/23 04:18, Daniel Golle ha scritto:
-> Add reset ID for ethwarp subsystem allowing to reset the built-in
-> Ethernet switch of the MediaTek MT7988 SoC.
+> From: Sam Shih <sam.shih@mediatek.com>
 > 
+> Add MT7988 clock dt-bindings for topckgen, apmixedsys, infracfg,
+> ethernet and xfipll subsystem clocks.
+> 
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
