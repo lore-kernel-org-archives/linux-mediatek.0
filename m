@@ -4,76 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FF8C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 16:43:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966E0C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 16:55:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JUjxYNID2Vp9pNVqTeRuKulUH1w6zALGiddUOQd3VnI=; b=dZpc70yoeO5JnlgYEVS0sWFYIs
-	B4MygdiQ7WEUYMt1V4w+hOEF5/QlEA2HAnJl7+Y04rkwR/0ntKo2tIRGjKjTwuyAafPg19LZVvk9r
-	7ukeG3Q4asvZ4S7IHZNtRDtkDzOhJZXa2GDCSIXWiKTaYu5LVKBgGtiY5SoIuSQ1fm/8QW3zC9R7o
-	XBFAi+psyClVXUDgroAQVmvAbuyami4Hw4qLH1CNYaGeWNbVpRD3KIn5aC8IHdifeaBBK4hLyXqOU
-	8dd0nA7Nr573lrfTTNi1vyVScrijHGKmF+egiHHR7z/9WsSGPgzgG7bYQIUUd49TSXelo0krqWECx
-	Frzt85lQ==;
+	bh=iR8CM1l7mSjgUX5ysimVK0uN3n/6IwTT58FYQEEeKZg=; b=wSvSYGYwRY9yg+z8X21o2GqEAl
+	igx4iRYM+PhvkmOlQK+lUkHSqEwn+hWmlbuKbfv1DuswabwcDQhlf8I2iK8pVNWb2P5x/0ulF0Zxe
+	qgf30x+KYnH7D3F3bUFmCB3PW2xxUuBJ4nsAEEEQBc7+KnVeAva5GMSA3GHbpL98tVWrc7DrMAB6j
+	WWhJHz/MjyL6qI1kzbLD8D2pgWxHyqeNsKpJM//H3s8yx0I37hilV4Pxj4hNnDibvacjKbwhpMuYe
+	qmzmkw9d1uM066SllMWyyGlzvc2UVqpEJmAyuDEEuRS5FTzLO2/19N+cyU9vuzKBdFwvHH02+5zUc
+	fCOFleeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD5qq-00CH0G-1V;
-	Tue, 12 Dec 2023 16:43:20 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1rD62Y-00CIj6-10;
+	Tue, 12 Dec 2023 16:55:26 +0000
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD5qn-00CGzA-2d;
-	Tue, 12 Dec 2023 16:43:19 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rD5qP-0006en-2c;
-	Tue, 12 Dec 2023 16:42:55 +0000
-Date: Tue, 12 Dec 2023 16:42:45 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Conor Dooley <conor@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1rD62U-00CIhc-1v;
+	Tue, 12 Dec 2023 16:55:23 +0000
+Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-3b9b90f8708so3895587b6e.2;
+        Tue, 12 Dec 2023 08:55:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1702400117; x=1703004917; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=iR8CM1l7mSjgUX5ysimVK0uN3n/6IwTT58FYQEEeKZg=;
+        b=HjL43pynodM830H49cVTWQqjeTH0bVwsfnzablSm3SaGMBxPYjW/Gr+EB6Av4H6ndY
+         rHVC6g+7zxUVgaAOyLSOYyH/M69GkogcNkEhz8UXTOSXi2LzxX35pLjYpkJkM48YrDUe
+         eKaulmbKDYri2cr2w9W3KmmIl5wQyAthZa5eT1lGZLEYj27wIql5KWBpjw4BgG6Aw6gz
+         4V3jtPWvx6di7tTyKwHGSAidVZ3z8yoO6PdR1ZiaVRxAXQlP0r/OURBkOr9K/cVkLBnC
+         UrbbJKmszrBx2iUo2mOGWjjHOJKhqRqWYohVEKtGKmemOE81kD4KQEClRxNQR9ufyTFT
+         F9SQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702400117; x=1703004917;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=iR8CM1l7mSjgUX5ysimVK0uN3n/6IwTT58FYQEEeKZg=;
+        b=GclcGKnruX/mE3+iM78pNJCamUo6yLs4TvRtI40eRXq800G2xZPRjymuLOzipGyHD5
+         Ap3b3QmNAlAx1W/eBU4Xm6YCCPGBSuHJaEexrYO7d/juXIH1w4ACvE1Dx3jr5qjPpAnf
+         IKkrq2Z7uXGiBDzLL7W34UALfRuMnKWBuIyDcD/sDwm9T2ENC3DUHgR96nmyvtAo3PyJ
+         2UaMy8epxr5AR5Du60HSBFo21BE1V0ALl7vlg4r/e9eG+OJfO5GfXA3GYA/sEIrzTcuf
+         1OJbGL1sJXGwStpKZaLD/QQQj4Qys+D7Rq/MW7taI+z3H01QMRmwDGMiQUcRZ+jkLY7n
+         No3Q==
+X-Gm-Message-State: AOJu0YzBW/xmWzBdCTs05MT9gdY0odiB+ba2EZYMGYPkQmsnMqdT7SWq
+	Xn9mzOttb/f9C4yQcPUK4oU=
+X-Google-Smtp-Source: AGHT+IEx+wh7QtzF3FIi6gsB7OMnp5P8qxzEDYPpvY5u2XUrX1jUBOgX8clMwoVfj3aqq6UQzLghvw==
+X-Received: by 2002:a05:6808:1492:b0:3b9:e317:ec55 with SMTP id e18-20020a056808149200b003b9e317ec55mr6844124oiw.44.1702400117042;
+        Tue, 12 Dec 2023 08:55:17 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id a23-20020a056808099700b003b9f6ecb222sm1936175oic.6.2023.12.12.08.55.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 Dec 2023 08:55:16 -0800 (PST)
+Date: Tue, 12 Dec 2023 08:55:15 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [RFC PATCH net-next v3 1/8] dt-bindings: phy:
- mediatek,xfi-pextp: add new bindings
-Message-ID: <ZXiNhSYDbowUiNvy@makrotopia.org>
-References: <cover.1702352117.git.daniel@makrotopia.org>
- <b875f693f6d4367a610a12ef324584f3bf3a1c1c.1702352117.git.daniel@makrotopia.org>
- <20231212-renderer-strobe-2b46652cd6e7@spud>
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: watchdog: mediatek,mtk-wdt: add
+ MT7988 watchdog and toprgu
+Message-ID: <17ece724-95d7-48d6-a95a-41c667df9fd7@roeck-us.net>
+References: <e26a98fd0b7b7b431922405732275bac01eaf220.1699890006.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20231212-renderer-strobe-2b46652cd6e7@spud>
+In-Reply-To: <e26a98fd0b7b7b431922405732275bac01eaf220.1699890006.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_084317_856121_8FA55AA3 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20231212_085522_636438_AB54A5E0 
+X-CRM114-Status: GOOD (  15.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +98,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 12, 2023 at 04:21:38PM +0000, Conor Dooley wrote:
-> On Tue, Dec 12, 2023 at 03:46:26AM +0000, Daniel Golle wrote:
->=20
-> > +  mediatek,usxgmii-performance-errata:
-> > +    $ref: /schemas/types.yaml#/definitions/flag
-> > +    description:
-> > +      USXGMII0 on MT7988 suffers from a performance problem in 10GBase=
--R
-> > +      mode which needs a work-around in the driver. The work-around is
-> > +      enabled using this flag.
->=20
-> Why do you need a property for this if you know that it is present on
-> the MT7988?
+On Mon, Nov 13, 2023 at 03:43:24PM +0000, Daniel Golle wrote:
+> Add compatible mediatek,mt7988-wdt.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Because it is only present in one of the two SerDes channels.
-Channel 0 needs the work-around, Channel 1 doesn't.
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
-See also this commit in the vendor driver for reference[1].
-
-We previously discussed that[2] and it was decided that a property
-would be the prefered way to represent this as there aren't any other
-per-instance differences which would justify another compatible.
-
-
-[1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-f=
-eeds/+/a500d94cd47e279015ce22947e1ce396a7516598%5E%21/#F0
-
-[2]: https://patchwork.kernel.org/comment/25592845/
+> ---
+> v2: Drop adding include/dt-binding/mt7988-resets.h as that header is not
+>     actually a binding header.
+> 
+>  Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> index cc502838bc398..8d2520241e37f 100644
+> --- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> +++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+> @@ -25,6 +25,7 @@ properties:
+>            - mediatek,mt6735-wdt
+>            - mediatek,mt6795-wdt
+>            - mediatek,mt7986-wdt
+> +          - mediatek,mt7988-wdt
+>            - mediatek,mt8183-wdt
+>            - mediatek,mt8186-wdt
+>            - mediatek,mt8188-wdt
+> -- 
+> 2.42.1
 
