@@ -4,73 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45FB5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 10:21:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99235C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 10:21:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b3mpa0lnKg7AsDWQsnMnXmuw0wm1p0ATIbaXmI5TFWU=; b=gbFVNDXfO2h/JqnSMLg3Zv+4Ac
-	7x+Luk9byMEDx7yTrKdrEIDXKz3S2CCQcp7OhelvMmDX7EKf2ejdraqK1aEIsGAZAsWKmB3+BbI/Q
-	6qMRG2NHFnZ+KRUr27R0PuRmns+rqGPDS0kOqANmVdKgzHWqyXbNj2yTO7i7/cyc/lzelVWX2k3+J
-	xTCczyXOwdLzi4BUsYXpsoDgiXFw0C+geS1LwQmEKqWzBaCbWlzcrKsFcs5MBuYo3Wh14O83hMXyD
-	F2vp0RyRZ1/NsphkJrcU/oVEEeuSXOjfvSd3JrfUtRJ3NIJdZIHhb3r6k+meYl8JE6PGKDbaS/RW5
-	0o2q0zZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QjiEE5RHWIubj+Vl7F8fTu7cXTesfeyI3qLZeyfwEvg=; b=Q7s4xRJLETfTD3KYdHcWydd0c1
+	sIlBBhSoiP4FIzDq+dJ5I75OA42rynY9VUufu/jzbrk23CrUUiSDefJOyrtg3Uqnq1t4zVKIj0lvQ
+	tSUqPvCRgpiQJnoowf0BJnlgU4fcI8KiToSzXFkEd4u25ALyzfRqttyvyh3WUw0bJTTMN7D/OTV0q
+	ata2/eg+umFtZj/7IhP6fZaIEm6T/76iXDt/jbE3vLmhiTZHj6tKkQHKqWuQW/RltqQAngyUfKAst
+	EaF9hkYLDrV5nal8lRJKYjAF6pCWV9PwLS1nsXhenxOUMu63znCmPvUHzE1Oc/U3pgJNz/nXumvis
+	vCTj1I1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCzsp-00BI4l-0t;
-	Tue, 12 Dec 2023 10:20:59 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1rCztQ-00BI96-22;
+	Tue, 12 Dec 2023 10:21:36 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCzsn-00BI4K-0h
+	id 1rCztO-00BI8h-20
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Dec 2023 10:20:58 +0000
-X-UUID: 67f0c0c141af49b2b31f65256adb42e5-20231212
-X-CID-O-RULE: Release_Ham
-X-CID-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.33,REQID:bb989384-f8f7-4514-935c-f823e8747b45,IP:5,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-10
-X-CID-INFO: VERSION:1.1.33,REQID:bb989384-f8f7-4514-935c-f823e8747b45,IP:5,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-10
-X-CID-META: VersionHash:364b77b,CLOUDID:12441b61-c89d-4129-91cb-8ebfae4653fc,B
-	ulkID:2312121820440JAM3HPF,BulkQuantity:0,Recheck:0,SF:66|24|17|19|44|102,
-	TC:nil,Content:0,EDM:-3,IP:-2,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_FSD,TF_CID_SPAM_FSI,TF_CID_SPAM_SNR,TF_CID_SPAM_FAS
-X-UUID: 67f0c0c141af49b2b31f65256adb42e5-20231212
-X-User: shitao@kylinos.cn
-Received: from kylin-pc.. [(112.64.161.44)] by mailgw
-	(envelope-from <shitao@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 205230405; Tue, 12 Dec 2023 18:20:42 +0800
-From: shitao <shitao@kylinos.cn>
-To: gregkh@linuxfoundation.org
-Cc: alcooperx@gmail.com,
-	chunfeng.yun@mediatek.com,
-	justin.chen@broadcom.com,
-	kernel-bot@kylinos.cn,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-usb@vger.kernel.org,
-	shitao@kylinos.cn
-Subject: [PATCH] usb: gadget: udc: bdc: fix comment typo
-Date: Tue, 12 Dec 2023 18:19:55 +0800
-Message-Id: <20231212101955.3115267-1-shitao@kylinos.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <2023121236-earful-email-ea09@gregkh>
+	Tue, 12 Dec 2023 10:21:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 37FB5B81183;
+	Tue, 12 Dec 2023 10:21:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FC61C433C8;
+	Tue, 12 Dec 2023 10:21:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1702376492;
+	bh=bBdsJ1LFHIAiNvuKQ5c872B4cUZ1SzBz3JpEuXPCcuk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=iPXFmG93uJ75RElaOyg4kQqMjdOkE78zjP7doLMl+g2h85P/Psu1gL+xUKrXJFr9l
+	 XpeickXl7jbSgK3VLgIg/gR5qKA/hY5QeG5UVFy30XX3w2NwKTcPwenK4fCRxvZkRb
+	 ppaPB0Ox37BuGmDkF+hBDZMqmIZoxfilw8Gjdoo4=
+Date: Tue, 12 Dec 2023 11:21:30 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: shitao <shitao@kylinos.cn>
+Cc: alcooperx@gmail.com, chunfeng.yun@mediatek.com,
+	justin.chen@broadcom.com, kernel-bot@kylinos.cn,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-usb@vger.kernel.org
+Subject: Re: [PATCH] usb: mtu3: fix comment typo
+Message-ID: <2023121216-shabby-hastily-f094@gregkh>
 References: <2023121236-earful-email-ea09@gregkh>
+ <20231212100657.3115089-1-shitao@kylinos.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231212100657.3115089-1-shitao@kylinos.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_022057_553754_B243F3DE 
-X-CRM114-Status: UNSURE (   6.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231212_022134_806924_07F9743E 
+X-CRM114-Status: GOOD (  22.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +71,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix comment typo in bdc_core.c file.
-"dynamic" is misspelled as "dyanmic".
+On Tue, Dec 12, 2023 at 06:06:57PM +0800, shitao wrote:
+> Fix comment typo in mtu3_qmu.c file.
+> "empty" is misspelled as "emtpy".
+> 
+> Reported-by: k2ci <kernel-bot@kylinos.cn>
+> Signed-off-by: shitao <shitao@kylinos.cn>
+> ---
+>  drivers/usb/mtu3/mtu3_qmu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
+> index 3d77408e3133..03f26589b056 100644
+> --- a/drivers/usb/mtu3/mtu3_qmu.c
+> +++ b/drivers/usb/mtu3/mtu3_qmu.c
+> @@ -221,7 +221,7 @@ static struct qmu_gpd *advance_deq_gpd(struct mtu3_gpd_ring *ring)
+>  	return ring->dequeue;
+>  }
+>  
+> -/* check if a ring is emtpy */
+> +/* check if a ring is empty */
+>  static bool gpd_ring_empty(struct mtu3_gpd_ring *ring)
+>  {
+>  	struct qmu_gpd *enq = ring->enqueue;
+> -- 
+> 2.34.1
+> 
+> 
 
-Reported-by: k2ci <kernel-bot@kylinos.cn>
-Signed-off-by: shitao <shitao@kylinos.cn>
----
- drivers/usb/gadget/udc/bdc/bdc_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi,
 
-diff --git a/drivers/usb/gadget/udc/bdc/bdc_core.c b/drivers/usb/gadget/udc/bdc/bdc_core.c
-index 35a652807fca..874122f8baa3 100644
---- a/drivers/usb/gadget/udc/bdc/bdc_core.c
-+++ b/drivers/usb/gadget/udc/bdc/bdc_core.c
-@@ -361,7 +361,7 @@ int bdc_reinit(struct bdc *bdc)
- 	return ret;
- }
- 
--/* Allocate all the dyanmic memory */
-+/* Allocate all the dynamic memory */
- static int bdc_mem_alloc(struct bdc *bdc)
- {
- 	u32 page_size;
--- 
-2.34.1
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- This looks like a new version of a previously submitted patch, but you
+  did not list below the --- line any changes from the previous version.
+  Please read the section entitled "The canonical patch format" in the
+  kernel file, Documentation/process/submitting-patches.rst for what
+  needs to be done here to properly describe this.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 
