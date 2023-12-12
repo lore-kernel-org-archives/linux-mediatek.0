@@ -4,113 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F9DFC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 19:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C13C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 21:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fcgbQM4ALqnSs6ru3rO50qX/lNt2lNuPpIMGk5S898c=; b=xSObUS+vPXQ4jhQ3Hp/gd76l39
-	D5jZ3Iyz80ED366/A1KlXpRmD37ilKh3J/kqGDT/OHq44kL0tRrG4zf9VhqWl6UF2CCKOS50SnAtt
-	jDwj709tSXq0WB/KCcuSz85/CGSo5gt8dBIZyKofs9MgkHfR0ufUXulaK24EBnKErG9KbOEqIv3hJ
-	g/isClh306x6ghFPyMbk0s7sS3J4pQ2ltCm7/NkHwbtlX0/S1gWyuoy5YqUO7YbeSF+NJEv/AFOPb
-	QUKW80+OSDTCUnbDYDzL4s1MZ6Xsd7tKyp9II6oNhYt6cZkJNC/eqFgLumtT6legE76KIZ0jygByU
-	BDwGqaew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T2SYKT8RxtxhEo2GS7XqhiWbIVbwbwypG9I9BqTgodw=; b=m0GFC9VxKlit0VkCidzkmzlRko
+	y7gEzkFdMVdwmANMeQ7phxjh9efuQP+z6FORk50FdAevDsUCMJQ2X7FBPM9q8c/w4JGcvbDBoDHD1
+	eVWKEWugthWHbQpZYAo5VtE2RBSKinRKyilfHO862yKyOrtnZ+u8ZUWkz2DIRwQ4mdbSfjxHps+kf
+	Aov1iIWS8UNARO/I3nSlSS5utBArWUzgRm3Wb1gUsrj09LeZGXS/aIrW4iHlOB3ln+lAqqcLIW9qc
+	F4ujNj2+WxB0vTxWhJZIyB/scrgFPnFO9PMqGgayor2qypxK/Id84DKdcC26bYzj6GZsVgzC3yHFs
+	5S048CKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD8QI-00CbOq-0h;
-	Tue, 12 Dec 2023 19:28:06 +0000
-Received: from mail-bn8nam11on20600.outbound.protection.outlook.com ([2a01:111:f400:7eae::600] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+	id 1rD9wO-00CmKr-0C;
+	Tue, 12 Dec 2023 21:05:20 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD8QF-00CbMz-0u
+	id 1rD9wL-00CmIz-18
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Dec 2023 19:28:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UHlzv5CRBlkPupsH/14SrWQ/fa5izQhvrwpStP4w0O1rNpe0SurUr3aWyiQaLM5rtvfxW85zbOnD2kF6om2u1xM9NVpOZ/+ho0QZ2COfZYm+JRZ2Slk9SqxaBO3WuA/AuBiKD/mo/OwIHIUf1tmaSQu4+qgZw4i1nNstwm5PBmBbA88yA8phC5HNQW6nHwhaA8s3V7lF07aNI4koHXHzS61yp2jGYZaQYTwJQtXbk7bl4NUt+BYEbnWJYMAl3WYj3LK3cw7UYZpsD6Z/X5Ksz5c0p60Fsui9VOcqw5Wydw8LKyrdXMzUlSH1yAC2fGmJDUWdPrIet8BgNIFL/ZwGqw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fcgbQM4ALqnSs6ru3rO50qX/lNt2lNuPpIMGk5S898c=;
- b=Nz746+Mp7nW05OWnp/mKwDvc4Y+qI4tm4+Lkwo943CV5jtLCBh9ybXpo+zMP5Ijtm7Q13dYlDvJW1Kq9Ax21OmcrKRThATnSh807tFdDKRR8mWRrlR8sRHoKQheuSXogsbhxyrUiBEVaPF1nF3icjO7+gq0mCW8by7d6tDBQg0bK2IZiMxh8Ezy9qsMiRFaJ1kLjDiZ/vxzNWS0bLGkznln1o4YyBdvf+AV6KcSvQMsk3CxVCKx4Gj8Pa44WgBipsjJR45GtS60mkpBA+yPfYcBcRgvQzeunQ57WUqptJ3QB67L91LOZOmKABpxoBYCy6tDWFcJnOoxMwUk/qt0xhw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nbd.name smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fcgbQM4ALqnSs6ru3rO50qX/lNt2lNuPpIMGk5S898c=;
- b=1Nr+IYxyz0DnPWXOWYcpEOKV5RtEdo1+0gMOD9U2i4BOZ9aeXWjhwVX9aMMa4fM+hwhfs3cSLjhrbnN46wQ5oee55l35wdkSo++tcSNOU+fAG//nR+iffNOiHZoFT13V+HR9ijvgYbf/UTkh1fLJIBGeh8hQ0tAIWMdjeM1VKzI=
-Received: from DS7PR07CA0011.namprd07.prod.outlook.com (2603:10b6:5:3af::22)
- by SJ2PR12MB9114.namprd12.prod.outlook.com (2603:10b6:a03:567::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7068.32; Tue, 12 Dec
- 2023 19:12:49 +0000
-Received: from CY4PEPF0000FCBE.namprd03.prod.outlook.com
- (2603:10b6:5:3af:cafe::2b) by DS7PR07CA0011.outlook.office365.com
- (2603:10b6:5:3af::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7091.26 via Frontend
- Transport; Tue, 12 Dec 2023 19:12:49 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- CY4PEPF0000FCBE.mail.protection.outlook.com (10.167.242.100) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7091.26 via Frontend Transport; Tue, 12 Dec 2023 19:12:47 +0000
-Received: from AUS-P9-MLIMONCI.amd.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Tue, 12 Dec
- 2023 13:12:41 -0600
-From: Mario Limonciello <mario.limonciello@amd.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	"Ryder Lee" <ryder.lee@mediatek.com>
-CC: Shayne Chen <shayne.chen@mediatek.com>, Sean Wang
-	<sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Deren Wu <deren.wu@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Ben Greear
-	<greearb@candelatech.com>, "open list:MEDIATEK MT76 WIRELESS LAN DRIVER"
-	<linux-wireless@vger.kernel.org>, "open list:ARM/Mediatek SoC support"
-	<linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
-	<linux-mediatek@lists.infradead.org>, Mario Limonciello
-	<mario.limonciello@amd.com>, Sultan Alsawaf <sultan@kerneltoast.com>
-Subject: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
-Date: Tue, 12 Dec 2023 03:08:51 -0600
-Message-ID: <20231212090852.162787-1-mario.limonciello@amd.com>
-X-Mailer: git-send-email 2.34.1
+	Tue, 12 Dec 2023 21:05:19 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rD9wF-0001Oy-5K; Tue, 12 Dec 2023 22:05:11 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rD9wE-00FQEY-2C; Tue, 12 Dec 2023 22:05:10 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rD9wD-001snP-Ol; Tue, 12 Dec 2023 22:05:09 +0100
+Date: Tue, 12 Dec 2023 22:05:09 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	platform-driver-x86@vger.kernel.org,
+	linux-hardening@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-leds@vger.kernel.org, chrome-platform@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-staging@lists.linux.dev,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-pwm@vger.kernel.org, greybus-dev@lists.linaro.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	asahi@lists.linux.dev, kernel@pengutronix.de
+Subject: Re: [PATCH v4 000/115] pwm: Fix lifetime issues for pwm_chips
+Message-ID: <20231212210509.focpb63fbmahqij3@pengutronix.de>
+References: <cover.1701860672.git.u.kleine-koenig@pengutronix.de>
+ <ZXM4CdJxg-XrYhkn@orome.fritz.box>
+ <20231208185033.e6ty2cajcfle6dgk@pengutronix.de>
+ <ZXbzcFTnDTKoZAta@orome.fritz.box>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.180.168.240]
-X-ClientProxiedBy: SATLEXMB03.amd.com (10.181.40.144) To SATLEXMB04.amd.com
- (10.181.40.145)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000FCBE:EE_|SJ2PR12MB9114:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1c414a05-002d-46a9-074b-08dbfb465403
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: jzAtQM6Y4rNn0KFUE0OGZJ1JJ7Ye26l611QesZ1JWjrygUv6Tcv6JOi28qpqXy6oBTe7j/gbNbbEafZQZsz3VbYAx5NTV3DrwlVrYkzyGu9pIC64WtEeuvvnK2jQ6zEpY1FR+BbskUG8bwqs/YH0uk0sid4fE3bSIscwmlIzBTlfIbh+ix3GdZDfDqOBt+dG5uK5k0TLxdGgBm+0dcezy2KrdD8LlTTFquEQd0hTCSPQPOz3jbXbgMfvRyAgCLEx+yRBv7tgG/BDxzIkHp3CkN8I4Vm6s4b4tIeBGepJQlYeWX+Hittskv2CR6bo2d+hOrGRTu3CvvPv9fYsXmAZQLdF+cfv4F9I4n+4jjA18Vtl3025q/Gal/GuW1ZFacsbg1IWZ9KOtvAeRBVLRc1ZU+qSblBW8BhefFjeuNz47RLH8xsVSlWGq8iaXEoZ/aszznJyJONS+0JtwRhyyxxVzSjPkdk/utxhF/vi5hpOLRNf1+X1CLLdW2u06diw1Ea0+5DZBsl6AQQ+ySpkReQ7jliysMoqxDIfM+AfZQqecU2qot4KIwoHv+TL7XWKSWqnDfPsv/Mifhy3y4BxiRneXfgIo4QHcJ9v2JAsHnJ59ElNaGumpNQeMZIkzNTJ9KzbFx+33KFI+fYkoyX97156SdZKGHZgXHFxNkKSDoXbEMjGLHe8hoUeKvSzN4rsUQsUs1zhX/qwP6Bp2OuEdRkkMXBTPBC/iFUUVqIDV9BKLFkGeIilNiOk+NxpBOLRb/Z+
-X-Forefront-Antispam-Report: CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230031)(4636009)(346002)(376002)(39860400002)(136003)(396003)(230922051799003)(1800799012)(186009)(451199024)(64100799003)(82310400011)(36840700001)(40470700004)(46966006)(40460700003)(2906002)(7416002)(41300700001)(36860700001)(110136005)(36756003)(86362001)(82740400003)(2616005)(81166007)(356005)(1076003)(336012)(426003)(26005)(16526019)(83380400001)(7696005)(47076005)(478600001)(966005)(6666004)(44832011)(54906003)(4326008)(5660300002)(316002)(70586007)(8936002)(70206006)(8676002)(40480700001)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Dec 2023 19:12:47.7886
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1c414a05-002d-46a9-074b-08dbfb465403
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000FCBE.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB9114
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gyt34nc3mm25zmmf"
+Content-Disposition: inline
+In-Reply-To: <ZXbzcFTnDTKoZAta@orome.fritz.box>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_112803_326400_275388BE 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20231212_130517_450254_39C6444E 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,56 +89,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several users have reported awful latency when powersaving is enabled
-with certain access point combinations. It's also reported that the
-powersaving feature doesn't provide an ample enough savings to justify
-being enabled by default with these issues.
 
-Introduce a module parameter that would control the power saving
-behavior.  Set it to default as disabled. This mirrors what some other
-WLAN drivers like iwlwifi do.
+--gyt34nc3mm25zmmf
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Suggested-by: Sultan Alsawaf <sultan@kerneltoast.com>
-Link: https://codeberg.org/Hybrid-Project-Developers/linux-tkg/blame/branch/master/mt76:-mt7921:-Disable-powersave-features-by-default.mypatch
-Link: https://aur.archlinux.org/cgit/aur.git/tree/0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch?h=linux-g14
-Link: https://community.frame.work/t/responded-strange-wlan-problems-with-kernel-branch-6-2/41868/4
-Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/init.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+Hello Thierry,
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 7d6a9d746011..78d4197988c8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -10,6 +10,11 @@
- #include "../mt76_connac2_mac.h"
- #include "mcu.h"
- 
-+static bool mt7921_powersave;
-+module_param_named(power_save, mt7921_powersave, bool, 0444);
-+MODULE_PARM_DESC(power_save,
-+		 "enable WiFi power management (default: disable)");
-+
- static ssize_t mt7921_thermal_temp_show(struct device *dev,
- 					struct device_attribute *attr,
- 					char *buf)
-@@ -271,11 +276,13 @@ int mt7921_register_device(struct mt792x_dev *dev)
- 	dev->pm.idle_timeout = MT792x_PM_TIMEOUT;
- 	dev->pm.stats.last_wake_event = jiffies;
- 	dev->pm.stats.last_doze_event = jiffies;
--	if (!mt76_is_usb(&dev->mt76)) {
-+	if (mt7921_powersave && !mt76_is_usb(&dev->mt76)) {
- 		dev->pm.enable_user = true;
- 		dev->pm.enable = true;
- 		dev->pm.ds_enable_user = true;
- 		dev->pm.ds_enable = true;
-+	} else {
-+		hw->wiphy->flags &= ~WIPHY_FLAG_PS_ON_BY_DEFAULT;
- 	}
- 
- 	if (!mt76_is_mmio(&dev->mt76))
--- 
-2.34.1
+On Mon, Dec 11, 2023 at 12:33:04PM +0100, Thierry Reding wrote:
+> On Fri, Dec 08, 2023 at 07:50:33PM +0100, Uwe Kleine-K=F6nig wrote:
+> > You don't need to touch all drivers because you didn't change struct
+> > pwm_chip::dev yet. (If you really want, you don't need to change that,
+> > but then you have some duplication as chip->dev holds the same value as
+> > priv->dev.parent in the end.)
+>=20
+> I don't think that's a problem. These are for two logically separate
+> things, after all.
 
+How are they different? I'd say one is the initializer for the other and
+(ideally) unused after that. With that interpretation they are indeed
+different, but then it's ugly that the initializer keeps staying around.
+
+> Duplication can also sometimes be useful to simplify
+> things. There are plently of cases where we use local variables for the
+> same reason.
+
+local variables go away though after the respective function is left.
+chip->dev and its copy priv->dev.parent stay around for the full
+lifetime of the chip.
+
+> > > @@ -58,23 +60,24 @@ static struct pwm_chip *pwmchip_find_by_name(cons=
+t char *name)
+> > > =20
+> > >  static int pwm_device_request(struct pwm_device *pwm, const char *la=
+bel)
+> > >  {
+> > > +	struct pwm_chip *chip =3D pwm->priv->chip;
+> >=20
+> > With my approach getting the chip of a struct pwm_device is only one
+> > pointer dereference away. You need two.
+>=20
+> None of the functions here are called very often, so even if this isn't
+> optimized away it would hardly matter.
+
+I'd say pwm_apply_state() at least matters. Also I think that making a
+slow path quicker is a good thing.=20
+
+I wonder how we'll converge to an approach that can go into the
+mainline given that we both have our strong opinions.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--gyt34nc3mm25zmmf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmV4ywQACgkQj4D7WH0S
+/k4AOQf/Rn+1it6Pa2jcb+shcSHEefw76NASZ1jTJwzdnczaZca+4/TdY0/HLE/V
+27TLO93Qd9e4o0E4uFjg/T9KbZy+cu9WxiCJ9LgBEhgPaLIWe9opiDarsy2BNLJi
+e6lERFOmyBoG3USP7t/iEQn5C+0+gC6/pcPVWk8TJO/mc2kr8ioQRsaHtaE0AsX0
+hpZS0GH+ypW5d1saF+TMkSDV4QUzmTaXxsSDqG9/vnXhjln6wlriyIo2gJI2qQ6R
+gBrGVWoz8SnG3OjfGZwo9KhL+KPTbjIba4erb1KbE9j9Ul7c3xF/nA6GcTwU/IcQ
+6WQMUp7Ez5oG8txpknnsR9R2Iimimw==
+=APXJ
+-----END PGP SIGNATURE-----
+
+--gyt34nc3mm25zmmf--
 
