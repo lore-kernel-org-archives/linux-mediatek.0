@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F1BC4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C959FC4167D
 	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 12:31:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,56 +12,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pkeEHXB3/T/jnmWhl5vUXIuVy5c3DWow9x1MikiYeZc=; b=JQEFFug/znyd48uwpM7FSwd/qt
-	Q3wQ3a8aOINP1xACa4AAuvpkpImYgNEVSk/gvYrUFP8H+jUCxiNMKGUwLxnaI7LN+1ovFoZfxBy/A
-	uqr/Ch6GjgpdIXAmB7vOw069PnSfNAI8CabbZKT8LE8Tb3onBsEM5sH14OaBad74n8rFp3xv1IjgS
-	sk5/jXU1R+URUSS5pQuSd0LvImrrijw31f+5vi/6rLk7z42P3AZKOXkcMpVC4BQZ5Bbqlbi+OZa66
-	LOcX2DEy3T13Di017FJPj7p3EDJXIkdlrp6Bko9v0Bv5SZVyACkEFVPsDRTr6mzHBKf22fPrkmVbG
-	NhQPPcjQ==;
+	bh=OQqe+M0SciQZs03dKyyk03FflXJC4UVH/RDIGAymDmI=; b=jIvjLMzzxR8jEBwAwy2cbCCVGD
+	cjQcnShH7TjupOVdYf1W26gsvarJTNZ819TAO4wgZyNhh0saB2CiHHx5NTgyohBx7DgY9EaU2Nm2/
+	7IQR5UE7JqxUb6vgiABUsjlyK62lFgUKHztNY107X00Xq748rVZqnch7qs7WCnd893kz848rgtCGY
+	9DxSHZSnzrCufA0dD1dSG1DvTIuLn8hadj9hea+5dweSyoQwr+lJtAfXzbPQBMoKet9r/teQqX5nZ
+	egtWX1T1QquTLKxMF8VvlgN9u9KmYkFJshff6fZIk8R42xb4ldan5jPQWJ0GD9nTdgE+TPJf+c51Q
+	5dKFC18w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD1vE-00Bfjt-10;
+	id 1rD1vE-00BfkC-2J;
 	Tue, 12 Dec 2023 12:31:36 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD1v7-00Bfbl-0c
+	id 1rD1v7-00Bfa5-0d
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Dec 2023 12:31:30 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-2888c80994bso3304871a91.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Dec 2023 04:31:15 -0800 (PST)
+	Tue, 12 Dec 2023 12:31:32 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1d336a8e27fso2107415ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Dec 2023 04:31:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1702384275; x=1702989075; darn=lists.infradead.org;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1702384263; x=1702989063; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pkeEHXB3/T/jnmWhl5vUXIuVy5c3DWow9x1MikiYeZc=;
-        b=fokYesYWEsyh/JJrZ4xJh4nOUI7CeVuWqJRBwU8EoIM0vMwYFICyobdid684PmeTGi
-         QeOJAy8aehtWDagLEQU/S4Ggkb3oy+9QfMP3LWGE25zCsmjXbvDSncuOT248y3R8Ciu7
-         sv4R0FB7SxcBw8IsleIWyki+2MXOVag+sQidwEXAOn963AP6iRBrBpKXk3Qlqc1ggcHq
-         wbAHZuZmKjpGOSaJgGc6Zk7rl3R+r2q3fmq87b5f1sI9/ZPpNTJ2PtDo7Xs3jW1p0kxF
-         3YSxvgE+Axy9WZFROQl6Rh+edbB9leUXt1jHVPrwXuWNW6SNRr7A6+qB58+CCK6Q1U2g
-         I2Ng==
+        bh=OQqe+M0SciQZs03dKyyk03FflXJC4UVH/RDIGAymDmI=;
+        b=zMGD11BBUrCPn1bEL0PC8T14Vh3zet6v1tBUigRFAX9EbUnbCyykxO8VhFXKwunKit
+         Gs/Bz/ZuaB8ilB4UAbGfXEOnQ5AQiViVsPAI31ESmOiEO3REDRO9enRSPqS0oG6mH+Jq
+         RlOWWKKG8XaTUfE4SAcqQytTbARGDLR3ISfxeJfLjd3ztcGDxTWjN/e1GtvJPBevSV+4
+         FsHnDepUqoq2eRmho0uOd0di6IHW9NlSq/INhE6aegpaJ8bo2Cwn4KCwdxKdFIZjnk3U
+         KpI/S2JOZaBtWpJ0EINySPqEFBuHxBTVUZQirnJzHeLSrgegU+/DNzHiQPSUOrHQgqRn
+         0/aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702384275; x=1702989075;
+        d=1e100.net; s=20230601; t=1702384263; x=1702989063;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pkeEHXB3/T/jnmWhl5vUXIuVy5c3DWow9x1MikiYeZc=;
-        b=leQZI2r3lLUpfZoyS4mmrkLBye6zAI0UqM70MONK5HvGqDjvEwN/I1kM9wEz2iQioA
-         XjwOmXQE24xXBfaeaT1Mj4KOpw29Qz1OUHO2ovC7skxSivjT4bXiIq0Qf47InRM4p/KN
-         bqLLskfwyz9VTBIGbFZhC0JgIzr0ZSDkEgrTqui9tbSi1f8q2EDcsnKnHdyMbUl4Kk0C
-         kreAMKijWh4QYW6IueXQk1wcp441h/TRWjgdW4/G4bvYpqgAESFEqlbMTM24A7deSM31
-         2L5+jHq/g89zF7uoN6+PfXJH70FmOiy3p6xp4BEdJZ8RQ/15xfXlaI0Rxn0EeEt8nTbu
-         DKmg==
-X-Gm-Message-State: AOJu0YzDHS1OI1TJFPOWwzgxMlQHk1FPovw5BKLEe2VpHI3U2cgfs7wm
-	dh9NxhjTgAVmsGNFRGkOhq+9Bg==
-X-Google-Smtp-Source: AGHT+IE5sCF4shEEIJbHK+h3p3TmCKRBlnwVW/n53llShsrKb4WCrNbGIGBKDw0YVDdNQclsPnMbOA==
-X-Received: by 2002:a17:90a:898d:b0:28a:d0c1:3015 with SMTP id v13-20020a17090a898d00b0028ad0c13015mr89056pjn.75.1702384275122;
-        Tue, 12 Dec 2023 04:31:15 -0800 (PST)
+        bh=OQqe+M0SciQZs03dKyyk03FflXJC4UVH/RDIGAymDmI=;
+        b=tqsA5dLSU97t4yPE9iuKY7V7QekpIagjwkvdny/9POi2fpVV/xGVg/7FuCoe+BaK3H
+         S7vdHRizSwaLuw/QdYJ4Q0HxPUugPhlZJ/bL6Xu/PxInyTz/B4U9w48+mHk0iVC/xyfA
+         b9rHRZ26S01V0hjJm3ti3/xtx7r7RahyF1bGUn97SiyhvrzrcfSRmbl7TYwNwZlvYSXw
+         3Q7D9oqzHR3kaNh71ik6Y8iv/ShLa4vIogwbjJSv5hxH+LPxFfOlqGSvC7XN75QNwWBb
+         40L9+wBSKZHMPXkjM3ozmXXVikY6llfYzHh9f03GjPpnlXFjod2XzrvCWp1zydxqQ4Nq
+         Bh4w==
+X-Gm-Message-State: AOJu0YzecMpHmPjcvFAl0svSn7UsF+iJYKI9Xiy5XkARMBi2U4lzrGQu
+	a3LeBdYhtIoe4Mnl9tkmmFzR2Q==
+X-Google-Smtp-Source: AGHT+IEDUBr/+oX1uIcLCJf/m0NlbaRCePwvYMtZ5/+9t/R/pYCnAZMXHXO1IYqgFH048E0hgIsy0g==
+X-Received: by 2002:a17:903:280e:b0:1d0:9fdb:a961 with SMTP id kp14-20020a170903280e00b001d09fdba961mr2989604plb.32.1702384263212;
+        Tue, 12 Dec 2023 04:31:03 -0800 (PST)
 Received: from localhost.localdomain ([101.78.151.194])
-        by smtp.gmail.com with ESMTPSA id z5-20020a170903018500b001cf65844874sm8517471plg.45.2023.12.12.04.31.11
+        by smtp.gmail.com with ESMTPSA id z5-20020a170903018500b001cf65844874sm8517471plg.45.2023.12.12.04.30.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Dec 2023 04:31:14 -0800 (PST)
+        Tue, 12 Dec 2023 04:31:02 -0800 (PST)
 From: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
 To: lgirdwood@gmail.com,
 	broonie@kernel.org,
@@ -79,18 +79,20 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Subject: [v9 4/4] ASoC: mediatek: mt8188-mt6359: Enable dual amp for mt8188-rt5682s
-Date: Tue, 12 Dec 2023 20:30:50 +0800
-Message-Id: <20231212123050.4080083-5-zhourui@huaqin.corp-partner.google.com>
+	Rui Zhou <zhourui@huaqin.corp-partner.google.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [v9 1/4] ASoC: dt-bindings: mt8188-mt6359: add es8326 support
+Date: Tue, 12 Dec 2023 20:30:47 +0800
+Message-Id: <20231212123050.4080083-2-zhourui@huaqin.corp-partner.google.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231212123050.4080083-1-zhourui@huaqin.corp-partner.google.com>
 References: <20231212123050.4080083-1-zhourui@huaqin.corp-partner.google.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_043129_250089_4F5C3539 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20231212_043129_244570_3231EEF2 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,28 +107,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable support for dual MAX98390 amplifiers on the mt8188-rt5682s board.
+Add compatible string "mediatek,mt8188-es8326" to support new board
+with es8326 codec.
 
-Reviewed-by: Trevor Wu <trevor.wu@mediatek.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
 ---
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml        | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index d1884f23a1a7..a391066ab204 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -1448,7 +1448,7 @@ static struct mt8188_card_data mt8188_nau8825_card = {
- 
- static struct mt8188_card_data mt8188_rt5682s_card = {
- 	.name = "mt8188_rt5682s",
--	.quirk = RT5682S_HS_PRESENT,
-+	.quirk = RT5682S_HS_PRESENT | MAX98390_TWO_AMP,
- };
- 
- static struct mt8188_card_data mt8188_es8326_card = {
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+index 4c8c95057ef7..f94ad0715e32 100644
+--- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+@@ -15,6 +15,7 @@ allOf:
+ properties:
+   compatible:
+     enum:
++      - mediatek,mt8188-es8326
+       - mediatek,mt8188-mt6359-evb
+       - mediatek,mt8188-nau8825
+       - mediatek,mt8188-rt5682s
 -- 
 2.25.1
 
