@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC80C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 13:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D3E8C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 13:27:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rKRjQQFp+TL5u/9okdCZVS8Q04keVLok7OM/X0m5lzk=; b=3iQmBpGcSIfYoP
-	jtYM14y6GPVnc61aWRiUYDn3GwDqrnleDnPR21gxO8nhEU66lvHxCfAY6ZgFEgdnuDPP1Z1CfHrB9
-	qa048v5FxNwPq8GoKcYd9b3I0bUgYJHL+w+BDYeGHrknX+SttBsh+7a5eERKmcIn/5tt0L2W9SeeJ
-	p6szogDzCx8QZaSGITSMpD/TjVGI7eL2bczisrVDTg889hRloYn566H3kzauBU4+YV/ayG7P4Y5kE
-	dCtjGM3BkGzP9IEcSU7G8ur7UpM9PiOi3zkN0kTjKdw15aBN6eKGK2ZcTfITo8WoXf56zj5ZnDZ0x
-	lu7phI9qxUmu+yMq90ug==;
+	List-Owner; bh=ayRToWjnATMUiSSHuLBfauHzv3VzguRBjQyXJ5ZLY/4=; b=AhAgo5VbNOzZBQ
+	kAhLbHD98FaT9YdLD+v/3okldMfALPIIQsxTIpri/xJBwP6vg2Am+q9t+k036TeYuNb3KjZ6VhDLi
+	xAfFhJVuz2hf2lHLmIp6zVSNi8Gf6OfX3/mUO1SJ5Vhk/kr91yLxf47mY8rN9LTWWaMvjynleSBAR
+	EIhJWYW3r5PDX6a8cvNoxlO3+FJ4f9y5JhJdJZr1KIPJpf3RF1HKXEOL7fMnGVx6BCs/Qw6OVFtCv
+	aOIhNqS3jynizTHJfxk/2nuMfgShe+hVPW3i+wamIiUInUwT0+Vl3x264xePYeiaa6PTTzylxhrAZ
+	KkBq6xr3iHY5B7zpy/cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD2nG-00Bnfh-1U;
-	Tue, 12 Dec 2023 13:27:26 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rD2nG-00BngE-33;
+	Tue, 12 Dec 2023 13:27:27 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD2nA-00BnbI-36;
-	Tue, 12 Dec 2023 13:27:22 +0000
+	id 1rD2nC-00Bnbl-01;
+	Tue, 12 Dec 2023 13:27:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702387636;
-	bh=xDgSLNOEDoRbx3eokyLAR16GqDH2Uv/Z7DBLvAgMnGg=;
+	s=mail; t=1702387638;
+	bh=bORQa449volAyT+EMZHJvP/KuwY9i8DhbUIZ63euxMM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WwNIE1XK3CLrmcACMu8onN3StZKF02LFMGr5o8eV8qZKQ95qO1394/W7wFymVt/Gv
-	 NkzR7gbMzj1tKHer8FN2c3/cXgLdj1kkoUv2/5tUIpTbm34fbyUSq0HftfnnNH3lJU
-	 awuTCSDgv2y2LUGmmKRXrqxvBNR2hJFs/g7InuAA1IeqN2GhcAUpmIHivkjXJKIIqd
-	 +Giz0c7dI2j3PZ61m/57b2R5OjTiKfqWfi9lUow0b8heqUaEOhJYk2B+UN9C0Vj9aV
-	 r37GQLFxz1yYQ05ytLQVo1FmW5hhJkqe13aElSSMa5d6mMP/Wi0PQTDIvlY1epOqM5
-	 +DBu82DsKRVPQ==
+	b=jzPgk9VpkKV0fyriB7dHtcuDiQiXIp7w4XYDgCGGGdxIGa7V17zVpEAa4vvK8LokN
+	 Y9T/mwQTVlchSTjlJfz7UOd/WS3ssJXCBtdb/f1L3UdXittnqS8CkK46Eyz3j41CUu
+	 O91taj9MdqhHul2r9rH5mM+QFkIRuQKINyKbAEbMU0+GcRGZSKOUgxk8M0cYr1ywfF
+	 T2oy8yfo3K/fqI2UlVo8WfoX+ZFteWofeBFAvnCvnLB8lrzUUa2SY/M6IiFWex+80F
+	 xQri1CebiCNRwW0FqRYBDujV4oT4BmHcmNaJ6CwBnfr2c1CURfiUDJkyTI4h8uevTA
+	 tRMMaqDCZnEBQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DEE23378143B;
-	Tue, 12 Dec 2023 13:27:15 +0000 (UTC)
-Message-ID: <1e05cb3e-3ef2-45ca-9754-add6d0e185f0@collabora.com>
-Date: Tue, 12 Dec 2023 14:27:15 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4CD513781461;
+	Tue, 12 Dec 2023 13:27:17 +0000 (UTC)
+Message-ID: <315011be-59c6-42b1-be9b-cd2eaf6debd9@collabora.com>
+Date: Tue, 12 Dec 2023 14:27:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 17/17] drm/mediatek: Add comments for the structures
+Subject: Re: [PATCH v4 11/17] drm/mediatek: Turn off the layers with zero
+ width or height
 Content-Language: en-US
 To: Hsiao Chien Sung <shawn.sung@mediatek.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>, CK Hu <ck.hu@mediatek.com>
 References: <20231212121957.19231-1-shawn.sung@mediatek.com>
- <20231212121957.19231-18-shawn.sung@mediatek.com>
+ <20231212121957.19231-12-shawn.sung@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231212121957.19231-18-shawn.sung@mediatek.com>
+In-Reply-To: <20231212121957.19231-12-shawn.sung@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_052721_183129_21AC8BD9 
-X-CRM114-Status: GOOD (  21.00  )
+X-CRM114-CacheID: sfid-20231212_052722_306321_9578B6F5 
+X-CRM114-Status: GOOD (  16.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,68 +77,52 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 12/12/23 13:19, Hsiao Chien Sung ha scritto:
-> Add comments for the structures to improve readability.
+> We found that IGT (Intel GPU Tool) will try to commit layers with
+> zero width or height and lead to undefined behaviors in hardware.
+> Disable the layers in such situations.
 > 
 > Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+
+This commit needs a Fixes tag. Please add the relevant one.
+
+Thanks,
+Angelo
+
 > ---
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 21 +++++++++++++-
->   drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 22 ++++++++++++--
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 32 +++++++++++++++++++++
->   drivers/gpu/drm/mediatek/mtk_drm_drv.h      | 15 ++++++++++
->   drivers/gpu/drm/mediatek/mtk_ethdr.c        | 11 +++++++
->   5 files changed, 97 insertions(+), 4 deletions(-)
+>   drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 2 +-
+>   drivers/gpu/drm/mediatek/mtk_ethdr.c            | 7 ++++++-
+>   2 files changed, 7 insertions(+), 2 deletions(-)
 > 
-
-..snip..
-
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index 38d08796fae4..af80c9e50d36 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -46,6 +46,38 @@ enum mtk_ddp_comp_type {
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> index 10d23e76acaa..8789442c039f 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> @@ -156,7 +156,7 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
+>   	merge = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 + idx];
+>   	ethdr = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0];
 >   
->   struct mtk_ddp_comp;
->   struct cmdq_pkt;
-> +
-> +/* struct mtk_ddp_comp_funcs - function pointers of the ddp components
-> + * @clk_enable: enable the clocks of the component
-> + * @clk_disable: disable the clocks of the component
-> + * @config: configure the component
-> + * @start: start (enable) the component
-> + * @stop: stop (disable) the component
-> + * @register_vblank_cb: to register a callback function when vblank irq occurs
-> + * @unregister_vblank_cb: to unregister the callback function from the vblank irq
-> + * @enable_vblank: enable vblank irq
-> + * @disable_vblank: disable vblank irq
-> + * @supported_rotations: return rotation capability of the component
-> + * @layer_nr: how many layers the component supports
-> + * @layer_check: to check if the state of the layer is valid for the component
-> + * @layer_config: to configure the component according to the state of the layer
-> + * @gamma_set: to set gamma for the component
-> + * @bgclr_in_on: turn on background color
-> + * @bgclr_in_off: turn off background color
-> + * @ctm_set: set color transformation matrix
-> + * @dma_dev_get: return the device that uses direct memory access
-> + * @get_formats: get the format that is currently in use by the component
-> + * @get_num_formats: get number of the formats that the component supports
-> + * @connect: connect the sub modules of the component
-> + * @disconnect: disconnect the sub modules of the component
-> + * @add: add the device to the component (mount them in the mutex)
-> + * @remove: remove the device from the component (unmount them from the mutex)
-> + * @encoder_index: get the encoder index of the component
-> + * @crc: return the start of crc array
-> + * @crc_cnt: how many CRCs the component supports
-> + * @crc_entry: get the pointer to the crc entry
-> + * @crc_read: call this function to read crc from the hardware component
-> + */
->   struct mtk_ddp_comp_funcs {
->   	int (*power_on)(struct device *dev);
->   	void (*power_off)(struct device *dev);
-
-Please rebase over the latest upstream kernel, as it doesn't apply like this.
-
-After which:
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+> -	if (!pending->enable) {
+> +	if (!pending->enable || !pending->width || !pending->height) {
+>   		mtk_merge_stop_cmdq(merge, cmdq_pkt);
+>   		mtk_mdp_rdma_stop(rdma_l, cmdq_pkt);
+>   		mtk_mdp_rdma_stop(rdma_r, cmdq_pkt);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+> index 73c9e3da56a7..e95331c06815 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+> @@ -163,7 +163,12 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
+>   	if (idx >= 4)
+>   		return;
+>   
+> -	if (!pending->enable) {
+> +	if (!pending->enable || !pending->width || !pending->height) {
+> +		/*
+> +		 * instead of disabling layer with MIX_SRC_CON directly
+> +		 * set the size to 0 to avoid screen shift due to mixer
+> +		 * mode switch (hardware behavior)
+> +		 */
+>   		mtk_ddp_write(cmdq_pkt, 0, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_SIZE(idx));
+>   		return;
+>   	}
 
 
