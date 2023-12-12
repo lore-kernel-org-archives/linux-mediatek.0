@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64EA2C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 09:32:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C336C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Dec 2023 09:32:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2xdT3MiD3WrF8QxDB4776dAAeYEdD1OfGs686JctFho=; b=EPJM/Agiwo8oYPpmrlf2zpvYYo
-	mUTK3EkK+MMyH3dgZOjcoDDwBGSNj32gJecwOb6fhXValUZwyjr/cZ3eJFPb8wuWOmaCYVlkY3yUg
-	rfyWEwb0yuM1YRsFFL4eS5PdlfPGOSXM/jS6i4RKtxgx1Wf1rd9DQBLb1yJ7Y6wJyYpQEfU2NOfIZ
-	w4ycEwFh1am1oBfP3xIzCAlXX/TaiH7zsHGTNhcy9uIaTLP1i1AjLK+Yx1LUq+ubHH45FKMtr+Tf9
-	cCl4mXzXFkzYIW7z4TfbIdtxJn/e4+uSj4G6y4o8mpjaS6vA4i8c2EteQerjqOGo3wa4UHWZbfe5D
-	E6vIwofQ==;
+	bh=zD4C3Ub/1zdZLMKHBGjv+fG++RkHAM/NPOBwkxlFFgw=; b=DcOUUqVkKF4207ASXHAzbdxX/g
+	GYr6WmrFHGbQReBNrI0OA2F5szXWORYu30ExHGh2wWMBY3tw0qKTRqrnkAyG5KLU42GuDg9mRvOX5
+	emLXiPkHtoVXDiPZ/tVw7ePX5wH9BEojuwCCJz9hccq+40kDooktC5T2rXRX+o6dzDd+kwYphoptF
+	QIpj9c3IBXt/JbUgf0XlQkbaukK4yiGn3QwEBKSL2FcUxTWRHhO8RHrAnDT6GMKdpdIdZOE7PkwEj
+	L2zIrz1+gnRpOhS7DpbtV7GHfsaU1zYte19kk4fw6uT7g5vKGdkKpaD1Upw+YX/Q0+jDQZS2EzC9a
+	jlc131gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCz85-00BD8A-1T;
-	Tue, 12 Dec 2023 09:32:41 +0000
+	id 1rCz8M-00BDDK-1G;
+	Tue, 12 Dec 2023 09:32:58 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCz82-00BD5w-0S;
-	Tue, 12 Dec 2023 09:32:39 +0000
+	id 1rCz8J-00BDC2-1n;
+	Tue, 12 Dec 2023 09:32:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702373551;
-	bh=NAvNFGCToTcYv4i803QHyOj4P8Ba1LxYOhgrWA/utvU=;
+	s=mail; t=1702373574;
+	bh=MBQO5oF6xCPSn7HgAU1t+2l9sLLdykkBin/8woDzJ9g=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=kbgwqknwB0gVDzzS3fQsm9aNp3oYr8wyYJrK41E//BOVqK7eS+zj4wHzsFrMrC6mr
-	 we6AWt5FlMZNvONxG2tXp2E1bwouzQOYR4kciQDbgarjx6OLF9LsYG+lHf84c99WUb
-	 P50c6Ob9BUly4ub3j0FU7EGkmi/0oHLWKY9WKU9B+BRu29GF4dmuwS+OBBVZ3MIxCk
-	 ySkxPYkMj1Af8KDXNuwrZRIH1H/n+8AwK7q8ywOVuEDjrRJHhXx8r4cOFRVrXyw+/c
-	 wJF+lI5SDW0eN60v6QQTRg+Xf2Y1jejxUoDuQEjRhrH7dYGN0nL++d1kTRuAaUl9Va
-	 dTDsvs1lSunEg==
+	b=EDEkk/Bnyi8puXgMo1g521hdsSapVIKyggdM1wYlr97I3/+aw9hKO5u/EQwjMs4NI
+	 fBO+A2DQRs4wdBdfsgw5Xw5FJjEcatWuoUkSxcTcg6cNdeOevbVcKdNhMU/fzMDkGC
+	 UFBR31xHa4B7V1H4sXzRMypG5kmC4bU84HhKqN0+hz+JNbYjBNHJ2qDu7XoXz2Eh8S
+	 4WS++GSApUzlYzWjHC6pl9pCrA0Mj3+TSYTT8Z7JxP9fdbiBm+ryibJ3O7hGiK18yl
+	 bOo9mVWfoM8t6YO5bhlojzqrX0Q3svrRzPKWi8DDJDa0J8VRrRzYUJ6Bz8ZqV9DF81
+	 NDfz2uNornPeg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 70CA23781423;
-	Tue, 12 Dec 2023 09:32:30 +0000 (UTC)
-Message-ID: <55b785f4-a8dc-44e0-9320-9e71f0dc8853@collabora.com>
-Date: Tue, 12 Dec 2023 10:32:30 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1B8EE3781423;
+	Tue, 12 Dec 2023 09:32:53 +0000 (UTC)
+Message-ID: <4215d31d-99f0-4a47-a8c9-7324e5b51c02@collabora.com>
+Date: Tue, 12 Dec 2023 10:32:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 3/5] dt-bindings: clock: mediatek: add clock
- controllers of MT7988
+Subject: Re: [PATCH v5 2/5] dt-bindings: reset: mediatek: add MT7988 ethwarp
+ reset IDs
 Content-Language: en-US
 To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -67,14 +67,14 @@ To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  netdev@vger.kernel.org
 References: <152b256d253508cdc7514c0f1c5a9324bde83d46.1702350213.git.daniel@makrotopia.org>
- <ce9b1e777090724794cf9f0c52bcd8618385fd06.1702350213.git.daniel@makrotopia.org>
+ <a60f5b5ed58626f3dbac1eab8a5845c3ce9bd17c.1702350213.git.daniel@makrotopia.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <ce9b1e777090724794cf9f0c52bcd8618385fd06.1702350213.git.daniel@makrotopia.org>
+In-Reply-To: <a60f5b5ed58626f3dbac1eab8a5845c3ce9bd17c.1702350213.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_013238_307883_035B231C 
-X-CRM114-Status: UNSURE (   7.42  )
+X-CRM114-CacheID: sfid-20231212_013255_722226_CA0450D9 
+X-CRM114-Status: UNSURE (   7.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,12 +91,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 12/12/23 04:18, Daniel Golle ha scritto:
-> Add various clock controllers found in the MT7988 SoC to existing
-> bindings (if applicable) and add files for the new ethwarp, mcusys
-> and xfi-pll clock controllers not previously present in any SoC.
+> Add reset ID for ethwarp subsystem allowing to reset the built-in
+> Ethernet switch of the MediaTek MT7988 SoC.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
