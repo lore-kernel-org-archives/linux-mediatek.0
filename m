@@ -4,95 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E5E2C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 14:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C50ABC4167D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 14:28:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HnmrUE6uA1UjU0DGZJd+ywoyYgk2RFZ2Qv8HjSJNWug=; b=c/mwwYpBd7h5dzCh6cRtofFrCz
-	SeCaB6jYF3GyyD7q6euTuH3nNsm2XJf8J4sF6kPG76AczZipu9xPFS2bEyrira9/BY3YG+KqHbMn5
-	7wTT49WjH/3mmpCxYhk+tT/mdnOEGOhAhAQBGnANlwpm/cijdoNTrZIZde3XE3l5baSdf71m7S3yl
-	a0dSTBt6YysGHX7FGDYtoFaSHSfyckkLo34h8j0d6ASoDNHe5Jn8WiRCIXBujo2k8HqoBC5HI8e0K
-	I17gjJuSO1QE+urGzyZwF5/+fQML56dLwNjpGLvcYPr4PxhsF70q3KlL+FK/Y9fD/JMOsgTrj2ebG
-	hG8Syh1Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=th9T4Hs10pxIBc2VsXo0QrmkeyWZZAs9IQPrzpE3ifk=; b=lsCLzCMxqEUs3t
+	nVhy/eJZ7v7ejt6ZojgQB7QFaS92vncGKwToaqCoosGX8T7z6JbpMVuI6670QH2rV0vBESY8ZBbaB
+	HhI4C+Uv5+z836IrLqDpOg/1fnEu2rwBlK5BqEGVo5IPMiW0oVfRJxWdGNip5lWzzwbCBrzhOUOlt
+	L+i4VGh6rHAANMSK3ycVdb8vmA56jCfGfNegc1HH6nMoRZzwdTMBKmav+tnnMdBjqa/F2qJt6VCEb
+	PBWbYiboYOiXmH4Q+XeXg/u84+q1gK8XaLKsxLIs+J7IdzsbFBiKz7D099NUSxEqrMGfEC2UdSNVJ
+	KoRRs135IRl1hIGp9uUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQ2P-00F0e4-2y;
-	Wed, 13 Dec 2023 14:16:37 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1rDQDu-00F2fx-1x;
+	Wed, 13 Dec 2023 14:28:30 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQ2M-00F0bc-0p;
-	Wed, 13 Dec 2023 14:16:36 +0000
-Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2ca03103155so88322401fa.0;
-        Wed, 13 Dec 2023 06:16:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702476987; x=1703081787; darn=lists.infradead.org;
-        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=HnmrUE6uA1UjU0DGZJd+ywoyYgk2RFZ2Qv8HjSJNWug=;
-        b=TtG2K50szkMQPzDHazvxVyeIMzcNA6pkz5skgFTKqsc+p0T2CLuXVEwdVYUKK6JW03
-         ZltN+3nlJ6He88nxPw/xHZnBa0VzL+HXNzHZhIAK1Av9nklyqS33mdgEJLwCA1iwwluM
-         CwyP6gAeSpr58pAGd57k/eiTq4wV2ZpD6816/dIoAAyDoqsXzsmsNPPueIJuJ70lqEgO
-         n8E3AGsEgWTBR3Em8f3Vp37qC9eQK1g47D4JFez1ZBz/vEUnvkNKpTnkETXa+52oh8lh
-         SwAv9TdemvHeG0Tp2g1JkCyQbBSpgFpnS80gu8icDt5S8qobHQgmLC/mHY45unipzzgE
-         WpRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702476987; x=1703081787;
-        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HnmrUE6uA1UjU0DGZJd+ywoyYgk2RFZ2Qv8HjSJNWug=;
-        b=FzPnL3DwRE88VuoIZX8WRawlnOgGFIwu9GPKXM1xwv5Lie3bkvki4btUAtI8sSvIJX
-         PO1cV/uH9A8vMdwZvdYyOpjZnyayFGq6H0u+YNz76QPDHwRZ6gun5Ole9Px9RRH3oEEu
-         rRMbJADuhBkh/4cMjvzxGWF0g/pMLXgArGcal0Q7oWEh0qv3UVVD6S7HlTnDy7N74dV2
-         SfRgldQTD3haAc45Es54+935nT71+pY5XyE7kFzlwdnnqJjdjDd+CT7MNkH2ktYBkmLv
-         dOtRxefkfp9vMeojFnlsGB0L7OjBAR4FwM9gCzQIrlHHtIT1ZHsW6KnosTuY9sUayWth
-         jQjg==
-X-Gm-Message-State: AOJu0Yy92KtOpWhIRNHnXDfJNDonQG6NqcsoWjj4QQUka7KOPK33jhQL
-	hmD3PbPTb92ylU5Jb4p4yCA=
-X-Google-Smtp-Source: AGHT+IHMEFbwY2jxx7Eqytsu4ONvN/Lw6aO1DvwW9XsiwGhW/Welyye/FmxGvgN+8ji2wLeKZxibCA==
-X-Received: by 2002:a2e:9b03:0:b0:2ca:34cd:77ea with SMTP id u3-20020a2e9b03000000b002ca34cd77eamr2472316lji.44.1702476987175;
-        Wed, 13 Dec 2023 06:16:27 -0800 (PST)
-Received: from eldfell ([194.136.85.206])
-        by smtp.gmail.com with ESMTPSA id 20-20020a2eb954000000b002c9f62145f8sm1868126ljs.82.2023.12.13.06.16.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 06:16:26 -0800 (PST)
-Date: Wed, 13 Dec 2023 16:16:14 +0200
-From: Pekka Paalanen <ppaalanen@gmail.com>
-To: Joakim Bech <joakim.bech@linaro.org>
-Cc: Simon Ser <contact@emersion.fr>, Yong Wu <yong.wu@mediatek.com>, Rob
- Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>,
- christian.koenig@amd.com, Matthias Brugger <matthias.bgg@gmail.com>,
- dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jeffrey Kardatzke
- <jkardatzke@google.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Vijayanand Jitta
- <quic_vjitta@quicinc.com>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- jianjiao.zeng@mediatek.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- ckoenig.leichtzumerken@gmail.com, linaro-mm-sig@lists.linaro.org,
- linux-mediatek@lists.infradead.org, tjmercier@google.com,
- linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/7] dma-buf: heaps: Add secure heap
-Message-ID: <20231213161614.43e5bca8@eldfell>
-In-Reply-To: <20231213132229.q3uxdhtdsxuzw3w6@pop-os.localdomain>
-References: <20231212024607.3681-1-yong.wu@mediatek.com>
-	<DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
-	<20231213110517.6ce36aca@eldfell>
-	<20231213101549.lioqfzjxcvmqxqu3@pop-os.localdomain>
-	<20231213133825.0a329864@eldfell>
-	<20231213132229.q3uxdhtdsxuzw3w6@pop-os.localdomain>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
+	id 1rDQDq-00F2dd-16;
+	Wed, 13 Dec 2023 14:28:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 75B63B81DDB;
+	Wed, 13 Dec 2023 14:28:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1385CC433CC;
+	Wed, 13 Dec 2023 14:28:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702477703;
+	bh=1NelY49Rtb1AVpWalye31/ZWTy2DmcMw3Hv962u4tjU=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=BvGu46F/ZyupCCTvU/N6ebinx5qDUWy014Z1CtHsN+PSuSkE4azZr/bKUH8ZVLPUK
+	 1bGceVp/bHQZc5fpGMcZ1hP0LjVzRwJBej4aWYGSO9ZAOeaP1HFuxleemntZBr4QZ9
+	 VhoVR0tX48YQm50K4Jbzwm2J1dfk/eGkwGIXBf5HamgeWl54fUb7Bg0aNCBophoGe1
+	 t9E+L+sWeBGxPGIuTtmiA+I7VDlwTFZqVegvNGUsZNAGO0CxVrWuyBz9x3HWXv6VDI
+	 k1bMvD4bELfPG2kU77qNrt1rncvF9KGARGE98MYpytXHUl2deUZasSTFkuX/OvZKf2
+	 D+9z0/zt3DHdA==
+Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-2ca1e6a94a4so91141161fa.0;
+        Wed, 13 Dec 2023 06:28:23 -0800 (PST)
+X-Gm-Message-State: AOJu0Yx/AqSBBtSi6bGVjA8zR7hL/PQtKci0oi1y6dMH+p4wynWdKgSn
+	PSDb+3u74EE4VXG2vx/XPuvBFc/w4t+Fei+ihw==
+X-Google-Smtp-Source: AGHT+IGZUggKzakRIu1cLjf+W2GQkNH9IR87nGDEKuYmEbAd4t3lIaZqsoyFSGRtYGI96Eay29zUVggLBHEcOmhNZDk=
+X-Received: by 2002:a2e:a805:0:b0:2cc:1e83:65ee with SMTP id
+ l5-20020a2ea805000000b002cc1e8365eemr4557579ljq.56.1702477701036; Wed, 13 Dec
+ 2023 06:28:21 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="Sig_/m_y9/L720k3.YUUEknjTd2h";
- protocol="application/pgp-signature"; micalg=pgp-sha256
+References: <20231024130048.14749-1-shawn.sung@mediatek.com> <20231024130048.14749-15-shawn.sung@mediatek.com>
+In-Reply-To: <20231024130048.14749-15-shawn.sung@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 13 Dec 2023 22:28:09 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-6bbE394ViQfyXg7zNv+uFygj70eF9dG+QDoSgELOFYg@mail.gmail.com>
+Message-ID: <CAAOTY_-6bbE394ViQfyXg7zNv+uFygj70eF9dG+QDoSgELOFYg@mail.gmail.com>
+Subject: Re: [PATCH v11 14/23] drm/mediatek: Power on/off devices with
+ function pointers
+To: Hsiao Chien Sung <shawn.sung@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_061634_296318_D19B5139 
-X-CRM114-Status: GOOD (  64.09  )
+X-CRM114-CacheID: sfid-20231213_062826_645850_D83CE950 
+X-CRM114-Status: GOOD (  34.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,211 +75,331 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Sean Paul <sean@poorly.run>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Johnson Wang <johnson.wang@mediatek.corp-partner.google.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, "Nancy . Lin" <nancy.lin@mediatek.com>, David Airlie <airlied@gmail.com>, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---Sig_/m_y9/L720k3.YUUEknjTd2h
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Hi, Hsiao-chien:
 
-On Wed, 13 Dec 2023 14:22:29 +0100
-Joakim Bech <joakim.bech@linaro.org> wrote:
+Hsiao Chien Sung <shawn.sung@mediatek.com> =E6=96=BC 2023=E5=B9=B410=E6=9C=
+=8824=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=889:01=E5=AF=AB=E9=81=93=
+=EF=BC=9A
+>
+> Different from OVL, OVL adaptor is a pseudo device so we didn't
+> define it in the device tree, consequently, pm_runtime_resume_and_get()
+> called by .atomic_enable() powers on no device. For this reason, we
+> implement a function to power on the RDMAs in OVL adaptor, and the
+> system will make sure the IOMMUs are powered on as well because of the
+> device link (iommus) in the RDMA nodes in DTS.
+>
+> This patch separates power and clock management process, it would be
+> easier to maintain and add extensions.
 
-> On Wed, Dec 13, 2023 at 01:38:25PM +0200, Pekka Paalanen wrote:
-> > On Wed, 13 Dec 2023 11:15:49 +0100
-> > Joakim Bech <joakim.bech@linaro.org> wrote:
-> >  =20
-> > > On Wed, Dec 13, 2023 at 11:05:17AM +0200, Pekka Paalanen wrote: =20
-> > > > On Tue, 12 Dec 2023 16:36:35 +0000
-> > > > Simon Ser <contact@emersion.fr> wrote:
-> > > >    =20
-> > > > > Is there a chance to pick a better name than "secure" here?
-> > > > >=20
-> > > > > "Secure" is super overloaded, it's not clear at all what it means=
- from
-> > > > > just the name. Something like "restricted" would be an improvemen=
+There is conflict while apply this patch into latest kernel. Please
+rebase this series onto latest kernel and send next version patches.
+
+Regards,
+Chun-Kuang.
+
+>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  4 +
+>  .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 75 +++++++++++++++----
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 10 +--
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  2 +
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   | 20 +++++
+>  drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       | 16 ++++
+>  6 files changed, 107 insertions(+), 20 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/me=
+diatek/mtk_disp_drv.h
+> index bf06ccb65652..8465beeab435 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -109,6 +109,8 @@ void mtk_ovl_adaptor_connect(struct device *dev, stru=
+ct device *mmsys_dev,
+>                              unsigned int next);
+>  void mtk_ovl_adaptor_disconnect(struct device *dev, struct device *mmsys=
+_dev,
+>                                 unsigned int next);
+> +int mtk_ovl_adaptor_power_on(struct device *dev);
+> +void mtk_ovl_adaptor_power_off(struct device *dev);
+>  int mtk_ovl_adaptor_clk_enable(struct device *dev);
+>  void mtk_ovl_adaptor_clk_disable(struct device *dev);
+>  void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
+> @@ -150,6 +152,8 @@ void mtk_rdma_disable_vblank(struct device *dev);
+>  const u32 *mtk_rdma_get_formats(struct device *dev);
+>  size_t mtk_rdma_get_num_formats(struct device *dev);
+>
+> +int mtk_mdp_rdma_power_on(struct device *dev);
+> +void mtk_mdp_rdma_power_off(struct device *dev);
+>  int mtk_mdp_rdma_clk_enable(struct device *dev);
+>  void mtk_mdp_rdma_clk_disable(struct device *dev);
+>  void mtk_mdp_rdma_start(struct device *dev, struct cmdq_pkt *cmdq_pkt);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gp=
+u/drm/mediatek/mtk_disp_ovl_adaptor.c
+> index 81067f49ea69..048d56ee344d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> @@ -79,6 +79,8 @@ static const struct mtk_ddp_comp_funcs merge =3D {
+>  };
+>
+>  static const struct mtk_ddp_comp_funcs rdma =3D {
+> +       .power_on =3D mtk_mdp_rdma_power_on,
+> +       .power_off =3D mtk_mdp_rdma_power_off,
+>         .clk_enable =3D mtk_mdp_rdma_clk_enable,
+>         .clk_disable =3D mtk_mdp_rdma_clk_disable,
+>  };
+> @@ -200,21 +202,72 @@ void mtk_ovl_adaptor_stop(struct device *dev)
+>         mtk_ethdr_stop(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0])=
+;
+>  }
+>
+> -int mtk_ovl_adaptor_clk_enable(struct device *dev)
+> +/**
+> + * power_off - Power off the devices in OVL adaptor
+> + * @dev: Device to be powered off
+> + * @num: Number of the devices to be powered off
+> + *
+> + * Calls the .power_off() ovl_adaptor component callback if it is presen=
 t.
-> > > > >    =20
-> > > >=20
-> > > > My thoughts exactly. Every time I see "secure" used for something t=
-hat
-> > > > either gives you garbage, refuses to work, or crashes your whole ma=
-chine
-> > > > *intentionally* when you try to do normal usual things to it in
-> > > > userspace (like use it for GL texturing, or try to use KMS writebac=
-k), I
-> > > > get an unscratchable itch.
-> > > >=20
-> > > > There is nothing "secure" from security perspective there for end u=
-sers
-> > > > and developers. It's just inaccessible buffers.
-> > > >=20
-> > > > I've been biting my lip until now, thinking it's too late.
-> > > >    =20
-> > > The characteristics we're looking for here is a buffer where the cont=
-ent
-> > > is inaccessible to the normal OS and user space, i.e., Non-secure EL0=
- to
-> > > EL2. I.e, the content of the buffer is meant to be used and accessible
-> > > primarily by the secure side and other devices that has been granted =
-=20
-> >=20
-> > s/secure side/proprietary side/
-> >  =20
-> I'm using the nomenclature as written by Arm (other architectures have
-> other names for their secure execution states).
->=20
-> > I presume nothing of the other side can ever be in any way open?
-> >  =20
-> I'm sure there are lots of examples of things running on the secure side
-> that are open. The OP-TEE project where I'm a maintainer has been fully
-> open source since 2014, to give one example that I'm familiar with
-> myself.
-
-Oh, I didn't realise there were FOSS implementations of the other side
-that tie in with this secure/restricted heap here. Sorry.
-
-I think the patch series cover letter should point to those to give a
-view of the other side to the reviewers, just like DRM requires
-userspace to be open for new UAPI.
-
-> > Maybe the other side is even less secure than the FOSS side...
-> >  =20
-> > > access to it (for example decoders, display controllers if we're talk=
-ing
-> > > about video use cases). However, since the use cases for this exercis=
-es
-> > > the whole stack, from non-secure user space (EL0) all the way to secu=
-re
-> > > user space (S-EL0), with various devices needing access to the buffer=
- at
-> > > various times, it makes sense to let Linux manage the buffers, althou=
-gh
-> > > it still cannot access the content. That's the overall context. =20
-> >=20
-> > Yes, we know all this (except for the exact meaning of EL0 etc.).
-> >  =20
-> Great!
->=20
-> > > As for the name, it's always difficult to find a name suitable precis=
-ely
-> > > describing what it is. "Secure" is perhaps vague, but it might still a
-> > > good choice, if you carefully describe what secure means for this
-> > > particular heap (in the source code and the documentation for it). Fo=
-r =20
-> >=20
-> > Carefully describe, as in, re-define.
-> >  =20
-> > > example, the definition of "secure" for a secure heap as here could m=
-ean
-> > > that buffer content is inaccessible to the host OS and user space
-> > > running in normal world (using Arm nomenclature). I wouldn't have any
-> > > problems with calling it secure if, as said it's defined what we mean=
- by
-> > > saying so. But I'm all ears for other suggestions as well.
-> > >=20
-> > > Safe, protected, shielded, unreachable, isolated, inaccessible,
-> > > unaccessible, fortified, ... would any of these make more sense? =20
-> >=20
-> > "Restricted" sounds like a good compromise to me. The buffers' usage is
-> > severely restricted.
-> >  =20
-> Yes, restricted isn't a bad choice. We would still need to describe what
-> we mean by saying it's restricted, i.e., what is it restricted from,
-> since I'd guess that "restricted" by itself also could be a bit open
-> ended for a lot of people.
-
-Yes, but "restricted" also does not give out an immediate wrong
-impression. Label something as "secure", and it immediately raises the
-questions of what kind of attacks it prevents and how can I make use of
-it.
-
-Is there any use of restricted buffers outside of Digital Rights
-Management though? Could a private person somehow make use of it to
-protect their own contents? Like a photographer sending drafts to a
-customer while not wanting give out any digital copies?
-
-If not, then restricted buffers are something people would generally
-like to avoid, not embrace. "Secure" gives a positive impression,
-"restricted" a negative impression.
-
-> > It is the opposite of "safe", because accessing the contents the wrong
-> > way can return garbage or intentionally crash the whole system,
-> > depending on the hardware implementation. One example is attempting to
-> > put such a buffer on a KMS plane while the connector HDCP state is not
-> > high enough, or a writeback connector is connected to the CRTC. It is
-> > really fragile. (Do KMS drivers fail an atomic commit that would
-> > violate the heap rules? Somehow I doubt that, who'd even know what the
-> > rules are.)
-> >  =20
-> I believe one of the goals with reviewing the patches is to highlight
-> issues like this and try to figure out how to avoid ending up in
-> situations like what you described by suggesting alternative solutions
-> and ideas.
->=20
-> > It is protected/shielded/fortified from all the kernel and userspace,
-> > but a more familiar word to describe that is inaccessible.
-> > "Inaccessible buffer" per se OTOH sounds like a useless concept.
-> >=20
-> > It is not secure, because it does not involve security in any way. In
-> > fact, given it's so fragile, I'd classify it as mildly opposite of
-> > secure, as e.g. clients of a Wayland compositor can potentially DoS the
-> > compositor with it by simply sending such a dmabuf. Or DoS the whole
-> > system.
-> >  =20
-> I hear what you are saying and DoS is a known problem and attack vector,
-> but regardless, we have use cases where we don't want to expose
-> information in the clear and where we also would like to have some
-> guarantees about correctness. That is where various secure elements and
-> more generally security is needed.
->=20
-> So, it sounds like we have two things here, the first is the naming and
-> the meaning behind it. I'm pretty sure the people following and
-> contributing to this thread can agree on a name that makes sense. Would
-> you personally be OK with "restricted" as the name? It sounds like that.
-
-I would. I'm also just a by-stander, not a maintainer of kernel
-anything. I have no power to accept nor reject anything here.
-
-> The other thing is the feature and functionality itself offered by this
-> patch series. My impression from reading your replies is that you think
-> this is the wrong approach. If my impression is correct, what would you
-> suggest as an alternative approach?
-
-I just generally dislike locking people out of what their systems hold,
-but I also understand why extremely big companies want this Digital
-Rights Management technology for their business model. If Linux does
-not support that business model, they and the whole broadcast industry
-might use something else. At least it pays for kernel developers who
-can hopefully do some genuinely useful work on the side as well,
-benefiting the community.
-
-Let's just be honest about what is what.
-
-
-Thanks,
-pq
-
---Sig_/m_y9/L720k3.YUUEknjTd2h
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmV5vK4ACgkQI1/ltBGq
-qqeSrxAAsVMu1uwUAEiHOmIbdZ3IMpYONvvX9PjrsowXIzc4xZ+sohcdjwWsN9LM
-ZwyXBLhxVmbSKy55b8fNI2UR51yIDO8E6lZLQieSxAulEzya2aMjmJEHoXdBo/sS
-A3aGLk4Wu7hh4kSbyeOSoLf2Xf+Fg85puarR12WrxHwXn2JvFteRe1NX2v5+QJSn
-lzGOqYb4bFIIC7oL7qBVH3VBT/st+RdqvUGnsJlvngSO/YEZz8Q2AZTt8sE1R/mT
-6eZ9cidJoUdKqF9vKAxiKpTJyiVLpYqvhm9cvGQinbsYz3QKoUICKcSIGCGZlQti
-2GShGtnPL1qpZfo95xzcu+fw/9g9DC3BRbG/+dV84txlxzn8y1pD6kGka9HjPhi1
-ZuPC1MVNFvSOpv7tIvRRI/lD4ZRKdRJnvW4DDFntEhVfjGq0I5ezVjqBBHcic4QE
-tWWjkepYco492avLdzrJFuVbzj9VwzCRt+M/mlIyons/QfvX/SoRGDya2pk1DNvF
-NBK3Rf4qvOsooioZRNe8PnR/aBXw0MRFMN8htEKcuUHZnOCeIih+PV7VJwGMLMC2
-vjYC7/yXalMFutcYjBJeMyqQylgXUsoJY2WB4d4alazZvlMFrQ/v6+t9y2aOHdpZ
-+XGDbbjlVimKW1utrZlaHsi8w8Dbk9OH3I3tOZZQYfBgAFj6Nco=
-=IiKA
------END PGP SIGNATURE-----
-
---Sig_/m_y9/L720k3.YUUEknjTd2h--
+> + */
+> +static inline void power_off(struct device *dev, int num)
+>  {
+>         struct mtk_disp_ovl_adaptor *ovl_adaptor =3D dev_get_drvdata(dev)=
+;
+> -       struct device *comp;
+> -       int ret;
+>         int i;
+>
+> -       for (i =3D 0; i < OVL_ADAPTOR_MERGE0; i++) {
+> -               comp =3D ovl_adaptor->ovl_adaptor_comp[i];
+> -               ret =3D pm_runtime_get_sync(comp);
+> +       if (num > OVL_ADAPTOR_ID_MAX)
+> +               num =3D OVL_ADAPTOR_ID_MAX;
+> +
+> +       for (i =3D num - 1; i >=3D 0; i--) {
+> +               if (!ovl_adaptor->ovl_adaptor_comp[i] ||
+> +                   !comp_matches[i].funcs->power_off)
+> +                       continue;
+> +
+> +               comp_matches[i].funcs->power_off(ovl_adaptor->ovl_adaptor=
+_comp[i]);
+> +       }
+> +}
+> +
+> +/**
+> + * mtk_ovl_adaptor_power_on - Power on the devices in OVL adaptor
+> + * @dev: Device to be powered on
+> + *
+> + * Different from OVL, OVL adaptor is a pseudo device so
+> + * we didn't define it in the device tree, pm_runtime_resume_and_get()
+> + * called by .atomic_enable() power on no device in OVL adaptor,
+> + * we have to implement a function to do the job instead.
+> + *
+> + * Return: Zero for success or negative number for failure.
+> + */
+> +int mtk_ovl_adaptor_power_on(struct device *dev)
+> +{
+> +       struct mtk_disp_ovl_adaptor *ovl_adaptor =3D dev_get_drvdata(dev)=
+;
+> +       int i, ret;
+> +
+> +       for (i =3D 0; i < OVL_ADAPTOR_ID_MAX; i++) {
+> +               if (!ovl_adaptor->ovl_adaptor_comp[i] ||
+> +                   !comp_matches[i].funcs->power_on)
+> +                       continue;
+> +
+> +               ret =3D comp_matches[i].funcs->power_on(ovl_adaptor->ovl_=
+adaptor_comp[i]);
+>                 if (ret < 0) {
+>                         dev_err(dev, "Failed to enable power domain %d, e=
+rr %d\n", i, ret);
+> -                       goto error;
+> +                       power_off(dev, i);
+> +                       return ret;
+>                 }
+>         }
+> +       return 0;
+> +}
+> +
+> +void mtk_ovl_adaptor_power_off(struct device *dev)
+> +{
+> +       power_off(dev, OVL_ADAPTOR_ID_MAX);
+> +}
+> +
+> +int mtk_ovl_adaptor_clk_enable(struct device *dev)
+> +{
+> +       struct mtk_disp_ovl_adaptor *ovl_adaptor =3D dev_get_drvdata(dev)=
+;
+> +       struct device *comp;
+> +       int ret;
+> +       int i;
+>
+>         for (i =3D 0; i < OVL_ADAPTOR_ID_MAX; i++) {
+>                 comp =3D ovl_adaptor->ovl_adaptor_comp[i];
+> @@ -225,16 +278,10 @@ int mtk_ovl_adaptor_clk_enable(struct device *dev)
+>                         dev_err(dev, "Failed to enable clock %d, err %d\n=
+", i, ret);
+>                         while (--i >=3D 0)
+>                                 comp_matches[i].funcs->clk_disable(comp);
+> -                       i =3D OVL_ADAPTOR_MERGE0;
+> -                       goto error;
+> +                       return ret;
+>                 }
+>         }
+>         return 0;
+> -error:
+> -       while (--i >=3D 0)
+> -               pm_runtime_put(ovl_adaptor->ovl_adaptor_comp[i]);
+> -
+> -       return ret;
+>  }
+>
+>  void mtk_ovl_adaptor_clk_disable(struct device *dev)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/me=
+diatek/mtk_drm_crtc.c
+> index a0b2ba3cbcdb..bc4cc75cca18 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -774,7 +774,7 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crt=
+c *crtc,
+>                 return;
+>         }
+>
+> -       ret =3D pm_runtime_resume_and_get(comp->dev);
+> +       ret =3D mtk_ddp_comp_power_on(comp);
+>         if (ret < 0) {
+>                 DRM_DEV_ERROR(comp->dev, "Failed to enable power domain: =
+%d\n", ret);
+>                 return;
+> @@ -782,7 +782,7 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crt=
+c *crtc,
+>
+>         ret =3D mtk_crtc_ddp_hw_init(mtk_crtc, state);
+>         if (ret) {
+> -               pm_runtime_put(comp->dev);
+> +               mtk_ddp_comp_power_off(comp);
+>                 return;
+>         }
+>
+> @@ -795,7 +795,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_cr=
+tc *crtc,
+>  {
+>         struct mtk_drm_crtc *mtk_crtc =3D to_mtk_crtc(crtc);
+>         struct mtk_ddp_comp *comp =3D mtk_crtc->ddp_comp[0];
+> -       int i, ret;
+> +       int i;
+>
+>         DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
+>         if (!mtk_crtc->enabled)
+> @@ -825,9 +825,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_cr=
+tc *crtc,
+>
+>         drm_crtc_vblank_off(crtc);
+>         mtk_crtc_ddp_hw_fini(mtk_crtc);
+> -       ret =3D pm_runtime_put(comp->dev);
+> -       if (ret < 0)
+> -               DRM_DEV_ERROR(comp->dev, "Failed to disable power domain:=
+ %d\n", ret);
+> +       mtk_ddp_comp_power_off(comp);
+>
+>         mtk_crtc->enabled =3D false;
+>  }
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/dr=
+m/mediatek/mtk_drm_ddp_comp.c
+> index 10402e07a4a7..9940909c7435 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> @@ -396,6 +396,8 @@ static const struct mtk_ddp_comp_funcs ddp_ufoe =3D {
+>  };
+>
+>  static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor =3D {
+> +       .power_on =3D mtk_ovl_adaptor_power_on,
+> +       .power_off =3D mtk_ovl_adaptor_power_off,
+>         .clk_enable =3D mtk_ovl_adaptor_clk_enable,
+>         .clk_disable =3D mtk_ovl_adaptor_clk_disable,
+>         .config =3D mtk_ovl_adaptor_config,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/dr=
+m/mediatek/mtk_drm_ddp_comp.h
+> index 1c1d670cfe41..2597dd7ac0d2 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> @@ -7,6 +7,7 @@
+>  #define MTK_DRM_DDP_COMP_H
+>
+>  #include <linux/io.h>
+> +#include <linux/pm_runtime.h>
+>  #include <linux/soc/mediatek/mtk-cmdq.h>
+>  #include <linux/soc/mediatek/mtk-mmsys.h>
+>  #include <linux/soc/mediatek/mtk-mutex.h>
+> @@ -46,6 +47,8 @@ enum mtk_ddp_comp_type {
+>  struct mtk_ddp_comp;
+>  struct cmdq_pkt;
+>  struct mtk_ddp_comp_funcs {
+> +       int (*power_on)(struct device *dev);
+> +       void (*power_off)(struct device *dev);
+>         int (*clk_enable)(struct device *dev);
+>         void (*clk_disable)(struct device *dev);
+>         void (*config)(struct device *dev, unsigned int w,
+> @@ -91,6 +94,23 @@ struct mtk_ddp_comp {
+>         int encoder_index;
+>  };
+>
+> +static inline int mtk_ddp_comp_power_on(struct mtk_ddp_comp *comp)
+> +{
+> +       if (comp->funcs && comp->funcs->power_on)
+> +               return comp->funcs->power_on(comp->dev);
+> +       else
+> +               return pm_runtime_resume_and_get(comp->dev);
+> +       return 0;
+> +}
+> +
+> +static inline void mtk_ddp_comp_power_off(struct mtk_ddp_comp *comp)
+> +{
+> +       if (comp->funcs && comp->funcs->power_off)
+> +               comp->funcs->power_off(comp->dev);
+> +       else
+> +               pm_runtime_put(comp->dev);
+> +}
+> +
+>  static inline int mtk_ddp_comp_clk_enable(struct mtk_ddp_comp *comp)
+>  {
+>         if (comp->funcs && comp->funcs->clk_enable)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/me=
+diatek/mtk_mdp_rdma.c
+> index 5746f06220c1..769ae7564da2 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+> @@ -243,6 +243,22 @@ size_t mtk_mdp_rdma_get_num_formats(struct device *d=
+ev)
+>         return ARRAY_SIZE(formats);
+>  }
+>
+> +int mtk_mdp_rdma_power_on(struct device *dev)
+> +{
+> +       int ret =3D pm_runtime_resume_and_get(dev);
+> +
+> +       if (ret < 0) {
+> +               dev_err(dev, "Failed to power on: %d\n", ret);
+> +               return ret;
+> +       }
+> +       return 0;
+> +}
+> +
+> +void mtk_mdp_rdma_power_off(struct device *dev)
+> +{
+> +       pm_runtime_put(dev);
+> +}
+> +
+>  int mtk_mdp_rdma_clk_enable(struct device *dev)
+>  {
+>         struct mtk_mdp_rdma *rdma =3D dev_get_drvdata(dev);
+> --
+> 2.18.0
+>
 
