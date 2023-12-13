@@ -4,97 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 678A2C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 13:22:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 679ECC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 13:26:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cj1ZMs1V56ZZNUEaZewI9vOkZv5jPO392Bp8WoFBh7w=; b=r1pwIvNm9Yn46PFx04f4HFF+31
-	pqnOSFV7T6ZpvLBHt2ShEI1/w77txhdvgxwkWLrmTOBuzpuBSq4Sc55ykh47yQLx3UeXt5Cd9sjmv
-	mGXWz79lXK2jZ+pNt3GIz53gviiPi854MtjTwQSFQ7NYl0QJzW2tnYI3u1rRzHOBCo5EO38DRjQp2
-	e2vNWT0vo/JfFE77uRjHOjB1IhbR+Uwa4DkbXkfdOXbWoJ7Q+YjTb2On6U+x70rVl02wPvgLaHUSj
-	rEGIDg86n4oTGu6ImK+Uxm5570/9WhQ9PQNmAxvJN3kQ1I1rFwPo+bhqKaxbh6HSTlQD32l0eMq1P
-	VOq9OPnQ==;
+	bh=IXcKPeiwX22bmQx6ElblTV8+xahRvtPnZtdhjVsSu2Y=; b=unHBYr5EdqFHtaG14435LuJCW7
+	cNjJ2viZEHMGNZpGFkSSzMqW/xUq0EtumNS17eWfnJIYlTMaZCv2wCaKwHHdUtjK1jmJwgO9SG7Sc
+	Dw9izgUR4UmkvA/qujp4EuljIp8IEx6OxXqC7j8SB8pooO1/W6/QRaM1+XJisJL7SJIg1eQuw+vWO
+	Lx5rkuu56dbT8rcEK4KPKni6BX6s7vKJNBDZ6ccmCvCtUNv4XPhrb5T0pK3H2xxEGmihSwELOPmem
+	TAtEXqHM453lCInOstiSMPFV9PeV0dooPfB/4dwq0HX6erEjPwkmrzhSkgFbwhaubUIm9bB4ZFmrs
+	DeNnYUeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDPCC-00Emba-16;
-	Wed, 13 Dec 2023 13:22:40 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1rDPGG-00EnbF-0o;
+	Wed, 13 Dec 2023 13:26:52 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDPC8-00EmZG-1v
+	id 1rDPGD-00EnYQ-2G
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Dec 2023 13:22:38 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-54c77e0835bso9678775a12.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Dec 2023 05:22:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702473753; x=1703078553; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=cj1ZMs1V56ZZNUEaZewI9vOkZv5jPO392Bp8WoFBh7w=;
-        b=Cr4kIkYzjfCtPIHKJkZQajqx3rBax21zF59lbDuoIFHjDJ05Aym51PzzrcHgkV7kHG
-         0ZZ8dHoh1BFWiY/gR1LeA79r0aX905OKjqZ4jnW8gImvxAWM2CTzKYwQrBOnfzZCqzlH
-         KUY2vs75JK4tcbX0IyH91FO87qV77v/PLgE3xPa5NwWWsqXoCNzcUm1gOUnb6vtOkGpb
-         MVW2M3vh9e5di4vA6lEhFOID/Cflg0Vd919J9kwYReLEELYQPN7gPiizkT7/EORO+QTI
-         DnYHp4peOijIE0Q/RPi0zxbgeuV5n0w8PtBFKdPw4XqbTtODxnY1PgEeGjvwqYEGTzLr
-         nI9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702473753; x=1703078553;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cj1ZMs1V56ZZNUEaZewI9vOkZv5jPO392Bp8WoFBh7w=;
-        b=NmkSms/4AxjXDI3LcKbF6O153BxLsKL8IRBiBcfJuIDglOS8H9AGdrcs8njbr3zafR
-         u2xa73F/Kc0Ug6uPYmO3u4YQndgiFk5afV4dZ/YcrRpq9wJiSsQ3z0wZLMF7/6gDiTpt
-         JrVi07VJ7EQxhG2iywxRKrss05zMqhGYrFUfdC+/HSOXWDnXDztUTrbPTr+Guy4BO6Jb
-         XQ+SHPRjZgHe/vafzLwF9hoYufiuNLAkPMf5IWUqy/qXs54jTeJFbI/PM0Q1CAl084e6
-         YFSnmRwq3cEwwjboBEnNhyJrxm0buzTHhYHlDvqYb9mRSkgOS2OVsuneBhdOvNJ8aIw+
-         fnrw==
-X-Gm-Message-State: AOJu0Yy1aTGg2gUIAekztxFE+ccZEXnCaf6+tk3qbam5R848YhUD0350
-	QfC3YOEvxVJh3Lz5hzYbJBGIayA+YiXoaR3JcRfQiA==
-X-Google-Smtp-Source: AGHT+IELaCU/APPH5lEyFAZu+OpT0rs0/r3NQO6C377YTW5LsGnDiFcS2/Qewp1/YjG0GmihdG0ytg==
-X-Received: by 2002:a50:955d:0:b0:54f:4f7f:1a5c with SMTP id v29-20020a50955d000000b0054f4f7f1a5cmr828258eda.81.1702473752835;
-        Wed, 13 Dec 2023 05:22:32 -0800 (PST)
-Received: from pop-os.localdomain (81-231-61-187-no276.tbcn.telia.com. [81.231.61.187])
-        by smtp.gmail.com with ESMTPSA id s28-20020a50ab1c000000b0054c6b50df3asm5921343edc.92.2023.12.13.05.22.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 05:22:31 -0800 (PST)
-Date: Wed, 13 Dec 2023 14:22:29 +0100
-From: Joakim Bech <joakim.bech@linaro.org>
-To: Pekka Paalanen <ppaalanen@gmail.com>
-Cc: Simon Ser <contact@emersion.fr>, Yong Wu <yong.wu@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Sumit Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com,
+	Wed, 13 Dec 2023 13:26:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 1B408CE1EC1;
+	Wed, 13 Dec 2023 13:26:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B5E0C433C7;
+	Wed, 13 Dec 2023 13:26:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702474003;
+	bh=IKzEPJuxRJ70VYdW/2SaiHnZpZE1vJIdBlLNxNGneUU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Sh3710819in+LL0u6YtfRlRkB2RQ9Q55qNflXVQzV90qC6oYwmQfmDTByHLhXv4Ez
+	 auRR2iMQJf3m84D10+A2d7AqDMPBZprMmi4T7oFjZD997ce5RYmaCYpCapeQGC5xgL
+	 CRSLesDsqMyXng2LI96xv8SwjfxdP/jJvLM6NBob96bILqnibz195Ui1YrEU5mmO/p
+	 zh1xJnnip1dO2NeEzH0elAMgAHlaStqtZWAcCe/8bTEs5uzWieGFfsgcauvAZQzgaa
+	 heGMtQxQifPtH3hYx1I5nV1Y/xuSmXPlliMrFRqA2sFmvebaerKoZOQwlTHWAF/KdI
+	 5YSVPmu0OSO1Q==
+Date: Wed, 13 Dec 2023 14:26:39 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Kalle Valo <kvalo@kernel.org>
+Cc: Mario Limonciello <mario.limonciello@amd.com>,
+	Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Jeffrey Kardatzke <jkardatzke@google.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Vijayanand Jitta <quic_vjitta@quicinc.com>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, jianjiao.zeng@mediatek.com,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	ckoenig.leichtzumerken@gmail.com, linaro-mm-sig@lists.linaro.org,
-	linux-mediatek@lists.infradead.org, tjmercier@google.com,
-	linux-arm-kernel@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/7] dma-buf: heaps: Add secure heap
-Message-ID: <20231213132229.q3uxdhtdsxuzw3w6@pop-os.localdomain>
-References: <20231212024607.3681-1-yong.wu@mediatek.com>
- <DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
- <20231213110517.6ce36aca@eldfell>
- <20231213101549.lioqfzjxcvmqxqu3@pop-os.localdomain>
- <20231213133825.0a329864@eldfell>
+	Deren Wu <deren.wu@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	Ben Greear <greearb@candelatech.com>,
+	"open list:MEDIATEK MT76 WIRELESS LAN DRIVER" <linux-wireless@vger.kernel.org>,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	Sultan Alsawaf <sultan@kerneltoast.com>
+Subject: Re: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
+Message-ID: <ZXmxD1foASMaCDIe@lore-desk>
+References: <20231212090852.162787-1-mario.limonciello@amd.com>
+ <874jgmnud8.fsf@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="9uLM4Nq5uaqfA0yL"
 Content-Disposition: inline
-In-Reply-To: <20231213133825.0a329864@eldfell>
+In-Reply-To: <874jgmnud8.fsf@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_052236_650365_5D4D58FB 
-X-CRM114-Status: GOOD (  54.72  )
+X-CRM114-CacheID: sfid-20231213_052650_211478_4C225BFA 
+X-CRM114-Status: GOOD (  18.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,134 +84,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 13, 2023 at 01:38:25PM +0200, Pekka Paalanen wrote:
-> On Wed, 13 Dec 2023 11:15:49 +0100
-> Joakim Bech <joakim.bech@linaro.org> wrote:
-> 
-> > On Wed, Dec 13, 2023 at 11:05:17AM +0200, Pekka Paalanen wrote:
-> > > On Tue, 12 Dec 2023 16:36:35 +0000
-> > > Simon Ser <contact@emersion.fr> wrote:
-> > >   
-> > > > Is there a chance to pick a better name than "secure" here?
-> > > > 
-> > > > "Secure" is super overloaded, it's not clear at all what it means from
-> > > > just the name. Something like "restricted" would be an improvement.
-> > > >   
-> > > 
-> > > My thoughts exactly. Every time I see "secure" used for something that
-> > > either gives you garbage, refuses to work, or crashes your whole machine
-> > > *intentionally* when you try to do normal usual things to it in
-> > > userspace (like use it for GL texturing, or try to use KMS writeback), I
-> > > get an unscratchable itch.
-> > > 
-> > > There is nothing "secure" from security perspective there for end users
-> > > and developers. It's just inaccessible buffers.
-> > > 
-> > > I've been biting my lip until now, thinking it's too late.
-> > >   
-> > The characteristics we're looking for here is a buffer where the content
-> > is inaccessible to the normal OS and user space, i.e., Non-secure EL0 to
-> > EL2. I.e, the content of the buffer is meant to be used and accessible
-> > primarily by the secure side and other devices that has been granted
-> 
-> s/secure side/proprietary side/
-> 
-I'm using the nomenclature as written by Arm (other architectures have
-other names for their secure execution states).
 
-> I presume nothing of the other side can ever be in any way open?
-> 
-I'm sure there are lots of examples of things running on the secure side
-that are open. The OP-TEE project where I'm a maintainer has been fully
-open source since 2014, to give one example that I'm familiar with
-myself.
+--9uLM4Nq5uaqfA0yL
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Maybe the other side is even less secure than the FOSS side...
-> 
-> > access to it (for example decoders, display controllers if we're talking
-> > about video use cases). However, since the use cases for this exercises
-> > the whole stack, from non-secure user space (EL0) all the way to secure
-> > user space (S-EL0), with various devices needing access to the buffer at
-> > various times, it makes sense to let Linux manage the buffers, although
-> > it still cannot access the content. That's the overall context.
-> 
-> Yes, we know all this (except for the exact meaning of EL0 etc.).
-> 
-Great!
+> Mario Limonciello <mario.limonciello@amd.com> writes:
+>=20
+> > Several users have reported awful latency when powersaving is enabled
+> > with certain access point combinations.
+>=20
+> What APs are these exactly? In the past 802.11 Power Save Mode was
+> challenging due to badly behaving APs. But nowadays with so many mobile
+> devices in the market I would assume that APs work a lot better. It
+> would be best to investigate the issues in detail and try to fix them in
+> mt76, assuming the bugs are in mt76 driver or firmware.
+>=20
+> > It's also reported that the powersaving feature doesn't provide an
+> > ample enough savings to justify being enabled by default with these
+> > issues.
+>=20
+> Any numbers or how was this concluded?
+>=20
+> > Introduce a module parameter that would control the power saving
+> > behavior.  Set it to default as disabled. This mirrors what some other
+> > WLAN drivers like iwlwifi do.
+>=20
+> We have already several ways to control 802.11 power save mode:
+>=20
+> * NL80211_CMD_SET_POWER_SAVE (for example used by 'iw set power_save')
+>=20
+> * CONFIG_CFG80211_DEFAULT_PS (for kernel level default)
+>=20
+> * WIPHY_FLAG_PS_ON_BY_DEFAULT (for the driver to control the default sett=
+ing)
+>=20
+> Adding module parameters as a fourth method sounds confusing so not
+> really a fan of this. And the bar is quite high for adding new module
+> parameters anyway.
 
-> > As for the name, it's always difficult to find a name suitable precisely
-> > describing what it is. "Secure" is perhaps vague, but it might still a
-> > good choice, if you carefully describe what secure means for this
-> > particular heap (in the source code and the documentation for it). For
-> 
-> Carefully describe, as in, re-define.
-> 
-> > example, the definition of "secure" for a secure heap as here could mean
-> > that buffer content is inaccessible to the host OS and user space
-> > running in normal world (using Arm nomenclature). I wouldn't have any
-> > problems with calling it secure if, as said it's defined what we mean by
-> > saying so. But I'm all ears for other suggestions as well.
-> > 
-> > Safe, protected, shielded, unreachable, isolated, inaccessible,
-> > unaccessible, fortified, ... would any of these make more sense?
-> 
-> "Restricted" sounds like a good compromise to me. The buffers' usage is
-> severely restricted.
-> 
-Yes, restricted isn't a bad choice. We would still need to describe what
-we mean by saying it's restricted, i.e., what is it restricted from,
-since I'd guess that "restricted" by itself also could be a bit open
-ended for a lot of people.
+agree, I think we do not need a new parameter for this, just use the current
+APIs.
 
-> It is the opposite of "safe", because accessing the contents the wrong
-> way can return garbage or intentionally crash the whole system,
-> depending on the hardware implementation. One example is attempting to
-> put such a buffer on a KMS plane while the connector HDCP state is not
-> high enough, or a writeback connector is connected to the CRTC. It is
-> really fragile. (Do KMS drivers fail an atomic commit that would
-> violate the heap rules? Somehow I doubt that, who'd even know what the
-> rules are.)
-> 
-I believe one of the goals with reviewing the patches is to highlight
-issues like this and try to figure out how to avoid ending up in
-situations like what you described by suggesting alternative solutions
-and ideas.
+Regards,
+Lorenzo
 
-> It is protected/shielded/fortified from all the kernel and userspace,
-> but a more familiar word to describe that is inaccessible.
-> "Inaccessible buffer" per se OTOH sounds like a useless concept.
-> 
-> It is not secure, because it does not involve security in any way. In
-> fact, given it's so fragile, I'd classify it as mildly opposite of
-> secure, as e.g. clients of a Wayland compositor can potentially DoS the
-> compositor with it by simply sending such a dmabuf. Or DoS the whole
-> system.
-> 
-I hear what you are saying and DoS is a known problem and attack vector,
-but regardless, we have use cases where we don't want to expose
-information in the clear and where we also would like to have some
-guarantees about correctness. That is where various secure elements and
-more generally security is needed.
+>=20
+> --=20
+> https://patchwork.kernel.org/project/linux-wireless/list/
+>=20
+> https://wireless.wiki.kernel.org/en/developers/documentation/submittingpa=
+tches
 
-So, it sounds like we have two things here, the first is the naming and
-the meaning behind it. I'm pretty sure the people following and
-contributing to this thread can agree on a name that makes sense. Would
-you personally be OK with "restricted" as the name? It sounds like that.
+--9uLM4Nq5uaqfA0yL
+Content-Type: application/pgp-signature; name="signature.asc"
 
-The other thing is the feature and functionality itself offered by this
-patch series. My impression from reading your replies is that you think
-this is the wrong approach. If my impression is correct, what would you
-suggest as an alternative approach?
+-----BEGIN PGP SIGNATURE-----
 
-> "Poisonous heap" would be fitting but politically inappropriate I
-> guess. After all, "poison" is data that is not meant to be read by
-> anything normal.
-> 
-> 
-> Thanks,
-> pq
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZXmxDwAKCRA6cBh0uS2t
+rMk4AP4meRcee0zlYRgossoI8og7N/lRVYrPEbK9Pvu+GoHvbwD9H342JwJu5cTO
+ESqtC33FKLmyM0+wXLDJ/KpvDg+gNQQ=
+=O53f
+-----END PGP SIGNATURE-----
 
--- 
-// Regards
-Joakim
+--9uLM4Nq5uaqfA0yL--
 
