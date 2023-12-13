@@ -4,93 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02B9CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 12:44:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B611C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 12:46:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Ilmg67qxDXz3Ino96KIWdEF9TYRokRz5Zy63Tsu+xw=; b=XLj8OWppuw2KhEIcq4ETkplAuQ
-	kY3u73i+8NPg5EjSNGfy4hSF5puIlQBcvhgo6NtRGc98BVJU3u5GY4jyfRxyqYQqMsgF16kb/wYmm
-	EUC0vEX9cZ0sETZS4QuYKrMWcmTmZwwM/FGSTEis5xYjd1Coa2dWJyY+/sp3hn2M1S/kdRH7VRhUQ
-	9xUaGJ3RxuJ1B2mhcCp6MBcSon6HAa1QEiYXSbSRrXeR7w3Y0KiOssqh/KZlH3Afl24M/SFgSXwZM
-	zJc5ZYMcH38lagnUPOAIoBXSvaz0c8mqu1PtLmFobeS45SKbBSK66Ogw0HbD3T4oNxnAElUErufe+
-	u7X4VhEw==;
+	bh=TkzqMOp/Xs43tYyiFqXPDwFbT9GEi5XujDuaXczjprI=; b=c4ofqhUqhqbI0+LezY5iJyml7n
+	Z75QXZPPKnZcoY849nJFD72ubF9WI4loaBk3T8zAKJGtIyRiDBjKMtg3JusqdMWiebSxUVP9S2WxJ
+	nu18M0y129jbVToiXcE+D4hElQv0dTQ4UYTgy4ax3uJiOEPtUrN3mZe4AweaHIjW6KTvwbAO53PAr
+	0JM+btXY0qP6pIWMMlSZMMpPzoWO8Tq2deHSaJRntrekJHtnHdJYRh8Yqbm1FiGwGtkLZ/HYpkZic
+	W1e/I66qTYzdCvLKfnb4pbZw3uXCUlm6M1pxCBWuFjnnHREc/DYc1BZwkUxqsBcgB/pVIPmuQcPXB
+	SkpPw6Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDObT-00EdEZ-33;
-	Wed, 13 Dec 2023 12:44:43 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1rDOcp-00EdWm-06;
+	Wed, 13 Dec 2023 12:46:07 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDObQ-00EdBX-1g;
-	Wed, 13 Dec 2023 12:44:42 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 3BD6erEe007751;
-	Wed, 13 Dec 2023 12:44:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-type; s=qcppdkim1; bh=7Ilmg67qxDXz3Ino96KI
-	WdEF9TYRokRz5Zy63Tsu+xw=; b=hDBgL6XWXkw6DI4oEt+VmDl1M2sqhwpBXZCr
-	HL2v4qnH3wcCE9PgGvAoVtauoy9l9qLiVmPuFncbO5FU0T0lH4hLkojLItvlYgBO
-	aWlKMkTtsCCfeDcOglk7N/g/FGtO7Ieu36yGlY/4NteyN9pHJePBvVzoTKfDAn1s
-	tCbP9Sp4ClWibSTTgaqzxJNpvxwqY5XEiAK6FapvVt47hgxFsIidvazisqiqpZko
-	3SqoiOzzRbShd1HARCuSMzg3czV8VaiHAOxjuJr3r36AQJQPBbP6K2KM4cGI06Gr
-	i81WZxE5GOBakyAJtD7XiunupjsTMTfD/+z6VOttsVIVKBzOBg==
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uy7j7rtnq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 13 Dec 2023 12:44:20 +0000 (GMT)
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3BDCiJE6001100
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 13 Dec 2023 12:44:19 GMT
-Received: from hu-mnaresh-hyd.qualcomm.com (10.80.80.8) by
- nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.40; Wed, 13 Dec 2023 04:44:14 -0800
-From: Maramaina Naresh <quic_mnaresh@quicinc.com>
-To: "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        "Martin K. Petersen"
-	<martin.petersen@oracle.com>,
-        Peter Wang <peter.wang@mediatek.com>,
-        "Matthias
- Brugger" <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
-        Bart Van Assche <bvanassche@acm.org>,
-        Stanley Jhu <chu.stanley@gmail.com>, <linux-scsi@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>, <quic_cang@quicinc.com>,
-        <quic_nguyenb@quicinc.com>
-Subject: [PATCH V5 1/2] ufs: core: Add CPU latency QoS support for ufs driver
-Date: Wed, 13 Dec 2023 18:13:52 +0530
-Message-ID: <20231213124353.16407-2-quic_mnaresh@quicinc.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20231213124353.16407-1-quic_mnaresh@quicinc.com>
-References: <20231213124353.16407-1-quic_mnaresh@quicinc.com>
+	id 1rDOcl-00EdVQ-1B
+	for linux-mediatek@lists.infradead.org;
+	Wed, 13 Dec 2023 12:46:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id DC221B81214;
+	Wed, 13 Dec 2023 12:46:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F10FC433C7;
+	Wed, 13 Dec 2023 12:45:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702471561;
+	bh=UqFTwJlv/HHhsk51P3RSZ4bmpRtBPRMXihdAMtpeCNY=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=SeA3xxHO7yrmmfB2KFZrqVJEWt2vt4NxSiFoXQXR6fpT/rmmTxIodcu3eA/bmmYkR
+	 upieDGK4Hq5XJ+BtmAbg2viqMRak5Ec9zsXAsryytWiR+p+srQKVfTcPlsbBQ++en/
+	 lQUenyeRjbmAWIrgpFp6a03gLgdeKCOg2Cifx9wtrdwX9VQBaDgXNmJcAObY5f5Ipw
+	 h/qJvDB97QydJfmyE7AeLgmTJNaeHmIbnhiixQaNANwe/1i5O0uFkb1ypomLhKaBgy
+	 BVOCu0lU8Ls+r1/fzpUJue9muW8t1xhhzZKbWOTXpgLFqf9JH3bkSySN9eTKTrSCL2
+	 fons/DqBkx3zA==
+From: Kalle Valo <kvalo@kernel.org>
+To: Mario Limonciello <mario.limonciello@amd.com>
+Cc: Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,
+  "Ryder Lee" <ryder.lee@mediatek.com>,  Shayne Chen
+ <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>,  Matthias
+ Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Deren Wu
+ <deren.wu@mediatek.com>,  Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+  Ben Greear <greearb@candelatech.com>,  "open list:MEDIATEK MT76 WIRELESS
+ LAN DRIVER" <linux-wireless@vger.kernel.org>,  "open list:ARM/Mediatek SoC
+ support" <linux-kernel@vger.kernel.org>,  "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>,  Sultan Alsawaf
+ <sultan@kerneltoast.com>
+Subject: Re: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
+References: <20231212090852.162787-1-mario.limonciello@amd.com>
+Date: Wed, 13 Dec 2023 14:45:55 +0200
+In-Reply-To: <20231212090852.162787-1-mario.limonciello@amd.com> (Mario
+	Limonciello's message of "Tue, 12 Dec 2023 03:08:51 -0600")
+Message-ID: <874jgmnud8.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: efb1q8Vzoy6vZxl7vD8ySjFo-DmkIYD-
-X-Proofpoint-ORIG-GUID: efb1q8Vzoy6vZxl7vD8ySjFo-DmkIYD-
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-09_02,2023-12-07_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 mlxlogscore=999 phishscore=0 malwarescore=0
- impostorscore=0 priorityscore=1501 bulkscore=0 adultscore=0 spamscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2311290000 definitions=main-2312130093
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_044440_692041_3EBD774A 
-X-CRM114-Status: GOOD (  20.76  )
+X-CRM114-CacheID: sfid-20231213_044603_536089_69FE18C5 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,249 +81,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Register ufs driver to CPU latency PM QoS framework to improve
-ufs device random io performance.
+Mario Limonciello <mario.limonciello@amd.com> writes:
 
-PM QoS initialization will insert new QoS request into the CPU
-latency QoS list with the maximum latency PM_QOS_DEFAULT_VALUE
-value.
+> Several users have reported awful latency when powersaving is enabled
+> with certain access point combinations.
 
-UFS driver will vote for performance mode on scale up and power
-save mode for scale down.
+What APs are these exactly? In the past 802.11 Power Save Mode was
+challenging due to badly behaving APs. But nowadays with so many mobile
+devices in the market I would assume that APs work a lot better. It
+would be best to investigate the issues in detail and try to fix them in
+mt76, assuming the bugs are in mt76 driver or firmware.
 
-If clock scaling feature is not enabled then voting will be based
-on clock on or off condition.
+> It's also reported that the powersaving feature doesn't provide an
+> ample enough savings to justify being enabled by default with these
+> issues.
 
-Provided sysfs interface to enable/disable PM QoS feature.
+Any numbers or how was this concluded?
 
-tiotest benchmark tool io performance results on sm8550 platform:
+> Introduce a module parameter that would control the power saving
+> behavior.  Set it to default as disabled. This mirrors what some other
+> WLAN drivers like iwlwifi do.
 
-1. Without PM QoS support
-	Type (Speed in)    | Average of 18 iterations
-	Random Write(IPOS) | 41065.13
-	Random Read(IPOS)  | 37101.3
+We have already several ways to control 802.11 power save mode:
 
-2. With PM QoS support
-	Type (Speed in)    | Average of 18 iterations
-	Random Write(IPOS) | 46784.9
-	Random Read(IPOS)  | 42943.4
-(Improvement with PM QoS = ~15%).
+* NL80211_CMD_SET_POWER_SAVE (for example used by 'iw set power_save')
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Co-developed-by: Nitin Rawat <quic_nitirawa@quicinc.com>
-Signed-off-by: Nitin Rawat <quic_nitirawa@quicinc.com>
-Signed-off-by: Naveen Kumar Goud Arepalli <quic_narepall@quicinc.com>
-Signed-off-by: Maramaina Naresh <quic_mnaresh@quicinc.com>
----
- drivers/ufs/core/ufshcd.c | 125 ++++++++++++++++++++++++++++++++++++++
- include/ufs/ufshcd.h      |   6 ++
- 2 files changed, 131 insertions(+)
+* CONFIG_CFG80211_DEFAULT_PS (for kernel level default)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index ae9936fc6ffb..a8ee6e02e83e 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -1001,6 +1001,19 @@ static bool ufshcd_is_unipro_pa_params_tuning_req(struct ufs_hba *hba)
- 	return ufshcd_get_local_unipro_ver(hba) < UFS_UNIPRO_VER_1_6;
- }
- 
-+/**
-+ * ufshcd_pm_qos_update - update PM QoS request
-+ * @hba: per adapter instance
-+ * @on: If True, vote for perf PM QoS mode otherwise power save mode
-+ */
-+static void ufshcd_pm_qos_update(struct ufs_hba *hba, bool on)
-+{
-+	if (!hba->pm_qos_enabled)
-+		return;
-+
-+	cpu_latency_qos_update_request(&hba->pm_qos_req, on ? 0 : PM_QOS_DEFAULT_VALUE);
-+}
-+
- /**
-  * ufshcd_set_clk_freq - set UFS controller clock frequencies
-  * @hba: per adapter instance
-@@ -1147,8 +1160,11 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
- 					    hba->devfreq->previous_freq);
- 		else
- 			ufshcd_set_clk_freq(hba, !scale_up);
-+		goto out;
- 	}
- 
-+	ufshcd_pm_qos_update(hba, scale_up);
-+
- out:
- 	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
- 			(scale_up ? "up" : "down"),
-@@ -8615,6 +8631,108 @@ static void ufshcd_set_timestamp_attr(struct ufs_hba *hba)
- 	ufshcd_release(hba);
- }
- 
-+/**
-+ * ufshcd_pm_qos_init - initialize PM QoS request
-+ * @hba: per adapter instance
-+ */
-+static void ufshcd_pm_qos_init(struct ufs_hba *hba)
-+{
-+
-+	if (hba->pm_qos_enabled)
-+		return;
-+
-+	cpu_latency_qos_add_request(&hba->pm_qos_req, PM_QOS_DEFAULT_VALUE);
-+
-+	if (cpu_latency_qos_request_active(&hba->pm_qos_req))
-+		hba->pm_qos_enabled = true;
-+}
-+
-+/**
-+ * ufshcd_pm_qos_exit - remove request from PM QoS
-+ * @hba: per adapter instance
-+ */
-+static void ufshcd_pm_qos_exit(struct ufs_hba *hba)
-+{
-+	if (!hba->pm_qos_enabled)
-+		return;
-+
-+	cpu_latency_qos_remove_request(&hba->pm_qos_req);
-+	hba->pm_qos_enabled = false;
-+}
-+
-+/**
-+ * ufshcd_pm_qos_enable_show - sysfs handler to show pm qos enable value
-+ * @dev: device associated with the UFS controller
-+ * @attr: sysfs attribute handle
-+ * @buf: buffer for sysfs file
-+ *
-+ * Print 1 if PM QoS feature is enabled, 0 if disabled.
-+ *
-+ * Returns number of characters written to @buf.
-+ */
-+static ssize_t ufshcd_pm_qos_enable_show(struct device *dev,
-+		struct device_attribute *attr, char *buf)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+
-+	return sysfs_emit(buf, "%d\n", hba->pm_qos_enabled);
-+}
-+
-+/**
-+ * ufshcd_pm_qos_enable_store - sysfs handler to store value
-+ * @dev: device associated with the UFS controller
-+ * @attr: sysfs attribute handle
-+ * @buf: buffer for sysfs file
-+ * @count: stores buffer characters count
-+ *
-+ * Input 0 to disable PM QoS and any non-zero positive value to enable.
-+ * Default state: 1
-+ *
-+ * Return: number of characters written to @buf on success, < 0 upon failure.
-+ */
-+static ssize_t ufshcd_pm_qos_enable_store(struct device *dev,
-+		struct device_attribute *attr, const char *buf, size_t count)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	u32 value;
-+
-+	if (kstrtou32(buf, 0, &value))
-+		return -EINVAL;
-+
-+	value = !!value;
-+	if (value)
-+		ufshcd_pm_qos_init(hba);
-+	else
-+		ufshcd_pm_qos_exit(hba);
-+
-+	return count;
-+}
-+
-+/**
-+ * ufshcd_init_pm_qos_sysfs - initialize PM QoS sysfs entry
-+ * @hba: per adapter instance
-+ */
-+static void ufshcd_init_pm_qos_sysfs(struct ufs_hba *hba)
-+{
-+	hba->pm_qos_enable_attr.show = ufshcd_pm_qos_enable_show;
-+	hba->pm_qos_enable_attr.store = ufshcd_pm_qos_enable_store;
-+	sysfs_attr_init(&hba->pm_qos_enable_attr.attr);
-+	hba->pm_qos_enable_attr.attr.name = "pm_qos_enable";
-+	hba->pm_qos_enable_attr.attr.mode = 0644;
-+	if (device_create_file(hba->dev, &hba->pm_qos_enable_attr))
-+		dev_err(hba->dev, "Failed to create sysfs for pm_qos_enable\n");
-+}
-+
-+/**
-+ * ufshcd_remove_pm_qos_sysfs - remove PM QoS sysfs entry
-+ * @hba: per adapter instance
-+ */
-+static void ufshcd_remove_pm_qos_sysfs(struct ufs_hba *hba)
-+{
-+	if (hba->pm_qos_enable_attr.attr.name)
-+		device_remove_file(hba->dev, &hba->pm_qos_enable_attr);
-+}
-+
- /**
-  * ufshcd_add_lus - probe and add UFS logical units
-  * @hba: per-adapter instance
-@@ -9204,6 +9322,8 @@ static int ufshcd_setup_clocks(struct ufs_hba *hba, bool on)
- 	if (ret)
- 		return ret;
- 
-+	if (!ufshcd_is_clkscaling_supported(hba))
-+		ufshcd_pm_qos_update(hba, on);
- out:
- 	if (ret) {
- 		list_for_each_entry(clki, head, list) {
-@@ -9381,6 +9501,8 @@ static int ufshcd_hba_init(struct ufs_hba *hba)
- static void ufshcd_hba_exit(struct ufs_hba *hba)
- {
- 	if (hba->is_powered) {
-+		ufshcd_remove_pm_qos_sysfs(hba);
-+		ufshcd_pm_qos_exit(hba);
- 		ufshcd_exit_clk_scaling(hba);
- 		ufshcd_exit_clk_gating(hba);
- 		if (hba->eh_wq)
-@@ -10030,6 +10152,7 @@ static int ufshcd_suspend(struct ufs_hba *hba)
- 	ufshcd_vreg_set_lpm(hba);
- 	/* Put the host controller in low power mode if possible */
- 	ufshcd_hba_vreg_set_lpm(hba);
-+	ufshcd_pm_qos_update(hba, false);
- 	return ret;
- }
- 
-@@ -10576,6 +10699,8 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
- 	ufs_sysfs_add_nodes(hba->dev);
- 
- 	device_enable_async_suspend(dev);
-+	ufshcd_pm_qos_init(hba);
-+	ufshcd_init_pm_qos_sysfs(hba);
- 	return 0;
- 
- free_tmf_queue:
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index d862c8ddce03..fa7434a9073d 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -912,6 +912,9 @@ enum ufshcd_mcq_opr {
-  * @mcq_base: Multi circular queue registers base address
-  * @uhq: array of supported hardware queues
-  * @dev_cmd_queue: Queue for issuing device management commands
-+ * @pm_qos_enable_attr: sysfs attribute to enable/disable  pm qos
-+ * @pm_qos_req: PM QoS request handle
-+ * @pm_qos_enabled: flag to check if pm qos is enabled
-  */
- struct ufs_hba {
- 	void __iomem *mmio_base;
-@@ -1076,6 +1079,9 @@ struct ufs_hba {
- 	struct ufs_hw_queue *uhq;
- 	struct ufs_hw_queue *dev_cmd_queue;
- 	struct ufshcd_mcq_opr_info_t mcq_opr[OPR_MAX];
-+	struct device_attribute pm_qos_enable_attr;
-+	struct pm_qos_request pm_qos_req;
-+	bool pm_qos_enabled;
- };
- 
- /**
+* WIPHY_FLAG_PS_ON_BY_DEFAULT (for the driver to control the default setting)
+
+Adding module parameters as a fourth method sounds confusing so not
+really a fan of this. And the bar is quite high for adding new module
+parameters anyway.
+
 -- 
-2.17.1
+https://patchwork.kernel.org/project/linux-wireless/list/
 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
