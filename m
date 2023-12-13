@@ -4,108 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 806DCC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 13:36:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0127CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 14:14:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Op4XljZ8hghfNhinko5HSKgkc5M7Fgt9szsx3fy4JfQ=; b=J8Pf/8namaphKMmppnsRYqAcMM
-	Zxd8KJO/4sfxzdg72c4WY0u5lKtu2pdFCuIhxqwaBN2tkI0k6Y9GV0i9ILEiWd/rL/hfY3GdKBCjG
-	UkM15hc+caVuRm/ESaPjPSH7s+Z/Fst3l2RGHoCpS5cwn7bAFRuHbR9DYrQWNhfGNnw/EB4KTto3o
-	MmdrkvmSqL9VRdjqkVxgJJgQ/LiSxJCns+Ts82pTG3WyHVGS+R1c6NZjVssf3aE4Dxi2MX1Lw/NSF
-	8Ek805prYf/d16taTKoRr/wvsjWjbMcYn5KKlkIHMgkcwO3cMk3imG7ecn5l+joJWyJVNwPvw81yQ
-	AbEKPSDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=959RlqaNHZFPTzWiCYmR8CRuOuvZOPyVf4+d9qW21eE=; b=sEL3lqcmg+Vt+H+jTHKOMo5yKS
+	NBQUVNztZtO4tJfTY+XovZIpRQMU8Znbv3avi/ONAZPFb4ynLbNowrL0MocVSijQVOUoeS/fycsrp
+	nSEAPx/UokounUK+I3pqk/+kNQaxGFq7H4mwWi3dqVrYh++vWi83Hqwn3Wxz8mirfcP6EZ+O7ByN0
+	NZH44XFinDF8/Y5d5e7T+2rAAg/bzYABBn7TKktnDbbanxFCoorq1umFcIK0Y/gnE+XnIfvOtPsNo
+	LdEnNz1YailZQyysNerAsmmtA5rtZQ/Udt+Itgvu6TPEKNfWJzpa8ot040iqPwAw0xrYnvhsgFp8Q
+	BIyQpUQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDPPf-00EqJc-1R;
-	Wed, 13 Dec 2023 13:36:35 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1rDQ0n-00F0TQ-2e;
+	Wed, 13 Dec 2023 14:14:57 +0000
+Received: from mail-bn8nam11on20600.outbound.protection.outlook.com ([2a01:111:f400:7eae::600] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDPPe-00EqIk-0f
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 13 Dec 2023 13:36:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=Op4XljZ8hghfNhinko5HSKgkc5M7Fgt9szsx3fy4JfQ=; b=Um6hw1b6T+88MrgSUP+gj7HDVn
-	0zE7IVbwlXWcs4uAxKnPMzVWM4oWBtSDe+g+coAuphoxMgFxhvF7ipw4Agi3dhdJp+kgPquIJfvVj
-	tpBzyf5FP/uA1sKB5JeDs581uNb5hS7xWz5NSOULC44pWDkbu1lkw6dbGEqIwTYS74DDLg+LvOqwG
-	w3nhV2ls3ZyqCa8UopkAPCGUg3Su4GlDBDnInBhnfLmpR5EHgHd80rmkyyN2xqOQmCFZJmXNC//ef
-	F/R8eRBvN2kMTeD/E8hSAiqiyZQKi5iye7IlvI6MrA4EMn+o0moUnCz6RFtwEQX4M9Au/ZJGbf8EG
-	Tw7DPLLA==;
-Received: from nbd.name ([46.4.11.11])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1rDPPZ-001sNh-BA
-	for linux-mediatek@lists.infradead.org; Wed, 13 Dec 2023 13:36:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Op4XljZ8hghfNhinko5HSKgkc5M7Fgt9szsx3fy4JfQ=; b=f7VaguoKG0+U4Uzs9DWCof0JfK
-	sJD4XnuCDxjzPL1MFocGtjgaUsF4nMWFt0cWSEPhvmoUB3bLU+vYP8vLIr9bSiGLmo+w7uMA39Ple
-	r83nNb3T+fGqMDaSlJDQo1kunoDDfZt6MCc78lE/CIu2tL2ESpPWKewK6+/XvM4+1+SI=;
-Received: from p4ff13178.dip0.t-ipconnect.de ([79.241.49.120] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1rDPOj-00CEED-Gh; Wed, 13 Dec 2023 14:35:37 +0100
-Message-ID: <9da16cfc-d0e4-4e9f-91b0-42b0bf4141cc@nbd.name>
-Date: Wed, 13 Dec 2023 14:35:32 +0100
-MIME-Version: 1.0
+	id 1rDQ0j-00F0Sd-1t;
+	Wed, 13 Dec 2023 14:14:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Dpy0gpQczUwGj76PKeP+1ZXxp+pJ8ec5IwpFzNppjn0BZtejoe7qBwRy1Qb4g1SRL34I4xw8fjBCnk/JzEXuWYeOW3eBFk2JKz9udDYUarqN4EB22blJ9wdIyfh5OX5Qgy3mf3zICH7NSJ4LAZS9xrOL06G+9C5Vuy6dHYd5y7VqJrwlYu4t6PyagzCd7+Ph5LqZgy6L4QIQqHd8zIKwQ+xnO2/7/4JHA68TqNuc07w5PN3K5zqvVLH/XHSxRBnJR6zTciJpdrohu/+ai2p+5MTAWHiNZn5ugjF5ijPyl/BFoLHCFAysMIMamUa9kESqvEZZLxCaK/MEGUaP2uB55g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=959RlqaNHZFPTzWiCYmR8CRuOuvZOPyVf4+d9qW21eE=;
+ b=GiV+MPBBmH179z5up7qBMNoDqo/tuAkpZBJBqr2SF7TKMXnR5wMTSP+aQH/Gu2iFq0dyIkakBTwjATGV8FEclsw/UiGWGJQpT0FgN6Kvx7fA/z759UQ+fHv5laSqgpElHlR/9z8yZnbJQ+AIZxUoBCRbXNaaOuhH4uZUaOokfQo8umTFjATxv7MAx4MIyX73X+sfe3SIxtFddt6Z6QZHvroCNx+35pOqB0E+IOa/rXmabLiDPu+ioK2bQiLAhCNHEqERpyy+wjAHdNeNSTEJbQtepHAdGrthpnxmVmcYIlY6K4aoL8gJCeI/DJ0SgjBiApsnfYho70YaiyP9hDmsIA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=959RlqaNHZFPTzWiCYmR8CRuOuvZOPyVf4+d9qW21eE=;
+ b=wOmtkwUXQwR3hXS7L3NBVA8pFFFdlSdXlMpLaWaD75RxkD/x84xxVyXVRPtacF4Hs6gO9VeU4YhSRVIaF8Ei/McHAnf97hKiyirElD95EHQwTzj0uAUk8I2LwpeZ596Zb3Mh0d6QQUUt1AOp05WBF7U16YPy8EJXVhajgpr0LtA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from BN8PR12MB3587.namprd12.prod.outlook.com (2603:10b6:408:43::13)
+ by PH0PR12MB5677.namprd12.prod.outlook.com (2603:10b6:510:14d::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7091.26; Wed, 13 Dec
+ 2023 13:59:46 +0000
+Received: from BN8PR12MB3587.namprd12.prod.outlook.com
+ ([fe80::ca80:8f1c:c11:ded3]) by BN8PR12MB3587.namprd12.prod.outlook.com
+ ([fe80::ca80:8f1c:c11:ded3%7]) with mapi id 15.20.7091.022; Wed, 13 Dec 2023
+ 13:59:46 +0000
+Message-ID: <f2f2b676-295d-4792-a26d-7fafb7340f36@amd.com>
+Date: Wed, 13 Dec 2023 14:59:28 +0100
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
+Subject: Re: [PATCH v3 0/7] dma-buf: heaps: Add secure heap
 Content-Language: en-US
-To: Mario Limonciello <mario.limonciello@amd.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: Shayne Chen <shayne.chen@mediatek.com>, Sean Wang
- <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+To: Joakim Bech <joakim.bech@linaro.org>, Pekka Paalanen <ppaalanen@gmail.com>
+Cc: Simon Ser <contact@emersion.fr>, Yong Wu <yong.wu@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>,
+ christian.koenig@amd.com, Matthias Brugger <matthias.bgg@gmail.com>,
+ dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Jeffrey Kardatzke <jkardatzke@google.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Vijayanand Jitta <quic_vjitta@quicinc.com>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>, jianjiao.zeng@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>, linaro-mm-sig@lists.linaro.org,
+ linux-mediatek@lists.infradead.org, tjmercier@google.com,
+ linux-arm-kernel@lists.infradead.org,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Deren Wu <deren.wu@mediatek.com>, Ming Yen Hsieh
- <mingyen.hsieh@mediatek.com>, Ben Greear <greearb@candelatech.com>,
- "open list:MEDIATEK MT76 WIRELESS LAN DRIVER"
- <linux-wireless@vger.kernel.org>,
- "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Sultan Alsawaf <sultan@kerneltoast.com>
-References: <20231212090852.162787-1-mario.limonciello@amd.com>
-From: Felix Fietkau <nbd@nbd.name>
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20231212090852.162787-1-mario.limonciello@amd.com>
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org
+References: <20231212024607.3681-1-yong.wu@mediatek.com>
+ <DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
+ <20231213110517.6ce36aca@eldfell>
+ <20231213101549.lioqfzjxcvmqxqu3@pop-os.localdomain>
+ <20231213133825.0a329864@eldfell>
+ <20231213132229.q3uxdhtdsxuzw3w6@pop-os.localdomain>
+From: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
+In-Reply-To: <20231213132229.q3uxdhtdsxuzw3w6@pop-os.localdomain>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: FR3P281CA0182.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a4::17) To BN8PR12MB3587.namprd12.prod.outlook.com
+ (2603:10b6:408:43::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8PR12MB3587:EE_|PH0PR12MB5677:EE_
+X-MS-Office365-Filtering-Correlation-Id: 19176b9f-e92d-4621-7f03-08dbfbe3c38c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: KpIYws6ptnnE5G3HSmOjucw0l0+uVzoyzOBYUiWiWzzs0oLgk65snyrXbGCkvO7ugwZ+C9Qi/0vPETvzny8cZ42LwCe+cgAGtMF0uhzwLslY1bPWZIbE4t8yzjRBURbQaMZIfWDm3+uAAqgALqeARBf5xKnh8kG9wIu0LQrWOpkqOF0k5dAjQt30TjamAvr8MfOh3rdXpjGEctNHMMBDHvdCwuGgHIAbGDXXFH0Gzn+FDyuktnZkH0J9CmJK+3B18h0+pZ1Qm38FRM9rxMeywFsVbEzrEoJQMGfA1NFYkCg7af6YFoCWdWaZyrmpjbxzdDCYcqaa5HwfIG1dpzwImp2u9YNSlgrcz1ttmnh4YUq67cThaivtTRIBAHiMzbmbCwpBI2jSSMDvxwakYCj+NpYu61wIJX6bckBOXZnzmGGCh8U8rkndwjVby6TFHRmYYbDZELuBhj5WecKoAWwLLnrddIVk/rAfQ7zsXQcS+q0nbp4HDJM35JQU6gRLo5TlyQgUDATCtGDIQNBYCnjDYOkJg6N8cNJTp+zor4AjxMkVw5+gS0kGE7oKgE6s2PynZCE9phRTaXXw97cl1v6+m7CF3bopF5l9gP/95EZJ9ZUBm4TVNwsFCgcS43AKHFejgADvd68JlJ3f2m7ews0FzA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN8PR12MB3587.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(346002)(396003)(376002)(136003)(366004)(39860400002)(230922051799003)(186009)(451199024)(1800799012)(64100799003)(31686004)(66899024)(110136005)(66946007)(66476007)(38100700002)(31696002)(36756003)(86362001)(66556008)(26005)(83380400001)(6512007)(6506007)(2616005)(2906002)(7416002)(6486002)(54906003)(316002)(478600001)(6666004)(5660300002)(8936002)(8676002)(4326008)(41300700001)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VzZSSjJvWCtzMTVrSnh2Qnk2MmI3N1VYd0MxalF2VEx4M3ZmRGUwTTJJaGhB?=
+ =?utf-8?B?aWEvZ0c1SkdjaVYwZ2dxQnI4VlpZRkU5RldvUms0MmVFZVJJWisxTC9LZFk5?=
+ =?utf-8?B?R3ViS1NsbVVVeDlRUVZmSUJoU0VZWmNYRFJsNGgybG4xOEFMblE0R2xFT0Fk?=
+ =?utf-8?B?TnlrYUNGdGh4SFZXcFFHMUM0eElmYWdTUXZVaXhCUk9nZHMyRU1SUCsraW02?=
+ =?utf-8?B?dEJHY0xvTGhBM2NtRmFWK0hNb0NZU0hwekRFNHFTUU8vbm1XNVJmSXRpMmRI?=
+ =?utf-8?B?RTZJUlF3RUp4THlJWWRhd1M3dHV3WWRvQitnNUJyV0NpTUFjZTdSam5Jcmo0?=
+ =?utf-8?B?RDkxRy9RVERSRlIwc2twOFJjTG4vQXl5eXFpdTBpTW5UdnFEY0FvdEp2Yytm?=
+ =?utf-8?B?YTVrYTlJL3ErR2NaUlJXVG02Y0pPUUI0Ym9FdVlaNDJUdGhRR2s1d1pEaUJL?=
+ =?utf-8?B?RnNNUWRyQ0dKUmV2K2FlQ0lkbGpwSUl3QkI1WUlCK2cxQWZVVmkvdTUxV2VW?=
+ =?utf-8?B?N3FLUmFYSTNDbW9QUXhnRHZ0bWNaQTE5UnhDK2FLSStIM0FCUzB5UHVGeHNB?=
+ =?utf-8?B?YnFtc2lPTFdweWFwZXM3cFgzbWVKRit1ZmZLNTlKZU9LUXZyQnEyQlZhMUxy?=
+ =?utf-8?B?R3oramQ0NG5QSE8wRldkeVMrODZ2YU00amdvREZOdmM3NzVDTG16VjhjckNL?=
+ =?utf-8?B?dHBia0VpclR1c050YXhsUHVCQWFuSVNaSVl6c1dqRWFWVmpVdWc2cW02eFlK?=
+ =?utf-8?B?UHEvUTFKcXN4d05Wb01SdnYrdkk0M0VyN1ZLTklTQXFMUUMzUDF2T2R0MWg4?=
+ =?utf-8?B?Yi8rNmU1K1YyejRDTTdSVXRRL1lMSlJ1SzFrSFVRWXpsUnBIMHQ3VEcvVzdB?=
+ =?utf-8?B?NlBiR3NFUTJrWFBHM0pwOC83WEYwSHk2MUxhLzRwelMrS2FqNVpRa3dNcGFk?=
+ =?utf-8?B?MGZaS2JxSmV0clFWdkxXUWJTSzhOY05vMWpTZXdNOWlxaTJsVERBbEVIeWFU?=
+ =?utf-8?B?M0VpMUdVaGpBbDgvbXQra09XSDgzY01MZFkzbXByRnVlVnBES3k5RHFYZzkx?=
+ =?utf-8?B?UGpGRXlaUU1JRE1wNW9pbzcyZ0lTUVkweVdmYXhPR04xQmx6ZWNxdmthbCsw?=
+ =?utf-8?B?QTNCeC84NE9aV3FGZ2ZldzhLdDFxYTFrT1ZYVVl5cDJyMlhGRE9rUHRNVjMy?=
+ =?utf-8?B?L0pUYXdzb3B5MFBoRysySXdFamp6cTM0QU81eGxSQWI3TFRCWFpQb25qemNo?=
+ =?utf-8?B?dmxpdUl0UVlEMVZlcDFFR0tDUU0wMmtXYjhBOGZ6SmRiLzVHa2lJTmIzTml2?=
+ =?utf-8?B?eFhKeC9QOVNxM2lxcVkrdUQ2SWNzR2l3OFJxd2syc0JGUmticEp6Wk5rQjlX?=
+ =?utf-8?B?SWR6cGF1Tll2b3JWRzhUTG12b3l0WUFmSkNEQXJwWjVnSGowemlkc0lhbnUr?=
+ =?utf-8?B?Ymdwemh3WmRHTThSWm13WmRMcEovOXZab3FETysvUXRHNHRkSk4vQXl1YWdB?=
+ =?utf-8?B?RVZZV25hQ3RsLzlTVHFZenBXcmd4N2J3R1dqa2w3ei9RbFF3Z1NtL29ZQTBM?=
+ =?utf-8?B?Q05MTXViTXZ1Y1ZoSnp3RE5KNnJIQkdqb3ViKzZ4TkcrTWtweUlWSTdWZ1VP?=
+ =?utf-8?B?dGhxRDB2d2lXK2t1Y2Irai9aM0JWb0pjNDA3cWN6Ui93YlF1OXZCQngyS2Vv?=
+ =?utf-8?B?ZXNadVp5a0tsNDg1dVNxNVZsN016RFBkSDZJNDg3clgvbklIYlZhcEpIYlpI?=
+ =?utf-8?B?L25CQ3FRU1NsYk1SZVpXQXJxdGdlZDZVWEJVTURvZ29RQ0ZtS3FiZlcwVm5I?=
+ =?utf-8?B?NWZpaGVMVlZlVW9FRVVyZ0hGbXhhV0NGU2pUcVdnbzhJaU9XeExZMmFYK1lp?=
+ =?utf-8?B?TlJ4V0NnbUgreEpOZzRQQjR6cytLQVJzWS84Qlc5N0pmMGp5bGQ3dm1aUUhM?=
+ =?utf-8?B?M0lJdjdRTWtrWEx0TnMzNHdLMGhOYm5scTIyZ1lqTmtFcEs4aTdTbWM3RkV6?=
+ =?utf-8?B?WWJ4OTZPRExaRE9mS0p0QmhSYVdQNFlGTWtVamMzdHhJUlFlUWRIbVBmR3g4?=
+ =?utf-8?B?RnZXR1NoVUUwaDNFV1NrYTJMSkZ0WXZBaW5SZUZFd3NWZ3E2VlNCZFlGdmla?=
+ =?utf-8?Q?hRm8=3D?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 19176b9f-e92d-4621-7f03-08dbfbe3c38c
+X-MS-Exchange-CrossTenant-AuthSource: BN8PR12MB3587.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Dec 2023 13:59:46.1743
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: q/l27ZpzoJzCatgjft+ydWH2RcVITPsWcrpanm+tRHhAa7/4mFWAHoSS/r7Z7GSv
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB5677
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_133630_617867_82103B88 
-X-CRM114-Status: UNSURE (   7.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231213_061453_699885_1D2861E2 
+X-CRM114-Status: GOOD (  46.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,28 +159,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12.12.23 10:08, Mario Limonciello wrote:
-> Several users have reported awful latency when powersaving is enabled
-> with certain access point combinations. It's also reported that the
-> powersaving feature doesn't provide an ample enough savings to justify
-> being enabled by default with these issues.
-> 
-> Introduce a module parameter that would control the power saving
-> behavior.  Set it to default as disabled. This mirrors what some other
-> WLAN drivers like iwlwifi do.
-> 
-> Suggested-by: Sultan Alsawaf <sultan@kerneltoast.com>
-> Link: https://codeberg.org/Hybrid-Project-Developers/linux-tkg/blame/branch/master/mt76:-mt7921:-Disable-powersave-features-by-default.mypatch
-> Link: https://aur.archlinux.org/cgit/aur.git/tree/0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch?h=linux-g14
-> Link: https://community.frame.work/t/responded-strange-wlan-problems-with-kernel-branch-6-2/41868/4
-> Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+Am 13.12.23 um 14:22 schrieb Joakim Bech:
+> On Wed, Dec 13, 2023 at 01:38:25PM +0200, Pekka Paalanen wrote:
+>> On Wed, 13 Dec 2023 11:15:49 +0100
+>> Joakim Bech <joakim.bech@linaro.org> wrote:
+>>
+>>> On Wed, Dec 13, 2023 at 11:05:17AM +0200, Pekka Paalanen wrote:
+>>>> On Tue, 12 Dec 2023 16:36:35 +0000
+>>>> Simon Ser <contact@emersion.fr> wrote:
+>>>>    
+>>>>> Is there a chance to pick a better name than "secure" here?
+>>>>>
+>>>>> "Secure" is super overloaded, it's not clear at all what it means from
+>>>>> just the name. Something like "restricted" would be an improvement.
+>>>>>    
+>>>> My thoughts exactly. Every time I see "secure" used for something that
+>>>> either gives you garbage, refuses to work, or crashes your whole machine
+>>>> *intentionally* when you try to do normal usual things to it in
+>>>> userspace (like use it for GL texturing, or try to use KMS writeback), I
+>>>> get an unscratchable itch.
+>>>>
+>>>> There is nothing "secure" from security perspective there for end users
+>>>> and developers. It's just inaccessible buffers.
+>>>>
+>>>> I've been biting my lip until now, thinking it's too late.
+>>>>    
+>>> The characteristics we're looking for here is a buffer where the content
+>>> is inaccessible to the normal OS and user space, i.e., Non-secure EL0 to
+>>> EL2. I.e, the content of the buffer is meant to be used and accessible
+>>> primarily by the secure side and other devices that has been granted
+>> s/secure side/proprietary side/
+>>
+> I'm using the nomenclature as written by Arm (other architectures have
+> other names for their secure execution states).
 
-This patch is disabling two different things at the same time:
-- Wifi powersaving
-- Device hardware powersaving
+AMDs GPUs call that "trusted" which is only minimal better than secure I 
+think.
 
-Have you tried simply disabling 802.11 powersave via nl80211 to mitigate 
-the issues with affected APs?
+>
+>> I presume nothing of the other side can ever be in any way open?
+>>
+> I'm sure there are lots of examples of things running on the secure side
+> that are open. The OP-TEE project where I'm a maintainer has been fully
+> open source since 2014, to give one example that I'm familiar with
+> myself.
 
-- Felix
+On AMDs GPUs you can actually write shaders which works with the trusted 
+data and can read and write.
+
+What is prevented is that you copy the data outside of the trusted zone, 
+e.g. to the CPU. When you do this you only get garbage.
+
+Only engines which have the proper decryption key can send out the data 
+(for example) to a display device which has authenticated itself using HDCP.
+
+Just a few infos how this is done elsewhere.
+
+Cheers,
+Christian.
+
+>
+>> Maybe the other side is even less secure than the FOSS side...
+>>
+>>> access to it (for example decoders, display controllers if we're talking
+>>> about video use cases). However, since the use cases for this exercises
+>>> the whole stack, from non-secure user space (EL0) all the way to secure
+>>> user space (S-EL0), with various devices needing access to the buffer at
+>>> various times, it makes sense to let Linux manage the buffers, although
+>>> it still cannot access the content. That's the overall context.
+>> Yes, we know all this (except for the exact meaning of EL0 etc.).
+>>
+> Great!
+>
+>>> As for the name, it's always difficult to find a name suitable precisely
+>>> describing what it is. "Secure" is perhaps vague, but it might still a
+>>> good choice, if you carefully describe what secure means for this
+>>> particular heap (in the source code and the documentation for it). For
+>> Carefully describe, as in, re-define.
+>>
+>>> example, the definition of "secure" for a secure heap as here could mean
+>>> that buffer content is inaccessible to the host OS and user space
+>>> running in normal world (using Arm nomenclature). I wouldn't have any
+>>> problems with calling it secure if, as said it's defined what we mean by
+>>> saying so. But I'm all ears for other suggestions as well.
+>>>
+>>> Safe, protected, shielded, unreachable, isolated, inaccessible,
+>>> unaccessible, fortified, ... would any of these make more sense?
+>> "Restricted" sounds like a good compromise to me. The buffers' usage is
+>> severely restricted.
+>>
+> Yes, restricted isn't a bad choice. We would still need to describe what
+> we mean by saying it's restricted, i.e., what is it restricted from,
+> since I'd guess that "restricted" by itself also could be a bit open
+> ended for a lot of people.
+>
+>> It is the opposite of "safe", because accessing the contents the wrong
+>> way can return garbage or intentionally crash the whole system,
+>> depending on the hardware implementation. One example is attempting to
+>> put such a buffer on a KMS plane while the connector HDCP state is not
+>> high enough, or a writeback connector is connected to the CRTC. It is
+>> really fragile. (Do KMS drivers fail an atomic commit that would
+>> violate the heap rules? Somehow I doubt that, who'd even know what the
+>> rules are.)
+>>
+> I believe one of the goals with reviewing the patches is to highlight
+> issues like this and try to figure out how to avoid ending up in
+> situations like what you described by suggesting alternative solutions
+> and ideas.
+>
+>> It is protected/shielded/fortified from all the kernel and userspace,
+>> but a more familiar word to describe that is inaccessible.
+>> "Inaccessible buffer" per se OTOH sounds like a useless concept.
+>>
+>> It is not secure, because it does not involve security in any way. In
+>> fact, given it's so fragile, I'd classify it as mildly opposite of
+>> secure, as e.g. clients of a Wayland compositor can potentially DoS the
+>> compositor with it by simply sending such a dmabuf. Or DoS the whole
+>> system.
+>>
+> I hear what you are saying and DoS is a known problem and attack vector,
+> but regardless, we have use cases where we don't want to expose
+> information in the clear and where we also would like to have some
+> guarantees about correctness. That is where various secure elements and
+> more generally security is needed.
+>
+> So, it sounds like we have two things here, the first is the naming and
+> the meaning behind it. I'm pretty sure the people following and
+> contributing to this thread can agree on a name that makes sense. Would
+> you personally be OK with "restricted" as the name? It sounds like that.
+>
+> The other thing is the feature and functionality itself offered by this
+> patch series. My impression from reading your replies is that you think
+> this is the wrong approach. If my impression is correct, what would you
+> suggest as an alternative approach?
+>
+>> "Poisonous heap" would be fitting but politically inappropriate I
+>> guess. After all, "poison" is data that is not meant to be read by
+>> anything normal.
+>>
+>>
+>> Thanks,
+>> pq
+
 
