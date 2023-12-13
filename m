@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8426FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 07:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 453DDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 07:04:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zHMdNcfC1HmxRzd3QioUxmMyBVeOrfAuTs7vHTPPGFU=; b=h54pfWYmhWY9EYNZn1VkvMh6HL
-	NY8kqRVRJs6U4B71hrToeG7RYKCowgonHEgWi7cP0rmgBrFBbooKbeosdzfZK/EV/OBEO/PHh86BO
-	4APa29HELa+qpt6AqwU2JmHrIQVQuL6U/x0Z82F8rBYIquEk0Ot8Vx5dGN5rxFHNF60R8XUfZiFaB
-	DLrT1Ta2FPJ/QJcbWjdLQhNIdDrJ0sZvkQq3iirB+cG72wcydkoj8i566gRIFqCYCTJelHoM3hUVR
-	YIyyIFoTaZ878dA7JlDEjsgLFD9hRinbka5Z40aA6VIHJMYA+Rn+4Eq0QuNXOlg0qKEqb7g9V3eMh
-	CrU+lc5A==;
+	bh=deWpEeAoza1LIualsVZbdy0EHlWRefem1NxcUaee0Zg=; b=Lu6zQX/2IekBfG2kf8rcv9tyG3
+	pSxbkS0EXICmMg2eBKhjRmgBWomJCMbKryTFUPoSyFFbhFe8G7912Qt8eOF5nW+bEW6jiEN4ehwpf
+	ZwzJAV+pj9I6xAeoTsHXpkw7UD2s2m6My/9cYxs8RfrmKgVXlJPI4KTL4WKuKu6Gad5rR4r2ydkAf
+	sFdwVX7KU6FgHU58H34eTjgxczhhALNkg/grnS2TuihYBSedjKKFWiyN12vlUl8w8JW81sAjSVAju
+	jvzh8N59s25YqTxFP0A0tCk8TCSXHh0bmyGzBqCfxOoD7yYUc0qG4UlJ4l+EmUc53ikeQIxDUpaou
+	wecclY+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDJF2-00DqwR-1n;
-	Wed, 13 Dec 2023 07:01:12 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1rDJIZ-00Drgf-0f;
+	Wed, 13 Dec 2023 07:04:51 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDJEz-00DqvK-2A
+	id 1rDJIG-00DrMd-1H
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Dec 2023 07:01:10 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-55114c073b8so4371056a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Dec 2023 23:01:04 -0800 (PST)
+	Wed, 13 Dec 2023 07:04:33 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-50dfac6c0beso4215654e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Dec 2023 23:04:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702450863; x=1703055663; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1702451068; x=1703055868; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=zHMdNcfC1HmxRzd3QioUxmMyBVeOrfAuTs7vHTPPGFU=;
-        b=FT73eK2f1g/MBHwzLXmG+McQmKd3yqGoo75v1DZLlvGaS01R6shAyP7ww0IQP8NHGe
-         UE4pEbunz6u2XTcTF01Yls0v55ugUPzPzGEUlkDMKlkvowjnLLloO6C922mSVxFznMXb
-         7pjB2xa1g+E0B0335q0xpaG7iVTKWQKWRreDSE8fizirvPYJQnif3tzORhTQFSysKAZc
-         Cz5SxARzlv4t7/v4QWlpydC4t6ss1YdYvh21tvoL6j/d3m5T+GnnCIGcPlw9Lp8o0K0V
-         uEodcmsl/BT1FlzMlkeJwQU3TRrIP9nMaDpao1asKFBE8440koHV6n7qp4P3tdxVw3nF
-         UB3w==
+        bh=deWpEeAoza1LIualsVZbdy0EHlWRefem1NxcUaee0Zg=;
+        b=A+JyT/55AQHBi5RLlIX/W9GBARl1hjoWXdTHWctYGiu0F2t5zANPBTVssVW8vIxN+7
+         jJfqQ2OTLV0SAyHeP4dcjFjnOefCHsS+q6palj9Gf4trJLyIKxtoV+szt/oCqwgqa5zK
+         5K3tikp/2jSk7MVU53cGm+Z3QqyAYpFlrkFjoZFxJdbk6U9Z18Vm04lBfVjdNoKNnnzT
+         MDcK/VigDBQngI5MdoVBSmh5phNAIABJGdvOQDCfCRX12tbnV39D8NtNqZ/Cjvtjxabw
+         R2Pi2pwsslsLosXkZjUEa0EVQiZaM3YnHUXPuovwXhUW8vfoH7tdoFLhP1zIS5JWWYIL
+         D5lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702450863; x=1703055663;
+        d=1e100.net; s=20230601; t=1702451068; x=1703055868;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zHMdNcfC1HmxRzd3QioUxmMyBVeOrfAuTs7vHTPPGFU=;
-        b=tANC51hzEQ0BudvAo+tYbgmlIUKnUNOWFM/dRx2riS/6dK6wJ9R2JlU8QcauAdsvWj
-         apASGlLUaRvi4Homk+53uk50n/drDyBuWqHZVF4eRvAo8dAoIQfUaoaNZCRUrTD8PsoG
-         0ydbeTVMtoABNPq4oqIuuS/oiox+2zlkX/edsLbhgkXf7BLye9mSB/23xfXe4x0kBH4/
-         MqSlkP0bJ+CKsCfxv9ppqw1T0ZCzwEJ1vzxoB4oV+aYawvqE1EyQf6toEjrOMQRDLNW8
-         N9f1K3kYy9NDg2c6mGvazOdugUzbAuvr3E+KE8ttDhQPfrG2TGOP5Nh3X9PD2n1VrIH3
-         sCUw==
-X-Gm-Message-State: AOJu0YxSkDoyaB5YSYhSzsQf9fxvHK2VCDTfjgy1Xf8H/uWeaADdNzE5
-	k41oGJWCDDeRqIKJAhYVXaj8Hw==
-X-Google-Smtp-Source: AGHT+IG0IDwJ0NjUVvd88Yz/97KsRl3iFvtGqseZX3SMT6oJnKTJJRz39OlUMn9Lpp8MB0DlALWxBA==
-X-Received: by 2002:a17:906:2319:b0:a19:a19b:4220 with SMTP id l25-20020a170906231900b00a19a19b4220mr2422570eja.139.1702450862814;
-        Tue, 12 Dec 2023 23:01:02 -0800 (PST)
+        bh=deWpEeAoza1LIualsVZbdy0EHlWRefem1NxcUaee0Zg=;
+        b=n+bDb1hIl+boIyXvAkvpcdM0cA8/OLx3AZjQBFPzk6tT6oqIEi+7bf0LQfTnTnW4B+
+         P9D0FVJKqzgRVizei8U5WEA75i2higNoAO+lPpS19J+DWNtieZ620ihpdAEptdYpWINQ
+         ooCV/KBQwwLMno7XCK8B/kkuxUNlDuY3EFaGuJFxDhqzfbqUsoONGzRis6hOef89j4uT
+         3mpHDNxKC53tVNkw49zhP9M4QP8xC2/mG2H844gMFKBUnk7W3Q/+5J4B8jHz2YUWb0PC
+         dGBSpMhb25tov0uueO8iqq1AGv0UFUddqoRDlc3cEtAs+tU3Ii339TGwCmJkmOFSDw5B
+         gJjg==
+X-Gm-Message-State: AOJu0YyvmWPsCkUx9tcxOlcuB9D6QAkPR33sktbde4sO6qHEQYt0ld+j
+	WXeLjO0LMm9hoRCSoLdgmyXkgA==
+X-Google-Smtp-Source: AGHT+IGiKF2oMLU28+2oME+tA62AXHIXuo2gREvYYSDjnfH4ylJlVQQHKbnuWwDLWMIVd4Qro9wzqA==
+X-Received: by 2002:a19:ad4b:0:b0:50b:f71f:2cc1 with SMTP id s11-20020a19ad4b000000b0050bf71f2cc1mr3014522lfd.62.1702451068447;
+        Tue, 12 Dec 2023 23:04:28 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id st6-20020a170907c08600b00a1ddf143020sm7245727ejc.54.2023.12.12.23.01.00
+        by smtp.gmail.com with ESMTPSA id cr7-20020a056402222700b0054ce9ef93fbsm5349829edb.4.2023.12.12.23.04.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Dec 2023 23:01:02 -0800 (PST)
-Message-ID: <1ca36158-c57d-4130-94f5-c3650594498c@linaro.org>
-Date: Wed, 13 Dec 2023 08:00:59 +0100
+        Tue, 12 Dec 2023 23:04:28 -0800 (PST)
+Message-ID: <7c878a4e-da9b-4e8e-a965-9eeefe073d13@linaro.org>
+Date: Wed, 13 Dec 2023 08:04:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/5] dt-bindings: reset: mediatek: add MT7988 ethwarp
- reset IDs
+Subject: Re: [PATCH v5 3/5] dt-bindings: clock: mediatek: add clock
+ controllers of MT7988
 Content-Language: en-US
 To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -87,7 +87,7 @@ To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  netdev@vger.kernel.org
 References: <152b256d253508cdc7514c0f1c5a9324bde83d46.1702350213.git.daniel@makrotopia.org>
- <a60f5b5ed58626f3dbac1eab8a5845c3ce9bd17c.1702350213.git.daniel@makrotopia.org>
+ <ce9b1e777090724794cf9f0c52bcd8618385fd06.1702350213.git.daniel@makrotopia.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -133,13 +133,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <a60f5b5ed58626f3dbac1eab8a5845c3ce9bd17c.1702350213.git.daniel@makrotopia.org>
+In-Reply-To: <ce9b1e777090724794cf9f0c52bcd8618385fd06.1702350213.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_230109_706715_CB079993 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231212_230432_435639_3D69DFCC 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,17 +154,93 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 12/12/2023 04:18, Daniel Golle wrote:
-> Add reset ID for ethwarp subsystem allowing to reset the built-in
-> Ethernet switch of the MediaTek MT7988 SoC.
+> Add various clock controllers found in the MT7988 SoC to existing
+> bindings (if applicable) and add files for the new ethwarp, mcusys
+> and xfi-pll clock controllers not previously present in any SoC.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
 
-No need for one patch per one header. Headers are parts of new binding
-patch. If you decide to keep headers separate for easier review, then
-they could be in one header-only-patch.
+...
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> -      - const: syscon
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt7622-sgmiisys
+> +              - mediatek,mt7629-sgmiisys
+> +              - mediatek,mt7981-sgmiisys_0
+> +              - mediatek,mt7981-sgmiisys_1
+> +              - mediatek,mt7986-sgmiisys_0
+> +              - mediatek,mt7986-sgmiisys_1
+> +          - const: syscon
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt7988-sgmiisys_0
+> +              - mediatek,mt7988-sgmiisys_1
+
+No underscores in compatibles. At least for new ones, because you cannot
+touch the old.
+
+> +          - const: simple-mfd
+> +          - const: syscon
+>  
+>    reg:
+>      maxItems: 1
+> @@ -35,11 +42,47 @@ properties:
+>      description: Invert polarity of the SGMII data lanes
+>      type: boolean
+>  
+> +  pcs:
+> +    type: object
+> +    description: HSGMII PCS logic
+> +    properties:
+> +      compatible:
+> +        const: mediatek,mt7988-sgmii
+> +
+> +      clocks:
+> +        maxItems: 3
+> +        minItems: 3
+
+drop minItems
+
+> +
+> +      clock-names:
+> +        items:
+> +          - const: sgmii_sel
+> +          - const: sgmii_tx
+> +          - const: sgmii_rx
+> +
+> +    required:
+> +      - compatible
+> +      - clocks
+> +      - clock-names
+> +
+> +    additionalProperties: false
+> +
+>  required:
+>    - compatible
+>    - reg
+>    - '#clock-cells'
+>  
+
+add allOf: here
+
+> +if:
+> +  properties:
+> +    compatible:
+> +      contains:
+> +        enum:
+> +          - mediatek,mt7988-sgmiisys_0
+> +          - mediatek,mt7988-sgmiisys_1
+> +
+> +then:
+> +  required:
+> +    - pcs
+
+else: also valid?
+
+Maybe there is no point to have it in this binding?
 
 Best regards,
 Krzysztof
