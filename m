@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 952DEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 14:45:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB57C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 15:04:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
-	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CBlRrUoOIRVJYNC6cQSzrC9BYSjs+oqsdU7/6hMHQp0=; b=078Oz3PZEfydJBk2iSllqDzaUy
-	jSvsuorazv+8y7LgbqCz8vWyxotFq5sPXFoeDHLD8utEV4XL3Wg06pTkBHj4buPDJ4K2rwMhvPF6F
-	HM2zJU1zpsCbxqSKz/UbfP8K784w9Fyn5Rk6ixDp8fgYargD5r/+Z3zLIKDmq7gwbdCotNgHd8A3x
-	sIecGodyo/Trzn2SXn2fPFtTlSg3Yj0rkIyeGfCAGo4C/ZTS2vvzm3kU5iezsoyssZnQj6nl3mcWF
-	apB4Z0Mk0srSs73KMLc56XV8AUib3+Imsbj9YuKg8282HJ5dIZ/fTYCPf3KFeW5x4qeWwjv4jHRbt
-	ahhqStfA==;
+	bh=RaIqa889/Xel1qXaRfMAUx4gwV9LpaUtBao8QbW7li0=; b=aXTl/MJntbAdgDqP+Ne4YZREAC
+	t2IYmKuHdlGY3BwrHdbMUDeszqUo9c5cmo5oVFfFEkEuNzfrUw46prBQ5Qwt7Ez83KfdQXgLaGi74
+	InbppXXYBR2E4H9wHtbkt8CDB9FDmonPdJQCviXY10iByPAMvPPCe8dhu54PfN7YmI3mUJ+O6qGkX
+	TRAu11bxCbZ72OMFnDG4ytPFy2k8rMgQRWpJczj18MZHXy2B6dpu4izhLTZC5QR5loKK4R3+6aoSV
+	d6wqRxeNYzpoY7gTjsrj/cVBjJW7++fAM21X25dqjlB9cx4hOIyV9Qr3XOD1nvYCxjI0D0BKyKfyb
+	mhT7McEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQUS-00F5Io-0r;
-	Wed, 13 Dec 2023 14:45:36 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.164])
+	id 1rDQnA-00F8t9-2Q;
+	Wed, 13 Dec 2023 15:04:56 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQUP-00F5Gz-0m
+	id 1rDQn7-00F8q7-1p
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Dec 2023 14:45:34 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 25BDF3C0063;
-	Wed, 13 Dec 2023 14:45:27 +0000 (UTC)
-Received: from [192.168.1.115] (unknown [98.97.113.21])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id 5A6FA13C2B0;
-	Wed, 13 Dec 2023 06:45:23 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 5A6FA13C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1702478724;
-	bh=CyzNsGLkg4WlGdYLD0CORyHCimqERrevF4Jayf7AZrI=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
-	b=FtctL3XfK12CbRTl5KHhn9cT9j3FXr5yCvhS9Xeakwq9IcOq7UGhZok9Zp5wfhEBH
-	 /iRLEzUwz012MLtiuCU3BMuCtLx75xTl22OG5aq3TxxGAvt3BOSitdlbPoGODFuQwW
-	 YVntLFUGLNlf+XLJAtZ7c8uNqHUPgHSp8a9lhY3Y=
-Subject: Re: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Kalle Valo <kvalo@kernel.org>
-Cc: Mario Limonciello <mario.limonciello@amd.com>,
- Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Deren Wu <deren.wu@mediatek.com>, Ming Yen Hsieh
- <mingyen.hsieh@mediatek.com>,
- "open list:MEDIATEK MT76 WIRELESS LAN DRIVER"
- <linux-wireless@vger.kernel.org>,
- "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Sultan Alsawaf <sultan@kerneltoast.com>
-References: <20231212090852.162787-1-mario.limonciello@amd.com>
- <874jgmnud8.fsf@kernel.org> <ZXmxD1foASMaCDIe@lore-desk>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-Message-ID: <d92c081e-47dd-5c57-a6f1-bd72b2748141@candelatech.com>
-Date: Wed, 13 Dec 2023 06:45:22 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+	Wed, 13 Dec 2023 15:04:55 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1d35dc7e1bbso2561455ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Dec 2023 07:04:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1702479890; x=1703084690; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RaIqa889/Xel1qXaRfMAUx4gwV9LpaUtBao8QbW7li0=;
+        b=nMH6szd/D2O+WaHn0QCRTsCIHfEm6VF9Dsq86sR/7v+ieBYjMHmVwK0m7sIiu2UFfU
+         b5FIRqvriA1GcWLV6dmHdtAeDL2u9wkF7QNSGgQYOd8nIp1oPPyBQJ6iWOMBD7dZDpZR
+         FQPcJOcMPR22Gj+RfPyRK6cpja65n1wEwW2mQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702479890; x=1703084690;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RaIqa889/Xel1qXaRfMAUx4gwV9LpaUtBao8QbW7li0=;
+        b=bAy4Zmluny2h4bBKEZrVEgFM/UoraN58ER4qW7NUdz7dj2GhJeFmRNoe8sbDkiNqON
+         QigJlC0BncC0wYgS4/J0TO25DgJtwe/4oTAVt/BA7UHEI/Nq/Ye7dAXOdHgpORjsNa9b
+         fnFFbT/UMjDgy3xjVpa54u1cvxj8Hg2Y0rZLZBXTRs6pgKYxF7gj9KRwc0KZmh1CQhQq
+         O5B7KFo9pNTS49mPcYkZLlSB/L93olcmcCs+TFSGocOtBeX/t5HEG+uXDOZoWScBzwAb
+         gMcvvCweWZtcLtHsRlidZwA3T3md1rM/72gOvRWD5z7MC2vbkef+tzaZW/jvc4Q4AeTk
+         olxQ==
+X-Gm-Message-State: AOJu0YxaSO7BL6EdxV/gRh7mz5Bm8TlM4Zi5XG42ENsywu9g4q/NDeBX
+	eB2O80GB3ebiXRqKHgX+Srm9Gw==
+X-Google-Smtp-Source: AGHT+IFPslvGmSHSuJ6L7UZlvykY2i+KO9+vuT0SLddZnTt8oGEn1NhI93wX2VsqNAF5KCdg6GM+ow==
+X-Received: by 2002:a17:902:ab83:b0:1d0:6ffd:e2ef with SMTP id f3-20020a170902ab8300b001d06ffde2efmr7719522plr.137.1702479889748;
+        Wed, 13 Dec 2023 07:04:49 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1974:9e2:4915:58b0])
+        by smtp.gmail.com with ESMTPSA id z15-20020a1709027e8f00b001cc2dc61c99sm813808pla.22.2023.12.13.07.04.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Dec 2023 07:04:49 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Eugen Hristev <eugen.hristev@collabora.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v4 1/9] dt-bindings: arm: mediatek: Sort entries by SoC then board compatibles
+Date: Wed, 13 Dec 2023 23:04:25 +0800
+Message-ID: <20231213150435.4134390-2-wenst@chromium.org>
+X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
+In-Reply-To: <20231213150435.4134390-1-wenst@chromium.org>
+References: <20231213150435.4134390-1-wenst@chromium.org>
 MIME-Version: 1.0
-In-Reply-To: <ZXmxD1foASMaCDIe@lore-desk>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Language: en-MW
-Content-Transfer-Encoding: 7bit
-X-MDID: 1702478729-Q2nO4rVjVD1u
-X-MDID-O: us5;at1;1702478729;Q2nO4rVjVD1u;<greearb@candelatech.com>;0636e1de1030682809d49efeedd0cda8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_064533_371847_C64B5EE5 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20231213_070453_608508_3E220BA9 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,53 +98,191 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/13/23 5:26 AM, Lorenzo Bianconi wrote:
->> Mario Limonciello <mario.limonciello@amd.com> writes:
->>
->>> Several users have reported awful latency when powersaving is enabled
->>> with certain access point combinations.
->>
->> What APs are these exactly? In the past 802.11 Power Save Mode was
->> challenging due to badly behaving APs. But nowadays with so many mobile
->> devices in the market I would assume that APs work a lot better. It
->> would be best to investigate the issues in detail and try to fix them in
->> mt76, assuming the bugs are in mt76 driver or firmware.
->>
->>> It's also reported that the powersaving feature doesn't provide an
->>> ample enough savings to justify being enabled by default with these
->>> issues.
->>
->> Any numbers or how was this concluded?
->>
->>> Introduce a module parameter that would control the power saving
->>> behavior.  Set it to default as disabled. This mirrors what some other
->>> WLAN drivers like iwlwifi do.
->>
->> We have already several ways to control 802.11 power save mode:
->>
->> * NL80211_CMD_SET_POWER_SAVE (for example used by 'iw set power_save')
->>
->> * CONFIG_CFG80211_DEFAULT_PS (for kernel level default)
->>
->> * WIPHY_FLAG_PS_ON_BY_DEFAULT (for the driver to control the default setting)
->>
->> Adding module parameters as a fourth method sounds confusing so not
->> really a fan of this. And the bar is quite high for adding new module
->> parameters anyway.
-> 
-> agree, I think we do not need a new parameter for this, just use the current
-> APIs.
+Some of the new MediaTek board entries were inserted in a chronological
+order, or just randomly. This makes it harder to search for an entry.
 
-Is there a convenient way for a user to make any of those options above stick through
-reboots?
+Sort the entries by first grouping by SoC, then sorting by board
+compatible strings. Also add a comment at the top asking people to do
+the same.
 
-To me, the ability to set system defaults through reboots is a nice feature of
-module options.
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+Changes since v3:
+- Collected reviewed-by from Angelo
+Changes since v2:
+- none
+Changes since v1:
+- Collected ack from Conor
+---
+ .../devicetree/bindings/arm/mediatek.yaml     | 123 +++++++++---------
+ 1 file changed, 62 insertions(+), 61 deletions(-)
 
-Thanks,
-Ben
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index a5999b3afc35..60337b439744 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -17,6 +17,7 @@ properties:
+     const: '/'
+   compatible:
+     oneOf:
++      # Sort by SoC (last) compatible, then board compatible
+       - items:
+           - enum:
+               - mediatek,mt2701-evb
+@@ -129,71 +130,10 @@ properties:
+           - enum:
+               - mediatek,mt8173-evb
+           - const: mediatek,mt8173
+-      - items:
+-          - enum:
+-              - mediatek,mt8183-evb
+-          - const: mediatek,mt8183
+-      - description: Google Hayato rev5
+-        items:
+-          - const: google,hayato-rev5-sku2
+-          - const: google,hayato-sku2
+-          - const: google,hayato
+-          - const: mediatek,mt8192
+-      - description: Google Hayato
+-        items:
+-          - const: google,hayato-rev1
+-          - const: google,hayato
+-          - const: mediatek,mt8192
+-      - description: Google Spherion rev4 (Acer Chromebook 514)
+-        items:
+-          - const: google,spherion-rev4
+-          - const: google,spherion
+-          - const: mediatek,mt8192
+-      - description: Google Spherion (Acer Chromebook 514)
+-        items:
+-          - const: google,spherion-rev3
+-          - const: google,spherion-rev2
+-          - const: google,spherion-rev1
+-          - const: google,spherion-rev0
+-          - const: google,spherion
+-          - const: mediatek,mt8192
+-      - description: Acer Tomato (Acer Chromebook Spin 513 CP513-2H)
+-        items:
+-          - enum:
+-              - google,tomato-rev2
+-              - google,tomato-rev1
+-          - const: google,tomato
+-          - const: mediatek,mt8195
+-      - description: Acer Tomato rev3 - 4 (Acer Chromebook Spin 513 CP513-2H)
+-        items:
+-          - const: google,tomato-rev4
+-          - const: google,tomato-rev3
+-          - const: google,tomato
+-          - const: mediatek,mt8195
+-      - items:
+-          - enum:
+-              - mediatek,mt8186-evb
+-          - const: mediatek,mt8186
+-      - items:
+-          - enum:
+-              - mediatek,mt8192-evb
+-          - const: mediatek,mt8192
+-      - items:
+-          - enum:
+-              - mediatek,mt8195-demo
+-              - mediatek,mt8195-evb
+-          - const: mediatek,mt8195
+       - description: Google Burnet (HP Chromebook x360 11MK G3 EE)
+         items:
+           - const: google,burnet
+           - const: mediatek,mt8183
+-      - description: Google Krane (Lenovo IdeaPad Duet, 10e,...)
+-        items:
+-          - enum:
+-              - google,krane-sku0
+-              - google,krane-sku176
+-          - const: google,krane
+-          - const: mediatek,mt8183
+       - description: Google Cozmo (Acer Chromebook 314)
+         items:
+           - const: google,cozmo
+@@ -244,6 +184,13 @@ properties:
+               - google,kodama-sku32
+           - const: google,kodama
+           - const: mediatek,mt8183
++      - description: Google Krane (Lenovo IdeaPad Duet, 10e,...)
++        items:
++          - enum:
++              - google,krane-sku0
++              - google,krane-sku176
++          - const: google,krane
++          - const: mediatek,mt8183
+       - description: Google Willow (Acer Chromebook 311 C722/C722T)
+         items:
+           - enum:
+@@ -251,10 +198,64 @@ properties:
+               - google,willow-sku1
+           - const: google,willow
+           - const: mediatek,mt8183
++      - items:
++          - enum:
++              - mediatek,mt8183-evb
++          - const: mediatek,mt8183
+       - items:
+           - enum:
+               - mediatek,mt8183-pumpkin
+           - const: mediatek,mt8183
++      - items:
++          - enum:
++              - mediatek,mt8186-evb
++          - const: mediatek,mt8186
++      - description: Google Hayato
++        items:
++          - const: google,hayato-rev1
++          - const: google,hayato
++          - const: mediatek,mt8192
++      - description: Google Hayato rev5
++        items:
++          - const: google,hayato-rev5-sku2
++          - const: google,hayato-sku2
++          - const: google,hayato
++          - const: mediatek,mt8192
++      - description: Google Spherion (Acer Chromebook 514)
++        items:
++          - const: google,spherion-rev3
++          - const: google,spherion-rev2
++          - const: google,spherion-rev1
++          - const: google,spherion-rev0
++          - const: google,spherion
++          - const: mediatek,mt8192
++      - description: Google Spherion rev4 (Acer Chromebook 514)
++        items:
++          - const: google,spherion-rev4
++          - const: google,spherion
++          - const: mediatek,mt8192
++      - items:
++          - enum:
++              - mediatek,mt8192-evb
++          - const: mediatek,mt8192
++      - description: Acer Tomato (Acer Chromebook Spin 513 CP513-2H)
++        items:
++          - enum:
++              - google,tomato-rev2
++              - google,tomato-rev1
++          - const: google,tomato
++          - const: mediatek,mt8195
++      - description: Acer Tomato rev3 - 4 (Acer Chromebook Spin 513 CP513-2H)
++        items:
++          - const: google,tomato-rev4
++          - const: google,tomato-rev3
++          - const: google,tomato
++          - const: mediatek,mt8195
++      - items:
++          - enum:
++              - mediatek,mt8195-demo
++              - mediatek,mt8195-evb
++          - const: mediatek,mt8195
+       - items:
+           - enum:
+               - mediatek,mt8365-evk
 -- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+2.43.0.472.g3155946c3a-goog
+
 
