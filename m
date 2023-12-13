@@ -4,68 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B038C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 10:35:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 270A4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 10:37:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=akdQg5r1DHQAgvaJdrvXSSG+bV+1cZ/Yv/BKskT+BTw=; b=ia4lxpvwSSl5+DW4dVxid0qX2b
-	cMAzLx49ikdBvrPpXyUiVC6XqCQhrUXBeWaMM0KmtMXRSz6iZ9Kc3GTNnWpfAIHXuFqdJ6pj4/8u9
-	OPGZOR5MV9BhA88Sa7+Nar57dj7aLGmShbW0FvzAGZE2RQ+qqB0Hf/bzbTzMATryRZ0uJur33wUUs
-	2WMOjZ/NWslP+NKdNHh7WliBeGNwCj1nUYIOOoGOc8ePWCnJdfAy6t9v/Jk8AQLIreKBiuXarjwuL
-	4Ed3XkGLkH3w3hTKFrsCjvLNuuGxWerqeALrnsOgASkoz8sII6HsSXIpo8UKjFq97uHSmqqP0xieU
-	lO1trxew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PtcW76POK9iiqQ2qciDqBvfz80BkdqHXbeCSE0EFbQ4=; b=G6P1+C4qYzgIpK6uGivE61RDZB
+	WcdQignd5PH+vY4Si+E8jDcXkgHADniBgpNlkNXnL0plUFhdIYefxo8nxUfZ25aPNiYkynlUbI+JV
+	IxMjQkemyL/MkaoyskglgcE6mZMpxXmV49S7YgIzCtyEIyjZbyrl8wx4rjMroctPw/yOOS7SxXZoa
+	Wk+QaY3Io/Fy+rW6J3VwUoArEEh1dDERmhgLFOoD9WCNDDMHVqmjlNZ8rp3miKHIbC+CXg/GNnklS
+	/X82TzumLKf5Ns+QWtXYbMPp7Hd4fITw3PwSakZZ4KdjliTjcnLJLeG8u5oVRiOL8wu0kyXN0hGhY
+	8JjWRMZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDMag-00EG6T-19;
-	Wed, 13 Dec 2023 10:35:46 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rDMcn-00EGHQ-0M;
+	Wed, 13 Dec 2023 10:37:57 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDMac-00EG5e-2S;
-	Wed, 13 Dec 2023 10:35:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702463738;
-	bh=viWUiogueJVv5biI+umTb/N3GgCvcB5MX5R0x153QXk=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=BaO6/junNe+bPVn+4mmm+vz+40b31nCMQ4BVQVdRiJFtHfoY2NSZRlQvbwv+XhzR5
-	 p+GOUUfdmHof+/JzjsHOBBnpzLlkfpsWhQ3fSl2pwDrdlof8w7U0TSEKuDiFwgFA3z
-	 dLaG+IvWQxnYzw8XoHd3vyk2f2sH68mYqmUTZxoqlkHnzFGHrBYKV8XuJbLvFmmS2R
-	 olObNfym2FGRsRq1ygRLdfd3g6hqM6u8Ba+YeASQFv4VRSs+JTVVJWQ9ecMdd5s1VT
-	 PUYzaqNNm/QP+/qSTEKEOjjgPhcd/W3td8ILXYs3o9ClAalXzcvntjdUqVqqW6Ks01
-	 HBM3H3+TWvlzg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3BD363781453;
-	Wed, 13 Dec 2023 10:35:38 +0000 (UTC)
-Message-ID: <38909757-5b30-485a-8482-b75a36f1442a@collabora.com>
-Date: Wed, 13 Dec 2023 11:35:37 +0100
+	id 1rDMck-00EGH0-01;
+	Wed, 13 Dec 2023 10:37:55 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 3BD7H9Hx000429;
+	Wed, 13 Dec 2023 10:37:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	from:to:cc:subject:date:message-id:mime-version:content-type; s=
+	qcppdkim1; bh=PtcW76POK9iiqQ2qciDqBvfz80BkdqHXbeCSE0EFbQ4=; b=Uc
+	aBZToU7sD1qwrDI5Zm0ivm3x10XvKcCDEk+KNLOpvtkZLDdyMonMfHOy5Dlme9T3
+	I4TLYQDkzzn/NBXyPOW1tPUVtpotuxpPOgXN0oD7qIeHxZrpczqjR0cM/bUC483e
+	+YVcKzYPA8eCm/o5/5RmP5o+LH6tNbb8NVSLJDnx/MhRzj643YTFavgICNpY4foz
+	82YNwEmVM7e+47WujHUDGuEkDyhFtxFvMKo4LdBylUqaTPL1Bp8TROY2Z+SWZCaw
+	UIzEIOuLMeoyGxXsObifqHVEm2J0L/2FQ2u7OiEii68ZaJfoiQLMqAha2cMRAmO9
+	xPM5yiPHvdkkIivl0u4A==
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uy5tvgsym-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 13 Dec 2023 10:37:45 +0000 (GMT)
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3BDAbiMO018800
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 13 Dec 2023 10:37:44 GMT
+Received: from hu-mnaresh-hyd.qualcomm.com (10.80.80.8) by
+ nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.40; Wed, 13 Dec 2023 02:37:39 -0800
+From: Maramaina Naresh <quic_mnaresh@quicinc.com>
+To: "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen"
+	<martin.petersen@oracle.com>,
+        Peter Wang <peter.wang@mediatek.com>,
+        "Matthias
+ Brugger" <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        <stanley.chu@mediatek.com>
+CC: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+        Bart Van Assche <bvanassche@acm.org>,
+        Stanley Jhu <chu.stanley@gmail.com>, <linux-scsi@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+        <linux-arm-kernel@lists.infradead.org>, <quic_cang@quicinc.com>,
+        <quic_nguyenb@quicinc.com>
+Subject: [PATCH V4 0/2] Add CPU latency QoS support for ufs driver 
+Date: Wed, 13 Dec 2023 16:06:40 +0530
+Message-ID: <20231213103642.15320-1-quic_mnaresh@quicinc.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ASoC: mediatek: mt7986: silence error in case of
- -EPROBE_DEFER
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maso Huang <maso.huang@mediatek.com>, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <b941a404d97c01ef3e30c49925927b9a7dafeb19.1702422544.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <b941a404d97c01ef3e30c49925927b9a7dafeb19.1702422544.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: Hs6gf9V6tF0iylPG58GBMUietw0t8wAf
+X-Proofpoint-GUID: Hs6gf9V6tF0iylPG58GBMUietw0t8wAf
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-09_01,2023-12-07_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 phishscore=0
+ priorityscore=1501 impostorscore=0 mlxscore=0 clxscore=1015
+ mlxlogscore=731 bulkscore=0 spamscore=0 adultscore=0 lowpriorityscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2311290000 definitions=main-2312130077
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_023542_957156_F7DFEAD2 
-X-CRM114-Status: UNSURE (   7.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231213_023754_045775_FA27F112 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,14 +104,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/12/23 00:10, Daniel Golle ha scritto:
-> If probe is defered no error should be printed. Use dev_err_probe() to
-> have it muted.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> Reviewed-by: Maso Huang <maso.huang@mediatek.com>
+Add CPU latency QoS support for ufs driver. This improves random io
+performance by 15% for ufs.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+tiotest benchmark tool io performance results on sm8550 platform:
 
+1. Without PM QoS support
+	Type (Speed in)    | Average of 18 iterations
+	Random Read(IPOS)  | 37101.3
+	Random Write(IPOS) | 41065.13
+
+2. With PM QoS support
+	Type (Speed in)    | Average of 18 iterations
+	Random Read(IPOS)  | 42943.4
+	Random Write(IPOS) | 46784.9
+(Improvement with PM QoS = ~15%).
+
+This patch is based on below patch by Stanley Chu [1]. 
+Moving the PM QoS code to ufshcd.c and making it generic.
+
+[1] https://lore.kernel.org/r/20220623035052.18802-8-stanley.chu@mediatek.com
+
+Changes from v3:
+- Removed UFSHCD_CAP_PM_QOS capability flag from patch#2.
+
+Changes from v2:
+- Addressed bvanassche and mani comments
+- Provided sysfs interface to enable/disable PM QoS feature
+
+Changes from v1:
+- Addressed bvanassche comments to have the code in core ufshcd
+
+Maramaina Naresh (2):
+  ufs: core: Add CPU latency QoS support for ufs driver
+  ufs: ufs-mediatek: Enable CPU latency PM QoS support for MEDIATEK SoC
+
+ drivers/ufs/core/ufshcd.c       | 127 ++++++++++++++++++++++++++++++++
+ drivers/ufs/host/ufs-mediatek.c |  17 -----
+ drivers/ufs/host/ufs-mediatek.h |   3 -
+ include/ufs/ufshcd.h            |   6 ++
+ 4 files changed, 133 insertions(+), 20 deletions(-)
+
+-- 
+2.17.1
 
 
