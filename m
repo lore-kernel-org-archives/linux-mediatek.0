@@ -4,69 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B611C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 12:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82CA3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 13:21:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TkzqMOp/Xs43tYyiFqXPDwFbT9GEi5XujDuaXczjprI=; b=c4ofqhUqhqbI0+LezY5iJyml7n
-	Z75QXZPPKnZcoY849nJFD72ubF9WI4loaBk3T8zAKJGtIyRiDBjKMtg3JusqdMWiebSxUVP9S2WxJ
-	nu18M0y129jbVToiXcE+D4hElQv0dTQ4UYTgy4ax3uJiOEPtUrN3mZe4AweaHIjW6KTvwbAO53PAr
-	0JM+btXY0qP6pIWMMlSZMMpPzoWO8Tq2deHSaJRntrekJHtnHdJYRh8Yqbm1FiGwGtkLZ/HYpkZic
-	W1e/I66qTYzdCvLKfnb4pbZw3uXCUlm6M1pxCBWuFjnnHREc/DYc1BZwkUxqsBcgB/pVIPmuQcPXB
-	SkpPw6Zg==;
+	bh=Cxxp9zwlmXO3GMPYFrCkmqu7xOsNc9JwZVzZO/mi2A4=; b=JptuXZoBk1wkBfEk1FRt5F6N3/
+	cwR018nVTrMExa6XDjz0WH2CtcEh/76astLUrYge7LLMcU7Z5t2thqG6KqT2ndqE6KTkGce76Xs2R
+	IKpBdaHLckVq5NZW3/3Pb1wFasSfk2rku6MwFRFWFcDQN6JagGSWtfEcS7Nq5BhNYaWtfNTomsJrs
+	b/lR9icNBrC8KHkDNbDBNVQO9Dzg0cF/k5U54LpU7S042WDMjwZz73h5wHclMtLUEEc1ETkJgDB8p
+	N2FrsGsUhedJztihOlijdmnLer26CYqVZpyYtynVdNXL8l01dTO0oWavlRTnqSDIiSwfL6TQPFph7
+	q5EHIa7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDOcp-00EdWm-06;
-	Wed, 13 Dec 2023 12:46:07 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1rDPAt-00EmJo-2u;
+	Wed, 13 Dec 2023 13:21:19 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDOcl-00EdVQ-1B
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Dec 2023 12:46:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id DC221B81214;
-	Wed, 13 Dec 2023 12:46:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F10FC433C7;
-	Wed, 13 Dec 2023 12:45:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702471561;
-	bh=UqFTwJlv/HHhsk51P3RSZ4bmpRtBPRMXihdAMtpeCNY=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=SeA3xxHO7yrmmfB2KFZrqVJEWt2vt4NxSiFoXQXR6fpT/rmmTxIodcu3eA/bmmYkR
-	 upieDGK4Hq5XJ+BtmAbg2viqMRak5Ec9zsXAsryytWiR+p+srQKVfTcPlsbBQ++en/
-	 lQUenyeRjbmAWIrgpFp6a03gLgdeKCOg2Cifx9wtrdwX9VQBaDgXNmJcAObY5f5Ipw
-	 h/qJvDB97QydJfmyE7AeLgmTJNaeHmIbnhiixQaNANwe/1i5O0uFkb1ypomLhKaBgy
-	 BVOCu0lU8Ls+r1/fzpUJue9muW8t1xhhzZKbWOTXpgLFqf9JH3bkSySN9eTKTrSCL2
-	 fons/DqBkx3zA==
-From: Kalle Valo <kvalo@kernel.org>
-To: Mario Limonciello <mario.limonciello@amd.com>
-Cc: Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,
-  "Ryder Lee" <ryder.lee@mediatek.com>,  Shayne Chen
- <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>,  Matthias
- Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Deren Wu
- <deren.wu@mediatek.com>,  Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-  Ben Greear <greearb@candelatech.com>,  "open list:MEDIATEK MT76 WIRELESS
- LAN DRIVER" <linux-wireless@vger.kernel.org>,  "open list:ARM/Mediatek SoC
- support" <linux-kernel@vger.kernel.org>,  "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>,  Sultan Alsawaf
- <sultan@kerneltoast.com>
-Subject: Re: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
-References: <20231212090852.162787-1-mario.limonciello@amd.com>
-Date: Wed, 13 Dec 2023 14:45:55 +0200
-In-Reply-To: <20231212090852.162787-1-mario.limonciello@amd.com> (Mario
-	Limonciello's message of "Tue, 12 Dec 2023 03:08:51 -0600")
-Message-ID: <874jgmnud8.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	id 1rDPAq-00EmIP-0e;
+	Wed, 13 Dec 2023 13:21:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Cxxp9zwlmXO3GMPYFrCkmqu7xOsNc9JwZVzZO/mi2A4=; b=LZwEZi7qV7Mtl/hyhvj2u6ZW7+
+	RDy6JUTK1h/tA/7FmC9blt+9PwcxPp8uBJnkv3DRfL8H50jNqiQw+nXFekAEzei89dWKOHuBTuWvz
+	NaqI4ecySjMGiAum2YoqoLY1RwY8ZdvzS30GJ7y+xSSEg1f5Uyqztl3UgQgAdng6ja/Y=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rDPAL-002ozk-Nq; Wed, 13 Dec 2023 14:20:45 +0100
+Date: Wed, 13 Dec 2023 14:20:45 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Conor Dooley <conor@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [RFC PATCH net-next v3 1/8] dt-bindings: phy:
+ mediatek,xfi-pextp: add new bindings
+Message-ID: <c9605d38-e4b8-477d-84d8-de7b4dedd1f1@lunn.ch>
+References: <cover.1702352117.git.daniel@makrotopia.org>
+ <b875f693f6d4367a610a12ef324584f3bf3a1c1c.1702352117.git.daniel@makrotopia.org>
+ <20231212-renderer-strobe-2b46652cd6e7@spud>
+ <ZXiNhSYDbowUiNvy@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZXiNhSYDbowUiNvy@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_044603_536089_69FE18C5 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20231213_052116_259907_FBF891D6 
+X-CRM114-Status: UNSURE (   6.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +94,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mario Limonciello <mario.limonciello@amd.com> writes:
+> Because it is only present in one of the two SerDes channels.
+> Channel 0 needs the work-around, Channel 1 doesn't.
 
-> Several users have reported awful latency when powersaving is enabled
-> with certain access point combinations.
+Does the channel know its own number?
 
-What APs are these exactly? In the past 802.11 Power Save Mode was
-challenging due to badly behaving APs. But nowadays with so many mobile
-devices in the market I would assume that APs work a lot better. It
-would be best to investigate the issues in detail and try to fix them in
-mt76, assuming the bugs are in mt76 driver or firmware.
-
-> It's also reported that the powersaving feature doesn't provide an
-> ample enough savings to justify being enabled by default with these
-> issues.
-
-Any numbers or how was this concluded?
-
-> Introduce a module parameter that would control the power saving
-> behavior.  Set it to default as disabled. This mirrors what some other
-> WLAN drivers like iwlwifi do.
-
-We have already several ways to control 802.11 power save mode:
-
-* NL80211_CMD_SET_POWER_SAVE (for example used by 'iw set power_save')
-
-* CONFIG_CFG80211_DEFAULT_PS (for kernel level default)
-
-* WIPHY_FLAG_PS_ON_BY_DEFAULT (for the driver to control the default setting)
-
-Adding module parameters as a fourth method sounds confusing so not
-really a fan of this. And the bar is quite high for adding new module
-parameters anyway.
-
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+     Andrew
 
