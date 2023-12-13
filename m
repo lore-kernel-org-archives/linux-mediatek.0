@@ -4,66 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C50ABC4167D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 14:28:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 952DEC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 14:45:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=th9T4Hs10pxIBc2VsXo0QrmkeyWZZAs9IQPrzpE3ifk=; b=lsCLzCMxqEUs3t
-	nVhy/eJZ7v7ejt6ZojgQB7QFaS92vncGKwToaqCoosGX8T7z6JbpMVuI6670QH2rV0vBESY8ZBbaB
-	HhI4C+Uv5+z836IrLqDpOg/1fnEu2rwBlK5BqEGVo5IPMiW0oVfRJxWdGNip5lWzzwbCBrzhOUOlt
-	L+i4VGh6rHAANMSK3ycVdb8vmA56jCfGfNegc1HH6nMoRZzwdTMBKmav+tnnMdBjqa/F2qJt6VCEb
-	PBWbYiboYOiXmH4Q+XeXg/u84+q1gK8XaLKsxLIs+J7IdzsbFBiKz7D099NUSxEqrMGfEC2UdSNVJ
-	KoRRs135IRl1hIGp9uUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CBlRrUoOIRVJYNC6cQSzrC9BYSjs+oqsdU7/6hMHQp0=; b=078Oz3PZEfydJBk2iSllqDzaUy
+	jSvsuorazv+8y7LgbqCz8vWyxotFq5sPXFoeDHLD8utEV4XL3Wg06pTkBHj4buPDJ4K2rwMhvPF6F
+	HM2zJU1zpsCbxqSKz/UbfP8K784w9Fyn5Rk6ixDp8fgYargD5r/+Z3zLIKDmq7gwbdCotNgHd8A3x
+	sIecGodyo/Trzn2SXn2fPFtTlSg3Yj0rkIyeGfCAGo4C/ZTS2vvzm3kU5iezsoyssZnQj6nl3mcWF
+	apB4Z0Mk0srSs73KMLc56XV8AUib3+Imsbj9YuKg8282HJ5dIZ/fTYCPf3KFeW5x4qeWwjv4jHRbt
+	ahhqStfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQDu-00F2fx-1x;
-	Wed, 13 Dec 2023 14:28:30 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1rDQUS-00F5Io-0r;
+	Wed, 13 Dec 2023 14:45:36 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.164])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQDq-00F2dd-16;
-	Wed, 13 Dec 2023 14:28:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 75B63B81DDB;
-	Wed, 13 Dec 2023 14:28:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1385CC433CC;
-	Wed, 13 Dec 2023 14:28:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702477703;
-	bh=1NelY49Rtb1AVpWalye31/ZWTy2DmcMw3Hv962u4tjU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=BvGu46F/ZyupCCTvU/N6ebinx5qDUWy014Z1CtHsN+PSuSkE4azZr/bKUH8ZVLPUK
-	 1bGceVp/bHQZc5fpGMcZ1hP0LjVzRwJBej4aWYGSO9ZAOeaP1HFuxleemntZBr4QZ9
-	 VhoVR0tX48YQm50K4Jbzwm2J1dfk/eGkwGIXBf5HamgeWl54fUb7Bg0aNCBophoGe1
-	 t9E+L+sWeBGxPGIuTtmiA+I7VDlwTFZqVegvNGUsZNAGO0CxVrWuyBz9x3HWXv6VDI
-	 k1bMvD4bELfPG2kU77qNrt1rncvF9KGARGE98MYpytXHUl2deUZasSTFkuX/OvZKf2
-	 D+9z0/zt3DHdA==
-Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-2ca1e6a94a4so91141161fa.0;
-        Wed, 13 Dec 2023 06:28:23 -0800 (PST)
-X-Gm-Message-State: AOJu0Yx/AqSBBtSi6bGVjA8zR7hL/PQtKci0oi1y6dMH+p4wynWdKgSn
-	PSDb+3u74EE4VXG2vx/XPuvBFc/w4t+Fei+ihw==
-X-Google-Smtp-Source: AGHT+IGZUggKzakRIu1cLjf+W2GQkNH9IR87nGDEKuYmEbAd4t3lIaZqsoyFSGRtYGI96Eay29zUVggLBHEcOmhNZDk=
-X-Received: by 2002:a2e:a805:0:b0:2cc:1e83:65ee with SMTP id
- l5-20020a2ea805000000b002cc1e8365eemr4557579ljq.56.1702477701036; Wed, 13 Dec
- 2023 06:28:21 -0800 (PST)
+	id 1rDQUP-00F5Gz-0m
+	for linux-mediatek@lists.infradead.org;
+	Wed, 13 Dec 2023 14:45:34 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 25BDF3C0063;
+	Wed, 13 Dec 2023 14:45:27 +0000 (UTC)
+Received: from [192.168.1.115] (unknown [98.97.113.21])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail3.candelatech.com (Postfix) with ESMTPSA id 5A6FA13C2B0;
+	Wed, 13 Dec 2023 06:45:23 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 5A6FA13C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1702478724;
+	bh=CyzNsGLkg4WlGdYLD0CORyHCimqERrevF4Jayf7AZrI=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+	b=FtctL3XfK12CbRTl5KHhn9cT9j3FXr5yCvhS9Xeakwq9IcOq7UGhZok9Zp5wfhEBH
+	 /iRLEzUwz012MLtiuCU3BMuCtLx75xTl22OG5aq3TxxGAvt3BOSitdlbPoGODFuQwW
+	 YVntLFUGLNlf+XLJAtZ7c8uNqHUPgHSp8a9lhY3Y=
+Subject: Re: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Kalle Valo <kvalo@kernel.org>
+Cc: Mario Limonciello <mario.limonciello@amd.com>,
+ Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Deren Wu <deren.wu@mediatek.com>, Ming Yen Hsieh
+ <mingyen.hsieh@mediatek.com>,
+ "open list:MEDIATEK MT76 WIRELESS LAN DRIVER"
+ <linux-wireless@vger.kernel.org>,
+ "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, Sultan Alsawaf <sultan@kerneltoast.com>
+References: <20231212090852.162787-1-mario.limonciello@amd.com>
+ <874jgmnud8.fsf@kernel.org> <ZXmxD1foASMaCDIe@lore-desk>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+Message-ID: <d92c081e-47dd-5c57-a6f1-bd72b2748141@candelatech.com>
+Date: Wed, 13 Dec 2023 06:45:22 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-References: <20231024130048.14749-1-shawn.sung@mediatek.com> <20231024130048.14749-15-shawn.sung@mediatek.com>
-In-Reply-To: <20231024130048.14749-15-shawn.sung@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 13 Dec 2023 22:28:09 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-6bbE394ViQfyXg7zNv+uFygj70eF9dG+QDoSgELOFYg@mail.gmail.com>
-Message-ID: <CAAOTY_-6bbE394ViQfyXg7zNv+uFygj70eF9dG+QDoSgELOFYg@mail.gmail.com>
-Subject: Re: [PATCH v11 14/23] drm/mediatek: Power on/off devices with
- function pointers
-To: Hsiao Chien Sung <shawn.sung@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <ZXmxD1foASMaCDIe@lore-desk>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Language: en-MW
+Content-Transfer-Encoding: 7bit
+X-MDID: 1702478729-Q2nO4rVjVD1u
+X-MDID-O: us5;at1;1702478729;Q2nO4rVjVD1u;<greearb@candelatech.com>;0636e1de1030682809d49efeedd0cda8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_062826_645850_D83CE950 
-X-CRM114-Status: GOOD (  34.49  )
+X-CRM114-CacheID: sfid-20231213_064533_371847_C64B5EE5 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,331 +87,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nathan Lu <nathan.lu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Sean Paul <sean@poorly.run>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Johnson Wang <johnson.wang@mediatek.corp-partner.google.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, "Nancy . Lin" <nancy.lin@mediatek.com>, David Airlie <airlied@gmail.com>, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Hsiao-chien:
+On 12/13/23 5:26 AM, Lorenzo Bianconi wrote:
+>> Mario Limonciello <mario.limonciello@amd.com> writes:
+>>
+>>> Several users have reported awful latency when powersaving is enabled
+>>> with certain access point combinations.
+>>
+>> What APs are these exactly? In the past 802.11 Power Save Mode was
+>> challenging due to badly behaving APs. But nowadays with so many mobile
+>> devices in the market I would assume that APs work a lot better. It
+>> would be best to investigate the issues in detail and try to fix them in
+>> mt76, assuming the bugs are in mt76 driver or firmware.
+>>
+>>> It's also reported that the powersaving feature doesn't provide an
+>>> ample enough savings to justify being enabled by default with these
+>>> issues.
+>>
+>> Any numbers or how was this concluded?
+>>
+>>> Introduce a module parameter that would control the power saving
+>>> behavior.  Set it to default as disabled. This mirrors what some other
+>>> WLAN drivers like iwlwifi do.
+>>
+>> We have already several ways to control 802.11 power save mode:
+>>
+>> * NL80211_CMD_SET_POWER_SAVE (for example used by 'iw set power_save')
+>>
+>> * CONFIG_CFG80211_DEFAULT_PS (for kernel level default)
+>>
+>> * WIPHY_FLAG_PS_ON_BY_DEFAULT (for the driver to control the default setting)
+>>
+>> Adding module parameters as a fourth method sounds confusing so not
+>> really a fan of this. And the bar is quite high for adding new module
+>> parameters anyway.
+> 
+> agree, I think we do not need a new parameter for this, just use the current
+> APIs.
 
-Hsiao Chien Sung <shawn.sung@mediatek.com> =E6=96=BC 2023=E5=B9=B410=E6=9C=
-=8824=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=889:01=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> Different from OVL, OVL adaptor is a pseudo device so we didn't
-> define it in the device tree, consequently, pm_runtime_resume_and_get()
-> called by .atomic_enable() powers on no device. For this reason, we
-> implement a function to power on the RDMAs in OVL adaptor, and the
-> system will make sure the IOMMUs are powered on as well because of the
-> device link (iommus) in the RDMA nodes in DTS.
->
-> This patch separates power and clock management process, it would be
-> easier to maintain and add extensions.
+Is there a convenient way for a user to make any of those options above stick through
+reboots?
 
-There is conflict while apply this patch into latest kernel. Please
-rebase this series onto latest kernel and send next version patches.
+To me, the ability to set system defaults through reboots is a nice feature of
+module options.
 
-Regards,
-Chun-Kuang.
+Thanks,
+Ben
 
->
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  4 +
->  .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 75 +++++++++++++++----
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 10 +--
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  2 +
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   | 20 +++++
->  drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       | 16 ++++
->  6 files changed, 107 insertions(+), 20 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/me=
-diatek/mtk_disp_drv.h
-> index bf06ccb65652..8465beeab435 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> @@ -109,6 +109,8 @@ void mtk_ovl_adaptor_connect(struct device *dev, stru=
-ct device *mmsys_dev,
->                              unsigned int next);
->  void mtk_ovl_adaptor_disconnect(struct device *dev, struct device *mmsys=
-_dev,
->                                 unsigned int next);
-> +int mtk_ovl_adaptor_power_on(struct device *dev);
-> +void mtk_ovl_adaptor_power_off(struct device *dev);
->  int mtk_ovl_adaptor_clk_enable(struct device *dev);
->  void mtk_ovl_adaptor_clk_disable(struct device *dev);
->  void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
-> @@ -150,6 +152,8 @@ void mtk_rdma_disable_vblank(struct device *dev);
->  const u32 *mtk_rdma_get_formats(struct device *dev);
->  size_t mtk_rdma_get_num_formats(struct device *dev);
->
-> +int mtk_mdp_rdma_power_on(struct device *dev);
-> +void mtk_mdp_rdma_power_off(struct device *dev);
->  int mtk_mdp_rdma_clk_enable(struct device *dev);
->  void mtk_mdp_rdma_clk_disable(struct device *dev);
->  void mtk_mdp_rdma_start(struct device *dev, struct cmdq_pkt *cmdq_pkt);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gp=
-u/drm/mediatek/mtk_disp_ovl_adaptor.c
-> index 81067f49ea69..048d56ee344d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-> @@ -79,6 +79,8 @@ static const struct mtk_ddp_comp_funcs merge =3D {
->  };
->
->  static const struct mtk_ddp_comp_funcs rdma =3D {
-> +       .power_on =3D mtk_mdp_rdma_power_on,
-> +       .power_off =3D mtk_mdp_rdma_power_off,
->         .clk_enable =3D mtk_mdp_rdma_clk_enable,
->         .clk_disable =3D mtk_mdp_rdma_clk_disable,
->  };
-> @@ -200,21 +202,72 @@ void mtk_ovl_adaptor_stop(struct device *dev)
->         mtk_ethdr_stop(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0])=
-;
->  }
->
-> -int mtk_ovl_adaptor_clk_enable(struct device *dev)
-> +/**
-> + * power_off - Power off the devices in OVL adaptor
-> + * @dev: Device to be powered off
-> + * @num: Number of the devices to be powered off
-> + *
-> + * Calls the .power_off() ovl_adaptor component callback if it is presen=
-t.
-> + */
-> +static inline void power_off(struct device *dev, int num)
->  {
->         struct mtk_disp_ovl_adaptor *ovl_adaptor =3D dev_get_drvdata(dev)=
-;
-> -       struct device *comp;
-> -       int ret;
->         int i;
->
-> -       for (i =3D 0; i < OVL_ADAPTOR_MERGE0; i++) {
-> -               comp =3D ovl_adaptor->ovl_adaptor_comp[i];
-> -               ret =3D pm_runtime_get_sync(comp);
-> +       if (num > OVL_ADAPTOR_ID_MAX)
-> +               num =3D OVL_ADAPTOR_ID_MAX;
-> +
-> +       for (i =3D num - 1; i >=3D 0; i--) {
-> +               if (!ovl_adaptor->ovl_adaptor_comp[i] ||
-> +                   !comp_matches[i].funcs->power_off)
-> +                       continue;
-> +
-> +               comp_matches[i].funcs->power_off(ovl_adaptor->ovl_adaptor=
-_comp[i]);
-> +       }
-> +}
-> +
-> +/**
-> + * mtk_ovl_adaptor_power_on - Power on the devices in OVL adaptor
-> + * @dev: Device to be powered on
-> + *
-> + * Different from OVL, OVL adaptor is a pseudo device so
-> + * we didn't define it in the device tree, pm_runtime_resume_and_get()
-> + * called by .atomic_enable() power on no device in OVL adaptor,
-> + * we have to implement a function to do the job instead.
-> + *
-> + * Return: Zero for success or negative number for failure.
-> + */
-> +int mtk_ovl_adaptor_power_on(struct device *dev)
-> +{
-> +       struct mtk_disp_ovl_adaptor *ovl_adaptor =3D dev_get_drvdata(dev)=
-;
-> +       int i, ret;
-> +
-> +       for (i =3D 0; i < OVL_ADAPTOR_ID_MAX; i++) {
-> +               if (!ovl_adaptor->ovl_adaptor_comp[i] ||
-> +                   !comp_matches[i].funcs->power_on)
-> +                       continue;
-> +
-> +               ret =3D comp_matches[i].funcs->power_on(ovl_adaptor->ovl_=
-adaptor_comp[i]);
->                 if (ret < 0) {
->                         dev_err(dev, "Failed to enable power domain %d, e=
-rr %d\n", i, ret);
-> -                       goto error;
-> +                       power_off(dev, i);
-> +                       return ret;
->                 }
->         }
-> +       return 0;
-> +}
-> +
-> +void mtk_ovl_adaptor_power_off(struct device *dev)
-> +{
-> +       power_off(dev, OVL_ADAPTOR_ID_MAX);
-> +}
-> +
-> +int mtk_ovl_adaptor_clk_enable(struct device *dev)
-> +{
-> +       struct mtk_disp_ovl_adaptor *ovl_adaptor =3D dev_get_drvdata(dev)=
-;
-> +       struct device *comp;
-> +       int ret;
-> +       int i;
->
->         for (i =3D 0; i < OVL_ADAPTOR_ID_MAX; i++) {
->                 comp =3D ovl_adaptor->ovl_adaptor_comp[i];
-> @@ -225,16 +278,10 @@ int mtk_ovl_adaptor_clk_enable(struct device *dev)
->                         dev_err(dev, "Failed to enable clock %d, err %d\n=
-", i, ret);
->                         while (--i >=3D 0)
->                                 comp_matches[i].funcs->clk_disable(comp);
-> -                       i =3D OVL_ADAPTOR_MERGE0;
-> -                       goto error;
-> +                       return ret;
->                 }
->         }
->         return 0;
-> -error:
-> -       while (--i >=3D 0)
-> -               pm_runtime_put(ovl_adaptor->ovl_adaptor_comp[i]);
-> -
-> -       return ret;
->  }
->
->  void mtk_ovl_adaptor_clk_disable(struct device *dev)
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/me=
-diatek/mtk_drm_crtc.c
-> index a0b2ba3cbcdb..bc4cc75cca18 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -774,7 +774,7 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crt=
-c *crtc,
->                 return;
->         }
->
-> -       ret =3D pm_runtime_resume_and_get(comp->dev);
-> +       ret =3D mtk_ddp_comp_power_on(comp);
->         if (ret < 0) {
->                 DRM_DEV_ERROR(comp->dev, "Failed to enable power domain: =
-%d\n", ret);
->                 return;
-> @@ -782,7 +782,7 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crt=
-c *crtc,
->
->         ret =3D mtk_crtc_ddp_hw_init(mtk_crtc, state);
->         if (ret) {
-> -               pm_runtime_put(comp->dev);
-> +               mtk_ddp_comp_power_off(comp);
->                 return;
->         }
->
-> @@ -795,7 +795,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_cr=
-tc *crtc,
->  {
->         struct mtk_drm_crtc *mtk_crtc =3D to_mtk_crtc(crtc);
->         struct mtk_ddp_comp *comp =3D mtk_crtc->ddp_comp[0];
-> -       int i, ret;
-> +       int i;
->
->         DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
->         if (!mtk_crtc->enabled)
-> @@ -825,9 +825,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_cr=
-tc *crtc,
->
->         drm_crtc_vblank_off(crtc);
->         mtk_crtc_ddp_hw_fini(mtk_crtc);
-> -       ret =3D pm_runtime_put(comp->dev);
-> -       if (ret < 0)
-> -               DRM_DEV_ERROR(comp->dev, "Failed to disable power domain:=
- %d\n", ret);
-> +       mtk_ddp_comp_power_off(comp);
->
->         mtk_crtc->enabled =3D false;
->  }
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/dr=
-m/mediatek/mtk_drm_ddp_comp.c
-> index 10402e07a4a7..9940909c7435 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -396,6 +396,8 @@ static const struct mtk_ddp_comp_funcs ddp_ufoe =3D {
->  };
->
->  static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor =3D {
-> +       .power_on =3D mtk_ovl_adaptor_power_on,
-> +       .power_off =3D mtk_ovl_adaptor_power_off,
->         .clk_enable =3D mtk_ovl_adaptor_clk_enable,
->         .clk_disable =3D mtk_ovl_adaptor_clk_disable,
->         .config =3D mtk_ovl_adaptor_config,
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/dr=
-m/mediatek/mtk_drm_ddp_comp.h
-> index 1c1d670cfe41..2597dd7ac0d2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -7,6 +7,7 @@
->  #define MTK_DRM_DDP_COMP_H
->
->  #include <linux/io.h>
-> +#include <linux/pm_runtime.h>
->  #include <linux/soc/mediatek/mtk-cmdq.h>
->  #include <linux/soc/mediatek/mtk-mmsys.h>
->  #include <linux/soc/mediatek/mtk-mutex.h>
-> @@ -46,6 +47,8 @@ enum mtk_ddp_comp_type {
->  struct mtk_ddp_comp;
->  struct cmdq_pkt;
->  struct mtk_ddp_comp_funcs {
-> +       int (*power_on)(struct device *dev);
-> +       void (*power_off)(struct device *dev);
->         int (*clk_enable)(struct device *dev);
->         void (*clk_disable)(struct device *dev);
->         void (*config)(struct device *dev, unsigned int w,
-> @@ -91,6 +94,23 @@ struct mtk_ddp_comp {
->         int encoder_index;
->  };
->
-> +static inline int mtk_ddp_comp_power_on(struct mtk_ddp_comp *comp)
-> +{
-> +       if (comp->funcs && comp->funcs->power_on)
-> +               return comp->funcs->power_on(comp->dev);
-> +       else
-> +               return pm_runtime_resume_and_get(comp->dev);
-> +       return 0;
-> +}
-> +
-> +static inline void mtk_ddp_comp_power_off(struct mtk_ddp_comp *comp)
-> +{
-> +       if (comp->funcs && comp->funcs->power_off)
-> +               comp->funcs->power_off(comp->dev);
-> +       else
-> +               pm_runtime_put(comp->dev);
-> +}
-> +
->  static inline int mtk_ddp_comp_clk_enable(struct mtk_ddp_comp *comp)
->  {
->         if (comp->funcs && comp->funcs->clk_enable)
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/me=
-diatek/mtk_mdp_rdma.c
-> index 5746f06220c1..769ae7564da2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-> @@ -243,6 +243,22 @@ size_t mtk_mdp_rdma_get_num_formats(struct device *d=
-ev)
->         return ARRAY_SIZE(formats);
->  }
->
-> +int mtk_mdp_rdma_power_on(struct device *dev)
-> +{
-> +       int ret =3D pm_runtime_resume_and_get(dev);
-> +
-> +       if (ret < 0) {
-> +               dev_err(dev, "Failed to power on: %d\n", ret);
-> +               return ret;
-> +       }
-> +       return 0;
-> +}
-> +
-> +void mtk_mdp_rdma_power_off(struct device *dev)
-> +{
-> +       pm_runtime_put(dev);
-> +}
-> +
->  int mtk_mdp_rdma_clk_enable(struct device *dev)
->  {
->         struct mtk_mdp_rdma *rdma =3D dev_get_drvdata(dev);
-> --
-> 2.18.0
->
+-- 
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
 
