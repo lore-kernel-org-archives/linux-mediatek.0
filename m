@@ -4,134 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF3DAC4167D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 08:06:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4105DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 09:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5ZmxijuA5hnyrvkskvNPuvTs985zbDNlr+bpWRJ6COY=; b=4XYyslAGTxNaoZrnUd02AZUwVd
-	rmvHn4Hbu1VXqua+esuROLwroNYggxGDBNPH4SVUlQd51xd0veDCqogJPUCnY+XUkqcAvddYDfzwn
-	9Am6pZByyFpCZC8pTNxCAvlTNHIR+9fgJus9KdxIH1VXzIUrAeX6h7qee4y9jxIabf1Z5I6PcnMHO
-	5lA/KNEx2akJOJI6/8b0q3pdk0NBofvHPKvdVhxyuJaOQnmwxglY1Gh2U1NWaEH49JKj+Yd8wWn9A
-	f0UzDZGiotQ+0ScfBvLtlvOkcDpfGDXpioQ8Rc+FQpKi+mYEddtEywO++B7AkzawnrlFSyKPl8Nvs
-	qwuUkuOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uPVstSGHW2mJYYKDhOcbHVvFc6FCpsaEprPwYoO2QrU=; b=zP+0tUluOHkIW2eS0mDPKvVj3W
+	PtuYw/vhf+rS00Dt7v8NoWGwHBYpsYHkzfZgYJiuj8eiTFnPXX3DfTG92UQH0CFRgbX7XdYgTuTeF
+	WguNEElfqvWGnP0AGf44bN/N5SMjUuL3+0En3ChUR9zGiAbGEuv4wVSKmzekmv+o4PNwPlyXVjb77
+	y2Uk/0aiTolqhUCLk9XBl61aeAnn6u8c9U3w0trAkiaLAx85qd8Ctw/9YKgpk/ymu0UAFiFyaHjhp
+	SAjwlxMZKrzbSXRiLP4l1weNYH1DFSHXeELdvfjUWd+mXMGdcHfDsZRcxOJZKkAt2kh8o9Eabv31g
+	xuKHMBHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDKFm-00Dyfm-1T;
-	Wed, 13 Dec 2023 08:06:02 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1rDLBS-00E6UW-37;
+	Wed, 13 Dec 2023 09:05:38 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDKFj-00Dyf8-1c
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Dec 2023 08:06:01 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3333074512bso4049752f8f.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Dec 2023 00:05:58 -0800 (PST)
+	id 1rDLBP-00E6T6-30;
+	Wed, 13 Dec 2023 09:05:37 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-50c02628291so7024813e87.0;
+        Wed, 13 Dec 2023 01:05:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702454757; x=1703059557; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5ZmxijuA5hnyrvkskvNPuvTs985zbDNlr+bpWRJ6COY=;
-        b=i4Zp1wgUl/BmQaRwvrrgZBTfsyOmI8nmTa9jdvGsv4EEcZbL0oj3dEk/XJFu3nw46j
-         WjXTV9ehJmoFGQLuSD1eigXWP3PsUaKd4mEqwoXI6UzVBntghJzcavM8fJMiEANlVSG9
-         MnVESXq7turFmKkvv7ZX2AVdX5/oJLPHytFIzM228UPelJeFsyloOI3fy113X0DfYrRL
-         dBL9tmbcQrqT/Key2Z5xBUP8FzWTjZvOK3FXSmWEnGRQrFJllKV5xScYH4StJa0k34VU
-         4Cq6kFzj/8fqj0SWaXEMnsygD58glkseb8595DH5Hc2RmNYcn5QzjpQA7kYzvxjew/V4
-         MA3g==
+        d=gmail.com; s=20230601; t=1702458329; x=1703063129; darn=lists.infradead.org;
+        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=uPVstSGHW2mJYYKDhOcbHVvFc6FCpsaEprPwYoO2QrU=;
+        b=INoBS9wUcnlPdxFrBTvnS9fpqp3E0nwhZs8qKylLzmg//rurW8k0+NAftAewJTh781
+         PqSCiQGwVuv4dYBvQfl3AYbpyQwQsR7mEewpbei4pG1U/PclkuubbQKpSDE5YwgLBy0V
+         qJJ+usqInaXAzOyxyYXG2wGmAgkyYbI/wfyKsWxWuxl1oGU9mXHHyd5FP91Caj71taZK
+         vf/xLe4AddOf41URm12hHzedcxIiiUpmOTkODpS2WIUvVYJVz9cL1kKZ54BR77MmQB7C
+         ZBKC7c7Q/XMnAmSbFuTeMqkqXYXKaNKQrjsQTgwFiei+TXIiGakiIYt2tLFN5E8KZ7Uo
+         qTlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702454757; x=1703059557;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5ZmxijuA5hnyrvkskvNPuvTs985zbDNlr+bpWRJ6COY=;
-        b=Bi+ZJLrpZ0zgvbg0YQ4eox5gL95UFa5fdH06WzxfuXhwOu3w/FBv11LyoRTI/M236j
-         mHzJTGhkdCZHa5wc25NySJx2EDRwAi8XTzxxRV6DX7Z89ZmufgX0E8Z1zgICpNw9QMhz
-         24WoryJS9Zzi6kEhVVbb1rdcp2ziH0xwrJiCAnWNuMrGcTN8UjnzQbvD2KT8Yc2Nhmzu
-         oeKl5Qj6HEnktnAgtVmXlXKbVHxGvS1kK9cCelcIi/952O9TVmVlLd0R8L6NBvsDvQob
-         jstzj6Th3MZdpiz3ETBgmPzaERaXnLPufnnBRyGqiSwnSsmXBFRo+nPUkcVq3KwaYRS+
-         PiAQ==
-X-Gm-Message-State: AOJu0YzcmGUcq1TCO0RBll5qoruGkGMK8oocTPr61hORLKLNYc21m/qw
-	O/Txp2bjSHSGnHZR49RYrssJRA==
-X-Google-Smtp-Source: AGHT+IEAUiAETxskD05jflgbpP4kX4iVuGEh/MOU83d11xtd0QWQ9H1Vi/j6YVWZZyHZ9RzwdExeoQ==
-X-Received: by 2002:a05:600c:290a:b0:40c:2ca4:1642 with SMTP id i10-20020a05600c290a00b0040c2ca41642mr3686512wmd.137.1702454757215;
-        Wed, 13 Dec 2023 00:05:57 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id f11-20020a5d664b000000b003333e71ef9asm12572434wrw.115.2023.12.13.00.05.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Dec 2023 00:05:56 -0800 (PST)
-Message-ID: <c1bc144d-07d6-422c-8294-42be47f83e59@linaro.org>
-Date: Wed, 13 Dec 2023 09:05:54 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: usb: mtk-xhci: add a property for Gen1
- isoc-in transfer issue
-Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
+        d=1e100.net; s=20230601; t=1702458329; x=1703063129;
+        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uPVstSGHW2mJYYKDhOcbHVvFc6FCpsaEprPwYoO2QrU=;
+        b=mo/B/lpRq7DCkfI0Fvg9oO26mSiShzdLerWLAH8RIh6P/PYoplyXgDzcmit9k0YOQc
+         E+0JX2bGjXcD+Yy3uSTekVeVBRbuqrXr52HZMUvbCC087VnDmOarQ9Hh/tjSmBcRvngt
+         8tepQbb38+KRBCUa5pk5YVWsaihNOgRQXfXhr78zKnCfxpTpVGPx+Xa54SLSeXBK8BUy
+         qtSu7fzDqPHxc1yQcMqC+DxsIg39zXuFD6SQ8fQCfNZLQpD+5MKZ+/8SngLyA1xNDJHz
+         awXUmnwoVqzOBlJuzRjMTsYxOc9jcsrebWd1qIFZme9dFsu1xsCMT+SZf6GzGOqQ1H6P
+         l4fg==
+X-Gm-Message-State: AOJu0YyiDHsCjO6kN+1OaU0V0DDUthmYAfQ1FV81pKZJ98mIbBJe5Gr2
+	7FpHf/HXt/f/N/4y4++yJKs=
+X-Google-Smtp-Source: AGHT+IGWpeNIT+ctXpc3/nJZFateSOhCrGMOM+zwxTvVL6e43wnzc3r3OJ2tC/PYR81yyP2zfmy63A==
+X-Received: by 2002:a05:6512:38cf:b0:50c:5aa:83b4 with SMTP id p15-20020a05651238cf00b0050c05aa83b4mr2890212lft.114.1702458328719;
+        Wed, 13 Dec 2023 01:05:28 -0800 (PST)
+Received: from eldfell ([194.136.85.206])
+        by smtp.gmail.com with ESMTPSA id y18-20020a199152000000b0050be6326f2asm1597596lfj.64.2023.12.13.01.05.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Dec 2023 01:05:28 -0800 (PST)
+Date: Wed, 13 Dec 2023 11:05:17 +0200
+From: Pekka Paalanen <ppaalanen@gmail.com>
+To: Simon Ser <contact@emersion.fr>
+Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sumit
+ Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com, Matthias
+ Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, John
+ Stultz <jstultz@google.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Jeffrey Kardatzke
+ <jkardatzke@google.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Vijayanand Jitta
+ <quic_vjitta@quicinc.com>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ jianjiao.zeng@mediatek.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+ ckoenig.leichtzumerken@gmail.com, linaro-mm-sig@lists.linaro.org,
+ linux-mediatek@lists.infradead.org, Joakim Bech <joakim.bech@linaro.org>,
+ tjmercier@google.com, linux-arm-kernel@lists.infradead.org,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Macpaul Lin <macpaul.lin@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>
-References: <20231213063543.12435-1-chunfeng.yun@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231213063543.12435-1-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 0/7] dma-buf: heaps: Add secure heap
+Message-ID: <20231213110517.6ce36aca@eldfell>
+In-Reply-To: <DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
+References: <20231212024607.3681-1-yong.wu@mediatek.com>
+	<DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
+Content-Type: multipart/signed; boundary="Sig_/DaWmOigQ7D9ggi2.WnkRpp3";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_000559_567587_BA5C2A28 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20231213_010535_970683_15ED5A1C 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,38 +103,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/12/2023 07:35, Chunfeng Yun wrote:
-> For Gen1 isoc-in endpoint on controller before about SSUSB IPM v1.6.0, it
-> still send out unexpected ACK after receiving a short packet in burst
-> transfer, this will cause an exception on connected device, specially for
-> a 4k camera.
-> Add a quirk property "mediatek,rxfifo-depth" to work around this hardware
-> issue;
-> The side-effect is that may cause performance drop about 10%, including
-> bulk transfer.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml     | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> index e9644e333d78..b8ed68574ba4 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> @@ -124,6 +124,16 @@ properties:
->        defined in the xHCI spec on MTK's controller.
->      default: 5000
->  
-> +  mediatek,rxfifo-depth:
-> +    description:
+--Sig_/DaWmOigQ7D9ggi2.WnkRpp3
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-The property description and driver patch suggest you configure the
-depth of FIFO, so this should be not bool, but some uint32. And then,
-use generic "fifo-depth" property to set desired depth.
+On Tue, 12 Dec 2023 16:36:35 +0000
+Simon Ser <contact@emersion.fr> wrote:
+
+> Is there a chance to pick a better name than "secure" here?
+>=20
+> "Secure" is super overloaded, it's not clear at all what it means from
+> just the name. Something like "restricted" would be an improvement.
+>=20
+
+My thoughts exactly. Every time I see "secure" used for something that
+either gives you garbage, refuses to work, or crashes your whole machine
+*intentionally* when you try to do normal usual things to it in
+userspace (like use it for GL texturing, or try to use KMS writeback), I
+get an unscratchable itch.
+
+There is nothing "secure" from security perspective there for end users
+and developers. It's just inaccessible buffers.
+
+I've been biting my lip until now, thinking it's too late.
 
 
-Best regards,
-Krzysztof
+Thanks,
+pq
 
+--Sig_/DaWmOigQ7D9ggi2.WnkRpp3
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmV5c80ACgkQI1/ltBGq
+qqdqdg/8DMTwQfWf/EfE0E0FOjM0IPMnzZreMPcRlHBqMJqgQA5miVL9CVE+novh
+ohRbfFYLwut7eqtK6Dzn+6hOIVFRMpGPkWe8qHfT+CJ8Wr3hD8Q23PKEveH/FENO
+G+XUbPzsnlDTDs5MB2Bb1TAiWQLS8Y1/nstMZ49l8mmW6Iim0Z+/xhyqUyLaHfpm
+zB7JRM7CSN8gyPhoqoAAITy+ZL4+yD7D28izgQA4YZD4JzkE1fYOUFzNb4QRA/T7
+GxPSExZlU7+CdIL5zAJvhqpHh9nxMdOUvaP3aQBzShcTKDVoet/TZ+0QuEOuD1QJ
+gHG05Hcp5gREsbjn9oytS2km0LcL7ZmR98NOrf9idl4jZDjVTEMQvV/FrSSwiyGv
+5whtFHkkDVy1nXjyYmgiGO7dvIptO+dNGgRtACt3xe0tdvu5ndP2+hG21ADVWebc
+fd2T4mnUoANro1gOjWATV5+0fzlOK5hFff70pvE9U2ATvqXo7i2I+kzW/EJFPilA
+4EqR7cIyLCaVRb7q/dC4CdWUu0NIxCp7+u22Z/B8pHFw2MnQZa0twIKV3GJokfrR
+A4PfZLAvpbSkfr7SalrN6eYFHhJOpcCJPHXCiQSnRT7DU5u6NhUr35IZgq/YuANC
+YrU/v7fiWv2v6I0I2FN8fBaH1baL6/SWpA5q43OECPVewbA/Uwg=
+=DQfN
+-----END PGP SIGNATURE-----
+
+--Sig_/DaWmOigQ7D9ggi2.WnkRpp3--
 
