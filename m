@@ -4,92 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35986C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 06:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8426FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 07:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=peFvUDPsie8jarBOIMxn+KDx3Za++kBkcLucy+u6CNw=; b=T6/1y2cIswkvZjylTXdAB43l+x
-	BYZjup8WFuzVBaBmIMjpWd5mj2HQRIr2wu2OMB1d2pOJSL1dYfIUezGiEkLrGWfsKlRaVV5QTPje8
-	RQJQehZ90cI4t++ozI6PDo7ai8hv77UuCC9z3qYGCxxZSIceXKlZOVvgC4vte1yj3ikKmgGGMxjqE
-	MPD5xh5uG3DD4DCIrhU4UKDeUX5+icuWXvg4vDBJ735aeX8Z++lh1y7fa5b8yokOCDxrd2jPQiDT0
-	dxZJA5oZ0yOFgCNsE27acLzO3VlkLo7lwT6Lg6rJXPABBVoiM76NWmtEqUUnIKQM5yF0PBQhHT//j
-	79Yce1Og==;
+	bh=zHMdNcfC1HmxRzd3QioUxmMyBVeOrfAuTs7vHTPPGFU=; b=h54pfWYmhWY9EYNZn1VkvMh6HL
+	NY8kqRVRJs6U4B71hrToeG7RYKCowgonHEgWi7cP0rmgBrFBbooKbeosdzfZK/EV/OBEO/PHh86BO
+	4APa29HELa+qpt6AqwU2JmHrIQVQuL6U/x0Z82F8rBYIquEk0Ot8Vx5dGN5rxFHNF60R8XUfZiFaB
+	DLrT1Ta2FPJ/QJcbWjdLQhNIdDrJ0sZvkQq3iirB+cG72wcydkoj8i566gRIFqCYCTJelHoM3hUVR
+	YIyyIFoTaZ878dA7JlDEjsgLFD9hRinbka5Z40aA6VIHJMYA+Rn+4Eq0QuNXOlg0qKEqb7g9V3eMh
+	CrU+lc5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDJCb-00DqH4-2o;
-	Wed, 13 Dec 2023 06:58:41 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1rDJF2-00DqwR-1n;
+	Wed, 13 Dec 2023 07:01:12 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDJCZ-00DqGB-09
+	id 1rDJEz-00DqvK-2A
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Dec 2023 06:58:40 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-54bf9a54fe3so9058133a12.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Dec 2023 22:58:38 -0800 (PST)
+	Wed, 13 Dec 2023 07:01:10 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-55114c073b8so4371056a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Dec 2023 23:01:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702450717; x=1703055517; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1702450863; x=1703055663; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=peFvUDPsie8jarBOIMxn+KDx3Za++kBkcLucy+u6CNw=;
-        b=Sq6HYUmS/jzk7glxU+qHZLhmDtcUGCblE7EbNjQmii8cyxsSQ+01dxV6sZoKd2Y5JJ
-         b8L7bzX2Vrka5Yr8J//rwDycXvxqH5a0ciXkimHvaJdrokCYGFksYCpMFn+uJAgTnvsG
-         reLben3TKr1aM1dCLc3K5FXWTVQrPDDbAGmECUea5EYncuw98I6vh812l9xwN3zOpVmQ
-         PfnzC18QwoBaahw3dJLaXlHTIsaNMKay5HMDqrhvr0r5g26oILdDw8VFieh6UZNV44uh
-         paxQFI3EM3nU51qHMAIM2+ubR8wc6cWyfTzTmyovZHLXbo9Ysl6GyH6tcwYSPqNutNGr
-         teIA==
+        bh=zHMdNcfC1HmxRzd3QioUxmMyBVeOrfAuTs7vHTPPGFU=;
+        b=FT73eK2f1g/MBHwzLXmG+McQmKd3yqGoo75v1DZLlvGaS01R6shAyP7ww0IQP8NHGe
+         UE4pEbunz6u2XTcTF01Yls0v55ugUPzPzGEUlkDMKlkvowjnLLloO6C922mSVxFznMXb
+         7pjB2xa1g+E0B0335q0xpaG7iVTKWQKWRreDSE8fizirvPYJQnif3tzORhTQFSysKAZc
+         Cz5SxARzlv4t7/v4QWlpydC4t6ss1YdYvh21tvoL6j/d3m5T+GnnCIGcPlw9Lp8o0K0V
+         uEodcmsl/BT1FlzMlkeJwQU3TRrIP9nMaDpao1asKFBE8440koHV6n7qp4P3tdxVw3nF
+         UB3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702450717; x=1703055517;
+        d=1e100.net; s=20230601; t=1702450863; x=1703055663;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=peFvUDPsie8jarBOIMxn+KDx3Za++kBkcLucy+u6CNw=;
-        b=f0FApNfTnEnrblV/Q50WAHa7gxPQF/4eqOcH8x/DVA5m1x7f7k6pdFiqYjozEj10zI
-         naMOEkmuPDGq2bG0ZzzVkjy8WMSRghPflc/9yk8xe7cxI6CSSYAxrSvj254BAsEspT9w
-         WEFau3dKc0X/9lR3Z+NJaEPFMQN09yzQQOnWIiH3otbgEUeJKrJOFcRuDvUC/Z14g6t6
-         n5L7q7eEHw+99v0Rb940JsOWQecnCzLtV2DMlmcmVnSXdHuj36joT8uJnfU8Sz8z7Chu
-         PLts2ezcYZxsuSpMQD/rSv0fgSSENT9y42H5SuwmXt1DQTUBw1oKYrlAcr0MmksB4gWs
-         7+CA==
-X-Gm-Message-State: AOJu0Yw03XHg799KjJMuDoIWaYFH3Kr2CCOt/sGpj3eX/8WAVDLFKJeL
-	NzFy6S+7vigK3Jr6ZMGUV9DR7A==
-X-Google-Smtp-Source: AGHT+IGGdhUKM865ab0JNMDak9sKf/LkSyvz4s7oBjMnicDrzTeKcKtzRcTHsDGUEi9Y2cMLU+irxg==
-X-Received: by 2002:a17:907:72d6:b0:a1b:68e6:9d4c with SMTP id du22-20020a17090772d600b00a1b68e69d4cmr3961008ejc.71.1702450717264;
-        Tue, 12 Dec 2023 22:58:37 -0800 (PST)
+        bh=zHMdNcfC1HmxRzd3QioUxmMyBVeOrfAuTs7vHTPPGFU=;
+        b=tANC51hzEQ0BudvAo+tYbgmlIUKnUNOWFM/dRx2riS/6dK6wJ9R2JlU8QcauAdsvWj
+         apASGlLUaRvi4Homk+53uk50n/drDyBuWqHZVF4eRvAo8dAoIQfUaoaNZCRUrTD8PsoG
+         0ydbeTVMtoABNPq4oqIuuS/oiox+2zlkX/edsLbhgkXf7BLye9mSB/23xfXe4x0kBH4/
+         MqSlkP0bJ+CKsCfxv9ppqw1T0ZCzwEJ1vzxoB4oV+aYawvqE1EyQf6toEjrOMQRDLNW8
+         N9f1K3kYy9NDg2c6mGvazOdugUzbAuvr3E+KE8ttDhQPfrG2TGOP5Nh3X9PD2n1VrIH3
+         sCUw==
+X-Gm-Message-State: AOJu0YxSkDoyaB5YSYhSzsQf9fxvHK2VCDTfjgy1Xf8H/uWeaADdNzE5
+	k41oGJWCDDeRqIKJAhYVXaj8Hw==
+X-Google-Smtp-Source: AGHT+IG0IDwJ0NjUVvd88Yz/97KsRl3iFvtGqseZX3SMT6oJnKTJJRz39OlUMn9Lpp8MB0DlALWxBA==
+X-Received: by 2002:a17:906:2319:b0:a19:a19b:4220 with SMTP id l25-20020a170906231900b00a19a19b4220mr2422570eja.139.1702450862814;
+        Tue, 12 Dec 2023 23:01:02 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id vo16-20020a170907a81000b00a1d32dfacb9sm7246671ejc.38.2023.12.12.22.58.34
+        by smtp.gmail.com with ESMTPSA id st6-20020a170907c08600b00a1ddf143020sm7245727ejc.54.2023.12.12.23.01.00
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Dec 2023 22:58:36 -0800 (PST)
-Message-ID: <06dfdf57-3cc7-4e9c-96c4-f2639d581ecf@linaro.org>
-Date: Wed, 13 Dec 2023 07:58:33 +0100
+        Tue, 12 Dec 2023 23:01:02 -0800 (PST)
+Message-ID: <1ca36158-c57d-4130-94f5-c3650594498c@linaro.org>
+Date: Wed, 13 Dec 2023 08:00:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH net-next v3 7/8] dt-bindings: net: mediatek,net: fix
- and complete mt7988-eth binding
+Subject: Re: [PATCH v5 2/5] dt-bindings: reset: mediatek: add MT7988 ethwarp
+ reset IDs
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>,
+To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>,
- Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
- <SkyLake.Huang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-References: <cover.1702352117.git.daniel@makrotopia.org>
- <ac6a7277fc534f610386bc51b2ff87beade03be8.1702352117.git.daniel@makrotopia.org>
+ Philipp Zabel <p.zabel@pengutronix.de>, Sabrina Dubroca
+ <sd@queasysnail.net>, Chen-Yu Tsai <wenst@chromium.org>,
+ "Garmin.Chang" <Garmin.Chang@mediatek.com>, Sam Shih
+ <sam.shih@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>,
+ Dan Carpenter <dan.carpenter@linaro.org>,
+ James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+References: <152b256d253508cdc7514c0f1c5a9324bde83d46.1702350213.git.daniel@makrotopia.org>
+ <a60f5b5ed58626f3dbac1eab8a5845c3ce9bd17c.1702350213.git.daniel@makrotopia.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -135,12 +133,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <ac6a7277fc534f610386bc51b2ff87beade03be8.1702352117.git.daniel@makrotopia.org>
+In-Reply-To: <a60f5b5ed58626f3dbac1eab8a5845c3ce9bd17c.1702350213.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_225839_130980_F6C5075C 
-X-CRM114-Status: UNSURE (   7.25  )
+X-CRM114-CacheID: sfid-20231212_230109_706715_CB079993 
+X-CRM114-Status: UNSURE (   7.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -156,15 +154,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/12/2023 04:51, Daniel Golle wrote:
-> Complete support for MT7988 which comes with 3 MACs, SRAM for DMA
-> descriptors and uses a dedicated PCS for the SerDes units.
+On 12/12/2023 04:18, Daniel Golle wrote:
+> Add reset ID for ethwarp subsystem allowing to reset the built-in
+> Ethernet switch of the MediaTek MT7988 SoC.
 > 
-> Fixes: c94a9aabec36 ("dt-bindings: net: mediatek,net: add mt7988-eth binding")
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+No need for one patch per one header. Headers are parts of new binding
+patch. If you decide to keep headers separate for easier review, then
+they could be in one header-only-patch.
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
