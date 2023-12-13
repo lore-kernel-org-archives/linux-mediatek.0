@@ -4,88 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 975D0C4167D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 16:04:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AAFEC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 16:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QRqwo6sswifF3LFPo684dgIWFUyFasVRNKlEWyiikhI=; b=3Nq84MhSDJDCQu7ero+Fc6ooYK
-	dBqgwxgXwCyPuJ2iIufB1r7EyETmaPlX/YHgdHzLSrZgv0LFG6epG+F0oKFi72gNx7cPmGyRCMu1c
-	wT+45AMtKt9BdQ58jYbC+Q+imv/JwnIlLRl/yaNsOOXShyjmzBGPthJn/BVEJpJ5YmumuMmlpU+w6
-	X+DBuo3la0DynuIjLeL8WlgSVkRNTOtgan3LG3GqMg62uIg7w2DF7TZyjl2xq5+sa3U2/z4TIXgJu
-	/kSRYDzAeMr80d4xS/aTHFO2itELSSBDQxHaw8WNkpxSOmUHjtmVcn2D3szbU9oSk5A1miiYUuvFZ
-	AhopAGCw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DO+XQgFKSsBWJhVaHsjNWAi6FsCEUTPXzosA6TLpkG0=; b=hQmFsBOcUSeD0g
+	T1y201KstLpUZPbp+oq30hBM8fVtxMMhOJs/sytIp6wBMu/SoC/3IKdZ1BQtMGGORrUBqDvrgqvJ/
+	pRHlNwQYtQqUpuynnxQgD3yyTgW/LOvBy96rP+YEVYJK/iPVNaU5j2U04kZalU0oAxVmjHkxoLBq2
+	xRxptDL7W/JmuRfNcsLhUEj0hPWvCIzMF+GpJWAnb7ykg9yI5Z3+YJ4FSgBVfCzML478IYlgMMPjS
+	dGPgUFEZCTbMJlR1CEK96nmka8f6m9ZVTvm4/JZMSzLQUfao1OwHiPkTQP/w9VdrOPD4hvA0QM+kd
+	yN/ZKh2bgmze+I63OT9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDRj7-00FOEb-1N;
-	Wed, 13 Dec 2023 16:04:49 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1rDST2-00FVtr-1e;
+	Wed, 13 Dec 2023 16:52:16 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDRj2-00FOBX-28;
-	Wed, 13 Dec 2023 16:04:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=QRqwo6sswifF3LFPo684dgIWFUyFasVRNKlEWyiikhI=; b=R+1MKf1rzy9ANE955VAmc7MRqm
-	hCWSk4JX137rBfen/P8Nm47Di+4ndSbW7wyKqKAZQfSeKvNqjZOQ7h+ozG1y82K68yoGn+GJmlxTJ
-	HSa3d2+TEnPRtqH2l6FBZBT0QG523tdWrM2gvgIjLfWc+lQ+OwZn8xeMBQZ+p27avi7V6KZ1EIwmE
-	tUOWNpuAZOwuNx7857l8Nppar0NfBSL4jj2fssUdXc1mBs8uG1+Lm5CRVI9LBqGlXLhqKzg21wp1M
-	Pg2rWKekk7nkzy3zfT65bes3ssLwvxH5KjSQJCl0VUaxSTKZcMGrv8l/GBDNAPCaM0ej6RDZvdprY
-	Q6b4hJhQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55118)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1rDRiY-0000D5-0G;
-	Wed, 13 Dec 2023 16:04:14 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1rDRiW-0001cw-Q5; Wed, 13 Dec 2023 16:04:12 +0000
-Date: Wed, 13 Dec 2023 16:04:12 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [RFC PATCH net-next v3 3/8] net: pcs: pcs-mtk-lynxi: add
- platform driver for MT7988
-Message-ID: <ZXnV/Pk1PYxAm/jS@shell.armlinux.org.uk>
-References: <cover.1702352117.git.daniel@makrotopia.org>
- <8aa905080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org>
+	id 1rDSSy-00FVre-12;
+	Wed, 13 Dec 2023 16:52:14 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id A636B60006;
+	Wed, 13 Dec 2023 16:51:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1702486316;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DO+XQgFKSsBWJhVaHsjNWAi6FsCEUTPXzosA6TLpkG0=;
+	b=iYqRh1lE0vFH0qsU/MBWMTVw3nOznRswNPqjqKsuzFOzVOJjA3wKelXxC/ez3kzfJDIokT
+	nOcHnJt5czuN/T8cHOgcLc3G7m31L8TfhSWJdHPU4rDq+DzyHsB97pgB7AwmbeQAbOQcxN
+	I7ijsXFuXmk4wDBuYcLvsqBWPjRoiVn1f/0u+4dFBw5TzI/ihaTfmNo4H2tUPjIT8weoUU
+	kDDpeXBIaMThHWPHgqlAyHA0acPk4Mdu2QbqXYUFBRiMO/qrdCnUtgwukNnJdMYPxqswYA
+	psvrxd1eYzqxZIlzi8nsSJwYkoN3RXmMhNOQHqGzAxh9TFGNamRUxIYssv62Iw==
+Message-ID: <fe48082e-1545-4cb6-a29a-79b4f6276c91@arinc9.com>
+Date: Wed, 13 Dec 2023 19:51:49 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <8aa905080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 00/15] MT7530 DSA subdriver improvements
+Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
+References: <20231118123205.266819-1-arinc.unal@arinc9.com>
+ <45221d69-a780-4e81-b4c3-db1b9894a1db@arinc9.com>
+ <20231213151910.hr3n4px7a4upc372@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20231213151910.hr3n4px7a4upc372@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_080444_714795_4398D9EC 
-X-CRM114-Status: GOOD (  27.80  )
+X-CRM114-CacheID: sfid-20231213_085212_511223_555193DD 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,120 +69,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Russell King <linux@armlinux.org.uk>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 12, 2023 at 03:47:18AM +0000, Daniel Golle wrote:
-> Introduce a proper platform MFD driver for the LynxI (H)SGMII PCS which
-> is going to initially be used for the MT7988 SoC.
+On 13.12.2023 18:19, Vladimir Oltean wrote:
+> Hi Arınç,
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> On Sat, Dec 02, 2023 at 11:52:13AM +0300, Arınç ÜNAL wrote:
+>> Can I receive reviews for patches 6, 12, 13, 14, and 15?
+>>
+>> Thanks.
+>> Arınç
+> 
+> Sorry, I don't have time to look at this old thread anymore.
+> 
+> Please repost the series with the feedback you got so far addressed.
+> Also, you can try to split into smaller, more cohesive groups of
+> patches, that have higher chances of getting merged.
 
-I made some specific suggestions about what I wanted to see for
-"getting" PCS in the previous review, and I'm disappointed that this
-patch set is still inventing its own solution.
+Thanks Vladimir. I've been fighting a bad fever with sore throat. I'll
+submit the first 7 patches after working on your reviews.
 
-> +struct phylink_pcs *mtk_pcs_lynxi_get(struct device *dev, struct device_node *np)
-> +{
-> +	struct platform_device *pdev;
-> +	struct mtk_pcs_lynxi *mpcs;
-> +
-> +	if (!np)
-> +		return NULL;
-> +
-> +	if (!of_device_is_available(np))
-> +		return ERR_PTR(-ENODEV);
-> +
-> +	if (!of_match_node(mtk_pcs_lynxi_of_match, np))
-> +		return ERR_PTR(-EINVAL);
-> +
-> +	pdev = of_find_device_by_node(np);
-> +	if (!pdev || !platform_get_drvdata(pdev)) {
+Thanks a lot for your attention to my patches that's been going on for more
+than half a year now.
 
-This is racy - as I thought I described before, userspace can unbind
-the device in one thread, while another thread is calling this
-function. With just the right timing, this check succeeds, but...
-
-> +		if (pdev)
-> +			put_device(&pdev->dev);
-> +		return ERR_PTR(-EPROBE_DEFER);
-> +	}
-> +
-> +	mpcs = platform_get_drvdata(pdev);
-
-mpcs ends up being read as NULL here. Even if you did manage to get a
-valid pointer, "mpcs" being devm-alloced could be freed from under
-you at this point...
-
-> +	device_link_add(dev, mpcs->dev, DL_FLAG_AUTOREMOVE_CONSUMER);
-
-resulting in this accessing memory which has been freed.
-
-The solution would be either to suppress the bind/unbind attributes
-(provided the underlying struct device can't go away, which probably
-also means ensuring the same of the MDIO bus. Aternatively, adding
-a lock around the remove path and around the checking of
-platform_get_drvdata() down to adding the device link would probably
-solve it.
-
-However, I come back to my general point - this kind of stuff is
-hairy. Do we want N different implementations of it in various drivers
-with subtle bugs, or do we want _one_ implemenatation.
-
-If we go with the one implemenation approach, then we need to think
-about whether we should be using device links or not. The problem
-could be for network interfaces where one struct device is
-associated with multiple network interfaces. Using device links has
-the unfortunate side effect that if the PCS for one of those network
-interfaces is removed, _all_ network interfaces disappear.
-
-My original suggestion was to hook into phylink to cause that to
-take the link down when an in-use PCS gets removed.
-
-> +
-> +	return &mpcs->pcs;
-> +}
-> +EXPORT_SYMBOL(mtk_pcs_lynxi_get);
-> +
-> +void mtk_pcs_lynxi_put(struct phylink_pcs *pcs)
-> +{
-> +	struct mtk_pcs_lynxi *cur, *mpcs = NULL;
-> +
-> +	if (!pcs)
-> +		return;
-> +
-> +	mutex_lock(&instance_mutex);
-> +	list_for_each_entry(cur, &mtk_pcs_lynxi_instances, node)
-> +		if (pcs == &cur->pcs) {
-> +			mpcs = cur;
-> +			break;
-> +		}
-> +	mutex_unlock(&instance_mutex);
-
-I don't see what this loop gains us, other than checking that the "pcs"
-is still on the list and hasn't already been removed. If that is all
-that this is about, then I would suggest:
-
-	bool found = false;
-
-	if (!pcs)
-		return;
-
-	mpcs = pcs_to_mtk_pcs_lynxi(pcs);
-	mutex_lock(&instance_mutex);
-	list_for_each_entry(cur, &mtk_pcs_lynxi_instances, node)
-		if (cur == mpcs) {
-			found = true;
-			break;
-		}
-	mutex_unlock(&instance_mutex);
-
-	if (WARN_ON(!found))
-		return;
-
-which makes it more obvious why this exists.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Arınç
 
