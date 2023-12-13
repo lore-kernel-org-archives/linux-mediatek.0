@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8E1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 15:05:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B55FAC46CA2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 15:05:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=g5L5MwV7oIEpjp+BC3SquVGWCmTt0XhfETFBuojKbpg=; b=nci8/zCBQzVhHMJRmyInLMmyel
-	kMKmuD1cHUAQtjXGeOnpP6S4LmIVEeazODmA5oHG8lSrHp97N3lmADNfg7RQ2U1jzWi/7guQbkeTu
-	plKajGpPiFNf5La4szNGQXdxrO2EkH3MlJ/bEWOIHFFhQReeEL29ggcY5pYhBJD8/FSpfheJngvtP
-	hz7spPT4OIlsin9KK8OTUJE793LF4hxGsGSk3E4TBGOc3pwS3bjyZZQzlMXBBYFd0PaCGwuG/riGA
-	5EAQhpv1csn6Z8doPs2avr1q/5+npf7bCPja0NfkBHIgC0Pnm2bC9ZowHr0kvfFUA9baqobvpvcnn
-	rTv3ZLPA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MkDekqAXqNqSyCz+/cVaWMtnSMsPpAtTud5OI2FYEUE=; b=OxlreUnpUj1YDLlZ9GjCsGUUC0
+	zAerflHovrIft36xCkaZfeSg4fjQp7rSwJ0I5Nz07i3+zZxLwtCOrPcgKsOyOdnNfXrWtkQ/QURor
+	RoZJJbY865dqPDX1xUjnHWpj4CMhBCbVpg2rsvsJ2/hjxm9jo+5ORmDT/RQYX4AVPnT9z+gcy5yxw
+	j9RCN6kV1XYlrCS9gf/YaHe88R0lSpEJVc+7TsMAygkr76Ai+nY/FejNaBeZwdD357XiMrSKDbZ6o
+	U8CgE7d4CUlkfIK9jTCJjT0VGU761Ni7VOl/zNkcDzt/lXOxqDigs2FUhi6AsfVHp+s86lVvFTAY9
+	6SqRFmiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQnI-00F908-1o;
-	Wed, 13 Dec 2023 15:05:04 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1rDQnK-00F91u-1W;
+	Wed, 13 Dec 2023 15:05:06 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQn7-00F8pd-39
+	id 1rDQn9-00F8qd-1K
 	for linux-mediatek@lists.infradead.org;
 	Wed, 13 Dec 2023 15:04:57 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1d06d42a58aso65371785ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Dec 2023 07:04:47 -0800 (PST)
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1d06819a9cbso40569795ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Dec 2023 07:04:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1702479887; x=1703084687; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=g5L5MwV7oIEpjp+BC3SquVGWCmTt0XhfETFBuojKbpg=;
-        b=gijJL94dGtIkDNuMBFY7ENCx6lKEo0C8l9BHDNx52M4m8uTIsDZe6IbwACEuyhOqW+
-         znWXkCULWXfBYaIfCtHi1sJboOfsC+w1WiSVhbGv+TXu9Qb5Owgq6Y3CR1t9c6n+7cfI
-         beB4UFpbAzMsKmqT4YxlX8tpGUi0QouZREArk=
+        d=chromium.org; s=google; t=1702479892; x=1703084692; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MkDekqAXqNqSyCz+/cVaWMtnSMsPpAtTud5OI2FYEUE=;
+        b=JtoV93xAQv5PnHihNe0wARhk+rH/QdwrrNQ+WrTqXihgQ6YxTA6Shkg/yC9bIYSbyp
+         TQU898QwXdmdhNve+NY09gcuSVcI506EscxawoQdcvgedvuu/ycttCHdZgiVZWOLGoTb
+         v6/derMP8FNXvy3VDgrFTGr6zBf62vnQLQeeE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702479887; x=1703084687;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=g5L5MwV7oIEpjp+BC3SquVGWCmTt0XhfETFBuojKbpg=;
-        b=nedNgDiFEQthFACTWKGD5ipgqh3qv9oYfm5hk5UfqtWVkb7sN7JEEzKnZiKpJsvXfM
-         QbS1wEPJ0V6y8+Dvt7/XecFeMxgFe/hbn15oSpKwMchCq1iTz5CVYu0pbqOwxHsVZouz
-         rqPCGKpFOUviEt7FOcnZNW58RuZuFaMb9hUR8+933jFbTxwzLYgcutPjKhB0dvO7gtsN
-         apXpEAENZhmHN6VClMQxicrbGBUszhXOGORvAAI99yAVRQRZRGFqDmXjATj80C+EnRy4
-         NnNfcRB0Je3SI6u0Fn3tbrDWeBHXYuLdHfL6gGbPLgfGCMu26y7QDeKkslthF28gZ7cC
-         QcTQ==
-X-Gm-Message-State: AOJu0YxIAhKvdqmS+TFKrccPNbQkthhRiaogv2maClgHGZBJdNdWpjM6
-	n1Ymvy/lU7b+X1xqJcSFIl5Y0cx/irWeYjrZpic=
-X-Google-Smtp-Source: AGHT+IGEoKXQ/Fiaji0AAhxLgAPtUXjFyET2J3jxpyNfdsJesbYejcQKAoFvuZQ5QschoqSJhNZWOw==
-X-Received: by 2002:a17:902:ec8a:b0:1d0:d18c:bc5a with SMTP id x10-20020a170902ec8a00b001d0d18cbc5amr9776871plg.121.1702479887120;
-        Wed, 13 Dec 2023 07:04:47 -0800 (PST)
+        d=1e100.net; s=20230601; t=1702479892; x=1703084692;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MkDekqAXqNqSyCz+/cVaWMtnSMsPpAtTud5OI2FYEUE=;
+        b=aXg454HbL/C+wC1n2p9SlMwDXHHUkbStjLOhbzyT6mee/OniPVPqZirII+S0U7nhkt
+         N2msTZAtoB3qyBjgtbVaAJEULFbNhwRWt9iAtFLzrR0o2j61Src/WkDAV+jQK8jEth9e
+         NTtfD+EDFN6IuUXa3E1wX8kAwtDoCUVffhZUUymwRJJBnejT5YKDTIvImUX4c/+dtwKt
+         VpkI0AmPj8tfjYYvfiXXQ/lD1pGvT7UGJgA+z9usbZi+g31uuio7KhmmKXhpCEjJkhP3
+         ak60Tjb1of4brweeExRQL+MqvNuHPjBK/8VJxAZJTVjbwN1PUdAY83eNR8SIFQq62sAH
+         yuqw==
+X-Gm-Message-State: AOJu0YwrLP6rOMrntqFTt6hmrvKe2JYzotHylZu0SGY4q+E3LULNq8BG
+	gLc+n/fUglZWYcjFvEaJgzGl2A==
+X-Google-Smtp-Source: AGHT+IHuPKZbU48xMs/jN6pDfLmqb+wN8DW7c1EAjkTR1Tc/ThfubspLReOTlvwHdCResn22tFrprg==
+X-Received: by 2002:a17:903:486:b0:1d3:4e4f:a182 with SMTP id jj6-20020a170903048600b001d34e4fa182mr450052plb.94.1702479892315;
+        Wed, 13 Dec 2023 07:04:52 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1974:9e2:4915:58b0])
-        by smtp.gmail.com with ESMTPSA id z15-20020a1709027e8f00b001cc2dc61c99sm813808pla.22.2023.12.13.07.04.44
+        by smtp.gmail.com with ESMTPSA id z15-20020a1709027e8f00b001cc2dc61c99sm813808pla.22.2023.12.13.07.04.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 07:04:46 -0800 (PST)
+        Wed, 13 Dec 2023 07:04:51 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -69,16 +70,19 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Eugen Hristev <eugen.hristev@collabora.com>
-Subject: [PATCH v4 0/9] arm64: dts: mediatek: Add MT8186 Corsola Chromebooks
-Date: Wed, 13 Dec 2023 23:04:24 +0800
-Message-ID: <20231213150435.4134390-1-wenst@chromium.org>
+	Eugen Hristev <eugen.hristev@collabora.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v4 2/9] dt-bindings: arm: mediatek: Add MT8186 Tentacruel / Tentacool Chromebooks
+Date: Wed, 13 Dec 2023 23:04:26 +0800
+Message-ID: <20231213150435.4134390-3-wenst@chromium.org>
 X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
+In-Reply-To: <20231213150435.4134390-1-wenst@chromium.org>
+References: <20231213150435.4134390-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_070454_015279_1B5FDDF8 
-X-CRM114-Status: GOOD (  19.11  )
+X-CRM114-CacheID: sfid-20231213_070455_455881_1D9F2ADB 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,127 +97,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+Add entries for MT8186 based Tentacruel / Tentacool Chromebooks. The two
+are based on the same board design: the former is a convertible device
+with a touchscreen, stylus, and some extra buttons; the latter is a
+clamshell device and lacks these additional features.
 
-This is v4 of the MT8186 Chromebook device tree series. Sending now in
-case you still want to apply more patches.
+The two devices both have two variants. The difference is a second
+source touchpad controller that shares the same address as the original,
+but is incompatible.
 
+The extra SKU IDs for the Tentacruel devices map to different sensor
+components attached to the Embedded Controller. These are not visible
+to the main processor.
+
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
 Changes since v3:
 - Collected reviewed-by from Angelo
-- Reorder some properties to conform better to the newly proposed DT
-  style guidelines
-- Drop unused labels
-- Rename bt-sco node name to bt-sco-codec
-- Drop i2s*-share properties from afe node
-- Drop aud_gpio_tdm_{on,off} pinctrl nodes
-- Replace interrupts with interrupts-extended in tpm node
-- Enable adsp device
 
 Changes since v2:
 - Picked up Conor's ack
-- Renamed remaining "touchpad" nodes to "trackpad"
-- Dropped pinctrl from tentacruel/tentacool second source trackpad
 
 Changes since v1:
 - Reorder SKU numbers in descending order.
-- Fixed pinconfig node names
-- Moved pinctrl-* properties after interrupts-*
-- Switched to interrupts-extended for external components
-- Marked ADSP as explicitly disabled, with a comment explaining that it
-  stalls the system
-- Renamed "touchpad" to "trackpad"
-- Dropped bogus "no-laneswap" property from it6505 node
-- Moved "realtek,jd-src" property to after all the regulator supplies
-- Switched to macros for MT6366 regulator "regulator-allowed-modes"
-- Renamed "vgpu" regulator name to allow coupling, with a comment
-  containing the name used in the design
-- Renamed "cr50" node name to "tpm"
-- Moved trackpad_pins reference up to i2c2; workaround for second source
-  component resource sharing.
-- Fix copyright year
-- Fixed touchscreen supply name
-- Mark missing components as disabled instead of deleting the node
-- Dropped reset-gpios from touchscreen nodes
-- Drop status = "okay", which is the default
+---
+ .../devicetree/bindings/arm/mediatek.yaml     | 26 +++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-
-This series adds device trees for the various MT8186 Chromebooks that
-were initially released. These are the Tentacruel / Tentacool devices
-released by ASUS, and the Steelix / Rusty / Magneton devices released
-by Lenovo. The device trees are taken from the downstream ChromeOS v5.15
-kernel, ported to mainline and cleaned up.
-
-Corsola is the Google codename given to the MT8186 platform. This
-platform has two reference designs, Krabby and Kingler. Kingler was not
-used in any actual product, and is therefor not included. Steelix is
-an alternative design put forward and is effectively a mix-and-match of
-the two reference designs.
-
-Most of the core design is shared between the variants. The differences
-are on which external components, such as the display bridges, are used.
-
-Patch 1 cleans up the current list of MediaTek boards. The entries are
-reordered by SoC model first, then by board name.
-
-Patch 2 through 5 add DT binding entries for the Tentacruel/Tentacool,
-Steelix, Rusty, and Magneton Chromebooks.
-
-Patch 6 through 9 add board device tree files for these devices. Patch 6
-also adds the corsola dtsi file for the commonalities between the designs,
-as well as a dtsi file for the krabby reference design.
-
-Currently external display support is missing. Audio is not working, as
-enabling the audio DSP causes my test systems to hang.
-
-Please have a look and test if possible.
-
-
-Regards
-ChenYu
-
-Chen-Yu Tsai (9):
-  dt-bindings: arm: mediatek: Sort entries by SoC then board compatibles
-  dt-bindings: arm: mediatek: Add MT8186 Tentacruel / Tentacool
-    Chromebooks
-  dt-bindings: arm: mediatek: Add MT8186 Steelix Chromebook
-  dt-bindings: arm: mediatek: Add MT8186 Rusty Chromebook
-  dt-bindings: arm: mediatek: Add MT8186 Magneton Chromebooks
-  arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel /
-    Tentacool
-  arm64: dts: mediatek: Introduce MT8186 Steelix
-  arm64: dts: mediatek: Add MT8186 Steelix platform based Rusty
-  arm64: dts: mediatek: Add MT8186 Magneton Chromebooks
-
- .../devicetree/bindings/arm/mediatek.yaml     |  180 +-
- arch/arm64/boot/dts/mediatek/Makefile         |   10 +
- .../dts/mediatek/mt8186-corsola-krabby.dtsi   |  129 ++
- .../mt8186-corsola-magneton-sku393216.dts     |   39 +
- .../mt8186-corsola-magneton-sku393217.dts     |   39 +
- .../mt8186-corsola-magneton-sku393218.dts     |   26 +
- .../mt8186-corsola-rusty-sku196608.dts        |   26 +
- .../mt8186-corsola-steelix-sku131072.dts      |   18 +
- .../mt8186-corsola-steelix-sku131073.dts      |   18 +
- .../dts/mediatek/mt8186-corsola-steelix.dtsi  |  195 ++
- .../mt8186-corsola-tentacool-sku327681.dts    |   57 +
- .../mt8186-corsola-tentacool-sku327683.dts    |   24 +
- .../mt8186-corsola-tentacruel-sku262144.dts   |   44 +
- .../mt8186-corsola-tentacruel-sku262148.dts   |   26 +
- .../boot/dts/mediatek/mt8186-corsola.dtsi     | 1707 +++++++++++++++++
- 15 files changed, 2477 insertions(+), 61 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393216.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393217.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393218.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-rusty-sku196608.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327681.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262144.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 60337b439744..709a1292bca7 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -206,6 +206,32 @@ properties:
+           - enum:
+               - mediatek,mt8183-pumpkin
+           - const: mediatek,mt8183
++      - description: Google Tentacruel (ASUS Chromebook CM14 Flip CM1402F)
++        items:
++          - const: google,tentacruel-sku262147
++          - const: google,tentacruel-sku262146
++          - const: google,tentacruel-sku262145
++          - const: google,tentacruel-sku262144
++          - const: google,tentacruel
++          - const: mediatek,mt8186
++      - description: Google Tentacruel (ASUS Chromebook CM14 Flip CM1402F)
++        items:
++          - const: google,tentacruel-sku262151
++          - const: google,tentacruel-sku262150
++          - const: google,tentacruel-sku262149
++          - const: google,tentacruel-sku262148
++          - const: google,tentacruel
++          - const: mediatek,mt8186
++      - description: Google Tentacool (ASUS Chromebook CM14 CM1402C)
++        items:
++          - const: google,tentacruel-sku327681
++          - const: google,tentacruel
++          - const: mediatek,mt8186
++      - description: Google Tentacool (ASUS Chromebook CM14 CM1402C)
++        items:
++          - const: google,tentacruel-sku327683
++          - const: google,tentacruel
++          - const: mediatek,mt8186
+       - items:
+           - enum:
+               - mediatek,mt8186-evb
 -- 
 2.43.0.472.g3155946c3a-goog
 
