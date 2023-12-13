@@ -4,79 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 194DCC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 15:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69B55C4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 15:31:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K3Uqu4NqQPNF2jh2eBUU6anJjJjGTOazrVfjBFPTbG0=; b=4m4iOs6//weJ/bOrE+RoBAKebm
-	Btbel0YyeQxIwz0MWL1soQ2ab+KRaDcNaLRYcHw01fJw5HY5GNx0V4O7rADwe/rAF7U4a6E09ADpS
-	0Y6CG9hR8k9OtzTR/pmIZTyKMBN20NoeisIJXzMb2VX6GFbB//LMQlt/LTMLp8SoQCPRQPI/PkdDu
-	9QzQL0ZsfQPbp3EfF38jTJCm9mQSK+/HeyfVnae2CDm0ceJWDvSRBDucOJkbta843McbBQUEoy0tO
-	sqQsRMB0sm4HbjTOWcjKlhp9BP4imB34TezcyaYqasXmL3fl2BiU5W8+GOHLwHqFcccfA5lcaLhyw
-	Jk3hRJOA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oZzlMKqeaQDgaUycRwSe7fFFE/6tq3edh0ES7fNxHN8=; b=10Bjnh79Rz4Iv7JCgrUeh/PT4N
+	UHBebbca6buKOMpmO8hn1UpRmK4D/vJP1I6xgHWJDvKJJSKjS5V+fnBsYSoUKLyqOTh1adfYsT466
+	fBMEvM4/jwKE4n0ujdT/DaIDq0vAT6fFEeaODDzI2JtsgW3l+EYb9CtEFbLDA28vGIEs4c0VuIKGU
+	n2z5byGbmJUEjnWkEzodmzMssxyWaNm8TsH7v7EjHrzto/DO8+gR+fIrOo25usBV06Tw33Gpv9lnp
+	FXInKa8E6p1x/owezCtU4GoU+hQTct15FwXwOj3CHx1zvdYE5zlg05++tYoPZ7Ion3quAOXGitBki
+	e/dsaONA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDR1E-00FBJJ-2Y;
-	Wed, 13 Dec 2023 15:19:28 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1rDRDE-00FFbl-0D;
+	Wed, 13 Dec 2023 15:31:52 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDR11-00FBI8-2L;
-	Wed, 13 Dec 2023 15:19:20 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-50bf37fd2bbso9473095e87.0;
-        Wed, 13 Dec 2023 07:19:15 -0800 (PST)
+	id 1rDRDA-00FFaO-1w;
+	Wed, 13 Dec 2023 15:31:50 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-5c1f8b0c149so3795654a12.3;
+        Wed, 13 Dec 2023 07:31:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702480754; x=1703085554; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=K3Uqu4NqQPNF2jh2eBUU6anJjJjGTOazrVfjBFPTbG0=;
-        b=fmIUzwmbLuo9RqDCcVaPT0V3AJYSRhWfDNAYsg/tApiPmK87DqtbqaMPXqeegJI+qS
-         9FmASH6kkEzNJJLV5lWdIS9cmLF3YYeOKCt1R26lD532EbpdLWf0Lx6WNMNYoHTTtv+k
-         MEnE/48oRWNpDNQDY8mGtr96f+Q645Ho9wNMgrz2ipBL9w0Fcf//vALldoWPsmucqvpo
-         NTjFKI8vnOF1eL1cfAEqj2e05QgCv5Qz0AF15hmXgmd6JluPQUHTDscZF7EiYfW7zsqm
-         fA2WR/4jwj2zzlXmjNmKGfR4bZXpX3aCFCH/zQa//9SpKLgA9m1QfEQLPrmEd98QwFu+
-         OPmg==
+        d=gmail.com; s=20230601; t=1702481507; x=1703086307; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oZzlMKqeaQDgaUycRwSe7fFFE/6tq3edh0ES7fNxHN8=;
+        b=H+BdDVQUN00zaWGk6wEz6+Ih2MmMI8hkuraItvnTdWMCfd6jx4rgO3aJKupoEZR+8l
+         lyTG9DiVZqj+J6CCU9EZuGNwTnrnvFAqTDk77PxiOSxMBLrAnzL1lg3I8nBM3pdA5Qi4
+         eIwy4mJvXFpnKdUjjP9/HgY/rvT6L1v9eaeVF6xrM1H9kpobyWh+Z4iI3AC9JuubfE7Z
+         +IcY5CB+8e4iqT64JEyZbrghrnRA5xE4v8qBr/xN6L6750r5Zzv+PoQhx65+RllhH4EM
+         A0fp/VlSLaF9HQUPj2LeT+Eynaw3RrSWZ9T/K9NWGvni21iiDHTT/HjFfLOkhfq92IEB
+         mpqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702480754; x=1703085554;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=K3Uqu4NqQPNF2jh2eBUU6anJjJjGTOazrVfjBFPTbG0=;
-        b=EO9gff+Q2NYrvB/XU0udu8r2jDIyU2uvKXl3p717pRM9GFNoLOi36OXGtHoXU0Dhfs
-         XEzf4KeXOtkanWNqRTIE88t6L39///GzfGRJ8erIG0Mwzr2iiVvY++G+Cr9cuxZgyRXR
-         CDjsW34ILEq3WoJyzrnbyBZcndjGZ2+R5Uq90vK2ntsfU5+sOjLTYSj3SgDURlssIWw/
-         JKR8ODrVgXN6e2bbd/2r/Pv6IEJ42byIRDL5Y6EaRp9k+i+RGbOR4GMaFQESUEzOa1Ng
-         F7txvwldCjtA8a3tfTmB7Gn2l8iEJsltBpZ3CpMe3Jwru9ud9tepkW2IiigFBHN77hde
-         rbZQ==
-X-Gm-Message-State: AOJu0YyYaphQf0IRRRj3/NBao96rA8AZPfzU8eP230n0+QpGCFDND+IS
-	8p8LlwOZdLnt/6azBIMoXl0=
-X-Google-Smtp-Source: AGHT+IHBBJM+4Q8XpOLjZTdBo/0XImnsmqRu7N70vT9N0+U7CMD4rDwiruktU0T2IwTO4K1nhwfi+w==
-X-Received: by 2002:a05:6512:2253:b0:50b:f776:1d63 with SMTP id i19-20020a056512225300b0050bf7761d63mr5029095lfu.44.1702480753667;
-        Wed, 13 Dec 2023 07:19:13 -0800 (PST)
-Received: from skbuf ([188.27.185.68])
-        by smtp.gmail.com with ESMTPSA id ul5-20020a170907ca8500b00a1f7b445f5dsm6673223ejc.124.2023.12.13.07.19.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 07:19:13 -0800 (PST)
-Date: Wed, 13 Dec 2023 17:19:10 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next 00/15] MT7530 DSA subdriver improvements
-Message-ID: <20231213151910.hr3n4px7a4upc372@skbuf>
-References: <20231118123205.266819-1-arinc.unal@arinc9.com>
- <45221d69-a780-4e81-b4c3-db1b9894a1db@arinc9.com>
+        d=1e100.net; s=20230601; t=1702481507; x=1703086307;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=oZzlMKqeaQDgaUycRwSe7fFFE/6tq3edh0ES7fNxHN8=;
+        b=JHzWgNrNvL+0PlOT5B7nXzGBFZlx/eIn8fnpHgo5xi8K12AqbO2Peaxk9f5qDMrWXG
+         cIwGzP7yyAKsVtP+64F8Ot6mxe4vudOMtOWki59G4n18PxMAFaVnP7eVcMbjLvSzp1qD
+         Ysc12jBvyBAFag7go/owp1mcNULcI8M3H0OxUO+QE5oLQxLg3r4PwAEnp4Zf0yAlYScV
+         kH+zk0yIXXKYVM8SnC6We29EwAbyFdvTyuuxv5pyjdr1AaGZTrkBjyvegEGAqLVEQVER
+         jL9elO2Nsxxi5V+/fuhPA6+7S+S2lRiJT6R0Fv/XX15VIVsWFx18t/lcUpcFJNgmuIMF
+         wDXA==
+X-Gm-Message-State: AOJu0Yy6NWlq67/3Agi8BzI4XDFy5MnI8rAgLNQYfflIsGTcudepW6Al
+	WlqkqtEvvPW+09SokdzfJeuPKDQStaApCunojNH2CZE7
+X-Google-Smtp-Source: AGHT+IG5iZTcVImc/59btC+BAiAzwRNe1KCNitVlOmR6VYh3v0mNwJx54lXiUMbKt/6067AbRjmM4byKkaFp8rZSNN4=
+X-Received: by 2002:a17:90a:cf85:b0:28a:b3bf:3c56 with SMTP id
+ i5-20020a17090acf8500b0028ab3bf3c56mr1926683pju.20.1702481506962; Wed, 13 Dec
+ 2023 07:31:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <45221d69-a780-4e81-b4c3-db1b9894a1db@arinc9.com>
+References: <20231128075532.110251-1-haibo.li@mediatek.com>
+ <20231128172238.f80ed8dd74ab2a13eba33091@linux-foundation.org>
+ <CA+fCnZcLwXn6crGF1E1cY3TknMaUN=H8-_hp0-cC+s8-wj95PQ@mail.gmail.com> <ecf38b22-ee64-41e5-b9b5-c32fc1cb57bc@moroto.mountain>
+In-Reply-To: <ecf38b22-ee64-41e5-b9b5-c32fc1cb57bc@moroto.mountain>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Wed, 13 Dec 2023 16:31:35 +0100
+Message-ID: <CA+fCnZc73qNqNiCMcKFKRuoBki=Bmhdw-mOY9chV=CjAtm0R+g@mail.gmail.com>
+Subject: Re: [PATCH] fix comparison of unsigned expression < 0
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: "Liu, Yujie" <yujie.liu@intel.com>, Andrew Morton <akpm@linux-foundation.org>, 
+	kernel test robot <lkp@intel.com>, Haibo Li <haibo.li@mediatek.com>, linux-kernel@vger.kernel.org, 
+	Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>, 
+	Dmitry Vyukov <dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kasan-dev@googlegroups.com, 
+	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, xiaoming.yu@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_071915_805895_FDD1BF8C 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231213_073148_636512_4EEBAE0E 
+X-CRM114-Status: GOOD (  20.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,21 +92,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Russell King <linux@armlinux.org.uk>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arınç,
+On Mon, Dec 4, 2023 at 5:12=E2=80=AFAM Dan Carpenter <dan.carpenter@linaro.=
+org> wrote:
+>
+> > But I actually don't think we need to fix anything here.
+> >
+> > This issue looks quite close to a similar comparison with 0 issue
+> > Linus shared his opinion on here:
+> >
+> > https://lore.kernel.org/all/Pine.LNX.4.58.0411230958260.20993@ppc970.os=
+dl.org/
+> >
+> > I don't know if the common consensus with the regard to issues like
+> > that changed since then. But if not, perhaps we can treat this kernel
+> > test robot report as a false positive.
+>
+> I would say that the consensus has changed somewhere around 2015 or
+> so.  Unsigned comparisons to zero used to be one of the most common
+> types of bugs in new code but now almost all subsystems have turned on
+> the GCC warning for this.
+>
+> However, this is a Smatch warning and I agree with Linus on this.  For
+> example, Smatch doesn't complain about the example code the Linus
+> mentioned.
+>
+>         if (a < 0 || a > X)
+>
+> And in this case, it's a one liner fix for me to add KASAN_SHADOW_OFFSET
+> as an allowed macro and silence the warning.
 
-On Sat, Dec 02, 2023 at 11:52:13AM +0300, Arınç ÜNAL wrote:
-> Can I receive reviews for patches 6, 12, 13, 14, and 15?
-> 
-> Thanks.
-> Arınç
+Hi Dan,
 
-Sorry, I don't have time to look at this old thread anymore.
+If this sounds like a good idea to you, please add an exception.
 
-Please repost the series with the feedback you got so far addressed.
-Also, you can try to split into smaller, more cohesive groups of
-patches, that have higher chances of getting merged.
+From the KASAN side, I think adding an exception for this case makes sense.
+
+Thank you!
 
