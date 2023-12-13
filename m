@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4105DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 09:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2646BC4167B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Dec 2023 09:47:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uPVstSGHW2mJYYKDhOcbHVvFc6FCpsaEprPwYoO2QrU=; b=zP+0tUluOHkIW2eS0mDPKvVj3W
-	PtuYw/vhf+rS00Dt7v8NoWGwHBYpsYHkzfZgYJiuj8eiTFnPXX3DfTG92UQH0CFRgbX7XdYgTuTeF
-	WguNEElfqvWGnP0AGf44bN/N5SMjUuL3+0En3ChUR9zGiAbGEuv4wVSKmzekmv+o4PNwPlyXVjb77
-	y2Uk/0aiTolqhUCLk9XBl61aeAnn6u8c9U3w0trAkiaLAx85qd8Ctw/9YKgpk/ymu0UAFiFyaHjhp
-	SAjwlxMZKrzbSXRiLP4l1weNYH1DFSHXeELdvfjUWd+mXMGdcHfDsZRcxOJZKkAt2kh8o9Eabv31g
-	xuKHMBHg==;
+	bh=heA0ZkoH+SoPVtiuB5Olkoq/Ef49xENKGFMGl/9S3h8=; b=iuVotNwpETmJs4kqX4INCj2wK8
+	KhEcPTO7j+9IuekI71ihaRPwG2nskdV/h7NpiiHaCMujuXxUF10z/unGZIFyT8UPPPBRy+kx9Mwop
+	J6luXv/sKWUsATqlBEscbu1UZCpEc6U5xzExF/ztItoHdTi4VNHhHBNkY5v7Z7QK13WjspyeN+iCC
+	ssVUpQW8cztcJAnS+eCVl3Y8opeOX55x64jmJIANpEjeCv48qPV712yo3N+0JHRDsodpqBFiGrcBr
+	yv4JoLz9YEcryK1MiIPxacT63wzEgd2SEf8euffYtSWh0/rBST1UT3FLk0fhq5e8cKLmOUq0DxAij
+	+L0OLF5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDLBS-00E6UW-37;
-	Wed, 13 Dec 2023 09:05:38 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1rDLpS-00EB9E-2x;
+	Wed, 13 Dec 2023 09:46:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDLBP-00E6T6-30;
-	Wed, 13 Dec 2023 09:05:37 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-50c02628291so7024813e87.0;
-        Wed, 13 Dec 2023 01:05:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702458329; x=1703063129; darn=lists.infradead.org;
-        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=uPVstSGHW2mJYYKDhOcbHVvFc6FCpsaEprPwYoO2QrU=;
-        b=INoBS9wUcnlPdxFrBTvnS9fpqp3E0nwhZs8qKylLzmg//rurW8k0+NAftAewJTh781
-         PqSCiQGwVuv4dYBvQfl3AYbpyQwQsR7mEewpbei4pG1U/PclkuubbQKpSDE5YwgLBy0V
-         qJJ+usqInaXAzOyxyYXG2wGmAgkyYbI/wfyKsWxWuxl1oGU9mXHHyd5FP91Caj71taZK
-         vf/xLe4AddOf41URm12hHzedcxIiiUpmOTkODpS2WIUvVYJVz9cL1kKZ54BR77MmQB7C
-         ZBKC7c7Q/XMnAmSbFuTeMqkqXYXKaNKQrjsQTgwFiei+TXIiGakiIYt2tLFN5E8KZ7Uo
-         qTlw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702458329; x=1703063129;
-        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uPVstSGHW2mJYYKDhOcbHVvFc6FCpsaEprPwYoO2QrU=;
-        b=mo/B/lpRq7DCkfI0Fvg9oO26mSiShzdLerWLAH8RIh6P/PYoplyXgDzcmit9k0YOQc
-         E+0JX2bGjXcD+Yy3uSTekVeVBRbuqrXr52HZMUvbCC087VnDmOarQ9Hh/tjSmBcRvngt
-         8tepQbb38+KRBCUa5pk5YVWsaihNOgRQXfXhr78zKnCfxpTpVGPx+Xa54SLSeXBK8BUy
-         qtSu7fzDqPHxc1yQcMqC+DxsIg39zXuFD6SQ8fQCfNZLQpD+5MKZ+/8SngLyA1xNDJHz
-         awXUmnwoVqzOBlJuzRjMTsYxOc9jcsrebWd1qIFZme9dFsu1xsCMT+SZf6GzGOqQ1H6P
-         l4fg==
-X-Gm-Message-State: AOJu0YyiDHsCjO6kN+1OaU0V0DDUthmYAfQ1FV81pKZJ98mIbBJe5Gr2
-	7FpHf/HXt/f/N/4y4++yJKs=
-X-Google-Smtp-Source: AGHT+IGWpeNIT+ctXpc3/nJZFateSOhCrGMOM+zwxTvVL6e43wnzc3r3OJ2tC/PYR81yyP2zfmy63A==
-X-Received: by 2002:a05:6512:38cf:b0:50c:5aa:83b4 with SMTP id p15-20020a05651238cf00b0050c05aa83b4mr2890212lft.114.1702458328719;
-        Wed, 13 Dec 2023 01:05:28 -0800 (PST)
-Received: from eldfell ([194.136.85.206])
-        by smtp.gmail.com with ESMTPSA id y18-20020a199152000000b0050be6326f2asm1597596lfj.64.2023.12.13.01.05.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 01:05:28 -0800 (PST)
-Date: Wed, 13 Dec 2023 11:05:17 +0200
-From: Pekka Paalanen <ppaalanen@gmail.com>
-To: Simon Ser <contact@emersion.fr>
-Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sumit
- Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com, Matthias
- Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, John
- Stultz <jstultz@google.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Jeffrey Kardatzke
- <jkardatzke@google.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Vijayanand Jitta
- <quic_vjitta@quicinc.com>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- jianjiao.zeng@mediatek.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- ckoenig.leichtzumerken@gmail.com, linaro-mm-sig@lists.linaro.org,
- linux-mediatek@lists.infradead.org, Joakim Bech <joakim.bech@linaro.org>,
- tjmercier@google.com, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/7] dma-buf: heaps: Add secure heap
-Message-ID: <20231213110517.6ce36aca@eldfell>
-In-Reply-To: <DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
-References: <20231212024607.3681-1-yong.wu@mediatek.com>
-	<DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
+	id 1rDLpP-00EB7s-1u;
+	Wed, 13 Dec 2023 09:46:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9F98261B41;
+	Wed, 13 Dec 2023 09:46:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88F15C433C7;
+	Wed, 13 Dec 2023 09:46:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702460812;
+	bh=k3h+x5Vi0c4IUc2BgiJewMzJeCYyvSk8+ZHJK/SWAOw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tB5OQxh//OBSfXK0FUdFSzcfEoIJyEniRxaI6FF3p7iKPcZ+k+7oHa13+VC5BtTVW
+	 AIvVDladP54+eKEj0Gizw4euRRRU6KZCljmIlisdNUIFEIPMh59eypu8BxdaDEnvgg
+	 +J1/VytncX+iPP7xylS4qbsFfaeCyc35ucSWlT1PIR9VG8UK+IadGA4rhnRd1kZdNI
+	 /xMEdLMTt+iCLnF06HyS5MK4EQ/RO1rWc5rGrvf97MSFIVP3+KQmnXpVVESH+jjOa7
+	 Y3XgFLpzUW+W4LKrAmsIIn5S1Y6lJPRrOn80Znicol+dSEaP5p+knty92G1xUrhR47
+	 j9Ggn0ti7Ij1A==
+Date: Wed, 13 Dec 2023 09:46:44 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [RFC PATCH net-next v3 1/8] dt-bindings: phy:
+ mediatek,xfi-pextp: add new bindings
+Message-ID: <20231213-confined-shaping-f56b1fdfb135@spud>
+References: <cover.1702352117.git.daniel@makrotopia.org>
+ <b875f693f6d4367a610a12ef324584f3bf3a1c1c.1702352117.git.daniel@makrotopia.org>
+ <20231212-renderer-strobe-2b46652cd6e7@spud>
+ <ZXiNhSYDbowUiNvy@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="Sig_/DaWmOigQ7D9ggi2.WnkRpp3";
- protocol="application/pgp-signature"; micalg=pgp-sha256
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="TQLtrFVr4ShS8Ew7"
+Content-Disposition: inline
+In-Reply-To: <ZXiNhSYDbowUiNvy@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_010535_970683_15ED5A1C 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20231213_014655_717606_8F0DB84A 
+X-CRM114-Status: GOOD (  21.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,54 +98,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---Sig_/DaWmOigQ7D9ggi2.WnkRpp3
-Content-Type: text/plain; charset=US-ASCII
+
+--TQLtrFVr4ShS8Ew7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, 12 Dec 2023 16:36:35 +0000
-Simon Ser <contact@emersion.fr> wrote:
-
-> Is there a chance to pick a better name than "secure" here?
+On Tue, Dec 12, 2023 at 04:42:45PM +0000, Daniel Golle wrote:
+> On Tue, Dec 12, 2023 at 04:21:38PM +0000, Conor Dooley wrote:
+> > On Tue, Dec 12, 2023 at 03:46:26AM +0000, Daniel Golle wrote:
+> >=20
+> > > +  mediatek,usxgmii-performance-errata:
+> > > +    $ref: /schemas/types.yaml#/definitions/flag
+> > > +    description:
+> > > +      USXGMII0 on MT7988 suffers from a performance problem in 10GBa=
+se-R
+> > > +      mode which needs a work-around in the driver. The work-around =
+is
+> > > +      enabled using this flag.
+> >=20
+> > Why do you need a property for this if you know that it is present on
+> > the MT7988?
 >=20
-> "Secure" is super overloaded, it's not clear at all what it means from
-> just the name. Something like "restricted" would be an improvement.
+> Because it is only present in one of the two SerDes channels.
+> Channel 0 needs the work-around, Channel 1 doesn't.
 >=20
+> See also this commit in the vendor driver for reference[1].
+>=20
+> We previously discussed that[2] and it was decided that a property
+> would be the prefered way to represent this as there aren't any other
+> per-instance differences which would justify another compatible.
 
-My thoughts exactly. Every time I see "secure" used for something that
-either gives you garbage, refuses to work, or crashes your whole machine
-*intentionally* when you try to do normal usual things to it in
-userspace (like use it for GL texturing, or try to use KMS writeback), I
-get an unscratchable itch.
+Please put it in the commit message so that when the next version shows
+up, Krzysztof doesn't show up and question the property for the third
+time.
 
-There is nothing "secure" from security perspective there for end users
-and developers. It's just inaccessible buffers.
+Also, on another note, this series is aimed at net-next but half the
+series is fixed for incorrect bindings. Why not net?
 
-I've been biting my lip until now, thinking it's too late.
-
-
-Thanks,
-pq
-
---Sig_/DaWmOigQ7D9ggi2.WnkRpp3
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
+--TQLtrFVr4ShS8Ew7
+Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmV5c80ACgkQI1/ltBGq
-qqdqdg/8DMTwQfWf/EfE0E0FOjM0IPMnzZreMPcRlHBqMJqgQA5miVL9CVE+novh
-ohRbfFYLwut7eqtK6Dzn+6hOIVFRMpGPkWe8qHfT+CJ8Wr3hD8Q23PKEveH/FENO
-G+XUbPzsnlDTDs5MB2Bb1TAiWQLS8Y1/nstMZ49l8mmW6Iim0Z+/xhyqUyLaHfpm
-zB7JRM7CSN8gyPhoqoAAITy+ZL4+yD7D28izgQA4YZD4JzkE1fYOUFzNb4QRA/T7
-GxPSExZlU7+CdIL5zAJvhqpHh9nxMdOUvaP3aQBzShcTKDVoet/TZ+0QuEOuD1QJ
-gHG05Hcp5gREsbjn9oytS2km0LcL7ZmR98NOrf9idl4jZDjVTEMQvV/FrSSwiyGv
-5whtFHkkDVy1nXjyYmgiGO7dvIptO+dNGgRtACt3xe0tdvu5ndP2+hG21ADVWebc
-fd2T4mnUoANro1gOjWATV5+0fzlOK5hFff70pvE9U2ATvqXo7i2I+kzW/EJFPilA
-4EqR7cIyLCaVRb7q/dC4CdWUu0NIxCp7+u22Z/B8pHFw2MnQZa0twIKV3GJokfrR
-A4PfZLAvpbSkfr7SalrN6eYFHhJOpcCJPHXCiQSnRT7DU5u6NhUr35IZgq/YuANC
-YrU/v7fiWv2v6I0I2FN8fBaH1baL6/SWpA5q43OECPVewbA/Uwg=
-=DQfN
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZXl9hAAKCRB4tDGHoIJi
+0l51AP9AfxTVJus53lwalnfKdDDM6fu9GnfTQ1DaU51hYEgGlAD+KJiVYUIfbVyH
+NeYoGDoBXFZkUEImGzZ7OfYXmDAzTQw=
+=+6BB
 -----END PGP SIGNATURE-----
 
---Sig_/DaWmOigQ7D9ggi2.WnkRpp3--
+--TQLtrFVr4ShS8Ew7--
 
