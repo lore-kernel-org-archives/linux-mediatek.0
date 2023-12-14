@@ -4,65 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC2CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 17:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C756C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 17:54:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vIFuzb3/ChxRFXeRZoqxwlAIbhfGU1rPthvcFxqdlC8=; b=4bQwDpdk6jhBlqb9q/abcgHFie
-	SnLvvXPK+ot6CdGIkQBayu3mJOA/i57y6O+uY52YpaPLaogoCa3msTGuPx1EYxxCPS78QN7ycyTBt
-	ewxIBw3HZ0xAupx4cVCbD5+TXK6yfyhBZrrNYaKxn/Y2hBGAdwTEeWzEQFBBiIa26nc6+buIPuQDl
-	mp9JJ5PMGitS8q91VpUx8buqwBwdeipxAPcLkvQiW9Fz7C58XC6fD9Wz3aNGEJLUY6P1pyuKHQ0OL
-	dFrRn2SgTmvJEt/c6VKtwcm3urfhDcsiWtSQsrE94rrN3bRsCBgu9RZL83uJwY1aWoNpeznS9TInu
-	8OgwlJRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QtivBajJ2uEBe/N9gJN8n3kJKYyoOgnif0RBAayWfuQ=; b=hWV2kCmWyaqCLCYigzG3CsAO4F
+	COAASQMiPaGBlz2b2yhQWRc5LW1PihowyBSyWR0lr/7LlcrOci7FnFCYw8y0oNDLsXJPq2NvKIRDs
+	wpS2Fx9/rnRyTD1MeaGkkrOP0HBnvoGV+QHR+ufqwDrJSOmZxOOop0bhEvRk8pUZpweQ1zYKJcgze
+	tBmEy5DwB3fkcRVho87hmGXUk7S9vyJOq7hlgxvs97r/z40oOm4aNveMHHtcJzD+QVFcTOSeR5Qtb
+	WWIOJWXfTfek3JaIqLu06TrKBNgpiv7nArZ4FEevtJkuoOHv0wJ44Bo9BOuYT+4WWuz96L7bslt9a
+	YnwUa9dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDpgg-000wxY-2B;
-	Thu, 14 Dec 2023 17:39:54 +0000
-Received: from mail11.truemail.it ([217.194.8.81])
+	id 1rDpuv-000ybs-06;
+	Thu, 14 Dec 2023 17:54:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDpgc-000wwY-1c;
-	Thu, 14 Dec 2023 17:39:52 +0000
-Received: from francesco-nb.int.toradex.com (93-49-2-63.ip317.fastwebnet.it [93.49.2.63])
-	by mail11.truemail.it (Postfix) with ESMTPA id BD29721454;
-	Thu, 14 Dec 2023 18:39:45 +0100 (CET)
-Date: Thu, 14 Dec 2023 18:39:44 +0100
-From: Francesco Dolcini <francesco@dolcini.it>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>
-Cc: Francesco Dolcini <francesco@dolcini.it>,
-	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	greybus-dev@lists.linaro.org, linux-iio@vger.kernel.org,
-	netdev@vger.kernel.org, chrome-platform@lists.linux.dev,
-	platform-driver-x86@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	Francesco Dolcini <francesco.dolcini@toradex.com>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Jonathan Cameron <jic23@kernel.org>, Lee Jones <lee@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1] treewide, serdev: change receive_buf() return type to
- size_t
-Message-ID: <ZXs94Mf1eOMCmGpT@francesco-nb.int.toradex.com>
-References: <20231214170146.641783-1-francesco@dolcini.it>
+	id 1rDpus-000yb7-0W;
+	Thu, 14 Dec 2023 17:54:35 +0000
+X-UUID: d0ca3d669aa911ee9b09ad09c76753c8-20231214
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=QtivBajJ2uEBe/N9gJN8n3kJKYyoOgnif0RBAayWfuQ=;
+	b=ql44oSG2Bhr9l3tkGQz4JLjMujdHaHk2gtPBefJsL/VTiueEMMjVViLtSgyRnVhqwW1hmY/VtdvArqL73TIfpghrnEHb8EOHmW0hDFM2jKF/5CfP5LCBKk1JDaS+wf721FWyHMHbCM0OZZFVoGwrDqkVgwKOXwGRdCKpyzCDbVw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:4767db56-73fd-4051-95c2-15a8947d12f8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:302f2fbd-2ac7-4da2-9f94-677a477649d9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: d0ca3d669aa911ee9b09ad09c76753c8-20231214
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1587421876; Thu, 14 Dec 2023 10:54:23 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 15 Dec 2023 01:54:21 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Fri, 15 Dec 2023 01:54:20 +0800
+Message-ID: <1ce43346-3f60-b614-cdcc-7d9db8dec758@mediatek.com>
+Date: Fri, 15 Dec 2023 01:54:19 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231214170146.641783-1-francesco@dolcini.it>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] arm64: mediatek: remove broken pmic interrupt property
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Arnd
+ Bergmann <arnd@kernel.org>, <soc@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Ben Lok <ben.lok@mediatek.com>
+CC: Arnd Bergmann <arnd@arndb.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <bear.wang@mediatek.com>,
+	<pablo.sun@mediatek.com>, <wenst@chromium.org>
+References: <20231212214737.230115-1-arnd@kernel.org>
+ <bc5dafe4-5487-4794-97f1-f4e4d967a665@collabora.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <bc5dafe4-5487-4794-97f1-f4e4d967a665@collabora.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_093950_707917_B34702A7 
-X-CRM114-Status: GOOD (  21.58  )
+X-CRM114-CacheID: sfid-20231214_095434_202450_1975E672 
+X-CRM114-Status: GOOD (  23.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,61 +92,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 14, 2023 at 06:01:46PM +0100, Francesco Dolcini wrote:
-> From: Francesco Dolcini <francesco.dolcini@toradex.com>
-> 
-> receive_buf() is called from ttyport_receive_buf() that expects values
-> ">= 0" from serdev_controller_receive_buf(), change its return type from
-> ssize_t to size_t.
-> 
-> Suggested-by: Jiri Slaby <jirislaby@kernel.org>
-> Link: https://lore.kernel.org/all/087be419-ec6b-47ad-851a-5e1e3ea5cfcc@kernel.org/
-> Signed-off-by: Francesco Dolcini <francesco.dolcini@toradex.com>
-> ---
-> hello,
-> patch is based on current linux next.
-> 
-> It has an obvious problem, it touches files from multiple subsystem in a single
-> patch that is complicated to review and eventually merge, just splitting this
-> would however not work, it will break bisectability and the build.
-> 
-> I am looking for advise on the best way to move forward.
-> 
-> I see the following options:
->  - keep it as it is
->  - break it down with a patch with each subsystem, and squash before applying
->    from a single (tty?) subsystem
->  - go for a multi stage approach, defining a new callback, move to it and in
->    the end remove the original one, likewise it was done for i2c lately
+On 12/13/23 19:09, AngeloGioacchino Del Regno wrote:
 
-whoops. I just noticed Greg applied commit 475fc6e2de6f ("tty: serdev:
-convert to u8 and size_t") that touch the exact same files without much
-of an issue.
+> Il 12/12/23 22:47, Arnd Bergmann ha scritto:
+>> From: Arnd Bergmann <arnd@arndb.de>
+>>
+>> The pmic is connected to the GIC, which uses four-cell interrupt 
+>> properties,
+>> but its interrupt is specified as two-cell that would only make sense 
+>> for
+>> the GPIO irqchip:
+>>
+>> arch/arm64/boot/dts/mediatek/mt8195.dtsi:464.4-27: Warning 
+>> (interrupts_property): /soc/i2c@11d01000/pmic@34:#interrupt-cells: 
+>> size is (8), expected multiple of 16
+>>
+>> Remove the interrupt for now to shut up the warning. When someone 
+>> figures out
+>> what the correct interrupt and parent are, we can add it back.
+>>
+>
+> Please, can anyone from MediaTek comment on that?
 
-Probably the "keep it as it is" is just the way to go.
+Sorry for late response, I've just stuck in other tasks and didn't 
+notice this
 
-> 
-> ---
->  drivers/bluetooth/btmtkuart.c              |  4 ++--
->  drivers/bluetooth/btnxpuart.c              |  4 ++--
->  drivers/bluetooth/hci_serdev.c             |  4 ++--
->  drivers/gnss/core.c                        |  6 +++---
->  drivers/gnss/serial.c                      |  4 ++--
->  drivers/gnss/sirf.c                        |  6 +++---
->  drivers/greybus/gb-beagleplay.c            |  6 +++---
->  drivers/iio/chemical/pms7003.c             |  4 ++--
->  drivers/iio/chemical/scd30_serial.c        |  4 ++--
->  drivers/iio/chemical/sps30_serial.c        |  4 ++--
->  drivers/iio/imu/bno055/bno055_ser_core.c   |  4 ++--
->  drivers/mfd/rave-sp.c                      |  4 ++--
->  drivers/net/ethernet/qualcomm/qca_uart.c   |  2 +-
->  drivers/nfc/pn533/uart.c                   |  4 ++--
->  drivers/nfc/s3fwrn5/uart.c                 |  4 ++--
->  drivers/platform/chrome/cros_ec_uart.c     |  4 ++--
->  drivers/platform/surface/aggregator/core.c |  4 ++--
->  drivers/tty/serdev/serdev-ttyport.c        | 10 ++++------
->  include/linux/gnss.h                       |  4 ++--
->  include/linux/serdev.h                     |  8 ++++----
->  sound/drivers/serial-generic.c             |  4 ++--
->  21 files changed, 48 insertions(+), 50 deletions(-)
+patch is for genio-1200-evk. I've tested 6.7-rc1 but I thought it might 
+be an issue
+
+in origin mt8195.dtsi and not be related to board dts.
+
+> I see a mt6360_pins on PIO:
+>             pinmux = <PINMUX_GPIO17__FUNC_GPIO17>,
+>                  <PINMUX_GPIO128__FUNC_GPIO128>;
+>
+> ...and that's GPIO128, which may effectively be the IRQ pin for MT6360.
+>
+> Still, I'm not sure whether the interrupt is on GIC or PIO, please 
+> clarify,
+> otherwise we will have to get this commit upstream.
+>
+I think it could be solved by adding
+
+'interrupt-parent = <&pio>;' to mt6360 node.
+
+But currently I have no much time to verify it.
+
+I'll try to find some time to find out the solution tomorrow.
+
+> Thanks,
+> Angelo
+>
+>> Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 
+>> 1200 EVK board")
+>> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 2 --
+>>   1 file changed, 2 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts 
+>> b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+>> index 70b465f7c6a7..a409ef998746 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+>> @@ -238,8 +238,6 @@ &i2c6 {
+>>       mt6360: pmic@34 {
+>>           compatible = "mediatek,mt6360";
+>>           reg = <0x34>;
+>> -        interrupts = <128 IRQ_TYPE_EDGE_FALLING>;
+>> -        interrupt-names = "IRQB";
+>>           interrupt-controller;
+>>           #interrupt-cells = <1>;
+>>           pinctrl-0 = <&mt6360_pins>;
+>
+
+Thanks for pointing out the issue! Let's see if it could be solved by 
+adding 'interrupt-parents'.
+
+Macpaul Lin
+
 
