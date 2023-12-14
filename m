@@ -4,70 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9587C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70F3AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y4dfAw7rocDw5DM5kaVAxAIqErCTl60iolnNM1WzMyw=; b=bZYbzU8W6wiylWbbJgmQarDgyS
-	mVV8YBLrJfjqZA4kuaItwt0dAwFqqRrORUBUnjQvhessKJo6tfn4WmDLQV+YVgSqG46ukPcGYRxuP
-	D8HXQ35Qw/zPn6TavHvf6U/meaXCjWewxVDvOhbTTR+4jtqyKf9YX72DOl6Qa/GBilhywwiH+SstE
-	xclPIyXy60oGN7KGzhdevAecrefG5dlybZs9dDrZXb72mMupt9HALgSJ/BlBuXSpoL6casrK445SR
-	uZIN++I7ru0sl+elfvRBRNTVy7aBGaiZ3sLJ3MnzVrerHAcFrMi7Y7P7edUk00X8aF8qeJRT8PUMa
-	Y4HDZoVw==;
+	bh=HmHr5j17//5bMgjNNu18lbR3qKbkqQADaRL/6Nruu/A=; b=ARyZLfyjw4tT0ryGqH+NVcjmRk
+	KZ+8re1pxnO6nCMzPchrgXwYdv+X55FC8p55mVEoK9zrKrmztCC+vPWrCikRBFScTIQXkYyWLNqdm
+	EqC1jh++Bh1FLTo6umkZSd9Gt+UXhf1V02zMXcotuh1F5Rnm5b9oI7wGhJSQQLLk+SH+e/37CxXCx
+	I0FUbCpYSpfwOJSgNq3mil60PooKtvx1LFTKSnpu/KYHQh8alg5qo5JqclBKpFKvToicAXZIELPB8
+	GLcRNHwfnRfpHtLeTP1C4RXEl4wVAPa2GUcP6Qt/k69f8n/TerHQqxQSgK3vNXc63hh8+Vmew/OMW
+	KhY07lng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDjKp-00HXTw-2k;
-	Thu, 14 Dec 2023 10:52:55 +0000
+	id 1rDjNV-00HZ58-1U;
+	Thu, 14 Dec 2023 10:55:41 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDjKm-00HXRo-0O;
-	Thu, 14 Dec 2023 10:52:53 +0000
+	id 1rDjNS-00HZ3f-0M;
+	Thu, 14 Dec 2023 10:55:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702551170;
-	bh=KdM45sfm+eGY9YVK/KcmBv13GTLPFxIxJQNtxyNWCQ0=;
+	s=mail; t=1702551336;
+	bh=nDwI9Pl6CCoEAnD+fTst64/YqkRvVVhKmZlxyty2nAw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CRok9X898ifzj+gS0bQ0BbUWwVEM5h5smxro6yD4A9MBfRJO0u+hm5g44nXn1yV52
-	 pvz2s3a7y/KyrRD6krcJlI+4XY4I0XMfqk62PnnQdOuSAIdpJ8YjHHD3nOAncDL6NA
-	 FXnFJenJotgMWZhRp/KS9AXwov4hIrubEYZeyj6Zh4OVsCCLSU1+JTDUYlz9kHp0rQ
-	 ZeWu9/Ul2TEB/Iv1fbyWfxBWOVEvFVZqhpMlkcoHy7m4fLmc4D0yavH9bHkmbvE0no
-	 y12xcxWxrpP+G9VOb6FZX2UvISjRqbGfYqKyfSnLAbDrizKXmoobSmNcCNih9H3seh
-	 t22nvFFr3rD+g==
-Received: from [100.90.194.27] (cola.collaboradmins.com [195.201.22.229])
+	b=b7wF6oaus0TpnLvYOVI62QNuXci/Xd3tppTa1l12+jGW1Kj5elHnVNfXkkGE7eZ63
+	 pH2QiLUgHz3yAa1sph4DwjxkOEtItW9JA7tOiaeVPI3XJxZ+LUg9kpdXNCQ6CSyDtT
+	 Kz9WcagvFIPcdgmMs/cunw0MOn0c8Adx0y5aPLEdIogQgkHXSUVfBqqtwKerzyR9j+
+	 lDYUQlLMeMI8UvoRBIfpMSXhqh3aL+vgIsiZBPKSwHIOfom2G1h0InEGlmBfFH/LBg
+	 Tf6CqIsaJPMOtJZsY0m7yPZwKNHCOR1nuWbWG7xm4ew/Ckb6GhFDaKGwbY6juzH0ca
+	 OEORjJUAhZVbA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 25516378000B;
-	Thu, 14 Dec 2023 10:52:49 +0000 (UTC)
-Message-ID: <952a01c3-1ca0-42f8-bdbe-ab8857e27dc4@collabora.com>
-Date: Thu, 14 Dec 2023 12:52:46 +0200
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F1D31378000B;
+	Thu, 14 Dec 2023 10:55:34 +0000 (UTC)
+Message-ID: <e5625051-e9e2-4a75-a11a-cf5b40606fa4@collabora.com>
+Date: Thu, 14 Dec 2023 11:55:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] arm64: dts: mediatek: mt8186: Add venc node
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
- matthias.bgg@gmail.com, Kyrie Wu <kyrie.wu@mediatek.com>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20231213122017.102100-1-eugen.hristev@collabora.com>
- <20231213122017.102100-4-eugen.hristev@collabora.com>
- <d20c35e2-cc40-436d-90ca-4cab555874ca@collabora.com>
- <ff4f8365-d329-422c-ae04-d39a26f27552@collabora.com>
+Subject: Re: [PATCH v1 2/6] arm: arm64: dts: Enable cros-ec-spi as wake source
 Content-Language: en-US
-From: Eugen Hristev <eugen.hristev@collabora.com>
-In-Reply-To: <ff4f8365-d329-422c-ae04-d39a26f27552@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+To: Mark Hasemeyer <markhas@chromium.org>, LKML <linux-kernel@vger.kernel.org>
+Cc: Raul Rangel <rrangel@chromium.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Andre Przywara <andre.przywara@arm.com>,
+ Andy Gross <agross@kernel.org>, Baruch Siach <baruch@tkos.co.il>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jesper Nilsson <jesper.nilsson@axis.com>, Jisheng Zhang
+ <jszhang@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michal Simek <michal.simek@amd.com>, Paul Barker <paul.barker@sancloud.com>,
+ Rob Herring <robh+dt@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ cros-qcom-dts-watchers@chromium.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
+References: <20231213110009.v1.1.Ifd0903f1c351e84376d71dbdadbd43931197f5ea@changeid>
+ <20231213110009.v1.2.I274b2d2255eb539cc9d251c9d65a385cc4014c79@changeid>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231213110009.v1.2.I274b2d2255eb539cc9d251c9d65a385cc4014c79@changeid>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_025252_297642_53E70CFA 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20231214_025538_278291_C0C6702D 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,98 +92,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/14/23 12:50, AngeloGioacchino Del Regno wrote:
-> Il 14/12/23 11:44, AngeloGioacchino Del Regno ha scritto:
->> Il 13/12/23 13:20, Eugen Hristev ha scritto:
->>> From: Kyrie Wu <kyrie.wu@mediatek.com>
->>>
->>> Add video encoder node.
->>>
->>> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
->>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
->>> Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
->>> [eugen.hristev@collabora.com: minor cleanup]
->>> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
->>> ---
->>>   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 24 ++++++++++++++++++++++++
->>>   1 file changed, 24 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi 
->>> b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
->>> index 66ead3f23336..8535ff2b44e9 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
->>> @@ -1993,6 +1993,30 @@ larb7: smi@17010000 {
->>>               power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
->>>           };
->>> +        venc: venc@17020000 {
->>> +            compatible = "mediatek,mt8183-vcodec-enc";
+Il 13/12/23 19:00, Mark Hasemeyer ha scritto:
+> The cros_ec driver currently assumes that cros-ec-spi compatible device
+> nodes are a wakeup-source even though the wakeup-source property is not
+> defined.
 > 
-> Sorry for the double email;
+> Add the wakeup-source property to all cros-ec-spi compatible device
+> nodes to match expected behavior.
 > 
-> I've just noticed: where's mediatek,mt8186-vcodec-enc? :-)
+> Signed-off-by: Mark Hasemeyer <markhas@chromium.org>
 
-Hi,
+I received only patch [2/6] - please send the entire series to the relevant
+maintainers, as otherwise it's difficult to understand what's going on.
 
-There is none.
-This just works exactly as mt8183, thus reusing the same compatible.
+As for this patch alone:
+  1. arch/arm stuff goes to a different commit
+  2. I would prefer if you split per-arch and per-SoC.
 
-Do you want a new dedicated mt8186 compatible as well for the situation *just in
-case* some specific difference showing up later ?
+Regards,
+Angelo
 
-Eugen
-
-> 
->>> +            #address-cells = <2>;
->>> +            #size-cells = <2>;
->>> +            reg = <0 0x17020000 0 0x2000>;
->>> +            interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>;
->>> +            iommus = <&iommu_mm IOMMU_PORT_L7_VENC_RCPU>,
->>> +                 <&iommu_mm IOMMU_PORT_L7_VENC_REC>,
->>> +                 <&iommu_mm IOMMU_PORT_L7_VENC_BSDMA>,
->>> +                 <&iommu_mm IOMMU_PORT_L7_VENC_SV_COMV>,
->>> +                 <&iommu_mm IOMMU_PORT_L7_VENC_RD_COMV>,
->>> +                 <&iommu_mm IOMMU_PORT_L7_VENC_CUR_LUMA>,
->>> +                 <&iommu_mm IOMMU_PORT_L7_VENC_CUR_CHROMA>,
->>> +                 <&iommu_mm IOMMU_PORT_L7_VENC_REF_LUMA>,
->>> +                 <&iommu_mm IOMMU_PORT_L7_VENC_REF_CHROMA>;
->>> +            dma-ranges = <0x1 0x0 0x1 0x0 0x1 0x0>;
->>> +            mediatek,scp = <&scp>;
->>> +            clocks = <&vencsys CLK_VENC_CKE1_VENC>;
->>> +            clock-names = "MT_CG_VENC";
->>
->> clock-names = "venc"; (please no underscores and please lower case)
->>
->>> +            assigned-clocks = <&topckgen CLK_TOP_VENC>;
->>> +            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D3>;
->>> +            power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
->>> +        };
->>
->>
->> ....also:
->>
->> The following order of properties in device nodes is preferred:
->>
->> 1. "compatible"
->> 2. "reg"
->> 3. "ranges"
->> 4. Standard/common properties (defined by common bindings, e.g. without
->>     vendor-prefixes)
->> 5. Vendor-specific properties
->> 6. "status" (if applicable)
->> 7. Child nodes, where each node is preceded with a blank line
->>
->> Documentation/devicetree/bindings/dts-coding-style.rst
->>
->> Please reorder as per the DTS coding style document, and also please rename the
->> venc node to use a generic name, such as "video-encoder@xxxx"
->>
->> Cheers,
->> Angelo
-> 
-> 
-> _______________________________________________
-> Kernel mailing list -- kernel@mailman.collabora.com
-> To unsubscribe send an email to kernel-leave@mailman.collabora.com
 
 
