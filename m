@@ -4,95 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 280DBC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 12:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B0ECC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 13:31:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/2CpqYu2Yz1Ozrx0CUYVWM6SPUKyooHq2Zq4S2qE3CE=; b=hZtzNRKaAGxPDjlR2nGSsiodqD
-	OUWF1AR4Z89d13TgEUa3FHypxJVKf+NozvPjNwp/Gsjwoqmz1AYr7HaqU4vGknJ0QW9s0mDZ3Gtvb
-	0z6DtKu0RCx36jeWhuNnbe0XHswytYi0ePetjVs9RL8JPNZYhOGhieUvBGd/4yfqjRJXVHr3tf64f
-	zUeYFcOFt5MESc6f3jTkoKgkENkNr700OJsHnhOMYcGaMLTxjxlcr3YnBSBCWyJcrD9plsK6Abbwu
-	Fb4nQpp8jYC0sn1bY0Th214EsHtEcFh85zyGnvj79GWv5a8kQT0qE9N4D4VkC51FzQjxZ4MkBE1Np
-	xLE7EBDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OGmOdeBKAMsY/kbajXVRe90anub7rYVK5ahJ/Ss1iks=; b=FLvT0t+jpVVPixptO9gkBkrP1X
+	sFhL3iffzj70I1KRfaOf8+QmmD+Ww5GAVTZtQiT/B7pQotnBjDIOIAV/i3YHXD/Ioh+wcgldvEJUj
+	tATC2+HDx2b3OZiJjEOh5NApYWbRQd9wadis7FCeCsJ44cac6aOwQFARSmeFfWjD7K2j8eTLFGST/
+	reLzmnplVR65b5bKmenQaPr2nuI/Wmojo0mCLXF39eAi+AJGSF5Y9PUCTxvv2Gvr8UKHHSdTyviZs
+	hEdQvUswM9pZ3tzA4TnaqmVUAJuzBvnBxKdfZ9txOm5xo8VD/be9LD4WxWRxLMm9uTOsYIJSqlFtq
+	j71DOZFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDkzw-000IoE-2s;
-	Thu, 14 Dec 2023 12:39:28 +0000
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+	id 1rDloE-000QBk-0F;
+	Thu, 14 Dec 2023 13:31:26 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDkzt-000In1-2l
+	id 1rDloA-000QAu-1u
 	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Dec 2023 12:39:27 +0000
-Received: by mail-oi1-x234.google.com with SMTP id 5614622812f47-3ba2dc0f6b7so916564b6e.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Dec 2023 04:39:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702557563; x=1703162363; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/2CpqYu2Yz1Ozrx0CUYVWM6SPUKyooHq2Zq4S2qE3CE=;
-        b=flAG74PqRPO/v99JvlqgnSRfPjFHwtn499GThel5UAsSaPNYag1nuq7NW64yMJkFOO
-         fcFhkvyco2bZvZu+G/5tI1ACx6WSY6xns4NeEWKCC2ptD2aFYH3R0/zov4Yy3M/HvIVr
-         1RiseGMAYwwSGRG2Zm0dt2/H1dX354HbGxZins/JIHiqgPGQ819vnguV/znTAJ8mG76l
-         pza9eS58N9t8T50PEfcgLeI6a60u+hn5GSPEECNgFxkTcJJ+qFB/+YU8nqJMykCKKH0h
-         b38qgvX0N+Hy5R+eWWiRD1BwG/087UmrjioUs7ICkI8vPAyHWpOAdPdZiJnXLyyMPKgq
-         9ygg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702557563; x=1703162363;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/2CpqYu2Yz1Ozrx0CUYVWM6SPUKyooHq2Zq4S2qE3CE=;
-        b=GYrj9xyHCpODdKEPiysDdMKLmUd0Tv47VqMwg+SrzEidpnOzckIwlbAIEafrHhsaaN
-         s4T6wwmzKlnaeUIQ7pYCXt/bCJh9VDEpE/VMqPqkZ9LNlmOpgvsq2Izo/vWaVBXOR4DY
-         jeEtVbcOPs/OTsxQayDstidY+/prVQ9Y/dYRUwKj1+bTiWql6nud9S8S2HD7syqTS+Gq
-         CZPtRvQn3QezttLPTohnzT3yjl+rOz30DyQ3j9ecRg/Mx0Phs0olgKv5eDzyPGIUTkgl
-         z27X8g5B3Vj4GGiHpEnOdLGq8iCR6pAmeXsb1atVQPbgSRK2t868PZwK47zOgxJFK2MI
-         XCng==
-X-Gm-Message-State: AOJu0Yx4vArWXssP1ewSPZk5rFlGQZmmJlDtPPeVqW7mUgrwr6htEzsL
-	93VYRKoTkaYN/Y/5koH47s0=
-X-Google-Smtp-Source: AGHT+IGPMLwm24ar1acxnS3uJOwx1vCUvY364Zwt7fHWyytA0SrFUbX3usGL3teXpIfhBy+VQwBCpw==
-X-Received: by 2002:a05:6808:bc7:b0:3b8:b063:5048 with SMTP id o7-20020a0568080bc700b003b8b0635048mr11757906oik.73.1702557563334;
-        Thu, 14 Dec 2023 04:39:23 -0800 (PST)
-Received: from [10.102.4.159] ([208.195.13.130])
-        by smtp.gmail.com with ESMTPSA id or15-20020a05620a618f00b0077da7a46b0fsm5250357qkn.69.2023.12.14.04.39.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Dec 2023 04:39:23 -0800 (PST)
-Message-ID: <e0fbe9cb-22de-462f-9123-14a220d5a9c6@gmail.com>
-Date: Thu, 14 Dec 2023 04:39:19 -0800
+	Thu, 14 Dec 2023 13:31:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=OGmOdeBKAMsY/kbajXVRe90anub7rYVK5ahJ/Ss1iks=;
+	t=1702560681; x=1703770281; b=MYEJ/0Fdxc6Eqeg/17ys6N8DajkiL7rsXVHFVXZG5Ro6kPW
+	aNTHe5uKYTPvH1BFBE8Gz9t1XUMNH+nCsxawRug+6I7wAxkBnGsSgHqiEzYo2kNGgwkeyzC6Uuk25
+	mkhFo4vAHsmhcIrUn/130P9fmoJ7FJKT+XKH6J0wILNZjaIh2588cwLQLBIPuNSivS5nbBKSwkDim
+	7mlbqhY2gcHlxzyTib+rvyCZeJrd0gqyN5CgBMgN/1fTHh1BdF5DvAkovJ2ABJ8qT6F8S9ZR58Bww
+	xc+ACFbtQijT9mMuBaoSRt5DLqxJMeUTVbtlvPA8VaKApWYinJl0IWlf/+9Y67hg==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.97)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1rDlo5-0000000ArAu-3rkq;
+	Thu, 14 Dec 2023 14:31:18 +0100
+Message-ID: <2f7b735e343a46066236ad4bbdb64236e5fa4691.camel@sipsolutions.net>
+Subject: Re: [PATCH v3,2/2] wifi: mac80211: refactor STA CSA parsing flows
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Michael-cy Lee =?UTF-8?Q?=28=E6=9D=8E=E5=B3=BB=E5=AE=87=29?=
+	 <Michael-cy.Lee@mediatek.com>, "linux-wireless@vger.kernel.org"
+	 <linux-wireless@vger.kernel.org>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,  "nbd@nbd.name" <nbd@nbd.name>,
+ Evelyn Tsai =?UTF-8?Q?=28=E8=94=A1=E7=8F=8A=E9=88=BA=29?=
+ <Evelyn.Tsai@mediatek.com>, "lorenzo@kernel.org" <lorenzo@kernel.org>,
+ Money Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=AE=89=29?=
+ <Money.Wang@mediatek.com>
+Date: Thu, 14 Dec 2023 14:31:16 +0100
+In-Reply-To: <4d8562c2ad67e6476805a436e36b70954161a178.camel@mediatek.com>
+References: <20231129054321.10199-1-michael-cy.lee@mediatek.com>
+	 <20231129054321.10199-2-michael-cy.lee@mediatek.com>
+	 <575322249ff9b9d062edfc3bd6aa234a085d6a94.camel@sipsolutions.net>
+	 <4d8562c2ad67e6476805a436e36b70954161a178.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.50.2 (3.50.2-1.fc39) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
-To: Mario Limonciello <mario.limonciello@amd.com>,
- Ben Greear <greearb@candelatech.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Kalle Valo <kvalo@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Deren Wu <deren.wu@mediatek.com>, Ming Yen Hsieh
- <mingyen.hsieh@mediatek.com>,
- "open list:MEDIATEK MT76 WIRELESS LAN DRIVER"
- <linux-wireless@vger.kernel.org>,
- "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Sultan Alsawaf <sultan@kerneltoast.com>
-References: <20231212090852.162787-1-mario.limonciello@amd.com>
- <874jgmnud8.fsf@kernel.org> <ZXmxD1foASMaCDIe@lore-desk>
- <d92c081e-47dd-5c57-a6f1-bd72b2748141@candelatech.com>
- <1ef12773-74ca-489c-b36b-d3cf7da22c43@amd.com>
-Content-Language: en-US
-From: James Prestwood <prestwoj@gmail.com>
-In-Reply-To: <1ef12773-74ca-489c-b36b-d3cf7da22c43@amd.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_043925_894228_DAB9EF49 
-X-CRM114-Status: GOOD (  14.42  )
+X-CRM114-CacheID: sfid-20231214_053122_784663_8CD3C1A4 
+X-CRM114-Status: GOOD (  43.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,75 +82,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/13/23 11:27, Mario Limonciello wrote:
-> On 12/13/2023 08:45, Ben Greear wrote:
->> On 12/13/23 5:26 AM, Lorenzo Bianconi wrote:
->>>> Mario Limonciello <mario.limonciello@amd.com> writes:
->>>>
->>>>> Several users have reported awful latency when powersaving is enabled
->>>>> with certain access point combinations.
->>>>
->>>> What APs are these exactly? In the past 802.11 Power Save Mode was
->>>> challenging due to badly behaving APs. But nowadays with so many 
->>>> mobile
->>>> devices in the market I would assume that APs work a lot better. It
->>>> would be best to investigate the issues in detail and try to fix 
->>>> them in
->>>> mt76, assuming the bugs are in mt76 driver or firmware.
->>>>
->>>>> It's also reported that the powersaving feature doesn't provide an
->>>>> ample enough savings to justify being enabled by default with these
->>>>> issues.
->>>>
->>>> Any numbers or how was this concluded?
->>>>
->>>>> Introduce a module parameter that would control the power saving
->>>>> behavior.  Set it to default as disabled. This mirrors what some 
->>>>> other
->>>>> WLAN drivers like iwlwifi do.
->>>>
->>>> We have already several ways to control 802.11 power save mode:
->>>>
->>>> * NL80211_CMD_SET_POWER_SAVE (for example used by 'iw set power_save')
->>>>
->>>> * CONFIG_CFG80211_DEFAULT_PS (for kernel level default)
->>>>
->>>> * WIPHY_FLAG_PS_ON_BY_DEFAULT (for the driver to control the 
->>>> default setting)
->>>>
->>>> Adding module parameters as a fourth method sounds confusing so not
->>>> really a fan of this. And the bar is quite high for adding new module
->>>> parameters anyway.
->>>
->>> agree, I think we do not need a new parameter for this, just use the 
->>> current
->>> APIs.
->>
->> Is there a convenient way for a user to make any of those options 
->> above stick through
->> reboots?
->>
->> To me, the ability to set system defaults through reboots is a nice 
->> feature of
->> module options.
->>
->> Thanks,
->> Ben
->>
->
-> Some userspace has the ability to do this.  For example in Network 
-> Manager:
->
-> https://unix.stackexchange.com/questions/595116/wi-fi-powersaving-in-networkmanager 
->
+Hi,
 
-And recently added to IWD for this very reason, there are no decent ways 
-to persist between reboots (except when using NM).
+Sorry for the delay.
+=20
+> I would like to start by explaining why we prioritized the operating
+> class.=20
+>=20
+> In IEEE Std 802.11-2020 11.38.4 (Channel switching methods for a VHT
+> BSS), there is a note about operating class and WBCS Element:
+> =20
+> =E2=80=9CNOTE 2=E2=80=94The indicated operating class within the Extended=
+ Channel
+> Switch Announcement element identifies the bandwidth and the relative
+> position of the primary 20 MHz and secondary 20 MHz channels. Hence a
+> Wide Bandwidth Channel Switch subelement is unnecessary when the
+> Extended Channel Switch Announcement element is used for a channel
+> switch to a 40 MHz bandwidth.=E2=80=9D
 
-https://git.kernel.org/pub/scm/network/wireless/iwd.git/commit/?id=29edb1626d88bb713db71f7b374d8f24832fd94f
+That's ... interesting. I hadn't seen that. But I guess it doesn't
+surprise me, it's in line with what seems to be a general push to give
+the operating class more relevance :)
 
-Thanks,
+> Although it only limits the switch to a 40 MHz bandwidth, we thought it
+> is applicable in 80/80+80/160 MHz bandwidth. So in the version 1, we
+> preferred to use the operating class than the WBCS Element.
 
-James
+Right. Though at least with 40 MHz you can do "opclass X -> secondary is
+above" and "opclass Y -> secondary is below", without really relying on
+the channelisation plan. For wider than 40, you can't do that any more,
+I think?
 
+> Also, we agree your suggestion that WBCS Element has higher priority
+> than operating class. Our reason is, when channel switch to a bandwidth
+> wider than 40 MHz, WBCS Element is mandatory while ECSA (which contains
+> operating class) is not.
+
+OK :)
+
+> (Note that either CSA or ECSA will be sent in a channel switch.)
+
+Right.
+
+> BTW, I would also like to clarify one thing. We did this upstream work
+> solely based on the standard and with the intention of contributing to
+> mac80211. In fact, we developed and tested with the upstream driver
+> (mt76) for AP and STA solution together. Before doing upstream, we used
+> the MTK AP (proprietary solution) to do IOT tests and indeed found some
+> problems, which were already reported and fixed.
+> So, we were not aware of what was going on to MTK AP until we used it
+> to do an IOT test. We didn=E2=80=99t do it with the intention of covering=
+ the
+> broken WBCS element sent by MTK AP.
+
+:-)
+I'm sorry I shouldn't have phrased it that way, I apologize.
+
+Just by sheer coincidence, both these patches and the AP bug report for
+our client landed in my Inbox at around the same time, and I clearly
+drew a conclusion I shouldn't have.
+=20
+> For other replies, please see the inline. (we deleted some of your
+> replies since we just change as you suggested)
+> In summary, we=E2=80=99ll modify the code and submit a new version.
+
+sounds good
+
+> > So perhaps better:
+> >  - use, in this order: BWI, WBCS, ECSA, CSA (according to the mode
+> >    we parse as, and our own capabilities)
+> >  - if present, check that operating class agrees
+> >=20
+> > no?
+>=20
+> we agree the order. AS for the check for operating class, we think it=E2=
+=80=99s
+> a little useless.
+
+I don't disagree that checking the operating class is "a little
+useless". Up to you :-)
+
+What I've been brewing in my head for a while now though is a (per-
+wiphy?) "strict mode" where we do more such consistency checks, and also
+disable workarounds like using beacon elements if missing in association
+response. I'd want to enable that in our testing, and perhaps also when
+doing interoperability testing with other APs.
+
+I realize that's only tangentially related to this patch, but I think it
+could be very useful.
+
+> Image the case that the WBCS Element and the operating class indicate
+> two different  chandef, but both are valid, which one should we trust,
+> or neither?
+> Our answer is that WBCS Element is worth trusting, since it is
+> mandatory in a channel switch to bandwidth wider than 40 MHz, while
+> operating class isn=E2=80=99t.=20
+
+Yeah, makes sense. We could have a check behind a "strict mode" flag,
+but I guess that's something for the future.
+
+> The operating class can be use in the case that the WBCS Element is
+> missing or indicates a wrong chandef. In other word, the operating
+> class has lower priority than WBCS Element.
+> What do you think?
+
+I'm not sure I'd use it for the case of "wrong chandef"? You said
+yourself that WBCS is mandatory and opclass is optional, so I think we
+should be able to trust the AP when it says WBCS is something, and if
+it's confused about it, we'd better not trust it to accidentally (?)
+have gotten the opclass correct?
+
+> We will change the HT/VHT operation to static allocation in the
+> function. However, the size of HE/EHT operation are variable, so it can
+> only be dynamically allocated.
+
+There's a pretty small upper bound though, so you could just pack it
+into a struct with a buffer?
+
+struct {
+	struct eht_operation oper;
+	u8 buf[MAX_EHT_OPER_OPTIONAL];
+} __packed eht;
+
+and use it as "eht.oper"?
+
+Maybe not worth it though. We cannot use dynamically sized stack arrays
+in the kernel, so that wouldn't work either.
+
+
+> According to the Standard, 80+80 MHz bandwidth still exists in HE mode.
+> The function ieee80211_chandef_he_6ghz_oper() handles this case.
+
+Hah, OK.
+
+> However, from our experience, there are few commercial APs that support
+> 80+80 MHz bandwidth in HE mode. We can remove it, what do you think?=20
+
+I have no idea. We don't support it even as a client, so we'd always
+just use 80 MHz. So from our (Intel) POV it doesn't matter. Up to you. I
+don't mind having it or leaving it out, either way. Now that you have
+the code anyway maybe leave it?
+
+> > > +/* parse one of the Elements to build a new chandef */
+> >=20
+> > except you don't really, as discussed above
+> >=20
+> > I'd actually kind of like to have these validated against each other,
+> > but that's for another day, and we don't build the strictest
+> > implementation.
+> >=20
+> > Though I probably will make the implementation optionally stricter in
+> > some places like this, and enable that for all testing/certification
+> > in the future.
+>=20
+> we agree that the validation can be done in the future.
+
+Right, which basically the discussion above.
+
+Thanks!
+
+johannes
 
