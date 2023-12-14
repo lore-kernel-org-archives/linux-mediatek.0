@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97F37C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 05:59:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84009C4167D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 05:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xtBcPsqpbbFvbUWDRLjcp3GMa9+dd/ftCfq9V8sbnlY=; b=LFznPPYeWCWG23CghW8vPwypGo
-	epYZl36+e9b0IDaY5WO0Q9U3HEUHLE9UW6yDLGQuFDD6ZNxevLeMlwXy/5rAUXFp5YfDwB1aCppho
-	5Xyapc4vuwbwoLNaq8qwLSyIfsfyrJJf9ZjjcoCemLQ2X2Ysdr36TELrsax/XSHMhWneZtvQ9qIJy
-	BeDf6OcxagL6aVBTsJBQtlS61rSyc/Kk+JK2v5e9KuV9dqhfD9MvU1bua3EvY6EAtvgCYiOaaLxju
-	5n9266vEf/OBOqFgDM9aH5NR3X2ot+63Jcf7VTcXLgUKlhdolPJb+Kk3ns/wrEQcXkKe/YeUvZjTA
-	FsCgeZ+Q==;
+	bh=SzTxvIK+6W2eU4tTsg+v5yMdYNXEpNz3g/b/lbRszQA=; b=Zjj8zxyySz7TkaYqBoCquj+rBx
+	PWor0AMTxbkZpY1zLcKzkG7f4u8S6IrRanouyjpljxNq+3Q14Xc1OCb87cNIYCR0C2MA1B5q83HVK
+	mUXD1ph8lvFiyVHwZ4bkJBp0RBAiF2IlT1HGAq914FEJpxAPjkbt2XugyNw5HRm8uId69ednrd5Ni
+	V0C5HimzjYpa9C0KtVNPBpcCV8YlQrU+p/nhmzyLyQFc770CoLRUe8IMovM4TaWF3Z5gG9UyNLmJG
+	SnA9ShHutx7sySc3qOpFp8QpI9GFXZA14Ds/f/cv5mZinxnSVwqIA9FFWIZ4T7p2rj8bXLN/pK1gt
+	mSsDh6kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDeks-00GsJJ-1q;
-	Thu, 14 Dec 2023 05:59:30 +0000
+	id 1rDekt-00GsJu-1q;
+	Thu, 14 Dec 2023 05:59:31 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDekS-00GrrX-2q;
+	id 1rDekT-00Grpf-0p;
 	Thu, 14 Dec 2023 05:59:08 +0000
-X-UUID: ddb956a69a4511ee958cff29c719f35b-20231213
+X-UUID: dcff2e0c9a4511ee958cff29c719f35b-20231213
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xtBcPsqpbbFvbUWDRLjcp3GMa9+dd/ftCfq9V8sbnlY=;
-	b=JDb0abqe8TCcXti29V90iJLbunBBo6yR8cv6j/pYl4fzxOysAbdIBvqByZgfuGM29K4KC0xJ7AgVBdFgLULs1V+gFCNk/rjzUgf0dgggj3iD7uN3Vsz7xUhCS1nukbIYJ5HFP1Law53lHmdd21SdmZeaTvj5TvBtYGCYrKBWm3A=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SzTxvIK+6W2eU4tTsg+v5yMdYNXEpNz3g/b/lbRszQA=;
+	b=G8nGd8Ft+DUFvfthnnQUOIsgqJgssXl/00vYJophWPhCI09jx5JV72mD0RrJGKfx4nOMy79LSLoM1TCTkP9iSBr2kJlAePj9gL+gQc60LbRfUWajdmRU2EbO/npIJcbPMycIYxhcaEg+LeihDc9QoHhClmdXYdlkOODVqSr68bg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:330c995b-9970-47e5-bd08-ee0675441eb7,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:8396fb0c-9a5d-4193-a66b-46908c93cb2a,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:5d391d7,CLOUDID:c95fc673-1bd3-4f48-b671-ada88705968c,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:cb5fc673-1bd3-4f48-b671-ada88705968c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: ddb956a69a4511ee958cff29c719f35b-20231213
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: dcff2e0c9a4511ee958cff29c719f35b-20231213
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1977636632; Wed, 13 Dec 2023 22:58:55 -0700
+	with ESMTP id 186668699; Wed, 13 Dec 2023 22:58:54 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 14 Dec 2023 13:58:51 +0800
+ 15.2.1118.26; Thu, 14 Dec 2023 13:58:50 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 14 Dec 2023 13:58:51 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 14 Dec 2023 13:58:50 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
- Hu" <ck.hu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
+ Hu <ck.hu@mediatek.com>
 CC: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
 	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
@@ -69,32 +69,18 @@ CC: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	xinlei lee <xinlei.lee@mediatek.com>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v12 18/23] drm/mediatek: Support MT8188 Padding in display driver
-Date: Thu, 14 Dec 2023 13:58:42 +0800
-Message-ID: <20231214055847.4936-19-shawn.sung@mediatek.com>
+Subject: [PATCH v12 14/23] drm/mediatek: Power on/off devices with function pointers
+Date: Thu, 14 Dec 2023 13:58:38 +0800
+Message-ID: <20231214055847.4936-15-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231214055847.4936-1-shawn.sung@mediatek.com>
 References: <20231214055847.4936-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.803800-8.000000
-X-TMASE-MatchedRID: su3nPiE1MDPyZ92BnYqk5lz+axQLnAVB2+EpBnZEzfWNTnqOMBIJ4WlW
-	Rvn/M8gY+C56g4Ua7emMWZk+4DO9WDWr0WquUWBgQPrPw3WbUAvfOHKWwT12zI5RXzY0MfgCMKw
-	CZ7huGiG36SL29gBZ5vOsv2OU4IcBORpMDvV2b+MMH4SsGvRsA66JG5H2YJq6DpCUEeEFm7BnKJ
-	ueu8CCi965siKum8ZhMGUDNAFj1oBH6+lhuE4fWsnlbo5l7mGF81hDEI6KFM2C4WmokVJmQiv9w
-	l0hZ9X2BanBF8QGgaaXnuE8Z2hbGyTp/bM8n0ENEPf7TDUOGor54F/2i/DwjXYKvUPpVWTyo7ob
-	+jXy2VO86ceQH47Z3jB8BRpYQIthykUkfPOnitISEYfcJF0pRZ/gbQut2lIemyiLZetSf8mfop0
-	ytGwvXiq2rl3dzGQ1HI2pSDhttZ+NHSiOLb5M50cGgfCcR9bKy2GQ/e7e17k/3Ot3uKpX+w==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.803800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: CF44E209C33A351F9CA01DA68A0DCF916B5C6E6255C195083BA5933884C1FF6B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_215904_929402_37A14094 
-X-CRM114-Status: GOOD (  25.80  )
+X-CRM114-CacheID: sfid-20231213_215905_354573_2E55A848 
+X-CRM114-Status: GOOD (  26.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,241 +95,288 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Padding is a new display module on MT8188, it provides ability
-to add pixels to width and height of a layer with specified colors.
+Different from OVL, OVL adaptor is a pseudo device so we didn't
+define it in the device tree, consequently, pm_runtime_resume_and_get()
+called by .atomic_enable() powers on no device. For this reason, we
+implement a function to power on the RDMAs in OVL adaptor, and the
+system will make sure the IOMMUs are powered on as well because of the
+device link (iommus) in the RDMA nodes in DTS.
 
-Due to hardware design, Mixer in VDOSYS1 requires width of a layer
-to be 2-pixel-align, or 4-pixel-align when ETHDR is enabled,
-we need Padding to deal with odd width.
+This patch separates power and clock management process, it would be
+easier to maintain and add extensions.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/Makefile       |   3 +-
- drivers/gpu/drm/mediatek/mtk_disp_drv.h |   4 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c  |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.h  |   2 +-
- drivers/gpu/drm/mediatek/mtk_padding.c  | 160 ++++++++++++++++++++++++
- 5 files changed, 168 insertions(+), 2 deletions(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_padding.c
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  4 +
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 75 +++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 10 +--
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  2 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   | 20 +++++
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       | 16 ++++
+ 6 files changed, 107 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index d4d193f60271..5e4436403b8d 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -16,7 +16,8 @@ mediatek-drm-y := mtk_disp_aal.o \
- 		  mtk_dsi.o \
- 		  mtk_dpi.o \
- 		  mtk_ethdr.o \
--		  mtk_mdp_rdma.o
-+		  mtk_mdp_rdma.o \
-+		  mtk_padding.o
- 
- obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
- 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 2d426775b7ea..74fa56339383 100644
+index 1311562d25cc..2d426775b7ea 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -164,4 +164,8 @@ void mtk_mdp_rdma_config(struct device *dev, struct mtk_mdp_rdma_cfg *cfg,
- const u32 *mtk_mdp_rdma_get_formats(struct device *dev);
- size_t mtk_mdp_rdma_get_num_formats(struct device *dev);
+@@ -110,6 +110,8 @@ void mtk_ovl_adaptor_connect(struct device *dev, struct device *mmsys_dev,
+ 			     unsigned int next);
+ void mtk_ovl_adaptor_disconnect(struct device *dev, struct device *mmsys_dev,
+ 				unsigned int next);
++int mtk_ovl_adaptor_power_on(struct device *dev);
++void mtk_ovl_adaptor_power_off(struct device *dev);
+ int mtk_ovl_adaptor_clk_enable(struct device *dev);
+ void mtk_ovl_adaptor_clk_disable(struct device *dev);
+ void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
+@@ -151,6 +153,8 @@ void mtk_rdma_disable_vblank(struct device *dev);
+ const u32 *mtk_rdma_get_formats(struct device *dev);
+ size_t mtk_rdma_get_num_formats(struct device *dev);
  
-+int mtk_padding_clk_enable(struct device *dev);
-+void mtk_padding_clk_disable(struct device *dev);
-+void mtk_padding_start(struct device *dev);
-+void mtk_padding_stop(struct device *dev);
- #endif
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 48581da51857..f7504d1edc62 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -996,6 +996,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
- 	&mtk_dsi_driver,
- 	&mtk_ethdr_driver,
- 	&mtk_mdp_rdma_driver,
-+	&mtk_padding_driver,
++int mtk_mdp_rdma_power_on(struct device *dev);
++void mtk_mdp_rdma_power_off(struct device *dev);
+ int mtk_mdp_rdma_clk_enable(struct device *dev);
+ void mtk_mdp_rdma_clk_disable(struct device *dev);
+ void mtk_mdp_rdma_start(struct device *dev, struct cmdq_pkt *cmdq_pkt);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index a815dc8e2110..e00d8a395ca0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -80,6 +80,8 @@ static const struct mtk_ddp_comp_funcs merge = {
  };
  
- static int __init mtk_drm_init(void)
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 6f98fff4f1a4..33fadb08dc1c 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -77,5 +77,5 @@ extern struct platform_driver mtk_dpi_driver;
- extern struct platform_driver mtk_dsi_driver;
- extern struct platform_driver mtk_ethdr_driver;
- extern struct platform_driver mtk_mdp_rdma_driver;
--
-+extern struct platform_driver mtk_padding_driver;
- #endif /* MTK_DRM_DRV_H */
-diff --git a/drivers/gpu/drm/mediatek/mtk_padding.c b/drivers/gpu/drm/mediatek/mtk_padding.c
-new file mode 100644
-index 000000000000..0d6451c149b6
---- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_padding.c
-@@ -0,0 +1,160 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
+ static const struct mtk_ddp_comp_funcs rdma = {
++	.power_on = mtk_mdp_rdma_power_on,
++	.power_off = mtk_mdp_rdma_power_off,
+ 	.clk_enable = mtk_mdp_rdma_clk_enable,
+ 	.clk_disable = mtk_mdp_rdma_clk_disable,
+ };
+@@ -201,21 +203,72 @@ void mtk_ovl_adaptor_stop(struct device *dev)
+ 	mtk_ethdr_stop(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
+ }
+ 
+-int mtk_ovl_adaptor_clk_enable(struct device *dev)
++/**
++ * power_off - Power off the devices in OVL adaptor
++ * @dev: Device to be powered off
++ * @num: Number of the devices to be powered off
++ *
++ * Calls the .power_off() ovl_adaptor component callback if it is present.
 + */
++static inline void power_off(struct device *dev, int num)
+ {
+ 	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
+-	struct device *comp;
+-	int ret;
+ 	int i;
+ 
+-	for (i = 0; i < OVL_ADAPTOR_MERGE0; i++) {
+-		comp = ovl_adaptor->ovl_adaptor_comp[i];
+-		ret = pm_runtime_get_sync(comp);
++	if (num > OVL_ADAPTOR_ID_MAX)
++		num = OVL_ADAPTOR_ID_MAX;
 +
-+#include <linux/clk.h>
-+#include <linux/component.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
++	for (i = num - 1; i >= 0; i--) {
++		if (!ovl_adaptor->ovl_adaptor_comp[i] ||
++		    !comp_matches[i].funcs->power_off)
++			continue;
 +
-+#include "mtk_disp_drv.h"
-+#include "mtk_drm_crtc.h"
-+#include "mtk_drm_ddp_comp.h"
-+
-+#define PADDING_CONTROL_REG	0x00
-+#define PADDING_BYPASS			BIT(0)
-+#define PADDING_ENABLE			BIT(1)
-+#define PADDING_PIC_SIZE_REG	0x04
-+#define PADDING_H_REG		0x08 /* horizontal */
-+#define PADDING_V_REG		0x0c /* vertical */
-+#define PADDING_COLOR_REG	0x10
++		comp_matches[i].funcs->power_off(ovl_adaptor->ovl_adaptor_comp[i]);
++	}
++}
 +
 +/**
-+ * struct mtk_padding - Basic information of the Padding
-+ * @clk: Clock of the module
-+ * @reg: Virtual address of the Padding for CPU to access
-+ * @cmdq_reg: CMDQ setting of the Padding
++ * mtk_ovl_adaptor_power_on - Power on the devices in OVL adaptor
++ * @dev: Device to be powered on
 + *
-+ * Every Padding should have different clock source, register base, and
-+ * CMDQ settings, we stored these differences all together.
++ * Different from OVL, OVL adaptor is a pseudo device so
++ * we didn't define it in the device tree, pm_runtime_resume_and_get()
++ * called by .atomic_enable() power on no device in OVL adaptor,
++ * we have to implement a function to do the job instead.
++ *
++ * Return: Zero for success or negative number for failure.
 + */
-+struct mtk_padding {
-+	struct clk		*clk;
-+	void __iomem		*reg;
-+	struct cmdq_client_reg	cmdq_reg;
-+};
-+
-+int mtk_padding_clk_enable(struct device *dev)
++int mtk_ovl_adaptor_power_on(struct device *dev)
 +{
-+	struct mtk_padding *padding = dev_get_drvdata(dev);
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++	int i, ret;
 +
-+	return clk_prepare_enable(padding->clk);
-+}
++	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
++		if (!ovl_adaptor->ovl_adaptor_comp[i] ||
++		    !comp_matches[i].funcs->power_on)
++			continue;
 +
-+void mtk_padding_clk_disable(struct device *dev)
-+{
-+	struct mtk_padding *padding = dev_get_drvdata(dev);
-+
-+	clk_disable_unprepare(padding->clk);
-+}
-+
-+void mtk_padding_start(struct device *dev)
-+{
-+	struct mtk_padding *padding = dev_get_drvdata(dev);
-+
-+	writel(PADDING_ENABLE | PADDING_BYPASS,
-+	       padding->reg + PADDING_CONTROL_REG);
-+
-+	/*
-+	 * Notice that even the padding is in bypass mode,
-+	 * all the settings must be cleared to 0 or
-+	 * undefined behaviors could happen
-+	 */
-+	writel(0, padding->reg + PADDING_PIC_SIZE_REG);
-+	writel(0, padding->reg + PADDING_H_REG);
-+	writel(0, padding->reg + PADDING_V_REG);
-+	writel(0, padding->reg + PADDING_COLOR_REG);
-+}
-+
-+void mtk_padding_stop(struct device *dev)
-+{
-+	struct mtk_padding *padding = dev_get_drvdata(dev);
-+
-+	writel(0, padding->reg + PADDING_CONTROL_REG);
-+}
-+
-+static int mtk_padding_bind(struct device *dev, struct device *master, void *data)
-+{
++		ret = comp_matches[i].funcs->power_on(ovl_adaptor->ovl_adaptor_comp[i]);
+ 		if (ret < 0) {
+ 			dev_err(dev, "Failed to enable power domain %d, err %d\n", i, ret);
+-			goto error;
++			power_off(dev, i);
++			return ret;
+ 		}
+ 	}
 +	return 0;
 +}
 +
-+static void mtk_padding_unbind(struct device *dev, struct device *master, void *data)
++void mtk_ovl_adaptor_power_off(struct device *dev)
 +{
++	power_off(dev, OVL_ADAPTOR_ID_MAX);
 +}
 +
-+static const struct component_ops mtk_padding_component_ops = {
-+	.bind	= mtk_padding_bind,
-+	.unbind = mtk_padding_unbind,
-+};
-+
-+static int mtk_padding_probe(struct platform_device *pdev)
++int mtk_ovl_adaptor_clk_enable(struct device *dev)
 +{
-+	struct device *dev = &pdev->dev;
-+	struct mtk_padding *priv;
-+	struct resource *res;
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++	struct device *comp;
 +	int ret;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->clk = devm_clk_get(dev, NULL);
-+	if (IS_ERR(priv->clk)) {
-+		dev_err(dev, "failed to get clk\n");
-+		return PTR_ERR(priv->clk);
-+	}
-+
-+	priv->reg = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
-+	if (IS_ERR(priv->reg)) {
-+		dev_err(dev, "failed to do ioremap\n");
-+		return PTR_ERR(priv->reg);
-+	}
-+
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
-+	if (ret) {
-+		dev_err(dev, "failed to get gce client reg\n");
-+		return ret;
-+	}
-+#endif
-+
-+	platform_set_drvdata(pdev, priv);
-+
-+	ret = devm_pm_runtime_enable(dev);
-+	if (ret)
-+		return ret;
-+
-+	ret = component_add(dev, &mtk_padding_component_ops);
-+	if (ret) {
-+		pm_runtime_disable(dev);
-+		return dev_err_probe(dev, ret, "failed to add component\n");
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_padding_remove(struct platform_device *pdev)
++	int i;
+ 
+ 	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
+ 		comp = ovl_adaptor->ovl_adaptor_comp[i];
+@@ -226,16 +279,10 @@ int mtk_ovl_adaptor_clk_enable(struct device *dev)
+ 			dev_err(dev, "Failed to enable clock %d, err %d\n", i, ret);
+ 			while (--i >= 0)
+ 				comp_matches[i].funcs->clk_disable(comp);
+-			i = OVL_ADAPTOR_MERGE0;
+-			goto error;
++			return ret;
+ 		}
+ 	}
+ 	return 0;
+-error:
+-	while (--i >= 0)
+-		pm_runtime_put(ovl_adaptor->ovl_adaptor_comp[i]);
+-
+-	return ret;
+ }
+ 
+ void mtk_ovl_adaptor_clk_disable(struct device *dev)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index c277b9fae950..4d5ff39dc2ef 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -721,7 +721,7 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
+ 
+ 	DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
+ 
+-	ret = pm_runtime_resume_and_get(comp->dev);
++	ret = mtk_ddp_comp_power_on(comp);
+ 	if (ret < 0) {
+ 		DRM_DEV_ERROR(comp->dev, "Failed to enable power domain: %d\n", ret);
+ 		return;
+@@ -731,7 +731,7 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
+ 
+ 	ret = mtk_crtc_ddp_hw_init(mtk_crtc);
+ 	if (ret) {
+-		pm_runtime_put(comp->dev);
++		mtk_ddp_comp_power_off(comp);
+ 		return;
+ 	}
+ 
+@@ -744,7 +744,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+ 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+-	int i, ret;
++	int i;
+ 
+ 	DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
+ 	if (!mtk_crtc->enabled)
+@@ -774,9 +774,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
+ 
+ 	drm_crtc_vblank_off(crtc);
+ 	mtk_crtc_ddp_hw_fini(mtk_crtc);
+-	ret = pm_runtime_put(comp->dev);
+-	if (ret < 0)
+-		DRM_DEV_ERROR(comp->dev, "Failed to disable power domain: %d\n", ret);
++	mtk_ddp_comp_power_off(comp);
+ 
+ 	mtk_crtc->enabled = false;
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 3046c0409353..a9b5a21cde2d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -398,6 +398,8 @@ static const struct mtk_ddp_comp_funcs ddp_ufoe = {
+ };
+ 
+ static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
++	.power_on = mtk_ovl_adaptor_power_on,
++	.power_off = mtk_ovl_adaptor_power_off,
+ 	.clk_enable = mtk_ovl_adaptor_clk_enable,
+ 	.clk_disable = mtk_ovl_adaptor_clk_disable,
+ 	.config = mtk_ovl_adaptor_config,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 4bae55bdb034..15b2eafff438 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -7,6 +7,7 @@
+ #define MTK_DRM_DDP_COMP_H
+ 
+ #include <linux/io.h>
++#include <linux/pm_runtime.h>
+ #include <linux/soc/mediatek/mtk-cmdq.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+ #include <linux/soc/mediatek/mtk-mutex.h>
+@@ -46,6 +47,8 @@ enum mtk_ddp_comp_type {
+ struct mtk_ddp_comp;
+ struct cmdq_pkt;
+ struct mtk_ddp_comp_funcs {
++	int (*power_on)(struct device *dev);
++	void (*power_off)(struct device *dev);
+ 	int (*clk_enable)(struct device *dev);
+ 	void (*clk_disable)(struct device *dev);
+ 	void (*config)(struct device *dev, unsigned int w,
+@@ -92,6 +95,23 @@ struct mtk_ddp_comp {
+ 	const struct mtk_ddp_comp_funcs *funcs;
+ };
+ 
++static inline int mtk_ddp_comp_power_on(struct mtk_ddp_comp *comp)
 +{
-+	component_del(&pdev->dev, &mtk_padding_component_ops);
++	if (comp->funcs && comp->funcs->power_on)
++		return comp->funcs->power_on(comp->dev);
++	else
++		return pm_runtime_resume_and_get(comp->dev);
 +	return 0;
 +}
 +
-+static const struct of_device_id mtk_padding_driver_dt_match[] = {
-+	{ .compatible = "mediatek,mt8188-disp-padding" },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, mtk_padding_driver_dt_match);
++static inline void mtk_ddp_comp_power_off(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->power_off)
++		comp->funcs->power_off(comp->dev);
++	else
++		pm_runtime_put(comp->dev);
++}
 +
-+struct platform_driver mtk_padding_driver = {
-+	.probe		= mtk_padding_probe,
-+	.remove		= mtk_padding_remove,
-+	.driver		= {
-+		.name	= "mediatek-disp-padding",
-+		.owner	= THIS_MODULE,
-+		.of_match_table = mtk_padding_driver_dt_match,
-+	},
-+};
+ static inline int mtk_ddp_comp_clk_enable(struct mtk_ddp_comp *comp)
+ {
+ 	if (comp->funcs && comp->funcs->clk_enable)
+diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+index c3adaeefd551..dc7c9e991990 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+@@ -242,6 +242,22 @@ size_t mtk_mdp_rdma_get_num_formats(struct device *dev)
+ 	return ARRAY_SIZE(formats);
+ }
+ 
++int mtk_mdp_rdma_power_on(struct device *dev)
++{
++	int ret = pm_runtime_resume_and_get(dev);
++
++	if (ret < 0) {
++		dev_err(dev, "Failed to power on: %d\n", ret);
++		return ret;
++	}
++	return 0;
++}
++
++void mtk_mdp_rdma_power_off(struct device *dev)
++{
++	pm_runtime_put(dev);
++}
++
+ int mtk_mdp_rdma_clk_enable(struct device *dev)
+ {
+ 	struct mtk_mdp_rdma *rdma = dev_get_drvdata(dev);
 -- 
 2.18.0
 
