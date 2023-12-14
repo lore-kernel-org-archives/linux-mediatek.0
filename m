@@ -4,84 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B03E9C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFF99C4167D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WQpEKW0vlfzqI5cDIUoQ0zKRhm/QITCtnmzIzOsRhcU=; b=GZAVcg6G/bpdBma0+AwWG+5zPB
-	ym2gWuPVhsikQKUJvkPCgFPPcbjCkTkCfG4NUkGzkhyda4MXYz3oN25dbQBJwNkZQHQtrd+hshZVl
-	E2Kb1Y5zXtytAI1HLaX2bmrIo1AsXdEj13FmTXVe1uYcPRE7mvYF81xpezej4SbjhRK9bDFD1EmDz
-	VM7ZElm734tMsSX1uPZFDbuQMUYXmO/A+VTlbr+aGpwX3K5EqBWqzhf89rywd1whG5Dv0+dqGmKGF
-	4ZZ4wJPyRnY+5E0ViX564MLcnaR2OIWAlmX6G3b51dY5u+/g2y1wr8WbELAe3M+pvoC1GM/4UTTD0
-	QA53GFkg==;
+	bh=P6kA/TcTtHmmCSA/0udfKgMiWzW+AjYlMCnXuY0z2Ec=; b=XTHvvAizyq7BQXDFBxEto2NUXj
+	yGf/MKqR/qc4W8t3i1PMRkpuGqEuzSdw9evFuskBltT6oqhbUh2pW+7lMQd9SRMaz1cfgAZlIRtNM
+	MwGmP128x7aqCk2+wiQSX1MqNZqbTl4oLWKE6pl75iTS+wdjXOm7Wy2t/dcb9SmfnJfKoMuEEUVyf
+	FKeQYr2r7HM75IVswrUi28T6SW10JG0NLp6x1dW62G31ed8C2YNMpLxxXamgqkfzMx6Mtuz+9H3vz
+	a4djOIwbLk6X1YApo5oFME/G3IXjlkLxA8CbEB51r79X9yC8rT+MZpPjGLPMe453XvcJUTfrQBPiS
+	aE6fiakA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDj85-00HVTD-2B;
-	Thu, 14 Dec 2023 10:39:45 +0000
-Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
+	id 1rDjCj-00HW1k-03;
+	Thu, 14 Dec 2023 10:44:33 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDj83-00HVSK-1x
-	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Dec 2023 10:39:44 +0000
-Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-7c500dcdd7dso1271170241.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Dec 2023 02:39:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1702550380; x=1703155180; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WQpEKW0vlfzqI5cDIUoQ0zKRhm/QITCtnmzIzOsRhcU=;
-        b=mD6N+zt2Q2pnijxi5w0keM6sT3BzXOuSBcciTqI/atukf2ONR1NKern6+3c0NcFGX7
-         m2xWfZwahh0KP98ZrxN8vqx7nbVtwLWVyFlR+xGYFQ8zm5yNls3zSoLGtBENTHN2LL12
-         jQksqs3yy5Ee/8tOKA2Y60jXRm7aJn36JK6uQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702550380; x=1703155180;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WQpEKW0vlfzqI5cDIUoQ0zKRhm/QITCtnmzIzOsRhcU=;
-        b=ZX5mBVy9HnNKE7HjocSaJ7JyD3xtFoJ3aDY4K8j2piCKnCExe3zcIrIsj0KcmHQQ+8
-         dO6aCm20vZkuI8bGouc5oBYiiZ5a5noROa0qHUQkgLpJZGpODfKG4g2ZwRv5r2bG7rim
-         k4HE8nXI/xCTRcUDn42x2DOgyHkwj6tpnH+Fa01b/pTmc0xolFD2aQNGTpYwnAZlfazq
-         b80kwn+9yMxlxvLJ2GtVBVgvH8u2El+51RdhSfVWgnVPIQ6WI/ZAJDsZGB8/gr6ex6fK
-         COcBxHUgcgBAXSwZi6gNxTxIn3rLStBYToANqSr3n9bCqZkmSYhxXEYhfS9WMcIh6h2z
-         QvsA==
-X-Gm-Message-State: AOJu0Ywk/eSzdYZvtmJB/yW/kJOvhmej5uMibBuePQBsNfmEd0rI3GAp
-	4wsVRG8bQdGI5o/XvFdTu4TonIWKZneTzknOdzw=
-X-Google-Smtp-Source: AGHT+IEoNBgPRwvTcdsWJvjFoL0dBPxBguls67qWwhfGgZt6P2LaBomlFAfFYMmeP3VdsvZpmlSLyQ==
-X-Received: by 2002:a05:6122:4894:b0:4b2:f0bf:2794 with SMTP id eg20-20020a056122489400b004b2f0bf2794mr3374741vkb.32.1702550379615;
-        Thu, 14 Dec 2023 02:39:39 -0800 (PST)
-Received: from mail-ua1-f53.google.com (mail-ua1-f53.google.com. [209.85.222.53])
-        by smtp.gmail.com with ESMTPSA id ez20-20020a0561224a1400b004b2d650c65csm1310537vkb.15.2023.12.14.02.39.38
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Dec 2023 02:39:39 -0800 (PST)
-Received: by mail-ua1-f53.google.com with SMTP id a1e0cc1a2514c-7c461a8cb0dso1273327241.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Dec 2023 02:39:38 -0800 (PST)
-X-Received: by 2002:a67:c010:0:b0:465:fc90:2cce with SMTP id
- v16-20020a67c010000000b00465fc902ccemr2107147vsi.29.1702550378388; Thu, 14
- Dec 2023 02:39:38 -0800 (PST)
+	id 1rDjCf-00HW0T-02;
+	Thu, 14 Dec 2023 10:44:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1702550667;
+	bh=cAT6HmiYeTlVqmi2uXEf6RyUkhAQ2o/TgivLiKg7xng=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=oWZ3jLXIEj3UPozYna6D0FNBFm7legTk4Y4t7BniXyaUMxwmAwhzkg9r8Gp3XQe4j
+	 tbZqks35ReyaJajZ0HLf0nWlB3zhDnGXnQ0L8Qz4QXwFFQcJu0fthEka0uiG/MGgrt
+	 aKW5P+8QbPvl9Dt00r7ggoWmVFcO+D+P8iWrXjGIUONSQgiS5kJhgiV9TURHNpeiVm
+	 pz2GZYxVFMALQGy/UyzsDmWqZY5uCIaSWIN4qVXaYZgKLvKGVinPLa0AaxYby8bwwY
+	 iJFjB5zAdjqbDv763gVeFJpSbH7+MQw4dRYjNZQLFs5dQ1j31gMm3WwkIWp/cjyrwZ
+	 dDuJq6BjOpeSA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CD23D378000B;
+	Thu, 14 Dec 2023 10:44:26 +0000 (UTC)
+Message-ID: <d20c35e2-cc40-436d-90ca-4cab555874ca@collabora.com>
+Date: Thu, 14 Dec 2023 11:44:26 +0100
 MIME-Version: 1.0
-References: <20231213150435.4134390-1-wenst@chromium.org> <20231213150435.4134390-7-wenst@chromium.org>
-In-Reply-To: <20231213150435.4134390-7-wenst@chromium.org>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 14 Dec 2023 18:39:01 +0800
-X-Gmail-Original-Message-ID: <CAC=S1niMvoD-EzGWqo-5fEBJLWAVk3FnxW3jq5rSj9fQ_H37gA@mail.gmail.com>
-Message-ID: <CAC=S1niMvoD-EzGWqo-5fEBJLWAVk3FnxW3jq5rSj9fQ_H37gA@mail.gmail.com>
-Subject: Re: [PATCH v4 6/9] arm64: dts: mediatek: Add MT8186 Krabby platform
- based Tentacruel / Tentacool
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/4] arm64: dts: mediatek: mt8186: Add venc node
+Content-Language: en-US
+To: Eugen Hristev <eugen.hristev@collabora.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+ matthias.bgg@gmail.com, Kyrie Wu <kyrie.wu@mediatek.com>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>
+References: <20231213122017.102100-1-eugen.hristev@collabora.com>
+ <20231213122017.102100-4-eugen.hristev@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231213122017.102100-4-eugen.hristev@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_023943_639810_AAF01D8E 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20231214_024429_186428_FC769783 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,32 +79,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 13, 2023 at 11:05=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> =
-wrote:
->
-> Tentacruel and Tentacool are MT8186 based Chromebooks based on the
-> Krabby design.
->
-> Tentacruel, also known as the ASUS Chromebook CM14 Flip CM1402F, is a
-> convertible device with touchscreen and stylus.
->
-> Tentacool, also known as the ASUS Chromebook CM14 CM1402C, is a laptop
-> device. It does not have a touchscreen or stylus.
->
-> The two devices both have two variants. The difference is a second
-> source touchpad controller that shares the same address as the original,
-One nit since you need to resend this anyway...
-s/touchpad/trackpad/g
+Il 13/12/23 13:20, Eugen Hristev ha scritto:
+> From: Kyrie Wu <kyrie.wu@mediatek.com>
+> 
+> Add video encoder node.
+> 
+> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> [eugen.hristev@collabora.com: minor cleanup]
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 24 ++++++++++++++++++++++++
+>   1 file changed, 24 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> index 66ead3f23336..8535ff2b44e9 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> @@ -1993,6 +1993,30 @@ larb7: smi@17010000 {
+>   			power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
+>   		};
+>   
+> +		venc: venc@17020000 {
+> +			compatible = "mediatek,mt8183-vcodec-enc";
+> +			#address-cells = <2>;
+> +			#size-cells = <2>;
+> +			reg = <0 0x17020000 0 0x2000>;
+> +			interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			iommus = <&iommu_mm IOMMU_PORT_L7_VENC_RCPU>,
+> +				 <&iommu_mm IOMMU_PORT_L7_VENC_REC>,
+> +				 <&iommu_mm IOMMU_PORT_L7_VENC_BSDMA>,
+> +				 <&iommu_mm IOMMU_PORT_L7_VENC_SV_COMV>,
+> +				 <&iommu_mm IOMMU_PORT_L7_VENC_RD_COMV>,
+> +				 <&iommu_mm IOMMU_PORT_L7_VENC_CUR_LUMA>,
+> +				 <&iommu_mm IOMMU_PORT_L7_VENC_CUR_CHROMA>,
+> +				 <&iommu_mm IOMMU_PORT_L7_VENC_REF_LUMA>,
+> +				 <&iommu_mm IOMMU_PORT_L7_VENC_REF_CHROMA>;
+> +			dma-ranges = <0x1 0x0 0x1 0x0 0x1 0x0>;
+> +			mediatek,scp = <&scp>;
+> +			clocks = <&vencsys CLK_VENC_CKE1_VENC>;
+> +			clock-names = "MT_CG_VENC";
 
-Regards,
-Fei
+clock-names = "venc"; (please no underscores and please lower case)
 
-> but is incompatible.
->
-> The extra SKU IDs for the Tentacruel devices map to different sensor
-> components attached to the Embedded Controller. These are not visible
-> to the main processor.
->
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> +			assigned-clocks = <&topckgen CLK_TOP_VENC>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D3>;
+> +			power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
+> +		};
+
+
+....also:
+
+The following order of properties in device nodes is preferred:
+
+1. "compatible"
+2. "reg"
+3. "ranges"
+4. Standard/common properties (defined by common bindings, e.g. without
+    vendor-prefixes)
+5. Vendor-specific properties
+6. "status" (if applicable)
+7. Child nodes, where each node is preceded with a blank line
+
+Documentation/devicetree/bindings/dts-coding-style.rst
+
+Please reorder as per the DTS coding style document, and also please rename the
+venc node to use a generic name, such as "video-encoder@xxxx"
+
+Cheers,
+Angelo
 
