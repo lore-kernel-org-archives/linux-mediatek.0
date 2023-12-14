@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E94AAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:31:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C321AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:34:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3lqm+O42Et0l1C8kjCXTEaZPYl4lSAnjZoxDsY05ULg=; b=CbqioEiDwdQWa8fsFt0JVo59ad
-	o+dQkbPps8exjJRNK6jUuW/Z0eV8femiaxZ/5nkaaYC1yy4DXkxC2YL7Eg4m+wrdEx4FTvlraRNVD
-	AalQmo6UBO8tP3LMAjPyS6lT5J5OjfVSsDDRt/ezw1JErHBEM1I996ARZMJF0eQ3ep94HOmq6NGSS
-	8sQfi/k30kEusYO+7vmmRtBv0H0u90ArhMZWaJlhnq9NTaPWDL0C43vk5dLa3MmW2cx1pr/iB3rmh
-	KzWtjGrbex+A8WXgs6BoCM4Sbua+RNmWeHFK1R4pf5Rib+o+mci2/Wc1Teiwx+E6FYqFeY5PPUnxb
-	vGbqh/9A==;
+	bh=goU4JUePhKKy1ZW2ZCF6huPdl3iP7A5Cik3lwHbnwvc=; b=159BF9MMUFka3DPUmgWXQ9nGWi
+	MKxi4Dh/KJ2CdUGkI6yVscK/leBZ1R609BQjQTfV4caNRNtAQhrSwR0KfMV+2qS+FRpt0OoiK5lBS
+	FKeP7p5O7f21XjB/5Abb+/Np7ri2a8/Tv9rVYVlTTxaNT3MkmLbAEq6GbYRnubl2CrlLlFt1LDG6A
+	vEmol184VlXaLxQ0mTz/ieO8/GX9u2NV4eGy4uYfBteZqxX0/4xHAFtteqd/cb7/3wxaWB5u/aO6i
+	16da4/1OIAt2cYRswBMkGIC0LbsSvEHnCZ1YHwcQqtSgAeMhuQHbG+GpxiYsrVCQ4gUeJRuKy9Djw
+	Avj4CjQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDj0P-00HTmQ-2m;
-	Thu, 14 Dec 2023 10:31:49 +0000
+	id 1rDj39-00HUAb-2J;
+	Thu, 14 Dec 2023 10:34:39 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDj0M-00HTlB-2H;
-	Thu, 14 Dec 2023 10:31:48 +0000
+	id 1rDj36-00HU9J-0I;
+	Thu, 14 Dec 2023 10:34:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702549903;
-	bh=hAEE7gN/tX8xVA6dmhtKspxa0JnRlGiTqZPWAS3zgDY=;
+	s=mail; t=1702550074;
+	bh=nltRWsAk/z5jbHqdz583haqpjD3b8mytV4HvccmjS1M=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=uqycB/5RIGAkwL3i+H8xhqNcU3DDhsjo6RCTvOyBuZVcSYxuk9BdrepCKV7XxrJVR
-	 1wA2DrKCxY6hMxHSX4LpIp6XF2uypcIY7d7hlP6ItfpgMibAP4OlSTagHMfvUnXrob
-	 fORXnpWP1gDU+5SI+xtxjfxb9uDUZzzdwPCy+oF54gBSnAPI9/X8vyduw14+E2An/B
-	 iozcd6fInEgMZl5HLQ1IOQ52Y16TIk84nX1+I1aHqJ4AHbe+s6OlV+Z+PNNNVG0AFs
-	 pbFuzogNkQkk7Oba4znaBYFPB9+U2Nk+WmEjEOZiA39HF9+JG6zLbfJxxhk4LGpcPD
-	 SPT4wYIgA4IOA==
+	b=U6qXFrpKKN6G8mLVuSK8cGP+mUp5gDU+9MBNmXkzA+7Ct+9rrLNDU055ecalOWEwt
+	 5uOGZSLOvpAqSMdPJKiTlMLj9/reAicbtItg7erQk1kPTeEDeBC2f6N6HY65qwRqZv
+	 +t1IN2KhCQFrB8xVxIhKncDnWzo3hwHAWccj/s20jA7rEN5AQHN1gZDwpsVQ74J4yx
+	 2++E0YOVOxvNUnyhi1vElo64Q8xRTdbV35WWS++TDVgTOO2ooI6Zh/a1L/5R8pVvHK
+	 10Uypqvbx4KofIxU2IBQ6x7jaBMs0bWGy1p+esHRsOCb10DNtncyJm7aVWNwywkytx
+	 yuVAR5FlFHXCA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4E065378000B;
-	Thu, 14 Dec 2023 10:31:42 +0000 (UTC)
-Message-ID: <13c8ccbc-0eef-43f5-ae37-29ec64d1606b@collabora.com>
-Date: Thu, 14 Dec 2023 11:31:41 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1BB07378000B;
+	Thu, 14 Dec 2023 10:34:34 +0000 (UTC)
+Message-ID: <8d855e5e-4938-4d4f-a79f-bbf89e30f6ca@collabora.com>
+Date: Thu, 14 Dec 2023 11:34:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 6/9] arm64: dts: mediatek: Add MT8186 Krabby platform
- based Tentacruel / Tentacool
+Subject: Re: [PATCH v4 7/9] arm64: dts: mediatek: Introduce MT8186 Steelix
+Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -58,15 +58,14 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  linux-kernel@vger.kernel.org, Eugen Hristev <eugen.hristev@collabora.com>,
  Conor Dooley <conor.dooley@microchip.com>
 References: <20231213150435.4134390-1-wenst@chromium.org>
- <20231213150435.4134390-7-wenst@chromium.org>
+ <20231213150435.4134390-8-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20231213150435.4134390-7-wenst@chromium.org>
+In-Reply-To: <20231213150435.4134390-8-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_023146_879723_65FAE2AB 
-X-CRM114-Status: GOOD (  27.99  )
+X-CRM114-CacheID: sfid-20231214_023436_262352_7B96104F 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,218 +81,311 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 13/12/23 16:04, Chen-Yu Tsai ha scritto:
-> Tentacruel and Tentacool are MT8186 based Chromebooks based on the
-> Krabby design.
+> The MT8186 Steelix, also known as the Lenovo 300e Yoga Chromebook Gen 4,
+> is a convertible device based on a common design of the same name. The
+> device comes in different variants. Of them, whether a world facing
+> camera is integrated is the only differentiating factor between the
+> two device trees added. The different SKU IDs describe this alone.
 > 
-> Tentacruel, also known as the ASUS Chromebook CM14 Flip CM1402F, is a
-> convertible device with touchscreen and stylus.
-> 
-> Tentacool, also known as the ASUS Chromebook CM14 CM1402C, is a laptop
-> device. It does not have a touchscreen or stylus.
-> 
-> The two devices both have two variants. The difference is a second
-> source touchpad controller that shares the same address as the original,
-> but is incompatible.
-> 
-> The extra SKU IDs for the Tentacruel devices map to different sensor
-> components attached to the Embedded Controller. These are not visible
-> to the main processor.
+> The other device difference is the touchpad component used. This is
+> simply handled by having both possible components described in the
+> device tree, and letting the implementation figure out which one is
+> actually available. The system bootloader / firmware does not
+> differentiate this in that they share the same SKU IDs.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > Acked-by: Conor Dooley <conor.dooley@microchip.com>
 > ---
-> Changes since v3:
-> - Reorder some properties to conform better to the newly proposed DT
->    style guidelines
-> - Drop unused labels
-> - Rename bt-sco node name to bt-sco-codec
-> - Drop i2s*-share properties from afe node
-> - Drop aud_gpio_tdm_{on,off} pinctrl nodes
-> - Replace interrupts with interrupts-extended in tpm node
-> - Enable adsp device
-> 
 > Changes since v2:
 > - Picked up Conor's ack
-> - Rename touchpad to trackpad
-> - Drop pinctrl properties from trackpad in tentacruel/tentacool second
->    source trackpad
 > 
 > Changes since v1:
-> - Reorder SKU numbers in descending order.
-> - Fixed pinconfig node names
-> - Moved pinctrl-* properties after interrupts-*
-> - Switched to interrupts-extended for external components
-> - Marked ADSP as explicitly disabled, with a comment explaining that it
->    stalls the system
-> - Renamed "touchpad" to "trackpad"
-> - Dropped bogus "no-laneswap" property from it6505 node
-> - Moved "realtek,jd-src" property to after all the regulator supplies
-> - Switched to macros for MT6366 regulator "regulator-allowed-modes"
-> - Renamed "vgpu" regulator name to allow coupling, with a comment
->    containing the name used in the design
-> - Renamed "cr50" node name to "tpm"
-> - Moved trackpad_pins reference up to i2c2; workaround for second source
->    component resource sharing.
-> - Fix copyright year
-> - Fixed touchscreen supply name
+> - Removed trackpad_pins reference (moved to i2c2 in corsola dtsi)
+> - Fixed copyright year
+> - Renamed touchpad to trackpad
 > ---
->   arch/arm64/boot/dts/mediatek/Makefile         |    4 +
->   .../dts/mediatek/mt8186-corsola-krabby.dtsi   |  129 ++
->   .../mt8186-corsola-tentacool-sku327681.dts    |   57 +
->   .../mt8186-corsola-tentacool-sku327683.dts    |   24 +
->   .../mt8186-corsola-tentacruel-sku262144.dts   |   44 +
->   .../mt8186-corsola-tentacruel-sku262148.dts   |   26 +
->   .../boot/dts/mediatek/mt8186-corsola.dtsi     | 1707 +++++++++++++++++
->   7 files changed, 1991 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.dtsi
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327681.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262144.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+>   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>   .../mt8186-corsola-steelix-sku131072.dts      |  18 ++
+>   .../mt8186-corsola-steelix-sku131073.dts      |  18 ++
+>   .../dts/mediatek/mt8186-corsola-steelix.dtsi  | 195 ++++++++++++++++++
+>   4 files changed, 233 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index e6e7592a3645..442af61b1305 100644
+> index 442af61b1305..7bd9471b89f9 100644
 > --- a/arch/arm64/boot/dts/mediatek/Makefile
 > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -43,6 +43,10 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
+> @@ -43,6 +43,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
 >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
 >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
 >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacool-sku327681.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacool-sku327683.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacruel-sku262144.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacruel-sku262148.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r5-sku2.dtb
-
-..snip..
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131072.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131073.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacool-sku327681.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacool-sku327683.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacruel-sku262144.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
 > new file mode 100644
-> index 000000000000..447b57b12b41
+> index 000000000000..eae17bca8585
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
-> @@ -0,0 +1,26 @@
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
+> @@ -0,0 +1,18 @@
 > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 > +/*
-> + * Copyright 2023 Google LLC
+> + * Copyright 2022 Google LLC
 > + */
 > +
-> +#include "mt8186-corsola-tentacruel-sku262144.dts"
+> +/dts-v1/;
+> +#include "mt8186-corsola-steelix.dtsi"
 > +
 > +/ {
-> +	compatible = "google,tentacruel-sku262151", "google,tentacruel-sku262150",
-> +		     "google,tentacruel-sku262149", "google,tentacruel-sku262148",
-> +		     "google,tentacruel", "mediatek,mt8186";
+> +	model = "Google Steelix board";
+> +	compatible = "google,steelix-sku131072", "google,steelix",
+> +		     "mediatek,mt8186";
+> +	chassis-type = "convertible";
 > +};
 > +
-> +/* This variant replaces only the trackpad controller. */
-> +&i2c2 {
-> +	/delete-node/ trackpad@15;
+> +&mt6366codec {
+> +	mediatek,dmic-mode = <0>; /* two-wire */
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
+> new file mode 100644
+> index 000000000000..a55375b95d0d
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
+> @@ -0,0 +1,18 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2022 Google LLC
+> + */
 > +
-> +	trackpad@15 {
+> +/dts-v1/;
+> +#include "mt8186-corsola-steelix.dtsi"
+> +
+> +/ {
+> +	model = "Google Steelix board";
+> +	compatible = "google,steelix-sku131073", "google,steelix",
+> +		     "mediatek,mt8186";
+> +	chassis-type = "convertible";
+> +};
+> +
+> +&mt6366codec {
+> +	mediatek,dmic-mode = <1>; /* one-wire */
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
+> new file mode 100644
+> index 000000000000..47262bc499ad
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
+> @@ -0,0 +1,195 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2022 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola.dtsi"
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/input/input.h>
+> +
+> +/{
+> +	pp1000_edpbrdg: regulator-pp1000-edpbrdg {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "pp1000_edpbrdg";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&en_pp1000_edpbrdg>;
+> +		enable-active-high;
+> +		regulator-boot-on;
+> +		gpio = <&pio 29 GPIO_ACTIVE_HIGH>;
+> +		vin-supply = <&pp3300_z2>;
+> +	};
+> +
+> +	pp1800_edpbrdg_dx: regulator-pp1800-edpbrdg-dx {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "pp1800_edpbrdg_dx";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&en_pp1800_edpbrdg>;
+> +		enable-active-high;
+> +		regulator-boot-on;
+> +		gpio = <&pio 30 GPIO_ACTIVE_HIGH>;
+> +		vin-supply = <&mt6366_vio18_reg>;
+> +	};
+> +
+> +	pp3300_edp_dx: regulator-pp3300-edp-dx {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "pp3300_edp_dx";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&en_pp3300_edpbrdg>;
+> +		enable-active-high;
+> +		regulator-boot-on;
+> +		gpio = <&pio 31 GPIO_ACTIVE_HIGH>;
+> +		vin-supply = <&pp3300_z2>;
+> +	};
+> +};
+> +
+> +&dsi_out {
+> +	remote-endpoint = <&anx7625_in>;
+> +};
+> +
+> +&i2c0 {
+> +	clock-frequency = <400000>;
+> +
+> +	anx_bridge: anx7625@58 {
+> +		compatible = "analogix,anx7625";
+> +		reg = <0x58>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&anx7625_pins>;
+> +		enable-gpios = <&pio 96 GPIO_ACTIVE_HIGH>;
+> +		reset-gpios = <&pio 98 GPIO_ACTIVE_HIGH>;
+> +		vdd10-supply = <&pp1000_edpbrdg>;
+> +		vdd18-supply = <&pp1800_edpbrdg_dx>;
+> +		vdd33-supply = <&pp3300_edp_dx>;
+> +		analogix,lane0-swing = /bits/ 8 <0x70 0x30>;
+> +		analogix,lane1-swing = /bits/ 8 <0x70 0x30>;
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			port@0 {
+> +				reg = <0>;
+> +
+> +				anx7625_in: endpoint {
+> +					remote-endpoint = <&dsi_out>;
+> +					data-lanes = <0 1 2 3>;
+> +				};
+> +			};
+> +
+> +			port@1 {
+> +				reg = <1>;
+> +
+> +				anx7625_out: endpoint {
+> +					remote-endpoint = <&panel_in>;
+> +				};
+> +			};
+> +		};
+> +
+> +		aux-bus {
+> +			panel: panel {
+> +				compatible = "edp-panel";
+> +				power-supply = <&pp3300_disp_x>;
+> +				backlight = <&backlight_lcd0>;
+> +
+> +				port {
+> +					panel_in: endpoint {
+> +						remote-endpoint = <&anx7625_out>;
+> +					};
+> +				};
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&i2c1 {
+> +	touchscreen: touchscreen@5d {
+> +		compatible = "goodix,gt7375p";
+> +		reg = <0x5d>;
+> +		interrupts-extended = <&pio 12 IRQ_TYPE_EDGE_FALLING>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&touchscreen_pins>;
+> +		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
+> +		vdd-supply = <&pp3300_s3>;
+> +		goodix,no-reset-during-suspend;
+> +	};
+> +};
+> +
+> +&i2c2 {
+> +	i2c-scl-internal-delay-ns = <22000>;
+> +
+> +	/* second source component */
+> +	trackpad@2c {
 > +		compatible = "hid-over-i2c";
-> +		reg = <0x15>;
+> +		reg = <0x2c>;
+> +		hid-descr-addr = <0x20>;
 > +		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> +		hid-descr-addr = <0x0001>;
 > +		vdd-supply = <&pp3300_s3>;
 > +		wakeup-source;
 > +	};
 > +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> new file mode 100644
-> index 000000000000..adbeb0c765d3
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> @@ -0,0 +1,1707 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2022 MediaTek Inc.
-> + */
-> +/dts-v1/;
-> +#include "mt8186.dtsi"
-> +#include <dt-bindings/pinctrl/mt8186-pinfunc.h>
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/input/input.h>
-> +#include <dt-bindings/input/gpio-keys.h>
-> +#include <dt-bindings/regulator/mediatek,mt6397-regulator.h>
 > +
-
-..snip..
-
+> +&keyboard_controller {
+> +	function-row-physmap = <
+> +		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
+> +		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
+> +		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
+> +		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
+> +		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
+> +		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
+> +		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
+> +		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
+> +		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
+> +		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
+> +	>;
 > +
-> +&i2c2 {
-> +	pinctrl-names = "default";
-> +	/*
-> +	 * Trackpad pin put here to work around second source components
-> +	 * sharing the pinmux in steelix designs.
-> +	 */
-> +	pinctrl-0 = <&i2c2_pins>, <&trackpad_pin>;
-> +	clock-frequency = <400000>;
-> +	i2c-scl-internal-delay-ns = <10000>;
-> +	status = "okay";
-> +
-> +	trackpad@15 {
-> +		compatible = "elan,ekth3000";
-
-You forgot to change this one.
-
-Remove compatible from this node and stop using /delete-node/ in device specific
-devicetrees.
-
-> +		reg = <0x15>;
-> +		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> +		vcc-supply = <&pp3300_s3>;
-> +		wakeup-source;
-> +	};
+> +	linux,keymap = <
+> +		MATRIX_KEY(0x00, 0x02, KEY_BACK)
+> +		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
+> +		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
+> +		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
+> +		MATRIX_KEY(0x03, 0x04, KEY_BRIGHTNESSDOWN)
+> +		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSUP)
+> +		MATRIX_KEY(0x01, 0x04, KEY_MICMUTE)
+> +		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
+> +		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
+> +		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
+> +		CROS_STD_MAIN_KEYMAP
+> +	>;
 > +};
+> +
+> +&pio {
+> +	anx7625_pins: anx7625-pins {
+> +		pins1 {
 
+pins-en-rst
 
-corsola.dtsi (here):
+> +			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>,
+> +				 <PINMUX_GPIO98__FUNC_GPIO98>;
+> +			output-low;
+> +		};
+> +
+> +		pins2 {
 
-&i2c2 {
-	pinctrl-names = "default";
-	/*
-	 * Trackpad pin put here to work around second source components
-	 * sharing the pinmux in steelix designs.
-	 */
-	pinctrl-0 = <&i2c2_pins>, <&trackpad_pin>;
-	clock-frequency = <400000>;
-	i2c-scl-internal-delay-ns = <10000>;
-	status = "okay";
+pins-is-this-an-interrupt? :-)
 
-	trackpad_i2c2_15: trackpad@15 {
-		/*
-		 * Those are common properties for i2c2 trackpad on Corsola boards.
-		 * The compatible string is declared in device specific devicetrees
-		 */
-		reg = <0x15>;
-		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-		vcc-supply = <&pp3300_s3>;
-		wakeup-source;
-		status = "disabled";
-	};
-};
+> +			pinmux = <PINMUX_GPIO9__FUNC_GPIO9>;
+> +			input-enable;
+> +			bias-disable;
+> +		};
+> +	};
+> +
+> +	en_pp1000_edpbrdg: pp1000-edpbrdg-en-pins {
+> +		pins {
 
-corsola-some-device.dts:
+pins-vreg-en like in corsola.dtsi
 
-&trackpad_i2c2_15 {
-	compatible = "hid-over-i2c";
-	hid-descr-addr = <0x0001>;
-	status = "okay";
-};
+> +			pinmux = <PINMUX_GPIO29__FUNC_GPIO29>;
+> +			output-low;
+> +		};
+> +	};
+> +
+> +	en_pp1800_edpbrdg: pp1800-edpbrdg-en-pins {
+> +		pins {
 
-corsola-some-other-device.dts:
+same
 
-&trackpad_i2c2_15 {
-	compatible = "elan,ekth3000";
-	status = "okay";
-};
+> +			pinmux = <PINMUX_GPIO30__FUNC_GPIO30>;
+> +			output-low;
+> +		};
+> +	};
+> +
+> +	en_pp3300_edpbrdg: pp3300-edpbrdg-en-pins {
+> +		pins {
 
-....everything else looks good.
+ditto
 
 Cheers,
 Angelo
+
 
