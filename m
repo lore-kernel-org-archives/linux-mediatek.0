@@ -4,164 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C31FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 03:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87A7EC4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 05:59:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	In-Reply-To:Date:References:Message-ID:From:Subject:Cc:To:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8w1//EMNTcW34SWYuLHRcQ7CSF83B21kQIxof+3pfAg=; b=fPqV2sMX7wFRPqMdxqN4AErj1m
-	eIAQ6DBEPrQBWy8x9cSkYiPbsY40MM/6lK0WG3dRlE/588fS43vO5EdbcdPtkw9yi5s6rhqf+gDPX
-	3aHOVOFtIv/HQJY/kd/IbtN5jAFqH8/cES3+R7WDaZ6K9WRKO46l/r4rqxdYb3uXaHnM8Qll0HFo2
-	pMQ6Vsv0XkKfQr3xp4narD3eUgX8ur2xMwuipoWOqO4n05dv74nz9YqaSw0XY3v9vat9vKVQYXgCs
-	l+VqN2cO5Am5RwAKcVEvkz9cUKhejpLQUF4cz/BXOMv9EAsVXTn/U9ZEs4dqPV5TEfOsmhEG4EanM
-	83Cwz17Q==;
+	bh=Dum0ZzdIzX75g8CGTmR32v++7pJ8YrqnJQNjcoVOBkE=; b=SUgO45iC9gJrpB6HQrmKFddXim
+	R85Rz7Lb8Sm6ZyCdryJsK0VqWroOgElN6I9YAlQVXF6lZ1hVviTLJ49q6H71rvXk71puBlT5D0DDY
+	soyCtqq0cRhncR/So7Q0+roGpZyy7TEzjx8UGAp3G3TahCn+a+dh0WdvgsEFJu4M/qwB3L3WzR5ZE
+	T6YwVatkRCoLAZYmbz6TS4nAQnD0J7qSJPWUeBRHYzn2lMl9ZfqKaeSlNj3jN2C0p95OqKpYU4HEA
+	5Mud8OsIMjb9ritdS3faDVsroWGp+lW14SvgM+UCn9RLpfW1p/O6J5E/i54HLU+x+cx+NgTVelwZd
+	IitAE6WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDcej-00GdwI-2O;
-	Thu, 14 Dec 2023 03:45:01 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1rDekQ-00Grpx-1f;
+	Thu, 14 Dec 2023 05:59:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDceg-00GdvZ-1I;
-	Thu, 14 Dec 2023 03:44:59 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3BE0S65V015237;
-	Thu, 14 Dec 2023 03:44:42 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to : cc : subject :
- from : message-id : references : date : in-reply-to : content-type :
- mime-version; s=corp-2023-11-20;
- bh=8w1//EMNTcW34SWYuLHRcQ7CSF83B21kQIxof+3pfAg=;
- b=kR/Qr/qA/o35NxOWmHGKdmVqVWOiXe2ql7akZ7N24yas/7mTHSgcdtNddFfTs2Xe6fEB
- UheqKAEX/0/vQH0hSXH1IEWNZaFmUhv1Wp8vBY9KxpxqU81p7TaoBVzxTtRHv9xoDuhY
- MK/GdF86rNgPhBU1LHWO0YlqlNIVHb+873OIthpttUlJWYHhC8i5tHO0OiJCAR7wdkti
- Dz0fr4LQ/8VgmVlRXmZ5JlQC80Zp4wVtswfowdWxNjN1LFc4YxQhd8A0BUGEXb+39Hfj
- b3Yu+JtsIAYjwdU4B/1nQYvigg0Ux6JcNTcPb1CssXhQApi19VpbQk7Hp/4NQC5eE3NW XQ== 
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3uwgn3r0j8-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 14 Dec 2023 03:44:42 +0000
-Received: from pps.filterd (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 3BE3cU1q012823;
-	Thu, 14 Dec 2023 03:44:41 GMT
-Received: from nam12-bn8-obe.outbound.protection.outlook.com (mail-bn8nam12lp2168.outbound.protection.outlook.com [104.47.55.168])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 3uvep9f10x-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 14 Dec 2023 03:44:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lBnWlsMC52YsBSCwckhFMB/wQ3iA9pvYyM973780aMeM45t66WQCoJtc8+mnCnusJXdVn26aGY04TZtG8HFA9SahXKsM38U9Z2Yz+fg+Bm2tHpQnAe0N9chMLci7/j188sHUzPjil3VTuO2bZlQlDXetF22QJkfvjfdGEqf8ybVFrlTsKUFrfQk0RCJ2GpB+bxA0O3fVtpWq7+hlq+IaqitRG2PYVzl9fJP5VRT0o+40kWeUJXuuKG1PtuVxmatzB6vw2l3cHuu3L6SUm2sTpJdeYSTM2lqwxkBCq69CwwteznasjWevhYBxmaBSxzjbHTAG6JO3tQmoYfRzTtCxKA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8w1//EMNTcW34SWYuLHRcQ7CSF83B21kQIxof+3pfAg=;
- b=llPoPnXMuHsc924MeCS34gOHjBfLB2eEn43Q0TkjZyJ5CEQjxykMOC/CEyf2uQMHv7i5Xeh92Z8RhFs3KvCM+QglmBk5qJNH5gl5OdVxWl2MXkYo3FJW7kXfEevNSxNIdVa1D+Hkx+P/FcduzDRF7vnzg4eX5BgPFWjA5UPkHxALlcnrwkYlu6eaDIWOZOtv1TIFkgfNFAewEFSLZggrEze0M5uc2WfpCTeXELupwOzSlIfrFIslZJK3fm3BrG9M1GEQ/tFq8XPNEjP9DoRwlVSGN9JwCyQ2uX69erfv4dTGt0qNDcZD6KTvHlEXS3kq+sWTAEjs6OyAWCK5jM5XuQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8w1//EMNTcW34SWYuLHRcQ7CSF83B21kQIxof+3pfAg=;
- b=eTPayn1tIqzhxvxkJcoOknLGJzAKAkQipMYOOYWLev0W7bnVZEfn5YCNHEaTZujEW6jGxPFnKq17S9zHJYGnm6SoQULznWtTen1xQmI4kvORa4RntXCrWt1sFQfcdmSZbQHZG3pmS2jIq/tnfmoNiMsJTb8EaijjY88d7iiCjl8=
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
- by PH7PR10MB6460.namprd10.prod.outlook.com (2603:10b6:510:1ef::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7091.26; Thu, 14 Dec
- 2023 03:44:38 +0000
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::2b0c:62b3:f9a9:5972]) by PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::2b0c:62b3:f9a9:5972%4]) with mapi id 15.20.7091.028; Thu, 14 Dec 2023
- 03:44:38 +0000
-To: Can Guo <quic_cang@quicinc.com>
-Cc: bvanassche@acm.org, mani@kernel.org, adrian.hunter@intel.com,
-        vkoul@kernel.org, beanhuo@micron.com, avri.altman@wdc.com,
-        junwoo80.lee@samsung.com, martin.petersen@oracle.com,
-        linux-scsi@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-        Matthias
- Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
-        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support:Keyword:mediatek),
-        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC
- support:Keyword:mediatek),
-        linux-mediatek@lists.infradead.org (moderated
- list:ARM/Mediatek SoC support:Keyword:mediatek)
-Subject: Re: [PATCH v8 00/10] Enable HS-G5 support on SM8550
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-Message-ID: <yq1fs05h2j0.fsf@ca-mkp.ca.oracle.com>
-References: <1701520577-31163-1-git-send-email-quic_cang@quicinc.com>
-Date: Wed, 13 Dec 2023 22:44:36 -0500
-In-Reply-To: <1701520577-31163-1-git-send-email-quic_cang@quicinc.com> (Can
-	Guo's message of "Sat, 2 Dec 2023 04:36:06 -0800")
-Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR03CA0105.namprd03.prod.outlook.com
- (2603:10b6:a03:333::20) To PH0PR10MB4759.namprd10.prod.outlook.com
- (2603:10b6:510:3d::12)
+	id 1rDekN-00Grn9-28;
+	Thu, 14 Dec 2023 05:59:00 +0000
+X-UUID: db69b7569a4511ee9b09ad09c76753c8-20231213
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Dum0ZzdIzX75g8CGTmR32v++7pJ8YrqnJQNjcoVOBkE=;
+	b=asFqUIDbBr1nGLGTN+ifhP8m5IbbNwS17EuO5bG34V0cohwA48X2KbjfGgRklVeeZK+Jmw7a2iE7DB3uOXm3yjN/b55V4fGQb9oypcyKrkF+ctmCHZFvGwvrCFFFDNQFPRSYylCUOPIrPJTZ1/cUStthNW+r1pB6fETwEraBaWA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:60a0cbf8-ddcb-4fda-9ba3-c9ec759dc5bc,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:883c29bd-2ac7-4da2-9f94-677a477649d9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: db69b7569a4511ee9b09ad09c76753c8-20231213
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1521112057; Wed, 13 Dec 2023 22:58:51 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 14 Dec 2023 13:58:48 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 14 Dec 2023 13:58:48 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
+ Hu <ck.hu@mediatek.com>
+CC: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
+	<daniel@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Moudy Ho <moudy.ho@mediatek.com>,
+	Hsiao Chien Sung <shawn.sung@mediatek.com>, Nathan Lu
+	<nathan.lu@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, "Roy-CW .
+ Yeh" <roy-cw.yeh@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	xinlei lee <xinlei.lee@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH v12 05/23] dt-bindings: arm: mediatek: Add compatible for MT8188
+Date: Thu, 14 Dec 2023 13:58:29 +0800
+Message-ID: <20231214055847.4936-6-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231214055847.4936-1-shawn.sung@mediatek.com>
+References: <20231214055847.4936-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR10MB4759:EE_|PH7PR10MB6460:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3bec2da1-1077-43fd-aa95-08dbfc56ff54
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: phTcRoPCitWkMAzUJeKtcyu84iGhF3NEHhTMUtOIm3Jp3D7lu1RmHJznstGzmDc8FlQua5+vXWsKFVTBgI1wspCNPFdm+p8sNs+shUahlim3uczasacPtjl+sDiXGgZOEtLk4KhentUDS24t+9Rdtkh59GX1zqZCvdfYCZ1Cb1MJzIR5C21CaaIRzTpg/G1Z1a8i/74kcj8+qZ/YbFmJ2EwqeB5QQVf2jUSP6was1+utOw6LBOLq64gOKAD9aVESSqrnyF7TJf8dQnIcFHzqYoecpjVktu0idr5rSsqIaSbdgTkCkZx2yYFKW0cditi84jDzjZFrtl1wGZuzKjGWivTEWOPJiWPhmvG0+/V2YbfRH+BMEFUlH7WWW3UpSt+FqI6fcHykh5I2KC96Js+cPU8aspJYDfzo+EHnu38NIe10a7j9IqPhyx0fZOkSspHLKvTZp64bIoRq99dsPQPZGRcDfKMXwvcMA4xA8zfglC5f1JWblMPwFcdKuKNQTCZc9KXDKCVBi2nPI9ptrxnuSBTB1dn45mZbCAMrDW3oaMu9RIl5SFFSjYl4WKXus8AT
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(136003)(396003)(39860400002)(346002)(366004)(376002)(230922051799003)(1800799012)(64100799003)(186009)(451199024)(26005)(36916002)(6506007)(6512007)(4326008)(5660300002)(7416002)(8936002)(8676002)(41300700001)(2906002)(6486002)(478600001)(316002)(6916009)(66556008)(66946007)(66476007)(54906003)(558084003)(86362001)(38100700002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?t0JsWGLWsIXLinKxP9SZkrD5hdY+M4pYDYUoF4ldWIUTVRr609sLLbqIumY4?=
- =?us-ascii?Q?CU9rqUl6bHARE7aIEO9NTNs8lNoWdPz0/9C0LH0/YPfszyXgml0yfX6vXbzs?=
- =?us-ascii?Q?PWrGr6GfeagmsQfKrvPKf6j+2O0BFqyQ6W/l9ZQImso7PvAt7nr7GVAXWC3V?=
- =?us-ascii?Q?iOIU8X75a8ZQD5u5QhnCippUUrkqfANmre6gG82sJ1OPfdmjwP4zQPpK+msq?=
- =?us-ascii?Q?Q/KsofxXdFvULqm5quFeSzIavylQFJdTO2ZoWwhlpvRVFEXk6VuJ83+pu8iq?=
- =?us-ascii?Q?GhjL+oc3dmzo/83Uur3W91NblHIiofM3LZ2AQvgI7zND9nE3MhhvtDfU7zw+?=
- =?us-ascii?Q?I/8pSletUTk785TXrRPyNuxhYyfzsyrwAmw7Y7l+V1XCa77IM4PMQAUbOBHO?=
- =?us-ascii?Q?AucrhepkM3X4KyiymfJReCAyQ7LUoX6TatqpD6GNMGat80141b+MCifrdxt2?=
- =?us-ascii?Q?bLf0QN09JfAC4DJe/z+RiyWm0qG259CSZ1FpDCTKL+QdZWouvJ+nm6jkOFi9?=
- =?us-ascii?Q?sDYFr/NCfRWtEa+0PbkzY1LgdTY65B4NaU0wBb37XEXaf7nEh2YS7ndfVjBP?=
- =?us-ascii?Q?0OT13gax84baXVOJM0PWxN8ShkbZ8ZlEH6CtI3FK4Bnp0TqSXHbvhmEX7Z2v?=
- =?us-ascii?Q?nPX0eaw6lNIX9Rqi3HF2wctQTT1rK8y61lCyRSSqkQvNs/tsxUYRKHBwcUie?=
- =?us-ascii?Q?uVZoUHwb7U6qvsj3gvAuH7H24G6C8LVB5SkzdQpAMG0dc9JfhodFqK32kWOb?=
- =?us-ascii?Q?ON3elkiSSyHG1F8RW80tjoGw0jH6FzM2U/437FBVJBskVbgCJONEHYWU0YaR?=
- =?us-ascii?Q?jliYh+cLtPnP/WJnkPpWBqcyY7NfU2MVyRsFWKqiKshAvnxAxc+gc57Za362?=
- =?us-ascii?Q?pDMVkwXpKK1h5HOPQeunJ217boahdYrH6R3A/+Hb34DuobwGcX+hHBXKeM0A?=
- =?us-ascii?Q?PiGPNsNleNGl6QUOm/OXW8mRxmHxTkoCBWWOCEx4FPdzKCczrn6dsYRgWENk?=
- =?us-ascii?Q?40bprsloAEsQbR9Jr/IEVKFqHsIQUK/MKB0dS0Rw+04Nc3A+Maa6gGF6+vN5?=
- =?us-ascii?Q?jAp7Bg9LXMkqctG+OUcM0nqGQj/kZ5q3Xzd1eneemBaCXEBEE6XnAOBLqJm2?=
- =?us-ascii?Q?gDu2Jqk+RYg1y0wvlDbGW/A5T42yuVgcUzEy+OyAcIhiaTG/Lp1SuN++jlH3?=
- =?us-ascii?Q?ogKO3ZAFGFHJLhyoPqZfLbdfUfjhBH8O2LAT6Xh4pzw683VVvAw84CwxvK/Y?=
- =?us-ascii?Q?I85X8781A5qf7mLMHUERhs01cBdwlnyveB73wqzjtNskzosmLkcuaZGTOnYi?=
- =?us-ascii?Q?JOyC62slJ1xTAl7O5Z+8wWkDYBscv3X+ftl39s5tiq2fN4rqn5lORPqv7ifF?=
- =?us-ascii?Q?xsAmPLfrrsb8HQsHdTAyMS/JyQII5iBD8a5/ZH/54Gk3Iahmas6lHbMl6AlT?=
- =?us-ascii?Q?OPWeXlNPROW/3dbvmm250Fwv6DL1SfFGpr1E1Z1zSL6TqgrFj6J8eP9B7YCa?=
- =?us-ascii?Q?kFFcGrcG/8YY/y8udysET9prMr7Iy+NQj5/DdKkP5fmMnGoM+q6+YddF3wsv?=
- =?us-ascii?Q?ONYvmJnjBd2vkKtlkzNUnm6i/dq0PN8PUucWai+M888BoxZjBAgeSGcDfHAu?=
- =?us-ascii?Q?mQ=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: Z2/VWdqJg7cc9AWAEhwHpYviGEIV7p8tZB4ufyarFmxc5pnDsrVRm7081CmtxhNnogJv/avqaviFo5nmELx/7Dek6jbDTICTW7hcjo5zH4Rls4UvaluNG7FIxb33nhhjTDdKQ32osI5rBvPhHlANlBxy/eYSaYnnVpYDLJdyBsHG0RfZIFQPdNhl2TMmaXXr6MJVaJeuKe5HirKqSztJwE4itaxPCGSmd6+J6GuzjYMOMbgoOOVBhbfIaFL23mVHVOHdcGaFZvXMoeDkL7VE9igqa2sj3jYfmULea40hOcipraQla9YzkOWKXiYdkAp/Wh+FX/rhQwtvlVQ/3zO9bC+/QglGqdOosR+BJzjMkuhgS6+bM4GuiYtmBho53DTM54QpKnjuudBWrGhmkpcakbr+e3534ek+Vh6jNYub9QRS8HcVHPqv9sbMgIzcyrOXC5X9FAGyeaUMbigTkR1GGtZp1+ojQSSN3yL10Kp/2iEsMwEl0BYx7kU6z3FUGQDMKUanN3EIhSZMAkKEDweNvQt7g5fWgGH5IuH5AQfPh27DZ+hDytL/CF54YANyyh0gB4WBEX/iIx+YyiD+RJY3Eh2F9LvkNBI9nbkfstF0uD4=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3bec2da1-1077-43fd-aa95-08dbfc56ff54
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Dec 2023 03:44:38.5263
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +gIQuveDqU/gXwVp71CRpH+/wyk6sx+x7DozcGFmnW+UI4rvFWpI3LuQqK+KoHlFQ2kavk4H+oVKxrQPYti/PldGkUGvrFK/5hFOv8fdqwk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR10MB6460
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-13_16,2023-12-13_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=920 bulkscore=0 spamscore=0
- mlxscore=0 adultscore=0 phishscore=0 malwarescore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2311290000
- definitions=main-2312140020
-X-Proofpoint-ORIG-GUID: 0YfaHu17VhVgUutTKyHE1G493YG7xXeK
-X-Proofpoint-GUID: 0YfaHu17VhVgUutTKyHE1G493YG7xXeK
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_194458_586209_C841FE7A 
-X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-CacheID: sfid-20231213_215859_710352_D15A0BA4 
+X-CRM114-Status: UNSURE (   8.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -177,15 +96,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add compatible name for MediaTek MT8188 VDOSYS1.
 
-Can,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
 
-> This series enables HS-G5 support on SM8550.
-
-Applied patches 1-8 to 6.8/scsi-staging, thanks!
-
-The phy patches didn't apply. I assume they'll go through the phy tree.
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 536f5a5ebd24..642fa2e4736e 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -32,6 +32,7 @@ properties:
+               - mediatek,mt8183-mmsys
+               - mediatek,mt8186-mmsys
+               - mediatek,mt8188-vdosys0
++              - mediatek,mt8188-vdosys1
+               - mediatek,mt8192-mmsys
+               - mediatek,mt8195-vdosys1
+               - mediatek,mt8195-vppsys0
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.18.0
+
 
