@@ -4,82 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91174C4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 06:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A5FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:22:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1iMbqEZR5eaXa4dTgt4nUw5UGW6RlRrufIGjK+6wcTM=; b=mpwrXoJXrbzTyy
-	9nTEl+Pdi1OxO8DVVt83Q1EHC8yJzW3As5KEjK+9Ma4Uu8z/cznvN/WRAAcr6n8ttIEPFsE7RoxLk
-	qDnC21z1qL5hUnAL6QFRaiFfawivdeRpwukkImdReoyb9K97Cv6OHIWyJpihGo82dRpzZLULO5q36
-	P5GOYQisQnF7WRW35UF/2GRwUEzDiyrO8UuGLtX6WgjBs89qWTPYV/rmq4ObPXX481swfPRPqZhpe
-	ZF7JibcV+u6WukIMF10vk/BUJERblNVqPBE/p8wCccY4rpOFljTmvNKJSCP4Mq3zTJ4WAcLRhmV5T
-	NG8bNsTXJHbNVi/PHEzg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fp1d+CKyQPNoIjDNbR+ewORGkHeCCmM/B8Rn1Q/unhg=; b=LmaXjGDhfGgUpwPj4ipp9Ek6y6
+	yFxQxdtHTDP9hWtrB0kUziKNjXZ2AfWZqg20S6q59yEGJ4rN3QguiU5mu62/u/fShsS1LdSjRd7OH
+	W3/X9iKc/gbWyWK2eVyt8dfPrmWeqJS8O+ridrY4odmKs1t9w/IB0gCxeXaZd+QGF5udK9/3KJCe7
+	gyGF0LEye/hpkP/IUTZvwznpI3RrA/auf2YxVYAOVuTBUvfWOCgyNbPaUrkl/ruJkFAvpytjFeOjF
+	9LP0PnLsasUCFGON2odfxaEO9kyCeq89BCMBPPZ/kyelLzMp8PgUX7qegLfeLSJup3sDzVz0XVVZe
+	CZu8uIyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDfR6-00H0om-1s;
-	Thu, 14 Dec 2023 06:43:08 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1rDirN-00HSx6-1w;
+	Thu, 14 Dec 2023 10:22:29 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDfR3-00H0na-20;
-	Thu, 14 Dec 2023 06:43:07 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-55202565d48so1459840a12.0;
-        Wed, 13 Dec 2023 22:43:05 -0800 (PST)
+	id 1rDirL-00HSwj-1x
+	for linux-mediatek@lists.infradead.org;
+	Thu, 14 Dec 2023 10:22:28 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-40c48d7a7a7so37183685e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Dec 2023 02:22:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702536184; x=1703140984; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=1iMbqEZR5eaXa4dTgt4nUw5UGW6RlRrufIGjK+6wcTM=;
-        b=ab3N6CN3oGsAhk2MiRl+uuZokirNLwaLqxu94vApg5rXu2/DI1uWYHM5QUa9/fiqsp
-         Sj+m4t0rJoEfC1uaCKHis31U5LyETz5ZuipgRSddkYhY/vIHt50EZZ29aKAQLeCA442t
-         0PEba5+i6n9nC0zdxQyNSgONEYyguxyB6aMA6RGaruYF1jYQbrHNjVwkGV/1nxLIwS7t
-         O26RZbch1/zpVguQy4wMG7M6iH4G8yXp5fDPWbtHmD0+B70auv5leRGGKkSlgU6f1kTM
-         tYs/KU5TjM39O/MIV6+PMZFLJ+qo31Mj+xTCYMqIS9FzgXvOPcUaU5IUddR/SVNtA5cd
-         LxjA==
+        d=linaro.org; s=google; t=1702549346; x=1703154146; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=fp1d+CKyQPNoIjDNbR+ewORGkHeCCmM/B8Rn1Q/unhg=;
+        b=Hh+YgSCJjAPjciOtK2jo17HzneUJlDc/HSLP5GdEbgluSfNrA6TX7DbRX4zsuaggVJ
+         D23skzPrbL494ekcZcDV7v+clCbLGjRLPXICPsPD9E7SXmel83HljpipmxEI8VZIQWzQ
+         CBf+qKGLWgouSd9sii26yjyypchVAG64R2pKeOLOWBFejOwo2BdBoz5aJFOHcJQ0oCb8
+         vcQEfQ8p6QtDvaBBikrpFVYoOw2vGUUVJSY9k/H1/fCmMkL5WdC9zCnvkQdd1Lf+ypaP
+         guR5M2R2yMedf+5h2zm0PRpqAi8nsjBsDRvL/Lh5wk22vOcYaasLQHQzlv+anEPnqvwb
+         ZWcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702536184; x=1703140984;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1iMbqEZR5eaXa4dTgt4nUw5UGW6RlRrufIGjK+6wcTM=;
-        b=U/EJV6w84oJ9Ktt3Xn3S2ZmkSNxmZEwrDHtF+PnA+kky2RwNIVb729hB/Ol8njd/mI
-         8BbSPfFmr+/dU6mv8qcVqPhLS6Z+G/ATLBWgwB/r6/00WBEvlifETc5V98VkuRBKqKKj
-         /+344TnGzP46sx27huxBL3Ax9Od6p4f2K161yoMQWgMfgSsPUpubQEW+zuSwbqlEy44T
-         SOQJw0WXoe/cYXxOgwGIC2nxPVrM1kj7QQK2VaMhVy1zDCXIURZz3UDEs1qrCmnUf90u
-         YC8jzXCVoGhApH6T7n0CY+nIFMfUrQ4NnfjY15vXAuVUE/poYBYZw/KZphDfE2kI41Va
-         IW5g==
-X-Gm-Message-State: AOJu0YzEQ4trj6i84WzCSa5Xhuqn+aZ78w0q2DyDlU+xa5qTu5akI3yM
-	iAIEPMLEjLMsi44RJZQjGlM=
-X-Google-Smtp-Source: AGHT+IHbL6T33tZSZlPZzC11uXyFcBsmtHS/gkkr7kg1JyHY7NIkaY1VviDHvP8WgTQtelpkHjQp9Q==
-X-Received: by 2002:a50:f68e:0:b0:552:7ecf:8651 with SMTP id d14-20020a50f68e000000b005527ecf8651mr51148edn.17.1702536183444;
-        Wed, 13 Dec 2023 22:43:03 -0800 (PST)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id r10-20020a508d8a000000b0054cb88a353dsm6333909edh.14.2023.12.13.22.43.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Dec 2023 22:43:03 -0800 (PST)
-Message-ID: <a5113b85-e29c-454f-b776-ac7abbca771f@gmail.com>
-Date: Thu, 14 Dec 2023 07:43:01 +0100
+        d=1e100.net; s=20230601; t=1702549346; x=1703154146;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fp1d+CKyQPNoIjDNbR+ewORGkHeCCmM/B8Rn1Q/unhg=;
+        b=nkHZzPz49uweJ0/rn/T5AwMOucz4UY1/szcAzLAt5D8BwtC1Nd+OUAx4o4oCDDQ0lB
+         OUugrh/2ZuQd/99Mx5NNAEkiiueMihw6i+YbxWr4tVhZR0gc7C6WWVKcwSqmdXj7ilgP
+         1LHM2u91mYciqv5S8tB1mTok4PHiCeOGwCKH/7RkLFndTgYYvR+0jfzyJ+SJy75TuEdu
+         +L23isNq919mxbO+AASwijNcK9pCJy/tP70Jsv7vHE7R7zeWwiPCfuSJlJiS4jRvMBYA
+         q+9aEolMQWCoT+j2fEp9DhB2kP66L6tBZRlDgLLQ8wx/kf8gYeh3ZKMSfvUsK9bt/Ynn
+         cyXA==
+X-Gm-Message-State: AOJu0YzJa6WBCldoW4mC24h5V9ax4Qx7OMftKQeFNioSQlnq1sLMUPBY
+	sDZrsLu1d8VJGdp7cAhqLBI1Yg==
+X-Google-Smtp-Source: AGHT+IGzq9LLPmSNCTgriJpxqSqtep05s898zngmo1cC+R8cZnekkhe4Hua33rmwUJhqwgbzXz1hHw==
+X-Received: by 2002:a05:600c:3ca2:b0:40c:50d5:f7a6 with SMTP id bg34-20020a05600c3ca200b0040c50d5f7a6mr2639429wmb.121.1702549345750;
+        Thu, 14 Dec 2023 02:22:25 -0800 (PST)
+Received: from localhost ([102.140.209.237])
+        by smtp.gmail.com with ESMTPSA id fm21-20020a05600c0c1500b0040c03c3289bsm24239700wmb.37.2023.12.14.02.22.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 14 Dec 2023 02:22:25 -0800 (PST)
+Date: Thu, 14 Dec 2023 13:22:21 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: jing.cai@mediatek.com
+Cc: linux-mediatek@lists.infradead.org, linux-bluetooth@vger.kernel.org
+Subject: Re: [bug report] Bluetooth: btusb: mediatek: add MediaTek
+ devcoredump support
+Message-ID: <7c2608ea-1637-40f7-a84b-2e20245c00fc@moroto.mountain>
+References: <b915ddee-25fb-4072-b714-e1c97460cefd@moroto.mountain>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt7986: fix reference to PWM in fan
- node
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-References: <20231116130816.4932-1-zajec5@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <20231116130816.4932-1-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b915ddee-25fb-4072-b714-e1c97460cefd@moroto.mountain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_224305_659646_C3537CB5 
-X-CRM114-Status: GOOD (  17.71  )
+X-CRM114-CacheID: sfid-20231214_022227_670036_29CE8636 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,52 +87,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi guys,
+Ping.  Let me add the bluetooth mailing list as well to see if anyone
+knows.
 
-On 16.11.2023 14:08, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
+regards,
+dan carpenter
+
+On Mon, Jul 03, 2023 at 04:21:32PM +0300, Dan Carpenter wrote:
+> Hello Jing Cai,
 > 
-> This fixes typo and resolves following validation error:
-> arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: pwm-fan: pwms: [[54, 0, 10000], [0]] is too long
->          from schema $id: http://devicetree.org/schemas/hwmon/pwm-fan.yaml#
+> The patch 872f8c253cb9: "Bluetooth: btusb: mediatek: add MediaTek
+> devcoredump support" from Jun 29, 2023, leads to the following Smatch
+> static checker warning:
 > 
-> Fixes: c26f779a2295 ("arm64: dts: mt7986: add pwm-fan and cooling-maps to BPI-R3 dts")
-> Cc: Daniel Golle <daniel@makrotopia.org>
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-
-I sent those few trivial fixes weeks ago:
-[PATCH] arm64: dts: mediatek: mt7986: fix reference to PWM in fan node
-[PATCH 1/2] arm64: dts: mediatek: mt7986: fix SPI bus width properties
-[PATCH 2/2] arm64: dts: mediatek: mt7986: fix SPI nodename
-[PATCH] arm64: dts: mediatek: mt7986: drop crypto's unneeded/invalid clock name
-
-Could someone pick them up, please?
-
-
-P.S.
-FWIW there is also my Acelink EW-7886CAX work but I can understand if
-that needs to sit for another week or so.
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> 	drivers/bluetooth/btmtk.c:409 btmtk_process_coredump()
+> 	error: double free of 'skb'
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> index af4a4309bda4..ba65e3e72bf6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> @@ -43,7 +43,7 @@ fan: pwm-fan {
->   		#cooling-cells = <2>;
->   		/* cooling level (0, 1, 2) - pwm inverted */
->   		cooling-levels = <255 96 0>;
-> -		pwms = <&pwm 0 10000 0>;
-> +		pwms = <&pwm 0 10000>;
->   		status = "okay";
->   	};
->   
-
+> drivers/bluetooth/btmtk.c
+>    381                  if (err < 0)
+>    382                          break;
+>    383                  data->cd_info.cnt = 0;
+>    384  
+>    385                  /* It is supposed coredump can be done within 5 seconds */
+>    386                  schedule_delayed_work(&hdev->dump.dump_timeout,
+>    387                                        msecs_to_jiffies(5000));
+>    388                  fallthrough;
+>    389          case HCI_DEVCOREDUMP_ACTIVE:
+>    390          default:
+>    391                  err = hci_devcd_append(hdev, skb);
+> 
+> hci_devcd_append() free skb on error
+> 
+>    392                  if (err < 0)
+>    393                          break;
+>    394                  data->cd_info.cnt++;
+>    395  
+>    396                  /* Mediatek coredump data would be more than MTK_COREDUMP_NUM */
+>    397                  if (data->cd_info.cnt > MTK_COREDUMP_NUM &&
+>    398                      skb->len > sizeof(MTK_COREDUMP_END) &&
+>    399                      !memcmp((char *)&skb->data[skb->len - sizeof(MTK_COREDUMP_END)],
+>    400                              MTK_COREDUMP_END, sizeof(MTK_COREDUMP_END) - 1)) {
+>    401                          bt_dev_info(hdev, "Mediatek coredump end");
+>    402                          hci_devcd_complete(hdev);
+>    403                  }
+>    404  
+>    405                  break;
+>    406          }
+>    407  
+>    408          if (err < 0)
+>    409                  kfree_skb(skb);
+> 
+> double free
+> 
+>    410  
+>    411          return err;
+>    412  }
+> 
+> regards,
+> dan carpenter
+> 
 
